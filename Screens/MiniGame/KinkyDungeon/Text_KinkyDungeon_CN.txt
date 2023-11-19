@@ -1061,14 +1061,14 @@ Greatly increases the occurrence of muzzles.
 增加口套的出现频率。
 
 Armbinder Lover
-后手袋爱好者
+束手套爱好者
 More armbinders, less straitjackets.
-增加后手袋的出现频率，减少拘束衣的出现频率。
+增加束手套的出现频率，减少拘束衣的出现频率。
 
 Jacket Lover
 拘束衣爱好者
 More straitjackets, less armbinders.
-增加拘束衣的出现频率，减少后手袋的出现频率。
+增加拘束衣的出现频率，减少束手套的出现频率。
 
 
 
@@ -2031,9 +2031,9 @@ Your favorite outfit for adventuring.
 Your original outfit. No bonuses
 你原来的衣服。没有额外效果。
 Tactical Catsuit
-战术紧身服
+战术紧身衣
 A sleek catsuit worn by stealth operatives. No frills, no nonsense.
-一种由秘密特工穿着的时尚紧身服。简洁无华，毫无累赘。
+一种由秘密特工穿着的时尚紧身衣。简洁无华，毫无累赘。
 Increases stealth by 10% in the dark.
 处在黑暗中时，隐藏能力增加 10%。
 Jail Uniform
@@ -2073,13 +2073,13 @@ An outfit designed to leave little to the imagination.
 No bonuses, no penalties.
 没有奖励，没有惩罚。
 Latex Catsuit
-乳胶紧身服
+乳胶紧身衣
 An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
 由经过高度加工的粘液制成的服装。天然丝滑，触感顺滑。
 No bonuses, no penalties.
 没有奖励，没有惩罚。
 Doll Catsuit
-玩偶紧身服
+玩偶紧身衣
 An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
 由经过高度加工的粘液制成的服装。天然丝滑，触感顺滑。
 No bonuses, no penalties.
@@ -3672,13 +3672,13 @@ The blindfold buckles itself tightly around your head! (+RestraintAdded)
 The blindfold crawls over your helpless face! (DamageTaken)
 眼罩在你无助的脸上爬行！ (DamageTaken)
 Amorous Armbinder
-色情的绑臂
+色情的束手套
 The armbinder flops to the floor.
-绑臂扑通一声倒在地板上。
+束手套扑通一声倒在地板上。
 The armbinder slips itself around your arms and pushes your elbows together! (+RestraintAdded)
-绑臂会绕着你的手臂滑动，并将你的肘部挤压到一起！ (+RestraintAdded)
+束手套会绕着你的手臂滑动，并将你的肘部挤压到一起！ (+RestraintAdded)
 The armbinder rubs itself all over your body! (DamageTaken)
-绑臂在你身上摩擦！(DamageTaken)
+束手套在你身上摩擦！(DamageTaken)
 Stringent Straitjacket
 严格的紧身衣
 The straitjacket falls apart.
@@ -4645,6 +4645,67 @@ Item Stack:
 物品堆栈：
 Ancient
 古代
+Heavy
+重
+Mage
+法师
+Light
+光
+Accessory
+配饰
+Restraint
+拘束具
+Armor
+盔甲
+Special
+特别
+Enchanted
+附魔
+Mundane
+平凡
+Rope
+绳子
+Metal
+金属
+Latex
+乳胶
+Leather
+皮革
+Armbinders
+束手套
+Devices
+装置
+Toys
+玩具
+Collars
+项圈
+Straitjackets
+拘束衣
+Dresses
+裙子
+Ties
+捆扎带
+Belts
+束腰带
+Wrapping
+包裹物
+Cuffs
+铐
+Chains
+链条
+Gags
+堵嘴物
+Boots
+靴子
+
+
+Your RestraintName melts off!
+你的 RestraintName 融化了！
+Your RestraintName melts faster with the application of fire!
+你的 RestraintName 在火的作用下融化得更快！
+Your RestraintName hardens with the application of frost!
+你的 RestraintName 会因霜冻而变硬！
+
 Simple Lock
 简易锁
 Standard Lock
@@ -6737,7 +6798,7 @@ Ankles
 Feet
 脚
 Device
-设备
+装置
 You found an item that was too small to see!
 您发现了一个因为太小而看不见的物品！
 You pick up XXX gold.
@@ -11999,6 +12060,98 @@ Mmmph. (Nod your head and pay RESCUECOST gp)
 (The SPEAKER smiles)|Pleasure doing business with ya~
 （SPEAKER 微笑）|很高兴与你做生意~
 
+Mind adding it to my tab?
+介意把它加到我的账单上吗？
+(Shake your head regrettably.)
+（遗憾地摇摇头。）
+(The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~
+（SPEAKER 揉着下巴）|啊……嗯，好吧……|我想这次我会放过你的。|但我不会帮你挣脱这些束缚的~
+(The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|You're a good customer, after all.
+（SPEAKER 揉着下巴）|啊……嗯，好吧……|我想这次我会放过你的。|毕竟你是个好顾客。
+(The SPEAKER folds her arms)|Come on now, I can hear the gold jingling in your pocket!
+（SPEAKER 交叉双臂）|哎呀 来吧，我都能听到你口袋里的金币在叮当作响！
+
+Pretty please? I promise I'll pay you back.
+漂亮吧？我保证会还你的。
+(Be insistent)
+（坚持）
+(The SPEAKER rubs her chin)|Fine, I believe you.|But I won't be letting you out of those restraints!
+（SPEAKER 揉着下巴）|好吧，我相信你。|但我不会帮你挣脱这些束缚的！
+(The SPEAKER sighs)|Fine, I believe you.|You better believe I won't forget, though!
+（SPEAKER 叹了口气）|好吧，我相信你。|不过你最好相信我不会忘记！
+
+(The SPEAKER folds her arms)|Your adventures have cost me a pretty penny.|I can't stay in business if my clients keep running off without paying.|Look, I'll cut you a deal, you help me, I help you. Fair?
+（SPEAKER 抱起双臂）|你的冒险让我损失了一大笔钱。|如果我的客户不付钱就逃跑，我就无法继续做生意。|听着，我会和你做一笔交易，你 帮我，我 帮你。公平吧？
+
+(Help her test cursed armors)
+（帮助她测试被诅咒的盔甲）
+(Add cursed restraints as collateral)
+（绑上被诅咒的束缚具作为抵押）
+(Wear a collar to help advertise her business)
+（戴上项圈以帮助宣传她的生意）
+(Wear a catsuit to help advertise her business)
+（穿上紧身衣来帮助宣传她的生意）
+(Actually... just pay her the RESCUECOST gold)
+（其实……只要付给她 RESCUECOST 金币就可以了）
+
+(The SPEAKER holds up a RESTRAINTNAME)|I've bought some armors from an adventurer lately,|but I don't know if they're safe to wear.|Why don't you try it on for me?|I'll postpone your debt for a later time.
+（SPEAKER 举起一件 RESTRAINTNAME）|我最近从冒险家那里买了一些盔甲，|但我不知道它们是否可以安全穿着。|你为什么不帮我试穿一下呢？|我想我会推迟你的债务。
+(The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!
+（SPEAKER 举起一个 RESTRAINTNAME）|你的身体看起来就像一个巨大的广告牌！|这套衣服会让你如此有吸引力，没有人能够抗拒！|在，咳咳，检查你的过程中，|他们会..一定会看到我的logo！
+(The SPEAKER folds her arms and nods)|Good girl! I knew you would come clean~
+（SPEAKER 抱起双臂点头）|好女孩！我就知道你会坦白的~
+
+Sure! I accept!
+当然！我接受！
+(Nod in approval)
+（点头同意）
+How about something else?
+再来点别的怎么样？
+(Shake your head)
+（摇头）
+
+Excellent! Please hold still~|(She fits the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~
+太棒了！请保持不动~|（她为你戴上 RESTRAINTNAME，封印出现）|哎呀！ 还好我没卖掉那个！|这个让你留着吧，我请客~
+Excellent! Please hold still~|(She fits the RESTRAINTNAME on and nothing happens)|We have a winner!|You can't have it though, not until you pay up~
+太棒了！请保持不动~|（她为你戴上 RESTRAINTNAME，什么也没发生）|我们赢了！|不过你不能得到它，除非你付钱~
+Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(She places the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
+太美妙了。我期待着看到你被释放，呃，回来，|手中有很多宝藏！|（她将 RESTRAINTNAME 放在你身上，封印直接激活了。没有锁孔。）
+Alright! Why don't you hold still~|(She lifts your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
+好吧！站稳点~|(她把你的头发撩开，扣上项圈)|现在出去给我找点宝物吧~
+You're gonna like it, I guarantee it~|(She pulls out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
+你一定会喜欢的，我保证~|(她从抽屉里拿出紧身衣，掸去灰尘，然后帮你穿上)|(没有拉链或扣件，只有一个非常有弹性的颈孔)|(一旦戴上并正确贴合，您会感觉颈部不再那么松弛......）|（......并且将橡胶从皮肤上拉开根本不可能）|真美。我该就放你走了。|我相信你的新面貌会吸引很多顾客的！
+
+No? That's alright.|I'm sure I'll find someone else to test these on, huehue.
+不？没关系。|我确信我会找到其他人来测试这些的，呵呵呵。
+Up to you!|You'll still have to pay me eventually~
+就看你了！|反正最后还是要付钱给我的~
+Your choice~|I am open to further negotiations.
+你的选择~|我愿意进一步谈判。
+Your choice~|Not everyone is up to putting themselves on display like that~
+你的选择~|不是每个人都适合这样展示自己的~
+
+(The SPEAKER pats you down and makes sure you're okay)|I can definitely help with those!|But as you know, I help a lot of adventurers just like you.|You know what, I'll give you a discount!|That'll be RESCUECOST gold pieces!
+（SPEAKER 拍拍你并确保你没事）|我绝对可以帮助你！|但如你所知，我帮助了很多像你一样的冒险家。|你知道吗，我会给你折扣！|这将是 RESCUECOST 金币！
+Right! Here's RESCUECOST gp.
+当然！这里是 RESCUECOST 金币。
+Mmmph. (Nod your head and pay RESCUECOST gp)
+呜。（点头并支付 RESCUECOST 金币）
+(The SPEAKER smiles)|Pleasure doing business with ya~
+（SPEAKER 微笑）|很高兴与你做生意~
+
+Mind adding it to my tab?
+介意把它加到我的账单上吗？
+(Shake your head regrettably.)
+（遗憾地摇摇头。）
+(The SPEAKER rubs her chin)|Sorry miss!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~
+（SPEAKER 揉着下巴）|不好意思小姐！|但是做生意的成本，你知道吗？|你为什么不带一些诱人的、闪闪发光的金币回来呢~
+(The SPEAKER rubs her chin)|Sorry miss!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~
+（SPEAKER 揉着下巴）|不好意思小姐！|但是做生意的成本，你知道吗？|你为什么不带一些诱人的、闪闪发光的金币回来呢~
+(The SPEAKER folds her arms)|Come on now, I can hear the gold jingling in your pocket!
+（SPEAKER 交叉双臂）|哎呀 来吧，我都能听到你口袋里的金币在叮当作响！
+(The SPEAKER folds her arms)|Business is business, miss~
+（SPEAKER 交叉双臂）|生意归生意，小姐~
+
 Mmmph!
 呜呜！
 (Shake your head)
@@ -12673,6 +12826,6 @@ Three hundred years later,a group of adventurers found a lost island full of anc
 三百年后，一群冒险家发现了一座充满古老科技的失落岛屿。|现在，无数游客涌入废墟寻找财富和智慧...|...却对很久以前被封印在里面的狡猾秘密一无所知。
 
 A powerful seal holds you in place temporarily!!!
-一只强大的海豹将你暂时固定在原地！！！
+一个强大的封印将你暂时固定在原地！！！
 You lock yourself in magical locks!
 你把自己锁在魔法锁里！
