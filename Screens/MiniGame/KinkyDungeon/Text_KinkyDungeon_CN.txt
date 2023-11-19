@@ -1956,6 +1956,41 @@ Logbook
 Ranged Attack
 远程攻击
 
+Combat Training
+战斗训练
+Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 0 WP you gain 1 slow resist.
+你的训练给予了许多奖励：|-每 10 个当前 WP，武器耐力消耗减少 1%，最多 40%。|-缓慢效果消失得更快。|-当你的 WP 高于 0 时，你将获得 1 点缓慢抵抗力。
+
+This is your currently held offhand weapon. Click to switch to it.
+这是你当前持有的副手武器。点击即可切换到它。
+This is your previously held weapon. Click to switch to it.
+这是你之前持有的武器。点击即可切换到它。
+
+You can't hold the WPN in your current state.
+你无法在当前状态下握住 WPN。
+
+Charge!
+冲啊！
+Dash and make an attack attack against a target within 2 tiles. If it deals 20% of their current hp in damage, you knock them back and take their place, otherwise they take +15% max hp crush damage from hitting the wall. If the attack misses, you still dash. Costs stamina equal to your sprint cost plus your attack cost.
+冲刺并对 2 格内的目标进行攻击。如果它造成了他们当前生命值 20% 的伤害，你会将他们击退并取代他们的位置，否则他们会因撞墙而受到 +15% 最大生命值挤压伤害。如果攻击未命中，你仍然会冲刺。耐力消耗等于你的冲刺消耗加上你的攻击消耗。
+You charge at the target!
+你向目标冲刺！
+Choose a target.
+选择一个目标。
+
+You need to target an enemy.
+你需要瞄准敌人。
+You don't have enough stamina.
+你的体力不够。
+You need to be able to sprint.
+你需要能够疾跑。
+You need to be able to attack.
+你需要能够攻击。
+There is no room to dash!
+没有冲刺的余地！
+You missed!
+你偏了！
+
 Current Key Pressed
 当前按键
 Press a key, then press a button to set that key
