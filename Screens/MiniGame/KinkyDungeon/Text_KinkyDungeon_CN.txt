@@ -5046,6 +5046,8 @@ Submissiveness
 顺从度
 Security Level
 安全级别
+Passion
+激情
 Undead
 亡灵
 Latex
@@ -9736,6 +9738,8 @@ Pleased
 愉快
 Blessed
 祝福
+Neutral
+中立
 Annoyed
 恼怒
 Hostile
