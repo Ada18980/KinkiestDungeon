@@ -11538,6 +11538,19 @@ I don't have time for this.
 (Shake your head)
 （摇头）
 
+No, thank you.
+不，谢谢。
+
+I accept~
+我接受~
+No, thanks.
+不，谢谢。
+
+I-I accept...
+我-我接受...
+No way! (PERCENT chance to avoid)
+决不！（有 PERCENT 的机会避免）
+
 Of course miss.
 当然，小姐。
 (Nod again)
