@@ -3494,9 +3494,11 @@ Alchemist
 The alchemist screams and runs.
 炼金术士尖叫着跑了。
 The Alchemist restrains you! (+RestraintAdded)
-炼金术士拘束了你！ （+RestraintAdded）
+炼金术士拘束了你！（+RestraintAdded）
 The alchemist hugs you in a rubbery embrace! (DamageTaken)
-炼金术士用橡胶般的拥抱了你！ (DamageTaken)
+炼金术士橡胶般的拥抱了你！（DamageTaken）
+The alchemist uses an ornate-looking lock! (DamageTaken)
+炼金术士使用一把看起来华丽的锁！（DamageTaken）
 Alchemist's Pet
 炼金术士的宠物
 The wolfgirl escapes!
