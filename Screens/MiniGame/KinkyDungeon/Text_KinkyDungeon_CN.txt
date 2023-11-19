@@ -5860,7 +5860,7 @@ They feel like they aren't even there, but the material is rigid and unyielding.
 他们觉得他们甚至不在那里，但材料是刚性和不屈不挠的。
 Your wrists detatch, leaving your elbows still bound!
 你的手腕松开了，你的手肘仍然被束缚着！
-A pair of cuffs keeping your elbows locked together!.
+A pair of cuffs keeping your elbows locked together!
 一对手铐将您的肘部固定在一起！
 They feel like they aren't even there, but the material is rigid and unyielding.
 他们觉得他们甚至不在那里，但材料是刚性和不屈不挠的。
@@ -6449,7 +6449,7 @@ Your wrists detatch, leaving your elbows still bound!
 你的手腕松开了，你的手肘仍然被束缚着！
 Scale Elbow Chain
 连接鳞片肘部手铐
-A pair of cuffs keeping your elbows locked together!.
+A pair of cuffs keeping your elbows locked together!
 一对手铐将您的肘部固定在一起！
 They're made of dragonscale.
 它们是由龙鳞制成的。
@@ -6543,7 +6543,7 @@ Your wrists detatch, leaving your elbows still bound!
 你的手腕松开了，你的手肘仍然被束缚着！
 Obs. Elbow Chain
 黑曜石肘部手铐
-A pair of cuffs keeping your elbows locked together!.
+A pair of cuffs keeping your elbows locked together!
 一对手铐将您的肘部固定在一起！
 It's made of a dark, glistening volcanic metal.
 它是由一种深色的、闪闪发光的火山金属制成的。
@@ -6593,7 +6593,7 @@ It's made of a glowing, brittle material. You feel your energy flowing into it..
 它由发光的易碎材料制成。
 Your wrists detatch, leaving your elbows still bound!
 你的手腕松开了，你的手肘仍然被束缚着！
-A pair of cuffs keeping your elbows locked together!.
+A pair of cuffs keeping your elbows locked together!
 一对手铐将您的肘部固定在一起！
 It's made of a glowing, brittle material. You feel your energy flowing into it...
 它由发光的易碎材料制成。
