@@ -626,7 +626,7 @@ Knives break more easily.
 Oppression
 压抑
 Ghosts are less likely to help you.
-鬼魂不愿意帮助你。
+幽灵不愿意帮助你。
 Search Party
 搜查队伍
 More enemies spawn during sleep.
@@ -980,7 +980,7 @@ You are a disobedient pet. You should put on a petsuit!
 Dominant
 支配者
 They're trapped here with you. Ghosts are more helpful, and you can bind enemies that confront you about bondage.
-他们和你一起被困在这里。鬼魂更有帮助，你可以束缚与你对抗的敌人。
+他们和你一起被困在这里。幽灵更有帮助，你可以束缚与你对抗的敌人。
 
 Stranger
 未知实体
@@ -2306,7 +2306,7 @@ Blue locks can't be otherwise picked.
 Magic Knife
 魔刀
 A magical blade, suitable against ghosts.
-一把适用于对抗鬼魂的魔法之剑。
+一把适用于对抗幽灵的魔法之剑。
 Deals shadow damage. Can cut enchanted ropes.
 造成暗影伤害，可以切断魔法绳索。
 Bola
@@ -2738,7 +2738,7 @@ Deals chain damage and applies 50 points of binding.
 Enchanted Sword
 附魔剑
 Slices through ghosts with ease!
-轻松穿过鬼魂！
+轻松穿过幽灵！
 A sword that guides itself toward its target, making it easy to hit with.
 将自身导向目标的剑，使其易于击打。
 Dragonslaver
@@ -9344,7 +9344,7 @@ You have KeyAmount key(s) for this item.
 The angel helps you struggle and use items
 天使帮你挣扎和使用物品
 The ghost helps you struggle and use items
-幽灵帮助你挣扎和使用物品
+幽灵会帮助你挣扎和使用物品
 The ghost is unhelpful
 幽灵不想帮你
 Angel: Greetings!
@@ -11651,7 +11651,7 @@ Never! (PERCENT chance to avoid)
 (The SPEAKER bows)|A most valuable find.
 （SPEAKER鞠躬）|最有价值的发现。
 (The SPEAKER runs up to you)|Hello!|You wouldn't happen to have seen any ghosts lately?|I'm gathering evidence!
-（说话的人跑到你面前）|你好！|你最近有没有碰巧看到任何鬼魂？|我正在收集证据！
+（说话的人跑到你面前）|你好！|你最近有没有碰巧看到任何幽灵？|我正在收集证据！
 (The SPEAKER gasps)|You wouldn't!
 （SPEAKER喘息）|你不会的！
 (The SPEAKER shakes your hand)|Ah! Ghosts love these!
