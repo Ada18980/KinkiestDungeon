@@ -10414,6 +10414,8 @@ There's a hook on the wall.
 墙上有个钩子。
 The wall is cracked.
 墙裂了。
+You rub yourself on the corner...
+你在角落里摩擦自己……
 Many ropes emerge around you, removing weaker ropes from your body and binding enemies!
 许多绳索出现在你周围，从你的身体上移除较弱的绳索并束缚敌人！
 Distracted
