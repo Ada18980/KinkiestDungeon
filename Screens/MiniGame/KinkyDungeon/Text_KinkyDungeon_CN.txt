@@ -7258,6 +7258,14 @@ You pick up a powerful axe.
 你拿起了一把强大的斧头。
 You pick up a consumable smoke bomb.
 你拿起了一个消耗性烟雾弹。
+You pick up a stone trinket with a glowing red sigil.
+你拿起一个带有发光红色印记的石头饰品。
+You pick up a wet rock with some kind of symbol on it.
+你拿起一块湿石头，上面有某种符号。
+You pick up a crystal beautiful as the moon.
+你拾起一颗如月亮般美丽的水晶。
+You pick up a strange device with a sharpened razor disc.
+你拿起一个奇怪的装置，里面有一个锋利的剃须刀盘。
 You find a strange ancient device with a sharp cutting blade.
 你发现了一个奇怪的古老装置，带有锋利的切割刀片。
 You pick up a bola.
@@ -7282,6 +7290,10 @@ You pick up a Scroll of Sauntering.
 你拿起了一个漫步卷轴。
 As you strike again, your weapon is pulled out of your grasp!
 当你再次袭击时，你的武器从你手中脱离！
+Your weapon is pulled out of your hand and tossed away by your captor!
+你的武器被抓获者从你手中夺走并扔掉！
+Your weapon slips out of your hand as you try to cut with it...
+当你试图用它切割时，你的武器从你手中滑落......
 You put away the WEAPONNAME
 你收起 WEAPONNAME
 You equip the WEAPONNAME
