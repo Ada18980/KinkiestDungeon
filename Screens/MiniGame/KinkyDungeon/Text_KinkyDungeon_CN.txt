@@ -1504,6 +1504,19 @@ Confirm Reset?
 确认重置？
 Confirm Changes
 确认更改
+
+Your movement sets off your [RESTRAINTNAME]
+你的动作引发了你的 [RESTRAINTNAME]
+Your struggling sets off your [RESTRAINTNAME]
+你的挣扎引发了你的 [RESTRAINTNAME]
+Your attack sets off your [RESTRAINTNAME]
+你的共攻击引发了你的 [RESTRAINTNAME]
+
+The straps on your gag prevent you from loosening the blindfold!
+堵嘴物上的带子可以防止眼罩松动！
+The straps on your gag keep your blindfold securely in place!
+堵嘴物上的带子可将眼罩牢固固定住！
+
 Revert Changes
 恢复更改
 Confirm Revert?
@@ -6912,6 +6925,9 @@ A cold steel collar locked tightly on your neck.
 一个冰冷的钢领紧紧地锁在你的脖子上。
 It appears to attract additional enemies to its wearer.
 它似乎会为佩戴者吸引更多的敌人。
+
+Items on Ground:
+地面物品：
 
 Preloading Character Assets: 
 预载角色资源:
