@@ -3806,12 +3806,22 @@ The straitjacket slips itself on over your head and pulls your arms close to you
 紧身衣会在你的头上滑动，并将你的手臂拉到身体附近！ (+RestraintAdded)
 The straitjacket squeezes you tightly! (DamageTaken)
 紧身衣把你挤得紧紧的！ (DamageTaken)
+Brusque Belt
+粗暴的贞操带
 The chastity belt falls to the floor with a clang.
 贞操带哐当一声掉在地上。
 The chastity belt secures itself around your waist! (+RestraintAdded)
 贞操带系在了你的腰上！(+RestraintAdded)
 The chastity belt buzzes against your body alluringly! (DamageTaken)
 贞操带在你诱人的身体上发出了嗡嗡声！(DamageTaken)
+Yammering Yoke
+咆哮的枷锁
+The yoke falls to the floor with a loud clang.
+枷锁掉落在地板上，发出一声巨响。
+The yoke clasps your arms tightly and forces them to the sides! (+RestraintAdded)
+枷锁紧紧地扣住你的手臂，迫使它们向两侧移动！（+RestraintAdded）
+The yoke makes alluring clicking noises! (DamageTaken)
+枷锁发出诱人的咔哒声！（DamageTaken）
 Haughty Harness
 傲慢的束衣
 The harness unravels.
@@ -3830,6 +3840,14 @@ A chain locks itself in place on your body! (DamageTaken)
 一条铁链将自己锁定在您的身体上！ (DamageTaken)
 The floating locks and chains rub themselves across your body! (DamageTaken)
 浮动锁和链条在您的身体上摩擦！ (DamageTaken)
+Masterful Lock
+大师锁
+The lock falls to the floor, disenchanted.
+锁掉在地板上，心灰意冷。
+The Masterful Lock clicks seductively in your face! (DamageTaken)
+大师锁在你脸上发出诱人的咔哒声！（DamageTaken）
+The Masterful Lock conjures a lock onto one of your restraints! (DamageTaken)
+大师锁为你的一个束缚具上一把锁！（DamageTaken）
 Conjured Gag
 咒术口球
 The conjured gag buckles itself in place and falls.
@@ -3839,7 +3857,7 @@ The gag wedges itself firmly in your mouth and buckles itself! (+RestraintAdded)
 The gag rubs itself against you! (DamageTaken)
 口球在你身上摩擦！ (DamageTaken)
 Learned Rope
-学习绳索
+学徒绳索
 The learned rope untangles into a mess of rope.
 绳索解开成一堆乱七八糟的绳索。
 The magic rope wraps itself intricately around your body! (+RestraintAdded)
