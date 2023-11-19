@@ -5753,7 +5753,7 @@ Strongly glowing ropes.
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
 Magic Crotch Rope
-下体绳缚（附魔）
+股绳（附魔）
 Strongly glowing ropes.
 强烈发光的绳索。
 The knots appear to tie themselves together again, making them impossible to undo!
@@ -5789,7 +5789,7 @@ Strongly shining ropes.
 Made of woven mithril and enchanted to require magic blades to cut!
 由编织秘银制成，附魔需要魔法刀片才能切割！
 Mithril Crotch Rope
-下体绳缚（秘银）
+股绳（秘银）
 Strongly shining ropes.
 强烈闪亮的绳索。
 Made of woven mithril and enchanted to require magic blades to cut!
