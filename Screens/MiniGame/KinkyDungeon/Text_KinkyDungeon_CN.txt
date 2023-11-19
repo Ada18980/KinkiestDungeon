@@ -5912,48 +5912,74 @@ They glow with a trace of magic.
 它们散发着一丝魔法的光芒。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
-Magic Toe Rope
-脚趾绳缚（附魔）
+Magic Wrist Tie
+手腕束带（附魔）
+A wrist and elbow tie keeping your arms secured behind your back.
+手腕和肘部系带将你的手臂固定在背后。
+They glow with a trace of magic.
+它们散发着一丝魔法的光芒。
+Magic Leg Tie
+腿缚带（附魔）
+A tie that hobbles your legs together..
+一条带子将你的双腿束缚在一起。
+They glow with a trace of magic.
+它们散发着一丝魔法的光芒。
+Magic Ankle Tie
+脚踝束带（附魔）
+A tie keeping your feet secured together.
+束带将双脚固定在一起。
 They glow with a trace of magic.
 它们散发着一丝魔法的光芒。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
+Mithril Boxtie
+秘银盒束包扎带
+A box tie keeping your arms secured behind your back.
+将你的手臂牢牢固定在背后。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
 Mithril Hogtie
 驷马（秘银）
-It pulls your wrists up to your ankles! So tight!
-它把你的手腕拉到你的脚踝！好紧！
-Made of woven mithril and enchanted to require magic blades to cut!
-由编织秘银制成，附魔需要魔法刀片才能切割！
-Mithril Arm Rope
-手臂绳缚（秘银）
-Strongly shining ropes.
-强烈闪亮的绳索。
-Made of woven mithril and enchanted to require magic blades to cut!
-由编织秘银制成，附魔需要魔法刀片才能切割！
-Mithril Leg Rope
+A very strict and tight hogtie, good for subduing unruly captives.
+非常严密的束缚，有利于制服不守规矩的俘虏。
+It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle.
+它会严格地固定住您，让您的肘部几乎与身体完全接触。你拉动连接双脚的绳子并挣扎。
+Mithril Rope Belt
+绳衣（秘银）
+A harness acting as a handle to pull you around
+能使你被拉住的绳衣
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
+Mithril Leg Ropes
 腿部绳缚（秘银）
-Strongly shining ropes.
-强烈闪亮的绳索。
-Made of woven mithril and enchanted to require magic blades to cut!
-由编织秘银制成，附魔需要魔法刀片才能切割！
-Mithril Ankle Rope
+A tie that hobbles your legs together..
+一条绳子将你的双腿束缚在一起。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
+Mithril Ankle Ropes
 脚踝绳缚（秘银）
-Strongly shining ropes.
-强烈闪亮的绳索。
-Made of woven mithril and enchanted to require magic blades to cut!
-由编织秘银制成，附魔需要魔法刀片才能切割！
+A tie keeping your feet secured together.
+绳索将双脚固定在一起。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
 Mithril Crotch Rope
 股绳（秘银）
-Strongly shining ropes.
-强烈闪亮的绳索。
-Made of woven mithril and enchanted to require magic blades to cut!
-由编织秘银制成，附魔需要魔法刀片才能切割！
+A tight rope impressing upon your most private areas...
+一条紧绷的绳索压迫在你最私密的区域......
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
 Mithril Rope Harness
-绳衣（秘银）
-Strongly shining ropes.
-强烈闪亮的绳索。
-Made of woven mithril and enchanted to require magic blades to cut!
-由编织秘银制成，附魔需要魔法刀片才能切割！
+绳束衣（秘银）
+A harness that secures your other restraints and makes them tighter.
+一种安全带，可固定你的其他束缚并使它们更紧。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
+Mithril Wrist Rope
+腕绳（秘银）
+A wrist and elbow tie keeping your arms secured behind your back.
+手腕和肘部系带将你的手臂固定在背后。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
 Mithril Toe Rope
 脚趾绳缚（秘银）
 Strongly shining ropes.
@@ -7319,6 +7345,11 @@ A cold steel collar locked tightly on your neck.
 一个冰冷的钢领紧紧地锁在你的脖子上。
 It appears to attract additional enemies to its wearer.
 它似乎会为佩戴者吸引更多的敌人。
+
+Dark Portal
+黑暗之门
+They are trying to take you somewhere!
+他们正试图带你去某个地方！
 
 Items on Ground:
 地面物品：
