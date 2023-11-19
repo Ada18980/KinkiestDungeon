@@ -12355,6 +12355,13 @@ rep
 Goddess:
 材质:
 
+Save Loadout
+保存加载
+Include Weapons,
+包含武器,
+Merge Armor
+合并盔甲
+
 Long ago, war raged across the globe.|Countless lives were lost fighting over pieces of rock in a vast ocean.|People turned to science, religion, and magic, anything to escape this cruel fate.
 很久以前，战争在全球肆虐。|无数人在浩瀚海洋中为争夺岩石碎片而丧生。|人们转向科学、宗教和魔法，寻求一切来逃避这种残酷的命运。
 Then the archmagus, Sariel Vinlaga, discovered the secret of immortality.|Sharing her research across the globe, she laid the groundwork for an era of peace.|A great civilization arose, where magic and technology flourished.
