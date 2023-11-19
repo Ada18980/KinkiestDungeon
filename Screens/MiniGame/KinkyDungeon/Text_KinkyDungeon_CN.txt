@@ -7228,6 +7228,16 @@ Equip
 装备
 Equipped
 已装备
+Drop On Floor
+丢弃至地面
+Remove
+移除
+Unlock
+解锁
+Struggle
+挣扎
+Leyline Map
+Leyline 地图
 Unlit Torch
 熄灭火把
 Can be lit
