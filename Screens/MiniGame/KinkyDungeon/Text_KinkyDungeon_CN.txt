@@ -5208,12 +5208,32 @@ You can push the lid off with enough force...
 你可以用足够的力推开盖子...
 The lid of the barrel suddenly snaps shut as you hide inside!!!
 当你躲在里面时，桶盖突然关上！！！
-Cage Trap
-笼式陷阱
-A booby-trapped cage!
-一个陷阱笼子！
-Fit for a pretty toy like you~
-适合你这样漂亮的玩具~
+Sarcophagus
+石棺
+A glass-walled chamber sealed with enchanting magic.
+一个用迷人魔法密封的玻璃墙房间。
+Time feels like it's going by quickly outside...
+外面的时间感觉过得很快……
+Metal Cage
+金属笼
+A metal cage with rigid bars, too narrow to put your head through.
+一个带有刚性杆的金属笼子，太窄而无法让你的头穿过去。
+Made for a pretty toy like you~
+专为像你这样的漂亮玩具而设计~
+Display Stand
+展示架
+A display stand, fit for only the prettiest of trophies!
+展示架，只适合放置最漂亮的奖杯！
+Your arms are pinned behind your back and you can barely move!
+你的手臂被反扣在背后，几乎无法动弹！
+Doll Stand
+玩偶架
+A mobile display stand for dolls to keep them in place.
+可移动玩偶展示架，可将娃娃固定到位。
+As long as it's... inserted, you won't be going anywhere!
+只要它……插入，你就哪儿也去不了！
+As long as it's attached, you won't be going anywhere!
+只要它附在身上，你就哪儿也去不了！
 You hear a click as the door shuts behind you...
 你听到门在你身后关上的咔哒声...
 You're not fooling anyone...
