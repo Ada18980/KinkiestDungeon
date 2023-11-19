@@ -6918,12 +6918,16 @@ Learnable
 可学习
 Unlearned
 不可学习
+Learned
+已学习的
 Excl. Upgrades
 排除进阶
 Passive
 被动
 Upcast
 进阶
+Buffs
+增益
 DoT
 持续伤害
 Projectiles
