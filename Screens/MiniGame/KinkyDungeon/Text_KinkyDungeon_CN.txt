@@ -7483,11 +7483,11 @@ Arm Movements
 手臂动作
 Leg Gestures
 腿部姿势
-The incantation comes out as a garbled mess!
-咒语说变成了乱七八糟的嘟哝！
-You can't raise your arms to cast the spell!
-你不能举起手臂来施法！
-Your feet are too clumsy to perform the magic gesture!
+You mumble incoherently trying to cast the spell...
+你语无伦次地咕哝着试图施展咒语……
+You wiggle uselessly trying to cast the spell...
+你徒劳地扭动着身体试图施展咒语......
+Your feet are too clumsy to perform the magic gesture...
 你的脚太笨拙了，无法施展魔法！
 Next Page
 下一页
@@ -7502,7 +7502,7 @@ Arms
 Legs
 腿
 Misc
-通用
+杂项
 Elements
 元素
 Conjuration
@@ -7517,14 +7517,12 @@ Dexterity
 灵巧
 Intelligence
 智力
-Misc
-通用
 Learnable
 可学习
 Unlearned
 不可学习
 Learned
-已学习的
+已学习
 Excl. Upgrades
 排除进阶
 Passive
