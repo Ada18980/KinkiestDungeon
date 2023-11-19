@@ -6577,25 +6577,25 @@ Crystal Cuffs
 水晶手铐
 A pair of cuffs that make it easy to restrain you.
 一对手铐，让你轻松束缚。
-It's made of a glowing, brittle material.
+It's made of a glowing, brittle material. You feel your energy flowing into it...
 它由发光的易碎材料制成。
 The enemy attaches your wrist cuffs together!
 敌人将你的手腕铐在一起！
 A pair of cuffs keeping your arms behind your back.
 一对手铐将您的手臂束缚在背后。
-It's made of a glowing, brittle material.
+It's made of a glowing, brittle material. You feel your energy flowing into it...
 它由发光的易碎材料制成。
 Your cuffs detatch!
 你的手铐松了！
 The enemy attaches your elbow cuffs together!
 敌人将你的肘部用手铐绑在一起！
-It's made of a glowing, brittle material.
+It's made of a glowing, brittle material. You feel your energy flowing into it...
 它由发光的易碎材料制成。
 Your wrists detatch, leaving your elbows still bound!
 你的手腕松开了，你的手肘仍然被束缚着！
 A pair of cuffs keeping your elbows locked together!.
 一对手铐将您的肘部固定在一起！
-It's made of a glowing, brittle material.
+It's made of a glowing, brittle material. You feel your energy flowing into it...
 它由发光的易碎材料制成。
 Your elbows detatch!
 你的肘部手铐断开了！
@@ -6605,52 +6605,76 @@ Crystal Leg Cuffs
 水晶腿手铐
 A pair of cuffs chaining your legs together.
 一对手铐将你的双腿拴在一起。
-It's made of a glowing, brittle material.
+It's made of a glowing, brittle material. You feel your energy flowing into it...
 它由发光的易碎材料制成。
 Crystal Ankle Cuffs
 水晶脚铐
 A pair of cuffs chaining your legs together.
 一对手铐将你的双腿拴在一起。
-It's made of a glowing, brittle material.
+It's made of a glowing, brittle material. You feel your energy flowing into it...
 它由发光的易碎材料制成。
 The enemy attaches your ankle cuffs together!
 敌人将你的脚铐绑在一起！
-Cuffs Chain
-链式黑钢手铐
+Ankle Chain
+踝链
 A pair of cuffs chaining your legs together.
 一对手铐将你的双腿拴在一起。
-It's made of a glowing, brittle material.
-它由发光的易碎材料制成。
-The ankle cuff chain detaches!
-脚铐链脱落！
+It's made of a glowing, brittle material. You feel your energy flowing into it...
+它由发光的易碎材料制成。你感觉到你的能量流入其中......
+The enemy attaches your ankle cuffs together!
+敌人将你的脚铐绑在一起！
+Ankle Chain
+踝链
+A pair of cuffs chaining your feet tightly together.
+一对手铐将你的双脚紧紧地拴在一起。
+It's made of a glowing, brittle material. You feel your energy flowing into it...
+它由发光的易碎材料制成。你感觉到你的能量流入其中......
+Your ankle cuff chain loosens!
+你的脚踝铐链松了！
+Ice Cuffs
+冰铐
 A pair of cuffs that make it easy to restrain you.
-一对手铐，让你轻松束缚。
+一对轻松束缚你的手铐。
+They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone...
+它们是由魔法冰制成的。它们不会自行融化，但冰确实会让你感到寒冷刺骨……
 The enemy attaches your wrist cuffs together!
 敌人将你的手腕铐在一起！
+Wrist Chain
+腕链
 A pair of cuffs keeping your arms behind your back.
-一对手铐将您的手臂束缚在背后。
+一对手铐将您的手臂固定在背后。
+They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone...
+它们是由魔法冰制成的。它们不会自行融化，但冰确实会让你感到寒冷刺骨……
 Your cuffs detatch!
-你的手铐松了！
+你的手铐脱落了！
 The enemy attaches your elbow cuffs together!
-敌人将你的肘部用手铐绑在一起！
+敌人将你的肘部铐在一起！
+Cuffs Chain
+链式黑钢手铐
+A full set of cuffs keeping your arms in a strict elbow tie!
+全套手铐将你的手臂严格绑在肘部！
+They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone...
+它们是由魔法冰制成的。它们不会自行融化，但冰确实会让你感到寒冷刺骨……
 Your wrists detatch, leaving your elbows still bound!
-你的手腕松开了，你的手肘仍然被束缚着！
-A pair of cuffs keeping your elbows locked together!.
-一对手铐将您的肘部固定在一起！
+你的手腕分开了，但你的肘部仍然被绑着！
+Elbow Chain
+肘链
+A pair of cuffs keeping your elbows locked together!
+一对手铐将您的肘部锁在一起！
+They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone...
+它们是由魔法冰制成的。 它们不会自行融化，但冰确实会让你感到寒冷刺骨……
 Your elbows detatch!
-你的肘部手铐断开了！
+你的肘部分开了！
 The enemy attaches your wrist cuffs back together!
-敌人将你的手腕重新绑在一起！
-A pair of cuffs chaining your legs together.
-一对手铐将你的双腿拴在一起。
-A pair of cuffs chaining your legs together.
-一对手铐将你的双腿拴在一起。
-The enemy attaches your ankle cuffs together!
-敌人将你的脚铐绑在一起！
-A pair of cuffs chaining your legs together.
-一对手铐将你的双腿拴在一起。
-The ankle cuff chain detaches!
-脚铐链脱落！
+敌人将你的手腕铐重新绑在一起！
+Ice Leg Cuffs
+冰腿铐
+A pair of cuffs on your legs.
+你的腿上有一对手铐。
+They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone...
+它们是由魔法冰制成的。它们不会自行融化，但冰确实会让你感到寒冷刺骨……
+The enemy attaches your leg cuffs together!
+敌人将你的腿铐绑在一起！
 High-Tech Gag
 高科技口球
 A gag with a soft and filling mouthpiece, reinforced with a metallized strap.
