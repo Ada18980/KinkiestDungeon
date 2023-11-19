@@ -9498,8 +9498,18 @@ You have broken a magic orb, gaining a random spell and angering a goddess.
 你打破了一个魔法球，获得了一个随机法术并激怒了一位女神。
 Choose one. She will send her minions after you.
 选择一位女神。她会派她的爪牙追击你。
+An altar stands before you, bestowing a heavenly contract.
+一座祭坛矗立在你面前，授予你一份神圣的契约。
+Do you choose to accept its terms?
+你选择接受契约吗？
+Are you sure? This choice is final.
+你确定吗？ 这个选择是最终的。
+Yes, I will accept.
+是的，我接受。
 (Accept the contract)
-（接受合同）
+（接受契约）
+I'll think about it.
+我得考虑一下。
 You are frozen!
 你被冻住了！
 You are chilled!
