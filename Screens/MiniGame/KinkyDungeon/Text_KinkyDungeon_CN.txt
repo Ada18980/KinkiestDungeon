@@ -8941,6 +8941,29 @@ The thrown restraining device latches onto you as you struggle to get it off!!!
 当你努力挣脱时，抛出的拘束装置缠在了你身上！！！
 The restraining device wraps many elastic cables around you!!!
 拘束装置将许多弹性绳索缠绕在你的周围！！！
+
+Shadowy Grip
+阴影抓
+A dark hand latches onto you and holds you tight!
+一只深色的手抓住了你，紧紧地握住你！
+Celestial Orb
+天体宝珠
+Metallic restraints encircle your body!
+金属束缚包围着你的身体！
+Rubberizing Bolt
+涂橡胶螺栓
+Rubber Bolt
+橡胶螺栓
+Latex Bolt
+乳胶螺栓
+The latex spreads across your limbs and rubberizes, forming a tough barrier!
+乳胶遍布你的四肢并橡胶化，形成坚韧的屏障！
+The latex spreads across your limbs and hardens, forming a stretchy layer!
+乳胶遍布你的四肢并变硬，形成弹性层！
+The latex clings to you and slows you down, making you vulnerable to the barrage!
+乳胶会粘在你身上并减慢你的速度，使你容易受到弹幕攻击！
+The latex expands rapidly and slows you down as it hardens into a stretchy layer!
+乳胶会迅速膨胀，并在硬化成弹性层时减慢你的速度！
 Bola
 投石索
 Choose aim direction
