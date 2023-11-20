@@ -4794,10 +4794,10 @@ The void demon places you in dark, glassy restraints. (+RestraintAdded)
 虚空恶魔将你置于黑暗、玻璃般的束缚之中。（+RestraintAdded）
 The void demon places you under its curse! (DamageTaken)
 虚空恶魔将你置于它的诅咒之下！（DamageTaken）
-You are sucked in by a powerful gravitational force!!! (DamageTaken)
-你被强大的引力吸住了！！！（DamageTaken）
 You are sucked in by a powerful gravitational force!!!
 你被强大的引力吸住了！！！
+You are sucked in by a powerful gravitational force!!! (DamageTaken)
+你被强大的引力吸住了！！！（DamageTaken）
 The demon cracks its knuckles as it locks your restraints! (DamageTaken)
 当恶魔锁住你的束缚时，指关节会发出响声！（DamageTaken）
 Cosmic Force
