@@ -8636,10 +8636,34 @@ Unlock
 解锁
 Struggle
 挣扎
+
+Arcane Tome
+奥术之书
+Contains advanced formulas and thrilling tales of thirsty wizards.
+包含先进的公式和饥渴的巫师的惊心动魄的故事。
++5% magic damage. Offhand: Applies passive bonus.
++5% 魔法伤害。副手：应用被动奖励。
+You find a magical tome.
+你找到了一本神奇的书。
+Open the book. What can go wrong?
+打开这本书。会出现什么问题？
+
+Tome of Bondage
+束缚之书
+Contains a malevolent spirit that wishes only to tie up damsels.
+蕴藏着只想束缚少女的恶灵。
++10% binding effectiveness. Offhand: Applies passive bonus.
++10% 绑定效率。副手：应用被动奖励。
+You find a magical tome with a sealed padlock on it.
+你发现一本魔法书，上面有一把密封的挂锁。
+Open the book. What can go wrong?
+打开这本书。会出现什么问题？
+
 Leyline Map
 地脉地图
 You know the location of ancient leylines and can draw upon 100 additional mana.
 你知道远古地脉的位置，并且可以额外利用 100 点法力。
+
 Unlit Torch
 熄灭火把
 Can be lit
