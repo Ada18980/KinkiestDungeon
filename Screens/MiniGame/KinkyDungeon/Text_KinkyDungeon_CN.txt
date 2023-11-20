@@ -815,14 +815,150 @@ Pacifist
 All damage dealt to humanoid enemies is reduced by 90% except pain, grope, tickle, charm, psychic, chain, or glue.
 除疼痛、抚摸、挠痒、绷带、精神、锁链或胶水外，对人形敌人造成的所有伤害均减少 90%。
 
-Fortified
-强化的
-Barricades set up by enemies do not expire, and enemies set them up even when not alerted.
-敌人设置的路障不会过期，即使没有警报，敌人也会设置路障。
 Minefield
 雷区
 Booby traps set by enemies are much more common.
 敌人设置的诡雷陷阱要常见得多。
+Fortified
+强化的
+Barricades set up by enemies do not expire, and enemies set them up even when not alerted.
+敌人设置的路障不会过期，即使没有警报，敌人也会设置路障。
+
+Pass thru helpless allies
+绕过无助的盟友
+Pass thru helpless allies
+绕过无助的盟友
+Pass thru allies
+绕过盟友
+Pass thru neutrals
+绕过中立实体
+Pass thru summons
+绕过召唤师
+Pass thru shopkeepers
+绕过店主
+Pass thru special NPCs
+绕过特殊NPC
+
+Stop when enemies are first sighted
+第一眼看到敌人时停止
+Suppress during combat
+战斗中压制
+
+Shadowy Grasp
+阴影之握
+
+Magical Tornado
+魔法龙卷风
+The tornado blasts you with powerful winds! (DamageTaken)
+龙卷风用强大的风吹向你！（DamageTaken）
+You dispel the tornado!
+你驱散了龙卷风！
+Shield of Flame
+烈焰之盾
+You dispel the shield!
+你驱散了盾牌！
+Overgrowth
+过度生长
+You cut through the overgrowth!
+你切断了过度生长！
+Wall of Water
+水墙
+You dispel the water wall!
+你驱散了水墙！
+Ice Spikes
+冰刺
+You break through the ice!
+你冲破坚冰！
+Earth Monoliths
+大地巨石
+You shatter the monoliths!
+你粉碎了巨石！
+Gravitational Pull
+重力牵引
+The earth emits a deep hum below your feet...
+你脚下的大地发出低沉的嗡嗡声……
+Electrified Sphere
+带电球体
+You smash the electrified sphere!
+你粉碎了带电球体！
+A bolt of lightning arcs to you! (DamageTaken)
+一道闪电向你射来！（DamageTaken）
+
+Earth Keeper
+大地守护者
+The earth keeper sinks into the wall.
+大地守护者沉入墙壁。
+The earth keeper conjures restraints on your body! (+RestraintAdded)
+大地守护者召唤出对你身体的束缚！（+RestraintAdded）
+The earth keeper locks a restraint!
+大地守护者锁上了束缚！
+The earth keeper knocks you away with a powerful kick!
+大地守护者用强力一脚将你踢飞！
+The earth keeper massages you gently! (DamageTaken)
+大地守护者温柔地为你按摩！（DamageTaken）
+The earth keeper knocks you away with a strong kick! (DamageTaken)
+大地守护者用力一脚将你踢飞！（DamageTaken）
+
+Flame Keeper
+烈焰守护者
+The flame keeper steps away into a fiery portal.
+烈焰守护者走开，进入一个炽热的大门。
+The flame keeper grabs you, and volcanic restraints emerge from her armor! (+RestraintAdded)
+烈焰守护者抓住你，火焰束缚从她的盔甲中显现出来！（+RestraintAdded）
+The flame keeper locks a restraint!
+烈焰守护者锁上了束缚！
+The flame keeper flanks you!
+烈焰守护者在你的侧面！
+The flame keeper offers a painful caress! (DamageTaken)
+烈焰守护者提供了痛苦的爱抚！（DamageTaken）
+The flame keeper rides forth on a wave of fire!
+烈焰守护者乘着火浪前行！
+
+Smoldering Trail
+阴燃小径
+Fiery Greatsword
+炽热巨剑
+
+Tangling Vines
+缠结藤蔓
+Enchanted Bubble
+魔法泡泡
+A bubble of magic water envelops you!
+神奇的泡泡包围着你！
+Magical water reduces your accuracy and slows you significantly!
+魔法水会降低你的精准度并显着减慢你的速度！
+You attack twice!
+你攻击了两次！
+
+Access denied.
+拒绝访问。
+Facility is under lockdown.
+设施已被封锁。
+Please scan ID to continue.
+请扫描 ID 以继续。
+
+Security Door
+安全门
+You break through the security door!
+你破坏了安全门！
+
+High Security Door
+高安全门
+You knock down the security door!
+你把高安全门撞坏了！
+
+Blast Door
+防爆门
+You knock down the blast door!
+你把防爆门撞坏了！
+
+Sell for VLU gp
+以 VLU gp 出售
+You sell the ITM for VLU gp.
+你以 VLU gp 的价格出售 ITM。
+You sell #x ITM for VLU gp.
+你以 VLU gp 的价格出售 #x ITM。
+
 Curse Seeker
 诅咒探索者
 When you pick up cursed armor or restraints from chests, they equip automatically if able.
@@ -839,6 +975,11 @@ Heavy Inertia
 重型惯性
 Turning 90 degrees while moving requires an extra turn
 移动时转动90度需要额外的回合
+
+You turn.
+到你了。
+You turn around.
+你转身。
 
 Burning Desire
 焚心望火
@@ -1947,8 +2088,6 @@ Message Log
 消息日志
 Close Door
 关门
-Pass thru allies
-绕过盟友
 Auto-Struggle
 自动尝试挣脱
 Auto-Pathfind
@@ -13900,7 +14039,7 @@ Give her a Scroll of Purity
 (A SPEAKER scoffs in your direction)|Well? You lookin' for work or no?
 （SPEAKER 朝着你笑）|好吧？你在找工作吗，或者不是？
 (The SPEAKER grins)|A bunch of delinquents stormed out recently.|They're looking for a way out of their belts.|Someone oughta show em their place,|if you catch what I'm saying.
-（演讲者咧嘴笑）|最近一群违法者暴跳如雷|他们正在寻找摆脱困境的方法|应该有人带他们去他们的地方，|如果你明白我说的话。
+（SPEAKER 咧嘴笑）|最近一群违法者暴跳如雷|他们正在寻找摆脱困境的方法|应该有人带他们去他们的地方，|如果你明白我说的话。
 (Nod)
 （点头）
 (A SPEAKER approaches you in your cell)|Since you've been a bad girl,|we're taking you to the high-security prison.
