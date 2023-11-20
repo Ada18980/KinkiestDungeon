@@ -815,7 +815,7 @@ Chain and glue damage increased by 20%. Binding on enemies is 30% stronger.
 Pacifist
 和平主义者
 All damage dealt to humanoid enemies is reduced by 90% except pain, grope, tickle, charm, psychic, chain, or glue.
-除疼痛、抚摸、挠痒、绷带、精神、锁链或胶水外，对人形敌人造成的所有伤害均减少 90%。
+除疼痛、抚摸、挠痒、妩媚、精神、锁链或胶水外，对人形敌人造成的所有伤害均减少 90%。
 
 Minefield
 雷区
@@ -1185,7 +1185,7 @@ While wearing a chastity belt, your Desire lowers when you perform actions such 
 Controlled Urges
 抑制冲动
 Locked Up is 150% effective. Gain +70 psychic/charm resist from a chastity belt and +30 from a chastity bra. While not wearing a chastity belt, your Desire increases slowly.
-禁锢有效率为 150%。 通过贞操带获得 +70 精神/绷带抗性，通过贞操胸罩获得 +30 精神/绷带抗性。你的欲望会在没有佩戴贞操带时慢慢增加。
+禁锢有效率为 150%。 通过贞操带获得 +70 精神/妩媚抗性，通过贞操文胸获得 +30 精神/妩媚抗性。你的欲望会在没有佩戴贞操带时慢慢增加。
 Ready for Training
 准备训练
 Locked Up is 300% effective. When Locked Up triggers, you gain -30% mana costs and +25% physical damage for 7 turns (35 when opening a chest or breaking orbs). You cannot orgasm unless you are wearing a chastity belt, and slow level is increased by 2.
@@ -3122,7 +3122,7 @@ Magic Wand
 Its powers extend beyond the traditional schools of magic.
 它的力量超越了传统的魔法。
 Deals charm damage. 20% chance to stun the target for 2 turns. Offhand: +5 charm damage on attack for 3 stamina.
-造成绷带伤害，有 20% 的几率使目标眩晕 2 回合。副手：攻击时 +5 绷带伤害，持续 3 点耐力。
+造成妩媚伤害，有 20% 的几率使目标眩晕 2 回合。副手：攻击时 +5 妩媚伤害，持续 3 点耐力。
 Feather
 羽毛
 A feather taken from some large fluffy being. Offhand: +5 tickle damage on attack for 3 stamina.
@@ -5750,7 +5750,7 @@ Cannot be removed while you are wearing other Star Cursed items.
 The cursed seal on the RestraintName vanishes into a brief veil of stardust.
 RestraintName 上的诅咒印记消失在短暂的星尘面纱中。
 Take AMNT damage to weaken the curse. Excludes shadow, psychic, charm, or damage taken at 0 WP.
-承受 AMNT 伤害来削弱诅咒。 不包括阴影、精神、绷带或 0 WP 受到的伤害。
+承受 AMNT 伤害来削弱诅咒。 不包括阴影、精神、妩媚或 0 WP 受到的伤害。
 You struggle uselessly, sealed in your fate.
 你徒劳地挣扎，被命运所封印。
 You feel your restraints starting to weaken...
@@ -5815,7 +5815,7 @@ Dark Voice: Enjoy a gift, dear~
 黑暗之声：亲爱的，享受礼物吧~
 
 Star: -20 Charm/Psychic Resist
-星星：-20 绷带/精神 抗性
+星星：-20 妩媚/精神 抗性
 Star: +40 all other resists
 星星：+40 所有其他抗性
 
@@ -8289,7 +8289,7 @@ Bag of Goodies
 Someone's secret stash.
 某人的秘密藏匿处。
 Deals charm damage. Applies a toy to targets hit for 40 turns. Offhand: Applies a toy to targets you hit.
-造成绷带伤害。对击中的目标装备玩具，持续 40 回合。副手：将玩具装备到你击中的目标上。
+造成妩媚伤害。对击中的目标装备玩具，持续 40 回合。副手：将玩具装备到你击中的目标上。
 You find a bag filled with various toys and vibrators...
 你发现一个袋子里装满了各种玩具和振动器......
 You play with yourself using some of the toys in the bag...
@@ -8332,16 +8332,16 @@ Blade of Fla'peh
 A piece of prized ancient equipment. Magical energy causes it to vibrate intensely. What could it have been used for?
 一件珍贵的古代装备。魔力使其剧烈振动。它可以用来做什么？
 Deals grope damage. Can spend 40 charge to add charm damage per hit for 10 turns.
-造成抚摸伤害。每次击中可花费 40 点能量来增加绷带伤害，持续 10 回合。
+造成抚摸伤害。每次击中可花费 40 点能量来增加妩媚伤害，持续 10 回合。
 You retrieve the Blade of Fla'peh.
 你取回了火焰之刃。
 
 Intense Vibrations: The Blade of Fla'peh deals bonus charm damage!!!
-强烈振动：火焰之刃造成额外的绷带伤害！！！
+强烈振动：火焰之刃造成额外的妩媚伤害！！！
 The Blade of Fla-peh buzzes with great power!
 火焰之刃嗡嗡作响，威力巨大！
 40 charge to deal 30 charm damage per hit for 10 turns.
-40 点充能，每次击中造成 30 点绷带伤害，持续 10 回合。
+40 点充能，每次击中造成 30 点妩媚伤害，持续 10 回合。
 
 Enchanted Rope
 附魔绳
@@ -10258,7 +10258,7 @@ CMD: Vibrate
 Select an area
 选择一个区域
 Target a large area. Enemies with plugs or toys are teased for Duration turns, taking charm damage each turn.
-对大范围内带有插入具或玩具的敌人玩弄 Duration 回合，每回合造成绷带伤害。
+对大范围内带有插入具或玩具的敌人玩弄 Duration 回合，每回合造成妩媚伤害。
 You say a command word, causing all toys in the area to vibrate!
 你念出咒语，范围内所有玩具开始震动！
 CMD: Explosive Finish
@@ -10268,7 +10268,7 @@ Explosive Finish
 Select an area
 选择一个区域
 Target a large area. Consumes enemy distraction to deal up to DamageDealt charm damage, twice if at 90% distraction or more.
-消耗大范围内敌人的性奋值以造成高达 DamageDealt 绷带伤害，如果敌人的性奋值处于 90% 或以上则造成双倍伤害。
+消耗大范围内敌人的性奋值以造成高达 DamageDealt 妩媚伤害，如果敌人的性奋值处于 90% 或以上则造成双倍伤害。
 You say a command word, resulting in a surge of energy entering your targets!
 你念出咒语，一股奇妙能量涌入目标的身体！
 CMD: Release
@@ -10410,7 +10410,7 @@ Your skin takes on the appearance of cracked earth!
 The EnemyName creates a zone of increased defense!
 EnemyName 创造了一个增加防御的区域！
 EnemyName uses a charm to buff an enemy's Magic Armor and Evasion!
-EnemyName 使用绷带来增强敌人的魔法护甲和闪避！
+EnemyName 使用妩媚来增强敌人的魔法护甲和闪避！
 EnemyName uses a glowing talisman to buff an undead's physical armor and speed!
 EnemyName 使用发光护身符来增强不死生物的物理护甲和速度！
 You create a zone of increased defense!
@@ -12103,7 +12103,7 @@ Fire
 Poison
 毒物
 Charm
-绷带
+妩媚
 Tickle
 挠痒
 Grope
@@ -12143,7 +12143,7 @@ Blast
 Chain
 锁链
 Charm
-绷带
+妩媚
 Glue
 胶水
 Unarmed
