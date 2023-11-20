@@ -10222,20 +10222,140 @@ The item is extremely secure with five separate keyholes.
 该物品具有五个独立的钥匙孔，非常安全。
 You insert your 5 keys into the lock and the item finally comes off.
 你将 5 把钥匙插入锁中，物品最终脱落。
+
+Magic-Draining: This item drains your mana quickly up to a limit, then slowly after.
+魔法耗尽：该物品会快速耗尽你的法力直至达到极限，然后慢慢耗尽。
+
+Curse of Tickling: This item is tickling you without end!
+挠痒诅咒：这个物品会不停地挠你！
+Curse of Punishment: Inflicts psychic damage when you attack or cast a spell.
+惩罚诅咒：当你攻击或施展法术时对你造成精神伤害。
+Curse of Illumination: Produces light and makes you easier to see.
+照明诅咒：产生光并让你更容易被敌人看到。
+Curse of Attraction: Women find you irresistable.
+吸引力诅咒：女人觉得你无法抗拒。
+Curse of Animation: Causes loose restraints to animate and attack you!
+活力诅咒：松动的束缚会活跃起来并攻击你！
+Curse of Sensitivity: Makes it easier to lose control of yourself.
+敏感诅咒：使人更容易失去对自己的控制。
+Curse of Distraction: Multiplies DP gain by 1.5x.
+分心诅咒：将 DP 增益乘以 1.5 倍。
+Curse of Exhaustion: Multiplies SP gain by 0.6x.
+虚弱诅咒：SP 增益乘以0.6倍。
+Curse of Futility: Multiplies WP gain by 0.5x.
+徒劳诅咒：将 WP 增益乘以 0.5 倍。
+Curse of Submission: Gain submissiveness when you lose control of yourself...
+屈服诅咒：你会在你失去对自己的控制时屈服......
+The curse is dormant, waiting for the time to strike...
+诅咒正处于休眠状态，等待着降临的时刻……
+Your RESTRAINTNAME glows pink as you feel your mind attacked by hypnotic forces!
+当你感觉自己的思想受到催眠力量攻击时，你的 RESTRAINTNAME 会发出粉红色的光芒！
+
+The item is cursed! Several restraints appear on your body!
+该物品被诅咒了！你的身上出现了数道束缚！
+The item is cursed, but you are so trussed up you hear only sinister laughter...
+该物品被诅咒了，但你被绑得太紧，只能听到邪恶的笑声......
+
+The item is sealed with an icy lock. Perhaps you can melt it somehow?
+该物品被冰冷的锁封住。也许能以某种方式融化它？
+The cursed seal flashes brightly as you struggle fruitlessly against it.
+当你徒劳地反抗它时，被诅咒的封印会发出明亮的光芒。
+The item is sealed with a smoldering lock. Perhaps you just need to put out that fire...
+该物品用阴燃的锁密封。也许你只需要把火给弄灭......
+The cursed seal glows faintly as you struggle fruitlessly against it.
+当你徒劳地挣扎被诅咒的封印时，它会发出微弱的光芒。
+The item contains technological markings. Perhaps applying some electricity will affect it?
+该物品包含科技标记。也许施加一些电会有所影响？
+The cursed seal gives off sparks as you struggle fruitlessly against it.
+当你与被诅咒的封印进行徒劳的挣扎时，它会发出火花。
+The item contains an alchemical seal. Perhaps Glue damage will overload it?
+该物品包含一个炼金印章。也许胶水伤害会导致其过载？
+The item stretches as you tug on it, but snaps back to its original place.
+当你拉动该物品时，它会拉伸，但会弹回到原来的位置。
+The item is covered in markings of chains. Perhaps you need to take Chain damage?
+该物品上覆盖着锁链标记。 也许你需要造成锁链伤害？
+The item squeezes you tighter as you try to take it off.
+当你试图将其脱下时，该物品将你挤压得更紧。
+The item is protected by holy magic. There is nothing you can do to it.
+该物品受到神圣魔法的保护。你对此无能为力。
+You pray to the Goddess and the sigil vanishes! Perhaps you returned what was rightfully hers?
+你向女神祈祷，印记就会消失！也许你归还了本该属于她的东西？
+This item bears the sigil of the Goddess of Restoration. Perhaps she can help?
+该物品带有恢复女神的印记。也许她能帮忙？
+The item is protected by an arcane seal. There is nothing you can do to it.
+该物品受到奥术封印的保护。你对此无能为力。
+You pray to the Goddess and the sigil vanishes! Perhaps you returned what was rightfully hers?
+你向女神祈祷，印记就会消失！也许你归还了本该属于她的东西？
+This item bears the sigil of the Goddess of Conjuration. Perhaps she can help?
+该物品带有咒术女神的印记。也许她能帮忙？
+The item is protected by dark secrets. There is nothing you can do to it.
+该物品受到神秘的黑暗保护。你对此无能为力。
+You pray to the Goddess and the sigil vanishes! Perhaps you returned what was rightfully hers?
+你向女神祈祷，印记就会消失！也许你归还了本该属于她的东西？
+This item bears the sigil of the Goddess of Illusions. Perhaps she can help?
+该物品带有幻术女神的印记。也许她能帮忙？
+You pray to the Goddess and the sigil vanishes! Perhaps you returned what was rightfully hers?
+你向女神祈祷，印记就会消失！也许你归还了本该属于她的东西？
+This item bears the sigil of the Goddess of Elements. Perhaps she can help?
+该物品带有元素女神的印记。也许她能帮忙？
+The item is protected by powerful energies. There is nothing you can do to it.
+该物品受到强大能量的保护。你对此无能为力。
+You hold the key to the item and it comes loose, draining the key's energy.
+你拿着物品的钥匙，它松开了，但是钥匙的能量耗尽了。
+The item is incribed with mystical runes. Maybe you need a powerful key to unlock it.
+该物品刻有神秘符文。也许你需要一把强大的钥匙来解锁它。
+You tug on the item, but the runes glow brighter as you realize struggling is pointless.
+你用力拉扯物品，但当你意识到挣扎毫无意义时，符文会变得更亮。
+
+You overload the magical seal, causing it to vanish and release the item.
+你使魔法封印过载，导致它消失并解开该物品。
+The item is magically sealed, requiring 200 mana to unlock it (includes mana from mana pool).
+该物品被魔法封印，需要 200 点法力才能解锁（包括法力池中的法力）。
+You tug on the item, but the magic can't be broken with anything other than brute force.
+你用力拉扯物品，但除了蛮力之外，魔法无法被破坏。
+
+The item is sealed with a locking spell! You will need a key to dispel the magic
+该物品被咒语锁密封！你需要一把钥匙来解除魔法
+You tug on the item but it is magically sealed to your body!
+你拉扯该物品，但它神奇地密封在你的身体上！
+You insert your magic key into the lock and the item finally comes off!
+你将魔法钥匙插入锁中，物品终于脱落了！
+
+The item is protected by a seal of Determination. You must have maximum willpower to remove it.
+该物品受到决心封印的保护。你必须有最大的意志力才能将其删除。
+You are unable to muster the willpower to bypass the seal...
+你无法鼓起意志力绕过封印……
+Feeling determined, you override the seal and release the item!
+下定决心后，你推翻了封印并解开了该物品！
+
 The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it.
 锁由 revanent 密封保护。你需要 25 个灵浆来打开它。
 Your fingers pass right through the collar. Pity your neck doesn't pass through it.
 你的手指直接穿过项圈。可惜你的脖子不能穿过它。
 You channel ghastly energy into the lock and break the seal!!!
 你将可怕的能量引导到锁中并打破密封！！！
+
+It would take many lifetimes to crack the code. You'll have to find the data somehow.
+破解密码需要好几辈子的时间。你您用力拉动紧固件，但无济于事。必须以某种方式找到数据。
+You tug against the fastenings to no avail.
+你用力拉动紧固件，但无济于事。
+One of your Doll IDs seems to have had corrupted data on it, causing the program to crash.
+你的一个娃娃 ID 上的数据似乎已损坏，导致程序崩溃。
+
 The item seems to drain divine energy from shrines. Maybe that has something to do with it.
 该物品似乎从神殿中汲取了神圣能量。也许这与它有关。
 The collar is enchanted with multiple layers of magical seals.
 项圈附有多层魔法封印。
 The collar has absorbed enough energy and pops off!
 项圈吸收了足够的能量，然后打开！
+
 That item cant be used.
 那个道具不能使用。
+You're not sure how to use this key.
+你不确定如何使用这个钥匙。
+As soon as you touch the key, all of your gold locks fade to blue!
+一旦你触摸钥匙，你所有的金锁就会褪成蓝色！
+
 You realize there is no keyhole on the device, simply a lock-shaped sigil.
 你意识到装备上没有钥匙孔，只是一个锁形的印记。
 The item loosens and falls off, but you see a red sigil flash and the key suddenly teleports away!
@@ -10244,36 +10364,42 @@ You have in your possession KeyAmount magical, ornate key(s). You might as well 
 你拥有 KeyAmount 有魔力的、华丽的钥匙。你也许可以试试...
 You have KeyAmount key(s) for this item.
 你有 KeyAmount 把钥匙对此物品使用。
+
 The angel helps you struggle and use items
 天使帮你挣扎和使用物品
 The ghost helps you struggle and use items
 幽灵会帮助你挣扎和使用物品
 The ghost is unhelpful
 幽灵不想帮你
+
 Angel: Greetings!
 天使：你好！
 Angel: Perhaps I can assist with those!
 天使：也许我可以帮上忙！
+
 Adventurer's Ghost: Well met, traveler!
-冒险者之魂：很高兴见到你，旅行者！
+冒险家之魂：很高兴见到你，旅行者！
 Adventurer's Ghost: Hello again, traveler (giggles).
-冒险者的灵魂：很高兴再次见面，旅行者（咯咯笑）。
+冒险家之魂：很高兴再次见面，旅行者（咯咯笑）。
 Adventurer's Ghost: Having fun, girl?
-冒险者的灵魂：玩得开心吗，姑娘？
+冒险家之魂：玩得开心吗，姑娘？
 Adventurer's Ghost: Looking for some trouble, slave?
-冒险者的灵魂：你是在给自己找麻烦吗，奴隶？
+冒险家之魂：你是在给自己找麻烦吗，奴隶？
 Adventurer's Ghost: I see you, naughty little slave!
-冒险者的灵魂：我看见你了，淘气的小奴隶！
+冒险家之魂：我看见你了，淘气的小奴隶！
+
 Ghost: I can try to help with those, traveler.
 幽灵：我可以尝试帮助解决这些问题，旅行者。
 Ghost: Aww, you look like you're having fun...
 幽灵：哦，你看起来很享受……
+
 Ghost: You look great in those, hehe~
 幽灵：你现在这个样挺好的，嘿嘿~
 Ghost: Please don't bother me.
 幽灵：请不要打扰我。
 Ghost: A good slave doesn't complain.
 幽灵：一个优秀的奴隶不会抱怨。
+
 Ghost: What's that? I don't understand.
 幽灵：那是什么？我不明白。
 Ghost: Silence is golden.
@@ -10298,6 +10424,7 @@ Ghost: Looks like someone's been naughty~
 幽灵：看来有人调皮了~
 Ghost: How's it feel to be under lock and key?
 幽灵：被锁住是什么感觉？
+
 You step on a pressure plate and a number of skeletons rise up!
 你踩到一个压力板上，许多骷髅站了起来！
 You are ambushed by bandits!
