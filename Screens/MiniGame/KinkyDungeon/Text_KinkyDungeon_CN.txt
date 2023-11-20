@@ -3741,6 +3741,18 @@ The wolfgirl lunges at you with a powerful kick!
 狼女强力地向你踢来！
 The wolfgirl cuddles with you! (DamageTaken)
 狼女抱住了你！ (DamageTaken)
+
+Wolfguard
+狼卫士
+The wolfguard's suit punishes her for poor performance!
+狼卫士的西装惩罚了她糟糕的表现！
+The wolfguard lunges at you and strikes you!
+狼卫士向你扑来并攻击你！
+The wolfguard's escort drones shock you! (DamageTaken)
+狼卫士的护航无人机让你震惊！（DamageTaken）
+The wolfguard's escort drones deploy some restraints! (+RestraintAdded)
+狼卫的护卫无人机部署了一些束缚！（+RestraintAdded）
+
 Wolfgirl Trainer
 狼女训练师
 The trainer retreats!
@@ -3751,6 +3763,17 @@ The wolfgirl trainer secures you in training gear! (+RestraintAdded)
 狼女训练师给你穿上了训练装备！ （+RestraintAdded）
 The wolfgirl trainer pins you and skillfully locks all of your restraints!
 狼女训练师将你钉住，并巧妙地锁住你所有的束缚具！
+
+Nevermere Operative
+Nevermere 特工
+The operative does a fumbled retreat!
+特工笨手笨脚地撤退！
+The Nevermere Operative smiles and gropes your body! (DamageTaken)
+Nevermere 特工微笑着抚摸你的身体！（DamageTaken）
+The Nevermere Operative apprehends you with training gear! (+RestraintAdded)
+Nevermere 特工用训练装备逮捕了你！（+RestraintAdded）
+The Nevermere Operative pins you and skillfully locks all of your restraints!
+Nevermere 特工将你钉住并巧妙地锁住你所有的束缚具！
 
 Trainer's Apprentice
 训练师学徒
@@ -3763,6 +3786,94 @@ The trainer's apprentice secures you in training gear! (+RestraintAdded)
 The trainer's apprentice adds a lock to your restraints.
 训练师学徒给你的束缚具加了一把锁。
 
+The Executive
+执行官
+The executive surrenders gracefully.
+执行官优雅地投降。
+The Executive makes a persuasive argument! (DamageTaken)
+执行官的提出了一个很有说服力的论点！（DamageTaken）
+The Executive's drones apprehend you! (+RestraintAdded)
+执行官的无人机逮捕了你！（+RestraintAdded）
+The Executive's drones apply high-security locks to your restraints!
+执行官的无人机会对你的束缚具施加高安全性锁！
+
+Wolf Instructor
+狼导师
+The instructor deploys active camoflague and retreats!
+导师部署主动迷彩并撤退！
+The instructor disciplies you! (DamageTaken)
+导师管教你！（DamageTaken）
+The instructor applies advanced training gear! (+RestraintAdded)
+导师使用先进的训练装备！（+RestraintAdded）
+The instructor adds a lock to your restraints.
+导师给你的束缚具加了一把锁。
+
+Nevermere Drone
+Nevermere 无人机
+The drone loses power and falls to the ground!
+无人机失去动力坠落地面！
+A Nevermere Drone takes off!
+一架 Nevermere 无人机起飞了！
+You hear buzzing as several Nevermere Drones take to the air!
+当几架 Nevermere 无人机升空时，你会听到嗡嗡声！
+
+Swarm of Tape Drones
+成群的胶带无人机
+The tape drones lose control and crash all over the place!
+胶带无人机失去控制，坠落得满地都是！
+A swarm of tape drones takes flight!
+一大群胶带无人机起飞了！
+The air fills with buzzing as dozens of tiny drones lift off!
+当数十架小型无人机升空时，空气中充满了嗡嗡声！
+The tape drones attach additional sticky layers! (DamageTaken)
+胶带无人机附加了额外的粘性层！（DamageTaken）
+The tape drones circle around you, wrapping you in tape! (+RestraintAdded)
+胶带无人机在你周围盘旋，将你包裹在胶带中！（+RestraintAdded）
+
+Shield Drone
+护盾无人机
+The drone's power source explodes.
+无人机的电源爆炸。
+A Shield Drone takes off!
+护盾无人机起飞！
+Several Shield Drones take flight, their shields interlinking.
+几架护盾无人机起飞，它们的护盾相互连接。
+Drone Explosion
+无人机爆炸
+
+Rusty Drone
+生锈的无人机
+The drone's mechanisms grind to a halt.
+无人机的机械装置逐渐停止。
+The drone uses a short-ranged electric attack! (DamageTaken)
+无人机使用短距离电攻击！（DamageTaken）
+The drone disassembles itself, revealing a set of restraining cables! (+RestraintAdded)
+无人机自行拆卸，露出一组捆绑绳！（+RestraintAdded）
+
+Rusty Auto Taper
+生锈的自动胶带机
+The auto taper's mechanisms grind to a halt.
+自动胶带机构逐渐停止。
+The auto taper wraps additional layers of sticky tape! (DamageTaken)
+自动胶带机装备了多层胶带！（DamageTaken）
+The wraps you in many layers of tape! (+RestraintAdded)
+它用多层胶带将你包裹起来！（+RestraintAdded）
+
+Rubber Blaster
+橡胶炮塔
+The turret enters an unstable state, about to spread rubber all over!
+炮塔进入不稳定状态，快要沾满橡胶了！
+The turret defends itself with a close-range electric attack! (DamageTaken)
+炮塔以近距离电击自卫！（DamageTaken）
+Rubber Launcher
+橡胶发射器
+The turret enters an unstable state, about to spread rubber all over!
+炮塔进入不稳定状态，快要沾满橡胶了！
+The turret defends itself with a close-range electric attack! (DamageTaken)
+炮塔以近距离电击自卫！（DamageTaken）
+
+Drone
+无人机
 The drone uses a short-ranged electrocution attack! (DamageTaken)
 无人机使用短程电击攻击！ (DamageTaken)
 The drone fizzles and falls to the ground!
