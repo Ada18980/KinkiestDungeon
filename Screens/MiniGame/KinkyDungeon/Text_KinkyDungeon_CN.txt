@@ -5495,6 +5495,58 @@ Your RestraintName melts faster with the application of fire!
 Your RestraintName hardens with the application of frost!
 你的 RestraintName 会因霜冻而变硬！
 
+Unique
+独特
+
+AMNT Evasion
+AMNT 闪避
+AMNT% Accuracy
+AMNT% 精准度
+AMNT Magic Armor
+AMNT 魔法防御
+AMNT Physical Armor
+AMNT 物理防御
+AMNT Bondage Resist
+AMNT 束缚抵抗
+AMNT TYPE Resist
+AMNT TYPE 抵抗
+AMNT% TYPE Damage
+AMNT% TYPE 伤害
+AMNT% weapon phys. dmg
+AMNT% 武器物理伤害
+AMNT% weapon magic dmg
+AMNT% 武器魔法伤害
+Infuse weapon AMNT% TYPE
+注入武器 AMNT% TYPE
+AMNT TYPE 在攻击时
+AMNT% Mana Costs
+AMNT% 法力消耗
+AMNT% TYPE Mana Costs
+AMNT% TYPE 法力消耗
+AMNT% regen from mana pool
+来自法力池 AMNT% 的回复
+AMNT mana pool on capture
+AMNT 捕获时的法力池
+AMNT% Visibility
+AMNT% 可见度
+AMNT Distraction Decay
+AMNT 分心衰减
+AMNT Distraction Per Turn
+AMNT 每回合分心
+AMNT AP 免受攻击
+
+After attacking with a teasing weapon:
+使用诱惑武器攻击后：
+
+Gain AMNT% Spell Damage for DRTN turns
+DRTN 回合获得 AMNT% 法术伤害
+
+Drains mana from the wearer.
+吸取佩戴者的法力。
+
+AMNT Stat
+AMNT 统计
+
 Simple Lock
 简易锁
 Standard Lock
