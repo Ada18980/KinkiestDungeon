@@ -2904,7 +2904,7 @@ You pick up a staff of the storm. Your hair stands on end.
 You pick up a staff of incineration. It rumbles with molten fury.
 你拿起一把火焰法杖。它隆隆作响，充满了炽热的愤怒。
 You pick up a staff with a name on it: DOLLMAKER
-你拿起一个上面有名字的工作人员：人偶师
+你拿起一个上面有名字的工作人员：玩偶师
 You pick up a staff of frostbite. Your hand feels numb just reaching for it.
 你拿起一把寒冰法杖。你的手在触碰它时感到麻木。
 You pick up a staff of chains. You have fond memories...
@@ -3752,11 +3752,43 @@ Dryad
 The dryad sinks into the ground.
 树妖沉入地下。
 The dryad extends an arm, and she wraps you in vines! (+RestraintAdded)
-树妖伸出一只手臂，用藤蔓缠绕着你！ （+RestraintAdded）
+树妖伸出一只手臂，用藤蔓缠绕着你！（+RestraintAdded）
 The dryad sings a song that mesmerizes you! (DamageTaken)
 树妖唱起了一首催眠之歌！ (DamageTaken)
 The dryad tickles you with a leaf! (DamageTaken)
 树精在用一片叶子逗你！ (DamageTaken)
+Highly-Motivated Doll
+积极性高的玩偶
+The doll falls to the ground, moaning loudly.
+玩偶倒在地上，发出巨大的呻吟声。
+The doll rubs her body against yours. You can feel the conduction. (DamageTaken)
+玩偶用她的身体摩擦你的身体。你可以感觉到传导。（DamageTaken）
+The doll tackles you and squeezes you with her trembling legs! (DamageTaken)
+玩偶抓住你并用她颤抖的双腿挤压你！（DamageTaken）
+Dollsmith
+玩偶匠
+The dollsmith's suit locks her wrists together and renders her helpless.
+玩偶匠的套装将她的手腕锁在一起，让她变得无助。
+The dollsmith runs a latex-covered finger across your vulnerable body! (DamageTaken)
+玩偶匠用一根被乳胶覆盖的手指抚摸你脆弱的身体！（DamageTaken）
+The dollsmith grabs you and applies her favorite doll restraints! (+RestraintAdded)
+玩偶匠抓住你并使用她最喜欢的玩偶束缚装置！（+RestraintAdded）
+The dollsmith slaps a lock onto your restraints! (DamageTaken)
+玩偶匠在你的束缚上锁上了锁！（DamageTaken）
+The dollsmith splashes a red latex concoction onto you! (+RestraintAdded)
+玩偶匠将红色乳胶混合物泼到你身上！（+RestraintAdded）
+Dollmaker's Apprentice
+玩偶师的学徒
+The dollmaker apprentice's suit becomes rigid and locks her limbs in place.
+玩偶师的学徒的套装变得坚硬，将她的四肢锁定在适当的位置。
+The dollmaker's apprentice squeezes your body with her gloved hands! (DamageTaken)
+玩偶师的学徒用戴着手套的双手挤压你的身体！（DamageTaken）
+The dollmaker's apprentice uses her staff to encase you in doll restraints! (+RestraintAdded)
+玩偶师的学徒用她的手杖将你束缚在玩偶束缚中！（+RestraintAdded）
+The dollmaker's apprentice slips a lock onto your restraints! (DamageTaken)
+玩偶师的学徒给你的束缚具上了一把锁！（DamageTaken）
+The dollmaker's apprentice unleashes a powerful latex blast! (+RestraintAdded)
+玩偶师的学徒释放出强大的乳胶爆炸！（+RestraintAdded）
 Alchemist
 炼金术士
 The alchemist screams and runs.
@@ -12608,6 +12640,7 @@ Are you questioning me? I'm a dragonslayer.
 （继续...）
 (The SPEAKER approaches you in your cell)|Well well, what do we have here? A new guest?|Perhaps I should give you a rundown of your new life~
 （SPEAKER 在你的牢房里接近你）|好吧，我们这里有什么？新来的客人？|或许我该给你介绍一下你的新生活~
+
 (The SPEAKER chuckles)|Don't tell me you seriously think we're letting you go?|You broke the rules, ignored the warnings.|Your new job is to make the people here happy.
 （SPEAKER轻笑）|不会真的认为我们会放你走吧？|你已经违反了规则，无视了警告。|你的新工作是让这里的人们开心。
 (The SPEAKER chuckles)|Hah, looks like you've got lots of training ahead of you.|Soon you'll have too much pleasure for your own good~
@@ -12616,16 +12649,21 @@ Are you questioning me? I'm a dragonslayer.
 （SPEAKER咯咯笑）|别担心，你马上就要去享受它了。
 (The SPEAKER smiles)|Heh, looks like you'll be fitting right in.
 （SPEAKER 微笑）|嘿嘿，看来你很快就适应了。
+
 (The SPEAKER chuckles)|You're probably wondering what's in store for you.|It's simple: You behave and do as you're told.|Eventually you will get to roam around.|Don't you dare try to steal anything.
 （SPEAKER轻笑）|你可能想知道为你准备了什么。|很简单：你按照别人的吩咐行事和做事。|最终你可以四处欧东。|别想着尝试偷东西.
+(The SPEAKER chuckles)|Feisty, aren't you?|Looks like it's going to be an extended stay for you~
+（SPEAKER 轻笑）|挺有活力，不是吗？|看起来你会待很长时间~
 (The SPEAKER giggles and returns to her work)
 （SPEAKER 咯咯笑着回去工作了）
 (The SPEAKER smiles)|Looks like you'll get the hang of it pretty quickly!
 （SPEAKER 微笑）|看起来你很快就能掌握窍门了！
+
 (New life?)
 （新生活？）
 (Let her continue)
 （让她继续）
+
 (Pout at her)
 （对她噘嘴）
 You can't make me do that!
@@ -12636,6 +12674,7 @@ That sounds alright...
 听起来不错...
 (Moan into your gag and giggle)
 （在你的口塞中呻吟和轻笑）
+
 (Glare at her)
 （瞪着她）
 Let me out this instant!
@@ -12646,28 +12685,53 @@ I will be a good girl!
 我会做个好女孩的！
 (Giggle and wiggle your body)
 （咯咯笑着扭动你的身体）
+
 (The SPEAKER approaches you in your cell)|Back again, are we? Silly girl.|You know we don't take no for an answer.
 （SPEAKER 在你的牢房里接近你）|又回来了，是吗？傻丫头。|你知道我们不会停你的回答的。
+
+(The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(She leaves and returns with some toys...)|Now hold still!
+（SPEAKER 回以微笑）|哦，这对你来说是一个游戏？|那么也许我应该让你觉得更有趣...|（她离开并带着一些玩具回来...）|现在别动！
+(The SPEAKER frowns)|I know exactly what you need...
+（SPEAKER 皱起眉头）|我清楚地知道你需要什么......
 (The SPEAKER smiles back)|I'm glad you're enjoying yourself.|However, your behavior is still unacceptable.|You need to learn some respect.
 （SPEAKER 回以微笑）|我很高兴你玩得开心。|但是，你的行为仍然是不可接受的。|你需要学会尊重。
 (The SPEAKER chuckles)|Looks like you're enjoying your restraints?|Let's make them tighter, shall we?
 （SPEAKER 轻笑）|看起来你很享受你的束缚？|让我们把它们收紧，好吗？
 (The SPEAKER shrugs)|Well, I hope you learn.
 （SPEAKER 耸了耸肩）|好吧，我希望你得到了应有的教训。
+(The SPEAKER looks greedy)|Oh, you have an idea?
+（SPEAKER 看起来很贪婪）|哦，你有主意吗？
+(The SPEAKER nods)|I'll put in a good word with you~
+（SPEAKER 点头）|我会说好话的~
+(The SPEAKER shakes her head)|Babe, you know who's going to be blamed|if a max-security prisoner escapes?
+（SPEAKER 摇头）|宝贝，你知道如果一个最高安全级别的囚犯逃跑|谁会受到指责吗？
+(The SPEAKER shakes her head)|I'll be honest with you, you're not worth the risk.|It'd help if you had more change~
+（SPEAKER 摇头）|老实说，你不值得冒这个险。|如果你有更多的金币就会有帮助~
+
 (Giggle and smile)
 （傻笑和微笑）
+Don't you mean 'more fun'?
+你不是说'更多乐趣'吗？
 (Giggle and moan)
 （傻笑和呻吟）
 (Struggle in your bindings)
 （在你的绑定中挣扎）
 (Pout and glare at her)
 （噘嘴瞪着她）
+(Point to the Jailer's coin pouch)
+（指向狱卒的钱袋）
+(Give her BRIBECOST gold)
+（给她 BRIBECOST 金币）
+
 Why don't you wear it instead? (OFFPERC chance, may aggro)
-你自己为什么不穿它呢？ （OFFPERC 机会，可能会引起敌对）
+你为什么不自己穿它呢？ （OFFPERC 几率成功，可能会引起敌对）
 (Point to her instead) (OFFPERC chance, may aggro)
-（指向她）（OFFPERC 机会，可能会引起敌对）
+（指向她）（OFFPERC 几率成功，可能会引起敌对）
+(The SPEAKER resists and fights back!)
+（SPEAKER 抵抗并反击！）
 (The SPEAKER blushes and accepts)
 （SPEAKER 脸红并接受）
+
 (The SPEAKER looks at you curiously)|Oh, you'd be perfect!|Would you please model my latest design?
 （SPEAKER 好奇地看着你）|哦，你好完美！|你能为我的最新设计做模特吗？
 (The SPEAKER holds up a restrictive outfit)|This RESTRAINT might be a tight fit|so hold still while I lace it~
@@ -12783,6 +12847,54 @@ Wait! That's too much! (PERCENT chance to avoid)
 等等！这太过分了！（有 PERCENT 的机会避免）
 (Shake your head and moan) (PERCENT chance to avoid)
 （摇头并呻吟）（有 PERCENT 的机会避免）
+
+(The SPEAKER looks at with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?
+（SPEAKER 用一种哲学的眼光看着）|你有没有想过你想要……|转变？
+(The SPEAKER takes a strange mask from her satchel)|Well, I have the answer right here...
+（SPEAKER 从她的跨包里拿出一个奇怪的面具）|好吧，我这里有答案......
+(The SPEAKER nods seriously)|My hypothesis was correct...
+（SPEAKER 认真点头）|我的假设是正确的......
+(The SPEAKER frowns)|Such a philistine. Begone.
+（SPEAKER 皱起眉头）|真庸俗。滚吧。
+(The SPEAKER turns away and thinks deeply)
+（SPEAKER 转过身去沉思）
+(The SPEAKER is lost deep in thought)|Like... become someone else?
+（SPEAKER 陷入沉思）|就像……变成另一个人？
+(The SPEAKER smiles)|You can be someone else...
+（SPEAKER 微笑）|你可以成为别人......
+(The SPEAKER turns around and keeps pondering)|Hmmm...
+（SPEAKER 转身继续沉思）|嗯……
+(The SPEAKER nods)|I see you are a truth seeker after all.
+（SPEAKER 点头）|我知道你毕竟是个寻求真理的人。
+(The SPEAKER lets you go. But then...)|(You feel her clip a RESTRAINT on you from behind!)|There... I shall now observe your behavior.
+（SPEAKER 让你走了。但是...）|（你感觉到她从后面往你身上绑了 RESTRAINT！）|那里...我现在将观察你的行为。
+
+Um, sure?
+嗯，当然？
+(Nod seriously)
+（认真点头）
+...What?
+...啥？
+(Shake your head)
+（摇头）
+
+Show me the truth.
+让我看看真相。
+(Nod again)
+（再次点头）
+That's just creepy.
+这真是令人毛骨悚然。
+(Shake your head)
+（摇头）
+
+Fine, you've convinced me.
+好吧，你说服了我。
+(Giggle and nod)
+（咯咯笑并点头）
+I don't have time for this. (PERCENT chance to avoid)
+我没有时间做这个。（PERCENT 的概率闪避）
+(Shake your head and moan) (PERCENT chance to avoid)
+（摇头并呻吟）（PERCENT 的概率闪避）
 
 (Wiggle excitedly)
 （兴奋地扭动）
