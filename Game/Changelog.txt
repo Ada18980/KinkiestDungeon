@@ -22,7 +22,7 @@ TODO add sugar magic ('Blood Energy Magic')
 - Added Ice cuffs
 - Added more types of traps to Edge of Reality and Bellows
 - Added RU translation by Osiris
-- Updated CN translation. Thanks !!
+- Updated CN translation. Thanks Timeline!!
 - Wolfgirl collar and shock module split into different items.
 
 4.83.2 (Nov 2023)

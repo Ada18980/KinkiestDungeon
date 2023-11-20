@@ -3343,9 +3343,9 @@ RestraintExpArmbinderHarnessDesc2,"It's tied in the back and reinforced with ste
 RestraintExpCollar,Latex Posture Collar
 RestraintExpCollarDesc,"A strict collar that makes it tougher to escape from other items."
 RestraintExpCollarDesc2,"It has steel boning but could be cut with enough care."
-RestraintExpBoots,Blacksteel Ballet Heels
+RestraintExpBoots,Latex Ballet Heels
 RestraintExpBootsDesc,"A pair of strict boots for making pets more manageable. A skilled person can still walk in these."
-RestraintExpBootsDesc2,"They are reinforced with top-quality ancient metal."
+RestraintExpBootsDesc2,"They are reinforced with top-quality hardened latex."
 
 
 
@@ -11612,6 +11612,7 @@ KDWardrobeSave,Confirm Changes
 KDWardrobeBackToWardrobe,Back to Wardrobe
 KDConfirmStrip,Confirm Strip?
 KDDressStrip,Strip Outfit
+KDCreateOutfit,Export Outfit
 
 KDColorSlidergamma,gamma
 KDColorSlidersaturation,saturation
@@ -12064,7 +12065,7 @@ RestraintRopeSnakeFeet,Ankle Ropes
 RestraintRopeSnakeFeetDesc,"A tie keeping your feet secured together."
 RestraintRopeSnakeFeetDesc2,"The ropes squeeze you gently."
 RestraintRopeSnakeToes,Toe Rope
-RestraintRopeSnakeToesDesc,"A tie keeping your feet tightly together."
+RestraintRopeSnakeToesDesc,"A tie keeping your toes tightly together."
 RestraintRopeSnakeToesDesc2,"The ropes squeeze you gently."
 
 
@@ -12155,6 +12156,9 @@ RestraintStrongMagicRopeLegsDesc2,"The knots appear to tie themselves together a
 RestraintStrongMagicRopeFeet,Spellbound Ankle Tie
 RestraintStrongMagicRopeFeetDesc,"A tie keeping your feet secured together."
 RestraintStrongMagicRopeFeetDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeToes,Spellbound Toe Rope
+RestraintStrongMagicRopeToesDesc,"A tie keeping your toes secured together."
+RestraintStrongMagicRopeToesDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
 
 
 RestraintWeakMagicRopeArmsBoxtie,Magic Boxtie
@@ -12190,6 +12194,9 @@ RestraintWeakMagicRopeLegsDesc2,"They glow with a trace of magic."
 RestraintWeakMagicRopeFeet,Magic Ankle Tie
 RestraintWeakMagicRopeFeetDesc,"A tie keeping your feet secured together."
 RestraintWeakMagicRopeFeetDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeToes,Magic Toe Rope
+RestraintWeakMagicRopeToesDesc,"A tie keeping your toes secured together."
+RestraintWeakMagicRopeToesDesc2,"They glow with a trace of magic."
 
 
 RestraintCelestialRopeArmsBoxtie,Holy Boxtie
@@ -12225,6 +12232,9 @@ RestraintCelestialRopeLegsDesc2,"A set of ropes that emit a calm, soothing aura.
 RestraintCelestialRopeFeet,Holy Ankle Ropes
 RestraintCelestialRopeFeetDesc,"A tie keeping your feet secured together."
 RestraintCelestialRopeFeetDesc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
+RestraintCelestialRopeToes,Holy Toe Rope
+RestraintCelestialRopeToesDesc,"A tie keeping your toes secured together."
+RestraintCelestialRopeToesDesc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
 
 
 
@@ -12261,6 +12271,9 @@ RestraintMithrilRopeLegsDesc2,"A lightweight rope made out of woven mithril, smo
 RestraintMithrilRopeFeet,Mithril Ankle Ropes
 RestraintMithrilRopeFeetDesc,"A tie keeping your feet secured together."
 RestraintMithrilRopeFeetDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
+RestraintMithrilRopeToes,Mithril Toe Ropes
+RestraintMithrilRopeToesDesc,"A tie keeping your toes secured together."
+RestraintMithrilRopeToesDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
 
 KDEffectTileTooltipPortals/DarkPortal,Dark Portal
 KDEffectTileTooltipPortals/DarkPortalDesc,"They are trying to take you somewhere!"
