@@ -5507,9 +5507,9 @@ AMNT 魔法防御
 AMNT Physical Armor
 AMNT 物理防御
 AMNT Bondage Resist
-AMNT 束缚抵抗
+AMNT 束缚抗性
 AMNT TYPE Resist
-AMNT TYPE 抵抗
+AMNT TYPE 抗性
 AMNT% TYPE Damage
 AMNT% TYPE 伤害
 AMNT% weapon phys. dmg
@@ -5546,6 +5546,128 @@ Drains mana from the wearer.
 
 AMNT Stat
 AMNT 统计
+
+Harness Plug Gag
+安全带塞子
+A gag meant to keep people quiet by forcing a plug into their mouth and securing it in place with a strict harness.
+一种堵嘴装置，旨在通过将塞子强行塞入人们的嘴中并用严格的安全带将其固定到位来保持人们的安静。
+It is difficult to pull off and though it is made from supple, heavy duty leather.
+虽然它是由柔软的重型皮革制成，但很难脱下来。
+
+Your OLDITM transforms into NEWITM!
+你的 OLDITM 转变为 NEWITM！
+Your OLDITM gains new properties!
+你的 OLDITM 获得新特性！
+
+Cursing Sigil
+诅咒符印
+A cursing sigil appears on the ground!
+地面上出现了一道诅咒符印！
+You are being cursed!!!
+你被诅咒了！！！
+
+Moondust Collar
+月尘项圈
+'You thought you could run forever, didn't you? Fate has a way of always catching up to you...'
+'你以为你可以永远奔跑，不是吗？ 命运总有办法追上你……'
+Cannot be removed while you are wearing other Star Cursed items.
+当你穿着其他星咒物品时无法移除。
+Stardust Collar
+星尘项圈
+'You thought you could run forever, didn't you? Fate has a way of always catching up to you...'
+'你以为你可以永远奔跑，不是吗？ 命运总有办法追上你……'
+Cannot be removed while you are wearing other Star Cursed items.
+当你穿着其他星咒物品时无法移除。
+
+The cursed seal on the RestraintName vanishes into a brief veil of stardust.
+RestraintName 上的诅咒印记消失在短暂的星尘面纱中。
+Take AMNT damage to weaken the curse. Excludes shadow, psychic, charm, or damage taken at 0 WP.
+承受 AMNT 伤害来削弱诅咒。 不包括阴影、精神、绷带或 0 WP 受到的伤害。
+You struggle uselessly, sealed in your fate.
+你徒劳地挣扎，被命运所封印。
+You feel your restraints starting to weaken...
+你感觉你的束缚开始减弱......
+
+The cursed collar falls off, awaiting its next victim...
+被诅咒的项圈脱落，等待着下一位受害者……
+You must remove all other Star Cursed items before removing the collar.
+在移除项圈之前，你必须移除所有其他的星咒物品。
+You struggle uselessly, sealed in your fate.
+你徒劳地挣扎，被命运所封印。
+
+Transformation: Items with generic curses transform into Star Cursed items.
+转变：带有普通诅咒的物品会转变为星咒物品。
+With a burst of dark energy, your OLDITM gains new properties!
+随着黑暗能量的爆发，你的 OLDITM 获得了新的特性！
+With a burst of dark energy, your OLDITM transforms into a NEWITM!
+随着黑暗能量的爆发，你的 OLDITM 转变为 NEWITM！
+
+Restoration: While distracted, your Star Cursed restraints regain strength.
+恢复：在分心时，你的星咒束缚会恢复力量。
+With the rush of pleasure, you feel your cursed restraints tighten and strengthen!
+随着快感的涌动，你感受到你那被诅咒的束缚收紧、加强！
+
+Corruption: While in the shadows, you slowly gain corruption.
+腐败：在阴影中，你会慢慢得腐败。
+Your willpower gain and struggle power is less effective due to your corruption.
+你的意志力增益和奋斗力会因为你的腐败而变得不那么有效。
+
+Seduction: Gain distraction after taking damage.
+诱惑：受到伤害后分散注意力。
+Taking damage fills your minds with cursed thoughts...
+受到伤害会让你的脑海中充满被诅咒的想法......
+Having taken damage, your distraction is increasing...
+受到伤害后，你的注意力越来越分散......
+
+Punishment: When you defeat an enemy, you are stunned briefly and enemies are attracted.
+惩罚：当你击败敌人时，你会短暂昏迷并吸引敌人。
+Dark Voice: You are supposed to be a slave!
+黑暗之声：你应该是奴隶！
+
+Submission: At 0 WP, you are restrained if you leave the presence of a hostile.
+屈服：在 0 WP 时，如果你离开敌方存在，你就会受到限制。
+Dark Voice: Kneel before your mistress.
+黑暗之声：跪在你的女主人面前。
+You must submit! Moving away from an enemy at 0 WP will bind you!
+你必须屈服！远离 0 WP 的敌人将会束缚你！
+
+Denial: -10 WP when you try to Let Go. At 0 WP you cannot orgasm.
+拒绝：当你尝试在 -10 WP 的时候高潮时。 WP 为 0 时你将无法达到性高潮。
+Dark Voice: Not yet.
+黑暗之声：还不行。
+Dark Voice: Your squirming pleases us.
+黑暗之声：你的蠕动让我们很高兴。
+Dark Voice: It is not your choice to make~
+黑暗之声：这不是你可以选择的~
+Dark Voice: You may enjoy yourself, for now~
+黑暗之声：你现在尽情享受吧~
+Dark Voice: Yes, take in the pleasure...
+黑暗之声：是的，享受快乐……
+Dark Voice: Enjoy a gift, dear~
+黑暗之声：亲爱的，享受礼物吧~
+
+Star: -20 Charm/Psychic Resist
+星星：-20 绷带/精神 抗性
+Star: +40 all other resists
+星星：+40 所有其他抗性
+
+Mithril Orb
+秘银宝珠
+Shining strings encircle your body!
+闪亮的绳子环绕着你的身体！
+
+Your cursed items have attracted a powerful cursed spirit!
+你的诅咒物品吸引了强大的诅咒之灵！
+
+The seal on your RESTRAINTNAME is weakening.
+你 RESTRAINTNAME 上的封印正在减弱。
+
+
+
+Casting SPNME
+铸造 SPNME
+The door suddenly locks behind you!
+门突然在你身后锁上了！
 
 Simple Lock
 简易锁
@@ -5906,19 +6028,19 @@ Massagers
 A pair of little motion-activated teasers. They trigger when you swing your body for an attack.
 一对通过动作激活的挑逗器。当你摆动身体进行攻击时，它们就会触发。
 They will make for some great fun! Type: Edging
-他们会带来很多乐趣！ 类型：寸止
+他们会带来很多乐趣！ 类型：极限
 Advanced Massagers
 高级按摩器
 A pair of sensitive motion-activated teasers. They trigger when you attack or struggle.
 一对较为敏感通过动作激活的挑逗器。当你摆动身体进行攻击或挣扎时，它们就会触发。
 They will make for some great fun! Type: Edging
-他们会带来很多乐趣！ 类型：寸止
+他们会带来很多乐趣！ 类型：极限
 Hi-Tech Massagers
 高科技按摩器
 A pair of highly-sensitive motion-activated teasers. They detect most forms of motion, including sprinting and hopping.
 一对高度敏感通过动作激活的挑逗器。它们可以检测大多数形式的运动，包括冲刺和跳跃。
 They will make for some great fun! Type: Edging
-他们会带来很多乐趣！ 类型：寸止
+他们会带来很多乐趣！ 类型：极限
 Control Harness
 控制束衣
 An advanced harness for controlling high-security prisoners.
@@ -6650,7 +6772,7 @@ Prototype Egg
 A teaser that periodically vibrates.
 周期性振动的小玩具。
 High efficiency mana conversion means longer tease duration. Type: Teasing, Pleasure, Edging
-高效率法力转换意味着更长的振动持续时间。类型：戏弄、快感、寸止
+高效率法力转换意味着更长的振动持续时间。类型：戏弄、快感、极限
 Vibrating Plug
 振动塞
 A sizeable plug that makes you happy... a little too happy.
@@ -6676,7 +6798,7 @@ Thundering Plug
 A sizeable plug that will make your life unbearably pleasurable...
 一个相当大的塞子，会让你的生活变得难以忍受......
 Enjoy it while you can. Type: Pleasure, Edging
-当你有空的时候好好享受它。类型：快感、寸止
+当你有空的时候好好享受它。类型：快感、极限
 Intense Training Plug
 强化训练塞
 An energetic plug that will make your life unbearably pleasurable...
@@ -6688,13 +6810,13 @@ Rear Vibrating Plug
 A device that attacks from multiple angles.
 从多个角度攻击的装置。
 An enjoyable experience. Type: Edging
-一次愉快的经历。 类型：寸止
+一次愉快的经历。 类型：极限
 Maid Egg
 女仆跳蛋
 An energetic little friend that likes to tease you and takes orders from the head maid.
 精力充沛的小伙伴，会挑逗你，听从女仆长的吩咐。
 It is charged by residual magic from your spells. Type: Teasing, Edging
-它由你的法术残留的魔法充电。类型：戏弄、寸止
+它由你的法术残留的魔法充电。类型：戏弄、极限
 Stainless Plug
 不锈钢塞子
 A weighty plug that doesn't vibrate, but you'll certainly notice it walking around...
@@ -10247,6 +10369,21 @@ A cursed NEWITM flies out of the chest and latches tightly to you!
 一只被诅咒的 NEWITM 从箱子里飞出，紧紧地抓住你！
 With a puff of magic, a NEWITM appears on your body!
 随着一股魔力，NEWITM 出现在你的身上！
+
+You draw upon chaotic energies, restoring mana!
+你汲取混沌能量，恢复法力！
+You draw upon chaotic energies, but your mind is unable to hold back the arcane forces!
+你吸取了混沌能量，但你的思想却无法阻挡神秘的力量！
+Your attempt to call upon chaotic energies fails.
+你召唤混沌能量的尝试失败了。
+You are already at max mana.
+你已经达到最大法力值了。
+
+The vibrator holds at full power to drive you over the edge!
+振动器保持最大功率，让你越过极限！
+
+The weapon needs to be loaded to fire.
+武器需要装弹才能开火。
 
 Charm Trap
 绷带陷阱
