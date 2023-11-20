@@ -129,6 +129,8 @@ Apprehended!
 被捕！
 Restrained!
 束缚！
+Restricted!
+束缚！
 Fully Bound!
 完全束缚！
 Tightly Secured!
@@ -4068,6 +4070,46 @@ The red slime bounces off you! (DamageTaken)
 红色粘液团撞到了你身上！（DamageTaken）
 The slime shoves itself into your mouth! (+RestraintAdded)
 粘液自己塞进了你的嘴里！（+RestraintAdded）
+Slime Mold
+粘菌
+The slime mold explodes into small puffs.
+粘菌爆炸成小泡。
+The slime mold is sticky and gross! (DamageTaken)
+粘菌又粘又恶心！（DamageTaken）
+The slime mold attaches itself to your body! (+RestraintAdded)
+粘菌附着在你的身上！（+RestraintAdded）
+Mold Puff
+霉菌泡芙
+The mold puff explodes into small puffs.
+霉菌泡芙爆炸成小泡芙。
+The mold puff is sticky and gross! (DamageTaken)
+霉菌泡芙又粘又恶心！（DamageTaken）
+The mold puff leaps through the air!
+霉菌泡芙在空中跳跃！
+The mold puff attaches itself to your body! (+RestraintAdded)
+霉菌泡芙自动附着在你的身上！（+RestraintAdded）
+Slime Mold Nest
+粘菌巢
+The slime mold nest erupts into a shower of black particles!
+粘菌巢爆发出一阵黑色粒子！
+Many small pieces of slime mold break off!
+许多小粘菌碎片脱落！
+A mobile cyst emerges from the slime mold nest!
+一个可移动的囊肿从粘菌巢中出现！
+Factory Doll
+工厂玩偶
+The doll is subdued.
+玩偶被制服了。
+Encased Adventurer
+被包裹的冒险家
+The encased adventurer loses hope.
+被包裹的冒险家失去了希望。
+The encased adventurer moans as she throws herself against you for help! (DamageTaken)
+被包裹的冒险家一边呻吟一边扑向你寻求帮助！（DamageTaken）
+The encased adventurer sticks to you as she mumbles incoherently! (DamageTaken)
+被包裹的冒险家粘在你身上，语无伦次地咕哝着！（DamageTaken）
+The encased adventurer pleads for help as her slime spreads to you! (+RestraintAdded)
+当她的粘液蔓延到你身上时，被困住的冒险家恳求帮助！（+RestraintAdded）
 Slime
 粘液
 The slime melts into a puddle.
