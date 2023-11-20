@@ -53,7 +53,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Ribbon"],
-	AddPose: ["Wristties"],
+	AddPose: ["Wristties", "Chesttied"],
 	Layers: ToLayerMap([
 		/*{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
 			Poses: ToMap(["Wristtie"]),

@@ -103,6 +103,8 @@ let LAYERS_BASE = [
 
 	"HarnessOver",
 	"BindChest",
+	"BustierChest",
+	"ShirtChest",
 	"BraChest",
 	"SuitChest",
 	"Chest",
@@ -120,9 +122,13 @@ let LAYERS_BASE = [
 
 	// Crossed arms -- order is inverted
 	"SleevesCrossArms",
+	"CrossSleeveDecoRight",
+	"CrossSleeveRight",
 	"CrossMittenRight",
 	"CrossGloveRight",
 	"CrossArmRight",
+	"CrossSleeveDecoLeft",
+	"CrossSleeveLeft",
 	"CrossMittenLeft",
 	"CrossGloveLeft",
 	"CrossArmLeft",
@@ -156,9 +162,9 @@ let LAYERS_BASE = [
 	"Underbust",
 	// For things that go around armpit area--mainly ropes and stuff that goes under the breasts
 	"Underarms",
-	"Bra",
 
 	"CorsetOver",
+
 
 	// Skirts that dont follow shilhouette and are puffy
 	"SkirtPoofyDeco",
@@ -168,6 +174,8 @@ let LAYERS_BASE = [
 
 	// Corsets that go under harness and poofy skirt
 	"Corset",
+
+	"Bra",
 
 	// Skirts that are slim and follow the shilhouette
 	"SkirtDeco",
@@ -419,7 +427,7 @@ let LayerGroups = {
 
 	//region generic
 	"Arms": ToMap([
-		"Shirt",
+		//"Shirt",
 		"SleeveLeft",
 		"SleeveDecoLeft",
 		"SleeveRight",
@@ -609,9 +617,11 @@ let LayerGroups = {
 		// Skirts that dont follow shilhouette and are puffy
 		"SkirtPoofyDeco",
 		"SkirtPoofy",
+		"SkirtPoofyLower",
 		// Skirts that are slim and follow the shilhouette
 		"SkirtDeco",
 		"Skirt",
+		"SkirtLower",
 
 		"PantLeft",
 		"PantRight",
@@ -621,8 +631,37 @@ let LayerGroups = {
 		"StockingLeft",
 		"StockingRight",
 
+		"Bodysuit",
 		"Panties",
+		"Torso",
+		"TorsoUpper",
+		"Butt",
+		"TorsoLower",
+		"Torso",
+	]),
+	"CorsetTorso": ToMap([
+		"Shirt",
+		"CorsetLiner",
+		// Skirts that dont follow shilhouette and are puffy
+		"SkirtPoofyDeco",
+		"SkirtPoofy",
+		"SkirtPoofyLower",
+		// Skirts that are slim and follow the shilhouette
+		"SkirtDeco",
+		"Skirt",
+		"SkirtLower",
 
+		"PantLeft",
+		"PantRight",
+		"Pants",
+
+		"OverSocks",
+		"StockingLeft",
+		"StockingRight",
+
+		"Bodysuit",
+		"Panties",
+		"Torso",
 		"TorsoUpper",
 		"Butt",
 		"TorsoLower",
@@ -768,6 +807,13 @@ let LayerGroups = {
 		"MittenRight",
 		"GloveRight",
 		"ForeHandRight",
+	]),
+
+	"CorsetBra": ToMap([
+		"Chest",
+		"ShirtChest",
+		"SuitChest",
+		"BraChest",
 	]),
 
 	"RibbonThighs": ToMap([
@@ -1011,6 +1057,8 @@ let LayerGroups = {
 
 	"HarnessOver",
 	"BindChest",
+	"BustierChest",
+	"ShirtChest",
 	"BraChest",
 	"SuitChest",
 	"Chest",

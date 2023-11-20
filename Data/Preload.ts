@@ -1,6 +1,8 @@
 PIXI.Assets.init();
 
 let DisplacementMaps = [
+	"CorsetSquish.png",
+	"LaceChest.png",
 	"Sarco.png",
 	"AnklesSquishClosed.png",
 	"AnklesSquishKneel.png",
@@ -162,7 +164,7 @@ let DisplacementMaps = [
 ];
 
 let linearList = [
-	//"TextureAtlas/atlas0.json",
+	"TextureAtlas/atlas0.json",
 	...DisplacementMaps.map((e) => {return "DisplacementMaps/" + e;}),
 ];
 

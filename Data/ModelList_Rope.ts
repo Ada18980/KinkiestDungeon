@@ -245,7 +245,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Rope"],
-	AddPose: ["CrotchStrap"],
+	AddPose: ["CrotchStrap", "Chesttied"],
 	Layers: ToLayerMap([
 		{ Name: "Harness", Layer: "HarnessOver", Pri: 0,
 			//MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},

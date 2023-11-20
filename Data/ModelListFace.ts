@@ -48,14 +48,14 @@ AddModel({
 	Group: "Eyes",
 	Categories: ["Eyes","Face"],
 	Layers: ToLayerMap([
-		{ Name: "HumanEyes", Layer: "Eyes", Pri: 0,
-			Sprite: "", // Because pose is called EyesNeutral lol
+		{ Name: "Eyes", Layer: "Eyes", Pri: 0,
+			Sprite: "Human", // Because pose is called EyesNeutral lol
 			OffsetX: 942,
 			OffsetY: 200,
 			Poses: ToMap(EYEPOSES),
 		},
-		{ Name: "HumanEyes2", Layer: "Eyes", Pri: 0,
-			Sprite: "", // Because pose is called EyesNeutral lol
+		{ Name: "Eyes2", Layer: "Eyes", Pri: 0,
+			Sprite: "Human", // Because pose is called EyesNeutral lol
 			OffsetX: 942,
 			OffsetY: 200,
 			Poses: ToMap(EYE2POSES),

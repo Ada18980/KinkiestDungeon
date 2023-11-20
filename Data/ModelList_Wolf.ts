@@ -58,18 +58,6 @@ AddModel({
 			TieToLayer: "Collar",
 			NoOverride: true,
 		},
-		{ Name: "CollarHardware", Layer: "Collar", Pri: 40.3,
-			Invariant: true,
-			InheritColor: "Hardware",
-			TieToLayer: "Collar",
-			NoOverride: true,
-		},
-		{ Name: "CollarTag", Layer: "Collar", Pri: 40.2,
-			Invariant: true,
-			InheritColor: "Tag",
-			TieToLayer: "Collar",
-			NoOverride: true,
-		},
 	])
 });
 AddModel({
