@@ -9138,7 +9138,7 @@ Surprise Bondage!
 Arcane Energy
 奥术能量
 Rhythm
-韵律
+节奏
 You avoid the attack in a flurry of impressive maneuvers!
 你在一系列令人印象深刻的动作中避开了攻击！
 Arcane Barrier
@@ -10901,6 +10901,70 @@ The RSTNME is removed as the lock comes off.
 RSTNME 在被锁打开后移除。
 You save the key in your inventory for future use.
 你将钥匙保存在背包中以供将来使用。
+
+You pick up a simple key for the simplest of locks.
+你拿起一把简单的钥匙就能打开最简单的锁。
+Simple Keys
+简单的钥匙
+You twirl the keys around your finger.
+你用手指转动钥匙。
+A handy key for getting out of common handcuffs and shackles.
+一把摆脱常见手铐和脚镣的简易钥匙。
+It's not sophisticated enough to work on higher-quality locks, but can be used many times.
+它不够复杂，无法用于更高质量的锁，但可以多次使用。
+
+You pick up a tool for picking disc detainer locks.
+你拿起一个工具来撬开圆盘固定器锁。
+Disc Lock Tool
+圆盘锁工具
+You examine the tool. It has a replaceable tip for picking disc detainer locks.
+你检查该工具。它有一个可更换的尖端，用于撬开圆盘锁的固定。
+A handy tool for picking disc detainer locks, popularized by a certain pair of professionals.
+一种用于撬开圆盘锁的便捷工具，受到某些专业人士的喜爱。
+Features a replaceable head in case an unskilled user breaks it. Requires lockpicks to use.
+具有可更换的头部，以防不熟练的用户损坏它。需要有开锁器才能使用。
+
+Magical Weapon
+魔法武器
+
+Your Submissiveness determines how easily your character can resist the temptations of bondage.
+你的顺从程度决定了你的角色抵御束缚诱惑的难易程度。
+Your Security Level determines how tightly enemies will secure you in prison.
+你的安全等级决定了敌人将你关在监狱里的严密程度。
+Your Passion determines how likely you are to lose control of yourself involuntarily.
+你的激情决定了你有多大可能不由自主地失去对自己的控制。
+Your Frustration affects how quickly your Passion grows. More Frustration = More Passion
+你的懊恼会影响你激情增长的速度。更多的懊恼=更多的激情
+
+Nivah, Goddess of Dragons
+Nivah, 龙之女神
+Minivir, Goddess of Alchemy
+Minivir, 炼金术女神
+Akasha, Goddess of Magic
+Akasha, 魔法女神
+Oriel, Goddess of Technology
+Oriel, 科技女神
+
+Ninril, Giver of Life
+Ninril, 生命的赐予者
+Mata, Architect of Reality
+Mata, 现实铸造者
+Aether, Keeper of the Cosmos
+Aether, 宇宙的守护者
+Oblivion, Keeper of Secrets
+Oblivion, 秘密的守护者
+
+Arcane Energy is stored by casting spells, up to 100% Max mana.
+奥术能量通过施展法术来储存，最高可达 100% 最大法力值。
+Battle Rhythm is gained by spending stamina through attacks, up to 50 total.
+战斗节奏是通过攻击消耗体力来获得的，总共最多 50 点。
+
+Arcane Blast
+奥术冲击
+When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. Casting this spell consumes it to deal up 25% Max Mana as Arcane damage. Pierces enemies and walls.
+当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。施放此法术会消耗它，造成最多 25% 最大法力的奥术伤害。穿透敌人和墙壁。
+Your eyes glow as energy surges from within!
+当能量从内部涌动时，你的眼睛会发光！
 
 Charm Trap
 绷带陷阱
