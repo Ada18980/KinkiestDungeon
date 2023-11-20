@@ -3009,8 +3009,8 @@ Also assists in cutting restraints when equipped.
 配备时还有助于切割拘束。
 A go-to for travelers and adventurers.
 旅行者和冒险家的首选。
-Deals slash damage. 副手: +10 阻挡
-造成斩击伤害。
+Deals slash damage. Offhand: +10 Block
+造成斩击伤害。副手: +10 阻挡
 Torch
 火把
 Second only to the mighty towel in usefulness.
