@@ -2063,6 +2063,9 @@ Confirm clearing hotbar?
 Add to Hotbar
 添加至快捷栏
 
+Surrender: Your willpower is 0, giving huge penalties to struggling, Block, Evasion, and Bondage Resist.
+投降：你的意志力为0，对挣扎、阻挡、闪避、束缚抵抗给予巨额惩罚。
+
 Unbound Keybindings! -->
 存在未绑定的按键! -->
 You've not enough keys!!! -->
@@ -3317,8 +3320,8 @@ The vibration is torturous!
 痛苦的震动
 Edged!
 极限！
-Satisfied~
-满意~
+Satisfied. Miscast chance is reduced.
+满意。减少失误的概率
 Damage: 
 伤害：
 Bind: 
