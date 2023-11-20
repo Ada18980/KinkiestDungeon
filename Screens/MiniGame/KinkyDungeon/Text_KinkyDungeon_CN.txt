@@ -10580,6 +10580,13 @@ The vibrator holds at full power to drive you over the edge!
 The weapon needs to be loaded to fire.
 武器需要装弹才能开火。
 
+You pull the trigger!
+你扣动了扳机！
+The RSTNME is removed as the lock comes off.
+RSTNME 在被锁打开后移除。
+You save the key in your inventory for future use.
+你将钥匙保存在背包中以供将来使用。
+
 Charm Trap
 绷带陷阱
 Ribbon Trap
