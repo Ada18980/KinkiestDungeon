@@ -1794,6 +1794,8 @@ Back to Wardrobe
 返回衣柜
 Strip Outfit
 脱去衣服
+Export Outfit
+导出衣服
 Confirm Strip?
 确认要脱衣服？
 gamma
@@ -6295,12 +6297,12 @@ A strict collar that makes it tougher to escape from other items.
 一个严苛的项圈，使从其他物品中逃脱变得更加困难。
 It has steel boning but could be cut with enough care.
 它有钢骨，但可以小心切割。
-Blacksteel Ballet Heels
-黑钢芭蕾高跟鞋
+Latex Ballet Heels
+乳胶芭蕾高跟鞋
 A pair of strict boots for making pets more manageable. A skilled person can still walk in these.
 一双严格的靴子，让宠物更易于管理。熟练的人仍然可以行走。
-They are reinforced with top-quality ancient metal.
-它们采用优质古代金属加固。
+They are reinforced with top-quality hardened latex.
+它们采用硬化乳胶加固。
 
 High-Security Armbinder
 高安全性束手套
@@ -6711,6 +6713,12 @@ They glow with a trace of magic.
 它们散发着一丝魔法的光芒。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
+Magic Toe Rope
+脚趾绳缚（附魔）
+A tie keeping your toes secured together.
+束带将双脚固定在一起。
+They glow with a trace of magic.
+它们散发着一丝魔法的光芒。
 Mithril Boxtie
 秘银后手缚捆扎带
 A box tie keeping your arms secured behind your back.
@@ -6739,6 +6747,12 @@ Mithril Ankle Ropes
 脚踝绳缚（秘银）
 A tie keeping your feet secured together.
 绳索将双脚固定在一起。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
+Mithril Toe Ropes
+脚趾绳缚（秘银）
+A tie keeping your toes secured together.
+绳索将脚趾固定在一起。
 A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
 由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
 Mithril Crotch Rope
@@ -7087,6 +7101,12 @@ A tie keeping your feet secured together.
 一条将双脚固定在一起的捆绑。
 They are aware of your movements...
 它会对你的动作产生反应...
+Holy Toe Rope
+神圣脚趾绳缚
+A tie keeping your toes secured together.
+一条将脚趾固定在一起的捆绑。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+一组散发出平静、舒缓气息的绳索。它们神奇地伸展以贴合你的身体。
 Wrist Vines
 手腕藤蔓捆绑
 A box tie keeping your arms secured behind your back.
@@ -15737,7 +15757,7 @@ The ropes squeeze you gently.
 绳索轻轻地压迫你。
 Toe Rope
 趾绳
-A tie keeping your feet tightly together.
+A tie keeping your toes tightly together.
 一条将脚趾头固定在一起的捆绑
 The ropes squeeze you gently.
 绳索轻轻地压迫你。
