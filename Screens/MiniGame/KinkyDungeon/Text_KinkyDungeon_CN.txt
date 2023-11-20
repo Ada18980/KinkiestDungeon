@@ -414,7 +414,7 @@ You can cast Conjuration spells without having the components, at twice the cost
 Magician
 幻术法师
 You can cast Illusion spells without having the components, at twice the cost. Start w/ Shadow Dagger.
-你可以以两倍魔力消耗为代价无视施法条件使用幻术。开局获得技能 暗影匕首。
+你可以以两倍魔力消耗为代价无视施法条件使用幻术。开局获得技能 阴影匕首。
 
 Narcoleptic
 嗜睡症
@@ -1274,7 +1274,7 @@ Blindfolds are stronger. While blindfolded you can only see enemies next to you.
 眼罩变得更强，当佩戴眼罩时，你只能看到身边的敌人。
 
 Total Blackout
-暗影护目
+阴影护目
 Blindfolds are extremely punishing and you can't see explored areas while blindfolded.
 眼罩变得非常痛苦，当佩戴眼罩时，你看不到已探索区域。
 Poor Vision
@@ -1702,7 +1702,7 @@ Camoflage: While holding still, you are very hard to see.
 Stone Skin: Increased armor.
 石肤：增加护甲。
 Darkblade: Increased damage.
-暗影之刃：增加伤害。
+阴影之刃：增加伤害。
 Runic Ward: Increased Magic Armor.
 符文盾：增加魔法护甲。
 Great Invisibility: It is impossible for enemies to see you.
@@ -2616,9 +2616,9 @@ A technologically advanced suit designed for long term wear. Despite being water
 No bonuses, no penalties.
 没有奖励，没有惩罚。
 Shadow Latex Dress
-暗影乳胶连衣裙
+阴影乳胶连衣裙
 A minidress made from shadow latex, a favorite of otherwordly patrons.
-由暗影乳胶制成的迷你裙，是其他顾客的最爱。
+由阴影乳胶制成的迷你裙，是其他顾客的最爱。
 No bonuses, no penalties.
 没有奖励，没有惩罚。
 Elven Dress
@@ -2714,7 +2714,7 @@ Magic Knife
 A magical blade, suitable against ghosts.
 一把适用于对抗幽灵的魔法之剑。
 Deals shadow damage. Can cut enchanted ropes. Offhand: Increase base crit of all magic damage by 20%
-造成暗影伤害，可以切断魔法绳索。副手：所有魔法伤害基础暴击增加20%
+造成阴影伤害，可以切断魔法绳索。副手：所有魔法伤害基础暴击增加20%
 Bola
 投石索
 A pair of weights attached to a rope. Can be thrown.
@@ -2942,7 +2942,7 @@ Arcane Orb
 Look into my eyes...
 看着我的眼睛。。。
 Deals shadow damage. Can be used without hands. Does not benefit from enemies being vulnerable.
-造成暗影伤害。使用时无需双手。不从敌人的影响中受益。
+造成阴影伤害。使用时无需双手。不从敌人的影响中受益。
 Staff of Flame
 烈焰法杖
 A magical weapon made for novices to use.
@@ -3028,13 +3028,13 @@ Deals slash damage. Deals up to 50 bonus damage by waiting 10 turns between atta
 You pick up a katana.
 你捡起一把武士刀。
 Shadow's Edge
-暗影之刃
+阴影之刃
 For those who truly devote themselves to the cause.
 为那些真正献身于事业的人而用。
 Deals shadow damage. Damage is doubled against enemies that are in shadow.
-造成暗影伤害。对处于阴影中的敌人伤害翻倍。
+造成阴影伤害。对处于阴影中的敌人伤害翻倍。
 You pick up Shadow's Edge.
-你拾起了暗影之刃。
+你拾起了阴影之刃。
 Stormbreaker
 风暴之锤
 I have the power! Taking electric damage charges you (1 turn/10dmg).
@@ -3164,13 +3164,13 @@ Four Seasons
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
 激活后，下一次使用时 -50% 火/水/冰/风/雷/岩属性法术的消耗，但每个属性仅可使用一次。
 Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage. Offhand: Applies passive bonus.
-造成暗影伤害，+25% 火/水/冰/风/雷/岩/压力/爆炸伤害。副手：应用被动奖励。
+造成阴影伤害，+25% 火/水/冰/风/雷/岩/压力/爆炸伤害。副手：应用被动奖励。
 The Arbiter
 仲裁者之杖
 I have altered the rules. Pray I do not alter them further.
 我已改变规则，祈祷我不会再进一步改变它们。
 Deals chain damage with 110% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm
-造成锁链伤害，束缚效率 x110%，对召唤物增加 40 点暗影伤害，+25% 的黏液和锁链伤害。远程攻击：解除武装。
+造成锁链伤害，束缚效率 x110%，对召唤物增加 40 点阴影伤害，+25% 的黏液和锁链伤害。远程攻击：解除武装。
 Bondage Buster
 束缚破坏者
 Can fire a beam (1 turn channel) that deals 30 electric damage, but charges when not fired, dealing 90 total damage at 10 turns of charge.
@@ -3210,7 +3210,7 @@ Enchanted Axe
 Sick and vile, like the hearts of your enemies.
 病态和卑鄙，就像你敌人的心。
 Deals shadow damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns.
-对目标造成暗影伤害，对身边的敌人造成20点暗影伤害。减速3回合。
+对目标造成阴影伤害，对身边的敌人造成20点阴影伤害。减速3回合。
 Pickaxe
 镐
 Used for drilling holes in rock and armor.
@@ -3244,9 +3244,9 @@ Deals crush damage. Deals 3x damage to frozen targets instead of 2x. Triggers Sh
 Dreamcatcher
 梦网
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
-在噩梦中铸造，用钢铁编织。召唤一个暗影武士，对于未察觉的目标，消耗2%的远古能量。
+在噩梦中铸造，用钢铁编织。召唤一个阴影武士，对于未察觉的目标，消耗2%的远古能量。
 Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
-造成暗影伤害。对于未察觉（100%）或易受攻击（50%）的目标，额外造成最多 30 点精神伤害。
+造成阴影伤害。对于未察觉（100%）或易受攻击（50%）的目标，额外造成最多 30 点精神伤害。
 Axe
 斧头
 Great for cutting trees that happen to be underground.
@@ -3424,9 +3424,9 @@ Storm Crystal
 The storm crystal shatters into many crackling pieces.
 风暴水晶破碎成许多噼啪作响的碎片。
 Shadow Warrior
-暗影武士
+阴影武士
 The shadow warrior screeches as it vanishes into mist.
-暗影武士尖叫着消失在雾中。
+阴影武士尖叫着消失在雾中。
 Allied Golem
 友方石魔像
 The words vanish from the golem's forehead as it crashes down.
@@ -3812,11 +3812,11 @@ Shadow Dragonheart
 The Shadow Dragonheart frowns and runs away.
 影龙心蹙眉，转身逃走。
 The Shadow Dragonheart apprehends you! (+RestraintAdded)
-暗影龙心逮捕了你！ （+RestraintAdded）
+阴影龙心逮捕了你！ （+RestraintAdded）
 The Shadow Dragonheart extends her scythe and pulls you closer!!!
 影龙心伸出她的镰刀，把你拉近了！！！
 The Shadow Dragonheart catches you with her scythe! (DamageTaken)
-暗影龙心用她的镰刀抓住了你！ (DamageTaken)
+阴影龙心用她的镰刀抓住了你！ (DamageTaken)
 Dragonheart Leader
 龙心领袖
 The Dragonheart Leader apprehends you! (+RestraintAdded)
@@ -7509,31 +7509,31 @@ It has eyeholes for you to see out of, but blocks access to the face.
 它有眼孔供你向外看，但挡住了接触脸部的通道。
 
 Shadow Heels
-暗影高跟鞋
+阴影高跟鞋
 A set of impractical heels that clasp around your ankles. They make it hard to walk
 一套不切实际的高跟鞋，紧箍着你的脚踝。它们使行走变得困难
 The material is stronger than leather, and flexes to make struggling difficult.
 这种材料比皮革更坚固，并且可以弯曲，使挣扎变得困难。
 Shadow Jacket
-暗影拘束衣
+阴影拘束衣
 A tight straitjacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
 由超凡脱俗的材料制成的拘束衣。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Its grip encases you tightly, but the material is weaker than most metals.
 它的握力将你紧紧包裹住，但其材料比大多数金属都脆弱。
 Shadow Armbinder
-暗影束手套
+阴影束手套
 A tight armbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
 由超凡脱俗的材料制成的束手套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Its grip encases you tightly, but the material is weaker than most metals.
 它的握力将你紧紧包裹住，但其材料比大多数金属都脆弱。
 Shadow Boxbinder
-暗影盒束包扎带
+阴影盒束包扎带
 A tight boxbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
 由超凡脱俗的材料制成的盒束包扎带。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Its grip encases you tightly, but the material is weaker than most metals.
 它的握力将你紧紧包裹住，但其材料比大多数金属都脆弱。
 Shadow Legbinder
-暗影束腿套
+阴影束腿套
 A tight legbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
 由超凡脱俗的材料制成的束腿套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Its grip encases you tightly, but the material is weaker than most metals.
@@ -8014,25 +8014,25 @@ Magic chains that serve as an anchor point around your waist.
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
 Shadow Chains (Arms)
-暗影锁链（手臂）
+阴影锁链（手臂）
 Black chains for those who cross the divines
 穿越神界者的黑链
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
 Shadow Chains (Legs)
-暗影锁链（腿）
+阴影锁链（腿）
 Black chains for those who cross the divines
 穿越神界者的黑链
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
 Shadow Chains (Ankles)
-暗影链（脚踝）
+阴影链（脚踝）
 Black chains for those who cross the divines
 穿越神界者的黑链
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
 Shadow Chain
-暗影影链
+阴影影链
 Black chains for those who cross the divines
 穿越神界者的黑链
 It doesn't look like a knife is up to the task...
@@ -9043,7 +9043,7 @@ Ranged
 Teasing
 挑逗
 Shadow
-暗影
+阴影
 Knowledge
 知识
 Utility
@@ -9103,7 +9103,7 @@ Rubber Ampule
 Latex Ampule
 乳胶安瓿
 Shadowy chains appear from a rift in space!
-暗影锁链从空间裂缝中出现！
+阴影锁链从空间裂缝中出现！
 Mana Burst
 法力冲击
 Flame Novice
@@ -9157,7 +9157,7 @@ Unlocks summoning spells. Learn Summon Familiar.
 Blessing of Shadow
 暗之祝福
 Unlocks shadow spells. Learn Shadow Dagger.
-允许学习暗影幻术 并习得幻术 “暗影匕首”
+允许学习阴影幻术 并习得幻术 “阴影匕首”
 Blessing of Light
 光之祝福
 Unlocks light spells. Learn Flash.
@@ -9305,17 +9305,17 @@ You a throw a knife!
 Choose aim direction
 选择发射方向
 Shadow Dagger
-暗影匕首
+阴影匕首
 A cold shadowy blade that deals DamageDealt damage and pierces all in its path.
-一把冰冷的暗影之刃，对路径上所有格子造成DamageDealt贯穿伤害。
+一把冰冷的阴影之刃，对路径上所有格子造成DamageDealt贯穿伤害。
 You a hurl a shadowy dagger!
-你投出一把暗影匕首！
+你投出一把阴影匕首！
 Choose aim direction
 选择发射方向
 Shadow Slash
-暗影斩
+阴影斩
 Shadow Scythe
-暗影镰刀
+阴影镰刀
 Slice the area in front of you, dealing a delayed DamageDealt damage in an area and slowing briefly.
 切开你面前的区域，在一个区域内造成延迟的 DamageDealt 伤害并短暂减速。
 You create a tear in space with your finger!
@@ -9486,9 +9486,9 @@ You ready a bola!
 You are feeling drowsy...
 你感觉昏昏欲睡……
 Shadow Strike
-暗影打击
+阴影打击
 Shadow Heel
-暗影脚
+阴影脚
 Runic Ward
 符文盾
 Gives yourself or a creature a magic shield for 50 turns, granting +30 Magic Armor.
@@ -10383,7 +10383,7 @@ Enemies have a harder time noticing you for Duration turns. Cancels if you move,
 You pose in a clandestine manner.
 你摆出了一个隐秘的姿势。
 Darkblade
-暗影之刃
+阴影之刃
 Select which creature to buff
 选择要增益的个体
 Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks
@@ -10541,11 +10541,11 @@ A watery spirit bubbles up from the ground!
 You call upon the plane of Water!
 你向水之位面呼唤！
 Summon Shadow Warrior
-召唤暗影武士
+召唤阴影武士
 Select where to put the shadow warrior (cannot place on occupied squares)
-选择放置暗影武士的位置（不能放置在已被占用的方格上）
+选择放置阴影武士的位置（不能放置在已被占用的方格上）
 Call forth a shadow warrior for 16 turns who deals DamageDealt damage every other turn.
-召唤一名持续 16 回合的暗影武士，每隔一回合造成 DamageDealt 点伤害。
+召唤一名持续 16 回合的阴影武士，每隔一回合造成 DamageDealt 点伤害。
 ...and the abyss answers!
 ……深渊的答案！
 You call...
@@ -11270,7 +11270,7 @@ It is said that fire and water are opposite planes, but I've noticed that the re
 A drawing of many icicles around pools of water. It instructs you to avoid the pools of water and you can see a figure surrounded by ice shards in the distance being set on fire and smashed with a hammer.
 水池周围有许多冰柱的图画。它指示你避开水池，你可以看到远处被冰块包围的人物被点燃并被锤子砸碎。
 The shadow spirits' touch is cold as ice... I have wondered if this temperature property applies to their destructive effects on other types of beings. Unfortunately, I found out the hard way when I tried to summon a shadow creature against an ice elemental...
-影灵的触感像冰一样冰冷……我想知道这种温度特性是否适用于它们对其他类型生物的破坏作用。不幸的是，当我试图召唤一个暗影生物对抗冰元素时，我发现了一个艰难的方法......
+影灵的触感像冰一样冰冷……我想知道这种温度特性是否适用于它们对其他类型生物的破坏作用。不幸的是，当我试图召唤一个阴影生物对抗冰元素时，我发现了一个艰难的方法......
 I was being chased by something fast and heavy, and it was about to crush me when I tossed an Ice Shard behind me. It stopped and I didn't care to look back.
 我被一个又快又重的东西追了上来，当我在身后扔出一块寒冰碎片时，它正要压死我。它停了下来，我不想回头。
 I was walking in the library when I got attacked by a magic book! Fortunately my sword seemed to disapatch it quickly, and I used my spear to stab another one shortly after.
@@ -11954,7 +11954,7 @@ Ancient Heels
 You find a set of glowing heels, glowing magnificently, along with a strange crystal next to it.
 你发现一双发光的高跟鞋，闪闪发光，旁边还有一个奇怪的水晶。
 A pair of towering heels, enchanted with combat magic. When powered, they reduce slow level by 1, and deal 25 shadow damage on-hit with brief slow.
-一双高耸的高跟鞋，刻满了战斗魔法。充能后，它们会降低 1 级减速等级，并在击中时造成 25 点暗影伤害并带有短暂减速。
+一双高耸的高跟鞋，刻满了战斗魔法。充能后，它们会降低 1 级减速等级，并在击中时造成 25 点阴影伤害并带有短暂减速。
 'Shoes of the graceful'
 '优雅之鞋'
 You can barely stand in these heels. They are rigid, metallic, and unbreakable, yet padded on the inside.
@@ -12134,7 +12134,7 @@ Helpless!
 Acid
 酸性
 Shadow
-暗影
+阴影
 Arcane
 奥术
 Ice
