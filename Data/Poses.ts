@@ -200,10 +200,12 @@ function KDGetAvailablePosesLegs(C: Character): string[] {
 		let closed = false;
 		let spread = false;
 		// Logic for the player
-		if (CheckPoseOrTags(C, "FeetLinked")) {
+		if (["FeetLinked", "Legbinders", "LegBind", "Hobbleskirts"].some((tag) => {return CheckPoseOrTags(C, tag);})) {
 			delete poses.Spread;
+			delete poses.Kneel;
 			closed = true;
 		} else if (CheckPoseOrTags(C, "ForceKneel")) {
+			delete poses.Spread;
 			delete poses.Closed;
 		}
 		if (!closed && CheckPoseOrTags(C, "FeetSpreader")) {

@@ -122,6 +122,20 @@ function GetModelWithExtraLayers(NewModel: string, BaseModel: string, Layers: Mo
 	return null;
 }
 
+function GetModelRestraintVersion(BaseModel: string, Parent: boolean): Model {
+	if (ModelDefs[BaseModel]) {
+		let model: Model = JSON.parse(JSON.stringify(ModelDefs[BaseModel]));
+		model.Name = model.Name + "Restraint";
+		if (Parent) {
+			model.Parent = model.Parent + "Restraint";
+		}
+		if (!model.Categories) model.Categories = [];
+		model.Categories.push("Restraints");
+		return model;
+	}
+	return null;
+}
+
 
 function DisposeCharacter(C: Character): void {
 	if (KDCurrentModels.get(C)) {

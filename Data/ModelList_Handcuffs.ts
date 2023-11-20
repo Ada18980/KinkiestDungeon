@@ -29,13 +29,37 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "Irish8Ankle",
+	Folder: "Handcuffs",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Cuffs", "Legirons"],
+	AddPose: ["LegCuffed"],
+	Layers: ToLayerMap([
+		{ Name: "Irish8AnkleLeft", Layer: "AnkleLeft", Pri: 50,
+			HideWhenOverridden: true,
+			InheritColor: "BaseMetal",
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
+		},
+		{ Name: "Irish8AnkleRight", Layer: "AnkleRight", Pri: 50,
+			HideWhenOverridden: true,
+			InheritColor: "BaseMetal",
+			Poses: ToMap(["Closed"]),
+			SwapLayerPose: {Kneel: "AnkleRightKneel"},
+		},
+	])
+});
+
+
 
 AddModel({
 	Name: "HandCuffs",
 	Folder: "Handcuffs",
 	TopLevel: true,
 	Restraint: true,
-	Categories: ["Restraints", "Cuffs", "Legirons"],
+	Categories: ["Restraints", "Cuffs", "Handcuffs"],
 	AddPose: ["HandCuffed"],
 	Layers: ToLayerMap([
 		{ Name: "CuffsLock", Layer: "BindForeWristLeft", Pri: 40.1,
@@ -64,7 +88,7 @@ AddModel({
 	Parent: "HandCuffs",
 	TopLevel: false,
 	Restraint: true,
-	Categories: ["Restraints", "Cuffs", "Legirons"],
+	Categories: ["Restraints", "Cuffs", "Handcuffs"],
 	AddPose: ["HandCuffed"],
 	Layers: ToLayerMap([
 		{ Name: "CuffsLock", Layer: "BindForeWristLeft", Pri: 40.1,
@@ -90,7 +114,7 @@ AddModel({
 	Parent: "HandCuffs",
 	TopLevel: false,
 	Restraint: true,
-	Categories: ["Restraints", "Cuffs", "Legirons"],
+	Categories: ["Restraints", "Cuffs", "Handcuffs"],
 	AddPose: ["HandCuffed"],
 	Layers: ToLayerMap([
 		{ Name: "CuffsLock", Layer: "BindForeWristLeft", Pri: 40.1,
@@ -117,7 +141,7 @@ AddModel({
 	Parent: "HandCuffs",
 	TopLevel: false,
 	Restraint: true,
-	Categories: ["Restraints", "Cuffs", "Legirons"],
+	Categories: ["Restraints", "Cuffs", "Handcuffs"],
 	AddPose: ["HandCuffed"],
 	Layers: ToLayerMap([
 		{ Name: "CuffsLock", Layer: "BindForeWristLeft", Pri: 40.1,
@@ -152,7 +176,7 @@ AddModel({
 	Parent: "HandCuffs",
 	TopLevel: false,
 	Restraint: true,
-	Categories: ["Restraints", "Cuffs", "Legirons"],
+	Categories: ["Restraints", "Cuffs", "Handcuffs"],
 	AddPose: ["HandCuffed"],
 	Layers: ToLayerMap([
 		{ Name: "Thumbcuffs", Layer: "BindForeHandLeft", Pri: -50,

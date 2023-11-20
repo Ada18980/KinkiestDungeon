@@ -268,8 +268,8 @@ let KDDialogue = {
 			"Smile": {playertext: "Default", response: "Default",
 				prerequisiteFunction: (gagged, player) => {return !(KinkyDungeonGetRestraintItem("ItemVulva"));},
 				clickFunction: (gagged, player) => {
-					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapBelt"), 0, true);
-					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapPlug2"), 0, true);
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapBelt"), 0, true, undefined, undefined, undefined, undefined, KDGetSpeakerFaction());
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapPlug2"), 0, true, undefined, undefined, undefined, undefined, KDGetSpeakerFaction());
 					KinkyDungeonChangeRep("Ghost", 3);
 					return false;
 				},
@@ -277,7 +277,7 @@ let KDDialogue = {
 					"Correct": {playertext: "Default", response: "Default", gagDisabled: true,
 						prerequisiteFunction: (gagged, player) => {return !(KinkyDungeonGetRestraintItem("ItemMouth") || KinkyDungeonGetRestraintItem("ItemMouth2") || KinkyDungeonGetRestraintItem("ItemMouth3"));},
 						clickFunction: (gagged, player) => {
-							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapGag"), 0, true);
+							KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapGag"), 0, true, undefined, undefined, undefined, undefined, KDGetSpeakerFaction());
 							KinkyDungeonChangeRep("Ghost", -1);
 							return false;
 						},

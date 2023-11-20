@@ -3846,8 +3846,8 @@ RestraintWolfBallGag,Training Gag
 RestraintWolfBallGagDesc,"A gag used to prevent wolfgirls from biting their owners."
 RestraintWolfBallGagDesc2,"It is reinforced with steel cables, so getting it off will be tricky."
 RestraintWolfCollar,Training Collar
-RestraintWolfCollarDesc,"A collar used to keep unruly wolfgirls in check."
-RestraintWolfCollarDesc2,"If it works on them, it sure as heck works on you."
+RestraintWolfCollarDesc,"A collar with a decorative tag used to identify wolfgirls."
+RestraintWolfCollarDesc2,"Also good for identifying people in general. What a great idea!"
 RestraintWolfLeash,Training Leash
 RestraintWolfLeashDesc,"A leash used for training pets."
 RestraintWolfLeashDesc2,"It is a steel cable with a weatherproof rubber coating, and a convenient handle."
@@ -4262,47 +4262,47 @@ KinkyDungeonUnLinkCrystalAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 RestraintIceArmCuffs,Ice Cuffs
 RestraintIceArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
-RestraintIceArmCuffsDesc2,"They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone..."
+RestraintIceArmCuffsDesc2,"They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone..."
 KinkyDungeonLinkIceArmCuffs,"The enemy attaches your wrist cuffs together!"
 
 RestraintIceArmCuffs2,Wrist Chain
 RestraintIceArmCuffs2Desc,"A pair of cuffs keeping your arms behind your back."
-RestraintIceArmCuffs2Desc2,"They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone..."
+RestraintIceArmCuffs2Desc2,"They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone..."
 KinkyDungeonUnLinkIceArmCuffs2,"Your cuffs detatch!"
 KinkyDungeonLinkIceArmCuffs2,"The enemy attaches your elbow cuffs together!"
 
 RestraintIceArmCuffs3,Cuffs Chain
 RestraintIceArmCuffs3Desc,"A full set of cuffs keeping your arms in a strict elbow tie!"
-RestraintIceArmCuffs3Desc2,"They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone..."
+RestraintIceArmCuffs3Desc2,"They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone..."
 KinkyDungeonUnLinkIceArmCuffs3,"Your wrists detatch, leaving your elbows still bound!"
 
 RestraintIceArmCuffs4,Elbow Chain
-RestraintIceArmCuffs4Desc,"A pair of cuffs keeping your elbows locked together!"
-RestraintIceArmCuffs4Desc2,"They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone..."
+RestraintIceArmCuffs4Desc,"A pair of cuffs keeping your elbows locked together!."
+RestraintIceArmCuffs4Desc2,"They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone..."
 KinkyDungeonUnLinkIceArmCuffs4,"Your elbows detatch!"
 KinkyDungeonLinkIceArmCuffs4,"The enemy attaches your wrist cuffs back together!"
 
 RestraintIceLegCuffs,Ice Leg Cuffs
 RestraintIceLegCuffsDesc,"A pair of cuffs on your legs."
-RestraintIceLegCuffsDesc2,"They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone..."
+RestraintIceLegCuffsDesc2,"They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone..."
 KinkyDungeonLinkIceLegCuffs,"The enemy attaches your leg cuffs together!"
 RestraintIceLegCuffs2,Thigh Chain
 RestraintIceLegCuffs2Desc,"A pair of cuffs chaining your legs together."
-RestraintIceLegCuffs2Desc2,"They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone..."
+RestraintIceLegCuffs2Desc2,"They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone..."
 KinkyDungeonUnLinkIceLegCuffs2,"The leg cuff chain detaches!"
 
 RestraintIceAnkleCuffs,Ice Ankle Cuffs
 RestraintIceAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
-RestraintIceAnkleCuffsDesc2,"They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone..."
+RestraintIceAnkleCuffsDesc2,"They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone..."
 KinkyDungeonLinkIceAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintIceAnkleCuffs2,Ankle Chain
 RestraintIceAnkleCuffs2Desc,"A pair of cuffs chaining your legs together."
-RestraintIceAnkleCuffs2Desc2,"They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone..."
+RestraintIceAnkleCuffs2Desc2,"They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone..."
 KinkyDungeonUnLinkIceAnkleCuffs2,"The ankle cuff chain detaches!"
 KinkyDungeonLinkIceAnkleCuffs2,"Your ankle cuff chain is tightened and pulls your feet together!"
 RestraintIceAnkleCuffs3,Short Ankle Chain
 RestraintIceAnkleCuffs3Desc,"A pair of cuffs chaining your feet tightly together."
-RestraintIceAnkleCuffs3Desc2,"They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone..."
+RestraintIceAnkleCuffs3Desc2,"They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone..."
 KinkyDungeonUnLinkIceAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 
@@ -13185,3 +13185,11 @@ KinkyDungeonBuffShadowSeal,"Shadowy magic is restricting you!"
 KDShadowSeal,"A powerful seal holds you in place temporarily!!!"
 
 KDSelfLock,You lock yourself in magical locks!
+KinkyDungeonRemoveCollarModule,A collar module comes off with the collar!
+
+RestraintShockModule,Shock Module
+RestraintShockModuleDesc,"A sinister used to keep unruly wolfgirls in check."
+RestraintShockModuleDesc2,"If it works on them, it sure as heck works on you. It has a warning label that says: 'CAUTION: NOT WATERPROOF'"
+
+KDDamageModule,"Your RestraintName stops working due to water damage!"
+KDDamageModuleProgress,"Your RestraintName sustains water damage from the high-pressure water!"

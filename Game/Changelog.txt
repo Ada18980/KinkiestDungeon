@@ -22,6 +22,8 @@ TODO add sugar magic ('Blood Energy Magic')
 - Added Ice cuffs
 - Added more types of traps to Edge of Reality and Bellows
 - Added RU translation by Osiris
+- Updated CN translation. Thanks !!
+- Wolfgirl collar and shock module split into different items.
 
 4.83.2 (Nov 2023)
 - Added new perks: Poor Form, Deft Fingering, and Poor Coordination, Smooth Talker. Renamed Graceful Walk to Deft Footwork.

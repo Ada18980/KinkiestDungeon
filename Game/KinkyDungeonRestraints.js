@@ -3951,7 +3951,14 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover, Fo
 						if (KinkyDungeonRestraintVariants[inventoryAs]) loose.showInQuickInv = true;
 						KinkyDungeonInventoryAdd(loose);
 					} else KinkyDungeonInventoryGetLoose(inventoryAs).quantity += 1;
-				} else KinkyDungeonInventoryAdd({name: rest.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:rest.events});
+				} else {
+					if (!KinkyDungeonInventoryGetLoose(rest.name)) {
+						KinkyDungeonInventoryAdd({name: rest.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:rest.events, quantity: 1});
+					} else {
+						if (!KinkyDungeonInventoryGetLoose(rest.name).quantity) KinkyDungeonInventoryGetLoose(rest.name).quantity = 0;
+						KinkyDungeonInventoryGetLoose(rest.name).quantity += 1;
+					}
+				}
 			}
 
 			// Remove the item itself by unlinking it from the chain
