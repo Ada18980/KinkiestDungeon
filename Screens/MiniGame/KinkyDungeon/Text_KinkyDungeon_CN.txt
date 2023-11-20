@@ -7504,18 +7504,32 @@ A gag with a soft and filling mouthpiece, reinforced with a metallized strap.
 带有柔软填充喉舌的堵嘴，并用金属化表带加固。
 It will be impossible to force it out or cut it with just a knife.
 只用一把刀就不可能把它强行取出或切开。
+Nylon Plug Gag
+尼龙塞子口塞
+A gag with a soft and filling mouthpiece, kept in place by an adjustable nylon strap.
+一种带有柔软填充嘴的堵嘴器，通过可调节尼龙带固定到位。
+It will be impossible to force it out, but can be cut.
+强行拔除是不可能的，但可以切断。
 High-Tech Cables (Arms)
-高科技电缆（臂）
+高科技电缆（手臂）
+Cables made from a self-tightening metallized polyfiber. Impervious to steel edges!
+电缆由自紧金属化多纤维制成。不受锋利物品的影响！
 They are wrapped methodically around your body!
 它们有条不紊地包裹在你的身体上！
 High-Tech Cables (Legs)
 高科技电缆（腿）
-They are wrapped methodically around your body!
-它们有条不紊地包裹在你的身体上！
 High-Tech Cables (Harness)
 高科技电缆（束衣）
+Nylon Cables (Arms)
+尼龙电缆（手臂）
+Cables made from nylon polymer. Very strong and self-tightening, but vulnerable to sharp edges.
+由尼龙聚合物制成的电缆。非常坚固且自紧，但容易受到锋利物品的影响。
 They are wrapped methodically around your body!
 它们有条不紊地包裹在你的身体上！
+Nylon Cables (Legs)
+尼龙电缆（腿）
+Nylon Cables (Harness)
+尼龙电缆（束衣）
 Magic Ribbons (Arms)
 魔法丝带（手臂）
 Those ribbons will hold you tight~
