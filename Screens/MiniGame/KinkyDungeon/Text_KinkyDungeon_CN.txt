@@ -10404,8 +10404,10 @@ The elven arrow flashes and wraps you in mithril ropes!
 精灵之箭闪烁，将你包裹在秘银绳中！
 Ropes wrap themselves around your body from all sides!
 绳索从四面八方缠绕在你的身体上！
-Ropes wrap themselves around your body from all sides!
-绳索从四面八方缠绕在你的身体上！
+Wrappings appear and wrap you head to toe!
+包裹物出现，将你从头到脚包裹起来！
+Vines sprout around you and grab hold of your limbs!
+藤蔓在你周围萌芽并抓住你的四肢！
 Nature magic causes vines to sprout around you!
 自然魔法使藤蔓在你周围发芽！
 Your clothes are stripped and replaced!
