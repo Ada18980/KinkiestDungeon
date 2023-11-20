@@ -8210,6 +8210,33 @@ From the Beyond
 
 You briefly spot your reflection as a reflective cube appears!
 当一个反光立方体出现时，你短暂地发现了自己的倒影！
+Liquid Metal Cube
+液态金属立方体
+The liquid metal cube shatters into glittering dust.
+液态金属立方体碎裂成闪闪发光的灰尘。
+The liquid metal cube sticks to you and hardens! (DamageTaken)
+液态金属立方体粘在你身上并变硬！（DamageTaken）
+The liquid metal cube expands across your body and hardens, taking the form of restraints! (+RestraintAdded)
+液态金属立方体在你的身体上膨胀并变硬，以束缚的形式出现！（+RestraintAdded）
+
+Liquid Metal (Feet)
+液态金属（脚）
+A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion.
+一种既柔软又极其坚硬的金属物质。它会减轻你的负担，减少逃避。
+It will be quite difficult to escape this.
+逃脱这个是相当困难的。
+Liquid Metal (Ankles)
+液态金属（脚踝）
+Liquid Metal (Legs)
+液态金属（腿）
+Liquid Metal (Arms)
+液态金属（手臂）
+Liquid Metal (Hands)
+液态金属（手）
+Liquid Metal (Mouth)
+液态金属（嘴）
+Liquid Metal (Head)
+液态金属（头）
 
 The stairs dissolve right before you!
 楼梯就在你面前消失了！
@@ -8225,6 +8252,138 @@ You succumb to a dark desire... (+RestraintAdded)
 
 Observer's Gaze
 观察者的目光
+
+Industrial Tape Wand
+工业胶带杖
+A non-magical tape wand used for creating tight little packages.
+一种非魔法胶带杖，用于创建紧密的小包装。
+Deals chain damage. 200% binding efficiency. Hitting an enemy applies the Taped debuff for 12 turns, increasing Chain damage to them by 15%. Deal 10 chain damage to adjacent Taped enemies while moving.
+造成连锁伤害。 200% 束缚效率。击中敌人会施加胶带减益效果，持续 12 回合，使其受到的锁链伤害提高 15%。 移动时对相邻的被胶带缠住的敌人造成 10 点锁链伤害。
+
+Bag of Goodies
+一袋好东西
+Someone's secret stash.
+某人的秘密藏匿处。
+Deals charm damage. Applies a toy to targets hit for 40 turns. Offhand: Applies a toy to targets you hit.
+造成绷带伤害。对击中的目标装备玩具，持续 40 回合。副手：将玩具装备到你击中的目标上。
+You find a bag filled with various toys and vibrators...
+你发现一个袋子里装满了各种玩具和振动器......
+You play with yourself using some of the toys in the bag...
+你用袋子里的一些玩具玩自己……
+
+Magic Remote
+魔法遥控器
+The key to absolute power.
+绝对权力的按键。
+Triggers long-duration edging on basic attack if the target has a toy. Offhand: Applies short-duration teasing to targets you hit.
+如果目标有玩具，则在基本攻击时触发长时间的边缘。 副手：对你击中的目标进行短暂的玩弄。
+
+Vibrator Remote
+振动器遥控器
+Select an area
+选择一个区域
+You click the remote and hear a buzzing noise!
+你按下遥控器并听到嗡嗡声！
+15 charge to powerfully activate vibrators in an area for 15 turns.
+15 次充能可强力激活某个区域内的振动器，持续 15 回合。
+10 charge to activate vibrators in an area for 15 turns.
+10 次充能可激活区域内的振动器 15 回合。
+
+You find a golden crystal. It glows faintly.
+你发现一颗金色的水晶。它发出微弱的光芒。
+You find a dull, gold-tinted crystal.
+你发现一颗暗淡的金色晶体。
+
+Rubber Stick
+橡胶棒
+A rubber cylinder without any lewd intentions whatsoever.
+一个没有任何猥亵意图的橡胶圆棒。
+Deals grope damage. 
+造成抚摸伤害。
+You pick up a flexible rubber stick.
+你拿起一根柔软的橡胶棒。
+
+Blade of Fla'peh
+火焰之刃
+A piece of prized ancient equipment. Magical energy causes it to vibrate intensely. What could it have been used for?
+一件珍贵的古代装备。魔力使其剧烈振动。它可以用来做什么？
+Deals grope damage. Can spend 40 charge to add charm damage per hit for 10 turns.
+造成抚摸伤害。每次击中可花费 40 点能量来增加绷带伤害，持续 10 回合。
+You retrieve the Blade of Fla'peh.
+你取回了火焰之刃。
+
+Intense Vibrations: The Blade of Fla'peh deals bonus charm damage!!!
+强烈振动：火焰之刃造成额外的绷带伤害！！！
+The Blade of Fla-peh buzzes with great power!
+火焰之刃嗡嗡作响，威力巨大！
+40 charge to deal 30 charm damage per hit for 10 turns.
+40 点充能，每次击中造成 30 点绷带伤害，持续 10 回合。
+
+Enchanted Rope
+附魔绳
+She who lives by the rope, is tied up by the rope.
+靠绳索生存的她，被绳索束缚着。
+Deals chain damage and applies 50 points of rope binding. Draws 10 mana per hit to apply 50 extra points of magical binding. If you don't have mana, you fail to control the rope...
+造成锁链伤害并施加 50 点绳索束缚。每次击中吸取 10 点法力以施加 50 点额外的魔法束缚。如果你没有法力，你就无法控制绳子......
+You find some enchanted rope.
+你找到一些附魔绳子。
+Without mana to control it, the enchanted rope springs back upon you!
+如果没有法力来控制它，魔法绳子就会弹回到你身上！
+
+Light Bow
+轻弓
+Pointy stick delivery system.
+尖棒输送系统。
+Reload time: None. Deals crush damage on melee. Draws 10 charge and 20 stamina to fire an ordinary arrow, dealing 30 pierce damage.
+装弹时间：无。近战造成挤压伤害。消耗 10 点冲力和 20 点耐力来发射普通箭，造成 30 点穿透伤害。
+You find a wooden bow.
+你找到一把木弓。
+10 charge to fire an arrow. Deals 30 pierce damage.
+10 次充能即可发射箭。造成 30 点穿刺伤害。
+Choose projectile path
+选择弹丸路径
+Arrow
+箭
+You loose an arrow!
+你失去了一支箭！
+
+Fire Arrows
+火焰箭
+Converts arrows to fire arrows for 30 extra charge, which deal the arrow damage plus 20 as fire damage in a 3x3 area and stuns briefly.
+将箭转换为火焰箭，需要 30 次额外充能，在 3x3 区域内造成箭伤害加上 20 点火焰伤害，并短暂眩晕。
+You switch to using fire arrows.
+你切换到使用火焰箭。
+Fire Arrow
+火焰箭
+
+Vine Arrows
+藤蔓箭
+Converts arrows to all-natural organic versions for 20 extra charge, which apply 50 binding to the target and deal chain damage instead.
+将箭转换为纯天然有机版本，需要 20 次额外充能，这会对目标施加 50 点束缚并造成锁链伤害。
+You switch to using vine arrows.
+你切换到使用藤蔓箭。
+Vine Arrow
+藤蔓箭
+A sudden burst of vines overtakes you as you find yourself wrapped up tightly!
+当你发现自己被紧紧包裹时，突然爆发的藤蔓向你袭来！
+
+You find a bow and a glowing crystal. The bow is scribed with runes of duplication.
+你发现了一把弓和一块发光的水晶。弓上刻有复制符文。
+
+Crossbow
+弩
+Watch where you're pointing that thing!
+注意你把那个东西指向哪里！
+Reload time: 3 stationary turns. Deals crush damage on melee. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 65 pierce damage.
+装弹时间：3 静止回合。近战造成挤压伤害。需要 15 次充能且没有耐力来发射普通箭，造成 65 点穿透伤害。
+You find a crossbow.
+你找到一把弩。
+20 charge to fire a bolt. Deals 65 pierce damage.
+20 次充能可发射箭矢。造成 65 点穿刺伤害。
+Choose projectile path
+选择弹丸路径
+Bolt
+箭矢
 
 Items on Ground:
 地面物品：
