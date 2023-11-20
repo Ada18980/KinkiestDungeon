@@ -983,6 +983,80 @@ You turn.
 You turn around.
 你转身。
 
+Take Command
+获取指令
+Unlocks several spells for commanding allies.
+解锁几个命令盟友的咒语。
+
+Attention!
+注意力！
+Select allies in an area
+选择一个区域中的盟友
+Designate allies in a 3x3 area to follow orders.
+指定 3x3 区域内的盟友会遵守命令。
+You select the units.
+你选择小队。
+
+Deselect
+取消选择
+Select allies in an area
+选择一个区域中的盟友
+Deselect allies in a 3x3 area
+取消选择 3x3 区域中的盟友
+You deselect the units.
+你取消选择小队。
+
+Toggle Selection
+切换选择
+Select ally
+选择盟友
+Toggle an allied unit's selection status.
+切换盟友队伍的选择状态。
+You toggle the unit's selection.
+你切换了队伍的选择。
+
+Maneuver
+演习
+Select target location
+选择目标位置
+Order all selected units to move to the targeted point.
+命令所有选定的队伍移动到目标点。
+You order your units to move!
+你命令你的小队移动！
+
+Hold Position
+保持位置
+Selected units do not pursue enemies.
+选定的队伍不会追击敌人。
+Free Movement
+自由移动
+Cancels Hold Position on selected units.
+取消选定队伍的保持位置。
+
+Deselect All
+取消全选
+Deselects all selected units.
+取消选择所有选定的队伍。
+On Me!
+跟我！
+All selected units start following you
+所有选定的队伍开始跟随你
+Disperse
+散开
+All selected units stop following you
+所有选定的队伍停止跟随你
+Defensive Order
+防御令
+All selected units switch to Defensive mode
+所有选定的队伍切换到防御模式
+Aggressive Order
+侵略令
+All selected units switch to Aggressive mode
+所有选定的队伍切换到侵略模式
+
+Unlock using magic
+使用魔法解锁
+
 Burning Desire
 焚心望火
 While above 70% distraction, you ignite nearby objects and gain +40% fire damage.
@@ -15400,3 +15474,16 @@ A powerful seal holds you in place temporarily!!!
 强大的封印将你暂时固定在原地！！！
 You lock yourself in magical locks!
 你把自己锁在魔法锁里！
+A collar module comes off with the collar!
+项圈模块随项圈一起脱落！
+Shock Module
+电击模块
+A sinister used to keep unruly wolfgirls in check.
+一个邪恶的人曾经用来控制不守规矩的狼女。
+If it works on them, it sure as heck works on you. It has a warning label that says: 'CAUTION: NOT WATERPROOF'
+如果它对他们有效，那么对你也同样有效。它有一个警告标签，上面写着：'注意：不防水'
+
+Your RestraintName stops working due to water damage!
+你的 RestraintName 由于水导致损坏而停止工作！
+Your RestraintName sustains water damage from the high-pressure water!
+你的 RestraintName 因高压水而受到水损害！
