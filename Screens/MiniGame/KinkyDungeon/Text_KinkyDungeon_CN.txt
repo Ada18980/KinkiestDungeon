@@ -6487,6 +6487,10 @@ Your elbows detatch!
 你的肘部手铐断开了！
 The enemy attaches your wrist cuffs back together!
 敌人将你的手腕重新绑在一起！
+
+You find 
+你找到 
+
 Collar
 项圈
 A classy leather collar.
@@ -6505,6 +6509,10 @@ A collar made with magically enchanted materials. It is difficult to cut off.
 用魔法材料制成的项圈。很难切断。
 Allows fitting of a leash.
 允许安装牵绳。
+Kitty Collar
+猫咪项圈
+A collar made with magically enchanted materials. It is protected by the blessing of Bast.
+用魔法材料制成的项圈。 它受到Bast祝福的保护。
 Allows fitting of a leash.
 允许安装牵绳。
 Leash
@@ -6513,6 +6521,7 @@ A leash made from a strong material.
 由坚固的材料制成的牵绳。
 Functions as a handle for moving unruly prisoners.
 用于控制和移动不守规矩的囚犯。
+
 Prisoner Plug
 囚犯塞
 A teaser to keep you occupied.
@@ -6531,6 +6540,7 @@ A chastity belt to protect prisoners from themselves.
 保护囚犯免受自身伤害的贞操带。
 Made of a highly durable material.
 由高度耐用的材料制成。
+
 Charms (Arms)
 丝带（手臂）
 A band of faintly magic ribbon wrapped tight around your arms.
