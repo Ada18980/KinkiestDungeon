@@ -14502,7 +14502,7 @@ There is no valid space next to you!
 (Attack her)
 （攻击她）
 (Never mind...)
-（没关系...）
+（算了...）
 (You decide not to)
 （你决定不这么做）
 (Retaliate)
@@ -14512,7 +14512,7 @@ There is no valid space next to you!
 (Attack her)
 （攻击她）
 (Never mind...)
-（没关系...）
+（算了...）
 (You decide not to)
 （你决定不这么做）
 (Sneak Attack)
@@ -14522,7 +14522,7 @@ There is no valid space next to you!
 (Attack her)
 （攻击她）
 (Never mind...)
-（没关系...）
+（算了...）
 (You decide not to)
 （你决定不这么做）
 (Let me through!!)
@@ -14532,23 +14532,23 @@ There is no valid space next to you!
 (Walk past all units)
 （走过所有小队）
 (Never mind...)
-（没关系...）
+（算了...）
 (Confirm? You will move through her for a few turns)
 （确认吗？你在接下来几回合中可以穿过他）
 (Attack her)
 （攻击她）
 (Never mind...)
-（没关系...）
+（算了...）
 (You decide not to)
 （你决定不这么做）
 (Never mind...)
-（没关系...）
+（算了...）
 (Stop following me)
 （停止跟着我）
 (Stop following me)
 （停止跟着我）
 (Never mind...)
-（没关系...）
+（算了...）
 (Confirm? You will have to find the SPEAKER again.)
 （确认？你将需要再次找到 SPEAKER。）
 (You decide you still need the help)
@@ -14560,7 +14560,7 @@ There is no valid space next to you!
 (Follow me)
 （跟我来）
 (Never mind...)
-（没关系...）
+（算了...）
 (The SPEAKER starts following you)
 （SPEAKER 开始跟随你）
 (You decide you don't need the help)
@@ -14568,7 +14568,7 @@ There is no valid space next to you!
 (The SPEAKER refuses to follow your orders)
 （SPEAKER 拒绝听从你的命令）
 (Never mind...)
-（没关系...）
+（算了...）
 (The SPEAKER follows your orders)
 （SPEAKER 听从你的命令）
 (The SPEAKER refuses to follow your orders)
@@ -14578,7 +14578,7 @@ There is no valid space next to you!
 (Hold still)
 （静止不动）
 (Never mind...)
-（没关系...）
+（算了...）
 (The SPEAKER follows your orders)
 （SPEAKER 听从你的命令）
 (The SPEAKER refuses to follow your orders)
@@ -14588,7 +14588,7 @@ There is no valid space next to you!
 (Don't stay here)
 （不要留在这里）
 (Never mind...)
-（没关系...）
+（算了...）
 (Confirm?)
 （确认？）
 (You decide you would rather the SPEAKER stay put)
@@ -14660,7 +14660,7 @@ Why don't we have a little fun?
 (Ask her for help)
 （向她寻求帮助）
 (Never mind...)
-（没关系...）
+（算了...）
 (Are you sure? She might see you as being submissive)
 （你确定吗？她可能认为你是顺从的）
 (The SPEAKER prefers you the way you are)
@@ -14674,7 +14674,7 @@ Why don't we have a little fun?
 (Yes!)
 （是的！）
 (Never mind...)
-（没关系...）
+（算了...）
 (Are you sure? She might see you as being submissive)
 （你确定吗？她可能认为你是顺从的）
 (The SPEAKER would rather 'conserve her mana')
@@ -14688,7 +14688,7 @@ Why don't we have a little fun?
 (Yes!)
 （是的！）
 (Never mind...)
-（没关系...）
+（算了...）
 (Are you sure? She might see you as being submissive)
 （你确定吗？她可能认为你是顺从的）
 (The SPEAKER would rather not give up a magic key)
@@ -14706,7 +14706,7 @@ Why don't we have a little fun?
 (Stop receiving help)
 （停止接受帮助）
 (Never mind...)
-（没关系...）
+（算了...）
 (The SPEAKER will no longer help you.)
 （SPEAKER 将不再帮助你。）
 (You sigh as you realize you really need her help.)
@@ -14718,7 +14718,7 @@ Why don't we have a little fun?
 (Remove from party)
 （从队伍中移除）
 (Never mind...)
-（没关系...）
+（算了...）
 (The SPEAKER understands.)
 （SPEAKER 明白。）
 (You decide to keep her.)
@@ -14730,7 +14730,7 @@ Why don't we have a little fun?
 (Add to party)
 （添加到队伍）
 (Never mind...)
-（没关系...）
+（算了...）
 (The SPEAKER is happy to join you)
 （SPEAKER 很高兴加入你）
 (You decide not to.)
