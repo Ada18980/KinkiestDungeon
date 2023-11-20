@@ -14242,7 +14242,7 @@ Pizza
 (There's no point in fighting when you can't win)|(You wait patiently as the elevator descends)
 （当你赢不了的时候，战斗是没有意义的）|（你耐心地等待电梯下降）
 (Try to get out! RESISTCHANCE% success chance)
-（尝试逃脱！RESISTTCHANCE% 成功率）
+（尝试逃脱！RESISTCHANCE% 成功率）
 (Give up and let it take me)
 （放弃并让它带走我）
 (Wait it out)
