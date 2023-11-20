@@ -9806,6 +9806,46 @@ You snap your fingers!
 你打了一个响指！
 The slime dissolves your clothing, leaving nothing but rubber against your skin...
 粘液会溶解你的衣服，只留下橡胶贴在你的皮肤上......
+
+Riposte
+还击
+Blocking an enemy attack makes them vulnerable and stuns them briefly.
+阻止敌人的攻击会使他们变得脆弱并短暂地眩晕他们。
+Parry
+招架
++15 Block while holding a weapon.
+持有武器时 +15 格挡。
+Dagger Parry
+匕首招架
++15 Block while holding a light weapon such as a knife or dagger.
+持有小刀或匕首等轻武器时 +15 格挡。
+Steadfast Guard
+坚定的守卫
++5 Block for each 50 max willpower you have, while holding a non-light weapon.
+当你持有非轻型武器时，每拥有 50 点最大意志力时 +5 格挡。
+The Power of Steel
+钢铁般的力量
++5 Block for each 50 max willpower you have, while holding a weapon that deals physical damage.
+当你持有造成物理伤害的武器时，每拥有 50 点最大意志力时 +5 格挡。
+Secure Defense
+安全防御
++10-60 Block, based on your percentage of Willpower.
++10-60 格挡，基于你的意志力百分比。
+
+You block the EnemyName attack!
+你挡住了 EnemyName 的攻击！
+You block a binding from EnemyName!
+你挡住了 EnemyName 的束缚！
+You dodge a binding from EnemyName!
+你躲开了来自 EnemyName 的束缚！
+You block the EnemyName!
+你挡住了 EnemyName！
+You dodge the EnemyName!
+你躲开了 EnemyName！
+
+You resist being bound!
+你抗拒被束缚！
+
 CMD: Lock
 指令：锁定
 Select which creature to lock
