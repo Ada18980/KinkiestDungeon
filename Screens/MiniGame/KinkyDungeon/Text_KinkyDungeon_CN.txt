@@ -14317,6 +14317,8 @@ You've gotten lost inside an ancient temple to a kinky goddess.|Will you find yo
 你在一座古老的神庙里迷失了方向，被一位变态的女神所迷失。|你会找到出路，还是会发现自己被困得更深？
 You've gotten yourself lost wandering in the ruins.|The order of tilesets is reversed!
 你在废墟中迷失了方向。|图块顺序颠倒了！
+This is a debug mode journey for testing the latest region.
+这是用于测试最新区域的调试模式旅程。
 These are the stairs to the tutorial hall.
 这是通往新手教程的楼梯。
 Congratulations! You've completed the tutorial!|Now get in there and stay out of trouble~
