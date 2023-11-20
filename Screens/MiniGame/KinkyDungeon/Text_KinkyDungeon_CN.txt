@@ -8776,6 +8776,81 @@ A group of speedy slimes jump out!
 A speedy slime jumps out!
 一条速度极快的史莱姆跳了出来！
 
+Chain Sword
+链剑
+Cut through their defenses and tie them up in the process!
+在此过程中突破他们的防御并捆绑他们！
+Deals slash damage. Adds 5 metal binding.
+造成斩击伤害。添加 5 个金属束缚。
+You pick up sword with a bunch of chains attached.
+你拿起附有一堆链条的剑。
+
+Slime Sword
+粘液剑
+It wiggles as you move it around.
+当你移动它时它也会摆动。
+Deals glue damage. Adds 25 slime binding.
+造成胶水伤害。添加 25 个粘液束缚。
+You pick up slime-covered sword.
+你拿起沾满粘液的剑。
+
+Frost Blade
+冰霜之刃
+As cold as its creator.
+和它的锻造者一样冷酷。
+Deals 20 bonus ice damage and briefly slows the target.
+造成 20 点额外冰冻伤害并短暂减慢目标速度。
+You pick up an icy sword.
+你拿起一把冰冷的剑。
+
+Targe
+圆盾
+Hide behind it while you still can.
+还可以躲在它后面。
++60 Block. Deals crush damage and stuns for 4 turns. Offhand: Gives the same block bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
++60 阻挡。造成挤压伤害并眩晕 4 回合。副手：提供相同的阻挡奖励。盾牌的副手奖励不会与当前装备的盾牌叠加。
+You pick up a wooden shield.
+你拿起一个木盾。
+
+Tower Shield
+塔盾
+Now with more leg room.
+在腿部空间更大。
++120 Block, +30 Physical Armor. Increases slow level by 1. Deals crush damage and stuns for 7 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
++120 阻挡，+30 物理防御。缓慢等级提高 1 级。造成挤压伤害并眩晕 7 回合。副手：提供相同的阻挡和防御加值。盾牌的副手奖励不会与当前装备的盾牌叠加。
+You pick up a metal tower shield.
+你拿起一个金属塔盾。
+
+Reinforced Shield
+强化盾牌
+New and improved, but also clumsier.
+改进后的现代化盾牌，但也更笨拙。
++80 Block, +15 Physical Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
++80 阻挡，+15 物理防御。造成挤压伤害并眩晕 5 回合。副手：提供相同的阻挡和防御加值。盾牌的副手奖励不会与当前装备的盾牌叠加。
+You pick up a reinforced shield.
+你拿起一个强化盾牌。
+
+Runic Shield
+符文盾牌
+For when you've been tied up one too many times...
+因为当你被束缚太多次时...
++80 Block, +20 Magic Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
++80 阻挡，+20 魔法防御。造成挤压伤害并眩晕 5 回合。副手：提供相同的阻挡和防御加值。盾牌的副手奖励不会与当前装备的盾牌叠加。
+You pick up a runic shield.
+你拿起一个符文盾牌。
+
+Vanish
+消失
+Select which creature to buff
+选择要增强的生物
+Make the targeted creature invisible, making you totally invisible for Duration turns. Attacking and casting spells reveals your presence but you are still harder to see.
+使目标生物隐形，使你在持续时间内完全隐形。攻击和施法会暴露你的存在，但你仍然更难被发现。
+You snap your fingers!
+你打了个响指！
+
+The slime dissolves your clothing, leaving nothing but rubber against your skin...
+粘液会溶解你的衣服，只留下橡胶贴在你的皮肤上......
+
 Codex Imaginus
 想像法典
 Clavicula Romantica
@@ -10065,11 +10140,6 @@ Invisibility
 隐形
 Select which creature to buff
 选择要增益的个体
-You snap your fingers!
-你打了一个响指！
-The slime dissolves your clothing, leaving nothing but rubber against your skin...
-粘液会溶解你的衣服，只留下橡胶贴在你的皮肤上......
-
 Riposte
 还击
 Blocking an enemy attack makes them vulnerable and stuns them briefly.
@@ -15434,8 +15504,6 @@ Restoration
 恢复
 Select which creature to buff
 选择要增益的个体
-You snap your fingers!
-你打了一个响指！
 A box tie keeping your arms secured behind your back.
 将你的手臂牢牢固定在背后。
 The ropes squeeze you gently.
