@@ -11599,6 +11599,14 @@ Slash
 劈砍
 Offhand
 副手
+2 Handed
+双手
+Hands-Free
+双手自由
+Massive
+大
+Illumination
+照明
 Pain
 疼痛
 Spirit Draining
