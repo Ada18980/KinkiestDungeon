@@ -6367,8 +6367,10 @@ Shadow Hands (Feet)
 影之手（脚）
 They are holding your feet together!
 它们把你的脚并在一起！
+Shadow Hands...
+影之手……
 They are holding your... uh...
-它们拿着你的……呃……
+它们抓住你的……呃……
 Holy Wrist Rope
 神圣手腕绳缚
 A box tie keeping your arms secured behind your back.
@@ -10288,8 +10290,16 @@ You are ambushed by bandits!
 你被盗贼伏击了！
 Armed skeletons appear from passages in the walls!
 武装的骷髅从墙上的通道中出现！
+An armed skeleton drops down from the ceiling!
+武装的骷髅从天花板上掉了下来！
 A wall panel falls down, and an armored skeleton appears!
 一块墙板倒下，出现了一个装甲骷髅！
+You feel a chill down your spine...
+你感到脊背发凉。。。
+You feel a constricting presence...
+你感觉到一种压抑的存在。。。
+You feel a titillating presence...
+你感觉到一种令人性奋的存在。。。
 You are ambushed by ninjas!
 你被忍者伏击了！
 A large, wriggling mess of ropes fall from the ceiling!
@@ -10298,6 +10308,14 @@ You are ambushed by dragonhearts!
 你被龙之心伏击了！
 You are ambushed by dragonhearts!
 你被龙之心伏击了！
+A pack of drones descends from the ceiling!
+一群无人机从天花板上飞了下来！
+You hear sirens as a group of robots closes in!
+当一群机器人逼近时，你会听到警报声！
+You stumble upon a group of mages wanting to play dress-up!
+你偶然发现一群法师想要玩装扮游戏！
+You step on an open book, only to find a furious librarian staring you down!
+你踩在一本打开的书上，却发现一位愤怒的图书管理员正盯着你！
 You are ambushed by wolfgirls!
 你被狼女伏击了！
 You are ambushed by an alkahestor!
@@ -10305,7 +10323,7 @@ You are ambushed by an alkahestor!
 Small blobs of slime fall from the ceiling!
 一小块粘液团从天花板上掉下来！
 You are ambushed by slime researchers!
-你被粘液研究人员伏击了！
+你被粘液研究员伏击了！
 A large blob of slime falls from the ceiling!
 一大块粘液团从天花板上掉下来！
 In a puff of smoke, a group of fire elementals appear around you!
@@ -10336,38 +10354,47 @@ The Head Maid corners you!
 女仆长把你逼入死角！
 A vine crawls from the ground, already wrapping around your feet!
 一根藤蔓从地上爬了出来，已经缠住了你的脚！
+
 You have broken a magic orb, gaining a Spell Point and angering a goddess.
 你打破了一个魔法球，获得了一个法术点数并激怒了一位女神。
 You have broken a magic orb, gaining a random spell and angering a goddess.
 你打破了一个魔法球，获得了一个随机法术并激怒了一位女神。
 Choose one. She will send her minions after you.
 选择一位女神。她会派她的爪牙追击你。
+
 An altar stands before you, bestowing a heavenly contract.
 一座祭坛矗立在你面前，授予你一份神圣的契约。
 Do you choose to accept its terms?
 你选择接受契约吗？
+
 Are you sure? This choice is final.
 你确定吗？ 这个选择是最终的。
+
 Yes, I will accept.
 是的，我接受。
 (Accept the contract)
 （接受契约）
 I'll think about it.
 我得考虑一下。
+
 You are frozen!
 你被冻住了！
 You are chilled!
 你感到寒冷！
 Shadowy tendrils wrap around your feet, rooting you in place!!!
 阴暗的卷须缠绕在你的脚上，将你固定在原地！！！
+
 You get the feeling that someone is searching for you...
 感觉有人在寻找你……
 You hear movements all around as you realize you are surrounded!!!
 你听到周围的动静，意识到你已经被包围了！！！
+
 There is another restraint underneath!
 底下还有一种束缚具！
+
 Your restraints rub you in sensitive places as you move...
 当你移动时，你的束缚会摩擦你的敏感部位......
+
 Indifferent
 漠不关心
 Angered
