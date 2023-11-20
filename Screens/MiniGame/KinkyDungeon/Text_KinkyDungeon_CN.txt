@@ -13487,6 +13487,69 @@ Wait! That's too much! (PERCENT chance to avoid)
 (Shake your head and moan) (PERCENT chance to avoid)
 （摇头并呻吟）（有 PERCENT 的机会避免）
 
+(A SPEAKER winks at you)|You look like a girl who likes feeling|like a prisoner, am I right?
+（SPEAKER 对你眨眼）|你看起来像一个喜欢|囚禁感的女孩，对吗？
+(The SPEAKER nods happily)|I knew it! Well, it's your lucky day.|I've got some RESTRAINT for you~
+（SPEAKER 高兴地点点头）|我就知道！ 好吧，今天是你的幸运日。|我给你准备了 RESTRAINT~
+(The SPEAKER spins you around)|(You hear the cold metal click shut)|Nice and submissive~
+（SPEAKER 让你转了一圈）|（你听到冰冷的金属咔哒声）|乖乖顺从~
+(The SPEAKER shrugs)|It's not for everyone, I guess~
+（SPEAKER 耸耸肩）|我想这并不适合所有人~
+(The SPEAKER frowns)|Really?|I was so sure...
+（SPEAKER 皱起眉头）|真的吗？|我非常确定……
+(The SPEAKER grins maliciously)|I like seeing prisoners though~|And you're right here...
+（SPEAKER 恶意一笑）|不过我喜欢看到囚犯~|而你就在这里......
+(The SPEAKER giggles)|I'm gonna make you one anyway~|(You see a RESTRAINT in her hand)
+（SPEAKER 咯咯地笑）|无论如何我都会给你做一个~|（你看到她手里有 RESTRAINT）
+(The SPEAKER gulps)|M-Maybe I won't then!
+（SPEAKER 咽了咽口水）|也-也许我不会！
+(The SPEAKER adds the RESTRAINT)|You're blushing dear~|She doth protest too much?
+（SPEAKER 加了 RESTRAINT）|亲爱的你脸红了~|她抗议太多了？
+(The SPEAKER giggles as she catches you and slaps on the cuffs)|No so fast, dear~
+（说话者咯咯笑着抓住你并拍了拍手铐）|别那么快，亲爱的~
+
+(A SPEAKER is looking at something)|So comfy... but how?|Hey, you! Come see this!
+（SPEAKER 正在看着某样东西）|好舒服……但是怎么才能？|嘿，你！快来看看这个！
+(The SPEAKER holds up a RESTRAINT)|It's so soft, but so strict~|Want to give it a try?
+（SPEAKER 举起了 RESTRAINT）|很软，但又很严格~|想尝试一下吗？
+(The SPEAKER quickly fastens it on)|(A wave of comfort passes over you)|(The SPEAKER looks on enviously)
+（SPEAKER 迅速将其扣上）|（一股舒适感笼罩着你）|（SPEAKER 羡慕地看着）
+(The SPEAKER shrugs)|Eh, alright then.
+（SPEAKER 耸耸肩）|呃，好吧。
+(The SPEAKER shrugs)|Up to you.
+（SPEAKER 耸耸肩）|随你。
+(The SPEAKER frowns)|But it's so comfy!|Here, look, I'll show you...
+（SPEAKER 皱起眉头）|但是它真的好舒服！|在这里，看，我会告诉你......
+(The SPEAKER approaches)|Hey, see this RESTRAINT?|I'm going to put it on you~
+（SPEAKER 走近）|嘿，看到 RESTRAINT 了吗？|我要把它戴在你身上~
+(The SPEAKER looks startled)|Oh! Uh, I guess you're right...
+（SPEAKER 看上去很吃惊）|哦！呃，我想你是对的...
+(The RESTRAINT is buckled firmly in place)|See? Good, huh?|(You sink into the comforting feeling)
+（RESTRAINT 牢固地扣在适当的位置）|看到了吗？ 很好吧？|（你陷入了前所未有的舒适感）
+(The SPEAKER ignores you)|(The RESTRAINT is buckled firmly in place)|(A wave of comfort passes over you)
+（SPEAKER 无视你）|（RESTRAINT 牢牢地扣在适当的位置）|（一股舒适感传遍你全身）
+
+(The SPEAKER brushes past hurriedly)|Careful girl!|Else I'll lock you away~
+（SPEAKER 急匆匆地从你身边擦身而过）|小心点姑娘！|不然我就把你锁起来了~
+(The SPEAKER looks at you intrigued)|Aren't you something...|How about wearing this RESTRAINT?
+（SPEAKER 好奇地看着你）|你不是……|戴上 RESTRAINT 怎么样？
+(The SPEAKER grins and locks it on)|Maybe I should bump into you more~
+（SPEAKER 微笑并锁定）|也许我应该碰见更多的你~
+(The SPEAKER rolls her eyes)|Run along then girl~
+（SPEAKER 翻白眼）|姑娘，赶紧跑吧~
+(The SPEAKER nods)|Didn't think so~|Oh, and, uh, sorry for the bump.
+（SPEAKER 点头）|没想到~|哦，呃，抱歉打扰了。
+(The SPEAKER shakes her head)|You don't get off that lightly.|These are going on.
+（SPEAKER 摇头）|你不能轻易离开|这些都在继续。
+(The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(She holds up a RESTRAINT)
+（SPEAKER 皱起眉头）|我想我应该这样做。|你只会打扰别人。|（她举起了 RESTRAINT）
+(The SPEAKER sighs)|I'll let you off then.|Oh, and, uh, sorry for the bump.
+（SPEAKER 叹了口气）|那么我就放过你了。|哦，还有，呃，很抱歉撞到你了。
+(The SPEAKER adds the RESTRAINT)|(As she's locking it, she giggles)|You're really cute actually~
+（SPEAKER 加了 RESTRAINT）|（当她将拘束具锁住时，她咯咯地笑）|其实你真的很可爱~
+(The SPEAKER stumbles and grimaces)|Ugh! Fine, you can go then.|D-Didn't want to see you tied anyway...
+（SPEAKER 踉踉跄跄，做了个鬼脸）|呃！ 好吧，那你可以走了。|无-无论如何也不想看到你被绑着......
+
 (The SPEAKER looks at with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?
 （SPEAKER 用一种哲学的眼光看着）|你有没有想过你想要……|转变？
 (The SPEAKER takes a strange mask from her satchel)|Well, I have the answer right here...
