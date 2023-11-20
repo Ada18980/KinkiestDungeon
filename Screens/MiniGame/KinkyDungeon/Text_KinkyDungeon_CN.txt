@@ -3928,6 +3928,8 @@ The drone zaps you with a restraining energy ray! (DamageTaken)
 无人机用抑制能量射线击杀你！ (DamageTaken)
 The drone uses a short-ranged electrocution attack! (DamageTaken)
 无人机使用短程电击攻击！ (DamageTaken)
+The drone attaches to you! (+RestraintAdded)
+无人机附着在你身上！ (+RestraintAdded)
 The enforcer unit releases magic smoke and explodes.
 执行者释放魔法烟雾并爆炸。
 The enforcer unit fires many cables that squeeze you! (DamageTaken)
