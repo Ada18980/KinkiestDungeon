@@ -6338,7 +6338,7 @@ A chastity belt to protect prisoners from themselves.
 Made of a highly durable material.
 由高度耐用的材料制成。
 Blacksteel Chastity Belt
-黑钢贞操腰带
+黑钢贞操带
 A chastity belt to protect prisoners from themselves.
 保护囚犯免受自身伤害的贞操带。
 Made of a highly durable material.
@@ -6848,7 +6848,7 @@ A cruel device used for locking magical massagers in place.
 It won't stop the dungeon's little curses, but will keep you from removing them.
 它不会阻止地牢的小诅咒，但会阻止你移除它们。
 Ornate Chastity Belt
-华丽贞操腰带
+华丽贞操带
 A cruel device used for locking magical vibrators in place.
 用于锁定魔法振动器的残忍装置。
 The lock won't come off until the magic wears off in time...
