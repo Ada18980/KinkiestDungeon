@@ -6811,6 +6811,10 @@ A leather strap secured onto your face and blocking vision.
 一条皮带固定在你的脸上并阻挡视线。
 You can still see through the gap around your nose.
 你仍然可以通过鼻子周围的缝隙看到。
+Magic Chastity Belt
+魔法贞操带
+A belt protected by a magic seal.
+被魔法封印保护贞操带。
 The shields will open up to accept new toys, but won't let them out...
 会打开并接受新玩具，但不会让它们出来......
 Steel Chastity Belt
@@ -6819,10 +6823,18 @@ A cruel device used for locking magical vibrators in place.
 用于锁定魔法振动器的残忍装置。
 The shields will open up to accept new toys, but won't let them out...
 会打开并接受新玩具，但不会让它们出来......
+Blacksteel Belt
+黑钢贞操带
 A cruel device used for locking magical vibrators in place.
 用于锁定魔法振动器的残忍装置。
+Blacksteel is a metal used by the Old Civilization. It is very difficult to scratch, let alone cut.
+黑钢是旧文明使用的金属。划伤都非常困难，更不用说切割了。
+Blacksteel Bra
+黑钢文胸
 A cruel device used for locking magical massagers in place.
 用于锁定魔法按摩器的残忍装置。
+Blacksteel is a metal used by the Old Civilization. It is very difficult to scratch, let alone cut.
+黑钢是旧文明使用的金属。划伤都非常困难，更不用说切割了。
 Prototype Belt
 原型贞操带
 A strange device built using unknown technology.
