@@ -162,7 +162,7 @@ let DisplacementMaps = [
 ];
 
 let linearList = [
-	//"TextureAtlas/atlas0.json",
+	"TextureAtlas/atlas0.json",
 	...DisplacementMaps.map((e) => {return "DisplacementMaps/" + e;}),
 ];
 
@@ -198,7 +198,6 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 		});
 		//let atlas = await result;
 	}
-
 }
 LoadTextureAtlas(nearestList, PIXI.SCALE_MODES.NEAREST);
 LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
