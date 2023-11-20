@@ -6705,6 +6705,12 @@ A tight leather armbinder enclosing your hands and arms completely.
 一个紧身的皮革束手套完全包住你的手和手臂。
 It's quite snug and secured by lockable buckles in the back. Picking the locks yourself is impossible.
 它非常舒适，并由背面的可锁扣固定。自己开锁是不可能的。
+Leather Boxbinder
+皮革束包扎带
+A secure but comfortable binder meant for long-term wear.
+一种安全而舒适的盒束包扎带，适合长期佩戴。
+It's quite snug and secured by lockable buckles in the back. Picking the locks yourself is impossible.
+它非常舒适，并由背面的可锁扣固定。自己开锁是不可能的。
 Leather Armbinder Harness
 皮革束手套束衣
 Leather belts securing your armbinder tightly.
