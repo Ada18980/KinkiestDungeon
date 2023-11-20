@@ -2191,7 +2191,14 @@ Wizards' Den
 Marble Halls
 大理石大厅
 Doll Storage
-娃娃收纳
+玩偶容器
+Doll Processing
+玩偶工厂
+The Edge of Reality
+现实边缘
+Dark Dimension
+黑暗次元
+
 You search through the debris but find nothing of note
 你在碎片中寻找，但没有发现任何值得注意的东西
 You find some gold coins in a corner (+XXX gold)
@@ -2208,6 +2215,7 @@ You find a bola, crafted by bandits
 你找到了一条由强盗制作的投石索
 You find some unexploded ordnance.
 你发现了一些未爆炸的弹药
+
 You find a key lying atop an open tome!
 你发现一个钥匙躺在敞开的书籍上！
 You find a magical key lying atop an open tome!
