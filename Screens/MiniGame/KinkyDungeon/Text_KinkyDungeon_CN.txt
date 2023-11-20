@@ -4833,9 +4833,9 @@ Hug Horror
 The hug horror vanishes... for now
 拥抱恶魂消失了……暂时
 The monstrous spirit gives a crushing hug!!! (DamageTaken)
-恶魂给了一个重压的拥抱！！！ (DamageTaken)
-The monstrous spirit gives a crushing hug!!! (DamageTaken)
-恶魂给了一个重压的拥抱！！！ (DamageTaken)
+恶魂给了你一个重重的拥抱！！！（DamageTaken）
+The monstrous spirit envelops you in tightness, holding you in place! (DamageTaken)
+恶魂将你紧紧的包裹住，把你固定在原地！（DamageTaken）
 The monstrous spirit's chains latch on! (+RestraintAdded)
 恶魂的锁链锁住了！ （+RestraintAdded）
 Greedy Ghast
