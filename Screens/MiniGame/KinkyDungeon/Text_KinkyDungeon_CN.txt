@@ -13550,6 +13550,69 @@ Wait! That's too much! (PERCENT chance to avoid)
 (The SPEAKER stumbles and grimaces)|Ugh! Fine, you can go then.|D-Didn't want to see you tied anyway...
 （SPEAKER 踉踉跄跄，做了个鬼脸）|呃！ 好吧，那你可以走了。|无-无论如何也不想看到你被绑着......
 
+(A SPEAKER gives you a small curtsy)|Good day.|Care to try part of our uniform?
+（SPEAKER 向您行了一个小小的屈膝礼）|美好的一天。|想尝试一下我们的制服吗？
+(The SPEAKER looks content)|We can offer you this RESTRAINT.|It's a snug fit...
+（SPEAKER 看起来很满意）|我们可以为您提供 RESTRAINT。|它非常合身......
+(The SPEAKER buckles it strictly)|All maids wear this at sometime.|You'd fit right in!
+（SPEAKER 严格扣上它）|所有女仆有时都会穿这个。|你很适合！
+(The SPEAKER frowns for a second)|Ah, I see.|As you were then.
+（SPEAKER 皱起了眉头）|啊，我明白了。|就像你当时一样。
+(The SPEAKER nods)|We hope to see you again nonetheless.
+（SPEAKER 点头）|尽管如此，我们还是希望再次见到您。
+(The SPEAKER glares)|We urge you to reconsider.
+（SPEAKER 怒视）|我们敦促你重新考虑。
+(The SPEAKER has a twinkle in her eye)|We will offer you this RESTRAINT.|You should accept.
+（SPEAKER 眼中闪烁着光芒）|我们将为您提供 RESTRAINT。|您应该接受。
+(The SPEAKER pulls an odd smile)|Very well.
+（说话者露出一个奇怪的微笑）|很好。
+(The SPEAKER smugly nods)|(With surprising speed, the RESTRAINT locks in place)|Excellent, a good fit.
+（SPEAKER 得意地点点头）|（RESTRAINT 以惊人的速度锁定到位）|太棒了，非常合适。
+(The SPEAKER covers your mouth with her hand)|Shush, no more bad decisions.|(You feel her buckle the restraint strictly)
+（SPEAKER 用手捂住你的嘴）|嘘，别再做出错误的决定了。|（你感觉到她严格地扣住了束缚）
+
+(The SPEAKER looks at you inquisitively)|(Wordlessly, they motion at your body)|(They seem to be asking about restraints)
+（SPEAKER 好奇地看着你）|（他们一声不吭地向你的身体移动）|（他们似乎在询问束缚）
+(The SPEAKER nods understandingly)|(RESTRAINT appears in their hand)|(They tilt their head at you)
+（SPEAKER 理解地点点头）|（RESTRAINT 出现在他们的手中）|（他们向你歪着头）
+(The SPEAKER spins around you)|(You feel the oddly cold restraint lock in place)|(The SPEAKER nods and moves away)
+（SPEAKER 在你周围旋转）|（你感觉到奇怪的冰冷的束缚锁定到位）|（SPEAKER 点头并走开）
+(The SPEAKER stares at you)|(They put away the RESTRAINT and leave)
+（SPEAKER 盯着你）|（他们收起 RESTRAINT 并离开）
+(The SPEAKER leaves you alone)
+（SPEAKER 留下你独自一人）
+(The SPEAKER seems to frown)|(RESTRAINT appears in their hand)|(They rapidly approach)
+（SPEAKER 似乎皱起了眉头）|（RESTRAINT 出现在他们的手中）|（他们迅速接近）
+(The SPEAKER tilts their head)|(RESTRAINT appears in their hand)|(They come closer)
+（SPEAKER 歪着他们的头）|（RESTRAINT 出现在他们的手中）|（他们走近）
+(The SPEAKER stares at you)|(They put away the RESTRAINT and leave)
+（SPEAKER 盯着你）|（他们收起 RESTRAINT 并离开）
+(The SPEAKER holds you in place)|(You hear the oddly cold material locking)|(They nod at you)
+（SPEAKER 将你固定在原地）|（你听到奇怪的冰冷材料被锁住了）|（他们向你点头）
+(The SPEAKER firmly grabs you)|(The RESTRAINT locks onto your body tightly)|(The oddly cold material makes you shiver)
+（SPEAKER 牢牢地抓住你）|（RESTRAINT 紧紧地锁住你的身体）|（奇怪的冰冷的材料让你瑟瑟发抖）
+
+(A SPEAKER giggles and calls to you)|Hey there~|Fancy seeing some nature?~
+（SPEAKER 咯咯地笑着向你喊话）|嘿那边的人~|想看看大自然吗？~
+(The SPEAKER motions with her hands)|(Vines rise from the floor and twirl)|These will bind you nicely...
+（SPEAKER 用手示意）|（藤蔓从地板上升起并旋转）|这些会很好地束缚你......
+(The SPEAKER grins and motions again)|(The plants wrap around you quickly)|(You wriggle against the RESTRAINT)
+（SPEAKER 咧嘴一笑，再次做了个动作）|（植物迅速包围了你）|（你扭动着抵抗 RESTRAINT）
+(The SPEAKER pouts)|Aww...
+（SPEAKER 撅起嘴）|哇...
+(The SPEAKER frowns)|Not even a little?
+（SPEAKER 皱起眉头）|一点都不？
+(The SPEAKER smirks)|That wasn't a question~
+（SPEAKER 傻笑）|这不是问题~
+(The SPEAKER giggles again)|(Vines begin to move around your feet)|Hold still dear~
+（SPEAKER 再次咯咯地笑）|（藤蔓开始在你脚边移动）|亲爱的，坚持住~
+(The SPEAKER sighs and nods)|(The vines retreat from you)|Fiiine, you can go~
+（SPEAKER 叹了口气，点头）|（藤蔓从你身边撤退）|Fiiine，你可以走了~
+(The vines move much faster)|(You feel the RESTRAINT as you squirm)|A gift, from me~
+（藤蔓移动得更快）|（你扭动时感觉到了 RESTRAINT）|一份礼物，来自我~
+(The SPEAKER giggles loudly)|(The vines catch up and pin you down)|(When they let go, you're left with a RESTRAINT)
+（SPEAKER 咯咯大笑）|（藤蔓追上并把你压住）|（当它们松开时，你就只剩下 RESTRAINT 了）
+
 (The SPEAKER looks at with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?
 （SPEAKER 用一种哲学的眼光看着）|你有没有想过你想要……|转变？
 (The SPEAKER takes a strange mask from her satchel)|Well, I have the answer right here...
