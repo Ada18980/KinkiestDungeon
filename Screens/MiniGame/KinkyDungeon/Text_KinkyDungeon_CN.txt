@@ -11995,6 +11995,8 @@ Acid
 酸性
 Shadow
 暗影
+Arcane
+奥术
 Ice
 寒冰
 Ice
