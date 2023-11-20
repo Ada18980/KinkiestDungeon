@@ -10575,6 +10575,8 @@ Freezing Zombie Orb
 冰冻僵尸宝珠
 Mystic Bolt
 神秘闪电
+The mystic bolt paralyzes you!
+神秘闪电使你瘫痪！
 Rubber Bullets
 橡皮子弹
 You are hit by a fusilade of rubber bullets!
