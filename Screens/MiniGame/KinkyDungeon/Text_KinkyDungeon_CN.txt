@@ -4050,28 +4050,96 @@ The drone uses a short-ranged electrocution attack! (DamageTaken)
 无人机使用短程电击攻击！ (DamageTaken)
 The drone attaches to you! (+RestraintAdded)
 无人机附着在你身上！ (+RestraintAdded)
+
+Auto Capture Unit
+自动捕捉装置
+The capture unit releases magic smoke and explodes.
+捕捉装置释放出魔法烟雾并爆炸。
+The capture unit grabs you securely! (DamageTaken)
+捕捉装置牢牢地抓住你！（DamageTaken）
+The capture unit extends its appendages and wraps them around you! (+RestraintAdded)
+捕捉装置伸出它的附肢并将它们包裹在你周围！（+RestraintAdded）
+The capture unit releases small drones which lock onto your restraints! (DamageTaken)
+捕获装置释放小型无人机锁定你的束缚具！（DamageTaken）
+
+Auto Tape Unit
+自动胶带装置
+The tape unit releases magic smoke and explodes.
+胶带装置释放出魔法烟雾并爆炸。
+The tape unit applies many layers of tape! (DamageTaken)
+胶带装置使用多层胶带！（DamageTaken）
+The tape unit fires off many layers of sticky tape! (+RestraintAdded)
+胶带装置释放出多层胶带！（+RestraintAdded）
+The tape unit releases small drones which lock onto your restraints! (DamageTaken)
+胶带装置释放小型无人机锁定你的束缚具！（DamageTaken）
+
+Force Field Unit
+力场装置
+The forcefield unit releases magic smoke and explodes.
+力场装置释放出魔法烟雾并爆炸。
+The forcefield unit zaps you! (DamageTaken)
+力场装置攻击了你！（DamageTaken）
+The forcefield unit extends its appendages and wraps them around you! (+RestraintAdded)
+力场装置伸出它的附肢并将它们包裹在你周围！（+RestraintAdded）
+The forcefield unit releases small drones which lock onto your restraints! (DamageTaken)
+力场装置释放小型无人机锁定你的束缚具！（DamageTaken）
+
+Force Field Projector
+力场投影仪
+The forcefield erupts into a shower of blue sparks!
+力场爆发出蓝色火花！
+The robot deploys a forcefield!
+机器人部署了力场！
+The robot deploys a set of forcefields!
+机器人部署了一组力场！
+
+Auto Enforcer Unit
+自动执法者
 The enforcer unit releases magic smoke and explodes.
-执行者释放魔法烟雾并爆炸。
+执法者释放魔法烟雾并爆炸。
 The enforcer unit fires many cables that squeeze you! (DamageTaken)
 执法者发射了许多压迫你的电缆！ (DamageTaken)
+The enforcer fires off restraints that wrap around your body and apprehend you! (+RestraintAdded)
+执法者发射出束缚包裹在你身上并逮捕了你！（+RestraintAdded）
+The enforcer releases small drones which lock onto your restraints! (DamageTaken)
+执法者释放小型无人机锁定你的束缚具！（DamageTaken）
+
+Artillery Unit
+炮兵部队
+The artillery unit releases magic smoke and explodes.
+炮兵部队释放魔法烟雾并爆炸。
+The artillery unit fires many cables that squeeze you! (DamageTaken)
+炮兵部队发射出许多电缆挤压着你！（DamageTaken）
+The artillery fires off restraints that wrap around your body and apprehend you! (+RestraintAdded)
+炮兵部队发射出束缚包裹在你身上并逮捕了你！（+RestraintAdded）
+The artillery releases small drones which lock onto your restraints! (DamageTaken)
+炮兵部队释放小型无人机锁定你的束缚具！（DamageTaken）
+
 The energy bolt hits you and paralyzes you!
 能量螺栓击中你并麻痹你！
 Energy Bolt
 能量螺栓
+
 Alkahestor
 万能炼金士
 The alkahestor resigns to her fate.
-宗师炼金师听天由命。
+万能炼金士听天由命。
+The alkahestor releases a vial of liquid that wraps around you! (+RestraintAdded)
+万能炼金士释放出一小瓶液体包裹在你周围！（+RestraintAdded）
+The alkahestor uses an ornate-looking lock! (DamageTaken)
+万能炼金士使用了一把看起来华丽的锁！（DamageTaken）
 The alkahestor shoves you! (DamageTaken)
-宗师炼金师推了你！ (DamageTaken)
+万能炼金士推了你！（DamageTaken）
+
 Latex Elemental
 乳胶精灵
 The latex elemental melts into sticky rubber.
 乳胶精灵融化成了黏糊糊的橡胶。
 The latex elemental molds itself into restraints! (+RestraintAdded)
-乳胶精灵将自己塑造成拘束具！ （+RestraintAdded）
+乳胶精灵将自己塑造成拘束具！（+RestraintAdded）
 The latex elemental slaps you with its appendages! (DamageTaken)
-乳胶精灵用它的肢体拍打你！ (DamageTaken)
+乳胶精灵用它的肢体拍打你！（DamageTaken）
+
 Rope Elemental
 绳索精灵
 The rope elemental gets knotted and falls to the floor, inert.
@@ -4079,7 +4147,8 @@ The rope elemental gets knotted and falls to the floor, inert.
 The rope elemental's limbs lash out at you, wrapping themselves around your body! (+RestraintAdded)
 绳索精灵的触手向你扑来，缠绕在你的身体上！（+RestraintAdded）
 The rope elemental squeezes you tightly! (DamageTaken)
-绳索元素紧紧地绑着你！ (DamageTaken)
+绳索精灵紧紧地绑着你！（DamageTaken）
+
 Leather Elemental
 皮革精灵
 The leather elemental sits down and sulks.
@@ -4090,6 +4159,7 @@ The leather elemental strikes you with her leather belts! (DamageTaken)
 皮革精灵用她的皮带鞭打你！ (DamageTaken)
 The leather elemental clicks a lock onto your restraints! (DamageTaken)
 皮革精灵咔哒一声锁上了你的束缚具！（DamageTaken）
+
 Slime Enthusiast
 粘液爱好者
 The slime enthusiast screams and runs.
@@ -4100,6 +4170,7 @@ The slime enthusiast hugs you in a rubbery embrace! (DamageTaken)
 粘液爱好者用橡皮般的拥抱抱住了你！（DamageTaken）
 The slime enthusiast looks happy to make sure your restraints are secure! (DamageTaken)
 这位粘液爱好者看起来很高兴你的束缚具是安全的！（DamageTaken）
+
 Miner
 矿工
 The bandit tosses her pick to the ground and complains about her pay.
@@ -4110,10 +4181,12 @@ The miner pins you with the haft of her pickaxe! (DamageTaken)
 矿工用她的镐柄钉住你！ (DamageTaken)
 The miner pins you with the haft of her pickaxe and adds a lock! (DamageTaken)
 矿工用她的镐柄钉住你并加了一把锁！（DamageTaken）
+
 You hear a fuse going off...
 你听到引线在燃烧...
 Miner Bomb
 矿工炸弹
+
 Bandit
 盗贼
 The bandit collapses.
@@ -4138,6 +4211,7 @@ That dagger was laced with something...
 那把匕首上镶着什么东西……
 You hear a shattering of glass, suddenly the air around you feels thick and moist...
 你听到玻璃破碎的声音，突然周围的空气变得粘稠而潮湿……
+
 Poison Dagger
 毒匕首
 Lust Bomb
