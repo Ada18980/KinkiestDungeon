@@ -517,6 +517,21 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		"moduleDamage": (e, item, data) => {
+			if (['acid'].includes(KDDamageEquivalencies[data.type] || data.type) && data.dmg > 0) {
+				let alreadyDone = KDItemDataQuery(item, "moduleDamage") || 0;
+				if (alreadyDone < e.count) {
+					alreadyDone += e.mult * data.dmg;
+					KDItemDataSet(item, "moduleDamage", alreadyDone);
+					KinkyDungeonSendTextMessage(4, TextGet("KDDamageModuleProgress").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+				} else {
+					KDRemoveThisItem(item);
+					KinkyDungeonSendTextMessage(4, TextGet("KDDamageModule").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+				}
+			}
+		},
+
+
 		"cursedDamage": (e, item, data) => {
 			if (data.dmg > 0 && !["cold", "soul", "charm"].includes(data.type) && KinkyDungeonStatWill > 0) {
 				/** @type {number} */
@@ -1181,6 +1196,32 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		"collarModule": (e, item, data) => {
+			if (data.item !== item && KDRestraint(item).Group) {
+				let collar = false;
+				for (let inv of KinkyDungeonAllRestraint()) {
+					if (KDRestraint(inv).shrine && (KDRestraint(inv).shrine.includes("Collars"))) {
+						collar = true;
+						break;
+					} else if (inv.dynamicLink) {
+						let link = inv.dynamicLink;
+						// Recursion thru to make sure we have a collar buried in there... somewhere
+						for (let i = 0; i < 30; i++) {
+							if (link && KDRestraint(link).shrine && (KDRestraint(link).shrine.includes("Collars"))) {
+								collar = true;
+								break;
+							}
+							if (link.dynamicLink) link = link.dynamicLink;
+							else i = 30;
+						}
+					}
+				}
+				if (!collar) {
+					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, true, false, false);
+					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRemoveCollarModule"), "lightgreen", 2);
+				}
+			}
+		},
 		"armbinderHarness": (e, item, data) => {
 			if (data.item !== item && KDRestraint(item).Group) {
 				let armbinder = false;
@@ -1202,7 +1243,7 @@ let KDEventMapInventory = {
 					}
 				}
 				if (!armbinder) {
-					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, false, false, false);
+					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, true, false, false);
 					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRemoveArmbinderHarness"), "lightgreen", 2);
 				}
 			}
@@ -1290,8 +1331,8 @@ let KDEventMapInventory = {
 						//KinkyDungeonLinkItem(newRestraint, item, item.tightness, "");
 						if (
 							KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true)) {
-								if (KDToggles.Sound && e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
-							}
+							if (KDToggles.Sound && e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+						}
 
 					}
 				}
@@ -1419,7 +1460,7 @@ let KDEventMapInventory = {
 			KinkyDungeonRemoveRestraint("ItemArms",false,false,true,false);
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("KittyPetSuit"), 15, undefined, undefined, undefined, undefined, undefined, item.faction, true);
 			// leash if collared
-			let collared = KinkyDungeonGetRestraintItem("ItemNeck");
+			let collared = KinkyDungeonPlayerTags.get("Collars");
 			if(collared != undefined){
 				KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BasicLeash"), 1, false, "Red", undefined, undefined, undefined, item.faction, true);
 			}
@@ -1470,14 +1511,14 @@ let KDEventMapInventory = {
 		},
 		"PunishPlayer": (e, item, data) => {
 			if (data.restraint && item === data.restraint) {
-				if (KDRandom() < e.chance || (KDGameData.WarningLevel > 2 && KDRandom() < e.warningchance)) {
-					if (e.stun && KDGameData.WarningLevel > 2) {
+				if (KDRandom() < e.chance || (KDGameData.WarningLevel > (e.count || 2) && KDRandom() < e.warningchance)) {
+					if (e.stun && KDGameData.WarningLevel > (e.count || 2)) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
 						KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
 					}
 					KDGameData.WarningLevel += 1;
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
-					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > 2 ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > (e.count || 2) ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 				}
 			}
@@ -1507,15 +1548,15 @@ let KDEventMapInventory = {
 		},
 		"ShockForStruggle": (e, item, data) => {
 			if (data.struggleType === "Struggle") {
-				if (KDRandom() < e.chance || (KDGameData.WarningLevel > 2 && KDRandom() < e.warningchance) || data.group == "ItemNeck") {
-					if (e.stun && KDGameData.WarningLevel > 2) {
+				if (KDRandom() < e.chance || (KDGameData.WarningLevel > (e.count || 2) && KDRandom() < e.warningchance) || data.group == "ItemNeck") {
+					if (e.stun && KDGameData.WarningLevel > (e.count || 2)) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
 						KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
 					}
 					data.escapePenalty += e.bind ? e.bind : 0.1;
 					KDGameData.WarningLevel += 1;
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
-					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > 2 ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > (e.count || 2) ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 				}
 			}
@@ -1644,14 +1685,14 @@ let KDEventMapInventory = {
 		},
 		"PunishPlayer": (e, item, data) => {
 			if (item.type === Restraint && data.targetX && data.targetY && data.enemy && !(data.enemy && data.enemy.Enemy && KDAllied(data.enemy)) && (!KinkyDungeonHiddenFactions.includes(KDGetFaction(data.enemy)) || KDGetFaction(data.enemy) == "Enemy")) {
-				if (KDRandom() < e.chance || (KDGameData.WarningLevel > 2 && KDRandom() < e.warningchance)) {
-					if (e.stun && KDGameData.WarningLevel > 2) {
+				if (KDRandom() < e.chance || (KDGameData.WarningLevel > (e.count || 2) && KDRandom() < e.warningchance)) {
+					if (e.stun && KDGameData.WarningLevel > (e.count || 2)) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
 						KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
 					}
 					KDGameData.WarningLevel += 1;
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
-					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > 2 ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > (e.count || 2) ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 				}
 			}
@@ -1818,14 +1859,14 @@ let KDEventMapInventory = {
 		},
 		"PunishPlayer": (e, item, data) => {
 			if (data.spell && item.type === Restraint && (!e.punishComponent || (data.spell.components && data.spell.components.includes(e.punishComponent)))) {
-				if (KDRandom() < e.chance || (KDGameData.WarningLevel > 2 && KDRandom() < e.warningchance)) {
-					if (e.stun && KDGameData.WarningLevel > 2) {
+				if (KDRandom() < e.chance || (KDGameData.WarningLevel > (e.count || 2) && KDRandom() < e.warningchance)) {
+					if (e.stun && KDGameData.WarningLevel > (e.count || 2)) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
 						KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
 					}
 					KDGameData.WarningLevel += 1;
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
-					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > 2 ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > (e.count || 2) ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 				}
 			}
@@ -5490,10 +5531,10 @@ let KDEventMapEnemy = {
 						]}
 					);
 
-					if (!KinkyDungeonGetRestraintItem("ItemNeck")) {
+					if (!KinkyDungeonPlayerTags.get("Collars")) {
 						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("ObsidianCollar"), 0, true, "Purple");
 					}
-					if (!KinkyDungeonGetRestraintItem("ItemNeckRestraints") && KinkyDungeonGetRestraintItem("ItemNeck")) {
+					if (!KinkyDungeonGetRestraintItem("ItemNeckRestraints") && KinkyDungeonPlayerTags.get("Collars")) {
 						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BasicLeash"), 0, true, "Purple");
 					}
 
@@ -6207,7 +6248,7 @@ let KDEventMapGeneric = {
 
 			if (KinkyDungeonLastTurnAction != "Attack" && KDGameData.WarningLevel > 0) {
 				if (KDRandom() < 0.25) KDGameData.WarningLevel -= data.delta;
-				if (KDGameData.WarningLevel > 5) KDGameData.WarningLevel = 5;
+				if (KDGameData.WarningLevel > 10) KDGameData.WarningLevel = 10;
 			}
 		},
 	},

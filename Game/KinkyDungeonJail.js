@@ -720,7 +720,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 		if (!wearingLeash) {
 			let touchesPlayer = KinkyDungeonCheckLOS(KinkyDungeonJailGuard(), KinkyDungeonPlayerEntity, playerDist, 1.5, false, false);
 			if (touchesPlayer) {
-				if (!KinkyDungeonGetRestraintItem("ItemNeck")) {
+				if (!KinkyDungeonPlayerTags.get("Collars")) {
 					let collar = KinkyDungeonGetRestraintByName("BasicCollar");
 					KinkyDungeonAddRestraintIfWeaker(collar, KinkyDungeonJailGuard().Enemy.power, true, "", undefined, undefined, undefined, KDGetFaction(KinkyDungeonJailGuard()), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, KinkyDungeonJailGuard());
 					let msg = TextGet("KinkyDungeonAddRestraints").replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name));
@@ -1090,7 +1090,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	let defeat_outfit = params.defeat_outfit;
 	// Handle special cases
 	let collar = KinkyDungeonGetRestraintItem("ItemNeck");
-	if (collar && KDRestraint(collar)) {
+	if (collar && KDRestraint(collar) && KinkyDungeonPlayerTags.get("Collars")) {
 		if (KDRestraint(collar).name == "DragonCollar") defeat_outfit = "Dragon";
 		if (KDRestraint(collar).name == "MaidCollar") defeat_outfit = "Maid";
 		if (KDRestraint(collar).name == "ExpCollar") defeat_outfit = "BlueSuitPrison";
