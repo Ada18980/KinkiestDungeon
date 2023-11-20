@@ -6505,6 +6505,12 @@ It clings, almost of its own accord, but seems vulnerable to both cutting and st
 它几乎是自发地紧贴着它，但似乎很容易受到切割和拉扯的影响。
 Sticky tape made from a metallic material. Used to great effect in police situations.
 由金属材料制成的胶带。在警察情况下使用效果很好。
+Autotape (Hands)
+自动胶带（手）
+Sticky tape made from a metallic material. Used to great effect in police situations.
+由金属材料制成的胶带。在警察情况下使用效果很好。
+It's very sticky and seals your hands tightly, making any struggling ineffective.
+它非常粘，将你的手紧紧封住，使任何挣扎都无效。
 Autotape (Head)
 自动胶带（头）
 Sticky tape made from a metallic material. Used to great effect in police situations.
