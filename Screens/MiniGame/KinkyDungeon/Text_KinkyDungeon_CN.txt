@@ -14529,9 +14529,9 @@ I should be asking the same of you.
 What kind of name is that?
 那是什么名字？
 (SPEAKER frowns)|It means Windsong!|I bet yours isn't anywhere nearly as cool.
-（SPEAKER皱眉）|这意味着风之歌！|我敢打赌你的没有任何地方那么酷。
+（SPEAKER 皱眉）|这意味着风之歌！|我敢打赌你的没有任何地方那么酷。
 (SPEAKER looks enraged)|Because names and meanings are different things!|My name uses the script from the Old Civilization!|You're just a poser!
-（SPEAKER看起来很生气）|因为名字和含义是不同的东西！|我的名字使用了旧文明的脚本！|你只是一个装腔作势的人！
+（SPEAKER 看起来很生气）|因为名字和含义是不同的东西！|我的名字使用了旧文明的脚本！|你只是一个装腔作势的人！
 Why not just call yourself Windsong?
 为什么不直接称自己为风歌？
 I am an adventurer.
@@ -14556,6 +14556,70 @@ Reincarnated ones?
 转世的？
 (SPEAKER tilts her head)|I believe the term is 'Zombie' in the common tongue.
 （SPEAKER 歪着头）|我相信这个词在普通话中是“僵尸”。
+(SPEAKER enjoys the discussion)|When most people die, their spirits pass on to the next life.|But some stay in this world, and with the right blessings,|one can grant them a second chance!|I plan to give them all proper bodies...|Eventually.
+（SPEAKER 很享受讨论）|当大多数人去世时，他们的灵魂会传递到来世。|但有些人留在这个世界上，只要有正确的祝福，|人们可以给他们第二次机会！|我计划给他们所有人合适的身体...|最终。
+How do they get reincarnated?
+他们如何转世？
+(SPEAKER enjoys the discussion)|No, they're people!|People who died long ago.|Now they live a new life, safeguarded by my Resurrection Arts!
+（SPEAKER 很享受讨论）|不，他们是人！|很久以前就死了的人。|现在他们过上了新的生活，受到我的复活术的保护！
+Aren't they dolls? They can barely speak.
+她们不是玩偶吗？他们几乎不能说话。
+(SPEAKER pouts)|Why you...|Long ago, I made a contract with Ninril to guide lost souls back to her.|Do you doubt her blessing?!
+（SPEAKER 撅起嘴）|为什么你...|很久以前，我与宁瑞尔（Ninril）签订了契约，引导迷失的灵魂回到她身边。|你在怀疑她的祝福吗？！
+Your Resurrection Arts don't seem very effective.
+你的复活术似乎不太有效。
+(SPEAKER looks puzzled)|People don't die anymore, but there are still lots of souls out there.|Whenever they stumble into the dungeon, searching for answers,|I'm still here, waiting!
+（SPEAKER 看起来很困惑）|人们不再会死了，但仍然有很多灵魂在那里。|每当他们跌跌撞撞地进入地牢，寻找答案时，|我还在这里等待！
+What do you do now that people don't die?
+现在人们不死，你该怎么办？
+(SPEAKER chortles)|So you've noticed!|As you can see, Ninril is very powerful~
+(SPEAKER 咯咯笑)|原来你已经注意到了！|如你所见，宁瑞尔（Ninril）非常强大~
+You don't look very old yourself.
+你自己看起来并不老。
+(SPEAKER frowns)|Divine blessings shouldn't be used for such silly things!
+（SPEAKER 皱起眉头）|神圣的祝福不应该用于这种愚蠢的事情！
+Can you resurrect my back? It kind of hurts right now...
+你能复活我的背吗？ 现在有点痛...
+(SPEAKER smiles)|Those latex-clad idiots don't understand a thing.|Science can only get you so far!|Worship is where it's at!
+（SPEAKER 微笑）|那些穿着乳胶的白痴什么也不懂。|科学只能让你走这么远！|崇拜就在于此！
+The Alchemists are always looking for a youth potion.
+炼金术士们一直在寻找青春药剂。
+(SPEAKER folds her arms)|Oh ho ho~|That's none of your business, for it is also part of my contract|to keep outsiders from interfering with the catacombs below!
+（SPEAKER 抱起双臂）|哦吼吼~|这不关你的事，因为这也是我契约的一部分|防止外人干涉下面的地下墓穴！
+Do you know what's on the next floor?
+你知道下一层有什么吗？
+(SPEAKER blushes)|Nope, nothing at all!|In fact, whatever it is, you won't find it down here!|Now, would you like to become my pet?
+（SPEAKER 脸红了）|不，什么都没有！|事实上，无论它是什么，你都不会在这里找到它！|现在，你想成为我的宠物吗？
+Do you know anything about the Old Civilization?
+你了解旧文明吗？
+(SPEAKER shrugs)|Oh really...|Must be the fey playing tricks, hehe...
+（SPEAKER 耸耸肩）|哦，真的……|一定是妖精在搞鬼，呵呵……
+I've seen a few robots running around!
+我看到有几个机器人在跑来跑去！
+(SPEAKER looks nervous)|Oh yeah? Where'd you hear that?|The 'adventurer's guild,' huh?|Why don't you just leave the dead to rest~
+（SPEAKER 看起来很紧张）|哦，是吗？ 你从哪里听来的？|‘冒险家公会’吧？|你为什么不让死人安息呢~
+I heard there was an ancient facility on this island.
+听说这个岛上有一个古老的设施。
+(SPEAKER sighs)|Look, the Goddess doesn't tell me everything.|Now then, I have a job to do.|Please stop asking questions!
+（SPEAKER 叹了口气）|看，女神并没有告诉我一切。|现在，我有工作要做。|请停止提问！
+Is Sariel Vinlaga down here?
+萨里尔·文拉加(Sariel Vinlaga)在这儿吗？
+(SPEAKER frowns)|What's with all the questions!|There totally isn't some kind of doll processing facility here!|Perhaps you're a brainwashed doll yourself?
+（SPEAKER 皱起眉头）|这么多问题是怎么回事！|这里完全没有某种玩偶加工设施！|也许你自己就是一个被洗脑的玩偶？
+Does DressUp Co. get their 'cyber doll' products from here?
+DressUp Co. 的“赛博玩偶”产品是从这里获得的吗？
+(SPEAKER chuckles)|I smell a hint of jealousy~
+（SPEAKER 轻笑）|我闻到了一丝嫉妒的味道~
+I don't want to be a pet, so you'll have to force me.
+我不想当宠物，所以你必须强迫我。
+(SPEAKER jumps up and down)|You would!?|That's wonderful~|My resurrection magic can make you young again forever!|All you have to do is pledge your soul to Nirin, the Goddess of Restoration!
+（SPEAKER 上蹦下跳）|你愿意！？|太棒了~|我的复活魔法可以让你永远年轻！|你所要做的就是将你的灵魂许诺给恢复女神宁瑞尔（Ninrin）！
+I'd love to be your pet!
+我很想成为你的宠物！
+(SPEAKER pouts)|Hmmph. Suit yourself.
+（SPEAKER 撅起嘴）|哼。你自便。
+Pledge my soul? That changes things...
+以我的灵魂为誓？ 这改变了事情......
 I am an adventurer.
 我是冒险家。
 Mmmmph.
@@ -14672,12 +14736,17 @@ No way!
 （叹气和耸肩）
 (Attack her without saying anything)
 （二话不说就攻击她）
+
+(SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
+（SPEAKER 清了清喉咙）|我的任务是保持这个墓地的纯洁和神圣。|在这个地方漫步的转世者在我的允许下这样做。|但是你呢？ 我不记得和你达成过任何协议。|你是来挑战我的吗？
 I do what I want.
 我想干什么就干什么。
 (Glare at her and scoff)
 （瞪着她并嗤之以鼻）
 (SPEAKER makes a big grin)|I take that you wish to challenge me?|Very well!|Come at me!
-（SPEAKER咧嘴一笑）|我知道你想挑战我？|很好！|来吧！
+（SPEAKER 咧嘴一笑）|我知道你想挑战我？|很好！|来吧！
+About those 'reincarnated ones'...
+至于那些'转世者'……
 You have no power over me
 你可没权力干涉我
 Hmmph. (Stand proudly)
@@ -14687,15 +14756,16 @@ Hmmph. (Stand proudly)
 I don't want to fight, miss...
 我不想打架，小姐...
 Mmph! (Shake your head frantically)
-嗯！ （疯狂地摇头）
+嗯！（疯狂地摇头）
 (SPEAKER giggles)|Come now, I want to see how good you are!
-（SPEAKER咯咯笑）|来吧，我要看看你有多厉害！
+（SPEAKER 咯咯笑）|来吧，我要看看你有多厉害！
 Yes, I am here to fight you.
 是的，我是来和你战斗的。
 (Nod)
 （点头）
 (SPEAKER smiles)|Then what are we waiting for?
 （SPEAKER笑）|那我们还在等什么？
+
 You're on!
 轮到你了！
 Hmmmph!
@@ -14708,12 +14778,17 @@ I suppose...
 大概吧...
 Mmmmph...
 嗯……
+
 (SPEAKER smiles as she stands over you)|Well well. Look who won.
 （SPEAKER站在你面前微笑）|好吧好吧。看看谁赢了。
 (SPEAKER nods)|Absolutely. Now allow me to make my conditions clear.|You will wear my collar from now on.|Then you will be allowed to go.
 （SPEAKER点头）|当然。现在请允许我把我的条件说清楚。|从现在开始你就戴上我的项圈。|然后你就可以走了。
 (SPEAKER giggles)|You're not in a position to resist.|Now then, let me make myself clear.|I will let you go... but only wearing my collar.
 （SPEAKER咯咯笑）|你没有能力反抗。|现在，让我说清楚。|我会让你走……但只戴上我的项圈。
+(SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(She brandishes a collar) Now including you!
+（SPEAKER 微笑）|这是一个神奇的诅咒，可以暂时封印你的力量~|我会在当我宠物不守规矩的时候使用它......|（她挥舞着项圈）现在包括你！
+What's this weird magic?
+这是什么奇怪的魔法？
 You beat me fair and square.
 你公平地打败了我。
 Mmmph. (Submit)
@@ -14728,8 +14803,12 @@ Mmmph! (Struggle weakly)
 （急切地接受项圈）
 (Accept the collar begrudgingly)
 （勉强接受项圈）
+(SPEAKER presents you with your collar...)|(She locks it around your neck)|You are free to go now, dear!
+（SPEAKER 给你展示了你的项圈...）|（她将其锁在你的脖子上）|你现在可以走了，亲爱的！
+
 (SPEAKER puts up a wall of talismans to regain her strength)|I'm... I'm not finished yet!
 （SPEAKER竖起一堵符墙恢复体力）|我……我还没结束完呢！
+
 (SPEAKER is out of breath)|I... can't... believe... it...|She drops her keys...
 （SPEAKER气喘吁吁）|我……不敢……相信……它……|她的钥匙掉了……
 (SPEAKER looks flabbergasted)|R-really? Okay... I'll give you a reward then...
@@ -14740,6 +14819,7 @@ Mmmph! (Struggle weakly)
 （SPEAKER 反抗，但最终你把堵嘴塞进她的嘴里）|MMMMPH！
 (Gag her)
 （堵住她的嘴）
+
 (This ghost had something to say,|but it appears you've run into a bug instead)|Please report this to Ada18980 on deviantart!
 （这个幽灵有话要说，|但似乎你遇到了一个bug）|请将此报告给deviantart上的Ada18980！
 (Continue)
