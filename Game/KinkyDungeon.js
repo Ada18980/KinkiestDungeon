@@ -1083,6 +1083,7 @@ function KinkyDungeonRun() {
 		//DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
 	} else if (KinkyDungeonState == "Menu") {
 		KinkyDungeonGameFlag = false;
+		KinkyDungeonDressPlayer();
 		DrawCheckboxVis(1700, 100, 64, 64, TextGet("KDToggleSound"), KDToggles.Sound, false, "#ffffff");
 		// Draw temp start screen
 		if (KDLose) {
@@ -1275,6 +1276,7 @@ function KinkyDungeonRun() {
 		}
 
 	} else if (KinkyDungeonState == "Intro") {
+		KinkyDungeonDressPlayer();
 		if (KDIntroStage < 0) KDIntroStage = 0;// Placeholder
 		let currentProgress = KDIntroStage < KDIntroProgress.length ? KDIntroProgress[KDIntroStage] : 1.5;
 		if (currentProgress < 3) KDIntroProgress[KDIntroStage] += KDDrawDelta*0.001;
