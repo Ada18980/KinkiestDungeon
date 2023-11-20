@@ -14490,7 +14490,7 @@ FOODMSG|（它邀请你分享它的美食）
 (Eat it to restore AMOUNT WP)
 (吃掉它可以恢复 AMOUNT WP)
 (Take it!)
-（拿去！）
+（拿走！）
 
 (Someone left their cookies unattended)
 （有人留下了他们的曲奇无人看管）
