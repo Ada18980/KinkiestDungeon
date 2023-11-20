@@ -11845,6 +11845,8 @@ Current Champion
 现任卫士
 Switch Champion
 切换卫士
+Become the champion of this goddess. Capturing bound enemies will grant +1 rep.
+成为这位女神的卫士。捕获被束缚的敌人将获得 +1 声望。
 You are now the champion of the Goddess of GODDESS.
 你现在是 GODDESS 女神的卫士。
 For 3 rep the goddess will grant you slipperiness, boosting your struggling.
