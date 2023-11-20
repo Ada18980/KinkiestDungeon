@@ -4705,6 +4705,18 @@ The librarian snaps her fingers and sends a lock flying at you!
 图书管理员啪的一声，一把锁朝你飞来！
 The librarian whispers seductively into your ear! (DamageTaken)
 图书管理员在你耳边诱人地低语！ (DamageTaken)
+Stone Door
+石门
+The stone door crumbles!
+石门轰然崩塌！
+Steel Door
+铁门
+The stone door crumples inward!
+石门向内塌陷！
+Control Room Door
+控制室门
+The door flies open as the Dollmaker chuckles at you!
+当玩偶师对你咯咯笑时，门突然打开了！
 Giant Mushroom
 巨型蘑菇
 The giant mushroom explodes into a cloud of spores!!!
