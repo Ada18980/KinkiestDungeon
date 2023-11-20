@@ -3486,17 +3486,29 @@ The maid does a fumbled retreat.
 The maid rubs you from many angles! (DamageTaken)
 女仆从多个角度爱抚你的身体！ (DamageTaken)
 M.F. 'Going Loud'
-M.F.“大声”
+M.F. '花哨'
 The maid does a fumbled retreat.
 女仆手忙脚乱地撤退。
 The maid uses secure restraints on you! (+RestraintAdded)
-女仆对你进行严密的拘束！ （+RestraintAdded）
+女仆对你进行严密的拘束！（+RestraintAdded）
 The maid snaps a lock on one of your restraints! (DamageTaken)
 女仆锁住了你的一个拘束具！ (DamageTaken)
 The maid lands a kick and stuns you! (DamageTaken)
 女仆一脚踢晕了你！ (DamageTaken)
 The maid slaps you with a scornful expression! (DamageTaken)
 女仆一脸不屑的打你！ (DamageTaken)
+Heavy Weapons Maid
+重武器女仆
+The maid drops her weapon and runs.
+女仆丢下武器就跑。
+The maid uses secure restraints on you! (+RestraintAdded)
+女仆对你使用安全的束缚！（+RestraintAdded）
+The maid snaps a lock on one of your restraints! (DamageTaken)
+女仆锁住了你的一个拘束具！（DamageTaken）
+The maid bonks you with her weapon! (DamageTaken)
+女仆用她的武器打你！（DamageTaken）
+The maid slaps you with a scornful expression! (DamageTaken)
+女仆一脸轻蔑地打了你一巴掌！（DamageTaken）
 M.F. 'Parasol'
 M.F. 帕拉索尔
 The maid leaps out of sight.
@@ -3508,7 +3520,7 @@ The maid snaps a lock on one of your restraints! (DamageTaken)
 The maid caresses your breasts with a smile! (DamageTaken)
 女仆微笑着抚摸你的乳房！ (DamageTaken)
 M.F. 'Master Plan'
-MF“总体规划”
+M.F. '女仆长'
 The head maid surrenders gracefully.
 女仆长优雅地投降。
 The head maid suddenly whips out a restraint and locks it on! (+RestraintAdded)
