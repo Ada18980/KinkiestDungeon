@@ -6527,6 +6527,12 @@ A harness that secures your other restraints and makes them tighter.
 一种安全带，可固定你的其他束缚并使它们更紧。
 They glow with a trace of magic.
 它们散发着一丝魔法的光芒。
+Magic Boxtie
+后手缚（附魔）
+A box tie keeping your arms secured behind your back.
+将你的手臂牢牢固定在背后。
+They glow with a trace of magic.
+它们散发着一丝魔法的光芒。
 Magic Rope Cuffs
 绳手铐（附魔）
 They glow with a trace of magic.
