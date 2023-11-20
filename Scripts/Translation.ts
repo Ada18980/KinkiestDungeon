@@ -44,7 +44,7 @@ let TranslationDictionary = [
 	},
 	{
 		LanguageCode: "CN",
-		LanguageName: "中文",
+		LanguageName: "简体中文",
 		EnglishName: "Chinese",
 		Files: [
 			"Assets/Female3DCG/ColorGroups_CN.txt",
@@ -73,7 +73,7 @@ let TranslationDictionary = [
 	},
 	{
 		LanguageCode: "JP",
-		LanguageName: "Japanese",
+		LanguageName: "日本語",
 		EnglishName: "Japanese",
 		Files: [
 			"Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_JP.txt",
@@ -81,7 +81,7 @@ let TranslationDictionary = [
 	},
 	{
 		LanguageCode: "ES",
-		LanguageName: "Espanol",
+		LanguageName: "Español",
 		EnglishName: "Spanish",
 		Files: [
 			"Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_ES.txt",
