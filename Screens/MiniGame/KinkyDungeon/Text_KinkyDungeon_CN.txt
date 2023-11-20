@@ -7037,48 +7037,22 @@ Obsidian Cuffs
 黑曜石手铐
 A pair of cuffs that make it easy to restrain you.
 一对手铐，让你轻松束缚。
-It's made of a dark, glistening volcanic metal.
-它是由一种深色的、闪闪发光的火山金属制成的。
+It's made of a dark, shiny metal. If you hold it close you hear whispering.
+它是由一种深色的、闪闪发光的金属制成的。如果你靠近它，你会听到一阵窃窃私语。
 The enemy attaches your wrist cuffs together!
 敌人将你的手腕铐在一起！
-Obs. Wrist Chain
-连接黑曜石手铐
-A pair of cuffs keeping your arms behind your back.
-一对手铐将你的手臂束缚在背后。
-It's made of a dark, glistening volcanic metal.
-它是由一种深色的、闪闪发光的火山金属制成的。
-Your cuffs detatch!
-你的手铐松了！
-The enemy attaches your elbow cuffs together!
-敌人将你的肘部用手铐绑在一起！
-Obs. Wrist Chain
-连接黑曜石手铐
-It's made of a dark, glistening volcanic metal.
-它是由一种深色的、闪闪发光的火山金属制成的。
-Your wrists detatch, leaving your elbows still bound!
-你的手腕松开了，你的手肘仍然被束缚着！
-Obs. Elbow Chain
-黑曜石肘部手铐
-A pair of cuffs keeping your elbows locked together!
-一对手铐将你的肘部固定在一起！
-It's made of a dark, glistening volcanic metal.
-它是由一种深色的、闪闪发光的火山金属制成的。
-Your elbows detatch!
-你的肘部手铐断开了！
-The enemy attaches your wrist cuffs back together!
-敌人将你的手腕重新绑在一起！
 Obsidian Leg Cuffs
 黑曜石腿铐
 A pair of cuffs chaining your legs together.
 一对手铐将你的双腿拴在一起。
-It's made of a dark, glistening volcanic metal.
-它是由一种深色的、闪闪发光的火山金属制成的。
+It's made of a dark, shiny metal. If you hold it close you hear whispering.
+它是由一种深色的、闪闪发光的金属制成的。如果你靠近它，你会听到一阵窃窃私语。
 Obsidian Ankle Cuffs
 黑曜石脚铐
 A pair of cuffs chaining your legs together.
 一对手铐将你的双腿拴在一起。
-It's made of a dark, glistening volcanic metal.
-它是由一种深色的、闪闪发光的火山金属制成的。
+It's made of a dark, shiny metal. If you hold it close you hear whispering.
+它是由一种深色的、闪闪发光的金属制成的。如果你靠近它，你会听到一阵窃窃私语。
 The enemy attaches your ankle cuffs together!
 敌人将你的脚铐绑在一起！
 Cuffs Chain
