@@ -6521,12 +6521,12 @@ A harness acting as a handle to pull you around
 能使你被拉住的绳衣
 They glow with a trace of magic.
 它们散发着一丝魔法的光芒。
-Magic Arm Rope
-手臂绳缚（附魔）
+Magic Harness
+束衣（附魔）
+A harness that secures your other restraints and makes them tighter.
+一种安全带，可固定你的其他束缚并使它们更紧。
 They glow with a trace of magic.
 它们散发着一丝魔法的光芒。
-The knots appear to tie themselves together again, making them impossible to undo!
-结似乎再次将自己绑在一起，使它们无法解开！
 Magic Rope Cuffs
 绳手铐（附魔）
 They glow with a trace of magic.
