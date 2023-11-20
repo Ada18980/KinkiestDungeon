@@ -6580,6 +6580,12 @@ Latex Armbinder
 乳胶束手套
 A tight armbinder that pins your arms tightly behind your back
 一个紧绷的束手套，将你的手臂紧紧地固定在你的背后
+Latex Boxbinder
+乳胶盒束包扎带
+A secure but comfortable binder meant for long-term wear.
+一种安全而舒适的盒束包扎带，适合长期佩戴。
+It has too much grip to struggle out of, but is made of a fragile material.
+它的抓力太大，难以挣脱，但它是由易碎材料制成的。
 Latex Legbinder
 乳胶束腿套
 A tight legbinder that keeps your legs together!
