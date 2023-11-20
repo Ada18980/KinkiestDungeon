@@ -6150,9 +6150,9 @@ It's incredibly tight and difficult to remove once it's clipped on, but the mate
 You don't meet the conditions to equip that.
 你不符合佩戴条件。
 Experimental Boxtie Binder
-实验性盒束包扎带
+实验性后手缚捆扎带
 A secure but comfortable binder meant for long-term wear by the alchemists' pets.
-一种安全而舒适的包扎带，适合炼金术士的宠物长期佩戴。
+一种安全而舒适的捆扎带，适合炼金术士的宠物长期佩戴。
 Made from imbued latex, it will be hard to cut but not impossible.
 由灌输乳胶制成，很难切割，但并非不可能。
 Binder Harness
@@ -6576,7 +6576,7 @@ They glow with a trace of magic.
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
 Mithril Boxtie
-秘银盒束包扎带
+秘银后手缚捆扎带
 A box tie keeping your arms secured behind your back.
 将你的手臂牢牢固定在背后。
 A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
@@ -14858,13 +14858,13 @@ Select which creature to buff
 You snap your fingers!
 你打了一个响指！
 A box tie keeping your arms secured behind your back.
-将您的手臂牢牢固定在背后。
+将你的手臂牢牢固定在背后。
 The ropes squeeze you gently.
 绳索轻轻地压迫你。
 Boxtie
-盒束包扎带
+后手缚捆扎带
 A box tie keeping your arms secured behind your back.
-盒束包扎带可将你的手臂固定在背后。
+将你的手臂牢牢固定在背后。
 he ropes squeeze you gently.
 绳子轻轻地挤压你。
 Intricate Ropework
