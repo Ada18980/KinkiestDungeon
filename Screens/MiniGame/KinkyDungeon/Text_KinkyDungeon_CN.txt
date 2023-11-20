@@ -11297,7 +11297,7 @@ Feeling determined, you override the seal and release the item!
 下定决心后，你推翻了封印并解开了该物品！
 
 The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it.
-锁由 revanent 密封保护。你需要 25 个灵浆来打开它。
+这把锁由永久性密封件保护。你需要 25 个灵浆来打开它。
 Your fingers pass right through the collar. Pity your neck doesn't pass through it.
 你的手指直接穿过项圈。可惜你的脖子不能穿过它。
 You channel ghastly energy into the lock and break the seal!!!
