@@ -12815,6 +12815,25 @@ I-I accept...
 No way! (PERCENT chance to avoid)
 决不！（有 PERCENT 的机会避免）
 
+Y-Yes?
+是-是？
+(Nod back)
+（点头回应）
+No thank you.
+不，谢谢。
+
+(Smile and prepare yourself)
+（微笑并做好准备）
+(Nod and prepare yourself)
+（点头并做好准备）
+No, not that.
+不，不是那样。
+
+W-Whoa! S-Sure...
+哇-哇！ 当-当然……
+(Shake your head and whine) (PERCENT chance to avoid)
+（摇头并发出呜呜声）（有 PERCENT 的机会避免）
+
 Of course miss.
 当然，小姐。
 (Nod again)
@@ -12878,6 +12897,104 @@ Ah! Don't you dare! (PERCENT chance to avoid)
 啊! 你不敢！（有 PERCENT 的机会避免）
 (Shake your head and whimper) (PERCENT chance to avoid)
 （摇头并呜咽）（有 PERCENT 的机会避免）
+
+Maybe a little~
+或许有一点~
+Don't know, don't care.
+不知道，不在乎。
+Yes! So much!
+是的！太好了！
+(Nod quickly)
+（连忙点头）
+That looks too strict!
+这看起来太严格了！
+
+I- Well- O-Okay~
+我- 嗯- 好-好吧~
+I don't want to get stuck! (PERCENT chance to avoid)
+我不想被绑住！（有 PERCENT 的机会避免）
+(Shake your head worriedly) (PERCENT chance to avoid)
+（担心地摇头）（有 PERCENT 的机会避免）
+
+Of course!
+当然！
+
+Pretty please~
+美人请~
+Stop! (PERCENT chance to avoid)
+停！（有 PERCENT 的机会避免）
+
+Any time~
+随时~
+I'd rather you didn't.
+我宁愿你不要。
+
+Sounds great!
+听起来很棒！
+Actually, I don't want that.
+事实上，我不想这样。
+
+I'll play along then~
+那我们就一起玩吧~
+(Struggle against her) (PERCENT chance to avoid)
+（与她斗争）（有 PERCENT 的机会避免）
+
+(Walk over, curiously)
+（好奇地走过去）
+(Don't approach).
+（不靠近）。
+(Don't approach)
+（不靠近）
+
+Sure!
+当然！
+W-What? No way!
+什-什么？决不！
+
+(Let her add the restraint)
+（让她绑上束缚具）
+
+No, not today.
+不，不是今天。
+Yay!
+耶！
+Not like that!
+不是这样的！
+
+Y-Yes miss~
+是-是的小姐~
+(Duck out the way) (PERCENT chance to avoid)
+（闪开）（有 PERCENT 的机会避免）
+
+Maybe a bit~
+或许有一点~
+Not at all.
+一点也不。
+
+O-Okay...
+好-好的...
+(Shake your head and groan) (PERCENT chance to avoid)
+（摇头并呻吟）（有 PERCENT 的机会避免）
+Don't even try. (PERCENT chance to avoid)
+甚至不要尝试。（有 PERCENT 的机会避免）
+
+That doesn't sound bad...
+听起来不错……
+(Giggle into your gag)
+（咯咯地笑）
+That won't be necessary.
+那是没有必要的。
+
+I'd love to!
+我喜欢！
+Not right now.
+不是现在。
+
+M-Maybe you should then~
+或-或许你应该这样~
+You ran into me! (PERCENT chance to avoid)
+你撞到我了！（有 PERCENT 的机会避免）
+
 
 Fine, I guess.
 好吧，我想。
