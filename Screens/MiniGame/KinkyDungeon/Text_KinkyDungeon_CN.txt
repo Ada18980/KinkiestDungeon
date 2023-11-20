@@ -12212,7 +12212,9 @@ Are you questioning me? I'm a dragonslayer.
 (The SPEAKER chuckles)|You're probably wondering what's in store for you.|It's simple: You behave and do as you're told.|Eventually you will get to roam around.|Don't you dare try to steal anything.
 （SPEAKER轻笑）|你可能想知道为你准备了什么。|很简单：你按照别人的吩咐行事和做事。|最终你可以四处欧东。|别想着尝试偷东西.
 (The SPEAKER giggles and returns to her work)
-（SPEAKER 咯咯笑着会去工作了）
+（SPEAKER 咯咯笑着回去工作了）
+(The SPEAKER smiles)|Looks like you'll get the hang of it pretty quickly!
+（SPEAKER 微笑）|看起来你很快就能掌握窍门了！
 (New life?)
 （新生活？）
 (Let her continue)
