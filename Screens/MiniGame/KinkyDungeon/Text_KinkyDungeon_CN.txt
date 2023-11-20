@@ -5919,10 +5919,17 @@ The goddess restores your mental and physical state!
 女神恢复你的身心状态！
 The goddess teaches you the secrets of SCHOOL. (+1 level)
 女神教你 SCHOOL 的秘密。 （+1 级）
+The goddess of SCHOOL grants you destructive spellcasting!
+SCHOOL 女神赋予你毁灭性的施法能力！
+The goddess of SCHOOL grants you invisibility on attacks!
+SCHOOL 女神让你在受到攻击时隐形！
+The goddess of SCHOOL grants you protection and retaliation!
+SCHOOL 女神给予你保护和报复！
 You leave the coins on the altar and they transform into a ItemBought!
 你把硬币留在祭坛上，它们变成了一个 ItemBought！
 object
 目标
+
 It appears to be a receptacle for an ancient crystal.
 它似乎是一个古老水晶的容器。
 It's a pile of slag emitting a strange magic smoke...
