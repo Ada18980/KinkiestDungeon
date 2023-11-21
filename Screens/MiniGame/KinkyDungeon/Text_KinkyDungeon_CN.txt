@@ -13351,7 +13351,7 @@ I will be a good girl!
 (The SPEAKER looks greedy)|Oh, you have an idea?
 （SPEAKER 看起来很贪婪）|哦，你有主意吗？
 (The SPEAKER nods)|I'll put in a good word with you~
-（SPEAKER 点头）|我会说好话的~
+（SPEAKER 点头）|我会帮你说好话的~
 (The SPEAKER shakes her head)|Babe, you know who's going to be blamed|if a max-security prisoner escapes?
 （SPEAKER 摇头）|宝贝，你知道如果一个最高安全级别的囚犯逃跑|谁会受到指责吗？
 (The SPEAKER shakes her head)|I'll be honest with you, you're not worth the risk.|It'd help if you had more change~
