@@ -7584,6 +7584,8 @@ Leather Cuffs
 皮革铐
 They're made of tough cowhide.
 它们由坚韧的牛皮制成。
+Made of tough leather.
+由坚韧的皮革制成。
 The enemy attaches your wrist cuffs together!
 敌人将你的手腕铐在一起！
 Lthr Wrist Chain
