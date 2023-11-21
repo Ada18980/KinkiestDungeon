@@ -3339,7 +3339,7 @@ The vibration is torturous!
 Edged!
 极限！
 Satisfied. Miscast chance is reduced.
-满意。减少失误的概率
+满足。减少失误的概率
 Damage: 
 伤害：
 Bind: 
@@ -9359,6 +9359,59 @@ The roaring inferno deals 10 damage to you!
 咆哮的地狱对你造成 10 点伤害！
 Mana Burst
 法力冲击
+As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus...
+作为一名学员，你已经学会了在 100% 干扰值的情况下通过恍惚状态引入清晰度的技术。然而，这种状态是不稳定的，施展法术可能会让你失去注意力……
+Inner Power
+内力
+As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana AFTER other modifiers. Toggled passive spells apply half the cooldown.
+作为一名巫师，你能够利用其他人甚至看不到的神秘能量源。在 16 回合未施展法术或攻击后，你的下一个法术的法力消耗在其他调整后会减少你最大法力值的 20%。 切换被动法术的冷却时间减半。
+Battlemage
+战斗法师
+Inner Power is no longer paused after attacking.
+攻击后内力不再暂停。
+Relentless Casting
+无情的铸造
+Inner Power is no longer paused after casting spells.
+施法后内力不再暂停。
+Arcane Recharge
+奥术充能
+Calling upon chaotic energies, your willpower is assaulted in exchange for power. Deals 80 psychic damage to self and drains 10% of your max Willpower to fully restore mana. Does not refill the mana pool.
+召唤混乱的能量，你的意志力会受到攻击，以换取力量。对自己造成 80 点精神伤害，并消耗你最大意志力的 10% 以完全恢复法力。不会补充法力池。
+Way of Pleasure
+快乐之道
+You have chosen the path of absolute pleasure. After letting go of yourself, you restore 25 mana, restoring the same amount to the Mana Pool if you have willpower to spare. Blocks Way of Discipline.
+你选择了绝对快乐的道路。高潮后，你会恢复 25 点法力，如果你有足够的意志力，则将相同数量的法力恢复到法力池中。阻碍纪律之道。
+Intense Power
+强劲动力
+After letting go of yourself, you feel an immense surge of power, increasing magic damage by 40% for 8 turns after you regain control, and by 10% while you remain satisfied.
+高潮后，你会感受到一股巨大的力量涌动，恢复控制后 8 回合内魔法伤害增加 40%，满足时增加 10%。
+
+Pleasure Training I
+快乐训练 I
+You remain satisfied for much less time after letting go. Letting go costs 50% less stamina.
+高潮后，你保持满足感的时间就会少得多。自慰高潮会减少 50% 的耐力。
+Pleasure Training II
+快乐训练 II
+你很难满足。 高潮会降低 50% 的耐力（总计 75%）和 50% 的意志力。
+
+Mental Resistance
+心理抵抗
++100 Psychic and Charm Resist. You can no longer let go involuntarily unless your willpower is 0 (click the buff to toggle), and willpower drains 70% slower while edged.
++100 精神和魅惑抗性。你不能再不由自主地高潮，除非你的意志力为 0（点击增益来切换），并且在即将高潮的边缘时意志力消耗速度减慢70%。
+Mental Resistance: You cannot orgasm except by choice. Click to toggle.
+精神抵抗：除非有选择，否则你无法达到高潮。点击以切换。
+Mental Resistance: You are allowing yourself to let go if forced to. Click to toggle.
+精神抵抗：如果被迫的话，你就允许自己高潮。点击以切换。
+
+Way of Discipline
+纪律之道
+You have chosen the path of absolute discipline. Being in an Edged state increases passive mana recovery and you regenerate 0.5 mana per turn, restoring the same amount to the Mana Pool if you have willpower to spare. Blocks Way of Pleasure.
+你选择了绝对纪律的道路。处于即将高潮的边缘时会增加被动法力恢复，并且每回合可再生 0.5 法力，如果你有多余的意志力，则可以将相同数量的法力恢复到法力池中。阻碍快乐之路。
+Way of Denial
+拒绝之道
+Harnessing your mental discipline, you regenerate 20 mana each time you are denied, restoring the same amount to the Mana Pool if you have willpower to spare.
+利用你的精神纪律，每次你被拒绝高潮时，你都会再生 20 点法力，如果你有多余的意志力，则将相同数量的法力恢复到法力池中。
+
 Flame Novice
 基础火法术
 Unlocks fire spells. Learn Firebolt.
@@ -9407,8 +9460,9 @@ Summoning 101
 召唤 101
 Unlocks summoning spells. Learn Summon Familiar.
 允许学习召唤咒术 并习得咒术 “召唤魔宠”
+
 Blessing of Shadow
-暗之祝福
+阴影祝福
 Unlocks shadow spells. Learn Shadow Dagger.
 允许学习阴影幻术 并习得幻术 “阴影匕首”
 Blessing of Light
@@ -9416,17 +9470,18 @@ Blessing of Light
 Unlocks light spells. Learn Flash.
 允许学习光芒幻术 并习得幻术 “小闪电”
 Blessing of Obscurity
-影之祝福
+隐身祝福
 Unlocks invisibility spells. Learn Camouflage.
 允许学习隐形幻术 并习得幻术 “拟态”
 Projection Magic
-投影幻术
+投影魔法
 Unlocks illusory spells. Learn Summon Decoy.
 允许学习投影幻术 并习得幻术 “召唤诱饵”
 Arcane Knowledge
 奥术知识
 Unlocks knowledge and critical-strike spells. Learn True Steel, and unlocks advanced tooltips for enemies.
 允许学习知识和暴击幻术 解锁对敌人的高级工具提示 并习得幻术 “共析钢”
+
 Glue
 胶水
 The glue attaches to your legs as you try to move through!
@@ -9439,6 +9494,14 @@ Firebolt
 火焰弹
 Elemental's Firebolt
 元素的火焰弹
+Elemental's Gust
+元素之风
+Gust
+风
+Three puffs of wind in a tight cone that deal DamageDealt blast damage and push targets back.
+在紧密的圆锥体中吹出三股风，造成 DamageDealt 点爆炸伤害并将目标推回原处。
+You exhale a mighty wind!
+你呼出一股强大的风！
 A ball of flame that does DamageDealt damage.
 释放造成 DamageDealt 点火焰伤害的火焰弹。
 You a hurl a firebolt!
@@ -9540,6 +9603,16 @@ As you are low on mana, you are unable to store Arcane Energy.
 由于你的法力不足，你无法储存奥术能量。
 You are recharging your next mana cost reduction.
 你正在为下一次的法力消耗减少充能。
+
+Fast Recharge I
+快速充能 I
+Inner power now recharges after 10 turns instead of 16.
+现在内力会在 10 回合（而不是 16 回合）后恢复。
+
+Fast Recharge II
+快速充能 II
+Inner power now recharges after 4 turns instead of 16.
+现在内力会在 4 回合（而不是 16 回合）后恢复。
 
 Windblast
 暴风
@@ -10164,14 +10237,16 @@ While standing on slime/latex, you can cast rubber spells without components.
 当你站在黏液/乳胶上时，你可以在施法部位被限制时释放橡胶法术。
 Convincing Disguise
 令人信服的伪装
+While standing still on slime, or fully bound with at least one latex item, you are harder to notice. Each latex restraint you are wearing increases this amount. Can be toggled off by clicking the buff icon.
+当你站在粘液上或与至少一件乳胶物品完全结合时，你就很难被注意到。你佩戴的每个乳胶束缚都会增加此量。可以通过单击 buff 图标来关闭。
 Magical Implements
 魔法武器精通
-While holding a magical weapon like a staff or enchanted knife, your mana costs are reduced by 20%.
-手持法杖或附魔刀等魔法武器时，法力消耗降低20%。
+While holding a magical weapon like a staff or magic knife, your mana costs are reduced by 20%.
+手持法杖或魔法刀等魔法武器时，法力消耗降低20%。
 Mage Circuits
 魔法电路
-Increases the size of the passive mana pool by +100.
-使被动法力池增加 100 点。
+Increases the size of the passive mana pool by +400.
+使被动法力池增加 400 点。
 Archmage
 大魔法师
 Upcasted spells cost 25% less mana.
@@ -10242,20 +10317,20 @@ Increases the permanent summon cap by +1 (from 3 to 4)
 召唤上限永久增加 +1（从 3 增加到 4）
 Bomb
 炸弹
-Channel for 1 turn for a bomb that does DamageDealt fire damage in an area after DelayTime turns.
-消耗1回合，放置一个 DelayTime 回合后在一个区域内造成 DamageDealt 点火焰伤害的炸弹。
+Channel for 1 turn for a bomb that does DamageDealt blast damage in an area after DelayTime turns.
+消耗1回合，放置一个 DelayTime 回合后在一个区域内造成 DamageDealt 点爆炸伤害的炸弹。
 Fire in the hole!
 小心炸弹！
 Choose target AoE location
 选择施放位置
-Rope Snare
-绳索陷阱
-An invisible trap on the ground that stuns anyone who walks on it for Duration turns and applies 150 points of binding.
-在地面上放置一个隐形陷阱，在 Duration 回合内使任何在其上行走的个体眩晕，并增加 150 点束缚。
-You set an invisible trap!
-你设置了一个无形的陷阱！
-Select where to put the trap (it will be invisible)
-选择放置陷阱的位置（它将不可见）
+Rope Rune
+绳索符文
+An AoE trap on the ground that deals 25 chain damage, roots for 8 turns, and applies 80 points of binding. Takes 3 turns to setup. 200% crit multiplier.
+施放在地面上的陷阱，造成 25 点锁链伤害，在地面存在 8 回合，并施加 80 点束缚。需要 3 回合才能完成放置。200% 暴击倍数。
+You conjure a rope trap!
+你召唤了一个绳索陷阱！
+Choose location for trap
+选择陷阱位置
 Rope Burst
 绳索爆发
 An explosion of rope deals DamageDealt chain damage in a 3x3 AoE and applies 40 points of rope binding. Snares for Duration turns.
@@ -10519,8 +10594,8 @@ Chastity
 贞操
 Select which creature to lock in a belt
 选择要锁定在贞操带中的个体
-Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs and distracts constantly.
-对无助的敌人释放，增加 DamageDealt 点束缚，并装备贞操带以阻止目标移除插入的物体和干扰值变化。
+Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs/toys, and distracts constantly.
+对无助的敌人释放，增加 DamageDealt 点束缚，并装备贞操带以阻止目标移除插入的物体或玩具，并不断增加干扰值。
 You conjure a chastity belt, which latches onto your target!
 你召唤出贞操带，它将佩戴在你的目标身上！
 Your own spell locks you in chastity!
@@ -10607,34 +10682,51 @@ Select area to awaken
 选择唤醒区域
 You command the slime to draw in targets!
 你命令粘液包裹目标！
+
 CMD: Bind
-指令：绑定
+指令：束缚
 Select area to bind
 选择施放位置
 Commands nearby restraints to bind targets standing on them. Rope: 30 chain dmg/5 turn snare. Chain: 30 crush dmg/8 turn disarm. Belts: 50 binding/3 turns vulnerability.
 命令附近的束缚具束缚站在其上的目标。每个绳索造成 30 锁链伤害并束缚 5 回合，每个皮带增加 50 点束缚并脆弱 3 回合，每个链条增加 30 点碾压伤害并缴械 8 回合。
 You say a command word, and the bindings on the ground do your bidding!
-你念出咒语，地面上的束缚具开始按照你的指令行动！
+你念出指令，地面上的束缚具开始按照你的指令行动！
+
 CMD: Unlock
 指令：解锁
 Select which creature to unlock
 选择要解锁的生物
-On yourself: Removes all purple locks. On a creature: Reduces the target's binding by 20 points.
-对你自己：移除所有紫色锁。对生物：减少目标束缚20点。
+On yourself: Removes one magical lock. On a creature: Reduces the target's binding by 20 points.
+对你自己：移除一个魔法锁。对生物：减少目标束缚 20 点。
 You speak a command word!
-你念出解锁咒语！
+你念出指令！
 None of the locks you are wearing respond to your magic.
 你身上的所有锁都没有对你的咒语做出反应。
 You can't help her with this.
 你帮不了她
 You must target yourself, an enemy, or a locked object.
 你必须以自己、敌人或被锁定的对象为目标。
+The command is intricate and you are unable to enunciate it properly!
+指令很复杂，你根本无法正确说出来！
+
+CMD: Greater Unlock
+指令：强大的解锁
+Select which creature to unlock
+选择要解锁的生物
+On yourself: Removes all magical locks. On a creature: Reduces the target's binding by 100 points.
+对你自己：移除所有魔法锁。对生物：减少目标束缚 100 点。
+You speak a powerful command word!
+你念出强大的指令！
+
 Lesser Invisibility
 次级隐形
 Select which creature to buff
 选择要增益的个体
+Make the targeted creature invisible, increasing stealth for Duration turns
+使目标生物隐形，增加持续时间回合的隐身性
 You become semitransparent!
 你变得半透明！
+
 Camouflage
 拟态
 Select yourself
@@ -10643,6 +10735,7 @@ Enemies have a harder time noticing you for Duration turns. Cancels if you move,
 在持续时间回合中，敌人很难注意到你。但如果你移动、施法或睡眠，则会失效。
 You pose in a clandestine manner.
 你摆出了一个隐秘的姿势。
+
 Darkblade
 阴影之刃
 Select which creature to buff
@@ -10651,6 +10744,7 @@ Make the targeted creature (or self) gain +20 damage for Duration turns or 5 att
 使目标生物在 Duration 回合内或下 5 次攻击中伤害增加 20。
 You call forth dark runes on your weapon and arms!
 你在你的武器和手臂上召唤出黑暗符文！
+
 Heal
 治愈
 Select which creature to heal
@@ -10851,6 +10945,8 @@ Witch's Slime
 女巫的粘液团
 Witch's Slime Ball
 女巫的粘液球
+Robotic Arm
+机械臂
 A pool of slime deals DamageDealt glue damage to enemies on impact and covers the area in temporary slime.
 召唤一滩在撞击时造成 DamageDealt 点胶水伤害的粘液，并用粘液覆盖该区域。
 You conjure a pool of slime!
@@ -10859,8 +10955,10 @@ Select where the slime will appear
 选择粘液出现的位置
 Slime Eruption
 粘液喷发
+A huge blast of slime deals DamageDealt glue damage to enemies that enter and binds them briefly.
+巨大的粘液爆炸会造成伤害，对进入的敌人造成胶水伤害并短暂束缚他们。
 You conjure an explosion of slime!
-你令粘液喷发！
+你使粘液喷发！
 Select where the slime will appear
 选择粘液出现的位置
 Slime Splash
