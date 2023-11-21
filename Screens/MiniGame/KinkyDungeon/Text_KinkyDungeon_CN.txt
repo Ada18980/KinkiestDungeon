@@ -10880,6 +10880,17 @@ Make the targeted creature (or yourself) gain +20 armor for Duration turns
 使自身或目标生物在 Duration 回合内获得 +20 物理护甲。
 Your skin takes on the appearance of cracked earth!
 你的皮肤开始变得如裂开的土地一样！
+
+The EnemyName gains increased physical armor!
+EnemyName 获得更高的物理防御！
+The EnemyName buffs the physical armor of her allies!
+EnemyName 增强了盟友的物理防御！
+The EnemyName deploys an energy shield to allies!
+EnemyName 为盟友部署能量护盾！
+The EnemyName activates the vibrators of nearby wolfgirls, greatly motivating them!
+EnemyName 激活了附近的狼女振动器，极大地激励她们！
+The EnemyName activates the vibrators of nearby dolls, greatly motivating them!
+EnemyName 激活了附近的玩偶的振动器，极大地激励他们！
 The EnemyName creates a zone of increased defense!
 EnemyName 创造了一个增加防御的区域！
 EnemyName uses a charm to buff an enemy's Magic Armor and Evasion!
@@ -10892,6 +10903,7 @@ You create a protective zone!
 你创造了一个保护区！
 You create a fan of icicles!
 你创造了一个冰柱！
+
 Wall
 墙
 Select where to put the wall (cannot place on occupied squares)
