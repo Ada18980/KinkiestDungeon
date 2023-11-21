@@ -2730,16 +2730,16 @@ Deals 90 points of binding, 40 chain damage, and rooting a target for 4 turns.
 造成 90 点束缚伤害和 40 点锁链伤害，并固定被攻击目标 4 回合。
 Bomb
 炸弹
-After a 5 turn fuse, deals 100 fire damage in a 3x3 area.
-5 回合后引爆，在 3x3 范围内照成 100 点火焰伤害。
+After a 5 turn fuse, deals 100 blast damage in a 3x3 area.
+5 回合后引爆，在 3x3 范围内造成 100 点爆炸伤害。
 Not a toy!
 不是玩具！
-After a 6 turn fuse, deals 100 fire damage in a 3x3 area.
-延迟 6 回合后，在 3x3 区域内造成 100 点火焰伤害。
+After a 5 turn fuse, deals 100 blast damage in a 3x3 area.
+5 回合后引爆，在 3x3 范围内造成 100 点爆炸伤害。
 Not a toy!
 不是玩具！
 You light the fuse!
-你点燃了引信！！
+你点燃了引线！！
 Knife
 刀
 Lockpick
