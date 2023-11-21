@@ -4806,6 +4806,16 @@ The chain witch vanishes into a pile of metal dust, leaving behind a keyring.
 锁链女巫消失在一堆金属尘埃中，留下一个钥匙圈。
 The chain witch locks all of your restraints!
 锁链女巫锁住了你所有的拘束具！
+The witch's bindings wrap themselves around you! (+RestraintAdded)
+女巫的束缚将你包裹起来！（+RestraintAdded）
+The chain witch tugs sensually at your restraints! (DamageTaken)
+锁链女巫性感地拉扯你的束缚！（DamageTaken）
+Metal Witch
+金属女巫
+The metal witch vanishes into a pile of metal dust, leaving behind a keyring.
+金属女巫消失在一堆金属粉尘中，留下一个钥匙圈。
+The metal witch tugs sensually at your restraints! (DamageTaken)
+金属女巫性感地拉扯你的束缚！（DamageTaken）
 The metal's bindings wrap themselves around you! (+RestraintAdded)
 金属的束缚将你包裹起来！（+RestraintAdded）
 The metal witch tugs sensually at your restraints! (DamageTaken)
