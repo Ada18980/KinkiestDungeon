@@ -14470,14 +14470,36 @@ You're giving me everything you have.
 （SPEAKER 笑）|据说苦茶能治百病……
 (The SPEAKER smiles)|An empty flask?|...Oh.
 （SPEAKER 微笑）|一个空烧瓶？|...哦。
+
+(The SPEAKER approaches you)|My greetings, Outsider!|My throat is parched and I seek the bounties of nature.|Do you have what I seek?
+（SPEAKER 走近你）|我的问候，局外人！|我的喉咙干渴，我寻求大自然的恩赐。|你有我想要的东西吗？
 (The SPEAKER doesn't look surprised)|Then let us have a battle of wits!
-（SPEAKER 一脸不惊讶）|那我们就斗智斗勇吧！
+（SPEAKER 一脸不惊讶）|那我们就开战吧！
 (The SPEAKER thanks you)|A kind offering! You have my thanks.
 （SPEAKER 感谢你）|好心的奉献！你有我的谢意。
+(The SPEAKER thanks you)|A magnificent offering! You have my thanks.
+（SPEAKER 感谢你）|一个伟大的奉献！我对你表示感谢。
+(The SPEAKER tilts her head)|...where did you get this?
+（SPEAKER 歪着头）|...你从哪里得到这个的？
 (The SPEAKER thanks you)|A fine trinket!|I will enjoy meditating upon it.
 （SPEAKER 感谢你）|一个精美的小饰品！|我会喜欢冥想它。
+(The SPEAKER thanks you)|I sense its flowing essence.|You have my thanks.
+（SPEAKER 感谢你）|我感受到它流动的本质。|我对你表示感谢。
 (The SPEAKER thanks you)|I can feel a great sadness emanating from it.|It calls for warmth.
 （SPEAKER 感谢你）|我能感觉到一种巨大的悲伤。|它需要温暖。
+
+
+(The SPEAKER munches on a donut)|Gee I'm starving!|You wouldn't have something to eat, would you?
+（SPEAKER 嚼着甜甜圈）|哎呀我饿了！|你没有东西吃，是吗？
+(The SPEAKER throws a donut in your face)|Ha! Take that!
+（SPEAKER 把一个甜甜圈扔到你脸上）|哈！拿着它！
+(The SPEAKER smiles)|Yum! Thank you!
+（SPEAKER 微笑）|美味！谢谢你！
+(The SPEAKER smiles)|Crunchy! My favorite!
+（SPEAKER 微笑）|脆脆的！我的最爱！
+(The SPEAKER tilts her head)|It smells funny...|Still, it'd be a shame for it to go to waste!
+（SPEAKER 歪着头）|闻起来很怪……|不过，如果浪费了，那就太可惜了！
+
 (The SPEAKER approaches you with an offer)|Hello!|I am searching for magical scrolls.|Would you happen to have any?
 （SPEAKER 向你提议）|你好！|我正在寻找魔法卷轴。|你有吗？
 (The SPEAKER doesn't look surprised)|Rude!
@@ -14489,7 +14511,31 @@ You're giving me everything you have.
 (The SPEAKER smiles)|Thank you!
 （SPEAKER 微笑）|谢谢！
 (The SPEAKER raises a brow)|Thank you! This one is rare!
-（SPEAKER 挑眉）|谢谢！这个难得！
+（SPEAKER 挑眉）|谢谢！这个很难得！
+
+(The SPEAKER invites you to a friendly chat)|Back in my day I used to go visit dungeons all the time|But these days I get so lost in my studies...|Say, you don't happen to have some magic supplies on you?
+（SPEAKER 邀请你有好的进行聊天）|以前我经常去地牢|但是这些天我在学习中迷失了...|说，你不碰巧有一些魔法物资在身上吗？
+(The SPEAKER shrugs)|I guess that's how it is.
+（SPEAKER 耸耸肩）|我想事情就是这样。
+(The SPEAKER smiles)|Always nice to have some of these!
+（SPEAKER 微笑）|拥有这些总是很高兴！
+(The SPEAKER smiles)|I can never get enough of these.
+（SPEAKER 微笑）|我永远都不会嫌这些东西多。
+(The SPEAKER smiles)|Elemental magic, interesting stuff.
+（SPEAKER 微笑）|魔法元素，有趣的东西。
+(The SPEAKER tilts her head)|Why is it wet?
+（SPEAKER 歪着头）|为什么是湿的？
+(The SPEAKER smiles)|Elemental magic, interesting stuff.
+（SPEAKER 微笑）|魔法元素，有趣的东西。
+(The SPEAKER smiles)|Gladly, this will be useful to my studies.
+（SPEAKER 微笑）|很高兴，这对我的学习很有用。
+(The SPEAKER smiles)|My legs don't carry me like they used to~
+（SPEAKER 微笑）|我的腿不再像以前那样支撑我了~
+(The SPEAKER smiles)|Always good to have somebody to talk to.
+（SPEAKER 微笑着）|有人倾诉总是很好的。
+(The SPEAKER giggles)|Living dangerously, I see~
+（SPEAKER 咯咯笑）|生活很危险，我明白了~
+
 (The SPEAKER approaches you with an offer)|Hey girl~|You seem like the explorer type.|Happen to have any good finds?
 （SPEAKER 向你提出要约）|嘿姑娘~|你看起来像探险家。|碰巧有什么好发现吗？
 (The SPEAKER frowns)|Well then.
@@ -14502,6 +14548,9 @@ You're giving me everything you have.
 （SPEAKER 皱眉）|我会接受的，大概……
 (The SPEAKER smiles)|Oooh~!|I love technology!
 （SPEAKER 微笑）|Oooh~！|我爱科技！
+(The SPEAKER nods)|A rare find!
+（SPEAKER 点头）|难得的发现！
+
 (The SPEAKER surprises you)|Greetings, traveler.|I am looking for tools to aid in my mission.
 （SPEAKER 让你大吃一惊）|你好，旅行者。|我正在寻找工具来帮助我完成任务。
 (The SPEAKER doesn't look surprised)|That's how it is, then.
@@ -14514,6 +14563,76 @@ You're giving me everything you have.
 （SPEAKER 鞠躬）|交易工具。
 (The SPEAKER bows)|A most valuable find.
 （SPEAKER 鞠躬）|最有价值的发现。
+
+(The SPEAKER tilts her shades)|I like to think of myself as a dealer in quality tools.
+（SPEAKER 倾斜了她的窗帘）|我喜欢将自己视为优质工具的经销商。
+(The SPEAKER reaches for her hip)|I'd think twice if I were you...
+（SPEAKER 伸手抚摸她的臀部）|如果我是你，我会三思而后行......
+(The SPEAKER smiles)|Nevermere keeps a tight grip on their blueprints.|Thank you.
+（SPEAKER 微笑）|Nevermere 紧紧抓住他们的蓝图。|谢谢。
+(The SPEAKER smiles)|Nevermere keeps a tight grip on their blueprints.|Thank you.
+（SPEAKER 微笑）|Nevermere 紧紧抓住他们的蓝图。|谢谢。
+(The SPEAKER smiles)|There's always a buyer.|That's just the way things are.
+（SPEAKER 微笑）|总会有买家的。|事情就是这样。
+(The SPEAKER smiles)|Portable. Sustainable. A smart choice.
+（SPEAKER 微笑）|便携式。可持续。一个明智的选择。
+(The SPEAKER smiles)|That's what I'm talking about.
+（SPEAKER 微笑）|这就是我所说的。
+(The SPEAKER nods)|Yeah... that'll do.
+（SPEAKER 点头）|是的……就这样。
+
+(The SPEAKER looks somewhat crazed)|I'm looking for some heavy ordnance in order to...|...add to my collection.|Anyway, got any bombs?
+（SPEAKER 看起来有点疯狂）|我正在寻找一些重火力，以便...|...添加到我的收藏中。|无论如何，有炸弹吗？
+(The SPEAKER reaches for her backpack)|I'll blow you away!
+（SPEAKER 伸手去拿她的背包）|我会把你炸飞！
+(The SPEAKER shrugs)|Cute fireworks, I suppose...
+（SPEAKER 耸耸肩）|可爱的烟花，我想……
+(The SPEAKER rubs her hands together)|Excellent...
+（SPEAKER 搓着手）|非常好......
+(The SPEAKER smiles)|Yes! I can make more bombs!
+（SPEAKER 微笑）|是的！ 我可以制造更多炸弹！
+
+(The SPEAKER takes a whiff of her cigar)|Hey friend. Im in the market for some 'tools,'|...if you catch my frift.
+（SPEAKER 吸了一口雪茄）|嘿朋友。我正在市面上寻找一些'工具'，|...如果你明白我的意思的话。
+(The SPEAKER pulls out a knife)|Thought so. You won't take me that easily!
+（SPEAKER 拔出一把刀）|我想是的。你不会那么轻易带走我的！
+(The SPEAKER nods)|Could help out in a bind.
+（SPEAKER 点头）|可以帮忙解决束缚。
+(The SPEAKER nods)|I could use one of these!
+（SPEAKER 点头）|我可以使用其中之一！
+(The SPEAKER smiles)|For when things go south...
+（SPEAKER 微笑着）|当事情恶化的时候。。。
+(The SPEAKER smiles)|For when things go south...
+（SPEAKER 微笑着）|当事情恶化的时候。。。
+
+(A distracted SPEAKER munches on a cookie)
+（SPEAKER 心烦意乱地嚼着一块曲奇）
+(The SPEAKER continues eating her snack)
+（SPEAKER 继续吃着零食）
+(The SPEAKER plucks the cookie out of your hand)|My favorite!
+（SPEAKER 从你手中夺走饼干）|我的最爱！
+(The SPEAKER eats the brownies slowly, savoring every bite)|Kind of dense, but really good!
+（说话者慢慢地吃布朗尼蛋糕，细细品味每一口）|有点稠，但真的很好吃！
+(The SPEAKER takes a bite out of the donut)|A bit heavy on the sprinkles...
+（SPEAKER 咬了一口甜甜圈）|糖粉有点重……
+(The SPEAKER blushes)|This is... my new favorite.
+（SPEAKER 脸红了）|这是……我新的最爱。
+(The SPEAKER's eyes widen as she wolfs down the golden cookie)|Truly divine...
+（SPEAKER 狼吞虎咽地吃下金色曲奇时睁大了眼睛）|真正的神……
+
+(The SPEAKER is reading a kinky fashion magazine)|Why hello gorgeous~|You seem like you know your way around fashion.|Say, I've been on the hunt for unique designs...
+（SPEAKER 正在读一本淫荡的时尚杂志）|为什么你好漂亮~|你看起来对时尚很了解。|老实说，我一直在寻找一种独特的设计......
+(The SPEAKER pouts)|I don't like your attitude.
+（SPEAKER 撅起嘴）|我不喜欢你的态度。
+(The SPEAKER smiles)|Classic vintage!|I approve~
+（SPEAKER 微笑）|经典复古！|我赞成~
+(The SPEAKER giggles)|A girls best friend, eh?
+（SPEAKER 咯咯笑）|女孩最好的朋友，嗯？
+(The SPEAKER giggles)|A girls best friend, eh?
+（SPEAKER 咯咯笑）|女孩最好的朋友，嗯？
+(The SPEAKER gasps)|What an amazing find!!!
+（SPEAKER 喘着粗气）|真是一个惊人的发现！
+
 (The SPEAKER runs up to you)|Hello!|You wouldn't happen to have seen any ghosts lately?|I'm gathering evidence!
 （SPEAKER 跑到你面前）|你好！|你最近有没有碰巧看到任何幽灵？|我正在收集证据！
 (The SPEAKER gasps)|You wouldn't!
@@ -14524,10 +14643,11 @@ You're giving me everything you have.
 （SPEAKER 笑）|这似乎是我调查的有力证据！
 (The SPEAKER grins)|Woah! That's so cool!
 （SPEAKER 咧嘴一笑）|哇！这太酷了！
+
 You're giving me everything you have.
 把你所有东西都交给我。
 (Flail threateningly at her)
-（威胁她）
+（威胁性地殴打她）
 (Do it)
 （答应）
 (Back off)
