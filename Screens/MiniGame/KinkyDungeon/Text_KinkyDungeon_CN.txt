@@ -6120,7 +6120,7 @@ Ropes
 Restoration
 恢复
 Elements
-元素
+精灵
 Conjuration
 咒术
 Illusions
@@ -6187,7 +6187,7 @@ Bast 教会
 Alchemists
 炼金术士
 Elementals
-元素
+精灵
 Dragonheart Order
 龙心教团
 MaidForce
@@ -15671,7 +15671,7 @@ Is Sariel Vinlaga down here?
 (SPEAKER frowns)|What's with all the questions!|There totally isn't some kind of doll processing facility here!|Perhaps you're a brainwashed doll yourself?
 （SPEAKER 皱起眉头）|这么多问题是怎么回事！|这里完全没有某种玩偶加工设施！|也许你自己就是一个被洗脑的玩偶？
 Does DressUp Co. get their 'cyber doll' products from here?
-DressUp Co. 的“赛博玩偶”产品是从这里获得的吗？
+装扮公司的'赛博玩偶'产品是从这里获得的吗？
 (SPEAKER chuckles)|I smell a hint of jealousy~
 （SPEAKER 轻笑）|我闻到了一丝嫉妒的味道~
 I don't want to be a pet, so you'll have to force me.
