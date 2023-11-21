@@ -4368,10 +4368,10 @@ The revenant pouts as it vanishes.
 亡魂生气的消失了。
 The revenant restrains you! (+RestraintAdded)
 亡灵束缚了你！（+RestraintAdded）
-The revenant squeezes your breasts! (DamageTaken)
-亡魂在揉捏你的胸！（DamageTaken）
+The revenant squeezes your breasts and slows you! (DamageTaken)
+亡魂在揉捏你的胸并减慢你的速度！（DamageTaken）
 The revenant grabs you and caresses your tummy! (DamageTaken)
-亡魂抓住了你，抚摸你的肚子！（DamageTaken）
+亡魂抓住了你并抚摸你的肚子！（DamageTaken）
 Skeleton Warrior
 骷髅战士
 The skeleton warrior collapses and falls into pieces.
