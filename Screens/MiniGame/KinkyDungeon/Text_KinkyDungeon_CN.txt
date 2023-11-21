@@ -12269,8 +12269,8 @@ Items carried:
 携带的物品：
 ...and NUMBER more
 ...还有 NUMBER 个
-Disappears if the caster is stunned
-如果敌人受到惊吓，就会消失
+Takes damage if the caster is stunned
+如果施法者被击晕，则会受到伤害
 Disappears if the caster is defeated
 如果敌人被击溃，就会消失
 Caster: ENEMYNAME
