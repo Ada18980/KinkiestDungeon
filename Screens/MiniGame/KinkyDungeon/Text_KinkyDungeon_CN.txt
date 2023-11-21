@@ -15973,6 +15973,10 @@ Pretty please? I promise I'll pay you back.
 
 (The SPEAKER holds up a RESTRAINTNAME)|I've bought some armors from an adventurer lately,|but I don't know if they're safe to wear.|Why don't you try it on for me?|I'll postpone your debt for a later time.
 （SPEAKER 举起一件 RESTRAINTNAME）|我最近从冒险家那里买了一些盔甲，|但我不知道它们是否可以安全穿着。|你为什么不帮我试穿一下呢？|我想我会推迟你的债务。
+(The SPEAKER holds up a RESTRAINTNAME)|I need to make sure you won't go running off again.|This RESTRAINTNAME here has a special seal on it.|I can get you out of it, of course, but you'll have to pay up first.
+（SPEAKER 举起一件 RESTRAINTNAME）|我需要确保你不会再逃单。|这个 RESTRAINTNAME 上面有一个特殊的印章。|当然，我可以让你解开它，但你必须先把欠我的钱付给我。
+(The SPEAKER holds up a RESTRAINTNAME)|Your captors are quite the market for high-security restraints.|If you get captured by them, maybe they'll see my logo on this collar!|It's quite comfy and secure,|you'll end up feeling more submissive the more your wear it.
+（SPEAKER 举起一件 RESTRAINTNAME）|抓捕你的人是高安全性束缚具的销售。|如果你被他们抓获，也许他们会在这个项圈上看到我的标志！|它非常舒适和安全，|你你穿得越多，最终会感觉更加顺从。
 (The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!
 （SPEAKER 举起一个 RESTRAINTNAME）|你的身体看起来就像一个巨大的广告牌！|这套衣服会让你如此有吸引力，没有人能够抗拒！|在，咳咳，检查你的过程中，|他们会..一定会看到我的logo！
 (The SPEAKER folds her arms and nods)|Good girl! I knew you would come clean~
