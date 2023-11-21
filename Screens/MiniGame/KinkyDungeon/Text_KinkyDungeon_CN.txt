@@ -6284,6 +6284,10 @@ Belts emerge from underneath the bed and wrap around you, strapping you down tig
 腰带从床底下出来，缠绕在你身上，把你紧紧地绑起来！
 Binding Dress
 捆绑连衣裙
+It's a devious dress! I hope your elbows are flexible~
+这是一件狡猾的衣服！希望你的手肘灵活~
+So many laces! It would quite a while to put this on normally. That's what magic is for!
+这么多带子！正常戴上这个需要相当长的时间。这就是魔法的用途！
 Ornamental Corset
 观赏紧身胸衣
 Your figure looks gorgeous in this~
