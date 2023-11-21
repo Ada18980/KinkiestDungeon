@@ -3414,6 +3414,16 @@ Angel: MMMMMPHH!!!
 天使：呜呜呜！！！
 (The angel looks puzzled and unlocks your divine restraints)
 （天使一脸疑惑，解开你的神圣束缚）
+
+The EnemyName pulls away your ArmorName!!!
+EnemyName 夺走了你的 ArmorName！！！
+The EnemyName bypasses your security to add the RestraintName!
+EnemyName 绕过你的安全措施添加了 RestrictName！
+The EnemyName tries to restrain you, but you resist the bondage!
+EnemyName 试图束缚你，但被你抵抗了！
+Resist!
+抵抗！
+
 Mystic Lock
 神秘锁
 The mystic lock fades, allowing you to pass once more.
