@@ -1775,7 +1775,7 @@ Your movement sets off your [RESTRAINTNAME]
 Your struggling sets off your [RESTRAINTNAME]
 你的挣扎引发了你的 [RESTRAINTNAME]
 Your attack sets off your [RESTRAINTNAME]
-你的共攻击引发了你的 [RESTRAINTNAME]
+你的攻击引发了你的 [RESTRAINTNAME]
 
 The straps on your gag prevent you from loosening the blindfold!
 堵嘴物上的带子可以防止眼罩松动！
