@@ -10723,6 +10723,8 @@ CMD: Disenchant
 指令：附魔解除
 Select an area
 选择一个区域
+Target a large area. Permanently slows constructs, reduces attack speed by 50%, and deals 30 shadow damage. Refunds 50% mana at 3 or more targets. Cast on self to disenchant bindings.
+瞄准范围大。永久减慢构造体速度，降低攻击速度 50%，并造成 30 点阴影伤害。到达 3 个或更多目标时退还 50% 的法力值。对自身施放以分解束缚。
 You say a command word, siphoning the magic from nearby constructs!
 你念出咒语，开始从附近的构装体中抽取魔力！
 CMD: Vibrate
