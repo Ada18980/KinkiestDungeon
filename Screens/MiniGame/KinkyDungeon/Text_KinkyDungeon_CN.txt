@@ -15578,7 +15578,7 @@ Mmmph! (Struggle weakly)
 (SPEAKER looks flabbergasted)|R-really? Okay... I'll give you a reward then...
 （SPEAKER 看起来大吃一惊）|真-真的吗？好吧……那我给你奖励……
 (Submit to her anyway)
-（总之服从于她）
+（服从于她）
 (SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!
 （SPEAKER 反抗，但最终你把堵嘴塞进她的嘴里）|MMMMPH！
 (Gag her)
