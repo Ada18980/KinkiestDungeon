@@ -3422,6 +3422,16 @@ As you cross the threshold, a mystical lock appears to prevent you from stepping
 当你跨过门槛时，一个神秘的锁会出现，阻止你返回！
 As you cross the threshold, a mystical lock appears to prevent you from stepping back!
 当你跨过门槛时，一个神秘的锁会出现，阻止你返回！
+
+Metal Shield
+金属盾牌
+The shield falls to the floor.
+盾牌掉落在地板上。
+A metal shield blocks your way!
+金属盾牌挡住了你的路！
+Several metal shields block your way!
+几个金属盾牌挡住了你的路！
+
 Illusion
 幻术
 The illusion vanishes into thin air.
