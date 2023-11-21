@@ -3861,11 +3861,13 @@ The Shadow Dragonheart catches you with her scythe! (DamageTaken)
 Dragonheart Leader
 龙心领袖
 The Dragonheart Leader apprehends you! (+RestraintAdded)
-龙心领袖逮捕了你！ （+RestraintAdded）
+龙心领袖逮捕了你！（+RestraintAdded）
 The Dragonheart Leader dashes to you!
 龙心领袖正在冲向你！
 The Dragonheart Leader squeezes your body! (DamageTaken)
 龙心首领揉捏你的身体！ (DamageTaken)
+The Dragonheart Leader uses a lock on you! (DamageTaken)
+龙心首领用一把锁锁住了你！ (DamageTaken)
 Dryad
 树妖
 The dryad sinks into the ground.
