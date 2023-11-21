@@ -15996,7 +15996,7 @@ Excellent! Please hold still~|(She fits the RESTRAINTNAME on and a seal awakens)
 Excellent! Please hold still~|(She fits the RESTRAINTNAME on and nothing happens)|We have a winner!|You can't have it though, not until you pay up~
 太棒了！请保持不动~|（她为你戴上 RESTRAINTNAME，什么也没发生）|我们赢了！|不过你不能得到它，除非你付钱~
 Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(She places the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
-太美妙了。我期待着看到你被释放，呃，回来，|手中有很多宝藏！|（她将 RESTRAINTNAME 放在你身上，封印直接激活了。没有锁孔。）
+太美妙了。我期待着看到你被释放，呃，回来的时候，|手中有很多宝藏！|（她将 RESTRAINTNAME 戴在你身上，封印直接激活了。没有锁孔。）
 Alright! Why don't you hold still~|(She lifts your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
 好吧！站稳点~|(她把你的头发撩开，扣上项圈)|现在出去给我找点宝物吧~
 You're gonna like it, I guarantee it~|(She pulls out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
