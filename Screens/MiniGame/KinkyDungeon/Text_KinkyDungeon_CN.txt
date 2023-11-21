@@ -7842,6 +7842,8 @@ The enemy attaches your ankle cuffs together!
 敌人将你的脚铐绑在一起！
 Ankle Chain
 踝链
+Short Ankle Chain
+短踝链
 A pair of cuffs chaining your legs together.
 一对手铐将你的双腿拴在一起。
 It's made of a glowing, brittle material. You feel your energy flowing into it...
@@ -7860,7 +7862,7 @@ Ice Cuffs
 冰铐
 A pair of cuffs that make it easy to restrain you.
 一对轻松束缚你的手铐。
-They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone...
+They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone...
 它们是由魔法冰制成的。它们不会自行融化，但冰确实会让你感到寒冷刺骨……
 The enemy attaches your wrist cuffs together!
 敌人将你的手腕铐在一起！
@@ -7868,7 +7870,7 @@ Wrist Chain
 腕链
 A pair of cuffs keeping your arms behind your back.
 一对手铐将你的手臂固定在背后。
-They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone...
+They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone...
 它们是由魔法冰制成的。它们不会自行融化，但冰确实会让你感到寒冷刺骨……
 Your cuffs detatch!
 你的手铐脱落了！
@@ -7878,7 +7880,7 @@ Cuffs Chain
 链式黑钢手铐
 A full set of cuffs keeping your arms in a strict elbow tie!
 全套手铐将你的手臂严格绑在肘部！
-They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone...
+They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone...
 它们是由魔法冰制成的。它们不会自行融化，但冰确实会让你感到寒冷刺骨……
 Your wrists detatch, leaving your elbows still bound!
 你的手腕分开了，但你的肘部仍然被绑着！
@@ -7886,7 +7888,7 @@ Elbow Chain
 肘链
 A pair of cuffs keeping your elbows locked together!
 一对手铐将你的肘部锁在一起！
-They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone...
+They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone...
 它们是由魔法冰制成的。 它们不会自行融化，但冰确实会让你感到寒冷刺骨……
 Your elbows detatch!
 你的肘部分开了！
@@ -7896,10 +7898,18 @@ Ice Leg Cuffs
 冰腿铐
 A pair of cuffs on your legs.
 你的腿上有一对手铐。
-They're made of enchanted ice. They won't melt on their own, but the ice does chill you to the bone...
+They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone...
 它们是由魔法冰制成的。它们不会自行融化，但冰确实会让你感到寒冷刺骨……
 The enemy attaches your leg cuffs together!
 敌人将你的腿铐绑在一起！
+Ice Ankle Cuffs
+冰脚铐
+A pair of cuffs chaining your legs together.
+一对手铐将你的双腿拴在一起。
+They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone...
+它们是由魔法冰制成的。它们不会自行融化，但冰确实会让你感到寒冷刺骨……
+The enemy attaches your ankle cuffs together!
+敌人将你的脚铐绑在一起！
 High-Tech Gag
 高科技口球
 A gag with a soft and filling mouthpiece, reinforced with a metallized strap.
