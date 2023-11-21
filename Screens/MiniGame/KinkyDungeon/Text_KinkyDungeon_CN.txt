@@ -4735,7 +4735,7 @@ The witch dangles a lock in front of you before putting it on! (DamageTaken)
 The witch slaps you playfully! (DamageTaken)
 女巫顽皮地打你一巴掌！（DamageTaken）
 Earth Witch
-地球女巫
+大地女巫
 The earth witch vanishes into a pile of ash.
 火焰女巫消失在一堆灰烬中。
 The witch restrains you! (+RestraintAdded)
@@ -9042,7 +9042,7 @@ Smoke
 Blocks vision
 阻挡视野
 Cracked Earth
-破裂的地球
+裂开的大地
 Makes creatures unsteady
 使生物不稳定
 Can be controlled using CMD spells
