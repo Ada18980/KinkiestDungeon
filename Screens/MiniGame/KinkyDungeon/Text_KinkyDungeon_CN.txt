@@ -7763,8 +7763,8 @@ Cuffs Chain
 链式黑钢手铐
 A pair of cuffs chaining your legs together.
 一对手铐将你的双腿拴在一起。
-It's made of a dark, glistening volcanic metal.
-它是由一种深色的、闪闪发光的火山金属制成的。
+It's made of a dark, shiny metal. If you hold it close you hear whispering.
+它是由一种深色的、闪闪发光的金属制成的。如果你靠近它，你会听到一阵窃窃私语。
 The ankle cuff chain detaches!
 脚铐链脱落！
 Crystal Cuffs
