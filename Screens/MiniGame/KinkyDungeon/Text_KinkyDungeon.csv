@@ -11140,7 +11140,7 @@ rShopkeeperOfferHelpTabRetry,"(The SPEAKER sighs)|Business is business, miss~"
 rShopkeeperOfferHelpDebt,"(The SPEAKER reluctantly frees you)|...Fine, I'll cut you a deal.|You help me, I help you. Fair?"
 
 dShopkeeperOfferHelpDebt_Armor,"(Help her test cursed armors)"
-dShopkeeperOfferHelpDebt_Restraint,"(Add cursed restraints )"
+dShopkeeperOfferHelpDebt_Restraint,"(Add cursed restraints as collateral)"
 dShopkeeperOfferHelpDebt_Collar,"(Wear a collar to help advertise her business)"
 dShopkeeperOfferHelpDebt_Catsuit,"(Wear a catsuit to help advertise her business)"
 dShopkeeperOfferHelpDebt_Pay,"(Actually... just pay her the RESCUECOST gold)"
