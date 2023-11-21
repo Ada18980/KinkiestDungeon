@@ -2792,8 +2792,8 @@ Frigid Potion
 寒冰药水
 You chug the concoction and your senses numb, helping you concentrate.
 你喝下混合物，感觉变得麻木，你的注意力开始集中。
-A freezing cold bottle with a bitter scent.
-一个冰冷的瓶子，带着苦涩的气味。
+Like bottled snow. Helps to get your mind on track.
+就像瓶装雪一样。有助于让你的思维步入正轨。
 Reduces distraction to 0 and grants additional decay for 50 turns. Can be used while gagged.
 将性奋值减少至 0，并对性奋值给予额外衰减 50 回合，可以在佩戴口塞的情况下使用。
 Smoke Bomb
