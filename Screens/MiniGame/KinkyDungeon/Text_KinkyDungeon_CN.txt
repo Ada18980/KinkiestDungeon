@@ -7452,7 +7452,7 @@ It feels tight but is actually made of an ethereal material...
 它感觉很紧，但实际上是由一种空灵的材料制成的……
 Latex Jacket
 乳胶拘束衣
-A tight jacket that holds your arms completely useless.
+A tight jacket that keeps your arms completely useless.
 一件拘束衣，让你的手臂完全无法移动。
 Latex Armbinder
 乳胶束手套
