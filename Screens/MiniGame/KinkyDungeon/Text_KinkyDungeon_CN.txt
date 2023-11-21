@@ -11984,7 +11984,7 @@ You channel ghastly energy into the lock and break the seal!!!
 你将可怕的能量引导到锁中并打破密封！！！
 
 It would take many lifetimes to crack the code. You'll have to find the data somehow.
-破解密码需要好几辈子的时间。你您用力拉动紧固件，但无济于事。必须以某种方式找到数据。
+破解密码需要好几辈子的时间。你用力拉动紧固件，但无济于事。必须以某种方式找到数据。
 You tug against the fastenings to no avail.
 你用力拉动紧固件，但无济于事。
 One of your Doll IDs seems to have had corrupted data on it, causing the program to crash.
