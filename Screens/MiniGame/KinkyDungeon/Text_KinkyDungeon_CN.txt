@@ -15659,7 +15659,7 @@ Give her a Scroll of Purity
 (A SPEAKER looks distraught)|Well met, adventurer!|We have a problem...
 （SPEAKER 看起来心烦意乱）|很好，冒险家|我们有个问题...
 (The SPEAKER folds her arms)|A rebel has been causing us problems lately...|If you run into her, give her all you got!|She needs to be brought to justice.
-（SPEAKER 交叉双臂）|最近一个叛军给我们带来了麻烦…|如果你碰到她，把你所有的东西都给她|她需要被绳之以法。
+（SPEAKER 交叉双臂）|最近一个叛军给我们带来了麻烦…|如果你碰到她，尽你所能！|她需要被绳之以法。
 (Show interest)
 （表示感兴趣）
 (A SPEAKER scoffs in your direction)|Well? You lookin' for work or no?
