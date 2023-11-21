@@ -2092,6 +2092,24 @@ Magical Barrier
 You destroy the barrier!
 你破坏了屏障！
 
+Mass of Shadow Hands
+大量影之手
+You banish the shadow hands!
+你驱逐了影之手！
+The shadow hands caress you and latch on! (DamageTaken)
+影之手爱抚你并紧紧地抓住你！（DamageTaken）
+The shadow hands caress you and latch on! (+RestraintAdded)
+影之手爱抚你并紧紧地抓住你！（RestraintAdded）
+
+Shadow Chains
+阴影锁链
+You break through the chains!
+你破坏了锁链！
+Conjured Chains
+召唤锁链
+You break through the chains!
+你破坏了锁链！
+
 Up
 向上
 Down
@@ -2535,13 +2553,13 @@ Epic
 Legendary
 传奇
 Supreme
-传奇+
+至高
 Mythic
 神话
 Angelic
-天国
+天使
 Divine
-神圣的
+神圣
 Quantity:
 数量：
 Use One
