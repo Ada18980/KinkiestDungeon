@@ -4367,7 +4367,7 @@ Revenant
 The revenant pouts as it vanishes.
 亡魂生气的消失了。
 The revenant restrains you! (+RestraintAdded)
-亡灵束缚了你！（+RestraintAdded）
+亡魂束缚了你！（+RestraintAdded）
 The revenant squeezes your breasts and slows you! (DamageTaken)
 亡魂在揉捏你的胸并减慢你的速度！（DamageTaken）
 The revenant grabs you and caresses your tummy! (DamageTaken)
@@ -4409,9 +4409,9 @@ The red liquid bubbles and several round slimes pop out!
 The red liquid bubbles and a round slime pops out!
 红色的液体开始冒泡，一团粘液团跳了出来！
 A revenant appears!
-一个亡灵出现了！
+一个亡魂出现了！
 Fuuka uses a talisman to call forth the spirits of her pets!
-Fuuka使用丝带召唤她的宠物的灵魂！
+Fuuka 使用丝带召唤她的宠物的灵魂！
 A pool of latex bubbles and a twisted elemental appears!
 一池乳胶冒出气泡，一个扭曲的精灵出现了！
 Latex Elemental
