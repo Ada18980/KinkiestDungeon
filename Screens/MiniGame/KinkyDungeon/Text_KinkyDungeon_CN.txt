@@ -7478,6 +7478,12 @@ A skintight suit that's stretched on tight. It adheres to latex restraints makin
 紧紧收缩的束胸。 乳胶拘束的粘附性使挣扎变得更加困难。
 Blue latex is silky smooth, very stretchy, and very good at adhering to itself.
 蓝色乳胶丝滑光滑，非常弹性，并且非常擅长粘附。
+Scale Boxtie Binder
+鳞片后手缚捆扎带
+A secure but comfortable binder meant for long-term wear by long-term prisoners of the Dragonhearts.
+一种安全而舒适的捆扎带，适合龙之心的囚犯长期佩戴。
+It is made from durable dragonscale, but secured with ordinary buckles.
+它由耐用的龙鳞制成，但用普通带扣固定。
 Dragonscale Straps
 龙鳞绑带
 A set of straps buckling tightly around your body and secured at the wrists.
@@ -7485,21 +7491,29 @@ A set of straps buckling tightly around your body and secured at the wrists.
 It's made from hard-to-cut dragonscale!!!
 它是由难以切割的龙鳞制成的！！！
 Scale Leg Cuffs
+鳞片腿铐
+Dragonscale Leg Cuffs
 龙鳞腿铐
+A pair of cuffs on your legs.
+你的腿上有一对手铐。
 A pair of chained cuffs made of dragonscale. They slow your stride.
 一对龙鳞制成的锁链铐。他们减慢你的步伐。
 It's made from hard-to-cut dragonscale!!!
 它是由难以切割的龙鳞制成的！！！
 Scale Ankle Cuffs
+鳞片脚铐
+Dragonscale Ankle Cuffs
 龙鳞脚铐
 A pair of chained cuffs made of dragonscale. They slow your stride.
 一对龙鳞制成的锁链铐。他们减慢你的步伐。
+They are made from leather cured from the hide of dragons.
+它们是由龙皮腌制而成的皮革制成。
 It's made from hard-to-cut dragonscale!!!
 它是由难以切割的龙鳞制成的！！！
 The enemy attaches your ankle cuffs together!
 敌人将你的脚铐绑在一起！
 Scale Cuffs Chain
-链式龙鳞脚铐
+链式鳞片脚铐
 A pair of chained cuffs made of dragonscale. They slow your stride.
 一对龙鳞制成的锁链铐。他们减慢你的步伐。
 It's made from hard-to-cut dragonscale!!!
