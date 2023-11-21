@@ -12378,7 +12378,9 @@ You use the scrap to try and cut the item.
 You rub the item against the broken object's sharp edges...
 你把物品擦在破碎物体的锋利边缘上。。。
 A hook hangs at shoulder height.
-一个钩子挂在肩上。
+一个钩子挂在肩高处。
+The hook is too high up! You can't reach it...
+钩子太高了！你够不到它...
 There's a hook on the wall.
 墙上有个钩子。
 The wall is cracked.
