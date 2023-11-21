@@ -16586,13 +16586,13 @@ AMNT 冰冻伤害/回合 vs. 冰冻
 Sealing Talisman
 封印符
 Fuuka's magic begins sealing your power!
-Fuuka的魔法开始封印你的力量！
+Fuuka 的魔法开始封印你的力量！
 Fuuka's magic makes you sluggish!!
-Fuuka的魔法让你变得迟钝！！
+Fuuka 的魔法让你变得迟钝！！
 Fuuka's magic renders you helpless!!!
-Fuuka的魔法让你束手无策！！！
+Fuuka 的魔法让你束手无策！！！
 Fuuka's magic is restricting you!
-Fuuka的魔法束缚了你！
+Fuuka 的魔法束缚了你！
 
 Sealing Shadows
 封印阴影
