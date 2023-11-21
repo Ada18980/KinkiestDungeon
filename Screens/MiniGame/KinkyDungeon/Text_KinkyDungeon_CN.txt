@@ -3153,7 +3153,7 @@ A sword that guides itself toward its target, making it easy to hit with.
 Dragonslaver
 驯龙者
 A powerful weapon with an ancient mechanism that launches binding belts.
-一种强大的武器，具有发射捆绑带的古老机制。
+一种强大的武器，具有发射捆绑带的古老机器。
 Deals slash damage. Can make ranged attacks.. Drains 0.75% ancient energy to fire a line of belts that deal 40 chain damage and 40 binding.
 造成斩击伤害，可以远程攻击。消耗 0.75% 远古能量来发射一连串的皮带，造成 40 点锁链伤害并增加 40 点束缚。
 Metamorphosis
@@ -5274,19 +5274,20 @@ You concentrate on unlocking the TargetRestraint...
 You work on unlocking the TargetRestraint with help...
 你在帮助下成功解锁 TargetRestraint...
 You fiddle with the key on the TargetRestraint...
-你在 TargetRestraint 上尝试插入钥匙……
+你尝试在 TargetRestraint 上插入钥匙……
+
 The lock requires a key.
-锁需要一把钥匙。
+这把锁需要一把钥匙。
 The lock requires a key.
-锁需要一把钥匙。
+这把锁需要一把钥匙。
 The lock requires a key.
-锁需要一把钥匙。
+这把锁需要一把钥匙。
+The lock can only be opened with a key.
+这把锁只能用钥匙打开。
 The green padlock only accepts green keys.
 绿色锁只接受绿色钥匙。
-The yellow padlock requires a red and a green key.
-黄色锁需要一把红色和一把绿色钥匙。
-The magical lock only accepts blue keys and can't be picked.
-魔法锁只接受蓝色钥匙，不能被撬开。
+The magical lock only accepts magical keys and can't be picked.
+魔法锁只接受魔法钥匙，不能被撬开。
 The magical lock is guarded with powerful magic. You'll have to wait for it to wear off...
 魔法锁被强大的魔法守护着。你得等它消退...
 This lock requires a command word to unlock. It doesn't have a keyhole.
@@ -5299,8 +5300,12 @@ The lock is definitely magical and forces your pick out!
 锁绝对是神奇的，其迫使你必须撬锁！
 The lock doesn't even have a keyhole to pick!
 这锁甚至连钥匙孔都没有！
+The lock is brimming with security features and is nigh impossible to pick!
+这把锁充满了安全特征，几乎不可能被撬开！
+
 The key sticks in the lock and jams, mangling the key!
-钥匙卡在锁里，卡住了，把钥匙弄坏了！
+钥匙在锁里被卡住了，钥匙坏了！
+
 You unlock the TargetRestraint.
 你成功解锁了 TargetRestraint。
 You manage to squeeze out of the TargetRestraint!
@@ -5313,8 +5318,10 @@ You free yourself from the TargetRestraint!
 你从 TargetRestraint 中逃脱了出来！
 You damage the TargetRestraint enough to escape!
 你对 TargetRestraint 造成了足够的损坏，并逃脱了出来！
+
 The TargetRestraint is destroyed by your attempts.
 TargetRestraint 在你的尝试中被破坏。
+
 This is as far as you can struggle. You'll have to remove the TargetRestraint some other way.
 这是你能挣扎的极限了。你必须以其他方式挣脱 TargetRestraint。
 The item is too tight. You'll need to loosen the TargetRestraint somehow first...
@@ -5330,7 +5337,7 @@ After many failed attempts to unlock the TargetRestraint, you realize this lock 
 You can feel some ply but can't quite make any progress against the TargetRestraint...
 你可以感觉到一些压力，但无法在 TargetRestraint 上取得任何进展......
 The TargetRestraint's mechanism lies barely out of reach...
-TargetRestraint 的机制几乎遥不可及......
+TargetRestraint 的锁扣几乎遥不可及......
 Your tool leaves only a scratch against the TargetRestraint...
 你的工具仅在 TargetRestraint 上留下划痕...
 The lock on the TargetRestraint is just above your skill level...
