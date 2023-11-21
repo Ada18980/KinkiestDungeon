@@ -2944,8 +2944,8 @@ Arcane Orb
 奥术法球
 Look into my eyes...
 看着我的眼睛。。。
-Deals shadow damage. Can be used without hands. Does not benefit from enemies being vulnerable.
-造成阴影伤害。使用时无需双手。不从敌人的影响中受益。
+Deals arcane damage. Can be used without hands. Can not critically strike.
+造成奥术伤害。使用时无需双手。无法暴击。
 Staff of Flame
 烈焰法杖
 A magical weapon made for novices to use.
