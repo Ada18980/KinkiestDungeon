@@ -4310,28 +4310,28 @@ The sarcophagus emanates a strange power! (DamageTaken)
 
 
 Bast Warrior
-Bast战士
+Bast 战士
 The Bast Warrior collapses and meows loudly.
-Bast战士倒地并大声喵喵叫。
+Bast 战士倒地并大声喵喵叫。
 The Bast Warrior restrains you! (+RestraintAdded)
-Bast战士拘束了你！（+RestraintAdded）
+Bast 战士拘束了你！（+RestraintAdded）
 The Bast Warrior tickles you with her claws! (DamageTaken)
-Bast战士用她的爪子逗你！（DamageTake）
+Bast 战士用她的爪子逗你！（DamageTake）
 The Bast Warrior pulls out a lock and slips it on! (DamageTaken)
-Bast战士拔出一把锁并把它锁上！（DamageTaken）
+Bast 战士拔出一把锁并把它锁上！（DamageTaken）
 
 Bast Cleric
-Bast牧师
+Bast 牧师
 The Bast Cleric collapses and meows softly.
-Bast牧师倒下，轻轻地喵喵叫。
+Bast 牧师倒下，轻轻地喵喵叫。
 A ray of light shoots out and paralyzes you! (DamageTaken)
 一道光芒射出，让你麻痹！（DamageTaken）
 The Bast Cleric restrains you! (+RestraintAdded)
-Bast牧师拘束了你！（+RestraintAdded）
+Bast 牧师拘束了你！（+RestraintAdded）
 A ray of light shoots out and paralyzes you! (DamageTaken)
 一道光芒射出，让你麻痹！（DamageTaken）
 The Bast Cleric pulls out a lock and slips it on! (DamageTaken)
-Bast牧师拔出一把锁并把它锁上！（DamageTaken）
+Bast 牧师拔出一把锁并把它锁上！（DamageTaken）
 
 High Cleric
 高阶牧师
@@ -6130,7 +6130,7 @@ Old Guardians
 Cult of the Wild
 自然教会
 Cult of Bast
-Bast教会
+Bast 教会
 Alchemists
 炼金术士
 Elementals
@@ -6635,37 +6635,37 @@ A gag that stuffs your mouth with a large silicone ball.
 The harness is comprehensive and it's locked in place.
 束带很全面，并且锁定到位。
 Bast Gag
-Bast堵嘴
+Bast 堵嘴
 A gag used to silence new initiates of the Bast cult.
-用来让巴斯特教新信徒闭嘴的堵嘴。
+用来让 Bast 教新信徒闭嘴的堵嘴。
 The harness is comprehensive and it's locked in place.
 束带很全面，并且锁定到位。
 Bast Muzzle
-Bast口套
+Bast 口套
 A muzzle used to keep a Bast gag secure.
 一个用来固定 Bast 堵嘴的口套。
 The leather panel is tough and tight.
 皮革面板坚韧而紧密。
 Bast Blindfold
-Bast眼罩
+Bast 眼罩
 A blindfold used to aid in meditation.
 用于帮助冥想的眼罩。
 It is padded but still lets some light through.
 它是填充的，但仍然可以让一些光线通过。
 Bast Paws
-Bast爪子
+Bast 爪子
 Leather mittens used to pacify new initiates of the Bast cult.
-皮手套用来安抚Bast教的新信徒。
+皮手套用来安抚 Bast 教的新信徒。
 They make it hard to manipulate anything at all, but aren't the toughest material.
 它们使操作任何东西都变得困难，但不是最坚硬的材料。
 Bast Suit
-Bast套装
+Bast 套装
 It's nearly impossible to escape without help once locked inside.
 一旦被锁在里面，几乎不可能在没有帮助的情况下逃脱。
 Bast Petsuit
-bast宠物套装
+Bast 宠物套装
 Enhanced suit used for select members of the Bast cult.
-用于巴斯特教派特定成员的增强套装。
+用于 Bast 教派特定成员的增强套装。
 It's nearly impossible to escape without help once locked inside.
 一旦被锁在里面，几乎不可能在没有帮助的情况下逃脱。
 Blessed Wrappings (Head)
@@ -9182,6 +9182,77 @@ Empower to upcast spells
 积蓄魔力
 Cancel empowerment
 释放魔力
+
+A rope trap springs upon you!
+绳子陷阱向你袭来！
+A ribbon trap springs upon you!
+丝带陷阱向你袭来！
+A chain trap springs upon you!
+锁链陷阱向你袭来！
+Magical vines wrap around you suddenly!
+魔法藤蔓突然将你缠绕！
+A belt trap springs upon you!
+皮带陷阱向你袭来！
+You find yourself suddenly bound tightly by magic gear!
+你发现自己突然被魔法装备紧紧束缚住了！
+Magical rubber emerges from the floor and encases you!
+神奇的橡胶从地板上冒出来，包裹住你！
+Slime appears at your feet and starts encasing you!
+粘液出现在你的脚边并开始包裹你！
+You find yourself suddenly bound tightly in latex gear!
+你发现自己突然被乳胶装备紧紧束缚住了！
+A rubber cube rushes out of the floor and engulfs you!
+一个橡胶立方体从地板上冲出来，吞没了你！
+
+Sharp Claws
+锋利的爪子
+While your hands aren't covered, your attacks deal 10 bonus slash damage on hit and you can cut restraints.
+当你的手没有被覆盖时，你的攻击击中时会造成 10 点额外的斩击伤害，并且你可以切断束缚。
+
+Powerful Bite
+强力咬合
+Gain access to the Bite spell.
+获得咬伤法术。
+
+Slime Girl
+粘液少女
+You are a shapeshifting slime, granting +100 Glue Resist and can squeeze thru bars. Escaping is easy, but your powers are sealed while wearing cursed or magic restraints.
+你是一个变形的粘液，提供 +100 抗胶性，并且可以穿过栅栏。逃脱很容易，但当你戴着诅咒或魔法束缚时，你的力量会被封印。
+
+Cybernetic
+控制
+You have mechanical parts, granting +10 Physical Armor, +15 Block, and +10% base physical damage. -100 Electric Resist.
+你拥有机械部件，可提供 +10 物理护甲、+15 格挡和 +10% 基础物理伤害。 -100 抗电性。
+
+Magic Blood
+魔血
+You come from a magical lineage, granting +10 Magic Armor and +10% magic damage.
+你来自魔法血统，获得 +10 魔法防御和 +10% 魔法伤害。
+
+Beast Girl
+野兽少女
+You have animalistic features such as a bite spell, -10% attack stamina cost, and 10 slash damage on hit while hands are free. -100 Charm Resist.
+你拥有兽性特征，例如咬伤法术、-10% 攻击耐力消耗以及在双手空闲时击中时造成 10 次斩击伤害。 -100 魅惑抗性。
+
+恶魔少女
+You are related to eldritch entities, granting +50% shadow damage and the ability to teleport between shadows. You are weak to holy restraints and bright light.
+你与可怕的实体有联系，给予 +50% 的阴影伤害和在阴影之间传送的能力。你对神圣的束缚和明亮的光芒是软弱的。
+
+Angelic
+天使
+You are a minor angel sent to perform a specific task. You are forced to wear a full set of divine restraints, but gain an infinite mana pool, +20 Magic Armor, and +25% magic damage.
+你是一位小天使，被派去执行特定任务。你被迫穿戴全套神圣束缚，但获得无限法力池、+20 魔法防御和 +25% 魔法伤害。
+
+Elven Ancestry
+精灵血统
+You were blessed with immortality by Ninril, Goddess of Restoration, granting -50% sprint cost and -30 Physical Resist. While your WP is above 0, you regenerate WP and heal nearby allies.
+恢复女神 Ninril 祝福你永生，给予 -50% 冲刺成本和 -30 物理防御。 当你的 WP 高于 0 时，你会恢复 WP 并治疗附近的盟友。
+
+Bast's Blessing
+Bast 的祝福
+You were granted undead immortality by Bast, granting a bite, claws, catlike senses, and stamina regen scaling with your current WP. Your WP gain is halved and you get -100 Fire Resist.
+Bast 赋予你不死不朽的能力，赋予你咬、爪、猫般的感觉，并根据你当前的 WP 调整耐力恢复。 你的 WP 增益减半并且你获得 -100 火焰抗性。
+
 You channel mana through your body! Empowerment level: LEVEL
 你通过你的身体来积蓄魔力！充能级别：LEVEL
 You are already at the maximum empowerment level!
