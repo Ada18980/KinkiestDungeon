@@ -2620,6 +2620,8 @@ No bonuses, no penalties.
 没有奖励，没有惩罚。
 Latex Catsuit
 乳胶紧身衣
+A skintight suit that's stretched on tight. It adheres to latex restraints making struggling more difficult.
+紧紧收缩的束胸。乳胶拘束的粘附性使挣扎变得更加困难。
 An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
 由经过高度加工的粘液制成的服装。天然丝滑，触感顺滑。
 No bonuses, no penalties.
@@ -7456,8 +7458,8 @@ A tight jacket that keeps your arms completely useless.
 一件拘束衣，让你的手臂完全无法移动。
 Latex Armbinder
 乳胶束手套
-A tight armbinder that pins your arms tightly behind your back
-一个紧绷的束手套，将你的手臂紧紧地固定在你的背后
+A tight armbinder that pins your arms tightly behind your back, enclosed completely.
+一个紧绷的束手套，将你的手臂紧紧地固定在你的背后，完全封闭。
 Latex Boxbinder
 乳胶盒束包扎带
 A secure but comfortable binder meant for long-term wear.
@@ -7474,8 +7476,8 @@ A tight pair of boots that makes it difficult to walk!
 一双紧脚的靴子，走路都难受！
 Heavy Latex Corset
 重型乳胶束胸
-A skintight suit that's stretched on tight. It adheres to latex restraints making struggling more difficult.
-紧紧收缩的束胸。 乳胶拘束的粘附性使挣扎变得更加困难。
+An excruciatingly tight corset that hugs your body, with straps securing your other restraints.
+紧紧收缩的束胸，并用带子固定您的其他束缚具。
 Blue latex is silky smooth, very stretchy, and very good at adhering to itself.
 蓝色乳胶丝滑光滑，非常弹性，并且非常擅长粘附。
 Scale Boxtie Binder
