@@ -8288,8 +8288,8 @@ You could pick these with a hairpin.
 你可以用发夹撬开这些锁锁。
 Linked Ankle Shackles
 链接的脚踝镣铐
-The enemy attaches your ankle cuffs together!
-敌人将你的脚铐绑在一起！
+The enemy attaches your ankle shackles together!
+敌人将你的脚镣绑在一起！
 Heavy shackles with a rudimentary lock.
 带有简陋锁的重型镣铐。
 You could pick these with a hairpin.
