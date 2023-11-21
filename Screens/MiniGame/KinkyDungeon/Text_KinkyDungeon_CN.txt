@@ -7573,6 +7573,22 @@ A leather belt used to keep your legs hobbled.
 用来保持双腿跛行的皮带。
 It's made of a very tough reinforced leather. It will take some time to cut.
 它由非常坚韧的强化皮革制成。需要一些时间来削减。
+Maid Cuffs
+女仆铐
+A pair of steel cuffs used by the Maidforce.
+女仆势力使用的一对钢铐。
+They are made of solid steel.
+它们由实心钢制成。
+The enemy attaches your ankle cuffs together!
+敌人将你的脚铐绑在一起！
+Maid Cuff Link
+连接女仆铐
+A pair of steel cuffs used by the Maidforce.
+女仆势力使用的一对钢铐。
+They are made of solid steel.
+它们由实心钢制成。
+The ankle cuff chain detaches!
+脚铐链脱落！
 Steel Cuffs
 钢铐
 A pair of steel cuffs used by the Maidforce.
@@ -9206,6 +9222,8 @@ Latex Ampule
 乳胶安瓿
 Shadowy chains appear from a rift in space!
 阴影锁链从空间裂缝中出现！
+The roaring inferno deals 10 damage to you!
+咆哮的地狱对你造成 10 点伤害！
 Mana Burst
 法力冲击
 Flame Novice
