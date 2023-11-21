@@ -11292,6 +11292,10 @@ Learn Spell
 学习法术
 Spell Points: 
 法术点：
+Spell Point Cost: 
+法术点消耗：
+Mana Cost: 
+法力消耗：
 Level: 
 等级：
 Remove Spell 1
