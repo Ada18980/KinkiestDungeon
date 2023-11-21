@@ -5045,15 +5045,15 @@ The shadowy ghast grips you in its chilling embrace! (DamageTaken)
 阴暗的恶魂用冰冷的怀抱紧紧抓住你！（DamageTaken）
 
 Corrupted Elemental
-腐化元素
+腐蚀精灵
 The corrupted elemental dissolves into shadows.
-腐化的元素溶解成阴影。
+腐蚀精灵溶解成阴影。
 The corrupted elemental reaches out and touches you, forming metallic restraints! (+RestraintAdded)
-腐化的元素伸出手来触碰你，形成金属束缚！（+RestraintAdded）
+腐蚀精灵伸出手来触碰你，形成金属束缚！（+RestraintAdded）
 The corrupted elemental uses its chains to lock your restraints! (DamageTaken
-腐化的元素用它的锁链锁住你的束缚！（DamageTaken）
+腐蚀精灵用它的锁链锁住你的束缚！（DamageTaken）
 The corrupted elemental grips you and drains your willpower! (DamageTaken)
-腐化的元素抓住你并耗尽你的意志力！（DamageTaken）
+腐蚀精灵抓住你并耗尽你的意志力！（DamageTaken）
 
 Star Demon
 星魔
