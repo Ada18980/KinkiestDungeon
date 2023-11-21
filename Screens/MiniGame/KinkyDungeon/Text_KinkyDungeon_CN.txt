@@ -7214,42 +7214,56 @@ A box tie keeping your arms secured behind your back.
 将你的手臂牢牢固定在背后。
 They are aware of your movements...
 它会对你的动作产生反应...
+
+Holy Boxtie
+神圣后手缚捆扎带
+A box tie keeping your arms secured behind your back.
+将你的手臂牢牢固定在背后。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+一组散发出平静、舒缓气息的绳索。它们神奇地伸展以贴合你的身体。
 Holy Rope Cuffs
 神圣绳手铐
 A quick tie for apprehending prisoners.
 用于逮捕囚犯的快速捆绑。
-They are aware of your movements...
-它会对你的动作产生反应...
-They are aware of your movements...
-它会对你的动作产生反应...
+将你的手臂牢牢固定在背后。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+一组散发出平静、舒缓气息的绳索。它们神奇地伸展以贴合你的身体。
+Holy Hogtie
+神圣驷马
+A very strict and tight hogtie, good for subduing unruly captives.
+一种非常严苛和牢固的捆绑，适合制服不守规矩的俘虏。
+It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle.
+它把你严格地束缚在后手缚捆扎带里。你需要首先挣扎开连接腿部的绳子。
+It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle.
+它会严格地固定住你，让你的肘部几乎与身体完全接触。你拉动连接双脚的绳子并挣扎。
+Holy Rope Belt
+神圣绳衣
 A harness acting as a handle to pull you around
 能使你被拉住的绳衣
-They are aware of your movements...
-它会对你的动作产生反应...
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+一组散发出平静、舒缓气息的绳索。它们神奇地伸展以贴合你的身体。
+Holy Rope Harness
+神圣绳束衣
+A harness that secures your other restraints and makes them tighter.
+一种安全带，可固定你的其他束缚并使它们更紧。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+一组散发出平静、舒缓气息的绳索。它们神奇地伸展以贴合你的身体。
 Holy Crotch Rope
 神圣股绳
 A tight rope impressing upon your most private areas...
 一条紧绷的绳索压迫在你最私密的区域......
-They are aware of your movements...
-它会对你的动作产生反应...
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+一组散发出平静、舒缓气息的绳索。它们神奇地伸展以贴合你的身体。
 Holy Wrist Rope
 神圣手腕绳缚
-A wrist and elbow tie keeping your arms secured behind your back.
-手腕和肘部系带将你的手臂固定在背后。
-They are aware of your movements...
-它会对你的动作产生反应...
 Holy Leg Ropes
 神圣腿部绳缚
 A tie that hobbles your legs together..
-一条能把你的腿绑在一起的捆绑。。
-They are aware of your movements...
-它会对你的动作产生反应...
+一条能把你的腿绑在一起的捆绑...
 Holy Ankle Ropes
 神圣脚踝绳缚
 A tie keeping your feet secured together.
 一条将双脚固定在一起的捆绑。
-They are aware of your movements...
-它会对你的动作产生反应...
 Holy Toe Rope
 神圣脚趾绳缚
 A tie keeping your toes secured together.
