@@ -15952,6 +15952,14 @@ Pretty please? I promise I'll pay you back.
 (The SPEAKER folds her arms)|Your adventures have cost me a pretty penny.|I can't stay in business if my clients keep running off without paying.|Look, I'll cut you a deal, you help me, I help you. Fair?
 （SPEAKER 抱起双臂）|你的冒险让我损失了一大笔钱。|如果我的客户不付钱就逃跑，我就无法继续做生意。|听着，我会和你做一笔交易，你 帮我，我 帮你。公平吧？
 
+(The SPEAKER rubs her chin)|No can do.|Rules are rules~
+（SPEAKER 摸着下巴）|没办法。|规则就是规则~
+(The SPEAKER sighs)|Business is business, miss~
+（SPEAKER 叹了口气）|生意就是生意，小姐~
+
+(The SPEAKER reluctantly frees you)|...Fine, I'll cut you a deal.|You help me, I help you. Fair?
+（SPEAKER 不情愿地释放了你）|...好吧，那我就跟你做个交易。|你 帮我，我 帮你。公平吧？
+
 (Help her test cursed armors)
 （帮助她测试被诅咒的盔甲）
 (Add cursed restraints as collateral)
