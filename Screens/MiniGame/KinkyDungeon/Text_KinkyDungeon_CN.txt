@@ -11618,6 +11618,7 @@ Perks II
 词条 II
 Perks III
 词条 III
+第 NUM/TOTAL 页
 Spell Points: SPELLPOINTS
 技能点：SPELLPOINTS
 You need a higher level in SCHOOL magic to learn this spell.
