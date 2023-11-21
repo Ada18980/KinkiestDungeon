@@ -11112,13 +11112,14 @@ Mass Summon Skeleton
 A skeleton arises from bones on the floor!
 一具骷髅从地板上的骨头中升起！
 A gang of SummonCount skeletons forms around you!
- SummonCount 只骷髅在你周围形成！
+SummonCount 只骷髅在你周围形成！
 A gang of SummonCount zombies emerges from the floor!
- SummonCount 只僵尸从地板上出现！
+SummonCount 只僵尸从地板上出现！
 A bunch of gags fly out from your satchel!
-一堆口球从你的背包里飞出来！
+一堆口塞从你的背包里飞出来！
+
 A floating hand appears and cracks its knuckles!
-一只漂浮的手出现了，它的指节咔咔作响！
+一只漂浮的手出现了，它的指关节咔咔作响！
 A floating gag appears and starts flying toward you!
 一个漂浮的口球出现并开始向你飞来！
 A set of shackles opens wide and starts going for your wrists!
@@ -11131,20 +11132,67 @@ A huge cloud of locks and chains clatters as it levitates toward you!
 一大片锁和锁链在咔哒咔哒地向你飘来！
 Floating hands appear by the conjurer's side as she points her staff!
 当她指向她的法杖时，浮动的手出现在咒术师的身边！
+
+Floating books appear near the caster!
+漂浮的书籍出现在施法者附近！
+Dusty tomes appear near the caster!
+布满灰尘的书卷出现在施法者附近！
+Magical books appear near the caster!
+魔法书出现在施法者附近！
+Sinister books appear near the caster!
+邪恶的书出现在施法者附近！
+Crackling books appear near the caster!
+正在噼啪作响的书出现在施法者附近！
+Glowing books appear near the caster!
+正在发光的书出现在施法者附近！
+Rubber-stained books appear near the caster!
+涂满橡胶的书出现在施法者附近！
+Flaming books appear near the caster!
+正在燃烧的书出现在施法者附近！
+Frigid books appear near the caster!
+冰冷的书出现在施法者附近！
+Devilish books appear near the caster!
+魔书出现在施法者附近！
+
+A floating book appears near the caster!
+一本正在漂浮的书出现在施法者附近！
+A dusty tome appears near the caster!
+一本布满灰尘的书本出现在施法者附近！
+A magical book appears near the caster!
+一本魔法书出现在施法者附近！
+A sinister book appears near the caster!
+一本邪恶的书出现在施法者附近！
+A crackling book appears near the caster!
+一本正在噼啪作响的书出现在施法者附近！
+A glowing book appears near the caster!
+一本正在发光的书出现在施法者附近！
+A rubber-stained book appears near the caster!
+一本涂满橡胶的书出现在施法者附近！
+A flaming book appears near the caster!
+一本正在燃烧的书出现在施法者附近！
+A frigid book appears near the caster!
+一本冰冷的书出现在施法者附近！
+A devilish book appears near the caster!
+一本魔书出现在施法者附近！
+
+Your struggling leaves you aroused because of the RestraintName...
+你的挣扎会被 RestraintName 让你性奋起来......
 You feel your restraints squeeze you and tingle with painful sensations!
 你会感觉到你的束缚压迫你，并伴随着痛苦的感觉而刺痛！
 'Do not resist,' whispers a voice in your head...
 “不要抗拒，”一个声音在你的脑海里低语……
 Your restraints squeeze you painfully without mercy!
-你的束缚无情地痛苦地压迫着你！
+你的束缚痛苦且无情地压迫着你！
 The crystals emit a powerful energy!
 水晶散发出强大的能量！
 You feel your body overflow with energy...
 你感觉你的身体充满了能量......
 The crystals react to your struggle attempts with a strange energy!
 水晶会以一种奇怪的能量对你的挣扎尝试做出反应！
+
 Cast Spell (XXX turn delay)
 施法（XXX 回合延迟）
+
 You feel the vibrations leaving your body...
 你感觉到振动正在离开你的身体......
 You feel your toys start to buzz...
