@@ -9830,7 +9830,7 @@ rOfferMaidRestraintForce,"(The SPEAKER glares)|We urge you to reconsider."
 rOfferMaidRestraintForceYes,"(The SPEAKER has a twinkle in her eye)|We will offer you this RESTRAINT.|You should accept."
 rOfferMaidRestraintForce_No,"(The SPEAKER pulls an odd smile)|Very well."
 rOfferMaidRestraintForce_Yes,"(The SPEAKER smugly nods)|(With surprising speed, the RESTRAINT locks in place)|Excellent, a good fit."
-rOfferMaidRestraintForce_Failure,"(The SPEAKER covers your hand with her mouth)|Shush, no more bad decisions.|(You feel her buckle the restraint strictly)"
+rOfferMaidRestraintForce_Failure,"(The SPEAKER covers your mouth with her hand)|Shush, no more bad decisions.|(You feel her buckle the restraint strictly)"
 
 dOfferMaidRestraint_Yes,"Yes please!"
 dOfferMaidRestraint_YesGag,"(Nod eagerly)"
