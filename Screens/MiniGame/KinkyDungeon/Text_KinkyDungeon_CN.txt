@@ -14073,9 +14073,9 @@ Wait! That's too much! (PERCENT chance to avoid)
 (The SPEAKER brushes past hurriedly)|Careful girl!|Else I'll lock you away~
 （SPEAKER 急匆匆地从你身边擦身而过）|小心点姑娘！|不然我就把你锁起来了~
 (The SPEAKER looks at you intrigued)|Aren't you something...|How about wearing this RESTRAINT?
-（SPEAKER 好奇地看着你）|你不是……|戴上 RESTRAINT 怎么样？
+（SPEAKER 好奇地看着你）|你要不……|戴上 RESTRAINT 怎么样？
 (The SPEAKER grins and locks it on)|Maybe I should bump into you more~
-（SPEAKER 微笑并锁定）|也许我应该碰见更多的你~
+（SPEAKER 微笑并锁定）|或许我应该碰见更多你这样的人~
 (The SPEAKER rolls her eyes)|Run along then girl~
 （SPEAKER 翻白眼）|姑娘，赶紧跑吧~
 (The SPEAKER nods)|Didn't think so~|Oh, and, uh, sorry for the bump.
