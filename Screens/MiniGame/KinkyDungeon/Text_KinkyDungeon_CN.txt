@@ -3811,11 +3811,15 @@ The Crystal Dragonheart screams and falls to the ground dramatically.
 The Crystal Dragonheart apprehends you! (+RestraintAdded)
 水晶龙心逮捕了你！ （+RestraintAdded）
 The Crystal Dragonheart squeezes you in a big hug! (DamageTaken)
-水晶龙之心紧紧拥抱你！ (DamageTaken)
+水晶龙之心紧紧拥抱你！（DamageTaken）
+The Dragonheart grows a crystalline lock on your restraints! (DamageTaken)
+龙之心往你的束缚上长出了水晶锁！（DamageTaken）
+
 Many crystals rise up out of the ground!
 许多水晶从地下升起！
 A crystal rises up out of the ground!
 一颗水晶从地底升起！
+
 Statue
 雕像
 The statue topples over!
