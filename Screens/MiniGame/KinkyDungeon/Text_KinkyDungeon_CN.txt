@@ -1770,6 +1770,14 @@ Confirm Reset?
 Confirm Changes
 确认更改
 
+Your visor dims to help you focus on your task.
+你的面罩会变暗，以帮助你专注于你的任务。
+
+Escaped Doll
+逃跑的玩偶
+You return the doll to her rightful owner.
+你把玩偶归还给她的合法主人。
+
 Your movement sets off your [RESTRAINTNAME]
 你的动作引发了你的 [RESTRAINTNAME]
 Your struggling sets off your [RESTRAINTNAME]
