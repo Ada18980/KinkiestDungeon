@@ -13429,7 +13429,7 @@ No, thanks.
 I-I accept...
 我-我接受...
 No way! (PERCENT chance to avoid)
-决不！（有 PERCENT 的机会避免）
+决不！（有 PERCENT 的机会避开）
 
 Y-Yes?
 是-是？
@@ -13448,7 +13448,7 @@ No, not that.
 W-Whoa! S-Sure...
 哇-哇！ 当-当然……
 (Shake your head and whine) (PERCENT chance to avoid)
-（摇头并发出呜呜声）（有 PERCENT 的机会避免）
+（摇头并发出呜呜声）（有 PERCENT 的机会避开）
 
 Of course miss.
 当然，小姐。
@@ -13472,7 +13472,7 @@ Not really.
 I-If I have to...
 如-如果我必须……
 Ah! Cold! (PERCENT chance to avoid)
-啊! 好冷！（有 PERCENT 的机会避免）
+啊! 好冷！（有 PERCENT 的机会避开）
 
 (Approach)
 （靠近）
@@ -13484,9 +13484,9 @@ It does look comfortable~
 (Squirm and bow your head)
 （扭动并低下头）
 It looks too strict! (PERCENT chance to avoid)
-看起来太严格了！（有 PERCENT 的机会避免）
+看起来太严格了！（有 PERCENT 的机会避开）
 (Shake your head rapidly) (PERCENT chance to avoid)
-（快速摇头）（有 PERCENT 的机会避免）
+（快速摇头）（有 PERCENT 的机会避开）
 
 Sure.
 当然。
@@ -13510,9 +13510,9 @@ Okay, for science...
 好吧，为了科学...
 （咯咯笑并点头）
 Ah! Don't you dare! (PERCENT chance to avoid)
-啊! 你不敢！（有 PERCENT 的机会避免）
+啊! 你不敢！（有 PERCENT 的机会避开）
 (Shake your head and whimper) (PERCENT chance to avoid)
-（摇头并呜咽）（有 PERCENT 的机会避免）
+（摇头并呜咽）（有 PERCENT 的机会避开）
 
 Maybe a little~
 或许有一点~
@@ -13528,9 +13528,9 @@ That looks too strict!
 I- Well- O-Okay~
 我- 嗯- 好-好吧~
 I don't want to get stuck! (PERCENT chance to avoid)
-我不想被绑住！（有 PERCENT 的机会避免）
+我不想被绑住！（有 PERCENT 的机会避开）
 (Shake your head worriedly) (PERCENT chance to avoid)
-（担心地摇头）（有 PERCENT 的机会避免）
+（担心地摇头）（有 PERCENT 的机会避开）
 
 Of course!
 当然！
@@ -13538,7 +13538,7 @@ Of course!
 Pretty please~
 美人请~
 Stop! (PERCENT chance to avoid)
-停！（有 PERCENT 的机会避免）
+停！（有 PERCENT 的机会避开）
 
 Any time~
 随时~
@@ -13553,7 +13553,7 @@ Actually, I don't want that.
 I'll play along then~
 那我们就一起玩吧~
 (Struggle against her) (PERCENT chance to avoid)
-（与她斗争）（有 PERCENT 的机会避免）
+（与她斗争）（有 PERCENT 的机会避开）
 
 (Walk over, curiously)
 （好奇地走过去）
@@ -13580,7 +13580,7 @@ Not like that!
 Y-Yes miss~
 是-是的小姐~
 (Duck out the way) (PERCENT chance to avoid)
-（闪开）（有 PERCENT 的机会避免）
+（闪开）（有 PERCENT 的机会避开）
 
 Maybe a bit~
 或许有一点~
@@ -13590,9 +13590,9 @@ Not at all.
 O-Okay...
 好-好的...
 (Shake your head and groan) (PERCENT chance to avoid)
-（摇头并呻吟）（有 PERCENT 的机会避免）
+（摇头并呻吟）（有 PERCENT 的机会避开）
 Don't even try. (PERCENT chance to avoid)
-我不想尝试。（有 PERCENT 的机会避免）
+我不想尝试。（有 PERCENT 的机会避开）
 
 That doesn't sound bad...
 听起来不错……
@@ -13604,12 +13604,12 @@ That won't be necessary.
 I'd love to!
 我喜欢！
 Not right now.
-不是现在。
+现在不行。
 
 M-Maybe you should then~
 或-或许你应该这样~
 You ran into me! (PERCENT chance to avoid)
-你撞到我了！（有 PERCENT 的机会避免）
+你撞到我了！（有 PERCENT 的机会避开）
 
 
 Fine, I guess.
@@ -13617,9 +13617,9 @@ Fine, I guess.
 (Giggle and nod)
 （咯咯笑并点头）
 Wait! That's too much! (PERCENT chance to avoid)
-等等！这太过分了！（有 PERCENT 的机会避免）
+等等！这太过分了！（有 PERCENT 的机会避开）
 (Shake your head and moan) (PERCENT chance to avoid)
-（摇头并呻吟）（有 PERCENT 的机会避免）
+（摇头并呻吟）（有 PERCENT 的机会避开）
 
 (A SPEAKER winks at you)|You look like a girl who likes feeling|like a prisoner, am I right?
 （SPEAKER 对你眨眼）|你看起来像一个喜欢|囚禁感的女孩，对吗？
@@ -13794,9 +13794,161 @@ Fine, you've convinced me.
 (Giggle and nod)
 （咯咯笑并点头）
 I don't have time for this. (PERCENT chance to avoid)
-我没有时间做这个。（PERCENT 的概率闪避）
+我没有时间做这个。（PERCENT 的概率避开）
 (Shake your head and moan) (PERCENT chance to avoid)
-（摇头并呻吟）（PERCENT 的概率闪避）
+（摇头并呻吟）（PERCENT 的概率避开）
+
+(The SPEAKER swings an imaginary sword around)|En guar- Oh, you're unarmored!|Do you want to borrow some of mine?
+（SPEAKER 挥舞着一把想象中的剑）|嗯哈- 哦，你没有盔甲！|你想从我这借一些吗？
+(The SPEAKER holds up a RESTRAINT)|I found this near an old suit of armor.|I think it's a helmet or something...
+（SPEAKER 举起一个 RESTRAINT）|我在一套旧盔甲附近发现了这个。|我认为它是头盔或其他东西......
+(The SPEAKER winks and locks it on)|I feel much safer already~
+（SPEAKER 眨眼并锁定）|我感觉你安全多了~
+(The SPEAKER pouts)|Aww, spoilsport!|(She returns to fighting her imaginary enemies)
+（SPEAKER 撅起嘴）|哇哦，扫兴！|（她又开始与她幻想的敌人作战）
+(The SPEAKER shrugs)|Your loss~
+（SPEAKER 耸耸肩）|这是你的损失~
+(The SPEAKER grins deviously)|So? It might help...|(The SPEAKER dives at you suddenly!)
+（SPEAKER 狡猾地一笑）|所以呢？这可能会有所帮助...|（SPEAKER 突然冲向你！）
+(The SPEAKER giggles)|Close enough, right?|Come on, there's enemies to fight!
+（SPEAKER 咯咯地笑）|足够接近了，对吧？|来吧，你现在有敌人要战斗！
+(The SPEAKER trips over the floor)|AHHHHH!|Maybe I need more protection...
+（SPEAKER 被地板绊倒）|啊哈哈哈！|也许我需要更多的保护......
+(The SPEAKER locks it in place quickly)|There, all set for battle now!|(The SPEAKER giggles, cheekily winking at you)
+（SPEAKER 迅速将其锁定到位）|好了，现在一切准备就绪！|（SPEAKER 咯咯地笑，厚着脸皮地向你眨眼）
+(The SPEAKER tightly fastens the muzzle on)|Safe and secure~|(You whimper as the SPEAKER spanks you goodbye)
+(SPEAKER 紧紧地固定你的口套)|安全又可靠~|(当 SPEAKER 打你屁股告别时，你呜咽着)
+
+Extra defense can't hurt...
+额外的防御不会造成伤害...
+(Nod cautiously)
+（小心地点点头）
+I'm safe enough.
+我已经足够安全了。
+
+A gag? Sounds fun~
+一个口塞？听起来很有趣~
+That's not a helmet!
+这不是头盔！
+
+Well, it might...
+嗯，也许...
+(Dodge her lunge) (PERCENT chance to avoid)
+（躲开她的冲刺）（PERCENT 的概率避开）
+
+(A smirking SPEAKER bumps into you)|So, you're with us now, huh?|I think you need a welcome gift.
+（一个傻笑的 SPEAKER 撞到了你）|那么，你现在和我们在一起了，是吧？|我想你需要一份欢迎礼物。
+Mmhmm, a gift~|(The SPEAKER leans forward to whisper in your ear)|Is it cold in here, or is it just you?
+嗯哼哼，一份礼物~|（SPEAKER 倾身在你耳边低语）|这里冷吗，还是只有你一个人冷？
+(You shiver as everything gets colder)|(RESTRAINT forms around you!)|(The SPEAKER blows you a kiss and giggles)
+（一切都变冷了，你瑟瑟发抖）|（RESTRAINT 围绕在你周围！）|（SPEAKER 给你一个飞吻并咯咯地笑）
+(The SPEAKER thinks for a moment)|I really wanted to try this too...|(Sighing, the SPEAKER walks away)
+（SPEAKER 想了一会儿）|我真的很想尝试这个...|（叹气，SPEAKER 走开）
+(The SPEAKER scowls)|How boring.
+（SPEAKER 皱起眉头）|真无聊。
+(The SPEAKER laughs at your protest)|It's so much fun though~|(You feel the temperature drop suddenly)
+（SPEAKER 嘲笑你的抗议）|不过还是很有趣~|（你感觉温度突然下降）
+(The SPEAKER thinks for a moment)|Well, I want to try this anyway~|(You feel the temperature drop suddenly)
+（SPEAKER 想了一会儿）|好吧，我还是想试试这个~|（你感觉温度突然下降了）
+(The temperature returns to normal)|(The SPEAKER seems surprised)|Hmm, that wasn't meant to happen.
+（温度恢复正常）|（SPEAKER 似乎很惊讶）|嗯，这不是故意的。
+(RESTRAINT solidifies on you as the SPEAKER grins)|It worked! I did it!|Thanks for your, uh, help~
+（当 SPEAKER 咧嘴一笑时，RESTRAINT 已经固定在你身上了）|成功了！我做到了！|谢谢你的，呃，帮助~
+(RESTRAINT solidifies on you as the SPEAKER smiles)|Yes! Finally! How's that feel?|(The SPEAKER admires your restraints)
+（当 SPEAKER 微笑时，RESTRAINT 已经固定在你身上了）|是的！最后！感觉怎么样？|（SPEAKER 很欣赏你的束缚）
+
+A gift?
+一份礼物？
+(Nod warily)
+（警惕地点点头）
+No thanks.
+不，谢谢。
+
+Umm... just me?
+嗯……只有我吗？
+Wait, don't make it colder!
+等等，别让温度变冷！
+
+(Shiver and watch as the ice covers you)
+（颤抖着看着冰覆盖着你）
+(Mutely whimper as the ice covers you)
+（当冰覆盖你时默默地呜咽）
+Ah! T-That's freezing! (PERCENT chance to avoid)
+啊! 太-太冷了！（PERCENT 的概率避开）
+(Wriggle to warm up) (PERCENT chance to avoid)
+（蠕动着尝试热身）（PERCENT 的概率避开）
+
+(A robotic SPEAKER approaches)|QUERY: Good girl detected:|Restraint desired?
+（机器人 SPEAKER 走近）|查询：发现好女孩：|需要束缚吗？
+(The SPEAKER beeps and whirrs)|SPEAKER will add RESTRAINT.|Acceptable?
+（SPEAKER 发出嘟嘟声和呼呼声）|SPEAKER 将添加 RESTRAINT。|可以接受吗？
+(The SPEAKER spins around you, releasing tape)|RESTRAINT dispensed.|Have a nice day.
+（SPEAKER 绕着你旋转，释放胶带）|RESTRAINT 已释放至目标。|祝你有美好的一天。
+(The SPEAKER buzzes)|Understood. Proceding back to duty.
+（SPEAKER 嗡嗡作响）|明白。继续执行任务。
+(The SPEAKER clicks and beeps)|Rejection noted.|SPEAKER will return to patrol.
+（SPEAKER 发出咔嗒声并发出蜂鸣声）|已注意到拒绝。|SPEAKER 将返回巡逻。
+(The SPEAKER buzzes)|ERROR: Contradiction in answer.|STATEMENT: SPEAKER will add RESTRAINT.
+（SPEAKER 发出嗡嗡声）|错误：答案自相矛盾。|声明：SPEAKER 将添加 RESTRAINT。
+ERROR: Acceptance expected.|STATEMENT: SPEAKER will add RESTRAINT.
+错误：预计接受。|声明：SPEAKER 将添加 RESTRAINT。
+(The SPEAKER makes a whirring noise)|ERROR: SPEAKER out of tape.|Returning to routine.
+（SPEAKER 发出呼呼声）|错误：SPEAKER 中的胶带已用完。|返回常规状态。
+(The SPEAKER launches tape which catches you as you run)|RESTRAINT dispensed.|Have a nice day.
+（在你奔跑时 SPEAKER 发射出胶带抓住你）|RESTRAINT 已释放至目标。|祝你有美好的一天。
+
+Uh, affirmative?
+呃，肯定？
+Negative.
+否定。
+
+Very acceptable!
+非常满意！
+No, I don't want that.
+不，我不想那样。
+
+If you have to...
+如果你必须...
+Go away robot! (PERCENT chance to avoid)
+滚开啊机器人！（PERCENT 的概率避开）
+
+(The SPEAKER shoots cables at you)|RESTRAINT dispensed.|Have a nice day.
+（SPEAKER 向你发射电缆）|RESTRAINT 已释放至目标。|祝你有美好的一天。
+(The SPEAKER makes a whirring noise)|ERROR: SPEAKER cable jammed.|Returning to routine.
+（SPEAKER 发出呼呼声）|错误：SPEAKER 中的电缆被卡住。|返回常规状态。
+
+(A happy SPEAKER looks at you)|Hey there cutie~|Want to try some scarf bondage?
+（一个高兴的 SPEAKER 看着你）|嘿，小可爱~|想尝试被一些围巾束缚吗？
+(The SPEAKER holds up some scarves)|If you want to try, I've got a few here.|I could give you a RESTRAINT?
+（SPEAKER 举起一些围巾）|如果你想尝试一下，我这里有一些。|我可以往你身上绑 RESTRAINT 吗？
+(The SPEAKER smiles gently at you as she ties)|I love the silky feeling~|(The SPEAKER tightens all her knots)
+（SPEAKER 在捆绑时对你温柔地微笑）|我喜欢丝滑的感觉~|（SPEAKER 拉紧所有的结）
+(The SPEAKER looks away and nods)|Well... maybe next time.
+（SPEAKER 移开视线并点头）|好的……也许下次吧。
+(The SPEAKER shuffles awkwardly)|Oh... well...|Come back if you change your mind~
+（SPEAKER 尴尬地拖着脚步）|哦……好吧……|如果你改变主意了就回来吧~
+(The SPEAKER scowls)|Hey, don't back out!|I promise I'll make it comfortable!
+（SPEAKER 皱起眉头）|嘿，别后退！|我保证我会让它很舒服的！
+(The SPEAKER frowns)|Too bad, I want to tie someone!
+（SPEAKER 皱起眉头）|太糟糕了，我想绑一个人！
+(The SPEAKER drops her scarves)|Aww, really?|I'll go find someone else then...
+（SPEAKER 放下围巾）|哇，真的吗？|那我就去找别人了……
+(The SPEAKER beams a smile)|Yay, thank you!|Feels nice, right?
+（SPEAKER 微笑）|耶，谢谢！|感觉很好，对吧？
+(The SPEAKER tosses a scarf around you like a lasso)|Not so fast! You cannot escape the fluff!
+（SPEAKER 像套索一样把围巾扔在你身上）|别跑那么快！你逃不了的！
+
+Sounds good!
+听起来不错！
+Please do!
+请这样做！
+(Nod and giggle)
+（点头并咯咯笑）
+
+Well... sure then.
+嗯...当然可以。
+Hey! Stop! (PERCENT chance to avoid)
+嘿！停下！（PERCENT 的概率避开）
 
 (Wiggle excitedly)
 （兴奋地扭动）
@@ -13815,7 +13967,7 @@ I don't have time for this. (PERCENT chance to avoid)
 (Shake your head)
 （摇头）
 (Shake your head and moan) (PERCENT chance to avoid)
-（摇头呻吟）（PERCENT 的概率闪避）
+（摇头呻吟）（PERCENT 的概率避开）
 (Shake your head)
 （摇头）
 (Nod eagerly)
@@ -13877,7 +14029,7 @@ Not really.
 (Moan and giggle)
 （呻吟和傻笑）
 (Shake your head and moan) (PERCENT chance to avoid)
-（摇头呻吟）（PERCENT 的概率闪避）
+（摇头呻吟）（PERCENT 的概率避开）
 (Nod excitedly)
 （兴奋地点头）
 (Shake your head)
@@ -13915,7 +14067,7 @@ Not really.
 (Giggle and moan)
 （傻笑和呻吟）
 (Shake your head and moan) (PERCENT chance to avoid)
-（摇头呻吟）（PERCENT 的概率闪避）
+（摇头呻吟）（PERCENT 的概率避开）
 (Nod eagerly)
 （急切地点头）
 (Shake your head)
@@ -13941,7 +14093,7 @@ Not really.
 (Shake your head)
 （摇头）
 (Shake your head) (PERCENT chance to avoid)
-（摇头）（PERCENT 的概率闪避）
+（摇头）（PERCENT 的概率避开）
 (Nod happily)
 （高兴地点头）
 (Shake your head)
@@ -13953,7 +14105,7 @@ Not really.
 (Shake your head)
 （摇头）
 (Shake your head and moan) (PERCENT chance to avoid)
-（摇头呻吟）（PERCENT 的概率闪避）
+（摇头呻吟）（PERCENT 的概率避开）
 (The SPEAKER nervously walks up to you)|Excuse me miss...|Are you a fan of latex by chance?
 （SPEAKER 紧张地走到你面前）|请问小姐……|你是不是乳胶爱好者？
 (The SPEAKER blushes deeply)|Then would you like to try on this RESTRAINT?
@@ -13998,9 +14150,9 @@ Okay, fine...
 (Moan and giggle)
 （呻吟和傻笑）
 Wait, what? (PERCENT chance to avoid)
-等等，什么？ （PERCENT 的概率闪避）
+等等，什么？ （PERCENT 的概率避开）
 (Shake your head and moan) (PERCENT chance to avoid)
-（摇头呻吟）（PERCENT 的概率闪避）
+（摇头呻吟）（PERCENT 的概率避开）
 
 (The SPEAKER nervously walks up to you)|Excuse me miss...|Can you help me out?
 （SPEAKER 紧张地走到你面前）|请问小姐……|你能帮帮我吗？
@@ -14048,9 +14200,9 @@ Fine. I'll do it because you asked.
 (Moan and nod slowly)
 （呻吟着慢慢点头）
 I won't help you. Wear it yourself. (PERCENT chance to avoid)
-我不会帮你的。自己穿。（PERCENT 的概率闪避）
+我不会帮你的。自己穿。（PERCENT 的概率避开）
 (Shake your head) (PERCENT chance to avoid)
-（摇头）（PERCENT 的概率闪避）
+（摇头）（PERCENT 的概率避开）
 
 (Look at your belt...)
 （看你的贞操带……）
@@ -14099,9 +14251,9 @@ Okay, fine...
 (Moan and giggle)
 （呻吟和傻笑）
 Wait, what? (PERCENT chance to avoid)
-等等，什么？ （PERCENT 的概率闪避）
+等等，什么？ （PERCENT 的概率避开）
 (Shake your head and moan) (PERCENT chance to avoid)
-（摇头呻吟）（PERCENT 的概率闪避）
+（摇头呻吟）（PERCENT 的概率避开）
 
 (The SPEAKER grins as she sees you)|Hey there sweetie~|I think you'd look good in some ropes!
 （SPEAKER 看到你就笑了）|嘿，亲爱的~|我觉得绳子在你身上很好看！
@@ -14149,7 +14301,7 @@ Fine. You win.
 Go away! (PERCENT chance to avoid)
 离开！ （ PERCENT 的概率闪避）
 (Shake your head and moan) (PERCENT chance to avoid)
-（摇头呻吟）（PERCENT 的概率闪避）
+（摇头呻吟）（PERCENT 的概率避开）
 (The SPEAKER perks her ears as she sees you)|You've got a nice body.|I think it'll do better with some training!
 （SPEAKER 一看到你就竖起耳朵）|你的体型很完美。|我想通过一些训练会做得更好！
 (The SPEAKER grins and hands you a paper)|Nevermere Training is always looking for new recruits!|I'll just have you sign here...
@@ -14191,9 +14343,9 @@ Fine. I'll sign it...
 (Moan and nod)
 （呻吟和点头）
 Never! (PERCENT chance to avoid)
-绝不！ （PERCENT 的概率闪避）
+绝不！ （PERCENT 的概率避开）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率避开）
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
 （SPEAKER 看到你，做了一个简短的鞠躬）|你好。|你似乎拥有我们想要的品质。|我很乐意为你提供一个职位……
 (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
@@ -14235,9 +14387,9 @@ Fine. I'll sign it...
 (Moan and nod)
 （呻吟和点头）
 Never! (PERCENT chance to avoid)
-绝不！ （PERCENT 的概率闪避）
+绝不！ （PERCENT 的概率避开）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率避开）
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
 （SPEAKER 看到你，做了一个简短的鞠躬）|你好。|你似乎拥有我们想要的品质。|我很乐意为你提供一个职位……
 (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
@@ -14279,9 +14431,9 @@ Fine. I'll sign it...
 (Moan and nod)
 （呻吟和点头）
 Never! (PERCENT chance to avoid)
-绝不！（PERCENT 的概率闪避）
+绝不！（PERCENT 的概率避开）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率避开）
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 （SPEAKER 突然移动的速度超出了你的反应）|（当你被压在地上时，你感到一只脚踩在你的背上）|（她给你穿上制服并锁紧......）|你需要额外的训练， 我想...
 (Nod excitedly)
@@ -14291,9 +14443,9 @@ Never! (PERCENT chance to avoid)
 (Moan and nod)
 （呻吟和点头）
 Never! (PERCENT chance to avoid)
-绝不！（PERCENT 的概率闪避）
+绝不！（PERCENT 的概率避开）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率避开）
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 （SPEAKER 突然移动的速度超出了你的反应）|（当你被压在地上时，你感到一只脚踩在你的背上）|（她给你穿上制服并锁紧......）|你需要额外的训练， 我想...
 (Nod excitedly)
@@ -14303,7 +14455,7 @@ Never! (PERCENT chance to avoid)
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率避开）
 (Nod excitedly)
 （兴奋地点头）
 (Shake your head)
@@ -14315,7 +14467,7 @@ W-where did you get that uniform? (Refuse)
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率避开）
 (Nod excitedly)
 （兴奋地点头）
 (Shake your head)
@@ -14323,7 +14475,7 @@ W-where did you get that uniform? (Refuse)
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率避开）
 (Nod excitedly)
 （兴奋地点头）
 (Shake your head)
@@ -14331,7 +14483,7 @@ W-where did you get that uniform? (Refuse)
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率避开）
 This sounds like an interesting opportunity.
 这听起来像是一个有趣的机会。
 (Nod excitedly)
@@ -14349,7 +14501,7 @@ Gladly!
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率避开）
 (The SPEAKER nods)|Fair enough.
 （SPEAKER点头）|很公平。
 (Nod excitedly)
@@ -14357,13 +14509,13 @@ Gladly!
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率避开）
 (The SPEAKER nods)|Fair enough.
 （SPEAKER点头）|很公平。
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率避开）
 (Nod excitedly)
 （兴奋地点头）
 (Shake your head)
@@ -14373,7 +14525,7 @@ Gladly!
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率避开）
 (Shake your head)
 （摇头）
 (Accept the contract)
@@ -14383,7 +14535,7 @@ Gladly!
 (Moan and nod)
 （呻吟和点头）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率避开）
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
 （SPEAKER 看到你，做了一个简短的鞠躬）|你好。|你似乎拥有我们想要的品质。|我很乐意为你提供一个职位……
 (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
@@ -14425,9 +14577,9 @@ Fine. I'll sign it...
 (Moan and nod)
 （呻吟和点头）
 Never! (PERCENT chance to avoid)
-绝不！ （PERCENT 的概率闪避）
+绝不！ （PERCENT 的概率避开）
 (Shake your head and frown) (PERCENT chance to avoid)
-（摇头皱眉）（PERCENT 的概率闪避）
+（摇头皱眉）（PERCENT 的概率避开）
 
 (The SPEAKER waves)|Greetings,|I manufacture all sorts of goods.|Would you like to buy some?
 （SPEAKER 挥手）|你好，|我这里生产各种各样商品。|你想买一些吗？
