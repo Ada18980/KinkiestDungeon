@@ -10713,6 +10713,14 @@ You raise a huge mass of water!
 你掷出大型水团！
 Choose aim direction
 选择发射方向
+
+The boulder knocks you to the ground!
+巨石把你撞倒在地！
+The water covers you and drenches you!
+水把你淹没了！
+You step in water and become wet.
+你踩在水里就会淋湿。
+
 Ice Breath
 冰霜吐息
 A field of icicles that deals DamageDealt damage on a hit and stuns briefly.
