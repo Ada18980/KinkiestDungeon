@@ -14101,6 +14101,8 @@ Well... sure then.
 Hey! Stop! (PERCENT chance to avoid)
 嘿！停下！（PERCENT 的概率避开）
 
+(Moan and shiver)
+（呻吟和颤抖）
 (Wiggle excitedly)
 （兴奋地扭动）
 (Shake your head)
