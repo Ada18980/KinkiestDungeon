@@ -5136,13 +5136,13 @@ Greedy Ghast
 The ghast vanishes... for now
 恶魂消失了……暂时
 The moaning spirit gropes your body!!! (DamageTaken)
-呻吟的灵魂摸索着你的身体！！！ (DamageTaken)
+呻吟的灵魂摸索着你的身体！！！（DamageTaken）
 Tickle Hand
 挠痒痒的手
 The hand vanishes!
 手不见了！
 The hand tickles you! (DamageTaken)
-手在挠你！ (DamageTaken)
+手在挠你！（DamageTaken）
 Tome of Chains
 锁链之书
 The floating tome burns into ashes!
@@ -5198,25 +5198,28 @@ Filthy Rat
 The rat skitters back into a hole in the wall.
 老鼠飞快地跑回墙上的一个洞里。
 The filthy rat nibbles at you! (DamageTaken)
-肮脏的老鼠在咬你！ (DamageTaken)
+肮脏的老鼠在咬你！（DamageTaken）
 Annoying Bat
 烦人的蝙蝠
 You stomp the bat into the ground to make sure it's dead.
 你把蝙蝠踩在地上，以确保它已经死了。
 The bat nibbles incessantly at you! (DamageTaken)
-蝙蝠不停地啃咬你！ (DamageTaken)
+蝙蝠不停地啃咬你！（DamageTaken）
 Pixie
 小精灵
 The pixie huffs and floats away.
 小精灵气呼呼地飘走了。
 The pixie tickles you with a feather! (DamageTaken)
-小精灵用羽毛逗你！ (DamageTaken)
+小精灵用羽毛逗你！（DamageTaken）
 Orb of Light
 光球
 The orb vanishes in a flash of light.
 球体在一道闪光中消失。
 The orb blinds you with its intense light!!! (DamageTaken)
-球体以其强烈的光芒让你失明！！！ (DamageTaken)
+球体以其强烈的光芒让你失明！！！（DamageTaken）
+A light restores the will of its allies!
+一道光恢复了盟友的意志！
+
 You do not have enough resources to cast the spell!
 你没有足够的资源来施放咒语！
 You AttackName TargetEnemy for DamageDealt DamageType damage!
