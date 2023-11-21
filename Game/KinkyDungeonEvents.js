@@ -1492,7 +1492,7 @@ let KDEventMapInventory = {
 				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind + 1, 2);
 
 				for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
-					if (KinkyDungeonPlayer.Appearance[A].Asset.Group.Name === "Eyes" || KinkyDungeonPlayer.Appearance[A].Asset.Group.Name === "Eyes2") {
+					if (KinkyDungeonPlayer.Appearance[A].Asset.Model.Group === "Eyes" || KinkyDungeonPlayer.Appearance[A].Asset.Model.Group === "Eyes2") {
 						let property = KinkyDungeonPlayer.Appearance[A].Property;
 						if (!property || property.Expression !== "Surprised") {
 							KinkyDungeonPlayer.Appearance[A].Property = {Expression: "Surprised"};
