@@ -11136,6 +11136,8 @@ Rope Trap
 绳陷阱
 Rope Trap
 绳陷阱
+Holy Rope Trap
+神圣绳陷阱
 Belt Trap
 束带陷阱
 Cable Trap
@@ -11144,6 +11146,12 @@ Slime Trap
 粘液陷阱
 Chain Trap
 锁链陷阱
+Shadow Latex Trap
+阴影乳胶陷阱
+Demonic Sigil
+恶魔封印
+Unstable Crystals
+不稳定晶体
 Gas Trap
 气体陷阱
 Gas Trap
