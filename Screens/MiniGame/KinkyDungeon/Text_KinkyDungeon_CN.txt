@@ -15952,6 +15952,8 @@ Give her a Scroll of Purity
 （你解开了 SPEAKER）|呜呜呜！|（她想保持自己的堵嘴…）
 (You don't have any lockpicks)
 （您没有任何撬锁器。）
+(You try to pick the lock...)|(Click! A safety shield locks securely into place!)|(Looks like the SPEAKER will be staying here for a while...)
+（你试图撬开锁...）|（咔哒！安全护盾牢固地锁定到位！）|（看起来 SPEAKER 将在这里呆一段时间了...）
 (You can't pick the lock with your hands bound)
 （你不能用在手被绑住的时候撬锁。）
 (After a while, you free the SPEAKER)|Thank you!|Let's get moving!
@@ -15980,6 +15982,7 @@ Apologize profusely!
 
 An enemy found you while you were busy!
 敌人在你正忙的时候发现了你！
+
 (A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)
 （SPEAKER 砰的一声把你吵醒）|醒醒！让我们离开这里|（她设法撬开了你牢房门上的锁。）
 (A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)
