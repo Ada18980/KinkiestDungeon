@@ -3208,7 +3208,7 @@ Deals crush damage. Can be used to spray a '+' shaped pool of slime.
 造成碾压伤害。可用于喷洒“+”形粘液池。
 Drains 1.5% ancient energy to create a pool of slime that deals 35 glue damage per tile and slows enemies.
 消耗 1.5% 的远古能量来制造一个粘液池，每格造成 35 点胶水伤害并减速敌人。
-Enchanted Axe
+Magic Axe
 魔法斧
 Sick and vile, like the hearts of your enemies.
 病态和卑鄙，就像你敌人的心。
@@ -3220,19 +3220,19 @@ Used for drilling holes in rock and armor.
 用于在岩石和盔甲上钻孔。
 Deals pierce damage. Reduces enemy armor by 15 for 6 turns.
 造成穿刺伤害。减少敌人15点护甲，持续6回合。
-Enchanted Flail
+Magic Flail
 魔法流星锤
 A blessed censer that distributes pain equally.
 一个用于平等地分配伤害的受祝福的香炉。
-Deals crush damage to the target and all enemies near the target.
-对目标和目标附近的所有敌人造成碾压伤害。
-Enchanted Spear
+Deals crush damage. Deals 20 bonus shadow damage to the target and enemies near the target
+造成碾压伤害。并对目标及其附近的敌人造成 20 点额外阴影伤害
+Magic Spear
 附魔长矛
 Seeks and pierces hearts with ease.
 轻松地寻找和刺穿心脏。
-Deals pierce damage to the target and two squares behind it.
-对目标及其后面的两个方格造成穿刺伤害。
-Enchanted Hammer
+Deals pierce damage to the target and two squares behind it. Can be used to make a ranged attack.
+对目标及其后面的两个方格造成穿刺伤害。可用于进行远程攻击。
+Magic Hammer
 魔法锤
 Made of a magical, resonant material.
 由神奇的共振材料制成。
@@ -15372,7 +15372,7 @@ Will you buy my loot?
 (Show her your loot)
 （向她展示你的战利品）
 Absolutely! I offer the standard market rate for anything.|I'll take enchanted items too!|I've got plenty of volunteers to check for curses~
-肯定的呀！我提供任何东西的标准市场价格。|我也会带一些有魔法的物品！|我还有很多志愿者来帮我检查诅咒~
+肯定的呀！我提供任何东西的标准市场价格。|我也会带一些有附魔的物品！|我还有很多志愿者来帮我检查诅咒~
 Got something you want to show me?
 有什么东西想给我看吗？
 (Sell Items)
