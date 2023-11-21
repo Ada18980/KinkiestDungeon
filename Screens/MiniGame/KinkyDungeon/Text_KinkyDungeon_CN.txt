@@ -4474,8 +4474,16 @@ The sticky slime splashes against you! (DamageTaken)
 粘稠的粘液泼到你身上！（DamageTaken）
 The slime attaches itself to your body! (+RestraintAdded)
 粘液附着在你的身体上！（+RestraintAdded）
+Bouncy Slime
+弹力粘液
 The slime melts into a puddle.
 粘液融化成了一摊水。
+The bouncy slime splashes against you! (DamageTaken)
+粘稠的粘液泼到你身上！（DamageTaken）
+The bouncy slime leaps to you!
+弹力粘液向你扑来！
+The bouncy slime attaches itself to your body! (+RestraintAdded)
+弹力粘液附着在你的身体上！（+RestraintAdded）
 Fast Slime
 疾速粘液团
 The slime melts into a puddle.
