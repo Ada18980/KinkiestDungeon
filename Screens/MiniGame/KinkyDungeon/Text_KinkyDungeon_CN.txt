@@ -6499,7 +6499,7 @@ The enemy attaches your elbow cuffs together!
 Your wrists detatch, leaving your elbows still bound!
 你的手腕松开了，你的手肘仍然被束缚着！
 Your elbows detatch!
-你的肘部手铐断开了！
+你的肘部分开了！
 The enemy attaches your wrist cuffs back together!
 敌人将你的手腕重新绑在一起！
 
@@ -6931,7 +6931,7 @@ A pair of cuffs keeping your elbows locked together!
 They feel like they aren't even there, but the material is rigid and unyielding.
 他们觉得他们甚至不在那里，但材料是刚性和不屈不挠的。
 Your elbows detatch!
-你的肘部手铐断开了！
+你的肘部分开了！
 The enemy attaches your wrist cuffs back together!
 敌人将你的手腕重新绑在一起！
 Mithril Leg Cuffs
@@ -7364,7 +7364,7 @@ Your wrists detatch, leaving your elbows still bound!
 They're made of tough cowhide.
 它们由坚韧的牛皮制成。
 Your elbows detatch!
-你的肘部手铐断开了！
+你的肘部分开了！
 The enemy attaches your wrist cuffs back together!
 敌人将你的手铐重新绑在一起！
 Comfy Muzzle
@@ -7518,43 +7518,77 @@ Lthr Elbow Chain
 They're made of tough cowhide.
 它们由坚韧的牛皮制成。
 Your elbows detatch!
-你的肘部手铐断开了！
+你的肘部分开了！
 The enemy attaches your wrist cuffs back together!
 敌人将你的手腕重新绑在一起！
 Dragonscale Cuffs
 龙鳞铐
 A pair of cuffs that make it easy to restrain you.
-一对手铐，让你轻松束缚。
+一对手铐，轻松束缚你。
 They're made of dragonscale.
 它们是由龙鳞制成的。
 The enemy attaches your wrist cuffs together!
 敌人将你的手腕铐在一起！
-Scale Wrist Chain
-鳞片手铐
+Slave Cuffs
+奴隶铐
+A pair of cuffs that make it easy to restrain you.
+一对手铐，轻松束缚你。
+It's made of a gold-tinted metal with a magical enchantment.
+它由具有神奇魔力的金色金属制成。
+The enemy attaches your wrist cuffs together!
+敌人将你的手腕铐在一起！
+Slave Wrist Chain
+奴隶手铐
 A pair of cuffs keeping your arms behind your back.
 一对手铐将您的手臂束缚在背后。
-They're made of dragonscale.
-它们是由龙鳞制成的。
+It's made of a gold-tinted metal with a magical enchantment.
+它由具有神奇魔力的金色金属制成。
 Your cuffs detatch!
 你的手铐松了！
 The enemy attaches your elbow cuffs together!
 敌人将你的肘部用手铐绑在一起！
-Scale Wrist Chain
-鳞片手铐
-They're made of dragonscale.
-它们是由龙鳞制成的。
-Your wrists detatch, leaving your elbows still bound!
-你的手腕松开了，你的手肘仍然被束缚着！
-Scale Elbow Chain
-连接鳞片肘部手铐
+Slave Wrist Chain
+奴隶手铐
 A pair of cuffs keeping your elbows locked together!
 一对手铐将你的肘部固定在一起！
-They're made of dragonscale.
-它们是由龙鳞制成的。
+It's made of a gold-tinted metal with a magical enchantment.
+它由具有神奇魔力的金色金属制成。
+Your wrists detatch, leaving your elbows still bound!
+你的手腕松开了，你的手肘仍然被束缚着！
+Slave Elbow Chain
+奴隶肘铐
+A pair of cuffs keeping your elbows locked together!
+一对手铐将你的肘部固定在一起！
+It's made of a gold-tinted metal with a magical enchantment.
+它由具有神奇魔力的金色金属制成。
 Your elbows detatch!
-你的肘部手铐断开了！
+你的肘部分开了！
 The enemy attaches your wrist cuffs back together!
 敌人将你的手腕重新绑在一起！
+
+Slave Leg Cuffs
+奴隶腿铐
+A pair of cuffs chaining your legs together.
+一对手铐将你的双腿拴在一起。
+It's made of a gold-tinted metal with a magical enchantment.
+它由具有神奇魔力的金色金属制成。
+Slave Ankle Cuffs
+奴隶脚铐
+A pair of cuffs chaining your legs together.
+一对手铐将你的双腿拴在一起。
+It's made of a gold-tinted metal with a magical enchantment.
+它由具有神奇魔力的金色金属制成。
+The enemy attaches your ankle cuffs together!
+敌人将你的脚铐绑在一起！
+Slave Cuffs Chain
+链式奴隶手铐
+A pair of cuffs chaining your legs together.
+一对手铐将你的双腿拴在一起。
+It's made of a gold-tinted metal with a magical enchantment.
+它由具有神奇魔力的金色金属制成。
+The ankle cuff chain detaches!
+脚铐链脱落！
+
 Maid Jacket
 女仆拘束衣
 A bolero jacket keeping your arms pinned snugly. You can't even move them.
@@ -7734,7 +7768,7 @@ Your elbows detatch!
 The enemy attaches your wrist cuffs back together!
 敌人将你的手腕重新绑在一起！
 Crystal Leg Cuffs
-水晶腿手铐
+水晶腿铐
 A pair of cuffs chaining your legs together.
 一对手铐将你的双腿拴在一起。
 It's made of a glowing, brittle material. You feel your energy flowing into it...
