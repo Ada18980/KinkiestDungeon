@@ -7708,7 +7708,7 @@ It has eyeholes for you to see out of, but blocks access to the face.
 
 Shadow Heels
 阴影高跟鞋
-A set of impractical heels that clasp around your ankles. They make it hard to walk
+A set of impractical heels that clasp around your ankles. They make it hard to walk.
 一套不切实际的高跟鞋，紧箍着你的脚踝。它们使行走变得困难
 The material is stronger than leather, and flexes to make struggling difficult.
 这种材料比皮革更坚固，并且可以弯曲，使挣扎变得困难。
