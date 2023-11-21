@@ -10213,6 +10213,18 @@ Increases maximum SP by 12
 最大 SP 增加 12
 Iron Will
 钢铁意志
+While you have 100 current willpower or more, regain an additional 4 stamina per turn.
+当你当前意志力达到 100 点或更多时，每回合额外恢复 4 点耐力。
+Defiance
+蔑视
+For each 10 current willpower you have over 50, gain +5 Bondage Resist.
+当前意志力每超过 50 点，每 10 点，获得 +5 束缚抗性。
+Willful Struggle
+随意斗争
+For each 10 current willpower you have over 50, gain +1% struggle power.
+当前意志力每增加 10 点，超过 50 点，战斗力就会增加 1%。
+Your willpower provides you with additional strength! (+AMOUNT%)
+你的意志力为你提供额外的力量！（+AMOUNT%）
 Athlete
 体育健将
 Sprinting costs 40% less stamina.
@@ -10227,10 +10239,22 @@ Dodge II
 闪避 II
 Dodge III
 闪避 III
-Critical Strike
-致命一击
-Excess accuracy (over 100%) is converted to bonus physical damage percentage at 50% efficiency.
-超额准确度（超过 100%）会以 50% 的效率转化为额外的物理伤害百分比。
+Precise Critical
+精准暴击
+When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency.
+当造成物理伤害的暴击时，超过 100% 的准确度将以 50% 的效率转化为额外暴击倍数。
+Precise Magic
+精准魔法
+When landing a critical strike with magic damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency.
+当造成魔法伤害的暴击时，超过 100% 的准确度会以 50% 的效率转化为额外暴击倍数。
+Magical Overload
+魔法超载
+When landing a critical strike with magic damage, crit multiplier is increased by 25% of your current DP.
+当造成魔法伤害的暴击时，暴击倍数增加当前 DP 的 25%。
+Brute Force
+蛮力攻击
+When enabled, your attacks deal 10% of your willpower as additional crush damage but cost 10 more stamina.
+启用后，你的攻击会造成 10% 的意志力作为额外的挤压伤害，但会多花费 10 点耐力。
 One With Slime
 粘液一体
 While standing on slime/latex, you can cast rubber spells without components.
