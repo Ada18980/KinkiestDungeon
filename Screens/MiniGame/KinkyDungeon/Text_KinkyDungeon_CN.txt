@@ -9638,6 +9638,14 @@ You a hurl a fireball!
 你投掷了火球！
 Choose aim direction
 选择发射方向
+Fireblast
+火焰冲击波
+A slow moving ball of flame that explodes for 100 fire damage to the target and DamageDealt damage to surrounding enemies.
+缓慢移动的火球爆炸，对目标造成 100 点火焰伤害，并对周围的敌人造成伤害。
+You a hurl a blast of flame!
+你扔出一道冲击波！
+Choose aim direction
+选择发射方向
 Incinerate
 焚风
 A tornado of flame that does DamageDealt damage per turn for LifeTime turns.
