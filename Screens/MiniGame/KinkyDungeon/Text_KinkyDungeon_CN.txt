@@ -5311,9 +5311,9 @@ You unlock the TargetRestraint.
 You manage to squeeze out of the TargetRestraint!
 你设法脱出了 TargetRestraint！
 You pick the lock on the TargetRestraint!
-你正在撬铠 TargetRestraint 上的锁！
+你正在尝试撬开 TargetRestraint 上的锁！
 You pick the lock on the TargetRestraint!
-你正在撬铠 TargetRestraint 上的锁！
+你正在尝试撬开 TargetRestraint 上的锁！
 You free yourself from the TargetRestraint!
 你从 TargetRestraint 中逃脱了出来！
 You damage the TargetRestraint enough to escape!
