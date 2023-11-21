@@ -14711,6 +14711,7 @@ Go away! (PERCENT chance to avoid)
 （SPEAKER 微笑）|没错。请你告诉我你的名字？
 (The SPEAKER zaps you and places you in restrictive gear)|Hmph. Unruly girls need training!
 （SPEAKER 对你进行电击并将你置于限制性装备中）|哼。不守规矩的女孩需要训练！
+
 This sounds like an interesting opportunity.
 这听起来像是一个有趣的机会。
 (Nod excitedly)
@@ -16295,8 +16296,47 @@ Apologize profusely!
 An enemy found you while you were busy!
 敌人在你正忙的时候发现了你！
 
-(A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)
-（SPEAKER 砰的一声把你吵醒）|醒醒！让我们离开这里|（她设法撬开了你牢房门上的锁。）
+(The SPEAKER beeps)|Prisoner 74121 identified.|Subject not registered in database.
+（SPEAKER 发出嘟嘟声）|囚犯 74121 已识别。|对象未在数据库中注册。
+(The SPEAKER beeps)|Confirming database entry.|Say 'I will be a good girl' to enter database.
+（SPEAKER 发出嘟嘟声）|正在确认数据库条目。|说 '我会成为一个好女孩' 以进入数据库。
+(The SPEAKER beeps and applies tracking gear)|(The metallic cables click into place with a soft beep)|Prisoner 74121 registered. Good girl.
+（SPEAKER 发出蜂鸣声并启用跟踪装置）|（金属电缆卡入到位，发出柔和的蜂鸣声）| 囚犯 74121 已注册。好女孩。
+(The SPEAKER beeps)|Acknowledged. Be warned:|Lost contact with Sections 98, 97, 96, 95...|(The list goes on...)
+（SPEAKER 发出嘟嘟声）|已确认。请注意：|与第 98、97、96、95 条失去联系...|（这样的例子不胜枚举...）
+(The SPEAKER beeps)|Acknowledged. Updating records.
+（SPEAKER 发出嘟嘟声）|已确认。 更新记录。
+(The SPEAKER beeps and flashes its lights)|Target acquired.
+（SPEAKER 发出蜂鸣声并闪烁灯光）|已获取目标。
+(The SPEAKER beeps and flashes its lights)|Target has complied. Supplying uniform.
+（SPEAKER 发出蜂鸣声并闪烁灯光）|目标已遵守。提供制服。
+(The SPEAKER beeps and flashes its lights)|Engaging capture protocol.
+（SPEAKER 发出蜂鸣声并闪烁灯光）|启用捕获协议。
+(The SPEAKER beeps and flashes its lights)|
+（SPEAKER 发出蜂鸣声并闪烁灯光）|
+(The SPEAKER blasts you with a stunning ray and captures you)|Target neutralized.
+（SPEAKER 用令人惊叹的射线攻击你并捕获你）|目标被压制。
+
+Please register me.
+请注册我。
+(Stop to talk to the robot)
+（停止和机器人说话）
+Prisoner 74121? You must be mistaken...
+囚犯 74121？ 你一定是弄错了...
+(Avoid the robot)
+（避开机器人）
+
+Prisoner 74121 reporting. I will be a good girl.
+囚犯 74121 报告。我会是一个好女孩。
+Actually, I am an administrator. (Refuse)
+事实上，我是一名管理员。（拒绝）
+
+I'm sorry, I will be a good girl!
+对不起，我会做一个好女孩！
+What? (PERCENT chance to avoid)
+什么？（PERCENT 的概率避开）
+
+
 (A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)
 （SPEAKER 砰的一声把你吵醒）|醒醒！让我们离开这里|（她设法撬开了你牢房门上的锁。）
 (A SPEAKER wakes you up by melting the door with acid)|These guys were a piece of cake.|Now let's discover a way out of here!
