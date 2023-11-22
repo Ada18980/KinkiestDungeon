@@ -22,6 +22,7 @@ let bosses = {
 		enemies: false,
 		nokeys: true,
 		nojail: false,
+		makeMain: true,
 	},
 
 	"Dollmaker": {
@@ -53,6 +54,7 @@ let bosses = {
 		nolore: true,
 		skin: 'bel',
 		noboring: true, // Skip generating boringness
+		makeMain: true,
 	},
 };
 
