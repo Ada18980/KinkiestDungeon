@@ -1722,7 +1722,9 @@ Sleepy: You are sluggish and have a hard time keeping your eyes open.
 Afterimage: Evasion greatly increased.
 残像：闪避大幅增加。
 We did it! We made outselves invisible--mmmmph!!!
-我们做到了！我们让自己隐形了——嗯↗↘↗ ！
+我们做到了！我们让自己隐形了——嗯嗯呜嗯↗↘↗ ！
+You are not currently attempting to disguise yourself. Click to reenable.
+你目前并没有试图伪装自己。点击以重新启用。
 Your restraints are disenchanted, treating them as nonmagical for purposes of cutting.
 你的身上的拘束具被解除了，它们在解除时被视为非魔法物品。
 You can launch another leather restraint instantly!
