@@ -427,6 +427,8 @@ let LayerGroups = {
 		"AnkleRightOver",
 		"BindFeet",
 		"OverShoes",
+		"ShoeLeftUnder",
+		"ShoeRightUnder",
 	]),
 	"Heels": ToMap([
 		"OverShoes",
@@ -439,7 +441,8 @@ let LayerGroups = {
 		"StockingRight",
 		"FootRight",
 		"LegRight",
-
+		"ShoeLeftUnder",
+		"ShoeRightUnder",
 	]),
 	"HeelRight": ToMap([
 		"FootLeft",
@@ -450,6 +453,8 @@ let LayerGroups = {
 		"StockingRight",
 		"FootRight",
 		"LegRight",
+		"ShoeLeftUnder",
+		"ShoeRightUnder",
 
 	]),
 	// endregion
