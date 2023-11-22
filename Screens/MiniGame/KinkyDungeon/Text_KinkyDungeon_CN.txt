@@ -3609,7 +3609,9 @@ Water Elemental
 The water elemental melts into a pool of water.
 水精灵化成一滩水。
 The water elemental's song compels you to be bound! (+RestraintAdded)
-水精灵发出的歌声使你被束缚！ （+RestraintAdded）
+水精灵发出的歌声使你被束缚！（+RestraintAdded）
+The water elemental sings a song of helplessness. (DamageTaken)
+水精灵唱着一首无助之歌。（DamageTaken）
 The water elemental's song compels you to step forward and receive a binding!
 水精灵的歌声迫使你向前走去，接受其的束缚！
 The water elemental sings an arousing song! (DamageTaken)
@@ -12182,17 +12184,17 @@ You are ambushed by slime researchers!
 A large blob of slime falls from the ceiling!
 一大块粘液团从天花板上掉下来！
 In a puff of smoke, a group of fire elementals appear around you!
-在一阵烟雾中，一群火元素出现在你身边！
+在一阵烟雾中，一群火精灵出现在你身边！
 In a flash of fog a group of ice elementals appear around you!
-在一阵迷雾中，一群冰元素出现在你周围！
+在一阵迷雾中，一群冰精灵出现在你周围！
 In a burst of mist, a group of water elementals appear around you!
-一阵雾气中，一群水元素出现在你身边！
+一阵雾气中，一群水精灵出现在你身边！
 A group of earth elementals rise out of the ground!
-一群土元素从地里出现！
+一群大地精灵从地里出现！
 You hear pouring liquid and a group of latex elementals come out of the walls!
-你听到倒出液体的声音，一群乳胶元素从墙上冒出来！
+你听到倒出液体的声音，一群乳胶精灵从墙上冒出来！
 In a flash of light, a group of air elementals appear around you!
-光芒一闪，一群气元素出现在你身边！
+光芒一闪，一群风精灵出现在你身边！
 Several ethereal hands appear all around you!
 几只空灵的手出现在你身边！
 You have stumbled upon a conjurer's study!
