@@ -3727,7 +3727,7 @@ The warrior zombie yells and falls cinematically.
 The warrior zombie uses a traditional binding technique (+RestraintAdded)
 战士僵尸使用传统的束缚技术（+RestraintAdded）
 The warrior zombie strikes you with her wooden sword! (+STUN)
-僵尸战士用她的木剑攻击你！（+STUN）
+僵尸战士用她的木剑攻击你！（+眩晕）
 The warrior zombie runs its fingers along your body! (DamageTaken)
 僵尸战士用手指抚摸你的身体！（DamageTaken）
 The warrior zombie fights using the way of Sword and Lock. (DamageTaken)
