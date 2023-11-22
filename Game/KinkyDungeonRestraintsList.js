@@ -34,7 +34,7 @@ let KDStuffingLink = ["BallGags", "FlatGags", "Stuffing", "Tape", "Wrapping"];
 let KDBallGagLink = ["FlatGags", "Tape", "Wrapping"];
 let KDFlatGagLink = ["FlatGags", "Tape", "Wrapping"];
 let KDPlugGagLink = ["FlatGags", "Tape", "Wrapping"];
-let KDCollarLink = ["Collars", "HighCollars", "Modules"];
+let KDCollarLink = ["HighCollars", "Collars", "Modules"];
 let KDCollarRender = ["Modules"];
 let KDHighCollarRender = ["Collars", "Modules"];
 let KDCollarModuleLink = ["Modules"];
@@ -1089,14 +1089,14 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "WolfCollar", debris: "Belts", accessible: true, Asset: "AutoShockCollar", Color: ['#6EAF81', '#6EAF81'], Group: "ItemNeck",
 		LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],power: 6, weight: 0, escapeChance: {"Struggle": 0.0, "Cut": 0.1, "Remove": 0.1, "Pick": -0.05},
 		Model: "WolfCollarTag",
-		maxwill: 0.5, enemyTags: {"wolfRestraints":3, "wolfGear":3, "wolfLeash": 1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Collars", "HighCollars"],
+		maxwill: 0.5, enemyTags: {"wolfRestraints":3, "wolfGear":3, "wolfLeash": 1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "HighCollars", "Collars"],
 	},
 	{inventory: true, name: "ShockModule", debris: "Belts", accessible: true, Asset: "AutoShockCollar", Color: ['#6EAF81', '#6EAF81'],
 		Group: "ItemNeck", LinkableBy: [...KDCollarModuleLink], power: 10, weight: 0, escapeChance: {"Struggle": -0.05, "Cut": 0, "Remove": 0.1, "Pick": -0.15},
 		Model: "ShockModule",
 		DefaultLock: "Red_Hi",
 		maxwill: 0.35, enemyTags: {"wolfRestraints":3, "wolfGear":3, "wolfLeash": 1, "shockmodule": 10},
-		playerTags: {}, playerTagsMissing: {Collars: -1000}, minLevel: 2, allFloors: true, shrine: ["Metal", "Modules"],
+		playerTags: {}, playerTagsMissing: {Collars: -1000}, minLevel: 2, allFloors: true, shrine: ["Modules", "Metal"],
 		requireSingleTagToEquip: ["Collars"],
 		linkCategory: "ModulePunish", linkSize: 0.6,
 		events: [
@@ -1112,7 +1112,7 @@ const KinkyDungeonRestraints = [
 		Model: "TrackingModule",
 		DefaultLock: "Red_Hi",
 		maxwill: 0.35, enemyTags: {"controlHarness":5, "roboPrisoner" : 100, "cyberdollrestraints" : 10, "trackingmodule": 10},
-		playerTags: {}, playerTagsMissing: {Collars: -1000}, minLevel: 2, allFloors: true, shrine: ["Metal", "Modules"],
+		playerTags: {}, playerTagsMissing: {Collars: -1000}, minLevel: 2, allFloors: true, shrine: ["Modules", "Metal"],
 		linkCategory: "ModuleUtility", linkSize: 0.6,
 		requireSingleTagToEquip: ["Collars"],
 		events: [
@@ -1244,7 +1244,7 @@ const KinkyDungeonRestraints = [
 
 	//region Fuuka's stuff
 	{inventory: true, curse: "GhostLock", name: "MikoCollar", Asset: "HighCollar", Color: ["#ffffff", "#AA2222"],Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],magic: true, power: 40, weight: 0, difficultyBonus: 10,
-		escapeChance: {"Struggle": -100, "Cut": -0.8, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Collars", "HighCollars"],
+		escapeChance: {"Struggle": -100, "Cut": -0.8, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["HighCollars", "Collars"],
 		unlimited: true,
 		events: [{trigger: "kill", type: "MikoGhost"}],
 	},
@@ -1317,7 +1317,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.6, enemyTags: {"expRestraints" : 20}, playerTags: {"ItemArmsEmpty": -1000, "Armbinders": 25, "Boxbinders": 25}, playerTagsMissing: {"Armbinders": -25, "Boxbinders": -25},minLevel: 7, allFloors: true, shrine: ["Latex", "ArmbinderHarness"],
 		events: [{trigger: "postRemoval", type: "armbinderHarness"}], requireSingleTagToEquip: ["Armbinders", "Boxbinders"]},
 	{inventory: true, name: "ExpCollar", debris: "Belts", inaccessible: true, Asset: "LatexPostureCollar", gag: 0.4, Color: "#4E7DFF", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],factionColor: [[0]], power: 8, weight: -2, strictness: 0.05, escapeChance: {"Struggle": 0, "Cut": 0.15, "Remove": 0.2, "Pick": 0.25},
-		maxwill: 0.25, enemyTags: {"expRestraints" : 2.1, "latexCollar": 1}, playerTags: {"ItemMouthFull": 2, "ItemMouth2Full": 2, "ItemMouth3Full": 2}, minLevel: 0, allFloors: true, shrine: ["Latex", "Posture", "Collars", "HighCollars"]},
+		maxwill: 0.25, enemyTags: {"expRestraints" : 2.1, "latexCollar": 1}, playerTags: {"ItemMouthFull": 2, "ItemMouth2Full": 2, "ItemMouth3Full": 2}, minLevel: 0, allFloors: true, shrine: ["Latex", "Posture", "HighCollars", "Collars"]},
 	{inventory: true, name: "ExpBoots", debris: "Belts",  remove: ["Shoes"],inaccessible: true, Asset: "BalletWedges", Color: "#748395", Group: "ItemBoots", LinkableBy: ["Wrapping"], hobble: 1, power: 8, weight: 0, escapeChance: {"Struggle": -0.25, "Cut": 0.0, "Remove": 0.07, "Pick": 0.25},
 		Model: "ShinyBalletHeels",
 		maxwill: 0.9, enemyTags: {"expRestraints" : 6, "latexBoots" : 3, "blacksteelrestraints":10}, playerTags: {}, minLevel: 2, allFloors: true, shrine: ["Metal", "Boots"]},
@@ -2410,7 +2410,7 @@ const KinkyDungeonRestraints = [
 		},
 		escapeChance: {"Struggle": -0.3, "Cut": -0.25, "Remove": 0.4, "Pick": -0.1},
 		unlimited: true,
-		maxwill: 0.25, enemyTags: {"maidRestraints":3, "maidRestraintsNonChastity": 10, "maidCollar":1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Collars", "HighCollars", "Illusion"]},
+		maxwill: 0.25, enemyTags: {"maidRestraints":3, "maidRestraintsNonChastity": 10, "maidCollar":1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["HighCollars", "Collars", "Illusion"]},
 	{inventory: true, name: "MaidGag", debris: "Belts", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], gag: 0.75,
 		Model: "MaidGag",
 		Filters: {

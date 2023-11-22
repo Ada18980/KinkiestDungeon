@@ -361,45 +361,46 @@ let KDEventMapInventory = {
 	},
 	"afterDress": {
 		"PrisonerJacket": (e, item, data) => {
-			for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
-				let asset = KinkyDungeonPlayer.Appearance[A].Asset;
-				if (asset?.Name == KDRestraint(item).Asset) {
-					KinkyDungeonPlayer.Appearance[A].Property = {
-						"Text": "PATIENT",
-						"Type": "ShortsAndStraps",
-						"Block": [
-							"ItemNipples",
-							"ItemNipplesPiercings",
-							"ItemTorso",
-							"ItemBreast",
-							"ItemHands",
-							"ItemVulva",
-							"ItemVulvaPiercings",
-							"ItemButt",
-							"ItemPelvis"
-						],
-						"Hide": [
-							"Cloth",
-							"ClothLower",
-							"ItemNipplesPiercings",
-							"ItemVulva",
-							"ItemVulvaPiercings",
-							"ItemButt",
-							"Panties",
-							"Corset"
-						],
-						"HideItemExclude": [
-							"ClothLowerJeans1",
-							"ClothLowerJeans2",
-							"ClothLowerLatexPants1",
-							"ClothLowerLeggings1",
-							"ClothLowerLeggings2",
-							"PantiesHarnessPanties1",
-							"PantiesHarnessPanties2"
-						]
-					};
+			if (!StandalonePatched)
+				for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
+					let asset = KinkyDungeonPlayer.Appearance[A].Asset;
+					if (asset?.Name == KDRestraint(item).Asset) {
+						KinkyDungeonPlayer.Appearance[A].Property = {
+							"Text": "PATIENT",
+							"Type": "ShortsAndStraps",
+							"Block": [
+								"ItemNipples",
+								"ItemNipplesPiercings",
+								"ItemTorso",
+								"ItemBreast",
+								"ItemHands",
+								"ItemVulva",
+								"ItemVulvaPiercings",
+								"ItemButt",
+								"ItemPelvis"
+							],
+							"Hide": [
+								"Cloth",
+								"ClothLower",
+								"ItemNipplesPiercings",
+								"ItemVulva",
+								"ItemVulvaPiercings",
+								"ItemButt",
+								"Panties",
+								"Corset"
+							],
+							"HideItemExclude": [
+								"ClothLowerJeans1",
+								"ClothLowerJeans2",
+								"ClothLowerLatexPants1",
+								"ClothLowerLeggings1",
+								"ClothLowerLeggings2",
+								"PantiesHarnessPanties1",
+								"PantiesHarnessPanties2"
+							]
+						};
+					}
 				}
-			}
 		},
 	},
 	"kill": {
@@ -1491,15 +1492,16 @@ let KDEventMapInventory = {
 				KinkyDungeonChangeMana(-1);
 				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind + 1, 2);
 
-				for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
-					if (KinkyDungeonPlayer.Appearance[A].Asset.Group.Name === "Eyes" || KinkyDungeonPlayer.Appearance[A].Asset.Group.Name === "Eyes2") {
-						let property = KinkyDungeonPlayer.Appearance[A].Property;
-						if (!property || property.Expression !== "Surprised") {
-							KinkyDungeonPlayer.Appearance[A].Property = {Expression: "Surprised"};
-							KDRefresh = true;
+				if (!StandalonePatched)
+					for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
+						if (KinkyDungeonPlayer.Appearance[A].Asset.Group.Name === "Eyes" || KinkyDungeonPlayer.Appearance[A].Asset.Group.Name === "Eyes2") {
+							let property = KinkyDungeonPlayer.Appearance[A].Property;
+							if (!property || property.Expression !== "Surprised") {
+								KinkyDungeonPlayer.Appearance[A].Property = {Expression: "Surprised"};
+								KDRefresh = true;
+							}
 						}
 					}
-				}
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonCelestialPunish" + Math.floor(KDRandom() * 3)), "#ff0000", 2);
 			}
 		},

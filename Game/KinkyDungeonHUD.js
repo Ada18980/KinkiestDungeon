@@ -1007,8 +1007,8 @@ function KinkyDungeonDrawInputs() {
 			else {
 				KDDraw(kdcanvas, kdpixisprites, "iconrest" + sg.name + GroupText, KDGetItemPreview(item).preview,
 					x + 3, y + 5, ButtonWidth, ButtonWidth, undefined, {zIndex: 69});
-				KDDraw(kdcanvas, kdpixisprites, "iconrest2" + sg.name + GroupText, KDGetItemPreview(item).preview2,
-					x + 3, y + 5, ButtonWidth, ButtonWidth, undefined, {zIndex: 69.1});
+				//KDDraw(kdcanvas, kdpixisprites, "iconrest2" + sg.name + GroupText, KDGetItemPreview(item).preview2,
+				//x + 3, y + 5, ButtonWidth, ButtonWidth, undefined, {zIndex: 69.1});
 			}
 
 			if (drawLayers) {
