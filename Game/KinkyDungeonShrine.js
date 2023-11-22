@@ -289,7 +289,7 @@ function KinkyDungeonPayShrine(type) {
 			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true);
 			if (!KDGameData.ShopRewardProgramThreshold) KDGameData.ShopRewardProgramThreshold = 500;
 			if (!KDGameData.ShopRewardProgram) KDGameData.ShopRewardProgram = 0;
-			if (point && KDGameData.ShopRewardProgram > KDGameData.ShopRewardProgramThreshold) {
+			if (point && KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(point.x, point.y)) && KDGameData.ShopRewardProgram > KDGameData.ShopRewardProgramThreshold) {
 				KDGameData.ShopRewardProgram = 0;
 				KDGameData.ShopRewardProgramThreshold += 100;
 				KinkyDungeonMapSet(point.x, point.y, ';');
