@@ -6909,6 +6909,18 @@ A box tie keeping your arms secured behind your back.
 将你的手臂牢牢固定在背后。
 A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
 由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
+Mithril Rope Cuffs
+绳手铐（秘银）
+A quick tie for apprehending prisoners.
+用于逮捕囚犯的快速捆绑。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
+Mithril Ropework
+绳索（秘银）
+A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
+用于逮捕囚犯的快速捆绑，穿过手部束缚装置上的带扣。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
 Mithril Hogtie
 驷马（秘银）
 A very strict and tight hogtie, good for subduing unruly captives.
@@ -7260,7 +7272,6 @@ Holy Rope Cuffs
 神圣绳手铐
 A quick tie for apprehending prisoners.
 用于逮捕囚犯的快速捆绑。
-将你的手臂牢牢固定在背后。
 A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
 一组散发出平静、舒缓气息的绳索。它们神奇地伸展以贴合你的身体。
 Holy Hogtie
