@@ -1798,6 +1798,8 @@ Strip Outfit
 脱去衣服
 Export Outfit
 导出衣服
+Export AlwaysDress
+导出 AlwaysDress
 Confirm Strip?
 确认要脱衣服？
 gamma
@@ -1818,6 +1820,8 @@ alpha
 不透明度
 Reset Layer!
 重置图层！
+Export All Layers
+导出所有图层
 Copy
 复制
 Paste
@@ -6400,11 +6404,18 @@ An advanced collar for tracking high-security prisoners.
 It seems to be made of flexible steel plates, and it has a high-security lock.
 它似乎由柔性钢板制成，并且具有高安全性锁。
 Latex Ball Gag
-乳胶口塞
+乳胶口球
 A devious device that looks like a ball gag, but has a mouth-filling rod on the inside.
-一种看起来像口塞的装备，但内部有一个能填满嘴的棒。
+一种看起来像口球的装备，但内部有一个能填满嘴的棒。
 The strap is made of a durable but flexible material
-表带由耐用但柔韧的材料制成
+带子由耐用但柔韧的材料制成
+Large Latex Ball Gag
+大号乳胶口球
+A devious device that looks like a large ball gag, but absolutely fills your mouth with a rubber cylinder.
+一种看起来像大口球的装备，但内部有一个能填满嘴的橡胶棒。
+The strap is made of a durable but flexible material
+带子由耐用但柔韧的材料制成
+
 Latex Mask
 乳胶面具
 A slick layer of blue latex stretched over the mouth.
@@ -7086,13 +7097,25 @@ Ball Gag
 A gag made of a red squishy material.
 一种由红色柔软材料制成的堵嘴物。
 You can't seem to enunciate your spells properly with this in.
-有了这个，你似乎无法正确地念出你的咒语。
+佩戴上后，你似乎无法正确地念出你的咒语。
+Large Ball Gag
+大号口球
+A mouth-filling gag made of a red squishy material.
+一种由红色软质材料制成的口塞。
+You can't seem to enunciate your spells properly with this in.
+佩戴上后，你似乎无法正确地念出你的咒语。
 Tight Ball Gag
 紧扣的口球
 A gag made of a red squishy material, buckled as tight as it will go.
 一个由红色柔软材料制成的堵嘴物，扣得尽可能紧。
 You can't seem to enunciate your spells properly with this in.
-有了这个，你似乎无法正确地念出你的咒语。
+佩戴上后，你似乎无法正确地念出你的咒语。
+Huge Ball Gag
+巨大号口球
+A massive gag made of a red squishy material, buckled as tight as it will go.
+一个巨大的口塞，由红色软材料制成，扣得尽可能紧。
+You absolutely can't enunciate your spells properly with this in.
+佩戴上后，你绝对无法正确地念出你的咒语。
 Magic Ball Gag
 附魔口球
 A gag enchanted with magic. It grows to fill your mouth so you can hardly speak.
