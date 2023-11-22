@@ -12941,22 +12941,31 @@ You found a keyring to the stairs! Now you just need to get there.
 你找到了楼梯的钥匙圈！现在你只需要到达那里。
 There seems to be a locked high-security door. Looks like you need a key.
 似乎有一扇锁着的高安全门。看来你需要一把钥匙。
+
 Well well, what have we got here?
 好了好了，看看这是什么？
 You're not here to take away my pets, are you?
 你不是来带走我的宠物的，对吧？
 You'd make a lovely pet...
 你会成为一只可爱的宠物……
+Daww, you're so cute when you're struggling!
+呜哇，你挣扎的时候真可爱！
+Let's take you back to your space~
+带你回到你的空间吧~
 You need to be bound tight!
-你需要被绑紧！
+你需要被绑得更紧！
 Cleaning up for me, huh?
 为我打扫卫生，嗯？
 Uh uh, give that back!
 呃呃，把那个还给我！
+What do we have here? An intruder? Or a future pet?
+我们有什么在这里？ 入侵者？ 还是未来的宠物？
 I see how it is.
 我明白了。
 I've taken on hundreds of adventurers like you.
 我已经对付了数百个像你这样的冒险者。
+You don't stand a chance.
+你没有机会。
 Your magic is nothing compared to mine!
 与我相比，你的魔法根本不值一提！
 I've been a master wizard for over a thousand years!
@@ -12976,7 +12985,7 @@ Let's play a game!
 Didn't think you would get away, did you?
 没想到你会逃脱，是吗？
 Oh ho~
-呵呵~
+哦豁~
 'Tis but a scratch!
 '这只是擦伤！
 You'll be my pet soon~
@@ -12999,8 +13008,120 @@ I'll be taking that~
 我会拿走那个~
 'Click!'
 '咔哒！'
+In the name of PTRN, I order you to kneel!
+以 PTRN 的名义，我命令你跪下！
+You're in my way.
+你挡住了我的路。
+Step aside, pet.
+靠边站吧，宠物。
+Get her, my pets!
+抓住她，我的宠物们！
+Hey! Don't touch that!
+嘿！别碰那个！
+Why you...
+为什么你...
+You can't do that!
+你不能那样做！
+Leave them alone!
+别管他们了！
+You can't do that!
+你不能那样做！
+Hey, stop that!
+嘿，别这样！
+
+Look, another one of my dolls~
+你看，我的又一个玩偶~
+Come to me, my lovely thing~
+来找我吧，我的小可爱~
+I want to hear you moan~
+想听你呻吟~
+Perhaps we need to make things tighter?
+也许我们需要弄得更紧？
+Come with me, dear~
+跟我来吧，亲爱的~
+You've had too much freedom.
+你已经拥有了太多的自由。
+Leave that for the cleaning robots.
+把它留给清洁机器人吧。
+Skulking around, are we?
+我们在周围乱跑？
+I see you.
+看见你了。
+There's no point in fighting.
+战斗没有意义。
+How ineffectual.
+多么无效啊。
+That's cute.
+那很可爱。
+Your magical potential is impressive~
+你的魔法潜力令人印象深刻~
+A magnificent display of magic!
+一场华丽的魔法展示！
+You would make a great mana source~
+你会成为一个很棒的法力来源~
+Did you think you could outsmart me?
+你以为你能比我聪明吗？
+I am the only goddess you need.
+我是你唯一需要的女神。
+Dolls shouldn't mess with things they don't understand.
+玩偶不应该乱搞他们不理解的东西。
 Oh, that's not going to help~
 哦，那可没用~
+Let's take you somewhere safe~
+带你去安全的地方吧~
+You won't be getting away.
+你不会逃脱的。
+Did you think that would work?
+你认为这会起作用吗？
+Let's put those hands of yours away~
+让我们放手吧~
+You are mine.
+你是我的。
+You're a fast one.
+你的速度很快。
+Your antics amuse me~
+你滑稽的动作让我很开心~
+It's time for your makeover!
+是时候让你改头换面了！
+Come to me.
+到我这来。
+A shame it ends here.
+可惜到这里就结束了。
+You won't be needing that.
+你不需要那个。
+Tsk Tsk. I'll be keeping the keys.
+啧啧。我会保管好钥匙的。
+I used to be an adventurer like you~ My name was PTRN...
+我曾经也是和你一样的冒险家~ 我的名字是 PTRN...
+You don't know who you're messing with.
+你不知道你在招惹谁。
+You won't be allowed to make that mistake twice.
+你不允许犯第二次同样的错误。
+I'll punish you myself.
+我会亲自惩罚你。
+Hands off my property.
+放开我的财产。
+Know your place, girl!
+知道你的位置，女孩！
+You've had your chance.
+你有机会了。
+Fine, then.
+那么好吧。
+Know your place!
+知道你的位置！
+
+Catch me if you can!
+如果可以的话来抓我吧！
+You'll never get away with this!
+你永远逃脱不了这个！
+I don't want to be your slave!
+我不想成为你的奴隶！
+I've been naughty, looks like I need to be punished...
+我太调皮了，看来我需要受到惩罚……
+I've been a bad girl, won't you do something about it?
+我是个坏女孩，你能做点什么吗？
+Mmmph... maybe I talk too much...
+嗯……可能是我说太多了……
 Hey! Where do you think you're going?
 喂！你以为你能去哪里？
 You look like you're having fun!
@@ -13011,6 +13132,8 @@ What do you think you're doing with that?
 你以为你在做什么？
 Looks like you found my keys! Hand them over.
 看来你找到了我的钥匙！给我。
+Alert!
+警报！
 You look like a good girl. Come on~
 你看起来像个好女孩。过来吧~
 Come here, let's play!
@@ -13065,40 +13188,85 @@ Hand it over.
 把它交出来。
 Nice and tight!
 又好又紧！
+The name's PTRN.
+名字是 PTRN。
+What the--
+什么--鬼
+You won't get away with this!
+你不会逃脱这个惩罚的！
+I'm coming!
+我来咯！
+I can't let you do that!
+我不能让你这么做！
+You'll pay for this!
+你将为此付出代价！
+That was a mistake!
+那是个错误！
+I'm joining in!
+我要加入！
+Hand on, I'm coming!
+快点，我来了！
+I'm here!
+我在这！
+Here I come!
+我来了！
+Come and get me!
+来接我吧！
+You'll never escape!
+你永远也逃不掉！
+
 *looks at you nervously*
 *紧张地看着你*
 *giggles*
 *咯咯地笑*
-Mmmmph...
-嗯……
-Mmmph!
-呜呜！
-Mmmph!
-呜呜！
+*giggles eagerly*
+*急切地咯咯笑*
 *looks at you suspiciously*
 *怀疑地看着你*
 *looks at you angrily*
 *愤怒地看着你*
+*jumps up and down excitedly*
+*兴奋地跳上跳下*
 *groans*
 *呻吟*
+*does a happy dance*
+*跳起快乐的舞蹈*
 *giggles*
 *咯咯地笑*
-*giggles*
-*咯咯地笑*
-Mmmmph...
-嗯……
-Mmmph!
-呜呜！
-Mmmph!
-呜呜！
-*groans*
-*呻吟*
+*Her nametag says 'PTRN'*
+*她的名牌上写着 'PTRN'*
+
+*muffled giggle*
+*低沉的笑声*
+*glows with anger*
+*因愤怒而发光*
+*Her headpiece says 'PTRN'*
+*她的头饰上写着 'PTRN'*
+
+You'll never catch me!
+你永远抓不到我！
+Where'd you come from?
+你从哪里来？
+No! Definitely don't like... tie me up and punish me!
+不！绝对不喜欢……把我绑起来惩罚我！
+I've come to turn myself in~
+我是来自首的~
+Won't you 'apprehend' me?
+你不会 '逮捕' 我吗？
+I've been a bad girl~
+我曾经是个坏女孩~
 Hey! You should know your place.
 喂！你应该知道你自己什么地位。
+Look who's enjoying herself~
+看看谁玩得开心~
+Let's put you up for auction!
+我们把你拿去拍卖吧！
 What are you rummaging around for?
 你在翻什么？
 Oh no you don't!
 哦不，你不能这么做！
+You're not supposed to be here...
+你不应该在这里...
 I'm gonna teach you a lesson, girl.
 我要给你一个教训，姑娘。
 I'm gonna miss you when we find you a nice master...
@@ -13136,9 +13304,11 @@ Do your worst!
 Got you!
 抓住你了！
 Hmph. Get back here!
-Hmph。 回来！
+嗯。回来！
 Missed me!
 错过我！
+Not a chance!
+没有机会！
 Boss! We got another one!
 老板！我们还有一个！
 Get over here!
@@ -13149,6 +13319,35 @@ Dibs on this one!
 这里有一个零钱！
 Gotta make sure no one gets to you~
 要确保没有人接近你~
+I'm PTRN. And who might you be?
+我是 PTRN。你可能是谁？
+Bad time to party, girl~
+女孩，聚会的时机不好~
+You've got nerve showing your face around here.
+你居然敢在这里露面。
+Don't think you can get away~
+别以为你能逃脱~
+Trying to fight your way out?
+试图摆脱困境？
+Well, looks like I'm having fun today.
+嗯，看来我今天玩得很开心。
+Hey girls, got room for one more?
+嘿姑娘们，还有空位吗？
+We work for the highest bidder.
+我们为出价最高者工作。
+Nothing personal.
+与个人无关。
+Sorry, it's just the way things work.
+抱歉，事情就是这样的。
+I'm coming!
+我来了！
+You're mine.
+你是我的。
+You can't get away.
+你无法逃脱。
+
+This is a bug, please report
+这是一个漏洞，请反馈
 *starts chasing you*
 *开始追击你*
 *won't leave you be!*
@@ -13159,6 +13358,8 @@ Gotta make sure no one gets to you~
 *冲着你跑*
 *notices you!*
 *注意到你了！*
+*claps loudly*
+*大声鼓掌*
 *wants to socialize*
 *想要社交*
 *sends shivers down your spine*
@@ -13197,10 +13398,14 @@ Gotta make sure no one gets to you~
 *兴奋地嘎嘎作响*
 *misses*
 *错过*
+*flails uselessly*
+*毫无用处的连枷*
 *trembles*
 *颤抖*
 *trembles*
 *颤抖*
+*tugs on leash*
+*拉扯皮带*
 *rattles*
 *嘎嘎作响*
 *rattles excitedly*
@@ -13209,20 +13414,138 @@ Gotta make sure no one gets to you~
 *兴奋地嘎嘎作响*
 *rattles*
 *嘎嘎作响*
+*Wears a sign saying 'PTRN'*
+*佩戴 'PTRN' 名牌*
+*rattles*
+*嘎嘎作响*
+*marches*
+*游荡*
+
+This... this unit is doing a good job! I swear!
+这……这个小队干得很好！我发誓！
+It's just business as usual, nothing to see here...
+一切如常，没什么可看的……
+It's not like I need reconfiguring or anything...
+这不像我需要重新配置或任何东西......
+You! I require... reconfiguring.
+你！我需要...重新配置。
+Oh no! Looks like I need repairs~
+不好了！看来需要维修了~
+I've violated my parameters. Please discipline me.
+我违反了我的参数。请管教我。
+Stop! You're not wearing the required uniform~
+停下！你没有穿规定的制服~
+Are your restraints too loose? Do I need to tighten them?
+你的束缚是不是太松了？我需要收紧它们吗？
+Transferring to a secure location.
+转移到安全位置。
+You've violated your parameters.
+你违反了你的参数。
+Insufficient security clearance. Hand it over.
+安全许可不足。把它交出来。
+Please present your identification!
+请出示你的身份证明！
+Hello doll. Do your settings need adjustment?
+你好玩偶。你的设置需要调整吗？
+Looks like you've had too much time to yourself~
+看来你独处的时间太多了~
+A good doll needs routine maintenance~
+一个好的玩偶需要日常的保养~
+Ehh! The dolls aren't supposed to fight back!
+呃！玩偶不应该反击！
+In-initiating corrective action!
+正在启动纠正措施！
+Alert! Inmate has gone rogue!
+警报！囚犯行为异常！
+Who gave you permission to use magic?
+谁允许你使用魔法的？
+Unauthorized use of magic is grounds for increased security.
+未经授权使用魔法是提高安全性的理由。
+Magic users require extra security!
+魔法用户需要额外的安全保障！
+Subduing assailant!
+制服袭击者！
+You're not allowed to contact the goddesses. Please meditate on this in your cell.
+你不可以和女神接触。请在你的牢房里沉思这一点。
+Behavior exceeds parameters. Please submit to arrest.
+行为超出参数。请服从逮捕。
+You're not allowed to contact the goddesses. Please meditate on this in your cell.
+你不可以和女神接触。请在你的牢房里沉思这一点。
+Alert! Inmate has escaped!
+警报！囚犯越狱了！
+Don't you want to be trained?
+你不想接受调教吗？
+Aren't you a violent one!
+你这不是暴力分子吗！
+Ouch! That hurt...
+哎哟! 那真痛...
+That'll be all from you!
+这一切都将由你来完成！
+Please stop and submit to arrest.
+请停下并服从逮捕。
+Subject captured!
+拍摄对象！
+Come back, doll!
+回来吧，玩偶！
+Deploying capture device.
+部署捕获设备。
+I'll be confiscating that!
+我会把它没收的！
+How'd you slip through security?
+你是怎么通过安检的？
+I'm PTRN, and today I shall be taking care of you~
+我是 PTRN，今天就由我来照顾你吧~
+Enemy spotted!
+发现敌人！
+Target in my sights!
+目标在我的视线里！
+Red alert!
+红色警报！
+Lay down your weapons!
+放下你的武器！
+Surrender and I'll be gentle! Relatively speaking...
+投降吧，我会温柔的！相对而言...
+Give up or I'll call reinforcements!
+投降，不然我就要呼叫增援了！
+Ack! We have an unruly subject!
+确认！我们这里有一个不守规矩的对象！
+Target needs retraining...
+目标需要重新调教...
+Sorry, rules are rules~
+抱歉，规矩就是规矩~
+
+Unit is retreating.
+小队正在撤退。
+Activating self-preservation instincts.
+激活自我保护的本能。
+Commence tactical withdrawal.
+开始战术撤退。
+Maintenance needed.
+需要维护。
+Unit needs repair.
+装置需要维修。
+Commence transfer of power protocol.
+开始电力传输协议。
 Insufficient bindings. Commence submission protocol.
 束缚不足。开始提交协议。
+Commence routine inspection.
+开始例行检查。
+Inmate is out of containment. Transferring.
+囚犯已经失控了。正在转移。
 Theft detected. This is a warning.
 检测到盗窃。这是一个警告。
 Confiscating item.
 没收物品。
 Inmate detected. Commence training protocol.
-检测到犯人。开始培训协议。
+检测到犯人。开启调教协议。
 Inmate detected. Commence routine inspection.
 检测到犯人。开始例行检查。
 Inmate detected. Commence submission training.
 检测到犯人。开始提交培训。
 Violence detected. Subduing assailant.
 检测到暴力。制服袭击者。
+Damage detected. Initiating combat routine.
+检测到伤害。开始例行战斗。
 Unruly inmate detected. Performing corrective action.
 检测到不守规矩的囚犯。执行纠正措施。
 Magic detected. Subduing assailant.
@@ -13241,12 +13564,83 @@ Unlawful conduct. Please submit to arrest.
 非法行为。请提交逮捕。
 Inmate has escaped. Commence capture protocol.
 犯人逃跑了。开始捕获协议。
+Error, subject is attempting to escape.
+错误，对象正试图逃跑。
+Target is violent. Disarming subject.
+目标是暴力的。缴械对象。
+Target is violent. Increase alert level.
+目标是暴力的。提高警戒级别。
+Dispensing restraints.
+解除束缚。
+Target flees. Revising strategy.
+目标逃跑。修改策略。
+Target resists. Revising tactics.
+目标反抗。修改战术。
+Target skill below expected level. Revising strategy.
+目标技能低于预期水平。修改策略。
+Target skill below expected level. Revising tactics.
+目标技能低于预期水平。修改战术。
+Subject captured. Returning to processing.
+拍摄对象。返回处理。
+Apply takedown protocol.
+应用拆解协议。
+Aggressive target detected. Deploying countermeasures.
+检测到攻击性目标。部署对策。
+Contraband detected. Confiscating.
+发现违禁品。没收。
+Increasing strictness level.
+严格程度不断提高。
+Unit PTRN identifying.
+单位 PTRN 识别。
+Red alert. Joining combat.
+红色警报。加入战斗。
+Battle stations.
+作战站。
+Target identified.
+目标已确定。
+Offering support.
+提供支持。
+New target identified. Engaging.
+已确定新目标。进行纠正。
+Combat detected. Engaging in corrective action.
+检测到战斗。采取纠正行动。
+Updating target registry. Proceed to attack.
+更新目标注册表。继续攻击。
+Target updated.
+目标已更新。
+New target detected. Please submit to detainment.
+检测到新目标。请服从拘捕。
+Moving to assist.
+正在移动以提供帮助。
+Moving to capture.
+正在移动以提供抓捕。
+Forming blockade.
+形成屏障。
+
+Looks like I'm up to no good... better stop me!
+看来我不怀好意了……最好阻止我！
+Careful where you point that thing!
+小心你指向的地方！
+Containment breach!
+收容突破！
+What if I'm the assistant, for a change?
+如果我换个助理怎么办？
+Hey, could you test this on... me?
+嘿，你能在我身上测试一下吗？
+I'm willing to do anything for science!
+为了科学我愿意做任何事！
+You're a fine specimen!
+你真是一个很好的标本！
+I should take you to my office~
+我应该带你去我的办公室~
 You'd look good in some latex!
 你穿上乳胶会很好看！
 Hey! That's mine!
 喂！那是我的！
 You're not supposed to have that!
 你不应该有那个！
+Oh?
+哦？
 You'll make a fine test subject...
 你会成为一个很好的测试对象......
 Come here, I want to perform some tests!
@@ -13275,6 +13669,65 @@ That's off-limits!
 那是禁区！
 You're not supposed to be here!
 你不应该在这里！
+Now now, you won't be going anywhere~
+现在，你哪儿也去不了~
+A calculated success!
+精心策划的成功！
+Watch the vials!
+注意小瓶！
+I've caught you!
+我抓住你了！
+I can't believe I missed...
+我不敢相信我错过了...
+That's not fair!
+这不公平！
+I knew you would do that!
+我就知道你会这么做！
+Experiment was a success!
+实验成功了！
+Gotchya!
+抓住你了！
+There we go!
+我们开始吧！
+Ooh, you've got some useful stuff~
+呵呵，你有一些有用的东西~
+I won't let you go that easily!
+我不会那么轻易放过你的！
+I am PTRN, the great scientist!
+我是 PTRN，伟大的科学家！
+Do I have to? Fine...
+我一定要吗？好吧...
+Okay okay, I'm helping!
+好吧好吧，我来帮忙！
+Where's my assistant when you need them...
+当你需要他们的时候，我的助理在哪里...
+I will offer my support!
+我会提供我的支持！
+You're really gonna make me do this?
+你真的要让我这么做吗？
+I hate having to clean up after others.
+我讨厌在别人之后打扫卫生。
+Eh, whatever, I'll help.
+呃，不管怎样，我都会帮忙的。
+You're ruining my experiment!
+你毁了我的实验！
+Sheesh, what a pest!
+我的天，真是个害虫！
+Need an assistant?
+需要助理吗？
+I smell an opportunity!
+我嗅到了机会！
+Do I have to?
+我一定要吗？
+
+Oh my, looks like I'm in trouble!
+哎呀，看来我遇到麻烦了！
+What a shame it would be if I got caught~
+万一被抓到就太可惜了~
+Looks like I'd better get going~
+看来还是先出发吧~
+What if I became the victim of my own inventions...
+如果我成为自己发明的受害者怎么办？
 You look just gorgeous, dear...
 你看起来真漂亮，亲爱的……
 Why don't you try these on?
