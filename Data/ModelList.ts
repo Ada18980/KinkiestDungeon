@@ -320,6 +320,7 @@ AddModel({
 	Categories: ["Armor"],
 	Layers: ToLayerMap([
 		{ Name: "Shirt", Layer: "CorsetLiner", Pri: 5,
+			SwapLayerPose: {Kneel: "CorsetLinerLower", KneelClosed: "CorsetLinerLower"},
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
 			MorphPoses: {Hogtie: "Hogtie"},
 			Invariant: true,
@@ -585,6 +586,7 @@ AddModel({
 	Categories: ["Tops"],
 	Layers: ToLayerMap([
 		{ Name: "Blouse", Layer: "CorsetLiner", Pri: 3,
+			SwapLayerPose: {Kneel: "CorsetLinerLower", KneelClosed: "CorsetLinerLower"},
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
 			Invariant: true,
@@ -761,6 +763,7 @@ AddModel({
 			//AppendPose: ToMapDupe(["RopesUpper"], {TorsoUpperTight: "Tight"}),
 		},
 		{ Name: "BlouseLiner", Layer: "CorsetLiner", Pri: 4,
+			SwapLayerPose: {Kneel: "CorsetLinerLower", KneelClosed: "CorsetLinerLower"},
 			Invariant: true,
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],

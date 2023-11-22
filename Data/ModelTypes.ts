@@ -160,8 +160,6 @@ interface ModelLayer extends Namable {
 	TieToLayer?: string,
 	/** The name is as is */
 	Invariant?: boolean,
-	/** The item is unaffected by X ray filters */
-	noXray?: boolean,
 	/** Displacement maps are treated as Invariant */
 	DisplacementInvariant?: boolean,
 	/** Applies this layer's filter to a layer when the filter isn't hidden */

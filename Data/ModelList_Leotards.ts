@@ -13,6 +13,7 @@ AddModel({
 	Categories: ["Bodysuits"],
 	Layers: ToLayerMap([
 		{ Name: "Swimsuit", Layer: "Bodysuit", Pri: 5,
+			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
 			Poses: ToMap([...LEGPOSES]),
 		},
 		{ Name: "SwimsuitChest", Layer: "SuitChest", Pri: 5,
@@ -185,6 +186,7 @@ AddModel({
 	Categories: ["Bodysuits"],
 	Layers: ToLayerMap([
 		{ Name: "Leotard", Layer: "Bodysuit", Pri: -1,
+			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
 			Poses: ToMap([...LEGPOSES]),
 		},
 		{ Name: "LeotardChest", Layer: "SuitChest", Pri: 1.5,

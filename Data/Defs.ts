@@ -213,6 +213,7 @@ let LAYERS_BASE = [
 	"ShoeLeftOver",
 	"ShoeLeftDeco",
 	"ShoeLeft",
+	"ShoeLeftUnder",
 	"OverSocks",
 	"StockingLeft",
 	"FootLeft",
@@ -222,10 +223,6 @@ let LAYERS_BASE = [
 	"OverCrotchStrap",
 	"HarnessLower",
 	"WrappingTorso",
-
-	// Panties go here when standing
-	"Panties",
-	"ChastityBelt",
 
 	// These are for the base skirt layer when kneeling
 	// The over layer is for kneeling
@@ -249,6 +246,16 @@ let LAYERS_BASE = [
 
 	"HarnessUnder",
 
+	// Panties go here when standing
+	"Panties",
+
+	// Upper body underwear and bodysuits
+	"CorsetLiner",
+	"Bodysuit",
+
+	"ChastityBelt",
+
+	// For waist belt
 	"BeltBack",
 
 	// Left arm clothes
@@ -273,7 +280,9 @@ let LAYERS_BASE = [
 	// Right Shoes
 	"ShoeRightOver",
 	"ShoeRightDeco",
+
 	"ShoeRight",
+	"ShoeRightUnder",
 
 
 
@@ -286,8 +295,8 @@ let LAYERS_BASE = [
 	"PantiesLower",
 
 	// Upper body underwear and bodysuits
-	"CorsetLiner",
-	"Bodysuit",
+	"CorsetLinerLower",
+	"BodysuitLower",
 
 	"ChastityBeltLower",
 
@@ -379,7 +388,10 @@ let LayerGroups = {
 	]),
 	"Shoes": ToMap([
 		"ShoeLeft",
-		"ShoeRight",
+		"ShoeLeftUnder",
+
+	"ShoeRight",
+	"ShoeRightUnder",
 		"ShoeLeftOver",
 		"ShoeRightOver",
 		"SockLeft",
@@ -738,8 +750,11 @@ let LayerGroups = {
 		// Shoes
 		"ShoeLeftDeco",
 		"ShoeLeft",
+		"ShoeLeftUnder",
 		"ShoeRightDeco",
+
 		"ShoeRight",
+		"ShoeRightUnder",
 
 		"OverSocks",
 		"StockingLeft",
@@ -758,7 +773,12 @@ let LayerGroups = {
 		"FootRightKneel",
 	]),
 	"ToeTie": ToMap([
-		"ShoeLeft", "ShoeRight", "ShoeLeftHogtie", "ShoeRightKneel",
+
+		"ShoeLeft",
+		"ShoeLeftUnder",
+		"ShoeRight",
+		"ShoeRightUnder",
+		"ShoeLeftHogtie", "ShoeRightKneel",
 		"AnkleLeftHogtie",
 		"AnkleRightKneel",
 	]),
@@ -869,9 +889,13 @@ let LayerGroups = {
 
 		// Shoes
 		"ShoeLeftDeco",
+
 		"ShoeLeft",
+		"ShoeLeftUnder",
 		"ShoeRightDeco",
+
 		"ShoeRight",
+		"ShoeRightUnder",
 
 		"OverSocks",
 		"StockingLeft",
@@ -890,7 +914,13 @@ let LayerGroups = {
 		"FootRightKneel",
 	]),
 	"RibbonToeTie": ToMap([
-		"ShoeLeft", "ShoeRight", "ShoeLeftHogtie", "ShoeRightKneel",
+
+		"ShoeLeft",
+		"ShoeLeftUnder",
+		"ShoeRight",
+		"ShoeRightUnder",
+		"ShoeLeftHogtie",
+		"ShoeRightKneel",
 		"AnkleLeftHogtie",
 		"AnkleRightKneel",
 	]),
@@ -906,9 +936,13 @@ let LayerGroups = {
 
 		// Shoes
 		"ShoeLeftDeco",
+
 		"ShoeLeft",
+		"ShoeLeftUnder",
 		"ShoeRightDeco",
+
 		"ShoeRight",
+		"ShoeRightUnder",
 
 		"OverSocks",
 		"StockingLeft",
@@ -1111,6 +1145,7 @@ let LayerGroups = {
 
 	// Upper body underwear and bodysuits
 	"CorsetLiner",
+	"CorsetLinerLower",
 
 	// Right arm clothes
 	"SleeveDecoRight",
@@ -1137,6 +1172,7 @@ let LayerGroups = {
 			// Panties go here when kneeling
 			"PantiesLower",
 			"Bodysuit",
+			"BodysuitLower",
 			// Panties go here when standing
 			"Panties",
 			"Bra",

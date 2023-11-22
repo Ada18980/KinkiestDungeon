@@ -182,6 +182,7 @@ AddModel({
 		...GetModelLayers("JacketBolero"),
 
 		{ Name: "LatexLower", Layer: "Bodysuit", Pri: 13,
+			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
 		},
 		{ Name: "LatexChest", Layer: "SuitChest", Pri: 14,
 			InheritColor: "LatexUpper",

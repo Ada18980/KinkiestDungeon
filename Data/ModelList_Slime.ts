@@ -81,17 +81,19 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
-		{ Name: "FootLeft", Layer: "ShoeLeftOver", Pri: 9,
+		{ Name: "FootLeft", Layer: "ShoeLeft", Pri: -50,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			NoOverride: true,
 			InheritColor: "Slime",
+			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "Shoes"]),
 		},
-		{ Name: "FootRight", Layer: "ShoeRightOver", Pri: 9,
+		{ Name: "FootRight", Layer: "ShoeRight", Pri: -50,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			NoOverride: true,
 			InheritColor: "Slime",
+			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "Shoes"]),
 		},
 	])
 });
