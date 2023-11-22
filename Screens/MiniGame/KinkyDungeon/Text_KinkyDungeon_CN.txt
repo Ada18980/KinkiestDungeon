@@ -17455,10 +17455,17 @@ A collar module comes off with the collar!
 项圈模块随项圈一起脱落！
 Shock Module
 电击模块
-A sinister used to keep unruly wolfgirls in check.
-一个邪恶的人曾经用来控制不守规矩的狼女。
+A sinister device used to keep unruly wolfgirls in check.
+一个邪恶的装置，用来控制不守规矩的狼女。
 If it works on them, it sure as heck works on you. It has a warning label that says: 'CAUTION: NOT WATERPROOF'
 如果它对他们有效，那么对你也同样有效。它有一个警告标签，上面写着：'注意：不防水'
+
+Tracking Module
+追踪模块
+A homing device used to track unruly pets that wander too far.
+一种追踪装置，用于追踪那些不守规矩的宠物防止她们走得太远。
+It has a warning label that says: 'CAUTION: NOT WATERPROOF'
+它有一个警告标签，上面写着：'注意：不防水'
 
 Your RestraintName stops working due to water damage!
 你的 RestraintName 由于水导致损坏而停止工作！
