@@ -9508,6 +9508,42 @@ Shadowy chains appear from a rift in space!
 阴影锁链从空间裂缝中出现！
 The roaring inferno deals 10 damage to you!
 咆哮的地狱对你造成 10 点伤害！
+The Reaping
+收获
++20% damage to plants
++20% 对植物的伤害
+Magically Iliterate
+魔法文盲
+You've never read a magic book. Elemental, Conjuration, and Illusion spells cost 3x as many spell points.
+你从来没有读过魔法书。元素、咒法和幻象法术的法术点数是原来的 3 倍。
+Magical Spark
+魔法火花
+Reduce the penalty from Magically Iliterate to 2x.
+将魔法文盲的惩罚减少到 2 倍。
+Magical Training
+魔法训练
+Remove the penalty from Magically Iliterate.
+取消魔法文盲的惩罚。
+Reap What You Sow
+种瓜得瓜，种豆得豆
+Defeating a non-humanoid enemy causes vines to sprout on their space temporarily.
+击败非人形敌人会导致藤蔓在其空间内暂时发芽。
+Battle Rhythm
+战斗节奏
+Stores 10% of the stamina spent from attacks as Rhythm, up to a total of 40. While you have over 10 Rhythm, you gain +10 Block and Evasion. Enemy base accuracy against you is decreased by a % equal to your Rhythm. If an attack misses or is blocked because of this, reduce Rhythm by 25% of the enemy attack power. Decays when not attacking.
+将攻击消耗的体力的 10% 存储为节奏，总共最多 40 个。当你的节奏超过 10 个时，你获得 +10 格挡和闪避。 敌人对你的基础准确度降低了 你的节奏%。 如果攻击因此而失败或被阻挡，则节奏减少敌人攻击力的 25%。不攻击时会腐烂。
+Limit Surge
+限制浪涌
+Spend 50 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns.
+花费 50 WP 即可完全恢复体力，并且体力增益增加 30%，持续 20 回合。 如果你的意志力因此而变为 0，你将被眩晕 2 回合。
+Battle Trance
+战斗恍惚
+While at 40 Battle Rhythm, you attack twice per turn.
+当战斗节奏达到 40 时，你每回合可以攻击两次。
+Devious Ingenuity
+邪恶的独创性
+Trap-type spells and consumables take 1 turn to cast instead of several.
+陷阱类法术和消耗品需要 1 回合即可施放，而不是数回合。
 Mana Burst
 法力冲击
 As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus...
