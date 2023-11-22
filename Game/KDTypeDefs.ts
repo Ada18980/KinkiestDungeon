@@ -472,6 +472,12 @@ interface restraint extends KDRestraintProps {
 	enemyTagsMult?: Record<string, number>,
 	playerTags: Record<string, number>,
 	shrine: string[],
+	/** These tags cause the restraint to appear on all floors regardless of map*/
+	ignoreFloorTags?: string[],
+	/** These tags cause the restraint to appear on all floors regardless of minlevel*/
+	ignoreMinLevelTags?: string[],
+	/** These tags cause the restraint to appear on all floors regardless of maxlevel*/
+	ignoreMaxLevelTags?: string[],
 	/**
 	 * A map of:
 	 * key - Name of the ApplyVariant

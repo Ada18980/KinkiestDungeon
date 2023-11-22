@@ -6544,9 +6544,9 @@ function KDEnemyChangeSprint(enemy, amt) {
 	enemy.exertion = Math.max(0, amt + (enemy.exertion || 0));
 }
 
-let KDShopMoneyBase = 450;
+let KDShopMoneyBase = 150;
 let KDShopMoneyPerFloor = 50;
-let KDShopMoneyPerRank = 200;
+let KDShopMoneyPerRank = 40;
 
 /**
  *

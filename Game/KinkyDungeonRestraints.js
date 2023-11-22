@@ -2655,7 +2655,21 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 			effLevel *= KDTightRestraintsMult;
 			effLevel += KDTightRestraintsMod;
 		}
-		if ((effLevel >= restraint.minLevel || KinkyDungeonNewGame > 0 || filter?.require?.includes(restraint.name)) && (!restraint.maxLevel || effLevel < restraint.maxLevel) && (restraint.allFloors || restraint.floors[Index])) {
+		if ((
+			effLevel >= restraint.minLevel
+				|| KinkyDungeonNewGame > 0
+				|| (restraint.ignoreMinLevelTags?.some((t) => {return tags.get(t);}))
+				|| filter?.require?.includes(restraint.name)
+		) && (
+			!restraint.maxLevel
+				|| effLevel < restraint.maxLevel
+				|| (restraint.ignoreMaxLevelTags?.some((t) => {return tags.get(t);}))
+		) && (
+			restraint.allFloors
+				|| restraint.floors[Index]
+				|| (restraint.ignoreFloorTags?.some((t) => {return tags.get(t);}))
+
+		)) {
 			if (!restraint.arousalMode || arousalMode) {
 				let enabled = false;
 				let weight = restraint.weight;

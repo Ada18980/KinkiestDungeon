@@ -128,7 +128,7 @@ let KDLastForceRefreshInterval = 100;
 /**
  * It sets the player's appearance based on their stats.
  */
-function KinkyDungeonDressPlayer(Character, NoRestraints) {
+function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 	if (!Character) Character = KinkyDungeonPlayer;
 
 	let _CharacterRefresh = CharacterRefresh;
@@ -610,8 +610,25 @@ function KinkyDungeonDressPlayer(Character, NoRestraints) {
 		if (!InventoryGet(Character, "Blush")) KDInventoryWear("KoiBlush", "Blush");
 		//if (!InventoryGet(Character, "Hair")) KDInventoryWear("Braid", "Hair");
 
+		let Xray = [];
+		if (KDToggleXRay > 0) {
+			Xray = ["Xray"];
+			if (KDToggleXRay > 1 && Character?.Appearance?.some((A) => {
+				return A.Model?.Layers && Object.values(A.Model?.Layers).some((L) => {return Object.keys(LayerGroups.XrayFace).some((L2) => {return L2 == L.Layer;});});
+			})) {
+				Xray.push("XrayFace");
+			}
+			if (Character?.Appearance?.some((A) => {
+				return A.Model?.Layers && Object.values(A.Model?.Categories).some((C) => {return C == "ChastityBelt" || C == "ChastityBra";});
+			})) {
+				Xray.push("XrayPanties");
+			}
+		}
 
-		UpdateModels(Character);
+		UpdateModels(Character, Xray);
+		if (Force) {
+			ForceRefreshModels(Character);
+		}
 	}
 }
 
@@ -781,7 +798,7 @@ function KDCharacterAppearanceNaked() {
 
 
 function KDApplyItem(inv, tags) {
-	if (KDToggleXRay) {
+	if (KDToggleXRay && StandalonePatched) {
 		let itemTags = KDRestraint(inv)?.shrine;
 		if (itemTags && itemTags.some((t) => {
 			return KD_XRayHidden.includes(t);
