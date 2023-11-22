@@ -740,6 +740,28 @@ function KDDrawWardrobe(screen, Character) {
 	"#ffffff", "");
 
 
+	if (TestMode) {
+		DrawButtonKDEx("KDCreateOutfit", (bdata) => {
+			let exportData = [];
+			if (C?.Appearance)
+				for (let a of C.Appearance) {
+					if (a.Model && !a.Model.Protected && !a.Model.Restraint && !a.Model.Cosplay) {
+						exportData.push({
+							Item: a.Model.Name,
+							Group: a.Model.Group || a.Model.Name,
+							Color: "#ffffff",
+							Lost: false,
+							Filters: a.Model.Filters,
+						},);
+					}
+				}
+			navigator.clipboard.writeText(JSON.stringify(exportData));
+			return true;
+		}, true, 725, 790, 140, 60,
+		TextGet("KDCreateOutfit"), "#99ff99", "");
+
+	}
+
 	DrawButtonKDEx("KDWardrobeCancel", (bdata) => {
 		if (KDConfirmType == "revert" && KinkyDungeonReplaceConfirm > 0) {
 			KinkyDungeonReplaceConfirm = 0;
