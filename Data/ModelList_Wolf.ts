@@ -22,26 +22,6 @@ AddModel({
 });
 
 AddModel({
-	Name: "ShockModule",
-	Folder: "Wolf",
-	Parent: "Wolf",
-	TopLevel: true,
-	Restraint: true,
-	Categories: ["Restraints"],
-	Layers: ToLayerMap([
-		{ Name: "Module", Layer: "CollarAcc", Pri: 40,
-			Invariant: true,
-			InheritColor: "Module",
-		},
-		{ Name: "ModuleDisplay", Layer: "CollarAcc", Pri: 40.1,
-			Invariant: true,
-			InheritColor: "Display",
-			TieToLayer: "Module",
-			NoOverride: true,
-		},
-	])
-});
-AddModel({
 	Name: "WolfCollar",
 	Folder: "Wolf",
 	Parent: "Wolf",
@@ -73,12 +53,14 @@ AddModel({
 			InheritColor: "Hardware",
 			TieToLayer: "Collar",
 			NoOverride: true,
+			HidePoses: {HideModuleMiddle: true},
 		},
 		{ Name: "CollarTag", Layer: "Collar", Pri: 40.2,
 			Invariant: true,
 			InheritColor: "Tag",
 			TieToLayer: "Collar",
 			NoOverride: true,
+			HidePoses: {HideModuleMiddle: true},
 		},
 	])
 });
@@ -114,12 +96,14 @@ AddModel({
 			InheritColor: "Hardware",
 			TieToLayer: "Collar",
 			NoOverride: true,
+			HidePoses: {HideModuleMiddle: true},
 		},
 		{ Name: "FCollarTag", Layer: "Collar", Pri: 40.2,
 			Invariant: true,
 			InheritColor: "Tag",
 			TieToLayer: "Collar",
 			NoOverride: true,
+			HidePoses: {HideModuleMiddle: true},
 		},
 	])
 });

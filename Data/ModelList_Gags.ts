@@ -12,7 +12,10 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "FaceGag", "StuffMouth"],
+	AddPose: ["FaceGag", "StuffMouth"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		{ Name: "FrillyPanel", Layer: "Gag", Pri: 13,
 			OffsetX: 942,
@@ -48,10 +51,37 @@ AddModel({
 	Parent: "MaidGag",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "FaceGag", "StuffMouth"],
+	AddPose: ["FaceGag", "StuffMouth"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("MaidGag"),
 		{ Name: "Duster", Layer: "MouthProp", Pri: 15,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "GhostGag",
+	Folder: "GagLeather",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth", "FaceGag", "StuffMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Ball", Layer: "Gag", Pri: -50,
+			Sprite: "GhostBall",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+		{ Name: "Strap", Layer: "GagStraps", Pri: -50,
+			Sprite: "GhostBallStrap",
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,
@@ -131,6 +161,7 @@ AddModel(GetModelWithExtraLayers("LargeBallGagHarness", "LargeBallGag", [
 		OffsetX: 942,
 		OffsetY: 200,
 		Invariant: true,
+		AppendPose: {FaceBigGag: "Large"},
 	},
 ], "LargeBallGag", false));
 AddModel(GetModelWithExtraLayers("LargeBallGagHarnessSecure", "LargeBallGagHarness", [
@@ -149,7 +180,10 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "FaceCoverGag", "StuffMouth"],
+	AddPose: ["FaceCoverGag", "StuffMouth"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		{ Name: "Panel", Layer: "GagFlat", Pri: 5,
 			Sprite: "Panel",
@@ -191,7 +225,10 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "FaceCoverGag", "StuffMouth"],
+	AddPose: ["FaceCoverGag", "StuffMouth"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		{ Name: "Muzzle", Layer: "GagMuzzle", Pri: 3,
 			Sprite: "Muzzle",
@@ -293,7 +330,10 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "FaceCoverGag"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		{ Name: "Full", Layer: "GagMuzzle", Pri: -50,
 			OffsetX: 942,
@@ -312,7 +352,9 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		{ Name: "Wrap", Layer: "GagFlat", Pri: -50,
 			OffsetX: 942,
@@ -331,7 +373,10 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "FaceCoverGag"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		{ Name: "Full", Layer: "GagOver", Pri: -50,
 			OffsetX: 942,
@@ -350,7 +395,9 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "Mouth"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		{ Name: "Wrap", Layer: "GagOver", Pri: -45,
 			OffsetX: 942,
@@ -448,7 +495,10 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "FaceCoverGag"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		{ Name: "OTN", Layer: "GagMuzzle", Pri: -30,
 			OffsetX: 942,
@@ -468,7 +518,10 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "FaceCoverGag"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		{ Name: "OTM", Layer: "GagFlat", Pri: -1,
 			OffsetX: 942,
@@ -487,7 +540,10 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags","Latex"],
-	AddPose: ["HideMouth", "FaceCoverGag"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		{ Name: "OTN", Layer: "GagFlat", Pri: 20,
 			OffsetX: 942,
@@ -509,7 +565,10 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags","Latex"],
-	AddPose: ["HideMouth", "FaceCoverGag"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		{ Name: "OTNFlat", Layer: "GagFlat", Pri: 30,
 			OffsetX: 942,
@@ -529,7 +588,10 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags","Metal"],
-	AddPose: ["HideMouth", "FaceCoverGag"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		{ Name: "OTN", Layer: "GagFlat", Pri: 30,
 			OffsetX: 942,
@@ -548,7 +610,10 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags","Fabric"],
-	AddPose: ["HideMouth", "FaceCoverGag"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		{ Name: "FabricMuzzle", Layer: "GagFlat", Pri: 45,
 			OffsetX: 942,
@@ -567,7 +632,10 @@ AddModel({
 	Restraint: true,
 	Parent: "GagFabric",
 	Categories: ["Restraints","Gags","Fabric"],
-	AddPose: ["HideMouth", "FaceCoverGag"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("GagFabric"),
 		{ Name: "KittyMouth", Layer: "GagFlat", Pri: 45.1,
@@ -594,7 +662,10 @@ AddModel({
 	Restraint: true,
 	Parent: "GagFabric",
 	Categories: ["Restraints","Gags","Fabric"],
-	AddPose: ["HideMouth", "FaceCoverGag", "StuffMouth"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Filters: {
 		Panel: {"gamma":0.9833333333333333,"saturation":1,"contrast":0.8,"brightness":3.1,"red":1,"green":1,"blue":1,"alpha":1},
 		Strap: {"gamma":0.8,"saturation":1,"contrast":0.9666666666666667,"brightness":2.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
@@ -623,6 +694,9 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags","Fabric"],
 	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		{ Name: "FabricMuzzle", Layer: "GagFlat", Pri: 45,
 			OffsetX: 942,
@@ -644,7 +718,10 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags","Metal"],
-	AddPose: ["HideMouth", "FaceCoverGag"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("GagMetal"),
 		{ Name: "OTNRivets", Layer: "GagFlat", Pri: 30.1,
@@ -658,4 +735,557 @@ AddModel({
 		},
 	])
 });
+
+
+
+AddModel({
+	Name: "SmoothBallGag",
+	Folder: "GagMetal",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth", "FaceGag", "StuffMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Ball", Layer: "Gag", Pri: 1,
+			Sprite: "Ball",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			MorphPoses: {MouthNeutral: "_TeethDeep", MouthSurprised: "_Teeth", MouthPout: "_TeethDeep", MouthDistracted: "_Teeth"},
+		},
+		{ Name: "Strap", Layer: "GagStraps", Pri: 15,
+			Sprite: "BallStrap",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+	])
+});
+AddModel(GetModelWithExtraLayers("SmoothBallGagHarness", "SmoothBallGag", [
+	{ Name: "Harness", Layer: "GagStraps", Pri: 10,
+		Sprite: "BallHarness",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+		AppendPose: {FaceBigGag: "Large"},
+	},
+], "SmoothBallGag", false));
+AddModel(GetModelWithExtraLayers("SmoothBallGagHarnessSecure", "SmoothBallGagHarness", [
+	{ Name: "SideStrap", Layer: "GagStraps", Pri: 20,
+		Sprite: "BallSideStrap",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "SmoothBallGag", false));
+
+
+AddModel({
+	Name: "SmoothLargeBallGag",
+	Folder: "GagMetal",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth", "FaceBigGag", "StuffMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Ball", Layer: "Gag", Pri: 3,
+			Sprite: "BigBall",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+		{ Name: "Strap", Layer: "GagStraps", Pri: 15,
+			Sprite: "BigBallStrap",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel(GetModelWithExtraLayers("SmoothLargeBallGagHarness", "SmoothLargeBallGag", [
+	{ Name: "Harness", Layer: "GagStraps", Pri: 17,
+		Sprite: "BallHarness",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+		AppendPose: {FaceBigGag: "Large"},
+	},
+], "SmoothLargeBallGag", false));
+AddModel(GetModelWithExtraLayers("SmoothLargeBallGagHarnessSecure", "SmoothLargeBallGagHarness", [
+	{ Name: "SideStrap", Layer: "GagStraps", Pri: 22,
+		Sprite: "BallSideStrap",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "SmoothLargeBallGag", false));
+
+
+AddModel({
+	Name: "SegmentedLargeBallGag",
+	Folder: "GagMetal",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth", "FaceBigGag", "StuffMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Ball", Layer: "Gag", Pri: 2,
+			Sprite: "BigBall",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+		{ Name: "Strap", Layer: "GagStraps", Pri: 14,
+			Sprite: "BigBallStrapSegmented",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel(GetModelWithExtraLayers("SegmentedLargeBallGagHarness", "SegmentedLargeBallGag", [
+	{ Name: "Harness", Layer: "GagStraps", Pri: 16,
+		Sprite: "BallHarnessSegmented",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+		AppendPose: {FaceBigGag: "Large"},
+	},
+], "SegmentedLargeBallGag", false));
+AddModel(GetModelWithExtraLayers("SegmentedLargeBallGagHarnessSecure", "SegmentedLargeBallGagHarness", [
+	{ Name: "SideStrap", Layer: "GagStraps", Pri: 21,
+		Sprite: "BallSideStrapSegmented",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "SegmentedLargeBallGag", false));
+
+AddModel(GetModelWithExtraLayers("SciFiBallGag", "SegmentedLargeBallGagHarness", [
+{ Name: "TopRim", Layer: "GagStraps", Pri: 21.1,
+		Sprite: "Rim",
+		NoOverride: true,
+		TieToLayer: "Display",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+	{ Name: "Display", Layer: "GagStraps", Pri: 21,
+		Sprite: "Display",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], undefined, true));
+
+AddModel(GetModelWithExtraLayers("EnhancedSciFiBallGag", "SciFiBallGag", [
+	{ Name: "Mask", Layer: "GagStraps", Pri: 19,
+		Sprite: "HarnessMask",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "SciFiBallGag", false));
+
+AddModel(GetModelWithExtraLayers("AdvancedSciFiBallGag", "EnhancedSciFiBallGag", [
+	{ Name: "HarnessRim", Layer: "GagStraps", Pri: 21.1,
+		Sprite: "HarnessRim",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+	{ Name: "HarnessDisplay", Layer: "GagStraps", Pri: 21,
+		Sprite: "HarnessDisplay",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "SciFiBallGag", false));
+
+AddModel(GetModelWithExtraLayers("UltimateSciFiBallGag", "AdvancedSciFiBallGag", [
+
+	{ Name: "Muzzle", Layer: "GagStraps", Pri: 17,
+		Sprite: "SciFiMuzzle",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "SciFiBallGag", false, {
+	AddPose: ["HideMouth", "StuffMouth", "FaceCoverGag"],
+}));
+AddModel(GetModelWithExtraLayers("UltimateSciFiBallGag2", "AdvancedSciFiBallGag", [
+
+	{ Name: "Muzzle", Layer: "GagStraps", Pri: 17,
+		Sprite: "SciFiMuzzle2",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "SciFiBallGag", false, {
+	AddPose: ["HideMouth", "StuffMouth", "FaceCoverGag"],
+}));
+
+
+
+
+AddModel({
+	Name: "SegmentedLargePanelGag",
+	Folder: "GagMetal",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["FaceBigGag", "StuffMouth"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
+	Layers: ToLayerMap([
+		{ Name: "Panel", Layer: "GagFlatStraps", Pri: 17,
+			Sprite: "SciFiPanel",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+		{ Name: "Strap", Layer: "GagFlatStraps", Pri: 14,
+			Sprite: "BigBallStrapSegmented",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+		{ Name: "Mask", Layer: "GagFlatStraps", Pri: 19,
+			Sprite: "HarnessMask",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel(GetModelWithExtraLayers("SegmentedLargePanelGagHarness", "SegmentedLargePanelGag", [
+	{ Name: "Harness", Layer: "GagFlatStraps", Pri: 16,
+		Sprite: "BallHarnessSegmented",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+		AppendPose: {FaceBigGag: "Large"},
+	},
+], "SegmentedLargePanelGag", false));
+AddModel(GetModelWithExtraLayers("SegmentedLargePanelGagHarnessSecure", "SegmentedLargePanelGagHarness", [
+	{ Name: "SideStrap", Layer: "GagFlatStraps", Pri: 21,
+		Sprite: "BallSideStrapSegmented",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "SegmentedLargePanelGag", false));
+
+AddModel(GetModelWithExtraLayers("SciFiPanelGag", "SegmentedLargePanelGagHarness", [
+{ Name: "TopRim", Layer: "GagFlatStraps", Pri: 21.1,
+		Sprite: "Rim",
+		NoOverride: true,
+		TieToLayer: "Display",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+	{ Name: "Display", Layer: "GagFlatStraps", Pri: 21,
+		Sprite: "Display",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], undefined, true));
+
+AddModel(GetModelWithExtraLayers("AdvancedSciFiPanelGag", "SciFiPanelGag", [
+	{ Name: "HarnessRim", Layer: "GagFlatStraps", Pri: 21.1,
+		Sprite: "HarnessRim",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+	{ Name: "HarnessDisplay", Layer: "GagFlatStraps", Pri: 21,
+		Sprite: "HarnessDisplay",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "SciFiPanelGag", false));
+
+AddModel(GetModelWithExtraLayers("UltimateSciFiPanelGag", "AdvancedSciFiPanelGag", [
+
+	{ Name: "Muzzle", Layer: "GagFlatStraps", Pri: 17,
+		Sprite: "SciFiMuzzle",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "SciFiPanelGag", false, {
+	AddPose: ["StuffMouth", "FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
+}));
+AddModel(GetModelWithExtraLayers("UltimateSciFiPanelGag2", "AdvancedSciFiPanelGag", [
+
+	{ Name: "Muzzle", Layer: "GagFlatStraps", Pri: 17,
+		Sprite: "SciFiMuzzle2",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "SciFiPanelGag", false, {
+	AddPose: ["StuffMouth", "FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
+}));
+
+
+
+
+
+AddModel({
+	Name: "SegmentedPlugGag",
+	Folder: "GagMetal",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth", "FaceBigGag", "StuffMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Panel", Layer: "GagFlatStraps", Pri: 17,
+			Sprite: "SciFiPanel",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			noXray: true,
+		},
+		{ Name: "Strap", Layer: "GagFlatStraps", Pri: 14,
+			Sprite: "BigBallStrapSegmented",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			noXray: true,
+		},
+		{ Name: "Mask", Layer: "GagFlatStraps", Pri: 19,
+			Sprite: "HarnessMask",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			noXray: true,
+		},
+		{ Name: "Plug", Layer: "GagFlatStraps", Pri: 40,
+			Sprite: "SciFiPlug",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			noXray: true,
+		},
+	])
+});
+
+AddModel(GetModelWithExtraLayers("SegmentedPlugGagHarness", "SegmentedPlugGag", [
+	{ Name: "Harness", Layer: "GagFlatStraps", Pri: 16,
+		Sprite: "BallHarnessSegmented",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+		noXray: true,
+		AppendPose: {FaceBigGag: "Large"},
+	},
+], "SegmentedPlugGag", false));
+AddModel(GetModelWithExtraLayers("SegmentedPlugGagHarnessSecure", "SegmentedPlugGagHarness", [
+	{ Name: "SideStrap", Layer: "GagFlatStraps", Pri: 21,
+		Sprite: "BallSideStrapSegmented",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+		noXray: true,
+	},
+], "SegmentedPlugGag", false));
+
+AddModel(GetModelWithExtraLayers("SciFiPlugGag", "SegmentedPlugGagHarness", [
+{ Name: "TopRim", Layer: "GagFlatStraps", Pri: 21.1,
+		Sprite: "Rim",
+		NoOverride: true,
+		TieToLayer: "Display",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+		noXray: true,
+	},
+	{ Name: "Display", Layer: "GagFlatStraps", Pri: 21,
+		Sprite: "Display",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+		noXray: true,
+	},
+], undefined, true));
+
+AddModel(GetModelWithExtraLayers("AdvancedSciFiPlugGag", "SciFiPlugGag", [
+	{ Name: "HarnessRim", Layer: "GagFlatStraps", Pri: 21.1,
+		Sprite: "HarnessRim",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+		noXray: true,
+	},
+	{ Name: "HarnessDisplay", Layer: "GagFlatStraps", Pri: 21,
+		Sprite: "HarnessDisplay",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+		noXray: true,
+	},
+], "SciFiPlugGag", false));
+
+AddModel(GetModelWithExtraLayers("UltimateSciFiPlugGag", "AdvancedSciFiPlugGag", [
+
+	{ Name: "Muzzle", Layer: "GagFlatStraps", Pri: 17,
+		Sprite: "SciFiMuzzle",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+		noXray: true,
+	},
+], "SciFiPlugGag", false, {
+	AddPose: ["HideMouth", "StuffMouth", "FaceCoverGag"],
+}));
+AddModel(GetModelWithExtraLayers("UltimateSciFiPlugGag2", "AdvancedSciFiPlugGag", [
+
+	{ Name: "Muzzle", Layer: "GagFlatStraps", Pri: 17,
+		Sprite: "SciFiMuzzle2",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+		noXray: true,
+	},
+], "SciFiPlugGag", false, {
+	AddPose: ["HideMouth", "StuffMouth", "FaceCoverGag"],
+}));
+
+
+AddModel({
+	Name: "SimpleSciFiMuzzle",
+	Folder: "GagMetal",
+	TopLevel: false,
+	Parent: "SciFiBallGag",
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
+	Layers: ToLayerMap([
+		{
+			Name: "HarnessRim", Layer: "GagMuzzleStraps", Pri: 110.1,
+			Sprite: "HarnessRim",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			TieToLayer: "HarnessDisplay",
+			NoOverride: true,
+		},
+		{
+			Name: "HarnessDisplay", Layer: "GagMuzzleStraps", Pri: 110,
+			Sprite: "HarnessDisplay",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+
+		{
+			Name: "Muzzle", Layer: "GagMuzzle", Pri: 110,
+			Sprite: "SciFiMuzzle",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel(GetModelWithExtraLayers("AdvancedSciFiMuzzle", "SimpleSciFiMuzzle", [
+	{ Name: "Mask", Layer: "GagMuzzleStraps", Pri: 19,
+		Sprite: "HarnessMask",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "SimpleSciFiMuzzle", false));
+
+AddModel(GetModelWithExtraLayers("SciFiPlugMuzzle", "SimpleSciFiMuzzle", [
+	{ Name: "Plug", Layer: "GagMuzzleStraps", Pri: 110.1,
+		Sprite: "SciFiPlug",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+		NoOverride: true,
+		TieToLayer: "Muzzle",
+	},
+], "SimpleSciFiMuzzle", false));
+AddModel(GetModelWithExtraLayers("AdvancedSciFiPlugMuzzle", "AdvancedSciFiMuzzle", [
+	{ Name: "Plug", Layer: "GagMuzzleStraps", Pri: 110.1,
+		Sprite: "SciFiPlug",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+		NoOverride: true,
+		TieToLayer: "Muzzle",
+	},
+], "SimpleSciFiMuzzle", false));
+
+
+// Transparent
+AddModel({
+	Name: "SimpleSciFiMuzzle2",
+	Folder: "GagMetal",
+	TopLevel: false,
+	Parent: "SimpleSciFiMuzzle",
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["FaceCoverGag"],
+	Layers: ToLayerMap([
+		{
+			Name: "HarnessRim", Layer: "GagMuzzleStraps", Pri: 110.1,
+			Sprite: "HarnessRim",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			TieToLayer: "HarnessDisplay",
+			NoOverride: true,
+		},
+		{
+			Name: "HarnessDisplay", Layer: "GagMuzzleStraps", Pri: 110,
+			Sprite: "HarnessDisplay",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+
+		{
+			Name: "Muzzle", Layer: "GagFlatStraps", Pri: 17,
+			Sprite: "SciFiMuzzle2",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel(GetModelWithExtraLayers("AdvancedSciFiMuzzle2", "SimpleSciFiMuzzle", [
+	{ Name: "Mask", Layer: "GagMuzzleStraps", Pri: 100,
+		Sprite: "HarnessMask",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "SimpleSciFiMuzzle", false));
 

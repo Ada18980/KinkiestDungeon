@@ -13,7 +13,10 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags", "Blindfolds", "Masks"],
-	AddPose: ["HideMouth", "FaceCoverGag"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
 	Layers: ToLayerMap([
 		{ Name: "Face", Layer: "Mask", Pri: -50,
 			OffsetX: 942,

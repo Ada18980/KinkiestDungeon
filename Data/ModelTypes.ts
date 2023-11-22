@@ -67,12 +67,18 @@ interface Model extends Namable {
     Parent?: string,
     /** Adds these as tempposes*/
     AddPose?: string[],
+	/** Conditional add pose. They are only added if the specified pose is NOT present */
+	AddPoseConditional?: Record<string, string[]>,
+	/** This model hides all items on these layers. Use sparingly */
+	HideLayers?: string[],
     /** Default string of colors*/
     DefaultColor?: string[],
 	/** Color definition */
 	Filters?: Record<string, LayerFilter>,
 	/** Hardcoded Lock Type */
 	LockType?: string,
+	/** Hardcoded body filters */
+	ImportBodyFilters?: boolean,
 }
 
 interface ModelLayer extends Namable {
@@ -154,6 +160,8 @@ interface ModelLayer extends Namable {
 	TieToLayer?: string,
 	/** The name is as is */
 	Invariant?: boolean,
+	/** The item is unaffected by X ray filters */
+	noXray?: boolean,
 	/** Displacement maps are treated as Invariant */
 	DisplacementInvariant?: boolean,
 	/** Applies this layer's filter to a layer when the filter isn't hidden */

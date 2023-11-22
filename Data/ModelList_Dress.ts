@@ -115,6 +115,26 @@ AddModel(GetModelRestraintVersion("LaceBraDeco", true));
 
 
 
+
+AddModel({
+	Name: "BlouseCollar",
+	Folder: "Dress",
+	Parent: "DressBlouse",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	RemovePoses: ["EncaseTorsoUpper"],
+	Layers: ToLayerMap([
+		{
+			Name: "BlouseCollar", Layer: "ShirtCollar", Pri: 10,
+			InheritColor: "Collar",
+			Poses: ToMap([...ARMPOSES]),
+			MorphPoses: {Up: "Up", Boxtie: "Boxtie", Wristtie: "Boxtie", Crossed: "Boxtie", Front: "Boxtie",},
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
+			Invariant: true,
+		},
+	])
+});
+
 AddModel({
 	Name: "DressBlouseBust",
 	Folder: "Dress",
@@ -155,13 +175,6 @@ AddModel({
 			AppendPose: {Chesttied: "Chesttied"},
 			Invariant: true,
 		},
-		{ Name: "BlouseCollar", Layer: "Collar", Pri: -100,
-			InheritColor: "Collar",
-			Poses: ToMap([...ARMPOSES]),
-			MorphPoses: {Up: "Up", Boxtie: "Boxtie", Wristtie: "Boxtie", Crossed: "Boxtie", Front: "Boxtie",},
-			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
-			Invariant: true,
-		},
 		{ Name: "BlouseNeck", Layer: "ShirtChest", Pri: 1.1,
 			InheritColor: "Neck",
 			TieToLayer: "BlouseBust",
@@ -171,6 +184,7 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
 			Invariant: true,
 		},
+		...GetModelLayers("BlouseCollar"),
 	])
 });
 

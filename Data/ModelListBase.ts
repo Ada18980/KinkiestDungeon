@@ -13,6 +13,7 @@ AddModel({
 	Categories: ["Hairstyles"],
 	Layers: ToLayerMap([
 		{ Name: "Braid", Layer: "Hair", Pri: 0,
+			SwapLayerPose: {HoodMask: "HairOver"},
 		},
 		{ Name: "Braid_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "Braid",
 		},
@@ -39,6 +40,7 @@ AddModel({
 	Categories: ["Hairstyles", "FrontHair"],
 	Layers: ToLayerMap([
 		{ Name: "Curly", Layer: "Hair", Pri: 0,
+			SwapLayerPose: {HoodMask: "HairOver"},
 		},
 		{ Name: "Curly_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "Curly",
 		},
@@ -52,6 +54,7 @@ AddModel({
 	Categories: ["Hairstyles", "FrontHair"],
 	Layers: ToLayerMap([
 		{ Name: "FrontStraight", Layer: "Hair", Pri: 0,
+			SwapLayerPose: {HoodMask: "HairOver"},
 		},
 		{ Name: "FrontStraight_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "FrontStraight",
 		},
@@ -65,6 +68,7 @@ AddModel({
 	Categories: ["Hairstyles", "FrontHair"],
 	Layers: ToLayerMap([
 		{ Name: "Straight", Layer: "Hair", Pri: 0,
+			SwapLayerPose: {HoodMask: "HairOver"},
 		},
 		{ Name: "Straight_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "Straight",
 		},
@@ -78,6 +82,7 @@ AddModel({
 	Categories: ["Hairstyles", "FrontHair"],
 	Layers: ToLayerMap([
 		{ Name: "StraightBangs", Layer: "Hair", Pri: 0,
+			SwapLayerPose: {HoodMask: "HairOver"},
 		},
 		{ Name: "StraightBangs_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "StraightBangs",
 		},
@@ -135,6 +140,7 @@ AddModel({
 	Categories: ["Hairstyles"],
 	Layers: ToLayerMap([
 		{ Name: "Ahoge", Layer: "Hair", Pri: 0,
+			SwapLayerPose: {HoodMask: "HairOver"},
 			HideWhenOverridden: true,
 			HideOverrideLayer: "Hat",
 		},

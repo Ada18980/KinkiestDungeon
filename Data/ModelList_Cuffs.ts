@@ -261,6 +261,24 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "SteelCollarRunes",
+	Parent: "SteelCollar",
+	Folder: "Cuffs",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Accessories"],
+	Layers: ToLayerMap([
+		...GetModelLayers("SteelCollar"),
+		{ Name: "SteelCollarRunes", Layer: "Collar", Pri: 45.1,
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "SteelCollar",
+			InheritColor: "Runes",
+		},
+	])
+});
+
 
 AddModel({
 	Name: "IronBelt",

@@ -44,6 +44,8 @@ interface ContainerInfo {
 class ModelContainer {
 
 	public HighestPriority: {[_: string]: number};
+	public HiddenLayers: {[_: string]: number};
+	public XRayFilters: string[];
 
 	Character: Character;
 	Models: Map<string, Model>;
@@ -84,6 +86,15 @@ class ModelContainer {
 		this.Models.set(Model.Name, mod);
 	}
 
+	/** Updates a model, usually after adding all the models*/
+	updateModel(Name: string) {
+		let Model = this.Models.get(Name);
+		if (Model?.ImportBodyFilters && this.Models.get("Body")?.Filters) {
+			if (!Model.Filters) Model.Filters = {};
+			Object.assign(Model.Filters, JSON.parse(JSON.stringify(this.Models.get("Body").Filters)));
+		}
+	}
+
 	/**
 	 * Deletes a model to the modelcontainer
 	 */
@@ -108,7 +119,7 @@ function GetModelLayers(ModelName: string, PrependString?: string, AppendString?
 	}
 	return [];
 }
-function GetModelWithExtraLayers(NewModel: string, BaseModel: string, Layers: ModelLayer[], Parent?: string, TopLevel?: boolean): Model {
+function GetModelWithExtraLayers(NewModel: string, BaseModel: string, Layers: ModelLayer[], Parent?: string, TopLevel?: boolean, ExtraProps?: object): Model {
 	if (ModelDefs[BaseModel]) {
 		let model: Model = JSON.parse(JSON.stringify(ModelDefs[BaseModel]));
 		model.Name = NewModel;
@@ -117,6 +128,7 @@ function GetModelWithExtraLayers(NewModel: string, BaseModel: string, Layers: Mo
 		for (let l of Layers) {
 			model.Layers[l.Name] = JSON.parse(JSON.stringify(l));
 		}
+		if (ExtraProps) Object.assign(model, ExtraProps);
 		return model;
 	}
 	return null;
@@ -282,6 +294,17 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 				}
 			}
 		}
+		for (let m of MC.Models.values()) {
+			if (m.AddPoseConditional) {
+				for (let entry of Object.entries(m.AddPoseConditional)) {
+					if (!MC.Poses[entry[0]]) {
+						for (let pose of entry[1]) {
+							MC.Poses[pose] = true;
+						}
+					}
+				}
+			}
+		}
 
 		if (PIXI.BaseTexture.defaultOptions.scaleMode != Blend) PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
 		let modified = DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
@@ -370,6 +393,7 @@ let DrawModel = DrawCharacter;
 
 function LayerIsHidden(MC: ModelContainer, l: ModelLayer, m: Model, Mods) : boolean {
 	if (l.LockLayer && !m.LockType) return true;
+	if (MC.HiddenLayers && MC.HiddenLayers[LayerLayer(MC, l, m, Mods)]) return true;
 	return false;
 }
 
@@ -402,6 +426,14 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 
 	// Create the highestpriority matrix
 	MC.HighestPriority = {};
+	MC.HiddenLayers = {};
+	for (let m of Models.values()) {
+		if (m.HideLayers) {
+			for (let layer of m.HideLayers) {
+				MC.HiddenLayers[layer] = 1;
+			}
+		}
+	}
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
 			let pri = LayerPri(MC, l, m, StartMods);
@@ -423,6 +455,8 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 			}
 		}
 	}
+
+
 
 
 
@@ -590,6 +624,38 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 			}
 		}
 	}
+
+	// Add Xray filters now
+	if (MC.XRayFilters) {
+		let EraseAmount = 50;
+		for (let x of MC.XRayFilters) {
+			if (LayerGroups[x]) {
+				for (let dg of Object.keys(LayerGroups[x])) {
+					if (!EraseFilters[dg]) EraseFilters[dg] = [];
+					EraseFilters[dg].push(
+						{
+							amount: EraseAmount,
+							hash: x,
+							sprite: KDDraw(
+								ContainerContainer.Container,
+								ContainerContainer.SpriteList,
+								"xrayfilter_" + x,
+								"DisplacementMaps/" + x + ".png",
+								0, 0, undefined, undefined,
+								0, {
+									zIndex: 1000000,
+									alpha: 0.0,
+								}, false,
+								ContainerContainer.SpritesDrawn,
+								Zoom
+							),
+						}
+					);
+				}
+			}
+		}
+	}
+
 
 
 	// Now that we have the final list of models we do a KDDraw
@@ -909,6 +975,19 @@ function GetTrimmedAppearance(C: Character) {
 		}
 	}
 	for (let A of appearance) {
+		if (A.Model && A.Model.AddPoseConditional) {
+			for (let entry of Object.entries(A.Model.AddPoseConditional)) {
+				if (!poses[entry[0]]) {
+					for (let pose of entry[1]) {
+						poses[pose] = true;
+					}
+				}
+			}
+		}
+	}
+
+
+	for (let A of appearance) {
 		if (A.Model && !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})) {
 			appearance_new.push(A);
 		} else {
@@ -932,15 +1011,20 @@ function IsModelLost(C: Character, Name: string) : boolean {
 }
 
 
-function UpdateModels(C: Character) {
+function UpdateModels(C: Character, Xray?: string[]) {
 	let MC: ModelContainer = KDCurrentModels.get(C);
 	if (!MC) return;
 	MC.Models = new Map();
 	MC.Update.clear();
-
+	let poses = {};
+	if (Xray) {
+		MC.XRayFilters = Xray;
+		for (let x of Xray) {
+			poses[x] = true;
+		}
+	}
 
 	let appearance: Item[] = MC.Character.Appearance;
-	let poses = {};
 	for (let A of appearance) {
 		if (A.Model && A.Model.AddPose) {
 			for (let pose of A.Model.AddPose) {
@@ -949,10 +1033,29 @@ function UpdateModels(C: Character) {
 		}
 	}
 	for (let A of appearance) {
+		if (A.Model && A.Model.AddPoseConditional) {
+			for (let entry of Object.entries(A.Model.AddPoseConditional)) {
+				if (!poses[entry[0]]) {
+					for (let pose of entry[1]) {
+						poses[pose] = true;
+					}
+				}
+			}
+		}
+	}
+	for (let A of appearance) {
 		if (A.Model && !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})) {
 			MC.addModel(A.Model, A.Filters, A.Property?.LockedBy);
 		}
 	}
+
+	// Update models after adding all of them
+	for (let A of appearance) {
+		if (A.Model && !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})) {
+			MC.updateModel(A.Model.Name);
+		}
+	}
+
 
 	for (let m of MC.Models.values()) {
 		if (m.AddPose) {

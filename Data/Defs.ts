@@ -9,6 +9,8 @@ let LAYERS_BASE = [
 	"Headband",
 	"MouthProp",
 	"HairFront",
+	"HairOver",
+	"Hood", // For Kigu
 	"MaskOver",
 	// Head items
 	"Blindfold",
@@ -63,18 +65,18 @@ let LAYERS_BASE = [
 	// Forearms (only in HandsFront)
 	"ForeWristLeft",
 
+	"ForeSleeveDecoLeft",
 	"ForeSleeveLeft",
 	"ForeMittenLeft",
-	"ForeSleeveDecoLeft",
 	"ForeGloveRight",
 	"ForeHandLeft",
 	"ForeArmLeft",
 
 	"ForeWristRight",
 
+	"ForeSleeveDecoRight",
 	"ForeSleeveRight",
 	"ForeMittenRight",
-	"ForeSleeveDecoRight",
 	"ForeGloveRight",
 	"ForeHandRight",
 	"ForeArmRight",
@@ -103,9 +105,12 @@ let LAYERS_BASE = [
 
 	"HarnessOver",
 	"BindChest",
+	"BustierCollar",
 	"BustierChest",
+	"ShirtCollar",
 	"ShirtChest",
 	"BraChest",
+	"BindChestLower",
 	"SuitChest",
 	"Chest",
 
@@ -163,6 +168,7 @@ let LAYERS_BASE = [
 	// For things that go around armpit area--mainly ropes and stuff that goes under the breasts
 	"Underarms",
 
+	// Big corsets
 	"CorsetOver",
 
 
@@ -181,20 +187,20 @@ let LAYERS_BASE = [
 	"SkirtDeco",
 	"Skirt",
 
-	// Panties go here when standing
-	"Panties",
-
 	// Left Leg
 	"KneeAccLeft",
+	"ThighsOver",
 	"Thighs",
 	"Thighs3",
 	"Thighs2",
 	"Thighs1",
-	"ThighLeft",
+	"ThighLeftOver",
+	"AnklesOver",
 	"Ankles",
 	"Ankles3",
 	"Ankles2",
 	"Ankles1",
+	"AnkleLeftOver",
 	"AnkleLeft",
 
 	"WrappingLegs",
@@ -217,6 +223,10 @@ let LAYERS_BASE = [
 	"HarnessLower",
 	"WrappingTorso",
 
+	// Panties go here when standing
+	"Panties",
+	"ChastityBelt",
+
 	// These are for the base skirt layer when kneeling
 	// The over layer is for kneeling
 	// Skirts that dont follow shilhouette and are puffy
@@ -231,6 +241,8 @@ let LAYERS_BASE = [
 	"KneeAccRight",
 	"ThighRight",
 	"AnkleRight",
+	"ThighRightOver",
+	"AnkleRightOver",
 	"PantsAccRight",
 	"PantRight",
 	"Pants",
@@ -276,6 +288,8 @@ let LAYERS_BASE = [
 	// Upper body underwear and bodysuits
 	"CorsetLiner",
 	"Bodysuit",
+
+	"ChastityBeltLower",
 
 
 	// Lower body body - reserved for body and catsuits
@@ -390,12 +404,15 @@ let LayerGroups = {
 
 	// region armor
 	"Boots": ToMap([
+		"AnklesOver",
 		"Ankles",
 		"Ankles3",
 		"Ankles2",
 		"Ankles1",
 		"AnkleLeft",
 		"AnkleRight",
+		"AnkleLeftOver",
+		"AnkleRightOver",
 		"BindFeet",
 		"OverShoes",
 	]),
@@ -814,6 +831,7 @@ let LayerGroups = {
 		"ShirtChest",
 		"SuitChest",
 		"BraChest",
+		"BindChestLower",
 	]),
 
 	"RibbonThighs": ToMap([
@@ -952,86 +970,29 @@ let LayerGroups = {
 	]),
 	// endregion
 
-	// region ALL
-
-	"All": ToMap(
+	// region Xray
+	"Xray": ToMap(
 		[
-			"HatDeco",
-	"Hat",
-	"Brows", // Brows should get hidden with mask
-	"AnimalEars",
-	"HeadbandDeco",
-	"Headband",
-	"HairFront",
+			"FurnitureFront",
+
+	"MouthProp",
+	"Hood", // For Kigu
 	"MaskOver",
-	// Head items
-	"Blindfold",
-	"GagOver",
-	"GagMuzzleStraps",
-	"GagMuzzle",
-	"GagFlatStraps",
-	"GagFlat",
-	"GagStraps",
-	"Gag",
-	"GagUnder",
+
 	// Hair mid
-	"Hair",
-	"Circlet",
 	"Mask",
 	"BlindfoldWrap",
 	"GagWrap",
-	// Head
-	"Eyes",
-	"Mouth",
-	"Blush",
-	"Head",
-
-
-	"Yoke",
 
 	// Clothes that go over the chest and hang down
 	"Shoulders",
 
-	// Hair mid
-	"HairMid",
-
-
-	// Collar and collar accessories
-	"CollarAcc",
-	"Collar",
-
-	// Bondage
-	"BindForeArms",
-	"BindForeElbowLeft",
-	"BindForeElbowRight",
-	"BindForeWristLeft",
-	"BindForeWristRight",
-	"BindForeHandLeft",
-	"BindForeHandRight",
-	"BindForeArmLeft",
-	"BindForeArmRight",
-
-	"ForeWrists",
-
-
 	// Forearms (only in HandsFront)
-	"ForeWristLeft",
-
 	"ForeSleeveLeft",
-	"ForeMittenLeft",
 	"ForeSleeveDecoLeft",
-	"ForeGloveRight",
-	"ForeHandLeft",
-	"ForeArmLeft",
-
-	"ForeWristRight",
 
 	"ForeSleeveRight",
-	"ForeMittenRight",
 	"ForeSleeveDecoRight",
-	"ForeGloveRight",
-	"ForeHandRight",
-	"ForeArmRight",
 
 
 
@@ -1040,48 +1001,31 @@ let LayerGroups = {
 
 	"Jacket",
 	"ChestDeco",
-	"ChestStraps",
 	"Chestplate",
 
 	// Bondage
-	"BindArms",
 
 
 
 
 	// Chest is breasts, should only intersect on bottom and side edges, top is indeterminate
-	"Straps",
-	"NecklaceCharm",
-	"Necklace",
+	//"NecklaceCharm",
+	//"Necklace",
 
-
-	"HarnessOver",
-	"BindChest",
+	"BustierCollar",
 	"BustierChest",
+	"ShirtCollar",
 	"ShirtChest",
-	"BraChest",
-	"SuitChest",
-	"Chest",
 
-	"StrapsUnderbustOver",
+	//"StrapsUnderbustOver",
 	"WrappingTorsoOver",
-
-	// Crossed arms bondage -- left arm is mostly hidden, no hands
-	"BindCrossArms",
-	"BindCrossElbowLeft",
-	"BindCrossElbowRight",
-	"BindCrossWristRight",
-	"BindCrossArmLeft",
-	"BindCrossArmRight",
 
 	// Crossed arms -- order is inverted
 	"SleevesCrossArms",
-	"CrossMittenRight",
-	"CrossGloveRight",
-	"CrossArmRight",
-	"CrossMittenLeft",
-	"CrossGloveLeft",
-	"CrossArmLeft",
+	"CrossSleeveDecoRight",
+	"CrossSleeveRight",
+	"CrossSleeveDecoLeft",
+	"CrossSleeveLeft",
 
 
 	// Certain pieces of armor go over the shirt
@@ -1097,23 +1041,13 @@ let LayerGroups = {
 	"OverSkirt",
 	"Greaves",
 
-	"StrapsUnderbust",
-
-	"OverCrotchStrapMid",
-	"HarnessMid",
 	"WrappingTorsoMid",
-
-
 
 	// For form-fitting stuff that nonetheless goes over a shirt
 	"Bustier",
 	"Shirt",
-	// For things that go directly under the breasts
-	"Underbust",
-	// For things that go around armpit area--mainly ropes and stuff that goes under the breasts
-	"Underarms",
-	"Bra",
 
+	// Big corsets
 	"CorsetOver",
 
 	// Skirts that dont follow shilhouette and are puffy
@@ -1123,46 +1057,32 @@ let LayerGroups = {
 	"WrappingLegsOver",
 
 	// Corsets that go under harness and poofy skirt
-	"Corset",
+	//"Corset",
 
 	// Skirts that are slim and follow the shilhouette
 	"SkirtDeco",
 	"Skirt",
 
-	// Panties go here when standing
-	"Panties",
 
 	// Left Leg
-	"KneeAccLeft",
-	"Thighs",
-	"Thighs3",
-	"Thighs2",
-	"Thighs1",
-	"ThighLeft",
-	"Ankles",
-	"Ankles3",
-	"Ankles2",
-	"Ankles1",
-	"AnkleLeft",
+	"ThighsOver",
+	"ThighLeftOver",
+	"AnklesOver",
+	"AnkleLeftOver",
+	"ThighRightOver",
+	"AnkleRightOver",
 
 	"WrappingLegs",
 
 	"PantsAccLeft",
 	"PantLeft",
 
-	"BindFeet",
 	"OverShoes",
 	"ShoeLeftOver",
-	"ShoeLeftDeco",
-	"ShoeLeft",
 	"OverSocks",
-	"StockingLeft",
-	"FootLeft",
-	"LegLeft",
 
 	// Lower harness
 	"OverCrotchStrap",
-	"HarnessLower",
 	"WrappingTorso",
 
 	// These are for the base skirt layer when kneeling
@@ -1177,101 +1097,56 @@ let LayerGroups = {
 
 	// Right leg
 	"KneeAccRight",
-	"ThighRight",
-	"AnkleRight",
 	"PantsAccRight",
 	"PantRight",
 	"Pants",
 
-	"HarnessUnder",
-
-	"BeltBack",
-
-	// Left arm clothes
-
-	"BindWristLeft",
-	"BindArmLeft",
-	"BindElbowLeft",
-	"BindHandLeft",
-
-	"LowerArmBondageLeft",
-
 	"SleeveDecoLeft",
 	"SleeveLeft",
 
-	// Left arm body - reserved for body and catsuits
-	"WristLeft",
-	"MittenLeft",
-	"GloveLeft",
-	"HandLeft",
-	"ArmLeft",
-
 	// Right Shoes
 	"ShoeRightOver",
-	"ShoeRightDeco",
-	"ShoeRight",
-
-
-
-	// Lower body underwear
-	"StockingRight",
 
 	"CorsetUnder", // Corsets go here when wearing pants
 
-	// Panties go here when kneeling
-	"PantiesLower",
-
 	// Upper body underwear and bodysuits
 	"CorsetLiner",
-	"Bodysuit",
-
-
-	// Lower body body - reserved for body and catsuits
-	// Note that the lower torso is complex, you should avoid internal overlaps as much as possible
-	// External overlaps are fine, e.g. right leg goes over
-	"FootRight",
-	"LegRight",
-	"AnkleLeftHogtie",
-	"ShoeLeftHogtie",
-	"SockLeftHogtie",
-	"FootLeftHogtie",
-	"AnkleRightKneel",
-	"ShoeRightKneel",
-	"SockRightKneel",
-	"FootRightKneel",
-	"ShoulderLeft",
-	"ShoulderRight",
-	"TorsoUpper",
-	"Butt",
-	"TorsoLower",
-	"Torso",
-
-	// Right arm specific bondage
-	"BindWristRight",
-	"BindArmRight",
-	"BindElbowRight",
-	"BindHandRight",
 
 	// Right arm clothes
 	"SleeveDecoRight",
 	"SleeveRight",
-
-	// Right arm body - reserved for body and catsuits
-	"WristRight",
-	"MittenRight",
-	"GloveRight",
-	"HandRight",
-	"ArmRight",
-
-	// Clothes that go behind
-	"BeltFarBack",
-	"Coat",
-	"Cape",
-
-	// Hair and hat back
-	"HairBack",
-	"HatBack",
 		]
+	),
+	// Extra layer of unpeeling over the head if we are wearing a blindfold or harness gag
+	XrayFace: ToMap(
+		[
+			// Head items
+			"Blindfold",
+			"GagOver",
+			"GagMuzzleStraps",
+			"GagMuzzle",
+			"GagFlatStraps",
+			"GagFlat",
+		]
+	),
+	// Panty xray only if we are wearing a chastity belt
+	XrayPanties: ToMap(
+		[
+			"BraChest",
+			"SuitChest",
+			// Panties go here when kneeling
+			"PantiesLower",
+			"Bodysuit",
+			// Panties go here when standing
+			"Panties",
+			"Bra",
+		]
+	),
+	// endregion
+
+	// region ALL
+	"All": ToMap(
+		LAYERS_BASE
 	),
 	// endregion
 };
