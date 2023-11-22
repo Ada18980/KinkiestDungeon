@@ -4844,6 +4844,8 @@ Metal Witch
 金属女巫
 The metal witch vanishes into a pile of metal dust, leaving behind a keyring.
 金属女巫消失在一堆金属粉尘中，留下一个钥匙圈。
+The metal witch locks all of your restraints!
+金属女巫锁住了你所有的束缚具！
 The metal witch tugs sensually at your restraints! (DamageTaken)
 金属女巫性感地拉扯你的束缚！（DamageTaken）
 The metal's bindings wrap themselves around you! (+RestraintAdded)
