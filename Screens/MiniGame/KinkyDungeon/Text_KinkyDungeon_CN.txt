@@ -6016,8 +6016,10 @@ Runic Lock
 符文锁
 Purple Lock
 紫锁
+You can't use that while gagged!
+你不能在嘴被堵住的时候使用它！
 You can't use that without your fingers!
-没有你的手指你不能使用它！
+你不能在无法使用手指的时候使用它！
 You struggle against your bindings but it's too strict!.
 你与你的拘束作斗争，但它太严苛了！
 You drop the pick due to your bound hands!
