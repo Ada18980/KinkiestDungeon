@@ -4590,8 +4590,8 @@ The scarves become knotted and fall to the floor.
 围巾打结并掉到地板上。
 The scarves wrap themselves around you! (+RestraintAdded)
 围巾包裹了你！（+RestraintAdded）
-The scarves rub against your body, tickling you! (DamageTaken)
-围巾摩擦你的身体，让你发痒！（DamageTaken）
+The scarves rub against your body, wrapping you in fluffy fabric! (DamageTaken)
+围巾摩擦着你的身体，用蓬松的布料包裹着你！（DamageTaken）
 Cloud of Ribbons
 一团丝带
 The ribbons knot themselves in a bow and fall to the floor.
