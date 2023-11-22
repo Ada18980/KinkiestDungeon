@@ -25,7 +25,7 @@ let KinkyDungeonStruggleGroupsBase = [
 ];
 let KinkyDungeonDrawStruggle = 1;
 let KDPlayerSetPose = false;
-let KDToggleXRay = false;
+let KDToggleXRay = 0;
 let KD_XRayHidden = ["Wrapping", "Tape"];
 let KinkyDungeonDrawStruggleHover = false;
 let KinkyDungeonDrawState = "Game";
@@ -1084,11 +1084,14 @@ function KinkyDungeonDrawInputs() {
 		}, true, 650, 925, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "Poses/SetPose.png", "", false, false, KDPlayerSetPose ? KDTextGray3 : KDButtonColor);
 
 	DrawButtonKDEx("ToggleXray", (bdata) => {
-		KDToggleXRay = !KDToggleXRay;
+		KDToggleXRay += 1;
+		if (KDToggleXRay > (StandalonePatched ? 2 : 1)) KDToggleXRay = 0;
+
 		KinkyDungeonCheckClothesLoss = true;
-		KinkyDungeonDressPlayer(KinkyDungeonPlayer);
+		KinkyDungeonDressPlayer(KinkyDungeonPlayer, false, true);
 		return true;
-	}, true, 580, 925, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "UI/XRay.png", "", false, false, KDToggleXRay ? KDTextGray3 : KDButtonColor);
+	}, true, 580, 925, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "UI/XRay" + KDToggleXRay + ".png", "", false, false,
+		KDToggleXRay ? KDTextGray3 : KDButtonColor);
 
 	if (KDPlayerSetPose) KDPlayerDrawPoseButtons(KinkyDungeonPlayer);
 

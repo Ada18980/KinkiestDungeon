@@ -3302,6 +3302,9 @@ RestraintTrackingCollarDesc2,"It seems to be made of flexible steel plates, and 
 RestraintLatexBallGag,Latex Ball Gag
 RestraintLatexBallGagDesc,"A devious device that looks like a ball gag, but has a mouth-filling rod on the inside."
 RestraintLatexBallGagDesc2,"The strap is made of a durable but flexible material"
+RestraintLatexBallGagLarge,Large Latex Ball Gag
+RestraintLatexBallGagLargeDesc,"A devious device that looks like a large ball gag, but absolutely fills your mouth with a rubber cylinder."
+RestraintLatexBallGagLargeDesc2,"The strap is made of a durable but flexible material"
 
 RestraintLatexOTNGag,Latex Mask
 RestraintLatexOTNGagDesc,A slick layer of blue latex stretched over the mouth.
@@ -3676,9 +3679,15 @@ RestraintTrapHarnessDesc2,"It provides an anchor point for enemies to grab onto!
 RestraintTrapGag,Ball Gag
 RestraintTrapGagDesc,"A gag made of a red squishy material."
 RestraintTrapGagDesc2,"You can't seem to enunciate your spells properly with this in."
+RestraintTrapGagLarge,Large Ball Gag
+RestraintTrapGagLargeDesc,"A mouth-filling gag made of a red squishy material."
+RestraintTrapGagLargeDesc2,"You can't seem to enunciate your spells properly with this in."
 RestraintMagicGag,Tight Ball Gag
 RestraintMagicGagDesc,"A gag made of a red squishy material, buckled as tight as it will go."
 RestraintMagicGagDesc2,"You can't seem to enunciate your spells properly with this in."
+RestraintMagicGagLarge,Huge Ball Gag
+RestraintMagicGagLargeDesc,"A massive gag made of a red squishy material, buckled as tight as it will go."
+RestraintMagicGagLargeDesc2,"You absolutely can't enunciate your spells properly with this in."
 RestraintMagicGag2,Magic Ball Gag
 RestraintMagicGag2Desc,"A gag enchanted with magic. It grows to fill your mouth so you can hardly speak."
 RestraintMagicGag2Desc2,"It's brimming with conjured energy. A normal knife won't work here!"
@@ -11613,6 +11622,7 @@ KDWardrobeBackToWardrobe,Back to Wardrobe
 KDConfirmStrip,Confirm Strip?
 KDDressStrip,Strip Outfit
 KDCreateOutfit,Export Outfit
+KDCreateAlwaysDress,Export AlwaysDress
 
 KDColorSlidergamma,gamma
 KDColorSlidersaturation,saturation
@@ -11623,6 +11633,7 @@ KDColorSlidergreen,green
 KDColorSliderblue,blue
 KDColorSlideralpha,alpha
 KDResetLayer,Reset Layer!
+KDExportAllLayers,Export All Layers
 KDCopyLayer,Copy
 KDPasteLayer,Paste
 
@@ -13201,8 +13212,11 @@ KDSelfLock,You lock yourself in magical locks!
 KinkyDungeonRemoveCollarModule,A collar module comes off with the collar!
 
 RestraintShockModule,Shock Module
-RestraintShockModuleDesc,"A sinister used to keep unruly wolfgirls in check."
+RestraintShockModuleDesc,"A sinister device used to keep unruly wolfgirls in check."
 RestraintShockModuleDesc2,"If it works on them, it sure as heck works on you. It has a warning label that says: 'CAUTION: NOT WATERPROOF'"
+RestraintTrackingModule,Tracking Module
+RestraintTrackingModuleDesc,"A homing device used to track unruly pets that wander too far."
+RestraintTrackingModuleDesc2,"It has a warning label that says: 'CAUTION: NOT WATERPROOF'"
 
 KDDamageModule,"Your RestraintName stops working due to water damage!"
 KDDamageModuleProgress,"Your RestraintName sustains water damage from the high-pressure water!"

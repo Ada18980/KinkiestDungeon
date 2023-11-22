@@ -166,6 +166,15 @@ function KDDrawColorSliders(X, Y, C, Model) {
 		}
 		return true;
 	}, true, X + width/2 + 10, YY, width/2 - 10, 30, TextGet("KDResetLayer"), "#ffffff");
+	if (TestMode)
+		DrawButtonKDEx("ExportAllLayers", (bdata) => {
+			if (Model.Filters) {
+				navigator.clipboard.writeText(JSON.stringify(Model.Filters));
+			}
+			return true;
+		}, true, X + width/2 + 10, YY - 40, width/2 - 10, 30, TextGet("KDExportAllLayers"), "#ffffff");
+
+
 
 	DrawButtonKDEx("KDCopyLayer", (bdata) => {
 		navigator.clipboard.writeText(JSON.stringify(filters));
@@ -760,6 +769,23 @@ function KDDrawWardrobe(screen, Character) {
 			return true;
 		}, true, 725, 790, 140, 60,
 		TextGet("KDCreateOutfit"), "#99ff99", "");
+		DrawButtonKDEx("KDCreateAlwaysDress", (bdata) => {
+			let exportData = [];
+			if (C?.Appearance)
+				for (let a of C.Appearance) {
+					if (a.Model && !a.Model.Protected && !a.Model.Restraint && !a.Model.Cosplay) {
+						exportData.push({
+							Item: a.Model.Name,
+							Group: a.Model.Group || a.Model.Name,
+							override: true,
+							Filters: a.Model.Filters,
+						},);
+					}
+				}
+			navigator.clipboard.writeText(JSON.stringify(exportData));
+			return true;
+		}, true, 725, 730, 140, 60,
+		TextGet("KDCreateAlwaysDress"), "#99ff99", "");
 
 	}
 
