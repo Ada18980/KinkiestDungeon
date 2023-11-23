@@ -161,7 +161,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 	DrawButtonKDEx("ResetCurrentLayer", (bdata) => {
 		if (Model.Filters && Model.Filters[KDCurrentLayer]) {
 			KDChangeWardrobe(C);
-			Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
+			delete Model.Filters[KDCurrentLayer];
 			KDCurrentModels.get(C).Models.set(Model.Name, Model);
 		}
 		return true;
@@ -404,7 +404,7 @@ function KDUpdateModelList(level = 0) {
 		KDModelList_Toplevel_index = 0;
 		KDModelList_Toplevel_viewindex.index = 0;
 		for (let model of Object.entries(ModelDefs)) {
-			if (model[1].TopLevel && model[1].Categories?.includes(category)) {
+			if (model[1].TopLevel && model[1].Categories?.includes(category) && (TestMode || !model[1].Restraint)) {
 				KDModelList_Toplevel.push(model[0]);
 			}
 		}
@@ -419,12 +419,12 @@ function KDUpdateModelList(level = 0) {
 		if (toplevel) {
 			// Put these at the top of the list
 			for (let model of Object.entries(ModelDefs)) {
-				if (model[1].Parent != toplevel && model[0] == toplevel) {
+				if (model[1].Parent != toplevel && model[0] == toplevel && (TestMode || !model[1].Restraint)) {
 					KDModelList_Sublevel.push(model[0]);
 				}
 			}
 			for (let model of Object.entries(ModelDefs)) {
-				if (model[1].Parent == toplevel) {
+				if (model[1].Parent == toplevel && (TestMode || !model[1].Restraint)) {
 					KDModelList_Sublevel.push(model[0]);
 				}
 			}

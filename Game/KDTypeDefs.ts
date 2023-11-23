@@ -1583,6 +1583,8 @@ interface effectTile {
 	pauseDuration?: number,
 	pauseSprite?: string,
 	brightness?: number,
+	/** Radius within which the tile does NOT block vision */
+	visionBlockRadius?: number,
 	skin?: string,
 	/** random = basic effect where it fades in and has a chance to fade out again */
 	fade?: string,

@@ -271,7 +271,9 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 	let LightsTemp = new Map();
 	for (let location of Object.values(KDMapData.EffectTiles)) {
 		for (let tile of Object.values(location)) {
-			if (tile.duration > 0 && tile.tags.includes("visionblock")) {
+			// Smoke doesnt block vision if its right next to the player
+			if (tile.duration > 0
+				&& (KDistChebyshev(tile.x - KinkyDungeonPlayerEntity.x, tile.y - KinkyDungeonPlayerEntity.y) > (tile.visionBlockRadius || 1.5) && tile.tags.includes("visionblock"))) {
 				KDVisionBlockers.set(tile.x + "," + tile.y, true);
 			}
 			if (tile.brightness) {

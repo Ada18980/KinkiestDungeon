@@ -164,9 +164,10 @@ let KDEffectTiles = {
 		duration: 1,
 		priority: 3,
 		brightness: 3.5,
+		visionBlockRadius: 2.5,
 		lightColor: 0xb83716,
 		affinities: ["Hot"],
-		tags: ["ignite", "smoke"],
+		tags: ["ignite", "smoke", "visionblock"],
 	},
 	"Sparks": {
 		name: "Sparks",
