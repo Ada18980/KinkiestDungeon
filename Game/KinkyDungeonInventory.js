@@ -1269,13 +1269,14 @@ function KinkyDungeonDrawInventory() {
 				&& filteredInventory[KinkyDungeonCurrentPageInventory].item) {
 				let newItem = KDRestraint(filteredInventory[KinkyDungeonCurrentPageInventory].item);
 				if (newItem) {
-					let currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
+					/*let currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
 					if (!currentItem
 						|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
 							((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
 							|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((item) => {return newItem.name == item.name;}))))) {
 						equipped = false;
-					} else equipped = true;
+					} else equipped = true;*/
+					if (!KDCanAddRestraint(newItem, false, "", true, undefined, false, true, undefined, false)) equipped = true;
 				}
 			}
 			DrawButtonVis(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 275, 55, TextGet("KinkyDungeonEquip"),

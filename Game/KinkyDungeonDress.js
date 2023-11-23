@@ -619,9 +619,14 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 				Xray.push("XrayFace");
 			}
 			if (Character?.Appearance?.some((A) => {
-				return A.Model?.Layers && Object.values(A.Model?.Categories).some((C) => {return C == "ChastityBelt" || C == "ChastityBra";});
+				return A.Model?.Layers && Object.values(A.Model?.Categories).some((C) => {return C == "ChastityBelt";});
 			})) {
 				Xray.push("XrayPanties");
+			}
+			if (Character?.Appearance?.some((A) => {
+				return A.Model?.Layers && Object.values(A.Model?.Categories).some((C) => {return C == "ChastityBra";});
+			})) {
+				Xray.push("XrayBra");
 			}
 		}
 

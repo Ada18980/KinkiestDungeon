@@ -3065,13 +3065,14 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 	if (restraint.shrine && restraint.shrine.includes("Vibes") && KinkyDungeonPlayerTags.get("NoVibes")) return false;
 	if (restraint.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) return false;
 	if (restraint.Group == "ItemButt" && !KinkyDungeonStatsChoice.get("arousalModePlug")) return false;
+	if (restraint.requireSingleTagToEquip && !restraint.requireSingleTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
 	//if (restraint.AssetGroup == "ItemNipplesPiercings" && !KinkyDungeonStatsChoice.get("arousalModePiercing")) return false;
 
 	function bypasses() {
 		return (Bypass || restraint.bypass || !KDGroupBlocked(restraint.Group, true) || KDEnemyPassesSecurity(restraint.Group, securityEnemy));
 	}
 
-	if (restraint.requireSingleTagToEquip) {
+	/*if (restraint.requireSingleTagToEquip) {
 		let pass = false;
 		for (let tag of restraint.requireSingleTagToEquip) {
 			if (KinkyDungeonPlayerTags.has(tag)) {
@@ -3080,7 +3081,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 			}
 		}
 		if (!pass) return false;
-	}
+	}*/
 	if (!r) r = KinkyDungeonGetRestraintItem(restraint.Group);
 	// NoLink here because we do it later with augment
 	let power = powerBonus + (KinkyDungeonRestraintPower(r, true, restraint, Lock, curse) * (r && useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, KDRestraint(r), augmentedInventory) : 1));
