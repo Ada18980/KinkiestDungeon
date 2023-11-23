@@ -4985,12 +4985,12 @@ Armed Guard
 The armed guard retreats, but drops a keyring!
 武装警卫撤退，但丢了一个钥匙圈！
 The guard locks your restraints!
-守卫锁住你的拘束具！
+警卫锁住你的拘束具！
 The guard shocks you and slaps on some restraints! (+RestraintAdded)
-守卫电击了你并使用了一些拘束具！ （+RestraintAdded）
-The guard electrocutes you with her taser!!!
+警卫电击了你并使用了一些拘束具！ （+RestraintAdded）
+The guard shocks you with her taser!!!
 警卫用她的电击枪电击你！！！
-The guard electrocutes you with her taser!!!
+The guard shocks you with her taser!!!
 警卫用她的电击枪电击你！！！
 The EnemyName replaces your OldRestraintName with a NewRestraintName
 EnemyName 将你的 OldRestraintName 替换为 NewRestraintName
