@@ -580,6 +580,140 @@ AddModel({
 	])
 });
 
+AddModel(GetModelWithExtraLayers("GagLatexFlatHarness", "GagLatexFlat", [
+	{ Name: "Harness", Layer: "GagFlatStraps", Pri: 19,
+		Sprite: "Harness",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "GagLatex", false));
+AddModel(GetModelWithExtraLayers("GagLatexFlatHarnessSecure", "GagLatexFlatHarness", [
+	{ Name: "SideStrap", Layer: "GagFlatStraps", Pri: 21,
+		Sprite: "SideStrap",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "GagLatex", false));
+
+AddModel({
+	Name: "GagLatexPlug",
+	Folder: "GagLatex",
+	Parent: "GagLatex",
+	TopLevel: false,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags","Latex"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
+	Layers: ToLayerMap([
+		...GetModelLayers("GagLatexFlat"),
+		{ Name: "Plug", Layer: "GagFlatStraps", Pri: 40,
+			Sprite: "LatexPlug",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			SwapLayerPose: {XrayFace: "GagStraps"},
+		},
+	])
+});
+
+AddModel(GetModelWithExtraLayers("GagLatexPlugHarness", "GagLatexPlug", [
+	{ Name: "Harness", Layer: "GagFlatStraps", Pri: 19,
+		Sprite: "Harness",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "GagLatex", false));
+AddModel(GetModelWithExtraLayers("GagLatexPlugHarnessSecure", "GagLatexPlugHarness", [
+	{ Name: "SideStrap", Layer: "GagFlatStraps", Pri: 21,
+		Sprite: "SideStrap",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "GagLatex", false));
+
+AddModel({
+	Name: "LatexNeckCorset",
+	Folder: "GagLatex",
+	TopLevel: true,
+	Group: "Mouth",
+	Categories: ["Accessories", "Latex"],
+	Layers: ToLayerMap([
+		{ Name: "NeckCorset", Layer: "Bodysuit", Pri: -40,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Neck",
+		},
+		{ Name: "NeckCorsetRim", Layer: "Bodysuit", Pri: -39.9,
+			Invariant: true,
+			HideWhenOverridden: true,
+			NoOverride: true,
+			TieToLayer: "NeckCorset",
+			InheritColor: "Rim",
+		},
+	])
+});
+
+AddModel({
+	Name: "LatexNeckCorsetGag",
+	Folder: "GagLatex",
+	Parent: "LatexNeckCorset",
+	TopLevel: false,
+	Group: "Mouth",
+	Categories: ["Accessories","Gags","Latex"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
+	Layers: ToLayerMap([
+		...GetModelLayers("LatexNeckCorset"),
+		//...GetModelLayers("GagLatexFlat"),
+		{ Name: "OTNFlat", Layer: "GagMuzzle", Pri: -20,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Latex",
+		},
+	])
+});
+
+AddModel(GetModelRestraintVersion("LatexNeckCorset", true));
+AddModel(GetModelRestraintVersion("LatexNeckCorsetGag", true));
+
+
+
+AddModel({
+	Name: "LatexNeckCorsetPlugGag",
+	Folder: "GagLatex",
+	Parent: "LatexNeckCorsetRestraint",
+	TopLevel: false,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraint", "Accessories","Gags","Latex"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
+	Layers: ToLayerMap([
+		...GetModelLayers("LatexNeckCorsetGag"),
+		//...GetModelLayers("GagLatexFlat"),
+		{ Name: "Plug", Layer: "GagMuzzleStraps", Pri: 40,
+			Sprite: "LatexPlug",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			SwapLayerPose: {XrayFace: "GagStraps"},
+		},
+	])
+});
+
 
 AddModel({
 	Name: "GagMetal",

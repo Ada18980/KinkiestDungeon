@@ -128,6 +128,8 @@ AddModel({
 	])
 });
 
+AddModel(GetModelRestraintVersion("BunnySocks", true));
+
 
 
 AddModel({
@@ -142,6 +144,7 @@ AddModel({
 		},
 		{ Name: "ForeGloveLeft", Layer: "ForeGloveLeft", Pri: -1,
 			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "GloveLeft",
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			SwapLayerPose: {Crossed: "CrossGloveLeft"},
 		},
@@ -160,6 +163,7 @@ AddModel({
 		},
 		{ Name: "ForeGloveRight", Layer: "ForeGloveRight", Pri: -1,
 			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "GloveRight",
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			SwapLayerPose: {Crossed: "CrossGloveRight"},
 		},
@@ -177,6 +181,8 @@ AddModel({
 		...GetModelLayers("BunnyGloveRight"),
 	])
 });
+
+AddModel(GetModelRestraintVersion("BunnyGloves", true));
 
 AddModel({
 	Name: "BunnyLeotard",

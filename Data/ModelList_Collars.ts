@@ -24,6 +24,27 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "MikoCollar",
+	Folder: "Collars",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints"],
+	Filters: {
+		Neck: {"gamma":1,"saturation":0,"contrast":1.3,"brightness":1.3,"red":1,"green":1,"blue":1,"alpha":1},
+		Rim: {"gamma":1,"saturation":0.05,"contrast":1,"brightness":0.95,"red":1,"green":1,"blue":1,"alpha":1},
+		Collar: {"gamma":1,"saturation":0.06666666666666667,"contrast":0.6666666666666666,"brightness":0.5333333333333333,"red":2.7666666666666666,"green":1,"blue":1,"alpha":1},
+	},
+	Layers: ToLayerMap([
+		{ Name: "DragonCollar", Layer: "Collar", Pri: 70,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Collar",
+		},
+		...GetModelLayers("LatexNeckCorset"),
+	])
+});
+
 
 AddModel({
 	Name: "FutureCollar",

@@ -156,6 +156,7 @@ let LAYERS_BASE = [
 
 	"OverCrotchStrapMid",
 	"HarnessMid",
+	"CrotchPanelMid",
 	"WrappingTorsoMid",
 
 
@@ -222,6 +223,7 @@ let LAYERS_BASE = [
 	// Lower harness
 	"OverCrotchStrap",
 	"HarnessLower",
+	"CrotchPanelLower",
 	"WrappingTorso",
 
 	// These are for the base skirt layer when kneeling
@@ -1172,14 +1174,23 @@ let LayerGroups = {
 	// Panty xray only if we are wearing a chastity belt
 	XrayPanties: ToMap(
 		[
-			"BraChest",
-			"SuitChest",
-			// Panties go here when kneeling
+			//"BraChest",
+			//"SuitChest",
 			"PantiesLower",
 			"Bodysuit",
 			"BodysuitLower",
-			// Panties go here when standing
+			"CrotchPanelMid",
+			"CrotchPanelLower",
 			"Panties",
+			//"Bra",
+		]
+	),
+	// Bra xray only if we are wearing a chastity bra
+	XrayBra: ToMap(
+		[
+			"BraChest",
+			"SuitChest",
+			"Bodysuit",
 			"Bra",
 		]
 	),

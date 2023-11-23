@@ -109,6 +109,10 @@ interface ModelLayer extends Namable {
 	/** Prevents displacement maps from applying to this item */
 	NoDisplace?: boolean,
 
+
+	/** [Group, Color] */
+	ImportColorFromGroup?: string[],
+
 	/** Adds a Erase map for heel deletion and such. If the same sprite is in use it wont be duped*/
 	EraseSprite?: string,
 	/** Which layers to apply Erase to */

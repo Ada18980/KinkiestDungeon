@@ -114,6 +114,102 @@ AddModel(GetModelRestraintVersion("LaceBraDeco", true));
 
 
 
+AddModel({
+	Name: "LacePanties",
+	Folder: "Dress",
+	Parent: "Dress",
+	TopLevel: true,
+	Categories: ["Panties"],
+	Layers: ToLayerMap([
+		{ Name: "LaceCrotchPanel", Layer: "Panties", Pri: 30,
+			SwapLayerPose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
+			Invariant: true,
+			InheritColor: "Panties",
+		},
+		{ Name: "LaceCrotchPanelTrim", Layer: "Panties", Pri: 30.2,
+			SwapLayerPose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			NoOverride: true,
+			TieToLayer: "LaceCrotchPanel",
+			InheritColor: "Trim",
+		},
+		{ Name: "LaceCrotchPanelLace", Layer: "Panties", Pri: 30.1,
+			SwapLayerPose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			NoOverride: true,
+			TieToLayer: "LaceCrotchPanel",
+			InheritColor: "Lace",
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "DressSkirt",
+	Folder: "Dress",
+	Parent: "Dress",
+	TopLevel: true,
+	Categories: ["Skirts"],
+	Layers: ToLayerMap([
+		{ Name: "Skirt", Layer: "Skirt", Pri: 9,
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+			SwapLayerPose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
+			MorphPoses: {Hogtie: "Closed", Closed: "Closed", Kneel: "Kneel", KneelClosed: "Kneel"},
+			AppendPose: ToMapDupe(["CrotchStrap"]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			Invariant: true,
+		},
+		{ Name: "SkirtOver", Layer: "Skirt", Pri: 3,
+			Poses: ToMap([...KNEELPOSES]),
+			//RequirePoses: ToMap(["CrotchStrap"]),
+			TieToLayer: "Skirt", NoOverride: true,
+			InheritColor: "Skirt",
+			AppendPose: ToMapDupe(["CrotchStrap"]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			//Invariant: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "BindingDress",
+	Folder: "Dress",
+	Parent: "Dress",
+	TopLevel: true,
+	Categories: ["Restraints"],
+	AddPose: ["CrotchStrap"],
+	Layers: ToLayerMap([
+		...GetModelLayers("LaceCorset"),
+		...GetModelLayers("DressSkirt"),
+
+		{ Name: "LaceCrotchPanel", Layer: "CrotchPanelMid", Pri: 30,
+			SwapLayerPose: {Kneel: "CrotchPanelLower", KneelClosed: "CrotchPanelLower"},
+			Invariant: true,
+			InheritColor: "Panties",
+		},
+		{ Name: "LaceCrotchPanelTrim", Layer: "CrotchPanelMid", Pri: 30.2,
+			SwapLayerPose: {Kneel: "CrotchPanelLower", KneelClosed: "CrotchPanelLower"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			NoOverride: true,
+			TieToLayer: "LaceCrotchPanel",
+			InheritColor: "Trim",
+		},
+		{ Name: "LaceCrotchPanelLace", Layer: "CrotchPanelMid", Pri: 30.1,
+			SwapLayerPose: {Kneel: "CrotchPanelLower", KneelClosed: "CrotchPanelLower"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			NoOverride: true,
+			TieToLayer: "LaceCrotchPanel",
+			InheritColor: "Lace",
+		},
+	])
+});
 
 
 AddModel({
@@ -157,7 +253,7 @@ AddModel({
 			SwapLayerPose: {Kneel: "SkirtPoofyLower", KneelClosed: "SkirtPoofyLower"},
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel",},
 		},
-		{ Name: "SkirtOverKneel", Layer: "SkirtPoofy", Pri: 100,
+		{ Name: "BlouseSkirtOverKneel", Layer: "SkirtPoofy", Pri: 100,
 			Poses: ToMap([...KNEELPOSES]),
 			Invariant: true,
 			InheritColor: "Skirt",
@@ -165,6 +261,43 @@ AddModel({
 			//NoOverride: true,
 			TieToLayer: "BlouseSkirt",
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+		},
+		{ Name: "BlouseBust", Layer: "ShirtChest", Pri: 1,
+			InheritColor: "Blouse",
+			Poses: ToMap([...ARMPOSES]),
+			MorphPoses: {Up: "Up", Boxtie: "Boxtie", Wristtie: "Boxtie", Crossed: "Boxtie", Front: "Boxtie",},
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
+			AppendPose: {Chesttied: "Chesttied"},
+			Invariant: true,
+		},
+		{ Name: "BlouseNeck", Layer: "ShirtChest", Pri: 1.1,
+			InheritColor: "Neck",
+			TieToLayer: "BlouseBust",
+			NoOverride: true,
+			Poses: ToMap([...ARMPOSES]),
+			MorphPoses: {Up: "Up", Boxtie: "Boxtie", Wristtie: "Boxtie", Crossed: "Boxtie", Front: "Boxtie",},
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
+			Invariant: true,
+		},
+		...GetModelLayers("BlouseCollar"),
+	])
+});
+
+
+AddModel({
+	Name: "DressBlouseBustCropped",
+	Folder: "Dress",
+	Parent: "DressBlouse",
+	TopLevel: false,
+	Categories: ["Tops"],
+	RemovePoses: ["EncaseTorsoUpper"],
+	Layers: ToLayerMap([
+		{ Name: "BlouseTorsoCropped", Layer: "Shirt", Pri: 1,
+			InheritColor: "Blouse",
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel",},
 		},
 		{ Name: "BlouseBust", Layer: "ShirtChest", Pri: 1,
 			InheritColor: "Blouse",

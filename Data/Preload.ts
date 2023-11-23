@@ -164,6 +164,8 @@ let DisplacementMaps = [
 
 	"Xray.png",
 	"XrayFace.png",
+	"XrayPanties.png",
+	"XrayBra.png",
 ];
 
 let linearList = [

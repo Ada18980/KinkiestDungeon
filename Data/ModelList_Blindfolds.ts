@@ -26,6 +26,22 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "ClothBlindfold",
+	Folder: "Blindfolds",
+	TopLevel: true,
+	Group: "Blindfold",
+	Restraint: true,
+	Categories: ["Restraints", "Blindfolds"],
+	AddPose: ["Blindfolds"],
+	Layers: ToLayerMap([
+		{ Name: "Cloth", Layer: "Blindfold", Pri: -10,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+	])
+});
 
 AddModel({
 	Name: "BlindfoldBasic",

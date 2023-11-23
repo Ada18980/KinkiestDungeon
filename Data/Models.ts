@@ -93,6 +93,21 @@ class ModelContainer {
 			if (!Model.Filters) Model.Filters = {};
 			Object.assign(Model.Filters, JSON.parse(JSON.stringify(this.Models.get("Body").Filters)));
 		}
+
+		// Hunts down the proper color
+		if (Model?.Layers) {
+			for (let l of Object.values(Model.Layers)) {
+				if (l.ImportColorFromGroup) {
+					let copiedFrom = [...this.Models.values()].find((model) => {
+						return model.Group == l.ImportColorFromGroup[0] && model.Filters && model.Filters[l.ImportColorFromGroup[1]]
+					});
+					if (copiedFrom) {
+						if (!Model.Filters) Model.Filters = {};
+						Model.Filters[l.InheritColor || l.Name] = JSON.parse(JSON.stringify(copiedFrom.Filters[l.ImportColorFromGroup[1]]));
+					}
+				}
+			}
+		}
 	}
 
 	/**
