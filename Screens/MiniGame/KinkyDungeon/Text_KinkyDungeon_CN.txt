@@ -8783,6 +8783,8 @@ Tops
 上衣
 Sleeves
 袖子
+Gloves
+手套
 Corsets
 紧身胸衣
 Skirts
