@@ -5,40 +5,13 @@
  * In general, this is accomplished by having higher priority items cover more of the original
  */
 
-AddModel({
-	Name: "BalletSlippers",
-	Folder: "Heels",
-	TopLevel: true,
-	Parent: "BalletHeels",
-	Categories: ["Restraints", "Heels"],
-	AddPose: ["Ballet"],
-	Layers: ToLayerMap([
-		{ Name: "BalletSoleLeft", Layer: "ShoeLeft", Pri: 60,
-			NoOverride: true,
-			InheritColor: "Sole",
-			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
-			Poses: ToMap([...CALFLEFTPOSES]),
-		},
-		{ Name: "BalletSoleRight", Layer: "ShoeRight", Pri: 60,
-			NoOverride: true,
-			InheritColor: "Sole",
-			Poses: ToMap([...CALFRIGHTPOSES]),
-			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
-			SwapLayerPose: {Kneel: "ShoeRightKneel"},
-		},
-	])
-});
-
-AddModel(GetModelRestraintVersion("BalletSlippers", true));
-
-
 
 AddModel({
 	Name: "BalletHeels",
 	Folder: "Heels",
 	TopLevel: true,
-	Restraint: true,
-	Categories: ["Restraints", "Heels"],
+	Restraint: false,
+	Categories: ["Shoes", "Heels"],
 	AddPose: ["Ballet"],
 	Layers: ToLayerMap([
 		{ Name: "BalletLeft", Layer: "ShoeLeft", Pri: 50, // Bondage overrides plate mail
@@ -111,8 +84,8 @@ AddModel({
 	Folder: "Heels",
 	TopLevel: false,
 	Parent: "BalletHeels",
-	Restraint: true,
-	Categories: ["Restraints", "Heels"],
+	Restraint: false,
+	Categories: ["Shoes", "Heels"],
 	AddPose: ["Ballet"],
 	Layers: ToLayerMap([
 		{ Name: "FlatBalletLeft", Layer: "ShoeLeft", Pri: 51, // Bondage overrides plate mail
@@ -168,7 +141,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "BalletHeels",
 	Restraint: true,
-	Categories: ["Restraints", "Heels"],
+	Categories: ["Shoes", "Heels"],
 	AddPose: ["Ballet"],
 	Layers: ToLayerMap([
 		{ Name: "ShinyBalletLeft", Layer: "ShoeLeft", Pri: 52, // Bondage overrides plate mail
@@ -219,6 +192,11 @@ AddModel({
 	])
 });
 
+
+
+AddModel(GetModelRestraintVersion("BalletHeels", true));
+AddModel(GetModelRestraintVersion("FlatBalletHeels", true));
+AddModel(GetModelRestraintVersion("ShinyBalletHeels", true));
 
 
 AddModel({
