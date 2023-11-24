@@ -15,12 +15,15 @@ AddModel({
 	Categories: ["Restraints", "Leather"],
 	Layers: ToLayerMap([
 		{ Name: "Arms1", Layer: "BindChest", Pri: 50,
+			InheritColor: "Belt",
 			Invariant: true,
 		},
 		{ Name: "LeftArm1", Layer: "BindArmLeft", Pri: 60,
+			InheritColor: "Belt",
 			Poses: ToMap(["Wristtie", "Boxtie"]),
 		},
 		{ Name: "RightArm1", Layer: "BindArmRight", Pri: 60,
+			InheritColor: "Belt",
 			Poses: ToMap(["Wristtie", "Boxtie"]),
 		},
 	])
@@ -34,12 +37,15 @@ AddModel({
 	Categories: ["Restraints", "Leather"],
 	Layers: ToLayerMap([
 		{ Name: "Arms2", Layer: "StrapsUnderbust", Pri: 60,
+			InheritColor: "Belt",
 			Invariant: true,
 		},
 		{ Name: "LeftArm2", Layer: "BindArmLeft", Pri: 60,
+			InheritColor: "Belt",
 			Poses: ToMap(["Wristtie", "Boxtie"]),
 		},
 		{ Name: "RightArm2", Layer: "BindArmRight", Pri: 60,
+			InheritColor: "Belt",
 			Poses: ToMap(["Wristtie", "Boxtie"]),
 		},
 	])
@@ -71,9 +77,11 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Legs1", Layer: "Thighs", Pri: 60,
 			Poses: ToMapSubtract([...LEGPOSES], ["Spread"]),
+			InheritColor: "Belt",
 		},
 		{ Name: "RightLegs1", Layer: "BindThighRight", Pri: 60,
 			Poses: ToMap(["Kneel", "KneelClosed"]),
+			InheritColor: "Belt",
 		},
 	])
 });
@@ -87,9 +95,11 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Legs2", Layer: "Thighs", Pri: 60,
 			Poses: ToMapSubtract([...LEGPOSES], ["Spread"]),
+			InheritColor: "Belt",
 		},
 		{ Name: "RightLegs2", Layer: "BindThighRight", Pri: 60,
 			Poses: ToMap(["Kneel", "KneelClosed"]),
+			InheritColor: "Belt",
 		},
 	])
 });
@@ -119,6 +129,7 @@ AddModel({
 		{ Name: "Feet1", Layer: "AnklesOver", Pri: 60,
 			Poses: ToMap([...CLOSEDPOSES]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			InheritColor: "Belt",
 		},
 	])
 });
@@ -133,6 +144,7 @@ AddModel({
 		{ Name: "Feet2", Layer: "AnklesOver", Pri: 60,
 			Poses: ToMap([...CLOSEDPOSES]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			InheritColor: "Belt",
 		},
 	])
 });
@@ -160,6 +172,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Belt", Layer: "HarnessMid", Pri: 50,
 			Invariant: true,
+			InheritColor: "Belt",
 		},
 	])
 });

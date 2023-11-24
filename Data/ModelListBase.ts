@@ -42,7 +42,24 @@ AddModel({
 		{ Name: "Curly", Layer: "Hair", Pri: 0,
 			SwapLayerPose: {HoodMask: "HairOver"},
 		},
-		{ Name: "Curly_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "Curly",
+		{ Name: "Curly_Overstrap", Layer: "HairFront", Pri: 0,
+			InheritColor: "Curly",
+		},
+	])
+});
+AddModel({
+	Name: "Fluffy",
+	Folder: "Hair",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Hairstyles", "FrontHair"],
+	Layers: ToLayerMap([
+		{ Name: "Fuzzy", Layer: "Hair", Pri: 0,
+			SwapLayerPose: {HoodMask: "HairOver"},
+			InheritColor: "Fuzzy",
+		},
+		{ Name: "Fuzzy_Overstrap", Layer: "HairFront", Pri: 0,
+			InheritColor: "Fuzzy",
 		},
 	])
 });
@@ -107,6 +124,18 @@ AddModel({
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
 		{ Name: "Ponytail", Layer: "HairBack", Pri: 0,
+		},
+	])
+});
+AddModel({
+	Name: "FluffyPonytail",
+	Parent: "Ponytail",
+	Folder: "Hair",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Hairstyles", "BackHair"],
+	Layers: ToLayerMap([
+		{ Name: "Ponytail2", Layer: "HairBack", Pri: 0,
 		},
 	])
 });

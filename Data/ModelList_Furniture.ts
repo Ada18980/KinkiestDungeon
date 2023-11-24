@@ -68,6 +68,20 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "Barrel",
+	Folder: "Furniture",
+	TopLevel: true,
+	Group: "Devices",
+	Restraint: true,
+	Categories: ["Restraints","Furniture"],
+	AddPose: ["UprightHogtie", "ForceKneel"],
+	Layers: ToLayerMap([
+		{ Name: "Barrel", Layer: "FurnitureBack", Pri: 80,
+			Invariant: true,
+		},
+	])
+});
 
 
 AddModel({
@@ -77,7 +91,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Stands"],
-	AddPose: ["Caged", "ForceStand"],
+	AddPose: ["UprightHogtie", "ForceStand"],
 	Layers: ToLayerMap([
 		{ Name: "DisplayFront", Layer: "FurnitureFront", Pri: -50,
 			Invariant: true,
@@ -92,7 +106,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Stands"],
-	AddPose: ["Caged", "ForceStand"],
+	AddPose: ["UprightHogtie", "ForceStand"],
 	Layers: ToLayerMap([
 		{ Name: "OneBarFront", Layer: "TorsoLower", Pri: -50,
 			Poses: ToMap(["Closed", "Spread"]),
