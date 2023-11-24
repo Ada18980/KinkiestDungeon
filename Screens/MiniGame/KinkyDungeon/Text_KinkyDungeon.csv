@@ -11660,6 +11660,8 @@ cat_Face,"Face"
 cat_Eyes,"Eyes"
 cat_Mouth,"Mouth"
 cat_Body,"Body"
+cat_Gloves,"Gloves"
+cat_Cosplay,"'Cosplay'"
 
 m_KoiEyes,"Cat Eyes"
 l_KoiEyes_Eyes,"Right Eye"

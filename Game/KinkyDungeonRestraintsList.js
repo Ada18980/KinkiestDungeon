@@ -2299,12 +2299,15 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -100, "Cut": -0.8, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: []},
 
 	{renderWhenLinked: [...KDBeltsRender], inventory: true, name: "SturdyLeatherBeltsArms", debris: "Belts", accessible: true, Asset: "SturdyLeatherBelts", LinkableBy: [...KDBeltsBind], Type: "Three", Color: "Default", Group: "ItemArms", bindarms: true, power: 2.5, weight: 0,
+		Model: "BeltsArmsAll",
 		escapeChance: {"Struggle": -0.1, "Cut": 0.5, "Remove": 0.22},
 		maxwill: 0.9, enemyTags: {"leatherRestraints":6, "beltRestraints": 10}, playerTags: {"ItemArmsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "Belts", "ArmBind"]},
 	{renderWhenLinked: [...KDBeltsRender], inventory: true, name: "SturdyLeatherBeltsFeet", debris: "Belts", accessible: true, Asset: "SturdyLeatherBelts", LinkableBy: [...KDBeltsBind], Type: "Three", Color: "Default", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"] ,power: 2, weight: 0,
+		Model: "BeltsFeetAll",
 		escapeChance: {"Struggle": -0.1, "Cut": 0.5, "Remove": 0.5},
 		maxwill: 1.0, enemyTags: {"leatherRestraints":6, "beltRestraints": 10}, playerTagsMissingMult: {"ItemLegsFull": 0.05}, playerTags: {"ItemLegsFull":-8}, minLevel: 0, allFloors: true, shrine: ["Leather", "Belts", "LegBind"]},
 	{renderWhenLinked: [...KDBeltsRender], accessible: true, inventory: true, name: "SturdyLeatherBeltsLegs", debris: "Belts", Asset: "SturdyLeatherBelts", LinkableBy: [...KDBeltsBind], Type: "Two", Color: "Default", Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 2, weight: 0,
+		Model: "BeltsLegsAll",
 		escapeChance: {"Struggle": -0.1, "Cut": 0.5, "Remove": 0.5},
 		maxwill: 0.8, enemyTags: {"leatherRestraints":6, "beltRestraints": 10}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "Belts", "LegBind"]},
 

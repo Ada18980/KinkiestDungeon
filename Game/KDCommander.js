@@ -403,6 +403,7 @@ let KDCommanderOrders = {
 					|| KDAssaulters >= KDMaxAssaulters
 					|| enemy.hp > enemy.Enemy.maxhp * 0.6)
 					&& (dist < 12 || enemy.aware || enemy.vp > 0 || fort)
+					&& (!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)
 					&& (enemy.aware || enemy.x != enemy.gxx || enemy.y != enemy.gyy || fort)
 					&& (!enemy.aware || !KDEnemyIsTemporary(enemy));
 			}

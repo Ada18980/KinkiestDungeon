@@ -1861,7 +1861,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 	let handsBound = KinkyDungeonIsHandsBound(true, false, StruggleTypeHandThresh[StruggleType]) && !KinkyDungeonCanUseFeet();
 	let handBondage = handsBound ? 1.0 : Math.min(1, Math.max(0, KDHandBondageTotal(false)));
-	let cancut = false;
+	//let cancut = false;
 
 	// Bonuses go here. Buffs dont get added to orig escape chance, but
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle")) data.escapeChance += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle");
@@ -1877,11 +1877,11 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 				}
 				data.escapeChance += maxBonus;
 				data.origEscapeChance += maxBonus;
-				if (maxBonus > 0) cancut = true;
+				//if (maxBonus > 0) cancut = true;
 			} else if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.cutBonus) {
 				data.escapeChance += KinkyDungeonPlayerDamage.cutBonus;
 				data.origEscapeChance += KinkyDungeonPlayerDamage.cutBonus;
-				cancut = true;
+				//cancut = true;
 			}
 		}
 		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum")) data.escapeChance = Math.max(data.escapeChance, KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum"));
@@ -2026,10 +2026,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 	let possible = data.escapeChance > 0;
 	// Strict bindings make it harder to escape unless you have help or are cutting with affinity
-	if (data.strict
-		&& (StruggleType == "Struggle" || !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()))
-		&& !(StruggleType == "Cut" && cancut)
-	) data.escapeChance = Math.max(0, data.escapeChance - data.strict);
+	if (data.strict && StruggleType == "Struggle")
+		data.escapeChance = Math.max(0, data.escapeChance - data.strict);
 
 	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.2);
 

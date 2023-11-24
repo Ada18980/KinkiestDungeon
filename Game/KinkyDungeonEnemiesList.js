@@ -2222,7 +2222,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"adventurer": 10, "lair": -10, "sub": 50}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
 		dropTable: [{name: "Gold", amountMin: 20, amountMax: 40, weight: 15}, {name: "Spear", ignoreInInventory: true, weight: 100}, {name: "MagicSpear", ignoreInInventory: true, weight: 1}, {name: "ElfCrystal", weight: 5}]},
 
-	{name: "ElementalFire", faction: "Elemental", playLine: "Elemental", clusterWith: "fire", bound: "ElementalFire", color: "#FF6200", tags: KDMapInit(["opendoors", "imprisonable", "fire", "guardCall", "elemental", "fireimmune", "ranged", "coldweakness", "icesevereweakness", "obsidianRestraints", "shackleRestraints", "leashing", "jail", "jailer", "search"]),
+	{name: "ElementalFire", faction: "Elemental", playLine: "Elemental", clusterWith: "fire", bound: "ElementalFire", color: "#FF6200", tags: KDMapInit(["opendoors", "flying", "imprisonable", "fire", "guardCall", "elemental", "fireimmune", "ranged", "coldweakness", "icesevereweakness", "obsidianRestraints", "shackleRestraints", "leashing", "jail", "jailer", "search"]),
 		armor: 0.5, kite: 1.5, followRange: 3, AI: "hunt",
 		spells: ["HeatBolt"], spellCooldownMult: 1, spellCooldownMod: 1, followLeashedOnly: true, stopToCast: true, spellRdy: true, projectileTargeting: true,
 		visionRadius: 7, maxhp: 8, minLevel:0, weight:-1, movePoints: 1.5, attackPoints: 3, attack: "SpellMeleeWillBindLock", attackWidth: 1, attackRange: 1, power: 2, dmgType: "pain", fullBoundBonus: 2,
@@ -2234,7 +2234,7 @@ let KinkyDungeonEnemies = [
 		},
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}, {name: "Gunpowder", weight: 1}],
 		events: [
-			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Ember", time: 3, power: 2, chance: 0.2, aoe: 1.5},
+			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Ember", time: 5, power: 2, chance: 0.2, aoe: 1.5},
 			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#ff8933"}],
 	},
 	/*{name: "KeeperFire", faction: "Elemental", playLine: "Elemental", clusterWith: "fire", bound: "ElementalFire", color: "#FF6200",
@@ -2257,7 +2257,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "miss", type: "castSpell", time: 3, spell: "FlameKeeperBlade", color: "#ff8933"},
 		],
 	},*/
-	{name: "ElementalIce", faction: "Elemental", playLine: "Elemental", clusterWith: "ice", bound: "ElementalIce", color: "#aaaaff", tags: KDMapInit(["opendoors", "antiMagic", "imprisonable", "elemental", "guardCall", "ice", "ranged", "firesevereweakness", "crushweakness", "coldresist", "iceimmune", "iceRestraints", "leashing", "jail", "jailer", "search"]),
+	{name: "ElementalIce", faction: "Elemental", playLine: "Elemental", clusterWith: "ice", bound: "ElementalIce", color: "#aaaaff", tags: KDMapInit(["opendoors", "flying", "antiMagic", "imprisonable", "elemental", "guardCall", "ice", "ranged", "firesevereweakness", "crushweakness", "coldresist", "iceimmune", "iceRestraints", "leashing", "jail", "jailer", "search"]),
 		armor: 1.5, kite: 1.5, followRange: 3, AI: "hunt",
 		spells: ["IceSlowPrepare"], spellCooldownMult: 1, spellCooldownMod: 1, followLeashedOnly: true, noSpellLeashing: true, spellRdy: true, projectileTargeting: true,
 		visionRadius: 7, maxhp: 8, minLevel:3, weight:-2, movePoints: 1.5, attackPoints: 3, attack: "SpellMeleeWillBindLockAll", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2, multiBind: 2,
@@ -2270,7 +2270,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#00ffff"},
 		],
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}, {name: "IceRune", weight: 1}, {name: "IceBreaker", weight: 0.1, ignoreInInventory: true}]},
-	{name: "ElementalWater", faction: "Elemental", playLine: "Elemental", clusterWith: "ice", bound: "ElementalWater", color: "#57ff88", tags: KDMapInit(["opendoors", "antiMagic", "water", "elemental", "ranged", "fireresist", "acidimmune", "electricsevereweakness", "latexRestraints", "ropeRestraints", "elite", "leashing", "jail", "jailer", "hunter"]),
+	{name: "ElementalWater", faction: "Elemental", playLine: "Elemental", clusterWith: "ice", bound: "ElementalWater", color: "#57ff88", tags: KDMapInit(["opendoors", "flying", "antiMagic", "water", "elemental", "ranged", "fireresist", "acidimmune", "electricsevereweakness", "latexRestraints", "ropeRestraints", "elite", "leashing", "jail", "jailer", "hunter"]),
 		armor: 0, kite: 1.5, followRange: 3, AI: "hunt", guardChance: 0.6, evasion: 0.25, summon: [{enemy: "ElementalIce", range: 2.5, count: 1, chance: 0.6, strict: true}],
 		specialCD: 5, specialAttack: "PullWill", specialCDonAttack: true, specialAttackPoints: 4, specialRange: 4, specialWidth: 3, specialMinrange: 1.5, specialsfx: "Song", hitsfx: "Song", tilesMinRangeSpecial: 2,
 		visionRadius: 7, maxhp: 12, minLevel:3, weight:-2, movePoints: 1.5, followLeashedOnly: true, projectileTargeting: true,
@@ -2320,7 +2320,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "EarthRune", weight: 5}],
 		events: [{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Cracked", time: 10, power: 2, chance: 0.3, aoe: 0.5}],
 	},
-	{name: "ElementalAir", faction: "Elemental", playLine: "Elemental", clusterWith: "electric", bound: "ElementalAir", color: "#88aaff", tags: KDMapInit(["opendoors", "air", "electric", "nofreeze", "elemental", "melee", "elite", "fireweakness", "electricresist", "coldweakness", "latexRestraints", "ropeRestraints", "leashing", "jail", "jailer", "hunter"]),
+	{name: "ElementalAir", faction: "Elemental", playLine: "Elemental", clusterWith: "electric", bound: "ElementalAir", color: "#88aaff", tags: KDMapInit(["opendoors", "flying", "air", "electric", "nofreeze", "elemental", "melee", "elite", "fireweakness", "electricresist", "coldweakness", "latexRestraints", "ropeRestraints", "leashing", "jail", "jailer", "hunter"]),
 		armor: -1, followRange: 1, AI: "hunt", guardChance: 0.6, evasion: 0.5,
 		specialCD: 5, specialAttack: "Dash", specialRemove: "Bind", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 3, specialMinrange: 1.5, specialsfx: "Miss", castWhileMoving: true, dashThruWalls: true, dashThrough: true,
 		spells: ["AreaElectrify"], spellCooldownMult: 1, spellCooldownMod: 3, followLeashedOnly: true, disarm: 1, noSpellLeashing: true, spellRdy: true, noChannel: true,
@@ -2530,7 +2530,7 @@ let KinkyDungeonEnemies = [
 		stamina: 3,
 		terrainTags: {"shadowcreature" : 6, revenge: 6, "increasingWeight": 0.1, "metalAnger": 10, "metalPleased": 10, }, shrines: ["Metal"], allFloors: true,
 		events: [
-			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Chains", time: 5, power: 1, chance: 0.5, aoe: 0.5},
+			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Chains", time: 12, power: 1, chance: 0.5, aoe: 0.5},
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
 		],
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}]
@@ -2943,7 +2943,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":2, "thirdhalf":1, "ropeAnger": 4, "ropeRage": 4, "temple": 8, "doortrap": 4, revenge: 5, "elemental": 3, "witch": 5, "rope": 4}, allFloors: true, shrines: ["Rope", "Elements"],
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "Knife", ignoreInInventory: true, weight: 3, noSummon: true}],
 		events: [
-			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Ropes", time: 5, power: 1, chance: 0.5, aoe: 0.5},
+			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Ropes", time: 15, power: 1, chance: 0.5, aoe: 0.5},
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Ropes", aoe: 1.5, power: 1, chance: 1.0},
 		],
 	},
@@ -2959,7 +2959,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":2, "thirdhalf":1, "leatherAnger": 4, "leatherRage": 4, "temple": 8, "doortrap": 5, revenge: 5, "elemental": 3, "witch": 5, "leather": 4}, allFloors: true, shrines: ["Leather", "Elements"],
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "EarthRune", weight: 2, noSummon: true}],
 		events: [
-			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Belts", time: 5, power: 1, chance: 0.5, aoe: 0.5},
+			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Belts", time: 14, power: 1, chance: 0.5, aoe: 0.5},
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
 	},
@@ -3234,7 +3234,7 @@ let KinkyDungeonEnemies = [
 		attackLock: "Purple",
 		terrainTags: {"secondhalf":2, "lastthird":1, "open": 4, "tech": -8, "slime": 4, "slimeOptOut": -2, "slimePref": 2}, allFloors: true, shrines: [],
 		events: [
-			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Slime", time: 12, power: 1, chance: 0.5, aoe: 0.5},
+			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Slime", time: 14, power: 1, chance: 0.5, aoe: 0.5},
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ff00ff"},
 		],
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 14, noSummon: true}]},
