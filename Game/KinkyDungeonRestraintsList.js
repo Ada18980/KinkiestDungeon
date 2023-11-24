@@ -1370,9 +1370,9 @@ const KinkyDungeonRestraints = [
 
 	//#region Mithril
 	{inventory: true, name: "MithrilCollar", Asset: "ShinySteelCollar", Color: ['#C9B883', '#C9B883'], Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: -2,
-		Model: "IronCollar",
+		Model: "ElfCollar",
 		Filters: {
-			BaseMetal: {"gamma":0.6166666666666667,"saturation":1,"contrast":1.3,"brightness":2.4166666666666665,"red":1,"green":1,"blue":1,"alpha":1},
+			BaseMetal: {"gamma":1,"saturation":0,"contrast":1,"brightness":1.5,"red":1,"green":1,"blue":1,"alpha":1},
 		},
 		unlimited: true, escapeChance: {"Struggle": -0.1, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
 		maxwill: 0.25, enemyTags: {"mithrilRestraints":4, 'shopCollar': 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Collars"]},
