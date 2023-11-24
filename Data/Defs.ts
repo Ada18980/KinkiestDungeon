@@ -5,6 +5,7 @@ let LAYERS_BASE = [
 	"Hat",
 	"Brows", // Brows should get hidden with mask
 	"AnimalEars",
+	"Ahoge",
 	"HeadbandDeco",
 	"Headband",
 	"MouthProp",
@@ -161,6 +162,11 @@ let LAYERS_BASE = [
 
 
 
+	// Skirt part that goes in front of corsets, shirts, etc
+	"SkirtOverDeco",
+	"SkirtOver",
+
+
 	// For form-fitting stuff that nonetheless goes over a shirt
 	"Bustier",
 	"Shirt",
@@ -169,13 +175,8 @@ let LAYERS_BASE = [
 	// For things that go around armpit area--mainly ropes and stuff that goes under the breasts
 	"Underarms",
 
-	// Big corsets
-	"CorsetOver",
 
 
-	// Skirts that dont follow shilhouette and are puffy
-	"SkirtPoofyDeco",
-	"SkirtPoofy",
 
 	"WrappingLegsOver",
 
@@ -229,14 +230,15 @@ let LAYERS_BASE = [
 	// These are for the base skirt layer when kneeling
 	// The over layer is for kneeling
 	// Skirts that dont follow shilhouette and are puffy
-	"SkirtPoofyLowerDeco",
-	"SkirtPoofyLower",
+	"SkirtOverLowerDeco",
+	"SkirtOverLower",
 
 	// Skirts that are slim and follow the shilhouette
 	"SkirtLowerDeco",
 	"SkirtLower",
 
 	// Right leg
+	"BindThighRight",
 	"KneeAccRight",
 	"ThighRight",
 	"AnkleRight",
@@ -343,11 +345,13 @@ let LAYERS_BASE = [
 	// Clothes that go behind
 	"BeltFarBack",
 	"Coat",
-	"Cape",
 
 	// Hair and hat back
 	"HairBack",
 	"HatBack",
+
+	"Tail",
+	"Cape",
 
 	"FurnitureBack",
 	"BG",
@@ -651,9 +655,9 @@ let LayerGroups = {
 		"Shirt",
 		"CorsetLiner",
 		// Skirts that dont follow shilhouette and are puffy
-		"SkirtPoofyDeco",
-		"SkirtPoofy",
-		"SkirtPoofyLower",
+		"SkirtOverDeco",
+		"SkirtOver",
+		"SkirtOverLower",
 		// Skirts that are slim and follow the shilhouette
 		"SkirtDeco",
 		"Skirt",
@@ -679,9 +683,9 @@ let LayerGroups = {
 		"Shirt",
 		"CorsetLiner",
 		// Skirts that dont follow shilhouette and are puffy
-		"SkirtPoofyDeco",
-		"SkirtPoofy",
-		"SkirtPoofyLower",
+		"SkirtOverDeco",
+		"SkirtOver",
+		"SkirtOverLower",
 		// Skirts that are slim and follow the shilhouette
 		"SkirtDeco",
 		"Skirt",
@@ -814,8 +818,8 @@ let LayerGroups = {
 		"Shirt",
 		"CorsetLiner",
 		// Skirts that dont follow shilhouette and are puffy
-		"SkirtPoofyDeco",
-		"SkirtPoofy",
+		"SkirtOverDeco",
+		"SkirtOver",
 		// Skirts that are slim and follow the shilhouette
 		"SkirtDeco",
 		"Skirt",
@@ -1088,12 +1092,10 @@ let LayerGroups = {
 	"Bustier",
 	"Shirt",
 
-	// Big corsets
-	"CorsetOver",
 
 	// Skirts that dont follow shilhouette and are puffy
-	"SkirtPoofyDeco",
-	"SkirtPoofy",
+	"SkirtOverDeco",
+	"SkirtOver",
 
 	"WrappingLegsOver",
 
@@ -1129,8 +1131,8 @@ let LayerGroups = {
 	// These are for the base skirt layer when kneeling
 	// The over layer is for kneeling
 	// Skirts that dont follow shilhouette and are puffy
-	"SkirtPoofyLowerDeco",
-	"SkirtPoofyLower",
+	"SkirtOverLowerDeco",
+	"SkirtOverLower",
 
 	// Skirts that are slim and follow the shilhouette
 	"SkirtLowerDeco",

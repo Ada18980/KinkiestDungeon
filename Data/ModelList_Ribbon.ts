@@ -386,6 +386,11 @@ AddModel({
 			DisplaceLayers: ToMap(["RibbonThighs"]),
 			InheritColor: "Ribbon",
 		},
+		{ Name: "RightThigh1", Layer: "Thighs1", Pri: 1,
+			Poses: ToMap(["KneelClosed"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			InheritColor: "Ribbon",
+		},
 	])
 });
 
@@ -399,6 +404,11 @@ AddModel(GetModelWithExtraLayers("RibbonLegs2", "RibbonLegs1", [
 		DisplaceLayers: ToMap(["RibbonThighs"]),
 		InheritColor: "Ribbon",
 	},
+	{ Name: "RightThigh2", Layer: "Thighs2", Pri: 1,
+		Poses: ToMap(["KneelClosed"]),
+		GlobalDefaultOverride: ToMap(["KneelClosed"]),
+		InheritColor: "Ribbon",
+	},
 ], "RibbonHarness", false));
 
 
@@ -410,6 +420,11 @@ AddModel(GetModelWithExtraLayers("RibbonLegs3", "RibbonLegs2", [
 		DisplacementSprite: "Thigh3Squish",
 		DisplaceAmount: 50,
 		DisplaceLayers: ToMap(["RibbonThighs"]),
+		InheritColor: "Ribbon",
+	},
+	{ Name: "RightThigh3", Layer: "Thighs3", Pri: 1,
+		Poses: ToMap(["KneelClosed"]),
+		GlobalDefaultOverride: ToMap(["KneelClosed"]),
 		InheritColor: "Ribbon",
 	},
 ], "RibbonHarness", false));

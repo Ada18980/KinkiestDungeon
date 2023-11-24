@@ -181,7 +181,7 @@ function TouchMove(touch: Touch): void {
  * When mouse move, we keep the mouse position for other scripts
  */
 function MouseMove(event: MouseEvent): void {
-	if (PIXICanvas) {
+	if (PIXICanvas && (document.activeElement?.id == "MainCanvas" || document.activeElement?.id == PIXICanvas?.id || document.activeElement?.id == '')) {
 		MouseX = Math.round(event.offsetX * 2000 / PIXICanvas.clientWidth);
 		MouseY = Math.round(event.offsetY * 1000 / PIXICanvas.clientHeight);
 	}

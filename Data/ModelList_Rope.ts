@@ -399,7 +399,7 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["FeetLinked"],
 	Layers: ToLayerMap([
-		{ Name: "Thigh1", Layer: "Thighs1", Pri: 1,
+		{ Name: "Thigh1", Layer: "Thighs1", Pri: 0,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			DisplacementMorph: {Hogtie: "Hogtie"},
@@ -410,11 +410,16 @@ AddModel({
 			NoAppendDisplacement: true,
 			InheritColor: "Rope",
 		},
+		{ Name: "RightThigh1", Layer: "Thighs1", Pri: 0,
+			Poses: ToMap(["KneelClosed"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			InheritColor: "Rope",
+		},
 	])
 });
 
 AddModel(GetModelWithExtraLayers("RopeLegs2", "RopeLegs1", [
-	{ Name: "Thigh2", Layer: "Thighs2", Pri: 1,
+	{ Name: "Thigh2", Layer: "Thighs2", Pri: 0,
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed"]),
 		DisplacementMorph: {Hogtie: "Hogtie"},
@@ -423,6 +428,11 @@ AddModel(GetModelWithExtraLayers("RopeLegs2", "RopeLegs1", [
 		DisplaceLayers: ToMap(["RopeThighs"]),
 		AppendPose: {EncaseLegs: "Over"},
 		NoAppendDisplacement: true,
+		InheritColor: "Rope",
+	},
+	{ Name: "RightThigh2", Layer: "Thighs2", Pri: 0,
+		Poses: ToMap(["KneelClosed"]),
+		GlobalDefaultOverride: ToMap(["KneelClosed"]),
 		InheritColor: "Rope",
 	},
 ], "RopeHarness", false));
@@ -438,6 +448,11 @@ AddModel(GetModelWithExtraLayers("RopeLegs3", "RopeLegs2", [
 		DisplaceLayers: ToMap(["RopeThighs"]),
 		AppendPose: {EncaseLegs: "Over"},
 		NoAppendDisplacement: true,
+		InheritColor: "Rope",
+	},
+	{ Name: "RightThigh3", Layer: "Thighs3", Pri: 0,
+		Poses: ToMap(["KneelClosed"]),
+		GlobalDefaultOverride: ToMap(["KneelClosed"]),
 		InheritColor: "Rope",
 	},
 ], "RopeHarness", false));

@@ -139,8 +139,7 @@ AddModel({
 	Protected: true,
 	Categories: ["Hairstyles"],
 	Layers: ToLayerMap([
-		{ Name: "Ahoge", Layer: "Hair", Pri: 0,
-			SwapLayerPose: {HoodMask: "HairOver"},
+		{ Name: "Ahoge", Layer: "Ahoge", Pri: 0,
 			HideWhenOverridden: true,
 			HideOverrideLayer: "Hat",
 		},
