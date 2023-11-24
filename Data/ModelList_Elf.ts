@@ -174,8 +174,6 @@ AddModel({
 		{ Name: "BandLeft", Layer: "BindElbowLeft", Pri: -100,
 			Poses: ToMap([...ARMPOSES]),
 			SwapLayerPose: {Front: "BindForeElbowLeft", Crossed: "BindCrossElbowLeft", Up: "BindForeElbowLeft"},
-			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
-			MorphPoses: {Crossed: "Front"},
 			DisplacementSprite: "ElbowCuffLeft",
 			DisplaceLayers: ToMap(["Cuffs"]),
 			DisplaceAmount: 50,
@@ -191,10 +189,9 @@ AddModel({
 	AddPose: ["ElbowRight"],
 	Layers: ToLayerMap([
 		{ Name: "BandRight", Layer: "BindElbowRight", Pri: -100,
-			Poses: ToMapSubtract([...ARMPOSES], ["Free"]),
+			Poses: ToMap([...ARMPOSES]),
 			SwapLayerPose: {Front: "BindForeElbowRight", Crossed: "BindCrossElbowRight", Up: "BindForeElbowRight"},
-			GlobalDefaultOverride: ToMap(["Front"]),
-			MorphPoses: {Crossed: "Front"},
+			MorphPoses: {Crossed: "Front", Front: "Front"},
 			DisplacementSprite: "ElbowCuffRight",
 			DisplaceLayers: ToMap(["Cuffs"]),
 			DisplaceAmount: 100,
@@ -212,5 +209,23 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("ElfBandLeft"),
 		...GetModelLayers("ElfBandRight"),
+	])
+});
+
+
+
+AddModel({
+	Name: "Elf",
+	Folder: "Elf",
+	TopLevel: true,
+	Categories: ["Uniforms"],
+	Layers: ToLayerMap([
+		...GetModelLayers("ElfSkirt"),
+		...GetModelLayers("ElfTop"),
+		...GetModelLayers("ElfBands"),
+		...GetModelLayers("ElfCirclet"),
+		...GetModelLayers("ElfShoes"),
+		...GetModelLayers("ElfPanties"),
+		...GetModelLayers("ElfCollar"),
 	])
 });

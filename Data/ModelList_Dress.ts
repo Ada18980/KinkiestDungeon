@@ -48,6 +48,34 @@ AddModel({
 	Parent: "LaceCorset",
 	Categories: ["Bras"],
 	Layers: ToLayerMap([
+		{ Name: "LaceChest", Layer: "BraChest", Pri: 10.1,
+			Invariant: true,
+			InheritColor: "BraBase",
+			EraseAmount: 100,
+			EraseSprite: "LaceChest",
+			EraseLayers: ToMap(["CorsetBra"]),
+		},
+		{ Name: "LaceChestCups", Layer: "BraChest", Pri: 10,
+			Invariant: true,
+			TieToLayer: "LaceChest",
+			NoOverride: true,
+			InheritColor: "BraCups",
+		},
+		{ Name: "LaceChestStripes", Layer: "BraChest", Pri: 10,
+			Invariant: true,
+			TieToLayer: "LaceChest",
+			NoOverride: true,
+			InheritColor: "BraStripes",
+		},
+	])
+});
+AddModel({
+	Name: "LaceBustier",
+	Folder: "Dress",
+	TopLevel: true,
+	Parent: "LaceCorset",
+	Categories: ["Bras", "Tops"],
+	Layers: ToLayerMap([
 		{ Name: "LaceChest", Layer: "BustierChest", Pri: 10.1,
 			Invariant: true,
 			InheritColor: "BraBase",
@@ -102,12 +130,12 @@ AddModel({
 	Categories: ["Corsets"],
 	AddPose: ["Corset"],
 	Layers: ToLayerMap([
-		...GetModelLayers("LaceBra"),
+		...GetModelLayers("LaceBustier"),
 		...GetModelLayers("LaceDeco"),
 	])
 });
 AddModel(GetModelRestraintVersion("LaceCorset", true));
-AddModel(GetModelRestraintVersion("LaceBra", true));
+AddModel(GetModelRestraintVersion("LaceBustier", true));
 AddModel(GetModelRestraintVersion("LaceBraDeco", true));
 
 
@@ -351,7 +379,7 @@ AddModel({
 		},
 		{ Name: "BlouseSkirt", Layer: "SkirtOver", Pri: 100,
 			NoOverride: true,
-			InheritColor: "Skirt",
+			//InheritColor: "Skirt",
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			SwapLayerPose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
@@ -360,7 +388,7 @@ AddModel({
 		{ Name: "BlouseSkirtOverKneel", Layer: "SkirtOver", Pri: 100,
 			Poses: ToMap([...KNEELPOSES]),
 			Invariant: true,
-			InheritColor: "Skirt",
+			InheritColor: "BlouseSkirt",
 			NoOverride: true,
 			//NoOverride: true,
 			TieToLayer: "BlouseSkirt",
@@ -498,5 +526,21 @@ AddModel({
 		...GetModelLayers("DressBlouseSleeveRight"),
 		...GetModelLayers("DressBlouseBust"),
 
+	])
+});
+
+
+
+AddModel({
+	Name: "Dress",
+	Folder: "Dress",
+	TopLevel: true,
+	Categories: ["Uniforms"],
+	Layers: ToLayerMap([
+		...GetModelLayers("DressSkirt"),
+		...GetModelLayers("DressBlouse"),
+		...GetModelLayers("LacePanties"),
+		...GetModelLayers("LaceCorset"),
+		...GetModelLayers("LaceBra"),
 	])
 });

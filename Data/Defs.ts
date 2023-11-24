@@ -53,7 +53,6 @@ let LAYERS_BASE = [
 	// Bondage
 	"BindForeArms",
 	"BindForeElbowLeft",
-	"BindForeElbowRight",
 	"BindForeWristLeft",
 	"BindForeWristRight",
 	"BindForeHandLeft",
@@ -122,7 +121,6 @@ let LAYERS_BASE = [
 	// Crossed arms bondage -- left arm is mostly hidden, no hands
 	"BindCrossArms",
 	"BindCrossElbowLeft",
-	"BindCrossElbowRight",
 	"BindCrossWristRight",
 	"BindCrossArmLeft",
 	"BindCrossArmRight",
@@ -163,13 +161,16 @@ let LAYERS_BASE = [
 
 
 
+	// For form-fitting stuff that nonetheless goes over a shirt
+	"Bustier",
+
 	// Skirt part that goes in front of corsets, shirts, etc
 	"SkirtOverDeco",
 	"SkirtOver",
 
+	// Belts and corsets that only go over
+	"Cincher",
 
-	// For form-fitting stuff that nonetheless goes over a shirt
-	"Bustier",
 	"Shirt",
 	// For things that go directly under the breasts
 	"Underbust",
@@ -329,6 +330,8 @@ let LAYERS_BASE = [
 	// Right arm specific bondage
 	"BindWristRight",
 	"BindArmRight",
+	"BindCrossElbowRight",
+	"BindForeElbowRight",
 	"BindElbowRight",
 	"BindHandRight",
 
