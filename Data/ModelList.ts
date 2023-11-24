@@ -668,10 +668,13 @@ AddModel({
 		},
 	])
 });
+
+
+
 AddModel({
-	Name: "MaidSockLeft",
+	Name: "StockingLeft",
 	Folder: "Maid",
-	Parent: "MaidSocks",
+	Parent: "Stockings",
 	Layers: ToLayerMap([
 		{ Name: "SockLeft", Layer: "StockingLeft", Pri: 1,
 			Poses: ToMap([...LEGPOSES]),
@@ -682,12 +685,17 @@ AddModel({
 			InheritColor: "SockLeft",
 			Invariant: true,
 		},
+		{ Name: "StripeSockRight", Layer: "StockingRight", Pri: 1.1,
+			NoOverride: true, TieToLayer: "SockRight",
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+		},
 	])
 });
 AddModel({
-	Name: "MaidSockRight",
+	Name: "StockingRight",
 	Folder: "Maid",
-	Parent: "MaidSocks",
+	Parent: "Stockings",
 	Layers: ToLayerMap([
 		{ Name: "SockRight", Layer: "StockingRight", Pri: 1,
 			Poses: ToMap([...LEGPOSES]),
@@ -698,6 +706,41 @@ AddModel({
 			Poses: ToMap(["Kneel"]),
 			InheritColor: "SockRight",
 			Invariant: true,
+		},
+		{ Name: "StripeSockRight", Layer: "StockingRight", Pri: 1.1,
+			NoOverride: true, TieToLayer: "SockRight",
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "MaidSockLeft",
+	Folder: "Maid",
+	Parent: "MaidSocks",
+	Layers: ToLayerMap([
+		...GetModelLayers("StockingLeft"),
+		{ Name: "StripeSockLeft", Layer: "StockingLeft", Pri: 1.1,
+			NoOverride: true, TieToLayer: "SockLeft",
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+		},
+	])
+});
+AddModel({
+	Name: "MaidSockRight",
+	Folder: "Maid",
+	Parent: "MaidSocks",
+	Layers: ToLayerMap([
+
+		...GetModelLayers("StockingRight"),
+		{ Name: "StripeSockRight", Layer: "StockingRight", Pri: 1.1,
+			NoOverride: true, TieToLayer: "SockRight",
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 		},
 	])
 });
@@ -730,6 +773,18 @@ AddModel({
 			InheritColor: "ShoeLeft",
 			HideWhenOverridden: true,
 		},
+	])
+});
+
+AddModel({
+	Name: "Stockings",
+	Folder: "Maid",
+	Parent: "Maid",
+	TopLevel: true,
+	Categories: ["Socks"],
+	Layers: ToLayerMap([
+		...GetModelLayers("StockingRight"),
+		...GetModelLayers("StockingLeft"),
 	])
 });
 

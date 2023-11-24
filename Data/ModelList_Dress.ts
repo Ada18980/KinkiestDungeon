@@ -234,6 +234,41 @@ AddModel({
 });
 
 
+AddModel({
+	Name: "LaceCrotchPanel",
+	Folder: "Dress",
+	Parent: "LacePanties",
+	TopLevel: false,
+	Categories: ["Panties"],
+	Layers: ToLayerMap([
+		{ Name: "LaceCrotchPanel", Layer: "CrotchPanelMid", Pri: 30,
+			SwapLayerPose: {Kneel: "CrotchPanelLower", KneelClosed: "CrotchPanelLower"},
+			Invariant: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			InheritColor: "Panties",
+		},
+		{ Name: "LaceCrotchPanelTrim", Layer: "CrotchPanelMid", Pri: 30.2,
+			SwapLayerPose: {Kneel: "CrotchPanelLower", KneelClosed: "CrotchPanelLower"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			NoOverride: true,
+			TieToLayer: "LaceCrotchPanel",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			InheritColor: "Trim",
+		},
+		{ Name: "LaceCrotchPanelLace", Layer: "CrotchPanelMid", Pri: 30.1,
+			SwapLayerPose: {Kneel: "CrotchPanelLower", KneelClosed: "CrotchPanelLower"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			NoOverride: true,
+			TieToLayer: "LaceCrotchPanel",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			InheritColor: "Lace",
+		},
+	])
+});
+
+
 
 AddModel({
 	Name: "DressSkirt",
@@ -274,31 +309,9 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("LaceCorset"),
 		...GetModelLayers("DressSkirt"),
+		...GetModelLayers("LaceCrotchPanel"),
 
-		{ Name: "LaceCrotchPanel", Layer: "CrotchPanelMid", Pri: 30,
-			SwapLayerPose: {Kneel: "CrotchPanelLower", KneelClosed: "CrotchPanelLower"},
-			Invariant: true,
-			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
-			InheritColor: "Panties",
-		},
-		{ Name: "LaceCrotchPanelTrim", Layer: "CrotchPanelMid", Pri: 30.2,
-			SwapLayerPose: {Kneel: "CrotchPanelLower", KneelClosed: "CrotchPanelLower"},
-			Invariant: true,
-			DisplacementInvariant: true,
-			NoOverride: true,
-			TieToLayer: "LaceCrotchPanel",
-			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
-			InheritColor: "Trim",
-		},
-		{ Name: "LaceCrotchPanelLace", Layer: "CrotchPanelMid", Pri: 30.1,
-			SwapLayerPose: {Kneel: "CrotchPanelLower", KneelClosed: "CrotchPanelLower"},
-			Invariant: true,
-			DisplacementInvariant: true,
-			NoOverride: true,
-			TieToLayer: "LaceCrotchPanel",
-			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
-			InheritColor: "Lace",
-		},
+
 	])
 });
 

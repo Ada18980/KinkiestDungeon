@@ -884,7 +884,7 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 function ModelLayerHidden(drawLayers: {[_: string]: boolean}, MC: ModelContainer, Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}): boolean {
 	// Hide if not highest
 	if (Layer.TieToLayer) {
-		if (!drawLayers[Model.Name + "," + Layer.Name]) return true;
+		if (!drawLayers[Model.Name + "," + Layer.TieToLayer]) return true;
 	}
 	return false;
 }

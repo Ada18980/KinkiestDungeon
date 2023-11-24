@@ -93,3 +93,124 @@ AddModel({
 		},
 	])
 });
+
+AddModel({
+	Name: "ElfSkirtBack",
+	Folder: "Elf",
+	Parent: "ElfSkirt",
+	TopLevel: false,
+	Categories: ["Skirts"],
+	Layers: ToLayerMap([
+		{ Name: "SkirtBack", Layer: "SkirtBack", Pri: -100,
+			Invariant: true,
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+		},
+	])
+});
+
+AddModel({
+	Name: "ElfSkirt",
+	Folder: "Elf",
+	Parent: "Elf",
+	TopLevel: true,
+	Categories: ["Skirts"],
+	Layers: ToLayerMap([
+		{ Name: "Skirt", Layer: "Skirt", Pri: 100,
+			SwapLayerPose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
+			Invariant: true,
+			HideWhenOverridden: true,
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
+			AppendPose: ToMapDupe(["CrotchStrap"]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+		},
+		{ Name: "SkirtBand", Layer: "Skirt", Pri: 99.9,
+			Invariant: true,
+			TieToLayer: "Skirt", NoOverride: true,
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+		},
+		{ Name: "SkirtBack", Layer: "SkirtBack", Pri: -100,
+			Invariant: true,
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
+			TieToLayer: "Skirt", NoOverride: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+		},
+	])
+});
+
+
+AddModel({
+	Name: "ElfShoes",
+	Folder: "Elf",
+	Parent: "Elf",
+	TopLevel: true,
+	Categories: ["Shoes"],
+	Layers: ToLayerMap([
+		...GetModelLayers("MaidShoes", undefined, undefined, undefined, -7),
+		{ Name: "CrystalShoeLeft", Layer: "ShoeLeft", Pri: -6,
+			Poses: ToMap(["Closed", "Spread"]),
+			HideWhenOverridden: true,
+			TieToLayer: "ShoeLeft", NoOverride: true,
+		},
+		{ Name: "CrystalShoeRight", Layer: "ShoeRight", Pri: 6,
+			Poses: ToMap(["Closed", "Spread"]),
+			HideWhenOverridden: true,
+			TieToLayer: "ShoeRight", NoOverride: true,
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "ElfBandLeft",
+	Folder: "Elf",
+	TopLevel: false,
+	Parent: "ShacklesArms",
+	Categories: ["Accessories"],
+	AddPose: ["ElbowLeft"],
+	Layers: ToLayerMap([
+		{ Name: "BandLeft", Layer: "BindElbowLeft", Pri: -100,
+			Poses: ToMap([...ARMPOSES]),
+			SwapLayerPose: {Front: "BindForeElbowLeft", Crossed: "BindCrossElbowLeft", Up: "BindForeElbowLeft"},
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			MorphPoses: {Crossed: "Front"},
+			DisplacementSprite: "ElbowCuffLeft",
+			DisplaceLayers: ToMap(["Cuffs"]),
+			DisplaceAmount: 50,
+		},
+	])
+});
+AddModel({
+	Name: "ElfBandRight",
+	Folder: "Elf",
+	TopLevel: false,
+	Parent: "ShacklesArms",
+	Categories: ["Accessories"],
+	AddPose: ["ElbowRight"],
+	Layers: ToLayerMap([
+		{ Name: "BandRight", Layer: "BindElbowRight", Pri: -100,
+			Poses: ToMapSubtract([...ARMPOSES], ["Free"]),
+			SwapLayerPose: {Front: "BindForeElbowRight", Crossed: "BindCrossElbowRight", Up: "BindForeElbowRight"},
+			GlobalDefaultOverride: ToMap(["Front"]),
+			MorphPoses: {Crossed: "Front"},
+			DisplacementSprite: "ElbowCuffRight",
+			DisplaceLayers: ToMap(["Cuffs"]),
+			DisplaceAmount: 100,
+		},
+	])
+});
+
+AddModel({
+	Name: "ElfBands",
+	Folder: "Elf",
+	TopLevel: true,
+	Parent: "Elf",
+	Categories: ["Accessories"],
+	AddPose: ["ElbowLeft", "ElbowRight"],
+	Layers: ToLayerMap([
+		...GetModelLayers("ElfBandLeft"),
+		...GetModelLayers("ElfBandRight"),
+	])
+});

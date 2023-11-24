@@ -16,6 +16,8 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Arms1", Layer: "BindChest", Pri: 50,
 			InheritColor: "Belt",
+			DisplacementSprite: "Arm2Squish",
+			DisplaceLayers: ToMap(["Ribbon1"]),
 			Invariant: true,
 		},
 		{ Name: "LeftArm1", Layer: "BindArmLeft", Pri: 60,
@@ -39,6 +41,8 @@ AddModel({
 		{ Name: "Arms2", Layer: "StrapsUnderbust", Pri: 60,
 			InheritColor: "Belt",
 			Invariant: true,
+			DisplacementSprite: "Arm1Squish",
+			DisplaceLayers: ToMap(["Ribbon1"]),
 		},
 		{ Name: "LeftArm2", Layer: "BindArmLeft", Pri: 60,
 			InheritColor: "Belt",
@@ -78,6 +82,10 @@ AddModel({
 		{ Name: "Legs1", Layer: "Thighs", Pri: 60,
 			Poses: ToMapSubtract([...LEGPOSES], ["Spread"]),
 			InheritColor: "Belt",
+			DisplacementMorph: {Hogtie: "Hogtie", KneelClosed: "KneelClosed"},
+			DisplacementSprite: "BeltLegs1Squish",
+			DisplaceAmount: 50,
+			DisplaceLayers: ToMap(["RibbonThighs"]),
 		},
 		{ Name: "RightLegs1", Layer: "BindThighRight", Pri: 60,
 			Poses: ToMap(["Kneel", "KneelClosed"]),
@@ -96,6 +104,10 @@ AddModel({
 		{ Name: "Legs2", Layer: "Thighs", Pri: 60,
 			Poses: ToMapSubtract([...LEGPOSES], ["Spread"]),
 			InheritColor: "Belt",
+			DisplacementMorph: {Hogtie: "Hogtie", KneelClosed: "KneelClosed"},
+			DisplacementSprite: "BeltLegs2Squish",
+			DisplaceAmount: 50,
+			DisplaceLayers: ToMap(["RibbonThighs"]),
 		},
 		{ Name: "RightLegs2", Layer: "BindThighRight", Pri: 60,
 			Poses: ToMap(["Kneel", "KneelClosed"]),
@@ -127,9 +139,13 @@ AddModel({
 	Categories: ["Restraints", "Leather"],
 	Layers: ToLayerMap([
 		{ Name: "Feet1", Layer: "AnklesOver", Pri: 60,
-			Poses: ToMap([...CLOSEDPOSES]),
+			Poses: ToMapSubtract([...CLOSEDPOSES], ["Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			InheritColor: "Belt",
+			DisplacementMorph: {KneelClosed: "KneelClosed"},
+			DisplacementSprite: "BeltFeet1Squish",
+			DisplaceAmount: 50,
+			DisplaceLayers: ToMap(["RibbonCalf"]),
 		},
 	])
 });
@@ -142,9 +158,13 @@ AddModel({
 	Categories: ["Restraints", "Leather"],
 	Layers: ToLayerMap([
 		{ Name: "Feet2", Layer: "AnklesOver", Pri: 60,
-			Poses: ToMap([...CLOSEDPOSES]),
+			Poses: ToMapSubtract([...CLOSEDPOSES], ["Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			InheritColor: "Belt",
+			DisplacementMorph: {KneelClosed: "KneelClosed"},
+			DisplacementSprite: "BeltFeet2Squish",
+			DisplaceAmount: 50,
+			DisplaceLayers: ToMap(["RibbonCalf"]),
 		},
 	])
 });
@@ -173,6 +193,8 @@ AddModel({
 		{ Name: "Belt", Layer: "HarnessMid", Pri: 50,
 			Invariant: true,
 			InheritColor: "Belt",
+			DisplacementSprite: "BeltSquish",
+			DisplaceLayers: ToMap(["RibbonCalf"]),
 		},
 	])
 });

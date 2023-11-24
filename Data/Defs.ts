@@ -344,6 +344,7 @@ let LAYERS_BASE = [
 	"ArmRight",
 
 	// Clothes that go behind
+	"SkirtBack",
 	"BeltFarBack",
 	"Coat",
 
