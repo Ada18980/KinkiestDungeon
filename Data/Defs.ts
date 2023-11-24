@@ -6,6 +6,7 @@ let LAYERS_BASE = [
 	"Brows", // Brows should get hidden with mask
 	"AnimalEars",
 	"Ahoge",
+	"Circlet",
 	"HeadbandDeco",
 	"Headband",
 	"MouthProp",
@@ -25,7 +26,7 @@ let LAYERS_BASE = [
 	"GagUnder",
 	// Hair mid
 	"Hair",
-	"Circlet",
+	"CircletUnder",
 	"Mask",
 	"BlindfoldWrap",
 	"GagWrap",
@@ -1255,6 +1256,7 @@ let LayerProperties = {
 	GagStraps: {Parent: "Head"},
 	Gag: {Parent: "Head"},
 	Circlet: {Parent: "Head"},
+	CircletUnder: {Parent: "Head"},
 	HatBack: {Parent: "Head"},
 };
 

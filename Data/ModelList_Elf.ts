@@ -19,3 +19,77 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "ElfTop",
+	Folder: "Elf",
+	Parent: "Elf",
+	TopLevel: true,
+	Categories: ["Underwear", "Tops"],
+	Layers: ToLayerMap([
+		{ Name: "Chest", Layer: "ShirtChest", Pri: 30,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			Invariant: true,
+			InheritColor: "Cloth",
+		},
+		{ Name: "Bra", Layer: "Shirt", Pri: 30,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			Invariant: true,
+			InheritColor: "Cloth",
+		},
+	])
+});
+AddModel({
+	Name: "ElfBra",
+	Folder: "Elf",
+	Parent: "ElfTop",
+	TopLevel: false,
+	Categories: ["Underwear"],
+	Layers: ToLayerMap([
+		{ Name: "Chest", Layer: "BraChest", Pri: 30,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			Invariant: true,
+			InheritColor: "Cloth",
+		},
+		{ Name: "Bra", Layer: "Bra", Pri: 30,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			Invariant: true,
+			InheritColor: "Cloth",
+		},
+	])
+});
+AddModel({
+	Name: "ElfCollar",
+	Folder: "Elf",
+	Parent: "Elf",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Collar", Layer: "Collar", Pri: 35,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
+AddModel(GetModelRestraintVersion("ElfCollar", true));
+
+
+AddModel({
+	Name: "ElfCirclet",
+	Folder: "Elf",
+	Parent: "Elf",
+	TopLevel: true,
+	Categories: ["Accessories", "Hairstyles"],
+	Layers: ToLayerMap([
+		{ Name: "Circlet", Layer: "Circlet", Pri: 20,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "Gem", Layer: "Circlet", Pri: 20.1,
+			Sprite: "CircletGem",
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "Circlet",
+			HideWhenOverridden: true,
+		},
+	])
+});
