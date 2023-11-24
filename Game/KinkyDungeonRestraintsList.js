@@ -909,7 +909,7 @@ const KinkyDungeonRestraints = [
 		},
 		enemyTags: {"latexRestraints" : 8, "latexBoots" : 3, "jailRestraints": 1, "latexUniform": 12}, playerTags: {"posLatex": -1, "latexAnger": 2, "latexRage": 2}, minLevel: 0, allFloors: true, shrine: ["Latex"]},
 	{alwaysRender: true, inventory: true, name: "LatexCorset", linkCategory: "Corset", linkSize: 0.55, inaccessible: true, deepAccessible: true, factionColor: [[0]], OverridePriority: 25.9, Asset: "HeavyLatexCorset", LinkableBy: KDCorsetLink, strictness: 0.1, Color: ["#5196EF"], Group: "ItemTorso", power: 8, weight: 0,
-		// Model WIP
+		Model: "LatexCorsetCrossRestraint",
 		escapeChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": 0.15, "Pick": 0.3},
 		limitChance: {"Struggle": 0.1, "Cut": 0.0, "Remove": 0.0, "Pick": 0.0},
 		struggleMinSpeed: {"Remove": 0.05}, struggleMaxSpeed: {"Remove": 0.1},
@@ -1378,10 +1378,8 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.25, enemyTags: {"mithrilRestraints":4, 'shopCollar': 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Collars"]},
 	//endregion
 
-
-	// Slime, added by slime effects. Easy to struggle out, not debilitating, but slows you greatly
-	{unlimited: true, removePrison: true, name: "StickySlime", debris: "Slime", Asset: "Web", Type: "Wrapped", Color: "#ff77ff", Group: "ItemArms", bindarms: true, bindhands: 0.5, power: 0.1, weight: 1, removeOnLeash: true, freeze: true, escapeChance: {"Struggle": 10, "Cut": 10, "Remove": 10}, enemyTags: {"slime":100}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Slime"]},
 	{removePrison: true, name: "LatexCube", Asset: "VacCube", Color: ["#ff77ff"], Group: "ItemDevices", power: 3, weight: 1, immobile: true, alwaysStruggleable: true,
+		Model: "LatexCube",
 		DefaultLock: "Red",
 		addTag: ["ForceKneel", "NoHogtie"],
 		escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.35, "Pick": 0.33, "Unlock": 0.7},
@@ -1390,6 +1388,7 @@ const KinkyDungeonRestraints = [
 		events: [{trigger: "tick", type: "cageDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
 	// Barrel trap, always possible to struggle out but takes time
 	{removePrison: true, name: "BarrelTrap", Asset: "SmallWoodenBox", Color: "Default", Group: "ItemDevices", power: 2, weight: 1, immobile: true, alwaysStruggleable: true, blindfold: 5, enclose: true,
+		Model: "Barrel",
 		escapeChance: {"Struggle": 0.1, "Cut": 0.025, "Remove": 0.025, "Pick": -1.0, "Unlock": -1.0},
 		struggleMinSpeed: {"Struggle": 0.07, "Cut": 0.03, "Remove": 0.05}, alwaysEscapable: ["Struggle"],
 		struggleMaxSpeed: {"Struggle": 0.15, "Cut": 0.15, "Remove": 0.15},
@@ -2425,6 +2424,10 @@ const KinkyDungeonRestraints = [
 			{Item: "Socks6", Group: "Socks", Color: ['#080808', 'Default'], override: true}
 		], maxwill: 0.3, enemyTags: {"maidRestraints":3, "maidRestraintsNonChastity": 5}, playerTags: {"ItemArmsEmpty": -10}, minLevel: 7, allFloors: true, shrine: ["Latex", "Armbinders", "Block_ItemHands", "BindingDress", "Illusion"]},
 	{inventory: true, name: "MaidBelt", debris: "Belts", Asset: "LeatherBelt", Color: "#DBDBDB", Group: "ItemLegs", LinkableBy: ["Wrapping", "Legbinders", "Hobbleskirts", "Ties"], hobble: 1, addTag: ["FeetLinked"], power: 9, weight: 0,
+		Model: "BeltsLegs1",
+		Filters: {
+			Belt: {"gamma":1,"saturation":0,"contrast":0.9666666666666667,"brightness":4.016666666666667,"red":1,"green":1,"blue":1.1,"alpha":1},
+		},
 		escapeChance: {"Struggle": -0.5, "Cut": 0.05, "Remove": 0.1, "Pick": 0.25},
 		maxwill: 1.0, enemyTags: {"maidRestraints":10, "maidRestraintsNonChastity": 10, "maidRestraintsLight":1}, playerTags: {"ItemLegsFull":-2}, minLevel: 2, allFloors: true, shrine: ["Leather", "Belts"]},
 	{inventory: true, name: "MaidAnkleCuffs", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices], Link: "MaidAnkleCuffs2", Type: "Chained", Color: "Default", Group: "ItemFeet",
