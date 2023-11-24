@@ -531,6 +531,80 @@ AddModel({
 
 
 
+
+AddModel({
+	Name: "Glasses",
+	Folder: "Dress",
+	Parent: "Dress",
+	TopLevel: true,
+	Categories: ["Accessories", "Face"],
+	Layers: ToLayerMap([
+		{ Name: "Glasses", Layer: "Glasses", Pri: 20,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "GlassesLens", Layer: "Glasses", Pri: 20.1,
+			InheritColor: "Lens",
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "Glasses",
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "MonocleLeft",
+	Folder: "Dress",
+	Parent: "Glasses",
+	TopLevel: false,
+	Categories: ["Accessories", "Face"],
+	Layers: ToLayerMap([
+		{ Name: "MonocleLeft", Layer: "Glasses", Pri: 25,
+			Invariant: true,
+			NoOverride: true,
+		},
+		{ Name: "MonocleLensLeft", Layer: "Glasses", Pri: 25.1,
+			InheritColor: "LensLeft",
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "Glasses",
+		},
+	])
+});
+AddModel({
+	Name: "MonocleRight",
+	Folder: "Dress",
+	Parent: "Glasses",
+	TopLevel: false,
+	Categories: ["Accessories", "Face"],
+	Layers: ToLayerMap([
+		{ Name: "MonocleRight", Layer: "Glasses", Pri: 25,
+			Invariant: true,
+			NoOverride: true,
+		},
+		{ Name: "MonocleLensRight", Layer: "Glasses", Pri: 25.1,
+			InheritColor: "LensRight",
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "Glasses",
+		},
+	])
+});
+
+
+AddModel({
+	Name: "DressShoes",
+	Folder: "Dress",
+	Parent: "Dress",
+	TopLevel: true,
+	Categories: ["Shoes"],
+	Layers: ToLayerMap([
+		...GetModelLayers("MaidShoes", undefined, undefined, undefined, -1),
+	])
+});
+
+
 AddModel({
 	Name: "Dress",
 	Folder: "Dress",

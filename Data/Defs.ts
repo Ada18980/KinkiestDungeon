@@ -28,6 +28,7 @@ let LAYERS_BASE = [
 	"Hair",
 	"CircletUnder",
 	"Mask",
+	"Glasses",
 	"BlindfoldWrap",
 	"GagWrap",
 	// Head
@@ -1218,6 +1219,9 @@ let LayerProperties = {
 	},
 	FurnitureBack: {
 		Parent: "BG",
+	},
+	Glasses: {
+		Parent: "Head",
 	},
 	Eyes: {
 		Parent: "Head",

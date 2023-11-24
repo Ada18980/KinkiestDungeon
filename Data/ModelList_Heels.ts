@@ -6,6 +6,34 @@
  */
 
 AddModel({
+	Name: "BalletSlippers",
+	Folder: "Heels",
+	TopLevel: true,
+	Parent: "BalletHeels",
+	Categories: ["Restraints", "Heels"],
+	AddPose: ["Ballet"],
+	Layers: ToLayerMap([
+		{ Name: "BalletSoleLeft", Layer: "ShoeLeft", Pri: 60,
+			NoOverride: true,
+			InheritColor: "Sole",
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			Poses: ToMap([...CALFLEFTPOSES]),
+		},
+		{ Name: "BalletSoleRight", Layer: "ShoeRight", Pri: 60,
+			NoOverride: true,
+			InheritColor: "Sole",
+			Poses: ToMap([...CALFRIGHTPOSES]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			SwapLayerPose: {Kneel: "ShoeRightKneel"},
+		},
+	])
+});
+
+AddModel(GetModelRestraintVersion("BalletSlippers", true));
+
+
+
+AddModel({
 	Name: "BalletHeels",
 	Folder: "Heels",
 	TopLevel: true,
