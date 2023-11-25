@@ -73,7 +73,7 @@ let LAYERS_BASE = [
 	"ForeSleeveDecoLeft",
 	"ForeSleeveLeft",
 	"ForeMittenLeft",
-	"ForeGloveRight",
+	"ForeGloveLeft",
 	"ForeHandLeft",
 	"ForeArmLeft",
 
@@ -146,8 +146,8 @@ let LAYERS_BASE = [
 	// Certain pieces of armor go over the shirt
 	"BeltBondage",
 	"BeltCharm",
-	"Belt",
 	"BeltDeco",
+	"Belt",
 
 	"BaggyShirt",
 
@@ -160,6 +160,9 @@ let LAYERS_BASE = [
 
 	"OverCrotchStrapMid",
 	"HarnessMid",
+
+	"BeltUnder",
+
 	"CrotchPanelMid",
 	"WrappingTorsoMid",
 
@@ -739,7 +742,7 @@ let LayerGroups = {
 		"ForeSleeveDecoLeft",
 		"ForeSleeveLeft",
 		"ForeMittenLeft",
-		"ForeGloveRight",
+		"ForeGloveLeft",
 		"ForeHandLeft",
 		"ForeArmLeft",
 
@@ -1129,6 +1132,7 @@ let LayerGroups = {
 	"BeltCharm",
 	"Belt",
 	"BeltDeco",
+	"BeltUnder",
 
 	"BaggyShirt",
 
@@ -1364,7 +1368,7 @@ let Hardpoints = {
 
 // Constants
 /** Internal value for layering */
-let LAYER_INCREMENT = 1000;
+let LAYER_INCREMENT = 500;
 
 let MODELHEIGHT = 3500;
 let MODELWIDTH = 2480;

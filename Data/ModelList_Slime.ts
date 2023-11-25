@@ -322,3 +322,21 @@ AddModel({
 		},
 	])
 });
+
+
+AddModel({
+	Name: "SlimeHands",
+	Folder: "Slime",
+	Parent: "SlimeArms",
+	TopLevel: false,
+	Restraint: true,
+	Filters: {
+		"Slime": slimefilter,
+	},
+	Categories: ["Restraints", "Slime"],
+	AddPose: ["EncaseHandRight", "EncaseHandLeft"],
+	Layers: ToLayerMap([
+		...GetModelLayers("SlimeHandLeft"),
+		...GetModelLayers("SlimeHandRight"),
+	])
+});

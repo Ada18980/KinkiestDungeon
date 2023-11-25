@@ -179,7 +179,7 @@ let DisplacementMaps = [
 ];
 
 let linearList = [
-	"TextureAtlas/atlas0.json",
+	//"TextureAtlas/atlas0.json",
 	...DisplacementMaps.map((e) => {return "DisplacementMaps/" + e;}),
 ];
 

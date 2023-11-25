@@ -270,3 +270,19 @@ AddModel({
 		},
 	])
 });
+
+
+
+AddModel({
+	Name: "RubberHands",
+	Folder: "Rubber",
+	Parent: "RubberArms",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Rubber"],
+	AddPose: ["EncaseHandRight", "EncaseHandLeft"],
+	Layers: ToLayerMap([
+		...GetModelLayers("RubberHandLeft"),
+		...GetModelLayers("RubberHandRight"),
+	])
+});

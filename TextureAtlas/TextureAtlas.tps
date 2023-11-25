@@ -333,6 +333,10 @@
             <key type="filename">../Models/Body/ShoulderRightUp.png</key>
             <key type="filename">../Models/Body/Torso.png</key>
             <key type="filename">../Models/Body/TorsoChastity.png</key>
+            <key type="filename">../Models/Body/TorsoClosed.png</key>
+            <key type="filename">../Models/Body/TorsoClosedChastity.png</key>
+            <key type="filename">../Models/Body/TorsoSpread.png</key>
+            <key type="filename">../Models/Body/TorsoSpreadChastity.png</key>
             <key type="filename">../Models/Bunny/Ears.png</key>
             <key type="filename">../Models/Bunny/EarsInner.png</key>
             <key type="filename">../Models/Bunny/FootSockLeftHogtie.png</key>
@@ -435,7 +439,9 @@
             <key type="filename">../Models/Catsuit/SleevelessTorsoUpperHogtie.png</key>
             <key type="filename">../Models/Catsuit/TorsoBand.png</key>
             <key type="filename">../Models/Catsuit/TorsoLower.png</key>
+            <key type="filename">../Models/Catsuit/TorsoLowerClosed.png</key>
             <key type="filename">../Models/Catsuit/TorsoLowerHogtie.png</key>
+            <key type="filename">../Models/Catsuit/TorsoLowerSpread.png</key>
             <key type="filename">../Models/Catsuit/TorsoUpper.png</key>
             <key type="filename">../Models/Catsuit/TorsoUpperHogtie.png</key>
             <key type="filename">../Models/Chastity/Belt.png</key>
@@ -1357,7 +1363,7 @@
             <key type="filename">../Models/Swimsuit/ChestStrappyWristtie.png</key>
             <key type="filename">../Models/Swimsuit/ChestStrappyYoked.png</key>
             <key type="filename">../Models/Swimsuit/Strappy.png</key>
-            <key type="filename">../Models/Swimsuit/Strappylower.png</key>
+            <key type="filename">../Models/Swimsuit/StrappyLower.png</key>
             <key type="filename">../Models/Swimsuit/SwimsuitChestBoxtie.png</key>
             <key type="filename">../Models/Swimsuit/SwimsuitChestFree.png</key>
             <key type="filename">../Models/Swimsuit/SwimsuitChestFront.png</key>

@@ -20,11 +20,11 @@ let KDModelDresses: {[_: string]: KinkyDungeonDress} = {
 		{Item: "BunnyLeotard", Group: "Suit", Color: "#53428D", Lost: false},
 	],
 	"Bikini" : [
-		{Item: "StrappyBikini", Group: "Suit", Color: "#53428D", Lost: false,
+		{Item: "StrappyBikini", Group: "Panties", Color: "#53428D", Lost: false,
 		Filters: {
 			StrappyLower: {"gamma":1,"saturation":0.05,"contrast":1,"brightness":0.55,"red":1,"green":1,"blue":1,"alpha":1},
 		}},
-		{Item: "StrappyBra", Group: "Suit", Color: "#53428D", Lost: false,
+		{Item: "StrappyBra", Group: "Bra", Color: "#53428D", Lost: false,
 		Filters: {
 			Bra: {"gamma":1,"saturation":0.05,"contrast":1,"brightness":0.55,"red":1,"green":1,"blue":1,"alpha":1},
 		}},

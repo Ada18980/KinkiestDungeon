@@ -80,6 +80,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 		},
 		{ Name: "TorsoLower", Layer: "TorsoLower", Pri: 1,
+			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Closed"},
 		},
 		{ Name: "TorsoUpper", Layer: "TorsoUpper", Pri: 1,
 		},
@@ -1436,7 +1437,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([
-		{ Name: "RibbonBelt", Layer: "Belt", Pri: 30,
+		{ Name: "RibbonBelt", Layer: "BeltUnder", Pri: 30,
 			Invariant: true,
 			HideWhenOverridden: true,
 		},

@@ -163,6 +163,17 @@ function GetModelRestraintVersion(BaseModel: string, Parent: boolean): Model {
 	}
 	return null;
 }
+function GetOverCorset(BaseModel: string): Model {
+	if (ModelDefs[BaseModel]) {
+		let model: Model = JSON.parse(JSON.stringify(ModelDefs[BaseModel]));
+		model.Name = model.Name + "Over";
+		for (let l of Object.values(model.Layers)) {
+			if (l.Layer == "Corset") l.Layer = "Cincher";
+		}
+		return model;
+	}
+	return null;
+}
 
 
 function DisposeCharacter(C: Character): void {

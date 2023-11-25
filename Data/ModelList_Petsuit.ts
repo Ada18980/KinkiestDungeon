@@ -24,7 +24,7 @@ AddModel({
 			Poses: ToMap(["KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 		},
-		{ Name: "LegsLeft", Layer: "WrappingLegsOver2", Pri: 50,
+		{ Name: "LeftLegs", Layer: "WrappingLegsOver2", Pri: 50,
 			Poses: ToMap(["KneelClosed", "Kneel"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 		},
