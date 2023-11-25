@@ -383,6 +383,17 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 			// Hold to player's preferred pose
 			let PreferredArm = KDDesiredPlayerPose.Arms || "Free";
 			let PreferredLeg = KDDesiredPlayerPose.Legs || "Spread";
+
+			if (!AllowedLegPoses.includes(PreferredLeg)) {
+				PreferredLeg = "Closed"; // Get up from hogtie
+				if (!AllowedLegPoses.includes(PreferredLeg)) {
+					DefaultHobbled = "Kneel"; // Get up from hogtie
+					if (!AllowedLegPoses.includes(PreferredLeg)) {
+						DefaultHobbled = "KneelClosed"; // Get up from hogtie
+					}
+				}
+			}
+
 			if (!AllowedArmPoses.includes(ArmPose)) {
 				ArmPose = (AllowedArmPoses.includes(DefaultBound) && KinkyDungeonIsArmsBound(false, false)) ? DefaultBound : AllowedArmPoses[0];
 			}

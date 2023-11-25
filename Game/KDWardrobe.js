@@ -34,6 +34,7 @@ let KDWardrobeCategories = [
 	"Suits",
 	"Armor",
 	"Bodysuits",
+	"Bras",
 	"Underwear",
 	"Socks",
 	"Shoes",
