@@ -3040,6 +3040,7 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "Dollsmith", faction: "Enemy", clusterWith: "smithdoll", bound: "FactoryDoll", playLine: "Robot", color: "#ff3388",
+		applyFaction: "Dollsmith",
 		tags: KDMapInit(["leashing", "dollsmith", "doll", "opendoors", "closedoors", "jail", "jailer", "melee", "elite", "antiMagic", "glueresist", "crushresist", "electricresist", "handcuffer", "iceweakness", "blacksteelrestraints", "blacksteelCuffs", "teasetoys"]),
 		spellResist: 1.0, armor: 1.0,
 		followLeashedOnly: true, followRange: 1,
@@ -3067,6 +3068,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}]},
 
 	{name: "Dollmaker", faction: "Enemy", clusterWith: "smithdoll", bound: "FactoryDoll", playLine: "Robot", color: "#ff88ff",
+		applyFaction: "Dollsmith",
 		tags: KDMapInit(["leashing", "dollsmith", "doll", "opendoors", "closedoors", "jail", "antiMagic", "jailer", "ranged", "miniboss", "antiMagic",
 			"glueresist", "electricresist", "crushresist", "iceweakness", "blacksteelchastity", "latexEncase", "teasetoys"]),
 		spellResist: 1.5, armor: 0.5,
@@ -3095,6 +3097,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "StaffDoll", ignoreInInventory: true, weight: 100}, ]},
 
 	{name: "DollsmithDoll", faction: "Enemy", clusterWith: "dollsmith", bound: "EncasedFactoryDoll", playLine: "Gagged", color: "#ff3388",
+		applyFaction: "Dollsmith",
 		tags: KDMapInit(["opendoors", "doll", "smithdoll", "submissive", "noshop", "gagged", "alwaysAlert", "imprisonable", "minor", "ignorenoSP", "melee",
 			"glueresist", "electricresist", "ticklesevereweakness", "chainresist", "charmweakness", "crushresist"]),
 		ignorechance: 0, armor: 1, spellResist: 1.0, followRange: 1, AI: "hunt",  cohesion: 0.9, events: [
@@ -3480,6 +3483,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, shrines: ["Illusion"], floors:KDMapInit([]), dropTable: [{name: "Ectoplasm", chance: 0.6, weight: 10}],},
 
 	{name: "DollmakerBoss1", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
+		applyFaction: "Dollsmith",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "dollsmith", "ranged",
 			"glueresist", "electricresist", "crushresist", "iceweakness", "dollmakerrestraints", "controlharness", "cyberdollchastity", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
 		spellResist: 2.0, armor: 0.5, followRange: 1.5, AI: "guard", kite: 4.5, noKiteWhenHarmless: true, dontKiteWhenDisabled: true,
@@ -3499,6 +3503,7 @@ let KinkyDungeonEnemies = [
 		ondeath: [{type: "dialogue", dialogue:"DollmakerStage2", click: true}]},
 
 	{name: "DollmakerBoss2", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
+		applyFaction: "Dollsmith",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "dollsmith", "ranged",
 			"glueresist", "electricresist", "crushresist", "iceweakness", "dollmakerrestraints", "cyberdollchastity", "cyberdollrestraints", "controlharness", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
 		spellResist: 2.0, armor: 0.5, followRange: 5.5, AI: "guard",
@@ -3519,6 +3524,7 @@ let KinkyDungeonEnemies = [
 		ondeath: [{type: "dialogue", dialogue:"DollmakerStage3", click: true}]},
 
 	{name: "DollmakerBoss3", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
+		applyFaction: "Dollsmith",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "dollsmith", "ranged",
 			"glueresist", "electricresist", "crushresist", "iceweakness", "dollmakerrestraints", "cyberdollchastity", "cyberdollrestraints", "cyberdollheavy", "controlharness", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
 		spellResist: 2.0, armor: 0.5, followRange: 1.5, AI: "guard",

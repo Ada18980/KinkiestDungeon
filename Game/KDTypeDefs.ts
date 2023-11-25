@@ -988,6 +988,10 @@ interface enemy extends KDHasTags {
 	useLock?: string,
 	/** Uses this lock when using the lock attack */
 	attackLock?: string,
+	/** Faction that is always applied by this unit's restraints */
+	applyFaction?: string,
+	/** Faction that is default applied by this unit's restraints */
+	defaultFaction?: string,
 	/** Minimum range for attack warning tiles, used to prevent high range enemies from attacking all around them*/
 	tilesMinRange?: number,
 	/** Minimum range to try attacking */

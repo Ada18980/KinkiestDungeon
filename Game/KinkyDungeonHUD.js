@@ -23,7 +23,13 @@ let KinkyDungeonStruggleGroupsBase = [
 	"ItemFeet",
 	"ItemBoots",
 ];
-let KinkyDungeonDrawStruggle = 1;
+let KDDrawStruggleEnum = {
+	MOST: 1,
+	FULL: 0,
+	STRUGGLE: 2,
+	NONE: 3,
+};
+let KinkyDungeonDrawStruggle = KDDrawStruggleEnum.STRUGGLE;
 let KDPlayerSetPose = false;
 let KDToggleXRay = 0;
 let KD_XRayHidden = ["Wrapping", "Tape"];
@@ -987,7 +993,8 @@ function KinkyDungeonDrawInputs() {
 				});
 			}
 
-			let mini = KinkyDungeonDrawStruggle == 1 && !MouseIn(0, 0, 500, 1000);
+			let mini = (KinkyDungeonDrawStruggle == KDDrawStruggleEnum.MOST && !MouseIn(0, 0, 500, 1000))
+				|| (KinkyDungeonDrawStruggle == KDDrawStruggleEnum.STRUGGLE && !(MouseIn(((!sg.left) ? (260) : 0), y, 500, (ButtonWidth)) || KinkyDungeonDrawStruggle > 2));
 
 			let color = "#ffffff";
 			//if (item && (item.lock || KDGetCurse(item)) {color = "#ffaadd";}
@@ -1028,7 +1035,9 @@ function KinkyDungeonDrawInputs() {
 
 			i = 0;
 
-			if (item && (MouseIn(((!sg.left) ? (260) : 0), y, 500, (ButtonWidth)) || KinkyDungeonDrawStruggle > 2)) {
+			if (item && (MouseIn(((!sg.left) ? (260) : 0), y, 500, (ButtonWidth))
+				|| KinkyDungeonDrawStruggle == KDDrawStruggleEnum.NONE
+				|| KinkyDungeonDrawStruggle == KDDrawStruggleEnum.STRUGGLE)) {
 				//let r = KDRestraint(item);
 
 				if (!KinkyDungeonDrawStruggleHover) {
@@ -1069,7 +1078,12 @@ function KinkyDungeonDrawInputs() {
 		KinkyDungeonDrawStruggle += 1;
 		if (KinkyDungeonDrawStruggle > 3) KinkyDungeonDrawStruggle = 0;
 		return true;
-	}, true, 510, 925, 60, 60, "", KinkyDungeonStruggleGroups.length > 0 ? "#ffffff" : "#333333", KinkyDungeonRootDirectory + "Hide" + (KinkyDungeonDrawStruggle > 2 ? "Full" : (KinkyDungeonDrawStruggle > 1 ? "Most" : (KinkyDungeonDrawStruggle > 0 ? "True" : "False"))) + ".png", "");
+	}, true, 510, 925, 60, 60, "", KinkyDungeonStruggleGroups.length > 0 ? "#ffffff" : "#333333", KinkyDungeonRootDirectory + "Hide" + (
+		KinkyDungeonDrawStruggle == KDDrawStruggleEnum.FULL ? "Full" :
+		(KinkyDungeonDrawStruggle == KDDrawStruggleEnum.MOST ? "Most" :
+		(KinkyDungeonDrawStruggle == KDDrawStruggleEnum.STRUGGLE ? "Struggle" :
+		(KinkyDungeonDrawStruggle == KDDrawStruggleEnum.NONE ? "True" :
+		"False")))) + ".png", "");
 	if (StandalonePatched)
 		DrawButtonKDEx("SetPose", (bdata) => {
 			KDPlayerSetPose = !KDPlayerSetPose;

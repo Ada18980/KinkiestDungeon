@@ -1792,14 +1792,14 @@ const KinkyDungeonRestraints = [
 		},
 		Model: "BraProto",
 		factionFilters: {
-			Lining: {color: "Highlight", override: true},
+			Display: {color: "Highlight", override: true},
 		},
-		Filters: {
+		/*Filters: {
 			Lining: {"gamma":1,"saturation":0,"contrast":2.033333333333333,"brightness":1,"red":2.5333333333333337,"green":1.9,"blue":1,"alpha":1},
 			Chain: {"gamma":1,"saturation":0,"contrast":2.033333333333333,"brightness":1,"red":2.5333333333333337,"green":1.9,"blue":1,"alpha":1},
 			Lock: {"gamma":1,"saturation":0,"contrast":2.033333333333333,"brightness":1,"red":2.5333333333333337,"green":1.9,"blue":1,"alpha":1},
 			Steel: {"gamma":1,"saturation":0.8500000000000001,"contrast":3.3833333333333333,"brightness":0.43333333333333335,"red":1,"green":1,"blue":1,"alpha":1},
-		},
+		},*/
 		escapeChance: {"Struggle": -0.5, "Cut": -0.125, "Remove": 10.0, "Pick": 0.1}, enemyTags: {"genericChastity": 8, "ornateChastity": 8, "roboAngry": 10}, playerTags: {}, minLevel: 4, allFloors: true, shrine: ["ChastityBras", "Chastity", "Metal", "Ornate"]},
 	//endregion
 
