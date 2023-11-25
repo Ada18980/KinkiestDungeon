@@ -29,7 +29,7 @@ AddModel({
 	Name: "StrappyBra",
 	Folder: "Swimsuit",
 	Parent: "StrappySwimsuit",
-	TopLevel: false,
+	TopLevel: true,
 	Categories: ["Bras"],
 	Layers: ToLayerMap([
 		{ Name: "ChestStrappy", Layer: "SuitChest", Pri: 40,

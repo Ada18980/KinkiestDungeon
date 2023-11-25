@@ -231,6 +231,31 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "ThighLink",
+	Folder: "Cuffs",
+	TopLevel: true,
+	Categories: ["Restraints","Cuffs", "Links"],
+	AddPose: ["ThighLink"],
+	Layers: ToLayerMap([
+		{ Name: "ThighLink", Layer: "BindChainLinksUnder", Pri: 0,
+			Poses: ToMap(["Spread"]),
+		},
+	])
+});
+
+AddModel({
+	Name: "AnkleLink",
+	Folder: "Cuffs",
+	TopLevel: true,
+	Categories: ["Restraints","Cuffs", "Links"],
+	AddPose: ["AnkleLink"],
+	Layers: ToLayerMap([
+		{ Name: "AnkleLink", Layer: "BindChainLinksUnder", Pri: 0,
+			Poses: ToMap(["Spread"]),
+		},
+	])
+});
 
 AddModel({
 	Name: "IronCollar",

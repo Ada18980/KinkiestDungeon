@@ -24,6 +24,23 @@ AddModel({
 	])
 });
 
+
+
+AddModel({
+	Name: "Leash",
+	Folder: "Collars",
+	Parent: "Leash",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints"],
+	Layers: ToLayerMap([
+		{ Name: "Leash", Layer: "Leash", Pri: 0,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
+
 AddModel({
 	Name: "MikoCollar",
 	Folder: "Collars",

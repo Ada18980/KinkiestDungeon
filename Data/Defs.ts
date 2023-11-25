@@ -26,8 +26,10 @@ let LAYERS_BASE = [
 	"GagUnder",
 	// Hair mid
 	"Hair",
+	"MaskOver",
 	"CircletUnder",
 	"Mask",
+	"Goggles",
 	"Glasses",
 	"BlindfoldWrap",
 	"GagWrap",
@@ -49,6 +51,7 @@ let LAYERS_BASE = [
 
 	// Collar and collar accessories
 	"CollarAcc",
+	"Leash",
 	"Collar",
 
 	// Bondage
@@ -181,7 +184,6 @@ let LAYERS_BASE = [
 
 
 
-	"WrappingLegsOver",
 
 	// Corsets that go under harness and poofy skirt
 	"Corset",
@@ -191,6 +193,8 @@ let LAYERS_BASE = [
 	// Skirts that are slim and follow the shilhouette
 	"SkirtDeco",
 	"Skirt",
+
+	"WrappingLegsOver",
 
 	// Left Leg
 	"KneeAccLeft",
@@ -346,6 +350,9 @@ let LAYERS_BASE = [
 	"GloveRight",
 	"HandRight",
 	"ArmRight",
+
+	// Chain links for leg cuffs
+	"BindChainLinksUnder",
 
 	// Clothes that go behind
 	"SkirtBack",
@@ -714,6 +721,38 @@ let LayerGroups = {
 		"Torso",
 	]),
 
+	"PetsuitArms": ToMap([
+		"BindForeElbowLeft",
+		"BindForeWristLeft",
+		"BindForeWristRight",
+		"BindForeHandLeft",
+		"BindForeHandRight",
+		"BindForeArmLeft",
+		"BindForeArmRight",
+
+		"ForeWrists",
+
+
+		// Forearms (only in HandsFront)
+		"ForeWristLeft",
+
+		"ForeSleeveDecoLeft",
+		"ForeSleeveLeft",
+		"ForeMittenLeft",
+		"ForeGloveRight",
+		"ForeHandLeft",
+		"ForeArmLeft",
+
+		"ForeWristRight",
+
+		"ForeSleeveDecoRight",
+		"ForeSleeveRight",
+		"ForeMittenRight",
+		"ForeGloveRight",
+		"ForeHandRight",
+		"ForeArmRight",
+	]),
+
 	"RopeFore": ToMap([
 		"ForeSleeveLeft",
 		"ForeSleeveDecoLeft",
@@ -866,6 +905,12 @@ let LayerGroups = {
 	"CorsetBra": ToMap([
 		"Chest",
 		"ShirtChest",
+		"SuitChest",
+		"BraChest",
+		"BindChestLower",
+	]),
+	"ShirtCutoffBra": ToMap([
+		"Chest",
 		"SuitChest",
 		"BraChest",
 		"BindChestLower",
@@ -1088,6 +1133,7 @@ let LayerGroups = {
 	"BaggyShirt",
 
 	// Skirts that dont follow shilhouette
+	"WrappingLegsOver2",
 	"OverSkirtDeco",
 	"OverSkirt",
 	"Greaves",
@@ -1232,6 +1278,9 @@ let LayerProperties = {
 	HairFront: {
 		Parent: "Head",
 	},
+	HairOver: {
+		Parent: "Head",
+	},
 	HairMiddle: {
 		Parent: "Head",
 	},
@@ -1254,18 +1303,30 @@ let LayerProperties = {
 		Parent: "Head",
 	},
 	Hat: {Parent: "Head",},
+	Hood: {Parent: "Head",},
+	HeadbandDeco: {Parent: "Head"},
 	Headband: {Parent: "Head"},
 	Mask: {Parent: "Head"},
+	MaskOver: {Parent: "Head"},
+	MouthProp: {Parent: "Head"},
+	Goggles: {Parent: "Head"},
+	BlindfoldWrap: {Parent: "Head"},
 	Blindfold: {Parent: "Head"},
+	GagOver: {Parent: "Head"},
 	GagMuzzleStraps: {Parent: "Head"},
 	GagMuzzle: {Parent: "Head"},
 	GagFlatStraps: {Parent: "Head"},
 	GagFlat: {Parent: "Head"},
 	GagStraps: {Parent: "Head"},
 	Gag: {Parent: "Head"},
+	GagUnder: {Parent: "Head"},
 	Circlet: {Parent: "Head"},
 	CircletUnder: {Parent: "Head"},
 	HatBack: {Parent: "Head"},
+	AnimalEars: {Parent: "Head"},
+
+
+
 };
 
 let Hardpoints = {

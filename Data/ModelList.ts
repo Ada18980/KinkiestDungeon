@@ -847,6 +847,7 @@ AddModel({
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
 			InheritColor: "Blouse",
+			MorphPoses: {Up: "Up"},
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			Invariant: true,
 		},

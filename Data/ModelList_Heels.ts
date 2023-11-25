@@ -117,21 +117,19 @@ AddModel({
 
 
 		{ Name: "BalletSoleLeft", Layer: "ShoeLeft", Pri: 51.1,
-			HideWhenOverridden: true,
 			InheritColor: "Sole",
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			Poses: ToMap([...CALFLEFTPOSES]),
 			NoOverride: true,
-			TieToLayer: "BalletLeft",
+			TieToLayer: "FlatBalletLeft",
 		},
 		{ Name: "BalletSoleRight", Layer: "ShoeRight", Pri: 51.1,
-			HideWhenOverridden: true,
 			InheritColor: "Sole",
 			Poses: ToMap([...CALFRIGHTPOSES]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			SwapLayerPose: {Kneel: "ShoeRightKneel"},
 			NoOverride: true,
-			TieToLayer: "BalletRight",
+			TieToLayer: "FlatBalletRight",
 		},
 	])
 });
@@ -178,7 +176,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			Poses: ToMap([...CALFLEFTPOSES]),
 			NoOverride: true,
-			TieToLayer: "BalletLeft",
+			TieToLayer: "ShinyBalletLeft",
 		},
 		{ Name: "BalletSoleRight", Layer: "ShoeRight", Pri: 52.1,
 			HideWhenOverridden: true,
@@ -187,7 +185,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			SwapLayerPose: {Kneel: "ShoeRightKneel"},
 			NoOverride: true,
-			TieToLayer: "BalletRight",
+			TieToLayer: "ShinyBalletRight",
 		},
 	])
 });

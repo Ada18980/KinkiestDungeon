@@ -51,9 +51,6 @@ AddModel({
 		{ Name: "LaceChest", Layer: "BraChest", Pri: 10.1,
 			Invariant: true,
 			InheritColor: "BraBase",
-			EraseAmount: 100,
-			EraseSprite: "LaceChest",
-			EraseLayers: ToMap(["CorsetBra"]),
 		},
 		{ Name: "LaceChestCups", Layer: "BraChest", Pri: 10,
 			Invariant: true,
@@ -142,7 +139,7 @@ AddModel(GetModelRestraintVersion("LaceBraDeco", true));
 AddModel({
 	Name: "LatexCorset",
 	Folder: "Corsets",
-	Parent: "Latex",
+	Parent: "Dress",
 	TopLevel: true,
 	Categories: ["Corsets"],
 	AddPose: ["Corset"],
@@ -164,6 +161,19 @@ AddModel({
 	Parent: "LatexCorset",
 	Categories: ["Bras"],
 	Layers: ToLayerMap([
+		{ Name: "ChestHeavyCorset", Layer: "BraChest", Pri: 17.1,
+			Invariant: true,
+			InheritColor: "Bra",
+		},
+	])
+});
+AddModel({
+	Name: "LatexBustier",
+	Folder: "Corsets",
+	TopLevel: true,
+	Parent: "LatexCorset",
+	Categories: ["Tops", "Bras"],
+	Layers: ToLayerMap([
 		{ Name: "ChestHeavyCorset", Layer: "BustierChest", Pri: 17.1,
 			Invariant: true,
 			InheritColor: "Bra",
@@ -183,7 +193,7 @@ AddModel({
 	AddPose: ["Corset"],
 	Layers: ToLayerMap([
 		...GetModelLayers("LatexCorset"),
-		...GetModelLayers("LatexBra"),
+		...GetModelLayers("LatexBustier"),
 	])
 });
 AddModel({
@@ -195,6 +205,25 @@ AddModel({
 	AddPose: ["Corset"],
 	Layers: ToLayerMap([
 		...GetModelLayers("LatexCorset"),
+		{ Name: "StrapsHeavyCorset", Layer: "ChestStraps", Pri: 17.1,
+			Invariant: true,
+			InheritColor: "Bra",
+			EraseAmount: 100,
+			EraseSprite: "LaceChest",
+			EraseLayers: ToMap(["CorsetBra"]),
+		},
+	])
+});
+AddModel({
+	Name: "LatexCorsetFullStrap",
+	Folder: "Corsets",
+	Parent: "LatexCorset",
+	TopLevel: false,
+	Categories: ["Corsets"],
+	AddPose: ["Corset"],
+	Layers: ToLayerMap([
+		...GetModelLayers("LatexCorset"),
+		...GetModelLayers("LatexBustier"),
 		{ Name: "StrapsHeavyCorset", Layer: "ChestStraps", Pri: 17.1,
 			Invariant: true,
 			InheritColor: "Bra",
@@ -222,11 +251,32 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "LatexCorsetFullCross",
+	Folder: "Corsets",
+	Parent: "LatexCorset",
+	TopLevel: false,
+	Categories: ["Corsets"],
+	AddPose: ["Corset"],
+	Layers: ToLayerMap([
+		...GetModelLayers("LatexCorset"),
+		...GetModelLayers("LatexBustier"),
+		{ Name: "CrossHeavyCorset", Layer: "ChestStraps", Pri: 17.1,
+			Invariant: true,
+			InheritColor: "Bra",
+			EraseAmount: 100,
+			EraseSprite: "LaceChest",
+			EraseLayers: ToMap(["CorsetBra"]),
+		},
+	])
+});
 AddModel(GetModelRestraintVersion("LatexCorset", true));
-AddModel(GetModelRestraintVersion("LatexBra", true));
+AddModel(GetModelRestraintVersion("LatexBustier", true));
 AddModel(GetModelRestraintVersion("LatexCorsetFull", true));
 AddModel(GetModelRestraintVersion("LatexCorsetStrap", true));
 AddModel(GetModelRestraintVersion("LatexCorsetCross", true));
+AddModel(GetModelRestraintVersion("LatexCorsetFullStrap", true));
+AddModel(GetModelRestraintVersion("LatexCorsetFullCross", true));
 
 
 
@@ -235,7 +285,7 @@ AddModel({
 	Folder: "Dress",
 	Parent: "Dress",
 	TopLevel: true,
-	Categories: ["Panties"],
+	Categories: ["Underwear"],
 	Layers: ToLayerMap([
 		{ Name: "LaceCrotchPanel", Layer: "Panties", Pri: 30,
 			SwapLayerPose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
@@ -267,7 +317,7 @@ AddModel({
 	Folder: "Dress",
 	Parent: "LacePanties",
 	TopLevel: false,
-	Categories: ["Panties"],
+	Categories: ["Underwear"],
 	Layers: ToLayerMap([
 		{ Name: "LaceCrotchPanel", Layer: "CrotchPanelMid", Pri: 30,
 			SwapLayerPose: {Kneel: "CrotchPanelLower", KneelClosed: "CrotchPanelLower"},

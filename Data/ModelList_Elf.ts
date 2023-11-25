@@ -30,6 +30,9 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			Invariant: true,
 			InheritColor: "Cloth",
+			EraseAmount: 100,
+			EraseSprite: "LaceChest",
+			EraseLayers: ToMap(["ShirtCutoffBra"]),
 		},
 		{ Name: "Bra", Layer: "Shirt", Pri: 30,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
@@ -141,13 +144,24 @@ AddModel({
 
 
 AddModel({
-	Name: "ElfShoes",
+	Name: "Sandals",
 	Folder: "Elf",
 	Parent: "Elf",
 	TopLevel: true,
 	Categories: ["Shoes"],
 	Layers: ToLayerMap([
 		...GetModelLayers("MaidShoes", undefined, undefined, undefined, -7),
+	])
+});
+
+AddModel({
+	Name: "ElfShoes",
+	Folder: "Elf",
+	Parent: "Sandals",
+	TopLevel: false,
+	Categories: ["Shoes"],
+	Layers: ToLayerMap([
+		...GetModelLayers("Sandals", undefined, undefined, undefined, -7),
 		{ Name: "CrystalShoeLeft", Layer: "ShoeLeft", Pri: -6,
 			Poses: ToMap(["Closed", "Spread"]),
 			HideWhenOverridden: true,

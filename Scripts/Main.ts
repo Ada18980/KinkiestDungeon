@@ -60,23 +60,8 @@ window.onload = function() {
 	CurrentCharacter = null;
 
 	// Default keybindings, these are initialized as part of the Player
-	KinkyDungeonKeybindings = {
-		Down: "KeyS",
-		DownLeft: "KeyZ",
-		DownRight: "KeyC",
-		Left: "KeyA",
-		Right: "KeyD",
-		Skip: "Space",
-		Spell1: "Digit1",
-		Spell2: "Digit2",
-		Spell3: "Digit3",
-		Spell4: "Digit4",
-		Spell5: "Digit5",
-		Up: "KeyW",
-		UpLeft: "KeyQ",
-		UpRight: "KeyE",
-		Wait: "KeyX",
-	};
+	KDSetDefaultKeybindings();
+	KinkyDungeonKeybindings = KinkyDungeonKeybindingsTemp;
 	if (localStorage.getItem("KinkyDungeonKeybindings") && JSON.parse(localStorage.getItem("KinkyDungeonKeybindings"))) {
 		KinkyDungeonKeybindings = JSON.parse(localStorage.getItem("KinkyDungeonKeybindings"));
 	}

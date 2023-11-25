@@ -48,6 +48,20 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "Bed",
+	Folder: "Furniture",
+	TopLevel: true,
+	Group: "Devices",
+	Restraint: true,
+	Categories: ["Restraints","Furniture", "Display"],
+	AddPose: ["Display", "UprightHogtie", "LiftKneel"],
+	Layers: ToLayerMap([
+		{ Name: "Bed", Layer: "FurnitureBack", Pri: -100,
+			Invariant: true,
+		},
+	])
+});
 
 
 

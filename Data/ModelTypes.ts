@@ -71,6 +71,8 @@ interface Model extends Namable {
 	AddPoseConditional?: Record<string, string[]>,
 	/** This model hides all items on these layers. Use sparingly */
 	HideLayers?: string[],
+	/** This model hides all items on these layergroups. Use sparingly */
+	HideLayerGroups?: string[],
     /** Default string of colors*/
     DefaultColor?: string[],
 	/** Color definition */

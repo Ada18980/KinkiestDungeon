@@ -158,6 +158,7 @@ function GetModelRestraintVersion(BaseModel: string, Parent: boolean): Model {
 		}
 		if (!model.Categories) model.Categories = [];
 		model.Categories.push("Restraints");
+		model.Restraint = true;
 		return model;
 	}
 	return null;
@@ -446,6 +447,15 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 		if (m.HideLayers) {
 			for (let layer of m.HideLayers) {
 				MC.HiddenLayers[layer] = 1;
+			}
+		}
+		if (m.HideLayerGroups) {
+			for (let layergroup of m.HideLayerGroups) {
+				if (LayerGroups[layergroup]) {
+					for (let layer of Object.keys(LayerGroups[layergroup]))
+						MC.HiddenLayers[layer] = 1;
+				}
+
 			}
 		}
 	}

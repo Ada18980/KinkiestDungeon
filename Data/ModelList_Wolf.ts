@@ -263,3 +263,161 @@ AddModel(GetModelRestraintVersion("WolfHarnessLower", true));
 AddModel(GetModelRestraintVersion("WolfHarnessUpper", true));
 AddModel(GetModelRestraintVersion("WolfHarnessBelt", true));
 AddModel(GetModelRestraintVersion("WolfHarness", true));
+
+
+AddModel({
+	Name: "WolfGloveLeft",
+	Folder: "WolfCatsuit",
+	Parent: "Wolf",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		{ Name: "GloveLeft", Layer: "GloveLeft", Pri: -1,
+			Poses: ToMap([...ARMPOSES]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "ForeGloveLeft", Layer: "ForeGloveLeft", Pri: -1,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "GloveLeft",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveLeft"},
+		},
+	])
+});
+
+AddModel({
+	Name: "WolfGloveRight",
+	Folder: "WolfCatsuit",
+	Parent: "Wolf",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		{ Name: "GloveRight", Layer: "GloveRight", Pri: -1,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "ForeGloveRight", Layer: "ForeGloveRight", Pri: -1,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "GloveRight",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveRight"},
+		},
+	])
+});
+
+AddModel({
+	Name: "WolfGloves",
+	Folder: "WolfCatsuit",
+	Parent: "Wolf",
+	TopLevel: true,
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		...GetModelLayers("WolfGloveLeft"),
+		...GetModelLayers("WolfGloveRight"),
+	])
+});
+
+
+AddModel({
+	Name: "WolfSockLeft",
+	Folder: "WolfCatsuit",
+	Parent: "WolfSocks",
+	Layers: ToLayerMap([
+		{ Name: "LegLeft", Layer: "StockingLeft", Pri: -1,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+		},
+	])
+});
+AddModel({
+	Name: "WolfSockRight",
+	Folder: "Wolf",
+	Parent: "WolfSocks",
+	Layers: ToLayerMap([
+		{ Name: "LegRight", Layer: "StockingRight", Pri: -1,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+		},
+	])
+});
+
+AddModel({
+	Name: "WolfSocks",
+	Folder: "WolfCatsuit",
+	Parent: "Wolf",
+	TopLevel: true,
+	Categories: ["Socks"],
+	Layers: ToLayerMap([
+		...GetModelLayers("WolfSockRight"),
+		...GetModelLayers("WolfSockLeft"),
+	])
+});
+
+AddModel(GetModelRestraintVersion("WolfSocks", true));
+
+
+
+AddModel({
+	Name: "WolfTorsoLower",
+	Folder: "WolfCatsuit",
+	Parent: "Wolf",
+	TopLevel: false,
+	Categories: ["Underwear"],
+	Layers: ToLayerMap([
+		{ Name: "TorsoLower", Layer: "Bodysuit", Pri: 10,
+			Invariant: true,
+			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
+			MorphPoses: {Kneel: "Kneel", Hogtie: "Closed", Closed: "Closed", KneelClosed: "Kneel", }
+		},
+	])
+});
+
+
+AddModel({
+	Name: "WolfTorsoUpper",
+	Folder: "WolfCatsuit",
+	Parent: "Wolf",
+	TopLevel: true,
+	Categories: ["Underwear", "Tops"],
+	Layers: ToLayerMap([
+		{ Name: "Chest", Layer: "SuitChest", Pri: 30,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			Invariant: true,
+			InheritColor: "Cloth",
+			EraseAmount: 100,
+			EraseSprite: "LaceChest",
+			EraseLayers: ToMap(["ShirtCutoffBra"]),
+		},
+		{ Name: "TorsoUpper", Layer: "Bodysuit", Pri: 30,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			Invariant: true,
+			InheritColor: "Cloth",
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "WolfHeels",
+	Folder: "WolfCatsuit",
+	Parent: "Wolf",
+	TopLevel: true,
+	Categories: ["Shoes"],
+	Layers: ToLayerMap([
+		...GetModelLayers("MaidShoes", undefined, undefined, undefined, 8),
+	])
+});
+
+AddModel({
+	Name: "Wolf",
+	Folder: "WolfCatsuit",
+	Parent: "Wolf",
+	TopLevel: true,
+	Categories: ["Uniforms"],
+	Layers: ToLayerMap([
+		...GetModelLayers("WolfSocks"),
+		...GetModelLayers("WolfGloves"),
+		...GetModelLayers("WolfTorsoUpper"),
+		...GetModelLayers("WolfTorsoLower"),
+		...GetModelLayers("WolfHeels"),
+	])
+});
