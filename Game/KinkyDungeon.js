@@ -940,7 +940,8 @@ function KinkyDungeonRun() {
 	// Normally we don't override right click on websites but this is a game
 	if (!CommonIsMobile)
 		document.addEventListener('contextmenu', event => {
-			if (CommonIsMobile || document.activeElement?.id != "MainCanvas") {
+			// @ts-ignore
+			if (CommonIsMobile || document.activeElement?.type == "text" || document.activeElement?.type == "textarea") {
 				// Trigger mouse clicked
 				//MouseClicked = true;
 			} else {
