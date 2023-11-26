@@ -138,3 +138,29 @@ function KDListMissingModels() {
 	}
 	console.log(s);
 }
+
+function KDCheckForMissingModelLayers() {
+	for (let m of Object.values(ModelDefs)) {
+		if (m.Layers) {
+			for (let l of Object.values(m.Layers)) {
+				if (l.Layer && !LAYERS_BASE.includes(l.Layer)) {
+					console.log(`Missing layer: ${l.Layer} of ${l.Name},${m.Name}`);
+				}
+				if (l.SwapLayerPose) {
+					for (let s of Object.values(l.SwapLayerPose)) {
+						if (s && !LAYERS_BASE.includes(s)) {
+							console.log(`Missing layer: ${s} of ${l.Name},${m.Name}`);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+function KDCheckForBadModels() {
+	for (let r of KinkyDungeonRestraints) {
+		if (r.Model && !ModelDefs[r.Model])
+			console.log(`Missing model: ${r.Model} of ${r.name}`);
+	}
+}
