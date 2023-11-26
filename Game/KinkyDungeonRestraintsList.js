@@ -991,7 +991,7 @@ const KinkyDungeonRestraints = [
 		bindarms: true,
 		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture"], ignoreSpells: true, removeOnLeash: true, immobile: true,
 
-		Model: "Catsuit",
+		Model: "TransparentCatsuit",
 		Filters:{
 			TorsoUpper: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1.9666666666666666,"blue":1,"alpha":0.48333333333333334},
 			Torso: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1.9666666666666666,"blue":1,"alpha":0.48333333333333334},
@@ -1607,10 +1607,10 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.05, "Cut": 0.4, "Remove": 0.4, "Pick": 0.45},
 		enemyTags: {"trap":100, "leatherRestraintsHeavy":6, "armbinderSpell": 10}, playerTags: {"ItemArmsEmpty": -8}, minLevel: 4, allFloors: true, shrine: ["Leather", "Boxbinders", "Block_ItemHands"]},
 	{inventory: true, trappable: true, name: "TrapYoke", Asset: "Yoke", accessible: true, Group: "ItemArms",
-		Model: "Yoke",
+		Model: "SteelYoke",
 		Color: "Default", bindarms: true, restricthands: 0.85, power: 6, weight: 0, DefaultLock: "Red",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 10, "Pick": -0.15, "Unlock": -0.15},
-		helpChance: {"Pick": 0.5, "Unlock": 1.0}, enemyTags: {"trap":9, "yokeSpell": 10, "Unchained": -9}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Yokes"]},
+		helpChance: {"Pick": 0.5, "Unlock": 1.0}, enemyTags: {"trap":9, "yokeSpell": 10, "Unchained": -9}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Yokes", "Yoked"]},
 	{alwaysRender: true, inventory: true, trappable: true, name: "TrapHarness", debris: "Belts", strictness: 0.05, Asset: "LeatherStrapHarness", accessible: true,
 		Model: "Harness",
 		LinkableBy: [...KDHarnessLink], OverridePriority: 26, Color: "#222222", Group: "ItemTorso", power: 2, weight: 2,
