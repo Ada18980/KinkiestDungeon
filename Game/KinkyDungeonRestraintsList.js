@@ -1508,6 +1508,9 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, name: "HighsecShackles", debris: "Chains", Asset: "SteelAnkleCuffs", Type: "Chained", LinkableBy: [...KDBindable, ...KDDevices], Group: "ItemFeet", hobble: 1, Color: ["Default", "Default"], power: 6, weight: 2,
 		Model: "Legirons",
+		alwaysDressModel: [
+			{Model: "AnkleLink"}
+		],
 		linkCategory: "AnkleCuffs", linkSize: 0.4, noDupe: true,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 1.1, "Pick": 0.3}, enemyTags: {}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["Legirons", "Metal", "Cuffs"]},
 	{inventory: true, name: "HighsecBallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], Asset: "HarnessBallGag",
@@ -4192,11 +4195,7 @@ const KinkyDungeonRestraints = [
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 			name: "LeatherGloves",
 			Group: "ItemHands",
-			Model: "BunnyGloves",
-			Filters: {
-				GloveLeft: {"gamma":0.2833333333333333,"saturation":1,"contrast":3.1666666666666665,"brightness":0.3166666666666667,"red":1.55,"green":0.5666666666666667,"blue":0.2833333333333333,"alpha":1},
-				GloveRight: {"gamma":0.2833333333333333,"saturation":1,"contrast":3.1666666666666665,"brightness":0.3166666666666667,"red":1.55,"green":0.5666666666666667,"blue":0.2833333333333333,"alpha":1},
-			},
+			Model: "LeatherGloves",
 			Asset: "BikerGloves",
 			AssetGroup: "Gloves",
 			showInQuickInv: true, good: true,

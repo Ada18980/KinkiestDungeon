@@ -1106,6 +1106,124 @@ AddModel({
 	])
 });
 
+
+
+AddModel({
+	Name: "LeatherGloveLeft",
+	Folder: "Warrior",
+	Parent: "Dragonheart",
+	Categories: ["Gloves"],
+	Filters: {
+		"GloveLeft":{"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":2.3166666666666664,"green":1.3833333333333333,"blue":1,"alpha":1},
+		"BandLeft":{"gamma":1,"saturation":0.18333333333333335,"contrast":1,"brightness":0.43333333333333335,"red":1.3333333333333333,"green":0.8999999999999999,"blue":1,"alpha":1}
+	},
+	Layers: ToLayerMap([
+		{ Name: "GloveLeft", Layer: "GloveLeft", Pri: 8,
+			Poses: ToMap([...ARMPOSES]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "ForeGloveLeft", Layer: "ForeGloveLeft", Pri: 8,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "GloveLeft",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveLeft"},
+		},
+		{ Name: "RimGloveLeft", Layer: "GloveLeft", Pri: 8.1,
+			Poses: ToMap([...ARMPOSES]),
+			InheritColor: "RimLeft",
+			NoOverride: true,
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "RimForeGloveLeft", Layer: "ForeGloveLeft", Pri: 8.1,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "RimLeft",
+			NoOverride: true,
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveLeft"},
+		},
+		{ Name: "BandGloveLeft", Layer: "GloveLeft", Pri: 8.1,
+			Poses: ToMap([...ARMPOSES]),
+			InheritColor: "BandLeft",
+			NoOverride: true,
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "BandForeGloveLeft", Layer: "ForeGloveLeft", Pri: 8.1,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "BandLeft",
+			NoOverride: true,
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveLeft"},
+		},
+	])
+});
+
+AddModel({
+	Name: "LeatherGloveRight",
+	Folder: "Warrior",
+	Parent: "Dragonheart",
+	Categories: ["Gloves"],
+	Filters: {
+		"GloveRight":{"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":2.3166666666666664,"green":1.3833333333333333,"blue":1,"alpha":1},
+		"BandRight":{"gamma":1,"saturation":0.18333333333333335,"contrast":1,"brightness":0.43333333333333335,"red":1.3333333333333333,"green":0.8999999999999999,"blue":1,"alpha":1},
+	},
+	Layers: ToLayerMap([
+		{ Name: "GloveRight", Layer: "GloveRight", Pri: 8,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "ForeGloveRight", Layer: "ForeGloveRight", Pri: 8,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "GloveRight",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveRight"},
+		},
+		{ Name: "RimGloveRight", Layer: "GloveRight", Pri: 8.1,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			InheritColor: "RimRight",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "RimForeGloveRight", Layer: "ForeGloveRight", Pri: 8.1,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "RimRight",
+			NoOverride: true,
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveRight"},
+		},
+		{ Name: "BandGloveRight", Layer: "GloveRight", Pri: 8.1,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			InheritColor: "BandRight",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "BandForeGloveRight", Layer: "ForeGloveRight", Pri: 8.1,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "BandRight",
+			NoOverride: true,
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveRight"},
+		},
+	])
+});
+
+
+AddModel({
+	Name: "LeatherGloves",
+	Folder: "Warrior",
+	Parent: "Dragonheart",
+	TopLevel: true,
+	Categories: ["Gloves"],
+	Filters: {
+		"GloveLeft":{"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":2.3166666666666664,"green":1.3833333333333333,"blue":1,"alpha":1},
+		"GloveRight":{"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":2.3166666666666664,"green":1.3833333333333333,"blue":1,"alpha":1},
+		"BandRight":{"gamma":1,"saturation":0.18333333333333335,"contrast":1,"brightness":0.43333333333333335,"red":1.3333333333333333,"green":0.8999999999999999,"blue":1,"alpha":1},
+		"BandLeft":{"gamma":1,"saturation":0.18333333333333335,"contrast":1,"brightness":0.43333333333333335,"red":1.3333333333333333,"green":0.8999999999999999,"blue":1,"alpha":1}
+	},
+	Layers: ToLayerMap([
+		...GetModelLayers("LeatherGloveLeft"),
+		...GetModelLayers("LeatherGloveRight"),
+	])
+});
+
+
 AddModel({
 	Name: "WarriorBelt",
 	Folder: "Warrior",

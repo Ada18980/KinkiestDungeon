@@ -284,7 +284,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		//kdcanvas.removeChild(MC.Containers.get(containerID).Container);
 		kdcanvas.removeChild(MC.Containers.get(containerID).Mesh);
 		MC.Containers.get(containerID).Container.destroy();
-		MC.Containers.get(containerID).Mesh.destroy({children: true});
+		MC.Containers.get(containerID).Mesh.destroy();
 		MC.Containers.get(containerID).RenderTexture.destroy(true);
 		MC.Containers.delete(containerID);
 		MC.ContainersDrawn.delete(containerID);

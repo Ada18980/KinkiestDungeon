@@ -196,6 +196,8 @@ let nearestList = [
 	"TextureAtlas/game0.json",
 ]
 
+let CurrentLoading = "";
+
 let lastProgress = 0;
 function incrementProgress(amount) {
 	return (progress) => {
@@ -214,12 +216,16 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 		KDLoadingMax += amount;
 	}
 	for (let dataFile of list) {
-		console.log("Loading" + dataFile);
 		let amount = 100;
 		let result = preload ? PIXI.Assets.backgroundLoad(dataFile) : PIXI.Assets.load(dataFile);
 
 		result.then(() => {
+			CurrentLoading = "Loaded " + dataFile;
 			//console.log(dataFile);
+			KDLoadingDone += amount;
+		}, () => {
+			CurrentLoading = "Error Loading " + dataFile;
+			console.log(CurrentLoading);
 			KDLoadingDone += amount;
 		});
 		//let atlas = await result;

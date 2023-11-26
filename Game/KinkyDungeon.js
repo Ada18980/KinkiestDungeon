@@ -1257,6 +1257,8 @@ function KinkyDungeonRun() {
 		DrawTextKD(TextGet("KDLogo2"), 1000, 180, "#ffffff", KDTextGray2);
 
 		if (!KDLoadingFinished) {
+			if (StandalonePatched)
+				DrawTextKD(CurrentLoading, 1000, 900, "#ffffff", KDTextGray2);
 			DrawTextKD(TextGet("KDLoading") + Math.round(100 * KDLoadingDone / KDLoadingMax) + "%", 1000, 950, "#ffffff", KDTextGray2);
 		} else {
 

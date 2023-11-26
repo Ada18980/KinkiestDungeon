@@ -84,7 +84,7 @@ AddModel({
 		},
 		{ Name: "LeatherRim", Layer: "Blindfold", Pri: 2.1,
 			Invariant: true,
-			HideWhenOverridden: true,
+			TieToLayer: "LeatherBase",
 			NoOverride: true,
 			InheritColor: "Rim",
 		},
@@ -106,7 +106,7 @@ AddModel({
 		...GetModelLayers("BlindfoldLeather"),
 		{ Name: "KittyEyes", Layer: "Blindfold", Pri: 2.1,
 			Invariant: true,
-			HideWhenOverridden: true,
+			TieToLayer: "LeatherBase",
 			NoOverride: true,
 		},
 	])

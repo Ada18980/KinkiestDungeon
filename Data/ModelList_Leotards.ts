@@ -18,7 +18,7 @@ AddModel({
 		},
 		{ Name: "SwimsuitChest", Layer: "SuitChest", Pri: 5,
 			Poses: ToMap([...ARMPOSES]),
-			//HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			InheritColor: "Swimsuit",
 		},
 	])

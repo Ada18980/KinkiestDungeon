@@ -216,7 +216,7 @@ AddModel({
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			NoOverride: true,
-			TieToLayer: "LegBinder",
+			TieToLayer: "Legbinder",
 			InheritColor: "Laces",
 		},
 	])

@@ -144,7 +144,7 @@ AddModel({
 	Categories: ["Restraints", "Cuffs", "Handcuffs"],
 	AddPose: ["HandCuffed"],
 	Layers: ToLayerMap([
-		{ Name: "CuffsLock", Layer: "BindForeWristLeft", Pri: 40.1,
+		/*{ Name: "CuffsLock", Layer: "BindForeWristLeft", Pri: 40.1,
 			HideWhenOverridden: true,
 			NoOverride: true,
 			TieToLayer: "WolfCuffs",
@@ -152,7 +152,7 @@ AddModel({
 			LockLayer: true,
 			Poses: ToMap(["Front"]),
 			GlobalDefaultOverride: ToMap(["Front"]),
-		},
+		},*/
 		{ Name: "WolfCuffs", Layer: "BindForeWristLeft", Pri: 40,
 			HideWhenOverridden: true,
 			InheritColor: "BaseMetal",
