@@ -7687,6 +7687,8 @@ It's made from hard-to-cut dragonscale!!!
 
 Steel Cuffs
 钢铐
+A pair of steel cuffs that make it easy to restrain you.
+一对钢制手铐，可以轻松束缚你。
 The enemy attaches your wrist cuffs together!
 敌人将你的手腕铐在一起！
 Your cuffs detatch!
