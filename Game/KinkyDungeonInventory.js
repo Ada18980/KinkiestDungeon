@@ -607,7 +607,7 @@ function KDGetItemPreview(item) {
 			item: item,
 		};
 		KinkyDungeonSendEvent("icon", data);
-		ret = {name: KDWeapon(item).name, item: item, preview: KinkyDungeonRootDirectory + `/Items/${KDWeapon(item).name}.png`};
+		ret = {name: KDWeapon(item).name, item: item, preview: KinkyDungeonRootDirectory + `Items/${KDWeapon(item).name}.png`};
 		if (data.color) {
 			ret.previewcolor = data.color;
 		}
@@ -624,7 +624,7 @@ function KDGetItemPreview(item) {
 			item: item,
 		};
 		KinkyDungeonSendEvent("icon", data);
-		ret = {name: KDConsumable(item).name, item: item, preview: KinkyDungeonRootDirectory + `/Items/${KDConsumable(item).name}.png`};
+		ret = {name: KDConsumable(item).name, item: item, preview: KinkyDungeonRootDirectory + `Items/${KDConsumable(item).name}.png`};
 		if (data.color) {
 			ret.previewcolor = data.color;
 		}
@@ -632,8 +632,8 @@ function KDGetItemPreview(item) {
 			ret.previewcolorbg = data.bgcolor;
 		}
 	}
-	else if (item.type == Outfit) ret = {name: KDOutfit(item) ? KDOutfit(item).name : "Prisoner", item: item, preview: KinkyDungeonRootDirectory + `/Outfits/${KDOutfit(item).name}.png`};
-	else if (item.type == 'basic') ret = {name: item.name, item: item, preview: KinkyDungeonRootDirectory + `/ShopBasic/${item.name}.png`};
+	else if (item.type == Outfit) ret = {name: KDOutfit(item) ? KDOutfit(item).name : "Prisoner", item: item, preview: KinkyDungeonRootDirectory + `Outfits/${KDOutfit(item).name}.png`};
+	else if (item.type == 'basic') ret = {name: item.name, item: item, preview: KinkyDungeonRootDirectory + `ShopBasic/${item.name}.png`};
 	//else if (item && item.name) ret.push({name: item.name, item: item, preview: ``});
 	return ret;
 }
@@ -646,12 +646,12 @@ function KDGetItemPreview(item) {
  */
 function KDGetGroupPreviewImage(Group) {
 	try {
-		if (KDTex(KinkyDungeonRootDirectory + `/Items/Group/${Group}.png`)?.valid) return KinkyDungeonRootDirectory + `/Items/Group/${Group}.png`;
+		if (KDTex(KinkyDungeonRootDirectory + `Items/Group/${Group}.png`)?.valid) return KinkyDungeonRootDirectory + `Items/Group/${Group}.png`;
 	} catch (e) {
 		console.log(e);
 	}
 
-	return KinkyDungeonRootDirectory + `/Items/Restraint.png`;
+	return KinkyDungeonRootDirectory + `Items/Restraint.png`;
 }
 
 
@@ -662,20 +662,20 @@ function KDGetGroupPreviewImage(Group) {
  */
 function KDGetRestraintPreviewImage(restraint) {
 	try {
-		if (KDTex(KinkyDungeonRootDirectory + `/Items/Restraint/${restraint.preview || restraint.name}.png`)?.valid) return KinkyDungeonRootDirectory + `/Items/Restraint/${restraint.preview || restraint.name}.png`;
+		if (KDTex(KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`)?.valid) return KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`;
 	} catch (e) {
 		console.log(e);
 	}
 
 	try {
 		for (let tag of restraint.shrine) {
-			if (KDTex(KinkyDungeonRootDirectory + `/Items/Restraint/${tag}.png`)?.valid) return KinkyDungeonRootDirectory + `/Items/Restraint/${tag}.png`;
+			if (KDTex(KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`)?.valid) return KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`;
 		}
 	} catch (e) {
 		console.log(e);
 	}
-	return KinkyDungeonRootDirectory + `/Items/Restraint.png`;
-	/*return StandalonePatched ? (KDTex(KinkyDungeonRootDirectory + `/Items/Restraint/${restraint.name}.png`)?.valid ? KinkyDungeonRootDirectory + `/Items/Restraint/${restraint.name}.png` : KinkyDungeonRootDirectory + `/Items/Restraint.png`) :
+	return KinkyDungeonRootDirectory + `Items/Restraint.png`;
+	/*return StandalonePatched ? (KDTex(KinkyDungeonRootDirectory + `Items/Restraint/${restraint.name}.png`)?.valid ? KinkyDungeonRootDirectory + `Items/Restraint/${restraint.name}.png` : KinkyDungeonRootDirectory + `Items/Restraint.png`) :
 			`Assets/Female3DCG/${restraint.Group}/Preview/${restraint.Asset}.png`*/
 }
 
@@ -904,7 +904,7 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 				if (tagi == -1) {
 					// draw the weapon damage type icon
 					KDDraw(kdcanvas, kdpixisprites, "wt_" + tagi,
-						KinkyDungeonRootDirectory + `/Buffs/dmg${weapon.type}.png`,
+						KinkyDungeonRootDirectory + `Buffs/dmg${weapon.type}.png`,
 						canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35 - spritesize2/2 * (tags.length - 1) + spritesize2*tagi,
 						canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 46 - spritesize + 133,
 						spritesize, spritesize,
@@ -914,7 +914,7 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 				} else {
 					// Draw the tag
 					KDDraw(kdcanvas, kdpixisprites, "wt_" + tagi,
-						KinkyDungeonRootDirectory + `/Buffs/weaponTag/${tags[tagi]}.png`,
+						KinkyDungeonRootDirectory + `Buffs/weaponTag/${tags[tagi]}.png`,
 						canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35 - spritesize2/2 * (tags.length - 1) + spritesize2*tagi,
 						canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 46 - spritesize + 133,
 						spritesize, spritesize,
@@ -1139,7 +1139,7 @@ function KinkyDungeonDrawInventory() {
 							});
 					if (filteredInventory[index].previewcolor) {
 						KDDraw(kdcanvas, kdpixisprites, "invchoice_halo" + i,
-							KinkyDungeonRootDirectory + "/UI/ItemAura.png", canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 135, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
+							KinkyDungeonRootDirectory + "UI/ItemAura.png", canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 135, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
 							undefined, {
 								zIndex: 100.003,
 								tint: string2hex(filteredInventory[index].previewcolor),
@@ -1148,7 +1148,7 @@ function KinkyDungeonDrawInventory() {
 					}
 					if (filteredInventory[index].previewcolorbg) {
 						KDDraw(kdcanvas, kdpixisprites, "invchoice_halobg" + i,
-							KinkyDungeonRootDirectory + "/UI/ItemAuraBG.png", canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 135, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
+							KinkyDungeonRootDirectory + "UI/ItemAuraBG.png", canvasOffsetX_ui + xx * b_width + 640*KinkyDungeonBookScale + 135, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
 							undefined, {
 								zIndex: 100.002,
 								tint: string2hex(filteredInventory[index].previewcolorbg),
@@ -1676,7 +1676,7 @@ function KinkyDungeonDrawQuickInv() {
 
 			if (item.previewcolor) {
 				KDDraw(kdcanvas, kdpixisprites, "coniconhalo" + c,
-					KinkyDungeonRootDirectory + "/UI/ItemAura.png", point.x, point.y + 30, 80, 80, undefined, {
+					KinkyDungeonRootDirectory + "UI/ItemAura.png", point.x, point.y + 30, 80, 80, undefined, {
 						zIndex: 108.5,
 						tint: string2hex(item.previewcolor),
 						alpha: 0.9,
@@ -1684,7 +1684,7 @@ function KinkyDungeonDrawQuickInv() {
 			}
 			if (item.previewcolorbg) {
 				KDDraw(kdcanvas, kdpixisprites, "coniconhalobg" + c,
-					KinkyDungeonRootDirectory + "/UI/ItemAuraBG.png", point.x, point.y + 30, 80, 80, undefined, {
+					KinkyDungeonRootDirectory + "UI/ItemAuraBG.png", point.x, point.y + 30, 80, 80, undefined, {
 						zIndex: 108.4,
 						tint: string2hex(item.previewcolorbg),
 						alpha: 0.8,
@@ -1794,7 +1794,7 @@ function KinkyDungeonDrawQuickInv() {
 
 			if (item.previewcolor) {
 				KDDraw(kdcanvas, kdpixisprites, "weaponiconhalo" + w,
-					KinkyDungeonRootDirectory + "/UI/ItemAura.png", point.x, 1000 - V - Wheight + point.y, 80, 80, undefined, {
+					KinkyDungeonRootDirectory + "UI/ItemAura.png", point.x, 1000 - V - Wheight + point.y, 80, 80, undefined, {
 						zIndex: 108.5,
 						tint: string2hex(item.previewcolor),
 						alpha: 0.9,
@@ -1802,7 +1802,7 @@ function KinkyDungeonDrawQuickInv() {
 			}
 			if (item.previewcolorbg) {
 				KDDraw(kdcanvas, kdpixisprites, "weaponiconhalobg" + w,
-					KinkyDungeonRootDirectory + "/UI/ItemAuraBG.png", point.x, 1000 - V - Wheight + point.y, 80, 80, undefined, {
+					KinkyDungeonRootDirectory + "UI/ItemAuraBG.png", point.x, 1000 - V - Wheight + point.y, 80, 80, undefined, {
 						zIndex: 108.4,
 						tint: string2hex(item.previewcolorbg),
 						alpha: 0.8,
@@ -1936,7 +1936,7 @@ function KinkyDungeonDrawQuickInv() {
 				});*/
 			if (item.previewcolor) {
 				KDDraw(kdcanvas, kdpixisprites, "restraintsiconhalo" + w,
-					KinkyDungeonRootDirectory + "/UI/ItemAura.png", point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
+					KinkyDungeonRootDirectory + "UI/ItemAura.png", point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
 						zIndex: 108.5,
 						tint: string2hex(item.previewcolor),
 						alpha: 0.9,
@@ -1944,7 +1944,7 @@ function KinkyDungeonDrawQuickInv() {
 			}
 			if (item.previewcolorbg) {
 				KDDraw(kdcanvas, kdpixisprites, "restraintsiconhalobg" + w,
-					KinkyDungeonRootDirectory + "/UI/ItemAuraBG.png", point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
+					KinkyDungeonRootDirectory + "UI/ItemAuraBG.png", point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
 						zIndex: 108.4,
 						tint: string2hex(item.previewcolorbg),
 						alpha: 0.8,
