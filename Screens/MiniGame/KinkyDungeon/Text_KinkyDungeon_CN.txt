@@ -3760,6 +3760,16 @@ The deputy performs a security enhancement procedure! (DamageTaken)
 副警长执行安全强化程序！（承受伤害）
 Ninja Warrior
 忍者战士
+The ninja warrior retreats into the shadows.
+忍者战士退到阴影中。
+The ninja warrior uses a traditional binding technique (+RestraintAdded)
+忍者战士使用传统的束缚技术（+RestraintAdded）
+The ninja warrior tosses a shuriken and hits you! (Stunned!)
+忍者战士扔出手里剑并攻击你！（眩晕！）
+The ninja warrior uses a lock to give herself the upper hand! (DamageTaken)
+忍者战士用一把锁让自己占据了上风！（DamageTaken）
+The ninja warrior uses a subduing technique! (DamageTaken)
+忍者战士使用制服术！（DamageTaken）
 Ninja Assassin
 忍者刺客
 The assassin retreats into the shadows.
@@ -3767,7 +3777,9 @@ The assassin retreats into the shadows.
 The assassin uses a traditional binding technique (+RestraintAdded)
 刺客使用传统的捆绑技术（+RestraintAdded）
 The assassin uses a subduing technique! (DamageTaken)
-刺客使用了捆绑技术！ (DamageTaken)
+刺客使用了捆绑技术！（DamageTaken）
+The assassin stealthily locks your restraint! (DamageTaken)
+刺客悄悄锁住你的束缚！（DamageTaken）
 Animated Armor
 活化盔甲
 The Animated Armor falls into pieces.
