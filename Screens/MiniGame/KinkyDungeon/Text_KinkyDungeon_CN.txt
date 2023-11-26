@@ -5883,6 +5883,7 @@ AMNT% weapon magic dmg
 AMNT% 武器魔法伤害
 Infuse weapon AMNT% TYPE
 注入武器 AMNT% TYPE
+AMNT TYPE on attack
 AMNT TYPE 在攻击时
 AMNT% Mana Costs
 AMNT% 法力消耗
