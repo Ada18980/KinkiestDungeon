@@ -282,7 +282,7 @@ AddModel({
 			//MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
 			DisplacementInvariant: true,
-			DisplacementSprite: "CrotchropeSquish",
+			DisplacementSprite: "CrotchRopeSquish",
 			DisplaceLayers: ToMap(["RopeTorso"]),
 			InheritColor: "Rope",
 
