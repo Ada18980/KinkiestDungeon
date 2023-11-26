@@ -3646,6 +3646,8 @@ The air elemental sneakily slips a restraint on! (+RestraintAdded)
 风精灵偷偷地束缚了你！ （+RestraintAdded）
 The air elemental blinks to your position!
 风精灵眨眼间出现在你的位置！
+The air elemental slips a lock on! (DamageTaken)
+风精灵锁住了你！（DamageTaken）
 The air elemental spanks you playfully! (DamageTaken)
 风精灵调皮地打了你一下屁股！(DamageTaken)
 Angry Zombie
