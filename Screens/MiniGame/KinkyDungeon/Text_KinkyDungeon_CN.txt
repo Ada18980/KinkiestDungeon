@@ -3742,8 +3742,22 @@ The rope artist frowns and walks away, looking defeated.
 绳艺师皱着眉头走开了，看起来很泄气。
 The rope artist performs an intricate technique! (+RestraintAdded)
 绳索艺术家表演了一项复杂的技术！ （+RestraintAdded）
+The rope artist sneaks a lock onto you while you weren't looking! (DamageTaken)
+绳索艺术家会趁你不注意的时候偷偷给你上了锁！（DamageTaken）
 The rope artist smiles and tickles your feet! (DamageTaken)
 绳艺师微笑着挠你的脚！ (DamageTaken)
+Deputy
+副警长
+The deputy surrenders her donuts.
+副警长交出了她的甜甜圈。
+The deputy slaps on some cuffs! (+RestraintAdded)
+副警长拍了拍手铐！（+RestraintAdded）
+The deputy tases you! (Stunned!)
+副警长用电击枪电你！（眩晕！）
+The deputy conducts a strip search! (DamageTaken)
+副警长进行脱衣搜身！（DamageTaken）
+The deputy performs a security enhancement procedure! (DamageTaken)
+副警长执行安全强化程序！（承受伤害）
 Ninja Warrior
 忍者战士
 Ninja Assassin
