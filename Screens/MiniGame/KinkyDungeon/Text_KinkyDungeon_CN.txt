@@ -6884,6 +6884,74 @@ A harness that secures your other restraints and makes them tighter.
 一种安全带，可固定你的其他束缚并使它们更紧。
 They glow with a trace of magic.
 它们散发着一丝魔法的光芒。
+
+Spellbound Boxtie
+后手缚（符咒）
+A box tie keeping your arms secured behind your back.
+将你的手臂牢牢固定在背后。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Rope Cuffs
+绳手铐（符咒）
+A quick tie for apprehending prisoners.
+用于逮捕囚犯的快速捆绑。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Ropework
+绳索（符咒）
+A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
+用于逮捕囚犯的快速捆绑，穿过手部束缚装置上的带扣。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Hogtie
+驷马（符咒）
+A very strict and tight hogtie, good for subduing unruly captives.
+一种非常严苛和牢固的捆绑，适合制服不守规矩的俘虏。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Rope Belt
+绳衣（符咒）
+A harness acting as a handle to pull you around
+能使你被拉住的绳衣
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Harness
+绳束衣（符咒）
+A harness that secures your other restraints and makes them tighter.
+一种安全带，可固定你的其他束缚并使它们更紧。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Crotch Rope
+股绳（符咒）
+A tight rope impressing upon your most private areas...
+一条紧绷的绳索压迫在你最私密的区域......
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Wrist Tie
+手腕束带（符咒）
+A wrist and elbow tie keeping your arms secured behind your back.
+手腕和肘部系带将你的手臂固定在背后。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Leg Tie
+腿缚带（符咒）
+A tie that hobbles your legs together..
+一条带子将你的双腿束缚在一起。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Ankle Tie
+脚踝束带（符咒）
+A tie keeping your feet secured together.
+束带将双脚固定在一起。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Toe Rope
+脚趾绳缚（符咒）
+A tie keeping your toes secured together.
+束带将双脚固定在一起。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+
 Magic Boxtie
 后手缚（附魔）
 A box tie keeping your arms secured behind your back.
