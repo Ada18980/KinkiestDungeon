@@ -206,6 +206,12 @@ AddModel({
 			InheritColor: "Binder",
 
 		},
+		{ Name: "RightLegbinder", Layer: "BindThighRight", Pri: -20,
+			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			InheritColor: "Binder",
+
+		},
 		{ Name: "LacesLegbinder", Layer: "WrappingLegsOver", Pri: -19.9,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),

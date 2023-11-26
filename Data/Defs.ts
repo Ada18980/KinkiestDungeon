@@ -152,6 +152,7 @@ let LAYERS_BASE = [
 	"BaggyShirt",
 
 	// Skirts that dont follow shilhouette
+	"WrappingLegsOver2",
 	"OverSkirtDeco",
 	"OverSkirt",
 	"Greaves",
@@ -207,6 +208,7 @@ let LAYERS_BASE = [
 	"Thighs2",
 	"Thighs1",
 	"ThighLeftOver",
+	"ThighLeft",
 	"AnklesOver",
 	"Ankles",
 	"Ankles3",
@@ -466,6 +468,22 @@ let LayerGroups = {
 		"ShoeLeftUnder",
 		"ShoeRightUnder",
 	]),
+	"BalletHeels": ToMap([
+		"OverShoes",
+		"OverSocks",
+		"FootLeft",
+		"StockingLeft",
+		"FootLeft",
+		"LegLeft",
+		"FootRight",
+		"StockingRight",
+		"FootRight",
+		"LegRight",
+		"ShoeLeftUnder",
+		"ShoeRightUnder",
+		"ShoeLeft",
+		"ShoeRight",
+	]),
 	"HeelRight": ToMap([
 		"FootLeft",
 		"StockingLeft",
@@ -477,6 +495,21 @@ let LayerGroups = {
 		"LegRight",
 		"ShoeLeftUnder",
 		"ShoeRightUnder",
+
+	]),
+	"BalletHeelRight": ToMap([
+		"FootLeft",
+		"StockingLeft",
+		"FootLeft",
+		"LegLeft",
+		"FootRight",
+		"StockingRight",
+		"FootRight",
+		"LegRight",
+		"ShoeLeftUnder",
+		"ShoeRightUnder",
+		"ShoeLeft",
+		"ShoeRight",
 
 	]),
 	// endregion
@@ -1166,6 +1199,7 @@ let LayerGroups = {
 	// Left Leg
 	"ThighsOver",
 	"ThighLeftOver",
+	//"ThighLeft",
 	"AnklesOver",
 	"AnkleLeftOver",
 	"ThighRightOver",
@@ -1264,6 +1298,18 @@ let LayerGroups = {
 
 
 let LayerProperties = {
+	ShoeLeftOver: {
+		Parent: "ShoeLeft",
+	},
+	ShoeLeftUnder: {
+		Parent: "ShoeLeft",
+	},
+	ShoeRightOver: {
+		Parent: "ShoeRight",
+	},
+	ShoeRightUnder: {
+		Parent: "ShoeRight",
+	},
 	FurnitureFront: {
 		Parent: "BG",
 	},

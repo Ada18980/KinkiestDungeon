@@ -9,7 +9,6 @@ AddModel({
 	Name: "KiguMask",
 	Folder: "Kigu",
 	TopLevel: true,
-	Group: "Hood",
 	Restraint: true,
 	Categories: ["Restraints","Accessories"],
 	AddPose: ["FaceCoverGag", "Hooded"],

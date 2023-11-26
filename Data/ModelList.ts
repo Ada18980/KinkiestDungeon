@@ -120,6 +120,22 @@ AddModel({
 	])
 });
 
+
+AddModel({
+	Name: "TransparentCatsuit",
+	TopLevel: true,
+	Categories: ["Suits"],
+	Folder: "Catsuit",
+	Group: "Catsuit",
+	Filters: {
+		TorsoUpper: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
+		TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
+	},
+	Layers: ToLayerMap([
+		...GetModelLayersNoOverride("Catsuit"),
+	]),
+});
+
 AddModel({
 	Name: "Labcoat",
 	Folder: "Labcoat",
@@ -1133,7 +1149,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([
-		{ Name: "Armband", Layer: "Sleeves", Pri: 3,
+		{ Name: "Armband", Layer: "SleeveRight", Pri: 3,
 			Poses: ToMap(["Yoked", "Wristtie", "Free", "Boxtie", "Front", "Crossed"]),
 			MorphPoses: {Yoked: "Yoked", Boxtie: "Boxtie", Free: "Free", Wristtie: "Wristtie", Front: "Boxtie"},
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmRight"],

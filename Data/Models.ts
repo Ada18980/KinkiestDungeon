@@ -134,6 +134,19 @@ function GetModelLayers(ModelName: string, PrependString?: string, AppendString?
 	}
 	return [];
 }
+function GetModelLayersNoOverride(ModelName: string, PrependString?: string, AppendString?: string, InheritColor?: string, PriBonus?: number): ModelLayer[] {
+	if (ModelDefs[ModelName]) {
+		let ret : ModelLayer[] = JSON.parse(JSON.stringify(Object.values(ModelDefs[ModelName].Layers)));
+		for (let layer of ret) {
+			layer.Name = (PrependString || "") + layer.Name + (AppendString || "");
+			if (InheritColor) layer.InheritColor = InheritColor;
+			if (PriBonus) layer.Pri += PriBonus;
+			layer.NoOverride = true;
+		}
+		return ret;
+	}
+	return [];
+}
 function GetModelWithExtraLayers(NewModel: string, BaseModel: string, Layers: ModelLayer[], Parent?: string, TopLevel?: boolean, ExtraProps?: object): Model {
 	if (ModelDefs[BaseModel]) {
 		let model: Model = JSON.parse(JSON.stringify(ModelDefs[BaseModel]));
@@ -321,10 +334,17 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 				}
 			}
 		}
+
+		if (MC.XRayFilters) {
+			for (let x of MC.XRayFilters) {
+				MC.Poses[x] = true;
+			}
+		}
+
 		for (let m of MC.Models.values()) {
 			if (m.AddPoseConditional) {
 				for (let entry of Object.entries(m.AddPoseConditional)) {
-					if (!MC.Poses[entry[0]]) {
+					if (!MC.Poses[entry[0]] && !MC.Poses[entry[0]]) {
 						for (let pose of entry[1]) {
 							MC.Poses[pose] = true;
 						}
@@ -584,7 +604,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 									id,
 									ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
 									rot * Math.PI / 180, {
-										zIndex: -ModelLayers[ll[0]] + (LayerPri(MC, l, m, mods) || 0),
+										zIndex: -ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0),
 										anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
 										anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
 										scalex: sx != 1 ? sx : undefined,
@@ -642,7 +662,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 									id,
 									ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
 									rot * Math.PI / 180, {
-										zIndex: -ModelLayers[ll[0]] + (LayerPri(MC, l, m, mods) || 0),
+										zIndex: -ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0),
 										anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
 										anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
 										scalex: sx != 1 ? sx : undefined,
@@ -762,6 +782,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						if (refreshfilters) {
 							KDAdjustmentFilterCache.delete(efh);
 						}
+						KDTex(dsprite.name, false); // try to preload it
 						let efilter = (KDAdjustmentFilterCache.get(efh) || [new EraseFilter(
 							dsprite,
 						)]);
@@ -779,6 +800,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						if (refreshfilters) {
 							KDAdjustmentFilterCache.delete(efh);
 						}
+						KDTex(dsprite.name, false); // try to preload it
 						let efilter = (KDAdjustmentFilterCache.get(efh) || [new PIXI.DisplacementFilter(
 							dsprite,
 							ef.amount,
@@ -1054,6 +1076,11 @@ function UpdateModels(C: Character, Xray?: string[]) {
 	MC.Update.clear();
 	let poses = {};
 	if (Xray) {
+		for (let p of Object.keys(MC.Poses)) {
+			if (p.indexOf("Xray") > -1) {
+				delete MC.Poses[p];
+			}
+		}
 		MC.XRayFilters = Xray;
 		for (let x of Xray) {
 			poses[x] = true;
