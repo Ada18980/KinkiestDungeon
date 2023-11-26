@@ -7502,8 +7502,8 @@ It is reinforced with steel cables, so getting it off will be tricky.
 它是用钢索加固的，所以要把它取下来会很棘手。
 Training Collar
 训练项圈
-A collar used to keep unruly wolfgirls in check.
-用来控制不守规矩的狼女的项圈。
+A collar with a decorative tag used to identify wolfgirls.
+带有装饰标签的项圈，用于识别狼女。
 If it works on them, it sure as heck works on you.
 如果它对他们有效，那么它肯定对你有效。
 Training Leash
