@@ -2232,7 +2232,7 @@ Ranged Attack
 Combat Training
 战斗训练
 Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 0 WP you gain 1 slow resist.
-你的训练给予了许多奖励：|-每 10 个当前 WP，武器耐力消耗减少 1%，最多 40%。|-缓慢效果消失得更快。|-当你的 WP 高于 0 时，你将获得 1 点缓慢抵抗力。
+你的训练给予了许多奖励：|-每 10 个当前 WP，武器体力消耗减少 1%，最多 40%。|-缓慢效果消失得更快。|-当你的 WP 高于 0 时，你将获得 1 点缓慢抵抗力。
 
 This is your currently held offhand weapon. Click to switch to it.
 这是你当前持有的副手武器。点击即可切换到它。
@@ -2245,7 +2245,7 @@ You can't hold the WPN in your current state.
 Charge!
 冲啊！
 Dash and make an attack attack against a target within 2 tiles. If it deals 20% of their current hp in damage, you knock them back and take their place, otherwise they take +15% max hp crush damage from hitting the wall. If the attack misses, you still dash. Costs stamina equal to your sprint cost plus your attack cost.
-冲刺并对 2 格内的目标进行攻击。如果它造成了他们当前生命值 20% 的伤害，你会将他们击退并取代他们的位置，否则他们会因撞墙而受到 +15% 最大生命值挤压伤害。如果攻击未命中，你仍然会冲刺。耐力消耗等于你的冲刺消耗加上你的攻击消耗。
+冲刺并对 2 格内的目标进行攻击。如果它造成了他们当前生命值 20% 的伤害，你会将他们击退并取代他们的位置，否则他们会因撞墙而受到 +15% 最大生命值挤压伤害。如果攻击未命中，你仍然会冲刺。日历消耗等于你的冲刺消耗加上你的攻击消耗。
 You charge at the target!
 你向目标冲刺！
 Choose a target.
@@ -3029,7 +3029,7 @@ Crop
 For those unruly subs.
 专为那些反抗的人而设计
 Deals pain damage. Highly distracting. Offhand: +5 pain damage on attack for 3 stamina.
-对目标造成疼痛伤害，并使其极具性奋。副手：攻击时 +5 疼痛伤害，持续 3 点耐力。
+对目标造成疼痛伤害，并使其极具性奋。副手：攻击时 +5 疼痛伤害，持续 3 点体力。
 You pick up a riding crop.
 你拾起一根鞭子。
 Scissors
@@ -3151,11 +3151,11 @@ Magic Wand
 Its powers extend beyond the traditional schools of magic.
 它的力量超越了传统的魔法。
 Deals charm damage. 20% chance to stun the target for 2 turns. Offhand: +5 charm damage on attack for 3 stamina.
-造成妩媚伤害，有 20% 的几率使目标眩晕 2 回合。副手：攻击时 +5 妩媚伤害，持续 3 点耐力。
+造成妩媚伤害，有 20% 的几率使目标眩晕 2 回合。副手：攻击时 +5 妩媚伤害，持续 3 点体力。
 Feather
 羽毛
 A feather taken from some large fluffy being. Offhand: +5 tickle damage on attack for 3 stamina.
-从一些毛茸茸的大动物上取下的羽毛。副手：攻击时 +5 挠痒伤害，持续 3 点耐力。
+从一些毛茸茸的大动物上取下的羽毛。副手：攻击时 +5 挠痒伤害，持续 3 点体力。
 Deals tickle damage. Distracts enemies.
 造成挠痒伤害，使敌人性奋。
 Ice Cube
@@ -8737,7 +8737,7 @@ Light Bow
 Pointy stick delivery system.
 尖棒输送系统。
 Reload time: None. Deals crush damage on melee. Draws 10 charge and 20 stamina to fire an ordinary arrow, dealing 30 pierce damage.
-装弹时间：无。近战造成挤压伤害。消耗 10 点冲力和 20 点耐力来发射普通箭，造成 30 点穿透伤害。
+装弹时间：无。近战造成挤压伤害。消耗 10 点冲力和 20 点体力来发射普通箭，造成 30 点穿透伤害。
 You find a wooden bow.
 你找到一把木弓。
 10 charge to fire an arrow. Deals 30 pierce damage.
@@ -8747,7 +8747,7 @@ Choose projectile path
 Arrow
 箭
 You loose an arrow!
-你失去了一支箭！
+你射出了一支箭！
 
 Fire Arrows
 火焰箭
@@ -8777,7 +8777,7 @@ Crossbow
 Watch where you're pointing that thing!
 注意你把那个东西指向哪里！
 Reload time: 3 stationary turns. Deals crush damage on melee. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 65 pierce damage.
-装弹时间：3 静止回合。近战造成挤压伤害。需要 15 次充能且没有耐力来发射普通箭，造成 65 点穿透伤害。
+装弹时间：3 静止回合。近战造成挤压伤害。需要 15 次充能且没有体力来发射普通箭，造成 65 点穿透伤害。
 You find a crossbow.
 你找到一把弩。
 20 charge to fire a bolt. Deals 65 pierce damage.
@@ -9475,7 +9475,7 @@ You come from a magical lineage, granting +10 Magic Armor and +10% magic damage.
 Beast Girl
 野兽少女
 You have animalistic features such as a bite spell, -10% attack stamina cost, and 10 slash damage on hit while hands are free. -100 Charm Resist.
-你拥有兽性特征，例如咬伤法术、-10% 攻击耐力消耗以及在双手空闲时击中时造成 10 次斩击伤害。 -100 魅惑抗性。
+你拥有兽性特征，例如咬伤法术、-10% 攻击体力消耗以及在双手空闲时击中时造成 10 次斩击伤害。 -100 魅惑抗性。
 
 恶魔少女
 You are related to eldritch entities, granting +50% shadow damage and the ability to teleport between shadows. You are weak to holy restraints and bright light.
@@ -9494,7 +9494,7 @@ You were blessed with immortality by Ninril, Goddess of Restoration, granting -5
 Bast's Blessing
 Bast 的祝福
 You were granted undead immortality by Bast, granting a bite, claws, catlike senses, and stamina regen scaling with your current WP. Your WP gain is halved and you get -100 Fire Resist.
-Bast 赋予你不死不朽的能力，赋予你咬、爪、猫般的感觉，并根据你当前的 WP 调整耐力恢复。 你的 WP 增益减半并且你获得 -100 火焰抗性。
+Bast 赋予你不死不朽的能力，赋予你咬、爪、猫般的感觉，并根据你当前的 WP 调整体力恢复。 你的 WP 增益减半并且你获得 -100 火焰抗性。
 
 You channel mana through your body! Empowerment level: LEVEL
 你通过你的身体来积蓄魔力！充能级别：LEVEL
@@ -9606,10 +9606,11 @@ After letting go of yourself, you feel an immense surge of power, increasing mag
 Pleasure Training I
 快乐训练 I
 You remain satisfied for much less time after letting go. Letting go costs 50% less stamina.
-高潮后，你保持满足感的时间就会少得多。自慰高潮会减少 50% 的耐力。
+高潮后，你保持满足感的时间就会少得多。自慰高潮会减少 50% 的体力。
 Pleasure Training II
 快乐训练 II
-你很难满足。 高潮会降低 50% 的耐力（总计 75%）和 50% 的意志力。
+You are quite difficult to satisfy. Letting go costs 50% less stamina (75% total) and 50% less willpower.
+你很难满足。 高潮会降低 50% 的体力（总计 75%）和 50% 的意志力。
 
 Mental Resistance
 心理抵抗
@@ -10431,7 +10432,7 @@ Increases maximum SP by 12
 Iron Will
 钢铁意志
 While you have 100 current willpower or more, regain an additional 4 stamina per turn.
-当你当前意志力达到 100 点或更多时，每回合额外恢复 4 点耐力。
+当你当前意志力达到 100 点或更多时，每回合额外恢复 4 点体力。
 Defiance
 蔑视
 For each 10 current willpower you have over 50, gain +5 Bondage Resist.
@@ -10471,7 +10472,7 @@ When landing a critical strike with magic damage, crit multiplier is increased b
 Brute Force
 蛮力攻击
 When enabled, your attacks deal 10% of your willpower as additional crush damage but cost 10 more stamina.
-启用后，你的攻击会造成 10% 的意志力作为额外的挤压伤害，但会多花费 10 点耐力。
+启用后，你的攻击会造成 10% 的意志力作为额外的挤压伤害，但会多花费 10 点体力。
 One With Slime
 粘液一体
 While standing on slime/latex, you can cast rubber spells without components.
@@ -11628,8 +11629,57 @@ The vibrator holds at full power to drive you over the edge!
 The weapon needs to be loaded to fire.
 武器需要装弹才能开火。
 
+Recurve Bow
+反曲弓
+Curvy, just like its user.
+曲线优美，就像它的使用者一样。
+Reload time: 1 turn. Deals crush damage on melee. Draws 14 charge and 35 stamina to fire an ordinary arrow, dealing 40 pierce damage.
+装弹时间：1 回合。近战造成挤压伤害。需要 14 次充能和 35 点体力来发射普通箭，造成 40 点穿透伤害。
+You find a recurve bow.
+你找到一把反曲弓。
+14 charge to fire an arrow. Deals 40 pierce damage.
+14 次充能即可发射射箭。造成 40 点穿刺伤害。
+Choose projectile path
+选择弹丸路径
+Recurve Bow Arrow
+反曲弓箭
+You loose a strong arrow!
+你射出了一支强箭！
+
+Longbow
+长弓
+Great for building both empires and muscle.
+非常适合建立帝国和肌肉。
+Reload time: 2 turns. Deals crush damage on melee. Draws 18 charge and 60 stamina to fire an ordinary arrow, dealing 60 pierce damage.
+装弹时间：2 回合。近战造成挤压伤害。需要 18 次充能和 60 点体力来发射普通箭，造成 60 点穿透伤害。
+You find a huge longbow.
+你发现一把巨大的长弓。
+18 charge to fire an arrow. Deals 60 pierce damage.
+18 次充能即可发射箭。造成 60 点穿刺伤害。
+Choose projectile path
+选择弹丸路径
+Longbow Arrow
+长弓箭
+You loose a mighty arrow!
+你射出了一支强大的箭！
+
+Pistol Crossbow
+手枪弩
+Lethal. Sustainable. Portable.
+致命。可持续。便携。
+Reload time: 3 turns. Deals crush damage on melee. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 45 pierce damage.
+装弹时间：3 回合。近战造成挤压伤害。需要 15 次充能且无需体力即可发射普通箭，造成 45 点穿刺伤害。
+You find a pistol crossbow.
+你找到一把手枪弩。
+15 charge to fire a bolt. Deals 45 pierce damage.
+15 次充能即可发射箭矢。 造成 45 点穿刺伤害。
+Choose projectile path
+选择弹丸路径
+Pistol Bolt
+手枪弩箭
 You pull the trigger!
 你扣动了扳机！
+
 The RSTNME is removed as the lock comes off.
 RSTNME 在被锁打开后移除。
 You save the key in your inventory for future use.
@@ -16759,7 +16809,7 @@ Your WP, or willpower, is an important resource.|Without it, escaping from restr
 Oh no! That trap wiped out all your willpower!|Fortunately you have a potion.|You can drink it by clicking the '+' icon next to your WP bar.|You can also go into your Inventory in the bottom bar.|There is also a quick-inventory icon (backpack).
 哦，不！那个陷阱把你的意志力都消灭了|幸运的是你有药水|您可以通过单击意志力旁边的“+”图标来饮用|您还可以在底部栏中查看您的背包|还有一个快速图标（背包）。
 Another trap!|You'll notice that the trap also drained your stamina considerably, preventing you from sprinting or attacking.|(Note: you can toggle sprinting using the '>>' button on the bottom bar)|You can protect yourself while your stamina regenerates by retreating into the room above.|Close the door by clicking the Close Door button in the bottom bar.|
-另一个陷阱！|你会注意到，这个陷阱会大量消耗你的体力，阻止你冲刺或攻击。|（注意：你可以使用底部栏上的“>>”按钮切换冲刺）|你可以在保护自己的同时 退回到上面的房间即可恢复你的耐力。|点击底部栏中的“关门”按钮关上门。|
+另一个陷阱！|你会注意到，这个陷阱会大量消耗你的体力，阻止你冲刺或攻击。|（注意：你可以使用底部栏上的“>>”按钮切换冲刺）|你可以在保护自己的同时 退回到上面的房间即可恢复你的体力。|点击底部栏中的“关门”按钮关上门。|
 Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the bottom right.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1.
 你的MP，或法力，用来施法|为了施展法术，你需要学习一种|点击右下角的咒语按钮|然后点击火焰学徒，学习解锁火焰弹|然后，按空格键返回，然后按向右键切换页面|点击Firebolt，学习它，然后将其分配到法术1。
 On the right you'll see your stats and spells slots.|You can click on a spell slot or hit 1-4 on your keyboard to cast a spell|then click on the map for where you want to aim it.|The small wrench icon above them will let you|swap them out for another spell from your spellbook.
