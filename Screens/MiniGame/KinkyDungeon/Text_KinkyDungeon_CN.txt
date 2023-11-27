@@ -13821,6 +13821,8 @@ Theft detected. This is a warning.
 检测到盗窃。这是一个警告。
 Confiscating item.
 没收物品。
+Unknown subject detected. Presuming hostile.
+检测到未知对象。假定怀有敌意。
 Inmate detected. Commence training protocol.
 检测到犯人。开启调教协议。
 Inmate detected. Commence routine inspection.
