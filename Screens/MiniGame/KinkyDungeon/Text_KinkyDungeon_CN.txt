@@ -14146,8 +14146,19 @@ A game of chase? Fun.
 追逐游戏？有意思。
 Such feeble attempts.
 没用的。
-Such feeble attempts.
-没用的。
+
+Not the edging training! Anything but that!
+不要边缘训练！除了那个之外什么都可以！
+Forgive me!
+请原谅我！
+No! Don't punish me!
+不！别惩罚我！
+You look like you've got style...
+你看起来很有风格...
+I could learn a thing or two from you!
+我可以从你身上学到一两件事！
+Mind if I just, um, watch?
+介意我只是，嗯，观看吗？
 Look, a new recruit!
 看，新兵！
 I'll teach you a thing or two!
@@ -14186,10 +14197,67 @@ Yikes! I'm calling backup!
 哎呀！需要后援！
 Found you!
 找到你了！
+Hold still~
+别动~
+Your tricks won't work on me.
+你的诡计对我不起作用。
+Oof... You got me.
+哦...你抓住了我。
+It's over.
+结束了。
+Nice one.
+不错。
+You missed!
+你偏了！
+I'll hand you over when I'm done with you.
+等我处理完你的事情之后我就会交给你。
 Get over here!
 过来！
+Hmph. Stay down.
+哼。趴下。
+Give me that.
+把那个给我。
 'Click!'
 '咔哒！'
+Mistress PTRN, reporting for duty.
+PTRN 女士正在报到。
+No time to waste.
+没时间浪费。
+Looks like the reports are correct. Stop her!
+看起来情报是正确的。拦住她！
+Moving in to assist.
+前去协助。
+You need to be taught a lesson, adventurer.
+你需要接受教训，冒险家。
+We have a mutual protection contract. Suffice to say, you've violated it.
+我们有相互保护合同。我只想说，你已经违反了。
+We defend our partners, unlike some people.
+与某些人不同，我们保护我们的合作伙伴。
+Target sighted. Taking her down.
+瞄准目标。把她打倒。
+Our influence is everywhere~
+我们的影响力无处不在~
+We have orders to stop you!
+我们有命令阻止你！
+Moving to assist!
+正在移动以提供帮助！
+You really think you're special, huh?
+你真的认为你很特别，是吗？
+Combat formation bravo
+战斗队形好极了。
+
+I'm sorry! I didn't mean to break that vase!
+对不起！我不是故意打破那个花瓶的！
+I won't do it again, I swear!
+我不会再这样做了，我发誓！
+Please no! I don't want the edging training again
+求你了别！我不想再进行边缘训练了
+Don't you need a bodyguard, miss?
+不需要保镖吗，小姐？
+Won't you train me, miss?
+你不训练我吗，小姐？
+I've been a bad girl...
+我曾经是个坏女孩...
 Miss, your uniform is dirty...
 小姐，你的制服脏了……
 Why hello miss...
@@ -14198,14 +14266,22 @@ Let me fix your outfit...
 让我修补你的衣服……
 Hmm, do I need to tighten those?
 嗯，我需要收紧那些吗？
+M-miss... I was told to bring you somewhere..
+小姐……有人吩咐我带你去某个地方……
 Umm, miss, you're supposed to report to the head maid...
 嗯，小姐，你应该向女仆长报告……
 Thanks for picking up.
 谢谢。
 I'll take those to the head maid!
 我会把那些汇报给女仆长！
+Someone help!
+有人帮忙！
+Who are you!?
+你是谁！？
 Oh no!
 哦不！
+Stop!
+停下！
 Miss! You're not allowed to cast that!
 小姐！你不能用那个！
 Miss, I have to report that!
@@ -14222,10 +14298,104 @@ Oh no! I have to report this!
 哦不！我必须报告这个！
 Oh no!
 哦不！
+I got you! I got you!
+我抓住你了！我抓住你了！
 Try that again!
 再试一次！
+Remember your training, remember your training...
+记住你的训练，记住你的训练……
+You're filthy!
+你真脏！
+Hold still...
+别动...
+Stay calm...
+保持冷静...
+I'll lead you to your cell...
+我会带你到你的牢房...
+Come on!
+快点！
 Got you!
 抓住你了！
+I need to take this...
+我需要拿走这个...
+I'm sorry...
+我很抱歉...
+*Salutes* PTRN reporting for service!
+*致敬* PTRN 报告服务！
+I'll help!
+我会帮忙的！
+Stop her!
+阻止她！
+Please be gentle
+请温柔一点
+Ahhh! Stop it!
+啊啊！停下来！
+Don't touch her!
+别碰她！
+Wait, you can't do that!
+等等，你不能这样做！
+Me? Help? Right!
+我？帮助？正确的！
+I'm sorry miss...
+我很抱歉，女士...
+I was ordered to capture you... please don't resist.
+我奉命抓捕你……请不要反抗。
+I-I'm coming!
+我-我来了！
+Please surrender, miss!
+请投降吧，小姐！
+I'll just stay here!
+我就在这儿等！
+
+Please no! I don't want the pleasure training again!
+求你了别！我不想再进行那种快乐的训练了！
+Say hello to my little friend!
+跟我的小朋友打个招呼！
+This is where I'd apply my melee training... if I had any!
+这就是我进行近战训练的地方……如果我有的话！
+Oh no!
+哦不！
+Step back a bit, this isn't fair!
+退后一步，这不公平！
+Oh yeah? Two can play at that game!
+哦耶？那个游戏可以两个人玩！
+Don't bring magic to a gunfight!
+不要将魔法带入枪战！
+Didn't think this through, did you?
+你没有想到这一点吧？
+Grenade!!!
+手榴弹！！！
+What's this 'melee' you speak of?
+你所说的 '混战' 是什么？
+What terrible aim!
+多么可怕的目标啊！
+I am bulletproof!
+我是防弹的！
+Marksman PTRN reporting for service!
+射手 PTRN 报告服务！
+Opening fire!
+开火！
+I'll cover you!
+我来掩护你！
+Providing cover fire!
+提供火力掩护！
+Cover me, I'm going in!
+掩护我，我要进去了！
+Commence overwatch!
+开始守望！
+
+I'll be heading out...
+我这就出发...
+Looks like I'll be taking my leave.
+看来我要请假了。
+Looks like I'll be reporting you~
+看来要举报你了~
+I was wrong about you.
+我对你的看法是错误的。
+Perhaps you should take my place.
+也许你应该代替我。
+Why don't you try being in charge?
+你为什么不尝试一下自己负责呢？
 Come now, it's time for training.
 来吧，训练时间到了。
 Do you need to be punished?
