@@ -11913,6 +11913,8 @@ Ropes slither out towards you from between the bricks!
 绳索从砖块之间滑向你！
 Ropes fall on you from all sides!
 绳索从四面八方落在你身上！
+A constellation of ropes surrounds you!
+一堆绳索围绕着你！
 Leather restraints start appearing around you!
 皮革拘束具开始出现在你身边！
 high-tech cables come out from the floor!
