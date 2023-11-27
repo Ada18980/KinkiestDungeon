@@ -812,6 +812,13 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 							KinkyDungeonStatsChoice.delete(stat[0]);
 							localStorage.setItem('KinkyDungeonStatsChoice' + KinkyDungeonPerksConfig, JSON.stringify(Array.from(KinkyDungeonStatsChoice.keys())));
 						}
+						if (KDClipboardDisabled) {
+							let txt = "";
+							for (let k of KinkyDungeonStatsChoice.keys()) {
+								if (!k.startsWith("arousal") && !k.endsWith("Mode")) txt += (txt ? "|" : "") + k;
+							}
+							ElementValue("KDCopyPerks", txt);
+						}
 						return true;
 					}, !NonSelectable && (KinkyDungeonState == "Stats" || (KinkyDungeonDrawState == "Perks2" && KDDebugPerks)), XX, YY, KDPerksButtonWidth, KDPerksButtonHeight, TextGet("KinkyDungeonStat" + (stat[1].id)) + ` (${KDGetPerkCost(stat[1])})`,
 						(!KinkyDungeonStatsChoice.get(stat[0]) && KinkyDungeonCanPickStat(stat[0])) ? colorAvailable : (KinkyDungeonStatsChoice.get(stat[0]) ? colorSelected : (NonSelectable ? colorAvailable : colorExpensive)),

@@ -891,7 +891,10 @@ let KDTileGen = {
 		return {Type: "DollTerminal", OffLimits: true};
 	},
 	"Skin": (x, y, tile, tileGenerator, data) => {
-		return {Skin: tileGenerator.skin, Skin2: tileGenerator.skin};
+		return {Skin: tileGenerator.Skin, Skin2: tileGenerator.Skin};
+	},
+	"SkinCode": (x, y, tile, tileGenerator, data) => {
+		return {SkinCode: tileGenerator.SkinCode, Skin2: tileGenerator.Skin2, Skin: tileGenerator.Skin};
 	},
 	"BondageMachine": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'N');

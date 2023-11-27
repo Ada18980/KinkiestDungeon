@@ -1,7 +1,29 @@
 "use strict";
 
+let KDFullscreen = false;
+let KDExitButton = false;
+
 // Disable interpolation when scaling, will make texture be pixelated
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR;
+
+
+let KDClipboardDisabled = window.location.host.includes('itch.io');
+(async function() {
+	let queryOpts = { name: 'clipboard-read', allowWithoutGesture: false };
+	try {
+		// @ts-ignore
+		let permissionStatus = await navigator.permissions.query(queryOpts);
+		permissionStatus.onchange = () => {
+			console.log(permissionStatus.state);
+			if (permissionStatus.state == 'denied') KDClipboardDisabled = true;
+		};
+	} catch (e) {
+		// Handle
+		KDClipboardDisabled = true;
+	}
+})();
+
+
 
 let CanvasWidth = 2000;
 let CanvasHeight = 1000;
@@ -109,6 +131,8 @@ let KDToggles = {
 	DrawArmor: true,
 	Bloom: true,
 	StunFlash: true,
+	HighResDisplacement: false,
+	Fullscreen: false,
 	AsyncRendering: false,
 	ParticlesFX: true,
 	ArousalHearts: true,
@@ -645,7 +669,8 @@ function KDLoadToggles() {
 			KDToggles[t] = loaded[t];
 	}
 
-	if (!Player.GraphicsSettings) {
+
+	if (Player && !Player.GraphicsSettings) {
 		Player.GraphicsSettings = {AnimationQuality: 0};
 	}
 }
@@ -658,6 +683,16 @@ function KDSaveToggles() {
  * @returns {void} - Nothing
  */
 function KinkyDungeonLoad() {
+	try {
+		//@ts-ignore
+		let win = nw.Window.get();
+		if (win) {
+			KDExitButton = true;
+		}
+	} catch (err) {
+		console.log(err);
+	}
+
 	KinkyDungeonSetupCrashHandler();
 	KDStartTime = CommonTime();
 
@@ -895,7 +930,65 @@ let KDLogoStartTime = 0;
 let KDLogoEndTime = 2500;
 let KDLogoEndTime2 = 500;
 
+function KDOpenFullscreen() {
+	try {
+		/*
+		// @ts-ignore
+		if (document.getElementById("MainCanvas")?.requestFullscreen) {
+			// @ts-ignore
+			document.getElementById("MainCanvas")?.requestFullscreen();
+			// @ts-ignore
+		} else if (document.getElementById("MainCanvas")?.webkitRequestFullscreen) {
+		// @ts-ignore
+			document.getElementById("MainCanvas")?.webkitRequestFullscreen();
+		// @ts-ignore
+		} else if (document.getElementById("MainCanvas")?.msRequestFullscreen) {
+		// @ts-ignore
+			document.getElementById("MainCanvas")?.msRequestFullscreen();
+		}*/
+		// @ts-ignore
+		let win = nw.Window.get();
+		if (win?.enterFullscreen) win.enterFullscreen();
+	} catch (err) {
+		console.log(err);
+	}
+}
+
+function KDCloseFullscreen() {
+
+	try {
+		/*
+		if (document.exitFullscreen) {
+			document.exitFullscreen();
+		// @ts-ignore
+		} else if (document.webkitExitFullscreen) {
+		// @ts-ignore
+			document.webkitExitFullscreen();
+			// @ts-ignore
+		} else if (document.msExitFullscreen) {
+		// @ts-ignore
+			document.msExitFullscreen();
+		}*/
+		// @ts-ignore
+		let win = nw.Window.get();
+		if (win?.leaveFullscreen) win.leaveFullscreen();
+	} catch (err) {
+		console.log(err);
+	}
+}
+
 function KinkyDungeonRun() {
+
+	if (StandalonePatched) {
+		if (KDFullscreen && !KDToggles.Fullscreen) {
+			KDCloseFullscreen();
+			KDFullscreen = false;
+		} else if (!KDFullscreen && KDToggles.Fullscreen) {
+			KDOpenFullscreen();
+			KDFullscreen = true;
+		}
+	}
+
 	if (!KDLogoStartTime) KDLogoStartTime = CommonTime();
 
 	if (KinkyDungeonPlayer?.Appearance) {
@@ -1149,12 +1242,22 @@ function KinkyDungeonRun() {
 			return true;
 		}, true, 1000-350/2, 680, 350, 64, TextGet("GameToggles"), "#ffffff", "");
 
+		let ii = 760;
+		if (KDExitButton) {
+			DrawButtonKDEx("KDExitButton", () => {
+				//@ts-ignore
+				let win = nw.Window.get();
+				win.close();
+				return true;
+			}, true, 1000-350/2, ii, 350, 64, TextGet("KDExit"), "#ffffff", "");
+			ii += 80;
+		}
 		if (TestMode) {
 			DrawButtonKDEx("TileEditor", () => {
 				KDInitTileEditor();
 				KinkyDungeonState = "TileEditor";
 				return true;
-			}, true, 1000-350/2, 760, 350, 64, "Tile Editor", "#ffffff", "");
+			}, true, 1000-350/2, ii, 350, 64, "Tile Editor", "#ffffff", "");
 		}
 
 		if (!StandalonePatched) {
@@ -1654,43 +1757,73 @@ function KinkyDungeonRun() {
 		}
 		DrawTextFitKD(TextGet("KinkyDungeonFilter"), 600 + 210/2, 930 + 54/2, 210, "#aaaaaa");
 
-
-		DrawButtonKDEx("copyperks", (bdata) => {
-			let txt = "";
-			for (let k of KinkyDungeonStatsChoice.keys()) {
-				if (!k.startsWith("arousal") && !k.endsWith("Mode")) txt += (txt ? "\n" : "") + k;
-			}
-			navigator.clipboard.writeText(txt);
-			return true;
-		}, true, 1850, 930, 140, 54, TextGet("KinkyDungeonCopyPerks"), "#ffffff", "");
-
-
-		DrawButtonKDEx("pasteperks", (bdata) => {
-			navigator.clipboard.readText()
-				.then(text => {
-					let list = text.split('\n');
-					let changed = 1;
-					let iter = 0;
-					while (changed > 0 && iter < 1000) {
-						changed = 0;
-						for (let l of list) {
-							let lp = l.replace('\r','');// List processed
-							// Find the perk that matches the name
-							for (let perk of Object.entries(KinkyDungeonStatsPresets)) {
-								if (perk[0] == lp && KDValidatePerk(perk[1])) {
-									KinkyDungeonStatsChoice.set(perk[0], true);
-									changed += 1;
+		if (!KDClipboardDisabled)
+			DrawButtonKDEx("copyperks", (bdata) => {
+				let txt = "";
+				for (let k of KinkyDungeonStatsChoice.keys()) {
+					if (!k.startsWith("arousal") && !k.endsWith("Mode")) txt += (txt ? "\n" : "") + k;
+				}
+				navigator.clipboard.writeText(txt);
+				return true;
+			}, true, 1850, 930, 140, 54, TextGet("KinkyDungeonCopyPerks"), "#ffffff", "");
+		else {
+			let CF = KDTextField("KDCopyPerks", 1700, 930, 280, 54, undefined, undefined, "10000");
+			if (CF.Created) {
+				CF.Element.oninput = (event) => {
+					let text = ElementValue("KDCopyPerks");
+					try {
+						let list = text.split('|');
+						let changed = 1;
+						let iter = 0;
+						while (changed > 0 && iter < 1000) {
+							changed = 0;
+							for (let l of list) {
+								let lp = l.replace('\r','');// List processed
+								// Find the perk that matches the name
+								for (let perk of Object.entries(KinkyDungeonStatsPresets)) {
+									if (perk[0] == lp && KDValidatePerk(perk[1])) {
+										KinkyDungeonStatsChoice.set(perk[0], true);
+										changed += 1;
+									}
 								}
 							}
+							iter += 1;
 						}
-						iter += 1;
+					} catch (err) {
+						console.log("Invalid perks");
 					}
-				})
-				.catch(err => {
-					console.error('Failed to read clipboard contents: ', err);
-				});
-			return true;
-		}, true, 1700, 930, 140, 54, TextGet("KinkyDungeonPastePerks"), "#ffffff", "");
+
+				};
+			}
+		}
+
+		if (!KDClipboardDisabled)
+			DrawButtonKDEx("pasteperks", (bdata) => {
+				navigator.clipboard.readText()
+					.then(text => {
+						let list = text.split('\n');
+						let changed = 1;
+						let iter = 0;
+						while (changed > 0 && iter < 1000) {
+							changed = 0;
+							for (let l of list) {
+								let lp = l.replace('\r','');// List processed
+								// Find the perk that matches the name
+								for (let perk of Object.entries(KinkyDungeonStatsPresets)) {
+									if (perk[0] == lp && KDValidatePerk(perk[1])) {
+										KinkyDungeonStatsChoice.set(perk[0], true);
+										changed += 1;
+									}
+								}
+							}
+							iter += 1;
+						}
+					})
+					.catch(err => {
+						console.error('Failed to read clipboard contents: ', err);
+					});
+				return true;
+			}, true, 1700, 930, 140, 54, TextGet("KinkyDungeonPastePerks"), "#ffffff", "");
 
 
 		if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {

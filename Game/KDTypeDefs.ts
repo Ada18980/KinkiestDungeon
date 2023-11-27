@@ -1593,6 +1593,10 @@ interface effectTile {
 	/** random = basic effect where it fades in and has a chance to fade out again */
 	fade?: string,
 	statuses?: Record<string, number>,
+	/** Spin to the effect tile sprite */
+	spin?: number,
+	spinAngle?: number,
+
 };
 
 /** For spells */

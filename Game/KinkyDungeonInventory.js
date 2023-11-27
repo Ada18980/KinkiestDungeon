@@ -553,9 +553,9 @@ function KDGetItemPreview(item) {
 	/** @type {{name: any; item: any; preview: string, preview2?: string, previewcolor?: string; previewcolorbg?: string;}} */
 	let ret = null;
 	let Group = "";
-	if (item.type == Restraint && KDRestraint(item).Group) Group = KDRestraint(item).Group;
-	else if (item.type == LooseRestraint && KDRestraint(item).Group) Group = KDRestraint(item).Group;
-	if ((item.type == Restraint || item.type == LooseRestraint) && KDRestraint(item).AssetGroup) Group = KDRestraint(item).AssetGroup;
+	if (item.type == Restraint && KDRestraint(item)?.Group) Group = KDRestraint(item).Group;
+	else if (item.type == LooseRestraint && KDRestraint(item)?.Group) Group = KDRestraint(item).Group;
+	if ((item.type == Restraint || item.type == LooseRestraint) && KDRestraint(item)?.AssetGroup) Group = KDRestraint(item).AssetGroup;
 	if (Group == "ItemMouth2" || Group == "ItemMouth3") Group = "ItemMouth";
 
 	if (item.type == Restraint) {
@@ -569,7 +569,7 @@ function KDGetItemPreview(item) {
 		KinkyDungeonSendEvent("icon", data);
 		ret = {name: item.name, item: item,
 			preview: KDGetRestraintPreviewImage(KDRestraint(item)),
-			preview2: KDGetGroupPreviewImage(KDRestraint(item).Group),
+			preview2: KDGetGroupPreviewImage(KDRestraint(item)?.Group),
 		};
 		if (data.color) {
 			ret.previewcolor = data.color;
@@ -589,7 +589,7 @@ function KDGetItemPreview(item) {
 		KinkyDungeonSendEvent("icon", data);
 		ret = {name: KDRestraint(item).name, item: item,
 			preview: KDGetRestraintPreviewImage(KDRestraint(item)),
-			preview2: KDGetGroupPreviewImage(KDRestraint(item).Group),
+			preview2: KDGetGroupPreviewImage(KDRestraint(item)?.Group),
 		};
 		if (data.color) {
 			ret.previewcolor = data.color;

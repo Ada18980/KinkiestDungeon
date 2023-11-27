@@ -29,6 +29,8 @@ let KDModelList_Sublevel_index = 0;
 let KDModelList_Sublevel_viewindex = {index: 0};
 let KDModelList_Sublevel = [];
 
+let KDModelListFilter = "";
+
 let KDWardrobeCategories = [
 	"Uniforms",
 	"Suits",
@@ -75,7 +77,8 @@ let KDColorSliderColor = {
 };
 let KDCurrentLayer = "";
 
-let KDSavedColorCount = 9;
+let KDSavedColorCount = 18;
+let KDSavedColorPerRow = 9;
 let KDSavedColors = [
 
 ];
@@ -115,26 +118,34 @@ function KDInitCurrentPose(blank) {
 }
 
 
-function KDDrawSavedColors(X, Y, max, C) {
+function KDDrawSavedColors(X, y, max, C) {
 	let spacing = 100;
+	let vspacing = 120;
 	let filters = (KDSelectedModel?.Filters ? KDSelectedModel.Filters[KDCurrentLayer] : undefined) || KDColorSliders;
 
-	for (let i = 0; i < max && i < KDSavedColors.length; i++) {
-		KDDraw(kdcanvas, kdpixisprites, "SavedColor" + i, KinkyDungeonRootDirectory + "UI/greyColor.png", X + spacing * i, Y, 64, 64, undefined, {
+
+	for (let ii = 0; ii < max && ii < KDSavedColors.length; ii++) {
+		let i = ii;
+		let Y = y;
+		while (i >= KDSavedColorPerRow) {
+			i -= KDSavedColorPerRow;
+			Y += vspacing;
+		}
+		KDDraw(kdcanvas, kdpixisprites, "SavedColor" + ii, KinkyDungeonRootDirectory + "UI/greyColor.png", X + spacing * i, Y, 64, 64, undefined, {
 			filters: [
-				new PIXI.filters.AdjustmentFilter(KDSavedColors[i]),
+				new PIXI.filters.AdjustmentFilter(KDSavedColors[ii]),
 			]
 		});
-		DrawButtonKDEx("SavedColorCopy" + i, (bdata) => {
+		DrawButtonKDEx("SavedColorCopy" + ii, (bdata) => {
 			if (filters && KDSelectedModel) {
-				KDSavedColors[i] = Object.assign({}, filters);
+				KDSavedColors[ii] = Object.assign({}, filters);
 				localStorage.setItem("kdcolorfilters", JSON.stringify(KDSavedColors));
 			}
 			return true;
 		}, true, X + spacing * i + 32 - 48, Y + 64, 48, 48, "", "#ffffff", KinkyDungeonRootDirectory + "UI/savedColor_copy.png", undefined, false, true);
-		DrawButtonKDEx("SavedColorPaste" + i, (bdata) => {
+		DrawButtonKDEx("SavedColorPaste" + ii, (bdata) => {
 			if (filters && KDSelectedModel) {
-				Object.assign(filters, KDSavedColors[i]);
+				Object.assign(filters, KDSavedColors[ii]);
 				KDChangeWardrobe(C);
 				if (!KDSelectedModel.Filters) KDSelectedModel.Filters = {};
 				KDSelectedModel.Filters[KDCurrentLayer] = Object.assign({}, filters);
@@ -168,34 +179,66 @@ function KDDrawColorSliders(X, Y, C, Model) {
 		}
 		return true;
 	}, true, X + width/2 + 10, YY, width/2 - 10, 30, TextGet("KDResetLayer"), "#ffffff");
-	if (TestMode)
-		DrawButtonKDEx("ExportAllLayers", (bdata) => {
-			if (Model.Filters) {
-				navigator.clipboard.writeText(JSON.stringify(Model.Filters));
-			}
-			return true;
-		}, true, X + width/2 + 10, YY - 40, width/2 - 10, 30, TextGet("KDExportAllLayers"), "#ffffff");
 
 
 
-	DrawButtonKDEx("KDCopyLayer", (bdata) => {
-		navigator.clipboard.writeText(JSON.stringify(filters));
-		return true;
-	}, true, X, YY, width/2 - 10, 30, TextGet("KDCopyLayer"), "#ffffff");
-	DrawButtonKDEx("KDPasteLayer", (bdata) => {
-		navigator.clipboard.readText()
-			.then(text => {
-				let parsed = JSON.parse(text);
-				if (parsed?.red != undefined && parsed.green != undefined && parsed.blue != undefined) {
-					console.log(Object.assign({}, parsed));
-					KDChangeWardrobe(C);
-					if (!Model.Filters) Model.Filters = {};
-					Model.Filters[KDCurrentLayer] = Object.assign({}, parsed);
-					KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+	if (!KDClipboardDisabled) {
+		if (TestMode)
+			DrawButtonKDEx("ExportAllLayers", (bdata) => {
+				if (Model.Filters) {
+					navigator.clipboard.writeText(JSON.stringify(Model.Filters));
 				}
-			});
-		return true;
-	}, true, X, YY - 40, width/2 - 10, 30, TextGet("KDPasteLayer"), "#ffffff");
+				return true;
+			}, true, X + width/2 + 10, YY - 40, width/2 - 10, 30, TextGet("KDExportAllLayers"), "#88ff88");
+
+		DrawButtonKDEx("KDCopyLayer", (bdata) => {
+			navigator.clipboard.writeText(JSON.stringify(filters));
+			return true;
+		}, true, X, YY, width/2 - 10, 30, TextGet("KDCopyLayer"), "#ffffff");
+		DrawButtonKDEx("KDPasteLayer", (bdata) => {
+			navigator.clipboard.readText()
+				.then(text => {
+					let parsed = JSON.parse(text);
+					if (parsed?.red != undefined && parsed.green != undefined && parsed.blue != undefined) {
+						console.log(Object.assign({}, parsed));
+						KDChangeWardrobe(C);
+						if (!Model.Filters) Model.Filters = {};
+						Model.Filters[KDCurrentLayer] = Object.assign({}, parsed);
+						KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+					}
+				});
+			return true;
+		}, true, X, YY - 40, width/2 - 10, 30, TextGet("KDPasteLayer"), "#ffffff");
+	} else {
+		let CF = KDTextField("KDCopyFilter", X, YY - 50, width, 30, undefined, undefined, "300");
+		if (CF.Created) {
+			CF.Element.oninput = (event) => {
+				let value = ElementValue("KDCopyFilter");
+				try {
+					let parsed = JSON.parse(value);
+					if (value) {
+						KDChangeWardrobe(C);
+						if (!Model.Filters) Model.Filters = {};
+						if (!Model.Filters[KDCurrentLayer])
+							Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
+						if (Model.Filters[KDCurrentLayer].alpha < 0.001) Model.Filters[KDCurrentLayer].alpha = 0.001;
+						Model.Filters[KDCurrentLayer].red = parsed.red;
+						Model.Filters[KDCurrentLayer].green = parsed.green;
+						Model.Filters[KDCurrentLayer].blue = parsed.blue;
+						Model.Filters[KDCurrentLayer].gamma = parsed.gamma;
+						Model.Filters[KDCurrentLayer].brightness = parsed.brightness;
+						Model.Filters[KDCurrentLayer].alpha = parsed.alpha;
+						Model.Filters[KDCurrentLayer].contrast = parsed.contrast;
+						Model.Filters[KDCurrentLayer].saturation = parsed.saturation;
+						KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+					}
+				} catch (err) {
+					console.log("Invalid filter");
+				}
+
+			};
+		}
+	}
 
 
 	YY += 60;
@@ -211,12 +254,13 @@ function KDDrawColorSliders(X, Y, C, Model) {
 				if (!Model.Filters) Model.Filters = {};
 				if (!Model.Filters[KDCurrentLayer])
 					Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
-				Model.Filters[KDCurrentLayer][key] = (MouseX - X) / width * 5;
+				Model.Filters[KDCurrentLayer][key] = ((MouseX - X) / width) * 5;
 				KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
 				ElementValue("KDSelectedColor", `#${
 					Math.round(Model.Filters[KDCurrentLayer].red /5 * 255).toString(16)}${
 					Math.round(Model.Filters[KDCurrentLayer].green /5 * 255).toString(16)}${
 					Math.round(Model.Filters[KDCurrentLayer].blue /5 * 255).toString(16)}`);
+				ElementValue("KDCopyFilter", JSON.stringify(Model.Filters[KDCurrentLayer]));
 				lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
 				ForceRefreshModels(C);
 			}
@@ -407,7 +451,8 @@ function KDUpdateModelList(level = 0) {
 		KDModelList_Toplevel_viewindex.index = 0;
 		for (let model of Object.entries(ModelDefs)) {
 			if (model[1].TopLevel && model[1].Categories?.includes(category) && (TestMode || !model[1].Restraint)) {
-				KDModelList_Toplevel.push(model[0]);
+				if (!KDModelListFilter || TextGet(model[0]).toLowerCase().includes(KDModelListFilter.toLowerCase()))
+					KDModelList_Toplevel.push(model[0]);
 			}
 		}
 
@@ -422,12 +467,14 @@ function KDUpdateModelList(level = 0) {
 			// Put these at the top of the list
 			for (let model of Object.entries(ModelDefs)) {
 				if (model[1].Parent != toplevel && model[0] == toplevel && (TestMode || !model[1].Restraint)) {
-					KDModelList_Sublevel.push(model[0]);
+					if (!KDModelListFilter || TextGet(model[1].Parent).toLowerCase().includes(KDModelListFilter.toLowerCase()))
+						KDModelList_Sublevel.push(model[0]);
 				}
 			}
 			for (let model of Object.entries(ModelDefs)) {
 				if (model[1].Parent == toplevel && (TestMode || !model[1].Restraint)) {
-					KDModelList_Sublevel.push(model[0]);
+					if (!KDModelListFilter || TextGet(model[0]).toLowerCase().includes(KDModelListFilter.toLowerCase()))
+						KDModelList_Sublevel.push(model[0]);
 				}
 			}
 		}
@@ -452,6 +499,8 @@ function KDChangeWardrobe(C) {
  * @param {Character} C
  */
 function KDDrawModelList(X, C) {
+
+
 	let clickCategory = (en, index) => {
 		return (bdata) => {
 			if (!en) return false;
@@ -510,6 +559,18 @@ function KDDrawModelList(X, C) {
 
 	let buttonHeight = 38;
 	let buttonSpacing = 40;
+
+	let MF = KDTextField("KDModelListFilter", X+110, 10, 400, buttonHeight, undefined, undefined, "30");
+	if (MF.Created) {
+		MF.Element.oninput = (event) => {
+			KDModelListFilter = ElementValue("KDModelListFilter");
+
+			KDUpdateModelList(1);
+			KDUpdateModelList(2);
+			KDUpdateModelList(3);
+		};
+	}
+
 
 	let hasCategories = {};
 	let hasTopLevel = {};
@@ -641,7 +702,7 @@ function KDDrawWardrobe(screen, Character) {
 	if (KDPlayerSetPose)
 		KDDrawPoseButtons(C);
 	else {
-		KDDrawSavedColors(1060, 870, KDSavedColorCount, C);
+		KDDrawSavedColors(1060, 760, KDSavedColorCount, C);
 	}
 	DrawButtonKDEx("SetPose", (bdata) => {
 		KDPlayerSetPose = !KDPlayerSetPose;
@@ -752,7 +813,7 @@ function KDDrawWardrobe(screen, Character) {
 	"#ffffff", "");
 
 
-	if (TestMode) {
+	if (TestMode && !KDClipboardDisabled) {
 		DrawButtonKDEx("KDCreateOutfit", (bdata) => {
 			let exportData = [];
 			if (C?.Appearance)

@@ -196,6 +196,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 			// Next we revisit all the player's restraints
 			if (!NoRestraints) {
 				for (let inv of KinkyDungeonAllRestraint()) {
+					if (!KDRestraint(inv)) continue; // Skip invalid restraints!!!
 					let renderTypes = KDRestraint(inv).shrine;
 					if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
 						KDApplyItem(inv, KinkyDungeonPlayerTags);
@@ -247,14 +248,14 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 				}
 
 				if (clothes.Group == "Necklace") {
-					if (KinkyDungeonGetRestraintItem("ItemTorso") && KDRestraint(KinkyDungeonGetRestraintItem("ItemTorso")).harness) clothes.Lost = true;
+					if (KinkyDungeonGetRestraintItem("ItemTorso") && KDRestraint(KinkyDungeonGetRestraintItem("ItemTorso"))?.harness) clothes.Lost = true;
 					if (KinkyDungeonGetRestraintItem("ItemArms") && KDGroupBlocked("ItemBreast")) clothes.Lost = true;
 				}
 				//if (clothes.Group == "Bra" && !clothes.NoLose) {
 				//if (KinkyDungeonGetRestraintItem("ItemBreast")) clothes.Lost = true;
 				//}
 				if (clothes.Group == "Panties" && !clothes.NoLose) {
-					if (KinkyDungeonGetRestraintItem("ItemPelvis") && KinkyDungeonGetRestraintItem("ItemPelvis") && KDRestraint(KinkyDungeonGetRestraintItem("ItemPelvis")).chastity) clothes.Lost = true;
+					if (KinkyDungeonGetRestraintItem("ItemPelvis") && KinkyDungeonGetRestraintItem("ItemPelvis") && KDRestraint(KinkyDungeonGetRestraintItem("ItemPelvis"))?.chastity) clothes.Lost = true;
 				}
 				if (clothes.Group == "ClothLower" && clothes.Skirt) {
 					if (KinkyDungeonGetRestraintItem("ItemPelvis")) clothes.Lost = true;
@@ -266,7 +267,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 				}
 				if (!NoRestraints) {
 					for (let inv of KinkyDungeonAllRestraint()) {
-						if (KDRestraint(inv).remove) {
+						if (KDRestraint(inv)?.remove) {
 							for (let remove of KDRestraint(inv).remove) {
 								if (remove == clothes.Group) clothes.Lost = true;
 							}
@@ -304,7 +305,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 			if (!StandalonePatched)
 				for (let inv of KinkyDungeonAllRestraint()) {
 					if (KinkyDungeonCheckClothesLoss)
-						if (KDRestraint(inv).AssetGroup && (!KDRestraint(inv).armor || KDToggles.DrawArmor)) {
+						if (KDRestraint(inv)?.AssetGroup && (!KDRestraint(inv).armor || KDToggles.DrawArmor)) {
 							KDInventoryWear(KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, undefined, KDRestraint(inv).Color, KDRestraint(inv).Filters);
 						}
 				}
@@ -677,7 +678,7 @@ function KinkyDungeonWearForcedClothes(restraints, C) {
 	if (!restraints) restraints = KinkyDungeonAllRestraint();
 	for (let i = restraints.length - 1; i >= 0; i--) {
 		let inv = restraints[i];
-		if (KDRestraint(inv).alwaysDress) {
+		if (KDRestraint(inv)?.alwaysDress) {
 			KDRestraint(inv).alwaysDress.forEach(dress=>{ // for .. of  loop has issues with iterations
 				if (dress.override || !dress.Group.includes("Item") || !InventoryGet(C, dress.Group)) {
 					let canReplace = (dress.override!==null && dress.override===true) ? true : !InventoryGet(C,dress.Group);
@@ -724,7 +725,7 @@ function KinkyDungeonWearForcedClothes(restraints, C) {
 				}
 			});
 		}
-		if (KDRestraint(inv).alwaysDressModel) {
+		if (KDRestraint(inv)?.alwaysDressModel) {
 			KDRestraint(inv).alwaysDressModel.forEach(dress=>{ // for .. of  loop has issues with iterations
 
 				let canReplace = true;
@@ -814,7 +815,7 @@ function KDCharacterAppearanceNaked() {
 
 
 function KDApplyItem(inv, tags) {
-	if (KDToggleXRay && StandalonePatched) {
+	if (KDToggleXRay && !StandalonePatched) {
 		let itemTags = KDRestraint(inv)?.shrine;
 		if (itemTags && itemTags.some((t) => {
 			return KD_XRayHidden.includes(t);

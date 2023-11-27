@@ -926,7 +926,8 @@ function KinkyDungeonDrawGame() {
 	}
 
 	if ((KinkyDungeonGameKey.keyPressed[9]) && !KinkyDungeonDrawStatesModal.includes(KinkyDungeonDrawState)) {
-		if (document.activeElement && KDFocusableTextFields.includes(document.activeElement.id)) {
+		// @ts-ignore
+		if (document.activeElement && (document.activeElement?.type == "text" || document.activeElement?.type == "textarea" || KDFocusableTextFields.includes(document.activeElement.id))) {
 			KinkyDungeonGameKey.keyPressed[9] = false;
 		} else {
 			if (KinkyDungeonDrawState == "Magic") {
@@ -1772,14 +1773,23 @@ function KinkyDungeonDrawGame() {
 					KinkyDungeonAdvanceTime(0, true);
 					return true;
 				}, true, 600, 480, 300, 64, "Clear worn restraints", "#ffffff", "");
+				DrawButtonKDEx("debugaddallrest", (bdata) => {
+					// eslint-disable-next-line no-unused-vars
+					for (let r of KinkyDungeonRestraints) {
+						if (!KinkyDungeonInventoryGetLoose(r.name))
+							KinkyDungeonInventoryAddLoose(r.name);
+					}
+					return true;
+				}, true, 600, 560, 300, 64, "Add all restraints", "#ffffff", "");
 				DrawButtonKDEx("debugIncFloor", (bdata) => {
 					MiniGameKinkyDungeonLevel += 1;
 					return true;
-				}, true, 600, 560, 300, 64, "Increment Floor", "#ffffff", "");
+				}, true, 600, 640, 300, 64, "Increment Floor", "#ffffff", "");
 				DrawButtonKDEx("debugHeart", (bdata) => {
 					KDMapData.GroundItems.push({x:KinkyDungeonPlayerEntity.x, y:KinkyDungeonPlayerEntity.y, name: "Heart"});
 					return true;
-				}, true, 600, 640, 300, 64, "Spawn amulet", "#ffffff", "");
+				}, true, 600, 720, 300, 64, "Spawn amulet", "#ffffff", "");
+
 
 			}
 		}
@@ -1811,14 +1821,25 @@ function KinkyDungeonDrawGame() {
 		KinkyDungeonDrawPerks(!KDDebugPerks);
 		DrawButtonVis(1650, 920, 300, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
 
-		DrawButtonKDEx("copyperks", (bdata) => {
-			let txt = "";
-			for (let k of KinkyDungeonStatsChoice.keys()) {
-				if (!k.startsWith("arousal") && !k.endsWith("Mode")) txt += (txt ? "\n" : "") + k;
+		if (!KDClipboardDisabled)
+			DrawButtonKDEx("copyperks", (bdata) => {
+				let txt = "";
+				for (let k of KinkyDungeonStatsChoice.keys()) {
+					if (!k.startsWith("arousal") && !k.endsWith("Mode")) txt += (txt ? "\n" : "") + k;
+				}
+				navigator.clipboard.writeText(txt);
+				return true;
+			}, true, 1400, 930, 200, 54, TextGet("KinkyDungeonCopyPerks"), "#ffffff", "");
+		else {
+			let CF = KDTextField("KDCopyPerks", 1400, 930, 200, 54, undefined, undefined, "10000");
+			if (CF.Created) {
+				let txt = "";
+				for (let k of KinkyDungeonStatsChoice.keys()) {
+					if (!k.startsWith("arousal") && !k.endsWith("Mode")) txt += (txt ? "|" : "") + k;
+				}
+				ElementValue("KDCopyPerks", txt);
 			}
-			navigator.clipboard.writeText(txt);
-			return true;
-		}, true, 1400, 930, 200, 54, TextGet("KinkyDungeonCopyPerks"), "#ffffff", "");
+		}
 	}
 
 	if (KinkyDungeonDrawState == "Game") {
@@ -3010,9 +3031,10 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 					: drawFloor;
 				let vision = KinkyDungeonVisionGet(RX, RY);
 				let nR = KDMapData.TilesSkin[RX + "," + RY] ? noReplace : noReplace_skin[floor];
-				let sprite = KinkyDungeonGetSprite(rows[RY][RX], RX, RY, vision == 0, nR);
-				let sprite2 = KinkyDungeonGetSpriteOverlay(rows[RY][RX], RX, RY, vision == 0, nR);
-				let sprite3 = KinkyDungeonGetSpriteOverlay2(rows[RY][RX], RX, RY, vision == 0, nR);
+				let code = KinkyDungeonTilesGet(RX + "," + RY)?.SkinCode || rows[RY][RX];
+				let sprite = KinkyDungeonGetSprite(code, RX, RY, vision == 0, nR);
+				let sprite2 = KinkyDungeonGetSpriteOverlay(code, RX, RY, vision == 0, nR);
+				let sprite3 = KinkyDungeonGetSpriteOverlay2(code, RX, RY, vision == 0, nR);
 				if (KinkyDungeonForceRender) {
 					sprite = KinkyDungeonGetSprite(KinkyDungeonForceRender, RX, RY, vision == 0, nR);
 					sprite2 = null;
@@ -3242,7 +3264,7 @@ function KDUpdateVision(CamX, CamY, CamX_offset, CamY_offset) {
 		for (let tile of Object.values(location)) {
 			if (tile.duration > 0) {
 				if (tile.lightColor) {
-					l = {x: tile.x, y:tile.y + (tile.yoffset || 0), y_orig: tile.y, brightness: tile.brightness, color: tile.lightColor};
+					l = {x: tile.x + Math.round((tile.xoffset - 0.49) || 0), y:tile.y + Math.round((tile.yoffset - 0.49) || 0), y_orig: tile.y, brightness: tile.brightness, color: tile.lightColor};
 					data.effecttilelights.push(l);
 				}
 			}

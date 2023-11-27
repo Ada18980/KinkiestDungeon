@@ -61,6 +61,7 @@ KDToggleLightmapFilter,GFX: Light Shader
 KDToggleIntenseOrgasm,Intense 'Let Go' VFX
 KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
+KDToggleHighResDisplacement,Hi-Res Distortion (Needs Restart)
 KDToggleGraphicsQuality,GFX: High Quality Animations
 KDToggleEnemyAnimations,GFX: Enemy Animations
 KDToggleLazyWalk,Controls: One-Click Move
@@ -2567,7 +2568,7 @@ AttackGuardHeavyBind,"The guard shocks you and slaps on some restraints! (+Restr
 AttackGuardHeavy,"The guard shocks you with her taser!!!"
 AttackGuardHeavyStun,"The guard shocks you with her taser!!!"
 
-KinkyDungeonChangeRestraints,"The EnemyName replaces your OldRestraintName with a NewRestraintName"
+KinkyDungeonChangeRestraints,"The EnemyName applies a NewRestraintName over your OldRestraintName"
 KinkyDungeonRemoveRestraints,"The EnemyName removes your OldRestraintName"
 KinkyDungeonAddRestraints,"The EnemyName restrains you with a NewRestraintName"
 
@@ -4447,25 +4448,25 @@ RestraintSlimeHeadDesc,"Sticky slime that adheres to your body. It reacts negati
 RestraintSlimeHeadDesc2,"It is an organic material that reforms around every cut you make!"
 
 RestraintHardSlimeBoots,Rubber (Feet)
-RestraintHardSlimeBootsDesc,"Sticky rubber that has fused itself into a shell around your body."
+RestraintHardSlimeBootsDesc,"Sticky rubber that has fused itself into a skintight layer."
 RestraintHardSlimeBootsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardSlimeFeet,Rubber (Ankles)
-RestraintHardSlimeFeetDesc,"Sticky rubber that has fused itself into a shell around your body."
+RestraintHardSlimeFeetDesc,"Sticky rubber that has fused itself into a skintight layer."
 RestraintHardSlimeFeetDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardSlimeLegs,Rubber (Legs)
-RestraintHardSlimeLegsDesc,"Sticky rubber that has fused itself into a shell around your body."
+RestraintHardSlimeLegsDesc,"Sticky rubber that has fused itself into a skintight layer."
 RestraintHardSlimeLegsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardSlimeArms,Rubber (Arms)
-RestraintHardSlimeArmsDesc,"Sticky rubber that has fused itself into a shell around your body."
+RestraintHardSlimeArmsDesc,"Sticky rubber that has fused itself into a skintight layer."
 RestraintHardSlimeArmsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardSlimeHands,Rubber (Hands)
-RestraintHardSlimeHandsDesc,"Sticky rubber that has fused itself into a shell around your body."
+RestraintHardSlimeHandsDesc,"Sticky rubber that has fused itself into a skintight layer."
 RestraintHardSlimeHandsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardSlimeMouth,Rubber (Mouth)
-RestraintHardSlimeMouthDesc,"Sticky rubber that has fused itself into a shell around your body."
+RestraintHardSlimeMouthDesc,"Sticky rubber that has fused itself into a skintight layer."
 RestraintHardSlimeMouthDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardSlimeHead,Rubber (Head)
-RestraintHardSlimeHeadDesc,"Sticky rubber that has fused itself into a shell around your body."
+RestraintHardSlimeHeadDesc,"Sticky rubber that has fused itself into a skintight layer."
 RestraintHardSlimeHeadDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 
 
@@ -4494,25 +4495,25 @@ RestraintProtoSlimeHeadDesc,"It seems to be a precursor to the slimes everyone i
 RestraintProtoSlimeHeadDesc2,"It is an organic material that reforms around every cut you make!"
 
 RestraintHardProtoSlimeBoots,Proto-Rubber (Feet)
-RestraintHardProtoSlimeBootsDesc,"Sticky slime that has fused itself into a shell around your body."
+RestraintHardProtoSlimeBootsDesc,"Sticky slime that has fused itself into a skintight layer."
 RestraintHardProtoSlimeBootsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardProtoSlimeFeet,Proto-Rubber (Ankles)
-RestraintHardProtoSlimeFeetDesc,"Sticky slime that has fused itself into a shell around your body."
+RestraintHardProtoSlimeFeetDesc,"Sticky slime that has fused itself into a skintight layer."
 RestraintHardProtoSlimeFeetDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardProtoSlimeLegs,Proto-Rubber (Legs)
-RestraintHardProtoSlimeLegsDesc,"Sticky slime that has fused itself into a shell around your body."
+RestraintHardProtoSlimeLegsDesc,"Sticky slime that has fused itself into a skintight layer."
 RestraintHardProtoSlimeLegsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardProtoSlimeArms,Proto-Rubber (Arms)
-RestraintHardProtoSlimeArmsDesc,"Sticky slime that has fused itself into a shell around your body."
+RestraintHardProtoSlimeArmsDesc,"Sticky slime that has fused itself into a skintight layer."
 RestraintHardProtoSlimeArmsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardProtoSlimeHands,Proto-Rubber (Hands)
-RestraintHardProtoSlimeHandsDesc,"Sticky slime that has fused itself into a shell around your body."
+RestraintHardProtoSlimeHandsDesc,"Sticky slime that has fused itself into a skintight layer."
 RestraintHardProtoSlimeHandsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardProtoSlimeMouth,Proto-Rubber (Mouth)
-RestraintHardProtoSlimeMouthDesc,"Sticky slime that has fused itself into a shell around your body."
+RestraintHardProtoSlimeMouthDesc,"Sticky slime that has fused itself into a skintight layer."
 RestraintHardProtoSlimeMouthDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardProtoSlimeHead,Proto-Rubber (Head)
-RestraintHardProtoSlimeHeadDesc,"Sticky slime that has fused itself into a shell around your body."
+RestraintHardProtoSlimeHeadDesc,"Sticky slime that has fused itself into a skintight layer."
 RestraintHardProtoSlimeHeadDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 
 
@@ -6520,7 +6521,7 @@ KinkyDungeonCurseStruggleTakeDamageChain,"The item squeezes you tighter as you t
 KinkyDungeonCurseStruggleShrineWill,"The item is protected by holy magic. There is nothing you can do to it."
 KinkyDungeonCurseUnlockShrineWill,"You pray to the Goddess and the sigil vanishes! Perhaps you returned what was rightfully hers?"
 KinkyDungeonCurseInfoShrineWill,"This item bears the sigil of the Goddess of Restoration. Perhaps she can help?"
-KinkyDungeonCurseStruggleShrineConjure,"The item is protected by an arcane seal. There is nothing you can do to it."
+KinkyDungeonCurseStruggleShrineConjure,"The item is protected by a magical seal. There is nothing you can do to it."
 KinkyDungeonCurseUnlockShrineConjure,"You pray to the Goddess and the sigil vanishes! Perhaps you returned what was rightfully hers?"
 KinkyDungeonCurseInfoShrineConjure,"This item bears the sigil of the Goddess of Conjuration. Perhaps she can help?"
 KinkyDungeonCurseStruggleShrineIllusion,"The item is protected by dark secrets. There is nothing you can do to it."
@@ -6528,10 +6529,10 @@ KinkyDungeonCurseUnlockShrineIllusion,"You pray to the Goddess and the sigil van
 KinkyDungeonCurseInfoShrineIllusion,"This item bears the sigil of the Goddess of Illusions. Perhaps she can help?"
 KinkyDungeonCurseUnlockShrineElements,"You pray to the Goddess and the sigil vanishes! Perhaps you returned what was rightfully hers?"
 KinkyDungeonCurseInfoShrineElements,"This item bears the sigil of the Goddess of Elements. Perhaps she can help?"
-KinkyDungeonCurseStruggleShrineElements,"The item is protected by powerful energies. There is nothing you can do to it."
+KinkyDungeonCurseStruggleShrineElements,"The item is protected by an elemental seal. There is nothing you can do to it."
 KinkyDungeonCurseUnlockBlueLock,"You hold the key to the item and it comes loose, draining the key's energy."
 KinkyDungeonCurseInfoBlueLock,"The item is incribed with mystical runes. Maybe you need a powerful key to unlock it."
-KinkyDungeonCurseStruggleBlueLock,"You tug on the item, but the runes glow brighter as you realize struggling is pointless."
+KinkyDungeonCurseStruggleBlueLock,"The lock-shaped rune flashes as you realize struggling is pointless."
 
 KinkyDungeonCurseUnlockMana,"You overload the magical seal, causing it to vanish and release the item."
 KinkyDungeonCurseInfoMana,"The item is magically sealed, requiring 200 mana to unlock it (includes mana from mana pool)."
@@ -12316,26 +12317,26 @@ AttackLatexCubeMetalBind,"The liquid metal cube expands across your body and har
 
 
 RestraintLiquidMetalBoots,Liquid Metal (Feet)
-RestraintLiquidMetalBootsDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
-RestraintLiquidMetalBootsDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalBootsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalBootsDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalFeet,Liquid Metal (Ankles)
-RestraintLiquidMetalFeetDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
-RestraintLiquidMetalFeetDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalFeetDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalFeetDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalLegs,Liquid Metal (Legs)
-RestraintLiquidMetalLegsDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
-RestraintLiquidMetalLegsDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalLegsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalLegsDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalArms,Liquid Metal (Arms)
-RestraintLiquidMetalArmsDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
-RestraintLiquidMetalArmsDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalArmsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalArmsDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalHands,Liquid Metal (Hands)
-RestraintLiquidMetalHandsDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
-RestraintLiquidMetalHandsDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalHandsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalHandsDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalMouth,Liquid Metal (Mouth)
-RestraintLiquidMetalMouthDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
-RestraintLiquidMetalMouthDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalMouthDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalMouthDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalHead,Liquid Metal (Head)
-RestraintLiquidMetalHeadDesc,"A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion."
-RestraintLiquidMetalHeadDesc2,"It will be quite difficult to escape this."
+RestraintLiquidMetalHeadDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalHeadDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 
 KDRandomStairTeleportFail,"The stairs dissolve right before you!"
 KDRandomStairTeleport,"The stairs dissolve as you step onto them, pulling you with them to somewhere else."
@@ -13226,3 +13227,5 @@ RestraintTrackingModuleDesc2,"It has a warning label that says: 'CAUTION: NOT WA
 
 KDDamageModule,"Your RestraintName stops working due to water damage!"
 KDDamageModuleProgress,"Your RestraintName sustains water damage from the high-pressure water!"
+
+KDExit,Close Game

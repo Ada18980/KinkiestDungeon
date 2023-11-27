@@ -3308,7 +3308,7 @@ function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, 
 		ret = Math.max(1, Tightness);
 		KDRestraintDebugLog.push("Linking " + restraint.name  + " under " + linkUnder.name);
 		let safeLink = KDGetLinkUnder(r, restraint, Bypass, undefined, Deep, securityEnemy);
-		linkUnder.dynamicLink = {name: restraint.name, id: KinkyDungeonGetItemID(), type: Restraint, events:events ? events : Object.assign([], restraint.events),
+		linkUnder.dynamicLink = {name: restraint.name, id: KinkyDungeonGetItemID(), type: Restraint, events:events ? events : KDGetEventsForRestraint(inventoryAs || restraint.name),
 			data: data,
 			tightness: Tightness, curse: Curse, faction: faction, dynamicLink: linkUnder.dynamicLink };
 
@@ -3695,7 +3695,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				if (placedOnPlayer && color) {
 					KDCharacterAppearanceSetColorForGroup(Player, color, AssetGroup);
 				}
-				let item = {name: restraint.name, id: KinkyDungeonGetItemID(), type: Restraint, curse: Curse, events: events ? events : Object.assign([], restraint.events),
+				let item = {name: restraint.name, id: KinkyDungeonGetItemID(), type: Restraint, curse: Curse, events: events ? events : KDGetEventsForRestraint(inventoryAs || restraint.name),
 					tightness: tight, lock: "", faction: faction, dynamicLink: dynamicLink,
 					data: data,
 				};
@@ -3962,7 +3962,7 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover, Fo
 					if (origRestraint && rest.shrine?.includes("Cursed") && !origRestraint.shrine?.includes("Cursed"))
 						KinkyDungeonSendTextMessage(10, TextGet("KDCursedArmorUncurse").replace("RestraintName", TextGet("Restraint" + rest.name)), "#aaffaa", 1);
 					if (!KinkyDungeonInventoryGetLoose(inventoryAs)) {
-						let loose = {name: inventoryAs, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:item.events || origRestraint.events, quantity: 1};
+						let loose = {name: inventoryAs, id: KinkyDungeonGetItemID(), type: LooseRestraint, events: item.events || KDGetEventsForRestraint(inventoryAs), quantity: 1};
 						if (item.inventoryVariant) loose.inventoryVariant = item.inventoryVariant;
 						if (KinkyDungeonRestraintVariants[inventoryAs]) loose.showInQuickInv = true;
 						KinkyDungeonInventoryAdd(loose);
@@ -4846,3 +4846,10 @@ function KDGetItemNameString(name) {
 	return base;
 }
 
+
+
+function KDGetEventsForRestraint(name) {
+	if (!KDRestraint({name: name})) return [];
+	if (KinkyDungeonRestraintVariants[name]) return Object.assign([], KinkyDungeonRestraintVariants[name].events);
+	return Object.assign([], KDRestraint({name: name}).events || []);
+}

@@ -112,16 +112,20 @@ let KDTilePalette = {
 	'Bars': {type: "tile", tile: 'b'},
 	'Bed': {type: "tile", tile: 'B'},
 	'Crack': {type: "tile", tile: '4'},
-	'Pipe': {type: "tile", tile: '1', special: {Type: "Skin", Skin: "EmptyPipe"}},
 	'LatexPipe': {type: "tile", tile: '1', special: {Type: "Skin", Skin: "LatexPipe"}},
 	'LatexThin':  {type: "effect", effectTile: "LatexThin"},
 	'Latex':  {type: "effect", effectTile: "Latex"},
 	'WallHook': {type: "tile", tile: ','},
 	'CeilingHook': {type: "tile", tile: '?'},
+	'----Deco----': {type: "none"},
+	'Pipe': {type: "tile", tile: '1', special: {Type: "Skin", Skin: "EmptyPipe"}},
 	'InactiveTablet': {type: "tile", tile: 'm'},
 	'BrokenShrine': {type: "tile", tile: 'a'},
 	'BrokenOrb': {type: "tile", tile: 'o'},
 	'BrokenCharger': {type: "tile", tile: '-'},
+	'Dummy0': {type: "tile", tile: 'X', special: {Type: "SkinCode", SkinCode: "0", Skin2: "Dummy0"}},
+	'Dummy1': {type: "tile", tile: 'X', special: {Type: "SkinCode", SkinCode: "0", Skin2: "Dummy1"}},
+	'Dummy2': {type: "tile", tile: 'X', special: {Type: "SkinCode", SkinCode: "0", Skin2: "Dummy2"}},
 	'----Doors----': {type: "none"},
 	'Door': {type: "tile", tile: 'd', special: {Type: "Door"}},
 	'DoorAlways': {type: "tile", tile: 'D', special: {Type: "Door", Priority: true, AlwaysClose: true}},
@@ -578,50 +582,51 @@ function KDDrawEditorUI() {
 		return true;
 	}, true, 1910, 10, 80, 40, "Test Tile", "#ffffff", "");
 
-	DrawButtonKDEx("CopyClip", () => {
-		var text = JSON.stringify(KDMapTilesListEditor);
-		navigator.clipboard.writeText(text).then(function() {
-			console.log('Async: Copying to clipboard was successful!');
-			console.log(KDMapTilesListEditor);
-		}, function(err) {
-			console.error('Async: Could not copy text: ', err);
-		});
-		return true;
-	}, true, 1450, 900, 275, 45, "Copy array to clipboard", "#ffffff", "");
+	if (!KDClipboardDisabled)
+		DrawButtonKDEx("CopyClip", () => {
+			var text = JSON.stringify(KDMapTilesListEditor);
+			navigator.clipboard.writeText(text).then(function() {
+				console.log('Async: Copying to clipboard was successful!');
+				console.log(KDMapTilesListEditor);
+			}, function(err) {
+				console.error('Async: Could not copy text: ', err);
+			});
+			return true;
+		}, true, 1450, 900, 275, 45, "Copy array to clipboard", "#ffffff", "");
 
-
-	DrawButtonKDEx("MergeClip", () => {
-		let success = false;
-		navigator.clipboard.readText()
-			.then(text => {
-				if (JSON.parse(text)) {
-					console.log(JSON.parse(text));
-					console.log("Parse successful!!!");
-					for (let tile of Object.values(JSON.parse(text))) {
-						if (tile && tile.name) {
-							if (!KDMapTilesListEditor[tile.name]) {
-								KDMapTilesListEditor[tile.name] = tile;
-								console.log(`${tile.name} added successfully`);
-								success = true;
-							} else {
-								console.log(`${tile.name} already present`);
+	if (!KDClipboardDisabled)
+		DrawButtonKDEx("MergeClip", () => {
+			let success = false;
+			navigator.clipboard.readText()
+				.then(text => {
+					if (JSON.parse(text)) {
+						console.log(JSON.parse(text));
+						console.log("Parse successful!!!");
+						for (let tile of Object.values(JSON.parse(text))) {
+							if (tile && tile.name) {
+								if (!KDMapTilesListEditor[tile.name]) {
+									KDMapTilesListEditor[tile.name] = tile;
+									console.log(`${tile.name} added successfully`);
+									success = true;
+								} else {
+									console.log(`${tile.name} already present`);
+								}
 							}
 						}
+						if (success) {
+							localStorage.setItem("KDMapTilesListEditor", JSON.stringify(KDMapTilesListEditor));
+							console.log("Saved new tiles to browser local storage.");
+						}
 					}
-					if (success) {
-						localStorage.setItem("KDMapTilesListEditor", JSON.stringify(KDMapTilesListEditor));
-						console.log("Saved new tiles to browser local storage.");
-					}
-				}
-			})
-			.catch(err => {
-				console.error('Failed to read clipboard contents: ', err);
-			});
+				})
+				.catch(err => {
+					console.error('Failed to read clipboard contents: ', err);
+				});
 
 
 
-		return true;
-	}, true, 1450, 850, 275, 45, "Merge from clipboard", "#ffffff", "");
+			return true;
+		}, true, 1450, 850, 275, 45, "Merge from clipboard", "#ffffff", "");
 
 	DrawButtonKDEx("DeleteEditorTiles", () => {
 		if (KDTE_confirmreset) {
@@ -640,38 +645,39 @@ function KDDrawEditorUI() {
 
 
 
+	if (!KDClipboardDisabled)
+		DrawButtonKDEx("PasteTileFromCB", () => {
+			let success = false;
+			navigator.clipboard.readText()
+				.then(text => {
+					let tile = JSON.parse(text);
+					if (tile && tile.name) {
+						console.log(JSON.parse(text));
+						console.log("Parse successful!!!");
+						KDTE_LoadTile(tile.name, tile);
 
-	DrawButtonKDEx("PasteTileFromCB", () => {
-		let success = false;
-		navigator.clipboard.readText()
-			.then(text => {
-				let tile = JSON.parse(text);
-				if (tile && tile.name) {
-					console.log(JSON.parse(text));
-					console.log("Parse successful!!!");
-					KDTE_LoadTile(tile.name, tile);
-
-					if (success) {
-						localStorage.setItem("KDMapTilesListEditor", JSON.stringify(KDMapTilesListEditor));
-						console.log("Saved new tiles to browser local storage.");
+						if (success) {
+							localStorage.setItem("KDMapTilesListEditor", JSON.stringify(KDMapTilesListEditor));
+							console.log("Saved new tiles to browser local storage.");
+						}
 					}
-				}
-			})
-			.catch(err => {
-				console.error('Failed to read clipboard contents: ', err);
-			});
-		return true;
-	}, true, 1250, 950, 175, 45, "Load tile from Clipboard", "#ffffff", "");
+				})
+				.catch(err => {
+					console.error('Failed to read clipboard contents: ', err);
+				});
+			return true;
+		}, true, 1250, 950, 175, 45, "Load tile from Clipboard", "#ffffff", "");
 
-	DrawButtonKDEx("MakeTileCB", () => {
-		var text = JSON.stringify(KDTE_ExportTile());
-		navigator.clipboard.writeText(text).then(function() {
-			console.log('Async: Copying to clipboard was successful!');
-		}, function(err) {
-			console.error('Async: Could not copy text: ', err);
-		});
-		return true;
-	}, true, 1250, 900, 175, 45, "Copy Tile to Clipboard", "#ffffff", "");
+	if (!KDClipboardDisabled)
+		DrawButtonKDEx("MakeTileCB", () => {
+			var text = JSON.stringify(KDTE_ExportTile());
+			navigator.clipboard.writeText(text).then(function() {
+				console.log('Async: Copying to clipboard was successful!');
+			}, function(err) {
+				console.error('Async: Could not copy text: ', err);
+			});
+			return true;
+		}, true, 1250, 900, 175, 45, "Copy Tile to Clipboard", "#ffffff", "");
 
 	DrawButtonKDEx("CommitTiles", () => {
 		if (KDTE_confirmcommit) {
