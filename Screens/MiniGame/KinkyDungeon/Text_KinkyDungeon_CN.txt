@@ -7413,6 +7413,12 @@ A quick tie for apprehending prisoners.
 用于逮捕囚犯的快速捆绑。
 A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
 一组散发出平静、舒缓气息的绳索。它们神奇地伸展以贴合你的身体。
+Holy Ropework
+神圣绳索
+A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
+用于逮捕囚犯的快速捆绑，穿过手部束缚装置上的带扣。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+一组散发出平静、舒缓气息的绳索。它们神奇地伸展以贴合你的身体。
 Holy Hogtie
 神圣驷马
 A very strict and tight hogtie, good for subduing unruly captives.
