@@ -9085,6 +9085,29 @@ Unlock
 Struggle
 挣扎
 
+Gunpowder
+火药
+You toss some gunpowder on the floor! No picking it back up now...
+你把一些火药丢到地板上！现在没办法再捡起来了...
+Highly flammable. Do not eat.
+高度易燃。不要吃。
+Creates gunpowder tiles on the target area, which can be ignited.
+在目标区域创建火药方块，可以将其点燃。
+You pick up a sack of gunpowder.
+你拿起一袋火药。
+You toss some gunpowder on the floor!
+你把一些火药扔到地板上！
+
+Dual Wield (Rogue)
+双持（盗贼）
+Designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield 2-handed, heavy, or massive weapons in the offhand unless they are multiclass.|(Must equip Dual Wield spell to equip an offhand weapon)
+指定副手武器以获得被动效果，例如光源或额外暴击伤害。|盗贼不能在副手使用双手、重或大型武器，除非它们是多职业的。|（必须装备双持法术才能装备副手武器）
+
+Dual Wield (Wizard)
+双持（法师）
+Designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)
+指定副手武器以获得被动效果，例如光源或法术伤害加值。|法师只能在副手使用魔法武器，除非他们是多职业的，并且如果他们挥舞双手、重或双手持式武器，则获得 +1 缓慢等级。 副手的大型魔法武器。|（必须装备双持法术才能装备副手武器）
+
 Arcane Tome
 奥术之书
 Contains advanced formulas and thrilling tales of thirsty wizards.
