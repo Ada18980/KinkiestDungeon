@@ -682,7 +682,10 @@
             <key type="filename">../Game/EffectTiles/LatexThin.png</key>
             <key type="filename">../Game/EffectTiles/Magicflies.png</key>
             <key type="filename">../Game/EffectTiles/OrbLantern.png</key>
+            <key type="filename">../Game/EffectTiles/Portals/CommercePortal.png</key>
+            <key type="filename">../Game/EffectTiles/Portals/CommercePortalReturn.png</key>
             <key type="filename">../Game/EffectTiles/Portals/DarkPortal.png</key>
+            <key type="filename">../Game/EffectTiles/Portals/Portal.png</key>
             <key type="filename">../Game/EffectTiles/PressurePlate.png</key>
             <key type="filename">../Game/EffectTiles/PressurePlateActive.png</key>
             <key type="filename">../Game/EffectTiles/PressurePlateHold.png</key>
@@ -1349,6 +1352,9 @@
             <key type="filename">../Game/FloorGeneric/DollStand.png</key>
             <key type="filename">../Game/FloorGeneric/DollSupply.png</key>
             <key type="filename">../Game/FloorGeneric/DollTerminal.png</key>
+            <key type="filename">../Game/FloorGeneric/Dummy0.png</key>
+            <key type="filename">../Game/FloorGeneric/Dummy1.png</key>
+            <key type="filename">../Game/FloorGeneric/Dummy2.png</key>
             <key type="filename">../Game/FloorGeneric/EmptyPipe.png</key>
             <key type="filename">../Game/FloorGeneric/Fireflies.png</key>
             <key type="filename">../Game/FloorGeneric/Ghost.png</key>
@@ -2198,6 +2204,7 @@
             <key type="filename">../Game/HideFalse.png</key>
             <key type="filename">../Game/HideFull.png</key>
             <key type="filename">../Game/HideMost.png</key>
+            <key type="filename">../Game/HideStruggle.png</key>
             <key type="filename">../Game/HideTrue.png</key>
             <key type="filename">../Game/Locks/Blind.png</key>
             <key type="filename">../Game/Locks/Blocked.png</key>

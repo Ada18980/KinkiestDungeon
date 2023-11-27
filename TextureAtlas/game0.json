@@ -48,6 +48,22 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":216,"h":216},
 	"sourceSize": {"w":216,"h":216}
 },
+"Game/Bullets/BearTrapHit.png":
+{
+	"frame": {"x":645,"y":2018,"w":52,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":30,"w":52,"h":28},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Bullets/BearTrapStrike.png":
+{
+	"frame": {"x":645,"y":2018,"w":52,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":82,"y":102,"w":52,"h":28},
+	"sourceSize": {"w":216,"h":216}
+},
 "Game/Bullets/BigThunderstorm.png":
 {
 	"frame": {"x":1698,"y":1443,"w":349,"h":339},
@@ -166,14 +182,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":25,"w":62,"h":21},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/Bullets/RobotBolt.png":
-{
-	"frame": {"x":663,"y":2017,"w":58,"h":28},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":5,"y":22,"w":58,"h":28},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Bullets/RopeBolt.png":
@@ -384,12 +392,20 @@
 	"spriteSourceSize": {"x":27,"y":8,"w":18,"h":64},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/FloorGeneric/Crack.png":
+"Game/FloorGeneric/DisplayStand.png":
 {
-	"frame": {"x":663,"y":1944,"w":50,"h":71},
+	"frame": {"x":699,"y":2003,"w":17,"h":42},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":9,"y":0,"w":50,"h":71},
+	"spriteSourceSize": {"x":27,"y":29,"w":17,"h":42},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/FloorGeneric/Dummy0.png":
+{
+	"frame": {"x":663,"y":1944,"w":34,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":0,"w":34,"h":72},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/FloorGeneric/HookHigh.png":
@@ -406,14 +422,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/FloorGeneric/Perk.png":
-{
-	"frame": {"x":645,"y":2016,"w":16,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":29,"y":8,"w":16,"h":22},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/GameLogo.png":
@@ -502,6 +510,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":8,"y":31,"w":57,"h":11},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Items/ElfCrystal.png":
+{
+	"frame": {"x":699,"y":1944,"w":22,"h":57},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":7,"w":22,"h":57},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Items/Flamberge.png":
@@ -1040,6 +1056,14 @@
 	"spriteSourceSize": {"x":21,"y":12,"w":30,"h":48},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Spells/DisplayStand.png":
+{
+	"frame": {"x":699,"y":2003,"w":17,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":29,"w":17,"h":42},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Spells/FlashFreeze.png":
 {
 	"frame": {"x":1555,"y":1369,"w":69,"h":72},
@@ -1161,6 +1185,7 @@
 	"Game/EffectTiles/Inferno": ["Game/EffectTiles/Inferno_0.png","Game/EffectTiles/Inferno_1.png","Game/EffectTiles/Inferno_2.png","Game/EffectTiles/Inferno_3.png"],
 	"Game/Enemies/DollmakerBoss": ["Game/Enemies/DollmakerBoss1.png","Game/Enemies/DollmakerBoss2.png","Game/Enemies/DollmakerBoss3.png"],
 	"Game/Enemies/Fuuka": ["Game/Enemies/Fuuka1.png","Game/Enemies/Fuuka2.png"],
+	"Game/FloorGeneric/Dummy": ["Game/FloorGeneric/Dummy0.png","Game/FloorGeneric/Dummy1.png","Game/FloorGeneric/Dummy2.png"],
 	"Game/Spell": ["Game/Spell1.png","Game/Spell2.png","Game/Spell3.png","Game/Spell4.png","Game/Spell5.png"],
 	"Game/Spells/SpellChoiceUp": ["Game/Spells/SpellChoiceUp1.png","Game/Spells/SpellChoiceUp2.png","Game/Spells/SpellChoiceUp3.png"],
 	"Game/Spells/SummonUp": ["Game/Spells/SummonUp1.png","Game/Spells/SummonUp2.png"],
@@ -1174,6 +1199,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game1.json", "game2.json", "game3.json", "game4.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:cb4cdf7c3aec6c82dd6fe46ac9705118:a53d478cf155c9d5166f2da134268870:701e665c5fc69e47e58c28f8fa547b2b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:317db8f4ee72649ec859e08090b1c742:02578fcebe5dd1c33bb49d66e73df18c:701e665c5fc69e47e58c28f8fa547b2b$"
 }
 }

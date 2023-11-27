@@ -28,7 +28,7 @@ AddModel({
 });
 AddModel({
 	Name: "ClothBlindfold",
-	Folder: "Blindfolds",
+	Folder: "Blindfold",
 	TopLevel: true,
 	Group: "Blindfold",
 	Restraint: true,
@@ -62,7 +62,7 @@ AddModel({
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,
-			HideWhenOverridden: true,
+			TieToLayer: "Basic",
 			NoOverride: true,
 			InheritColor: "Rim",
 		},

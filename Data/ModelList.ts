@@ -212,7 +212,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Pauldrons", Layer: "Shoulders", Pri: 8,
 			Poses: ToMapSubtract([...ARMPOSES], [...HIDEARMPOSES, "Up"], "Hogtie"),
-			MorphPoses: {Yoked: "Yoked", Hogtie: "Hogtie", Wristtie: "Free", Boxtie: "Free", Front: "Free"},
+			MorphPoses: {Yoked: "Yoked", Hogtie: "Hogtie", Wristtie: "Free", Boxtie: "Free", Front: "Free", Crossed: "Free"},
 			HideWhenOverridden: true,
 		},
 	])
@@ -702,8 +702,8 @@ AddModel({
 			InheritColor: "SockLeft",
 			Invariant: true,
 		},
-		{ Name: "StripeSockRight", Layer: "StockingRight", Pri: 1.1,
-			NoOverride: true, TieToLayer: "SockRight",
+		{ Name: "StripeSockLeft", Layer: "StockingRight", Pri: 1.1,
+			NoOverride: true, TieToLayer: "SockLeft",
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 		},

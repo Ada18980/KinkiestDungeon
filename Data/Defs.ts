@@ -91,6 +91,8 @@ let LAYERS_BASE = [
 	// This slot is for things like breastplates and things that go over
 	"WrappingChest",
 
+	"WrapArms",
+
 	"Jacket",
 	"ChestDeco",
 	"ChestStraps",
@@ -119,6 +121,7 @@ let LAYERS_BASE = [
 	"SuitChest",
 	"Chest",
 
+	"WrappingTorsoUpper",
 	"StrapsUnderbustOver",
 	"WrappingTorsoOver",
 
@@ -165,7 +168,7 @@ let LAYERS_BASE = [
 	"BeltUnder",
 
 	"CrotchPanelMid",
-	"WrappingTorsoMid",
+	"WrappingTorsoMid", // For stuff that goes over a shirt and clothes but under restraints, e.g. tape
 
 
 
@@ -198,7 +201,10 @@ let LAYERS_BASE = [
 	"SkirtDeco",
 	"Skirt",
 
+
 	"WrappingLegsOver",
+
+	"WrappingTorsoUnder",// For skintight stuff
 
 	// Left Leg
 	"KneeAccLeft",
@@ -228,6 +234,7 @@ let LAYERS_BASE = [
 	"ShoeLeftDeco",
 	"ShoeLeft",
 	"ShoeLeftUnder",
+	"WrappingLegsUnder",
 	"OverSocks",
 	"StockingLeft",
 	"FootLeft",
@@ -250,6 +257,7 @@ let LAYERS_BASE = [
 	"SkirtLower",
 
 	// Right leg
+	"WrappingLegsRightOver",
 	"BindThighRight",
 	"KneeAccRight",
 	"ThighRight",
@@ -277,6 +285,7 @@ let LAYERS_BASE = [
 	// Left arm clothes
 
 	"BindWristLeft",
+	"WrapArmLeft",
 	"BindArmLeft",
 	"BindElbowLeft",
 	"BindHandLeft",
@@ -299,6 +308,7 @@ let LAYERS_BASE = [
 
 	"ShoeRight",
 	"ShoeRightUnder",
+	"WrappingLegsRight",
 
 
 
@@ -338,6 +348,7 @@ let LAYERS_BASE = [
 	"Torso",
 
 	// Right arm specific bondage
+	"WrapArmRight",
 	"BindWristRight",
 	"BindArmRight",
 	"BindCrossElbowRight",
@@ -413,11 +424,21 @@ let LayerGroups = {
 	"Shoes": ToMap([
 		"ShoeLeft",
 		"ShoeLeftUnder",
-
-	"ShoeRight",
-	"ShoeRightUnder",
+		"ShoeRight",
+		"ShoeRightUnder",
 		"ShoeLeftOver",
 		"ShoeRightOver",
+		"SockLeft",
+		"SockRight",
+		"AnkleRightKneel",
+		"ShoeRightKneel",
+		"ShoeLeftHogtie",
+	]),
+	"BelowShoes": ToMap([ // Same as above but without shoeover
+		"ShoeLeft",
+		"ShoeLeftUnder",
+		"ShoeRight",
+		"ShoeRightUnder",
 		"SockLeft",
 		"SockRight",
 		"AnkleRightKneel",
@@ -584,6 +605,8 @@ let LayerGroups = {
 
 		"BindWristLeft",
 		"BindWristRight",
+		"WrapArmLeft",
+		"WrapArmRight",
 		"BindArmLeft",
 		"BindArmRight",
 		"BindElbowLeft",
@@ -656,6 +679,8 @@ let LayerGroups = {
 
 		"BindWristLeft",
 		"BindWristRight",
+		"WrapArmLeft",
+		"WrapArmRight",
 		"BindArmLeft",
 		"BindArmRight",
 		"BindElbowLeft",
@@ -1075,10 +1100,10 @@ let LayerGroups = {
 	"Cuffs": ToMap([
 		// Affect clothes only not skintight
 		"Shirt",
-		"MittenLeft",
-		"MittenRight",
-		"GloveLeft",
-		"GloveRight",
+		//"MittenLeft",
+		//"MittenRight",
+		//"GloveLeft",
+		//"GloveRight",
 		"SleeveLeft",
 		"SleeveDecoLeft",
 		"SleeveRight",
@@ -1150,6 +1175,7 @@ let LayerGroups = {
 	"ShirtChest",
 
 	//"StrapsUnderbustOver",
+	"WrappingTorsoUpper",
 	"WrappingTorsoOver",
 
 	// Crossed arms -- order is inverted
@@ -1175,12 +1201,13 @@ let LayerGroups = {
 	"OverSkirt",
 	"Greaves",
 
-	"WrappingTorsoMid",
+	"WrappingTorsoMid", // For stuff that covers a shirt
 
 	// For form-fitting stuff that nonetheless goes over a shirt
 	"Bustier",
 	"Shirt",
 
+	"WrappingTorsoUnder", // For skintight stuff
 
 	// Skirts that dont follow shilhouette and are puffy
 	"SkirtOverDeco",
@@ -1206,6 +1233,7 @@ let LayerGroups = {
 	"AnkleRightOver",
 
 	"WrappingLegs",
+	"WrappingLegsUnder",
 
 	"PantsAccLeft",
 	"PantLeft",
@@ -1229,6 +1257,8 @@ let LayerGroups = {
 	"SkirtLower",
 
 	// Right leg
+	"WrappingLegsRightOver",
+	"WrappingLegsRight",
 	"KneeAccRight",
 	"PantsAccRight",
 	"PantRight",

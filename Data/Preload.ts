@@ -187,9 +187,15 @@ let DisplacementMaps = [
 "Yoke.png",
 ];
 
+// Scale factor for displacement and erase maps
+let DisplacementScale = 0.5;
+
+let displacementList = [
+	...DisplacementMaps.map((e) => {return "DisplacementMaps/" + e;}),
+];
+
 let linearList = [
 	"TextureAtlas/atlas0.json",
-	...DisplacementMaps.map((e) => {return "DisplacementMaps/" + e;}),
 ];
 
 let nearestList = [
@@ -219,7 +225,8 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 		let amount = 100;
 		let result = preload ? PIXI.Assets.backgroundLoad(dataFile) : PIXI.Assets.load(dataFile);
 
-		result.then(() => {
+		result.then((value) => {
+			//console.log(value)
 			CurrentLoading = "Loaded " + dataFile;
 			//console.log(dataFile);
 			KDLoadingDone += amount;
@@ -232,5 +239,49 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 	}
 
 }
+
+async function PreloadDisplacement(list) {
+	for (let dataFile of list) {
+		console.log("Found d_map: " + dataFile);
+		let amount = 100;
+		KDLoadingMax += amount;
+	}
+	for (let dataFile of list) {
+		let amount = 100;
+		let texture = PIXI.Texture.fromURL(dataFile, {
+			resourceOptions: {
+				scale: DisplacementScale
+			}
+		});
+		texture.then((value) => {
+			console.log(value)
+			CurrentLoading = "Loaded " + dataFile;
+			//console.log(dataFile);
+			KDLoadingDone += amount;
+		}, () => {
+			CurrentLoading = "Error Loading " + dataFile;
+			console.log(CurrentLoading);
+			KDLoadingDone += amount;
+		});
+		/*let result = preload ? PIXI.Assets.backgroundLoad(dataFile) : PIXI.Assets.load(dataFile);
+
+		result.then((value) => {
+			console.log(value)
+			CurrentLoading = "Loaded " + dataFile;
+			//console.log(dataFile);
+			KDLoadingDone += amount;
+		}, () => {
+			CurrentLoading = "Error Loading " + dataFile;
+			console.log(CurrentLoading);
+			KDLoadingDone += amount;
+		});*/
+		//let atlas = await result;
+	}
+}
+
+KDLoadToggles();
+if (!KDToggles.HighResDisplacement) DisplacementScale = 0.25
+
 LoadTextureAtlas(nearestList, PIXI.SCALE_MODES.NEAREST);
 LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
+PreloadDisplacement(displacementList);

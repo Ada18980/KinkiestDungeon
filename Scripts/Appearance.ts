@@ -66,7 +66,7 @@ function CharacterAppearanceRestore(C: Character, backup: string): void {
 
 function AppearanceItemParse(stringified: string): any[] {
 	let ret = JSON.parse(stringified, (key, value) => {
-		if (key === "Model") {
+		if (key === "Model" && ModelDefs[value]) {
 			return JSON.parse(JSON.stringify(ModelDefs[value]));
 		}
 		return value;
@@ -80,7 +80,7 @@ function AppearanceItemParse(stringified: string): any[] {
 
 function AppearanceCleanup(C: Character) {
 	for (let A = 0; A < C.Appearance.length; A++) {
-		if (!C.Appearance[A].Model) {
+		if (!C.Appearance[A].Model || !ModelDefs[C.Appearance[A].Model.Name]) {
 			C.Appearance.splice(A, 1);
 			A -= 1;
 		}

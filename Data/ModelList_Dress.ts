@@ -168,6 +168,34 @@ AddModel({
 	])
 });
 AddModel({
+	Name: "LatexBraStraps",
+	Folder: "Corsets",
+	TopLevel: false,
+	Parent: "LatexBra",
+	Categories: ["Bras"],
+	Layers: ToLayerMap([
+		{ Name: "StrapsHeavyCorset", Layer: "BraChest", Pri: 17,
+			Invariant: true,
+			InheritColor: "Straps",
+			NoOverride: true,
+		},
+	])
+});
+AddModel({
+	Name: "LatexBraStrapsCross",
+	Folder: "Corsets",
+	TopLevel: false,
+	Parent: "LatexBra",
+	Categories: ["Bras"],
+	Layers: ToLayerMap([
+		{ Name: "CrossHeavyCorset", Layer: "BraChest", Pri: 17,
+			Invariant: true,
+			InheritColor: "Straps",
+			NoOverride: true,
+		},
+	])
+});
+AddModel({
 	Name: "LatexBustier",
 	Folder: "Corsets",
 	TopLevel: true,

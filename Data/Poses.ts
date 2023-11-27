@@ -256,21 +256,21 @@ function KDGetAvailablePosesArms(C: Character): string[] {
 		poses = {Wristtie: true};
 	} else if (CheckPoseOrTags(C, "Boxbinders")) {
 		poses = {Boxtie: true};
-	} else if (CheckPoseOrTags(C, "Straitjackets")) {
-		poses = {Boxtie: true};
+	} else if (CheckPoseOrTags(C, "Straitjackets") || CheckPoseOrTags(C, "Crossties")) {
+		poses = {Crossed: true};
 	} else if (CheckPoseOrTags(C, "Boxties")) {
 		poses = {Boxtie: true};
 	} else if (CheckPoseOrTags(C, "Wristties")) {
 		poses = {Wristtie: true};
-	} else if (CheckPoseOrTags(C, "Petsuits")) {
+	} else if (CheckPoseOrTags(C, "Petsuits") || CheckPoseOrTags(C, "Fiddles")) {
 		poses = {Front: true};
 	}
 	if (KinkyDungeonIsArmsBound(false, false)) {
 		delete poses.Free;
-		if (!CheckPoseOrTags(C, "HandsFrontAllowed") && !CheckPoseOrTags(C, "HandsFront") && !CheckPoseOrTags(C, "Petsuits")) {
+		if (!CheckPoseOrTags(C, "HandsFrontAllowed") && !CheckPoseOrTags(C, "HandsFront") && !CheckPoseOrTags(C, "Petsuits") && !CheckPoseOrTags(C, "Fiddles")) {
 			delete poses.Front;
 		}
-		if (!CheckPoseOrTags(C, "HandsCrossed") && !CheckPoseOrTags(C, "HandsCrossedAllowed")) {
+		if (!CheckPoseOrTags(C, "HandsCrossed") && !CheckPoseOrTags(C, "HandsCrossedAllowed") && !CheckPoseOrTags(C, "Straitjackets") && !CheckPoseOrTags(C, "Crossties")) {
 			delete poses.Crossed;
 		}
 		if (CheckPoseOrTags(C, "HandsBehind")) {
