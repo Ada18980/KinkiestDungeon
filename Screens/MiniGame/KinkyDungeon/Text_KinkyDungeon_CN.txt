@@ -9055,6 +9055,8 @@ You pick up a strange device with a sharpened razor disc.
 你拿起一个奇怪的装置，里面有一个锋利的剃须刀盘。
 You find a strange ancient device with a sharp cutting blade.
 你发现了一个奇怪的古老装置，带有锋利的切割刀片。
+You pick up a stone trinket with a glowing blue sigil.
+你拿起一个带有发光蓝色印记的石头饰品。
 You pick up a bola.
 你拿起了一个投石索。
 You pick up a bomb!
