@@ -100,6 +100,8 @@ Enable Toy SFX
 高级玩具特效
 Enable Fullscreen
 启用全屏
+Hi-Res Distortion (Needs Restart)
+高分辨率失真（需重启）
 GFX: High Quality Animations
 GFX: 高品质动画
 GFX: Enemy Animations
@@ -5020,8 +5022,8 @@ The guard shocks you with her taser!!!
 警卫用她的电击枪电击你！！！
 The guard shocks you with her taser!!!
 警卫用她的电击枪电击你！！！
-The EnemyName replaces your OldRestraintName with a NewRestraintName
-EnemyName 将你的 OldRestraintName 替换为 NewRestraintName
+The EnemyName applies a NewRestraintName over your OldRestraintName
+EnemyName 在你的 OldRestraintName 上应用 NewRestraintName
 The EnemyName removes your OldRestraintName
 EnemyName 移除了你的 OldRestraintName
 The EnemyName restrains you with a NewRestraintName
@@ -8279,44 +8281,44 @@ It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对你所做的每一次切割行为进行变化！
 Rubber (Feet)
 橡胶（脚）
-Sticky rubber that has fused itself into a shell around your body.
-粘性橡胶，已经融合成你身体周围的外壳。
+Sticky rubber that has fused itself into a skintight layer.
+粘性橡胶已自身融合成一层紧密的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Rubber (Ankles)
 橡胶（脚踝）
-Sticky rubber that has fused itself into a shell around your body.
-粘性橡胶，已经融合成你身体周围的外壳。
+Sticky rubber that has fused itself into a skintight layer.
+粘性橡胶已自身融合成一层紧密的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Rubber (Legs)
 橡胶（腿）
-Sticky rubber that has fused itself into a shell around your body.
-粘性橡胶，已经融合成你身体周围的外壳。
+Sticky rubber that has fused itself into a skintight layer.
+粘性橡胶已自身融合成一层紧密的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Rubber (Arms)
 橡胶（手臂）
-Sticky rubber that has fused itself into a shell around your body.
-粘性橡胶，已经融合成你身体周围的外壳。
+Sticky rubber that has fused itself into a skintight layer.
+粘性橡胶已自身融合成一层紧密的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Rubber (Hands)
 橡胶（手）
-Sticky rubber that has fused itself into a shell around your body.
-粘性橡胶，已经融合成你身体周围的外壳。
+Sticky rubber that has fused itself into a skintight layer.
+粘性橡胶已自身融合成一层紧密的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Rubber (Mouth)
 橡胶（嘴）
-Sticky rubber that has fused itself into a shell around your body.
-粘性橡胶，已经融合成你身体周围的外壳。
+Sticky rubber that has fused itself into a skintight layer.
+粘性橡胶已自身融合成一层紧密的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Rubber (Head)
 橡胶（头）
-Sticky rubber that has fused itself into a shell around your body.
-粘性橡胶，已经融合成你身体周围的外壳。
+Sticky rubber that has fused itself into a skintight layer.
+粘性橡胶已自身融合成一层紧密的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Proto-Slime (Feet)
@@ -8363,6 +8365,8 @@ It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对你所做的每一次切割行为进行变化！
 Proto-Rubber (Feet)
 黏菌橡胶（脚）
+Sticky slime that has fused itself into a skintight layer.
+粘稠的粘液已经融合成一层紧贴皮肤的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Proto-Rubber (Ankles)
@@ -8694,10 +8698,10 @@ The liquid metal cube expands across your body and hardens, taking the form of r
 
 Liquid Metal (Feet)
 液态金属（脚）
-A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion.
-一种既柔软又极其坚硬的金属物质。它会减轻你的负担，减少逃避。
-It will be quite difficult to escape this.
-逃脱这个是相当困难的。
+A metallic substance that is both flexible and hard. It weighs you down, reducing evasion.
+一种既柔软又坚硬的金属物质。它会减轻你的负担，减少逃避。
+Forming a skintight layer, it will be quite difficult to escape this.
+形成一层紧密的外壳，逃脱这个是相当困难的。
 Liquid Metal (Ankles)
 液态金属（脚踝）
 Liquid Metal (Legs)
@@ -12185,8 +12189,8 @@ You pray to the Goddess and the sigil vanishes! Perhaps you returned what was ri
 你向女神祈祷，印记就会消失！也许你归还了本该属于她的东西？
 This item bears the sigil of the Goddess of Restoration. Perhaps she can help?
 该物品带有恢复女神的印记。也许她能帮忙？
-The item is protected by an arcane seal. There is nothing you can do to it.
-该物品受到奥术封印的保护。你对此无能为力。
+The item is protected by a magical seal. There is nothing you can do to it.
+该物品受到魔法封印的保护。你对此无能为力。
 You pray to the Goddess and the sigil vanishes! Perhaps you returned what was rightfully hers?
 你向女神祈祷，印记就会消失！也许你归还了本该属于她的东西？
 This item bears the sigil of the Goddess of Conjuration. Perhaps she can help?
@@ -12201,14 +12205,14 @@ You pray to the Goddess and the sigil vanishes! Perhaps you returned what was ri
 你向女神祈祷，印记就会消失！也许你归还了本该属于她的东西？
 This item bears the sigil of the Goddess of Elements. Perhaps she can help?
 该物品带有元素女神的印记。也许她能帮忙？
-The item is protected by powerful energies. There is nothing you can do to it.
-该物品受到强大能量的保护。你对此无能为力。
+The item is protected by an elemental seal. There is nothing you can do to it.
+该物品受到元素封印的保护。你对此无能为力。
 You hold the key to the item and it comes loose, draining the key's energy.
 你拿着物品的钥匙，它松开了，但是钥匙的能量耗尽了。
 The item is incribed with mystical runes. Maybe you need a powerful key to unlock it.
 该物品刻有神秘符文。也许你需要一把强大的钥匙来解锁它。
-You tug on the item, but the runes glow brighter as you realize struggling is pointless.
-你用力拉扯物品，但当你意识到挣扎毫无意义时，符文会变得更亮。
+The lock-shaped rune flashes as you realize struggling is pointless.
+当你意识到挣扎毫无意义时，锁形符文就会闪烁。
 
 You overload the magical seal, causing it to vanish and release the item.
 你使魔法封印过载，导致它消失并解开该物品。
@@ -17662,3 +17666,6 @@ Your RestraintName stops working due to water damage!
 你的 RestraintName 由于水导致损坏而停止工作！
 Your RestraintName sustains water damage from the high-pressure water!
 你的 RestraintName 因高压水而受到水损害！
+
+Close Game
+关闭游戏
