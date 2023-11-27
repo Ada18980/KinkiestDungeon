@@ -5940,12 +5940,29 @@ Your OLDITM transforms into NEWITM!
 Your OLDITM gains new properties!
 你的 OLDITM 获得新特性！
 
+Moon-Cursed Epicenter
+月光诅咒中心
+The cursed epicenter disperses into black stardust.
+被诅咒的中心消散成黑色星尘。
+The cursed epicenter retreats as you remove the last of your cursed restraints!
+当你移除最后的被诅咒的束缚时，被诅咒的中心就会撤退！
+The cursed epicenter retreats as you are claimed by something else!
+当你被其他东西占领时，被诅咒的中心正在撤退！
+The cursed epicenter assaults your mind with its presence! (DamageDealt)
+被诅咒的中心以其存在来攻击你的思想！（DamageDealt）
+You feel your cursed items turn cold to the touch!
+你感觉你被诅咒的物品摸起来变冷了！
+An cursed collar appears around your neck, feeling cold to the touch.
+你的脖子上出现了一个被诅咒的项圈，摸起来很冷。
 Cursing Sigil
 诅咒符印
 A cursing sigil appears on the ground!
 地面上出现了一道诅咒符印！
 You are being cursed!!!
 你被诅咒了！！！
+
+Star-Cursed Epicenter
+星咒中心
 
 Moondust Collar
 月尘项圈
