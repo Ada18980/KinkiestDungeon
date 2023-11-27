@@ -4632,12 +4632,18 @@ The ribbons wrap themselves around you! (+RestraintAdded)
 丝带包裹了你！（+RestraintAdded）
 The ribbons wrap themselves around you! (DamageTaken)
 丝带包裹了你！（DamageTaken）
+
 Gravitating Gag
 诱惑的口球
 The gag buckles itself in place and falls.
 口球停在原地并掉在地上。
 The gravitating gag wedges itself firmly in your mouth and buckles itself! (+RestraintAdded)
 诱惑的口球牢牢地塞进你的嘴里，然后自己扣住！（+RestraintAdded）
+The gravitating gag rubs itself against your lips! (DamageTaken)
+诱惑的口球在你的嘴唇上摩擦！（DamageTaken）
+The gag dashes to you!
+口球冲向你！
+
 Seductive Shackles
 诱惑的镣铐
 The shackles' chain breaks as they fall to the floor.
@@ -4646,6 +4652,9 @@ The shackles force themselves around your limbs and click tightly! (+RestraintAd
 镣铐将自己强行缠绕在你的四肢上并紧紧地咔哒一声锁住了！（+RestraintAdded）
 The shackles click seductively in your face... (DamageTaken)
 镣铐在你面前咔哒咔哒作响……（DamageTaken）
+The shackles dash to you!
+镣铐冲向你！
+
 Lurid Legbinder
 可怕的绑腿
 The legbinder unravels.
@@ -4654,6 +4663,7 @@ The legbinder zips itself around your legs and squeezes them together! (+Restrai
 绑腿会自动拉合住你的双腿，并将它们挤压在一起！（+RestraintAdded）
 The legbinder wraps around and squeezes your body! (DamageTaken)
 绑腿包裹并挤压你的身体！（DamageTaken）
+
 Bratty Blindfold
 顽皮的眼罩
 The blindfold floats to the floor.
@@ -4662,6 +4672,9 @@ The blindfold buckles itself tightly around your head! (+RestraintAdded)
 眼罩紧紧地扣在你的头上！(+RestraintAdded)
 The blindfold crawls over your helpless face! (DamageTaken)
 眼罩在你无助的脸上爬行！（DamageTaken）
+The blindfold dashes to you!
+眼罩冲向你！
+
 Amorous Armbinder
 色情的束手套
 The armbinder flops to the floor.
