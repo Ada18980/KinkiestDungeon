@@ -11945,6 +11945,8 @@ The ropes wrap themselves around your body!
 绳索缠绕在你的身体上！
 The ropes wrap themselves tightly around your body!
 绳索紧紧地缠绕在你的身体上！
+The holy ropes secure themselves upon your body!
+神圣之绳将自己固定在你的身上！
 The leather restraints attach themselves to your body!
 皮革拘束具附着在你的身体上！
 The high-tech cables wrap themselves over your body!
