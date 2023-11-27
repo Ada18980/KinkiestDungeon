@@ -10194,6 +10194,8 @@ Choose target 3x3 area
 选择施放区域（3x3）
 Witch's Electricity
 女巫的落雷
+Firey Explosion
+火焰爆炸
 Witch's Electric Orb
 女巫的雷电球
 Witch's Electric Burst
