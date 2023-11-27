@@ -8064,6 +8064,8 @@ The enemy attaches your ankle cuffs together!
 敌人将你的脚铐绑在一起！
 Ankle Chain
 踝链
+Your ankle cuff chain is tightened and pulls your feet together!
+你的脚踝铐链已收紧，并将你的双脚拉在一起！
 Short Ankle Chain
 短踝链
 A pair of cuffs chaining your legs together.
