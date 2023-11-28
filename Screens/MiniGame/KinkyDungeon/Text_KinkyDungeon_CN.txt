@@ -8941,7 +8941,7 @@ Armor
 Bras
 胸罩
 Underwear
-内衣
+内裤
 Bodysuits
 连体衣
 Socks
