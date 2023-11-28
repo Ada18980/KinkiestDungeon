@@ -25,9 +25,9 @@ Chinese
 Korean
 韓国語
 Mods
-モッド
+MOD
 Mods Loaded.
-モッドがロードされました。
+MODがロードされました。
 
 This game engages in safe and consensual analytics.
 このゲームは、安全で同意のある分析に取り組んでいます。
@@ -36,9 +36,9 @@ It sends data about spell choices, levels reached, etc, to help balance and impr
 No personal data is sent or stored.
 個人情報が送信・保存されることはありません。
 Accept
-承諾
+分析に協力する
 Don't Track Me
-拒絶
+分析に協力しない
 
 You are an adventurer descending into an ancient underground city of magic.
 あなたは古代の魔法の地下都市に降り立つ冒険者です。
@@ -55,673 +55,673 @@ Enable Sound
 Enable Drool/Tears
 よだれ/涙を有効にする
 Draw Armor
-ドローアーマー
+鎧を描写する
 Enable Music
 音楽を有効にする
 Turn Counter
-ターンカウンター
+経過ターン数を表示する
 Flash Screen on Stun
-スタン時のフラッシュスクリーン
+スタン時に画面を明滅させる
 Advanced Distraction VFX
-高度な気晴らし VFX
+興奮時のエフェクトを表示する
 Show NPC Status
-NPCステータスを表示
+NPCステータスを表示する
 Advanced Fog of War
 高度な戦争の霧
 Intense 'Let Go' VFX
-強烈なLet GoVFX
+絶頂時のエフェクトを表示する
 Enable Toy SFX
-おもちゃの SFX を有効にする
+ローター類の効果音を再生する
 Enable Fullscreen
 フルスクリーンを有効にする
 High Quality Animations
-高品質のアニメーション
+ハイクオリティのアニメーションを表示する
 Wait Quickly
-すぐに待って
+待機を高速化させる
 Blocked restraint!
 ブロック拘束！
 You bump into a wall.
-あなたは壁にぶつかります。
+壁にぶつかった。
 Select a journey. This will determine the ordering of game areas.
-ジャーニーを選択してください。これにより、ゲーム エリアの順序が決まります。
+モードを選択してください。エリアの順番が変わります。
 Standard: The intended experience
-スタンダード：意図した体験
+普通：通常の生成
 Random: A chaotic journey
-ランダム：混沌とした旅
+ランダム：エリアがランダムで変わります
 Harder: A more difficult journey
-Harder: より困難な旅
+Harder:難しいエリアが選ばれます
 Select perks to start with.
-特典を選択して開始します。
+パークを選択する
 Having 10+ spare points will trigger Hard Mode, granting unique loot.
 10以上のスペアポイントがあると、ハードモードがトリガーされ、ユニークな戦利品が付与されます.
  (HARD MODE ENABLED)
 （ハードモード有効）
 Advanced start (choose perks)
-アドバンススタート（特典選択）
+パークを選択して開始
 Confirm and start playing!
 確認してプレイ開始！
 Point Cost: AMOUNT
-ポイントコスト: AMOUNT
+パークのコスト: AMOUNT
 Points Available: AMOUNT
-利用可能なポイント: AMOUNT
+スキルポイント: AMOUNT
 Resilient Foes
-レジリエンス・フォーエズ
+強靭な敵
 Enemies take 30% less damage.
-敵が受けるダメージが 30% 減少します。
+敵の受けるダメージが30%減少する
 Strong
-強い
+剛腕
 Boosts the Struggle option when escaping.
-逃げるときの闘争オプションをブーストします。
+「もがく」選択時にボーナスを得る
 Helpless
-無力
+非力
 You are physically weak. Struggling is much less effective.
-あなたは体が弱いです。苦労してもあまり効果がありません。
+「もがく」選択時にペナルティを得る
 Flexible
-フレキシブル
+柔軟な体
 Slightly boosts the Remove/Unlock option, escaping is 1.5x as fast except picking, and your feet can use items/buckles.
-取り外し/ロック解除オプションをわずかにブーストし、ピッキングを除いて脱出が1.5倍速くなり、足でアイテム/バックルを使用できるようになります。
+ロックピックを使用しない時、「取り外し」「解錠」選択時に1.5倍のボーナスを得る。足でアイテムの使用とバックルの操作が可能になる
 Inflexible
-柔軟性がない
+体が固い
 You get a penalty to the Remove and Unlock action, and escaping is 0.75x as fast.
-削除してロックを解除するア​​クションにペナルティが発生し、逃げる速度が0.75倍になります。
+「取り外し」「解錠」選択時に0.75倍のペナルティを得る
 Locksmith
 錠前屋
 You get a bonus to lockpicking, allowing you to pick some high-security locks previously impossible.
-ロックピッキングにボーナスがあり、以前は不可能だった高セキュリティのロックをピッキングできるようになります。
+「ピッキング」選択時にボーナスを得る。極めて高度な鍵の解錠が可能になる
 Clueless
-無知
+門外漢
 You have no idea how to pick locks. Picking is 0.5x as fast and you can't pick most advanced locks.
-あなたは鍵の開け方を知らない。ピッキングは 0.5 倍速く、最も高度な錠前を選ぶことはできない。
+「ピッキング」選択時に0.5倍のペナルティを得る。高度な鍵の解錠が不可能になる
 Psychic
-超能力のある
+サイキック
 You no longer drop keys and picks, can unlock yourself with bound hands, and don't need hands for items/potions.
-鍵やピックを落とさなくなり、縛られた手でロックを解除でき、アイテム/ポーションに手を必要としなくなりました。
+鍵やロックピックを落とさなくなる。手を縛られていてもアイテムの使用が可能になる
 Novice
-初心者
+素人
 All spells above 1st level cost 2x as many spell points.
-1レベル以上のすべての呪文は、2倍の呪文ポイントが必要です。
+1レベル以上の呪文の習得に倍のスキルポイントがかかる
 Blessed
-祝福された
+祝福
 You can drink mana from the shrine fountains once per floor without chance of punishment.
-神社の噴水からマナを飲むことができるのは、1 階につき 1 回だけで、罰を受けることはありません。
+１階につき１度だけ神の泉から神罰無しで水を飲めるようになる
 Cursed
-呪われた
+呪い
 Goddess reputations start at 0 and can never exceed 25.
-女神の評判は0から始まり、25を超えることはありません。
+ゲーム開始時の「女神からの評価」が0になり、上限が25になる
 Submissive
 従順
 Your submissiveness starts at 100 and cannot go below 70.
-服従度は100から始まり、70を下回ることはありません。
+ゲーム開始時の「服従度」が100になり、下限が70になる
 Wanted
-欲しかった
+指名手配
 Your security level starts at 100 and cannot go below 70.
-セキュリティ レベルは 100 から始まり、70 を下回ることはできません。
+ゲーム開始時の「手配度」が100になり、下限が70になる
 Studious
 勤勉
 You start the game with +3 additional spell points.
-+3 の追加スペル ポイントを持ってゲームを開始します。
+ゲーム開始時、追加で3ポイントのスキルポイントを得る
 Meditation
 瞑想
 You slowly regenerate mana, up to a maximum of 50.
-最大50まで、ゆっくりとマナを再生します。
+マナが50以下の時、最大50までゆっくりと回復する
 Willpower
-意志力
+意志の力
 -50% stamina drain from being at high arousal.
-高覚醒時のスタミナ消費量-50%
+「興奮値」が高い時、スタミナ消費が50%低減される
 Bondage Lover
-ボンデージラバー
+拘束愛好家
 Attempting to escape arouses you.
-逃げようとすると興奮する。
+拘束を解除する際、興奮レベルが上昇する
 Focused Dodge
 集中回避
 While your miscast chance is 0%, you gain +40 Evasion.
-ミスキャスト確率0%の間、回避+40。
+詠唱失敗率が0%の時、回避率+40を得る
 Distracted
-気が散る
+注意力散漫
 +15% miscast chance (at all times)
-ミスキャスト確率+15%(常時)
+常に15%の詠唱失敗率を得る
 Brawler
 喧嘩屋
 Unarmed attacks deal +10 damage.
-素手攻撃のダメージ+10
+素手の時、ダメージ+10を得る
 Clumsy
 不器用
 0.7x base accuracy
-0.7倍の基本精度
+基礎命中率が0.7倍になる
 Unfocused
 焦点が合っていない
 Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distraction.
-注意散漫が 10% 以上の場合、精度は 0.9 倍になり、注意散漫が 90% の場合は 0.6 倍になります。
+注意散漫が 10% 以上の場合、精度は 0.9 倍になり、注意散漫が 90% の場合は 0.6 倍になります
 Pristine
 原始的
 There are no shiny loot objects in the dungeon.
-ダンジョンに光る戦利品はありません。
+光るルート品が生成されなくなくなる
 Lost Technology
-失われた技術
+”ロスト”テクノロジー
 Ancient power cores break with use, and cannot be recharged.
-古代の力のコアは使用すると壊れ、再充電できません。
+古代のパワーコアを使用した際、破損して再利用不可能になる
 Unchained
 アンチェインド
 Start with high Metal reputation, and all metal restraints are easier to escape from.
-金属の評判が高い状態から始めると、すべての金属製の拘束具が逃げやすくなります。
+ゲーム開始時の金属の女神からの評価が高くなり、金属製の拘束具から抜け出しやすくなる
 Damsel in Chains
 鎖につながれた乙女
 Metal restraints are harder to escape from.
-金属製の拘束具から逃れるのはより困難です。
+金属製の拘束具から抜け出しにくくなる
 Forgetful
 忘れっぽい
 You don't remember where you've been in the level.
-あなたはレベルのどこにいたか覚えていません。
+あなたはレベルのどこにいたか覚えていません
 Cursed Locks
 呪われた錠前
 Those without keys shall face the Wrath of the Lock. Locked items cannot be cut and are harder to struggle.
-鍵のないものは、ロックの怒りに直面するでしょう。ロックされたアイテムは切断できず、苦労するのが難しくなります。
+拘束具に鍵がかかっている場合、「切断」が不可能になり、「もがく」選択時にペナルティを得る
 The magical warding from the lock protects the item.
-ロックからの魔法の防御がアイテムを保護します。
+ロックからの魔法の防御がアイテムを保護します
 Undeniable
 否定できない
 Born with an intense submissive desire, you cannot refuse bondage from dialogues.
-強烈な従順な欲求を持って生まれたあなたは、対話から束縛を拒否することはできません。
+NPCとのダイアログで拘束される時、抵抗できなくなる
 Frantic Struggle
-狂乱の闘争
+めちゃくちゃにもがく
 Your struggling is 3 times as fast, but less efficient in terms of stamina.
-あなたの闘争は 3 倍速くなりますが、スタミナの面では効率が悪くなります。
+「もがく」選択時に3倍のボーナスを得るが、スタミナをより多く消費する
 Escape Artist
-脱出アーティスト
+縄抜け
 Start with high Rope reputation, and all rope restraints are easier to escape from.
-ロープの評判が高いところから始めれば、すべてのロープの拘束から逃れやすくなります。
+ゲーム開始時の縄の女神からの評価が高くなり、縄から抜け出しやすくなる
 Rope Bunny
 ロープバニー
 Rope restraints are harder to escape from.
-ロープの拘束は脱出するのがより困難です。
+縄から抜け出しにくくなる
 Slippery
 滑りやすい
 Start with high Latex reputation, and all latex restraints are easier to escape from.
-ラテックスの評判が高いところから始めれば、すべてのラテックスの束縛から逃れやすくなります。
+ゲーム開始時のラテックスの女神からの評価が高くなり、ラテックス製の拘束具から抜け出しやすくなる
 Latex Doll
-ラテックス人形
+ラテックスドール
 Latex restraints are harder to escape from.
-ラテックスの拘束は逃れるのが難しい
+ラテックス製の拘束具から抜け出しにくくなる
 Hogtied!
-ホグタイ！
+ホッグタイ
 Start the game trussed up in tight ropes.
-タイトなロープで縛られたゲームを開始します。
+ホッグタイの状態でゲームを開始する
 Escapee
 逃亡者
 Start with high Leather reputation, and all leather restraints are easier to escape from.
-革の評判が高いところから始めれば、すべての革製の拘束具から逃れやすくなります。
+ゲーム開始時の革の女神からの評価が高くなり、革製の拘束具から抜け出しやすくなる
 Leather-Bound
-革綴じ
+レザーバウンド
 Leather restraints are harder to escape from.
-革の拘束具から逃れるのは難しいです。
+革製の拘束具から抜け出しにくくなる
 Slayer
 スレイヤー
 You can cast Elemental spells without having the components, at twice the cost. Start w/ Firebolt.
-構成要素がなくても、2 倍のコストでエレメンタル スペルを唱えることができます。ファイアボルトで開始します。
+前提のスペルツリーを習得していない場合でも、2倍のコストを支払うことでエレメンタル魔法を唱えられる。ゲーム開始時「ファイアボルト」を習得
 Conjurer
-手品師
+召喚士
 You can cast Conjuration spells without having the components, at twice the cost. Start w/ Conjure Chain.
-構成要素がなくても、2 倍のコストで召喚呪文を唱えることができます。召喚チェーンを使用して開始します。
+前提のスペルツリーを習得していない場合でも、2倍のコストを支払うことで召喚魔法を唱えられる。ゲーム開始時「チェーン召喚」を習得
 Magician
 マジシャン
 You can cast Illusion spells without having the components, at twice the cost. Start w/ Shadow Dagger.
-コンポーネントがなくても、2 倍のコストで Illusion 呪文を唱えることができます。Shadow Dagger から始めます。
+前提のスペルツリーを習得していない場合でも、2倍のコストを支払うことで幻惑魔法を唱えられる。ゲーム開始時「シャドーダガー」を習得
 Narcoleptic
 ナルコレプシー
 You slowly lose stamina over time.
-時間の経過とともにスタミナが徐々に失われます。
+ターン経過時、スタミナを消費する
 Stealth Mission
 ステルスミッション
 You are harder to detect and there are more chests, but enemies take 30% less damage, are more evasive, and drop no gold.
-あなたは発見されにくくなり、宝箱が増えますが、敵は受けるダメージが 30% 少なくなり、より回避しやすくなり、ゴールドをドロップしなくなります。
+敵に発見されにくくなり、宝箱の配置数が増える。敵は30%のダメージをカットし、回避力が上昇する。また、倒した際にゴールドをドロップしなくなる
 Latex Lovers
 ラテックス愛好家
 All humanoids that can bind you also apply latex restraints.
-あなたを縛ることができるすべての人型生物は、ラテックス拘束も適用します。
+全ての人型生物がラテックス製の拘束具を使用するようになる
 Leather Lovers
-革の恋人
+革愛好家
 All humanoids that can bind you also apply leather restraints.
-あなたを縛ることができるすべての人型生物は、革の拘束も適用します。
+全ての人型生物が革製の拘束具を使用するようになる
 Wolfgirl Lovers
-オオカミ少女の恋人たち
+ウルフガール愛好家
 All humanoids that can bind you also apply wolfgirl restraints.
-あなたを縛ることができるすべての人型生物は、ウルフガールの拘束も適用します。
+全ての人型生物がウルフガール用の拘束具を使用するようになる
 Maid Lovers
-メイドラバーズ
+メイド愛好家
 All humanoids that can bind you also apply maid restraints.
-あなたを縛ることができるすべての人型生物は、メイドの拘束も適用します。
+全ての人型生物がメイド用の拘束具を使用するようになる
 Dress Lovers
-ドレスラバーズ
+ドレス愛好家
 All humanoids that can bind you also apply dress restraints.
-あなたを縛ることができるすべての人型生物は、服装の拘束も適用します。
+全ての人型生物がドレス型の拘束具を使用するようになる
 Kitty Lovers
-キティラバーズ
+ケモノ愛好家
 All humanoids that can bind you also apply kitty restraints.
-あなたを縛ることができるすべての人型生物は、キティの拘束も適用します。
+全ての人型生物がペット用の拘束具を使用するようになる
 Adv Latex Lovers
-アドバンス ラテックス ラバーズ
+高度な革愛好家
 All humanoids that can bind you also apply advanced latex restraints.
-あなたを縛ることができるすべての人型生物は、高度なラテックス拘束も適用します。
+全ての人型生物が高度な革の拘束具を使用するようになる
 Start Playing
 ゲームスタート
 Conspicuous
 目立つ
 Enemies detect you more easily.
-敵はあなたをより簡単に検出します。
+敵の感知範囲が拡大する
 Bound Power
 バウンドパワー
 Your damage and evasion increases based on the number of restraints worn, up to +40% when thoroughly bound.
-装備している拘束具の数に応じてダメージと回避率が上昇し、完全拘束時は最大+40%。
+装備している拘束具の数に応じてダメージと回避率が上昇する。最大+40％まで
 Kill Squad
 キル・スクワッド
 Enemies see you through walls and at greater distance.
-敵は壁越しに遠くからあなたを見ています。
+壁越しに発見されるようになる
 Supermarket
 スーパーマーケット
 Commerce shrines can appear in levels and have slightly more items.
-商業神社はレベルで出現し、少し多くのアイテムを持っています。
+1階層に最低1つの商業の祭壇が出現し、販売アイテム数が増加する
 Price Gouging
-価格つり上げ
+ぼったくり
 Items are 5x as expensive in the shop.
-お店の商品は5倍の値段です。
+販売価格が5倍になる
 Supermarket
 スーパーマーケット
 Commerce shrines can appear in levels and have slightly more items.
-商業神社はレベルで出現し、少し多くのアイテムを持っています。
+1階層に最低1つの商業の祭壇が出現し、販売アイテム数が増加する
 Price Gouging
-価格つり上げ
+ぼったくり
 Items are 5x as expensive in the shop.
-お店の商品は5倍の値段です。
+販売価格が5倍になる
 High Security
 ハイセキュリティ
 Picks are weaker, and randomly generated locks are harsher.
-ピックは弱く、ランダムに生成されたロックはより過酷です。
+ロックピックの破損率が上昇する。ランダムに生成されたロックの難易度が上昇する
 Shoddy Knives
-ショディナイフ
+粗雑なナイフ
 Knives break more easily.
 ナイフが壊れやすくなる
 Oppression
 抑圧
 Ghosts are less likely to help you.
-ゴーストがあなたを助けてくれる可能性は低くなります。
+拘束から抜け出す際、幽霊からの助力を得られる可能性が低くなる
 Search Party
 捜索隊
 More enemies spawn during sleep.
 睡眠中はより多くの敵がスポーンします。
 No Way Out
-追いつめられて
+追いつめ
 Enemies will always use the tightest restraints possible and fully bind you.
-敵は常に可能な限り最も厳しい拘束を使用し、あなたを完全に拘束します。
+敵は最も強力な拘束を使用し、可能な限り縛ろうとする
 Graceful Walk
 優雅な散歩
 You don't lose stamina when walking with one slowing item, unless it binds your legs together.
-足を拘束しない限り、減速アイテムを 1 つ持って歩いてもスタミナを失うことはありません。
+両足を拘束されない限り、減速レベル1につき消費するスタミナ量を低減する
 Well-Equipped
 装備充実
 Restraints and traps that are limited by level appear sooner, and enemies will stack many restraints.
-レベル制限のある拘束や罠の出現が早くなり、敵は拘束をたくさん重ねる。
+レベル制限のある拘束具と罠の登場が早まる。敵は多くの拘束具を所持するようになる
 Quick-Draw
 クイックドロー
 Switching weapons and spells does not take a turn.
-武器と呪文の切り替えにターンはかかりません。
+武器と呪文の切り替えにターンを消費しなくなる
 Quick-Scribe
 クイックスクライブ
 Switching spells and casting from spellbook does not take a turn.
-スペルの切り替えとスペルブックからのキャストにはターンがかかりません。
+呪文の切り替えと呪文書からの詠唱にターンを消費しなくなる
 Disorganized
-無秩序
+ぐちゃぐちゃ
 Switching weapons, learning/choosing spells, and casting from spellbook takes 3 turns.
-武器の切り替え、呪文の学習/選択、魔法書からの詠唱には3ターンかかります。
+武器の切り替え、呪文の習得、呪文の登録、呪文書からの詠唱に3ターンかかる
 Savour the Taste
-味を味わう
+味わう
 Drinking a potion takes 2 turns
-ポーションを飲むのに2ターンかかる
+ポーションを飲む際、2ターンかかるようになる
 Magic Hands
 マジックハン​​ド
 Enemies can add restraints underneath existing restraints.
-敵は既存の拘束の下に拘束を追加できます。
+敵は既存の拘束の下に拘束を追加できる
 Fuuka's Pet
 フウカのペット
 Start with Fuuka's collar and a few restraints.
-フウカの首輪といくつかの拘束具から始めます。
+フウカの首輪といくつかの拘束具を装備した状態でゲームを開始する
 Fuuka Fan Club
-風花ファンクラブ
+フウカちゃんファンクラブ
 All humanoids that can bind you also apply Fuuka's special restraints.
-あなたを縛ることができるすべての人型生物は、フウカの特別な拘束も適用します。
+全ての人型生物がフウカ特製の拘束具を使用するようになる
 Vengeance
 復讐
 Defeating an enemy greatly distracts you.
-敵を倒すと、気が散ってしまいます。
+敵を倒した際、興奮レベルが上昇する
 Berserker Rage
 バーサーカーレイジ
 Melee attacks distract you, but melee (including chain) damage increases by up to 30% at max distraction.
-近接攻撃は気を散らしますが、気晴らしが最大になると、近接 (チェーンを含む) のダメージが最大 30% 増加します。
+近接攻撃時、興奮レベルが上昇する。興奮レベルが高い時、与えるダメージが上昇する。最大30%
 Unstable Magic
 不安定魔法
 Spells do up to 60% additional damage based on distraction or miscast chance, whichever is higher.
-呪文は、気晴らしまたはミスキャストのどちらか高い方に基づいて、最大 60% の追加ダメージを与えます。
+詠唱時、興奮レベルまたは詠唱失敗率の高い方に応じて与えるダメージが上昇する。最大60%
 Absolute Focus
 絶対集中
 Miscast chance is doubled.
-ミスキャスト確率2倍
+詠唱失敗率が2倍になる
 Bound Crusader
 バウンドクルセイダー
 Goddesses will expect you to wear their restraints as their champion.
-女神はあなたが彼らのチャンピオンとして彼らの拘束を身に着けることを期待するでしょう.
+チャンピオンになった際、対応する属性の拘束具をつけなければ好感度が上昇しなくなる
 Nowhere is Safe
 どこも安全ではない
 Beds and furniture are often trapped.
-ベッドや家具が閉じ込められることがよくあります。
+ベッドや樽等の家具に罠が混じるようになる
 I have... needs
-私には…ニーズがあります
+ちょっと……ほしい
 Distraction builds up over time.
-気晴らしは時間の経過とともに蓄積されます。
+ターン毎に興奮レベルが上昇するようになる
 Hopeless
 絶望的
 Willpower decays over time.
-意志力は時間の経過とともに減衰します。
+ターン毎に気力が低下する
 Quickness
-素早さ
+縮地
 Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space without ticking the clock.
-4 ターン移動しないと、クイックネスが付与されます。クイックネスにより、時計を刻むことなく 1 スペース移動できます。
+4ターン移動しなかった場合、次の移動にターンを消費しない
 Expansive Halls
 広大なホール
 Increases the size of maps by 1 in each direction.
-各方向にマップのサイズを 1 ずつ増やします。
+マップが広くなる
 Gargantuan Halls
 ガルガンチュアンホール
 Increases the size of maps by 2 in each direction.
-マップのサイズを各方向に 2 ずつ増やします。
+マップが更に広くなる
 Labyrinthine Halls
 迷宮ホール
 Increases the size of maps by 3 in each direction.
-マップのサイズを各方向に 3 ずつ増やします。
+マップが更に更に広くなる
 Rigger
 リガー
 Chain and glue damage increased by 20%. Binding on enemies is 30% stronger.
-チェーンと接着剤のダメージが 20% 増加しました。敵へのバインディングが 30% 強化されました。
+チェーン属性、グルー属性のダメージが20%増加する。敵への拘束ダメージが30%増加する
 Pacifist
 平和主義者
 All non-glue, non-chain, or non-teasing damage dealt to humanoid enemies is reduced by 90%.
-ヒューマノイドの敵に与えられるすべての非グルー、非チェーン、または非からかいのダメージは90％減少します。
+人型の敵に攻撃する際、拘束やえっちな属性ではない攻撃は90%軽減される
 Burning Desire
-強い願望
+燃えるような欲望
 While above 70% distraction, you ignite nearby objects and gain +40% fire damage.
-注意散漫が 70% を超えると、近くのオブジェクトに点火し、+40% の火ダメージを獲得します。
+興奮値が70%以上の場合、近くのオブジェクトが点火し、炎ダメージが40%上昇する
 Frigid Personality
-冷淡な性格
+冷酷
 While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties.
-気晴らしが 0% の間、+10% の氷ダメージを獲得し、ペナルティなしで氷の上を歩くことができます。
+興奮値が0%の場合、氷の上を歩く際のペナルティがなくなり、氷ダメージが10%上昇する
 Grounded in Reality
 現実に根ざす
 While at max mana, your attacks deal an additional 30% of their base damage as electric damage.
-最大マナの間、あなたの攻撃は基本ダメージの 30% を電気ダメージとして追加で与えます。
+マナが最大の場合、攻撃時に追加で30%の電撃ダメージを与える
 Like the Wind
 風のように
 While above 95% stamina, you gain +30 Evasion and your slow level is reduced by 1.
-スタミナが 95% を超えている間、+30 回避を獲得し、スロー レベルが 1 減少します。
+スタミナが95%以上の時、回避力が30上昇し、減速状態にある場合、それを1軽減する
 Immovable Object
-不動の物体
+不退転
 While above 90% willpower, you gain +150 Restraint Block and Earth buff spells cost half mana.
-意志力が 90% を超えている間、+150 拘束防御を獲得し、地球バフ スペルのマナ コストは半分になります。
+気力が90%以上の場合、拘束抵抗力が150上昇し、地属性のバフ魔法のコストが半減する
 Path of Least Resistance
-抵抗の少ない道
+楽な道
 While at 0 willpower, you gain +35 Evasion and deal 20% of your max willpower as acid damage when restrained.
-意志力が0の場合、回避+35を獲得し、拘束されたときに最大意志力の20%を酸ダメージとして与える.
+気力が0の場合、回避力が35上昇し、拘束された際に最大気力の20%分の酸ダメージを与える
 Sticky Situation
-スティッキー・シチュエーション
+ねばねば
 You take 40% more glue damage.
-接着剤によるダメージが 40% 増加します。
+受けるグルー属性のダメージが40%増加する
 Breathless
 息切れ
 Taking chain, poison, and crush damage makes you dizzy.
-チェイン、ポイズン、クラッシュダメージを受けるとめまいがする
+毒、チェーン、衝撃属性のダメージを受けた際、めまい状態になる
 Kinky Prisoner
 変態囚人
 Guards never remove restraints you are already wearing, unless they are applying something tighter.
-警備員は、よりきついものを適用しない限り、すでに着用している拘束を決して外しません。
+収監された際、看守がより高度な拘束具を所持している場合を除き、拘束具を交換されなくなる
 Unfair Doors
 不公平な扉
 Doors are harder to open while your hands are bound.
-手を縛られていると、ドアが開けにくくなります。
+手を縛られている場合、ドアを開けるのが難しくなる
 You rattle the doorknob uselessly and end up banging on the door.
-無駄にドアノブをガタガタ鳴らして、ドアを叩いてしまう
+何度もドアノブを回して、ガタガタと音を出してしまった。
 You can't quite get a grip on the doorknob.
-あなたはドアノブをしっかりと握ることができません。
+ドアノブを上手く握れない。
 Someone hears you banging and opens the door from the other side!
-誰かがあなたがドアを叩いているのを聞いて、反対側からドアを開けます!
+ドアが叩かれているのを聞いて、誰かが反対側からドアを開けた。
 Someone notices you fiddling with the door and opens it from the other side!
-あなたがドアをいじっているのに気づいて、反対側からドアを開けてしまった！
+ドアがいじられているのを聞いて、誰かが反対側からドアを開けた。
 The door squeaks open as the latch wasn't fully engaged.
-ラッチが完全にかみ合っていないため、ドアがきしむ音を立てて開きます。
+建付けの悪いドアが軋みながら開く。
 You grab the doorknob with your wrists and flex it open.
-手首でドアノブをつかみ、曲げて開けます。
+手首でなんとかドアノブをひねり、ドアを開ける。
 You use your flexible feet to open the door.
-柔軟な足を使ってドアを開けます。
+柔軟な足でドアを開けた。
 Poor Technique
-下手な技
+へたくそ
 Instead of fizzling, most miscasted projectiles and AoE spells will target you instead.
-フィズリングの代わりに、ほとんどのミスキャストされた発射体と AoE スペルが代わりにあなたをターゲットにします。
+詠唱に失敗した際、発射体と範囲指定は自身を巻き込むようになる
 Ticklish
 くすぐったい
 You take 50% more tickle damage.
-くすぐりダメージが 50% 増加します。
+受けるくすぐり属性のダメージが50%増加する
 Stoic
 ストイック
 You gain 82% tickle resist.
-あなたは82%のくすぐり耐性を獲得します。
+くすぐり属性の耐性が82%増加する
 Lascivious
-スケベ
+むっつり
 You take 50% more grope damage.
-手探りダメージが 50% 増加します。
+受ける愛撫属性のダメージが50%増加する
 Unperturbed
-動じない
+不感症
 You gain 82% grope resist.
-82% の模索耐性を獲得します。
+愛撫属性の耐性が82%増加する
 Masochist
 マゾ
 Pain is strongly arousing.
-痛みは強く刺激されます。
+受ける痛み属性のダメージが増加する
 Pain Tolerance
 痛み耐性
 You gain 200% pain resist.
-あなたは200%の痛み耐性を獲得します。
+痛み属性の耐性が200%増加する
 Fashionable
 おしゃれ
 When you are jailed, you keep your outfit.
-投獄されたとき、あなたは服を着たままです。
+投獄された際、服がそのままになる
 Futile Struggles
-無駄な闘争
+空回り
 Lose 2 WP every time you remove a non-trivial restraint.
-重要な拘束を解除するたびに 2 WP を失います。
+特定の拘束を解除する度に、気力が2ポイント低下する
 Second Wind
 セカンドウィンド
 Gain 2 WP every time you remove a non-trivial restraint. Destroys restraints on removal.
-重要な拘束を解除するたびに 2 WP を獲得します。解除時に拘束を破壊します。
+特定の拘束を解除する度に、気力が2ポイント上昇する。解除した拘束具を破壊する
 Dominant
-支配的
+ドミナント
 They're trapped here with you. Ghosts are more helpful, and you can bind enemies that confront you about bondage.
-彼らはあなたと一緒にここに閉じ込められています。幽霊はより役に立ち、束縛についてあなたに立ち向かう敵を縛ることができます。
+幽霊が協力的になる
 Stranger
-知らない人
+風来坊
 Randomizes your relationship to most factions.
-ほとんどの派閥との関係をランダム化します。
+ゲーム開始時、ほとんどの派閥との関係をランダムに設定する
 Wrong Neighborhood
-間違った近所
+ここに来るべきじゃなかった
 All factions are hostile and united against you.
-すべての派閥は敵対的であり、あなたに対して団結しています。
+ゲーム開始時、ほとんどの派閥との関係が0になり、派閥が互いに協力し合う
 Trespasser
 侵入者
 You lose reputation with the goddesses every time you advance a floor.
-階層を進めるごとに女神の評判が落ちます。
+階層を下る際、女神との関係が低下する
 Prisoner
 囚人
 Start the game as a submissive prisoner wandering the halls.
-ホールをうろつく従順な囚人としてゲームを開始します。
+囚人としてゲームを開始する
 Rusty Bolts
 錆びたボルト
 Most traps have a 25% misfire chance.
-ほとんどのトラップは 25% の不発確率があります。
+ほとんどのトラップが25%の確率で不発になる
 Unmasked
-マスクされていない
+マスク嫌い
 Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
-フードと顔全体を覆うマスクは登場しませんが、目隠しはより強力です。
+フルフェイス系の拘束具が出現しなくなるが、目隠しはより強力になる
 Blackout
 ブラックアウト
 Blindfolds are stronger. While blindfolded you can only see enemies next to you.
-目隠しはより強力です。目隠しをしている間は、隣の敵しか見ることができません。
+目隠し装備時、隣の敵しか見えなくなる
 Total Blackout
-完全停電
+完全ブラックアウト
 Blindfolds are extremely punishing and you can't see explored areas while blindfolded.
-目隠しは非常に苦痛であり、目隠しをしている間は探検エリアを見ることができません。
+目隠し装備時、「ブラックアウト」効果に加え、マップが自身の周囲以外表示されなくなる
 Not a Doll
-人形じゃない
+人間です
 You may still enter Doll Terminals, but enemies will not force you onto doll stands.
-人形端末に入ることはできますが、敵に強制的に人形台に乗せられることはありません。
+強制的に人形台に載せられることがなくなる
 No Nurses
-看護師はいらない
+ナースはいらない
 Nurses will not appear in the game.
-看護師はゲームに登場しません。
+ナースがゲームに登場しなくなる
 No Brats
-ノーブラッツ
+ガキじゃない
 Submissive enemies won't run away from you.
-従順な敵はあなたから逃げません。
+従順な敵が逃げなくなる
 Brats Only
-ガキのみ
+ガキばっか
 Submissive enemies will always be bratty and force you to catch them.
-従順な敵は常に無愛想で、捕まえることを強いられます。
+従順な敵が常に逃げるようになる
 More Tape
-もっとテープ
+テープ好き
 Tape-wielding enemies (such as Tape Bots) occur more frequently.
-テープを使用する敵 (テープボットなど) がより頻繁に発生します。
+テープを使用する敵が出現する確率が上昇する
 Less Tape
-少ないテープ
+テープ嫌い
 Fewer tape-related enemies will appear, although this does not remove tape entirely.
-テープ関連の敵の出現は少なくなりますが、これでテープが完全に除去されるわけではありません。
+テープを使用する敵が出現する確率が低下する
 Trainee
-研修生
+ペット
 Your training has given you access to the spells of the Trainee class. (Aroused mode only)
-あなたの訓練により、訓練生クラスの呪文へのアクセスが可能になりました。(覚醒モードのみ)
+ペットクラスのスキルが使用できるようになる
 Warrior
 戦士
 Your training has given you access to the spells of the Warrior class.
-あなたの訓練により、あなたは戦士クラスの呪文にアクセスできるようになりました。
+戦士クラスのスキルが使用できるようになる
 Rogue
-ローグ
+盗賊
 Your training has given you access to the spells of the Rogue class.
-あなたの訓練はローグクラスの呪文へのアクセスをあなたに与えました。
+盗賊クラスのスキルが使用できるようになる
 Wizard
-ウィザード
+魔術師
 Your training has given you access to the spells of the Wizard class.
-あなたの訓練により、ウィザードクラスの呪文へのアクセスが可能になりました。
+魔術師クラスのスキルが使用できるようになる
 Panic!!!
-パニック！！！
+パニック
 When you step on a trap, you are stunned for 2 turns.
-罠を踏むと2ターン気絶する
+罠を踏んだ際、2ターンの間スタン状態になる
 Panic sets in! (Stunned 2 turns)
-パニックに陥る！ (気絶2ターン)
+パニックになった！(2ターンのスタン)
 Butterfingers
-バターフィンガーズ
+不器用な手先
 Having arms bound prevents you from using your hands to struggle or unlock yourself.
-腕を縛られていると、手を使って苦労したり、ロックを解除したりすることができなくなります。
+腕を縛られている際、「もがく」と「解錠」にペナルティを得る
 Weak Grip
 握力が弱い
 Having arms bound prevents you from holding weapons or potions.
-腕を縛られていると、武器やポーションを持つことができなくなります。
+腕を縛られている際、武器とポーションを使用できなくなる
 You kneel down so you can reach the potion with your mouth...
-ポーションに口が届くようにひざまずきます...
+跪いて地べたのポーションに口を近づける……
 Can't Hear You!
-聞こえない！
+何言ってるの
 Being gagged blocks you from casting verbal spells regardless of gag power.
-猿轡かませると、猿轡の力に関係なく、口頭の呪文を唱えることができなくなります。
+猿轡をかまされている際、強度に関係なく口を使った呪文は使用できなくなる
 Unmasked
-マスクされていない
+マスク嫌い
 Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
-フードと顔全体を覆うマスクは登場しませんが、目隠しはより強力です。
+フードとマスクがゲーム内に登場しなくなる。目隠しがより強力になる
 Ball Gag Lover
-ボールギャグラバー
+ボールギャグ愛好家
 Increase occurrence of ball gags, decrease occurrence of muzzles.
-ボールギャグの発生を増やし、マズルの発生を減らす。
+ボールギャグの登場頻度が上がり、マズルの登場頻度が下がる
 Muzzle Lover
-マズルラバー
+マズルラ愛好家
 Greatly increases the occurrence of muzzles.
-マズルの発生が大幅に増加します。
+マズルの登場頻度が大幅に上昇する
 Armbinder Lover
-腕章の恋人
+アームバインダー愛好家
 More armbinders, less straitjackets.
-アームバインダーを増やし、拘束衣を減らします。
+アームバインダーの登場頻度が上がり、拘束衣の登場頻度が下がる
 Jacket Lover
-ジャケットラバー
+拘束衣愛好家
 More straitjackets, less armbinders.
-拘束衣を増やせばアームバインダーは減る
+拘束衣の登場頻度が上がり、アームバインダーの登場頻度が下がる
 Maid Sweeper
-メイドスイーパー
+お掃除メイド
 Start in a magically locked maid outfit.
-魔法の鍵のかかったメイド服でスタート。
+メイド服で拘束された状態でゲームを開始する
 Wolf Trainee
-オオカミの訓練生
+ペットのオオカミ
 Start in a uniform of a naughty wolfgirl.
-やんちゃなオオカミ少女の制服でスタート
+オオカミ用スーツで拘束された状態でゲームを開始する
 Latex Doll
 ラテックスドール
 Start bound in latex restraints.
-ラテックス拘束で縛り始めます。
+ラテックスで拘束された状態でゲームを開始する
 Iron Slave
 鉄の奴隷
 Start in a full set of magically locked obsidian cuffs.
-魔法のようにロックされた黒曜石の袖口のフルセットから始めましょう。
+鉄の拘束具で拘束された状態でゲームを開始する
 Mana Burst
 マナバースト
 While at 100% distraction, you get -100% miscast chance but spending too much mana at once may cause you to go over the edge.
-気晴らしが 100% の間、ミスキャストの可能性は -100% になりますが、一度に多くのマナを消費すると限界を超えてしまう可能性があります。
+興奮値が100%の場合、詠唱失敗率が100%減少する。一度に多くのマナを消費した場合、絶頂する可能性がある
 Arousing Magic
-覚醒魔法
+えっちな魔法
 Your magic is powered by otherworldly distracting energies. Casting spells increases distraction based on the mana spent.
-あなたの魔法は、別世界の気を散らすエネルギーによって動かされています。呪文を唱えると、消費したマナに基づいて気晴らしが増加します。
+呪文を唱えた際、消費したマナに応じた興奮値を得る
 Clearheaded
 明晰
 Magic puts you in a clear state of mind. Casting spells successfully reduces your distraction.
-魔法はあなたを明確な精神状態にします。呪文を唱えることで、気が散ることが減ります。
+呪文を唱えた際、興奮値が低下する
 Copy (clipboard)
-コピー (クリップボード)
+クリップボードにコピー
 Paste (clipboard)
-貼り付け (クリップボード)
+クリップボードを貼り付け
 DAMAGEDEALT electric damage conducts to you!!!
-DAMAGEDEALT 電気ダメージがあなたに伝導します!!!
+DAMAGEDEALT 電撃ダメージを受けた！
 The pressure fans the flames on you, dealing bonus DAMAGEDEALT fire damage!
-プレッシャーが炎を煽り、DAMAGEDEALT の炎ダメージを与えます!
+炎にあぶられ、DAMAGEDEALT の炎ダメージを受けた！
 The RestraintName comes off more easily in the presence of water!
-RestraintName は、水があるとより簡単に剥がれます。
+RestraintName は、水を使用すると簡単に解除できる。
 You slip on the ice!
-あなたは氷の上を滑る！
+氷の床を滑る！
 The air around you is ablaze! (-DamageDealt SP)
-あなたの周りの空気は燃えています！ (-DamageDealt SP)
+周りの空気が燃え上がった！ (-DamageDealt SP)
 The Goddess of Illusions shrouds you in shadows!
-幻想の女神があなたを影で覆います！
+幻惑の女神が作り出した霧があなたを包む。
 You struggle against your bonds, but a magical force resists!
-あなたは絆に抗うが、魔法の力が抵抗する！
+いくらもがいても、魔法の力で抵抗される。
 The ropes squeeze you tighter and tighter...
-ロープはあなたをますますきつく締めます...
+全身の縄がきつくしまっていく……
 Your body sinks deeper into a sea of bindings...
-あなたの体は、束縛の海に深く沈んでいきます...
+全身が縄の海に沈んでいく……
 You struggle to breath as you are buried alive in squirming ropes...
-身もだえするロープに生き埋めにされて息苦しくなる...
+生きたロープに埋もれて息苦しくなってくる……
 You feel a force compelling you to stop resisting...
-あなたは抵抗をやめさせようとする力を感じます...
+抵抗力を奪う力を感じる……
 Your body struggles to move as you feel a power sealing you!
-あなたを封じ込める力を感じると、あなたの体は動くのに苦労します！
+封印の力で上手にもがくことができない……
 The sarcophagus' door slides open as you are slowly pulled inside...
-石棺のドアがスライドして開き、ゆっくりと引き込まれます...
+棺桶のフタが開き、ゆっくりと中に引きずり込まれる……
 The hands squeeze you tightly...
-手がぎゅっと握る…
+影の手に全身をきつく締め付けられる……
 More hands clasp over your body...
-もっと手で体を包み込んで……
+もっと多くの影の手に包み込まれる……
 You struggle to breath as you are pulled into the mass of shadow hands...
-あなたは影の手の塊に引き込まれ、息をするのに苦労します...
+影の手の中に引きずり込まれて息をするのもやっとの状態になる……
 The world goes dark...
-世界が暗くなる…
+意識が途切れる……
 You wake up in a different place...
-目が覚めたら別の場所で…
+知らない場所で目を覚ました……
 Arcane Explosion
 アーケイン・エクスプロージョン
 EnemyName says something incomprehensible! Her spell miscasts!
@@ -735,13 +735,13 @@ Nipples
 Breasts
 胸
 Panties
-パンティー
+パンツ
 Front
 正面
 Rear
 後方
 Feet
-フィート
+足
 Everywhere!
 どこにでも！
 Physical Armor:
@@ -749,121 +749,121 @@ Physical Armor:
 Magic Armor:
 マジックアーマー：
 In the Shadows: You are harder to see.
-In the Shadows: 見えにくくなっています。
+影の中にいる:見つかりにくい
 Invisible: You are very difficult to see.
-見えない：あなたはとても見えにくいです。
+透明：とても見つかりにくい
 Quickness: Your next movement is so fast it doesn't advance a turn.
-素早さ：次の動きが速すぎて手番が進まない。
+縮地：次の移動にターンを消費しない
 All Damage Reduction:
 全ダメージ軽減：
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
-PERCENT2 DAMAGETYPE 耐性と PERCENT3 DAMAGECATEGORY 修正値に基づいて、PERCENT1 DAMAGETYPE ダメージを受けます。
+PERCENT2 DAMAGETYPE 耐性と PERCENT3 DAMAGECATEGORY 修正値に基づいて、PERCENT1 DAMAGETYPE ダメージを受ける
 You deal PERCENT more DAMAGETYPE damage.
-DAMAGETYPE のダメージが PERCENT 増加します。
+DAMAGETYPE のダメージが PERCENT 増加する
 Your bindings are PERCENT more effective.
-あなたのバインディングは PERCENT より効果的です。
+拘束は PERCENT 効果的
 Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage.
-あなたの攻撃は DAMAGEDEALT DAMAGETYPE の基本ダメージを与えます。
+攻撃は DAMAGEDEALT DAMAGETYPE の基本ダメージを与える
 Plugged!
-詰まった！
+挿入されている
 Plugged up!!!
-詰まった!!!
+挿入されている
 Denied! You won't be getting off that easy~
 断った！そう簡単にはいかないだろうな～
 Teasing vibrations...
-からかう振動…
+ゆっくりと振動している……
 Gentle vibrations...
-優しい振動…
+やさしく振動している……
 Mild vibrations...
-微振動…
+マイルドに振動している……
 Strong vibrations!
-強い振動！
+強く振動している！
 Intense vibrations!!
-激しい振動!!
+激しく振動している！
 Torturous vibrations!!!
-拷問の振動!!!
+激しく暴れ回っている！
 Stunned! You can't move!
-ビックリ！動けない！
+スタン状態。動くことができない。
 Your vision is impaired!
-視界が悪い！
+目が見えない
 Arms are bound!
-腕が縛られている！
+腕が縛られている
 Hands are useless!
-手がだめだ！
+手が使えない
 Hands are impaired! Some tasks will be harder...
-手が不自由！作業が難しくなる…
+手が上手く使えない。いくつかの行動にペナルティを得る
 Movement significantly impaired!
-動きが著しく損なわれている！
+動きが鈍い
 Movement slightly impaired.
-動きが少し鈍い。
+動きが少し鈍い
 Movement severely impaired!
-運動障害がひどい！
+動きがとても鈍い
 Immobilized!
-動けなくなった！
+動けない！
 Your mouth is free for potion-drinking and spellcasting activities.
-あなたの口はポーションを飲んだり呪文を唱えたりするのに自由です。
+口は拘束されていない
 Your vision is clear.
-あなたのビジョンは明確です。
+視界良好
 Your hands are unobstructed.
-あなたの手はふさがれていません。
+手は拘束されていない
 Your arms are free to move as you please.
-腕は自由に動かせます。
+腕は拘束されていない
 Your legs are free and unimpeded.
-あなたの足は自由で妨げられていません。
+足は拘束されていない
 You are gagged! Verbal miscast chance is increased and your potions are less effective!
-あなたは猿轡かませられました! 言葉のミスキャストの可能性が増加し、ポーションの効果が低下します!
+猿轡をかまされている。口を使う魔法は詠唱失敗率が増加し、ポーションを上手に飲めないため効果が減少する
 Your mouth is totally filled! You can't drink potions and cant cast verbal spells!
-お口いっぱいですよ！ ポーションも飲めないし、ミスキャスト率も高いですよ！
+口に詰め物が詰まっている。ポーションは飲めないし詠唱失敗率は更に上昇する
 Spell Empowerment!
-魔法強化！
+魔法強化
 Let there be light!
 光あれ！
 You're seeing things...
 あなたは物事を見ている...
 You've been poisoned!
-あなたは毒殺された！
+毒に侵された！
 -50% MP Cost (Latex)
 MP消費-50%(ラテックス)
 -50% MP Cost (Leather)
-MP消費-50%(レザー)
+MP消費-50%(革)
 -50% MP Cost (Metal)
 MP消費-50%(メタル)
 -50% MP Cost (Rope)
-MP消費-50%(ロープ)
+MP消費-50%(縄)
 Regeneration
 再生
 -50% MP Cost (Elements)
-MP消費-50%(属性)
+MP消費-50%(エレメント)
 -50% MP Cost (Conjuration)
 MP消費-50%(召喚)
 -50% MP Cost (Illusion)
-MP消費-50%(イリュージョン)
+MP消費-50%(幻惑)
 Conductive: When you or an enemy takes electric damage, the other takes half of it as well!
-伝導：自分か敵が電撃ダメージを受けると、相手も半分受ける！
+電導：自分か敵が電撃ダメージを受けた際、半分のダメージを相手に与える
 Lightning Rod: Gain significantly boosted electric resist.
-ライトニングロッド：電気抵抗が大幅に増加します。
+ライトニングロッド：電気属性への抵抗が大幅に増加する
 Drenched: Grants fire resist, ice weakness, and makes you conductive.
-びしょぬれ：火耐性、氷弱化を付与し、導電性にします。
+びしょぬれ：火耐性、氷弱化を付与し、導電性になる
 Chilled: The cold makes it hard to move! You are slowed.
-チルド: 寒さで動きにくくなっています! 動きが鈍くなっています。
+凍えている: 寒さで動きが鈍くなっている
 Slimed: It's sticky and dense! You are slowed and 30% more vulnerable to glue damage.
-Slimed: 粘着性があり、密度が高いです。動きが遅くなり、接着剤によるダメージを受けやすくなります。
+Slimed: ねばねばが張り付いている。動きが鈍くなり、グルー属性のダメージが30%増加する
 Unsteady: You're on loose footing. You are easier to hit and are slowed.
-ふらふら: 足場が緩い。攻撃を受けやすく、動きが鈍くなる。
+ふらふら: 足元がおぼつかない。動きが鈍くなり、回避力が低下する
 Unsteady: You're on loose footing. You are easier to hit and are slowed.
-ふらふら: 足場が緩い。攻撃を受けやすく、動きが鈍くなる。
+ふらふら: 足元がおぼつかない。動きが鈍くなり、回避力が低下する
 Ignore Ice Tiles
 氷のタイルを無視
 Ignited: You are dealing fire damage to yourself and nearby enemies!
-点火: 自分と近くの敵に火のダメージを与えています!
+点火: 自分と近くの敵に火のダメージを与える
 You are on fire and taking damage!
-あなたは燃えていて、ダメージを受けています！
+体が燃えている。ターン毎にダメージを受ける
 Arcane Power: Deals bonus damage when you hit an enemy.
-アーケイン パワー: 敵に命中するとボーナス ダメージを与える。
+秘術の力: 攻撃が命中した際、追加でダメージを与える
 Arcane Protection: Reduces damage taken, and deals retaliation damage.
-アーケイン・プロテクション：受けるダメージを軽減し、報復ダメージを与える。
+秘術の守護：攻撃を受けた際、一部のダメージをカットし、反射ダメージを与える
 Arcane Cunning: You turn invisible briefly after attacking.
-秘術の狡猾: 攻撃後、しばらく姿が見えなくなる。
+秘術の智慧: 攻撃後、攻撃を行った際、透明になる
 -MP Cost (Fire)
 -消費MP(火)
 -MP Cost (Air)
@@ -873,55 +873,55 @@ Arcane Cunning: You turn invisible briefly after attacking.
 -MP Cost (Earth)
 ・消費MP(土)
 Slime Form: You gain bonuses and can slip through bars!
-スライムフォーム: ボーナスを獲得し、バーをすり抜けることができます!
+スライムフォーム: 柵をすり抜けることができる
 Shroud: Visibility decreased, evasion increased.
-シュラウド：視認性低下、回避率上昇。
+霧纏い：敵から感知されにくくなり、回避力が増加する
 Camoflage: While holding still, you are very hard to see.
-カモフラージュ: じっとしていると、非常に見えにくい。
+カモフラージュ: 待機したターン、非常に感知されにくくなる
 Stone Skin: Increased armor.
-ストーンスキン：アーマーの増加。
+ストーンスキン：アーマー値が増加する
 Darkblade: Increased damage.
-ダークブレード: ダメージ増加。
+ダークブレード:ダメージが増加する
 Runic Ward: Increased Magic Armor.
-Runic Ward: 増加した魔法の鎧。
+ルーンワード: マジックアーマー値が増加する
 Invisibility: It is very difficult for enemies to see you.
-不可視性：敵があなたを見るのは非常に困難です。
+不可視：非常に感知されにくくなる
 Lesser Invisibility: It is harder for enemies to see you.
-不可視性が低い：敵があなたを見つけるのが難しくなります。
+半透明：感知されにくくなる
 FULL POWER: Cutting power increased.
-FULL POWER：切削力がアップ。
+フルパワー：「切断」選択時にボーナス
 Graceful: Struggling power increased.
-グレイスフル：闘争力アップ
+グレイスフル：「もがく」選択時にボーナス
 Iron Blood: Reduced melee cost, increased mana costs.
-Iron Blood: 近接コストを減らし、マナ コストを増やしました。
+鉄血: 近接攻撃のコストが低下し、マナコストが増加する
 Sleepy: You are sluggish and have a hard time keeping your eyes open.
-眠い：動きが鈍く、目を開け続けるのに苦労しています。
+眠い：動きが鈍くなり、目を開けていられなくなる
 Afterimage: Evasion greatly increased.
-残像：回避率大幅アップ。
+残像：回避力が大幅に上昇する
 We did it! We made outselves invisible--mmmmph!!!
-やりました！外見を見えなくしました--うーん!!!
+やった！透明になれ--むぐぅ！
 Your restraints are disenchanted, treating them as nonmagical for purposes of cutting.
-あなたの拘束具は幻滅されており、裁断目的では非魔法として扱われています。
+拘束具のエンチャントを無効化した。「切断」選択時に魔法で抵抗されない
 You can launch another leather restraint instantly!
-すぐに別の革拘束を発射できます！
+すぐに革の拘束具を発射できる
 Your motivation is powerful enough your spells cannot be stopped!
-あなたのモチベーションは十分に強力で、あなたの呪文を止めることはできません!
+モチベーションは十分。いくらでも呪文を唱えられる
 Locked Down: Struggling power is greatly reduced.
-ロックダウン：闘争力が大幅に減少する。
+ロックダウン：「もがく」選択時に大幅なペナルティ
 Locked Down: Struggling power is greatly reduced.
-ロックダウン：闘争力が大幅に減少する。
+ロックダウン：「もがく」選択時に大幅なペナルティ
 Verbose: You can cast verbal spells while gagged.
-Verbose: 猿轡かませた状態で言葉の呪文を唱えることができます。
+バーボース: 猿轡をかまされた状態でも呪文を唱えられる
 Dextrous: You can cast arm spells while tied up.
-デクストラス: 縛られている間、腕の呪文を唱えることができます。
+デクストラス: 腕を縛られていても呪文を唱えられる
 Spell Dance: You can cast leg spells while tied up.
-スペルダンス：縛られた状態で足の魔法を唱えられる。
+スペルダンス：足を縛られていても呪文を唱えられる
 Bondage Buster: Lazor is charging...
-ボンデージバスター：レイザー充電中…
+ボンデージバスター：エネルギー充填中……
 Katana: Patience is key...
-カタナ：忍耐が鍵です...
+刀：耐え難きを耐え……
 Stormbreaker: You have the Power.
-ストームブレイカー: あなたには力があります。
+ストームブレイカー: 大いなる力
 Game Setup:
 ゲームのセットアップ:
 Beginner: Get a save code every 3 levels, autosave after each floor
@@ -935,71 +935,71 @@ Kinky: セーブ コードはありません。オーブはランダムな呪文
 Log
 ログ
 Change Outfit
-着替え
+着替える
 Reset Outfit
-衣装リセット
+衣装をリセット
 Code
 コード
 Confirm Reset?
-リセットを確認しますか?
+リセットしてもよろしいですか？
 (Copy the code above and save it on your computer to load later)
-(上のコードをコピーしてコンピューターに保存し、後で読み込むことができます)
+(上のコードをコピーしてコンピューターに保存しておけば、後で読み込むことができます)
 You come across a black monolith with its face inscribed in runes.
-顔にルーン文字が刻まれた黒い一枚岩に出くわします。
+ルーン文字が刻まれた黒いモノリスを発見しました。
 You study them, but can't come up with an interpretation.
-あなたはそれらを研究しますが、解釈を思い付くことができません。
+しかしいくら眺めてみても、解読はできませんでした。
 They may still prove useful to future adventurers should you get caught...
-もしあなたが捕まったら、将来の冒険者に役立つかもしれません...
+もしかしたら、どうしようもなくなったときに役に立つかもしれない……
 (Your game has been saved automatically, but you can save the code for later)
 (ゲームは自動的に保存されましたが、後で使用するためにコードを保存できます)
 
 
 Continue...
-続く...
+進む……
 Menu
 メニュー
 
 
 I will simply wait to see what happens.
-何が起こるかをただ待つだけだ
+何が起こるかをただ待つだけ
 Save my current progress.
-現在の進行状況を保存します。
+現在の進行状況を保存する
 Give up & delete save
 あきらめてセーブを削除
 Yes, delete my save file!
-はい、セーブファイルを削除してください！
+本当にセーブを消す
 Actually, I will let the enemy capture me instead.
-本当は敵に捕らえさせてやる
+投降する
 Yes, jail me!
-はい、私を投獄してください！
+降参して牢屋に行く
 No, I wish to press on
-いいえ、押したいです
+ゲームに戻る
 See Perks
-特典を見る
+パークを確認
 This chest belongs to the FACTION
-このチェストは FACTION のものです
+このチェストは FACTION のものです。
 Devious Dungeon Challenge is enabled.
 デビオスダンジョンチャレンジが有効になりました。
 Waiting for game data...
 ゲームデータ待ち…
 You have surrendered to the dungeon and become its prisoner.
-あなたはダンジョンに降伏し、その囚人になりました。
+ダンジョンに囚われて、憐れな奴隷と成り下がった。
 Day and night, you wait that rescue may come some day.
-昼も夜も、いつの日か救助が来るのを待っている。
+いつの日か救助が来るのを待っている。
 Better luck next time!
 次もよろしくね！
 You have reached the end of the playable portion.
-再生可能な部分の最後に達しました。
+最下部に到着しました。
 Come back later for new dungeons!
-新しいダンジョンのために後で戻ってきてください！
+新しく追加されたらまた来てくださいね！
 Got the keys! Find the stairs to go to the next floor.
-鍵を手に入れた！次の階に行く階段を見つけます。
+次の階層へ行くための鍵を手に入れた！
 You haven't found the keys for this floor yet.
-このフロアの鍵はまだ見つかっていません。
+次の階層へ行くための鍵を見つけていない
 Missing key
-キーがありません
+鍵がない
 Chance for a spell to fizzle:
-呪文が失敗する確率:
+詠唱失敗率:
 Dodge Chance: Percent%, based on EVASIONSUM Evasion, -EVASIONPENALTY penalty from bindings
 Dodge Chance: Percent%、EVASIONSUM Evasion に基づく、バインディングからの -EVASIONPENALTY ペナルティ
 Chance to block a level 10 restraint: Percent%
@@ -1011,13 +1011,13 @@ Speed: SPD
 Normal
 普通
 Stunned!
-ビックリ！
+スタン！
 Slowed
-ゆっくり
+遅い
 Very Slow
 非常に遅い
 Immobile
-不動
+動けない
 SP: CURRENT/MAX
 SP：現在/最大
 Willpower: CURRENT/MAX
@@ -1025,19 +1025,19 @@ Willpower: CURRENT/MAX
 MP: CURRENT/MAX
 MP：現在/最大
 Mana slowly recovers from a pool equal to POOLMANA. Drink potions to restore the pool.
-マナはプールマナに等しいプールからゆっくりと回復します。プールを回復するにはポーションを飲みます。
+マナはマナプールからゆっくりと補充される。ポーションを飲むことでマナプールの回復ができる
 Your minimum distraction increases over time as you encounter distracting things.
-気を散らすものに遭遇すると、時間の経過とともに最小限の気晴らしが増加します。
+興奮値が上昇すると、それに合わせて最小値も上昇する
 Stamina recovers more quickly when you aren't spending it.
-スタミナは、消費していないときの方が早く回復します。
+スタミナはじっとしていると早く回復する
 Willpower is restored by food, sleep, and potions. Without willpower, it becomes very difficult to escape.
-意志力は、食事、睡眠、ポーションによって回復します。意志力がなければ、逃げるのは非常に困難になります。
+気力は、食事、睡眠、ポーションによって回復する。気力がないと、拘束を解くのが難しくなる
 Charge is used to power various magic items and weapons.
-チャージは、さまざまな魔法のアイテムや武器に電力を供給するために使用されます。
+チャージは、さまざまなマジックアイテムや武器に使用できる
 WP: CURRENT/MAX
 WP:現在/最大
 Charge: PERCENT
-料金: パーセント
+チャージ: パーセント
 Use Potion
 ポーションを使う
  MP
@@ -1045,43 +1045,43 @@ MP
 Go to sleep
 寝る
 Call for help!
-助けを呼びます！
+助けを呼ぶ
 Play with yourself
-自分で遊ぼう
+オナニーする
 Let go...
-手放す...
+絶頂
 Let go...
-手放す...
+絶頂
 Play with yourself
-自分で遊ぼう
+オナニーする
 Go to sleep
 寝る
 Make noise!
-騒ぐ！
+騒ぎ立てる
 Wait until interrupted
-中断するまで待って
+何かが起きるまで自動で待機する
 Auto-struggle
-自動闘争
+自動でもがく
 Auto-path
-オートパス
+1クリック移動
 Quick-Swap Weapon
-クイックスワップ武器
+クイックスワップ
 Inspect
 調べる
 Pass NPCs
-NPCを渡す
+NPCを通り抜ける
 Close a Door
 ドアを閉める
 Sprint/Hop
 スプリント/ホップ
 Ahh!
-ああ！
+あぁっ！
 Mmm...
-うーん...
+うぅん……
 Nnngh...
-んんん…
+んー……
 Ooooh...
-うわぁ…
+うわぁ……
 (Breaths heavily)
 (大きく息を吐く)
 (Moans softly)
@@ -1097,57 +1097,57 @@ Ooooh...
 (Shudders with pleasure)
 （喜びに身震いする）
 You wait.
-あなたは待ちます。
+待機中……
 You wait, legs trembling with arousal.
-待てよ、興奮で足が震える
+黙っていると、快楽で足が震えだした。
 You wait, trembling and moaning.
-待って、震えてうめいて
+思わず喘ぎ声が出てしまった。
 You wait to regain your strength.
-あなたは力を取り戻すのを待っています。
+体力が戻るのを待っている。
 You wait to regain your composure, panting with frustration.
-あなたは落ち着きを取り戻すのを待ち、欲求不満で喘ぎます。
+快楽に悶えながら、落ち着くのを待つ。
 You wait to regain your composure, shaking with frustration.
-フラストレーションに震えながら、落ち着きを取り戻すのを待ちます。
+快楽に震えながら、落ち着くのを待つ。
 You are exhausted from spellcasting.
-あなたは魔法使いに疲れ果てています。
+呪文を唱え疲れた。
 You are feeling tired.
-あなたは疲れています。
+疲れている。
 You feel exhausted...
-お疲れ気味…
+かなり疲れている……
 You feel like you are going to pass out...
-あなたは気絶しそうです...
+今にも気絶しそう……
 Start New Game
-新しいゲームを開始
+ニューゲーム
 New Game+
 ニューゲーム+
 Continue Last Save
-前回の保存を続行
+ロード
 Load From Code
 コードからロード
 Save Outfit (overwrites!)
-衣装を保存（上書き！）
+衣装を上書き保存
 Save Keybindings
-キーバインドを保存
+キー設定を保存
 Cancel Changes
-変更をキャンセル
+キャンセル
 Return
 戻る
 Keybindings
-キーバインディング
+キー設定
 Game Options
-ゲームオプション
+オプション
 Load from code
-コードから読み込む
+コードからロード
 Back to main menu
 メインメニューに戻る
 Load Mod
-ロードモッド
+MODをロード
 Delete Mod
-モードを削除
+MODを削除
 Clear Perks
-クリア特典
+スキルをリセットする
 Config
-構成
+コンフィグ
 Cancel
 キャンセル
 Filter
@@ -1197,7 +1197,7 @@ Swap Weapon
 Ranged Attack
 遠隔攻撃
 Wait
-待って
+待機
 Cancel/Back
 キャンセル/戻る
 Enter
@@ -1209,23 +1209,23 @@ Close Door
 Pass thru allies
 味方を通過
 Auto-Struggle
-自動闘争
+自動でもがく
 Auto-Pathfind
-自動経路検索
+1クリック移動
 Sprint/Hop
 スプリント/ホップ
 Inspect
-検査する
+調べる
 Quick Inventory
 クイックインベントリ
 Inventory
-在庫
+インベントリ
 Reputation
 評判
 Spell List
 スペル一覧
 Logbook
-ログブック
+収集した本
 Current Key Pressed
 現在押されているキー
 Press a key, then press a button to set that key
@@ -1237,31 +1237,31 @@ Floor FLOORNUMBER: DUNGEONNAME
 Lockpicks:
 ロックピック:
 Keys:
-キー:
+鍵:
 Magic Keys:
 魔法の鍵:
 Knife:
 ナイフ：
 Mag. Knife:
-マグナイフ：
+魔法のナイフ：
 You climb down the stairs. The passage closes behind you.
-あなたは階段を降ります。通路はあなたの後ろで閉じます。
+階段を下ると、後ろから扉が閉まる音が聞こえた。
 You can't climb down until you get out of this leash...
-このリードを外すまで、降りることはできません...
+リードを外すまで階段を下ることはできない……
 You climb down and find yourself in a strange new place.
-あなたは降りて、見知らぬ新しい場所にいることに気づきます。
+階段を下ると、奇妙な場所に出た
  plus XXX
 プラスXXX
 Graveyard
 墓地
 Catacombs
-カタコンベ
+地下墓地
 Underground Jungle
-地下ジャングル
+地下のジャングル
 Lost Temple
-失われた寺院
+秘密の寺院
 The Bellows
-ふいご
+工場
 Rundown Laboratory
 ランダウン研究所
 Forgotten Garden
@@ -1269,7 +1269,7 @@ Forgotten Garden
 Kingdom of Ice
 氷の王国
 The Mansion
-ザ・マンション
+邸宅
 Ancient Tombs
 古代の墓
 Magic Library
@@ -1277,161 +1277,161 @@ Magic Library
 Crystal Cave
 水晶の洞窟
 Orrery
-オーラリー
+天球儀
 Training Center
 トレーニング・センター
 Rubber Facility
-ゴム工場
+ラバー工場
 Wizards' Den
-魔法使いの巣窟
+魔法使いの館
 Marble Halls
 マーブルホール
 Doll Storage
-ドール収納
+ドール収納庫
 You search through the debris but find nothing of note
-がれきの中を探しますが、注目すべきものは何も見つかりません
+瓦礫をかき分けてみたが、何も見つからなかった。
 You find some gold coins in a corner (+XXX gold)
-隅にいくつかの金貨を見つけました (+XXX ゴールド)
+隅にいくつかの金貨を見つけた (+XXX ゴールド)
 You find a lockpick in a crack between the tiles
-タイルの隙間にロックピックを見つける
+タイルの隙間にロックピックを見つけた。
 You find a rusty knife among the rocks
-岩の間から錆びたナイフを見つける
+岩の間から錆びたナイフを見つけた。
 You find an ordinary key
-あなたは普通の鍵を見つけます
+鍵を見つけた。
 You find a blue key, glowing with magic
-魔法で光る青い鍵を見つけた
+魔法の鍵を見つけた。
 You find a bola, crafted by bandits
-山賊が作ったボラを見つけた
+盗賊が作った投げ縄を見つけた。
 You find some unexploded ordnance.
-あなたは不発弾を見つけました。
+爆弾を見つけた。
 You find a key lying atop an open tome!
-開いた本の上に鍵が落ちているのを見つけた！
+本の中から鍵が見つかった。
 You find a magical key lying atop an open tome!
-開いた本の上に魔法の鍵が落ちているのを見つけた！
+本の中から魔法の鍵が見つかった。
 You find a useful scroll wedged between some treatises!
-いくつかの論文の間に挟まれた便利な巻物を見つけました!
+論文の中に役立ちそうな巻物が挟まっていた。
 You find a glowing book containing a binding spell!
-束縛の呪文が書かれた光る本を発見！
+本が光だし、拘束の呪文が放たれる！
 You find a golden key surrounded by strange golden crystals.
-奇妙な金色の結晶に囲まれた金色の鍵を見つけます。
+奇妙な黄金色の結晶に囲まれた、金色の鍵を見つけた。
 You find a set of strange golden crystals.
-奇妙な金色の結晶のセットを見つけます。
+奇妙な黄金色の結晶を見つけた。
 You find a pack of scrolls used for spellcasting, and some strange golden crystals.
-あなたは呪文を唱えるために使われる巻物のパックと、いくつかの奇妙な金色の結晶を見つけます。
+役立ちそうな巻物と黄金色の結晶を見つけた。
 You find a pack of scrolls used for spellcasting.
-あなたは呪文詠唱に使われる巻物のパックを見つけました。
+役立ちそうな巻物をいくつか見つけた。
 You find a glowing scroll of purity.
-あなたは純潔の光る巻物を見つけました。
+純潔の巻物を見つけた。
 The chest contains gold! (+XXX gold)
-胸には金が入っています！ (+XXX ゴールド)
+宝箱にはゴールドが入っていた！ (+XXX ゴールド)
 The chest contains a glowing magical knife!
-胸には光る魔法のナイフが入っています！
+宝箱には魔法のナイフが入っていた！
 The chest contains a keyring with a glowing magic key!
-胸には魔法の鍵が光るキーホルダーが！
+宝箱には魔法の鍵が入っていた！
 Someone left their keys here...
-誰かが鍵をここに置き忘れた...
+誰かが鍵をここでなくしたようだ……
 You found some bolas left by bandits.
-盗賊が残したボーラを見つけました。
+盗賊が残した投げ縄を見つけた。
 You found some high explosives!
-高性能爆薬を発見しました！
+爆弾を見つけた。
 You find a magic scroll, which you place in your spellbook. (+SpellLearned)
-あなたは魔法の巻物を見つけて、それを魔法書に置きます。(+SpellLearned)
+呪文を記した巻物を見つけた。魔導書にそれを書き写す (+SpellLearned)
 You find an orb containing magical knowledge! (+AMOUNT spell points)
-魔法の知識が入ったオーブを見つけました! (+AMOUNT スペル ポイント)
+魔法の知識が入ったオーブを見つけた (+AMOUNT スペル ポイント)
 You find a weapon! (+WeaponAcquired)
-武器を見つけた! (+WeaponAcquired)
+武器を見つけた (+WeaponAcquired)
 You find a wearable item! (+ArmorAcquired)
-ウェアラブルアイテムを発見！(+ArmorAcquired)
+装備アイテムを発見した (+ArmorAcquired)
 You find gold and a magic trap! (+RestraintType) (+XXX gold)
-あなたは金と魔法の罠を見つけました! (+RestraintType) (+XXX ゴールド)
+ゴールドを発見したが、魔法の罠が作動してしまった (+RestraintType) (+XXX ゴールド)
 Swirling belts emerge from the chest and leave you bound! (+RestraintType)
-胸から渦巻くベルトが出てきて拘束！(+RestraintType)
+宝箱から魔法のベルトが出てきた！ (+RestraintType)
 You find gold and a chastity belt that locks around your waist! (+RestraintType) (+XXX gold)
-あなたは金とあなたの腰の周りにロックする貞操帯を見つけます! (+RestraintType) (+XXX ゴールド)
+ゴールドを発見したが、貞操帯の罠が作動してしまった (+RestraintType) (+XXX ゴールド)
 You find gold and a tormenting magical trap! (+RestraintType) (+XXX gold)
-あなたは金と苦痛の魔法の罠を見つけました! (+RestraintType) (+XXX ゴールド)
+ゴールドを発見したが、苦痛の罠が作動してしまった (+RestraintType) (+XXX ゴールド)
 You find gold, plus a filling and tormenting magical trap! (+RestraintType) (+XXX gold)
-あなたは金に加えて、充填と拷問の魔法の罠を見つけました! (+RestraintType) (+XXX ゴールド)
+ゴールドを発見したが、苦痛と充足の罠が作動してしまった (+RestraintType) (+XXX ゴールド)
 You find gold, plus a devious magical trap! (+RestraintType) (+XXX gold)
-あなたは金と、よこしまな魔法の罠を見つけました! (+RestraintType) (+XXX ゴールド)
+ゴールドを発見したが、えっちな罠が作動してしまった (+RestraintType) (+XXX ゴールド)
 Magical runes glow as a trap activates inside the chest!
-胸の中でトラップが作動すると魔法のルーンが光る！
+宝箱から魔法の罠が飛び出す！
 You find a special collar that lets you absorb energy from potions.
-ポーションからエネルギーを吸収できる特別な首輪を見つけました。
+口を使わなくてもポーションを使える首輪を発見した。
 You find a pair of garish pink high heels with a slippery surface.
-表面が滑りやすい派手なピンク色のハイヒールを見つけた。
+つるつるした派手なピンク色のハイヒールを見つけた。
 The pearly chest contains a divine gift! (+ITEMGET)
-真珠の胸には神聖な贈り物が含まれています! (+ITEMGET)
+純白の宝箱から神々の贈り物を見つけた (+ITEMGET)
 Smoke fills the air around you!
-煙があなたの周りの空気を満たします！
+煙が辺り一面を取り巻く！
 You recover some of your lost items!
-失くしたアイテムを取り戻したぞ！
+奪われたアイテムを取り戻した！
 You find a red potion with a sweet scent.
-甘い香りのする赤いポーションを見つけました。
+甘い香りのする赤いポーションを見つけた。
 You find a blue potion that glows with magical essence.
-あなたは魔法のエッセンスで光る青いポーションを見つけました。
+魔法のエッセンスで光る青いポーションを見つけた。
 You find a glowing orb, filled with untapped mana.
-あなたは未開発のマナで満たされた光るオーブを見つけました。
+マナで満たされた輝くオーブを見つけた。
 You find three mana orbs strung together!
-マナオーブが3つ並んでいるのを発見！
+マナオーブが3つ並んでいるのを見つけた。
 You find several willpower potions.
-意志力のポーションがいくつか見つかりました。
+気力のポーションをいくつか見つけた。
 You find several mana potions.
-あなたはいくつかのマナポーションを見つけました。
+マナポーションをいくつか見つけた。
 You find a green potion, glowing warm with energy.
-あなたはエネルギーで暖かく輝く緑のポーションを見つけました。
+暖かく輝く緑のポーションを見つけた。
 You find a snow-like potion that's cold to the touch.
-触ると冷たい雪のようなポーションを見つけました。
+触ると冷たい雪のようなポーションを見つけた。
 You find a medley of potions.
-あなたはポーションのメドレーを見つけました。
+ポーションのセットを見つけた。
 Rarity:
 レアリティ：
 Lesser
 レッサー
 Common
-一般
+コモン
 Uncommon
 アンコモン
 Rare
 レア
 Very Rare
-激レア
+スーパーレア
 Epic
-すごい
+エピック
 Legendary
-伝説の
+レジェンダリー
 Supreme
 最高
 Mythic
-ミシック
+神話
 Angelic
-天使の
+天界
 Divine
-神聖な
+神聖
 Quantity:
 量：
 Use Item (Consumes 1)
 アイテムを使う（1個消費）
 way of the fist
-拳の道
+拳
 Lockpick
-ピッキング用品
+ロックピック
 Exit Keys
-終了キー
+戻る
 Wizard's Outfit
 ウィザードの衣装
 Your favorite outfit for adventuring.
 お気に入りの冒険服。
 Your original outfit. No bonuses, no penalties.
-あなただけのオリジナル衣装。ボーナスなし、ペナルティなし。
+あなただけのオリジナル衣装。ボーナスなし、ペナルティなし
 Jail Uniform
 刑務所の制服
 The prisoners are kept in revealing outfits to keep them from hiding things.
-囚人は、物を隠さないように露出度の高い服装をしています。
+ものを隠せないように露出度を高められた囚人服。
 A prisoner's 'outfit'. No bonuses, no penalties.
-囚人の『装い』。ボーナスもペナルティもない
+囚人の「装い」。ボーナスなし、ペナルティなし
 Wolfgirl Suit
-ウルフガールスーツ
+ウルフガールの服
 An advanced suit designed for sport, breathable and also warm.
 スポーツ用に設計された、通気性と保温性に優れた高度なスーツ。
 No bonuses, no penalties.
@@ -1439,43 +1439,43 @@ No bonuses, no penalties.
 Maid Uniform
 メイド服
 An elegant dress meant to denote a maid's status.
-メイドの身分を表す上品なドレス。
+メイドの身分を表すエレガントなドレス。
 Massively increases accuracy against slime mold.
-粘菌に対する命中率が大幅にアップします。
+粘菌スライムに対する命中率が大幅にアップする。
 Maid Uniform
 メイド服
 An elegant dress meant to denote a maid's status.
-メイドの身分を表す上品なドレス。
+メイドの身分を表すエレガントなドレス。
 Massively increases accuracy against slime mold.
-粘菌に対する命中率が大幅にアップします。
+粘菌スライムに対する命中率が大幅にアップする。
 Prisoner Uniform
 囚人服
 The uniform of choice for girls captured by the dragonhearts.
-ドラゴンハートに囚われた少女たちが選んだ制服。
+ドラゴンハート特性の囚人服。
 Designed to make it hard to conceal weapons. No bonuses, no penalties.
-武器を隠しにくいように設計されています。ボーナスもペナルティもありません。
+ものを隠せないように露出度を高められた囚人服。ボーナスなし、ペナルティなし。
 Scientific Uniform
-科学ユニフォーム
+科学的ユニフォーム
 An outfit designed to leave little to the imagination.
-想像力にほとんど任せないように設計された衣装。
+ピッタリとしたスーツ。
 No bonuses, no penalties.
 ボーナスなし、ペナルティなし
 Latex Catsuit
 ラテックスキャットスーツ
 An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
-スライムを大量に加工した衣装。自然なシルクのような滑らかな肌触りです。
+スライムを大量に加工した衣装。シルクのような柔らかな肌触り。
 No bonuses, no penalties.
 ボーナスなし、ペナルティなし
 Doll Catsuit
-ドールキャットスーツ
+ドールのキャットスーツ
 An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
-スライムを大量に加工した衣装。自然なシルクのような滑らかな肌触りです。
+スライムを大量に加工した衣装。シルクのような柔らかな肌触り。
 No bonuses, no penalties.
 ボーナスなし、ペナルティなし
 Shadow Latex Dress
-シャドウ ラテックス ドレス
+シャドーラテックスドレス
 A minidress made from shadow latex, a favorite of otherwordly patrons.
-シャドーラテックスで作られたミニドレス、異界の常連客のお気に入り。
+シャドーラテックスで作られたミニドレス。異界の常連客のお気に入り。
 No bonuses, no penalties.
 ボーナスなし、ペナルティなし
 Elven Dress
@@ -1485,527 +1485,527 @@ A regal minidress worn by visitors to the forest.
 No bonuses, no penalties.
 ボーナスなし、ペナルティなし
 Scroll of Sleight
-スライトの巻物
+奇術の巻物
 The scroll makes your memories of arm movements clear as day!
-巻物は、腕の動きの記憶を一日のように鮮明にします。
+腕の動きを再現する巻物。
 A scroll used by thieves to make their plays in secret.
-盗賊が秘密裏にプレイするために使う巻物。
+盗賊の仕事によく使用される。
 Allows you to cast Arm spells without components for 12 turns.
-12 ターンの間、コンポーネントなしでアーム スペルをキャストできるようになります。
+12ターンの間、腕を縛られていても腕を使用する呪文が使用可能になる。
 Scroll of Purity
 純潔の巻物
 The scroll circles around your body and you feel... empty now.
-スクロールがあなたの体の周りを一周し、あなたは感じます...今は空っぽです。
+挿入されている不純物を取り除く巻物。
 A scroll used to enforce chastity within religious orders.
-教団内で純潔を強制するために使用される巻物。
+教団内で純潔を強制するために使用される。
 Removes all vibrators from your body.
-あなたの体からすべてのバイブレーターを取り除きます。
+体からバイブを取り除く。
 Scroll of Speech
-スピーチの巻物
+口弁の巻物
 The scroll makes your gagged speech slightly more intelligible!
-巻物は、あなたの猿轡かませたスピーチを少し分かりやすくします!
+猿轡をかまされていても、はっきりと発音できるようになる巻物。
 A scroll used to help translate different languages.
-さまざまな言語を翻訳するのに役立つ巻物。
+さまざまな言語を翻訳するのに役立つ。
 Allows you to cast Verbal spells without components for 12 turns.
-12 ターンの間、コンポーネントなしで言葉の呪文を唱えることができます。
+12ターンの間、猿轡をかまされていても口を使用する呪文が使用可能になる。
 Scroll of Sauntering
 散歩の巻物
 The scroll lets you move your body in swift and accurate ways!
-巻物で素早く正確に体を動かせます！
+正確に動けるようになる巻物。
 A scroll used by dancers to upgrade their moves.
-ダンサーが動きをアップグレードするために使用する巻物。
+ダンサーが上達のためによく使用する。
 Allows you to cast Leg spells without components for 12 turns.
-12 ターンの間、構成要素なしでレッグ スペルを唱えることができます。
+12ターンの間、足を縛られていても足を使用する呪文が使用可能になる。
 Ancient Key
 古代の鍵
 Perhaps it has something to do with ancient restraints?
-もしかして、古代の拘束と何か関係があるのでしょうか？
+もしかしたら古代の拘束具と関係があるのかもしれない。
 An ancient key plated in gold. It doesnt look like it can open anything...
-金でメッキされた古代の鍵。何も開けられないように見える...
+金でメッキされた古代の鍵。合う鍵穴は見つかっていない……
 You pick up a shining golden key.
-あなたは輝く黄金の鍵を手に入れました。
+黄金に輝く鍵を手に入れた。
 You pick up a ReplaceValue.
-ReplaceValue を取得します。
+ReplaceValue を取得した
 Power Crystal
 パワークリスタル
 You hold the crystal and the power flows into you.
-あなたがクリスタルを握ると、力があなたに流れ込みます。
+クリスタルを握ると、力が流れ込んできた。
 You're not sure how they charged these...
-彼らがこれらをどのように請求したかはわかりません...
+古代の人達がこれをどうやって作ったのかはわからない……
 A mysterious device used by the old civilization, powering their ancient devices.
-古い文明が使っていた謎の装置で、彼らの古代の装置に動力を与えている。
+古代の文明で、動力として使われていたようだ。
 You are already full of ancient power.
-あなたはすでに古代の力に満ちています。
+既にパワーが満タンになっている。
 Spent Power Crystal
-消費したパワー クリスタル
+消耗したパワークリスタル。
 You touch the spent crystal and it siphons 100 gold from your bag!
-使用済みクリスタルに触れると、バッグから 100 ゴールドが吸い上げられます!
+使用済みクリスタルに触れると、バッグから100ゴールドが吸い上げられた。
 You are not sure how to charge this back up.
-このバックアップを充電する方法がわかりません。
+パワーを補充する方法がわからない。
 You're not sure how they charged these...
-彼らがこれらをどのように請求したかはわかりません...
+どうやって充填するのだろうか……
 A mysterious device used by the old civilization, now depleted.
-古い文明が使っていた謎の装置、今は枯渇している
+古代の文明で動力として使われていたクリスタル。今は力を失っている。
 Gold
-金
+ゴールド
 Key
 鍵
 A key with traces of magic that fades with one use.
-一度使うと消える魔法の痕跡の鍵
+一度使うと消える魔法で作られた鍵。
 Can be used to unlock a restraint, door, or chest.
-拘束具、ドア、またはチェストのロックを解除するために使用できます。
+拘束具、ドア、またはチェストのロックを解除するために使用できる。
 Magic Key
 魔法の鍵
 A glowing key enchanted with magic that fades with one use.
-一回の使用で消えていく魔法がかかった光る鍵。
+一度使うと消える魔法で作られた光る鍵。
 Can be used to unlock a blue lock.
-青いロックのロックを解除するために使用できます。
+青いロックのロックを解除するために使用できる。
 Magic Key
 魔法の鍵
 A magical key with the power to open blue locks.
-青い鍵を開ける力を持つ魔法の鍵
+一度使うと消える魔法で作られた光る鍵。
 Blue locks can't be otherwise picked.
-青い錠は、それ以外の方法でピッキングすることはできません。
+青いロックのロックを解除するために使用できる。青い錠はロックピックで開けられない。
 Magic Knife
-マジックナイフ
+魔法のナイフ
 A magical blade, suitable against ghosts.
-幽霊に適した魔法の刃。
+霊体を切るのに適した魔法のナイフ。
 Deals shadow damage. Can cut enchanted ropes.
-影のダメージを与えます。エンチャントされたロープを切ることができます。
+影属性のダメージを与える。魔法のロープを切断することができる。
 Bola
-彼女はそうだった
+投げ縄
 A pair of weights attached to a rope. Can be thrown.
-ロープに取り付けられた一対の重り。投げることができます。
+ロープの端に重りがつけられており、投擲に適している。
 Deals 90 points of binding, 40 chain damage, and rooting a target for 4 turns.
-90 ポイントのバインド、40 のチェイン ダメージを与え、ターゲットを 4 ターン根絶します。
+90 ポイントのバインド属性40のチェイン属性ダメージを与え、ターゲットを4ターン移動不能にする。
 A pair of weights attached to a rope. Can be thrown.
-ロープに取り付けられた一対の重り。投げることができます。
+ロープの端に重りがつけられており、投擲に適している。
 Deals 90 points of binding, 40 chain damage, and rooting a target for 4 turns.
-90 ポイントのバインド、40 のチェイン ダメージを与え、ターゲットを 4 ターン根絶します。
+90 ポイントのバインド属性40のチェイン属性ダメージを与え、ターゲットを4ターン移動不能にする。
 Bomb
 爆弾
 After a 5 turn fuse, deals 100 fire damage in a 3x3 area.
-5 ターンの起爆後、3x3 の範囲に 100 の炎ダメージを与える。
+5ターン後に起爆し、3x3の範囲に100の炎属性ダメージを与える。
 Not a toy!
-おもちゃじゃない！
+おもちゃじゃないよ！
 After a 6 turn fuse, deals 100 fire damage in a 3x3 area.
-6 ターンの起爆後、3x3 の範囲に 100 の炎ダメージを与える。
+6ターン後に起爆し、3x3の範囲に100の炎属性ダメージを与える。
 Not a toy!
-おもちゃじゃない！
+おもちゃじゃないよ！
 You light the fuse!
-あなたは導火線に火をつけます！
+導火線に火をつけた！
 Knife
 ナイフ
 Lockpick
-ピッキング用品
+ロックピック
 A tool used to pick locks.
-錠を開けるのに使われる道具。
+解錠のために使われる道具。
 Doesn't last forever, but can help in a pinch.
-永遠に続くわけではありませんが、ピンチには役立ちます。
+使い続けると折れるかもしれないけど、いざという時役に立つ。
 lockpick x2
 ロックピック×2
 lockpicks x4
 ロックピック×4
 Bola x3
-ボーラ x3
+投げ縄 x3
 Bomb x3
-ボム×3
+爆弾×3
 Mana Potion
 マナポーション
 You sip the mana potion and feel empowered.
-マナ ポーションを飲むと、力が湧いてきます。
+マナポーションを飲むと、力が湧いてくる。
 A rare essence used by mages to recover their strength.
-魔術師が力を回復するために使用する希少なエッセンス。
+貴重な成分でできた、魔術師の生命線。
 Restores 50% max MP instantly. Excess mana goes into the mana pool.
-最大MPの50%を瞬時に回復。余ったマナはマナプールへ。
+最大MPの50%を瞬時に回復し、余剰回復分はマナプールを回復させる。
 Mana Orb
 マナオーブ
 You clutch the mana orb and feel its energy.
-マナ オーブを握りしめ、そのエネルギーを感じます。
+マナオーブを握りしめると、エネルギーの奔流を感じる。
 Mystical energies swirl inside a glass form.
-神秘的なエネルギーがガラスの中で渦を巻く。
+神秘的なエネルギーがオーブの中で渦を巻く。
 Adds 200 MP to your mana pool. Requires no hands to use.
-あなたのマナ プールに 200 MP を追加します。使用するのに手は必要ありません。
+マナプールを200ポイント回復する。手を拘束されていても使用できる。
 Stamina Potion
 スタミナポーション
 You drink the stamina potion and feel invigorated.
-スタミナポーションを飲むと元気が出ます。
+スタミナポーションを飲むと元気が出でくる。
 A potion brimming with heat and energy.
-熱とエネルギーに満ちたポーション
+熱とエネルギーに満ちたポーション。
 Restores 50% stamina and 250% more over 25 turns. Effect does not stack.
-スタミナを 50% 回復し、25 ターンにわたってさらに 250% 回復します。効果は重複しません。
+最大スタミナの50%を瞬時に回復し、25ターンにわたってさらに250%回復する。効果は重複しない。
 Willpower Potion
-意志力のポーション
+気力のポーション
 You drink the willpower potion and feel motivated.
-あなたは意志力のポーションを飲み、やる気を感じます。
+気力のポーションを飲むと、やる気が湧いてくる。
 A sweet potion, brimming with determination.
-決意に満ちた甘いポーション
+気分を向上させる甘いポーション。
 Restores 25% willpower instantly. Can be used while gagged.
-即座に意志力を25%回復。猿轡かませた状態でも使用可能。
+最大気力の25%を瞬時に回復。猿轡かませた状態でも使用可能。
 Frigid Potion
-極寒のポーション
+冷静のポーション
 You chug the concoction and your senses numb, helping you concentrate.
-調合物を一気飲みすると、感覚が麻痺し、集中するのに役立ちます。
+飲むと頭がスッキリする。
 A freezing cold bottle with a bitter scent.
-苦い香りの凍えるような冷たい瓶
+苦い香りの凍えるような冷たいポーション。
 Reduces distraction to 0 and grants additional decay for 50 turns. Can be used while gagged.
-気晴らしを0にし、50ターンの間追加の減衰を付与します。猿轡かませた状態で使用できます。
+興奮値を0にする。50ターンの間、興奮値の上昇を抑制する。猿轡かませた状態でも使用可能。
 Smoke Bomb
-煙幕弾
+煙幕
 You toss the smoke bomb and it explodes in your location!
-発煙弾を投げると、その場所で爆発します!
+発煙弾を使用すると、即座に爆発する。
 A type of pyrotechnic often employed by saboteurs. Can be used without hands.
-妨害工作員がよく使う火工品の一種。手を使わなくても使える。
+闇に生きる者がよく使う。手が縛られていても使える。
 Creates a smoke screen lasting 8 turns. You are harder to see while inside the smoke.
 8ターン持続する煙幕を張る。煙の中にいると見えにくくなる。
 Invisibility Potion
 不可視ポーション
 You chug the concoction and see your body fading away.
-調合を一気飲みすると、体が消えていくのが見えます。
+飲むと透明になれる。
 You feel liquid inside, but you can't see it!
-あなたは液体を感じますが、それを見ることはできません!
+瓶の中に何か入っているのはわかるが、見ることはできない。
 Casts Invisibility on yourself.
-自分にインビジビリティをキャストします。
+数ターンの間透明になれる。
 Ectoplasm
 エクトプラズム
 Like a moisturizing cream, except it's made from coagulated souls.
-凝固した魂から作られていることを除けば、保湿クリームのようなものです。
+魂の塊。保湿クリームのようなさわり心地。
 Can be used without hands. Just apply directly to the forehead!
-手を使わずに使える。額に直接塗るだけ！
+額に塗る。手を縛られていても使用可能。
 Makes you harder to see for 10 turns.
-10ターンの間、見えにくくなる
+10ターンの間、見えにくくなる。
 Earth Rune
-アースルーン
+地のルーン
 You smash the rune in front of you, and glowing rocks rise from the earth.
-目の前のルーンを砕くと、地中から光る岩が立ち昇る。
+ルーンを砕くと、地面から岩が生えてくる。
 It feels unsettling to look at.
 見ていて気持ち悪い。
 Creates a 3x3 area of +20 armor centered on yourself for 9 turns.
-9ターンの間、自分を中心に+20アーマーの3x3エリアを作成します。
+9ターンの間、自分を中心にアーマー値を20増加させる3x3エリアを作成する。
 Water Rune
 水のルーン
 You crush the rune in your hand, and it turns into water that coats the floor
-ルーンを手で砕くと、床を覆う水に変わります
+ルーンを砕くと、辺り一面が水に覆われる。
 It feels slimmy.
-ぬるい感じです。
+なまぬるい。
 Creates a 3x3 area on you for 9 turns. Gives +30 Magic Armor to friendlies, halves enemy speed.
-9 ターンの間、自分に 3x3 のエリアを作成します。味方に +30 マジック アーマーを与え、敵の速度を半分にします。
+9ターンの間、自分を中心に、マジックアーマー値を30増加させ、敵の移動速度を半減させる3x3のエリアを作成する。
 Ice Rune
 氷のルーン
 You smash the rune in front of you, and icicles pierce through the floor!
-目の前のルーンを砕くと、つららが床を突き破る！
+ルーンを砕くと、床からつららが生えてくる。
 It feels cold to the touch.
 触ると冷たく感じる。
 Creates icicles around you for 5-8 turns. They deal 40 damage and freeze for 3 turns.
-5-8 ターンの間、周囲につららを生成します。氷柱は 40 のダメージを与え、3 ターンの間凍結します。
+5-8ターンの間、周囲につららを生成する。氷柱は40のダメージを与え、3 ターンの間凍結する。
 You found a donut with sprinkles!
-ふりかけが入ったドーナツを見つけたね！
+砂糖の乗ったドーナツを見つけた！
 Donut (Sprinkles)
-ドーナツ（ふりかけ）
+ドーナツ（砂糖）
 You enjoy the donut and relish in its sweet delights.
-あなたはドーナツを楽しみ、その甘い喜びを味わいます。
+ドーナツを頬張ると甘さが口いっぱいに広がる。
 A delicious fried snack, covered in a sugary glaze and topped with sprinkles.
-甘い釉薬で覆われ、トッピングがトッピングされた、おいしいフライド スナックです。
+上に砂糖が乗っている、定番の揚げ菓子。
 Restores 10% willpower. Takes a few turns to eat.
-気力10%回復。食べるのに数ターンかかる
+気力を10%回復する。食べるのに数ターンかかる。
 You picked up a sugar cookie slathered in pink frosting!
-あなたはピンク色のフロスティングをまぶしたシュガークッキーを手に取りました！
+ピンクの砂糖がまぶしてあるクッキーを見つけた！
 Good-Girl Gift
 グッドガールギフト
 You slowly eat the cookie, savoring its fluffy texture.
-ふわふわの食感を味わいながら、ゆっくりと食べてください
+サクサクのクッキーをゆっくり味わう。
 It tempts you with sweet promises, but something about it feels off...
-甘い約束で誘惑するけど、どこか気持ち悪い…
+甘くて美味しいけど、何か変な味がする……
 Restores 15% willpower and adds +5 submissiveness. Takes a few turns to eat.
-15%の意志力を回復し、+5従順さを追加します。食べるのに数ターンかかります。
+気力を15%回復し、従順度が5増加する。食べるのに数ターンかかる。
 You found a chocolate-chip cookie!
-チョコチップクッキーを発見！
+チョコチップクッキーを見つけた！
 Cookie (Chocolate Chip)
 クッキー（チョコチップ）
 You enjoy the cookie one chocolatey bite at a time.
-一度に一口ずつチョコレートのようなクッキーをお楽しみいただけます。
+おなじみのチョコチップクッキー
 A delicious baked good made with butter, sugar, and chocolate chips, baked until golden brown.
-バター、砂糖、チョコチップをきつね色になるまで焼き上げたおいしい焼き菓子です。
+クッキーにチョコチップが乗っている、きつね色のお菓子。
 Restores 10% willpower. Takes a few turns to eat.
-気力10%回復。食べるのに数ターンかかる
+気力を10%回復する。食べるのに数ターンかかる。
 The potion was less effective due to your gag!
-あんたのギャグのせいでポーションの効果が弱かった！
+猿轡のせいでポーションを上手く飲めなかった！
 Elven Soap
-エルフソープ
+エルフの石鹸
 You feel the restraints become loose on your skin!
-拘束が緩むのを肌で感じる！
+拘束具が滑りやすくなっている。
 The secret to elven cosmetics and blemish-free skin.
-エルフコスメとシミのない肌の秘密
+エルフの美容の秘密。
 Makes you slippery for 10 turns, boosting all forms of struggling.
-10ターンの間滑りやすくなり、あらゆる形態のもがきを強化します。
+10ターンの間滑りやすくなり、拘束具を解除するすべてのコマンドにボーナスを得る。
 You feel the restraints become loose on your skin!
-拘束が緩むのを肌で感じる！
+滑りやすくなっている！
 Enchanted Grinder
 エンチャントグラインダー
 The grinder starts spinning for a short time! Its cutting power is immense!
-グラインダーが一瞬回転！切削力がすごい！
+回転する鋸刃で拘束具を切り裂く。
 The cutting disc is shining and very sharp.
-カッティングディスクは輝いており、非常に鋭利です。
+鋸刃は輝いており、非常に鋭い。
 Grants significantly increased cutting power for a short time.
-短時間、斬撃力が大幅に上昇する。
+数ターンの間、「切断」コマンドに大幅なボーナスを得る。
 The grinder starts spinning for a short time! Its cutting power is immense!
-グラインダーが短時間回転を開始します。その切断力は絶大です！
+グラインダーが回転を開始した。切断力はとても強力だ。
 Dollmaker's Staff
 人形職人の杖
 You remember this being used on someone else.
-あなたはこれが他の誰かに使われたことを覚えています。
+これが誰かの杖だったことは覚えている。
 +15% glue damage. Deals psychic damage. Fully bound enemies captured with this weapon become latex dolls which fight with you.
-+15% 接着剤のダメージ。サイキック ダメージを与える。この武器で完全に拘束された敵は、ラテックス人形になり、あなたと戦う。
+グルー属性のダメージが15%増加し、通常攻撃がサイキック属性になる。この武器で完全に拘束された敵は、ラテックス人形になり、仲間になる。
 You are unable to control more than 3 dolls. The new doll is protesting and remains bound.
-あなたは3つ以上の人形を操作できません。新しい人形は抗議していて、拘束されたままです。
+同時にコントロールできる人形は3体まで。4体目以降の人形は拘束されたままになる。
 Staff of Incineration
 焼却の杖
 A magical weapon made for intermediates to use.
-中級者向けに作られた魔法の武器
+中級者向けに作られた魔法の武器。
 +25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn.
-+25% 火ダメージ。火ダメージを与える。燃えている敵は、ターンごとに追加で 5 火ダメージを受ける。
+炎属性のダメージが25%増加し、通常攻撃が炎属性になる。燃えている敵は、ターン経過時に5ポイントのダメージを受ける。
 Staff of Storms
 嵐の杖
 A magical weapon made for intermediates to use.
-中級者向けに作られた魔法の武器
+中級者向けに作られた魔法の武器。
 +20% electric damage. Deals electric damage. Enemies hit by electric damage echo 15 additional Electric damage in a 5x5 area.
-+20% 電気ダメージ。電気ダメージを与える。電気ダメージを受けた敵は、5x5 エリア内に 15 の追加電気ダメージをエコーする。
+電気属性のダメージが20%増加し、通常攻撃が電気属性になる。電気ダメージを受けた敵は5x5エリア内に15の追加電気ダメージを反射する。
 Staff of Frostbite
 凍傷の杖
 A magical weapon with a 33% chance to freeze the target for 4 turns.
 33%の確率で対象を4ターン凍結させる魔法の武器。
 +20% ice damage. Deals ice damage. Frozen enemies take 5 ice damage per turn.
-+20% 氷ダメージ。氷ダメージを与える。凍った敵は毎ターン 5 氷ダメージを受ける。
+氷属性のダメージが20%増加し、通常攻撃が氷属性になる。ターン経過時、凍結した敵は5ダメージを受ける。
 Staff of Binding
 束縛の杖
 A magical weapon made to use on novices.
 初心者用に作られた魔法の武器
 +20% chain damage. Deals chain damage and roots the target for 4 turns. 150% binding efficiency.
-+20% チェイン ダメージ。チェイン ダメージを与え、ターゲットを 4 ターン根絶します。150% のバインド効率。
+チェーン属性のダメージが20%増加し、通常攻撃が命中した時、4ターンの間敵を移動不可状態にする。拘束力が150%増加する。
 Arcane Orb
 アルケインオーブ
 Look into my eyes...
-私の目を見て...
+私の目を見て……
 Deals shadow damage. Can be used without hands. Does not benefit from enemies being vulnerable.
-影のダメージを与えます。手がなくても使用できます。敵が脆弱であることの恩恵を受けません。
+通常攻撃が影属性し、敵の弱点を考慮しない。
 Staff of Flame
 炎の杖
 A magical weapon made for novices to use.
 初心者向けに作られた魔法の武器
 +15% fire damage. Deals fire damage.
-+15% 火ダメージ。火ダメージを与える。
+炎属性のダメージが15%増加し、通常攻撃が炎属性になる。
 Staff of Slime
 スライムの杖
 A slimy and magical implement..
 ぬるぬるした魔法の道具……
 +10% glue damage. Deals glue damage.
-+10% 接着剤のダメージ。接着剤のダメージを与えます。
+グルー属性のダメージが10%増加し、通常攻撃がグルー属性になる。
 Staff of Shocking
 衝撃の杖
 A magical weapon made for novices to use.
 初心者向けに作られた魔法の武器
 +10% electric damage. Deals electric damage. 10% chance to stun for 3 turns.
-+10% 電気ダメージ。電気ダメージを与える。10% の確率で 3 ターンスタンする。
+電気属性のダメージが10%増加し、通常攻撃が電気属性になり、命中時に10%の確率で敵をスタン状態にする。
 Staff of Permafrost
 永久凍土の杖
 A magical weapon with a 15% chance to freeze the target for 4 turns.
 15%の確率で対象を4ターン凍結させる魔法の武器。
 +10% ice damage. Deals ice damage. Multiplies the duration of freeze effects on enemies by 1.5x (min +1 duration)
-+10% 氷属性ダメージ。氷属性ダメージを与える。敵にかかっている氷結効果の持続時間を 1.5 倍にする (最低 +1 持続時間)
+氷属性のダメージが10%増加し、通常攻撃が氷属性になる。敵にかかっている凍結効果の持続時間を1.5倍にする (最低+1持続時間)
 Staff of Chains
 鎖の杖
 A magical weapon made for novices in the art of bondage.
 束縛術の初心者のために作られた魔法の武器。
 +10% chain damage. Deals chain damage. 150% binding efficiency.
-+10% チェイン ダメージ。チェーン ダメージを与える。150% バインド効率。
+チェーン属性のダメージが10%増加し、通常攻撃がチェーン属性になる。拘束力が150%増加する。
 You pick up a staff of binding. You remember these from wizard school...
-君は束縛の杖を手に取った。魔法学校で覚えたものだ…
+束縛の杖を手に入れた。魔法学校で何度も使った覚えがある。
 You pick up a staff of the storm. Your hair stands on end.
-あなたは嵐の杖を手に取りました。あなたの髪は逆立っています。
+嵐の杖を手に入れた。雷霆の力に髪が逆立つ。
 You pick up a staff of incineration. It rumbles with molten fury.
-あなたは焼却の杖を手に取ります。それは溶けた怒りで鳴り響きます。
+焼却の杖を手に入れた。怒りの炎が湧き上がってくる。
 You pick up a staff with a name on it: DOLLMAKER
-あなたは名前が書かれた杖を手に取った：DOLLMAKER
+名前が書かれた杖を手に入れた：DOLLMAKER
 You pick up a staff of frostbite. Your hand feels numb just reaching for it.
-あなたは凍傷の杖を手に取りました。手を伸ばすだけで手がしびれます。
+凍傷の杖を手に入れた。持つだけで手がかじかむ。
 You pick up a staff of chains. You have fond memories...
-あなたは鎖の杖を拾います。あなたには懐かしい思い出があります...
+鎖の杖を手に入れた。懐かしさを感じる……
 You pick up a staff of the storm. It tingles.
-嵐の杖を手に取ると、うずきます。
+嵐の杖を手に入れた。雷の渦を感じる。
 You pick up a staff of flames. It feels warm.
-あなたは炎の杖を手に取ります。それは暖かく感じます。
+炎の杖を手に入れた。ほんのりと暖かい。
 You find a purple crystal. You feel your mystic powers flood into it.
-あなたは紫色のクリスタルを見つけました。あなたの神秘的な力がそこに溢れているのを感じます。
+紫のオーブを手に入れた。中から不思議な力を感じる。
 You pick up a staff of slime.
-あなたはスライムの杖を拾います。
+スライムの杖を手に入れた。
 You pick up a staff of permafrost. It feels icy to the touch.
-あなたは永久凍土の杖を手に取った。触ると氷のようだ。
+永久凍土の杖を手に入れた。氷のように冷たい。
 Crop
-作物
+ムチ
 For those unruly subs.
-手に負えない潜水艦のために。
+しつけのための道具
 Deals pain damage. Highly distracting.
-痛みのダメージを与えます。非常に気を散らします。
+痛み属性のダメージを与える。興奮値が溜まりやすい。
 You pick up a riding crop.
-あなたは乗馬作物を拾います。
+馬用のムチを手に入れた。
 Scissors
 はさみ
 Safety first!
 安全第一！
 Deals slash damage. Better than a knife for cutting restraints.
-斬撃ダメージを与える。拘束を切るにはナイフよりも優れている.
+斬撃属性のダメージを与える。ナイフよりも拘束を切断しやすい。
 You pick up a pair of scissors.
-あなたははさみを手に取ります。
+はさみを手に入れた。
 Dagger
-短剣
+ダガー
 Designed with subterfuge in mind.
-ごまかしを念頭に置いて設計されています。
+不意打ち用の武器。
 Deals slash damage. Deals 55 pierce damage instead on unaware targets.
-斬撃ダメージを与えます。認識していないターゲットには、代わりに 55 の刺突ダメージを与えます。
+斬撃属性のダメージを与える。プレイヤーを認識していない敵を攻撃した際、55ポイントの刺突属性ダメージを与える。
 You pick up a dagger.
-あなたは短剣を拾います。
+ダガーを手に入れた。
 Katana
 刀
 She who strikes first, hits second.
-先に打った者は、二番目に打つ。
+後の先を取る。
 Deals slash damage. Deals up to 50 bonus damage by waiting 10 turns between attacks.
-斬撃ダメージを与えます。攻撃の間に 10 ターン待つことで、最大 50 のボーナス ダメージを与えます。
+斬撃属性のダメージを与える。待機時、次の攻撃で与えるダメージが増加する。最大10ターン/50ダメージ
 You pick up a katana.
-あなたは刀を手に取ります。
+刀を手に入れた。
 Shadow's Edge
-シャドウズ エッジ
+シャドウエッジ
 For those who truly devote themselves to the cause.
-真に大義に専念する者のために。
+真の大義に専念する者のために。
 Deals shadow damage. Damage is doubled against enemies that are in shadow.
-影属性のダメージを与える。影にいる敵にはダメージが2倍になる。
+影属性のダメージを与える。影にいる敵に攻撃する場合、2倍のダメージを与える。
 You pick up Shadow's Edge.
-あなたはシャドウズエッジを拾います。
+シャドウエッジを手に入れた。
 Stormbreaker
 ストームブレイカー
 I have the power! Taking electric damage charges you (1 turn/10dmg).
-力はある！電撃ダメージでチャージ(1ターン/10ダメージ)
+これが力だ！電気属性のダメージを受けた場合、1ターンに10ダメージ分チャージをする。
 Deals crush damage. Deals bonus electric damage in an area when charged, up to +40.
-クラッシュダメージを与えます。チャージすると、エリア内に最大+40のボーナス電撃ダメージを与えます。
+通常攻撃が打撃属性になる。チャージしていた場合、電気属性範囲ダメージを与える。最大40ダメージ。
 You pick up Stormbreaker.
-あなたはストームブレイカーを拾います。
+ストームブレイカーを手に入れた。
 Rapier
 レイピア
 For the ostentatious and flashy duelist.
-派手で派手なデュエリストに
+華麗なデュエリストの武器
 Deals slash damage. Deals 50 pierce damage instead on vulnerable targets.
-斬撃ダメージを与えます。脆弱なターゲットには代わりに 50 の貫通ダメージを与えます。
+斬撃属性のダメージを与える。刺突属性が弱点の敵を攻撃した際、50ポイントの刺突属性ダメージを与える。
 You pick up some kind of pretentious sword.
-あなたはある種の大げさな剣を手に取りました。
+華美で華奢な剣を手に入れた。
 Foil
-ホイル
+フルーレ
 En garde!
-用心する！
+構えろ！
 Deals pierce damage. Deals 30 damage instead on vulnerable targets.
-貫通ダメージを与えます。代わりに脆弱なターゲットに 30 ダメージを与えます。
+刺突属性のダメージを与える。刺突属性が弱点の敵を攻撃した際、30ポイントの刺突属性ダメージを与える。
 You pick up a fencing sword.
-あなたはフェンシングの剣を手に取ります。
+フェンシングの剣を手に入れた。
 Hammer
 ハンマー
 A rather simplistic bludgeoning weapon.
 かなり単純な殴打武器。
 Deals crush damage and knocks the target back.
-クラッシュダメージを与え、ターゲットをノックバックします。
+打撃属性のダメージを与え、命中した敵をノックバックさせる。
 Flail
-フレール
+フレイル
 A ball on a chain. Very fast and hard to dodge.
-チェーンのボール。非常に速く、かわすのが難しい。
+棒と鉄球が鎖で繋がっている打撃武器。回避するのが難しい。
 Also deals 10 damage to targets next to you. Deals crush damage.
-隣の対象にも10ダメージ。クラッシュダメージを与える。
+対象に打撃属性のダメージを与え、隣の敵には10ポイントの打撃属性のダメージを与える。
 Spear
 槍
 Speak softly and carry a pointy stick.
-静かに話し、先のとがった棒を持ってください。
+穏やかに話し、先のとがった棒を持つ。
 Deals pierce damage to the target and one square behind it.
-ターゲットとその後ろの 1 マスに貫通ダメージを与えます。
+対象とその後ろの1マスに刺突属性ダメージを与える。
 Bolt Cutters
 ボルトカッター
 A cutting tool useful as a bludgeon, and also for cutting locks and chains.
 棍棒として、また錠前や鎖を切るのにも役立つ切断具。
 Also assists in cutting restraints when equipped.
-装備すると拘束切断もアシストします。
+装備時「切断」コマンドにボーナスを得る。
 Knife
 ナイフ
 A go-to for travelers and adventurers.
-旅行者や冒険家の頼りになる場所です。
+旅行者や冒険家の頼りになる護身武器。
 Deals slash damage.
-斬撃ダメージを与える
+斬撃属性のダメージを与える。
 Torch
 松明
 Second only to the mighty towel in usefulness.
-マイティタオルに次ぐ実用性
+マイティタオルに次ぐ実用性。
 Deals fire damage. Provides light.
-火のダメージを与えます。光を提供します。
+炎属性のダメージを与える。装備していると周囲が照らされる。
 Unarmed
-非武装
+素手
 Fight with your hands and feet.
 手と足で戦え
 Deals unarmed damage.
-素手でダメージを与える。
+素手属性のダメージを与える。
 Sword
 剣
 The blade is strong, its edge sharp.
 刃は強く、刃は鋭く
 A fast and accurate weapon that deals slash damage.
-斬撃ダメージを与える高速で正確な武器。
+斬撃属性のダメージを与える。精確で素早い。
 Flamberge
 フランベルジェ
 A blade forged in a magical fire.
 魔法の炎で鍛えられた刃
 Deals 20 bonus fire damage on hit.
-ヒット時に 20 のボーナス ファイア ダメージを与えます。
+命中時、20ポイントの炎属性追加ダメージを与える。
 Escort Drone
 エスコートドローン
 A semi-autonomous drone with a personal defense beam. Does not require hands to equip.
-個人防御ビームを備えた半自律型ドローン。装備に手は必要ありません。
+個人防御ビームを備えた半自律型ドローン。手を縛られていても使用可能。
 Deals electric damage. 33% chance to stun for 4 turns.
-電撃ダメージを与える。33%の確率で4ターン気絶させる
+電気属性のダメージを与える。33%の確率で4ターンスタンさせる。
 Magic Wand
 魔法の杖
 Its powers extend beyond the traditional schools of magic.
-その力は、伝統的な魔法の流派を超えています。
+伝統によって受け継がれてきた魔法の杖。
 Deals charm damage (50% effectiveness vs. non-vulnerable enemies). 20% chance to stun the target for 2 turns.
-魅力的なダメージを与えます (脆弱でない敵に対して 50% の有効性。20% の確率でターゲットを 2 ターンの間気絶させます。
+魅了属性のダメージを与える。 (弱点ではない場合50%の有効性。20%の確率でターゲットを2ターンの間気絶させる)
 Feather
-フェザー
+羽根
 A feather useful for tickling.
 くすぐりに便利な羽根
 Deals tickle damage (50% effectiveness vs. non-vulnerable enemies). Distracts enemies.
-くすぐりダメージを与えます (脆弱でない敵に対して 50% の有効性)。敵の気をそらします。
+くすぐり属性のダメージを与える。(脆弱でない敵に対して 50% の有効性)敵の興奮値を増加させる。
 Ice Cube
 アイスキューブ
 A magical cube of ice that never melts. Convenient!
 溶けない魔法の氷。便利！
 Deals 10 ice damage with a 10% chance to freeze for 3 turns.
-10%の確率で氷属性のダメージを与え、10%の確率で3ターン凍らせる。
+10ポイントの氷属性ダメージを与え、10%の確率で3ターン凍結させる。
 Rope
 ロープ
 A kidnapper's most versatile tool.
-誘拐犯の最も用途の広いツール。
+誘拐犯がよく使う道具。
 Deals chain damage and applies 50 points of binding.
-チェーンダメージを与え、50ポイントのバインディングを適用します。
+チェーン属性のダメージを与え、50ポイントの拘束値を付与する。
 Enchanted Sword
 魔法の剣
 Slices through ghosts with ease!
-ゴーストを楽々斬る！
+幽霊だってなます切り！
 A sword that guides itself toward its target, making it easy to hit with.
-目標に向かって誘導し、打ちやすくする剣。
+敵を切りやすいようにアシストしてくれる便利な武器。
 Dragonslaver
 ドラゴンスレイバー
 A powerful weapon with an ancient mechanism that launches binding belts.
 バインドベルトを発射する古代のメカニズムを持つ強力な武器。
 Deals slash damage. Can make ranged attacks.. Drains 0.75% ancient energy to fire a line of belts that deal 40 chain damage and 40 binding.
-斬撃ダメージを与えます。遠距離攻撃を行うことができます。0.75% の古代のエネルギーを吸収して、40 のチェーン ダメージと 40 のバインディングを与えるベルトのラインを発射します。
+斬撃属性のダメージを与える。遠距離攻撃時、0.75%のエネルギーを使用し、40のチェーン属性ダメージと40の拘束値を付与するベルトのラインを発射する。
 Metamorphosis
-変態
+変身装置
 You can enter slime form for 25 turns, which lets you pass thru bars, +50 Evasion, and deals 25 glue damage when attacked.
-25ターンの間スライム形態に入ることができ、バーを通り抜け、回避+50、攻撃されたときに25の接着剤ダメージを与える.
+25ターンの間、スライム形態になる。スライム状態では、バーを通り抜けることができ、回避力が50増加し、攻撃されたときにグルーダメージを25与える.
 Deals glue damage. Roots targets for 2 turns on a hit.
-接着剤のダメージを与えます。ヒットすると、ターゲットを 2 ターン根絶します。
+グルー属性のダメージを与える。命中時、敵は2ターンの間スタンする。
 Four Seasons
 四季
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
@@ -2693,13 +2693,13 @@ Chaotic Crystal
 The crystal shatters!
 クリスタルが砕け散る！
 The chaotic crystal leeches willpower from you! (DamageTaken)
-カオス クリスタル ヒルはあなたから意志力を奪います! (DamageTaken)
+カオス クリスタル ヒルはあなたから気力を奪います! (DamageTaken)
 Grand Chaotic Crystal
 大混沌の結晶
 The grand crystal shatters!
 グランドクリスタルが砕け散る！
 The grand crystal leeches willpower from you! (DamageTaken)
-壮大な水晶の蛭はあなたからの意志力です! (DamageTaken)
+壮大な水晶の蛭はあなたからの気力です! (DamageTaken)
 Crystals erupt from the ground and slowly grow around your limbs! (+RestraintAdded)
 地面から結晶が噴出し、ゆっくりと手足の周りに成長します! (+RestraintAdded)
 Soul Crystal
@@ -2707,13 +2707,13 @@ Soul Crystal
 The crystal shatters into a puff of soul dust!
 クリスタルが粉々になって魂の粉が舞い散る！
 The soul crystal leeches willpower from you! (DamageTaken)
-ソウルクリスタルはあなたから意志力を奪う! (DamageTaken)
+ソウルクリスタルはあなたから気力を奪う! (DamageTaken)
 Active Soul Crystal
 アクティブソウルクリスタル
 The crystal shatters into a puff of soul dust!
 クリスタルが粉々になって魂の粉が舞い散る！
 The soul crystal leeches willpower from you! (DamageTaken)
-ソウルクリスタルはあなたから意志力を奪う! (DamageTaken)
+ソウルクリスタルはあなたから気力を奪う! (DamageTaken)
 Shadow Dragonheart
 シャドー・ドラゴンハート
 The Shadow Dragonheart frowns and runs away.
@@ -4725,7 +4725,7 @@ Goddess Curse:
 Curses
 呪い
 Willpower
-意志力
+気力
 A tablet inscribed with runes of TYPE.
 TYPEのルーン文字が刻まれたタブレット
 Teachings of SHRINETYPE
@@ -7265,7 +7265,7 @@ You picked up a green key.
 You picked up a blue key.
 あなたは青い鍵を拾いました。
 You picked up a willpower potion.
-あなたは意志力のポーションを手に入れました。
+あなたは気力のポーションを手に入れました。
 You picked up a glowing blue mana potion.
 青く光るマナポーションを手に入れた。
 You picked up a glowing blue orb.
@@ -7673,7 +7673,7 @@ Upgrades
 Spell Tree
 スペルツリー
 Willpower
-意志力
+気力
 Stamina
 元気
 Magic
@@ -8455,15 +8455,15 @@ Increases maximum SP by 12
 Iron Will
 鉄の意志
 While you have 100 current willpower or more, regain an additional 4 stamina per turn.
-現在の意志力が100以上ある間、ターンごとに追加でスタミナを4回復します。
+現在の気力が100以上ある間、ターンごとに追加でスタミナを4回復します。
 Steadfast Guard
 不動のガード
 For each 10 current willpower you have over 50, gain +5 Restraint Block.
-現在の意志力が 50 を超えている 10 ごとに、拘束ブロック +5 を得る。
+現在の気力が 50 を超えている 10 ごとに、拘束ブロック +5 を得る。
 Willful Struggle
 故意の闘争
 For each 10 current willpower you have over 50, gain +1% struggle effectiveness.
-意志力が 50 を超えている現在の意志力が 10 になるごとに、+1% の闘争効果が得られます。
+気力が 50 を超えている現在の気力が 10 になるごとに、+1% の闘争効果が得られます。
 Your willpower provides you with additional strength! (+AMOUNT%)
 あなたの意志の力はあなたにさらなる強さをもたらします！ (+AMOUNT%)
 Athlete
@@ -8493,7 +8493,7 @@ Excess accuracy (over 100%) is converted to bonus physical damage percentage at 
 Brute Force
 強引な
 When enabled, your attacks deal 10% of your willpower as additional crush damage but cost 10 more stamina.
-有効にすると、攻撃は意志力の 10% を追加のクラッシュ ダメージとして与えますが、消費するスタミナは 10 増加します。
+有効にすると、攻撃は気力の 10% を追加のクラッシュ ダメージとして与えますが、消費するスタミナは 10 増加します。
 One With Slime
 ワンウィズスライム
 While standing on slime/latex, you can cast rubber spells without components.
