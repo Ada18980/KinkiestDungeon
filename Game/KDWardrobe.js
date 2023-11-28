@@ -164,6 +164,10 @@ function KDDrawSavedColors(X, y, max, C) {
  * @param {Model} Model
  */
 function KDDrawColorSliders(X, Y, C, Model) {
+	DrawTextFitKD(TextGet("KDFilters"), X - 5 - 245 + 300, 25, 500, "#ffffff", KDTextGray0, undefined, "center");
+	DrawBoxKD(X - 5 - 245, 5, 600, 700, KDButtonColor, false, 0.5, -10);
+	DrawTextFitKD(TextGet("KDLayers"), X - 120, 80, 300, "#ffffff", KDTextGray0, 22, "center");
+
 	let YY = Y;
 	let width = 300;
 	let layers = KDGetColorableLayers(Model);
@@ -269,7 +273,9 @@ function KDDrawColorSliders(X, Y, C, Model) {
 		YY += 50;
 	}
 
-	let TF = KDTextField("KDSelectedColor", X, YY, width, 30);
+	YY += 70;
+	DrawTextFitKD(TextGet("KDColorHex"),X + width/2, YY - 30, 300, "#ffffff", KDTextGray0, undefined, "center");
+	let TF = KDTextField("KDSelectedColor", X - 10, YY, width, 30);
 	if (TF.Created) {
 		TF.Element.oninput = (event) => {
 			let value = ElementValue("KDSelectedColor");
@@ -560,7 +566,10 @@ function KDDrawModelList(X, C) {
 	let buttonHeight = 38;
 	let buttonSpacing = 40;
 
-	let MF = KDTextField("KDModelListFilter", X+110, 10, 400, buttonHeight, undefined, undefined, "30");
+	DrawTextFitKD(TextGet("KDItemMenu"), X + 10, 25, 220, "#ffffff", KDTextGray0, undefined, "left");
+	DrawBoxKD(X - 5, 5, 650, 700, KDButtonColor, false, 0.5, -10);
+
+	let MF = KDTextField("KDModelListFilter", X+220, 10, 400, buttonHeight, undefined, undefined, "30");
 	if (MF.Created) {
 		MF.Element.oninput = (event) => {
 			KDModelListFilter = ElementValue("KDModelListFilter");
@@ -699,20 +708,23 @@ function KDDrawWardrobe(screen, Character) {
 		ElementValue("KDOutfitName", KDOutfitInfo[KDCurrentOutfit]);
 	}
 	KDDrawModelList(720, C);
-	if (KDPlayerSetPose)
-		KDDrawPoseButtons(C);
-	else {
+
+	DrawBoxKD(1025, 710, 950, 285, KDButtonColor, false, 0.5, -10);
+	if (KDPlayerSetPose) {
+		KDDrawPoseButtons(C, 1050);
+	} else {
+		DrawTextFitKD(TextGet("KDQuickColor"), 1050, 735, 250, "#ffffff", KDTextGray0, undefined, "left");
 		KDDrawSavedColors(1060, 760, KDSavedColorCount, C);
 	}
 	DrawButtonKDEx("SetPose", (bdata) => {
 		KDPlayerSetPose = !KDPlayerSetPose;
 
 		return true;
-	}, true, 884, 790, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "Poses/SetPose.png", "", false, false, KDPlayerSetPose ? KDTextGray3 : KDButtonColor);
+	}, true, 750, 720, 200, 60, TextGet("KDChangePose"), "#ffffff", KinkyDungeonRootDirectory + "Poses/SetPose.png", "", false, false, KDPlayerSetPose ? KDTextGray3 : KDButtonColor, undefined, true);
 
 
 	if (KDSelectedModel) {
-		KDDrawColorSliders(1600, 100, C, KDSelectedModel);
+		KDDrawColorSliders(1625, 100, C, KDSelectedModel);
 	} else {
 		KDCurrentLayer = "";
 	}
@@ -744,15 +756,20 @@ function KDDrawWardrobe(screen, Character) {
 		};
 	};
 
+	DrawTextFitKD(TextGet("KDLabelSaved"), 575, 75, 220, "#ffffff", KDTextGray0);
 	for (let i = 0; i < KDOutfitInfo.length && i < KDMaxOutfitsDisplay; i++) {
 		let index = i + KDMaxOutfitsIndex;
 
-		DrawButtonKDEx("ClickOutfit" + i, clickButton(index), true, 475, 100 + 50 * i, 200, 45,
+		DrawButtonKDEx("ClickOutfit" + i, clickButton(index), true, 475, 120 + 50 * i, 200, 45,
 			KDOutfitInfo[index] + (((index == KDCurrentOutfit && KDOriginalValue) || KDOutfitOriginalStore[index]) ? "(*)" : ""),
 			index == KDCurrentOutfit ? "#ffffff" : "#888888", "");
 
 	}
+	DrawBoxKD(450, 55, 250, 0 + KDOutfitInfo.length * 50, KDButtonColor, false, 0.5, -10);
 
+
+	DrawTextFitKD(TextGet("KDManageOutfits"), 575, 735, 220, "#ffffff", KDTextGray0);
+	DrawBoxKD(450, 710, 520, 285, KDButtonColor, false, 0.5, -10);
 
 	DrawButtonKDEx("ResetOutfit", (bdata) => {
 		if (KDConfirmType == "reset" && KinkyDungeonReplaceConfirm > 0) {
@@ -893,7 +910,7 @@ function KDDrawWardrobe(screen, Character) {
 		KinkyDungeonState = "Menu";
 		KinkyDungeonDressSet();
 		return true;
-	}, true, 30, 942, 440, 50, TextGet("KDWardrobeSave"), "#ffffff", "");
+	}, true, 20, 942, 380, 50, TextGet("KDWardrobeSave"), "#ffffff", "");
 }
 
 function KDSaveCodeOutfit() {

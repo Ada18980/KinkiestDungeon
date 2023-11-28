@@ -152,6 +152,7 @@ let KDInventoryAction = {
 			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
 			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
+			if (!itemInv) return;
 			if (itemInv.type == Consumable)
 				KinkyDungeonChangeConsumable(KDConsumable(itemInv), -1);
 			else if (itemInv.quantity > 1) itemInv.quantity -= 1;
@@ -205,6 +206,7 @@ let KDInventoryAction = {
 			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
 			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
+			if (!itemInv) return;
 			if (itemInv.type == Consumable)
 				KinkyDungeonChangeConsumable(KDConsumable(itemInv), -itemInv.quantity);
 			else KinkyDungeonInventoryRemoveSafe(itemInv);

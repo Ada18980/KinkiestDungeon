@@ -558,7 +558,7 @@ function KDGetItemPreview(item) {
 	if ((item.type == Restraint || item.type == LooseRestraint) && KDRestraint(item)?.AssetGroup) Group = KDRestraint(item).AssetGroup;
 	if (Group == "ItemMouth2" || Group == "ItemMouth3") Group = "ItemMouth";
 
-	if (item.type == Restraint) {
+	if (item.type == Restraint && KDRestraint(item)) {
 		let data = {
 			power: -1,
 			color: undefined,
@@ -578,7 +578,7 @@ function KDGetItemPreview(item) {
 			ret.previewcolorbg = data.bgcolor;
 		}
 	}
-	else if (item.type == LooseRestraint) {
+	else if (item.type == LooseRestraint && KDRestraint(item)) {
 		let data = {
 			power: -1,
 			color: undefined,
@@ -598,7 +598,7 @@ function KDGetItemPreview(item) {
 			ret.previewcolorbg = data.bgcolor;
 		}
 	}
-	else if (item.type == Weapon) {
+	else if (item.type == Weapon && KDWeapon(item)) {
 		let data = {
 			power: -1,
 			color: undefined,
@@ -615,7 +615,7 @@ function KDGetItemPreview(item) {
 			ret.previewcolorbg = data.bgcolor;
 		}
 	}
-	else if (item.type == Consumable) {
+	else if (item.type == Consumable && KDConsumable(item)) {
 		let data = {
 			power: -1,
 			color: undefined,
@@ -2374,11 +2374,12 @@ function KDGiveConsumableVariant(variant, prefix = "") {
  * @param {string} prefix
  * @param {string} curse
  * @param {string} ID
+ * @param {string} [forceName]
  */
-function KDGiveInventoryVariant(variant, prefix = "", curse = undefined, ID="") {
+function KDGiveInventoryVariant(variant, prefix = "", curse = undefined, ID="", forceName) {
 	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
 	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
-	let newname = prefix + variant.template + (ID || (KinkyDungeonGetItemID() + "")) + (curse ? curse : "");
+	let newname = forceName ? forceName : (prefix + variant.template + (ID || (KinkyDungeonGetItemID() + "")) + (curse ? curse : ""));
 	if (prefix) variant.prefix = prefix;
 	if (curse) {
 		variant = JSON.parse(JSON.stringify(variant));

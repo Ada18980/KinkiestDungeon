@@ -1466,8 +1466,6 @@ function KinkyDungeonDrawGame() {
 				KDMsgX + KDMsgWidth/2, 42, 1000, "#ffffff", "#333333");
 			//DrawTextKD(TextGet("DungeonName" + KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]), 1500, 42, "#ffffff", KDTextGray2);
 
-			// Draw the stats
-			KinkyDungeonDrawStats(1750, 164, 230, KinkyDungeonStatBarHeight);
 
 			if (KinkyDungeonSleepiness) {
 				CharacterSetFacialExpression(KinkyDungeonPlayer, "Emoticon", "Sleep");
@@ -1643,12 +1641,16 @@ function KinkyDungeonDrawGame() {
 			KDModalArea_width = 800;
 			KDModalArea_height = 100;
 
+			let str = "";
 			if (KinkyDungeonIsPlayer()) {
-				KinkyDungeonDrawInputs();
+				str = KinkyDungeonDrawInputs();
 			}
 
+			// Draw the stats
+			KinkyDungeonDrawStats(1750, 164, 230, KinkyDungeonStatBarHeight, str);
+
 			if (KDGameData.CurrentDialog) {
-				KDDrawDialogue();
+				KDDrawDialogue(KinkyDungeonDrawDelta);
 			}
 
 			KinkyDungeonDrawMessages();

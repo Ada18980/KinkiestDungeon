@@ -236,7 +236,7 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 		KinkyDungeonAggroAction('key', {});
 	} else if (KDRestraint(Item)) {
 		if (KinkyDungeonRestraintVariants[Item.name]) {
-			KDGiveInventoryVariant(KinkyDungeonRestraintVariants[Item.name], undefined, KinkyDungeonRestraintVariants[Item.name].curse);
+			KDGiveInventoryVariant(KinkyDungeonRestraintVariants[Item.name], undefined, KinkyDungeonRestraintVariants[Item.name].curse, "", Item.name);
 			color = "#aaaaff";
 			name = "Generic";
 			replace = TextGet("Restraint" + KinkyDungeonRestraintVariants[Item.name].template);

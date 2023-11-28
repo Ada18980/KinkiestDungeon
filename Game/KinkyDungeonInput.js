@@ -557,9 +557,9 @@ function KDProcessInput(type, data) {
 			KinkyDungeonArmorChoices[data.I] = "";
 			KinkyDungeonSpellChoicesToggle[data.I] = true;
 
-			if (KinkyDungeonFindConsumable(data.name)) {
+			if (KDConsumable({name: data.name})) {
 				KinkyDungeonConsumableChoices[data.I] = data.name;
-			} else if (KinkyDungeonFindWeapon(data.name)) {
+			} else if (KDWeapon({name: data.name})) {
 				KinkyDungeonWeaponChoices[data.I] = data.name;
 			} else {
 				KinkyDungeonArmorChoices[data.I] = data.name;

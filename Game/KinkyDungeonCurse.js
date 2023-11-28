@@ -18,6 +18,7 @@ let KDCurseUnlockList = {
 		"TakeDamageIce",
 		"TakeDamageGlue",
 		"TakeDamageChain",
+		"OrgasmResist",
 		"Mana",
 	],
 	"CursedCollar": [
@@ -272,6 +273,9 @@ let KDCurses = {
 		weight: (item) => {
 			return 10;
 		},
+		events: [
+			{type: "ShrineUnlockWiggle", trigger: "tick", kind: "ShrineWill"}
+		],
 		condition: (item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Will";
@@ -284,6 +288,9 @@ let KDCurses = {
 		weight: (item) => {
 			return 10;
 		},
+		events: [
+			{type: "ShrineUnlockWiggle", trigger: "tick", kind: "ShrineElements"}
+		],
 		condition: (item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Elements";
@@ -296,6 +303,9 @@ let KDCurses = {
 		weight: (item) => {
 			return 10;
 		},
+		events: [
+			{type: "ShrineUnlockWiggle", trigger: "tick", kind: "ShrineConjure"}
+		],
 		condition: (item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Conjure";
@@ -308,11 +318,29 @@ let KDCurses = {
 		weight: (item) => {
 			return 10;
 		},
+		events: [
+			{type: "ShrineUnlockWiggle", trigger: "tick", kind: "ShrineIllusion"}
+		],
 		condition: (item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Illusion";
 			});
 		}, remove: (item, host) => {/* For free! */}},
+	"OrgasmResist" : {
+		powerMult: 2.9,
+		activatecurse: true,
+		level: 5,
+		weight: (item) => {
+			return KinkyDungeonStatsChoice.get("arousalMode") ? 7 : 0;
+		},
+		condition: (item) => {return false;},
+		remove: (item, host) => {},
+		events: [
+			{type: "RemoveOnEdge", power: 1, count: 50, trigger: "tick", kind: "OrgasmResist", msg: "KDRemoveOnEdge"},
+			{type: "IncrementRemovalVar", power: 3, count: 50, trigger: "edge", kind: "OrgasmResist", msg: "KDRemoveOnEdgeSucceed"},
+			{type: "IncrementRemovalVar", power: -25, count: 50, trigger: "orgasm", kind: "OrgasmResist", msg: "KDRemoveOnEdgeFail"},
+		],
+	},
 };
 
 

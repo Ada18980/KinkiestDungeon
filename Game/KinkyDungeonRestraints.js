@@ -470,6 +470,22 @@ function KDIsPlayerTetheredToEntity(player, entity) {
 	return false;
 }
 
+
+/**
+ *
+ * @param {entity} player
+ * @returns {number}
+ */
+function KDGetTetherEntity(player) {
+	if (!player.player) return -1;
+	for (let inv of KinkyDungeonAllRestraint()) {
+		if (KDRestraint(inv).tether && (inv.tetherEntity)) {
+			if (inv.tetherEntity) return inv.tetherEntity;
+		}
+	}
+	return -1;
+}
+
 /**
  *
  * @param {entity} [player]
@@ -4339,6 +4355,7 @@ let KDRopeParts = {
 	"ArmsWrist": {},
 	"Cuffs": {},
 	"CuffsAdv": {},
+	"CuffsAdv2": {},
 	"Hogtie": {enemyTagSuffix: "Hogtie"},
 	"HogtieWrist": {enemyTagSuffix: "Hogtie"},
 	"Feet": {},
@@ -4552,9 +4569,10 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
  * @param {KDEscapeChanceList} addStruggle - Increase to base struggle amounts
  * @param {KDEscapeChanceList} premultStruggle - Multiplier to base struggle amounts, AFTER baseStruggle
  * @param {Record<string, LayerFilter>} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
+ * @param {string} [restraintType] - Restrainttype for slime spread event
  * param {{name: string, description: string}} strings - Generic strings for the rope type
  */
-function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], addStruggle, premultStruggle, Filters, baseWeight = 100) {
+function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], addStruggle, premultStruggle, Filters, baseWeight = 100, restraintType) {
 	for (let part of Object.entries(KDSlimeParts)) {
 		let restraintPart = part[0];
 		// Only if we have something to copy
@@ -4592,6 +4610,11 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 			if (addStruggle) {
 				for (let type of Object.entries(addStruggle)) {
 					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) + type[1]))/10000;
+				}
+			}
+			if (restraintType) {
+				for (let ev of props.events) {
+					if (ev.type == "slimeSpread") ev.restraint = restraintType;
 				}
 			}
 			let newRestraint = KinkyDungeonCloneRestraint(CopyOf + restraintPart, idSuffix + restraintPart, Object.assign(props, properties));
@@ -4777,7 +4800,7 @@ function KDGetRemovableHex(item, level) {
 let KDRestraintDebugLog = [];
 
 /**
- *
+ * The name of an item, includes TextGet call
  * @param {item} item
  */
 function KDGetItemName(item) {

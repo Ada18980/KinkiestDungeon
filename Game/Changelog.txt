@@ -17,6 +17,41 @@ Vague todo:
 
 TODO add sugar magic ('Blood Energy Magic')
 
+
+5.0.0 RC8
+- Added Strict Ropework which adds an additional rope harness for aesthetic purposes
+- Various curses that need you to be near a shrine now give a hint as to when they can be removed
+- UI improvements in the wardrobe
+- Fixed a bug where an enemy would leash you and then stand next to you forever
+- Fixed crash when picking up an enchanted restraint off the ground while it was in your hotbar
+- Tweaked layering of slime and tape
+- Added a mini tutorial at the beginning. You can disable it in the game options
+- Added keybindings for Make Noise, Play with Self, and Wait till Interrupted
+- Fixed pose weirdness with display stand
+- Added a new sprite for the hogtie display stand
+
+5.0.0 RC7
+- Added fullscreen and hi-res displacement map toggle
+- Added dummies near the tutorial portal at the start of the game to suggest it is a training area
+- Made the portals in the starting floor spin around and rotate to make them more portal-like
+- Made it so loading in with modded restraints that dont exist anymore ideally shouldn't crash the game
+- Fixed straitjackets not putting player arms forward
+- Fixed game locking up when pressing 'skip' key in a text field
+- Fixed a bug where arm cuffs were messing up glove sprites
+- Copy paste buttons removed, replaced with text fields that update the state on paste/edit
+- Added filter text field in wardrobe
+- Corrected a number of graphical glitches
+- Made some changes to slime layering
+
+5.0.0 RC6
+- Hopefully resolved the bug with blindfolds sometimes not appearing
+- Hopefully prevented a rare crash
+- Added Leather Gloves
+- Split WolfGloves to have 3 colorable layers
+- Fixed invisible laces on legbinder
+- Made swimsuit top disappear when torso is encased (by slime)
+- Added more descriptive loading
+
 5.0 (GRAPHICS UPDATE PATCH)
 - Magic ropes now grant a struggle bonus when you have high mana, but a penalty when you have low mana
 - Added Ice cuffs

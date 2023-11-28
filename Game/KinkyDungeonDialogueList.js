@@ -700,6 +700,154 @@ let KDDialogue = {
 			},
 		}
 	},
+	"Tutorial": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KinkyDungeonSetFlag("nobed", 8);
+			return false;
+		},
+		options: {
+			"Continue": {
+				playertext: "Default", response: "Default",
+				drawFunction: (gagged, player, delta) => {
+					DrawBoxKD(5, 5, 490, 990, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+					return false;
+				},
+				options: {
+					"Continue": {
+						playertext: "Continue", response: "Default",
+						drawFunction: (gagged, player, delta) => {
+							DrawBoxKD(5, 5, 490, 990, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+							return false;
+						},
+						options: {
+							"Continue": {
+								playertext: "Continue", response: "Default",
+								drawFunction: (gagged, player, delta) => {
+									DrawBoxKD(500, 900, 250, 95, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+									return false;
+								},
+								options: {
+									"Continue": {
+										playertext: "Continue", response: "Default",
+										drawFunction: (gagged, player, delta) => {
+											DrawBoxKD(750, 920, 600, 75, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+											return false;
+										},
+										options: {
+											"Continue": {
+												playertext: "Continue", response: "Default",
+												drawFunction: (gagged, player, delta) => {
+													DrawBoxKD(1350, 920, 640, 75, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+													return false;
+												},
+												options: {
+													"Continue": {
+														playertext: "Continue", response: "Default",
+														drawFunction: (gagged, player, delta) => {
+															DrawBoxKD(1745, 450, 250, 350, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+															return false;
+														},
+														options: {
+															"Continue": {
+																playertext: "Continue", response: "Default",
+																drawFunction: (gagged, player, delta) => {
+																	DrawBoxKD(1745, 150, 250, 300, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+																	return false;
+																},
+																options: {
+																	"Continue": {
+																		playertext: "Continue", response: "Default",
+																		drawFunction: (gagged, player, delta) => {
+																			DrawBoxKD(1500, 25, 250, 600, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+																			return false;
+																		},
+																		options: {
+																			"Continue": {
+																				playertext: "Continue", response: "Default",
+																				drawFunction: (gagged, player, delta) => {
+																					DrawBoxKD(550, 100, 1000, 200, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+																					return false;
+																				},
+																				options: {
+																					"Continue": {
+																						playertext: "Continue", response: "Default",
+																						options: {
+																							"Leave": {
+																								playertext: "Leave", response: "Default",
+																								exitDialogue: true,
+																							},
+																						}
+																					},
+																					"Leave": {
+																						playertext: "Leave", response: "Default",
+																						exitDialogue: true,
+																					},
+																				}
+																			},
+																			"Leave": {
+																				playertext: "Leave", response: "Default",
+																				exitDialogue: true,
+																			},
+																		}
+																	},
+																	"Leave": {
+																		playertext: "Leave", response: "Default",
+																		exitDialogue: true,
+																	},
+																}
+															},
+															"Leave": {
+																playertext: "Leave", response: "Default",
+																exitDialogue: true,
+															},
+														}
+													},
+													"Leave": {
+														playertext: "Leave", response: "Default",
+														exitDialogue: true,
+													},
+												}
+											},
+											"Leave": {
+												playertext: "Leave", response: "Default",
+												exitDialogue: true,
+											},
+										}
+									},
+									"Leave": {
+										playertext: "Leave", response: "Default",
+										exitDialogue: true,
+									},
+								}
+							},
+							"Leave": {
+								playertext: "Leave", response: "Default",
+								exitDialogue: true,
+							},
+						}
+					},
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+			"LeaveAndDisable": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					KDToggles.SkipTutorial = true;
+					KDSaveToggles();
+					return false;
+				},
+				exitDialogue: true,
+			},
+		}
+	},
 	"Bed": {
 		response: "Default",
 		clickFunction: (gagged, player) => {

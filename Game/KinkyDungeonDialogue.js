@@ -63,10 +63,12 @@ function KDGetDialogue() {
 let KDMaxDialogue = 7;
 let KDOptionOffset = 0;
 
-function KDDrawDialogue() {
+
+function KDDrawDialogue(delta) {
 	KDDraw(kdcanvas, kdpixisprites, "dialogbg", KinkyDungeonRootDirectory + "DialogBackground.png", 500, 0, 1000, 1000, undefined, {
 		zIndex: 111,
 	});
+
 	if (KDGameData.CurrentDialog && !(KinkyDungeonSlowMoveTurns > 0)) {
 		KinkyDungeonDrawState = "Game";
 		// Get the current dialogue and traverse down the tree
@@ -75,92 +77,94 @@ function KDDrawDialogue() {
 		if (dialogue.response && !KDGameData.CurrentDialogMsg) KDGameData.CurrentDialogMsg = dialogue.response;
 		if (KDGameData.CurrentDialogMsg == "Default") KDGameData.CurrentDialogMsg = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage;
 
-		// Type the message
-		let text = TextGet("r" + KDGameData.CurrentDialogMsg).split("|");
-		for (let i = 0; i < text.length; i++) {
-			let tt = text[i];
-			if (KDGameData.CurrentDialogMsgData) {
-				for (let d of Object.entries(KDGameData.CurrentDialogMsgData)) {
-					tt = tt.replace(d[0], d[1]);
+		let gagged = KDDialogueGagged();
+
+		if (!dialogue.drawFunction || !dialogue.drawFunction(gagged, KinkyDungeonPlayerEntity, delta)) {
+			// Type the message
+			let text = TextGet("r" + KDGameData.CurrentDialogMsg).split("|");
+			for (let i = 0; i < text.length; i++) {
+				let tt = text[i];
+				if (KDGameData.CurrentDialogMsgData) {
+					for (let d of Object.entries(KDGameData.CurrentDialogMsgData)) {
+						tt = tt.replace(d[0], d[1]);
+					}
 				}
+				DrawTextFitKD(tt.replace("SPEAKER", TextGet("Name" + KDGameData.CurrentDialogMsgSpeaker)),
+					1000, 300 + 50 * i - 25 * text.length, 900, "white", "black", undefined, undefined, 115);
 			}
-			DrawTextFitKD(tt.replace("SPEAKER", TextGet("Name" + KDGameData.CurrentDialogMsgSpeaker)),
-				1000, 300 + 50 * i - 25 * text.length, 900, "white", "black", undefined, undefined, 115);
-		}
 
-		// Draw the options
-		if (dialogue.options) {
-			let entries = Object.entries(dialogue.options);
+			// Draw the options
+			if (dialogue.options) {
+				let entries = Object.entries(dialogue.options);
 
-			let II = -KDOptionOffset;
-			let gagged = KDDialogueGagged();
-			for (let i = 0; i < entries.length && II < KDMaxDialogue; i++) {
-				if ((!entries[i][1].prerequisiteFunction || entries[i][1].prerequisiteFunction(gagged, KinkyDungeonPlayerEntity))
-					&& (!entries[i][1].gagRequired || gagged)
-					&& (!entries[i][1].gagDisabled || !gagged)) {
-					if (II >= 0) {
-						let playertext = entries[i][1].playertext;
-						if (playertext == "Default") playertext = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage + "_" + entries[i][0];
-						if (entries[i][1].gag && KDDialogueGagged()) playertext = playertext + "Gag";
+				let II = -KDOptionOffset;
+				for (let i = 0; i < entries.length && II < KDMaxDialogue; i++) {
+					if ((!entries[i][1].prerequisiteFunction || entries[i][1].prerequisiteFunction(gagged, KinkyDungeonPlayerEntity))
+						&& (!entries[i][1].gagRequired || gagged)
+						&& (!entries[i][1].gagDisabled || !gagged)) {
+						if (II >= 0) {
+							let playertext = entries[i][1].playertext;
+							if (playertext == "Default") playertext = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage + "_" + entries[i][0];
+							if (entries[i][1].gag && KDDialogueGagged()) playertext = playertext + "Gag";
 
-						let tt = TextGet("d" + playertext);
-						if (KDGameData.CurrentDialogMsgData) {
-							for (let d of Object.entries(KDGameData.CurrentDialogMsgData)) {
-								tt = tt.replace(d[0], d[1]);
+							let tt = TextGet("d" + playertext);
+							if (KDGameData.CurrentDialogMsgData) {
+								for (let d of Object.entries(KDGameData.CurrentDialogMsgData)) {
+									tt = tt.replace(d[0], d[1]);
+								}
 							}
+							let notGrey = !entries[i][1].greyoutFunction || entries[i][1].greyoutFunction(gagged, KinkyDungeonPlayerEntity);
+							DrawButtonKDEx(KDOptionOffset + "dialogue" + II, (bdata) => {
+								if (notGrey) {
+									KDOptionOffset = 0;
+									KDDialogueData.CurrentDialogueIndex = 0;
+									KDSendInput("dialogue", {dialogue: KDGameData.CurrentDialog, dialogueStage: KDGameData.CurrentDialogStage + ((KDGameData.CurrentDialogStage) ? "_" : "") + entries[i][0], click: true});
+								}
+								return true;
+							}, KinkyDungeonDialogueTimer < CommonTime(), 700, 450 + II * 60, 600, 50,
+							(notGrey || KDDialogueData.CurrentDialogueIndex != II) ? tt : TextGet(entries[i][1].greyoutTooltip), (notGrey && KinkyDungeonDialogueTimer < CommonTime()) ? "#ffffff" : "#888888", undefined,
+							undefined, undefined, undefined,
+							KDDialogueData.CurrentDialogueIndex == II ? KDTextGray3 : undefined, undefined, undefined, {
+								zIndex: 122,
+							});
+							if (MouseIn(700, 450 + II * 60, 600, 50)) KDDialogueData.CurrentDialogueIndex = II;
 						}
-						let notGrey = !entries[i][1].greyoutFunction || entries[i][1].greyoutFunction(gagged, KinkyDungeonPlayerEntity);
-						DrawButtonKDEx(KDOptionOffset + "dialogue" + II, (bdata) => {
-							if (notGrey) {
-								KDOptionOffset = 0;
-								KDDialogueData.CurrentDialogueIndex = 0;
-								KDSendInput("dialogue", {dialogue: KDGameData.CurrentDialog, dialogueStage: KDGameData.CurrentDialogStage + ((KDGameData.CurrentDialogStage) ? "_" : "") + entries[i][0], click: true});
+
+						II += 1;
+					}
+				}
+				if (II >= KDMaxDialogue || KDOptionOffset > 0) {
+					if (KDOptionOffset > 0)
+						DrawButtonKDEx("dialogueUP", (bdata) => {
+							if (KDOptionOffset > 0) {
+								KDOptionOffset -= 1;
+								//if (KDDialogueData.CurrentDialogueIndex > 0)
+								//KDDialogueData.CurrentDialogueIndex -= 1;
 							}
 							return true;
-						}, KinkyDungeonDialogueTimer < CommonTime(), 700, 450 + II * 60, 600, 50,
-						(notGrey || KDDialogueData.CurrentDialogueIndex != II) ? tt : TextGet(entries[i][1].greyoutTooltip), (notGrey && KinkyDungeonDialogueTimer < CommonTime()) ? "#ffffff" : "#888888", undefined,
-						undefined, undefined, undefined,
-						KDDialogueData.CurrentDialogueIndex == II ? KDTextGray3 : undefined, undefined, undefined, {
+						}, KDOptionOffset > 0, 1350, 450, 90, 40, "", KDOptionOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png",
+						undefined, undefined, undefined, undefined, undefined, undefined, {
 							zIndex: 122,
 						});
-						if (MouseIn(700, 450 + II * 60, 600, 50)) KDDialogueData.CurrentDialogueIndex = II;
-					}
-
-					II += 1;
+					if (II >= KDMaxDialogue)
+						DrawButtonKDEx("dialogueDOWN", (bdata) => {
+							if (II >= KDMaxDialogue) {
+								KDOptionOffset += 1;
+								//KDDialogueData.CurrentDialogueIndex += 1;
+							}
+							return true;
+						}, II >= KDMaxDialogue, 1350, 450 + (KDMaxDialogue - 1) * 60 + 10, 90, 40, "", II >= KDMaxDialogue ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png",
+						undefined, undefined, undefined, undefined, undefined, undefined, {
+							zIndex: 122,
+						});
+				}
+				if (KDDialogueData.CurrentDialogueIndex > II - 1) {
+					KDDialogueData.CurrentDialogueIndex = II - 1;
+				}
+				if (KDDialogueData.CurrentDialogueIndex < 0) {
+					KDDialogueData.CurrentDialogueIndex = 0;
 				}
 			}
-			if (II >= KDMaxDialogue || KDOptionOffset > 0) {
-				if (KDOptionOffset > 0)
-					DrawButtonKDEx("dialogueUP", (bdata) => {
-						if (KDOptionOffset > 0) {
-							KDOptionOffset -= 1;
-							//if (KDDialogueData.CurrentDialogueIndex > 0)
-							//KDDialogueData.CurrentDialogueIndex -= 1;
-						}
-						return true;
-					}, KDOptionOffset > 0, 1350, 450, 90, 40, "", KDOptionOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png",
-					undefined, undefined, undefined, undefined, undefined, undefined, {
-						zIndex: 122,
-					});
-				if (II >= KDMaxDialogue)
-					DrawButtonKDEx("dialogueDOWN", (bdata) => {
-						if (II >= KDMaxDialogue) {
-							KDOptionOffset += 1;
-							//KDDialogueData.CurrentDialogueIndex += 1;
-						}
-						return true;
-					}, II >= KDMaxDialogue, 1350, 450 + (KDMaxDialogue - 1) * 60 + 10, 90, 40, "", II >= KDMaxDialogue ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png",
-					undefined, undefined, undefined, undefined, undefined, undefined, {
-						zIndex: 122,
-					});
-			}
-			if (KDDialogueData.CurrentDialogueIndex > II - 1) {
-				KDDialogueData.CurrentDialogueIndex = II - 1;
-			}
-			if (KDDialogueData.CurrentDialogueIndex < 0) {
-				KDDialogueData.CurrentDialogueIndex = 0;
-			}
-
 		}
 
 	} else if (!KDGameData.CurrentDialog) {
@@ -1673,7 +1677,7 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 				KinkyDungeonSetFlag(f.name, f.duration, f.floors);
 			}
 			// This is the restraint that the dialogue offers to add. It's selected from a set of tags. You can change the tags to change the restraint
-			let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+			let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], undefined, Lock);
 			if (r) {
 				KDGameData.CurrentDialogMsgData = {
 					"Data_r": r.name,
@@ -1726,7 +1730,7 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 			let num = count;
 			// Apply additional restraints
 			if (num > 1) {
-				let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+				let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], undefined, Lock);
 				if (r)
 					KinkyDungeonAddRestraintIfWeaker(r, 0, true, Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
 			}
@@ -1760,7 +1764,7 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 					let num = refused ? countAngry : count;
 					// Apply additional restraints
 					if (num > 1) {
-						let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+						let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], undefined, Lock);
 						if (r)
 							KinkyDungeonAddRestraintIfWeaker(r, 0, true, Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
 					}

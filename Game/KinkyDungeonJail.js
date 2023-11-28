@@ -960,6 +960,7 @@ function KDDefeatedPlayerTick(nodefeat) {
 	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeDefeat"]);
 	KDGameData.KinkyDungeonJailGuard = 0;
 	KDGameData.KinkyDungeonLeashingEnemy = 0;
+	KDBreakTether(KinkyDungeonPlayerEntity);
 	if (!nodefeat)
 		KinkyDungeonSetFlag("playerDefeated", 1);
 }

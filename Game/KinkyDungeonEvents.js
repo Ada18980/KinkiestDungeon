@@ -21,6 +21,7 @@ let KDEventDataReset = {
 let KDEventDataBase = {
 	SlimeLevel: 0,
 	SlimeLevelStart: 0,
+	CurseHintTick: false,
 };
 let KDEventData = Object.assign({}, KDEventDataBase);
 
@@ -253,8 +254,41 @@ let KDEventMapInventory = {
 		"CursedDenial": (e, item, data) => {
 			KinkyDungeonSendTextMessage(5, TextGet("KDCursedDenialDeny" + Math.floor(KDRandom() * e.count)), "#9074ab", 10);
 		},
+		"IncrementRemovalVar": (e, item, data) => {
+			if (data.delta > 0 && KDIsEdged(KinkyDungeonPlayerEntity)) {
+				// Increase damage count
+				let count = KDItemDataQuery(item, e.kind) || 0;
+				count = Math.max(0, count + e.power);
+				KDItemDataSet(item, e.kind, count);
+				// Evaluate damage count
+				if (!e.count || count >= e.count) {
+					item.curse = "";
+					KinkyDungeonLock(item, "");
+					KinkyDungeonSendTextMessage(5, TextGet(e.msg).replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
+				} else {
+					KinkyDungeonSendTextMessage(5, TextGet(e.msg + "Partial").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
+				}
+			}
+		},
 	},
 	"orgasm": {
+		"IncrementRemovalVar": (e, item, data) => {
+			if (data.delta > 0 && KDIsEdged(KinkyDungeonPlayerEntity)) {
+				// Increase damage count
+				let count = KDItemDataQuery(item, e.kind) || 0;
+				count = Math.max(0, count + e.power);
+				KDItemDataSet(item, e.kind, count);
+				// Evaluate damage count
+				if (!e.count || count >= e.count) {
+					item.curse = "";
+					KinkyDungeonLock(item, "");
+					KinkyDungeonSendTextMessage(5, TextGet(e.msg).replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
+				} else {
+
+					KinkyDungeonSendTextMessage(5, TextGet(e.msg + "Partial").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
+				}
+			}
+		},
 		"CursedDenial": (e, item, data) => {
 			KinkyDungeonSendTextMessage(5, TextGet("KDCursedDenialAllow" + Math.floor(KDRandom() * e.count)), "#9074ab", 10);
 		},
@@ -644,6 +678,31 @@ let KDEventMapInventory = {
 		},
 	},
 	"tick": {
+		"ShrineUnlockWiggle": (e, item, data) => {
+			if (item && KDCurses[e.kind].condition(item) && (!KinkyDungeonFlags.get("CurseHintTick") || KDEventData.CurseHintTick)) {
+				KinkyDungeonSendTextMessage(1, TextGet("KDShrineUnlockWiggle").replace("RSTRNT", KDGetItemName(item)), "#88ff88", 1, false, true);
+				KinkyDungeonSetFlag("CurseHintTick", 1 + Math.round(KDRandom() * 4));
+				KDEventData.CurseHintTick = true;
+			}
+		},
+		"RemoveOnEdge": (e, item, data) => {
+			if (data.delta > 0 && KDIsEdged(KinkyDungeonPlayerEntity)) {
+				// Increase damage count
+				let count = KDItemDataQuery(item, e.kind) || 0;
+				count = Math.max(0, count + e.power);
+				KDItemDataSet(item, e.kind, count);
+				// Evaluate damage count
+				if (!e.count || count >= e.count) {
+					item.curse = "";
+					KinkyDungeonLock(item, "");
+					KinkyDungeonSendTextMessage(5, TextGet(e.msg).replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
+				} else if ((!KinkyDungeonFlags.get("CurseHintTick") || KDEventData.CurseHintTick)) {
+					KDEventData.CurseHintTick = true;
+					KinkyDungeonSetFlag("CurseHintTick", 1 + Math.round(KDRandom() * 4));
+					KinkyDungeonSendTextMessage(5, TextGet(e.msg + "Partial").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
+				}
+			}
+		},
 		"CursedHeal": (e, item, data) => {
 			if (item && KDGetCurse(item) == "CursedDamage" && KDIsEdged(KinkyDungeonPlayerEntity)) {
 				let alreadyDone = KDItemDataQuery(item, "cursedDamage") || 0;
@@ -6240,10 +6299,11 @@ let KDEventMapGeneric = {
 	},
 	"resetEventVarTick": {
 		/**
-		 * Helper event to clear out variables that are meant to always be reset every floor
+		 * Helper event to clear out variables that are meant to always be reset every tick
 		 * You can add your own event like this one
 		 */
 		"resetVars": (e, data) => {
+			KDEventData.CurseHintTick = false;
 			if (KDEventData.SlimeLevel < 0)
 				KDEventData.SlimeLevel = 0;
 			KDEventData.SlimeLevelStart = KDEventData.SlimeLevel;

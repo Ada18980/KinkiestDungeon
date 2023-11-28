@@ -374,6 +374,8 @@ interface KDRestraintPropsBase {
 	slimeLevel?: number,
 	addTag?: string[],
 	addPose?: string[],
+	/** Adds a pose (standalonepatched only) if this is the top level restraint */
+	addPoseIfTopLevel?: string[],
 	forbidPose?: string[],
 	removePose?: string[],
 	OverridePriority?: number,
@@ -1967,6 +1969,8 @@ interface KinkyDialogue {
 	inventory?: boolean;
 	/** Function to play when clicked. If not specified, nothing happens.  Bool is whether or not to abort current click*/
 	clickFunction?: (gagged: boolean, player: entity) => boolean | undefined;
+	/** Draw function. Fires each frame. Good for highlighting things, drawing extra buttons, etc. Boolean = true will prevent the rest of dialogue from being drawn, use with caution*/
+	drawFunction?: (gagged: boolean, player: entity, delta: number) => boolean;
 	/** Function to play when clicked, if considered gagged. If not specified, will use the default function. */
 	gagFunction?: (player: entity) => boolean | undefined;
 	/** Will not appear unless function returns true */

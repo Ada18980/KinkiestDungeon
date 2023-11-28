@@ -1660,7 +1660,8 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				box.currentCount += 0.05;
 			}
 			if (Enemy && (!InJail || (Enemy.tags.jailer || Enemy.tags.jail || Enemy.tags.leashing))) {
-				let e = {Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0, AI: KDGetAITypeOverride(Enemy, AI) || AI || Enemy.AI, faction: faction};
+				let e = {Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp,
+					movePoints: 0, attackPoints: 0, AI: KDGetAITypeOverride(Enemy, AI) || AI || Enemy.AI, faction: faction};
 				if (spawnPoint) {
 					e.spawnX = X;
 					e.spawnY = Y;

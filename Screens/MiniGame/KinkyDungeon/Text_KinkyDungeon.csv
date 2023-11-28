@@ -885,6 +885,9 @@ KinkyDungeonKeySkip,Cancel/Back
 KinkyDungeonKeyEnter,Enter
 KinkyDungeonKeyAInspect,Inspect
 KinkyDungeonKeyMap,Expand Minimap
+KinkyDungeonKeyWaitInterrupt,Wait till Interrupted
+KinkyDungeonKeyMakeNoise,Make Noise
+KinkyDungeonKeyPlaySelf,Play with Self
 
 KinkyDungeonKeyMsgLog,Message Log
 KinkyDungeonKeyDoor,Close Door
@@ -2873,9 +2876,9 @@ KinkyDungeonStruggleRemoveNeedEdgeWrongSharpAroused,"This is not a job for your 
 KinkyDungeonStruggleStruggleNeedEdgeWrongSharp,"Tugging on the TargetRestraint is useless. Maybe if you had something sharp..."
 KinkyDungeonStruggleStruggleNeedEdgeWrongSharpAroused,"You sigh as the TargetRestraint resists all your attempts at breaking through."
 
-KinkyDungeonStruggleRemoveNeedEdgeWrongEdge,"You fidget with the TargetRestraint but can't quite grip the clasps without some kind of edge."
-KinkyDungeonStruggleRemoveNeedEdgeWrongEdgeAroused,"You flail about but cant get any grip on the TargetRestraint."
-KinkyDungeonStruggleStruggleNeedEdgeWrongEdge,"The TargetRestraint is secured too tightly. If only you had some kind of edge..."
+KinkyDungeonStruggleRemoveNeedEdgeWrongEdge,"You fidget with the TargetRestraint but can't reach the clasps without some kind of edge."
+KinkyDungeonStruggleRemoveNeedEdgeWrongEdgeAroused,"You flail about but your hands are unable to reach the TargetRestraint."
+KinkyDungeonStruggleStruggleNeedEdgeWrongEdge,"You can't reach the clasps on the TargetRestraint. If only you had some other way..."
 KinkyDungeonStruggleStruggleNeedEdgeWrongEdgeAroused,"You squirm around, rubbing the TargetRestraint against the smooth floor to no avail..."
 
 KinkyDungeonStruggleRemoveNeedEdgeWrongHook,"The knots on the TargetRestraint are too tight to pull apart without a hook."
@@ -3798,31 +3801,6 @@ RestraintShadowHandFeetDesc2,"You have no choice but to struggle."
 RestraintShadowHandCrotch,Shadow Hands...
 RestraintShadowHandCrotchDesc,"They are holding your... uh..."
 RestraintShadowHandCrotchDesc2,"You have no choice but to struggle."
-
-RestraintCelestialRopeArms,Holy Wrist Rope
-RestraintCelestialRopeArmsDesc,"A box tie keeping your arms secured behind your back."
-RestraintCelestialRopeArmsDesc2,"They are aware of your movements..."
-RestraintCelestialRopeCuffs,Holy Rope Cuffs
-RestraintCelestialRopeCuffsDesc,"A quick tie for apprehending prisoners."
-RestraintCelestialRopeCuffsDesc2,"They are aware of your movements..."
-RestraintCelestialRopeCuffsAdv,Holy Ropework
-RestraintCelestialRopeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles and fasteners."
-RestraintCelestialRopeCuffsAdvDesc2,"They are aware of your movements..."
-RestraintCelestialRopeTorso,Holy Rope Harness
-RestraintCelestialRopeTorsoDesc,"A harness acting as a handle to pull you around"
-RestraintCelestialRopeTorsoDesc2,"They are aware of your movements..."
-RestraintCelestialRopeCrotch,Holy Crotch Rope
-RestraintCelestialRopeCrotchDesc,"A tight rope impressing upon your most private areas..."
-RestraintCelestialRopeCrotchDesc2,"They are aware of your movements..."
-RestraintCelestialRopeArmsWrist,Holy Wrist Rope
-RestraintCelestialRopeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
-RestraintCelestialRopeArmsWristDesc2,"They are aware of your movements..."
-RestraintCelestialRopeLegs,Holy Leg Ropes
-RestraintCelestialRopeLegsDesc,"A tie that hobbles your legs together.."
-RestraintCelestialRopeLegsDesc2,"They are aware of your movements..."
-RestraintCelestialRopeFeet,Holy Ankle Ropes
-RestraintCelestialRopeFeetDesc,"A tie keeping your feet secured together."
-RestraintCelestialRopeFeetDesc2,"They are aware of your movements..."
 
 RestraintVinePlantArms,Wrist Vines
 RestraintVinePlantArmsDesc,"A box tie keeping your arms secured behind your back."
@@ -11209,15 +11187,15 @@ rTutorial0,"Welcome to the dungeon!|Don't panic, this is a turn-based game,|and 
 
 rTutorial1,"You might be wondering what all these barrels are for.|Don't worry, they're, uh, totally safe!|When you are inside one you can click on yourself to wait.|Enemies have a hard time seeing you inside a barrel,|so you can wait until they pass by you."
 
-rTutorial2,"On the right you'll see your stats and spells slots.|Your DP, SP, MP, and WP are displayed there, we'll get into what these do.|Below that you'll see your current consumable items,|your gold, and your currently equipped weapon.|Below that, two icons allow you to toggle automatic escape and movement modes."
+rTutorial2,"On the right you'll see your stats and spells slots.|Your DP, SP, MP, and WP are displayed there, we'll get into what these do.|Below that you'll see your current consumable items,|your gold, and your currently equipped weapon."
 rTutorial2_sp1,"Your WP, or willpower, is an important resource.|Without it, escaping from restraints is more difficult.|There is a willpower potion on the floor up there. Go get it!"
-rTutorial2_sp2,"Oh no! That trap wiped out all your willpower!|Fortunately you have a potion.|You can drink it by clicking the '+' icon next to your WP bar.|You can also go into your Inventory in the bottom bar.|There is also a quick-inventory icon (backpack)."
+rTutorial2_sp2,"Oh no! That trap reduced your willpower!|Fortunately you have a potion.|You can drink it by clicking the '+' icon next to your WP bar.|You can also go into your Inventory in the bottom bar.|There is also a quick-inventory icon (backpack)."
 rTutorial2_sp3,"Another trap!|You'll notice that the trap also drained your stamina considerably, preventing you from sprinting or attacking.|(Note: you can toggle sprinting using the '>>' button on the bottom bar)|You can protect yourself while your stamina regenerates by retreating into the room above.|Close the door by clicking the Close Door button in the bottom bar.|"
 
 rTutorial2_mp1,"Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the bottom right.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1."
 rTutorial2_mp2,"On the right you'll see your stats and spells slots.|You can click on a spell slot or hit 1-4 on your keyboard to cast a spell|then click on the map for where you want to aim it.|The small wrench icon above them will let you|swap them out for another spell from your spellbook."
 rTutorial2_mp3,"There's a zombie over there!|Fortunately zombies are weak to fire.|Firebolt has a very long range,|so simply cast firebolt and click on the zombie.|Repeat until it is dead."
-rTutorial2_mp4,"Mana potions restore your mana fully."
+rTutorial2_mp4,"Mana potions restore mana, allowing you to cast spells.|Youll notice that your mana also regenerates slowly.|This mana comes from your mana pool,|which is a thin line displayed under the mana bar.|When that runs out, you can't cast spells anymore!"
 
 rTutorial2_dp1,"Your DP, or Distraction, is a measure of...|How much you are enjoying things.|These sorts of thoughts cloud your mind,|so spellcasting is more difficult when you are distracted.|Go grab the potion over there."
 rTutorial2_dp2,"Did you like that?|Anyway, there's a zombie over there. You should drink that potion.|It will clear your mind so you can cast again.|Hurry, or it will get you!"
@@ -11614,14 +11592,14 @@ KDPunishAttack,Your attack sets off your [RESTRAINTNAME]
 KDHarnessGagRemoveBlindfold,The straps on your gag prevent you from loosening the blindfold!
 KDHarnessGagStruggleBlindfold,The straps on your gag keep your blindfold securely in place!
 
-KDWardrobeCancel,Revert Changes
+KDWardrobeCancel,Revert
 KDWardrobeCancelConfirm,Confirm Revert?
-KDWardrobeSaveOutfit,Save Changes
+KDWardrobeSaveOutfit,Save
 KDWardrobeSaveOutfitConfirm,Save Changes?
-KDWardrobeSave,Confirm Changes
+KDWardrobeSave,Back to Menu
 KDWardrobeBackToWardrobe,Back to Wardrobe
 KDConfirmStrip,Confirm Strip?
-KDDressStrip,Strip Outfit
+KDDressStrip,Strip!
 KDCreateOutfit,Export Outfit
 KDCreateAlwaysDress,Export AlwaysDress
 
@@ -12058,6 +12036,9 @@ RestraintRopeSnakeCuffsDesc2,"It's not very secure."
 RestraintRopeSnakeCuffsAdv,Intricate Ropework
 RestraintRopeSnakeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles on the hand restraints."
 RestraintRopeSnakeCuffsAdvDesc2,"It's not very secure."
+RestraintRopeSnakeCuffsAdv2,Strict Ropework
+RestraintRopeSnakeCuffsAdv2Desc,"The finishing touches on a tight and strict piece of ropework."
+RestraintRopeSnakeCuffsAdv2Desc2,"It's not very secure."
 RestraintRopeSnakeHogtie,Rope Hogtie
 RestraintRopeSnakeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
 RestraintRopeSnakeHogtieDesc2,"It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle."
@@ -12150,6 +12131,9 @@ RestraintStrongMagicRopeCuffsDesc2,"The knots appear to tie themselves together 
 RestraintStrongMagicRopeCuffsAdv,Spellbound Ropework
 RestraintStrongMagicRopeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles on the hand restraints."
 RestraintStrongMagicRopeCuffsAdvDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeCuffsAdv2,Strict Spellbound Ropework
+RestraintStrongMagicRopeCuffsAdv2Desc,"The finishing touches on a tight and strict piece of ropework."
+RestraintStrongMagicRopeCuffsAdv2Desc2,"The knots appear to tie themselves together again, making them impossible to undo!"
 RestraintStrongMagicRopeHogtie,Spellbound Hogtie
 RestraintStrongMagicRopeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
 RestraintStrongMagicRopeHogtieDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
@@ -12188,6 +12172,9 @@ RestraintWeakMagicRopeCuffsDesc2,"It's not very secure."
 RestraintWeakMagicRopeCuffsAdv,Magic Ropework
 RestraintWeakMagicRopeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles on the hand restraints."
 RestraintWeakMagicRopeCuffsAdvDesc2,"It's not very secure."
+RestraintWeakMagicRopeCuffsAdv2,Strict Magic Ropework
+RestraintWeakMagicRopeCuffsAdv2Desc,"The finishing touches on a tight and strict piece of ropework."
+RestraintWeakMagicRopeCuffsAdv2Desc2,"It's not very secure."
 RestraintWeakMagicRopeHogtie,Magic Hogtie
 RestraintWeakMagicRopeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
 RestraintWeakMagicRopeHogtieDesc2,"It's very secure. You tug on the rope connecting your feet and struggle."
@@ -12226,6 +12213,9 @@ RestraintCelestialRopeCuffsDesc2,"A set of ropes that emit a calm, soothing aura
 RestraintCelestialRopeCuffsAdv,Holy Ropework
 RestraintCelestialRopeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles on the hand restraints."
 RestraintCelestialRopeCuffsAdvDesc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
+RestraintCelestialRopeCuffsAdv2,Strict Holy Ropework
+RestraintCelestialRopeCuffsAdv2Desc,"The finishing touches on a tight and strict piece of ropework."
+RestraintCelestialRopeCuffsAdv2Desc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
 RestraintCelestialRopeHogtie,Holy Hogtie
 RestraintCelestialRopeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
 RestraintCelestialRopeHogtieDesc2,"It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle."
@@ -12265,6 +12255,9 @@ RestraintMithrilRopeCuffsDesc2,"A lightweight rope made out of woven mithril, sm
 RestraintMithrilRopeCuffsAdv,Mithril Ropework
 RestraintMithrilRopeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles on the hand restraints."
 RestraintMithrilRopeCuffsAdvDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
+RestraintMithrilRopeCuffsAdv2,Strict Mithril Ropework
+RestraintMithrilRopeCuffsAdv2Desc,"The finishing touches on a tight and strict piece of ropework."
+RestraintMithrilRopeCuffsAdv2Desc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
 RestraintMithrilRopeHogtie,Mithril Hogtie
 RestraintMithrilRopeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
 RestraintMithrilRopeHogtieDesc2,"It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle."
@@ -13228,4 +13221,64 @@ RestraintTrackingModuleDesc2,"It has a warning label that says: 'CAUTION: NOT WA
 KDDamageModule,"Your RestraintName stops working due to water damage!"
 KDDamageModuleProgress,"Your RestraintName sustains water damage from the high-pressure water!"
 
-KDExit,Close Game
+KDExit,Quit Game
+
+KDShrineUnlockWiggle,"Your RSTRNT glows as the shrine's energy fills the air. You can unlock it."
+
+KDRemoveOnEdgePartial,"The seal on your RESTRAINTNAME weakens as you simmer just below the edge."
+KDRemoveOnEdge,"Through your determination, you suprress the seal on your RESTRAINTNAME!!!"
+KDRemoveOnEdgeSucceedPartial,"The seal on your RESTRAINTNAME weakens as you maintain your composure."
+KDRemoveOnEdgeSucceed,"Through your determination, you suprress the seal on your RESTRAINTNAME."
+KDRemoveOnEdgeFailPartial,"You lose focus and the seal on your RESTRAINTNAME strengthens!"
+KinkyDungeonCurseStruggleOrgasmResist,"The item refuses to budge as you try to take it off."
+KinkyDungeonCurseUnlockOrgasmResist,""
+KinkyDungeonCurseInfoOrgasmResist,"The item bears a seal of dark pleasure. You can suppress it by edging yourself."
+
+KDRemoveOnOrgasmPartial,"The seal on your RESTRAINTNAME weakens as you simmer just below the edge."
+KDRemoveOnOrgasm,"Through your determination, you suprress the seal on your RESTRAINTNAME!!!"
+KDRemoveOnOrgasmSucceedPartial,"The seal on your RESTRAINTNAME weakens as you maintain your composure."
+KDRemoveOnOrgasmSucceed,"Through your determination, you suprress the seal on your RESTRAINTNAME."
+KDRemoveOnOrgasmFailPartial,"You lose focus and the seal on your RESTRAINTNAME strengthens!"
+KinkyDungeonCurseStruggleOrgasmForced,"The item refuses to budge as you try to take it off."
+KinkyDungeonCurseUnlockOrgasmForced,""
+KinkyDungeonCurseInfoOrgasmForced,"The item bears a seal of dark pleasure. You can suppress it by edging yourself."
+
+KDLabelSaved,Saved Outfits
+KDManageOutfits,Manage Outfits
+KDChangePose,Change Pose
+KDQuickColor,Quick Color Palette
+KDFilters,Item Layers and Color Filters
+KDItemMenu,Item Catalog
+KDLayers,Layers:
+KDColorHex,Enter Hex Code:
+
+KDHideRest,Toggle Struggle UI Mode
+KDSetPose,Change Character Pose
+KDXRay,X-Ray Vision
+KDQuickInv,Show Quick Inventory
+KDToggleSkipTutorial,Skip Tutorial
+
+rTutorial,"Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like some brief tips?"
+dTutorial_LeaveAndDisable,(Leave and Disable Tutorial)
+dTutorial_Continue,(Yes Please!)
+dTutorial_HandsOn,(It'd like a hands-on lesson)
+
+rTutorialHandsOn,"Sure! I can lead you through some excercises in a safe and controlled environment.|This way you can figure things out at your own pace.|To start, choose one of the lessons below:"
+dTutorialHandsOn_Rope,"(Give me some rope lessons)"
+dTutorialHandsOn_Leather,"(Give me a nice leather outfit)"
+dTutorialHandsOn_Metal,"(I enjoy the cold embrace of steel)"
+dTutorialHandsOn_Latex,"(I love rubber!)"
+dTutorialHandsOn_No,"(On second thought, maybe not)"
+
+dHandsOn,"(About that hands-on lesson...)"
+
+rTutorialContinue,"This is you.|Over the course of the game, you will probably get tied up.|The controls to escape are located over your character.|Simply hover the mouse over your character to see them."
+rTutorialContinue_Continue,"There are four main ways to escape restraints:|Struggling, which is effective against flexible and weaker restraints,|Cutting, which depends on your held weapon and the item's properties,|Unbuckle/Untying, which depends on having free hands,|And Unlocking, which is required before you can Unbuckle."
+rTutorialContinue_Continue_Continue,"These are options for how to display your character.|You don't have to worry about them for now,|but when your character is tied up you may find them useful|...or enjoyable."
+rTutorialContinue_Continue_Continue_Continue,"These are the various submenus.|Your Inventory is used to brows items and use or equip them.|Your Reputation affects how enemies interact with you. Additionally, you can sacrifice|your rep with the Goddesses for brief assistance with restraints.|The Logbook contains lore, notes, and hints gathered along your journey.|"
+rTutorialContinue_Continue_Continue_Continue_Continue,"These are the action buttons.|You can use them to perform various actions like closing doors or sprinting.|You can also toggle various settings such as automatically passing|through allies or auto-pathing when there are no enemies nearby."
+rTutorialContinue_Continue_Continue_Continue_Continue_Continue,"This is the buffs display.|It shows what buffs you have as well as various|status icons relating to the state of your character."
+rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue,"This is the status bar.|It shows various values relating to your character.|Distraction determines how easy it is to cast spells and resist teasing.|Stamina is required to sprint and attack with a weapon.|Mana is used to cast spells. You have what is called a 'Mana Pool,'|which is excess mana that slowly refills you mana bar until it runs out.|Finally, running out of Willpower makes it much harder to escape bondage."
+rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue_Continue,"This is the hotbar.|Here you will find various spells and customizable actions.|You can customize it through the Spells submenu by clicking on a spell.|You can also add items, armor, and consumables to it from the Inventory."
+rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue_Continue_Continue,"Finally, this is where the message log will be.|It provides a written record of what happened the last few turns.|You can click the 'Log' button to expand the log,|Allowing you to look much further back."
+rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue_Continue_Continue_Continue,"Thats it for the UI.|If you want a more hands on tutorial, enter the portal to the top right,|near the training dummies.|You can click on NPCs (such as the ghosts in this room) to talk to them."

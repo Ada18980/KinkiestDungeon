@@ -163,4 +163,27 @@ function KDCheckForBadModels() {
 		if (r.Model && !ModelDefs[r.Model])
 			console.log(`Missing model: ${r.Model} of ${r.name}`);
 	}
+
+	for (let m of Object.values(ModelDefs)) {
+		let layers = m.Layers;
+		if (m.HideLayerGroups?.some((layergroup) => {return !LayerGroups[layergroup];})) {
+			console.log(`Missing HideLayerGroups: ${m.HideLayerGroups} of ${m.Name}`);
+		}
+		if (layers) {
+			for (let l of Object.values(layers)) {
+				if (l.HideOverrideLayerMulti?.some((layergroup) => {return !LayerGroups[layergroup];})) {
+					console.log(`Missing HideOverrideLayerMulti: ${l.HideOverrideLayerMulti} of ${l.Name},${m.Name}`);
+				}
+				if (l.ApplyFilterToLayerGroup && Object.keys(l.ApplyFilterToLayerGroup).some((layergroup) => {return !LayerGroups[layergroup];})) {
+					console.log(`Missing ApplyFilterToLayerGroup: ${Object.keys(l.ApplyFilterToLayerGroup)} of ${l.Name},${m.Name}`);
+				}
+				if (l.DisplaceLayers && Object.keys(l.DisplaceLayers).some((layergroup) => {return !LayerGroups[layergroup];})) {
+					console.log(`Missing DisplaceLayers: ${Object.keys(l.DisplaceLayers)} of ${l.Name},${m.Name}`);
+				}
+				if (l.EraseLayers && Object.keys(l.EraseLayers).some((layergroup) => {return !LayerGroups[layergroup];})) {
+					console.log(`Missing EraseLayers: ${Object.keys(l.EraseLayers)} of ${l.Name},${m.Name}`);
+				}
+			}
+		}
+	}
 }

@@ -1468,6 +1468,8 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 		KinkyDungeonTilesSet("" + (b1*2 + 7) + "," + (VisitedRooms[0].y*2), {RoomType: KDGameData.HighestLevelCurrent > 0 ? "" : "JourneyFloor"});
 
 	KDMapData.EndPosition = {x: b1*2 - 1, y: VisitedRooms[0].y*2 - 4};
+
+
 }
 
 
