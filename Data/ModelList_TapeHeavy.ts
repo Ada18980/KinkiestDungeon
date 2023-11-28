@@ -16,7 +16,7 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["EncaseFeet"],
 	Layers: ToLayerMap([
-		{ Name: "Feet", Layer: "OverShoes", Pri: 10,
+		{ Name: "Feet", Layer: "WrappingLegsUnder", Pri: 10,
 			Poses: ToMap(["Closed", "KneelClosed"]),
 			//GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			DisplacementSprite: "TapeAnklesSquish",
@@ -35,10 +35,11 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["EncaseAnkles"],
 	Layers: ToLayerMap([
-		{ Name: "Ankles", Layer: "Ankles1", Pri: 0,
+		{ Name: "Ankles", Layer: "WrappingLegs", Pri: 50,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Tape",
+			HideWhenOverridden: true,
 		},
 	])
 });
@@ -53,16 +54,26 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["FeetLinked", "EncaseTorsoLower", "EncaseLegs"],
 	Layers: ToLayerMap([
-		{ Name: "Legs", Layer: "WrappingLegsOver", Pri: 5,
+		{ Name: "Legs", Layer: "WrappingLegsOver", Pri: 50,
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Tape",
+			HideWhenOverridden: true,
+		},
+		{ Name: "RightLegs", Layer: "WrappingLegsOver", Pri: 50,
+			SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
+			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			InheritColor: "Tape",
+			HideWhenOverridden: true,
 		},
 		{ Name: "StrapCover", Layer: "OverCrotchStrapMid", Pri: 5,
 			Poses: ToMap(["Closed", "Hogtie"]),
 			RequirePoses: ToMap(["CrotchStrap"]),
+			HidePoses: ToMap(["Skirt"]),
 			InheritColor: "Tape",
 			Invariant: true,
+			TieToLayer: "Legs",
 		},
 	])
 });
@@ -75,11 +86,12 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["FeetLinked", "EncaseTorsoLower", "EncaseLegs"],
 	Layers: ToLayerMap([
-		{ Name: "Bottom", Layer: "WrappingTorsoMid", Pri: -5,
+		{ Name: "Bottom", Layer: "WrappingTorsoMid", Pri: 50,
 			SwapLayerPose: {Kneel: "WrappingTorso", KneelClosed: "WrappingTorso"},
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Tape",
+			HideWhenOverridden: true,
 		},
 	])
 });
@@ -142,26 +154,29 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
-	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest", "FlattenedUnderbust"],
+	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest", "FlattenedUnderbust", "WrapArms"],
 	Layers: ToLayerMap([
-		{ Name: "Top", Layer: "WrappingTorsoMid", Pri: -4,
+		{ Name: "Top", Layer: "WrappingTorsoMid", Pri: 50,
 			Poses: ToMap(["Boxtie", "Crossed", "Wristtie"]),
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 			HideOverrideLayerMulti: ["TopBinding"],
 			InheritColor: "Tape",
+			HideWhenOverridden: true,
 		},
-		{ Name: "Chest", Layer: "BindChest", Pri: 102,
+		{ Name: "Chest", Layer: "BindChest", Pri: 50,
 			Invariant: true,
 			InheritColor: "Tape",
+			HideWhenOverridden: true,
 
 			CrossHideOverride: true,
 			HideOverrideLayerMulti: ["ChestBinding"],
 			ForceSingleOverride: true,
 		},
-		{ Name: "ArmLeft", Layer: "WrappingTorsoOver", Pri: -5, // BindArmLeft
+		{ Name: "ArmLeft", Layer: "WrapArmLeft", Pri: 50, // BindArmLeft
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmLeft", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			HideWhenOverridden: true,
 
 			DisplacementSprite: "TapeHeavyLeft",
 			DisplaceLayers: ToMap(["ArmsAllAndHarness"]),
@@ -172,10 +187,11 @@ AddModel({
 			NoDisplace: true,
 			InheritColor: "Tape",
 		},
-		{ Name: "ArmRight", Layer: "WrappingTorsoOver", Pri: -5, // BindArmRight
+		{ Name: "ArmRight", Layer: "WrapArmRight", Pri: 50, // BindArmRight
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmRight", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			HideWhenOverridden: true,
 
 			DisplacementSprite: "TapeHeavyRight",
 			DisplaceLayers: ToMap(["ArmsAllAndHarness"]),
@@ -196,7 +212,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
-	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest", "FlattenedUnderbust"],
+	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest", "FlattenedUnderbust", "WrapArms", "WrapChest"],
 	Layers: ToLayerMap([
 		...GetModelLayers("TapeHeavyArms"),
 		...GetModelLayers("TapeFullArms"),

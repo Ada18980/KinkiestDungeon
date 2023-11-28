@@ -18,7 +18,7 @@ AddModel({
 		Xray: ["HideMouth",],
 	},
 	Layers: ToLayerMap([
-		{ Name: "Face", Layer: "Mask", Pri: -50,
+		{ Name: "Face", Layer: "MaskOver", Pri: 20,
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,

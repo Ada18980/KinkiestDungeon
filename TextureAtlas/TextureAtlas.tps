@@ -656,6 +656,7 @@
             <key type="filename">../Models/Furniture/CageBack.png</key>
             <key type="filename">../Models/Furniture/CageFront.png</key>
             <key type="filename">../Models/Furniture/DisplayFront.png</key>
+            <key type="filename">../Models/Furniture/DisplayFrontHogtie.png</key>
             <key type="filename">../Models/Furniture/LatexCube.png</key>
             <key type="filename">../Models/Furniture/LatexCubeBack.png</key>
             <key type="filename">../Models/Furniture/OneBarBackClosed.png</key>
@@ -1416,8 +1417,11 @@
             <key type="filename">../Models/TapeHeavy/BottomKneel.png</key>
             <key type="filename">../Models/TapeHeavy/BottomKneelClosed.png</key>
             <key type="filename">../Models/TapeHeavy/Chest.png</key>
+            <key type="filename">../Models/TapeHeavy/ChestBoxtie.png</key>
+            <key type="filename">../Models/TapeHeavy/ChestCrossed.png</key>
             <key type="filename">../Models/TapeHeavy/ChestPetsuit.png</key>
             <key type="filename">../Models/TapeHeavy/ChestStrap.png</key>
+            <key type="filename">../Models/TapeHeavy/ChestWristtie.png</key>
             <key type="filename">../Models/TapeHeavy/FeetClosed.png</key>
             <key type="filename">../Models/TapeHeavy/FeetKneel.png</key>
             <key type="filename">../Models/TapeHeavy/HandLeftFree.png</key>
@@ -1435,6 +1439,10 @@
             <key type="filename">../Models/TapeHeavy/PetsuitTopBody.png</key>
             <key type="filename">../Models/TapeHeavy/PetsuitTopHands.png</key>
             <key type="filename">../Models/TapeHeavy/PetsuitTopTapedHands.png</key>
+            <key type="filename">../Models/TapeHeavy/RightLegsClosed.png</key>
+            <key type="filename">../Models/TapeHeavy/RightLegsHogtie.png</key>
+            <key type="filename">../Models/TapeHeavy/RightLegsKneel.png</key>
+            <key type="filename">../Models/TapeHeavy/RightLegsKneelClosed.png</key>
             <key type="filename">../Models/TapeHeavy/StrapCover.png</key>
             <key type="filename">../Models/TapeHeavy/TopBoxtie.png</key>
             <key type="filename">../Models/TapeHeavy/TopCrossed.png</key>
@@ -1481,6 +1489,10 @@
             <key type="filename">../Models/TapeLight/PetsuitTopBody.png</key>
             <key type="filename">../Models/TapeLight/PetsuitTopHands.png</key>
             <key type="filename">../Models/TapeLight/PetsuitTopTapedHands.png</key>
+            <key type="filename">../Models/TapeLight/RightLegsClosed.png</key>
+            <key type="filename">../Models/TapeLight/RightLegsHogtie.png</key>
+            <key type="filename">../Models/TapeLight/RightLegsKneel.png</key>
+            <key type="filename">../Models/TapeLight/RightLegsKneelClosed.png</key>
             <key type="filename">../Models/TapeLight/StrapCover.png</key>
             <key type="filename">../Models/TapeLight/TopBoxtie.png</key>
             <key type="filename">../Models/TapeLight/TopCrossed.png</key>
@@ -1531,6 +1543,10 @@
             <key type="filename">../Models/TapeMed/PetsuitTopBody.png</key>
             <key type="filename">../Models/TapeMed/PetsuitTopHands.png</key>
             <key type="filename">../Models/TapeMed/PetsuitTopTapedHands.png</key>
+            <key type="filename">../Models/TapeMed/RightLegsClosed.png</key>
+            <key type="filename">../Models/TapeMed/RightLegsHogtie.png</key>
+            <key type="filename">../Models/TapeMed/RightLegsKneel.png</key>
+            <key type="filename">../Models/TapeMed/RightLegsKneelClosed.png</key>
             <key type="filename">../Models/TapeMed/StrapCover.png</key>
             <key type="filename">../Models/TapeMed/TopBoxtie.png</key>
             <key type="filename">../Models/TapeMed/TopCrossed.png</key>

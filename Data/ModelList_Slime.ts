@@ -21,10 +21,13 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
-		{ Name: "FaceMouth", Layer: "GagWrap", Pri: 9,
+		{ Name: "FaceMouth", Layer: "GagFlat", Pri: -60,
 			Invariant: true,
 			NoOverride: true,
 			InheritColor: "Slime",
+			AddPriWithPose: {
+				ItemMouthRubberOver: 45,
+			},
 		},
 	])
 });
@@ -41,10 +44,13 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
-		{ Name: "FaceEyes", Layer: "BlindfoldWrap", Pri: 9,
+		{ Name: "FaceEyes", Layer: "Blindfold", Pri: -25,
 			Invariant: true,
 			NoOverride: true,
 			InheritColor: "Slime",
+			AddPriWithPose: {
+				ItemHeadRubberOver: 45,
+			},
 		},
 	])
 });
@@ -61,10 +67,13 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
-		{ Name: "FaceFull", Layer: "Mask", Pri: 9,
+		{ Name: "FaceFull", Layer: "Blindfold", Pri: -15,
 			Invariant: true,
 			NoOverride: true,
 			InheritColor: "Slime",
+			AddPriWithPose: {
+				ItemHeadRubberOver: 45,
+			},
 		},
 	])
 });
@@ -87,13 +96,20 @@ AddModel({
 			NoOverride: true,
 			InheritColor: "Slime",
 			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes"]),
+			AddPriWithPose: {
+				ItemBootsRubberOver: 45,
+			},
 		},
-		{ Name: "FootRight", Layer: "WrappingLegsRight", Pri: 150,
+		{ Name: "FootRight", Layer: "WrappingLegs", Pri: 150,
+			SwapLayerPose: {Kneel: "WrappingLegsRight", KneelClosed: "WrappingLegsRight"},
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			NoOverride: true,
 			InheritColor: "Slime",
 			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes"]),
+			AddPriWithPose: {
+				ItemBootsRubberOver: 45,
+			},
 		},
 	])
 });
@@ -110,12 +126,16 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
-		{ Name: "TorsoLower", Layer: "WrappingTorso", Pri: 15,
-			//SwapLayerPose: {Kneel: "WrappingTorso", KneelClosed: "WrappingTorso"},
+		{ Name: "TorsoLower", Layer: "WrappingTorsoMid", Pri: 15,
+			SwapLayerPose: {Kneel: "WrappingTorso", KneelClosed: "WrappingTorso"},
 			Invariant: true,
 			ApplyFilterToLayerGroup: ToMap(["SlimeTorsoLower"]),
 			InheritColor: "Slime",
 			MorphPoses: {KneelClosed: "Kneel"},
+			HideWhenOverridden: true,
+			AddPriWithPose: {
+				ItemLegsRubberOver: 45,
+			},
 		},
 	])
 });
@@ -137,12 +157,21 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			ApplyFilterToLayerGroup: ToMap(["SlimeLegs"]),
 			InheritColor: "Slime",
+			HideWhenOverridden: true,
+			AddPriWithPose: {
+				ItemLegsRubberOver: 45,
+			},
 		},
-		{ Name: "LegRight", Layer: "WrappingLegsRightOver", Pri: 11,
+		{ Name: "LegRight", Layer: "WrappingLegsOver", Pri: 11,
+			SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			ApplyFilterToLayerGroup: ToMap(["SlimeLegs"]),
 			InheritColor: "Slime",
+			HideWhenOverridden: true,
+			AddPriWithPose: {
+				ItemLegsRubberOver: 45,
+			},
 		},
 	])
 });
@@ -155,7 +184,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Slime"],
-	AddPose: ["FeetLinked", "TorsoLowerTight", "EncaseTorsoLower", "EncaseLegs"],
+	AddPose: ["FeetLinked", "EncaseTorsoLower", "EncaseLegs"],
 	Filters: {
 		"Slime": slimefilter,
 	},
@@ -183,12 +212,20 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes"]),
 			InheritColor: "Slime",
+			HideWhenOverridden: true,
+			AddPriWithPose: {
+				ItemFeetRubberOver: 45,
+			},
 		},
 		{ Name: "AnkleRight", Layer: "WrappingLegs", Pri: 15,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes"]),
 			InheritColor: "Slime",
+			HideWhenOverridden: true,
+			AddPriWithPose: {
+				ItemFeetRubberOver: 45,
+			},
 		},
 	])
 });
@@ -210,6 +247,10 @@ AddModel({
 			SwapLayerPose: {Front: "BindForeArmLeft", Crossed: "BindCrossArmLeft"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			InheritColor: "Slime",
+			HideWhenOverridden: true,
+			AddPriWithPose: {
+				ItemArmsRubberOver: 45,
+			},
 		},
 	])
 });
@@ -227,9 +268,13 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "ArmRight", Layer: "WrapArmRight", Pri: 15,
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
-			SwapLayerPose: {Front: "BindForeArmRight", Crossed: "BindCrossArmRight"},
+			SwapLayerPose: {Front: "WrapForeArms", Crossed: "WrapCrossArms"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			InheritColor: "Slime",
+			HideWhenOverridden: true,
+			AddPriWithPose: {
+				ItemArmsRubberOver: 45,
+			},
 		},
 	])
 });
@@ -246,18 +291,26 @@ AddModel({
 	Categories: ["Restraints", "Slime"],
 	AddPose: ["EncaseTorsoUpper", "EncaseChest"],
 	Layers: ToLayerMap([
-		{ Name: "TorsoUpper", Layer: "WrappingTorsoUpper", Pri: 15,
+		{ Name: "TorsoUpper", Layer: "WrappingTorsoMid", Pri: 15,
 			Invariant: true,
 			HideOverrideLayerMulti: ["TopBinding"],
 			InheritColor: "Slime",
+			HideWhenOverridden: true,
+			AddPriWithPose: {
+				ItemArmsRubberOver: 45,
+			},
 		},
 		{ Name: "Chest", Layer: "BindChest", Pri: 15,
 			Invariant: true,
 			CrossHideOverride: true,
+			HideWhenOverridden: true,
 			HideOverrideLayerMulti: ["ChestBinding"],
 			ForceSingleOverride: true,
 			InheritColor: "Slime",
-			MorphPoses: {Crossed: "Crossed", Boxtie: "Boxtie", Wristtie: "Wristtie"}
+			MorphPoses: {Crossed: "Crossed", Boxtie: "Boxtie", Wristtie: "Wristtie"},
+			AddPriWithPose: {
+				ItemArmsRubberOver: 45,
+			},
 		},
 	])
 });
@@ -273,7 +326,7 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Categories: ["Restraints", "Slime"],
-	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest"],
+	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest", "WrapArms", "WrapChest"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SlimeArmLeft"),
 		...GetModelLayers("SlimeArmRight"),
@@ -295,11 +348,14 @@ AddModel({
 	},
 	Layers: ToLayerMap([
 		{ Name: "HandLeft", Layer: "BindHandLeft", Pri: 15,
-			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie"]),
+			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie", "Yoked"]),
 			SwapLayerPose: {Front: "BindForeHandLeft"},
 			HidePoses: ToMap(["HideHands"]),
 			GlobalDefaultOverride: ToMap(["Front"]),
 			InheritColor: "Slime",
+			AddPriWithPose: {
+				ItemHandsRubberOver: 45,
+			},
 		},
 	])
 });
@@ -316,11 +372,14 @@ AddModel({
 	},
 	Layers: ToLayerMap([
 		{ Name: "HandRight", Layer: "BindHandRight", Pri: 15,
-			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie"]),
+			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie", "Yoked"]),
 			SwapLayerPose: {Front: "BindForeHandRight"},
 			HidePoses: ToMap(["HideHands"]),
 			GlobalDefaultOverride: ToMap(["Front"]),
 			InheritColor: "Slime",
+			AddPriWithPose: {
+				ItemHandsRubberOver: 45,
+			},
 		},
 	])
 });

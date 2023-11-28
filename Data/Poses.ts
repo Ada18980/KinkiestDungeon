@@ -21,6 +21,7 @@ let FOOTLEFTPOSES = ["Spread", "Closed", "Kneel", "KneelClosed"];
 let CALFRIGHTPOSES = ["Spread", "Closed"];
 let CALFLEFTPOSES = ["Spread", "Closed", "Kneel", "KneelClosed", "Hogtie"];
 let KNEELPOSES = ["Kneel", "KneelClosed"];
+let HOGTIEPOSES = ["Hogtie"];
 let STANDPOSES = ["Spread", "Closed"];
 let CLOSEDPOSES = ["KneelClosed", "Closed"];
 let SPREADPOSES = ["Spread", "Kneel"];
@@ -63,6 +64,33 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 			rotation_y_anchor: .5,
 			offset_x: .5,
 			offset_y: .4,
+		}
+		]
+	},
+	SuspendedHogtie: {
+		filter_pose: ["Hogtie"],
+		rotation: 0,
+		pri_rotation: 2,
+		offset_x: 0,
+		offset_y: 0.0,
+		pri_offset: 4,
+		global_default: "Closed",
+		mods: [
+		{
+			Layer: "Head",
+			rotation: -30,
+			rotation_x_anchor: 1190/MODELWIDTH,
+			rotation_y_anchor: 690/MODELHEIGHT,
+			offset_x: 1190/MODELWIDTH,
+			offset_y: 690/MODELHEIGHT,
+		},
+		{
+			Layer: "BG",
+			rotation: -90,
+			rotation_x_anchor: .5,
+			rotation_y_anchor: .5,
+			offset_x: .5,
+			offset_y: .5,
 		}
 		]
 	},
@@ -234,11 +262,46 @@ function KDGetAvailablePosesLegs(C: Character): string[] {
 				delete poses[p];
 			}
 		}
+
+		if (CheckPoseOrTags(C, "BlockHogtie")) {
+			for (let p of HOGTIEPOSES) {
+				delete poses[p];
+			}
+		}
+		if (CheckPoseOrTags(C, "BlockKneel")) {
+			for (let p of KNEELPOSES) {
+				delete poses[p];
+			}
+		}
+		if (CheckPoseOrTags(C, "DiscourageHogtie") && Object.keys(poses).length > Object.keys(HOGTIEPOSES).length) {
+			for (let p of HOGTIEPOSES) {
+				delete poses[p];
+			}
+		}
+		if (CheckPoseOrTags(C, "DiscourageKneel") && Object.keys(poses).length > Object.keys(KNEELPOSES).length) {
+			for (let p of KNEELPOSES) {
+				delete poses[p];
+			}
+		}
+		if (CheckPoseOrTags(C, "DiscourageStand") && Object.keys(poses).length > Object.keys(STANDPOSES).length) {
+			for (let p of STANDPOSES) {
+				delete poses[p];
+			}
+		}
 	} else {
 		// Logic for NPC
 		// ???
 	}
 
+	if (Object.keys(poses).length == 0) {
+		if (CheckPoseOrTags(C, "DefaultStand")) {
+			poses = {Hogtie: true};
+		} else if (CheckPoseOrTags(C, "DefaultKneel")) {
+			poses = {Hogtie: true};
+		} else {
+			poses = {Hogtie: true};
+		}
+	}
 	return Object.keys(poses);
 }
 
@@ -328,5 +391,11 @@ function RefreshTempPoses(Character: Character, Restraints: boolean) {
 				for (let tag of KDRestraint(inv).addPose) {
 					if (!KDCurrentModels.get(Character).TempPoses[tag]) KDCurrentModels.get(Character).TempPoses[tag] = true;
 				}
+			if (KDRestraint(inv).addPoseIfTopLevel && KinkyDungeonGetRestraintItem(KDRestraint(inv).Group) == inv)
+				for (let tag of KDRestraint(inv).addPoseIfTopLevel) {
+					if (!KDCurrentModels.get(Character).TempPoses[tag]) KDCurrentModels.get(Character).TempPoses[tag] = true;
+				}
+
+
 		}
 }

@@ -382,6 +382,9 @@ AddModel({
 	Parent: "Dress",
 	TopLevel: true,
 	Categories: ["Skirts"],
+	AddPoseConditional: {
+		EncaseTorsoLower: ["Skirt"]
+	},
 	Layers: ToLayerMap([
 		{ Name: "Skirt", Layer: "Skirt", Pri: 9,
 			Poses: ToMap([...LEGPOSES]),

@@ -453,14 +453,19 @@ function LayerLayer(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : string
 	return l.Layer;
 }
 
-/** TODO Unused */
 function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : number {
 	if (l.SwapPriorityPose) {
 		for (let p of Object.entries(l.SwapPriorityPose)) {
-			if (MC.Poses[p[0]]) return p[1];
+			if (MC.Poses[p[0]] || MC.TempPoses[p[0]]) return p[1];
 		}
 	}
-	return l.Pri;
+	let temp = l.Pri;
+	if (l.AddPriWithPose) {
+		for (let p of Object.entries(l.AddPriWithPose)) {
+			if (MC.Poses[p[0]] || MC.TempPoses[p[0]]) temp += p[1];
+		}
+	}
+	return temp;
 }
 
 /**

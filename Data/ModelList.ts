@@ -557,6 +557,9 @@ AddModel({
 	Parent: "Maid",
 	TopLevel: true,
 	Categories: ["Skirts"],
+	AddPoseConditional: {
+		EncaseTorsoLower: ["Skirt"]
+	},
 	Layers: ToLayerMap([
 		{ Name: "Skirt", Layer: "Skirt", Pri: 14,
 			Poses: ToMap([...LEGPOSES]),
@@ -965,6 +968,9 @@ AddModel({
 	Parent: "Witch",
 	TopLevel: true,
 	Categories: ["Skirts"],
+	AddPoseConditional: {
+		EncaseTorsoLower: ["Skirt"]
+	},
 	Layers: ToLayerMap([
 		{ Name: "Skirt", Layer: "Skirt", Pri: 14,
 			SwapLayerPose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
@@ -1295,6 +1301,9 @@ AddModel({
 	Parent: "Dragonheart",
 	TopLevel: true,
 	Categories: ["Skirts"],
+	AddPoseConditional: {
+		EncaseTorsoLower: ["Skirt"]
+	},
 	Layers: ToLayerMap([
 		{ Name: "Skirt", Layer: "Skirt", Pri: 7,
 			SwapLayerPose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
@@ -1597,6 +1606,9 @@ AddModel({
 	Parent: "Robes",
 	TopLevel: true,
 	Categories: ["Skirts"],
+	AddPoseConditional: {
+		EncaseTorsoLower: ["Skirt"]
+	},
 	Layers: ToLayerMap([
 		{ Name: "Skirt", Layer: "Skirt", Pri: 7,
 			SwapLayerPose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},

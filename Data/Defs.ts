@@ -13,7 +13,6 @@ let LAYERS_BASE = [
 	"HairFront",
 	"HairOver",
 	"Hood", // For Kigu
-	"MaskOver",
 	// Head items
 	"Blindfold",
 	"GagOver",
@@ -55,6 +54,7 @@ let LAYERS_BASE = [
 	"Collar",
 
 	// Bondage
+	"WrapForeArms",
 	"BindForeArms",
 	"BindForeElbowLeft",
 	"BindForeWristLeft",
@@ -126,6 +126,7 @@ let LAYERS_BASE = [
 	"WrappingTorsoOver",
 
 	// Crossed arms bondage -- left arm is mostly hidden, no hands
+	"WrapCrossArms",
 	"BindCrossArms",
 	"BindCrossElbowLeft",
 	"BindCrossWristRight",
@@ -812,6 +813,9 @@ let LayerGroups = {
 		"ForeGloveRight",
 		"ForeHandRight",
 		"ForeArmRight",
+
+		"GloveLeft",
+		"GloveRight",
 	]),
 
 	"RopeFore": ToMap([
@@ -1128,7 +1132,7 @@ let LayerGroups = {
 	// endregion
 
 	// region Xray
-	"Xray": ToMap(
+	Xray: ToMap(
 		[
 			"FurnitureFront",
 
@@ -1177,6 +1181,9 @@ let LayerGroups = {
 	//"StrapsUnderbustOver",
 	"WrappingTorsoUpper",
 	"WrappingTorsoOver",
+
+	"WrapForeArms",
+	"WrapCrossArms",
 
 	// Crossed arms -- order is inverted
 	"SleevesCrossArms",

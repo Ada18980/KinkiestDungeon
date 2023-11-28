@@ -184,6 +184,8 @@ interface ModelLayer extends Namable {
 	AnchorModX?: number,
 	/** Offset Y scale */
 	AnchorModY?: number,
+	/** Increases layer priority but only if the pose is present */
+	AddPriWithPose?: Record<string, number>,
 }
 
 type LayerFilter = {

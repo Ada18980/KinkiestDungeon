@@ -13,7 +13,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Cages"],
-	AddPose: ["Caged"],
+	AddPose: ["Caged", "UprightHogtie"],
 	Layers: ToLayerMap([
 		{ Name: "CageFront", Layer: "FurnitureFront", Pri: 50,
 			Invariant: true,
@@ -31,7 +31,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Display"],
-	AddPose: ["Display", "UprightHogtie", "LiftKneel"],
+	AddPose: ["Display", "SuspendedHogtie", "LiftKneel"],
 	Layers: ToLayerMap([
 		{ Name: "SarcoFront", Layer: "FurnitureFront", Pri: 30,
 			Invariant: true,
@@ -105,10 +105,11 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Stands"],
-	AddPose: ["UprightHogtie", "ForceStand"],
+	AddPose: ["SuspendedHogtie", "BlockKneel", "ForceStand", "FeetLinked"],
 	Layers: ToLayerMap([
 		{ Name: "DisplayFront", Layer: "FurnitureFront", Pri: -50,
 			Invariant: true,
+			MorphPoses: {Hogtie: "Hogtie"},
 		},
 	])
 });
@@ -120,7 +121,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Stands"],
-	AddPose: ["UprightHogtie", "ForceStand"],
+	AddPose: ["SuspendedHogtie", "ForceStand"],
 	Layers: ToLayerMap([
 		{ Name: "OneBarFront", Layer: "TorsoLower", Pri: -50,
 			Poses: ToMap(["Closed", "Spread"]),

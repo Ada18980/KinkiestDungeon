@@ -103,6 +103,9 @@ AddModel({
 	Parent: "ElfSkirt",
 	TopLevel: false,
 	Categories: ["Skirts"],
+	AddPoseConditional: {
+		EncaseTorsoLower: ["Skirt"]
+	},
 	Layers: ToLayerMap([
 		{ Name: "SkirtBack", Layer: "SkirtBack", Pri: -100,
 			Invariant: true,
@@ -118,6 +121,9 @@ AddModel({
 	Parent: "Elf",
 	TopLevel: true,
 	Categories: ["Skirts"],
+	AddPoseConditional: {
+		EncaseTorsoLower: ["Skirt"]
+	},
 	Layers: ToLayerMap([
 		{ Name: "Skirt", Layer: "Skirt", Pri: 100,
 			SwapLayerPose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
