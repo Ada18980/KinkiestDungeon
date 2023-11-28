@@ -1771,8 +1771,8 @@ Load from Code
 从代码中加载
 Confirm Reset?
 确认重置？
-Confirm Changes
-确认更改
+Back to Menu
+返回菜单
 
 Your movement sets off your [RESTRAINTNAME]
 你的动作引发了你的 [RESTRAINTNAME]
@@ -1786,18 +1786,18 @@ The straps on your gag prevent you from loosening the blindfold!
 The straps on your gag keep your blindfold securely in place!
 堵嘴物上的带子可将眼罩牢固固定住！
 
-Revert Changes
-恢复更改
+Revert
+恢复
 Confirm Revert?
 确认恢复？
-Save Changes
-保存更改
+Save
+保存
 Save Changes?
 保存更改？
 Back to Wardrobe
 返回衣柜
-Strip Outfit
-脱去衣服
+Strip!
+脱光！
 Export Outfit
 导出衣服
 Export AlwaysDress
@@ -2190,6 +2190,12 @@ Inspect
 检查
 Expand Minimap
 展开小地图
+Wait till Interrupted
+等待直到中断
+Make Noise
+制造噪音
+Play with Self
+玩弄自己
 
 Message Log
 消息日志
@@ -5557,12 +5563,12 @@ Tugging on the TargetRestraint is useless. Maybe if you had something sharp...
 You sigh as the TargetRestraint resists all your attempts at breaking through.
 当 TargetRestraint 抵御了你所有的挣脱尝试时，你叹了口气。
 
-You fidget with the TargetRestraint but can't quite grip the clasps without some kind of edge.
-你对 TargetRestraint 感到不安，但如果没有某种边缘就无法完全抓住扣子。
-You flail about but cant get any grip on the TargetRestraint.
-你四处挥动，但抓不住 TargetRestraint。
-The TargetRestraint is secured too tightly. If only you had some kind of edge...
-TargetRestraint 固定得太紧。如果有点优势就好了……
+You fidget with the TargetRestraint but can't reach the clasps without some kind of edge.
+你对 TargetRestraint 感到不安，但如果没有某种边缘就无法够到扣子。
+You flail about but your hands are unable to reach the TargetRestraint.
+你四处挥动，但够不到 TargetRestraint。
+You can't reach the clasps on the TargetRestraint. If only you had some other way...
+你够不到 TargetRestraint 的扣子。如果有其他办法就好了……
 You squirm around, rubbing the TargetRestraint against the smooth floor to no avail...
 你扭动身体，在光滑的地板上摩擦着 TargetRestraint，但无济于事......
 
@@ -5804,8 +5810,6 @@ Runic
 符文
 Magic
 魔法
-Back to Menu
-返回菜单
 Item Stack:
 物品堆栈：
 Ancient
@@ -6936,6 +6940,12 @@ A quick tie for apprehending prisoners, looped through buckles on the hand restr
 用于逮捕囚犯的快速捆绑，穿过手部束缚装置上的带扣。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
+Strict Spellbound Ropework
+严格的绳索（符咒）
+The finishing touches on a tight and strict piece of ropework.
+最后的收尾工作是对一根紧密而严格的绳索进行最后的修饰。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
 Spellbound Hogtie
 驷马（符咒）
 A very strict and tight hogtie, good for subduing unruly captives.
@@ -7003,6 +7013,10 @@ Strongly glowing ropes tied in an intricate pattern, making hand restraints more
 强烈发光的绳索以复杂的方式捆绑起来，使束手更加可靠。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
+Strict Magic Ropework
+严格的绳索（附魔）
+The finishing touches on a tight and strict piece of ropework.
+最后的收尾工作是对一根紧密而严格的绳索进行最后的修饰。
 Magic Leg Rope
 腿部绳缚（附魔）
 They glow with a trace of magic.
@@ -7063,6 +7077,12 @@ Mithril Ropework
 绳索（秘银）
 A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
 用于逮捕囚犯的快速捆绑，穿过手部束缚装置上的带扣。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
+Strict Mithril Ropework
+严格的绳索（秘银）
+The finishing touches on a tight and strict piece of ropework.
+最后的收尾工作是对一根紧密而严格的绳索进行最后的修饰。
 A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
 由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
 Mithril Hogtie
@@ -7434,6 +7454,12 @@ Holy Ropework
 神圣绳索
 A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
 用于逮捕囚犯的快速捆绑，穿过手部束缚装置上的带扣。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+一组散发出平静、舒缓气息的绳索。它们神奇地伸展以贴合你的身体。
+Strict Holy Ropework
+严格的神圣绳索
+The finishing touches on a tight and strict piece of ropework.
+最后的收尾工作是对一根紧密而严格的绳索进行最后的修饰。
 A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
 一组散发出平静、舒缓气息的绳索。它们神奇地伸展以贴合你的身体。
 Holy Hogtie
@@ -17155,12 +17181,12 @@ Welcome to the dungeon!|Don't panic, this is a turn-based game,|and nothing will
 欢迎来到地牢|不要惊慌，这是一个回合制游戏，|除非你移动，否则什么都不会发生|在您的左侧，您将看到您的角色，显示了她们没有的所有束缚|别担心，你很快就会找到的！
 You might be wondering what all these barrels are for.|Don't worry, they're, uh, totally safe!|When you are inside one you can click on yourself to wait.|Enemies have a hard time seeing you inside a barrel,|so you can wait until they pass by you.
 你可能想知道这些桶是干什么用的|别担心，他们完全安全|当你在里面时，你可以点击自己等待|敌人很难在桶里看到你，所以你可以等到他们从你身边经过。
-On the right you'll see your stats and spells slots.|Your DP, SP, MP, and WP are displayed there, we'll get into what these do.|Below that you'll see your current consumable items,|your gold, and your currently equipped weapon.|Below that, two icons allow you to toggle automatic escape and movement modes.
-在右侧，您会看到您的统计数据和法术槽。|您的 DP、SP、MP 和 WP 都显示在那里，我们将介绍它们的作用。|在下面，您会看到您当前的消耗品，|您的金币，以及你当前装备的武器。|在其下方，有两个图标可让你切换自动挣脱和移动模式。
+On the right you'll see your stats and spells slots.|Your DP, SP, MP, and WP are displayed there, we'll get into what these do.|Below that you'll see your current consumable items,|your gold, and your currently equipped weapon.
+在右侧，您会看到您的统计数据和法术槽。|您的 DP、SP、MP 和 WP 都显示在那里，我们将介绍它们的作用。|在下面，您会看到您当前的消耗品，|您的金币，以及你当前装备的武器。
 Your WP, or willpower, is an important resource.|Without it, escaping from restraints is more difficult.|There is a willpower potion on the floor up there. Go get it!
 你的WP或意志力是一个重要的资源|没有它，摆脱束缚更加困难|前面的地板上有一种意志力药剂。去拿着吧！
-Oh no! That trap wiped out all your willpower!|Fortunately you have a potion.|You can drink it by clicking the '+' icon next to your WP bar.|You can also go into your Inventory in the bottom bar.|There is also a quick-inventory icon (backpack).
-哦，不！那个陷阱把你的意志力都消灭了|幸运的是你有药水|您可以通过单击意志力旁边的“+”图标来饮用|您还可以在底部栏中查看您的背包|还有一个快速图标（背包）。
+Oh no! That trap reduced your willpower!|Fortunately you have a potion.|You can drink it by clicking the '+' icon next to your WP bar.|You can also go into your Inventory in the bottom bar.|There is also a quick-inventory icon (backpack).
+哦，不！那个陷阱削弱了你的意志力！|幸运的是你有药水。|你可以通过单击意志力旁边的“+”图标来饮用|您还可以在底部栏中查看你的背包|还有一个快速图标（背包）。
 Another trap!|You'll notice that the trap also drained your stamina considerably, preventing you from sprinting or attacking.|(Note: you can toggle sprinting using the '>>' button on the bottom bar)|You can protect yourself while your stamina regenerates by retreating into the room above.|Close the door by clicking the Close Door button in the bottom bar.|
 另一个陷阱！|你会注意到，这个陷阱会大量消耗你的体力，阻止你冲刺或攻击。|（注意：你可以使用底部栏上的“>>”按钮切换冲刺）|你可以在保护自己的同时 退回到上面的房间即可恢复你的体力。|点击底部栏中的“关门”按钮关上门。|
 Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the bottom right.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1.
@@ -17169,8 +17195,8 @@ On the right you'll see your stats and spells slots.|You can click on a spell sl
 在右边，你会看到你的统计数据和法术插槽|你可以点击一个法术槽，或者点击键盘上的1-4来施放一个法术|然后在地图上点击你想要瞄准的地方|它们上面的小扳手图标可以让你|将它们换成法术书中的另一个法术。
 There's a zombie over there!|Fortunately zombies are weak to fire.|Firebolt has a very long range,|so simply cast firebolt and click on the zombie.|Repeat until it is dead.
 那边有个僵尸|幸运的是，僵尸的火力很弱|火焰弹射程很长|所以只需施放火焰弹并点击僵尸即可|重复，直到它死去。
-Mana potions restore your mana fully.
-法力药剂可以完全恢复你的法力。
+Mana potions restore mana, allowing you to cast spells.|Youll notice that your mana also regenerates slowly.|This mana comes from your mana pool,|which is a thin line displayed under the mana bar.|When that runs out, you can't cast spells anymore!
+法力药水可以恢复法力，让你能够施展法术。|你会注意到你的法力也会缓慢恢复。|恢复的法力来自你的法力池，|它是法力条下方显示的一条细线。|当法力耗尽时，你可以再次施展法术了！
 Your DP, or Distraction, is a measure of...|How much you are enjoying things.|These sorts of thoughts cloud your mind,|so spellcasting is more difficult when you are distracted.|Go grab the potion over there.
 你的DP，或干扰值，是标准…|你享受事物的程度|这些想法让你的头脑变得模糊，所以当你性奋时，施法会更加困难|去那边拿药水。
 Did you like that?|Anyway, there's a zombie over there. You should drink that potion.|It will clear your mind so you can cast again.|Hurry, or it will get you!
@@ -17739,6 +17765,10 @@ he ropes squeeze you gently.
 绳子轻轻地挤压你。
 Intricate Ropework
 复杂的绳索
+Strict Ropework
+严格的绳索
+The finishing touches on a tight and strict piece of ropework.
+最后的收尾工作是对一根紧密而严格的绳索进行最后的修饰。
 Rope Cuffs
 绳手铐
 A quick tie for apprehending prisoners.
@@ -17945,5 +17975,95 @@ Your RestraintName stops working due to water damage!
 Your RestraintName sustains water damage from the high-pressure water!
 你的 RestraintName 因高压水而受到水损害！
 
-Close Game
-关闭游戏
+Quit Game
+退出游戏
+Your RSTRNT glows as the shrine's energy fills the air. You can unlock it.
+当神泉的能量充满空气时，你的 RSTRNT 就会发光。你可以解锁它。
+The seal on your RESTRAINTNAME weakens as you simmer just below the edge.
+当你在边缘下方小火慢煮时，RESTRAINTNAME 上的密封会减弱。
+Through your determination, you suprress the seal on your RESTRAINTNAME!!!
+过你的决心，你压制了 RESTRAINTNAME 上的封印！
+The seal on your RESTRAINTNAME weakens as you maintain your composure.
+当你保持冷静时，你 RESTRAINTNAME 上的封印就会减弱。
+Through your determination, you suprress the seal on your RESTRAINTNAME.
+通过你的决心，你削减了 RESTRAINTNAME 上的封印。
+You lose focus and the seal on your RESTRAINTNAME strengthens!
+你失去了注意力，你的 RESTRAINTNAME 上的封印加强了！
+The item refuses to budge as you try to take it off.
+当你尝试将其取下时，该物品不愿意移动。
+The item bears a seal of dark pleasure. You can suppress it by edging yourself.
+该物品带有黑暗愉悦的印记。你可以通过让自己达到极限来抑制它。
+
+Saved Outfits
+已保存的服装
+Manage Outfits
+管理服装
+Change Pose
+改变姿势
+Quick Color Palette
+快速调色板
+Item Layers and Color Filters
+物品层和滤色器
+Item Catalog
+物品目录
+Layers:
+层：
+Enter Hex Code:
+输入十六进制颜色码：
+
+Toggle Struggle UI Mode
+切换挣扎 UI 模式
+Change Character Pose
+改变角色姿势
+X-Ray Vision
+视觉透视
+Show Quick Inventory
+显示快速背包
+Skip Tutorial
+跳过教程
+
+Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like some brief tips?
+欢迎来到淫荡地牢！您似乎是第一次来到这里，|需要一些简短的提示吗？
+(Leave and Disable Tutorial)
+（离开并关闭教程）
+(Yes Please!)
+（是的，请！）
+(It'd like a hands-on lesson)
+（想要上一堂实践课）
+
+Sure! I can lead you through some excercises in a safe and controlled environment.|This way you can figure things out at your own pace.|To start, choose one of the lessons below:
+当然！我可以引导您在安全可控的环境中完成一些练习。|这样您就可以按照自己的节奏解决问题。|首先，请选择以下课程之一：
+(Give me some rope lessons)
+（教我一些有关绳索的课程）
+(Give me a nice leather outfit)
+（给我一套漂亮的皮衣）
+(I enjoy the cold embrace of steel)
+（我喜欢钢铁冰冷的拥抱）
+(I love rubber!)
+（我喜欢橡胶！）
+(On second thought, maybe not)
+（转念一想，也许不需要）
+
+(About that hands-on lesson...)
+（关于那个实践课......）
+
+This is you.|Over the course of the game, you will probably get tied up.|The controls to escape are located over your character.|Simply hover the mouse over your character to see them.
+这就是你。|在游戏过程中，你可能会被绑住。|逃跑的按钮位于你的角色周围。|只需将鼠标悬停在你的角色上即可看到它们。
+There are four main ways to escape restraints:|Struggling, which is effective against flexible and weaker restraints,|Cutting, which depends on your held weapon and the item's properties,|Unbuckle/Untying, which depends on having free hands,|And Unlocking, which is required before you can Unbuckle.
+逃脱束缚有四种主要方法：|挣扎，这对灵活且较弱的限制有效，|切割，这取决于您持有的武器和物品的属性，|解开扣子/解开，这取决于您是否有可以正常使用的双手，|还有解锁，这是您解开安全扣之前所必需的。
+These are options for how to display your character.|You don't have to worry about them for now,|but when your character is tied up you may find them useful|...or enjoyable.
+这些是如何显示您的角色的选项。|您现在不必担心它们，|但是当您的角色被束缚时，您可能会发现它们很有用|...或享受。
+These are the various submenus.|Your Inventory is used to brows items and use or equip them.|Your Reputation affects how enemies interact with you. Additionally, you can sacrifice|your rep with the Goddesses for brief assistance with restraints.|The Logbook contains lore, notes, and hints gathered along your journey.|
+这些是各种子菜单。|您的背包用于浏览物品并使用或装备它们。|您的声望会影响敌人与您互动的方式。此外，你可以牺牲|你在女神中的声望来换取短暂的帮助。|日志包含你在旅程中收集的知识、笔记和提示。
+These are the action buttons.|You can use them to perform various actions like closing doors or sprinting.|You can also toggle various settings such as automatically passing|through allies or auto-pathing when there are no enemies nearby.
+这些是动作按钮。|您可以使用它们执行各种动作，例如关门或冲刺。|您还可以切换各种设置，例如自动穿过队友或在附近没有敌人时自动寻路。
+This is the buffs display.|It shows what buffs you have as well as various|status icons relating to the state of your character.
+这是增益显示。|它显示您拥有的增益以及与角色状态相关的各种|状态图标。
+This is the status bar.|It shows various values relating to your character.|Distraction determines how easy it is to cast spells and resist teasing.|Stamina is required to sprint and attack with a weapon.|Mana is used to cast spells. You have what is called a 'Mana Pool,'|which is excess mana that slowly refills you mana bar until it runs out.|Finally, running out of Willpower makes it much harder to escape bondage.
+这是状态栏。|它显示与你的角色相关的各种值。|分心决定了施放法术和抵抗戏弄的容易程度。|冲刺和使用武器攻击需要体力。|法力用于施放法术。你有所谓的 '法力池'，|这是多余的法力，它会慢慢地补充你的法力条，直到耗尽。|最后，意志力耗尽会让你更难挣脱束缚。
+This is the hotbar.|Here you will find various spells and customizable actions.|You can customize it through the Spells submenu by clicking on a spell.|You can also add items, armor, and consumables to it from the Inventory.
+这是热栏。|在这里您可以找到各种咒语和可自定义的操作。|您可以通过单击咒语通过咒语子菜单对其进行自定义。|您还可以从背包中向其添加物品、盔甲和消耗品。
+Finally, this is where the message log will be.|It provides a written record of what happened the last few turns.|You can click the 'Log' button to expand the log,|Allowing you to look much further back.
+最后，这是消息日志所在的位置。|它提供了最近几轮发生的情况的书面记录。|您可以单击 '日志' 按钮来展开日志，|允许您查看更久之前的内容。
+Thats it for the UI.|If you want a more hands on tutorial, enter the portal to the top right,|near the training dummies.|You can click on NPCs (such as the ghosts in this room) to talk to them.
+UI 就是这样。|如果您想要更多的实践教程，请进入右上角的门户，|靠近训练假人。|您可以单击 NPC（例如这个房间里的鬼魂）与他们交谈。
