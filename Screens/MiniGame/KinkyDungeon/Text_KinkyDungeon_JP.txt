@@ -41,11 +41,11 @@ Don't Track Me
 分析に協力しない
 
 You are an adventurer descending into an ancient underground city of magic.
-あなたは古代の魔法の地下都市に降り立つ冒険者です。
+あなたは古代の地下魔法都市に挑む冒険者です。
 Beneath its depths lies the Mistress' Staff, an artifact of untold power.
-その深さの下には、計り知れない力のアーティファクトである女王の杖があります。
+地下深くには、強大な力を持つ「女王の杖」と呼ばれるアーティファクトが眠っている、と言われています。
 Will you prevail against forces unknown, or succumb to its dark secrets?
-あなたは未知の力に打ち勝ちますか、それともその暗い秘密に屈しますか?
+果たしてダンジョンを踏破し、偉大なる力を手に入れられるでしょうか、それとも……？
 (This game does not contain spiders or any carnivorous creatures/plants)
 (このゲームにはクモや肉食動物/植物は含まれていません)
 (Check out the latest standalone version at the News and Updates link below!)
@@ -103,7 +103,7 @@ Confirm and start playing!
 Point Cost: AMOUNT
 パークのコスト: AMOUNT
 Points Available: AMOUNT
-スキルポイント: AMOUNT
+パークポイント: AMOUNT
 Resilient Foes
 強靭な敵
 Enemies take 30% less damage.
@@ -143,7 +143,7 @@ All spells above 1st level cost 2x as many spell points.
 Blessed
 祝福
 You can drink mana from the shrine fountains once per floor without chance of punishment.
-１階につき１度だけ神の泉から神罰無しで水を飲めるようになる
+１階につき１度だけ、神の泉から神罰無しで水を飲めるようになる
 Cursed
 呪い
 Goddess reputations start at 0 and can never exceed 25.
@@ -171,11 +171,11 @@ Willpower
 Bondage Lover
 拘束愛好家
 Attempting to escape arouses you.
-拘束を解除する際、興奮レベルが上昇する
+拘束を解除する際、興奮値が上昇する
 Focused Dodge
 集中回避
 While your miscast chance is 0%, you gain +40 Evasion.
-詠唱失敗率が0%の時、回避率+40を得る
+詠唱失敗率が0%の時、回避力40を得る
 Distracted
 注意力散漫
 +15% miscast chance (at all times)
@@ -183,7 +183,7 @@ Distracted
 Brawler
 喧嘩屋
 Unarmed attacks deal +10 damage.
-素手の時、ダメージ+10を得る
+素手の時、ダメージが10増加する
 Clumsy
 不器用
 0.7x base accuracy
@@ -191,7 +191,7 @@ Clumsy
 Unfocused
 焦点が合っていない
 Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distraction.
-注意散漫が 10% 以上の場合、精度は 0.9 倍になり、注意散漫が 90% の場合は 0.6 倍になります
+興奮値に応じて、命中率が低下する。興奮値が10%の時には命中率が0.9倍になり、興奮値が90%の時には命中率が0.6倍になる。
 Pristine
 原始的
 There are no shiny loot objects in the dungeon.
@@ -199,7 +199,7 @@ There are no shiny loot objects in the dungeon.
 Lost Technology
 ”ロスト”テクノロジー
 Ancient power cores break with use, and cannot be recharged.
-古代のパワーコアを使用した際、破損して再利用不可能になる
+古代のクリスタルを使用した際、破損して再利用不可能になる
 Unchained
 アンチェインド
 Start with high Metal reputation, and all metal restraints are easier to escape from.
@@ -211,7 +211,7 @@ Metal restraints are harder to escape from.
 Forgetful
 忘れっぽい
 You don't remember where you've been in the level.
-あなたはレベルのどこにいたか覚えていません
+ミニマップが記憶されなくなる
 Cursed Locks
 呪われた錠前
 Those without keys shall face the Wrath of the Lock. Locked items cannot be cut and are harder to struggle.
@@ -229,7 +229,7 @@ Your struggling is 3 times as fast, but less efficient in terms of stamina.
 Escape Artist
 縄抜け
 Start with high Rope reputation, and all rope restraints are easier to escape from.
-ゲーム開始時の縄の女神からの評価が高くなり、縄から抜け出しやすくなる
+ゲーム開始時、縄の女神からの評判が高くなり、縄から抜け出しやすくなる
 Rope Bunny
 ロープバニー
 Rope restraints are harder to escape from.
@@ -237,7 +237,7 @@ Rope restraints are harder to escape from.
 Slippery
 滑りやすい
 Start with high Latex reputation, and all latex restraints are easier to escape from.
-ゲーム開始時のラテックスの女神からの評価が高くなり、ラテックス製の拘束具から抜け出しやすくなる
+ゲーム開始時、ラテックスの女神からの評判が高くなり、ラテックス製の拘束具から抜け出しやすくなる
 Latex Doll
 ラテックスドール
 Latex restraints are harder to escape from.
@@ -249,7 +249,7 @@ Start the game trussed up in tight ropes.
 Escapee
 逃亡者
 Start with high Leather reputation, and all leather restraints are easier to escape from.
-ゲーム開始時の革の女神からの評価が高くなり、革製の拘束具から抜け出しやすくなる
+ゲーム開始時、革の女神からの評判が高くなり、革製の拘束具から抜け出しやすくなる
 Leather-Bound
 レザーバウンド
 Leather restraints are harder to escape from.
@@ -257,15 +257,15 @@ Leather restraints are harder to escape from.
 Slayer
 スレイヤー
 You can cast Elemental spells without having the components, at twice the cost. Start w/ Firebolt.
-前提のスペルツリーを習得していない場合でも、2倍のコストを支払うことでエレメンタル魔法を唱えられる。ゲーム開始時「ファイアボルト」を習得
+詠唱に必要な部位が使用できなくても、2倍のマナを支払うことでエレメンタル魔法を唱えられる。ゲーム開始時「ファイアボルト」を習得
 Conjurer
 召喚士
 You can cast Conjuration spells without having the components, at twice the cost. Start w/ Conjure Chain.
-前提のスペルツリーを習得していない場合でも、2倍のコストを支払うことで召喚魔法を唱えられる。ゲーム開始時「チェーン召喚」を習得
+詠唱に必要な部位が使用できなくても、2倍のマナを支払うことで召喚魔法を唱えられる。ゲーム開始時「チェーン召喚」を習得
 Magician
 マジシャン
 You can cast Illusion spells without having the components, at twice the cost. Start w/ Shadow Dagger.
-前提のスペルツリーを習得していない場合でも、2倍のコストを支払うことで幻惑魔法を唱えられる。ゲーム開始時「シャドーダガー」を習得
+詠唱に必要な部位が使用できなくても、2倍のマナを支払うことで幻惑魔法を唱えられる。ゲーム開始時「シャドーダガー」を習得
 Narcoleptic
 ナルコレプシー
 You slowly lose stamina over time.
@@ -315,7 +315,7 @@ Your damage and evasion increases based on the number of restraints worn, up to 
 Kill Squad
 キル・スクワッド
 Enemies see you through walls and at greater distance.
-壁越しに発見されるようになる
+敵の感知範囲が拡大し、壁越しに発見されるようになる。
 Supermarket
 スーパーマーケット
 Commerce shrines can appear in levels and have slightly more items.
@@ -351,7 +351,7 @@ More enemies spawn during sleep.
 No Way Out
 追いつめ
 Enemies will always use the tightest restraints possible and fully bind you.
-敵は最も強力な拘束を使用し、可能な限り縛ろうとする
+敵は最も強力な拘束を使用し、可能な限り拘束を追加しようとする
 Graceful Walk
 優雅な散歩
 You don't lose stamina when walking with one slowing item, unless it binds your legs together.
@@ -359,7 +359,7 @@ You don't lose stamina when walking with one slowing item, unless it binds your 
 Well-Equipped
 装備充実
 Restraints and traps that are limited by level appear sooner, and enemies will stack many restraints.
-レベル制限のある拘束具と罠の登場が早まる。敵は多くの拘束具を所持するようになる
+レベル制限のある拘束具と罠の登場が早まる。敵はより多くの拘束具を所持するようになる
 Quick-Draw
 クイックドロー
 Switching weapons and spells does not take a turn.
@@ -415,7 +415,7 @@ Beds and furniture are often trapped.
 I have... needs
 ちょっと……ほしい
 Distraction builds up over time.
-ターン毎に興奮レベルが上昇するようになる
+ターン毎に興奮値が上昇するようになる
 Hopeless
 絶望的
 Willpower decays over time.
@@ -425,15 +425,15 @@ Quickness
 Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space without ticking the clock.
 4ターン移動しなかった場合、次の移動にターンを消費しない
 Expansive Halls
-広大なホール
+広大
 Increases the size of maps by 1 in each direction.
 マップが広くなる
 Gargantuan Halls
-ガルガンチュアンホール
+ガルガンチュア
 Increases the size of maps by 2 in each direction.
 マップが更に広くなる
 Labyrinthine Halls
-迷宮ホール
+迷宮
 Increases the size of maps by 3 in each direction.
 マップが更に更に広くなる
 Rigger
@@ -441,21 +441,21 @@ Rigger
 Chain and glue damage increased by 20%. Binding on enemies is 30% stronger.
 チェーン属性、グルー属性のダメージが20%増加する。敵への拘束ダメージが30%増加する
 Pacifist
-平和主義者
+平和主義
 All non-glue, non-chain, or non-teasing damage dealt to humanoid enemies is reduced by 90%.
 人型の敵に攻撃する際、拘束やえっちな属性ではない攻撃は90%軽減される
 Burning Desire
 燃えるような欲望
 While above 70% distraction, you ignite nearby objects and gain +40% fire damage.
-興奮値が70%以上の場合、近くのオブジェクトが点火し、炎ダメージが40%上昇する
+興奮値が70%以上の場合、近くのオブジェクトが点火し、炎属性ダメージが40%上昇する
 Frigid Personality
 冷酷
 While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties.
-興奮値が0%の場合、氷の上を歩く際のペナルティがなくなり、氷ダメージが10%上昇する
+興奮値が0%の場合、氷の上を歩く際のペナルティがなくなり、氷属性ダメージが10%上昇する
 Grounded in Reality
 現実に根ざす
 While at max mana, your attacks deal an additional 30% of their base damage as electric damage.
-マナが最大の場合、攻撃時に追加で30%の電撃ダメージを与える
+マナが最大の場合、攻撃時に追加で30%の電気属性ダメージを与える
 Like the Wind
 風のように
 While above 95% stamina, you gain +30 Evasion and your slow level is reduced by 1.
@@ -475,7 +475,7 @@ You take 40% more glue damage.
 Breathless
 息切れ
 Taking chain, poison, and crush damage makes you dizzy.
-毒、チェーン、衝撃属性のダメージを受けた際、めまい状態になる
+毒、チェーン、打撃属性のダメージを受けた際、めまい状態になる
 Kinky Prisoner
 変態囚人
 Guards never remove restraints you are already wearing, unless they are applying something tighter.
@@ -485,9 +485,9 @@ Unfair Doors
 Doors are harder to open while your hands are bound.
 手を縛られている場合、ドアを開けるのが難しくなる
 You rattle the doorknob uselessly and end up banging on the door.
-何度もドアノブを回して、ガタガタと音を出してしまった。
+ドアを開けようとするも、ガタガタと騒音を出しただけだった。
 You can't quite get a grip on the doorknob.
-ドアノブを上手く握れない。
+ドアノブを上手く握れなかった。
 Someone hears you banging and opens the door from the other side!
 ドアが叩かれているのを聞いて、誰かが反対側からドアを開けた。
 Someone notices you fiddling with the door and opens it from the other side!
@@ -569,13 +569,13 @@ Hoods and full-face covering masks do not appear, but blindfolds are more powerf
 Blackout
 ブラックアウト
 Blindfolds are stronger. While blindfolded you can only see enemies next to you.
-目隠し装備時、隣の敵しか見えなくなる
+目隠し装備時、隣の敵以外の敵を視認できなくなる
 Total Blackout
 完全ブラックアウト
 Blindfolds are extremely punishing and you can't see explored areas while blindfolded.
 目隠し装備時、「ブラックアウト」効果に加え、マップが自身の周囲以外表示されなくなる
 Not a Doll
-人間です
+人形じゃない
 You may still enter Doll Terminals, but enemies will not force you onto doll stands.
 強制的に人形台に載せられることがなくなる
 No Nurses
@@ -643,9 +643,9 @@ Ball Gag Lover
 Increase occurrence of ball gags, decrease occurrence of muzzles.
 ボールギャグの登場頻度が上がり、マズルの登場頻度が下がる
 Muzzle Lover
-マズルラ愛好家
+マズル愛好家
 Greatly increases the occurrence of muzzles.
-マズルの登場頻度が大幅に上昇する
+マズルギャグの登場頻度が大幅に上昇する
 Armbinder Lover
 アームバインダー愛好家
 More armbinders, less straitjackets.
@@ -659,7 +659,7 @@ Maid Sweeper
 Start in a magically locked maid outfit.
 メイド服で拘束された状態でゲームを開始する
 Wolf Trainee
-ペットのオオカミ
+オオカミのペット
 Start in a uniform of a naughty wolfgirl.
 オオカミ用スーツで拘束された状態でゲームを開始する
 Latex Doll
@@ -687,7 +687,7 @@ Copy (clipboard)
 Paste (clipboard)
 クリップボードを貼り付け
 DAMAGEDEALT electric damage conducts to you!!!
-DAMAGEDEALT 電撃ダメージを受けた！
+DAMAGEDEALT 電撃ダメージが体を駆け巡った！
 The pressure fans the flames on you, dealing bonus DAMAGEDEALT fire damage!
 炎にあぶられ、DAMAGEDEALT の炎ダメージを受けた！
 The RestraintName comes off more easily in the presence of water!
@@ -765,9 +765,9 @@ Your bindings are PERCENT more effective.
 Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage.
 攻撃は DAMAGEDEALT DAMAGETYPE の基本ダメージを与える
 Plugged!
-挿入されている
+挿入されている！
 Plugged up!!!
-挿入されている
+挿入されている！！
 Denied! You won't be getting off that easy~
 断った！そう簡単にはいかないだろうな～
 Teasing vibrations...
@@ -827,7 +827,7 @@ MP消費-50%(ラテックス)
 -50% MP Cost (Leather)
 MP消費-50%(革)
 -50% MP Cost (Metal)
-MP消費-50%(メタル)
+MP消費-50%(金属)
 -50% MP Cost (Rope)
 MP消費-50%(縄)
 Regeneration
@@ -841,13 +841,13 @@ MP消費-50%(幻惑)
 Conductive: When you or an enemy takes electric damage, the other takes half of it as well!
 電導：自分か敵が電撃ダメージを受けた際、半分のダメージを相手に与える
 Lightning Rod: Gain significantly boosted electric resist.
-ライトニングロッド：電気属性への抵抗が大幅に増加する
+避雷針：電気属性への抵抗が大幅に増加する
 Drenched: Grants fire resist, ice weakness, and makes you conductive.
-びしょぬれ：火耐性、氷弱化を付与し、導電性になる
+びしょぬれ：火耐性、氷弱化を付与し、電導体質になる
 Chilled: The cold makes it hard to move! You are slowed.
 凍えている: 寒さで動きが鈍くなっている
 Slimed: It's sticky and dense! You are slowed and 30% more vulnerable to glue damage.
-Slimed: ねばねばが張り付いている。動きが鈍くなり、グルー属性のダメージが30%増加する
+ねばねば: ねばねばが張り付いている。動きが鈍くなり、グルー属性のダメージが30%増加する
 Unsteady: You're on loose footing. You are easier to hit and are slowed.
 ふらふら: 足元がおぼつかない。動きが鈍くなり、回避力が低下する
 Unsteady: You're on loose footing. You are easier to hit and are slowed.
@@ -855,23 +855,23 @@ Unsteady: You're on loose footing. You are easier to hit and are slowed.
 Ignore Ice Tiles
 氷のタイルを無視
 Ignited: You are dealing fire damage to yourself and nearby enemies!
-点火: 自分と近くの敵に火のダメージを与える
+着火: 自分と近くの敵に火のダメージを与える
 You are on fire and taking damage!
 体が燃えている。ターン毎にダメージを受ける
 Arcane Power: Deals bonus damage when you hit an enemy.
-秘術の力: 攻撃が命中した際、追加でダメージを与える
+秘術の力：攻撃が命中した際、追加でダメージを与える
 Arcane Protection: Reduces damage taken, and deals retaliation damage.
 秘術の守護：攻撃を受けた際、一部のダメージをカットし、反射ダメージを与える
 Arcane Cunning: You turn invisible briefly after attacking.
-秘術の智慧: 攻撃後、攻撃を行った際、透明になる
+秘術の智慧：攻撃を行った際、透明になる
 -MP Cost (Fire)
--消費MP(火)
+MP消費低減(火)
 -MP Cost (Air)
-・消費MP(空中)
+MP消費低減(風)
 -MP Cost (Water)
--消費MP(水)
+MP消費低減(水)
 -MP Cost (Earth)
-・消費MP(土)
+MP消費低減(土)
 Slime Form: You gain bonuses and can slip through bars!
 スライムフォーム: 柵をすり抜けることができる
 Shroud: Visibility decreased, evasion increased.
@@ -893,9 +893,9 @@ FULL POWER: Cutting power increased.
 Graceful: Struggling power increased.
 グレイスフル：「もがく」選択時にボーナス
 Iron Blood: Reduced melee cost, increased mana costs.
-鉄血: 近接攻撃のコストが低下し、マナコストが増加する
+鉄血: 近接攻撃のスタミナコストが低下し、マナコストが増加する
 Sleepy: You are sluggish and have a hard time keeping your eyes open.
-眠い：動きが鈍くなり、目を開けていられなくなる
+眠気：動きが鈍くなり、目を開けていられなくなる
 Afterimage: Evasion greatly increased.
 残像：回避力が大幅に上昇する
 We did it! We made outselves invisible--mmmmph!!!
@@ -945,9 +945,9 @@ Confirm Reset?
 (Copy the code above and save it on your computer to load later)
 (上のコードをコピーしてコンピューターに保存しておけば、後で読み込むことができます)
 You come across a black monolith with its face inscribed in runes.
-ルーン文字が刻まれた黒いモノリスを発見しました。
+ルーン文字が刻まれた黒いモノリスを発見した。
 You study them, but can't come up with an interpretation.
-しかしいくら眺めてみても、解読はできませんでした。
+いくら眺めていても、何を書いてあるのかはさっぱりわからない。
 They may still prove useful to future adventurers should you get caught...
 もしかしたら、どうしようもなくなったときに役に立つかもしれない……
 (Your game has been saved automatically, but you can save the code for later)
@@ -985,7 +985,7 @@ Waiting for game data...
 You have surrendered to the dungeon and become its prisoner.
 ダンジョンに囚われて、憐れな奴隷と成り下がった。
 Day and night, you wait that rescue may come some day.
-いつの日か救助が来るのを待っている。
+いつの日か助けが来るのを待っている。
 Better luck next time!
 次もよろしくね！
 You have reached the end of the playable portion.
@@ -1289,7 +1289,7 @@ Marble Halls
 Doll Storage
 ドール収納庫
 You search through the debris but find nothing of note
-瓦礫をかき分けてみたが、何も見つからなかった。
+瓦礫をかき分けて役に立ちそうなものを探したが、何も見つからなかった。
 You find some gold coins in a corner (+XXX gold)
 隅にいくつかの金貨を見つけた (+XXX ゴールド)
 You find a lockpick in a crack between the tiles
@@ -1357,7 +1357,7 @@ You find gold, plus a devious magical trap! (+RestraintType) (+XXX gold)
 Magical runes glow as a trap activates inside the chest!
 宝箱から魔法の罠が飛び出す！
 You find a special collar that lets you absorb energy from potions.
-口を使わなくてもポーションを使える首輪を発見した。
+口が塞がっていてもポーションを使える首輪を発見した。
 You find a pair of garish pink high heels with a slippery surface.
 つるつるした派手なピンク色のハイヒールを見つけた。
 The pearly chest contains a divine gift! (+ITEMGET)
@@ -1423,13 +1423,13 @@ Wizard's Outfit
 Your favorite outfit for adventuring.
 お気に入りの冒険服。
 Your original outfit. No bonuses, no penalties.
-あなただけのオリジナル衣装。ボーナスなし、ペナルティなし
+オリジナルの衣装。ボーナスなし、ペナルティなし
 Jail Uniform
 刑務所の制服
 The prisoners are kept in revealing outfits to keep them from hiding things.
-ものを隠せないように露出度を高められた囚人服。
+物を隠せないように露出度を高められた囚人服。
 A prisoner's 'outfit'. No bonuses, no penalties.
-囚人の「装い」。ボーナスなし、ペナルティなし
+囚人の「服」。ボーナスなし、ペナルティなし
 Wolfgirl Suit
 ウルフガールの服
 An advanced suit designed for sport, breathable and also warm.
@@ -1563,7 +1563,7 @@ Can be used to unlock a blue lock.
 Magic Key
 魔法の鍵
 A magical key with the power to open blue locks.
-一度使うと消える魔法で作られた光る鍵。
+一度使うと消える、魔法で作られた光る鍵。
 Blue locks can't be otherwise picked.
 青いロックのロックを解除するために使用できる。青い錠はロックピックで開けられない。
 Magic Knife
@@ -1763,19 +1763,19 @@ Staff of Incineration
 A magical weapon made for intermediates to use.
 中級者向けに作られた魔法の武器。
 +25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn.
-炎属性のダメージが25%増加し、通常攻撃が炎属性になる。燃えている敵は、ターン経過時に5ポイントのダメージを受ける。
+炎属性。炎属性のダメージが25%増加する。燃えている敵は、ターン経過時に5ポイントのダメージを受ける。
 Staff of Storms
 嵐の杖
 A magical weapon made for intermediates to use.
 中級者向けに作られた魔法の武器。
 +20% electric damage. Deals electric damage. Enemies hit by electric damage echo 15 additional Electric damage in a 5x5 area.
-電気属性のダメージが20%増加し、通常攻撃が電気属性になる。電気ダメージを受けた敵は5x5エリア内に15の追加電気ダメージを反射する。
+電気属性。電気属性のダメージが20%増加する。電気ダメージを受けた敵は5x5エリア内に15の追加電気ダメージを反射する。
 Staff of Frostbite
 凍傷の杖
 A magical weapon with a 33% chance to freeze the target for 4 turns.
 33%の確率で対象を4ターン凍結させる魔法の武器。
 +20% ice damage. Deals ice damage. Frozen enemies take 5 ice damage per turn.
-氷属性のダメージが20%増加し、通常攻撃が氷属性になる。ターン経過時、凍結した敵は5ダメージを受ける。
+氷属性。氷属性のダメージが20%増加する。ターン経過時、凍結した敵は5ダメージを受ける。
 Staff of Binding
 束縛の杖
 A magical weapon made to use on novices.
@@ -1787,37 +1787,37 @@ Arcane Orb
 Look into my eyes...
 私の目を見て……
 Deals shadow damage. Can be used without hands. Does not benefit from enemies being vulnerable.
-通常攻撃が影属性し、敵の弱点を考慮しない。
+影属性。敵の弱点を考慮しない。
 Staff of Flame
 炎の杖
 A magical weapon made for novices to use.
 初心者向けに作られた魔法の武器
 +15% fire damage. Deals fire damage.
-炎属性のダメージが15%増加し、通常攻撃が炎属性になる。
+炎属性。炎属性のダメージが15%増加する。
 Staff of Slime
 スライムの杖
 A slimy and magical implement..
 ぬるぬるした魔法の道具……
 +10% glue damage. Deals glue damage.
-グルー属性のダメージが10%増加し、通常攻撃がグルー属性になる。
+グルー属性。グルー属性のダメージが10%増加する。
 Staff of Shocking
 衝撃の杖
 A magical weapon made for novices to use.
 初心者向けに作られた魔法の武器
 +10% electric damage. Deals electric damage. 10% chance to stun for 3 turns.
-電気属性のダメージが10%増加し、通常攻撃が電気属性になり、命中時に10%の確率で敵をスタン状態にする。
+電気属性。電気属性のダメージが10%増加する。命中時に10%の確率で敵をスタン状態にする。
 Staff of Permafrost
 永久凍土の杖
 A magical weapon with a 15% chance to freeze the target for 4 turns.
 15%の確率で対象を4ターン凍結させる魔法の武器。
 +10% ice damage. Deals ice damage. Multiplies the duration of freeze effects on enemies by 1.5x (min +1 duration)
-氷属性のダメージが10%増加し、通常攻撃が氷属性になる。敵にかかっている凍結効果の持続時間を1.5倍にする (最低+1持続時間)
+氷属性。氷属性のダメージが10%増加する。敵にかかっている凍結効果の持続時間を1.5倍にする (最低+1持続時間)
 Staff of Chains
 鎖の杖
 A magical weapon made for novices in the art of bondage.
 束縛術の初心者のために作られた魔法の武器。
 +10% chain damage. Deals chain damage. 150% binding efficiency.
-チェーン属性のダメージが10%増加し、通常攻撃がチェーン属性になる。拘束力が150%増加する。
+チェーン属性。チェーン属性のダメージが10%増加する。拘束力が150%増加する。
 You pick up a staff of binding. You remember these from wizard school...
 束縛の杖を手に入れた。魔法学校で何度も使った覚えがある。
 You pick up a staff of the storm. Your hair stands on end.
@@ -1853,7 +1853,7 @@ Scissors
 Safety first!
 安全第一！
 Deals slash damage. Better than a knife for cutting restraints.
-斬撃属性のダメージを与える。ナイフよりも拘束を切断しやすい。
+斬撃属性。ナイフよりも拘束を切断しやすい。
 You pick up a pair of scissors.
 はさみを手に入れた。
 Dagger
@@ -1861,7 +1861,7 @@ Dagger
 Designed with subterfuge in mind.
 不意打ち用の武器。
 Deals slash damage. Deals 55 pierce damage instead on unaware targets.
-斬撃属性のダメージを与える。プレイヤーを認識していない敵を攻撃した際、55ポイントの刺突属性ダメージを与える。
+斬撃属性。プレイヤーを認識していない敵を攻撃した際、55ポイントの刺突属性ダメージを与える。
 You pick up a dagger.
 ダガーを手に入れた。
 Katana
@@ -1869,7 +1869,7 @@ Katana
 She who strikes first, hits second.
 後の先を取る。
 Deals slash damage. Deals up to 50 bonus damage by waiting 10 turns between attacks.
-斬撃属性のダメージを与える。待機時、次の攻撃で与えるダメージが増加する。最大10ターン/50ダメージ
+斬撃属性。待機時、次の攻撃で与えるダメージが増加する。最大10ターン/50ダメージ
 You pick up a katana.
 刀を手に入れた。
 Shadow's Edge
@@ -1877,7 +1877,7 @@ Shadow's Edge
 For those who truly devote themselves to the cause.
 真の大義に専念する者のために。
 Deals shadow damage. Damage is doubled against enemies that are in shadow.
-影属性のダメージを与える。影にいる敵に攻撃する場合、2倍のダメージを与える。
+影属性。影にいる敵に攻撃する場合、2倍のダメージを与える。
 You pick up Shadow's Edge.
 シャドウエッジを手に入れた。
 Stormbreaker
@@ -1885,7 +1885,7 @@ Stormbreaker
 I have the power! Taking electric damage charges you (1 turn/10dmg).
 これが力だ！電気属性のダメージを受けた場合、1ターンに10ダメージ分チャージをする。
 Deals crush damage. Deals bonus electric damage in an area when charged, up to +40.
-通常攻撃が打撃属性になる。チャージしていた場合、電気属性範囲ダメージを与える。最大40ダメージ。
+打撃属性。チャージしていた場合、電気属性範囲ダメージを与える。最大40ダメージ。
 You pick up Stormbreaker.
 ストームブレイカーを手に入れた。
 Rapier
@@ -1893,7 +1893,7 @@ Rapier
 For the ostentatious and flashy duelist.
 華麗なデュエリストの武器
 Deals slash damage. Deals 50 pierce damage instead on vulnerable targets.
-斬撃属性のダメージを与える。刺突属性が弱点の敵を攻撃した際、50ポイントの刺突属性ダメージを与える。
+斬撃属性。刺突属性が弱点の敵を攻撃した際、50ポイントの刺突属性ダメージを与える。
 You pick up some kind of pretentious sword.
 華美で華奢な剣を手に入れた。
 Foil
@@ -1901,7 +1901,7 @@ Foil
 En garde!
 構えろ！
 Deals pierce damage. Deals 30 damage instead on vulnerable targets.
-刺突属性のダメージを与える。刺突属性が弱点の敵を攻撃した際、30ポイントの刺突属性ダメージを与える。
+刺突属性。刺突属性が弱点の敵を攻撃した際、30ポイントの刺突属性ダメージを与える。
 You pick up a fencing sword.
 フェンシングの剣を手に入れた。
 Hammer
@@ -1909,13 +1909,13 @@ Hammer
 A rather simplistic bludgeoning weapon.
 かなり単純な殴打武器。
 Deals crush damage and knocks the target back.
-打撃属性のダメージを与え、命中した敵をノックバックさせる。
+打撃属性。命中した敵をノックバックさせる。
 Flail
 フレイル
 A ball on a chain. Very fast and hard to dodge.
 棒と鉄球が鎖で繋がっている打撃武器。回避するのが難しい。
 Also deals 10 damage to targets next to you. Deals crush damage.
-対象に打撃属性のダメージを与え、隣の敵には10ポイントの打撃属性のダメージを与える。
+対打撃属性。隣の敵には10ポイントの打撃属性のダメージを与える。
 Spear
 槍
 Speak softly and carry a pointy stick.
@@ -1933,25 +1933,25 @@ Knife
 A go-to for travelers and adventurers.
 旅行者や冒険家の頼りになる護身武器。
 Deals slash damage.
-斬撃属性のダメージを与える。
+斬撃属性。
 Torch
 松明
 Second only to the mighty towel in usefulness.
 マイティタオルに次ぐ実用性。
 Deals fire damage. Provides light.
-炎属性のダメージを与える。装備していると周囲が照らされる。
+炎属性。装備していると周囲が照らされる。
 Unarmed
 素手
 Fight with your hands and feet.
 手と足で戦え
 Deals unarmed damage.
-素手属性のダメージを与える。
+素手属性。
 Sword
 剣
 The blade is strong, its edge sharp.
 刃は強く、刃は鋭く
 A fast and accurate weapon that deals slash damage.
-斬撃属性のダメージを与える。精確で素早い。
+斬撃属性。精確で素早い。
 Flamberge
 フランベルジェ
 A blade forged in a magical fire.
@@ -1963,19 +1963,19 @@ Escort Drone
 A semi-autonomous drone with a personal defense beam. Does not require hands to equip.
 個人防御ビームを備えた半自律型ドローン。手を縛られていても使用可能。
 Deals electric damage. 33% chance to stun for 4 turns.
-電気属性のダメージを与える。33%の確率で4ターンスタンさせる。
+電気属性。33%の確率で4ターンスタンさせる。
 Magic Wand
 魔法の杖
 Its powers extend beyond the traditional schools of magic.
 伝統によって受け継がれてきた魔法の杖。
 Deals charm damage (50% effectiveness vs. non-vulnerable enemies). 20% chance to stun the target for 2 turns.
-魅了属性のダメージを与える。 (弱点ではない場合50%の有効性。20%の確率でターゲットを2ターンの間気絶させる)
+魅了属性。 (弱点ではない場合50%の有効性。20%の確率でターゲットを2ターンの間気絶させる)
 Feather
 羽根
 A feather useful for tickling.
 くすぐりに便利な羽根
 Deals tickle damage (50% effectiveness vs. non-vulnerable enemies). Distracts enemies.
-くすぐり属性のダメージを与える。(脆弱でない敵に対して 50% の有効性)敵の興奮値を増加させる。
+くすぐり属性。(弱点ではない敵に対して50%の有効性)敵の興奮値を増加させる。
 Ice Cube
 アイスキューブ
 A magical cube of ice that never melts. Convenient!
@@ -1987,7 +1987,7 @@ Rope
 A kidnapper's most versatile tool.
 誘拐犯がよく使う道具。
 Deals chain damage and applies 50 points of binding.
-チェーン属性のダメージを与え、50ポイントの拘束値を付与する。
+チェーン属性。50ポイントの拘束値を付与する。
 Enchanted Sword
 魔法の剣
 Slices through ghosts with ease!
@@ -1999,19 +1999,19 @@ Dragonslaver
 A powerful weapon with an ancient mechanism that launches binding belts.
 バインドベルトを発射する古代のメカニズムを持つ強力な武器。
 Deals slash damage. Can make ranged attacks.. Drains 0.75% ancient energy to fire a line of belts that deal 40 chain damage and 40 binding.
-斬撃属性のダメージを与える。遠距離攻撃時、0.75%のエネルギーを使用し、40のチェーン属性ダメージと40の拘束値を付与するベルトのラインを発射する。
+斬撃属性。遠距離攻撃時、0.75%のエネルギーを使用し、40のチェーン属性ダメージと40の拘束値を付与するベルトを発射する。
 Metamorphosis
 変身装置
 You can enter slime form for 25 turns, which lets you pass thru bars, +50 Evasion, and deals 25 glue damage when attacked.
 25ターンの間、スライム形態になる。スライム状態では、バーを通り抜けることができ、回避力が50増加し、攻撃されたときにグルーダメージを25与える.
 Deals glue damage. Roots targets for 2 turns on a hit.
-グルー属性のダメージを与える。命中時、敵は2ターンの間スタンする。
+グルー属性。命中時、敵は2ターンの間スタンする。
 Four Seasons
 四季の杖
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
 発動すると、次の炎、水/氷、風/雷、土の呪文のコストを、属性ごとに1回ずつ50減らす。
 Deals shadow damage. +25% fire, ice, acid, crush, electric, pressure damage.
-影属性のダメージを与える。火、氷、酸、打撃、電気、圧力のダメージが25%増加する。
+影属性。火、氷、酸、打撃、電気、圧力のダメージが25%増加する。
 The Arbiter
 アービター
 I have altered the rules. Pray I do not alter them further.
@@ -2039,17 +2039,17 @@ Messenger of Love
 Love shines in many ways...
 愛はさまざまな方法で輝く……
 Can fire an arrow that makes an enemy extremely lustful, causing them to attack others. Lasts forever on lesser enemies, 30 turns on high-level enemies, and 10 turns on bosses.
-敵の興奮値を増加させ、同士討ちをさせる矢を放つ。弱い敵には永遠に続き、高レベルの敵には30ターン、ボスには10ターン続く。
+敵の興奮値を増加させ、同士討ちをさせる矢を放つ。弱い敵には永遠に続き、高レベルの敵には30ターン、ボスには10ターン効果が続く。
 Moirai's Scissors
 モイライのはさみ
 Safety first!
 安全第一！
 Deals slash damage. Adds up to 30 bonus psychic damage her hit by converting binding into damage. Drains 5 charge to attack twice.
-斬撃属性のダメージを与える。拘束をダメージに変換することで、命中に最大30ボーナスのサイキックダメージを追加する。チャージを5消費して2回攻撃する。
+斬撃属性。拘束をダメージに変換することで、命中に最大30ボーナスのサイキックダメージを追加する。チャージを5消費して2回攻撃する。
 Latex Projector
 ラテックスプロジェクター
 Deals crush damage. Can be used to spray a '+' shaped pool of slime.
-打撃属性のダメージを与える。+形のスライムプールを作ることができる。
+打撃属性。+形のスライムプールを作ることができる。
 Drains 1.5% ancient energy to create a pool of slime that deals 35 glue damage per tile and slows enemies.
 1.5%のエネルギーを消費して、タイルごとに35のグルー属性ダメージを与え、敵を遅くするスライムのプールを作成する。
 Enchanted Axe
@@ -2057,13 +2057,13 @@ Enchanted Axe
 Sick and vile, like the hearts of your enemies.
 あなたの敵の心のように、卑劣に病んでいる。
 Deals shadow damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns.
-影属性ダメージを与え、隣の敵に20の影属性ダメージを与える。3ターンの間遅くなる。
+影属性。攻撃時、隣の敵に20の影属性ダメージを与える。3ターンの間遅くなる。
 Pickaxe
 つるはし
 Used for drilling holes in rock and armor.
 岩や防具に穴を開けるのに使われる。
 Deals pierce damage. Reduces enemy armor by 15 for 6 turns.
-刺突属性ダメージを与える。6ターンの間、敵のアーマー値を15減少させる。
+刺突属性。6ターンの間、敵のアーマー値を15減少させる。
 Enchanted Flail
 魔法のフレイル
 A blessed censer that distributes pain equally.
@@ -2081,31 +2081,31 @@ Enchanted Hammer
 Made of a magical, resonant material.
 魔法の共鳴する素材で作られている。
 Deals crush damage and knocks the target back. Helps to bash open restraints while cutting.
-打撃属性ダメージを与え、ターゲットをノックバックする。拘束から抜け出しているときに役に立つ。
+打撃属性。ターゲットをノックバックする。拘束から抜け出しているときに役に立つ。
 IceBreaker
 アイスブレイカー
 A frigid lightweight hammer with a spike on the end.
 先端にスパイクが付いた軽量のハンマー
 Deals crush damage. Deals 3x damage to frozen targets instead of 2x. Triggers Shatter.
-打撃属性のダメージを与える。凍結したターゲットに2倍ではなく3倍のダメージを与える。粉々に砕け散る。
+打撃属性。凍結したターゲットに2倍ではなく3倍のダメージを与える。粉々に砕け散る。
 Dreamcatcher
 ドリームキャッチャー
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 悪夢の中で鋼と共に鍛えられた武器。2%のエネルギーを消費し、プレイヤーに気づいていないターゲットの周囲にシャドウ ウォリアーを召喚する。
 Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
-影属性のダメージを与える。プレイヤーを認識していない、または影属性が弱点のターゲットに、最大30のボーナスサイキック属性ダメージを与える。
+影属性。プレイヤーを認識していない、または影属性が弱点のターゲットに、最大30のボーナスサイキック属性ダメージを与える。
 Axe
 斧
 Great for cutting trees that happen to be underground.
 たまたま地下にある木を切るのに最適。
 Also deals 20 damage to enemies next to you. Deals slash damage.
-斬撃属性のダメージを与える。隣の敵にも20ダメージ。
+斬撃属性。隣の敵にも20ダメージ。
 Knife
 ナイフ
 Unarmed
 素手
 Accuracy:
-正確さ：
+命中率：
 Find the keys..
 鍵を見つける……
 Find the exit!
@@ -2115,7 +2115,7 @@ You are receiving help from a friendly ally.
 You found a hook you can use to pull on straps and loops.
 ストラップや結び目を引っ張るためのフックを見つけた。
 You have access to something sharp and can attempt to cut restraints.
-尖ったもので効率よく拘束を切ることができる。
+尖った地形を見つけた。効率よく拘束を切ることができる。
 You found a corner to help manipulate buckles and snaps with.
 バックルやスナップを動かすためのカドを見つけた。
 You found a crack and could maybe wedge a knife or tool into it to keep it still.
@@ -2129,9 +2129,9 @@ Visibility:
 Submissive: Enemies won't attack you, but they will try to play with you.
 服従: 敵は攻撃してこない。代わりに弄ばれる可能性がある。
 On the Run! Enemies are hostile.
-逃走中！敵は攻撃してくる。
+逃走中！敵は全力で追ってくる。
 Prisoner: Enemies won't attack you unless you are out of jail.
-囚人: 牢屋から出ない限り、敵対はしない。
+囚人: 牢屋から出ない限り、攻撃されない。
 Freedom
 自由
 Crawling slowly!
@@ -2159,13 +2159,13 @@ Your toys vibrate intensely!
 The vibration is torturous!
 拷問のような振動を感じる！
 Edged!
-絶頂！
+絶頂した！
 Satisfied~
-絶頂の余韻……
+満足した……
 Damage:
 ダメージ：
 Accuracy:
-正確さ：
+命中率：
 SP Cost:
 消費SP：
 It appears to be a receptacle
@@ -2187,7 +2187,7 @@ VALUE gold vanishes from your satchel as the receptacle explodes and your crysta
 Nothing seems to happen
 何も起こらなかった
 The EnemyName grabs you by the RestraintName and keeps you in place!
-EnemyName に RestraintName で掴まれて、動けなかった！
+EnemyName に RestraintName で掴まれて、引き止められた！
 The EnemyName grabs you and pulls you!!!
 EnemyName に引っ張られた！
 The EnemyName misses you!
@@ -2409,7 +2409,7 @@ The head maid snaps her fingers and you find your restraints locked! (DamageTake
 The head maid tickles you strategically! (DamageTaken)
 メイド長が熟練の手付きでくすぐってきた！(DamageTaken)
 You are distracted for a moment and suddenly you find yourself in chastity!
-あなたは気がつくと一瞬で貞操帯を装着させられていた！
+気がつくと貞操帯を装着させられていた！
 Fire Elemental
 ファイアエレメンタル
 The fire elemental dissolves into ash.
@@ -4083,453 +4083,453 @@ The orb blinds you with its intense light!!! (DamageTaken)
 A light restores the will of its allies!
 光は味方の意志を回復する！
 You do not have enough resources to cast the spell!
-呪文を唱えるのに十分なリソースがありません!
+マナが足りない！
 You AttackName TargetEnemy for DamageDealt DamageType damage!
-あなたはTargetEnemyをAttackNameし、DamageDealDamageTypeのダメージを与えます！
+TargetEnemy に AttackName し、DamageDealt DamageType のダメージを与えた！
 You AttackName TargetEnemy for a decreased DamageDealt DamageType damage!
-TargetEnemy を攻撃して、DamageDealt DamageType のダメージを減らします!
+TargetEnemy に AttackName したが、耐性があるようだ。 DamageDealt DamageType のダメージを与えた。
 You AttackName TargetEnemy for an increased DamageDealt DamageType damage!
-TargetEnemy を攻撃して、DamageDealt DamageType のダメージを増加させます!
+TargetEnemy に AttackNameDamage した。弱点を付き、 DamageDealt DamageType のダメージを与えた！
 You AttackName TargetEnemy for a devastating DamageDealt DamageType damage!
-TargetEnemy を攻撃して壊滅的な DamageDealt DamageType ダメージを与えます!
+TargetEnemy に AttackNameDamage した。弱点を付き、 DamageDealt DamageType の大ダメージを与えた！！
 You AttackName TargetEnemy, but your DamageType weapon has no effect!
-あなたはTargetEnemyを攻撃しますが、ダメージタイプの武器は効果がありません!
+TargetEnemy に AttackNameDamage したが、 DamageType は効果がないようだ。
 You AttackName TargetEnemy for DamageDealt DamageType damage!, reduced by an anti-magic ward!
-TargetEnemy を AttackName してダメージを与えたダメージ タイプのダメージを与える!
+TargetEnemy に AttackName したが、魔力障壁によって阻まれた。 DamageDealt DamageType ダメージを与えた。
 AttackName hits TargetEnemy for DamageDealt DamageType damage!
-AttackName は TargetEnemy にヒットし、DamageDealt DamageType ダメージを与えます!
+AttackName は TargetEnemy に命中し、DamageDealt DamageType のダメージを与えた！
 AttackName hits TargetEnemy for a reduced DamageDealt DamageType damage!
-AttackName が TargetEnemy に命中し、DamageDealt DamageType のダメージが減少します!
+AttackName は TargetEnemy に命中したが、耐性があるようだ。 DamageDealt DamageType のダメージを与えた。
 AttackName hits TargetEnemy but DamageType damage doesn't have any effect!
-AttackName は TargetEnemy に命中しますが、DamageType のダメージは効果がありません!
+AttackName は TargetEnemy に命中したが、DamageType は効果がないようだ。
 AttackName hits TargetEnemy for an increased DamageDealt DamageType damage!
-AttackName が TargetEnemy に命中し、DamageDealt DamageType のダメージが増加します!
+AttackName は TargetEnemy に命中した。弱点を付き、DamageDealt DamageType のダメージを与えた！
 AttackName hits TargetEnemy for DamageDealt DamageType damage, reduced by an anti-magic ward!
-AttackName は TargetEnemy にヒットし、DamageDealt DamageType ダメージを与え、アンチ マジック ウォードによって軽減します!
+AttackName は TargetEnemy に命中したが、魔力障壁によって阻まれた。 DamageDealt DamageType のダメージを与えた。
 AttackName hits TargetEnemy for a devastating DamageDealt DamageType damage!
-AttackName が TargetEnemy に命中し、壊滅的な DamageDealt DamageType ダメージを与えます!
+AttackName は TargetEnemy に命中した。弱点を付き、 DamageDealt DamageType の大ダメージを与えた！
 attack
 攻撃
 damage
 ダメージ
 You miss the TargetEnemy!
-あなたはTargetEnemyを見逃しています！
+TargetEnemy への攻撃は空振った
 Your attack is too feeble to hurt the TargetEnemy!
-あなたの攻撃は、TargetEnemy を傷つけるには弱すぎます!
+TargetEnemy を傷つけられない
 You try to pull the TargetRestraint off...
-あなたはTargetRestraintを外そうとしています...
+TargetRestraint を外そうとする……
 You try to squirm and moan out of the TargetRestraint...
-あなたはTargetRestraintから身もだえしてうめき声を上げようとします...
+TargetRestraint から逃れようと身を捩ってうめき声を上げる……
 You tug on the TargetRestraint with increased power...
-パワーを上げてTargetRestraintを引っ張ると……
+TargetRestraint を思い切り引っ張った……
 Your ally helps you try to pull the TargetRestraint off...
-あなたの味方は、TargetRestraint を外そうとするあなたを助けてくれます...
+味方が TargetRestraint を外そうと助けてくれた……
 You work on picking the TargetRestraint...
-あなたは TargetRestraint の選択に取り組んでいます...
+TargetRestraint の錠にピッキングを試みた……
 Your trembling hands work on picking the TargetRestraint...
-あなたの震える手はTargetRestraintを摘み取ります...
+震える手で TargetRestraint の錠にピッキングを試みた……
 You work on picking the TargetRestraint with your powers...
-あなたはあなたの力でTargetRestraintを選ぶことに取り組んでいます...
+力を込めて TargetRestraint の錠にピッキングを試みた……
 Your ally tries to pick the lock on your TargetRestraint...
-味方があなたの TargetRestraint のロックを解除しようとしています...
+味方が TargetRestraint のピッキングを助けてくれた……
 You try to pick open the TargetRestraint but break your lockpick.
-TargetRestraint をピッキングして開けようとしましたが、ロックピックを壊してしまいました。
+TargetRestraint の錠をピッキングしようとしたが、ロックピックが折れてしまった。
 You work on picking the TargetRestraint...
-あなたは TargetRestraint の選択に取り組んでいます...
+TargetRestraint の錠にピッキングを試みた……
 You work on picking the TargetRestraint...
-あなたは TargetRestraint の選択に取り組んでいます...
+TargetRestraint の錠にピッキングを試みた……
 Your trembling hands work on picking the TargetRestraint...
-あなたの震える手はTargetRestraintを摘み取ります...
+震える手で TargetRestraint の錠にピッキングを試みた……
 You work on picking the TargetRestraint with your powers...
-あなたはあなたの力でTargetRestraintを選ぶことに取り組んでいます...
+力を込めて TargetRestraint の錠にピッキングを試みた……
 Your ally tries to pick the lock on your TargetRestraint...
-味方があなたの TargetRestraint のロックを解除しようとしています...
+味方が TargetRestraint のピッキングを助けてくれた……
 You break your lockpick trying to open the TargetRestraint.
-あなたはTargetRestraintを開こうとしてロックピックを壊しました。
+TargetRestraint の錠をピッキングしようとしたが、ロックピックが折れてしまった。
 You try to remove the TargetRestraint...
-TargetRestraint を削除しようとしています...
+TargetRestraint を取り外そうとした……
 You shakily try to remove the TargetRestraint...
-あなたは震えながら TargetRestraint を外そうとします...
+震える手で TargetRestraint を取り外そうとした……
 You try to remove the TargetRestraint with a tool...
-あなたはツールで TargetRestraint を取り除こうとしています...
+道具を使って TargetRestraint を取り外そうとした……
 Your ally helps you remove the TargetRestraint...
-あなたの味方は、TargetRestraint を取り除くのを手伝ってくれます...
+味方が TargetRestraint を取り外すのを助けてくれた……
 You try to cut the TargetRestraint...
-あなたはTargetRestraintをカットしようとしています...
+TargetRestraint を切ろうとした……
 You tremble as you try to cut the TargetRestraint...
-TargetRestraintを切ろうとして震える…
+震える手で TargetRestraint を切ろうとした……
 You try to cut the TargetRestraint using your tools...
-あなたはツールを使って TargetRestraint をカットしようとしています...
+道具を使って TargetRestraint を切ろうとした……
 You try to cut the TargetRestraint with help...
-あなたは助けを借りて TargetRestraint をカットしようとしています...
+味方が TargetRestraint の切断を助けてくれた……
 You break your knife trying to cut the TargetRestraint.
-TargetRestraint を切ろうとしてナイフを折る。
+TargetRestraint 切ろうとしたがナイフが折れてしまった……
 You try to cut the TargetRestraint...
-あなたはTargetRestraintをカットしようとしています...
+TargetRestraint を切ろうとした……
 You fiddle with the key on the TargetRestraint...
-あなたはTargetRestraintのキーをいじっています...
+鍵を使って TargetRestraint の解錠を試みた……
 Your jittering hands fumble with the key on the TargetRestraint...
-あなたの震える手は、TargetRestraint のキーをいじります...
+震える手で鍵を使い、TargetRestraint の解錠を試みた……
 You concentrate on unlocking the TargetRestraint...
-あなたはTargetRestraintのロックを解除することに集中します...
+集中して TargetRestraint の解錠を試みた……
 You work on unlocking the TargetRestraint with help...
-あなたは助けを借りて、TargetRestraint のロックを解除しようとしています...
+味方が TargetRestraint の解錠を助けてくれた……
 You fiddle with the key on the TargetRestraint...
-あなたはTargetRestraintのキーをいじっています...
+鍵を使って TargetRestraint の解錠を試みた……
 The lock requires a key.
-ロックにはキーが必要です。
+鍵がないと解錠できない。
 The lock requires a key.
-ロックにはキーが必要です。
+鍵がないと解錠できない。
 The lock requires a key.
-ロックにはキーが必要です。
+鍵がないと解錠できない。
 The green padlock only accepts green keys.
-緑の南京錠は緑の鍵しか受け付けません。
+緑の鍵がないと緑の錠前は開けられない。
 The yellow padlock requires a red and a green key.
-黄色い南京錠には赤と緑の鍵が必要です。
+赤と緑の鍵がないと黄色の錠前は開けられない。
 The magical lock only accepts blue keys and can't be picked.
-魔法の錠前は青い鍵しか受け付けず、ピッキングできません。
+魔法の錠前はピッキングできず、青い鍵がないと開けられない。
 The magical lock is guarded with powerful magic. You'll have to wait for it to wear off...
-魔法の錠前は強力な魔法で守られています。解けるまで待ってください…
+魔法の錠前は強力な魔法で守られている。魔法が切れるまで待つしかない……
 This lock requires a command word to unlock. It doesn't have a keyhole.
-このロックは、ロックを解除するための合言葉が必要です。鍵穴はありません。
+どこにも鍵穴が見当たらない。合言葉がないと、この錠前は開かないようだ。
 You don't have a key for this lock.
-あなたはこの錠前の鍵を持っていません。
+錠前に合う鍵を持っていない。
 The lock seems to be magical and rejects all picking attempts!
-ロックは魔法のようで、ピッキングの試みをすべて拒否します!
+この鍵穴にはロックピックを通さない魔法がかかっているようだ。
 The lock is definitely magical and forces your pick out!
-ロックは間違いなく魔法で、選択を強制します!
+鍵穴からロックピックが弾かれてしまった！
 The lock doesn't even have a keyhole to pick!
-ロックには、ピッキングする鍵穴さえありません！
+鍵穴が見当たらない！
 The key sticks in the lock and jams, mangling the key!
-鍵が錠前に引っかかって動かなくなり、鍵が壊れてしまう!
+鍵が引っかかり、鍵穴の中で折れてしまった！
 You unlock the TargetRestraint.
-TargetRestraint のロックを解除します。
+TargetRestraint を解錠した。
 You manage to squeeze out of the TargetRestraint!
-あなたはTargetRestraintからなんとか絞り出しました！
+TargetRestraint からもがいて抜け出した！
 You pick the lock on the TargetRestraint!
-あなたは、TargetRestraint のロックを選択します!
+TargetRestraint のピッキングに成功した！
 You pick the lock on the TargetRestraint!
-あなたは、TargetRestraint のロックを選択します!
+TargetRestraint のピッキングに成功した！
 You free yourself from the TargetRestraint!
-あなたはTargetRestraintから解放されます！
+TargetRestraint から抜け出した！
 You damage the TargetRestraint enough to escape!
-逃げるのに十分なほど TargetRestraint にダメージを与えます!
+TargetRestraint から抜け出せる程度に傷をつけた！
 The TargetRestraint is destroyed by your attempts.
-TargetRestraint はあなたの試みによって破壊されました。
+TargetRestraint を力ずくで破壊した。
 This is as far as you can struggle. You'll have to remove the TargetRestraint some other way.
-これはあなたが苦労できる限りです。別の方法で TargetRestraint を削除する必要があります。
+いくらもがいても、これ以上緩む気配がない。別の方法で TargetRestraint を解く必要がある。
 The item is too tight. You'll need to loosen the TargetRestraint somehow first...
-アイテムがきつすぎます。まず、TargetRestraint を何らかの方法で緩める必要があります...
+きつく締まりすぎている。まずは別の方法で TargetRestraint を緩める必要がある……
 The item is to tight to get your tool into position. You'll have to first make the TargetRestraint looser.
-アイテムがきつすぎてツールを所定の位置に配置できません。最初に TargetRestraint を緩める必要があります。
+きつく締まりすぎていて、上手く道具を使えない。先に TargetRestraint を緩める必要がある。
 You can't quite get your pick into position. Maybe if you loosened the TargetRestraint first...
-ピックがうまく収まりません。先に TargetRestraint を緩めていたら…
+きつく締まりすぎていて、ロックピックを上手く操作できない。先に TargetRestraint を緩める必要がある……
 The TargetRestraint's lock is tucked in securely under straps. You'll have to get it out from under there...
-TargetRestraint のロックは、ストラップの下にしっかりと収まっています。その下から取り出さなければなりません...
+TargetRestraint の錠前は、ストラップの下に隠れている。先にずらさなければならない……
 After many failed attempts to unlock the TargetRestraint, you realize this lock is more than you can handle.
-TargetRestraint のロックを解除しようとして何度も失敗した後、このロックが処理できないことに気付きました。
+何度も TargetRestraint を開場しようとしたが、この方法では無理なようだ。
 You can feel some ply but can't quite make any progress against the TargetRestraint...
-多少のプライは感じますが、TargetRestraint に対してはまったく進歩がありません...
+多少は楽になったが、TargetRestraint は緩む気配が全くない。
 The TargetRestraint's mechanism lies barely out of reach...
-TargetRestraint のメカニズムは、かろうじて手の届かないところにあります...
+TargetRestraint のメカニズムに、あと少しのところで届かない……
 Your tool leaves only a scratch against the TargetRestraint...
-あなたのツールは、TargetRestraint に傷を付けるだけです...
+道具を使っても、TargetRestraint にはかすり傷をつけただけだった……
 The lock on the TargetRestraint is just above your skill level...
-TargetRestraint のロックは、あなたのスキル レベルをわずかに上回っています...
+TargetRestraint の錠前を解錠できるスキルがない……
 The keyholes on the TargetRestraint are just barely out of reach...
-TargetRestraint の鍵穴はかろうじて手の届かないところにあります...
+TargetRestraint の鍵穴はかろうじて手の届かないところにある……
 You unlock the TargetRestraint and sigh with relief.
-TargetRestraint のロックを解除し、安堵のため息をつきます。
+TargetRestraint のロックを解除し、安堵のため息をついた。
 You give out a huge moan as you squeeze out of the TargetRestraint!
-TargetRestraint から絞り出すと、大きなうめき声をあげます!
+うめき声を上げながら、 TargetRestraint から抜け出した！
 You pick the lock on the TargetRestraint with a sigh of relief!
-あなたは安堵のため息をつきながら、TargetRestraint のロックをピッキングします!
+TargetRestraint のピッキングに成功すると、安堵のため息を付いた。
 You pick the lock on the TargetRestraint with a sigh of relief!
-あなたは安堵のため息をつきながら、TargetRestraint のロックをピッキングします!
+TargetRestraint のピッキングに成功すると、安堵のため息を付いた。
 Trembling, you free yourself from the TargetRestraint!
-震えよ、TargetRestraintから解放されろ！
+TargetRestraint から解放され、身震いした。
 You damage the TargetRestraint enough to wiggle out!
-TargetRestraint を小刻みに動かせるほど損傷させた!
+TargetRestraint を傷つけ、多少の身動きができるようになった。
 You stick the knife into a crack in the wall!
-壁の隙間にナイフを突き刺す！
+壁の隙間にナイフを挟み込んだ。
 You use your feet to place the knife into a crack!
-足を使ってナイフを亀裂に入れます。
+足を使ってナイフを亀裂に挟み込んだ。
 You glare at the crack in the wall as you realize you couldn't maneuver the knife if you tried.
-試みてもナイフを操作できないことに気づき、壁の亀裂をにらみつけます。
+ナイフを壁の隙間に挟み込もうとしても上手く行かず、壁を睨むことしかできなかった。
 You can't hold your knife like this...
-このままではナイフを持てない…
+このままではナイフを持てない……
 The TargetRestraint is too secure to struggle out.
-TargetRestraint は安全すぎて苦労することはできません。
+TargetRestraint は抜け出すには堅すぎる。
 You groan in frustration as you realize the TargetRestraint is too tight to escape.
-TargetRestraint がきつすぎて逃げることができないことに気づき、欲求不満でうめき声を上げます。
+TargetRestraint がきつすぎて抜け出せないことに気づき、思わずうめき声を上げる。
 The TargetRestraint tightens itself as you try to squeeze out!
-絞り出そうとすると、TargetRestraint は自動的に締まります。
+抜け出そうとすると、TargetRestraint の締め付けが強くなった！
 You will need someone's help to squeeze out of the TargetRestraint.
-TargetRestraint から抜け出すには、誰かの助けが必要です。
+TargetRestraint から抜け出すには、誰かの助けが必要だ。
 The TargetRestraint flashes magically as the Goddess' curse resists your efforts!
-女神の呪いがあなたの努力に抵抗すると、TargetRestraint が魔法のように点滅します!
+TargetRestraint から抜け出そうともがくと、女神の呪いにより拘束具が光りだした！
 You pull and tug but your other restraints keep the TargetRestraint securely in place!
-引っ張ったり引っ張ったりしても、他の拘束具が TargetRestraint をしっかりと固定します!
+いくら引っ張っても、他の拘束具のせいで TargetRestraint はまったく緩む気配がない。
 You groan and tug but nothing budges on the TargetRestraint. You're bound too tightly by something else.
-うめき声を上げて引っ張るが、TargetRestraint には何も動じない。何か他のものにきつく縛られすぎている
+うめき声を上げて引っ張るが、他の拘束具が多すぎて TargetRestraint は緩む気配がない。
 You are too tightly bound to have a chance against the TargetRestraint.
-あなたは、TargetRestraint に対してチャンスを得るにはあまりにもきつく縛られています。
+他の拘束具が多すぎて、TargetRestraint を全く解くことができない。
 You shake and moan as you realize your struggles against the TargetRestraint are futile.
-TargetRestraint との戦いが無益であることに気付くと、身震いし、うめき声​​を上げます。
+TargetRestraint を解こうとするも、無駄な努力だということに気づいて身震いし、うめき声が漏れた。
 You can't find a keyhole on the TargetRestraint!
-TargetRestraint に鍵穴が見つからない!
+TargetRestraint には鍵穴が見当たらない！
 You sigh as you give up trying to find any kind of keyhole on the TargetRestraint.
-TargetRestraint のあらゆる種類の鍵穴を見つけようとするのをあきらめると、あなたはため息をつきます。
+TargetRestraint の鍵穴を探そうとしたが見つからず、ため息が漏れた。
 The TargetRestraint can't be unlocked without a special command!
-TargetRestraint は特別なコマンドを使わないとアンロックできません!
+TargetRestraint は特別なコマンドを使わないと解錠できない！
 You can't reach the keyhole on the TargetRestraint by yourself!
-TargetRestraint の鍵穴には、1 人では届きません!
+TargetRestraint の鍵穴には、1人では届かない！
 You can't hold the key to unlock the TargetRestraint with.
-TargetRestraint のロックを解除するための鍵を保持することはできません。
+TargetRestraint を解錠しようとするも、鍵を持つことができない。
 Your bound and shaking hands can't even hold the key for the TargetRestraint.
-あなたの縛られて震える手は、TargetRestraint の鍵を握ることさえできません。
+縛られて震える手では、TargetRestraint の鍵を握ることすらままならない。
 The goddess punishes you for trying to unlock the TargetRestraint!
-TargetRestraint を解除しようとしたあなたに女神が罰を与えます!
+TargetRestraint を解錠しようとすると、女神が天罰を下してきた！
 You try, but something is keeping your hands away from the TargetRestraint.
-試してみますが、何かがあなたの手を TargetRestraint から遠ざけています。
+TargetRestraint から抜け出そうとするも、不思議な力で触れることができない。
 You flail the key around uselessly but a strap is preventing you from unlocking the TargetRestraint!
-無駄に鍵を振り回すと、ストラップが原因で TargetRestraint のロックを解除できません!
+ストラップに邪魔されて、 TargetRestraint に鍵を差し込もうとするも上手く行かない！
 This lock on the TargetRestraint is beyond your skill level!
-TargetRestraint のこのロックは、あなたのスキル レベルを超えています!
+TargetRestraint の錠前は自身のスキルでは開けることができない！
 You whimper as you realize the lock on the TargetRestraint is far too secure.
-TargetRestraint のロックがあまりにも安全すぎることに気づき、あなたは泣き言を言います。
+TargetRestraint の錠前は恐ろしく高度な設計であることに気づき、泣き言が漏れた。
 There is no visible locking mechanism on the TargetRestraint.
-TargetRestraint には目に見えるロック機構はありません。
+TargetRestraint には錠前が見当たらない。
 You can't pick the TargetRestraint by yourself, you'll need help.
-TargetRestraint を自分で選ぶことはできません。助けが必要です。
+TargetRestraint は自分一人ではピッキングできない。誰かに助けを求める必要がある。
 You can't maneuver the lockpick well enough to unlock the TargetRestraint.
-TargetRestraint のロックを解除するのに十分なほどロックピックを操作することはできません。
+TargetRestraint の錠前は手に負えない。
 You let out a frustrated sigh as your quivering pick makes no progress on the TargetRestraint.
-震えるピックがTargetRestraintで進まないので、イライラしたため息をつきます。
+手が震えて TargetRestraint の解錠が進まず、イライラしてため息が出た。
 You try to start picking, but the lock on the TargetRestraint is secured by something else.
-ピッキングを開始しようとしましたが、TargetRestraint のロックは別のものによって保護されています。
+TargetRestraint のピッキングをしようとしたが、他の拘束具に邪魔されて上手くできない。
 You whimper as you realize the lock on the TargetRestraint is shielded by another strap.
-TargetRestraint のロックが別のストラップで保護されていることに気が付くと、あなたは泣き言を言います。
+TargetRestraint の錠前が別のストラップに保護されていることに気が付き、泣き言が漏れた。
 You are distracted from the TargetRestraint by mental images of yourself remaining in bondage...
-あなたは束縛されたままの自分の精神的なイメージによって、TargetRestraint から気をそらされています...
+自分が縛られているイメージが浮かび上がり、情欲から TargetRestraint を抜け出すのに上手く集中できない……
 You wiggle uselessly in the TargetRestraint. Maybe you need some kind of tool...
-TargetRestraint で無駄に小刻みに動きます。何かツールが必要かもしれません...
+TargetRestraint から抜け出そうともがいても、全く効果がない。何か道具が必要だ……
 You rub your body against the floor to no avail, and sigh as the TargetRestraint stays secure.
-無駄に体を床にこすりつけ、TargetRestraint がしっかりと固定されているのでため息をつきます。
+体を床にこすりつけるも、TargetRestraint はまったく緩む気配がなく、ため息が出た。
 You contort your body but you don't have leverage on the TargetRestraint. Maybe you need some kind of tool...
-あなたは体をゆがめますが、TargetRestraint を活用できません。何らかのツールが必要なのかもしれません...
+身体を捩ってみるも、TargetRestraint はまったく緩む気配がない。何か道具が必要だ……
 You wiggle madly, trying to push against the TargetRestraint. You need more leverage...
-あなたは狂ったように小刻みに動き、TargetRestraint を押そうとします。もっと力が必要です...
+必死に体を捩り、TargetRestraint から抜け出そうとする。もっと力が必要だ……
 That doesn't seem to work. Maybe something else will help with the TargetRestraint.
-それはうまくいかないようです。TargetRestraint には別の方法が役立つかもしれません。
+全く効果がない。TargetRestraint を解くには別の方法を試す必要がある。
 You squirm helplessly against the furniture. Maybe something else will help with the TargetRestraint.
-あなたはどうすることもできずに家具に身をよじらせます。TargetRestraint には何か他のものが役立つかもしれません。
+家具に拘束具をこすりつけるも、何も変わらなかった。 TargetRestraint から抜け出すには別の方法を試す必要がある。
 You twist your body trying to use the furniture, but it doesn't seem to work. The TargetRestraint remains tight.
-家具を使おうとして体をひねるが、うまくいかないようだ。TargetRestraint はきついままだ
+家具を使おうと体をひねるが、うまくいかない。TargetRestraint はきつく締まっている。
 You wiggle and squirm, trying to use the furniture to no avail. The TargetRestraint remains tight.
-家具を無駄に使おうとして、体をくねらせ身もだえします。TargetRestraint はきついままです。
+家具を使って拘束を解こうと体をよじらせるも、 TargetRestraint はきついままだ。
 You need something sharp to loosen the fasteners on the TargetRestraint.
-TargetRestraint の留め具を緩めるには鋭利なものが必要です。
+TargetRestraint の留め具を緩めるには鋭利なものが必要だ。
 This is not a job for your fingers right now. You need something sharp to remove the TargetRestraint.
-これは今、あなたの指の仕事ではありません。TargetRestraint を外すには鋭利なものが必要です。
+指で弄ってもどうすることもできない。TargetRestraint を外すには鋭利なものが必要だ。
 There's no way to loosen the TargetRestraint without some kind of sharp tool...
-鋭利な道具がないと、TargetRestraint を緩めることはできません...
+鋭利な道具がないと、TargetRestraint を緩めることはできない……
 You sigh as the TargetRestraint resists all your attempts at breaking through.
-TargetRestraint が突破しようとするすべての試みに抵抗するので、あなたはため息をつきます。
+TargetRestraint の突破口が見えず、ため息が漏れた。
 You need some kind of corner for leverage on the TargetRestraint.
-TargetRestraint を活用するには、ある種のコーナーが必要です。
+TargetRestraint を緩めるには、何かカドが必要だ。
 You flail about but cant get any leverage on the TargetRestraint without an edge or corner.
-あわてても、エッジやコーナーがなければ、TargetRestraint を活用することはできません。
+鋭利なものかカドのような場所がなければ、TargetRestraint を緩めることはできない。
 You need something rough to get the TargetRestraint loose.
-TargetRestraint を緩めるには、ラフなものが必要です。
+TargetRestraint を緩めるには、尖ったものが必要だ。
 You squirm against the smooth floor to no avail. If you had some kind of corner to undo the TargetRestraint...
-滑らかな床に身もだえしても無駄だ。TargetRestraint を解除するコーナーがあれば…
+引っかかるものがなければ、いくら床に体を擦り付けても無駄なようだ。TargetRestraint を外すには、カドに拘束具を擦り付ける必要がある……
 You need some kind of tool to pull at the knots on the TargetRestraint.
-TargetRestraint の結び目を引っ張るには、何らかのツールが必要です。
+TargetRestraint の結び目を引っ張るには、何か道具が必要だ。
 You struggle fruitlessly against the knots on the TargetRestraint, but they're too tight.
-TargetRestraint の結び目と格闘してもむだですが、きつすぎます。
+TargetRestraint の結び目を解こうとするも、固くて全く歯が立たない。
 You don't have any grip or hook to tug on the TargetRestraint with.
-TargetRestraint を引っ張るためのグリップやフックがありません。
+TargetRestraint を引っ張るためのグリップやフックがない。
 You cant tug on the TargetRestraint without some kind of hook, it's too tight against your body.
-何らかのフックがないと、TargetRestraint を引っ張ることはできません。体にきつすぎます。
+フックのようなものがないと、 TargetRestraint は体にピッタリとくっついていて引っ張ることができない。
 You need a way to stick the tool in place to undo the TargetRestraint...
-TargetRestraint を元に戻すには、ツールを所定の位置に固定する方法が必要です...
+TargetRestraint を解くには、道具をどこかに固定する必要がある……
 Your trembling hands cant grip anything as they are, let alone undo the TargetRestraint.
-あなたの震える手は、このままでは何も掴むことができません。ましてや、TargetRestraint を解除することはできません。
+手が震えて、物をつかめない。ましてや、 TargetRestraint を解くことなどもってのほか。
 You need something grippy to hold the TargetRestraint...
-TargetRestraint を保持するには、滑りにくいものが必要です...
+TargetRestraint を持つには、滑りにくいものが必要だ……
 You rub yourself against the floor to no avail. If you had something adhesive to stick the TargetRestraint to...
-床をこすっても無駄です。TargetRestraint を貼り付ける接着剤があれば...
+床に体をこすりつけても全く効果がなかった。 TargetRestraint に張り付く、何かネバネバしたものがあれば……
 The fastenings are too tight and secure on the TargetRestraint!
-TargetRestraint の留め具がきつすぎてしっかり固定されていません!
+TargetRestraint の留め具がきつすぎて、どうすることもできない！
 You roll around tryng to loosen the TargetRestraint to no avail.
-TargetRestraint を緩めようとして転がり回っていますが無駄です。
+TargetRestraint を緩めようとして転がり回ったが、何も効果はなかった。
 The TargetRestraint tightens itself as you try to undo it!
-元に戻そうとすると、TargetRestraint が引き締まります!
+解こうとすると、 TargetRestraint の締め付けが強くなった！
 You can't reach the TargetRestraint by yourself!
-一人じゃTargetRestraintにはたどり着けない！
+一人では TargetRestraint には届かない！
 You are too tightly bound to manipulate the TargetRestraint.
-TargetRestraint を操作するには、拘束が強すぎます。
+TargetRestraint を操作しようとするも、きつすぎて手が届かない。
 Your futile struggles do nothing to loosen the fasteners on the TargetRestraint.
-あなたの無駄な努力は、TargetRestraint の留め具を緩めるのに何の役にも立ちません。
+いくらもがいても、 TargetRestraint の留め具は全く緩まなかった。
 You try to undo the fasteners on the TargetRestraint, but they are blocked by other straps!
-TargetRestraint のファスナーを外そうとしましたが、他のストラップによってブロックされています!
+TargetRestraint の留め金を外そうとしても、ストラップに邪魔されて上手く行かない。
 You rub your body uselessly as you find another strap securing the TargetRestraint.
-TargetRestraint を固定している別のストラップを見つけると、無駄に体をこすります。
+TargetRestraint を固定している別のストラップを見つけて床に体をこすりつけるも、全く無駄だった。
 You feel the Goddess' hand keeping the TargetRestraint tightly secured!
-女神の手がTargetRestraintをしっかりと固定しているのを感じます！
+女神の力により TargetRestraint から抜け出せない！
 The TargetRestraint is too durable to cut.
-TargetRestraint は耐久性が高すぎて切断できません。
+TargetRestraint は頑丈すぎて切断できない。
 Your hopeless attempts fail to even leave a scratch on the TargetRestraint.
-あなたの絶望的な試みは、TargetRestraint に傷を残すことさえできません。
+いくら切ろうとしても、TargetRestraint には傷ひとつ残すこともできなかった。
 You fail to leave even a scratch on the TargetRestraint!
-TargetRestraintに傷一つ残さない！
+TargetRestraint にはかすり傷すら残すこともできなかった！
 You can't get any leverage to cut the TargetRestraint with...
-TargetRestraint をカットするための梃子が得られない...
+TargetRestraint を切る体勢すらとれない……
 You can't hold the knife firmly enough to cut the TargetRestraint.
-TargetRestraint を切るのに十分なほどしっかりとナイフを保持できません。
+TargetRestraint を切断できるほど頑丈な刃物がない。
 You cry out in your bindings as the knife bounces against the TargetRestraint uselessly.
-ナイフがTargetRestraintに無駄に跳ね返ると、バインディングで叫びます。
+TargetRestraint は全く刃を通さず、絶望に涙が溢れる。
 Your arms are kept from having leverage on the TargetRestraint due to another item.
-あなたの腕は、別のアイテムのために、TargetRestraint を活用できません。
+別の拘束具のせいで、 TargetRestraint を解くために腕を使えない。
 You fiddle with the tool, but your arms lack leverage on the TargetRestraint due to another item
-あなたはツールをいじっていますが、あなたの腕は別のアイテムのために TargetRestraint を活用できません
+道具を使おうとするも、別の拘束具のせいで、 TargetRestraint を解くために腕を使えない。
 The TargetRestraint flashes magically as the Goddess' curse resists your efforts!
-女神の呪いがあなたの努力に抵抗すると、TargetRestraint が魔法のように点滅します!
+拘束具を解こうとすると、女神の呪いが発動して TargetRestraint が魔法の光を発した！
 You pry at the TargetRestraint...
-あなたはTargetRestraintをこじ開けます...
+TargetRestraint をこじあげた……
 You moan as the TargetRestraint squeeze you tightly...
-TargetRestraintがあなたをきつく締めると、あなたはうめき声を上げます...
+TargetRestraint が突然締め付けを強め、思わずうめき声が漏れた……
 There's no way the TargetRestraint are just letting go!
-TargetRestraint が手放すわけがない！
+TargetRestraint が放してくれる気配はない。
 You whimper as you realize the TargetRestraint won't let go no matter what...
-TargetRestraint が何があっても離さないことを知って、あなたは泣き言を言います...
+TargetRestraint が緩む気配は微塵もなく、思わず泣き言が漏れた……
 You hear dark laughter as you realize the TargetRestraint won't let go...
-TargetRestraint が手放せないことに気づくと、暗い笑い声が聞こえてきます...
+TargetRestraint は緩む気配がない。どこからか陰湿な笑い声が聞こえる……
 You hear a dark giggle as fruitlessly try to wiggle free from the TargetRestraint!
-TargetRestraint から自由に小刻みに動こうとすると、暗いくすくす笑いが聞こえます!
+TargetRestraint を解こうと身を捩るも、どこからかくすくすと笑い声が聞こえるだけだった。
 You try to pull away from the TargetRestraint!
-あなたはTargetRestraintから引き離そうとしています!
+TargetRestraint を引き剥がそうとした。
 You blush and try to escape the TargetRestraint's grip!
-あなたは顔を赤らめ、TargetRestraint のグリップから逃れようとします!
+頬が紅潮するのを感じながら、 TargetRestraint を外そうとした！
 The TargetRestraint's grip is too strong...
-TargetRestraintのグリップが強すぎる…
+TargetRestraint はピッタリと張り付いている……
 The TargetRestraint's grip is too strong... it's hopeless.
-TargetRestraint のグリップが強すぎて…どうしようもない
+TargetRestraint はピッタリと張り付いていて、どうすることもできない……
 You're bound too tight to have a chance at shaking off the TargetRestraint.
-きつく縛られすぎて、TargetRestraint を振り払うチャンスがありません。
+きつく縛られすぎて、 TargetRestraint を解けない。
 You whimper as you give up struggling against the TargetRestraint.
-TargetRestraint との闘いをあきらめると、あなたは泣き言を言います。
+TargetRestraint はいくらもがいても全く緩まず、思わず泣き言が出た。
 You wiggle around trying to get the TargetRestraint out...
-あなたはTargetRestraintを取り出そうとしてうねっています...
+TargetRestraint を抜こうともがく……
 You squirm around trying to dislodge the TargetRestraint...
-あなたはTargetRestraintを取り除こうとして身もだえしています...
+TargetRestraint を抜こうと身を捩る……
 The TargetRestraint is in too deeply, it won't come out.
-TargetRestraintが奥に入りすぎて抜けません。
+TargetRestraint は深く挿入りすぎて出てこない。
 You feel the TargetRestraint slide around inside but it won't come out!
-TargetRestraint が内側でスライドするのを感じますが、出てきません!
+TargetRestraint を抜こうとしても、膣中で動くだけで上手くいかない！
 Your bondage keeps the TargetRestraint firmly in place.
-あなたのボンデージは、TargetRestraint をしっかりと固定します。
+貞操帯のせいで、TargetRestraint を取り外せない。
 Your struggling does nothing but shift the TargetRestraint's position inside of you.
 あなたのもがきは、あなたの中でTargetRestraintの位置を変えるだけです。
 You wiggle around trying to get the TargetRestraint out...
-あなたはTargetRestraintを取り出そうとしてうねっています...
+TargetRestraint を抜こうともがく……
 You squirm around trying to dislodge the TargetRestraint...
-あなたはTargetRestraintを取り除こうとして身もだえしています...
+TargetRestraint を抜こうと身を捩る……
 The TargetRestraint won't come out.
-TargetRestraintが出ません。
+TargetRestraint は出てくる気配がない。
 You feel the TargetRestraint slide around but it won't come out!
-TargetRestraint がスライドするのを感じるが、出てこない!
+TargetRestraint を抜こうとしても、尻穴の中で動くだけで上手くいかない！
 Your bondage keeps the TargetRestraint secure in place.
-あなたの束縛は、TargetRestraint を所定の位置に固定します。
+貞操帯のせいで、 TargetRestraint を取り外せない。
 Your struggling does nothing to disloghe the TargetRestraint.
-あなたの苦労は、TargetRestraint を否定するものではありません。
+いくらもがいても、 TargetRestraint から抜け出せない。
 You work to unlace the TargetRestraint...
-あなたはTargetRestraintを解くために働いています...
+TargetRestraint を解こうとする……
 You hurriedly try to unlace the TargetRestraint...
-あなたは急いでTargetRestraintを解こうとします...
+急いで TargetRestraint を解こうとする……
 The TargetRestraint has no laces to loosen!
-TargetRestraint には緩めるひもがありません!
+TargetRestraint を解くためのひもが見当たらない！
 You sigh as you can't find any laces to loosen on the TargetRestraint.
-TargetRestraint で緩めるひもが見つからないので、ため息をつきます。
+TargetRestraint を解くためのひもが見当たらず、ため息が出る。
 The laces of the TargetRestraint are tied tight!
-TargetRestraintの紐がきつく締まっている！
+TargetRestraint はきつく締まりだした！
 You hopelessly try to untie the lacing on the TargetRestraint, but it's just too tight!
-あなたはどうしようもなくTargetRestraintのひもを解こうとしますが、きつすぎます!
+TargetRestraint を解こうとするが、きつすぎてどうしようもない！
 You grasp at the TargetRestraint, trying to peel it off...
-TargetRestraint をつかんで、剥がそうとして…
+TargetRestraint をつかみ、剥がそうとする……
 You wiggle madly as you try to peel off the TargetRestraint!
-TargetRestraint を剥がそうとするとき、あなたは狂ったように体をくねらせます!
+TargetRestraint を剥がそうと、全力で身を捩る！
 The TargetRestraint reforms as you scoop it away!
-ターゲットレストレイントはすくうと変形する！
+TargetRestraint は突然変形した！
 You can't get the TargetRestraint off at all!
-TargetRestraint が全然外せない！
+TargetRestraint は全く外れる気配がない！
 The TargetRestraint is too fast at reforming!
-TargetRestraintは改造が速すぎる！
+TargetRestraint の変形が早すぎる！
 The TargetRestraint reforms too quickly as you try to squirm it off...
-よじ登ろうとすると、TargetRestraint の変形が速すぎます...
+TargetRestraint 身を捩って外そうとするも、変形が早すぎる……
 You grasp around, looking for a seam on the TargetRestraint...
-TargetRestraint の縫い目を探して、周りをつかみます...
+TargetRestraint の縫い目を探し出して掴んだ……
 You wiggle and squirm, looking for something to pull at on the TargetRestraint...
-TargetRestraint で引っ張るものを探して、体をくねらせて身もだえします...
+TargetRestraint の取っ掛かりを探して身をくねらせる……
 The TargetRestraint encases you in a solid layer!
-TargetRestraint はあなたをしっかりと包み込みます!
+TargetRestraint が全身を包み込む！
 Try as you might, the TargetRestraint hugs you completely without any seams!
-試してみてください。TargetRestraint は継ぎ目なしであなたを完全に包み込みます!
+TargetRestraint に完全に包み込まれ、継ぎ目もなくなってしまった！
 The TargetRestraint is too tight to get any traction...
-TargetRestraint がきつすぎてトラクションが得られません...
+TargetRestraint がきつすぎて、抜け出すことができない……
 The TargetRestraint squeezes your body too tightly to get any sort of ply...
-TargetRestraint は体をきつく締めすぎて、どんな種類のプライも得ることができません...
+TargetRestraint の締め付けが強すぎて、どうすることもできない……
 You start peeling off the TargetRestraint...
-あなたはTargetRestraintを剥がし始めます...
+TargetRestraint を引きはがす……
 You scratch at the TargetRestraint furiously...
-TargetRestraintを猛烈に引っ掻いて……
+TargetRestraint をひっかいて剥がそうとする……
 The TargetRestraint clings to your skin too tightly!
-ターゲットレストレイントが肌に密着しすぎ！
+TargetRestraint は肌に密着しすぎて効果がない！
 You groan in frustration as you try to peel the TargetRestraint off but realize it's too sticky.
-TargetRestraint を剥がそうとすると、イライラしてうめき声を上げますが、粘着性が強すぎることに気付きます。
+TargetRestraint を剥がそうとするも、強力な粘着力にどうすることもできずうめき声を上げる。
 You can't grip the edges to peel the TargetRestraint off!
-TargetRestraint をはがすためにエッジをつかむことはできません!
+TargetRestraint カドを掴んで解こうとするも、上手くいかない。
 You make a futile attempt to rub the TargetRestraint off.
-TargetRestraint をこすり落とそうとしても無駄です。
+TargetRestraint をこすって外そうとするも、上手くいかない。
 You try to wiggle off the TargetRestraint...
-あなたはTargetRestraintを小刻みに動かそうとしています...
+身を捩って TargetRestraint を外そうとする……
 You squirm trying to get the TargetRestraint to fall off...
-TargetRestraint を落とそうと身もだえしている...
+TargetRestraint を落とそうと体をくねらせる……
 The TargetRestraint are magical and wrap themselves back around you of their own accord.
-TargetRestraint は魔法のようで、自然にあなたの体を包み込みます。
+TargetRestraint はまるで魔法のように体を包み込んできた。
 The TargetRestraint squeeze you tighter as you try to shake them off.
-TargetRestraint は、振り落とそうとすると、あなたをきつく締めます。
+TargetRestraint を振り落とそうとすると、きつく締め上げてきた。
 The TargetRestraint have you bound hopelessly tight!
-TargetRestraint で、どうしようもなくきつく縛られてしまった!
+TargetRestraint の拘束は全く緩む気配がない！
 You sigh and moan as the TargetRestraint aren't getting any looser.
-TargetRestraint が少しも緩んでいないので、あなたはため息をつき、うめき声​​を上げます。
+TargetRestraint はまったく緩む気配がなく、思わずうめき声が出る。
 You try to untie the TargetRestraint...
-あなたはTargetRestraintを解こうとしています...
+TargetRestraint を解こうとする……
 You contort yourself trying to reach the knots on the TargetRestraint...
-あなたは、TargetRestraint の結び目に到達しようとして、自分自身をゆがめます...
+体を捻って TargetRestraint の結び目に手を伸ばす……
 The TargetRestraint's knot ties itself back again as soon as you get it loose!
-TargetRestraint の結び目は、緩めるとすぐに元に戻ります!
+TargetRestraint の結び目は、緩めてもすぐ元に戻ってしまう！
 The knots tighten themselves as soon as you reach them, keeping you trapped in the TargetRestraint.
-結び目に到達するとすぐに結び目が締まり、TargetRestraint に閉じ込められたままになります。
+結び目を解こうとしてもすぐにきつく締まり、 TargetRestraint から抜け出せない。
 You can't reach the knots on the TargetRestraint!
-TargetRestraint の結び目に届かない!
+TargetRestraint の結び目に届かない！
 Your squirming is in vain as you can't even reach the knots on the TargetRestraint.
-TargetRestraint の結び目にさえ届かないので、身もだえは無駄です。
+いくら体を捻っても、 TargetRestraint の結び目に届かない。
 You try to pull off the TargetRestraint...
-あなたはTargetRestraintを引き離そうとしています...
+TargetRestraint を引き剥がそうとする……
 You tug on your TargetRestraint trying to get them off!
-TargetRestraint を引っ張って外そうとしている!
+TargetRestraint を引き剥がそうとする……
 That would really hurt...
-それは本当に痛いだろう...
+かなり痛い……
 You realize that would really hurt...
-あなたはそれが本当に傷つくことを知っています...
+無理に引き剥がそうとするととても痛い……
 The TargetRestraint tug on your nipples as you squirm!
-もじもじしながら乳首を引っ張るTargetRestraint！
+TargetRestraint を外そうとするも、乳首をつままれる感覚に身を捩る。
 The TargetRestraint tug on your nipples as you squirm!
-もじもじしながら乳首を引っ張るTargetRestraint！
+TargetRestraint を外そうとするも、乳首をつままれる感覚に身を捩る。
 The chest is too smooth to help. Maybe if you opened it?
-胸が滑らかすぎてどうしようもない。開けたら？
+胸にきれいに張り付いて引き剥がせない。別の方法を試すべきだ。
 Lockable
 ロック可能
 Non-Lockable
@@ -4583,7 +4583,7 @@ Yellow Lock
 (S)
 (S)
 (B)
-(イ)
+(B)
 (G)
 (G)
 (P)
@@ -4591,37 +4591,37 @@ Yellow Lock
 (?)
 (?)
 (Y)
-（と）
+(Y)
 You can't use that while gagged!
-猿轡かませたままでは使えません！
+猿轡をかまされたままでは使えない！
 You can't use that without your fingers!
-指がないと使えない！
+指が不自由では使えない！
 You struggle against your bindings but it's too strict!.
-縛りに苦戦しているが厳しすぎる！
+拘束がきつすぎてもがいても意味がない！
 You drop the pick due to your bound hands!
-あなたは縛られた手のためにピックを落とします！
+縛られた手で持とうとしたら、ロックピックを落としてしまった！
 You drop your knife due to your bound hands!
-両手を縛られてナイフを落としたぞ！
+縛られた手で持とうとしたら、ナイフを落としてしまった！
 You drop the precious knife due to your bound hands!
-手を縛られて大切なナイフを落としてしまった！
+縛られた手で持とうとしたら、大事なナイフを落としてしまった！
 You drop the key due to your bound hands!
-縛られた手で鍵を落としたぞ！
+縛られた手で持とうとしたら、鍵を落としてしまった！
 You drop the magic key due to your bound hands!
-縛られた手で魔法の鍵を落としたぞ！
+縛られた手で持とうとしたら、魔法のナイフを落としてしまった！
 You drop the magic key due to your bound hands!
-縛られた手で魔法の鍵を落としたぞ！
+縛られた手で持とうとしたら、魔法のナイフを落としてしまった！
 Logbook
-ログブック
+記録
 Logbook (N)
-日誌 (N)
+記録 (N)
 Passing...
-通過...
+通過する……
 Pass NPCs
-NPCを渡す
+NPCを通過する
 Closing...
-閉鎖...
+閉める……
 Close door
-ドアを閉めて
+ドアを閉める
 Sprinting!!!
 スプリント!!!
 Sprint!
@@ -4631,41 +4631,41 @@ Hopping!!!
 Hop!
 ホップ！
 You run!
-あなたが実行します！
+走った！
 You hop desperately!
-あなたは必死に飛び跳ねます！
+必死に飛び跳ねた！
 Close Door
-ドアを閉めて
+ドアを閉める
 Unlock
-ロック解除
+解錠
 Command
-指図
+コマンド
 You utter a command word and release the lock!
-合言葉を発してロックを解除！
+合言葉を唱えると、鍵が開いた！
 You mutter an unintelligible command word and your locks do not open.
-理解できないコマンド ワードをつぶやくと、ロックが開きません。
+でたらめに合言葉を唱えたが、解錠できなかった。
 You mumble a command word but the lock opens!
-合言葉をつぶやくが、鍵が開く！
+合言葉をつぶやくと、鍵が開いた！
 You mess up saying the command word. The lock stays put!
-あなたは合言葉を言い間違えました。ロックはそのままです！
+合言葉を間違えたようだ。鍵は開いていない。
 Pick
-選ぶ
+ピッキング
 (No way to open)
-（開けるわけがない）
+（開けられない）
 (She cannot help you)
-（彼女はあなたを助けることはできません）
+（彼女は助けにならない）
 Offer XXXg
-XXXg を提供
+XXXg を払う
 Offer
-オファー
+願う
 You do not have enough for a proper offering.
-適切な捧げ物をするのに十分ではありません。
+十分な貢物を持っていない。
 The goddess removes some of your restraints!
-女神があなたの拘束をいくらか解いてくれます！
+女神の祝福によりいくつかの拘束から解放された！
 The goddess restores your mental and physical state!
-女神が心身の状態を回復させる！
+女神の祝福により回復した！
 The goddess teaches you the secrets of SCHOOL. (+1 level)
-女神があなたにSCHOOLの秘密を教えます。(+1レベル)
+女神は SCHOOL の秘法を教えてくれた。(+1レベル)
 The goddess of SCHOOL grants you destructive spellcasting!
 SCHOOLの女神が破壊魔法を授ける！
 The goddess of SCHOOL grants you invisibility on attacks!
@@ -4673,27 +4673,27 @@ SCHOOLの女神が攻撃時に透明化を付与！
 The goddess of SCHOOL grants you protection and retaliation!
 SCHOOLの女神が守りと報復を与える！
 You leave the coins on the altar and they transform into a ItemBought!
-祭壇にコインを置いておくと、アイテム買物に変身！
+祭壇にゴールドを捧げると、アイテムに変化した！
 object
 物体
 It appears to be a receptacle for an ancient crystal.
-古代のクリスタルの受け皿のようです。
+パワークリスタルの台座のようだ。
 It's a pile of slag emitting a strange magic smoke...
-妙な魔煙を出すスラグの山だ……
+灰の山が魔力のこもった煙を上げている……
 That object is locked
 そのオブジェクトはロックされています
 A shrine to the goddess of TYPE. A pool of mana glimmers below.
-TYPEの女神を祀る神殿。その下に光る魔力の泉
+TYPE の女神を祀る祭壇。足元に溢れる泉には魔力が満ち溢れている。
 A shrine to the goddess of TYPE.
-TYPEの女神を祀る神社
+TYPE の女神を祀る祭壇。
 That door is open. Do you want to close it?
-そのドアは開いています。閉じますか？
+ドアは開いている。閉じる？
 You slam the door and jam it shut!
-あなたはドアをバタンと閉めて、ぎゅうぎゅう詰めにします！
+ドアを思い切り閉めた！
 Submissiveness
-服従
+服従度
 Security Level
-セキュリティレベル
+手配度
 Undead
 アンデッド
 Latex
@@ -4705,17 +4705,17 @@ Metal
 Ropes
 ロープ
 Restoration
-復元
+再生
 Elements
-エレメンツ
+エレメント
 Conjuration
 召喚
 Illusions
-幻想
+幻惑
 Commerce
 商業
 Shrine of SHRINETYPE
-SHRINETYPEの祠
+SHRINETYPE の祠
 Tablet of
 のタブレット
 Goddess Blessing:
@@ -4727,15 +4727,15 @@ Curses
 Willpower
 気力
 A tablet inscribed with runes of TYPE.
-TYPEのルーン文字が刻まれたタブレット
+TYPE のルーン文字が刻まれた石板
 Teachings of SHRINETYPE
-SHRINETYPEの教え
+SHRINETYPE の教え
 Decypher
 デサイファー
 You read the runes and they imbue you with power!
-ルーン文字を読むと、力が湧いてきます!
+ルーン文字を読むと、力が湧いてきた！
 You try to read the runes but cannot understand them.
-あなたはルーン文字を読もうとしますが、理解できません。
+ルーン文字を読もうとするも、解読できない。
 Allies:
 味方：
 Enemies:
@@ -4747,7 +4747,7 @@ DressUp Co.
 Bounty Hunters Guild
 賞金稼ぎギルド
 Bandits
-山賊
+盗賊
 Constructs
 構築物
 Witches' Coven
@@ -4759,7 +4759,7 @@ Old Guardians
 Cult of the Wild
 野生のカルト
 Cult of Bast
-カルト オブ バスト
+ネコ教団
 Alchemists
 アルケミスト
 Elementals
@@ -4769,9 +4769,9 @@ Dragonheart Order
 MaidForce
 メイドフォース
 Fungal Kingdom
-真菌王国
+キノコ王国
 Wanted
-募集
+指名手配
 Delinquent
 滞納者
 Illegal Poacher
@@ -4785,17 +4785,17 @@ Angels
 Demons
 悪魔
 You sense that the chest contains a trap and a lot of gold.
-あなたは胸に罠とたくさんの金が入っているのを感じます.
+宝箱には大量のゴールドが入っているが、罠も仕掛けられているようだ。
 You sense that the chest is safe to open.
-あなたは胸が開いても安全だと感じています。
+この宝箱は安全なようだ。
 Drink
 飲む
 Bottle
-ボトル
+汲む
 You have no restraints to 'offer' to the goddess.
 女神に『捧げる』のは自由です
 This shrine's mana pool is empty.
-この祠のマナプールは空です。
+祭壇の泉は枯渇している。
 You drink from the pool and and absorb its energies.
 あなたはプールから水を飲み、そのエネルギーを吸収します。
 You absorb the pool's energies through your face.
@@ -9735,7 +9735,7 @@ You breathe in the gas, and a wave of pleasure hits your whole body.
 You breathe in the gas, and feel lethargic...
 あなたはガスを吸い込み、無気力を感じます...
 Inventory
-在庫
+インベントリ
 Reputation
 評判
 Spells
@@ -9753,7 +9753,7 @@ Return to Game
 Spell Tree
 スペルツリー
 Elemental Spells
-エレメンタルスペル
+エレメンタル呪文
 Conjuration Spells
 召喚呪文
 Illusion Spells
@@ -9761,11 +9761,11 @@ Illusion Spells
 Upgrades
 アップグレード
 Perks
-特典
+パーク
 Perks II
-パークⅡ
+パーク２
 Perks III
-パークⅢ
+パーク３
 pg. NUM/TOTAL
 pg.NUM/TOTAL
 >
@@ -9781,9 +9781,9 @@ Spell Points: SPELLPOINTS
 You need a higher level in SCHOOL magic to learn this spell.
 この呪文を習得するには、SCHOOL マジックのより高いレベルが必要です。
 You need more spell points.
-もっとスペルポイントが必要です。
+スペルポイントが足りない。
 You don't have enough maximum mana to cast this spell!
-この呪文を唱えるのに十分な最大マナがありません!
+最大マナを超える呪文は唱えられない。
 School:
 学校：
 Elements
@@ -9791,7 +9791,7 @@ Elements
 Conjuration
 召喚
 Illusion
-イリュージョン
+幻惑
 Generic
 ジェネリック
 Learn Spell
@@ -9801,7 +9801,7 @@ Spell Points:
 Level:
 レベル：
 Spell Point Cost:
-スペル ポイント コスト:
+スペルポイントコスト:
  Mana Cost:
   マナコスト：
 
@@ -9851,13 +9851,13 @@ Replace Spell 7
 ???
 ???
 Adventuring 101
-冒険101
+冒険のススメ
 History
 歴史
 Bondage Witchery
 ボンデージウィッチャリー
 Enemy Notes
-敵ノート
+エネミーノート
 Graveyard
 墓地
 Catacombs
@@ -9997,4 +9997,4 @@ Ninjas aren't so tough to fight when their hands are tied behind their back. Goo
 (It's a record of an interview)|ME: Why are you like this?|MUMMY: Because we are blessed!|ME: Blessed? You've been wrapped up for thousands of years!|MUMMY: A thousand years is nothing compared to the glory that will come!|ME: Why do you have to be wrapped up? There are plenty of you who aren't...|MUMMY: The chosen ones will inherit the land when the goddess returns.
 (インタビューの記録です) |私: どうしてこうなったの? |ママ: 私たちは恵まれているから! |私: 恵まれているの? あなたは何千年もの間閉じ込められてきたの! |ママ: 千年は何でもない来る栄光と比べて! |私: なぜあなたは包まれなければならないの? そうでない人はたくさんいます... |マミー: 選ばれた者は、女神が戻ったときに土地を継承します.
 (It's a record of an interview)|ME: Which goddess are you referring to? The goddess of restoration?|MUMMY: The blessed kitty.. she was promised to rule over the lesser goddesses.|ME: Lesser goddesses? Which ones?|MUMMY: YOUR goddesses. The ones you humans created that should not be. Ours is the true offspring of the creators, a goddess created to rule!
-(インタビューの記録です)|私: どの女神のことですか? 回復の女神ですか?|マミー: 祝福された子猫..彼女は下位の女神を支配すると約束されていました.|私: 下位の女神? どの女神ですか? ?|マミー: あなたの女神。あなたが人間が作ったはずのないもの。私たちの女神は、創造者の真の子孫であり、支配するために作られた女神です!
+(インタビューの記録)|私: どの女神のことですか? 回復の女神ですか?|マミー: 祝福された子猫..彼女は下位の女神を支配すると約束されていました.|私: 下位の女神? どの女神ですか? ?|マミー: あなたの女神。あなたが人間が作ったはずのないもの。私たちの女神は、創造者の真の子孫であり、支配するために作られた女神です!
