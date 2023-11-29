@@ -304,10 +304,10 @@ function KinkyDungeonDrawInterface(showControls) {
 		});*/
 	}
 
-	//KDDrawBuffIcons(510, 1750);
 	KDDrawStruggleGroups();
 	KDDrawStatusBars(800, 995 - 72 - 36);
 	KinkyDungeonDrawActionBar(1750, 164);
+	KDDrawBuffIcons(760, 800);
 
 
 	if (KinkyDungeonTargetTile) {
@@ -726,7 +726,7 @@ function KDDrawStatusBars(x, y) {
 		else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
 	}, KinkyDungeonItemCount("PotionStamina") && KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax,
-	x - buttonWidth, y - 5 - 2.5*heightPerBar, buttonWidth, buttonWidth, "", (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax && KinkyDungeonItemCount("PotionStamina")) ? "#AAFFAA" : "#333333",
+	x - buttonWidth, y - 5 - 2.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax && KinkyDungeonItemCount("PotionStamina")) ? "#AAFFAA" : "#333333",
 	KinkyDungeonRootDirectory + "UI/UsePotion" + ((suff == "Unavailable") ? "" : "Stamina") + suff + ".png", "", false, true);
 	DrawTextFitKD("x" + KinkyDungeonItemCount("PotionStamina"),
 		x, y - 5 - 2*heightPerBar + heightPerBar/2, buttonWidth, "#ffffff", "#333333", 18, "right");
@@ -749,7 +749,7 @@ function KDDrawStatusBars(x, y) {
 		else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
 	}, KinkyDungeonItemCount("PotionMana") && (KinkyDungeonStatMana < KinkyDungeonStatManaMax || KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax),
-	x - buttonWidth, y - 1.5*heightPerBar, buttonWidth, buttonWidth, "", (KinkyDungeonStatMana < KinkyDungeonStatManaMax && KinkyDungeonItemCount("PotionMana")) ? "#AAAAFF" : "#333333",
+	x - buttonWidth, y - 1.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatMana < KinkyDungeonStatManaMax && KinkyDungeonItemCount("PotionMana")) ? "#AAAAFF" : "#333333",
 	KinkyDungeonRootDirectory + "UI/UsePotion" + ((suff == "Unavailable") ? "" : "Mana") + suff + ".png", "", false, true);
 
 	DrawTextFitKD("x" + KinkyDungeonItemCount("PotionMana"),
@@ -781,7 +781,7 @@ function KDDrawStatusBars(x, y) {
 		else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
 	}, KinkyDungeonItemCount("PotionFrigid") && KinkyDungeonStatDistraction > 0,
-	x - buttonWidth + width * barWidthOffset2ndSet, y - 5 - 2.5*heightPerBar, buttonWidth, buttonWidth, "", (KinkyDungeonStatDistraction > 0 && KinkyDungeonItemCount("PotionFrigid")) ? "#333333" : "Pink",
+	x - buttonWidth + width * barWidthOffset2ndSet, y - 5 - 2.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatDistraction > 0 && KinkyDungeonItemCount("PotionFrigid")) ? "#333333" : "Pink",
 	KinkyDungeonRootDirectory + "UI/UsePotion" + ((suff == "Unavailable") ? "" : "Frigid") + suff + ".png", "", false, true);
 
 	DrawTextFitKD("x" + KinkyDungeonItemCount("PotionFrigid"),
@@ -807,7 +807,7 @@ function KDDrawStatusBars(x, y) {
 		else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
 	}, KinkyDungeonItemCount("PotionWill") && KinkyDungeonStatWill < KinkyDungeonStatWillMax,
-	x - buttonWidth + width * barWidthOffset2ndSet, y - 1.5*heightPerBar, buttonWidth, buttonWidth, "", (KinkyDungeonStatWill < KinkyDungeonStatWillMax && KinkyDungeonItemCount("PotionWill")) ? "#ff4444" : "#333333",
+	x - buttonWidth + width * barWidthOffset2ndSet, y - 1.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatWill < KinkyDungeonStatWillMax && KinkyDungeonItemCount("PotionWill")) ? "#ff4444" : "#333333",
 	KinkyDungeonRootDirectory + "UI/UsePotion" + ((suff == "Unavailable") ? "" : "Will") + suff + ".png", "", false, true);
 
 	DrawTextFitKD("x" + KinkyDungeonItemCount("PotionWill"),
@@ -825,7 +825,7 @@ function KDDrawStatusBars(x, y) {
 				KDSendInput("consumable", {item: "AncientPowerSource", quantity: 1});
 				return true;
 			}, KDGameData.AncientEnergyLevel < 1.0 && KinkyDungeonItemCount("AncientPowerSource"),
-			1700-buttonWidth, 830 - 0.5*heightPerBar, buttonWidth, buttonWidth, "",
+			1700-buttonWidth, 830 - 0.5*heightPerBar + 10, buttonWidth, 26, "",
 			(KDGameData.AncientEnergyLevel < 1.0 && KinkyDungeonItemCount("AncientPowerSource")) ? "#ffee83" : "#333333",
 			KinkyDungeonRootDirectory + "UI/UsePotionAncient.png", "", false, true);
 
@@ -833,72 +833,55 @@ function KDDrawStatusBars(x, y) {
 	}
 
 
-	/*
-	let ttOffset = 250;
-
-
-
-	let i = 4.6;
-	let itemsAdj = 20;
-	itemsAdj = 25;
-	let fs = 18;
-	let textheight = 15;
-
-	KDDraw(kdcanvas, kdpixisprites, "pick", KinkyDungeonRootDirectory + "Items/Pick.png", x, y + 40 - 25 + i * heightPerBar + itemsAdj, 50, 50);
-	DrawTextFitKD("" + KinkyDungeonLockpicks, x+25, y + textheight + i * heightPerBar + itemsAdj, 50, "#ffffff", "#333333", fs);
-	if (MouseIn(x, y + 40 - 40 + i * heightPerBar + itemsAdj, 50, 50)) DrawTextKD(TextGet("KinkyDungeonInventoryItemLockpick"), MouseX - 10, MouseY, "#ffffff", "#333333");
-
-	KDDraw(kdcanvas, kdpixisprites, "redkey", KinkyDungeonRootDirectory + "Items/RedKey.png", x+50, y + 40 - 25 + i * heightPerBar + itemsAdj, 50, 50);
-	DrawTextFitKD("" + KinkyDungeonRedKeys, x+50+25, y + textheight + i * heightPerBar + itemsAdj, 50, "#ffffff", "#333333", fs);
-	if (MouseIn(x+50, y + 40 - 40 + i * heightPerBar + itemsAdj, 50, 50)) DrawTextKD(TextGet("KinkyDungeonInventoryItemRedKey"), MouseX - 10, MouseY, "#ffffff", "#333333");
-
-	if (KinkyDungeonBlueKeys > 0) {
-		KDDraw(kdcanvas, kdpixisprites, "bluekey", KinkyDungeonRootDirectory + "Items/BlueKey.png", x+100, y + 40 - 25 + i * heightPerBar + itemsAdj, 50, 50);
-		DrawTextFitKD("" + KinkyDungeonBlueKeys, x+50+50+25, y + textheight + i * heightPerBar + itemsAdj, 50, "#ffffff", "#333333", fs);
-		if (MouseIn(x+100, y + 40 - 40 + i * heightPerBar + itemsAdj, 50, 50)) DrawTextKD(TextGet("KinkyDungeonInventoryItemMagicKey"), MouseX - 10, MouseY, "#ffffff", "#333333");
-	}
-
-	KDDraw(kdcanvas, kdpixisprites, "gold", KinkyDungeonRootDirectory + "Items/Gold.png", x+150, y + 40 - 40 + i * heightPerBar + itemsAdj, 80, 80);
-
-	DrawTextFitKD("" + KinkyDungeonGold, x+50+50+50+40, y + textheight + i * heightPerBar + itemsAdj, 50, "#ffffff", "#333333", fs);
-	if (MouseIn(x+150, y + 40 - 40 + i * heightPerBar + itemsAdj, 80, 80)) DrawTextKD(TextGet("KinkyDungeonInventoryItemGold"), MouseX - 10, MouseY, "#ffffff", "#333333");
-	*/
 }
 
 function KDDrawWeaponSwap(x, y) {
 	let width = 144;
+	let hover = false;
 
 	if (KDGameData.PreviousWeapon?.length > 0) {
 		let ii = 0;
 		for (let wep of KDGameData.PreviousWeapon) {
-			DrawButtonKDEx("previousweapon" + wep,(bdata) => {
+			if (DrawButtonKDEx("previousweapon" + wep,(bdata) => {
 				if (!KinkyDungeonControlsEnabled()) return false;
 				KDSwitchWeapon(wep);
 				return true;
-			}, KDGameData.PreviousWeapon != undefined, x + 0.6*width + (ii++*0.4*width), y-0.4*width, 0.4*width, 0.4*width, "", "#ffffff",
-			KinkyDungeonRootDirectory + "Items/" + wep + ".png",
+			}, KDGameData.PreviousWeapon != undefined, x + 0.45*width + (ii++*0.35*width), y-0.35*width, 0.35*width, 0.35*width, "", "#ffffff",
+			KinkyDungeonRootDirectory + "Items/" + KDWeapon(KinkyDungeonInventoryGetWeapon(wep)).name + ".png",
 			undefined, undefined, true, undefined, undefined, undefined, {
 				//hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[0]),
 				scaleImage: true,
-			});
+			})) {
+				if (KDWeapon(KinkyDungeonInventoryGetWeapon(wep))) {
+					let inv = KinkyDungeonInventoryGetWeapon(wep);
+					if (inv) KinkyDungeonDrawInventorySelected(KDGetItemPreview(inv), false, true, 0);
+				}
+				hover = true;
+			}
 		}
 	}
 	if (KinkyDungeonPlayerWeapon && KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon)) {
 		DrawTextFitKD(TextGet("StatWeapon") + KDGetItemName(KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon)),
-			x + 0.3*width, y - 24, width, "#ffffff", "#333333", 18);
+			x + 0.45/2*width, y - 16, width, "#ffffff", "#333333", 16);
 	}
-	return DrawButtonKDEx("switchWeapon", (bdata) => {
+	if (DrawButtonKDEx("switchWeapon", (bdata) => {
 		if (!KinkyDungeonControlsEnabled()) return false;
 		KDSwitchWeapon();
 		return true;
-	}, KDGameData.PreviousWeapon != undefined, x, y - 0.6*width, 0.6*width, 0.6*width, "", "#ffffff",
+	}, KDGameData.PreviousWeapon != undefined, x, y - 0.45*width, 0.45*width, 0.45*width, "", "#ffffff",
 	KinkyDungeonPlayerWeapon && KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon) ?
 		KinkyDungeonRootDirectory + "Items/" + KDWeapon(KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon)).name + ".png"
 		: KinkyDungeonRootDirectory + "Items/Unarmed.png",
 	undefined, undefined, true, undefined, undefined, undefined, {
 		//hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[0]),
 		scaleImage: true,
-	});
+	})) {
+		if (KDWeapon(KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon))) {
+			let inv = KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon);
+			if (inv) KinkyDungeonDrawInventorySelected(KDGetItemPreview(inv), false, true, 0);
+		}
+	}
+	return hover;
 }
 
 function KinkyDungeonDrawActionBar(x, y) {
@@ -947,6 +930,43 @@ function KinkyDungeonDrawActionBar(x, y) {
 	let actionBarYY = 925;
 
 
+	let resourcesX = 505;
+	let resourceSpacing = 50;
+	let resourcesIndex = 0;
+	let resourcesY = 825 - 10 - 1 * resourceSpacing;
+
+
+	KDDraw(kdcanvas, kdpixisprites, "gold", KinkyDungeonRootDirectory + "Items/Gold.png", resourcesX - 8, resourcesY - 10 + resourcesIndex*resourceSpacing, 80, 80);
+	DrawTextFitKD("" + KinkyDungeonGold, resourcesX + 32, resourcesY + 40 + resourcesIndex*resourceSpacing, 80, "#ffffff", "#333333", 18);
+	if (MouseIn(resourcesX - 10, resourcesY + resourcesIndex*resourceSpacing, 80, 80))
+		DrawTextKD(TextGet("KinkyDungeonInventoryItemGold"),
+			resourcesX + 60, MouseY, "#ffffff", "#333333", 24, "left");
+	resourcesIndex--;
+
+	KDDraw(kdcanvas, kdpixisprites, "pick", KinkyDungeonRootDirectory + "Items/Pick.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50);
+	DrawTextFitKD("" + KinkyDungeonLockpicks, resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, "#ffffff", "#333333", 18);
+	if (MouseIn(resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50))
+		DrawTextKD(TextGet("KinkyDungeonInventoryItemLockpick"),
+			resourcesX + 60, MouseY, "#ffffff", "#333333", 24, "left");
+
+
+	resourcesIndex--;
+	KDDraw(kdcanvas, kdpixisprites, "redkey", KinkyDungeonRootDirectory + "Items/RedKey.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50);
+	DrawTextFitKD("" + KinkyDungeonRedKeys, resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, "#ffffff", "#333333", 18);
+	if (MouseIn(resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50))
+		DrawTextKD(TextGet("KinkyDungeonInventoryItemRedKey"),
+			resourcesX + 60, MouseY, "#ffffff", "#333333", 24, "left");
+
+	resourcesIndex--;
+
+
+	if (KinkyDungeonBlueKeys > 0) {
+		KDDraw(kdcanvas, kdpixisprites, "bluekey", KinkyDungeonRootDirectory + "Items/BlueKey.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50);
+		DrawTextFitKD("" + KinkyDungeonBlueKeys, resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, "#ffffff", "#333333", 18);
+		if (MouseIn(resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50))
+			DrawTextKD(TextGet("KinkyDungeonInventoryItemMagicKey"),
+				resourcesX + 60, MouseY, "#ffffff", "#333333", 24, "left");
+	}
 
 	if (DrawButtonKDEx("openQuickInv", (b) => {
 		KinkyDungeonShowInventory = !KinkyDungeonShowInventory;
@@ -962,10 +982,7 @@ function KinkyDungeonDrawActionBar(x, y) {
 	if (KDDrawWeaponSwap(actionBarXX-5, actionBarYY - 5)) {
 		// Draw the tooltip and show the weapon info
 		str = "KDSwitchWeapon";
-		if (KinkyDungeonPlayerWeapon) {
-			let inv = KinkyDungeonInventoryGet(KinkyDungeonPlayerWeapon);
-			if (inv) KinkyDungeonDrawInventorySelected(KDGetItemPreview(inv), false, true, 0);
-		}
+
 	}
 	if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.special) {
 		if (MouseIn(580, 825, 50, 90)) DrawTextFitKD(TextGet("KinkyDungeonSpecial" + KinkyDungeonPlayerDamage.name), MouseX, MouseY - 150, 750, "#ffffff", "#333333");
@@ -985,7 +1002,7 @@ function KinkyDungeonDrawActionBar(x, y) {
 	if (!KDToggles.TransparentUI) {
 		DrawRectKD(
 			kdcanvas, kdpixisprites, "actionvborder", {
-				Left: 1990 - actionBarWidth, Top: actionBarVertStart - 5, Width: actionBarWidth + 10,
+				Left: 1990 - actionBarWidth - 5, Top: actionBarVertStart - 5, Width: actionBarWidth + 10,
 				Height: (5+actionbarHeight)*4 + 10,
 				Color: KDUIColorHighlight, alpha: KDUIAlphaHighlight, zIndex: -2,
 				LineWidth: 2,
@@ -993,7 +1010,7 @@ function KinkyDungeonDrawActionBar(x, y) {
 		);
 		FillRectKD(
 			kdcanvas, kdpixisprites, "actionvbg", {
-				Left: 1990 - actionBarWidth, Top: actionBarVertStart - 5, Width: actionBarWidth + 10,
+				Left: 1990 - actionBarWidth - 5, Top: actionBarVertStart - 5, Width: actionBarWidth + 10,
 				Height: (5+actionbarHeight)*4 + 10,
 				Color: KDUIColor, alpha: KDUIAlpha, zIndex: -1
 			}
@@ -1812,7 +1829,7 @@ function KDDrawPartyMembers(PartyX, PartyY, tooltips) {
 	}
 }
 
-function KDDrawBuffIcons(minXX, minYY) {
+function KDGetStatsWeaponCast() {
 	/**
 	 * @type {Record<string, {text: string, icon?: string, count?: string, category: string, priority?: number, color: string, bgcolor: string, countcolor?: string, click?: string, buffid?: string}>}
 	 */
@@ -1842,31 +1859,74 @@ function KDDrawBuffIcons(minXX, minYY) {
 		countcolor: KinkyDungeonMiscastChance > 0 ? "#ff5555" : "#ffffff",
 		category: "info", color: "#ffffff", bgcolor: "#000000", priority: 9
 	};
-	//}
-	let evasion = KinkyDungeonPlayerEvasion();
-	let block = KinkyDungeonPlayerBlock();
-	//if (evasion != 1.0) {
-	statsDraw.evasion = {
-		text: TextGet("StatEvasion")
-			.replace("Percent", ("") + Math.round((1 - evasion) * 100))
-			.replace("EVASIONSUM", ("") + Math.round((KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion")) * 100))
-			.replace("EVASIONPENALTY", ("") + Math.round((1 - KinkyDungeonMultiplicativeStat(KDPlayerEvasionPenalty())) * -100)),
-		count: ("") + Math.round((1 - evasion) * 100) + "%",
-		icon: "infoEvasion",
-		countcolor: evasion < 1 ? "#65d45d" : (evasion == 1 ? "#ffffff" : "#ff5555"),
-		category: "info", color: "#ffffff", bgcolor: "#000000", priority: 8
-	};
-	statsDraw.block = {
-		text: TextGet("StatBlock")
-			.replace("Percent", ("") + Math.round((1 - block) * 100))
-			.replace("BLOCKSUM", ("") + Math.round((KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block")) * 100))
-			.replace("BLOCKPENALTY", ("") + Math.round((1 - KinkyDungeonMultiplicativeStat(KDPlayerBlockPenalty())) * -100)),
-		count: ("") + Math.round((1 - block) * 100) + "%",
-		icon: "infoBlock",
-		countcolor: block < 1 ? "#65d45d" : (block == 1 ? "#ffffff" : "#ff5555"),
-		category: "info", color: "#ffffff", bgcolor: "#000000", priority: 8
-	};
-	//}
+}
+
+function KDDrawBuffIcons(minXX, minYY) {
+	/**
+	 * @type {Record<string, {text: string, icon?: string, count?: string, category: string, priority?: number, color: string, bgcolor: string, countcolor?: string, click?: string, buffid?: string}>}
+	 */
+	let statsDraw = {};
+
+	let accuracy = KinkyDungeonGetEvasion();
+	if (KDToggleShowAllBuffs || accuracy < 0.89) {
+		if (KinkyDungeonPlayerDamage) {
+			let crit = KinkyDungeonGetCrit(accuracy, KinkyDungeonPlayerDamage);
+			let bindcrit = KinkyDungeonGetBindCrit(accuracy, KinkyDungeonPlayerDamage);
+			//if (accuracy != 1.0) {
+			let weapon = KinkyDungeonWeapons[KinkyDungeonPlayerWeapon] || KinkyDungeonPlayerDamage;
+			statsDraw.accuracy = {
+				text: TextGet("KinkyDungeonAccuracy") + Math.round(accuracy * 100) + "%, " + TextGet("KinkyDungeonCrit") + Math.round(crit * 100) + "%, " + TextGet("KinkyDungeonBindCrit") + Math.round(bindcrit * 100) + "%",
+				count: Math.round(accuracy * 100) + "%",
+				icon: "infoAccuracy",//accuracy > weapon.chance * 1.01 ? "infoAccuracyBuff" : (accuracy < weapon.chance * 0.99 ? "infoAccuracyDebuff" : "infoAccuracy"),
+				countcolor: accuracy > weapon.chance * 1.01 ? "#c4efaa" : (accuracy < weapon.chance * 0.99 ? "#ff5555" : "#ffffff"),
+				category: "info", color: "#ffffff", bgcolor: "#000000", priority: 10
+			};
+			//}
+		}
+	}
+	//if (KinkyDungeonMiscastChance > 0) {
+	if (KDToggleShowAllBuffs || KinkyDungeonMiscastChance > 0) {
+		statsDraw.miscast = {
+			text: TextGet("StatMiscastChance") + Math.round(KinkyDungeonMiscastChance * 100) + "%",
+			count: Math.round(KinkyDungeonMiscastChance * 100) + "%",
+			icon: "infoMiscast",
+			countcolor: KinkyDungeonMiscastChance > 0 ? "#ff5555" : "#ffffff",
+			category: "info", color: "#ffffff", bgcolor: "#000000", priority: 9
+		};
+	}
+
+	if (KDToggleShowAllBuffs) {
+
+
+
+		//}
+		let evasion = KinkyDungeonPlayerEvasion();
+		let block = KinkyDungeonPlayerBlock();
+		//if (evasion != 1.0) {
+		statsDraw.evasion = {
+			text: TextGet("StatEvasion")
+				.replace("Percent", ("") + Math.round((1 - evasion) * 100))
+				.replace("EVASIONSUM", ("") + Math.round((KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion")) * 100))
+				.replace("EVASIONPENALTY", ("") + Math.round((1 - KinkyDungeonMultiplicativeStat(KDPlayerEvasionPenalty())) * -100)),
+			count: ("") + Math.round((1 - evasion) * 100) + "%",
+			icon: "infoEvasion",
+			countcolor: evasion < 1 ? "#65d45d" : (evasion == 1 ? "#ffffff" : "#ff5555"),
+			category: "info", color: "#ffffff", bgcolor: "#000000", priority: 8
+		};
+		statsDraw.block = {
+			text: TextGet("StatBlock")
+				.replace("Percent", ("") + Math.round((1 - block) * 100))
+				.replace("BLOCKSUM", ("") + Math.round((KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block")) * 100))
+				.replace("BLOCKPENALTY", ("") + Math.round((1 - KinkyDungeonMultiplicativeStat(KDPlayerBlockPenalty())) * -100)),
+			count: ("") + Math.round((1 - block) * 100) + "%",
+			icon: "infoBlock",
+			countcolor: block < 1 ? "#65d45d" : (block == 1 ? "#ffffff" : "#ff5555"),
+			category: "info", color: "#ffffff", bgcolor: "#000000", priority: 8
+		};
+		//}
+	}
+
+
 
 
 
@@ -1898,12 +1958,15 @@ function KDDrawBuffIcons(minXX, minYY) {
 		};
 	}
 
-	let escape = KDCanEscape();
-	statsDraw.key = {
-		text: TextGet(escape ? "StatKeyEscapeKey" : "StatKeyEscapeNoKey"),
-		icon: escape ? "infoKey" : "infoNoKey",
-		category: "help", color: "#ffffff", bgcolor: "#000000", priority: 5
-	};
+	if (KDToggleShowAllBuffs) {
+		let escape = KDCanEscape();
+		statsDraw.key = {
+			text: TextGet(escape ? "StatKeyEscapeKey" : "StatKeyEscapeNoKey"),
+			icon: escape ? "infoKey" : "infoNoKey",
+			category: "help", color: "#ffffff", bgcolor: "#000000", priority: 5
+		};
+	}
+
 
 
 
@@ -1912,12 +1975,12 @@ function KDDrawBuffIcons(minXX, minYY) {
 	} else {
 		if (KDHandBondageTotal() > 0)
 			statsDraw.b_hands = {text: TextGet("KDStatHandsPartial"), category: "status", icon: "boundHandsPartial", color: "#ff5555", bgcolor: "#333333", priority: 10};
-		else
+		else if (KDToggleShowAllBuffs)
 			statsDraw.b_hands = {text: TextGet("KDStatFreeHands"), category: "status", icon: "status/freeHands", color: "#55ff55", bgcolor: "#333333", priority: 10};
 	}
 	if (KinkyDungeonIsArmsBound(false, false)) {
 		statsDraw.b_arms = {text: TextGet("KDStatArms"), category: "status", icon: "boundArms", color: "#ff5555", bgcolor: "#333333", priority: 11};
-	} else {
+	} else if (KDToggleShowAllBuffs) {
 		statsDraw.b_arms = {text: TextGet("KDStatFreeArms"), category: "status", icon: "status/freeArms", color: "#55ff55", bgcolor: "#333333", priority: 11};
 	}
 	let gag = KinkyDungeonGagTotal(false);
@@ -1925,12 +1988,12 @@ function KDDrawBuffIcons(minXX, minYY) {
 		statsDraw.b_gag = {text: TextGet("KDStatGagFull"), category: "status", icon: "boundGagFull", color: "#ff5555", bgcolor: "#333333", priority: 7};
 	} else if (gag > 0) {
 		statsDraw.b_gag = {text: TextGet("KDStatGag"), category: "status", icon: "boundGag", color: "#ff5555", bgcolor: "#333333", priority: 7};
-	} else {
+	} else if (KDToggleShowAllBuffs) {
 		statsDraw.b_gag = {text: TextGet("KDStatFreeMouth"), category: "status", icon: "status/freeMouth", color: "#55ff55", bgcolor: "#333333", priority: 7};
 	}
 	if (KinkyDungeonBlindLevel > 0 || KinkyDungeonStatBlind > 0) {
 		statsDraw.b_blind = {text: TextGet("KDStatBlind"), category: "status", icon: "boundBlind", color: "#ff5555", bgcolor: "#333333", priority: 8};
-	} else {
+	} else if (KDToggleShowAllBuffs) {
 		statsDraw.b_blind = {text: TextGet("KDStatFreeEyes"), category: "status", icon: "status/freeEyes", color: "#55ff55", bgcolor: "#333333", priority: 8};
 	}
 	if (KDGameData.MovePoints < 0) {
@@ -1945,7 +2008,7 @@ function KDDrawBuffIcons(minXX, minYY) {
 		statsDraw.b_speed = {text: TextGet("KDStatSpeedSlow"), category: "status", icon: "boundSlow2", color: "#ff5555", bgcolor: "#333333", priority: 9};
 	} else if (KinkyDungeonSlowLevel > 0) {
 		statsDraw.b_speed = {text: TextGet("KDStatSpeedSlightlySlow"), category: "status", icon: "boundSlow1", color: "#ffff00", bgcolor: "#333333", priority: 9};
-	} else {
+	} else if (KDToggleShowAllBuffs) {
 		statsDraw.b_speed = {text: TextGet("KDStatFreeLegs"), category: "status", icon: "status/freeLegs", color: "#55ff55", bgcolor: "#333333", priority: 9};
 	}
 	if (KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) < KDShadowThreshold) {
@@ -1978,7 +2041,7 @@ function KDDrawBuffIcons(minXX, minYY) {
 			statsDraw.helphook = {text: TextGet("KinkyDungeonPlayerHook"), icon: "HelpHook", category: "help", color: "#ffffff", bgcolor: "#333333", priority: 5};
 			//DrawTextFitKD(TextGet("KinkyDungeonPlayerHook"), X1, 900 - i * 35, 200, "#ffffff", "#333333"); i++;
 		}
-		if (KinkyDungeonGetAffinity(false, "Sharp") || KinkyDungeonWeaponCanCut(true)) {
+		if (KinkyDungeonGetAffinity(false, "Sharp") && !KinkyDungeonWeaponCanCut(true)) {
 			statsDraw.helpsharp = {text: TextGet("KinkyDungeonPlayerSharp"), icon: "HelpSharp", category: "help", color: "#ffffff", bgcolor: "#333333", priority: 5};
 			//DrawTextFitKD(TextGet("KinkyDungeonPlayerSharp"), X1, 900 - i * 35, 200, "#ffffff", "#333333"); i++;
 		}
@@ -2000,111 +2063,113 @@ function KDDrawBuffIcons(minXX, minYY) {
 		statsDraw.quickness = {text: TextGet("KinkyDungeonPlayerQuickness"), icon: "quickness", category: "buffs", color: "#ffff00", bgcolor: "#333333", priority: 100};
 		//DrawTextFitKD(TextGet("KinkyDungeonPlayerQuickness"), X1, 900 - i * 35, 200, "#ffff00", "#333333"); i++;
 	}
-
-	let armor = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Armor");
-	if (armor != 0) {
-		statsDraw.armor = {text: TextGet("KinkyDungeonPlayerArmor") + Math.round(armor*10), count: (armor > 0 ? "+" : "") + Math.round(armor*10), category: "buffs", icon: "armor", color: "#fca570", bgcolor: "#333333", priority: armor};
-		//DrawTextFitKD(TextGet("KinkyDungeonPlayerArmor") + Math.round(armor*10), X2, 900 - i * 25, 200, "#fca570", "#333333"); i++; i++;
-	}
-	let spellarmor = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellResist");
-	if (spellarmor != 0) {
-		statsDraw.spellarmor = {text: TextGet("KinkyDungeonPlayerSpellResist") + Math.round(spellarmor*10), count: (spellarmor > 0 ? "+" : "") + Math.round(spellarmor*10), category: "buffs", icon: "spellarmor", color: "#73efe8", bgcolor: "#333333", priority: spellarmor + 1};
-		//DrawTextFitKD(TextGet("KinkyDungeonPlayerSpellResist") + Math.round(spellarmor*10), X2, 900 - i * 25, 200, "#73efe8", "#333333"); i++; i++;
-	}
-	let restraintblock = KDRestraintBlockPower(KDCalcRestraintBlock(), 10);
-	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlock"))
-		statsDraw.restraintblock = {
-			text: TextGet("StatRestraintBlock")
-				.replace("AMNT1", ("") + Math.round((1 - restraintblock) * 100))
-				.replace("AMNT2", ("") + Math.round(10 * KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlock")))
-				.replace("RESBLKPENALTY", Math.round((1 - KinkyDungeonMultiplicativeStat(KDRestraintBlockPenalty())) * -100) + ("%")),
-			count: ("") + Math.round((1 - restraintblock) * 100) + "%",
-			icon: "restraintblock",
-			countcolor: "#65d45d",
-			category: "status", color: "#ffffff", bgcolor: "#000000", priority: 0
-		};
-	let damageReduction = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "DamageReduction");
-	if (damageReduction > 0) {
-		statsDraw.damageReduction = {
-			text: TextGet("KinkyDungeonPlayerReduction") + Math.round(damageReduction*10),
-			count: "-" + Math.round(damageReduction*10),
-			category: "buffs", color: "#73efe8", bgcolor: "#333333", icon: "damageresist", priority: damageReduction * 3
-		};
-		//DrawTextFitKD(TextGet("KinkyDungeonPlayerReduction") + Math.round(damageReduction*10), X2, 900 - i * 25, 150, "#73efe8", "#333333"); i++; i++;
-	}
-	if (KinkyDungeonPlayerDamage) {
-		let flags = {
-			KDDamageHands: true.valueOf,
-			KDDamageArms: true.valueOf,
-		};
-		let data = {
-			flags: flags,
-			buffdmg: 0,
-			Damage: KinkyDungeonPlayerDamage,
-		};
-		KinkyDungeonSendEvent("calcDisplayDamage", data);
-		let meleeDamage = (KinkyDungeonPlayerDamage.dmg) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg") + data.buffdmg;
-		statsDraw.meleeDamage = {
-			text: TextGet("KinkyDungeonPlayerDamage")
-				.replace("DAMAGEDEALT", "" + Math.round(meleeDamage*10))
-				.replace("STMNA", Math.round(10 * KDAttackCost()) + "")
-				.replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + KinkyDungeonPlayerDamage.type)),
-			count: "" + Math.round(meleeDamage*10),
-			category: "info", color: "#ffffff", bgcolor: "#333333", icon: "infoDamageMelee", priority: 10.1
-		};
-	}
-	let bindAmp = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp");
-	if (bindAmp > 0) {
-		statsDraw.bindAmp = {
-			text: TextGet("KinkyDungeonPlayerBindBuff").replace("PERCENT", Math.round(bindAmp * 100) + "%"),
-			count: "+" + Math.round(bindAmp * 100) + "%",
-			countcolor: "#ffffff",
-			icon: "dmgPlus/dmgbind",
-			category: "dmg", color: "#ffae70", bgcolor: "#333333", priority: 5 + bindAmp * 20
-		};
-	}
-	let magicResist = KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "magicDamageResist"));
-	let meleeResist = KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "meleeDamageResist"));
-	for (let dt of Object.values(KinkyDungeonDamageTypes)) {
-		let color = dt.color;
-		let type = dt.name;
-		let DR = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, type + "DamageResist");
-		let resist = KinkyDungeonMultiplicativeStat(DR);
-		let boost = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, type + "DamageBuff");
-		let melee = KinkyDungeonMeleeDamageTypes.includes(type);
-		switch (type) {
-			case "melee": boost = KDDamageAmpPerks + KDDamageAmpPerksMelee; break;
-			case "magic": boost = KDDamageAmpPerks + KDDamageAmpPerksMagic; break;
-			case "spell": boost = KDDamageAmpPerksSpell; break;
+	if (KDToggleShowAllBuffs) {
+		let armor = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Armor");
+		if (armor != 0) {
+			statsDraw.armor = {text: TextGet("KinkyDungeonPlayerArmor") + Math.round(armor*10), count: (armor > 0 ? "+" : "") + Math.round(armor*10), category: "buffs", icon: "armor", color: "#fca570", bgcolor: "#333333", priority: armor};
+			//DrawTextFitKD(TextGet("KinkyDungeonPlayerArmor") + Math.round(armor*10), X2, 900 - i * 25, 200, "#fca570", "#333333"); i++; i++;
 		}
-		if (resist != 1.0) {
-			statsDraw[type + "_resist"] = {
-				text: TextGet("KinkyDungeonPlayerDamageResist")
-					.replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + type).toLocaleLowerCase())
-					.replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + type).toLocaleLowerCase())
-					.replace("DAMAGECATEGORY", TextGet(melee ? "KinkyDungeonDamageTypemelee" : "KinkyDungeonDamageTypemagic").toLocaleLowerCase())
-					.replace("PERCENT1", Math.round(resist * (melee ? meleeResist : magicResist) * 100) + "%")
-					.replace("PERCENT2", Math.round(DR * 100) + "")
-					.replace("PERCENT3", Math.round((melee ? meleeResist : magicResist) * 100) + "%"),
-				count: (resist > 1 ? '+' : "") + Math.round(resist * 100 - 100) + "%",
-				countcolor: resist < 1 ? "#c4efaa" : "#ff5555",
-				icon: "dmg" + type,
-				category: "dmg", color: color, bgcolor: "#333333", priority: resist * 10
+		let spellarmor = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellResist");
+		if (spellarmor != 0) {
+			statsDraw.spellarmor = {text: TextGet("KinkyDungeonPlayerSpellResist") + Math.round(spellarmor*10), count: (spellarmor > 0 ? "+" : "") + Math.round(spellarmor*10), category: "buffs", icon: "spellarmor", color: "#73efe8", bgcolor: "#333333", priority: spellarmor + 1};
+			//DrawTextFitKD(TextGet("KinkyDungeonPlayerSpellResist") + Math.round(spellarmor*10), X2, 900 - i * 25, 200, "#73efe8", "#333333"); i++; i++;
+		}
+		let restraintblock = KDRestraintBlockPower(KDCalcRestraintBlock(), 10);
+		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlock"))
+			statsDraw.restraintblock = {
+				text: TextGet("StatRestraintBlock")
+					.replace("AMNT1", ("") + Math.round((1 - restraintblock) * 100))
+					.replace("AMNT2", ("") + Math.round(10 * KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlock")))
+					.replace("RESBLKPENALTY", Math.round((1 - KinkyDungeonMultiplicativeStat(KDRestraintBlockPenalty())) * -100) + ("%")),
+				count: ("") + Math.round((1 - restraintblock) * 100) + "%",
+				icon: "restraintblock",
+				countcolor: "#65d45d",
+				category: "status", color: "#ffffff", bgcolor: "#000000", priority: 0
 			};
-			//DrawTextFitKD(TextGet("KinkyDungeonPlayerDamageResist").replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + type)) + Math.round(resist * 100) + "%", X2, 900 - i * 25, 150, color, "#333333"); i++;
+		let damageReduction = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "DamageReduction");
+		if (damageReduction > 0) {
+			statsDraw.damageReduction = {
+				text: TextGet("KinkyDungeonPlayerReduction") + Math.round(damageReduction*10),
+				count: "-" + Math.round(damageReduction*10),
+				category: "buffs", color: "#73efe8", bgcolor: "#333333", icon: "damageresist", priority: damageReduction * 3
+			};
+			//DrawTextFitKD(TextGet("KinkyDungeonPlayerReduction") + Math.round(damageReduction*10), X2, 900 - i * 25, 150, "#73efe8", "#333333"); i++; i++;
 		}
-
-		if (boost != 0) {
-			statsDraw[type + "_buff"] = {
-				text: TextGet("KinkyDungeonPlayerDamageBuff").replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + type)).replace("PERCENT", Math.round(boost * 100) + "%"),
-				count: "+" + Math.round(boost * 100) + "%",
+		if (KinkyDungeonPlayerDamage) {
+			let flags = {
+				KDDamageHands: true.valueOf,
+				KDDamageArms: true.valueOf,
+			};
+			let data = {
+				flags: flags,
+				buffdmg: 0,
+				Damage: KinkyDungeonPlayerDamage,
+			};
+			KinkyDungeonSendEvent("calcDisplayDamage", data);
+			let meleeDamage = (KinkyDungeonPlayerDamage.dmg) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg") + data.buffdmg;
+			statsDraw.meleeDamage = {
+				text: TextGet("KinkyDungeonPlayerDamage")
+					.replace("DAMAGEDEALT", "" + Math.round(meleeDamage*10))
+					.replace("STMNA", Math.round(10 * KDAttackCost()) + "")
+					.replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + KinkyDungeonPlayerDamage.type)),
+				count: "" + Math.round(meleeDamage*10),
+				category: "info", color: "#ffffff", bgcolor: "#333333", icon: "infoDamageMelee", priority: 10.1
+			};
+		}
+		let bindAmp = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp");
+		if (bindAmp > 0) {
+			statsDraw.bindAmp = {
+				text: TextGet("KinkyDungeonPlayerBindBuff").replace("PERCENT", Math.round(bindAmp * 100) + "%"),
+				count: "+" + Math.round(bindAmp * 100) + "%",
 				countcolor: "#ffffff",
-				icon: "dmgPlus/dmg" + type,
-				category: "dmg", color: color, bgcolor: "#333333", priority: 5 + boost * 10
+				icon: "dmgPlus/dmgbind",
+				category: "dmg", color: "#ffae70", bgcolor: "#333333", priority: 5 + bindAmp * 20
 			};
-			//DrawTextFitKD(TextGet("KinkyDungeonPlayerDamageResist").replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + type)) + Math.round(resist * 100) + "%", X2, 900 - i * 25, 150, color, "#333333"); i++;
+		}
+		let magicResist = KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "magicDamageResist"));
+		let meleeResist = KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "meleeDamageResist"));
+		for (let dt of Object.values(KinkyDungeonDamageTypes)) {
+			let color = dt.color;
+			let type = dt.name;
+			let DR = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, type + "DamageResist");
+			let resist = KinkyDungeonMultiplicativeStat(DR);
+			let boost = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, type + "DamageBuff");
+			let melee = KinkyDungeonMeleeDamageTypes.includes(type);
+			switch (type) {
+				case "melee": boost = KDDamageAmpPerks + KDDamageAmpPerksMelee; break;
+				case "magic": boost = KDDamageAmpPerks + KDDamageAmpPerksMagic; break;
+				case "spell": boost = KDDamageAmpPerksSpell; break;
+			}
+			if (resist != 1.0) {
+				statsDraw[type + "_resist"] = {
+					text: TextGet("KinkyDungeonPlayerDamageResist")
+						.replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + type).toLocaleLowerCase())
+						.replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + type).toLocaleLowerCase())
+						.replace("DAMAGECATEGORY", TextGet(melee ? "KinkyDungeonDamageTypemelee" : "KinkyDungeonDamageTypemagic").toLocaleLowerCase())
+						.replace("PERCENT1", Math.round(resist * (melee ? meleeResist : magicResist) * 100) + "%")
+						.replace("PERCENT2", Math.round(DR * 100) + "")
+						.replace("PERCENT3", Math.round((melee ? meleeResist : magicResist) * 100) + "%"),
+					count: (resist > 1 ? '+' : "") + Math.round(resist * 100 - 100) + "%",
+					countcolor: resist < 1 ? "#c4efaa" : "#ff5555",
+					icon: "dmg" + type,
+					category: "dmg", color: color, bgcolor: "#333333", priority: resist * 10
+				};
+				//DrawTextFitKD(TextGet("KinkyDungeonPlayerDamageResist").replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + type)) + Math.round(resist * 100) + "%", X2, 900 - i * 25, 150, color, "#333333"); i++;
+			}
+
+			if (boost != 0) {
+				statsDraw[type + "_buff"] = {
+					text: TextGet("KinkyDungeonPlayerDamageBuff").replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + type)).replace("PERCENT", Math.round(boost * 100) + "%"),
+					count: "+" + Math.round(boost * 100) + "%",
+					countcolor: "#ffffff",
+					icon: "dmgPlus/dmg" + type,
+					category: "dmg", color: color, bgcolor: "#333333", priority: 5 + boost * 10
+				};
+				//DrawTextFitKD(TextGet("KinkyDungeonPlayerDamageResist").replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + type)) + Math.round(resist * 100) + "%", X2, 900 - i * 25, 150, color, "#333333"); i++;
+			}
 		}
 	}
+
 
 	if (KinkyDungeonPlugCount > 0) {
 		statsDraw.plugs = {
@@ -2195,111 +2260,76 @@ function KDDrawBuffIcons(minXX, minYY) {
 
 	}
 
-	for (let perk of KinkyDungeonStatsChoice.keys()) {
-		if (KDPerkIcons[perk] && KDPerkIcons[perk]()) {
-			statsDraw["p" + perk] = {
-				text: TextGet("KinkyDungeonStatDesc" + KinkyDungeonStatsPresets[perk].id),
-				count: KDPerkCount[perk] ? KDPerkCount[perk]() : undefined,
-				icon: "perk/perk" + perk,
-				//countcolor: b.aura ? b.aura : b.labelcolor,
-				category: "perks", color: "#ffffff", bgcolor: "#333333", priority: 0,
-			};
+	if (KDToggleShowAllBuffs)
+		for (let perk of KinkyDungeonStatsChoice.keys()) {
+			if (KDPerkIcons[perk] && KDPerkIcons[perk]()) {
+				statsDraw["p" + perk] = {
+					text: TextGet("KinkyDungeonStatDesc" + KinkyDungeonStatsPresets[perk].id),
+					count: KDPerkCount[perk] ? KDPerkCount[perk]() : undefined,
+					icon: "perk/perk" + perk,
+					//countcolor: b.aura ? b.aura : b.labelcolor,
+					category: "perks", color: "#ffffff", bgcolor: "#333333", priority: 0,
+				};
+			}
 		}
-	}
 
+
+	KDDrawStatusBuffs(minXX, minYY, statsDraw);
+}
+
+function KDDrawStatusBuffs(minXX, minYY, statsDraw) {
 	// Draw the buff icons
 	let II = 0;
 	let spriteSize = 46;
 	let sorted = Object.values(statsDraw).sort((a, b) => {
 		return (b.priority + KDStatsOrder[b.category]) - (a.priority + KDStatsOrder[a.category]);
 	});
-	let maxXX = 2000 - 5 - spriteSize;
+	let maxXX = minXX + 800;
 	let YY = minYY;
 	let textWidth = 44;
 	let XX = minXX;
 	let XXspacing = spriteSize + 3;
 	let YYspacing = spriteSize + 3;
 	let currCategory = "";
-	let MaxHeight = 270 + spriteSize;
-	let ShowAll = KDToggleShowAllBuffs;
+	let tooltip = false;
 
-	// (KDMinBuffX && MouseIn(KDMinBuffX, minYY - spriteSize, 2000, MaxHeight)) || MouseIn(minXX, minYY - spriteSize, 250, MaxHeight);
-
-	currentDrawnSG = null;
-	currentDrawnSGLength = 0;
-	let smoothSnap = 5;
-	if (!ShowAll) {
-		if (KDMinBuffX)
-			KDMinBuffX = (minXX + KDUISmoothness * KDMinBuffX)/(1 + KDUISmoothness);
-		if (KDMinBuffX > minXX - smoothSnap)
-			KDMinBuffX = 0;
+	//if (Object.values(statsDraw).length > 0 || KDToggleShowAllBuffs)
+	if (DrawButtonKDEx("toggleShowAllBuffs", (bdata) => {
+		KDToggleShowAllBuffs = !KDToggleShowAllBuffs;
+		return true;
+	}, true,
+	minXX - 15 - spriteSize, minYY + 0.8*spriteSize - 5, spriteSize + 5, spriteSize + 10, undefined, "#ffffff",
+	KinkyDungeonRootDirectory + "Buffs/BuffDots.png", undefined, false, true, undefined, undefined, true,
+	{
+		zIndex: 10,
+	})) {
+		DrawTextFitKD(TextGet("KDExpandBuffs"), minXX, 500, 1000, "#ffffff", "#000000", 22, "left", 160, 1.0, 8);
+		tooltip = true;
 	}
-	else {
-		if (!KDMinBuffX) {
-			// Determine KDMinBuffX
-			KDMinBuffX = minXX;
-		} else {
-			KDMinBuffX = (KDMinBuffXTarget + KDUISmoothness * KDMinBuffX)/(1 + KDUISmoothness);
-			if (KDMinBuffX < KDMinBuffXTarget + smoothSnap) KDMinBuffX = KDMinBuffXTarget;
-		}
 
-		/*FillRectKD(
-			kdcanvas, kdpixisprites, "buffBG", {
-				Left: KDMinBuffX - spriteSize/2, Top: minYY - spriteSize, Width: 2000 - 5 - KDMinBuffX + spriteSize/2,
-				Height: MaxHeight + spriteSize,
-				Color: "#000000", alpha: 0.4, zIndex: 100,
-			}
-		);*/
-	}
-	DrawButtonKDEx(
-		"KDToggleShowAllBuffs", (bdata) => {
-			if (MouseX > 1700)
-				KDToggleShowAllBuffs = !KDToggleShowAllBuffs;
-			return true;
-		},
-		true,
-		(KDMinBuffX || minXX) - spriteSize/4,
-		minYY - spriteSize*0.75,
-		2000 - 10 - (KDMinBuffX || minXX) + spriteSize/2,
-		MaxHeight + spriteSize,
-		"", "#000000", undefined, undefined, undefined, !KDToggleShowAllBuffs, KDToggleShowAllBuffs ? KDButtonColor : undefined, undefined, undefined,
-		{alpha: 0.8, zIndex: 100.5});
 	let resetX = (stat) => {
-		if (!ShowAll && !KDMinBuffX)
-			XX = minXX;
-		else {
-			XX = KDMinBuffX;
-		}
+		XX = minXX;
 	};
 	resetX();
 
-	if (KDToggleShowAllBuffs)
-		KDDraw(kdcanvas, kdpixisprites, "allbuffsX", KinkyDungeonRootDirectory + "UI/X.png",
-			1960, minYY - 29, undefined, undefined, undefined, {
-				zIndex: 101,
-			});
-
 	for (let stat of sorted) {
 		if (((!KDMinBuffX && XX > minXX) || (KDMinBuffX && XX > KDMinBuffX)) && (KDStatsSkipLine[currCategory] || KDStatsSkipLineBefore[stat.category]) && currCategory != stat.category) {
-			resetX(stat);
 
-			YY += YYspacing;
-		}
-		if (YY > minYY + MaxHeight) {
-			KDDraw(kdcanvas, kdpixisprites, "stat" + II, KinkyDungeonRootDirectory + "Buffs/BuffDots.png",
-				XX, YY - Math.ceil(spriteSize/2), undefined, undefined, undefined, {
-					zIndex: 101,
-				});
-			break;
+			if (KDToggleShowAllBuffs) {
+				resetX(stat);
+				YY -= YYspacing;
+			}
 		}
 
 		currCategory = stat.category;
 
 		if (stat.count)
-			DrawTextFitKD(stat.count, XX + spriteSize/2, YY + spriteSize/2 - 10, textWidth, stat.countcolor || "#ffffff", "#000000", 16, undefined, 114, 0.8, 5);
+			DrawTextFitKD(stat.count, XX + spriteSize/2, YY + spriteSize/2 - 10, textWidth, stat.countcolor || "#ffffff", "#000000",
+				16, undefined, 114, 0.8, 5);
 
-		if (MouseIn(XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize)) {
-			DrawTextFitKD(stat.text, XX - 10, YY, 1250, stat.color, "#000000", 22, "right", 160, 1.0, 8);
+		if (!tooltip && MouseIn(XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize)) {
+			DrawTextFitKD(stat.text, minXX, 500, 1000, stat.color, "#000000", 22, "left", 160, 1.0, 8);
+			tooltip = true;
 			if (stat.click) {
 				DrawButtonKDEx("statHighlight" + II, (bdata) => {
 					KDSendInput("buffclick", {
@@ -2311,20 +2341,22 @@ function KDDrawBuffIcons(minXX, minYY) {
 				XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize, undefined, "#ffffff",
 				undefined, undefined, false, true, undefined, undefined, undefined,
 				{
-					zIndex: 102,
+					zIndex: 10,
 				});
 			}
 		}
 
-		KDDraw(kdcanvas, kdpixisprites, "stat" + II, KinkyDungeonRootDirectory + "Buffs/" + (stat.icon || "buff/buff") + ".png",
-			XX, YY - Math.ceil(spriteSize/2), undefined, undefined, undefined, {
-				zIndex: 101,
+		KDDraw(kdstatusboard, kdpixisprites, "stat" + II, KinkyDungeonRootDirectory + "Buffs/" + (stat.icon || "buff/buff") + ".png",
+			XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize, undefined, {
+				zIndex: 151,
 			});
 
 		XX += XXspacing;
 		if (XX > maxXX) {
-			resetX(stat);
-			YY += YYspacing;
+			if (KDToggleShowAllBuffs) {
+				resetX(stat);
+				YY -= YYspacing;
+			}
 		}
 		II++;
 	}

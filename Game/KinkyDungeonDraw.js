@@ -1936,9 +1936,9 @@ let KDLogTopPad = 25;
 let KDLogIndex = 0;
 let KDLogIndexInc = 3;
 
-let KDMsgWidth = 1200;
+let KDMsgWidth = 800;
 let KDMsgWidthMin = 800;
-let KDMsgX = 520;
+let KDMsgX = 720;
 let KDMsgFadeTime = 10;
 
 let KDMaxConsoleMsg = 6;
@@ -1949,7 +1949,7 @@ function KinkyDungeonDrawMessages(NoLog) {
 			KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle;
 			KDLogIndex = 0;
 			return true;
-		}, true, 1700, 25, 44, 44, "", "#ffffff",
+		}, true, KDMsgWidthMin + KDMsgX + 10, 4, 72, 72, "", "#ffffff",
 		KinkyDungeonRootDirectory + (KinkyDungeonMessageToggle ? "UI/LogUp.png" : "UI/LogDown.png"), undefined, undefined, !KinkyDungeonMessageToggle, undefined, undefined, undefined, {
 			hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[0]),
 			hotkeyPress: KinkyDungeonKeyToggle[0],
@@ -1958,8 +1958,6 @@ function KinkyDungeonDrawMessages(NoLog) {
 	if (!KinkyDungeonMessageToggle || NoLog) {
 		let i = 0;
 		if (!MouseIn(KDMsgX + (KDMsgWidth - KDMsgWidthMin)/2, 0, KDMsgWidthMin, 62 + KDLogDist*(2 + KDMaxConsoleMsg)) || KinkyDungeonDrawState != "Game") {
-
-
 			let msg2nd = [];
 			let ignoreMSG = [];
 			let spacing = KDLogDist;
@@ -2009,12 +2007,12 @@ function KinkyDungeonDrawMessages(NoLog) {
 			}
 
 		}
-		if (i > 0 || KinkyDungeonDrawState == "Game")
+		if (i > 0)
 			FillRectKD(kdcanvas, kdpixisprites, "msglogbg", {
 				Left: KDMsgX + (KDMsgWidth - KDMsgWidthMin)/2,
 				Top: 0,
 				Width: KDMsgWidthMin,
-				Height: 62 + KDLogDist*(i + 1),
+				Height: 22 + KDLogDist*(i),
 				Color: "#000000",
 				LineWidth: 1,
 				zIndex: 100,
@@ -2036,7 +2034,7 @@ function KinkyDungeonDrawMessages(NoLog) {
 		for (let i = 0; i < KinkyDungeonMessageLog.length && i < KDMaxLog; i++) {
 			let log = KinkyDungeonMessageLog[Math.max(0, KinkyDungeonMessageLog.length - 1 - (i + KDLogIndex))];
 			let col = log.color;
-			DrawTextFitKD(log.text, KDMsgX + KDMsgWidth/2, KDLogTopPad + i * KDLogDist + KDLogDist/2, KDMsgWidth, col, KDTextGray1, 28, undefined, 101);
+			DrawTextFitKD(log.text, KDMsgX + KDMsgWidth/2, KDLogTopPad + i * KDLogDist + KDLogDist/2, KDMsgWidth, col, KDTextGray1, KDMSGFontSize, undefined, 101);
 		}
 		if (KinkyDungeonMessageLog.length > KDMaxLog) {
 			DrawButtonKDEx("logscrollup", (bdata) => {

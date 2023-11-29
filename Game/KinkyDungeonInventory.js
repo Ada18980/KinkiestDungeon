@@ -908,7 +908,7 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 					// draw the weapon damage type icon
 					KDDraw(kdcanvas, kdpixisprites, "wt_" + tagi,
 						KinkyDungeonRootDirectory + `Buffs/dmg${weapon.type}.png`,
-						canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35 - spritesize2/2 * (tags.length - 1) + spritesize2*tagi,
+						canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale/3.35 - spritesize2/2 * (tags.length - 1) + spritesize2*tagi,
 						canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 46 - spritesize + 133,
 						spritesize, spritesize,
 						undefined, {
@@ -918,14 +918,14 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 					// Draw the tag
 					KDDraw(kdcanvas, kdpixisprites, "wt_" + tagi,
 						KinkyDungeonRootDirectory + `Buffs/weaponTag/${tags[tagi]}.png`,
-						canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35 - spritesize2/2 * (tags.length - 1) + spritesize2*tagi,
+						canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale/3.35 - spritesize2/2 * (tags.length - 1) + spritesize2*tagi,
 						canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 46 - spritesize + 133,
 						spritesize, spritesize,
 						undefined, {
 							zIndex: 130,
 						});
 					if (MouseIn(
-						canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35 - spritesize2/2 * (tags.length - 1) + spritesize2*tagi,
+						canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale/3.35 - spritesize2/2 * (tags.length - 1) + spritesize2*tagi,
 						canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 46 - spritesize + 133,
 						spritesize, spritesize,
 					)) {

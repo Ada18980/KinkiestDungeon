@@ -724,42 +724,42 @@ let KDDialogue = {
 							"Continue": {
 								playertext: "Continue", response: "Default",
 								drawFunction: (gagged, player, delta) => {
-									DrawBoxKD(500, 900, 250, 95, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+									DrawBoxKD(500, 900, 200, 95, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 									return false;
 								},
 								options: {
 									"Continue": {
 										playertext: "Continue", response: "Default",
 										drawFunction: (gagged, player, delta) => {
-											DrawBoxKD(750, 920, 600, 75, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+											DrawBoxKD(740, 750, 800, 175, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 											return false;
 										},
 										options: {
 											"Continue": {
 												playertext: "Continue", response: "Default",
 												drawFunction: (gagged, player, delta) => {
-													DrawBoxKD(1350, 920, 640, 75, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+													DrawBoxKD(1620, 820, 440, 175, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 													return false;
 												},
 												options: {
 													"Continue": {
 														playertext: "Continue", response: "Default",
 														drawFunction: (gagged, player, delta) => {
-															DrawBoxKD(1745, 450, 250, 350, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+															DrawBoxKD(1845, 550, 150, 320, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 															return false;
 														},
 														options: {
 															"Continue": {
 																playertext: "Continue", response: "Default",
 																drawFunction: (gagged, player, delta) => {
-																	DrawBoxKD(1745, 150, 250, 300, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+																	DrawBoxKD(1800, 280, 250, 300, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 																	return false;
 																},
 																options: {
 																	"Continue": {
 																		playertext: "Continue", response: "Default",
 																		drawFunction: (gagged, player, delta) => {
-																			DrawBoxKD(1500, 25, 250, 600, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+																			DrawBoxKD(700, 920, 900, 75, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 																			return false;
 																		},
 																		options: {
