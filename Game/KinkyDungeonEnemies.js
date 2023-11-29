@@ -2830,7 +2830,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 								let suff = KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) + h : h;
 								let index = ("" + Math.floor(Math.random() * 3));
 
-								if (!enemy.dialogue || !enemy.dialogueDuration)
+								if ((!enemy.dialogue || !enemy.dialogueDuration) && !enemy.playWithPlayer)
 									KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailChase" + suff + index).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 7, (!KDGameData.PrisonerState) ? 3 : 5);
 							}
 							KDMakeHostile(enemy, KDMaxAlertTimer);
@@ -4084,7 +4084,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					hit = false;
 				}
 				if (hit) {
-					if (KDRandom() < actionDialogueChanceIntense)
+					if (KDRandom() < actionDialogueChanceIntense && !enemy.playWithPlayer)
 						KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "HitPlayer").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 3, 5);
 					let replace = [];
 					/** @type {{r: restraint, v: ApplyVariant}[]} */
@@ -4175,7 +4175,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							if (enemy.usingSpecial && Locked && enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialAttack.includes("Lock")) {
 								enemy.specialCD = enemy.Enemy.specialCD;
 							}
-							if (KDRandom() < actionDialogueChanceIntense)
+							if (KDRandom() < actionDialogueChanceIntense && !enemy.playWithPlayer)
 								KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Lock").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 4);
 
 						} else if (AIData.attack.includes("Bind")

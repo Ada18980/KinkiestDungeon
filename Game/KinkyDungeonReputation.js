@@ -281,7 +281,11 @@ function KinkyDungeonHandleReputation() {
 }
 
 function KinkyDungeonDrawReputation() {
+
+	let xOffset = -125;
+	KDDrawLoreRepTabs(xOffset);
 	KinkyDungeonDrawMessages(true);
+
 	let i = 0;
 	let XX = 0;
 	let spacing = 600 / Object.keys(KinkyDungeonGoddessRep).length;
@@ -326,19 +330,19 @@ function KinkyDungeonDrawReputation() {
 			}
 			let suff = "";
 			if (!KDStatRep.includes(rep)) suff = "" + KinkyDungeonRepName(value);
-			DrawTextKD(TextGet("KinkyDungeonShrine" + rep) + goddessSuff, canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i, goddessColor, KDRepNameColor[rep] || "#000000", undefined, "left");
+			DrawTextKD(TextGet("KinkyDungeonShrine" + rep) + goddessSuff, canvasOffsetX_ui + xOffset + XX + 20, yPad + canvasOffsetY_ui + spacing * i, goddessColor, KDRepNameColor[rep] || "#000000", undefined, "left");
 			if (suff) {
-				DrawTextFitKD(suff, canvasOffsetX_ui + 275 + XX + 250, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
+				DrawTextFitKD(suff, canvasOffsetX_ui + xOffset + 275 + XX + 240, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
 			}
-			DrawProgressBar(canvasOffsetX_ui + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value, color, KDTextGray2);
+			DrawProgressBar(canvasOffsetX_ui + xOffset + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value, color, KDTextGray2);
 			if (KinkyDungeonShrineBaseCosts[rep])
-				KDDrawRestraintBonus(rep, canvasOffsetX_ui + 275 + XX - 70, yPad + canvasOffsetY_ui + spacing * i, undefined, 24);
+				KDDrawRestraintBonus(rep, canvasOffsetX_ui + xOffset + 275 + XX - 50, yPad + canvasOffsetY_ui + spacing * i, undefined, 24);
 
-			if (MouseIn(canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i - 1 - spacing/2, 500, spacing - 2)) {
+			if (MouseIn(canvasOffsetX_ui + xOffset + XX, yPad + canvasOffsetY_ui + spacing * i - 1 - spacing/2, 500, spacing - 2)) {
 				DrawTextFitKD(TextGet("KDRepDescription" + rep), 1100, 880, 1250, "#ffffff", "#000000");
 			}
 
-			DrawTextKD(" " + (Math.round(value)+50) + " ", canvasOffsetX_ui + 275 + XX + 100,  2+yPad + canvasOffsetY_ui + spacing * i, "white", "black");
+			DrawTextKD(" " + (Math.round(value)+50) + " ", canvasOffsetX_ui + xOffset + 275 + XX + 100,  2+yPad + canvasOffsetY_ui + spacing * i, "white", "black");
 
 			if (KDFactionRepIndex < 0.1) {
 				if (KDRepSelectionMode == "") {
@@ -361,7 +365,7 @@ function KinkyDungeonDrawReputation() {
 				}
 
 				if (KinkyDungeonShrineBaseCosts[rep]) {
-					//DrawButtonVis(canvasOffsetX_ui + 275 + XX + 400, yPad + canvasOffsetY_ui + spacing * i - 20, 100, 40, TextGet("KinkyDungeonAid"), value > 10 ? "white" : "pink");
+					//DrawButtonVis(canvasOffsetX_ui + xOffset + 275 + XX + 400, yPad + canvasOffsetY_ui + spacing * i - 20, 100, 40, TextGet("KinkyDungeonAid"), value > 10 ? "white" : "pink");
 					if (KDRepSelectionMode == "Rescue") {
 						DrawButtonKDEx("rep_rescue" + rep, (bdata) => {
 							if (KinkyDungeonCanRescue(rep, value)) {
@@ -371,8 +375,8 @@ function KinkyDungeonDrawReputation() {
 								}
 							}
 							return true;
-						}, true, canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet("KinkyDungeonRescue"), (KinkyDungeonCanRescue(rep, value)) ? "white" : (KinkyDungeonAllRestraint().length > 0 && !KinkyDungeonRescued[rep] ? "pink" : "#999999"));
-						if (MouseIn(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40)) {
+						}, true, canvasOffsetX_ui + xOffset + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet("KinkyDungeonRescue"), (KinkyDungeonCanRescue(rep, value)) ? "white" : (KinkyDungeonAllRestraint().length > 0 && !KinkyDungeonRescued[rep] ? "pink" : "#999999"));
+						if (MouseIn(canvasOffsetX_ui + xOffset + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40)) {
 							DrawTextFitKD(TextGet("KinkyDungeonRescueDesc"), 1100, 880, 1250, "white", "black");
 							// Rescue
 						}
@@ -382,15 +386,15 @@ function KinkyDungeonDrawReputation() {
 						DrawButtonKDEx("rep_champ" + rep, (bdata) => {
 							KDSendInput("champion", {rep: rep, value: value});
 							return true;
-						}, true, canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet(isChampion ? "KinkyDungeonChampionCurrent" : "KinkyDungeonChampionSwitch"),
+						}, true, canvasOffsetX_ui + xOffset + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet(isChampion ? "KinkyDungeonChampionCurrent" : "KinkyDungeonChampionSwitch"),
 							(isChampion) ? "white" : "#999999");
-						if (MouseIn(canvasOffsetX_ui + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40)) {
+						if (MouseIn(canvasOffsetX_ui + xOffset + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40)) {
 							DrawTextFitKD(TextGet("KinkyDungeonChampionDesc"), 1100, 880, 1250, "white", "black");
 							// Rescue
 						}
 					}
 
-					//DrawButtonVis(canvasOffsetX_ui + 275 + XX + 690, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet("KinkyDungeonPenance"), "white");
+					//DrawButtonVis(canvasOffsetX_ui + xOffset + 275 + XX + 690, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet("KinkyDungeonPenance"), "white");
 				}
 			} else KDRepSelectionMode = "";
 
@@ -403,6 +407,7 @@ let KDFactionRepIndex = 0;
 let KDMaxFactionsPerBar = 14;
 
 function KinkyDungeonDrawFactionRep() {
+	let xOffset = -100;
 	let i = 0;
 	let XX = 675;
 	let spacing = 42;
@@ -418,7 +423,7 @@ function KinkyDungeonDrawFactionRep() {
 			index++;
 			if (index < KDFactionRepIndex * KDMaxFactionsPerBar + 1) continue;
 			if (index > KDFactionRepIndex * KDMaxFactionsPerBar + KDMaxFactionsPerBar) continue;
-			if (!tooltip && MouseIn(canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/2, barSpacing + 200, yPad)) {
+			if (!tooltip && MouseIn(canvasOffsetX_ui + xOffset + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/2, barSpacing + 200, yPad)) {
 				tooltip = rep;
 			}
 			i++;
@@ -431,13 +436,13 @@ function KinkyDungeonDrawFactionRep() {
 		KDFactionRepIndex -= 0.5;
 		return true;
 	}, KDFactionRepIndex > 0,
-	1802, 140, 90, 40, "", KDFactionRepIndex > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png");
+	1802 + xOffset, 140, 90, 40, "", KDFactionRepIndex > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png");
 
 	DrawButtonKDEx("FactionIndexDown", () => {
 		KDFactionRepIndex += 0.5;
 		return true;
 	}, KDFactionRepIndex < (Object.keys(KinkyDungeonFactionRelations.Player).length - KinkyDungeonHiddenFactions.length) / KDMaxFactionsPerBar,
-	1802, 790, 90, 40, "", KDFactionRepIndex < (Object.keys(KinkyDungeonFactionRelations.Player).length - KinkyDungeonHiddenFactions.length) / KDMaxFactionsPerBar ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png");
+	1802 + xOffset, 790, 90, 40, "", KDFactionRepIndex < (Object.keys(KinkyDungeonFactionRelations.Player).length - KinkyDungeonHiddenFactions.length) / KDMaxFactionsPerBar ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png");
 
 	let text = false;
 
@@ -477,7 +482,7 @@ function KinkyDungeonDrawFactionRep() {
 				case 'AncientRobot': tcolor ="grey"; break;
 			}
 
-			if (MouseIn(canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/2, barSpacing + 200, yPad)) {
+			if (MouseIn(canvasOffsetX_ui + xOffset + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/2, barSpacing + 200, yPad)) {
 				let allytext = "";
 				let enemytext = "";
 				let friendstext = "";
@@ -499,7 +504,7 @@ function KinkyDungeonDrawFactionRep() {
 				}
 				let loc = {x: 1175, y: 812, fit: 600};
 				if (KDFactionRepIndex > 0.1) {
-					loc = {x: canvasOffsetX_ui, y: 820, fit: 1400};
+					loc = {x: canvasOffsetX_ui + xOffset, y: 820, fit: 1400};
 				}
 				if (!text) {
 					if (enemytext) {
@@ -530,13 +535,13 @@ function KinkyDungeonDrawFactionRep() {
 				tcolor = "white";
 			}
 
-			DrawTextKD(TextGet("KinkyDungeonFaction" + rep), canvasOffsetX_ui + XX, yPad + canvasOffsetY_ui + spacing * i, tcolor, KDTextGray1, undefined, "left");
+			DrawTextKD(TextGet("KinkyDungeonFaction" + rep), canvasOffsetX_ui + xOffset + XX, yPad + canvasOffsetY_ui + spacing * i, tcolor, KDTextGray1, undefined, "left");
 			if (suff) {
-				DrawTextFitKD(suff, canvasOffsetX_ui + barSpacing + XX + 250, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
+				DrawTextFitKD(suff, canvasOffsetX_ui + xOffset + barSpacing + XX + 250, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
 			}
-			DrawProgressBar(canvasOffsetX_ui + barSpacing + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value * 50, color, KDTextGray2);
+			DrawProgressBar(canvasOffsetX_ui + xOffset + barSpacing + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value * 50, color, KDTextGray2);
 
-			DrawTextKD(" " + (Math.round(value * 50)+50) + " ", canvasOffsetX_ui + barSpacing + XX + 100,  1+yPad + canvasOffsetY_ui + spacing * i, "white", "black");
+			DrawTextKD(" " + (Math.round(value * 50)+50) + " ", canvasOffsetX_ui + xOffset + barSpacing + XX + 100,  1+yPad + canvasOffsetY_ui + spacing * i, "white", "black");
 
 
 			i++;

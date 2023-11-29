@@ -4876,3 +4876,98 @@ function KDGetEventsForRestraint(name) {
 	if (KinkyDungeonRestraintVariants[name]) return Object.assign([], KinkyDungeonRestraintVariants[name].events);
 	return Object.assign([], KDRestraint({name: name}).events || []);
 }
+
+
+/**
+ *
+ * @param {item} item
+ * @param {boolean} [includeItem]
+ * @returns {item[]}
+ */
+function KDDynamicLinkList(item, includeItem) {
+	let ret = [];
+	if (includeItem) ret.push(item);
+	if (item && item.dynamicLink) {
+		let link = item.dynamicLink;
+		while (link) {
+			ret.push(link);
+			link = link.dynamicLink;
+		}
+	}
+	return ret;
+}
+
+/**
+ * Returns a list of items on the 'surface' of a dynamic link, i.e items that can be accessed
+ * @param {item} item
+ * @returns {item[]}
+ */
+function KDDynamicLinkListSurface(item) {
+	// First we get the whole stack
+	let stack = [];
+	if (item && item.dynamicLink) {
+		let last = item;
+		let link = item.dynamicLink;
+		while (link) {
+			stack.push({item: link, host: last});
+			last = link;
+			link = link.dynamicLink;
+		}
+	}
+	let ret = [item];
+	let inaccess = false;
+	// Now that we have the stack we sum things up
+	for (let i = 0; i < stack.length; i++) {
+		let tuple = stack[i];
+		let inv = tuple.item;
+		let host = tuple.host;
+		if (!inaccess && KDRestraint(host).inaccessible) inaccess = true;
+		if ( KDRestraint(host).alwaysAccessible || (
+			!inaccess
+			&&
+			(
+				KDRestraint(host).accessible || KDRestraint(inv).alwaysRender || (KDRestraint(inv).renderWhenLinked && KDRestraint(host).shrine && KDRestraint(inv).renderWhenLinked.some((link) => {return KDRestraint(host).shrine.includes(link);}))
+			)
+		)
+		) {
+			ret.push(inv);
+		}
+	}
+	return ret;
+}
+
+/**
+ *
+ * @param {restraint} restraint
+ * @returns {number}
+ */
+function KDLinkSize(restraint) {
+	return restraint.linkSize ? restraint.linkSize : 1;
+}
+
+/**
+ *
+ * @param {item} item
+ * @param {string} linkCategory
+ * @param {item} [ignoreItem]
+ * @returns {number}
+ */
+function KDLinkCategorySize(item, linkCategory, ignoreItem) {
+	let total = 0;
+	// First we get the whole stack
+	let stack = [item];
+	if (item && item.dynamicLink) {
+		let link = item.dynamicLink;
+		while (link) {
+			stack.push(link);
+			link = link.dynamicLink;
+		}
+	}
+	// Now that we have the stack we sum things up
+	for (let inv of stack) {
+		if (KDRestraint(inv).linkCategory == linkCategory && ignoreItem?.id != inv.id) {
+			total += KDLinkSize(KDRestraint(inv));
+		}
+	}
+	return total;
+}

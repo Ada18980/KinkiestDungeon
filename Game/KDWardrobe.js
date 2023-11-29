@@ -760,15 +760,15 @@ function KDDrawWardrobe(screen, Character) {
 	for (let i = 0; i < KDOutfitInfo.length && i < KDMaxOutfitsDisplay; i++) {
 		let index = i + KDMaxOutfitsIndex;
 
-		DrawButtonKDEx("ClickOutfit" + i, clickButton(index), true, 475, 120 + 50 * i, 200, 45,
+		DrawButtonKDEx("ClickOutfit" + i, clickButton(index), true, 475, 120 + 50 * i, 150, 45,
 			KDOutfitInfo[index] + (((index == KDCurrentOutfit && KDOriginalValue) || KDOutfitOriginalStore[index]) ? "(*)" : ""),
-			index == KDCurrentOutfit ? "#ffffff" : "#888888", "");
+			index == KDCurrentOutfit ? "#ffffff" : "#888888", "", undefined, undefined, true);
 
 	}
 	DrawBoxKD(450, 55, 250, 0 + KDOutfitInfo.length * 50, KDButtonColor, false, 0.5, -10);
 
 
-	DrawTextFitKD(TextGet("KDManageOutfits"), 575, 735, 220, "#ffffff", KDTextGray0);
+	DrawTextFitKD(TextGet("KDManageOutfits"), 575, 735, 260, "#ffffff", KDTextGray0);
 	DrawBoxKD(450, 710, 520, 285, KDButtonColor, false, 0.5, -10);
 
 	DrawButtonKDEx("ResetOutfit", (bdata) => {

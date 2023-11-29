@@ -639,9 +639,14 @@ function KinkyDungeonTakeOrb(Amount, X, Y) {
 	KDOrbY = Y;
 }
 function KinkyDungeonDrawOrb() {
-
-	DrawTextKD(TextGet("KinkyDungeonOrbIntro" + (KinkyDungeonStatsChoice.get("randomMode") ? "Kinky" : "")), 1250, 200, "#ffffff", KDTextGray2);
-	DrawTextKD(TextGet("KinkyDungeonOrbIntro2"), 1250, 250, "#ffffff", KDTextGray2);
+	let tile = KinkyDungeonTilesGet(KDOrbX + "," + KDOrbY);
+	let spell = tile?.Spell ? KinkyDungeonFindSpell(tile.Spell) : "";
+	DrawTextKD(TextGet("KinkyDungeonOrbIntro" + (KinkyDungeonStatsChoice.get("randomMode") ? (
+		(!spell || KDHasSpell(spell.name)) ? "KinkyRandom" : "Kinky") : ""))
+		.replace("SHCL", TextGet("KinkyDungeonSpellsSchool" + spell.school))
+		.replace("SPLNME", TextGet("KinkyDungeonSpell" + spell.name))
+	, 1250, 150, "#ffffff", KDTextGray2);
+	DrawTextKD(TextGet("KinkyDungeonOrbIntro2"), 1250, 200, "#ffffff", KDTextGray2);
 	let i = 0;
 	let maxY = 560;
 	let XX = 500;
@@ -663,7 +668,11 @@ function KinkyDungeonDrawOrb() {
 				if (value > 30) color = "#00ff00";
 				else color = "#88ff00";
 			}
-			DrawButtonVis(canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonShrine" + shrine), "white");
+			DrawButtonKDEx("orbspell" + shrine, (b) => {
+				KDSendInput("orb", {shrine: shrine, Amount: 1, x: KDOrbX, y: KDOrbY});
+				KinkyDungeonDrawState = "Game";
+				return true;
+			}, true, canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonShrine" + shrine), "white");
 			DrawProgressBar(canvasOffsetX_ui + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value, color, KDTextGray2);
 			if (KinkyDungeonShrineBaseCosts[shrine])
 				KDDrawRestraintBonus(shrine, canvasOffsetX_ui + 275 + XX - 70, yPad + canvasOffsetY_ui + spacing * i, undefined, 24);
@@ -673,7 +682,12 @@ function KinkyDungeonDrawOrb() {
 
 	}
 
-	DrawButtonVis(canvasOffsetX_ui + 525, yPad + canvasOffsetY_ui + spacing * i, 425, 55, TextGet("KinkyDungeonSurpriseMe"), "white");
+	DrawButtonKDEx("orbspellrandom", (b) => {
+		let shrine = Object.keys(KinkyDungeonShrineBaseCosts)[Math.floor(KDRandom() * Object.keys(KinkyDungeonShrineBaseCosts).length)];
+		KDSendInput("orb", {shrine: shrine, Amount: 0.9, x: KDOrbX, y: KDOrbY});
+		KinkyDungeonDrawState = "Game";
+		return true;
+	}, true, canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonSurpriseMe"), "white");
 	i += 2;
 	DrawButtonKDEx("cancelorb", (bdata) => {
 		KinkyDungeonDrawState = "Game";
@@ -686,93 +700,6 @@ let KDOrbX = 0;
 let KDOrbY = 0;
 
 function KinkyDungeonHandleOrb() {
-	let Amount = KinkyDungeonOrbAmount;
-	let i = 0;
-	let maxY = 560;
-	let XX = 500;
-	let spacing = 60;
-	let yPad = 150;
-	for (let shrine in KinkyDungeonShrineBaseCosts) {
-		let value = KinkyDungeonGoddessRep[shrine];
-
-		if (value != undefined) {
-			if (spacing * i > maxY) {
-				if (XX == 0) i = 0;
-				XX = 600;
-			}
-			if (MouseIn(canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55)) {
-				KDSendInput("orb", {shrine: shrine, Amount: Amount, x: KDOrbX, y: KDOrbY});
-				KinkyDungeonDrawState = "Game";
-				return true;
-			}
-			i++;
-		}
-
-	}
-
-	if (MouseIn(canvasOffsetX_ui + 525, yPad + canvasOffsetY_ui + spacing * i, 425, 55)) {
-		let shrine = Object.keys(KinkyDungeonShrineBaseCosts)[Math.floor(KDRandom() * Object.keys(KinkyDungeonShrineBaseCosts).length)];
-		if (KinkyDungeonMapGet(KDOrbX, KDOrbY) == 'O') {
-			if (KinkyDungeonGoddessRep[shrine] < -45) {
-				KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, "OrbGuardian", 3 + Math.floor(Math.sqrt(1 + MiniGameKinkyDungeonLevel)), 10, false, 30);
-			}
-			KinkyDungeonChangeRep(shrine, Amount * -9);
-			if (KinkyDungeonStatsChoice.get("randomMode")) {
-				let spell = null;
-				let spellList = [];
-				let maxSpellLevel = 4;
-
-				for (let k of Object.keys(KinkyDungeonSpellList)) {
-					for (let sp of KinkyDungeonSpellList[k]) {
-						if (KinkyDungeonCheckSpellPrerequisite(sp) && sp.school == k && !sp.secret && !sp.passive) {
-							for (let iii = 0; iii < maxSpellLevel - sp.level; iii++) {
-								if (sp.level == 1 && KinkyDungeonStatsChoice.get("Novice"))
-									spellList.push(sp);
-								spellList.push(sp);
-							}
-
-						}
-					}
-				}
-
-
-				for (let sp of KinkyDungeonSpells) {
-					for (let S = 0; S < spellList.length; S++) {
-						if (sp.name == spellList[S].name) {
-							spellList.splice(S, 1);
-							S--;
-						}
-					}
-				}
-
-				spell = spellList[Math.floor(KDRandom() * spellList.length)];
-
-				if (spell) {
-					KinkyDungeonSpells.push(spell);
-					if (spell.autoLearn) {
-						for (let sp of spell.autoLearn) {
-							if (KinkyDungeonSpellIndex(sp) < 0) {
-								KinkyDungeonSpells.push(KinkyDungeonFindSpell(sp, true));
-							}
-						}
-					}
-					if (spell.learnPage) {
-						for (let sp of spell.learnPage) {
-							KDAddSpellPage(sp);
-						}
-					}
-					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonOrbSpell").replace("SPELL", TextGet("KinkyDungeonSpell" + spell.name)), "lightblue", 2);
-				}
-			} else {
-				KinkyDungeonSpellPoints += Amount;
-			}
-			KinkyDungeonMapSet(KDOrbX, KDOrbY, 'o');
-		}
-
-		KinkyDungeonDrawState = "Game";
-		return true;
-	}
-
 
 	return true;
 }

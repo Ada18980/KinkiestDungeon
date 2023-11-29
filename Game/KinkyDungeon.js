@@ -143,7 +143,7 @@ let KDToggles = {
 	LightmapFilter: true,
 	EnemyAnimations: true,
 	TransparentUI: false,
-	TurnCounter: true,
+	TurnCounter: false,
 	ShowNPCStatuses: true,
 	ShowSpellRange: true,
 	ForceWarnings: false,
@@ -333,7 +333,7 @@ let KDDefaultMaxParty = 3;
 * Quests: string[],
 * PriorJailbreaks: number,
 * PriorJailbreaksDecay: number,
-* PreviousWeapon: string,
+* PreviousWeapon: string[],
 * StaminaPause: number,
 * StaminaSlow: number,
 * ManaSlow: number,
@@ -530,7 +530,7 @@ let KDGameDataBase = {
 	OffhandReturn: "",
 
 	Favors: {},
-	PreviousWeapon: null,
+	PreviousWeapon: [],
 	QuickLoadout: [],
 
 	StaminaPause: 0,
@@ -2027,10 +2027,10 @@ function KinkyDungeonRun() {
 
 		let XX = 840;
 		let YYstart = 60;
-		let YYmax = 680;
+		let YYmax = 760;
 		let YY = YYstart;
-		let YYd = 70;
-		let XXd = 400;
+		let YYd = 54;
+		let XXd = 350;
 		let toggles = Object.keys(KDToggles);
 		//MainCanvas.textAlign = "left";
 		for (let toggle of toggles) {
@@ -2039,9 +2039,10 @@ function KinkyDungeonRun() {
 				KDToggles[toggle] = !KDToggles[toggle];
 				KDSaveToggles();
 				return true;
-			}, true, XX, YY, 64, 64, TextGet("KDToggle" + toggle), KDToggles[toggle], false, "#ffffff", undefined, {
-				maxWidth: 280,
-				fontSize: 26,
+			}, true, XX, YY, 48, 48, TextGet("KDToggle" + toggle), KDToggles[toggle], false, "#ffffff", undefined, {
+				maxWidth: 250,
+				fontSize: 18,
+				scaleImage: true,
 			});
 
 			YY += YYd;
@@ -2092,7 +2093,7 @@ function KinkyDungeonRun() {
 			} else KinkyDungeonState = "Menu";
 			//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
 			return true;
-		}, true, 975, 780, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "");
+		}, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "");
 
 	}
 
@@ -2262,7 +2263,7 @@ function DrawButtonKD(name, enabled, Left, Top, Width, Height, Label, Color, Ima
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
- * @returns {void} - Nothing
+ * @returns {boolean} - Whether or not the mouse is in the button
  */
 function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
 	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
@@ -2276,6 +2277,7 @@ function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Co
 		priority: (options?.zIndex || 0),
 		hotkeyPress: options?.hotkeyPress,
 	};
+	return MouseIn(Left,Top,Width,Height);
 }
 
 
@@ -2373,6 +2375,7 @@ function KDMouseWheel(event) {
 	if (KDFunctionDialogueScroll(event.deltaY)) return;
 	if (KDFunctionPerksScroll(event.deltaY || event.deltaX)) return;
 	if (KDFunctionMagicPageScroll(event.deltaY || event.deltaX)) return;
+	if (KDFunctionMagicSpellPageScroll(event.deltaY || event.deltaX)) return;
 	if (KDFunctionInventoryScroll(event.deltaY || event.deltaX)) return;
 	if (KDFunctionMsgScroll(event.deltaY)) return;
 	if (KDFunctionRestraintIndexScroll(event.deltaY)) return;
@@ -2409,6 +2412,22 @@ function KDFunctionMagicPageScroll(amount) {
 		} else {
 			KDClickButton("magiclastpage");
 		}
+		return true;
+	}
+	return false;
+}
+function KDFunctionMagicSpellPageScroll(amount) {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "MagicSpells") {
+		if (MouseY < 225) {
+			if (amount > 0) {
+				KinkyDungeonCurrentSpellsPage += 1;
+				if (KinkyDungeonCurrentSpellsPage >= KinkyDungeonLearnableSpells.length - 1) KinkyDungeonCurrentSpellsPage = KinkyDungeonLearnableSpells.length - 1;
+			} else {
+				KinkyDungeonCurrentSpellsPage -= 1;
+				if (KinkyDungeonCurrentSpellsPage < 0) KinkyDungeonCurrentSpellsPage = 0;
+			}
+		}
+
 		return true;
 	}
 	return false;

@@ -66,9 +66,9 @@ let KDEventHexModular = {
 			{trigger: "drawSGTooltip", type: "curseInfo", prereq: "noCorruption", msg: "Illumination", color: "#ff5555", inheritLinked: true, original: "Light"},
 			{trigger: "postApply", inheritLinked: true, type: "cursePrefix"},
 		]},
-	"Attraction": {level: 1,
+	"Attraction": {level: 4,
 		weight: (item, allHex) => {
-			return 8;
+			return (!allHex?.includes("Attraction")) ? 2 : 0;
 		},
 		events: [
 			// All hexes have this

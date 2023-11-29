@@ -2,6 +2,8 @@
 let KinkyDungeonKilledEnemy = null;
 let KinkyDungeonAlert = 0;
 
+let KDMaxPreviousWeapon = 3;
+
 let KDMINDAMAGENOISE = 2;
 let KDDMGSOUNDMULT = 1.5;
 
@@ -161,7 +163,7 @@ function KinkyDungeonFindWeapon(Name) {
 
 function KinkyDungeonWeaponCanCut(RequireInteract, MagicOnly) {
 	if (KinkyDungeonPlayerWeapon
-		&& KDWeapon({name: KinkyDungeonPlayerWeapon}).cutBonus != undefined
+		&& KDWeapon({name: KinkyDungeonPlayerWeapon})?.cutBonus != undefined
 		&& (!MagicOnly || KDWeaponIsMagic({name: KinkyDungeonPlayerWeapon}))
 		&& (!RequireInteract || !KinkyDungeonIsHandsBound(false, false, 0.55))) return true;
 	if (KinkyDungeonPlayerBuffs) {
@@ -1097,6 +1099,8 @@ function KinkyDungeonDisarm(Enemy, suff) {
 			let weapon = KinkyDungeonPlayerDamage.name;
 
 			let dropped = {x:foundslot.x, y:foundslot.y, name: weapon};
+
+			KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, TextGet("KDDisarmed"), "#ff5555", 3);
 
 			KDSetWeapon('Unarmed', true);
 			KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());

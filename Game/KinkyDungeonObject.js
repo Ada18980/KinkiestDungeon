@@ -282,3 +282,42 @@ function KinkyDungeonHandleCharger() {
 	return false;
 }
 
+
+
+
+function KDHandleModalArea() {
+	if (KinkyDungeonTargetTile.Type &&
+		((KinkyDungeonTargetTile.Type == "Lock" && KinkyDungeonTargetTile.Lock) || (KinkyDungeonTargetTile.Type == "Door" && KinkyDungeonTargetTile.Lock))) {
+		if (KinkyDungeonLockpicks > 0 && (KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation})) && MouseIn(KDModalArea_x + 313, KDModalArea_y + 25, 112, 60)) {
+			// Done, converted to input
+			KDSendInput("pick", {targetTile: KinkyDungeonTargetTileLocation});
+			return true;
+		}
+
+		if ((KDLocks[KinkyDungeonTargetTile.Lock].canUnlock({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation})) && MouseIn(KDModalArea_x + 175, KDModalArea_y + 25, 112, 60)) {
+			// Done, converted to input
+			KDSendInput("unlock", {targetTile: KinkyDungeonTargetTileLocation});
+			return true;
+		}
+		if (((KinkyDungeonTargetTile.Lock.includes("Purple") && KinkyDungeonStatMana > KinkyDungeonGetManaCost(KinkyDungeonFindSpell("CommandWord", true)))) && MouseIn(KDModalArea_x + 175, KDModalArea_y + 25, 112, 60)) {
+			// Done, converted to input
+			KDSendInput("commandunlock", {targetTile: KinkyDungeonTargetTileLocation});
+			return true;
+		}
+	} else if (KinkyDungeonTargetTile.Type == "Shrine") {
+		// Done, converted to input
+		if (KinkyDungeonHandleShrine()) {
+			return true;
+			// if (KinkyDungeonSound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+		}
+	} else if (KDObjectHandle[KinkyDungeonTargetTile.Type]) {
+		return KDObjectHandle[KinkyDungeonTargetTile.Type]();
+	} else if (KinkyDungeonTargetTile.Type == "Door") {
+		if (MouseIn(KDModalArea_x + 25, KDModalArea_y + 25, 350, 60)) {
+			// Done, converted to input
+			KDSendInput("closeDoor", {targetTile: KinkyDungeonTargetTileLocation});
+			return true;
+		}
+	}
+	return false;
+}

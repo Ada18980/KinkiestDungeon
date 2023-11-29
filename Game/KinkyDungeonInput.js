@@ -91,9 +91,14 @@ function KDProcessInput(type, data) {
 			KDDelayedActionPrune(["Action", "SwitchWeapon"]);
 			if (!data.noOld) {
 				let oldweapon = KinkyDungeonPlayerWeapon;
-				KDGameData.PreviousWeapon = oldweapon;
+				if (!KDGameData.PreviousWeapon || typeof KDGameData.PreviousWeapon === 'string') KDGameData.PreviousWeapon = [];
+				KDGameData.PreviousWeapon.push(oldweapon);
+			}
+			while (KDGameData.PreviousWeapon?.length > KDMaxPreviousWeapon) {
+				KDGameData.PreviousWeapon.splice(0, 1);
 			}
 			KDSetWeapon(data.weapon);
+			while (KDGameData.PreviousWeapon?.includes(data.weapon)) KDGameData.PreviousWeapon.splice(KDGameData.PreviousWeapon.indexOf(data.weapon), 1);
 			KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon(undefined, undefined, KinkyDungeonWeapons[data.weapon]));
 			let time = (data.weapon && KinkyDungeonWeapons[data.weapon] && KinkyDungeonWeapons[data.weapon].heavy) ? 2 : 1;
 			if (KinkyDungeonStatsChoice.has("Disorganized")) {
@@ -120,8 +125,13 @@ function KDProcessInput(type, data) {
 		}
 		case "unequipWeapon":
 			KDDelayedActionPrune(["Action", "SwitchWeapon"]);
-			KDGameData.PreviousWeapon = data.weapon;
+			if (!KDGameData.PreviousWeapon || typeof KDGameData.PreviousWeapon === 'string') KDGameData.PreviousWeapon = [];
+			if (data.weapon)
+				KDGameData.PreviousWeapon.push(data.weapon);
 			KDSetWeapon(null);
+			while (KDGameData.PreviousWeapon?.length > KDMaxPreviousWeapon) {
+				KDGameData.PreviousWeapon.splice(0, 1);
+			}
 			KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());
 			KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonUnEquipWeapon").replace("WEAPONNAME", KDGetItemNameString(data.weapon)), "white", 5);
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
@@ -390,28 +400,8 @@ function KDProcessInput(type, data) {
 
 				KDSendStatus('goddess', data.shrine, 'takeOrb');
 				if (KinkyDungeonStatsChoice.get("randomMode")) {
-					let spell = null;
-					let spellList = [];
-					let maxSpellLevel = 4;
-					for (let k of Object.keys(KinkyDungeonSpellList)) {
-						for (let sp of KinkyDungeonSpellList[k]) {
-							if (KinkyDungeonCheckSpellPrerequisite(sp) && sp.school == k && !sp.secret && !sp.passive) {
-								for (let iii = 0; iii < maxSpellLevel - sp.level; iii++)
-									spellList.push(sp);
-							}
-						}
-					}
-
-					for (let sp of KinkyDungeonSpells) {
-						for (let S = 0; S < spellList.length; S++) {
-							if (sp.name == spellList[S].name) {
-								spellList.splice(S, 1);
-								S--;
-							}
-						}
-					}
-
-					spell = spellList[Math.floor(KDRandom() * spellList.length)];
+					let tt = KinkyDungeonTilesGet(data.x + "," + data.y);
+					let spell = KinkyDungeonFindSpell(tt.Spell) || KDGetRandomSpell();
 
 					if (spell) {
 						KinkyDungeonSpells.push(spell);
@@ -720,6 +710,7 @@ function KDProcessInput(type, data) {
 			if (data.action == "read") {
 				tile = KinkyDungeonTilesGet(data.targetTile);
 				if (tile && tile.Type == "Tablet") {
+					let full = false;
 					// Perform the tablet buff action
 					if (tile.Name == "Will") {
 						// Restoration shrine gets a regeneration buff
@@ -727,7 +718,10 @@ function KDProcessInput(type, data) {
 						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill2", type: "restore_sp", power: 0.5, duration: 20});
 						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill3", type: "restore_wp", power: 0.5, duration: 5});
 					} else if (tile.Name == "Determination") {
-						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletDetermination", type: "restore_wp", power: 1, duration: 5});
+						if (KinkyDungeonStatWill >= KinkyDungeonStatWillMax) {
+							full = true;
+						} else
+							KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletDetermination", type: "restore_wp", power: 1, duration: 5});
 					} else {
 						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
 							{id: "Tablet" + tile.Name, aura: KDGoddessColor(tile.Name), type: "event", duration: 9999, power: 2, player: true, enemies: false, maxCount: 3, tags: ["cast_" + tile.Name.toLowerCase(), "trigger_" + tile.Name.toLowerCase()], events: [
@@ -736,17 +730,22 @@ function KDProcessInput(type, data) {
 						);
 					}
 
-					// Send the message and advance time
-					KinkyDungeonAdvanceTime(1);
-					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTabletReadSuccess"), "lightgreen", 1);
+					if (!full) {
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTabletReadFull"), "lightgreen", 1);
+					} else {
+						// Send the message and advance time
+						KinkyDungeonAdvanceTime(1);
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTabletReadSuccess"), "lightgreen", 1);
 
-					// Remove the tile
-					let x = parseInt(data.targetTile.split(',')[0]);
-					let y = parseInt(data.targetTile.split(',')[1]);
-					if (x && y) {
-						KinkyDungeonMapSet(x, y, 'm');
-						KinkyDungeonTilesDelete(data.targetTile);
+						// Remove the tile
+						let x = parseInt(data.targetTile.split(',')[0]);
+						let y = parseInt(data.targetTile.split(',')[1]);
+						if (x && y) {
+							KinkyDungeonMapSet(x, y, 'm');
+							KinkyDungeonTilesDelete(data.targetTile);
+						}
 					}
+
 				}
 			}
 			break;

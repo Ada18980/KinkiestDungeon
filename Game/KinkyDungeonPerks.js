@@ -910,6 +910,28 @@ function drawVertList(list, x, y, w, h, max, fontSize, clickfnc, prefix) {
 	}
 }
 
+
+/**
+ *
+ * @param {any[]} list
+ * @param {number} x
+ * @param {number} y
+ * @param {number} w
+ * @param {number} h
+ * @param {number} max
+ * @param {number} fontSize
+ * @param {(any) => ((any) => boolean)} clickfnc
+ * @param {string} prefix
+ * @param {boolean} reverse
+ */
+function drawHorizList(list, x, y, w, h, max, fontSize, clickfnc, prefix, reverse) {
+	for (let i = 0; i < list.length && i < max; i++) {
+		let name = list[i];
+		DrawButtonKDEx(name + x + "," + y, clickfnc({name: name}), true, x + (reverse ? -1 : 1) * (w+1) * i - w/2, y, w, h,
+			TextGet(prefix + name), KDTextWhite, undefined, undefined, undefined, true, KDButtonColor, fontSize);
+	}
+}
+
 /**
  *
  * @param {Record<string, boolean>} existing

@@ -18,6 +18,11 @@ Vague todo:
 TODO add sugar magic ('Blood Energy Magic')
 
 
+5.0.1
+- Fixed bug where hotkeys for Wait, Play self, and Make Noise didnt work
+- Wait til Interrupted while Reloading a crossbow now auto-ends after finishing loading. Useful for arbalest.
+- Improved the Orb Break menu when using Random Spells (now you know which spell it will give you)
+
 5.0.0 RC8
 - Added Strict Ropework which adds an additional rope harness for aesthetic purposes
 - Various curses that need you to be near a shrine now give a hint as to when they can be removed

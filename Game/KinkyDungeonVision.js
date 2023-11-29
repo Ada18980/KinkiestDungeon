@@ -693,7 +693,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 	let borders = false;
 	let zoom = 1;
 	let blackMap = false;
-	if (!KinkyDungeonShowInventory && (MouseIn(kdminimap.x, kdminimap.y, KDMinimapW*KDMinimapExpandedZoomTick, KDMinimapH*KDMinimapExpandedZoomTick) || KDExpandMinimap)) {
+	if (!KinkyDungeonShowInventory && (KDExpandMinimap)) {
 		scale = KDMinimapExpandedZoom;
 		w = KDMinimapExpandedSize;
 		h = Math.floor(KDMinimapHBig/KDMinimapWBig*KDMinimapExpandedSize);
@@ -739,7 +739,7 @@ function KDUpdateMinimapTarget(force = false) {
 }
 
 let KDExpandMinimap = false;
-let KDMinimapScale = 3;
+let KDMinimapScale = 8;
 let KDMinimapScaleBig = 12;
 let KDMinimapW = 30;
 let KDMinimapH = 30;
@@ -810,6 +810,9 @@ function KDRenderMinimap(x, y, w, h, scale, alpha, gridborders, blackMap) {
 	}
 
 }
+
+
+
 
 /**
  * Allows fog of war to be rendered

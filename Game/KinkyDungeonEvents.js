@@ -1781,7 +1781,7 @@ let KDEventMapInventory = {
 					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 
-					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `${TextGet("KDArmorNoise")}`, "#ffffff", 5);
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `${TextGet("KDArmorNoise")}`, "#ffffff", 2);
 					data.armorNoise = true;
 				}
 			}
@@ -1955,7 +1955,7 @@ let KDEventMapInventory = {
 					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 
-					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `${TextGet("KDArmorNoise")}`, "#ffffff", 5);
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `${TextGet("KDArmorNoise")}`, "#ffffff", 2);
 					data.armorNoise = true;
 				}
 			}
@@ -4450,6 +4450,7 @@ let KDEventMapWeapon = {
 		"Reload": (e, weapon, data) => {
 			let player = data.player || KinkyDungeonPlayerEntity;
 			if (KinkyDungeonSlowMoveTurns < 1 && (!e.prereq || !KDPrereqs[e.prereq] || KDPrereqs[e.prereq](player, e, data))) {
+				let originalDuration = KinkyDungeonPlayerBuffs[weapon.name + "Load"].duration;
 				let currentLoad = KDEntityBuffedStat(player, weapon.name + "Load") || 0;
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: weapon.name + "Load",
@@ -4461,6 +4462,8 @@ let KDEventMapWeapon = {
 					duration: 7,
 				});
 				if (currentLoad >= e.power) {
+					if (originalDuration < 9000)
+						KinkyDungeonInterruptSleep(); // End wait if we were reloading
 					KinkyDungeonPlayerBuffs[weapon.name + "Load"].aura = undefined;
 					KinkyDungeonPlayerBuffs[weapon.name + "Load"].duration = 9999;
 				} else {

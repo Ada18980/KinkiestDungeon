@@ -10,7 +10,7 @@ let KDClassStart = {
 		KinkyDungeonInventoryAddWeapon("Sword");
 		if (!KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("Breastplate"), 0, true, ""))
 			KinkyDungeonInventoryAddLoose("Breastplate");
-		KDGameData.PreviousWeapon = "Shield";
+		KDGameData.PreviousWeapon = ["Shield", "Unarmed"];
 		KDSetWeapon("Sword");
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("BattleRhythm"));
 		KinkyDungeonSpellChoicesToggle.push(true);
@@ -37,7 +37,7 @@ let KDClassStart = {
 	"Rogue": () => { // Rogue
 		KinkyDungeonInventoryAddWeapon("Dirk");
 		KinkyDungeonInventoryAddWeapon("Bow");
-		KDGameData.PreviousWeapon = "Bow";
+		KDGameData.PreviousWeapon = ["Bow", "Unarmed"];
 		KDSetWeapon("Dirk");
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("RogueTargets"));
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Bondage"));
@@ -60,7 +60,7 @@ let KDClassStart = {
 	"Mage": () => { // Mage
 		KinkyDungeonInventoryAddWeapon("Knife");
 		KinkyDungeonInventoryAddWeapon("ArcaneCrystal");
-		KDGameData.PreviousWeapon = "Knife";
+		KDGameData.PreviousWeapon = ["Knife", "ArcaneCrystal"];
 		KDSetWeapon("ArcaneCrystal");
 
 		KinkyDungeonSpells.push(KinkyDungeonFindSpell("ManaRegen"));

@@ -867,7 +867,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		let trapChance = MapParams.trapchance; // Chance of a pathway being split between a trap and a door
 		let doorlocktrapchance = MapParams.doorlocktrapchance != undefined ? MapParams.doorlocktrapchance : MapParams.trapchance;
 		let doortrapchance = MapParams.doortrapchance || 0.4;
-		let minortrapChance = MapParams.minortrapChance ? MapParams.minortrapChance : trapChance/3;
+		let minortrapChance = MapParams.minortrapChance ? MapParams.minortrapChance : trapChance/10;
 		// Door algorithm is defunct
 		let grateChance = MapParams.grateChance;
 		let doorchance = MapParams.doorchance;
@@ -2491,6 +2491,14 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 				if (type == "Orb") {
 					if (orbs < orbcount) {
 						tile = 'O';
+
+						if (KinkyDungeonStatsChoice.get("randomMode")) {
+							let spell = KDGetRandomSpell();
+							KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Spell: spell.name});
+						}
+
+
+
 						orbs += 1;
 					} else tile = 'o';
 					if (KDAlreadyOpened(shrine.x, shrine.y)) {
@@ -3781,8 +3789,11 @@ function KinkyDungeonGameKeyDown() {
 				if (KinkyDungeonCurrentPage >= KinkyDungeonSpells.length) {
 					KinkyDungeonCurrentPage = 0;
 				}
-			} else if (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey && KinkyDungeonCurrentPage > 0) {
+			} else if (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey && KinkyDungeonCurrentPage >= 0) {
 				KinkyDungeonCurrentPage -= 1;
+				if (KinkyDungeonCurrentPage < 0) {
+					KinkyDungeonCurrentPage =  KinkyDungeonSpells.length - 1;
+				}
 			} else if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey) {
 				if (KinkyDungeonPreviewSpell) {
 					if (KinkyDungeonPreviewSpell.hideLearned) KinkyDungeonDrawState = "MagicSpells";
@@ -3799,8 +3810,9 @@ function KinkyDungeonGameKeyDown() {
 			if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonCurrentSpellsPage += 1;
 				if (KinkyDungeonCurrentSpellsPage >= KinkyDungeonLearnableSpells.length) KinkyDungeonCurrentSpellsPage = 0;
-			} else if (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey && KinkyDungeonCurrentSpellsPage > 0) {
+			} else if (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey && KinkyDungeonCurrentSpellsPage >= 0) {
 				KinkyDungeonCurrentSpellsPage -= 1;
+				if (KinkyDungeonCurrentSpellsPage < 0) KinkyDungeonCurrentSpellsPage = KinkyDungeonLearnableSpells.length - 1;
 			} else if (KinkyDungeonKey[0] == KinkyDungeonKeybindingCurrentKey) {
 				KDClickButton("spellsUp");
 			} else if (KinkyDungeonKey[2] == KinkyDungeonKeybindingCurrentKey) {
@@ -3879,7 +3891,7 @@ function KinkyDungeonGameKeyUp(lastPress) {
 		} else if (KinkyDungeonKeyToggle.includes(KinkyDungeonKeybindingCurrentKeyRelease)) {
 			switch (KinkyDungeonKeybindingCurrentKeyRelease) {
 				// Log, Passing, Door, Auto Struggle, Auto Pathfind
-				case KinkyDungeonKeyToggle[0]: KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle; break;
+				//case KinkyDungeonKeyToggle[0]: KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle; break;
 				case KinkyDungeonKeyToggle[1]: KinkyDungeonToggleAutoPass = !KinkyDungeonToggleAutoPass; break;
 				case KinkyDungeonKeyToggle[2]: KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor; break;
 				case KinkyDungeonKeyToggle[3]: KDAutoStruggleClick(); break;
@@ -4820,7 +4832,7 @@ let KDKeyCheckers = {
 		if (KinkyDungeonState == 'Game' && KinkyDungeonDrawState == 'Game' && KinkyDungeonKeyToggle.includes(KinkyDungeonKeybindingCurrentKey)) {
 			switch (KinkyDungeonKeybindingCurrentKey) {
 				// Log, Passing, Door, Auto Struggle, Auto Pathfind
-				case KinkyDungeonKeyToggle[0]: KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle; break;
+				//case KinkyDungeonKeyToggle[0]: KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle; break;
 				case KinkyDungeonKeyToggle[1]: KinkyDungeonToggleAutoPass = !KinkyDungeonToggleAutoPass; break;
 				case KinkyDungeonKeyToggle[2]: KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor; break;
 				case KinkyDungeonKeyToggle[3]: KDAutoStruggleClick(); break;
