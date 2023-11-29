@@ -42,20 +42,20 @@ AddModel({
 
 AddModel({
 	Name: "HumanEyes",
-	Folder: "FaceKoi",
+	Folder: "FaceDask",
 	TopLevel: true,
 	Protected: true,
 	Group: "Eyes",
 	Categories: ["Eyes","Face"],
 	Layers: ToLayerMap([
 		{ Name: "Eyes", Layer: "Eyes", Pri: 0,
-			Sprite: "Human", // Because pose is called EyesNeutral lol
+			Sprite: "", // Because pose is called EyesNeutral lol
 			OffsetX: 942,
 			OffsetY: 200,
 			Poses: ToMap(EYEPOSES),
 		},
 		{ Name: "Eyes2", Layer: "Eyes", Pri: 0,
-			Sprite: "Human", // Because pose is called EyesNeutral lol
+			Sprite: "", // Because pose is called EyesNeutral lol
 			OffsetX: 942,
 			OffsetY: 200,
 			Poses: ToMap(EYE2POSES),
