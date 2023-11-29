@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.0"
+KDVersionStr,"5.0.1"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -3049,7 +3049,7 @@ KinkyDungeonDropRedKey,"You drop the key due to your bound hands!"
 KinkyDungeonDropBlueKey,"You drop the magic key due to your bound hands!"
 
 KinkyDungeonLogbook,Log
-KinkyDungeonLogbookN,Log (N)
+KinkyDungeonLogbookN,Journal (N)
 KinkyDungeonAutoPassOn,"Passing..."
 KinkyDungeonAutoPassOff,"Pass NPCs"
 KinkyDungeonAutoDoorOn,"Closing..."
@@ -3120,7 +3120,8 @@ KinkyDungeonShrineDetermination,"Willpower"
 KinkyDungeonObjectTablet,"A tablet inscribed with runes of TYPE."
 KinkyDungeonTabletTooltip,"Teachings of SHRINETYPE"
 KinkyDungeonTabletRead,"Decypher"
-KinkyDungeonTabletReadSuccess,"You read the runes and they imbue you with power!"
+KinkyDungeonTabletReadSuccess,"You read the runes and they fill you with power!"
+KinkyDungeonTabletReadFull,"These runes are meant for someone with less willpower."
 KinkyDungeonTabletReadFailure,"You try to read the runes but cannot understand them."
 
 KDAlliedWith,"Allies: "
@@ -3299,8 +3300,8 @@ RestraintControlHarness,Control Harness
 RestraintControlHarnessDesc,"An advanced harness for controlling high-security prisoners."
 RestraintControlHarnessDesc2,"It seems to be made of flexible steel plates."
 
-RestraintTrackingCollar,Tracking Collar
-RestraintTrackingCollarDesc,"An advanced collar for tracking high-security prisoners."
+RestraintTrackingCollar,Cyber Collar
+RestraintTrackingCollarDesc,"An advanced collar for registering prisoners into the facility network."
 RestraintTrackingCollarDesc2,"It seems to be made of flexible steel plates, and it has a high-security lock."
 
 RestraintLatexBallGag,Latex Ball Gag
@@ -4566,9 +4567,15 @@ RestraintDivineMuzzleDesc2,"A shining muzzle made of holy metal. Nothing can tou
 RestraintClothBlindfold,Blindfold
 RestraintClothBlindfoldDesc,"A piece of cloth secured onto your face and blocking vision."
 RestraintClothBlindfoldDesc2,"You can still see through the gap around your nose."
-RestraintClothGag,Knotted Cloth Gag
-RestraintClothGagDesc,"A piece of cloth tied in a knot and tied over your mouth."
+RestraintClothGag,Cleave Gag
+RestraintClothGagDesc,"A piece of cloth forced between your lips."
 RestraintClothGagDesc2,"On its own it's not very restrictive."
+RestraintClothGag2,Thick Cleave Gag
+RestraintClothGag2Desc,"A piece of cloth that makes it hard to speak."
+RestraintClothGag2Desc2,"It's somewhat effective."
+RestraintClothGag3,Knotted Cloth Gag
+RestraintClothGag3Desc,"A piece of cloth tied in a knot and tied over your mouth."
+RestraintClothGag3Desc2,"It's pretty effective at keeping you quiet."
 RestraintClothGagOver,OTN Cloth Gag
 RestraintClothGagOverDesc,"A piece of cloth tightened over your mouth."
 RestraintClothGagOverDesc2,"On its own it's not very restrictive."
@@ -6294,7 +6301,6 @@ KinkyDungeonSpellNone,"Empty Slot"
 KinkyDungeonMagicSpellsBack,"Back to Spellbook"
 KinkyDungeonGame,"Return to Game"
 
-
 KinkyDungeonSpellsPageUpgrade,"Spell Tree"
 KinkyDungeonSpellsPageElements,"Elemental Spells"
 KinkyDungeonSpellsPageConjure,"Conjuration Spells"
@@ -6618,9 +6624,10 @@ KinkyDungeonTrapSpawnMaidforceMafia,"You are ambushed by a group of maids!"
 KinkyDungeonTrapSpawnMaidforceHead,"The Head Maid corners you!"
 KinkyDungeonTrapCustomVine,"A vine crawls from the ground, already wrapping around your feet!"
 
-KinkyDungeonOrbIntro,"You have broken a magic orb, gaining a Spell Point and angering a goddess."
-KinkyDungeonOrbIntroKinky,"You have broken a magic orb, gaining a random spell and angering a goddess."
-KinkyDungeonOrbIntro2,"Choose one. She will send her minions after you."
+KinkyDungeonOrbIntro,"You find a magic orb, containing a Spell Point. However, a Goddess owns this artifact.."
+KinkyDungeonOrbIntroKinky,"You find a magic orb, containing the SHCL spell 'SPLNME' and angering a goddess."
+KinkyDungeonOrbIntroKinkyRandom,"You find a magic orb, containing a random spell and angering a goddess."
+KinkyDungeonOrbIntro2,"Should you break it, she will send her minions after you. Which Goddess will you anger?"
 
 KinkyDungeonPerkIntro,"An altar stands before you, bestowing a heavenly contract."
 KinkyDungeonPerkIntro2,"Do you choose to accept its terms?"
@@ -6900,7 +6907,7 @@ KinkyDungeonCurseStruggleMistressKeyEnchantedAnkleCuffs2,"You struggle fruitless
 
 KinkyDungeonMistressKeysTakenAway,You search for your ancient keys but it seems they were taken away for good.
 
-KinkyDungeonSurpriseMe,Random (reduces penalty by 1)
+KinkyDungeonSurpriseMe,Random (-10% rep loss)
 
 KinkyDungeonNoItemToRemove,You don't have any valid targets on your body for that.
 
@@ -11603,14 +11610,14 @@ KDDressStrip,Strip!
 KDCreateOutfit,Export Outfit
 KDCreateAlwaysDress,Export AlwaysDress
 
-KDColorSlidergamma,gamma
-KDColorSlidersaturation,saturation
-KDColorSlidercontrast,contrast
-KDColorSliderbrightness,brightness
-KDColorSliderred,red
-KDColorSlidergreen,green
-KDColorSliderblue,blue
-KDColorSlideralpha,alpha
+KDColorSlidergamma,Gamma
+KDColorSlidersaturation,Original Color
+KDColorSlidercontrast,Contrast
+KDColorSliderbrightness,Brightness
+KDColorSliderred,Red
+KDColorSlidergreen,Green
+KDColorSliderblue,Blue
+KDColorSlideralpha,Transparency
 KDResetLayer,Reset Layer!
 KDExportAllLayers,Export All Layers
 KDCopyLayer,Copy
@@ -13244,7 +13251,7 @@ KinkyDungeonCurseUnlockOrgasmForced,""
 KinkyDungeonCurseInfoOrgasmForced,"The item bears a seal of dark pleasure. You can suppress it by edging yourself."
 
 KDLabelSaved,Saved Outfits
-KDManageOutfits,Manage Outfits
+KDManageOutfits,Manage this Outfit
 KDChangePose,Change Pose
 KDQuickColor,Quick Color Palette
 KDFilters,Item Layers and Color Filters
@@ -13282,3 +13289,14 @@ rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue,"This is
 rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue_Continue,"This is the hotbar.|Here you will find various spells and customizable actions.|You can customize it through the Spells submenu by clicking on a spell.|You can also add items, armor, and consumables to it from the Inventory."
 rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue_Continue_Continue,"Finally, this is where the message log will be.|It provides a written record of what happened the last few turns.|You can click the 'Log' button to expand the log,|Allowing you to look much further back."
 rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue_Continue_Continue_Continue,"Thats it for the UI.|If you want a more hands on tutorial, enter the portal to the top right,|near the training dummies.|You can click on NPCs (such as the ghosts in this room) to talk to them."
+
+KDNavGame,Game
+KDNavQuit,Menu
+
+
+KDInvFilter,Search ITMNS:
+KDInvFilterQ,Search Items:
+KDMagicFilter,Search Spells:
+
+KDFree,Free
+KDDisarmed,Disarmed!!!
