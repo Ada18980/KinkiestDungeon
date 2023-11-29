@@ -216,5 +216,40 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "DaskEyes",
+	Folder: "FaceDask",
+	TopLevel: true,
+	Protected: true,
+	Group: "Eyes",
+	Categories: ["Eyes","Face"],
+	Layers: ToLayerMap([
+		{ Name: "Eyes", Layer: "Eyes", Pri: 0,
+			Sprite: "",
+			OffsetX: 942,
+			OffsetY: 200,
+			Poses: ToMap(EYEPOSES),
+		},
+		{ Name: "Eyes2", Layer: "Eyes", Pri: 0,
+			Sprite: "",
+			OffsetX: 942,
+			OffsetY: 200,
+			Poses: ToMap(EYE2POSES),
+		},
+		{ Name: "Whites", Layer: "Eyes", Pri: -1,
+			OffsetX: 942,
+			OffsetY: 200,
+			NoColorize: true,
+			Poses: ToMap(EYEPOSES),
+		},
+		{ Name: "Whites2", Layer: "Eyes", Pri: -1,
+			Sprite: "Whites",
+			OffsetX: 942,
+			OffsetY: 200,
+			NoColorize: true,
+			Poses: ToMap(EYE2POSES),
+		},
+	])
+});
 
 
