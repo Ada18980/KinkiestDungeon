@@ -83,6 +83,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Legs1", Layer: "Thighs", Pri: 60,
 			Poses: ToMapSubtract([...LEGPOSES], ["Spread"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			InheritColor: "Belt",
 			DisplacementMorph: {Hogtie: "Hogtie", KneelClosed: "KneelClosed"},
 			DisplacementSprite: "BeltLegs1Squish",
@@ -105,6 +106,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Legs2", Layer: "Thighs", Pri: 60,
 			Poses: ToMapSubtract([...LEGPOSES], ["Spread"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			InheritColor: "Belt",
 			DisplacementMorph: {Hogtie: "Hogtie", KneelClosed: "KneelClosed"},
 			DisplacementSprite: "BeltLegs2Squish",

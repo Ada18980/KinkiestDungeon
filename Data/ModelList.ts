@@ -1587,14 +1587,16 @@ AddModel({
 		{ Name: "RibbonBack", Layer: "BeltBack", Pri: 30,
 			Poses: ToMap(["Wristtie", "Boxtie"]),
 			Invariant: true,
-			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", Hogtie: "Hogtie"},
+			HidePoses: ToMap(["HideBigProps"]),
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", UprightHogtie: "Boxtie", SuspendedHogtie: "Boxtie", Hogtie: "Hogtie"},
 		},
 		{ Name: "RibbonFarBack", Layer: "BeltFarBack", Pri: 30,
 			Sprite: "RibbonBack",
 			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie", "Boxtie"]),
 			Invariant: true,
+			HidePoses: ToMap(["HideBigProps"]),
 			InheritColor: "RibbonBack",
-			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", Hogtie: "Hogtie"},
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", UprightHogtie: "Boxtie", SuspendedHogtie: "Boxtie", Hogtie: "Hogtie"},
 		},
 	])
 });

@@ -213,6 +213,7 @@ AddModel({
 		{ Name: "Legbinder", Layer: "WrappingLegsOver", Pri: -20,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			HideWhenOverridden: true,
 			InheritColor: "Binder",
 
 		},
@@ -225,6 +226,7 @@ AddModel({
 			SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			TieToLayer: "Legbinder",
 			InheritColor: "Binder",
 
 		},
@@ -232,6 +234,7 @@ AddModel({
 			SwapLayerPose: {Kneel: "WrappingLegsRight", KneelClosed: "WrappingLegsRight"},
 			Poses: ToMap(["Closed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			TieToLayer: "LegLegbinder",
 			InheritColor: "Binder",
 
 		},

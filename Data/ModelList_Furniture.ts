@@ -31,7 +31,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Display"],
-	AddPose: ["Display", "SuspendedHogtie", "LiftKneel"],
+	AddPose: ["Display", "SuspendedHogtie", "LiftKneel", "HideBigProps"],
 	Layers: ToLayerMap([
 		{ Name: "SarcoFront", Layer: "FurnitureFront", Pri: 30,
 			Invariant: true,
@@ -105,7 +105,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Stands"],
-	AddPose: ["SuspendedHogtie", "BlockKneel", "ForceStand", "FeetLinked"],
+	AddPose: ["SuspendedHogtie", "BlockKneel", "ForceStand", "FeetLinked", "HideBigProps"],
 	Layers: ToLayerMap([
 		{ Name: "DisplayFront", Layer: "FurnitureFront", Pri: -50,
 			Invariant: true,

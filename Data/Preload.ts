@@ -199,7 +199,7 @@ let linearList = [
 ];
 
 let nearestList = [
-	"TextureAtlas/game0.json",
+	//"TextureAtlas/game0.json",
 ]
 
 let CurrentLoading = "";

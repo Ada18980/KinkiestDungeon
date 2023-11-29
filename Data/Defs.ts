@@ -333,6 +333,14 @@ let LAYERS_BASE = [
 	// External overlaps are fine, e.g. right leg goes over
 	"FootRight",
 	"LegRight",
+	"ShoulderLeft",
+	"ShoulderRight",
+	"TorsoUpper",
+	"Butt",
+	"TorsoLower",
+	"Torso",
+
+	// Feet behind the body
 	"AnkleLeftHogtie",
 	"ShoeLeftHogtie",
 	"SockLeftHogtie",
@@ -341,12 +349,6 @@ let LAYERS_BASE = [
 	"ShoeRightKneel",
 	"SockRightKneel",
 	"FootRightKneel",
-	"ShoulderLeft",
-	"ShoulderRight",
-	"TorsoUpper",
-	"Butt",
-	"TorsoLower",
-	"Torso",
 
 	// Right arm specific bondage
 	"WrapArmRight",
