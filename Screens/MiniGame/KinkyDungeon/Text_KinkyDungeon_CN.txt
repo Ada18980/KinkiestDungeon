@@ -2253,7 +2253,7 @@ You can't hold the WPN in your current state.
 Charge!
 冲啊！
 Dash and make an attack attack against a target within 2 tiles. If it deals 20% of their current hp in damage, you knock them back and take their place, otherwise they take +15% max hp crush damage from hitting the wall. If the attack misses, you still dash. Costs stamina equal to your sprint cost plus your attack cost.
-冲刺并对 2 格内的目标进行攻击。如果它造成了他们当前生命值 20% 的伤害，你会将他们击退并取代他们的位置，否则他们会因撞墙而受到 +15% 最大生命值挤压伤害。如果攻击未命中，你仍然会冲刺。日历消耗等于你的冲刺消耗加上你的攻击消耗。
+冲刺并对 2 格内的目标进行攻击。如果它造成了他们当前生命值 20% 的伤害，你会将他们击退并取代他们的位置，否则他们会因撞墙而受到 +15% 最大生命值挤压伤害。如果攻击未命中，你仍然会冲刺。体力消耗等于你的冲刺消耗加上你的攻击消耗。
 You charge at the target!
 你向目标冲刺！
 Choose a target.
