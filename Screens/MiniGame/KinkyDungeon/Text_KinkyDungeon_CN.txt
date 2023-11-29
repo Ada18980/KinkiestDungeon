@@ -2412,14 +2412,14 @@ Graveyard
 墓地
 Catacombs
 地下墓穴
-Underground Jungle
-地下丛林
+Overgrown Ruins
+杂草丛生的遗迹
 Lost Temple
 失落神殿
 The Bellows
 风箱
 Rundown Laboratory
-破败实验室
+破败的实验室
 Forgotten Garden
 被遗忘的花园
 Kingdom of Ice
@@ -12126,6 +12126,10 @@ Replace Spell 5
 替换法术 5
 Unfiled
 空的
+Adventuring 101
+冒险家 101
+History
+历史
 Bondage Witchery
 束缚巫术
 Enemy Notes
@@ -12134,8 +12138,8 @@ Graveyard
 墓地
 Catacombs
 地下墓穴
-Jungle
-丛林
+Overgrown
+杂草丛生
 Temple
 寺庙
 Tombs
@@ -12146,12 +12150,36 @@ Crystal Cave
 水晶洞
 Orrery
 天文钟
+Bellows
+风箱
+
+(A page from the Book of Aeons)|The 'Graveyard' is a peculiar place. Long ago, human beings lived and died just like the animals. When the Old Civilization existed, they would come to bury their dead in the Graveyard. It remains a mystery why so many of the former dead seem to be alive. Some say that when the Old Civilization cast the spell that spell which overcame Death, even those buried in their graves would rise again. Others simply say that there is a powerful necromancer who lives here, toying with the dead as if they were pets...
+（《万古之书》中的一页）|'墓地' 是一个奇特的地方。很久以前，人类和动物一样生、死。当旧文明存在的时候，他们会来墓地埋葬死者。为什么这么多死者似乎还活着，仍然是一个谜。有人说，当旧文明施展战胜死亡的咒语时，即使是那些埋在坟墓里的人也会复活。还有人干脆说这里住着一个强大的死灵法师，把死人当作宠物一样玩弄……
+(A page from the Book of Aeons)|Beneath the Graveyard lies a relic of a former age, a network of tombs inhabited by the immortal followers of Bast. Very few were graced with this gift of immortality before the great archmagus, Sariel Vinlaga, stole this power from the gods and granted all humans with the power of immortality. The Bast followers are still set in their ways, hoping for a time when their Goddess will return and rebuild their glorious civilization.
+（《万古之书》中的一页）|墓地下方躺着一座上古时代的遗迹，一个由巴斯特的不朽追随者居住的墓穴网络。在伟大的大法师萨里尔·文拉加(Sariel Vinlaga)从众神那里窃取了这种不朽的力量并授予所有人类不朽的力量之前，很少有人获得过这种不朽的天赋。巴斯特的追随者仍然固执己见，希望有一天他们的女神能够回归并重建他们辉煌的文明。
+(A page from the Book of Aeons)|Some say the 'Catacombs' are older than time itself. When the Old Civilization began to study immortality, no one knew if it would be possible to bring back those who already died. The Catacombs therefore were used to store all of the remains of former humans, so that they too could be revived when the archmagus would finally make her breakthrough.
+（《万古之书》中的一页）|有人说 '地下墓穴' 比时间本身还要古老。当旧文明开始研究永生时，没有人知道是否有可能让那些已经死去的人复活。因此，地下墓穴被用来储存前人类的所有遗骸，以便当大法师最终取得突破时，他们也可以复活。
+(A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
+（《万古之书》中的一页）|据说大法师萨里尔·文拉加(Sariel Vinlaga)就在这个图书馆学习过。在收集了所有人类知识（魔法、精神、技术）后，她指派十二位小魔法师负责整理和整理她所获得的知识财富。没有人知道她为什么突然放弃它，或者为什么它至今仍如此年久失修。
+(A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
+（《万古之书》中的一页）|长袍废墟对于学者来说仍然是一个谜。几乎没有任何光线从天花板的裂缝中透进来，但这个区域却充满了生机。众所周知，人类免于死亡的再生能力依赖于个人自身的法力供应。那么没有法力的植物和野兽如何生存呢？虔诚的人说是恢复女神保护了丛林，但旧文明是否发展出了一种维持地下生命的手段？
+(A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
+（《万古之书》中的一页）|能源问题已经困扰了文明数千年。在地脉被发现之前，人类依赖河流和木柴等自然资源。当水晶洞被发现时，发生了一场伟大的革命。文明不再依赖自然资源，可以利用地下混沌能量的源泉为机械提供前所未有的动力。
+(A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
+（《万古之书》中的一页）|他们所说的 '失落的圣殿'，是一个饱受猜测的对象。看来它的创造者只崇拜四位造物主女神，而不是所有的八女神。它可能是几百年前被遗弃的，当时一场洪水引起了巨大的恐慌，这似乎发生在大法师使人类永生之前，因为里面仍然发现了许多遗骸。
+(A page from the Book of Aeons)|The Stars have been a mystery to scholars since the beginning of time. At one point, humans believed that every star was a god, and they made offerings by throwing sugar into the night, thinking that as the stars were innumerable, so were the grains of sugar that pleased humans so much. Religion has moved past that, but the Orrery remains a relic from a time when humanity worshipped the stars rather than the Eight.
+（《万古之书》中的一页）|自古以来，星星对于学者来说一直是个谜。曾几何时，人类相信每一颗星星都是一位神，他们通过向黑夜中投掷糖来供奉，认为星星无数，而令人类高兴的糖粒也数不胜数。宗教已经超越了这一点，但太阳系仪仍然是人类崇拜星星而不是八星时代的遗迹。
+(A page from the Book of Aeons)|The 'Bellows' is the nickname given to the primitive facilities of the Old Civilization, buried deep beneath the ground. While much of it remains in disrepair, many of the Old Civilization's successors have attempted to keep it in good working order, as the technology is precious and impossible to replicate with modern methods. It seems that many of these successors have fallen prey to some delusions about its purpose, as much of the equipment preserved has little use aside from collecting prisoners.
+（《万古之书》中的一页）|'风箱'是旧文明深埋在地下的原始设施的昵称。虽然其中大部分仍年久失修，但许多旧文明的继承者都试图使其保持良好的工作状态，因为这项技术非常珍贵，而且不可能用现代方法复制。 似乎这些继承者中的许多人都对其目的产生了一些错觉，因为保留下来的大部分设备除了收集囚犯之外几乎没有什么用处。
+
 (Preface from the journal of Catherine Willows, well-known explorer who vanished in the dungeon 30 years ago) I am writing this journal in the off chance that I do not come back in my search for the Mistress' staff. If you find this, please make an effort to deliver it back to the surface for the good of all the young women lured by its secrets.
 （凯瑟琳·威洛斯（Catherine Willows）的日记前言，她是 30 年前在地牢中消失的著名探险家）我写这本日记是因为我没有回来寻找女主人的工作人员。如果你发现了这个，为了所有被它的秘密引诱的年轻女性的利益，请努力把它送回地面。
 (Pg. 24 from Catherine Willows' journal) Many who trowel the upper levels of the Mistress' tomb often ask rhetorically: 'Why are there weird kinky traps guarding treasure chests? Why not have real, deadly traps if the purpose is to dissuade intruders?'
-（凯瑟琳·威洛斯（Catherine Willows）杂志的第 24 页）许多铲平女主人墓上层的人经常反问：“为什么有奇怪的古怪陷阱守卫着宝箱？如果目的是劝阻入侵者，为什么不设置真正的、致命的陷阱呢？
+（凯瑟琳·威洛斯（Catherine Willows）日记第 24 页）许多铲平女主人墓上层的人经常反问：“为什么有奇怪的古怪陷阱守卫着宝箱？如果目的是劝阻入侵者，为什么不设置真正的、致命的陷阱呢？
 (Pg. 25 from Catherine Willows' journal) ...They make a crucial mistake: The treasure chests aren't trapped. Rather, they are full of gold. And we know that gold is pleasing to the gods: our economy runs on it, and the gods only make interventions in our day-to-day affairs because we give them gold. Lesser gods, known as spirits, also love gold, but unlike the gods we know, these lesser spirits cannot consume gold on an altar in one fell swoop like the gods can. Therefore, they need to physically inhabit the place where the gold sits, slowly draining it of its pleasing essence.
-（Catherine Willows 日记中的第 25 页）......他们犯了一个重大错误：宝箱没有被困住。相反，它们充满了黄金。而且我们知道黄金是神所喜悦的：我们的经济在它上面运行，神只干预我们的日常事务，因为我们给了他们黄金。被称为精灵的小神也喜欢黄金，但与我们所知道的神不同的是，这些小精灵不能像众神一样一举消耗祭坛上的黄金。因此，他们需要实际居住在黄金所在的地方，慢慢地抽干它令人愉悦的本质。
+（凯瑟琳·威洛斯（Catherine Willows）日记第 25 页）......他们犯了一个重大错误：宝箱没有被困住。相反，它们充满了黄金。而且我们知道黄金是神所喜悦的：我们的经济在它上面运行，神只干预我们的日常事务，因为我们给了他们黄金。被称为精灵的小神也喜欢黄金，但与我们所知道的神不同的是，这些小精灵不能像众神一样一举消耗祭坛上的黄金。因此，他们需要实际居住在黄金所在的地方，慢慢地抽干它令人愉悦的本质。
+(Pg. 26 from Catherine Willows' journal) So the question is not 'why did somebody lay these traps.' The answer is that they are not traps at all. I surmise that the upper floors were once a place of offering for the dead. And when the old civilization perished and the entire complex sank into the ground, there was no longer anyone to drive the spirits away and keep them from inhabiting the upstairs. As for why there are so many restraints in general rather than your typical sort of spirits... well we know what the Mistress surrounded herself with.
+（凯瑟琳·威洛斯（Catherine Willows）日记第 26 页）因此，问题不是 '为什么有人要设置这些陷阱'。 答案是它们根本不是陷阱。我推测楼上曾经是祭祀死者的地方。当旧文明消亡，整个建筑群沉入地下时，就不再有人驱赶鬼魂，阻止它们居住在楼上。至于为什么会有这么多的束缚，而不是你典型的那种精神……我们知道女主人周围是什么。
 (The note starts with a drawing of a witch with many chains hanging from her body) She can block melee attacks with her chains. However, they conduct lightning and heat directly to her body, and I was able to take out her chains with bolt cutters.
 （笔记开始于一个女巫的图画，她身上挂着许多锁链）她可以用她的锁链阻挡近战攻击。但是，它们将闪电和热量直接传导到她的身体，我能够用断线钳将她的锁链取出。
 (The note starts with a drawing of a witch with lightning crackling from her fingertips) Water will cause her to short-circuit. I can't seem to hit her with lightning, though. She always redirects it.
@@ -12175,9 +12203,11 @@ Orrery
 (From an essay titled 'On Celestial Supply Chains') It is known that the heavens seek gold. We do not know why it is that the heavens seek it, but we do know that the Goddesses grant us fragments of their limitless power in exchange for this otherwise-useless metal we dredge up from the earth. They care about it so much that shrines are commonplace, each hosting an angelic courier lying in wait for any adventurer willing to part with hers.
 （摘自一篇题为《论天上供应链》的文章）众所周知，天上求金。我们不知道为什么上天会寻找它，但我们知道女神赐予我们无限力量的碎片，以换取我们从地球上挖出的这种原本无用的金属。他们非常关心它，以至于神社司空见惯，每个神社都有一个天使信使，等待任何愿意与她分手的冒险者。
 I am writing this from inside prison. Who would have known they cared so much about me using a shrine? Sheesh.
-我是在监狱里写这篇文章的。谁能知道他们对我使用神社如此关心？嘘。
+我是在监狱里写这篇文章的。谁能知道他们对我使用神泉如此关心？嘘。
+
 (A drawing of a bunch of zombies, ordered by danger level. Of note are a zombie surrounded by charms, a zombie surrounded by talismans, a zombie warrior with a sword, and... some kind of shrine maiden that you've never seen before)
 （一组僵尸的图画，按危险等级排序。值得注意的是一个被符咒包围的僵尸，一个被丝带包围的僵尸，一个拿着剑的僵尸战士，还有……某种你从未见过的巫女以前看过）
+
 (A drawing of a suit of armor. It reads: DO NOT TRUST)
 （一套盔甲的图纸。上面写着：不要相信）
 (The note starts with a drawing of a witch in dark robes with bright pink hair) A necromancer. Powerful spellcaster, weak up close.
@@ -12202,20 +12232,55 @@ I don't think it's neccessary to tell people that dragons resist fire... right?
 我认为没有必要告诉人们龙抗火……对吧？
 I've been studying the dragonheart's weaknesses. So far I've found that the ones bearing the powers of ice dragons are actually weak to fire unlike the others, and the ones who summon crystals to block attacks are nonetheless unable to grab a spear to stop it from reaching them.
 我一直在研究龙之心的弱点。到现在我发现，拥有冰龙之力的人，其实跟其他人不一样，开火能力很弱，而召唤水晶格挡攻击的人，却是连长矛都拿不到。
+
 They say a ninja can catch a sword in her hands, but can she stop a spear? Ha, thought not!
 都说忍者能拿剑，但能挡住长矛吗？哈，没想到！
 (Pg. 54 from Catherine Willows' journal): The post-collapse civilization sought immortality, but they knew that the technologies of the old civilization were a danger to them. So they turned to another school of thought: Magic.
-（Catherine Willows 杂志第 54 页）：崩溃后的文明寻求永生，但他们知道旧文明的技术对他们来说是危险的。所以他们转向了另一种思想流派：魔法。
+（凯瑟琳·威洛斯（Catherine Willows）日记第 54 页）：崩溃后的文明寻求永生，但他们知道旧文明的技术对他们来说是危险的。所以他们转向了另一种思想流派：魔法。
+(Pg. 55 from Catherine Willows' journal): Silk wrappings, enchanted with ten-thousand microscopic runes per cubit, were suffucient to protect their bodies from ageing for millenia. What they didn't realize was that the magic didn't protect their souls.
+（凯瑟琳·威洛斯（Catherine Willows）日记第 55 页）：每肘尺上附有一万个微小符文的丝绸包裹物，足以保护他们的身体在千年之内免于衰老。他们没有意识到的是，魔法并不能保护他们的灵魂。
+(Pg. 56 from Catherine Willows' journal): They have no clue what they are doing anymore. To them, this is just another one of their ten-thousand dreams across the aeons. They can no longer tell reality from imagination.
+（凯瑟琳·威洛斯（Catherine Willows）日记第 56 页）：他们不再知道自己在做什么。对于他们来说，这不过是他们千古万劫中的又一个梦想而已。他们不再能够区分现实和想象。
 Ninjas aren't so tough to fight when their hands are tied behind their back. Good thing I had my pet slime with me~
 当他们的双手被绑在背后时，忍者并不那么难以战斗。还好我有我的宠物粘液团
+(Pg. 12 from Catherine Willows' addendum): After studying the ancient race of catlike people, I have come to the conclusion that their race met a dual fate. All of them received eternal life in some form or another. To one half it manifested as a blessing, allowing them to walk the halls. To the other it became a curse to them, trapping them in runic wrappings for all eternity.
+（凯瑟琳·威洛斯（Catherine Willows）附录的第 12 页）：在研究了古代的猫人种族之后，我得出的结论是，他们的种族遇到了双重命运。他们所有人都以某种形式获得了永生。对一半人来说，这表现为一种祝福，允许他们在大厅里行走。对于另一个人来说，它成为了他们的诅咒，将他们永远困在符文包裹中。
+(Pg. 13 from Catherine Willows' addendum): I must issue a correction to the statements written in my journal. The ancients knew what they were doing. Those that were cursed, are blessed, and those who were blessed, are cursed.
+（凯瑟琳·威洛斯（Catherine Willows）附录第 13 页）：我必须对日记中所写的陈述进行更正。古人知道他们在做什么。那些被咒诅的人是有福的，那些被祝福的人是被咒诅的。
+(It's a copy of an ancient illustration, depicting a cat goddess, an elven goddess, and two groups of catgirls. One group is smiling and standing on pedestals. The other group is frowning and wearing armor meant for war. It looks unfinished, like the author was suddenly grabbed from behind while drawing it)
+（这是一幅古代插图的复制品，描绘了一位猫女神，一位精灵女神和两组猫女。一组微笑着站在基座上，另一组皱着眉头穿着战争用的盔甲。它看起来未完成，就像作者在画的时候突然被人从后面抱住）
+(It's a interlinear translation of an ancient letter) Your highness, I have delivered to you the prisoners that you have asked. They are the worst of the worst--thieves, slanderers, sorcerers and seducers. But I must inquire, why is it that we must wrap them in silken scarves, worth twenty gold pieces each? Surely they are being handed over to be disciplined, not to be anointed?
+（这是一封古信的行间翻译）殿下，您所要求的囚犯我已经交给您了。他们是最坏中的最坏的人——小偷、诽谤者、巫师和诱惑者。但我要问，为什么一定要给他们裹上每条价值二十金币的丝巾呢？难道他们被交给人是为了接受纪律，而不是为了受膏抹吗？
+(It's a record of an interview)|ME: Why are you like this?|MUMMY: Because we are blessed!|ME: Blessed? You've been wrapped up for thousands of years!|MUMMY: A thousand years is nothing compared to the glory that will come!|ME: Why do you have to be wrapped up? There are plenty of you who aren't...|MUMMY: The chosen ones will inherit the land when the goddess returns."
+（采访记录）|我：你为什么这样？|木乃伊：因为我们有福了！|我：有福了？你已经包裹了数千年！|木乃伊：与即将到来的荣耀相比，一千年算不了什么！|我：你为什么要包裹起来？ 你们中有很多人不是……|木乃伊：当女神回来时，被选中的人将继承这片土地。
+(It's a record of an interview)|ME: Which goddess are you referring to? The goddess of restoration?|MUMMY: The blessed kitty.. she was promised to rule over the lesser goddesses.|ME: Lesser goddesses? Which ones?|MUMMY: YOUR goddesses. The ones you humans created that should not be. Ours is the true offspring of the creators, a goddess created to rule!
+（采访记录）|我：你指的是哪位女神？ 恢复女神？|木乃伊：受祝福的小猫..她被许诺统治小女神。|我：小女神？哪些？|MUMMY：你的女神。你们人类创造的那些不应该是的。我们是造物主的真正后代，是为统治而生的女神！
+(It's a record of an interview)|ME: What of the elves? Don't they talk about a 'kingdom' too?|MUMMY: Who are the elves?|ME: You know, pointy ears, green hair, a heck of an attitude... they seem in tune with nature.|MUMMY: They sound arrogant.|ME: They are.|MUMMY: Perhaps they know nothing of the promise between our goddess and theirs.
+（采访记录）|我：精灵呢？他们不是也在谈论 '王国' 吗？|木乃伊：精灵是谁？|我：你知道，尖尖的耳朵，绿色的头发，一种奇怪的态度......他们似乎与自然融为一体。|木乃伊： 他们听起来很傲慢。|我：他们确实很傲慢。|木乃伊：也许他们对我们的女神和他们的女神之间的承诺一无所知。
+(It's a medical record) Patient seems stable... application of the enchanted cloth seems to have stopped the bleeding. It appears that the ancient magic suppresses all forms of injury, even in humans, until it is taken off.
+（这是一份医疗记录）病人看起来很稳定……使用魔法布似乎已经止血了。看来古老的魔法可以抑制所有形式的伤害，甚至对人类来说也是如此，直到它被解除为止。
+
+(A record of an ancient... transaction)||The elemental offered us the following from her personal estate:|-one magical lantern that requires no fuel, and can light up the night as if it were day|-one crystal that burns red-hot when kept near metal, providing heat to warm a house|-three enchanted swords imbued with flame|-a hollow glass crystal, used for communication||In exchange, we gave her three wolfgirls we had captured on the surface.
+（一项古老的……交易的记录）||精灵从她的个人财产中向我们提供了以下内容：|-一盏不需要燃料的神奇灯笼，可以照亮黑夜，就像白天一样|-一颗水晶 靠近金属时会燃烧成红热，为房屋提供热量|-三把充满火焰的魔法剑|-空心玻璃晶体，用于通讯||作为交换，我们给了她我们在地表捕获的三个狼女。
+I had heard that ancient humans prayed to the stars here, in an effort to find favor when the Eight had forsaken them. So I went and prayed... and let me tell you, it was a lie, an absolute lie. There are only monsters out there.
+我听说远古人类在这里向星星祈祷，试图在八神抛弃他们后寻求庇护。所以我去祈祷……让我告诉你，这是一个谎言，一个绝对的谎言。那里只有怪物。
+(It is a set of instructions for creating a magic circle to unlock a sealed portal. There are markings in many languages that give conflicting descriptions, claiming that the circle will transmute material to gold, or bring good fortune...)
+（这是一组创建魔法阵以解锁密封传送门的说明。许多语言的标记给出了相互矛盾的描述，声称魔法阵可以将材料转化为黄金，或者带来好运......）
+
+(Two schematic diagrams of ancient drones taken from records. The first is unmodified, and the second has several annotations written in what looks like pink lipstick...)
+（从记录中截取的两张古代无人机的示意图。第一个是未修改的，第二个有几个看起来像粉红色唇膏的注释......）
+
 Those damn slimes! They're so sticky and gross... fortunately, I washed myself in the fountain the last time I got caught by one. It came right off!
 那些该死的粘液团！它们又粘又恶心……幸运的是，上次我被一个人抓住时，我在喷泉里洗了自己。它马上就来了！
 The dragonhearts were a group of dragonslayers, named for their ritual that imbues them with the fiery power and resistance of dragons they've slain. Now they work as mercenaries, and some of them serve a certain Leather goddess.
 龙心是一群屠龙者，以他们的仪式命名，这种仪式赋予他们所杀死的龙的炽热力量和抵抗力。现在他们以雇佣兵的身份工作，其中一些人服务于某个皮革女神。
-(Pg. 70 from Catherine Willows' journal): The underground jungle is a curious phenomenon. The level of light pouring through cracks in the ceiling is nonetheless too sparse to sustain plantlife. And yet the restoration goddess, in her ancient wisdom, has decided to preserve this place. How many of her dryads must I pierce or burn until she realizes I am merely passing through?
-（Catherine Willows 杂志的第 70 页）：地下丛林是一种奇怪的现象。尽管如此，从天花板的裂缝中倾泻而下的光线还是太稀少，无法维持植物的生命。然而，恢复女神，以其古老的智慧，决定保护这个地方。在她意识到我只是路过之前，我必须刺穿或烧掉多少她的树精？
+Yes! I've done it! I have created another red slime! I shall call him Fred, yes, Fred. After the red slime I lost in a shield-related accident a while back... |Poor Fred... I miss him.
+是的！ 我已经做到了！我又创造了一种红色史莱姆！我会叫他弗雷德（Fred），是的，弗雷德（Fred）。不久前，我在一次与盾牌相关的事故中失去了红色史莱姆之后……|可怜的弗雷德（Fred）……我想念他。
+(Pg. 70 from Catherine Willows' journal): The overgrown ruins are a curious phenomenon. The level of light pouring through cracks in the ceiling is nonetheless too sparse to sustain plantlife. And yet the restoration goddess, in her ancient wisdom, has decided to preserve this place. How many of her dryads must I pierce or burn until she realizes I am merely passing through?
+（凯瑟琳·威洛斯（Catherine Willows）日记第 70 页）：杂草丛生的遗迹是一种奇怪的现象。尽管如此，从天花板的裂缝中倾泻而下的光线还是太稀少，无法维持植物的生命。 然而，恢复女神，以其古老的智慧，决定保护这个地方。在她意识到我只是路过之前，我必须刺穿或烧掉多少她的树精？
 The unseen maid is the deadliest.
 看不见的女仆是最致命的。
+
 (The note is blank)
 （注释为空白）
 The note reads: Mmmmmmmph! Mmmm! MMMMMPH!!!!-- (The entire note is just gagged mumblings...)
@@ -12236,6 +12301,7 @@ The note reads: Please take this beautiful doll somewhere and play with her~
 （笔记中有一本关于击剑的手册。你一直是个糟糕的击剑手）
 (The note contains a magic spell you were taught never to cast under any circumstances)
 （笔记包含一个你被教导在任何情况下都不要施放的魔法咒语）
+
 The item requires 5 keys and free hands to remove
 该项目需要 5 把钥匙和空闲的双手才能移除
 The item is extremely secure with five separate keyholes.
