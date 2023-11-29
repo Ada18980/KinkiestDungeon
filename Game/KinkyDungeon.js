@@ -3785,6 +3785,8 @@ function KinkyDungeonLoadGame(String) {
 			KDUpdateEnemyCache = true;
 
 
+			if (typeof KDGameData.PreviousWeapon == 'string') KDGameData.PreviousWeapon = [];
+
 			KinkyDungeonSetMaxStats();
 			KinkyDungeonCheckClothesLoss = true;
 			KDNaked = false;

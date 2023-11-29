@@ -1230,6 +1230,10 @@ function KDKickEnemies(nearestJail, ignoreAware) {
 					if (!KDEnemyHasFlag(e, "imprisoned") && e.boundLevel && !KDHelpless(e)) e.boundLevel = 0;
 				}
 			if (e.hostile < 9000) e.hostile = 0;
+			if (e.playWithPlayer > 0) {
+				e.playWithPlayer = 0;
+				e.playWithPlayerCD = 10;
+			}
 			KDExpireFlags(e);
 			KDResetIntent(e, {});
 			enemies.push(e);

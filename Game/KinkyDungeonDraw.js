@@ -874,10 +874,10 @@ function KinkyDungeonDrawGame() {
 
 			KinkyDungeonUpdateVisualPosition(KinkyDungeonPlayerEntity, KinkyDungeonDrawDelta);
 
-			let CamX = KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2);//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2)));
-			let CamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2);// Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2)));
-			let CamX_offsetVis = KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
-			let CamY_offsetVis = KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
+			let CamX = KinkyDungeonPlayerEntity.x - 3 - Math.floor(KinkyDungeonGridWidthDisplay/2);//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2)));
+			let CamY = KinkyDungeonPlayerEntity.y + 1 - Math.floor(KinkyDungeonGridHeightDisplay/2);// Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2)));
+			let CamX_offsetVis = KinkyDungeonPlayerEntity.visual_x - 3 - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
+			let CamY_offsetVis = KinkyDungeonPlayerEntity.visual_y + 1 - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
 
 			KinkyDungeonCamXVis = CamX + CamX_offsetVis;
 			KinkyDungeonCamYVis = CamY + CamY_offsetVis;
@@ -3532,8 +3532,8 @@ function KDDrawTooltip(TooltipList, offset) {
 		TooltipHeight += listItem.size + extra;
 	}
 	TooltipHeight = Math.max(20, TooltipHeight);
-	let tooltipX = 2000 - 410 - TooltipWidth;
-	let tooltipY = 890 - TooltipHeight - offset;
+	let tooltipX = 2000 - 250 - TooltipWidth;
+	let tooltipY = 790 - TooltipHeight - offset;
 	let YY = 0;
 
 	FillRectKD(kdcanvas, kdpixisprites, "inspectTooltip" + offset, {

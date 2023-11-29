@@ -730,7 +730,7 @@ function KinkyDungeonWearForcedClothes(restraints, C) {
 
 				let canReplace = true;
 				if (canReplace) {
-					KDInventoryWear(dress.Model, undefined, undefined, undefined, dress.Filters);
+					KDInventoryWear(dress.Model, undefined, undefined, undefined, dress.inheritFilters ? KDRestraint(inv).Filters : dress.Filters);
 				}
 			});
 		}

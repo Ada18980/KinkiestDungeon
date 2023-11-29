@@ -3051,7 +3051,7 @@ const KinkyDungeonRestraints = [
 	{unlimited: true, inventory: false, name: "RopeSnakeHogtie", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Type: "Hogtied", Color: "Default", Group: "ItemArms", bindarms: true, power: 6, weight: 0,
 		Model: "RopeBoxtie1",
 		alwaysDressModel: [
-			{Model: "RopeChestStraps2"}
+			{Model: "RopeChestStraps2", inheritFilters: true,}
 		],
 		renderWhenLinked: [...KDArmRopesRender],
 		struggleMult: {"Struggle": 0.4, "Remove": 0.3},

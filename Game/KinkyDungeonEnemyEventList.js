@@ -144,10 +144,10 @@ let KDIntentEvents = {
 	"CaptureJail": {
 		// Capture and bring to jail
 		aggressive: true,
-		nonaggressive: true,
+		nonaggressive: false,
 		noplay: true,
 		forceattack: true,
-		overrideIgnore: true, // Even friendly will do it...
+		overrideIgnore: true,
 		// This is the basic leash to jail mechanic
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
 			return (hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && (KinkyDungeonFlags.has("Released")) && !KDEnemyHasFlag(enemy, "dontChase")) ?

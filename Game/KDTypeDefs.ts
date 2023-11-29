@@ -633,6 +633,8 @@ interface alwaysDressModel {
 	Filters?: Record<string, LayerFilter>,
 	/** Faction color index */
 	factionColor?: number[][],
+	/** Inherits the filters of the main */
+	inheritFilters?: boolean,
 }
 
 interface KDLoadout {name: string, tags?: string[], singletag: string[], singletag2?: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number, multiplier?: number};

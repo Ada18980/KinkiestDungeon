@@ -556,88 +556,88 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 				let pathToTether = KinkyDungeonFindPath(xTo, yTo, inv.tx, inv.ty, false, !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy);
 				let playerDist = Math.max(pathToTether?.length || 0, KDistChebyshev(xTo-inv.tx, yTo-inv.ty));
 				// Fallback
-				if (playerDist > KDRestraint(inv).tether) {
+				if (playerDist > KDRestraint(inv).tether && KDistEuclidean(xTo-inv.tx, yTo-inv.ty) > KDistEuclidean(Entity.x-inv.tx, Entity.y-inv.ty)) {
 					if (Msg) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTetherTooShort").replace("TETHER", TextGet("Restraint" + inv.name)), "#ff0000", 2, true);
 					if (KinkyDungeonCanStand()) {
 						KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, KDLeashPullKneelTime + KinkyDungeonSlowMoveTurns);
 						KinkyDungeonChangeWill(-KDLeashPullCost, false);
 					}
-					return true;
+					//return true;
+					exceeded = true;
 				}
-			} else {// Then we merely update
-				for (let i = 0; i < 10; i++) {
-					// Distance is in pathing units
-					let pathToTether = KinkyDungeonFindPath(Entity.x, Entity.y, inv.tx, inv.ty, false, !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy);
-					let playerDist = pathToTether?.length;
-					// Fallback
-					if (!pathToTether) playerDist = KDistChebyshev(Entity.x-inv.tx, Entity.y-inv.ty);
-					if (playerDist > tether) {
-						let slot = null;
-						if (pathToTether
-							&& pathToTether?.length > 0
-							&& (
-								KDistEuclidean(pathToTether[0].x - inv.tx, pathToTether[0].y - inv.ty) > -0.01 + KDistEuclidean(Entity.x - inv.tx, Entity.y - inv.ty)
-								|| KinkyDungeonFindPath(pathToTether[0].x, pathToTether[0].y, inv.tx, inv.ty, false, !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy)?.length < pathToTether.length
-							) && KDistChebyshev(pathToTether[0].x - Entity.x, pathToTether[0].y - Entity.y) < 1.5)
-							slot = pathToTether[0];
-						if (!slot) {
-							let mindist = playerDist;
-							for (let X = Entity.x-1; X <= Entity.x+1; X++) {
-								for (let Y = Entity.y-1; Y <= Entity.y+1; Y++) {
-									if ((X !=  Entity.x || Y != Entity.y) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y)) && KDistEuclidean(X-inv.tx, Y-inv.ty) < mindist) {
-										mindist = KDistEuclidean(X-inv.tx, Y-inv.ty);
-										slot = {x:X, y:Y};
-									}
+			}
+			for (let i = 0; i < 10; i++) {
+				// Distance is in pathing units
+				let pathToTether = KinkyDungeonFindPath(Entity.x, Entity.y, inv.tx, inv.ty, false, !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy);
+				let playerDist = pathToTether?.length;
+				// Fallback
+				if (!pathToTether) playerDist = KDistChebyshev(Entity.x-inv.tx, Entity.y-inv.ty);
+				if (playerDist > tether) {
+					let slot = null;
+					if (pathToTether
+						&& pathToTether?.length > 0
+						&& (
+							KDistEuclidean(pathToTether[0].x - inv.tx, pathToTether[0].y - inv.ty) > -0.01 + KDistEuclidean(Entity.x - inv.tx, Entity.y - inv.ty)
+							|| KinkyDungeonFindPath(pathToTether[0].x, pathToTether[0].y, inv.tx, inv.ty, false, !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy)?.length < pathToTether.length
+						) && KDistChebyshev(pathToTether[0].x - Entity.x, pathToTether[0].y - Entity.y) < 1.5)
+						slot = pathToTether[0];
+					if (!slot) {
+						let mindist = playerDist;
+						for (let X = Entity.x-1; X <= Entity.x+1; X++) {
+							for (let Y = Entity.y-1; Y <= Entity.y+1; Y++) {
+								if ((X !=  Entity.x || Y != Entity.y) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y)) && KDistEuclidean(X-inv.tx, Y-inv.ty) < mindist) {
+									mindist = KDistEuclidean(X-inv.tx, Y-inv.ty);
+									slot = {x:X, y:Y};
 								}
 							}
 						}
-						if (!slot) { //Fallback
-							slot = {x:inv.tx, y:inv.ty};
-						}
-						if (slot) {
-							let enemy = KinkyDungeonEnemyAt(slot.x, slot.y);
-							if (enemy) {
-								let slot2 = null;
-								let mindist2 = playerDist;
-								for (let X = enemy.x-1; X <= enemy.x+1; X++) {
-									for (let Y = enemy.y-1; Y <= enemy.y+1; Y++) {
-										if ((X !=  enemy.x || Y != enemy.y) && !KinkyDungeonEntityAt(slot.x, slot.y) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y)) && KDistEuclidean(X-Entity.x, Y-Entity.y) < mindist2) {
-											mindist2 = KDistEuclidean(X-Entity.x, Y-Entity.y);
-											slot2 = {x:X, y:Y};
-										}
+					}
+					if (!slot) { //Fallback
+						slot = {x:inv.tx, y:inv.ty};
+					}
+					if (slot) {
+						let enemy = KinkyDungeonEnemyAt(slot.x, slot.y);
+						if (enemy) {
+							let slot2 = null;
+							let mindist2 = playerDist;
+							for (let X = enemy.x-1; X <= enemy.x+1; X++) {
+								for (let Y = enemy.y-1; Y <= enemy.y+1; Y++) {
+									if ((X !=  enemy.x || Y != enemy.y) && !KinkyDungeonEntityAt(slot.x, slot.y) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y)) && KDistEuclidean(X-Entity.x, Y-Entity.y) < mindist2) {
+										mindist2 = KDistEuclidean(X-Entity.x, Y-Entity.y);
+										slot2 = {x:X, y:Y};
 									}
 								}
-								if (slot2) {
-									KDMoveEntity(enemy, slot2.x, slot2.y, false);
-								} else {
-									let pointSwap = KinkyDungeonGetNearbyPoint(slot.x, slot.y, true, undefined, true, true);
-									if (pointSwap)
-										KDMoveEntity(enemy, pointSwap.x, pointSwap.y, false, undefined, undefined, true);
-									else
-										KDMoveEntity(enemy, Entity.x, Entity.y, false,undefined, undefined, true);
-								}
 							}
-							// Force open door
-							if (KinkyDungeonMapGet(slot.x, slot.y) == 'D') KinkyDungeonMapSet(slot.x, slot.y, 'd');
-
-							if (Entity.player) {
-								KDMovePlayer(slot.x, slot.y, false, undefined, undefined);
+							if (slot2) {
+								KDMoveEntity(enemy, slot2.x, slot2.y, false);
 							} else {
-								KDMoveEntity(Entity, slot.x, slot.y, false, undefined, undefined, true);
+								let pointSwap = KinkyDungeonGetNearbyPoint(slot.x, slot.y, true, undefined, true, true);
+								if (pointSwap)
+									KDMoveEntity(enemy, pointSwap.x, pointSwap.y, false, undefined, undefined, true);
+								else
+									KDMoveEntity(enemy, Entity.x, Entity.y, false,undefined, undefined, true);
 							}
-							if (Entity.player) KinkyDungeonSetFlag("pulled", 1);
-							else KinkyDungeonSetEnemyFlag(Entity, "pulled");
-							if (Entity.player) {
-								KinkyDungeonInterruptSleep();
-								KinkyDungeonSendEvent("leashTug", {Entity: Entity, slot: slot, item: inv});
-								if (KinkyDungeonLeashingEnemy()) {
-									KinkyDungeonSetEnemyFlag(KinkyDungeonLeashingEnemy(), "harshpull", 5);
-								}
-								if (Msg) KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonTetherPull").replace("TETHER", TextGet("Restraint" + inv.name)), "#ff0000", 2, true);
-								exceeded = true;
-							}
-
 						}
+						// Force open door
+						if (KinkyDungeonMapGet(slot.x, slot.y) == 'D') KinkyDungeonMapSet(slot.x, slot.y, 'd');
+
+						if (Entity.player) {
+							KDMovePlayer(slot.x, slot.y, false, undefined, undefined);
+						} else {
+							KDMoveEntity(Entity, slot.x, slot.y, false, undefined, undefined, true);
+						}
+						if (Entity.player) KinkyDungeonSetFlag("pulled", 1);
+						else KinkyDungeonSetEnemyFlag(Entity, "pulled");
+						if (Entity.player) {
+							KinkyDungeonInterruptSleep();
+							KinkyDungeonSendEvent("leashTug", {Entity: Entity, slot: slot, item: inv});
+							if (KinkyDungeonLeashingEnemy()) {
+								KinkyDungeonSetEnemyFlag(KinkyDungeonLeashingEnemy(), "harshpull", 5);
+							}
+							if (Msg) KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonTetherPull").replace("TETHER", TextGet("Restraint" + inv.name)), "#ff0000", 2, true);
+							exceeded = true;
+						}
+
 					}
 				}
 			}
