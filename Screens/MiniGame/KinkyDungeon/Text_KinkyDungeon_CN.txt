@@ -1761,7 +1761,7 @@ Kinky: No save codes, orbs give random spells, start with very little
 Kinky：没有保存代码，魔法水晶提供随机法术，开始时很少
 Log
 日志
-Log (N)
+Journal (N)
 日记 (N)
 Change Outfit
 换装
@@ -1804,22 +1804,22 @@ Export AlwaysDress
 导出 AlwaysDress
 Confirm Strip?
 确认要脱衣服？
-gamma
+Gamma
 伽马值
-saturation
-饱和度
-contrast
+Original Color
+原色
+Contrast
 对比度
-brightness
+Brightness
 亮度
-red
+Red
 红
-green
+Green
 绿
-blue
+Blue
 蓝
-alpha
-不透明度
+Transparency
+透明度
 Reset Layer!
 重置图层！
 Export All Layers
@@ -6232,8 +6232,10 @@ Teachings of SHRINETYPE
 SHRINETYPE 教义
 Decypher
 解密
-You read the runes and they imbue you with power!
-你阅读符文，它们就会赋予你力量！
+You read the runes and they fill you with power!
+你阅读符文，它们就会让你充满力量！
+These runes are meant for someone with less willpower.
+这些符文是为意志力较弱的人准备的。
 You try to read the runes but cannot understand them.
 你尝试阅读符文，但无法理解它们。
 
@@ -6466,10 +6468,10 @@ An advanced harness for controlling high-security prisoners.
 一种用于控制高安全性囚犯的先进绑带。
 It seems to be made of flexible steel plates.
 它似乎是由高延展性钢板制成的。
-Tracking Collar
-追踪项圈
-An advanced collar for tracking high-security prisoners.
-用于追踪高度安全的囚犯的高级项圈。
+Cyber Collar
+网络项圈
+An advanced collar for registering prisoners into the facility network.
+用于将囚犯登记到设施网络中的高级项圈。
 It seems to be made of flexible steel plates, and it has a high-security lock.
 它似乎由柔性钢板制成，并且具有高安全性锁。
 Latex Ball Gag
@@ -8583,10 +8585,24 @@ A piece of cloth secured onto your face and blocking vision.
 一块布固定在你的脸上并挡住视线。
 You can still see through the gap around your nose.
 你仍然可以通过鼻子周围的缝隙看到。
-Knotted Cloth Gag
-打结的布口塞
+Cleave Gag
+顺切堵嘴
+A piece of cloth forced between your lips.
+将一块布塞在双唇之间。
 On its own it's not very restrictive.
 就其本身而言，它不是很严格。
+Thick Cleave Gag
+厚的顺切堵嘴
+A piece of cloth that makes it hard to speak.
+一块让人难以言语的布。
+It's somewhat effective.
+是有点效果的。
+Knotted Cloth Gag
+打结的布口塞
+A piece of cloth tied in a knot and tied over your mouth.
+一块布打成一个结并绑在你的嘴上。
+It's pretty effective at keeping you quiet.
+这对于让你保持安静非常有效。
 OTN Cloth Gag
 覆嘴式布口塞
 A piece of cloth tightened over your mouth.
@@ -12500,12 +12516,14 @@ The Head Maid corners you!
 A vine crawls from the ground, already wrapping around your feet!
 一根藤蔓从地上爬了出来，已经缠住了你的脚！
 
-You have broken a magic orb, gaining a Spell Point and angering a goddess.
-你打破了一个魔法球，获得了一个法术点数并激怒了一位女神。
-You have broken a magic orb, gaining a random spell and angering a goddess.
-你打破了一个魔法球，获得了一个随机法术并激怒了一位女神。
-Choose one. She will send her minions after you.
-选择一位女神。她会派她的爪牙追击你。
+You find a magic orb, containing a Spell Point. However, a Goddess owns this artifact..
+你发现了一个魔法球，里面有一个法术点。然而，女神拥有这件神器。
+You find a magic orb, containing the SHCL spell 'SPLNME' and angering a goddess
+你发现了一个魔法球，里面有一个 SHCL 法术 'SPLNME' 并激怒了一位女神
+You find a magic orb, containing a random spell and angering a goddess.
+你发现了一个魔法球，其中包含一个随机法术并激怒了一位女神。
+Should you break it, she will send her minions after you. Which Goddess will you anger?
+如果你打破了它，她就会派出她的爪牙追杀你。你会激怒哪位女神呢？
 
 An altar stands before you, bestowing a heavenly contract.
 一座祭坛矗立在你面前，授予你一份神圣的契约。
@@ -12966,8 +12984,8 @@ You struggle fruitlessly. There is no keyhole and the material is nigh-unbreakab
 你的挣扎毫无作用。它没有钥匙孔，而且材料几乎牢不可破！
 You search for your ancient keys but it seems they were taken away for good.
 你寻找你的古老钥匙，但似乎它们被永远拿走了。
-Random (reduces penalty by 1)
-随机（减少 1 点惩罚）
+Random (-10% rep loss)
+随机（-10% 代表损失）
 You don't have any valid targets on your body for that.
 你身上没有任何有效的目标。
 The air swirls with traces of pleasing magic...
@@ -17998,7 +18016,7 @@ The item bears a seal of dark pleasure. You can suppress it by edging yourself.
 
 Saved Outfits
 已保存的服装
-Manage Outfits
+Manage this Outfit
 管理服装
 Change Pose
 改变姿势
@@ -18069,3 +18087,20 @@ Finally, this is where the message log will be.|It provides a written record of 
 最后，这是消息日志所在的位置。|它提供了最近几轮发生的情况的书面记录。|您可以单击 '日志' 按钮来展开日志，|允许您查看更久之前的内容。
 Thats it for the UI.|If you want a more hands on tutorial, enter the portal to the top right,|near the training dummies.|You can click on NPCs (such as the ghosts in this room) to talk to them.
 UI 就是这样。|如果您想要更多的实践教程，请进入右上角的门户，|靠近训练假人。|您可以单击 NPC（例如这个房间里的鬼魂）与他们交谈。
+
+Game
+游戏
+Menu
+菜单
+
+Search ITMNS:
+搜索 ITMNS：
+Search Items:
+搜索物品：
+Search Spells:
+搜索法术：
+
+Free
+自由
+Disarmed!!!
+缴械！！！
