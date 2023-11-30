@@ -2,7 +2,7 @@
 
 "Game/Aura/Airbender0.png":
 {
-	"frame": {"x":707,"y":1740,"w":18,"h":18},
+	"frame": {"x":708,"y":1787,"w":18,"h":18},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":92,"w":18,"h":18},
@@ -10,7 +10,7 @@
 },
 "Game/Aura/Airbender1.png":
 {
-	"frame": {"x":2028,"y":1489,"w":19,"h":19},
+	"frame": {"x":2028,"y":1513,"w":19,"h":19},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":92,"w":19,"h":19},
@@ -114,7 +114,7 @@
 },
 "Game/Aura/Missiles0.png":
 {
-	"frame": {"x":707,"y":1740,"w":18,"h":18},
+	"frame": {"x":708,"y":1787,"w":18,"h":18},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":92,"w":18,"h":18},
@@ -122,7 +122,7 @@
 },
 "Game/Aura/Missiles1.png":
 {
-	"frame": {"x":708,"y":1784,"w":18,"h":19},
+	"frame": {"x":708,"y":1766,"w":18,"h":19},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":92,"w":18,"h":19},
@@ -1626,7 +1626,7 @@
 },
 "Game/DamageTypes/charm.png":
 {
-	"frame": {"x":708,"y":1760,"w":18,"h":22},
+	"frame": {"x":708,"y":1742,"w":18,"h":22},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":49,"w":18,"h":22},
@@ -2488,6 +2488,14 @@
 	"spriteSourceSize": {"x":26,"y":8,"w":22,"h":24},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/EnemiesBound/Head/TemplateHead.png":
+{
+	"frame": {"x":1255,"y":853,"w":13,"h":14},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":28,"y":18,"w":13,"h":14},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/EnemiesBound/HeavySkeleton.png":
 {
 	"frame": {"x":2015,"y":931,"w":32,"h":64},
@@ -2962,7 +2970,7 @@
 },
 "Game/Items/Heart.png":
 {
-	"frame": {"x":2028,"y":1467,"w":19,"h":20},
+	"frame": {"x":2028,"y":1491,"w":19,"h":20},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":43,"y":52,"w":19,"h":20},
@@ -3248,14 +3256,6 @@
 	"spriteSourceSize": {"x":5,"y":0,"w":67,"h":72},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/UI/BoxSmall.png":
-{
-	"frame": {"x":2025,"y":1664,"w":22,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":1,"w":22,"h":22},
-	"sourceSize": {"w":24,"h":24}
-},
 "Game/UI/Disperse.png":
 {
 	"frame": {"x":1774,"y":733,"w":34,"h":20},
@@ -3288,6 +3288,22 @@
 	"spriteSourceSize": {"x":1,"y":1,"w":142,"h":142},
 	"sourceSize": {"w":144,"h":144}
 },
+"Game/UI/MiniMap/ChargerCrystal.png":
+{
+	"frame": {"x":2025,"y":1664,"w":22,"h":24},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":22,"h":24},
+	"sourceSize": {"w":24,"h":24}
+},
+"Game/UI/MiniMap/Tablet.png":
+{
+	"frame": {"x":707,"y":1692,"w":18,"h":24},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":18,"h":24},
+	"sourceSize": {"w":24,"h":24}
+},
 "Game/UI/Move.png":
 {
 	"frame": {"x":2025,"y":1609,"w":22,"h":27},
@@ -3314,67 +3330,35 @@
 },
 "Game/UI/UsePotionFrigid.png":
 {
-	"frame": {"x":707,"y":1692,"w":19,"h":22},
+	"frame": {"x":707,"y":1718,"w":19,"h":22},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":13,"y":0,"w":19,"h":22},
-	"sourceSize": {"w":44,"h":44}
-},
-"Game/UI/UsePotionFrigidInject.png":
-{
-	"frame": {"x":707,"y":1692,"w":19,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":13,"y":0,"w":19,"h":22},
-	"sourceSize": {"w":44,"h":44}
+	"spriteSourceSize": {"x":3,"y":2,"w":19,"h":22},
+	"sourceSize": {"w":44,"h":26}
 },
 "Game/UI/UsePotionMana.png":
 {
-	"frame": {"x":707,"y":1716,"w":19,"h":22},
+	"frame": {"x":2028,"y":1419,"w":19,"h":22},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":13,"y":0,"w":19,"h":22},
-	"sourceSize": {"w":44,"h":44}
-},
-"Game/UI/UsePotionManaInject.png":
-{
-	"frame": {"x":707,"y":1716,"w":19,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":13,"y":0,"w":19,"h":22},
-	"sourceSize": {"w":44,"h":44}
+	"spriteSourceSize": {"x":3,"y":2,"w":19,"h":22},
+	"sourceSize": {"w":44,"h":26}
 },
 "Game/UI/UsePotionStamina.png":
 {
-	"frame": {"x":2028,"y":1419,"w":19,"h":22},
+	"frame": {"x":2028,"y":1443,"w":19,"h":22},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":13,"y":0,"w":19,"h":22},
-	"sourceSize": {"w":44,"h":44}
-},
-"Game/UI/UsePotionStaminaInject.png":
-{
-	"frame": {"x":2028,"y":1419,"w":19,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":13,"y":0,"w":19,"h":22},
-	"sourceSize": {"w":44,"h":44}
+	"spriteSourceSize": {"x":3,"y":2,"w":19,"h":22},
+	"sourceSize": {"w":44,"h":26}
 },
 "Game/UI/UsePotionWill.png":
 {
-	"frame": {"x":2028,"y":1443,"w":19,"h":22},
+	"frame": {"x":2028,"y":1467,"w":19,"h":22},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":13,"y":0,"w":19,"h":22},
-	"sourceSize": {"w":44,"h":44}
-},
-"Game/UI/UsePotionWillInject.png":
-{
-	"frame": {"x":2028,"y":1443,"w":19,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":13,"y":0,"w":19,"h":22},
-	"sourceSize": {"w":44,"h":44}
+	"spriteSourceSize": {"x":3,"y":2,"w":19,"h":22},
+	"sourceSize": {"w":44,"h":26}
 },
 "Game/Vision.png":
 {
@@ -3400,6 +3384,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game3.json", "game4.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:3e308464585a9efacb456258b9e88bd1:4dbb925530c262ba74cfb88fec7a846e:701e665c5fc69e47e58c28f8fa547b2b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:5e2bb5ffd5472b38c5f640012fac60ed:4176afb28f770168a5373a65706310e2:701e665c5fc69e47e58c28f8fa547b2b$"
 }
 }

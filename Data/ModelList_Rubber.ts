@@ -110,6 +110,7 @@ AddModel({
 			Invariant: true,
 			InheritColor: "Rubber",
 			MorphPoses: {KneelClosed: "Kneel"},
+			HideWhenOverridden: true,
 			AddPriWithPose: {
 				ItemLegsRubberOver: 45,
 			},
@@ -130,6 +131,7 @@ AddModel({
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Rubber",
+			HideWhenOverridden: true,
 			AddPriWithPose: {
 				ItemLegsRubberOver: 45,
 			},
@@ -139,6 +141,7 @@ AddModel({
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Rubber",
+			HideWhenOverridden: true,
 			AddPriWithPose: {
 				ItemLegsRubberOver: 45,
 			},
@@ -175,6 +178,7 @@ AddModel({
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Rubber",
+			HideWhenOverridden: true,
 			AddPriWithPose: {
 				ItemFeetRubberOver: 45,
 			},
@@ -183,6 +187,7 @@ AddModel({
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Rubber",
+			HideWhenOverridden: true,
 			AddPriWithPose: {
 				ItemFeetRubberOver: 45,
 			},
@@ -204,6 +209,7 @@ AddModel({
 			SwapLayerPose: {Front: "WrapForeArms", Crossed: "WrapCrossArms"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			InheritColor: "Rubber",
+			HideWhenOverridden: true,
 			AddPriWithPose: {
 				ItemArmsRubberOver: 45,
 			},
@@ -224,6 +230,7 @@ AddModel({
 			SwapLayerPose: {Front: "WrapForeArms", Crossed: "WrapCrossArms"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			InheritColor: "Rubber",
+			HideWhenOverridden: true,
 			AddPriWithPose: {
 				ItemArmsRubberOver: 45,
 			},

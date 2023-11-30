@@ -207,7 +207,7 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
-		{ Name: "AnkleLeft", Layer: "WrappingLegs", Pri: 10,
+		{ Name: "AnkleLeft", Layer: "WrappingLegs", Pri: 15,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes"]),

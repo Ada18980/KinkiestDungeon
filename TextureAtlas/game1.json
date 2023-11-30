@@ -1074,7 +1074,7 @@
 },
 "Game/Conditions/BoundLevel.png":
 {
-	"frame": {"x":1003,"y":1376,"w":23,"h":12},
+	"frame": {"x":1029,"y":1376,"w":23,"h":12},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":49,"y":59,"w":23,"h":12},
@@ -1130,7 +1130,7 @@
 },
 "Game/DamageTypes/frost.png":
 {
-	"frame": {"x":1052,"y":1376,"w":15,"h":17},
+	"frame": {"x":1054,"y":1376,"w":15,"h":17},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":52,"w":15,"h":17},
@@ -1138,7 +1138,7 @@
 },
 "Game/DamageTypes/ice.png":
 {
-	"frame": {"x":1052,"y":1376,"w":15,"h":17},
+	"frame": {"x":1054,"y":1376,"w":15,"h":17},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":52,"w":15,"h":17},
@@ -1170,7 +1170,7 @@
 },
 "Game/EffectTiles/IllusOrbDead.png":
 {
-	"frame": {"x":1028,"y":1376,"w":22,"h":16},
+	"frame": {"x":1972,"y":1429,"w":22,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":25,"y":29,"w":22,"h":16},
@@ -1266,7 +1266,7 @@
 },
 "Game/Enemies/BindableEnemies/Skeleton.png":
 {
-	"frame": {"x":2015,"y":1578,"w":31,"h":58},
+	"frame": {"x":2015,"y":1579,"w":31,"h":58},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":23,"y":8,"w":31,"h":58},
@@ -1306,7 +1306,7 @@
 },
 "Game/Enemies/Skeleton.png":
 {
-	"frame": {"x":2015,"y":1578,"w":31,"h":58},
+	"frame": {"x":2015,"y":1579,"w":31,"h":58},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":23,"y":8,"w":31,"h":58},
@@ -1330,7 +1330,7 @@
 },
 "Game/Enemies/SummonedSkeleton.png":
 {
-	"frame": {"x":2015,"y":1578,"w":31,"h":58},
+	"frame": {"x":2015,"y":1579,"w":31,"h":58},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":23,"y":8,"w":31,"h":58},
@@ -1338,7 +1338,7 @@
 },
 "Game/EnemiesBound/Angel.png":
 {
-	"frame": {"x":2015,"y":1443,"w":32,"h":67},
+	"frame": {"x":2015,"y":1444,"w":32,"h":67},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":24,"y":1,"w":32,"h":67},
@@ -1362,7 +1362,7 @@
 },
 "Game/EnemiesBound/GreaterSkeleton.png":
 {
-	"frame": {"x":2015,"y":1512,"w":32,"h":64},
+	"frame": {"x":2015,"y":1513,"w":32,"h":64},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":25,"y":2,"w":32,"h":64},
@@ -1382,14 +1382,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":15,"y":4,"w":47,"h":31},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/EnemiesBound/Head/TemplateHead.png":
-{
-	"frame": {"x":2016,"y":1362,"w":13,"h":14},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":28,"y":18,"w":13,"h":14},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/EnemiesBound/JungleDryad.png":
@@ -1802,7 +1794,7 @@
 },
 "Game/Particles/VibeHeart.png":
 {
-	"frame": {"x":1995,"y":1429,"w":20,"h":12},
+	"frame": {"x":2016,"y":1362,"w":20,"h":12},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":4,"w":20,"h":12},
@@ -1922,7 +1914,7 @@
 },
 "Game/Spells/CanUpcast.png":
 {
-	"frame": {"x":1972,"y":1429,"w":21,"h":13},
+	"frame": {"x":1996,"y":1429,"w":21,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":49,"y":2,"w":21,"h":13},
@@ -2056,6 +2048,14 @@
 	"spriteSourceSize": {"x":2,"y":9,"w":33,"h":17},
 	"sourceSize": {"w":36,"h":36}
 },
+"Game/UI/MiniMap/Key.png":
+{
+	"frame": {"x":1003,"y":1376,"w":24,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":24,"h":17},
+	"sourceSize": {"w":24,"h":24}
+},
 "Game/UI/NoSprint.png":
 {
 	"frame": {"x":1382,"y":1025,"w":13,"h":21},
@@ -2077,16 +2077,8 @@
 	"frame": {"x":1382,"y":1048,"w":11,"h":20},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":17,"y":2,"w":11,"h":20},
-	"sourceSize": {"w":44,"h":44}
-},
-"Game/UI/UsePotionAncientInject.png":
-{
-	"frame": {"x":1382,"y":1048,"w":11,"h":20},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":17,"y":2,"w":11,"h":20},
-	"sourceSize": {"w":44,"h":44}
+	"spriteSourceSize": {"x":7,"y":4,"w":11,"h":20},
+	"sourceSize": {"w":44,"h":26}
 },
 "Game/UI/vision.png":
 {
@@ -2144,6 +2136,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game2.json", "game3.json", "game4.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:3e308464585a9efacb456258b9e88bd1:4dbb925530c262ba74cfb88fec7a846e:701e665c5fc69e47e58c28f8fa547b2b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:5e2bb5ffd5472b38c5f640012fac60ed:4176afb28f770168a5373a65706310e2:701e665c5fc69e47e58c28f8fa547b2b$"
 }
 }

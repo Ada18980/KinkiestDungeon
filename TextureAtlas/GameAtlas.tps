@@ -1010,6 +1010,10 @@
             <key type="filename">../Game/Enemies/Pet.png</key>
             <key type="filename">../Game/Enemies/PetChastity.png</key>
             <key type="filename">../Game/Enemies/PetDisplay.png</key>
+            <key type="filename">../Game/Enemies/PinkAlchemist.png</key>
+            <key type="filename">../Game/Enemies/PinkAlkahestor.png</key>
+            <key type="filename">../Game/Enemies/PinkGlueTechnician.png</key>
+            <key type="filename">../Game/Enemies/PinkLabAssistant.png</key>
             <key type="filename">../Game/Enemies/Pixie.png</key>
             <key type="filename">../Game/Enemies/PlayerGag.png</key>
             <key type="filename">../Game/Enemies/PrisonerBandit.png</key>
@@ -2114,6 +2118,7 @@
             <key type="filename">../Game/Target.png</key>
             <key type="filename">../Game/TargetMove.png</key>
             <key type="filename">../Game/TargetSpell.png</key>
+            <key type="filename">../Game/UI/Cycle.png</key>
             <key type="filename">../Game/UI/ItemAura.png</key>
             <key type="filename">../Game/UI/ItemAuraBG.png</key>
             <key type="filename">../Game/WarningAlly.png</key>
@@ -2790,6 +2795,7 @@
             <key type="filename">../Game/UI/Pass.png</key>
             <key type="filename">../Game/UI/Play.png</key>
             <key type="filename">../Game/UI/Sprint.png</key>
+            <key type="filename">../Game/UI/Status.png</key>
             <key type="filename">../Game/UI/Wait.png</key>
             <key type="filename">../Game/UI/WaitJail.png</key>
             <struct type="IndividualSpriteSettings">
@@ -3033,17 +3039,12 @@
             <key type="filename">../Game/Layers.png</key>
             <key type="filename">../Game/UI/Floppy.png</key>
             <key type="filename">../Game/UI/UsePotionAncient.png</key>
-            <key type="filename">../Game/UI/UsePotionAncientInject.png</key>
             <key type="filename">../Game/UI/UsePotionFrigid.png</key>
-            <key type="filename">../Game/UI/UsePotionFrigidInject.png</key>
             <key type="filename">../Game/UI/UsePotionInject.png</key>
             <key type="filename">../Game/UI/UsePotionMana.png</key>
-            <key type="filename">../Game/UI/UsePotionManaInject.png</key>
             <key type="filename">../Game/UI/UsePotionStamina.png</key>
-            <key type="filename">../Game/UI/UsePotionStaminaInject.png</key>
             <key type="filename">../Game/UI/UsePotionUnavailable.png</key>
             <key type="filename">../Game/UI/UsePotionWill.png</key>
-            <key type="filename">../Game/UI/UsePotionWillInject.png</key>
             <key type="filename">../Game/UI/savedColor_copy.png</key>
             <key type="filename">../Game/UI/savedColor_paste.png</key>
             <struct type="IndividualSpriteSettings">
@@ -3280,6 +3281,21 @@
                 <false/>
             </struct>
             <key type="filename">../Game/UI/BoxSmall.png</key>
+            <key type="filename">../Game/UI/MiniMap/Bars.png</key>
+            <key type="filename">../Game/UI/MiniMap/Bed.png</key>
+            <key type="filename">../Game/UI/MiniMap/ChargerCrystal.png</key>
+            <key type="filename">../Game/UI/MiniMap/ChargerEmpty.png</key>
+            <key type="filename">../Game/UI/MiniMap/DoorClosed.png</key>
+            <key type="filename">../Game/UI/MiniMap/DoorOpen.png</key>
+            <key type="filename">../Game/UI/MiniMap/Ghost.png</key>
+            <key type="filename">../Game/UI/MiniMap/Grate.png</key>
+            <key type="filename">../Game/UI/MiniMap/Key.png</key>
+            <key type="filename">../Game/UI/MiniMap/Orb.png</key>
+            <key type="filename">../Game/UI/MiniMap/Shrine.png</key>
+            <key type="filename">../Game/UI/MiniMap/ShrineMana.png</key>
+            <key type="filename">../Game/UI/MiniMap/Stairs.png</key>
+            <key type="filename">../Game/UI/MiniMap/StairsDown.png</key>
+            <key type="filename">../Game/UI/MiniMap/Tablet.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -3382,6 +3398,22 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/UI/LogDown.png</key>
+            <key type="filename">../Game/UI/LogUp.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>10,10,21,21</rect>
+                <key>scale9Paddings</key>
+                <rect>10,10,21,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Game/UI/Star.png</key>
             <key type="filename">../Game/UI/StarOff.png</key>
             <struct type="IndividualSpriteSettings">
@@ -3444,6 +3476,24 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/UI/button_game.png</key>
+            <key type="filename">../Game/UI/button_logbook.png</key>
+            <key type="filename">../Game/UI/button_menu.png</key>
+            <key type="filename">../Game/UI/button_reputation.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>11,14,21,28</rect>
+                <key>scale9Paddings</key>
+                <rect>11,14,21,28</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Game/UI/button_inventory.png</key>
             <key type="filename">../Game/UI/button_spells.png</key>
             <struct type="IndividualSpriteSettings">
@@ -3457,22 +3507,6 @@
                 <rect>13,14,25,28</rect>
                 <key>scale9Paddings</key>
                 <rect>13,14,25,28</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Game/UI/button_logbook.png</key>
-            <key type="filename">../Game/UI/button_reputation.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>11,14,21,28</rect>
-                <key>scale9Paddings</key>
-                <rect>11,14,21,28</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
