@@ -22,6 +22,13 @@ TODO add sugar magic ('Blood Energy Magic')
 - Fixed bug where hotkeys for Wait, Play self, and Make Noise didnt work
 - Wait til Interrupted while Reloading a crossbow now auto-ends after finishing loading. Useful for arbalest.
 - Improved the Orb Break menu when using Random Spells (now you know which spell it will give you)
+- Added Goddess Quests at shrines
+- Added Pray option at shrines
+- Removed champion System
+- Removed Rescue on the rep screen
+- Merged lore and rep screen now that rep screen isnt functional and is informative only
+- Added quests tab to journals
+- Added minimap icons
 
 5.0.0 RC8
 - Added Strict Ropework which adds an additional rope harness for aesthetic purposes

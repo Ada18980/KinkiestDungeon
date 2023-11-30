@@ -247,12 +247,17 @@ function KDDrawLoreRepTabs(xOffset) {
 	DrawButtonKDEx("TabLore", (b) => {
 		KinkyDungeonDrawState = "Logbook";
 		return true;
-	}, true, 500, 10, 495, 40, TextGet("KinkyDungeonLog"), "#ffffff", undefined, undefined, undefined,
+	}, true, 500, 10, 330, 40, TextGet("KinkyDungeonLog"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Logbook", KDButtonColor);
+	DrawButtonKDEx("TabQuest", (b) => {
+		KinkyDungeonDrawState = "Quest";
+		return true;
+	}, true, 840, 10, 330, 40, TextGet("KinkyDungeonQuest"), "#ffffff", undefined, undefined, undefined,
+	KinkyDungeonDrawState != "Quest", KDButtonColor);
 	DrawButtonKDEx("TabRep", (b) => {
 		KinkyDungeonDrawState = "Reputation";
 		return true;
-	}, true, 1005, 10, 495, 40, TextGet("KinkyDungeonReputation"), "#ffffff", undefined, undefined, undefined,
+	}, true, 1180, 10, 330, 40, TextGet("KinkyDungeonReputation"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Reputation", KDButtonColor);
 }
 

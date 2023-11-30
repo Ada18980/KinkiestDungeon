@@ -704,8 +704,9 @@ const KinkyDungeonRestraints = [
 		enemyTags: {"cyberdollrestraints" : 10},
 		ApplyVariants: {
 			"AntiMagic": {
-				weightMod: 0,
+				weightMod: -1,
 				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
 		events: [
@@ -980,7 +981,7 @@ const KinkyDungeonRestraints = [
 		},
 		ApplyVariants: {
 			"AntiMagic": {
-				weightMod: 0,
+				weightMod: -1,
 				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
 			},
 		},
@@ -992,8 +993,9 @@ const KinkyDungeonRestraints = [
 		},
 		ApplyVariants: {
 			"AntiMagic": {
-				weightMod: 0,
+				weightMod: -1,
 				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
 		maxwill: 0.8, enemyTags: {"latexRestraints" : 5, "latexRestraintsHeavy" : 5, "latexGag" : 10, "jailRestraints": 3}, ignoreMinLevelTags: ["latexRestraintsHeavy"], playerTags: {"posLatex": -1, "latexAnger": 2, "latexRage": 4}, minLevel: 4, allFloors: true, shrine: ["Latex", "Gags", "BallGags"]},
@@ -1069,8 +1071,9 @@ const KinkyDungeonRestraints = [
 		Model: "BallGag",
 		ApplyVariants: {
 			"AntiMagic": {
-				weightMod: 0,
+				weightMod: -1,
 				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
 		Type: "Tight", Group: "ItemMouth", power: 6, weight: 0, escapeChance: {"Struggle": -0.1, "Cut": -0.1, "Remove": -0.1},
@@ -1144,8 +1147,9 @@ const KinkyDungeonRestraints = [
 		],
 		ApplyVariants: {
 			"AntiMagic": {
-				weightMod: 0,
+				weightMod: -1,
 				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
 		Color: ['#5edc73', '#428E4F', '#6E6E6E', '#FFFFFF', '#000000'], Group: "ItemMouth", power: 9, weight: 0,
@@ -1230,8 +1234,9 @@ const KinkyDungeonRestraints = [
 		],
 		ApplyVariants: {
 			"AntiMagic": {
-				weightMod: 0,
+				weightMod: -1,
 				enemyTags: {antiMagic: 6, dressRestraints: 2},
+				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
 		gag: 0.65, Type: "Tight", Color: ["#8762c7", "Default"], Group: "ItemMouth", power: 8, strictness: 0.2, weight: 5, magic: true,
@@ -1570,8 +1575,9 @@ const KinkyDungeonRestraints = [
 		],
 		ApplyVariants: {
 			"AntiMagic": {
-				weightMod: 0,
+				weightMod: -1,
 				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
 		strictness: 0.2, gag: 0.65, Type: "Tight", Color: ["Default", "Default"], Group: "ItemMouth", power: 8, weight: 2,
@@ -1584,8 +1590,9 @@ const KinkyDungeonRestraints = [
 		],
 		ApplyVariants: {
 			"AntiMagic": {
-				weightMod: 0,
+				weightMod: -1,
 				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
 		strictness: 0.2, gag: 0.6, Color: ["Default", "Default"], Group: "ItemMouth", power: 8, weight: 2,
@@ -1674,8 +1681,9 @@ const KinkyDungeonRestraints = [
 		Model: "BallGag",
 		ApplyVariants: {
 			"AntiMagic": {
-				weightMod: 0,
+				weightMod: -1,
 				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
 		factionColor: [[], [0]], gag: 0.35, Type: "Tight", Color: ["Default", "Default"], Group: "ItemMouth", power: 3, weight: 2,
@@ -1685,8 +1693,9 @@ const KinkyDungeonRestraints = [
 		Model: "LargeBallGag",
 		ApplyVariants: {
 			"AntiMagic": {
-				weightMod: 0,
+				weightMod: -1,
 				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
 		factionColor: [[], [0]], gag: 0.35, Type: "Tight", Color: ["Default", "Default"], Group: "ItemMouth", power: 4.5, weight: 2,
@@ -2013,8 +2022,9 @@ const KinkyDungeonRestraints = [
 		Model: "BallGag",
 		ApplyVariants: {
 			"AntiMagic": {
-				weightMod: 0,
+				weightMod: -1,
 				enemyTags: {antiMagic: 20, ballGagRestraintsMagic: 2},
+				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
 		Type: "Tight", Color: ["Default", "Default"], Group: "ItemMouth", DefaultLock: "Red", power: 4, weight: 2,
@@ -2024,8 +2034,9 @@ const KinkyDungeonRestraints = [
 		Model: "LargeBallGag",
 		ApplyVariants: {
 			"AntiMagic": {
-				weightMod: 0,
+				weightMod: -1,
 				enemyTags: {antiMagic: 20, ballGagRestraintsMagic: 2},
+				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
 		Type: "Tight", Color: ["Default", "Default"], Group: "ItemMouth", DefaultLock: "Red_Hi", power: 5, weight: 2,
@@ -2036,8 +2047,9 @@ const KinkyDungeonRestraints = [
 		Model: "LargeBallGag",
 		ApplyVariants: {
 			"AntiMagic": {
-				weightMod: 0,
+				weightMod: -1,
 				enemyTags: {antiMagic: 20, ballGagRestraintsMagic: 2},
+				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
 		gag: 0.45, Type: "Tight", Color: ["Default", "#ff00ff"], Group: "ItemMouth", DefaultLock: "Purple", magic: true, power: 5.5, weight: 2,
@@ -2091,8 +2103,9 @@ const KinkyDungeonRestraints = [
 		],
 		ApplyVariants: {
 			"AntiMagic": {
-				weightMod: 0,
+				weightMod: -1,
 				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
 		gag: 0.65, Type: "Tight", Color: ["Default", "Default"], Group: "ItemMouth", power: 4, strictness: 0.2, weight: 3,
@@ -2615,8 +2628,9 @@ const KinkyDungeonRestraints = [
 		],
 		ApplyVariants: {
 			"AntiMagic": {
-				weightMod: 0,
+				weightMod: -1,
 				enemyTags: {antiMagic: 6, ballGagRestraintsMagic: 2},
+				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
 		strictness: 0.3, Color: ['#680000', '#680000', '#680000', '#680000', '#680000'], Group: "ItemMouth", power: 7, weight: 0,

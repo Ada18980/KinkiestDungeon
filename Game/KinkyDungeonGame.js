@@ -8,6 +8,8 @@ let KDFocusableTextFields = [
 	"MagicFilter",
 ];
 
+let KDMAXGODDESSQUESTS = 3;
+
 
 let KinkyDungeonGagMumbleChance = 0.02;
 let KinkyDungeonGagMumbleChancePerRestraint = 0.0025;
@@ -1054,7 +1056,9 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			let orbcount = Math.min(2, Math.max(2 * (MiniGameKinkyDungeonLevel + KinkyDungeonNewGame*KinkyDungeonMaxLevel) - KDGameData.CollectedOrbs, 0));
 			if (altType && altType.orbs != undefined) orbcount = altType.orbs;
 			if (!altType || altType.shrines)
-				KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTypes, shrinecount, shrinefilter, ghostchance, manaChance, orbcount, (altType && altType.noShrineTypes) ? altType.noShrineTypes : [], Floor, width, height);
+				KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTypes, shrinecount,
+					shrinefilter, ghostchance, manaChance, orbcount, (altType && altType.noShrineTypes) ? altType.noShrineTypes : [],
+					Floor, width, height, !altType || !altType.alwaysRegen);
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for shrine creation`);
 				startTime = performance.now();
@@ -1166,9 +1170,10 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 			KinkyDungeonSendEvent("postMapgen", {});
 
-			KDQuestTick(KDGameData.Quests);
 			if (altType && altType.tickFlags)
 				KinkyDungeonSendEvent("tickFlags", {delta: 1});
+
+			KDQuestWorldgenStart(KDGameData.Quests);
 			KinkyDungeonSendEvent("postQuest", {});
 
 
@@ -2338,7 +2343,7 @@ function KinkyDungeonPlaceHeart(width, height, Floor) {
 
 
 
-function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTypes, shrinecount, shrinefilter, ghostchance, manaChance, orbcount, filterTypes, Floor, width, height) {
+function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTypes, shrinecount, shrinefilter, ghostchance, manaChance, orbcount, filterTypes, Floor, width, height, allowQuests) {
 	KinkyDungeonCommercePlaced = 0;
 
 
@@ -2469,6 +2474,9 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 		return boringb - boringa;
 
 	});
+
+	let quests = 0;
+
 	while (list.length > 0) {
 		let N = 0;
 		if (count <= shrinecount) {
@@ -2506,11 +2514,15 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 					}
 					shrineTypes.push("Orb");
 				} else if (type) {
-					//if (KDAlreadyOpened(shrine.x, shrine.y)) {
-					//tile = 'a';
-					//} else {
 					KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Type: "Shrine", Name: type, drunk: stype.drunk});
-					//}
+					if (KDRandom() < 0.3 && quests < KDMAXGODDESSQUESTS) {
+						let quest = KDGetShrineQuest(KDMapData, KinkyDungeonTilesGet("" + shrine.x + "," +shrine.y));
+						if (quest) {
+							KDSetShrineQuest(KDMapData, KinkyDungeonTilesGet("" + shrine.x + "," +shrine.y),
+								quest);
+							quests += 1;
+						}
+					}
 					shrineTypes.push(type);
 				} else if (!shrineTypes.includes("Ghost") || KDRandom() < 0.5) {
 					shrineTypes.push("Ghost");
@@ -3830,6 +3842,7 @@ function KinkyDungeonGameKeyDown() {
 				case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Reputation" ? "Game" : "Reputation"; break;
 				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = KinkyDungeonDrawState == "MagicSpells" ? "Game" : "MagicSpells"; break;
 				case KinkyDungeonKeyMenu[4]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Logbook" ? "Game" : "Logbook"; break;
+				case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Quest" ? "Game" : "Quest"; break;
 			}
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
@@ -4605,6 +4618,7 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	if (KDRestraintDebugLog.length > 100) {
 		KDRestraintDebugLog = KDRestraintDebugLog.splice(0, 10);
 	}
+	KDQuestTick(KDGameData.Quests, delta);
 }
 let KDAllowDialogue = true;
 
@@ -4984,4 +4998,20 @@ function KDSprintCost(sprintdata) {
 	KinkyDungeonSendEvent("calcSprint", data);
 
 	return (data.cost + data.boost) * data.sprintCostMult;
+}
+
+
+/**
+ *
+ * @param {KDMapDataType} map
+ * @param {string} flag
+ */
+function KDSetMapFlag(map, flag) {
+	if (!map) return;
+	if (!map.flags) {
+		map.flags = [];
+	}
+	if (!map.flags.includes(flag)) {
+		map.flags.push(flag);
+	}
 }

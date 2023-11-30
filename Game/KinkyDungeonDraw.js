@@ -219,6 +219,10 @@ let kdpixisprites = new Map();
 /**
  * @type {Map<string, any>}
  */
+let kdminimapsprites = new Map();
+/**
+ * @type {Map<string, any>}
+ */
 let kdpixifogsprites = new Map();
 /**
  * @type {Map<string, any>}
@@ -823,6 +827,7 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
 			} else {
+				KDPlayerSetPose = false;
 				KinkyDungeonDrawState = "Game";
 				KinkyDungeonMessageToggle = false;
 				KinkyDungeonTargetingSpell = null;
@@ -874,10 +879,10 @@ function KinkyDungeonDrawGame() {
 
 			KinkyDungeonUpdateVisualPosition(KinkyDungeonPlayerEntity, KinkyDungeonDrawDelta);
 
-			let CamX = KinkyDungeonPlayerEntity.x - 3 - Math.floor(KinkyDungeonGridWidthDisplay/2);//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2)));
-			let CamY = KinkyDungeonPlayerEntity.y + 1 - Math.floor(KinkyDungeonGridHeightDisplay/2);// Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2)));
-			let CamX_offsetVis = KinkyDungeonPlayerEntity.visual_x - 3 - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
-			let CamY_offsetVis = KinkyDungeonPlayerEntity.visual_y + 1 - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
+			let CamX = KinkyDungeonPlayerEntity.x - 2 - Math.floor(KinkyDungeonGridWidthDisplay/2);//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2)));
+			let CamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2);// Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2)));
+			let CamX_offsetVis = KinkyDungeonPlayerEntity.visual_x - 2 - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
+			let CamY_offsetVis = KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
 
 			KinkyDungeonCamXVis = CamX + CamX_offsetVis;
 			KinkyDungeonCamYVis = CamY + CamY_offsetVis;
@@ -1565,6 +1570,9 @@ function KinkyDungeonDrawGame() {
 		KDDrawNavBar(3);
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KinkyDungeonDrawLore();
+	} else if (KinkyDungeonDrawState == "Quest") {
+		KDDrawNavBar(3);
+		KinkyDungeonDrawQuest();
 	} else if (KinkyDungeonDrawState == "Reputation") {
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KDDrawNavBar(3);
@@ -1949,7 +1957,7 @@ function KinkyDungeonDrawMessages(NoLog) {
 			KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle;
 			KDLogIndex = 0;
 			return true;
-		}, true, KDMsgWidthMin + KDMsgX + 10, 4, 72, 72, "", "#ffffff",
+		}, true, KDMsgWidthMin + KDMsgX + 10, 4, 52, 52, "", "#ffffff",
 		KinkyDungeonRootDirectory + (KinkyDungeonMessageToggle ? "UI/LogUp.png" : "UI/LogDown.png"), undefined, undefined, !KinkyDungeonMessageToggle, undefined, undefined, undefined, {
 			hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[0]),
 			hotkeyPress: KinkyDungeonKeyToggle[0],
@@ -3213,7 +3221,7 @@ let KDTileTooltips = {
 	'X': () => {return {color: "#aaaaaa", text: "X"};},
 	'?': () => {return {color: "#ffffff", noInspect: true, text: "Hook"};},
 	',': () => {return {color: "#ffffff", noInspect: true, text: "Hook"};},
-	'S': () => {return {color: "#4c6885", noInspect: true, text: "S"};},
+	'S': () => {return {color: "#96caff", noInspect: true, text: "S"};},
 	's': () => {return {color: "#4c6885", noInspect: true, text: "s"};},
 	'H': () => {return {color: "#4c6885", noInspect: true, text: "H"};},
 	'G': () => {return {color: "#69bf3e", noInspect: true, text: "G"};},
@@ -3697,10 +3705,10 @@ let KDDesiredPlayerPose = {};
 function KDPlayerDrawPoseButtons(C) {
 	KDModalArea = true;
 	KDModalArea_x = 650;
-	KDModalArea_y = 630;
+	KDModalArea_y = 430;
 	KDModalArea_width = 1000;
 	KDModalArea_height = 370;
-	KDDrawPoseButtons(C, 700, 680, true, true, true);
+	KDDrawPoseButtons(C, 700, 480, true, true, true);
 
 }
 
@@ -3724,8 +3732,8 @@ function KDGetLightColor(x, y) {
 function KDMouseInPlayableArea() {
 	return MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)
 		&& !MouseIn(0, 0, 500, 1000)
-		&& !MouseIn(1750, 0, 250, 1000)
-		&& !MouseIn(0, 900, 2000, 100)
+		&& !MouseIn(1940, 0, 70, 1000)
+		&& !MouseIn(0, 920, 2000, 100)
 		&& !KDButtonHovering
 		&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height))
 }

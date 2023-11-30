@@ -321,6 +321,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		let armor = Loot.armor;
 		let hexed = Loot.hexlist && (Loot.hexchance == undefined || KDRandom() < Loot.hexchance + (Loot.hexscale|| 0) * levelPercent || (Loot.nouncursed && !Loot.enchantlist && KinkyDungeonInventoryGet(Loot.nouncursed)));
 		let forceequip = Loot.forceEquip || (hexed && (Loot.forceEquipCursed || KinkyDungeonStatsChoice.get("CurseSeeker"))) || (!hexed && (Loot.forceEquipUncursed));
+		if (Loot.noForceEquip) forceequip = false;
 		if (Loot.armortags) {
 			let newarmor = KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "",
 				undefined, undefined, undefined, undefined, true, undefined, undefined, undefined, forceequip);

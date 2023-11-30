@@ -319,6 +319,44 @@ function KDProcessInput(type, data) {
 			KinkyDungeonAdvanceTime(1, true);
 			KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			break;
+		case "shrineQuest": {
+			KDDelayedActionPrune(["Action", "World"]);
+			tile = KinkyDungeonTilesGet(data.targetTile);
+			if (tile && !KDHasQuest(tile.Quest)) {
+				KDAddQuest(tile.Quest);
+				delete tile.Quest;
+				KinkyDungeonSendActionMessage(9, TextGet("KDShrineQuestAccepted"), "#ffffff", 1);
+				return "Accept";
+			}
+
+			KinkyDungeonSendActionMessage(9, TextGet("KDShrineQuestAcceptedFail"), "#ffffff", 1);
+			return "Fail";
+		}
+		case "shrinePray": {
+			KDDelayedActionPrune(["Action", "World"]);
+			tile = KinkyDungeonTilesGet(data.targetTile);
+			if (tile) {
+				tile.Rescue = true;
+			}
+			//KinkyDungeonTargetTile = tile;
+			//KinkyDungeonTargetTileLocation = data.targetTile;
+			//KinkyDungeonTargetTile = null;
+			KDDelayedActionPrune(["Action", "World"]);
+			let tiles = KinkyDungeonRescueTiles();
+			if (tiles.length > 0) {
+				KDSendStatus('goddess', data.rep, 'helpRescue');
+				KinkyDungeonChangeRep(data.rep, -10);
+				tile = tiles[Math.floor(tiles.length * KDRandom())];
+				if (tile) {
+					KinkyDungeonMapSet(tile.x, tile.y, "$");
+					KinkyDungeonTilesSet(tile.x + "," + tile.y, {Type: "Angel", Light: 5, lightColor: 0xffffff});
+					KDStartDialog("AngelHelp","Angel", true, "");
+				}
+				KDGameData.RescueFlag = true;
+			}
+			//KinkyDungeonAdvanceTime(1, true);
+			return "Rescue";
+		}
 		case "shrineDrink": {
 			if (!KDCanDrinkShrine(false)) {
 				KinkyDungeonSendActionMessage(9, TextGet("KDNoMana"), "#ff5555", 2, true);
@@ -467,26 +505,6 @@ function KDProcessInput(type, data) {
 
 			if (KDRandom() < 0.5 + data.value/100) {
 				KDDelayedActionPrune(["Action", "World"]);
-				/*let allies = KinkyDungeonGetAllies();
-				// Tie up all non-allies
-				for (let e of KDMapData.Entities) {
-					if (e.Enemy.bound && !e.Enemy.tags.angel) {
-						allies.push(e);
-						if (!e.boundLevel) e.boundLevel = e.Enemy.maxhp;
-						else e.boundLevel += e.Enemy.maxhp;
-						e.hp = 0.1;
-						e.rescue = true;
-					}
-				}
-				KDMapData.Entities = allies;
-				KDGameData.PrisonerState = '';
-				KDGameData.KinkyDungeonJailGuard = 0;
-				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonRescueMe"), "purple", 10);
-				for (let T of Object.values(KDMapData.Tiles)) {
-					if (T.Lock) T.Lock = undefined;
-					if (T.Type == "Lock") T.Type = undefined;
-					if (T.Type == "Trap") T.Type = undefined;
-				}*/
 				let tiles = KinkyDungeonRescueTiles();
 				if (tiles.length > 0) {
 					KDSendStatus('goddess', data.rep, 'helpRescue');

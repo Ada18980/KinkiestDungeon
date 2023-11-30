@@ -1,7 +1,26 @@
 "use strict";
 // Lots of good info here: http://www.adammil.net/blog/v125_Roguelike_Vision_Algorithms.html#permissivecode
-// For this implementation I decided that ray calculations are too much so I just did a terraria style lighting system
 // -Ada
+
+let KDMinimapIcons = {
+	'G': (x, y) => {return "UI/MiniMap/Ghost.png";},
+	'O': (x, y) => {return "UI/MiniMap/Orb.png";},
+	'S': (x, y) => {return "UI/MiniMap/Stairs.png";},
+	's': (x, y) => {return "UI/MiniMap/StairsDown.png";},
+	'H': (x, y) => {return "UI/MiniMap/StairsDown.png";},
+	'A': (x, y) => {
+		if (KinkyDungeonTilesGet(x + "," + y)?.drunk)
+			return "UI/MiniMap/Shrine.png";
+		return "UI/MiniMap/ShrineMana.png";},
+	'=': (x, y) => {return "UI/MiniMap/ChargerEmpty.png";},
+	'+': (x, y) => {return "UI/MiniMap/ChargerCrystal.png";},
+	'D': (x, y) => {return "UI/MiniMap/DoorClosed.png";},
+	'd': (x, y) => {return "UI/MiniMap/DoorOpen.png";},
+	'B': (x, y) => {return "UI/MiniMap/Bed.png";},
+	'b': (x, y) => {return "UI/MiniMap/Bars.png";},
+	'g': (x, y) => {return "UI/MiniMap/Grate.png";},
+};
+
 
 let KDRedrawFog = 0;
 let KDRedrawMM = 0;
@@ -786,17 +805,30 @@ function KDRenderMinimap(x, y, w, h, scale, alpha, gridborders, blackMap) {
 			for (let yy = 0; yy < h; yy++)  {
 
 				if (KDIsInBounds(x+xx, y+yy, 1) && (KDMapExtraData.VisionGrid[(x+xx) + (y+yy)*KDMapData.GridWidth] > 0 || (allowFog && KDMapData.FogGrid[(x+xx) + (y+yy)*KDMapData.GridWidth] > 0))) {
-					if (gridborders)
-						kdminimap.lineStyle(1, KDMapExtraData.VisionGrid[(x+xx) + (y+yy)*KDMapData.GridWidth] > 0 ? 0xaaaaaa : 0, 0.5);
-					else
-						kdminimap.lineStyle(0, 0);
-					kdminimap.beginFill(string2hex(KDGetTileColor(x + xx, y + yy)), KDMapExtraData.VisionGrid[(x+xx) + (y+yy)*KDMapData.GridWidth] > 0 ? 1. : 0.5);
-					kdminimap.drawRect(
-						xx*scale,
-						yy*scale,
-						scale,
-						scale);
-					kdminimap.endFill();
+					if (KDMinimapIcons[KinkyDungeonMapGet(x+xx, y+yy)]) {
+						KDDraw(kdminimap, kdminimapsprites, `minimapIcon${KinkyDungeonMapGet(x+xx, y+yy)},${x+xx},${y+yy}`,
+							KinkyDungeonRootDirectory + KDMinimapIcons[KinkyDungeonMapGet(x+xx, y+yy)](x+xx, y+yy),
+							xx*scale, yy*scale, scale, scale, undefined, {
+								zIndex: 10,
+							},
+						);
+					} else {
+						if (gridborders)
+							kdminimap.lineStyle(1, KDMapExtraData.VisionGrid[(x+xx) + (y+yy)*KDMapData.GridWidth] > 0 ? 0xaaaaaa : 0, 0.5);
+						else
+							kdminimap.lineStyle(0, 0);
+						kdminimap.beginFill(string2hex(KDGetTileColor(x + xx, y + yy)), KDMapExtraData.VisionGrid[(x+xx) + (y+yy)*KDMapData.GridWidth] > 0 ? 1. : 0.5);
+						kdminimap.drawRect(
+							xx*scale,
+							yy*scale,
+							scale,
+							scale);
+						kdminimap.endFill();
+					}
+
+
+
+
 				}
 			}
 		}
@@ -808,6 +840,7 @@ function KDRenderMinimap(x, y, w, h, scale, alpha, gridborders, blackMap) {
 			scale);
 		kdminimap.endFill();
 	}
+	KDCullSpritesList(kdminimapsprites);
 
 }
 

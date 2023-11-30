@@ -1959,6 +1959,19 @@ interface spell {
 
 }
 
+interface KDQuest {
+	name: string;
+	npc: string;
+	visible: boolean;
+	nocancel?: boolean,
+	tick?: (delta) => void;
+	worldgenstart?: () => void;
+	accept?: () => void;
+	weight: (RoomType: any, MapMod: any, data: any, currentQuestList: any) => number;
+	prerequisite: (RoomType: any, MapMod: any, data: any, currentQuestList: any) => boolean;
+	tags?: string[],
+};
+
 interface KDPoint {x: number, y: number}
 interface KDJailPoint extends KDPoint {type: string, radius: number, requireLeash?: boolean, requireFurniture?: boolean, direction?:{x: number, y: number}, restraint?:string, restrainttags?:string[]}
 
@@ -2169,6 +2182,8 @@ interface KDWorldSlot {
 interface KDMapDataType {
 	Checkpoint: string,
 	Title: string,
+
+	flags?: string[],
 
 
 	GroundItems: {x: number, y: number, name: string, amount?: number} [];
@@ -2978,4 +2993,5 @@ type ISpriteMaskTarget = import('pixi.js').ISpriteMaskTarget;
 
 type PIXICLEAR_MODES = import('pixi.js').CLEAR_MODES;
 type PIXIFilterSystem = import('pixi.js').FilterSystem;
+
 

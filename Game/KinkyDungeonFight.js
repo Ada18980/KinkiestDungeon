@@ -151,6 +151,7 @@ let KinkyDungeonDamageTypes = {
  * @returns {weapon}
  */
 function KDWeapon(item) {
+	if (!item) return null;
 	return KinkyDungeonWeapons[KinkyDungeonWeaponVariants[item.name]?.template || item.name];
 }
 

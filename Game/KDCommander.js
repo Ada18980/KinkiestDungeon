@@ -819,7 +819,7 @@ let KDBarricades = {
 	},
 	"BarricadeConcrete": {
 		filter: (enemy, x, y, checkpoint, type) => {
-			return enemy.Enemy.Security?.level_tech > 0 || KDRandom() < 0.1 * KDEnemyRank(enemy);
+			return enemy.Enemy.Security?.level_tech > 0 || (MiniGameKinkyDungeonLevel > 3 && KDRandom() < 0.1 * KDEnemyRank(enemy));
 		},
 		weight: (enemy, x, y, checkpoint, type) => {
 			return 11;

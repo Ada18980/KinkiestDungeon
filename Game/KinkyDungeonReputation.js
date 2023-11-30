@@ -284,7 +284,7 @@ function KinkyDungeonDrawReputation() {
 
 	let xOffset = -125;
 	KDDrawLoreRepTabs(xOffset);
-	KinkyDungeonDrawMessages(true);
+	//KinkyDungeonDrawMessages(true);
 
 	let i = 0;
 	let XX = 0;
@@ -346,7 +346,7 @@ function KinkyDungeonDrawReputation() {
 
 			if (KDFactionRepIndex < 0.1) {
 				if (KDRepSelectionMode == "") {
-					DrawButtonKDEx("rescueswitch", (bdata) => {
+					/*DrawButtonKDEx("rescueswitch", (bdata) => {
 						if (KinkyDungeonAllRestraint().length > 0)
 							KDRepSelectionMode = "Rescue";
 						return true;
@@ -356,7 +356,7 @@ function KinkyDungeonDrawReputation() {
 					DrawButtonKDEx("champswitch", (bdata) => {
 						KDRepSelectionMode = "Champion";
 						return true;
-					}, true, 900, 800, 250, 50, TextGet("KinkyDungeonAskChampion"), "white");
+					}, true, 900, 800, 250, 50, TextGet("KinkyDungeonAskChampion"), "white");*/
 				} else {
 					DrawButtonKDEx("backtorep", (bdata) => {
 						KDRepSelectionMode = "";

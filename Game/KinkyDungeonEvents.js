@@ -4450,7 +4450,7 @@ let KDEventMapWeapon = {
 		"Reload": (e, weapon, data) => {
 			let player = data.player || KinkyDungeonPlayerEntity;
 			if (KinkyDungeonSlowMoveTurns < 1 && (!e.prereq || !KDPrereqs[e.prereq] || KDPrereqs[e.prereq](player, e, data))) {
-				let originalDuration = KinkyDungeonPlayerBuffs[weapon.name + "Load"].duration;
+				let originalDuration = KinkyDungeonPlayerBuffs[weapon.name + "Load"]?.duration;
 				let currentLoad = KDEntityBuffedStat(player, weapon.name + "Load") || 0;
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: weapon.name + "Load",

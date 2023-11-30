@@ -4593,7 +4593,7 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 				power: origRestraint.power + basePower,
 				shrine: shrine,
 				enemyTags: enemyTags,
-				events: [...extraEvents, ...(origRestraint.events || [])],
+				events: JSON.parse(JSON.stringify([...extraEvents, ...(origRestraint.events || [])])),
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
 			};

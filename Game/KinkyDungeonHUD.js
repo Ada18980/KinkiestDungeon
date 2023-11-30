@@ -208,7 +208,7 @@ function KDHandleGame() {
 		KinkyDungeonhandleQuickInv();
 		return true;
 	}
-	if (KinkyDungeonMessageToggle) {
+	if (KinkyDungeonMessageToggle && KinkyDungeonDrawState == "Game") {
 		if (MouseIn(500, KDLogTopPad, 1250, KDLogHeight + 175)) {
 			return true;
 		}
@@ -842,12 +842,12 @@ function KDDrawWeaponSwap(x, y) {
 	if (KDGameData.PreviousWeapon?.length > 0) {
 		let ii = 0;
 		for (let wep of KDGameData.PreviousWeapon) {
-			if (DrawButtonKDEx("previousweapon" + wep,(bdata) => {
+			if (wep && DrawButtonKDEx("previousweapon" + wep,(bdata) => {
 				if (!KinkyDungeonControlsEnabled()) return false;
 				KDSwitchWeapon(wep);
 				return true;
 			}, KDGameData.PreviousWeapon != undefined, x + 0.45*width + (ii++*0.35*width), y-0.35*width, 0.35*width, 0.35*width, "", "#ffffff",
-			KinkyDungeonRootDirectory + "Items/" + KDWeapon(KinkyDungeonInventoryGetWeapon(wep)).name + ".png",
+			KinkyDungeonRootDirectory + "Items/" + KDWeapon(KinkyDungeonInventoryGetWeapon(wep))?.name + ".png",
 			undefined, undefined, true, undefined, undefined, undefined, {
 				//hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[0]),
 				scaleImage: true,
@@ -870,7 +870,7 @@ function KDDrawWeaponSwap(x, y) {
 		return true;
 	}, KDGameData.PreviousWeapon != undefined, x, y - 0.45*width, 0.45*width, 0.45*width, "", "#ffffff",
 	KinkyDungeonPlayerWeapon && KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon) ?
-		KinkyDungeonRootDirectory + "Items/" + KDWeapon(KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon)).name + ".png"
+		KinkyDungeonRootDirectory + "Items/" + KDWeapon(KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon))?.name + ".png"
 		: KinkyDungeonRootDirectory + "Items/Unarmed.png",
 	undefined, undefined, true, undefined, undefined, undefined, {
 		//hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[0]),
@@ -1179,7 +1179,7 @@ function KinkyDungeonDrawActionBar(x, y) {
 		let bWidth = 60;
 		let bHeight = 60;
 		let spacing = bWidth + 10;
-		let xx = 1730 - 250 - spacing * list.length;
+		let xx = 1910 - spacing * list.length;
 
 		let setTo = KDFocusControls;
 
@@ -1188,18 +1188,18 @@ function KinkyDungeonDrawActionBar(x, y) {
 				KDSetFocusControlToggle(setTo + button[0], !(KDGameData.FocusControlToggle && KDGameData.FocusControlToggle[setTo +  button[0]]));
 				KDFocusControls = setTo; // This is to refresh after KDProcessButtons
 				return true;
-			}, true, xx, 900 - bHeight + 15, bWidth, bHeight,
+			}, true, xx, 700 - bHeight + 15, bWidth, bHeight,
 			"", "", KinkyDungeonRootDirectory + `UI/${KDFocusControls}/${ button[0]}.png`,
 			undefined, undefined, !KDGameData.FocusControlToggle || !KDGameData.FocusControlToggle[KDFocusControls +  button[0]], KDTextGray1, undefined, false, {
 				alpha: 0.7,
 				zIndex: 110,
 				//hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[2]),
 			});
-			if (MouseIn(xx, 900 - bHeight + 15, bWidth, bHeight)) focusTooltip = "KDFocusControls" + setTo + button[0];
+			if (MouseIn(xx, 700 - bHeight + 15, bWidth, bHeight)) focusTooltip = "KDFocusControls" + setTo + button[0];
 			xx += spacing;
 		}
 		if (focusTooltip) {
-			DrawTextFitKD(TextGet(focusTooltip), Math.min(1700, MouseX), 820, 250, "#ffffff", undefined, 18);
+			DrawTextFitKD(TextGet(focusTooltip), Math.min(1700, MouseX), 620, 250, "#ffffff", undefined, 18);
 		}
 	}
 
@@ -1486,8 +1486,8 @@ function KinkyDungeonHandleHUD() {
 
 	if (KDModalArea && MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height)) return true;
 	if (MouseIn(0, 0, 500, 1000)) return true;
-	if (MouseIn(1650, 0, 350, 1000)) return true;
-	if (MouseIn(0, 900, 2000, 100)) return true;
+	if (MouseIn(1950, 0, 60, 1000)) return true;
+	if (MouseIn(0, 950, 2000, 60)) return true;
 	KDModalArea = false;
 	return false;
 }
@@ -1575,7 +1575,7 @@ function KDGetItemLinkIndex(inv, allowInaccessible) {
  * @param {number} skip - Skips the button being drawn in this instance
  */
 function KDDrawNavBar(skip, quit = false) {
-	let by = 300;
+	let by = 290;
 	let bwidth = 140;
 	let bx = 2000 - 10 - bwidth;
 	let bspacing = 5;

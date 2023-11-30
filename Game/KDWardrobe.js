@@ -760,9 +760,9 @@ function KDDrawWardrobe(screen, Character) {
 	for (let i = 0; i < KDOutfitInfo.length && i < KDMaxOutfitsDisplay; i++) {
 		let index = i + KDMaxOutfitsIndex;
 
-		DrawButtonKDEx("ClickOutfit" + i, clickButton(index), true, 475, 120 + 50 * i, 150, 45,
+		DrawButtonKDEx("ClickOutfit" + i, clickButton(index), true, 475, 120 + 50 * i, 200, 45,
 			KDOutfitInfo[index] + (((index == KDCurrentOutfit && KDOriginalValue) || KDOutfitOriginalStore[index]) ? "(*)" : ""),
-			index == KDCurrentOutfit ? "#ffffff" : "#888888", "", undefined, undefined, true);
+			index == KDCurrentOutfit ? "#ffffff" : "#888888", "", undefined, undefined, index != KDCurrentOutfit);
 
 	}
 	DrawBoxKD(450, 55, 250, 0 + KDOutfitInfo.length * 50, KDButtonColor, false, 0.5, -10);

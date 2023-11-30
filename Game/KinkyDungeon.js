@@ -102,7 +102,7 @@ let KinkyDungeonKeyEnter = ['Enter'];
 let KinkyDungeonKeySprint = ['ShiftLeft'];
 let KinkyDungeonKeyWeapon = ['R',];
 let KinkyDungeonKeyUpcast = ['ControlLeft', 'AltLeft'];
-let KinkyDungeonKeyMenu = ['V', 'I', 'U', 'M', 'L']; // QuikInv, Inventory, Reputation, Magic, Log
+let KinkyDungeonKeyMenu = ['V', 'I', 'U', 'M', 'L', '*']; // QuikInv, Inventory, Reputation, Magic, Log, Quest
 let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight", 'T', '?', '/']; // Log, Passing, Door, Auto Struggle, Auto Pathfind, Inspect, Wait till interrupted, Make Noise
 let KinkyDungeonKeySpellPage = ['`'];
 let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H']; // Swap, Offhand, OffhandPrevious
@@ -196,6 +196,7 @@ let KDDefaultKB = {
 	Reputation: KinkyDungeonKeyMenu[2],
 	Magic: KinkyDungeonKeyMenu[3],
 	Log: KinkyDungeonKeyMenu[4],
+	Quest: KinkyDungeonKeyMenu[5],
 
 	Upcast: KinkyDungeonKeyUpcast[0],
 	UpcastCancel: KinkyDungeonKeyUpcast[1],
@@ -331,6 +332,7 @@ let KDDefaultMaxParty = 3;
 * HunterTimer: number,
 * Hunters: number[],
 * Quests: string[],
+* QuestData: Record<string, any>,
 * PriorJailbreaks: number,
 * PriorJailbreaksDecay: number,
 * PreviousWeapon: string[],
@@ -428,6 +430,7 @@ let KDGameDataBase = {
 	MapMod: "",
 
 	Quests: [],
+	QuestData: {},
 
 	HunterTimer: 0,
 	Hunters: [],
@@ -2374,6 +2377,7 @@ function KDMouseWheel(event) {
 	} else return;
 	if (KDFunctionDialogueScroll(event.deltaY)) return;
 	if (KDFunctionPerksScroll(event.deltaY || event.deltaX)) return;
+	if (KDFunctionQuestScroll(event.deltaY || event.deltaX)) return;
 	if (KDFunctionMagicPageScroll(event.deltaY || event.deltaX)) return;
 	if (KDFunctionMagicSpellPageScroll(event.deltaY || event.deltaX)) return;
 	if (KDFunctionInventoryScroll(event.deltaY || event.deltaX)) return;
@@ -2389,6 +2393,17 @@ function KDFunctionPerksScroll(amount) {
 			KDClickButton("perks>");
 		} else {
 			KDClickButton("perks<");
+		}
+		return true;
+	}
+	return false;
+}
+function KDFunctionQuestScroll(amount) {
+	if (KinkyDungeonState == "Quest") {
+		if (amount > 0) {
+			KDClickButton("questDown");
+		} else {
+			KDClickButton("questUp");
 		}
 		return true;
 	}
@@ -2819,6 +2834,7 @@ function KDCommitKeybindings() {
 		KinkyDungeonKeybindings.Reputation,
 		KinkyDungeonKeybindings.Magic,
 		KinkyDungeonKeybindings.Log,
+		KinkyDungeonKeybindings.Quest,
 	];
 	KinkyDungeonKeyToggle = [
 		KinkyDungeonKeybindings.MsgLog,

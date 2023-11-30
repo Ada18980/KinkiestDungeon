@@ -900,6 +900,7 @@ KinkyDungeonKeyInspect,Inspect
 KinkyDungeonKeyQInventory,Quick Inventory
 KinkyDungeonKeyInventory,Inventory
 KinkyDungeonKeyReputation,Reputation
+KinkyDungeonKeyQuest,Quests
 KinkyDungeonKeyMagic,Spell List
 KinkyDungeonKeyLog,Logbook
 
@@ -991,6 +992,8 @@ LootPotionCollar,"You find a special collar that lets you absorb energy from pot
 LootSlimeWalkers,"You find a pair of garish pink high heels with a slippery surface."
 LootPearlChest,The pearly chest contains a divine gift! (+ITEMGET)
 KDSmokePuff,Smoke fills the air around you!
+
+
 
 LootCacheLostItems,"You recover some of your lost items!"
 
@@ -1910,6 +1913,12 @@ AttackDollmakerSpecial,"The dollmaker's apprentice unleashes a powerful latex bl
 
 
 
+NamePinkAlchemist,...Alchemist?
+KillPinkAlchemist,You rescue the alchemist.
+AttackPinkAlchemistBind,"The Alchemist restrains you! (+RestraintAdded)"
+AttackPinkAlchemist,"The alchemist hugs you in a rubbery embrace! (DamageTaken)"
+AttackPinkAlchemistLock,"The alchemist uses an ornate-looking lock! (DamageTaken)"
+
 NameAlchemist,Alchemist
 KillAlchemist,"The alchemist screams and runs."
 AttackAlchemistBind,"The Alchemist restrains you! (+RestraintAdded)"
@@ -2049,6 +2058,11 @@ KillAlkahestor,"The alkahestor resigns to her fate."
 AttackAlkahestorBind,"The alkahestor releases a vial of liquid that wraps around you! (+RestraintAdded)"
 AttackAlkahestorLock,"The alkahestor uses an ornate-looking lock! (DamageTaken)"
 AttackAlkahestor,"The alkahestor shoves you! (DamageTaken)"
+NamePinkAlkahestor,...Alkahestor?
+KillPinkAlkahestor,"You rescue the Alkahestor"
+AttackPinkAlkahestorBind,"The alkahestor releases a vial of liquid that wraps around you! (+RestraintAdded)"
+AttackPinkAlkahestorLock,"The alkahestor uses an ornate-looking lock! (DamageTaken)"
+AttackPinkAlkahestor,"The alkahestor shoves you! (DamageTaken)"
 
 NameElementalLatex,Latex Elemental
 KillElementalLatex,"The latex elemental melts into sticky rubber."
@@ -2660,7 +2674,8 @@ NameDemon,Demon
 KillDemon,"The demon is exorcised."
 AttackDemonBind,"The demon places you in dark, glassy restraints. (+RestraintAdded)"
 AttackDemonLock,"The demon giggles as it locks your restraints! (DamageTaken)"
-AttackDemon,"The demon whacks you with its mace! (DamageTaken)"
+AttackDemon,"The demon caresses you gently with her sharp nails! (DamageTaken)"
+AttackDemonStun,"The demon stuns you with her heavy mace! (+STUN)"
 
 NameTickleHand,Tickle Hand
 KillTickleHand,"The hand vanishes!"
@@ -3148,10 +3163,15 @@ KinkyDungeonFactionAdventurer,Adventurer
 KinkyDungeonFactionCurse,Cursed Spirit
 KinkyDungeonFactionRebel,Wanted
 KinkyDungeonFactionDelinquent,Delinquent
+KinkyDungeonFactionVirus,Computer Virus
+KinkyDungeonFactionExtraplanar,Extraplanar Entity
+KinkyDungeonFactionDubiousWitch,Dubious Witch
+KinkyDungeonFactionShadowClan,Shadow Clan
 KinkyDungeonFactionWolfhunter,Illegal Poacher
 KinkyDungeonFactionRock,Nature
 KinkyDungeonFactionRage,Very Angry
 KinkyDungeonFactionAmbush,Surprise!
+KinkyDungeonFactionDebate,Fierce Debater
 
 KinkyDungeonFactionAngel,Angels
 KinkyDungeonFactionDemon,Demons
@@ -12838,6 +12858,20 @@ KinkyDungeonBuffLatexBubble,"The latex around you dampens your attacks, reducing
 
 KinkyDungeonSpellLatexBubble,Latex Bubble
 
+NamePinkLabAssistant,...Lab Assistant?
+KillPinkLabAssistant,You rescue the lab assistant.
+AttackPinkLabAssistantBind,"The assistant restrains you! (+RestraintAdded)"
+AttackPinkLabAssistant,"The assistant gropes you playfully! (DamageTaken)"
+AttackPinkLabAssistantLock,"The assistant applies a lock! (DamageTaken)"
+AttackPinkLabAssistantBlind,"The assistant splashes a solvent in your face, blinding you! (DamageTaken)"
+NamePinkGlueTechnician,...Glue Technician?
+KillPinkGlueTechnician,You rescue the glue technician.
+AttackPinkGlueTechnicianBind,"The technician slaps adhesive restraints onto your body! (+RestraintAdded)"
+AttackPinkGlueTechnician,"The technician polishes your restraints thoroughly! (DamageTaken)"
+AttackPinkGlueTechnicianSlow,"The technician pours glue on you to make you stay still! (DamageTaken)"
+AttackPinkGlueTechnicianLocks,"The technician inspects your restraints and adds a lock to spec! (DamageTaken)"
+
+
 NameLabAssistant,Lab Assistant
 KillLabAssistant,"The assistant envelops herself in her own bubble for protection."
 AttackLabAssistantBind,"The assistant restrains you! (+RestraintAdded)"
@@ -12848,7 +12882,7 @@ AttackLabAssistantBlind,"The assistant splashes a solvent in your face, blinding
 KinkyDungeonSpellGlueBomb,Glue Bomb
 
 NameGlueTechnician,Glue Technician
-KillGlueTechnician,"The technician screams and runs."
+KillGlueTechnician,"The technician trips and glues herself to the floor."
 AttackGlueTechnicianBind,"The technician slaps adhesive restraints onto your body! (+RestraintAdded)"
 AttackGlueTechnician,"The technician polishes your restraints thoroughly! (DamageTaken)"
 AttackGlueTechnicianSlow,"The technician pours glue on you to make you stay still! (DamageTaken)"
@@ -13285,7 +13319,7 @@ rTutorialContinue_Continue_Continue,"These are options for how to display your c
 rTutorialContinue_Continue_Continue_Continue,"This is the status bar.|It shows various values and buffs relating to your character.|Distraction determines how easy it is to cast spells and resist teasing.|Stamina is required to sprint and attack with a weapon.|Mana is used to cast spells. You have what is called a 'Mana Pool,'|which is excess mana that slowly refills you mana bar until it runs out.|Finally, running out of Willpower makes it much harder to escape bondage."
 rTutorialContinue_Continue_Continue_Continue_Continue,"These are the action buttons.|You can use them to perform various actions like closing doors or sprinting.|You can also toggle various settings such as automatically passing|through allies or auto-pathing when there are no enemies nearby.|You can also swap between recently used weapons."
 rTutorialContinue_Continue_Continue_Continue_Continue_Continue,"These are additional toggles used for various purposes.|Hover over them to see what they do."
-rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue,"These are the various submenus.|Your Inventory is used to brows items and use or equip them.|Your Reputation affects how enemies interact with you. Additionally, you can sacrifice|your rep with the Goddesses for brief assistance with restraints.|The Logbook contains lore, notes, and hints gathered along your journey.|"
+rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue,"These are the various submenus.|Your Inventory is used to brows items and use or equip them.|The Journal contains lore, notes, and hints gathered along your journey.|The Journal also contains info on available quests,|and your reputation with various factions."
 rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue_Continue,"This is the hotbar.|Here you will find various spells and customizable actions.|You can customize it through the Spells submenu by clicking on a spell.|You can also add items, armor, and consumables to it from the Inventory."
 rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue_Continue_Continue,"Finally, this is where the message log will be.|It provides a written record of what happened the last few turns.|You can click the 'Log' button to expand the log,|Allowing you to look much further back."
 rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue_Continue_Continue_Continue,"Thats it for the UI.|If you want a more hands on tutorial, enter the portal to the top right,|near the training dummies.|You can click on NPCs (such as the ghosts in this room) to talk to them."
@@ -13301,3 +13335,69 @@ KDMagicFilter,Search Spells:
 KDFree,Free
 KDDisarmed,Disarmed!!!
 KDExpandBuffs,Show Buffs and Stats
+
+KinkyDungeonQuest,Quests
+
+KDShrineActionPray,Pray for Assistance
+KDShrineActionQuest,This shrine bears a request carved in stone:
+KDShrineActionQuestAccept,Accept the Quest
+
+KDShrineQuestAccepted,You accept the goddess' quest.
+KDShrineQuestAcceptedFail,You cannot accept that quest right now.
+
+KDShrineActionDescOffer,Offer gold to the Goddess in exchange for help. Destroys the shrine.
+KDShrineActionDescPray,Ask for help without offering gold.
+KDShrineActionDescPrayFail,You have already prayed at this shrine.
+KDShrineActionDescQuest,Listen to what the Goddess asks of you.
+KDShrineActionDescQuestAccept,Accept the Goddess' quest.
+KDShrineActionDescDrink,Drink the mana in the shrine. Can be done once.
+KDShrineActionDescBottle,Bottle the mana in the shrine for later. Can be done once.
+
+KDQuestListCancel,Cancel Quest
+KDQuestListDescCancel,Cancels the quest. You will not be penalized.
+KDQuestListDescCancelFail,You can't cancel this quest.
+KDNoQuests,You have no quests currently.
+
+KDNewQuest,A new quest has been added to your Journal.
+
+KDQuest_DressmakerQuest,Find the dressmaker's prized dress and wear it in front of her.
+KDQuest_BanditQuest,Rescue the bandit from false imprisonment.
+KDQuest_MaidforceQuest,Teach some unruly maids a lesson.
+KDQuest_DragonheartQuest,Defeat a rebel leader and show them their place.
+KDQuest_ApprenticeQuest,Help the student acquire a scroll!
+KDQuest_WolfgirlHunters,You are being chased by a band of relentless poachers.
+
+KDQuest_RopeQuest,Slay the Rope Kraken.
+KDQuestFail_RopeQuest,You did not do your quest! The Goddess has decided to punish you.
+KDQuestSucceed_RopeQuest,You have pleased the Goddess.
+KDQuest_LatexQuest,Rescue some alchemists from their own experiment.
+KDQuestFail_LatexQuest,You did not do your quest! The Goddess has decided to punish you.
+KDQuestSucceed_LatexQuest,You have pleased the Goddess.
+KDQuest_LeatherQuest,Stop a rebels from making a pact with primordial beings.
+KDQuestFail_LeatherQuest,You did not do your quest! The Goddess has decided to punish you.
+KDQuestSucceed_LeatherQuest,You have pleased the Goddess.
+KDQuest_MetalQuest,Decommission some malfunctioning drones.
+KDQuestFail_MetalQuest,You did not do your quest! The Goddess has decided to punish you.
+KDQuestSucceed_MetalQuest,You have pleased the Goddess.
+
+KDQuest_WillQuest,Resolve a dispute between elves and catgirls by tying up both sides.
+KDQuestFail_WillQuest,You did not do your quest! The Goddess has decided to punish you.
+KDQuestSucceed_WillQuest,You have pleased the Goddess.
+KDQuest_ElementsQuest,Repel a planar incursion by a dangerous demon.
+KDQuestFail_ElementsQuest,You did not do your quest! The Goddess has decided to punish you.
+KDQuestSucceed_ElementsQuest,You have pleased the Goddess.
+KDQuest_ConjureQuest,Stop some witches from performing a dubious summoning ritual.
+KDQuestFail_ConjureQuest,You did not do your quest! The Goddess has decided to punish you.
+KDQuestSucceed_ConjureQuest,You have pleased the Goddess.
+KDQuest_IllusionQuest,Defeat a congregation of the Shadow Clan.
+KDQuestFail_IllusionQuest,You did not do your quest! The Goddess has decided to punish you.
+KDQuestSucceed_IllusionQuest,You have pleased the Goddess.
+
+
+
+KDGoddessQuestReward_Spell,"The Goddess grants you knowledge of SpellLearned!"
+KDGoddessQuestReward_SpellPoints,"You Goddess grants you +AMOUNT spell points!"
+KDGoddessQuestReward_Weapon,"The Goddess bestows a WeaponAcquired on you!"
+KDGoddessQuestReward_Armor,"The Goddess grants you a ArmorAcquired!"
+KDGoddessQuestReward_Macaron,The Goddess gives you a heavenly pastry.
+KDGoddessQuestReward_MistressKey,The Goddess awards you an ancient key of great importance.

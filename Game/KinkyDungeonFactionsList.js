@@ -74,6 +74,10 @@ let KinkyDungeonFactionFilters = {
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":2.4,"blue":1,"alpha":1},
 		Highlight: {"gamma":1.4166666666666665,"saturation":0,"contrast":1,"brightness":1.1333333333333333,"red":1.3666666666666667,"green":1.2333333333333334,"blue":1,"alpha":1},
 	},
+	"Goddess": {
+		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.5,"alpha":1},
+		Highlight: {"gamma":1.4166666666666665,"saturation":0,"contrast":1,"brightness":1.333333333333333,"red":1.3666666666666667,"green":1.2333333333333334,"blue":1,"alpha":1},
+	},
 };
 
 /**
@@ -278,6 +282,11 @@ let KinkyDungeonHiddenFactions = [
 	"Rebel",
 	"Rock",
 	"Delinquent",
+	"Virus",
+	"ShadowClan",
+	"DubiousWitch",
+	"Extraplanar",
+	"Debate",
 	"Wolfhunter",
 	"Chase",
 	"Mushy",
@@ -352,6 +361,11 @@ let KinkyDungeonTooltipFactions = [
 	"Rebel",
 	"Ambush",
 	"Delinquent",
+	"DubiousWitch",
+	"Extraplanar",
+	"Virus",
+	"ShadowClan",
+	"Debate",
 	"Wolfhunter",
 	"Rock",
 	"Rage",
@@ -490,9 +504,38 @@ let KinkyDungeonFactionRelationsBase = {
 		Mushy: .1,
 		AncientRobot: .1,
 	},
+	"Virus": {
+		Player: -1,
+		Chase: -1,
+		Jail: -0.25,
+	},
+	"DubiousWitch": {
+		Player: -1,
+		Witch: 1,
+		Chase: -1,
+		Jail: -0.25,
+	},
+	"Extraplanar": {
+		Player: -1,
+		Demon: 1,
+		Chase: -1,
+		Jail: -0.25,
+	},
 	"Delinquent": {
 		Player: -1,
 		Maidforce: -1,
+		Chase: -1,
+		Jail: -0.25,
+	},
+	"ShadowClan": {
+		Player: -1,
+		Demon: 1,
+		Angel: -1,
+		Chase: -1,
+		Jail: -0.25,
+	},
+	"Debate": {
+		Player: 0,
 		Chase: -1,
 		Jail: -0.25,
 	},

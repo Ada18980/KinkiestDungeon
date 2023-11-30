@@ -162,14 +162,14 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 		}
 
 
-		let costt = 5 * Math.round((1 + MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint/2.5 * (noScale ? 0 : 1))*(50 + 2 * rarity * rarity * 20)/5);
+		let costt = 5 * Math.round((1 + MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint/2.5 * (noScale ? 0 : 1))*(50 + Math.round(Math.pow(2, rarity)) * 20)/5);
 		if (costt > 100) costt = 10 * Math.round(costt / 10);
 		if (KinkyDungeonStatsChoice.has("PriceGouging") && !sell) {
 			costt *= 5;
 		}
 		return costt;
 	}
-	let costs = 15;
+	let costs = 50;
 	if (KinkyDungeonStatsChoice.has("PriceGouging") && !sell) {
 		costs *= 5;
 	}
@@ -462,20 +462,93 @@ function KinkyDungeonDrawShrine() {
 			KDModalArea_height = shopHeight + 100;
 		}
 	} else {
-		DrawButtonKDEx("shrineUse", (bdata) => {
+		let II = 0;
+		let shrineActionSpacing = 80;
+		if (DrawButtonKDEx("shrineUse", (bdata) => {
 			KDSendInput("shrineUse", {type: type, cost: cost, targetTile: KinkyDungeonTargetTileLocation});
 			KinkyDungeonTargetTileLocation = "";
 			KinkyDungeonTargetTile = null;
 			return true;
-		}, cost > 0, KDModalArea_x, KDModalArea_y + 25, 325, 60, TextGet(cost > 0 ? "KinkyDungeonPayShrine" : "KinkyDungeonPayShrineCant").replace("XXX", "" + cost), cost > 0 ? "#ffffff" : KDTextGray2, "", "");
-		DrawButtonKDEx("drinkShrine", (bdata) => {
+		}, cost > 0, KDModalArea_x, KDModalArea_y + 25 - II*shrineActionSpacing, 325, 60,
+		TextGet(cost > 0 ? "KinkyDungeonPayShrine" : "KinkyDungeonPayShrineCant").replace("XXX", "" + cost), cost > 0 ? "#ffffff" : KDTextGray2, "", ""))
+			DrawTextFitKD(TextGet("KDShrineActionDescOffer"),
+				KDModalArea_x+400, KDModalArea_y + 55 - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 20, "left", 70);
+		II++;
+		if (DrawButtonKDEx("shrinePray", (bdata) => {
+			KDSendInput("shrinePray", {type: type, cost: cost, targetTile: KinkyDungeonTargetTileLocation});
+			KinkyDungeonTargetTileLocation = "";
+			KinkyDungeonTargetTile = null;
+			return true;
+		}, !KinkyDungeonTargetTile.Rescue, KDModalArea_x, KDModalArea_y + 25 - II*shrineActionSpacing, 325, 60,
+		TextGet("KDShrineActionPray"), KinkyDungeonTargetTile?.Rescue ? KDTextGray2 : "#ffffff", "", ""))
+			DrawTextFitKD(TextGet(KinkyDungeonTargetTile?.Rescue ? "KDShrineActionDescPrayFail" : "KDShrineActionDescPray"),
+				KDModalArea_x+400, KDModalArea_y + 55  - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 20, "left", 70);
+		II++;
+
+		if (DrawButtonKDEx("drinkShrine", (bdata) => {
 			KDSendInput("shrineDrink", {type: type, targetTile: KinkyDungeonTargetTileLocation});
 			return true;
-		}, true,KDModalArea_x + 350, KDModalArea_y + 25, 200, 60, TextGet("KinkyDungeonDrinkShrine"), (KDCanDrinkShrine(false)) ? "#AAFFFF" : KDTextGray2, "", "");
-		DrawButtonKDEx("bottleShrine", (bdata) => {
+		}, true,KDModalArea_x, KDModalArea_y + 25 - II*shrineActionSpacing, 325, 60,
+		TextGet("KinkyDungeonDrinkShrine"), (KDCanDrinkShrine(false)) ? "#AAFFFF" : KDTextGray2, "", ""))
+			DrawTextFitKD(TextGet("KDShrineActionDescDrink"),
+				KDModalArea_x+400, KDModalArea_y + 55 - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 20, "left", 70);
+
+		II++;
+		if (DrawButtonKDEx("bottleShrine", (bdata) => {
 			KDSendInput("shrineBottle", {type: type, targetTile: KinkyDungeonTargetTileLocation});
 			return true;
-		}, true, KDModalArea_x + 575, KDModalArea_y + 25, 200, 60, TextGet("KinkyDungeonBottleShrine"), (KDCanDrinkShrine(true)) ? "#AAFFFF" : KDTextGray2, "", "");
+		}, true, KDModalArea_x, KDModalArea_y + 25 - II*shrineActionSpacing, 325, 60,
+		TextGet("KinkyDungeonBottleShrine"), (KDCanDrinkShrine(true)) ? "#AAFFFF" : KDTextGray2, "", ""))
+			DrawTextFitKD(TextGet("KDShrineActionDescBottle"),
+				KDModalArea_x+400, KDModalArea_y + 55 - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 20, "left", 70);
+
+		II++;
+
+		if (KinkyDungeonTargetTile?.Quest) {
+			if (DrawButtonKDEx("shrineQuest", (bdata) => {
+				KDSendInput("shrineQuest", {type: type, cost: cost, targetTile: KinkyDungeonTargetTileLocation});
+				KinkyDungeonTargetTileLocation = "";
+				KinkyDungeonTargetTile = null;
+				return true;
+			}, true, KDModalArea_x, KDModalArea_y + 25 - II*shrineActionSpacing, 325, 60,
+			TextGet("KDShrineActionQuestAccept"), "#ffffff", "", ""))
+				DrawTextFitKD(TextGet("KDShrineActionDescQuestAccept"),
+					KDModalArea_x+400, KDModalArea_y + 55 - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 20, "left", 70);
+			II++;
+			DrawTextFitKD(TextGet("KDShrineActionQuest"),
+				KDModalArea_x+450, KDModalArea_y - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 24, "center", 70);
+			DrawTextFitKD(TextGet("KDQuest_" + KinkyDungeonTargetTile.Quest),
+				KDModalArea_x+450, KDModalArea_y + 50 - II*shrineActionSpacing, 600, "#ffee83", KDTextGray0, 32, "center", 70);
+
+			II++;
+		}
+
+
+		let shrineHeight = II*shrineActionSpacing + 40;
+
+		FillRectKD(kdcanvas, kdpixisprites, "shrinebg", {
+			Left: KDModalArea_x - 25,
+			Top: KDModalArea_y + 80 - shrineHeight,
+			Width: 1000,
+			Height: shrineHeight + 20,
+			Color: KDButtonColor,
+			LineWidth: 1,
+			zIndex: 60,
+			alpha: 0.8,
+		});
+		DrawRectKD(kdcanvas, kdpixisprites, "shrinebg2", {
+			Left: KDModalArea_x - 25,
+			Top: KDModalArea_y + 80 - shrineHeight,
+			Width: 1000,
+			Height: shrineHeight + 20,
+			Color: KDBorderColor,
+			LineWidth: 1,
+			zIndex: 60.1,
+			alpha: 1.0,
+		});
+
+		KDModalArea_y = 700 - shrineHeight;
+		KDModalArea_height = shrineHeight;
 	}
 }
 
@@ -786,4 +859,37 @@ function KDDrawRestraintBonus(shrine, x, y, width = 100, FontSize, align, zIndex
 	let color = forceColor ? forceColor : KDGetPosNegColor(bonus);
 	let str = (bonus >= 0 ? "+" : "") + Math.round(bonus * 100) + "%";
 	DrawTextFitKD(str, x, y, width, color, "#000000", FontSize, align, zIndex, alpha);
+}
+
+/**
+ *
+ * @param {KDMapDataType} map
+ * @param {*} tile
+ * @returns {string}
+ */
+function KDGetShrineQuest(map, tile) {
+	if (!tile) return "";
+	/**
+	 * @type {Record<string, number>}
+	 */
+	let eligibleQuests = {};
+	for (let q of Object.values(KDQuests)) {
+		if (q.tags?.includes(tile.Name) && !KDGameData.Quests?.includes(q.name) && !map.flags?.includes(q.name)) {
+			eligibleQuests[q.name] = q.weight(KDMapData.RoomType, KDMapData.MapMod, {});
+		}
+	}
+
+	let quest = KDGetByWeight(eligibleQuests);
+	return quest;
+}
+
+/**
+ *
+ * @param {KDMapDataType} map
+ * @param {*} tile
+ */
+function KDSetShrineQuest(map, tile, quest) {
+	if (!tile) return;
+	tile.Quest = quest;
+	KDSetMapFlag(map, quest);
 }
