@@ -18170,3 +18170,5 @@ Free
 自由
 Disarmed!!!
 缴械！！！
+Show Buffs and Stats
+显示增益和统计数据
