@@ -1,8 +1,8 @@
 
 Credits
-Credits
+
 Patrons
-Patrons
+
 News and Updates
 Новости и Обновления
 Support @ Patreon
@@ -16,9 +16,9 @@ Next
 undefined
 не определено
 Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia, Mitki|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
-Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia, Mitki|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
+
 Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
-Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
+
 Language
 Язык
 English
@@ -40,17 +40,17 @@ Mods
 Mods Loaded.
 Загруженные моды.
 Restart required!
-Restart required!
+
 需要重启！
-需要重启！
+
 재시작 필요！
-재시작 필요！
+
 Restart please!
-Restart please!
+
 ¡Reinicio!
-¡Reinicio!
+
 Rechargement requis!
-Rechargement requis!
+
 Kinky Dungeon v4.82.1
 Извращенное Подземелье v4.82.1
 By Ada18980
@@ -72,7 +72,7 @@ Always Show Warnings
 Always Show Minimap
 Всегда показывать миникарту
 Enable Sound
-Включить звуки
+Вкл. звук
 Art: Drool/Tears
 Арт: Слюна/Слезы
 Art: Draw Armor
@@ -82,7 +82,7 @@ Enable Music
 Projectiles Make Player Transparent
 Снаряды делают игрока прозрачным
 GFX: Bloom & Glow
-GFX: Bloom & Glow
+
 Game: Transparent UI
 Игра: Прозрачный UI
 Game: Turn Counter
@@ -937,18 +937,18 @@ Feet
 Ступня
 Everywhere!
 Везде!
-Physical Armor:
-Физическая защита:
-Magic Armor:
-Магическая защита:
+Physical Armor: 
+Физическая защита: 
+Magic Armor: 
+Магическая защита: 
 In the Shadows: You are harder to see.
 В тенях: Вас труднее увидеть.
 Invisible: You are very difficult to see.
 Невидимость: Вас очень трудно увидеть.
 Quickness: Your next movement is so fast it doesn't advance a turn.
 Ускорение: Ваше следующее движение будет очень быстрым и не потратит ход.
-All Damage Reduction:
-Уменьшение всего урона:
+All Damage Reduction: 
+Уменьшение всего урона: 
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 Вы получаете PERCENT1 DAMAGETYPE урона, основываясь на PERCENT2 DAMAGETYPE сопротивлении и PERCENT3 DAMAGECATEGORY модификаторе.
 You deal PERCENT more DAMAGETYPE damage.
@@ -1201,8 +1201,8 @@ You haven't found the keys for this floor yet.
 Вы ещё не нашли ключи на этом этаже.
 Missing key
 Отсутствует ключ
-Chance for a spell to fizzle:
-Шанс провала заклинания:
+Chance for a spell to fizzle: 
+Шанс провала заклинания: 
 Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 Шанс уклонения: Percent%, основываясь на EVASIONSUM Уклонения и EVASIONPENALTY% штрафа.
 Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
@@ -1224,13 +1224,13 @@ Very Slow
 Immobile
 Обездвиживание
 DP: PERCENT%
-DP: PERCENT%
+
 SP: CURRENT/MAX
-SP: CURRENT/MAX
+
 Willpower: CURRENT/MAX
 Сила воли: CURRENT/MAX
 MP: CURRENT/MAX
-MP: CURRENT/MAX
+
 Mana slowly recovers from a pool equal to POOLMANA. Drink potions to restore the pool.
 Мана медленно восстанавливается из резерва, равного POOLMANA. Пейте зелья, чтобы восстановить резерв.
 Your Desire is the baseline Distraction you decay toward, and is increased by distracting things.
@@ -1242,13 +1242,13 @@ Willpower is restored by food, sleep, and potions. Without willpower, it becomes
 Charge is used to power various magic items and weapons.
 Заряд используется для усиления различных магических предметов и оружия.
 WP: CURRENT/MAX
-WP: CURRENT/MAX
+
 Charge: PERCENT
 Заряд: PERCENT
 Use Potion
 Выпить зелье
  MP
- MP
+
 Go to sleep
 Спать
 Call for help!
@@ -1353,8 +1353,8 @@ Delete Mod
 Удалить модификацию
 Clear Perks
 Очистить перки
-Config
-Пресет
+Config 
+Пресет 
 Cancel
 Отмена
 Filter
@@ -1467,15 +1467,15 @@ Floor FLOORNUMBER: DUNGEONNAME
 Этаж FLOORNUMBER: DUNGEONNAME
 
 
-Lockpicks:
-Отмычки:
-Keys:
-Ключи:
-Magic Keys:
-Магические ключи:
-Knife:
-Ножи:
-Mag. Knife:
+Lockpicks: 
+Отмычки: 
+Keys: 
+Ключи: 
+Magic Keys: 
+Магические ключи: 
+Knife: 
+Ножи: 
+Mag. Knife: 
 Маг. ножи:
 You climb down the stairs. The passage closes behind you.
 Вы спускаетесь по лестнице, а проход закрывается за вами.
@@ -1635,8 +1635,8 @@ You find a snow-like potion that's cold to the touch.
 Вы находите белое как снег зелье, которое очень холодное на ощупь.
 You find a medley of potions.
 Вы находите смесь зелий.
-Rarity:
-Редкость:
+Rarity: 
+Редкость: 
 Lesser
 Мусор
 Common
@@ -1694,7 +1694,7 @@ An advanced suit designed for sport
 No bonuses, no penalties.
 Никаких бонусов, никаких штрафов.
 Maid Uniform
-Униформа горничной
+Униформа горничной	
 An elegant dress meant to denote a maid's status.
 Элегантное платье, призванное подчеркнуть статус горничной.
 Massively increases accuracy against slime mold.
@@ -2272,7 +2272,7 @@ Ice Cube
 A magical cube of ice that never melts. Convenient!
 Волшебный кубик льда, который никогда не тает. Удобно!
 Deals 10 ice damage with a 10% chance to freeze for 1 turn. Slows targets on hit. Offhand: Slows the target.
-Наносит 10 единиц урона от льда. С вероятностью 10% заморозит врага на 1 ход. В левой руке: Замедляет цель.
+Наносит 10 единиц урона от льда. С вероятностью 10% заморозит врага на 1 ход. В левой руке: Замедляет цель. 
 Rope
 Веревка
 A kidnapper's most versatile tool.
@@ -2387,7 +2387,7 @@ Dreamcatcher
 Ловец снов
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 Выкованный в кошмарах, сотканный из стали. Призывает Теневого воина на не подозревающие цели за 2% древней энергии.
-Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
+Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
 Наносит урон тьмой. Наносит до 30 дополнительного психического урона не подозревающим (100%) или уязвимым (50%) целям.
 Axe
 Топор
@@ -2399,12 +2399,12 @@ Knife
 Нож
 Unarmed
 Без оружия
-Accuracy:
-Точность:
-Crit Multiplier:
-Множитель Крит. урона:
-Bind Crit Multiplier:
-Множитель Крит. Сковывания:
+Accuracy: 
+Точность: 
+Crit Multiplier: 
+Множитель Крит. урона: 
+Bind Crit Multiplier: 
+Множитель Крит. Сковывания: 
 Find the keys..
 Нужно найти ключи...
 Find the exit!
@@ -2421,10 +2421,10 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 Вы нашли трещину и, возможно, могли бы воткнуть в нее нож или другой инструмент, чтобы неподвижно его закрепить.
 You found something sticky and might be able to pull off fabrics.
 Вы нашли что-то липкое и, возможно, сможете стянуть ткань.
-Evasion:
-Уклонение:
-Visibility:
-Видимость:
+Evasion: 
+Уклонение: 
+Visibility: 
+Видимость: 
 Submissive: Enemies won't attack you, but they will try to play with you.
 Покорная: Враги не атакуют вас, но они попытаются поиграть с вами.
 On the Run! Enemies are hostile.
@@ -2461,18 +2461,18 @@ Edged!
 На краю!
 Satisfied. Miscast chance is reduced.
 Удовлетворение. Шанс ошибки в заклинаниях снижен.
-Damage:
-Урон:
-Bind:
-Сковывание:
-Crit:
-Крит:
-Crit:
-Крит:
-Accuracy:
-Точность:
-SP Cost:
-Затраты SP:
+Damage: 
+Урон: 
+Bind: 
+Сковывание: 
+Crit: 
+Крит: 
+Crit: 
+Крит: 
+Accuracy: 
+Точность: 
+SP Cost: 
+Затраты SP: 
 It appears to be a receptacle
 Похоже, сюда можно что-то вставляется.
 Place live crystal
@@ -4206,7 +4206,7 @@ The guard shocks you with her taser!!!
 The guard shocks you with her taser!!!
 Охранница бьёт вас своим электрошокером!!!
 The EnemyName replaces your OldRestraintName with a NewRestraintName
-EnemyName заменяет ваш OldRestraintName на NewRestraintName
+EnemyName заменяет ваше OldRestraintName на NewRestraintName
 The EnemyName removes your OldRestraintName
 EnemyName удаляет ваш OldRestraintName
 The EnemyName restrains you with a NewRestraintName
@@ -4915,8 +4915,8 @@ Cursed
 Проклятый
 Unlocked
 Открыт
-Lock Type:
-Тип замка:
+Lock Type: 
+Тип замка: 
 Simple
 Простой
 Standard
@@ -4972,7 +4972,7 @@ Purple Lock
 (P)
 (Ф)
 (?)
-(?)
+
 (Y)
 (Ж)
 You can't use that while gagged!
@@ -5030,7 +5030,7 @@ You mumble a command word but the lock opens!
 You mess up saying the command word. The lock stays put!
 Ты ошиблись, произнося командное слово. Замок остается на месте!
 Pick
-Отмычка
+Взломать
 (No way to open)
 (Невозможно открыть)
 (She cannot help you)
@@ -5103,10 +5103,10 @@ Shrine of SHRINETYPE
 Святилище: SHRINETYPE
 Teachings of SHRINETYPE
 Учение: SHRINETYPE
-Goddess Blessing:
-Благословение Богини:
-Goddess Curse:
-Проклятие Богини:
+Goddess Blessing: 
+Благословение Богини: 
+Goddess Curse: 
+Проклятие Богини: 
 Curses
 Проклятия
 Willpower
@@ -5119,12 +5119,12 @@ You read the runes and they imbue you with power!
 Вы читаете руины, и они наполняют вас силой!
 You try to read the runes but cannot understand them.
 Вы пытаетесь прочитать руины, но не можете их понять.
-Allies:
-Союзники:
-Enemies:
-Враги:
-Favorable:
-Партнеры:
+Allies: 
+Союзники: 
+Enemies: 
+Враги: 
+Favorable: 
+Партнеры: 
 Nevermere Trainers
 Тренеры Невермера
 DressUp Co.
@@ -5621,8 +5621,8 @@ Press RIGHT to confirm buy!
 
 
 
-You find
-Вы находите
+You find 
+Вы находите 
 Collar
 Ошейник
 A classy leather collar.
@@ -7934,7 +7934,7 @@ Brickwork
 Doodad
 Неизвестный объект
 Furniture
-Мебель (объект)
+Объект
 Table
 Стол
 Table
@@ -8007,8 +8007,8 @@ Arms
 Руки
 Legs
 Ноги
-Components:
-Активация:
+Components: 
+Активация: 
 Verbal
 Словесная
 Arm Movements
@@ -8026,9 +8026,9 @@ Next Page
 Last Page
 Предыдущая страница
 >>>
->>>
+
 <<<
-<<<
+
 Random Page (your hands are tied)
 Случайная страница (ваши руки связаны)
 Verbal
@@ -8895,7 +8895,7 @@ Wall of Latex
 Стена из латекса
 Unlocks horizontal and vertical latex walls that encase enemies that walk through.
 Открывает горизонтальные и вертикальные латексные стены, за которыми скрываются проходящие враги.
-Wall of Latex (Vert)
+Wall of Latex (Vert)	
 Стенка из латекса (Верт.)
 Creates a vertical wall of latex for 20 turns. Enemies that pass through are encased, take 50 glue damage if not encased, and blinded.
 Создает вертикальную стенку из латекса на 20 ходов. Враги, которые проходят через неё, заключаются в Оболочку, в ином случае, если не попадают в Оболочку, получают 50 урона от слизи и Ослепляются.
@@ -10314,13 +10314,13 @@ Perks III
 pg. NUM/TOTAL
 стр. NUM/TOTAL
 >
->
+
 <
-<
+
 >>>
->>>
+
 <<<
-<<<
+
 Spell Points: SPELLPOINTS
 Очков заклинаний: SPELLPOINTS
 You need a higher level in SCHOOL magic to learn this spell.
@@ -10329,8 +10329,8 @@ You need more spell points.
 Вам нужно больше очков заклинаний.
 You don't have enough maximum mana to cast this spell!
 У вас недостаточно максимальной маны, чтобы произнести это заклинание!
-School:
-Школа:
+School: 
+Школа: 
 Elements
 Элементальная
 Conjuration
@@ -10345,14 +10345,14 @@ Special
 Специальное
 Learn Spell
 Выучить заклинание
-Spell Points:
-Очков заклинаний:
-Level:
-Уровень:
-Spell Point Cost:
-Стоимость в очках заклинаний:
-Mana Cost:
-Затраты маны:
+Spell Points: 
+Очков заклинаний: 
+Level: 
+Уровень: 
+Spell Point Cost: 
+Стоимость в очках заклинаний: 
+Mana Cost: 
+Затраты маны: 
 
 
 Remove Spell 1
@@ -10383,22 +10383,22 @@ Replace Spell 6
 Заменить закл. 6
 Replace Spell 7
 Заменить закл. 7
-Current Spell 1:
-Текущее закл. 1:
-Current Spell 2:
-Текущее закл. 2:
-Current Spell 3:
-Текущее закл. 3:
-Current Spell 4:
-Текущее закл. 4:
-Current Spell 5:
-Текущее закл. 5:
-Current Spell 6:
-Текущее закл. 6:
-Current Spell 7:
-Текущее закл. 7:
+Current Spell 1: 
+Текущее закл. 1: 
+Current Spell 2: 
+Текущее закл. 2: 
+Current Spell 3: 
+Текущее закл. 3: 
+Current Spell 4: 
+Текущее закл. 4: 
+Current Spell 5: 
+Текущее закл. 5: 
+Current Spell 6: 
+Текущее закл. 6: 
+Current Spell 7: 
+Текущее закл. 7: 
 ???
-???
+
 Unfiled
 Не заполнено
 Adventuring 101
@@ -10435,8 +10435,8 @@ Bellows
 (Страница из Книги Вечности)|Некоторые говорят, что 'Катакомбы' старше самого времени. Когда Древняя цивилизация начала изучать бессмертие, никто не знал, возможно ли будет вернуть тех, кто уже умер. Таким образом, катакомбы использовались для хранения всех останков бывших людей, чтобы их тоже можно было оживить, когда архимаг, наконец, совершит свой прорыв.
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 (Страница из Книги Вечности)|Говорят, что архимаг Сариэль Винлага училась в этой самой библиотеке. Собрав воедино все человеческие знания, магические, духовные, технологические, она поручила своим двенадцати младшим магам работу по сортировке и сопоставлению богатства приобретенных ею знаний. Никто не знает, почему она вдруг отказалась от библиотеки и почему сегодня она находится в таком плачевном состоянии.
-(A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
-(Страница из Книги Вечности)|Заросшие руины остаются загадкой для ученых. Сквозь щели в потолке почти не проникает свет, и все же джунгли кишат жизнью. Известно, что регенеративные способности, которые удерживают людей от смерти, зависят от собственного запаса маны индивидуума. Так как же растения и звери выживают без маны? Верующие говорят, что джунгли охраняет Богиня Восстановления, но может ли быть так, что это Древняя цивилизация разработала средства поддержания жизни под землей?
+(A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
+(Страница из Книги Вечности)|Заросшие руины остаются загадкой для ученых. Сквозь щели в потолке почти не проникает свет, и все же джунгли кишат жизнью. Известно, что регенеративные способности, которые удерживают людей от смерти, зависят от собственного запаса маны индивидуума. Так как же растения и звери выживают без маны? Верующие говорят, что джунгли охраняет Богиня Восстановления, но может ли быть так, что это Древняя цивилизация разработала средства поддержания жизни под землей? 
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 (Страница из Книги Вечности)|Проблема Энергии преследовала цивилизацию на протяжении тысячелетий. До того, как были открыты лейлинии, человечество полагалось на естественные источники энергии, такие как реки и дрова. Когда были обнаружены Хрустальные пещеры, произошла великая революция. Больше не полагаясь на природные источники, цивилизации могли использовать подземные источники хаотической энергии для приведения в действие невиданных ранее механизмов.
 (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
@@ -10598,7 +10598,7 @@ The item is extremely secure with five separate keyholes.
 You insert your 5 keys into the lock and the item finally comes off.
 Вы вставляете свои 5 ключей в замок, и предмет, наконец, снимается.
 [RNAME]
-[RNAME]
+
 Magic-Draining: This item drains your mana quickly up to a limit, then slowly after.
 Истощение магии: Этот предмет один раз быстро истощает вашу ману до лимита, в следующие разы этот процесс будет происходить медленнее.
 Curse of Tickling: This item is tickling you without end!
@@ -11019,8 +11019,8 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 За 3 репутации богиня дарует вам 'скользкость', усиливая вашу борьбу.
 For 3 rep the goddess will grant you a key.
 За 3 репутации богиня дарует вам ключ.
-For 3 rep the goddess will grant you
-За 3 репутации богиня дарует вам
+For 3 rep the goddess will grant you 
+За 3 репутации богиня дарует вам 
 For 3 rep the goddess
 За 3 репутации богиня
 For 3 rep the goddess
@@ -11029,8 +11029,8 @@ For 3 rep the goddess
 За 3 репутации богиня
 For 3 rep the goddess
 За 3 репутации богиня
-For 3 rep the goddess
-За 3 репутации богиня
+For 3 rep the goddess 
+За 3 репутации богиня 
 The goddess will fully restore your mana in exchange for AMOUNT rep
 Богиня полностью восстановит вашу ману в обмен на AMOUNT репутации
 The goddess will enjoy seeing you struggle in her bonds (raises submissiveness)
@@ -11333,10 +11333,10 @@ Can disarm (chance: DISARMCHANCE%)
 Может разоружить (шанс: DISARMCHANCE%)
 Resistances:
 Сопротивления:
-HP:
-HP:
-Binding:
-Ограничители:
+HP: 
+
+Binding: 
+Ограничители: 
 Ambivalent
 Двойственное
 Likes you
@@ -11472,7 +11472,7 @@ Charm
 Glue
 Слизь
 Unarmed
-Безоружный
+Без оружия
 Melee
 Ближний
 Magic
@@ -11589,8 +11589,8 @@ Extreme
 Экстрим
 A supposedly reasonable difficulty curve.
 Предположительно разумная кривая сложности.
-Play the game the way it was intended. Cruel and restrictive.
-Играйте в игру так, как она была задумана. Жестокость и строгость.
+Play the game the way it was intended. Cruel and restrictive. 
+Играйте в игру так, как она была задумана. Жестокость и строгость. 
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 Играйте на свой страх и риск. Разблокируется двойным щелчком по кнопке 'Сложного' режима.
 Distracted
@@ -12282,17 +12282,17 @@ You're mine.
 You can't get away.
 Ты не сможешь уйти.
 This is a bug, please report
+
 This is a bug, please report
+
 This is a bug, please report
+
 This is a bug, please report
+
 This is a bug, please report
+
 This is a bug, please report
-This is a bug, please report
-This is a bug, please report
-This is a bug, please report
-This is a bug, please report
-This is a bug, please report
-This is a bug, please report
+
 *starts chasing you*
 *начинает преследовать вас*
 *won't leave you be!*
@@ -12362,23 +12362,23 @@ This is a bug, please report
 *Wears a sign saying 'PTRN'*
 *Носит знак с надписью 'PTRN'*
 !!!
+
 !!!
+
 !!!
-!!!
-!!!
-!!!
+
 !
+
 !
+
 !
+
 !
-!
-!
-!
-!
+
 *rattles*
 *треск*
 !!!
-!!!
+
 
 
 
@@ -13192,7 +13192,7 @@ I'll take a look.
 
 
 PTRN
-PTRN
+
 
 
 
@@ -14264,11 +14264,11 @@ Run!
 Scary!
 Ужасная!
 This is a bug, please report
+
 This is a bug, please report
+
 This is a bug, please report
-This is a bug, please report
-This is a bug, please report
-This is a bug, please report
+
 Girl!
 Девочка!
 Wear this!
@@ -14276,7 +14276,7 @@ Wear this!
 Come here!
 Иди сюда!
 ...
-...
+
 Capture...
 Захватили...
 Need tighten!
@@ -15776,7 +15776,7 @@ You hand over your weapon reluctantly...
 (Leave)
 (Уйти)
 (...)
-(...)
+
 (The SPEAKER frowns)|Don't lie to me.
 (SPEAKER хмурится)|Не лги мне.
 (The SPEAKER looks puzzled)|That doesn't seem right...
@@ -16394,7 +16394,7 @@ Not really.
 (Shake your head)
 (Покачать головой)
 .
-.
+
 (Moan and giggle)
 (Стонать и хихикать)
 Stop! (PERCENT chance to avoid)
@@ -17469,8 +17469,8 @@ What? (PERCENT chance to avoid)
 (SPEAKER прочищает горло)|Что ж, мы сейчас вновь набираем персонал!|Ты можешь присоединиться к нам, если согласишься бороться за справедливость!
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER крепко пожимает вашу руку)|Добро пожаловать в сестричество, искательница приключений!
-(The SPEAKER tilts her head and shrugs)|Ah well.
-(SPEAKER наклоняет голову и пожимает плечами)|Ну что ж.
+(The SPEAKER tilts her head and shrugs)|Ah well. 
+(SPEAKER наклоняет голову и пожимает плечами)|Ну что ж. 
 (The SPEAKER nods)|Fair enough.
 (SPEAKER кивает)|Хорошо.
 (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
@@ -17513,7 +17513,7 @@ What are you going to do about it? (PERCENT chance to avoid)
 (SPEAKER прочищает горло)|Что ж, в данный момент ты находишься на нашей территории.|Но мы готовы дать тебе некоторую поблажку.|Ты просто должна согласиться не нападать ни на кого из нас.
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER крепко пожимает вам руку)|Добро пожаловать в сестричество, искательница приключений!
-(The SPEAKER tilts her head and shrugs)|Ah well.
+(The SPEAKER tilts her head and shrugs)|Ah well. 
 (SPEAKER наклоняет голову и пожимает плечами)|Ну что ж.
 (The SPEAKER nods)|Fair enough.
 (SPEAKER кивает)|Хорошо.
@@ -18028,7 +18028,7 @@ There is no valid space next to you!
 (Confirm? You will move through her for a few turns)
 (Подтверждаете? Вы пройдете сквозь неё за несколько ходов)
 (...)
-(...)
+
 (Stop following me)
 (Перестань следовать за мной)
 (Stop following me)
@@ -18062,7 +18062,7 @@ There is no valid space next to you!
 (The SPEAKER follows your orders)
 (SPEAKER следует вашему указанию)
 (...)
-(...)
+
 (The SPEAKER refuses to follow your orders)
 (SPEAKER отказывается выполнять ваши указания)
 (Don't stay here)
@@ -18282,9 +18282,9 @@ What kind of name is that?
 Why not just call yourself Windsong?
 Почему бы просто не назвать себя Песней Ветра?
 (...)
+
 (...)
-(...)
-(...)
+
 I am an adventurer.
 Я искательница приключений.
 Mmmmph.
@@ -18292,7 +18292,7 @@ Mmmmph.
 (SPEAKER blushes)|Ah, right then...
 (SPEAKER краснеет)|Ах, тогда ладно...
 (...)
-(...)
+
 (SPEAKER giggles)|Very well. I don't really care who you are.
 (SPEAKER смеется)|Хорошо-хорошо. На самом деле мне все равно, кто ты такая.
 I do not need to introduce myself.
@@ -18300,9 +18300,9 @@ I do not need to introduce myself.
 Neither do I.
 Я тоже.
 (...)
+
 (...)
-(...)
-(...)
+
 I'm an adventurer. And who are you?
 Я искательница приключений. А кто ты такая?
 Mmmmm... (Blush)
@@ -18330,7 +18330,7 @@ Your Resurrection Arts don't seem very effective.
 What do you do now that people don't die?
 Что ты делаешь теперь, когда люди не умирают?
 (...)
-(...)
+
 (SPEAKER chortles)|So you've noticed!|As you can see, Ninril is very powerful~
 (SPEAKER хихикает)|Итак, ты заметила!|Как ты можешь видеть, Нинрил очень могущественна~
 You don't look very old yourself.
@@ -18380,7 +18380,7 @@ I'd love to be your pet!
 Pledge my soul? That changes things...
 Отдать свою душу? Это все меняет...
 (...)
-(...)
+
 I am an adventurer.
 Я искательница приключений.
 Mmmmph.
@@ -18388,7 +18388,7 @@ Mmmmph.
 (SPEAKER giggles)|Hehe... you sound interested.
 (SPEAKER смеется)|Хе-хе... похоже, тебе весело.
 (...)
-(...)
+
 (SPEAKER frowns)|Never ask a woman about her age!
 (SPEAKER хмурится)|Никогда не спрашивайте женщину о ее возрасте!
 I take it you're the hag in charge?
@@ -18398,7 +18398,7 @@ You are in charge, right?
 (Giggle)
 (Хихикает)
 (...)
-(...)
+
 Don't mess with me, little girl.
 Не связывайся со мной, малышка.
 Mmpphgh? (Pout at her)
@@ -18414,9 +18414,9 @@ That's right. How powerful are you?
 What the heck are 'Resurrection Arts'?
 Что, черт возьми, такое 'Искусство воскрешения'?
 (...)
+
 (...)
-(...)
-(...)
+
 It's time for a true display of skill!
 Пришло время по-полной проявить свое мастерство!
 Hmmph. (Look away)
@@ -18434,7 +18434,7 @@ I bet I could do better.
 (Giggle)
 (Хихикает)
 (...)
-(...)
+
 Why does that matter to you?
 Почему это имеет для тебя значение?
 (Stare at her silently, maintaining your posture)
@@ -18472,7 +18472,7 @@ It is indeed!
 (Giggle)
 (Хихикает)
 (...)
-(...)
+
 I'm an adventurer, miss.
 Я искательница приключений, мисс.
 Mmmpphh~ (Moan and wiggle seductively)
@@ -18498,7 +18498,7 @@ Mmmmph~
 (SPEAKER giggles)|Hehe... We will have so much fun~
 (SPEAKER смеется)|Хе-хе... Нам будет очень весело~
 (...)
-(...)
+
 (SPEAKER giggles)|You don't have to consent, dear~
 (SPEAKER смеется)|Ты не обязана соглашаться, дорогая~
 I never said I consented to being a pet!
@@ -19131,8 +19131,8 @@ Upcast Level LEVEL
 Уровень усиления LEVEL
 Prerequisite
 Предусловие
-Unlocks:
-Разблокирует:
+Unlocks: 
+Разблокирует: 
 You need to learn REQUIREDSPELL before you can learn this one.
 Вам нужно выучить REQUIREDSPELL, прежде чем вы сможете выучить это заклинание.
 You no longer have the will to struggle.
@@ -19167,8 +19167,8 @@ Initiating prisoner lockdown protocol
 Инициирование протокола блокировки заключенных
 Your RestraintName suddenly snap together as the EnemyName activates them
 Ваши RestraintName внезапно соединяются вместе, когда EnemyName активирует их
-Turn Count:
-Счетчик ходов:
+Turn Count: 
+Счетчик ходов: 
 The Shopkeeper leashes you!
 Владелица магазина вешает на вас поводок!
 You are brought into the Shopkeeper's establishment...
@@ -19611,8 +19611,8 @@ Deals glue damage. Adds 25 slime binding.
 Наносит урон Слизью. Добавляет 25 единиц сковывания слизью.
 You pick up slime-covered sword.
 Вы находите покрытый слизью меч.
-Preloading Character Assets:
-Предзагруженные ассеты персонажа:
+Preloading Character Assets: 
+Предзагруженные ассеты персонажа: 
 Frost Blade
 Ледяной клинок
 As cold as its creator.
@@ -20163,8 +20163,8 @@ Rubber Stick
 Резиновая палка
 A rubber cylinder without any lewd intentions whatsoever.
 Резиновый цилиндр без какого-либо непристойного предназначения.
-Deals grope damage.
-Наносит урон ощупыванием.
+Deals grope damage. 
+Наносит урон ощупыванием. 
 You pick up a flexible rubber stick.
 Вы находите гибкую резиновую палку.
 Blade of Fla'peh
@@ -20291,14 +20291,14 @@ Sensitivity: AMNT AP from attacks
 Чувствительность: AMNT AP от атак
 Drains mana from the wearer.
 Высасывает ману из носителя.
-AMNT Стат.
+AMNT Stat
 AMNT Стат.
 Drop On Floor
 Выкинуть на пол
 Remove
 Снять
 Unlock
-Разблокировать
+Отпереть
 Struggle
 Бороться
 Leyline Map
@@ -21033,9 +21033,9 @@ Cracks begin to form in your RestraintName!
 Yf вашем RestraintName начинают образовываться трещины!
 Your RestraintName shatters and falls off!
 Ваше RestraintName раскалывается на части, которые падают на землю!
-Load Hotbar
+Load Hotbar 
 Загрузить панель навыков
-Save Hotbar
+Save Hotbar 
 Сохранить панель навыков
 Clear Hotbar
 Очистить панель навыков
