@@ -4775,6 +4775,8 @@ The learned rope untangles into a mess of rope.
 绳索解开成一堆乱七八糟的绳索。
 The magic rope wraps itself intricately around your body! (+RestraintAdded)
 魔绳错综复杂地缠绕在你的身体上！（+RestraintAdded）
+The rope dashes to you!
+绳子向你冲来！
 The magic rope wriggles into your outfit! (DamageTaken)
 魔绳蠕动到你的衣服里！（DamageTaken）
 Unforseen Rope
