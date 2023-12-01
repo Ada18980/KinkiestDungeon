@@ -1,0 +1,172 @@
+{"frames": {
+
+"Models/FaceDask/Eyes2Angry.png":
+{
+	"frame": {"x":138,"y":124,"w":138,"h":79},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":138,"h":79},
+	"sourceSize": {"w":138,"h":79}
+},
+"Models/FaceDask/Eyes2Closed.png":
+{
+	"frame": {"x":102,"y":0,"w":129,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":129,"h":46},
+	"sourceSize": {"w":129,"h":46}
+},
+"Models/FaceDask/Eyes2Dazed.png":
+{
+	"frame": {"x":276,"y":124,"w":138,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":138,"h":80},
+	"sourceSize": {"w":138,"h":80}
+},
+"Models/FaceDask/Eyes2Neutral.png":
+{
+	"frame": {"x":202,"y":468,"w":137,"h":95},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":137,"h":95},
+	"sourceSize": {"w":137,"h":95}
+},
+"Models/FaceDask/Eyes2Surprised.png":
+{
+	"frame": {"x":0,"y":374,"w":137,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":137,"h":92},
+	"sourceSize": {"w":137,"h":92}
+},
+"Models/FaceDask/EyesAngry.png":
+{
+	"frame": {"x":203,"y":204,"w":105,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":105,"h":85},
+	"sourceSize": {"w":105,"h":85}
+},
+"Models/FaceDask/EyesClosed.png":
+{
+	"frame": {"x":0,"y":46,"w":289,"h":53},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":289,"h":53},
+	"sourceSize": {"w":289,"h":53}
+},
+"Models/FaceDask/EyesDazed.png":
+{
+	"frame": {"x":0,"y":289,"w":292,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":292,"h":85},
+	"sourceSize": {"w":292,"h":85}
+},
+"Models/FaceDask/EyesNeutral.png":
+{
+	"frame": {"x":0,"y":563,"w":326,"h":95},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":326,"h":95},
+	"sourceSize": {"w":326,"h":95}
+},
+"Models/FaceDask/EyesSurprised.png":
+{
+	"frame": {"x":292,"y":289,"w":100,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":85},
+	"sourceSize": {"w":100,"h":85}
+},
+"Models/FaceDask/WhitesEyes2Angry.png":
+{
+	"frame": {"x":289,"y":46,"w":138,"h":78},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":138,"h":78},
+	"sourceSize": {"w":138,"h":78}
+},
+"Models/FaceDask/WhitesEyes2Closed.png":
+{
+	"frame": {"x":231,"y":0,"w":129,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":129,"h":46},
+	"sourceSize": {"w":129,"h":46}
+},
+"Models/FaceDask/WhitesEyes2Dazed.png":
+{
+	"frame": {"x":0,"y":124,"w":138,"h":78},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":138,"h":78},
+	"sourceSize": {"w":138,"h":78}
+},
+"Models/FaceDask/WhitesEyes2Neutral.png":
+{
+	"frame": {"x":137,"y":374,"w":137,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":137,"h":94},
+	"sourceSize": {"w":137,"h":94}
+},
+"Models/FaceDask/WhitesEyes2Surprised.png":
+{
+	"frame": {"x":274,"y":374,"w":137,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":137,"h":94},
+	"sourceSize": {"w":137,"h":94}
+},
+"Models/FaceDask/WhitesEyesAngry.png":
+{
+	"frame": {"x":0,"y":204,"w":104,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":84},
+	"sourceSize": {"w":104,"h":84}
+},
+"Models/FaceDask/WhitesEyesClosed.png":
+{
+	"frame": {"x":0,"y":0,"w":102,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":102,"h":44},
+	"sourceSize": {"w":102,"h":44}
+},
+"Models/FaceDask/WhitesEyesDazed.png":
+{
+	"frame": {"x":104,"y":204,"w":99,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":99,"h":84},
+	"sourceSize": {"w":99,"h":84}
+},
+"Models/FaceDask/WhitesEyesNeutral.png":
+{
+	"frame": {"x":0,"y":468,"w":101,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":101,"h":94},
+	"sourceSize": {"w":101,"h":94}
+},
+"Models/FaceDask/WhitesEyesSurprised.png":
+{
+	"frame": {"x":101,"y":468,"w":101,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":101,"h":94},
+	"sourceSize": {"w":101,"h":94}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "atlas22.png",
+	"format": "RGBA8888",
+	"size": {"w":427,"h":658},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:09b952d45332a2046732cd77b622cdce:bd0c7e9bed87b100fe6a66237a4614ce:e7ba33a958a2710274a073b9e7e96285$"
+}
+}
