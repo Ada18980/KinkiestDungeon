@@ -113,7 +113,7 @@ Controls: Latch Shift Key
 Clothes: Chastity over Panties
 衣物：贞操带显示在内裤之上
 Clothes: Chastity Bra over Bras
-衣服：贞操文胸显示在胸罩之上
+衣物：贞操文胸显示在胸罩之上
 Wait Quickly
 快速等待
 
