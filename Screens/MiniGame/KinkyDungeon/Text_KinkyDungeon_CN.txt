@@ -15,8 +15,8 @@ Back
 后退
 Next
 下一页
-Music: kocaeli|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
-音乐: kocaeli|拘束敌人图形: Song|俄语翻译: Osiris|中文翻译: Alexthymia, Mitki, Timeline|韩语，日语翻译: Phantasm|代码贡献者: Ellie, Demopans, Aelie|音频:|饮用药水 - Jamius|点击 - StrikeWhistler - 已修改|石门_关闭 - AudioTorpedo - 已修改|脚步 - Fission9 - 已修改|火魔法 - Julien Matthey|轻击 - qubodup|重击 - orangesheepdog|空击 - Brsjak - 已修改|Clap - DWSD - 已修改|'门, 正面, 关闭, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'门, 正面, 打开, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|打开箱子 - spookymodem - 已修改|解锁 - BeezleFM|解开 - danhelbling|剪刀 - qubodup|翻找物品 - adcbicycle|仙尘 - jacksonacademyashmore|金属物品破碎 - gristi
+Music: kocaeli|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
+音乐: kocaeli|拘束敌人图形: Song|俄语翻译: Osiris|中文翻译: Alexthymia, Mitki, Timeline|韩语，日语翻译: Phantasm|代码贡献者: Ellie, Demopans, Aelie|美术：Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|音频:|饮用药水 - Jamius|点击 - StrikeWhistler - 已修改|石门_关闭 - AudioTorpedo - 已修改|脚步 - Fission9 - 已修改|火魔法 - Julien Matthey|轻击 - qubodup|重击 - orangesheepdog|空击 - Brsjak - 已修改|Clap - DWSD - 已修改|'门, 正面, 关闭, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'门, 正面, 打开, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|打开箱子 - spookymodem - 已修改|解锁 - BeezleFM|解开 - danhelbling|剪刀 - qubodup|翻找物品 - adcbicycle|仙尘 - jacksonacademyashmore|金属物品破碎 - gristi
 Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
 Door locked.wav - mitchanary - 已修改|Coins.wav - Saviraz|打开石棺 - Breviceps - 已修改|磨刀 - Anthousai|纸声 - Bash360 - 已修改|冻结通电 - JustInvoke - 已修改|水声 - patchytherat - 已修改|grab 3 - ihitokage - 已修改|枪声 - qubodup - 已修改|黄铜掉落 - movingplaid - 已修改|能量武器镭射声 - rkkaleikau - 已修改|雷声 - deleted_user_7146007 - 已修改|把铁链从水槽拖出来 - Hitrison - 已修改|Hihat 7 - TheCoolManARM2 - 已修改|Ambientsoundapp - Lightning Storm.wav - 已修改|kev_durr - Arc Welding.wav - 已修改|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||艺术家与灵感|Hotel01 - https://www.pixiv.net/en/users/5944252 - 画了一个非常棒的狼女|spark utamaro - 对于受到震动器感觉的点子
 
@@ -63,9 +63,9 @@ Always Show Minimap
 Enable Sound
 启用音效
 Art: Drool/Tears
-艺术: 流口水/眼泪
+美术: 流口水/眼泪
 Art: Draw Armor
-艺术: 渲染盔甲
+美术: 渲染盔甲
 Enable Music
 启用音乐
 GFX: Async Rendering (beta)
@@ -110,6 +110,10 @@ Controls: One-Click Move
 控制: 单击移动
 Controls: Latch Shift Key
 控制: 闩锁移位键
+Clothes: Chastity over Panties
+衣物：贞操带显示在内裤之上
+Clothes: Chastity Bra over Bras
+衣服：贞操文胸显示在胸罩之上
 Wait Quickly
 快速等待
 
@@ -777,9 +781,9 @@ As you finish, you look up and notice that someone is not very happy with you.
 
 You find some delicious brownies!
 你发现了一些美味的布朗尼蛋糕！
-Double Fudge Brownies
+Double Fudge Brownie
 双层软糖布朗尼
-You enjoy the brownies one soft, delicious bite at a time.
+You enjoy the brownie one soft, delicious bite at a time.
 你喜欢一口一口的吃松软可口的布朗尼。
 A decadent blend of butter and chocolate topped with fudge and baked to perfection.
 一种由黄油和巧克力混合而成的颓废混合物，上面涂有软糖，烤得恰到好处。
@@ -2966,8 +2970,8 @@ Staff of Incineration
 燃烧之杖
 A magical weapon made for intermediates to use.
 专供中级使用的魔法武器。
-+25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn. Offhand: Applies passive bonus.
-+25% 火焰伤害，造成火焰伤害。燃烧的敌人每回合受到额外 5 点火焰伤害。副手：应用被动奖励。
++25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn. Offhand: Applies %fire damage bonus.
++25% 火焰伤害，造成火焰伤害。燃烧的敌人每回合受到额外 5 点火焰伤害。副手：施加 %fire 伤害加成。
 Staff of Storms
 风暴法杖
 A magical weapon made for intermediates to use.
@@ -3158,8 +3162,8 @@ Flamberge
 炎剑
 A blade forged in magic fire.
 用魔法之火锻造的刀刃。
-Deals 20 bonus slash damage on hit.
-击中时额外造成 20 点斩击伤害。
+Deals 20 bonus slash damage on hit. Offhand: Produces light.
+击中时额外造成 20 点斩击伤害。副手：产生光亮。
 Escort Drone
 护航无人机
 A semi-autonomous drone with a personal defense beam. Does not require hands to equip.
