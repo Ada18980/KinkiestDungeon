@@ -2,7 +2,7 @@
 let KinkyDungeonKilledEnemy = null;
 let KinkyDungeonAlert = 0;
 
-let KDMaxPreviousWeapon = 6;
+let KDMaxPreviousWeapon = 4;
 
 let KDMINDAMAGENOISE = 2;
 let KDDMGSOUNDMULT = 1.5;

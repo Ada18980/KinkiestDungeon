@@ -1170,6 +1170,14 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 
 	KDKickEnemies(nearestJail);
 	KDResetAllAggro();
+
+	if (KDMapData.JailFaction?.length > 0) {
+		let faction = KDMapData.JailFaction[0];
+		if (KinkyDungeonFactionFilters[faction])
+			for (let inv of KinkyDungeonAllRestraintDynamic()) {
+				inv.item.faction = faction;
+			}
+	}
 }
 
 /**

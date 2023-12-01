@@ -1927,6 +1927,7 @@
             <key type="filename">../Game/ShopBasic/Lockpick.png</key>
             <key type="filename">../Game/ShopBasic/RedKey.png</key>
             <key type="filename">../Game/ShrineAura.png</key>
+            <key type="filename">../Game/ShrineAuraQuest.png</key>
             <key type="filename">../Game/SpellRange.png</key>
             <key type="filename">../Game/SpellReady.png</key>
             <key type="filename">../Game/Spells/AirMote.png</key>

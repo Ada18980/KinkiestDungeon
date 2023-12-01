@@ -2970,6 +2970,12 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								tint: string2hex(color),
 							});
+					if (KinkyDungeonTilesGet(RX + "," + RY)?.Quest)
+						KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_a2", KinkyDungeonRootDirectory + "ShrineAuraQuest.png",
+							(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay,
+							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+								tint: color ? string2hex(color) : 0xffffff,
+							});
 				}
 				if (KinkyDungeonVisionGet(RX, RY) > 0
 					&& (KinkyDungeonTilesGet(RX + "," + RY) && rows[RY][RX] == "A" || KinkyDungeonTilesGet(RX + "," + RY) && rows[RY][RX] == "M")

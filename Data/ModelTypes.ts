@@ -40,6 +40,9 @@ type PoseProperty = {
 	greedy_mod_conditions?: PosePriConditions[],
 	/** Unless a model specifically lists this pose in GlobalDefaultOverride, it will look for images with this prefix instead*/
 	global_default?: string,
+	/** Does a model flip*/
+	flip?: boolean,
+
 }
 
 interface Model extends Namable {

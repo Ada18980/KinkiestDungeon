@@ -374,6 +374,13 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		// We only refresh if it actually needs to be updated
 		if (!MC.ForceUpdate.has(containerID)) modified = true; // Force refresh if we are forced to
 
+		for (let pose of [...Object.keys(MC.Poses), ...Object.keys(MC.TempPoses)]) {
+			if (PoseProperties[pose]?.flip) {
+				flip = !flip;
+				break;
+			}
+		}
+
 		if (flip && Container.Container?.scale.x > 0) {
 			Container.Container.scale.x *= -1;
 			modified = true;
