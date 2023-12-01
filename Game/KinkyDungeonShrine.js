@@ -100,9 +100,13 @@ function KinkyDungeonGenerateShop(Level) {
 		itemCount += 2;
 	}
 	for (let I = itemCount; I > 0; I--) {
-		let Rarity = 0;
-		if (items_high < 3) {Rarity = Math.floor(Level/KDLevelsPerCheckpoint); items_high += 1;}
-		else if (items_mid < 5) {Rarity += Math.round(KDRandom() * 3); items_mid += 1;}
+		let Rarity = Math.floor(KDRandom() * 0.4 * KDMaxRarity/KinkyDungeonMaxLevel*Level);
+		if (items_high < 3) {
+			Rarity = 2 + Math.floor(KDMaxRarity/KinkyDungeonMaxLevel*Level);
+			items_high += 1;}
+		else if (items_mid < 5) {
+			Rarity = Math.floor(KDRandom() + (0.4+KDRandom() * 0.35) * KDMaxRarity/KinkyDungeonMaxLevel*Level);
+			items_mid += 1;}
 
 		let item = KinkyDungeonGetShopItem(Level, Rarity, true, ShopItems);
 		if (item)
@@ -140,7 +144,16 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 			}
 			power += sum;
 		}
-		let costt = KinkyDungeonGetRestraintByName(item.name).value || (5 * Math.round(((10 + 2 * Math.pow(power, 1.5)))/5));
+		let costt = KinkyDungeonGetRestraintByName(item.name).value || (
+			//Math.ceil((1 + MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint/2.5 * (noScale ? 0 : 1))*(
+			//sell ? (40 * (-0.5*power-0.6+1.25**(2.38*power)))
+			//: (50 * 1.25**(2.38*power))
+			//))
+			Math.round(((1 + 2 * Math.pow(power, 1.6))))
+		);
+
+
+		//(5 * Math.round(((10 + 2 * Math.pow(power, 1.5)))/5));
 		if (KinkyDungeonStatsChoice.has("PriceGouging") && !sell) {
 			costt *= 5;
 		}
@@ -162,7 +175,10 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 		}
 
 
-		let costt = 5 * Math.round((1 + MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint/2.5 * (noScale ? 0 : 1))*(50 + Math.round(Math.pow(2, rarity)) * 20)/5);
+		let costt = 5 * Math.round((1 + MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint/2.5 * (noScale ? 0 : 1))*(
+			sell ? (40 * (-0.5*rarity-0.6+1.25**(2.38*rarity)))
+				: (50 * 1.25**(2.38*rarity))
+		)/5);
 		if (costt > 100) costt = 10 * Math.round(costt / 10);
 		if (KinkyDungeonStatsChoice.has("PriceGouging") && !sell) {
 			costt *= 5;
@@ -742,7 +758,7 @@ function KinkyDungeonDrawOrb() {
 				else color = "#88ff00";
 			}
 			DrawButtonKDEx("orbspell" + shrine, (b) => {
-				KDSendInput("orb", {shrine: shrine, Amount: 1, x: KDOrbX, y: KDOrbY});
+				KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 1, x: KDOrbX, y: KDOrbY});
 				KinkyDungeonDrawState = "Game";
 				return true;
 			}, true, canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonShrine" + shrine), "white");
@@ -757,7 +773,7 @@ function KinkyDungeonDrawOrb() {
 
 	DrawButtonKDEx("orbspellrandom", (b) => {
 		let shrine = Object.keys(KinkyDungeonShrineBaseCosts)[Math.floor(KDRandom() * Object.keys(KinkyDungeonShrineBaseCosts).length)];
-		KDSendInput("orb", {shrine: shrine, Amount: 0.9, x: KDOrbX, y: KDOrbY});
+		KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 0.9, x: KDOrbX, y: KDOrbY});
 		KinkyDungeonDrawState = "Game";
 		return true;
 	}, true, canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonSurpriseMe"), "white");

@@ -1376,10 +1376,10 @@ function KDShopBuyDialogue(name) {
 			for (let i = 0; i < items.length; i++) {
 				let item = items[i];
 				let itemMult = shopCost;
-				KDGameData.CurrentDialogMsgData["ITM"+i] = TextGet((KinkyDungeonGetRestraintByName(item) ? "Restraint" : "KinkyDungeonInventoryItem") + item);
-				KDGameData.CurrentDialogMsgValue["IC"+i] = Math.round(itemMult *
+				KDGameData.CurrentDialogMsgData["ITM_"+i+"_"] = TextGet((KinkyDungeonGetRestraintByName(item) ? "Restraint" : "KinkyDungeonInventoryItem") + item);
+				KDGameData.CurrentDialogMsgValue["IC_"+i+"_"] = Math.round(itemMult *
 					KinkyDungeonItemCost(KinkyDungeonGetRestraintByName(item) || (KinkyDungeonFindConsumable(item) ? KinkyDungeonFindConsumable(item) : KinkyDungeonFindWeapon(item))));
-				KDGameData.CurrentDialogMsgData["IC"+i] = "" + KDGameData.CurrentDialogMsgValue["IC"+i];
+				KDGameData.CurrentDialogMsgData["IC_"+i+"_"] = "" + KDGameData.CurrentDialogMsgValue["IC_"+i+"_"];
 				//}
 			}
 			return false;
@@ -1396,7 +1396,7 @@ function KDShopBuyDialogue(name) {
 			return false;
 		},
 	};
-	shop.options.Sell = {gag: true, playertext: "ShopBuySell", response: "Default",
+	shop.options.Sell = {playertext: "ShopBuySell", response: "Default",
 		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
@@ -1442,8 +1442,8 @@ function KDShopBuyDialogue(name) {
 	KDModsAfterLoad = () => {
 		for (let i = 0; i < maxNum; i++) {
 			addTextKey("dShopBuyItem" + i, TextGet("dShopBuy")
-				.replace("#", ""+i)
-				.replace("#", ""+i)
+				.replace("#", "_"+i+"_")
+				.replace("#", "_"+i+"_")
 			);
 		}
 		_KDModsAfterLoad();
@@ -1496,10 +1496,10 @@ function KDShopBuyDialogue(name) {
 					for (let ii = 0; ii < enemy.items.length; ii++) {
 						item = enemy.items[ii];
 						let itemMult = shopCost;
-						KDGameData.CurrentDialogMsgData["ITM"+ii] = TextGet((KinkyDungeonGetRestraintByName(item) ? "Restraint" : "KinkyDungeonInventoryItem") + item);
-						KDGameData.CurrentDialogMsgValue["IC"+ii] = Math.round(itemMult *
+						KDGameData.CurrentDialogMsgData["ITM_"+ii+"_"] = TextGet((KinkyDungeonGetRestraintByName(item) ? "Restraint" : "KinkyDungeonInventoryItem") + item);
+						KDGameData.CurrentDialogMsgValue["IC_"+ii+"_"] = Math.round(itemMult *
 							KinkyDungeonItemCost(KinkyDungeonGetRestraintByName(item) || (KinkyDungeonFindConsumable(item) ? KinkyDungeonFindConsumable(item) : KinkyDungeonFindWeapon(item))));
-						KDGameData.CurrentDialogMsgData["IC"+ii] = "" + KDGameData.CurrentDialogMsgValue["IC"+ii];
+						KDGameData.CurrentDialogMsgData["IC_"+ii+"_"] = "" + KDGameData.CurrentDialogMsgValue["IC_"+ii+"_"];
 						//}
 					}
 				} else {

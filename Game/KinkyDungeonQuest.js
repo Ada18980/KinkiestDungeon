@@ -320,6 +320,7 @@ let KDQuests = {
 				for (let i = 0 ; i < 3; i++) {
 					KinkyDungeonLoot(KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], "RopeQuest");
 				}
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
 				KinkyDungeonChangeRep("Rope", KDDefaultGoddessQuestRep);
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed_" + "RopeQuest"), "#ffffff", 1);
 				KDRemoveQuest("RopeQuest");
@@ -413,6 +414,7 @@ let KDQuests = {
 				for (let i = 0 ; i < 3; i++) {
 					KinkyDungeonLoot(KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], "LatexQuest");
 				}
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
 				KinkyDungeonChangeRep("Latex", KDDefaultGoddessQuestRep);
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed_" + "LatexQuest"), "#ffffff", 1);
 				KDRemoveQuest("LatexQuest");
@@ -509,6 +511,7 @@ let KDQuests = {
 				for (let i = 0 ; i < 3; i++) {
 					KinkyDungeonLoot(KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], "LeatherQuest");
 				}
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
 				KinkyDungeonChangeRep("Leather", KDDefaultGoddessQuestRep);
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed_" + "LeatherQuest"), "#ffffff", 1);
 				KDRemoveQuest("LeatherQuest");
@@ -597,6 +600,7 @@ let KDQuests = {
 				for (let i = 0 ; i < 3; i++) {
 					KinkyDungeonLoot(KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], "MetalQuest");
 				}
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
 				KinkyDungeonChangeRep("Metal", KDDefaultGoddessQuestRep);
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed_" + "MetalQuest"), "#ffffff", 1);
 				KDRemoveQuest("MetalQuest");
@@ -686,6 +690,7 @@ let KDQuests = {
 				for (let i = 0 ; i < 3; i++) {
 					KinkyDungeonLoot(KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], "ElementsQuest");
 				}
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
 				KinkyDungeonChangeRep("Elements", KDDefaultGoddessQuestRep);
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed_" + "ElementsQuest"), "#ffffff", 1);
 				KDRemoveQuest("ElementsQuest");
@@ -775,6 +780,7 @@ let KDQuests = {
 				for (let i = 0 ; i < 3; i++) {
 					KinkyDungeonLoot(KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], "ConjureQuest");
 				}
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
 				KinkyDungeonChangeRep("Conjure", KDDefaultGoddessQuestRep);
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed_" + "ConjureQuest"), "#ffffff", 1);
 				KDRemoveQuest("ConjureQuest");
@@ -861,6 +867,7 @@ let KDQuests = {
 				for (let i = 0 ; i < 3; i++) {
 					KinkyDungeonLoot(KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], "WillQuest");
 				}
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
 				KinkyDungeonChangeRep("Will", KDDefaultGoddessQuestRep);
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed_" + "WillQuest"), "#ffffff", 1);
 				KDRemoveQuest("WillQuest");
@@ -897,7 +904,7 @@ let KDQuests = {
 						if (epoint) {
 							let ee = DialogueCreateEnemy(point.x, point.y, e.name);
 							if (ee) {
-								KinkyDungeonSetEnemyFlag(ee, "ConjureQuest", -1);
+								KinkyDungeonSetEnemyFlag(ee, "IllusionQuest", -1);
 								ee.faction = "ShadowClan";
 								if (KDCanOverrideAI(ee))
 									ee.AI = "guard";
@@ -916,7 +923,7 @@ let KDQuests = {
 					if (epoint) {
 						let ee = DialogueCreateEnemy(point.x, point.y, e.name);
 						if (ee) {
-							KinkyDungeonSetEnemyFlag(ee, "WillQuest", -1);
+							KinkyDungeonSetEnemyFlag(ee, "IllusionQuest", -1);
 							ee.faction = "ShadowClan";
 							if (KDCanOverrideAI(ee))
 								ee.AI = "guard";
@@ -949,6 +956,7 @@ let KDQuests = {
 				for (let i = 0 ; i < 3; i++) {
 					KinkyDungeonLoot(KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], "IllusionQuest");
 				}
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
 				KinkyDungeonChangeRep("Illusion", KDDefaultGoddessQuestRep);
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed_" + "IllusionQuest"), "#ffffff", 1);
 				KDRemoveQuest("IllusionQuest");
@@ -1122,4 +1130,68 @@ function KDGetQuestData(quest) {
 function KDSetQuestData(quest, data) {
 	if (!KDGameData.QuestData) KDGameData.QuestData = {};
 	KDGameData.QuestData[quest] = data;
+}
+
+/**
+ *
+ * @param {string} Name
+ * @param {string} Icon
+ * @param {string} Goddess
+ * @param {(Goddess, Flag) => void} spawnFunction
+ * @param {number} Rep
+ * @param {number} restraintsCountMult
+ * @param {string[]} restraintsTags
+ * @returns {KDQuest}
+ */
+function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountMult, restraintsTags, Loot, Rep = KDDefaultGoddessQuestRep) {
+	if (!Loot) Loot = Name;
+	let quest = {
+		name: Name,
+		npc: Icon,
+		visible: true,
+		nocancel: true,
+		accept: () => {
+			KDSetQuestData(Name, {
+				QuestLocation: KDCurrentWorldSlot,
+				QuestRoom: KDMapData.RoomType,
+			});
+			KinkyDungeonSetFlag(Name, -1, -1);
+			spawnFunction(Goddess, Name);
+		},
+		worldgenstart: () => {
+			KDRemoveQuest(Name);
+			KinkyDungeonChangeRep(Goddess, -KDDefaultGoddessQuestRep);
+			KinkyDungeonSendTextMessage(10, TextGet("KDQuestFail_" + Name), "#ffffff", 1);
+			KDPlayerEffectRestrain(undefined, Math.round(restraintsCountMult * (1 + KDGetEffLevel()/3)), restraintsTags, "Goddess", false, true, false, false);
+			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Evil" + ".ogg");
+		},
+		tick: (delta) => {
+			if (!(KDGetQuestData(Name).QuestRoom == KDMapData.RoomType)
+				|| !(KDGetQuestData(Name).QuestLocation?.x == KDCurrentWorldSlot.x)
+				|| !(KDGetQuestData(Name).QuestLocation?.y == KDCurrentWorldSlot.y)) return;
+			if (delta > 0 && KinkyDungeonFlags.get(Name)) {
+				for (let enemy of KDMapData.Entities) {
+					if (KDEnemyHasFlag(enemy, Name)) {
+						return;
+					}
+				}
+				for (let i = 0 ; i < 3; i++) {
+					KinkyDungeonLoot(KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], Name);
+				}
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
+				KinkyDungeonChangeRep(Goddess, Rep);
+				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed_" + Name), "#ffffff", 1);
+				KDRemoveQuest(Name);
+			}
+		},
+		weight: (RoomType, MapMod, data, currentQuestList) => {
+			return 10;
+		},
+		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+			return false;
+		},
+		tags: [Goddess],
+	};
+
+	return quest;
 }

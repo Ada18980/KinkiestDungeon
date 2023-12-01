@@ -344,8 +344,8 @@ function KDProcessInput(type, data) {
 			KDDelayedActionPrune(["Action", "World"]);
 			let tiles = KinkyDungeonRescueTiles();
 			if (tiles.length > 0) {
-				KDSendStatus('goddess', data.rep, 'helpRescue');
-				KinkyDungeonChangeRep(data.rep, -10);
+				KDSendStatus('goddess', data.type, 'helpRescue');
+				KinkyDungeonChangeRep(data.type, -10);
 				tile = tiles[Math.floor(tiles.length * KDRandom())];
 				if (tile) {
 					KinkyDungeonMapSet(tile.x, tile.y, "$");
@@ -434,7 +434,7 @@ function KDProcessInput(type, data) {
 				if (KinkyDungeonGoddessRep[data.shrine] < -45) {
 					KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, "OrbGuardian", 3 + Math.floor(Math.sqrt(1 + MiniGameKinkyDungeonLevel)), 10, false, 30);
 				}
-				KinkyDungeonChangeRep(data.shrine, data.Amount * -10);
+				KinkyDungeonChangeRep(data.shrine, (data.Rep || data.Amount) * -10);
 
 				KDSendStatus('goddess', data.shrine, 'takeOrb');
 				if (KinkyDungeonStatsChoice.get("randomMode")) {

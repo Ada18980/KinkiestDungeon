@@ -2557,7 +2557,7 @@ function KDDrawStruggleGroups() {
 					for (let button_index = 0; button_index < buttons.length; button_index++) {
 						let btn = buttons[sg.left ? button_index : (buttons.length - 1 - button_index)];
 						if (btn == "Struggle") {
-							DrawButtonKDEx("sgStruggle" + button_index, (b) => {
+							DrawButtonKDEx("sgStruggle" + button_index + sg.group, (b) => {
 								if ((KDGetCurse(item))) KDSendInput("struggleCurse", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});
 								else {
 									if (KinkyDungeonFastStruggle) {
@@ -2571,18 +2571,18 @@ function KDDrawStruggleGroups() {
 							}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth,
 							"", "#ffffff", KinkyDungeonRootDirectory + "Struggle.png", "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true}); i++;
 						} else if ((KDGetCurse(item)) && btn == "CurseInfo") {
-							DrawButtonKDEx("sgCurseInfo" + button_index, (b) => {
+							DrawButtonKDEx("sgCurseInfo" + button_index + sg.group, (b) => {
 								KinkyDungeonCurseInfo(item, (KDGetCurse(item)));
 								return true;
 							}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "", "#ffffff", KinkyDungeonRootDirectory + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].customIcon_RemoveFailure) ? KDCurses[KDGetCurse(item)].customIcon_RemoveFailure : "CurseInfo") + ".png", "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true}); i++;
 						} else if ((KDGetCurse(item)) && btn == "CurseUnlock" && KinkyDungeonCurseAvailable(item, (KDGetCurse(item)))) {
-							DrawButtonKDEx("sgCurseUnlock" + button_index, (b) => {
+							DrawButtonKDEx("sgCurseUnlock" + button_index + sg.group, (b) => {
 								KDSendInput("curseUnlock", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});
 								return true;
 							}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "", "#ffffff", KinkyDungeonRootDirectory + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess) ? KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess : "CurseUnlock") + ".png", "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true}); i++;
 						} else if (!(KDGetCurse(item)) && !sg.blocked && btn == "Remove") {
 							let toolSprite = (item.lock) ? KDGetLockVisual(item) : "Buckle.png";
-							DrawButtonKDEx("sgRemove" + button_index, (b) => {
+							DrawButtonKDEx("sgRemove" + button_index + sg.group, (b) => {
 								if (KinkyDungeonFastStruggle) {
 									KinkyDungeonFastStruggleGroup = sg.group;
 									KinkyDungeonFastStruggleType = (item.lock) ? "Unlock" : "Remove";
@@ -2594,7 +2594,7 @@ function KDDrawStruggleGroups() {
 							&& (KinkyDungeonAllWeapon().some((inv) => {return KDWeapon(inv).light && KDWeapon(inv).cutBonus != undefined;}) || KinkyDungeonGetAffinity(false, "Sharp"))
 							&& !sg.noCut) {
 							let name = ((KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name && !KinkyDungeonPlayerDamage.unarmed) ? "Items/" + KinkyDungeonPlayerDamage.name + ".png" : "Cut.png");
-							DrawButtonKDEx("sgCut" + button_index, (b) => {
+							DrawButtonKDEx("sgCut" + button_index + sg.group, (b) => {
 								if (KinkyDungeonFastStruggle) {
 									KinkyDungeonFastStruggleGroup = sg.group;
 									KinkyDungeonFastStruggleType = "Cut";
@@ -2606,7 +2606,7 @@ function KDDrawStruggleGroups() {
 									(sg.magic) ? "#8394ff" : "#ffffff", KinkyDungeonRootDirectory + name, "", undefined, true, (sg.magic) ? "#8394ff" : KDButtonColorIntense, undefined, undefined, {scaleImage: true});
 							i++;
 						} else if (!(KDGetCurse(item)) && !sg.blocked && btn == "Pick" && KinkyDungeonLockpicks > 0 && item.lock) {
-							DrawButtonKDEx("sgPick" + button_index, (b) => {
+							DrawButtonKDEx("sgPick" + button_index + sg.group, (b) => {
 								if (KinkyDungeonFastStruggle) {
 									KinkyDungeonFastStruggleGroup = sg.group;
 									KinkyDungeonFastStruggleType = "Pick";

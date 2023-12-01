@@ -292,7 +292,7 @@ function KinkyDungeonHandleInventory() {
 	if (CommonTime() < KDPreventAccidentalClickTime) return false;
 
 	if (KinkyDungeonDrawInventorySelected(filteredInventory[KinkyDungeonCurrentPageInventory], undefined, undefined, xOffset)) {
-		if (filter == Consumable && MouseIn(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 350, 55)) {
+		if (filter == Consumable && MouseIn(canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 350, 55)) {
 			let item = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined, undefined, undefined, undefined, KDInvFilter)[KinkyDungeonCurrentPageInventory];
 			if (!item || !item.name) return true;
 
@@ -301,7 +301,7 @@ function KinkyDungeonHandleInventory() {
 			//KinkyDungeonAttemptConsumable(item.name, 1);
 		} else if (filter == Weapon) {
 			// Replaced!!
-		} else if (filter == Outfit && MouseIn(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 350, 60)) {
+		} else if (filter == Outfit && MouseIn(canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 350, 60)) {
 			let outfit = ((filteredInventory[KinkyDungeonCurrentPageInventory] != null) ? filteredInventory[KinkyDungeonCurrentPageInventory].name : null);
 			let toWear = KinkyDungeonGetOutfit(outfit);
 			if (toWear) {
@@ -310,7 +310,7 @@ function KinkyDungeonHandleInventory() {
 					dress = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].defeat_outfit;
 				KDSendInput("dress", {dress: dress, outfit: outfit});
 			}
-		} else if (filter == LooseRestraint && MouseIn(canvasOffsetX_ui + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 275, 60)) {
+		} else if (filter == LooseRestraint && MouseIn(canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 275, 60)) {
 			let equipped = false;
 			let newItem = null;
 			let currentItem = null;
@@ -1708,14 +1708,12 @@ function KinkyDungeonDrawQuickInv() {
 					KinkyDungeonRootDirectory + ((KDGameData.HiddenItems && KDGameData.HiddenItems[item.name]) ? "InvHidden.png" : "InvVisible.png"), point.x, point.y + 30, 80, 80, undefined, {
 						zIndex: 110,
 					});
-			}
-			if (KDInventoryStatus.DropQuickInv) {
+			} else if (KDInventoryStatus.DropQuickInv) {
 				KDDraw(kdcanvas, kdpixisprites, "consumablesiconhidden" + c,
 					KinkyDungeonRootDirectory + "InvItemDrop.png", point.x, point.y + 30, 80, 80, undefined, {
 						zIndex: 111,
 					});
-			}
-			if (KDInventoryStatus.SortQuickInv) {
+			} else if (KDInventoryStatus.SortQuickInv) {
 				KDDraw(kdcanvas, kdpixisprites, "consumablesiconsort" + c,
 					KinkyDungeonRootDirectory + "InvItemSort.png", point.x, point.y + 30, 80, 80, undefined, {
 						zIndex: 111,
@@ -1826,14 +1824,12 @@ function KinkyDungeonDrawQuickInv() {
 					KinkyDungeonRootDirectory + ((KDGameData.HiddenItems && KDGameData.HiddenItems[item.name]) ? "InvHidden.png" : "InvVisible.png"), point.x, 1000 - V - Wheight + point.y, 80, 80, undefined, {
 						zIndex: 110,
 					});
-			}
-			if (KDInventoryStatus.DropQuickInv && item.name != "Unarmed") {
+			} else if (KDInventoryStatus.DropQuickInv && item.name != "Unarmed") {
 				KDDraw(kdcanvas, kdpixisprites, "weaponsiconhid" + w,
 					KinkyDungeonRootDirectory + "InvItemDrop.png", point.x, 1000 - V - Wheight + point.y, 80, 80, undefined, {
 						zIndex: 110,
 					});
-			}
-			if (KDInventoryStatus.SortQuickInv) {
+			} else if (KDInventoryStatus.SortQuickInv) {
 				KDDraw(kdcanvas, kdpixisprites, "weaponsiconhid" + w,
 					KinkyDungeonRootDirectory + "InvItemSort.png", point.x, 1000 - V - Wheight + point.y, 80, 80, undefined, {
 						zIndex: 110,
@@ -1967,14 +1963,12 @@ function KinkyDungeonDrawQuickInv() {
 					KinkyDungeonRootDirectory + ((KDGameData.HiddenItems && KDGameData.HiddenItems[item.item.name]) ? "InvHidden.png" : "InvVisible.png"), point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
 						zIndex: 109,
 					});
-			}
-			if (KDInventoryStatus.DropQuickInv) {
+			} else if (KDInventoryStatus.DropQuickInv) {
 				KDDraw(kdcanvas, kdpixisprites, "restraintsiconhid" + w,
 					KinkyDungeonRootDirectory + "InvItemDrop.png", point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
 						zIndex: 109,
 					});
-			}
-			if (KDInventoryStatus.SortQuickInv) {
+			} else if (KDInventoryStatus.SortQuickInv) {
 				KDDraw(kdcanvas, kdpixisprites, "restraintsiconsort" + w,
 					KinkyDungeonRootDirectory + "InvItemSort.png", point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
 						zIndex: 109,

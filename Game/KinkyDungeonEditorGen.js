@@ -66,6 +66,26 @@ function KDMapTilesPopulate(w, h, indices, data, requiredAccess, maxTagFlags, ta
 	if (KinkyDungeonStatsChoice.get("arousalMode")) globalTags.arousalMode = true;
 	if (KinkyDungeonStatsChoice.get("hardMode")) globalTags.hardMode = true;
 
+	if (data?.MapData) {
+		/**
+		 * @type {KDMapDataType}
+		 */
+		let mapData = data.MapData;
+		if (mapData.JailFaction) {
+			for (let jf of mapData.JailFaction) {
+				globalTags["jf_" + jf] = true;
+			}
+		}
+		if (mapData.GuardFaction) {
+			for (let gf of mapData.GuardFaction) {
+				globalTags["gf_" + gf] = true;
+			}
+		}
+		if (mapData.MapFaction) {
+			globalTags["faction_" + mapData.MapFaction] = true;
+		}
+	}
+
 	while (tileOrder.length > 0) {
 		let tileOrderInd = Math.floor(KDRandom() * tileOrder.length);
 		let tileSpot = tileOrder[tileOrderInd];

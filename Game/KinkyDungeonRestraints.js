@@ -3862,41 +3862,6 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 					}
 					KinkyDungeonPlayerNeedsRefresh = true;
 				}
-				// @ts-ignore
-				let inventoryAs = item.inventoryVariant || item.inventoryAs || (Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs);
-				if (rest.inventory && !ForceRemove
-					&& (Keep
-						|| ((
-							rest.enchanted
-							|| (rest.alwaysKeep)
-							|| (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs] && !KinkyDungeonRestraintVariants[inventoryAs].noKeep)
-						)))
-					&& (!Add || UnLink)) {
-					if (inventoryAs) {
-						let origRestraint = KinkyDungeonGetRestraintByName(inventoryAs);
-						if (origRestraint && rest.shrine?.includes("Cursed") && !origRestraint.shrine?.includes("Cursed")) {
-							KinkyDungeonSendTextMessage(10, TextGet("KDCursedArmorUncurse").replace("RestraintName", TextGet("Restraint" + rest.name)), "#aaffaa", 1);
-						}
-
-						if (!KinkyDungeonInventoryGetLoose(inventoryAs)) {
-							let loose = {name: inventoryAs, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:item.events || origRestraint.events, quantity: 1};
-							if (item.inventoryVariant) loose.inventoryVariant = item.inventoryVariant;
-							if (KinkyDungeonRestraintVariants[inventoryAs]) loose.showInQuickInv = true;
-							KinkyDungeonInventoryAdd(loose);
-						} else {
-							if (!KinkyDungeonInventoryGetLoose(inventoryAs).quantity) KinkyDungeonInventoryGetLoose(inventoryAs).quantity = 0;
-							KinkyDungeonInventoryGetLoose(inventoryAs).quantity += 1;
-						}
-					} else {
-						if (!KinkyDungeonInventoryGetLoose(rest.name)) {
-							KinkyDungeonInventoryAdd({name: rest.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:rest.events, quantity: 1});
-						} else {
-							if (!KinkyDungeonInventoryGetLoose(rest.name).quantity) KinkyDungeonInventoryGetLoose(rest.name).quantity = 0;
-							KinkyDungeonInventoryGetLoose(rest.name).quantity += 1;
-						}
-
-					}
-				}
 
 				InventoryRemove(KinkyDungeonPlayer, AssetGroup);
 
@@ -3909,18 +3874,64 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 				}
 
 
-				if (rest.Group == "ItemNeck" && !Add && KinkyDungeonGetRestraintItem("ItemNeckRestraints")) KinkyDungeonRemoveRestraint("ItemNeckRestraints", KDRestraint(KinkyDungeonGetRestraintItem("ItemNeckRestraints")).inventory);
 
-				if (!NoEvent) {
-					if (rest.events) {
-						for (let e of rest.events) {
-							if (e.trigger == "postRemoval" && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
-								KinkyDungeonHandleInventoryEvent("postRemoval", e, item, {item: item, id: KinkyDungeonGetItemID(), add: Add, keep: Keep, shrine: Shrine});
+				for (let invitem of KDDynamicLinkList(item, true)) {
+					let invrest = KDRestraint(invitem);
+					// @ts-ignore
+					let inventoryAs = invitem.inventoryVariant || invitem.inventoryAs || (Remover?.player ? invrest.inventoryAsSelf : invrest.inventoryAs);
+					if (invrest.inventory && !ForceRemove
+						&& (Keep
+							|| ((
+								invrest.enchanted
+								|| (invrest.alwaysKeep)
+								|| (invrest.armor)
+								|| (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs] && !KinkyDungeonRestraintVariants[inventoryAs].noKeep)
+							)))
+						&& (!Add || UnLink)) {
+						if (inventoryAs) {
+							let origRestraint = KinkyDungeonGetRestraintByName(inventoryAs);
+							if (origRestraint && invrest.shrine?.includes("Cursed") && !origRestraint.shrine?.includes("Cursed")) {
+								KinkyDungeonSendTextMessage(10, TextGet("KDCursedArmorUncurse").replace("RestraintName", TextGet("Restraint" + invrest.name)), "#aaffaa", 1);
 							}
+
+							if (!KinkyDungeonInventoryGetLoose(inventoryAs)) {
+								let loose = {name: inventoryAs, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:invitem.events || origRestraint.events, quantity: 1};
+								if (invitem.inventoryVariant) loose.inventoryVariant = invitem.inventoryVariant;
+								if (KinkyDungeonRestraintVariants[inventoryAs]) loose.showInQuickInv = true;
+								KinkyDungeonInventoryAdd(loose);
+							} else {
+								if (!KinkyDungeonInventoryGetLoose(inventoryAs).quantity) KinkyDungeonInventoryGetLoose(inventoryAs).quantity = 0;
+								KinkyDungeonInventoryGetLoose(inventoryAs).quantity += 1;
+							}
+						} else {
+							if (!KinkyDungeonInventoryGetLoose(invrest.name)) {
+								KinkyDungeonInventoryAdd({name: invrest.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:invrest.events, quantity: 1});
+							} else {
+								if (!KinkyDungeonInventoryGetLoose(invrest.name).quantity) KinkyDungeonInventoryGetLoose(invrest.name).quantity = 0;
+								KinkyDungeonInventoryGetLoose(invrest.name).quantity += 1;
+							}
+
 						}
 					}
-					KinkyDungeonSendEvent("postRemoval", {item: rest, add: Add, keep: Keep, shrine: Shrine});
+
+
+					if (!NoEvent) {
+						if (invrest.events) {
+							for (let e of invrest.events) {
+								if (e.trigger == "postRemoval" && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+									KinkyDungeonHandleInventoryEvent("postRemoval", e, invitem, {item: invitem, id: KinkyDungeonGetItemID(), add: Add, keep: Keep, shrine: Shrine});
+								}
+							}
+						}
+						KinkyDungeonSendEvent("postRemoval", {item: invrest, add: Add, keep: Keep, shrine: Shrine});
+					}
 				}
+
+
+
+
+
+				if (rest.Group == "ItemNeck" && !Add && KinkyDungeonGetRestraintItem("ItemNeckRestraints")) KinkyDungeonRemoveRestraint("ItemNeckRestraints", KDRestraint(KinkyDungeonGetRestraintItem("ItemNeckRestraints")).inventory);
 
 				let sfx = (rest && KDGetRemoveSFX(rest)) ? KDGetRemoveSFX(rest) : "Struggle";
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
@@ -3970,6 +3981,7 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover, Fo
 			if (rest.inventory && !ForceRemove
 				&& (Keep
 					|| rest.enchanted
+					|| rest.armor
 					|| rest.alwaysKeep
 					|| (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs] && !KinkyDungeonRestraintVariants[inventoryAs].noKeep)
 				)) {

@@ -66,6 +66,7 @@ KDToggleGraphicsQuality,GFX: High Quality Animations
 KDToggleEnemyAnimations,GFX: Enemy Animations
 KDToggleLazyWalk,Controls: One-Click Move
 KDToggleShiftLatch,Controls: Latch Shift Key
+KDToggleChastityOption,Clothes: Chastity over Panties
 KinkyDungeonFastWait,Wait Quickly
 
 KDHelpless,Helpless!
@@ -1254,7 +1255,7 @@ KDDollmakerTooManyDolls,"You are unable to control more than 3 dolls. The new do
 
 KinkyDungeonInventoryItemStaffIncineration,Staff of Incineration
 KinkyDungeonInventoryItemStaffIncinerationDesc,"A magical weapon made for intermediates to use."
-KinkyDungeonInventoryItemStaffIncinerationDesc2,"+25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn. Offhand: Applies passive bonus."
+KinkyDungeonInventoryItemStaffIncinerationDesc2,"+25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn. Offhand: Applies %fire damage bonus."
 KinkyDungeonInventoryItemStaffStorm,Staff of Storms
 KinkyDungeonInventoryItemStaffStormDesc,"A magical weapon made for intermediates to use."
 KinkyDungeonInventoryItemStaffStormDesc2,"+20% electric damage. Deals electric damage. Enemies hit by electric damage echo 15 additional Electric damage in a 5x5 area. Offhand: Applies electric damage bonus."
@@ -1368,7 +1369,7 @@ KinkyDungeonInventoryItemSwordDesc,"The blade is strong, its edge sharp."
 KinkyDungeonInventoryItemSwordDesc2,"A fast and accurate weapon that deals slash damage."
 KinkyDungeonInventoryItemFlamberge,Flamberge
 KinkyDungeonInventoryItemFlambergeDesc,"A blade forged in magic fire."
-KinkyDungeonInventoryItemFlambergeDesc2,"Deals 20 bonus slash damage on hit."
+KinkyDungeonInventoryItemFlambergeDesc2,"Deals 20 bonus slash damage on hit. Offhand: Produces light."
 KinkyDungeonInventoryItemEscortDrone,Escort Drone
 KinkyDungeonInventoryItemEscortDroneDesc,"A semi-autonomous drone with a personal defense beam. Does not require hands to equip."
 KinkyDungeonInventoryItemEscortDroneDesc2,"Deals electric damage. 33% chance to stun for 4 turns."
@@ -12046,8 +12047,8 @@ AttackChef,"The chef spanks you with her frying pan! (DamageTaken)"
 KDSpawnChef,"As you finish, you look up and notice that someone is not very happy with you."
 
 ItemPickupBrownies,"You find some delicious brownies!"
-KinkyDungeonInventoryItemBrownies,Double Fudge Brownies
-KinkyDungeonInventoryItemBrowniesUse,"You enjoy the brownies one soft, delicious bite at a time."
+KinkyDungeonInventoryItemBrownies,Double Fudge Brownie
+KinkyDungeonInventoryItemBrowniesUse,"You enjoy the brownie one soft, delicious bite at a time."
 KinkyDungeonInventoryItemBrowniesDesc,"A decadent blend of butter and chocolate topped with fudge and baked to perfection."
 KinkyDungeonInventoryItemBrowniesDesc2,"Restores 30% willpower. Takes a few turns to eat."
 

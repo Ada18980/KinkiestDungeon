@@ -150,6 +150,7 @@ let KDToggles = {
 	Drool: true,
 	LazyWalk: false,
 	ShiftLatch: true,
+	ChastityOption: false,
 };
 
 let KDDefaultKB = {
@@ -1218,7 +1219,7 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx("GameContinue", () => {
 			KinkyDungeonStartNewGame(true);
 			return true;
-		}, true, 1000-350/2, 360, 350, 64, TextGet("GameContinue"), localStorage.getItem('KinkyDungeonSave') ? "#ffffff" : "pink", "");
+		}, localStorage.getItem('KinkyDungeonSave') != '', 1000-350/2, 360, 350, 64, TextGet("GameContinue"), localStorage.getItem('KinkyDungeonSave') ? "#ffffff" : "pink", "");
 		DrawButtonKDEx("GameStart", () => {
 			KinkyDungeonState = "Diff";
 			KinkyDungeonLoadStats();

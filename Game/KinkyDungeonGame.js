@@ -960,6 +960,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			chargerlist: chargerlist,
 			spawnpoints: spawnPoints,
 			notraps: altType?.notraps,
+			MapData: KDMapData,
 		};
 
 		KDMapData.CategoryIndex = {};

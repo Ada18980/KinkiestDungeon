@@ -1,5 +1,7 @@
 "use strict";
 
+let KDMaxRarity = 10; // By normal means
+
 /**
  * @type {Record<string, consumable>}
  */
@@ -32,7 +34,7 @@ let KinkyDungeonConsumables = {
 	"CuffKeys" : {name: "CuffKeys", rarity: 1, sub: 0.25, shop: false, type: "CuffKeys", noConsumeOnUse: true},
 	"DiscPick" : {name: "DiscPick", rarity: 4, costMod: -1, sub: 0.2, shop: true, type: "DiscPick", noConsumeOnUse: true},
 
-	"DivineTear" : {name: "DivineTear", rarity: 4, sub: 0.05, shop: true, delay: 3, power: 10, noHands: true, duration: 0, sfx: "Cookie", type: "RemoveCurseOrHex", noConsumeOnUse: true},
+	"DivineTear" : {name: "DivineTear", rarity: 6, sub: 0.05, shop: true, delay: 3, power: 10, noHands: true, duration: 0, sfx: "Cookie", type: "RemoveCurseOrHex", noConsumeOnUse: true},
 };
 
 // Separate for organizational purposes
