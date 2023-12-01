@@ -34,7 +34,7 @@ This game engages in safe and consensual analytics.
 It sends data about spell choices, levels reached, etc, to help balance and improve the game.
 呪文の選択、到達レベルなどに関するデータを送信し、ゲームのバランスと改善に役立てます。
 No personal data is sent or stored.
-個人情報が送信・保存されることはありません。
+個人情報が送信、保存されることはありません。
 Accept
 分析に協力する
 Don't Track Me
@@ -247,7 +247,7 @@ Hogtied!
 Start the game trussed up in tight ropes.
 ホッグタイの状態でゲームを開始する
 Escapee
-逃亡者
+奇術師
 Start with high Leather reputation, and all leather restraints are easier to escape from.
 ゲーム開始時、革の女神からの評判が高くなり、革製の拘束具から抜け出しやすくなる
 Leather-Bound
@@ -447,7 +447,7 @@ All non-glue, non-chain, or non-teasing damage dealt to humanoid enemies is redu
 Burning Desire
 燃えるような欲望
 While above 70% distraction, you ignite nearby objects and gain +40% fire damage.
-興奮値が70%以上の場合、近くのオブジェクトが点火し、炎属性ダメージが40%上昇する
+興奮値が70%以上の場合、近くのオブジェクトが点火し、火属性ダメージが40%上昇する
 Frigid Personality
 冷酷
 While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties.
@@ -689,7 +689,7 @@ Paste (clipboard)
 DAMAGEDEALT electric damage conducts to you!!!
 DAMAGEDEALT 電撃ダメージが体を駆け巡った！
 The pressure fans the flames on you, dealing bonus DAMAGEDEALT fire damage!
-炎にあぶられ、DAMAGEDEALT の炎ダメージを受けた！
+火にあぶられ、DAMAGEDEALT の火ダメージを受けた！
 The RestraintName comes off more easily in the presence of water!
 RestraintName は、水を使用すると簡単に解除できる。
 You slip on the ice!
@@ -725,11 +725,11 @@ You wake up in a different place...
 Arcane Explosion
 アーケイン・エクスプロージョン
 EnemyName says something incomprehensible! Her spell miscasts!
-EnemyName が意味不明なことを言っています! 彼女の呪文は間違っています!
+EnemyName が何かを唱えたが、失敗したようだ。
 EnemyName fumbles her next move!
-EnemyName は彼女の次の動きを失敗させます!
+EnemyName は失敗した。
 The EnemyName utters a command word on the TargetName!
-EnemyName は TargetName でコマンド ワードを発します!
+EnemyName は TargetName にコマンドワードを放った！
 Nipples
 乳首
 Breasts
@@ -769,7 +769,7 @@ Plugged!
 Plugged up!!!
 挿入されている！！
 Denied! You won't be getting off that easy~
-断った！そう簡単にはいかないだろうな～
+簡単には外れそうもない……
 Teasing vibrations...
 ゆっくりと振動している……
 Gentle vibrations...
@@ -977,7 +977,7 @@ No, I wish to press on
 See Perks
 パークを確認
 This chest belongs to the FACTION
-このチェストは FACTION のものです。
+このチェストは FACTION のものだ。
 Devious Dungeon Challenge is enabled.
 デビオスダンジョンチャレンジが有効になりました。
 Waiting for game data...
@@ -1005,7 +1005,7 @@ Dodge Chance: Percent%、EVASIONSUM Evasion に基づく、バインディング
 Chance to block a level 10 restraint: Percent%
 レベル10の拘束を封じる確率:%%
 Sight Range: RADIUS
-視界範囲：ラディウス
+視界範囲：RADIUS
 Speed: SPD
 スピード：SPD
 Normal
@@ -1019,11 +1019,11 @@ Very Slow
 Immobile
 動けない
 SP: CURRENT/MAX
-SP：現在/最大
+SP：CURRENT/MAX
 Willpower: CURRENT/MAX
-気力：現在/MAX
+WP：CURRENT/MAX
 MP: CURRENT/MAX
-MP：現在/最大
+MP：CURRENT/MAX
 Mana slowly recovers from a pool equal to POOLMANA. Drink potions to restore the pool.
 マナはマナプールからゆっくりと補充される。ポーションを飲むことでマナプールの回復ができる
 Your minimum distraction increases over time as you encounter distracting things.
@@ -1035,7 +1035,7 @@ Willpower is restored by food, sleep, and potions. Without willpower, it becomes
 Charge is used to power various magic items and weapons.
 チャージは、さまざまなマジックアイテムや武器に使用できる
 WP: CURRENT/MAX
-WP:現在/最大
+WP： CURRENT/MAX
 Charge: PERCENT
 チャージ: パーセント
 Use Potion
@@ -1189,9 +1189,9 @@ Spell 7
 Cycle Spell Page
 サイクル呪文ページ
 Upcast Spells
-アップキャスト呪文
+呪文強化
 Cancel Upcast
-アップキャストをキャンセル
+呪文強化をキャンセル
 Swap Weapon
 武器を交換
 Ranged Attack
@@ -1441,13 +1441,13 @@ Maid Uniform
 An elegant dress meant to denote a maid's status.
 メイドの身分を表すエレガントなドレス。
 Massively increases accuracy against slime mold.
-粘菌スライムに対する命中率が大幅にアップする。
+粘菌に対する命中率が大幅にアップする。
 Maid Uniform
 メイド服
 An elegant dress meant to denote a maid's status.
 メイドの身分を表すエレガントなドレス。
 Massively increases accuracy against slime mold.
-粘菌スライムに対する命中率が大幅にアップする。
+粘菌に対する命中率が大幅にアップする。
 Prisoner Uniform
 囚人服
 The uniform of choice for girls captured by the dragonhearts.
@@ -1509,7 +1509,7 @@ A scroll used to help translate different languages.
 Allows you to cast Verbal spells without components for 12 turns.
 12ターンの間、猿轡をかまされていても口を使用する呪文が使用可能になる。
 Scroll of Sauntering
-散歩の巻物
+ステップの巻物
 The scroll lets you move your body in swift and accurate ways!
 正確に動けるようになる巻物。
 A scroll used by dancers to upgrade their moves.
@@ -1585,11 +1585,11 @@ Deals 90 points of binding, 40 chain damage, and rooting a target for 4 turns.
 Bomb
 爆弾
 After a 5 turn fuse, deals 100 fire damage in a 3x3 area.
-5ターン後に起爆し、3x3の範囲に100の炎属性ダメージを与える。
+5ターン後に起爆し、3x3の範囲に100の火属性ダメージを与える。
 Not a toy!
 おもちゃじゃないよ！
 After a 6 turn fuse, deals 100 fire damage in a 3x3 area.
-6ターン後に起爆し、3x3の範囲に100の炎属性ダメージを与える。
+6ターン後に起爆し、3x3の範囲に100の火属性ダメージを与える。
 Not a toy!
 おもちゃじゃないよ！
 You light the fuse!
@@ -1711,9 +1711,9 @@ Restores 10% willpower. Takes a few turns to eat.
 You picked up a sugar cookie slathered in pink frosting!
 ピンクの砂糖がまぶしてあるクッキーを見つけた！
 Good-Girl Gift
-グッドガールギフト
+ご褒美のクッキー
 You slowly eat the cookie, savoring its fluffy texture.
-サクサクのクッキーをゆっくり味わう。
+味わい深いサクサクのクッキー。
 It tempts you with sweet promises, but something about it feels off...
 甘くて美味しいけど、何か変な味がする……
 Restores 15% willpower and adds +5 submissiveness. Takes a few turns to eat.
@@ -1763,7 +1763,7 @@ Staff of Incineration
 A magical weapon made for intermediates to use.
 中級者向けに作られた魔法の武器。
 +25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn.
-炎属性。炎属性のダメージが25%増加する。燃えている敵は、ターン経過時に5ポイントのダメージを受ける。
+火属性。火属性のダメージが25%増加する。燃えている敵は、ターン経過時に5ポイントのダメージを受ける。
 Staff of Storms
 嵐の杖
 A magical weapon made for intermediates to use.
@@ -1793,7 +1793,7 @@ Staff of Flame
 A magical weapon made for novices to use.
 初心者向けに作られた魔法の武器
 +15% fire damage. Deals fire damage.
-炎属性。炎属性のダメージが15%増加する。
+火属性。火属性のダメージが15%増加する。
 Staff of Slime
 スライムの杖
 A slimy and magical implement..
@@ -1899,7 +1899,7 @@ You pick up some kind of pretentious sword.
 Foil
 フルーレ
 En garde!
-構えろ！
+いざ尋常に！
 Deals pierce damage. Deals 30 damage instead on vulnerable targets.
 刺突属性。刺突属性が弱点の敵を攻撃した際、30ポイントの刺突属性ダメージを与える。
 You pick up a fencing sword.
@@ -1939,7 +1939,7 @@ Torch
 Second only to the mighty towel in usefulness.
 マイティタオルに次ぐ実用性。
 Deals fire damage. Provides light.
-炎属性。装備していると周囲が照らされる。
+火属性。装備していると周囲が照らされる。
 Unarmed
 素手
 Fight with your hands and feet.
@@ -1957,7 +1957,7 @@ Flamberge
 A blade forged in a magical fire.
 魔法の炎で鍛えられた刃
 Deals 20 bonus fire damage on hit.
-命中時、20ポイントの炎属性追加ダメージを与える。
+命中時、20ポイントの火属性追加ダメージを与える。
 Escort Drone
 エスコートドローン
 A semi-autonomous drone with a personal defense beam. Does not require hands to equip.
@@ -2009,7 +2009,7 @@ Deals glue damage. Roots targets for 2 turns on a hit.
 Four Seasons
 四季の杖
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
-発動すると、次の炎、水/氷、風/雷、土の呪文のコストを、属性ごとに1回ずつ50減らす。
+発動すると、次の火、水/氷、風/雷、土の呪文のコストを、属性ごとに1回ずつ50減らす。
 Deals shadow damage. +25% fire, ice, acid, crush, electric, pressure damage.
 影属性。火、氷、酸、打撃、電気、圧力のダメージが25%増加する。
 The Arbiter
@@ -2035,7 +2035,7 @@ Blaster Shot
 You set your blaster to stun and fire!
 ブラスターを非殺傷モードにした！
 Messenger of Love
-愛の使者
+キューピットの弓矢
 Love shines in many ways...
 愛はさまざまな方法で輝く……
 Can fire an arrow that makes an enemy extremely lustful, causing them to attack others. Lasts forever on lesser enemies, 30 turns on high-level enemies, and 10 turns on bosses.
@@ -2209,7 +2209,7 @@ Angel
 You subdue the angel!
 天使を縛り上げた！
 The angel decides to toy with you while you are trussed up. (DamageTaken)
-天使は、縛られているあなたで遊ぶことにした。(DamageTaken)
+縛られた体を天使が愛撫してくる。(DamageTaken)
 The angel snaps her fingers and divine restraints appear on your body! (+RestraintAdded)
 天使が指をパチンと鳴らすと、突然体に聖なる拘束具が出現した! (+RestraintAdded)
 The angel snaps her fingers and glowing locks appear on your body!
@@ -2221,7 +2221,7 @@ You banish the holy construct!
 The holy construct emits a searing light! (DamageTaken)
 聖なる造物が灼熱の光を放つ! (DamageTaken)
 The holy construct emits a blinding light! (DamageTaken)
-聖なる造物がまばゆいばかりの光を放つ! (DamageTaken)
+聖なる造物がまばゆい光を放つ! (DamageTaken)
 The holy construct emits a Binding light! (+RestraintAdded)
 聖なる造物が束縛の光を放つ! (+RestraintAdded)
 Be not afraid! I am the courier of a local shrine, and I have come to take your offering.
@@ -2245,7 +2245,7 @@ The angel frowns as you attack her, and glowing rings appear.
 Angel: MMMMMPHH!!!
 天使：んむぅぅ！
 (The angel looks puzzled and unlocks your divine restraints)
-（天使は困惑しながらあなたの聖なる拘束具を解き放った）
+（天使は困惑しながら聖なる拘束具から解放してくれた）
 Your ArmorName blocks the EnemyName's attack, falling off in the process.
 ArmorName は EnemyName の攻撃で弾かれ、地面に落ちた。
 The EnemyName bypasses your security to add the RestraintName!
@@ -2345,1263 +2345,1263 @@ Zombie
 The zombie moans and collapses to the ground.
 ゾンビは呻き、地面に倒れる。
 The zombie's charms attach to your body (+RestraintAdded)
-ゾンビのチャームラップがあなたの体に張り付く！ (+RestraintAdded)
+ゾンビのチャームラップが体に張り付いてきた！ (+RestraintAdded)
 The zombie caresses your body! (DamageTaken)
-ゾンビの冷たい指先があなたを愛撫する！ (DamageTaken)
+ゾンビが冷たい指先で愛撫してきた！ (DamageTaken)
 Maidforce Recruit
 新人メイド
 The maid does a fumbled retreat.
-メイドは慌てて逃げ去った。
+新人メイドは慌てて逃げ去った。
 The maid uses a fast-binding technique! (+RestraintAdded)
-メイドが高速拘束技を使う! (+RestraintAdded)
+新人メイドが高速拘束技を使う! (+RestraintAdded)
 The maid snaps a lock on one of your restraints! (DamageTaken)
-メイドがあなたの拘束具を1つロックする！ (DamageTaken)
+新人メイドに拘束具を1つロックされた！ (DamageTaken)
 The maid tickles you with her feather duster! (DamageTaken)
-メイドが羽根でくすぐってきた！(DamageTaken)
+新人メイドが羽根でくすぐってきた！(DamageTaken)
 M.F. 'Unseen Blade'
 M.F. 見えざる刃
 The maid runs back to the shadows.
-メイドは影へと逃げた。
+M.F. 見えざる刃は影へと逃げた。
 The maid uses secure restraints on you! (+RestraintAdded)
-メイドがあなたをしっかりと拘束した！(+RestraintAdded)
+M.F. 見えざる刃がしっかりと拘束してきた！(+RestraintAdded)
 The maid snaps a lock on one of your restraints! (DamageTaken)
-メイドがあなたの拘束具を1つロックする!(DamageTaken)
+M.F. 見えざる刃に拘束具を1つロックされた！ (DamageTaken)
 The maid stealthily rubs your sensitive areas! (DamageTaken)
-メイドが突然あなたの秘所を愛撫してきた！(DamageTaken)
+M.F. 見えざる刃が突然秘所に指を這わせてきた！(DamageTaken)
 The maid throws a smoke bomb at the ground!
-メイドが煙幕を地面に投げつける！
+M.F. 見えざる刃が煙幕を地面に投げつける！
 M.F. 'Unseen Blade'
 M.F. 見えざる刃
 The maid does a fumbled retreat.
-メイドは慌てて逃げ去った。
+M.F. 見えざる刃は慌てて逃げ去った。
 The maid rubs you from many angles! (DamageTaken)
-メイドが色々な角度からあなたを愛撫してくる！(DamageTaken)
+M.F. 見えざる刃が色々な角度から愛撫してくる！(DamageTaken)
 M.F. 'Going Loud'
 M.F. ゴーイング・ラウド
 The maid does a fumbled retreat.
-メイドは慌てて逃げ去った。
+M.F. ゴーイング・ラウドは慌てて逃げ去った。
 The maid uses secure restraints on you! (+RestraintAdded)
-メイドがあなたの拘束具を1つロックする!(+RestraintAdded)
+M.F. ゴーイング・ラウドがしっかりと拘束してきた！(+RestraintAdded)
 The maid snaps a lock on one of your restraints! (DamageTaken)
-メイドがあなたの拘束具を1つロックする!(DamageTaken)
+M.F. ゴーイング・ラウドに拘束具を1つロックされた！ (DamageTaken)
 The maid lands a kick and stuns you! (DamageTaken)
-メイドの蹴りが決まってあなたは気絶してしまう！ (DamageTaken)
+M.F. ゴーイング・ラウドの蹴りに怯んでしまった！ (DamageTaken)
 The maid slaps you with a scornful expression! (DamageTaken)
-メイドはあなたに侮蔑の眼差しを向けながら平手打ちをしてきた！ (DamageTaken)
+M.F. ゴーイング・ラウドは侮蔑の眼差しを向けながら平手打ちをしてきた！ (DamageTaken)
 M.F. 'Parasol'
 M.F. 'パラソル'
 The maid leaps out of sight.
-メイドは視界から消えた。
+M.F. 'パラソル'は突然視界から消えた。
 The maid uses secure restraints on you! (+RestraintAdded)
-メイドがあなたの拘束具を1つロックする!(+RestraintAdded)
+M.F. 'パラソル'がしっかりと拘束してきた！(+RestraintAdded)
 The maid snaps a lock on one of your restraints! (DamageTaken)
-メイドがあなたの拘束具を1つロックする!((DamageTaken)
+M.F. 'パラソル'に拘束具を1つロックされた！ (DamageTaken)
 The maid caresses your breasts with a smile! (DamageTaken)
-メイドが笑顔であなたの胸を愛撫してきた！（DamageTaken）
+M.F. 'パラソル'が笑顔で胸を揉みしだいてきた！（DamageTaken）
 M.F. 'Master Plan'
 M.F. 'マスタープラン'
 The head maid surrenders gracefully.
-メイド長は優雅に降伏した。
+M.F. 'マスタープラン'は優雅に降伏した。
 The head maid suddenly whips out a restraint and locks it on! (+RestraintAdded)
-メイド長は高速で拘束してきた！ (+RestraintAdded)
+M.F. 'マスタープラン'は高速で拘束してきた！ (+RestraintAdded)
 The head maid snaps her fingers and you find your restraints locked! (DamageTaken)
-メイド長が指をパチンと鳴らすとあなたの拘束具がロックされた！ (DamageTaken)
+M.F. 'マスタープラン'が指をパチンと鳴らすと突然拘束具がロックされた！ (DamageTaken)
 The head maid tickles you strategically! (DamageTaken)
-メイド長が熟練の手付きでくすぐってきた！(DamageTaken)
+M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(DamageTaken)
 You are distracted for a moment and suddenly you find yourself in chastity!
 気がつくと貞操帯を装着させられていた！
 Fire Elemental
-ファイアエレメンタル
+炎の精霊
 The fire elemental dissolves into ash.
-ファイアエレメンタルは灰になった。
+炎の精霊は灰になった。
 The fire elemental conjures forged restraints around your limbs! (+RestraintAdded)
-ファイアエレメンタルは、突然あなたの手足に拘束具を鍛造した！ (+RestraintAdded)
+炎の精霊は突然手足に拘束具を鍛造してきた！ (+RestraintAdded)
 The fire elemental places a heavy lock on your restraint! (DamageTaken)
-ファイアエレメンタルはあなたの拘束具に強力な錠を取り付けた！ (DamageTaken)
+炎の精霊は拘束具に強力な錠を取り付けた！ (DamageTaken)
 The fire elemental touches you with her burning finger! (DamageTaken)
-ファイアエレメンタルが燃え盛る指であなたに触れてきた！ (DamageTaken)
+炎の精霊が燃え盛る指で触れてきた！ (DamageTaken)
 Ranger of the Wild
-野生のレンジャー
+エルフのレンジャー
 The ranger disappears into the environment.
 レンジャーは背景へと消え去っていった。
 The ranger gropes your chest with a smile on her face! (DamageTaken)
-レンジャーが笑顔であなたの胸を揉みしだいてきた！（DamageTaken）
+レンジャーが笑顔で胸を揉みしだいてきた！（DamageTaken）
 The ranger surprises you and binds you! (+RestraintAdded)
-レンジャーはあなたを驚かせ、その隙に拘束してきた！ (+RestraintAdded)
+レンジャーは突然拘束してきた！ (+RestraintAdded)
 The ranger slips a lock onto one of your restraints! (DamageTaken)
-レンジャーがあなたの拘束具の 1 つにロックをかけました! (DamageTaken)
+レンジャーに拘束具を1つロックされた！(DamageTaken)
 Druid of the Wild
-野生のドルイド
+エルフのドルイド
 The druid calls forth vines to mask her retreat.
 ドルイドは呼び出した蔦に紛れて逃げていった。
 The druid calls forth vines to mask her retreat.
 ドルイドは呼び出した蔦に紛れて逃げていった。
 The druid holds your face and kisses you! (DamageTaken)
-ドルイドはあなたの顔を抱えてキスをしてきた！ (DamageTaken)
+ドルイドはに顔を抱えられ、キスされた！ (DamageTaken)
 The druid binds you with mithril restraints! (+RestraintAdded)
-ドルイドはミスリルの拘束具であなたを拘束してきた！ (+RestraintAdded)
+ドルイドはミスリルの拘束具で拘束してきた！ (+RestraintAdded)
 The druid tosses a lock from her cloak! It finds you and fastens with a click. (DamageTaken)
-ドルイドは外套から錠前を投げ、あなたに直撃する。 (DamageTaken)
+ドルイドは外套から錠前を投げてきた！ (DamageTaken)
 Water Elemental
-ウォーターエレメンタル
+水の精霊
 The water elemental melts into a pool of water.
-ウォーターエレメンタルは水に溶けていった。
+水の精霊は水に溶けていった。
 The water elemental's song compels you to be bound! (+RestraintAdded)
-ウォーターエレメンタルが歌うと、突然あなたは拘束された！ (+RestraintAdded)
+水の精霊が歌うと、拘束具がどこからか湧いてきた！ (+RestraintAdded)
 The water elemental sings a song of helplessness. (DamageTaken)
-ウォーターエレメンタルは無力の歌を歌った。 (DamageTaken)
+水の精霊は無力の歌を歌った。 (DamageTaken)
 The water elemental's song compels you to step forward and receive a binding!
-ウォーターエレメンタルの歌は、前に出て束縛を受けることを強いる！
+水の精霊の歌は、前に出て束縛を受けることを強いる！
 The water elemental sings an arousing song! (DamageTaken)
-ウォーターエレメンタルが興奮の歌をうたう! (DamageTaken)
+水の精霊が興奮の歌をうたう! (DamageTaken)
 Ice Elemental
-アイスエレメンタル
+氷の精霊
 The ice elemental melts into a pool of water.
-アイスエレメンタルは水たまりになった。
+氷の精霊は水たまりになった。
 The ice elemental touches you, forming tendrils of ice! (+RestraintAdded)
-アイスエレメンタルがあなたに触れると、氷の拘束が出現した！ (+RestraintAdded)
+氷の精霊に触れられたところが凍って拘束具になった！ (+RestraintAdded)
 The ice elemental creates icy locks on your restraints!
-アイスエレメンタルが拘束具に氷のロックを作成した！
+氷の精霊が拘束具に氷のロックを作成した！
 The ice elemental gives a chilling touch to your body! (DamageTaken)
-アイスエレメンタルはあなたに触れて体温を奪ってきた！ (DamageTaken)
+氷の精霊の指先に体温を奪われる！ (DamageTaken)
 Earth Elemental
 アースエレメンタル
 The earth elemental sinks into the ground.
 アースエレメンタルは地面に沈んでいった。
 The earth elemental pins you and slaps on some restraints! (+RestraintAdded)
-アースエレメンタルは地面にあなたを固定し、拘束してきた！ (+RestraintAdded)
+アースエレメンタルに地面に固定され、拘束具を付けられる！ (+RestraintAdded)
 The earth elemental locks a restraint!
-アースエレメンタルはあなたの拘束具をロックした！
+アースエレメンタルは拘束具をロックした！
 The earth elemental dashes through the earth!
 アースエレメンタルは大地を駆ける！
 The earth elemental gives you a heavy massage! (DamageTaken)
-アースエレメンタルはあなたに強烈なマッサージをしてきた！ (DamageTaken)
+アースエレメンタルは強烈なマッサージをしてきた！ (DamageTaken)
 Air Elemental
-エアエレメンタル
+風の精霊
 There is no more elemental. Must have been just the wind.
-エレメンタルは風となり、去っていった。
+風の精霊は風となり去っていった。
 The air elemental sneakily slips a restraint on! (+RestraintAdded)
-エアエレメンタルはあなたに気づかれないようこっそりと拘束具をつけた。 (+RestraintAdded)
+風の精霊は気づかないうちに拘束具をつけてきた。 (+RestraintAdded)
 The air elemental blinks to your position!
-エアエレメンタルは突然ワープしてきた！
+風の精霊は瞬間移動してきた！
 The air elemental slips a lock on! (DamageTaken)
-エアエレメンタルはあなたの拘束具を引っ張ってきた！（DamageTaken）
+風の精霊は拘束具を引っ張ってきた！（DamageTaken）
 The air elemental spanks you playfully! (DamageTaken)
-エアエレメンタルは楽しげにあなたをひっぱたいてきた！(DamageTaken)
+風の精霊はひっぱたいてきた！(DamageTaken)
 Angry Zombie
 怒れるゾンビ
 The zombie screams and tumbles to the floor.
 ゾンビは悲鳴を上げて床に転がりだした。
 The zombie swiftly wraps you in charms! (+RestraintAdded)
-ゾンビがあなたを素早く包み込みます! (+RestraintAdded)
+ゾンビにテープで巻かれてしまった! (+RestraintAdded)
 The zombie gropes your body! (DamageTaken)
-ゾンビがあなたの体を弄る! (DamageTaken)
+ゾンビが体を愛撫してきた! (DamageTaken)
 Zombie
 ゾンビ
 The zombie screams and tumbles to the floor.
 ゾンビは悲鳴を上げて床に転がる。
 The zombie swiftly wraps you in charms! (+RestraintAdded)
-ゾンビがあなたを素早く包み込みます! (+RestraintAdded)
+ゾンビにテープで巻かれてしまった! (+RestraintAdded)
 The zombie gropes your body! (DamageTaken)
-ゾンビがあなたの体を弄る! (DamageTaken)
+ゾンビが体を愛撫してきた! (DamageTaken)
 Artistic Zombie
 アーティスティックゾンビ
 The zombie smiles as it collapses to the ground.
-地面に崩れ落ちるゾンビは微笑みます。
+ゾンビはほほえみながら地面に消えていった。
 The zombie swiftly ties you! (+RestraintAdded)
-ゾンビはあなたを素早く縛ります! (+RestraintAdded)
+ゾンビが素早く縛ってきた！ (+RestraintAdded)
 The zombie is somehow dextrous enough to lock your restraint! (DamageTaken)
-ゾンビはどういうわけかあなたの拘束をロックするのに十分器用です! (DamageTaken)
+ゾンビは器用な指先で拘束具をロックしてきた！ (DamageTaken)
 The zombie cuddles with your body! (DamageTaken)
-ゾンビがあなたの体に寄り添う！（DamageTaken）
+ゾンビが体を抱き寄せてきた！（DamageTaken）
 Mage Zombie
 メイジゾンビ
 The zombie frowns and disappears in a puff of ice and ribbons.
-ゾンビは眉をひそめ、氷とリボンのパフで消えます.
+ゾンビは眉をひそめ、氷とリボンの渦に消えた。
 The zombie smiles as she wraps you in charms! (+RestraintAdded)
-ゾンビが笑顔であなたをお守りで包んでくれます! (+RestraintAdded)
+ゾンビは笑顔でテープを巻き付けてきた！ (+RestraintAdded)
 The zombie gropes your body! (DamageTaken)
-ゾンビがあなたの体を弄る! (DamageTaken)
+ゾンビに体を愛撫された! (DamageTaken)
 The zombie's ribbons form magical locks on your body! (DamageTaken)
-ゾンビのリボンはあなたの体に魔法のロックを形成します! (DamageTaken)
+ゾンビはリボンで魔法のロックを生成した! (DamageTaken)
 Talisman Zombie
 タリスマンゾンビ
 The zombie pouts and puts up a shield to let her retreat.
-ゾンビは口をとがらせ、盾を構えて退却させます。
+ゾンビは不機嫌に口をとがらせ、盾を構えながら撤退した。
 The zombie giggles as she wraps you in charms! (+RestraintAdded)
-ゾンビがくすくす笑いながらあなたを魅力で包みます! (+RestraintAdded)
+ゾンビがくすくす笑いながらテープを巻き付けてきた！ (+RestraintAdded)
 The zombie gropes your body! (DamageTaken)
-ゾンビがあなたの体を弄る! (DamageTaken)
+ゾンビに体を愛撫された! (DamageTaken)
 The zombie uses a sealing spell to create magical locks! (DamageTaken)
-ゾンビは封印の呪文を使って魔法のロックを作成します! (DamageTaken)
+ゾンビは封印魔法を唱え、拘束具をロックしてきた！ (DamageTaken)
 Warrior Zombie
-ウォリアーゾンビ
+ゾンビウォーリア
 The warrior zombie yells and falls cinematically.
-戦士のゾンビは映画のように叫び、倒れます。
+ゾンビウォーリアは映画のように叫び、倒れこんだ。
 The warrior zombie uses a traditional binding technique (+RestraintAdded)
-戦士ゾンビは伝統の縛り技(+RestraintAdded)
+ゾンビウォーリアは秘伝の捕縛術を繰り出してきた！(+RestraintAdded)
 The warrior zombie strikes you with her wooden sword! (+STUN)
-戦士のゾンビが木刀であなたを攻撃します! (+STUN)
+ゾンビウォーリアが木刀で殴りかかってきた！ (+STUN)
 The warrior zombie runs its fingers along your body! (DamageTaken)
-戦士のゾンビがあなたの体に指を走らせます! (DamageTaken)
+ゾンビウォーリアが突然体に指を這わせてきた！ (DamageTaken)
 The warrior zombie fights using the way of Sword and Lock. (DamageTaken)
-戦士ゾンビは、ソードとロックの方法を使用して戦います。(DamageTaken)
+ゾンビウォーリアの剣技に翻弄された隙に拘束具をロックされてしまった。(DamageTaken)
 Rope Artist
-ロープアーティスト
+縄師
 The rope artist frowns and walks away, looking defeated.
-ロープアーティストは眉をひそめ、敗北したように立ち去ります。
+縄師は眉をひそめ、逃げ去った。
 The rope artist performs an intricate technique! (+RestraintAdded)
-縄師が巧みな技を披露！(+RestraintAdded)
+縄師が巧みな技を披露してきた！(+RestraintAdded)
 The rope artist sneaks a lock onto you while you weren't looking! (DamageTaken)
-あなたが見ていない間に、ロープアーティストがこっそりとあなたに鍵をかける! (DamageTaken)
+縄師に隙をつかれ、拘束具をロックされた！ (DamageTaken)
 The rope artist smiles and tickles your feet! (DamageTaken)
-なわ芸人が笑顔で足をくすぐる！（DamageTaken）
+縄師が笑顔で足をくすぐってきた！（DamageTaken）
 Deputy
-副
+保安官
 The deputy surrenders her donuts.
-副官は彼女のドーナツを差し出します。
+保安官はドーナツで手打ちを提案してきた。
 The deputy slaps on some cuffs! (+RestraintAdded)
-副官が袖口を平手打ち！ (+RestraintAdded)
+保安官に手錠をかけられた！ (+RestraintAdded)
 The deputy tases you! (Stunned!)
-副官があなたをテイスティングします! (気絶!)
+保安官はテーザー銃を撃ってきた! (気絶)
 The deputy conducts a strip search! (DamageTaken)
-副官が脱衣所捜索！(DamageTaken)
+保安官が体の隅々まで身体検査をしてきた！(DamageTaken)
 The deputy performs a security enhancement procedure! (DamageTaken)
-代理人がセキュリティ強化手順を実行します! (DamageTaken)
+保安官がセキュリティ強化手順を実行してきた! (DamageTaken)
 Ninja Warrior
-忍者戦士
+忍者
 The ninja warrior retreats into the shadows.
-忍者戦士は陰に退く
+忍者は陰に退いた。
 The ninja warrior uses a traditional binding technique (+RestraintAdded)
-忍者戦士は伝統の縛り術を使う(+RestraintAdded)
+忍者は伝統的な捕縛術を繰り出してきた！(+RestraintAdded)
 The ninja warrior tosses a shuriken and hits you! (Stunned!)
-忍者の戦士が手裏剣を投げてあなたを殴る！（気絶！）
+忍者が手裏剣を投擲してきた！（気絶）
 The ninja warrior uses a lock to give herself the upper hand! (DamageTaken)
-忍者の戦士はロックを使って優位に立つ! (DamageTaken)
+忍者は拘束具をロックしてきた！ (DamageTaken)
 The ninja warrior uses a subduing technique! (DamageTaken)
-忍者戦士は討伐術を使う！（ダメージテイクン）
+忍者は柔術を使ってきた！（DamageTaken）
 Ninja Assassin
-忍者暗殺者
+忍者
 The assassin retreats into the shadows.
-暗殺者は影に退く。
+忍者は陰に退いた。
 The assassin uses a traditional binding technique (+RestraintAdded)
-暗殺者は伝統的な拘束術を使用します（+RestraintAdded）
+忍者は伝統的な捕縛術を繰り出してきた！(+RestraintAdded)
 The assassin uses a subduing technique! (DamageTaken)
-暗殺者は討伐術を使う! (DamageTaken)
+忍者は柔術を使ってきた！（DamageTaken）
 The assassin stealthily locks your restraint! (DamageTaken)
-暗殺者はあなたの拘束をこっそりとロックします! (DamageTaken)
+忍者は拘束具をロックしてきた！ (DamageTaken)
 Animated Armor
-アニメアーマー
+さまよう鎧
 The Animated Armor falls into pieces.
-アニメイテッドアーマーは粉々に砕け散る。
+さまよう鎧は粉々に砕け散った。
 The Animated Armor restrains you with shackles (+RestraintAdded)
-アニメーションアーマーはシャックルであなたを拘束します (+RestraintAdded)
+さまよう鎧は枷で拘束してきた！ (+RestraintAdded)
 The Animated Armor hugs your body with an iron grip! (DamageTaken)
-アニメイテッドアーマーは鉄のグリップであなたの体を抱きしめます！ (DamageTaken)
+さまよう鎧は鉄の体で抱きしめてきた！ (DamageTaken)
 Mimic
 ミミック
 The mimic spills out its contents.
-ミミックは中身をこぼします。
+ミミックは中身を落としていった。
 The mimic spits out a restraint which latches onto you! (+RestraintAdded)
-ミミックはあなたに引っかかる拘束を吐き出します! (+RestraintAdded)
+ミミックは拘束具を吐き出してきた！ (+RestraintAdded)
 The mimic tickles you with its tongue! (DamageTaken)
-物まねが舌でくすぐる！(DamageTaken)
+ミミックが舌でねぶってきた！(DamageTaken)
 Skeleton
 スケルトン
 The Skeleton falls to pieces.
-スケルトンは粉々に落ちる。
+スケルトンは粉々になった。
 The Skeleton restrains you! (+RestraintAdded)
-スケルトンがあなたを拘束します! (+RestraintAdded)
+スケルトンが拘束してきた！ (+RestraintAdded)
 The Skeleton tackles you! (DamageTaken)
-スケルトンがあなたにタックルします！ (DamageTaken)
+スケルトンがタックルしてきた！ (DamageTaken)
 Dragonheart Initiate
-ドラゴンハート・イニシエイト
+見習いドラゴンハート
 The Dragonheart Initiate retreats hurriedly.
-ドラゴンハート・イニシエートは急いで退却します。
+見習いドラゴンハート急いで撤退した。
 The Dragonheart Initiate apprehends you! (+RestraintAdded)
-Dragonheart Initiate があなたを捕まえます! (+RestraintAdded)
+見習いドラゴンハートに捕まった！(+RestraintAdded)
 The Dragonheart Initiate squeezes your body! (DamageTaken)
-ドラゴンハート・イニシエートがあなたの体を圧迫します! (DamageTaken)
+見習いドラゴンハートに抱きすくめられた！ (DamageTaken)
 The Dragonheart locks your restraint! (DamageTaken)
-ドラゴンハートが拘束をロックする! (DamageTaken)
+見習いドラゴンハートに拘束具をロックされた！(DamageTaken)
 Dragonheart Shield
-ドラゴンハートシールド
+ドラゴンハートシールダー
 The Dragonheart Shield makes a tactical retreat.
-ドラゴンハート シールドは戦術的な後退を行います。
+ドラゴンハートシールダー戦術的撤退をした。
 The Dragonheart Shield apprehends you! (+RestraintAdded)
-ドラゴンハートシールドがあなたを捕らえます！（+RestraintAdded）
+ドラゴンハートシールダーに捕まった！(+RestraintAdded)
 The Dragonheart Shield bonks you! (DamageTaken)
-The Dragonheart Shield はあなたを悩ませます! (DamageTaken)
+ドラゴンハートシールダーはぶん殴ってきた！ (DamageTaken)
 The Dragonheart Shield squeezes your body! (DamageTaken)
-ドラゴンハートシールドが体を締め付ける! (DamageTaken)
+ドドラゴンハートシールダーが体を締め上げてきた！(DamageTaken)
 The Dragonheart locks your restraint! (DamageTaken)
-ドラゴンハートが拘束をロックする! (DamageTaken)
+ドラゴンハートシールダーに拘束具をロックされた！(DamageTaken)
 Ice Dragonheart
-アイス・ドラゴンハート
+ドラゴンハート・アイス
 The Ice Dragonheart retreats in a blast of snow.
-氷の竜心は一陣の雪の中で後退する.
+ドラゴンハート・アイスは雪の中へ逃げていった。
 The Ice Dragonheart apprehends you! (+RestraintAdded)
-氷のドラゴンハートがあなたを捕らえます! (+RestraintAdded)
+ドラゴンハート・アイスに捕まった！ (+RestraintAdded)
 The Ice Dragonheart gives your body a cold touch! (DamageTaken)
-アイスドラゴンハートが体を冷やします！(ダメージテイクン)
+ドラゴンハート・アイスが体を冷やしてきた！(ダメージテイクン)
 The Dragonheart uses an icy lock on your restraint! (DamageTaken)
-ドラゴンハートはあなたの拘束に氷のロックを使用しています! (DamageTaken)
+ドラゴンハート・アイスは拘束具に氷のロックをかけてきた！(DamageTaken)
 Poison Dragonheart
-ポイズン・ドラゴンハート
+ドラゴンハート・ポイズン
 The Poison Dragonheart retreats in a green mist.
-毒のドラゴンハートは緑の霧の中に退却する。
+ドラゴンハート・ポイズンは緑の霧の中に消えていった。
 The Poison Dragonheart apprehends you! (+RestraintAdded)
-ポイズン ドラゴンハートがあなたを捕らえます! (+RestraintAdded)
+ドラゴンハート・ポイズンに捕まった！ (+RestraintAdded)
 The Poison Dragonheart smacks you with her axe! (DamageTaken)
-ポイズン ドラゴンハートが斧であなたを叩きます! (DamageTaken)
+ドラゴンハート・ポイズンが斧で打ち据えてきた！ (DamageTaken)
 The Poison Dragonheart thrums her claws across your figure! (DamageTaken)
-ポイズン ドラゴンハートがあなたの姿を爪で叩きます! (DamageTaken)
+ドラゴンハート・ポイズンは爪でひっかいてきた！(DamageTaken)
 The Dragonheart locks your restraint! (DamageTaken)
-ドラゴンハートが拘束をロックする! (DamageTaken)
+ドラゴンハート・ポイズンに拘束具をロックされた！(DamageTaken)
 Crystal Dragonheart
-クリスタル・ドラゴンハート
+ドラゴンハート・クリスタル
 The Crystal Dragonheart screams and falls to the ground dramatically.
-クリスタル ドラゴンハートは悲鳴を上げて、劇的に地面に倒れます。
+ドラゴンハート・クリスタル大げさに悲鳴を上げて地面に突っ伏した。
 The Crystal Dragonheart apprehends you! (+RestraintAdded)
-クリスタル ドラゴンハートがあなたを捕らえます! (+RestraintAdded)
+ドラゴンハート・クリスタルに捕まった！(+RestraintAdded)
 The Crystal Dragonheart squeezes you in a big hug! (DamageTaken)
-クリスタル ドラゴンハートがあなたをぎゅっと抱きしめる! (DamageTaken)
+ドラゴンハート・クリスタルが抱きしめてきた！(DamageTaken)
 The Dragonheart locks your restraint! (DamageTaken)
-ドラゴンハートが拘束をロックする! (DamageTaken)
+ドラゴンハート・クリスタルに拘束具をロックされた！(DamageTaken)
 Many crystals rise up out of the ground!
-地中から湧き上がる無数のクリスタル！
+地面から大量のクリスタルが湧き上がってきた！
 A crystal rises up out of the ground!
-クリスタルが地面から立ち上がる！
+地面からクリスタルが湧き上がってきた！
 Statue
-銅像
+彫像
 The statue topples over!
-像が倒れた！
+彫像は崩れ落ちた。
 Statue
-銅像
+彫像
 The statue topples over and reveals a mechanism!
-像が倒れてメカニズムが現れた！
+彫像が崩れ落ちて中から仕掛けが出てきた！
 Statue
-銅像
+彫像
 The statue topples over and reveals a mechanism!
-像が倒れてメカニズムが現れた！
+彫像が崩れ落ちて中から仕掛けが出てきた！
 The statue shoves a gag into your mouth, which inflates to fill the space! (+RestraintAdded)
-彫像はあなたの口にギャグを押し込み、膨らませて空間を埋めます! (+RestraintAdded)
+突然彫像に口の中にボールギャグを詰め込まれた！ (+RestraintAdded)
 The statue kisses your gag! (DamageTaken)
-彫像はあなたのギャグにキスします! (DamageTaken)
+彫像はボールギャグ越しにキスをしてきた！(DamageTaken)
 Chaotic Crystal
-混沌の結晶
+カオスクリスタル
 The crystal shatters!
-クリスタルが砕け散る！
+カオスクリスタルは砕け散った！
 The chaotic crystal leeches willpower from you! (DamageTaken)
-カオス クリスタル ヒルはあなたから気力を奪います! (DamageTaken)
+カオスクリスタルに気力を吸い取られた！ (DamageTaken)
 Grand Chaotic Crystal
-大混沌の結晶
+巨大カオスクリスタル
 The grand crystal shatters!
-グランドクリスタルが砕け散る！
+巨大カオスクリスタルは砕け散った！
 The grand crystal leeches willpower from you! (DamageTaken)
-壮大な水晶の蛭はあなたからの気力です! (DamageTaken)
+巨大カオスクリスタルに気力を吸い取られた！  (DamageTaken)
 Crystals erupt from the ground and slowly grow around your limbs! (+RestraintAdded)
-地面から結晶が噴出し、ゆっくりと手足の周りに成長します! (+RestraintAdded)
+地面から結晶が噴出し、手足にまとわりついてきた！ (+RestraintAdded)
 Soul Crystal
 ソウルクリスタル
 The crystal shatters into a puff of soul dust!
-クリスタルが粉々になって魂の粉が舞い散る！
+ソウルクリスタルは砕け散った！
 The soul crystal leeches willpower from you! (DamageTaken)
-ソウルクリスタルはあなたから気力を奪う! (DamageTaken)
+ソウルクリスタルに気力を吸い取られた！ (DamageTaken)
 Active Soul Crystal
-アクティブソウルクリスタル
+ソウルクリスタル(アクティブ)
 The crystal shatters into a puff of soul dust!
-クリスタルが粉々になって魂の粉が舞い散る！
+ソウルクリスタルは砕け散った！
 The soul crystal leeches willpower from you! (DamageTaken)
-ソウルクリスタルはあなたから気力を奪う! (DamageTaken)
+ソウルクリスタルに気力を吸い取られた！ (DamageTaken)
 Shadow Dragonheart
-シャドー・ドラゴンハート
+ドラゴンハート・シャドー
 The Shadow Dragonheart frowns and runs away.
-シャドウドラゴンハートは顔をしかめ、逃げる。
+ドラゴンハート・シャドーは顔をしかめ、逃走した。
 The Shadow Dragonheart apprehends you! (+RestraintAdded)
-シャドウドラゴンハートがあなたを捕まえます！（+RestraintAdded）
+ドラゴンハート・シャドーに捕まった！（+RestraintAdded）
 The Shadow Dragonheart extends her scythe and pulls you closer!!!
-シャドードラゴンハートが大鎌を伸ばして引き寄せる！！！
+ドラゴンハート・シャドーに大鎌で引き寄せられた！
 The Shadow Dragonheart catches you with her scythe! (DamageTaken)
-シャドウ ドラゴンハートは大鎌であなたを捕まえます! (DamageTaken)
+ドラゴンハート・シャドーは大鎌で打ち据えてきた！ (DamageTaken)
 Dragonheart Leader
 ドラゴンハートリーダー
 The Dragonheart Leader admits defeat.
-ドラゴンハートのリーダーは敗北を認めます。
+ドラゴンハートリーダーは素直に敗北を受け入れた。
 The Dragonheart Leader apprehends you! (+RestraintAdded)
-ドラゴンハートのリーダーがあなたを捕まえます! (+RestraintAdded)
+ドラゴンハートリーダーに捕まった！ (+RestraintAdded)
 The Dragonheart Leader dashes to you!
-ドラゴンハートリーダーがあなたにダッシュします！
+ドラゴンハートリーダーが間合いを詰めてきた！
 The Dragonheart Leader squeezes your body! (DamageTaken)
-竜心団長がお前の体を締め付ける！ (DamageTaken)
+ドラゴンハートリーダーが抱きしめてきた！ (DamageTaken)
 The Dragonheart Leader uses a lock on you! (DamageTaken)
-ドラゴンハートのリーダーがあなたにロックをかけています! (DamageTaken)
+ドラゴンハートのリーダーに拘束具をロックされた！(DamageTaken)
 Rebel Scum!
-反逆のクズ！
+反逆者
 The Dragonheart Rebel admits defeat.
-ドラゴンハートの反逆者は敗北を認めます。
+ドラゴンハートの反逆者は負けを認めた。
 The Dragonheart Rebel apprehends you! (+RestraintAdded)
-Dragonheart Rebel があなたを逮捕します! (+RestraintAdded)
+ドラゴンハートの反逆者に捕まった！ (+RestraintAdded)
 'En garde!'
-'用心する！'
+'勝負だ！'
 The Dragonheart Rebel squeezes your body! (DamageTaken)
-ドラゴンハートの反逆者があなたの体を圧迫します! (DamageTaken)
+ドラゴンハートの反逆者が抱きしめてきた！  (DamageTaken)
 The Dragonheart Leader uses a lock on you! (DamageTaken)
-ドラゴンハートのリーダーがあなたにロックをかけています! (DamageTaken)
+ドラゴンハートの反逆者に拘束具をロックされた！(DamageTaken)
 Dryad
 ドライアド
 The dryad sinks into the ground.
-ドライアドは地面に沈みます。
+ドライアドは地面に沈んでいった。
 The dryad extends an arm, and she wraps you in vines! (+RestraintAdded)
-ドライアドが腕を伸ばし、あなたを蔓で包みます! (+RestraintAdded)
+ドライアドが腕を伸ばすと、蔦が全身に絡まってきた！ (+RestraintAdded)
 The dryad sings a song that mesmerizes you! (DamageTaken)
-ドライアドはあなたを魅了する歌を歌います! (DamageTaken)
+ドライアドは不思議な歌をうたった！ (DamageTaken)
 The dryad tickles you with a leaf! (DamageTaken)
-ドライアドが葉っぱでくすぐる！(DamageTaken)
+ドライアドが葉っぱでくすぐってきた！(DamageTaken)
 Dryad
 ドライアド
 The dryad sinks into the ground.
-ドライアドは地面に沈みます。
+ドライアドは地面に沈んでいった。
 The dryad extends an arm, and she wraps you in vines! (+RestraintAdded)
-ドライアドが腕を伸ばし、あなたを蔓で包みます! (+RestraintAdded)
+ドライアドが腕を伸ばすと、蔦が全身に絡まってきた！  (+RestraintAdded)
 The dryad sings a song that mesmerizes you! (DamageTaken)
-ドライアドはあなたを魅了する歌を歌います! (DamageTaken)
+ドライアドは不思議な歌をうたった！(DamageTaken)
 The dryad tickles you with a leaf! (DamageTaken)
-ドライアドが葉っぱでくすぐる！(DamageTaken)
+ドライアドが葉っぱでくすぐってきた！(DamageTaken)
 Highly-Motivated Doll
-やる気満々の人形
+洗脳された人形
 The doll falls to the ground, moaning loudly.
-人形は大声でうめきながら地面に倒れます。
+人形はうめき声をあげながら倒れた。
 The doll rubs her body against yours. You can feel the conduction. (DamageTaken)
-人形は彼女の体をあなたの体にこすりつけます.あなたは伝導を感じることができます.(DamageTaken)
+人形が体をこすりつけてきた。導電性になってしまった。(DamageTaken)
 The doll tackles you and squeezes you with her trembling legs! (DamageTaken)
-人形がタックルし、震える足でぎゅっと握りしめる！ (DamageTaken)
+人形が震える足でタックルしてきた！ (DamageTaken)
 Dollsmith
-ドールスミス
+人形師
 The dollsmith's suit locks her wrists together and renders her helpless.
-人形職人のスーツは彼女の手首を固定し、彼女を無力にします.
+人形師は自身のスーツに拘束された。
 The dollsmith runs a latex-covered finger across your vulnerable body! (DamageTaken)
-人形職人があなたの無防備な体にラテックスで覆われた指を走らせます! (DamageTaken)
+人形師はゴムで覆われた指で愛撫してきた！ (DamageTaken)
 The dollsmith grabs you and applies her favorite doll restraints! (+RestraintAdded)
-人形職人はあなたをつかみ、お気に入りの人形の拘束を適用します! (+RestraintAdded)
+人形師に掴まれ、人形用の拘束具を取り付けられた！(+RestraintAdded)
 The dollsmith slaps a lock onto your restraints! (DamageTaken)
-人形職人があなたの拘束具に鍵をかけた! (DamageTaken)
+人形師に拘束具をロックされた！(DamageTaken)
 The dollsmith splashes a red latex concoction onto you! (+RestraintAdded)
-人形職人があなたに赤いラテックス調合物をはねかけます! (+RestraintAdded)
+人形師に赤いゴムの液体をかけられた！(+RestraintAdded)
 Dollmaker's Apprentice
 人形師見習い
 The dollmaker apprentice's suit becomes rigid and locks her limbs in place.
-人形師見習いのスーツが固くなり、手足が動かなくなった。
+人形師見習いのスーツは固まってしまった。
 The dollmaker's apprentice squeezes your body with her gloved hands! (DamageTaken)
-人形師の見習いが手袋をはめた手であなたの体をぎゅっと握りしめます! (DamageTaken)
+人形師の見習いにゴムの手袋で抱きしめられた！ (DamageTaken)
 The dollmaker's apprentice uses her staff to encase you in doll restraints! (+RestraintAdded)
-人形師の見習いが杖を使ってあなたを拘束具で包む! (+RestraintAdded)
+人形師の見習いが杖を振るうと人形用の拘束具が取り付いてきた！ (+RestraintAdded)
 The dollmaker's apprentice slips a lock onto your restraints! (DamageTaken)
-人形師の見習いがあなたの拘束具に鍵をかけた! (DamageTaken)
+人形師の見習いに拘束具をロックされた！(DamageTaken)
 The dollmaker's apprentice unleashes a powerful latex blast! (+RestraintAdded)
-人形師の見習いが強力なラテックスブラストを放ちます! (+RestraintAdded)
+人形師の見習いが強力なラテックスブラスターを放ってきた！(+RestraintAdded)
 Alchemist
-アルケミスト
+錬金術師
 The alchemist screams and runs.
-錬金術師が悲鳴をあげて逃げる
+錬金術師は悲鳴を上げて逃げていった。
 The Alchemist restrains you! (+RestraintAdded)
-錬金術士が拘束します！(+RestraintAdded)
+錬金術士に拘束された！(+RestraintAdded)
 The alchemist hugs you in a rubbery embrace! (DamageTaken)
-錬金術師がゴムのような抱擁であなたを抱きしめます! (DamageTaken)
+錬金術師がゴムのような包容をしてきた！ (DamageTaken)
 The alchemist uses an ornate-looking lock! (DamageTaken)
-錬金術師が使う華麗な錠前！(DamageTaken)
+錬金術師に華麗に拘束具をロックされた！(DamageTaken)
 Alchemist's Pet
-アルケミストのペット
+錬金術師のペット
 The wolfgirl escapes!
-オオカミ少女が逃げる！
+錬金術師のペットは逃げた！
 The wolfgirl lunges at you with a powerful kick!
-オオカミ少女が強力な蹴りで突進してきます！
+錬金術師のペットは強力なタックルを繰り出してきた！
 The wolfgirl lunges at you with a powerful kick!
-オオカミ少女が強力な蹴りで突進してきます！
+錬金術師のペットは強力なタックルを繰り出してきた！
 The wolfgirl cuddles with you! (DamageTaken)
-オオカミ少女があなたに寄り添う!(DamageTaken)
+錬金術師のペットがすり寄ってきた！(DamageTaken)
 Wolfgirl
 ウルフガール
 The wolfgirl escapes!
-オオカミ少女が逃げる！
+オオカミ少女は逃げた！
 The wolfgirl lunges at you with a powerful kick!
-オオカミ少女が強力な蹴りで突進してきます！
+オオカミ少女は強力なタックルを繰り出してきた！
 The wolfgirl lunges at you with a powerful kick!
-オオカミ少女が強力な蹴りで突進してきます！
+オオカミ少女は強力なタックルを繰り出してきた！
 The wolfgirl cuddles with you! (DamageTaken)
-オオカミ少女があなたに寄り添う!(DamageTaken)
+オオカミ少女がすり寄ってきた！(DamageTaken)
 Wolfguard
 ウルフガード
 The wolfguard's suit punishes her for poor performance!
-ウルフガードのスーツは彼女のパフォーマンスの悪さを罰する！
+ウルフガードはスーツに罰せられた！
 The wolfguard lunges at you and strikes you!
-ウルフガードが突進して襲ってきます！
+ウルフガードが突進してきた！
 The wolfguard's escort drones electrocute you! (DamageTaken)
-ウルフガードの護衛ドローンが感電死させます! (DamageTaken)
+ウルフガードは護衛のドローンで攻撃してきた！ (DamageTaken)
 The wolfguard's escort drones deploy some restraints! (+RestraintAdded)
-ウルフガードの護衛ドローンが拘束を展開！ (+RestraintAdded)
+ウルフガードの護衛ドローンが拘束具を展開してきた！ (+RestraintAdded)
 Wolfgirl Trainer
-ウルフガールトレーナー
+ウルフガールの調教師
 The trainer retreats!
-トレーナー退却！
+ウルフガールの調教師は撤退した！
 The wolfgirl trainer squeezes your breasts playfully! (DamageTaken)
-オオカミ少女トレーナーがふざけて胸を揉みしだきます！(DamageTaken)
+ウルフガールの調教師が胸を揉んできた！(DamageTaken)
 The wolfgirl trainer secures you in training gear! (+RestraintAdded)
-オオカミ少女トレーナーがトレーニングギアであなたを固定します! (+RestraintAdded)
+ウルフガールの調教師にペット用拘束具で拘束されてしまった! (+RestraintAdded)
 The wolfgirl trainer pins you and skillfully locks all of your restraints!
-オオカミ少女トレーナーがピンで留め、拘束具を巧みにロック！
+ウルフガールの調教師に翻弄され、すべての拘束具をロックされた！
 Nevermere Operative
 ネバーミアの工作員
 The operative does a fumbled retreat!
-工作員が手探りで退却！
+ネバーミアの工作員は必死に撤退した！
 The Nevermere Operative smiles and gropes your body! (DamageTaken)
-Nevermere 工作員が微笑んであなたの体を弄ります! (DamageTaken)
+ネバーミアの工作員は微笑みながら体を撫で回してきた！ (DamageTaken)
 The Nevermere Operative apprehends you with training gear! (+RestraintAdded)
-Nevermere 工作員がトレーニング ギアであなたを逮捕します! (+RestraintAdded)
+ネバーミアの工作員にペット用拘束具で拘束されてしまった!  (+RestraintAdded)
 The Nevermere Operative pins you and skillfully locks all of your restraints!
-ネバーミアの工作員があなたをピン留めし、すべての拘束具を巧みにロックします!
+ネバーミアの工作員に翻弄され、すべての拘束具をロックされた！
 Trainer's Apprentice
-調教師見習い
+見習い調教師
 The trainer's apprentice escapes!
-調教師見習いが逃げる！
+見習い調教師は逃げた！
 The trainer's apprentice rubs her claws across your chest playfully! (DamageTaken)
-トレーナーの見習いがふざけてあなたの胸を爪でこすります! (DamageTaken)
+見習い調教師は乳首を爪弾いてきた！ (DamageTaken)
 The trainer's apprentice secures you in training gear! (+RestraintAdded)
-トレーナーの見習いがトレーニングギアであなたを固定します! (+RestraintAdded)
+見習い調教師にペット用拘束具で拘束されてしまった! (+RestraintAdded)
 The trainer's apprentice adds a lock to your restraints.
-トレーナーの見習いがあなたの拘束具にロックを追加します。
+見習い調教師に拘束具をロックされた！
 The Executive
-エグゼクティブ
+ネバーミア役員
 The executive surrenders gracefully.
-エグゼクティブは優雅に降伏します。
+ネバーミア役員は優雅に降伏した。
 The Executive makes a persuasive argument! (DamageTaken)
-エグゼクティブは説得力のある議論をします! (DamageTaken)
+ネバーミア役員は説得力のある議論をかましてきた！ (DamageTaken)
 The Executive's drones apprehend you! (+RestraintAdded)
-エグゼクティブのドローンがあなたを捕まえます! (+RestraintAdded)
+ネバーミア役員はドローンから拘束具を飛ばしてきた！ (+RestraintAdded)
 The Executive's drones apply high-security locks to your restraints!
-エグゼクティブのドローンは、あなたの拘束具に高度なセキュリティ ロックを適用します!
+ネバーミア役員のドローンに拘束具を高度な鍵でロックされた！
 Wolf Instructor
-ウルフインストラクター
+ウルフガールの教官
 The instructor deploys active camoflague and retreats!
-教官はアクティブカモフラージュを展開して退却します！
+ウルフガールの教官はアクティブカモフラージュを展開して退却した！
 The instructor disciplies you! (DamageTaken)
-インストラクターがあなたを訓練します！（DamageTaken）
+ウルフガールの教官に訓練された！（DamageTaken）
 The instructor applies advanced training gear! (+RestraintAdded)
-インストラクターが高度なトレーニングギアを適用します! (+RestraintAdded)
+ウルフガールの教官に高度なペット用拘束具で拘束されてしまった!  (+RestraintAdded)
 The instructor adds a lock to your restraints.
-インストラクターが拘束具にロックを追加します。
+ウルフガールの教官に拘束具をロックされた！
 Nevermere Drone
-ネバーミアドローン
+ネバーミア・ドローン
 The drone loses power and falls to the ground!
-ドローンは力を失い、地面に落ちます！
+ネバーミア・ドローンは揚力を失い、地面に激突した！
 A Nevermere Drone takes off!
-ネバーミアドローンが離陸！
+ネバーミア・ドローンが離陸した！
 You hear buzzing as several Nevermere Drones take to the air!
-数機のネバーミア ドローンが飛び立つと、ブーンという音が聞こえます!
+数機のネバーミア・ドローンが飛び立つ音が聞こえた！
 Swarm of Tape Drones
 テープドローンの群れ
 The tape drones lose control and crash all over the place!
-テープドローンは制御を失い、いたるところに墜落します！
+テープドローンは制御を失い、地面に散乱した！
 A swarm of tape drones takes flight!
 テープドローンの群れが飛び立つ！
 The air fills with buzzing as dozens of tiny drones lift off!
-数十個の小さなドローンが離陸すると、空気はブンブンと鳴り響きます!
+数十個の小さなドローンが離陸し、羽音が鳴り響く！
 The tape drones attach additional sticky layers! (DamageTaken)
-テープドローンは追加の粘着層を取り付けます! (DamageTaken)
+テープドローンはテープの上から更にテープを重ねてきた！ (DamageTaken)
 The tape drones circle around you, wrapping you in tape! (+RestraintAdded)
-テープ ドローンがあなたの周りを一周し、あなたをテープで包みます! (+RestraintAdded)
+テープ ドローンはテープを吐き出しながら周囲を旋回してきた！(+RestraintAdded)
 Shield Drone
 シールドドローン
 The drone's power source explodes.
-ドローンの動力源が爆発します。
+シールドドローンの動力源が爆発した！
 A Shield Drone takes off!
-シールドドローンが離陸！
+シールドドローンが離陸した！
 Several Shield Drones take flight, their shields interlinking.
-複数のシールド ドローンが飛行し、シールドが連動します。
+シールドドローンが集まり、シールドが連動した！
 Drone Explosion
 ドローン爆発
 Rusty Drone
 さびたドローン
 The drone's mechanisms grind to a halt.
-無人機のメカニズムが停止します。
+さびたドローンは停止した。
 The drone uses a short-ranged electrocution attack! (DamageTaken)
-ドローンは近距離の感電攻撃を使用します! (DamageTaken)
+さびたドローンが近距離用のスタンガンを放ってきた！ (DamageTaken)
 The drone disassembles itself, revealing a set of restraining cables! (+RestraintAdded)
-ドローンは分解し、拘束ケーブルのセットを明らかにします! (+RestraintAdded)
+さびたドローンは分離して拘束ケーブルになった！(+RestraintAdded)
 Rusty Auto Taper
-ラスティオートテーパー
+錆びたテープドローン
 The auto taper's mechanisms grind to a halt.
-自動テーパーのメカニズムが停止します。
+錆びたテープドローンのメカニズムが停止します。
 The auto taper wraps additional layers of sticky tape! (DamageTaken)
-自動テーパーは、粘着テープの追加の層を巻き付けます! (DamageTaken)
+錆びたテープドローンはテープの上から更にテープを重ねてきた！ (DamageTaken)
 The wraps you in many layers of tape! (+RestraintAdded)
-何層ものテープであなたを包みます! (+RestraintAdded)
+錆びたテープドローンが何層ものテープで拘束してきた！ (+RestraintAdded)
 Rubber Blaster
 ラバーブラスター
 The turret enters an unstable state, about to spread rubber all over!
-砲塔が不安定な状態になり、ゴムが飛び散りそうです！
+ラバーブラスターは動作不良を起こした！
 The turret defends itself with a close-range electrocution attack! (DamageTaken)
-砲塔は近距離電撃攻撃で防御！（DamageTaken）
+ラバーブラスターは近距離用スタンガンを放った！（DamageTaken）
 Rubber Launcher
 ラバーランチャー
 The turret enters an unstable state, about to spread rubber all over!
-砲塔が不安定な状態になり、ゴムが飛び散りそうです！
+ラバーランチャーは動作不良を起こした！
 The turret defends itself with a close-range electrocution attack! (DamageTaken)
-砲塔は近距離電撃攻撃で防御！（DamageTaken）
+ラバーランチャーは近距離用スタンガンを放った！（DamageTaken）
 Drone
 ドローン
 The drone fizzles and falls to the ground!
-ドローンがフワフワして地面に落ちる！
+ドローンはふわふわと地面に落ちていった！
 The drone zaps you with a restraining energy ray! (DamageTaken)
-ドローンは抑制エネルギー光線であなたを攻撃します! (DamageTaken)
+ドローンは鎮圧用レーザーを放ってきた！ (DamageTaken)
 The drone uses a short-ranged electrocution attack! (DamageTaken)
-ドローンは近距離の感電攻撃を使用します! (DamageTaken)
+ドローンは近距離用スタンガンを放った！ (DamageTaken)
 The drone attaches to you! (+RestraintAdded)
-ドローンがあなたにくっつきます! (+RestraintAdded)
+ドローンが張り付いてきた！ (+RestraintAdded)
 Auto Capture Unit
-オートキャプチャユニット
+キャプチャーユニット
 The capture unit releases magic smoke and explodes.
-キャプチャーユニットが魔法の煙を出して爆発する
+キャプチャーユニットは魔法の煙を上げて爆発した。
 The capture unit grabs you securely! (DamageTaken)
-キャプチャーユニットがしっかり掴んでくれます！(DamageTaken)
+キャプチャーユニットにがっしりと掴まれた！(DamageTaken)
 The capture unit extends its appendages and wraps them around you! (+RestraintAdded)
-捕獲ユニットは付属肢を伸ばしてあなたの周りを包み込みます! (+RestraintAdded)
+キャプチャーユニットは機械の触手で拘束してきた！ (+RestraintAdded)
 The capture unit releases small drones which lock onto your restraints! (DamageTaken)
-キャプチャーユニットは拘束具をロックする小さなドローンを放ちます! (DamageTaken)
+キャプチャーユニットは拘束具をロックする小さなドローンを放ってきた！ (DamageTaken)
 Auto Tape Unit
-自動テープ装置
+テープユニット
 The tape unit releases magic smoke and explodes.
-テープユニットが魔法の煙を出して爆発する
+テープユニットは魔法の煙を上げて爆発した。
 The tape unit applies many layers of tape! (DamageTaken)
-テープユニットはテープを何層にも重ねます! (DamageTaken)
+テープユニットはテープの上から更にテープを重ねてきた！(DamageTaken)
 The tape unit fires off many layers of sticky tape! (+RestraintAdded)
-テープユニットは何層もの粘着テープを発射します! (+RestraintAdded)
+テープユニットは大量のテープを発射してきた！(+RestraintAdded)
 The tape unit releases small drones which lock onto your restraints! (DamageTaken)
-テープ ユニットは、あなたの拘束具をロックする小さなドローンを放ちます! (DamageTaken)
+テープユニットは拘束具をロックする小さなドローンを放ってきた！(DamageTaken)
 Force Field Unit
 フォースフィールドユニット
 The forcefield unit releases magic smoke and explodes.
-フォースフィールドユニットが魔煙を放ち爆発する
+フォースフィールドユニットは魔法の煙を上げて爆発した。
 The forcefield electrocutes you! (DamageTaken)
-力場があなたを感電死させます! (DamageTaken)
+フォースフィールドユニットは電撃を放ってきた！ (DamageTaken)
 The forcefield unit extends its appendages and wraps them around you! (+RestraintAdded)
-力場ユニットは付属肢を伸ばしてあなたの周りを包み込みます! (+RestraintAdded)
+フォースフィールドユニットは機械の触手で拘束してきた！(+RestraintAdded)
 The forcefield unit releases small drones which lock onto your restraints! (DamageTaken)
-力場ユニットが小型のドローンを放ち、拘束具をロックします! (DamageTaken)
+フォースフィールドユニットは拘束具をロックする小さなドローンを放ってきた！(DamageTaken)
 Force Field Projector
 フォースフィールドプロジェクター
 The forcefield erupts into a shower of blue sparks!
-力場が青い火花を散らす！
+フォースフィールドプロジェクターが青い火花を散らす！
 The robot deploys a forcefield!
-ロボットが力場を展開！
+フォースフィールドプロジェクターはフィールドを展開した！
 The robot deploys a set of forcefields!
-ロボットは一連の力場を展開します!
+フォースフィールドプロジェクターロボットは複数のフィールドを展開した！
 Auto Enforcer Unit
-オートエンフォーサーユニット
+エンフォーサーユニット
 The enforcer unit releases magic smoke and explodes.
-エンフォーサーユニットが魔煙を放ち爆発する
+エンフォーサーユニットは魔法の煙を上げて爆発した。
 The enforcer unit fires many cables that squeeze you! (DamageTaken)
-エンフォーサーユニットはあなたを圧迫する多くのケーブルを発射します! (DamageTaken)
+エンフォーサーユニットは大量のケーブルで圧迫してきた！ (DamageTaken)
 The enforcer fires off restraints that wrap around your body and apprehend you! (+RestraintAdded)
-エンフォーサーはあなたの体を包み込み、あなたを捕まえる拘束を発射します！（+RestraintAdded）
+エンフォーサーユニットの放つ拘束具が全身を包み込む！（+RestraintAdded）
 The enforcer releases small drones which lock onto your restraints! (DamageTaken)
-エンフォーサーはあなたの拘束具をロックする小さなドローンを放ちます! (DamageTaken)
+エンフォーサーユニットは拘束具をロックする小さなドローンを放ってきた！(DamageTaken)
 Artillery Unit
-砲兵ユニット
+アーティレリユニット
 The artillery unit releases magic smoke and explodes.
-砲兵部隊が魔煙を放ち爆発する
+アーティレリユニットは魔法の煙を上げて爆発した。
 The artillery unit fires many cables that squeeze you! (DamageTaken)
-砲兵ユニットは、あなたを圧迫する多くのケーブルを発射します! (DamageTaken)
+アーティレリユニットは大量のケーブルで圧迫してきた！(DamageTaken)
 The artillery fires off restraints that wrap around your body and apprehend you! (+RestraintAdded)
-大砲が拘束具を発射し、体を包み込んで捕らえます! (+RestraintAdded)
+アーティレリユニットの放つ拘束具が全身を包み込む！(+RestraintAdded)
 The artillery releases small drones which lock onto your restraints! (DamageTaken)
-大砲があなたの拘束具をロックする小さなドローンを放ちます! (DamageTaken)
+アーティレリユニットは拘束具をロックする小さなドローンを放ってきた！(DamageTaken)
 The energy bolt hits you and paralyzes you!
-エナジー ボルトが命中し、麻痺させます。
+エナジーボルトが命中し、麻痺してしまった！
 Energy Bolt
-エネルギーショップ
+エナジーボルト
 Alkahestor
-アルカヘスター
+大錬金術師
 The alkahestor resigns to her fate.
-アルカヘスターは彼女の運命に辞任する。
+大錬金術師は彼女の運命に辞任する。
 The alkahestor releases a vial of liquid that wraps around you! (+RestraintAdded)
-アルカヘスターはあなたを包み込む液体のバイアルを放出します! (+RestraintAdded)
+大錬金術師のはなった液体に包み込まれてしまった！(+RestraintAdded)
 The alkahestor uses an ornate-looking lock! (DamageTaken)
-アルカヘスターは華麗な錠前を使っている! (DamageTaken)
+大錬金術師にきれいな錠前で拘束具をロックされた！ (DamageTaken)
 The alkahestor shoves you! (DamageTaken)
-アルカヘスターが突き飛ばす! (DamageTaken)
+大錬金術師がに突き飛ばされた！ (DamageTaken)
 Latex Elemental
-ラテックスエレメンタル
+ラテックスの精霊
 The latex elemental melts into sticky rubber.
-ラテックスのエレメンタルが溶けて粘着性のあるゴムになります。
+ラテックスの精霊は溶けてただのゴムになった。
 The latex elemental molds itself into restraints! (+RestraintAdded)
-ラテックスのエレメンタルは、それ自体を拘束具に成形します! (+RestraintAdded)
+ラテックスの精霊の身体の一部が拘束具に変化して襲いかかってきた！(+RestraintAdded)
 The latex elemental slaps you with its appendages! (DamageTaken)
-ラテックス エレメンタルが付属肢であなたを平手打ちします! (DamageTaken)
+ラテックスの精霊に平手打ちされた！ (DamageTaken)
 Rope Elemental
-ロープエレメンタル
+ロープの精霊
 The rope elemental gets knotted and falls to the floor, inert.
-ロープのエレメンタルが絡まり、力を失って床に落ちる。
+ロープの精霊はただのロープの塊になった。
 The rope elemental's limbs lash out at you, wrapping themselves around your body! (+RestraintAdded)
-ロープエレメンタルの手足があなたに襲いかかり、あなたの体を包み込みます! (+RestraintAdded)
+ロープの精霊の手足が絡みついてきた！ (+RestraintAdded)
 The rope elemental squeezes you tightly! (DamageTaken)
-ロープエレメンタルがギュッと絞めてくる! (DamageTaken)
+ロープの精霊に締め付けられた！(DamageTaken)
 Leather Elemental
-レザーエレメンタル
+革の精霊
 The leather elemental sits down and sulks.
-革のエレメンタルは座って不機嫌になる。
+革の精霊は不機嫌そうに座り込んだ。
 The leather elemental wraps her long extremities around your body! (+RestraintAdded)
-革の精霊が彼女の長い四肢をあなたの体に巻き付けます! (+RestraintAdded)
+革の精霊に革製の長い四肢で絡みつかれた！ (+RestraintAdded)
 The leather elemental strikes you with her leather belts! (DamageTaken)
-革のエレメンタルが革のベルトであなたを攻撃します! (DamageTaken)
+革の精霊に革ベルトで叩かれた！ (DamageTaken)
 The leather elemental clicks a lock onto your restraints! (DamageTaken)
-革のエレメンタルがあなたの拘束具にカチッと音を立てます! (DamageTaken)
+革の精霊に拘束具をロックされた！(DamageTaken)
 Slime Enthusiast
 スライム愛好家
 The slime enthusiast screams and runs.
-スライム好きは悲鳴をあげて逃げる
+スライム愛好家は悲鳴をあげて逃げた。
 The slime enthusiast restrains you! (+RestraintAdded)
-スライム好きが拘束！(+RestraintAdded)
+スライム愛好家に拘束された！(+RestraintAdded)
 The slime enthusiast hugs you in a rubbery embrace! (DamageTaken)
-スライム愛好家がゴムのように抱きしめてくれます! (DamageTaken)
+スライム愛好家がゴムのように抱きしめてきた！ (DamageTaken)
 The slime enthusiast looks happy to make sure your restraints are secure! (DamageTaken)
-スライム愛好家はあなたの拘束が安全であることを確認するためにうれしそうです! (DamageTaken)
+スライム愛好家は嬉しそうに拘束具をロックしてきた！(DamageTaken)
 Miner
-マイナー
+炭坑婦
 The bandit tosses her pick to the ground and complains about her pay.
-盗賊は自分のつるはしを地面に投げつけ、自分の給料について不平を言う。
+炭坑婦はつるはしを地面にたたきつけて自身の待遇を愚痴りだした……
 The miner restrains you! (+RestraintAdded)
-鉱山労働者があなたを拘束します! (+RestraintAdded)
+炭坑婦に拘束された！ (+RestraintAdded)
 The miner pins you with the haft of her pickaxe! (DamageTaken)
-鉱山労働者がつるはしの柄であなたを固定します! (DamageTaken)
+炭坑婦につるはしの柄で締められた！ (DamageTaken)
 The miner pins you with the haft of her pickaxe and adds a lock! (DamageTaken)
-鉱夫はつるはしの柄であなたを固定し、ロックを追加します! (DamageTaken)
+炭坑婦につるはしの柄で締められ、拘束具をロックされた！(DamageTaken)
 You hear a fuse going off...
-ヒューズが切れる音がする...
+ヒューズの切れる音がした……
 Miner Bomb
-マイナーボム
+ダイナマイト
 Bandit
-バンディット
+盗賊
 The bandit cries. You should feel bad.
-山賊が泣く。気の毒だな
+盗賊は泣き出した。
 Bandit
-バンディット
+盗賊
 The bandit collapses.
-盗賊が倒れる
+盗賊は倒れた。
 The bandit restrains you! (+RestraintAdded)
-盗賊があなたを拘束します! (+RestraintAdded)
+盗賊に拘束された！(+RestraintAdded)
 The bandit smiles and applies a lock! (DamageTaken)
-盗賊が微笑んでロックをかける！(DamageTaken)
+盗賊は笑顔で拘束具をロックしてきた！(DamageTaken)
 The bandit caresses your restrained body! (DamageTaken)
-盗賊が拘束されたあなたの体を愛撫します！ (DamageTaken)
+盗賊に身体を縛られて愛撫された！ (DamageTaken)
 Shady Dealer
-怪しげなディーラー
+怪しげな商人
 The dealer flees, leaving her goods behind.
-商人は商品を置き去りにして逃げる。
+怪しげな商人は商品を置き去りにして逃げた。
 The dealer uses some high-quality restraints on you! (+RestraintAdded)
-ディーラーはあなたにいくつかの高品質の拘束を使用しています! (+RestraintAdded)
+怪しげな商人はあなたにいくつかの高品質の拘束を使用しています! (+RestraintAdded)
 The dealer smiles and applies a lock! (DamageTaken)
-ディーラーは笑顔でロックをかけます！ (DamageTaken)
+怪しげな商人は笑顔で拘束具をロックしてきた！ (DamageTaken)
 The dealer kisses and gropes your body! (DamageTaken)
-ディーラーはあなたの体にキスして弄ります! (DamageTaken)
+怪しげな商人に身体を舐め回された！ (DamageTaken)
 That dagger was laced with something...
-あの短剣には何かが絡んでいた……
+あの短剣には何かが仕込まれていた……
 You hear a shattering of glass, suddenly the air around you feels thick and moist...
-ガラスが割れる音がして、突然周りの空気が濃く湿った感じがする…
+ガラスの割れる音とともに、甘ったるい香りの霧が漂い始めた……
 Poison Dagger
 ポイズンダガー
 Lust Bomb
 ラストボム
 Bandit Guard
-バンディットガード
+盗賊の歩哨
 The bandit guard collapses and calls for help.
-バンディットガードが倒れて助けを呼ぶ
+盗賊の歩哨は倒れながら助けを呼んだ。
 The bandit guard restrains you! (+RestraintAdded)
-バンディットガードが拘束！(+RestraintAdded)
+盗賊の歩哨に拘束された！(+RestraintAdded)
 The bandit rubs and caresses your restrained body! (DamageTaken)
-盗賊が拘束されたあなたの身体を揉みしだく! (DamageTaken)
+盗賊の歩哨に身体を縛られて愛撫された！(DamageTaken)
 The bandit scoffs and applies a lock! (DamageTaken)
-盗賊は嘲笑ってロックをかけます！ (DamageTaken)
+盗賊の歩哨は嘲笑と共に拘束具をロックしてきた！ (DamageTaken)
 Bandit Chief
-バンディット チーフ
+盗賊の長
 The bandit scoffs and retreats until next time.
-盗賊は嘲笑し、次の機会まで撤退します。
+盗賊の長は撤退した！
 The bandit restrains you tightly! (+RestraintAdded)
-山賊がキッチリ拘束！(+RestraintAdded)
+盗賊の長に拘束された！(+RestraintAdded)
 The bandit runs her hands all along your restrained body! (DamageTaken)
-盗賊はあなたの拘束された体に手を走らせます！（DamageTaken）
+盗賊の長に身体を縛られて全身を愛撫された！（DamageTaken）
 The bandit chuckles and applies a lock! (DamageTaken)
-バンディットはくすくす笑い、ロックを適用します! (DamageTaken)
+盗賊の長は嘲笑と共に拘束具をロックしてきた！ (DamageTaken)
 Bandit Pet
-バンディットペット
+盗賊のペット
 The bandit blushes and runs away.
-盗賊は顔を赤らめて逃げる
+盗賊のペットは顔を赤らめて逃げた。
 The girl nervously restrains you! (+RestraintAdded)
-女の子がドキドキ拘束！ (+RestraintAdded)
+盗賊のペットが慎重に拘束してきた！ (+RestraintAdded)
 The bandit tickes you nervously! (DamageTaken)
-盗賊はあなたを神経質にカチカチさせます! (DamageTaken)
+盗賊のペットはくすぐってきた！ (DamageTaken)
 Bandit Hunter
-盗賊ハンター
+盗賊の精鋭
 The bandit hunter retreats.
-盗賊ハンター退却
+盗賊の精鋭は退却した。
 The bandit hunter restrains you! (+RestraintAdded)
-盗賊ハンターがお前を拘束する！(+RestraintAdded)
+盗賊の精鋭に拘束された！(+RestraintAdded)
 The bandit hunter caresses your restrained body! (DamageTaken)
-山賊ハンターが拘束された体を撫でる！（ダメージテイクン）
+盗賊の精鋭に身体を縛られて全身を愛撫された！（ダメージテイクン）
 The bandit hunter calls you an amateur and applies a lock! (DamageTaken)
-盗賊ハンターが素人と呼んでロックをかける！(DamageTaken)
+盗賊の精鋭は嘲りと共に拘束具をロックしてきた！(DamageTaken)
 Bandit Grappler
-盗賊グラップラー
+盗賊の鎖使い
 The bandit grappler retreats.
-バンディット・グラップラーは後退する
+盗賊の鎖使いは撤退した。
 The bandit grappler loops her chains around you! (+RestraintAdded)
-バンディット グラップラーがあなたの周りにチェーンをループさせます! (+RestraintAdded)
+盗賊の鎖使いにチェーンを巻きつけられた！(+RestraintAdded)
 The bandit grappler caresses your restrained body! (DamageTaken)
-盗賊グラップラーが拘束されたあなたの体を撫でる！(DamageTaken)
+盗賊の鎖使いに身体を縛られて全身を愛撫された！(DamageTaken)
 The bandit giggles and applies a lock! (DamageTaken)
-バンディットがくすくす笑ってロックをかけます！ (DamageTaken)
+盗賊の鎖使いは嘲笑と共に拘束具をロックしてきた！(DamageTaken)
 The bandit grappler hooks you closer!!!
-バンディット グラップラーがあなたを引き寄せる!!!
+盗賊の鎖使いに引き寄せられた！
 Mummy
-ミイラ
+ネコ教の信徒
 The Mummy collapses and her body vanishes.
-ミイラは倒れ、彼女の体は消えます。
+ネコ教の神官は倒れ、消え去った。
 The Mummy conjures a mystic wrapping! (+RestraintAdded)
-ミイラは神秘的なラッピングを呼び起こします! (+RestraintAdded)
+ネコ教の神官は奇妙な包帯を召喚した！ (+RestraintAdded)
 The Mummy punishes you with a blow from her staff! (DamageTaken)
-ミイラが杖の一撃でお仕置き！ (DamageTaken)
+ネコ教の神官が杖で叩いてきた！ (DamageTaken)
 Cursed One
 呪われし者
 The Cursed One is drawn into an eldritch portal.
-呪われた者は異界のポータルに引き込まれます。
+呪われた者は異界のポータルに引き込まれた。
 The Cursed One's bindings transfer to you! (+RestraintAdded)
-呪われた者の束縛があなたに移ります! (+RestraintAdded)
+呪われた者の呪いを移された！ (+RestraintAdded)
 The Cursed One's bindings emit a strange aura... (DamageTaken)
-呪われし者の束縛が異様なオーラを放っている…(DamageTaken)
+呪われし者の拘束具が奇妙なオーラを放っている……(DamageTaken)
 Floating Wrapping
-フローティングラッピング
+浮遊する包帯
 The wrapping falls to the floor, its magic spent.
-包みは床に落ち、魔力が尽きた
+浮遊する包帯は魔力が付きて地面に落ちた。
 The floating wrappings attach to you! (+RestraintAdded)
-浮遊するラッピングがあなたにくっつきます! (+RestraintAdded)
+浮遊する包帯が絡みついてきた！ (+RestraintAdded)
 The wrappings grip you tightly and squeeze you! (DamageTaken)
-ラッピングがギュッとギュッと締まる！ (DamageTaken)
+浮遊する包帯に締め付けられた！ (DamageTaken)
 Animated Sarcophagus
-アニメーションの石棺
+呪いの棺
 The sarcophagus falls to the ground and crumbles.
-石棺は地面に落ちて砕け散る。
+呪いの棺は地面に落ちて砕け散った。
 The sarcophagus emits long wrappings that pull you closer! (+RestraintAdded)
-石棺はあなたを引き寄せる長いラッピングを放出します! (+RestraintAdded)
+呪いの棺に包帯で引き寄せられた！ (+RestraintAdded)
 The sarcophagus emanates a strange power! (DamageTaken)
-石棺が異様な力を発する!(DamageTaken)
+呪いの棺が異様な力を発する!(DamageTaken)
 Bast Warrior
-バストウォリアー
+ネコ教の戦士
 The Bast Warrior collapses and meows loudly.
-バスト・ウォリアーが倒れて大きな鳴き声をあげる
+ネコ教の戦士は鳴き声を上げて倒れた。
 The Bast Warrior restrains you! (+RestraintAdded)
-バストウォリアーが拘束する！(+RestraintAdded)
+ネコ教の戦士に拘束された！(+RestraintAdded)
 The Bast Warrior tickles you with her claws! (DamageTaken)
-バスト ウォリアーが爪でくすぐる! (DamageTaken)
+ネコ教の戦士に爪でくすぐられた！ (DamageTaken)
 The Bast Warrior pulls out a lock and slips it on! (DamageTaken)
-バスト・ウォリアーがロックを抜いてかぶる！(DamageTaken)
+ネコ教の戦士に拘束をロックされた！(DamageTaken)
 Bast Cleric
-バスト・クレリック
+ネコ教の神官
 The Bast Cleric collapses and meows softly.
-Bast Cleric は倒れ込み、静かにニャーと鳴きます。
+ネコ教の神官は倒れ込み静かに鳴いた。
 A ray of light shoots out and paralyzes you! (DamageTaken)
-一筋の光を放ち麻痺させる！(DamageTaken)
+ネコ教の神官は杖から一筋の光を発射してきた！(DamageTaken)
 The Bast Cleric restrains you! (+RestraintAdded)
-Bast Cleric があなたを拘束します! (+RestraintAdded)
+ネコ教の神官に拘束された！(+RestraintAdded)
 A ray of light shoots out and paralyzes you! (DamageTaken)
-一筋の光を放ち麻痺させる！(DamageTaken)
+ネコ教の神官は杖から一筋の光を発射してきた！(DamageTaken)
 The Bast Cleric pulls out a lock and slips it on! (DamageTaken)
-Bast Cleric がロックを引き出し、それを装着します! (DamageTaken)
+ネコ教の神官に拘束をロックされた！ (DamageTaken)
 Skeleton
 スケルトン
 The skeleton falls to pieces.
-骸骨がバラバラに崩れる
+スケルトンはバラバラに崩れた。
 The Skeleton restrains you! (+RestraintAdded)
-スケルトンがあなたを拘束します! (+RestraintAdded)
+スケルトンに拘束された！ (+RestraintAdded)
 The Skeleton tackles you! (DamageTaken)
-スケルトンがあなたにタックルします！ (DamageTaken)
+スケルトンにタックルされた！ (DamageTaken)
 Ghost
-おばけ
+幽霊
 The ghost vanishes.
-幽霊が消える
+幽霊は消え去った。
 The Ghost restrains you! (+RestraintAdded)
-ゴーストがあなたを拘束します! (+RestraintAdded)
+幽霊に拘束された！ (+RestraintAdded)
 The Ghost tickles you! (DamageTaken)
-おばけがくすぐる! (DamageTaken)
+幽霊がくすぐってきた！ (DamageTaken)
 Revenant
-レヴナント
+悪霊
 The revenant pouts as it vanishes.
-レヴナントは消えるときに口をとがらせます。
+悪霊は不満そうな表情を浮かべながらたち消えた。
 The revenant restrains you! (+RestraintAdded)
-レヴナントが拘束！(+RestraintAdded)
+悪霊に拘束された！(+RestraintAdded)
 The revenant squeezes your breasts! (DamageTaken)
-レヴナントが胸を締め付ける！(DamageTaken)
+悪霊が胸を力任せに揉んできた！(DamageTaken)
 The revenant grabs you and caresses your tummy! (DamageTaken)
-レヴナントがあなたを掴み、あなたのおなかを愛撫します! (DamageTaken)
+悪霊にお腹を優しく撫でられた！(DamageTaken)
 Skeleton Warrior
-スケルトンウォリアー
+スケルトンの戦士
 The skeleton warrior collapses and falls into pieces.
-骸骨の戦士は崩れ落ち、ばらばらになる。
+スケルトンの戦士は崩れ落ち、ばらばらになった。
 The Skeleton lands a wide, crippling blow! (DamageTaken)
-スケルトンは広範囲に壊滅的な打撃を与えます! (DamageTaken)
+スケルトンの戦士は得物を横に薙いだ！(DamageTaken)
 The Skeleton leashes you!
-スケルトンがあなたをリードします！
+スケルトンの戦士に引っ張られた！
 Skeleton Knight
-骸骨の騎士
+スケルトンの騎士
 The skeleton knight collapses and falls into pieces.
-骸骨の騎士が崩れ落ちてバラバラになる
+スケルトンの騎士は崩れ落ちた。
 The skeleton apprehends you and pins you with the haft of its axe! (DamageTaken)
-スケルトンはあなたを捕らえ、斧の柄であなたを固定します! (DamageTaken)
+スケルトンの騎士に斧頭で固定された！ (DamageTaken)
 The skeleton grabs you and slips a black cuff on! (+RestraintAdded)
-骸骨があなたをつかみ、黒いカフをはめます! (+RestraintAdded)
+スケルトンの騎士に掴まれ、黒曜石の枷をはめられた！(+RestraintAdded)
 Vine Plant
-植物が来る
+蠢く蔦
 The plant leaks purple juices everywhere as it wilts.
-この植物は、しおれると紫色の汁をいたるところに漏らします。
+蠢く蔦は、紫色の汁を撒き散らしながらしおれた。
 The vine plant whips you with its tendrils! (DamageTaken)
-つる植物は巻きひげであなたを鞭打ちます! (DamageTaken)
+蠢く蔦はつるで打ち据えてきた！ (DamageTaken)
 The vine plant wraps its tendrils around you! (+RestraintAdded)
-つる植物があなたの周りに巻きひげを巻きつけています! (+RestraintAdded)
+蠢く蔦がつるで縛り上げてきた！(+RestraintAdded)
 The vine plant grips you tightly! (DamageTaken)
-つる植物がぎゅっと抱きしめる！ (DamageTaken)
+蠢く蔦が締め付けてきた！ (DamageTaken)
 Bramble
-野ばら
+いばら
 The brambles are hacked away.
-イバラはハッキングされています。
+いばらは刈り取られた。
 The bramble snares you! (DamageTaken)
-イバラがあなたを捕まえる! (DamageTaken)
+いばらに引っかかった! (DamageTaken)
 The red liquid bubbles and several round slimes pop out!
-赤い液体の泡と丸いスライムが数個飛び出します！
+赤い液体が泡立ち、数体のスライムになった！
 The red liquid bubbles and a round slime pops out!
-赤い液体が泡立ち、丸いスライムが飛び出す！
+赤い液体が泡立ち、丸いスライムが飛び出してきた！
 A revenant appears!
-レヴナント登場！
+悪霊が出現した！
 Fuuka uses a talisman to call forth the spirits of her pets!
-ふうかはお守りでペットの精霊を呼び寄せる！
+フウカが護符に力を込めると悪霊が寄ってきた！
 A pool of latex bubbles and a twisted elemental appears!
-ラテックスの泡のプールとねじれたエレメンタルが出現！
+ゴムの液体が泡立ち、精霊が現れた！
 The red liquid bubbles and a round slime pops out!
-赤い液体が泡立ち、丸いスライムが飛び出す！
+赤い液体が泡立ち、丸いスライムが飛び出してきた！
 Latex Elemental
-ラテックスエレメンタル
+ラテックスの精霊
 Latex Elemental
-ラテックスエレメンタル
+ラテックスの精霊
 Red Slime
 赤いスライム
 Red Slime
 赤いスライム
 The red slime bounces away.
-赤いスライムが跳ね返る
+赤いスライムは跳ね返っていった。
 The red slime bounces off you! (DamageTaken)
-赤いスライムが跳ね返る！(DamageTaken)
+赤いスライムが飛び跳ねてきた！(DamageTaken)
 The slime shoves itself into your mouth! (+RestraintAdded)
-スライムが口の中に押し込む！ (+RestraintAdded)
+赤いスライムが口の中に入ってきた！ (+RestraintAdded)
 Slime Mold
 粘菌
 The slime mold explodes into small puffs.
-粘菌が小さなパフに爆発します。
+粘菌は四散した。
 The slime mold is sticky and gross! (DamageTaken)
-粘菌がベトベトで気持ち悪い！ (DamageTaken)
+粘菌がベトベトとくっついてきた！ (DamageTaken)
 The slime mold attaches itself to your body! (+RestraintAdded)
-粘菌が体にくっつく！(+RestraintAdded)
+粘菌が身体に張り付いた！(+RestraintAdded)
 Mold Puff
-モールドパフ
+小さな粘菌
 The mold puff explodes into small puffs.
-モールドパフが小さなパフに爆発します。
+小さな粘菌は四散した。
 The mold puff is sticky and gross! (DamageTaken)
-カビパフがベタベタで気持ち悪い！(DamageTaken)
+小さな粘菌がベトベトとくっついてきた！ (DamageTaken)
 The mold puff leaps through the air!
-カビパフが宙を舞う！
+小さな粘菌が宙を舞う！
 The mold puff attaches itself to your body! (+RestraintAdded)
-モールドパフが体に密着！(+RestraintAdded)
+小さな粘菌が身体に張り付いた！(+RestraintAdded)
 Slime Mold Nest
-粘菌の巣
+粘菌の塊
 The slime mold nest erupts into a shower of black particles!
-粘菌の巣から黒い粒子のシャワーが噴き出す！
+粘菌の塊から粘菌が噴出した！
 Many small pieces of slime mold break off!
-粘菌の小さな破片がたくさん折れる！
+粘菌の塊から小さな粘菌が漏れ出てきた！
 A mobile cyst emerges from the slime mold nest!
-粘菌の巣から可動シストが出現！
+粘菌の塊から粘菌が飛び出てきた！
 Factory Doll
 ファクトリードール
 The doll is subdued.
-人形は鎮圧されています。
+人形は制圧された。
 Encased Adventurer
 閉じ込められた冒険者
 The encased adventurer loses hope.
-閉じ込められた冒険者は希望を失う
+閉じ込められた冒険者は絶望した。
 The encased adventurer moans as she throws herself against you for help! (DamageTaken)
-閉じ込められた冒険者がうめき声をあげて助けを求めて身を投げる! (DamageTaken)
+閉じ込められた冒険者がうめき声をあげて飛び込んできた！(DamageTaken)
 The encased adventurer sticks to you as she mumbles incoherently! (DamageTaken)
-閉じ込められた冒険者は、支離滅裂につぶやきながらあなたにくっつきます! (DamageTaken)
+閉じ込められた冒険者が支離滅裂につぶやきながら飛びついてきた！ (DamageTaken)
 The encased adventurer  (+RestraintAdded)
 閉じ込められた冒険者(+RestraintAdded)
 Slime
 スライム
 The slime melts into a puddle.
-スライムは水たまりに溶けます。
+スライムは溶けていった。
 The sticky slime splashes against you! (DamageTaken)
 ねばねばしたスライムが飛び散る！(DamageTaken)
 The slime attaches itself to your body! (+RestraintAdded)
-スライムが体にくっつく！(+RestraintAdded)
+スライムが体にへばりついてきた！(+RestraintAdded)
 Bouncy Slime
 弾むスライム
 The slime melts into a puddle.
-スライムは水たまりに溶けます。
+弾むスライムは溶けていった。
 The bouncy slime splashes against you! (DamageTaken)
 弾むスライムが飛び散る！(DamageTaken)
 The bouncy slime leaps to you!
-ぴょんぴょんスライムが君に飛びかかる！
+弾むスライムが飛び込んできた！
 The bouncy slime attaches itself to your body! (+RestraintAdded)
-弾むスライムが体にくっつく！(+RestraintAdded)
+弾むスライムが体に張り付いてきた！(+RestraintAdded)
 Fast Slime
-ファストスライム
+素早いスライム
 The slime melts into a puddle.
-スライムは水たまりに溶けます。
+素早いスライムはは溶けていった。
 The sticky slime leaps and splashes against you! (DamageTaken)
-ねばねばスライムがぴょんぴょん飛び跳ねる！(DamageTaken)
+素早いスライムが体当りしてきた！(DamageTaken)
 The slime leaps and attaches itself to your body! (+RestraintAdded)
-スライムが跳ねて体にくっつく！(+RestraintAdded)
+素早いスライムが飛びついてきた！(+RestraintAdded)
 Large Slime
-大きなスライム
+巨大スライム
 The large slime splits apart!
-大きなスライムがバキバキ！
+巨大スライムは四散した！
 The sticky slime splashes against you! (DamageTaken)
-ねばねばしたスライムが飛び散る！(DamageTaken)
+巨大スライムが飛び散る！(DamageTaken)
 The slime spreads to your body! (+RestraintAdded)
-スライムが体に広がる！(+RestraintAdded)
+巨大スライムが体中に張り付いてきた！(+RestraintAdded)
 The slime splits into many smaller droplets!
-スライムは多くの小さな水滴に分裂します!
+巨大スライムは分裂した！
 Skeleton
 スケルトン
 The Skeleton falls into pieces.
-スケルトンはバラバラになります。
+スケルトンはバラバラになった。
 The Skeleton restrains you! (+RestraintAdded)
-スケルトンがあなたを拘束します! (+RestraintAdded)
+スケルトンが拘束してきた！(+RestraintAdded)
 The Skeleton latches onto you!
-スケルトンがあなたに引っ掛かります！
+スケルトンが引っ張ってきた！
 Rope Tentacle
 ロープの触手
 The rope kraken retreats its tentacle.
-ロープクラーケンは触手を後退させます。
+ロープクラーケンは触手を引っ込めた。
 The rope kraken squeezes you with one of its tentacles! (DamageTaken)
-ロープ クラーケンが触手であなたを圧迫します! (DamageTaken)
+ロープ クラーケンの触手に手繰り寄せられた！ (DamageTaken)
 Rope Kraken
-ロープクラッキング
+ロープクラーケン
 The rope kraken devolves into a bundle of premium bondage rope.
-ロープ クラーケンは、プレミアム ボンデージ ロープの束に進化します。
+ロープクラーケンは、珍しいロープの束になった。
 The rope kraken tightly cinches itself around your body! (DamageTaken)
-ロープクラーケンが体にピタッと密着！ (DamageTaken)
+ロープクラーケンが身体を縄で包み込んできた！ (DamageTaken)
 Magic Rope
 魔法のロープ
 The magic rope returns to being a normal rope.
-魔法の縄が普通の縄に戻る
+魔法のロープはただの縄になった。
 The magic rope wraps itself tightly around your body! (+RestraintAdded)
-魔法のロープがあなたの体をしっかりと包み込みます! (+RestraintAdded)
+魔法のロープに縛り上げられた！ (+RestraintAdded)
 The magic rope wriggles into your outfit! (DamageTaken)
-魔法のロープがあなたの服にうごめきます！ (DamageTaken)
+魔法のロープが服の中を這い回ってきた！ (DamageTaken)
 Cloud of Feathers
 羽の雲
 The feathers fall to the floor.
-羽が床に落ちます。
+羽が床に落ちた。
 The feathers tickle you mercilessly! (DamageTaken)
-羽が容赦なくくすぐる！(DamageTaken)
+羽が容赦なくくすぐってきた！(DamageTaken)
 Cloud of Scarves
 スカーフの雲
 The scarves become knotted and fall to the floor.
-スカーフが絡まって床に落ちる
+スカーフの雲は絡まりあって床に落ちた。
 The scarves wrap themselves around you! (+RestraintAdded)
-マフラーがあなたを包み込みます! (+RestraintAdded)
+スカーフの雲に包み込まれた！ (+RestraintAdded)
 The scarves rub against your body, tickling you! (DamageTaken)
-マフラーが体をこすってくすぐる! (DamageTaken)
+スカーフの雲が自身の身体を使ってくすぐってきた！(DamageTaken)
 Cloud of Ribbons
 リボンの雲
 The ribbons knot themselves in a bow and fall to the floor.
-リボンが弓なりに結ばれ、床に落ちる。
+リボンの雲はこんがらがって床に落ちた。
 The ribbons wrap themselves around you! (+RestraintAdded)
-リボンがあなたを包み込みます! (+RestraintAdded)
+リボンの雲に包み込まれた！ (+RestraintAdded)
 The ribbons wrap themselves around you! (DamageTaken)
-リボンがあなたを包み込みます！ (DamageTaken)
+リボンの雲に包み込まれた！ (DamageTaken)
 Gravitating Gag
-重力ギャグ
+浮遊するボールギャグ
 The gag buckles itself in place and falls.
-ギャグは所定の位置に座屈して落下します。
+浮遊するボールギャグは落下して動かなくなった。
 The gravitating gag wedges itself firmly in your mouth and buckles itself! (+RestraintAdded)
-重力ギャグは口の中でしっかりとくさびをくさび、座屈します! (+RestraintAdded)
+浮遊するボールギャグが口の中に飛び込んできた！ (+RestraintAdded)
 The gravitating gag rubs itself against your gagged lips! (DamageTaken)
-重力ギャグは、あなたの猿轡かませた唇にこすりつけます! (DamageTaken)
+浮遊するボールギャグが唇をこする！(DamageTaken)
 The gag dashes to you!
-ギャグがキミに疾走！
+浮遊するボールギャグが飛び込んできた！
 Seductive Shackles
-魅惑的な束縛
+魅惑的な枷
 The shackles' chain breaks as they fall to the floor.
-足枷の鎖が床に落ちると切れる。
+魅惑的な枷はちぎれて床に落ちた。
 The shackles force themselves around your limbs and click tightly! (+RestraintAdded)
-足枷があなたの手足に押し付けられ、しっかりとカチッと音がします! (+RestraintAdded)
+魅惑的な枷が四肢に取り付いてきた！ (+RestraintAdded)
 The shackles click seductively in your face... (DamageTaken)
-手枷があなたの顔を魅惑的にカチッと鳴らします... (DamageTaken)
+魅惑的な枷はロックを鳴らして魅了してきた…… (DamageTaken)
 The shackles dash to you!
-足枷があなたにダッシュします！
+魅惑的な枷が飛び込んできた！
 Lurid Legbinder
-ルリッド・レッグバインダー
+恐怖のレッグバインダー
 The legbinder unravels.
-レグバインダーが解けます。
+恐怖のレッグバインダーは解けた。
 The legbinder zips itself around your legs and squeezes them together! (+RestraintAdded)
-レグバインダーはあなたの足の周りにファスナーを締め、それらを一緒に締めます! (+RestraintAdded)
+恐怖のレッグバインダーが両足を包み、ファスナーを閉められてしまった。(+RestraintAdded)
 The legbinder wraps around and squeezes your body! (DamageTaken)
-レグバインダーが巻き付いて体を締め付ける！（ダメージ受け）
+恐怖のレッグバインダーは巻き付いて体を締め上げてきた！（DamageTaken）
 Bratty Blindfold
-ぶらぶらした目隠し
+生意気な目隠し
 The blindfold floats to the floor.
-目隠しが床に浮きます。
+生意気な目隠しは床に落ちた。
 The blindfold buckles itself tightly around your head! (+RestraintAdded)
-目隠しはあなたの頭の周りにしっかりと座ります! (+RestraintAdded)
+生意気な目隠しが張り付いてきた！ (+RestraintAdded)
 The blindfold crawls over your helpless face! (DamageTaken)
-無力な顔に目隠しが這う！ (DamageTaken)
+生意気な目隠しが顔の上を這う！ (DamageTaken)
 The blindfold dashes to you!
-目隠しがあなたにダッシュ！
+生意気な目隠しが飛び込んできた！
 Amorous Armbinder
-好色な腕章
+好色なアームバインダー
 The armbinder flops to the floor.
-アームバインダーは床に倒れます。
+好色なアームバインダーは床に落ちた。。
 The armbinder slips itself around your arms and pushes your elbows together! (+RestraintAdded)
-アームバインダーが腕に巻き付いて、肘を一緒に押します! (+RestraintAdded)
+好色なアームバインダーは腕を包み込んできた！(+RestraintAdded)
 The armbinder rubs itself all over your body! (DamageTaken)
-アームバインダーが全身をこすります! (DamageTaken)
+好色なアームバインダーに全身をくまなく撫でられた！(DamageTaken)
 Stringent Straitjacket
 厳格な拘束衣
 The straitjacket falls apart.
-拘束衣が崩れる
+厳格な拘束衣はばらばらになった。
 The straitjacket slips itself on over your head and pulls your arms close to your body! (+RestraintAdded)
-拘束衣はあなたの頭の上に滑り込み、あなたの腕をあなたの体に近づけます! (+RestraintAdded)
+厳格な拘束衣を着てしまった！(+RestraintAdded)
 The straitjacket squeezes you tightly! (DamageTaken)
-拘束衣がギュッと締め付ける！(DamageTaken)
+厳格な拘束衣が締め付けてきた！(DamageTaken)
 Brusque Belt
-ブルスクベルト
+無愛想な貞操帯
 The chastity belt falls to the floor with a clang.
-貞操帯がカチャカチャと床に落ちる
+無愛想な貞操帯はカチャカチャと床に落ちた。
 The chastity belt secures itself around your waist! (+RestraintAdded)
-貞操帯で腰を固定！(+RestraintAdded)
+無愛想な貞操帯が腰に張り付いた！(+RestraintAdded)
 The chastity belt buzzes against your body alluringly! (DamageTaken)
-貞操帯が妖艶に体に鳴り響く!(DamageTaken)
+無愛想な貞操帯が妖艶に体を鳴らした！(DamageTaken)
 Yammering Yoke
-ヤマリングヨーク
+やかましいヨーク
 The yoke falls to the floor with a loud clang.
-カチャカチャと大きな音を立てて、くびきが床に落ちる。
+やかましいヨークは大きな音を立てて地面に落ちた。
 The yoke clasps your arms tightly and forces them to the sides! (+RestraintAdded)
-くびきがあなたの腕をぎゅっと握りしめ、横に押し出します! (+RestraintAdded)
+やかましいヨークに無理やり固定されてしまった！(+RestraintAdded)
 The yoke makes alluring clicking noises! (DamageTaken)
-くびきがカチカチという魅惑的な音を立てる! (DamageTaken)
+やかましいヨークが魅力的に体を鳴らした！(DamageTaken)
 Haughty Harness
 傲慢なハーネス
 The harness unravels.
-ハーネスが解ける。
+傲慢なハーネスは解けた。
 The harness buckles itself tightly around your body! (+RestraintAdded)
-ハーネスはあなたの体にしっかりと固定されます! (+RestraintAdded)
+傲慢なハーネスはしっかりとまとわりついてきた。(+RestraintAdded)
 The harness dashes to you!
-ハーネスがあなたにダッシュします！
+傲慢なハーネスが飛び込んできた！
 The harness wraps itself around your body and squeezes! (DamageTaken)
-ハーネスが体に巻き付いてギュッと締まります！ (DamageTaken)
+傲慢なハーネスに締め付けられた！ (DamageTaken)
 Levitating Locks
-浮揚ロック
+浮遊する錠前達
 The locks and chains fall to the floor in a loud crash.
-大きな音を立てて錠前と鎖が床に落ちた。
+浮遊する錠前達は大きな音を立てて墜落した。
 A lock clicks itself onto one of your restraints! (+RestraintAdded)
-ロックが拘束の 1 つにカチッと音を立てます! (+RestraintAdded)
+浮遊する錠前達の一つが拘束具と化して飛び込んできた！(+RestraintAdded)
 A chain locks itself in place on your body! (DamageTaken)
-チェーンがあなたの体の所定の位置にロックされます! (DamageTaken)
+浮遊する錠前達が拘束具に絡まり鍵となった！ (DamageTaken)
 The lock dashes to you!
-ロックがあなたにダッシュします！
+浮遊する錠前達が飛び込んできた！
 The floating locks and chains rub themselves across your body! (DamageTaken)
-浮いている錠前と鎖が体をこすります! (DamageTaken)
+浮遊する錠前達は身体を擦り合わせてきた！(DamageTaken)
 Conjured Gag
-召喚ギャグ
+召喚されたボールギャグ
 The conjured gag buckles itself in place and falls.
-召喚されたギャグは所定の位置に座屈して落下します。
+召喚されたボールギャグは落下した。
 The gag wedges itself firmly in your mouth and buckles itself! (+RestraintAdded)
-ギャグはあなたの口の中でしっかりとくさびで締められます! (+RestraintAdded)
+召喚されたボールギャグは口の中に飛び込んできた！(+RestraintAdded)
 The gag rubs itself against you! (DamageTaken)
-猿轡がこすれる! (DamageTaken)
+召喚されたボールギャグが唇をこする！ (DamageTaken)
 Learned Rope
-学んだロープ
+賢いロープ
 The learned rope untangles into a mess of rope.
-習得したロープは絡み合ったロープにほどけます。
+賢いロープは解けた。
 The magic rope wraps itself intricately around your body! (+RestraintAdded)
-魔法のロープがあなたの体を複雑に包み込みます! (+RestraintAdded)
+賢いロープが複雑に縛り上げてきた！(+RestraintAdded)
 The rope dashes to you!
-ロープがあなたにダッシュします！
+賢いロープは飛び込んできた！
 The magic rope wriggles into your outfit! (DamageTaken)
-魔法のロープがあなたの服にうごめきます！ (DamageTaken)
+賢いロープが服の中でうごめいた！ (DamageTaken)
 Unforseen Rope
-予期せぬロープ
+不可視のロープ
 The unforseen rope is gone... or is it?
-予期せぬロープがなくなった……それとも？
+不可視のロープを倒した。多分。
 The unforseen rope wraps itself clandestinely around your body! (+RestraintAdded)
-予期せぬロープがあなたの体に密かに巻き付いています! (+RestraintAdded)
+不可視のロープがいつの間にか張り付いていた！ (+RestraintAdded)
 The unforseen rope wriggles into your outfit! (DamageTaken)
-予期せぬロープがあなたの服にうごめきます! (DamageTaken)
+不可視のロープが服の中でうごめいた！ (DamageTaken)
 Monster Rope
 モンスターロープ
 The monster rope bundle collapses into a pile of ropes.
-モンスターロープの束が崩れてロープの山になる。
+モンスターロープはただの縄の束になった。
 The magic rope wraps itself overwhelmingly around your body! (+RestraintAdded)
-魔法のロープが圧倒的に体を包み込む！(+RestraintAdded)
+モンスターロープに圧倒的な物量で包み込まれた！(+RestraintAdded)
 The magic rope wriggles into your outfit! (DamageTaken)
-魔法のロープがあなたの服にうごめきます！ (DamageTaken)
+モンスターロープが服の中でうごめいた！ (DamageTaken)
 Shock Witch
-ショックウィッチ
+電気の魔女
 The shock witch vanishes into a cloud of thunder, leaving behind a keyring.
-ショックウィッチはキーリングを残して雷雲となって消えた.
+電気の魔女は鍵の束を残して雷雲に消えた。
 The witch restraints you! (+RestraintAdded)
-魔女が拘束する！(+RestraintAdded)
+電気の魔女に拘束された！(+RestraintAdded)
 The witch dangles a lock in front of you before putting it on! (DamageTaken)
-魔女はロックをかける前にあなたの前にロックをぶら下げます! (DamageTaken)
+電気の魔女はロックを見せつけた後、拘束具をロックしてきた！(DamageTaken)
 The witch slaps you playfully! (DamageTaken)
-魔女がふざけて平手打ち！ (DamageTaken)
+電気の魔女が平手打ちしてきた！ (DamageTaken)
 Flame Witch
 炎の魔女
 The flame witch vanishes into a pile of ash.
-炎の魔女は灰の山に消えます。
+炎の魔女は灰の山に消えた。
 The witch restraints you! (+RestraintAdded)
-魔女が拘束する！(+RestraintAdded)
+炎の魔女に拘束された！(+RestraintAdded)
 The witch dangles a lock in front of you before putting it on! (DamageTaken)
-魔女はロックをかける前にあなたの前にロックをぶら下げます! (DamageTaken)
+炎の魔女はロックを見せつけた後、拘束具をロックしてきた！ (DamageTaken)
 The witch slaps you playfully! (DamageTaken)
-魔女がふざけて平手打ち！ (DamageTaken)
+炎の魔女が平手打ちしてきた！ (DamageTaken)
 Earth Witch
-アースウィッチ
+土の魔女
 The earth witch vanishes into a pile of ash.
-土の魔女は灰の山に消える
+土の魔女は灰の山に消えた。
 The witch restraints you! (+RestraintAdded)
-魔女が拘束する！(+RestraintAdded)
+土の魔女に拘束された！(+RestraintAdded)
 The witch dangles a lock in front of you before putting it on! (DamageTaken)
-魔女はロックをかける前にあなたの前にロックをぶら下げます! (DamageTaken)
+土の魔女はロックを見せつけた後、拘束具をロックしてきた！(DamageTaken)
 The witch slaps you playfully! (DamageTaken)
-魔女がふざけて平手打ち！ (DamageTaken)
+土の魔女が平手打ちしてきた！ (DamageTaken)
 Water Witch
 水の魔女
 The water witch vanishes into a pile of ash.
-水の魔女は灰の山に消えます。
+水の魔女は灰の山に消えた。
 The witch restraints you! (+RestraintAdded)
-魔女が拘束する！(+RestraintAdded)
+水の魔女に拘束された！(+RestraintAdded)
 The witch dangles a lock in front of you before putting it on! (DamageTaken)
-魔女はロックをかける前にあなたの前にロックをぶら下げます! (DamageTaken)
+水の魔女はロックを見せつけた後、拘束具をロックしてきた！(DamageTaken)
 The witch slaps you playfully! (DamageTaken)
-魔女がふざけて平手打ち！ (DamageTaken)
+水の魔女が平手打ちしてきた！ (DamageTaken)
 Ice Witch
 氷の魔女
 The ice witch vanishes into a pile of ash.
-氷の魔女は灰の山に消えます。
+氷の魔女は灰の山に消えた。
 The witch restraints you! (+RestraintAdded)
-魔女が拘束する！(+RestraintAdded)
+氷の魔女に拘束された！(+RestraintAdded)
 The witch dangles a lock in front of you before putting it on! (DamageTaken)
-魔女はロックをかける前にあなたの前にロックをぶら下げます! (DamageTaken)
+氷の魔女はロックを見せつけた後、拘束具をロックしてきた！ (DamageTaken)
 The witch slaps you playfully! (DamageTaken)
-魔女がふざけて平手打ち！ (DamageTaken)
+氷の魔女が平手打ちしてきた！ (DamageTaken)
 Magic Stone
 魔石
 Ice Bolt
@@ -3611,477 +3611,477 @@ Waterblast
 Rope Witch
 縄の魔女
 The rope witch retreats as her animated ropes chase her.
-縄の魔女は、アニメーションの縄が彼女を追いかけると後退します。
+縄の魔女は、自身の縄に追いかけられていった。
 The witch restraints you! (+RestraintAdded)
-魔女が拘束する！(+RestraintAdded)
+縄の魔女に拘束された！(+RestraintAdded)
 The witch dangles a lock in front of you before putting it on! (DamageTaken)
-魔女はロックをかける前にあなたの前にロックをぶら下げます! (DamageTaken)
+縄の魔女ははロックを見せつけた後、拘束具をロックしてきた！  (DamageTaken)
 The witch slaps you playfully! (DamageTaken)
-魔女がふざけて平手打ち！ (DamageTaken)
+縄の魔女が平手打ちしてきた！(DamageTaken)
 Magnet Witch
-マグネットウィッチ
+磁力の魔女
 The witch is pulled away by an unseen force.
-魔女は目に見えない力で引き離される
+磁力の魔女は斥力で吹き飛ばされた。
 The witch's restraints fly out and attach themselves to you! (+RestraintAdded)
-魔女の拘束具が飛び出して君にくっつく! (+RestraintAdded)
+磁力の魔女が拘束具を射出した！ (+RestraintAdded)
 The witch dangles a lock in front of you before putting it on! (DamageTaken)
-魔女はロックをかける前にあなたの前にロックをぶら下げます! (DamageTaken)
+磁力の魔女はロックを見せつけた後、拘束具をロックしてきた！ (DamageTaken)
 The witch's lightning causes your body to tingle! (DamageTaken)
-魔女の稲妻で体がヒリヒリ！（ダメージテイクン）
+磁力の魔女は電気の力で攻撃してきた！（DamageTaken）
 Witch's Apprentice
-魔女見習い
+見習い魔女
 The apprentice runs off and cries in a corner.
-見習いは走り去り、隅で泣きます。
+見習い魔女は走り去り、隅で泣き出した。
 The apprentice animates restraints to wrap around you! (+RestraintAdded)
-見習いはあなたを包み込むように拘束をアニメーション化します! (+RestraintAdded)
+見習い魔女はたどたどしい手つきで拘束してきた！(+RestraintAdded)
 The apprentice nervously takes out a lock and makes you wear it! (DamageTaken)
-見習いがドキドキしながら錠前を出して着させます！(DamageTaken)
+見習い魔女が初々しく拘束具をロックしてきた！(DamageTaken)
 The apprentice slaps you playfully! (DamageTaken)
-見習いがふざけて平手打ち！(DamageTaken)
+見習い魔女が平手打ちしてきた！(DamageTaken)
 Summoner's Apprentice
-召喚士の見習い
+見習い召喚士
 The apprentice runs off and cries in a corner.
-見習いは走り去り、隅で泣きます。
+見習い召喚士は走り去り、隅で泣き出した。
 The apprentice summons a restraint onto you! (+RestraintAdded)
-見習いがあなたに拘束を召喚します! (+RestraintAdded)
+見習い召喚士が拘束具を召喚してきた！(+RestraintAdded)
 The apprentice nervously takes out a lock and makes you wear it! (DamageTaken)
-見習いがドキドキしながら錠前を出して着させます！(DamageTaken)
+見習い召喚士が初々しく拘束具をロックしてきた！(DamageTaken)
 The apprentice tickles you playfully! (DamageTaken)
-見習いがふざけてあなたをくすぐります! (DamageTaken)
+見習い召喚士がくすぐってきた！ (DamageTaken)
 Latex Apprentice
-ラテックス見習い
+見習いラテックスの魔女
 The apprentice runs off and cries in a corner.
-見習いは走り去り、隅で泣きます。
+見習いラテックスの魔女は走り去り、隅で泣き出した。
 The apprentice attaches a sticky restraint! (+RestraintAdded)
-見習いが粘着拘束を付ける！(+RestraintAdded)
+見習いラテックスの魔女は粘着拘束の魔法を唱えた！(+RestraintAdded)
 The apprentice nervously takes out a lock and makes you wear it! (DamageTaken)
-見習いがドキドキしながら錠前を出して着させます！(DamageTaken)
+見習いラテックスの魔女はドキドキした様子で拘束具をロックしてきた！(DamageTaken)
 The apprentice caresses you playfully! (DamageTaken)
-見習いがふざけて愛撫してくれます！(DamageTaken)
+見習いラテックスの魔女が愛撫してきた！(DamageTaken)
 Chain Witch
 鎖の魔女
 The chain witch vanishes into a pile of metal dust, leaving behind a keyring.
-鎖の魔女は金属の粉の山となって消え、キーホルダーを残します。
+鎖の魔女は鍵の束を残して金属の粉の山に消えた。
 The chain witch locks all of your restraints!
-鎖の魔女がお前の拘束を全て解禁する！
+鎖の魔女にすべての拘束具をロックされた！
 The witch's bindings wrap themselves around you! (+RestraintAdded)
-魔女の束縛があなたを包み込みます! (+RestraintAdded)
+鎖の魔女の召喚した鎖に包み込まれた！ (+RestraintAdded)
 The chain witch tugs sensually at your restraints! (DamageTaken)
-鎖の魔女はあなたの拘束を官能的に引っ張る! (DamageTaken)
+鎖の魔女は官能的に拘束具を引っ張ってきた！(DamageTaken)
 Metal Witch
-メタルウィッチ
+金属の魔女
 The metal witch vanishes into a pile of metal dust, leaving behind a keyring.
-金属の魔女は、キーリングを残して、金属粉の山へと消えていきます。
+金属の魔女は鍵の束を残して金属の粉の山に消えた。
 The metal witch locks all of your restraints!
-金属の魔女が全ての拘束具をロックする！
+金属の魔女にすべての拘束具をロックされた！
 The metal's bindings wrap themselves around you! (+RestraintAdded)
-金属のバインディングがあなたを包み込みます! (+RestraintAdded)
+金属の魔女の召喚した鎖に包み込まれた！ (+RestraintAdded)
 The metal witch tugs sensually at your restraints! (DamageTaken)
-金属の魔女があなたの拘束具を官能的に引っ張ります! (DamageTaken)
+金属の魔女は官能的に拘束具を引っ張ってきた！ (DamageTaken)
 Slime Witch
-スライムウィッチ
+スライムの魔女
 The slime witch vanishes into a pool of pink slime, leaving behind a keyring.
-スライムウィッチはピンクのスライムのプールに消え、キーリングを残します.
+スライムの魔女は鍵の束を残してスライム溜まりに消えた。
 The witch touches her with her sticky grasp! (+RestraintAdded)
-魔女がねっとり握手で彼女に触れる! (+RestraintAdded)
+スライムの魔女がねっとりとした手で拘束してきた！ (+RestraintAdded)
 The witch creates a magical lock made of hardened latex! (DamageTaken)
-魔女は硬化したラテックスで作られた魔法のロックを作成します! (DamageTaken)
+スライムの魔女は硬化したラテックスで魔法のロックを施してきた！ (DamageTaken)
 The witch squeezes your body playfully! (DamageTaken)
-魔女がふざけてあなたの体をしぼります！ (DamageTaken)
+スライムの魔女が抱擁してきた！ (DamageTaken)
 'High' Wizard
 ハイウィザード
 The wizard falls asleep.
-魔法使いは眠りにつく。
+ハイウィザードは眠りについた。
 The wizard clips a restraint around your neck! (+RestraintAdded)
-魔法使いがあなたの首に拘束具をクリップします! (+RestraintAdded)
+ハイウィザードが首を拘束してきた！ (+RestraintAdded)
 The wizard clips a lock to your restraints! (DamageTaken)
-魔法使いがあなたの拘束具にロックをかけます! (DamageTaken)
+ハイウィザードが拘束具をロックしてきた！ (DamageTaken)
 The wizard laughs maniacally as she tickles you! (DamageTaken)
-魔法使いはあなたをくすぐると狂ったように笑います! (DamageTaken)
+ハイウィザードは狂ったように笑いながらくすぐってきた！(DamageTaken)
 FunGal
-ファンガル
+ファンガール
 The fun-gal retreats into the ground.
-ファンガルは地面に退却します。
+ファンガールは地中に逃げた。
 The fun-gal clips a restraint around your neck! (+RestraintAdded)
-ファンガールがあなたの首に拘束具をクリップします! (+RestraintAdded)
+ファンガールが首を拘束してきた！  (+RestraintAdded)
 The fun-gal produces a magical lock on all your restraints! (DamageTaken)
-ファンガールは、すべての拘束具に魔法のロックを生成します! (DamageTaken)
+ファンガールはすべての拘束具に魔法のロックを生成してきた！(DamageTaken)
 The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)
-ファンガールが細く長い指で胸を撫でる！ (DamageTaken)
+ファンガールが細い指で胸を優しく揉んできた！ (DamageTaken)
 Crystal Glyph
 クリスタルグリフ
 Tailor
-テーラー
+仕立て屋
 You murder the tailor!
-あなたは仕立て屋を殺します ！
+仕立て屋を仕立ててしまった！
 Student
-学生
+見習い魔女
 You murder the student!
-学生を殺せ！
+見習い魔女を落第にしてしまった！
 Tactician
-戦術家
+策士
 You murder the tactician!
-あなたは戦術家を殺します！
+策士を倒してしまった！
 Informant
-情報提供者
+情報屋
 You murder the informant!
-情報提供者を殺せ！
+情報屋を倒してしまった！
 Thug
-凶悪犯
+ごろつき
 You murder the thug!
-あなたは凶悪犯を殺します ！
+ごろつきを刑務所送りにしてしまった！
 Blacksmith
 鍛冶屋
 You murder the blacksmith!
-鍛冶屋を殺せ！
+鍛冶屋を鍛え直してしまった！
 Dressmaker
-ドレスメーカー
+仕立て屋
 The dressmaker storms out in a rage.
-仕立て屋は怒り狂って暴れまわる。
+仕立て屋は怒り狂って暴れまわった。
 The dressmaker has you try on one of her new accessories! (+RestraintAdded)
-洋裁師が彼女の新しいアクセサリーを試着させます! (+RestraintAdded)
+仕立て屋が服を試着させてくれた！(+RestraintAdded)
 The dressmaker adds a lock 'just to complete the look, you know?'
-仕立て屋は、見た目を完成させるためだけにロックを追加しますよね?
+仕立て屋が拘束具をロックしてきた！「鍵をかければもっと見栄えが良くなるわ」
 The dressmaker cuddles your helpless body~ (DamageTaken)
-無力な君の体を仕立て屋さんが抱きしめて～(DamageTaken)
+仕立て屋が抱きしめてきた！(DamageTaken)
 Nurse
-看護婦
+ナース
 The Nurse checks her notes and runs off.
-ナースはノートをチェックして逃げる
+ナースはノートをチェックして去っていった。
 The Nurse tries to pacify this rowdy patient! (+RestraintAdded)
-ナースは乱暴な患者をなだめようとします! (+RestraintAdded)
+ナースはなだめながら拘束してきた！ (+RestraintAdded)
 The Nurse adds a lock to keep you from hurting the staff.
-看護師は、スタッフを傷つけないようにロックを追加します。
+ナースは患者が傷つかないようにと拘束具をロックしてきた！
 The Nurse assures you it's going to be alright~ (DamageTaken)
-ナースが大丈夫って言ってるからね～（DamageTaken）
+ナースになだめられた。（DamageTaken）
 Librarian
-司書
+図書館司書
 The librarian gets angry and retreats.
-司書は怒って退く
+司書図書館司書は怒って退く
 The librarian shushes you as she brandishes a restraint! (+RestraintAdded)
-司書が拘束具を振り回しながら君を黙らせる! (+RestraintAdded)
+図書館司書が拘束具を振り回してきた！ (+RestraintAdded)
 The librarian snaps her fingers and sends a lock flying at you!
-司書が指をパチンと鳴らし、あなたに向かって鍵を飛ばします！
+図書館司書が指をパチンと鳴らし、錠を飛ばしてきた！
 The librarian whispers seductively into your ear! (DamageTaken)
-司書があなたの耳元で魅惑的に囁く! (DamageTaken)
+図書館司書が耳元で魅惑的に囁いてきた! (DamageTaken)
 Stone Door
 石の扉
 The stone door crumbles!
-石の扉が崩れる！
+石の扉は崩れ去った！
 Stone Door
 石の扉
 The stone door crumples inward!
-石の扉が内側にくしゃくしゃ！
+石の扉が開いた！
 Giant Mushroom
 巨大キノコ
 The giant mushroom explodes into a cloud of spores!!!
-巨大キノコが爆発して胞子の雲になる!!!
+巨大キノコは爆発して胞子を撒き散らした！
 Animated Mushroom
-アニメのキノコ
+歩くキノコ
 The animated mushroom explodes into a cloud of spores!!!
-アニメーションのキノコが爆発して胞子の雲になります!!!
+歩くキノコは爆発して胞子を撒き散らした！
 The animated mushroom spits spores into your face and ties you while you are distracted! (+RestraintAdded)
-アニメーション化されたキノコが胞子を顔に吐き出し、気を散らしている間にあなたを縛ります! (+RestraintAdded)
+歩くキノコは胞子を顔に吐きかけ、怯んだ隙に縛り上げてきた！ (+RestraintAdded)
 The animated mushroom spits spores into your face and tries to tie you!
-アニメ化されたキノコが胞子をあなたの顔に吐き出し、あなたを縛ろうとします!
+歩くキノコが胞子をあなたの顔に吐き出し、縛ろうとしてきた！
 The animated mushroom emits soporific spores! (DamageTaken)
-アニメーション化されたキノコが催涙性の胞子を放出します! (DamageTaken)
+歩くキノコが催涙性の胞子を撒き散らしてきた！ (DamageTaken)
 Happy Mushroom
-ハッピーマッシュルーム
+幸せのキノコ
 The happy mushroom explodes into a cloud of spores!!!
-幸せのキノコは爆発して胞子の雲になります!!!
+幸せのキノコは爆発して胞子を撒き散らした！
 The happy mushroom tickles you silly!
-幸せのきのこがあなたをくすぐる！
+幸せのキノコがくすぐってきた！
 The happy mushroom tickles you silly! (DamageTaken)
-幸せのキノコがあなたをくすぐる! (DamageTaken)
+幸せのキノコがくすぐってきた！(DamageTaken)
 Infected Mushroom
 感染したキノコ
 The infected mushroom explodes into a cloud of spores!!!
-感染したキノコは爆発して胞子の雲になります!!!
+感染したキノコは爆発して胞子を撒き散らした！
 The infected mushroom gives you a crushing hug!
-感染したキノコはあなたを抱きしめます！
+感染したキノコは抱きしめてきた！
 The infected mushroom gives you a crushing hug! (DamageTaken)
-感染したキノコがあなたを抱きしめます！ (DamageTaken)
+感染したキノコが抱きしめてきた！ (DamageTaken)
 Jailer
 看守
 The jailer passes out and drops her possessions!
-獄吏が失神し、持ち物を落とした！
+看守は失神して持ち物を落とした！
 The jailer locks your restraints!
-看守があなたの拘束具をロックします！
+看守が拘束具をロックしてきた！
 The jailer places some restraints on you! (+RestraintAdded)
-看守はあなたにいくつかの拘束を課します! (+RestraintAdded)
+看守に拘束を課された！ (+RestraintAdded)
 The jailer plays with you, groping and rubbing your body!
-看守があなたの体を弄ったり揉んだりして遊んでいます！
+看守に身体を好き放題弄ばれた！
 The guard checks your restraints to make sure they are secure.
-警備員が拘束具をチェックして、安全であることを確認します。
+看守は拘束具が緩んでいないかチェックしてきた。
 Guard
-ガード
+警備員
 The guard passes out and drops her possessions!
-衛兵が気絶し、持ち物を落とした！
+警備員は失神して持ち物を落とした！
 The guard locks your restraints!
-警備員があなたの拘束具をロックします！
+警備員が拘束具をロックしてきた！
 The jailer places some restraints on you! (+RestraintAdded)
-看守はあなたにいくつかの拘束を課します! (+RestraintAdded)
+警備員に拘束を課された！ (+RestraintAdded)
 The guard places a NewRestraintName on you
-警備員があなたに NewRestraintName を配置します
+警備員に NewRestraintName を取り付けられた！
 The guard plays with you, groping and rubbing your body!
-警備員があなたの体を弄ったり揉んだりして遊んでいます！
+警備員に身体を好き放題弄ばれた！
 Armed Guard
-アームガード
+武装警備員
 The armed guard retreats, but drops a keyring!
-武装警備隊は退却しますが、キーリングを落とします!
+武装警備員は鍵の束を落としながら退却した！
 The guard locks your restraints!
-警備員があなたの拘束具をロックします！
+武装警備員が拘束具をロックしてきた！
 The guard shocks you and slaps on some restraints! (+RestraintAdded)
-警備員はあなたに衝撃を与え、いくつかの拘束を平手打ちします! (+RestraintAdded)
+武装警備員はスタンガンを撃ち込み、怯んだ隙に拘束具を追加してきた！ (+RestraintAdded)
 The guard electrocutes you with her taser!!!
-警備員がテーザー銃で感電死させた!!!
+武装警備員はテーザー銃を発射してきた！
 The guard electrocutes you with her taser!!!
-警備員がテーザー銃で感電死させた!!!
+武装警備員はテーザー銃を発射してきた！
 The EnemyName replaces your OldRestraintName with a NewRestraintName
-EnemyName は、OldRestraintName を NewRestraintName に置き換えます
+EnemyName は、OldRestraintName を NewRestraintName に置き換ようとしている。
 The EnemyName removes your OldRestraintName
-EnemyName はあなたの OldRestraintName を削除します
+EnemyName は OldRestraintName を取り外した。
 The EnemyName restrains you with a NewRestraintName
-EnemyName は NewRestraintName であなたを拘束します
+EnemyName は NewRestraintName を取り付けてきた。
 Master Conjurer
-マスター・コンジャラー
+達人召喚士
 The conjurer retreats into a portal!
-召喚師はポータルに退却します！
+達人召喚士はポータルに逃げ込んだ！
 The master conjurer waves a hand, and locks appear on all your restraints!
-マスター・コンジャラーが手を振ると、すべての拘束具にロックが表示されます!
+達人召喚士が手を振ると、すべての拘束具がロックされた！
 The master conjurer summons a restraint directly onto you!
-マスター・コンジュラーがあなたに直接拘束を召喚します！
+達人召喚士が直接拘束具を追加してきた！
 The master conjurer tickles you playfully!
-マスター・コンジュラーはふざけてあなたをくすぐります！
+達人召喚士がくすぐってきた！
 Master Conjurer
-マスター・コンジャラー
+達人召喚士
 The conjurer retreats into a portal!
-召喚師はポータルに退却します！
+達人召喚士はポータルに逃げ込んだ！
 The master conjurer waves a hand, and locks appear on all your restraints!
-マスター・コンジャラーが手を振ると、すべての拘束具にロックが表示されます!
+達人召喚士が手を振ると、すべての拘束具がロックされた！
 The master conjurer summons a restraint directly onto you!
-マスター・コンジュラーがあなたに直接拘束を召喚します！
+達人召喚士が直接拘束具を追加してきた！
 The master conjurer tickles you playfully!
-マスター・コンジュラーはふざけてあなたをくすぐります！
+達人召喚士がくすぐってきた！
 Frog
-蛙
+カエル
 The frog jumps away!
-カエルが飛び立つ！
+カエルは飛び跳ねていった！
 The frog pulls you with its tongue!!!
-カエルが舌で引っ張る！！！
+カエルに舌で引っ張られた！
 The frog licks you!
-カエルがなめます！
+カエルに舐められた！
 Toad
 ヒキガエル
 The toad jumps away!
-ヒキガエルが飛び立つ！
+ヒキガエルは飛び跳ねていった！
 The toad pulls you with its tongue!!!
-ヒキガエルが舌で引っ張る！！！
+ヒキガエルに舌で引っ張られた！
 The toad licks you!
-ヒキガエルがあなたをなめます！
+ヒキガエルに舐められた！
 Shadow Hand
 シャドーハンド
 The shadow hand retreats into the darkness...
-影の手は闇に退く……
+シャドーハンドは闇に消えていった……
 The shadow hand latches onto you!! (+RestraintAdded)
-シャドーハンドがキミに引っかかる!! (+RestraintAdded)
+シャドーハンドがまとわりついてきた！ (+RestraintAdded)
 The shadow hand stretches its fingers across your body! (DamageTaken)
-影の手があなたの体に指を伸ばします！ (DamageTaken)
+シャドーハンドが指で身体をなぞってきた！ (DamageTaken)
 A dark hand stretches out beyond the shadows...
-影の向こうに伸びる黒い手…
+影の向こうに手が伸びていく……
 Several dark hands emerge from the shadows!
-影から複数のダークハンドが出現！
+複数のシャドーハンドが影から現れた！
 Corrupted Adventurer
 堕落した冒険者
 The corrupted adventurer falls into a deep sleep.
-堕落した冒険者は深い眠りにつく
+堕落した冒険者は深い眠りについた。
 The corrupted aventurer's many arms latch onto you! (+RestraintAdded)
-堕落した冒険者の多くの腕があなたに引っかかります! (+RestraintAdded)
+堕落した冒険者は大量の腕をまとわりつかせてきた！(+RestraintAdded)
 The corrupted adventurer drags her chilling fingers across your vulnerable skin! (DamageTaken)
-堕落した冒険者は、あなたの無防備な肌を凍える指で引きずります! (DamageTaken)
+堕落した冒険者は冷たい指先を身体に這わせてきた！ (DamageTaken)
 Shadowy Ghast
 シャドーガスト
 The shadowy ghast screeches and disappears...
-影のガストが金切り声を上げて消えていく…
+シャドーガストは金切り声を上げて消えていった……
 The shadowy ghast latches onto you with its long arms! (+RestraintAdded)
-影のガストは長い腕であなたに引っ掛かります! (+RestraintAdded)
+シャドーガストは長い腕をまとわりつかせてきた！(+RestraintAdded)
 The shadowy ghast grips you in its chilling embrace! (DamageTaken)
-影のようなガストがあなたをその身も凍るような抱擁で掴みます! (DamageTaken)
+シャドーガストに身も凍るような抱擁をされた！ (DamageTaken)
 Obsidian Construct
-黒曜石の構築物
+黒曜石の造物
 The obsidian construct stops moving, its spirit departed.
-黒曜石の構築物は動きを止め、その精神は去った。
+黒曜石の造物に取り憑いた精神はどこかへ去っていった。
 The obsidian construct reaches out and touches you, forming metallic restraints! (+RestraintAdded)
-黒曜石の構築物が手を伸ばしてあなたに触れ、金属の拘束を形成します! (+RestraintAdded)
+黒曜石の造物に触れられたところに黒曜石の拘束具が現れた！ (+RestraintAdded)
 The obsidian construct uses its chains to lock your restraints! (DamageTaken)
-黒曜石の構築物は鎖を使ってあなたの拘束具をロックします! (DamageTaken)
+黒曜石の造物は鎖で拘束具をロックしてきた！ (DamageTaken)
 The obsidian construct grips you and drains your willpower! (DamageTaken)
-黒曜石の構築物があなたを捕らえ、あなたの意志の力を奪います! (DamageTaken)
+黒曜石の造物に気力を奪われる！ (DamageTaken)
 Star Demon
-スターデーモン
+星の悪魔
 The star demon is exorcised.
-星魔は退散しました
+星の悪魔を祓った！
 The star demon places you in shining, starry restraints. (+RestraintAdded)
-星の悪魔はあなたを輝く星の拘束にします。(+RestraintAdded)
+星の悪魔は輝く星々の拘束具を召喚した！(+RestraintAdded)
 The demon giggles as it locks your restraints! (DamageTaken)
-悪魔がくすくす笑いながらあなたの拘束具をロックします! (DamageTaken)
+星の悪魔はくすくす笑いながら拘束具をロックしてきた！(DamageTaken)
 The star demon places you under its curse! (DamageTaken)
-星の悪魔はあなたをその呪いの下に置きます! (DamageTaken)
+星の悪魔は呪いをかけてきた！ (DamageTaken)
 The strings of fate glisten and wrap around you!
-運命の糸がキラリと君を包み込む！
+運命の糸に絡め取られた！
 Many shining strings surround you!
-光る糸がたくさんあなたを取り囲みます！
+光る糸が周囲を取り囲む！
 Stepping outside of the indicated tiles will result in punishment!
-指定されたタイルの外に出ると罰が与えられます!
+指定されたマスの外に出るとペナルティを受ける！
 Bindings of Fate
 運命の縛り
 Moon Demon
 月の悪魔
 The moon demon is exorcised.
-月の魔物は祓いました。
+月の悪魔を祓った！
 The moon demon places you in shining, starry restraints. (+RestraintAdded)
-月の悪魔はあなたを輝く星のような束縛にします. (+RestraintAdded)
+月の悪魔は月の拘束具を召喚した！ (+RestraintAdded)
 The moon demon places you under its curse! (DamageTaken)
-月の悪魔はあなたをその呪いの下に置きます! (DamageTaken)
+月の悪魔は呪いをかけてきた！(DamageTaken)
 The weight of inescapable bondage falls upon you! (DamageTaken)
-逃れられない束縛の重みがあなたに降りかかる！ (被ダメージ)
+月の悪魔は拘束具の重量を増加させてきた！ (DamageTaken)
 The demon giggles as it locks your restraints! (DamageTaken)
-悪魔がくすくす笑いながらあなたの拘束具をロックします! (DamageTaken)
+月の悪魔はくすくす笑いながら拘束具をロックしてきた！(DamageTaken)
 Crushing Fate
 運命を打ち砕く
 Void Demon
-ヴォイドデーモン
+虚無の悪魔
 The void demon is exorcised.
-虚無の魔物は祓われた
+虚無の悪魔を祓った！
 The void demon places you in dark, glassy restraints. (+RestraintAdded)
-虚空の悪魔はあなたを暗く、ガラスのような拘束にします。(+RestraintAdded)
+虚無の悪魔が呪いの拘束具で拘束してきた！(+RestraintAdded)
 The demon giggles as it locks your restraints! (DamageTaken)
-悪魔がくすくす笑いながらあなたの拘束具をロックします! (DamageTaken)
+虚無の悪魔はくすくす笑いながら拘束具をロックしてきた！ (DamageTaken)
 The void demon places you under its curse! (DamageTaken)
-虚無の悪魔はあなたをその呪いの下に置きます! (DamageTaken)
+虚無の悪魔は呪いをかけてきた！ (DamageTaken)
 Demon
 悪魔
 The demon is exorcised.
-鬼は退散しました。
+悪魔を祓った！
 The demon places you in dark, glassy restraints. (+RestraintAdded)
-悪魔はあなたを暗くガラスのような拘束具に閉じ込めます。(+RestraintAdded)
+悪魔が呪いの拘束具で拘束してきた！(+RestraintAdded)
 The demon giggles as it locks your restraints! (DamageTaken)
-悪魔がくすくす笑いながらあなたの拘束具をロックします! (DamageTaken)
+悪魔はくすくす笑いながら拘束具をロックしてきた！ (DamageTaken)
 The demon whacks you with its mace! (DamageTaken)
-悪魔はメイスであなたを叩きます! (DamageTaken)
+悪魔がメイスで叩いてきた！ (DamageTaken)
 Tickle Hand
-手をくすぐる
+くすぐる手
 The hand vanishes!
-手が消える！
+くすぐる手は消え失せた！
 The hand tickles you! (DamageTaken)
-手がくすぐる！(DamageTaken)
+くすぐる手がくすぐってきた！(DamageTaken)
 Tickle Terror
-くすぐり恐怖
+くすぐりおばけ
 The tickle terror vanishes... for now
-くすぐったい恐怖は消える…とりあえず
+くすぐりおばけは成仏した……はず。
 The monstrous spirit tickles you mercilessly!!! (DamageTaken)
-化け物霊が容赦なくくすぐる!!! (DamageTaken)
+くすぐりおばけが容赦なくくすぐってくる！ (DamageTaken)
 The monstrous spirit binds you to make you more vulnerable! (+RestraintAdded)
-怪物の精霊があなたを縛り付けて、あなたをより無防備にします! (+RestraintAdded)
+くすぐりおばけはくすぐるために縛ってきた！ (+RestraintAdded)
 Hug Horror
 ハグホラー
 The hug horror vanishes... for now
-ハグの恐怖は消える…とりあえず
+ハグホラーは成仏した……きっと。
 The monstrous spirit gives a crushing hug!!! (DamageTaken)
-怪獣が抱きしめる!!! (DamageTaken)
+ハグホラーが抱きしめてきた！(DamageTaken)
 The monstrous spirit gives a crushing hug!!! (DamageTaken)
-怪獣が抱きしめる!!! (DamageTaken)
+ハグホラーが抱きしめてきた！ (DamageTaken)
 The monstrous spirit's chains latch on! (+RestraintAdded)
-妖怪の鎖が引っかかる！(+RestraintAdded)
+ハグホラーの鎖で縛されてしまった！(+RestraintAdded)
 Greedy Ghast
 貪欲なガスト
 The ghast vanishes... for now
-ガストは消える…とりあえず
+貪欲なガストはおそらく成仏した……
 The moaning spirit gropes your body!!! (DamageTaken)
-呻く精霊が体を弄る!!! (DamageTaken)
+貪欲なガストが体を弄る!!! (DamageTaken)
 Tickle Hand
-手をくすぐる
+くすぐる手
 The hand vanishes!
-手が消える！
+くすぐる手は消え失せた！
 The hand tickles you! (DamageTaken)
-手がくすぐる！(DamageTaken)
+くすぐる手がくすぐってきた！(DamageTaken)
 Tome of Chains
 鎖の書
 The floating tome burns into ashes!
-浮遊書は燃え尽きる！
+鎖の書は燃え尽きた！
 Tome of Light
 光の書
 The floating tome burns into ashes!
-浮遊書は燃え尽きる！
+光の書は燃え尽きた！
 Tome of Magic
 魔法の書
 The floating tome burns into ashes!
-浮遊書は燃え尽きる！
+魔法の書は燃え尽きた！
 Tome of Ice
 氷の書
 The floating tome burns into ashes!
-浮遊書は燃え尽きる！
+氷の書は燃え尽きた！
 Tome of the Abyss
 深淵の書
 The floating tome burns into ashes!
-浮遊書は燃え尽きる！
+深淵の書は燃え尽きた！
 Tome of Nature
 自然の書
 The floating tome burns into ashes!
-浮遊書は燃え尽きる！
+自然の書は燃え尽きた！
 Tome of Thunder
 雷の書
 The floating tome burns into ashes!
-浮遊書は燃え尽きる！
+雷の書は燃え尽きた！
 Tome of Latex
 ラテックスの書
 The floating tome burns into ashes!
-浮遊書は燃え尽きる！
+ラテックスの書は燃え尽きた！
 Tome of Laughs
 笑いの書
 The floating tome burns into ashes!
-浮遊書は燃え尽きる！
+笑いの書は燃え尽きた！
 You are grabbed and led to a prison...
-あなたは捕らえられて刑務所に連れて行かれます...
+捕らえられて牢屋に連行された……
 Perhaps they may release you if you behave...
-行儀よくしたら解放されるかも…
+行儀よくしてたら解放されるかもしれない……
 Necromancer
 ネクロマンサー
 The necromancer faints. Ironic that she couldn't save herself.
-ネクロマンサーは失神します。皮肉なことに、彼女は自分自身を救うことができませんでした。
+ネクロマンサーは失神した。
 The necromancer locks all of your restraints!
-ネクロマンサーはあなたのすべての拘束をロックします！
+ネクロマンサーはすべての拘束具をロックしてきた！
 The necromancer prepares you for transport!
-ネクロマンサーが輸送の準備をします！
+ネクロマンサーに運ばれそうになった！
 The necromancer rubs your body sensually!
-ネクロマンサーが官能的にあなたの体をこすります！
+ネクロマンサーが官能的に身体を撫でてきた！
 Filthy Rat
-不潔なネズミ
+ドブネズミ
 The rat skitters back into a hole in the wall.
-ネズミは壁の穴に戻ってきた。
+ドブネズミは巣に逃げていった。
 The filthy rat nibbles at you! (DamageTaken)
-汚いネズミがあなたをかじる! (DamageTaken)
+ドブネズミにかじられた！(DamageTaken)
 Annoying Bat
-うざいコウモリ
+うるさいコウモリ
 You stomp the bat into the ground to make sure it's dead.
-コウモリが死んでいることを確認するために、バットを地面に踏みつけます。
+うるさいコウモリを追い払った。
 The bat nibbles incessantly at you! (DamageTaken)
-コウモリが絶え間なくあなたをかじる! (DamageTaken)
+うるさいコウモリに何度もかじられた！ (DamageTaken)
 Pixie
-ピクシー
+妖精
 The pixie huffs and floats away.
-ピクシーはハフして浮かびます。
+妖精はふわふわと逃げていった。
 The pixie tickles you with a feather! (DamageTaken)
-ピクシーが羽でくすぐる！(DamageTaken)
+妖精が羽でくすぐってきた！(DamageTaken)
 Orb of Light
 光のオーブ
 The orb vanishes in a flash of light.
-オーブは閃光の中で消えます。
+光のオーブは光とともに消えていった。
 The orb blinds you with its intense light!!! (DamageTaken)
-オーブは強烈な光であなたを盲目にします!!! (DamageTaken)
+光のオーブが放つ強烈な光に目がくらんだ！ (DamageTaken)
 A light restores the will of its allies!
-光は味方の意志を回復する！
+光が味方の意志を回復した！
 You do not have enough resources to cast the spell!
 マナが足りない！
 You AttackName TargetEnemy for DamageDealt DamageType damage!
@@ -4647,7 +4647,7 @@ You mutter an unintelligible command word and your locks do not open.
 You mumble a command word but the lock opens!
 合言葉をつぶやくと、鍵が開いた！
 You mess up saying the command word. The lock stays put!
-合言葉を間違えたようだ。鍵は開いていない。
+合言葉を間違えたようだ。鍵は開かなかった。
 Pick
 ピッキング
 (No way to open)
@@ -4661,17 +4661,17 @@ Offer
 You do not have enough for a proper offering.
 十分な貢物を持っていない。
 The goddess removes some of your restraints!
-女神の祝福によりいくつかの拘束から解放された！
+女神の祝福により、いくつかの拘束から解放された！
 The goddess restores your mental and physical state!
 女神の祝福により回復した！
 The goddess teaches you the secrets of SCHOOL. (+1 level)
 女神は SCHOOL の秘法を教えてくれた。(+1レベル)
 The goddess of SCHOOL grants you destructive spellcasting!
-SCHOOLの女神が破壊魔法を授ける！
+SCHOOL の女神から破壊魔法を授かった！
 The goddess of SCHOOL grants you invisibility on attacks!
-SCHOOLの女神が攻撃時に透明化を付与！
+SCHOOL の女神の祝福により、攻撃時に透明になるようになった！
 The goddess of SCHOOL grants you protection and retaliation!
-SCHOOLの女神が守りと報復を与える！
+SCHOOL の女神から、守護と報復の力を授かった！
 You leave the coins on the altar and they transform into a ItemBought!
 祭壇にゴールドを捧げると、アイテムに変化した！
 object
@@ -4681,13 +4681,13 @@ It appears to be a receptacle for an ancient crystal.
 It's a pile of slag emitting a strange magic smoke...
 灰の山が魔力のこもった煙を上げている……
 That object is locked
-そのオブジェクトはロックされています
+鍵がかかっている。
 A shrine to the goddess of TYPE. A pool of mana glimmers below.
 TYPE の女神を祀る祭壇。足元に溢れる泉には魔力が満ち溢れている。
 A shrine to the goddess of TYPE.
 TYPE の女神を祀る祭壇。
 That door is open. Do you want to close it?
-ドアは開いている。閉じる？
+ドアを閉じる？
 You slam the door and jam it shut!
 ドアを思い切り閉めた！
 Submissiveness
@@ -4717,7 +4717,7 @@ Commerce
 Shrine of SHRINETYPE
 SHRINETYPE の祠
 Tablet of
-のタブレット
+の石板
 Goddess Blessing:
 女神の加護：
 Goddess Curse:
@@ -4745,7 +4745,7 @@ Nevermere Trainers
 DressUp Co.
 株式会社ドレスアップ
 Bounty Hunters Guild
-賞金稼ぎギルド
+賞金稼ぎ
 Bandits
 盗賊
 Constructs
@@ -4755,13 +4755,13 @@ Witches' Coven
 School of Magic
 魔法学校
 Old Guardians
-オールドガーディアン
+古代のガーディアン
 Cult of the Wild
 野生のカルト
 Cult of Bast
 ネコ教団
 Alchemists
-アルケミスト
+錬金術師
 Elementals
 エレメンタル
 Dragonheart Order
@@ -4771,15 +4771,15 @@ MaidForce
 Fungal Kingdom
 キノコ王国
 Wanted
-指名手配
+指名手配者
 Delinquent
-滞納者
+不良
 Illegal Poacher
 密猟者
 Nature
 自然
 Surprise!
-サプライズ！
+強盗
 Angels
 天使
 Demons
@@ -4793,47 +4793,47 @@ Drink
 Bottle
 汲む
 You have no restraints to 'offer' to the goddess.
-女神に『捧げる』のは自由です
+女神に捧げる"貢物"がない。
 This shrine's mana pool is empty.
 祭壇の泉は枯渇している。
 You drink from the pool and and absorb its energies.
-あなたはプールから水を飲み、そのエネルギーを吸収します。
+泉の水を飲み、マナを回復した。
 You absorb the pool's energies through your face.
-顔を通してプールのエネルギーを吸収します。
+泉に顔を浸し、マナを得た。
 You collect what mana you can in a bottle.
-ボトルに集められるだけのマナを集めます。
+泉の水を瓶に詰めた。
 You drink from the pool and your mana is restored.
-プールの水を飲むとマナが回復する
+泉の水を飲み、マナを回復した。
 You drink again, but you feel as if you are trespassing.
-あなたは再び飲むが、まるで不法侵入しているように感じる.
+再び水を飲むと、嫌な気配を感じた。
 You drink again, knowing the risk this may entail...
-リスクを承知の上で、またお酒を飲む…
+とても嫌な気配がするが、もう一杯飲む……
 You have angered the goddess of TYPE!!!
-TYPEの女神を怒らせた！！！
+TYPE の女神を怒らせてしまったようだ！
 The slime washes off in the fountain!!!
-噴水でスライムが洗い流される！！！
+泉の水でスライムを洗い流す。
 The goddess offers a ItemTraded for ItemCost (NumCurrent/NumMax)
-女神は ItemCost (NumCurrent/NumMax) の ItemTraded を提供します
+女神は ItemCost (NumCurrent/NumMax) の ItemTraded を売ってくれる。
 Next Offer
-次のオファー
+次の商品
 Buy (press right)
 買う（右を押す）
 Cost: ItemCostgp
-コスト：ItemCostgp
+値段：ItemCostgp
 You climb down to the next level
-あなたは次のレベルに降ります
+次の階に降りる
 Level RestraintLevel (Rarity)
-レベル拘束レベル(レアリティ)
+拘束のレベル (Rarity)
 Consumable
 消耗品
 Equipped
-装備
+装備中
 Weapons
-兵器
+武器
 Outfits
 服装
 Wearable
-ウェアラブル
+装備可能
 Miscellaneous
 その他
 The terrain makes noise as you rush across it...
@@ -7205,7 +7205,7 @@ Mouth
 Ears
 耳
 Collar
-えり
+首輪
 Neck
 首
 Arms
@@ -7213,9 +7213,9 @@ Arms
 Hands
 手
 Torso
-胴体
+胴
 Bra
-良い
+胸
 Belt
 ベルト
 Plug
@@ -7227,205 +7227,205 @@ Piercings
 Nipples
 乳首
 Butt Plug
-バットプラグ
+アナルプラグ
 Legs
 脚
 Ankles
 足首
 Feet
-フィート
+つま先
 Device
 デバイス
 You found an item that was too small to see!
-小さすぎて見えないアイテムを見つけました！
+小さなアイテムを見つけた！
 You picked up XXX gold.
-あなたは XXX ゴールドを手に入れました。
+XXX ゴールドを手に入れた。
 You retrieve an ancient power crystal.
-あなたは古代の力の結晶を手に入れました。
+パワークリスタルを手に入れた。
 You retrieve a spent ancient power crystal.
-あなたは使用済みの古代の力のクリスタルを回収します。
+使用済みのパワークリスタルを手に入れた。
 You pick up a magical amulet and use it to boost your stats.
-あなたは魔法のお守りを手に取り、それを使ってステータスを上げます。
+魔法のアミュレットを手に入れた。能力を上昇させられる。
 You picked up a knife.
-あなたはナイフを拾いました。
+ナイフを拾った。
 You picked up a torch.
-あなたはトーチを拾いました。
+松明を拾った。
 You found a bundle of discarded knives!
-捨てられた包丁の束を見つけたぞ！
+捨てられたナイフの束を拾った！
 You picked up an enchanted knife.
-あなたはエンチャントされたナイフを拾いました。
+エンチャントされたナイフを拾った。
 You picked up a magic knife.
-あなたは魔法のナイフを拾いました。
+魔法のナイフを拾った。
 You picked up a lockpick.
-あなたはロックピックを拾いました。
+ロックピックを拾った。
 You picked up a normal key.
-あなたは普通の鍵を拾いました。
+鍵を拾った。
 You picked up a green key.
-あなたは緑の鍵を拾いました。
+緑の鍵を拾った。
 You picked up a blue key.
-あなたは青い鍵を拾いました。
+青い鍵を拾った。
 You picked up a willpower potion.
-あなたは気力のポーションを手に入れました。
+気力のポーションを手に入れた。
 You picked up a glowing blue mana potion.
-青く光るマナポーションを手に入れた。
+青く輝くマナポーションを手に入れた。
 You picked up a glowing blue orb.
-あなたは光る青いオーブを拾いました。
+青白く光るオーブを手に入れた。
 You picked up an invisibility potion.
-あなたは不可視のポーションを手に入れました。
+透明のポーションを手に入れた。
 You picked up a handful of ectoplasm.
-あなたは一握りのエクトプラズムを拾いました。
+一握りのエクトプラズムを手に入れた。
 You picked up a green stamina potion.
-あなたは緑のスタミナポーションを手に入れました。
+緑色のスタミナポーションを拾った。
 You picked up a frigid white potion.
-あなたは極寒の白いポーションを手に取りました。
+冷たく白いポーションを手に入れた。
 You found a peculiar note on the ground and keep it in your journal.
-あなたは地面に奇妙なメモを見つけて、それを日記に記録しました。
+奇妙なメモを発見し、日記に写した。
 You found an uninteresting note on the ground.
-あなたは地面に興味のないメモを見つけました。
+メモを発見したが、特に興味を引かれなかった。
 You pick up a heavy hammer.
-あなたは重いハンマーを拾います。
+重いハンマーを手に入れた。
 You pick up a set of bolt cutters.
-あなたはボルトカッターのセットを手に取ります。
+ボルトカッターを手に入れた。
 You pick up a sharp sword.
-あなたは鋭い剣を手に取りました。
+鋭い剣を手に入れた。
 You pick up a flamberge.
-あなたはフランベルジェを手に取ります。
+フランベルフェを手に入れた。
 You recover your escort drone.
-あなたは護衛用ドローンを回収します。
+護衛用ドローンを手に入れた。
 You pick up a 'magic' wand...
-『魔法』の杖を手に取ると……
+"魔法の"杖を手に入れた……
 You pick up a magical ice cube.
-あなたは魔法のアイスキューブを拾います。
+魔力で生成された氷塊を手に入れた。
 You find some treated hemp rope.
-あなたは処理された麻縄を見つけました。
+麻縄を手に入れた。
 You pick up a feather.
-あなたは羽を拾います。
+羽根を手に入れた。
 You pick up a heavy flail.
-あなたは重いフレイルを拾います。
+重いフレイルを手に入れた。
 You pick up a shortspear.
-あなたはショートスピアを拾います。
+ショートスピアを手に入れた。
 You pick up a pickaxe.
-あなたはつるはしを拾います。
+つるはしを手に入れた。
 You pick up an enchanted sword.
-あなたは魔法の剣を手に取りました。
+魔法の剣を手に入れた。
 You pick up an enchanted axe.
-エンチャントされた斧を拾う。
+魔法の斧を手に入れた。
 You pick up an enchanted hammer.
-エンチャントされたハンマーを拾う。
+魔法のハンマーを手に入れた。
 You pick up a light hammer that's inscribed 'IceBreaker'.
-『アイスブレイカー』と書かれた軽いハンマーを手に取る。
+「アイスブレイカー」と書かれたハンマーを手に入れた。
 You pick up an enchanted spear.
-エンチャントされた槍を拾う。
+魔法の槍を手に入れた。
 You pick up an enchanted flail.
-あなたはエンチャントされたフレイルを拾います。
+魔法のフレイルを手に入れた。
 You pick up a powerful axe.
-あなたは強力な斧を手に取りました。
+強力そうな斧を手に入れた。
 You pick up a consumable smoke bomb.
-消耗品の発煙弾を拾う。
+煙幕弾を手に入れた。
 You picked up a stone trinket with a glowing red sigil.
-あなたは赤く光る印が付いた石の装身具を拾いました。
+赤く光る印が描かれた石を手に入れた。
 You picked up a wet rock with some kind of symbol on it.
-あなたは何らかのシンボルが描かれた湿った岩を拾いました。
+何らかのシンボルが描かれている、湿った石を手に入れた。
 You picked up a crystal beautiful as the moon.
-あなたは月のように美しい水晶を拾いました。
+月のように輝くクリスタルを手に入れた。
 You picked up a strange device with a sharpened razor disc.
-鋭利なカミソリの円盤を備えた奇妙な装置を拾いました。
+鋭利な円盤のついた奇妙な装置を手に入れた。
 You find a strange ancient device with a sharp cutting blade.
-あなたは鋭い刃を持つ奇妙な古代の装置を見つけました。
+鋭い刃を持つ古代の奇妙な装置を手に入れた。
 You picked up a stone trinket with a glowing blue sigil.
-青く光る印が付いた石の装身具を拾いました。
+青く光る印が描かれた石を手に入れた。
 You pick up a bola.
-あなたはボラを拾います。
+投げ縄を手に入れた。
 You pick up a bomb!
-あなたは爆弾を拾います！
+爆弾を手に入れた！
 You pick up Dragonslaver.
-あなたはドラゴンスレイバーを拾います。
+ドラゴンスレイバー手に入れた。
 You pick up Metamorphosis.
-あなたは変身を拾います。
+変身装置を手に入れた。
 You pick up Four Seasons.
-あなたはフォーシーズンズを手に取ります。
+四季の杖を手に入れた。
 You pick up The Arbiter.
-あなたはアービターを拾います。
+アービターを手に入れた。
 You pick up Dreamcatcher.
-あなたはドリームキャッチャーを拾います。
+ドリームキャッチャーを手に入れた。
 You retrieve the Bondage Buster.
-あなたはボンデージバスターを回収します。
+ボンデージバスターを手に入れた。
 You retrieve a Nevermere Blaster Mark IV.
-ネバーミア ブラスター マーク IV を回収します。
+ネバーミア ブラスター マーク IV を手に入れた。
 You retrieve the Messenger of Love.
-あなたは愛の使者を取り戻します。
+キューピットの弓矢を手に入れた。
 You retrieve Moirai's scissors.
-モイライの鋏を回収せよ
+モイライの鋏を手に入れた。
 You pick up a bunch of scrolls!
-あなたはたくさんの巻物を拾います！
+色々な巻物を手に入れた！
 You pick up a Scroll of Sleight.
-あなたはスライトの巻物を手に取りました。
+奇術の巻物を手に入れた。
 You pick up a Scroll of Purity.
-あなたは純潔の巻物を手に取りました。
+純潔の巻物を手に入れた。
 You pick up a Scroll of Speech.
-あなたはスピーチの巻物を手に取りました。
+口弁の巻物を手に入れた。
 You pick up a Scroll of Sauntering.
-あなたはSaunteringのスクロールを拾います。
+ステップの巻物を手に入れた。
 As you strike again, your weapon is pulled out of your grasp!
-もう一度攻撃すると、武器が手から引き抜かれます！
+もう一度攻撃すると、武器を落としてしまう！
 Your weapon slips out of your hand as you try to cut with it...
-斬ろうとしたら武器が手から滑り落ちて……
+武器がてから滑り落ちた……
 You put away the WEAPONNAME
-あなたはWEAPONNAMEを片付けました
+WEAPONNAME を地面に置いた。
 You equip the WEAPONNAME
-あなたはWEAPONNAMEを装備しています
+WEAPONNAME を装備した。
 Unequip
 装備解除
 Equip
 装備
 Equipped
-装備
+装備中
 
 
 Unlit Torch
-消灯トーチ
+消えている松明
 Can be lit
-点灯できます
+点火可能
 Torch
 松明
 Provides light
-光を与える
+辺りを照らしている
 Lantern
 ランタン
 Provides light
-光を与える
+辺りを照らしている
 Magic Lantern
 幻灯
 Provides light
-光を与える
+辺りを照らしている
 Unlit Lantern
 消灯ランタン
 Can be lit
-点灯できます
+点灯可能
 Wall Sconce
 壁取り付け用燭台
 Provides light
-光を与える
+辺りを照らしている
 Broken Wall Sconce
 壊れた壁取り付け用燭台
 It is beyond repair.
-それは修復不可能です。
+壊れていて直すことはできない。
 Liquid Latex
-液体ラテックス
+液状のゴム
 Engulfs creatures
-生き物を飲み込む
+近づくと飲み込まれる
 Slime
 スライム
 Slows creatures
-クリーチャーを遅くする
+上では足が遅くなる
 Ice
 氷
 Chilling and slippery
-寒くて滑りやすい
+ツルツルして滑りやすい。
 Ropes
 ロープ
 Looking for a new wearer
-新しい着用者を探しています
+新たな犠牲者を求めている
 Chains
 チェーン
 Broken pieces of chain
@@ -7433,35 +7433,35 @@ Broken pieces of chain
 Belts
 ベルト
 Pieces of straps and leather
-ストラップとレザーのかけら
+ストラップとベルト
 Vines
 つる
 Fierce plantlife
-激しい植物
+つるのきれはし
 Ribbons
 リボン
 Empowered with magic
-魔法で強化
+魔法で強化されている
 Blessed Wrappings
 祝福されたラッピング
 Enchanted wrappings
-魅惑のラッピング
+魔法でできたテープ
 Summoning Runes
-ルーン召喚
+召喚のルーン
 Mystical runes used for summoning
-召喚に使う神秘のルーン
+召喚に使う、神秘のルーン
 Casting Runes
-ルーンのキャスティング
+作動中のルーン
 Mystical runes used for casting spells
-呪文を唱える魔法のルーン文字
+呪文を行使する神秘のルーン
 Embers
-残り火
+埋み火
 Ignition source. Blocks vision.
 着火源。視界を遮る。
 Inferno
-インフェルノ
+業火
 Deals DAMAGEDEALT fire damage per turn
-ターンごとにDAMAGEDEALTの火ダメージを与える
+ターンごとに DAMAGEDEALT の火ダメージを受ける
 Steam
 蒸気
 Blocks vision
@@ -7471,9 +7471,9 @@ Smoke
 Blocks vision
 視界を遮る
 Cracked Earth
-割れた地球
+ひび割れ
 Makes creatures unsteady
-クリーチャーを不安定にする
+足場が不安定で転びやすい
 Can be controlled using CMD spells
 CMD魔法で操作可能
 Can be controlled using Rubbermancy
@@ -7483,7 +7483,7 @@ Floor
 Wall
 壁
 Brickwork
-れんが造り
+れんが
 Doodad
 ディスカッション
 Furniture
@@ -7491,51 +7491,51 @@ Furniture
 Table
 テーブル
 Shrine
-神社
+祭壇
 Closed Door
-閉じたドア
+閉じているドア
 Open Door
-ドアを開ける
+開いているドア
 Closed Door
-閉じたドア
+閉じているドア
 Open Door
-ドアを開ける
+開いているドア
 Bed
 ベッド
 Bars
-バー
+柵
 Ruined Shrine
-荒廃した神社
+打ち捨てられた祭壇
 Orb Altar
 オーブの祭壇
 Empty Altar
 空の祭壇
 Chest
-胸
+宝箱
 Empty Chest
-空のチェスト
+空の宝箱
 Shiny Object
-光沢のあるオブジェクト
+光るもの
 Shiny Object
-光沢のあるオブジェクト
+光るもの
 Cracked Wall
 ひびの入った壁
 Hook
-針
+フック
 Entrance
 入り口
 Exit Stairs
-階段を出る
+階段を下る
 Mysterious Stairs
 不思議な階段
 Ghostly Adventurer
-幽霊の冒険者
+冒険者の幽霊
 Conveyor
 コンベア
 Doll Terminal
-ドール端末
+ドール操作端末
 Doll Supply
-ドールサプライ
+ドール搬入口
 Bondage Machine
 ボンデージマシン
 Ars Pyrotecnica
@@ -7551,7 +7551,7 @@ A book about conjuration
 A book of manipulative spells
 操作呪文の本
 Components:
-コンポーネント:
+使用部位:
 Verbal
 言葉
 Arm Movements
@@ -7559,11 +7559,11 @@ Arm Movements
 Leg Gestures
 足のジェスチャー
 The incantation comes out as a garbled mess!
-呪文がぐちゃぐちゃに出てくる！
+でたらめな呪文が出た！
 You can't raise your arms to cast the spell!
-魔法を唱えるために腕を上げることはできません！
+腕の動きが抑制されて呪文を使えない！
 Your feet are too clumsy to perform the magic gesture!
-あなたの足は魔法のジェスチャーを行うには不器用です！
+足の動きが抑制されて呪文を使えない！
 Next Page
 次のページ
 Last Page
@@ -7573,7 +7573,7 @@ Last Page
 <<<
 <<<
 Random Page (your hands are tied)
-Random Page (あなたの手は縛られている)
+Random Page (手が縛られている)
 Verbal
 言葉
 Arms
@@ -7583,61 +7583,61 @@ Legs
 Misc
 その他
 Elements
-エレメンツ
+エレメント
 Conjuration
 召喚
 Illusion
-イリュージョン
+幻惑
 Other
-他の
+他
 Strength
-強さ
+力
 Dexterity
-器用さ
+器用
 Intelligence
-知能
+知力
 Misc
 その他
 Learnable
-学習可能
+習得可能
 Unlearned
-未学習
+未習得
 Excl. Upgrades
-除外アップグレード
+強化呪文を除外
 Passive
-受け身
+パッシブ
 Upcast
-アップキャスト
+強化呪文
 Buffs
 バフ
 DoT
-ドット
+持続ダメージ
 Projectiles
-投射物
+投影
 Melee
-乱闘
+近接
 Area Damage
 範囲ダメージ
 Area Denial
-エリア拒否
+範囲効果
 Offense
-オフェンス
+攻撃
 Defense
-防衛
+防御
 Fire
 火
 Ice
 氷
 Earth
-地球
+地
 Air
-空気
+風
 Lightning
-雷
+電気
 Water
-水
+水属性
 Rubber
-ゴム
+ラバー
 Teleport
 テレポート
 Physics
@@ -7645,7 +7645,7 @@ Physics
 Conjuration
 召喚
 Summoning
-召喚
+召喚物
 Binding
 バインディング
 Metal
@@ -7653,21 +7653,21 @@ Metal
 Rope
 ロープ
 Leather
-レザー
+革
 Stealth
 ステルス
 Projection
 投影
 Alteration
-変更
+変異
 Light
-ライト
+明かり
 Shadow
 影
 Knowledge
 知識
 Utility
-効用
+その他
 Upgrades
 アップグレード
 Spell Tree
@@ -7675,145 +7675,145 @@ Spell Tree
 Willpower
 気力
 Stamina
-元気
+スタミナ
 Magic
 魔法
 Damage
 ダメージ
 Distraction
-気晴らし
+興奮
 Empower to upcast spells
-アップキャスト呪文に力を与える
+呪文を強化した！
 Cancel empowerment
-エンパワーメントをキャンセル
+強化をキャンセル
 You channel mana through your body! Empowerment level: LEVEL
-魔力を体に流す！ 強化レベル：ＬＥＶＥＬ
+体に魔力を流し込んだ！ 強化レベル：ＬＥＶＥＬ
 You are already at the maximum empowerment level!
-あなたはすでに最大の強化レベルに達しています！
+これ以上強化できない！
 You don't have any upcast spells yet.
-あなたはまだアップキャストの呪文を持っていません。
+強化可能な呪文がない。
 Upcast from SPELL
-SPELLからアップキャスト
+SPELL から強化
 You fail to concentrate on the spell and it fizzles!
-あなたは呪文に集中することができず、それは失敗します!
+集中力が足りず、呪文の詠唱に失敗した！
 Your gag causes you to mispronounce the magic words!
-あなたのギャグは魔法の言葉の発音を間違えます!
+猿轡のせいで上手く発音できなかった！
 The ice drains your concentration! Your mana and stamina are slipping away!
-氷はあなたの集中力を消耗させます！あなたのマナとスタミナが滑り落ちています！
+体に張り付いた氷にマナとスタミナを奪われる！
 A strange, chaotic energy flows into you! Your will is weakened and your mana fades!
-奇妙で混沌としたエネルギーがあなたに流れ込みます！あなたの意志は弱まり、あなたのマナは衰えます！
+混沌としたエネルギーが体を駆け巡り、気力とマナを奪われてしまう！
 Something gently, constantly tickles you!
-やさしく、常にくすぐる何かが！
+何かに優しくくすぐられる！
 The ampule shatters on impact!
-アンプルは衝撃で粉々に！
+瓶が衝撃で粉々に砕けた！
 The gas ampule shatters on impact!
-衝撃でガスアンプルが粉々に！
+ガス入り瓶が衝撃で粉々に砕けた！
 The glue ampule shatters on impact!
-グルーアンプルは衝撃で粉々に！
+グルー入り瓶が衝撃で粉々に砕けた！
 The rubber ampule shatters on impact!
-衝撃でゴムアンプルが粉々に！
+ラバー入り瓶が衝撃で粉々に砕けた！
 The latex ampule shatters on impact and forms a restraint!
-ラテックスアンプルは衝撃で粉々に砕けて拘束具を形成！
+瓶が衝撃で粉々に砕け、中のラバーが拘束具になった！
 The latex ampule shatters on impact and coats your body!
-衝撃で粉々に砕けるラテックスアンプルが体をコーティング！
+瓶が衝撃で粉々に砕け、中のラバーがまとわりついてきた！
 The latex ampule shatters on impact and sticks to you!
-ラテックスアンプルは衝撃で粉々になり、くっつきます！
+瓶が衝撃で粉々に砕け、中のラバーがひっついてきた！
 Gas Ampule
-ガスアンプル
+ガス入り瓶
 Glue Ampule
-グルーアンプル
+グルー入り瓶
 Rubber Ampule
-ラバーアンプル
+ラバー入り瓶
 Latex Ampule
-ラテックスアンプル
+ラテックス入り瓶
 Shadowy chains appear from a rift in space!
-宇宙の裂け目から影の鎖が出現！
+空間が裂け、影の鎖が出現した！
 The roaring inferno deals 10 damage to you!
-轟く地獄は君に10ダメージ！
+地獄の咆哮により10のダメージを受けた！
 Mana Burst
 マナバースト
 As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus...
-研修生として、あなたは 100% 気を散らしてトランスのような状態にすることで、明晰さをもたらすテクニックを学びました。しかし、この状態は不安定であり、呪文を唱えると集中力が失われる可能性があります...
+ペットとして、興奮値が100%のときに集中力を得る力を学んだ。この状態は不安定で、呪文を詠唱した際に集中力を失う可能性がある……
 Flame Novice
-炎の初心者
+火魔術の入門
 Unlocks fire spells. Learn Firebolt.
-火の呪文のロックを解除します。ファイアボルトを学ぶ。
+火属性の魔法が習得可能になる。「ファイアボルト」を習得。
 Lightning Novice
-稲妻初心者
+電気魔術の入門
 Unlocks electrice spells. Learn Electrify.
-電気呪文のロックを解除します。エレクトリファイを学ぶ。
+電気属性の魔法が習得可能になる。「エレクトリファイ」を習得。
 Water Novice
-水の初心者
+水魔術の入門
 Unlocks water spells. Learn Water Ball.
-水の呪文のロックを解除します。ウォーターボールを学ぶ。
+水属性の魔法が習得可能になる。「ウォーターボール」を習得。
 Ice Novice
-氷の初心者
+氷魔術の入門
 Unlocks ice spells. Learn Freeze.
-氷の呪文のロックを解除します。フリーズを学ぶ。
+氷属性の魔法が習得可能になる。「フリーズ」を習得。
 Earth Novice
-アースノービス
+地魔術の入門
 Unlocks earth spells. Learn Stone Skin.
-土の呪文のロックを解除します。ストーンスキンを学ぶ。
+土属性の魔法が習得可能になる。「ストーンスキン」を習得。
 Air Novice
-エアノービス
+風魔術の入門
 Unlocks air spells. Learn Wind Blast.
-空中呪文のロックを解除します。ウインドブラストを習得。
+風属性の魔法が習得可能になる。「ウインドブラスト」を習得。
 Latex 101
-ラテックス 101
+ラテックス入門
 Unlocks latex spells. Learn Slime Ball.
-ラテックス呪文のロックを解除します。スライムボールを学ぶ。
+ラテックス属性の魔法が習得可能になる。「スライムボール」を習得。
 Metal 101
-メタル101
+メタル入門
 Unlocks metal spells. Learn Conjure Cuffs.
-金属呪文のロックを解除します。召喚手錠を学ぶ。
+メタル属性の魔法が習得可能になる。「手錠召喚」を習得。
 Rope 101
-ロープ 101
+ロープ入門
 Unlocks rope spells. Learn Conjure Ropes.
-ロープの呪文のロックを解除します。ロープの召喚を学ぶ。
+縄属性の魔法が習得可能になる。「ロープ召喚」を習得。
 Leather 101
-レザー 101
+レザー入門
 Unlocks leather spells. Learn Conjure Gag.
-革の呪文のロックを解除します。ギャグを召喚するを学びます。
+革属性の魔法が習得可能になる。「猿轡召喚」を習得。
 Physics 101
-物理101
+サイキック入門
 Unlocks teleportation and physical manipulation spells. Learn Wall.
-テレポーテーションと物理操作呪文のロックを解除します。壁を学ぶ。
+ロック操作やテレポーテーションの魔法が習得可能になる。「壁召喚」を習得。
 Summoning 101
-召喚101
+召喚術入門
 Unlocks summoning spells. Learn Summon Familiar.
-召喚呪文のロックを解除します。サモンファミリアを習得。
+召喚の魔法が習得可能になる。「使い魔召喚」を習得。
 Blessing of Shadow
 影の祝福
 Unlocks shadow spells. Learn Shadow Dagger.
-影の呪文のロックを解除します。シャドーダガーを習得。
+影の魔法が習得可能になる。「シャドーダガー」を習得。
 Blessing of Light
 光の祝福
 Unlocks light spells. Learn Flash.
-光の呪文のロックを解除します。フラッシュを学びます。
+光の魔法が習得可能になる。「フラッシュ」を習得。
 Blessing of Obscurity
 闇の祝福
 Unlocks invisibility spells. Learn Camouflage.
-不可視呪文のロックを解除します。カモフラージュを学ぶ。
+闇の魔法が習得可能になる。「カモフラージュ」を習得。
 Projection Magic
-プロジェクションマジック
+投影魔術
 Unlocks illusory spells. Learn Summon Decoy.
-幻想的な呪文のロックを解除します。サモンデコイを習得。
+幻惑魔法が習得可能になる。「デコイ」を習得。
 Alteration Magic
-改変魔法
+変異魔法
 Unlocks alteration spells. Learn Confuse.
-改変呪文のロックを解除します。混乱を学ぶ。
+変異魔法が習得可能になる。「混乱」を習得。
 Arcane Knowledge
-難解な知識
+秘術の知識
 Unlocks knowledge and critical-strike spells. Learn True Steel, and unlocks advanced tooltips for enemies.
 知識とクリティカル ストライク スペルのロックを解除します。True Steel を学び、敵の高度なツールチップのロックを解除します。
 Glue
-のり
+グルー
 The glue attaches to your legs as you try to move through!
-移動しようとすると、接着剤が足に付着します。
+移動しようとすると、グルーがネバネバと張り付いてきた！
 The glue slows you down!
-接着剤はあなたを遅くします！
+グルーのせいで動きが鈍くなった！
 The glue slows you down! (-DamageDealt SP)
-接着剤はあなたを遅くします！ (-DamageDealt SP)
+グルーのせいで素早く動けない！ (-DamageDealt SP)
 Firebolt
 ファイアボルト
 Elemental's Firebolt
@@ -7821,33 +7821,33 @@ Elemental's Firebolt
 Elemental's Gust
 エレメンタルの突風
 A ball of flame that does DamageDealt damage.
-DamageDealt ダメージを与える炎のボール。
+DamageDealt ダメージを与える火球
 You a hurl a firebolt!
-あなたは火の玉を投げつけます！
+火球を投げつけた！
 Choose aim direction
-照準方向を選択
+発射方向を選択
 Windblast
 ウインドブラスト
 Three puffs of wind that do DamageDealt pressure damage, stun briefly, and push targets back.
-ダメージを与える風を 3 回吹き付けて圧力ダメージを与え、短時間気絶させ、ターゲットを押し戻します。
+風を3回吹き付けて DamageDealt ダメージを与える。命中した敵を気絶させ、ノックバックさせる。
 You press your wrists together and conjure a blast of wind!
-手首を一緒に押して、風を吹き込みます！
+圧縮した風を押し出す！
 Choose aim direction
 照準方向を選択
 Knife
 ナイフ
 Throw one of your knives DamageDealt damage. Lands in the target's tile, but is recoverable afterward.
-ナイフを 1 本投げてダメージを与えます。ターゲットのタイルに着地しますが、後で回復できます。
+ナイフを投げる。落ちたナイフは回収可能。
 You a throw a knife!
-ナイフを投げろ！
+ナイフを投げた！
 Choose aim direction
-照準方向を選択
+投擲方向を選択
 Shadow Dagger
 シャドーダガー
 A cold shadowy blade that deals DamageDealt damage and pierces all in its path.
-DamageDealt ダメージを与え、その経路内のすべてを貫通する冷たい影の刃。
+経路上のすべての敵に DamageDealt ダメージを与える、凍てつく影のダガーを投げる。
 You a hurl a shadowy dagger!
-あなたは影の短剣を投げます！
+シャドーダガーを投擲した！
 Choose aim direction
 照準方向を選択
 Shadow Slash
@@ -7855,111 +7855,111 @@ Shadow Slash
 Shadow Scythe
 シャドーサイス
 Slice the area in front of you, dealing a delayed DamageDealt damage in an area and slowing briefly.
-あなたの前のエリアをスライスし、そのエリアに遅延ダメージダメージを与え、一時的に減速します。
+前方のエリアを切り裂き、一定ターン数後に DamageDealt ダメージを与え、減速効果を付与する。
 You create a tear in space with your finger!
-指で空間に裂け目を作ります！
+指で宙をなぞり、空間を切り裂く！
 Choose aim direction
 照準方向を選択
 Portal
 ポータル
 Teleport to a nearby location (including into darkness) with twice the range.
-2 倍の範囲で近くの場所 (暗闇を含む) にテレポートします。
+暗闇を含む、視界の2倍の距離までワープする。
 You call upon a misty portal to transport you!
-あなたは霧のポータルにあなたを輸送するよう呼びかけます！
+ポータルを召喚する！
 Choose target location
 ターゲットの場所を選択
 Blink
-まばたき
+ブリンク
 Instantly teleport to a location you can see.
-すぐに見える場所にテレポートします。
+視界範囲内にテレポートする。
 You teleport!
-あなたはテレポートします！
+瞬間移動した！
 Choose target location
-ターゲットの場所を選択
+転移先を選択
 Ice Shard
 アイスシャード
 A shard of ice that does DamageDealt damage and slows for Duration turns. Freezes if already slowed or drenched.
-DamageDealt ダメージを与え、Duration ターンの間減速する氷の破片。すでに減速しているかびしょぬれになっている場合はフリーズします。
+氷の礫を発射し、 DamageDealt ダメージを与え、Duration ターンの間減速させる。対象がすでに減速か水濡れ状態の場合、凍結状態になる。
 You a hurl a shard of ice!
-あなたは氷の破片を投げつけます！
+氷の破片を投げつけた！
 Choose aim direction
 照準方向を選択
 Ice Lance
 アイスランス
 A quick-moving shard of ice that does DamageDealt damage and slows for Duration turns and passes through enemies. Freezes if already slowed or drenched.
-ダメージを与え、Duration ターンの間減速し、敵を通り抜ける、動きの速い氷の破片。すでに減速しているかびしょぬれになっている場合は凍結します。
+氷の槍を素早く発射し、 DamageDealt ダメージを与え、Duration ターンの間減速させる。対象がすでに減速か水濡れ状態の場合、凍結状態になる。
 You conjure a mighty spear of ice and hurl it forward!
-強力な氷の槍を召喚し、前方に投げつけます!
+強大な氷槍を召喚し、前方に投げつける！
 Choose aim direction
 照準方向を選択
 Snowball
 スノーボール
 A fast orb that leaves behind a frigid cloud of ice. Enemies walking in the cloud take DamageDealt ice damage per tile and are slowed.
-冷たい氷の雲を残す高速オーブ。雲の中を歩いている敵は、タイルごとにダメージを与えられた氷のダメージを受け、減速します。
+通り道に氷霧を残す氷のオーブを放つ。氷霧の中にいる敵は DamageDealt の氷ダメージを受け、減速状態になる。
 You a hurl a snowy blast!
-あなたは雪の爆発を投げつけます！
+氷霧の塊を投げつける！
 Choose aim direction
 照準方向を選択
 Winterblast
 ウィンターブラスト
 A piercing orb that leaves a trail of ice. Deals DamageDealt ice damage to enemies hit.
-氷の跡を残す突き刺すオーブ。ダメージヒットした敵に氷属性のダメージを与える。
+突き刺す氷のオーブを放つ。 DamageDealt 氷ダメージを与える。
 You a hurl a frigid orb!
-あなたは極寒のオーブを投げつけます！
+極寒のオーブを発射する！
 Choose aim direction
 照準方向を選択
 Freeze
-氷結
+フリーズ
 Freeze an adjacent target for Duration turns.
-Duration ターンの間、隣接するターゲットを凍結します。
+Duration ターンの間、隣接するターゲットを凍結させる。
 You utter dark words of ice-cold truths.
-あなたは氷のように冷たい真実の暗い言葉を口にします。
+黒き氷の真実を口にした。
 Choose a target to freeze
-フリーズするターゲットを選択
+ターゲットを選択
 Flash Frost
 フラッシュフロスト
 Deal DamageDealt ice damage in a 3x3 area. Drenched creatures are frozen for 8 turns.
-ダメージを与える 3x3 のエリアで氷のダメージを与えた。びしょぬれになったクリーチャーは 8 ターン凍結する。
+3x3 のエリアに DamageDealt 氷ダメージを与える。水濡れ状態の敵は8ターンの間凍結状態になる。
 You recite a frigid poem...
-あなたは極寒の詩を唱えます...
+極寒の詩を唱えた……
 Choose a 3x3 area to freeze
-フリーズする 3x3 エリアを選択
+3x3エリアを選択
 Shatter
 シャッター
 Shatter
 シャッター
 When a frozen target thaws or dies, deals DamageDealt ice damage to nearby targets and slow for 4 turns..
-凍結したターゲットが解凍または死亡すると、近くのターゲットにダメージを与える氷のダメージを与え、4 ターンの間減速します..
+凍結状態の敵が解凍、または倒れると、近くのターゲットに DamageDealt 氷のダメージを与え、4 ターンの間減速状態にする。
 Ignite
-発火
+イグナイト
 Ignite
-発火
+イグナイト
 Ignite a friendly target for Duration turns, dealing DamageDealt fire damage per turn to it and nearby targets.
-味方のターゲットに持続時間の間点火し、そのターゲットと近くのターゲットにターンごとにダメージを与えた火のダメージを与えます。
+味方に Duration 発火状態を付与し、ターン毎に近くの敵に DamageDealt 火ダメージを与える。
 You spin in a circle, inscribing flames with your feet!
-足で炎を刻みながらぐるぐる回る！
+地面につま先で炎のサークルを刻む！
 Choose a friendly target to ignite
-点火する味方のターゲットを選択してください
+点火する味方を選択
 Conjure Chain
-召喚チェーン
+チェーン召喚
 Magic Chain
 魔法の鎖
 Witch's Chain
 魔女の鎖
 Throws a chain that does DamageDealt chain damage. Targets with 50% or more binding take 50 crush damage and are slowed for 4 turns.
-DamageDealt チェーン ダメージを与えるチェーンを投げます。拘束力が50%以上のターゲットは50の粉砕ダメージを受け、4ターンの間減速する。
+チェーンを投げ、 DamageDealt チェーンダメージを与える。拘束度が50%以上の敵は50の打撃ダメージを受け、4ターンの間減速状態になる。
 You a hurl a strand of chain!
-あなたはチェーンのストランドを投げつけます！
+鎖を召喚して投げつけた！
 Choose aim direction
 照準方向を選択
 Conjure Ropes
-ロープを召喚する
+ロープ召喚
 Animated Rope
-アニメーションロープ
+動くロープ
 Launch 3 ropes that deal DamageDealt chain damage each and add 22 rope binding.
-3 本のロープを発射し、それぞれが DamageDealt チェーン ダメージを与え、ロープ バインディングを 22 追加します。
+3本のロープを発射し、それぞれが DamageDealt チェーンダメージを与え、縄で22の拘束度を追加する。
 You animate a bunch of ropes!
-あなたはたくさんのロープを動かしています！
+大量のロープを召喚した！
 Choose aim direction
 照準方向を選択
 Choose Class:
@@ -7967,17 +7967,17 @@ Choose Class:
 Spell Choice:
 スペルの選択:
 Choose Spells
-欲しいものを選ぶ
+スペルを選ぶ
 Random Spells
-ランダムスペル
+スペルをランダムにする
 Distraction Mode:
 ディストラクションモード:
 Aroused
 興奮
 Fighter
-ファイター
+戦士
 Peasant
-農民
+持たざるもの
 Save Mode:
 セーブモード:
 Save Codes
@@ -7985,117 +7985,117 @@ Save Codes
 Roguelike
 ローグライク
 Prison Strictness:
-刑務所の厳しさ:
+牢屋の厳重さ:
 Strict
-厳しく
+厳重
 Easy
 簡単
 Allow Rear Plugs
-アナルプラグ許容
+アナルプラグ許可
 Allow Piercings
-ピアス許容
+ピアス許可
 Steel Torrent
 鋼鉄の奔流
 Steel Rain
-鋼鉄の雨
+スティールレイン
 The plug hits you! (DamageDealt)
-プラグが当たる！ (与ダメージ)
+プラグが当たった！ (DamageDealt ダメージ)
 The plug directs itself between your legs!
-プラグはあなたの足の間に向けられます！
+プラグが挿入された！
 Fire 4 Steel Rain in quick succession toward the target point. Best in open spaces.
-目標地点に向かって 4 つのスティール レインをすばやく連続して発射します。オープン スペースが最適です。
+目標地点に向かって、4つの鎖の雨を降らせる。広いところで使おう。
 Fires a steel plug that deals DamageDealt piercing damage. Bound targets are Plugged, which increases Distraction over time.
-DamageDealt 貫通ダメージを与える鋼のプラグを発射します。バウンドしたターゲットはプラグインされ、時間の経過とともに気晴らしが増加します。
+鋼鉄のプラグを発射し、 DamageDealt 刺突ダメージを与える。縛られている敵に命中した場合、挿入されてターン毎に興奮地が上昇する。
 You raise your hand and a steel projectile appears!
-手をあげると鋼鉄の弾丸が出現！
+手をあげると鋼鉄の弾丸が現れた！
 You raise your hand and several steel projectiles appear!
-手をあげると鋼鉄の弾丸が数発出現！
+手をあげると鋼鉄の弾丸が現れた！
 Choose aim direction
 照準方向を選択
 Choose target point
-ターゲットポイントを選択
+照準範囲を選択
 Bola
-彼女はそうだった
+投げ縄
 Restraining Device
 拘束装置
 The thrown restraining device latches onto you as you struggle to get it off!!!
-投げられた拘束装置は、あなたがそれを下ろすのに苦労しているときにあなたに引っ掛かります!!!
+もがいていると、更に拘束装置が絡みついてくる！
 The restraining device wraps many elastic cables around you!!!
-拘束装置は、多くの弾性ケーブルをあなたの周りに巻き付けます!!!
+拘束装置からケーブルが伸び、全身に絡みついてくる！
 Shadowy Grip
 シャドーグリップ
 A dark hand latches onto you and holds you tight!
-暗い手があなたに引っかかり、あなたをしっかりと抱きしめます！
+影の手が全身に絡みつき、締め上げてくる！
 Celestial Orb
 天体のオーブ
 You are snugly wrapped in glowing ropes!
-あなたは光るロープにぴったりと包まれています！
+光るロープで縛られてしまった！
 Obsidian Orb
 黒曜石のオーブ
 Metallic restraints encircle your body!
-金属拘束具があなたの体を取り囲みます！
+黒曜石の拘束具に取り付かれた！
 Rubberizing Bolt
-ゴム引きボルト
+ラバーボルト
 Rubber Bolt
 ラバーボルト
 The latex spreads across your limbs and rubberizes, forming a tough barrier!
-ラテックスが手足全体に広がり、ゴム状になり、強固なバリアを形成します!
+ラバーが全身に広がり、行動を制限される！
 The latex spreads across your limbs and hardens, forming a stretchy layer!
-ラテックスが手足全体に広がって固まり、伸縮性のある層を形成！
+ラバーが全身に広がり、固まって層になった！
 Bola
-彼女はそうだった
+投げ縄
 Choose aim direction
 照準方向を選択
 You throw a bola!
-あなたはボラを投げます！
+投げ縄を投げた！
 You ready a bola!
-ボラの準備ができました！
+投げ縄を投げる準備ができた！
 You are feeling drowsy...
-あなたは眠気を感じています...
+気絶しそう……
 Shadow Strike
 シャドウストライク
 Shadow Heel
-シャドーヒール
+シャドウヒール
 Runic Ward
 ルーンワード
 Gives yourself or a creature a magic shield for 50 turns, granting +30 Magic Armor.
-50 ターンの間、自分またはクリーチャーに魔法の盾を与え、+30 の魔法の鎧を与える。
+50ターンの間、自分またはクリーチャーに魔法の盾を与え30のマジックアーマーを与える。
 You whisper a word of protection!
-あなたは保護の言葉をささやきます！
+魔力をから身を守る呪文を唱えた！
 Choose creature to shield
-シールドするクリーチャーを選択
+シールドを付与する対象を選択
 Afterimage
-残像
+アフターイメージ
 Massively increases a creature's evasion for 5 attacks. Expires after 25 turns.
-5回の攻撃でクリーチャーの回避を大幅に増加させます。 25ターンで消滅。
+25ターンの間、5回のみ回避力を大幅に上昇させる。
 Your movements intensify!
-あなたの動きは激化します！
+残像を生成した！
 Choose creature to buff
-バフするクリーチャーを選択
+対象を選択
 Magical Sight
 マジカルサイト
 Highlight the location of interesting magical phenomena for 20 turns
-興味深い魔法現象の場所を20ターン目立たせる
+魔力の宿る場所をハイライトさせる。
 You analyze the target!
-あなたはターゲットを分析します！
+ターゲットを分析した！
 Choose object to analyze
 分析するオブジェクトを選択
 Barrier Runes
-バリアルーン
+バリアのルーン
 Creates a 1x1 field of barrier monoliths that blocks BlockAmount damage from projectiles for DelayTime turns, but doesn't block movement.
-DelayTime ターンの間、発射体からの BlockAmount ダメージをブロックするバリア モノリスの 1x1 フィールドを作成しますが、移動はブロックしません。
+DelayTime ターンの間、発射体からの BlockAmount ダメージをブロックする1x1サイズのモノリスを生成する。モノリスは通り抜けられる。
 You raise a field of runes with a command word!
-あなたは合言葉でルーンのフィールドを上げます！
+呪文を唱えると、防護壁が展開する！
 Choose barrier location
 バリアの場所を選択
 Electric Field
-電界
+エレクトリックフィールド
 Creates a conductive area for Duration turns. Makes all entities in the area Conductive, forcing them to share 50% electric damage.
-持続時間ターンの間、導電性エリアを作成します。エリア内のすべてのエンティティを導電性にし、50% の電気ダメージを分かち合うよう強制します。
+Duration ターンの間、導電性エリアを作成する。エリア内のすべてのエンティティを導電性にし、電気ダメージを受けた際に50%のダメージを他の対象にも与える。
 You energize the targeted area!
-狙ったところを活性化！
+狙ったところを活性化する
 Choose target 3x3 area
-対象の 3x3 エリアを選択
+3x3エリアを選択
 Witch's Electricity
 魔女の電気
 Witch's Electric Orb
@@ -8103,161 +8103,161 @@ Witch's Electric Orb
 Witch's Electric Burst
 ウィッチズエレクトリックバースト
 Electrify
-電化
+エレクトリファイ
 A delayed shock that deals DamageDealt damage and stuns for Duration turns.
-DamageDealt ダメージを与え、Duration ターンの間気絶させる遅延ショック。
+1ターン後に DamageDealt 電気ダメージを与え、命中時に Duration ターンの間気絶させる。
 You charge up a burst of electricty!
-あなたは電気の爆発を充電します！
+電気の塊を召喚する！
 Choose target location
-ターゲットの場所を選択
+場所を選択
 The elemental channels the force of the storm!
-エレメンタルは嵐の力を伝えます！
+エレメンタルの力が嵐を引き起こす！
 Fireball
-火の玉
+ファイアボール
 A slow moving ball of flame that explodes for 120 fire damage to the target and DamageDealt damage to surrounding enemies.
-動きの遅い炎の球が爆発し、ターゲットに 120 の火炎ダメージを与え、周囲の敵にダメージを与えます。
+動きの遅い火の玉を発射し、ターゲットに 120 の火ダメージを与え、周囲の敵に DamageDealt 火ダメージを与える。
 You a hurl a fireball!
-あなたは火の玉を投げます！
+火の玉を投げた！
 Choose aim direction
 照準方向を選択
 Incinerate
-焼却する
+ファイアストーム
 A tornado of flame that does DamageDealt damage per turn for LifeTime turns.
-LifeTime ターンの間、毎ターンダメージを与える炎の竜巻。
+LifeTime ターンの間、毎ターン DamageDealt 火ダメージを与える炎の竜巻を作り出す。
 You conjure a gout of flame!
-あなたは炎の痛風を引き起こします！
+火炎の奔流を作り出した！
 Choose target AoE location
-ターゲットの AoE 位置を選択
+位置を選択
 Hailstorm
-ひょう嵐
+ヘイルストーム
 A cloud of falling ice that does DamageDealt damage per turn for LifeTime turns and slows.
-LifeTime ターンの間、ターンごとに DamageDealt ダメージを与え、速度を低下させる落下する氷の雲。
+LifeTime ターンの間、毎ターン DamageDealt 氷ダメージを与え、速度を低下させる落下する氷の雲を作り出す。
 You conjure a flurry of frost!
-あなたは霜の嵐を引き起こします！
+霜の嵐を作り出した！
 Choose target AoE location
-ターゲットの AoE 位置を選択
+位置を選択
 Raincloud
-雨雲
+レイン
 After 3 turns, rain falls, creating a 3x3 grid of water and dealing DamageDealt acid damage to enemies within.
-3 ターン後、雨が降り、3x3 グリッドの水が生成され、その中にいる敵にダメージを与える酸ダメージを与えます。
+3ターン後、3x3の範囲に雨が降り、水が生成する。その中にいる敵に DamageDealt 酸ダメージを与える。
 You create a stormy cloud!
-あなたは嵐の雲を作成します ！
+雨雲を呼び出した！
 Choose target AoE location
-ターゲットの AoE 位置を選択
+位置を選択
 Field of Frost
-霜の畑
+フロストフィールド
 Freezes a 5x5 area (ice slows entities). Enemies in the area take DamageDealt damage per turn for LifeTime turns.
-5x5 エリアを凍結します (氷はエンティティを遅くします)。エリア内の敵はライフタイム ターンの間、ターンごとに与ダメージを受ける。
+5x5の範囲を凍結させ、範囲内の対象に減速効果を付与する。エリア内の敵は LifeTime ターンの間、ダメージを受ける。
 You stomp your foot and call forth the storm!
-あなたは足を踏み鳴らし、嵐を呼びます！
+足を踏み鳴らし、嵐を召喚する！
 Choose target AoE location (5x5)
-ターゲットの AoE 位置を選択 (5x5)
+位置を選択(5x5)
 Healing Light
 ヒーリングライト
 Channel to heal 15 hitpoints per turn to summoned allies within a 5x5 area.
-チャネルを使用して、5x5 エリア内の召喚された味方をターンごとに 15 ヒットポイント回復します。
+5x5 エリア内味方をターン毎に15ポイント回復させる。
 You conjure a healing light!
-あなたは癒しの光を呼び起こします！
+癒やしの光を呼び起こした！
 Choose target AoE location (5x5)
-ターゲットの AoE 位置を選択 (5x5)
+位置を選択(5x5)
 Crackle
-クラックル
+クラック
 Stun Blast
 スタンブラスト
 Storm Bolt
 ストームボルト
 A bolt of lightning that does DamageDealt electric damage to enemies in a 4-range line and briefly stuns.
-4 範囲内の敵にダメージを与える電撃ダメージを与え、短時間スタンさせる稲妻。
+4マスの敵に DamageDealt 電気ダメージを与え、スタン状態を付与する。
 Lightning erupts from your fingertips!
-指先から稲妻が噴き出す！
+指先から稲妻がほとばしる！
 Choose line direction (max range 4 tiles)
-線の方向を選択 (最大範囲 4 タイル)
+方向を選択(4マス)
 Tremor
-身震い
+クエイク
 Make vulnerable and slow enemies in targeted area for Duration turns, and deal DamageDealt crush damage.
-対象エリア内の脆弱で鈍足な敵を持続ターンの間作り、DamageDealt クラッシュ ダメージを与えます。
+Duration ターンの間、敵に脆弱状態と減速状態を付与し、 DamageDealt 打撃ダメージを与えるエリアを生成する。
 You call forth the rage of the earth.
-あなたは大地の怒りを呼び起こします。
+大地の怒りを呼び覚ました！
 Choose AoE
-AoE を選択
+範囲を選択
 Earthquake
-地震
+アースクエイク
 Channel for 5 turns to send 2 tremors per turn in target area.
-5 ターンの間チャネルして、ターゲット エリアに 1 ターンあたり 2 つの震えを送ります。
+5ターンの間、1ターン毎に2箇所に地震を発生させるエリアを生成する。
 You channel the fury of the earth!!!
-あなたは地球の怒りを導きます!!!
+大地の憤怒を召喚した！
 Choose AoE
-AoE を選択
+範囲を選択
 Shock Orb
 ショックオーブ
 Shock Orb
 ショックオーブ
 A slow-moving orb that deals DamageDealt electric damage to an adjacent enemy each turn.
-毎ターン隣接する敵にダメージを与える電気ダメージを与える動きの遅いオーブ。
+毎ターン隣接する敵に DamageDealt 電気ダメージを与える動きの遅いオーブを発射する。
 You hurl a charged orb!
-帯電したオーブを投げます！
+電を纏うオーブを投げた！
 Choose aim direction (max range 4 tiles)
-照準方向を選択 (最大範囲 4 タイル)
+方向を選択(4マス)
 Lightning Rune
 雷のルーン
 Lightning Rune
 雷のルーン
 A trap that deals DamageDealt electric damage and stuns for 4 turns. Takes 5 turns to setup.
-ダメージを与える電気ダメージを与え、4 ターンの間気絶させるトラップ。設置まで5ターンかかります。
+DamageDealt 電気ダメージを与え、4ターンの間スタン状態を付与するトラップを作り出す。設置まで5ターンかかる。
 You conjure a charged trap!
-あなたは帯電したトラップを呼び出します!
+雷の罠を仕掛けた！
 Choose location for trap
-トラップの場所を選択
+設置場所を選択
 Freeze Rune
-フリーズルーン
+氷のルーン
 Freeze Rune
 フリーズルーン
 A trap that deals DamageDealt ice damage and freezes for 30 turns. Takes 5 turns to setup.
-DamageDealt 氷ダメージを与え、30 ターン凍結するトラップ。設置まで5ターンかかります。
+DamageDealt 電気ダメージを与え、30ターンの間凍結状態を付与するトラップを作り出す。設置まで5ターンかかる。
 You conjure an icy trap!
-あなたは氷の罠を呼び起こします！
+氷の罠を仕掛けた！
 Choose location for trap
-トラップの場所を選択
+設置場所を選択
 Flame Rune
 炎のルーン
 Flame Rune
 炎のルーン
 A trap that deals DamageDealt fire damage in an area. Takes 5 turns to setup.
-範囲内にダメージを与える火のダメージを与えるトラップ。設置まで5ターンかかります。
+範囲内に DamageDealt 火ダメージを与えるトラップを作り出す。設置まで5ターンかかる。
 You conjure an incendiary trap!
-あなたは焼夷トラップを呼び出します!
+炎の罠を仕掛けた！
 Choose location for trap
-トラップの場所を選択
+設置場所を選択
 Static Sphere
-静止球
+スタティックスフィア
 Static Sphere
-静止球
+スタティックスフィア
 Conjure a sphere for Duration turns that makes nearby entities Conductive and each turn deals DamageDealt electric damage to one of them.
-近くのエンティティを導電性にする球体を持続ターンの間召喚し、各ターンはそれらの1つにDamageDealt電気ダメージを与えます。
+近くのエンティティを導電性にする球体を Duration の間召喚する。ターン毎に、範囲内のエンティティに DamageDealt 電気ダメージを与える。
 You summon a grey, featureless sphere adorned by static!
-静電気で飾られた、特徴のない灰色の球体を召喚します!
+静電気を放つ球体を召喚した！
 You summon a grey, featureless sphere adorned by static!
-静電気で飾られた、特徴のない灰色の球体を召喚します!
+静電気を放つ球体を召喚した！
 Choose sphere location
-球の位置を選択
+設置場所を選択
 Fissure
-亀裂
+フォッシル
 Lava Fissure
-溶岩クラック
+ラヴァフォッシル
 A great fissure erupts from the earth, dealing 70 fire damage to enemies in a 4-range line and dealing 15 damage/turn for 6 turns.
-大地から大きな裂け目が噴き出し、4射程内の敵に70の火属性ダメージを与え、6ターンの間、毎ターン15ダメージを与える。
+大地から溶岩の吹き出す亀裂を作り出す。4マスの敵に70の火ダメージを与え、その後ターン毎に15ダメージを与える地面を6ターン生成する。
 You stomp the ground and the earth opens its gaping maw!
-あなたが地面を踏むと、地球は大きな口を開きます!
+大地に足を踏み降ろし、溶岩の溢れる亀裂を走らせた！
 Choose line direction (max range 4 tiles)
-線の方向を選択 (最大範囲 4 タイル)
+方向を選択 (4マス)
 Lightning Bolt
-稲妻
+ライトニングボルト
 A bolt of lightning that does DamageDealt damage to enemies in an infinite line and briefly stuns.
-無限の列にいる敵にダメージを与え、短時間スタンさせる稲妻。
+無限の射程を持つ稲妻を放ち、範囲内の敵に DamageDealt 電気ダメージを与える。
 You unleash a bolt of lightning!
-あなたは稲妻を放ちます！
+神速の稲妻を開放した！
 Choose line direction
-線の方向を選択
+方向を選択
 Corona
 コロナ
 Corona
@@ -8271,357 +8271,357 @@ Chaos Beam
 Mystic Beam
 ミスティックビーム
 A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt fire damage to the first target hit.
-2 ターンの間チャネリングする光線 (短時間気絶) の後、最初に命中したターゲットに即座に DamageDealt 火ダメージを与えます。
+2ターンの間チャージし、命中したターゲットに DamageDealt 火ダメージを与えるビームを放つ。
 You charge a powerful beam attack!!!
-強力なビーム攻撃をチャージ!!!
+敵を償却するレーザーを放つ！
 Choose line direction
-線の方向を選択
+方向を選択
 Icicles
-つらら
+アイシクル
 Icicle
-つらら
+アイシクル
 Channel 3 turns to fire 3 icicles that deal DamageDealt ice damage and slow for 4 turns, freezing slowed/drenched targets for 3 turns.
-チャンネル 3 ターンで 3 つのつららを発射し、ダメージを与えた氷のダメージを与え、4 ターンの間減速し、減速/びしょぬれになったターゲットを 3 ターン凍結します。
+3ターンの間チャージし、命中したターゲットに DamageDealt 氷ダメージを与えるつららを3発放つ。命中した敵は4ターンの間減速し、水濡れまたは既に減速状態である場合、3ターンの間凍結する。
 You raise a hand and icicles fly forward!
-手をあげるとつららが飛んでいきます！
+手を振りかざし、つららを飛ばす！
 Choose line direction
-線の方向を選択
+方向を選択
 Volcanism
-火山活動
+ボルケイノ
 An area of summoned rocks becomes explosive. Deal fire damage to them to ignite, dealing DamageDealt fire damage to adjacent targets.
-召喚された岩の範囲が爆発する。それらに火のダメージを与えて発火させ、隣接するターゲットにダメージを与えた火のダメージを与える。
+地中から爆発する岩石を召喚する。範囲内の敵を発火させ、周囲の敵に DamageDealt 火ダメージを与える。
 You stomp your foot and magma wells up beneath the ground!
-足を踏み鳴らすとマグマが地中から湧き出る！
+足を踏み鳴らし、地中から溶岩を湧き上がらせる！
 Choose monoliths to enchant
 エンチャントするモノリスを選択
 Coalesce
 合体
 Gathers slime and slimed enemies into a central point. Deals DamageDealt glue damage per square of slime and Encases slimed enemies. Costs half mana if there is only slime.
-スライムとスライム化した敵を中心に集めます。スライム 1 マスあたりに接着剤ダメージを与え、スライム化した敵を包み込みます。スライムだけの場合、マナ コストは半分になります。
+スライムとスライム化した敵を中心に集める。範囲内の敵に DamageDealt グルーダメージを与え、スライムで包み込む。スライムだけの場合、マナ コストは半分になる。
 You command the slime to draw enemies in!
-スライムに命じて敵を引き寄せろ！
+周囲のスライムに集合を命じた！
 Choose area containing slime
 スライムがいるエリアを選択
 Animate Slime
-動くスライム
+スライム生成
 Summons up to 3 slimes on slime tiles in an AoE. The slimes are friendly to you.
-範囲内のスライム タイルに最大 3 つのスライムを召喚します。スライムはあなたに友好的です。
+指定した範囲の、スライムが付着する床に味方のスライムを生成する。最大3体まで同時に生成可能。
 You concentrate magical energy into the slime, giving it a will of it's own...
-スライムに魔力を集中させ、意思を持たせる……
+地面のスライムに魔力を流す……
 Choose area containing slime
 スライムがいるエリアを選択
 Animate Large Slime
-大きなスライムを動かす
+巨大スライム生成
 Target an area with at least 3 slime tiles. Summons a large slime that is friendly to you.
-スライムタイルが3つ以上あるエリアを対象にすると、味方の大型スライムが召喚されます。
+指定した範囲の、スライムが付着する床に味方の巨大スライムを生成する。生成には1体につき3枚のスライムが付着した床が必要。
 You concentrate magical energy into the slime, giving it a will of it's own...
-スライムに魔力を集中させ、意思を持たせる……
+地面のスライムに魔力を流し、巨大な塊を作り上げる……
 Choose area containing slime
 スライムがいるエリアを選択
 Latex Puppet
 ラテックスパペット
 Target an area containing helpless encased enemies. Transforms up to 3 of them into latex dolls that serve you for a while.
-無力な閉じ込められた敵がいるエリアをターゲットにします。そのうち最大 3 体をラテックス人形に変え、しばらくの間あなたに仕えます。
+指定した範囲の、無力化された敵を味方のラテックス人形にする。最大3体まで同時に生成可能。
 You concentrate magical energy into your victim's bindings, forcing them to move...
-あなたは犠牲者の拘束具に魔法のエネルギーを集中させ、それらを強制的に動かします...
+敵の拘束具に魔力を流し、強制的に動かす……
 Choose area containing encased helpless enemies.
-無力な敵が閉じ込められているエリアを選択してください。
+無力化された敵のいるエリアを選択
 Solidify
-固める
+ソリッド
 Solidifies slime in the area into Latex. Latex adheres to enemies and slowly binds them, escasing them when they are fully bound.
-エリア内のスライムをラテックスに固めます。ラテックスは敵に付着してゆっくりと拘束し、完全に拘束されると脱出します。
+エリア内のスライムを固めてラバーにし、範囲内の敵を完全に拘束するまで取り込む。
 You inscribe a transmutation circle on the floor.
-あなたは床に変成円を刻みます。
+床に変化のサークルを刻む。
 Choose area containing slime
 スライムがいるエリアを選択
 Slime Repulsion
 スライム反発
 Gain +50 glue resist.
-グルーレジスト+50を得る。
+50のグルー耐性を得る。
 Spread
-広める
+スプレッド
 Slime in the target area expands by 1 unit in the four cardinal directions. Refreshes duration to 12-20 turns.
-対象エリア内のスライムが上下左右に1ユニットずつ拡大する。持続時間が12～20ターンに更新される。
+エリア内のスライムが上下左右に1マスずつ広がる。持続時間が12～20ターンに更新される。
 The slime spreads!
-スライムが広がる！
+スライムが広がった！
 Choose area containing slime
 スライムがいるエリアを選択
 Wall of Slime
 スライムの壁
 Unlocks horizontal and vertical slime walls that traps enemies who try to pass through.
-通過しようとする敵を閉じ込める水平および垂直のスライム壁のロックを解除します。
+スライムの壁を解除する。
 Wall of Slime (Vert)
-スライムの壁(ヴェール)
+スライムの壁(縦)
 Creates a vertical wall of slime for 20 turns. Enemies that pass through are stuck in the wall and slimed.
-20ターンの間、スライムの垂直壁を生成します。通り抜けた敵は壁に引っかかって痩せます。
+20ターン継続する、縦向きのスライムの壁を生成する。通り抜けようとすると、スライムが付着する。
 You tap your foot and a wall of slime slowly raises out of the ground.
-足を軽くたたくと、スライムの壁がゆっくりと地面から浮き上がります。
+足を軽く踏み鳴らすと、地面からスライムの壁が浮き上がった。
 Choose vertical wall origin (5 tiles high)
-垂直壁の起点を選択 (高さ 5 タイル)
+壁の起点を選択 (縦5マス)
 Wall of Slime (Horiz)
-スライムの壁（ホライズ）
+スライムの壁（横）
 Creates a horizontal wall of slime for 20 turns. Enemies that pass through are stuck in the wall and slimed.
-20ターンの間、スライムの横壁を作る。通り抜けた敵は壁に引っかかって痩せます。
+20ターン継続する、横向きのスライムの壁を生成する。通り抜けようとすると、スライムが付着する。
 You tap your foot and a wall of slime slowly raises out of the ground.
-足を軽くたたくと、スライムの壁がゆっくりと地面から浮き上がります。
+足を軽く踏み鳴らすと、地面からスライムの壁が浮き上がった。
 Choose horizontal wall origin (5 tiles wide)
-水平な壁の起点を選択 (幅 5 タイル)
+壁の起点を選択 (横5マス)
 Wall of Latex
 ラテックスの壁
 Unlocks horizontal and vertical latex walls that encase enemies that walk through.
-通り抜ける敵を包み込む水平および垂直のラテックス壁のロックを解除します。
+ラテックスの壁を解除する。
 Wall of Latex (Vert)
-ラテックスの壁 (Vert)
+ラテックスの壁 (縦)
 Creates a vertical wall of latex for 20 turns. Enemies that pass through are encased, take DamageDealt glue damage if not encased, and blinded.
-ラテックスの垂直壁を20ターン生成します。通り抜けた敵は包囲され、包囲されていない場合はDamageDealt接着剤のダメージを受け、盲目になります。
+20ターン継続する、縦向きのラテックスの壁を生成する。通り抜けようとすると、ラテックスが張り付き DamageDealt グルーダメージを受け、盲目状態になる。
 You tap your foot and a wall of latex stretches out across the corridor.
-足を軽くたたくと、ラテックスの壁が廊下を横切って伸びています。
+足を軽く踏み鳴らすと、ゴムの壁が伸びてきた。
 Choose vertical wall origin (5 tiles high)
-垂直壁の起点を選択 (高さ 5 タイル)
+壁の起点を選択 (縦5マス)
 Wall of Latex (Horiz)
-ラテックスの壁 (ホライズ)
+ラテックスの壁 (横)
 Creates a horizontal wall of latex for 20 turns. Enemies that pass through are encased, take DamageDealt glue damage if not encased, and blinded.
-20ターンの間、ラテックスの水平壁を作成します。通り抜けた敵は包囲され、包囲されていない場合はDamageDealt接着剤のダメージを受け、盲目になります。
+20ターン継続する、横向きのラテックスの壁を生成する。通り抜けようとすると、ラテックスが張り付き DamageDealt グルーダメージを受け、盲目状態になる。
 You tap your foot and a wall of latex stretches out across the corridor.
-足を軽くたたくと、ラテックスの壁が廊下を横切って伸びています。
+足を軽く踏み鳴らすと、ゴムの壁が伸びてきた。
 Choose horizontal wall origin (5 tiles wide)
-水平な壁の起点を選択 (幅 5 タイル)
+壁の起点を選択 (横5マス)
 Earthshape
 アースシェイプ
 Unlocks 3 spells that allow creating mounds, rings, or lines of 50hp, 25 armor rocks.
-マウンド、リング、または 50hp の 25 アーマー ロックのラインを作成できる 3 つの呪文のロックを解除します。
+範囲内に、ランダムに地面を隆起させて岩石を生成し、地面をひび割れ状態にする。岩石は50の体力と25のアーマー値を持つ。
 Earthen monoliths rise from the ground!
-土のモノリスが地面から立ち上がる！
+地面を隆起させる！
 An earthen monolith rises from the ground!
-土のモノリスが地面から立ち上がる！
+地面を隆起させる！
 Earthshape (Ring)
-アースシェイプ (リング)
+アースシェイプ (輪)
 Create a large ring of Earthen Monoliths. They have 50 hitpoints and 25 armor.
-Earthen Monoliths の大きなリングを作成します。彼らは 50 のヒットポイントと 25 の鎧を持っています。
+リング状に地面を隆起させて岩石を生成する。岩石は50の体力と25のアーマー値を持つ。
 You stomp your foot and monoliths emerge in a ring around you!
-足を踏み鳴らすとモノリスがリング状に出現！
+足を踏み鳴らし、地面を隆起させる！
 Choose ring origin
-リング元を選択
+範囲を選択
 Earthshape (Mound)
-土形（マウンド）
+土形（四角）
 Create a 3x3 field of Earthen Monoliths. They have 50 hitpoints and 25 armor.
-Earthen Monoliths の 3x3 フィールドを作成します。彼らは 50 のヒットポイントと 25 の鎧を持っています。
+3x3の範囲を隆起させ、岩石を生成する。岩石は50の体力と25のアーマー値を持つ。
 You stomp your foot and monoliths emerge from the ground!
-足を踏み鳴らすと、モノリスが地面から出現します。
+足を踏み鳴らし、地面を隆起させる！
 Choose mound origin
-マウンドの起点を選択
+起点を選択
 Earthshape (Line)
 地球の形（線）
 Create a 4-tile line of Earthen Monoliths. They have 50 hitpoints and 25 armor.
-Earthen Monoliths の 4 タイル ラインを作成します。彼らは 50 のヒットポイントと 25 の鎧を持っています。
+直線4マスの地面を隆起させ、岩石を生成する。岩石は50の体力と25のアーマー値を持つ。
 You stomp your foot and monoliths emerge from the ground!
-足を踏み鳴らすと、モノリスが地面から出現します。
+足を踏み鳴らし、地面を隆起させる！
 Choose line direction
 線の方向を選択
 Rock
-石
+岩石
 Rock
-石
+岩投げ
 Channel 1 turn to launch a rock that deals DamageDealt crush damage and slows for 4 turns. Blocks up to 80 damage.
-チャンネル 1 ターンで、DamageDealt のクラッシュ ダメージを与え、4 ターンの間減速する岩を発射します。最大 80 のダメージをブロックします。
+1ターンかけて岩を蹴り、命中した敵に DamageDealt 打撃ダメージを与え、4ターンの減速状態を付与する。岩は80ポイントまでのダメージをブロックする。
 You raise a stone from the ground and kick it forward!
-地面から石を持ち上げて、前方に蹴ります。
+地面から岩を生成し、思い切り蹴り飛ばす！
 Choose line direction
-線の方向を選択
+方向を選択
 Earth Kick
 アースキック
 Stone Projectile
-石の投射物
+石
 Kick a summoned rock to turn it into a projectile. Deals DamageDealt crush damage in a 3x3 area and slows for 4 turns.
-召喚された岩を蹴って発射物に変えます。 3x3 の範囲にダメージを与えるクラッシュ ダメージを与え、4 ターンの間スロウ効果を与えます。
+生成された岩を蹴り飛ばす。 3x3の範囲に DamageDealt 打撃ダメージを与え、4ターンの減速状態を付与する。
 With a solid kick, you launch one of your monoliths forward!
-しっかりとしたキックで、モノリスの 1 つを前方に発射します!
+岩を力いっぱい蹴り飛ばした！
 Choose a monolith to kick
-キックするモノリスを選択してください
+岩を選択
 Boulder
 ボルダー
 Boulder
 ボルダー
 Channel 1 turn to launch a huge slow rock that deals DamageDealt crush damage and slows for 8 turns. AoE, collides with summoned rocks. Blocks up to 200 damage.
-チャンネル 1 ターンで巨大なスロー ロックを発射し、DamageDealt クラッシュ ダメージを与え、8 ターンの間スローします。AoE、召喚されたロックと衝突します。最大 200 のダメージをブロックします。
+1ターンかけて巨岩を蹴り飛ばし、 DamageDealt 打撃ダメージを与え、8ターンの減速状態を付与する。他の召喚物と衝突し、200ポイントまでのダメージをブロックする。
 You raise a massive boulder from the ground and kick it forward!
-地面から巨大な岩を持ち上げて前方に蹴り飛ばす！
+地面から巨岩を生成し、全力で蹴り飛ばす！
 Choose line direction
-線の方向を選択
+方向を選択
 Stamina Up I
-スタミナアップⅠ
+スタミナアップ1
 Increases maximum SP by 12
 最大SPが12増加する
 Iron Will
 鉄の意志
 While you have 100 current willpower or more, regain an additional 4 stamina per turn.
-現在の気力が100以上ある間、ターンごとに追加でスタミナを4回復します。
+現在の気力が100以上の時、毎ターン4ポイントのスタミナを追加で回復する。
 Steadfast Guard
-不動のガード
+揺るぎない守護
 For each 10 current willpower you have over 50, gain +5 Restraint Block.
-現在の気力が 50 を超えている 10 ごとに、拘束ブロック +5 を得る。
+現在の気力が50以上の時、10を超えるごとに5ポイントの拘束抵抗力を得る。
 Willful Struggle
-故意の闘争
+意志のあるもがき
 For each 10 current willpower you have over 50, gain +1% struggle effectiveness.
-気力が 50 を超えている現在の気力が 10 になるごとに、+1% の闘争効果が得られます。
+現在の気力が50以上の時、10を超えるごとに「もがく」の効果が1%上昇する
 Your willpower provides you with additional strength! (+AMOUNT%)
 あなたの意志の力はあなたにさらなる強さをもたらします！ (+AMOUNT%)
 Athlete
 アスリート
 Sprinting costs 40% less stamina.
-全力疾走のスタミナ消費が 40% 減少します。
+スプリントのスタミナ消費が40%低下する。
 Sneaky
-スニーカー
+隠密
 You are harder to see when waiting.
-待っていると見えにくくなります。
+待機中、見つかりにくくなる。
 Dodge I
-ドッジⅠ
+回避アップ1
 +10 Evasion
-回避+10
+回避力が10増加する
 Dodge II
-ダッジ II
+回避アップ2
 +15 Evasion (25 total)
-+15 回避 (合計 25)
+回避力が15増加する(合計25)
 Dodge III
-ダッジ III
+回避アップ3
 +25 Evasion (50 total)
-+25回避（合計50）
+回避力が25増加する(合計50)
 Critical Strike
 クリティカルストライク
 Excess accuracy (over 100%) is converted to bonus physical damage percentage at 50% efficiency.
-超過命中率(100%以上)は50%の効率でボーナス物理ダメージ率に変換される。
+命中率が100%以上の時、超過分の50%を物理ダメージに加える。
 Brute Force
-強引な
+強力
 When enabled, your attacks deal 10% of your willpower as additional crush damage but cost 10 more stamina.
-有効にすると、攻撃は気力の 10% を追加のクラッシュ ダメージとして与えますが、消費するスタミナは 10 増加します。
+有効時、攻撃した際に現在の気力の10％分の打撃属性ダメージを追加で与える。追加でスタミナを10消費する。
 One With Slime
-ワンウィズスライム
+体の一部
 While standing on slime/latex, you can cast rubber spells without components.
-スライム/ラテックスの上に立っている間、コンポーネントなしでラバー呪文を唱えることができます。
+スライムかラテックスの上に立っている時、ラバー系のスペルに動作を必要としない。
 Convincing Disguise
-説得力のある変装
+納得の見た目
 While completely covered in slime and not moving, your visibility is reduced considerably.
-スライムにまみれて動かない間は視界がかなり悪くなります。
+全身をスライムに覆われている状態で待機した際、敵に見つかりにくくなる。
 Magical Implements
 魔法の道具
 While holding a magical weapon like a staff or enchanted knife, your mana costs are reduced by 20%.
-杖やエンチャントされたナイフなどの魔法の武器を持っている間、マナ コストが 20% 減少します。
+杖や魔法の武器を持っている時、マナコストが20%減少する。
 Mage Circuits
-魔道士回路
+魔術回路
 Increases the size of the passive mana pool by +100.
-パッシブマナプールのサイズを+100増やします。
+マナプールが100増加する
 Archmage
 アークメイジ
 Upcasted spells cost 25% less mana.
-アップキャストされた呪文のマナ コストが 25% 減少します。
+強化した呪文のマナコストを25%現象する。
 Temperature Play
-温度遊び
+温度プレイ
 Fire and Ice damage do 30% more damage to fully bound enemies.
-火と氷のダメージは、完全にバインドされた敵に 30% 追加のダメージを与えます。
+完全に拘束された敵を攻撃する際、火属性と氷属性の攻撃は30%強力になる。
 Fire Hazard
-火災の危険
+延焼
 Fire damage ignites enemies for 5 damage per turn for 6 turns.
-火のダメージは、6 ターンの間、ターンごとに 5 ダメージで敵を点火します。
+火属性ダメージを与えた際、6ターンの間着火させる。6ターン継続し、ターン毎に5ポイントのダメージを与える。
 Frozen Prison
-冷凍刑務所
+氷牢
 Freezing an enemy applies 10% of the enemy's max hp in binding, plus 10 per turn of freeze.
-敵を凍結すると、敵の最大 HP の 10% がバインドに適用され、加えて凍結のターンごとに 10 が適用されます。
+敵を凍結した際、敵の最大HPの10%を拘束値として相手に与える。さらに凍結状態1ターンにつき、10ポイントの拘束値を追加する。
 Lightning Rod
 避雷針
 After casting an Air or Storm spell that costs mana, become Conductive and gain 300% electric resist for 3 turns.
-マナを消費するエアまたはストームの呪文を唱えた後、伝導性になり、3 ターンの間 300% の電気抵抗を獲得します。
+マナを消費して風、または嵐の呪文を唱えた際、伝導性になり、3ターンの間電気属性への抵抗が300%上昇する。
 Frustration
 欲求不満
 When enabled, enemies in chastity become angry Frustrated Pets when becoming helpless.
-有効にすると、純潔の敵は無力になると怒り狂ったペットになります。
+有効時、貞操帯を装備した敵が完全拘束された時に怒るようになる。
 Mana Up I
-マナアップⅠ
+マナアップ1
 Increases maximum MP by 12
 最大MPが12増加する
 Mana Up II
-パワーアップⅡ
+マナアップ2
 Increases maximum MP by 12
-最大MPが12増加する
+最大MPが12増加する(合計24)
 Mana Up III
-パワーアップⅢ
+マナアップ3
 Increases maximum MP by 12
-最大MPが12増加する
+最大MPが12増加する(合計36)
 Strong Mind I
-ストロングマインドⅠ
+ストロングマインド1
 Increases maximum Distraction by 33% of base and Distraction regen by -0.1 per turn
-気晴らしの最大値をベースの 33% 増加させ、ターンごとに気晴らしの再生を -0.1 ずつ増加させます
+最大興奮値が33%上昇し、ターン経過時の興奮値低下量が0.1増える。
 Strong Mind II
-ストロングマインドⅡ
+ストロングマインド2
 Increases maximum Distraction by 33% of base and Distraction regen by -0.1 per turn
-気晴らしの最大値をベースの 33% 増加させ、ターンごとに気晴らしの再生を -0.1 ずつ増加させます
+最大興奮値が33%上昇し、ターン経過時の興奮値低下量が0.1増える。
 Strong Mind III
-ストロングマインドⅢ
+ストロングマインド3
 Increases maximum Distraction by 33% of base and Distraction regen by -0.1 per turn
-気晴らしの最大値をベースの 33% 増加させ、ターンごとに気晴らしの再生を -0.1 ずつ増加させます
+最大興奮値が33%上昇し、ターン経過時の興奮値低下量が0.1増える。
 Expert Wizard
-エキスパート ウィザード
+熟練の魔術師
 Gives you an additional spell choice slot
-追加の呪文選択スロットを提供します
+追加の呪文スロットを得る
 Master Wizard
-マスターウィザード
+達人魔術師
 Gives you an additional spell choice slot
-追加の呪文選択スロットを提供します
+追加の呪文スロットを得る
 Legendary Wizard
-伝説の魔法使い
+伝説の魔術師
 Gives you an additional spell choice slot
-追加の呪文選択スロットを提供します
+追加の呪文スロットを得る
 More Summons
-その他の召喚
+熟練召喚士
 Increases the permanent summon cap by +1 (from 2 to 3)
-永続召喚の上限を+1増やします（2から3へ）
+追加の永続召喚スロットを1得る(3体まで)
 Many Summons
-多くの召喚
+達人召喚士
 Increases the permanent summon cap by +1 (from 3 to 4)
-恒久召喚の上限を+1増やします（3から4へ）
+追加の永続召喚スロットを1得る(4体まで)
 Bomb
 爆弾
 Channel for 1 turn for a bomb that does DamageDealt fire damage in an area after DelayTime turns.
-1 ターンの間、DelayTime ターン後に、あるエリアでダメージを与えた火のダメージを与える爆弾にチャネルします。
+1ターンかけて爆弾を投擲する。爆弾は DelayTime 後に爆発し、範囲内に DamageDealt 火ダメージを与える。
 Fire in the hole!
-穴に火をつけろ！
+グレネード！
 Choose target AoE location
-ターゲットの AoE 位置を選択
+位置を選択
 Rope Snare
-ロープスネア
+縄の罠
 An invisible trap on the ground that stuns anyone who walks on it for Duration turns and applies 150 points of binding.
-地面に設置された目に見えない罠で、その上を歩くと Duration ターンの間気絶し、150 ポイントのバインドを適用します。
+透明な罠を設置する。罠を踏むと、 Duration ターンの間気絶し、150の拘束値を追加する。
 You set an invisible trap!
-見えない罠を仕掛けた！
+透明な縄の罠を仕掛けた！
 Select where to put the trap (it will be invisible)
-トラップを置く場所を選択します (見えなくなります)
+位置を選択(透明)
 Rope Burst
 ロープバースト
 An explosion of rope deals DamageDealt chain damage in a 3x3 AoE and applies 40 points of rope binding. Snares for Duration turns.
-ロープの爆発は、3x3 の範囲内でダメージを与えるチェーン ダメージを与え、40 ポイントのロープ バインドを適用します。期間ターンのスネア。
+Duration ターン後に、3x3 の範囲に DamageDealt チェーンダメージを与え、ロープで40ポイントの拘束値を追加する縄の爆発を起こす。
 You call forth ropes from the abyss!
-あなたは深淵からロープを呼び寄せます！
+深淵からロープを召喚した！
 Select center of a a 3x3 AoE
-3x3 AoE の中心を選択
+位置を選択
 Leather Package
 レザーパッケージ
 After conjuring a leather restraint, you can conjure up to three more without advancing time.
-革の拘束具を召喚した後、時間を進めずにさらに3つまで召喚できます。
+革の拘束具を召喚した後、最大3つまでターンを消費せずに革の拘束具を召喚できる。
 Conjure Gag
-ギャグを呼び出す
+ボールギャグ召喚
 Conjured Gag
-召喚ギャグ
+召喚されたボールギャグ
 The gag forces itself into your mouth and buckles tightly!
-ギャグが口の中に押し込まれ、しっかりと締められます。
+ボールギャグが口の中に飛び込んできた！
 The gag hits you! (DamageDealt)
-ギャグが当たる！ (与ダメージ)
+ボールギャグがぶつかってきた！ (DamageDealt)
 Summons a gag which deals DamageDealt chain damage and silences for 15 turns. +40 binding if target is not silenced.
-DamageDealt チェーン ダメージを与え、15 ターンの間沈黙させるギャグを召喚します。ターゲットが沈黙していない場合、+40 バインディング。
+DamageDealt チェーン ダメージを与え、15ターンの間沈黙させるボールギャグを召喚する。ターゲットが沈黙していない場合、拘束値40を追加する。
 You conjure a gag!
-あなたはギャグを思い起こさせます！
+ボールギャグを召喚した！
 The gag will appear next to you and fly toward the target point.
-ギャグがあなたの隣に現れ、目標地点に向かって飛んでいきます。
+ボールギャグが眼の前に現れ、真っすぐ飛んでいった！
 Conjure Armbinder
-アームバインダーを召喚する
+アームバインダー召喚
 Conjured Armbinder
 召喚されたアームバインダー
 The armbinder slips itself around your arms and buckles itself tightly!
@@ -9743,7 +9743,7 @@ Spells
 Learn New Spells
 新しい呪文を覚える
 Click a spell to replace SPELLNAME with.
-SPELLNAME を置き換える呪文をクリックしてください。
+SPELLNAME を置き換える呪文をクリック。
 Empty Slot
 空きスロット
 Back to Spellbook
@@ -9775,19 +9775,19 @@ pg.NUM/TOTAL
 >>>
 >>>
 <<<
-＜＜＜
+<<<
 Spell Points: SPELLPOINTS
-スペルポイント：SPELLPOINTS
+スキルポイント：SPELLPOINTS
 You need a higher level in SCHOOL magic to learn this spell.
-この呪文を習得するには、SCHOOL マジックのより高いレベルが必要です。
+この呪文を習得するには、SCHOOL 分野のより高度な知識が必要。
 You need more spell points.
-スペルポイントが足りない。
+スキルポイントが足りない。
 You don't have enough maximum mana to cast this spell!
 最大マナを超える呪文は唱えられない。
 School:
-学校：
+分野：
 Elements
-要素
+エレメンタル
 Conjuration
 召喚
 Illusion
@@ -9797,11 +9797,11 @@ Generic
 Learn Spell
 呪文を覚える
 Spell Points:
-スペルポイント：
+スキルポイント：
 Level:
 レベル：
 Spell Point Cost:
-スペルポイントコスト:
+スキルポイントコスト:
  Mana Cost:
   マナコスト：
 
@@ -9821,19 +9821,19 @@ Remove Spell 6
 Remove Spell 7
 スペル7を削除
 Replace Spell 1
-リプレイススペル1
+スペル1を置き換える
 Replace Spell 2
-リプレイススペル2
+スペル2を置き換える
 Replace Spell 3
-リプレイススペル3
+スペル3を置き換える
 Replace Spell 4
-リプレイススペル4
+スペル4を置き換える
 Replace Spell 5
-リプレイススペル5
+スペル5を置き換える
 Replace Spell 6
-リプレイススペル6
+スペル6を置き換える
 Replace Spell 7
-リプレイススペル7
+スペル7を置き換える
  Current Spell 1:
   現在の呪文 1:
  Current Spell 2:
@@ -9873,9 +9873,9 @@ Library
 Crystal Cave
 水晶の洞窟
 Orrery
-オーラリー
+天球儀
 Bellows
-ベローズ
+工場
 (A page from the Book of Aeons)|The 'Graveyard' is a peculiar place. Long ago, human beings lived and died just like the animals. When the Old Civilization existed, they would come to bury their dead in the Graveyard. It remains a mystery why so many of the former dead seem to be alive. Some say that when the Old Civilization cast the spell that spell which overcame Death, even those buried in their graves would rise again. Others simply say that there is a powerful necromancer who lives here, toying with the dead as if they were pets...
 (Book of Aeons のページ)|墓地は独特の場所です。昔、人間は動物と同じように生き、死んでいました。旧文明が存在したとき、彼らは死者を墓地に埋めに来ました。なぜかつての死者の多くが生きているように見えるのかは謎のままです. ある人は、旧文明が死を克服する呪文を唱えたとき、彼らの墓に埋葬された人でさえも復活したと言う. 他の人は、強力なここに住むネクロマンサーは、まるでペットのように死者をもてあそぶ…
 (A page from the Book of Aeons)|Beneath the Graveyard lies a relic of a former age, a network of tombs inhabited by the immortal followers of Bast. Very few were graced with this gift of immortality before the great archmagus, Sariel Vinlaga, stole this power from the gods and granted all humans with the power of immortality. The Bast followers are still set in their ways, hoping for a time when their Goddess will return and rebuild their glorious civilization.
