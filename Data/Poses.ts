@@ -402,4 +402,7 @@ function RefreshTempPoses(Character: Character, Restraints: boolean) {
 	if (KDToggles.ChastityOption) {
 		KDCurrentModels.get(Character).TempPoses.ChastityOption = true;
 	}
+	if (KDToggles.ChastityBraOption) {
+		KDCurrentModels.get(Character).TempPoses.ChastityBraOption = true;
+	}
 }

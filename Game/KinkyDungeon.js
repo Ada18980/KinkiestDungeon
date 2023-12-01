@@ -151,6 +151,7 @@ let KDToggles = {
 	LazyWalk: false,
 	ShiftLatch: true,
 	ChastityOption: false,
+	ChastityBraOption: false,
 };
 
 let KDDefaultKB = {

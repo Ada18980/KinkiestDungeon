@@ -1354,8 +1354,9 @@ const KinkyDungeonRestraints = [
 		value: 150,
 		escapeChance: {"Struggle": -0.2, "Cut": 0.2, "Remove": 0.15, "Pick": 0.07},
 		maxwill: 0.6, enemyTags: {"mikoRestraints" : 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Gags", "PlugGags"]},
-	{inventory: true, name: "MikoDress", debris: "Fabric", inaccessible: true, remove: ["Cloth", "Bra"], Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#ffffff'], Group: "ItemArms", LinkableBy: [...KDDressLink], bindarms: true, bindhands: 1.0, power: 8, weight: 0, DefaultLock: "Blue",
+	{inventory: true, name: "MikoDress", debris: "Fabric", inaccessible: true, remove: ["Cloth", "Bra"], Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#ffffff'], Group: "ItemArms", bindarms: true, bindhands: 1.0, power: 8, weight: 0, DefaultLock: "Blue",
 		Model: "JacketArmbinderSecure",
+		LinkableBy: [...KDDressLink], alwaysRender: true,
 		Filters: {
 			Arms: {"gamma":1,"saturation":1,"contrast":1,"brightness":3.2666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
 			BeltsArms: {"gamma":1,"saturation":0.06666666666666667,"contrast":1,"brightness":1,"red":2.816666666666667,"green":1,"blue":1,"alpha":1},
@@ -2405,7 +2406,7 @@ const KinkyDungeonRestraints = [
 		Model: "BeltsFeetAll",
 		escapeChance: {"Struggle": -0.1, "Cut": 0.5, "Remove": 0.5},
 		maxwill: 1.0, enemyTags: {"leatherRestraints":6, "beltRestraints": 10}, playerTagsMissingMult: {"ItemLegsFull": 0.05}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Belts", "LegBind"]},
-	{renderWhenLinked: [...KDBeltsRender], accessible: true, inventory: true, name: "SturdyLeatherBeltsLegs", debris: "Belts", Asset: "SturdyLeatherBelts", LinkableBy: [...KDBeltsBind], Type: "Two", Color: "Default", Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 2, weight: 0,
+	{LinkableBy: [...KDBeltsBind], renderWhenLinked: [...KDBeltsRender], accessible: true, inventory: true, name: "SturdyLeatherBeltsLegs", debris: "Belts", Asset: "SturdyLeatherBelts", Type: "Two", Color: "Default", Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 2, weight: 0,
 		Model: "BeltsLegsAll",
 		escapeChance: {"Struggle": -0.1, "Cut": 0.5, "Remove": 0.5},
 		maxwill: 0.8, enemyTags: {"leatherRestraints":6, "beltRestraints": 10}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Leather", "Belts", "LegBind"]},
@@ -2523,7 +2524,8 @@ const KinkyDungeonRestraints = [
 			{Item: "Shoes5", Group: "Shoes", Color: "#575757", override: true},
 			{Item: "Socks6", Group: "Socks", Color: ['#080808', 'Default'], override: true}
 		], maxwill: 0.3, enemyTags: {"maidRestraints":3, "maidRestraintsNonChastity": 5}, playerTagsMult: {"ItemArmsEmpty": 0.05}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["Latex", "Armbinders", "Block_ItemHands", "BindingDress", "Illusion"]},
-	{inventory: true, name: "MaidBelt", debris: "Belts", Asset: "LeatherBelt", Color: "#DBDBDB", Group: "ItemLegs", LinkableBy: ["Wrapping", "Encase", "Legbinders", "Hobbleskirts", "Ties"], hobble: 1, addTag: ["FeetLinked"], power: 9, weight: 0,
+	{inventory: true, name: "MaidBelt", debris: "Belts", Asset: "LeatherBelt", Color: "#DBDBDB", Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 9, weight: 0,
+		LinkableBy: [...KDBeltsBind], renderWhenLinked: [...KDBeltsRender],
 		Model: "BeltsLegs1",
 		Filters: {
 			Belt: {"gamma":1,"saturation":0,"contrast":0.9666666666666667,"brightness":4.016666666666667,"red":1,"green":1,"blue":1.1,"alpha":1},

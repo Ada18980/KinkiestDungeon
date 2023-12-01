@@ -116,6 +116,7 @@ let LAYERS_BASE = [
 	"BustierChest",
 	"ShirtCollar",
 	"ShirtChest",
+	"Option_BindChestLower",
 	"BraChest",
 	"BindChestLower",
 	"SuitChest",
@@ -526,6 +527,7 @@ let LayerGroups = {
 		"LegRight",
 		"ShoeLeftUnder",
 		"ShoeRightUnder",
+		"WrappingLegsRight",
 
 	]),
 	"BalletHeelRight": ToMap([
@@ -541,6 +543,7 @@ let LayerGroups = {
 		"ShoeRightUnder",
 		"ShoeLeft",
 		"ShoeRight",
+		"WrappingLegsRight",
 
 	]),
 	// endregion
