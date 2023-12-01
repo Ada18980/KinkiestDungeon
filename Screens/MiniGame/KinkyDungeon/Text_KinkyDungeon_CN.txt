@@ -44,7 +44,7 @@ Mods Loaded.
 Version
 版本号
 Kinky Dungeon
-变态地牢
+淫荡地牢
 
 You are an adventurer descending into an ancient underground city of magic.
 你是一个冒险家，前往了一个古老的地下魔法城市。
@@ -100,6 +100,8 @@ Enable Toy SFX
 高级玩具特效
 Enable Fullscreen
 启用全屏
+Hi-Res Distortion (Needs Restart)
+高分辨率失真（需重启）
 GFX: High Quality Animations
 GFX: 高品质动画
 GFX: Enemy Animations
@@ -523,6 +525,11 @@ The latex around you dampens your attacks, reducing physical damage by 30% and l
 Latex Bubble
 乳胶泡泡
 
+...Lab Assistant?
+...实验室助理？
+You rescue the lab assistant.
+你救下了实验室助理。
+
 Lab Assistant
 实验室助理
 The assistant envelops herself in her own bubble for protection.
@@ -539,10 +546,15 @@ The assistant splashes a solvent in your face, blinding you! (DamageTaken)
 Glue Bomb
 胶水炸弹
 
+..Glue Technician?
+...胶水技师？
+You rescue the glue technician.
+你救下了胶水技师。
+
 Glue Technician
 胶水技师
-The technician screams and runs.
-技师尖叫着跑了。
+The technician trips and glues herself to the floor.
+技师绊倒并把自己粘在地板上。
 The technician slaps adhesive restraints onto your body! (+RestraintAdded)
 技师将将胶水束缚具粘在了你的身上！（+RestraintAdded）
 The technician polishes your restraints thoroughly! (DamageTaken)
@@ -1759,7 +1771,7 @@ Kinky: No save codes, orbs give random spells, start with very little
 Kinky：没有保存代码，魔法水晶提供随机法术，开始时很少
 Log
 日志
-Log (N)
+Journal (N)
 日记 (N)
 Change Outfit
 换装
@@ -1769,8 +1781,8 @@ Load from Code
 从代码中加载
 Confirm Reset?
 确认重置？
-Confirm Changes
-确认更改
+Back to Menu
+返回菜单
 
 Your movement sets off your [RESTRAINTNAME]
 你的动作引发了你的 [RESTRAINTNAME]
@@ -1784,40 +1796,44 @@ The straps on your gag prevent you from loosening the blindfold!
 The straps on your gag keep your blindfold securely in place!
 堵嘴物上的带子可将眼罩牢固固定住！
 
-Revert Changes
-恢复更改
+Revert
+恢复
 Confirm Revert?
 确认恢复？
-Save Changes
-保存更改
+Save
+保存
 Save Changes?
 保存更改？
 Back to Wardrobe
 返回衣柜
-Strip Outfit
-脱去衣服
+Strip!
+脱光！
 Export Outfit
 导出衣服
+Export AlwaysDress
+导出 AlwaysDress
 Confirm Strip?
 确认要脱衣服？
-gamma
+Gamma
 伽马值
-saturation
-饱和度
-contrast
+Original Color
+原色
+Contrast
 对比度
-brightness
+Brightness
 亮度
-red
+Red
 红
-green
+Green
 绿
-blue
+Blue
 蓝
-alpha
-不透明度
+Transparency
+透明度
 Reset Layer!
 重置图层！
+Export All Layers
+导出所有图层
 Copy
 复制
 Paste
@@ -2184,6 +2200,12 @@ Inspect
 检查
 Expand Minimap
 展开小地图
+Wait till Interrupted
+等待直到中断
+Make Noise
+制造噪音
+Play with Self
+玩弄自己
 
 Message Log
 消息日志
@@ -2204,6 +2226,8 @@ Inventory
 背包
 Reputation
 声望
+Quests
+任务
 Spell List
 法术列表
 Logbook
@@ -2228,7 +2252,7 @@ Ranged Attack
 Combat Training
 战斗训练
 Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 0 WP you gain 1 slow resist.
-你的训练给予了许多奖励：|-每 10 个当前 WP，武器耐力消耗减少 1%，最多 40%。|-缓慢效果消失得更快。|-当你的 WP 高于 0 时，你将获得 1 点缓慢抵抗力。
+你的训练给予了许多奖励：|-每 10 个当前 WP，武器体力消耗减少 1%，最多 40%。|-缓慢效果消失得更快。|-当你的 WP 高于 0 时，你将获得 1 点缓慢抵抗力。
 
 This is your currently held offhand weapon. Click to switch to it.
 这是你当前持有的副手武器。点击即可切换到它。
@@ -2241,7 +2265,7 @@ You can't hold the WPN in your current state.
 Charge!
 冲啊！
 Dash and make an attack attack against a target within 2 tiles. If it deals 20% of their current hp in damage, you knock them back and take their place, otherwise they take +15% max hp crush damage from hitting the wall. If the attack misses, you still dash. Costs stamina equal to your sprint cost plus your attack cost.
-冲刺并对 2 格内的目标进行攻击。如果它造成了他们当前生命值 20% 的伤害，你会将他们击退并取代他们的位置，否则他们会因撞墙而受到 +15% 最大生命值挤压伤害。如果攻击未命中，你仍然会冲刺。耐力消耗等于你的冲刺消耗加上你的攻击消耗。
+冲刺并对 2 格内的目标进行攻击。如果它造成了他们当前生命值 20% 的伤害，你会将他们击退并取代他们的位置，否则他们会因撞墙而受到 +15% 最大生命值挤压伤害。如果攻击未命中，你仍然会冲刺。体力消耗等于你的冲刺消耗加上你的攻击消耗。
 You charge at the target!
 你向目标冲刺！
 Choose a target.
@@ -2400,14 +2424,14 @@ Graveyard
 墓地
 Catacombs
 地下墓穴
-Underground Jungle
-地下丛林
+Overgrown Ruins
+杂草丛生的遗迹
 Lost Temple
 失落神殿
 The Bellows
 风箱
 Rundown Laboratory
-破败实验室
+破败的实验室
 Forgotten Garden
 被遗忘的花园
 Kingdom of Ice
@@ -3025,7 +3049,7 @@ Crop
 For those unruly subs.
 专为那些反抗的人而设计
 Deals pain damage. Highly distracting. Offhand: +5 pain damage on attack for 3 stamina.
-对目标造成疼痛伤害，并使其极具性奋。副手：攻击时 +5 疼痛伤害，持续 3 点耐力。
+对目标造成疼痛伤害，并使其极具性奋。副手：攻击时 +5 疼痛伤害，持续 3 点体力。
 You pick up a riding crop.
 你拾起一根鞭子。
 Scissors
@@ -3147,11 +3171,11 @@ Magic Wand
 Its powers extend beyond the traditional schools of magic.
 它的力量超越了传统的魔法。
 Deals charm damage. 20% chance to stun the target for 2 turns. Offhand: +5 charm damage on attack for 3 stamina.
-造成妩媚伤害，有 20% 的几率使目标眩晕 2 回合。副手：攻击时 +5 妩媚伤害，持续 3 点耐力。
+造成妩媚伤害，有 20% 的几率使目标眩晕 2 回合。副手：攻击时 +5 妩媚伤害，持续 3 点体力。
 Feather
 羽毛
 A feather taken from some large fluffy being. Offhand: +5 tickle damage on attack for 3 stamina.
-从一些毛茸茸的大动物上取下的羽毛。副手：攻击时 +5 挠痒伤害，持续 3 点耐力。
+从一些毛茸茸的大动物上取下的羽毛。副手：攻击时 +5 挠痒伤害，持续 3 点体力。
 Deals tickle damage. Distracts enemies.
 造成挠痒伤害，使敌人性奋。
 Ice Cube
@@ -3605,7 +3629,9 @@ Water Elemental
 The water elemental melts into a pool of water.
 水精灵化成一滩水。
 The water elemental's song compels you to be bound! (+RestraintAdded)
-水精灵发出的歌声使你被束缚！ （+RestraintAdded）
+水精灵发出的歌声使你被束缚！（+RestraintAdded）
+The water elemental sings a song of helplessness. (DamageTaken)
+水精灵唱着一首无助之歌。（DamageTaken）
 The water elemental's song compels you to step forward and receive a binding!
 水精灵的歌声迫使你向前走去，接受其的束缚！
 The water elemental sings an arousing song! (DamageTaken)
@@ -3640,6 +3666,8 @@ The air elemental sneakily slips a restraint on! (+RestraintAdded)
 风精灵偷偷地束缚了你！ （+RestraintAdded）
 The air elemental blinks to your position!
 风精灵眨眼间出现在你的位置！
+The air elemental slips a lock on! (DamageTaken)
+风精灵锁住了你！（DamageTaken）
 The air elemental spanks you playfully! (DamageTaken)
 风精灵调皮地打了你一下屁股！(DamageTaken)
 Angry Zombie
@@ -3723,7 +3751,7 @@ The warrior zombie yells and falls cinematically.
 The warrior zombie uses a traditional binding technique (+RestraintAdded)
 战士僵尸使用传统的束缚技术（+RestraintAdded）
 The warrior zombie strikes you with her wooden sword! (+STUN)
-僵尸战士用她的木剑攻击你！（+STUN）
+僵尸战士用她的木剑攻击你！（+眩晕）
 The warrior zombie runs its fingers along your body! (DamageTaken)
 僵尸战士用手指抚摸你的身体！（DamageTaken）
 The warrior zombie fights using the way of Sword and Lock. (DamageTaken)
@@ -3734,10 +3762,34 @@ The rope artist frowns and walks away, looking defeated.
 绳艺师皱着眉头走开了，看起来很泄气。
 The rope artist performs an intricate technique! (+RestraintAdded)
 绳索艺术家表演了一项复杂的技术！ （+RestraintAdded）
+The rope artist sneaks a lock onto you while you weren't looking! (DamageTaken)
+绳索艺术家会趁你不注意的时候偷偷给你上了锁！（DamageTaken）
 The rope artist smiles and tickles your feet! (DamageTaken)
 绳艺师微笑着挠你的脚！ (DamageTaken)
+Deputy
+副警长
+The deputy surrenders her donuts.
+副警长交出了她的甜甜圈。
+The deputy slaps on some cuffs! (+RestraintAdded)
+副警长拍了拍手铐！（+RestraintAdded）
+The deputy tases you! (Stunned!)
+副警长用电击枪电你！（眩晕！）
+The deputy conducts a strip search! (DamageTaken)
+副警长进行脱衣搜身！（DamageTaken）
+The deputy performs a security enhancement procedure! (DamageTaken)
+副警长执行安全强化程序！（承受伤害）
 Ninja Warrior
 忍者战士
+The ninja warrior retreats into the shadows.
+忍者战士退到阴影中。
+The ninja warrior uses a traditional binding technique (+RestraintAdded)
+忍者战士使用传统的束缚技术（+RestraintAdded）
+The ninja warrior tosses a shuriken and hits you! (Stunned!)
+忍者战士扔出手里剑并攻击你！（眩晕！）
+The ninja warrior uses a lock to give herself the upper hand! (DamageTaken)
+忍者战士用一把锁让自己占据了上风！（DamageTaken）
+The ninja warrior uses a subduing technique! (DamageTaken)
+忍者战士使用制服术！（DamageTaken）
 Ninja Assassin
 忍者刺客
 The assassin retreats into the shadows.
@@ -3745,7 +3797,9 @@ The assassin retreats into the shadows.
 The assassin uses a traditional binding technique (+RestraintAdded)
 刺客使用传统的捆绑技术（+RestraintAdded）
 The assassin uses a subduing technique! (DamageTaken)
-刺客使用了捆绑技术！ (DamageTaken)
+刺客使用了捆绑技术！（DamageTaken）
+The assassin stealthily locks your restraint! (DamageTaken)
+刺客悄悄锁住你的束缚！（DamageTaken）
 Animated Armor
 活化盔甲
 The Animated Armor falls into pieces.
@@ -3924,6 +3978,12 @@ The dollmaker's apprentice slips a lock onto your restraints! (DamageTaken)
 玩偶师的学徒给你的束缚具上了一把锁！（DamageTaken）
 The dollmaker's apprentice unleashes a powerful latex blast! (+RestraintAdded)
 玩偶师的学徒释放出强大的乳胶爆炸！（+RestraintAdded）
+
+...Alchemist?
+…炼金术士？
+You rescue the alchemist.
+你救下了炼金术士。
+
 Alchemist
 炼金术士
 The alchemist screams and runs.
@@ -4177,6 +4237,10 @@ The alkahestor uses an ornate-looking lock! (DamageTaken)
 万能炼金士使用了一把看起来华丽的锁！（DamageTaken）
 The alkahestor shoves you! (DamageTaken)
 万能炼金士推了你！（DamageTaken）
+...Alkahestor?
+...万能炼金士？
+You rescue the Alkahestor
+你救下了万能炼金士。
 
 Latex Elemental
 乳胶精灵
@@ -4586,8 +4650,8 @@ The scarves become knotted and fall to the floor.
 围巾打结并掉到地板上。
 The scarves wrap themselves around you! (+RestraintAdded)
 围巾包裹了你！（+RestraintAdded）
-The scarves rub against your body, tickling you! (DamageTaken)
-围巾摩擦你的身体，让你发痒！（DamageTaken）
+The scarves rub against your body, wrapping you in fluffy fabric! (DamageTaken)
+围巾摩擦着你的身体，用蓬松的布料包裹着你！（DamageTaken）
 Cloud of Ribbons
 一团丝带
 The ribbons knot themselves in a bow and fall to the floor.
@@ -4596,12 +4660,18 @@ The ribbons wrap themselves around you! (+RestraintAdded)
 丝带包裹了你！（+RestraintAdded）
 The ribbons wrap themselves around you! (DamageTaken)
 丝带包裹了你！（DamageTaken）
+
 Gravitating Gag
 诱惑的口球
 The gag buckles itself in place and falls.
 口球停在原地并掉在地上。
 The gravitating gag wedges itself firmly in your mouth and buckles itself! (+RestraintAdded)
 诱惑的口球牢牢地塞进你的嘴里，然后自己扣住！（+RestraintAdded）
+The gravitating gag rubs itself against your lips! (DamageTaken)
+诱惑的口球在你的嘴唇上摩擦！（DamageTaken）
+The gag dashes to you!
+口球冲向你！
+
 Seductive Shackles
 诱惑的镣铐
 The shackles' chain breaks as they fall to the floor.
@@ -4610,6 +4680,9 @@ The shackles force themselves around your limbs and click tightly! (+RestraintAd
 镣铐将自己强行缠绕在你的四肢上并紧紧地咔哒一声锁住了！（+RestraintAdded）
 The shackles click seductively in your face... (DamageTaken)
 镣铐在你面前咔哒咔哒作响……（DamageTaken）
+The shackles dash to you!
+镣铐冲向你！
+
 Lurid Legbinder
 可怕的绑腿
 The legbinder unravels.
@@ -4618,6 +4691,7 @@ The legbinder zips itself around your legs and squeezes them together! (+Restrai
 绑腿会自动拉合住你的双腿，并将它们挤压在一起！（+RestraintAdded）
 The legbinder wraps around and squeezes your body! (DamageTaken)
 绑腿包裹并挤压你的身体！（DamageTaken）
+
 Bratty Blindfold
 顽皮的眼罩
 The blindfold floats to the floor.
@@ -4626,6 +4700,9 @@ The blindfold buckles itself tightly around your head! (+RestraintAdded)
 眼罩紧紧地扣在你的头上！(+RestraintAdded)
 The blindfold crawls over your helpless face! (DamageTaken)
 眼罩在你无助的脸上爬行！（DamageTaken）
+The blindfold dashes to you!
+眼罩冲向你！
+
 Amorous Armbinder
 色情的束手套
 The armbinder flops to the floor.
@@ -4698,6 +4775,8 @@ The learned rope untangles into a mess of rope.
 绳索解开成一堆乱七八糟的绳索。
 The magic rope wraps itself intricately around your body! (+RestraintAdded)
 魔绳错综复杂地缠绕在你的身体上！（+RestraintAdded）
+The rope dashes to you!
+绳子向你冲来！
 The magic rope wriggles into your outfit! (DamageTaken)
 魔绳蠕动到你的衣服里！（DamageTaken）
 Unforseen Rope
@@ -4840,6 +4919,8 @@ Metal Witch
 金属女巫
 The metal witch vanishes into a pile of metal dust, leaving behind a keyring.
 金属女巫消失在一堆金属粉尘中，留下一个钥匙圈。
+The metal witch locks all of your restraints!
+金属女巫锁住了你所有的束缚具！
 The metal witch tugs sensually at your restraints! (DamageTaken)
 金属女巫性感地拉扯你的束缚！（DamageTaken）
 The metal's bindings wrap themselves around you! (+RestraintAdded)
@@ -4977,15 +5058,15 @@ Armed Guard
 The armed guard retreats, but drops a keyring!
 武装警卫撤退，但丢了一个钥匙圈！
 The guard locks your restraints!
-守卫锁住你的拘束具！
+警卫锁住你的拘束具！
 The guard shocks you and slaps on some restraints! (+RestraintAdded)
-守卫电击了你并使用了一些拘束具！ （+RestraintAdded）
-The guard electrocutes you with her taser!!!
+警卫电击了你并使用了一些拘束具！ （+RestraintAdded）
+The guard shocks you with her taser!!!
 警卫用她的电击枪电击你！！！
-The guard electrocutes you with her taser!!!
+The guard shocks you with her taser!!!
 警卫用她的电击枪电击你！！！
-The EnemyName replaces your OldRestraintName with a NewRestraintName
-EnemyName 将你的 OldRestraintName 替换为 NewRestraintName
+The EnemyName applies a NewRestraintName over your OldRestraintName
+EnemyName 在你的 OldRestraintName 上应用 NewRestraintName
 The EnemyName removes your OldRestraintName
 EnemyName 移除了你的 OldRestraintName
 The EnemyName restrains you with a NewRestraintName
@@ -5130,8 +5211,10 @@ The demon places you in dark, glassy restraints. (+RestraintAdded)
 恶魔将你置于黑暗、玻璃般的束缚之中。（+RestraintAdded）
 The demon giggles as it locks your restraints! (DamageTaken)
 恶魔咯咯地笑着锁住了你的束缚！（DamageTaken）
-The demon whacks you with its mace! (DamageTaken)
-恶魔用狼牙棒猛击你！（DamageTaken）
+The demon caresses you gently with her sharp nails! (DamageTaken)
+恶魔用她锋利的指甲温柔地抚摸着你！（DamageTaken）
+The demon stuns you with her heavy mace! (+STUN)
+恶魔用她沉重的狼牙棒将你击晕！（+眩晕）
 
 Tickle Hand
 挠痒痒的手
@@ -5506,12 +5589,12 @@ Tugging on the TargetRestraint is useless. Maybe if you had something sharp...
 You sigh as the TargetRestraint resists all your attempts at breaking through.
 当 TargetRestraint 抵御了你所有的挣脱尝试时，你叹了口气。
 
-You fidget with the TargetRestraint but can't quite grip the clasps without some kind of edge.
-你对 TargetRestraint 感到不安，但如果没有某种边缘就无法完全抓住扣子。
-You flail about but cant get any grip on the TargetRestraint.
-你四处挥动，但抓不住 TargetRestraint。
-The TargetRestraint is secured too tightly. If only you had some kind of edge...
-TargetRestraint 固定得太紧。如果有点优势就好了……
+You fidget with the TargetRestraint but can't reach the clasps without some kind of edge.
+你对 TargetRestraint 感到不安，但如果没有某种边缘就无法够到扣子。
+You flail about but your hands are unable to reach the TargetRestraint.
+你四处挥动，但够不到 TargetRestraint。
+You can't reach the clasps on the TargetRestraint. If only you had some other way...
+你够不到 TargetRestraint 的扣子。如果有其他办法就好了……
 You squirm around, rubbing the TargetRestraint against the smooth floor to no avail...
 你扭动身体，在光滑的地板上摩擦着 TargetRestraint，但无济于事......
 
@@ -5753,8 +5836,6 @@ Runic
 符文
 Magic
 魔法
-Back to Menu
-返回菜单
 Item Stack:
 物品堆栈：
 Ancient
@@ -5847,6 +5928,7 @@ AMNT% weapon magic dmg
 AMNT% 武器魔法伤害
 Infuse weapon AMNT% TYPE
 注入武器 AMNT% TYPE
+AMNT TYPE on attack
 AMNT TYPE 在攻击时
 AMNT% Mana Costs
 AMNT% 法力消耗
@@ -5888,12 +5970,29 @@ Your OLDITM transforms into NEWITM!
 Your OLDITM gains new properties!
 你的 OLDITM 获得新特性！
 
+Moon-Cursed Epicenter
+月光诅咒中心
+The cursed epicenter disperses into black stardust.
+被诅咒的中心消散成黑色星尘。
+The cursed epicenter retreats as you remove the last of your cursed restraints!
+当你移除最后的被诅咒的束缚时，被诅咒的中心就会撤退！
+The cursed epicenter retreats as you are claimed by something else!
+当你被其他东西占领时，被诅咒的中心正在撤退！
+The cursed epicenter assaults your mind with its presence! (DamageDealt)
+被诅咒的中心以其存在来攻击你的思想！（DamageDealt）
+You feel your cursed items turn cold to the touch!
+你感觉你被诅咒的物品摸起来变冷了！
+An cursed collar appears around your neck, feeling cold to the touch.
+你的脖子上出现了一个被诅咒的项圈，摸起来很冷。
 Cursing Sigil
 诅咒符印
 A cursing sigil appears on the ground!
 地面上出现了一道诅咒符印！
 You are being cursed!!!
 你被诅咒了！！！
+
+Star-Cursed Epicenter
+星咒中心
 
 Moondust Collar
 月尘项圈
@@ -6159,8 +6258,10 @@ Teachings of SHRINETYPE
 SHRINETYPE 教义
 Decypher
 解密
-You read the runes and they imbue you with power!
-你阅读符文，它们就会赋予你力量！
+You read the runes and they fill you with power!
+你阅读符文，它们就会让你充满力量！
+These runes are meant for someone with less willpower.
+这些符文是为意志力较弱的人准备的。
 You try to read the runes but cannot understand them.
 你尝试阅读符文，但无法理解它们。
 
@@ -6204,14 +6305,30 @@ Wanted
 通缉犯
 Delinquent
 违法者
+Computer Virus
+电脑病毒
+Extraplanar Entity
+外域实体
+Dubious Witch
+可疑的女巫
+Shadow Clan
+阴影族
+Illegal Poacher
+非法偷猎者
 Nature
 自然界
+Very Angry
+很生气
 Surprise!
 惊喜！
+Fierce Debater
+激烈的辩手
+
 Angels
 天使
 Demons
 恶魔
+
 You sense that the chest contains a trap and a lot of gold.
 你感觉到箱子里有一个陷阱和很多金币。
 You sense that the chest is safe to open.
@@ -6393,18 +6510,25 @@ An advanced harness for controlling high-security prisoners.
 一种用于控制高安全性囚犯的先进绑带。
 It seems to be made of flexible steel plates.
 它似乎是由高延展性钢板制成的。
-Tracking Collar
-追踪项圈
-An advanced collar for tracking high-security prisoners.
-用于追踪高度安全的囚犯的高级项圈。
+Cyber Collar
+网络项圈
+An advanced collar for registering prisoners into the facility network.
+用于将囚犯登记到设施网络中的高级项圈。
 It seems to be made of flexible steel plates, and it has a high-security lock.
 它似乎由柔性钢板制成，并且具有高安全性锁。
 Latex Ball Gag
-乳胶口塞
+乳胶口球
 A devious device that looks like a ball gag, but has a mouth-filling rod on the inside.
-一种看起来像口塞的装备，但内部有一个能填满嘴的棒。
+一种看起来像口球的装备，但内部有一个能填满嘴的棒。
 The strap is made of a durable but flexible material
-表带由耐用但柔韧的材料制成
+带子由耐用但柔韧的材料制成
+Large Latex Ball Gag
+大号乳胶口球
+A devious device that looks like a large ball gag, but absolutely fills your mouth with a rubber cylinder.
+一种看起来像大口球的装备，但内部有一个能填满嘴的橡胶棒。
+The strap is made of a durable but flexible material
+带子由耐用但柔韧的材料制成
+
 Latex Mask
 乳胶面具
 A slick layer of blue latex stretched over the mouth.
@@ -6841,6 +6965,80 @@ A harness that secures your other restraints and makes them tighter.
 一种安全带，可固定你的其他束缚并使它们更紧。
 They glow with a trace of magic.
 它们散发着一丝魔法的光芒。
+
+Spellbound Boxtie
+后手缚（符咒）
+A box tie keeping your arms secured behind your back.
+将你的手臂牢牢固定在背后。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Rope Cuffs
+绳手铐（符咒）
+A quick tie for apprehending prisoners.
+用于逮捕囚犯的快速捆绑。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Ropework
+绳索（符咒）
+A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
+用于逮捕囚犯的快速捆绑，穿过手部束缚装置上的带扣。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Strict Spellbound Ropework
+严格的绳索（符咒）
+The finishing touches on a tight and strict piece of ropework.
+最后的收尾工作是对一根紧密而严格的绳索进行最后的修饰。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Hogtie
+驷马（符咒）
+A very strict and tight hogtie, good for subduing unruly captives.
+一种非常严苛和牢固的捆绑，适合制服不守规矩的俘虏。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Rope Belt
+绳衣（符咒）
+A harness acting as a handle to pull you around
+能使你被拉住的绳衣
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Harness
+绳束衣（符咒）
+A harness that secures your other restraints and makes them tighter.
+一种安全带，可固定你的其他束缚并使它们更紧。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Crotch Rope
+股绳（符咒）
+A tight rope impressing upon your most private areas...
+一条紧绷的绳索压迫在你最私密的区域......
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Wrist Tie
+手腕束带（符咒）
+A wrist and elbow tie keeping your arms secured behind your back.
+手腕和肘部系带将你的手臂固定在背后。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Leg Tie
+腿缚带（符咒）
+A tie that hobbles your legs together..
+一条带子将你的双腿束缚在一起。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Ankle Tie
+脚踝束带（符咒）
+A tie keeping your feet secured together.
+束带将双脚固定在一起。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Toe Rope
+脚趾绳缚（符咒）
+A tie keeping your toes secured together.
+束带将双脚固定在一起。
+The knots appear to tie themselves together again, making them impossible to undo!
+结似乎再次将自己绑在一起，使它们无法解开！
+
 Magic Boxtie
 后手缚（附魔）
 A box tie keeping your arms secured behind your back.
@@ -6859,6 +7057,10 @@ Strongly glowing ropes tied in an intricate pattern, making hand restraints more
 强烈发光的绳索以复杂的方式捆绑起来，使束手更加可靠。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
+Strict Magic Ropework
+严格的绳索（附魔）
+The finishing touches on a tight and strict piece of ropework.
+最后的收尾工作是对一根紧密而严格的绳索进行最后的修饰。
 Magic Leg Rope
 腿部绳缚（附魔）
 They glow with a trace of magic.
@@ -6919,6 +7121,12 @@ Mithril Ropework
 绳索（秘银）
 A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
 用于逮捕囚犯的快速捆绑，穿过手部束缚装置上的带扣。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
+Strict Mithril Ropework
+严格的绳索（秘银）
+The finishing touches on a tight and strict piece of ropework.
+最后的收尾工作是对一根紧密而严格的绳索进行最后的修饰。
 A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
 由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
 Mithril Hogtie
@@ -7086,13 +7294,25 @@ Ball Gag
 A gag made of a red squishy material.
 一种由红色柔软材料制成的堵嘴物。
 You can't seem to enunciate your spells properly with this in.
-有了这个，你似乎无法正确地念出你的咒语。
+佩戴上后，你似乎无法正确地念出你的咒语。
+Large Ball Gag
+大号口球
+A mouth-filling gag made of a red squishy material.
+一种由红色软质材料制成的口塞。
+You can't seem to enunciate your spells properly with this in.
+佩戴上后，你似乎无法正确地念出你的咒语。
 Tight Ball Gag
 紧扣的口球
 A gag made of a red squishy material, buckled as tight as it will go.
 一个由红色柔软材料制成的堵嘴物，扣得尽可能紧。
 You can't seem to enunciate your spells properly with this in.
-有了这个，你似乎无法正确地念出你的咒语。
+佩戴上后，你似乎无法正确地念出你的咒语。
+Huge Ball Gag
+巨大号口球
+A massive gag made of a red squishy material, buckled as tight as it will go.
+一个巨大的口塞，由红色软材料制成，扣得尽可能紧。
+You absolutely can't enunciate your spells properly with this in.
+佩戴上后，你绝对无法正确地念出你的咒语。
 Magic Ball Gag
 附魔口球
 A gag enchanted with magic. It grows to fill your mouth so you can hardly speak.
@@ -7274,6 +7494,18 @@ A quick tie for apprehending prisoners.
 用于逮捕囚犯的快速捆绑。
 A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
 一组散发出平静、舒缓气息的绳索。它们神奇地伸展以贴合你的身体。
+Holy Ropework
+神圣绳索
+A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
+用于逮捕囚犯的快速捆绑，穿过手部束缚装置上的带扣。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+一组散发出平静、舒缓气息的绳索。它们神奇地伸展以贴合你的身体。
+Strict Holy Ropework
+严格的神圣绳索
+The finishing touches on a tight and strict piece of ropework.
+最后的收尾工作是对一根紧密而严格的绳索进行最后的修饰。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+一组散发出平静、舒缓气息的绳索。它们神奇地伸展以贴合你的身体。
 Holy Hogtie
 神圣驷马
 A very strict and tight hogtie, good for subduing unruly captives.
@@ -7379,8 +7611,8 @@ It is reinforced with steel cables, so getting it off will be tricky.
 它是用钢索加固的，所以要把它取下来会很棘手。
 Training Collar
 训练项圈
-A collar used to keep unruly wolfgirls in check.
-用来控制不守规矩的狼女的项圈。
+A collar with a decorative tag used to identify wolfgirls.
+带有装饰标签的项圈，用于识别狼女。
 If it works on them, it sure as heck works on you.
 如果它对他们有效，那么它肯定对你有效。
 Training Leash
@@ -7564,6 +7796,8 @@ It's made from hard-to-cut dragonscale!!!
 
 Steel Cuffs
 钢铐
+A pair of steel cuffs that make it easy to restrain you.
+一对钢制手铐，可以轻松束缚你。
 The enemy attaches your wrist cuffs together!
 敌人将你的手腕铐在一起！
 Your cuffs detatch!
@@ -7923,6 +8157,8 @@ The enemy attaches your ankle cuffs together!
 敌人将你的脚铐绑在一起！
 Ankle Chain
 踝链
+Your ankle cuff chain is tightened and pulls your feet together!
+你的脚踝铐链已收紧，并将你的双脚拉在一起！
 Short Ankle Chain
 短踝链
 A pair of cuffs chaining your legs together.
@@ -8153,44 +8389,44 @@ It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对你所做的每一次切割行为进行变化！
 Rubber (Feet)
 橡胶（脚）
-Sticky rubber that has fused itself into a shell around your body.
-粘性橡胶，已经融合成你身体周围的外壳。
+Sticky rubber that has fused itself into a skintight layer.
+粘性橡胶已自身融合成一层紧密的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Rubber (Ankles)
 橡胶（脚踝）
-Sticky rubber that has fused itself into a shell around your body.
-粘性橡胶，已经融合成你身体周围的外壳。
+Sticky rubber that has fused itself into a skintight layer.
+粘性橡胶已自身融合成一层紧密的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Rubber (Legs)
 橡胶（腿）
-Sticky rubber that has fused itself into a shell around your body.
-粘性橡胶，已经融合成你身体周围的外壳。
+Sticky rubber that has fused itself into a skintight layer.
+粘性橡胶已自身融合成一层紧密的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Rubber (Arms)
 橡胶（手臂）
-Sticky rubber that has fused itself into a shell around your body.
-粘性橡胶，已经融合成你身体周围的外壳。
+Sticky rubber that has fused itself into a skintight layer.
+粘性橡胶已自身融合成一层紧密的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Rubber (Hands)
 橡胶（手）
-Sticky rubber that has fused itself into a shell around your body.
-粘性橡胶，已经融合成你身体周围的外壳。
+Sticky rubber that has fused itself into a skintight layer.
+粘性橡胶已自身融合成一层紧密的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Rubber (Mouth)
 橡胶（嘴）
-Sticky rubber that has fused itself into a shell around your body.
-粘性橡胶，已经融合成你身体周围的外壳。
+Sticky rubber that has fused itself into a skintight layer.
+粘性橡胶已自身融合成一层紧密的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Rubber (Head)
 橡胶（头）
-Sticky rubber that has fused itself into a shell around your body.
-粘性橡胶，已经融合成你身体周围的外壳。
+Sticky rubber that has fused itself into a skintight layer.
+粘性橡胶已自身融合成一层紧密的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Proto-Slime (Feet)
@@ -8237,6 +8473,8 @@ It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对你所做的每一次切割行为进行变化！
 Proto-Rubber (Feet)
 黏菌橡胶（脚）
+Sticky slime that has fused itself into a skintight layer.
+粘稠的粘液已经融合成一层紧贴皮肤的外壳。
 There's no struggling out now, but since it's solid it may be cuttable.
 现在不可能挣脱了，但由于它是坚固的，它可能是可切割的。
 Proto-Rubber (Ankles)
@@ -8378,7 +8616,7 @@ It is said that even heaven has its hierarchies...
 Shining cuffs made of holy metal. Nothing can touch it.
 由圣洁金属制成的闪亮手铐。什么都不能碰它。
 Divine Muzzle
-神圣的口套
+神圣口套
 It is said that even heaven has its hierarchies...
 都说天堂也有等级……
 A shining muzzle made of holy metal. Nothing can touch it.
@@ -8389,10 +8627,24 @@ A piece of cloth secured onto your face and blocking vision.
 一块布固定在你的脸上并挡住视线。
 You can still see through the gap around your nose.
 你仍然可以通过鼻子周围的缝隙看到。
-Knotted Cloth Gag
-打结的布口塞
+Cleave Gag
+顺切堵嘴
+A piece of cloth forced between your lips.
+将一块布塞在双唇之间。
 On its own it's not very restrictive.
 就其本身而言，它不是很严格。
+Thick Cleave Gag
+厚的顺切堵嘴
+A piece of cloth that makes it hard to speak.
+一块让人难以言语的布。
+It's somewhat effective.
+是有点效果的。
+Knotted Cloth Gag
+打结的布口塞
+A piece of cloth tied in a knot and tied over your mouth.
+一块布打成一个结并绑在你的嘴上。
+It's pretty effective at keeping you quiet.
+这对于让你保持安静非常有效。
 OTN Cloth Gag
 覆嘴式布口塞
 A piece of cloth tightened over your mouth.
@@ -8568,10 +8820,10 @@ The liquid metal cube expands across your body and hardens, taking the form of r
 
 Liquid Metal (Feet)
 液态金属（脚）
-A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion.
-一种既柔软又极其坚硬的金属物质。它会减轻你的负担，减少逃避。
-It will be quite difficult to escape this.
-逃脱这个是相当困难的。
+A metallic substance that is both flexible and hard. It weighs you down, reducing evasion.
+一种既柔软又坚硬的金属物质。它会减轻你的负担，减少逃避。
+Forming a skintight layer, it will be quite difficult to escape this.
+形成一层紧密的外壳，逃脱这个是相当困难的。
 Liquid Metal (Ankles)
 液态金属（脚踝）
 Liquid Metal (Legs)
@@ -8682,7 +8934,7 @@ Light Bow
 Pointy stick delivery system.
 尖棒输送系统。
 Reload time: None. Deals crush damage on melee. Draws 10 charge and 20 stamina to fire an ordinary arrow, dealing 30 pierce damage.
-装弹时间：无。近战造成挤压伤害。消耗 10 点冲力和 20 点耐力来发射普通箭，造成 30 点穿透伤害。
+装弹时间：无。近战造成挤压伤害。消耗 10 点冲力和 20 点体力来发射普通箭，造成 30 点穿透伤害。
 You find a wooden bow.
 你找到一把木弓。
 10 charge to fire an arrow. Deals 30 pierce damage.
@@ -8692,7 +8944,7 @@ Choose projectile path
 Arrow
 箭
 You loose an arrow!
-你失去了一支箭！
+你射出了一支箭！
 
 Fire Arrows
 火焰箭
@@ -8722,7 +8974,7 @@ Crossbow
 Watch where you're pointing that thing!
 注意你把那个东西指向哪里！
 Reload time: 3 stationary turns. Deals crush damage on melee. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 65 pierce damage.
-装弹时间：3 静止回合。近战造成挤压伤害。需要 15 次充能且没有耐力来发射普通箭，造成 65 点穿透伤害。
+装弹时间：3 静止回合。近战造成挤压伤害。需要 15 次充能且没有体力来发射普通箭，造成 65 点穿透伤害。
 You find a crossbow.
 你找到一把弩。
 20 charge to fire a bolt. Deals 65 pierce damage.
@@ -8744,6 +8996,8 @@ Suits
 套装
 Armor
 盔甲
+Bras
+胸罩
 Underwear
 内衣
 Bodysuits
@@ -8756,6 +9010,8 @@ Tops
 上衣
 Sleeves
 袖子
+Gloves
+手套
 Corsets
 紧身胸衣
 Skirts
@@ -8908,6 +9164,8 @@ You pick up a strange device with a sharpened razor disc.
 你拿起一个奇怪的装置，里面有一个锋利的剃须刀盘。
 You find a strange ancient device with a sharp cutting blade.
 你发现了一个奇怪的古老装置，带有锋利的切割刀片。
+You pick up a stone trinket with a glowing blue sigil.
+你拿起一个带有发光蓝色印记的石头饰品。
 You pick up a bola.
 你拿起了一个投石索。
 You pick up a bomb!
@@ -8952,6 +9210,29 @@ Unlock
 解锁
 Struggle
 挣扎
+
+Gunpowder
+火药
+You toss some gunpowder on the floor! No picking it back up now...
+你把一些火药丢到地板上！现在没办法再捡起来了...
+Highly flammable. Do not eat.
+高度易燃。不要吃。
+Creates gunpowder tiles on the target area, which can be ignited.
+在目标区域创建火药方块，可以将其点燃。
+You pick up a sack of gunpowder.
+你拿起一袋火药。
+You toss some gunpowder on the floor!
+你把一些火药扔到地板上！
+
+Dual Wield (Rogue)
+双持（盗贼）
+Designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield 2-handed, heavy, or massive weapons in the offhand unless they are multiclass.|(Must equip Dual Wield spell to equip an offhand weapon)
+指定副手武器以获得被动效果，例如光源或额外暴击伤害。|盗贼不能在副手使用双手、重或大型武器，除非它们是多职业的。|（必须装备双持法术才能装备副手武器）
+
+Dual Wield (Wizard)
+双持（法师）
+Designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)
+指定副手武器以获得被动效果，例如光源或法术伤害加值。|法师只能在副手使用魔法武器，除非他们是多职业的，并且如果他们挥舞双手、重或双手持式武器，则获得 +1 缓慢等级。 副手的大型魔法武器。|（必须装备双持法术才能装备副手武器）
 
 Arcane Tome
 奥术之书
@@ -9418,7 +9699,7 @@ You come from a magical lineage, granting +10 Magic Armor and +10% magic damage.
 Beast Girl
 野兽少女
 You have animalistic features such as a bite spell, -10% attack stamina cost, and 10 slash damage on hit while hands are free. -100 Charm Resist.
-你拥有兽性特征，例如咬伤法术、-10% 攻击耐力消耗以及在双手空闲时击中时造成 10 次斩击伤害。 -100 魅惑抗性。
+你拥有兽性特征，例如咬伤法术、-10% 攻击体力消耗以及在双手空闲时击中时造成 10 次斩击伤害。 -100 魅惑抗性。
 
 恶魔少女
 You are related to eldritch entities, granting +50% shadow damage and the ability to teleport between shadows. You are weak to holy restraints and bright light.
@@ -9437,7 +9718,7 @@ You were blessed with immortality by Ninril, Goddess of Restoration, granting -5
 Bast's Blessing
 Bast 的祝福
 You were granted undead immortality by Bast, granting a bite, claws, catlike senses, and stamina regen scaling with your current WP. Your WP gain is halved and you get -100 Fire Resist.
-Bast 赋予你不死不朽的能力，赋予你咬、爪、猫般的感觉，并根据你当前的 WP 调整耐力恢复。 你的 WP 增益减半并且你获得 -100 火焰抗性。
+Bast 赋予你不死不朽的能力，赋予你咬、爪、猫般的感觉，并根据你当前的 WP 调整体力恢复。 你的 WP 增益减半并且你获得 -100 火焰抗性。
 
 You channel mana through your body! Empowerment level: LEVEL
 你通过你的身体来积蓄魔力！充能级别：LEVEL
@@ -9481,6 +9762,42 @@ Shadowy chains appear from a rift in space!
 阴影锁链从空间裂缝中出现！
 The roaring inferno deals 10 damage to you!
 咆哮的地狱对你造成 10 点伤害！
+The Reaping
+收获
++20% damage to plants
++20% 对植物的伤害
+Magically Iliterate
+魔法文盲
+You've never read a magic book. Elemental, Conjuration, and Illusion spells cost 3x as many spell points.
+你从来没有读过魔法书。元素、咒法和幻象法术的法术点数是原来的 3 倍。
+Magical Spark
+魔法火花
+Reduce the penalty from Magically Iliterate to 2x.
+将魔法文盲的惩罚减少到 2 倍。
+Magical Training
+魔法训练
+Remove the penalty from Magically Iliterate.
+取消魔法文盲的惩罚。
+Reap What You Sow
+种瓜得瓜，种豆得豆
+Defeating a non-humanoid enemy causes vines to sprout on their space temporarily.
+击败非人形敌人会导致藤蔓在其空间内暂时发芽。
+Battle Rhythm
+战斗节奏
+Stores 10% of the stamina spent from attacks as Rhythm, up to a total of 40. While you have over 10 Rhythm, you gain +10 Block and Evasion. Enemy base accuracy against you is decreased by a % equal to your Rhythm. If an attack misses or is blocked because of this, reduce Rhythm by 25% of the enemy attack power. Decays when not attacking.
+将攻击消耗的体力的 10% 存储为节奏，总共最多 40 个。当你的节奏超过 10 个时，你获得 +10 格挡和闪避。 敌人对你的基础准确度降低了 你的节奏%。 如果攻击因此而失败或被阻挡，则节奏减少敌人攻击力的 25%。不攻击时会腐烂。
+Limit Surge
+限制浪涌
+Spend 50 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns.
+花费 50 WP 即可完全恢复体力，并且体力增益增加 30%，持续 20 回合。 如果你的意志力因此而变为 0，你将被眩晕 2 回合。
+Battle Trance
+战斗恍惚
+While at 40 Battle Rhythm, you attack twice per turn.
+当战斗节奏达到 40 时，你每回合可以攻击两次。
+Devious Ingenuity
+邪恶的独创性
+Trap-type spells and consumables take 1 turn to cast instead of several.
+陷阱类法术和消耗品需要 1 回合即可施放，而不是数回合。
 Mana Burst
 法力冲击
 As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus...
@@ -9513,10 +9830,11 @@ After letting go of yourself, you feel an immense surge of power, increasing mag
 Pleasure Training I
 快乐训练 I
 You remain satisfied for much less time after letting go. Letting go costs 50% less stamina.
-高潮后，你保持满足感的时间就会少得多。自慰高潮会减少 50% 的耐力。
+高潮后，你保持满足感的时间就会少得多。自慰高潮会减少 50% 的体力。
 Pleasure Training II
 快乐训练 II
-你很难满足。 高潮会降低 50% 的耐力（总计 75%）和 50% 的意志力。
+You are quite difficult to satisfy. Letting go costs 50% less stamina (75% total) and 50% less willpower.
+你很难满足。 高潮会降低 50% 的体力（总计 75%）和 50% 的意志力。
 
 Mental Resistance
 心理抵抗
@@ -9979,6 +10297,8 @@ Choose target 3x3 area
 选择施放区域（3x3）
 Witch's Electricity
 女巫的落雷
+Firey Explosion
+火焰爆炸
 Witch's Electric Orb
 女巫的雷电球
 Witch's Electric Burst
@@ -10338,7 +10658,7 @@ Increases maximum SP by 12
 Iron Will
 钢铁意志
 While you have 100 current willpower or more, regain an additional 4 stamina per turn.
-当你当前意志力达到 100 点或更多时，每回合额外恢复 4 点耐力。
+当你当前意志力达到 100 点或更多时，每回合额外恢复 4 点体力。
 Defiance
 蔑视
 For each 10 current willpower you have over 50, gain +5 Bondage Resist.
@@ -10378,7 +10698,7 @@ When landing a critical strike with magic damage, crit multiplier is increased b
 Brute Force
 蛮力攻击
 When enabled, your attacks deal 10% of your willpower as additional crush damage but cost 10 more stamina.
-启用后，你的攻击会造成 10% 的意志力作为额外的挤压伤害，但会多花费 10 点耐力。
+启用后，你的攻击会造成 10% 的意志力作为额外的挤压伤害，但会多花费 10 点体力。
 One With Slime
 粘液一体
 While standing on slime/latex, you can cast rubber spells without components.
@@ -11535,8 +11855,57 @@ The vibrator holds at full power to drive you over the edge!
 The weapon needs to be loaded to fire.
 武器需要装弹才能开火。
 
+Recurve Bow
+反曲弓
+Curvy, just like its user.
+曲线优美，就像它的使用者一样。
+Reload time: 1 turn. Deals crush damage on melee. Draws 14 charge and 35 stamina to fire an ordinary arrow, dealing 40 pierce damage.
+装弹时间：1 回合。近战造成挤压伤害。需要 14 次充能和 35 点体力来发射普通箭，造成 40 点穿透伤害。
+You find a recurve bow.
+你找到一把反曲弓。
+14 charge to fire an arrow. Deals 40 pierce damage.
+14 次充能即可发射射箭。造成 40 点穿刺伤害。
+Choose projectile path
+选择弹丸路径
+Recurve Bow Arrow
+反曲弓箭
+You loose a strong arrow!
+你射出了一支强箭！
+
+Longbow
+长弓
+Great for building both empires and muscle.
+非常适合建立帝国和肌肉。
+Reload time: 2 turns. Deals crush damage on melee. Draws 18 charge and 60 stamina to fire an ordinary arrow, dealing 60 pierce damage.
+装弹时间：2 回合。近战造成挤压伤害。需要 18 次充能和 60 点体力来发射普通箭，造成 60 点穿透伤害。
+You find a huge longbow.
+你发现一把巨大的长弓。
+18 charge to fire an arrow. Deals 60 pierce damage.
+18 次充能即可发射箭。造成 60 点穿刺伤害。
+Choose projectile path
+选择弹丸路径
+Longbow Arrow
+长弓箭
+You loose a mighty arrow!
+你射出了一支强大的箭！
+
+Pistol Crossbow
+手枪弩
+Lethal. Sustainable. Portable.
+致命。可持续。便携。
+Reload time: 3 turns. Deals crush damage on melee. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 45 pierce damage.
+装弹时间：3 回合。近战造成挤压伤害。需要 15 次充能且无需体力即可发射普通箭，造成 45 点穿刺伤害。
+You find a pistol crossbow.
+你找到一把手枪弩。
+15 charge to fire a bolt. Deals 45 pierce damage.
+15 次充能即可发射箭矢。 造成 45 点穿刺伤害。
+Choose projectile path
+选择弹丸路径
+Pistol Bolt
+手枪弩箭
 You pull the trigger!
 你扣动了扳机！
+
 The RSTNME is removed as the lock comes off.
 RSTNME 在被锁打开后移除。
 You save the key in your inventory for future use.
@@ -11655,6 +12024,8 @@ Ropes slither out towards you from between the bricks!
 绳索从砖块之间滑向你！
 Ropes fall on you from all sides!
 绳索从四面八方落在你身上！
+A constellation of ropes surrounds you!
+一堆绳索围绕着你！
 Leather restraints start appearing around you!
 皮革拘束具开始出现在你身边！
 high-tech cables come out from the floor!
@@ -11687,6 +12058,8 @@ The ropes wrap themselves around your body!
 绳索缠绕在你的身体上！
 The ropes wrap themselves tightly around your body!
 绳索紧紧地缠绕在你的身体上！
+The holy ropes secure themselves upon your body!
+神圣之绳将自己固定在你的身上！
 The leather restraints attach themselves to your body!
 皮革拘束具附着在你的身体上！
 The high-tech cables wrap themselves over your body!
@@ -11795,6 +12168,10 @@ Replace Spell 5
 替换法术 5
 Unfiled
 空的
+Adventuring 101
+冒险家 101
+History
+历史
 Bondage Witchery
 束缚巫术
 Enemy Notes
@@ -11803,8 +12180,8 @@ Graveyard
 墓地
 Catacombs
 地下墓穴
-Jungle
-丛林
+Overgrown
+杂草丛生
 Temple
 寺庙
 Tombs
@@ -11815,12 +12192,36 @@ Crystal Cave
 水晶洞
 Orrery
 天文钟
+Bellows
+风箱
+
+(A page from the Book of Aeons)|The 'Graveyard' is a peculiar place. Long ago, human beings lived and died just like the animals. When the Old Civilization existed, they would come to bury their dead in the Graveyard. It remains a mystery why so many of the former dead seem to be alive. Some say that when the Old Civilization cast the spell that spell which overcame Death, even those buried in their graves would rise again. Others simply say that there is a powerful necromancer who lives here, toying with the dead as if they were pets...
+（《万古之书》中的一页）|'墓地' 是一个奇特的地方。很久以前，人类和动物一样生、死。当旧文明存在的时候，他们会来墓地埋葬死者。为什么这么多死者似乎还活着，仍然是一个谜。有人说，当旧文明施展战胜死亡的咒语时，即使是那些埋在坟墓里的人也会复活。还有人干脆说这里住着一个强大的死灵法师，把死人当作宠物一样玩弄……
+(A page from the Book of Aeons)|Beneath the Graveyard lies a relic of a former age, a network of tombs inhabited by the immortal followers of Bast. Very few were graced with this gift of immortality before the great archmagus, Sariel Vinlaga, stole this power from the gods and granted all humans with the power of immortality. The Bast followers are still set in their ways, hoping for a time when their Goddess will return and rebuild their glorious civilization.
+（《万古之书》中的一页）|墓地下方躺着一座上古时代的遗迹，一个由巴斯特的不朽追随者居住的墓穴网络。在伟大的大法师萨里尔·文拉加(Sariel Vinlaga)从众神那里窃取了这种不朽的力量并授予所有人类不朽的力量之前，很少有人获得过这种不朽的天赋。巴斯特的追随者仍然固执己见，希望有一天他们的女神能够回归并重建他们辉煌的文明。
+(A page from the Book of Aeons)|Some say the 'Catacombs' are older than time itself. When the Old Civilization began to study immortality, no one knew if it would be possible to bring back those who already died. The Catacombs therefore were used to store all of the remains of former humans, so that they too could be revived when the archmagus would finally make her breakthrough.
+（《万古之书》中的一页）|有人说 '地下墓穴' 比时间本身还要古老。当旧文明开始研究永生时，没有人知道是否有可能让那些已经死去的人复活。因此，地下墓穴被用来储存前人类的所有遗骸，以便当大法师最终取得突破时，他们也可以复活。
+(A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
+（《万古之书》中的一页）|据说大法师萨里尔·文拉加(Sariel Vinlaga)就在这个图书馆学习过。在收集了所有人类知识（魔法、精神、技术）后，她指派十二位小魔法师负责整理和整理她所获得的知识财富。没有人知道她为什么突然放弃它，或者为什么它至今仍如此年久失修。
+(A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
+（《万古之书》中的一页）|长袍废墟对于学者来说仍然是一个谜。几乎没有任何光线从天花板的裂缝中透进来，但这个区域却充满了生机。众所周知，人类免于死亡的再生能力依赖于个人自身的法力供应。那么没有法力的植物和野兽如何生存呢？虔诚的人说是恢复女神保护了丛林，但旧文明是否发展出了一种维持地下生命的手段？
+(A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
+（《万古之书》中的一页）|能源问题已经困扰了文明数千年。在地脉被发现之前，人类依赖河流和木柴等自然资源。当水晶洞被发现时，发生了一场伟大的革命。文明不再依赖自然资源，可以利用地下混沌能量的源泉为机械提供前所未有的动力。
+(A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
+（《万古之书》中的一页）|他们所说的 '失落的圣殿'，是一个饱受猜测的对象。看来它的创造者只崇拜四位造物主女神，而不是所有的八女神。它可能是几百年前被遗弃的，当时一场洪水引起了巨大的恐慌，这似乎发生在大法师使人类永生之前，因为里面仍然发现了许多遗骸。
+(A page from the Book of Aeons)|The Stars have been a mystery to scholars since the beginning of time. At one point, humans believed that every star was a god, and they made offerings by throwing sugar into the night, thinking that as the stars were innumerable, so were the grains of sugar that pleased humans so much. Religion has moved past that, but the Orrery remains a relic from a time when humanity worshipped the stars rather than the Eight.
+（《万古之书》中的一页）|自古以来，星星对于学者来说一直是个谜。曾几何时，人类相信每一颗星星都是一位神，他们通过向黑夜中投掷糖来供奉，认为星星无数，而令人类高兴的糖粒也数不胜数。宗教已经超越了这一点，但太阳系仪仍然是人类崇拜星星而不是八星时代的遗迹。
+(A page from the Book of Aeons)|The 'Bellows' is the nickname given to the primitive facilities of the Old Civilization, buried deep beneath the ground. While much of it remains in disrepair, many of the Old Civilization's successors have attempted to keep it in good working order, as the technology is precious and impossible to replicate with modern methods. It seems that many of these successors have fallen prey to some delusions about its purpose, as much of the equipment preserved has little use aside from collecting prisoners.
+（《万古之书》中的一页）|'风箱'是旧文明深埋在地下的原始设施的昵称。虽然其中大部分仍年久失修，但许多旧文明的继承者都试图使其保持良好的工作状态，因为这项技术非常珍贵，而且不可能用现代方法复制。 似乎这些继承者中的许多人都对其目的产生了一些错觉，因为保留下来的大部分设备除了收集囚犯之外几乎没有什么用处。
+
 (Preface from the journal of Catherine Willows, well-known explorer who vanished in the dungeon 30 years ago) I am writing this journal in the off chance that I do not come back in my search for the Mistress' staff. If you find this, please make an effort to deliver it back to the surface for the good of all the young women lured by its secrets.
 （凯瑟琳·威洛斯（Catherine Willows）的日记前言，她是 30 年前在地牢中消失的著名探险家）我写这本日记是因为我没有回来寻找女主人的工作人员。如果你发现了这个，为了所有被它的秘密引诱的年轻女性的利益，请努力把它送回地面。
 (Pg. 24 from Catherine Willows' journal) Many who trowel the upper levels of the Mistress' tomb often ask rhetorically: 'Why are there weird kinky traps guarding treasure chests? Why not have real, deadly traps if the purpose is to dissuade intruders?'
-（凯瑟琳·威洛斯（Catherine Willows）杂志的第 24 页）许多铲平女主人墓上层的人经常反问：“为什么有奇怪的古怪陷阱守卫着宝箱？如果目的是劝阻入侵者，为什么不设置真正的、致命的陷阱呢？
+（凯瑟琳·威洛斯（Catherine Willows）日记第 24 页）许多铲平女主人墓上层的人经常反问：“为什么有奇怪的古怪陷阱守卫着宝箱？如果目的是劝阻入侵者，为什么不设置真正的、致命的陷阱呢？
 (Pg. 25 from Catherine Willows' journal) ...They make a crucial mistake: The treasure chests aren't trapped. Rather, they are full of gold. And we know that gold is pleasing to the gods: our economy runs on it, and the gods only make interventions in our day-to-day affairs because we give them gold. Lesser gods, known as spirits, also love gold, but unlike the gods we know, these lesser spirits cannot consume gold on an altar in one fell swoop like the gods can. Therefore, they need to physically inhabit the place where the gold sits, slowly draining it of its pleasing essence.
-（Catherine Willows 日记中的第 25 页）......他们犯了一个重大错误：宝箱没有被困住。相反，它们充满了黄金。而且我们知道黄金是神所喜悦的：我们的经济在它上面运行，神只干预我们的日常事务，因为我们给了他们黄金。被称为精灵的小神也喜欢黄金，但与我们所知道的神不同的是，这些小精灵不能像众神一样一举消耗祭坛上的黄金。因此，他们需要实际居住在黄金所在的地方，慢慢地抽干它令人愉悦的本质。
+（凯瑟琳·威洛斯（Catherine Willows）日记第 25 页）......他们犯了一个重大错误：宝箱没有被困住。相反，它们充满了黄金。而且我们知道黄金是神所喜悦的：我们的经济在它上面运行，神只干预我们的日常事务，因为我们给了他们黄金。被称为精灵的小神也喜欢黄金，但与我们所知道的神不同的是，这些小精灵不能像众神一样一举消耗祭坛上的黄金。因此，他们需要实际居住在黄金所在的地方，慢慢地抽干它令人愉悦的本质。
+(Pg. 26 from Catherine Willows' journal) So the question is not 'why did somebody lay these traps.' The answer is that they are not traps at all. I surmise that the upper floors were once a place of offering for the dead. And when the old civilization perished and the entire complex sank into the ground, there was no longer anyone to drive the spirits away and keep them from inhabiting the upstairs. As for why there are so many restraints in general rather than your typical sort of spirits... well we know what the Mistress surrounded herself with.
+（凯瑟琳·威洛斯（Catherine Willows）日记第 26 页）因此，问题不是 '为什么有人要设置这些陷阱'。 答案是它们根本不是陷阱。我推测楼上曾经是祭祀死者的地方。当旧文明消亡，整个建筑群沉入地下时，就不再有人驱赶鬼魂，阻止它们居住在楼上。至于为什么会有这么多的束缚，而不是你典型的那种精神……我们知道女主人周围是什么。
 (The note starts with a drawing of a witch with many chains hanging from her body) She can block melee attacks with her chains. However, they conduct lightning and heat directly to her body, and I was able to take out her chains with bolt cutters.
 （笔记开始于一个女巫的图画，她身上挂着许多锁链）她可以用她的锁链阻挡近战攻击。但是，它们将闪电和热量直接传导到她的身体，我能够用断线钳将她的锁链取出。
 (The note starts with a drawing of a witch with lightning crackling from her fingertips) Water will cause her to short-circuit. I can't seem to hit her with lightning, though. She always redirects it.
@@ -11844,9 +12245,11 @@ Orrery
 (From an essay titled 'On Celestial Supply Chains') It is known that the heavens seek gold. We do not know why it is that the heavens seek it, but we do know that the Goddesses grant us fragments of their limitless power in exchange for this otherwise-useless metal we dredge up from the earth. They care about it so much that shrines are commonplace, each hosting an angelic courier lying in wait for any adventurer willing to part with hers.
 （摘自一篇题为《论天上供应链》的文章）众所周知，天上求金。我们不知道为什么上天会寻找它，但我们知道女神赐予我们无限力量的碎片，以换取我们从地球上挖出的这种原本无用的金属。他们非常关心它，以至于神社司空见惯，每个神社都有一个天使信使，等待任何愿意与她分手的冒险者。
 I am writing this from inside prison. Who would have known they cared so much about me using a shrine? Sheesh.
-我是在监狱里写这篇文章的。谁能知道他们对我使用神社如此关心？嘘。
+我是在监狱里写这篇文章的。谁能知道他们对我使用神泉如此关心？嘘。
+
 (A drawing of a bunch of zombies, ordered by danger level. Of note are a zombie surrounded by charms, a zombie surrounded by talismans, a zombie warrior with a sword, and... some kind of shrine maiden that you've never seen before)
 （一组僵尸的图画，按危险等级排序。值得注意的是一个被符咒包围的僵尸，一个被丝带包围的僵尸，一个拿着剑的僵尸战士，还有……某种你从未见过的巫女以前看过）
+
 (A drawing of a suit of armor. It reads: DO NOT TRUST)
 （一套盔甲的图纸。上面写着：不要相信）
 (The note starts with a drawing of a witch in dark robes with bright pink hair) A necromancer. Powerful spellcaster, weak up close.
@@ -11871,20 +12274,55 @@ I don't think it's neccessary to tell people that dragons resist fire... right?
 我认为没有必要告诉人们龙抗火……对吧？
 I've been studying the dragonheart's weaknesses. So far I've found that the ones bearing the powers of ice dragons are actually weak to fire unlike the others, and the ones who summon crystals to block attacks are nonetheless unable to grab a spear to stop it from reaching them.
 我一直在研究龙之心的弱点。到现在我发现，拥有冰龙之力的人，其实跟其他人不一样，开火能力很弱，而召唤水晶格挡攻击的人，却是连长矛都拿不到。
+
 They say a ninja can catch a sword in her hands, but can she stop a spear? Ha, thought not!
 都说忍者能拿剑，但能挡住长矛吗？哈，没想到！
 (Pg. 54 from Catherine Willows' journal): The post-collapse civilization sought immortality, but they knew that the technologies of the old civilization were a danger to them. So they turned to another school of thought: Magic.
-（Catherine Willows 杂志第 54 页）：崩溃后的文明寻求永生，但他们知道旧文明的技术对他们来说是危险的。所以他们转向了另一种思想流派：魔法。
+（凯瑟琳·威洛斯（Catherine Willows）日记第 54 页）：崩溃后的文明寻求永生，但他们知道旧文明的技术对他们来说是危险的。所以他们转向了另一种思想流派：魔法。
+(Pg. 55 from Catherine Willows' journal): Silk wrappings, enchanted with ten-thousand microscopic runes per cubit, were suffucient to protect their bodies from ageing for millenia. What they didn't realize was that the magic didn't protect their souls.
+（凯瑟琳·威洛斯（Catherine Willows）日记第 55 页）：每肘尺上附有一万个微小符文的丝绸包裹物，足以保护他们的身体在千年之内免于衰老。他们没有意识到的是，魔法并不能保护他们的灵魂。
+(Pg. 56 from Catherine Willows' journal): They have no clue what they are doing anymore. To them, this is just another one of their ten-thousand dreams across the aeons. They can no longer tell reality from imagination.
+（凯瑟琳·威洛斯（Catherine Willows）日记第 56 页）：他们不再知道自己在做什么。对于他们来说，这不过是他们千古万劫中的又一个梦想而已。他们不再能够区分现实和想象。
 Ninjas aren't so tough to fight when their hands are tied behind their back. Good thing I had my pet slime with me~
 当他们的双手被绑在背后时，忍者并不那么难以战斗。还好我有我的宠物粘液团
+(Pg. 12 from Catherine Willows' addendum): After studying the ancient race of catlike people, I have come to the conclusion that their race met a dual fate. All of them received eternal life in some form or another. To one half it manifested as a blessing, allowing them to walk the halls. To the other it became a curse to them, trapping them in runic wrappings for all eternity.
+（凯瑟琳·威洛斯（Catherine Willows）附录的第 12 页）：在研究了古代的猫人种族之后，我得出的结论是，他们的种族遇到了双重命运。他们所有人都以某种形式获得了永生。对一半人来说，这表现为一种祝福，允许他们在大厅里行走。对于另一个人来说，它成为了他们的诅咒，将他们永远困在符文包裹中。
+(Pg. 13 from Catherine Willows' addendum): I must issue a correction to the statements written in my journal. The ancients knew what they were doing. Those that were cursed, are blessed, and those who were blessed, are cursed.
+（凯瑟琳·威洛斯（Catherine Willows）附录第 13 页）：我必须对日记中所写的陈述进行更正。古人知道他们在做什么。那些被咒诅的人是有福的，那些被祝福的人是被咒诅的。
+(It's a copy of an ancient illustration, depicting a cat goddess, an elven goddess, and two groups of catgirls. One group is smiling and standing on pedestals. The other group is frowning and wearing armor meant for war. It looks unfinished, like the author was suddenly grabbed from behind while drawing it)
+（这是一幅古代插图的复制品，描绘了一位猫女神，一位精灵女神和两组猫女。一组微笑着站在基座上，另一组皱着眉头穿着战争用的盔甲。它看起来未完成，就像作者在画的时候突然被人从后面抱住）
+(It's a interlinear translation of an ancient letter) Your highness, I have delivered to you the prisoners that you have asked. They are the worst of the worst--thieves, slanderers, sorcerers and seducers. But I must inquire, why is it that we must wrap them in silken scarves, worth twenty gold pieces each? Surely they are being handed over to be disciplined, not to be anointed?
+（这是一封古信的行间翻译）殿下，您所要求的囚犯我已经交给您了。他们是最坏中的最坏的人——小偷、诽谤者、巫师和诱惑者。但我要问，为什么一定要给他们裹上每条价值二十金币的丝巾呢？难道他们被交给人是为了接受纪律，而不是为了受膏抹吗？
+(It's a record of an interview)|ME: Why are you like this?|MUMMY: Because we are blessed!|ME: Blessed? You've been wrapped up for thousands of years!|MUMMY: A thousand years is nothing compared to the glory that will come!|ME: Why do you have to be wrapped up? There are plenty of you who aren't...|MUMMY: The chosen ones will inherit the land when the goddess returns."
+（采访记录）|我：你为什么这样？|木乃伊：因为我们有福了！|我：有福了？你已经包裹了数千年！|木乃伊：与即将到来的荣耀相比，一千年算不了什么！|我：你为什么要包裹起来？ 你们中有很多人不是……|木乃伊：当女神回来时，被选中的人将继承这片土地。
+(It's a record of an interview)|ME: Which goddess are you referring to? The goddess of restoration?|MUMMY: The blessed kitty.. she was promised to rule over the lesser goddesses.|ME: Lesser goddesses? Which ones?|MUMMY: YOUR goddesses. The ones you humans created that should not be. Ours is the true offspring of the creators, a goddess created to rule!
+（采访记录）|我：你指的是哪位女神？ 恢复女神？|木乃伊：受祝福的小猫..她被许诺统治小女神。|我：小女神？哪些？|MUMMY：你的女神。你们人类创造的那些不应该是的。我们是造物主的真正后代，是为统治而生的女神！
+(It's a record of an interview)|ME: What of the elves? Don't they talk about a 'kingdom' too?|MUMMY: Who are the elves?|ME: You know, pointy ears, green hair, a heck of an attitude... they seem in tune with nature.|MUMMY: They sound arrogant.|ME: They are.|MUMMY: Perhaps they know nothing of the promise between our goddess and theirs.
+（采访记录）|我：精灵呢？他们不是也在谈论 '王国' 吗？|木乃伊：精灵是谁？|我：你知道，尖尖的耳朵，绿色的头发，一种奇怪的态度......他们似乎与自然融为一体。|木乃伊： 他们听起来很傲慢。|我：他们确实很傲慢。|木乃伊：也许他们对我们的女神和他们的女神之间的承诺一无所知。
+(It's a medical record) Patient seems stable... application of the enchanted cloth seems to have stopped the bleeding. It appears that the ancient magic suppresses all forms of injury, even in humans, until it is taken off.
+（这是一份医疗记录）病人看起来很稳定……使用魔法布似乎已经止血了。看来古老的魔法可以抑制所有形式的伤害，甚至对人类来说也是如此，直到它被解除为止。
+
+(A record of an ancient... transaction)||The elemental offered us the following from her personal estate:|-one magical lantern that requires no fuel, and can light up the night as if it were day|-one crystal that burns red-hot when kept near metal, providing heat to warm a house|-three enchanted swords imbued with flame|-a hollow glass crystal, used for communication||In exchange, we gave her three wolfgirls we had captured on the surface.
+（一项古老的……交易的记录）||精灵从她的个人财产中向我们提供了以下内容：|-一盏不需要燃料的神奇灯笼，可以照亮黑夜，就像白天一样|-一颗水晶 靠近金属时会燃烧成红热，为房屋提供热量|-三把充满火焰的魔法剑|-空心玻璃晶体，用于通讯||作为交换，我们给了她我们在地表捕获的三个狼女。
+I had heard that ancient humans prayed to the stars here, in an effort to find favor when the Eight had forsaken them. So I went and prayed... and let me tell you, it was a lie, an absolute lie. There are only monsters out there.
+我听说远古人类在这里向星星祈祷，试图在八神抛弃他们后寻求庇护。所以我去祈祷……让我告诉你，这是一个谎言，一个绝对的谎言。那里只有怪物。
+(It is a set of instructions for creating a magic circle to unlock a sealed portal. There are markings in many languages that give conflicting descriptions, claiming that the circle will transmute material to gold, or bring good fortune...)
+（这是一组创建魔法阵以解锁密封传送门的说明。许多语言的标记给出了相互矛盾的描述，声称魔法阵可以将材料转化为黄金，或者带来好运......）
+
+(Two schematic diagrams of ancient drones taken from records. The first is unmodified, and the second has several annotations written in what looks like pink lipstick...)
+（从记录中截取的两张古代无人机的示意图。第一个是未修改的，第二个有几个看起来像粉红色唇膏的注释......）
+
 Those damn slimes! They're so sticky and gross... fortunately, I washed myself in the fountain the last time I got caught by one. It came right off!
 那些该死的粘液团！它们又粘又恶心……幸运的是，上次我被一个人抓住时，我在喷泉里洗了自己。它马上就来了！
 The dragonhearts were a group of dragonslayers, named for their ritual that imbues them with the fiery power and resistance of dragons they've slain. Now they work as mercenaries, and some of them serve a certain Leather goddess.
 龙心是一群屠龙者，以他们的仪式命名，这种仪式赋予他们所杀死的龙的炽热力量和抵抗力。现在他们以雇佣兵的身份工作，其中一些人服务于某个皮革女神。
-(Pg. 70 from Catherine Willows' journal): The underground jungle is a curious phenomenon. The level of light pouring through cracks in the ceiling is nonetheless too sparse to sustain plantlife. And yet the restoration goddess, in her ancient wisdom, has decided to preserve this place. How many of her dryads must I pierce or burn until she realizes I am merely passing through?
-（Catherine Willows 杂志的第 70 页）：地下丛林是一种奇怪的现象。尽管如此，从天花板的裂缝中倾泻而下的光线还是太稀少，无法维持植物的生命。然而，恢复女神，以其古老的智慧，决定保护这个地方。在她意识到我只是路过之前，我必须刺穿或烧掉多少她的树精？
+Yes! I've done it! I have created another red slime! I shall call him Fred, yes, Fred. After the red slime I lost in a shield-related accident a while back... |Poor Fred... I miss him.
+是的！ 我已经做到了！我又创造了一种红色史莱姆！我会叫他弗雷德（Fred），是的，弗雷德（Fred）。不久前，我在一次与盾牌相关的事故中失去了红色史莱姆之后……|可怜的弗雷德（Fred）……我想念他。
+(Pg. 70 from Catherine Willows' journal): The overgrown ruins are a curious phenomenon. The level of light pouring through cracks in the ceiling is nonetheless too sparse to sustain plantlife. And yet the restoration goddess, in her ancient wisdom, has decided to preserve this place. How many of her dryads must I pierce or burn until she realizes I am merely passing through?
+（凯瑟琳·威洛斯（Catherine Willows）日记第 70 页）：杂草丛生的遗迹是一种奇怪的现象。尽管如此，从天花板的裂缝中倾泻而下的光线还是太稀少，无法维持植物的生命。 然而，恢复女神，以其古老的智慧，决定保护这个地方。在她意识到我只是路过之前，我必须刺穿或烧掉多少她的树精？
 The unseen maid is the deadliest.
 看不见的女仆是最致命的。
+
 (The note is blank)
 （注释为空白）
 The note reads: Mmmmmmmph! Mmmm! MMMMMPH!!!!-- (The entire note is just gagged mumblings...)
@@ -11905,6 +12343,7 @@ The note reads: Please take this beautiful doll somewhere and play with her~
 （笔记中有一本关于击剑的手册。你一直是个糟糕的击剑手）
 (The note contains a magic spell you were taught never to cast under any circumstances)
 （笔记包含一个你被教导在任何情况下都不要施放的魔法咒语）
+
 The item requires 5 keys and free hands to remove
 该项目需要 5 把钥匙和空闲的双手才能移除
 The item is extremely secure with five separate keyholes.
@@ -11971,8 +12410,8 @@ You pray to the Goddess and the sigil vanishes! Perhaps you returned what was ri
 你向女神祈祷，印记就会消失！也许你归还了本该属于她的东西？
 This item bears the sigil of the Goddess of Restoration. Perhaps she can help?
 该物品带有恢复女神的印记。也许她能帮忙？
-The item is protected by an arcane seal. There is nothing you can do to it.
-该物品受到奥术封印的保护。你对此无能为力。
+The item is protected by a magical seal. There is nothing you can do to it.
+该物品受到魔法封印的保护。你对此无能为力。
 You pray to the Goddess and the sigil vanishes! Perhaps you returned what was rightfully hers?
 你向女神祈祷，印记就会消失！也许你归还了本该属于她的东西？
 This item bears the sigil of the Goddess of Conjuration. Perhaps she can help?
@@ -11987,14 +12426,14 @@ You pray to the Goddess and the sigil vanishes! Perhaps you returned what was ri
 你向女神祈祷，印记就会消失！也许你归还了本该属于她的东西？
 This item bears the sigil of the Goddess of Elements. Perhaps she can help?
 该物品带有元素女神的印记。也许她能帮忙？
-The item is protected by powerful energies. There is nothing you can do to it.
-该物品受到强大能量的保护。你对此无能为力。
+The item is protected by an elemental seal. There is nothing you can do to it.
+该物品受到元素封印的保护。你对此无能为力。
 You hold the key to the item and it comes loose, draining the key's energy.
 你拿着物品的钥匙，它松开了，但是钥匙的能量耗尽了。
 The item is incribed with mystical runes. Maybe you need a powerful key to unlock it.
 该物品刻有神秘符文。也许你需要一把强大的钥匙来解锁它。
-You tug on the item, but the runes glow brighter as you realize struggling is pointless.
-你用力拉扯物品，但当你意识到挣扎毫无意义时，符文会变得更亮。
+The lock-shaped rune flashes as you realize struggling is pointless.
+当你意识到挣扎毫无意义时，锁形符文就会闪烁。
 
 You overload the magical seal, causing it to vanish and release the item.
 你使魔法封印过载，导致它消失并解开该物品。
@@ -12157,17 +12596,17 @@ You are ambushed by slime researchers!
 A large blob of slime falls from the ceiling!
 一大块粘液团从天花板上掉下来！
 In a puff of smoke, a group of fire elementals appear around you!
-在一阵烟雾中，一群火元素出现在你身边！
+在一阵烟雾中，一群火精灵出现在你身边！
 In a flash of fog a group of ice elementals appear around you!
-在一阵迷雾中，一群冰元素出现在你周围！
+在一阵迷雾中，一群冰精灵出现在你周围！
 In a burst of mist, a group of water elementals appear around you!
-一阵雾气中，一群水元素出现在你身边！
+一阵雾气中，一群水精灵出现在你身边！
 A group of earth elementals rise out of the ground!
-一群土元素从地里出现！
+一群大地精灵从地里出现！
 You hear pouring liquid and a group of latex elementals come out of the walls!
-你听到倒出液体的声音，一群乳胶元素从墙上冒出来！
+你听到倒出液体的声音，一群乳胶精灵从墙上冒出来！
 In a flash of light, a group of air elementals appear around you!
-光芒一闪，一群气元素出现在你身边！
+光芒一闪，一群风精灵出现在你身边！
 Several ethereal hands appear all around you!
 几只空灵的手出现在你身边！
 You have stumbled upon a conjurer's study!
@@ -12185,12 +12624,14 @@ The Head Maid corners you!
 A vine crawls from the ground, already wrapping around your feet!
 一根藤蔓从地上爬了出来，已经缠住了你的脚！
 
-You have broken a magic orb, gaining a Spell Point and angering a goddess.
-你打破了一个魔法球，获得了一个法术点数并激怒了一位女神。
-You have broken a magic orb, gaining a random spell and angering a goddess.
-你打破了一个魔法球，获得了一个随机法术并激怒了一位女神。
-Choose one. She will send her minions after you.
-选择一位女神。她会派她的爪牙追击你。
+You find a magic orb, containing a Spell Point. However, a Goddess owns this artifact..
+你发现了一个魔法球，里面有一个法术点。然而，女神拥有这件神器。
+You find a magic orb, containing the SHCL spell 'SPLNME' and angering a goddess
+你发现了一个魔法球，里面有一个 SHCL 法术 'SPLNME' 并激怒了一位女神
+You find a magic orb, containing a random spell and angering a goddess.
+你发现了一个魔法球，其中包含一个随机法术并激怒了一位女神。
+Should you break it, she will send her minions after you. Which Goddess will you anger?
+如果你打破了它，她就会派出她的爪牙追杀你。你会激怒哪位女神呢？
 
 An altar stands before you, bestowing a heavenly contract.
 一座祭坛矗立在你面前，授予你一份神圣的契约。
@@ -12651,8 +13092,8 @@ You struggle fruitlessly. There is no keyhole and the material is nigh-unbreakab
 你的挣扎毫无作用。它没有钥匙孔，而且材料几乎牢不可破！
 You search for your ancient keys but it seems they were taken away for good.
 你寻找你的古老钥匙，但似乎它们被永远拿走了。
-Random (reduces penalty by 1)
-随机（减少 1 点惩罚）
+Random (-10% rep loss)
+随机（-10% 代表损失）
 You don't have any valid targets on your body for that.
 你身上没有任何有效的目标。
 The air swirls with traces of pleasing magic...
@@ -13551,6 +13992,8 @@ Theft detected. This is a warning.
 检测到盗窃。这是一个警告。
 Confiscating item.
 没收物品。
+Unknown subject detected. Presuming hostile.
+检测到未知对象。假定怀有敌意。
 Inmate detected. Commence training protocol.
 检测到犯人。开启调教协议。
 Inmate detected. Commence routine inspection.
@@ -13749,16 +14192,22 @@ Why don't you try these on?
 你为什么不试试这些？
 You'll make a fine addition to my collection!
 你会为我的收藏锦上添花！
+Such jaw-dropping beauty!
+真是美得令人瞠目结舌！
+You belong on a display stand!
+你属于展示架！
 We should put away those grasping hands of yours~
 我们应该收起你那紧握的手~
 That belongs to someone else.
 那是属于别人的。
 Oh no you don't, sweetie!
 哦，不，别这样，亲爱的！
+You're a pretty one! Why don't you come here~
+你是一个漂亮的人！为何不来这里呢~
 Oof! Looks like you need to be taught a lesson!
 哎呀！看来你需要被教训一顿了！
 We better put away those hands of yours.
-我们最好收起你的手。
+我认为你应该收手。
 Why don't you just give up and pose for us~
 你为什么不放弃并为我们摆姿势呢~
 Oh my, that's dangerous!
@@ -13771,26 +14220,57 @@ Where'd you find that, dear?
 你在哪里找到的，亲爱的？
 Silly girl, you should be looking to your mistress for guidance.
 傻丫头，你应该向你的女主人寻求指导。
-That's not yours, sweetie~
-那不是你的，亲爱的~
 You shouldn't break things with such dainty hands~
 你不应该用这么精致的手来破坏东西~
-I knew something was amiss!
-我知道有些不对劲！
-Oh no you don't, sweetie!
-哦，不，别这样，亲爱的！
-Oof! Looks like you need to be taught a lesson!
-哎呀！看来你需要被教训一顿了！
-Oh my, that's dangerous!
-哦，天哪，这很危险！
-Keep those pretty hands to yourself, dear~
-亲爱的，把那双漂亮的手留给自己吧~
-Where'd you find that, dear?
-你在哪里找到的，亲爱的？
 That's not yours, sweetie~
 那不是你的，亲爱的~
 I knew something was amiss!
 我知道有些不对劲！
+You won't be getting away that easily, dear~
+亲爱的，你不会那么轻易逃脱的~
+Won't be needing this~
+不需要这个~
+Hey, you'll damage my dress!
+嘿，你会弄坏我的衣服的！
+I'm so excited!
+我太激动了！
+A slippery one, aren't you?
+你真是个棘手的人，不是吗？
+A brave one, aren't you?
+你真是个勇敢的人，不是吗？
+Tsk tsk. You can do better, dear~
+啧啧。亲爱的，你可以做得更好~
+I can't wait to dress you up!
+我等不及要给你打扮打扮了！
+So nice of you to join me!
+很高兴你能加入我！
+Now let's see, what kind of dress...
+现在让我们看看，什么样的衣服...
+A gift? Thank you so much!
+一份礼物？太感谢了！
+You won't be getting out of that any time soon!
+你短期内无法摆脱这种困境！
+I'm PTRN. Have you heard of my dresses?~
+我是 PTRN。你听说过我的衣服吗？~
+That won't do!
+那不行！
+I'd like to have you myself!
+我自己也想拥有你！
+Oooh, a cute one!
+哦哦，好可爱的一个！
+*sigh* how improper...
+*叹气* 多么不合适......
+Inelegant! You need some teaching!
+太不雅了！你需要被教育！
+*snaps her fingers* Looks like you'll need some punishment~
+*打响指* 看来你需要一些惩罚~
+That one is pretty. May I have her instead?
+那个很漂亮。我可以代替她吗？
+I'd like to place a bid too~
+我也想出价~
+Oooh, that one's mine!
+哦，那个是我的！
+
 Got you!
 抓住你了！
 Get over here!
@@ -13841,8 +14321,19 @@ A game of chase? Fun.
 追逐游戏？有意思。
 Such feeble attempts.
 没用的。
-Such feeble attempts.
-没用的。
+
+Not the edging training! Anything but that!
+不要边缘训练！除了那个之外什么都可以！
+Forgive me!
+请原谅我！
+No! Don't punish me!
+不！别惩罚我！
+You look like you've got style...
+你看起来很有风格...
+I could learn a thing or two from you!
+我可以从你身上学到一两件事！
+Mind if I just, um, watch?
+介意我只是，嗯，观看吗？
 Look, a new recruit!
 看，新兵！
 I'll teach you a thing or two!
@@ -13881,10 +14372,67 @@ Yikes! I'm calling backup!
 哎呀！需要后援！
 Found you!
 找到你了！
+Hold still~
+别动~
+Your tricks won't work on me.
+你的诡计对我不起作用。
+Oof... You got me.
+哦...你抓住了我。
+It's over.
+结束了。
+Nice one.
+不错。
+You missed!
+你偏了！
+I'll hand you over when I'm done with you.
+等我处理完你的事情之后我就会交给你。
 Get over here!
 过来！
+Hmph. Stay down.
+哼。趴下。
+Give me that.
+把那个给我。
 'Click!'
 '咔哒！'
+Mistress PTRN, reporting for duty.
+PTRN 女士正在报到。
+No time to waste.
+没时间浪费。
+Looks like the reports are correct. Stop her!
+看起来情报是正确的。拦住她！
+Moving in to assist.
+前去协助。
+You need to be taught a lesson, adventurer.
+你需要接受教训，冒险家。
+We have a mutual protection contract. Suffice to say, you've violated it.
+我们有相互保护合同。我只想说，你已经违反了。
+We defend our partners, unlike some people.
+与某些人不同，我们保护我们的合作伙伴。
+Target sighted. Taking her down.
+瞄准目标。把她打倒。
+Our influence is everywhere~
+我们的影响力无处不在~
+We have orders to stop you!
+我们有命令阻止你！
+Moving to assist!
+正在移动以提供帮助！
+You really think you're special, huh?
+你真的认为你很特别，是吗？
+Combat formation bravo
+战斗队形好极了。
+
+I'm sorry! I didn't mean to break that vase!
+对不起！我不是故意打破那个花瓶的！
+I won't do it again, I swear!
+我不会再这样做了，我发誓！
+Please no! I don't want the edging training again
+求你了别！我不想再进行边缘训练了
+Don't you need a bodyguard, miss?
+不需要保镖吗，小姐？
+Won't you train me, miss?
+你不训练我吗，小姐？
+I've been a bad girl...
+我曾经是个坏女孩...
 Miss, your uniform is dirty...
 小姐，你的制服脏了……
 Why hello miss...
@@ -13893,14 +14441,22 @@ Let me fix your outfit...
 让我修补你的衣服……
 Hmm, do I need to tighten those?
 嗯，我需要收紧那些吗？
+M-miss... I was told to bring you somewhere..
+小姐……有人吩咐我带你去某个地方……
 Umm, miss, you're supposed to report to the head maid...
 嗯，小姐，你应该向女仆长报告……
 Thanks for picking up.
 谢谢。
 I'll take those to the head maid!
 我会把那些汇报给女仆长！
+Someone help!
+有人帮忙！
+Who are you!?
+你是谁！？
 Oh no!
 哦不！
+Stop!
+停下！
 Miss! You're not allowed to cast that!
 小姐！你不能用那个！
 Miss, I have to report that!
@@ -13917,10 +14473,104 @@ Oh no! I have to report this!
 哦不！我必须报告这个！
 Oh no!
 哦不！
+I got you! I got you!
+我抓住你了！我抓住你了！
 Try that again!
 再试一次！
+Remember your training, remember your training...
+记住你的训练，记住你的训练……
+You're filthy!
+你真脏！
+Hold still...
+别动...
+Stay calm...
+保持冷静...
+I'll lead you to your cell...
+我会带你到你的牢房...
+Come on!
+快点！
 Got you!
 抓住你了！
+I need to take this...
+我需要拿走这个...
+I'm sorry...
+我很抱歉...
+*Salutes* PTRN reporting for service!
+*致敬* PTRN 报告服务！
+I'll help!
+我会帮忙的！
+Stop her!
+阻止她！
+Please be gentle
+请温柔一点
+Ahhh! Stop it!
+啊啊！停下来！
+Don't touch her!
+别碰她！
+Wait, you can't do that!
+等等，你不能这样做！
+Me? Help? Right!
+我？帮助？正确的！
+I'm sorry miss...
+我很抱歉，女士...
+I was ordered to capture you... please don't resist.
+我奉命抓捕你……请不要反抗。
+I-I'm coming!
+我-我来了！
+Please surrender, miss!
+请投降吧，小姐！
+I'll just stay here!
+我就在这儿等！
+
+Please no! I don't want the pleasure training again!
+求你了别！我不想再进行那种快乐的训练了！
+Say hello to my little friend!
+跟我的小朋友打个招呼！
+This is where I'd apply my melee training... if I had any!
+这就是我进行近战训练的地方……如果我有的话！
+Oh no!
+哦不！
+Step back a bit, this isn't fair!
+退后一步，这不公平！
+Oh yeah? Two can play at that game!
+哦耶？那个游戏可以两个人玩！
+Don't bring magic to a gunfight!
+不要将魔法带入枪战！
+Didn't think this through, did you?
+你没有想到这一点吧？
+Grenade!!!
+手榴弹！！！
+What's this 'melee' you speak of?
+你所说的 '混战' 是什么？
+What terrible aim!
+多么可怕的目标啊！
+I am bulletproof!
+我是防弹的！
+Marksman PTRN reporting for service!
+射手 PTRN 报告服务！
+Opening fire!
+开火！
+I'll cover you!
+我来掩护你！
+Providing cover fire!
+提供火力掩护！
+Cover me, I'm going in!
+掩护我，我要进去了！
+Commence overwatch!
+开始守望！
+
+I'll be heading out...
+我这就出发...
+Looks like I'll be taking my leave.
+看来我要请假了。
+Looks like I'll be reporting you~
+看来要举报你了~
+I was wrong about you.
+我对你的看法是错误的。
+Perhaps you should take my place.
+也许你应该代替我。
+Why don't you try being in charge?
+你为什么不尝试一下自己负责呢？
 Come now, it's time for training.
 来吧，训练时间到了。
 Do you need to be punished?
@@ -16659,22 +17309,22 @@ Welcome to the dungeon!|Don't panic, this is a turn-based game,|and nothing will
 欢迎来到地牢|不要惊慌，这是一个回合制游戏，|除非你移动，否则什么都不会发生|在您的左侧，您将看到您的角色，显示了她们没有的所有束缚|别担心，你很快就会找到的！
 You might be wondering what all these barrels are for.|Don't worry, they're, uh, totally safe!|When you are inside one you can click on yourself to wait.|Enemies have a hard time seeing you inside a barrel,|so you can wait until they pass by you.
 你可能想知道这些桶是干什么用的|别担心，他们完全安全|当你在里面时，你可以点击自己等待|敌人很难在桶里看到你，所以你可以等到他们从你身边经过。
-On the right you'll see your stats and spells slots.|Your DP, SP, MP, and WP are displayed there, we'll get into what these do.|Below that you'll see your current consumable items,|your gold, and your currently equipped weapon.|Below that, two icons allow you to toggle automatic escape and movement modes.
-在右侧，您会看到您的统计数据和法术槽。|您的 DP、SP、MP 和 WP 都显示在那里，我们将介绍它们的作用。|在下面，您会看到您当前的消耗品，|您的金币，以及你当前装备的武器。|在其下方，有两个图标可让你切换自动挣脱和移动模式。
+On the right you'll see your stats and spells slots.|Your DP, SP, MP, and WP are displayed there, we'll get into what these do.|Below that you'll see your current consumable items,|your gold, and your currently equipped weapon.
+在右侧，您会看到您的统计数据和法术槽。|您的 DP、SP、MP 和 WP 都显示在那里，我们将介绍它们的作用。|在下面，您会看到您当前的消耗品，|您的金币，以及你当前装备的武器。
 Your WP, or willpower, is an important resource.|Without it, escaping from restraints is more difficult.|There is a willpower potion on the floor up there. Go get it!
 你的WP或意志力是一个重要的资源|没有它，摆脱束缚更加困难|前面的地板上有一种意志力药剂。去拿着吧！
-Oh no! That trap wiped out all your willpower!|Fortunately you have a potion.|You can drink it by clicking the '+' icon next to your WP bar.|You can also go into your Inventory in the bottom bar.|There is also a quick-inventory icon (backpack).
-哦，不！那个陷阱把你的意志力都消灭了|幸运的是你有药水|您可以通过单击意志力旁边的“+”图标来饮用|您还可以在底部栏中查看您的背包|还有一个快速图标（背包）。
+Oh no! That trap reduced your willpower!|Fortunately you have a potion.|You can drink it by clicking the '+' icon next to your WP bar.|You can also go into your Inventory in the bottom bar.|There is also a quick-inventory icon (backpack).
+哦，不！那个陷阱削弱了你的意志力！|幸运的是你有药水。|你可以通过单击意志力旁边的“+”图标来饮用|您还可以在底部栏中查看你的背包|还有一个快速图标（背包）。
 Another trap!|You'll notice that the trap also drained your stamina considerably, preventing you from sprinting or attacking.|(Note: you can toggle sprinting using the '>>' button on the bottom bar)|You can protect yourself while your stamina regenerates by retreating into the room above.|Close the door by clicking the Close Door button in the bottom bar.|
-另一个陷阱！|你会注意到，这个陷阱会大量消耗你的体力，阻止你冲刺或攻击。|（注意：你可以使用底部栏上的“>>”按钮切换冲刺）|你可以在保护自己的同时 退回到上面的房间即可恢复你的耐力。|点击底部栏中的“关门”按钮关上门。|
+另一个陷阱！|你会注意到，这个陷阱会大量消耗你的体力，阻止你冲刺或攻击。|（注意：你可以使用底部栏上的“>>”按钮切换冲刺）|你可以在保护自己的同时 退回到上面的房间即可恢复你的体力。|点击底部栏中的“关门”按钮关上门。|
 Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the bottom right.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1.
 你的MP，或法力，用来施法|为了施展法术，你需要学习一种|点击右下角的咒语按钮|然后点击火焰学徒，学习解锁火焰弹|然后，按空格键返回，然后按向右键切换页面|点击Firebolt，学习它，然后将其分配到法术1。
 On the right you'll see your stats and spells slots.|You can click on a spell slot or hit 1-4 on your keyboard to cast a spell|then click on the map for where you want to aim it.|The small wrench icon above them will let you|swap them out for another spell from your spellbook.
 在右边，你会看到你的统计数据和法术插槽|你可以点击一个法术槽，或者点击键盘上的1-4来施放一个法术|然后在地图上点击你想要瞄准的地方|它们上面的小扳手图标可以让你|将它们换成法术书中的另一个法术。
 There's a zombie over there!|Fortunately zombies are weak to fire.|Firebolt has a very long range,|so simply cast firebolt and click on the zombie.|Repeat until it is dead.
 那边有个僵尸|幸运的是，僵尸的火力很弱|火焰弹射程很长|所以只需施放火焰弹并点击僵尸即可|重复，直到它死去。
-Mana potions restore your mana fully.
-法力药剂可以完全恢复你的法力。
+Mana potions restore mana, allowing you to cast spells.|Youll notice that your mana also regenerates slowly.|This mana comes from your mana pool,|which is a thin line displayed under the mana bar.|When that runs out, you can't cast spells anymore!
+法力药水可以恢复法力，让你能够施展法术。|你会注意到你的法力也会缓慢恢复。|恢复的法力来自你的法力池，|它是法力条下方显示的一条细线。|当法力耗尽时，你可以再次施展法术了！
 Your DP, or Distraction, is a measure of...|How much you are enjoying things.|These sorts of thoughts cloud your mind,|so spellcasting is more difficult when you are distracted.|Go grab the potion over there.
 你的DP，或干扰值，是标准…|你享受事物的程度|这些想法让你的头脑变得模糊，所以当你性奋时，施法会更加困难|去那边拿药水。
 Did you like that?|Anyway, there's a zombie over there. You should drink that potion.|It will clear your mind so you can cast again.|Hurry, or it will get you!
@@ -17243,6 +17893,10 @@ he ropes squeeze you gently.
 绳子轻轻地挤压你。
 Intricate Ropework
 复杂的绳索
+Strict Ropework
+严格的绳索
+The finishing touches on a tight and strict piece of ropework.
+最后的收尾工作是对一根紧密而严格的绳索进行最后的修饰。
 Rope Cuffs
 绳手铐
 A quick tie for apprehending prisoners.
@@ -17432,12 +18086,219 @@ A collar module comes off with the collar!
 项圈模块随项圈一起脱落！
 Shock Module
 电击模块
-A sinister used to keep unruly wolfgirls in check.
-一个邪恶的人曾经用来控制不守规矩的狼女。
+A sinister device used to keep unruly wolfgirls in check.
+一个邪恶的装置，用来控制不守规矩的狼女。
 If it works on them, it sure as heck works on you. It has a warning label that says: 'CAUTION: NOT WATERPROOF'
 如果它对他们有效，那么对你也同样有效。它有一个警告标签，上面写着：'注意：不防水'
+
+Tracking Module
+追踪模块
+A homing device used to track unruly pets that wander too far.
+一种追踪装置，用于追踪那些不守规矩的宠物防止她们走得太远。
+It has a warning label that says: 'CAUTION: NOT WATERPROOF'
+它有一个警告标签，上面写着：'注意：不防水'
 
 Your RestraintName stops working due to water damage!
 你的 RestraintName 由于水导致损坏而停止工作！
 Your RestraintName sustains water damage from the high-pressure water!
 你的 RestraintName 因高压水而受到水损害！
+
+Quit Game
+退出游戏
+Your RSTRNT glows as the shrine's energy fills the air. You can unlock it.
+当神泉的能量充满空气时，你的 RSTRNT 就会发光。你可以解锁它。
+The seal on your RESTRAINTNAME weakens as you simmer just below the edge.
+当你在边缘下方小火慢煮时，RESTRAINTNAME 上的密封会减弱。
+Through your determination, you suprress the seal on your RESTRAINTNAME!!!
+过你的决心，你压制了 RESTRAINTNAME 上的封印！
+The seal on your RESTRAINTNAME weakens as you maintain your composure.
+当你保持冷静时，你 RESTRAINTNAME 上的封印就会减弱。
+Through your determination, you suprress the seal on your RESTRAINTNAME.
+通过你的决心，你削减了 RESTRAINTNAME 上的封印。
+You lose focus and the seal on your RESTRAINTNAME strengthens!
+你失去了注意力，你的 RESTRAINTNAME 上的封印加强了！
+The item refuses to budge as you try to take it off.
+当你尝试将其取下时，该物品不愿意移动。
+The item bears a seal of dark pleasure. You can suppress it by edging yourself.
+该物品带有黑暗愉悦的印记。你可以通过让自己达到极限来抑制它。
+
+Saved Outfits
+已保存的服装
+Manage this Outfit
+管理服装
+Change Pose
+改变姿势
+Quick Color Palette
+快速调色板
+Item Layers and Color Filters
+物品层和滤色器
+Item Catalog
+物品目录
+Layers:
+层：
+Enter Hex Code:
+输入十六进制颜色码：
+
+Toggle Struggle UI Mode
+切换挣扎 UI 模式
+Change Character Pose
+改变角色姿势
+X-Ray Vision
+视觉透视
+Show Quick Inventory
+显示快速背包
+Skip Tutorial
+跳过教程
+
+Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like some brief tips?
+欢迎来到淫荡地牢！您似乎是第一次来到这里，|需要一些简短的提示吗？
+(Leave and Disable Tutorial)
+（离开并关闭教程）
+(Yes Please!)
+（是的，请！）
+(It'd like a hands-on lesson)
+（想要上一堂实践课）
+
+Sure! I can lead you through some excercises in a safe and controlled environment.|This way you can figure things out at your own pace.|To start, choose one of the lessons below:
+当然！我可以引导您在安全可控的环境中完成一些练习。|这样您就可以按照自己的节奏解决问题。|首先，请选择以下课程之一：
+(Give me some rope lessons)
+（教我一些有关绳索的课程）
+(Give me a nice leather outfit)
+（给我一套漂亮的皮衣）
+(I enjoy the cold embrace of steel)
+（我喜欢钢铁冰冷的拥抱）
+(I love rubber!)
+（我喜欢橡胶！）
+(On second thought, maybe not)
+（转念一想，也许不需要）
+
+(About that hands-on lesson...)
+（关于那个实践课......）
+
+This is you.|Over the course of the game, you will probably get tied up.|The controls to escape are located over your character.|Simply hover the mouse over your character to see them.
+这就是你。|在游戏过程中，你可能会被绑住。|逃跑的按钮位于你的角色周围。|只需将鼠标悬停在你的角色上即可看到它们。
+There are four main ways to escape restraints:|Struggling, which is effective against flexible and weaker restraints,|Cutting, which depends on your held weapon and the item's properties,|Unbuckle/Untying, which depends on having free hands,|And Unlocking, which is required before you can Unbuckle.
+逃脱束缚有四种主要方法：|挣扎，这对灵活且较弱的限制有效，|切割，这取决于您持有的武器和物品的属性，|解开扣子/解开，这取决于您是否有可以正常使用的双手，|还有解锁，这是您解开安全扣之前所必需的。
+These are options for how to display your character.|You don't have to worry about them for now,|but when your character is tied up you may find them useful|...or enjoyable.
+这些是如何显示您的角色的选项。|您现在不必担心它们，|但是当您的角色被束缚时，您可能会发现它们很有用|...或享受。
+This is the status bar.|It shows various values and buffs relating to your character.|Distraction determines how easy it is to cast spells and resist teasing.|Stamina is required to sprint and attack with a weapon.|Mana is used to cast spells. You have what is called a 'Mana Pool,'|which is excess mana that slowly refills you mana bar until it runs out.|Finally, running out of Willpower makes it much harder to escape bondage.
+这是状态栏。|它显示与你的角色相关的各种值和增益。|分心决定了施放法术和抵抗戏弄的难易程度。|冲刺和使用武器攻击需要体力。|法力用于施法咒语。你有所谓的 '法力池'，|这是多余的法力，它会慢慢地补充你的法力条，直到耗尽。|最后，意志力耗尽会让你更难逃脱束缚。
+These are the action buttons.|You can use them to perform various actions like closing doors or sprinting.|You can also toggle various settings such as automatically passing|through allies or auto-pathing when there are no enemies nearby.|You can also swap between recently used weapons.
+这些是动作按钮。|您可以使用它们执行各种动作，例如关门或冲刺。|您还可以切换各种设置，例如自动穿过队友或在附近没有敌人时自动寻路。|您还可以交换最近使用过的武器。
+These are additional toggles used for various purposes.|Hover over them to see what they do.
+这些是用于各种目的的附加开关。|将鼠标悬停在它们上方即可查看它们的作用。
+These are the various submenus.|Your Inventory is used to brows items and use or equip them.|The Journal contains lore, notes, and hints gathered along your journey.|The Journal also contains info on available quests,|and your reputation with various factions.
+这些是各种子菜单。|您的背包用于浏览物品并使用或装备它们。|日记包含您在旅程中收集的知识、笔记和提示。|日记中还包含有关可用任务的信息，|以及您在各个派系中的声誉。
+This is the hotbar.|Here you will find various spells and customizable actions.|You can customize it through the Spells submenu by clicking on a spell.|You can also add items, armor, and consumables to it from the Inventory.
+这是热栏。|在这里您可以找到各种咒语和可自定义的操作。|您可以通过单击咒语通过咒语子菜单对其进行自定义。|您还可以从背包中向其添加物品、盔甲和消耗品。
+Finally, this is where the message log will be.|It provides a written record of what happened the last few turns.|You can click the 'Log' button to expand the log,|Allowing you to look much further back.
+最后，这是消息日志所在的位置。|它提供了最近几轮发生的情况的书面记录。|您可以单击 '日志' 按钮来展开日志，|允许您查看更久之前的内容。
+Thats it for the UI.|If you want a more hands on tutorial, enter the portal to the top right,|near the training dummies.|You can click on NPCs (such as the ghosts in this room) to talk to them.
+UI 就是这样。|如果您想要更多的实践教程，请进入右上角的门户，|靠近训练假人。|您可以单击 NPC（例如这个房间里的鬼魂）与他们交谈。
+
+Game
+游戏
+Menu
+菜单
+
+Search ITMNS:
+搜索 ITMNS：
+Search Items:
+搜索物品：
+Search Spells:
+搜索法术：
+
+Free
+自由
+Disarmed!!!
+缴械！！！
+Show Buffs and Stats
+显示增益和统计数据
+
+Quests
+任务
+
+Pray for Assistance
+祈求帮助
+This shrine bears a request carved in stone:
+这座神泉的石碑上刻着这样的祈求：
+Accept the Quest
+接受任务
+
+You accept the goddess' quest.
+你接受了女神的任务。
+You cannot accept that quest right now.
+你现在不能接受此任务。
+
+Offer gold to the Goddess in exchange for help. Destroys the shrine.
+向女神提供金币以换取帮助。破坏神泉。
+Ask for help without offering gold.
+寻求帮助而不提供金币。
+You have already prayed at this shrine.
+你已经在这座神泉祈祷过。
+Listen to what the Goddess asks of you.
+听听女神对你的要求。
+Drink the mana in the shrine. Can be done once.
+喝神泉里的法力。可以喝一次。
+Bottle the mana in the shrine for later. Can be done once.
+将法力装在神泉中以供稍后使用。可以做一次。
+
+Cancel Quest
+取消任务
+Cancels the quest. You will not be penalized.
+取消任务。你不会受到处罚。
+You can't cancel this quest.
+你无法取消此任务。
+You have no quests currently.
+你目前还没有任务。
+
+A new quest has been added to your Journal.
+一个新任务已添加到你的日记中。
+
+Find the dressmaker's prized dress and wear it in front of her.
+找到裁缝师最珍视的裙子并在她面前穿上。
+Rescue the bandit from false imprisonment.
+将强盗从非法监禁中解救出来。
+Teach some unruly maids a lesson.
+教训一下那些不守规矩的女仆。
+Defeat a rebel leader and show them their place.
+击败叛军领袖并向他们展示自己的地位。
+Help the student acquire a scroll!
+帮助学生获得卷轴！
+You are being chased by a band of relentless poachers.
+你正被一群无情的偷猎者追赶。
+
+Slay the Rope Kraken.
+杀死绳妖。
+You did not do your quest! The Goddess has decided to punish you.
+你没有完成你的任务！女神决定惩罚你。
+You have pleased the Goddess.
+你已经让女神高兴了。
+Rescue some alchemists from their own experiment.
+从他们自己的实验中拯救一些炼金术士。
+Stop a rebels from making a pact with primordial beings.
+阻止叛乱者与原始生物签订契约。
+Decommission some malfunctioning drones.
+停用一些出现故障的无人机。
+
+Resolve a dispute between elves and catgirls by tying up both sides.
+通过捆绑双方来解决精灵和猫女之间的争端。
+Repel a planar incursion by a dangerous demon.
+击退危险恶魔的外域入侵。
+Stop some witches from performing a dubious summoning ritual.
+阻止一些女巫进行可疑的召唤仪式。
+Defeat a congregation of the Shadow Clan.
+击败阴影族的会众。
+
+The Goddess grants you knowledge of SpellLearned!
+女神赐予你法术学习知识！
+You Goddess grants you +AMOUNT spell points!
+你女神授予你 +AMOUNT 法术点！
+The Goddess bestows a WeaponAcquired on you!
+女神赐予你一件 WeaponAcquired！
+The Goddess grants you a ArmorAcquired!
+女神赐予你一件 ArmorAcquired！
+The Goddess gives you a heavenly pastry.
+女神给了你一份天堂般的糕点。
+The Goddess awards you an ancient key of great importance.
+女神授予你一把非常重要的古老钥匙。
