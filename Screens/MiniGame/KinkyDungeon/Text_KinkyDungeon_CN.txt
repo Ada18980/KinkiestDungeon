@@ -525,6 +525,11 @@ The latex around you dampens your attacks, reducing physical damage by 30% and l
 Latex Bubble
 乳胶泡泡
 
+...Lab Assistant?
+...实验室助理？
+You rescue the lab assistant.
+你救下了实验室助理。
+
 Lab Assistant
 实验室助理
 The assistant envelops herself in her own bubble for protection.
@@ -541,10 +546,15 @@ The assistant splashes a solvent in your face, blinding you! (DamageTaken)
 Glue Bomb
 胶水炸弹
 
+..Glue Technician?
+...胶水技师？
+You rescue the glue technician.
+你救下了胶水技师。
+
 Glue Technician
 胶水技师
-The technician screams and runs.
-技师尖叫着跑了。
+The technician trips and glues herself to the floor.
+技师绊倒并把自己粘在地板上。
 The technician slaps adhesive restraints onto your body! (+RestraintAdded)
 技师将将胶水束缚具粘在了你的身上！（+RestraintAdded）
 The technician polishes your restraints thoroughly! (DamageTaken)
@@ -2216,6 +2226,8 @@ Inventory
 背包
 Reputation
 声望
+Quests
+任务
 Spell List
 法术列表
 Logbook
@@ -3966,6 +3978,12 @@ The dollmaker's apprentice slips a lock onto your restraints! (DamageTaken)
 玩偶师的学徒给你的束缚具上了一把锁！（DamageTaken）
 The dollmaker's apprentice unleashes a powerful latex blast! (+RestraintAdded)
 玩偶师的学徒释放出强大的乳胶爆炸！（+RestraintAdded）
+
+...Alchemist?
+…炼金术士？
+You rescue the alchemist.
+你救下了炼金术士。
+
 Alchemist
 炼金术士
 The alchemist screams and runs.
@@ -4219,6 +4237,10 @@ The alkahestor uses an ornate-looking lock! (DamageTaken)
 万能炼金士使用了一把看起来华丽的锁！（DamageTaken）
 The alkahestor shoves you! (DamageTaken)
 万能炼金士推了你！（DamageTaken）
+...Alkahestor?
+...万能炼金士？
+You rescue the Alkahestor
+你救下了万能炼金士。
 
 Latex Elemental
 乳胶精灵
@@ -5187,8 +5209,10 @@ The demon places you in dark, glassy restraints. (+RestraintAdded)
 恶魔将你置于黑暗、玻璃般的束缚之中。（+RestraintAdded）
 The demon giggles as it locks your restraints! (DamageTaken)
 恶魔咯咯地笑着锁住了你的束缚！（DamageTaken）
-The demon whacks you with its mace! (DamageTaken)
-恶魔用狼牙棒猛击你！（DamageTaken）
+The demon caresses you gently with her sharp nails! (DamageTaken)
+恶魔用她锋利的指甲温柔地抚摸着你！（DamageTaken）
+The demon stuns you with her heavy mace! (+STUN)
+恶魔用她沉重的狼牙棒将你击晕！（+眩晕）
 
 Tickle Hand
 挠痒痒的手
@@ -6279,14 +6303,30 @@ Wanted
 通缉犯
 Delinquent
 违法者
+Computer Virus
+电脑病毒
+Extraplanar Entity
+外域实体
+Dubious Witch
+可疑的女巫
+Shadow Clan
+阴影族
+Illegal Poacher
+非法偷猎者
 Nature
 自然界
+Very Angry
+很生气
 Surprise!
 惊喜！
+Fierce Debater
+激烈的辩手
+
 Angels
 天使
 Demons
 恶魔
+
 You sense that the chest contains a trap and a lot of gold.
 你感觉到箱子里有一个陷阱和很多金币。
 You sense that the chest is safe to open.
@@ -18145,8 +18185,8 @@ These are the action buttons.|You can use them to perform various actions like c
 这些是动作按钮。|您可以使用它们执行各种动作，例如关门或冲刺。|您还可以切换各种设置，例如自动穿过队友或在附近没有敌人时自动寻路。|您还可以交换最近使用过的武器。
 These are additional toggles used for various purposes.|Hover over them to see what they do.
 这些是用于各种目的的附加开关。|将鼠标悬停在它们上方即可查看它们的作用。
-These are the various submenus.|Your Inventory is used to brows items and use or equip them.|Your Reputation affects how enemies interact with you. Additionally, you can sacrifice|your rep with the Goddesses for brief assistance with restraints.|The Logbook contains lore, notes, and hints gathered along your journey.|
-这些是各种子菜单。|您的背包用于浏览物品并使用或装备它们。|您的声望会影响敌人与您互动的方式。此外，你可以牺牲|你在女神中的声望来换取短暂的挣扎帮助。|日记包含你在旅程中收集的知识、笔记和提示。
+These are the various submenus.|Your Inventory is used to brows items and use or equip them.|The Journal contains lore, notes, and hints gathered along your journey.|The Journal also contains info on available quests,|and your reputation with various factions.
+这些是各种子菜单。|您的背包用于浏览物品并使用或装备它们。|日记包含您在旅程中收集的知识、笔记和提示。|日记中还包含有关可用任务的信息，|以及您在各个派系中的声誉。
 This is the hotbar.|Here you will find various spells and customizable actions.|You can customize it through the Spells submenu by clicking on a spell.|You can also add items, armor, and consumables to it from the Inventory.
 这是热栏。|在这里您可以找到各种咒语和可自定义的操作。|您可以通过单击咒语通过咒语子菜单对其进行自定义。|您还可以从背包中向其添加物品、盔甲和消耗品。
 Finally, this is where the message log will be.|It provides a written record of what happened the last few turns.|You can click the 'Log' button to expand the log,|Allowing you to look much further back.
@@ -18172,3 +18212,91 @@ Disarmed!!!
 缴械！！！
 Show Buffs and Stats
 显示增益和统计数据
+
+Quests
+任务
+
+Pray for Assistance
+祈求帮助
+This shrine bears a request carved in stone:
+这座神泉的石碑上刻着这样的祈求：
+Accept the Quest
+接受任务
+
+You accept the goddess' quest.
+你接受了女神的任务。
+You cannot accept that quest right now.
+你现在不能接受此任务。
+
+Offer gold to the Goddess in exchange for help. Destroys the shrine.
+向女神提供金币以换取帮助。破坏神泉。
+Ask for help without offering gold.
+寻求帮助而不提供金币。
+You have already prayed at this shrine.
+你已经在这座神泉祈祷过。
+Listen to what the Goddess asks of you.
+听听女神对你的要求。
+Drink the mana in the shrine. Can be done once.
+喝神泉里的法力。可以喝一次。
+Bottle the mana in the shrine for later. Can be done once.
+将法力装在神泉中以供稍后使用。可以做一次。
+
+Cancel Quest
+取消任务
+Cancels the quest. You will not be penalized.
+取消任务。你不会受到处罚。
+You can't cancel this quest.
+你无法取消此任务。
+You have no quests currently.
+你目前还没有任务。
+
+A new quest has been added to your Journal.
+一个新任务已添加到你的日记中。
+
+Find the dressmaker's prized dress and wear it in front of her.
+找到裁缝师最珍视的裙子并在她面前穿上。
+Rescue the bandit from false imprisonment.
+将强盗从非法监禁中解救出来。
+Teach some unruly maids a lesson.
+教训一下那些不守规矩的女仆。
+Defeat a rebel leader and show them their place.
+击败叛军领袖并向他们展示自己的地位。
+Help the student acquire a scroll!
+帮助学生获得卷轴！
+You are being chased by a band of relentless poachers.
+你正被一群无情的偷猎者追赶。
+
+Slay the Rope Kraken.
+杀死绳妖。
+You did not do your quest! The Goddess has decided to punish you.
+你没有完成你的任务！女神决定惩罚你。
+You have pleased the Goddess.
+你已经让女神高兴了。
+Rescue some alchemists from their own experiment.
+从他们自己的实验中拯救一些炼金术士。
+Stop a rebels from making a pact with primordial beings.
+阻止叛乱者与原始生物签订契约。
+Decommission some malfunctioning drones.
+停用一些出现故障的无人机。
+
+Resolve a dispute between elves and catgirls by tying up both sides.
+通过捆绑双方来解决精灵和猫女之间的争端。
+Repel a planar incursion by a dangerous demon.
+击退危险恶魔的外域入侵。
+Stop some witches from performing a dubious summoning ritual.
+阻止一些女巫进行可疑的召唤仪式。
+Defeat a congregation of the Shadow Clan.
+击败阴影族的会众。
+
+The Goddess grants you knowledge of SpellLearned!
+女神赐予你法术学习知识！
+You Goddess grants you +AMOUNT spell points!
+你女神授予你 +AMOUNT 法术点！
+The Goddess bestows a WeaponAcquired on you!
+女神赐予你一件 WeaponAcquired！
+The Goddess grants you a ArmorAcquired!
+女神赐予你一件 ArmorAcquired！
+The Goddess gives you a heavenly pastry.
+女神给了你一份天堂般的糕点。
+The Goddess awards you an ancient key of great importance.
+女神授予你一把非常重要的古老钥匙。
