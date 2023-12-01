@@ -96,6 +96,8 @@ interface ModelLayer extends Namable {
     LockLayer?: boolean,
 	/** Changes the layer if a certain pose exists */
 	SwapLayerPose?: Record<string, string>,
+	/** Prepends a string to the beginning of the layer if a pose is present. Only the first happens */
+	PrependLayerPrefix?: Record<string, string>,
 	/** Changes the priority if a certain pose exists */
 	SwapPriorityPose?: Record<string, number>,
     /** One of these layers is required*/

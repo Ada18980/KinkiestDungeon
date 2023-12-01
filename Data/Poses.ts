@@ -398,4 +398,8 @@ function RefreshTempPoses(Character: Character, Restraints: boolean) {
 
 
 		}
+
+	if (KDToggles.ChastityOption) {
+		KDCurrentModels.get(Character).TempPoses.ChastityOption = true;
+	}
 }

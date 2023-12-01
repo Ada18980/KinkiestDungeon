@@ -271,6 +271,8 @@ let LAYERS_BASE = [
 
 	"HarnessUnder",
 
+	"Option_ChastityBelt",
+
 	// Panties go here when standing
 	"Panties",
 
@@ -317,6 +319,8 @@ let LAYERS_BASE = [
 	"StockingRight",
 
 	"CorsetUnder", // Corsets go here when wearing pants
+
+	"Option_ChastityBeltLower",
 
 	// Panties go here when kneeling
 	"PantiesLower",
@@ -477,6 +481,7 @@ let LayerGroups = {
 		"OverShoes",
 		"ShoeLeftUnder",
 		"ShoeRightUnder",
+		"WrappingLegsUnder",
 	]),
 	"Heels": ToMap([
 		"OverShoes",
@@ -491,6 +496,7 @@ let LayerGroups = {
 		"LegRight",
 		"ShoeLeftUnder",
 		"ShoeRightUnder",
+		"WrappingLegsUnder",
 	]),
 	"BalletHeels": ToMap([
 		"OverShoes",
@@ -507,6 +513,7 @@ let LayerGroups = {
 		"ShoeRightUnder",
 		"ShoeLeft",
 		"ShoeRight",
+		"WrappingLegsUnder",
 	]),
 	"HeelRight": ToMap([
 		"FootLeft",

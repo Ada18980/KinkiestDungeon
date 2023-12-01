@@ -100,7 +100,7 @@ AddModel({
 				ItemBootsRubberOver: 45,
 			},
 		},
-		{ Name: "FootRight", Layer: "WrappingLegs", Pri: 150,
+		{ Name: "FootRight", Layer: "WrappingLegsUnder", Pri: 150,
 			SwapLayerPose: {Kneel: "WrappingLegsRight", KneelClosed: "WrappingLegsRight"},
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),

@@ -450,6 +450,11 @@ function LayerLayer(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : string
 			if (MC.Poses[p[0]]) return p[1];
 		}
 	}
+	if (l.PrependLayerPrefix) {
+		for (let p of Object.entries(l.PrependLayerPrefix)) {
+			if (MC.Poses[p[0]]) return p[1] + l.Layer;
+		}
+	}
 	return l.Layer;
 }
 
