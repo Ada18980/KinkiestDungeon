@@ -745,8 +745,8 @@ Miscast chance is doubled.
 
 Bound Crusader
 束缚十字军
-Goddesses will expect you to wear their restraints as their champion.
-女神会期望你作为她们的卫士时穿戴她们的拘束具。
+Goddesses will equip restraints upon acceptance of a quest.
+女神在接受任务后会装备束缚具。
 
 Nowhere is Safe
 草木皆兵
@@ -2600,8 +2600,8 @@ Lockpick
 撬锁工具
 Exit Keys
 [离开的钥匙]
-Wizard's Outfit
-法师装束
+Adventurer's Outfit
+冒险家装束
 Your favorite outfit for adventuring.
 你最喜欢的冒险服装。
 Your original outfit. No bonuses
