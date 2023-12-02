@@ -9,8 +9,13 @@ let KDMinimapIcons = {
 	's': (x, y) => {return "UI/MiniMap/StairsDown.png";},
 	'H': (x, y) => {return "UI/MiniMap/StairsDown.png";},
 	'A': (x, y) => {
-		if (KinkyDungeonTilesGet(x + "," + y)?.drunk)
-			return "UI/MiniMap/Shrine.png";
+		if (KinkyDungeonTilesGet(x + "," + y)?.drunk) {
+			if (KinkyDungeonTilesGet(x + "," + y)?.Quest)
+				return "UI/MiniMap/ShrineQuest.png";
+			return "UI/MiniMap/ShrineMana.png";
+		}
+		if (KinkyDungeonTilesGet(x + "," + y)?.Quest)
+			return "UI/MiniMap/ShrineManaQuest.png";
 		return "UI/MiniMap/ShrineMana.png";},
 	'=': (x, y) => {return "UI/MiniMap/ChargerEmpty.png";},
 	'+': (x, y) => {return "UI/MiniMap/ChargerCrystal.png";},
@@ -644,8 +649,8 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 					if (KDMapExtraData.VisionGrid[RX + RY*KDMapData.GridWidth] == 0) {
 						kdlightmapGFX.beginFill(0xffffff, 1.);
 						kdlightmapGFX.drawRect(
-							xMult*(X - CamX_offsetVis)*KinkyDungeonGridSizeDisplay - pad,
-							yMult*(R - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - pad,
+							xMult*(X - CamX_offset)*KinkyDungeonGridSizeDisplay - pad,
+							yMult*(R - CamY_offset)*KinkyDungeonGridSizeDisplay - pad,
 							xMult*KinkyDungeonGridSizeDisplay + pad*2,
 							yMult*KinkyDungeonGridSizeDisplay + pad*2);
 						kdlightmapGFX.endFill();
@@ -684,7 +689,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 						pad = 126;
 						KDDraw(kdbrightnessmapGFX, kdpixibrisprites, `${RX},${RY},_LI`,
 							KinkyDungeonRootDirectory + "Lighting.png",
-							(-CamX_offsetVis + X)*KinkyDungeonGridSizeDisplay - pad, (-CamY_offsetVis + R)*KinkyDungeonGridSizeDisplay - pad,
+							(-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad, (-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad,
 							KinkyDungeonGridSizeDisplay + pad*2, KinkyDungeonGridSizeDisplay + pad*2,
 							undefined, {
 								tint: lightColor,
@@ -832,6 +837,7 @@ function KDRenderMinimap(x, y, w, h, scale, alpha, gridborders, blackMap) {
 				}
 			}
 		}
+		// Player circle
 		kdminimap.lineStyle(4, 0);
 		kdminimap.beginFill(0xffffff, 1.);
 		kdminimap.drawCircle(
@@ -839,6 +845,20 @@ function KDRenderMinimap(x, y, w, h, scale, alpha, gridborders, blackMap) {
 			h/2*scale+scale/2,
 			scale);
 		kdminimap.endFill();
+		if (KinkyDungeonInspect) {
+			// Camera square
+			let xpre = w/2*scale - scale*KinkyDungeonGridWidthDisplay/2 + scale*(KDInspectCamera.x - KinkyDungeonPlayerEntity.x);
+			let ypre = h/2*scale - scale*KinkyDungeonGridHeightDisplay/2 + scale*(KDInspectCamera.y - KinkyDungeonPlayerEntity.y);
+			let xx = Math.max(0, xpre);
+			let yy = Math.max(0, ypre);
+			kdminimap.lineStyle(2, 0xffffff);
+			kdminimap.drawRect(
+				xx,
+				yy,
+				Math.min(scale*w-xx, scale * KinkyDungeonGridWidthDisplay + Math.min(0, xpre)),
+				Math.min(scale*h-yy, scale * KinkyDungeonGridHeightDisplay + Math.min(0, ypre)));
+			kdminimap.endFill();
+		}
 	}
 	KDCullSpritesList(kdminimapsprites);
 

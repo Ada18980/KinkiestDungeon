@@ -1149,6 +1149,8 @@ function KinkyDungeonDrawActionBar(x, y) {
 
 	if (DrawButtonKDEx("toggleInspect", (bdata) => {
 		KinkyDungeonInspect = !KinkyDungeonInspect;
+		KinkyDungeonUpdateLightGrid = true; // Rerender since cam moved
+		KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
 		return true;
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY - 80, actionBarWidth, actionbarHeight,
 	"", "", KinkyDungeonRootDirectory + (KinkyDungeonInspect ? "UI/Inspect" : "UI/Inspect") + ".png",

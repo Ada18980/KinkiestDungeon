@@ -189,6 +189,7 @@ let KDQuests = {
 		name: "WolfgirlHunters",
 		npc: "Wolfgirl",
 		visible: true,
+		nocancel: true,
 		weight: (RoomType, MapMod, data, currentQuestList) => {
 			return 0;
 		},

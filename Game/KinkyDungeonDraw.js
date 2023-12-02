@@ -3,6 +3,7 @@
 let KDDebugOverlay = false;
 
 
+let KDInspectCamera = {x: 0, y: 0};
 
 let KDRecentRepIndex = 0;
 
@@ -826,8 +827,12 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonDrawState = "MagicSpells";
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
+				KinkyDungeonInspect = false;
 			} else {
+				KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
 				KDPlayerSetPose = false;
+				KinkyDungeonInspect = false;
+				KinkyDungeonUpdateLightGrid = true;
 				KinkyDungeonDrawState = "Game";
 				KinkyDungeonMessageToggle = false;
 				KinkyDungeonTargetingSpell = null;
@@ -879,10 +884,22 @@ function KinkyDungeonDrawGame() {
 
 			KinkyDungeonUpdateVisualPosition(KinkyDungeonPlayerEntity, KinkyDungeonDrawDelta);
 
-			let CamX = KinkyDungeonPlayerEntity.x - 2 - Math.floor(KinkyDungeonGridWidthDisplay/2);//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2)));
-			let CamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2);// Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2)));
-			let CamX_offsetVis = KinkyDungeonPlayerEntity.visual_x - 2 - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
-			let CamY_offsetVis = KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
+			if (!KinkyDungeonInspect) {
+				KDInspectCamera.x = KinkyDungeonPlayerEntity.x;
+				KDInspectCamera.y = KinkyDungeonPlayerEntity.y;
+			}
+			let OX = KDInspectCamera.x - (KinkyDungeonPlayerEntity.x||0);
+			let OY = KDInspectCamera.y - (KinkyDungeonPlayerEntity.y||0);
+
+			let CamX = KinkyDungeonPlayerEntity.x - 2 - Math.floor(KinkyDungeonGridWidthDisplay/2) + OX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2)));
+			let CamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2) + OY;// Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2)));
+
+
+			let CamX_offsetVis = (KinkyDungeonInspect ? KDInspectCamera.x : KinkyDungeonPlayerEntity.visual_x) - 2 - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
+			let CamY_offsetVis = (KinkyDungeonInspect ? KDInspectCamera.y : KinkyDungeonPlayerEntity.visual_y) - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
+
+
+
 
 			KinkyDungeonCamXVis = CamX + CamX_offsetVis;
 			KinkyDungeonCamYVis = CamY + CamY_offsetVis;
@@ -894,12 +911,18 @@ function KinkyDungeonDrawGame() {
 			if (StandalonePatched) {
 				kdgameboard.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
 				kdgameboard.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
+				kdbrightnessmapGFX.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
+				kdbrightnessmapGFX.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
+				kdlightmapGFX.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
+				kdlightmapGFX.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
 				kdenemystatusboard.x = kdgameboard.x;
 				kdenemystatusboard.y = kdgameboard.y;
 			}
 
-			let CamX_offset = StandalonePatched ? 0 : CamX_offsetVis;
-			let CamY_offset = StandalonePatched ? 0 : CamY_offsetVis;
+			let CamX_offset = (StandalonePatched ? 0 : CamX_offsetVis);
+			let CamY_offset = (StandalonePatched ? 0 : CamY_offsetVis);
+
+
 
 			KinkyDungeonCamX = CamX;
 			KinkyDungeonCamY = CamY;
@@ -1101,7 +1124,14 @@ function KinkyDungeonDrawGame() {
 				// Draw targeting reticule
 				if (!KinkyDungeonMessageToggle && !KDIsAutoAction() && !KinkyDungeonShowInventory && KinkyDungeonIsPlayer()
 					&& KDMouseInPlayableArea()) {
-					if (KinkyDungeonTargetingSpell) {
+					if (KinkyDungeonInspect) {
+						KinkyDungeonSetTargetLocation();
+
+						KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule", KinkyDungeonRootDirectory + "TargetSpell.png",
+							(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+								zIndex: 100,
+							});
+					} else if (KinkyDungeonTargetingSpell) {
 						KinkyDungeonSetTargetLocation();
 
 						KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule", KinkyDungeonRootDirectory + "TargetSpell.png",
@@ -2166,8 +2196,19 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
  * Sets the target location based on MOUSE location
  */
 function KinkyDungeonSetTargetLocation() {
-	KinkyDungeonTargetX = Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamX;
-	KinkyDungeonTargetY = Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamY;
+	//let OX = KDInspectCamera.x - (KinkyDungeonPlayerEntity.x||0);
+	//let OY = KDInspectCamera.y - (KinkyDungeonPlayerEntity.y||0);
+	KinkyDungeonTargetX = Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + (KinkyDungeonCamX);
+	KinkyDungeonTargetY = Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + (KinkyDungeonCamY);
+}
+
+function KDGetMoveDirection() {
+	let tx = //(MouseX - ((KinkyDungeonPlayerEntity.x - KinkyDungeonCamX)*KinkyDungeonGridSizeDisplay + canvasOffsetX + KinkyDungeonGridSizeDisplay / 2))/KinkyDungeonGridSizeDisplay
+		Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamX;
+	let ty = //(MouseY - ((KinkyDungeonPlayerEntity.y - KinkyDungeonCamY)*KinkyDungeonGridSizeDisplay + canvasOffsetY + KinkyDungeonGridSizeDisplay / 2))/KinkyDungeonGridSizeDisplay)
+		Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamY;
+
+	return {x: tx, y: ty};
 }
 
 /**
@@ -2175,14 +2216,11 @@ function KinkyDungeonSetTargetLocation() {
  */
 function KinkyDungeonSetMoveDirection() {
 
-	let tx = //(MouseX - ((KinkyDungeonPlayerEntity.x - KinkyDungeonCamX)*KinkyDungeonGridSizeDisplay + canvasOffsetX + KinkyDungeonGridSizeDisplay / 2))/KinkyDungeonGridSizeDisplay
-		Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamX;
-	let ty = //(MouseY - ((KinkyDungeonPlayerEntity.y - KinkyDungeonCamY)*KinkyDungeonGridSizeDisplay + canvasOffsetY + KinkyDungeonGridSizeDisplay / 2))/KinkyDungeonGridSizeDisplay)
-		Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamY;
+	let point = KDGetMoveDirection();
 
 	KDSendInput("setMoveDirection", {dir: KinkyDungeonGetDirection(
-		tx - KinkyDungeonPlayerEntity.x,
-		ty - KinkyDungeonPlayerEntity.y)}, true, true);
+		point.x - KinkyDungeonPlayerEntity.x,
+		point.y - KinkyDungeonPlayerEntity.y)}, true, true);
 
 }
 

@@ -2193,6 +2193,7 @@ function KDCullSpritesList(list) {
 	for (let sprite of list.entries()) {
 		if (!kdSpritesDrawn.has(sprite[0])) {
 			sprite[1].parent.removeChild(sprite[1]);
+			if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
 			list.delete(sprite[0]);
 			sprite[1].destroy();
 		}

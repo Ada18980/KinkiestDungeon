@@ -483,6 +483,7 @@ let LayerGroups = {
 		"ShoeLeftUnder",
 		"ShoeRightUnder",
 		"WrappingLegsUnder",
+		"WrappingLegsRight",
 	]),
 	"Heels": ToMap([
 		"OverShoes",
@@ -498,6 +499,7 @@ let LayerGroups = {
 		"ShoeLeftUnder",
 		"ShoeRightUnder",
 		"WrappingLegsUnder",
+		"WrappingLegsRight",
 	]),
 	"BalletHeels": ToMap([
 		"OverShoes",
@@ -515,6 +517,7 @@ let LayerGroups = {
 		"ShoeLeft",
 		"ShoeRight",
 		"WrappingLegsUnder",
+		"WrappingLegsRight",
 	]),
 	"HeelRight": ToMap([
 		"FootLeft",
@@ -528,6 +531,7 @@ let LayerGroups = {
 		"ShoeLeftUnder",
 		"ShoeRightUnder",
 		"WrappingLegsRight",
+		"WrappingLegsUnder",
 
 	]),
 	"BalletHeelRight": ToMap([
@@ -543,6 +547,7 @@ let LayerGroups = {
 		"ShoeRightUnder",
 		"ShoeLeft",
 		"ShoeRight",
+		"WrappingLegsUnder",
 		"WrappingLegsRight",
 
 	]),

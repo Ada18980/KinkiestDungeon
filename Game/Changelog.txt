@@ -29,6 +29,7 @@ TODO add sugar magic ('Blood Energy Magic')
 - Merged lore and rep screen now that rep screen isnt functional and is informative only
 - Added quests tab to journals
 - Added minimap icons
+- Inspect now allows you to pan the camera by clicking or using the arrow keys
 
 5.0.0 RC8
 - Added Strict Ropework which adds an additional rope harness for aesthetic purposes

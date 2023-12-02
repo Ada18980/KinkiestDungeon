@@ -299,7 +299,7 @@ KinkyDungeonStatAbsoluteFocus,"Absolute Focus"
 KinkyDungeonStatDescAbsoluteFocus,"Miscast chance is doubled."
 
 KinkyDungeonStatBoundCrusader,"Bound Crusader"
-KinkyDungeonStatDescBoundCrusader,"Goddesses will expect you to wear their restraints as their champion."
+KinkyDungeonStatDescBoundCrusader,"Goddesses will equip restraints upon acceptance of a quest."
 
 KinkyDungeonStatNowhere,"Nowhere is Safe"
 KinkyDungeonStatDescNowhere,"Beds and furniture are often trapped."
@@ -1029,9 +1029,9 @@ KinkyDungeonInventoryItemnull,way of the fist
 KinkyDungeonInventoryItemPick,Lockpick
 KinkyDungeonInventoryItemKeyring,Exit Keys
 
-KinkyDungeonInventoryItemDefault,Wizard's Outfit
+KinkyDungeonInventoryItemDefault,Adventurer's Outfit
 KinkyDungeonInventoryItemDefaultDesc,Your favorite outfit for adventuring.
-KinkyDungeonInventoryItemDefaultDesc2,Your original outfit. No bonuses, no penalties.
+KinkyDungeonInventoryItemDefaultDesc2,"Your original outfit. No bonuses, no penalties."
 
 KinkyDungeonInventoryItemBountyhunter,Tactical Catsuit
 KinkyDungeonInventoryItemBountyhunterDesc,"A sleek catsuit worn by stealth operatives. No frills, no nonsense."
@@ -1043,7 +1043,7 @@ KinkyDungeonInventoryItemJailUniformDesc2,"A prisoner's 'outfit'. No bonuses, no
 
 
 KinkyDungeonInventoryItemWolfgirl,Wolfgirl Suit
-KinkyDungeonInventoryItemWolfgirlDesc,An advanced suit designed for sport, breathable and also warm.
+KinkyDungeonInventoryItemWolfgirlDesc,"An advanced suit designed for sport, breathable and also warm."
 KinkyDungeonInventoryItemWolfgirlDesc2,"No bonuses, no penalties."
 
 KinkyDungeonInventoryItemMaid,Maid Uniform

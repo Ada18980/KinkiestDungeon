@@ -4107,7 +4107,7 @@ const KinkyDungeonRestraints = [
 			{
 				Color: ["#404973", "#404973", "#404973"],
 				Filters: {
-					Slime: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
+					Slime: {"gamma":1.2833333333333332,"saturation":0.016666666666666666,"contrast":2.55,"brightness":0.6833333333333333,"red":1,"green":1,"blue":1,"alpha":1},
 				},
 				factionColor: [],
 			},
@@ -4132,7 +4132,7 @@ const KinkyDungeonRestraints = [
 			{
 				Color: ["#404973", "#404973", "#404973"],
 				Filters: {
-					Slime: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
+					Rubber: {"gamma":1.2833333333333332,"saturation":0.016666666666666666,"contrast":2.55,"brightness":0.6833333333333333,"red":1,"green":1,"blue":1,"alpha":1},
 				},
 				factionColor: [],
 			},

@@ -500,7 +500,7 @@ let KinkyDungeonLootTable = {
 		{name: "spell_points", magic: true, minLevel: 0, weight:4, message:"KDGoddessQuestReward_SpellPoints", messageColor:"lightblue", messageTime: 3, allFloors: true, max: 1},
 		{name: "StaffDoll", minLevel: 0, weight: 8, weapon: "StaffDoll", noweapon: ["StaffDoll"], message:"KDGoddessQuestReward_Weapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "Armbinder", minLevel: 0, weight: 10,
-			armor: "HighSecArmbinder",
+			armor: "HighsecArmbinder",
 			amtMult: 5,
 			maxEnchants: 4,
 			minEnchants: 2,
