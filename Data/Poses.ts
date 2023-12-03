@@ -130,7 +130,17 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 			Layer: "BG",
 			offset_x: 0,
 			offset_y: -.15,
-		}],
+		},
+
+		{
+			Layer: "Tail",
+			rotation: -75,
+			rotation_x_anchor: 1300/MODELWIDTH,
+			rotation_y_anchor: 1600/MODELHEIGHT,
+			offset_x: 1300/MODELWIDTH,
+			offset_y: 1600/MODELHEIGHT,
+		},
+	],
 	},
 	KneelClosed: {
 		offset_y: 0.15,
@@ -147,7 +157,16 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 			Layer: "BG",
 			offset_x: 0,
 			offset_y: -.15,
-		}],
+		},
+
+		{
+			Layer: "Tail",
+			rotation: -75,
+			rotation_x_anchor: 1300/MODELWIDTH,
+			rotation_y_anchor: 1600/MODELHEIGHT,
+			offset_x: 1300/MODELWIDTH,
+			offset_y: 1600/MODELHEIGHT,
+		},],
 	},
 	Front: {
 		global_default: "Boxtie",

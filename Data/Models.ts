@@ -452,17 +452,21 @@ function LayerIsHidden(MC: ModelContainer, l: ModelLayer, m: Model, Mods) : bool
 }
 
 function LayerLayer(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : string {
+	let layer = l.Layer;
 	if (l.SwapLayerPose) {
 		for (let p of Object.entries(l.SwapLayerPose)) {
-			if (MC.Poses[p[0]]) return p[1];
+			if (MC.Poses[p[0]]) {
+				layer = p[1];
+				break;
+			}
 		}
 	}
 	if (l.PrependLayerPrefix) {
 		for (let p of Object.entries(l.PrependLayerPrefix)) {
-			if (MC.Poses[p[0]]) return p[1] + l.Layer;
+			if (MC.Poses[p[0]]) return p[1] + layer;
 		}
 	}
-	return l.Layer;
+	return layer;
 }
 
 function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : number {

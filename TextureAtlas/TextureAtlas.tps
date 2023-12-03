@@ -1948,6 +1948,11 @@
             <key type="filename">../Models/GagTape/Full.png</key>
             <key type="filename">../Models/GagTape/Stuffing.png</key>
             <key type="filename">../Models/GagTape/Wrap.png</key>
+            <key type="filename">../Models/Gasmask/Center.png</key>
+            <key type="filename">../Models/Gasmask/Mask.png</key>
+            <key type="filename">../Models/Gasmask/Nose.png</key>
+            <key type="filename">../Models/Gasmask/Plugs.png</key>
+            <key type="filename">../Models/Gasmask/Valves.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>

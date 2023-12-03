@@ -861,6 +861,13 @@ let LayerGroups = {
 		"StockingLeft",
 		"StockingRight",
 
+		"ShoeLeftDeco",
+		"ShoeLeft",
+		"ShoeLeftUnder",
+		"ShoeRightDeco",
+		"ShoeRight",
+		"ShoeRightUnder",
+
 		"Panties",
 
 		"TorsoUpper",
@@ -890,7 +897,6 @@ let LayerGroups = {
 		"ShoeLeft",
 		"ShoeLeftUnder",
 		"ShoeRightDeco",
-
 		"ShoeRight",
 		"ShoeRightUnder",
 
@@ -1428,6 +1434,7 @@ let LayerProperties = {
 	CircletUnder: {Parent: "Head"},
 	HatBack: {Parent: "Head"},
 	AnimalEars: {Parent: "Head"},
+	Tail: {Parent: "Torso"},
 
 
 

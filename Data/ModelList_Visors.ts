@@ -60,3 +60,45 @@ AddModel({
 });
 AddModel(GetModelRestraintVersion("FullVisor", true));
 AddModel(GetModelRestraintVersion("FullVisorRim", true));
+
+
+AddModel({
+	Name: "GasMask",
+	Folder: "Gasmask",
+	Parent: "GasMask",
+	TopLevel: true,
+	Categories: ["Accessories", "Face"],
+	Layers: ToLayerMap([
+		{ Name: "Mask", Layer: "GagMuzzle", Pri: 10,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "Valves", Layer: "GagMuzzle", Pri: 20,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			NoOverride: true, TieToLayer: "Mask",
+		},
+		{ Name: "Center", Layer: "GagMuzzle", Pri: 10.1,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			NoOverride: true, TieToLayer: "Mask",
+		},
+		{ Name: "Nose", Layer: "GagMuzzle", Pri: 10.2,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			NoOverride: true, TieToLayer: "Mask",
+		},
+		{ Name: "Plugs", Layer: "GagMuzzle", Pri: 20.2,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			NoOverride: true, TieToLayer: "Valves",
+		},
+	])
+});
+AddModel(GetModelRestraintVersion("GasMask", true));

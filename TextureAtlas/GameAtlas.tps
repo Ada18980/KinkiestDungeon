@@ -3294,6 +3294,8 @@
             <key type="filename">../Game/UI/MiniMap/Orb.png</key>
             <key type="filename">../Game/UI/MiniMap/Shrine.png</key>
             <key type="filename">../Game/UI/MiniMap/ShrineMana.png</key>
+            <key type="filename">../Game/UI/MiniMap/ShrineManaQuest.png</key>
+            <key type="filename">../Game/UI/MiniMap/ShrineQuest.png</key>
             <key type="filename">../Game/UI/MiniMap/Stairs.png</key>
             <key type="filename">../Game/UI/MiniMap/StairsDown.png</key>
             <key type="filename">../Game/UI/MiniMap/Tablet.png</key>

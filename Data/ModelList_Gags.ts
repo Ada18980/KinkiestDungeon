@@ -312,9 +312,10 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "StuffMouth", "FaceGag"],
+	AddPose: ["StuffMouth", "FaceGag"],
 	Layers: ToLayerMap([
 		{ Name: "Stuffing", Layer: "GagUnder", Pri: -100,
+			HidePoses: ToMap(["HideMouth"]),
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,
