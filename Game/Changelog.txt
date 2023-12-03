@@ -30,6 +30,9 @@ TODO add sugar magic ('Blood Energy Magic')
 - Added quests tab to journals
 - Added minimap icons
 - Inspect now allows you to pan the camera by clicking or using the arrow keys
+- Added shadow hand graphics
+- Tails rotate when kneeling
+- Added Simple Color Picker option
 
 5.0.0 RC8
 - Added Strict Ropework which adds an additional rope harness for aesthetic purposes

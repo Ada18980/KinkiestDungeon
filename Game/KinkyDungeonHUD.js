@@ -775,7 +775,7 @@ function KDDrawStatusBars(x, y, width = 125) {
 			x - heightPerBar*0.32 + width * KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax,
 			y + heightPerBar * barHeightOffset2ndSet - heightPerBar*0.28,
 			undefined, undefined, undefined, {
-				zIndex: 150,
+				zIndex: 57,
 			});
 		KinkyDungeonBar(x - 5 + width * barWidthOffset2ndSet, y - 0.18*heightPerBar + heightPerBar * barHeightOffset2ndSet, width * (barBaseScale + barAmountScale*KinkyDungeonStatDistractionMax/KDMaxStatStart),
 			offBarHeight, 100*KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax,
@@ -916,7 +916,7 @@ function KinkyDungeonDrawActionBar(x, y) {
 		(KinkyDungeonDrawStruggle == KDDrawStruggleEnum.STRUGGLE ? "Struggle" :
 		(KinkyDungeonDrawStruggle == KDDrawStruggleEnum.NONE ? "True" :
 		"False")))) + ".png", "")) str = "KDHideRest";
-	if (MouseIn(0, 0, 500, 1000) || MouseIn(500, 900, 220, 200)) {
+	if (MouseIn(0, 0, 500, 1000) || MouseIn(500, 900, 220, 200) || KDPlayerSetPose || KDToggleXRay) {
 		if (StandalonePatched) {
 			if (DrawButtonKDEx("SetPose", (bdata) => {
 				KDPlayerSetPose = !KDPlayerSetPose;
@@ -1739,13 +1739,13 @@ function KDDrawNavBar(skip, quit = false) {
 		if (skip == 3)
 			KinkyDungeonDrawState = "Game";
 		else {
-			KinkyDungeonDrawState = "Logbook";
+			KinkyDungeonDrawState = "Quest";
 			KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
 		}
 		return true;
 	}, true, bx, by, bwidth, bheight, logtxt, "#ffffff",
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_logbook.png"), undefined, undefined, false, "", 24, true, {
-		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[4]),
+		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[5]),
 	}); bindex++; bInc();
 }
 

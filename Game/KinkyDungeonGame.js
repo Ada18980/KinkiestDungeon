@@ -73,7 +73,7 @@ let KDDefaultAvoidTiles = "gtVN@";
 let KinkyDungeonGroundTiles = "023w][?/";
 let KinkyDungeonWallTiles = "14,";
 let KinkyDungeonBlockTiles = "14,bgX";
-let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HB@l;SsRrdzTgLNVt5"; // Objects which can be moved into: floors, debris, open doors, staircases
+let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HB@l;SsRrdzTgLcNVt5"; // Objects which can be moved into: floors, debris, open doors, staircases
 // 5 is skinned floor, you can give it whatever sprite you want
 // 6 is skinned wall, you can give it whatever sprite you want
 let KinkyDungeonMovableTilesSmartEnemy = "D" + KinkyDungeonMovableTilesEnemy; //Smart enemies can open doors as well
@@ -1059,7 +1059,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			if (!altType || altType.shrines)
 				KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTypes, shrinecount,
 					shrinefilter, ghostchance, manaChance, orbcount, (altType && altType.noShrineTypes) ? altType.noShrineTypes : [],
-					Floor, width, height, !altType || !altType.alwaysRegen);
+					Floor, width, height, !altType || (!altType.alwaysRegen && !altType.noQuests));
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for shrine creation`);
 				startTime = performance.now();
@@ -2516,7 +2516,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 					shrineTypes.push("Orb");
 				} else if (type) {
 					KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Type: "Shrine", Name: type, drunk: stype.drunk});
-					if (KDRandom() < 0.3 && quests < KDMAXGODDESSQUESTS) {
+					if (allowQuests && KDRandom() < 0.3 && quests < KDMAXGODDESSQUESTS) {
 						let quest = KDGetShrineQuest(KDMapData, KinkyDungeonTilesGet("" + shrine.x + "," +shrine.y));
 						if (quest) {
 							KDSetShrineQuest(KDMapData, KinkyDungeonTilesGet("" + shrine.x + "," +shrine.y),

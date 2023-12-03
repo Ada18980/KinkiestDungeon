@@ -60,20 +60,31 @@ let KDDelayedActionCommit = {
 					restraint.cutProgress += action.data.amount;
 				else restraint.struggleProgress += action.data.amount;
 				let progress = (restraint.struggleProgress || 0) + (restraint.cutProgress || 0);
-				if (progress > 1)
+				if (progress > 1) {
+					KinkyDungeonSetFlag("escaped", 2);
 					KDSuccessRemove(struggleType, restraint, lockType, action.data.index, action.data.escapeData, host);
-				else KDStunTurns(1, true);
+				} else {
+					KDStunTurns(1, true);
+				}
 
 			} else if (struggleType == "Unlock") {
+				KinkyDungeonSetFlag("picking", 2);
 				restraint.unlockProgress += action.data.amount;
-				if (restraint.unlockProgress > 1)
+				if (restraint.unlockProgress > 1) {
+					KinkyDungeonSetFlag("escaped", 2);
 					KDSuccessRemove(struggleType, restraint, lockType, action.data.index, action.data.escapeData, host);
-				else KDStunTurns(1, true);
+				} else {
+					KDStunTurns(1, true);
+				}
 			} else if (struggleType == "Pick") {
+				KinkyDungeonSetFlag("picking", 2);
 				restraint.pickProgress += action.data.amount;
-				if (restraint.pickProgress > 1)
+				if (restraint.pickProgress > 1) {
+					KinkyDungeonSetFlag("escaped", 2);
 					KDSuccessRemove(struggleType, restraint, lockType, action.data.index, action.data.escapeData, host);
-				else KDStunTurns(1, true);
+				} else {
+					KDStunTurns(1, true);
+				}
 			}
 		}
 	},

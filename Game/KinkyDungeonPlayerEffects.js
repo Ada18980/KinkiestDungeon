@@ -549,9 +549,10 @@ let KDPlayerEffects = {
  * @param {string} faction
  * @param {boolean} [noDeep]
  * @param {boolean} [bypass] - Bypass inaccessible things
+ * @param {string} [Lock]
  * @returns {{r:restraint, v: ApplyVariant}[]}
  */
-function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass, allowEvade = false, allowBlock = false, allowBondageResist = true) {
+function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass, allowEvade = false, allowBlock = false, allowBondageResist = true, Lock) {
 	let restraintsToAdd = [];
 	let player = KinkyDungeonPlayerEntity;
 	for (let i = 0; i < count; i++) {
@@ -584,7 +585,7 @@ function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass, all
 
 			if (!r)
 				KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal"), "#88ff88", 1);
-		}, undefined, spell);
+		}, undefined, spell, Lock);
 		KinkyDungeonSendEvent("boundBySpell", {player: KinkyDungeonPlayerEntity, restraintsAdded: rests});
 		return rests;
 	}
@@ -892,7 +893,8 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				effect = true;
 			}
 		} else if (playerEffect.name == "Spores") {
-			KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness, 6);
+			KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness, 6
+				* KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2));
 			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSpores"), "#a583ff", 2);
 			KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			effect = true;
@@ -901,12 +903,16 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 				KinkyDungeonSendTextMessage(6, TextGet("KDPoisonDagger"), "#33ff00", 2);
 				KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage}, bullet);
 				// TODO make this get more intense over time
-				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "PoisonDagger", aura: "#22ff44", type: "Sleepiness", power: 1, duration: playerEffect.time, player: true, enemies: false, tags: ["sleep"], range: 1.5});
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "PoisonDagger", aura: "#22ff44", type: "SleepinessPoison", power: 1, duration: playerEffect.time, player: true, enemies: false, tags: ["sleep"], range: 1.5});
 				effect = true;
 			}
 		} else if (playerEffect.name == "SporesSick") {
-			KinkyDungeonSleepiness += 1.5;
+			KinkyDungeonSleepiness += 1.5 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2);
 			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesSick"), "#63ab3f", 2);
+			KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+			effect = true;
+		}  else if (playerEffect.name == "SporesHappy") {
+			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesHappy"), "#63ab3f", 2);
 			KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			effect = true;
 		} else if (playerEffect.name == "Flummox") {
@@ -1214,14 +1220,14 @@ function KinkyDungeonPlayerEffect(target, damage, playerEffect, spell, faction, 
 		} else if (playerEffect.name == "NurseSyringe") {
 			if (KDTestSpellHits(spell, 1.0, 1.0)) {
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNurseSyringe"), "#ff0000", 8);
-				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "NurseSyringe", aura: "#22ff44", type: "Sleepiness", power: 1, duration: playerEffect.time, player: true, enemies: false, tags: ["sleep"], range: 1.5});
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "NurseSyringe", aura: "#22ff44", type: "SleepinessPoison", power: 1, duration: playerEffect.time, player: true, enemies: false, tags: ["sleep"], range: 1.5});
 				effect = true;
 			}
 		} else if (playerEffect.name == "TrapSleepDart") {
 			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrapSleepDart"), "#ff0000", 8);
-			KDStunTurns(8);
-			KinkyDungeonStatBlind = 8;
-			KinkyDungeonSleepiness = 8;
+			KDStunTurns(Math.round(8 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"))));
+			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, Math.round(8 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"))));
+			KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness, Math.round(8 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"))));
 			KinkyDungeonAlert = 5;
 			effect = true;
 		} else if (playerEffect.name == "Drench") {

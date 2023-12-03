@@ -3753,7 +3753,7 @@ function KDPlayerDrawPoseButtons(C) {
 	KDModalArea_y = 430;
 	KDModalArea_width = 1000;
 	KDModalArea_height = 370;
-	KDDrawPoseButtons(C, 700, 480, true, true, true);
+	KDDrawPoseButtons(C, 700, 580, true, true, true);
 
 }
 

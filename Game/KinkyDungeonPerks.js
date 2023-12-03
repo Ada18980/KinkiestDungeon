@@ -577,6 +577,7 @@ let KDPerkStart = {
 		KinkyDungeonChangeRep("Metal", 10);
 		KinkyDungeonAddRestraintIfWeaker("ControlHarness", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
 		KinkyDungeonAddRestraintIfWeaker("TrackingCollar", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("TrackingModule", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
 
 
 		KinkyDungeonAddRestraintIfWeaker("CyberBelt", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);

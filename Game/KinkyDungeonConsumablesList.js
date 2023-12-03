@@ -68,6 +68,7 @@ let KinkyDungneonBasic = {
 
 let KinkyDungneonShopRestraints = {
 	"SlimeWalkers" : {name: "SlimeWalkers", rarity: 2, shop: true},
+	"GasMask" : {name: "GasMask", rarity: 2, shop: true},
 	"PotionCollar" : {name: "PotionCollar", rarity: 2, shop: true},
 };
 

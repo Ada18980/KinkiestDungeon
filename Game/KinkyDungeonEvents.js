@@ -3512,7 +3512,7 @@ let KDEventMapSpell = {
 		},
 		"RogueBind": (e, spell, data) => {
 			if (data.dmg > 0 && data.critical && data.enemy && !data.customCrit && KDHostile(data.enemy)) {
-				if (data.bind || KinkyDungeonBindingDamageTypes.includes(data.type) || data.bindEff) {
+				if (data.bind || KinkyDungeonBindingDamageTypes.includes(data.type)) {
 					KDDamageQueue.push({floater: TextGet("KDBindCritical"), Entity: data.enemy, Color: "#ff55aa", Delay: data.Delay});
 					data.customCrit = true;
 				}

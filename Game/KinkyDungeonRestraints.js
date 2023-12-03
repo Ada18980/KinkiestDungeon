@@ -1338,7 +1338,7 @@ function KDHandBondageTotal(Other = false) {
 		if (!Other && KDRestraint(inv).restricthands) total += KDRestraint(inv).restricthands;
 	}
 	if (KinkyDungeonStatsChoice.get("SomaticMinus")) total *= 2;
-	else if (KinkyDungeonStatsChoice.get("SomaticPlus")) total *= 0.8;
+	else if (KinkyDungeonStatsChoice.get("SomaticPlus") && total < 0.99) total *= 0.75;
 	return total;
 }
 
@@ -1549,6 +1549,7 @@ function KinkyDungeonPickAttempt() {
 		KinkyDungeonChangeStamina(cost, 1);
 		KinkyDungeonChangeWill(wcost);
 	}
+	KinkyDungeonSetFlag("tryescaping", 3);
 	return Pass == "Success";
 }
 
@@ -1590,6 +1591,7 @@ function KinkyDungeonUnlockAttempt(lock) {
 	} else {
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Pick.ogg");
 	}
+	KinkyDungeonSetFlag("tryescaping", 3);
 	return false;
 }
 
@@ -1764,6 +1766,8 @@ function KDGetDynamicItem(group, index) {
  * @returns {string}
  */
 function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
+
+	KinkyDungeonSetFlag("tryescaping", 3);
 	let restraint = KinkyDungeonGetRestraintItem(struggleGroup);
 	let host = restraint;
 	if (index) {
@@ -1997,11 +2001,13 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					struggleType: StruggleType,
 					result: "Impossible",
 				});
+
 				KinkyDungeonChangeStamina(data.cost, true, 1);
 				KinkyDungeonChangeWill(data.wcost);
 				if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
 			}
 			KinkyDungeonAdvanceTime(1);
+			KinkyDungeonSetFlag("escapeimpossible", 2);
 			return "Impossible";
 		}
 	}
@@ -2152,6 +2158,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 				if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
 			}
 			KinkyDungeonAdvanceTime(1);
+			KinkyDungeonSetFlag("escapeimpossible", 2);
 			return "Impossible";
 		}
 	}
@@ -2528,6 +2535,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		if (Pass == "Success") KinkyDungeonCurrentEscapingItem = null;
 		return Pass;
 	}
+	KinkyDungeonSetFlag("escapeimpossible", 2);
 	return "Impossible";
 }
 
