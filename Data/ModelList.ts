@@ -1582,6 +1582,10 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "RibbonBelt", Layer: "BeltUnder", Pri: 30,
 			Invariant: true,
+			DisplaceAmount: 100,
+			DisplaceLayers: ToMap(["CorsetTorso"]),
+			DisplacementSprite: "CorsetSquish",
+			DisplacementInvariant: true,
 			HideWhenOverridden: true,
 		},
 		{ Name: "RibbonBack", Layer: "BeltBack", Pri: 30,

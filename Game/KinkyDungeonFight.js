@@ -61,7 +61,7 @@ let KinkyDungeonShatterDamageTypes = ["crush", "stun"];
 
 let KDDamageEquivalencies = {
 	"frost": "ice",
-	"happygas": "charm",
+	//"happygas": "charm",
 	"souldrain": "soul",
 	"drain": "soul",
 	"shock": "electric",
@@ -216,7 +216,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 
 	let damage = KinkyDungeonPlayerDamageDefault;
 	let weapon = KDWeapon({name: KinkyDungeonPlayerWeapon});
-	if (weapon && weapon.noHands) HandsFree = true;
+	if (weapon && weapon?.noHands) HandsFree = true;
 	if (!KinkyDungeonCanUseWeapon(NoOverride, undefined, weapon) && !weapon?.unarmed) {
 		damage = KinkyDungeonPlayerDamageDefault;
 		if (!NoOverride) {
@@ -238,19 +238,19 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 
 	let handBondage = KDHandBondageTotal(true);
 	let armBondage = KinkyDungeonIsArmsBound(false, true);
-	if (armBondage && (flags.KDDamageArms || weapon.unarmed) && (!weapon?.noHands) && !weapon.light) {
+	if (armBondage && (flags.KDDamageArms || weapon?.unarmed) && (!weapon?.noHands) && !weapon?.light) {
 		KinkyDungeonPlayerDamage.chance *= 0.5;
-	} else if (handBondage && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
+	} else if (handBondage && (flags.KDDamageHands || weapon?.unarmed) && (!weapon || !weapon.noHands || weapon?.unarmed)) {
 		KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, handBondage));
 	}
 	if (KinkyDungeonStatsChoice.get("Brawler") && isUnarmed(KinkyDungeonPlayerDamage)) {
 		KinkyDungeonPlayerDamage.dmg += KDBrawlerAmount;
 	} else {
-		if (KinkyDungeonSlowLevel > 1 && (!KinkyDungeonPlayerDamage.name || weapon.unarmed)) {
+		if (KinkyDungeonSlowLevel > 1 && (!KinkyDungeonPlayerDamage.name || weapon?.unarmed)) {
 			KinkyDungeonPlayerDamage.dmg /= 2;
 		}
 	}
-	if ((KDIsHogtied() || KDIsKneeling()) && (flags.KDDamageHands || weapon.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
+	if ((KDIsHogtied() || KDIsKneeling()) && (flags.KDDamageHands || weapon?.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
 		KinkyDungeonPlayerDamage.chance *= KDIsHogtied() ? 0.1 : 0.5;
 	}
 

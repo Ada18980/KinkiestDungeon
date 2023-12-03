@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.1"
+KDVersionStr,"5.0.1 (E)"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -69,6 +69,8 @@ KDToggleShiftLatch,Controls: Latch Shift Key
 KDToggleChastityOption,Clothes: Chastity over Panties
 KDToggleChastityBraOption,Clothes: Chastity Bra over Bras
 KinkyDungeonFastWait,Wait Quickly
+KinkyDungeonSimpleColorPicker,Clothes: Simple Color Picker
+
 
 KDHelpless,Helpless!
 KDMissed,Evaded!
@@ -992,6 +994,7 @@ LootChestTrapMagicNipple,"You find gold, plus a devious magical trap! (+Restrain
 LootChestTrap,"Magical runes glow as a trap activates inside the chest!"
 LootPotionCollar,"You find a special collar that lets you absorb energy from potions."
 LootSlimeWalkers,"You find a pair of garish pink high heels with a slippery surface."
+LootGasMask,"You find a gas mask suitable for filtering gases."
 LootPearlChest,The pearly chest contains a divine gift! (+ITEMGET)
 KDSmokePuff,Smoke fills the air around you!
 
@@ -3413,6 +3416,14 @@ RestraintSlimeWalkersDesc2,"They will slow you down, but you can walk on slime w
 KinkyDungeonInventoryItemSlimeWalkers,Slime Walkers
 KinkyDungeonInventoryItemSlimeWalkersDesc,"A pair of heels coated in a nonstick material."
 KinkyDungeonInventoryItemSlimeWalkersDesc2,"They will slow you down, but you can walk on slime without getting stuck!"
+
+
+RestraintGasMask,Gas Mask
+RestraintGasMaskDesc,"A respirator designed to protect the wearer from noxious fumes."
+RestraintGasMaskDesc2,"+50 Poison resist. Protects against dizziness caused by sleep gas. Affects speech."
+KinkyDungeonInventoryItemSlimeWalkers,Gas Mask
+KinkyDungeonInventoryItemSlimeWalkersDesc,"A respirator designed to protect the wearer from noxious fumes."
+KinkyDungeonInventoryItemSlimeWalkersDesc2,"+50 Poison resist. Protects against dizziness caused by sleep gas. Affects speech."
 
 
 KDCursedArmorUncurse,The curse on the RestraintName is lifted!
@@ -7013,7 +7024,7 @@ KinkyDungeonDamageTypeplush,"Plush"
 KinkyDungeonDamageTypestun,"Blast"
 KinkyDungeonDamageTypeblast,"Blast"
 KinkyDungeonDamageTypechain,"Chain"
-KinkyDungeonDamageTypehappygas,"Charm"
+KinkyDungeonDamageTypehappygas,"Gas"
 KinkyDungeonDamageTypeglue,"Glue"
 KinkyDungeonDamageTypeunarmed,"Unarmed"
 KinkyDungeonDamageTypemelee,"Melee"
@@ -7058,6 +7069,7 @@ KinkyDungeonCaptureMax,"You capture the EnemyName, but have reached the limit fo
 KinkyDungeonSummonTrapMonster,The spirit inside the restraint is vengeful and emerges to wreak havoc on the world!
 
 KinkyDungeonBarrel,You hide inside the container...
+KinkyDungeonBarrelChest,You hide inside the chest...
 KinkyDungeonScrap,It's a crumpled piece of scrap metal with a sharp edge.
 KinkyDungeonScrapUse,You use the scrap to try and cut the item.
 KinkyDungeonScrapObjectUse,You rub the item against the broken object's sharp edges...
@@ -13403,3 +13415,10 @@ KDGoddessQuestReward_Weapon,"The Goddess bestows a WeaponAcquired on you!"
 KDGoddessQuestReward_Armor,"The Goddess grants you a ArmorAcquired!"
 KDGoddessQuestReward_Macaron,The Goddess gives you a heavenly pastry.
 KDGoddessQuestReward_MistressKey,The Goddess awards you an ancient key of great importance.
+
+KDDiffTab_Diff,Game Setup
+KDDiffTab_Challenge,Challenge Settings
+
+
+
+KinkyDungeonChallenge,Challenge Settings:

@@ -5971,9 +5971,10 @@ function KDGetExtraTags(enemy, useSpecial) {
  * @param {(item) => void} blockFunction
  * @param {string[]} [restraintFromInventory]
  * @param {spell} [spell]
+ * @param {string} [Lock]
  * @returns {{r:restraint, v: ApplyVariant}[]}
  */
-function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, restraintFromInventory, spell) {
+function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, restraintFromInventory, spell, Lock) {
 	let restraintblock = KDCalcRestraintBlock();
 	let restraintpower = 0;
 	for (let r of restraintsToAdd) {
@@ -6020,7 +6021,7 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 				let bb = 0;
 				if (count >= protection) {
 					bb = KinkyDungeonAddRestraintIfWeaker(r.r, (enemy?.Enemy.power || spell?.power || 0),
-						KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy?.Enemy.bypass, enemy?.Enemy.useLock ? enemy.Enemy.useLock : undefined,
+						KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy?.Enemy.bypass, (enemy?.Enemy.useLock ? enemy.Enemy.useLock : (r.r.DefaultLock || Lock)),
 						undefined, undefined, undefined, enemy?.Enemy.applyFaction || faction || enemy?.Enemy.defaultFaction, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
 						undefined, enemy, true, undefined, undefined, undefined, r.v) * 2;
 					if (bb) {

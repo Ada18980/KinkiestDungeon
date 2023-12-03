@@ -1168,7 +1168,7 @@ let KDExpressions = {
 		stackable: true,
 		priority: 1,
 		criteria: (C) => {
-			if (C == KinkyDungeonPlayer && KinkyDungeonStatDistraction > 0) {
+			if (C == KinkyDungeonPlayer && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.1) {
 				return true;
 			}
 			return false;
@@ -1208,7 +1208,7 @@ let KDExpressions = {
 		stackable: true,
 		priority: 2.25,
 		criteria: (C) => {
-			return KinkyDungeonGoddessRep.Frustration > -20;
+			return (KinkyDungeonGoddessRep.Frustration > -20 && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.25) || KinkyDungeonFlags.get("escapeimpossible") > 0;
 		},
 		expression: (C) => {
 			return {
@@ -1221,11 +1221,96 @@ let KDExpressions = {
 			};
 		},
 	},
+	"Struggling": {
+		stackable: true,
+		priority: 14,
+		criteria: (C) => {
+			return KinkyDungeonFlags.get("escaping") > 0;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "BlushHigh",
+				MouthPose: "MouthPout",
+			};
+		},
+	},
+	"StrugglingLight": {
+		stackable: true,
+		priority: 6,
+		criteria: (C) => {
+			return KinkyDungeonFlags.get("tryescaping") > 0;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "",
+				MouthPose: "MouthPout",
+			};
+		},
+	},
+	"Picking": {
+		stackable: true,
+		priority: 13,
+		criteria: (C) => {
+			return KinkyDungeonFlags.get("picking") > 0;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "Eyes2Closed",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "",
+				MouthPose: "MouthPout",
+			};
+		},
+	},
+	"Unlocking": {
+		stackable: true,
+		priority: 12,
+		criteria: (C) => {
+			return KinkyDungeonFlags.get("unlocking") > 0;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "Eyes2Closed",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "",
+				MouthPose: "MouthEmbarrassed",
+			};
+		},
+	},
+	"Escaped": {
+		stackable: true,
+		priority: 20,
+		criteria: (C) => {
+			return KinkyDungeonFlags.get("escaped") > 0;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesNeutral",
+				Eyes2Pose: "Eyes2Neutral",
+				BrowsPose: "BrowsAngry",
+				Brows2Pose: "Brows2Angry",
+				BlushPose: "",
+				MouthPose: "MouthSmile",
+			};
+		},
+	},
 	"FrustratedMouth": {
 		stackable: true,
 		priority: 0.25,
 		criteria: (C) => {
-			return KinkyDungeonGoddessRep.Frustration - KinkyDungeonGoddessRep.Passion > -25;
+			return KinkyDungeonGoddessRep.Frustration - KinkyDungeonGoddessRep.Passion > -25 && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.25;
 		},
 		expression: (C) => {
 			return {
@@ -1242,7 +1327,7 @@ let KDExpressions = {
 		stackable: true,
 		priority: 2.2,
 		criteria: (C) => {
-			return KinkyDungeonGoddessRep.Passion - KinkyDungeonGoddessRep.Frustration > -5 && KinkyDungeonGoddessRep.Passion > -30;
+			return KinkyDungeonGoddessRep.Passion - KinkyDungeonGoddessRep.Frustration > -5 && KinkyDungeonGoddessRep.Passion > -30 && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.25;
 		},
 		expression: (C) => {
 			return {
@@ -1259,7 +1344,7 @@ let KDExpressions = {
 		stackable: true,
 		priority: 2.2,
 		criteria: (C) => {
-			return KinkyDungeonGoddessRep.Passion > -40;
+			return KinkyDungeonGoddessRep.Passion > -40 && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.25;
 		},
 		expression: (C) => {
 			return {
@@ -1276,7 +1361,7 @@ let KDExpressions = {
 		stackable: true,
 		priority: 4,
 		criteria: (C) => {
-			return KinkyDungeonGoddessRep.Passion > -10;
+			return KinkyDungeonGoddessRep.Passion > -10 && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.5;
 		},
 		expression: (C) => {
 			return {
@@ -1293,7 +1378,7 @@ let KDExpressions = {
 		stackable: true,
 		priority: 7,
 		criteria: (C) => {
-			return KinkyDungeonGoddessRep.Passion > 20;
+			return KinkyDungeonGoddessRep.Passion > 20 && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.75;
 		},
 		expression: (C) => {
 			return {
@@ -1310,7 +1395,7 @@ let KDExpressions = {
 		stackable: true,
 		priority: 10,
 		criteria: (C) => {
-			return KinkyDungeonGoddessRep.Passion > 40;
+			return KinkyDungeonGoddessRep.Passion > 40 && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.5;
 		},
 		expression: (C) => {
 			return {

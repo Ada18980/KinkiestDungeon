@@ -1202,7 +1202,9 @@ function KinkyDungeonUpdateStats(delta) {
 	KinkyDungeonUpdateStruggleGroups();
 	// Slowness calculation
 	KinkyDungeonCalculateSlowLevel();
-	let sleepRate = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sleepiness");
+	let sleepRate = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sleepiness")
+		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SleepinessGas") * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2)
+		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SleepinessPoison") * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"));
 	if ((sleepRate && sleepRate > 0) || KinkyDungeonSleepiness > 0) {
 		KinkyDungeonSleepiness = Math.min(KinkyDungeonSleepinessMax, KinkyDungeonSleepiness + sleepRate * delta);
 		if (KinkyDungeonSleepiness > 2.99) {

@@ -247,31 +247,150 @@ function KDDrawColorSliders(X, Y, C, Model) {
 
 	YY += 60;
 
-	for (let key of Object.keys(KDColorSliders)) {
-		DrawTextFitKD(TextGet("KDColorSlider" + key) + ": " + (Math.round(filters[key]*10)/10), X + width/2, YY, width, "#ffffff", "#000000", 20);
-		KinkyDungeonBar(X, YY - 15, width, 30, filters[key]/5*100, KDColorSliderColor[key] || "#ffffff", "#000000");
-		if ((mouseDown) && MouseIn(X, YY - 15, width, 30)) {
+	if (KDToggles.SimpleColorPicker) {
+		let force = false;
+		for (let key of ["brightness", "contrast"]) {
+			DrawTextFitKD(TextGet("KDColorSlider" + key) + ": " + (Math.round((key == "brightness" ? KDVisualBrightness : (0.2 * filters[key]))*100)/100), X + width/2, YY, width, "#ffffff", "#000000", 20);
+			KinkyDungeonBar(X, YY - 15, width, 30, Math.min(100, (key == "brightness" ? KDVisualBrightness : (filters[key]/3))*100), KDColorSliderColor[key] || "#ffffff", "#000000");
+			if ((mouseDown) && MouseIn(X, YY - 15, width, 30)) {
+				MouseClicked = false;
+				if (CommonTime() > lastFilterUpdate + FilterUpdateInterval) {
+					lastFilterUpdate = CommonTime();
+					KDChangeWardrobe(C);
+					if (!Model.Filters) Model.Filters = {};
+					if (!Model.Filters[KDCurrentLayer])
+						Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
+					if (key == 'brightness') {
+						KDVisualBrightness = ((MouseX - X) / width);
+
+						force = true;
+
+					} else {
+						Model.Filters[KDCurrentLayer][key] = ((MouseX - X) / width) * 3;
+					}
+
+					KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+					let rr = Math.round(Model.Filters[KDCurrentLayer].red /5 * 255).toString(16);
+					if (rr.length == 1) rr = '0' + rr;
+					let gg = Math.round(Model.Filters[KDCurrentLayer].green /5 * 255).toString(16);
+					if (gg.length == 1) gg = '0' + gg;
+					let bb = Math.round(Model.Filters[KDCurrentLayer].blue /5 * 255).toString(16);
+					if (bb.length == 1) bb = '0' + bb;
+					ElementValue("KDSelectedColor", `#${
+						rr}${
+						gg}${
+						bb}`);
+					ElementValue("KDCopyFilter", JSON.stringify(Model.Filters[KDCurrentLayer]));
+					lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+					ForceRefreshModels(C);
+				}
+
+			}
+			YY += 50;
+		}
+
+		let radius = 150;
+		KDDraw(kdcanvas, kdpixisprites, "colorpicker", KinkyDungeonRootDirectory + "ColorPicker.png", X, YY, 300, 300);
+		if (ElementValue("KDSelectedColor") && Model.Filters[KDCurrentLayer]) {
+			let hsl = rgbToHsl(
+				Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].red/5 || 0)),
+				Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].green/5 || 0)),
+				Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].blue/5 || 0)),
+			);
+			let x = radius * hsl[1] * Math.cos(hsl[0] * 2*Math.PI);
+			let y = radius * hsl[1] * Math.sin(hsl[0] * 2*Math.PI);
+			KDDraw(kdcanvas, kdpixisprites, "colorpickercolor", KinkyDungeonRootDirectory + "Color.png", X - 12 + x + radius, YY - 12 + y + radius, 23, 23, 0, {
+				tint: string2hex(ElementValue("KDSelectedColor")),
+			});
+		}
+
+
+		let dist = KDistEuclidean(MouseX - (X + radius), MouseY - (YY + radius));
+		if ((mouseDown && dist * 0.8 < radius) || force) {
+			let hue = Math.max(0, 0.5 + 0.5 * Math.min(1, Math.atan2(
+				-MouseY + (YY + radius),
+				-MouseX + (X + radius)) / Math.PI));
+			let sat = Math.min(1, dist/radius);
+
+			if (force) {
+				let hsl = rgbToHsl(
+					Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].red/5 || 0)),
+					Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].green/5 || 0)),
+					Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].blue/5 || 0)),
+				);
+				hue = hsl[0];
+				sat = hsl[1];
+			}
+
+			let arr = hslToRgb(hue, sat, Math.max(0, Math.min(1, KDVisualBrightness)));
+			let r = arr[0];
+			let g = arr[1];
+			let b = arr[2];
+
 			MouseClicked = false;
-			if (CommonTime() > lastFilterUpdate + FilterUpdateInterval) {
+			if (force || CommonTime() > lastFilterUpdate + FilterUpdateInterval) {
 				lastFilterUpdate = CommonTime();
 				KDChangeWardrobe(C);
 				if (!Model.Filters) Model.Filters = {};
 				if (!Model.Filters[KDCurrentLayer])
 					Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
-				Model.Filters[KDCurrentLayer][key] = ((MouseX - X) / width) * 5;
+				Model.Filters[KDCurrentLayer].red = 5*r/255.0;
+				Model.Filters[KDCurrentLayer].green = 5*g/255.0;
+				Model.Filters[KDCurrentLayer].blue = 5*b/255.0;
+				Model.Filters[KDCurrentLayer].brightness = 1;
 				KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+				let rr = Math.round(Model.Filters[KDCurrentLayer].red/5 * 255).toString(16);
+				if (rr.length == 1) rr = '0' + rr;
+				let gg = Math.round(Model.Filters[KDCurrentLayer].green/5 * 255).toString(16);
+				if (gg.length == 1) gg = '0' + gg;
+				let bb = Math.round(Model.Filters[KDCurrentLayer].blue/5 * 255).toString(16);
+				if (bb.length == 1) bb = '0' + bb;
 				ElementValue("KDSelectedColor", `#${
-					Math.round(Model.Filters[KDCurrentLayer].red /5 * 255).toString(16)}${
-					Math.round(Model.Filters[KDCurrentLayer].green /5 * 255).toString(16)}${
-					Math.round(Model.Filters[KDCurrentLayer].blue /5 * 255).toString(16)}`);
+					rr}${
+					gg}${
+					bb}`);
 				ElementValue("KDCopyFilter", JSON.stringify(Model.Filters[KDCurrentLayer]));
 				lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
 				ForceRefreshModels(C);
 			}
-
 		}
-		YY += 50;
+
+		YY += 300;
+	} else {
+		for (let key of Object.keys(KDColorSliders)) {
+			DrawTextFitKD(TextGet("KDColorSlider" + key) + ": " + (Math.round(0.2 * filters[key]*100)/100), X + width/2, YY, width, "#ffffff", "#000000", 20);
+			KinkyDungeonBar(X, YY - 15, width, 30, filters[key]/5*100, KDColorSliderColor[key] || "#ffffff", "#000000");
+			if ((mouseDown) && MouseIn(X, YY - 15, width, 30)) {
+				MouseClicked = false;
+				if (CommonTime() > lastFilterUpdate + FilterUpdateInterval) {
+					lastFilterUpdate = CommonTime();
+					KDChangeWardrobe(C);
+					if (!Model.Filters) Model.Filters = {};
+					if (!Model.Filters[KDCurrentLayer])
+						Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
+					Model.Filters[KDCurrentLayer][key] = ((MouseX - X) / width) * 5;
+					KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+					let rr = Math.round(Model.Filters[KDCurrentLayer].red /5 * 255).toString(16);
+					if (rr.length == 1) rr = '0' + rr;
+					let gg = Math.round(Model.Filters[KDCurrentLayer].green /5 * 255).toString(16);
+					if (gg.length == 1) gg = '0' + gg;
+					let bb = Math.round(Model.Filters[KDCurrentLayer].blue /5 * 255).toString(16);
+					if (bb.length == 1) bb = '0' + bb;
+					ElementValue("KDSelectedColor", `#${
+						rr}${
+						gg}${
+						bb}`);
+					ElementValue("KDCopyFilter", JSON.stringify(Model.Filters[KDCurrentLayer]));
+					lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+					ForceRefreshModels(C);
+				}
+
+			}
+			YY += 50;
+		}
 	}
+
+
 
 	YY += 70;
 	DrawTextFitKD(TextGet("KDColorHex"),X + width/2, YY - 30, 300, "#ffffff", KDTextGray0, undefined, "center");
@@ -292,6 +411,9 @@ function KDDrawColorSliders(X, Y, C, Model) {
 					if (!Model.Filters[KDCurrentLayer])
 						Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
 					if (Model.Filters[KDCurrentLayer].alpha < 0.001) Model.Filters[KDCurrentLayer].alpha = 0.001;
+					if (KDToggles.SimpleColorPicker) {
+						Model.Filters[KDCurrentLayer].brightness = 1;
+					}
 					Model.Filters[KDCurrentLayer].red = r;
 					Model.Filters[KDCurrentLayer].green = g;
 					Model.Filters[KDCurrentLayer].blue = b;
@@ -456,7 +578,7 @@ function KDUpdateModelList(level = 0) {
 		KDModelList_Toplevel_index = 0;
 		KDModelList_Toplevel_viewindex.index = 0;
 		for (let model of Object.entries(ModelDefs)) {
-			if (model[1].TopLevel && model[1].Categories?.includes(category) && (TestMode || !model[1].Restraint)) {
+			if (model[1].TopLevel && (KDModelListFilter || model[1].Categories?.includes(category)) && (TestMode || !model[1].Restraint)) {
 				if (!KDModelListFilter || TextGet(model[0]).toLowerCase().includes(KDModelListFilter.toLowerCase()))
 					KDModelList_Toplevel.push(model[0]);
 			}
@@ -478,8 +600,8 @@ function KDUpdateModelList(level = 0) {
 				}
 			}
 			for (let model of Object.entries(ModelDefs)) {
-				if (model[1].Parent == toplevel && (TestMode || !model[1].Restraint)) {
-					if (!KDModelListFilter || TextGet(model[0]).toLowerCase().includes(KDModelListFilter.toLowerCase()))
+				if ((model[1].Parent == toplevel || KDModelListFilter) && (TestMode || !model[1].Restraint)) {
+					if (!KDModelListFilter || TextGet(model[1].Name).toLowerCase().includes(KDModelListFilter.toLowerCase()))
 						KDModelList_Sublevel.push(model[0]);
 				}
 			}
@@ -964,3 +1086,76 @@ function KDRefreshOutfitInfo() {
 		}
 	}
 }
+
+
+/**
+ * Converts an HSL color value to RGB. Conversion formula
+ * adapted from https://en.wikipedia.org/wiki/HSL_color_space.
+ * Assumes h, s, and l are contained in the set [0, 1] and
+ * returns r, g, and b in the set [0, 255].
+ *
+ * @param   {number}  h       The hue
+ * @param   {number}  s       The saturation
+ * @param   {number}  l       The lightness
+ * @return  {number[]}           The RGB representation
+ */
+function hslToRgb(h, s, l) {
+	let r, g, b;
+
+	if (s === 0) {
+		r = g = b = l; // achromatic
+	} else {
+		const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+		const p = 2 * l - q;
+		r = hueToRgb(p, q, h + 1/3);
+		g = hueToRgb(p, q, h);
+		b = hueToRgb(p, q, h - 1/3);
+	}
+
+	return [
+		Math.round(r * 255),
+		Math.round(g * 255),
+		Math.round(b * 255)
+	];
+}
+
+function hueToRgb(p, q, t) {
+	if (t < 0) t += 1;
+	if (t > 1) t -= 1;
+	if (t < 1/6) return p + (q - p) * 6 * t;
+	if (t < 1/2) return q;
+	if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+	return p;
+}
+
+/**
+ * Converts an RGB color value to HSL. Conversion formula
+ * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
+ * Assumes r, g, and b are contained in the set [0, 1] and
+ * returns h, s, and l in the set [0, 1].
+ *
+ * @param   {number}  r       The red color value
+ * @param   {number}  g       The green color value
+ * @param   {number}  b       The blue color value
+ * @return  {number[]}           The HSL representation
+ */
+function rgbToHsl(r, g, b) {
+	const vmax = Math.max(r, g, b),
+		vmin = Math.min(r, g, b);
+	let h, s, l = (vmax + vmin) / 2;
+
+	if (vmax === vmin) {
+		return [0, 0, l]; // achromatic
+	}
+
+	const d = vmax - vmin;
+	s = l > 0.5 ? d / (2 - vmax - vmin) : d / (vmax + vmin);
+	if (vmax === r) h = (g - b) / d + (g < b ? 6 : 0);
+	if (vmax === g) h = (b - r) / d + 2;
+	if (vmax === b) h = (r - g) / d + 4;
+	h /= 6;
+
+	return [h, s, l];
+}
+
+let KDVisualBrightness = 0.5;
