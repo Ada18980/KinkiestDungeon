@@ -1,0 +1,28 @@
+{"frames": {
+
+"Models/Hair/BackShortMessy.png":
+{
+	"frame": {"x":1,"y":1,"w":619,"h":665},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":961,"y":187,"w":619,"h":665},
+	"sourceSize": {"w":2480,"h":3508}
+},
+"Models/Hair/BackShortMessyUnderlight.png":
+{
+	"frame": {"x":622,"y":1,"w":589,"h":665},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":961,"y":187,"w":589,"h":665},
+	"sourceSize": {"w":2480,"h":3508}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "atlas22.png",
+	"format": "RGBA8888",
+	"size": {"w":1212,"h":667},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e21ce02519632d32e8744eeac2591e38:b4563e899bff51cb6b7037ebd286c6d6:e7ba33a958a2710274a073b9e7e96285$"
+}
+}
