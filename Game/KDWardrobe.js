@@ -578,7 +578,7 @@ function KDUpdateModelList(level = 0) {
 		KDModelList_Toplevel_index = 0;
 		KDModelList_Toplevel_viewindex.index = 0;
 		for (let model of Object.entries(ModelDefs)) {
-			if (model[1].TopLevel && model[1].Categories?.includes(category) && (TestMode || !model[1].Restraint)) {
+			if (model[1].TopLevel && (KDModelListFilter || model[1].Categories?.includes(category)) && (TestMode || !model[1].Restraint)) {
 				if (!KDModelListFilter || TextGet(model[0]).toLowerCase().includes(KDModelListFilter.toLowerCase()))
 					KDModelList_Toplevel.push(model[0]);
 			}
@@ -600,8 +600,8 @@ function KDUpdateModelList(level = 0) {
 				}
 			}
 			for (let model of Object.entries(ModelDefs)) {
-				if (model[1].Parent == toplevel && (TestMode || !model[1].Restraint)) {
-					if (!KDModelListFilter || TextGet(model[0]).toLowerCase().includes(KDModelListFilter.toLowerCase()))
+				if ((model[1].Parent == toplevel || KDModelListFilter) && (TestMode || !model[1].Restraint)) {
+					if (!KDModelListFilter || TextGet(model[1].Name).toLowerCase().includes(KDModelListFilter.toLowerCase()))
 						KDModelList_Sublevel.push(model[0]);
 				}
 			}

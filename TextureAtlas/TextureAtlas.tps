@@ -1331,6 +1331,24 @@
             <key type="filename">../Models/Rubber/TorsoLower.png</key>
             <key type="filename">../Models/Rubber/TorsoLowerKneel.png</key>
             <key type="filename">../Models/Rubber/TorsoUpper.png</key>
+            <key type="filename">../Models/ShadowHands/Arms1.png</key>
+            <key type="filename">../Models/ShadowHands/Arms2.png</key>
+            <key type="filename">../Models/ShadowHands/Crotch.png</key>
+            <key type="filename">../Models/ShadowHands/CrotchStrap.png</key>
+            <key type="filename">../Models/ShadowHands/Feet1Closed.png</key>
+            <key type="filename">../Models/ShadowHands/Feet1KneelClosed.png</key>
+            <key type="filename">../Models/ShadowHands/LeftArm2Boxtie.png</key>
+            <key type="filename">../Models/ShadowHands/LeftArm2Wristtie.png</key>
+            <key type="filename">../Models/ShadowHands/Legs1Closed.png</key>
+            <key type="filename">../Models/ShadowHands/Legs1Kneel.png</key>
+            <key type="filename">../Models/ShadowHands/Legs1KneelClosed.png</key>
+            <key type="filename">../Models/ShadowHands/Legs2Closed.png</key>
+            <key type="filename">../Models/ShadowHands/Legs2Kneel.png</key>
+            <key type="filename">../Models/ShadowHands/Legs2KneelClosed.png</key>
+            <key type="filename">../Models/ShadowHands/RightLegs1Kneel.png</key>
+            <key type="filename">../Models/ShadowHands/RightLegs1KneelClosed.png</key>
+            <key type="filename">../Models/ShadowHands/RightLegs2Kneel.png</key>
+            <key type="filename">../Models/ShadowHands/RightLegs2KneelClosed.png</key>
             <key type="filename">../Models/Slime/AnkleLeftClosed.png</key>
             <key type="filename">../Models/Slime/AnkleLeftKneelClosed.png</key>
             <key type="filename">../Models/Slime/AnkleRightClosed.png</key>
@@ -1953,6 +1971,8 @@
             <key type="filename">../Models/Gasmask/Nose.png</key>
             <key type="filename">../Models/Gasmask/Plugs.png</key>
             <key type="filename">../Models/Gasmask/Valves.png</key>
+            <key type="filename">../Models/ShadowHands/Eyes.png</key>
+            <key type="filename">../Models/ShadowHands/Mouth.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
