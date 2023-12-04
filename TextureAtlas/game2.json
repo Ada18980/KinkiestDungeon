@@ -2200,14 +2200,6 @@
 	"spriteSourceSize": {"x":20,"y":1,"w":37,"h":66},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Enemies/BindableEnemies/Skeleton.png":
-{
-	"frame": {"x":953,"y":1939,"w":31,"h":58},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":23,"y":8,"w":31,"h":58},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Enemies/BindableEnemies/SummonedZombie.png":
 {
 	"frame": {"x":604,"y":1117,"w":39,"h":66},
@@ -2256,6 +2248,14 @@
 	"spriteSourceSize": {"x":13,"y":1,"w":38,"h":66},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Enemies/CustomSprite/Melissa.png":
+{
+	"frame": {"x":1402,"y":1633,"w":29,"h":59},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":8,"w":29,"h":59},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Enemies/CustomSprite/Selly.png":
 {
 	"frame": {"x":2001,"y":1297,"w":44,"h":67},
@@ -2298,7 +2298,7 @@
 },
 "Game/Enemies/GhostAdventurer.png":
 {
-	"frame": {"x":1402,"y":1633,"w":28,"h":59},
+	"frame": {"x":953,"y":1939,"w":28,"h":59},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":23,"y":8,"w":28,"h":59},
@@ -2424,28 +2424,12 @@
 	"spriteSourceSize": {"x":0,"y":2,"w":72,"h":66},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Enemies/Skeleton.png":
-{
-	"frame": {"x":953,"y":1939,"w":31,"h":58},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":23,"y":8,"w":31,"h":58},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Enemies/SummonedDrone.png":
 {
 	"frame": {"x":2026,"y":570,"w":19,"h":36},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":26,"y":22,"w":19,"h":36},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/Enemies/SummonedSkeleton.png":
-{
-	"frame": {"x":953,"y":1939,"w":31,"h":58},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":23,"y":8,"w":31,"h":58},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Enemies/SummonedZombie.png":
@@ -2754,7 +2738,7 @@
 },
 "Game/FloorGeneric/Ghost.png":
 {
-	"frame": {"x":1402,"y":1633,"w":28,"h":59},
+	"frame": {"x":953,"y":1939,"w":28,"h":59},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":23,"y":8,"w":28,"h":59},
@@ -3306,7 +3290,7 @@
 },
 "Game/UI/button_reputation.png":
 {
-	"frame": {"x":953,"y":1999,"w":32,"h":47},
+	"frame": {"x":953,"y":2000,"w":32,"h":47},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":9,"y":4,"w":32,"h":47},
@@ -3440,6 +3424,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game3.json", "game4.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:9a627b566e1bdf10045e4a2c9c2819f7:5be6b22ac984467a9506944f8d3faae9:701e665c5fc69e47e58c28f8fa547b2b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:445c2ea7a94f20aa52c308481b0bd4ef:67784b9c305a96601d3ad9d34db4d40d:701e665c5fc69e47e58c28f8fa547b2b$"
 }
 }

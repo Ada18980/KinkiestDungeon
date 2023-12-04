@@ -208,9 +208,27 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Leotard", Layer: "Bodysuit", Pri: -1,
 			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
-			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Closed: "Closed"}
 		},
 		{ Name: "LeotardChest", Layer: "SuitChest", Pri: 1.5,
+			Invariant: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			InheritColor: "Leotard",
+		},
+	])
+});
+AddModel({
+	Name: "BunnyLeotardHigh",
+	Folder: "Bunny",
+	Parent: "BunnyLeotard",
+	TopLevel: false,
+	Categories: ["Bodysuits"],
+	Layers: ToLayerMap([
+		{ Name: "HighLeotard", Layer: "Bodysuit", Pri: -0.9,
+			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
+			MorphPoses: {Closed: "Closed"}
+		},
+		{ Name: "LeotardChest", Layer: "SuitChest", Pri: 1.6,
 			Invariant: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			InheritColor: "Leotard",

@@ -361,10 +361,13 @@
             <key type="filename">../Models/Bunny/GloveRightUp.png</key>
             <key type="filename">../Models/Bunny/GloveRightWristtie.png</key>
             <key type="filename">../Models/Bunny/GloveRightYoked.png</key>
+            <key type="filename">../Models/Bunny/HighLeotard.png</key>
+            <key type="filename">../Models/Bunny/HighLeotardClosed.png</key>
+            <key type="filename">../Models/Bunny/HighLeotardKneel.png</key>
+            <key type="filename">../Models/Bunny/Leotard.png</key>
             <key type="filename">../Models/Bunny/LeotardChest.png</key>
             <key type="filename">../Models/Bunny/LeotardClosed.png</key>
             <key type="filename">../Models/Bunny/LeotardKneel.png</key>
-            <key type="filename">../Models/Bunny/LeotardSpread.png</key>
             <key type="filename">../Models/Bunny/SockLeftClosed.png</key>
             <key type="filename">../Models/Bunny/SockLeftHogtie.png</key>
             <key type="filename">../Models/Bunny/SockLeftKneel.png</key>
@@ -437,14 +440,20 @@
             <key type="filename">../Models/Catsuit/LegRightSpread.png</key>
             <key type="filename">../Models/Catsuit/ShoulderLeftUp.png</key>
             <key type="filename">../Models/Catsuit/ShoulderRightUp.png</key>
+            <key type="filename">../Models/Catsuit/SleevelessTop.png</key>
+            <key type="filename">../Models/Catsuit/SleevelessTopChest.png</key>
             <key type="filename">../Models/Catsuit/SleevelessTorsoUpper.png</key>
             <key type="filename">../Models/Catsuit/SleevelessTorsoUpperHogtie.png</key>
             <key type="filename">../Models/Catsuit/TorsoBand.png</key>
             <key type="filename">../Models/Catsuit/TorsoLower.png</key>
             <key type="filename">../Models/Catsuit/TorsoLowerClosed.png</key>
             <key type="filename">../Models/Catsuit/TorsoLowerHogtie.png</key>
+            <key type="filename">../Models/Catsuit/TorsoLowerLowRise.png</key>
+            <key type="filename">../Models/Catsuit/TorsoLowerLowRiseClosed.png</key>
+            <key type="filename">../Models/Catsuit/TorsoLowerLowRiseSpread.png</key>
             <key type="filename">../Models/Catsuit/TorsoLowerSpread.png</key>
             <key type="filename">../Models/Catsuit/TorsoUpper.png</key>
+            <key type="filename">../Models/Catsuit/TorsoUpperCrop.png</key>
             <key type="filename">../Models/Catsuit/TorsoUpperHogtie.png</key>
             <key type="filename">../Models/Chastity/Belt.png</key>
             <key type="filename">../Models/Chastity/BeltLining.png</key>
@@ -464,6 +473,12 @@
             <key type="filename">../Models/Chastity/BraProtoDisplay.png</key>
             <key type="filename">../Models/Chastity/BraProtoLining.png</key>
             <key type="filename">../Models/Chastity/BraProtoLiningMid.png</key>
+            <key type="filename">../Models/Chastity/BraProtoLiningMidRim.png</key>
+            <key type="filename">../Models/Chastity/BraProtoLiningMidZip.png</key>
+            <key type="filename">../Models/Chastity/BraProtoLiningMidZipRim.png</key>
+            <key type="filename">../Models/Chastity/BraProtoLiningRim.png</key>
+            <key type="filename">../Models/Chastity/BraProtoLiningZip.png</key>
+            <key type="filename">../Models/Chastity/BraProtoLiningZipRim.png</key>
             <key type="filename">../Models/Chastity/BraProtoLock.png</key>
             <key type="filename">../Models/Chastity/Cyber.png</key>
             <key type="filename">../Models/Chastity/CyberDisplay.png</key>
@@ -2013,6 +2028,80 @@
                 <rect>160,166,321,332</rect>
                 <key>scale9Paddings</key>
                 <rect>160,166,321,332</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/EyesK2/Eyes2Angry.png</key>
+            <key type="filename">../Models/EyesK2/Eyes2Closed.png</key>
+            <key type="filename">../Models/EyesK2/Eyes2Dazed.png</key>
+            <key type="filename">../Models/EyesK2/Eyes2Neutral.png</key>
+            <key type="filename">../Models/EyesK2/Eyes2Surprised.png</key>
+            <key type="filename">../Models/EyesK2/EyesAngry.png</key>
+            <key type="filename">../Models/EyesK2/EyesClosed.png</key>
+            <key type="filename">../Models/EyesK2/EyesDazed.png</key>
+            <key type="filename">../Models/EyesK2/EyesNeutral.png</key>
+            <key type="filename">../Models/EyesK2/EyesSurprised.png</key>
+            <key type="filename">../Models/EyesK2/WhitesEyes2Angry.png</key>
+            <key type="filename">../Models/EyesK2/WhitesEyes2Closed.png</key>
+            <key type="filename">../Models/EyesK2/WhitesEyes2Dazed.png</key>
+            <key type="filename">../Models/EyesK2/WhitesEyes2Neutral.png</key>
+            <key type="filename">../Models/EyesK2/WhitesEyes2Surprised.png</key>
+            <key type="filename">../Models/EyesK2/WhitesEyesAngry.png</key>
+            <key type="filename">../Models/EyesK2/WhitesEyesClosed.png</key>
+            <key type="filename">../Models/EyesK2/WhitesEyesDazed.png</key>
+            <key type="filename">../Models/EyesK2/WhitesEyesNeutral.png</key>
+            <key type="filename">../Models/EyesK2/WhitesEyesSurprised.png</key>
+            <key type="filename">../Models/EyesK3/Eyes2Angry.png</key>
+            <key type="filename">../Models/EyesK3/Eyes2Closed.png</key>
+            <key type="filename">../Models/EyesK3/Eyes2Dazed.png</key>
+            <key type="filename">../Models/EyesK3/Eyes2Neutral.png</key>
+            <key type="filename">../Models/EyesK3/Eyes2Surprised.png</key>
+            <key type="filename">../Models/EyesK3/EyesAngry.png</key>
+            <key type="filename">../Models/EyesK3/EyesClosed.png</key>
+            <key type="filename">../Models/EyesK3/EyesDazed.png</key>
+            <key type="filename">../Models/EyesK3/EyesNeutral.png</key>
+            <key type="filename">../Models/EyesK3/EyesSurprised.png</key>
+            <key type="filename">../Models/EyesK3/WhitesEyes2Angry.png</key>
+            <key type="filename">../Models/EyesK3/WhitesEyes2Closed.png</key>
+            <key type="filename">../Models/EyesK3/WhitesEyes2Dazed.png</key>
+            <key type="filename">../Models/EyesK3/WhitesEyes2Neutral.png</key>
+            <key type="filename">../Models/EyesK3/WhitesEyes2Surprised.png</key>
+            <key type="filename">../Models/EyesK3/WhitesEyesAngry.png</key>
+            <key type="filename">../Models/EyesK3/WhitesEyesClosed.png</key>
+            <key type="filename">../Models/EyesK3/WhitesEyesDazed.png</key>
+            <key type="filename">../Models/EyesK3/WhitesEyesNeutral.png</key>
+            <key type="filename">../Models/EyesK3/WhitesEyesSurprised.png</key>
+            <key type="filename">../Models/EyesK4/Eyes2Angry.png</key>
+            <key type="filename">../Models/EyesK4/Eyes2Closed.png</key>
+            <key type="filename">../Models/EyesK4/Eyes2Dazed.png</key>
+            <key type="filename">../Models/EyesK4/Eyes2Neutral.png</key>
+            <key type="filename">../Models/EyesK4/Eyes2Surprised.png</key>
+            <key type="filename">../Models/EyesK4/EyesAngry.png</key>
+            <key type="filename">../Models/EyesK4/EyesClosed.png</key>
+            <key type="filename">../Models/EyesK4/EyesDazed.png</key>
+            <key type="filename">../Models/EyesK4/EyesNeutral.png</key>
+            <key type="filename">../Models/EyesK4/EyesSurprised.png</key>
+            <key type="filename">../Models/EyesK4/WhitesEyes2Angry.png</key>
+            <key type="filename">../Models/EyesK4/WhitesEyes2Closed.png</key>
+            <key type="filename">../Models/EyesK4/WhitesEyes2Dazed.png</key>
+            <key type="filename">../Models/EyesK4/WhitesEyes2Neutral.png</key>
+            <key type="filename">../Models/EyesK4/WhitesEyes2Surprised.png</key>
+            <key type="filename">../Models/EyesK4/WhitesEyesAngry.png</key>
+            <key type="filename">../Models/EyesK4/WhitesEyesClosed.png</key>
+            <key type="filename">../Models/EyesK4/WhitesEyesDazed.png</key>
+            <key type="filename">../Models/EyesK4/WhitesEyesNeutral.png</key>
+            <key type="filename">../Models/EyesK4/WhitesEyesSurprised.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>390,280,781,559</rect>
+                <key>scale9Paddings</key>
+                <rect>390,280,781,559</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -158,7 +158,7 @@ AddModel({
 	Folder: "Dress",
 	Parent: "BowCorset",
 	TopLevel: false,
-	Categories: ["Corsets"],
+	Categories: ["Corsets", "Bras"],
 	AddPose: ["Corset"],
 	Layers: ToLayerMap([
 		{ Name: "BowCorsetBust", Layer: "BustierChest", Pri: 40.1,
@@ -181,11 +181,11 @@ AddModel({
 	Folder: "Dress",
 	Parent: "BowCorset",
 	TopLevel: false,
-	Categories: ["Corsets"],
+	Categories: ["Corsets", "Bras"],
 	AddPose: ["Corset"],
 	Layers: ToLayerMap([
 		...GetModelLayers("BowCorsetBust"),
-		...GetModelLayers("BowCorsetBustBow"),
+		...GetModelLayers("BowCorsetBow"),
 	])
 });
 

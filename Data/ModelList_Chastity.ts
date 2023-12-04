@@ -8,6 +8,67 @@
 
 
 AddModel({
+	Name: "LatexTop",
+	Folder: "Chastity",
+	Parent: "LatexTop",
+	TopLevel: true,
+	Categories: ["Bras", "Tops"],
+	Layers: ToLayerMap([
+		{ Name: "BraProtoLining", Layer: "BraChest", Pri:-40.1,
+			Invariant: true,
+			InheritColor: "Latex",
+			TieToLayer: "BraProtoLiningRim",
+		},
+		{ Name: "BraProtoLiningMid", Layer: "StrapsUnderbust", Pri: -40.1,
+			Invariant: true,
+			InheritColor: "Latex",
+			TieToLayer: "BraProtoLiningMidRim",
+		},
+		{ Name: "BraProtoLiningRim", Layer: "BraChest", Pri:-40,
+			Invariant: true,
+			InheritColor: "Hem",
+		},
+		{ Name: "BraProtoLiningMidRim", Layer: "StrapsUnderbust", Pri: -40,
+			Invariant: true,
+			InheritColor: "Hem",
+		},
+
+	])
+});
+
+
+
+AddModel({
+	Name: "LatexTopZip",
+	Folder: "Chastity",
+	Parent: "LatexTop",
+	TopLevel: false,
+	Categories: ["Bras", "Tops"],
+	Layers: ToLayerMap([
+		{ Name: "BraProtoLiningZip", Layer: "BraChest", Pri: -40.1,
+			Invariant: true,
+			InheritColor: "Latex",
+			TieToLayer: "BraProtoLiningZipRim",
+		},
+		{ Name: "BraProtoLiningMidZip", Layer: "StrapsUnderbust", Pri: -40.1,
+			Invariant: true,
+			InheritColor: "Latex",
+			TieToLayer: "BraProtoLiningMidZipRim",
+		},
+		{ Name: "BraProtoLiningZipRim", Layer: "BraChest", Pri: -40,
+			Invariant: true,
+			InheritColor: "Hem",
+		},
+		{ Name: "BraProtoLiningMidZipRim", Layer: "StrapsUnderbust", Pri: -40,
+			Invariant: true,
+			InheritColor: "Hem",
+		},
+
+	])
+});
+
+
+AddModel({
 	Name: "BraProto",
 	Folder: "Chastity",
 	Parent: "BraCyber",
