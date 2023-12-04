@@ -114,10 +114,10 @@ Clothes: Chastity over Panties
 衣物：贞操带显示在内裤之上
 Clothes: Chastity Bra over Bras
 衣物：贞操文胸显示在胸罩之上
-Wait Quickly
-快速等待
 Clothes: Simple Color Picker
 衣物：简易取色器
+Wait Quickly
+快速等待
 
 Vulnerable
 虚弱
@@ -12114,6 +12114,9 @@ Back to Spellbook
 回到法术书
 Return to Game
 返回游戏
+
+Known Abilities
+已知能力
 Spell Tree
 技能树
 Elemental Spells
@@ -18082,14 +18085,14 @@ AMNT 冰冻伤害/回合 vs. 冰冻
 
 Sealing Talisman
 封印符
-Fuuka's magic begins sealing your power!
-Fuuka 的魔法开始封印你的力量！
-Fuuka's magic makes you sluggish!!
-Fuuka 的魔法让你变得迟钝！！
-Fuuka's magic renders you helpless!!!
-Fuuka 的魔法让你束手无策！！！
-Fuuka's magic is restricting you!
-Fuuka 的魔法束缚了你！
+You were hit by one of Fuuka's talismans. Fuuka's magic begins sealing your power!
+你被 Fuuka 的一枚护身符击中了。Fuuka 的魔法开始封印你的力量！
+You were hit by one of Fuuka's talismans. Fuuka's magic makes you sluggish!!
+你被 Fuuka 的一枚护身符击中了。Fuuka 的魔法让你变得迟钝！！
+You were hit by one of Fuuka's talismans. Fuuka's magic renders you helpless!!!
+你被 Fuuka 的一枚护身符击中了。Fuuka 的魔法让你束手无策！！！
+You were hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting you!
+你被 Fuuka 的一枚护身符射中了。Fuuka 的魔法束缚了你！
 
 Sealing Shadows
 封印阴影
@@ -18147,14 +18150,14 @@ Change Pose
 改变姿势
 Quick Color Palette
 快速调色板
-Item Layers and Color Filters
-物品层和滤色器
+Item Color
+物品颜色
 Item Catalog
 物品目录
 Layers:
 层：
-Enter Hex Code:
-输入十六进制颜色码：
+Hex Code:
+十六进制颜色码：
 
 Toggle Struggle UI Mode
 切换挣扎 UI 模式
@@ -18167,8 +18170,8 @@ Show Quick Inventory
 Skip Tutorial
 跳过教程
 
-Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like some brief tips?
-欢迎来到淫荡地牢！您似乎是第一次来到这里，|需要一些简短的提示吗？
+Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?
+欢迎来到淫荡地牢！您似乎是第一次来到这里，|您想了解一下界面的简要介绍吗？
 (Leave and Disable Tutorial)
 （离开并关闭教程）
 (Yes Please!)
@@ -18198,14 +18201,14 @@ There are four main ways to escape restraints:|Struggling, which is effective ag
 逃脱束缚有四种主要方法：|挣扎，这对灵活且较弱的限制有效，|切割，这取决于您持有的武器和物品的属性，|解开扣子/解开，这取决于您是否有可以正常使用的双手，|还有解锁，这是您解开安全扣之前所必需的。
 These are options for how to display your character.|You don't have to worry about them for now,|but when your character is tied up you may find them useful|...or enjoyable.
 这些是如何显示您的角色的选项。|您现在不必担心它们，|但是当您的角色被束缚时，您可能会发现它们很有用|...或享受。
-This is the status bar.|It shows various values and buffs relating to your character.|Distraction determines how easy it is to cast spells and resist teasing.|Stamina is required to sprint and attack with a weapon.|Mana is used to cast spells. You have what is called a 'Mana Pool,'|which is excess mana that slowly refills you mana bar until it runs out.|Finally, running out of Willpower makes it much harder to escape bondage.
-这是状态栏。|它显示与你的角色相关的各种值和增益。|分心决定了施放法术和抵抗戏弄的难易程度。|冲刺和使用武器攻击需要体力。|法力用于施法咒语。你有所谓的 '法力池'，|这是多余的法力，它会慢慢地补充你的法力条，直到耗尽。|最后，意志力耗尽会让你更难逃脱束缚。
+This is the buffs bar.|It shows various values and buffs relating to your character.|You can click the gold triangle to expand it,|Showing additional info about your character.
+这是增益栏。|它显示与您的角色相关的各种值和增益。|您可以单击金色三角形将其展开，|显示有关您的角色的其他信息。
 These are the action buttons.|You can use them to perform various actions like closing doors or sprinting.|You can also toggle various settings such as automatically passing|through allies or auto-pathing when there are no enemies nearby.|You can also swap between recently used weapons.
 这些是动作按钮。|您可以使用它们执行各种动作，例如关门或冲刺。|您还可以切换各种设置，例如自动穿过队友或在附近没有敌人时自动寻路。|您还可以交换最近使用过的武器。
-These are additional toggles used for various purposes.|Hover over them to see what they do.
-这些是用于各种目的的附加开关。|将鼠标悬停在它们上方即可查看它们的作用。
-These are the various submenus.|Your Inventory is used to brows items and use or equip them.|The Journal contains lore, notes, and hints gathered along your journey.|The Journal also contains info on available quests,|and your reputation with various factions.
-这些是各种子菜单。|您的背包用于浏览物品并使用或装备它们。|日记包含您在旅程中收集的知识、笔记和提示。|日记中还包含有关可用任务的信息，|以及您在各个派系中的声誉。
+These are various submenus.|Your Inventory is used to brows items and use or equip them.|The Journal contains lore, notes, and hints gathered along your journey.|The Journal also contains info on available quests,|and your reputation with various factions.
+这些是各种子菜单。|您的背包用于浏览物品并使用或装备它们。|日记包含您在旅程中收集的知识、笔记和提示。|日记还包含有关可用任务的信息，|以及您在各种方面的声誉以及派系。
+This is the status bar, which gives info on your base stats.|Distraction determines how easy it is to cast spells and resist teasing.|Stamina is required to sprint and attack with a weapon.|Mana is used to cast spells. You have what is called a 'Mana Pool,'|which is excess mana that slowly refills you mana bar until it runs out.|Finally, running out of Willpower makes it much harder to escape bondage.
+这是状态栏，提供有关您的基本统计数据的信息。|分心决定了施放法术和抵抗戏弄的难易程度。|冲刺和使用武器攻击需要体力。|法力用于施放法术。你有所谓的'法力池'，|这是多余的法力，它会慢慢地补充你的法力条，直到耗尽。|最后，意志力耗尽会让你更难逃脱束缚。
 This is the hotbar.|Here you will find various spells and customizable actions.|You can customize it through the Spells submenu by clicking on a spell.|You can also add items, armor, and consumables to it from the Inventory.
 这是热栏。|在这里您可以找到各种咒语和可自定义的操作。|您可以通过单击咒语通过咒语子菜单对其进行自定义。|您还可以从背包中向其添加物品、盔甲和消耗品。
 Finally, this is where the message log will be.|It provides a written record of what happened the last few turns.|You can click the 'Log' button to expand the log,|Allowing you to look much further back.
@@ -18327,3 +18330,19 @@ Challenge Settings
 
 Challenge Settings:
 挑战设置：
+
+Simple
+简单
+Advanced
+高级
+
+Exits locked! Find the key!
+出口被锁住了！寻找钥匙！
+Got the key!
+拿到钥匙了！
+BOSS ROOM
+BOSS 房
+BOSS ROOM CLEARED!
+BOSS 房已清空！
+Room bugged. Please Report.
+房间出现问题。请反馈。
