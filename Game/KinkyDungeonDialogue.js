@@ -1620,9 +1620,10 @@ function KDYesNoTemplate(setupFunction, yesFunction, noFunction, domFunction) {
  * @param {string[]} requireFlags
  * @param {string[]} excludeFlags
  * @param {string[]} restraintTags
+ * @param {string} Lock
  * @returns {KinkyDialogueTrigger}
  */
-function KDDialogueTriggerOffer(name, goddess, restraintTags, allowedPrisonStates, allowedPersonalities, requireTagsSingle, requireTagsSingle2, requireTags, excludeTags, requireFlags, excludeFlags) {
+function KDDialogueTriggerOffer(name, goddess, restraintTags, allowedPrisonStates, allowedPersonalities, requireTagsSingle, requireTagsSingle2, requireTags, excludeTags, requireFlags, excludeFlags, Lock = "Red") {
 	let trigger = {
 		dialogue: name,
 		allowedPrisonStates: allowedPrisonStates,
@@ -1640,7 +1641,10 @@ function KDDialogueTriggerOffer(name, goddess, restraintTags, allowedPrisonState
 		onlyDuringPlay: true,
 		allowPlayExceptionSub: true,
 		prerequisite: (enemy, dist, AIData) => {
-			return (KDDefaultPrereqs(enemy, AIData,dist,1.5,0.1,restraintTags,KDEnemyHasFlag(enemy, "allyOffer") || KDEnemyHasFlag(enemy, "forceOffer")));
+			return (KDDefaultPrereqs(enemy,
+				AIData,
+				dist,1.5,0.1,restraintTags,
+				KDEnemyHasFlag(enemy, "allyOffer") || KDEnemyHasFlag(enemy, "forceOffer"), Lock));
 		},
 		weight: (enemy, dist) => {
 			if (requireFlags && !requireFlags.some((element) => KinkyDungeonFlags.get(element))) {
