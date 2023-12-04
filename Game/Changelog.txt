@@ -41,6 +41,7 @@ TODO add sugar magic ('Blood Energy Magic')
 - Added hairbow
 - Added cloth collar, cloth belt
 - Added bow corset
+- Two new eye styles by Kjus
 
 5.0.0 RC8
 - Added Strict Ropework which adds an additional rope harness for aesthetic purposes

@@ -165,6 +165,65 @@ AddModel({
 	])
 });
 
+
+
+AddModel({
+	Name: "KjusEyes2",
+	Folder: "EyesK2",
+	TopLevel: true,
+	Protected: true,
+	Group: "Eyes",
+	Categories: ["Eyes","Face"],
+	Layers: ToLayerMap([
+		{ Name: "Eyes", Layer: "Eyes", Pri: 0,
+			Sprite: "", // Because pose is called EyesNeutral lol
+			Poses: ToMap(EYEPOSES),
+		},
+		{ Name: "Eyes2", Layer: "Eyes", Pri: 0,
+			Sprite: "", // Because pose is called EyesNeutral lol
+			Poses: ToMap(EYE2POSES),
+		},
+		{ Name: "Whites", Layer: "Eyes", Pri: -1,
+			NoColorize: true,
+			Poses: ToMap(EYEPOSES),
+		},
+		{ Name: "Whites2", Layer: "Eyes", Pri: -1,
+			Sprite: "Whites",
+			NoColorize: true,
+			Poses: ToMap(EYE2POSES),
+		},
+	])
+});
+
+AddModel({
+	Name: "KjusEyes3",
+	Folder: "EyesK3",
+	TopLevel: true,
+	Protected: true,
+	Group: "Eyes",
+	Categories: ["Eyes","Face"],
+	Layers: ToLayerMap([
+		{ Name: "Eyes", Layer: "Eyes", Pri: 0,
+			Sprite: "", // Because pose is called EyesNeutral lol
+			Poses: ToMap(EYEPOSES),
+		},
+		{ Name: "Eyes2", Layer: "Eyes", Pri: 0,
+			Sprite: "", // Because pose is called EyesNeutral lol
+			Poses: ToMap(EYE2POSES),
+		},
+		{ Name: "Whites", Layer: "Eyes", Pri: -1,
+			NoColorize: true,
+			Poses: ToMap(EYEPOSES),
+		},
+		{ Name: "Whites2", Layer: "Eyes", Pri: -1,
+			Sprite: "Whites",
+			NoColorize: true,
+			Poses: ToMap(EYE2POSES),
+		},
+	])
+});
+
+
 AddModel({
 	Name: "KjusBrows",
 	Folder: "FaceKjus",
