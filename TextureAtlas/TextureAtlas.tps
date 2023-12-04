@@ -697,6 +697,8 @@
             <key type="filename">../Models/GagLatex/NeckCorset.png</key>
             <key type="filename">../Models/GagLatex/NeckCorsetRim.png</key>
             <key type="filename">../Models/Hair/Ahoge.png</key>
+            <key type="filename">../Models/Hair/BackShortMessy.png</key>
+            <key type="filename">../Models/Hair/BackShortMessyUnderlight.png</key>
             <key type="filename">../Models/Hair/BackStraight.png</key>
             <key type="filename">../Models/Hair/Bow.png</key>
             <key type="filename">../Models/Hair/BowFrills.png</key>

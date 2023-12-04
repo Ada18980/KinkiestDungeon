@@ -56,11 +56,11 @@ function GenPlaceholderModelNames() {
 	let ret = "";
 	for (let model of Object.values(ModelDefs)) {
 		if (TextGet("m_" + model.Name) == "m_" + model.Name) {
-			ret = ("m_" + model.Name + "," + model.Name) + 'n';
+			ret = ret + ("m_" + model.Name + "," + model.Name) + "\n";
 		}
 		for (let layer of Object.values(model.Layers)) {
 			if (TextGet("m_" + model.Name + "l_" + layer.Name) == "m_" + model.Name + "l_" + layer.Name) {
-				ret = ("m_" + model.Name + "l_" + layer.Name + "," + layer.Name) + 'n';
+				ret = ret + ("m_" + model.Name + "_l_" + layer.Name + "," + layer.Name) + "\n";
 			}
 		}
 	}
