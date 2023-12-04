@@ -861,6 +861,7 @@ AddModel({
 		...GetModelLayers("MaidSocks"),
 		...GetModelLayers("MaidShoes"),
 		...GetModelLayers("MaidBow"),
+		...GetModelLayers("HairBowFrilly"),
 	])
 });
 

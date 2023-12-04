@@ -21,7 +21,7 @@ AddModel({
 
 AddModel({
 	Name: "HairBowFrilly",
-	Parent: "HairBow",
+	Parent: "Maid",
 	Folder: "Hair",
 	TopLevel: false,
 	Protected: true,
