@@ -5,6 +5,67 @@
  * In general, this is accomplished by having higher priority items cover more of the original
  */
 
+
+AddModel({
+	Name: "HairBow",
+	Folder: "Hair",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Hairstyles", "Accessories", "Hairbands"],
+	Layers: ToLayerMap([
+		{ Name: "Bow", Layer: "HatBack", Pri: -100,
+			NoOverride: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "HairBowFrilly",
+	Parent: "HairBow",
+	Folder: "Hair",
+	TopLevel: false,
+	Protected: true,
+	Categories: ["Hairstyles", "Accessories", "Hairbands"],
+	Layers: ToLayerMap([
+		...GetModelLayers("HairBow"),
+		{ Name: "BowFrills", Layer: "HatBack", Pri: -100.1,
+			NoOverride: true,
+			TieToLayer: "Bow",
+		},
+	])
+});
+
+AddModel({
+	Name: "Hairband",
+	Folder: "Hair",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Hairstyles", "Accessories", "Hairbands"],
+	Layers: ToLayerMap([
+		{ Name: "Hairband", Layer: "HairFront", Pri: 20,
+			NoOverride: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "MaidHairband",
+	Parent: "Hairband",
+	Folder: "Hair",
+	TopLevel: false,
+	Protected: true,
+	Categories: ["Hairstyles", "Accessories", "Hairbands"],
+	Layers: ToLayerMap([
+		{ Name: "Hairband", Layer: "HairFront", Pri: 20,
+			NoOverride: true,
+		},
+		{ Name: "MaidFrill", Layer: "HairFront", Pri: 20.1,
+			NoOverride: true, TieToLayer: "Hairband",
+			InheritColor: "Frill",
+		},
+	])
+});
+
 AddModel({
 	Name: "Braid",
 	Folder: "Hair",
@@ -261,6 +322,7 @@ AddModel({
 		},
 		{ Name: "Torso", Layer: "Torso", Pri: 0,
 			AppendPose: {CrotchStrap: "Chastity"},
+			InheritColor: "Torso",
 			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Closed"},
 		},
 		{ Name: "Chest", Layer: "Chest", Pri: 0,

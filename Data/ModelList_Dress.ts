@@ -136,6 +136,171 @@ AddModel(GetModelRestraintVersion("LaceBustier", true));
 AddModel(GetModelRestraintVersion("LaceBraDeco", true));
 
 
+
+AddModel({
+	Name: "BowCorsetBow",
+	Folder: "Dress",
+	TopLevel: true,
+	Parent: "BowCorset",
+	Categories: ["Accessories"],
+	AddPose: ["Corset"],
+	Layers: ToLayerMap([
+		{ Name: "BowCorsetBow", Layer: "NecklaceCharm", Pri: -9,
+			Invariant: true,
+			InheritColor: "Bow",
+			NoOverride: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "BowCorsetBust",
+	Folder: "Dress",
+	Parent: "BowCorset",
+	TopLevel: false,
+	Categories: ["Corsets"],
+	AddPose: ["Corset"],
+	Layers: ToLayerMap([
+		{ Name: "BowCorsetBust", Layer: "BustierChest", Pri: 40.1,
+			Invariant: true,
+			InheritColor: "CorsetBust",
+			EraseAmount: 100,
+			EraseSprite: "LaceChest",
+			EraseLayers: ToMap(["CorsetBra"]),
+		},
+		{ Name: "BowCorsetBustRuffle", Layer: "BustierChest", Pri: 40.1,
+			Invariant: true,
+			InheritColor: "RuffleBust",
+			NoOverride: true,
+			TieToLayer: "BowCorsetBust"
+		},
+	])
+});
+AddModel({
+	Name: "BowCorsetBustBow",
+	Folder: "Dress",
+	Parent: "BowCorset",
+	TopLevel: false,
+	Categories: ["Corsets"],
+	AddPose: ["Corset"],
+	Layers: ToLayerMap([
+		...GetModelLayers("BowCorsetBust"),
+		...GetModelLayers("BowCorsetBustBow"),
+	])
+});
+
+
+AddModel({
+	Name: "BowCorset",
+	Folder: "Dress",
+	Parent: "Dress",
+	TopLevel: true,
+	Categories: ["Corsets"],
+	AddPose: ["Corset"],
+	Layers: ToLayerMap([
+		{ Name: "BowCorset", Layer: "Bustier", Pri: 40.1,
+			Invariant: true,
+			InheritColor: "Corset",
+			DisplaceAmount: 100,
+			DisplaceLayers: ToMap(["CorsetTorso"]),
+			DisplacementSprite: "CorsetSquish",
+			DisplacementInvariant: true,
+		},
+		{ Name: "BowCorsetRuffle", Layer: "Bustier", Pri: 40.1,
+			Invariant: true,
+			InheritColor: "Ruffle",
+			NoOverride: true,
+			TieToLayer: "BowCorset"
+		},
+	])
+});
+AddModel({
+	Name: "BowCorsetLong",
+	Folder: "Dress",
+	Parent: "BowCorset",
+	TopLevel: false,
+	Categories: ["Corsets"],
+	AddPose: ["Corset"],
+	Layers: ToLayerMap([
+		{ Name: "BowCorsetLong", Layer: "Bustier", Pri: 40.1,
+			Invariant: true,
+			SwapLayerPose: {Pants: "CorsetUnder", Kneel: "CorsetUnder", KneelClosed: "CorsetUnder"},
+			InheritColor: "Corset",
+			DisplaceAmount: 100,
+			DisplaceLayers: ToMap(["CorsetTorso"]),
+			DisplacementSprite: "CorsetSquish",
+			DisplacementInvariant: true,
+		},
+		{ Name: "BowCorsetLongRuffle", Layer: "Bustier", Pri: 40.1,
+			SwapLayerPose: {Pants: "CorsetUnder", Kneel: "CorsetUnder", KneelClosed: "CorsetUnder"},
+			Invariant: true,
+			InheritColor: "Ruffle",
+			NoOverride: true,
+			TieToLayer: "BowCorsetLong"
+		},
+	])
+});
+AddModel({
+	Name: "BowCorsetOverbust",
+	Folder: "Dress",
+	Parent: "BowCorset",
+	TopLevel: false,
+	Categories: ["Corsets"],
+	AddPose: ["Corset"],
+	Layers: ToLayerMap([
+		...GetModelLayers("BowCorsetBust"),
+		...GetModelLayers("BowCorset"),
+	])
+});
+AddModel({
+	Name: "BowCorsetLongOverbust",
+	Folder: "Dress",
+	Parent: "BowCorset",
+	TopLevel: false,
+	Categories: ["Corsets"],
+	AddPose: ["Corset"],
+	Layers: ToLayerMap([
+		...GetModelLayers("BowCorsetBust"),
+		...GetModelLayers("BowCorsetLong"),
+	])
+});
+AddModel({
+	Name: "BowCorsetOverbustBow",
+	Folder: "Dress",
+	Parent: "BowCorset",
+	TopLevel: false,
+	Categories: ["Corsets"],
+	AddPose: ["Corset"],
+	Layers: ToLayerMap([
+		...GetModelLayers("BowCorsetBust"),
+		...GetModelLayers("BowCorset"),
+		...GetModelLayers("BowCorsetBow"),
+	])
+});
+
+AddModel({
+	Name: "BowCorsetLongOverbustBow",
+	Folder: "Dress",
+	Parent: "BowCorset",
+	TopLevel: false,
+	Categories: ["Corsets"],
+	AddPose: ["Corset"],
+	Layers: ToLayerMap([
+		...GetModelLayers("BowCorsetBust"),
+		...GetModelLayers("BowCorsetLong"),
+		...GetModelLayers("BowCorsetBow"),
+	])
+});
+
+
+AddModel(GetModelRestraintVersion("BowCorset", true));
+AddModel(GetModelRestraintVersion("BowCorsetBow", true));
+AddModel(GetModelRestraintVersion("BowCorsetOverbust", true));
+AddModel(GetModelRestraintVersion("BowCorsetOverbustBow", true));
+AddModel(GetModelRestraintVersion("BowCorsetLongOverbust", true));
+AddModel(GetModelRestraintVersion("BowCorsetLongOverbustBow", true));
+
+
 AddModel({
 	Name: "LatexCorset",
 	Folder: "Corsets",

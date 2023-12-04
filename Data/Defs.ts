@@ -4,7 +4,6 @@ let LAYERS_BASE = [
 	"HatDeco",
 	"Hat",
 	"Brows", // Brows should get hidden with mask
-	"AnimalEars",
 	"Ahoge",
 	"Circlet",
 	"HeadbandDeco",
@@ -24,6 +23,7 @@ let LAYERS_BASE = [
 	"Gag",
 	"GagUnder",
 	// Hair mid
+	"AnimalEars",
 	"Hair",
 	"MaskOver",
 	"CircletUnder",

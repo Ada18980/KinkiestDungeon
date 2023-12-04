@@ -1,13 +1,5 @@
 {"frames": {
 
-"Models/Armbinder/StrapsRightWristtie.png":
-{
-	"frame": {"x":926,"y":663,"w":15,"h":12},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":469,"y":514,"w":15,"h":12},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/Body/ArmRightYoked.png":
 {
 	"frame": {"x":633,"y":1508,"w":308,"h":539},
@@ -30,14 +22,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":496,"y":1481,"w":109,"h":144},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Chastity/BraProtoLock.png":
-{
-	"frame": {"x":905,"y":705,"w":17,"h":30},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":560,"y":573,"w":17,"h":30},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Chastity/ProtoLock.png":
@@ -166,22 +150,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":495,"y":409,"w":330,"h":533},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/LeatherCuffs/BandElbowRightFront.png":
-{
-	"frame": {"x":926,"y":641,"w":15,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":430,"y":613,"w":15,"h":22},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/LeatherCuffs/HardwareWristRightFront.png":
-{
-	"frame": {"x":925,"y":675,"w":16,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":471,"y":542,"w":16,"h":22},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/LeatherCuffs/HardwareWristRightYoked.png":
@@ -384,6 +352,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:08aa4436fb6b9d7ea2a9a860fc25918d:90430054aa79eb7614aa9f9e1bcdf062:a3fd7012179a3f2bcc17f729b6b49f45$"
+	"smartupdate": "$TexturePacker:SmartUpdate:b3d881b630a8d9713f6cec134d8d1d11:ae1299fc096238b4d032e65b6a3bda9b:a3fd7012179a3f2bcc17f729b6b49f45$"
 }
 }

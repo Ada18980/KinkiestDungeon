@@ -253,3 +253,94 @@ AddModel({
 });
 
 
+
+
+AddModel({
+	Name: "ElfEars",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Body", "Face", "Cosplay"],
+	Folder: "Ears",
+	Layers: ToLayerMap([
+		{ Name: "ElfFront", Layer: "Head", Pri: 0.1,
+			NoOverride: true,
+			ImportColorFromGroup: ["Body", "Head"],
+		},
+		{ Name: "ElfBack", Layer: "Head", Pri: -0.1,
+			NoOverride: true,
+			ImportColorFromGroup: ["Body", "Head"],
+		},
+	])
+});
+AddModel({
+	Name: "ElfEarsLong",
+	Parent: "ElfEars",
+	TopLevel: false,
+	Protected: true,
+	Categories: ["Body", "Face", "Cosplay"],
+	Folder: "Ears",
+	Layers: ToLayerMap([
+		{ Name: "ElfLongFront", Layer: "Head", Pri: 0.1,
+			NoOverride: true,
+			ImportColorFromGroup: ["Body", "Head"],
+		},
+		{ Name: "ElfLongBack", Layer: "Head", Pri: -0.1,
+			NoOverride: true,
+			ImportColorFromGroup: ["Body", "Head"],
+		},
+	])
+});
+AddModel({
+	Name: "ElfEarsFloppy",
+	Parent: "ElfEars",
+	TopLevel: false,
+	Protected: true,
+	Categories: ["Body", "Face", "Cosplay"],
+	Folder: "Ears",
+	Layers: ToLayerMap([
+		{ Name: "ElfFloppyFront", Layer: "Head", Pri: 0.1,
+			NoOverride: true,
+			ImportColorFromGroup: ["Body", "Head"],
+		},
+		{ Name: "ElfFloppyBack", Layer: "Head", Pri: -0.1,
+			NoOverride: true,
+			ImportColorFromGroup: ["Body", "Head"],
+		},
+	])
+});
+AddModel({
+	Name: "ElfEarrings",
+	Parent: "Earrings",
+	TopLevel: false,
+	Protected: true,
+	Categories: ["Face", "Accessories"],
+	Folder: "Ears",
+	Layers: ToLayerMap([
+		{ Name: "ElfEarringsFront", Layer: "Head", Pri: 0.2,
+			NoOverride: true,
+			InheritColor: "EarringLeft",
+		},
+		{ Name: "ElfEarringsBack", Layer: "Head", Pri: 0,
+			NoOverride: true,
+			InheritColor: "EarringRight",
+		},
+	])
+});
+AddModel({
+	Name: "Earrings",
+	Parent: "Earrings",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Face", "Accessories"],
+	Folder: "Ears",
+	Layers: ToLayerMap([
+		{ Name: "Earrings", Layer: "Head", Pri: 0.2,
+			NoOverride: true,
+			InheritColor: "EarringLeft",
+		},
+		{ Name: "EarringsBack", Layer: "Head", Pri: -0.1,
+			NoOverride: true,
+			InheritColor: "EarringRight",
+		},
+	])
+});

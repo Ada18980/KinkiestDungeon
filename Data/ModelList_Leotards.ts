@@ -40,6 +40,21 @@ AddModel({
 });
 
 AddModel({
+	Name: "VBikini",
+	Folder: "Swimsuit",
+	Parent: "StrappySwimsuit",
+	TopLevel: true,
+	Categories: ["Underwear"],
+	Layers: ToLayerMap([
+		{ Name: "VBikini", Layer: "Panties", Pri: 39,
+			Invariant: true,
+			SwapLayerPose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
+			MorphPoses: {Closed: "Closed", Hogtie: "Closed"},
+		},
+	])
+});
+
+AddModel({
 	Name: "StrappyBikini",
 	Folder: "Swimsuit",
 	Parent: "StrappySwimsuit",
