@@ -33,6 +33,7 @@ TODO add sugar magic ('Blood Energy Magic')
 - Added shadow hand graphics
 - Tails rotate when kneeling
 - Added Simple Color Picker option
+- Added 'Known Abilities' as the default spells page
 - Added hairband, maid hairband
 - Fixed animal ears not touching the head in some hairstyles
 - Added elf ears

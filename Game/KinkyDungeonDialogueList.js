@@ -710,6 +710,7 @@ let KDDialogue = {
 			"Continue": {
 				playertext: "Default", response: "Default",
 				drawFunction: (gagged, player, delta) => {
+					// Portrait
 					DrawBoxKD(5, 5, 490, 990, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 					return false;
 				},
@@ -717,6 +718,7 @@ let KDDialogue = {
 					"Continue": {
 						playertext: "Continue", response: "Default",
 						drawFunction: (gagged, player, delta) => {
+							// Portrait
 							DrawBoxKD(5, 5, 490, 990, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 							return false;
 						},
@@ -724,13 +726,15 @@ let KDDialogue = {
 							"Continue": {
 								playertext: "Continue", response: "Default",
 								drawFunction: (gagged, player, delta) => {
-									DrawBoxKD(500, 900, 200, 95, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+									// Pose and restraint display
+									DrawBoxKD(500, 900, 250, 95, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 									return false;
 								},
 								options: {
 									"Continue": {
 										playertext: "Continue", response: "Default",
 										drawFunction: (gagged, player, delta) => {
+											// Buff bar
 											DrawBoxKD(740, 750, 800, 175, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 											return false;
 										},
@@ -738,6 +742,7 @@ let KDDialogue = {
 											"Continue": {
 												playertext: "Continue", response: "Default",
 												drawFunction: (gagged, player, delta) => {
+													// Action Bar
 													DrawBoxKD(1620, 820, 440, 175, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 													return false;
 												},
@@ -745,21 +750,24 @@ let KDDialogue = {
 													"Continue": {
 														playertext: "Continue", response: "Default",
 														drawFunction: (gagged, player, delta) => {
-															DrawBoxKD(1845, 550, 150, 320, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+															// Submenus
+															DrawBoxKD(1845, 450, 150, 320, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 															return false;
 														},
 														options: {
 															"Continue": {
+																// Status Bar
 																playertext: "Continue", response: "Default",
 																drawFunction: (gagged, player, delta) => {
-																	DrawBoxKD(1800, 280, 250, 300, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+																	DrawBoxKD(1700, 280, 320, 180, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 																	return false;
 																},
 																options: {
 																	"Continue": {
 																		playertext: "Continue", response: "Default",
 																		drawFunction: (gagged, player, delta) => {
-																			DrawBoxKD(700, 920, 900, 75, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+																			// Hotbar
+																			DrawBoxKD(780, 920, 900, 75, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 																			return false;
 																		},
 																		options: {

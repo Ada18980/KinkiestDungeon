@@ -1479,17 +1479,17 @@ function KDShopBuyDialogue(name) {
 				}
 				let item = items[i];
 				let tooSubby = ((KinkyDungeonGoddessRep.Ghost + 50) / 10) > KDItemSubThreshold(item);
-				if (!tooSubby && KinkyDungeonGold >= KDGameData.CurrentDialogMsgValue["IC"+i]) {
+				if (!tooSubby && KinkyDungeonGold >= KDGameData.CurrentDialogMsgValue["IC_"+i + "_"]) {
 					KinkyDungeonItemEvent({name: item, amount: 1}, true);
 
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						let faction = KDGetFactionOriginal(enemy);
 						if (!KinkyDungeonHiddenFactions.includes(faction)) {
-							KinkyDungeonChangeFactionRep(faction, Math.max(0.00005, KDGameData.CurrentDialogMsgValue["IC"+i] * 0.000025));
+							KinkyDungeonChangeFactionRep(faction, Math.max(0.00005, KDGameData.CurrentDialogMsgValue["IC_"+i + "_"] * 0.000025));
 						}
 						enemy.items.splice(i, 1);
 					}
-					KinkyDungeonAddGold(-KDGameData.CurrentDialogMsgValue["IC"+i]);
+					KinkyDungeonAddGold(-KDGameData.CurrentDialogMsgValue["IC_"+i + "_"]);
 
 					// Refresh list
 					let shopCost = KDGetShopCost(enemy);

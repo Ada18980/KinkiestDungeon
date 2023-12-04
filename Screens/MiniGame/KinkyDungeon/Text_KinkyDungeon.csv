@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.1 (E)"
+KDVersionStr,"5.0.1 Release"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -6084,6 +6084,7 @@ KinkyDungeonSpellCastSlimethrower,You project a pool of sticky slime!
 KinkyDungeonSpellHeartArrow,Arrow of Love
 KinkyDungeonSpellCastHeartArrow,You loose a glowing arrow!
 KinkyDungeonSpellBondageBustBeam,Bondage Buster
+KinkyDungeonSpellBondageBust,Bondage Buster
 KinkyDungeonSpellEnemyBlast,Blaster
 KinkyDungeonSpellCastBondageBust,You charge up a beam and fire it!
 KinkyDungeonSpellCastDisarm,You swing your weapon and pull away the target's equipment!
@@ -11927,6 +11928,9 @@ l_RopeArms_ShoulderStraps,"Shoulder Straps"
 l_RopeArms_ChestLower,"Lower Chest Straps"
 l_RopeArms_Arms,"Arm Straps"
 
+
+
+
 KDHideItems,Hide Items
 KDSortItems,Sort Items
 KDDropItems,Drop Items
@@ -13314,7 +13318,7 @@ KDXRay,X-Ray Vision
 KDQuickInv,Show Quick Inventory
 KDToggleSkipTutorial,Skip Tutorial
 
-rTutorial,"Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like some brief tips?"
+rTutorial,"Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?"
 dTutorial_LeaveAndDisable,(Leave and Disable Tutorial)
 dTutorial_Continue,(Yes Please!)
 dTutorial_HandsOn,(It'd like a hands-on lesson)
@@ -13331,10 +13335,10 @@ dHandsOn,"(About that hands-on lesson...)"
 rTutorialContinue,"This is you.|Over the course of the game, you will probably get tied up.|The controls to escape are located over your character.|Simply hover the mouse over your character to see them."
 rTutorialContinue_Continue,"There are four main ways to escape restraints:|Struggling, which is effective against flexible and weaker restraints,|Cutting, which depends on your held weapon and the item's properties,|Unbuckle/Untying, which depends on having free hands,|And Unlocking, which is required before you can Unbuckle."
 rTutorialContinue_Continue_Continue,"These are options for how to display your character.|You don't have to worry about them for now,|but when your character is tied up you may find them useful|...or enjoyable."
-rTutorialContinue_Continue_Continue_Continue,"This is the status bar.|It shows various values and buffs relating to your character.|Distraction determines how easy it is to cast spells and resist teasing.|Stamina is required to sprint and attack with a weapon.|Mana is used to cast spells. You have what is called a 'Mana Pool,'|which is excess mana that slowly refills you mana bar until it runs out.|Finally, running out of Willpower makes it much harder to escape bondage."
+rTutorialContinue_Continue_Continue_Continue,"This is the buffs bar.|It shows various values and buffs relating to your character.|You can click the gold triangle to expand it,|Showing additional info about your character."
 rTutorialContinue_Continue_Continue_Continue_Continue,"These are the action buttons.|You can use them to perform various actions like closing doors or sprinting.|You can also toggle various settings such as automatically passing|through allies or auto-pathing when there are no enemies nearby.|You can also swap between recently used weapons."
-rTutorialContinue_Continue_Continue_Continue_Continue_Continue,"These are additional toggles used for various purposes.|Hover over them to see what they do."
-rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue,"These are the various submenus.|Your Inventory is used to brows items and use or equip them.|The Journal contains lore, notes, and hints gathered along your journey.|The Journal also contains info on available quests,|and your reputation with various factions."
+rTutorialContinue_Continue_Continue_Continue_Continue_Continue,"These are various submenus.|Your Inventory is used to brows items and use or equip them.|The Journal contains lore, notes, and hints gathered along your journey.|The Journal also contains info on available quests,|and your reputation with various factions."
+rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue,"This is the status bar, which gives info on your base stats.|Distraction determines how easy it is to cast spells and resist teasing.|Stamina is required to sprint and attack with a weapon.|Mana is used to cast spells. You have what is called a 'Mana Pool,'|which is excess mana that slowly refills you mana bar until it runs out.|Finally, running out of Willpower makes it much harder to escape bondage."
 rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue_Continue,"This is the hotbar.|Here you will find various spells and customizable actions.|You can customize it through the Spells submenu by clicking on a spell.|You can also add items, armor, and consumables to it from the Inventory."
 rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue_Continue_Continue,"Finally, this is where the message log will be.|It provides a written record of what happened the last few turns.|You can click the 'Log' button to expand the log,|Allowing you to look much further back."
 rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue_Continue_Continue_Continue,"Thats it for the UI.|If you want a more hands on tutorial, enter the portal to the top right,|near the training dummies.|You can click on NPCs (such as the ghosts in this room) to talk to them."
