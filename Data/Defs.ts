@@ -23,8 +23,8 @@ let LAYERS_BASE = [
 	"Gag",
 	"GagUnder",
 	// Hair mid
-	"AnimalEars",
 	"Hair",
+	"AnimalEars",
 	"MaskOver",
 	"CircletUnder",
 	"Mask",
@@ -390,6 +390,7 @@ let LAYERS_BASE = [
 	"Tail",
 	"Cape",
 
+	"FurnitureBackLinked",
 	"FurnitureBack",
 	"BG",
 ];

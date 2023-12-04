@@ -55,10 +55,11 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Display"],
-	AddPose: ["Display", "UprightHogtie", "LiftKneel"],
+	AddPose: ["Display", "LiftKneel"],
 	Layers: ToLayerMap([
-		{ Name: "Bed", Layer: "FurnitureBack", Pri: -100,
+		{ Name: "Bed", Layer: "FurnitureBackLinked", Pri: -100,
 			Invariant: true,
+			MorphPoses: {UprightHogtie: "", SuspendedHogtie: "", Hogtie: "Hogtie"}
 		},
 	])
 });
