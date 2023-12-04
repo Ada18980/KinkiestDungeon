@@ -1863,6 +1863,11 @@ function KDDrawMinimap(MinimapX, MinimapY) {
 
 
 
+		let escape = KDCanEscape();
+		let alt = KDGetAltType(MiniGameKinkyDungeonLevel);
+		let escapeMethod = alt?.escapeMethod || (alt?.nokeys ? "None" : "") || "Default";
+		DrawTextFitKD(TextGet(`KDEscapeKey_${escape ? "Pass" : "Fail"}_${escapeMethod}`), kdminimap.x + KDMinimapWCurrent/2, kdminimap.y + KDMinimapHCurrent - 12, 0.75 * KDMinimapWCurrent,
+		escape ? "#88ff88" : "#ff5555", KDTextGray0, 16, "center", zIndex + 1);
 	}
 	kdminimap.x = MinimapX;
 	kdminimap.y = MinimapY;
@@ -2051,14 +2056,14 @@ function KDDrawBuffIcons(minXX, minYY) {
 		};
 	}
 
-	if (KDToggleShowAllBuffs) {
+	/*if (KDToggleShowAllBuffs) {
 		let escape = KDCanEscape();
 		statsDraw.key = {
 			text: TextGet(escape ? "StatKeyEscapeKey" : "StatKeyEscapeNoKey"),
 			icon: escape ? "infoKey" : "infoNoKey",
 			category: "help", color: "#ffffff", bgcolor: "#000000", priority: 5
 		};
-	}
+	}*/
 
 
 

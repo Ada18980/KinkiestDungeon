@@ -31,6 +31,7 @@ let filters = genericfilters.concat(...["buff", "bolt", "aoe", "dot", "offense",
 /** Extra filters, indexed according to the learnable spells menu */
 let filtersExtra = [
 	["upgrade", "magic"],
+	["upgrade", "magic"],
 	["fire", "ice", "earth", "electric", "air", "water"],
 	["binding", "slime", "summon", "physics", "metal", "leather", "rope"],
 	["stealth", "light", "shadow", "knowledge"],
@@ -38,6 +39,7 @@ let filtersExtra = [
 ];
 
 let KDColumnLabels = [
+	["Verbal", "Arms", "Legs", "Passive"],
 	["Elements", "Conjure", "Illusion", "Other"],
 	["Verbal", "Arms", "Legs", "Passive"],
 	["Verbal", "Arms", "Legs", "Passive"],
@@ -46,6 +48,7 @@ let KDColumnLabels = [
 ];
 
 let KinkyDungeonSpellPages = [
+	"All",
 	"Upgrade",
 	"Elements",
 	"Conjure",
@@ -54,6 +57,7 @@ let KinkyDungeonSpellPages = [
 ];
 
 let KinkyDungeonSpellPagesDefault = {
+	"All": true,
 	"Upgrade": true,
 	"Elements": true,
 	"Conjure": true,
@@ -72,6 +76,10 @@ function KDAddSpellPage(page) {
  * Spells with NoMenu do not appear in the menu until the player has them
  */
 let KinkyDungeonLearnableSpells = [
+	//Page -1: All learnable
+	[
+		[],
+	],
 	//Page 0: Spell Tree
 	[
 		// Elements
@@ -544,12 +552,12 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			]},
 	],
 	"Elements": [
-		{goToPage: 1, name: "ApprenticeFire", tags: ["magic"], autoLearn: ["Firebolt"], hideLearned: true, hideUnlearnable: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{goToPage: 1, name: "ApprenticeWater", tags: ["magic"], autoLearn: ["WaterBall"], hideLearned: true, hideUnlearnable: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{goToPage: 1, name: "ApprenticeEarth", tags: ["magic"], autoLearn: ["StoneSkin"], hideLearned: true, hideUnlearnable: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{goToPage: 1, name: "ApprenticeAir", tags: ["magic"], autoLearn: ["WindBlast"], hideLearned: true, hideUnlearnable: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{goToPage: 1, name: "ApprenticeLightning", tags: ["magic"], autoLearn: ["Electrify"], hideLearned: true, hideUnlearnable: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{goToPage: 1, name: "ApprenticeIce", tags: ["magic"], autoLearn: ["Freeze"], hideLearned: true, hideUnlearnable: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 2, name: "ApprenticeFire", tags: ["magic"], autoLearn: ["Firebolt"], hideLearned: true, hideUnlearnable: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 2, name: "ApprenticeWater", tags: ["magic"], autoLearn: ["WaterBall"], hideLearned: true, hideUnlearnable: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 2, name: "ApprenticeEarth", tags: ["magic"], autoLearn: ["StoneSkin"], hideLearned: true, hideUnlearnable: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 2, name: "ApprenticeAir", tags: ["magic"], autoLearn: ["WindBlast"], hideLearned: true, hideUnlearnable: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 2, name: "ApprenticeLightning", tags: ["magic"], autoLearn: ["Electrify"], hideLearned: true, hideUnlearnable: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 2, name: "ApprenticeIce", tags: ["magic"], autoLearn: ["Freeze"], hideLearned: true, hideUnlearnable: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
 		{name: "Earthform", tags: ["earth", "utility", "summon"], hide: true, autoLearn: ["EarthformRing", "EarthformMound", "EarthformLine"], prerequisite: "ApprenticeEarth", hideLearned: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "BoulderKick", tags: ["earth", "offense", "utility"], sfx: "HeavySwing", school: "Elements", prerequisite: "Earthform", manacost: 1, components: [], level:1, type:"special", special: "BoulderKick", noMiscast: true,
@@ -873,12 +881,12 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 	],
 	"Conjure": [
-		{goToPage: 2, name: "ApprenticeRope", tags: ["magic"], autoLearn: ["RopeBoltLaunch"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{goToPage: 2, name: "ApprenticeMetal", tags: ["magic"], autoLearn: ["SummonCuffs"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{goToPage: 2, name: "ApprenticeLeather", tags: ["magic"], autoLearn: ["SummonGag"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{goToPage: 2, name: "ApprenticeSummon", tags: ["magic"], autoLearn: ["Ally"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{goToPage: 2, name: "ApprenticeLatex", tags: ["magic"], autoLearn: ["SlimeBall"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{goToPage: 2, name: "ApprenticePhysics", tags: ["magic"], autoLearn: ["Wall"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 3, name: "ApprenticeRope", tags: ["magic"], autoLearn: ["RopeBoltLaunch"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 3, name: "ApprenticeMetal", tags: ["magic"], autoLearn: ["SummonCuffs"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 3, name: "ApprenticeLeather", tags: ["magic"], autoLearn: ["SummonGag"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 3, name: "ApprenticeSummon", tags: ["magic"], autoLearn: ["Ally"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 3, name: "ApprenticeLatex", tags: ["magic"], autoLearn: ["SlimeBall"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 3, name: "ApprenticePhysics", tags: ["magic"], autoLearn: ["Wall"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
 		{name: "CommandWordGreater", tags: ["command", "binding", "utility", "defense"], sfx: "Magic", school: "Conjure", manacost: 14, components: ["Verbal"], level:1, type:"special", special: "CommandWord", noMiscast: true,
 			prerequisite: "CommandWord",
@@ -1177,11 +1185,11 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 	],
 	"Illusion": [
-		{goToPage: 3, name: "ApprenticeShadow", tags: ["magic"], autoLearn: ["Dagger"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{goToPage: 3, name: "ApprenticeLight", tags: ["magic"], autoLearn: ["Flash"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{goToPage: 3, name: "ApprenticeMystery", tags: ["magic"], autoLearn: ["Camo"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{goToPage: 3, name: "ApprenticeProjection", tags: ["magic"], autoLearn: ["Decoy"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{goToPage: 3, name: "ApprenticeKnowledge", tags: ["magic"], autoLearn: ["TrueSteel"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 4, name: "ApprenticeShadow", tags: ["magic"], autoLearn: ["Dagger"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 4, name: "ApprenticeLight", tags: ["magic"], autoLearn: ["Flash"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 4, name: "ApprenticeMystery", tags: ["magic"], autoLearn: ["Camo"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 4, name: "ApprenticeProjection", tags: ["magic"], autoLearn: ["Decoy"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{goToPage: 4, name: "ApprenticeKnowledge", tags: ["magic"], autoLearn: ["TrueSteel"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
 		{name: "Analyze", prerequisite: "ApprenticeKnowledge", tags: ["buff", "utility", "knowledge"], school: "Illusion", manacost: 2.5, defaultOff: true, cancelAutoMove: true, costOnToggle: true, components: [], level:1, type:"passive",
 			events: [{type: "Analyze", trigger: "toggleSpell", power: 5, time: 20}, {type: "Analyze", trigger: "tick", power: 5, time: 20}]},

@@ -262,7 +262,9 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 					if (KDGroupBlocked("ItemLegs")) clothes.Lost = true;
 					if (KDGroupBlocked("ClothLower")) clothes.Lost = true;
 				}
-				if (clothes.Group == "Shoes") {
+				if (clothes.Group == "Shoes" || (
+					StandalonePatched && ModelDefs[clothes.Item]?.Categories?.includes("Shoes")
+				)) {
 					if (KinkyDungeonGetRestraintItem("ItemBoots")) clothes.Lost = true;
 				}
 				if (!NoRestraints) {
@@ -270,6 +272,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 						if (KDRestraint(inv)?.remove) {
 							for (let remove of KDRestraint(inv).remove) {
 								if (remove == clothes.Group) clothes.Lost = true;
+								if (StandalonePatched && ModelDefs[clothes.Item]?.Categories?.includes(remove)) clothes.Lost = true;
 							}
 						}
 					}
@@ -1263,7 +1266,7 @@ let KDExpressions = {
 		},
 		expression: (C) => {
 			return {
-				EyesPose: "Eyes2Closed",
+				EyesPose: "EyesClosed",
 				Eyes2Pose: "",
 				BrowsPose: "",
 				Brows2Pose: "",
@@ -1280,7 +1283,7 @@ let KDExpressions = {
 		},
 		expression: (C) => {
 			return {
-				EyesPose: "Eyes2Closed",
+				EyesPose: "EyesClosed",
 				Eyes2Pose: "",
 				BrowsPose: "",
 				Brows2Pose: "",

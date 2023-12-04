@@ -24,6 +24,7 @@ let bosses = {
 		nojail: false,
 		makeMain: true,
 		noQuests: true,
+		escapeMethod: "Boss",
 	},
 
 	"Dollmaker": {
@@ -57,6 +58,7 @@ let bosses = {
 		noboring: true, // Skip generating boringness
 		makeMain: true,
 		noQuests: true,
+		escapeMethod: "Boss",
 	},
 };
 

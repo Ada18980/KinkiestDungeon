@@ -2074,6 +2074,7 @@ function KinkyDungeonRun() {
 		//MainCanvas.textAlign = "center";
 
 		YY = YYstart;
+		YYd = 80;
 
 		if (StandalonePatched) {
 			DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + Math.round(KDResolution * 100) + "%", "#ffffff", "",
@@ -3193,10 +3194,10 @@ function KinkyDungeonHandleClick() {
 	} else if (KinkyDungeonState == "Toggles") {
 		let YYstart = 60;
 		let YY = YYstart;
-		let YYd = 70;
+		let YYd = 54;
 
 		YY = YYstart;
-
+		YYd = 80;
 
 		if (StandalonePatched) {
 			if (MouseIn(450, YY, 350, 64)) {

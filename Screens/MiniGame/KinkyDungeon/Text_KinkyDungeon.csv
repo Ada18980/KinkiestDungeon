@@ -68,8 +68,8 @@ KDToggleLazyWalk,Controls: One-Click Move
 KDToggleShiftLatch,Controls: Latch Shift Key
 KDToggleChastityOption,Clothes: Chastity over Panties
 KDToggleChastityBraOption,Clothes: Chastity Bra over Bras
+KDToggleSimpleColorPicker,Clothes: Simple Color Picker
 KinkyDungeonFastWait,Wait Quickly
-KinkyDungeonSimpleColorPicker,Clothes: Simple Color Picker
 
 
 KDHelpless,Helpless!
@@ -3421,9 +3421,9 @@ KinkyDungeonInventoryItemSlimeWalkersDesc2,"They will slow you down, but you can
 RestraintGasMask,Gas Mask
 RestraintGasMaskDesc,"A respirator designed to protect the wearer from noxious fumes."
 RestraintGasMaskDesc2,"+50 Poison resist. Protects against dizziness caused by sleep gas. Affects speech."
-KinkyDungeonInventoryItemSlimeWalkers,Gas Mask
-KinkyDungeonInventoryItemSlimeWalkersDesc,"A respirator designed to protect the wearer from noxious fumes."
-KinkyDungeonInventoryItemSlimeWalkersDesc2,"+50 Poison resist. Protects against dizziness caused by sleep gas. Affects speech."
+KinkyDungeonInventoryItemGasMask,Gas Mask
+KinkyDungeonInventoryItemGasMaskDesc,"A respirator designed to protect the wearer from noxious fumes."
+KinkyDungeonInventoryItemGasMaskDesc2,"+50 Poison resist. Protects against dizziness caused by sleep gas. Affects speech."
 
 
 KDCursedArmorUncurse,The curse on the RestraintName is lifted!
@@ -6334,6 +6334,7 @@ KinkyDungeonSpellNone,"Empty Slot"
 KinkyDungeonMagicSpellsBack,"Back to Spellbook"
 KinkyDungeonGame,"Return to Game"
 
+KinkyDungeonSpellsPageAll,"Known Abilities"
 KinkyDungeonSpellsPageUpgrade,"Spell Tree"
 KinkyDungeonSpellsPageElements,"Elemental Spells"
 KinkyDungeonSpellsPageConjure,"Conjuration Spells"
@@ -13254,10 +13255,10 @@ KDVariableModifier_AoEDamageFrozen,"AMNT ice damage/turn vs. Frozen"
 
 KinkyDungeonSpellFuukaOrb,Sealing Talisman
 KinkyDungeonSpellFuukaOrbMulti,Sealing Talisman
-KinkyDungeonFuukaOrb1,"Fuuka's magic begins sealing your power!"
-KinkyDungeonFuukaOrb2,"Fuuka's magic makes you sluggish!!"
-KinkyDungeonFuukaOrb3,"Fuuka's magic renders you helpless!!!"
-KinkyDungeonBuffFuukaOrb,"Fuuka's magic is restricting you!"
+KinkyDungeonFuukaOrb1,"You were hit by one of Fuuka's talismans. Fuuka's magic begins sealing your power!"
+KinkyDungeonFuukaOrb2,"You were hit by one of Fuuka's talismans. Fuuka's magic makes you sluggish!!"
+KinkyDungeonFuukaOrb3,"You were hit by one of Fuuka's talismans. Fuuka's magic renders you helpless!!!"
+KinkyDungeonBuffFuukaOrb,"You were hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting you!"
 
 KinkyDungeonSpellShadowGraspMulti,Sealing Shadows
 KinkyDungeonBuffShadowSeal,"Shadowy magic is restricting you!"
@@ -13302,10 +13303,10 @@ KDLabelSaved,Saved Outfits
 KDManageOutfits,Manage this Outfit
 KDChangePose,Change Pose
 KDQuickColor,Quick Color Palette
-KDFilters,Item Layers and Color Filters
+KDFilters,Item Color
 KDItemMenu,Item Catalog
 KDLayers,Layers:
-KDColorHex,Enter Hex Code:
+KDColorHex,Hex Code:
 
 KDHideRest,Toggle Struggle UI Mode
 KDSetPose,Change Character Pose
@@ -13422,3 +13423,13 @@ KDDiffTab_Challenge,Challenge Settings
 
 
 KinkyDungeonChallenge,Challenge Settings:
+
+KDColorPickerSimple,Simple
+KDColorPickerAdvanced,Advanced
+
+KDEscapeKey_Fail_Default,Exits locked! Find the key!
+KDEscapeKey_Pass_Default,Got the key!
+KDEscapeKey_Fail_Boss,BOSS ROOM
+KDEscapeKey_Pass_Boss,BOSS ROOM CLEARED!
+KDEscapeKey_Fail_None,Room bugged. Please Report.
+KDEscapeKey_Pass_None,""

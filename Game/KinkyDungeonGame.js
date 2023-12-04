@@ -4619,6 +4619,8 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	KDTickNeeds(delta);
 
 	let Dstart = performance.now();
+
+	KDUpdateForceOutfit(KinkyDungeonPlayer);
 	KinkyDungeonDressPlayer();
 	if (KDDebug) console.log(`Dressing ${KinkyDungeonCurrentTick} took ${(performance.now() - Dstart)} milliseconds.`);
 	KDGetEnemyCache();
@@ -5032,5 +5034,25 @@ function KDSetMapFlag(map, flag) {
 	}
 	if (!map.flags.includes(flag)) {
 		map.flags.push(flag);
+	}
+}
+
+/**
+ *
+ * @param {Character} C
+ */
+function KDUpdateForceOutfit(C) {
+	let forceOutfit = "";
+	let forceOutfitPri = 0;
+	let r = null;
+	for (let inv of KinkyDungeonAllRestraintDynamic()) {
+		r = KDRestraint(inv.item);
+		if (r?.forceOutfit && (r.forceOutfitPriority || r.power) >= forceOutfitPri) {
+			forceOutfitPri = r.forceOutfitPriority || r.power;
+			forceOutfit = r.forceOutfit;
+		}
+	}
+	if (forceOutfit && KinkyDungeonCurrentDress != forceOutfit) {
+		KinkyDungeonSetDress(forceOutfit, forceOutfit, C);
 	}
 }

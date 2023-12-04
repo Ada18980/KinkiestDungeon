@@ -165,6 +165,8 @@ function KDDrawSavedColors(X, y, max, C) {
  */
 function KDDrawColorSliders(X, Y, C, Model) {
 	DrawTextFitKD(TextGet("KDFilters"), X - 5 - 245 + 300, 25, 500, "#ffffff", KDTextGray0, undefined, "center");
+
+	DrawBoxKD(X, 50, 310, 600, KDButtonColor, true, 0.5, -10);
 	DrawBoxKD(X - 5 - 245, 5, 600, 700, KDButtonColor, false, 0.5, -10);
 	DrawTextFitKD(TextGet("KDLayers"), X - 120, 80, 300, "#ffffff", KDTextGray0, 22, "center");
 
@@ -291,7 +293,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 
 		let radius = 150;
 		KDDraw(kdcanvas, kdpixisprites, "colorpicker", KinkyDungeonRootDirectory + "ColorPicker.png", X, YY, 300, 300);
-		if (ElementValue("KDSelectedColor") && Model.Filters[KDCurrentLayer]) {
+		if (ElementValue("KDSelectedColor") && Model?.Filters && Model.Filters[KDCurrentLayer]) {
 			let hsl = rgbToHsl(
 				Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].red/5 || 0)),
 				Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].green/5 || 0)),
@@ -299,8 +301,12 @@ function KDDrawColorSliders(X, Y, C, Model) {
 			);
 			let x = radius * hsl[1] * Math.cos(hsl[0] * 2*Math.PI);
 			let y = radius * hsl[1] * Math.sin(hsl[0] * 2*Math.PI);
+
+			let value = ElementValue("KDSelectedColor");
+			let RegExp = /^#[0-9A-F]{6}$/i;
+
 			KDDraw(kdcanvas, kdpixisprites, "colorpickercolor", KinkyDungeonRootDirectory + "Color.png", X - 12 + x + radius, YY - 12 + y + radius, 23, 23, 0, {
-				tint: string2hex(ElementValue("KDSelectedColor")),
+				tint: RegExp.test(value) ? KDhexToRGB(ElementValue("KDSelectedColor")) : 0xffffff,
 			});
 		}
 
@@ -338,6 +344,8 @@ function KDDrawColorSliders(X, Y, C, Model) {
 				Model.Filters[KDCurrentLayer].green = 5*g/255.0;
 				Model.Filters[KDCurrentLayer].blue = 5*b/255.0;
 				Model.Filters[KDCurrentLayer].brightness = 1;
+				if (Model.Filters[KDCurrentLayer].saturation == 1 || !Model.Filters[KDCurrentLayer].saturation)
+					Model.Filters[KDCurrentLayer].saturation = 0;
 				KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
 				let rr = Math.round(Model.Filters[KDCurrentLayer].red/5 * 255).toString(16);
 				if (rr.length == 1) rr = '0' + rr;
@@ -358,7 +366,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 		YY += 300;
 	} else {
 		for (let key of Object.keys(KDColorSliders)) {
-			DrawTextFitKD(TextGet("KDColorSlider" + key) + ": " + (Math.round(0.2 * filters[key]*100)/100), X + width/2, YY, width, "#ffffff", "#000000", 20);
+			DrawTextFitKD(TextGet("KDColorSlider" + key) + ": " + (Math.round(filters[key]*100)/100), X + width/2, YY, width, "#ffffff", "#000000", 20);
 			KinkyDungeonBar(X, YY - 15, width, 30, filters[key]/5*100, KDColorSliderColor[key] || "#ffffff", "#000000");
 			if ((mouseDown) && MouseIn(X, YY - 15, width, 30)) {
 				MouseClicked = false;
@@ -393,8 +401,8 @@ function KDDrawColorSliders(X, Y, C, Model) {
 
 
 	YY += 70;
-	DrawTextFitKD(TextGet("KDColorHex"),X + width/2, YY - 30, 300, "#ffffff", KDTextGray0, undefined, "center");
-	let TF = KDTextField("KDSelectedColor", X - 10, YY, width, 30);
+	DrawTextFitKD(TextGet("KDColorHex"),X + width/2, YY - 40, 300, "#ffffff", KDTextGray0, undefined, "center");
+	let TF = KDTextField("KDSelectedColor", X - 10, YY - 20, width, 30);
 	if (TF.Created) {
 		TF.Element.oninput = (event) => {
 			let value = ElementValue("KDSelectedColor");
@@ -413,6 +421,8 @@ function KDDrawColorSliders(X, Y, C, Model) {
 					if (Model.Filters[KDCurrentLayer].alpha < 0.001) Model.Filters[KDCurrentLayer].alpha = 0.001;
 					if (KDToggles.SimpleColorPicker) {
 						Model.Filters[KDCurrentLayer].brightness = 1;
+						if (Model.Filters[KDCurrentLayer].saturation == 1 || !Model.Filters[KDCurrentLayer].saturation)
+							Model.Filters[KDCurrentLayer].saturation = 0;
 					}
 					Model.Filters[KDCurrentLayer].red = r;
 					Model.Filters[KDCurrentLayer].green = g;
@@ -422,6 +432,19 @@ function KDDrawColorSliders(X, Y, C, Model) {
 			}
 		};
 	}
+
+	DrawButtonKDEx("tab_ColorPickerSimple", (b) => {
+		KDToggles.SimpleColorPicker = true;
+		return true;
+	}, true, X - 240, YY + 40, 290, 30, TextGet("KDColorPickerSimple"), "#ffffff", undefined, undefined, undefined,
+	!KDToggles.SimpleColorPicker, KDButtonColor);
+	DrawButtonKDEx("tab_ColorPickerAdvanced", (b) => {
+		KDToggles.SimpleColorPicker = false;
+		return true;
+	}, true, X - 250 + width, YY + 40, 290, 30, TextGet("KDColorPickerAdvanced"), "#ffffff", undefined, undefined, undefined,
+	KDToggles.SimpleColorPicker, KDButtonColor);
+
+
 	YY += 60;
 	YY = Y;
 

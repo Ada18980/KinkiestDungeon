@@ -294,6 +294,7 @@ let KinkyDungeonHiddenFactions = [
 	"Curse",
 	"Observer",
 	"Door",
+	"Adventurer",
 ];
 
 

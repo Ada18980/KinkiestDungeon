@@ -1538,7 +1538,15 @@ function KinkyDungeonListSpells(Mode) {
 
 	let pages = KDFilterSpellPages();
 	let currentPage = Math.min(KinkyDungeonCurrentSpellsPage, pages.length - 1);
-	let spellPages = pages[currentPage];
+	let spellPages = currentPage == 0 ?
+		[ // Dynamically generate known spells
+			KinkyDungeonSpells.filter((spell) => {return !spell.passive && spell.type != "passive" && spell.components && spell.components[0] == "Verbal";}).map((spell) => {return spell.name;}),
+			KinkyDungeonSpells.filter((spell) => {return !spell.passive && spell.type != "passive" && spell.components && spell.components[0] == "Arms";}).map((spell) => {return spell.name;}),
+			KinkyDungeonSpells.filter((spell) => {return !spell.passive && spell.type != "passive" && spell.components && spell.components[0] == "Legs";}).map((spell) => {return spell.name;}),
+			KinkyDungeonSpells.filter((spell) => {return spell.passive || spell.type == "passive" || !spell.components ||
+				(spell.components[0] != "Verbal" && spell.components[0] != "Arms" && spell.components[0] != "Legs");}).map((spell) => {return spell.name;}),
+		]
+		: pages[currentPage];
 	let pageNames = KDFilterSpellPageNames();
 	let columnLabels = KDColumnLabels[currentPage];
 	let extraFilters = filtersExtra[currentPage];

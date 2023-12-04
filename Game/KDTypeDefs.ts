@@ -411,6 +411,10 @@ interface KDRestraintPropsBase {
 	allowRemote?: boolean,
 	/** Multiplies the escape chance */
 	escapeMult?: number,
+	/** Outfit to force */
+	forceOutfit?: string,
+	/** Outfit to force (priority default = base power) */
+	forceOutfitPriority?: number,
 	/** Clothes for dressing */
 	alwaysDress?: overrideDisplayItem[],
 	/** Clothes for dressing */

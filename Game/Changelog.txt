@@ -33,6 +33,13 @@ TODO add sugar magic ('Blood Energy Magic')
 - Added shadow hand graphics
 - Tails rotate when kneeling
 - Added Simple Color Picker option
+- Added hairband, maid hairband
+- Fixed animal ears not touching the head in some hairstyles
+- Added elf ears
+- Added V bikini bottom
+- Added hairbow
+- Added cloth collar, cloth belt
+- Added bow corset
 
 5.0.0 RC8
 - Added Strict Ropework which adds an additional rope harness for aesthetic purposes
