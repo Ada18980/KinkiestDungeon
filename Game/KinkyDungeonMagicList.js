@@ -1068,13 +1068,6 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "CommandVibrate", prerequisite: "CommandWord", tags: ["command", "offense", "aoe", "sexy"], sfx: "MagicSlash", school: "Conjure", manacost: 4.5, components: ["Verbal"], level:1,
 			type:"special", special: "CommandVibrate",
 			onhit:"", time:30, power: 5, range: 3.5, size: 1, aoe: 3.5, damage: "charm"},
-		{name: "CommandVibrateVibeRemote", prerequisite: "CommandWord", tags: ["command", "offense", "aoe", "sexy"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: ["Verbal"], level:2,
-			type:"special", special: "CommandVibrateLV2",
-			onhit:"", time:30, power: 5, range: 3.5, size: 1, aoe: 3.5, damage: "charm"},
-		{name: "CommandVibrateBagOfGoodies", prerequisite: "CommandWord", tags: ["command", "offense", "aoe", "sexy"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: ["Verbal"], level:1,
-			chargecost: 0.015,
-			type:"special", special: "CommandVibrate",
-			onhit:"", time:15, power: 5, range: 3.5, size: 1, aoe: 2.5, damage: "charm"},
 		{name: "CommandOrgasm", prerequisite: "CommandVibrate", tags: ["command", "offense", "aoe", "sexy"], sfx: "MagicSlash", school: "Conjure", manacost: 4.5, components: ["Verbal"], level:1,
 			type:"special", special: "CommandOrgasm",
 			onhit:"", time:0, power: 5, range: 7, size: 1, aoe: 4.99, damage: "charm"},
@@ -1287,6 +1280,15 @@ let KinkyDungeonSpellListEnemies = [
 			{trigger: "bulletHitEnemy", type: "EncaseBound"},
 		],
 	},
+
+	{name: "CommandVibrateVibeRemote", prerequisite: "CommandWord", tags: ["command", "offense", "aoe", "sexy"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: ["Verbal"], level:2,
+		type:"special", special: "CommandVibrateLV2",
+		onhit:"", time:30, power: 5, range: 3.5, size: 1, aoe: 3.5, damage: "charm"},
+	{name: "CommandVibrateBagOfGoodies", prerequisite: "CommandWord", tags: ["command", "offense", "aoe", "sexy"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: ["Verbal"], level:1,
+		chargecost: 0.015,
+		type:"special", special: "CommandVibrate",
+		onhit:"", time:15, power: 5, range: 3.5, size: 1, aoe: 2.5, damage: "charm"},
+
 
 	/** The following are particle effects */
 	{name: "OrgasmStrike", tags: ["offense", "nature", "binding"], sfx: "FireSpell", school: "Conjure", manacost: 0.5, components: ["Verbal"],

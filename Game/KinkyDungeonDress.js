@@ -1147,6 +1147,25 @@ let KDExpressions = {
 			};
 		},
 	},
+	"Grabbed": {
+		priority: 17,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && (KinkyDungeonFlags.get("grabbed"))) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesSurprised",
+				Eyes2Pose: "Eyes2Surprised",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "",
+				MouthPose: "",
+			};
+		},
+	},
 	"Vibing": {
 		stackable: true,
 		priority: 2,

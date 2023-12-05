@@ -3039,7 +3039,7 @@ let KDEventMapSpell = {
 	"afterPlayerCast": {
 		"ManaRegenSuspend": (e, spell, data) => {
 			if ((data.spell && data.spell.manacost != 0) && (!KDEntityHasBuff(KinkyDungeonPlayerEntity, "ManaRegenSuspend") || !KDHasSpell("ManaRegenPlus2"))) {
-				let duration = KDHasSpell("ManaRegenFast2") ? e.time*0.25 : (KDHasSpell("ManaRegenFast") ? e.time*0.625 : e.time);
+				let duration = KDHasSpell("ManaRegenFast2") ? e.time*0.375 : (KDHasSpell("ManaRegenFast") ? e.time*0.625 : e.time);
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: Math.ceil(duration), aura: "#ff5555", buffSprite: true, aurasprite: "AuraX",
 				});
@@ -3049,7 +3049,7 @@ let KDEventMapSpell = {
 	"afterSpellTrigger": {
 		"ManaRegenSuspend": (e, spell, data) => {
 			if ((data.spell && data.spell.manacost != 0) && (!KDEntityHasBuff(KinkyDungeonPlayerEntity, "ManaRegenSuspend") || !KDHasSpell("ManaRegenPlus2"))) {
-				let duration = KDHasSpell("ManaRegenFast2") ? e.time*0.25 : (KDHasSpell("ManaRegenFast") ? e.time*0.625 : e.time);
+				let duration = KDHasSpell("ManaRegenFast2") ? e.time*0.375 : (KDHasSpell("ManaRegenFast") ? e.time*0.625 : e.time);
 				if (!data.notToggle) duration *= 0.5;
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: Math.ceil(duration), aura: "#ff5555", buffSprite: true, aurasprite: "AuraX",
@@ -3723,7 +3723,7 @@ let KDEventMapSpell = {
 		"ManaRegenSuspend": (e, spell, data) => {
 			if (!KDHasSpell("ManaRegenPlus")) {
 				let time = e.time;
-				if (KDHasSpell("ManaRegenFast2")) time *= 0.25;
+				if (KDHasSpell("ManaRegenFast2")) time *= 0.375;
 				else if (KDHasSpell("ManaRegenFast")) time *= 0.625;
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: Math.ceil(time), aura: "#ff5555", buffSprite: true, aurasprite: "AuraX",
@@ -3826,7 +3826,7 @@ let KDEventMapSpell = {
 						zIndex: 5,
 					});*/
 				DrawButtonKDEx("offhandswitch", (b) => {
-					let dat = {};
+					/*let dat = {};
 					if (KinkyDungeonPlayerDamage) {
 						if (KDCanOffhand(KinkyDungeonPlayerDamage)) {
 							dat.Offhand = KinkyDungeonPlayerDamage.name;
@@ -3839,18 +3839,19 @@ let KDEventMapSpell = {
 						weapon: KDGameData.Offhand || KDGameData.OffhandOld,
 						GameData: dat,
 						noOld: true,
-					});
+					});*/
 					return true;
 				}, true,
-				1400,
+				1600,
 				200,
 				100, 100,
 				"", "#ffffff", KinkyDungeonRootDirectory + `Items/${KDGameData.Offhand || KDGameData.OffhandOld}.png`, TextGet("KDoffhandTooltip"), false, true,
 				undefined, undefined, undefined, {tint: KDGameData.Offhand ? "#ffffff" : "#444444", scaleImage: true, zIndex: 5,
-					hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[1]),}
+					//hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[1]),
+				}
 				);
 
-				if (KDGameData.OffhandReturn && KDGameData.OffhandReturn != (KDGameData.Offhand || KDGameData.OffhandOld)) {
+				/*if (KDGameData.OffhandReturn && KDGameData.OffhandReturn != (KDGameData.Offhand || KDGameData.OffhandOld)) {
 					// Draw the offhand weapon
 					DrawButtonKDEx("offhandswitch2", (b) => {
 						KDSendInput("switchWeapon", {weapon: KDGameData.OffhandReturn, noOld: true});
@@ -3861,9 +3862,10 @@ let KDEventMapSpell = {
 					100, 100,
 					"", "#ffffff", KinkyDungeonRootDirectory + `Items/${KDGameData.OffhandReturn}.png`, TextGet("KDoffhand2Tooltip"), false, true,
 					undefined, undefined, undefined, {scaleImage: true, zIndex: 5,
-						hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[2]),}
+						//hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[2]),
+					}
 					);
-				}
+				}*/
 			}
 		},
 		/*"EnemySense": (e, spell, data) => {

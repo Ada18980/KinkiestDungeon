@@ -269,15 +269,26 @@ function KDRestraintSpecial(item) {
 	return KDRestraint(item)?.enchanted || KDRestraint(item)?.special || KDRestraint(item)?.showInQuickInv || item.showInQuickInv;
 }
 
-function KDSwitchWeapon(weapon) {
-	if (typeof KDGameData.PreviousWeapon === 'string') KDGameData.PreviousWeapon = [];
-	let previousWeapon = weapon || (KDGameData.PreviousWeapon ? KDGameData.PreviousWeapon[0] : null);
+let KDWeaponSwitchPref = 0;
 
-	if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKeySwitchWeapon[1]) KDClickButton("offhandswitch");//previousWeapon = KDGameData.Offhand || KDGameData.OffhandOld;
+function KDSwitchWeapon(weapon, pref) {
+	if (typeof KDGameData.PreviousWeapon === 'string' || !KDGameData.PreviousWeapon) KDGameData.PreviousWeapon = [];
+	//let previousWeapon = weapon || (KDGameData.PreviousWeapon ? KDGameData.PreviousWeapon[0] : null);
+
+	if (weapon && KinkyDungeonInventoryGet(weapon)) KDSendInput("switchWeapon", {weapon: weapon, pref: pref});
+	else for (let i = 0; i < KinkyDungeonKeySwitchWeapon.length; i++) {
+		if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKeySwitchWeapon[i] && (KDGameData.PreviousWeapon ? KDGameData.PreviousWeapon[i] : null))
+			KDSendInput("switchWeapon", {weapon: KDGameData.PreviousWeapon[i], pref: i});
+	}
+
+	//if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKeySwitchWeapon[0] && KDGameData.PreviousWeapon ? KDGameData.PreviousWeapon[0] : null)
+
+	/*if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKeySwitchWeapon[1]) KDClickButton("offhandswitch");//previousWeapon = KDGameData.Offhand || KDGameData.OffhandOld;
 	else if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKeySwitchWeapon[2]) KDClickButton("offhandswitch2");//previousWeapon = KDGameData.OffhandReturn;
 	else
 	if (!previousWeapon || KinkyDungeonInventoryGet(previousWeapon))
-		KDSendInput("switchWeapon", {weapon: previousWeapon});
+	KDSendInput("switchWeapon", {weapon: previousWeapon});
+		*/
 }
 
 function KinkyDungeonHandleInventory() {

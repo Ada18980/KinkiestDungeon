@@ -105,7 +105,7 @@ let KinkyDungeonKeyUpcast = ['ControlLeft', 'AltLeft'];
 let KinkyDungeonKeyMenu = ['V', 'I', 'U', 'M', 'L', '*']; // QuikInv, Inventory, Reputation, Magic, Log, Quest
 let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight", 'T', '?', '/']; // Log, Passing, Door, Auto Struggle, Auto Pathfind, Inspect, Wait till interrupted, Make Noise
 let KinkyDungeonKeySpellPage = ['`'];
-let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H']; // Swap, Offhand, OffhandPrevious
+let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H', 'J']; // Swap, Offhand, OffhandPrevious
 let KinkyDungeonKeySwitchLoadout = ['[', ']', '\\'];
 let KinkyDungeonKeyMap = ['+'];
 
@@ -129,7 +129,6 @@ let KDToggles = {
 	VibeSounds: true,
 	Music: true,
 	Sound: true,
-	EnableMinimap: true,
 	DrawArmor: true,
 	Bloom: true,
 	StunFlash: true,
@@ -141,18 +140,23 @@ let KDToggles = {
 	FancyWalls: true,
 	FancyShadows: true,
 	LightmapFilter: true,
+	ChastityOption: false,
+	ChastityBraOption: false,
+	SimpleColorPicker: true,
 	EnemyAnimations: true,
 	TransparentUI: false,
+	Center: false,
 	TurnCounter: false,
 	ShowNPCStatuses: true,
 	ShowSpellRange: true,
 	ForceWarnings: false,
-	Drool: true,
+	//Drool: true,
 	LazyWalk: false,
 	ShiftLatch: true,
-	ChastityOption: false,
-	ChastityBraOption: false,
-	SimpleColorPicker: true,
+	EnableMinimap: true,
+	BuffSide: true,
+	ShowPath: true,
+	ShowFacing: false,
 };
 
 let KDDefaultKB = {
@@ -180,11 +184,13 @@ let KDDefaultKB = {
 	SpellConfig2: KinkyDungeonKeySpellConfig[1],
 	SpellConfig3: KinkyDungeonKeySpellConfig[2],
 
+	Upcast: KinkyDungeonKeyUpcast[0],
+	UpcastCancel: KinkyDungeonKeyUpcast[1],
+
 	Wait: KinkyDungeonKeyWait[0],
 	Skip: KinkyDungeonKeySkip[0],
 	Enter: KinkyDungeonKeyEnter[0],
 	Map: KinkyDungeonKeyMap[0],
-	Sprint: KinkyDungeonKeySprint[0],
 
 	SwitchLoadout1: KinkyDungeonKeySwitchLoadout[0],
 	SwitchLoadout2: KinkyDungeonKeySwitchLoadout[1],
@@ -193,6 +199,9 @@ let KDDefaultKB = {
 	SwitchWeapon: KinkyDungeonKeySwitchWeapon[0],
 	SwitchWeaponOffhand: KinkyDungeonKeySwitchWeapon[1],
 	SwitchWeaponOffhandPrevious: KinkyDungeonKeySwitchWeapon[2],
+	SwitchWeaponOffhandPrevious2: KinkyDungeonKeySwitchWeapon[3],
+
+	Sprint: KinkyDungeonKeySprint[0],
 
 	QInventory: KinkyDungeonKeyMenu[0],
 	Inventory: KinkyDungeonKeyMenu[1],
@@ -201,8 +210,6 @@ let KDDefaultKB = {
 	Log: KinkyDungeonKeyMenu[4],
 	Quest: KinkyDungeonKeyMenu[5],
 
-	Upcast: KinkyDungeonKeyUpcast[0],
-	UpcastCancel: KinkyDungeonKeyUpcast[1],
 
 	MsgLog: KinkyDungeonKeyToggle[0],
 	Pass: KinkyDungeonKeyToggle[1],
@@ -2019,23 +2026,24 @@ function KinkyDungeonRun() {
 
 		let maxY = 850;
 
-		let sY = 100;
+		let sY = 80;
 
 		let X = 500;
 		let Y = sY;
 		let dX = 300;
 		let dY = 40;
-		let pad = 5;
+		let pad = 1;
+		let xpad = 15;
 
 		for (let key of Object.keys(KDDefaultKB)) {
 			DrawButtonKDEx("KB" + key, () => {KinkyDungeonKeybindingsTemp[key] = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 				X, Y, dX, dY, TextGet("KinkyDungeonKey" + key) + ": '" + (KinkyDungeonKeybindingsTemp[key]) + "'",
-				KinkyDungeonKeybindingsTemp[key] == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true,);
+				KinkyDungeonKeybindingsTemp[key] == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true, KDButtonColor);
 
 			Y += dY + pad;
 			if (Y > maxY) {
 				Y = sY;
-				X += dX + pad;
+				X += dX + xpad;
 			}
 		}
 
@@ -2838,6 +2846,7 @@ function KDCommitKeybindings() {
 		KinkyDungeonKeybindings.Spell9,
 		KinkyDungeonKeybindings.Spell0,
 	]; // ! @ #
+	KinkyDungeonKeyUpcast = [KinkyDungeonKeybindings.Upcast, KinkyDungeonKeybindings.UpcastCancel];
 	KinkyDungeonKeySpellConfig = [
 		KinkyDungeonKeybindings.SpellConfig1,
 		KinkyDungeonKeybindings.SpellConfig2,
@@ -2845,7 +2854,6 @@ function KDCommitKeybindings() {
 	];
 	KinkyDungeonKeyWait = [KinkyDungeonKeybindings.Wait];
 	KinkyDungeonKeySkip = [KinkyDungeonKeybindings.Skip];
-	KinkyDungeonKeyUpcast = [KinkyDungeonKeybindings.Upcast, KinkyDungeonKeybindings.UpcastCancel];
 	KinkyDungeonKeyWeapon = [KinkyDungeonKeybindings.SpellWeapon]; // 8 (57)
 	KinkyDungeonKeyMenu = [
 		KinkyDungeonKeybindings.QInventory,
@@ -2870,7 +2878,7 @@ function KDCommitKeybindings() {
 	KinkyDungeonKeyMap = [KinkyDungeonKeybindings.Map];
 	KinkyDungeonKeyEnter = [KinkyDungeonKeybindings.Enter];
 	KinkyDungeonKeySpellPage = [KinkyDungeonKeybindings.SpellPage];
-	KinkyDungeonKeySwitchWeapon = [KinkyDungeonKeybindings.SwitchWeapon, KinkyDungeonKeybindings.SwitchWeaponOffhand, KinkyDungeonKeybindings.SwitchWeaponOffhandPrevious];
+	KinkyDungeonKeySwitchWeapon = [KinkyDungeonKeybindings.SwitchWeapon, KinkyDungeonKeybindings.SwitchWeaponOffhand, KinkyDungeonKeybindings.SwitchWeaponOffhandPrevious, KinkyDungeonKeybindings.SwitchWeaponOffhandPrevious2];
 	KinkyDungeonKeySprint = [KinkyDungeonKeybindings.Sprint];
 	KinkyDungeonKeySwitchLoadout = [KinkyDungeonKeybindings.SwitchLoadout1, KinkyDungeonKeybindings.SwitchLoadout2, KinkyDungeonKeybindings.SwitchLoadout3];
 

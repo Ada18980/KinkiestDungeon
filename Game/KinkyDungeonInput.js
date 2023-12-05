@@ -88,17 +88,21 @@ function KDProcessInput(type, data) {
 			//KinkyDungeonTargetTileLocation = null;
 			break;
 		case "switchWeapon": {
+			if (data?.pref != undefined) KDWeaponSwitchPref = data.pref;
 			KDDelayedActionPrune(["Action", "SwitchWeapon"]);
 			if (!data.noOld) {
 				let oldweapon = KinkyDungeonPlayerWeapon;
 				if (!KDGameData.PreviousWeapon || typeof KDGameData.PreviousWeapon === 'string') KDGameData.PreviousWeapon = [];
-				KDGameData.PreviousWeapon.push(oldweapon);
+				while (KDGameData.PreviousWeapon.length < KDMaxPreviousWeapon) {
+					KDGameData.PreviousWeapon.push("Unarmed");
+				}
+				KDGameData.PreviousWeapon[KDWeaponSwitchPref] = oldweapon;
 			}
-			while (KDGameData.PreviousWeapon?.length > KDMaxPreviousWeapon) {
+			/*while (KDGameData.PreviousWeapon?.length > KDMaxPreviousWeapon) {
 				KDGameData.PreviousWeapon.splice(0, 1);
-			}
+			}*/
 			KDSetWeapon(data.weapon);
-			while (KDGameData.PreviousWeapon?.includes(data.weapon)) KDGameData.PreviousWeapon.splice(KDGameData.PreviousWeapon.indexOf(data.weapon), 1);
+			//while (KDGameData.PreviousWeapon?.includes(data.weapon)) KDGameData.PreviousWeapon.splice(KDGameData.PreviousWeapon.indexOf(data.weapon), 1);
 			KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon(undefined, undefined, KinkyDungeonWeapons[data.weapon]));
 			let time = (data.weapon && KinkyDungeonWeapons[data.weapon] && KinkyDungeonWeapons[data.weapon].heavy) ? 2 : 1;
 			if (KinkyDungeonStatsChoice.has("Disorganized")) {

@@ -3967,7 +3967,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 									KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Grab").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 4);
 
 								KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grab.ogg", enemy);
-								KinkyDungeonTorsoGrabCD = 2;
+								KinkyDungeonTorsoGrabCD = 3;
+								KinkyDungeonSetFlag("grabbed", 3);
 							}
 						}
 					}
@@ -4307,8 +4308,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 												enemySwap.y = KinkyDungeonPlayerEntity.y;
 												enemySwap.warningTiles = [];
 											}
-											if (AIData.leashing && !KDPlayerIsImmobilized() && !KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity))
+											if (AIData.leashing && !KDPlayerIsImmobilized() && !KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity)) {
 												KinkyDungeonAttachTetherToEntity(2.5, enemy);
+												KinkyDungeonSetFlag("grabbed", 4);
+											}
 											KDMovePlayer(enemy.x, enemy.y, false);
 											KinkyDungeonTargetTile = null;
 											KinkyDungeonTargetTileLocation = "";

@@ -69,6 +69,10 @@ KDToggleShiftLatch,Controls: Latch Shift Key
 KDToggleChastityOption,Clothes: Chastity over Panties
 KDToggleChastityBraOption,Clothes: Chastity Bra over Bras
 KDToggleSimpleColorPicker,Clothes: Simple Color Picker
+KDToggleCenter,UI: Center Player
+KDToggleBuffSide,UI: Draw Buffs on Side
+KDToggleShowPath,UI: Show Trajectory on Auto-Path
+KDToggleShowFacing,UI: Show Player Facing
 KinkyDungeonFastWait,Wait Quickly
 
 
@@ -396,7 +400,7 @@ KinkyDungeonStatDescFutileStruggles,"Lose 2 WP every time you remove a non-trivi
 KinkyDungeonStatSecondWind,"Second Wind"
 KinkyDungeonStatDescSecondWind,"Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage. (Upgrade available in spell tree)"
 KinkyDungeonSpellSecondWind0,Second Wind Perk
-KinkyDungeonSpellDescriptionSecondWind0,Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage.
+KinkyDungeonSpellDescriptionSecondWind0,"Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage."
 KinkyDungeonSpellSecondWind1,Triumphant Wind
 KinkyDungeonSpellDescriptionSecondWind1,"Second Wind now regenerates up to 25% of your max WP"
 
@@ -880,9 +884,10 @@ KinkyDungeonKeySwitchLoadout3,Load Loadout 3
 KinkyDungeonKeySpellPage,Cycle Spell Page
 KinkyDungeonKeyUpcast,Upcast Spells
 KinkyDungeonKeyUpcastCancel,Cancel Upcast
-KinkyDungeonKeySwitchWeapon,Swap Weapon
-KinkyDungeonKeySwitchWeaponOffhand,Switch to Offhand
-KinkyDungeonKeySwitchWeaponOffhandPrevious,Switch from Offhand
+KinkyDungeonKeySwitchWeapon,Swap Weapon 1
+KinkyDungeonKeySwitchWeaponOffhand,Swap Weapon 2
+KinkyDungeonKeySwitchWeaponOffhandPrevious,Swap Weapon 3
+KinkyDungeonKeySwitchWeaponOffhandPrevious2,Swap Weapon 4
 KinkyDungeonKeySpellWeapon,Weapon Ability
 KinkyDungeonKeyWait,Wait
 KinkyDungeonKeySkip,Cancel/Back
@@ -1367,7 +1372,7 @@ KinkyDungeonInventoryItemTorchDesc,"Second only to the mighty towel in usefulnes
 KinkyDungeonInventoryItemTorchDesc2,"Deals fire damage. Provides light."
 KinkyDungeonInventoryItemUnarmed,Unarmed
 KinkyDungeonInventoryItemUnarmedDesc,"Fight with your hands and feet."
-KinkyDungeonInventoryItemUnarmedDesc2,"Deals unarmed damage."
+KinkyDungeonInventoryItemUnarmedDesc2,"Deals unarmed damage. Becomes grope damage when used on a humanoid."
 KinkyDungeonInventoryItemSword,Sword
 KinkyDungeonInventoryItemSwordDesc,"The blade is strong, its edge sharp."
 KinkyDungeonInventoryItemSwordDesc2,"A fast and accurate weapon that deals slash damage."
@@ -7059,7 +7064,7 @@ KinkyDungeonStealBack,You get your stolen items back.
 KinkyDungeonStealBackFail,The EnemyName manages to retreat with your items!
 
 KinkyDungeonOrbSpell,The orb contains knowledge of SPELL.
-KinkyDungeonCapture,You capture the EnemyName. You can become a champion in the Reputation screen.
+KinkyDungeonCapture,You capture the EnemyName.
 KinkyDungeonCaptureBasic,You capture the EnemyName.
 KinkyDungeonCaptureGoddess,You capture the EnemyName in the name of the goddess of GODDESS.
 KinkyDungeonCaptureGoddessLowUniform,"You capture the EnemyName, but the goddess of GODDESS would prefer that you be in uniform (wear her restraint)."
@@ -9730,7 +9735,7 @@ dOfferMithrilYes_YesGag,"(Nod eagerly)"
 dOfferMithrilYes_No,"Not really."
 dOfferMithrilYes_NoGag,"(Shake your head)"
 
-dOfferMithrilForce_Yes,"."
+dOfferMithrilForce_Yes,"Fine..."
 dOfferMithrilForce_YesGag,"(Moan and giggle)"
 dOfferMithrilForce_No,"Stop! (PERCENT chance to avoid)"
 dOfferMithrilForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
@@ -15151,7 +15156,7 @@ KinkyDungeonSpellManaRegenFast,Fast Recharge I
 KinkyDungeonSpellDescriptionManaRegenFast,"Inner power now recharges after 10 turns instead of 16."
 
 KinkyDungeonSpellManaRegenFast2,Fast Recharge II
-KinkyDungeonSpellDescriptionManaRegenFast2,"Inner power now recharges after 4 turns instead of 16."
+KinkyDungeonSpellDescriptionManaRegenFast2,"Inner power now recharges after 6 turns instead of 16."
 
 
 KinkyDungeonSpellRogueTargets,"Precise Targeting"
@@ -15284,7 +15289,7 @@ KinkyDungeonSpellWeaponAttack,Ranged Attack
 KinkyDungeonSpellCombatTraining,"Combat Training"
 KinkyDungeonSpellDescriptionCombatTraining,"Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 0 WP you gain 1 slow resist."
 
-KDoffhandTooltip,This is your currently held offhand weapon. Click to switch to it.
+KDoffhandTooltip,This is your current offhand weapon.
 KDoffhand2Tooltip,This is your previously held weapon. Click to switch to it.
 
 KDCantWield,You can't hold the WPN in your current state.
@@ -15517,6 +15522,7 @@ KillBarricadeBlastDoor,"You knock down the blast door!"
 KDInventoryActionSell,Sell for VLU gp
 KDSell,You sell the ITM for VLU gp.
 KDSellBulk,You sell #x ITM for VLU gp.
+
 
 KinkyDungeonStatDirectionVision,"Directional Vision"
 KinkyDungeonStatDescDirectionVision,"Your vision is reduced except in the direction you are facing."

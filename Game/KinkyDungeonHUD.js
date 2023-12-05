@@ -307,7 +307,10 @@ function KinkyDungeonDrawInterface(showControls) {
 	KDDrawStruggleGroups();
 	KDDrawStatusBars(1790, 340, 200);
 	KinkyDungeonDrawActionBar(1780, 166);
-	KDDrawBuffIcons(830, 995 - 72 - 36 - 24);
+	if (KDToggles.BuffSide)
+		KDProcessBuffIcons(510, 82, true);
+	else
+		KDProcessBuffIcons(830, 995 - 72 - 36 - 24);
 
 
 	if (KinkyDungeonTargetTile) {
@@ -836,6 +839,8 @@ function KDDrawWeaponSwap(x, y) {
 	let buttonWidth = 48;
 	let chargeX = 1775;
 
+	//let stats = KDGetStatsWeaponCast();
+
 	// Draw ancient
 	if (KDGameData.AncientEnergyLevel > 0 || KinkyDungeonInventoryGet("AncientPowerSource")) {
 		KinkyDungeonBar(chargeX + 5, 830 + 0.25*heightPerBar - 72, 200, heightPerBar*0.5, 100*KDGameData.AncientEnergyLevel, "#ffee83", "#3b2027", 100*KDGameData.OrigEnergyLevel, "#ffffff");
@@ -856,19 +861,58 @@ function KDDrawWeaponSwap(x, y) {
 
 
 	let width = 144;
+	/*let XX = x - 48;
+	let YY = y;
+	let spriteSize = 48;
+	let tooltip = false;
+
+	for (let s of Object.entries(stats)) {
+		let stat = s[1];
+		if (stat.count)
+			DrawTextFitKD(stat.count, XX + spriteSize/2, YY + spriteSize/2 - 10, spriteSize, stat.countcolor || "#ffffff", "#000000",
+				16, undefined, 114, 0.8, 5);
+
+		if (!tooltip && MouseIn(XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize)) {
+			DrawTextFitKD(stat.text, x - 400, y - 48, 600, stat.color, "#000000", 22, "left", 160, 1.0, 8);
+			tooltip = true;
+			if (stat.click) {
+				DrawButtonKDEx("statHighlight" + stat[0], (bdata) => {
+					KDSendInput("buffclick", {
+						click: stat.click,
+						buff: stat.buffid,
+					});
+					return true;
+				}, true,
+				XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize, undefined, "#ffffff",
+				undefined, undefined, false, true, undefined, undefined, undefined,
+				{
+					zIndex: 10,
+				});
+			}
+		}
+
+		KDDraw(kdstatusboard, kdpixisprites, "wstat" + YY + stat[0], KinkyDungeonRootDirectory + "Buffs/" + (stat.icon || "buff/buff") + ".png",
+			XX, YY - Math.ceil(spriteSize/2) , spriteSize, spriteSize, undefined, {
+				zIndex: 151,
+			});
+
+		YY += spriteSize;
+	}*/
+
 	let hover = false;
 
 	if (KDGameData.PreviousWeapon?.length > 0) {
 		let ii = 0;
 		for (let wep of KDGameData.PreviousWeapon) {
+			if (ii >= KDMaxPreviousWeapon) break;
 			if (wep && DrawButtonKDEx("previousweapon" + wep,(bdata) => {
 				if (!KinkyDungeonControlsEnabled()) return false;
-				KDSwitchWeapon(wep);
+				KDSwitchWeapon(wep, ii);
 				return true;
-			}, KDGameData.PreviousWeapon != undefined, x + 0.45*width + (ii++*0.35*width), y-0.35*width, 0.35*width, 0.35*width, "", "#ffffff",
+			}, KDGameData.PreviousWeapon != undefined, x + 10 + 0.45*width + (ii*0.35*width), y-0.35*width, 0.35*width, 0.35*width, "", "#ffffff",
 			KinkyDungeonRootDirectory + "Items/" + KDWeapon(KinkyDungeonInventoryGetWeapon(wep))?.name + ".png",
-			undefined, undefined, true, undefined, undefined, undefined, {
-				//hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[0]),
+			undefined, undefined, KDWeaponSwitchPref != ii, undefined, undefined, undefined, {
+				hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[ii]),
 				scaleImage: true,
 			})) {
 				if (KDWeapon(KinkyDungeonInventoryGetWeapon(wep))) {
@@ -877,6 +921,7 @@ function KDDrawWeaponSwap(x, y) {
 				}
 				hover = true;
 			}
+			ii += 1;
 		}
 	}
 	if (KinkyDungeonPlayerWeapon && KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon)) {
@@ -1957,9 +2002,10 @@ function KDGetStatsWeaponCast() {
 		countcolor: KinkyDungeonMiscastChance > 0 ? "#ff5555" : "#ffffff",
 		category: "info", color: "#ffffff", bgcolor: "#000000", priority: 9
 	};
+	return statsDraw;
 }
 
-function KDDrawBuffIcons(minXX, minYY) {
+function KDProcessBuffIcons(minXX, minYY, side) {
 	/**
 	 * @type {Record<string, {text: string, icon?: string, count?: string, category: string, priority?: number, color: string, bgcolor: string, countcolor?: string, click?: string, buffid?: string}>}
 	 */
@@ -2372,10 +2418,10 @@ function KDDrawBuffIcons(minXX, minYY) {
 		}
 
 
-	KDDrawStatusBuffs(minXX, minYY, statsDraw);
+	KDDrawBuffIcons(minXX, minYY, statsDraw, side);
 }
 
-function KDDrawStatusBuffs(minXX, minYY, statsDraw) {
+function KDDrawBuffIcons(minXX, minYY, statsDraw, side) {
 	// Draw the buff icons
 	let II = 0;
 	let spriteSize = 46;
@@ -2383,6 +2429,7 @@ function KDDrawStatusBuffs(minXX, minYY, statsDraw) {
 		return (b.priority + KDStatsOrder[b.category]) - (a.priority + KDStatsOrder[a.category]);
 	});
 	let maxXX = minXX + 800;
+	let maxYY = minYY + 200;
 	let YY = minYY;
 	let textWidth = 44;
 	let XX = minXX;
@@ -2397,8 +2444,8 @@ function KDDrawStatusBuffs(minXX, minYY, statsDraw) {
 		KDToggleShowAllBuffs = !KDToggleShowAllBuffs;
 		return true;
 	}, true,
-	minXX - 5 - spriteSize, minYY - 26, spriteSize + 5, spriteSize + 10, undefined, "#ffffff", //  + 0.8*spriteSize
-	KinkyDungeonRootDirectory + "Buffs/BuffDots.png", undefined, false, true, undefined, undefined, true,
+	side ? (minXX - 5) : (minXX - 5 - spriteSize), side ? (minYY - 80) : (minYY - 26), side ? (spriteSize + 15) : (spriteSize + 5), side ? (spriteSize + 15) : (spriteSize + 10), undefined, "#ffffff", //  + 0.8*spriteSize
+	KinkyDungeonRootDirectory + (side ? "Buffs/BuffDotsSide.png" : "Buffs/BuffDots.png"), undefined, false, true, undefined, undefined, true,
 	{
 		zIndex: 10,
 	})) {
@@ -2409,16 +2456,31 @@ function KDDrawStatusBuffs(minXX, minYY, statsDraw) {
 	let resetX = (stat) => {
 		XX = minXX;
 	};
+	let resetY = (stat) => {
+		YY = minYY;
+	};
 	resetX();
+	resetY();
 
 	for (let stat of sorted) {
-		if (((!KDMinBuffX && XX > minXX) || (KDMinBuffX && XX > KDMinBuffX)) && (KDStatsSkipLine[currCategory] || KDStatsSkipLineBefore[stat.category]) && currCategory != stat.category) {
+		if (side) {
+			if ((YY > minXX) && (KDStatsSkipLine[currCategory] || KDStatsSkipLineBefore[stat.category]) && currCategory != stat.category) {
 
-			if (KDToggleShowAllBuffs) {
-				resetX(stat);
-				YY -= YYspacing;
+				if (KDToggleShowAllBuffs) {
+					resetY(stat);
+					XX += XXspacing;
+				}
+			}
+		} else {
+			if (((!KDMinBuffX && XX > minXX) || (KDMinBuffX && XX > KDMinBuffX)) && (KDStatsSkipLine[currCategory] || KDStatsSkipLineBefore[stat.category]) && currCategory != stat.category) {
+
+				if (KDToggleShowAllBuffs) {
+					resetX(stat);
+					YY -= YYspacing;
+				}
 			}
 		}
+
 
 		currCategory = stat.category;
 
@@ -2450,13 +2512,24 @@ function KDDrawStatusBuffs(minXX, minYY, statsDraw) {
 				zIndex: 151,
 			});
 
-		XX += XXspacing;
-		if (XX > maxXX) {
-			if (KDToggleShowAllBuffs) {
-				resetX(stat);
-				YY -= YYspacing;
+		if (side) {
+			YY += XXspacing;
+			if (YY > maxYY) {
+				if (KDToggleShowAllBuffs) {
+					resetY(stat);
+					XX += XXspacing;
+				}
+			}
+		} else {
+			XX += XXspacing;
+			if (XX > maxXX) {
+				if (KDToggleShowAllBuffs) {
+					resetX(stat);
+					YY -= YYspacing;
+				}
 			}
 		}
+
 		II++;
 	}
 }

@@ -3562,6 +3562,7 @@ function KinkyDungeonClickGame(Level) {
 			CharacterRefresh = _CharacterRefresh;
 			CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
 		}
+		KDFocusControls = "";
 		return;
 	}
 	// beep
@@ -3572,6 +3573,7 @@ function KinkyDungeonClickGame(Level) {
 	}
 	// If no buttons are clicked then we handle move
 	else if ((KinkyDungeonControlsEnabled() || KinkyDungeonInspect) && KinkyDungeonDrawState == "Game") {
+		KDFocusControls = "";
 		try {
 			if (KinkyDungeonInspect) {
 				KDInspectCamera.x = KinkyDungeonTargetX;
@@ -3698,6 +3700,7 @@ function KinkyDungeonListenKeyMove() {
 	}
 	if (KinkyDungeonLastMoveTimerStart < performance.now() && KinkyDungeonLastMoveTimer == 0) KinkyDungeonLastMoveTimerStart = 0;
 	if (!KinkyDungeonGameKey.keyPressed.some((element)=>{return element;})) { KinkyDungeonLastMoveTimer = 0;}
+	KDFocusControls = "";
 }
 
 let KDShopBuyConfirm = false;
@@ -4050,22 +4053,26 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 					target: Enemy,
 					attackCost: attackCost,
 					skipTurn: false,
+					attackData: {
+						damage: KinkyDungeonPlayerDamage.dmg,
+						type: KinkyDungeonPlayerDamage.type,
+						distract: KinkyDungeonPlayerDamage.distract,
+						distractEff: KinkyDungeonPlayerDamage.distractEff,
+						bind: KinkyDungeonPlayerDamage.bind,
+						bindType: KinkyDungeonPlayerDamage.bindType,
+						bindEff: KinkyDungeonPlayerDamage.bindEff,
+						boundBonus: KinkyDungeonPlayerDamage.boundBonus,
+						novulnerable: KinkyDungeonPlayerDamage.novulnerable,
+						tease: KinkyDungeonPlayerDamage.tease}
 				};
 				KinkyDungeonSendEvent("beforePlayerLaunchAttack", data);
 				if (attackCost < 0 && KinkyDungeonStatsChoice.has("BerserkerRage")) {
 					KinkyDungeonChangeDistraction(0.7 - 0.5 * data.attackCost, false, 0.33);
 				}
-				if (KinkyDungeonAttackEnemy(data.target, {
-					damage: KinkyDungeonPlayerDamage.dmg,
-					type: KinkyDungeonPlayerDamage.type,
-					distract: KinkyDungeonPlayerDamage.distract,
-					distractEff: KinkyDungeonPlayerDamage.distractEff,
-					bind: KinkyDungeonPlayerDamage.bind,
-					bindType: KinkyDungeonPlayerDamage.bindType,
-					bindEff: KinkyDungeonPlayerDamage.bindEff,
-					boundBonus: KinkyDungeonPlayerDamage.boundBonus,
-					novulnerable: KinkyDungeonPlayerDamage.novulnerable,
-					tease: KinkyDungeonPlayerDamage.tease})) {
+				if (KinkyDungeonPlayerDamage.unarmed && KDIsHumanoid(data.target)) {
+					data.attackData.type = "grope";
+				}
+				if (KinkyDungeonAttackEnemy(data.target, data.attackData)) {
 					result = "hit";
 				} else {
 					result = "miss";
