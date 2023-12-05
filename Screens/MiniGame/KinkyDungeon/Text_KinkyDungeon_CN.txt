@@ -116,6 +116,14 @@ Clothes: Chastity Bra over Bras
 衣物：贞操文胸显示在胸罩之上
 Clothes: Simple Color Picker
 衣物：简易取色器
+UI: Center Player
+UI：玩家至中心
+UI: Draw Buffs on Side
+UI：在侧面绘制增益效果
+UI: Show Trajectory on Auto-Path
+UI：在自动路径时显示轨迹
+UI: Show Player Facing
+UI：显示玩家面向
 Wait Quickly
 快速等待
 
@@ -2188,11 +2196,14 @@ Upcast Spells
 凝聚法力
 Cancel Upcast
 停止凝聚
-Swap Weapon
-切换武器
-Switch to Offhand
-切换到副手
-Switch from Offhand
+Swap Weapon 1
+切换武器 1
+Swap Weapon 2
+切换武器 2
+Swap Weapon 3
+切换武器 3
+Swap Weapon 4
+切换武器 4
 从副手切换
 Weapon Ability
 武器能力
@@ -2260,8 +2271,8 @@ Combat Training
 Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 0 WP you gain 1 slow resist.
 你的训练给予了许多奖励：|-每 10 个当前 WP，武器体力消耗减少 1%，最多 40%。|-缓慢效果消失得更快。|-当你的 WP 高于 0 时，你将获得 1 点缓慢抵抗力。
 
-This is your currently held offhand weapon. Click to switch to it.
-这是你当前持有的副手武器。点击即可切换到它。
+This is your current offhand weapon.
+这是你当前副手的武器。
 This is your previously held weapon. Click to switch to it.
 这是你之前持有的武器。点击即可切换到它。
 
@@ -3154,8 +3165,8 @@ Unarmed
 徒手
 Fight with your hands and feet.
 用你的手和脚战斗。
-Deals unarmed damage.
-造成徒手伤害。
+Deals unarmed damage. Becomes grope damage when used on a humanoid.
+造成徒手伤害。对人形生物使用时会造成抚摸伤害。
 Sword
 剑
 The blade is strong, its edge sharp.
@@ -10068,8 +10079,8 @@ Inner power now recharges after 10 turns instead of 16.
 
 Fast Recharge II
 快速充能 II
-Inner power now recharges after 4 turns instead of 16.
-现在内力会在 4 回合（而不是 16 回合）后恢复。
+Inner power now recharges after 6 turns instead of 16.
+现在内力会在 6 回合（而不是 16 回合）后恢复。
 
 Windblast
 暴风
@@ -13297,8 +13308,6 @@ The EnemyName manages to retreat with your items!
 EnemyName 设法带着你的物品撤退！
 The orb contains knowledge of SPELL.
 该水晶包含 SPELL 的知识。
-You capture the EnemyName. You can become a champion in the Reputation screen.
-你捕获了 EnemyName。你可以在声望界面成为卫士。
 You capture the EnemyName.
 你捕获了 EnemyName。
 You capture the EnemyName in the name of the goddess of GODDESS.
@@ -15822,6 +15831,8 @@ Not really.
 (Shake your head)
 （摇头）
 
+Fine...
+好吧...
 That sounds fun!
 这听起来很有趣！
 (Nod again)
