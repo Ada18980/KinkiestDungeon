@@ -222,12 +222,35 @@ Extra
 附加
 Less
 较少
+Much Less
+非常少
 No pain, no gain.
 一份耕耘，一份收获。
 Gain 10 extra perks, to give you a false sense of security.
 获得 10 项额外特权，给你一种虚假的安全感。
 Lose 10 perk points, just to keep things interesting.
-失去 10 个特权奖励点，只是为了让事情变得有趣。
+失去 10 个特权点数，只是为了让事情变得有趣。
+Lose 25 perk points, making things very interesting.
+失去 25 个特权点数，让事情变得非常有趣。
+
+Perk Progression Mode:
+特权进展模式：
+Disabled
+关闭
+Optional
+随意
+Mandatory
+强制
+Debuffs Only
+仅减益效果
+No perks between floors.
+楼层中没有特权。
+The standard mode. You may choose between one of three perk altars between floors.
+标准模式。你可以在楼层之间的三个额外神泉中选择一个。
+A twist on the standard mode. You must choose before progressing.
+标准模式的一个转折。在前进之前你必须做出选择。
+You must pick a debuff between floors before progressing.
+在前进之前，你必须在楼层之间选择一个减益效果。
 
 Hard Mode:
 难度模式：
