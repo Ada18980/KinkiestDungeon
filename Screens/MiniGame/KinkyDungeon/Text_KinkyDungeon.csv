@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.1 Release"
+KDVersionStr,"5.0.2 (B)"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -7096,9 +7096,22 @@ KDPerksMode,"Perks Mode:"
 KinkyDungeonPerksMode0,Standard
 KinkyDungeonPerksMode1,Extra
 KinkyDungeonPerksMode2,Less
+KinkyDungeonPerksMode3,Much Less
 KinkyDungeonPerksModeDesc0,"No pain, no gain."
 KinkyDungeonPerksModeDesc1,"Gain 10 extra perks, to give you a false sense of security."
 KinkyDungeonPerksModeDesc2,"Lose 10 perk points, just to keep things interesting."
+KinkyDungeonPerksModeDesc3,"Lose 25 perk points, making things very interesting."
+
+
+KDPerkProgressionMode,"Perk Progression Mode:"
+KinkyDungeonPerkProgressionMode0,Disabled
+KinkyDungeonPerkProgressionMode1,Optional
+KinkyDungeonPerkProgressionMode2,Mandatory
+KinkyDungeonPerkProgressionMode3,Debuffs Only
+KinkyDungeonPerkProgressionModeDesc0,"No perks between floors."
+KinkyDungeonPerkProgressionModeDesc1,"The standard mode. You may choose between one of three perk altars between floors."
+KinkyDungeonPerkProgressionModeDesc2,"A twist on the standard mode. You must choose before progressing."
+KinkyDungeonPerkProgressionModeDesc3,"You must pick a debuff between floors before progressing."
 
 KDHardMode,"Hard Mode:"
 KinkyDungeonHardMode0,Normal Mode

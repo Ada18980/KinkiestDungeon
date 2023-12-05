@@ -406,7 +406,10 @@ function KDGetPerkCost(perk) {
 }
 
 function KinkyDungeonGetStatPoints(Stats) {
-	let total = KinkyDungeonStatsChoice.get("hardperksMode") ? -10 : (KinkyDungeonStatsChoice.get("perksMode") ? 10 : 0);
+	let total = KinkyDungeonStatsChoice.get("vhardperksMode") ? -25
+		: (KinkyDungeonStatsChoice.get("hardperksMode") ? -10
+		: (KinkyDungeonStatsChoice.get("perksMode") ? 10
+		: 0));
 	for (let k of Stats.keys()) {
 		if (Stats.get(k)) {
 			if (KinkyDungeonStatsPresets[k]) {
@@ -938,36 +941,52 @@ function drawHorizList(list, x, y, w, h, max, fontSize, clickfnc, prefix, revers
  * @param {Record<string, boolean>} existing
  * @returns {string[]}
  */
-function KDGetRandomPerks(existing) {
+function KDGetRandomPerks(existing, debuff) {
+	let poscandidate = null;
 	let poscandidates = [];
 	let singlepointcandidates = [];
 	let negcandidates = [];
-	for (let p of Object.entries(KinkyDungeonStatsPresets)) {
-		if (!existing[p[0]] && !KinkyDungeonStatsChoice.get(p[0]) && KinkyDungeonCanPickStat(p[0], 999)) { // No dupes
-			if ((!p[1].tags || !p[1].tags.includes("start"))) {
-				if (!p[1].locked || KDUnlockedPerks.includes(p[0])) {
-					if (KDGetPerkCost(p[1]) > 0) {
-						poscandidates.push(p);
-						if (KDGetPerkCost(p[1]) == 1)
-							singlepointcandidates.push(p);
-					} else if (KDGetPerkCost(p[1]) < 0) {
-						negcandidates.push(p);
+	if (!debuff) {
+		for (let p of Object.entries(KinkyDungeonStatsPresets)) {
+			if (!existing[p[0]] && !KinkyDungeonStatsChoice.get(p[0]) && KinkyDungeonCanPickStat(p[0], 999)) { // No dupes
+				if ((!p[1].tags || !p[1].tags.includes("start"))) {
+					if (!p[1].locked || KDUnlockedPerks.includes(p[0])) {
+						if (KDGetPerkCost(p[1]) > 0) {
+							poscandidates.push(p);
+							if (KDGetPerkCost(p[1]) == 1)
+								singlepointcandidates.push(p);
+						} else if (KDGetPerkCost(p[1]) < 0) {
+							negcandidates.push(p);
+						}
+					}
+				}
+			}
+		}
+
+		poscandidate = poscandidates[Math.floor(poscandidates.length * KDRandom())];
+		if (!poscandidate) return [];
+	} else {
+		for (let p of Object.entries(KinkyDungeonStatsPresets)) {
+			if (!existing[p[0]] && !KinkyDungeonStatsChoice.get(p[0]) && KinkyDungeonCanPickStat(p[0], 999)) { // No dupes
+				if ((!p[1].tags || !p[1].tags.includes("start"))) {
+					if (!p[1].locked || KDUnlockedPerks.includes(p[0])) {
+						if (KDGetPerkCost(p[1]) < 0) {
+							negcandidates.push(p);
+						}
 					}
 				}
 			}
 		}
 	}
 
-	let poscandidate = poscandidates[Math.floor(poscandidates.length * KDRandom())];
-	if (!poscandidate) return [];
 
-	let netcost = KDGetPerkCost(poscandidate[1]);
-	let perks = [poscandidate[0]];
-	if (KDGetPerkCost(poscandidate[1]) > 1) {
+	let netcost = debuff ? 0 : KDGetPerkCost(poscandidate[1]);
+	let perks = poscandidate ? [poscandidate[0]] : [];
+	if (debuff || KDGetPerkCost(poscandidate[1]) > 1) {
 		negcandidates = negcandidates.filter((p) => {
 			return (KinkyDungeonCanPickStat(p[0], 999))
-				&& !KDPerkBlocked(p[0], poscandidate[0])
-				&& (-KDGetPerkCost(p[1])) >= (KDGetPerkCost(poscandidate[1]) - 1);
+				&& (debuff || !KDPerkBlocked(p[0], poscandidate[0]))
+				&& (-KDGetPerkCost(p[1]) >= (debuff ? 0 : (KDGetPerkCost(poscandidate[1]) - 1)));
 		});
 		let negperk = null;
 		if (negcandidates.length > 0) {
@@ -976,7 +995,7 @@ function KDGetRandomPerks(existing) {
 			netcost += KDGetPerkCost(negperk[1]);
 		}
 
-		if (netcost < 0 && negperk) {
+		if (!debuff && netcost < 0 && negperk) {
 			singlepointcandidates = negcandidates.filter((p) => {
 				return (KinkyDungeonCanPickStat(p[0], 999)
 				&& p[0] != poscandidate[0]

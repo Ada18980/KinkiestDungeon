@@ -80,6 +80,10 @@ let alts = {
 		bossroom: false,
 		persist: true,
 
+		events: [
+			{trigger: "tick", type: "PerkRoom"},
+		],
+
 		torchreplace: {
 			sprite: "Lantern",
 			unlitsprite: "LanternUnlit",
@@ -1310,26 +1314,35 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 
 	POI.push({x: VisitedRooms[0].x*2 + 7, y: VisitedRooms[0].y*2, requireTags: [], favor: ["PearlChest"], used: false});
 
-	let perkCount = 3;
-	/** @type {Record<string, boolean>} */
-	let perks = {};
-	for (let i = 0; i < perkCount; i++) {
-		let newperks = KDGetRandomPerks(perks);
-		if (newperks.length > 0) {
-			KinkyDungeonMapSet(p1x + i * 2, py, 'P');
-			KinkyDungeonTilesSet("" + (p1x + i * 2) + "," + (py), {Perks: newperks});
-			for (let p of newperks) {
-				perks[p] = true;
+
+	let perksplaced = 0;
+	if (!KinkyDungeonStatsChoice.get("noperks")) {
+		let perkCount = 3;
+		/** @type {Record<string, boolean>} */
+		let perks = {};
+		for (let i = 0; i < perkCount; i++) {
+			let newperks = KinkyDungeonStatsChoice.get("perksdebuff") ? KDGetRandomPerks(perks, true) : KDGetRandomPerks(perks);
+			if (newperks.length > 0) {
+				KinkyDungeonMapSet(p1x + i * 2, py, 'P');
+				KinkyDungeonTilesSet("" + (p1x + i * 2) + "," + (py), {Perks: newperks});
+				perksplaced += 1;
+				for (let p of newperks) {
+					perks[p] = true;
+				}
 			}
 		}
 	}
+
 
 	// Place lost items chest
 	if (KinkyDungeonLostItems.length > 0)
 		KDChest(VisitedRooms[0].x*2 + 0, VisitedRooms[0].y*2 - 2, "lost_items");
 
 	// Place the exit stairs
-	KinkyDungeonMapSet(width*2 - 2, VisitedRooms[0].y*2, 's');
+	if (perksplaced > 0 && KinkyDungeonStatsChoice.get("perksmandatory"))
+		KinkyDungeonMapSet(width*2 - 2, VisitedRooms[0].y*2, 'b');
+	else
+		KinkyDungeonMapSet(width*2 - 2, VisitedRooms[0].y*2, 's');
 	KinkyDungeonTilesSet("" + (width*2 - 2) + "," + (VisitedRooms[0].y*2), {RoomType: "Tunnel"});
 
 	KDMapData.EndPosition = {x: width*2 - 2, y: VisitedRooms[0].y*2};

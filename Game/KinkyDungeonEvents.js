@@ -40,6 +40,7 @@ function KinkyDungeonSendEvent(Event, data, forceSpell) {
 	KinkyDungeonSendOutfitEvent(Event, data);
 	KinkyDungeonSendEnemyEvent(Event, data);
 	KinkyDungeonHandleGenericEvent(Event, data);
+	KinkyDungeonSendAltEvent(Event, data);
 }
 /** Called during initialization */
 function KinkyDungeonResetEventVariables() {
@@ -7025,7 +7026,6 @@ function KinkyDungeonHandleGenericEvent(Event, data) {
 
 
 
-
 function KDEventPrereq(e, item, tags) {
 	if (tags) {
 		if (!tags.length) {
@@ -7141,4 +7141,47 @@ let KDHardModeReplace = {
 	"LesserSkeleton": "GreaterSkeleton",
 	"Skeleton": "HeavySkeleton",
 	"OldDrone": "OldTapeDrone",
+};
+
+
+
+
+function KinkyDungeonSendAltEvent(Event, data) {
+	if (!KDMapHasEvent(KDEventMapAlt, Event)) return;
+	let alt = KDGetAltType(MiniGameKinkyDungeonLevel);
+	if (alt?.events) {
+		for (let e of alt.events) {
+			KinkyDungeonHandleAltEvent(Event, e, alt, data);
+		}
+	}
+}
+
+
+/**
+ *
+ * @param {string} Event
+ * @param {KinkyDungeonEvent} e
+ * @param {any} alt
+ * @param {*} data
+ */
+function KinkyDungeonHandleAltEvent(Event, e, alt, data) {
+	if (Event === e.trigger && KDEventMapAlt[e.dynamic ? "dynamic" : Event] && KDEventMapAlt[e.dynamic ? "dynamic" : Event][e.type]) {
+		if (KDCheckCondition(e, data))
+			KDEventMapAlt[e.dynamic ? "dynamic" : Event][e.type](e, alt, data);
+	}
+}
+
+/**
+ * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, *): void>>}
+ */
+let KDEventMapAlt = {
+	"tick": {
+		"PerkRoom": (e, alt, data) => {
+			if (KinkyDungeonStatsChoice.get("perksmandatory")) {
+				if (KinkyDungeonFlags.get("choseperk")) {
+					KinkyDungeonMapSet(KDMapData.EndPosition.x, KDMapData.EndPosition.y, 's');
+				}
+			}
+		}
+	},
 };

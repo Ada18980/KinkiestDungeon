@@ -817,13 +817,15 @@ function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountM
 			spawnFunction(Goddess, Name);
 		},
 		worldgenstart: () => {
-			KDRemoveQuest(Name);
-			KinkyDungeonChangeRep(Goddess, -KDDefaultGoddessQuestRep);
-			KinkyDungeonSendTextMessage(10, TextGet("KDQuestFail_" + Name), "#ffffff", 1);
-			KDPlayerEffectRestrain(undefined, Math.round(restraintsCountMult * (1 + KDGetEffLevel()/3)), restraintsTags, "Goddess", false, true, false, false);
-			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Evil" + ".ogg");
 		},
 		tick: (delta) => {
+			if (KDMapData.RoomType == "PerkRoom") {
+				KDRemoveQuest(Name);
+				KinkyDungeonChangeRep(Goddess, -KDDefaultGoddessQuestRep);
+				KinkyDungeonSendTextMessage(10, TextGet("KDQuestFail_" + Name), "#ffffff", 1);
+				KDPlayerEffectRestrain(undefined, Math.round(restraintsCountMult * (1 + KDGetEffLevel()/3)), restraintsTags, "Goddess", false, true, false, false);
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Evil" + ".ogg");
+			}
 			if (!(KDGetQuestData(Name).QuestRoom == KDMapData.RoomType)
 				|| !(KDGetQuestData(Name).QuestLocation?.x == KDCurrentWorldSlot.x)
 				|| !(KDGetQuestData(Name).QuestLocation?.y == KDCurrentWorldSlot.y)) return;

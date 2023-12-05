@@ -5272,6 +5272,7 @@ function KinkyDungeonSendEnemyEvent(Event, data) {
 	}
 }
 
+
 /**
  *
  * @param {entity} enemy
@@ -6739,3 +6740,4 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
 	KDSpliceIndex(forceIndex || KDMapData.Entities.indexOf(data.enemy), 1);
 	return true;
 }
+

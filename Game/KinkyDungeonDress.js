@@ -634,12 +634,12 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 				Xray.push("XrayFace");
 			}
 			if (Character?.Appearance?.some((A) => {
-				return A.Model?.Layers && Object.values(A.Model?.Categories).some((C) => {return C == "ChastityBelt";});
+				return A.Model?.Layers && A.Model?.Categories && Object.values(A.Model.Categories).some((C) => {return C == "ChastityBelt";});
 			})) {
 				Xray.push("XrayPanties");
 			}
 			if (Character?.Appearance?.some((A) => {
-				return A.Model?.Layers && Object.values(A.Model?.Categories).some((C) => {return C == "ChastityBra";});
+				return A.Model?.Layers && A.Model?.Categories && Object.values(A.Model.Categories).some((C) => {return C == "ChastityBra";});
 			})) {
 				Xray.push("XrayBra");
 			}
@@ -1201,7 +1201,7 @@ let KDExpressions = {
 				Eyes2Pose: "",
 				BrowsPose: "",
 				Brows2Pose: "",
-				BlushPose: (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.5) ? "BlushLow" : "BlushMedium",
+				BlushPose: (KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax*0.4) ? "BlushLow" : "BlushMedium",
 				MouthPose: "",
 			};
 		},
