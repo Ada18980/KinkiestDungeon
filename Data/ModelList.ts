@@ -11,7 +11,6 @@ AddModel({
 	TopLevel: false,
 	Categories: ["Suits"],
 	Folder: "Catsuit",
-	Group: "Catsuit",
 	Parent: "Catsuit",
 	Layers: ToLayerMap([
 		{ Name: "TorsoLower", Layer: "TorsoLower", Pri: 1,
@@ -60,7 +59,6 @@ AddModel({
 	TopLevel: false,
 	Categories: ["Suits"],
 	Folder: "Catsuit",
-	Group: "Catsuit",
 	Parent: "Catsuit",
 	Layers: ToLayerMap([
 		{ Name: "TorsoLowerLowRise", Layer: "TorsoLower", Pri: 1,
@@ -110,7 +108,6 @@ AddModel({
 	Parent: "Catsuit",
 	Categories: ["Suits"],
 	Folder: "Catsuit",
-	Group: "Catsuit",
 	Layers: ToLayerMap([
 		{ Name: "ArmRight", Layer: "ArmRight", Pri: 1,
 			InheritColor: "TorsoUpper",
@@ -189,7 +186,6 @@ AddModel({
 	Parent: "Catsuit",
 	Categories: ["Suits"],
 	Folder: "Catsuit",
-	Group: "Catsuit",
 	Layers: ToLayerMap([
 		{ Name: "SleevelessTorsoUpper", Layer: "TorsoUpper", Pri: 1,
 			InheritColor: "TorsoUpper",
@@ -209,12 +205,27 @@ AddModel({
 	Parent: "Catsuit",
 	Categories: ["Suits", "Tops", "Bras"],
 	Folder: "Catsuit",
-	Group: "Bra",
 	Layers: ToLayerMap([
 		{ Name: "SleevelessTop", Layer: "Bodysuit", Pri: -4,
 			InheritColor: "Latex",
 		},
 		{ Name: "SleevelessTopChest", Layer: "Chest", Pri: -4,
+			InheritColor: "Latex",
+		},
+
+	])
+});
+AddModel({
+	Name: "CatsuitTopV",
+	TopLevel: true,
+	Parent: "Catsuit",
+	Categories: ["Suits", "Tops", "Bras"],
+	Folder: "Catsuit",
+	Layers: ToLayerMap([
+		{ Name: "SleevelessTopV", Layer: "Bodysuit", Pri: -3.5,
+			InheritColor: "Latex",
+		},
+		{ Name: "SleevelessTopVChest", Layer: "Chest", Pri: -3.5,
 			InheritColor: "Latex",
 		},
 
@@ -227,7 +238,6 @@ AddModel({
 	Parent: "Catsuit",
 	Categories: ["Suits"],
 	Folder: "Catsuit",
-	Group: "Catsuit",
 	Layers: ToLayerMap([
 		{ Name: "ArmRight", Layer: "ArmRight", Pri: 1,
 			InheritColor: "TorsoUpper",
@@ -322,13 +332,26 @@ AddModel({
 	Parent: "TransparentCatsuit",
 	Categories: ["Suits"],
 	Folder: "Catsuit",
-	Group: "Catsuit",
 	Filters: {
 		TorsoUpper: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
 		TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
 	},
 	Layers: ToLayerMap([
 		...GetModelLayersNoOverride("CatsuitUpper"),
+	]),
+});
+AddModel({
+	Name: "TransparentCatsuitUpperCropped",
+	TopLevel: false,
+	Parent: "TransparentCatsuit",
+	Categories: ["Suits"],
+	Folder: "Catsuit",
+	Filters: {
+		TorsoUpper: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
+		TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
+	},
+	Layers: ToLayerMap([
+		...GetModelLayersNoOverride("CatsuitUpperCropped"),
 	]),
 });
 
@@ -338,7 +361,6 @@ AddModel({
 	Parent: "TransparentCatsuit",
 	Categories: ["Suits"],
 	Folder: "Catsuit",
-	Group: "Catsuit",
 	Filters: {
 		TorsoUpper: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
 		TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
@@ -348,6 +370,20 @@ AddModel({
 	]),
 });
 
+AddModel({
+	Name: "TransparentCatsuitLowerLowRise",
+	TopLevel: false,
+	Parent: "TransparentCatsuit",
+	Categories: ["Suits"],
+	Folder: "Catsuit",
+	Filters: {
+		TorsoUpper: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
+		TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
+	},
+	Layers: ToLayerMap([
+		...GetModelLayersNoOverride("CatsuitLowerLowRise"),
+	]),
+});
 
 AddModel({
 	Name: "TransparentCatsuit",

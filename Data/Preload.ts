@@ -195,7 +195,7 @@ let displacementList = [
 ];
 
 let linearList = [
-	//"TextureAtlas/atlas0.json",
+	"TextureAtlas/atlas0.json",
 ];
 
 let nearestList = [
