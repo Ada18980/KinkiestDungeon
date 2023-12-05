@@ -874,11 +874,13 @@
             <key type="filename">../Game/Enemies/CorruptedAdventurer.png</key>
             <key type="filename">../Game/Enemies/Cuffs.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Alisa.png</key>
+            <key type="filename">../Game/Enemies/CustomSprite/Melissa.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Myrtrice.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Parov.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Rook.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Selly.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Alisa.png</key>
+            <key type="filename">../Game/Enemies/CustomSpriteBound/Melissa.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Myrtrice.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Rook.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Selly.png</key>
@@ -2122,6 +2124,8 @@
             <key type="filename">../Game/UI/Cycle.png</key>
             <key type="filename">../Game/UI/ItemAura.png</key>
             <key type="filename">../Game/UI/ItemAuraBG.png</key>
+            <key type="filename">../Game/UI/PathDisplay.png</key>
+            <key type="filename">../Game/UI/PlayerFacing.png</key>
             <key type="filename">../Game/WarningAlly.png</key>
             <key type="filename">../Game/WarningBacking.png</key>
             <key type="filename">../Game/WarningBackingHighlight.png</key>
@@ -2266,6 +2270,7 @@
             </struct>
             <key type="filename">../Game/Buffs/BlankBuff.png</key>
             <key type="filename">../Game/Buffs/BuffDots.png</key>
+            <key type="filename">../Game/Buffs/BuffDotsSide.png</key>
             <key type="filename">../Game/Buffs/Denied.png</key>
             <key type="filename">../Game/Buffs/Edged.png</key>
             <key type="filename">../Game/Buffs/Help.png</key>

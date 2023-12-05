@@ -18,6 +18,14 @@ Vague todo:
 TODO add sugar magic ('Blood Energy Magic')
 
 
+5.0.2
+- Nerfed Fast Recharge to be 6 turns instead of 4
+- Added various toggles to the UI
+- Changed the way the previous weapons list works
+- Unarmed attacks now deal Grope damage against humanoid targets
+- Added various new catsuit variant models
+- Various bugfix
+
 5.0.1
 - Fixed bug where hotkeys for Wait, Play self, and Make Noise didnt work
 - Wait til Interrupted while Reloading a crossbow now auto-ends after finishing loading. Useful for arbalest.

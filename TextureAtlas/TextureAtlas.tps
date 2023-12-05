@@ -442,6 +442,8 @@
             <key type="filename">../Models/Catsuit/ShoulderRightUp.png</key>
             <key type="filename">../Models/Catsuit/SleevelessTop.png</key>
             <key type="filename">../Models/Catsuit/SleevelessTopChest.png</key>
+            <key type="filename">../Models/Catsuit/SleevelessTopV.png</key>
+            <key type="filename">../Models/Catsuit/SleevelessTopVChest.png</key>
             <key type="filename">../Models/Catsuit/SleevelessTorsoUpper.png</key>
             <key type="filename">../Models/Catsuit/SleevelessTorsoUpperHogtie.png</key>
             <key type="filename">../Models/Catsuit/TorsoBand.png</key>
@@ -500,6 +502,8 @@
             <key type="filename">../Models/Collars/Leash.png</key>
             <key type="filename">../Models/Collars/NeckCorset.png</key>
             <key type="filename">../Models/Collars/NeckCorsetRim.png</key>
+            <key type="filename">../Models/Collars/Quake.png</key>
+            <key type="filename">../Models/Collars/QuakeHogtie.png</key>
             <key type="filename">../Models/Collars/Simple.png</key>
             <key type="filename">../Models/Collars/TrackingModule.png</key>
             <key type="filename">../Models/Collars/TrackingModuleDisplay.png</key>
@@ -687,6 +691,7 @@
             <key type="filename">../Models/FaceKjus/Brows2Angry.png</key>
             <key type="filename">../Models/Furniture/Barrel.png</key>
             <key type="filename">../Models/Furniture/Bed.png</key>
+            <key type="filename">../Models/Furniture/BedHogtie.png</key>
             <key type="filename">../Models/Furniture/CageBack.png</key>
             <key type="filename">../Models/Furniture/CageFront.png</key>
             <key type="filename">../Models/Furniture/DisplayFront.png</key>
