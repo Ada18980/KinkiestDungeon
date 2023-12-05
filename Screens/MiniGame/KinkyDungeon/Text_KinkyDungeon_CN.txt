@@ -121,7 +121,7 @@ UI：玩家至中心
 UI: Draw Buffs on Side
 UI：在侧面绘制增益效果
 UI: Show Trajectory on Auto-Path
-UI：在自动路径时显示轨迹
+UI：自动路径显示轨迹
 UI: Show Player Facing
 UI：显示玩家面向
 Wait Quickly
