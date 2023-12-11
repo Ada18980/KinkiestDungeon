@@ -193,6 +193,21 @@ AddModel({
 	])
 });
 AddModel({
+	Name: "ShortCurlyBack",
+	Parent: "MessyBack",
+	Folder: "Hair",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Hairstyles", "BackHair"],
+	Layers: ToLayerMap([
+		{ Name: "BackShortCurly", Layer: "HairBack", Pri: 0,
+		},
+		{ Name: "BackShortCurlyUnderlight", Layer: "HairBack", Pri: -0.1,
+		  NoOverride: true, TieToLayer: "BackShortCurly", 
+		},
+	])
+});
+AddModel({
 	Name: "Ponytail",
 	Folder: "Hair",
 	TopLevel: true,

@@ -12034,6 +12034,9 @@ m_MessyBack_l_Messy,Messy
 m_ShortMessyBack,ShortMessyBack
 m_ShortMessyBack_l_BackShortMessy,BackShortMessy
 m_ShortMessyBack_l_BackShortMessyUnderlight,BackShortMessyUnderlight
+m_ShortCurlyBack,ShortCurlyBack
+m_ShortCurlyBack_l_BackShortCurly,BackShortCurly
+m_ShortCurlyBack_l_BackShortCurlyUnderlight,BackShortCurlyUnderlight
 m_Ponytail,Ponytail
 m_Ponytail_l_Ponytail,Ponytail
 m_FluffyPonytail,FluffyPonytail
@@ -12086,6 +12089,10 @@ m_KjusMouth,KjusMouth
 m_KjusMouth_l_Mouth,Mouth
 m_KjusBlush,KjusBlush
 m_KjusBlush_l_Blush,Blush
+m_DaskBrows,DaskBrowsHikimayu
+m_DaskBrows_1_Brows,Brows
+m_DaskBrows_1_Brows2,Brows2
+m_DaskBrows,Hikimayu
 m_DaskEyes,DaskEyes
 m_DaskEyes_l_Eyes,Eyes
 m_DaskEyes_l_Eyes2,Eyes2

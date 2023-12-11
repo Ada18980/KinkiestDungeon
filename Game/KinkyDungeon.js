@@ -43,12 +43,12 @@ let KinkyDungeonNextRefreshCheck = 0;
 const pp = new URLSearchParams(window.location.search);
 let param_branch = pp.has('branch') ? pp.get('branch') : "";
 let param_test = pp.has('test') ? pp.get('test') : "";
-let param_localhost = pp.has('localhost') ? pp.get('localhost') : "";
+let param_localhost = pp.has('localhost') ? pp.get('localhost') : "" || true;
 let TestMode = param_test || param_branch || param_localhost || ServerURL == 'https://bc-server-test.herokuapp.com/';
 
-let KDDebugMode = false;
-let KDDebug = false;
-let KDDebugPerks = false;
+let KDDebugMode = true;
+let KDDebug = true;
+let KDDebugPerks = true;
 let KDDebugGold = false;
 
 let KDAllModFiles = [];
