@@ -194,7 +194,7 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, 1);
 	} else if (KDConsumable(Item)) {
 		if (KinkyDungeonWeaponVariants[Item.name]) {
-			KDGiveConsumableVariant(KinkyDungeonConsumableVariants[Item.name], undefined);
+			KDGiveConsumableVariant(KinkyDungeonConsumableVariants[Item.name], undefined, Item.name);
 			color = "#aaaaff";
 			name = "Generic";
 			replace = TextGet("KinkyDungeonInventoryItem" + KinkyDungeonConsumableVariants[Item.name].template);
@@ -207,7 +207,7 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 		}
 	} else if (KDWeapon(Item)) {
 		if (KinkyDungeonWeaponVariants[Item.name]) {
-			KDGiveWeaponVariant(KinkyDungeonWeaponVariants[Item.name], undefined);
+			KDGiveWeaponVariant(KinkyDungeonWeaponVariants[Item.name], undefined, Item.name);
 			color = "#aaaaff";
 			name = "Generic";
 			replace = TextGet("KinkyDungeonInventoryItem" + KinkyDungeonWeaponVariants[Item.name].template);

@@ -277,7 +277,8 @@ function KDSwitchWeapon(weapon, pref) {
 
 	if (weapon && KinkyDungeonInventoryGet(weapon)) KDSendInput("switchWeapon", {weapon: weapon, pref: pref});
 	else for (let i = 0; i < KinkyDungeonKeySwitchWeapon.length; i++) {
-		if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKeySwitchWeapon[i] && (KDGameData.PreviousWeapon ? KDGameData.PreviousWeapon[i] : null))
+		if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKeySwitchWeapon[i] && (KDGameData.PreviousWeapon ? KDGameData.PreviousWeapon[i] : null)
+			&& KinkyDungeonInventoryGet(KDGameData.PreviousWeapon[i]))
 			KDSendInput("switchWeapon", {weapon: KDGameData.PreviousWeapon[i], pref: i});
 	}
 
@@ -2357,11 +2358,12 @@ function KDMorphToInventoryVariant(item, variant, prefix = "", curse) {
  * @param {KDWeaponVariant} variant
  * @param {string} prefix
  */
-function KDGiveWeaponVariant(variant, prefix = "") {
+function KDGiveWeaponVariant(variant, prefix = "", forceName, suffix = "") {
 	let origWeapon = KinkyDungeonFindWeapon(variant.template);
 	let events = origWeapon.events ? JSON.parse(JSON.stringify(origWeapon.events)) : [];
-	let newname = prefix + variant.template + KinkyDungeonGetItemID();
+	let newname = forceName ? forceName : (prefix + variant.template + KinkyDungeonGetItemID());
 	if (prefix) variant.prefix = prefix;
+	if (suffix) variant.suffix = suffix;
 	if (!KinkyDungeonWeaponVariants[newname])
 		KinkyDungeonWeaponVariants[newname] = variant;
 	if (variant.events)
@@ -2376,11 +2378,12 @@ function KDGiveWeaponVariant(variant, prefix = "") {
  * @param {KDConsumableVariant} variant
  * @param {string} prefix
  */
-function KDGiveConsumableVariant(variant, prefix = "") {
+function KDGiveConsumableVariant(variant, prefix = "", forceName, suffix = "") {
 	//let origConsumable = KinkyDungeonFindConsumable(variant.template);
 	let events = [];//TODO//origConsumable.events ? JSON.parse(JSON.stringify(origConsumable.events)) : [];
-	let newname = prefix + variant.template + KinkyDungeonGetItemID();
+	let newname = forceName ? forceName : (prefix + variant.template + KinkyDungeonGetItemID());
 	if (prefix) variant.prefix = prefix;
+	if (suffix) variant.suffix = suffix;
 	if (!KinkyDungeonConsumableVariants[newname])
 		KinkyDungeonConsumableVariants[newname] = variant;
 	if (variant.events)
@@ -2397,11 +2400,12 @@ function KDGiveConsumableVariant(variant, prefix = "") {
  * @param {string} ID
  * @param {string} [forceName]
  */
-function KDGiveInventoryVariant(variant, prefix = "", curse = undefined, ID="", forceName) {
+function KDGiveInventoryVariant(variant, prefix = "", curse = undefined, ID="", forceName, suffix = "") {
 	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
 	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
 	let newname = forceName ? forceName : (prefix + variant.template + (ID || (KinkyDungeonGetItemID() + "")) + (curse ? curse : ""));
 	if (prefix) variant.prefix = prefix;
+	if (suffix) variant.suffix = suffix;
 	if (curse) {
 		variant = JSON.parse(JSON.stringify(variant));
 		variant.curse = curse;
@@ -2431,11 +2435,12 @@ function KDGiveInventoryVariant(variant, prefix = "", curse = undefined, ID="", 
  * @param {string} prefix
  * @param {string} ID
  */
-function KDEquipInventoryVariant(variant, prefix = "", Tightness, Bypass, Lock, Keep, Trapped, faction, Deep, curse, securityEnemy, useAugmentedPower, inventoryAs, ID = "") {
+function KDEquipInventoryVariant(variant, prefix = "", Tightness, Bypass, Lock, Keep, Trapped, faction, Deep, curse, securityEnemy, useAugmentedPower, inventoryAs, ID = "", suffix = "") {
 	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
 	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
 	let newname = prefix + variant.template + (ID || (KinkyDungeonGetItemID() + "")) + (curse ? curse : "");
 	if (prefix) variant.prefix = prefix;
+	if (suffix) variant.suffix = suffix;
 	if (curse) {
 		variant = JSON.parse(JSON.stringify(variant));
 		variant.curse = curse;

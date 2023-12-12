@@ -811,7 +811,7 @@ let KDBarricades = {
 	},
 	"BarricadeMagic": {
 		filter: (enemy, x, y, checkpoint, type) => {
-			return enemy.Enemy.unlockCommandLevel > 0;
+			return enemy.Enemy.tags?.mage;
 		},
 		weight: (enemy, x, y, checkpoint, type) => {
 			return 15;

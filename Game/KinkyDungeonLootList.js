@@ -523,7 +523,7 @@ let KinkyDungeonLootTable = {
 	],
 	MetalQuest: [
 		{name: "spell_points", magic: true, minLevel: 0, weight:4, message:"KDGoddessQuestReward_SpellPoints", messageColor:"lightblue", messageTime: 3, allFloors: true, max: 1},
-		{name: "NevermereBlaster", minLevel: 0, weight:5, weapon: "NevermereBlaster", noweapon: ["NevermereBlaster"], message:"KDGoddessQuestReward_Weapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "Blaster", minLevel: 0, weight:5, weapon: "Blaster", noweapon: ["Blaster"], message:"KDGoddessQuestReward_Weapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "MistressKey", minLevel: 0, weight:5, message:"KDGoddessQuestReward_MistressKey", messageColor:"yellow", messageTime: 3, allFloors: true},
 		{name: "DollJacket", minLevel: 0, weight: 10,
 			armor: "CyberDollJacket",
@@ -578,7 +578,7 @@ let KinkyDungeonLootTable = {
 		{name: "spell_points", magic: true, minLevel: 0, weight:4, message:"KDGoddessQuestReward_SpellPoints", messageColor:"lightblue", messageTime: 3, allFloors: true, max: 1},
 
 		{name: "BallGag", minLevel: 0, weight: 10,
-			armor: "HighSecBallGag",
+			armor: "HighsecBallGag",
 			amtMult: 5,
 			maxEnchants: 4,
 			minEnchants: 2,

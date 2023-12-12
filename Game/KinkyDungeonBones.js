@@ -444,7 +444,7 @@ let KDPatrons = [
 	"Noel",
 	"omdik",
 	"CLUBT ",
-	"Michal Režný",
+	"Miisha",
 	"Jioshi ",
 	"Rizomind",
 	"Eric ",

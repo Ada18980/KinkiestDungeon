@@ -144,7 +144,7 @@ let KDQuests = {
 						if (e) {
 							let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 							if (epoint) {
-								let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+								let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 								if (ee) {
 									ee.faction = "Delinquent";
 									ee.factionrep = {"Maidforce": 0.01};
@@ -159,7 +159,7 @@ let KDQuests = {
 							e = KinkyDungeonGetEnemy(["maid"], MiniGameKinkyDungeonLevel + 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["maid"], undefined, {"maid": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
 							let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 							if (e && epoint) {
-								let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+								let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 								if (ee) {
 									ee.faction = "Delinquent";
 									ee.factionrep = {"Maidforce": 0.0025};
@@ -201,7 +201,7 @@ let KDQuests = {
 					if (e) {
 						let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 						if (epoint) {
-							let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+							let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 							if (ee) {
 								ee.faction = "Wolfhunter";
 								ee.AI = "patrol";
@@ -213,7 +213,7 @@ let KDQuests = {
 						e = KinkyDungeonGetEnemy(["nevermere"], MiniGameKinkyDungeonLevel + 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["nevermere"], undefined, {"wolfgirl": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
 						let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 						if (e && epoint) {
-							let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+							let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 							if (ee) {
 								ee.faction = "Wolfhunter";
 								ee.AI = "patrol";
@@ -297,9 +297,10 @@ let KDQuests = {
 				if (e) {
 					let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 					if (epoint) {
-						let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+						let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 						if (ee) {
 							KinkyDungeonSetEnemyFlag(ee, "LatexQuest", -1);
+							KinkyDungeonSetEnemyFlag(ee, "questtarget", -1);
 							ee.faction = "Latex";
 							if (KDCanOverrideAI(ee))
 								ee.AI = "looseguard";
@@ -316,9 +317,10 @@ let KDQuests = {
 					["pink"], undefined, {"alchemist": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
 				let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 				if (e && epoint) {
-					let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+					let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 					if (ee) {
 						KinkyDungeonSetEnemyFlag(ee, "LatexQuest", -1);
+						KinkyDungeonSetEnemyFlag(ee, "questtarget", -1);
 						ee.faction = "Latex";
 						if (KDCanOverrideAI(ee))
 							ee.AI = "looseguard";
@@ -341,9 +343,10 @@ let KDQuests = {
 					["mummy"], undefined, {"mummy": {mult: 2, bonus: 10}}, ["miniboss", "boss", "submissive"]);
 				let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 				if (e && epoint) {
-					let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+					let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 					if (ee) {
 						KinkyDungeonSetEnemyFlag(ee, "WillQuest", -1);
+						KinkyDungeonSetEnemyFlag(ee, "questtarget", -1);
 						ee.faction = "Debate";
 						if (KDCanOverrideAI(ee))
 							ee.AI = "guard";
@@ -359,9 +362,10 @@ let KDQuests = {
 					["elf"], undefined, {"elf": {mult: 2, bonus: 10}}, ["miniboss", "boss", "turret"]);
 				let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 				if (e && epoint) {
-					let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+					let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 					if (ee) {
 						KinkyDungeonSetEnemyFlag(ee, "WillQuest", -1);
+						KinkyDungeonSetEnemyFlag(ee, "questtarget", -1);
 						ee.faction = "Debate";
 						if (KDCanOverrideAI(ee))
 							ee.AI = "guard";
@@ -381,6 +385,7 @@ let KDQuests = {
 			let e = KinkyDungeonSummonEnemy(point.x, point.y, "RopeKraken", Math.max(1, Math.min(6, Math.round(KDGetEffLevel()/6))), 2.9);
 			for (let enemy of e) {
 				KinkyDungeonSetEnemyFlag(enemy, "RopeQuest", -1);
+				KinkyDungeonSetEnemyFlag(enemy, "questtarget", -1);
 				enemy.gxx = point.x;
 				enemy.gyy = point.y;
 				enemy.AI = "looseguard";
@@ -395,6 +400,7 @@ let KDQuests = {
 			let ens = KinkyDungeonSummonEnemy(point.x, point.y, beings[Math.floor(KDRandom() * beings.length)], Math.max(2, Math.min(6, Math.round(KDGetEffLevel()/4))), 2.9);
 			for (let enemy of ens) {
 				KinkyDungeonSetEnemyFlag(enemy, "LeatherQuest", -1);
+				KinkyDungeonSetEnemyFlag(enemy, "questtarget", -1);
 				enemy.AI = "guard";
 				enemy.faction = "Rebel";
 			}
@@ -406,7 +412,7 @@ let KDQuests = {
 				if (e) {
 					let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 					if (epoint) {
-						let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+						let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 						if (ee) {
 							//KinkyDungeonSetEnemyFlag(ee, "LeatherQuest", -1);
 							ee.faction = "Rebel";
@@ -426,7 +432,7 @@ let KDQuests = {
 					["dragon"], undefined, {"dragon": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
 				let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 				if (e && epoint) {
-					let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+					let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 					if (ee) {
 						//KinkyDungeonSetEnemyFlag(ee, "LeatherQuest", -1);
 						ee.faction = "Rebel";
@@ -452,9 +458,10 @@ let KDQuests = {
 				if (e) {
 					let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 					if (epoint) {
-						let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+						let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 						if (ee) {
 							KinkyDungeonSetEnemyFlag(ee, "MetalQuest", -1);
+							KinkyDungeonSetEnemyFlag(ee, "questtarget", -1);
 							ee.faction = "Virus";
 							if (KDCanOverrideAI(ee))
 								ee.AI = "looseguard";
@@ -472,9 +479,10 @@ let KDQuests = {
 					["robot"], undefined, {"oldrobot": {mult: 2, bonus: 10}}, ["miniboss", "boss", "turret"]);
 				let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 				if (e && epoint) {
-					let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+					let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 					if (ee) {
 						KinkyDungeonSetEnemyFlag(ee, "MetalQuest", -1);
+						KinkyDungeonSetEnemyFlag(ee, "questtarget", -1);
 						ee.faction = "Virus";
 						if (KDCanOverrideAI(ee))
 							ee.AI = "looseguard";
@@ -498,9 +506,10 @@ let KDQuests = {
 				if (e) {
 					let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 					if (epoint) {
-						let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+						let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 						if (ee) {
 							KinkyDungeonSetEnemyFlag(ee, "ConjureQuest", -1);
+							KinkyDungeonSetEnemyFlag(ee, "questtarget", -1);
 							ee.faction = "DubiousWitch";
 							if (KDCanOverrideAI(ee))
 								ee.AI = "guard";
@@ -518,9 +527,10 @@ let KDQuests = {
 					["mage"], undefined, {"witch": {mult: 4, bonus: 10}, "apprentice": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
 				let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 				if (e && epoint) {
-					let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+					let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 					if (ee) {
 						KinkyDungeonSetEnemyFlag(ee, "ConjureQuest", -1);
+						KinkyDungeonSetEnemyFlag(ee, "questtarget", -1);
 						ee.faction = "DubiousWitch";
 						if (KDCanOverrideAI(ee))
 							ee.AI = "guard";
@@ -544,9 +554,10 @@ let KDQuests = {
 				if (e) {
 					let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 					if (epoint) {
-						let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+						let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 						if (ee) {
 							KinkyDungeonSetEnemyFlag(ee, "ElementsQuest", -1);
+							KinkyDungeonSetEnemyFlag(ee, "questtarget", -1);
 							ee.faction = "Extraplanar";
 							if (KDCanOverrideAI(ee))
 								ee.AI = "looseguard";
@@ -564,9 +575,10 @@ let KDQuests = {
 					["demon"], undefined, {"demon": {mult: 2, bonus: 10}}, ["miniboss", "boss"]);
 				let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 				if (e && epoint) {
-					let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+					let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 					if (ee) {
 						KinkyDungeonSetEnemyFlag(ee, "ElementsQuest", -1);
+						KinkyDungeonSetEnemyFlag(ee, "questtarget", -1);
 						ee.faction = "Extraplanar";
 						if (KDCanOverrideAI(ee))
 							ee.AI = "looseguard";
@@ -590,9 +602,10 @@ let KDQuests = {
 				if (e) {
 					let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 					if (epoint) {
-						let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+						let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 						if (ee) {
 							KinkyDungeonSetEnemyFlag(ee, "IllusionQuest", -1);
+							KinkyDungeonSetEnemyFlag(ee, "questtarget", -1);
 							ee.faction = "ShadowClan";
 							if (KDCanOverrideAI(ee))
 								ee.AI = "guard";
@@ -609,9 +622,10 @@ let KDQuests = {
 					["shadowclan"], undefined, {"shadowclan": {mult: 2, bonus: 10}}, ["miniboss", "boss"]);
 				let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 				if (e && epoint) {
-					let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+					let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 					if (ee) {
 						KinkyDungeonSetEnemyFlag(ee, "IllusionQuest", -1);
+						KinkyDungeonSetEnemyFlag(ee, "questtarget", -1);
 						ee.faction = "ShadowClan";
 						if (KDCanOverrideAI(ee))
 							ee.AI = "guard";

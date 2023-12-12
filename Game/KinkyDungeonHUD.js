@@ -905,9 +905,10 @@ function KDDrawWeaponSwap(x, y) {
 		let ii = 0;
 		for (let wep of KDGameData.PreviousWeapon) {
 			if (ii >= KDMaxPreviousWeapon) break;
-			if (wep && DrawButtonKDEx("previousweapon" + wep,(bdata) => {
+			let Index = ii;
+			if (wep && DrawButtonKDEx("previousweapon" + wep + "," + ii,(bdata) => {
 				if (!KinkyDungeonControlsEnabled()) return false;
-				KDSwitchWeapon(wep, ii);
+				KDSwitchWeapon(wep, Index);
 				return true;
 			}, KDGameData.PreviousWeapon != undefined, x + 10 + 0.45*width + (ii*0.35*width), y-0.35*width, 0.35*width, 0.35*width, "", "#ffffff",
 			KinkyDungeonRootDirectory + "Items/" + KDWeapon(KinkyDungeonInventoryGetWeapon(wep))?.name + ".png",
@@ -1131,8 +1132,8 @@ function KinkyDungeonDrawActionBar(x, y) {
 	})) str = "KDAutoPath";*/
 
 	// Horizontal second layer
-	actionBarII = 1;
-	if (!KDToggles.TransparentUI) {
+	actionBarII = 0;
+	/*if (!KDToggles.TransparentUI) {
 		DrawRectKD(
 			kdcanvas, kdpixisprites, "actionvborder", {
 				Left: actionBarXX + actionBarSpacing*actionBarII - 5, Top: actionBarYY - 80 - 5, Width: actionBarSpacing*4 + 5,
@@ -1148,9 +1149,20 @@ function KinkyDungeonDrawActionBar(x, y) {
 				Color: KDUIColor, alpha: KDUIAlpha, zIndex: -1
 			}
 		);
-	}
+	}*/
 
 
+	// Crouch button
+	if (DrawButtonKDEx("toggleCrouch", (bdata) => {
+		KDSendInput("crouch", {});
+		
+		return true;
+	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY - 80, actionBarWidth, actionbarHeight, "", "",
+	KinkyDungeonRootDirectory + (KDGameData.Crouch ? "UI/CrouchOn.png" : "UI/CrouchOff.png"),
+	undefined, undefined, !KDGameData.Crouch, KDTextGray05, undefined, false, {alpha: 1.0,
+		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[9]),
+		hotkeyPress: KinkyDungeonKeyToggle[9],
+	})) str = "KDCrouch";
 
 	// Pass button
 	if (DrawButtonKDEx("togglePass", (bdata) => {
@@ -1209,16 +1221,16 @@ function KinkyDungeonDrawActionBar(x, y) {
 	if (!KDToggles.TransparentUI) {
 		DrawRectKD(
 			kdcanvas, kdpixisprites, "actionborder", {
-				Left: actionBarXX-5, Top: actionBarYY - 5, Width: actionBarSpacing*5 + 5,
-				Height: actionbarHeight + 25,
+				Left: actionBarXX-5, Top: actionBarYY - 5 - 80, Width: actionBarSpacing*5 + 5,
+				Height: actionbarHeight + 25 +80,
 				Color: KDUIColorHighlight, alpha: KDUIAlphaHighlight, zIndex: -2,
 				LineWidth: 2,
 			}
 		);
 		FillRectKD(
 			kdcanvas, kdpixisprites, "actionbg", {
-				Left: actionBarXX-5, Top: actionBarYY - 5, Width: actionBarSpacing*5 + 5,
-				Height: actionbarHeight + 25,
+				Left: actionBarXX-5, Top: actionBarYY - 5 -80, Width: actionBarSpacing*5 + 5,
+				Height: actionbarHeight + 25 +80,
 				Color: KDUIColor, alpha: KDUIAlpha, zIndex: -1
 			}
 		);
@@ -2176,6 +2188,14 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 			//DrawTextFitKD(TextGet("KinkyDungeonPlayerVisibility") + Math.round(visibility * 100) + "%", X1, 900 - i * 35, 200, KDTextGray0, "#ceaaed"); i++;
 		}
 	}
+
+	if (KDGameData.Shield > 0) {
+		statsDraw.shield = {text: TextGet("KDStatShield"), category: "status", icon: "shield", color: "#88aaff", bgcolor: "#333333", priority: 9,
+	
+		count: "" + Math.round(KDGameData.Shield * 10),
+		countcolor: "#ffffff",
+	};
+	}
 	let help = KinkyDungeonHasAllyHelp() || KinkyDungeonHasGhostHelp();
 	if (help) {
 		statsDraw.hashelp = {text: TextGet("KinkyDungeonPlayerHelp"), icon: "Help", category: "help", color: "#ffffff", bgcolor: "#333333", priority: 5};
@@ -2417,6 +2437,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 			}
 		}
 
+	KinkyDungeonSendEvent("drawBuffIcons", {stats: statsDraw});
 
 	KDDrawBuffIcons(minXX, minYY, statsDraw, side);
 }
@@ -2464,7 +2485,7 @@ function KDDrawBuffIcons(minXX, minYY, statsDraw, side) {
 
 	for (let stat of sorted) {
 		if (side) {
-			if ((YY > minXX) && (KDStatsSkipLine[currCategory] || KDStatsSkipLineBefore[stat.category]) && currCategory != stat.category) {
+			if ((YY > minYY) && (KDStatsSkipLine[currCategory] || KDStatsSkipLineBefore[stat.category]) && currCategory != stat.category) {
 
 				if (KDToggleShowAllBuffs) {
 					resetY(stat);
@@ -2489,7 +2510,7 @@ function KDDrawBuffIcons(minXX, minYY, statsDraw, side) {
 				16, undefined, 114, 0.8, 5);
 
 		if (!tooltip && MouseIn(XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize)) {
-			DrawTextFitKD(stat.text, minXX, tooltipY, 1000, stat.color, "#000000", 22, "left", 160, 1.0, 8);
+			DrawTextFitKD(stat.text, side ? XX + 100 : minXX, side ? YY : tooltipY, 1000, stat.color, "#000000", 22, "left", 160, 1.0, 8);
 			tooltip = true;
 			if (stat.click) {
 				DrawButtonKDEx("statHighlight" + II, (bdata) => {

@@ -81,6 +81,7 @@ let KDEventEnchantmentModular = {
 
 	"Evasion": {
 		tags: ["evasion", "defense", "passive"],
+		suffix: "Evasion",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -94,7 +95,7 @@ let KDEventEnchantmentModular = {
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments) => {
 					let power = Math.max(KDGetItemPower(item), 4);
-					let amt = 10 + Math.round((0.4 + 0.6*KDRandom()) * 5 * Math.pow(power, 0.75));
+					let amt = 7 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "Evasion", trigger: "tick", type: "evasionBuff", power: amt/100, inheritLinked: true},
@@ -104,6 +105,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"Accuracy": {
 		tags: ["accuracy", "offense", "passive"],
+		prefix: "Accuracy",
 		types: {
 			2: null, //consumable
 			1: /*weapon*/{level: 1,
@@ -144,6 +146,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"Sneak": {
 		tags: ["stealth", "defense", "passive"],
+		prefix: "Sneak",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -167,6 +170,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"AoEDamageFrozen": {
 		tags: ["magic", "offense", "ice", "passive"],
+		prefix: "AoEDamageFrozen",
 		types: {
 			2: null, //consumable
 			1: /*weapon*/{level: 1,
@@ -192,6 +196,7 @@ let KDEventEnchantmentModular = {
 	},
 	"SpellWard": {
 		tags: ["magic", "defense", "passive"],
+		suffix: "SpellWard",
 		types: {
 			2: null, //consumable
 			1: /*weapon*/{level: 1,
@@ -232,6 +237,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"BondageResist": {
 		tags: ["melee", "bondage", "defense", "passive"],
+		suffix: "BondageResist",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -245,7 +251,7 @@ let KDEventEnchantmentModular = {
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments) => {
 					let power = Math.max(KDGetItemPower(item), 5);
-					let amt = 20 + Math.round((0.4 + 0.6*KDRandom()) * 15 * Math.pow(power, 0.75));
+					let amt = 10 + Math.round((0.4 + 0.6*KDRandom()) * 8 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "BondageResist", trigger: "tick", type: "RestraintBlock", power: amt/10, inheritLinked: true},
@@ -255,6 +261,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"DamageResist": {
 		tags: ["damage", "defense", "passive"],
+		suffix: "DamageResist",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -280,6 +287,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"DamageBuff": {
 		tags: ["damage", "offense", "passive"],
+		suffix: "DamageBuff",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -305,6 +313,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"ManaCost": {
 		tags: ["magic", "mana", "economy", "passive"],
+		prefix: "ManaCost",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -329,6 +338,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"ManaCostSpecific": {
 		tags: ["magic", "mana", "economy", "passive"],
+		prefix: "ManaCostSpecific",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -355,6 +365,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"ManaRegenOnKill": {
 		tags: ["magic", "mana", "economy", "trigger"],
+		prefix: "ManaRegenOnKill",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -378,6 +389,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"ElementalEcho": {
 		tags: ["melee", "magic", "elemental", "offense", "passive"],
+		suffix: "ElementalEcho",
 		types: {
 			2: null, //consumable
 			1: null, // weapon
@@ -403,6 +415,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"ElementalDmg": {
 		tags: ["magic", "elemental", "offense", "passive"],
+		prefix: "ElementalDmg",
 		types: {
 			2: null, //consumable
 			1: /*weapon*/{level: 5,
@@ -448,6 +461,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"ManaRegen": {
 		tags: ["magic", "mana", "passive"],
+		prefix: "ManaRegen",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -471,6 +485,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"BaseDamageBuffMelee": {
 		tags: ["melee", "offense", "damage", "passive"],
+		suffix: "BaseDamageBuffMelee",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -495,6 +510,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"BaseDamageBuffMagic": {
 		tags: ["magic", "damage", "offense", "passive"],
+		suffix: "BaseDamageBuffMagic",
 		types: {
 			2: null, //consumable
 			1: null, //weapon

@@ -902,15 +902,34 @@ function KDDrawWardrobe(screen, Character) {
 	};
 
 	DrawTextFitKD(TextGet("KDLabelSaved"), 575, 75, 220, "#ffffff", KDTextGray0);
+
+	
+	DrawButtonKDEx("KDOutfitSaved_V", (bdata) => {
+		KDMaxOutfitsIndex += 3;
+		if (KDMaxOutfitsIndex > KDMaxOutfits-5) KDMaxOutfitsIndex = Math.floor(KDMaxOutfits-5);
+		return true;
+	}, true, 500, 110 + 50 * (1 + KDMaxOutfitsDisplay), 150, 45,
+	"v",
+	KDModelList_Toplevel_viewindex.index + KDModelListMax < KDModelList_Toplevel_viewindex.index ? "#ffffff" : "#888888", "");
+
+	DrawButtonKDEx("KDOutfitSaved_^^", (bdata) => {
+		KDMaxOutfitsIndex -= 3;
+		if (KDMaxOutfitsIndex < 0) KDMaxOutfitsIndex = 0;
+		return true;
+	}, true, 500, 90, 150, 45,
+	"^",
+	KDModelList_Toplevel_viewindex.index > 0 ? "#ffffff" : "#888888", "");
+
 	for (let i = 0; i < KDOutfitInfo.length && i < KDMaxOutfitsDisplay; i++) {
 		let index = i + KDMaxOutfitsIndex;
 
-		DrawButtonKDEx("ClickOutfit" + i, clickButton(index), true, 475, 120 + 50 * i, 200, 45,
-			KDOutfitInfo[index] + (((index == KDCurrentOutfit && KDOriginalValue) || KDOutfitOriginalStore[index]) ? "(*)" : ""),
-			index == KDCurrentOutfit ? "#ffffff" : "#888888", "", undefined, undefined, index != KDCurrentOutfit);
+		if (KDOutfitInfo[index])
+			DrawButtonKDEx("ClickOutfit" + i, clickButton(index), true, 475, 140 + 50 * i, 200, 45,
+				KDOutfitInfo[index] + (((index == KDCurrentOutfit && KDOriginalValue) || KDOutfitOriginalStore[index]) ? "(*)" : ""),
+				index == KDCurrentOutfit ? "#ffffff" : "#888888", "", undefined, undefined, index != KDCurrentOutfit);	
 
 	}
-	DrawBoxKD(450, 55, 250, 0 + KDOutfitInfo.length * 50, KDButtonColor, false, 0.5, -10);
+	DrawBoxKD(450, 55, 250, 10 + KDOutfitInfo.length * 50, KDButtonColor, false, 0.5, -10);
 
 
 	DrawTextFitKD(TextGet("KDManageOutfits"), 575, 735, 260, "#ffffff", KDTextGray0);

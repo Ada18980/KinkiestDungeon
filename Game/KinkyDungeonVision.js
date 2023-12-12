@@ -837,6 +837,7 @@ function KDRenderMinimap(x, y, w, h, scale, alpha, gridborders, blackMap) {
 				}
 			}
 		}
+		KinkyDungeonSendEvent("drawminimap", {update: KDDrawUpdate, x:x, y:y, w:w, h:h, scale:scale});
 		// Player circle
 		kdminimap.lineStyle(4, 0);
 		kdminimap.beginFill(0xffffff, 1.);

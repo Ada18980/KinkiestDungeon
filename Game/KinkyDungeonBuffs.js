@@ -182,6 +182,40 @@ function KinkyDungeonUpdateBuffs(delta, endFloor) {
 			}
 		}
 	}
+
+	KDUpdatePlayerShield();
+}
+
+function KDUpdatePlayerShield(PlayerBuffs) {
+	if (!PlayerBuffs) PlayerBuffs = KinkyDungeonPlayerBuffs;
+	let buffs = Object.values(PlayerBuffs);//Object.values(KinkyDungeonPlayerBuffs).sort((a, b) => {return (a.power || 0) - (b.power || 0);});
+	KDGameData.Shield = 0;
+
+	for (let b of buffs) {
+		if (b.type == "Shield" && b.power > 0)
+			KDGameData.Shield += b.power;
+	}
+}
+
+
+function KDDamagePlayerShield(Amount, Player) {
+	if (!Player) Player = KinkyDungeonPlayerEntity;
+	let PlayerBuffs = KinkyDungeonPlayerBuffs;
+	let buffs = Object.values(PlayerBuffs).filter((b) => {return b.type == "Shield";}).sort((a, b) => {return (a.power || 0) - (b.power || 0);});
+
+	KDGameData.ShieldDamage = (KDGameData.ShieldDamage || 0) + Amount;
+
+	for (let b of buffs) {
+		if (b.type == "Shield" && b.power > 0) {
+			b.power -= Amount;
+			if (b.power < 0) {
+				Amount = -b.power;
+				b.power = 0;
+			}
+		}
+	}
+
+	KDUpdatePlayerShield(PlayerBuffs);
 }
 
 /**  */
@@ -243,15 +277,16 @@ function KinkyDungeonExpireBuff(entity, key) {
  */
 function KinkyDungeonApplyBuffToEntity(entity, origbuff, changes) {
 	if (entity && entity.player) {
-		KDApplyBuff(KinkyDungeonPlayerBuffs, origbuff, changes, entity);
+		return KDApplyBuff(KinkyDungeonPlayerBuffs, origbuff, changes, entity);
 	} else if (entity) {
 		if (!entity.buffs) entity.buffs = {};
-		KDApplyBuff(entity.buffs, origbuff, changes, entity);
+		return KDApplyBuff(entity.buffs, origbuff, changes, entity);
 	}
+	return null;
 }
 
 function KDApplyBuff(list, origbuff, changes, entity) {
-	if (!origbuff) return;
+	if (!origbuff) return null;
 	let buff = {};
 	Object.assign(buff, origbuff);
 	if (changes)
@@ -260,6 +295,7 @@ function KDApplyBuff(list, origbuff, changes, entity) {
 
 	if (list[id] && buff.cancelOnReapply) {
 		KinkyDungeonExpireBuff(entity, id);
+		return null;
 	} else {
 		if (!list[id] && buff.sfxApply) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + buff.sfxApply + ".ogg");
 		if (!list[id] || (list[id].power >= 0 && buff.power >= list[id].power) || (list[id].power < 0 && ((buff.power > 0 && buff.power >= list[id].power) || buff.power <= list[id].power))) list[id] = buff;
@@ -273,6 +309,7 @@ function KDApplyBuff(list, origbuff, changes, entity) {
 					KinkyDungeonBlindLevelBase = Math.max(KinkyDungeonBlindLevelBase, 2);
 				}
 			}
+		return buff;
 	}
 }
 
@@ -292,6 +329,7 @@ function KDEntityHasBuff(entity, buff) {
 	} else return KinkyDungeonHasBuff(entity.buffs, buff);
 }
 function KDEntityBuffedStat(entity, stat, onlyPositiveDuration) {
+	if (!entity) return 0;
 	if (entity.player) {
 		return KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, stat, onlyPositiveDuration);
 	} else return KinkyDungeonGetBuffedStat(entity.buffs, stat, onlyPositiveDuration);

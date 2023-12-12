@@ -4841,6 +4841,7 @@ function KDGetItemName(item) {
 			variant = KinkyDungeonWeaponVariants[item.inventoryVariant || item.name];
 			break;
 	}
+	if (variant?.suffix) return base + " " + TextGet("KDVarSuff" + variant.suffix);
 	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
 	return base;
 }
@@ -4851,6 +4852,7 @@ function KDGetItemName(item) {
  */
 function KDGetRestraintName(restraint, variant) {
 	let base = TextGet("Restraint" + restraint.name);
+	if (variant?.suffix) return base + " " + TextGet("KDVarSuff" + variant.suffix);
 	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
 	return base;
 }
@@ -4861,6 +4863,7 @@ function KDGetRestraintName(restraint, variant) {
  */
 function KDGetConsumableName(consumable, variant) {
 	let base = TextGet("KinkyDungeonInventoryItem" + consumable.name);
+	if (variant?.suffix) return base + " " + TextGet("KDVarSuff" + variant.suffix);
 	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
 	return base;
 }
@@ -4871,6 +4874,7 @@ function KDGetConsumableName(consumable, variant) {
  */
 function KDGetWeaponName(weapon, variant) {
 	let base = TextGet("KinkyDungeonInventoryItem" + weapon.name);
+	if (variant?.suffix) return base + " " + TextGet("KDVarSuff" + variant.suffix);
 	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
 	return base;
 }
@@ -4885,6 +4889,7 @@ function KDGetItemNameString(name) {
 	if (variant) {
 		base = TextGet((KinkyDungeonGetRestraintByName(variant.template) ? "Restraint" : "KinkyDungeonInventoryItem") + variant.template);
 	}
+	if (variant?.suffix) return base + " " + TextGet("KDVarSuff" + variant.suffix);
 	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
 	return base;
 }

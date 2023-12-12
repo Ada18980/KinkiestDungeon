@@ -797,7 +797,6 @@ let KDPerkConfirm = false;
 let KDPerkOrbPerks = [];
 function KinkyDungeonTakePerk(Amount, X, Y) {
 	KinkyDungeonSetFlag("NoDialogue", 3);
-	KinkyDungeonSetFlag("choseperk", 3);
 
 	KDPerkOrbPerks = KinkyDungeonTilesGet(X + "," + Y).Perks;
 	KinkyDungeonDrawState = "PerkOrb";

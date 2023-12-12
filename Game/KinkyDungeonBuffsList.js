@@ -31,7 +31,7 @@ let KDDrenched2 = {id: "Drenched2", type: "electricDamageResist", power: -0.2, p
 let KDDrenched3 = {id: "Drenched3", type: "iceDamageResist", power: -0.35, player: true, duration: 20, enemies: true};
 
 let KDBoundByFate = {id: "BoundByFate", type: "Fate", power: 1, player: true, duration: 3, enemies: false, aura: "#dddddd", events: [
-	{type: "BoundByFate", kind: "mithrilRope", count: 2, trigger: "tick", power: 1},
+	{type: "BoundByFate", kind: "mithrilRope", count: 2, trigger: "tick", power: 1, damage: "cold"},
 ]};
 
 let KDEager = {

@@ -770,8 +770,14 @@ interface enemy extends KDHasTags {
 	allied?: boolean,
 	/** Enemies will prioritize this enemy less than other enemies. Used by allies only. */
 	lowpriority? : boolean,
-	/** Hit chance = 1 / (1 + evasion) */
+	/** Generates token chance = 1 - 1 / (1 + evasion) */
 	evasion?: number,
+	/** Generates token chance = 1 - 1 / (1 + block) */
+	block?: number,
+	/** Amount enemy blocks */
+	blockAmount?: number,
+	maxdodge?: number,
+	maxblock?: number,
 	/** */
 	armor?: number,
 	/** Starting data */
@@ -816,6 +822,8 @@ interface enemy extends KDHasTags {
 	noFlip?: boolean,
 	/** Max enemy hp*/
 	maxhp?: number,
+	/** Shield enemy starts with, does not decay past this */
+	shield?: number,
 	/** Number of turns an enemy can sprint for */
 	stamina?: number,
 	/** Sprint speed multiplier. Default 1.5*/
@@ -1198,6 +1206,15 @@ interface shopItem {
 }
 
 interface weapon {
+	ignoreshield?: boolean,
+	shield_crit?: boolean, // Crit thru shield
+	shield_stun?: boolean, // stun thru shield
+	shield_freeze?: boolean, // freeze thru shield
+	shield_bind?: boolean, // bind thru shield
+	shield_snare?: boolean, // snare thru shield
+	shield_slow?: boolean, // slow thru shield
+	shield_distract?: boolean, // Distract thru shield
+	shield_vuln?: boolean,
 	arousalMode?: boolean,
 	name: string;
 	dmg: number;
@@ -1383,6 +1400,11 @@ type masterInfo = {
 }
 
 interface entity {
+	blockedordodged?: number,
+	blocks?: number,
+	dodges?: number,
+	shield?: number,
+
 	visual_hp?: number,
 	visual_boundlevel?: number,
 	visual_distraction?: number,
@@ -1639,6 +1661,18 @@ type KDPerk = {
 }
 
 interface spell {
+
+
+	ignoreshield?: boolean,
+	shield_crit?: boolean, // Crit thru shield
+	shield_stun?: boolean, // stun thru shield
+	shield_freeze?: boolean, // freeze thru shield
+	shield_bind?: boolean, // bind thru shield
+	shield_snare?: boolean, // snare thru shield
+	shield_slow?: boolean, // slow thru shield
+	shield_distract?: boolean, // Distract thru shield
+	shield_vuln?: boolean,
+
 	/** Crit damage multiplier of the spell */
 	crit?: number;
 	/** Sound efgfect that plays when you miscast */
@@ -1794,6 +1828,8 @@ interface spell {
 	chargecost?: number;
 	minRange?: number;
 	noSprite?: boolean;
+	/** Increases the more you do */
+	increasingCost?: boolean,
 	/** Specific to a class */
 	classSpecific?: string;
 	/** Verbal, arms, or legs */
@@ -1836,6 +1872,10 @@ interface spell {
 	hitsfx?: string;
 	/** Played on bullet impact */
 	landsfx?: string;
+	/** trailEvadeable */
+	trailEvadeable?: boolean;
+	/** trailNoblock */
+	trailNoblock?: boolean;
 	/** trailPower */
 	trailPower?: number;
 	/** trailHit */
@@ -1876,8 +1916,10 @@ interface spell {
 	noTargetPlayer?: boolean;
 	/** Only target walls */
 	WallsOnly?: boolean;
-	/** Spell can be dodged */
+	/** Spell can be dodged, default cantt be dodged */
 	evadeable?: boolean;
+	/** Spell can NOT be blocked. default can be blocked */
+	noblock?: boolean;
 	/** Targeting location */
 	meleeOrigin?: boolean;
 	/** Cant hit the same enemy twice per turrn, impoprtant for piercing spells */
@@ -2685,6 +2727,8 @@ interface KDCursedDef {
 type KDRestraintVariant = {
 	/** Name prefix */
 	prefix?: string,
+	/** Name suffix */
+	suffix?: string,
 	/** The curse to apply with this inventory variant */
 	curse?: string,
 	/** The lock to apply with this inventory variant */
@@ -2699,6 +2743,8 @@ type KDRestraintVariant = {
 type KDWeaponVariant = {
 	/** Name prefix */
 	prefix?: string,
+	/** Name suffix */
+	suffix?: string,
 	/** extra events added on */
 	events: KinkyDungeonEvent[],
 	/** The original weapon this is based on */
@@ -2707,6 +2753,8 @@ type KDWeaponVariant = {
 type KDConsumableVariant = {
 	/** Name prefix */
 	prefix?: string,
+	/** Name suffix */
+	suffix?: string,
 	/** extra events added on */
 	events: KinkyDungeonEvent[],
 	/** The original consumable this is based on */
@@ -2860,6 +2908,7 @@ interface ApplyVariant {
 	curse?: string,
 	noKeep?: boolean,
 	prefix?: string,
+	suffix?: string,
 	minfloor: number,
 	maxfloor?: number,
 }
@@ -2885,6 +2934,8 @@ interface KDEnchantmentType {
 
 interface KDEnchantment {
 	tags: string[],
+	prefix?: string,
+	suffix?: string,
 	types: Record<ModifierEnum, KDEnchantmentType>,
 }
 

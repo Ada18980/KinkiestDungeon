@@ -2056,6 +2056,11 @@
             <key type="filename">../Game/Spells/Offhand.png</key>
             <key type="filename">../Game/Spells/OrgasmResist.png</key>
             <key type="filename">../Game/Spells/Petsuit.png</key>
+            <key type="filename">../Game/Spells/Quickness.png</key>
+            <key type="filename">../Game/Spells/Quickness2.png</key>
+            <key type="filename">../Game/Spells/Quickness3.png</key>
+            <key type="filename">../Game/Spells/Quickness4.png</key>
+            <key type="filename">../Game/Spells/Quickness5.png</key>
             <key type="filename">../Game/Spells/Rainstorm.png</key>
             <key type="filename">../Game/Spells/Ring.png</key>
             <key type="filename">../Game/Spells/RingOfSlime.png</key>
@@ -2103,6 +2108,7 @@
             <key type="filename">../Game/Spells/SummonUp1.png</key>
             <key type="filename">../Game/Spells/SummonUp2.png</key>
             <key type="filename">../Game/Spells/SummonYoke.png</key>
+            <key type="filename">../Game/Spells/Swap.png</key>
             <key type="filename">../Game/Spells/Thunderstorm.png</key>
             <key type="filename">../Game/Spells/TickleCloud.png</key>
             <key type="filename">../Game/Spells/TidalBall.png</key>
@@ -2819,6 +2825,8 @@
             <key type="filename">../Game/UI/AutoPath/SuppressDuringCombat.png</key>
             <key type="filename">../Game/UI/AutoStruggle.png</key>
             <key type="filename">../Game/UI/Checked.png</key>
+            <key type="filename">../Game/UI/CrouchOff.png</key>
+            <key type="filename">../Game/UI/CrouchOn.png</key>
             <key type="filename">../Game/UI/Door.png</key>
             <key type="filename">../Game/UI/DoorClose.png</key>
             <key type="filename">../Game/UI/Edged.png</key>

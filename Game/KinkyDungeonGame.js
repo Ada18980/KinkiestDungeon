@@ -1666,7 +1666,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				box.currentCount += 0.05;
 			}
 			if (Enemy && (!InJail || (Enemy.tags.jailer || Enemy.tags.jail || Enemy.tags.leashing))) {
-				let e = {Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp,
+				let e = {Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, shield: Enemy.shield,
 					movePoints: 0, attackPoints: 0, AI: KDGetAITypeOverride(Enemy, AI) || AI || Enemy.AI, faction: faction};
 				if (spawnPoint) {
 					e.spawnX = X;
@@ -3562,7 +3562,7 @@ function KinkyDungeonClickGame(Level) {
 			CharacterRefresh = _CharacterRefresh;
 			CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
 		}
-		KDFocusControls = "";
+		
 		return;
 	}
 	// beep
@@ -3573,7 +3573,7 @@ function KinkyDungeonClickGame(Level) {
 	}
 	// If no buttons are clicked then we handle move
 	else if ((KinkyDungeonControlsEnabled() || KinkyDungeonInspect) && KinkyDungeonDrawState == "Game") {
-		KDFocusControls = "";
+		//KDSetFocusControl("");
 		try {
 			if (KinkyDungeonInspect) {
 				KDInspectCamera.x = KinkyDungeonTargetX;
@@ -3612,10 +3612,12 @@ function KinkyDungeonClickGame(Level) {
 							false, false, false, KinkyDungeonMovableTilesEnemy, requireLight, false, true,
 							undefined, false, undefined, false, true);
 						if (path) {
+							KDSetFocusControl("");
 							KinkyDungeonFastMovePath = path;
 							KinkyDungeonSleepTime = 100;
 						}
 					} else if (!fastMove || Math.max(Math.abs(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x), Math.abs(KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y)) <= 1) {
+						KDSetFocusControl("");
 						KDSendInput("move", {dir: KinkyDungeonMoveDirection, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
 					}
 				}
@@ -3683,6 +3685,7 @@ function KinkyDungeonListenKeyMove() {
 					CharacterAppearanceBuildCanvas = () => {};
 
 					try {
+						KDSetFocusControl("");
 						KDSendInput("move", {dir: moveDirection, delta: 1, AllowInteract: KinkyDungeonLastMoveTimer == 0, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: false});
 						KinkyDungeonLastMoveTimer = performance.now() + KinkyDungeonLastMoveTimerCooldown;
 					} finally {
@@ -3700,7 +3703,7 @@ function KinkyDungeonListenKeyMove() {
 	}
 	if (KinkyDungeonLastMoveTimerStart < performance.now() && KinkyDungeonLastMoveTimer == 0) KinkyDungeonLastMoveTimerStart = 0;
 	if (!KinkyDungeonGameKey.keyPressed.some((element)=>{return element;})) { KinkyDungeonLastMoveTimer = 0;}
-	KDFocusControls = "";
+	//KDSetFocusControl("");
 }
 
 let KDShopBuyConfirm = false;
@@ -4061,6 +4064,15 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 						bind: KinkyDungeonPlayerDamage.bind,
 						bindType: KinkyDungeonPlayerDamage.bindType,
 						bindEff: KinkyDungeonPlayerDamage.bindEff,
+						ignoreshield: KinkyDungeonPlayerDamage.ignoreshield,
+						shield_crit: KinkyDungeonPlayerDamage.shield_crit, // Crit thru shield
+						shield_stun: KinkyDungeonPlayerDamage.shield_stun, // stun thru shield
+						shield_freeze: KinkyDungeonPlayerDamage.shield_freeze, // freeze thru shield
+						shield_bind: KinkyDungeonPlayerDamage.shield_bind, // bind thru shield
+						shield_snare: KinkyDungeonPlayerDamage.shield_snare, // snare thru shield
+						shield_slow: KinkyDungeonPlayerDamage.shield_slow, // slow thru shield
+						shield_distract: KinkyDungeonPlayerDamage.shield_distract, // Distract thru shield
+						shield_vuln: KinkyDungeonPlayerDamage.shield_vuln, // Vuln thru shield
 						boundBonus: KinkyDungeonPlayerDamage.boundBonus,
 						novulnerable: KinkyDungeonPlayerDamage.novulnerable,
 						tease: KinkyDungeonPlayerDamage.tease}
@@ -4265,7 +4277,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 						let dicts = KinkyDungeonPlugCount > 1 ? "" : "s";
 						if (KinkyDungeonSlowLevel == 0 && KinkyDungeonPlugCount > 0) KinkyDungeonSendTextMessage(0, TextGet("KinkyDungeonPlugWalk" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "yellow", 2, true);
 						if (KinkyDungeonSlowLevel == 1 && !KinkyDungeonStatsChoice.has("HeelWalker")) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonSlowed" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "yellow", 2, true);
-						else if (KinkyDungeonSlowLevel == 2) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonHopping" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "orange", 2, true);
+						else if (KinkyDungeonSlowLevel == 2) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonHopping" + (KDGameData.Crouch ? "Crouch" : "") + plugLevel).replace("plugs", dict).replace("(s)", dicts), "orange", 2, true);
 						else if (KinkyDungeonSlowLevel == 3) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonInching" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "#ff0000", 2, true);
 						else if (KinkyDungeonSlowLevel > 3 && KinkyDungeonSlowLevel < 10) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrawling" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "#ff0000", 2, true);
 						else if (KinkyDungeonSlowLevel >= 10) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCantMove" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "#ff0000", 2, true);
@@ -4388,6 +4400,9 @@ function KinkyDungeonMoveTo(moveX, moveY, willSprint, allowPass) {
 	let yy = KinkyDungeonPlayerEntity.y;
 	if (KinkyDungeonPlayerEntity.x != moveX || KinkyDungeonPlayerEntity.y != moveY) {
 		KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "move", 1);
+		if (KDNearbyMapTiles(moveX, moveY, 1.5).some((tile) => {return (tile.x == moveX || tile.y == moveY) && !KinkyDungeonMovableTilesEnemy.includes(tile.tile)})) {
+			KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "moveWall", 1);
+		} else KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "moveOpen", 1);
 		stepOff = true;
 	}
 	if (xx != moveX || yy != moveY) {
@@ -4478,6 +4493,19 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 		lastFloaterRefresh = CommonTime();
 	}
 
+	let pauseTime = false;
+	if (delta > 0) {
+		let timeslow = KDEntityBuffedStat(KinkyDungeonPlayerEntity, "TimeSlow");
+		if (timeslow) {
+			if (!KinkyDungeonFlags.get("TimeSlow")) {
+				KinkyDungeonSetFlag("TimeSlow", timeslow);
+			} else {
+				pauseTime = true;
+			}
+		}
+	}
+	
+
 
 	let _CharacterRefresh = CharacterRefresh;
 	let _CharacterAppearanceBuildCanvas = CharacterAppearanceBuildCanvas;
@@ -4515,7 +4543,11 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	KinkyDungeonCurrentTick += 1;
 	if (KinkyDungeonCurrentTick > 100000) KinkyDungeonCurrentTick = 0;
 	KinkyDungeonItemCheck(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, MiniGameKinkyDungeonLevel); //console.log("Item Check " + (performance.now() - now));
-	KinkyDungeonUpdateBuffs(delta);
+	if (pauseTime && delta > 0) {
+		delta = 0;
+	} else pauseTime = false;
+	KDGameData.ShieldDamage = 0;
+	KinkyDungeonUpdateBuffs(delta, pauseTime);
 	KinkyDungeonUpdateEnemies(delta, true); //console.log("Enemy Check " + (performance.now() - now));
 	KinkyDungeonSendEvent("afterEnemyTick", {delta: delta, allied: true});
 	KinkyDungeonUpdateBullets(delta, true); //console.log("Bullets Check " + (performance.now() - now));
@@ -4523,11 +4555,10 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	KinkyDungeonUpdateEnemies(delta, false); //console.log("Enemy Check " + (performance.now() - now));
 	KinkyDungeonSendEvent("afterEnemyTick", {delta: delta, allied: false});
 
-	KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
 	KinkyDungeonUpdateBullets(delta); //console.log("Bullets Check " + (performance.now() - now));
 	KinkyDungeonUpdateBulletsCollisions(delta, true); //"catchup" phase for explosions!
 
-	KinkyDungeonUpdateJailKeys();
+
 
 	KDUpdateEffectTiles(delta);
 	KinkyDungeonUpdateTileEffects(delta);
@@ -4535,9 +4566,16 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 		let enemy = KDMapData.Entities[E];
 		if (KinkyDungeonEnemyCheckHP(enemy, E)) { E -= 1; continue;}
 	}
+	
+	KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
+	KinkyDungeonUpdateJailKeys();
+
+	KDCommanderUpdate(delta);
+
+	if (pauseTime) delta = 1;
 
 	KinkyDungeonUpdateStats(delta);
-
+	
 	let toTile = KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 	KinkyDungeonHandleMoveToTile(toTile);
 	// else if (KinkyDungeonStatWillpower == 0) {
@@ -4604,10 +4642,11 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
 
 	if (KinkyDungeonInDanger()) KinkyDungeonSetFlag("DangerFlag",  3);
-	if (KinkyDungeonStatsChoice.has("Quickness") && !KinkyDungeonFlags.has("BlockQuicknessPerk")) {
+	if ((KinkyDungeonStatsChoice.has("Quickness") && !KinkyDungeonFlags.has("BlockQuicknessPerk"))) {
 		KinkyDungeonSetFlag("Quickness", -1);
+	} else if (KDEntityBuffedStat(KinkyDungeonPlayerEntity, "Quickness")) {
+		KinkyDungeonSetFlag("Quickness", 1);
 	}
-
 	if (KDGameData.MovePoints < 0 || KinkyDungeonStatBlind) {
 		KinkyDungeonSetFlag("Quickness", 0);
 	}
@@ -4617,18 +4656,19 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 			en.vulnerable = 0;
 		}
 	}
-	KDCommanderUpdate(delta);
 
 	KinkyDungeonSendEvent("tickAfter", {delta: delta});
 
 	KinkyDungeonUpdateStats(0);
 
 	KDTickNeeds(delta);
+	
 
 	let Dstart = performance.now();
 
 	KDUpdateForceOutfit(KinkyDungeonPlayer);
 	KinkyDungeonDressPlayer();
+	
 	if (KDDebug) console.log(`Dressing ${KinkyDungeonCurrentTick} took ${(performance.now() - Dstart)} milliseconds.`);
 	KDGetEnemyCache();
 
@@ -4647,6 +4687,8 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 		KDRestraintDebugLog = KDRestraintDebugLog.splice(0, 10);
 	}
 	KDQuestTick(KDGameData.Quests, delta);
+	KinkyDungeonUpdateFlags(delta);
+	
 }
 let KDAllowDialogue = true;
 

@@ -17,6 +17,24 @@ Vague todo:
 
 TODO add sugar magic ('Blood Energy Magic')
 
+5.0.3
+-Some enemies now have shields
+-Enemy evasion and block reworked. Enemies now gain evasion and block tokens when they see you, based on their evasion/block chance.
+-Player accuracy reworked. Accuracy now reduces the amount of evasion tokens removed when an enemy dodges an attack
+-Being bound now reduces your base damage for non-magic weapons and unarmed. Magic and enchanted weapons are unchanged
+-Blink is now upcast of Portal
+-Portal has 3 turn delay
+-New spells: Spatial Compression, Double/Triple/Quadro/Total Accel, Spatial swap
+-Inner power now applies before multipliers
+-Slime ball trail does 20 damage instead of 40
+-Added quest markers for quest enemies on minimap
+-Made quest enemies spawn closer together
+-Visibility is reduced by 50% while either holding still or moving while slowed.
+-Visibility is increased by 50% while attacking or casting
+-Camouflage now does not end if you move near a wall
+-Added prefixes and suffixes to enchantments
+-Added icons to show curse effects on buff bar
+-Enemies now show if they are unstoppable in the tooltip
 
 5.0.2
 - Nerfed Fast Recharge to be 6 turns instead of 4

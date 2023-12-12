@@ -14,7 +14,7 @@ let KDClipboardDisabled = window.location.host.includes('itch.io');
 		// @ts-ignore
 		let permissionStatus = await navigator.permissions.query(queryOpts);
 		permissionStatus.onchange = () => {
-			console.log(permissionStatus.state);
+			//console.log(permissionStatus.state);
 			if (permissionStatus.state == 'denied') KDClipboardDisabled = true;
 		};
 	} catch (e) {
@@ -103,7 +103,7 @@ let KinkyDungeonKeySprint = ['ShiftLeft'];
 let KinkyDungeonKeyWeapon = ['R',];
 let KinkyDungeonKeyUpcast = ['ControlLeft', 'AltLeft'];
 let KinkyDungeonKeyMenu = ['V', 'I', 'U', 'M', 'L', '*']; // QuikInv, Inventory, Reputation, Magic, Log, Quest
-let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight", 'T', '?', '/']; // Log, Passing, Door, Auto Struggle, Auto Pathfind, Inspect, Wait till interrupted, Make Noise
+let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight", 'T', '?', '/', "'"]; // Log, Passing, Door, Auto Struggle, Auto Pathfind, Inspect, Wait till interrupted, Make Noise, Crouch
 let KinkyDungeonKeySpellPage = ['`'];
 let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H', 'J']; // Swap, Offhand, OffhandPrevious
 let KinkyDungeonKeySwitchLoadout = ['[', ']', '\\'];
@@ -220,6 +220,7 @@ let KDDefaultKB = {
 	WaitInterrupt: KinkyDungeonKeyToggle[6],
 	MakeNoise: KinkyDungeonKeyToggle[7],
 	PlaySelf: KinkyDungeonKeyToggle[8],
+	Crouch: KinkyDungeonKeyToggle[9],
 };
 
 let KinkyDungeonRootDirectory = "Screens/MiniGame/KinkyDungeon/";
@@ -389,18 +390,35 @@ let KDDefaultMaxParty = 3;
 * QuickLoadout_Merge: boolean,
 * ItemsSold: Record<string, number>,
 * MaxParty: number,
+* Crouch: boolean,
 * FocusControlToggle: Record<string, boolean>,
 * FloorRobotType: Record<string, string>,
 * EpicenterLevel: number,
+* BlockTokens: number,
+* DodgeTokens: number,
+* ShieldTokens: number,
+* BlockTokensMax: number,
+* DodgeTokensMax: number,
+* ShieldTokensMax: number,
+* Shield: number,
+* ShieldDamage: number,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	Shield: 0,
+	ShieldDamage: 0,
 	PlayerName: "Ada",
 	Party: [],
 	CapturedParty: [],
+	BlockTokens: 0,
+	DodgeTokens: 0,
+	ShieldTokens: 0,
+	BlockTokensMax: 0,
+	DodgeTokensMax: 0,
+	ShieldTokensMax: 0,
 	MaxParty: KDDefaultMaxParty,
 	QuickLoadout_Weapon: true,
 	QuickLoadout_Merge: true,
@@ -543,7 +561,7 @@ let KDGameDataBase = {
 	OffhandReturn: "",
 
 	Favors: {},
-	PreviousWeapon: [],
+	PreviousWeapon: ["Unarmed", "Unarmed", "Unarmed", "Unarmed"],
 	QuickLoadout: [],
 
 	StaminaPause: 0,
@@ -569,6 +587,8 @@ let KDGameDataBase = {
 	EpicenterLevel: 0,
 
 	FloorRobotType: {},
+
+	Crouch: false,
 };
 /**
  * @type {KDGameDataBase}
@@ -710,6 +730,8 @@ function KinkyDungeonLoad() {
 		}
 	} catch (err) {
 		console.log(err);
+		if (!window.location.host?.includes("127.0.0.1"))
+			KDClipboardDisabled = true;
 	}
 
 	KinkyDungeonSetupCrashHandler();
@@ -2924,6 +2946,7 @@ function KDCommitKeybindings() {
 		KinkyDungeonKeybindings.WaitInterrupt,
 		KinkyDungeonKeybindings.MakeNoise,
 		KinkyDungeonKeybindings.PlaySelf,
+		KinkyDungeonKeybindings.Crouch,
 	];
 
 	KinkyDungeonKeyMap = [KinkyDungeonKeybindings.Map];
@@ -3882,7 +3905,7 @@ function KinkyDungeonLoadGame(String) {
 			KDUpdateEnemyCache = true;
 
 
-			if (typeof KDGameData.PreviousWeapon == 'string') KDGameData.PreviousWeapon = [];
+			if (typeof KDGameData.PreviousWeapon == 'string') KDGameData.PreviousWeapon = ["Unarmed", "Unarmed", "Unarmed", "Unarmed"];
 
 			KinkyDungeonSetMaxStats();
 			KinkyDungeonCheckClothesLoss = true;

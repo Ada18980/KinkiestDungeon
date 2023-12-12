@@ -301,7 +301,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 				template: weapon,
 				events: events,
 			};
-			KDGiveWeaponVariant(variant, enchantVariant ? "Enchanted" : "");
+			KDGiveWeaponVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
 
 			if (Replacemsg)
 				Replacemsg = Replacemsg.replace("WeaponAcquired", (enchantVariant ? TextGet("KDVarPrefEnchanted") : "") + ' ' + TextGet("KinkyDungeonInventoryItem" + weapon));
@@ -392,10 +392,10 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 			};
 			let equipped = 0;
 			if (forceequip) {
-				equipped = KDEquipInventoryVariant(variant, enchantVariant ? "Enchanted" : "", 0, true, undefined, true, false, "Curse", true, unlockcurse, undefined, false);
+				equipped = KDEquipInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, 0, true, undefined, true, false, "Curse", true, unlockcurse, undefined, false, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
 			}
 			if (!equipped) {
-				KDGiveInventoryVariant(variant, enchantVariant ? "Enchanted" : "", unlockcurse);
+				KDGiveInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, unlockcurse, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
 			} else {
 				KinkyDungeonSendTextMessage(10, TextGet("KDCursedChestEquip" + (unlockcurse ? "Cursed" : ""))
 					.replace("NEWITM", TextGet("Restraint" + variant.template)),

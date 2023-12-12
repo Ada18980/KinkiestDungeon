@@ -74,11 +74,19 @@ function KDProcessInput(type, data) {
 			break;
 		case "toggleSpell":
 			KinkyDungeonSpellChoicesToggle[data.i] = !KinkyDungeonSpellChoicesToggle[data.i];
-			KinkyDungeonSendEvent("toggleSpell", {index: data.i, spell: KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]]}, KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]]);
-			if (KinkyDungeonSpellChoicesToggle[data.i] && KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]].costOnToggle) {
-				if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]]))) {
-					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]]));
+			let spell = KDGetUpcast(KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]].name,
+				KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellEmpower")) || KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]];
+			KinkyDungeonSendEvent("toggleSpell", {index: data.i, spell: spell},
+				spell);
+				
+			if (KinkyDungeonSpellChoicesToggle[data.i] && spell.costOnToggle) {
+				if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell))) {
+					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 				} else KinkyDungeonSpellChoicesToggle[data.i] = false;
+			}
+			
+			if (spell.name != KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]].name) {
+				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "upcast", 1);
 			}
 			break;
 		case "consumable":
@@ -214,6 +222,12 @@ function KDProcessInput(type, data) {
 			let gagTotal = KinkyDungeonGagTotal(true);
 			KinkyDungeonMakeNoise(Math.ceil(10 - 8 * Math.min(1, gagTotal * gagTotal)), KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 			KinkyDungeonSendTextMessage(10, TextGet("KDShoutHelp" + Math.min(3, Math.floor(gagTotal *3.3))), "yellow", 1);
+			break;
+		}
+		
+		case "crouch": {
+			KDGameData.Crouch = !KDGameData.Crouch;
+			KinkyDungeonAdvanceTime(0);
 			break;
 		}
 		case "pick":
@@ -468,6 +482,8 @@ function KDProcessInput(type, data) {
 				}
 
 				KinkyDungeonMapSet(data.x, data.y, 'p');
+				
+				KinkyDungeonSetFlag("choseperk", 3);
 				for (let x = 0; x < KDMapData.GridWidth; x++) {
 					if (KinkyDungeonMapGet(x, data.y) == 'P') {
 						KinkyDungeonMapSet(x, data.y, 'p');

@@ -2536,6 +2536,50 @@ function DrawRectKD(Container, Map, id, Params) {
 	}
 	return false;
 }
+/**
+ * Draws a basic rectangle filled with a given color
+ * @param {any} Container
+ * @param {Map<string, any>} Map
+ * @param {{Left: number, Top: number, Width: number, Height: number, Color: string, LineWidth: number, zIndex: number, alpha?: number}} Params - rect parameters
+ * @returns {boolean} - If it worked
+ */
+function DrawCircleKD(Container, Map, id, Params) {
+	let sprite = Map.get(id);
+	let same = true;
+	if (sprite && kdprimitiveparams.has(id)) {
+		for (let p of Object.entries(kdprimitiveparams.get(id))) {
+			if (Params[p[0]] != p[1]) {
+				same = false;
+				break;
+			}
+		}
+	}
+	if (!sprite || !same) {
+		if (sprite) sprite.destroy();
+		// Make the prim
+		sprite = new PIXI.Graphics();
+		sprite.lineStyle(Params.LineWidth ? Params.LineWidth : 1, string2hex(Params.Color), 1);
+		sprite.drawCircle(Params.Width/2, Params.Width/2, Params.Width/2);
+		// Add it to the container
+		Map.set(id, sprite);
+		Container.addChild(sprite);
+		if (!kdprimitiveparams.has(id) || !same)
+			kdprimitiveparams.set(id, Params);
+	}
+	if (sprite) {
+		// Modify the sprite according to the params
+		sprite.name = id;
+		sprite.position.x = Params.Left;
+		sprite.position.y = Params.Top;
+		sprite.width = Params.Width;
+		sprite.height = Params.Height;
+		sprite.zIndex = Params.zIndex ? Params.zIndex : 0;
+		sprite.alpha = Params.alpha ? Params.alpha : 1;
+		kdSpritesDrawn.set(id, true);
+		return true;
+	}
+	return false;
+}
 
 /**
  * Draws a basic rectangle filled with a given color
