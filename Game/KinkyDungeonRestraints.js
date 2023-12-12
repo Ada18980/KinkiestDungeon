@@ -1831,6 +1831,10 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	 * willEscapePenalty: number,
 	 * canCut: boolean,
 	 * canCutMagic: boolean,
+	* toolBonus: number,
+	* toolMult: number,
+	* buffBonus: number,
+	* buffMult: number,
 	 * }}
 	 */
 	let data = {
@@ -1853,6 +1857,10 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		willEscapePenalty: KDGetWillPenalty(),
 		canCut: KinkyDungeonWeaponCanCut(true, false),
 		canCutMagic: KinkyDungeonWeaponCanCut(true, true),
+		toolBonus: 0.0,
+		toolMult: 1.0,
+		buffBonus: 0.0,
+		buffMult: 1.0,
 	};
 
 	if (StruggleType == "Cut") data.cost = KinkyDungeonStatStaminaCostTool;
@@ -1873,7 +1881,14 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	data.escapeChance = EC.escapeChance;
 	data.limitChance = EC.limitChance;
 
+	let toolMult = Math.max(0, 1 + data.toolBonus) * data.toolMult;
+	let buffMult = Math.max(0, 1 + data.buffBonus) * data.buffMult;
+
+	if (data.escapePenalty < 0) data.escapePenalty *= buffMult;
+
+	if (StruggleType == "Pick") data.escapeChance += KinkyDungeonGetPickBonus()*toolMult;
 	data.origEscapeChance = data.escapeChance;
+	
 
 	KinkyDungeonInterruptSleep();
 
@@ -1895,20 +1910,20 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					if (KDWeapon(inv).cutBonus > maxBonus) maxBonus = KDWeapon(inv).cutBonus;
 					if (KDWeapon(inv).cutBonus != undefined && KDWeaponIsMagic(inv)) data.canCutMagic = true;
 				}
-				data.escapeChance += maxBonus;
-				data.origEscapeChance += maxBonus;
+				data.escapeChance += maxBonus*toolMult;
+				data.origEscapeChance += maxBonus*toolMult;
 				//if (maxBonus > 0) cancut = true;
 			} else if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.cutBonus) {
-				data.escapeChance += KinkyDungeonPlayerDamage.cutBonus;
-				data.origEscapeChance += KinkyDungeonPlayerDamage.cutBonus;
+				data.escapeChance += KinkyDungeonPlayerDamage.cutBonus*toolMult;
+				data.origEscapeChance += KinkyDungeonPlayerDamage.cutBonus*toolMult;
 				//cancut = true;
 			}
 		}
 		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum")) data.escapeChance = Math.max(data.escapeChance, KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum"));
 	}
 	if (StruggleType == "Cut" && !KDRestraint(restraint).magic && KinkyDungeonWeaponCanCut(true, true)) {
-		data.escapeChance += KinkyDungeonEnchantedKnifeBonus;
-		data.origEscapeChance += KinkyDungeonEnchantedKnifeBonus;
+		data.escapeChance += KinkyDungeonEnchantedKnifeBonus*toolMult;
+		data.origEscapeChance += KinkyDungeonEnchantedKnifeBonus*toolMult;
 	}
 	let escapeSpeed = KDBaseEscapeSpeed;
 
@@ -1924,14 +1939,14 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	if (StruggleType == "Remove" &&
 		(!handsBound && (KinkyDungeonWeaponCanCut(true) || KinkyDungeonLockpicks > 0)
 		|| (struggleGroup == "ItemHands" && KinkyDungeonCanTalk() && !armsBound))) {
-		data.escapeChance = Math.max(data.escapeChance, Math.min(1, data.escapeChance + 0.15));
-		data.origEscapeChance = Math.max(data.origEscapeChance, Math.min(1, data.origEscapeChance + 0.15));
+		data.escapeChance = Math.max(data.escapeChance, Math.min(1, data.escapeChance + 0.15*toolMult));
+		data.origEscapeChance = Math.max(data.origEscapeChance, Math.min(1, data.origEscapeChance + 0.15*toolMult));
 	}
 
 	// Psychic doesnt modify original chance, so that you understand its the perk helping you
 	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.25);
 
-	let edgeBonus = 0.12;
+	let edgeBonus = 0.12*toolMult;
 	// Easier to struggle if your legs are free, due to leverage
 	if (StruggleType == "Struggle" && data.hasAffinity) data.escapeChance += edgeBonus * (0.5 + 0.5*Math.max(2 - KinkyDungeonSlowLevel, 0));
 
@@ -2113,7 +2128,6 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		}
 	}
 
-	if (StruggleType == "Pick") data.escapeChance += KinkyDungeonGetPickBonus();
 
 	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.15);
 

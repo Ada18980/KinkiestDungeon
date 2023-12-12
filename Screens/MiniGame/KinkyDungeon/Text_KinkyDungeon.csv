@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.3 (C)"
+KDVersionStr,"5.0.3 (D)"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -154,7 +154,7 @@ KinkyDungeonStat19,"Distracted"
 KinkyDungeonStatDesc19,"+15% miscast chance (at all times)"
 
 KinkyDungeonStat20,"Brawler"
-KinkyDungeonStatDesc20,"Unarmed attacks deal +10 damage."
+KinkyDungeonStatDesc20,"Unarmed attacks deal +10 damage and being slowed does not decrease unarmed damage."
 KinkyDungeonStat21,"Clumsy"
 KinkyDungeonStatDesc21,"0.7x base accuracy"
 KinkyDungeonStatUnfocused,"Unfocused"
@@ -5425,7 +5425,7 @@ KinkyDungeonSpellEnemyCorona,Binding Light
 KinkyDungeonSpellEnemyCoronaBeam,Binding Light
 KinkyDungeonSpellMonolithBeamBeam,Chaos Beam
 KinkyDungeonSpellClericBeamBeam,Mystic Beam
-KinkyDungeonSpellDescriptionCorona,A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt fire damage to the first target hit. 150% crit multiplier.
+KinkyDungeonSpellDescriptionCorona,A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt holy damage to the first target hit. 150% crit multiplier.
 KinkyDungeonSpellCastCorona,You charge a powerful beam attack!!!
 KinkyDungeonSpellTargetCorona,Choose line direction
 
@@ -6076,7 +6076,7 @@ KinkyDungeonSpellZombieOrb,Zombie Orb
 KinkyDungeonSpellZombieOrbMini,Lesser Zombie Orb
 KinkyDungeonSpellZombieOrbIce,Freezing Zombie Orb
 KinkyDungeonSpellMummyBolt,Mystic Bolt
-KinkyDungeonMysticShock,The mystic bolt paralyzes you!
+KinkyDungeonMysticShock,The mummy's curse paralyzes you!
 
 KinkyDungeonSpellRubberBullets,Rubber Bullets
 KinkyDungeonRubberBullets,You are hit by a fusilade of rubber bullets!
@@ -7017,6 +7017,7 @@ KDStatusTooltipEnemyFlying,Flying
 
 KinkyDungeonDamageTypeacid,"Acid"
 KinkyDungeonDamageTypecold,"Shadow"
+KinkyDungeonDamageTypeholy,"Holy"
 KinkyDungeonDamageTypearcane,"Arcane"
 KinkyDungeonDamageTypefrost,"Ice"
 KinkyDungeonDamageTypeice,"Ice"
@@ -14392,11 +14393,11 @@ KinkyDungeonSpellDescriptionParry,"+15 Block while holding a weapon."
 KinkyDungeonSpellDaggerParry,Dagger Parry
 KinkyDungeonSpellDescriptionDaggerParry,"+15 Block while holding a light weapon such as a knife or dagger."
 KinkyDungeonSpellWillParry,Steadfast Guard
-KinkyDungeonSpellDescriptionWillParry,"+5 Block for each 50 max willpower you have, while holding a non-light weapon."
+KinkyDungeonSpellDescriptionWillParry,"+5 Block for each 100 max willpower you have, while holding a non-light weapon."
 KinkyDungeonSpellSteelParry,The Power of Steel
-KinkyDungeonSpellDescriptionSteelParry,"+5 Block for each 50 max willpower you have, while holding a weapon that deals physical damage."
+KinkyDungeonSpellDescriptionSteelParry,"+5 Block for each 100 max willpower you have, while holding a weapon that deals physical damage."
 KinkyDungeonSpellGuardBoost,Secure Defense
-KinkyDungeonSpellDescriptionGuardBoost,"+10-60 Block, based on your percentage of Willpower."
+KinkyDungeonSpellDescriptionGuardBoost,"+15-30 Block, based on your percentage of Willpower."
 
 KinkyDungeonAttackBlock,You block the EnemyName attack!
 KinkyDungeonSpellBindBlock,You block a binding from EnemyName!
@@ -15129,7 +15130,7 @@ KinkyDungeonSpellRogueTraps2,Well-Placed Traps
 KinkyDungeonSpellDescriptionRogueTraps2,"Trap spells always critically strike."
 
 KinkyDungeonSpellRogueEscape,Hard to Catch
-KinkyDungeonSpellDescriptionRogueEscape,"Adjacent NPCs count as corners/hooks for purposes of escaping. After being restrained, escape speed and power is increased for 12 turns. Removed if you restrain yourself."
+KinkyDungeonSpellDescriptionRogueEscape,"Adjacent NPCs count as corners/hooks for purposes of escaping. After being restrained, escape speed and power is increased for 12 turns (escape power is increased by +20% plus 2% of Bondage Resist). Removed if you restrain yourself."
 
 KinkyDungeonBuffRogueEscape,Struggling is improved and escape is quicker!
 
@@ -15865,3 +15866,35 @@ KinkyDungeonSpellTargetSwap,Choose target to swap with
 
 KDEnemyBlockSuccess,"The ENMY blocked your attack, negating it entirely!"
 KDEnemyBlockPartial,"The ENMY blocked your attack, reducing the damage by PCNT%!"
+
+KDNoDamage,no damage
+
+
+KinkyDungeonSpellRaiseDefenses,Raise Defenses
+KinkyDungeonSpellDescriptionRaiseDefenses,"Spend 90 stamina to shield yourself from damage equal to your Block. Lasts 10 turns or until you attack."
+KinkyDungeonSpellEvasiveManeuvers,Evasive Maneuvers
+KinkyDungeonSpellDescriptionEvasiveManeuvers,"While active, you evade almost all attacks, but your stamina is drained by 50 per turn plus 10 per slow level. The base stamina cost is reduced by your Evasion."
+KinkyDungeonSpellBreakFree,Break Free
+KinkyDungeonSpellDescriptionBreakFree,"Consume 20 Battle Rhythm to increase escape power by +20% plus 1% of Bondage Resist. Lasts 60 turns or until your willpower reaches 0."
+KinkyDungeonSpellProblemSolving,Problem Solving
+KinkyDungeonSpellDescriptionProblemSolving,"While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +40% plus 20% of Bondage Resist"
+
+
+KDEvasiveManeuversEnd,You run out of strength to keep dodging...
+KDEvasiveManeuversFail,You can't muster the strength to dodge right now...
+KDEvasiveManeuversStart,You prepare to dodge!!!
+
+KinkyDungeonSpellProblemSolvingMsg,Your expertise and skill provides you with additional tool effectiveness! (+AMOUNT%)
+
+KDRaiseDefensesFail,You don't have enough stamina.
+KDRaiseDefensesSuccess,You raise your defences!
+KinkyDungeonBuffRaiseDefenses,Your defenses are raised!
+
+
+KDBreakFreeFailWP,You don't have the will to break free.
+KDBreakFreeFail,You don't have enough Battle Rhythm. You need 20.
+KDBreakFreeSuccess,"You channel your fighting spirit into your desire for freedom!"
+KinkyDungeonBuffBreakFree,Your struggle power is greatly increased!!!
+
+KDTeleportNearby,"The teleportation partially succeeds due to an obstruction, placing you near the intended point."
+KDTeleportFail,"The teleportation fizzles due to obstruction."

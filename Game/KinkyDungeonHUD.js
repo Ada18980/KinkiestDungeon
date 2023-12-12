@@ -2412,7 +2412,8 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 			statsDraw[b.id] = {
 				text: t,
 				count: b.text ? b.text :
-					((count ? `${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ((count ? " " : "") + `${b.duration}`) : "")),
+					b.type == "Shield" ? (`${Math.round(b.power*10)} (${b.duration})`) :
+					(((count ? `${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ((count ? " " : "") + `${b.duration}`) : ""))),
 				icon: (KDBuffSprites[b.id] || b.buffSprite) ? "buff/buff" + (b.buffSpriteSpecific || b.id) : undefined,
 				//countcolor: b.aura ? b.aura : b.labelcolor,
 				category: "buffs", color: b.aura ? b.aura : b.labelcolor, bgcolor: "#333333", priority: pri,

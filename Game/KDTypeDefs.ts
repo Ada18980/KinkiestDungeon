@@ -1399,6 +1399,10 @@ type masterInfo = {
 	masterTag?: string,
 }
 
+interface String {
+    KDReplaceOrAddDmg(dmg: string, replaceString?: string): string;
+}
+
 interface entity {
 	blockedordodged?: number,
 	blocks?: number,

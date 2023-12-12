@@ -505,7 +505,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 
 	KinkyDungeonSendEvent("duringPlayerDamage", data);
 
-	if (KDGameData.Shield && data.dmg > 0) {
+	if (!KinkyDungeonIgnoreShieldTypes.includes(data.type) && KDGameData.Shield && data.dmg > 0) {
 		let amt = data.dmg;
 		
 		data.dmg -= KDGameData.Shield;

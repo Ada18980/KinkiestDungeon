@@ -2686,35 +2686,42 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				if (enemy.teleporting <= 0)
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "teleporting"});
 			}
-			if (!enemy.blockedordodged && !KinkyDungeonIsDisabled(enemy)) {
-				if (enemy.aware) {
-							
-					let blockRate = (enemy.Enemy.block || 0) + KDEntityBuffedStat(enemy, "Block");
-					let maxblock = KDGetMaxBlock(enemy);
-					if (maxblock > 0 && blockRate > -9 && !(enemy.blocks >= maxblock)) {
-						if (!enemy.blocks) enemy.blocks = 0;
-						// Roll for a token
-						let mult = KDBlockDodgeStat(blockRate);
-						if (KDRandom() < 0.1 / mult) {
-							enemy.blocks += 1;
-						}
-					} else if (enemy.blocks > maxblock) enemy.blocks = Math.max(0, maxblock);
-					
-					let dodgeRate = (enemy.Enemy.evasion || 0) + KDEntityBuffedStat(enemy, "Dodge");
-					let maxdodge = KDGetMaxDodge(enemy);
-					if (maxdodge > 0 && dodgeRate > -9 && !(enemy.dodges >= maxdodge)) {
-						if (!enemy.dodges) enemy.dodges = 0;
-						// Roll for a token
-						let mult = KDBlockDodgeStat(dodgeRate);
-						if (KDRandom() < 0.1 / mult) {
-							enemy.dodges += 1;
-						}
-					} else if (enemy.dodges > maxdodge) enemy.dodges = Math.max(0, maxdodge);
+			if (enemy.vp > 0) {
+				if (!enemy.blockedordodged && !KinkyDungeonIsDisabled(enemy)) {
+					if (enemy.aware) {
+								
+						let blockRate = (enemy.Enemy.block || 0) + KDEntityBuffedStat(enemy, "Block");
+						let maxblock = KDGetMaxBlock(enemy);
+						if (maxblock > 0 && blockRate > -9 && !(enemy.blocks >= maxblock)) {
+							if (!enemy.blocks) enemy.blocks = 0;
+							// Roll for a token
+							let mult = KDBlockDodgeStat(blockRate);
+							if (KDRandom() < 0.1 / mult) {
+								enemy.blocks += 1;
+							}
+						} else if (enemy.blocks > maxblock) enemy.blocks = Math.max(0, maxblock);
+						
+						let dodgeRate = (enemy.Enemy.evasion || 0) + KDEntityBuffedStat(enemy, "Dodge");
+						let maxdodge = KDGetMaxDodge(enemy);
+						if (maxdodge > 0 && dodgeRate > -9 && !(enemy.dodges >= maxdodge)) {
+							if (!enemy.dodges) enemy.dodges = 0;
+							// Roll for a token
+							let mult = KDBlockDodgeStat(dodgeRate);
+							if (KDRandom() < 0.1 / mult) {
+								enemy.dodges += 1;
+							}
+						} else if (enemy.dodges > maxdodge) enemy.dodges = Math.max(0, maxdodge);
+					}
+				} else if (delta > 0 && enemy.blockedordodged) {
+					enemy.blockedordodged -= delta;
+					if (enemy.blockedordodged <= 0) delete enemy.blockedordodged;
 				}
-			} else if (delta > 0 && enemy.blockedordodged) {
-				enemy.blockedordodged -= delta;
-				if (enemy.blockedordodged <= 0) delete enemy.blockedordodged;
+			} else if (!enemy.aware) {
+				delete enemy.blockedordodged;
+				delete enemy.dodges;
+				delete enemy.blocks;
 			}
+			
 		}
 	}
 
@@ -4044,9 +4051,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				// Easier to evase harness grabs
 				let BaseBlock = KinkyDungeonMultiplicativeStat(0.0 + AIData.accuracy - 1);
 				let BaseEvasion = KinkyDungeonMultiplicativeStat(0.25 + AIData.accuracy - 1);
-				let playerEvasion = 1.01 * (player.player) ? KinkyDungeonPlayerEvasion()
+				let playerEvasion = 1.01 * (player.player) ? KinkyDungeonPlayerEvasion(true)
 					: KinkyDungeonMultiplicativeStat(((player.Enemy && player.Enemy.evasion) ? player.Enemy.evasion : 0)) * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(player.buffs, "Evasion"));
-				let playerBlock = 1.01 * (player.player) ? KinkyDungeonPlayerBlock()
+				let playerBlock = 1.01 * (player.player) ? KinkyDungeonPlayerBlock(true)
 					: KinkyDungeonMultiplicativeStat(((player.Enemy && player.Enemy.block) ? player.Enemy.block : 0)) * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(player.buffs, "Block"));
 				if (AIData.playerDist < 1.5 && player.player && AIData.attack.includes("Bind") && enemy.Enemy.bound && KDRandom() >= BaseEvasion-playerEvasion && KDRandom() >= BaseBlock-playerBlock && KDGameData.MovePoints > -1 && KinkyDungeonTorsoGrabCD < 1 && KinkyDungeonLastAction == "Move") {
 					let caught = false;
@@ -4106,10 +4113,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 				KDEnemyAddSound(enemy, enemy.Enemy.Sound?.attackAmount != undefined ? enemy.Enemy.Sound?.attackAmount : KDDefaultEnemyAttackSound);
 
-				let playerEvasion = 1.01 * (player.player) ? KinkyDungeonPlayerEvasion()
+				let playerEvasion = 1.01 * (player.player) ? KinkyDungeonPlayerEvasion(true)
 					: KinkyDungeonMultiplicativeStat(((player.Enemy && player.Enemy.evasion) ? player.Enemy.evasion : 0)) * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(player.buffs, "Evasion"));
 
-				let playerBlock = 1.01 * (player.player) ? KinkyDungeonPlayerBlock()
+				let playerBlock = 1.01 * (player.player) ? KinkyDungeonPlayerBlock(true)
 					: KinkyDungeonMultiplicativeStat(((player.Enemy && player.Enemy.block) ? player.Enemy.block : 0)) * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(player.buffs, "Block"));
 
 				if (hit) {
@@ -6873,6 +6880,7 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
  * @returns {number}
  */
 function KDGetMaxBlock(entity) {
+	if (!((entity.Enemy.block || entity.Enemy.blockAmount || (KDIsHumanoid(entity) && !entity.Enemy.tags?.submissive)))) return 0;
 	let mod = KDEntityBuffedStat("MaxBlock");
 	if (entity.Enemy?.maxblock) return Math.max(0, entity.Enemy?.maxblock + mod);
 	return Math.max(0, mod + Math.max(1, KDEnemyRank(entity)));
@@ -6895,7 +6903,6 @@ function KDGetMaxDodge(entity) {
  * @returns {number}
  */
 function KDGetBlockAmount(entity) {
-	if (!((entity.Enemy.block || entity.Enemy.blockAmount || (KDIsHumanoid(entity) && !entity.Enemy.tags?.submissive)))) return 0;
 	let mod = KDEntityBuffedStat("BlockAmount");
 	
 	if (entity.Enemy?.blockAmount) return Math.max(0, entity.Enemy?.blockAmount + mod);

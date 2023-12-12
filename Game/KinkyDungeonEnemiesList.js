@@ -300,7 +300,7 @@ let KinkyDungeonEnemies = [
 	},
 
 
-	{name: "HolyConstruct", nonHumanoid: true, faction: "Angel", clusterWith: "angel", color: "#ffffaa", tags: KDMapInit(["opendoors", "minor", "holy", "construct", "nosignal", "ranged", "soulimmune", "meleeresist", "unstoppable", "celestialRopes", "coldsevereweakness", "flying"]),
+	{name: "HolyConstruct", nonHumanoid: true, faction: "Angel", clusterWith: "angel", color: "#ffffaa", tags: KDMapInit(["opendoors", "minor", "holy", "holyresist", "construct", "nosignal", "ranged", "soulimmune", "meleeresist", "unstoppable", "celestialRopes", "coldsevereweakness", "flying"]),
 		cohesion: 0.7, cohesionRange: 10,
 		spellResist: 3,
 		nonDirectional: true,
@@ -313,7 +313,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 
-	{name: "Angel", bound: "Angel", faction: "Angel", color:"#ffffaa", tags: KDMapInit(["angel", "flying", "ranged", "divineRestraints", "coldweakness", "meleeresist", "unflinching"]),
+	{name: "Angel", bound: "Angel", faction: "Angel", color:"#ffffaa", tags: KDMapInit(["angel", "flying", "ranged", "holyimmune", "divineRestraints", "coldweakness", "meleeresist", "unflinching"]),
 		followRange: 0, AI: "hunt", evasion: 0.25, attackWhileMoving: true,
 		Behavior: {
 			noPlay: true,
@@ -1861,7 +1861,7 @@ let KinkyDungeonEnemies = [
 			baseAmount: 0,
 			moveAmount: 0,
 		},
-		tags: KDMapInit(["obstacledoor", "shadow", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "temporary",
+		tags: KDMapInit(["obstacledoor", "shadow", "holyweakness", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "temporary",
 			"soulimmune", "meleeresist", "fireweakness", "glueresist", "coldimmune", "tickleresist", "groperesist", "painresist", "charmimmune", "shadowHands", "ghost",
 		]), spellResist: 1, sneakThreshold: 0.01,
 		evasion: -1, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05, regen: 0.25,
@@ -2198,7 +2198,7 @@ let KinkyDungeonEnemies = [
 		stamina: 5,
 		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 15}, {name: "EarthRune", weight: 3}]},
 	{name: "DragonShadow", faction: "Dragon", clusterWith: "dragon", bound: "DragonShadow", color: "#4400ff",
-		tags: KDMapInit(["opendoors", "shadowclan", "shadow", "chaos", "leashing", "dragon", "melee", "elite", "dragonRestraints", "handcuffer", "shadowRestraints", "coldimmune", "fireresist", "jail", "jailer", "hunter"]),
+		tags: KDMapInit(["opendoors", "shadowclan", "shadow", "holyweakness", "chaos", "leashing", "dragon", "melee", "elite", "dragonRestraints", "handcuffer", "shadowRestraints", "coldimmune", "fireresist", "jail", "jailer", "hunter"]),
 		cohesion: 0.75,
 		followLeashedOnly: true, ignorechance: 0, armor: 0.5, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonLeader", range: 4, loose: true, aggressive: true},
 		spells: ["ShadowOrb"],  spellCooldownMult: 1, spellCooldownMod: 0, pullTowardSelf: true, pullDist: 3, disarm: 0.4,
@@ -2557,7 +2557,7 @@ let KinkyDungeonEnemies = [
 
 
 
-	{name: "ShadowHand", faction: "Ghost", clusterWith: "ghost", color: "#880044", tags: KDMapInit(["opendoors", "shadow", "shadowHandEnemy", "shadowTrap", "ghost", "soulimmune", "fireweakness", "melee", "shadowimmune", "glueimmune", "chainimmune", "shadowHands", "poisonimmune", "meleeresist", "flying"]),
+	{name: "ShadowHand", faction: "Ghost", clusterWith: "ghost", color: "#880044", tags: KDMapInit(["opendoors", "shadow", "holyweakness", "shadowHandEnemy", "shadowTrap", "ghost", "soulimmune", "fireweakness", "melee", "shadowimmune", "glueimmune", "chainimmune", "shadowHands", "poisonimmune", "meleeresist", "flying"]),
 		ignorechance: 0, armor: 0, followRange: 1, AI: "huntshadow", noAlert: true, hitsfx: "Evil", ignoreflag: ["ShadowHand"], failAttackflag: ["ShadowHand"], failAttackflagDuration: 2,
 		visionRadius: 10, blindSight: 4, evasion: 0.4, maxhp: 6, minLevel: 0, weight:-5, movePoints: 1, attackPoints: 2, attack: "MeleeWillBind", attackWidth: 1, attackRange: 1, power: 1.0, dmgType: "grope", fullBoundBonus: 4,
 		events: [
@@ -2567,7 +2567,7 @@ let KinkyDungeonEnemies = [
 		],
 		terrainTags: {"trap": 100, revenge: 10}, shrines: [], allFloors: true},
 
-	{name: "ShadowGhast", faction: "Ghost", clusterWith: "ghost", color: "#880044", tags: KDMapInit(["opendoors", "shadow", "shadowHandEnemy", "shadowTrap", "ghost", "soulimmune", "fireweakness", "melee", "shadowimmune", "glueimmune", "chainimmune", "shadowHands", "poisonimmune", "meleeresist", "flying"]),
+	{name: "ShadowGhast", faction: "Ghost", clusterWith: "ghost", color: "#880044", tags: KDMapInit(["opendoors", "shadow", "holyweakness", "shadowHandEnemy", "shadowTrap", "ghost", "soulimmune", "fireweakness", "melee", "shadowimmune", "glueimmune", "chainimmune", "shadowHands", "poisonimmune", "meleeresist", "flying"]),
 		ignorechance: 0, armor: 0, followRange: 1, AI: "huntshadow", hitsfx: "Evil", ignoreflag: ["ShadowHand"], failAttackflag: ["ShadowHand"], failAttackflagDuration: 2,
 		visionRadius: 10, blindSight: 5, evasion: 0.15, maxhp: 14, minLevel: 0, weight:-4, movePoints: 4, attackPoints: 3, attack: "SpellMeleeWillBindSlow", attackWidth: 1, attackRange: 3, power: 2.0, dmgType: "cold", fullBoundBonus: 2,
 		projectileAttack: true,
@@ -2581,7 +2581,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Ectoplasm", weight: 1}]},
 
 	{name: "CorruptedAdventurer", faction: "Ghost", clusterWith: "ghost", bound: "CorruptedAdventurer", playLine: "Elemental", color: "#880044",
-		tags: KDMapInit(["shadowHandEnemy", "shadowclan", "shadow", "shadowTrap", "ghost", "soulresist", "fireweakness", "melee", "shadowresist", "glueresist", "chainresist", "shadowHands", "opendoors"]),
+		tags: KDMapInit(["shadowHandEnemy", "shadowclan", "shadow", "holyweakness", "shadowTrap", "ghost", "soulresist", "fireweakness", "melee", "shadowresist", "glueresist", "chainresist", "shadowHands", "opendoors"]),
 		followRange: 1, ignoreflag: ["ShadowDommed"], failAttackflag: ["ShadowDommed"],
 		spells: ["ShadowBolt"], spellCooldownMult: 1, spellCooldownMod: 0,
 		AI: "huntshadow",  visionRadius: 10, maxhp: 20, minLevel: 3, weight:-1, movePoints: 4, disarm: 0.33,
@@ -2597,7 +2597,7 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "ChainBeing", clusterWith: "elemental", bound: "ChainBeing", playLine: "Elemental", color: "#c7a9fa",
-		tags: KDMapInit(["construct", "shadow", "metalTrap", "soulresist", "fireweakness", "melee", "shadowresist", "glueresist", "chainimmune", "obsidianRestraints", "chainRestraintsMagic", "leashing"]),
+		tags: KDMapInit(["construct", "shadow", "holyweakness", "metalTrap", "soulresist", "fireweakness", "melee", "shadowresist", "glueresist", "chainimmune", "obsidianRestraints", "chainRestraintsMagic", "leashing"]),
 		armor: 1.5, kite: 1.5, followRange: 3, AI: "hunt",
 		spells: ["ObsidianBolt"], spellCooldownMult: 1, spellCooldownMod: 1, followLeashedOnly: true, stopToCast: true, spellRdy: true, projectileTargeting: true,
 		visionRadius: 10, maxhp: 11, minLevel: 0, weight:-10, movePoints: 2,
@@ -2614,7 +2614,7 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "DemonEye", clusterWith: "demon", bound: "Demon", faction: "Observer", playLine: "Elemental", color: "#ff5577",
-		tags: KDMapInit(["opendoors", "chaos", "observer", "demon", "melee", "miniboss", "obsidianRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness"]),
+		tags: KDMapInit(["opendoors", "chaos", "observer", "demon", "holyweakness", "melee", "miniboss", "obsidianRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness"]),
 		armor: 2, spellResist: 2, followRange: 0, AI: "hunt", disarm: 0.33,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 4, color: "#ff5555"},
@@ -2640,7 +2640,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, shrines: [], floors:KDMapInit([]),
 		dropTable: [{name: "ManaOrb", weight: 10}]
 	},
-	{name: "Observer", faction: "Observer", color: "#ff5577", clusterWith: "demon", tags: KDMapInit(["chaos", "shadow", "melee", "minor", "soulimmune", "meleeresist", "flying"]),
+	{name: "Observer", faction: "Observer", color: "#ff5577", clusterWith: "demon", tags: KDMapInit(["chaos", "shadow", "holyweakness", "melee", "minor", "soulimmune", "meleeresist", "flying"]),
 		squeeze: true, followRange: 1, AI: "hunt",  sneakThreshold: 1, hitsfx: "", ethereal: true,
 		spells: ["ObserverBeam"], spellCooldownMult: 1, spellCooldownMod: 1, evasion: 0.4, sneakthreshold: 3.5,
 		events: [
@@ -2652,7 +2652,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, floors:KDMapInit([]), shrines: []},
 
 	{name: "DemonStar", clusterWith: "demon", bound: "Demon", playLine: "Elemental", color: "#9ea7de",
-		tags: KDMapInit(["opendoors", "order", "leashing", "demon", "melee", "miniboss", "mithrilRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness", "jail", "jailer", "hunter"]),
+		tags: KDMapInit(["opendoors", "order", "leashing", "demon", "holyweakness", "melee", "miniboss", "mithrilRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness", "jail", "jailer", "hunter"]),
 		armor: 1.5, followRange: 0, AI: "hunt",
 		spells: ["BoundByFate"], spellCooldownMult: 1, spellCooldownMod: 0, followLeashedOnly: true, stopToCast: true, spellRdy: true, projectileTargeting: true,
 		visionRadius: 10, maxhp: 16, minLevel: 0, weight:-10, movePoints: 4,
@@ -2664,7 +2664,7 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "DemonMoon", clusterWith: "demon", bound: "Demon", playLine: "Elemental", color: "#9ea7de",
-		tags: KDMapInit(["opendoors", "order", "leashing", "demon", "melee", "miniboss", "mithrilRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness", "jail", "jailer", "hunter"]),
+		tags: KDMapInit(["opendoors", "order", "leashing", "demon", "holyweakness", "melee", "miniboss", "mithrilRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness", "jail", "jailer", "hunter"]),
 		armor: 1.5, followRange: 0, AI: "hunt",
 		spells: ["CrushingFate"], spellCooldownMult: 1, spellCooldownMod: 0, followLeashedOnly: true, stopToCast: true, spellRdy: true, projectileTargeting: true,
 		visionRadius: 10, maxhp: 16, minLevel: 0, weight:-10, movePoints: 4,
@@ -2675,7 +2675,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 25, amountMax: 35, weight: 10}]
 	},
 	{name: "DemonVoid", clusterWith: "demon", bound: "Demon", playLine: "Elemental", color: "#9ea7de",
-		tags: KDMapInit(["opendoors", "order", "leashing", "demon", "melee", "miniboss", "obsidianRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness", "jail", "jailer", "hunter"]),
+		tags: KDMapInit(["opendoors", "order", "leashing", "demon", "holyweakness", "melee", "miniboss", "obsidianRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness", "jail", "jailer", "hunter"]),
 		armor: 1.5, followRange: 0, AI: "hunt",
 		spells: ["GravityPull"], spellCooldownMult: 1, spellCooldownMod: 0, followLeashedOnly: true, castWhileMoving: true, spellRdy: true, projectileTargeting: true,
 		visionRadius: 10, maxhp: 18, minLevel: 0, weight:-10, movePoints: 2.5,
@@ -2687,7 +2687,7 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "Demon", clusterWith: "demon", bound: "Demon", playLine: "Elemental", color: "#9ea7de",
-		tags: KDMapInit(["opendoors", "order", "leashing", "demon", "melee", "obsidianRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness", "jail", "jailer", "hunter"]),
+		tags: KDMapInit(["opendoors", "order", "leashing", "demon", "holyweakness", "melee", "obsidianRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness", "jail", "jailer", "hunter"]),
 		armor: 3, followRange: 0, AI: "hunt",
 		stunTime: 2, specialCD: 8, specialAttack: "Stun", specialRemove: "BindLock", specialPower: 4, specialDamage: "crush", specialWidth: 3, specialCDonAttack: true,
 		visionRadius: 10, maxhp: 8, minLevel: 0, weight:-14, movePoints: 2,
