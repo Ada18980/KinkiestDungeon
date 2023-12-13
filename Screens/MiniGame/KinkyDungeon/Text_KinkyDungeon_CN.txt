@@ -10024,8 +10024,8 @@ You avoid the attack in a flurry of impressive maneuvers!
 你在一系列令人印象深刻的动作中避开了攻击！
 Arcane Barrier
 奥术屏障
-When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 2 to 1 ratio.
-当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 2:1 的比例缓慢将奥术能量转化为护盾。
+When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 100% Max Mana.
+当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 1:1 的比例缓慢将奥术能量转化为护盾。最大护盾等于100%的最大魔法值。
 You sense that a high value target is near.
 你感觉到一个高价值目标正在靠近。
 You push yourself beyond physical limits!
@@ -11037,8 +11037,8 @@ Flash Bomb
 闪光弹
 Mirror Image
 镜像
-A flash of light which renders anyone caught within blind for Duration turns
-一道闪光，使受到影响的所有人在 Duration 回合内陷入失明
+A flash of light which renders anyone caught within blind for 7 turns
+一道闪光，使受到影响的所有人在7回合内陷入失明
 You charge up a bright flash!
 你发出一道闪光！
 Select where to center the flash (SpellArea radius)
@@ -11051,8 +11051,8 @@ Select where to center the noise (SpellArea radius)
 选择噪声的中心位置（SpellArea 半径）
 Greater Flash
 大闪光
-A massive flash of light which renders anyone caught within blind for Duration turns
-一道巨大的闪光，使受到影响的所有人在 Duration 回合内陷入失明
+A massive flash of light which renders anyone caught within blind for 16 turns and stuns briefly.
+一道巨大的闪光，使受到影响的所有人在16回合内陷入失明并短暂眩晕。
 You charge up a bright flash!
 你发出一道闪光！
 Select where to center the flash (SpellArea radius)
@@ -11061,8 +11061,8 @@ Focused Flash
 聚焦闪光
 Select where to center the flash (SpellArea radius)
 选择闪光的中心位置（SpellArea 半径）
-A focused flash of light which renders anyone caught within blind for Duration turns
-一道聚焦的闪光，使受到影响的所有人在 Duration 回合内陷入失明
+A focused flash of light which renders anyone caught within blind for 30 turns and stuns for Duration turns.
+一道聚焦的闪光，使受到影响的所有人在30回合内陷入失明，并在 Duration 回合内眩晕
 You slowly charge up a powerful flash!
 你缓慢地释放出一道强力的闪光！
 Shroud
@@ -11108,10 +11108,6 @@ Secure Defense
 
 You block the EnemyName attack!
 你挡住了 EnemyName 的攻击！
-You block a binding from EnemyName!
-你挡住了 EnemyName 的束缚！
-You dodge a binding from EnemyName!
-你躲开了来自 EnemyName 的束缚！
 You block the EnemyName!
 你挡住了 EnemyName！
 You dodge the EnemyName!
@@ -18580,3 +18576,25 @@ Confirm
 确认
 What is your name?
 你叫什么名字？
+
+Enrage
+狂暴
+Scream loudly, causing nearby enemies to investigate and increasing Battle Rhythm by 10. Has a 100 turn cooldown.
+大声尖叫，使附近的敌人调查并增加10的战斗节奏。有100回合的冷却时间。
+
+You shout loudly and shake your fist at the sky! (+10 BR)
+你大声喊叫，对着天空挥舞着拳头！（+10 BR）
+Mmmph! (You can't shout while gagged)
+Mmmph!（塞住嘴时不能大声喊叫）
+You are plenty mad enough as is.
+你已经够疯狂的了。
+You are too tired to rage. Perhaps try a warm cozy bed instead?
+你太累了，气不起来。也许可以换一张温暖舒适的床？
+
+turns
+回合
+
+Your shield absorbed AMNT damage.
+你的护盾吸收了 AMNT 的伤害。
+You are currently shielded from damage and some spells.
+你目前被保护免受伤害和一些法术的伤害。
