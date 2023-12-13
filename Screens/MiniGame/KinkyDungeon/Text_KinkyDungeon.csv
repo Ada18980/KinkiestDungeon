@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.3 (D)"
+KDVersionStr,"5.0.3 (E)"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -553,9 +553,9 @@ KinkyDungeonStatStartMaid,"Maid Sweeper"
 KinkyDungeonStatDescStartMaid,"Start in a magically locked maid outfit."
 KinkyDungeonStatStartWolfgirl,"Wolf Trainee"
 KinkyDungeonStatDescStartWolfgirl,"Start in a uniform of a naughty wolfgirl."
-KinkyDungeonStatStartLatex,"Latex Doll"
+KinkyDungeonStatStartLatex,"Latex Toy"
 KinkyDungeonStatDescStartLatex,"Start bound in latex restraints."
-KinkyDungeonStatStartObsidian,"Iron Slave"
+KinkyDungeonStatStartObsidian,"Obsidian Slave"
 KinkyDungeonStatDescStartObsidian,"Start in a full set of magically locked obsidian cuffs."
 
 
@@ -574,7 +574,7 @@ KinkyDungeonPastePerks,Paste (clipboard)
 KDConductionDamageTaken,DAMAGEDEALT electric damage conducts to you!!!
 KDBurningFanFlamesDamageTaken,"The pressure fans the flames on you, dealing bonus DAMAGEDEALT fire damage!"
 KinkyDungeonDrenchedSlimeBuff,The RestraintName comes off more easily in the presence of water!
-KDSlipIce,You slip on the ice!
+KDSlipIce,You slip on the floor!
 KinkyDungeonBuffIgniteDamage,The air around you is ablaze! (-DamageDealt SP)
 KinkyDungeonBuffShrineIllusionTrigger,"The Goddess of Illusions shrouds you in shadows!"
 KinkyDungeonBuffLockdownTry,"You struggle against your bonds, but a magical force resists!"
@@ -5466,6 +5466,10 @@ KinkyDungeonSpellSlimeToLatex,Solidify
 KinkyDungeonSpellDescriptionSlimeToLatex,"Solidifies slime in the area into Latex. Latex adheres to enemies and slowly binds them, escasing them when they are fully bound."
 KinkyDungeonSpellCastSlimeToLatex,"You inscribe a transmutation circle on the floor."
 KinkyDungeonSpellTargetSlimeToLatex,Choose area containing slime
+KinkyDungeonSpellLiquidMetal,LiquidMetal
+KinkyDungeonSpellDescriptionLiquidMetal,"Solidifies Latex in the area into Liquid Metal. Liquid Metal is slippery, but also adheres to enemies and slowly binds them in metallic bonds. Enemies encased in liquid metal are more susceptible to knockback due to the slippery nature."
+KinkyDungeonSpellCastLiquidMetal,"You inscribe a transmutation circle on the floor."
+KinkyDungeonSpellTargetLiquidMetal,Choose area containing Latex
 
 KinkyDungeonSpellSlimeWalk,Slime Repulsion
 KinkyDungeonSpellDescriptionSlimeWalk,"Gain +50 glue resist."
@@ -5656,7 +5660,7 @@ KinkyDungeonSpellSummonArmbinder,Conjure Armbinder
 KinkyDungeonSpellArmbinderBolt,Conjured Armbinder
 KinkyDungeonSpellArmbinderBoltBind,The armbinder slips itself around your arms and buckles itself tightly!
 KinkyDungeonSpellArmbinderBoltDamage,The armbinder hits you! (DamageDealt)
-KinkyDungeonSpellDescriptionSummonArmbinder,"Summons an armbinder which deals DamageDealt chain damage and disarms for 13 turns. Blinded/Silenced targets are silenced/blinded for the same time."
+KinkyDungeonSpellDescriptionSummonArmbinder,"Summons an armbinder which deals DamageDealt chain damage and disarms for 13 turns. Also removes 2 Block tokens from enemy. Cannot be blocked."
 KinkyDungeonSpellCastSummonArmbinder,You conjure a armbinder!
 KinkyDungeonSpellTargetSummonArmbinder,The armbinder will appear next to you and fly toward the target point.
 
@@ -5689,7 +5693,7 @@ KinkyDungeonSpellSummonLegbinder,Conjure Legbinder
 KinkyDungeonSpellLegbinderBolt,Conjured Legbinder
 KinkyDungeonSpellLegbinderBoltBind,The legbinder slips itself around your legs and buckles itself tightly!
 KinkyDungeonSpellLegbinderBoltDamage,The legbinder hits you! (DamageDealt)
-KinkyDungeonSpellDescriptionSummonLegbinder,"Summons a legbinder which deals DamageDealt chain damage and snares for 10 turns. +50 binding if target is not snared."
+KinkyDungeonSpellDescriptionSummonLegbinder,"Summons a legbinder which deals DamageDealt chain damage and snares for 10 turns. +50 binding if target is not snared. Cannot be blocked."
 KinkyDungeonSpellCastSummonLegbinder,You conjure a legbinder!
 KinkyDungeonSpellTargetSummonLegbinder,The legbinder will appear next to you and fly toward the target point.
 
@@ -5698,7 +5702,7 @@ KinkyDungeonSpellSummonStraitjacket,Conjure Straitjacket
 KinkyDungeonSpellStraitjacketBolt,Conjured Straitjacket
 KinkyDungeonSpellStraitjacketBoltBind,The straitjacket slips itself around your body and pulls your arms into its sleeves!
 KinkyDungeonSpellStraitjacketBoltDamage,The straitjacket hits you! (DamageDealt)
-KinkyDungeonSpellDescriptionSummonStraitjacket,"Summons a straitjacket which adds DamageDealt binding and reduces struggle speed for 14 turns."
+KinkyDungeonSpellDescriptionSummonStraitjacket,"Summons a straitjacket which adds DamageDealt binding and reduces struggle speed for 14 turns. Also removes 3 Block tokens from enemy. Cannot be blocked."
 KinkyDungeonSpellCastSummonStraitjacket,You conjure a straitjacket!
 KinkyDungeonSpellTargetSummonStraitjacket,The straitjacket will appear next to you and fly toward the target point.
 
@@ -5707,7 +5711,7 @@ KinkyDungeonSpellSummonHarness,Conjure Harness
 KinkyDungeonSpellHarnessBolt,Conjured Harness
 KinkyDungeonSpellHarnessBoltBind,The harness slips itself around your torso and squeezes tightly as each buckle secures itself one by one!
 KinkyDungeonSpellHarnessBoltDamage,The harness hits you! (DamageDealt)
-KinkyDungeonSpellDescriptionSummonHarness,"Summons a harness which deals DamageDealt crush damage. Adds +50 binding per 25% binding level on target, up to +200."
+KinkyDungeonSpellDescriptionSummonHarness,"Summons a harness which deals DamageDealt chain damage. Adds +50 binding per 25% binding level on target, up to +200."
 KinkyDungeonSpellCastSummonHarness,You conjure a harness!
 KinkyDungeonSpellTargetSummonHarness,The harness will appear next to you and fly toward the target point.
 
@@ -15866,6 +15870,8 @@ KinkyDungeonSpellTargetSwap,Choose target to swap with
 
 KDEnemyBlockSuccess,"The ENMY blocked your attack, negating it entirely!"
 KDEnemyBlockPartial,"The ENMY blocked your attack, reducing the damage by PCNT%!"
+KDEnemyBlockSuccessMulti,"The ENMY remains unscathed after putting up a strong defense!"
+KDEnemyBlockPartialMulti,"The ENMY puts up surprising resistance, reducing the damage by PCNT%."
 
 KDNoDamage,no damage
 
@@ -15898,3 +15904,5 @@ KinkyDungeonBuffBreakFree,Your struggle power is greatly increased!!!
 
 KDTeleportNearby,"The teleportation partially succeeds due to an obstruction, placing you near the intended point."
 KDTeleportFail,"The teleportation fizzles due to obstruction."
+KDConfirm,Confirm
+KDName,What is your name?

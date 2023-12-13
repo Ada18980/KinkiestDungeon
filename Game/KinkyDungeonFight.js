@@ -551,24 +551,39 @@ function KinkyDungeonEvasion(Enemy, IsSpell, IsMagic, Attacker) {
 
 	if (!Enemy) KinkyDungeonSleepTime = 0;
 
+	let dodged = false;
 	if (hitChance > 0) {
 		KinkyDungeonAggro(Enemy, undefined, Attacker);
-		let dodged = false;
-		while (Enemy?.dodges > 0 && KDCanDodge(Enemy)) {
-			Enemy.dodges = Math.max(0, Enemy.dodges - Math.max(0.1, hitChance));
-			Enemy.blockedordodged = (Enemy.blockedordodged || 0) + 1;
-			hitChance -= 1;
-			dodged = true;
+		// Smart enemies wont even try if they cant dodge it. Dumb enemies will
+		if (Enemy.dodges > 0 && (Enemy.dodges >= hitChance || KDRandom() < 1 - 0.2 * KDEnemyRank(Enemy))) {
+			if (Enemy?.Enemy.preferDodge || Enemy.hp < 0.55 * Enemy.Enemy.maxhp || Enemy.blocks < 1 || !KDCanBlock(Enemy) || (!Enemy.Enemy.preferBlock && KDRandom() < 0.2)) {
+				while (Enemy?.dodges > 0 && KDCanDodge(Enemy) && hitChance > 0) {
+					hitChance -= 1;
+					// The way this works:
+					// Positive accuracy has higher hitchance, so it requires more dodges
+					// Negative accuracy has a chance to not consume the dodge token
+					if (hitChance >= 0 || KDRandom() > -hitChance)
+						Enemy.dodges = Math.max(0, Enemy.dodges - 1);
+					Enemy.blockedordodged = (Enemy.blockedordodged || 0) + 1;
+					dodged = true;
+				}
+			}
 		}
+		
+		
 		if (dodged) {
 			let point = KinkyDungeonGetNearbyPoint(Enemy.x, Enemy.y, true, undefined, true, false, (x, y) => {return x != Enemy.x && y != Enemy.y});
 			KDMoveEntity(Enemy, point.x, point.y, true, true, true, false);
+			Enemy.movePoints = 0;
+			if (!Enemy.Enemy.attackWhileMoving && !Enemy.Enemy.attackWhileDodging) {
+				Enemy.attackPoints = 0;
+				Enemy.warningTiles = [];
+			}
 		}
 	}
 
-	return true;
+	if (!dodged && hitChance > 0) return true;
 
-	/* // Removed RNG
 
 	if (KDRandom() < hitChance + KinkyDungeonEvasionPityModifier) {
 		KinkyDungeonEvasionPityModifier = 0; // Reset the pity timer
@@ -580,7 +595,7 @@ function KinkyDungeonEvasion(Enemy, IsSpell, IsMagic, Attacker) {
 		KinkyDungeonEvasionPityModifier += KinkyDungeonEvasionPityModifierIncrementPercentage * hitChance;
 	}
 
-	return false;*/
+	return false;
 }
 
 
@@ -877,21 +892,80 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			if (Spell && Spell.hitsfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + Spell.hitsfx + ".ogg");
 			else if (!(Spell && Spell.hitsfx) && predata.dmgDealt > 0 && bullet) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/DealDamage.ogg");
 			if (!predata.blocked && predata.dmgDealt >= 1 && !predata.noblock && Enemy.blocks > 0 && KDCanBlock(Enemy)) {
+				let blockCount = 1;
 				Enemy.blocks -= 1;
 				Enemy.blockedordodged = (Enemy.blockedordodged || 0) + 1;
 				let amount = KDGetBlockAmount(Enemy);
+				let orig = predata.dmgDealt;
 				predata.dmgDealt -= Math.max(0, amount);
+
+				while (predata.dmgDealt > 0 && Enemy.blocks > 0 && (predata.dmgDealt > Enemy.hp * 0.1 || predata.dmgDealt > Enemy.Enemy.maxhp*0.5)) {
+					blockCount += 1;
+					Enemy.blocks -= 1;
+					Enemy.blockedordodged = (Enemy.blockedordodged || 0) + 1;
+					let amount = KDGetBlockAmount(Enemy);
+					predata.dmgDealt -= Math.max(0, amount);
+				}
+
+				let knockback = () => {
+					if (blockCount > 1 && Enemy.Enemy.tags.noknockback && !KDIsImmobile(Enemy)) {
+						if (bullet && (bullet.vx || bullet.vy)) {
+							// Gets pushed back by the projectile
+							let dist = blockCount - 1;
+							let speed = KDistEuclidean(bullet.vx, bullet.vy);
+							for (let i = dist; i > 0; i--) {
+								let newX = Enemy.x + Math.round(i * bullet.vx/speed);
+								let newY = Enemy.y + Math.round(i * bullet.vy/speed);
+								if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY)) && KinkyDungeonNoEnemy(newX, newY, true)
+								&& (i == 1 || KinkyDungeonCheckProjectileClearance(Enemy.x, Enemy.y, newX, newY))) {
+									KDMoveEntity(Enemy, newX, newY, false);
+								}
+							}
+						} else if (bullet && (Enemy.x != bullet.x || Enemy.y != bullet.y)) {
+							// Gets knocked away from the explosion
+							let dist = blockCount - 1;
+							let speed = KDistEuclidean(Enemy.x - bullet.x, Enemy.y - bullet.y);
+							for (let i = dist; i > 0; i--) {
+								let newX = Enemy.x + Math.round(-i * (Enemy.x - bullet.x)/speed);
+								let newY = Enemy.y + Math.round(-i * (Enemy.y - bullet.y)/speed);
+								if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY)) && KinkyDungeonNoEnemy(newX, newY, true)
+								&& (i == 1 || KinkyDungeonCheckProjectileClearance(Enemy.x, Enemy.y, newX, newY))) {
+									KDMoveEntity(Enemy, newX, newY, false);
+								}
+							}
+						} else if (!bullet && attacker && !Spell) {
+							// Gets knocked away from the explosion
+							let dist = blockCount - 1;
+							let speed = KDistEuclidean(Enemy.x - attacker.x, Enemy.y - attacker.y);
+							for (let i = dist; i > 0; i--) {
+								let newX = Enemy.x + Math.round(-i * (Enemy.x - attacker.x)/speed);
+								let newY = Enemy.y + Math.round(-i * (Enemy.y - attacker.y)/speed);
+								if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY)) && KinkyDungeonNoEnemy(newX, newY, true)
+								&& (i == 1 || KinkyDungeonCheckProjectileClearance(Enemy.x, Enemy.y, newX, newY))) {
+									KDMoveEntity(Enemy, newX, newY, false);
+								}
+							}
+						}
+					}
+				};
+
 				if (predata.dmgDealt <= 0) {
 					predata.dmgDealt = 0;
 					predata.blocked = true;
 					if (!NoMsg && predata.faction == "Player") {
-						KinkyDungeonSendTextMessage(4, TextGet("KDEnemyBlockSuccess")
+						KinkyDungeonSendTextMessage(4, TextGet(blockCount == 1 ? "KDEnemyBlockSuccess" : "KDEnemyBlockSuccessMulti")
 							.replace("ENMY", TextGet("Name" + Enemy.Enemy.name)), "orange", 2);
 					}
-				} else if (!NoMsg && predata.faction == "Player") {
-					KinkyDungeonSendTextMessage(4, TextGet("KDEnemyBlockPartial")
-						.replace("PCNT", "" + Math.round(100 * amount/predata.dmgDealt))
-						.replace("ENMY", TextGet("Name" + Enemy.Enemy.name)), "orange", 2);
+					
+					knockback();
+				} else {
+					if (!NoMsg && predata.faction == "Player") {
+						KinkyDungeonSendTextMessage(4, TextGet(blockCount == 1 ? "KDEnemyBlockPartial" : "KDEnemyBlockPartialMulti")
+							.replace("PCNT", "" + Math.round(100 * amount/orig))
+							.replace("ENMY", TextGet("Name" + Enemy.Enemy.name)), "orange", 2);
+					}
+					
+					knockback();
 				}
 			}
 
@@ -906,10 +980,14 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			//forceKill = (Enemy.hp <= Enemy.Enemy.maxhp*0.1 || Enemy.hp <= 0.52) && KDistChebyshev(Enemy.x - KinkyDungeonPlayerEntity.x, Enemy.y - KinkyDungeonPlayerEntity.y) < 1.5;
 
 			if (Enemy.shield > 0) {
+				let orig = predata.dmgDealt;
 				Enemy.shield -= predata.dmgDealt;
 				if (Enemy.shield <= 0) {
-					predata.dmgDealt -= Enemy.shield;
+					predata.dmgDealt += Enemy.shield;
 					delete Enemy.shield;
+				} else {
+					Enemy.playerdmg = (Enemy.playerdmg || 0) + orig;
+					predata.dmgDealt = 0;
 				}
 			}
 			if (predata.dmgDealt > 0) {

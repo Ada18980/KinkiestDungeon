@@ -1184,7 +1184,22 @@ function KinkyDungeonDrawInventory() {
 						KinkyDungeonInventoryOffset = Math.max(0, filteredInventory.length + numRows*3 - i);
 					//break;
 					// Instead of breaking, we fill in the missing squares
-					FillRectKD(kdcanvas, kdpixisprites, "kdInvEmptySpot" + i, {
+					DrawButtonKDExScroll("invchoice_" + i, (amount) => {
+						KinkyDungeonInventoryOffset = Math.max(0, Math.min(filteredInventory.length + 2 - numRows*3,
+							KinkyDungeonInventoryOffset + numRows*Math.sign(amount)*Math.ceil(Math.abs(amount)/b_height/numRows/b_width)));
+					}, (bdata) => {
+						//KinkyDungeonCurrentPageInventory = index;
+						return true;
+					}, true, canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
+					"",
+					"#ffffff",
+					"",
+					undefined, undefined, index != KinkyDungeonCurrentPageInventory, KDTextGray1, undefined, undefined, {
+						scaleImage: true,
+					});
+
+
+					/*FillRectKD(kdcanvas, kdpixisprites, "kdInvEmptySpot" + i, {
 						Left: canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135,
 						Top: canvasOffsetY_ui + 50 + b_height * yy,
 						Width: b_width-padding,
@@ -1193,7 +1208,7 @@ function KinkyDungeonDrawInventory() {
 						LineWidth: 1,
 						zIndex: 20,
 						alpha: 0.4,
-					});
+					});*/
 				}
 			}
 
@@ -2213,7 +2228,7 @@ function KDRemoveConsumableVariant(Name, Prefix="KinkyDungeonInventoryItem") {
  * @param {boolean} loose
  * @param {boolean} lost
  */
-function KDPruneInventoryVariants(worn = true, loose = true, lost = true, ground = true) {
+function KDPruneInventoryVariants(worn = true, loose = true, lost = true, ground = true, hotbar = true) {
 	let entries = Object.entries(KinkyDungeonRestraintVariants);
 	let entrieswep = Object.entries(KinkyDungeonWeaponVariants);
 	let entriescon = Object.entries(KinkyDungeonConsumableVariants);
@@ -2268,6 +2283,24 @@ function KDPruneInventoryVariants(worn = true, loose = true, lost = true, ground
 				if (KinkyDungeonInventoryGetWeapon(type[0])) {
 					found[type[0]] = true;
 				}
+			}
+		}
+	}
+
+	if (hotbar) {
+		if (KinkyDungeonWeaponChoices) {
+			for (let item of KinkyDungeonWeaponChoices) {
+				if (KinkyDungeonWeaponVariants[item]) found[item] = true;
+			}
+		}
+		if (KinkyDungeonArmorChoices) {
+			for (let item of KinkyDungeonArmorChoices) {
+				if (KinkyDungeonRestraintVariants[item]) found[item] = true;
+			}
+		}
+		if (KinkyDungeonConsumableChoices) {
+			for (let item of KinkyDungeonConsumableChoices) {
+				if (KinkyDungeonConsumableVariants[item]) found[item] = true;
 			}
 		}
 	}

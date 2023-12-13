@@ -57,6 +57,24 @@ function KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantme
 	if (curse && KDEventHexModular[curse]?.level > 0) amt *= 1 + 0.5 * Math.pow(KDEventHexModular[curse].level, 0.5);
 	return Math.ceil(amt);
 }
+/**
+ * Normalized for stats that are multiplicative, E.G mana costs
+ * Only works for stuff normalized to a range of (0-100)
+ * @param {number} amt
+ * @param {string} item
+ * @param {any} Loot
+ * @param {string} curse
+ * @param {string} primaryEnchantment
+ * @returns {number}
+ */
+function KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment) {
+	let original = amt * 0.01;
+	amt *= 1 + ((KDGetEffLevel() - 1)/(KinkyDungeonMaxLevel - 1)); // Higher floor = higher rewards
+	if (Loot?.amtMult) amt *= Loot.amtMult;
+	if (primaryEnchantment) amt *= 0.6; // Reduce the power if there are already enchantments
+	if (curse && KDEventHexModular[curse]?.level > 0) amt *= 1 + 0.5 * Math.pow(KDEventHexModular[curse].level, 0.5);
+	return 100 * (1 - (1 - original) * Math.pow(1 - original, -(amt / (100 * original))));
+}
 
 /** @type {Record<string, KDEnchantment>} */
 let KDEventEnchantmentModular = {
@@ -329,7 +347,7 @@ let KDEventEnchantmentModular = {
 				events: (item, Loot, curse, primaryEnchantment, enchantments) => {
 					let power = Math.max(KDGetItemPower(item), 1);
 					let amt = 1 + Math.round((0.4 + 0.6*KDRandom()) * 3 * Math.pow(power, 0.5));
-					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
+					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaCost", trigger: "calcMultMana", type: "ManaCost", power: 1 - Math.min(0.99, amt*0.01), inheritLinked: true},
 						{original: "ManaCost", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCost", power: -amt, color: "#0000ff", bgcolor: "#8888ff"},
@@ -356,7 +374,7 @@ let KDEventEnchantmentModular = {
 					let amt = 5 + Math.round((0.4 + 0.6*KDRandom()) * 6 * Math.pow(power, 0.5));
 					let types = ['air', 'earth', 'fire', 'water', 'electric', 'ice', 'latex', 'metal', 'rope', 'leather', 'light', 'shadow', 'stealth', 'summon', 'knowledge', 'arrow'];
 					let type = CommonRandomItemFromList("", types);
-					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
+					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaCostSpecific", trigger: "calcMultMana", type: "ManaCost", condition: "spellType", kind: type, power: 1 - Math.min(0.99, amt*0.01), inheritLinked: true},
 						{original: "ManaCostSpecific", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCostSpecific", kind: TextGet("KinkyDungeonFilter" + type), power: -amt, color: "#0000ff", bgcolor: "#8888ff"},

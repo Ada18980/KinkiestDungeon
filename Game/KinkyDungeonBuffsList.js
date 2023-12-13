@@ -70,6 +70,22 @@ let KDEncased = {
 		{type: "ApplyGlueVuln", duration: 1, power: -0.5, trigger: "tickAfter"},
 	]
 };
+let KDEncasedMetal = {
+	id: "Encased", type: "SlimeProgress", power: 2.5, player: false, enemies: true, duration: 9999, range: 0.5, replaceSpriteBound: "EncasedFactoryDollMetal", replaceSprite: "EncasedDollMetal", tags: ["encased"], events: [
+		{type: "RemoveSlimeWalk", duration: 1, trigger: "tick"},
+		{type: "RemoveFree", trigger: "tick"},
+		{type: "ApplyKnockback", duration: 1, power: -2.0, trigger: "tick"},
+		{type: "ApplyKnockback", duration: 1, power: -2.0, trigger: "tickAfter"},
+		{type: "ApplySlowed", duration: 1, power: -2.0, trigger: "tick"},
+		{type: "ApplySlowed", duration: 1, power: -2.0, trigger: "tickAfter"},
+		{type: "ApplyAttackSlow", duration: 1, power: 1.0, trigger: "tick"},
+		{type: "ApplyAttackSlow", duration: 1, power: 1.0, trigger: "tickAfter"},
+		{type: "ApplySilence", duration: 2, power: 1.0, trigger: "tick"},
+		{type: "ApplySilence", duration: 2, power: 1.0, trigger: "tickAfter"},
+		{type: "ApplyGlueVuln", duration: 1, power: -0.5, trigger: "tick"},
+		{type: "ApplyGlueVuln", duration: 1, power: -0.5, trigger: "tickAfter"},
+	]
+};
 let KDEncasedDoll = {
 	id: "EncasedDoll", type: "SlimeProgress", power: 2.0, player: false, enemies: true, duration: 9999, range: 0.5, replaceSpriteBound: "EncasedFactoryDoll", replaceSprite: "EncasedFactoryDoll", tags: ["encased"], events: [
 		{type: "RemoveSlimeWalk", duration: 1, trigger: "tick"},
@@ -148,6 +164,9 @@ let KDDollDebuff2 = {
 };
 let KDSlowed = {
 	id: "Slowed", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 1
+};
+let KDKnockbackable = {
+	id: "Knockbackable", type: "Knockback", power: 2.0, player: true, enemies: true, duration: 1
 };
 let KDAttackSlow = {
 	id: "AttackSlow", type: "AttackSlow", power: 0.5, player: true, enemies: true, duration: 1

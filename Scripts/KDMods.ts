@@ -86,11 +86,11 @@ async function KDExecuteMods() {
 			KDModFiles[KinkyDungeonRootDirectory + entry.filename] = URL.createObjectURL(blob);
 			KDModFiles[KinkyDungeonRootDirectory + "" + entry.filename] = KDModFiles[KinkyDungeonRootDirectory + entry.filename];
 
-			if (entry.filename?.startsWith("Data/")) KDModFiles["Data/" + entry.filename] = URL.createObjectURL(blob);
-			if (entry.filename?.startsWith("DisplacementMaps/")) KDModFiles["Models/" + entry.filename] = URL.createObjectURL(blob);
-			if (entry.filename?.startsWith("Models/")) KDModFiles["Models/" + entry.filename] = URL.createObjectURL(blob);
-			if (entry.filename?.startsWith("TextureAtlas/")) KDModFiles["TextureAtlas/" + entry.filename] = URL.createObjectURL(blob);
-			if (entry.filename?.startsWith("Music/")) KDModFiles["Music/" + entry.filename] = URL.createObjectURL(blob);
+			if (entry.filename?.startsWith("Data/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
+			if (entry.filename?.startsWith("DisplacementMaps/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
+			if (entry.filename?.startsWith("Models/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
+			if (entry.filename?.startsWith("TextureAtlas/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
+			if (entry.filename?.startsWith("Music/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
 		}
 
 	}

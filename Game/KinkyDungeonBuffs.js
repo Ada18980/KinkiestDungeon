@@ -323,23 +323,47 @@ function KinkyDungeonHasBuff(list, Buff) {
 	else return false;
 }
 
+/**
+ * 
+ * @param {entity} entity 
+ * @param {string} buff 
+ * @returns {boolean}
+ */
 function KDEntityHasBuff(entity, buff) {
 	if (entity.player) {
 		return KinkyDungeonHasBuff(KinkyDungeonPlayerBuffs, buff);
 	} else return KinkyDungeonHasBuff(entity.buffs, buff);
 }
+/**
+ * 
+ * @param {entity} entity 
+ * @param {string} stat 
+ * @param {boolean} [onlyPositiveDuration] 
+ * @returns {number}
+ */
 function KDEntityBuffedStat(entity, stat, onlyPositiveDuration) {
 	if (!entity) return 0;
 	if (entity.player) {
 		return KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, stat, onlyPositiveDuration);
 	} else return KinkyDungeonGetBuffedStat(entity.buffs, stat, onlyPositiveDuration);
 }
+/**
+ * 
+ * @param {entity} entity 
+ * @param {string} stat 
+ * @param {boolean} [onlyPositiveDuration] 
+ * @returns {number}
+ */
 function KDEntityMaxBuffedStat(entity, stat, onlyPositiveDuration) {
 	if (entity.player) {
 		return KinkyDungeonGetMaxBuffedStat(KinkyDungeonPlayerBuffs, stat, onlyPositiveDuration);
 	} else return KinkyDungeonGetMaxBuffedStat(entity.buffs, stat, onlyPositiveDuration);
 }
 
+/**
+ * 
+ * @param {entity} entity 
+ */
 function KDEntityGetBuff(entity, buff) {
 	if (entity.player) {
 		return KinkyDungeonGetbuff(KinkyDungeonPlayerBuffs, buff);

@@ -861,6 +861,32 @@ let KinkyDungeonSpellSpecials = {
 		KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 		return "Cast";
 	},
+	"LiquidMetal": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let count = 0;
+		for (let X = -Math.ceil(spell.aoe); X <= Math.ceil(spell.aoe); X++)
+			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
+				if (KDistEuclidean(X, Y) <= spell.aoe) {
+					let loc = (tX + X) + "," + (tY + Y);
+					if (KinkyDungeonEffectTilesGet(loc)) {
+						for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
+							if (tile.tags && tile.tags.includes("latex")) {
+								count += 1;
+								tile.duration = 0;
+								tile.pauseDuration = 0;
+								KDCreateEffectTile(tX + X, tY + Y, {
+									name: "LiquidMetal"
+								}, 20);
+							}
+						}
+					}
+				}
+			}
+		if (count == 0) return "Fail";
+
+		KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+		KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+		return "Cast";
+	},
 	"CommandDisenchant": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let enList = KDNearbyEnemies(tX, tY, spell.aoe);
 

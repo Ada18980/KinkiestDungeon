@@ -1254,8 +1254,7 @@ function KinkyDungeonRun() {
 			return true;
 		}, localStorage.getItem('KinkyDungeonSave') != '', 1000-350/2, 360, 350, 64, TextGet("GameContinue"), localStorage.getItem('KinkyDungeonSave') ? "#ffffff" : "pink", "");
 		DrawButtonKDEx("GameStart", () => {
-			KinkyDungeonState = "Diff";
-			KinkyDungeonLoadStats();
+			KinkyDungeonState = "Name";
 			return true;
 		}, true, 1000-350/2, 440, 350, 64, TextGet("GameStart"), "#ffffff", "");
 		DrawButtonKDEx("LoadGame", () => {
@@ -1807,6 +1806,34 @@ function KinkyDungeonRun() {
 
 
 
+	} if (KinkyDungeonState == "Name") {
+
+		DrawTextFitKD(TextGet("KDName"), 975 + 550/2, 300, 550, "#ffffff", KDTextGray1, 32, "center");
+
+		let NF = KDTextField("PlayerNameField",
+			975, 450, 550, 64
+			);
+		if (NF.Created) {
+			ElementValue("PlayerNameField",
+				localStorage.getItem("PlayerName") || "Ada"
+				);
+		}
+
+		DrawButtonKDEx("selectName", () => {
+
+			localStorage.setItem("PlayerName", ElementValue("PlayerNameField") || "Ada");
+			KDGameData.PlayerName = ElementValue("PlayerNameField") || "Ada";
+			KinkyDungeonState = "Diff";
+			KinkyDungeonLoadStats();
+			return true;
+		}, true, 875, 650, 750, 64, TextGet("KDConfirm"), "#ffffff", "");
+
+		DrawButtonKDEx("backButton", (b) => {
+			KinkyDungeonState = "Menu";
+			return true;
+		}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+
+
 	} else if (KinkyDungeonState == "Wardrobe") {
 		KDDrawWardrobe("menu");
 	} else if (KinkyDungeonState == "Stats") {
@@ -1824,7 +1851,6 @@ function KinkyDungeonRun() {
 
 		DrawButtonKDEx("KDPerksStart", (bdata) => {
 			if (KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= minPoints) {
-				//KinkyDungeonState = "Diff";
 				KDLose = false;
 				KinkyDungeonStartNewGame();
 
@@ -2991,6 +3017,8 @@ function KinkyDungeonStartNewGame(Load) {
 		if (KDTileToTest) {
 			KinkyDungeonMapIndex.grv = cp;
 		}
+
+		KDGameData.PlayerName = localStorage.getItem("PlayerName") || "Ada";
 	}
 	if (!KDMapData.Grid)
 		KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]], "JourneyFloor", "", MiniGameKinkyDungeonLevel, false, Load);
@@ -4101,6 +4129,9 @@ function KinkyDungeonGetCanvas(id) {
 
 
 function KDDrawGameSetupTabs(xOffset) {
+	if (KDGameData.PlayerName) {
+		DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+	}
 	DrawButtonKDEx("TabDiff", (b) => {
 		KinkyDungeonState = "Diff";
 		return true;

@@ -1835,6 +1835,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	* toolMult: number,
 	* buffBonus: number,
 	* buffMult: number,
+	* struggleTime: number,
 	 * }}
 	 */
 	let data = {
@@ -1861,6 +1862,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		toolMult: 1.0,
 		buffBonus: 0.0,
 		buffMult: 1.0,
+		struggleTime: 1.0,
 	};
 
 	if (StruggleType == "Cut") data.cost = KinkyDungeonStatStaminaCostTool;
@@ -2334,7 +2336,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 			// Pass block
 			let progress = restraint.cutProgress ? restraint.cutProgress : 0;
-			let struggleTime = KinkyDungeonStatsChoice.get("FranticStruggle") ? 1 : Math.max(1, KDStruggleTime - KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "FastStruggle"));
+			data.struggleTime *= KinkyDungeonStatsChoice.get("FranticStruggle") ? 1 : Math.max(1, KDStruggleTime - KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "FastStruggle"));
 			if (KinkyDungeonStatsChoice.get("FranticStruggle")) data.cost *= 1.5;
 
 			if (((StruggleType == "Cut" && progress >= 1 - data.escapeChance)
@@ -2378,7 +2380,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 							mult *= 0.75 + 0.25 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 							KDAddDelayedStruggle(
 								escapeSpeed * speed * (0.3 + 0.2 * KDRandom() + 0.6 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax)),
-								struggleTime, StruggleType, struggleGroup, index, data,
+								data.struggleTime, StruggleType, struggleGroup, index, data,
 								restraint.cutProgress, maxLimit
 							);
 							if (speed > 0) {
@@ -2427,7 +2429,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 						mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 						KDAddDelayedStruggle(
 							escapeSpeed * mult * (data.escapeChance > 0 ? (KDMinPickRate * (data.escapeChance > 0.5 ? 2 : 1)) : 0) * (0.8 + 0.4 * KDRandom() - 0.4 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
-							struggleTime, StruggleType, struggleGroup, index, data,
+							data.struggleTime, StruggleType, struggleGroup, index, data,
 							restraint.pickProgress, maxLimit
 						);
 					}
@@ -2452,7 +2454,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 						mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 						KDAddDelayedStruggle(
 							escapeSpeed * mult * Math.max(data.escapeChance > 0 ? KDMinEscapeRate : 0, data.escapeChance) * (0.8 + 0.4 * KDRandom() - 0.4 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
-							struggleTime, StruggleType, struggleGroup, index, data,
+							data.struggleTime, StruggleType, struggleGroup, index, data,
 							restraint.unlockProgress, maxLimit
 						);
 					}
@@ -2466,7 +2468,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					mult *= 0.75 + 0.25 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 					KDAddDelayedStruggle(
 						escapeSpeed * mult * Math.max(data.escapeChance > 0 ? KDMinEscapeRate : 0, data.escapeChance) * (0.8 + 0.4 * KDRandom() - 0.3 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
-						struggleTime, StruggleType, struggleGroup, index, data,
+						data.struggleTime, StruggleType, struggleGroup, index, data,
 						restraint.struggleProgress, maxLimit
 					);
 				} else if (StruggleType == "Struggle") {
@@ -2479,7 +2481,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 					KDAddDelayedStruggle(
 						escapeSpeed * mult * Math.max(data.escapeChance > 0 ? KDMinEscapeRate : 0, data.escapeChance) * (0.5 + 0.4 * KDRandom() + 0.3 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax)),
-						struggleTime, StruggleType, struggleGroup, index, data,
+						data.struggleTime, StruggleType, struggleGroup, index, data,
 						restraint.struggleProgress, maxLimit
 					);
 				}
@@ -4365,6 +4367,45 @@ function KDChooseRestraintFromListGroupPri(RestraintList, GroupOrder) {
 			for (let L = restraintWeights.length - 1; L >= 0; L--) {
 				if (selection > restraintWeights[L].weight) {
 					return restraintWeights[L].restraint;
+				}
+			}
+		}
+	}
+	return null;
+}
+
+
+/**
+ * Gets a restraint from a list of eligible restraints and a group prioritization order
+ * @param {{restraint: restraint, variant?: ApplyVariant, weight: number}[]} RestraintList
+ * @param {string[]} GroupOrder
+ * @returns {{r: restraint, v: ApplyVariant}}
+ */
+function KDChooseRestraintFromListGroupPriWithVariants(RestraintList, GroupOrder) {
+	for (let i = 0; i < GroupOrder.length; i++) {
+		let group = GroupOrder[i];
+		let Restraints = RestraintList.filter((rest) => {
+			return rest.restraint.Group == group;
+		});
+
+		if (Restraints.length > 0) {
+			let restraintWeightTotal = 0;
+			let restraintWeights = [];
+
+
+			for (let rest of Restraints) {
+				let restraint = rest.restraint;
+				let weight = rest.weight;
+				restraintWeights.push({restraint: restraint, variant: rest.variant, weight: restraintWeightTotal});
+				weight += restraint.weight;
+				restraintWeightTotal += Math.max(0, weight);
+			}
+
+			let selection = KDRandom() * restraintWeightTotal;
+
+			for (let L = restraintWeights.length - 1; L >= 0; L--) {
+				if (selection > restraintWeights[L].weight) {
+					return {r: restraintWeights[L].restraint, v: restraintWeights[L].variant};
 				}
 			}
 		}

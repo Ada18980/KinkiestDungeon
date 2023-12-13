@@ -792,14 +792,20 @@ let KDEventMapInventory = {
 		},
 		"AntiMagicGag": (e, item, data) => {
 			let alreadyDone = KDItemDataQuery(item, "manaDrained") || 0;
-			if (alreadyDone < e.count) {
+			let multiplier = KDItemDataQuery(item, "manaDrainMultiplier");
+			if (!multiplier) {
+				// Later gags are more powerful
+				multiplier = (0.2 + 0.8 * (KDGetEffLevel() / (KinkyDungeonMaxLevel - 1)));
+				KDItemDataSet(item, "manaDrainMultiplier", multiplier);
+			}
+			if (alreadyDone < e.count * multiplier) {
 				if (KinkyDungeonStatMana + KinkyDungeonStatManaPool > 0) {
 					alreadyDone += Math.min(KinkyDungeonStatMana + KinkyDungeonStatManaPool, e.power);
 					KinkyDungeonChangeMana(-e.power);
 					KDItemDataSet(item, "manaDrained", alreadyDone);
 				}
 			} else {
-				KinkyDungeonChangeMana(-e.power * (e.mult || 0));
+				KinkyDungeonChangeMana(-e.power * multiplier * (e.mult || 0));
 			}
 			// else {KDChangeItemName(item, item.type, "MagicGag2");}
 		},
@@ -2373,6 +2379,17 @@ const KDEventMapBuff = {
 				KinkyDungeonApplyBuffToEntity(entity, bb);
 			}
 		},
+		"ApplyKnockback": (e, buff, entity, data) => {
+			let bb = Object.assign({}, KDKnockbackable);
+			if (e.duration) bb.duration = e.duration;
+			if (e.power) bb.power = e.power;
+			if (entity.player) {
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, bb);
+			} else {
+				if (!entity.buffs) entity.buffs = {};
+				KinkyDungeonApplyBuffToEntity(entity, bb);
+			}
+		},
 		"ApplyVuln": (e, buff, entity, data) => {
 			if (!entity.player) {
 				if (!entity.vulnerable) entity.vulnerable = 1;
@@ -2699,6 +2716,17 @@ const KDEventMapBuff = {
 		"ApplySlowed": (e, buff, entity, data) => {
 			if (!buff.duration) return;
 			let bb = Object.assign({}, KDSlowed);
+			if (e.duration) bb.duration = e.duration;
+			if (e.power) bb.power = e.power;
+			if (entity.player) {
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, bb);
+			} else {
+				if (!entity.buffs) entity.buffs = {};
+				KinkyDungeonApplyBuffToEntity(entity, bb);
+			}
+		},
+		"ApplyKnockback": (e, buff, entity, data) => {
+			let bb = Object.assign({}, KDKnockbackable);
 			if (e.duration) bb.duration = e.duration;
 			if (e.power) bb.power = e.power;
 			if (entity.player) {
@@ -3916,6 +3944,7 @@ let KDEventMapSpell = {
 				let boost = e.power + KDCalcRestraintBlock() * 10 * e.mult;
 				data.toolBonus += boost;
 				data.buffBonus += boost;
+				data.struggleTime *= 3.0;
 				if (e.msg)
 					KinkyDungeonSendTextMessage(10 * boost, TextGet(e.msg).replace("AMOUNT", "" + Math.round(100*boost)), "lightgreen", 2);
 			}
@@ -5490,6 +5519,21 @@ let KDEventMapBullet = {
 					KDDisarmEnemy(data.enemy, e.time);
 			}
 		},
+		"RemoveBlock": (e, b, data) => {
+			if (b && data.enemy && data.enemy.blocks > 0) {
+				if (!e.prereq || KDCheckPrereq(data.enemy, e.prereq)) {
+					KinkyDungeonApplyBuffToEntity(data.enemy, {
+						id: "RemoveBlock",
+						power: -e.power,
+						duration: e.time || 10,
+						type: "MaxBlock",
+						events: [
+							{type: "ExtendDisabledOrHelpless", trigger: "tick"},
+						],
+					});
+				}
+			}
+		},
 		"DisarmDebuff": (e, b, data) => {
 			if (b && data.enemy && data.enemy.Enemy.bound) {
 				if (!e.prereq || KDCheckPrereq(data.enemy, e.prereq)) {
@@ -6220,12 +6264,14 @@ let KDEventMapEnemy = {
 				if (!e.chance || KDRandom() < e.chance) {
 					let nearby = KDNearbyNeutrals(enemy.x, enemy.y, e.dist, enemy);
 					for (let en of nearby) {
-						if (en != enemy && en.hp > 0.52 && KDMatchTags(["nevermere", "wolfgirl", "alchemist", "dressmaker", "bountyhunter"], en)) {
+						if (en.hp > 0.52 && KDMatchTags(["nevermere", "wolfgirl", "alchemist", "dressmaker", "bountyhunter"], en)) {
+							if ((en.Enemy.shield || 0) < e.power) {
+								KinkyDungeonApplyBuffToEntity(en, {
+									id: "WolfDroneShield", aura: "#00ffff", type: "MaxShield", duration: 3, power: e.power - (en.Enemy.shield || 0), player: false, enemies: true, tags: ["defense", "shield"]
+								});
+							}
 							KinkyDungeonApplyBuffToEntity(en, {
-								id: "WolfDroneArmor", aura: "#00ffff", type: "Armor", duration: 1.1, power: e.power, player: false, enemies: true, tags: ["defense", "armor"]
-							});
-							KinkyDungeonApplyBuffToEntity(en, {
-								id: "WolfDroneSpellResist", type: "SpellResist", duration: 1.1, power: e.power, player: false, enemies: true, tags: ["defense", "spellresist"]
+								id: "WolfDroneShieldRegen", type: "ShieldRegen", duration: 3, power: e.power * e.mult, player: false, enemies: true, tags: ["defense", "shield"]
 							});
 						}
 					}
@@ -6800,15 +6846,17 @@ let KDEventMapGeneric = {
 		},
 		"HardModeReplace": (ev, data) => {
 			if (!KinkyDungeonStatsChoice.get("hardMode")) return;
-			let chance = 0.2;
+			let multiplier = 0.05 * 0.95 * Math.min(1.5, KDGetEffLevel()/(KinkyDungeonMaxLevel - 1));
+
+			let chance = 0.2 * multiplier;
 			let bosschance = 0.3;
-			let bosshpchance = 0.4;
+			let bosshpchance = 0.4 + 0.6 * multiplier;
 
 			let boss = ["Hardmode_Boss"];
 			let reg = ["Hardmode_Reg"];
 
 			if (KinkyDungeonStatsChoice.get("extremeMode")) {
-				chance = 1.0;
+				chance = 1.0 * multiplier;
 				bosschance = 0.4;
 				bosshpchance = 1.0;
 				boss.push("ExtremeBoss", "Extreme");

@@ -122,7 +122,7 @@ let KinkyDungeonLearnableSpells = [
 		// Arms
 		["TickleCloud", "FeatherCloud", "Swap", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "DisplayStand", "SummonGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
 		// Legs
-		["Snare", "Wall", "Quickness", "Quickness2", "Quickness3", "Quickness4", "Quickness5", "SlimeSplash", "Slime", "SlimeEruption", "SlimeWall", "SlimeWallVert", "LatexWallVert", "SlimeWallHoriz", "LatexWallHoriz", "LatexWall", "SlimeToLatex", "StormCrystal", "Ally", "EarthMote", "Golem"],
+		["Snare", "Wall", "Quickness", "Quickness2", "Quickness3", "Quickness4", "Quickness5", "SlimeSplash", "Slime", "SlimeEruption", "SlimeWall", "SlimeWallVert", "LatexWallVert", "SlimeWallHoriz", "LatexWallHoriz", "LatexWall", "SlimeToLatex", "LiquidMetal", "StormCrystal", "Ally", "EarthMote", "Golem"],
 		// Passive
 		["Frustration", "LeatherBurst", "OneWithSlime", "SlimeWalk", "SlimeMimic", "Engulf", "FloatingWeapon"],
 	],
@@ -380,6 +380,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "ProblemSolving", tags: ["utility", "defense", "evasion"], school: "Special", manacost: 0, components: [],
 			classSpecific: "Rogue", prerequisite: "RogueTargets", hideWithout: "RogueTargets", level:1,
 			type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+				{type: "ProblemSolving", mult: 0.2, power: 0.4, trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellProblemSolvingMsg"},
 				{type: "ProblemSolving", mult: 0.2, power: 0.4, trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellProblemSolvingMsg"},
 		]},
 		{name: "EvasiveManeuvers", tags: ["utility", "defense", "evasion"], school: "Special", manacost: 0, components: [],
@@ -1185,6 +1186,10 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			type:"special", special: "SlimeToLatex",
 			onhit:"", time:0, power: 2, range: 3.0, size: 1, aoe: 1.5, damage: "glue"},
 
+		{name: "LiquidMetal", prerequisite: "ApprenticeMetal", tags: ["metal", "aoe", "utility", "denial"], sfx: "MagicSlash", school: "Conjure", manacost: 5, components: ["Legs"], level:1,
+			type:"special", special: "LiquidMetal",
+			onhit:"", time:0, power: 2, range: 3.0, size: 1, aoe: 1.5, damage: "glue"},
+
 		{name: "Engulf", tags: ["latex", "slime", "buff", "offense"], prerequisite: "ApprenticeLatex", sfx: "MagicSlash", school: "Conjure", manacost: 1.5, components: [], level:1, type:"passive", events: [
 			{type: "ElementalEffect", power: 2, damage: "glue", trigger: "playerAttack", cost: 1.0},
 			{type: "EffectTile", kind: "Slime", duration: 8, trigger: "playerAttack", cost: 0.5},
@@ -1406,8 +1411,9 @@ let KinkyDungeonSpellListEnemies = [
 		},
 	},
 	{name: "ArmbinderBolt", tags: ["binding", "leather", "bolt", "offense"], minRange: 1.5, sfx: "MagicSlash", hitsfx: "HeavySwing", school: "Conjure", manacost: 3, components: ["Arms"], level:1, type:"bolt",
-		projectileTargeting:true, onhit:"", time: 0,  power: 5.0, delay: 0, range: 15, damage: "chain", speed: 2, bulletLifetime: 5, playerEffect: {name: "Bind", damage: "chain", power: 2, tag: "armbinderSpell"},
+		projectileTargeting:true, onhit:"", time: 0,  power: 5.0, delay: 0, range: 15, noblock: true, damage: "chain", speed: 2, bulletLifetime: 5, playerEffect: {name: "Bind", damage: "chain", power: 2, tag: "armbinderSpell"},
 		events: [
+			{type: "RemoveBlock", trigger: "bulletHitEnemy", power: 2},
 			{type: "DisarmHumanoid", trigger: "bulletHitEnemy", time: 14},
 			{type: "SilenceHumanoid", trigger: "bulletHitEnemy", time: 14, prereq: "silenced"},
 			{type: "BlindHumanoid", trigger: "bulletHitEnemy", time: 14, prereq: "blinded"},
@@ -1446,7 +1452,7 @@ let KinkyDungeonSpellListEnemies = [
 		},
 	},
 	{name: "LegbinderBolt", tags: ["binding", "leather", "bolt", "offense"], minRange: 1.5, sfx: "MagicSlash", hitsfx: "LightSwing", school: "Conjure", manacost: 6, components: ["Arms"], level:1, type:"bolt",
-		projectileTargeting:true, onhit:"", time: 11,  power: 4.0, delay: 0, range: 15, damage: "chain", speed: 3, bulletLifetime: 5, playerEffect: {name: "Bind", damage: "chain", power: 4, tag: "legbinderSpell"},
+		projectileTargeting:true, onhit:"", time: 11,  power: 4.0, delay: 0, range: 15, damage: "chain", noblock: true, speed: 3, bulletLifetime: 5, playerEffect: {name: "Bind", damage: "chain", power: 4, tag: "legbinderSpell"},
 		events: [
 			{type: "ElementalIfNotSnared", trigger: "bulletHitEnemy", damage: "chain", power: 0, bind: 5},
 		], effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
@@ -1455,7 +1461,7 @@ let KinkyDungeonSpellListEnemies = [
 		},
 	},
 	{name: "HarnessBolt", tags: ["binding", "leather", "bolt", "offense"], minRange: 1.5, sfx: "MagicSlash", hitsfx: "LightSwing", school: "Conjure", manacost: 6, components: ["Arms"], level:1, type:"bolt",
-		projectileTargeting:true, onhit:"", time: 0,  power: 5.0, delay: 0, range: 15, damage: "crush", speed: 3, bulletLifetime: 5, playerEffect: {name: "Bind", damage: "chain", power: 5, tag: "harnessSpell"},
+		projectileTargeting:true, onhit:"", time: 0,  power: 5.0, delay: 0, range: 15, damage: "chain", noblock: true, speed: 3, bulletLifetime: 5, playerEffect: {name: "Bind", damage: "chain", power: 5, tag: "harnessSpell"},
 		events: [
 			{type: "BoundBonus", trigger: "bulletHitEnemy", damage: "chain", power: 0, bind: 5},
 		], effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
@@ -1464,11 +1470,12 @@ let KinkyDungeonSpellListEnemies = [
 		},
 	},
 	{name: "StraitjacketBolt", tags: ["binding", "leather", "bolt", "offense"], minRange: 1.5, sfx: "MagicSlash", hitsfx: "LightSwing", school: "Conjure", manacost: 6, components: ["Arms"], level:1, type:"bolt",
-		projectileTargeting:true, onhit:"buff", time: 0, bind: 12, power: 1.0, delay: 0, range: 6, damage: "crush", speed: 2, bulletLifetime: 5, playerEffect: {name: "Bind", damage: "chain", power: 5, tag: "jacketSpell"},
+		projectileTargeting:true, onhit:"buff", time: 0, bind: 12, power: 1.0, delay: 0, range: 6, noblock: true, damage: "crush", speed: 2, bulletLifetime: 5, playerEffect: {name: "Bind", damage: "chain", power: 5, tag: "jacketSpell"},
 		buffs: [
 			{id: "StraitjacketBolt", aura: "#ff4400", type: "Locked", duration: 14, power: 2.0, player: true, enemies: true, tags: ["lock", "debuff"]},
 		],
 		events: [
+			{type: "RemoveBlock", trigger: "bulletHitEnemy", power: 3},
 			{type: "DisarmHumanoid", trigger: "bulletHitEnemy", time: 10},
 		], effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.75, effectTile: {
 			name: "Belts",

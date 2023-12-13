@@ -1604,32 +1604,59 @@ function KinkyDungeonDrawGame() {
 		}
 	} else if (KinkyDungeonDrawState == "Orb") {
 		KinkyDungeonDrawOrb();
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 	} else if (KinkyDungeonDrawState == "PerkOrb") {
 		KinkyDungeonDrawPerkOrb();
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 	} else if (KinkyDungeonDrawState == "Heart") {
 		KinkyDungeonDrawHeart();
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 	} else if (KinkyDungeonDrawState == "Magic") {
 		KDDrawNavBar(-2);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KinkyDungeonDrawMagic();
 	} else if (KinkyDungeonDrawState == "MagicSpells") {
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KDDrawNavBar(2);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 		KinkyDungeonDrawMagicSpells();
 	} else if (KinkyDungeonDrawState == "Inventory") {
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KDDrawNavBar(1);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 		KinkyDungeonDrawInventory();
 	} else if (KinkyDungeonDrawState == "Logbook") {
 		KDDrawNavBar(3);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KinkyDungeonDrawLore();
 	} else if (KinkyDungeonDrawState == "Quest") {
 		KDDrawNavBar(3);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 		KinkyDungeonDrawQuest();
 	} else if (KinkyDungeonDrawState == "Reputation") {
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KDDrawNavBar(3);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 		KinkyDungeonDrawReputation();
 	} else if (KinkyDungeonDrawState == "Restart") {
 		KDDrawNavBar(0);

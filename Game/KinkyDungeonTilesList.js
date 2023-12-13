@@ -20,6 +20,25 @@ let KDCornerTiles = {
  * @type {Record<string, (delta: number, X?: number, Y?: number) => void>}
  */
 let KDTileUpdateFunctionsLocal = {
+	"]": (delta, X, Y) => {// Happy Gas!
+		if (delta > 0)
+			KDDealEnvironmentalDamage(X, Y, 0.5, {
+				type: "happygas",
+				damage: 0.0,
+				time: 0,
+				bind: 0,
+				distract: 2.5,
+			})
+	},
+	"[": (delta, X, Y) => {// Sleepy Gas!
+		if (delta > 0)
+			KDDealEnvironmentalDamage(X, Y, 0.5, {
+				type: "poison",
+				damage: 0.0,
+				time: 4,
+				bind: 0,
+			})
+	},
 	'z': (delta, X, Y) => {
 		let entity = KinkyDungeonEntityAt(X, Y);
 		if (entity) return;
@@ -697,6 +716,56 @@ let KDEffectTileFunctions = {
 		}
 		return false;
 	},
+	"LiquidMetal": (delta, entity, tile) => {
+		if (tile.pauseDuration > 0) {
+			// Meep
+		} else {
+			let result = false;
+			// Liquid Metal also constantly applies binding
+			if (result || KDEntityBuffedStat(entity, "SlimeProgress")) {
+				if (entity.player) {
+					let latexData = {
+						cancelDamage: false,
+						dmg: 1.25*KDLatexDmg*KDGetEnvironmentalDmg(),
+						type: "glue",
+						bindType: "Metal",
+					};
+					KinkyDungeonSendEvent("tickLatexPlayer", latexData);
+					if (!latexData.cancelDamage)
+						KinkyDungeonDealDamage({damage: latexData.dmg*KDGetEnvironmentalDmg(), type: latexData.type});
+				} else if (KDCanBind(entity)) {
+					let latexData = {
+						cancelDamage: entity.boundLevel > entity.Enemy.maxhp + KDLatexBind,
+						enemy: entity,
+						dmg: 0,
+						bind: 1.25*KDLatexBind*KDGetEnvironmentalDmg(),
+						type: "glue",
+						bindType: "Metal",
+					};
+					KinkyDungeonSendEvent("tickLatex", latexData);
+					if (!latexData.cancelDamage) {
+						KinkyDungeonDamageEnemy(entity, {
+							type: "glue",
+							damage: 0,
+							bindType: "Metal",
+							bind: 1.25*KDLatexBind*KDGetEnvironmentalDmg(),
+							flags: ["DoT"]
+						}, false, true, undefined, undefined, undefined, "Rage");
+						if (entity.boundLevel >= entity.Enemy.maxhp) {
+							KinkyDungeonApplyBuffToEntity(entity, KDEncasedMetal);
+						}
+					}
+				}
+				return true;
+			}
+		}
+		
+		if (entity.player && KinkyDungeonPlayerBuffs.Slipping && !KinkyDungeonFlags.get("slipped")) {
+			KDSlip({x: KinkyDungeonPlayerEntity.x - KinkyDungeonPlayerEntity.lastx, y: KinkyDungeonPlayerEntity.y - KinkyDungeonPlayerEntity.lasty});
+			KinkyDungeonSetFlag("slipped", 1);
+		}
+		return true;
+	},
 	"Ice": (delta, entity, tile) => {
 		if ((!entity.player && !entity.Enemy.tags.ice && !entity.Enemy.tags.nofreeze) || (entity.player && !KDChillWalk(entity)))
 			KinkyDungeonApplyBuffToEntity(entity, KDChilled);
@@ -1006,6 +1075,12 @@ let KDEffectTileCreateFunctionsExisting = {
 		}
 		return true;
 	},
+	"LiquidMetal": (newTile, existingTile) => {
+		if (newTile.tags.includes("slime") || newTile.tags.includes("latex")) {
+			newTile.duration = 0;
+		}
+		return true;
+	},
 	"LanternUnlit": (newTile, existingTile) => {
 		if (newTile.tags.includes("fire") || newTile.tags.includes("ignite")) {
 			existingTile.duration = 0;
@@ -1045,6 +1120,14 @@ let KDEffectTileMoveOnFunctions = {
 				if (!entity.vulnerable) entity.vulnerable = 1;
 				else entity.vulnerable = Math.max(entity.vulnerable, 1);
 			}
+		}
+		return {cancelmove: false, returnvalue: false};
+	},
+	"LiquidMetal": (entity, tile, willing, dir, sprint) => {
+		if (sprint && entity.player && willing && (dir.x || dir.y) && !KinkyDungeonFlags.get("slipped")) {
+			KDSlip(dir);
+			KinkyDungeonSetFlag("slipped", 1);
+			return {cancelmove: true, returnvalue: true};
 		}
 		return {cancelmove: false, returnvalue: false};
 	},

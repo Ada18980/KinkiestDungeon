@@ -821,7 +821,10 @@ function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountM
 		nocancel: true,
 		accept: () => {
 			if (KinkyDungeonStatsChoice.get("BoundCrusader")) {
-				KDPlayerEffectRestrain(undefined, 3, restraintsTags, "Goddess", false, true, false, false, false, "Red");
+				KDPlayerEffectRestrain(undefined, 3, restraintsTags, "Goddess", false, true, false, false, false, "Purple", {
+					Progressive: true,
+					DontPreferWill: true,
+				});
 			}
 			KDSetQuestData(Name, {
 				QuestLocation: KDCurrentWorldSlot,
@@ -837,7 +840,10 @@ function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountM
 				KDRemoveQuest(Name);
 				KinkyDungeonChangeRep(Goddess, -KDDefaultGoddessQuestRep);
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestFail_" + Name), "#ffffff", 1);
-				KDPlayerEffectRestrain(undefined, Math.round(restraintsCountMult * (1 + KDGetEffLevel()/3)), restraintsTags, "Goddess", false, true, false, false);
+				KDPlayerEffectRestrain(undefined, Math.round(restraintsCountMult * (1 + KDGetEffLevel()/3)), restraintsTags, "Goddess", false, true, false, false, false, "Purple", {
+					Progressive: true,
+					DontPreferWill: true,
+				});
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Evil" + ".ogg");
 			}
 			if (!(KDGetQuestData(Name).QuestRoom == KDMapData.RoomType)

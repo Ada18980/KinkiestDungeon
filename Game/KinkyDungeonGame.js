@@ -1852,8 +1852,8 @@ function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Pad
 function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs, nostartstairs, origMapType) {
 	// Starting stairs are predetermined and guaranteed to be open
 	if (!nostartstairs) {
-		KinkyDungeonMapSet(1, startpos, 'S');
-		KinkyDungeonTilesSet(1 + ',' + startpos, {
+		KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y, 'S');
+		KinkyDungeonTilesSet(KDMapData.StartPosition.x + ',' + KDMapData.StartPosition.y, {
 			RoomType: origMapType == "JourneyFloor" ? "ShopStart" : origMapType,
 		});
 	}

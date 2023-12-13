@@ -778,6 +778,8 @@ interface enemy extends KDHasTags {
 	blockAmount?: number,
 	maxdodge?: number,
 	maxblock?: number,
+	preferDodge?: boolean,
+	preferBlock?: boolean,
 	/** */
 	armor?: number,
 	/** Starting data */
@@ -822,8 +824,14 @@ interface enemy extends KDHasTags {
 	noFlip?: boolean,
 	/** Max enemy hp*/
 	maxhp?: number,
-	/** Shield enemy starts with, does not decay past this */
+	/** Max enemy mana */
+	maxmana?: number,
+	/** enemy mana regen per turn */
+	manaregen?: number,
+	/** Shield enemy starts with */
 	shield?: number,
+	/** Shield enemy starts with */
+	shieldregen?: number,
 	/** Number of turns an enemy can sprint for */
 	stamina?: number,
 	/** Sprint speed multiplier. Default 1.5*/
@@ -1480,6 +1488,7 @@ interface entity {
 	aggro?: number,
 	id?: number,
 	hp: number,
+	mana?: number,
 	AI?: string,
 	moved?: boolean,
 	playerdmg?: number,

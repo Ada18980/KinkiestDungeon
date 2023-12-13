@@ -680,6 +680,7 @@
             <key type="filename">../Game/EffectTiles/LanternUnlit.png</key>
             <key type="filename">../Game/EffectTiles/Latex.png</key>
             <key type="filename">../Game/EffectTiles/LatexThin.png</key>
+            <key type="filename">../Game/EffectTiles/LiquidMetal.png</key>
             <key type="filename">../Game/EffectTiles/Magicflies.png</key>
             <key type="filename">../Game/EffectTiles/OrbLantern.png</key>
             <key type="filename">../Game/EffectTiles/Portals/CommercePortal.png</key>
@@ -929,7 +930,9 @@
             <key type="filename">../Game/Enemies/Elf.png</key>
             <key type="filename">../Game/Enemies/ElfRanger.png</key>
             <key type="filename">../Game/Enemies/EncasedDoll.png</key>
+            <key type="filename">../Game/Enemies/EncasedDollMetal.png</key>
             <key type="filename">../Game/Enemies/EncasedFactoryDoll.png</key>
+            <key type="filename">../Game/Enemies/EncasedFactoryDollMetal.png</key>
             <key type="filename">../Game/Enemies/EnforcerBot.png</key>
             <key type="filename">../Game/Enemies/EpicenterCursed.png</key>
             <key type="filename">../Game/Enemies/EpicenterCursed2.png</key>
@@ -1144,6 +1147,7 @@
             <key type="filename">../Game/EnemiesBound/ElfRanger.png</key>
             <key type="filename">../Game/EnemiesBound/EncasedDoll.png</key>
             <key type="filename">../Game/EnemiesBound/EncasedFactoryDoll.png</key>
+            <key type="filename">../Game/EnemiesBound/EncasedFactoryDollMetal.png</key>
             <key type="filename">../Game/EnemiesBound/FactoryDoll.png</key>
             <key type="filename">../Game/EnemiesBound/FastZombie.png</key>
             <key type="filename">../Game/EnemiesBound/Fuuka.png</key>
@@ -2053,6 +2057,7 @@
             <key type="filename">../Game/Spells/LightningBolt.png</key>
             <key type="filename">../Game/Spells/LightningRune.png</key>
             <key type="filename">../Game/Spells/LimitSurge.png</key>
+            <key type="filename">../Game/Spells/LiquidMetal.png</key>
             <key type="filename">../Game/Spells/Lockdown.png</key>
             <key type="filename">../Game/Spells/ManaRecharge.png</key>
             <key type="filename">../Game/Spells/Offhand.png</key>

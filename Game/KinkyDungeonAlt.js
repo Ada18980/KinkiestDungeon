@@ -645,6 +645,8 @@ function KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, openness, dens
 function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
 	// Variable setup
 
+	//
+
 	VisitedRooms = [];
 	KinkyDungeonMapSet(1, 1, '0', VisitedRooms);
 
@@ -772,10 +774,16 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 
 
 	// Set points for start and end points on the map...
-	let starty = Math.floor(KDRandom() * (index_h ));
-	let endy = Math.floor(KDRandom() * (index_h));
-	let topx = Math.floor(KDRandom() * (index_w));
-	let botx = Math.floor(KDRandom() * (index_w));
+	let starty = 1 + Math.floor(KDRandom() * (index_h - 2));
+	let endy = 1 + Math.floor(KDRandom() * (index_h - 2));
+	let topx = 1 + Math.floor(KDRandom() * (index_w - 2));
+	let botx = 1 + Math.floor(KDRandom() * (index_w - 2));
+
+	// Randomize start positions a little :)
+	let startx = 0;
+	let topy = 0;
+	let endx = index_w - 1;
+	let boty = index_h - 1;
 
 	/**
 	 * Start, end, top, bot positions
@@ -783,10 +791,10 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 	 */
 	let requiredAccess = {
 	};
-	requiredAccess[1 + "," + (starty + 1)] = true;
-	requiredAccess[(topx + 1) + "," + 1] = true;
-	requiredAccess[w + "," + (endy + 1)] = true;
-	requiredAccess[(botx + 1) + "," + h] = true;
+	requiredAccess[(startx + 1) + "," + (starty + 1)] = true;
+	requiredAccess[(topx + 1) + "," + (topy + 1)] = true;
+	requiredAccess[(endx + 1) + "," + (endy + 1)] = true;
+	requiredAccess[(botx + 1) + "," + (boty + 1)] = true;
 
 	// Now we convert the maze into an array of indices
 	/**
@@ -796,10 +804,10 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 	for (let x = 1; x < KDMapData.GridWidth; x += 2) {
 		for (let y = 1; y < KDMapData.GridHeight; y += 2) {
 			let index = "";
-			if (KinkyDungeonMapGet(x, y - 1) == '0' || (y == 1 && (x - 1)/2 == topx)) index = index + "u";
-			if (KinkyDungeonMapGet(x, y + 1) == '0' || (y == -1 + index_h * 2 && (x - 1)/2 == botx)) index = index + "d";
-			if (KinkyDungeonMapGet(x - 1, y) == '0' || (x == 1 && (y - 1)/2 == starty)) index = index + "l";
-			if (KinkyDungeonMapGet(x + 1, y) == '0' || (x == -1 + index_w * 2 && (y - 1)/2 == endy)) index = index + "r";
+			if (KinkyDungeonMapGet(x, y - 1) == '0' || ((x - 1)/2 == startx && (y - 1 - 1)/2 == starty) || ((y - 1)/2 == topy && (x - 1)/2 == topx)) index = index + "u";
+			if (KinkyDungeonMapGet(x, y + 1) == '0' || ((x - 1)/2 == startx && (y - 1 + 1)/2 == starty) || ((y - 1)/2 == boty && (x - 1)/2 == botx)) index = index + "d";
+			if (KinkyDungeonMapGet(x - 1, y) == '0' || ((x - 1 - 1)/2 == startx && (y - 1)/2 == starty) || ((x - 1)/2 == startx && (y - 1)/2 == starty)) index = index + "l";
+			if (KinkyDungeonMapGet(x + 1, y) == '0' || ((x - 1 + 1)/2 == startx && (y - 1)/2 == starty) || ((x - 1)/2 == endx && (y - 1)/2 == endy)) index = index + "r";
 			indices[(1 + (x - 1)/2) + "," + (1 + (y - 1)/2)] = index;
 		}
 	}
@@ -811,12 +819,12 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 	KDMapData.GridWidth = Math.floor(index_w * KDTE_Scale) + 2;
 	KDMapData.GridHeight = Math.floor(index_h * KDTE_Scale) + 2;
 
-	KDMapData.StartPosition = {x: 1, y: 4 + (starty) * KDTE_Scale};
-	KDMapData.EndPosition = {x: KDMapData.GridWidth - 2, y: 4 + (endy) * KDTE_Scale};
+	KDMapData.StartPosition = {x: 1 + (startx) * KDTE_Scale, y: 4 + (starty) * KDTE_Scale};
+	KDMapData.EndPosition = {x: 7 + (endx) * KDTE_Scale, y: 4 + (endy) * KDTE_Scale};
 	if (KDRandom() < 0.5)
-		KDMapData.ShortcutPosition = {x: 4 + (botx) * KDTE_Scale, y: KDMapData.GridHeight - 2};
+		KDMapData.ShortcutPosition = {x: 4 + (botx) * KDTE_Scale, y: 7 + (boty) * KDTE_Scale};
 	else
-		KDMapData.ShortcutPosition = {x: 4 + (topx) * KDTE_Scale, y: 1};
+		KDMapData.ShortcutPosition = {x: 4 + (topx) * KDTE_Scale, y: 1 + (topy) * KDTE_Scale};
 
 	KDMapData.Grid = "";
 

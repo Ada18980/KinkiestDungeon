@@ -1121,6 +1121,23 @@ function KDEaseValue(delta, currentval, targetval, rate, minrate, eps = 0.1) {
 let KDBarAdvanceRate = 1.9/1000;
 let KDBarAdvanceRateMin = 1.0/1000;
 
+/**
+ * 
+ * @param {entity} enemy 
+ * @returns {number}
+ */
+function KDGetMaxShield(enemy) {
+	return enemy?.Enemy?.shield + KDEntityBuffedStat(enemy, "MaxShield");
+}
+/**
+ * 
+ * @param {entity} enemy 
+ * @returns {number}
+ */
+function KDGetShieldRegen(enemy) {
+	return (enemy?.Enemy?.shieldregen || 0) + KDEntityBuffedStat(enemy, "ShieldRegen");
+}
+
 function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, CamY, CamXoffset, CamYoffset) {
 	KDDialogueSlots = {};
 	let tooltip = false;
@@ -1129,47 +1146,11 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 	for (let enemy of nearby) {
 		let xx = enemy.visual_x ? enemy.visual_x : enemy.x;
 		let yy = enemy.visual_y ? enemy.visual_y : enemy.y;
-		let maxHP = Math.max(enemy.Enemy?.maxhp, enemy.shield || 0);
+		let maxHP = Math.max(enemy.Enemy?.maxhp, KDGetMaxShield(enemy) || enemy.shield || 0);
 		let hpbarMult = Math.min(1, enemy.Enemy.maxhp / maxHP);
-		// Handle dodge and block tokens
-		if (KDCanBlock(enemy)) {
-			
-			if (enemy.blocks > 0) {
-				let pipY = -5 + canvasOffsetY + (yy - CamY + 1)*KinkyDungeonGridSizeDisplay;
-				let pipSpacing = -0.5 * (KinkyDungeonGridSizeDisplay+5)/KDGetMaxBlock(enemy);
-				for (let pip = 0; pip < enemy.blocks; pip++) {
-					DrawRectKD(kdenemystatusboard, kdpixisprites, enemy.id + "Bpip" + pip, {
-						Left: canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay,
-						Top: pipY,
-						Width: 10,
-						Height: 10,
-						Color: "#ffffff",
-						zIndex: 10,
-						LineWidth: 2,
-					});
-				}
-				pipY += pipSpacing;
-			}
-		}
+		let shieldbarMult = (KDGetMaxShield(enemy) || enemy.shield) ? Math.min(1, (KDGetMaxShield(enemy) || enemy.shield) / enemy.Enemy.maxhp) : 1;
+				
 		
-		if (KDCanDodge(enemy)) {
-			if (enemy.dodges > 0) {
-				let pipY = 5 + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay;
-				let pipSpacing = 0.5 * (KinkyDungeonGridSizeDisplay-5)/KDGetMaxBlock(enemy);
-				for (let pip = 0; pip < enemy.dodges; pip++) {
-					DrawCircleKD(kdenemystatusboard, kdpixisprites, enemy.id + "Dpip" + pip, {
-						Left: canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay,
-						Top: pipY,
-						Width: 10,
-						Height: 10,
-						Color: "#ffffff",
-						zIndex: 10,
-						LineWidth: 2,
-					});
-				}
-				pipY += pipSpacing;
-			}
-		}
 
 		// Handle enemy bars
 		if (enemy.boundLevel != undefined && !(enemy.visual_boundlevel == enemy.boundLevel)) {
@@ -1191,7 +1172,50 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 			let II = 0;
 			// Draw bars
 			if ((!enemy.Enemy.stealth || KDAllied(enemy) || KDHelpless(enemy) || playerDist <= enemy.Enemy.stealth + 0.1) && !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0 && playerDist > 1.5)) {
-				if ((KDAllied(enemy) || enemy.distraction > 0 || ((enemy.lifetime != undefined || enemy.hp < enemy.Enemy.maxhp || enemy.boundTo || enemy.boundLevel))) && KDCanSeeEnemy(enemy, playerDist)) {
+
+				// Handle dodge and block tokens
+				if (KDCanBlock(enemy)) {
+												
+					if (enemy.blocks > 0) {
+						let pipY = -15 + canvasOffsetY + (yy - CamY + 1)*KinkyDungeonGridSizeDisplay;
+						let pipSpacing = -0.5 * (KinkyDungeonGridSizeDisplay-25)/KDGetMaxBlock(enemy);
+						for (let pip = 0; pip < enemy.blocks; pip++) {
+							DrawRectKD(kdenemystatusboard, kdpixisprites, enemy.id + "Bpip" + pip, {
+								Left: canvasOffsetX + 15 + (xx - CamX)*KinkyDungeonGridSizeDisplay,
+								Top: pipY,
+								Width: 10,
+								Height: 10,
+								Color: "#ffffff",
+								zIndex: 10,
+								LineWidth: 2,
+							});
+							pipY += pipSpacing;
+						}
+					}
+				}
+
+				if (KDCanDodge(enemy)) {
+					if (enemy.dodges > 0) {
+						let pipY = 15 + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay;
+						let pipSpacing = 0.5 * (KinkyDungeonGridSizeDisplay-25)/KDGetMaxBlock(enemy);
+						for (let pip = 0; pip < enemy.dodges; pip++) {
+							DrawCircleKD(kdenemystatusboard, kdpixisprites, enemy.id + "Dpip" + pip, {
+								Left: canvasOffsetX + 15 + (xx - CamX)*KinkyDungeonGridSizeDisplay,
+								Top: pipY,
+								Width: 10,
+								Height: 10,
+								Color: "#ffffff",
+								zIndex: 10,
+								LineWidth: 2,
+							});
+							pipY += pipSpacing;
+						}
+					}
+				}
+				if ((KDAllied(enemy) || enemy.distraction > 0 || ((enemy.lifetime != undefined || enemy.playerdmg || (enemy.shield) || enemy.hp < enemy.Enemy.maxhp || enemy.boundTo || enemy.boundLevel))) && KDCanSeeEnemy(enemy, playerDist)) {
+					
+					
+					
 					let spacing = 6;
 					// Draw binding bars
 					let helpless = KDHelpless(enemy);
@@ -1268,12 +1292,20 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 								hpbarMult * KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), enemy.boundTo? 7 : 9, enemy.visual_hp / enemy.Enemy.maxhp * 100, fg, bg);
 							
 							if (enemy.shield > 0) {
-								KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - 5 - II * spacing,
-									KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 5, enemy.shield / maxHP * 100, fg, bg);
+								KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay,
+									canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - 2 - II * spacing,
+									shieldbarMult * KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 5, enemy.shield / KDGetMaxShield(enemy) * 100, '#92e8c0', bg);
 							
 							}
 							II++;
 						}
+						if (enemy.Enemy.maxmana > 0) {
+							KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay,
+								canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 + 5 - II * spacing,
+								KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 5, (enemy.mana || 0) / enemy.Enemy.maxmana * 100, '#4f6ab8', "#000000");
+						
+						}
+						
 
 						if (enemy.distraction > 0) {
 							// Draw distraction bar
@@ -1618,7 +1650,7 @@ function KDDrawEnemyTooltip(enemy, offset) {
 			size: 20,
 		});
 	}
-	if (evasion != 1.0) {
+	/*if (evasion != 1.0) {
 		let st = TextGet("KinkyDungeonTooltipEvasion").replace("AMOUNT", "" + Math.round(100 - 100 * evasion));
 		TooltipList.push({
 			str: st,
@@ -1626,7 +1658,7 @@ function KDDrawEnemyTooltip(enemy, offset) {
 			bg: KDTextGray0,
 			size: 20,
 		});
-	}
+	}*/
 	if (enemy.Enemy.tags.unstoppable) {
 		let st = TextGet("KDunstoppable");
 		TooltipList.push({
@@ -2592,6 +2624,17 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				}
 			}
 
+			if (KDGetMaxShield(enemy) > 0 && KDGetShieldRegen(enemy) > 0) {
+				if (!enemy.shield) enemy.shield = 0;
+				let maxshield = KDGetMaxShield(enemy) - Math.max(KDEntityBuffedStat(enemy, "ShieldNoRegen"));
+				if (enemy.shield < maxshield) enemy.shield = Math.max(enemy.shield, Math.min(enemy.shield + delta * KDGetShieldRegen(enemy), maxshield));
+				// Regen shield
+			}
+			
+			if (enemy.shield && KDEntityBuffedStat(enemy, "ShieldDrain") > 0) {
+				if (enemy.shield>0) enemy.shield = Math.max(0, enemy.shield - delta * (KDEntityBuffedStat(enemy, "ShieldDrain") - Math.max(0, KDGetShieldRegen(enemy))));
+			}
+
 			let bindLevel = KDBoundEffects(enemy);
 			let statusBonus = 1;
 			if (enemy.Enemy.tags.unstoppable) statusBonus *= 4;
@@ -2624,6 +2667,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "ceasefire"});
 			}
 			if (enemy.blind > 0 && bindLevel < 4) {
+				if (enemy.dodges > 0) enemy.dodges -= delta * 1;
 				enemy.blind -= delta * statusBonus / (1 + 1*bindLevel);
 				if (enemy.blind <= 0)
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "blind"});
@@ -2686,31 +2730,33 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				if (enemy.teleporting <= 0)
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "teleporting"});
 			}
+			let maxblock = KDGetMaxBlock(enemy);
+			let maxdodge = KDGetMaxDodge(enemy);
 			if (enemy.vp > 0) {
 				if (!enemy.blockedordodged && !KinkyDungeonIsDisabled(enemy)) {
 					if (enemy.aware) {
 								
-						let blockRate = (enemy.Enemy.block || 0) + KDEntityBuffedStat(enemy, "Block");
-						let maxblock = KDGetMaxBlock(enemy);
+						let blockRate = (enemy.Enemy.block || 0) + KDEntityBuffedStat(enemy, "Block") + KDEntityBuffedStat(enemy, "AttackSpeed");
+						
 						if (maxblock > 0 && blockRate > -9 && !(enemy.blocks >= maxblock)) {
 							if (!enemy.blocks) enemy.blocks = 0;
 							// Roll for a token
 							let mult = KDBlockDodgeStat(blockRate);
-							if (KDRandom() < 0.1 / mult) {
+							if (KDRandom() < KDGetBaseBlock(enemy) / mult) {
 								enemy.blocks += 1;
 							}
-						} else if (enemy.blocks > maxblock) enemy.blocks = Math.max(0, maxblock);
+						}
 						
-						let dodgeRate = (enemy.Enemy.evasion || 0) + KDEntityBuffedStat(enemy, "Dodge");
-						let maxdodge = KDGetMaxDodge(enemy);
+						let dodgeRate = (enemy.Enemy.evasion || 0) + KDEntityBuffedStat(enemy, "Dodge") + KDEntityBuffedStat(enemy, "MoveSpeed");
+						
 						if (maxdodge > 0 && dodgeRate > -9 && !(enemy.dodges >= maxdodge)) {
 							if (!enemy.dodges) enemy.dodges = 0;
 							// Roll for a token
 							let mult = KDBlockDodgeStat(dodgeRate);
-							if (KDRandom() < 0.1 / mult) {
+							if (KDRandom() < KDGetBaseDodge(enemy) / mult) {
 								enemy.dodges += 1;
 							}
-						} else if (enemy.dodges > maxdodge) enemy.dodges = Math.max(0, maxdodge);
+						}
 					}
 				} else if (delta > 0 && enemy.blockedordodged) {
 					enemy.blockedordodged -= delta;
@@ -2721,6 +2767,8 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 				delete enemy.dodges;
 				delete enemy.blocks;
 			}
+			if (enemy.blocks > maxblock) enemy.blocks = Math.max(0, maxblock);
+			if (enemy.dodges > maxdodge) enemy.dodges = Math.max(0, maxdodge);
 			
 		}
 	}
@@ -3266,7 +3314,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	if (!enemy.warningTiles) enemy.warningTiles = [];
 	AIData.canSensePlayer = !AIData.distracted
-		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, true, true, 2);
+		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, true, true);
 	if (AIData.canSensePlayer && !AIData.distracted) {
 		AIData.canSeePlayer = KinkyDungeonCheckLOS(enemy, player, AIData.playerDistDirectional, AIData.visionRadius, false, false);
 		AIData.canSeePlayerChase = (enemy.aware ? KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.chaseRadius, false, false) : false);
@@ -3463,7 +3511,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	//if (KinkyDungeonAlert > 0) AIData.sneakMult += 1;
 
 	if (KinkyDungeonLastAction == "" || (KinkyDungeonSlowLevel > 1 && KinkyDungeonLastAction == "Move")) AIData.sneakMult *= 0.5;
-	else if (KinkyDungeonLastAction == "Cast" || KinkyDungeonLastAction == "Attack" || KinkyDungeonLastAction == "Move") AIData.sneakMult += 1;
+	else if (KinkyDungeonLastAction == "Cast" || KinkyDungeonLastAction == "Attack" || KinkyDungeonLastAction == "Move") AIData.sneakMult *= 1.5;
 
 	let sneakPerc = (AIData.canSensePlayer || AIData.canSeePlayer || AIData.canShootPlayer || AIData.canSeePlayerChase) ? 
 		KinkyDungeonTrackSneak(enemy, delta * (AIData.sneakMult), player, (AIData.canSensePlayer) ? 0 : (enemy.Enemy.tags.darkvision ? 0.5 : 1.5))
@@ -5466,6 +5514,8 @@ function KDPushModifier(power, enemy, allowNeg = false) {
 	let pushPower = power;
 	if (KinkyDungeonIsSlowed(enemy) || enemy.bind > 0) pushPower += 1;
 	if (KDEntityHasBuff(enemy, "Chilled")) pushPower += 1;
+	if (enemy.freeze) pushPower += 3;
+	if (KDEntityBuffedStat(enemy, "Knockback")) pushPower += KDEntityBuffedStat(enemy, "Knockback");
 	if (enemy.Enemy.tags.stunimmune) pushPower -= 2;
 	else if (enemy.Enemy.tags.stunresist) pushPower -= 1;
 	if (enemy.Enemy.tags.unstoppable) pushPower -= 3;
@@ -6881,8 +6931,8 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
  */
 function KDGetMaxBlock(entity) {
 	if (!((entity.Enemy.block || entity.Enemy.blockAmount || (KDIsHumanoid(entity) && !entity.Enemy.tags?.submissive)))) return 0;
-	let mod = KDEntityBuffedStat("MaxBlock");
-	if (entity.Enemy?.maxblock) return Math.max(0, entity.Enemy?.maxblock + mod);
+	let mod = KDEntityBuffedStat(entity, "MaxBlock");
+	if (entity.Enemy?.maxblock != undefined) return Math.max(0, entity.Enemy?.maxblock + mod);
 	return Math.max(0, mod + Math.max(1, KDEnemyRank(entity)));
 }
 /**
@@ -6892,9 +6942,52 @@ function KDGetMaxBlock(entity) {
  */
 function KDGetMaxDodge(entity) {
 	if (entity.Enemy?.alwaysEvade || KDIsImmobile(entity)) return 0;
-	let mod = KDEntityBuffedStat("MaxDodge");
-	if (entity.Enemy?.maxdodge) return Math.max(0, entity.Enemy?.maxdodge + mod);
+	let mod = KDEntityBuffedStat(entity, "MaxDodge");
+	if (entity.Enemy?.maxdodge != undefined) return Math.max(0, entity.Enemy?.maxdodge + mod);
 	return Math.max(0, mod + Math.max(1, KDEnemyRank(entity)));
+}
+
+
+/**
+ * Gets the max block of an enemy
+ * @param {entity} entity 
+ * @returns {number}
+ */
+function KDGetBaseBlock(entity) {
+	let mod = KDEntityBuffedStat(entity, "BlockRate");
+
+	let spellResist = entity.Enemy.spellResist || -1;
+	if (KDEntityBuffedStat(entity, "SpellResist")) spellResist += KDEntityBuffedStat(entity, "SpellResist");
+	if (KDEntityBuffedStat(entity, "SpellResistBreak")) spellResist -= Math.min(Math.max(0, spellResist), KDEntityBuffedStat(entity, "SpellResistBreak"));
+	let armor = entity.Enemy.armor || -1;
+	if (KDEntityBuffedStat(entity, "Armor")) armor += KDEntityBuffedStat(entity, "Armor");
+	if (KDEntityBuffedStat(entity, "ArmorBreak")) armor -= Math.min(Math.max(0, armor), KDEntityBuffedStat(entity, "ArmorBreak"));
+
+	let armorBonus = Math.max(spellResist, armor) + Math.max(0, 0.5 * Math.min(spellResist, armor));
+	if (entity.Enemy.tags?.meleeresist) armorBonus += 3;
+	else if (entity.Enemy.tags?.meleeimmune) armorBonus += 5;
+	let attackBonus = 2 - entity.Enemy.attackPoints;
+
+	return Math.max(0, mod + 0.05 * (1 + KDEnemyRank(entity)) / (1 + KinkyDungeonMultiplicativeStat(attackBonus + armorBonus)));
+}
+/**
+ * Gets the max block of an enemy
+ * @param {entity} entity 
+ * @returns {number}
+ */
+function KDGetBaseDodge(entity) {
+	let mod = KDEntityBuffedStat(entity, "DodgeRate");
+
+
+	let moveBonus = 2 - entity.Enemy.movePoints;
+	if (entity.Enemy.attack?.includes("Dash")) moveBonus += 5;
+	else if (entity.Enemy.specialAttack?.includes("Dash")) moveBonus += 3;
+	if (entity.Enemy.kite) moveBonus += 1;
+	if (entity.Enemy.tags?.melee) moveBonus += 1;
+	let staminabonus = 0.2 * (entity.Enemy.stamina != undefined ? entity.Enemy.stamina : 6) * (entity.Enemy.sprintspeed || 1.7);
+	let reflexBonus = Math.max(0, (entity.Enemy.stealth ? 4 / entity.Enemy.stealth : 0)) + Math.max(0, (entity.Enemy.blindSight ? 4 / entity.Enemy.blindSight : 0))
+
+	return Math.max(0, mod + 0.03 * (1 + KDEnemyRank(entity)) / (1 + KinkyDungeonMultiplicativeStat(staminabonus + moveBonus)));
 }
 
 /**
@@ -6903,10 +6996,10 @@ function KDGetMaxDodge(entity) {
  * @returns {number}
  */
 function KDGetBlockAmount(entity) {
-	let mod = KDEntityBuffedStat("BlockAmount");
+	let mod = KDEntityBuffedStat(entity, "BlockAmount");
 	
 	if (entity.Enemy?.blockAmount) return Math.max(0, entity.Enemy?.blockAmount + mod);
-	return (2 + 0.5*(KDEnemyRank(entity)**2));
+	return (2 + mod + 0.5*(KDEnemyRank(entity)**2));
 }
 
 /**
@@ -6923,5 +7016,5 @@ function KDCanBlock(enemy) {
  * @returns {boolean}
  */
 function KDCanDodge(enemy) {
-	return !KDIsImmobile(enemy) && !KDHelpless(enemy) && !KinkyDungeonIsDisabled(enemy) && KinkyDungeonGetNearbyPoint(enemy.x, enemy.y, true, undefined, true, false, (x, y) => {return x != enemy.x && y != enemy.y}) != undefined;
+	return !KDIsImmobile(enemy) && !KDHelpless(enemy) && !(enemy.bind > 0) && !KinkyDungeonIsDisabled(enemy) && KinkyDungeonGetNearbyPoint(enemy.x, enemy.y, true, undefined, true, false, (x, y) => {return x != enemy.x && y != enemy.y}) != undefined;
 }
