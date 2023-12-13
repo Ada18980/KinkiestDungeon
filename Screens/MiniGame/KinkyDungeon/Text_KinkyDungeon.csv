@@ -5758,7 +5758,7 @@ KinkyDungeonSpellFlashBomb,Flash Bomb
 KinkyDungeonSpellEnemyFlash,Sparkles!
 KinkyDungeonSpellMirrorImage,Mirror Image
 KinkyDungeonSpellCastMirrorImage,""
-KinkyDungeonSpellDescriptionFlash,A flash of light which renders anyone caught within blind for Duration turns
+KinkyDungeonSpellDescriptionFlash,A flash of light which renders anyone caught within blind for 7 turns
 KinkyDungeonSpellCastFlash,You charge up a bright flash!
 KinkyDungeonSpellTargetFlash,Select where to center the flash (SpellArea radius)
 
@@ -5767,13 +5767,13 @@ KinkyDungeonSpellCastRing,You point and a noise emanates from the location!
 KinkyDungeonSpellTargetRing,Select where to center the noise (SpellArea radius)
 
 KinkyDungeonSpellGreaterFlash,Greater Flash
-KinkyDungeonSpellDescriptionGreaterFlash,A massive flash of light which renders anyone caught within blind for Duration turns
+KinkyDungeonSpellDescriptionGreaterFlash,A massive flash of light which renders anyone caught within blind for 16 turns and stuns briefly.
 KinkyDungeonSpellCastGreaterFlash,You charge up a bright flash!
 KinkyDungeonSpellTargetGreaterFlash,Select where to center the flash (SpellArea radius)
 
 KinkyDungeonSpellFocusedFlash,Focused Flash
 KinkyDungeonSpellTargetFocusedFlash,Select where to center the flash (SpellArea radius)
-KinkyDungeonSpellDescriptionFocusedFlash,A focused flash of light which renders anyone caught within blind for Duration turns
+KinkyDungeonSpellDescriptionFocusedFlash,A focused flash of light which renders anyone caught within blind for 30 turns and stuns for Duration turns.
 KinkyDungeonSpellCastFocusedFlash,You slowly charge up a powerful flash!
 
 KinkyDungeonSpellShroud,Shroud
@@ -14404,8 +14404,8 @@ KinkyDungeonSpellGuardBoost,Secure Defense
 KinkyDungeonSpellDescriptionGuardBoost,"+15-30 Block, based on your percentage of Willpower."
 
 KinkyDungeonAttackBlock,You block the EnemyName attack!
-KinkyDungeonSpellBindBlock,You block a binding from EnemyName!
-KinkyDungeonSpellBindMiss,You dodge a binding from EnemyName!
+KinkyDungeonSpellBindBlock,You block EnemyName!
+KinkyDungeonSpellBindMiss,You dodge EnemyName!
 KinkyDungeonSpellBlock,You block the EnemyName!
 KinkyDungeonSpellMiss,You dodge the EnemyName!
 
@@ -15120,7 +15120,7 @@ KDBattleRhythm,Rhythm
 KDBattleRhythmDodge,You avoid the attack in a flurry of impressive maneuvers!
 
 KinkyDungeonSpellArcaneBarrier,Arcane Barrier
-KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 2 to 1 ratio."
+KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 100% Max Mana."
 
 KinkyDungeonBuffHighValueFound,You sense that a high value target is near.
 
@@ -15906,3 +15906,17 @@ KDTeleportNearby,"The teleportation partially succeeds due to an obstruction, pl
 KDTeleportFail,"The teleportation fizzles due to obstruction."
 KDConfirm,Confirm
 KDName,What is your name?
+
+
+KinkyDungeonSpellEnrage,"Enrage"
+KinkyDungeonSpellDescriptionEnrage,"Scream loudly, causing nearby enemies to investigate and increasing Battle Rhythm by 10. Has a 100 turn cooldown."
+
+KDEnrageSuccess,You shout loudly and shake your fist at the sky! (+10 BR)
+KDEnrageFailGagged,Mmmph! (You can't shout while gagged)
+KDEnrageFailCooldown,You are plenty mad enough as is.
+KDEnrageFail,You are too tired to rage. Perhaps try a warm cozy bed instead?
+
+KDTurns,turns
+
+KDShieldAbsorb,Your shield absorbed AMNT damage.
+KDStatShield,You are currently shielded from damage and some spells.

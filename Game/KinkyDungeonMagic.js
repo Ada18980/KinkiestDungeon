@@ -444,6 +444,7 @@ function KinkyDungeonClickSpell(i) {
 			KDSendInput("equip", {name: item.name,
 				inventoryVariant: item.name != newItem.name ?
 					item.name : undefined,
+					faction: item.faction,
 				group: newItem.Group, curse: item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.events)});
 		}
 		KinkyDungeonSpellPress = "";
@@ -591,13 +592,13 @@ function KinkyDungeonGetCost(Spell) {
 	return cost + bonus;
 }
 
-function KinkyDungeonMakeNoise(radius, noiseX, noiseY) {
+function KinkyDungeonMakeNoise(radius, noiseX, noiseY, hideShockwave) {
 	let data = {
 		radius: radius,
 		x: noiseX,
 		y: noiseY,
 		enemiesHeard: [],
-		particle: true,
+		particle: !hideShockwave,
 	};
 	KinkyDungeonSendEvent("beforeNoise", data);
 	for (let e of KDMapData.Entities) {

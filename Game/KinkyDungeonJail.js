@@ -967,7 +967,6 @@ function KDDefeatedPlayerTick(nodefeat) {
 
 function KDEnterDemonTransition() {
 	KDDefeatedPlayerTick();
-	KDGameData.PrisonerState = 'jail';
 	//KDGameData.RoomType = "DemonTransition"; // We do a tunnel every other room
 	//KDGameData.MapMod = ""; // Reset the map mod
 	KDGameData.CurrentDialog = "";

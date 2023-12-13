@@ -53,7 +53,7 @@ let KDEnchantVariantList = {
 function KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment) {
 	amt *= 1 + ((KDGetEffLevel() - 1)/(KinkyDungeonMaxLevel - 1)); // Higher floor = higher rewards
 	if (Loot?.amtMult) amt *= Loot.amtMult;
-	if (primaryEnchantment) amt *= 0.6; // Reduce the power if there are already enchantments
+	if (primaryEnchantment) amt *= 0.45; // Reduce the power if there are already enchantments
 	if (curse && KDEventHexModular[curse]?.level > 0) amt *= 1 + 0.5 * Math.pow(KDEventHexModular[curse].level, 0.5);
 	return Math.ceil(amt);
 }
@@ -71,9 +71,9 @@ function KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchan
 	let original = amt * 0.01;
 	amt *= 1 + ((KDGetEffLevel() - 1)/(KinkyDungeonMaxLevel - 1)); // Higher floor = higher rewards
 	if (Loot?.amtMult) amt *= Loot.amtMult;
-	if (primaryEnchantment) amt *= 0.6; // Reduce the power if there are already enchantments
+	if (primaryEnchantment) amt *= 0.3; // Reduce the power if there are already enchantments
 	if (curse && KDEventHexModular[curse]?.level > 0) amt *= 1 + 0.5 * Math.pow(KDEventHexModular[curse].level, 0.5);
-	return 100 * (1 - (1 - original) * Math.pow(1 - original, -(amt / (100 * original))));
+	return 100 * (1 - (1 - original) * Math.pow(1 - original, (amt / (100 * original))));
 }
 
 /** @type {Record<string, KDEnchantment>} */

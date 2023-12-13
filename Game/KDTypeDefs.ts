@@ -2211,6 +2211,7 @@ interface KinkyDungeonSave {
 	KDEventData: Object;
 	KDCurrentWorldSlot: {x: number, y: number};
 	flags: [string, number][];
+	uniqueHits: [string, boolean][];
 	KDCommanderRoles: [number, string][];
 	stats: {
 		picks: number;

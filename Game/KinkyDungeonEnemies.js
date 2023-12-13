@@ -1197,7 +1197,7 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 				if (KDCanDodge(enemy)) {
 					if (enemy.dodges > 0) {
 						let pipY = 15 + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay;
-						let pipSpacing = 0.5 * (KinkyDungeonGridSizeDisplay-25)/KDGetMaxBlock(enemy);
+						let pipSpacing = 0.5 * (KinkyDungeonGridSizeDisplay-25)/KDGetMaxDodge(enemy);
 						for (let pip = 0; pip < enemy.dodges; pip++) {
 							DrawCircleKD(kdenemystatusboard, kdpixisprites, enemy.id + "Dpip" + pip, {
 								Left: canvasOffsetX + 15 + (xx - CamX)*KinkyDungeonGridSizeDisplay,
@@ -3642,7 +3642,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	// If an enemy was trying to attack the player but the player got behind them somehow, they get stunned
 	let flanked = KDCheckVulnerableBackstab(enemy);
-	if (player.player && flanked && !enemy.stun && !enemy.Enemy.tags.nosurpriseflank && !KDIsPlayerTethered(KinkyDungeonPlayerEntity) && KinkyDungeonFlags.get("teleported")) {
+	if (player.player && flanked && !enemy.stun && !enemy.Enemy.tags.nosurpriseflank && !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
 		enemy.stun = 1;
 	}
 

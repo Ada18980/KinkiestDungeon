@@ -3867,6 +3867,19 @@ function KDGetLightColor(x, y) {
 
 /**
  *
+ * @param {number} x
+ * @param {number} y
+ * @returns {number} - the color in hex
+ */
+function KDGetLightColorGreyscale(x, y) {
+	let light = KinkyDungeonBrightnessGet(x, y);
+	let color = KDAvgColor(0xaaaaff, 0x030303, light, 1);
+	color = KDAvgColor(color, 0xffffff, 1, 0.5); // Brighten
+	return color;
+}
+
+/**
+ *
  * @returns {boolean}
  */
 function KDMouseInPlayableArea() {

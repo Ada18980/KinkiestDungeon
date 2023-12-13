@@ -1461,8 +1461,10 @@ function KDUpdateBulletEffects(b, d) {
 }
 
 function KinkyDungeonUpdateBullets(delta, Allied) {
-	if (Allied) KDUniqueBulletHits = new Map();
-	if (delta > 0)
+	if (delta > 0) {
+		
+		if (Allied) KDUniqueBulletHits = new Map();
+
 		for (let b of KDMapData.Bullets) {
 			if ((Allied && b.bullet && b.bullet.spell && !b.bullet.spell.enemySpell) || (!Allied && !(b.bullet && b.bullet.spell && !b.bullet.spell.enemySpell))) {
 				KinkyDungeonSendEvent("bulletTick", {bullet: b, delta: delta, allied: Allied});
@@ -1509,7 +1511,8 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 				}
 			}
 		}
-	if (Allied) {
+	}
+	if (Allied && delta > 0) {
 		KDBulletWarnings = [];
 	}
 	for (let E = 0; E < KDMapData.Bullets.length; E++) {
@@ -1700,16 +1703,21 @@ function KinkyDungeonUpdateBulletsCollisions(delta, Catchup) {
 	for (let E = 0; E < KDMapData.Bullets.length; E++) {
 		let b = KDMapData.Bullets[E];
 		if ((!Catchup && !b.secondary) || (Catchup && b.secondary)) {
-			if (!KinkyDungeonBulletsCheckCollision(b, b.time >= 0, undefined, undefined, !(b.bullet.faction == "Player" || (!b.vx && !b.vy) || b.bullet.aoe || (KDistEuclidean(b.vx, b.vy) < 0.9)))) { // (b.bullet.faction == "Player" || (!b.vx && !b.vy) || b.bullet.aoe || (KDistEuclidean(b.vx, b.vy) < 0.9)) &&
-				if (!(b.bullet.spell && (b.bullet.spell.piercing || (b.bullet.spell.pierceEnemies && KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(b.x, b.y)))))) {
-					KDMapData.Bullets.splice(E, 1);
-					KinkyDungeonBulletsID[b.spriteID] = null;
-					KinkyDungeonUpdateSingleBulletVisual(b, true);
-					KinkyDungeonSendEvent("bulletDestroy", {bullet: b, target: undefined, outOfRange:false, outOfTime: false});
-					E -= 1;
+			// This is a bit of a brute force way of forcing the bullet to only check for collisions when time has passed, i.e. when delta = 1
+			// However the collision check still happens if the bullet was born in between turns, e.g the player uses Leather Package
+			
+			if (b.collisionUpdate == undefined || delta > 0)
+				if (!KinkyDungeonBulletsCheckCollision(b, b.time >= 0, undefined, undefined, !(b.bullet.faction == "Player" || (!b.vx && !b.vy) || b.bullet.aoe || (KDistEuclidean(b.vx, b.vy) < 0.9)), delta)) { // (b.bullet.faction == "Player" || (!b.vx && !b.vy) || b.bullet.aoe || (KDistEuclidean(b.vx, b.vy) < 0.9)) &&
+					if (!(b.bullet.spell && (b.bullet.spell.piercing || (b.bullet.spell.pierceEnemies && KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(b.x, b.y)))))) {
+						KDMapData.Bullets.splice(E, 1);
+						KinkyDungeonBulletsID[b.spriteID] = null;
+						KinkyDungeonUpdateSingleBulletVisual(b, true);
+						KinkyDungeonSendEvent("bulletDestroy", {bullet: b, target: undefined, outOfRange:false, outOfTime: false});
+						E -= 1;
+					}
+					KinkyDungeonBulletHit(b, 1);
 				}
-				KinkyDungeonBulletHit(b, 1);
-			}
+			b.collisionUpdate = true;
 		}
 	}
 }
@@ -1841,10 +1849,10 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 	} else if (b.bullet.hit == "aoe") {
 		let newB = {secondary: true, born: born, time:b.bullet.spell.lifetime, x:b.x, y:b.y, vx:0, vy:0, xx:b.x, yy:b.y, spriteID: KinkyDungeonGetEnemyID() + b.bullet.name+"Hit" + CommonTime(),
 			bullet:{faction: b.bullet.faction, spell:b.bullet.spell, bulletColor: b.bullet.spell?.hitColor, bulletLight: b.bullet.spell?.hitLight,
+				hitevents: b.bullet.spell.hitevents,
 				bulletSpin: b.bullet.spell?.hitSpin, damage: {
 					evadeable:false, noblock: (b.bullet.spell.lifetime > 1.9),
 					damage:(b.bullet.spell.aoedamage) ? b.bullet.spell.aoedamage : b.bullet.spell.power, type:b.bullet.spell.damage,
-					hitevents: b.bullet.spell.hitevents,
 					ignoreshield: b.bullet.spell?.ignoreshield,
 					shield_crit: b.bullet.spell?.shield_crit, // Crit thru shield
 					shield_stun: b.bullet.spell?.shield_stun, // stun thru shield
@@ -1933,9 +1941,9 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 		let newB = {born: born, time:b.bullet.spell.lifetime, x:b.x, y:b.y, vx:0, vy:0, xx:b.x, yy:b.y, spriteID: KinkyDungeonGetEnemyID() + b.bullet.name+"Hit" + CommonTime(),
 			bullet:{faction: b.bullet.faction, spell:b.bullet.spell, bulletColor: b.bullet.spell?.hitColor, bulletLight: b.bullet.spell?.hitLight,
 				bulletSpin: b.bullet.spell?.hitSpin,
+				hitevents: b.bullet.spell.hitevents,
 				damage: {
 					damage:(b.bullet.spell.aoedamage) ? b.bullet.spell.aoedamage : b.bullet.spell.power, type:b.bullet.spell.damage,
-					hitevents: b.bullet.spell.hitevents,
 					ignoreshield: b.bullet.spell?.ignoreshield,
 					shield_crit: b.bullet.spell?.shield_crit, // Crit thru shield
 					shield_stun: b.bullet.spell?.shield_stun, // stun thru shield
@@ -2011,9 +2019,9 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 				bullet:{faction: b.bullet.faction, spell:b.bullet.spell,
 					bulletColor: b.bullet.spell?.hitColor, bulletLight: b.bullet.spell?.hitLight,
 					bulletSpin: b.bullet.spell?.hitSpin,
+					hitevents: b.bullet.spell.hitevents,
 					damage: {
 						damage:(b.bullet.spell.aoedamage) ? b.bullet.spell.aoedamage : b.bullet.spell.power, type:b.bullet.spell.damage, boundBonus: b.bullet.spell.boundBonus,
-						hitevents: b.bullet.spell.hitevents,
 						ignoreshield: b.bullet.spell?.ignoreshield,
 						shield_crit: b.bullet.spell?.shield_crit, // Crit thru shield
 						shield_stun: b.bullet.spell?.shield_stun, // stun thru shield
@@ -2187,11 +2195,11 @@ function KinkyDungeonBulletTrail(b) {
 						let newB = {born: 0, time:b.bullet.spell.trailLifetime + (b.bullet.spell.trailLifetimeBonus ? Math.floor(KDRandom() * b.bullet.spell.trailLifetimeBonus) : 0), x:b.x + X, y:b.y + Y, vx:0, vy:0, xx:b.x + X, yy:b.y + Y, spriteID: KinkyDungeonGetEnemyID() + b.bullet.name+"Trail" + CommonTime(),
 							bullet:{faction: b.bullet.faction, trail: true, hit: b.bullet.spell.trailHit, spell:b.bullet.spell, playerEffect:b.bullet.spell.trailPlayerEffect,
 								bulletColor: b.bullet.spell?.trailColor, bulletLight: b.bullet.spell?.trailLight,
+								hitevents: b.bullet.spell.hitevents,
 								bulletSpin: b.bullet.spell?.hitSpin, damage: {
 									
 									evadeable: b.bullet.spell.trailEvadeable, noblock: b.bullet.spell.trailNoBlock,
 									damage:b.bullet.spell.trailPower, type:b.bullet.spell.trailDamage, boundBonus: b.bullet.spell.boundBonus,
-									hitevents: b.bullet.spell.hitevents,
 									ignoreshield: b.bullet.spell?.ignoreshield,
 									shield_crit: b.bullet.spell?.shield_crit, // Crit thru shield
 									shield_stun: b.bullet.spell?.shield_stun, // stun thru shield

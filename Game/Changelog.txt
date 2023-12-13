@@ -18,6 +18,7 @@ Vague todo:
 TODO add sugar magic ('Blood Energy Magic')
 
 5.0.3
+-New fighter spell: Enrage
 -New spell: Liquid Metal
 -Nerfed some of the Block upgrades
 -Changed Secure Defense to give more block at 0 willpower but half at max willpower

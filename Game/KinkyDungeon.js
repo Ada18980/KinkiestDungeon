@@ -822,7 +822,7 @@ function KinkyDungeonLoad() {
 			KinkyDungeonHardMode = localStorage.getItem("KinkyDungeonHardMode") != undefined ? localStorage.getItem("KinkyDungeonHardMode") == "True" : false;
 			KinkyDungeonExtremeMode = localStorage.getItem("KinkyDungeonExtremeMode") != undefined ? localStorage.getItem("KinkyDungeonExtremeMode") == "True" : false;
 			KinkyDungeonPerksMode = localStorage.getItem("KinkyDungeonPerksMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerksMode")) || 0 : 0;
-			KinkyDungeonPerkProgressionMode = localStorage.getItem("KinkyDungeonPerkProgressionMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerkProgressionMode")) || 0 : 0;
+			KinkyDungeonPerkProgressionMode = localStorage.getItem("KinkyDungeonPerkProgressionMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerkProgressionMode")) || 0 : 1;
 			KinkyDungeonRandomMode = localStorage.getItem("KinkyDungeonRandomMode") != undefined ? localStorage.getItem("KinkyDungeonRandomMode") == "True" : false;
 			KinkyDungeonEasyMode = localStorage.getItem("KinkyDungeonEasyMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonEasyMode")) || 0 : 0;
 
@@ -946,7 +946,7 @@ let KinkyDungeonSaveMode = false;
 let KinkyDungeonHardMode = false;
 let KinkyDungeonExtremeMode = false;
 let KinkyDungeonPerksMode = 0;
-let KinkyDungeonPerkProgressionMode = 0;
+let KinkyDungeonPerkProgressionMode = 1;
 let KinkyDungeonSexyPiercing = false;
 let KinkyDungeonSexyPlug = false;
 let KDOldValue = "";
@@ -3722,6 +3722,7 @@ function KinkyDungeonGenerateSaveData() {
 	save.inventoryVariants = KinkyDungeonRestraintVariants;
 	save.weaponVariants = KinkyDungeonWeaponVariants;
 	save.consumableVariants = KinkyDungeonConsumableVariants;
+	save.uniqueHits = Array.from(KDUniqueBulletHits);
 
 	let spells = [];
 	/**@type {item[]} */
@@ -3857,6 +3858,8 @@ function KinkyDungeonLoadGame(String) {
 			if (saveData.consumableVariants) KinkyDungeonConsumableVariants = saveData.consumableVariants;
 
 			if (saveData.statchoice != undefined) KinkyDungeonStatsChoice = new Map(saveData.statchoice);
+			if (saveData.uniqueHits != undefined) KDUniqueBulletHits = new Map(saveData.uniqueHits);
+			
 
 			KinkyDungeonSexyMode = KinkyDungeonStatsChoice.get("arousalMode");
 			KinkyDungeonSexyPlug = KinkyDungeonStatsChoice.get("arousalModePlug");

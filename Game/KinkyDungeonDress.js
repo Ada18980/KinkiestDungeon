@@ -1,5 +1,6 @@
 "use strict";
 
+let KDNaughtySetting = false;
 
 // For cacheing
 let KinkyDungeonOutfitCache = new Map();
@@ -300,8 +301,10 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 				}
 			}
 
-			if (clothes.Group == "Panties" && !KinkyDungeonGetRestraintItem("ItemPelvis")) clothes.Lost = false; // A girl's best friend never leaves her
-			if (clothes.Group == "Bra" && !KinkyDungeonGetRestraintItem("ItemBreast")) clothes.Lost = false; // A girl's best friend never leaves her
+			if (!KDNaughtySetting) {
+				if (clothes.Group == "Panties" && !KinkyDungeonGetRestraintItem("ItemPelvis")) clothes.Lost = false; // A girl's best friend never leaves her
+				if (clothes.Group == "Bra" && !KinkyDungeonGetRestraintItem("ItemBreast")) clothes.Lost = false; // A girl's best friend never leaves her
+			}
 		}
 
 		if (!NoRestraints) {
