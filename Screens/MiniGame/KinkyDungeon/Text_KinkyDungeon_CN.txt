@@ -12785,9 +12785,9 @@ Save Codes
 Roguelike
 肉鸽游戏
 Grants a save code every floor you can write down. Autosaves only on floor start.
-为你可以写下的每一层授予一个保存代码。 仅在楼层启动时自动保存。
+每当你到达一个新的楼层时，获得一个可以记录的存档码，并在楼层开始时自动保存。
 No save codes, forced autosaves. You are in it to win it.
-没有保存代码，强制自动保存。你是为了赢而来的。
+没有保存代码，强制自动保存。你的目标就是赢得胜利。
 Prison Strictness:
 监狱严密性：
 Normal
@@ -12797,7 +12797,7 @@ Easy
 Strict
 严密
 If you get captured, you might get rescued if you have good relations.
-当你被抓后，如果你有良好的关系，你可能会获救。
+当你被抓后，且与其他派系关系良好，你可能会获救。
 If you get captured, you will always get rescued and pay a fee.
 当你被抓后，你总是会被营救并支付费用。
 If you get captured, you are totally on your own.
