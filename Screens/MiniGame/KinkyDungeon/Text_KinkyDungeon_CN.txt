@@ -18429,7 +18429,7 @@ Repel a planar incursion by a dangerous demon.
 Stop some witches from performing a dubious summoning ritual.
 阻止一些女巫进行可疑的召唤仪式。
 Defeat a congregation of the Shadow Clan.
-击败暗影族的会众。
+击败暗影族的教徒。
 
 The Goddess grants you knowledge of SpellLearned!
 女神赐予你法术学习知识！
