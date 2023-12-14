@@ -487,6 +487,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 		let l = 0;
 		let pad = 0;
 
+		let allFog = KinkyDungeonFlags.get("TimeSlow");//KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "TimeSlow");
 
 		for (let R = -1; R <= KinkyDungeonGridHeightDisplay + 2; R++)  {
 			for (let X = -1; X <= KinkyDungeonGridWidthDisplay + 2; X++)  {
@@ -516,7 +517,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 								(-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad, (-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad,
 								KinkyDungeonGridSizeDisplay + pad*2, KinkyDungeonGridSizeDisplay + pad*2,
 								undefined, {
-									tint: light > 0 ? shadowColor : 0x000000,
+									tint: (!allFog && light > 0) ? shadowColor : 0x000000,
 									alpha: (KDMapExtraData.VisionGrid[RX + RY*KDMapData.GridWidth] > 0) ? (0.5*l*l) : l,
 									//blendMode: PIXI.BLEND_MODES.DARKEN,
 								},
@@ -641,6 +642,15 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 			pad = 0;
 			kdlightmapGFX.clear();
 			// fog map
+			//allFog = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "TimeSlow");
+			if (allFog) {
+				kdlightmapGFX.beginFill(0xffffff, 1.);
+				kdlightmapGFX.drawRect(
+					0,0,
+					KinkyDungeonGridWidthDisplay*KinkyDungeonGridSizeDisplay,
+					KinkyDungeonGridHeightDisplay*KinkyDungeonGridSizeDisplay,);
+				kdlightmapGFX.endFill();
+			} else
 			for (let R = 0; R <= KinkyDungeonGridHeightDisplay; R++)  {
 				for (let X = 0; X <= KinkyDungeonGridWidthDisplay; X++)  {
 					RY = R+CamY;
@@ -671,12 +681,13 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 				renderTexture: kdlightmap
 			});
 
+
 			for (let R = 0; R <= KinkyDungeonGridHeightDisplay; R++)  {
 				for (let X = 0; X <= KinkyDungeonGridWidthDisplay; X++)  {
 					RY = R+CamY;
 					RX = X+CamX;
 
-					let lightColor = KDGetLightColor(RX, RY);
+					let lightColor = allFog ? KDGetLightColorGreyscale(RX, RY) : KDGetLightColor(RX, RY);
 
 					if (KDMapExtraData.VisionGrid[RX + RY*KDMapData.GridWidth] || KDMapData.FogGrid[RX + RY*KDMapData.GridWidth]) {
 						/*kdbrightnessmapGFX.beginFill(lightColor, 1.);

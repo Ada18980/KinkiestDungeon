@@ -141,7 +141,13 @@ function KinkyDungeonSearchSpell(list, name) {
 
 let KDSpellMemo = {};
 
-function KinkyDungeonFindSpell(name, SearchEnemies) {
+/**
+ * 
+ * @param {string} name 
+ * @param {boolean} SearchEnemies 
+ * @returns {spell}
+ */
+function KinkyDungeonFindSpell(name, SearchEnemies = false) {
 	if (KDSpellMemo[name]) return KDSpellMemo[name];
 	if (SearchEnemies) {
 		let spell = KinkyDungeonSearchSpell(KinkyDungeonSpellListEnemies, name);
@@ -444,6 +450,7 @@ function KinkyDungeonClickSpell(i) {
 			KDSendInput("equip", {name: item.name,
 				inventoryVariant: item.name != newItem.name ?
 					item.name : undefined,
+					faction: item.faction,
 				group: newItem.Group, curse: item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.events)});
 		}
 		KinkyDungeonSpellPress = "";
@@ -591,13 +598,13 @@ function KinkyDungeonGetCost(Spell) {
 	return cost + bonus;
 }
 
-function KinkyDungeonMakeNoise(radius, noiseX, noiseY) {
+function KinkyDungeonMakeNoise(radius, noiseX, noiseY, hideShockwave) {
 	let data = {
 		radius: radius,
 		x: noiseX,
 		y: noiseY,
 		enemiesHeard: [],
-		particle: true,
+		particle: !hideShockwave,
 	};
 	KinkyDungeonSendEvent("beforeNoise", data);
 	for (let e of KDMapData.Entities) {
@@ -1505,8 +1512,12 @@ let KDMagicFilter = "";
  */
 function KDFilterSpell(spell) {
 	let prereq = spell ? KinkyDungeonCheckSpellPrerequisite(spell) : false;
-	let prereqHost = spell ? (spell.upcastFrom && KinkyDungeonCheckSpellPrerequisite(KinkyDungeonFindSpell(spell.upcastFrom))) : false;
+	let prereqHost = spell ? prereq ||
+		(spell.upcastFrom && KinkyDungeonCheckSpellPrerequisite(KinkyDungeonFindSpell(spell.upcastFrom))) ||
+		(KDToggles.ShowSameCatSpells && typeof spell.prerequisite == "string" && spell.prerequisite && !KinkyDungeonFindSpell(spell.prerequisite)?.increasingCost && KinkyDungeonCheckSpellPrerequisite(KinkyDungeonFindSpell(spell.prerequisite)))
+		: false;
 	let learned = spell ? KinkyDungeonSpellIndex(spell.name) >= 0 : false;
+	// Youve learned the spell tree
 	let upgrade = spell ? spell.passive : false;
 	let passive = spell ? spell.type == "passive" : false;
 	let upcast = spell ? spell.upcastFrom : false;

@@ -18,6 +18,15 @@ Vague todo:
 TODO add sugar magic ('Blood Energy Magic')
 
 5.0.3
+-Arcane Barrier is now a shield
+-The world is now greyscale if Light Filter is on and time is slowed down. Color briefly resumes on the turn before the world takes a step
+-Enemies cannot dodge while blinded
+-Conjured Armbinders, Straitjackets, and Legbinders are undodgeable and reduce the enemy's ability to block
+-Reduced block amount for higher rank enemies (they reduce less damage per block)
+-Added flash bomb consumable
+-Smoke bomb now can be thrown
+-Flash spells now blind but stun less
+-New fighter spell: Enrage
 -New spell: Liquid Metal
 -Nerfed some of the Block upgrades
 -Changed Secure Defense to give more block at 0 willpower but half at max willpower

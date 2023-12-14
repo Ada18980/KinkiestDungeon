@@ -103,9 +103,9 @@ let KDDialogueTriggers = {
 		undefined, undefined),
 
 	"OfferResin": KDDialogueTriggerOffer("OfferResin", ["Latex", "Prisoner"], ["resinRestraints"],
-		["parole", "", "chase", "jail"],  ["Dom", "Brat", "Sub", ""],
+		["parole", "",],  ["Dom", "Brat", "Sub", ""],
 		["alchemist"], undefined, undefined, ["zombie", "skeleton", "robot"],
-		undefined, undefined),
+		undefined, ["Released"]),
 
 	"OfferScarf": KDDialogueTriggerOffer("OfferScarf", ["Rope"], ["scarfRestraints"],
 		["parole", "", "chase", "jail"],  undefined,

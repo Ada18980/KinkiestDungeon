@@ -14,12 +14,20 @@ let KDLoadouts = {
 		items: ["RedKey"],
 	},
 	"thief": {
-		name: "guard",
+		name: "thief",
 		tags: ["human"],
 		singletag: ["bandit", "bountyhunter"],
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.15,
-		items: ["Pick", "Knife", "DiscPick"],
+		items: ["Pick", "Knife", "DiscPick",],
+	},
+	"thief2": {
+		name: "thief2",
+		tags: ["human"],
+		singletag: ["bandit", "bountyhunter"],
+		forbidtags: ["submissive", "gagged"],
+		chance: 0.15,
+		items: ["Pick", "FlashBomb", "DiscPick",],
 	},
 	"mistress": {
 		name: "mistress",
@@ -51,7 +59,7 @@ let KDLoadouts = {
 		singletag: ["alchemist"],
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.5,
-		items: ["PotionMana"],
+		items: ["PotionMana", "FlashBomb"],
 	},
 	"magus": {
 		name: "magus",
@@ -186,6 +194,14 @@ let KDLoadouts = {
 		chance: 0.15,
 		items: ["AncientPowerSource"],
 	},
+	"nevermere2": {
+		name: "nevermere2",
+		tags: ["nevermere"],
+		singletag: ["trainer", "wolfgirl"],
+		forbidtags: ["submissive", "gagged"],
+		chance: 0.15,
+		items: ["FlashBomb"],
+	},
 	"nevermerespent": {
 		name: "nevermerespent",
 		tags: ["nevermere"],
@@ -248,7 +264,7 @@ let KDLoadouts = {
 		singletag: ["ninja", "maid", "bountyhunter"],
 		forbidtags: [],
 		chance: 0.1,
-		items: ["SmokeBomb", "PotionInvisibility", "DiscPick"],
+		items: ["SmokeBomb", "PotionInvisibility", "DiscPick", "FlashBomb"],
 	},
 	"ninja_II": {
 		name: "ninja_II",
@@ -256,7 +272,7 @@ let KDLoadouts = {
 		singletag: ["ninja", "maid", "bountyhunter"],
 		forbidtags: [],
 		chance: 0.3,
-		items: ["SmokeBomb", "Bola", "DiscPick"],
+		items: ["SmokeBomb", "FlashBomb", "DiscPick"],
 	},
 	"religious": {
 		name: "religious",

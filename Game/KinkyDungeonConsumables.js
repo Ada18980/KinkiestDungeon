@@ -137,6 +137,7 @@ function KinkyDungeonConsumableEffect(Consumable, type) {
 		KDStunTurns(1, true);
 	} else if (type == "targetspell") {
 		KDCloseQuickInv();
+		if (KinkyDungeonDrawState == "Inventory") KinkyDungeonDrawState = "Game";
 		KinkyDungeonTargetingSpell = KinkyDungeonFindSpell(Consumable.spell, true);
 		KinkyDungeonTargetingSpellItem = Consumable;
 	} else if (type == "charge") {

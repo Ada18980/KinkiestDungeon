@@ -2474,7 +2474,7 @@ function KDDrawBuffIcons(minXX, minYY, statsDraw, side) {
 		return (b.priority + KDStatsOrder[b.category]) - (a.priority + KDStatsOrder[a.category]);
 	});
 	let maxXX = minXX + 800;
-	let maxYY = minYY + 200;
+	let maxYY = minYY + 500;
 	let YY = minYY;
 	let textWidth = 44;
 	let XX = minXX;

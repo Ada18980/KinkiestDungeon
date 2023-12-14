@@ -804,10 +804,10 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 	for (let x = 1; x < KDMapData.GridWidth; x += 2) {
 		for (let y = 1; y < KDMapData.GridHeight; y += 2) {
 			let index = "";
-			if (KinkyDungeonMapGet(x, y - 1) == '0' || ((x - 1)/2 == startx && (y - 1 - 1)/2 == starty) || ((y - 1)/2 == topy && (x - 1)/2 == topx)) index = index + "u";
-			if (KinkyDungeonMapGet(x, y + 1) == '0' || ((x - 1)/2 == startx && (y - 1 + 1)/2 == starty) || ((y - 1)/2 == boty && (x - 1)/2 == botx)) index = index + "d";
-			if (KinkyDungeonMapGet(x - 1, y) == '0' || ((x - 1 - 1)/2 == startx && (y - 1)/2 == starty) || ((x - 1)/2 == startx && (y - 1)/2 == starty)) index = index + "l";
-			if (KinkyDungeonMapGet(x + 1, y) == '0' || ((x - 1 + 1)/2 == startx && (y - 1)/2 == starty) || ((x - 1)/2 == endx && (y - 1)/2 == endy)) index = index + "r";
+			if (KinkyDungeonMapGet(x, y - 1) == '0' || ((x - 1)/2 == startx && (y - 1)/2 - 1 == starty) || ((y - 1)/2 == topy && (x - 1)/2 == topx) || ((x - 1)/2 == startx && (y - 1)/2 == starty)) index = index + "u";
+			if (KinkyDungeonMapGet(x, y + 1) == '0' || ((x - 1)/2 == startx && (y - 1)/2 + 1 == starty) || ((y - 1)/2 == boty && (x - 1)/2 == botx) || ((x - 1)/2 == startx && (y - 1)/2 == starty)) index = index + "d";
+			if (KinkyDungeonMapGet(x - 1, y) == '0' || ((x - 1)/2 - 1 == startx && (y - 1)/2 == starty) || ((x - 1)/2 == startx && (y - 1)/2 == starty)) index = index + "l";
+			if (KinkyDungeonMapGet(x + 1, y) == '0' || ((x - 1)/2 + 1 == startx && (y - 1)/2 == starty) || ((x - 1)/2 == endx && (y - 1)/2 == endy) || ((x - 1)/2 == startx && (y - 1)/2 == starty)) index = index + "r";
 			indices[(1 + (x - 1)/2) + "," + (1 + (y - 1)/2)] = index;
 		}
 	}

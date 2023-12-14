@@ -916,6 +916,28 @@ let KDDialogue = {
 					},
 				}
 			},
+			"FlashBomb": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					let amount = KinkyDungeonInventoryGetConsumable("Gunpowder")?.quantity;
+					let amount2 = KinkyDungeonInventoryGetConsumable("Gunpowder")?.quantity;
+					if (amount >= 1 && amount2 >= 1) {
+						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("Gunpowder"), -1);
+						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("AncientPowerSource"), -1);
+						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("FlashBomb"), 3);
+					} else {
+						KDGameData.CurrentDialogMsg = "ToolsOfTheTradeFail";
+					}
+					KDGameData.CurrentDialogStage = "";
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
 			"Bomb": {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
@@ -3461,13 +3483,13 @@ let KDDialogue = {
 		["ScrollArms", "ScrollVerbal", "ScrollLegs"]),
 	"WolfgirlSell": KDShopDialogue("WolfgirlSell", ["MistressKey", "ManaOrb", "AncientPowerSource", "AncientPowerSourceSpent", "EnchantedGrinder"], [], ["trainer", "alchemist", "human"], 0.2,
 		["AncientPowerSource", "AncientPowerSourceSpent", "AncientPowerSourceSpent"]),
-	"NinjaSell": KDShopDialogue("NinjaSell", ["SmokeBomb", "Bola", "Bomb", "PotionInvisibility"], [], ["ninja", "bountyhunter"], 0.2,
+	"NinjaSell": KDShopDialogue("NinjaSell", ["SmokeBomb", "FlashBomb", "Bola", "Bomb", "PotionInvisibility"], [], ["ninja", "bountyhunter"], 0.2,
 		["SmokeBomb", "Bola", "Bomb"]),
-	"BombSell": KDShopDialogue("BombSell", ["SmokeBomb", "Gunpowder", "Bomb", "PotionInvisibility"], [], ["miner", "bandit", "gun", "alchemist"], 0.4,
+	"BombSell": KDShopDialogue("BombSell", ["SmokeBomb", "FlashBomb", "Gunpowder", "Bomb", "PotionInvisibility"], [], ["miner", "bandit", "gun", "alchemist"], 0.4,
 		["Bomb", "Bomb", "Bomb"]),
 	"CookieSell": KDShopDialogue("CookieSell", ["Cookie", "Brownies", "Donut", "CookieJailer", "DivineTear"], [], ["human"], 0.14,
 		["Cookie", "Brownies", "Donut"]),
-	"ThiefSell": KDShopDialogue("ThiefSell", ["DiscPick", "CuffKeys", "Bomb", "SmokeBomb"], [], ["human"], 0.1,
+	"ThiefSell": KDShopDialogue("ThiefSell", ["DiscPick", "CuffKeys", "Bomb", "FlashBomb", "SmokeBomb"], [], ["human"], 0.1,
 		["DiscPick", "CuffKeys"]),
 	"GunSell": KDShopDialogue("GunSell", ["Blaster", "EscortDrone", "Gunpowder", "CrossbowHeavy", "CrossbowPistol", "Crossbow"], [], ["maid", "bandit", "gun", "bountyhunter"], 0.33,
 		["CrossbowPistol", "Gunpowder"]),

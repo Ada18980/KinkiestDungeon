@@ -720,7 +720,12 @@ let KDEffectTileFunctions = {
 		if (tile.pauseDuration > 0) {
 			// Meep
 		} else {
-			let result = false;
+			let result = (entity.player && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") >= 0.45))
+			|| (!entity.player && !entity.Enemy.tags?.metal);
+			let slimeWalker = entity.player && KDSlimeWalker(entity);
+			if (!slimeWalker) {
+				result = true;
+			}
 			// Liquid Metal also constantly applies binding
 			if (result || KDEntityBuffedStat(entity, "SlimeProgress")) {
 				if (entity.player) {
@@ -855,6 +860,12 @@ let KDEffectTileCreateFunctionsCreator = {
 	},
 	"Latex": (newTile, existingTile) => {
 		if (existingTile.tags.includes("slime")) {
+			existingTile.duration = 0;
+		}
+		return true;
+	},
+	"LiquidMetal": (newTile, existingTile) => {
+		if (existingTile.tags.includes("slime") || existingTile.tags.includes("latex")) {
 			existingTile.duration = 0;
 		}
 		return true;

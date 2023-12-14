@@ -417,7 +417,7 @@ function KDBulletAlreadyHit(bullet, entity, suppressAdd) {
 	return false;
 }
 
-function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
+function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg) {
 	if (bullet && !noAlreadyHit) {
 		if (KDBulletAlreadyHit(bullet, KinkyDungeonPlayerEntity)) return {happened: 0, string: ""};
 	}
@@ -509,9 +509,14 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 		let amt = data.dmg;
 		
 		data.dmg -= KDGameData.Shield;
-		if (data.dmg < 0) data.dmg = 0;
+		if (!noMsg) {
+			KinkyDungeonSendTextMessage(6, TextGet("KDShieldAbsorb").replace("AMNT", "" + Math.round(10 * (amt - Math.max(0, data.dmg)))), "#92e8c0", 1);
+			KDDamageQueue.push({floater: Math.round((amt - Math.max(0, data.dmg))*10) + ` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[data.type].name)} ${TextGet("KDdmg")}`,
+				Entity: KinkyDungeonPlayerEntity, Color: "#92e8c0", Delay: 0, });
+		}
 		
-		KDDamagePlayerShield(amt);
+		KDDamagePlayerShield(Math.max(0, Math.min(KDGameData.Shield, amt - Math.max(0, data.dmg))));
+		if (data.dmg < 0) data.dmg = 0;
 	}
 	
 
