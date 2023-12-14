@@ -14508,6 +14508,101 @@ I don't care what happens to you as long as you're out of here.
 Get out of my library!
 从我的图书馆滚出去！
 
+No! I didn't do anything wrong...
+不！我没有做错什么...
+Don't punish me! Please!
+别惩罚我！求你了！
+It's not my fault!
+这不是我的错！
+It's your turn, dear~
+轮到你了，亲爱的~
+Looks like I'm the patient now~
+看来我现在是病人了~
+I've been an unruly nurse...
+我曾经是一个不守规矩的护士...
+It's time for your shot...
+是时候开枪了...
+Why are you out of your cell?
+你为什么离开牢房？
+You need my help!
+你需要我的帮助！
+Those are supposed to keep you still you know...
+你知道的，这些应该能让你安静下来......
+You've got an appointment scheduled.
+你已经预约好了。
+Lets get you back in your jacket~
+穿上你的拘束衣吧~
+Patients are not allowed to have toys.
+患者不允许拥有玩具。
+Oh no you don't, sweetie!
+哦不，你不知道，亲爱的！
+Oh my~
+天哪~
+Oof! Looks like you need to be taught a lesson!
+哎哟！看来你需要被教训一下！
+You can be cured if you just give up.
+只要你放弃，你就会被治愈。
+You're going to ruin your progress~
+你会毁掉你的进度的~
+Oh my, that's dangerous!
+天哪，这很危险！
+Patients are forbidden from casting spells!
+病人不允许施展法术！
+Keep those pretty hands to yourself, dear~
+把那双漂亮的手留给自己吧，亲爱的~
+Where'd you find that, dear?
+你在哪里找到的，亲爱的？
+Silly girl, your illness can't be cured by a prayer.
+傻姑娘，你的病不是靠祈祷就能痊愈的。
+That's not yours, sweetie~
+那不是你的，甜心~
+You shouldn't break things, you know~
+你不应该破坏东西，你知道的~
+I knew something was amiss!
+我知道出事了！
+You won't be getting away that easily, dear~
+亲爱的，你不会那么轻易逃脱的~
+Won't be needing this~
+不需要这个~
+Hey, who said you could do that!
+嘿，谁说你可以这么做的！
+I'm so excited!
+我太激动了！
+A slippery one, aren't you?
+你真是个狡猾的人，不是吗？
+Now now, you can't just resist like that~
+现在，你不能反抗了~
+Tsk tsk. You can do better, dear~
+啧啧。亲爱的，你可以做得更好~
+Lets get you back to your cell!
+让我们带你回到你的牢房！
+So nice of you to join me!
+很高兴你能加入我！
+Now let's see, good patients should be still...
+现在我们看看，我们的好病人应该还……在
+A gift? Thank you so much!
+一份礼物？非常感谢！
+You won't be getting out of that any time soon!
+你短期内无法摆脱这种困境！
+Nurse PTRN, reporting for duty!
+护士 PTRN，报到啦！
+Someone call security!
+有人叫保安！
+I will try to subdue them~
+我会努力制服他们的~
+Code Gray!
+格雷码！
+Hold her down! I'll get the jacket!
+按住她！我去拿拘束衣！
+Moving in to support!
+去提供帮助！
+Let's mediate things, shall we?
+让我们调解一下，好吗？
+Why don't you calm down so we can talk. Or not~
+你为什么不冷静下来，这样我们就可以谈谈了。或者你不愿意~
+Now now, what do we have here?
+现在，我们有什么？
+
 Got you!
 抓住你了！
 Get over here!
