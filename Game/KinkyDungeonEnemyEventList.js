@@ -55,6 +55,8 @@ let KDIntentEvents = {
 				if (enemy.playWithPlayer < 10) {
 					enemy.playWithPlayer = 10;
 					KDSetPlayCD(enemy, 2.5);
+					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
+					KinkyDungeonSetEnemyFlag(enemy, "seePlayer", 2);
 				}// else enemy.playWithPlayer += delta;
 			}
 			return false;
@@ -122,9 +124,11 @@ let KDIntentEvents = {
 				} else {
 					enemy.gx = KinkyDungeonPlayerEntity.x;
 					enemy.gy = KinkyDungeonPlayerEntity.y;
+					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
 				}
 				if (enemy.playWithPlayer > 0)
 					enemy.playWithPlayer = 12;
+				KinkyDungeonSetEnemyFlag(enemy, "seePlayer", 4);
 				return true;
 			}
 			return false;

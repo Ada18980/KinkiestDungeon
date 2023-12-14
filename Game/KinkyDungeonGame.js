@@ -2785,7 +2785,7 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 					let dropped = {x:trap.x, y:trap.y, name: "Gold", amount: 1};
 					KDMapData.GroundItems.push(dropped);
 				}
-				let spell = t.Spell ? KinkyDungeonFindSpell(t.Spell, true) : "";
+				let spell = t.Spell ? KinkyDungeonFindSpell(t.Spell, true) : null;
 				if (spell && !spell.nonmagical) {
 					KDCreateEffectTile(trap.x, trap.y, {
 						name: "RunesTrap",

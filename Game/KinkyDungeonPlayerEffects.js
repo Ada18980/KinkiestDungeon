@@ -1805,9 +1805,9 @@ function KDAdvanceSlime(resetSlimeLevel, restraint = "") {
 // @ts-ignore
 if (!String.prototype.KDReplaceOrAddDmg) {
 	// @ts-ignore
-    String.prototype.KDReplaceOrAddDmg = function(dmg, replaceString = "DamageTaken") {
-        if (this.includes("DamageTaken")) return this.replace(replaceString, dmg);
-        if (this.includes("DamageDealt")) return this.replace(replaceString, dmg);
+    String.prototype.KDReplaceOrAddDmg = function(dmg, replaceString = "DamageTaken", replaceString2 = "DamageDealt") {
+        if (this.includes(replaceString)) return this.replace(replaceString, dmg);
+        if (this.includes(replaceString2)) return this.replace(replaceString2, dmg);
         return this + ` (${dmg})`;
     };
 }

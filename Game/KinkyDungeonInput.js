@@ -720,6 +720,12 @@ function KDProcessInput(type, data) {
 								}
 							}
 						}
+						if (spell.learnFlags) {
+							for (let sp of spell.learnFlags) {
+								KinkyDungeonFlags.set(sp, -1);
+							}
+						}
+						
 						if (spell.learnPage) {
 							for (let sp of spell.learnPage) {
 								KDAddSpellPage(sp);

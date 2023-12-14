@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.3 (E)"
+KDVersionStr,"5.0.3 (F)"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -73,6 +73,7 @@ KDToggleCenter,UI: Center Player
 KDToggleBuffSide,UI: Draw Buffs on Side
 KDToggleShowPath,UI: Show Trajectory on Auto-Path
 KDToggleShowFacing,UI: Show Player Facing
+KDToggleShowSameCatSpells,UI: Show more learnable spells
 KinkyDungeonFastWait,Wait Quickly
 
 
@@ -1194,9 +1195,15 @@ KinkyDungeonInventoryItemPotionFrigidUse,"You chug the concoction and your sense
 KinkyDungeonInventoryItemPotionFrigidDesc,"Like bottled snow. Helps to get your mind on track."
 KinkyDungeonInventoryItemPotionFrigidDesc2,"Reduces distraction to 0 and grants additional decay for 50 turns. Can be used while gagged."
 KinkyDungeonInventoryItemSmokeBomb,Smoke Bomb
-KinkyDungeonInventoryItemSmokeBombUse,You toss the smoke bomb and it explodes in your location!
-KinkyDungeonInventoryItemSmokeBombDesc,"A type of pyrotechnic often employed by saboteurs. Can be used without hands."
+KinkyDungeonSpellCastSmokeBomb,You toss the smoke bomb and it starts emitting a deep haze!
+KinkyDungeonInventoryItemSmokeBombUse,You ready a smoke bomb...
+KinkyDungeonInventoryItemSmokeBombDesc,"A type of pyrotechnic often employed by saboteurs. Can be rolled and used without hands."
 KinkyDungeonInventoryItemSmokeBombDesc2,"Creates a smoke screen lasting 8 turns. You are harder to see while inside the smoke."
+KinkyDungeonInventoryItemFlashBomb,Flash Bomb
+KinkyDungeonSpellCastFlashBomb,You toss the flash bomb and the fuse starts ticking...
+KinkyDungeonInventoryItemFlashBombUse,You ready a smoke bomb...
+KinkyDungeonInventoryItemFlashBombDesc,"A type of explosive used by agents. Blinds nearby targets without causing significant injury."
+KinkyDungeonInventoryItemFlashBombDesc2,"Blinds for 20 turns in a 3x3 area."
 KinkyDungeonInventoryItemPotionInvisibility,Invisibility Potion
 KinkyDungeonInventoryItemPotionInvisibilityUse,You chug the concoction and see your body fading away.
 KinkyDungeonInventoryItemPotionInvisibilityDesc,"You feel liquid inside, but you can't see it!"
@@ -2230,6 +2237,12 @@ KillVinePlant,"The plant leaks purple juices everywhere as it wilts."
 AttackVinePlant,"The vine plant whips you with its tendrils! (DamageTaken)"
 AttackVinePlantBind,"The vine plant wraps its tendrils around you! (+RestraintAdded)"
 AttackVinePlantStun,"The vine plant grips you tightly! (DamageTaken)"
+
+NameVineSpitter,Vine Spitter
+KillVineSpitter,"The vine spitter leaks purple juices everywhere as it wilts."
+AttackVineSpitter,"The vine spitter slaps you with its tendrils! (DamageTaken)"
+AttackVineSpitterBind,"The vine spitter wraps its tendrils around you! (+RestraintAdded)"
+AttackVineSpitterStun,"The vine spitter grips you tightly! (DamageTaken)"
 
 NameBramble,Bramble
 KillBramble,"The brambles are hacked away."
@@ -5425,7 +5438,7 @@ KinkyDungeonSpellEnemyCorona,Binding Light
 KinkyDungeonSpellEnemyCoronaBeam,Binding Light
 KinkyDungeonSpellMonolithBeamBeam,Chaos Beam
 KinkyDungeonSpellClericBeamBeam,Mystic Beam
-KinkyDungeonSpellDescriptionCorona,A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt holy damage to the first target hit. 150% crit multiplier.
+KinkyDungeonSpellDescriptionCorona,A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt holy damage to the first target hit. Blinds for 12 turns. 150% crit multiplier.
 KinkyDungeonSpellCastCorona,You charge a powerful beam attack!!!
 KinkyDungeonSpellTargetCorona,Choose line direction
 
@@ -5755,6 +5768,7 @@ KinkyDungeonSpellTargetDisplayStand,Choose a helpless target
 KinkyDungeonSpellFlash,Lesser Flash
 KinkyDungeonSpellRing,Ring
 KinkyDungeonSpellFlashBomb,Flash Bomb
+KinkyDungeonSpellSmokeBomb,Smoke Bomb
 KinkyDungeonSpellEnemyFlash,Sparkles!
 KinkyDungeonSpellMirrorImage,Mirror Image
 KinkyDungeonSpellCastMirrorImage,""
@@ -6247,7 +6261,7 @@ KinkyDungeonGagMumbleAroused6,Mmmmm~~
 KinkyDungeonGagMumbleAroused7,Mmmmmm~~~
 
 KinkyDungeonBlindSelf,"You are blinded!"
-KinkyDungeonDamageSelf,"You took DamageDealt damage!"
+KinkyDungeonDamageSelf,"You took DamageTaken damage!"
 KinkyDungeonSlime,"You get caught in sticky slime!"
 KinkyDungeonMiniSlime,"The slime ball sticks to you!"
 KinkyDungeonMiniSlime2,"The slime ball sticks to you and slows you!"
@@ -10710,6 +10724,7 @@ rWolfgirlSellManaOrb,"(The SPEAKER nods)|A rare find!"
 rNinjaSell,"(The SPEAKER surprises you)|Greetings, traveler.|I am looking for tools to aid in my mission."
 rNinjaSellAttack,"(The SPEAKER doesn't look surprised)|That's how it is, then."
 rNinjaSellSmokeBomb,"(The SPEAKER bows)|Always be prepared."
+rNinjaSellFlashBomb,"(The SPEAKER bows)|Always be prepared."
 rNinjaSellBomb,"(The SPEAKER bows)|A bit dangerous, but I'll take it."
 rNinjaSellBola,"(The SPEAKER bows)|A tool of the trade."
 rNinjaSellPotionInvisibility,"(The SPEAKER bows)|A most valuable find."
@@ -10726,6 +10741,7 @@ rGunSellGunpowder,"(The SPEAKER nods)|Yeah... that'll do."
 rBombSell,"(The SPEAKER looks somewhat crazed)|I'm looking for some heavy ordnance in order to...|...add to my collection.|Anyway, got any bombs?"
 rBombSellAttack,"(The SPEAKER reaches for her backpack)|I'll blow you away!"
 rBombSellSmokeBomb,"(The SPEAKER shrugs)|Cute fireworks, I suppose..."
+rBombSellFlashBomb,"(The SPEAKER shrugs)|Cute fireworks, I suppose..."
 rBombSellBomb,"(The SPEAKER rubs her hands together)|Excellent..."
 rBombSellGunpowder,"(The SPEAKER smiles)|Yes! I can make more bombs!"
 
@@ -10735,6 +10751,7 @@ rThiefSellCuffKeys,"(The SPEAKER nods)|Could help out in a bind."
 rThiefSellDiscPick,"(The SPEAKER nods)|I could use one of these!"
 rThiefSellBomb,"(The SPEAKER smiles)|For when things go south..."
 rThiefSellSmokeBomb,"(The SPEAKER smiles)|For when things go south..."
+rThiefSellFlashBomb,"(The SPEAKER smiles)|For when things go south..."
 
 rCookieSell,"(A distracted SPEAKER munches on a cookie)"
 rCookieSellAttack,"(The SPEAKER continues eating her snack)"
@@ -15120,7 +15137,7 @@ KDBattleRhythm,Rhythm
 KDBattleRhythmDodge,You avoid the attack in a flurry of impressive maneuvers!
 
 KinkyDungeonSpellArcaneBarrier,Arcane Barrier
-KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 100% Max Mana."
+KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 50% Max Mana."
 
 KinkyDungeonBuffHighValueFound,You sense that a high value target is near.
 
@@ -15129,6 +15146,8 @@ KDLimitSurge_Fail,You try to push yourself beyond your capabilities and falter..
 KDLimitSurge_No,You are already at max stamina.
 
 
+KinkyDungeonSpellRogueStudy,Did the Research
+KinkyDungeonSpellDescriptionRogueStudy,"Unlocks advanced tooltips for enemies showing their weaknesses. Also improves hearing by a small amount."
 
 KinkyDungeonSpellRogueTraps2,Well-Placed Traps
 KinkyDungeonSpellDescriptionRogueTraps2,"Trap spells always critically strike."
@@ -15334,14 +15353,16 @@ KDChargeFail_NoSpace,There is no room to dash!
 KDChargeFail_AttackMiss,You missed!
 
 KinkyDungeonSpellToolsOfTheTrade,"Tools of the Trade"
-KinkyDungeonSpellDescriptionToolsOfTheTrade,"Allows you to craft bombs, smoke bombs, and invisibility potions."
+KinkyDungeonSpellDescriptionToolsOfTheTrade,"Allows you to craft bombs, smoke bombs, flash bombs, and invisibility potions."
 
 rToolsOfTheTrade,"(You start having crafty thoughts...)|(Gunpowder can be obtained from chests or Alchemists)|(Ectoplasm can be obtained from ghosts)"
 rToolsOfTheTradeSmokeBomb,"(You craft a Smoke Bomb)"
+rToolsOfTheTradeFlashBomb,"(You craft 3 Flash Bombs)"
 rToolsOfTheTradeBomb,"(You craft a Bomb)"
 rToolsOfTheTradePotionInvisibility,"(You craft an Invisibility Potion)"
 rToolsOfTheTradeFail,"(You don't have the required material)"
 dToolsOfTheTrade_SmokeBomb,(Use 1 Gunpowder to make a Smoke Bomb)
+dToolsOfTheTrade_FlashBomb,(Use 1 Gunpowder and one Ancient Crystal to make 3 Smoke Bombs)
 dToolsOfTheTrade_Bomb,(Use 2 Gunpowder to make a Bomb)
 dToolsOfTheTrade_PotionInvisibility,(Use 3 Ectoplasm to make an Invisibility Potion)
 

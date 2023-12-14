@@ -117,6 +117,7 @@ let KinkyDungeonPlayerDamage = KinkyDungeonPlayerDamageDefault;
 
 let KinkyDungeonDamageTypes = {
 	heal: {name: "heal", color: "#88ff88", bg: "black", harmless: true},
+	holy: {name: "holy", color: "#ffff88", bg: "black"},
 	acid: {name: "acid", color: "#c8d45d", bg: "black"},
 	cold: {name: "cold", color: "#554bd4", bg: "black"},
 	arcane: {name: "arcane", color: "#ff5277", bg: "black"},
@@ -556,7 +557,7 @@ function KinkyDungeonEvasion(Enemy, IsSpell, IsMagic, Attacker) {
 		KinkyDungeonAggro(Enemy, undefined, Attacker);
 		// Smart enemies wont even try if they cant dodge it. Dumb enemies will
 		if (Enemy.dodges > 0 && (Enemy.dodges >= hitChance || KDRandom() < 1 - 0.2 * KDEnemyRank(Enemy))) {
-			if (Enemy?.Enemy.preferDodge || Enemy.hp < 0.55 * Enemy.Enemy.maxhp || Enemy.blocks < 1 || !KDCanBlock(Enemy) || (!Enemy.Enemy.preferBlock && KDRandom() < 0.2)) {
+			if (Enemy?.Enemy.preferDodge || Enemy.hp < 0.35 * Enemy.Enemy.maxhp || ((Enemy.blocks < 1 || !KDCanBlock(Enemy)) && Enemy.hp < 0.65 * Enemy.Enemy.maxhp) || (!Enemy.Enemy.preferBlock && (Enemy.Enemy.hp < 0.8 * Enemy.Enemy.maxhp ? KDRandom() < 0.75 : KDRandom() < 0.33))) {
 				while (Enemy?.dodges > 0 && KDCanDodge(Enemy) && hitChance > 0) {
 					hitChance -= 1;
 					// The way this works:
@@ -972,7 +973,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			if (Damage && Damage.damage) {
 				if (predata.faction == "Player" || KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0) {
 					if (predata.critical && !predata.customCrit) KDDamageQueue.push({floater: TextGet("KDCritical"), Entity: Enemy, Color: "#ffff00", Delay: Delay});
-					KDDamageQueue.push({floater: Math.round(predata.dmgDealt*10) + ` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[predata.type].name)} ${TextGet("KDdmg")}`,
+					KDDamageQueue.push({floater: Math.round(predata.dmgDealt*10) + ` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[predata.type]?.name)} ${TextGet("KDdmg")}`,
 						Entity: Enemy, Color: "#ff4444", Delay: Delay, });
 				}
 				//KinkyDungeonSendFloater(Enemy, Math.round(Math.min(predata.dmgDealt, Enemy.hp)*10), "#ff4444");
@@ -1301,7 +1302,7 @@ function KinkyDungeonDisarm(Enemy, suff) {
 		}
 
 		if (foundslot) {
-			let weapon = KinkyDungeonPlayerDamage.name;
+			let weapon = KinkyDungeonPlayerDamage?.name;
 
 			let dropped = {x:foundslot.x, y:foundslot.y, name: weapon};
 
@@ -2571,16 +2572,29 @@ function KDApplyGenBuffs(entity, buff, time) {
 }
 
 function KDSilenceEnemy(enemy, time) {
-	if (!enemy.silence) enemy.silence = 0;
-	enemy.silence = Math.max(time, enemy.silence);
+	if (!enemy.Enemy?.tags?.silenceimmune) {
+		if (enemy.Enemy?.tags?.silenceresist) time /= 2;
+		else if (enemy.Enemy?.tags?.silenceweakness) time *= 2;
+		if (!enemy.silence) enemy.silence = 0;
+		enemy.silence = Math.max(time, enemy.silence);
+	}
 }
 function KDBlindEnemy(enemy, time) {
-	if (!enemy.blind) enemy.blind = 0;
-	enemy.blind = Math.max(time, enemy.blind);
+	if (!enemy.Enemy?.tags?.blindimmune) {
+		if (enemy.Enemy?.tags?.blindresist) time /= 2;
+		else if (enemy.Enemy?.tags?.blindweakness) time *= 2;
+		if (!enemy.blind) enemy.blind = 0;
+		enemy.blind = Math.max(time, enemy.blind);
+	}
+	
 }
 function KDDisarmEnemy(enemy, time) {
-	if (!enemy.disarm) enemy.disarm = 0;
-	enemy.disarm = Math.max(time, enemy.disarm);
+	if (!enemy.Enemy?.tags?.disarmimmune) {
+		if (enemy.Enemy?.tags?.disarmresist) time /= 2;
+		else if (enemy.Enemy?.tags?.disarmweakness) time *= 2;
+		if (!enemy.disarm) enemy.disarm = 0;
+		enemy.disarm = Math.max(time, enemy.disarm);
+	}
 }
 
 let KDConditions = {

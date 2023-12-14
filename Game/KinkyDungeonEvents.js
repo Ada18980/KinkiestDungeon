@@ -3338,7 +3338,7 @@ let KDEventMapSpell = {
 		
 						if (buff && buff.power > 0 && shieldBuff.power < KinkyDungeonStatManaMax && KDGameData.ShieldDamage < 1) {
 							buff.power = Math.max(0, buff.power - data.delta * .1);
-							shieldBuff.power = Math.min(KinkyDungeonStatManaMax, shieldBuff.power + data.delta*shieldRate);
+							shieldBuff.power = Math.min(KinkyDungeonStatManaMax * (0.5 + 0.5*KDEntityBuffedStat(player, "ArcaneBarrierShield")), shieldBuff.power + data.delta*shieldRate);
 							if (buff.power <= 0) buff.duration = 0;
 							buff.text = Math.round(10 * KDEntityBuffedStat(player, "ArcaneEnergy"));
 						}

@@ -1696,8 +1696,6 @@ interface spell {
 	hideWarnings?: boolean,
 	/** This spell does leave a warning to the player */
 	alwaysWarn?:boolean,
-	/** Marks a spell as non-magical, so traps dont leave a rune on the ground */
-	nonmagical?: boolean,
 	/** Marks the spell as a command word spell to enemies */
 	commandword?: boolean,
 	/** The spell is used to buff allies */
@@ -1763,6 +1761,8 @@ interface spell {
 
 	distractEff?: number,
 	bindEff?: number,
+
+	nonmagical?: boolean,
 
 	damageFlags?: string[],
 	/** Wont spawn a trail on the player, ever */
@@ -1841,6 +1841,8 @@ interface spell {
 	chargecost?: number;
 	minRange?: number;
 	noSprite?: boolean;
+	/** Learn these flags permanently */
+	learnFlags?: string[],
 	/** Increases the more you do */
 	increasingCost?: boolean,
 	/** Specific to a class */

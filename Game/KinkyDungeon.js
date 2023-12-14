@@ -157,6 +157,7 @@ let KDToggles = {
 	BuffSide: true,
 	ShowPath: true,
 	ShowFacing: false,
+	ShowSameCatSpells: true,
 };
 
 let KDDefaultKB = {

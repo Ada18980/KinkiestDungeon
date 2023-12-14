@@ -472,6 +472,14 @@
 	"spriteSourceSize": {"x":67,"y":69,"w":83,"h":79},
 	"sourceSize": {"w":216,"h":216}
 },
+"Game/Bullets/EnemyFlashBombHit.png":
+{
+	"frame": {"x":1,"y":1247,"w":216,"h":216},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":216,"h":216},
+	"sourceSize": {"w":216,"h":216}
+},
 "Game/Bullets/EnemyFlashHit.png":
 {
 	"frame": {"x":1495,"y":1465,"w":215,"h":205},
@@ -498,7 +506,7 @@
 },
 "Game/Bullets/FireblastHit.png":
 {
-	"frame": {"x":1,"y":1247,"w":216,"h":216},
+	"frame": {"x":219,"y":1244,"w":216,"h":216},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":216,"h":216},
@@ -522,7 +530,7 @@
 },
 "Game/Bullets/FirecrackerHit.png":
 {
-	"frame": {"x":219,"y":1244,"w":216,"h":216},
+	"frame": {"x":437,"y":1244,"w":216,"h":216},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":216,"h":216},
@@ -538,7 +546,7 @@
 },
 "Game/Bullets/FlameRuneStrikeHit.png":
 {
-	"frame": {"x":437,"y":1244,"w":216,"h":216},
+	"frame": {"x":219,"y":1462,"w":216,"h":216},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":216,"h":216},
@@ -554,7 +562,7 @@
 },
 "Game/Bullets/FlashBombHit.png":
 {
-	"frame": {"x":219,"y":1462,"w":216,"h":216},
+	"frame": {"x":1,"y":1247,"w":216,"h":216},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":216,"h":216},
@@ -1504,6 +1512,14 @@
 	"spriteSourceSize": {"x":0,"y":22,"w":67,"h":29},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Items/FlashBomb.png":
+{
+	"frame": {"x":2007,"y":636,"w":40,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":13,"w":40,"h":43},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Items/Group/ItemMouth.png":
 {
 	"frame": {"x":335,"y":2031,"w":30,"h":14},
@@ -1888,6 +1904,14 @@
 	"spriteSourceSize": {"x":27,"y":29,"w":17,"h":42},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Spells/FlashBomb.png":
+{
+	"frame": {"x":2007,"y":636,"w":40,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":13,"w":40,"h":43},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Spells/Icebolt.png":
 {
 	"frame": {"x":1920,"y":307,"w":72,"h":40},
@@ -1951,14 +1975,6 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":9,"y":8,"w":19,"h":16},
 	"sourceSize": {"w":30,"h":30}
-},
-"Game/UI/Help.png":
-{
-	"frame": {"x":2007,"y":636,"w":38,"h":42},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":11,"y":9,"w":38,"h":42},
-	"sourceSize": {"w":60,"h":60}
 },
 "Game/UI/key.png":
 {
@@ -2032,6 +2048,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game2.json", "game3.json", "game4.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:20fedc6f27a4eb0904d2264b730075a8:8c7c36537610c0591313b37ca84fa08f:701e665c5fc69e47e58c28f8fa547b2b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:53527658533f186cd7bcfdcf6618a1f4:5380d2148f86b6a4a626e3ccce3362a2:701e665c5fc69e47e58c28f8fa547b2b$"
 }
 }

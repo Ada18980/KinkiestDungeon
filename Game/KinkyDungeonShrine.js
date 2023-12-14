@@ -729,11 +729,11 @@ function KinkyDungeonTakeOrb(Amount, X, Y) {
 }
 function KinkyDungeonDrawOrb() {
 	let tile = KinkyDungeonTilesGet(KDOrbX + "," + KDOrbY);
-	let spell = tile?.Spell ? KinkyDungeonFindSpell(tile.Spell) : "";
+	let spell = tile?.Spell ? KinkyDungeonFindSpell(tile.Spell) : null;
 	DrawTextKD(TextGet("KinkyDungeonOrbIntro" + (KinkyDungeonStatsChoice.get("randomMode") ? (
 		(!spell || KDHasSpell(spell.name)) ? "KinkyRandom" : "Kinky") : ""))
-		.replace("SHCL", TextGet("KinkyDungeonSpellsSchool" + spell.school))
-		.replace("SPLNME", TextGet("KinkyDungeonSpell" + spell.name))
+		.replace("SHCL", TextGet("KinkyDungeonSpellsSchool" + spell?.school))
+		.replace("SPLNME", TextGet("KinkyDungeonSpell" + spell?.name))
 	, 1250, 150, "#ffffff", KDTextGray2);
 	DrawTextKD(TextGet("KinkyDungeonOrbIntro2"), 1250, 200, "#ffffff", KDTextGray2);
 	let i = 0;
