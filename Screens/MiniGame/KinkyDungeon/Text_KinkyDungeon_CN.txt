@@ -209,7 +209,7 @@ Having 10+ spare points will trigger Hard Mode, granting unique loot.
  (HARD MODE ENABLED)
 (困难模式已启用)
 Advanced start (choose perks)
-高级启动（选择额外选项）
+高级启动（选择额外技能）
 Confirm and start playing!
 确认并开始游戏！
 
@@ -230,7 +230,7 @@ Much Less
 No pain, no gain.
 一份耕耘，一份收获。
 Gain 10 extra perks, to give you a false sense of security.
-获得 10 项额外技能，给你一种虚假的安全感。
+获得 10 项额外技能点，给你一种虚假的安全感。
 Lose 10 perk points, just to keep things interesting.
 失去 10 个技能点，只是为了让事情保持有趣的感觉。
 Lose 25 perk points, making things very interesting.
@@ -13520,7 +13520,7 @@ Start Playing
 Lock your settings in, nice and tight.
 锁定你的设置，又好又紧。
 Choose some perks to spice up your run.
-选择一些额外选项，为你的游玩增添趣味。
+选择一些额外技能，为你的游玩增添趣味。
 This game engages in safe and consensual analytics.
 该游戏涉及安全和自愿的数据分析。
 It sends data about spell choices, levels reached, etc, to help balance and improve the game.
