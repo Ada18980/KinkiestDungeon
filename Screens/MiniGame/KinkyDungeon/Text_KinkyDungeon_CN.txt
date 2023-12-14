@@ -1356,19 +1356,19 @@ Fighter
 Your training has given you access to the powers of the Fighter class.
 你的训练使你能够获得战士职业的能力。
 Start with 200 willpower and Iron Will, good at melee and blocking attacks.
-从200点意志力和钢铁意志开始，擅长近战和阻挡攻击。
+开局时意志力上限为200点，获得技能“钢铁意志”，擅长近战和格挡攻击。
 Rogue
 流氓
 Your training has given you access to the powers of the Rogue class.
 你的训练使你能够获得流氓职业的能力。
 Start with 200 stamina and Sneaky, good at stealth and evasive gameplay.
-从200点体力和潜行开始，擅长潜行和躲避游戏。
+开局时体力上限为200点，获得技能“影于暗处”，擅长隐身和躲避。
 Wizard
 法师
 Your training has given you access to the powers of the Wizard class.
 你的训练使你能够获得法师职业的能力。
 Start with 200 mana and Magical Sight, good at casting spells.
-从200点法力和魔之眼开始，擅长施法。
+开局时魔力上限为200点，获得技能“魔之眼”，擅长施放法术。
 Peasant
 农民
 You possess the agricultural mastery of the Peasant class.
@@ -12765,7 +12765,7 @@ Wizard
 Peasant
 普通人
 Start with nothing to your name. For those who want a challenge.
-从你的名字开始。对于那些想要挑战的人。
+从零开始，一无所有。对于那些想要挑战的人。
 Trainee
 练习生
 Spell Choice:
