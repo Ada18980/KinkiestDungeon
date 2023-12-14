@@ -124,6 +124,8 @@ UI: Show Trajectory on Auto-Path
 UI：自动路径显示轨迹
 UI: Show Player Facing
 UI：显示玩家面向
+UI: Show more learnable spells
+UI：显示更多可学习的法术
 Wait Quickly
 快速等待
 
@@ -2332,6 +2334,31 @@ There is no room to dash!
 You missed!
 你偏了！
 
+Tools of the Trade
+贸易工具
+Allows you to craft bombs, smoke bombs, flash bombs, and invisibility potions.
+允许你制作炸弹、烟雾弹、闪光弹和隐形药水。
+(You start having crafty thoughts...)|(Gunpowder can be obtained from chests or Alchemists)|(Ectoplasm can be obtained from ghosts)
+（你开始有了制造的想法...）|（火药可以从箱子或炼金术士那里获得）|（灵质可以从幽灵那里获得）
+(You craft a Smoke Bomb)
+（你制作了烟雾弹）
+(You craft 3 Flash Bombs)
+（你制作了 3 个闪光弹）
+(You craft a Bomb)
+（你制作了一个炸弹）
+(You craft an Invisibility Potion)
+（你制作了一瓶隐形药水）
+(You don't have the required material)
+（你没有所需的材料）
+(Use 1 Gunpowder to make a Smoke Bomb)
+(使用 1 个火药制作烟雾弹)
+(Use 1 Gunpowder and one Ancient Crystal to make 3 Smoke Bombs)
+(使用 1 个火药和 1 个远古水晶制作 3 个烟雾弹)
+(Use 2 Gunpowder to make a Bomb)
+(使用 2 个火药制作炸弹)
+(Use 3 Ectoplasm to make an Invisibility Potion)
+使用 3 个灵质制作隐形药水)
+
 Current Key Pressed
 当前按键
 Press a key, then press a button to set that key
@@ -2894,12 +2921,24 @@ Reduces distraction to 0 and grants additional decay for 50 turns. Can be used w
 将性奋值减少至 0，并对性奋值给予额外衰减 50 回合，可以在佩戴口塞的情况下使用。
 Smoke Bomb
 烟雾弹
-You toss the smoke bomb and it explodes in your location!
-你抛出烟雾弹，它在你的位置爆炸！
-A type of pyrotechnic often employed by saboteurs. Can be used without hands.
-一种经常被破坏者使用的烟火。无需双手即可使用。
+You toss the smoke bomb and it starts emitting a deep haze!
+你抛出烟雾弹，它开始散发出浓浓的烟雾！
+You ready a smoke bomb...
+你准备好烟雾弹...
+A type of pyrotechnic often employed by saboteurs. Can be rolled and used without hands.
+一种经常被破坏者使用的烟火。无需用手即可卷起和使用。
 Creates a smoke screen lasting 8 turns. You are harder to see while inside the smoke.
 制造持续 8 回合的烟幕。在烟雾中时你更难看到。
+Flash Bomb
+闪光弹
+You toss the flash bomb and the fuse starts ticking...
+你抛出闪光弹，导火索就开始滴答作响……
+You ready a flash bomb...
+你准备好闪光弹...
+A type of explosive used by agents. Blinds nearby targets without causing significant injury.
+一种经常被特工使用的爆炸物。致盲附近目标而不造成重大伤害。
+Blinds for 20 turns in a 3x3 area.
+在 3x3 区域内致盲 20 回合。
 Invisibility Potion
 隐形药水
 You chug the concoction and see your body fading away.
@@ -4559,6 +4598,18 @@ The vine plant wraps its tendrils around you! (+RestraintAdded)
 藤蔓植物将卷须缠绕在你周围！（+RestraintAdded）
 The vine plant grips you tightly! (DamageTaken)
 藤本植物紧紧抓住你！（DamageTaken）
+
+Vine Spitter
+藤蔓喷吐者
+The vine spitter leaks purple juices everywhere as it wilts.
+当藤蔓喷吐者枯萎时，紫色的汁液会泄漏到各处。
+The vine spitter slaps you with its tendrils! (DamageTaken)
+藤蔓喷吐者用它的卷须打你！（DamageTaken）
+The vine spitter wraps its tendrils around you! (+RestraintAdded)
+藤蔓喷吐者用它的卷须缠绕着你！（+RestraintAdded）
+The vine spitter grips you tightly! (DamageTaken)
+藤蔓喷吐者紧紧地抓住你！（DamageTaken）
+
 Bramble
 荆棘
 The brambles are hacked away.
@@ -10024,8 +10075,8 @@ You avoid the attack in a flurry of impressive maneuvers!
 你在一系列令人印象深刻的动作中避开了攻击！
 Arcane Barrier
 奥术屏障
-When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 100% Max Mana.
-当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 1:1 的比例缓慢将奥术能量转化为护盾。最大护盾等于100%的最大魔法值。
+When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 50% Max Mana.
+当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 1:1 的比例缓慢将奥术能量转化为护盾。最大护盾等于 50% 的最大魔法值。
 You sense that a high value target is near.
 你感觉到一个高价值目标正在靠近。
 You push yourself beyond physical limits!
@@ -10034,6 +10085,12 @@ You try to push yourself beyond your capabilities and falter...
 你试图超越自己的极限，却步履蹒跚……
 You are already at max stamina.
 你已经达到最大体力了。
+
+Did the Research
+进行研究
+Unlocks advanced tooltips for enemies showing their weaknesses. Also improves hearing by a small amount.
+解锁高级工具提示，让敌人显示出他们的弱点。听力也能小幅提高。
+
 Well-Placed Traps
 精心布置的陷阱
 Trap spells always critically strike.
@@ -10537,8 +10594,8 @@ Chaos Beam
 混沌光束
 Mystic Beam
 神秘光束
-A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt holy damage to the first target hit. 150% crit multiplier.
-引导一束光束 2 回合（让你短暂眩晕），然后立即对第一个击中的目标造成 DamageDealt 点神圣伤害。150% 暴击倍数。
+A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt holy damage to the first target hit. Blinds for 12 turns. 150% crit multiplier.
+引导一束光束 2 回合（让你短暂眩晕），然后立即对第一个击中的目标造成 DamageDealt 点神圣伤害。致盲 12 回合。150% 暴击倍数。
 You charge a powerful beam attack!!!
 你蓄力释放强大的光束攻击！！！
 Choose line direction
@@ -11035,6 +11092,8 @@ Ring
 光环
 Flash Bomb
 闪光弹
+Smoke Bomb
+烟雾弹
 Mirror Image
 镜像
 A flash of light which renders anyone caught within blind for 7 turns
@@ -11805,8 +11864,8 @@ You climb into the grate
 你爬进隔间
 You are blinded!
 你失明了！
-You took DamageDealt damage!
-你受到了DamageDealt点伤害！
+You took DamageTaken damage!
+你受到了 DamageTaken 点伤害！
 You get caught in sticky slime!
 你陷入粘稠的粘液中！
 The slime ball sticks to you!
