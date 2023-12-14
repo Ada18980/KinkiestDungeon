@@ -14216,7 +14216,7 @@ Forming blockade.
 形成屏障。
 
 Looks like I'm up to no good... better stop me!
-看来我不怀好意了……最好阻止我！
+看来我要做坏事了…… 最好阻止我！
 Careful where you point that thing!
 小心你指向的地方！
 Containment breach!
@@ -14410,6 +14410,103 @@ I'd like to place a bid too~
 我也想出价~
 Oooh, that one's mine!
 哦，那个是我的！
+
+No! I don't want to read your magazines!
+不！我才不想看你的杂志！
+No, I don't want to learn about Shibari!
+不，我才不想了解日式绑缚！
+No, I don't want to learn about your toys!
+不，我才不想了解你的玩具！
+I found this book about Shibari... is it yours?
+我找到了这本关于日式绑缚的书...是你的吗？
+I'm so clumsy... maybe you can fix that.
+我太蠢了...也许你可以解决这个问题。
+Gee, looks like I can't keep my mouth shut...
+天啊，看起来我的嘴闭不上了...
+Shhhhh.
+嘘....
+Be quiet.
+安静。
+Keep your hands off my books.
+别把你的手放我书上。
+Heh. Serves you right.
+呵呵。服务你是对的。
+Time to lock you away.
+是时候把你锁起来了。
+Don't get your paws on anything important.
+别把你的爪子放在任何重要的东西上。
+I was reading that!
+我正在读那个！
+You're not supposed to have that.
+你不应该有那个。
+You. Stop.
+你。停下。
+Who are you?
+你是谁？
+You're entering my personal space.
+你正在擅自闯入我的私人空间。
+I'm going to ask you to leave
+我要请你离开
+You're ruining the books!
+你毁了这书！
+Do you need a gag?
+需要堵嘴吗？
+Shut up.
+闭嘴。
+Put that back!
+把它放回去！
+There's nothing to learn from that, you ignorant buffon.
+你个无知的小丑，从中没什么可以学习到的。
+Don't dive into someone else's belongings!
+不要潜入别人的东西里去！
+You've destroyed an ancient artifact, imbecile!
+你毁掉了一件古老的神器，白痴！
+I wish you'd just stay out of trouble...
+我希望你远离麻烦...
+Gotchya.
+明白了。
+You're going to hurt someone with that.
+你这样做会伤害到别人。
+My books!
+我的书！
+Stay down.
+趴下。
+Get back here--
+回来--
+Just give it up.
+放弃吧。
+Why you...
+你为什么...
+Time for you to stay out of trouble.
+是时候让你远离麻烦了。
+Come along.
+一起来。
+Stay put!
+留在原地！
+I'll be taking that back.
+我收回那句话。
+Click.
+咔哒。
+If you really want to know, my name is PTRN. I am the keeper of this place.
+如果你真的想知道的话，我的名字是 PTRN。是这个地方的守护者。
+Typical.
+不出所料。
+*sighs* Another one...
+*叹气* 另一个...
+Keep the damage under control!
+控制伤害！
+Stop fighting, you guys!
+别打架了，伙计们！
+You'll ruin the books!
+你会毁掉这些书的！
+Stop making a mess!
+别再添乱了！
+You're too dangerous to have around.
+你太危险了，不能在身边。
+I don't care what happens to you as long as you're out of here.
+只要你离开这里，我不在乎你会发生什么。
+Get out of my library!
+从我的图书馆滚出去！
 
 Got you!
 抓住你了！
