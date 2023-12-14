@@ -45,7 +45,8 @@ Version
 版本号
 Kinky Dungeon
 淫荡地牢
-
+By Ada18980
+由 Ada18980 制作
 You are an adventurer descending into an ancient underground city of magic.
 你是一个冒险家，前往了一个古老的地下魔法城市。
 Beneath its depths lies the Mistress' Staff, an artifact of untold power.
@@ -206,7 +207,7 @@ Select perks to start with.
 Having 10+ spare points will trigger Hard Mode, granting unique loot.
 可用积分大于10将进入困难模式，可获得独特的战利品
  (HARD MODE ENABLED)
-(硬核模式已启用)
+(困难模式已启用)
 Advanced start (choose perks)
 高级启动（选择额外选项）
 Confirm and start playing!
@@ -217,7 +218,7 @@ Choose Class:
 Distraction Mode:
 性奋模式：
 Perks Mode:
-额外模式：
+技能模式：
 Standard
 标准
 Extra
