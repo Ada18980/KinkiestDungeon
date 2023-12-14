@@ -229,14 +229,14 @@ Much Less
 No pain, no gain.
 一份耕耘，一份收获。
 Gain 10 extra perks, to give you a false sense of security.
-获得 10 项额外特权，给你一种虚假的安全感。
+获得 10 个额外技能，给你一种虚假的安全感。
 Lose 10 perk points, just to keep things interesting.
-失去 10 个特权点数，只是为了让事情变得有趣。
+失去 10 个技能点，只是为了让事情保持有趣的感觉。
 Lose 25 perk points, making things very interesting.
-失去 25 个特权点数，让事情变得非常有趣。
+失去 25 个技能点，让事情变得更有趣点吧。
 
 Perk Progression Mode:
-特权进展模式：
+技能进展模式：
 Disabled
 关闭
 Optional
@@ -246,7 +246,7 @@ Mandatory
 Debuffs Only
 仅减益效果
 No perks between floors.
-楼层中没有特权。
+楼层中没有技能。
 The standard mode. You may choose between one of three perk altars between floors.
 标准模式。你可以在楼层之间的三个额外神泉中选择一个。
 A twist on the standard mode. You must choose before progressing.
@@ -267,7 +267,7 @@ A supposedly reasonable difficulty curve.
 Play the game the way it was intended. Cruel and restrictive.
 按照预期的方式进行游戏。残酷且限制。
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
-玩游戏要自担风险。通过双击“困难模式”按钮解锁。
+以提高自身风险来游玩。通过双击“困难模式”按钮解锁。
 
 Point Cost: AMOUNT
 积分成本：AMOUNT
@@ -455,7 +455,7 @@ You can cast Conjuration spells without having the components, at twice the cost
 Magician
 幻术法师
 You can cast Illusion spells without having the components, at twice the cost. Start w/ Shadow Dagger.
-你可以以两倍魔力消耗为代价无视施法条件使用幻术。开局获得技能 阴影匕首。
+你可以以两倍魔力消耗为代价无视施法条件使用幻术。开局获得技能 暗影匕首。
 
 Narcoleptic
 嗜睡症
@@ -898,7 +898,7 @@ Suppress during combat
 战斗中压制
 
 Shadowy Grasp
-阴影之握
+暗影之握
 
 Magical Tornado
 魔法龙卷风
@@ -1217,7 +1217,7 @@ Second Wind
 Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage. (Upgrade available in spell tree)
 自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚。（可在技能树中升级）
 Second Wind Perk
-再生之气特权
+再生之气技能
 Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage.
 自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚。
 Triumphant Wind
@@ -1230,7 +1230,7 @@ Locked Up
 While wearing a chastity belt, your Desire lowers when you perform actions such as defeating enemies, opening chests, and breaking orbs. (Upgrades available in spell tree)
 佩戴贞操带时，当你击败敌人、打开宝箱和打破球体等动作时，你的欲望会降低。（可在技能树中升级）
 Locked Up Perk
-禁锢特权
+禁锢技能
 While wearing a chastity belt, your Desire lowers when you perform actions such as capturing, opening chests, and breaking orbs.
 佩戴贞操带时，当你击败敌人、打开宝箱和打破球体等动作时，你的欲望会降低。
 Controlled Urges
@@ -1244,14 +1244,14 @@ Locked Up is 300% effective. When Locked Up triggers, you gain -30% mana costs a
 Recalcitrant
 顽固的
 Relinquish the Locked Up perk. One time only. If you take the perk again, there is no going back.
-放弃禁锢特权。只有这一次。如果你再获得这项特权，就没有回头路了。
+放弃禁锢技能。只有这一次。如果你再获得这项技能，就没有回头路了。
 
 Novice Pet
 新手宠物
 You can now sprint while wearing a petsuit. (Upgrades available in spell tree)
 你现在可以穿着宠物服冲刺了。（可在技能树中升级）
 Novice Pet Perk
-新手宠物特权
+新手宠物技能
 You can now sprint while wearing a petsuit.
 你现在可以穿着宠物服冲刺了。
 Eager Pet
@@ -1269,7 +1269,7 @@ Devoted Pet
 Bad Pet
 坏宠物
 Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back.
-放弃新手宠物特权。只有这一次。如果你再获得这项特权，就没有回头路了。
+放弃新手宠物技能。只有这一次。如果你再获得这项技能，就没有回头路了。
 You are an expert in wearing a petsuit and your mobility is increased.
 你是穿着宠物服的专家，你的灵活度也得到了提高。
 You are too used to wearing petsuits! Sprinting is impaired.
@@ -1753,7 +1753,7 @@ Camoflage: While next to a wall, you are very hard to see.
 Stone Skin: Increased armor.
 石肤：增加护甲。
 Darkblade: Increased damage.
-阴影之刃：增加伤害。
+暗影之刃：增加伤害。
 Runic Ward: Increased Magic Armor.
 符文盾：增加魔法护甲。
 Great Invisibility: It is impossible for enemies to see you.
@@ -2163,7 +2163,7 @@ The shadow hands caress you and latch on! (+RestraintAdded)
 影之手爱抚你并紧紧地抓住你！（RestraintAdded）
 
 Shadow Chains
-阴影锁链
+暗影锁链
 You break through the chains!
 你破坏了锁链！
 Conjured Chains
@@ -2742,9 +2742,9 @@ A technologically advanced suit designed for long term wear. Despite being water
 No bonuses, no penalties.
 没有奖励，没有惩罚。
 Shadow Latex Dress
-阴影乳胶连衣裙
+暗影乳胶连衣裙
 A minidress made from shadow latex, a favorite of otherwordly patrons.
-由阴影乳胶制成的迷你裙，是其他顾客的最爱。
+由暗影乳胶制成的迷你裙，是其他顾客的最爱。
 No bonuses, no penalties.
 没有奖励，没有惩罚。
 Elven Dress
@@ -2840,7 +2840,7 @@ Magic Knife
 A magical blade, suitable against ghosts.
 一把适用于对抗幽灵的魔法之剑。
 Deals shadow damage. Can cut enchanted ropes. Offhand: Increase base crit of all magic damage by 20%
-造成阴影伤害，可以切断魔法绳索。副手：所有魔法伤害基础暴击增加20%
+造成暗影伤害，可以切断魔法绳索。副手：所有魔法伤害基础暴击增加20%
 Bola
 投石索
 A pair of weights attached to a rope. Can be thrown.
@@ -3166,13 +3166,13 @@ Deals slash damage. Deals up to 50 bonus damage by waiting 10 turns between atta
 You pick up a katana.
 你捡起一把武士刀。
 Shadow's Edge
-阴影之刃
+暗影之刃
 For those who truly devote themselves to the cause.
 为那些真正献身于事业的人而用。
 Deals shadow damage. Damage is doubled against enemies that are in shadow.
-造成阴影伤害。对处于阴影中的敌人伤害翻倍。
+造成暗影伤害。对处于暗影中的敌人伤害翻倍。
 You pick up Shadow's Edge.
-你拾起了阴影之刃。
+你拾起了一把暗影之刃。
 Stormbreaker
 风暴之锤
 I have the power! Taking electric damage charges you (1 turn/10dmg).
@@ -3302,13 +3302,13 @@ Four Seasons
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
 激活后，下一次使用时 -50% 火/水/冰/风/雷/岩属性法术的消耗，但每个属性仅可使用一次。
 Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage. Offhand: Applies passive bonus.
-造成阴影伤害，+25% 火/水/冰/风/雷/岩/压力/爆炸伤害。副手：应用被动奖励。
+造成暗影伤害，+25% 火/水/冰/风/雷/岩/压力/爆炸伤害。副手：应用被动奖励。
 The Arbiter
 仲裁者之杖
 I have altered the rules. Pray I do not alter them further.
 我已改变规则，祈祷我不会再进一步改变它们。
 Deals chain damage with 110% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm
-造成锁链伤害，束缚效率 x110%，对召唤物增加 40 点阴影伤害，+25% 的黏液和锁链伤害。远程攻击：解除武装。
+造成锁链伤害，束缚效率 x110%，对召唤物增加 40 点暗影伤害，+25% 的黏液和锁链伤害。远程攻击：解除武装。
 Bondage Buster
 束缚破坏者
 Can fire a beam (1 turn channel) that deals 30 electric damage, but charges when not fired, dealing 90 total damage at 10 turns of charge.
@@ -3348,7 +3348,7 @@ Magic Axe
 Sick and vile, like the hearts of your enemies.
 病态和卑鄙，就像你敌人的心。
 Deals shadow damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns.
-对目标造成阴影伤害，对身边的敌人造成20点阴影伤害。减速3回合。
+对目标造成暗影伤害，对身边的敌人造成20点暗影伤害。减速3回合。
 Pickaxe
 镐
 Used for drilling holes in rock and armor.
@@ -3360,7 +3360,7 @@ Magic Flail
 A blessed censer that distributes pain equally.
 一个用于平等地分配伤害的受祝福的香炉。
 Deals crush damage. Deals 20 bonus shadow damage to the target and enemies near the target
-造成碾压伤害。并对目标及其附近的敌人造成 20 点额外阴影伤害
+造成碾压伤害。并对目标及其附近的敌人造成 20 点额外暗影伤害
 Magic Spear
 附魔长矛
 Seeks and pierces hearts with ease.
@@ -3382,9 +3382,9 @@ Deals crush damage. Deals 3x damage to frozen targets instead of 2x. Triggers Sh
 Dreamcatcher
 梦网
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
-在噩梦中铸造，用钢铁编织。召唤一个阴影武士，对于未察觉的目标，消耗2%的远古能量。
+在噩梦中铸造，用钢铁编织。召唤一个暗影武士，对于未察觉的目标，消耗2%的远古能量。
 Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
-造成阴影伤害。对于未察觉（100%）或易受攻击（50%）的目标，额外造成最多 30 点精神伤害。
+造成暗影伤害。对于未察觉（100%）或易受攻击（50%）的目标，额外造成最多 30 点精神伤害。
 Axe
 斧头
 Great for cutting trees that happen to be underground.
@@ -3585,9 +3585,9 @@ Storm Crystal
 The storm crystal shatters into many crackling pieces.
 风暴水晶破碎成许多噼啪作响的碎片。
 Shadow Warrior
-阴影武士
+暗影武士
 The shadow warrior screeches as it vanishes into mist.
-阴影武士尖叫着消失在雾中。
+暗影武士尖叫着消失在雾中。
 Allied Golem
 友方石魔像
 The words vanish from the golem's forehead as it crashes down.
@@ -4003,11 +4003,11 @@ Shadow Dragonheart
 The Shadow Dragonheart frowns and runs away.
 影龙心蹙眉，转身逃走。
 The Shadow Dragonheart apprehends you! (+RestraintAdded)
-阴影龙心逮捕了你！ （+RestraintAdded）
+暗影龙心逮捕了你！ （+RestraintAdded）
 The Shadow Dragonheart extends her scythe and pulls you closer!!!
 影龙心伸出她的镰刀，把你拉近了！！！
 The Shadow Dragonheart catches you with her scythe! (DamageTaken)
-阴影龙心用她的镰刀抓住了你！ (DamageTaken)
+暗影龙心用她的镰刀抓住了你！ (DamageTaken)
 Dragonheart Leader
 龙心领袖
 The Dragonheart Leader apprehends you! (+RestraintAdded)
@@ -6114,7 +6114,7 @@ Cannot be removed while you are wearing other Star Cursed items.
 The cursed seal on the RestraintName vanishes into a brief veil of stardust.
 RestraintName 上的诅咒印记消失在短暂的星尘面纱中。
 Take AMNT damage to weaken the curse. Excludes shadow, psychic, charm, or damage taken at 0 WP.
-承受 AMNT 伤害来削弱诅咒。 不包括阴影、精神、妩媚或 0 WP 受到的伤害。
+承受 AMNT 伤害来削弱诅咒。不包括暗影、精神、妩媚或 0 WP 受到的伤害。
 You struggle uselessly, sealed in your fate.
 你徒劳地挣扎，被命运所封印。
 You feel your restraints starting to weaken...
@@ -6140,7 +6140,7 @@ With the rush of pleasure, you feel your cursed restraints tighten and strengthe
 随着快感的涌动，你感受到你那被诅咒的束缚收紧、加强！
 
 Corruption: While in the shadows, you slowly gain corruption.
-腐败：在阴影中，你会慢慢得腐败。
+堕落：在阴影中，你会慢慢得堕落。
 Your willpower gain and struggle power is less effective due to your corruption.
 你的意志力增益和奋斗力会因为你的腐败而变得不那么有效。
 
@@ -6416,7 +6416,7 @@ Extraplanar Entity
 Dubious Witch
 可疑的女巫
 Shadow Clan
-阴影族
+暗影族
 Illegal Poacher
 非法偷猎者
 Nature
@@ -8146,31 +8146,31 @@ It has eyeholes for you to see out of, but blocks access to the face.
 它有眼孔供你向外看，但挡住了接触脸部的通道。
 
 Shadow Heels
-阴影高跟鞋
+暗影高跟鞋
 A set of impractical heels that clasp around your ankles. They make it hard to walk.
 一套不切实际的高跟鞋，紧箍着你的脚踝。它们使行走变得困难
 The material is stronger than leather, and flexes to make struggling difficult.
 这种材料比皮革更坚固，并且可以弯曲，使挣扎变得困难。
 Shadow Jacket
-阴影拘束衣
+暗影拘束衣
 A tight straitjacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
 由超凡脱俗的材料制成的拘束衣。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Its grip encases you tightly, but the material is weaker than most metals.
 它的握力将你紧紧包裹住，但其材料比大多数金属都脆弱。
 Shadow Armbinder
-阴影束手套
+暗影束手套
 A tight armbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
 由超凡脱俗的材料制成的束手套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Its grip encases you tightly, but the material is weaker than most metals.
 它的握力将你紧紧包裹住，但其材料比大多数金属都脆弱。
 Shadow Boxbinder
-阴影盒束包扎带
+暗影盒束包扎带
 A tight boxbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
 由超凡脱俗的材料制成的盒束包扎带。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Its grip encases you tightly, but the material is weaker than most metals.
 它的握力将你紧紧包裹住，但其材料比大多数金属都脆弱。
 Shadow Legbinder
-阴影束腿套
+暗影束腿套
 A tight legbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
 由超凡脱俗的材料制成的束腿套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Its grip encases you tightly, but the material is weaker than most metals.
@@ -8667,25 +8667,25 @@ Magic chains that serve as an anchor point around your waist.
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
 Shadow Chains (Arms)
-阴影锁链（手臂）
+暗影锁链（手臂）
 Black chains for those who cross the divines
 穿越神界者的黑链
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
 Shadow Chains (Legs)
-阴影锁链（腿）
+暗影锁链（腿）
 Black chains for those who cross the divines
 穿越神界者的黑链
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
 Shadow Chains (Ankles)
-阴影链（脚踝）
+暗影链（脚踝）
 Black chains for those who cross the divines
 穿越神界者的黑链
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
 Shadow Chain
-阴影影链
+暗影影链
 Black chains for those who cross the divines
 穿越神界者的黑链
 It doesn't look like a knife is up to the task...
@@ -8895,20 +8895,20 @@ They are trying to take you somewhere!
 他们正试图带你去某个地方！
 
 The Shadow
-阴影
+暗影
 The Shadow is exorcised... for now.
-阴影已被驱除……暂时。
+暗影已被驱除……暂时。
 The Shadow overwhelms you with its power... (+RestraintAdded)
-阴影以其力量压倒你......（+RestraintAdded）
+暗影以其力量压倒你......（+RestraintAdded）
 The Shadow welcomes you to your new future. (DamageTaken)
-阴影欢迎你来到你的新未来。（DamageTaken）
+暗影欢迎你来到你的新未来。（DamageTaken）
 The Shadow cackles as your restraints are sealed! (DamageTaken)
-当你的束缚被封印时，阴影咯咯地笑了起来！（DamageTaken）
+当你的束缚被封印时，暗影咯咯地笑了起来！（DamageTaken）
 The Shadow smiles and vanishes.
-阴影微笑着消失了。
+暗影微笑着消失了。
 
 The Shadow smiles and vanishes, leaving you locked in a mysterious RNAME...
-阴影微笑着消失，把你锁在一个神秘的 RNAME 中……
+暗影微笑着消失，把你锁在一个神秘的 RNAME 中……
 
 Observer
 观察者
@@ -9812,9 +9812,10 @@ Beast Girl
 You have animalistic features such as a bite spell, -10% attack stamina cost, and 10 slash damage on hit while hands are free. -100 Charm Resist.
 你拥有兽性特征，例如咬伤法术、-10% 攻击体力消耗以及在双手空闲时击中时造成 10 次斩击伤害。 -100 魅惑抗性。
 
+Demon Girl
 恶魔少女
 You are related to eldritch entities, granting +50% shadow damage and the ability to teleport between shadows. You are weak to holy restraints and bright light.
-你与可怕的实体有联系，给予 +50% 的阴影伤害和在阴影之间传送的能力。你对神圣的束缚和明亮的光芒是软弱的。
+你与可怕的实体有联系，给予 +50% 的暗影伤害和在暗影之间传送的能力。你对神圣的束缚和明亮的光芒是软弱的。
 
 Angelic
 天使
@@ -9870,7 +9871,7 @@ Rubber Ampule
 Latex Ampule
 乳胶安瓿
 Shadowy chains appear from a rift in space!
-阴影锁链从空间裂缝中出现！
+暗影锁链从空间裂缝中出现！
 The roaring inferno deals 10 damage to you!
 咆哮的地狱对你造成 10 点伤害！
 The Reaping
@@ -10015,9 +10016,9 @@ Unlocks summoning spells. Learn Summon Familiar.
 允许学习召唤咒术 并习得咒术 “召唤魔宠”
 
 Blessing of Shadow
-阴影祝福
+暗影祝福
 Unlocks shadow spells. Learn Shadow Dagger.
-允许学习阴影幻术 并习得幻术 “阴影匕首”
+允许学习暗影幻术 并习得幻术 “暗影匕首”
 Blessing of Light
 光之祝福
 Unlocks light spells. Learn Flash.
@@ -10190,17 +10191,17 @@ You a throw a knife!
 Choose aim direction
 选择发射方向
 Shadow Dagger
-阴影匕首
+暗影匕首
 A cold shadowy blade that deals DamageDealt damage and pierces all in its path.
-一把冰冷的阴影之刃，对路径上所有格子造成DamageDealt贯穿伤害。
+一把冰冷的暗影之刃，对路径上所有格子造成DamageDealt贯穿伤害。
 You a hurl a shadowy dagger!
-你投出一把阴影匕首！
+你投出一把暗影匕首！
 Choose aim direction
 选择发射方向
 Shadow Slash
-阴影斩
+暗影斩
 Shadow Scythe
-阴影镰刀
+暗影镰刀
 Slice the area in front of you, dealing a delayed DamageDealt damage in an area and slowing briefly.
 切开你面前的区域，在一个区域内造成延迟的 DamageDealt 伤害并短暂减速。
 You create a tear in space with your finger!
@@ -10339,7 +10340,7 @@ The restraining device wraps many elastic cables around you!!!
 拘束装置将许多弹性绳索缠绕在你的周围！！！
 
 Shadowy Grip
-阴影抓
+暗影控制
 A dark hand latches onto you and holds you tight!
 一只深色的手抓住了你，紧紧地握住你！
 Celestial Orb
@@ -10371,9 +10372,9 @@ You ready a bola!
 You are feeling drowsy...
 你感觉昏昏欲睡……
 Shadow Strike
-阴影打击
+暗影打击
 Shadow Heel
-阴影脚
+暗影高跟鞋
 Runic Ward
 符文盾
 Gives yourself or a creature a magic shield for 50 turns, granting +30 Magic Armor.
@@ -11224,7 +11225,7 @@ CMD: Disenchant
 Select an area
 选择一个区域
 Target a large area. Permanently slows constructs, reduces attack speed by 50%, and deals 30 shadow damage. Refunds 50% mana at 3 or more targets. Cast on self to disenchant bindings.
-瞄准范围大。永久减慢构造体速度，降低攻击速度 50%，并造成 30 点阴影伤害。到达 3 个或更多目标时退还 50% 的法力值。对自身施放以分解束缚。
+瞄准范围大。永久减慢构造体速度，降低攻击速度 50%，并造成 30 点暗影伤害。到达 3 个或更多目标时退还 50% 的法力值。对自身施放以分解束缚。
 You say a command word, siphoning the magic from nearby constructs!
 你念出咒语，开始从附近的构装体中抽取魔力！
 CMD: Vibrate
@@ -11332,7 +11333,7 @@ You pose in a clandestine manner.
 你摆出了一个隐秘的姿势。
 
 Darkblade
-阴影之刃
+暗影之刃
 Select which creature to buff
 选择要增益的个体
 Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks
@@ -11503,11 +11504,11 @@ A watery spirit bubbles up from the ground!
 You call upon the plane of Water!
 你向水之位面呼唤！
 Summon Shadow Warrior
-召唤阴影武士
+召唤暗影武士
 Select where to put the shadow warrior (cannot place on occupied squares)
-选择放置阴影武士的位置（不能放置在已被占用的方格上）
+选择放置暗影武士的位置（不能放置在已被占用的方格上）
 Call forth a shadow warrior for 16 turns who deals DamageDealt damage every other turn.
-召唤一名持续 16 回合的阴影武士，每隔一回合造成 DamageDealt 点伤害。
+召唤一名持续 16 回合的暗影武士，每隔一回合造成 DamageDealt 点伤害。
 ...and the abyss answers!
 ……深渊的答案！
 You call...
@@ -12131,7 +12132,7 @@ Slime Trap
 Chain Trap
 锁链陷阱
 Shadow Latex Trap
-阴影乳胶陷阱
+暗影乳胶陷阱
 Demonic Sigil
 恶魔封印
 Unstable Crystals
@@ -12168,7 +12169,7 @@ Slimes pours out from the walls and ceiling!
 Ethereal chains appear all around you!
 灵界锁链出现在你身边！
 Shadows constrict around you!
-阴影在你周围收缩！
+暗影在你周围收缩！
 An otherworldly sigil appears below you!
 一个超凡脱俗的印记出现在你的下方！
 Crystals rise up around you!
@@ -12399,7 +12400,7 @@ It is said that fire and water are opposite planes, but I've noticed that the re
 A drawing of many icicles around pools of water. It instructs you to avoid the pools of water and you can see a figure surrounded by ice shards in the distance being set on fire and smashed with a hammer.
 水池周围有许多冰柱的图画。它指示你避开水池，你可以看到远处被冰块包围的人物被点燃并被锤子砸碎。
 The shadow spirits' touch is cold as ice... I have wondered if this temperature property applies to their destructive effects on other types of beings. Unfortunately, I found out the hard way when I tried to summon a shadow creature against an ice elemental...
-影灵的触感像冰一样冰冷……我想知道这种温度特性是否适用于它们对其他类型生物的破坏作用。不幸的是，当我试图召唤一个阴影生物对抗冰元素时，我发现了一个艰难的方法......
+影灵的触感像冰一样冰冷……我想知道这种温度特性是否适用于它们对其他类型生物的破坏作用。不幸的是，当我试图召唤一个暗影生物对抗冰元素时，我发现了一个艰难的方法......
 I was being chased by something fast and heavy, and it was about to crush me when I tossed an Ice Shard behind me. It stopped and I didn't care to look back.
 我被一个又快又重的东西追了上来，当我在身后扔出一块寒冰碎片时，它正要压死我。它停了下来，我不想回头。
 I was walking in the library when I got attacked by a magic book! Fortunately my sword seemed to disapatch it quickly, and I used my spear to stab another one shortly after.
@@ -13123,7 +13124,7 @@ Ancient Heels
 You find a set of glowing heels, glowing magnificently, along with a strange crystal next to it.
 你发现一双发光的高跟鞋，闪闪发光，旁边还有一个奇怪的水晶。
 A pair of towering heels, enchanted with combat magic. When powered, they reduce slow level by 1, and deal 25 shadow damage on-hit with brief slow.
-一双高耸的高跟鞋，刻满了战斗魔法。充能后，它们会降低 1 级减速等级，并在击中时造成 25 点阴影伤害并带有短暂减速。
+一双高耸的高跟鞋，刻满了战斗魔法。充能后，它们会降低 1 级减速等级，并在击中时造成 25 点暗影伤害并带有短暂减速。
 'Shoes of the graceful'
 '优雅之鞋'
 You can barely stand in these heels. They are rigid, metallic, and unbreakable, yet padded on the inside.
@@ -18215,9 +18216,9 @@ You were hit by one of Fuuka's talisman projectiles. Fuuka's magic is restrictin
 你被 Fuuka 的一枚护身符射中了。Fuuka 的魔法束缚了你！
 
 Sealing Shadows
-封印阴影
+封印暗影
 Shadowy magic is restricting you!
-阴影魔法正在束缚你！
+暗影魔法正在束缚你！
 A powerful seal holds you in place temporarily!!!
 强大的封印将你暂时固定在原地！！！
 You lock yourself in magical locks!
@@ -18428,7 +18429,7 @@ Repel a planar incursion by a dangerous demon.
 Stop some witches from performing a dubious summoning ritual.
 阻止一些女巫进行可疑的召唤仪式。
 Defeat a congregation of the Shadow Clan.
-击败阴影族的会众。
+击败暗影族的会众。
 
 The Goddess grants you knowledge of SpellLearned!
 女神赐予你法术学习知识！
