@@ -229,7 +229,7 @@ Much Less
 No pain, no gain.
 一份耕耘，一份收获。
 Gain 10 extra perks, to give you a false sense of security.
-获得 10 个额外技能，给你一种虚假的安全感。
+获得 10 项额外技能，给你一种虚假的安全感。
 Lose 10 perk points, just to keep things interesting.
 失去 10 个技能点，只是为了让事情保持有趣的感觉。
 Lose 25 perk points, making things very interesting.
