@@ -113,6 +113,17 @@ AddModel({
 	])
 });
 AddModel({
+	Name: "BraidCustomBackNoBraid",
+	Parent: "Braid",
+	Folder: "Hair",
+	Protected: true,
+	Categories: ["Hairstyles", "BackHair"],
+	Layers: ToLayerMap([
+		{ Name: "BraidCustomBack", Layer: "HairBack", Pri: 0,
+		},
+	])
+});
+AddModel({
 	Name: "BackStraight",
 	Folder: "Hair",
 	TopLevel: true,
