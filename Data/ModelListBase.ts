@@ -224,7 +224,7 @@ AddModel({
 });
 AddModel({
 	Name: "ShortCurlyBack",
-	Parent: "MessyBack",
+	Parent: "Curly",
 	Folder: "Hair",
 	TopLevel: true,
 	Protected: true,
