@@ -13498,9 +13498,9 @@ Save Codes
 Roguelike
 肉鸽游戏
 Grants a save code every floor you can write down. Autosaves only on floor start.
-每当你到达新的楼层后会给予你一个用于加载进度的存档码，并在你进入下一层后自动保存。
+每当你到达新的楼层时会给予你一个存档码，你可以将其记下。当你进入下一层时存档会自动存档。
 No save codes, forced autosaves. You are in it to win it.
-没有保存代码，只会自动保存。你来到这里只是为了赢。
+没有存档码，只会自动存档。你来到这里只是为了赢。
 Prison Strictness:
 监狱严密性：
 Normal
