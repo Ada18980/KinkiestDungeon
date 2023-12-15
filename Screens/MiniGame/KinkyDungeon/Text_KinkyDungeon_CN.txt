@@ -1408,19 +1408,19 @@ Fighter
 Your training has given you access to the powers of the Fighter class.
 你的训练使你能够获得战士职业的能力。
 Start with 200 willpower and Iron Will, good at melee and blocking attacks.
-从200点意志力和钢铁意志开始，擅长近战和阻挡攻击。
+以 200 点意志力和钢铁意志技能开始游戏，擅长近战攻击和防砍。
 Rogue
 流氓
 Your training has given you access to the powers of the Rogue class.
 你的训练使你能够获得流氓职业的能力。
 Start with 200 stamina and Sneaky, good at stealth and evasive gameplay.
-从200点体力和潜行开始，擅长潜行和躲避游戏。
+以 200 点体力和潜行开始，擅长潜行和躲避。
 Wizard
 法师
 Your training has given you access to the powers of the Wizard class.
 你的训练使你能够获得法师职业的能力。
 Start with 200 mana and Magical Sight, good at casting spells.
-从200点法力和魔之眼开始，擅长施法。
+以 200 点法力和魔之眼技能开始游戏，擅长施法。
 Peasant
 农民
 You possess the agricultural mastery of the Peasant class.
@@ -13478,7 +13478,7 @@ Wizard
 Peasant
 普通人
 Start with nothing to your name. For those who want a challenge.
-从你的名字开始。对于那些想要挑战的人。
+从一无所有开始。对于那些想要挑战的人。
 Trainee
 练习生
 Spell Choice:
@@ -13498,9 +13498,9 @@ Save Codes
 Roguelike
 肉鸽游戏
 Grants a save code every floor you can write down. Autosaves only on floor start.
-为你可以写下的每一层授予一个保存代码。 仅在楼层启动时自动保存。
+每当你到达新的楼层后会给予你一个用于加载进度的存档码，并在你进入下一层后自动保存。
 No save codes, forced autosaves. You are in it to win it.
-没有保存代码，强制自动保存。你是为了赢而来的。
+没有保存代码，只会自动保存。你来到这里只是为了赢。
 Prison Strictness:
 监狱严密性：
 Normal
@@ -13510,7 +13510,7 @@ Easy
 Strict
 严密
 If you get captured, you might get rescued if you have good relations.
-当你被抓后，如果你有良好的关系，你可能会获救。
+当你被抓后，如果你与其他人良好的关系，你可能会获救。
 If you get captured, you will always get rescued and pay a fee.
 当你被抓后，你总是会被营救并支付费用。
 If you get captured, you are totally on your own.
