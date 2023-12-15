@@ -12122,8 +12122,8 @@ l_KjusMouth_Mouth,Mouth
 m_KjusBlush,KjusBlush
 l_KjusBlush_Blush,Blush
 m_DaskBrows,Hikimayu
-1_DaskBrows_Brows,"Right Brow"
-1_DaskBrows_Brows2,"Left Brow"
+l_DaskBrows_Brows,"Right Brow"
+l_DaskBrows_Brows2,"Left Brow"
 m_DaskEyes,DaskEyes
 l_DaskEyes_Eyes,"Right Eye"
 l_DaskEyes_Eyes2,"Left Eye"
