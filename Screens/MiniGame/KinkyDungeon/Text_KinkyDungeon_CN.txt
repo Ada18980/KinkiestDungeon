@@ -1909,7 +1909,7 @@ No, I wish to press on
 See Perks
 查看技能
 This chest belongs to the FACTION
-这个箱子属于FACTION。
+这个箱子属于 FACTION。
 Devious Dungeon Challenge is enabled.
 Devious Dungeon Challenge 已启用。
 Waiting for game data...
