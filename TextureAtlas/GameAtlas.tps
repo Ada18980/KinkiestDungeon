@@ -680,6 +680,7 @@
             <key type="filename">../Game/EffectTiles/LanternUnlit.png</key>
             <key type="filename">../Game/EffectTiles/Latex.png</key>
             <key type="filename">../Game/EffectTiles/LatexThin.png</key>
+            <key type="filename">../Game/EffectTiles/LiquidMetal.png</key>
             <key type="filename">../Game/EffectTiles/Magicflies.png</key>
             <key type="filename">../Game/EffectTiles/OrbLantern.png</key>
             <key type="filename">../Game/EffectTiles/Portals/CommercePortal.png</key>
@@ -929,7 +930,9 @@
             <key type="filename">../Game/Enemies/Elf.png</key>
             <key type="filename">../Game/Enemies/ElfRanger.png</key>
             <key type="filename">../Game/Enemies/EncasedDoll.png</key>
+            <key type="filename">../Game/Enemies/EncasedDollMetal.png</key>
             <key type="filename">../Game/Enemies/EncasedFactoryDoll.png</key>
+            <key type="filename">../Game/Enemies/EncasedFactoryDollMetal.png</key>
             <key type="filename">../Game/Enemies/EnforcerBot.png</key>
             <key type="filename">../Game/Enemies/EpicenterCursed.png</key>
             <key type="filename">../Game/Enemies/EpicenterCursed2.png</key>
@@ -1144,6 +1147,7 @@
             <key type="filename">../Game/EnemiesBound/ElfRanger.png</key>
             <key type="filename">../Game/EnemiesBound/EncasedDoll.png</key>
             <key type="filename">../Game/EnemiesBound/EncasedFactoryDoll.png</key>
+            <key type="filename">../Game/EnemiesBound/EncasedFactoryDollMetal.png</key>
             <key type="filename">../Game/EnemiesBound/FactoryDoll.png</key>
             <key type="filename">../Game/EnemiesBound/FastZombie.png</key>
             <key type="filename">../Game/EnemiesBound/Fuuka.png</key>
@@ -1971,6 +1975,7 @@
             <key type="filename">../Game/Spells/Bondage.png</key>
             <key type="filename">../Game/Spells/BoulderKick.png</key>
             <key type="filename">../Game/Spells/BoulderLaunch.png</key>
+            <key type="filename">../Game/Spells/BreakFree.png</key>
             <key type="filename">../Game/Spells/Camo.png</key>
             <key type="filename">../Game/Spells/CanUpcast.png</key>
             <key type="filename">../Game/Spells/ChainBolt.png</key>
@@ -2006,6 +2011,7 @@
             <key type="filename">../Game/Spells/EnemySense.png</key>
             <key type="filename">../Game/Spells/Engulf.png</key>
             <key type="filename">../Game/Spells/Evasion.png</key>
+            <key type="filename">../Game/Spells/EvasiveManeuvers.png</key>
             <key type="filename">../Game/Spells/FeatherCloud.png</key>
             <key type="filename">../Game/Spells/FireElemental.png</key>
             <key type="filename">../Game/Spells/Fireball.png</key>
@@ -2051,12 +2057,20 @@
             <key type="filename">../Game/Spells/LightningBolt.png</key>
             <key type="filename">../Game/Spells/LightningRune.png</key>
             <key type="filename">../Game/Spells/LimitSurge.png</key>
+            <key type="filename">../Game/Spells/LiquidMetal.png</key>
             <key type="filename">../Game/Spells/Lockdown.png</key>
             <key type="filename">../Game/Spells/ManaRecharge.png</key>
             <key type="filename">../Game/Spells/Offhand.png</key>
             <key type="filename">../Game/Spells/OrgasmResist.png</key>
             <key type="filename">../Game/Spells/Petsuit.png</key>
+            <key type="filename">../Game/Spells/ProblemSolving.png</key>
+            <key type="filename">../Game/Spells/Quickness.png</key>
+            <key type="filename">../Game/Spells/Quickness2.png</key>
+            <key type="filename">../Game/Spells/Quickness3.png</key>
+            <key type="filename">../Game/Spells/Quickness4.png</key>
+            <key type="filename">../Game/Spells/Quickness5.png</key>
             <key type="filename">../Game/Spells/Rainstorm.png</key>
+            <key type="filename">../Game/Spells/RaiseDefenses.png</key>
             <key type="filename">../Game/Spells/Ring.png</key>
             <key type="filename">../Game/Spells/RingOfSlime.png</key>
             <key type="filename">../Game/Spells/RopeBoltLaunch.png</key>
@@ -2103,6 +2117,7 @@
             <key type="filename">../Game/Spells/SummonUp1.png</key>
             <key type="filename">../Game/Spells/SummonUp2.png</key>
             <key type="filename">../Game/Spells/SummonYoke.png</key>
+            <key type="filename">../Game/Spells/Swap.png</key>
             <key type="filename">../Game/Spells/Thunderstorm.png</key>
             <key type="filename">../Game/Spells/TickleCloud.png</key>
             <key type="filename">../Game/Spells/TidalBall.png</key>
@@ -2346,6 +2361,7 @@
             <key type="filename">../Game/Buffs/buff/buffNovicePetBad.png</key>
             <key type="filename">../Game/Buffs/buff/buffNovicePetVeryBad.png</key>
             <key type="filename">../Game/Buffs/buff/buffPoisonDagger.png</key>
+            <key type="filename">../Game/Buffs/buff/buffRaiseDefenses.png</key>
             <key type="filename">../Game/Buffs/buff/buffRogueEscape.png</key>
             <key type="filename">../Game/Buffs/buff/buffScrollArms.png</key>
             <key type="filename">../Game/Buffs/buff/buffScrollLegs.png</key>
@@ -2410,6 +2426,7 @@
             <key type="filename">../Game/Buffs/dmgglue.png</key>
             <key type="filename">../Game/Buffs/dmggrope.png</key>
             <key type="filename">../Game/Buffs/dmghappygas.png</key>
+            <key type="filename">../Game/Buffs/dmgholy.png</key>
             <key type="filename">../Game/Buffs/dmgice.png</key>
             <key type="filename">../Game/Buffs/dmgmagic.png</key>
             <key type="filename">../Game/Buffs/dmgmelee.png</key>
@@ -2453,6 +2470,7 @@
             <key type="filename">../Game/Buffs/quickness.png</key>
             <key type="filename">../Game/Buffs/restraintblock.png</key>
             <key type="filename">../Game/Buffs/shadow.png</key>
+            <key type="filename">../Game/Buffs/shield.png</key>
             <key type="filename">../Game/Buffs/spellarmor.png</key>
             <key type="filename">../Game/Buffs/status/freeArms.png</key>
             <key type="filename">../Game/Buffs/status/freeEyes.png</key>
@@ -2819,6 +2837,8 @@
             <key type="filename">../Game/UI/AutoPath/SuppressDuringCombat.png</key>
             <key type="filename">../Game/UI/AutoStruggle.png</key>
             <key type="filename">../Game/UI/Checked.png</key>
+            <key type="filename">../Game/UI/CrouchOff.png</key>
+            <key type="filename">../Game/UI/CrouchOn.png</key>
             <key type="filename">../Game/UI/Door.png</key>
             <key type="filename">../Game/UI/DoorClose.png</key>
             <key type="filename">../Game/UI/Edged.png</key>

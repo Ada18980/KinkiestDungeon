@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.2 (B)"
+KDVersionStr,"5.0.3 (F)"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -73,6 +73,7 @@ KDToggleCenter,UI: Center Player
 KDToggleBuffSide,UI: Draw Buffs on Side
 KDToggleShowPath,UI: Show Trajectory on Auto-Path
 KDToggleShowFacing,UI: Show Player Facing
+KDToggleShowSameCatSpells,UI: Show more learnable spells
 KinkyDungeonFastWait,Wait Quickly
 
 
@@ -139,7 +140,7 @@ KinkyDungeonStat11,"Wanted"
 KinkyDungeonStatDesc11,"Your security level starts at 100 and cannot go below 70."
 
 KinkyDungeonStat12,"Studious"
-KinkyDungeonStatDesc12,"You start the game with +3 additional spell points."
+KinkyDungeonStatDesc12,"You start the game with +1 spell point. Your first two spell categories are free."
 KinkyDungeonStat13,"Meditation"
 KinkyDungeonStatDesc13,"You slowly regenerate mana, up to a maximum of 50."
 
@@ -154,7 +155,7 @@ KinkyDungeonStat19,"Distracted"
 KinkyDungeonStatDesc19,"+15% miscast chance (at all times)"
 
 KinkyDungeonStat20,"Brawler"
-KinkyDungeonStatDesc20,"Unarmed attacks deal +10 damage."
+KinkyDungeonStatDesc20,"Unarmed attacks deal +10 damage and being slowed does not decrease unarmed damage."
 KinkyDungeonStat21,"Clumsy"
 KinkyDungeonStatDesc21,"0.7x base accuracy"
 KinkyDungeonStatUnfocused,"Unfocused"
@@ -553,9 +554,9 @@ KinkyDungeonStatStartMaid,"Maid Sweeper"
 KinkyDungeonStatDescStartMaid,"Start in a magically locked maid outfit."
 KinkyDungeonStatStartWolfgirl,"Wolf Trainee"
 KinkyDungeonStatDescStartWolfgirl,"Start in a uniform of a naughty wolfgirl."
-KinkyDungeonStatStartLatex,"Latex Doll"
+KinkyDungeonStatStartLatex,"Latex Toy"
 KinkyDungeonStatDescStartLatex,"Start bound in latex restraints."
-KinkyDungeonStatStartObsidian,"Iron Slave"
+KinkyDungeonStatStartObsidian,"Obsidian Slave"
 KinkyDungeonStatDescStartObsidian,"Start in a full set of magically locked obsidian cuffs."
 
 
@@ -574,7 +575,7 @@ KinkyDungeonPastePerks,Paste (clipboard)
 KDConductionDamageTaken,DAMAGEDEALT electric damage conducts to you!!!
 KDBurningFanFlamesDamageTaken,"The pressure fans the flames on you, dealing bonus DAMAGEDEALT fire damage!"
 KinkyDungeonDrenchedSlimeBuff,The RestraintName comes off more easily in the presence of water!
-KDSlipIce,You slip on the ice!
+KDSlipIce,You slip on the floor!
 KinkyDungeonBuffIgniteDamage,The air around you is ablaze! (-DamageDealt SP)
 KinkyDungeonBuffShrineIllusionTrigger,"The Goddess of Illusions shrouds you in shadows!"
 KinkyDungeonBuffLockdownTry,"You struggle against your bonds, but a magical force resists!"
@@ -688,7 +689,7 @@ KinkyDungeonBuffAvatarEarth,-MP Cost (Earth)
 
 KinkyDungeonBuffSlimeForm,"Slime Form: You gain bonuses and can slip through bars!"
 KinkyDungeonBuffShroud2,"Shroud: Visibility decreased, evasion increased."
-KinkyDungeonBuffCamo,"Camoflage: While holding still, you are very hard to see."
+KinkyDungeonBuffCamo,"Camoflage: While next to a wall, you are very hard to see."
 KinkyDungeonBuffStoneSkin,"Stone Skin: Increased armor."
 KinkyDungeonBuffShadowBlade,"Darkblade: Increased damage."
 KinkyDungeonBuffShield,"Runic Ward: Increased Magic Armor."
@@ -768,6 +769,7 @@ StatWeapon,""
 StatKeyEscapeKey,Got the keys! Find the stairs to go to the next floor.
 StatKeyEscapeNoKey,You haven't found the keys for this floor yet.
 StatKey,Missing key
+StatShield,You are protected from damage and can't be bound until the shield is broken!
 StatMiscastChance,"Chance for a spell to fizzle: "
 StatEvasion,"Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty."
 StatBlock,"Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty."
@@ -809,6 +811,7 @@ KDInspect,"Inspect"
 KDPass,Pass NPCs
 KDDoor,Close a Door
 KDSprint,Sprint/Hop
+KDCrouch,Crouch
 
 KinkyDungeonChangeDistraction0,"Ahh!"
 KinkyDungeonChangeDistraction1,"Mmm..."
@@ -896,6 +899,7 @@ KinkyDungeonKeyAInspect,Inspect
 KinkyDungeonKeyMap,Expand Minimap
 KinkyDungeonKeyWaitInterrupt,Wait till Interrupted
 KinkyDungeonKeyMakeNoise,Make Noise
+KinkyDungeonKeyCrouch,Crouch
 KinkyDungeonKeyPlaySelf,Play with Self
 
 KinkyDungeonKeyMsgLog,Message Log
@@ -1191,9 +1195,15 @@ KinkyDungeonInventoryItemPotionFrigidUse,"You chug the concoction and your sense
 KinkyDungeonInventoryItemPotionFrigidDesc,"Like bottled snow. Helps to get your mind on track."
 KinkyDungeonInventoryItemPotionFrigidDesc2,"Reduces distraction to 0 and grants additional decay for 50 turns. Can be used while gagged."
 KinkyDungeonInventoryItemSmokeBomb,Smoke Bomb
-KinkyDungeonInventoryItemSmokeBombUse,You toss the smoke bomb and it explodes in your location!
-KinkyDungeonInventoryItemSmokeBombDesc,"A type of pyrotechnic often employed by saboteurs. Can be used without hands."
+KinkyDungeonSpellCastSmokeBomb,You toss the smoke bomb and it starts emitting a deep haze!
+KinkyDungeonInventoryItemSmokeBombUse,You ready a smoke bomb...
+KinkyDungeonInventoryItemSmokeBombDesc,"A type of pyrotechnic often employed by saboteurs. Can be rolled and used without hands."
 KinkyDungeonInventoryItemSmokeBombDesc2,"Creates a smoke screen lasting 8 turns. You are harder to see while inside the smoke."
+KinkyDungeonInventoryItemFlashBomb,Flash Bomb
+KinkyDungeonSpellCastFlashBomb,You toss the flash bomb and the fuse starts ticking...
+KinkyDungeonInventoryItemFlashBombUse,You ready a smoke bomb...
+KinkyDungeonInventoryItemFlashBombDesc,"A type of explosive used by agents. Blinds nearby targets without causing significant injury."
+KinkyDungeonInventoryItemFlashBombDesc2,"Blinds for 20 turns in a 3x3 area."
 KinkyDungeonInventoryItemPotionInvisibility,Invisibility Potion
 KinkyDungeonInventoryItemPotionInvisibilityUse,You chug the concoction and see your body fading away.
 KinkyDungeonInventoryItemPotionInvisibilityDesc,"You feel liquid inside, but you can't see it!"
@@ -1511,6 +1521,7 @@ KinkyDungeonChargerChargeFailure,Nothing seems to happen
 KinkyDungeonTorsoGrab,The EnemyName grabs you by the RestraintName and keeps you in place!
 KinkyDungeonLeashGrab,The EnemyName grabs you and pulls you!!!
 KinkyDungeonAttackMiss,The EnemyName misses you!
+KinkyDungeonAttackMissCrouch,You duck under the EnemyName's attack!
 
 KinkyDungeonHearDoorOpenNear,You hear a door creak open nearby!
 KinkyDungeonHearDoorOpenFar,You hear the faint sound of a door opening.
@@ -2226,6 +2237,12 @@ KillVinePlant,"The plant leaks purple juices everywhere as it wilts."
 AttackVinePlant,"The vine plant whips you with its tendrils! (DamageTaken)"
 AttackVinePlantBind,"The vine plant wraps its tendrils around you! (+RestraintAdded)"
 AttackVinePlantStun,"The vine plant grips you tightly! (DamageTaken)"
+
+NameVineSpitter,Vine Spitter
+KillVineSpitter,"The vine spitter leaks purple juices everywhere as it wilts."
+AttackVineSpitter,"The vine spitter slaps you with its tendrils! (DamageTaken)"
+AttackVineSpitterBind,"The vine spitter wraps its tendrils around you! (+RestraintAdded)"
+AttackVineSpitterStun,"The vine spitter grips you tightly! (DamageTaken)"
 
 NameBramble,Bramble
 KillBramble,"The brambles are hacked away."
@@ -5176,12 +5193,12 @@ KinkyDungeonSpellCastShadowSlash,You create a tear in space with your finger!
 KinkyDungeonSpellTargetShadowSlash,Choose aim direction
 
 KinkyDungeonSpellBlink,Portal
-KinkyDungeonSpellDescriptionBlink,Teleport to a nearby location (including into darkness) with twice the range. Stuns an enemy if you teleport behind them.
+KinkyDungeonSpellDescriptionBlink,"After 3 turns, teleport to a nearby location (including into darkness) with twice the range."
 KinkyDungeonSpellCastBlink,You call upon a misty portal to transport you!
 KinkyDungeonSpellTargetBlink,Choose target location
 
 KinkyDungeonSpellLeap,Blink
-KinkyDungeonSpellDescriptionLeap,Instantly teleport to a location you can see.
+KinkyDungeonSpellDescriptionLeap,Instantly teleport to a location you can see. Stuns an enemy if you teleport behind them.
 KinkyDungeonSpellCastLeap,You teleport!
 KinkyDungeonSpellTargetLeap,Choose target location
 
@@ -5421,7 +5438,7 @@ KinkyDungeonSpellEnemyCorona,Binding Light
 KinkyDungeonSpellEnemyCoronaBeam,Binding Light
 KinkyDungeonSpellMonolithBeamBeam,Chaos Beam
 KinkyDungeonSpellClericBeamBeam,Mystic Beam
-KinkyDungeonSpellDescriptionCorona,A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt fire damage to the first target hit. 150% crit multiplier.
+KinkyDungeonSpellDescriptionCorona,A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt holy damage to the first target hit. Blinds for 12 turns. 150% crit multiplier.
 KinkyDungeonSpellCastCorona,You charge a powerful beam attack!!!
 KinkyDungeonSpellTargetCorona,Choose line direction
 
@@ -5462,6 +5479,10 @@ KinkyDungeonSpellSlimeToLatex,Solidify
 KinkyDungeonSpellDescriptionSlimeToLatex,"Solidifies slime in the area into Latex. Latex adheres to enemies and slowly binds them, escasing them when they are fully bound."
 KinkyDungeonSpellCastSlimeToLatex,"You inscribe a transmutation circle on the floor."
 KinkyDungeonSpellTargetSlimeToLatex,Choose area containing slime
+KinkyDungeonSpellLiquidMetal,LiquidMetal
+KinkyDungeonSpellDescriptionLiquidMetal,"Solidifies Latex in the area into Liquid Metal. Liquid Metal is slippery, but also adheres to enemies and slowly binds them in metallic bonds. Enemies encased in liquid metal are more susceptible to knockback due to the slippery nature."
+KinkyDungeonSpellCastLiquidMetal,"You inscribe a transmutation circle on the floor."
+KinkyDungeonSpellTargetLiquidMetal,Choose area containing Latex
 
 KinkyDungeonSpellSlimeWalk,Slime Repulsion
 KinkyDungeonSpellDescriptionSlimeWalk,"Gain +50 glue resist."
@@ -5652,7 +5673,7 @@ KinkyDungeonSpellSummonArmbinder,Conjure Armbinder
 KinkyDungeonSpellArmbinderBolt,Conjured Armbinder
 KinkyDungeonSpellArmbinderBoltBind,The armbinder slips itself around your arms and buckles itself tightly!
 KinkyDungeonSpellArmbinderBoltDamage,The armbinder hits you! (DamageDealt)
-KinkyDungeonSpellDescriptionSummonArmbinder,"Summons an armbinder which deals DamageDealt chain damage and disarms for 13 turns. Blinded/Silenced targets are silenced/blinded for the same time."
+KinkyDungeonSpellDescriptionSummonArmbinder,"Summons an armbinder which deals DamageDealt chain damage and disarms for 13 turns. Also removes 2 Block tokens from enemy. Cannot be blocked."
 KinkyDungeonSpellCastSummonArmbinder,You conjure a armbinder!
 KinkyDungeonSpellTargetSummonArmbinder,The armbinder will appear next to you and fly toward the target point.
 
@@ -5685,7 +5706,7 @@ KinkyDungeonSpellSummonLegbinder,Conjure Legbinder
 KinkyDungeonSpellLegbinderBolt,Conjured Legbinder
 KinkyDungeonSpellLegbinderBoltBind,The legbinder slips itself around your legs and buckles itself tightly!
 KinkyDungeonSpellLegbinderBoltDamage,The legbinder hits you! (DamageDealt)
-KinkyDungeonSpellDescriptionSummonLegbinder,"Summons a legbinder which deals DamageDealt chain damage and snares for 10 turns. +50 binding if target is not snared."
+KinkyDungeonSpellDescriptionSummonLegbinder,"Summons a legbinder which deals DamageDealt chain damage and snares for 10 turns. +50 binding if target is not snared. Cannot be blocked."
 KinkyDungeonSpellCastSummonLegbinder,You conjure a legbinder!
 KinkyDungeonSpellTargetSummonLegbinder,The legbinder will appear next to you and fly toward the target point.
 
@@ -5694,7 +5715,7 @@ KinkyDungeonSpellSummonStraitjacket,Conjure Straitjacket
 KinkyDungeonSpellStraitjacketBolt,Conjured Straitjacket
 KinkyDungeonSpellStraitjacketBoltBind,The straitjacket slips itself around your body and pulls your arms into its sleeves!
 KinkyDungeonSpellStraitjacketBoltDamage,The straitjacket hits you! (DamageDealt)
-KinkyDungeonSpellDescriptionSummonStraitjacket,"Summons a straitjacket which adds DamageDealt binding and reduces struggle speed for 14 turns."
+KinkyDungeonSpellDescriptionSummonStraitjacket,"Summons a straitjacket which adds DamageDealt binding and reduces struggle speed for 14 turns. Also removes 3 Block tokens from enemy. Cannot be blocked."
 KinkyDungeonSpellCastSummonStraitjacket,You conjure a straitjacket!
 KinkyDungeonSpellTargetSummonStraitjacket,The straitjacket will appear next to you and fly toward the target point.
 
@@ -5703,7 +5724,7 @@ KinkyDungeonSpellSummonHarness,Conjure Harness
 KinkyDungeonSpellHarnessBolt,Conjured Harness
 KinkyDungeonSpellHarnessBoltBind,The harness slips itself around your torso and squeezes tightly as each buckle secures itself one by one!
 KinkyDungeonSpellHarnessBoltDamage,The harness hits you! (DamageDealt)
-KinkyDungeonSpellDescriptionSummonHarness,"Summons a harness which deals DamageDealt crush damage. Adds +50 binding per 25% binding level on target, up to +200."
+KinkyDungeonSpellDescriptionSummonHarness,"Summons a harness which deals DamageDealt chain damage. Adds +50 binding per 25% binding level on target, up to +200."
 KinkyDungeonSpellCastSummonHarness,You conjure a harness!
 KinkyDungeonSpellTargetSummonHarness,The harness will appear next to you and fly toward the target point.
 
@@ -5747,10 +5768,11 @@ KinkyDungeonSpellTargetDisplayStand,Choose a helpless target
 KinkyDungeonSpellFlash,Lesser Flash
 KinkyDungeonSpellRing,Ring
 KinkyDungeonSpellFlashBomb,Flash Bomb
+KinkyDungeonSpellSmokeBomb,Smoke Bomb
 KinkyDungeonSpellEnemyFlash,Sparkles!
 KinkyDungeonSpellMirrorImage,Mirror Image
 KinkyDungeonSpellCastMirrorImage,""
-KinkyDungeonSpellDescriptionFlash,A flash of light which renders anyone caught within blind for Duration turns
+KinkyDungeonSpellDescriptionFlash,A flash of light which renders anyone caught within blind for 7 turns
 KinkyDungeonSpellCastFlash,You charge up a bright flash!
 KinkyDungeonSpellTargetFlash,Select where to center the flash (SpellArea radius)
 
@@ -5759,13 +5781,13 @@ KinkyDungeonSpellCastRing,You point and a noise emanates from the location!
 KinkyDungeonSpellTargetRing,Select where to center the noise (SpellArea radius)
 
 KinkyDungeonSpellGreaterFlash,Greater Flash
-KinkyDungeonSpellDescriptionGreaterFlash,A massive flash of light which renders anyone caught within blind for Duration turns
+KinkyDungeonSpellDescriptionGreaterFlash,A massive flash of light which renders anyone caught within blind for 16 turns and stuns briefly.
 KinkyDungeonSpellCastGreaterFlash,You charge up a bright flash!
 KinkyDungeonSpellTargetGreaterFlash,Select where to center the flash (SpellArea radius)
 
 KinkyDungeonSpellFocusedFlash,Focused Flash
 KinkyDungeonSpellTargetFocusedFlash,Select where to center the flash (SpellArea radius)
-KinkyDungeonSpellDescriptionFocusedFlash,A focused flash of light which renders anyone caught within blind for Duration turns
+KinkyDungeonSpellDescriptionFocusedFlash,A focused flash of light which renders anyone caught within blind for 30 turns and stuns for Duration turns.
 KinkyDungeonSpellCastFocusedFlash,You slowly charge up a powerful flash!
 
 KinkyDungeonSpellShroud,Shroud
@@ -5882,7 +5904,7 @@ KinkyDungeonSpellCastLesserInvisibility,You become semitransparent!
 
 KinkyDungeonSpellCamo,Camouflage
 KinkyDungeonSpellTargetCamo,Select yourself
-KinkyDungeonSpellDescriptionCamo,"Enemies have a harder time noticing you for Duration turns. Cancels if you move, cast, or sleep."
+KinkyDungeonSpellDescriptionCamo,"Enemies have a harder time noticing you for Duration turns. Cancels if you move (unless you are near a wall), cast, or sleep."
 KinkyDungeonSpellCastCamo,You pose in a clandestine manner.
 
 KinkyDungeonSpellShadowBlade,Darkblade
@@ -6072,7 +6094,7 @@ KinkyDungeonSpellZombieOrb,Zombie Orb
 KinkyDungeonSpellZombieOrbMini,Lesser Zombie Orb
 KinkyDungeonSpellZombieOrbIce,Freezing Zombie Orb
 KinkyDungeonSpellMummyBolt,Mystic Bolt
-KinkyDungeonMysticShock,The mystic bolt paralyzes you!
+KinkyDungeonMysticShock,The mummy's curse paralyzes you!
 
 KinkyDungeonSpellRubberBullets,Rubber Bullets
 KinkyDungeonRubberBullets,You are hit by a fusilade of rubber bullets!
@@ -6124,7 +6146,7 @@ KinkyDungeonSpellIceSlowBreath,Icy Aura
 
 KinkyDungeonSpellSlimeBall,Slime Ball
 KinkyDungeonSpellWitchSlimeBall,Witch's Slime Ball
-KinkyDungeonSpellDescriptionSlimeBall,A ball of slime leaves a trail of sticky slime (40 damage when stepped on). It deals DamageDealt glue damage on a hit.
+KinkyDungeonSpellDescriptionSlimeBall,A ball of slime leaves a trail of sticky slime (20 damage when stepped on). It deals DamageDealt glue damage on a hit.
 KinkyDungeonSpellCastSlimeBall,You hurl a ball of slime!
 KinkyDungeonSpellTargetSlimeBall,Choose aim direction
 
@@ -6201,7 +6223,11 @@ KinkyDungeonSlowed3,The massive plugs rub(s) around inside of you as you hobble 
 KinkyDungeonHopping0,You hop forward!
 KinkyDungeonHopping1,You hop and feel the plugs shifting around inside your body.
 KinkyDungeonHopping2,The plugs shift in and out with each hop...
-KinkyDungeonHopping3,The massive plugs slide in and out mercilessly as you hop...
+KinkyDungeonHopping3,The massive plugs slide in and out sensually as you hop...
+KinkyDungeonHoppingCrouch0,You crawl forward!
+KinkyDungeonHoppingCrouch1,You crawl and feel the plugs shifting around inside your body.
+KinkyDungeonHoppingCrouch2,The plugs shift in and out as you crawl...
+KinkyDungeonHoppingCrouch3,The massive plugs slide in and out sensually as you crawl...
 KinkyDungeonInching0,You inch forward slowly!
 KinkyDungeonInching1,"You inch forward, feeling the movement of your plugs."
 KinkyDungeonInching2,"You wiggle your hips inching forward, feeling the plugs inside you..."
@@ -6235,7 +6261,7 @@ KinkyDungeonGagMumbleAroused6,Mmmmm~~
 KinkyDungeonGagMumbleAroused7,Mmmmmm~~~
 
 KinkyDungeonBlindSelf,"You are blinded!"
-KinkyDungeonDamageSelf,"You took DamageDealt damage!"
+KinkyDungeonDamageSelf,"You took DamageTaken damage!"
 KinkyDungeonSlime,"You get caught in sticky slime!"
 KinkyDungeonMiniSlime,"The slime ball sticks to you!"
 KinkyDungeonMiniSlime2,"The slime ball sticks to you and slows you!"
@@ -7009,6 +7035,7 @@ KDStatusTooltipEnemyFlying,Flying
 
 KinkyDungeonDamageTypeacid,"Acid"
 KinkyDungeonDamageTypecold,"Shadow"
+KinkyDungeonDamageTypeholy,"Holy"
 KinkyDungeonDamageTypearcane,"Arcane"
 KinkyDungeonDamageTypefrost,"Ice"
 KinkyDungeonDamageTypeice,"Ice"
@@ -10697,6 +10724,7 @@ rWolfgirlSellManaOrb,"(The SPEAKER nods)|A rare find!"
 rNinjaSell,"(The SPEAKER surprises you)|Greetings, traveler.|I am looking for tools to aid in my mission."
 rNinjaSellAttack,"(The SPEAKER doesn't look surprised)|That's how it is, then."
 rNinjaSellSmokeBomb,"(The SPEAKER bows)|Always be prepared."
+rNinjaSellFlashBomb,"(The SPEAKER bows)|Always be prepared."
 rNinjaSellBomb,"(The SPEAKER bows)|A bit dangerous, but I'll take it."
 rNinjaSellBola,"(The SPEAKER bows)|A tool of the trade."
 rNinjaSellPotionInvisibility,"(The SPEAKER bows)|A most valuable find."
@@ -10713,6 +10741,7 @@ rGunSellGunpowder,"(The SPEAKER nods)|Yeah... that'll do."
 rBombSell,"(The SPEAKER looks somewhat crazed)|I'm looking for some heavy ordnance in order to...|...add to my collection.|Anyway, got any bombs?"
 rBombSellAttack,"(The SPEAKER reaches for her backpack)|I'll blow you away!"
 rBombSellSmokeBomb,"(The SPEAKER shrugs)|Cute fireworks, I suppose..."
+rBombSellFlashBomb,"(The SPEAKER shrugs)|Cute fireworks, I suppose..."
 rBombSellBomb,"(The SPEAKER rubs her hands together)|Excellent..."
 rBombSellGunpowder,"(The SPEAKER smiles)|Yes! I can make more bombs!"
 
@@ -10722,6 +10751,7 @@ rThiefSellCuffKeys,"(The SPEAKER nods)|Could help out in a bind."
 rThiefSellDiscPick,"(The SPEAKER nods)|I could use one of these!"
 rThiefSellBomb,"(The SPEAKER smiles)|For when things go south..."
 rThiefSellSmokeBomb,"(The SPEAKER smiles)|For when things go south..."
+rThiefSellFlashBomb,"(The SPEAKER smiles)|For when things go south..."
 
 rCookieSell,"(A distracted SPEAKER munches on a cookie)"
 rCookieSellAttack,"(The SPEAKER continues eating her snack)"
@@ -14396,15 +14426,15 @@ KinkyDungeonSpellDescriptionParry,"+15 Block while holding a weapon."
 KinkyDungeonSpellDaggerParry,Dagger Parry
 KinkyDungeonSpellDescriptionDaggerParry,"+15 Block while holding a light weapon such as a knife or dagger."
 KinkyDungeonSpellWillParry,Steadfast Guard
-KinkyDungeonSpellDescriptionWillParry,"+5 Block for each 50 max willpower you have, while holding a non-light weapon."
+KinkyDungeonSpellDescriptionWillParry,"+5 Block for each 100 max willpower you have, while holding a non-light weapon."
 KinkyDungeonSpellSteelParry,The Power of Steel
-KinkyDungeonSpellDescriptionSteelParry,"+5 Block for each 50 max willpower you have, while holding a weapon that deals physical damage."
+KinkyDungeonSpellDescriptionSteelParry,"+5 Block for each 100 max willpower you have, while holding a weapon that deals physical damage."
 KinkyDungeonSpellGuardBoost,Secure Defense
-KinkyDungeonSpellDescriptionGuardBoost,"+10-60 Block, based on your percentage of Willpower."
+KinkyDungeonSpellDescriptionGuardBoost,"+15-30 Block, based on your percentage of Willpower."
 
 KinkyDungeonAttackBlock,You block the EnemyName attack!
-KinkyDungeonSpellBindBlock,You block a binding from EnemyName!
-KinkyDungeonSpellBindMiss,You dodge a binding from EnemyName!
+KinkyDungeonSpellBindBlock,You block EnemyName!
+KinkyDungeonSpellBindMiss,You dodge EnemyName!
 KinkyDungeonSpellBlock,You block the EnemyName!
 KinkyDungeonSpellMiss,You dodge the EnemyName!
 
@@ -15119,7 +15149,7 @@ KDBattleRhythm,Rhythm
 KDBattleRhythmDodge,You avoid the attack in a flurry of impressive maneuvers!
 
 KinkyDungeonSpellArcaneBarrier,Arcane Barrier
-KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, the shield absorbs incoming damage and consumes Arcane Energy equal 200% of damage absorbed. While you have Arcane Energy and this is active, you also gain Bondage Resist equal to 4x the Arcane Energy pool, to a max of +200."
+KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 50% Max Mana."
 
 KinkyDungeonBuffHighValueFound,You sense that a high value target is near.
 
@@ -15128,12 +15158,14 @@ KDLimitSurge_Fail,You try to push yourself beyond your capabilities and falter..
 KDLimitSurge_No,You are already at max stamina.
 
 
+KinkyDungeonSpellRogueStudy,Did the Research
+KinkyDungeonSpellDescriptionRogueStudy,"Unlocks advanced tooltips for enemies showing their weaknesses. Also improves hearing by a small amount."
 
 KinkyDungeonSpellRogueTraps2,Well-Placed Traps
 KinkyDungeonSpellDescriptionRogueTraps2,"Trap spells always critically strike."
 
 KinkyDungeonSpellRogueEscape,Hard to Catch
-KinkyDungeonSpellDescriptionRogueEscape,"Adjacent NPCs count as corners/hooks for purposes of escaping. After being restrained, escape speed and power is increased for 12 turns. Removed if you restrain yourself."
+KinkyDungeonSpellDescriptionRogueEscape,"Adjacent NPCs count as corners/hooks for purposes of escaping. After being restrained, escape speed and power is increased for 12 turns (escape power is increased by +20% plus 2% of Bondage Resist). Removed if you restrain yourself."
 
 KinkyDungeonBuffRogueEscape,Struggling is improved and escape is quicker!
 
@@ -15315,6 +15347,7 @@ KinkyDungeonSpellCombatTraining,"Combat Training"
 KinkyDungeonSpellDescriptionCombatTraining,"Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 0 WP you gain 1 slow resist."
 
 KDoffhandTooltip,This is your current offhand weapon.
+KDoffhandOldTooltip,You are unable to wield this weapon offhand at the moment.
 KDoffhand2Tooltip,This is your previously held weapon. Click to switch to it.
 
 KDCantWield,You can't hold the WPN in your current state.
@@ -15332,14 +15365,16 @@ KDChargeFail_NoSpace,There is no room to dash!
 KDChargeFail_AttackMiss,You missed!
 
 KinkyDungeonSpellToolsOfTheTrade,"Tools of the Trade"
-KinkyDungeonSpellDescriptionToolsOfTheTrade,"Allows you to craft bombs, smoke bombs, and invisibility potions."
+KinkyDungeonSpellDescriptionToolsOfTheTrade,"Allows you to craft bombs, smoke bombs, flash bombs, and invisibility potions."
 
 rToolsOfTheTrade,"(You start having crafty thoughts...)|(Gunpowder can be obtained from chests or Alchemists)|(Ectoplasm can be obtained from ghosts)"
 rToolsOfTheTradeSmokeBomb,"(You craft a Smoke Bomb)"
+rToolsOfTheTradeFlashBomb,"(You craft 3 Flash Bombs)"
 rToolsOfTheTradeBomb,"(You craft a Bomb)"
 rToolsOfTheTradePotionInvisibility,"(You craft an Invisibility Potion)"
 rToolsOfTheTradeFail,"(You don't have the required material)"
 dToolsOfTheTrade_SmokeBomb,(Use 1 Gunpowder to make a Smoke Bomb)
+dToolsOfTheTrade_FlashBomb,(Use 1 Gunpowder and one Ancient Crystal to make 3 Smoke Bombs)
 dToolsOfTheTrade_Bomb,(Use 2 Gunpowder to make a Bomb)
 dToolsOfTheTrade_PotionInvisibility,(Use 3 Ectoplasm to make an Invisibility Potion)
 
@@ -15352,10 +15387,10 @@ ItemPickupGunpowder,"You pick up a sack of gunpowder."
 KinkyDungeonSpellCastGunpowder,You toss some gunpowder on the floor!
 
 KinkyDungeonSpellRogueOffhand,"Dual Wield (Rogue)"
-KinkyDungeonSpellDescriptionRogueOffhand,"Designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield 2-handed, heavy, or massive weapons in the offhand unless they are multiclass.|(Must equip Dual Wield spell to equip an offhand weapon)"
+KinkyDungeonSpellDescriptionRogueOffhand,"Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield 2-handed, heavy, or massive weapons in the offhand unless they are multiclass.|(Must equip Dual Wield spell to equip an offhand weapon)"
 
 KinkyDungeonSpellWizardOffhand,"Dual Wield (Wizard)"
-KinkyDungeonSpellDescriptionWizardOffhand,"Designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)"
+KinkyDungeonSpellDescriptionWizardOffhand,"Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)"
 
 KinkyDungeonInventoryItemArcaneTome,Arcane Tome
 KinkyDungeonInventoryItemArcaneTomeDesc,"Contains advanced formulas and thrilling tales of thirsty wizards."
@@ -15807,3 +15842,114 @@ KDEscapeKey_Fail_Boss,BOSS ROOM
 KDEscapeKey_Pass_Boss,BOSS ROOM CLEARED!
 KDEscapeKey_Fail_None,Room bugged. Please Report.
 KDEscapeKey_Pass_None,""
+
+KDVarSuffCursed,(Cursed)
+KDVarSuffEvasion,of Agility
+KDVarPrefAccuracy,Precise
+KDVarPrefSneak,Silent
+KDVarPrefAoEDamageFrozen,Blizzard
+KDVarSuffSpellWard,of Warding
+KDVarSuffBondageResist,of Freedom
+KDVarSuffDamageResist,of Resistance
+KDVarSuffDamageBuff,of Power
+KDVarPrefManaCost,Arcane
+KDVarPrefManaCostSpecific,Entuned
+KDVarPrefManaRegenOnKill,Draining
+KDVarSuffElementalEcho,of Echoes
+KDVarPrefElementalDmg,Infused
+KDVarPrefManaRegen,Focusing
+KDVarSuffBaseDamageBuffMelee,of Empowerment
+KDVarSuffBaseDamageBuffMagic,of Destruction
+
+
+KinkyDungeonSpellQuickness,Spatial Compression
+KinkyDungeonSpellDescriptionQuickness,"For 4 turns, your movement does not advance time. Attacking or casting counts as one move and passes time as normal."
+KinkyDungeonBuffQuickness,"You are F A S T"
+
+KinkyDungeonSpellQuickness2,Double Accel
+KinkyDungeonSpellDescriptionQuickness2,"Slow down time by 1/2 for 10 turns (world time). Stamina regens 50% slower."
+KinkyDungeonBuffQuickness2,"Time is slowed by 2x"
+KinkyDungeonSpellQuickness3,Triple Accel
+KinkyDungeonSpellDescriptionQuickness3,"Slow down time by 1/3 for 10 turns (world time). Stamina regens 75% slower."
+KinkyDungeonBuffQuickness3,"Time is slowed by 3x"
+KinkyDungeonSpellQuickness4,Quadro Accel
+KinkyDungeonSpellDescriptionQuickness4,"Slow down time by 1/4 for 10 turns (world time). Stamina does not regen."
+KinkyDungeonBuffQuickness5,"Time is slowed by 4x"
+KinkyDungeonSpellQuickness5,Total Accel
+KinkyDungeonSpellDescriptionQuickness5,"Stop time 10 turns (world time). Stamina does not regen."
+KinkyDungeonBuffQuickness5,"Time has come to a halt..."
+
+KDQuickness2_Yes,"Time slows down by 2x!"
+KDQuickness2_Floater,"Double Accel!"
+KDQuickness3_Yes,"Time slows down by 3x!"
+KDQuickness3_Floater,"Triple  Accel!"
+KDQuickness4_Yes,"Time slows down by 4x!"
+KDQuickness4_Floater,"Quadro Accel!"
+KDQuickness5_Yes,"Time has ceased to pass."
+KDQuickness5_Floater,"Total Accel!"
+
+KDQuickness_Yes,"You begin to move at lightning speed!"
+KDQuickness_Floater,"ACCEL BEGIN!"
+KDQuickness_NoMana,"Not enough mana."
+KDQuickness_NoComp,"You need to free your legs."
+
+
+KinkyDungeonSpellSwap,Spatial Swap
+KinkyDungeonSpellDescriptionSwap,"Choose a target with a clear line of sight to you and switch places with them."
+KinkyDungeonSpellCastSwap,You point at the target and swap places with them!
+KinkyDungeonSpellCastPartialSwap,"You point at the target and try tp swap places, but they resist!"
+KinkyDungeonSpellCastFailSwap,"You point at the target and try tp swap places, but they resist and the spell fails!"
+KinkyDungeonSpellTargetSwap,Choose target to swap with
+
+KDEnemyBlockSuccess,"The ENMY blocked your attack, negating it entirely!"
+KDEnemyBlockPartial,"The ENMY blocked your attack, reducing the damage by PCNT%!"
+KDEnemyBlockSuccessMulti,"The ENMY remains unscathed after putting up a strong defense!"
+KDEnemyBlockPartialMulti,"The ENMY puts up surprising resistance, reducing the damage by PCNT%."
+
+KDNoDamage,no damage
+
+
+KinkyDungeonSpellRaiseDefenses,Raise Defenses
+KinkyDungeonSpellDescriptionRaiseDefenses,"Spend 90 stamina to shield yourself from damage equal to your Block. Lasts 10 turns or until you attack."
+KinkyDungeonSpellEvasiveManeuvers,Evasive Maneuvers
+KinkyDungeonSpellDescriptionEvasiveManeuvers,"While active, you evade almost all attacks, but your stamina is drained by 50 per turn plus 10 per slow level. The base stamina cost is reduced by your Evasion."
+KinkyDungeonSpellBreakFree,Break Free
+KinkyDungeonSpellDescriptionBreakFree,"Consume 20 Battle Rhythm to increase escape power by +20% plus 1% of Bondage Resist. Lasts 60 turns or until your willpower reaches 0."
+KinkyDungeonSpellProblemSolving,Problem Solving
+KinkyDungeonSpellDescriptionProblemSolving,"While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +40% plus 20% of Bondage Resist"
+
+
+KDEvasiveManeuversEnd,You run out of strength to keep dodging...
+KDEvasiveManeuversFail,You can't muster the strength to dodge right now...
+KDEvasiveManeuversStart,You prepare to dodge!!!
+
+KinkyDungeonSpellProblemSolvingMsg,Your expertise and skill provides you with additional tool effectiveness! (+AMOUNT%)
+
+KDRaiseDefensesFail,You don't have enough stamina.
+KDRaiseDefensesSuccess,You raise your defences!
+KinkyDungeonBuffRaiseDefenses,Your defenses are raised!
+
+
+KDBreakFreeFailWP,You don't have the will to break free.
+KDBreakFreeFail,You don't have enough Battle Rhythm. You need 20.
+KDBreakFreeSuccess,"You channel your fighting spirit into your desire for freedom!"
+KinkyDungeonBuffBreakFree,Your struggle power is greatly increased!!!
+
+KDTeleportNearby,"The teleportation partially succeeds due to an obstruction, placing you near the intended point."
+KDTeleportFail,"The teleportation fizzles due to obstruction."
+KDConfirm,Confirm
+KDName,What is your name?
+
+
+KinkyDungeonSpellEnrage,"Enrage"
+KinkyDungeonSpellDescriptionEnrage,"Scream loudly, causing nearby enemies to investigate and increasing Battle Rhythm by 10. Has a 100 turn cooldown."
+
+KDEnrageSuccess,You shout loudly and shake your fist at the sky! (+10 BR)
+KDEnrageFailGagged,Mmmph! (You can't shout while gagged)
+KDEnrageFailCooldown,You are plenty mad enough as is.
+KDEnrageFail,You are too tired to rage. Perhaps try a warm cozy bed instead?
+
+KDTurns,turns
+
+KDShieldAbsorb,Your shield absorbed AMNT damage.
+KDStatShield,You are currently shielded from damage and some spells.

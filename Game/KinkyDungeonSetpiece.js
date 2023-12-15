@@ -302,7 +302,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				KinkyDungeonMapSet(cornerX + radius - 1, cornerY + 3 , 'o');
 
 				let Enemy = KinkyDungeonGetEnemyByName("Fuuka1");
-				let e = {tracking: true, Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:cornerX + 3, y:cornerY + 3, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
+				let e = {tracking: true, Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:cornerX + 3, y:cornerY + 3, shield: Enemy.shield, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
 				KDAddEntity(e);
 				KDStageBossGenerated = true;
 				break;

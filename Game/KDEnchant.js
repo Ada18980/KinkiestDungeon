@@ -53,9 +53,27 @@ let KDEnchantVariantList = {
 function KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment) {
 	amt *= 1 + ((KDGetEffLevel() - 1)/(KinkyDungeonMaxLevel - 1)); // Higher floor = higher rewards
 	if (Loot?.amtMult) amt *= Loot.amtMult;
-	if (primaryEnchantment) amt *= 0.6; // Reduce the power if there are already enchantments
+	if (primaryEnchantment) amt *= 0.45; // Reduce the power if there are already enchantments
 	if (curse && KDEventHexModular[curse]?.level > 0) amt *= 1 + 0.5 * Math.pow(KDEventHexModular[curse].level, 0.5);
 	return Math.ceil(amt);
+}
+/**
+ * Normalized for stats that are multiplicative, E.G mana costs
+ * Only works for stuff normalized to a range of (0-100)
+ * @param {number} amt
+ * @param {string} item
+ * @param {any} Loot
+ * @param {string} curse
+ * @param {string} primaryEnchantment
+ * @returns {number}
+ */
+function KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment) {
+	let original = amt * 0.01;
+	amt *= 1 + ((KDGetEffLevel() - 1)/(KinkyDungeonMaxLevel - 1)); // Higher floor = higher rewards
+	if (Loot?.amtMult) amt *= Loot.amtMult;
+	if (primaryEnchantment) amt *= 0.3; // Reduce the power if there are already enchantments
+	if (curse && KDEventHexModular[curse]?.level > 0) amt *= 1 + 0.5 * Math.pow(KDEventHexModular[curse].level, 0.5);
+	return 100 * (1 - (1 - original) * Math.pow(1 - original, (amt / (100 * original))));
 }
 
 /** @type {Record<string, KDEnchantment>} */
@@ -81,6 +99,7 @@ let KDEventEnchantmentModular = {
 
 	"Evasion": {
 		tags: ["evasion", "defense", "passive"],
+		suffix: "Evasion",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -94,7 +113,7 @@ let KDEventEnchantmentModular = {
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments) => {
 					let power = Math.max(KDGetItemPower(item), 4);
-					let amt = 10 + Math.round((0.4 + 0.6*KDRandom()) * 5 * Math.pow(power, 0.75));
+					let amt = 7 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "Evasion", trigger: "tick", type: "evasionBuff", power: amt/100, inheritLinked: true},
@@ -104,6 +123,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"Accuracy": {
 		tags: ["accuracy", "offense", "passive"],
+		prefix: "Accuracy",
 		types: {
 			2: null, //consumable
 			1: /*weapon*/{level: 1,
@@ -144,6 +164,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"Sneak": {
 		tags: ["stealth", "defense", "passive"],
+		prefix: "Sneak",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -167,6 +188,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"AoEDamageFrozen": {
 		tags: ["magic", "offense", "ice", "passive"],
+		prefix: "AoEDamageFrozen",
 		types: {
 			2: null, //consumable
 			1: /*weapon*/{level: 1,
@@ -192,6 +214,7 @@ let KDEventEnchantmentModular = {
 	},
 	"SpellWard": {
 		tags: ["magic", "defense", "passive"],
+		suffix: "SpellWard",
 		types: {
 			2: null, //consumable
 			1: /*weapon*/{level: 1,
@@ -232,6 +255,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"BondageResist": {
 		tags: ["melee", "bondage", "defense", "passive"],
+		suffix: "BondageResist",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -245,7 +269,7 @@ let KDEventEnchantmentModular = {
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments) => {
 					let power = Math.max(KDGetItemPower(item), 5);
-					let amt = 20 + Math.round((0.4 + 0.6*KDRandom()) * 15 * Math.pow(power, 0.75));
+					let amt = 10 + Math.round((0.4 + 0.6*KDRandom()) * 8 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "BondageResist", trigger: "tick", type: "RestraintBlock", power: amt/10, inheritLinked: true},
@@ -255,6 +279,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"DamageResist": {
 		tags: ["damage", "defense", "passive"],
+		suffix: "DamageResist",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -280,6 +305,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"DamageBuff": {
 		tags: ["damage", "offense", "passive"],
+		suffix: "DamageBuff",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -305,6 +331,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"ManaCost": {
 		tags: ["magic", "mana", "economy", "passive"],
+		prefix: "ManaCost",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -320,7 +347,7 @@ let KDEventEnchantmentModular = {
 				events: (item, Loot, curse, primaryEnchantment, enchantments) => {
 					let power = Math.max(KDGetItemPower(item), 1);
 					let amt = 1 + Math.round((0.4 + 0.6*KDRandom()) * 3 * Math.pow(power, 0.5));
-					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
+					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaCost", trigger: "calcMultMana", type: "ManaCost", power: 1 - Math.min(0.99, amt*0.01), inheritLinked: true},
 						{original: "ManaCost", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCost", power: -amt, color: "#0000ff", bgcolor: "#8888ff"},
@@ -329,6 +356,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"ManaCostSpecific": {
 		tags: ["magic", "mana", "economy", "passive"],
+		prefix: "ManaCostSpecific",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -346,7 +374,7 @@ let KDEventEnchantmentModular = {
 					let amt = 5 + Math.round((0.4 + 0.6*KDRandom()) * 6 * Math.pow(power, 0.5));
 					let types = ['air', 'earth', 'fire', 'water', 'electric', 'ice', 'latex', 'metal', 'rope', 'leather', 'light', 'shadow', 'stealth', 'summon', 'knowledge', 'arrow'];
 					let type = CommonRandomItemFromList("", types);
-					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
+					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaCostSpecific", trigger: "calcMultMana", type: "ManaCost", condition: "spellType", kind: type, power: 1 - Math.min(0.99, amt*0.01), inheritLinked: true},
 						{original: "ManaCostSpecific", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCostSpecific", kind: TextGet("KinkyDungeonFilter" + type), power: -amt, color: "#0000ff", bgcolor: "#8888ff"},
@@ -355,6 +383,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"ManaRegenOnKill": {
 		tags: ["magic", "mana", "economy", "trigger"],
+		prefix: "ManaRegenOnKill",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -378,6 +407,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"ElementalEcho": {
 		tags: ["melee", "magic", "elemental", "offense", "passive"],
+		suffix: "ElementalEcho",
 		types: {
 			2: null, //consumable
 			1: null, // weapon
@@ -403,6 +433,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"ElementalDmg": {
 		tags: ["magic", "elemental", "offense", "passive"],
+		prefix: "ElementalDmg",
 		types: {
 			2: null, //consumable
 			1: /*weapon*/{level: 5,
@@ -448,6 +479,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"ManaRegen": {
 		tags: ["magic", "mana", "passive"],
+		prefix: "ManaRegen",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -471,6 +503,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"BaseDamageBuffMelee": {
 		tags: ["melee", "offense", "damage", "passive"],
+		suffix: "BaseDamageBuffMelee",
 		types: {
 			2: null, //consumable
 			1: null, //weapon
@@ -495,6 +528,7 @@ let KDEventEnchantmentModular = {
 		}},
 	"BaseDamageBuffMagic": {
 		tags: ["magic", "damage", "offense", "passive"],
+		suffix: "BaseDamageBuffMagic",
 		types: {
 			2: null, //consumable
 			1: null, //weapon

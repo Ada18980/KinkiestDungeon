@@ -57,6 +57,10 @@ let KinkyDungeonFactionFilters = {
 		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":0.6333333333333334,"red":1.3,"green":1,"blue":1.5333333333333332,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0,"contrast":1.4833333333333334,"brightness":1.35,"red":0.48333333333333334,"green":0.6666666666666666,"blue":0.8666666666666667,"alpha":1},
 	},
+	"Curse": {
+		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":0.6333333333333334,"red":1.3,"green":1,"blue":1.5333333333333332,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0,"contrast":1.4833333333333334,"brightness":1.35,"red":0.48333333333333334,"green":0.6666666666666666,"blue":0.8666666666666667,"alpha":1},
+	},
 	"AncientRobot": {
 		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":2.4166666666666665,"alpha":1},
 		Highlight: {"gamma":1,"saturation":1,"contrast":1.0833333333333335,"brightness":1.6833333333333333,"red":0.55,"green":1.9666666666666666,"blue":1.8333333333333333,"alpha":1},

@@ -141,7 +141,13 @@ function KinkyDungeonSearchSpell(list, name) {
 
 let KDSpellMemo = {};
 
-function KinkyDungeonFindSpell(name, SearchEnemies) {
+/**
+ * 
+ * @param {string} name 
+ * @param {boolean} SearchEnemies 
+ * @returns {spell}
+ */
+function KinkyDungeonFindSpell(name, SearchEnemies = false) {
 	if (KDSpellMemo[name]) return KDSpellMemo[name];
 	if (SearchEnemies) {
 		let spell = KinkyDungeonSearchSpell(KinkyDungeonSpellListEnemies, name);
@@ -444,6 +450,7 @@ function KinkyDungeonClickSpell(i) {
 			KDSendInput("equip", {name: item.name,
 				inventoryVariant: item.name != newItem.name ?
 					item.name : undefined,
+					faction: item.faction,
 				group: newItem.Group, curse: item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.events)});
 		}
 		KinkyDungeonSpellPress = "";
@@ -578,19 +585,26 @@ function KinkyDungeonGetChargeCost(Spell, Passive, Toggle) {
  */
 function KinkyDungeonGetCost(Spell) {
 	let cost = Spell.level;
-	if (Spell.level > 1 && !Spell.passive && KinkyDungeonStatsChoice.get("Novice")) cost *= 2;
+	if (Spell.spellPointCost) cost = Spell.spellPointCost;
+	//if (Spell.level > 1 && !Spell.passive && KinkyDungeonStatsChoice.get("Novice")) cost *= 2;
 	if (Spell.classSpecific && KDGameData.Class != Spell.classSpecific) cost *= 2;
-	if (Spell.spellPointCost) return Spell.spellPointCost;
-	return cost;
+	let bonus = 0;
+	if (Spell.increasingCost) {
+		for (let s of KinkyDungeonSpells) {
+			if (s != Spell && s.increasingCost) bonus += 1;
+		}
+		if (KinkyDungeonStatsChoice.get("Studious")) bonus = Math.max(-1, bonus - 2);
+	}
+	return cost + bonus;
 }
 
-function KinkyDungeonMakeNoise(radius, noiseX, noiseY) {
+function KinkyDungeonMakeNoise(radius, noiseX, noiseY, hideShockwave) {
 	let data = {
 		radius: radius,
 		x: noiseX,
 		y: noiseY,
 		enemiesHeard: [],
-		particle: true,
+		particle: !hideShockwave,
 	};
 	KinkyDungeonSendEvent("beforeNoise", data);
 	for (let e of KDMapData.Entities) {
@@ -888,7 +902,15 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
 					pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
 					lifetime:miscast || selfCast ? 1 : (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: entity.x, y: entity.y}, range: spellRange, hit:spell.onhit,
-					damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff,
+					damage: {evadeable: spell.evadeable,  noblock: spell.noblock, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff,
+						shield_crit: spell?.shield_crit, // Crit thru shield
+						shield_stun: spell?.shield_stun, // stun thru shield
+						shield_freeze: spell?.shield_freeze, // freeze thru shield
+						shield_bind: spell?.shield_bind, // bind thru shield
+						shield_snare: spell?.shield_snare, // snare thru shield
+						shield_slow: spell?.shield_slow, // slow thru shield
+						shield_distract: spell?.shield_distract, // Distract thru shield
+						shield_vuln: spell?.shield_vuln, // Vuln thru shield
 						bind: spell.bind, crit: spell.crit, bindcrit: spell.bindcrit, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, miscast);
 			b.visual_x = entity.x;
 			b.visual_y = entity.y;
@@ -915,7 +937,16 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
 					bulletSpin: spell.bulletSpin,
 					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit, noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
-					damage: spell.type == "inert" ? null : {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff,
+					damage: spell.type == "inert" ? null : {evadeable: spell.evadeable, noblock: spell.noblock,  damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff,
+						shield_crit: spell?.shield_crit, // Crit thru shield
+						shield_stun: spell?.shield_stun, // stun thru shield
+						shield_freeze: spell?.shield_freeze, // freeze thru shield
+						shield_bind: spell?.shield_bind, // bind thru shield
+						shield_snare: spell?.shield_snare, // snare thru shield
+						shield_slow: spell?.shield_slow, // slow thru shield
+						shield_distract: spell?.shield_distract, // Distract thru shield
+						shield_vuln: spell?.shield_vuln, // Vuln thru shield
+						bindEff: spell.bindEff,
 						bind: spell.bind, crit: spell.crit, bindcrit: spell.bindcrit, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell
 				}, miscast);
 			data.bulletfired = b;
@@ -937,7 +968,15 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					targetX: tX, targetY: tY,
 					source: entity?.player ? -1 : entity?.id, lifetime:spell.lifetime, cast: cast, dot: spell.dot, events: spell.events, aoe: spell.aoe,
 					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit, noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
-					damage: {evadeable: spell.evadeable, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff,
+					damage: {evadeable: spell.evadeable, noblock: spell.noblock,  damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff,
+						shield_crit: spell?.shield_crit, // Crit thru shield
+						shield_stun: spell?.shield_stun, // stun thru shield
+						shield_freeze: spell?.shield_freeze, // freeze thru shield
+						shield_bind: spell?.shield_bind, // bind thru shield
+						shield_snare: spell?.shield_snare, // snare thru shield
+						shield_slow: spell?.shield_slow, // slow thru shield
+						shield_distract: spell?.shield_distract, // Distract thru shield
+						shield_vuln: spell?.shield_vuln, // Vuln thru shield
 						bind: spell.bind, bindcrit: spell.bindcrit, crit: spell.crit, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}};
 			KinkyDungeonBulletHit(b, 1);
 			data.bulletfired = b;
@@ -1473,12 +1512,17 @@ let KDMagicFilter = "";
  */
 function KDFilterSpell(spell) {
 	let prereq = spell ? KinkyDungeonCheckSpellPrerequisite(spell) : false;
-	let prereqHost = spell ? (spell.upcastFrom && KinkyDungeonCheckSpellPrerequisite(KinkyDungeonFindSpell(spell.upcastFrom))) : false;
+	let prereqHost = spell ? prereq ||
+		(spell.upcastFrom && KinkyDungeonCheckSpellPrerequisite(KinkyDungeonFindSpell(spell.upcastFrom))) ||
+		(KDToggles.ShowSameCatSpells && typeof spell.prerequisite == "string" && spell.prerequisite && !KinkyDungeonFindSpell(spell.prerequisite)?.increasingCost && KinkyDungeonCheckSpellPrerequisite(KinkyDungeonFindSpell(spell.prerequisite)))
+		: false;
 	let learned = spell ? KinkyDungeonSpellIndex(spell.name) >= 0 : false;
+	// Youve learned the spell tree
 	let upgrade = spell ? spell.passive : false;
 	let passive = spell ? spell.type == "passive" : false;
 	let upcast = spell ? spell.upcastFrom : false;
 	return (!spell.hideLearned || !learned)
+	&& (!spell.hide)
 	&& (!spell.hideUnlearnable || prereq || learned)
 	&& (learned || !spell.hideWithout || KDHasSpell(spell.hideWithout))
 	&& (!spell.hideWith || !KDHasSpell(spell.hideWith))
@@ -1889,7 +1933,11 @@ function KinkyDungeonGetCompList(spell) {
 function KinkyDungeonSendMagicEvent(Event, data, forceSpell) {
 	if (!KDMapHasEvent(KDEventMapSpell, Event)) return;
 	for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
-		let spell = KinkyDungeonSpells[KinkyDungeonSpellChoices[i]];
+		let spell = 
+			(KinkyDungeonSpells[KinkyDungeonSpellChoices[i]]
+				? KDGetUpcast(KinkyDungeonSpells[KinkyDungeonSpellChoices[i]].name, KDEntityBuffedStat(KinkyDungeonPlayerEntity, "SpellEmpower"))
+				: null)
+			|| KinkyDungeonSpells[KinkyDungeonSpellChoices[i]];
 		if (spell && spell.events) {
 			for (let e of spell.events) {
 				if (e.trigger == Event && ((KinkyDungeonSpellChoicesToggle[i] && spell.type == "passive") || spell.type != "passive" || e.always || spell.name == forceSpell?.name)) {
@@ -2011,7 +2059,7 @@ function KDDrawHotbar(xLoc, yLoc, name, fn) {
 			if (weapon && KinkyDungeonWeaponVariants[weapon]) spell = KinkyDungeonWeaponVariants[weapon].template;
 			consumable = KinkyDungeonConsumableChoices[I];
 			if (weapon && KinkyDungeonConsumableVariants[consumable]) spell = KinkyDungeonConsumableVariants[consumable].template;
-			if (spell) {
+			if (spell && KDGetItemPreview({name: spell, type: KinkyDungeonConsumableChoices[I] ? Consumable : (armor ? LooseRestraint : Weapon)})) {
 				label = TextGet((armor ? "Restraint" : "KinkyDungeonInventoryItem") + spell);
 				KDDraw(kdcanvas, kdpixisprites, "kdspellPreview" + spell, KDGetItemPreview({name: spell, type: KinkyDungeonConsumableChoices[I] ? Consumable : (armor ? LooseRestraint : Weapon)}).preview, x - h, y, h, h);
 			}

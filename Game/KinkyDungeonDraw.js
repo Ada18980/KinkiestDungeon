@@ -1604,32 +1604,59 @@ function KinkyDungeonDrawGame() {
 		}
 	} else if (KinkyDungeonDrawState == "Orb") {
 		KinkyDungeonDrawOrb();
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 	} else if (KinkyDungeonDrawState == "PerkOrb") {
 		KinkyDungeonDrawPerkOrb();
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 	} else if (KinkyDungeonDrawState == "Heart") {
 		KinkyDungeonDrawHeart();
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 	} else if (KinkyDungeonDrawState == "Magic") {
 		KDDrawNavBar(-2);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KinkyDungeonDrawMagic();
 	} else if (KinkyDungeonDrawState == "MagicSpells") {
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KDDrawNavBar(2);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 		KinkyDungeonDrawMagicSpells();
 	} else if (KinkyDungeonDrawState == "Inventory") {
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KDDrawNavBar(1);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 		KinkyDungeonDrawInventory();
 	} else if (KinkyDungeonDrawState == "Logbook") {
 		KDDrawNavBar(3);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KinkyDungeonDrawLore();
 	} else if (KinkyDungeonDrawState == "Quest") {
 		KDDrawNavBar(3);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 		KinkyDungeonDrawQuest();
 	} else if (KinkyDungeonDrawState == "Reputation") {
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KDDrawNavBar(3);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
 		KinkyDungeonDrawReputation();
 	} else if (KinkyDungeonDrawState == "Restart") {
 		KDDrawNavBar(0);
@@ -2516,6 +2543,98 @@ function DrawRectKD(Container, Map, id, Params) {
 		sprite = new PIXI.Graphics();
 		sprite.lineStyle(Params.LineWidth ? Params.LineWidth : 1, string2hex(Params.Color), 1);
 		sprite.drawRect(0, 0, Params.Width, Params.Height);
+		// Add it to the container
+		Map.set(id, sprite);
+		Container.addChild(sprite);
+		if (!kdprimitiveparams.has(id) || !same)
+			kdprimitiveparams.set(id, Params);
+	}
+	if (sprite) {
+		// Modify the sprite according to the params
+		sprite.name = id;
+		sprite.position.x = Params.Left;
+		sprite.position.y = Params.Top;
+		sprite.width = Params.Width;
+		sprite.height = Params.Height;
+		sprite.zIndex = Params.zIndex ? Params.zIndex : 0;
+		sprite.alpha = Params.alpha ? Params.alpha : 1;
+		kdSpritesDrawn.set(id, true);
+		return true;
+	}
+	return false;
+}
+/**
+ * Draws a hollow circle
+ * @param {any} Container
+ * @param {Map<string, any>} Map
+ * @param {{Left: number, Top: number, Width: number, Height: number, Color: string, LineWidth: number, zIndex: number, alpha?: number}} Params - rect parameters
+ * @returns {boolean} - If it worked
+ */
+function DrawCircleKD(Container, Map, id, Params) {
+	let sprite = Map.get(id);
+	let same = true;
+	if (sprite && kdprimitiveparams.has(id)) {
+		for (let p of Object.entries(kdprimitiveparams.get(id))) {
+			if (Params[p[0]] != p[1]) {
+				same = false;
+				break;
+			}
+		}
+	}
+	if (!sprite || !same) {
+		if (sprite) sprite.destroy();
+		// Make the prim
+		sprite = new PIXI.Graphics();
+		sprite.lineStyle(Params.LineWidth ? Params.LineWidth : 1, string2hex(Params.Color), 1);
+		sprite.drawCircle(Params.Width/2, Params.Width/2, Params.Width/2);
+		// Add it to the container
+		Map.set(id, sprite);
+		Container.addChild(sprite);
+		if (!kdprimitiveparams.has(id) || !same)
+			kdprimitiveparams.set(id, Params);
+	}
+	if (sprite) {
+		// Modify the sprite according to the params
+		sprite.name = id;
+		sprite.position.x = Params.Left;
+		sprite.position.y = Params.Top;
+		sprite.width = Params.Width;
+		sprite.height = Params.Height;
+		sprite.zIndex = Params.zIndex ? Params.zIndex : 0;
+		sprite.alpha = Params.alpha ? Params.alpha : 1;
+		kdSpritesDrawn.set(id, true);
+		return true;
+	}
+	return false;
+}
+
+
+/**
+ * Draws a +
+ * @param {any} Container
+ * @param {Map<string, any>} Map
+ * @param {{Left: number, Top: number, Width: number, Height: number, Color: string, LineWidth: number, zIndex: number, alpha?: number}} Params - rect parameters
+ * @returns {boolean} - If it worked
+ */
+function DrawCrossKD(Container, Map, id, Params) {
+	let sprite = Map.get(id);
+	let same = true;
+	if (sprite && kdprimitiveparams.has(id)) {
+		for (let p of Object.entries(kdprimitiveparams.get(id))) {
+			if (Params[p[0]] != p[1]) {
+				same = false;
+				break;
+			}
+		}
+	}
+	if (!sprite || !same) {
+		if (sprite) sprite.destroy();
+		// Make the prim
+		let linewidth = Params.LineWidth || 2;
+		sprite = new PIXI.Graphics();
+		sprite.beginFill(string2hex(Params.Color));
+		sprite.drawRect(Params.Width/2 -linewidth/2, 0, linewidth, Params.Height);
+		sprite.drawRect(0, Params.Height/2 -linewidth/2, Params.Width, linewidth);
 		// Add it to the container
 		Map.set(id, sprite);
 		Container.addChild(sprite);
@@ -3790,6 +3909,19 @@ function KDPlayerDrawPoseButtons(C) {
 function KDGetLightColor(x, y) {
 	let light = KinkyDungeonBrightnessGet(x, y);
 	let color = KDAvgColor(KinkyDungeonColorGet(x, y), KinkyDungeonShadowGet(x, y), light, 1);
+	color = KDAvgColor(color, 0xffffff, 1, 0.5); // Brighten
+	return color;
+}
+
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @returns {number} - the color in hex
+ */
+function KDGetLightColorGreyscale(x, y) {
+	let light = KinkyDungeonBrightnessGet(x, y);
+	let color = KDAvgColor(0xaaaaff, 0x030303, light, 1);
 	color = KDAvgColor(color, 0xffffff, 1, 0.5); // Brighten
 	return color;
 }

@@ -273,7 +273,7 @@ let KinkyDungeonStatsPresets = {
 	"LostTechnology": {category: "Major", buff: true, id: 23, cost: -1},
 	//"Blessed": {category: "Map", id: 8, cost: 1},
 	"Cursed": {category: "Major", id: 9, cost: -3},
-	"Studious": {category: "Magic", id: 12, cost: 1, tags: ["start"]},
+	"Studious": {category: "Magic", id: 12, cost: 2, tags: ["start"]},
 	//"Novice": {category: "Magic", id: 7, cost: -1},
 	//"Meditation": {category: "Magic", id: 13, cost: 2},
 	//"DistractionCast":  {category: "Magic", id: "DistractionCast", cost: 2},
@@ -494,7 +494,7 @@ function KinkyDungeonCanUnPickStat(Stat) {
 
 let KDPerkStart = {
 	Studious: () => {
-		KinkyDungeonSpellPoints += 3;
+		KinkyDungeonSpellPoints += 1;
 	},
 
 	Submissive: () => {

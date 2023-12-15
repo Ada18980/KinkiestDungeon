@@ -11,7 +11,8 @@ let KinkyDungeonConsumables = {
 	"PotionWill" : {name: "PotionWill", potion: true, rarity: 1, shop: true, type: "restore", wp_instant: 2.5, wp_gradual: 0, scaleWithMaxWP: true, duration: 0, gagFloor: 0.5, sfx: "PotionDrink"},
 	"PotionStamina" : {name: "PotionStamina", potion: true, rarity: 1, shop: true, type: "restore", sp_instant: 5, sp_gradual: 25, scaleWithMaxSP: true, duration: 25, gagFloor: 0.5, sfx: "PotionDrink"},
 	"PotionFrigid" : {name: "PotionFrigid", potion: true, rarity: 1, shop: true, type: "restore", ap_instant: -10, ap_gradual: -20, duration: 50, arousalRatio: 1.0, gagFloor: 0.5, sfx: "PotionDrink"},
-	"SmokeBomb" : {name: "SmokeBomb", noHands: true, rarity: 2, costMod: -1, shop: true, type: "spell", spell: "Shroud", sfx: "FireSpell"},
+	"SmokeBomb" : {name: "SmokeBomb", noHands: true, rarity: 2, costMod: -1, shop: false, noConsumeOnUse: true, type: "targetspell", sfx: "FireSpell", spell: "SmokeBomb"},
+	"FlashBomb" : {name: "FlashBomb", noHands: true, rarity: 3, costMod: -1, shop: false, noConsumeOnUse: true, type: "targetspell", sfx: "FireSpell", spell: "FlashBomb"},
 	"PotionInvisibility" : {name: "PotionInvisibility", potion: true, rarity: 3, costMod: -1, shop: true, type: "spell", spell: "Invisibility", sfx: "PotionDrink"},
 	"Ectoplasm" : {name: "Ectoplasm", noHands: true, rarity: 1, shop: false, type: "spell", spell: "LesserInvisibility", sfx: "Invis"},
 	"Gunpowder" : {name: "Gunpowder", rarity: 1, shop: true, useQuantity: 1, noConsumeOnUse: true, type: "targetspell", spell: "Gunpowder", sfx: "FireSpell"},
@@ -56,12 +57,16 @@ Object.assign(KinkyDungeonConsumables, KDCookies);
 let KDRechargeCost = 100;
 
 let KinkyDungneonBasic = {
+	"Key" : {name: "Key", rarity: 0, shop: false},
+	"Keyring" : {name: "Key", rarity: 0, shop: false},
 	"RedKey" : {name: "RedKey", rarity: 0, shop: true},
 	"BlueKey" : {name: "BlueKey", rarity: 2, costMod: 2, shop: true},
 	"Lockpick" : {name: "Lockpick", rarity: 0, shop: true},
 	//"4Lockpick" : {name: "4Lockpick", rarity: 1, shop: true},
 	"3Bola" : {name: "3Bola", consumable: "Bola", quantity: 3, rarity: 0, shop: true},
 	"3Bomb" : {name: "3Bomb", consumable: "Bomb", quantity: 3, rarity: 1, shop: true},
+	"3Flash" : {name: "3Flash", consumable: "FlashBomb", quantity: 3, rarity: 2, shop: true},
+	"3Smoke" : {name: "3Smoke", consumable: "SmokeBomb", quantity: 3, rarity: 1, shop: true},
 	"MaidUniform" : {name: "MaidUniform", rarity: 2, shop: true, ignoreInventory: "Maid"},
 	//"PotionCollar" : {name: "PotionCollar", rarity: 2, shop: true},
 };

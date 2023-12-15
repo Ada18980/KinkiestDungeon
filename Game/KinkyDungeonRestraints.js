@@ -1831,6 +1831,11 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	 * willEscapePenalty: number,
 	 * canCut: boolean,
 	 * canCutMagic: boolean,
+	* toolBonus: number,
+	* toolMult: number,
+	* buffBonus: number,
+	* buffMult: number,
+	* struggleTime: number,
 	 * }}
 	 */
 	let data = {
@@ -1853,6 +1858,11 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		willEscapePenalty: KDGetWillPenalty(),
 		canCut: KinkyDungeonWeaponCanCut(true, false),
 		canCutMagic: KinkyDungeonWeaponCanCut(true, true),
+		toolBonus: 0.0,
+		toolMult: 1.0,
+		buffBonus: 0.0,
+		buffMult: 1.0,
+		struggleTime: 1.0,
 	};
 
 	if (StruggleType == "Cut") data.cost = KinkyDungeonStatStaminaCostTool;
@@ -1873,7 +1883,14 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	data.escapeChance = EC.escapeChance;
 	data.limitChance = EC.limitChance;
 
+	let toolMult = Math.max(0, 1 + data.toolBonus) * data.toolMult;
+	let buffMult = Math.max(0, 1 + data.buffBonus) * data.buffMult;
+
+	if (data.escapePenalty < 0) data.escapePenalty *= buffMult;
+
+	if (StruggleType == "Pick") data.escapeChance += KinkyDungeonGetPickBonus()*toolMult;
 	data.origEscapeChance = data.escapeChance;
+	
 
 	KinkyDungeonInterruptSleep();
 
@@ -1895,20 +1912,20 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					if (KDWeapon(inv).cutBonus > maxBonus) maxBonus = KDWeapon(inv).cutBonus;
 					if (KDWeapon(inv).cutBonus != undefined && KDWeaponIsMagic(inv)) data.canCutMagic = true;
 				}
-				data.escapeChance += maxBonus;
-				data.origEscapeChance += maxBonus;
+				data.escapeChance += maxBonus*toolMult;
+				data.origEscapeChance += maxBonus*toolMult;
 				//if (maxBonus > 0) cancut = true;
 			} else if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.cutBonus) {
-				data.escapeChance += KinkyDungeonPlayerDamage.cutBonus;
-				data.origEscapeChance += KinkyDungeonPlayerDamage.cutBonus;
+				data.escapeChance += KinkyDungeonPlayerDamage.cutBonus*toolMult;
+				data.origEscapeChance += KinkyDungeonPlayerDamage.cutBonus*toolMult;
 				//cancut = true;
 			}
 		}
 		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum")) data.escapeChance = Math.max(data.escapeChance, KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum"));
 	}
 	if (StruggleType == "Cut" && !KDRestraint(restraint).magic && KinkyDungeonWeaponCanCut(true, true)) {
-		data.escapeChance += KinkyDungeonEnchantedKnifeBonus;
-		data.origEscapeChance += KinkyDungeonEnchantedKnifeBonus;
+		data.escapeChance += KinkyDungeonEnchantedKnifeBonus*toolMult;
+		data.origEscapeChance += KinkyDungeonEnchantedKnifeBonus*toolMult;
 	}
 	let escapeSpeed = KDBaseEscapeSpeed;
 
@@ -1924,14 +1941,14 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	if (StruggleType == "Remove" &&
 		(!handsBound && (KinkyDungeonWeaponCanCut(true) || KinkyDungeonLockpicks > 0)
 		|| (struggleGroup == "ItemHands" && KinkyDungeonCanTalk() && !armsBound))) {
-		data.escapeChance = Math.max(data.escapeChance, Math.min(1, data.escapeChance + 0.15));
-		data.origEscapeChance = Math.max(data.origEscapeChance, Math.min(1, data.origEscapeChance + 0.15));
+		data.escapeChance = Math.max(data.escapeChance, Math.min(1, data.escapeChance + 0.15*toolMult));
+		data.origEscapeChance = Math.max(data.origEscapeChance, Math.min(1, data.origEscapeChance + 0.15*toolMult));
 	}
 
 	// Psychic doesnt modify original chance, so that you understand its the perk helping you
 	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.25);
 
-	let edgeBonus = 0.12;
+	let edgeBonus = 0.12*toolMult;
 	// Easier to struggle if your legs are free, due to leverage
 	if (StruggleType == "Struggle" && data.hasAffinity) data.escapeChance += edgeBonus * (0.5 + 0.5*Math.max(2 - KinkyDungeonSlowLevel, 0));
 
@@ -2113,7 +2130,6 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		}
 	}
 
-	if (StruggleType == "Pick") data.escapeChance += KinkyDungeonGetPickBonus();
 
 	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.15);
 
@@ -2320,7 +2336,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 			// Pass block
 			let progress = restraint.cutProgress ? restraint.cutProgress : 0;
-			let struggleTime = KinkyDungeonStatsChoice.get("FranticStruggle") ? 1 : Math.max(1, KDStruggleTime - KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "FastStruggle"));
+			data.struggleTime *= KinkyDungeonStatsChoice.get("FranticStruggle") ? 1 : Math.max(1, KDStruggleTime - KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "FastStruggle"));
 			if (KinkyDungeonStatsChoice.get("FranticStruggle")) data.cost *= 1.5;
 
 			if (((StruggleType == "Cut" && progress >= 1 - data.escapeChance)
@@ -2364,7 +2380,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 							mult *= 0.75 + 0.25 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 							KDAddDelayedStruggle(
 								escapeSpeed * speed * (0.3 + 0.2 * KDRandom() + 0.6 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax)),
-								struggleTime, StruggleType, struggleGroup, index, data,
+								data.struggleTime, StruggleType, struggleGroup, index, data,
 								restraint.cutProgress, maxLimit
 							);
 							if (speed > 0) {
@@ -2413,7 +2429,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 						mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 						KDAddDelayedStruggle(
 							escapeSpeed * mult * (data.escapeChance > 0 ? (KDMinPickRate * (data.escapeChance > 0.5 ? 2 : 1)) : 0) * (0.8 + 0.4 * KDRandom() - 0.4 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
-							struggleTime, StruggleType, struggleGroup, index, data,
+							data.struggleTime, StruggleType, struggleGroup, index, data,
 							restraint.pickProgress, maxLimit
 						);
 					}
@@ -2438,7 +2454,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 						mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 						KDAddDelayedStruggle(
 							escapeSpeed * mult * Math.max(data.escapeChance > 0 ? KDMinEscapeRate : 0, data.escapeChance) * (0.8 + 0.4 * KDRandom() - 0.4 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
-							struggleTime, StruggleType, struggleGroup, index, data,
+							data.struggleTime, StruggleType, struggleGroup, index, data,
 							restraint.unlockProgress, maxLimit
 						);
 					}
@@ -2452,7 +2468,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					mult *= 0.75 + 0.25 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 					KDAddDelayedStruggle(
 						escapeSpeed * mult * Math.max(data.escapeChance > 0 ? KDMinEscapeRate : 0, data.escapeChance) * (0.8 + 0.4 * KDRandom() - 0.3 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
-						struggleTime, StruggleType, struggleGroup, index, data,
+						data.struggleTime, StruggleType, struggleGroup, index, data,
 						restraint.struggleProgress, maxLimit
 					);
 				} else if (StruggleType == "Struggle") {
@@ -2465,7 +2481,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 					KDAddDelayedStruggle(
 						escapeSpeed * mult * Math.max(data.escapeChance > 0 ? KDMinEscapeRate : 0, data.escapeChance) * (0.5 + 0.4 * KDRandom() + 0.3 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax)),
-						struggleTime, StruggleType, struggleGroup, index, data,
+						data.struggleTime, StruggleType, struggleGroup, index, data,
 						restraint.struggleProgress, maxLimit
 					);
 				}
@@ -4359,6 +4375,45 @@ function KDChooseRestraintFromListGroupPri(RestraintList, GroupOrder) {
 }
 
 
+/**
+ * Gets a restraint from a list of eligible restraints and a group prioritization order
+ * @param {{restraint: restraint, variant?: ApplyVariant, weight: number}[]} RestraintList
+ * @param {string[]} GroupOrder
+ * @returns {{r: restraint, v: ApplyVariant}}
+ */
+function KDChooseRestraintFromListGroupPriWithVariants(RestraintList, GroupOrder) {
+	for (let i = 0; i < GroupOrder.length; i++) {
+		let group = GroupOrder[i];
+		let Restraints = RestraintList.filter((rest) => {
+			return rest.restraint.Group == group;
+		});
+
+		if (Restraints.length > 0) {
+			let restraintWeightTotal = 0;
+			let restraintWeights = [];
+
+
+			for (let rest of Restraints) {
+				let restraint = rest.restraint;
+				let weight = rest.weight;
+				restraintWeights.push({restraint: restraint, variant: rest.variant, weight: restraintWeightTotal});
+				weight += restraint.weight;
+				restraintWeightTotal += Math.max(0, weight);
+			}
+
+			let selection = KDRandom() * restraintWeightTotal;
+
+			for (let L = restraintWeights.length - 1; L >= 0; L--) {
+				if (selection > restraintWeights[L].weight) {
+					return {r: restraintWeights[L].restraint, v: restraintWeights[L].variant};
+				}
+			}
+		}
+	}
+	return null;
+}
+
+
 
 let KDSlimeParts = {
 	"Boots": {},
@@ -4841,6 +4896,7 @@ function KDGetItemName(item) {
 			variant = KinkyDungeonWeaponVariants[item.inventoryVariant || item.name];
 			break;
 	}
+	if (variant?.suffix) return base + " " + TextGet("KDVarSuff" + variant.suffix);
 	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
 	return base;
 }
@@ -4851,6 +4907,7 @@ function KDGetItemName(item) {
  */
 function KDGetRestraintName(restraint, variant) {
 	let base = TextGet("Restraint" + restraint.name);
+	if (variant?.suffix) return base + " " + TextGet("KDVarSuff" + variant.suffix);
 	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
 	return base;
 }
@@ -4861,6 +4918,7 @@ function KDGetRestraintName(restraint, variant) {
  */
 function KDGetConsumableName(consumable, variant) {
 	let base = TextGet("KinkyDungeonInventoryItem" + consumable.name);
+	if (variant?.suffix) return base + " " + TextGet("KDVarSuff" + variant.suffix);
 	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
 	return base;
 }
@@ -4871,6 +4929,7 @@ function KDGetConsumableName(consumable, variant) {
  */
 function KDGetWeaponName(weapon, variant) {
 	let base = TextGet("KinkyDungeonInventoryItem" + weapon.name);
+	if (variant?.suffix) return base + " " + TextGet("KDVarSuff" + variant.suffix);
 	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
 	return base;
 }
@@ -4885,6 +4944,7 @@ function KDGetItemNameString(name) {
 	if (variant) {
 		base = TextGet((KinkyDungeonGetRestraintByName(variant.template) ? "Restraint" : "KinkyDungeonInventoryItem") + variant.template);
 	}
+	if (variant?.suffix) return base + " " + TextGet("KDVarSuff" + variant.suffix);
 	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
 	return base;
 }

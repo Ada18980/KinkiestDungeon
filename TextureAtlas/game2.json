@@ -1546,7 +1546,7 @@
 },
 "Game/Conditions/ShieldDebuff.png":
 {
-	"frame": {"x":1660,"y":2024,"w":33,"h":23},
+	"frame": {"x":1701,"y":2024,"w":33,"h":23},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":20,"y":0,"w":33,"h":23},
@@ -1800,6 +1800,14 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/EffectTiles/LiquidMetal.png":
+{
+	"frame": {"x":1921,"y":1522,"w":72,"h":72},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/EffectTiles/PressurePlateActive.png":
 {
 	"frame": {"x":954,"y":1047,"w":38,"h":17},
@@ -1822,14 +1830,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":22,"w":72,"h":42},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/EffectTiles/Sleet.png":
-{
-	"frame": {"x":1921,"y":1522,"w":72,"h":72},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/EffectTiles/StarryTrail.png":
@@ -2256,14 +2256,6 @@
 	"spriteSourceSize": {"x":20,"y":1,"w":37,"h":66},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Enemies/SlimeAdv.png":
-{
-	"frame": {"x":2011,"y":1000,"w":35,"h":64},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":21,"y":7,"w":35,"h":64},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Enemies/SlimeEnthusiast.png":
 {
 	"frame": {"x":1483,"y":1982,"w":72,"h":65},
@@ -2318,6 +2310,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":22,"y":17,"w":31,"h":21},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Enemies/WolfInstructor.png":
+{
+	"frame": {"x":2011,"y":1000,"w":35,"h":64},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":6,"w":35,"h":64},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/EnemiesBound/Apprentice2.png":
@@ -2760,14 +2760,6 @@
 	"spriteSourceSize": {"x":47,"y":40,"w":19,"h":28},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Items/Group/ItemPelvis.png":
-{
-	"frame": {"x":1695,"y":2024,"w":33,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":37,"y":44,"w":33,"h":22},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Items/Group/ItemVulva.png":
 {
 	"frame": {"x":1002,"y":1991,"w":22,"h":33},
@@ -2850,7 +2842,7 @@
 },
 "Game/Items/Restraint/Vibes.png":
 {
-	"frame": {"x":1621,"y":2024,"w":37,"h":23},
+	"frame": {"x":1662,"y":2024,"w":37,"h":23},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":23,"y":23,"w":37,"h":23},
@@ -3072,6 +3064,14 @@
 	"spriteSourceSize": {"x":0,"y":13,"w":72,"h":48},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Spells/Quickness.png":
+{
+	"frame": {"x":1621,"y":2024,"w":39,"h":23},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":24,"w":39,"h":23},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Spells/ShadowBlade.png":
 {
 	"frame": {"x":1184,"y":1447,"w":66,"h":38},
@@ -3264,6 +3264,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game3.json", "game4.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:d3b0f0cd9aab19fb3f4ca3ed3babc35f:83033e05f2d5a698b46317e4971b043f:701e665c5fc69e47e58c28f8fa547b2b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:53527658533f186cd7bcfdcf6618a1f4:5380d2148f86b6a4a626e3ccce3362a2:701e665c5fc69e47e58c28f8fa547b2b$"
 }
 }

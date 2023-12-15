@@ -49,7 +49,16 @@ let KinkyDungeonSpellSpecials = {
 						passthrough: spell2.noTerrainHit, noEnemyCollision: spell2.noEnemyCollision, alwaysCollideTags: spell2.alwaysCollideTags, nonVolatile:spell2.nonVolatile, noDoubleHit: spell2.noDoubleHit,
 						pierceEnemies: spell2.pierceEnemies, piercing: spell2.piercing, events: spell2.events,
 						lifetime:miscast || selfCast ? 1 : (spell2.bulletLifetime ? spell2.bulletLifetime : 1000), origin: {x: entity.x, y: entity.y}, range: spell2.range, hit:spell2.onhit,
-						damage: {evadeable: spell2.evadeable, damage:spell2.power, type:spell2.damage, crit: spell2.crit, bindcrit: spell2.bindcrit, bind: spell2.bind, bindEff: spell2.bindEff, distract: spell2.distract, distractEff: spell2.distractEff, boundBonus: spell2.boundBonus, time:spell2.time, flags:spell2.damageFlags}, spell: spell2}, miscast);
+						damage: {evadeable: spell2.evadeable, noblock: spell2.noblock,  damage:spell2.power, type:spell2.damage, crit: spell2.crit, bindcrit: spell2.bindcrit, bind: spell2.bind,
+							shield_crit: spell2?.shield_crit, // Crit thru shield
+							shield_stun: spell2?.shield_stun, // stun thru shield
+							shield_freeze: spell2?.shield_freeze, // freeze thru shield
+							shield_bind: spell2?.shield_bind, // bind thru shield
+							shield_snare: spell2?.shield_snare, // snare thru shield
+							shield_slow: spell2?.shield_slow, // slow thru shield
+							shield_distract: spell2?.shield_distract, // Distract thru shield
+							shield_vuln: spell2?.shield_vuln, // Vuln thru shield
+							bindEff: spell2.bindEff, distract: spell2.distract, distractEff: spell2.distractEff, boundBonus: spell2.boundBonus, time:spell2.time, flags:spell2.damageFlags}, spell: spell2}, miscast);
 				b.visual_x = entity.x;
 				b.visual_y = entity.y;
 			} else return "Fail";
@@ -654,6 +663,38 @@ let KinkyDungeonSpellSpecials = {
 			} else return "Fail";
 		} else return "Fail";
 	},
+	"Swap": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		if (!KinkyDungeonCheckPath(entity.x, entity.y, tX, tY, true, false, 1, true)) {
+			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);
+			return "Fail";
+		}
+		let en = KinkyDungeonEntityAt(targetX, targetY);
+		if (en && !en.player) {
+			if (!KDIsImmobile(en)) {
+				let newX = entity.x;
+				let newY = entity.y;
+				if (!(en.Enemy.tags?.unstoppable)) {
+					KDMovePlayer(en.x, en.y, true, false, false, true);
+					KDMoveEntity(en, newX, newY, false, false, KDHostile(en));
+	
+					KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));	
+					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+				} else {
+					let point = KinkyDungeonGetNearbyPoint(en.x, en.y, true, undefined, true, true);
+					if (point) {
+						KDMovePlayer(point.x, point.y, true, false, false, true);
+		
+						KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastPartial"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));	
+						KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+					} else {
+						KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));	
+					}
+				}
+				
+				return "Cast";
+			} else return "Fail";
+		} else return "Fail";
+	},
 	"Awaken": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let count = 0;
 		for (let X = -Math.ceil(spell.aoe); X <= Math.ceil(spell.aoe); X++)
@@ -808,6 +849,32 @@ let KinkyDungeonSpellSpecials = {
 								tile.pauseDuration = 0;
 								KDCreateEffectTile(tX + X, tY + Y, {
 									name: "Latex"
+								}, 20);
+							}
+						}
+					}
+				}
+			}
+		if (count == 0) return "Fail";
+
+		KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+		KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+		return "Cast";
+	},
+	"LiquidMetal": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let count = 0;
+		for (let X = -Math.ceil(spell.aoe); X <= Math.ceil(spell.aoe); X++)
+			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
+				if (KDistEuclidean(X, Y) <= spell.aoe) {
+					let loc = (tX + X) + "," + (tY + Y);
+					if (KinkyDungeonEffectTilesGet(loc)) {
+						for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
+							if (tile.tags && tile.tags.includes("latex")) {
+								count += 1;
+								tile.duration = 0;
+								tile.pauseDuration = 0;
+								KDCreateEffectTile(tX + X, tY + Y, {
+									name: "LiquidMetal"
 								}, 20);
 							}
 						}

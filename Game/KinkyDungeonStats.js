@@ -7,6 +7,9 @@ let KDShadowThreshold = 1.5;
 let KDSleepWillFraction = 0.5;
 let KDSleepWillFractionJail = 0.5;
 
+// Ratio of max shield to willpower max
+let KDShieldRatio = 1;
+
 function KDGetSleepWillFraction() {
 	if (KDGameData.PrisonerState == 'jail') return KDSleepWillFractionJail;
 	return KDSleepWillFraction;
@@ -414,7 +417,7 @@ function KDBulletAlreadyHit(bullet, entity, suppressAdd) {
 	return false;
 }
 
-function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
+function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg) {
 	if (bullet && !noAlreadyHit) {
 		if (KDBulletAlreadyHit(bullet, KinkyDungeonPlayerEntity)) return {happened: 0, string: ""};
 	}
@@ -499,95 +502,113 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt) {
 		data.dmg *= KDPerkParams.KDEnemyDamageMult;
 	}
 
+
 	KinkyDungeonSendEvent("duringPlayerDamage", data);
 
-	if (data.teaseTypes.includes(data.type) || (
-		KinkyDungeonStatsChoice.get("Masochist") && data.distractionTypesStrong.includes(data.type)
-	)) {
+	if (!KinkyDungeonIgnoreShieldTypes.includes(data.type) && KDGameData.Shield && data.dmg > 0) {
 		let amt = data.dmg;
-		if (data.bypassTeaseTypes.includes(data.type) || KinkyDungeonStatsChoice.get("Masochist")) {
-			KinkyDungeonTeaseLevelBypass += amt * (1 + (0.01 * (KinkyDungeonGoddessRep.Passion + 50) || 0));
-		} else {
-			KinkyDungeonTeaseLevel += amt * (1 + (0.01 * (KinkyDungeonGoddessRep.Passion + 50) || 0));
+		
+		data.dmg -= KDGameData.Shield;
+		if (!noMsg) {
+			KinkyDungeonSendTextMessage(6, TextGet("KDShieldAbsorb").replace("AMNT", "" + Math.round(10 * (amt - Math.max(0, data.dmg)))), "#92e8c0", 1);
+			KDDamageQueue.push({floater: Math.round((amt - Math.max(0, data.dmg))*10) + ` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[data.type].name)} ${TextGet("KDdmg")}`,
+				Entity: KinkyDungeonPlayerEntity, Color: "#92e8c0", Delay: 0, });
 		}
+		
+		KDDamagePlayerShield(Math.max(0, Math.min(KDGameData.Shield, amt - Math.max(0, data.dmg))));
+		if (data.dmg < 0) data.dmg = 0;
 	}
-
-	if (data.distractionTypesWeak.includes(data.type)) {
-		let amt = data.dmg/2 * data.arouseMod;
-		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}dp`;
-		KinkyDungeonChangeDistraction(amt, true, data.arouseAmount);
-	}
-	if (data.distractionTypesWeakNeg.includes(data.type)) {
-		let amt = -data.dmg/2 * data.arouseMod;
-		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}dp`;
-		KinkyDungeonChangeDistraction(amt, true);
-	}
-	if (data.distractionTypesStrong.includes(data.type)) {
-		let amt = data.dmg * data.arouseMod;
-		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}dp`;
-		KinkyDungeonChangeDistraction(amt, true, data.arouseAmount);
-	}
-	if (data.staminaTypesStrong.includes(data.type)) {
-		let amt = -data.dmg;
-		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}sp`;
-		KinkyDungeonChangeStamina(amt, false, false, false, KDGetStamDamageThresh());
-	} else if (data.staminaTypesWeak.includes(data.type)) {
-		let amt = -data.dmg/2;
-		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}sp`;
-		KinkyDungeonChangeStamina(amt, false, false, false, KDGetStamDamageThresh());
-	}
-	if (data.manaTypesStrong.includes(data.type)) {
-		let amt = -data.dmg;
-		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}mp`;
-		KinkyDungeonChangeMana(amt);
-	} else if (data.manaTypesWeak.includes(data.type)) {
-		let amt = -data.dmg/2;
-		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}mp`;
-		KinkyDungeonChangeMana(amt);
-	}
-	if (data.willTypesStrong.includes(data.type)) {
-		let amt = -data.dmg;
-		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}wp`;
-		KinkyDungeonChangeWill(amt, true);
-	} else if (data.willTypesWeak.includes(data.type)) {
-		let amt = -data.dmg/2;
-		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}wp`;
-		KinkyDungeonChangeWill(amt, true);
-	} else if (data.willTypesVeryWeak.includes(data.type)) {
-		let amt = -data.dmg/4;
-		if (str) str = str + ", ";
-		str = str + `${Math.round(amt*10)}wp`;
-		KinkyDungeonChangeWill(amt, true);
-	}
-	if (!noInterrupt)
-		KinkyDungeonInterruptSleep();
-
-	if (data.dmg > 0 && KinkyDungeonStatsChoice.get("Breathless")) {
-		let sleepAmount = data.dmg > 3 ? 6 : (data.dmg > 1 ? 4 : 2);
-		if (["chain", "poison", "crush"].includes(data.type))
-			KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness, KinkyDungeonSleepiness + sleepAmount);
-	}
-
-	if (KinkyDungeonStatFreeze > 0 && KinkyDungeonMeleeDamageTypes.includes(data.type)) {
-		KinkyDungeonChangeWill(-data.dmg, true);
-		KinkyDungeonStatFreeze = 0;
-	}
-	KDOrigWill = Math.floor(KinkyDungeonStatWill * 10);
+	
 
 
 
 
 
 	if (data.dmg > 0) {
+
+		if (data.teaseTypes.includes(data.type) || (
+			KinkyDungeonStatsChoice.get("Masochist") && data.distractionTypesStrong.includes(data.type)
+		)) {
+			let amt = data.dmg;
+			if (data.bypassTeaseTypes.includes(data.type) || KinkyDungeonStatsChoice.get("Masochist")) {
+				KinkyDungeonTeaseLevelBypass += amt * (1 + (0.01 * (KinkyDungeonGoddessRep.Passion + 50) || 0));
+			} else {
+				KinkyDungeonTeaseLevel += amt * (1 + (0.01 * (KinkyDungeonGoddessRep.Passion + 50) || 0));
+			}
+		}
+	
+		if (data.distractionTypesWeak.includes(data.type)) {
+			let amt = data.dmg/2 * data.arouseMod;
+			if (str) str = str + ", ";
+			str = str + `${Math.round(amt*10)}dp`;
+			KinkyDungeonChangeDistraction(amt, true, data.arouseAmount);
+		}
+		if (data.distractionTypesWeakNeg.includes(data.type)) {
+			let amt = -data.dmg/2 * data.arouseMod;
+			if (str) str = str + ", ";
+			str = str + `${Math.round(amt*10)}dp`;
+			KinkyDungeonChangeDistraction(amt, true);
+		}
+		if (data.distractionTypesStrong.includes(data.type)) {
+			let amt = data.dmg * data.arouseMod;
+			if (str) str = str + ", ";
+			str = str + `${Math.round(amt*10)}dp`;
+			KinkyDungeonChangeDistraction(amt, true, data.arouseAmount);
+		}
+		if (data.staminaTypesStrong.includes(data.type)) {
+			let amt = -data.dmg;
+			if (str) str = str + ", ";
+			str = str + `${Math.round(amt*10)}sp`;
+			KinkyDungeonChangeStamina(amt, false, false, false, KDGetStamDamageThresh());
+		} else if (data.staminaTypesWeak.includes(data.type)) {
+			let amt = -data.dmg/2;
+			if (str) str = str + ", ";
+			str = str + `${Math.round(amt*10)}sp`;
+			KinkyDungeonChangeStamina(amt, false, false, false, KDGetStamDamageThresh());
+		}
+		if (data.manaTypesStrong.includes(data.type)) {
+			let amt = -data.dmg;
+			if (str) str = str + ", ";
+			str = str + `${Math.round(amt*10)}mp`;
+			KinkyDungeonChangeMana(amt);
+		} else if (data.manaTypesWeak.includes(data.type)) {
+			let amt = -data.dmg/2;
+			if (str) str = str + ", ";
+			str = str + `${Math.round(amt*10)}mp`;
+			KinkyDungeonChangeMana(amt);
+		}
+		if (data.willTypesStrong.includes(data.type)) {
+			let amt = -data.dmg;
+			if (str) str = str + ", ";
+			str = str + `${Math.round(amt*10)}wp`;
+			KinkyDungeonChangeWill(amt, true);
+		} else if (data.willTypesWeak.includes(data.type)) {
+			let amt = -data.dmg/2;
+			if (str) str = str + ", ";
+			str = str + `${Math.round(amt*10)}wp`;
+			KinkyDungeonChangeWill(amt, true);
+		} else if (data.willTypesVeryWeak.includes(data.type)) {
+			let amt = -data.dmg/4;
+			if (str) str = str + ", ";
+			str = str + `${Math.round(amt*10)}wp`;
+			KinkyDungeonChangeWill(amt, true);
+		}
+		if (!noInterrupt)
+			KinkyDungeonInterruptSleep();
+	
+		if (data.dmg > 0 && KinkyDungeonStatsChoice.get("Breathless")) {
+			let sleepAmount = data.dmg > 3 ? 6 : (data.dmg > 1 ? 4 : 2);
+			if (["chain", "poison", "crush"].includes(data.type))
+				KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness, KinkyDungeonSleepiness + sleepAmount);
+		}
+	
+		if (KinkyDungeonStatFreeze > 0 && KinkyDungeonMeleeDamageTypes.includes(data.type)) {
+			KinkyDungeonChangeWill(-data.dmg, true);
+			KinkyDungeonStatFreeze = 0;
+		}
+		KDOrigWill = Math.floor(KinkyDungeonStatWill * 10);
+
+
 		data.newstats = [
 			KinkyDungeonStatDistraction,
 			KinkyDungeonStatDistractionLower,
@@ -749,8 +770,8 @@ function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0
 		Pause: Pause,
 		slowFloor: slowFloor,
 		mult: Math.max(0,
-			Amount > 0 ? (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatGainStamina"))
-			: (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatLossStamina"))
+			Amount > 0 ? Math.max(0, 1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatGainStamina"))
+			: Math.max(0, 1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatLossStamina"))
 		),
 	};
 	KinkyDungeonSendEvent("changeStamina", data);
@@ -1154,6 +1175,7 @@ function KinkyDungeonUpdateStats(delta) {
 	if (delta > 0 && KDGameData.StaminaPause > 0) KDGameData.StaminaPause -= delta;
 	if (delta > 0 && KDGameData.StaminaSlow > 0) KDGameData.StaminaSlow -= delta;
 	if (delta > 0 && KDGameData.KneelTurns > 0) KDGameData.KneelTurns -= delta;
+	if (KDGameData.Crouch) KDGameData.KneelTurns = Math.max(1, KDGameData.KneelTurns || 0);
 	if (KDGameData.Wait > 0) {
 		if (delta > 0) {
 			KDGameData.Wait -= delta;
@@ -1441,8 +1463,9 @@ function KinkyDungeonCalculateSlowLevel(delta) {
 				break;
 			}
 		}
-		if (!KinkyDungeonCanStand()) KinkyDungeonSlowLevel = Math.max(3, KinkyDungeonSlowLevel + 1);
-		if (KDIsHogtied()) KinkyDungeonSlowLevel = Math.max(4, KinkyDungeonSlowLevel + 1);
+		// If your hands are free you are faster
+		if (!KinkyDungeonCanStand()) KinkyDungeonSlowLevel = Math.max(KinkyDungeonIsArmsBound() ? 3 : 2, KinkyDungeonSlowLevel + 1);
+		if (KDIsHogtied()) KinkyDungeonSlowLevel = Math.max(KinkyDungeonIsArmsBound() ? 4 : 3, KinkyDungeonSlowLevel + 1);
 		for (let inv of KinkyDungeonAllRestraint()) {
 			if (KDRestraint(inv).freeze) KinkyDungeonSlowLevel = Math.max(2, KinkyDungeonSlowLevel);
 		}
@@ -1455,6 +1478,10 @@ function KinkyDungeonCalculateSlowLevel(delta) {
 	KinkyDungeonSlowLevel = Math.max(0, KinkyDungeonSlowLevel);
 	if (KinkyDungeonStatsChoice.get("PoorForm") && KinkyDungeonSlowLevel > 0) KinkyDungeonSlowLevel = Math.max(2, KinkyDungeonSlowLevel);
 
+	if (KDGameData.Crouch) {
+		// Force slowness when crouching
+		KinkyDungeonSlowLevel = Math.max(2, KinkyDungeonSlowLevel);
+	}
 	if (delta > 0 && KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowLevelEnergyDrain")) KDGameData.AncientEnergyLevel =
 		Math.max(0, KDGameData.AncientEnergyLevel - Math.max(0, origSlowLevel - KinkyDungeonSlowLevel) * KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowLevelEnergyDrain"));
 

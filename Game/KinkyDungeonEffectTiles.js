@@ -50,8 +50,15 @@ let KDEffectTiles = {
 		name: "Latex",
 		duration: 80,
 		priority: -2,
-		affinities: ["Latex"],
+		affinities: ["Sticky", "Latex"],
 		tags: ["latex", "insulator", "terrain"],
+	},
+	"LiquidMetal": {
+		name: "LiquidMetal",
+		duration: 300,
+		priority: -2,
+		affinities: ["Slippery"],
+		tags: ["slippery", "metal", "conductive", "terrain"],
 	},
 	"LatexThin": {
 		name: "LatexThin",

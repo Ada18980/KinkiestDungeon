@@ -232,6 +232,14 @@
 	"spriteSourceSize": {"x":26,"y":0,"w":18,"h":72},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Bullets/SmokeBombHit.png":
+{
+	"frame": {"x":1311,"y":1813,"w":216,"h":216},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":216,"h":216},
+	"sourceSize": {"w":216,"h":216}
+},
 "Game/Bullets/SnareHit.png":
 {
 	"frame": {"x":1540,"y":859,"w":3,"h":3},
@@ -1147,6 +1155,7 @@
 	"Game/Enemies/Fuuka": ["Game/Enemies/Fuuka1.png","Game/Enemies/Fuuka2.png"],
 	"Game/FloorGeneric/Dummy": ["Game/FloorGeneric/Dummy0.png","Game/FloorGeneric/Dummy1.png","Game/FloorGeneric/Dummy2.png"],
 	"Game/Spell": ["Game/Spell1.png","Game/Spell2.png","Game/Spell3.png","Game/Spell4.png","Game/Spell5.png"],
+	"Game/Spells/Quickness": ["Game/Spells/Quickness2.png","Game/Spells/Quickness3.png","Game/Spells/Quickness4.png","Game/Spells/Quickness5.png"],
 	"Game/Spells/SpellChoiceUp": ["Game/Spells/SpellChoiceUp1.png","Game/Spells/SpellChoiceUp2.png","Game/Spells/SpellChoiceUp3.png"],
 	"Game/Spells/SummonUp": ["Game/Spells/SummonUp1.png","Game/Spells/SummonUp2.png"],
 	"Game/UI/XRay": ["Game/UI/XRay0.png","Game/UI/XRay1.png","Game/UI/XRay2.png"]
@@ -1159,6 +1168,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game1.json", "game2.json", "game3.json", "game4.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:d3b0f0cd9aab19fb3f4ca3ed3babc35f:83033e05f2d5a698b46317e4971b043f:701e665c5fc69e47e58c28f8fa547b2b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:53527658533f186cd7bcfdcf6618a1f4:5380d2148f86b6a4a626e3ccce3362a2:701e665c5fc69e47e58c28f8fa547b2b$"
 }
 }
