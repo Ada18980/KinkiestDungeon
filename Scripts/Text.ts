@@ -209,7 +209,7 @@ class TextCache {
   	 * @param massivru - data from translation file
     	 * @param numberl - index of lines array
    	 */
-	buildTranslationsRU(S: string, massiven: string[][], massivru: string[], numberl: number) {
+	buildTranslationsRU(S: string, massiven: string[][], massivru: string[], numberl: number): string {
 		if (S != null){			
 			let S1 = S.trim();
 			if (S1 !== "") {
