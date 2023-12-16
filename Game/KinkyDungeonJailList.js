@@ -43,13 +43,13 @@ let KDJailEvents = {
 			if (KinkyDungeonTilesGet((xx-1) + "," + yy) && KinkyDungeonTilesGet((xx-1) + "," + yy).Type == "Door") {
 				KinkyDungeonTilesGet((xx-1) + "," + yy).Lock = undefined;
 			}
-			KDGameData.KinkyDungeonJailGuard = guard.id;
+			KDGameData.JailGuard = guard.id;
 			if (KinkyDungeonEnemyAt(guard.x, guard.y)) KDKickEnemy(KinkyDungeonEnemyAt(guard.x, guard.y));
 			KDAddEntity(guard);
 			if (KinkyDungeonVisionGet(guard.x, guard.y))
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardAppear").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "white", 6);
-			KDGameData.KinkyDungeonGuardTimer = KDGameData.KinkyDungeonGuardTimerMax;
-			KDGameData.KinkyDungeonGuardSpawnTimer = KDGameData.KinkyDungeonGuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.KinkyDungeonGuardSpawnTimerMax - KDGameData.KinkyDungeonGuardSpawnTimerMin));
+			KDGameData.GuardTimer = KDGameData.GuardTimerMax;
+			KDGameData.GuardSpawnTimer = KDGameData.GuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
 		},
 	},
 	"spawnRescue": {
@@ -163,7 +163,7 @@ let KDGuardActions = {
 			} else {
 				let touchesPlayer = KinkyDungeonCheckLOS(KinkyDungeonJailGuard(), KinkyDungeonPlayerEntity, KDistChebyshev(guard.x - KinkyDungeonPlayerEntity.x, guard.y - KinkyDungeonPlayerEntity.y), 1.5, false, false);
 				if (touchesPlayer) {
-					KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer - 5, 0);
+					KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer - 5, 0);
 					let dmg = KinkyDungeonDealDamage({damage: guard.Enemy.power * 1, type: guard.Enemy.dmgType}, undefined, undefined, true);
 					if (dmg && dmg.string)
 						KinkyDungeonSendTextMessage(5, TextGet("Attack" + guard.Enemy.name).replace("DamageTaken", dmg.string), "yellow", 3);
@@ -248,7 +248,7 @@ let KDGuardActions = {
 			let playerDist = Math.sqrt((guard.x - KinkyDungeonPlayerEntity.x)*(guard.x - KinkyDungeonPlayerEntity.x) + (guard.y - KinkyDungeonPlayerEntity.y)*(guard.y - KinkyDungeonPlayerEntity.y));
 			let touchesPlayer = KinkyDungeonCheckLOS(guard, KinkyDungeonPlayerEntity, playerDist, 1.5, false, false);
 			if (touchesPlayer) {
-				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 2);
+				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 2);
 				let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup);
 				if (KDGameData.GuardApplyTime > applyTime) {
 					if (oldRestraintItem && KDRestraint(oldRestraintItem) && !KDRestraint(oldRestraintItem).noJailRemove) {
@@ -277,7 +277,7 @@ let KDGuardActions = {
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
 			} else {
-				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 2);
+				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 2);
 				KDGameData.GuardApplyTime = 0;
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
@@ -296,7 +296,7 @@ let KDGuardActions = {
 			let playerDist = Math.sqrt((guard.x - KinkyDungeonPlayerEntity.x)*(guard.x - KinkyDungeonPlayerEntity.x) + (guard.y - KinkyDungeonPlayerEntity.y)*(guard.y - KinkyDungeonPlayerEntity.y));
 			let touchesPlayer = KinkyDungeonCheckLOS(guard, KinkyDungeonPlayerEntity, playerDist, 1.5, false, false);
 			if (touchesPlayer) {
-				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 7);
+				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 7);
 				let jrest = KinkyDungeonGetJailRestraintForGroup(guard.CurrentRestraintSwapGroup);
 				let newRestraint = jrest.restraint;
 				if (KDGameData.GuardApplyTime > applyTime) {
@@ -329,7 +329,7 @@ let KDGuardActions = {
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
 			} else {
-				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 7);
+				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 7);
 				KDGameData.GuardApplyTime = 0;
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
@@ -349,7 +349,7 @@ let KDGuardActions = {
 			let touchesPlayer = KinkyDungeonCheckLOS(guard, KinkyDungeonPlayerEntity, playerDist, 1.5, false, false);
 			if (touchesPlayer) {
 
-				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 2);
+				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 2);
 				let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup);
 				if (KDGameData.GuardApplyTime > applyTime) {
 					if (oldRestraintItem && !oldRestraintItem.lock && KinkyDungeonIsLockable(KDRestraint(oldRestraintItem))) {
@@ -379,7 +379,7 @@ let KDGuardActions = {
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
 			} else {
-				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 2);
+				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 2);
 				KDGameData.GuardApplyTime = 0;
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;

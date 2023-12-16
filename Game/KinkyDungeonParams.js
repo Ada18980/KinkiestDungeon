@@ -593,7 +593,7 @@ const KinkyDungeonMapParams = {
 
 		factionList: ["Bast", "Bandit", "AncientRobot", "Elemental", "Dragon"],
 
-		enemyTags: ["mummy", "ghost", "tape", "ribbon", "nature"],
+		enemyTags: ["mummy", "ghost"],
 		"defeat_outfit": "Bast",
 		"shrines": [
 			{Type: "Latex", Weight: 3},

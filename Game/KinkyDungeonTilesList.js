@@ -842,6 +842,11 @@ let KDEffectTileCreateFunctionsCreator = {
 			existingTile.pauseSprite = existingTile.name + "Frozen";
 		} else if (existingTile.tags.includes("hot")) {
 			newTile.duration = 0;
+		} else if (existingTile.tags.includes("conductcold")) {
+			KDCreateEffectTile(existingTile.x + 1, existingTile.y, {
+				name: "Chill",
+				duration: 2,
+			}, 2);
 		}
 		return true;
 	},
@@ -921,6 +926,50 @@ let KDEffectTileCreateFunctionsCreator = {
 			if (!ut.electric && ut.conductive) {
 				KDCreateEffectTile(existingTile.x, existingTile.y - 1, {
 					name: "Sparks",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x, existingTile.y - 1, 0.5, dmg, undefined);
+			}
+		}
+		return true;
+	},
+	"Chill": (newTile, existingTile) => {
+		if (existingTile.tags.includes("conductcold")) {
+			let rt = KDEffectTileTags(existingTile.x + 1, existingTile.y);
+			let lt = KDEffectTileTags(existingTile.x - 1, existingTile.y);
+			let ut = KDEffectTileTags(existingTile.x, existingTile.y - 1);
+			let dt = KDEffectTileTags(existingTile.x, existingTile.y + 1);
+			let dmg = {
+				type: "frost",
+				damage: 1.5,
+				time: 3,
+				bind: 0,
+				flags: ["EchoDamage"],
+			};
+			if (!rt.electric && rt.conductive) {
+				KDCreateEffectTile(existingTile.x + 1, existingTile.y, {
+					name: "Chill",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x + 1, existingTile.y, 0.5, dmg, undefined);
+			}
+			if (!lt.electric && lt.conductive) {
+				KDCreateEffectTile(existingTile.x - 1, existingTile.y, {
+					name: "Chill",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x - 1, existingTile.y, 0.5, dmg, undefined);
+			}
+			if (!dt.electric && dt.conductive) {
+				KDCreateEffectTile(existingTile.x, existingTile.y + 1, {
+					name: "Chill",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x, existingTile.y + 1, 0.5, dmg, undefined);
+			}
+			if (!ut.electric && ut.conductive) {
+				KDCreateEffectTile(existingTile.x, existingTile.y - 1, {
+					name: "Chill",
 					duration: 2,
 				}, 2);
 				KDDealEnvironmentalDamage(existingTile.x, existingTile.y - 1, 0.5, dmg, undefined);

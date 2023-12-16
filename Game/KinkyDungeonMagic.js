@@ -1062,7 +1062,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			if (special) {
 				let energyCost = KinkyDungeonPlayerDamage.special.energyCost;
 				if (KDGameData.AncientEnergyLevel < energyCost) return {result: "Fail", data: data};
-				if (energyCost) KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - energyCost);
+				if (energyCost) KinkyDungeonChangeCharge(- energyCost);
 
 				KinkyDungeonSendEvent("playerCastSpecial", data);
 				KinkyDungeonSendEvent("afterPlayerCastSpecial", data);
@@ -1567,9 +1567,9 @@ function KinkyDungeonListSpells(Mode) {
 	//let ii = 0;
 	//let maxY = 560;
 	let XX = 0;
-	let spacing = 60;
+	let spacing = 52;
 	let subspell_reduction = 20;
-	let ypadding = 10;
+	let ypadding = 3;
 	let yPad = 120 + MagicSpellsUIShift;
 	let buttonwidth = 280;
 	let filterWidth = 190;
@@ -1584,18 +1584,26 @@ function KinkyDungeonListSpells(Mode) {
 	let currentPage = Math.min(KinkyDungeonCurrentSpellsPage, pages.length - 1);
 	let spellPages = currentPage == 0 ?
 		[ // Dynamically generate known spells
-			KinkyDungeonSpells.filter((spell) => {return !spell.passive && spell.type != "passive" && spell.components && spell.components[0] == "Verbal";}).map((spell) => {return spell.name;}),
-			KinkyDungeonSpells.filter((spell) => {return !spell.passive && spell.type != "passive" && spell.components && spell.components[0] == "Arms";}).map((spell) => {return spell.name;}),
-			KinkyDungeonSpells.filter((spell) => {return !spell.passive && spell.type != "passive" && spell.components && spell.components[0] == "Legs";}).map((spell) => {return spell.name;}),
-			KinkyDungeonSpells.filter((spell) => {return spell.passive || spell.type == "passive" || !spell.components ||
-				(spell.components[0] != "Verbal" && spell.components[0] != "Arms" && spell.components[0] != "Legs");}).map((spell) => {return spell.name;}),
+			KinkyDungeonSpells.filter((spell) => {return !spell.passive && spell.components && spell.components[0] == "Verbal";}).map((spell) => {return spell.name;}),
+			KinkyDungeonSpells.filter((spell) => {return !spell.passive && spell.components && spell.components[0] == "Arms";}).map((spell) => {return spell.name;}),
+			KinkyDungeonSpells.filter((spell) => {return !spell.passive && spell.components && spell.components[0] == "Legs";}).map((spell) => {return spell.name;}),
+			KinkyDungeonSpells.filter((spell) => {return !spell.passive && (!spell.components ||
+				(spell.components[0] != "Verbal" && spell.components[0] != "Arms" && spell.components[0] != "Legs"));}).map((spell) => {return spell.name;}),
+			KinkyDungeonSpells.filter((spell) => {return spell.passive && (!spell.components ||
+				(spell.components[0] != "Verbal" && spell.components[0] != "Arms" && spell.components[0] != "Legs"));}).map((spell) => {return spell.name;}),
 		]
 		: pages[currentPage];
+
+	if (currentPage == 0 && spellPages[3] && spellPages[4]) {
+		spellPages[3] = [...spellPages[3], ...spellPages[4]]
+		spellPages.splice(4, 1);
+	}
 	let pageNames = KDFilterSpellPageNames();
 	let columnLabels = KDColumnLabels[currentPage];
 	let extraFilters = filtersExtra[currentPage];
 
 	// Draw filters
+	let cutoff = false;
 	if (Mode == "Draw") {
 		let x = 4 * (buttonwidth + xpadding);
 		let y = 25 + canvasOffsetY_ui;
@@ -1637,16 +1645,6 @@ function KinkyDungeonListSpells(Mode) {
 		).length);
 	}
 	if (KDSpellListIndex > longestList) KDSpellListIndex = 0;
-
-
-	DrawButtonKDEx("spellsUp", (bdata) => {
-		KDSpellListIndex = Math.max(0, KDSpellListIndex - 3);
-		return true;
-	}, KDSpellListIndex > 0, 910, 800, 90, 40, "", KDSpellListIndex > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png");
-	DrawButtonKDEx("spellsDown", (bdata) => {
-		KDSpellListIndex = Math.max(0, Math.min(longestList - KDMaxSpellPerColumn + 1, KDSpellListIndex + 3));
-		return true;
-	}, KDSpellListIndex < longestList - KDMaxSpellPerColumn + 1, 1160, 800, 90, 40, "", KDSpellListIndex < longestList - KDMaxSpellPerColumn + 1 ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png");
 
 	DrawTextFitKD(
 		TextGet("KDMagicFilter")
@@ -1778,10 +1776,22 @@ function KinkyDungeonListSpells(Mode) {
 				}
 				i++;
 				YY += h + ypadding_min;
-			}
+			} else if (YY >= KDMaxSpellYY + spacing) {cutoff = true;}
 		}
 		col++;
 	}
+	
+	if ( KDSpellListIndex > 0)
+		DrawButtonKDEx("spellsUp", (bdata) => {
+			KDSpellListIndex = Math.max(0, KDSpellListIndex - 3);
+			return true;
+		}, KDSpellListIndex > 0, 910, 800, 90, 40, "", KDSpellListIndex > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png");
+	if (cutoff)
+		DrawButtonKDEx("spellsDown", (bdata) => {
+			KDSpellListIndex = Math.max(0, Math.min(longestList - KDMaxSpellPerColumn + 1, KDSpellListIndex + 3));
+			return true;
+		}, KDSpellListIndex < longestList - KDMaxSpellPerColumn + 1, 1160, 800, 90, 40, "", KDSpellListIndex < longestList - KDMaxSpellPerColumn + 1 ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png");
+
 
 	let procList = pageNames;
 	let adjLists = GetAdjacentList(procList, currentPage, 1);
@@ -1791,6 +1801,9 @@ function KinkyDungeonListSpells(Mode) {
 	let center = canvasOffsetX_ui + xOffset + 705;
 	let tabWidth = 200;
 	let tabHeight = 35;
+	
+	if (left.length < 3) center -= tabWidth * (3 - left.length);
+	else if (right.length < 3) center += tabWidth * (3 - right.length);
 
 	DrawButtonVis(
 		center - tabWidth/2, 30, tabWidth, tabHeight + 10,
@@ -1800,13 +1813,13 @@ function KinkyDungeonListSpells(Mode) {
 		//.replace("TOTAL", "" + (pages.length)) + ": " + TextGet("KinkyDungeonSpellsPage" + pageNames[currentPage]),
 		"#ffffff", "", undefined, undefined, false, KDButtonColor);
 
-	drawHorizList(right, center + tabWidth + 1, 40, 200, tabHeight, 3, 24, (data) => {
+	drawHorizList(right, center + tabWidth + 1, 40, 200, tabHeight, 3 + Math.max(0, 3 - left.length), 24, (data) => {
 		return (bdata) => {
 			KinkyDungeonCurrentSpellsPage = procList.indexOf(data.name);
 			return true;
 		};
 	}, "KinkyDungeonSpellsPage", false);
-	drawHorizList(left.reverse(), center - tabWidth - 1, 40, 200, tabHeight, 3, 24, (data) => {
+	drawHorizList(left.reverse(), center - tabWidth - 1, 40, 200, tabHeight, 3 + Math.max(0, 3 - right.length), 24, (data) => {
 		return (bdata) => {
 			KinkyDungeonCurrentSpellsPage = procList.indexOf(data.name);
 			return true;

@@ -311,7 +311,7 @@ function KinkyDungeonCallGuard(x, y, noTransgress, normalDrops, requireTags) {
 
 			if (mainFaction) guard.faction = mainFaction;
 			KinkyDungeonSetEnemyFlag(guard, "norep", -1);
-			KDGameData.KinkyDungeonJailGuard = guard.id;
+			KDGameData.JailGuard = guard.id;
 			KDAddEntity(guard);
 			return guard;
 		} else {

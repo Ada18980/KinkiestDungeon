@@ -196,24 +196,24 @@ for (let armor of KDShadowRestraints) {
 let KinkyDungeonLootTable = {
 	"rubble": [
 		//{name: "nothing", minLevel: 0, weight:9, message:"LootRubbleFail", messageColor:"#aaaaaa", messageTime: 2, allFloors: true},
-		{name: "smallgold", minLevel: 0, weight:12, message:"LootRubbleSmallGold", messageColor:"yellow", messageTime: 3, allFloors: true},
+		{name: "smallgold", minLevel: 0, weight:5, message:"LootRubbleSmallGold", messageColor:"yellow", messageTime: 3, allFloors: true},
 		{name: "pick", minLevel: 0, weight:2.5, message:"LootRubbleLockpick", messageColor:"lightgreen", messageTime: 3, allFloors: true, prerequisites: ["fewpick"],},
-		{name: "redkey", key: true, minLevel: 0, weight:1, message:"LootRubbleRedKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
+		{name: "redkey", key: true, minLevel: 0, weight:0.8, message:"LootRubbleRedKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
 		//{name: "greenkey", minLevel: 2, weight:2, message:"LootRubbleGreenKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
 		//{name: "bluekey", key: true, minLevel: 2, weight:0.33, message:"LootRubbleBlueKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
-		{name: "potion_mana", minLevel: 0, weight:3, message:"LootPotionMana", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "potion_mana", minLevel: 0, weight:2, message:"LootPotionMana", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "potion_will", minLevel: 0, weight:1, message:"LootPotionWill", messageColor:"#ff4444", messageTime: 3, allFloors: true},
-		{name: "potion_stamina", minLevel: 0, weight:4, message:"LootPotionStamina", messageColor:"lightgreen", messageTime: 3, allFloors: true},
-		{name: "potion_frigid", minLevel: 0, weight:2, message:"LootPotionFrigid", messageColor:"lightgreen", messageTime: 3, allFloors: true},
+		{name: "potion_stamina", minLevel: 0, weight:1, message:"LootPotionStamina", messageColor:"lightgreen", messageTime: 3, allFloors: true},
+		{name: "potion_frigid", minLevel: 0, weight:1, message:"LootPotionFrigid", messageColor:"lightgreen", messageTime: 3, allFloors: true},
 
 
 		{name: "AncientCoreSingle", minLevel: 0, weight:0.1, count: 1, message:"LootChestAncientCoreSingle", messageColor:"yellow", messageTime: 3, allFloors: true},
-		{name: "AncientCoreSingleSpent", minLevel: 0, weight:2, count: 1, message:"LootChestAncientCoreSingleSpent", messageColor:"yellow", messageTime: 3, allFloors: true},
+		{name: "AncientCoreSingleSpent", minLevel: 0, weight:1.5, count: 1, message:"LootChestAncientCoreSingleSpent", messageColor:"yellow", messageTime: 3, allFloors: true},
 
-		{name: "knife", minLevel: 0, weight:3, message:"LootRubbleKnife", messageColor:"lightgreen", messageTime: 3, allFloors: true, noweapon: ["Knife"]},
+		{name: "knife", minLevel: 0, weight:5, message:"LootRubbleKnife", messageColor:"lightgreen", messageTime: 3, allFloors: true, noweapon: ["Knife"]},
 		{name: "Torch", minLevel: 0, weight:7, weapon: "Torch", noweapon: ["Torch"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "Rope", minLevel: 0, weight:10, weapon: "Rope", noweapon: ["Rope"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
-		{name: "Scissors", minLevel: 0, weight:3, weapon: "Scissors", noweapon: ["Scissors"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "Scissors", minLevel: 0, weight:5, weapon: "Scissors", noweapon: ["Scissors"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "BagOfGoodies", arousalMode: true, minLevel: 0, weight:1.0, weapon: "BagOfGoodies", noweapon: ["BagOfGoodies"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	],
 	"shelf": [
@@ -308,8 +308,8 @@ let KinkyDungeonLootTable = {
 	],*/
 	"chest": [
 
-		{name: "ArrowFireSpell", spell: "ArrowFireSpell", nospell: ["ArrowFireSpell"], minLevel: 0, weight: 1.25, message:"LootChestSpell", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisite: ["hasBow"]},
-		{name: "ArrowVineSpell", spell: "ArrowVineSpell", nospell: ["ArrowVineSpell"], minLevel: 0, weight: 1.25, message:"LootChestSpell", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisite: ["hasBow"]},
+		{name: "ArrowFireSpell", spell: "ArrowFireSpell", nospell: ["ArrowFireSpell"], minLevel: 0, weight: 1.25, message:"LootChestSpell", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisites: ["hasBow"]},
+		{name: "ArrowVineSpell", spell: "ArrowVineSpell", nospell: ["ArrowVineSpell"], minLevel: 0, weight: 1.25, message:"LootChestSpell", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisites: ["hasBow"]},
 
 		{name: "archerykit", minLevel: 0, weight: 4, noweapon: ["Bow"], message:"LootArcheryKit", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "gold", minLevel: 0, weight:1, message:"LootChestGold", messageColor:"#ffff00", messageTime: 3, allFloors: true},
@@ -345,8 +345,8 @@ let KinkyDungeonLootTable = {
 		{name: "trap_beltonly", arousalMode: true, trap: true, minLevel: 1, weight:3, message:"LootChestTrapMagicBelt", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemPelvis"], power: 5},
 		{name: "trap_belt", arousalMode: true, trap: true, minLevel: 1, weight:1.5, message:"LootChestTrapMagicVibe", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulvaPiercings", "alreadyBelted", "vibe"], power: 1},
 		*/
-		{name: "trap_plug", arousalMode: true, trap: true, minLevel: 1, weight:1.5, message:"LootChestTrapMagicPlug", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 3},
-		{name: "trap_nipple", arousalMode: true, trap: true, minLevel: 1, weight:1.5, message:"LootChestTrapMagicNipple", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemNipples", "alreadyBelted", "vibe"], power: 3},
+		{name: "trap_plug", notag: ["SupremeBelt"], arousalMode: true, trap: true, minLevel: 1, weight:1.5, message:"LootChestTrapMagicPlug", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 3},
+		{name: "trap_nipple", notag: ["SupremeBra"], arousalMode: true, trap: true, minLevel: 1, weight:1.5, message:"LootChestTrapMagicNipple", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemNipples", "alreadyBelted", "vibe"], power: 3},
 		//{name: "trap_mitts", trap: true, minLevel: 7, weight:2, message:"LootChestTrapMagic", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemHands", "LightRestraint"], power: 10},
 		{name: "potions_mana", minLevel: 0, weight:1, message:"LootPotionsMana", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisites: ["lowmanapotions"]},
 		{name: "manaorb", minLevel: 0, weight:0.25, message:"LootManaOrb", messageColor:"lightblue", messageTime: 3, allFloors: true},
@@ -434,9 +434,9 @@ let KinkyDungeonLootTable = {
 		{name: "DarkKatana", minLevel: 2, weight:0.33, goddess: "Illusion", goddessWeight: 6, weapon: "DarkKatana", message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3,
 			allFloors: true, noweapon: ["DarkKatana"]},
 		//{name: "trap_protobelt", arousalMode: true, trap: true, minLevel: 9, goddess: "Metal", goddessWeight: 4, weight:0, message:"LootChestTrapMagicVibe", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulvaPiercings"], power: 15},
-		{name: "trap_plug2", arousalMode: true, trap: true, minLevel: 6, weight:1.5, message:"LootChestTrapMagicPlug", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 3},
-		{name: "trap_plug2_torment", arousalMode: true, trap: true, lock: "Gold", minLevel: 11, weight:1, message:"LootChestTrapMagicPlug", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 5},
-		{name: "trap_nipple2", arousalMode: true, trap: true, minLevel: 7, weight:4, message:"LootChestTrapMagicNipple", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemNipples", "vibe"], power: 3},
+		{name: "trap_plug2", notag: ["SupremeBelt"], arousalMode: true, trap: true, minLevel: 6, weight:1.5, message:"LootChestTrapMagicPlug", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 3},
+		{name: "trap_plug2_torment", notag: ["SupremeBelt"], arousalMode: true, trap: true, lock: "Gold", minLevel: 11, weight:1, message:"LootChestTrapMagicPlug", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 5},
+		{name: "trap_nipple2", notag: ["SupremeBra"], arousalMode: true, trap: true, minLevel: 7, weight:4, message:"LootChestTrapMagicNipple", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemNipples", "vibe"], power: 3},
 		{name: "PotionCollar", minLevel: 1, weight:1.5, message:"LootPotionCollar", messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["PotionCollar"]},
 	],
 	"silver": [
@@ -456,11 +456,11 @@ let KinkyDungeonLootTable = {
 		{name: "trap_beltonly", arousalMode: true, trap: true, minLevel: 1, weight:2, message:"LootChestTrapMagicBelt", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemPelvis"], power: 5},
 		{name: "trap_belt", arousalMode: true, trap: true, minLevel: 3, weight:2, message:"LootChestTrapMagicVibe", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulvaPiercings", "alreadyBelted"], power: 1},
 		*/
-		{name: "trap_plug", arousalMode: true, trap: true, minLevel: 5, weight:1.5, message:"LootChestTrapMagicPlug", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 3},
-		{name: "trap_plug_tease", arousalMode: true, trap: true, minLevel: 11, weight:1, message:"LootChestTrapMagicPlug", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 4},
-		{name: "trap_plug_torment", arousalMode: true, trap: true, minLevel: 15, weight:0.5, message:"LootChestTrapMagicPlug", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 5},
-		{name: "trap_plug_thunder", arousalMode: true, trap: true, minLevel: 15, weight:0.5, message:"LootChestTrapMagicPlug", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 5},
-		{name: "trap_nipple", arousalMode: true, trap: true, minLevel: 2, weight:2, message:"LootChestTrapMagicNipple", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemNipples", "vibe"], power: 3},
+		{name: "trap_plug", notag: ["SupremeBelt"], arousalMode: true, trap: true, minLevel: 5, weight:1.5, message:"LootChestTrapMagicPlug", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 3},
+		{name: "trap_plug_tease", notag: ["SupremeBelt"], arousalMode: true, trap: true, minLevel: 11, weight:1, message:"LootChestTrapMagicPlug", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 4},
+		{name: "trap_plug_torment", notag: ["SupremeBelt"], arousalMode: true, trap: true, minLevel: 15, weight:0.5, message:"LootChestTrapMagicPlug", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 5},
+		{name: "trap_plug_thunder", notag: ["SupremeBelt"], arousalMode: true, trap: true, minLevel: 15, weight:0.5, message:"LootChestTrapMagicPlug", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 5},
+		{name: "trap_nipple", notag: ["SupremeBra"], arousalMode: true, trap: true, minLevel: 2, weight:2, message:"LootChestTrapMagicNipple", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemNipples", "vibe"], power: 3},
 		//{name: "trap_mitts", trap: true, minLevel: 5, weight:2, message:"LootChestTrapMagic", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemHands", "LightRestraint"], power: 10},
 		{name: "potions_mana", minLevel: 0, weight:3, message:"LootPotionsMana", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisites: ["lowmanapotions"]},
 		{name: "potions_will", minLevel: 0, weight:2, message:"LootPotionsWill", messageColor:"#ff4444", messageTime: 3, allFloors: true, prerequisites: ["lowwillpotions"]},

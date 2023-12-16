@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.3 (F)"
+KDVersionStr,"5.0.3 (H)"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -156,8 +156,21 @@ KinkyDungeonStatDesc19,"+15% miscast chance (at all times)"
 
 KinkyDungeonStat20,"Brawler"
 KinkyDungeonStatDesc20,"Unarmed attacks deal +10 damage and being slowed does not decrease unarmed damage."
+
+KinkyDungeonStatUnarmedGrope,"Way of the Squish"
+KinkyDungeonStatDescUnarmedGrope,"Unarmed attacks deal grope damage against humans."
+KinkyDungeonStatUnarmedPain,"Way of the Spank"
+KinkyDungeonStatDescUnarmedPain,"Unarmed attacks deal pain damage against humans."
+KinkyDungeonStatUnarmedTickle,"Way of the Feather"
+KinkyDungeonStatDescUnarmedTickle,"Unarmed attacks deal tickle damage against humans."
+
+KinkyDungeonStatUnarmedSuck,"Harmless"
+KinkyDungeonStatDescUnarmedSuck,"Unarmed attacks deal half damage and cost 2x as much stamina."
+
+
 KinkyDungeonStat21,"Clumsy"
 KinkyDungeonStatDesc21,"0.7x base accuracy"
+
 KinkyDungeonStatUnfocused,"Unfocused"
 KinkyDungeonStatDescUnfocused,"Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distraction."
 
@@ -1003,6 +1016,7 @@ LootChestTrapMagicNipple,"You find gold, plus a devious magical trap! (+Restrain
 LootChestTrap,"Magical runes glow as a trap activates inside the chest!"
 LootPotionCollar,"You find a special collar that lets you absorb energy from potions."
 LootSlimeWalkers,"You find a pair of garish pink high heels with a slippery surface."
+LootDusterGag,"You find a special gag with a feather duster."
 LootGasMask,"You find a gas mask suitable for filtering gases."
 LootPearlChest,The pearly chest contains a divine gift! (+ITEMGET)
 KDSmokePuff,Smoke fills the air around you!
@@ -1200,10 +1214,25 @@ KinkyDungeonInventoryItemSmokeBombUse,You ready a smoke bomb...
 KinkyDungeonInventoryItemSmokeBombDesc,"A type of pyrotechnic often employed by saboteurs. Can be rolled and used without hands."
 KinkyDungeonInventoryItemSmokeBombDesc2,"Creates a smoke screen lasting 8 turns. You are harder to see while inside the smoke."
 KinkyDungeonInventoryItemFlashBomb,Flash Bomb
+KinkyDungeonInventoryItem3FlashBomb,Flash Bomb x3
 KinkyDungeonSpellCastFlashBomb,You toss the flash bomb and the fuse starts ticking...
-KinkyDungeonInventoryItemFlashBombUse,You ready a smoke bomb...
+KinkyDungeonInventoryItemFlashBombUse,You ready a flash bomb...
 KinkyDungeonInventoryItemFlashBombDesc,"A type of explosive used by agents. Blinds nearby targets without causing significant injury."
 KinkyDungeonInventoryItemFlashBombDesc2,"Blinds for 20 turns in a 3x3 area."
+KinkyDungeonInventoryItem3FlashBombDesc,"A type of explosive used by agents. Blinds nearby targets without causing significant injury."
+KinkyDungeonInventoryItem3FlashBombDesc2,"Blinds for 20 turns in a 3x3 area."
+
+
+KinkyDungeonInventoryItemFlashbang,Flashbang
+KinkyDungeonInventoryItem3Flashbang,Flashbang x3
+KinkyDungeonSpellCastFlashbang,You toss the flashbang and the fuse starts ticking...
+KinkyDungeonInventoryItemFlashbangUse,You ready a flashbang...
+KinkyDungeonInventoryItemFlashbangDesc,"A piece of rare special forces equipment. The secrets of its manufacture are strictly kept by the Alchemist's Guild."
+KinkyDungeonInventoryItemFlashbangDesc2,"Blinds for 24 turns in a 3x3 area. Also Slows and Silences them for half the duration."
+KinkyDungeonInventoryItem3FlashbangDesc,"A piece of rare special forces equipment. The secrets of its manufacture are strictly kept by the Alchemist's Guild."
+KinkyDungeonInventoryItem3FlashbangDesc2,"Blinds for 24 turns in a 3x3 area. And also Slows and Silences them for half the duration."
+
+
 KinkyDungeonInventoryItemPotionInvisibility,Invisibility Potion
 KinkyDungeonInventoryItemPotionInvisibilityUse,You chug the concoction and see your body fading away.
 KinkyDungeonInventoryItemPotionInvisibilityDesc,"You feel liquid inside, but you can't see it!"
@@ -1382,7 +1411,7 @@ KinkyDungeonInventoryItemTorchDesc,"Second only to the mighty towel in usefulnes
 KinkyDungeonInventoryItemTorchDesc2,"Deals fire damage. Provides light."
 KinkyDungeonInventoryItemUnarmed,Unarmed
 KinkyDungeonInventoryItemUnarmedDesc,"Fight with your hands and feet."
-KinkyDungeonInventoryItemUnarmedDesc2,"Deals unarmed damage. Becomes grope damage when used on a humanoid."
+KinkyDungeonInventoryItemUnarmedDesc2,"Deals unarmed damage."
 KinkyDungeonInventoryItemSword,Sword
 KinkyDungeonInventoryItemSwordDesc,"The blade is strong, its edge sharp."
 KinkyDungeonInventoryItemSwordDesc2,"A fast and accurate weapon that deals slash damage."
@@ -1395,9 +1424,6 @@ KinkyDungeonInventoryItemEscortDroneDesc2,"Deals electric damage. 33% chance to 
 KinkyDungeonInventoryItemVibeWand,Magic Wand
 KinkyDungeonInventoryItemVibeWandDesc,"Its powers extend beyond the traditional schools of magic."
 KinkyDungeonInventoryItemVibeWandDesc2,"Deals charm damage. 20% chance to stun the target for 2 turns. Offhand: +5 charm damage on attack for 3 stamina."
-KinkyDungeonInventoryItemFeather,Feather
-KinkyDungeonInventoryItemFeatherDesc,"A feather taken from some large fluffy being. Offhand: +5 tickle damage on attack for 3 stamina."
-KinkyDungeonInventoryItemFeatherDesc2,"Deals tickle damage. Distracts enemies."
 KinkyDungeonInventoryItemIceCube,Ice Cube
 KinkyDungeonInventoryItemIceCubeDesc,"A magical cube of ice that never melts. Convenient!"
 KinkyDungeonInventoryItemIceCubeDesc2,"Deals 10 ice damage with a 10% chance to freeze for 1 turn. Slows targets on hit. Offhand: Slows the target."
@@ -2730,6 +2756,12 @@ AttackTickleHandSlave,"The hand tickles you! (DamageTaken)"
 
 NameBookChain,Tome of Chains
 KillBookChain,The floating tome burns into ashes!
+NameBookBelt,Tome of Belts
+KillBookBelt,The floating tome burns into ashes!
+NameBookRope,Tome of Ropes
+KillBookRope,The floating tome burns into ashes!
+NameBookBondage,Tome of Bondage
+KillBookBondage,The floating tome burns into ashes!
 NameBookCelestial,Tome of Light
 KillBookCelestial,The floating tome burns into ashes!
 NameBookArcane,Tome of Magic
@@ -3438,6 +3470,14 @@ RestraintSlimeWalkersDesc2,"They will slow you down, but you can walk on slime w
 KinkyDungeonInventoryItemSlimeWalkers,Slime Walkers
 KinkyDungeonInventoryItemSlimeWalkersDesc,"A pair of heels coated in a nonstick material."
 KinkyDungeonInventoryItemSlimeWalkersDesc2,"They will slow you down, but you can walk on slime without getting stuck!"
+
+
+RestraintDusterGag,Duster Gag
+RestraintDusterGagDesc,"A special gag designed for maids to be useful even while tied up! It's self-locking too!"
+RestraintDusterGagDesc2,"Deals 0.5 tickle damage on attack and adds +30 distraction."
+KinkyDungeonInventoryItemDusterGag,Duster Gag
+KinkyDungeonInventoryItemDusterGagDesc,"A special gag designed for maids to be useful even while tied up! It's self-locking too!"
+KinkyDungeonInventoryItemDusterGagDesc2,"Deals 0.5 tickle damage on attack and adds +30 distraction."
 
 
 RestraintGasMask,Gas Mask
@@ -4768,7 +4808,19 @@ ItemPickupEscortDrone,"You recover your escort drone."
 ItemPickupVibeWand,"You pick up a 'magic' wand..."
 ItemPickupIceCube,"You pick up a magical ice cube."
 ItemPickupRope,"You find some treated hemp rope."
+
+KinkyDungeonInventoryItemFeather,Feather
+KinkyDungeonInventoryItemFeatherDesc,"A feather taken from some large fluffy being."
+KinkyDungeonInventoryItemFeatherDesc2,"Deals tickle damage. Distracts enemies. Offhand: +5 tickle damage on attack for 3 stamina."
 ItemPickupFeather,"You pick up a feather."
+
+
+KinkyDungeonInventoryItemDuster,Maid's Feather Duster
+KinkyDungeonInventoryItemDusterDesc,"An instrument used extensively by maidforce agents carrying out their duties."
+KinkyDungeonInventoryItemDusterDesc2,"Deals tickle damage. Distracts enemies. Offhand: +15 distraction on attack for 1 stamina."
+ItemPickupDuster,"You pick up a feather duster."
+
+
 ItemPickupFlail,"You pick up a heavy flail."
 ItemPickupSpear,"You pick up a shortspear."
 ItemPickupPike,"You pick up a long spear."
@@ -4958,6 +5010,12 @@ KinkyDungeonColumnStrength,"Strength"
 KinkyDungeonColumnDexterity,"Dexterity"
 KinkyDungeonColumnIntelligence,"Intelligence"
 KinkyDungeonColumnMisc,"Misc"
+
+
+KinkyDungeonColumnUnique,"Unique"
+KinkyDungeonColumnActive,"Active"
+KinkyDungeonColumnPassive,"Passive"
+KinkyDungeonColumnUpgrades,"Upgrades"
 
 KinkyDungeonFilterlearnable,Learnable
 KinkyDungeonFilterunlearned,Unlearned
@@ -5188,19 +5246,22 @@ KinkyDungeonSpellTargetDagger,Choose aim direction
 
 KinkyDungeonSpellShadowSlash,Shadow Slash
 KinkyDungeonSpellShadowScythe,Shadow Scythe
-KinkyDungeonSpellDescriptionShadowSlash,"Slice the area in front of you, dealing a delayed DamageDealt damage in an area and slowing briefly."
+KinkyDungeonSpellDescriptionShadowSlash,"Slice the area in front of you, dealing a delayed DamageDealt damage in an area and slowing briefly. Deals 50% more damage when you are attacking from the shadows."
 KinkyDungeonSpellCastShadowSlash,You create a tear in space with your finger!
 KinkyDungeonSpellTargetShadowSlash,Choose aim direction
 
-KinkyDungeonSpellBlink,Portal
-KinkyDungeonSpellDescriptionBlink,"After 3 turns, teleport to a nearby location (including into darkness) with twice the range."
-KinkyDungeonSpellCastBlink,You call upon a misty portal to transport you!
-KinkyDungeonSpellTargetBlink,Choose target location
-
-KinkyDungeonSpellLeap,Blink
-KinkyDungeonSpellDescriptionLeap,Instantly teleport to a location you can see. Stuns an enemy if you teleport behind them.
+KinkyDungeonSpellLeap,Phase
+KinkyDungeonSpellDescriptionLeap,"Instantly teleport to an adjacent position and gain +50 evasion for 3 turns. Unlocks Blink and Warp when learned."
 KinkyDungeonSpellCastLeap,You teleport!
 KinkyDungeonSpellTargetLeap,Choose target location
+KinkyDungeonSpellLeap2,Blink
+KinkyDungeonSpellDescriptionLeap2,Instantly teleport up to 2 tiles away. Must have vision of the target point. Stuns an enemy if you teleport behind them.
+KinkyDungeonSpellCastLeap2,You teleport!
+KinkyDungeonSpellTargetLeap2,Choose target location
+KinkyDungeonSpellLeap3,Warp
+KinkyDungeonSpellDescriptionLeap3,Instantly teleport up to 2 tiles away. Must have vision of the target point. 
+KinkyDungeonSpellCastLeap3,You teleport!
+KinkyDungeonSpellTargetLeap3,Choose target location
 
 KinkyDungeonSpellIcebolt,Ice Shard
 KinkyDungeonSpellDescriptionIcebolt,A shard of ice that does DamageDealt damage and slows for Duration turns. Freezes if already slowed or drenched.
@@ -5245,6 +5306,8 @@ KinkyDungeonSpellTargetIgnite,Choose a friendly target to ignite
 
 KinkyDungeonSpellChainBolt,Conjure Chain
 KinkyDungeonSpellMagicChain,Magic Chain
+KinkyDungeonSpellMagicRope,Magic Rope
+KinkyDungeonSpellMagicBelt,Magic Belt
 KinkyDungeonSpellWitchChainBolt,Witch's Chain
 KinkyDungeonSpellDescriptionChainBolt,Throws a chain that does DamageDealt chain damage. Targets with 50% or more binding take 50 crush damage and are slowed for 4 turns.
 KinkyDungeonSpellCastChainBolt,You a hurl a strand of chain!
@@ -5581,6 +5644,20 @@ KinkyDungeonSpellEvasive2,Dodge II
 KinkyDungeonSpellDescriptionEvasive2,"+15 Evasion (25 total)"
 KinkyDungeonSpellEvasive3,Dodge III
 KinkyDungeonSpellDescriptionEvasive3,"+25 Evasion (50 total)"
+
+KinkyDungeonSpellPhysDamage,Strength Up
+KinkyDungeonSpellDescriptionPhysDamage,"+20% Physical Damage"
+
+KinkyDungeonSpellBattleCrit,Deadly Aim
+KinkyDungeonSpellDescriptionBattleCrit,"Increases crit multiplier by a % equal to your Battle Rhythm."
+
+KinkyDungeonSpellAccurate1,Accuracy I
+KinkyDungeonSpellDescriptionAccurate1,"+10 Accuracy"
+KinkyDungeonSpellAccurate2,Accuracy II
+KinkyDungeonSpellDescriptionAccurate2,"+15 Accuracy (25 total)"
+KinkyDungeonSpellAccurate3,Accuracy III
+KinkyDungeonSpellDescriptionAccurate3,"+25 Accuracy (50 total)"
+
 KinkyDungeonSpellCriticalStrike,Precise Critical
 KinkyDungeonSpellDescriptionCriticalStrike,"When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency."
 KinkyDungeonSpellCriticalStrikeMagic,Precise Magic
@@ -6026,6 +6103,12 @@ KinkyDungeonSpellDescriptionShadowWarrior,Call forth a shadow warrior for 16 tur
 KinkyDungeonSummonSingleShadowWarrior,...and the abyss answers!
 KinkyDungeonSpellCastShadowWarrior,You call...
 
+KinkyDungeonSpellNatureSpirit,Summon Nature Spirit
+KinkyDungeonSpellTargetNatureSpirit,Select where to put the nature spirit (cannot place on occupied squares)
+KinkyDungeonSpellDescriptionNatureSpirit,Create a natural spirit that fires vine projectiles and has a healing aura that restores HP to allies and regenerates your stamina.
+KinkyDungeonSummonSingleNatureSpirit,A healing wisp appears!
+KinkyDungeonSpellCastNatureSpirit,You call upon the powers of nature!
+
 
 
 
@@ -6166,6 +6249,10 @@ KinkyDungeonSummonMultiLock,A huge cloud of locks and chains clatters as it levi
 KinkyDungeonSummonMultiTickleHand,Floating hands appear by the conjurer's side as she points her staff!
 
 KinkyDungeonSummonMultiBookChain,Floating books appear near the caster!
+KinkyDungeonSummonMultiBookBelt,Floating books appear near the caster!
+KinkyDungeonSummonMultiBookRope,Floating books appear near the caster!
+KinkyDungeonSummonMultiBookBondage,Floating books appear near the caster!
+KinkyDungeonSummonMultiBookChain,Floating books appear near the caster!
 KinkyDungeonSummonMultiBookNature,Dusty tomes appear near the caster!
 KinkyDungeonSummonMultiBookArcane,Magical books appear near the caster!
 KinkyDungeonSummonMultiBookForbidden,Sinister books appear near the caster!
@@ -6177,6 +6264,9 @@ KinkyDungeonSummonMultiBookIce,Frigid books appear near the caster!
 KinkyDungeonSummonMultiBookTickle,Devilish books appear near the caster!
 
 KinkyDungeonSummonSingleBookChain,A floating book appears near the caster!
+KinkyDungeonSummonSingleBookRope,A floating book appears near the caster!
+KinkyDungeonSummonSingleBookBelt,A floating book appears near the caster!
+KinkyDungeonSummonSingleBookBondage,A floating book appears near the caster!
 KinkyDungeonSummonSingleBookNature,A dusty tome appears near the caster!
 KinkyDungeonSummonSingleBookArcane,A magical book appears near the caster!
 KinkyDungeonSummonSingleBookForbidden,A sinister book appears near the caster!
@@ -6268,7 +6358,9 @@ KinkyDungeonMiniSlime2,"The slime ball sticks to you and slows you!"
 KinkyDungeonShock,"You feel a powerful sensation run through your body!"
 KinkyDungeonCoronaShock,"Beams of light wrap around your body and feel warm on your skin!"
 KinkyDungeonCrystalBind,"Crystals begin to form around your limbs!"
-KinkyDungeonSingleChain,"A magic chain secures itself around your body!"
+KinkyDungeonSingleMChain,"A magic chain secures itself around your body!"
+KinkyDungeonSingleMRope,"A magic rope secures itself around your body!"
+KinkyDungeonSingleMBelt,"A magic belt secures itself around your body!"
 KinkyDungeonSingleRope,"A rope wraps itself around your body!"
 KinkyDungeonSingleFabric,"A ribbon animates and becomes entwined around you!"
 KinkyDungeonSingleBelt,"A belt buckles itself tightly around your body!"
@@ -9502,7 +9594,7 @@ dOfferDressForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
 
 
 
-rOfferKigu,"(The SPEAKER looks at with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?"
+rOfferKigu,"(The SPEAKER looks at you with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?"
 rOfferKiguYes,"(The SPEAKER takes a strange mask from her satchel)|Well, I have the answer right here..."
 rOfferKiguYes_Yes,"(The SPEAKER nods seriously)|My hypothesis was correct..."
 rOfferKiguYes_No,"(The SPEAKER frowns)|Such a philistine. Begone."
@@ -9527,6 +9619,35 @@ dOfferKiguForce_Yes,"Fine, you've convinced me."
 dOfferKiguForce_YesGag,"(Giggle and nod)"
 dOfferKiguForce_No,"I don't have time for this. (PERCENT chance to avoid)"
 dOfferKiguForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
+
+
+
+rOfferDusterGag,"(The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!"
+rOfferDusterGagYes,"(The SPEAKER takes a duster gag from her satchel)|Such a good girl!|So here's what I have for you~|It's a special tool to help keep the place clean."
+rOfferDusterGagYes_Yes,"(The SPEAKER grins)|I'm glad we could come to an understanding~|(She takes out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?"
+rOfferDusterGagYes_No,"(The SPEAKER frowns)|Fair enough.|Perhaps you should reconsider your life choices~"
+rOfferDusterGagNo,"(The SPEAKER shrugs)|I'll find someone else..."
+rOfferDusterGagForce,"(The SPEAKER reaches out to grab you)|Now now,|You shouldn't skip out on your duties~|(She pulls out a duster gag from her satchel and grins)"
+rOfferDusterGagForceYes,"(The SPEAKER smiles)|Don't be afraid!|(She turns the gag with the round mouth ball clearly visible)|Now open up..."
+rOfferDusterGagForce_No,"(The SPEAKER shrugs)|Fine, I'll get someone else to clean up."
+rOfferDusterGagForce_Yes,"(The SPEAKER places the gag in your mouth)|(She then buckles up the straps.)|(You feel a locking mechanism pull the straps in tight...)|Good maid!"
+rOfferDusterGagForce_Failure,"(The SPEAKER catches you and forces the gag on you)|(You feel it tighten as it locks on securely...)|I don't want to hear it!|Now go and do your job~"
+
+dOfferDusterGag_Yes,"I'll do it!"
+dOfferDusterGag_YesGag,"(Nod seriously)"
+dOfferDusterGag_No,"I don't like the sound of this."
+dOfferDusterGag_NoGag,"(Shake your head)"
+
+dOfferDusterGagYes_Yes,"Yes miss!"
+dOfferDusterGagYes_YesGag,"(Nod again)"
+dOfferDusterGagYes_No,"Actually, maybe not..."
+dOfferDusterGagYes_NoGag,"(Shake your head)"
+
+dOfferDusterGagForce_Yes,"Okay okay... I'll do it."
+dOfferDusterGagForce_YesGag,"(Giggle and nod)"
+dOfferDusterGagForce_No,"That gag is far too big! (PERCENT chance to avoid)"
+dOfferDusterGagForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
+
 
 
 
@@ -11865,7 +11986,7 @@ l_Bandit_Shorts,"Shorts"
 l_Bandit_Breastplate,"Breastplate"
 l_Bandit_WristLeft,"WristLeft"
 l_Bandit_WristRight,"WristRight"
-m_MaidSkirt,"MaidSkirt"
+m_MaidSkirt,"Striped Skirt"
 l_MaidSkirt_Skirt,"Skirt"
 m_MaidApron,"MaidApron"
 l_MaidApron_Apron,"Apron"
@@ -11891,7 +12012,7 @@ l_MaidShoes_ShoeLeftHogtie,"ShoeLeftHogtie"
 m_MaidSocks,"MaidSocks"
 l_MaidSocks_SockRight,"SockRight"
 l_MaidSocks_SockLeft,"SockLeft"
-m_Maid,"Maid"
+m_Maid,"Maidforce Agent"
 l_Maid_Skirt,"Skirt"
 l_Maid_Blouse,"Blouse"
 l_Maid_BlouseBust,"BlouseBust"
@@ -14736,11 +14857,10 @@ KillObserver,The observer is banished into the aether.
 KinkyDungeonFactionObserver,From the Beyond
 
 KinkyDungeonTrapSpawnLatexCubeMetal,"You briefly spot your reflection as a reflective cube appears!"
-NameLatexCubeMetal,Liquid Metal Cube
+NameLatexCubeMetal,Mini Metal Cube
 KillLatexCubeMetal,"The liquid metal cube shatters into glittering dust."
 AttackLatexCubeMetal,"The liquid metal cube sticks to you and hardens! (DamageTaken)"
 AttackLatexCubeMetalBind,"The liquid metal cube expands across your body and hardens, taking the form of restraints! (+RestraintAdded)"
-
 
 RestraintLiquidMetalBoots,Liquid Metal (Feet)
 RestraintLiquidMetalBootsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
@@ -15122,7 +15242,7 @@ KDRepDescriptionConjure,"Aether, Keeper of the Cosmos"
 KDRepDescriptionIllusion,"Oblivion, Keeper of Secrets"
 
 KinkyDungeonBuffArcaneEnergy,"Arcane Energy is stored by casting spells, up to 100% Max mana."
-KinkyDungeonBuffBattleRhythm,"Battle Rhythm is gained by spending stamina through attacks, up to 50 total."
+KinkyDungeonBuffBattleRhythm,"Battle Rhythm is gained by spending stamina through attacks, up to 40 total."
 
 KinkyDungeonSpellArcaneBlast,Arcane Blast
 KinkyDungeonSpellDescriptionArcaneBlast,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. Casting this spell consumes it to deal up 25% Max Mana as Arcane damage. Pierces enemies and walls."
@@ -15622,6 +15742,7 @@ KinkyDungeonSpellAllyAggressive,Aggressive Order
 KinkyDungeonSpellDescriptionAllyAggressive,All selected units switch to Aggressive mode
 
 KinkyDungeonSpellsPageCommand,"Command"
+KinkyDungeonSpellsPageClass,"Unique"
 
 KDInventoryActionRemoveMagicLock,Unlock using magic
 
@@ -15850,7 +15971,7 @@ KDVarSuffBaseDamageBuffMelee,of Empowerment
 KDVarSuffBaseDamageBuffMagic,of Destruction
 
 
-KinkyDungeonSpellQuickness,Spatial Compression
+KinkyDungeonSpellQuickness,Phase Dance
 KinkyDungeonSpellDescriptionQuickness,"For 4 turns, your movement does not advance time. Attacking or casting counts as one move and passes time as normal."
 KinkyDungeonBuffQuickness,"You are F A S T"
 
@@ -15882,7 +16003,7 @@ KDQuickness_NoMana,"Not enough mana."
 KDQuickness_NoComp,"You need to free your legs."
 
 
-KinkyDungeonSpellSwap,Spatial Swap
+KinkyDungeonSpellSwap,Swap
 KinkyDungeonSpellDescriptionSwap,"Choose a target with a clear line of sight to you and switch places with them."
 KinkyDungeonSpellCastSwap,You point at the target and swap places with them!
 KinkyDungeonSpellCastPartialSwap,"You point at the target and try tp swap places, but they resist!"
@@ -15941,3 +16062,125 @@ KDTurns,turns
 
 KDShieldAbsorb,Your shield absorbed AMNT damage.
 KDStatShield,You are currently shielded from damage and some spells.
+KDoffhandMissingTooltip,No offhand weapon set. Activate the spell in your hotbar to set one.
+
+
+
+KinkyDungeonSpellBlink,Flash Portal
+KinkyDungeonSpellDescriptionBlink,"After 3 turns, teleport to a nearby location (including into darkness). All adjacent creatures are teleported with you, in random order."
+KinkyDungeonSpellCastBlink,You call upon a misty portal to transport you and nearby creatures!
+KinkyDungeonSpellTargetBlink,Choose target location
+
+KinkyDungeonSpellTransportationPortal,Transportation Portal
+KinkyDungeonSpellDescriptionTransportationPortal,"After 3 turns, teleport to a nearby location (including into darkness). Transports only allies, but they are stunned for the duration."
+KinkyDungeonSpellCastTransportationPortal,You call upon a misty portal to transport you and your allies!
+KinkyDungeonSpellTargetTransportationPortal,Choose target location
+
+KinkyDungeonSpellBanishPortal,Banishing Portal
+KinkyDungeonSpellDescriptionBanishPortal,"After channeling for 3 turns, teleport all adjacent creatures to a point you can see. Does not teleport yourself."
+KinkyDungeonSpellCastBanishPortal,You call upon a misty portal to transport those around you!
+KinkyDungeonSpellTargetBanishPortal,Choose target location
+
+KinkyDungeonSpellRift,Rift
+KinkyDungeonSpellDescriptionRift,"Tearing a rift in space, you teleport to a location (including into darkness). Leaves behind a rift for 4 turns, which enemies can follow you through."
+KinkyDungeonSpellCastRift,You tear open a hole in space and step through!
+KinkyDungeonSpellTargetRift,Choose target location
+
+KinkyDungeonSpellShadowDance,Shadow Dance
+KinkyDungeonSpellDescriptionShadowDance,"While standing in a shadowed location, you can teleport to a nearby shadowed location. You can also teleport adjacent to shadow creatures."
+KinkyDungeonSpellCastShadowDance,You slip between the shadows...
+KinkyDungeonSpellTargetShadowDance,Choose a shadow
+
+KinkyDungeonSpellTeleportationCircleA,Teleportation Circle A
+KinkyDungeonSpellDescriptionTeleportationCircleA,"When cast on a point, creates a teleportation circle. When cast on yourself, channel for 10 turns to teleport yourself and nearby allies to the teleportation circle. When learned, unlocks teleportation circle B and C as well."
+KinkyDungeonSpellCastTeleportationCircleA,You begin a teleportation ritual...
+KinkyDungeonSpellTargetTeleportationCircleA,"Choose a location to put a teleportation circle, or yourself to teleport to the created circle."
+KinkyDungeonSpellTeleportationCircleB,Teleportation Circle B
+KinkyDungeonSpellDescriptionTeleportationCircleB,"When cast on a point, creates a teleportation circle. When cast on yourself, channel for 10 turns to teleport yourself and nearby allies to the teleportation circle."
+KinkyDungeonSpellCastTeleportationCircleB,You begin a teleportation ritual...
+KinkyDungeonSpellTargetTeleportationCircleB,"Choose a location to put a teleportation circle, or yourself to teleport to the created circle."
+KinkyDungeonSpellTeleportationCircleC,Teleportation Circle C
+KinkyDungeonSpellDescriptionTeleportationCircleC,"When cast on a point, creates a teleportation circle. When cast on yourself, channel for 10 turns to teleport yourself and nearby allies to the teleportation circle."
+KinkyDungeonSpellCastTeleportationCircleC,You begin a teleportation ritual...
+KinkyDungeonSpellTargetTeleportationCircleC,"Choose a location to put a teleportation circle, or yourself to teleport to the created circle."
+
+
+NameNatureSpirit,Nature Spirit
+KillNatureSpirit,"The nature spirit returns to the earth from whence it came."
+
+KinkyDungeonSpellNatureMoteBolt,Vine Bolt
+
+
+KinkyDungeonSpellGunslinger,"Gunslinger"
+KinkyDungeonSpellDescriptionGunslinger,"Weapons abilities and other abilities that cost charge contribute 20% of their cost to Battle Rhythm."
+KinkyDungeonSpellBattleCost,"Effortless Assault"
+KinkyDungeonSpellDescriptionBattleCost,"Weapon stamina cost is reduced by a percentage equal to your Battle Rhythm."
+
+KinkyDungeonBuffPhaseEvasion,+50 Evasion from using Phase
+
+KinkyDungeonSpellBladeDance,Blade Dance
+KinkyDungeonSpellDescriptionBladeDance,"Costs 60 stamina to dash to an adjacent spot. If you are holding a physical weapon, deals cleave damage to nearby enemies equal to 50% weapon damage. If you have a Light offhand weapon, deal 75% of its damage as well."
+KinkyDungeonSpellCastBladeDance,"You spin towards a location, slashing at nearby enemies!"
+KinkyDungeonSpellTargetBladeDance,Choose target location
+
+KinkyDungeonSpellTheShadowWithin,The Shadow Within
+KinkyDungeonSpellDescriptionTheShadowWithin,"Shadow Dance no longer requires you to be in shadow in order to dash to another shadow, but the mana cost is doubled when doing so."
+
+
+
+KinkyDungeonSpellHolyOrb,Summon Holy Orb
+KinkyDungeonSpellTargetHolyOrb,Select where to put the holy orb (cannot place on occupied squares)
+KinkyDungeonSpellDescriptionHolyOrb,"Create a stationary holy orb that lasts indefinitely and heals allies. It also fires blinding bolts at enemies within its aura. If you let go of yourself near a holy orb you are immediately punished. Should not be placed within 8 tiles of each other."
+KinkyDungeonSummonSingleHolyOrb,"A holy orb descends, blessing you with its roundness."
+KinkyDungeonSpellCastHolyOrb,You call upon the root of all enlightenment!
+
+NameHolyOrb,Holy Orb
+KillHolyOrb,The holy orb returns to its place in the sky.
+
+KinkyDungeonSpellAllyHolyBolt,Holy Bolt
+
+KDHolyOrbPunish,"The holy orb observes your lack of discipline, and issues a punishment."
+
+
+RestraintDivineBelt,Divine Chastity Belt
+RestraintDivineBeltDesc2,"A chastity belt forged in holy light. Only a Goddess' will can release you."
+RestraintDivineBeltDesc,"There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge."
+KDDivineBeltDeny,Your Divine Chastity Belt causes the vibrators to stop.
+
+KinkyDungeonInventoryItemDivineBelt,Divine Chastity Belt
+KinkyDungeonInventoryItemDivineBeltDesc,"A chastity belt forged in holy light. Only the will of a Goddess will release you!"
+KinkyDungeonInventoryItemDivineBeltDesc2,"There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge."
+
+KinkyDungeonLootDivineBelt,You find a heavenly chastity belt. Who could it be for?
+
+
+RestraintMagicBeltArms,Magic Arm Belts
+RestraintMagicBeltArmsDesc,"Highly secure belts enchanted with magic."
+RestraintMagicBeltArmsDesc2,"Lockable and fully adjustable to ensure snugness."
+RestraintMagicBeltLegs,Magic Leg Belts
+RestraintMagicBeltLegsDesc,"Highly secure belts enchanted with magic."
+RestraintMagicBeltLegsDesc2,"Lockable and fully adjustable to ensure snugness."
+RestraintMagicBeltFeet,Magic Ankle Belts
+RestraintMagicBeltFeetDesc,"AHighly secure belts enchanted with magic."
+RestraintMagicBeltFeetDesc2,"Lockable and fully adjustable to ensure snugness."
+KinkyDungeonLiquidMetal,The Liquid Metal starts engulfing you!
+
+
+KinkyDungeonSpellLiquidMetalBurst,Silver Burst
+KinkyDungeonSpellTargetLiquidMetalBurst,Select a liquid metal tile
+KinkyDungeonSpellDescriptionLiquidMetalBurst,"Target a liquid metal tile. After 3 turns, it erupts, spreading more liquid metal and engulfing any nearby creatures. Deals DamageDealt crush damage and applies 80 points of metallic binding."
+KinkyDungeonSpellCastLiquidMetalBurst,A powerful explosion simmers beneath the surface...'
+
+KinkyDungeonTrapSpawnLiquidMetalCube,"The ground shakes as a huge wall of liquid metal approaches!"
+NameLiquidMetalCube,Liquid Metal Cube
+KillLiquidMetalCube,"The liquid metal cube dissolves into a huge pile of glittering dust."
+AttackLiquidMetalCube,"The liquid metal cube engulfs you and squeezes tightly! (DamageTaken)"
+AttackLiquidMetalCubeBind,"The liquid metal cube elgulfs your body and hardens, taking the form of restraints! (+RestraintAdded)"
+
+
+NameSkeletonArcher,Skeleton Archer
+KillSkeletonArcher,"The Skeleton falls to pieces."
+AttackSkeletonBindArcher,"The Skeleton restrains you! (+RestraintAdded)"
+AttackSkeletonArcher,"The Skeleton tackles you! (DamageTaken)"
+
+KinkyDungeonSpellCursedArrow,Cursed Arrow

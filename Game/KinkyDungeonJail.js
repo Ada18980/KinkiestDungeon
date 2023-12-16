@@ -499,12 +499,12 @@ function KinkyDungeonHandleJailSpawns(delta) {
 	}
 
 	// Start jail event, like spawning a guard, spawning rescues, etc
-	if (KinkyDungeonInJail(KDJailFilters) && KDGameData.PrisonerState == "jail" && (KDGameData.KinkyDungeonGuardSpawnTimer <= 1 || KDGameData.SleepTurns == 3) && !KinkyDungeonJailGuard() && playerInCell) {
+	if (KinkyDungeonInJail(KDJailFilters) && KDGameData.PrisonerState == "jail" && (KDGameData.GuardSpawnTimer <= 1 || KDGameData.SleepTurns == 3) && !KinkyDungeonJailGuard() && playerInCell) {
 		KDGetJailEvent(KinkyDungeonJailGuard(), xx, yy)(KinkyDungeonJailGuard(), xx, yy);
-	} else if (KDGameData.KinkyDungeonGuardSpawnTimer > 0 && KDGameData.SleepTurns < 1 && !KinkyDungeonAngel()) KDGameData.KinkyDungeonGuardSpawnTimer -= delta;
+	} else if (KDGameData.GuardSpawnTimer > 0 && KDGameData.SleepTurns < 1 && !KinkyDungeonAngel()) KDGameData.GuardSpawnTimer -= delta;
 
 	// Assign and handle the current jail action if there is a guard
-	if (KinkyDungeonJailGuard() && KDGameData.KinkyDungeonGuardTimer > 0 && KDGameData.KinkyDungeonGuardTimerMax - KDGameData.KinkyDungeonGuardTimer > 6 && KDGameData.PrisonerState == 'jail') {
+	if (KinkyDungeonJailGuard() && KDGameData.GuardTimer > 0 && KDGameData.GuardTimerMax - KDGameData.GuardTimer > 6 && KDGameData.PrisonerState == 'jail') {
 		if (KDGuardActions[KinkyDungeonJailGuard().CurrentAction] && KDGuardActions[KinkyDungeonJailGuard().CurrentAction].assignable && KDGuardActions[KinkyDungeonJailGuard().CurrentAction].assignable(KinkyDungeonJailGuard(), xx, yy)) {
 			KDAssignGuardAction(KinkyDungeonJailGuard(), xx, yy);
 		}
@@ -520,13 +520,13 @@ function KinkyDungeonHandleJailSpawns(delta) {
 			KinkyDungeonJailGuard().CurrentAction = "jailWander";
 		}
 
-		KinkyDungeonJailGuard().gxx = KDGameData.PrisonerState == 'jail' && KDGameData.KinkyDungeonGuardTimer > 0 ? KinkyDungeonJailGuard().gx : xx;
-		KinkyDungeonJailGuard().gyy = KDGameData.PrisonerState == 'jail' && KDGameData.KinkyDungeonGuardTimer > 0 ? KinkyDungeonJailGuard().gy : yy;
-		if (KDGameData.KinkyDungeonGuardTimer > 0) {
+		KinkyDungeonJailGuard().gxx = KDGameData.PrisonerState == 'jail' && KDGameData.GuardTimer > 0 ? KinkyDungeonJailGuard().gx : xx;
+		KinkyDungeonJailGuard().gyy = KDGameData.PrisonerState == 'jail' && KDGameData.GuardTimer > 0 ? KinkyDungeonJailGuard().gy : yy;
+		if (KDGameData.GuardTimer > 0) {
 			// Decrease timer when not on a tour
 			if (!KinkyDungeonFlags.has("notickguardtimer") && !KinkyDungeonAngel()) {
-				KDGameData.KinkyDungeonGuardTimer -= 1;
-				if (KDGameData.KinkyDungeonGuardTimer <= 0) {
+				KDGameData.GuardTimer -= 1;
+				if (KDGameData.GuardTimer <= 0) {
 					KinkyDungeonJailGuard().gx = xx;
 					KinkyDungeonJailGuard().gy = yy;
 				}
@@ -572,19 +572,29 @@ function KinkyDungeonHandleJailSpawns(delta) {
 	}
 
 	if (!KinkyDungeonJailGuard()) {
-		KDGameData.KinkyDungeonGuardTimer = 0;
+		KDGameData.GuardTimer = 0;
 	} else {
 		if (KDHelpless(KinkyDungeonJailGuard())) {
-			KDGameData.KinkyDungeonJailGuard = 0;
+			KDGameData.JailGuard = 0;
 		}
-		if (KinkyDungeonJailGuard() && KDistChebyshev(KinkyDungeonJailGuard().x - KinkyDungeonPlayerEntity.x, KinkyDungeonJailGuard().y - KinkyDungeonPlayerEntity.y) > 10 && KDGameData.KinkyDungeonGuardTimer < 4) {
-			KDGameData.KinkyDungeonJailGuard = 0;
+		if (KinkyDungeonJailGuard() && KDistChebyshev(KinkyDungeonJailGuard().x - KinkyDungeonPlayerEntity.x, KinkyDungeonJailGuard().y - KinkyDungeonPlayerEntity.y) > 10 && KDGameData.GuardTimer < 4) {
+			KDGameData.JailGuard = 0;
 		}
 	}
 	if (!KDMapData.Entities.includes(KinkyDungeonJailGuard())) {
-		if (KDGameData.KinkyDungeonGuardSpawnTimer == 0 || KinkyDungeonJailGuard())
-			KDGameData.KinkyDungeonGuardSpawnTimer = 14 + Math.floor(KDRandom() * (KDGameData.KinkyDungeonGuardSpawnTimerMax - KDGameData.KinkyDungeonGuardSpawnTimerMin));
-		KDGameData.KinkyDungeonJailGuard = 0;
+		if (KDGameData.GuardSpawnTimer == 0 || KinkyDungeonJailGuard())
+			KDGameData.GuardSpawnTimer = 14 + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
+		KDGameData.JailGuard = 0;
+	}
+	if (KDGameData.GuardSpawnTimerMax == undefined) {
+		// Fix the save file
+		
+		KDGameData.JailGuard = 0;
+		KDGameData.GuardSpawnTimer = 0;
+		KDGameData.GuardSpawnTimerMax = 80;
+		KDGameData.GuardSpawnTimerMin = 50;
+		KDGameData.GuardTimer = 0;
+		KDGameData.GuardTimerMax = 24;
 	}
 }
 
@@ -958,7 +968,7 @@ function KDGetJailDoor(x, y) {
 function KDDefeatedPlayerTick(nodefeat) {
 	KinkyDungeonSetFlag("refusedShopkeeperRescue", 5); // To prevent spawning instantly
 	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeDefeat"]);
-	KDGameData.KinkyDungeonJailGuard = 0;
+	KDGameData.JailGuard = 0;
 	KDGameData.KinkyDungeonLeashingEnemy = 0;
 	KDBreakTether(KinkyDungeonPlayerEntity);
 	if (!nodefeat)
@@ -1071,7 +1081,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	}
 	KDGameData.KinkyDungeonPrisonReduction = 0;
 	//let firstTime = KDGameData.KinkyDungeonSpawnJailersMax == 0;
-	KDGameData.KinkyDungeonGuardSpawnTimer = 4 + Math.floor(KDRandom() * (KDGameData.KinkyDungeonGuardSpawnTimerMax - KDGameData.KinkyDungeonGuardSpawnTimerMin));
+	KDGameData.GuardSpawnTimer = 4 + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
 	KDGameData.KinkyDungeonSpawnJailersMax = 2;
 	if (KinkyDungeonGoddessRep.Prisoner) KDGameData.KinkyDungeonSpawnJailersMax += Math.round(6 * (KinkyDungeonGoddessRep.Prisoner + 50)/100);
 	//let securityBoost = (firstTime) ? 0 : Math.max(2, Math.ceil(4 * (KDGameData.KinkyDungeonSpawnJailersMax - KDGameData.KinkyDungeonSpawnJailers + 1)/KDGameData.KinkyDungeonSpawnJailersMax));

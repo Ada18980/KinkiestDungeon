@@ -60,6 +60,10 @@ let KDDialogueTriggers = {
 	"OfferMaidRestraint": KDDialogueTriggerOffer("OfferMaidRestraint", ["Latex", "Illusion"], ["maidRestraints"],
 		["parole", "", "chase", "jail"],  ["Sub", "Brat"],
 		["maid"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined, "Blue", 0.4),
+	"OfferDusterGag": KDDialogueTriggerOffer("OfferDusterGag", ["Latex", "Illusion"], ["dustergag"],
+		["parole", "", "chase", "jail"],  ["Dom", "Brat", ""],
+		["maid"], ["elite", "miniboss", "boss"], undefined, ["zombie", "skeleton", "robot"],
 		undefined, undefined),
 
 	"OfferDragon": KDDialogueTriggerOffer("OfferDragon", ["Leather"], ["dragonRestraints"],

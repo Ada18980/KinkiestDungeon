@@ -929,11 +929,16 @@ function KinkyDungeonChangeCharge(Amount, NoFloater) {
 	Amount = data.Amount * data.mult;
 
 	if (!KDGameData.AncientEnergyLevel) KDGameData.AncientEnergyLevel = 0;
+	let orig = KDGameData.AncientEnergyLevel;
 	KDGameData.AncientEnergyLevel = Math.min(1, Math.max(0, KDGameData.AncientEnergyLevel + Amount));
+
+	data.change = KDGameData.AncientEnergyLevel - orig;
+	KinkyDungeonSendEvent("afterChangeCharge", data);
 	if (!NoFloater && Math.abs(KDOrigCharge - Math.floor(KDGameData.AncientEnergyLevel * 1000)) >= 0.99) {
 		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KDGameData.AncientEnergyLevel * 1000) - KDOrigCharge, "#ffff44", undefined, undefined, " charge");
 		KDOrigCharge = Math.floor(KDGameData.AncientEnergyLevel * 1000);
 	}
+
 
 	if (isNaN(KDGameData.AncientEnergyLevel)) {
 		console.trace();

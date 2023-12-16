@@ -2604,7 +2604,7 @@ function KDDrawStruggleGroups() {
 					KDStruggleGroupLinkIndex[sg.group] = 0;
 				}
 				item = surfaceItems[KDStruggleGroupLinkIndex[sg.group]];
-			}
+			} else if (KDStruggleGroupLinkIndex[sg.group] > 0) delete KDStruggleGroupLinkIndex[sg.group];
 			if (MouseIn(((!sg.left) ? (260) : 0), y, 500, (ButtonWidth+3)) && sg) {
 
 
@@ -2773,6 +2773,7 @@ function KDDrawStruggleGroups() {
 				if (KinkyDungeonControlsEnabled())
 					for (let button_index = 0; button_index < buttons.length; button_index++) {
 						let btn = buttons[sg.left ? button_index : (buttons.length - 1 - button_index)];
+						
 						if (btn == "Struggle") {
 							DrawButtonKDEx("sgStruggle" + button_index + sg.group, (b) => {
 								if ((KDGetCurse(item))) KDSendInput("struggleCurse", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});

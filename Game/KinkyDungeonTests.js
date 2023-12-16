@@ -92,7 +92,7 @@ function KDTestjailer(iter) {
 		}
 		KDRemoveEntity(KinkyDungeonJailGuard());
 		//KDSpliceIndex(KDMapData.Entities.indexOf(KinkyDungeonJailGuard()), 1);
-		KDGameData.KinkyDungeonJailGuard = 0;
+		KDGameData.JailGuard = 0;
 	}
 	console.log(totals);
 }

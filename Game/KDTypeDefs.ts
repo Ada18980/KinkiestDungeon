@@ -1022,7 +1022,6 @@ interface enemy extends KDHasTags {
 	attackMinRange?: number,
 	/** Minimum range to try attacking */
 	specialMinRange?: number,
-
 	/** */
 	noKiteWhenHarmless?: boolean,
 	/** */
@@ -2251,6 +2250,7 @@ interface KDMapDataType {
 	GroundItems: {x: number, y: number, name: string, amount?: number} [];
 
 	Grid: string;
+	Traffic: number[][];
 	GridWidth: number;
 	GridHeight: number;
 	FogGrid: any[];

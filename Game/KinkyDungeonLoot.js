@@ -59,7 +59,10 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 			let prereqs = true;
 			if (loot.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) prereqs = false;
 
-			if (loot.prerequisites) {
+			if (loot.noflag?.some((flag) => {return KinkyDungeonFlags.get(flag) != undefined})) prereqs = false;
+			if (loot.notag?.some((flag) => {return KinkyDungeonPlayerTags.get(flag) != undefined})) prereqs = false;
+
+			if (loot.prerequisites && prereqs) {
 
 				let maxlevel = 999;
 				let minlevel = 0;
@@ -113,7 +116,7 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 				if (prereqs && loot.prerequisites.includes("hasBow")) {
 					prereqs = false;
 					for (let w of KinkyDungeonAllWeapon()) {
-						if (KinkyDungeonWeapons[w.name].tags?.includes("normalbow")) {
+						if (KDWeapon(w)?.tags?.includes("normalbow")) {
 							prereqs = true;
 							break;
 						}

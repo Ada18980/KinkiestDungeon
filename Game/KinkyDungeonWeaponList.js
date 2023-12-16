@@ -36,21 +36,21 @@ let KinkyDungeonWeapons = {
 		tags: ["unarmed"],},
 
 	// Knives
-	"Knife": {name: "Knife", dmg: 2.0, chance: 0.9, staminacost: 1.5, type: "slash", unarmed: false, rarity: 1, cutBonus: 0.05, shop: true, sfx: "Unarmed", light: true,
+	"Knife": {name: "Knife", dmg: 2.0, chance: 1.1, staminacost: 1.5, type: "slash", unarmed: false, rarity: 1, cutBonus: 0.05, shop: true, sfx: "Unarmed", light: true,
 		crit: 1.5,
 		tags: ["knife"],
 		events: [
 			{type: "blockBuff", trigger: "tick",  offhand: true, offhandonly: true, power: 0.1},
 		],
 	},
-	"EnchKnife": {name: "EnchKnife", dmg: 2.5, chance: 0.9, staminacost: 1.5, type: "cold", unarmed: false, rarity: 3, cutBonus: 0.05, magic: true, shop: true, sfx: "MagicSlash", light: true,
+	"EnchKnife": {name: "EnchKnife", dmg: 2.5, chance: 1.1, staminacost: 1.5, type: "cold", unarmed: false, rarity: 3, cutBonus: 0.05, magic: true, shop: true, sfx: "MagicSlash", light: true,
 		crit: 1.5,
 		tags: ["knife"],
 		events: [
 			{type: "buffMagicCrit", trigger: "calcCrit",  offhand: true, offhandonly: true, power: 0.2},
 		],
 	},
-	"Dirk": {name: "Dirk", dmg: 2.5, chance: 1.0, staminacost: 1.8, type: "slash", unarmed: false, rarity: 2, shop: true, cutBonus: 0.05, light: true, sfx: "LightSwing",
+	"Dirk": {name: "Dirk", dmg: 2.5, chance: 1.15, staminacost: 1.8, type: "slash", unarmed: false, rarity: 2, shop: true, cutBonus: 0.05, light: true, sfx: "LightSwing",
 		crit: 1.75,
 		tags: ["knife"],
 		events: [
@@ -319,13 +319,20 @@ let KinkyDungeonWeapons = {
 		special: {type: "ignite"},},
 
 	// BDSM Gear
-	"Feather": {name: "Feather", dmg: 0.5, chance: 2.0,
+	"Feather": {name: "Feather", dmg: 0.5, chance: 1.25,
 		tags: ["toy"],
-		crit: 1.5,
+		crit: 2.0,
 		events: [
 			{type: "ElementalEffectStamCost", trigger: "playerAttack", power: 0.5, damage: "tickle", offhand: true, offhandonly: true, cost: 0.3, sfx: "Tickle"},
 		],
 		staminacost: 0.5, distract: 2, type: "tickle", unarmed: false, rarity: 1, shop: true, sfx: "Tickle"},
+	"Duster": {name: "Duster", dmg: 1.5, chance: 1.5,
+		tags: ["toy"],
+		crit: 2.5,
+		events: [
+			{type: "ElementalEffectStamCost", trigger: "playerAttack", power: 0, distract: 1.5, damage: "tickle", offhand: true, offhandonly: true, sfx: "Tickle", cost: 0.1},
+		],
+		staminacost: 1.0, distract: 4, type: "tickle", unarmed: false, rarity: 2, shop: true, sfx: "Tickle"},
 	"Crop": {name: "Crop", dmg: 2.5, chance: 1.0, staminacost: 2.0,
 		tags: ["toy"],
 		events: [

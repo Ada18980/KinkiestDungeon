@@ -368,7 +368,7 @@ function KinkyDungeonGetEvasion(Enemy, NoOverride, IsSpell, IsMagic, cost) {
 	else if (Enemy && Enemy.slow > 0) hitChance *= 2;
 	if (Enemy && (Enemy.stun > 0 || Enemy.freeze > 0)) hitChance *= 5;
 	else {
-		if (Enemy && Enemy.distraction > 0) hitChance *= 1 + Math.min(1, Enemy.distraction / Enemy.Enemy.maxhp);
+		if (Enemy && Enemy.distraction > 0) hitChance *= 1 + 2 * Math.min(1, Enemy.distraction / Enemy.Enemy.maxhp);
 		if (Enemy) hitChance *= 1 + 0.25 * KDBoundEffects(Enemy);
 	}
 	if (Enemy && Enemy.vulnerable) hitChance *= KDVulnerableHitMult;
@@ -573,12 +573,14 @@ function KinkyDungeonEvasion(Enemy, IsSpell, IsMagic, Attacker) {
 		
 		
 		if (dodged) {
-			let point = KinkyDungeonGetNearbyPoint(Enemy.x, Enemy.y, true, undefined, true, false, (x, y) => {return x != Enemy.x && y != Enemy.y});
-			KDMoveEntity(Enemy, point.x, point.y, true, true, true, false);
-			Enemy.movePoints = 0;
-			if (!Enemy.Enemy.attackWhileMoving && !Enemy.Enemy.attackWhileDodging) {
-				Enemy.attackPoints = 0;
-				Enemy.warningTiles = [];
+			let point = KinkyDungeonGetNearbyPoint(Enemy.x, Enemy.y, true, undefined, true, true, (x, y) => {return x != Enemy.x && y != Enemy.y});
+			if (point) {
+				KDMoveEntity(Enemy, point.x, point.y, true, true, true, false);
+				Enemy.movePoints = 0;
+				if (!Enemy.Enemy.attackWhileMoving && !Enemy.Enemy.attackWhileDodging) {
+					Enemy.attackPoints = 0;
+					Enemy.warningTiles = [];
+				}
 			}
 		}
 	}
@@ -1377,8 +1379,8 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 
 	let hp = Enemy.hp;
 	KinkyDungeonDamageEnemy(Enemy, (predata.eva) ? dmg : null, undefined, undefined, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, predata.vulnConsumed, predata.critical);
-	if (predata.eva && KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.sfx) {
-		if (KDToggles.Sound) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "Audio/" + KinkyDungeonPlayerDamage.sfx + ".ogg"});
+	if (predata.eva && (Damage.sfx || (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.sfx))) {
+		if (KDToggles.Sound) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "Audio/" + (Damage.sfx || KinkyDungeonPlayerDamage.sfx) + ".ogg"});
 		//AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + KinkyDungeonPlayerDamage.sfx + ".ogg");
 	} else if (!predata.eva) if (KDToggles.Sound) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "Audio/Miss.ogg"});
 	//AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Miss.ogg");
@@ -2097,6 +2099,9 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 			else if (created > 1) KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonSummonMulti"+type).replace("SummonCount", "" + created), "white", 3, undefined, undefined, b);
 		}
 	}
+
+	
+	KinkyDungeonSendEvent("afterBulletHit", data);
 }
 
 
@@ -2170,6 +2175,7 @@ function KinkyDungeonSummonEnemy(x, y, summonType, count, rad, strict, lifetime,
 					e.vp = 2;
 					e.aware = true;
 				}
+				if (e.Enemy.tags?.defensive) KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
 				created.push(e);
 			}
 		} else C -= 1;
@@ -2644,6 +2650,13 @@ let KDPrereqs = {
 		}
 		return data.Damage?.type == 'e.kind';
 	},
+	"wepDamageType": (enemy, e, data) => {
+		switch (e.kind) {
+			case "melee": return KinkyDungeonMeleeDamageTypes.includes(KinkyDungeonPlayerDamage?.type);
+			case "magic": return !KinkyDungeonMeleeDamageTypes.includes(KinkyDungeonPlayerDamage?.type);
+		}
+		return data.Damage?.type == 'e.kind';
+	},
 	"afterAmbush": (enemy, e, data) => {
 		return !enemy?.ambushtrigger;
 	},
@@ -2740,7 +2753,7 @@ function KDDealEnvironmentalDamage(x, y, aoe, Damage, Attacker) {
 		KinkyDungeonDamageEnemy(enemy, Damage, true, true, undefined, undefined, Attacker, 0.1);
 	}
 	if (KinkyDungeonPlayerEntity.x == x && KinkyDungeonPlayerEntity.y == y) {
-		KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, Damage.type, {name: "EnvDamage", power: Damage.damage, damage: Damage.type}, undefined, KDGetFaction(Attacker), undefined);
+		KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, Damage.type, {name: "EnvDamage", power: Damage.damage, damage: Damage.type, flags: ["EnvDamage"]}, undefined, KDGetFaction(Attacker), undefined);
 	}
 }
 
@@ -2773,6 +2786,6 @@ function KDWeaponIsMagic(weapon) {
 }
 
 function KDEvasiveManeuversCost() {
-	let eva = Math.max(0.01, KinkyDungeonPlayerEvasion());
-	return (5.0 / eva) + 1 * KinkyDungeonSlowLevel;
+	let eva = KinkyDungeonPlayerEvasion();
+	return (5.0 * eva) + 1 * KinkyDungeonSlowLevel;
 }

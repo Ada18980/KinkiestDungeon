@@ -181,7 +181,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 			if (altRoom?.alwaysRegen || (altRoom && !altRoom?.makeMain)) {
 				// Clear all enemies and remove them so that we pick up allies
 				for (let en of [...KDMapData.Entities]) {
-					if (!KDIsInParty(en))
+					if (!KDIsInParty(en) && !KDCanBringAlly(en))
 						KDRemoveEntity(en, false, true, true);
 				}
 			}

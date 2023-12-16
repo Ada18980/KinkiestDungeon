@@ -273,12 +273,12 @@ let KDDefaultMaxParty = 3;
 * KinkyDungeonSpawnJailersMax: number;
 * KinkyDungeonLeashedPlayer: number;
 * KinkyDungeonLeashingEnemy: number;
-* KinkyDungeonJailGuard: number;
-* KinkyDungeonGuardTimer: number;
-* KinkyDungeonGuardTimerMax: number;
-* KinkyDungeonGuardSpawnTimer: number;
-* KinkyDungeonGuardSpawnTimerMax: number;
-* KinkyDungeonGuardSpawnTimerMin: number;
+* JailGuard: number;
+* GuardTimer: number;
+* GuardTimerMax: number;
+* GuardSpawnTimer: number;
+* GuardSpawnTimerMax: number;
+* GuardSpawnTimerMin: number;
 * KinkyDungeonMaxPrisonReduction: number;
 * KinkyDungeonPrisonReduction: number;
 * KinkyDungeonPrisonExtraGhostRep: number;
@@ -474,12 +474,12 @@ let KDGameDataBase = {
 	KinkyDungeonLeashedPlayer: 0,
 	KinkyDungeonLeashingEnemy: 0,
 
-	KinkyDungeonJailGuard: 0,
-	KinkyDungeonGuardTimer: 0,
-	KinkyDungeonGuardTimerMax: 28,
-	KinkyDungeonGuardSpawnTimer: 0,
-	KinkyDungeonGuardSpawnTimerMax: 80,
-	KinkyDungeonGuardSpawnTimerMin: 50,
+	JailGuard: 0,
+	GuardTimer: 0,
+	GuardTimerMax: 28,
+	GuardSpawnTimer: 0,
+	GuardSpawnTimerMax: 80,
+	GuardSpawnTimerMin: 50,
 	KinkyDungeonMaxPrisonReduction: 10,
 	KinkyDungeonPrisonReduction: 0,
 	KinkyDungeonPrisonExtraGhostRep: 0,
@@ -617,9 +617,9 @@ let KDJailGuard = null;
  * @returns {entity}
  */
 function KinkyDungeonJailGuard() {
-	if (KDGameData.KinkyDungeonJailGuard) {
-		if (!KDJailGuard || KDJailGuard.id != KDGameData.KinkyDungeonJailGuard || KDUpdateEnemyCache) {
-			KDJailGuard = KinkyDungeonFindID(KDGameData.KinkyDungeonJailGuard);
+	if (KDGameData.JailGuard) {
+		if (!KDJailGuard || KDJailGuard.id != KDGameData.JailGuard || KDUpdateEnemyCache) {
+			KDJailGuard = KinkyDungeonFindID(KDGameData.JailGuard);
 		}
 	} else {
 		KDJailGuard = null;
@@ -3741,12 +3741,16 @@ function KinkyDungeonGenerateSaveData() {
 	save.spells = spells;
 	save.inventory = newInv;
 	save.KDGameData = KDGameData;
+	KDMapData.RandomPathablePoints = {};
 	save.KDMapData = KDMapData;
+	KinkyDungeonGenNavMap();
 	save.KDEventData = KDEventData;
 	save.KDWorldMap = KDWorldMap;
 	save.KDCurrentWorldSlot = KDCurrentWorldSlot;
 	save.KinkyDungeonPlayerEntity = KinkyDungeonPlayerEntity;
 	save.KDCurrentWorldSlot = KDCurrentWorldSlot;
+
+
 
 
 	save.stats = {
@@ -3912,8 +3916,11 @@ function KinkyDungeonLoadGame(String) {
 			if (saveData.KDWorldMap) KDWorldMap = JSON.parse(JSON.stringify(saveData.KDWorldMap));
 
 			if (saveData.KinkyDungeonPlayerEntity) KinkyDungeonPlayerEntity = saveData.KinkyDungeonPlayerEntity;
-			if (saveData.KDMapData) KDMapData = Object.assign(KDDefaultMapData("", ""), JSON.parse(JSON.stringify(saveData.KDMapData)));
-			else {
+			if (saveData.KDMapData) {
+				KDMapData = Object.assign(KDDefaultMapData("", ""), JSON.parse(JSON.stringify(saveData.KDMapData)));
+				if (!KDMapData.Traffic || KDMapData.Traffic.length == 0) KDGenerateBaseTraffic();
+				KinkyDungeonGenNavMap();
+			} else {
 				if (saveData.KinkyDungeonEffectTiles) KDMapData.EffectTiles = saveData.KinkyDungeonEffectTiles;
 				if (saveData.KinkyDungeonTiles) KDMapData.Tiles = saveData.KinkyDungeonTiles;
 				if (saveData.KinkyDungeonTilesSkin) KDMapData.TilesSkin = saveData.KinkyDungeonTilesSkin;

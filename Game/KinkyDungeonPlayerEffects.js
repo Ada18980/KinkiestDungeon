@@ -19,7 +19,7 @@ let KDPlayerEffects = {
 		return {sfx: "Shield", effect: false};
 	},
 	"EnvDamage": (target, damage, playerEffect, spell, faction, bullet, entity) => {
-		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage, flags: playerEffect?.flags}, bullet);
 		if (dmg.happened) {
 			KinkyDungeonSendTextMessage(Math.min(playerEffect.power, 5), TextGet("KinkyDungeonDamageSelf").KDReplaceOrAddDmg(dmg.string), "#ff0000", 1);
 			return {sfx: "DamageWeak", effect: true};
@@ -737,21 +737,21 @@ let KDPlayerEffects = {
 		}
 		return {sfx: "ArmorHit", effect: effect};
 	},
-	"SingleMagicChain": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+	"SingleMagicBind": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["chainRestraintsMagic"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+			let restraintAdd = KinkyDungeonGetRestraint({tags: playerEffect.tags}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 			if (restraintAdd) {
-				KDPlayerEffectRestrain(spell, 1, ["chainRestraintsMagic"], faction, false, false, false, false);
+				KDPlayerEffectRestrain(spell, 1, playerEffect.tags, faction, false, false, false, false);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
-				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleChain").KDReplaceOrAddDmg( dmg.string), "#ff0000", playerEffect.time);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingle" + (playerEffect.msg || "Chain")).KDReplaceOrAddDmg( dmg.string), "#ff0000", playerEffect.time);
 				effect = true;
 			}
 			//KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			effect = true;
-			return {sfx: "Chain", effect: effect};
+			return {sfx: playerEffect.sfx || "Chain", effect: effect};
 		}
 		return {sfx: "ArmorHit", effect: effect};
 	},
@@ -902,6 +902,50 @@ let KDPlayerEffects = {
 				KDGameData.MovePoints = Math.min(-1, KDGameData.MovePoints);
 			}
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSlime").KDReplaceOrAddDmg( dmg.string), "#ff0000", playerEffect.time);
+
+			effect = true;
+		}
+		return {sfx: "RubberBolt", effect: effect};
+	},
+	"LiquidMetalPatch": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let effect = false;
+		if (KDTestSpellHits(spell, 1.0, 0.0)) {
+			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage, flags: ["EnvDamage"]}, bullet);
+			if (!dmg.happened) return{sfx: "Shield", effect: false};
+			if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") < 0.45) {
+				let restraintAdd = KinkyDungeonGetRestraint({tags: ["liquidMetalRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+				if (restraintAdd) {
+					KDPlayerEffectRestrain(spell, 1, ["liquidMetalRestraints"], faction);
+					KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
+					effect = true;
+				}
+			}
+			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLiquidMetal").KDReplaceOrAddDmg( dmg.string), "#aaaaaa", playerEffect.time);
+
+			effect = true;
+		}
+		return {sfx: "RubberBolt", effect: effect};
+	},
+	"LiquidMetalEngulf": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let effect = false;
+		if (KDTestSpellHits(spell, 1.0, 0.0)) {
+			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+			if (!dmg.happened) return{sfx: "Shield", effect: false};
+			if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") < 1) {
+				let count = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") < 0.45 ? 3 : (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") < 0.75 ? 2 : 1)
+				for (let i = 0; i < count; i++) {
+					let restraintAdd = KinkyDungeonGetRestraint({tags: ["liquidMetalRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+					if (restraintAdd) {
+						KDPlayerEffectRestrain(spell, 1, ["liquidMetalRestraints"], faction);
+						KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
+						effect = true;
+					}
+				}
+				
+				
+				KDGameData.MovePoints = Math.min(-1, KDGameData.MovePoints);
+			}
+			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLiquidMetalEngulf").KDReplaceOrAddDmg( dmg.string), "#aaaaaa", playerEffect.time);
 
 			effect = true;
 		}

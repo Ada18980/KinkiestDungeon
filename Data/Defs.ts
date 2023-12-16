@@ -111,6 +111,7 @@ let LAYERS_BASE = [
 
 
 	"HarnessOver",
+	"WrapChest",
 	"BindChest",
 	"BustierCollar",
 	"BustierChest",
@@ -217,6 +218,9 @@ let LAYERS_BASE = [
 	"Thighs1",
 	"ThighLeftOver",
 	"ThighLeft",
+
+	"WrappingAnklesOver",
+
 	"AnklesOver",
 	"Ankles",
 	"Ankles3",
@@ -1187,6 +1191,7 @@ let LayerGroups = {
 	"Jacket",
 	"ChestDeco",
 	"Chestplate",
+	"WrapChest",
 
 	// Bondage
 
@@ -1215,7 +1220,8 @@ let LayerGroups = {
 	"CrossSleeveRight",
 	"CrossSleeveDecoLeft",
 	"CrossSleeveLeft",
-
+	"WrapArmLeft",
+	"WrapArmRight",
 
 	// Certain pieces of armor go over the shirt
 	"BeltBondage",
@@ -1245,6 +1251,7 @@ let LayerGroups = {
 	"SkirtOver",
 
 	"WrappingLegsOver",
+	"WrappingAnklesOver",
 
 	// Corsets that go under harness and poofy skirt
 	//"Corset",

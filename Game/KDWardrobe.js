@@ -966,7 +966,10 @@ function KDDrawWardrobe(screen, Character) {
 			CharacterReleaseTotal(C);
 			CharacterNaked(C);
 			KinkyDungeonCheckClothesLoss = true;
-			KinkyDungeonSetDress("Bikini", "Bikini", C, true);
+			if (KinkyDungeonCurrentDress == "Bikini")
+				KinkyDungeonSetDress("Bikini", "Bikini", C, true);
+			else 
+				KinkyDungeonSetDress("None", "None", C, true);
 			KinkyDungeonDressPlayer(C, true);
 			KDInitProtectedGroups();
 			KinkyDungeonConfigAppearance = true;

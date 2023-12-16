@@ -16,6 +16,9 @@ let KinkyDungeonShrineBaseCosts = {
 	"Illusion": 200,
 };
 
+let KDRewardProgramScaling = 500;
+let KDRewardProgramBase = 500;
+
 let KDWillShrineWill = 0.25;
 let KinkyDungeonOrbAmount = 0;
 let KDShrineRemoveCount = 30;
@@ -303,11 +306,11 @@ function KinkyDungeonPayShrine(type) {
 
 			KDGameData.ShopRewardProgram += cost;
 			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true);
-			if (!KDGameData.ShopRewardProgramThreshold) KDGameData.ShopRewardProgramThreshold = 500;
+			if (!KDGameData.ShopRewardProgramThreshold) KDGameData.ShopRewardProgramThreshold = KDRewardProgramBase;
 			if (!KDGameData.ShopRewardProgram) KDGameData.ShopRewardProgram = 0;
 			if (point && KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(point.x, point.y)) && KDGameData.ShopRewardProgram > KDGameData.ShopRewardProgramThreshold) {
 				KDGameData.ShopRewardProgram = 0;
-				KDGameData.ShopRewardProgramThreshold += 100;
+				KDGameData.ShopRewardProgramThreshold += KDRewardProgramScaling;
 				KinkyDungeonMapSet(point.x, point.y, ';');
 				KinkyDungeonTilesSet("" + (point.x) + "," + (point.y), {Portal: "CommercePortal", Light: 5, lightColor: 0xffff88});
 			}

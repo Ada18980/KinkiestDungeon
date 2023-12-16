@@ -58,7 +58,7 @@ let KDEffectTiles = {
 		duration: 300,
 		priority: -2,
 		affinities: ["Slippery"],
-		tags: ["slippery", "metal", "conductive", "terrain"],
+		tags: ["slippery", "metal", "conductive", "conductcold", "liquidmetal", "terrain"],
 	},
 	"LatexThin": {
 		name: "LatexThin",
@@ -158,7 +158,7 @@ let KDEffectTiles = {
 		name: "Chains",
 		duration: 30,
 		priority: 5,
-		tags: ["bind", "chain", "noisy", "conductive", "terrain"],
+		tags: ["bind", "chain", "noisy", "conductive", "conductcold", "terrain"],
 	},
 	"SlimeBurning": {
 		name: "SlimeBurning",
@@ -199,6 +199,14 @@ let KDEffectTiles = {
 		brightness: 6,
 		lightColor: 0xaaaaff,
 		tags: ["ignite", "electric"],
+	},
+	"Chill": {
+		name: "Chill",
+		duration: 4,
+		priority: 7,
+		brightness: 2,
+		lightColor: 0x88ffff,
+		tags: ["ice", "cold"],
 	},
 	"WireSparks": {
 		name: "WireSparks",

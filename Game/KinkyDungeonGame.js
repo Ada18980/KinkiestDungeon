@@ -184,6 +184,7 @@ function KDDefaultMapData(RoomType = "", MapMod = "") {
 		Entities : [],
 		FogGrid : [],
 		Grid : "",
+		Traffic : [],
 		GridWidth : 31,
 		GridHeight : 19,
 		MapBrightness : 5,
@@ -504,6 +505,9 @@ function KDSaveRoom(slot, saveconstantX) {
 
 	// Pack enemies
 	KDPackEnemies(KDMapData);
+	// Remove navmap cause it will be regenned
+
+	KDMapData.RandomPathablePoints = {};
 
 	let CurrentMapData = JSON.parse(JSON.stringify(KDMapData));
 
@@ -573,6 +577,8 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	MiniGameKinkyDungeonCheckpoint = KDMapData.Checkpoint || MiniGameKinkyDungeonCheckpoint;
 
 	KDInitTempValues();
+	if (!KDMapData.Traffic || KDMapData.Traffic.length == 0) KDGenerateBaseTraffic();
+	KinkyDungeonGenNavMap();
 
 	KDPlacePlayerBasedOnDirection(direction);
 
@@ -723,6 +729,9 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	if (!worldLocation) worldLocation = {x: KDCurrentWorldSlot.x, y: KDCurrentWorldSlot.y};
 	if (!KDWorldMap[(constantX ? 0 : worldLocation.x) + "," + worldLocation.y]) {
 		KDCreateWorldLocation(constantX ? 0 : worldLocation.x, worldLocation.y, altType?.makeMain ? altRoom : "");
+		if (altType?.makeMain || !altType) {
+			KDPruneWorld();
+		}
 	}
 	let location = KDWorldMap[(constantX ? 0 : worldLocation.x) + "," + worldLocation.y];
 
@@ -731,6 +740,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		return;
 	}
 
+	// Filter out the allies
 	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {return !allies.includes(enemy);});
 	KDCommanderRoles = new Map();
 	KDUpdateEnemyCache = true;
@@ -751,6 +761,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 		KDInitTempValues(seed);
 		KDMapData.Grid = "";
+		KDMapData.Traffic = [];
 		KDMapData.Tiles = {};
 		KDMapData.TilesSkin = {};
 		KDMapData.EffectTiles = {};
@@ -835,6 +846,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 				KDMapData.Grid = KDMapData.Grid + '1';
 			KDMapData.Grid = KDMapData.Grid + '\n';
 		}
+		KDGenerateBaseTraffic(width, height);
 
 		// We only rerender the map when the grid changes
 		KinkyDungeonGrid_Last = "";
@@ -1180,9 +1192,6 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 			for (let e of allies) {
 				KDAddEntity(e);
-			}
-
-			for (let e of KinkyDungeonGetAllies()) {
 				let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true, true);
 				if (!point) point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, undefined, true);
 				if (!point) point = {x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y};
@@ -1190,6 +1199,10 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 				e.visual_x = point.x;
 				e.visual_y = point.y;
 			}
+
+			/*for (let e of KinkyDungeonGetAllies()) {
+				
+			}*/
 			KDUpdateEnemyCache = true;
 			KDUnPackEnemies(KDMapData);
 
@@ -1259,9 +1272,10 @@ function KDLowPriorityNavMesh() {
 				}, true,true);
 			if (path)
 				for (let p of path) {
-					let tile = KinkyDungeonTilesGet(p.x + "," + p.y) || {};
-					tile.HighTraffic = true;
-					KinkyDungeonTilesSet(p.x + "," + p.y, tile);
+					//let tile = KinkyDungeonTilesGet(p.x + "," + p.y) || {};
+					//tile.HT = true; // High traffic
+					KDMapData.Traffic[p.y][p.x] = 0;
+					//KinkyDungeonTilesSet(p.x + "," + p.y, tile);
 				}
 		}
 	}
@@ -1346,12 +1360,21 @@ function KinkyDungeonIsReachable(testX, testY, testLockX, testLockY) {
 function KinkyDungeonGetAllies() {
 	let temp = [];
 	for (let e of KDMapData.Entities) {
-		if (e.Enemy && (e.Enemy.keepLevel || KDIsInParty(e)) && KDAllied(e) && !KDHelpless(e)) {
+		if (KDCanBringAlly(e)) {
 			temp.push(e);
 		}
 	}
 
 	return temp;
+}
+
+/**
+ * 
+ * @param {entity} e 
+ * @returns {boolean}
+ */
+function KDCanBringAlly(e) {
+	return e.Enemy && (e.Enemy.keepLevel || KDIsInParty(e)) && KDAllied(e) && !KDHelpless(e);
 }
 
 function KDChooseFactions(factionList, Floor, Tags, BonusTags, Set) {
@@ -2226,16 +2249,15 @@ function KinkyDungeonPlaceChests(params, chestlist, shrinelist, treasurechance, 
 				//KinkyDungeonTilesDelete("" + chest.x + "," +chest.y);
 			}
 			count += 1;
-		} /*else {
+		} else {
 
 			let chest = list[N];
 			if (KDRandom() < rubblechance) {
 				KinkyDungeonMapSet(chest.x, chest.y, 'R');
-				if (KDAlreadyOpened(chest.x, chest.y)) KinkyDungeonMapSet(chest.x, chest.y, 'r');
 			} else if (KDRandom() * KDRandom() < rubblechance - 0.01) KinkyDungeonMapSet(chest.x, chest.y, '/');
-			//else if (KDRandom() < rubblechance - 0.05) KinkyDungeonMapSet(chest.x, chest.y, 'r');
+			else if (KDRandom() < rubblechance - 0.05) KinkyDungeonMapSet(chest.x, chest.y, 'r');
 
-		}*/
+		}
 		list.splice(N, 1);
 	}
 
@@ -4081,9 +4103,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				if (attackCost < 0 && KinkyDungeonStatsChoice.has("BerserkerRage")) {
 					KinkyDungeonChangeDistraction(0.7 - 0.5 * data.attackCost, false, 0.33);
 				}
-				if (KinkyDungeonPlayerDamage.unarmed && KDIsHumanoid(data.target)) {
-					data.attackData.type = "grope";
-				}
+				
 				if (KinkyDungeonAttackEnemy(data.target, data.attackData)) {
 					result = "hit";
 				} else {
@@ -5004,12 +5024,19 @@ let KDKeyCheckers = {
 	},
 };
 
-function KDGetAltType(Floor) {
+/**
+ * 
+ * @param {number} Floor 
+ * @param {string} [MapMod] 
+ * @param {string} [RoomType] 
+ * @returns {any}
+ */
+function KDGetAltType(Floor, MapMod, RoomType) {
 	let mapMod = null;
-	if (KDGameData.MapMod) {
-		mapMod = KDMapMods[KDGameData.MapMod];
+	if (MapMod ? MapMod : KDGameData.MapMod) {
+		mapMod = KDMapMods[MapMod ? MapMod : KDGameData.MapMod];
 	}
-	let altRoom = KDGameData.RoomType;
+	let altRoom = RoomType ? RoomType : KDGameData.RoomType;
 	let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
 	return altType;
 }
@@ -5103,5 +5130,28 @@ function KDUpdateForceOutfit(C) {
 	}
 	if (forceOutfit && KinkyDungeonCurrentDress != forceOutfit) {
 		KinkyDungeonSetDress(forceOutfit, forceOutfit, C);
+	}
+}
+
+function KDGenerateBaseTraffic(width, height) {
+	KDMapData.Traffic = [];
+	// Generate the grid
+	for (let X = 0; X < height; X++) {
+		let row = [];
+		for (let Y = 0; Y < width; Y++)
+			row.push(3);
+		KDMapData.Traffic.push(row);
+	}
+}
+
+/**
+ * Prunes all rooms with prune: true
+ */
+function KDPruneWorld() {
+	for (let slot of Object.values(KDWorldMap)) {
+		for (let entry of Object.entries(slot.data)) {
+			let alt = KDGetAltType(slot.y, entry[1].MapMod, entry[1].RoomType);
+			if (alt?.prune || alt?.alwaysRegen) delete slot.data[entry[0]];
+		}
 	}
 }
