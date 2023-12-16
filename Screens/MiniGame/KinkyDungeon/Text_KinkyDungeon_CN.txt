@@ -365,6 +365,25 @@ Brawler
 格斗大师
 Unarmed attacks deal +10 damage and being slowed does not decrease unarmed damage.
 徒手攻击额外造成10伤害并且减速不会减少徒手伤害。
+
+Way of the Squish
+轻抚攻击
+Unarmed attacks deal grope damage against humans.
+徒手攻击会对人类造成抚摸伤害。
+Way of the Spank
+打屁股攻击
+Unarmed attacks deal pain damage against humans.
+徒手攻击会对人类造成痛苦伤害。
+Way of the Feather
+羽毛攻击
+Unarmed attacks deal tickle damage against humans.
+徒手攻击会对人类造成挠痒伤害。
+
+Harmless
+无害
+Unarmed attacks deal half damage and cost 2x as much stamina.
+徒手攻击仅造成一半伤害并消耗 2 倍的体力。
+
 Clumsy
 笨手笨脚
 0.7x base accuracy
@@ -1106,6 +1125,8 @@ Aggressive Order
 All selected units switch to Aggressive mode
 所有选定的队伍切换到侵略模式
 
+Unique
+独特
 Unlock using magic
 使用魔法解锁
 
@@ -2611,11 +2632,13 @@ You find gold, plus a devious magical trap! (+RestraintType) (+XXX gold)
 Magical runes glow as a trap activates inside the chest!
 魔法符文在箱子里闪烁，一个陷阱被触发了！
 You find a special collar that lets you absorb energy from potions.
-你会发现一个特殊的项圈，可以让你从药水中直接吸收能量。
+你发现一个特殊的项圈，可以让你从药水中直接吸收能量。
 You find a pair of garish pink high heels with a slippery surface.
-你会发现一双华丽的粉红色高跟鞋，表面很光滑。
+你发现一双华丽的粉红色高跟鞋，表面很光滑。
+You find a special gag with a feather duster.
+你发现一个带有鸡毛掸子的特殊堵嘴器。
 You find a gas mask suitable for filtering gases.
-你找到了一个适合过滤气体的防毒面具。
+你发现一个适合过滤气体的防毒面具。
 The pearly chest contains a divine gift! (+ITEMGET)
 珍贵的宝箱里有一份神圣的礼物！ （+得到道具）
 Smoke fills the air around you!
@@ -2932,14 +2955,32 @@ Creates a smoke screen lasting 8 turns. You are harder to see while inside the s
 制造持续 8 回合的烟幕。在烟雾中时你更难看到。
 Flash Bomb
 闪光弹
+Flash Bomb x3
+3 枚闪光弹
 You toss the flash bomb and the fuse starts ticking...
-你抛出闪光弹，导火索就开始滴答作响……
+你抛出闪光弹，导火索开始滴答作响……
 You ready a flash bomb...
 你准备好闪光弹...
 A type of explosive used by agents. Blinds nearby targets without causing significant injury.
 一种经常被特工使用的爆炸物。致盲附近目标而不造成重大伤害。
 Blinds for 20 turns in a 3x3 area.
 在 3x3 区域内致盲 20 回合。
+
+Flashbang
+闪光震爆弹
+Flashbang x3
+3 枚闪光震爆弹
+You toss the flashbang and the fuse starts ticking...
+你抛出闪光震爆弹，保险丝开始滴答作响......
+You ready a flashbang...
+你准备好闪光震爆弹...
+A piece of rare special forces equipment. The secrets of its manufacture are strictly kept by the Alchemist's Guild.
+一件稀有的特种部队装备。其制造秘密由炼金术士公会严格保守。
+Blinds for 24 turns in a 3x3 area. Also Slows and Silences them for half the duration.
+在 3x3 区域内造成 24 回合的致盲。还会在一半的时间内减慢和沉默它们。
+Blinds for 24 turns in a 3x3 area. And also Slows and Silences them for half the duration.
+在 3x3 区域内造成 24 回合的致盲。并且还会在一半的时间内减慢和沉默它们。
+
 Invisibility Potion
 隐形药水
 You chug the concoction and see your body fading away.
@@ -3236,8 +3277,8 @@ Unarmed
 徒手
 Fight with your hands and feet.
 用你的手和脚战斗。
-Deals unarmed damage. Becomes grope damage when used on a humanoid.
-造成徒手伤害。对人形生物使用时会造成抚摸伤害。
+Deals unarmed damage.
+造成徒手伤害。
 Sword
 剑
 The blade is strong, its edge sharp.
@@ -3262,12 +3303,6 @@ Its powers extend beyond the traditional schools of magic.
 它的力量超越了传统的魔法。
 Deals charm damage. 20% chance to stun the target for 2 turns. Offhand: +5 charm damage on attack for 3 stamina.
 造成妩媚伤害，有 20% 的几率使目标眩晕 2 回合。副手：攻击时 +5 妩媚伤害，持续 3 点体力。
-Feather
-羽毛
-A feather taken from some large fluffy being. Offhand: +5 tickle damage on attack for 3 stamina.
-从一些毛茸茸的大动物上取下的羽毛。副手：攻击时 +5 挠痒伤害，持续 3 点体力。
-Deals tickle damage. Distracts enemies.
-造成挠痒伤害，使敌人性奋。
 Ice Cube
 冰块
 A magical cube of ice that never melts. Convenient!
@@ -5361,6 +5396,12 @@ Tome of Chains
 锁链之书
 The floating tome burns into ashes!
 漂浮的巨著燃烧成灰烬！
+Tome of Belts
+绑带之书
+Tome of Ropes
+绳索之书
+Tome of Bondage
+束缚之书
 Tome of Light
 光之书
 The floating tome burns into ashes!
@@ -6774,6 +6815,13 @@ A pair of heels coated in a nonstick material.
 一双涂有不粘胶或粘液材料的高跟鞋。
 They will slow you down, but you can walk on slime without getting stuck!
 它们会减慢你的速度，但你可以在粘液上行走而不会被黏住！
+
+Duster Gag
+掸子堵嘴
+A special gag designed for maids to be useful even while tied up! It's self-locking too!
+专为女仆设计的特殊堵嘴，即使在被绑着的情况下也能打扫卫生！并且会自动锁定！
+Deals 0.5 tickle damage on attack and adds +30 distraction.
+攻击时造成 0.5 点挠痒伤害，并增加 30 干扰值。
 
 Gas Mask
 防毒面具
@@ -8921,8 +8969,8 @@ From the Beyond
 
 You briefly spot your reflection as a reflective cube appears!
 当一个反光立方体出现时，你短暂地发现了自己的倒影！
-Liquid Metal Cube
-液态金属立方体
+Mini Metal Cube
+迷你金属立方体
 The liquid metal cube shatters into glittering dust.
 液态金属立方体碎裂成闪闪发光的灰尘。
 The liquid metal cube sticks to you and hardens! (DamageTaken)
@@ -9242,8 +9290,25 @@ You pick up a magical ice cube.
 你拿起了一个神奇的冰块。
 You find some treated hemp rope.
 你找到了一些经过处理的麻绳。
+
+Feather
+羽毛
+A feather taken from some large fluffy being.
+从一些毛茸茸的大动物上取下的羽毛。
+Deals tickle damage. Distracts enemies. Offhand: +5 tickle damage on attack for 3 stamina.
+造成挠痒伤害，使敌人性奋。副手：攻击时 +5 挠痒伤害，持续 3 点体力。
 You pick up a feather.
 你捡起了一根羽毛。
+
+Maid's Feather Duster
+女仆的鸡毛掸子
+An instrument used extensively by maidforce agents carrying out their duties.
+女仆特工在履行职责时广泛使用的一种工具。
+Deals tickle damage. Distracts enemies. Offhand: +15 distraction on attack for 1 stamina.
+造成挠痒伤害。使敌人性奋。副手：攻击时造成 15 干扰值，持续 1 点体力。
+You pick up a feather duster.
+你拿起鸡毛掸子。
+
 You pick up a heavy flail.
 你拿起了沉重的流星锤。
 You pick up a shortspear.
@@ -9667,6 +9732,18 @@ Dexterity
 灵巧
 Intelligence
 智力
+Misc
+杂项
+
+Unique
+独特
+Active
+积极
+Passive
+被动
+Upgrades
+升级
+
 Learnable
 可学习
 Unlearned
@@ -10203,28 +10280,30 @@ Shadow Slash
 暗影斩
 Shadow Scythe
 暗影镰刀
-Slice the area in front of you, dealing a delayed DamageDealt damage in an area and slowing briefly.
-切开你面前的区域，在一个区域内造成延迟的 DamageDealt 伤害并短暂减速。
+Slice the area in front of you, dealing a delayed DamageDealt damage in an area and slowing briefly. Deals 50% more damage when you are attacking from the shadows.
+切开你面前的区域，在一个区域内造成延迟的 DamageDealt 伤害并短暂减速。当你在阴影中攻击时，造成的伤害提高 50%。
 You create a tear in space with your finger!
 你用你的手指撕裂了前方的空间！
 Choose aim direction
 选择发射方向
-Portal
-传送门
-After 3 turns, teleport to a nearby location (including into darkness) with twice the range.
-3回合后，传送到附近的位置（包括黑暗中），范围扩大一倍。
-You call upon a misty portal to transport you!
-你打开了一个迷雾传送门来传送你！
-Choose target location
-选择施放位置
-Blink
-闪现
-Instantly teleport to a location you can see. Stuns an enemy if you teleport behind them.
-立即传送到你可以看到的位置。如果你传送到敌人身后，则会击晕敌人。
+
+Phase
+相位
+Instantly teleport to an adjacent position and gain +50 evasion for 3 turns. Unlocks Blink and Warp when learned.
+瞬间传送到邻近位置，并获得 +50 闪避，持续 3 回合。学习后解锁闪现和扭曲。
 You teleport!
 传送！
 Choose target location
 选择施放位置
+Blink
+闪现
+Instantly teleport up to 2 tiles away. Must have vision of the target point. Stuns an enemy if you teleport behind them.
+立即传送至 2 格之外。目标位置必须可视。如果你传送到敌人身后，则会击晕敌人。
+Warp
+扭曲
+Instantly teleport up to 2 tiles away. Must have vision of the target point. 
+立即传送至 2 格之外。目标位置必须可视。
+
 Ice Shard
 冰枪术
 A shard of ice that does DamageDealt damage and slows for Duration turns. Freezes if already slowed or drenched.
@@ -10293,6 +10372,10 @@ Conjure Chain
 召唤锁链
 Magic Chain
 魔法锁链
+Magic Rope
+魔法绳索
+Magic Belt
+魔法绑带
 Witch's Chain
 女巫的锁链
 Throws a chain that does DamageDealt chain damage. Targets with 50% or more binding take 50 crush damage and are slowed for 4 turns.
@@ -10808,10 +10891,40 @@ You are harder to see when waiting.
 你在等待时很难被发现。
 Dodge I
 闪避 I
++10 Evasion
++10 闪避
 Dodge II
 闪避 II
++15 Evasion (25 total)
++15 闪避（共 25 次）
 Dodge III
 闪避 III
++25 Evasion (50 total)
++25 闪避（共 50 次）
+
+Strength Up
+力量提升
++20% Physical Damage
++20% 物理伤害
+
+Deadly Aim
+致命目标
+Increases crit multiplier by a % equal to your Battle Rhythm.
+将暴击倍数提高等于你的战斗节奏的百分比。
+
+Accuracy I
+精准 I
++10 Accuracy
++10 精准度
+Accuracy II
+精准 II
++15 Accuracy (25 total)
++15 精准度（共 25 次）
+Accuracy III
+精准 III
++25 Accuracy (50 total)
++25 精准度（共 50 次）
+
 Precise Critical
 精准暴击
 When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency.
@@ -11514,6 +11627,18 @@ Call forth a shadow warrior for 16 turns who deals DamageDealt damage every othe
 ……深渊的答案！
 You call...
 你召唤了...
+
+Summon Nature Spirit
+召唤自然精灵
+Select where to put the nature spirit (cannot place on occupied squares)
+选择放置自然精灵的位置（不能放置在已占用的方块上）
+Create a natural spirit that fires vine projectiles and has a healing aura that restores HP to allies and regenerates your stamina.
+创建一个发射藤蔓射弹的自然精灵，并具有治疗光环，可以为盟友恢复生命值并恢复你的体力。
+A healing wisp appears!
+治愈之光出现！
+You call upon the powers of nature!
+你呼唤自然的力量！
+
 Summon Golem
 召唤傀儡
 Select where to put the golem (cannot place on occupied squares)
@@ -11882,6 +12007,10 @@ Crystals begin to form around your limbs!
 晶体开始在你的四肢周围形成！
 A magic chain secures itself around your body!
 一条魔链固定在你的身体上！
+A magic rope secures itself around your body!
+一条魔绳固定在你的身体上！
+A magic belt secures itself around your body!
+一条魔法绑带固定在你的身体上！
 A rope wraps itself around your body!
 一根绳子缠绕在你的身上！
 A ribbon animates and becomes entwined around you!
@@ -12100,8 +12229,8 @@ Oblivion, 秘密的守护者
 
 Arcane Energy is stored by casting spells, up to 100% Max mana.
 奥术能量通过施展法术来储存，最高可达 100% 最大法力值。
-Battle Rhythm is gained by spending stamina through attacks, up to 50 total.
-战斗节奏是通过攻击消耗体力来获得的，总共最多 50 点。
+Battle Rhythm is gained by spending stamina through attacks, up to 40 total.
+战斗节奏是通过攻击消耗体力来获得的，总共最多 40 点。
 
 Arcane Blast
 奥术冲击
@@ -15679,8 +15808,8 @@ Wait! That's too much! (PERCENT chance to avoid)
 (The SPEAKER giggles loudly)|(The vines catch up and pin you down)|(When they let go, you're left with a RESTRAINT)
 （SPEAKER 咯咯大笑）|（藤蔓追上并把你压住）|（当它们松开时，你就只剩下 RESTRAINT 了）
 
-(The SPEAKER looks at with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?
-（SPEAKER 用一种哲学的眼光看着）|你有没有想过你想要……|转变？
+(The SPEAKER looks at you with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?
+（SPEAKER 用一种哲学的眼光看着你）|你有没有想过你想要……|转变？
 (The SPEAKER takes a strange mask from her satchel)|Well, I have the answer right here...
 （SPEAKER 从她的跨包里拿出一个奇怪的面具）|好吧，我这里有答案......
 (The SPEAKER nods seriously)|My hypothesis was correct...
@@ -15727,6 +15856,54 @@ Fine, you've convinced me.
 （咯咯笑并点头）
 I don't have time for this. (PERCENT chance to avoid)
 我没有时间做这个。（PERCENT 的概率避开）
+(Shake your head and moan) (PERCENT chance to avoid)
+（摇头并呻吟）（PERCENT 的概率避开）
+
+(The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!
+（SPEAKER 微笑并狡猾地低头看着你）|嘿，我有一份 '工作' 给你！
+(The SPEAKER takes a duster gag from her satchel)|Such a good girl!|So here's what I have for you~|It's a special tool to help keep the place clean.
+（SPEAKER 从书包里拿出一个掸子口塞）|真是个好女孩！|这就是我给你的东西~|这是一个帮助保持地方卫生的特殊工具。
+(The SPEAKER grins)|I'm glad we could come to an understanding~|(She takes out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
+（SPEAKER 笑了）|很高兴我们能达成共识~|（她从书包里拿出一个掸子口塞）|现在，这个地方很脏。|你为什么不戴上这个来帮忙呢？
+(The SPEAKER frowns)|Fair enough.|Perhaps you should reconsider your life choices~
+（SPEAKER 皱起眉头）|很公平。|也许你应该重新考虑一下你的人生选择~
+(The SPEAKER shrugs)|I'll find someone else...
+（SPEAKER 耸耸肩）|那我去找其他人吧......
+(The SPEAKER reaches out to grab you)|Now now,|You shouldn't skip out on your duties~|(She pulls out a duster gag from her satchel and grins)
+（SPEAKER 伸手抓住你）|现在，|你不应该逃避你的职责~|（她从书包里拿出一个掸子口塞并笑了笑）
+(The SPEAKER smiles)|Don't be afraid!|(She turns the gag with the round mouth ball clearly visible)|Now open up...
+（SPEAKER 微笑）|别害怕！|（她转动口塞，圆形口球清晰可见）|现在打开……
+(The SPEAKER shrugs)|Fine, I'll get someone else to clean up.
+（SPEAKER 耸耸肩）|好吧，那我去找其他人来清理。
+(The SPEAKER places the gag in your mouth)|(She then buckles up the straps.)|(You feel a locking mechanism pull the straps in tight...)|Good maid!
+（SPEAKER 将口塞放入你的嘴里）|（然后她扣上带子。）|（你感觉到锁定装置将带子拉紧......）|好女仆！
+(The SPEAKER catches you and forces the gag on you)|(You feel it tighten as it locks on securely...)|I don't want to hear it!|Now go and do your job~
+（SPEAKER 抓住你并强行塞住你的嘴）|（当它牢牢锁定时，你会感觉到它收紧了......）|我不想听！|现在去做你的工作吧~
+
+I'll do it!
+我会做的！
+(Nod seriously)
+（认真点头）
+I don't like the sound of this.
+听起来我并不喜欢。
+(Shake your head)
+（摇头）
+
+Yes miss!
+是的，女士！
+(Nod again)
+（再次点头）
+Actually, maybe not...
+事实上，也许我不想...
+(Shake your head)
+（摇头）
+
+Okay okay... I'll do it.
+好吧好吧…… 我会做的。
+(Giggle and nod)
+（咯咯笑并点头）
+That gag is far too big! (PERCENT chance to avoid)
+这口塞也太大了吧！（PERCENT 的概率避开）
 (Shake your head and moan) (PERCENT chance to avoid)
 （摇头并呻吟）（PERCENT 的概率避开）
 
@@ -18733,8 +18910,8 @@ of Empowerment
 of Destruction
 毁灭
 
-Spatial Compression
-空间压缩
+Phase Dance
+相位之舞
 For 4 turns, your movement does not advance time. Attacking or casting counts as one move and passes time as normal.
 在 4 回合内，你的移动不会使时间提前。攻击或施法算作一招，并正常流逝时间。
 You are F A S T
@@ -18791,8 +18968,8 @@ Not enough mana.
 You need to free your legs.
 你需要先让你的腿可以自由活动。
 
-Spatial Swap
-空间交换
+Swap
+交换
 Choose a target with a clear line of sight to you and switch places with them.
 选择一个视野清晰的目标并与他交换位置。
 You point at the target and swap places with them!
@@ -18888,3 +19065,172 @@ Your shield absorbed AMNT damage.
 你的护盾吸收了 AMNT 的伤害。
 You are currently shielded from damage and some spells.
 你目前被保护免受伤害和一些法术的伤害。
+No offhand weapon set. Activate the spell in your hotbar to set one.
+没有副手武器组。激活快捷栏中的咒语来设置一个。
+
+Flash Portal
+闪光传送门
+After 3 turns, teleport to a nearby location (including into darkness). All adjacent creatures are teleported with you, in random order.
+3 回合后，传送到附近的位置（包括进入黑暗）。所有相邻的生物都会以随机顺序与你一起传送。
+You call upon a misty portal to transport you and nearby creatures!
+你召唤一个迷雾传送门来传送你和附近的生物！
+Choose target location
+选择目标位置
+
+Transportation Portal
+运输传送门
+After 3 turns, teleport to a nearby location (including into darkness). Transports only allies, but they are stunned for the duration.
+3 回合后，传送到附近的位置（包括进入黑暗）。只传送盟友，但他们会在持续时间内被眩晕。
+You call upon a misty portal to transport you and your allies!
+你召唤一个迷雾传送门来传送你和你的盟友！
+
+Banishing Portal
+放逐传送门
+After channeling for 3 turns, teleport all adjacent creatures to a point you can see. Does not teleport yourself.
+引导 3 回合后，将所有相邻生物传送到你可以看到的位置。不会传送自己。
+You call upon a misty portal to transport those around you!
+你召唤一个迷雾传送门来传送你周围的人！
+
+Rift
+裂缝
+Tearing a rift in space, you teleport to a location (including into darkness). Leaves behind a rift for 4 turns, which enemies can follow you through.
+撕裂空间裂缝，你传送到一个位置（包括进入黑暗）。留下一条裂缝 4 回合，敌人可以跟踪你穿过裂缝。
+You tear open a hole in space and step through!
+你撕裂了一个空间裂缝并跨了过去！
+
+Shadow Dance
+阴影之舞
+While standing in a shadowed location, you can teleport to a nearby shadowed location. You can also teleport adjacent to shadow creatures.
+站在阴影位置时，您可以传送到附近的阴影位置。你还可以传送到暗影生物附近。
+You slip between the shadows...
+你在阴影之间滑行……
+Choose a shadow
+选择阴影
+
+Teleportation Circle A
+传送圈 A
+When cast on a point, creates a teleportation circle. When cast on yourself, channel for 10 turns to teleport yourself and nearby allies to the teleportation circle. When learned, unlocks teleportation circle B and C as well.
+当施放于某个点时，会创建一个传送圈。当对自己施放时，引导 10 回合，将自己和附近的盟友传送到传送圈。可通过学习解锁传送圈 B 和 C。
+You begin a teleportation ritual...
+你开始了传送仪式……
+Choose a location to put a teleportation circle, or yourself to teleport to the created circle.
+选择放置传送圈的位置，或者选择传送到你自己创建的圆圈。
+Teleportation Circle B
+传送圈 B
+When cast on a point, creates a teleportation circle. When cast on yourself, channel for 10 turns to teleport yourself and nearby allies to the teleportation circle.
+当施放于某个点时，会创建一个传送圈。当对自己施放时，引导 10 回合，将自己和附近的盟友传送到传送圈。
+
+Nature Spirit
+自然精灵
+The nature spirit returns to the earth from whence it came.
+自然精灵回到了它所来的大地。
+
+Vine Bolt
+藤蔓箭
+
+Gunslinger
+枪手
+Weapons abilities and other abilities that cost charge contribute 20% of their cost to Battle Rhythm.
+武器技能和其他需要消耗能量的技能将其消耗的 20% 贡献给战斗节奏。
+Effortless Assault
+毫不费力的攻击
+Weapon stamina cost is reduced by a percentage equal to your Battle Rhythm.
+武器体力消耗减少的百分比等于你的战斗节奏。
+
++50 Evasion from using Phase
+使用相位时 +50 闪避
+
+Blade Dance
+剑舞
+Costs 60 stamina to dash to an adjacent spot. If you are holding a physical weapon, deals cleave damage to nearby enemies equal to 50% weapon damage. If you have a Light offhand weapon, deal 75% of its damage as well.
+冲向邻近地点需要消耗 60 点体力。如果你持有物理武器，会对附近的敌人造成相当于 50% 武器伤害的劈砍伤害。如果你有一把轻型副手武器，也会造成 75% 的伤害。
+You spin towards a location, slashing at nearby enemies!
+你冲向一个位置，猛击附近的敌人！
+
+The Shadow Within
+内心的阴影
+Shadow Dance no longer requires you to be in shadow in order to dash to another shadow, but the mana cost is doubled when doing so.
+阴影之舞不再需要你处于阴影中才能冲向另一个阴影，但这样做时法力消耗会加倍。
+
+Summon Holy Orb
+召唤圣球
+Select where to put the holy orb (cannot place on occupied squares)
+选择放置圣球的位置（不能放置在已占用的方块上）
+Create a stationary holy orb that lasts indefinitely and heals allies. It also fires blinding bolts at enemies within its aura. If you let go of yourself near a holy orb you are immediately punished. Should not be placed within 8 tiles of each other.
+创建一个永久持续并治愈盟友的固定圣球。它还会向其光环内的敌人发射致盲箭矢。如果你在圣球附近高潮，你会立即受到惩罚。彼此之间不应放置在 8 格以内。
+A holy orb descends, blessing you with its roundness.
+一颗神圣的球体降临，用它的圆度祝福你。
+You call upon the root of all enlightenment!
+你召唤一切觉悟的根源！
+
+Holy Orb
+圣球
+The holy orb returns to its place in the sky.
+圣球回到了天空中的位置。
+
+Holy Bolt
+圣箭
+The holy orb observes your lack of discipline, and issues a punishment.
+圣球观察到你缺乏纪律，并发出惩罚。
+
+Divine Chastity Belt
+神圣贞操带
+A chastity belt forged in holy light. Only a Goddess' will can release you.
+圣光锻造的贞操带。只有女神才能释放你。
+There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge.
+除了悔改，没有任何出路。它的神圣光环会导致振动器在你到达极限之前停止。
+Your Divine Chastity Belt causes the vibrators to stop.
+你的神圣贞操带会使振动器停止。
+
+A chastity belt forged in holy light. Only the will of a Goddess will release you!
+圣光锻造的贞操带。只有女神才能释放你！
+
+You find a heavenly chastity belt. Who could it be for?
+你找到了一条天堂般的贞操带。可以给谁呢？
+
+Magic Arm Belts
+手臂绑带（附魔）
+Highly secure belts enchanted with magic
+具有魔法的高安全绑带
+Lockable and fully adjustable to ensure snugness.
+可锁定且完全可调，以确保舒适。
+Magic Leg Belts
+腿部绑带（附魔）
+Magic Ankle Belts
+脚踝绑带（附魔）
+
+The Liquid Metal starts engulfing you!
+液态金属开始吞噬你！
+
+Silver Burst
+爆发金属
+Select a liquid metal tile
+选择液态金属块
+Target a liquid metal tile. After 3 turns, it erupts, spreading more liquid metal and engulfing any nearby creatures. Deals DamageDealt crush damage and applies 80 points of metallic binding
+瞄准液态金属块。3 回合后，它会爆发，散布更多液态金属并吞没附近的任何生物。造成伤害造成挤压伤害并施加 80 点金属束缚
+A powerful explosion simmers beneath the surface...
+强大的爆炸在地表下酝酿……
+
+The ground shakes as a huge wall of liquid metal approaches!
+大地震动，巨大的液态金属墙逼近！
+
+Liquid Metal Cube
+液态金属方块
+The liquid metal cube dissolves into a huge pile of glittering dust
+液态金属方块溶解成一大堆闪闪发光的银色灰尘
+The liquid metal cube engulfs you and squeezes tightly! (DamageTaken)
+液态金属方块将你吞没并紧紧挤压！（DamageTaken）
+The liquid metal cube engulfs your body and hardens, taking the form of restraints! (+RestraintAdded)
+液态金属方块吞没你的身体并变硬，变成束缚的形式！（+RestraintAdded）
+
+Skeleton Archer
+骷髅射手
+The Skeleton falls to pieces.
+骷髅四分五裂。
+The Skeleton restrains you! (+RestraintAdded)
+骷髅束缚了你！（+RestraintAdded）
+The Skeleton tackles you! (DamageTaken)
+骷髅来对付你！（DamageTaken）
+
+Cursed Arrow
+诅咒之箭
