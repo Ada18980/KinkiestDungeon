@@ -16161,7 +16161,7 @@ RestraintMagicBeltLegs,Magic Leg Belts
 RestraintMagicBeltLegsDesc,"Highly secure belts enchanted with magic."
 RestraintMagicBeltLegsDesc2,"Lockable and fully adjustable to ensure snugness."
 RestraintMagicBeltFeet,Magic Ankle Belts
-RestraintMagicBeltFeetDesc,"AHighly secure belts enchanted with magic."
+RestraintMagicBeltFeetDesc,"Highly secure belts enchanted with magic."
 RestraintMagicBeltFeetDesc2,"Lockable and fully adjustable to ensure snugness."
 KinkyDungeonLiquidMetal,The Liquid Metal starts engulfing you!
 
@@ -16175,7 +16175,7 @@ KinkyDungeonTrapSpawnLiquidMetalCube,"The ground shakes as a huge wall of liquid
 NameLiquidMetalCube,Liquid Metal Cube
 KillLiquidMetalCube,"The liquid metal cube dissolves into a huge pile of glittering dust."
 AttackLiquidMetalCube,"The liquid metal cube engulfs you and squeezes tightly! (DamageTaken)"
-AttackLiquidMetalCubeBind,"The liquid metal cube elgulfs your body and hardens, taking the form of restraints! (+RestraintAdded)"
+AttackLiquidMetalCubeBind,"The liquid metal cube engulfs your body and hardens, taking the form of restraints! (+RestraintAdded)"
 
 
 NameSkeletonArcher,Skeleton Archer
