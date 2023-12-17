@@ -255,6 +255,21 @@ A twist on the standard mode. You must choose before progressing.
 You must pick a debuff between floors before progressing.
 在前进之前，你必须在楼层之间选择一个减益效果。
 
+Perk Shrine Bondage:
+技能神泉束缚：
+Never
+永不
+Sometimes
+偶尔
+Always
+总是
+Perk shrines will not offer bondage as part of the deal.
+技能神泉不会提供束缚。
+Bondage will sometimes be offered alongside perks.
+有时，束缚会与技能一起提供。
+Perk shrines are always accompanied by bondage.
+技能神泉总会提供束缚。
+
 Hard Mode:
 难度模式：
 Normal Mode
@@ -449,11 +464,6 @@ Latex Doll
 乳胶娃娃
 Latex restraints are harder to escape from.
 乳胶拘束更难逃脱。
-
-Hogtied!
-捆绑
-Start the game trussed up in tight ropes.
-开始游戏时被绳索捆绑。
 
 Escapee
 流亡者
@@ -1524,10 +1534,10 @@ Start in a uniform of a naughty wolfgirl.
 开局时穿戴狼女的衣服。
 Latex Toy
 乳胶玩具
-Start bound in latex restraints.
-开局时穿戴一整套乳胶拘束。
-Obsidian Slave
-黑曜石奴隶
+Start bound in lovely latex restraints.
+开局时穿戴一整套可爱的乳胶拘束。
+Elemental Slave
+精灵奴隶
 Start in a full set of magically locked obsidian cuffs.
 开局时穿戴被魔法锁住的全套黑曜石铐。
 
@@ -19201,6 +19211,10 @@ Magic Ankle Belts
 
 The Liquid Metal starts engulfing you!
 液态金属开始吞噬你！
+The Liquid Metal explodes and covers you!
+液态金属爆开并包裹住你！
+The Liquid Metal takes advantage of your status and engulfs you!
+液态金属正在吞噬你！
 
 Silver Burst
 爆发金属
@@ -19234,3 +19248,50 @@ The Skeleton tackles you! (DamageTaken)
 
 Cursed Arrow
 诅咒之箭
+Because your hands are unavailable, you kick the target instead.
+因为你的手无法正常活动，所以你只能踢目标。
+
+Your former owners are looking for you across the seven planes.
+你的前主人正在七界寻找你。
+
+A local business is missing one of their models, and will stop at nothing to find her.
+当地一家企业失去了一名模特，并且会不惜一切代价寻找她。
+The Doll Shoppe
+玩偶商店
+Elemental Slavers
+精灵奴隶
+
+Your duty as a maid is to keep the place clear of dirt and other hazards.
+作为女仆，你的职责是保持这个地方没有污垢和其他危险。
+Dirt Pile
+土堆
+You clear out the dirt pile
+你将土堆清理干净
+A ENMY was lurking inside the dirt pile!
+土堆里潜伏着一名 ENMY！
+You skipped your duty and left some dirt missing in the last level!
+你玩忽职守，在最后一个楼层中遗漏了一些泥土忘记清理！
+
+The Dollmaker does not take no for an answer.
+玩偶师不会接受 '不' 的回答。
+Fuuka's shrine maidens would like to have a word with you.
+Fukka的巫女们想和你说句话。
+Your instructor will meet with you at regular intervals for further training.
+你的导师将定期与你会面以进行进一步训练。
+
+Hogtied!
+捆绑
+Experience a comprehensive rope bondage experience.
+体验全面的绳索束缚体验。
+
+Rope Dojo
+绳道场
+Shadow Clan
+暗影教徒
+Fuuka's Shrine
+Fuuka的神龛
+Dollmaker
+玩偶师
+
+Receive the following restraints: 
+受到以下拘束：
