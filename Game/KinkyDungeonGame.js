@@ -3524,7 +3524,7 @@ function KinkyDungeonGetDirectionRandom(dx, dy) {
 let KinkyDungeonAutoWaitSuppress = false;
 
 function KinkyDungeonControlsEnabled() {
-	return !KinkyDungeonInspect && KinkyDungeonSlowMoveTurns < 1 && KinkyDungeonStatFreeze < 1 && KDGameData.SleepTurns < 1 && !KDGameData.CurrentDialog && !KinkyDungeonMessageToggle;
+	return !KinkyDungeonInspect && KDGameData.SlowMoveTurns < 1 && KinkyDungeonStatFreeze < 1 && KDGameData.SleepTurns < 1 && !KDGameData.CurrentDialog && !KinkyDungeonMessageToggle;
 }
 
 function KDStartSpellcast(tx, ty, SpellToCast, enemy, player, bullet, data) {
@@ -4284,7 +4284,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 
 								if (moveObject == 'g') {
 									KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonGrateEnter"), "white", 3);
-									//KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, 1);
+									//KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, 1);
 									KDStunTurns(1, true);
 									//KDGameData.KneelTurns = CommonTime() + 250;
 								}
@@ -4356,7 +4356,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 
 				if (newDelta > 1 && newDelta < 10 && !quick) {
 					if (KDToggles.LazyWalk) {
-						KinkyDungeonSlowMoveTurns = newDelta - 1;
+						KDGameData.SlowMoveTurns = newDelta - 1;
 						KinkyDungeonSleepTime = CommonTime() + 200;
 					} else {
 						KDGameData.MovePoints = Math.min(KDGameData.MovePoints, 1-newDelta);
@@ -4892,7 +4892,7 @@ function KDTileDelete(x, y) {
 function KDStunTurns(turns, noFlag) {
 	if (!noFlag)
 		KinkyDungeonSetFlag("playerStun", turns + 1);
-	KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, turns);
+	KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, turns);
 	KinkyDungeonSleepTime = CommonTime() + 200;
 }
 
@@ -4977,7 +4977,7 @@ let KDKeyCheckers = {
 	},
 
 	"Dialogue": () => {
-		if (KDGameData.CurrentDialog && !(KinkyDungeonSlowMoveTurns > 0)) {
+		if (KDGameData.CurrentDialog && !(KDGameData.SlowMoveTurns > 0)) {
 
 			if (KinkyDungeonState == 'Game' && KinkyDungeonDrawState == 'Game' && KDGameData.CurrentDialog) {
 				if (KinkyDungeonKey[2] == KinkyDungeonKeybindingCurrentKey) {

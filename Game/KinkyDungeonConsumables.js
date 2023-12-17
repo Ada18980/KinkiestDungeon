@@ -177,7 +177,7 @@ function KinkyDungeonCanDrink(byEnemy) {
 }
 
 function KinkyDungeonAttemptConsumable(Name, Quantity) {
-	if (KDGameData.SleepTurns > 0 || KinkyDungeonSlowMoveTurns > 0) return false;
+	if (KDGameData.SleepTurns > 0 || KDGameData.SlowMoveTurns > 0) return false;
 	let item = KinkyDungeonGetInventoryItem(Name, Consumable);
 	if (!item) return false;
 

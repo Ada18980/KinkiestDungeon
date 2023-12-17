@@ -798,10 +798,12 @@ function KinkyDungeonHandleOrb() {
 
 let KDPerkConfirm = false;
 let KDPerkOrbPerks = [];
+let KDPerkOrbBondage = [];
 function KinkyDungeonTakePerk(Amount, X, Y) {
 	KinkyDungeonSetFlag("NoDialogue", 3);
 
 	KDPerkOrbPerks = KinkyDungeonTilesGet(X + "," + Y).Perks;
+	KDPerkOrbBondage = KinkyDungeonTilesGet(X + "," + Y).Bondage;
 	KinkyDungeonDrawState = "PerkOrb";
 	KinkyDungeonOrbAmount = Amount;
 	KDOrbX = X;
@@ -834,6 +836,27 @@ function KinkyDungeonDrawPerkOrb() {
 		});
 		count += 1;
 	}
+	if (KDPerkOrbBondage?.length > 0) {
+		let str = "";
+		for (let b of KDPerkOrbBondage) {
+			if (str) str = str + ', ';
+			str = str + TextGet("Restraint" + b);
+		}
+		DrawTextFitKD(TextGet("KDBondageOptionPerk"), 1250, 350 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 24);
+		DrawTextFitKD(str, 1250, 385 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 22);
+		FillRectKD(kdcanvas, kdpixisprites, "bg_bndg", {
+			Left: 1250-Twidth/2 - 10,
+			Top: 350 + count * pspacing - 30,
+			Width: Twidth + 20,
+			Height: 70 + 20,
+			Color: KDTextGray0,
+			LineWidth: 1,
+			zIndex: 60,
+			alpha: 0.7,
+		});
+		count += 1;
+	}
+	
 
 	if (KDPerkConfirm) {
 		DrawTextFitKD(TextGet("KinkyDungeonPerkConfirm"), 1250, 720, 1300, "#ffffff", KDTextGray2, 30);
@@ -850,7 +873,7 @@ function KinkyDungeonDrawPerkOrb() {
 
 	DrawButtonKDEx("accept", (bdata) => {
 		if (KDPerkConfirm) {
-			KDSendInput("perkorb", {shrine: "perk", perks: KDPerkOrbPerks, Amount: 1, x: KDOrbX, y: KDOrbY});
+			KDSendInput("perkorb", {shrine: "perk", perks: KDPerkOrbPerks, bondage: KDPerkOrbBondage, Amount: 1, x: KDOrbX, y: KDOrbY});
 			KinkyDungeonDrawState = "Game";
 		}
 		KDPerkConfirm = true;

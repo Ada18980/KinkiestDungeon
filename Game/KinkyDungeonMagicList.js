@@ -68,9 +68,13 @@ let KinkyDungeonSpellPagesDefault = {
 	"Illusion": true,
 };
 
-function KDAddSpellPage(page) {
+let KDSpellColumns = {
+
+};
+
+function KDAddSpellPage(page, columnLabels = []) {
 	if (!KDGameData.AllowedSpellPages) KDGameData.AllowedSpellPages = {};
-	KDGameData.AllowedSpellPages[page] = true;
+	KDGameData.AllowedSpellPages[page] = columnLabels;
 }
 
 /**
@@ -1316,7 +1320,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				name: "LiquidMetal",
 				duration: 24,
 			},
-			onhit:"aoe", time: 4, delay: 3, range: 6.99, size: 3, aoe: 1.5, power: 9, bindType: "Metal", bind: 80, damage: "crush", playerEffect: {name: "LiquidMetalEngulf", damage: "crush", power: 9}},
+			onhit:"aoe", time: 4, delay: 3, lifetime: 1, evadeable: true, range: 6.99, size: 3, aoe: 1.5, power: 9, bindType: "Metal", bind: 80, damage: "crush", playerEffect: {name: "LiquidMetalEngulf", damage: "crush", power: 9}},
 		
 		{name: "Engulf", tags: ["latex", "slime", "buff", "offense"], prerequisite: "ApprenticeLatex", sfx: "MagicSlash", school: "Conjure", manacost: 1.5, components: [], level:1, type:"passive", events: [
 			{type: "ElementalEffect", power: 2, damage: "glue", trigger: "playerAttack", cost: 1.0},
@@ -1377,6 +1381,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{goToPage: 6, name: "ApprenticeKnowledge", increasingCost: true, tags: ["magic"], autoLearn: ["TrueSteel"], learnFlags: ["AdvTooltips"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
 		{name: "Analyze", prerequisite: "ApprenticeKnowledge", tags: ["buff", "utility", "knowledge"], school: "Illusion", manacost: 2.5, defaultOff: true, cancelAutoMove: true, costOnToggle: true, components: [], level:1, type:"passive",
+			active: true,
 			events: [{type: "Analyze", trigger: "toggleSpell", power: 5, time: 20}, {type: "Analyze", trigger: "tick", power: 5, time: 20}]},
 
 		{name: "ShadowDance", prerequisite: "ApprenticeShadow", tags: ["shadow", "utility", "defense"], sfx: "MagicSlash", school: "Illusion", spellPointCost: 1,

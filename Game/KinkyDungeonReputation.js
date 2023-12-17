@@ -698,7 +698,7 @@ function KinkyDungeonUpdateAngel(delta) {
 				} if (KDGameData.KDPenanceStage > 1) {
 					if (KDGameData.KDPenanceStage == 1)
 						KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonAngelWarn"), "yellow", 2);
-					//KinkyDungeonSlowMoveTurns = 1;
+					//KDGameData.SlowMoveTurns = 1;
 				}
 				KDGameData.KDPenanceStage += delta;
 			} else if (KDGameData.KDPenanceMode == "Success") {

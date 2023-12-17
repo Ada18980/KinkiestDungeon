@@ -194,7 +194,7 @@ let KDQuests = {
 			return 0;
 		},
 		worldgenstart: () => {
-			if (KDGameData.RoomType == "" && !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel)) {
+			if (KDRandom() < 0.6 && KDGameData.RoomType == "" && !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel)) {
 				let point = KinkyDungeonGetRandomEnemyPoint(true);
 				if (point) {
 					let e = KinkyDungeonGetEnemy(["wolfgirl", "miniboss"], MiniGameKinkyDungeonLevel + 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["wolfgirl", "miniboss"], undefined, {"wolfgirl": {mult: 4, bonus: 10}});
@@ -218,6 +218,262 @@ let KDQuests = {
 								ee.faction = "Wolfhunter";
 								ee.AI = "patrol";
 							}
+						}
+					}
+				}
+			}
+		},
+		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+			return false;
+		}
+	},
+
+	"LatexDoll": {
+		name: "LatexDoll",
+		npc: "Dressmaker",
+		visible: true,
+		nocancel: true,
+		weight: (RoomType, MapMod, data, currentQuestList) => {
+			return 0;
+		},
+		worldgenstart: () => {
+			if (KDRandom() < 0.6 && KDGameData.RoomType == "" && !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel)) {
+				let point = KinkyDungeonGetRandomEnemyPoint(true);
+				if (point) {
+					let e = KinkyDungeonGetEnemy(["dressmaker"], MiniGameKinkyDungeonLevel + 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["dressmaker"], undefined, {"dressmaker": {mult: 4, bonus: 10}}, ["minor"]);
+					if (e) {
+						let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
+						if (epoint) {
+							let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
+							if (ee) {
+								ee.faction = "DressShoppe";
+								ee.AI = "patrol";
+							}
+						}
+					}
+					let count = 3 + KDRandom() * Math.min(4, KinkyDungeonDifficulty / 20);
+					for (let i = 0; i < count; i++) {
+						e = KinkyDungeonGetEnemy(["dressmaker"], MiniGameKinkyDungeonLevel + 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["dressmaker"], undefined, {"dressmaker": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
+						let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
+						if (e && epoint) {
+							let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
+							if (ee) {
+								ee.faction = "DressShoppe";
+								ee.AI = "patrol";
+							}
+						}
+					}
+				}
+			}
+		},
+		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+			return false;
+		}
+	},
+
+	
+	"MaidSweeper": {
+		name: "MaidSweeper",
+		npc: "DirtPile",
+		visible: true,
+		nocancel: true,
+		weight: (RoomType, MapMod, data, currentQuestList) => {
+			return 0;
+		},
+		worldgenstart: () => {
+			if (KDGameData.RoomType == "" && !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel)) {
+				if (!KDGameData.QuestData.DirtPiles) KDGameData.QuestData.DirtPiles = {
+					pilesTotal: 0,
+					pilesSinceLastSpawn: 0,
+					lastSpawn: "Frog",
+					quota: -3,
+				};
+
+				if (KDGameData.QuestData.DirtPiles.pilesTotal < KDGameData.QuestData.DirtPiles.quota * 0.95) {
+					KDGameData.QuestData.DirtPiles.quota = KDGameData.QuestData.DirtPiles.pilesTotal;
+					let point = KinkyDungeonGetRandomEnemyPoint(true);
+					if (point) {
+						let e = KinkyDungeonGetEnemy(["maid", "miniboss"], MiniGameKinkyDungeonLevel + 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["maid", "miniboss"], undefined, {"maid": {mult: 4, bonus: 10}});
+						if (e) {
+							let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
+							if (epoint) {
+								let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
+								if (ee) {
+									ee.faction = "Maidforce";
+									if (KDCanOverrideAI(ee))
+										ee.AI = "looseguard";
+									else ee.AI = KDGetAIOverride(ee, 'looseguard');
+									ee.gx = KinkyDungeonPlayerEntity.x;
+									ee.gy = KinkyDungeonPlayerEntity.y;
+								}
+							}
+						}
+						let count = 3 + KDRandom() * Math.min(4, KinkyDungeonDifficulty / 20);
+						for (let i = 0; i < count; i++) {
+							e = KinkyDungeonGetEnemy(["maid"], MiniGameKinkyDungeonLevel + 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["maid"], undefined, {"maid": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
+							let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
+							if (e && epoint) {
+								let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
+								if (ee) {
+									ee.faction = "Delinquent";
+									if (KDCanOverrideAI(ee))
+										ee.AI = "looseguard";
+									else ee.AI = KDGetAIOverride(ee, 'looseguard');
+									ee.gx = KinkyDungeonPlayerEntity.x;
+									ee.gy = KinkyDungeonPlayerEntity.y;
+								}
+							}
+						}
+					}
+					KinkyDungeonChangeFactionRep("Maidforce", -0.2);
+					KinkyDungeonSendTextMessage(10, TextGet("KDNotEnoughDirtPiles"), "#ff8800", 4);
+				}
+
+				
+				let count = 14 + 6 * KDRandom();
+				for (let i = 0; i < count; i++) {
+					let epoint = KinkyDungeonGetRandomEnemyPoint(true);
+					if (epoint) {
+						let ee = DialogueCreateEnemy(epoint.x, epoint.y, "DirtPile");
+						KDGameData.QuestData.DirtPiles.quota += 1;
+					}
+				}
+			}
+		},
+		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+			return false;
+		}
+	},
+
+	"ElementalSlave": {
+		name: "ElementalSlave",
+		npc: "ElementalFire",
+		visible: true,
+		nocancel: true,
+		weight: (RoomType, MapMod, data, currentQuestList) => {
+			return 0;
+		},
+		worldgenstart: () => {
+			KinkyDungeonSetFlag("ElementalSlaveTeleport", -1);
+		},
+		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+			return false;
+		},
+		tick: (delta) => {
+			if (delta > 0 && KinkyDungeonFlags.get("ElementalSlaveTeleport")) {
+				let altType = KDGetAltType(MiniGameKinkyDungeonLevel, KDGameData.MapMod, KDGameData.RoomType);
+				if (!altType) {
+					let tiles = KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 3.5).filter(
+						(tile) => {
+							return KinkyDungeonMapGet(tile.x, tile.y) == 'A' && tile.tile?.Name == "Elements";
+						}
+					);
+					if (tiles.length > 0 && KDRandom() < 0.4) {
+						let altar = tiles[0];
+
+						let point = KinkyDungeonGetNearbyPoint(altar.x, altar.y, true, undefined, false);;
+						if (point) {
+							let element = CommonRandomItemFromList("", ['fire', 'earth', 'air', 'water', 'ice']);
+
+							let e = KinkyDungeonGetEnemy(["elemental", "miniboss", element], MiniGameKinkyDungeonLevel + 8, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["elemental", element, "miniboss"], undefined, {"elemental": {mult: 4, bonus: 10}}, ["minor"]);
+							if (e) {
+								let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
+								if (epoint) {
+									let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
+									if (ee) {
+										ee.faction = "Ambush";
+										ee.AI = "hunt";
+										ee.teleporting = 3;
+										ee.teleportingmax = 3;
+										KinkyDungeonSetFlag("ElementalSlaveTeleport", 0);
+									}
+								}
+							}
+							let count = 3 + KDRandom() * Math.min(4, KinkyDungeonDifficulty / 20);
+							for (let i = 0; i < count; i++) {
+								e = KinkyDungeonGetEnemy(["elemental", element], MiniGameKinkyDungeonLevel + 4, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["elemental", element], undefined, {"elemental": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
+								let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
+								if (e && epoint) {
+									let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
+									if (ee) {
+										ee.faction = "Ambush";
+										ee.AI = "hunt";
+										ee.teleporting = 3;
+										ee.teleportingmax = 3;
+										KinkyDungeonSetFlag("ElementalSlaveTeleport", 0);
+									}
+								}
+							}
+						}
+					}
+					
+				}
+			}
+		},
+	},
+	
+	"EscapedDoll": {
+		name: "EscapedDoll",
+		npc: "DollmakerBoss1",
+		visible: true,
+		nocancel: true,
+		weight: (RoomType, MapMod, data, currentQuestList) => {
+			return 0;
+		},
+		worldgenstart: () => {
+			if (KDRandom() < 0.35 && KDGameData.RoomType == "" && !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel)) {
+				let point = KinkyDungeonGetRandomEnemyPoint(true);
+				if (point) {
+					let e = KinkyDungeonGetEnemy(["dollsmith", "miniboss"], MiniGameKinkyDungeonLevel + 10, 'bel', '0', ["dollsmith", "miniboss"], undefined, {"dollsmith": {mult: 4, bonus: 10}}, ["minor"]);
+					if (e) {
+						let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
+						if (epoint) {
+							let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
+							if (ee) {
+								ee.faction = "Dollsmith";
+								ee.AI = "patrol";
+							}
+						}
+					}
+					let count = 3 + KDRandom() * Math.min(4, KinkyDungeonDifficulty / 20);
+					for (let i = 0; i < count; i++) {
+						e = KinkyDungeonGetEnemy(["dollsmith"], MiniGameKinkyDungeonLevel + 4, 'bel', '0', ["dollsmith"], undefined, {"dollsmith": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
+						let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
+						if (e && epoint) {
+							let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
+							if (ee) {
+								ee.faction = "Dollsmith";
+								ee.AI = "patrol";
+							}
+						}
+					}
+				}
+			}
+		},
+		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+			return false;
+		}
+	},
+
+	
+	"Nawashi": {
+		name: "Nawashi",
+		npc: "Nawashi",
+		visible: true,
+		nocancel: true,
+		weight: (RoomType, MapMod, data, currentQuestList) => {
+			return 0;
+		},
+		worldgenstart: () => {
+			if (KDGameData.RoomType == "" && !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel)) {
+				let point = KinkyDungeonGetRandomEnemyPoint(true);
+				if (point) {
+					let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
+					if (epoint) {
+						let ee = DialogueCreateEnemy(epoint.x, epoint.y, "Nawashi");
+						if (ee) {
+							ee.faction = "RopeDojo";
+							ee.AI = "patrol";
 						}
 					}
 				}

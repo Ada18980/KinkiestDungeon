@@ -737,7 +737,7 @@ let KDEffectTileFunctions = {
 					};
 					KinkyDungeonSendEvent("tickLatexPlayer", latexData);
 					if (!latexData.cancelDamage)
-						KinkyDungeonDealDamage({damage: latexData.dmg*KDGetEnvironmentalDmg(), type: latexData.type});
+						KinkyDungeonPlayerEffect(entity, "glue", {name: "LiquidMetalPatch", power: 2, count: 1, damage: "glue"}, undefined, undefined, undefined, undefined);
 				} else if (KDCanBind(entity)) {
 					let latexData = {
 						cancelDamage: entity.boundLevel > entity.Enemy.maxhp + KDLatexBind,

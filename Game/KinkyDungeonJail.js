@@ -952,7 +952,7 @@ function KinkyDungeonPassOut(noteleport) {
 	}
 
 	KinkyDungeonLoseJailKeys();
-	KinkyDungeonSlowMoveTurns = 10;
+	KDGameData.SlowMoveTurns = 10;
 }
 
 function KDGetJailDoor(x, y) {

@@ -123,6 +123,9 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 	let sfx = "Coins";
 	let name = Item.name;
 	let replace = "";
+	if (Item.Amount == undefined && Item.quantity) {
+		Item.Amount = Item.quantity;
+	}
 	if (KDCustomItems[name]) {
 		let ret = KDCustomItems[name](Item);
 		if (ret.sfx != undefined) sfx = ret.sfx;
@@ -177,24 +180,9 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 		priority = 2;
 		color = "lightgreen";
 		KinkyDungeonBlueKeys += 1;
-	} else if (Item.name == "PotionMana") {
-		priority = 3;
-		color = "lightblue";
-		sfx = "PotionDrink";
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 1);
-	} else if (Item.name == "PotionStamina") {
-		priority = 3;
-		sfx = "PotionDrink";
-		color = "lightgreen";
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, 1);
-	} else if (Item.name == "PotionFrigid") {
-		priority = 3;
-		sfx = "PotionDrink";
-		color = "white";
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, 1);
 	} else if (KDConsumable(Item)) {
 		if (KinkyDungeonWeaponVariants[Item.name]) {
-			KDGiveConsumableVariant(KinkyDungeonConsumableVariants[Item.name], undefined, Item.name);
+			KDGiveConsumableVariant(KinkyDungeonConsumableVariants[Item.name], undefined, Item.name, undefined, Item.Amount);
 			color = "#aaaaff";
 			name = "Generic";
 			replace = TextGet("KinkyDungeonInventoryItem" + KinkyDungeonConsumableVariants[Item.name].template);
@@ -203,7 +191,7 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 			priority = item.rarity;
 			if (item.potion) sfx = "PotionDrink";
 			color = "white";
-			KinkyDungeonChangeConsumable(item, 1);
+			KinkyDungeonChangeConsumable(item, Item.Amount || 1);
 		}
 	} else if (KDWeapon(Item)) {
 		if (KinkyDungeonWeaponVariants[Item.name]) {

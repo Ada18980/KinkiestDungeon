@@ -18,6 +18,8 @@ Vague todo:
 TODO add sugar magic ('Blood Energy Magic')
 
 5.0.3
+-Perk shrines can now give gold-locked restraints, configurable in challenge settings
+-Added new uncancelable 'quests' for the various starting perks
 -Added more rubble around the map
 -New enemies: Tome of Belts, Tome of Ropes, Tome of Bondage, Liquid Metal Cube, Skeleton Archer
 -New buyable restraint: Divine Chastity Belt

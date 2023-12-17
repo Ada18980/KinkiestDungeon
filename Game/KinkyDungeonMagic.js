@@ -1021,7 +1021,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					}
 					if (data.channel) {
 						KinkyDungeonSetFlag("channeling", data.channel);
-						KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, data.channel);
+						KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, data.channel);
 						KinkyDungeonSleepTime = CommonTime() + 200;
 					}
 					if (spell.components) {
@@ -1093,7 +1093,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		if (spell.staminacost) KinkyDungeonChangeStamina(-spell.staminacost, false, true);
 		if (data.channel) {
 			KinkyDungeonSetFlag("channeling", data.channel);
-			KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, data.channel);
+			KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, data.channel);
 			KinkyDungeonSleepTime = CommonTime() + 200;
 		}
 		if (spell.components) {
@@ -1599,7 +1599,7 @@ function KinkyDungeonListSpells(Mode) {
 		spellPages.splice(4, 1);
 	}
 	let pageNames = KDFilterSpellPageNames();
-	let columnLabels = KDColumnLabels[currentPage];
+	let columnLabels = KDColumnLabels[currentPage] || (KDGameData.AllowedSpellPages?.length ? KDGameData.AllowedSpellPages[pageNames[currentPage]] : undefined);
 	let extraFilters = filtersExtra[currentPage];
 
 	// Draw filters

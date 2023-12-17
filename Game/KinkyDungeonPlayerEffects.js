@@ -782,7 +782,7 @@ let KDPlayerEffects = {
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
 			KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
-			KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns || 0, KinkyDungeonSlowMoveTurns + 2);
+			KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns || 0, KDGameData.SlowMoveTurns + 2);
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonHeatBlast").KDReplaceOrAddDmg( dmg.string), "#ff0000", playerEffect.time + 1);
 			effect = true;
 			return {sfx: "Lightning", effect: effect};
@@ -912,15 +912,15 @@ let KDPlayerEffects = {
 		if (KDTestSpellHits(spell, 1.0, 0.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage, flags: ["EnvDamage"]}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
-			if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") < 0.45) {
-				let restraintAdd = KinkyDungeonGetRestraint({tags: ["liquidMetalRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+			if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") < 0.45 && (KDGameData.KneelTurns > 0 || KDGameData.SlowMoveTurns || KDGameData.MovePoints < 0 || KinkyDungeonStatWill == 0)) {
+				let restraintAdd = KinkyDungeonGetRestraint({tags: ["liquidMetalRestraints"]}, MiniGameKinkyDungeonLevel + playerEffect?.power || spell?.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 				if (restraintAdd) {
 					KDPlayerEffectRestrain(spell, 1, ["liquidMetalRestraints"], faction);
-					KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 					effect = true;
 				}
-			}
-			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLiquidMetal").KDReplaceOrAddDmg( dmg.string), "#aaaaaa", playerEffect.time);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLiquidMetalSlowEngulf").KDReplaceOrAddDmg( dmg.string), "#aaaaaa", playerEffect.time || 2);
+			} else
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLiquidMetal").KDReplaceOrAddDmg( dmg.string), "#aaaaaa", playerEffect.time || 2);
 
 			effect = true;
 		}

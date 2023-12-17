@@ -1340,9 +1340,10 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 		let perks = {};
 		for (let i = 0; i < perkCount; i++) {
 			let newperks = KinkyDungeonStatsChoice.get("perksdebuff") ? KDGetRandomPerks(perks, true) : KDGetRandomPerks(perks);
+			let bondage = KDGetPerkShrineBondage(newperks);
 			if (newperks.length > 0) {
 				KinkyDungeonMapSet(p1x + i * 2, py, 'P');
-				KinkyDungeonTilesSet("" + (p1x + i * 2) + "," + (py), {Perks: newperks});
+				KinkyDungeonTilesSet("" + (p1x + i * 2) + "," + (py), {Perks: newperks, Bondage: bondage});
 				perksplaced += 1;
 				for (let p of newperks) {
 					perks[p] = true;

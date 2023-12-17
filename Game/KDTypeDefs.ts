@@ -1854,6 +1854,8 @@ interface spell {
 	passive?: boolean;
 	/** An active spell but it has passive effects */
 	mixedPassive?: boolean;
+	/** Active spell for mana cost purposes, only used to override behavior of passive and toggle spells */
+	active?: boolean;
 	/** costOnToggle */
 	costOnToggle?: boolean;
 	/** Type of the spell */

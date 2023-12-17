@@ -559,7 +559,7 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 				if (playerDist > KDRestraint(inv).tether && KDistEuclidean(xTo-inv.tx, yTo-inv.ty) > KDistEuclidean(Entity.x-inv.tx, Entity.y-inv.ty)) {
 					if (Msg) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTetherTooShort").replace("TETHER", TextGet("Restraint" + inv.name)), "#ff0000", 2, true);
 					if (KinkyDungeonCanStand()) {
-						KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, KDLeashPullKneelTime + KinkyDungeonSlowMoveTurns);
+						KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, KDLeashPullKneelTime + KDGameData.SlowMoveTurns);
 						KinkyDungeonChangeWill(-KDLeashPullCost, false);
 					}
 					//return true;

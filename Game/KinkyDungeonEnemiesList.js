@@ -146,12 +146,20 @@ let KinkyDungeonEnemies = [
 
 	// End Quest NPC
 
-	{name: "ChainWall", tags: KDMapInit(["construct", "flying", "poisonmmune", "soulimmune", "player", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile"]),
+	{name: "DirtPile", tags: KDMapInit(["poisonmmune", "soulimmune", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile"]),
+		faction: "Door", immobile: true, spellResist: -3, lowpriority: true, evasion: -100, armor: -1, followRange: 100, AI: "wander",
+		visionRadius: 0, maxhp: 4, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
+		ondeath: [
+			{type: "DirtPile"}
+		],
+		terrainTags: {}, floors:KDMapInit([])},
+
+	{name: "ChainWall", tags: KDMapInit(["construct", "flying", "poisonmmune", "soulimmune", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile"]),
 		faction: "Witch", immobile: true, spellResist: 0, lowpriority: true, evasion: -100, armor: 3, followRange: 100, AI: "wander", regen: -0.25,
 		visionRadius: 0, maxhp: 5, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
 		terrainTags: {}, floors:KDMapInit([])},
 
-	{name: "ForceField", tags: KDMapInit(["construct", "flying", "poisonmmune", "soulimmune", "player", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile"]),
+	{name: "ForceField", tags: KDMapInit(["construct", "flying", "poisonmmune", "soulimmune", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile"]),
 		faction: "Enemy", immobile: true, spellResist: 3, lowpriority: true, evasion: -100, armor: 0, followRange: 100, AI: "wander", regen: -0.6,
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
 
@@ -3971,7 +3979,7 @@ let KinkyDungeonEnemies = [
 	{name: "Fuuka1", playLine: "Fuuka", bound: "Fuuka", faction: "Boss", clusterWith: "zombie", tags: KDMapInit(["nosub", "leashing", "noshop", "zombie", "ranged", "mikoRestraints", "stageBoss", "boss", "nocapture", "unflinching"]),
 		armor: 0, followRange: 3, AI: "guard",
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ffffff"},
+			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},
 		],
 		RestraintFilter: {
 			unlimitedRestraints: true,
@@ -3999,7 +4007,7 @@ let KinkyDungeonEnemies = [
 			unlimitedRestraints: true,
 		},
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 7, color: "#ffffff"},
+			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ffffff"},
 		],
 		maxblock: 3,
 		maxdodge: 3,
@@ -4145,6 +4153,37 @@ let KinkyDungeonEnemies = [
 
 
 let KDOndeath = {
+	"DirtPile": (enemy, o) => {
+		if (!KDGameData.QuestData.DirtPiles) KDGameData.QuestData.DirtPiles = {
+			pilesTotal: 0,
+			pilesSinceLastSpawn: 0,
+			lastSpawn: "Frog",
+			quota: -10,
+		};
+		if (KDRandom() < -0.2 + 0.1 * KDGameData.QuestData.DirtPiles.pilesSinceLastSpawn) {
+			let type = CommonRandomItemFromList(KDGameData.QuestData.DirtPiles.lastSpawn, [
+				"Frog",
+				"SlimeMold",
+				"SlimeMoldLeaper",
+				"SmallSlime",
+				"Bat",
+				"Rat",
+				"Ghost",
+				"Mimic",
+				"Gag",
+				"AnimArmbinder",
+				"AnimHarness",
+				"AnimStraitjacket",
+				"AnimYoke",
+			]);
+			KinkyDungeonSummonEnemy(enemy.x, enemy.y, type, 1, 0.5, false, undefined, false, undefined, "Ambush", true, 0, true, undefined, false);
+
+			KinkyDungeonSendTextMessage(9, TextGet("KDDirtPileSurprise").replace("ENMY", TextGet("Name" + type)), "#ff8800", 6);
+			KDGameData.QuestData.DirtPiles.pilesSinceLastSpawn = 0;
+		} else {
+			KDGameData.QuestData.DirtPiles.pilesSinceLastSpawn += 1;
+		}
+	},
 	"summon": (enemy, o) => {
 		KinkyDungeonSummonEnemy(enemy.x, enemy.y, o.enemy, o.count, o.range, o.strict, o.lifetime, o.hidden, undefined, o.faction || KDGetFaction(enemy), o.hostile, o.minradius, o.startAware, undefined, o.hideTimer);
 	},

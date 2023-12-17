@@ -264,9 +264,9 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 			}
 			if (msg) {
 				if (msg == "Default")
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrap" + tile.Trap + (tile.extraTag || "")), color, 2 + KinkyDungeonSlowMoveTurns);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrap" + tile.Trap + (tile.extraTag || "")), color, 2 + KDGameData.SlowMoveTurns);
 				else
-					KinkyDungeonSendTextMessage(10, msg, color, 2 + KinkyDungeonSlowMoveTurns);
+					KinkyDungeonSendTextMessage(10, msg, color, 2 + KDGameData.SlowMoveTurns);
 			}
 		}
 	}
@@ -277,7 +277,7 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 function KDTrigPanic(chest) {
 	if ((!chest && KinkyDungeonStatsChoice.has("Panic2")) || (chest && KinkyDungeonStatsChoice.has("Panic"))) {
 		KinkyDungeonSendActionMessage(10, TextGet("KDPanic"), "#ff0000", 4);
-		KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, 2);
+		KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, 2);
 	}
 }
 

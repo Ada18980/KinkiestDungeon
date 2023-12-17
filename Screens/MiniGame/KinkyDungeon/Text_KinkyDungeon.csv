@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.3 (H)"
+KDVersionStr,"5.0.3 (I)"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -208,8 +208,6 @@ KinkyDungeonStatDesc30,"Start with high Latex reputation, and all latex restrain
 KinkyDungeonStat31,"Latex Doll"
 KinkyDungeonStatDesc31,"Latex restraints are harder to escape from."
 
-KinkyDungeonStatHogtied,"Hogtied!"
-KinkyDungeonStatDescHogtied,"Start the game trussed up in tight ropes."
 
 KinkyDungeonStat32,"Escapee"
 KinkyDungeonStatDesc32,"Start with high Leather reputation, and all leather restraints are easier to escape from."
@@ -568,8 +566,8 @@ KinkyDungeonStatDescStartMaid,"Start in a magically locked maid outfit."
 KinkyDungeonStatStartWolfgirl,"Wolf Trainee"
 KinkyDungeonStatDescStartWolfgirl,"Start in a uniform of a naughty wolfgirl."
 KinkyDungeonStatStartLatex,"Latex Toy"
-KinkyDungeonStatDescStartLatex,"Start bound in latex restraints."
-KinkyDungeonStatStartObsidian,"Obsidian Slave"
+KinkyDungeonStatDescStartLatex,"Start bound in lovely latex restraints."
+KinkyDungeonStatStartObsidian,"Elemental Slave"
 KinkyDungeonStatDescStartObsidian,"Start in a full set of magically locked obsidian cuffs."
 
 
@@ -7231,6 +7229,15 @@ KinkyDungeonPerkProgressionModeDesc0,"No perks between floors."
 KinkyDungeonPerkProgressionModeDesc1,"The standard mode. You may choose between one of three perk altars between floors."
 KinkyDungeonPerkProgressionModeDesc2,"A twist on the standard mode. You must choose before progressing."
 KinkyDungeonPerkProgressionModeDesc3,"You must pick a debuff between floors before progressing."
+
+
+KDPerkBondageMode,"Perk Shrine Bondage:"
+KinkyDungeonPerkBondageMode0,Never
+KinkyDungeonPerkBondageMode1,Sometimes
+KinkyDungeonPerkBondageMode2,Always
+KinkyDungeonPerkBondageModeDesc0,"Perk shrines will not offer bondage as part of the deal."
+KinkyDungeonPerkBondageModeDesc1,"Bondage will sometimes be offered alongside perks."
+KinkyDungeonPerkBondageModeDesc2,"Perk shrines are always accompanied by bondage."
 
 KDHardMode,"Hard Mode:"
 KinkyDungeonHardMode0,Normal Mode
@@ -16164,6 +16171,8 @@ RestraintMagicBeltFeet,Magic Ankle Belts
 RestraintMagicBeltFeetDesc,"AHighly secure belts enchanted with magic."
 RestraintMagicBeltFeetDesc2,"Lockable and fully adjustable to ensure snugness."
 KinkyDungeonLiquidMetal,The Liquid Metal starts engulfing you!
+KinkyDungeonLiquidMetalEngulf,"The Liquid Metal explodes and covers you!"
+KinkyDungeonLiquidMetalSlowEngulf,The Liquid Metal takes advantage of your status and engulfs you!
 
 
 KinkyDungeonSpellLiquidMetalBurst,Silver Burst
@@ -16184,3 +16193,34 @@ AttackSkeletonBindArcher,"The Skeleton restrains you! (+RestraintAdded)"
 AttackSkeletonArcher,"The Skeleton tackles you! (DamageTaken)"
 
 KinkyDungeonSpellCursedArrow,Cursed Arrow
+
+KDKick,"Because your hands are unavailable, you kick the target instead."
+
+
+
+KDQuest_ElementalSlave,"Your former owners are looking for you across the seven planes."
+
+KDQuest_LatexDoll,"A local business is missing one of their models, and will stop at nothing to find her."
+KinkyDungeonFactionDollShoppe,The Doll Shoppe
+KinkyDungeonFactionOwners,Elemental Slavers
+
+KDQuest_MaidSweeper,"Your duty as a maid is to keep the place clear of dirt and other hazards."
+NameDirtPile,Dirt Pile
+KillDirtPile,You clear out the dirt pile
+KDDirtPileSurprise,A ENMY was lurking inside the dirt pile!
+KDNotEnoughDirtPiles,"You skipped your duty and left some dirt missing in the last level!"
+
+KDQuest_EscapedDoll,"The Dollmaker does not take no for an answer."
+KDQuest_FuukaPet,"Fuuka's shrine maidens would like to have a word with you."
+KDQuest_Nawashi,"Your instructor will meet with you at regular intervals for further training."
+
+KinkyDungeonStatHogtied,"Hogtied!"
+KinkyDungeonStatDescHogtied,"Experience a comprehensive rope bondage experience."
+
+
+KinkyDungeonFactionRopeDojo,Rope Dojo
+KinkyDungeonFactionDollShoppe,Shadow Clan
+KinkyDungeonFactionFuuka,Fuuka's Shrine
+KinkyDungeonFactionDollsmith,Dollmaker
+
+KDBondageOptionPerk,"Receive the following restraints: "

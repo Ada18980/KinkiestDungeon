@@ -565,6 +565,7 @@ let KDPerkStart = {
 		KinkyDungeonInventoryAddLoose("SturdyLeatherBeltsFeet");
 	},
 	StartLatex: () =>{
+		KDAddQuest("LatexDoll");
 		KinkyDungeonChangeRep("Latex", 10);
 		KinkyDungeonAddRestraintIfWeaker("LatexCatsuit", 5, true, "Red", false, undefined, undefined, "Jail", true);
 		for (let i = 0; i < 30; i++) {
@@ -581,6 +582,7 @@ let KDPerkStart = {
 		KinkyDungeonAddRestraintIfWeaker("DollmakerMask", 5, true, "Gold", false, undefined, undefined, undefined, true);
 	},
 	StartCyberDoll: () =>{
+		KDAddQuest("EscapedDoll");
 		KinkyDungeonChangeRep("Metal", 10);
 		KinkyDungeonAddRestraintIfWeaker("ControlHarness", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
 		KinkyDungeonAddRestraintIfWeaker("TrackingCollar", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
@@ -613,6 +615,7 @@ let KDPerkStart = {
 			if (r)
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, undefined, true);
 		}
+		KDAddQuest("MaidSweeper");
 		let outfit = {name: "Maid", id: KinkyDungeonGetItemID(), type: Outfit};
 		if (!KinkyDungeonInventoryGet("Maid")) KinkyDungeonInventoryAdd(outfit);
 		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
@@ -652,6 +655,7 @@ let KDPerkStart = {
 				}
 			}
 		}
+		KDAddQuest("ElementalSlave");
 		let outfit = {name: "Obsidian", id: KinkyDungeonGetItemID(), type: Outfit};
 		if (!KinkyDungeonInventoryGet("Obsidian")) KinkyDungeonInventoryAdd(outfit);
 		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
@@ -672,6 +676,7 @@ let KDPerkStart = {
 				}
 			}
 		}
+		KDAddQuest("Nawashi");
 		KinkyDungeonAddRestraintIfWeaker("TrapMittens", 5, true, undefined, false, undefined, undefined, undefined, true);
 		KinkyDungeonAddRestraintIfWeaker("Stuffing", 5, true, undefined, false, undefined, undefined, undefined, true);
 		KinkyDungeonAddRestraintIfWeaker("HarnessPanelGag", 5, true, undefined, false, undefined, undefined, undefined, true);
@@ -681,6 +686,7 @@ let KDPerkStart = {
 			if (KinkyDungeonInventoryGet(w)) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet(w));
 		}
 	},
+	
 	Stranger: () => {
 		for (let key of Object.keys(KinkyDungeonFactionTag)) {
 			KDSetFactionRelation("Player", key, -1 + 0.45 * KDRandom() + 0.45 * KDRandom() + 0.45 * KDRandom());
@@ -1012,4 +1018,71 @@ function KDGetRandomPerks(existing, debuff) {
 		}
 	}
 	return perks;
+}
+
+/**
+ * 
+ * @param {string[]} perks 
+ * @returns {string[]}
+ */
+function KDGetPerkShrineBondage(perks) {
+	let ret = [];
+	if (!KinkyDungeonStatsChoice.get("perkNoBondage")) {
+		let cost = 0;
+
+		for (let p of perks) {
+			if (KinkyDungeonStatsPresets[p]) {
+				cost += KDGetPerkCost(KinkyDungeonStatsPresets[p]);
+			}
+		}
+	
+		let chancePos = KinkyDungeonStatsChoice.get("perkBondage") ? 1.0 : 0.5;
+		let chanceNeg = KinkyDungeonStatsChoice.get("perkBondage") ? 1.0 : 0.25;
+		let prev = "";
+		let theme = "";
+		let randTheme = () => {
+			prev = theme;
+			return CommonRandomItemFromList(prev, [
+				"leatherRestraints",
+				"latexRestraints",
+				"mithrilRestraints",
+				"obsidianRestraints",
+				"cyberdollrestraints",
+				"controlHarness",
+				"dragonRestraints",
+				"expRestraints",
+				"dressRestraints",
+			]);
+		};
+		theme = randTheme();
+	
+		let getRestraints = () => {
+			let restraints = []
+			for (let i = 0; i < 11; i++) {
+				if (restraints.length == 0) {
+					if (i > 0)
+						randTheme();
+					restraints = KDGetRestraintsEligible({tags: [theme, theme+"Heavy", theme+"Chastity"]}, KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+						true, "Gold");
+					restraints = restraints.filter((r) => {
+						return !ret.includes(r.restraint.name);
+					})
+				} else break;
+			}
+			return restraints;
+		};
+	
+		for (let i = 0; i < (Math.abs(cost) || 1); i++) {
+			if (cost > 0 && KDRandom() < chancePos) {
+				let rests = getRestraints();
+				if (rests) ret.push(rests[Math.floor(KDRandom() * rests.length)].restraint.name);
+			} else if (cost <= 0 && KDRandom() < chanceNeg) {
+				let rests = getRestraints();
+				if (rests) ret.push(rests[Math.floor(KDRandom() * rests.length)].restraint.name);
+			}
+		}
+	
+	}
+	
+	return ret;
 }

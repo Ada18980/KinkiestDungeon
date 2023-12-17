@@ -1428,7 +1428,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 	}
 	if (data.channel) {
 		KinkyDungeonSetFlag("channeling", data.channel);
-		KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, data.channel);
+		KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, data.channel);
 		KinkyDungeonSleepTime = CommonTime() + 200;
 	}
 

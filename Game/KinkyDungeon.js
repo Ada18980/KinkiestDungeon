@@ -297,6 +297,7 @@ let KDDefaultMaxParty = 3;
 * OrgasmTurns: number;
 * OrgasmStamina: number;
 * SleepTurns: number;
+* SlowMoveTurns: number;
 * PlaySelfTurns: number;
 * RescueFlag: boolean;
 * KinkyDungeonPenance: boolean;
@@ -353,7 +354,7 @@ let KDDefaultMaxParty = 3;
 * ManaSlow: number,
 * TempFlagFloorTicks: Record<string, number>,
 * KneelTurns: number,
-* AllowedSpellPages : Record<string, boolean>,
+* AllowedSpellPages : Record<string, string[]>,
 * KeyringLocations : {x: number, y: number}[],
 * HiddenItems : Record<string, boolean>,
 * ItemPriority : Record<string, number>,
@@ -409,6 +410,7 @@ let KDDefaultMaxParty = 3;
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	SlowMoveTurns: 0,
 	Shield: 0,
 	ShieldDamage: 0,
 	PlayerName: "Ada",
@@ -824,6 +826,7 @@ function KinkyDungeonLoad() {
 			KinkyDungeonExtremeMode = localStorage.getItem("KinkyDungeonExtremeMode") != undefined ? localStorage.getItem("KinkyDungeonExtremeMode") == "True" : false;
 			KinkyDungeonPerksMode = localStorage.getItem("KinkyDungeonPerksMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerksMode")) || 0 : 0;
 			KinkyDungeonPerkProgressionMode = localStorage.getItem("KinkyDungeonPerkProgressionMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerkProgressionMode")) || 0 : 1;
+			KinkyDungeonPerkBondageMode = localStorage.getItem("KinkyDungeonPerkBondageMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerkBondageMode")) || 0 : 1;
 			KinkyDungeonRandomMode = localStorage.getItem("KinkyDungeonRandomMode") != undefined ? localStorage.getItem("KinkyDungeonRandomMode") == "True" : false;
 			KinkyDungeonEasyMode = localStorage.getItem("KinkyDungeonEasyMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonEasyMode")) || 0 : 0;
 
@@ -948,6 +951,7 @@ let KinkyDungeonHardMode = false;
 let KinkyDungeonExtremeMode = false;
 let KinkyDungeonPerksMode = 0;
 let KinkyDungeonPerkProgressionMode = 1;
+let KinkyDungeonPerkBondageMode = 1;
 let KinkyDungeonSexyPiercing = false;
 let KinkyDungeonSexyPlug = false;
 let KDOldValue = "";
@@ -1515,7 +1519,7 @@ function KinkyDungeonRun() {
 		KDDrawGameSetupTabs();
 
 		let II = 0;
-		let spacing = 110;
+		let spacing = 100;
 
 		DrawTextFitKD(TextGet("KDHardMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
@@ -1677,6 +1681,38 @@ function KinkyDungeonRun() {
 		}, true, 1455, 190 + II*spacing, 170, 50, TextGet("KinkyDungeonPerkProgressionMode3"), KinkyDungeonPerkProgressionMode == 3 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
 		if (MouseInKD("KinkyDungeonPerkProgressionMode3")) {
 			DrawTextFitKD(TextGet("KinkyDungeonPerkProgressionModeDesc3"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+		}
+
+
+		II++;
+
+		DrawTextFitKD(TextGet("KDPerkBondageMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
+
+		DrawButtonKDEx("KinkyDungeonPerkBondageMode0", (bdata) => {
+			KinkyDungeonPerkBondageMode = 0;
+			localStorage.setItem("KinkyDungeonPerkBondageMode", KinkyDungeonPerkBondageMode + "");
+			return true;
+		}, true, 875, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageMode0"), KinkyDungeonPerkBondageMode == 0 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
+		if (MouseInKD("KinkyDungeonPerkBondageMode0")) {
+			DrawTextFitKD(TextGet("KinkyDungeonPerkBondageModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+		}
+
+		DrawButtonKDEx("KinkyDungeonPerkBondageMode1", (bdata) => {
+			KinkyDungeonPerkBondageMode = 1;
+			localStorage.setItem("KinkyDungeonPerkBondageMode", KinkyDungeonPerkBondageMode + "");
+			return true;
+		}, true, 1137, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageMode1"), KinkyDungeonPerkBondageMode == 1 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
+		if (MouseInKD("KinkyDungeonPerkBondageMode1")) {
+			DrawTextFitKD(TextGet("KinkyDungeonPerkBondageModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+		}
+
+		DrawButtonKDEx("KinkyDungeonPerkBondageMode2", (bdata) => {
+			KinkyDungeonPerkBondageMode = 2;
+			localStorage.setItem("KinkyDungeonPerkBondageMode", KinkyDungeonPerkBondageMode + "");
+			return true;
+		}, true, 1400, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageMode2"), KinkyDungeonPerkBondageMode == 2 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
+		if (MouseInKD("KinkyDungeonPerkBondageMode2")) {
+			DrawTextFitKD(TextGet("KinkyDungeonPerkBondageModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
 	} else if (KinkyDungeonState == "Diff") {
@@ -2030,9 +2066,9 @@ function KinkyDungeonRun() {
 					KDSendInput("tick", {delta: 1, NoUpdate: false, NoMsgTick: true}, false, true);
 					KinkyDungeonSleepTime = CommonTime() + KinkyDungeonFreezeTime * (0.25 + KDAnimSpeed * 0.75);
 				}
-			} else if (KinkyDungeonSlowMoveTurns > 0) {
+			} else if (KDGameData.SlowMoveTurns > 0) {
 				if (CommonTime() > KinkyDungeonSleepTime) {
-					KinkyDungeonSlowMoveTurns -= 1;
+					KDGameData.SlowMoveTurns -= 1;
 					KDSendInput("tick", {delta: 1, NoUpdate: false, NoMsgTick: true}, false, true);
 					KinkyDungeonSleepTime = CommonTime() + 150 * (0.25 + KDAnimSpeed * 0.75);
 				}
@@ -3049,6 +3085,8 @@ function KDUpdatePlugSettings(evalHardMode) {
 	KinkyDungeonStatsChoice.set("noperks", KinkyDungeonPerkProgressionMode == 0 ? true : undefined);
 	KinkyDungeonStatsChoice.set("perksmandatory", KinkyDungeonPerkProgressionMode >= 2 ? true : undefined);
 	KinkyDungeonStatsChoice.set("perksdebuff", KinkyDungeonPerkProgressionMode == 3 ? true : undefined);
+	KinkyDungeonStatsChoice.set("perkBondage", KinkyDungeonPerkBondageMode == 2 ? true : undefined);
+	KinkyDungeonStatsChoice.set("perkNoBondage", KinkyDungeonPerkBondageMode == 0 ? true : undefined);
 
 
 
@@ -3955,7 +3993,7 @@ function KinkyDungeonLoadGame(String) {
 			if (KDGameData.Journey)
 				KDJourney = KDGameData.Journey;
 			if (saveData.mapIndex && !saveData.mapIndex.length) KinkyDungeonMapIndex = saveData.mapIndex;
-
+			if (!KDGameData.SlowMoveTurns) KDGameData.SlowMoveTurns = 0;
 			if (String)
 				localStorage.setItem('KinkyDungeonSave', String);
 
