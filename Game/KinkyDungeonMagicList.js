@@ -2390,7 +2390,7 @@ let KinkyDungeonSpellListEnemies = [
 
 	{enemySpell: true, name: "SummonSkeleton", landsfx: "Bones", minRange: 0, manacost: 8, components: ["Verbal"], level:3, type:"inert", onhit:"summon", summon: [{name: "SummonedSkeleton", count: 1, time: 12, strict: true, bound: true, weakBinding: true}], power: 0, time: 12, delay: 1, range: 4, size: 3, aoe: 2.1, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonSkeletons", landsfx: "Bones", minRange: 0, manacost: 18, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "SummonedSkeleton", count: 4, time: 16, strict: true, bound: true, weakBinding: true}], power: 0, time: 16, delay: 1, range: 4, size: 3, aoe: 2.6, lifetime: 1, damage: "inert"},
-	{enemySpell: true, name: "SummonZombies", landsfx: "Bones", specialCD:16, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "SummonedZombie", count: 4, strict: true, minRange: 1.5, bound: true, weakBinding: true}], power: 0, time: 16, delay: 1, range: 4, size: 3, aoe: 4.6, lifetime: 1, damage: "inert"},
+	{enemySpell: true, name: "SummonZombies", landsfx: "Bones", specialCD:16, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "SummonedZombie", count: 4, time: 18, strict: true, minRange: 1.5, bound: true, weakBinding: true}], power: 0, time: 16, delay: 1, range: 4, size: 3, aoe: 4.6, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonDrones", landsfx: "Teleport", specialCD:12, selfcast: true, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon",
 		summon: [{name: "SummonedDrone", count: 2, strict: true, bound: true, time: 16, faction: "Ambush"}], power: 0, time: 15, delay: 3, range: 8, size: 3, aoe: 4.6, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonCaptureDrones", landsfx: "Teleport", specialCD:7, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon",
@@ -2401,6 +2401,9 @@ let KinkyDungeonSpellListEnemies = [
 	], power: 0, time: 12, delay: 1, range: 8, size: 3, aoe: 10, lifetime: 1, damage: "fire"},
 	{enemySpell: true, name: "GhostAttack", hitsfx: "Evil", manacost: 8, components: ["Verbal"], level:4, type:"hit", onhit:"null", noSprite: true, noSumMsg: true, summon: [
 		{name: "Ghost", count: 1, time: 20, strict: true, bound: true, aware: true,},
+	], power: 0, time: 12, delay: 1, range: 8, size: 3, aoe: 10, lifetime: 1, damage: "fire"},
+	{enemySpell: true, name: "GagGeistAttack", hitsfx: "Evil", castCondition: "NoGag", manacost: 7, components: ["Verbal"], level:4, type:"hit", onhit:"null", noSprite: true, noSumMsg: true, summon: [
+		{name: "GagGeist", count: 1, time: 20, strict: true, bound: true, aware: true,},
 	], power: 0, time: 12, delay: 1, range: 8, size: 3, aoe: 10, lifetime: 1, damage: "fire"},
 	{enemySpell: true, name: "SummonCrystals", noSprite: true, minRange: 0, landsfx: "Freeze", manacost: 12, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "ChaoticCrystal", teleportTime: 1, count: 3, time: 10, bound: true, weakBinding: true}], power: 0, time: 10, delay: 1, range: 40, size: 1, aoe: 2.01, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonChainWalls", noSprite: true, minRange: 0, landsfx: "MagicSlash", manacost: 2, specialCD: 12, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "ChainWall", count: 3, time: 0, bound: true, weakBinding: true}], power: 0, time: 10, delay: 1, range: 40, size: 1, aoe: 3.5, lifetime: 1, damage: "inert"},
@@ -2840,6 +2843,12 @@ let KDCastConditions = {
 			let restraint = KinkyDungeonGetRestraint({tags: ["mummyRestraints"]}, 100, "tmb");
 			if (!restraint) return true;
 			return false;
+		}
+		return false;
+	},
+	"NoGag": (enemy, target) => {
+		if (target.player && !KinkyDungeonPlayerTags.get("ItemMouthFull")) {
+			return true;
 		}
 		return false;
 	},

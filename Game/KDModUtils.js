@@ -297,7 +297,7 @@ function KinkyDungeonGetHexByListWeighted(List, item, includeOrig, minLevel, max
 	/** @type {Record<string, number>} */
 	let ret = {};
 	for (let obj of list) {
-		ret[obj] = KDEventHexModular[obj].weight(item, allHex);
+		ret[obj] = KDEventHexModular[obj].weight(item, allHex, {item: item});
 	}
 	return ret;
 }
@@ -345,8 +345,8 @@ function KinkyDungeonGetEnchantmentsByListWeighted(List, Type, item, includeOrig
 	/** @type {Record<string, number>} */
 	let ret = {};
 	for (let obj of list) {
-		if (KDEventEnchantmentModular[obj].types[Type]?.filter(item, allEnchant))
-			ret[obj] = KDEventEnchantmentModular[obj].types[Type].weight(item, allEnchant);
+		if (KDEventEnchantmentModular[obj].types[Type]?.filter(item, allEnchant, {item: item}))
+			ret[obj] = KDEventEnchantmentModular[obj].types[Type].weight(item, allEnchant, {item: item});
 	}
 	return ret;
 }

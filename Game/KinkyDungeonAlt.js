@@ -290,6 +290,7 @@ let alts = {
 		prune: true,
 		width: 12,
 		height: 8,
+		nostartstairs: true,
 		skin: "shrine", useDefaultMusic: true,
 		lightParams: "ore",
 

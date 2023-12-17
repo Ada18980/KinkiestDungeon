@@ -489,7 +489,7 @@ interface restraint extends KDRestraintProps {
 	 * key - Name of the ApplyVariant
 	 * value - weight modifiers
 	 */
-	ApplyVariants?: Record<string, {weightMod: number, playerTags?: Record<string, number>, playerTagsMult?: Record<string, number>, playerTagsMissing?: Record<string, number>, playerTagsMissingMult?: Record<string, number>, enemyTags: Record<string, number>, enemyTagsMult?: Record<string, number>}>,
+	ApplyVariants?: Record<string, {weightMod: number, weightMult: number, playerTags?: Record<string, number>, playerTagsMult?: Record<string, number>, playerTagsMissing?: Record<string, number>, playerTagsMissingMult?: Record<string, number>, enemyTags: Record<string, number>, enemyTagsMult?: Record<string, number>}>,
 }
 
 interface KDEscapeChanceList {
@@ -586,7 +586,7 @@ interface floorParams {
 	shortcuts: {Level: number, checkpoint: string, chance:number}[	],
 	mainpath: {Level: number, checkpoint: string, chance?: number}[],
 
-	traps: {Name: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, Weight: number, strict?: true, teleportTime?: number}[],
+	traps: {Name: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, Weight: number, strict?: true, teleportTime?: number, filterTag?: string, filterBackup?: string, arousalMode?: boolean}[],
 
 	min_width : number,
 	max_width : number,
@@ -2945,9 +2945,16 @@ enum ModifierEnum {
 
 interface KDEnchantmentType {
 	level: number,
-	filter: (item: string, allEnchant: string[]) => boolean,
-	weight: (item: string, allEnchant: string[]) => number,
-	events: (item: string, Loot: any, curse: string, primaryEnchantment: string, enchantments: string[]) => KinkyDungeonEvent[]
+	filter: (item: string, allEnchant: string[], data: KDHexEnchantWeightData) => boolean,
+	weight: (item: string, allEnchant: string[], data: KDHexEnchantWeightData) => number,
+	events: (item: string, Loot: any, curse: string, primaryEnchantment: string, enchantments: string[], data: KDHexEnchantEventsData) => KinkyDungeonEvent[]
+}
+
+interface KDHexEnchantEventsData {
+	variant: {events: KinkyDungeonEvent[], template: string},
+}
+interface KDHexEnchantWeightData {
+	item: string,
 }
 
 interface KDEnchantment {

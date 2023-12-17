@@ -662,7 +662,7 @@ let KDEventMapInventory = {
 				// Trim off the transformation...
 				if (!data.trimTrigger)
 					newvariant.events = newvariant.events.filter((event) => {return event.trigger != "CurseTransform";});
-				newvariant.events = [...newvariant.events, ...KDEventHexModular[selection].events];
+				newvariant.events = [...newvariant.events, ...KDEventHexModular[selection].events({variant: newvariant})];
 				if (data.trimTrigger)
 					newvariant.events = newvariant.events.filter((event) => {return event.trigger != "CurseTransform";});
 				if (curse) {
@@ -2226,7 +2226,21 @@ const KDEventMapBuff = {
 						bind: e.bind,
 						distract: e.distract,
 						bindType: e.bindType,
-					}, false, e.power <= 0.5, undefined, undefined, undefined, undefined, undefined, data.vulnConsumed);
+					}, false, e.power <= 1, undefined, undefined, undefined, undefined, undefined, data.vulnConsumed);
+				}
+			}
+		},
+		"ShadowElementalEffect": (e, buff, entity, data) => {
+			if (buff.duration > 0 && data.enemy && data.enemy.hp > 0 && !KDHelpless(data.enemy) && KinkyDungeonBrightnessGet(entity.x, entity.y) <= KDShadowThreshold) {
+				if (!e.prereq || KDCheckPrereq(entity, e.prereq)) {
+					KinkyDungeonDamageEnemy(data.enemy, {
+						type: e.damage,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						distract: e.distract,
+						bindType: e.bindType,
+					}, false, e.power <= 1, undefined, undefined, undefined, undefined, undefined, data.vulnConsumed);
 				}
 			}
 		},
@@ -2560,6 +2574,61 @@ const KDEventMapBuff = {
 							bindType: e.bindType,
 						flags: ["BurningDamage"]
 					}, false, true, undefined, undefined, undefined);
+				}
+			}
+		},
+		
+		"ShadowElementalEffect": (e, buff, entity, data) => {
+			if (KinkyDungeonBrightnessGet(entity.x, entity.y) <= KDShadowThreshold) {
+				if (buff.duration > 0) {
+					if (entity.player) {
+						KinkyDungeonDealDamage({
+							type: e.damage,
+								damage: e.power,
+								time: e.time,
+								bind: e.bind,
+								distract: e.distract,
+								bindType: e.bindType,
+							flags: ["BurningDamage"]
+						});
+					} else {
+						KinkyDungeonDamageEnemy(entity, {
+							type: e.damage,
+								damage: e.power,
+								time: e.time,
+								bind: e.bind,
+								distract: e.distract,
+								bindType: e.bindType,
+							flags: ["BurningDamage"]
+						}, e.power < 1, true, undefined, undefined, undefined);
+					}
+				}
+			}
+		},
+		"UnShadowElementalEffect": (e, buff, entity, data) => {
+			if (KinkyDungeonBrightnessGet(entity.x, entity.y) > KDShadowThreshold) {
+				if (buff.duration > 0) {
+					if (entity.player) {
+						KinkyDungeonDealDamage({
+							type: e.damage,
+								damage: e.power,
+								time: e.time,
+								bind: e.bind,
+								distract: e.distract,
+								bindType: e.bindType,
+							flags: ["BurningDamage"]
+						});
+					} else {
+						KinkyDungeonDamageEnemy(entity, {
+							type: e.damage,
+								damage: e.power,
+								time: e.time,
+								bind: e.bind,
+								distract: e.distract,
+								bindType: e.bindType,
+							flags: ["BurningDamage"]
+						}, false, true, undefined, undefined, undefined);
+					}
 				}
 			}
 		},
@@ -4832,6 +4901,23 @@ let KDEventMapWeapon = {
 		},
 	},
 	"afterPlayerAttack": {
+		"ShadowBleed": (e, weapon, data) => {
+			if (data.enemy && !data.miss && !data.disarm && data.damage && data.damage.damage) {
+				if (data.enemy && data.enemy.hp > 0 && !(KDHelpless(data.enemy) && data.enemy.hp < 0.6)) {
+					KinkyDungeonApplyBuffToEntity(data.enemy, {
+						aura: "#aa00ff",
+						power: e.power,
+						type: "ShadowBleed",
+						id: "ShadowBleed",
+						duration: e.time,
+						events: [
+							{trigger: 'tick', type: 'UnShadowElementalEffect', damage: e.damage, power: 0.5*e.power},
+							{trigger: 'tick', type: 'ShadowElementalEffect', damage: e.damage, power: e.power, time: 2},
+						]
+					});
+				}
+			}
+		},
 		"DoubleStrike": (e, weapon, data) => {
 			if (!KinkyDungeonAttackTwiceFlag && (!e.chance || KDRandom() < e.chance)) {
 				if (data.enemy && data.enemy.hp > 0 && !(KDHelpless(data.enemy) && data.enemy.hp < 0.6)) {
@@ -7279,7 +7365,7 @@ let KDEventMapGeneric = {
 		},
 		"HardModeReplace": (ev, data) => {
 			if (!KinkyDungeonStatsChoice.get("hardMode")) return;
-			let multiplier = 0.05 * 0.95 * Math.min(1.5, KDGetEffLevel()/(KinkyDungeonMaxLevel - 1));
+			let multiplier = 0.05 + 0.95 * Math.min(1.5, KDGetEffLevel()/(KinkyDungeonMaxLevel - 1));
 
 			let chance = 0.2 * multiplier;
 			let bosschance = 0.3;
@@ -7289,7 +7375,7 @@ let KDEventMapGeneric = {
 			let reg = ["Hardmode_Reg"];
 
 			if (KinkyDungeonStatsChoice.get("extremeMode")) {
-				chance = 1.0 * multiplier;
+				chance = 0.1 + 0.9 * multiplier;
 				bosschance = 0.4;
 				bosshpchance = 1.0;
 				boss.push("ExtremeBoss", "Extreme");

@@ -1052,6 +1052,7 @@ function KDGetPerkShrineBondage(perks) {
 				"dragonRestraints",
 				"expRestraints",
 				"dressRestraints",
+				"maidRestraints",
 			]);
 		};
 		theme = randTheme();

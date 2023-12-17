@@ -18,6 +18,13 @@ Vague todo:
 TODO add sugar magic ('Blood Energy Magic')
 
 5.0.3
+-Fixed issue with legbinder clipping with ankle cuffs
+-Made enchantments correlate more with other enchantments on the item
+-Added Shadow Bleed weapon enchantment
+-Added two new ghosts
+-Added ghost traps are more common on chests
+-Added skeleton, zombie, and mummy traps to the chest trap rotation
+-Added perk shrine bondage visibility options
 -Perk shrines can now give gold-locked restraints, configurable in challenge settings
 -Added new uncancelable 'quests' for the various starting perks
 -Added more rubble around the map

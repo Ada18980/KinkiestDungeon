@@ -827,6 +827,7 @@ function KinkyDungeonLoad() {
 			KinkyDungeonPerksMode = localStorage.getItem("KinkyDungeonPerksMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerksMode")) || 0 : 0;
 			KinkyDungeonPerkProgressionMode = localStorage.getItem("KinkyDungeonPerkProgressionMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerkProgressionMode")) || 0 : 1;
 			KinkyDungeonPerkBondageMode = localStorage.getItem("KinkyDungeonPerkBondageMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerkBondageMode")) || 0 : 1;
+			KinkyDungeonPerkBondageVisMode = localStorage.getItem("KinkyDungeonPerkBondageVisMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerkBondageVisMode")) || 0 : 2;
 			KinkyDungeonRandomMode = localStorage.getItem("KinkyDungeonRandomMode") != undefined ? localStorage.getItem("KinkyDungeonRandomMode") == "True" : false;
 			KinkyDungeonEasyMode = localStorage.getItem("KinkyDungeonEasyMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonEasyMode")) || 0 : 0;
 
@@ -952,6 +953,7 @@ let KinkyDungeonExtremeMode = false;
 let KinkyDungeonPerksMode = 0;
 let KinkyDungeonPerkProgressionMode = 1;
 let KinkyDungeonPerkBondageMode = 1;
+let KinkyDungeonPerkBondageVisMode = 2;
 let KinkyDungeonSexyPiercing = false;
 let KinkyDungeonSexyPlug = false;
 let KDOldValue = "";
@@ -1686,34 +1688,71 @@ function KinkyDungeonRun() {
 
 		II++;
 
-		DrawTextFitKD(TextGet("KDPerkBondageMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
+		if (KinkyDungeonPerkProgressionMode > 0) {
+			DrawTextFitKD(TextGet("KDPerkBondageMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
-		DrawButtonKDEx("KinkyDungeonPerkBondageMode0", (bdata) => {
-			KinkyDungeonPerkBondageMode = 0;
-			localStorage.setItem("KinkyDungeonPerkBondageMode", KinkyDungeonPerkBondageMode + "");
-			return true;
-		}, true, 875, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageMode0"), KinkyDungeonPerkBondageMode == 0 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
-		if (MouseInKD("KinkyDungeonPerkBondageMode0")) {
-			DrawTextFitKD(TextGet("KinkyDungeonPerkBondageModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+			DrawButtonKDEx("KinkyDungeonPerkBondageMode0", (bdata) => {
+				KinkyDungeonPerkBondageMode = 0;
+				localStorage.setItem("KinkyDungeonPerkBondageMode", KinkyDungeonPerkBondageMode + "");
+				return true;
+			}, true, 875, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageMode0"), KinkyDungeonPerkBondageMode == 0 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
+			if (MouseInKD("KinkyDungeonPerkBondageMode0")) {
+				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+			}
+
+			DrawButtonKDEx("KinkyDungeonPerkBondageMode1", (bdata) => {
+				KinkyDungeonPerkBondageMode = 1;
+				localStorage.setItem("KinkyDungeonPerkBondageMode", KinkyDungeonPerkBondageMode + "");
+				return true;
+			}, true, 1137, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageMode1"), KinkyDungeonPerkBondageMode == 1 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
+			if (MouseInKD("KinkyDungeonPerkBondageMode1")) {
+				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+			}
+
+			DrawButtonKDEx("KinkyDungeonPerkBondageMode2", (bdata) => {
+				KinkyDungeonPerkBondageMode = 2;
+				localStorage.setItem("KinkyDungeonPerkBondageMode", KinkyDungeonPerkBondageMode + "");
+				return true;
+			}, true, 1400, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageMode2"), KinkyDungeonPerkBondageMode == 2 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
+			if (MouseInKD("KinkyDungeonPerkBondageMode2")) {
+				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+			}
 		}
 
-		DrawButtonKDEx("KinkyDungeonPerkBondageMode1", (bdata) => {
-			KinkyDungeonPerkBondageMode = 1;
-			localStorage.setItem("KinkyDungeonPerkBondageMode", KinkyDungeonPerkBondageMode + "");
-			return true;
-		}, true, 1137, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageMode1"), KinkyDungeonPerkBondageMode == 1 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
-		if (MouseInKD("KinkyDungeonPerkBondageMode1")) {
-			DrawTextFitKD(TextGet("KinkyDungeonPerkBondageModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
-		}
 
-		DrawButtonKDEx("KinkyDungeonPerkBondageMode2", (bdata) => {
-			KinkyDungeonPerkBondageMode = 2;
-			localStorage.setItem("KinkyDungeonPerkBondageMode", KinkyDungeonPerkBondageMode + "");
-			return true;
-		}, true, 1400, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageMode2"), KinkyDungeonPerkBondageMode == 2 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
-		if (MouseInKD("KinkyDungeonPerkBondageMode2")) {
-			DrawTextFitKD(TextGet("KinkyDungeonPerkBondageModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+		II++;
+
+		if (KinkyDungeonPerkBondageMode > 0 && KinkyDungeonPerkProgressionMode > 0) {
+			DrawTextFitKD(TextGet("KDPerkBondageVisMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
+
+			DrawButtonKDEx("KinkyDungeonPerkBondageVisMode0", (bdata) => {
+				KinkyDungeonPerkBondageVisMode = 0;
+				localStorage.setItem("KinkyDungeonPerkBondageVisMode", KinkyDungeonPerkBondageVisMode + "");
+				return true;
+			}, true, 875, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageVisMode0"), KinkyDungeonPerkBondageVisMode == 0 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
+			if (MouseInKD("KinkyDungeonPerkBondageVisMode0")) {
+				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageVisModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+			}
+	
+			DrawButtonKDEx("KinkyDungeonPerkBondageVisMode1", (bdata) => {
+				KinkyDungeonPerkBondageVisMode = 1;
+				localStorage.setItem("KinkyDungeonPerkBondageVisMode", KinkyDungeonPerkBondageVisMode + "");
+				return true;
+			}, true, 1137, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageVisMode1"), KinkyDungeonPerkBondageVisMode == 1 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
+			if (MouseInKD("KinkyDungeonPerkBondageVisMode1")) {
+				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageVisModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+			}
+	
+			DrawButtonKDEx("KinkyDungeonPerkBondageVisMode2", (bdata) => {
+				KinkyDungeonPerkBondageVisMode = 2;
+				localStorage.setItem("KinkyDungeonPerkBondageVisMode", KinkyDungeonPerkBondageVisMode + "");
+				return true;
+			}, true, 1400, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageVisMode2"), KinkyDungeonPerkBondageVisMode == 2 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
+			if (MouseInKD("KinkyDungeonPerkBondageVisMode2")) {
+				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageVisModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+			}
 		}
+		
 
 	} else if (KinkyDungeonState == "Diff") {
 		KDDrawGameSetupTabs();
@@ -3087,6 +3126,9 @@ function KDUpdatePlugSettings(evalHardMode) {
 	KinkyDungeonStatsChoice.set("perksdebuff", KinkyDungeonPerkProgressionMode == 3 ? true : undefined);
 	KinkyDungeonStatsChoice.set("perkBondage", KinkyDungeonPerkBondageMode == 2 ? true : undefined);
 	KinkyDungeonStatsChoice.set("perkNoBondage", KinkyDungeonPerkBondageMode == 0 ? true : undefined);
+	
+	KinkyDungeonStatsChoice.set("hideperkbondage", KinkyDungeonPerkBondageVisMode == 0 ? true : undefined);
+	KinkyDungeonStatsChoice.set("partialhideperkbondage", KinkyDungeonPerkBondageVisMode == 1 ? true : undefined);
 
 
 

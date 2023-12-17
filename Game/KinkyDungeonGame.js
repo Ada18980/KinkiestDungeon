@@ -1398,8 +1398,8 @@ function KDChooseFactions(factionList, Floor, Tags, BonusTags, Set) {
 	let factionAllied = allyCandidates.length > 0 ? KDGetByWeight(KDGetFactionProps(allyCandidates, Floor, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], Tags, BonusTags)) : "";
 	let factionEnemy = enemyCandidates.length > 0 ? KDGetByWeight(KDGetFactionProps(enemyCandidates, Floor, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], Tags, BonusTags)) : "";
 
-	if (factionAllied) randomFactions.push(factionAllied);
-	if (factionEnemy) randomFactions.push(factionEnemy);
+	if (factionAllied && KDRandom() < 0.33) randomFactions.push(factionAllied);
+	if (factionEnemy && KDRandom() < 0.6) randomFactions.push(factionEnemy);
 
 	if (Set) {
 		KDMapData.JailFaction.push(primaryFaction);
@@ -2798,6 +2798,8 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 					Trap: t.Name,
 					Restraint: t.Restraint,
 					Enemy: t.Enemy,
+					FilterTag: t.FilterTag,
+					FilterBackup: t.FilterBackup,
 					Spell: t.Spell,
 					extraTag: t.extraTag,
 					Power: t.Power,

@@ -908,6 +908,7 @@
             <key type="filename">../Game/Enemies/DemonStar.png</key>
             <key type="filename">../Game/Enemies/DemonVoid.png</key>
             <key type="filename">../Game/Enemies/Deputy.png</key>
+            <key type="filename">../Game/Enemies/DirtPile.png</key>
             <key type="filename">../Game/Enemies/DollDoor.png</key>
             <key type="filename">../Game/Enemies/Dollmaker.png</key>
             <key type="filename">../Game/Enemies/DollmakerBoss1.png</key>
@@ -964,6 +965,7 @@
             <key type="filename">../Game/Enemies/Fuuka1.png</key>
             <key type="filename">../Game/Enemies/Fuuka2.png</key>
             <key type="filename">../Game/Enemies/Gag.png</key>
+            <key type="filename">../Game/Enemies/GagGeist.png</key>
             <key type="filename">../Game/Enemies/Ghost.png</key>
             <key type="filename">../Game/Enemies/GhostAdventurer.png</key>
             <key type="filename">../Game/Enemies/GhostDark.png</key>
@@ -1039,6 +1041,7 @@
             <key type="filename">../Game/Enemies/PinkLabAssistant.png</key>
             <key type="filename">../Game/Enemies/Pixie.png</key>
             <key type="filename">../Game/Enemies/PlayerGag.png</key>
+            <key type="filename">../Game/Enemies/Poltergeist.png</key>
             <key type="filename">../Game/Enemies/PrisonerBandit.png</key>
             <key type="filename">../Game/Enemies/Rat.png</key>
             <key type="filename">../Game/Enemies/RedSlime.png</key>

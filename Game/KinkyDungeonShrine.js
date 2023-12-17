@@ -836,14 +836,19 @@ function KinkyDungeonDrawPerkOrb() {
 		});
 		count += 1;
 	}
-	if (KDPerkOrbBondage?.length > 0) {
+	if (KDPerkOrbBondage?.length > 0 && !KinkyDungeonStatsChoice.get("hideperkbondage")) {
 		let str = "";
 		for (let b of KDPerkOrbBondage) {
 			if (str) str = str + ', ';
 			str = str + TextGet("Restraint" + b);
 		}
-		DrawTextFitKD(TextGet("KDBondageOptionPerk"), 1250, 350 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 24);
-		DrawTextFitKD(str, 1250, 385 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 22);
+		if (KinkyDungeonStatsChoice.get("partialhideperkbondage")) {
+			DrawTextFitKD(TextGet("KDBondageOptionPerkHidden"), 1250, 360 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 30);
+		} else {
+			DrawTextFitKD(TextGet("KDBondageOptionPerk"), 1250, 350 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 24);
+			DrawTextFitKD(str, 1250, 385 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 22);
+		}
+		
 		FillRectKD(kdcanvas, kdpixisprites, "bg_bndg", {
 			Left: 1250-Twidth/2 - 10,
 			Top: 350 + count * pspacing - 30,
