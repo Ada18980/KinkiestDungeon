@@ -19403,3 +19403,13 @@ Ancient drones drop from the ceiling and come to life!
 古老的无人机从天花板上掉下来并重新开始运作！
 You were always being watched...
 你一直被人注视着...
+
+You find a store of gunpowder!
+你发现了一堆火药！
+
+Explosive Barrel
+炸药桶
+The explosive barrel falls apart and drops its gunpowder.
+炸药桶散开，里面的火药掉了出来。
+The explosive barrel catches fire and explodes!
+炸药桶着火并爆炸！
