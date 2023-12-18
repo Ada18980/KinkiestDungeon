@@ -835,12 +835,12 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 	}
 }
 
-function KDGetEffSecurityLevel(faction, noCap) {
+function KDGetEffSecurityLevel(faction, Cap) {
 	if (!faction) faction = KDGetMainFaction();
 
 	if (faction) {
 		let mod = -KDFactionRelation("Player", faction) * KDMainFactionSecurityMod;
-		if (noCap) return mod + KinkyDungeonGoddessRep.Prisoner;
+		if (!Cap) return mod + KinkyDungeonGoddessRep.Prisoner;
 		return Math.max(-50, Math.min(50, mod + KinkyDungeonGoddessRep.Prisoner));
 	}
 	return KinkyDungeonGoddessRep.Prisoner;
@@ -1099,7 +1099,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	//let firstTime = KDGameData.KinkyDungeonSpawnJailersMax == 0;
 	KDGameData.GuardSpawnTimer = 4 + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
 	KDGameData.KinkyDungeonSpawnJailersMax = 2;
-	KDGameData.KinkyDungeonSpawnJailersMax += Math.round(6 * (KDGetEffSecurityLevel() + 50)/100);
+	KDGameData.KinkyDungeonSpawnJailersMax += Math.round(6 * (KDGetEffSecurityLevel(undefined, true) + 50)/100);
 	//let securityBoost = (firstTime) ? 0 : Math.max(2, Math.ceil(4 * (KDGameData.KinkyDungeonSpawnJailersMax - KDGameData.KinkyDungeonSpawnJailers + 1)/KDGameData.KinkyDungeonSpawnJailersMax));
 
 	KinkyDungeonStatBlind = 3;
@@ -1337,7 +1337,7 @@ function KDKickEnemyLocal(e) {
 function KinkyDungeonStripInventory(KeepPicks) {
 	KinkyDungeonRedKeys = 0;
 	KinkyDungeonBlueKeys = 0;
-	KinkyDungeonLockpicks = KeepPicks ? (Math.min(Math.max(0, Math.round(3 * (1 - (KDGetEffSecurityLevel() + 50)/100))), KinkyDungeonLockpicks)) : 0;
+	KinkyDungeonLockpicks = KeepPicks ? (Math.min(Math.max(0, Math.round(3 * (1 - (KDGetEffSecurityLevel(undefined, true) + 50)/100))), KinkyDungeonLockpicks)) : 0;
 
 	let newInv = KinkyDungeonInventory.get(Restraint);
 	let HasBound = false;

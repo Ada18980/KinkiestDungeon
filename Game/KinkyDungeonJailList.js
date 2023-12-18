@@ -508,7 +508,9 @@ let KDJailOutfits = {
 			{Name: "LatexLegbinder", Level: 80},
 			{Name: "LatexArmbinder", Level: 30},
 			{Name: "LatexStraitjacket", Level: 60},
-			{Name: "LatexCatsuit", Level: 100},
+			{Name: "LatexCatsuit", Level: 40},
+			{Name: "KiguMask", Level: 100, Condition: "NoUnmasked"},
+			{Name: "ExpCollar", Level: 120},
 		],
 	},
 	"wolfRestraints": {
@@ -526,6 +528,7 @@ let KDJailOutfits = {
 			{Name: "WolfBallGag", Level: 30},
 			{Name: "WolfCollar", Level: 0},
 			{Name: "WolfPanties", Level: 60},
+			{Name: "WolfPetsuit", Level: 120, Condition: "NoPetsuit"},
 		],
 	},
 	"expRestraints": {
@@ -593,7 +596,8 @@ let KDJailOutfits = {
 			{Name: "KittyMuzzle", Level: 45},
 			{Name: "KittyBlindfold", Level: 60},
 			{Name: "KittySuit", Level: 80},
-			{Name: "KittyPetSuit", Level: 100},
+			{Name: "KittySuit", Level: 100},
+			{Name: "KittyPetSuit", Level: 120, Condition: "NoPetsuit"},
 		],
 	},
 	"obsidianRestraints": {
@@ -657,5 +661,11 @@ let KDJailConditions = {
 	},
 	Kinky: (r) => {
 		return KinkyDungeonStatDistractionMax > 17;
+	},
+	NoUnmasked: (r) => {
+		return !KinkyDungeonStatsChoice.get("Unmasked");
+	},
+	NoPetsuit: (r) => {
+		return !KinkyDungeonStatsChoice.get("NoPet");
 	},
 };

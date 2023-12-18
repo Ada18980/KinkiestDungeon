@@ -117,6 +117,12 @@ AddModel({
 
 
 
+AddModel(GetModelFashionVersion("HarnessTop", true));
+AddModel(GetModelFashionVersion("HarnessMid", true));
+AddModel(GetModelFashionVersion("HarnessStrap", true));
+AddModel(GetModelFashionVersion("Harness", true));
+
+
 AddModel({
 	Name: "FutureHarnessChest",
 	Folder: "FutureHarness",
@@ -218,3 +224,10 @@ AddModel({
 		...GetModelLayers("FutureHarnessChest"),
 	])
 });
+
+
+
+AddModel(GetModelFashionVersion("FutureHarnessLower", true));
+AddModel(GetModelFashionVersion("FutureHarnessMid", true));
+AddModel(GetModelFashionVersion("FutureHarnessChest", true));
+AddModel(GetModelFashionVersion("FutureHarness", true));

@@ -258,7 +258,7 @@ let KDDialogue = {
 	"PrisonRepeat": {
 		response: "Default",
 		clickFunction: (gagged) => {
-			let GoldAmount = Math.round(KDGetEffLevel() * 100 * (1 + 0.02 * (KDGetEffSecurityLevel() + 50)));
+			let GoldAmount = Math.round(KDGetEffLevel() * 100 * (1 + 0.02 * Math.max(0, KDGetEffSecurityLevel() + 50)));
 			KDGameData.CurrentDialogMsgData = {
 				"BRIBECOST": "" + GoldAmount,
 			};
@@ -313,13 +313,13 @@ let KDDialogue = {
 			},
 			"Bribe": {playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
-					let GoldAmount = Math.round(KDGetEffLevel() * 100 * (1 + 0.02 * (KDGetEffSecurityLevel() + 50)));
+					let GoldAmount = Math.round(KDGetEffLevel() * 100 * (1 + 0.02 * Math.max(0, KDGetEffSecurityLevel() + 50)));
 					return KDGetEffSecurityLevel() >= -40 && KinkyDungeonGold >= GoldAmount;
 				},
 				options: {
 					"Accept": {playertext: "Default", response: "Default",
 						clickFunction: (gagged, player) => {
-							let GoldAmount = Math.round(KDGetEffLevel() * 100 * (1 + 0.02 * (KDGetEffSecurityLevel() + 50)));
+							let GoldAmount = Math.round(KDGetEffLevel() * 100 * (1 + 0.02 * Math.max(0, KDGetEffSecurityLevel() + 50)));
 							if (KDGetEffSecurityLevel() >= 49.5) {
 								KDGameData.CurrentDialogMsg = "PrisonRepeatBribeFail";
 								return false;

@@ -2129,23 +2129,36 @@ function KinkyDungeonCheckLOS(enemy, player, distance, maxdistance, allowBlind, 
 function KinkyDungeonTrackSneak(enemy, delta, player, darkmult) {
 	if (!enemy.vp) enemy.vp = 0;
 	if (!player.player) return 1;
-	let sneakThreshold = enemy.Enemy.sneakThreshold ? enemy.Enemy.sneakThreshold : 2;
-	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak")) sneakThreshold = Math.max(0.1, sneakThreshold + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak"));
-	let deltaMult = 0.7/Math.max(1, (1 + KinkyDungeonSubmissiveMult));
+
+	let data = {
+		sneakThreshold: enemy.Enemy.sneakThreshold ? enemy.Enemy.sneakThreshold : 2,
+		deltaMult: 0.7/Math.max(1, (1 + KinkyDungeonSubmissiveMult)),
+		visibility: 1.0,
+		darkmult: darkmult,
+		enemy: enemy,
+		delta: delta,
+		player: player,
+	};
+	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak")) data.sneakThreshold = Math.max(0.1, data.sneakThreshold + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak"));
 	
-	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowDetection")) deltaMult *= KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowDetection"));
 	if (KDGameData.Outfit) {
 		let outfit = KinkyDungeonGetOutfit(KDGameData.Outfit);
 		if (outfit && outfit.visibility)
-			deltaMult *= outfit.visibility;
+			data.visibility *= outfit.visibility;
 	}
-	if (KinkyDungeonStatsChoice.get("Conspicuous")) deltaMult *= KDConspicuousMult;
-	else if (KinkyDungeonStatsChoice.get("Stealthy")) deltaMult *= KDStealthyMult;
-	if (darkmult) {
-		deltaMult *= KDPlayerLight/(darkmult + KDPlayerLight);
+
+	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowDetection")) data.visibility *= KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowDetection"));
+	
+	if (KinkyDungeonStatsChoice.get("Conspicuous")) data.visibility *= KDConspicuousMult;
+	else if (KinkyDungeonStatsChoice.get("Stealthy")) data.visibility *= KDStealthyMult;
+
+	KinkyDungeonSendEvent('calcSneak', data);
+
+	if (data.darkmult) {
+		data.deltaMult *= KDPlayerLight/(data.darkmult + KDPlayerLight);
 	}
-	enemy.vp = Math.min(sneakThreshold * 2, enemy.vp + delta*deltaMult);
-	return (enemy.vp/sneakThreshold);
+	enemy.vp = Math.min(data.sneakThreshold * 2, enemy.vp + delta*data.deltaMult);
+	return (enemy.vp/data.sneakThreshold);
 }
 
 function KinkyDungeonMultiplicativeStat(Stat) {
@@ -3262,7 +3275,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.damage = enemy.Enemy.dmgType;
 	AIData.power = enemy.Enemy.power + KinkyDungeonGetBuffedStat(enemy.buffs, "AttackPower");
 
-	AIData.targetRestraintLevel = 0.25 + (enemy.aggro && !enemy.playWithPlayer ? enemy.aggro : 0) + 0.004 * (KDGetEffSecurityLevel(KDGetFaction(enemy) || KDGetFactionOriginal(enemy)) + 50);
+	AIData.targetRestraintLevel = 0.25 + (enemy.aggro && !enemy.playWithPlayer ? enemy.aggro : 0) + 0.004 * Math.max(0, KDGetEffSecurityLevel(KDGetFaction(enemy) || KDGetFactionOriginal(enemy)) + 50);
 	if (enemy.aggro > 0 && delta > 0 && enemy.aggro > enemy.hp / enemy.Enemy.maxhp) enemy.aggro = enemy.aggro * 0.95;
 	if (KinkyDungeonStatsChoice.has("NoWayOut") || (enemy.playWithPlayer > 0 && !KinkyDungeonAggressive(enemy)) || enemy.hp < enemy.Enemy.maxhp * 0.5 || !KDIsHumanoid(enemy)) AIData.targetRestraintLevel = 999;
 	if (enemy.Enemy.Behavior?.thorough) AIData.targetRestraintLevel = Math.max(AIData.targetRestraintLevel, enemy.Enemy.Behavior?.thorough);

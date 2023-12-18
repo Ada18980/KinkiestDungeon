@@ -1213,6 +1213,9 @@ const KinkyDungeonRestraints = [
 			"Binder":{"gamma":1,"saturation":0.08333333333333333,"contrast":1,"brightness":0.43333333333333335,"red":1.25,"green":0.6666666666666666,"blue":2.0833333333333335,"alpha":1},
 		},
 
+		events: [
+			{type: "FactionStealth", trigger: 'calcSneak', kind: "Dressmaker", mult: 0.8, power: 2,},
+		],
 		LinkableBy: [...KDDressLink], alwaysRender: true, bindarms: true, bindhands: 1.0, power: 8, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": -0.2, "Pick": 0.15}, helpChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": 0.075},
 		limitChance: {"Struggle": 0.125, "Cut": 0.125, "Remove": 0.1, "Unlock": 0.5},
@@ -2209,24 +2212,38 @@ const KinkyDungeonRestraints = [
 		events:[
 			{trigger:"defeat",  type:"Kittify"},
 		],
-		helpChance: {"Remove": 0.1}, maxwill: 0.15, enemyTags: {"kittyRestraints":3}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["Latex", "Petsuits", "Will"]},
+		helpChance: {"Remove": 0.1}, maxwill: 0.15, enemyTags: {"kittyRestraints":3}, playerTags: {"NoPet": -1000}, minLevel: 7, allFloors: true, shrine: ["Latex", "Petsuits", "Will"]},
 	{inventory: true, name: "MagicPetsuit", inaccessible: true, debris: "Belts", Asset: "StrictLeatherPetCrawler", magic: true, Color: "Default", Group: "ItemArms",
 		Model: "Petsuit",
 		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"], power: 12, weight: 0,
 		hobble: 2,
 		escapeChance: {"Struggle": -0.15, "Cut": 0.12, "Remove": -0.05, "Pick": 0.15},
-		helpChance: {"Remove": 0.2}, maxwill: 0.15, enemyTags: {"petsuitSpell": 1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Petsuits", "Conjure"]},
+		helpChance: {"Remove": 0.2}, maxwill: 0.15, enemyTags: {"petsuitSpell": 1}, playerTags: {"NoPet": -1000}, minLevel: 0, allFloors: true, shrine: ["Leather", "Petsuits", "Conjure"]},
+	{inventory: true, name: "WolfPetsuit", inaccessible: true, debris: "Belts", Asset: "StrictLeatherPetCrawler", Color: "Default", Group: "ItemArms",
+		DefaultLock: "Blue",
+		Model: "Petsuit",
+		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"], power: 14, weight: 0,
+		hobble: 2,
+		events: [
+			{type: "FactionStealth", trigger: 'calcSneak', kind: "Nevermere", mult: 0.8, power: 2,},
+		],
+		escapeChance: {"Struggle": -0.45, "Cut": -0.1, "Remove": -0.3, "Pick": 0.15},
+		helpChance: {"Remove": 0.01}, maxwill: 0.15, enemyTags: {"wolfPetsuit": 1}, playerTags: {"NoPet": -1000}, minLevel: 0, allFloors: true, shrine: ["Latex", "Petsuits"]},
 	// Only apply if already wearing KittySuit
-	{inventory: true, name: "KittyPetSuit", inaccessible: true, debris: "Belts", Asset: "BitchSuit", Color: "Default", Group: "ItemArms", DefaultLock: "Blue",
+	{inventory: true, name: "KittyPetSuit", inaccessible: true, debris: "Belts", Asset: "BitchSuit", Color: "Default", Group: "ItemArms",
+		DefaultLock: "Blue",
 		Model: "Petsuit",
 		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"],power: 14, weight: 0,
 		hobble: 2,
-		escapeChance: {"Struggle": -0.2, "Cut": 0.1, "Remove": -0.1, "Pick": 0.15},
+		escapeChance: {"Struggle": -0.3, "Cut": 0.0, "Remove": -0.3, "Pick": 0.15},
 		alwaysDress: [
 			{Item: "KittenEars2", Group: "HairAccessory2", Color: ['Default'], override: false, useHairColor: true,},
 			{Item: "TailStrap", Group: "TailStraps", Color: ['Default'], override: false, useHairColor: true,},
 		],
-		helpChance: {"Remove": 0.01}, maxwill: 0.15, enemyTags: {"kittyRestraints":0}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["Latex", "Petsuits", "Will"]},
+		events: [
+			{type: "FactionStealth", trigger: 'calcSneak', kind: "Bast", mult: 0.8, power: 2,},
+		],
+		helpChance: {"Remove": 0.01}, maxwill: 0.15, enemyTags: {"kittyRestraints":0}, playerTags: {"NoPet": -1000}, minLevel: 7, allFloors: true, shrine: ["Latex", "Petsuits", "Will"]},
 	//endregion
 
 	//region These restraints are easy, so they dont have maxwill
@@ -2622,6 +2639,9 @@ const KinkyDungeonRestraints = [
 		minLevel: 7, allFloors: true, shrine: ["Latex", "Straitjackets", "Block_ItemHands", "Illusion"]},
 	{inventory: true, name: "MaidDress", debris: "Fabric", inaccessible: true, Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#191919'],
 		Model: "Jacket",
+		events: [
+			{type: "FactionStealth", trigger: 'calcSneak', kind: "Maidforce", mult: 0.8, power: 2,},
+		],
 		Filters: {
 			Arms: {"gamma":1,"saturation":1,"contrast":1.0333333333333332,"brightness":3.05,"red":1,"green":1,"blue":1,"alpha":1},
 			ChestBolero: {"gamma":1,"saturation":1,"contrast":1.0333333333333332,"brightness":3.05,"red":1,"green":1,"blue":1,"alpha":1},
@@ -3185,6 +3205,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.7, enemyTags: {"ropeRestraints":4}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Boxties"]},
 	{unlimited: true, inventory: true, name: "RopeSnakeCuffs", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Type: "RopeCuffs", Color: "Default", linkCategory: "Cuffs", linkSize: 0.33,
 		Model: "RopeCuffs",
+		alwaysRender: true,
 		struggleMult: {"Struggle": 0.6, "Remove": 0.5},
 		LinkableBy: ["Boxbinders", "Armbinders", ...KDBindable, "Cuffs", "Ties"], Group: "ItemArms", bindarms: true, power: 1, weight: 0, escapeChance: {"Struggle": 0.4, "Cut": 0.67, "Remove": 0.3},
 		affinity: {Remove: ["Hook"],},

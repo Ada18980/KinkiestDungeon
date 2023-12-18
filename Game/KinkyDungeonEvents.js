@@ -1558,6 +1558,15 @@ let KDEventMapInventory = {
 			}
 		}
 	},
+	"calcSneak": {
+		FactionStealth: (e, item, data) => {
+			if (data.enemy && (!e.kind || KDGetFaction(data.enemy) == e.kind)) {
+				data.sneakThreshold += e.power || 0;
+				data.visibility *= e.mult != undefined ? e.mult : 1;
+			}
+		}
+		
+	},
 	"defeat": {
 		"linkItem": (e, item, data) => {
 			if (item && KDRestraint(item).Link && (KDRandom() < e.chance)) {
@@ -2901,11 +2910,24 @@ let KDEventMapOutfit = {
 			}
 		},
 	},
+	"calcSneak": {
+		FactionStealth: (e, outfit, data) => {
+			if (data.enemy && (!e.kind || KDGetFaction(data.enemy) == e.kind)) {
+				data.sneakThreshold += e.power || 0;
+				data.visibility *= e.mult != undefined ? e.mult : 1;
+			}
+		}
+		
+	},
 	"tick": {
 		"sneakBuff": (e, outfit, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: outfit.name + "Sneak", type: "SlowDetection", power: e.power, duration: 2,});
 		},
+		"damageResist": (e, outfit, data) => {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: outfit.name + e.damage + "damageResist", type: e.damage + "DamageResist", power: e.power, duration: 2,});
+		},
 	},
+
 };
 
 /**

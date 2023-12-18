@@ -2,21 +2,88 @@
 
 // Outfit resource, uncached
 let KinkyDungeonOutfitsBase = [
-	{name: "OutfitDefault", dress: "Default", shop: false, rarity: 1},// To avoid breaking saves
+	{name: "OutfitDefault", dress: "Default", shop: false, rarity: 1,},// To avoid breaking saves
 	{name: "Default", dress: "Default", shop: false, rarity: 1},
-	{name: "JailUniform", dress: "JailUniform", shop: false, rarity: 1},
-	{name: "Bast", dress: "Bast", shop: false, rarity: 1},
-	{name: "Bountyhunter", dress: "Bountyhunter", shop: false, rarity: 1, events: [{trigger: "tick", type: "sneakBuff", power: 0.1}]},
-	{name: "Bikini", dress: "Bikini", shop: false, rarity: 1},
-	{name: "Maid", dress: "Maid", shop: false, rarity: 2, events: [{trigger: "calcEvasion", type: "AccuracyBuff", requiredTag: "mold", power: 10.0}]},
-	{name: "Dragon", dress: "Dragon", shop: false, rarity: 2},
-	{name: "Elven", dress: "Elven", shop: false, rarity: 2},
-	{name: "Wolfgirl", dress: "Wolfgirl", shop: false, rarity: 2},
-	{name: "CyberDoll", dress: "CyberDoll", shop: false, rarity: 3},
-	{name: "BlueSuitPrison", dress: "BlueSuitPrison", shop: false, rarity: 2},
-	{name: "DollSuit", dress: "DollSuit", shop: false, rarity: 2},
-	{name: "BlueSuit", dress: "BlueSuit", shop: false, rarity: 2},
-	{name: "Obsidian", dress: "Obsidian", shop: false, rarity: 2},
+	{name: "JailUniform", dress: "JailUniform", shop: false, rarity: 1, 
+		events: [
+			{type: "FactionStealth", trigger: 'calcSneak', mult: 1.2},
+			{type: "damageResist", trigger: 'tick', damage: "tickle", power: -0.1},
+			{type: "damageResist", trigger: 'tick', damage: "grope", power: -0.1},
+		],
+	},
+	{name: "Bast", dress: "Bast", shop: false, rarity: 1, 
+		events: [
+			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Bast"},
+			{type: "damageResist", trigger: 'tick', damage: "tickle", power: -0.2},
+			{type: "damageResist", trigger: 'tick', damage: "grope", power: -0.2},
+		],
+	},
+	{name: "Bountyhunter", dress: "Bountyhunter", shop: false, rarity: 1,
+		events: [
+			{trigger: "tick", type: "sneakBuff", power: 0.1},
+			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Bountyhunter"},
+			{type: "damageResist", trigger: 'tick', damage: "electric", power: 0.2},
+			{type: "damageResist", trigger: 'tick', damage: "ice", power: -0.2},
+		],},
+	{name: "Bikini", dress: "Bikini", shop: false, rarity: 1, 
+		events: [
+			{type: "damageResist", trigger: 'tick', damage: "ice", power: -0.2},
+			{type: "damageResist", trigger: 'tick', damage: "tickle", power: -0.2},
+			{type: "damageResist", trigger: 'tick', damage: "grope", power: -0.2},
+			{type: "damageResist", trigger: 'tick', damage: "acid", power: 0.3},
+		],},
+	{name: "Maid", dress: "Maid", shop: false, rarity: 2, 
+		events: [
+			{trigger: "calcEvasion", type: "AccuracyBuff", requiredTag: "mold", power: 10.0},
+			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Maidforce"},
+		],},
+	{name: "Dragon", dress: "Dragon", shop: false, rarity: 2, 
+		events: [
+			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Dragon"},
+			{type: "damageResist", trigger: 'tick', damage: "fire", power: 0.2},
+		],},
+	{name: "Elven", dress: "Elven", shop: false, rarity: 2, 
+		events: [
+			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Elf"},
+			{type: "damageResist", trigger: 'tick', damage: "tickle", power: -0.2},
+			{type: "damageResist", trigger: 'tick', damage: "grope", power: -0.2},
+		],},
+	{name: "Wolfgirl", dress: "Wolfgirl", shop: false, rarity: 2, 
+		events: [
+			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Nevermere"},
+			{type: "damageResist", trigger: 'tick', damage: "electric", power: 0.2},
+		],},
+	{name: "CyberDoll", dress: "CyberDoll", shop: false, rarity: 3, 
+		events: [
+			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "AncientRobot"},
+			{type: "damageResist", trigger: 'tick', damage: "electric", power: 0.2},
+		],},
+	{name: "BlueSuitPrison", dress: "BlueSuitPrison", shop: false, rarity: 2, 
+		events: [
+			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Alchemist"},
+			{type: "damageResist", trigger: 'tick', damage: "electric", power: 0.2},
+		],},
+	{name: "DollSuit", dress: "DollSuit", shop: false, rarity: 2, 
+		events: [
+			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Dollsmith"},
+			{type: "damageResist", trigger: 'tick', damage: "electric", power: 0.2},
+		],},
+	{name: "BlueSuit", dress: "BlueSuit", shop: false, rarity: 2, 
+		events: [
+			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Alchemist"},
+			{type: "damageResist", trigger: 'tick', damage: "electric", power: 0.2},
+		],},
+	{name: "Obsidian", dress: "Obsidian", shop: false, rarity: 2, 
+		events: [
+			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Elemental"},
+			{type: "damageResist", trigger: 'tick', damage: "soul", power: -0.3},
+			{type: "damageResist", trigger: 'tick', damage: "fire", power: .1},
+			{type: "damageResist", trigger: 'tick', damage: "ice", power: .1},
+			{type: "damageResist", trigger: 'tick', damage: "acid", power: .1},
+			{type: "damageResist", trigger: 'tick', damage: "crush", power: .1},
+			{type: "damageResist", trigger: 'tick', damage: "electric", power: .1},
+			{type: "damageResist", trigger: 'tick', damage: "stun", power: .1},
+		],},
 ];
 
 /**

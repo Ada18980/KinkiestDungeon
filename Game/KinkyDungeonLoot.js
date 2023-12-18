@@ -58,6 +58,7 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 		if ((effLevel >= loot.minLevel || KinkyDungeonNewGame > 0) && (loot.allFloors || loot.floors[Index])) {
 			let prereqs = true;
 			if (loot.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) prereqs = false;
+			
 
 			if (loot.noflag?.some((flag) => {return KinkyDungeonFlags.get(flag) != undefined})) prereqs = false;
 			if (loot.notag?.some((flag) => {return KinkyDungeonPlayerTags.get(flag) != undefined})) prereqs = false;
@@ -72,8 +73,11 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 					if (count < loot.minCurseCount || count > loot.maxCurseCount)
 						prereqs = false;
 				}
+				
+
 				if (prereqs && loot.hardmode && !KinkyDungeonStatsChoice.get("hardMode")) prereqs = false;
 				if (prereqs && loot.nohardmode && KinkyDungeonStatsChoice.get("hardMode")) prereqs = false;
+				if (prereqs && loot.prerequisites.includes("nopetsuit") && KinkyDungeonPlayerTags.get("NoPet")) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("vibe") && KinkyDungeonPlayerTags.get("NoVibes")) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("alreadyBelted") && KinkyDungeonChastityMult() < 0.9) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("lowlevel")) maxlevel = 2;

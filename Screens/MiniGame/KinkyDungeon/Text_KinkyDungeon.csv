@@ -463,6 +463,8 @@ KinkyDungeonStatDescPrisoner,"Start the game as a submissive prisoner wandering 
 KinkyDungeonStatRusted,"Rusty Bolts"
 KinkyDungeonStatDescRusted,"Most traps have a 25% misfire chance."
 
+KinkyDungeonStatNoPet,"Not a Pet"
+KinkyDungeonStatDescNoPet,"Petsuits occur less often."
 KinkyDungeonStatUnmasked,"Unmasked"
 KinkyDungeonStatDescUnmasked,"Hoods and full-face covering masks do not appear, but blindfolds are more powerful."
 KinkyDungeonStatBlackout,"Blackout"
@@ -1064,12 +1066,12 @@ KinkyDungeonInventoryItemBountyhunterDesc2,Increases stealth by 10% in the dark.
 
 KinkyDungeonInventoryItemJailUniform,Jail Uniform
 KinkyDungeonInventoryItemJailUniformDesc,The prisoners are kept in revealing outfits to keep them from hiding things.
-KinkyDungeonInventoryItemJailUniformDesc2,"A prisoner's 'outfit'. No bonuses, no penalties."
+KinkyDungeonInventoryItemJailUniformDesc2,"Designed to make it hard to conceal weapons. Makes you more visible and vulnerable to the cold."
 
 
 KinkyDungeonInventoryItemWolfgirl,Wolfgirl Suit
 KinkyDungeonInventoryItemWolfgirlDesc,"An advanced suit designed for sport, breathable and also warm."
-KinkyDungeonInventoryItemWolfgirlDesc2,"No bonuses, no penalties."
+KinkyDungeonInventoryItemWolfgirlDesc2,"Made of latex. Resistant to electricity but does not insulate well."
 
 KinkyDungeonInventoryItemMaid,Maid Uniform
 KinkyDungeonInventoryItemMaidDesc,An elegant dress meant to denote a maid's status.
@@ -1080,40 +1082,40 @@ KinkyDungeonInventoryItemBastDesc,A skimpy outfit with antiquated connotations.
 KinkyDungeonInventoryItemBastDesc2,"Harkening back to an old era."
 
 KinkyDungeonInventoryItemBikini,Combat Bikini
-KinkyDungeonInventoryItemBikiniDesc,A minimalist outfit designed for ease of use.
+KinkyDungeonInventoryItemBikiniDesc,"A minimalist albeit chilly outfit designed for ease of use."
 KinkyDungeonInventoryItemBikiniDesc2,"Or perhaps it's just sexy..."
 
 KinkyDungeonInventoryItemMaidUniform,Maid Uniform
 KinkyDungeonInventoryItemMaidUniformDesc,An elegant dress meant to denote a maid's status.
 KinkyDungeonInventoryItemMaidUniformDesc2,"Massively increases accuracy against slime mold."
 
-KinkyDungeonInventoryItemDragon,Prisoner Uniform
-KinkyDungeonInventoryItemDragonDesc,The uniform of choice for girls captured by the dragonhearts.
-KinkyDungeonInventoryItemDragonDesc2,"Designed to make it hard to conceal weapons. No bonuses, no penalties."
+KinkyDungeonInventoryItemDragon,Dragonheart Uniform
+KinkyDungeonInventoryItemDragonDesc,The uniform of choice for dragonheart of all ranks.
+KinkyDungeonInventoryItemDragonDesc2,"It's made of fire-resistant leather."
 
 KinkyDungeonInventoryItemBlueSuitPrison,Scientific Uniform
 KinkyDungeonInventoryItemBlueSuitPrisonDesc,An outfit designed to leave little to the imagination.
-KinkyDungeonInventoryItemBlueSuitPrisonDesc2,"No bonuses, no penalties."
+KinkyDungeonInventoryItemBlueSuitPrisonDesc2,"Resistant to electricity but does not insulate well."
 
 KinkyDungeonInventoryItemBlueSuit,Latex Catsuit
 KinkyDungeonInventoryItemBlueSuitDesc,An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
-KinkyDungeonInventoryItemBlueSuitDesc2,"No bonuses, no penalties."
+KinkyDungeonInventoryItemBlueSuitDesc2,"Resistant to electricity but does not insulate well."
 
 KinkyDungeonInventoryItemDollSuit,Doll Catsuit
 KinkyDungeonInventoryItemDollSuitDesc,An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
-KinkyDungeonInventoryItemDollSuitDesc2,"No bonuses, no penalties."
+KinkyDungeonInventoryItemDollSuitDesc2,"Resistant to electricity but does not insulate well."
 
 KinkyDungeonInventoryItemCyberDoll,Cyber Doll Suit
 KinkyDungeonInventoryItemCyberDollDesc,A technologically advanced suit designed for long term wear. Despite being watertight and skintight it has cleaning and ventilation ports that plug directly into doll storage fixtures.
-KinkyDungeonInventoryItemCyberDollDesc2,"No bonuses, no penalties."
+KinkyDungeonInventoryItemCyberDollDesc2,"Resistant to electricity but does not insulate well."
 
 KinkyDungeonInventoryItemObsidian,Shadow Latex Dress
 KinkyDungeonInventoryItemObsidianDesc,"A minidress made from shadow latex, a favorite of otherwordly patrons."
-KinkyDungeonInventoryItemObsidianDesc2,"No bonuses, no penalties."
+KinkyDungeonInventoryItemObsidianDesc2,"Resistant to the elements, but is infused with crystals that amplify psychic damage to yourself."
 
 KinkyDungeonInventoryItemElven,Elven Dress
 KinkyDungeonInventoryItemElvenDesc,A regal minidress worn by visitors to the forest.
-KinkyDungeonInventoryItemElvenDesc2,"No bonuses, no penalties."
+KinkyDungeonInventoryItemElvenDesc2,"Not very good at insulating you from the cold."
 
 KinkyDungeonInventoryItemScrollArms,Scroll of Sleight
 KinkyDungeonInventoryItemScrollArmsUse,The scroll makes your memories of arm movements clear as day!
@@ -17321,7 +17323,7 @@ KDRep,Rep
 KDMagicWeapon,Magical Weapon
 
 KDRepDescriptionGhost,"Your Submissiveness determines how easily your character can resist the temptations of bondage."
-KDRepDescriptionPrisoner,"Your Security Level is based on your history and reputation with the MNFCTN."
+KDRepDescriptionPrisoner,"Your Security Level is based on your history, and reputation with the MNFCTN."
 KDRepDescriptionPassion,"Your Passion determines how likely you are to lose control of yourself involuntarily."
 KDRepDescriptionFrustration,"Your Frustration affects how quickly your Passion grows. More Frustration = More Passion"
 
@@ -17331,7 +17333,7 @@ KDRepDescriptionRope,"Akasha, Goddess of Magic"
 KDRepDescriptionMetal,"Oriel, Goddess of Technology"
 
 KDRepDescriptionWill,"Ninril, Giver of Life"
-KDRepDescriptionElements,"Mata, Architect of Reality"
+KDRepDescriptionElements,"Matah, Architect of Reality"
 KDRepDescriptionConjure,"Aether, Keeper of the Cosmos"
 KDRepDescriptionIllusion,"Oblivion, Keeper of Secrets"
 
@@ -18369,3 +18371,8 @@ KinkyDungeonCurseInfoSacrificeMage,"The item demands copious mana, more than you
 KinkyDungeonCurseStruggleSacrificeMage,"The cursed seal glows and pulsates as you struggle fruitlessly."
 KDRemoveSacrificeMage,The curse has been lifted through judicious application of spellcasters.
 KDRemoveSacrificeMagePartial,The cursed item drains all of the caster's mana. It demands more.
+
+
+RestraintWolfPetsuit,Punishment Suit
+RestraintWolfPetsuitDesc,"A tool used by Nevermere on the most difficult and recalcitrant wolfgirls."
+RestraintWolfPetsuitDesc2,"Designed to contain superhuman strength, struggling out of this would be a major feat."

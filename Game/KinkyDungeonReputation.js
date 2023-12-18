@@ -335,7 +335,7 @@ function KinkyDungeonDrawReputation() {
 				DrawTextFitKD(suff, canvasOffsetX_ui + xOffset + 275 + XX + 240, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
 			}
 			DrawProgressBar(canvasOffsetX_ui + xOffset + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + 
-				(rep == "Prisoner" ? KDGetEffSecurityLevel() :
+				(rep == "Prisoner" ? KDGetEffSecurityLevel(undefined, true) :
 				value), color, KDTextGray2);
 			if (KinkyDungeonShrineBaseCosts[rep])
 				KDDrawRestraintBonus(rep, canvasOffsetX_ui + xOffset + 275 + XX - 50, yPad + canvasOffsetY_ui + spacing * i, undefined, 24);
@@ -343,7 +343,7 @@ function KinkyDungeonDrawReputation() {
 			if (MouseIn(canvasOffsetX_ui + xOffset + XX, yPad + canvasOffsetY_ui + spacing * i - 1 - spacing/2, 500, spacing - 2)) {
 				DrawTextFitKD(TextGet("KDRepDescription" + rep).replace("MNFCTN", TextGet("KinkyDungeonFaction" + KDGetMainFaction())), 1100, 880, 1250, "#ffffff", "#000000");
 			}
-			let numSuff = rep == "Prisoner" ? `+${Math.round(KDGetEffSecurityLevel(undefined, true) - value)} ` : " ";
+			let numSuff = rep == "Prisoner" ? `+${Math.round(KDGetEffSecurityLevel() - value)} ` : " ";
 			DrawTextKD(" " + (Math.round(value)+50) + numSuff, canvasOffsetX_ui + xOffset + 275 + XX + 100,  2+yPad + canvasOffsetY_ui + spacing * i, "white", "black");
 
 			if (KDFactionRepIndex < 0.1) {
