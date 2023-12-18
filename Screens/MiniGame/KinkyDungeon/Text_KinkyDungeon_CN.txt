@@ -1343,6 +1343,11 @@ Wrong Neighborhood
 敌意实体
 All factions are hostile and united against you.
 所有派系都对你敌对并联合起来反对你。
+Bandit
+强盗
+Start friendly to bandits, and hostile to most other factions.
+开局与强盗派系友好，但是其他大多数派系会对你充满敌意。
+
 Trespasser
 入侵者
 You lose reputation with the goddesses every time you advance a floor.
@@ -12252,8 +12257,8 @@ Magical Weapon
 
 Your Submissiveness determines how easily your character can resist the temptations of bondage.
 你的顺从程度决定了你的角色抵御束缚诱惑的难易程度。
-Your Security Level determines how tightly enemies will secure you in prison.
-你的安全等级决定了敌人将你关在监狱里的严密程度。
+Your Security Level is based on your history and reputation with the MNFCTN.
+你的安全等级基于你在 MNFCTN 的历史和声誉。
 Your Passion determines how likely you are to lose control of yourself involuntarily.
 你的激情决定了你有多大可能不由自主地失去对自己的控制。
 Your Frustration affects how quickly your Passion grows. More Frustration = More Passion
