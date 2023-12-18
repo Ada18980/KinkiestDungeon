@@ -270,6 +270,21 @@ Bondage will sometimes be offered alongside perks.
 Perk shrines are always accompanied by bondage.
 技能神泉总会提供束缚。
 
+Perk Shrine Bondage Info:
+技能神泉束缚信息：
+Hidden
+隐藏
+Partial
+部分
+Full
+完全
+You do not know if a perk shrine will apply bondage.
+你不知道技能神泉是否会施加束缚。
+You know that a perk shrine will apply bondage, but not what kind.
+你知道技能神泉会施加束缚，但不知道是什么样的。
+You know the exact restraints a perk shrine will apply.
+你知道技能神泉会施加什么束缚具。
+
 Hard Mode:
 难度模式：
 Normal Mode
@@ -7421,6 +7436,12 @@ A pair of tight leather mittens enclosing your hands.
 一副紧绷的皮手套包住你的双手。
 They make it almost impossible to manipulate keys and tools. Keep your hands to yourself!
 它们使操作按键和工具几乎成为不可能。把手留给自己！
+Leather Legbinder
+皮革束腿套
+A tight leather legbinder that keeps your feet glued together.
+一款紧身皮革束腿套，可将双脚绑在一起。
+It's quite snug and the laces are secured with a lockable panel. Getting at them requires picking the lock.
+它非常舒适，绳结由可锁定的面板遮挡并固定。想要触碰它们就需要先解开锁。
 Leather Armbinder
 皮革束手套
 A tight leather armbinder enclosing your hands and arms completely.
@@ -7448,9 +7469,9 @@ A pair of steel cuffs locked securely around your wrists.
 The lock doesn't seem very complicated.
 锁似乎不是很复杂。
 Steel Yoke
-钢杆
+钢枷锁
 A steel bar clamped firmly around your wrists and neck, leaving you in a helpless position.
-钢杆牢牢地夹在你的手腕和脖子上，使你处于无助的位置。
+钢枷锁牢牢地夹在你的手腕和脖子上，使你处于无助的位置。
 This is not something you can pick by yourself...
 这不是你自己可以选择的东西...
 Leather Harness
@@ -8189,12 +8210,19 @@ A collar for operatives of the Maidforce, a group of covert saboteurs.
 女仆势力特工的项圈，一群隐蔽的破坏者。
 It's reinforced with metal and guarded with an expert-level lock.
 它采用金属加固，并配有专家级锁。
-Plug Gag
-塞子口塞
+Maid Gag
+女仆口塞
 A gag with a long, mouth-filling plug that muffles speech completely.
-一种带有长长的塞子的塞子，可以完全抑制讲话。
+一种带有长长的塞子的口塞，可以让佩戴者完全说不出话。
 It's made of a very tough reinforced leather. It will take some time to cut.
 它由非常坚韧的强化皮革制成。需要一些时间来削减。
+Maid Security Gag
+女仆安全口塞
+A muzzle with a long, mouth-filling plug that muffles speech completely.
+一种带有长长的塞子的口套，可以让佩戴者完全说不出话。
+Reinforced and secured with a disc lock to ensure unruly maids don't skip their duty.
+用圆盘锁加固和固定，以确保不守规矩的女仆不会玩忽职守。
+
 Suspicious Mask
 可疑的面具
 You a padded metal blindfold, glowing magnificently, along with a strange crystal next to it.
@@ -11841,11 +11869,23 @@ A bunch of gags fly out from your satchel!
 A floating hand appears and cracks its knuckles!
 一只漂浮的手出现了，它的指关节咔咔作响！
 A floating gag appears and starts flying toward you!
-一个漂浮的口球出现并开始向你飞来！
+一个漂浮的口塞出现并开始向你飞来！
+A floating blindfold appears and starts flying toward you!
+一个漂浮的眼罩出现并开始向你飞来！
+A floating yoke appears and starts flying toward you!
+一个漂浮的枷锁出现并开始向你飞来！
+A floating armbinder appears and starts flying toward you!
+一个漂浮的束手套出现并开始向你飞来！
+A floating straitjacket appears and starts flying toward you!
+一件漂浮的拘束衣出现并开始向你飞来！
+A floating harness appears and starts flying toward you!
+一条漂浮的束衣出现并开始向你飞来！
 A set of shackles opens wide and starts going for your wrists!
 一套镣铐张开，并开始锁在你的手腕上！
 A swarm of shackles approaches you!
 一群镣铐向你靠近！
+A swarm of gags approaches you!
+一群口塞向你逼近！
 A cloud of locks and chains clatters as it levitates toward you!
 一团锁和锁链在咔哒咔哒地向你飘来！
 A huge cloud of locks and chains clatters as it levitates toward you!
@@ -18620,6 +18660,8 @@ An item has increased your spell damage!
 
 AMNT ice damage/turn vs. Frozen
 AMNT 冰冻伤害/回合 vs. 冰冻
+AMNT shadow bleed (10 turns)
+AMNT 暗影吸血（10回合）
 
 Sealing Talisman
 封印符
@@ -19295,3 +19337,69 @@ Dollmaker
 
 Receive the following restraints: 
 受到以下拘束：
+You will be bound with some form of restraint.
+你将受到某种形式的束缚。
+
+Shadow
+暗影
+
+Gag Geist
+鬼魂口塞
+The gag geist goes silent.
+鬼魂口塞沉默了。
+The gag geist teases you playfully!! (DamageTaken)
+鬼魂口塞顽皮地逗你！！（DamageTaken）
+The gag geist gags the girl with a ghastly grimace! (+RestraintAdded)
+鬼魂口塞用可怕的鬼脸堵住了女孩！（+RestraintAdded）
+
+Poltergeist 
+捣蛋鬼
+The poltergeist goes silent.
+捣蛋鬼沉默了。
+The poltergeist gropes and teases you playfully!! (DamageTaken)
+捣蛋鬼顽皮地摸索和戏弄你！（DamageTaken）
+The poltergeist binds you with... something? (+RestraintAdded)
+捣蛋鬼用……什么东西把你束缚住了？ （+RestraintAdded）
+
+Invisible Gag
+隐形口塞
+It's a gag, but invisible!
+这是个口塞，但是是隐形的！
+You wonder what color it is.
+你很好奇它是什么颜色。
+
+Invisible Blindfold
+隐形眼罩
+It's a blindfold, but invisible!
+这是个眼罩，但是是隐形的！
+How exactly is this supposed to work?
+这究竟是如何做到的？
+
+Invisible Armbinder
+隐形束手套
+It's an armbinder, but invisible!
+这是个束手套，但是是隐形的！
+You wonder what color it is.
+你很好奇它是什么颜色。
+
+Invisible Legbinder
+隐形束腿套
+It's an legbinder, but invisible!
+这是个束腿套，但是是隐形的！
+This is starting to get cruel...
+这一切开始变得残酷……
+
+Strangely dressed zombies start approaching you!!
+穿着奇异的僵尸开始向你靠近！！
+You hear moaning as the statues start to move...
+当雕像开始移动时，你会听到呻吟声……
+Devious tomes emerge from the bookshelves!
+书架上出现了狡猾的书籍！
+Armed mushrooms emerge from the ground to defend their home!
+武装蘑菇从地底冒出来保卫家园！
+Playful ghosts slip through the walls, giggling to themselves!
+顽皮的幽灵穿过墙壁，咯咯地笑！
+Ancient drones drop from the ceiling and come to life!
+古老的无人机从天花板上掉下来并重新开始运作！
+You were always being watched...
+你一直被人注视着...
