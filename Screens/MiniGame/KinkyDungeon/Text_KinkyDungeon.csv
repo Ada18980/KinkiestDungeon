@@ -452,6 +452,8 @@ KinkyDungeonStatStranger,"Stranger"
 KinkyDungeonStatDescStranger,"Randomizes your relationship to most factions."
 KinkyDungeonStatWrongNeighborhood,"Wrong Neighborhood"
 KinkyDungeonStatDescWrongNeighborhood,"All factions are hostile and united against you."
+KinkyDungeonStatBandit,"Bandit"
+KinkyDungeonStatDescBandit,"Start friendly to bandits, and hostile to most other factions."
 
 KinkyDungeonStatTrespasser,"Trespasser"
 KinkyDungeonStatDescTrespasser,"You lose reputation with the goddesses every time you advance a floor."
@@ -1212,7 +1214,7 @@ KinkyDungeonInventoryItemSmokeBombUse,You ready a smoke bomb...
 KinkyDungeonInventoryItemSmokeBombDesc,"A type of pyrotechnic often employed by saboteurs. Can be rolled and used without hands."
 KinkyDungeonInventoryItemSmokeBombDesc2,"Creates a smoke screen lasting 8 turns. You are harder to see while inside the smoke."
 KinkyDungeonInventoryItemFlashBomb,Flash Bomb
-KinkyDungeonInventoryItem3FlashBomb,Flash Bomb x3
+KinkyDungeonInventoryItem3Flash,Flash Bomb x3
 KinkyDungeonSpellCastFlashBomb,You toss the flash bomb and the fuse starts ticking...
 KinkyDungeonInventoryItemFlashBombUse,You ready a flash bomb...
 KinkyDungeonInventoryItemFlashBombDesc,"A type of explosive used by agents. Blinds nearby targets without causing significant injury."
@@ -15258,7 +15260,7 @@ KDRep,Rep
 KDMagicWeapon,Magical Weapon
 
 KDRepDescriptionGhost,"Your Submissiveness determines how easily your character can resist the temptations of bondage."
-KDRepDescriptionPrisoner,"Your Security Level determines how tightly enemies will secure you in prison."
+KDRepDescriptionPrisoner,"Your Security Level is based on your history and reputation with the MNFCTN."
 KDRepDescriptionPassion,"Your Passion determines how likely you are to lose control of yourself involuntarily."
 KDRepDescriptionFrustration,"Your Frustration affects how quickly your Passion grows. More Frustration = More Passion"
 
@@ -16193,7 +16195,7 @@ RestraintMagicBeltLegs,Magic Leg Belts
 RestraintMagicBeltLegsDesc,"Highly secure belts enchanted with magic."
 RestraintMagicBeltLegsDesc2,"Lockable and fully adjustable to ensure snugness."
 RestraintMagicBeltFeet,Magic Ankle Belts
-RestraintMagicBeltFeetDesc,"AHighly secure belts enchanted with magic."
+RestraintMagicBeltFeetDesc,"Highly secure belts enchanted with magic."
 RestraintMagicBeltFeetDesc2,"Lockable and fully adjustable to ensure snugness."
 KinkyDungeonLiquidMetal,The Liquid Metal starts engulfing you!
 KinkyDungeonLiquidMetalEngulf,"The Liquid Metal explodes and covers you!"
@@ -16209,7 +16211,7 @@ KinkyDungeonTrapSpawnLiquidMetalCube,"The ground shakes as a huge wall of liquid
 NameLiquidMetalCube,Liquid Metal Cube
 KillLiquidMetalCube,"The liquid metal cube dissolves into a huge pile of glittering dust."
 AttackLiquidMetalCube,"The liquid metal cube engulfs you and squeezes tightly! (DamageTaken)"
-AttackLiquidMetalCubeBind,"The liquid metal cube elgulfs your body and hardens, taking the form of restraints! (+RestraintAdded)"
+AttackLiquidMetalCubeBind,"The liquid metal cube engulfs your body and hardens, taking the form of restraints! (+RestraintAdded)"
 
 
 NameSkeletonArcher,Skeleton Archer

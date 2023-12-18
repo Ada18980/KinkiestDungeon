@@ -262,6 +262,52 @@ let KDFactionProperties = {
 			return w;
 		},
 	},
+	
+	Owners: {
+		customDefeat: "ElementalSlave",
+		honor: 1,
+		honor_specific: {
+		},
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			return 0;
+		},
+	},
+	WolfgirlHunters: {
+		customDefeat: "WolfgirlHunters",
+		honor: 1,
+		honor_specific: {
+		},
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			return 0;
+		},
+	},
+	Delinquent: {
+		customDefeat: "MaidSweeper",
+		honor: 1,
+		honor_specific: {
+		},
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			return 0;
+		},
+	},
+	RopeDojo: {
+		customDefeat: "RopeDojo",
+		honor: 1,
+		honor_specific: {
+		},
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			return 0;
+		},
+	},
+	DollShoppe: {
+		customDefeat: "DollShoppe",
+		honor: -1,
+		honor_specific: {
+		},
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			return 0;
+		},
+	},
 };
 
 /** Hidden factions do not auto-rep change when you attack them */

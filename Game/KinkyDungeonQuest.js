@@ -299,10 +299,10 @@ let KDQuests = {
 							if (epoint) {
 								let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 								if (ee) {
-									ee.faction = "Maidforce";
+									ee.faction = "Delinquent";
 									if (KDCanOverrideAI(ee))
-										ee.AI = "looseguard";
-									else ee.AI = KDGetAIOverride(ee, 'looseguard');
+										ee.AI = "patrol";
+									else ee.AI = KDGetAIOverride(ee, 'patrol');
 									ee.gx = KinkyDungeonPlayerEntity.x;
 									ee.gy = KinkyDungeonPlayerEntity.y;
 								}
@@ -317,8 +317,8 @@ let KDQuests = {
 								if (ee) {
 									ee.faction = "Delinquent";
 									if (KDCanOverrideAI(ee))
-										ee.AI = "looseguard";
-									else ee.AI = KDGetAIOverride(ee, 'looseguard');
+										ee.AI = "patrol";
+									else ee.AI = KDGetAIOverride(ee, 'patrol');
 									ee.gx = KinkyDungeonPlayerEntity.x;
 									ee.gy = KinkyDungeonPlayerEntity.y;
 								}
@@ -473,7 +473,7 @@ let KDQuests = {
 						let ee = DialogueCreateEnemy(epoint.x, epoint.y, "Nawashi");
 						if (ee) {
 							ee.faction = "RopeDojo";
-							ee.AI = "patrol";
+							ee.AI = "hunt";
 						}
 					}
 				}

@@ -52,6 +52,7 @@ let LAYERS_BASE = [
 	"CollarAcc",
 	"Leash",
 	"Collar",
+	"NeckCorset",
 
 	// Bondage
 	"WrapForeArms",
@@ -1168,6 +1169,8 @@ let LayerGroups = {
 	"Hood", // For Kigu
 	"MaskOver",
 
+	
+	"NeckCorset",
 	// Hair mid
 	"Mask",
 	"BlindfoldWrap",

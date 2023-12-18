@@ -3031,6 +3031,8 @@ interface KDFactionProps {
 	honor_specific: Record<string, number>,
 	/** Weight to have them show up in a given floor type and floor count (and in future floor X and floor Y) */
 	weight: (Floor: number, Checkpoint: string, tags: string[], X: number, Y: number) => number,
+	/** Custom defeat to use */
+	customDefeat?: string,
 }
 
 type KDTile = any;

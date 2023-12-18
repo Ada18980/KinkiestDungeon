@@ -2801,7 +2801,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 	}
 
 	KDGameData.otherPlaying = 0;
-	let defeatEnemy = undefined;
+	//let defeatEnemy = undefined;
 	// Loop 2
 	for (let E = 0; E < KDMapData.Entities.length; E++) {
 		let enemy = KDMapData.Entities[E];
@@ -2863,7 +2863,14 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					idle = ret.idle;
 					if (ret.defeat) {
 						defeat = true;
-						defeatEnemy = enemy;
+						KDCustomDefeatEnemy = enemy;
+						let fac = KDGetFaction(enemy);
+						if (!KDFactionProperties[fac]) {
+							fac = KDGetFactionOriginal(enemy);
+						}
+						if (KDFactionProperties[fac]?.customDefeat) {
+							KDCustomDefeat = KDFactionProperties[fac]?.customDefeat;
+						}
 					} else {
 						KDMaintainEnemyAction(enemy, delta);
 					}
@@ -3050,15 +3057,18 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 	}
 
 	if (defeat) {
-		if (KDCustomDefeat) KDCustomDefeat();
+		if (KDCustomDefeat && KDCustomDefeats[KDCustomDefeat]) KDCustomDefeats[KDCustomDefeat](KDCustomDefeatEnemy);
 		else if (!KinkyDungeonFlags.get("CustomDefeat"))
-			KinkyDungeonDefeat(KinkyDungeonFlags.has("LeashToPrison"), defeatEnemy);
+			KinkyDungeonDefeat(KinkyDungeonFlags.has("LeashToPrison"), KDCustomDefeatEnemy);
 	}
-	KDCustomDefeat = null;
+	KDCustomDefeat = "";
+	KDCustomDefeatEnemy = null;
 }
 
-/** @type {() => void} */
-let KDCustomDefeat = null;
+/** @type {string} */
+let KDCustomDefeat = "";
+/** @type {entity} */
+let KDCustomDefeatEnemy = null;
 
 function KDMakeHostile(enemy, timer) {
 	if (!timer) timer = KDMaxAlertTimerAggro;
@@ -3252,7 +3262,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.damage = enemy.Enemy.dmgType;
 	AIData.power = enemy.Enemy.power + KinkyDungeonGetBuffedStat(enemy.buffs, "AttackPower");
 
-	AIData.targetRestraintLevel = 0.25 + (enemy.aggro && !enemy.playWithPlayer ? enemy.aggro : 0) + 0.004 * (KinkyDungeonGoddessRep.Prisoner + 50);
+	AIData.targetRestraintLevel = 0.25 + (enemy.aggro && !enemy.playWithPlayer ? enemy.aggro : 0) + 0.004 * (KDGetEffSecurityLevel(KDGetFaction(enemy) || KDGetFactionOriginal(enemy)) + 50);
 	if (enemy.aggro > 0 && delta > 0 && enemy.aggro > enemy.hp / enemy.Enemy.maxhp) enemy.aggro = enemy.aggro * 0.95;
 	if (KinkyDungeonStatsChoice.has("NoWayOut") || (enemy.playWithPlayer > 0 && !KinkyDungeonAggressive(enemy)) || enemy.hp < enemy.Enemy.maxhp * 0.5 || !KDIsHumanoid(enemy)) AIData.targetRestraintLevel = 999;
 	if (enemy.Enemy.Behavior?.thorough) AIData.targetRestraintLevel = Math.max(AIData.targetRestraintLevel, enemy.Enemy.Behavior?.thorough);

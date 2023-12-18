@@ -206,7 +206,7 @@ let KDEffectTiles = {
 		priority: 7,
 		brightness: 2,
 		lightColor: 0x88ffff,
-		tags: ["ice", "cold"],
+		tags: ["ice", "chill"],
 	},
 	"WireSparks": {
 		name: "WireSparks",

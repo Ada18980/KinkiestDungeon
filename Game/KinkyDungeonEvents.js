@@ -220,6 +220,10 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		"NoYoke": (e, item, data) => {
+			if (item == data.item && KinkyDungeonPlayerTags.get("Yoked"))
+				KinkyDungeonRemoveRestraintSpecific(item, true, true);
+		},
 		"EngageCurse": (e, item, data) => {
 			if (item == data.item)
 				KinkyDungeonSendEvent("EngageCurse", {});
@@ -6380,7 +6384,8 @@ let KDEventMapEnemy = {
 					KDTripleBuffKill("ShadowEngulf", KinkyDungeonPlayerEntity, 9, (tt) => {
 						if (KDGameData.RoomType != "DemonTransition") {
 							AIData.defeat = true;
-							KDCustomDefeat = KDEnterDemonTransition;
+							KDCustomDefeat = "DemonTransition";
+							KDCustomDefeatEnemy = enemy;
 						} else
 							KinkyDungeonPassOut();
 					}, "Blindness",
@@ -6521,7 +6526,7 @@ let KDEventMapEnemy = {
 			}
 		},
 		"ExplosiveBarrel": (e, enemy, data) => {
-			if (data.dmg > 0 && ['fire', 'holy', 'electric'].includes(data.type) && enemy == data.enemy) {
+			if (data.dmg > 0 && ['fire', 'holy', 'electric', 'arcane'].includes(data.type) && enemy == data.enemy) {
 				if (enemy.hp <= 0.51 || data.dmg >= e.power || !e.chance || KDRandom() < e.chance) { // Sufficient damage blows it up without a roll
 					if (!KDEnemyHasFlag(enemy, "exploded")) {
 						enemy.hp = 0;

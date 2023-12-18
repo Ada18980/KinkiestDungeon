@@ -197,7 +197,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 			// Next we revisit all the player's restraints
 			if (!NoRestraints) {
 				for (let inv of KinkyDungeonAllRestraint()) {
-					if (!KDRestraint(inv)) continue; // Skip invalid restraints!!!
+					if (!KDRestraint(inv) || (KDRestraint(inv).armor && !KDToggles.DrawArmor)) continue; // Skip invalid restraints!!!
 					let renderTypes = KDRestraint(inv).shrine;
 					if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
 						KDApplyItem(inv, KinkyDungeonPlayerTags);
@@ -266,11 +266,12 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 				if (clothes.Group == "Shoes" || (
 					StandalonePatched && ModelDefs[clothes.Item]?.Categories?.includes("Shoes")
 				)) {
-					if (KinkyDungeonGetRestraintItem("ItemBoots")) clothes.Lost = true;
+					let inv = KinkyDungeonGetRestraintItem("ItemBoots");
+					if (inv && (!KDRestraint(inv).armor || KDToggles.DrawArmor)) clothes.Lost = true;
 				}
 				if (!NoRestraints) {
 					for (let inv of KinkyDungeonAllRestraint()) {
-						if (KDRestraint(inv)?.remove) {
+						if (KDRestraint(inv)?.remove && (!KDRestraint(inv).armor || KDToggles.DrawArmor)) {
 							for (let remove of KDRestraint(inv).remove) {
 								if (remove == clothes.Group) clothes.Lost = true;
 								if (StandalonePatched && ModelDefs[clothes.Item]?.Categories?.includes(remove)) clothes.Lost = true;
