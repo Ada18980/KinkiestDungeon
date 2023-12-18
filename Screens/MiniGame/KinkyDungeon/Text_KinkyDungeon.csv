@@ -16025,7 +16025,7 @@ KinkyDungeonBuffQuickness5,"Time has come to a halt..."
 KDQuickness2_Yes,"Time slows down by 2x!"
 KDQuickness2_Floater,"Double Accel!"
 KDQuickness3_Yes,"Time slows down by 3x!"
-KDQuickness3_Floater,"Triple  Accel!"
+KDQuickness3_Floater,"Triple Accel!"
 KDQuickness4_Yes,"Time slows down by 4x!"
 KDQuickness4_Floater,"Quadro Accel!"
 KDQuickness5_Yes,"Time has ceased to pass."
@@ -16082,7 +16082,6 @@ KDTeleportNearby,"The teleportation partially succeeds due to an obstruction, pl
 KDTeleportFail,"The teleportation fizzles due to obstruction."
 KDConfirm,Confirm
 KDName,What is your name?
-
 
 KinkyDungeonSpellEnrage,"Enrage"
 KinkyDungeonSpellDescriptionEnrage,"Scream loudly, causing nearby enemies to investigate and increasing Battle Rhythm by 10. Has a 100 turn cooldown."
