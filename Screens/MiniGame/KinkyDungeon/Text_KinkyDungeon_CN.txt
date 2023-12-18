@@ -12963,7 +12963,7 @@ Do you choose to accept its terms?
 你选择接受契约吗？
 
 Are you sure? This choice is final.
-你确定吗？ 这个选择是最终的。
+你确定吗？选择后无法反悔。
 
 Yes, I will accept.
 是的，我接受。
