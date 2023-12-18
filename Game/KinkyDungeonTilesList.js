@@ -737,7 +737,7 @@ let KDEffectTileFunctions = {
 					};
 					KinkyDungeonSendEvent("tickLatexPlayer", latexData);
 					if (!latexData.cancelDamage)
-						KinkyDungeonDealDamage({damage: latexData.dmg*KDGetEnvironmentalDmg(), type: latexData.type});
+						KinkyDungeonPlayerEffect(entity, "glue", {name: "LiquidMetalPatch", power: 2, count: 1, damage: "glue"}, undefined, undefined, undefined, undefined);
 				} else if (KDCanBind(entity)) {
 					let latexData = {
 						cancelDamage: entity.boundLevel > entity.Enemy.maxhp + KDLatexBind,
@@ -842,6 +842,11 @@ let KDEffectTileCreateFunctionsCreator = {
 			existingTile.pauseSprite = existingTile.name + "Frozen";
 		} else if (existingTile.tags.includes("hot")) {
 			newTile.duration = 0;
+		} else if (existingTile.tags.includes("conductcold")) {
+			KDCreateEffectTile(existingTile.x + 1, existingTile.y, {
+				name: "Chill",
+				duration: 2,
+			}, 2);
 		}
 		return true;
 	},
@@ -921,6 +926,50 @@ let KDEffectTileCreateFunctionsCreator = {
 			if (!ut.electric && ut.conductive) {
 				KDCreateEffectTile(existingTile.x, existingTile.y - 1, {
 					name: "Sparks",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x, existingTile.y - 1, 0.5, dmg, undefined);
+			}
+		}
+		return true;
+	},
+	"Chill": (newTile, existingTile) => {
+		if (existingTile.tags.includes("conductcold")) {
+			let rt = KDEffectTileTags(existingTile.x + 1, existingTile.y);
+			let lt = KDEffectTileTags(existingTile.x - 1, existingTile.y);
+			let ut = KDEffectTileTags(existingTile.x, existingTile.y - 1);
+			let dt = KDEffectTileTags(existingTile.x, existingTile.y + 1);
+			let dmg = {
+				type: "frost",
+				damage: 0.5,
+				time: 4,
+				bind: 0,
+				flags: ["EchoDamage"],
+			};
+			if (!rt.chill && rt.conductcold) {
+				KDCreateEffectTile(existingTile.x + 1, existingTile.y, {
+					name: "Chill",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x + 1, existingTile.y, 0.5, dmg, undefined);
+			}
+			if (!lt.chill && lt.conductcold) {
+				KDCreateEffectTile(existingTile.x - 1, existingTile.y, {
+					name: "Chill",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x - 1, existingTile.y, 0.5, dmg, undefined);
+			}
+			if (!dt.chill && dt.conductcold) {
+				KDCreateEffectTile(existingTile.x, existingTile.y + 1, {
+					name: "Chill",
+					duration: 2,
+				}, 2);
+				KDDealEnvironmentalDamage(existingTile.x, existingTile.y + 1, 0.5, dmg, undefined);
+			}
+			if (!ut.chill && ut.conductcold) {
+				KDCreateEffectTile(existingTile.x, existingTile.y - 1, {
+					name: "Chill",
 					duration: 2,
 				}, 2);
 				KDDealEnvironmentalDamage(existingTile.x, existingTile.y - 1, 0.5, dmg, undefined);

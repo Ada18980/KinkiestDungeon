@@ -1462,7 +1462,11 @@ function KinkyDungeonDrawGame() {
 							KinkyDungeonPlayerEntity.visual_mana = KDEaseValue(KDDrawDelta || 0, (KinkyDungeonPlayerEntity.visual_mana != undefined ? KinkyDungeonPlayerEntity.visual_mana : KinkyDungeonStatManaMax), KinkyDungeonStatMana, KDBarAdvanceRate, KDBarAdvanceRateMin * KinkyDungeonStatManaMax);
 						}
 						KinkyDungeonBar(canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offsetVis)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 12 - 13 * barInt,
-							KinkyDungeonGridSizeDisplay, 8, 100 * KinkyDungeonPlayerEntity.visual_mana / KinkyDungeonStatManaMax, (KDFlashMana > 0 || (KinkyDungeonTargetingSpell && KinkyDungeonStatMana < KinkyDungeonGetManaCost(KinkyDungeonTargetingSpell))) ?
+							KinkyDungeonGridSizeDisplay, 8, 100 * KinkyDungeonPlayerEntity.visual_mana / KinkyDungeonStatManaMax, (KDFlashMana > 0 || (KinkyDungeonTargetingSpell && KinkyDungeonStatMana < 
+								KinkyDungeonGetManaCost(
+									KinkyDungeonTargetingSpell, 
+									!KinkyDungeonTargetingSpell.active && KinkyDungeonTargetingSpell.passive,
+									!KinkyDungeonTargetingSpell.active && KinkyDungeonTargetingSpell.type == "passive"))) ?
 								(KDFlashMana % 500 > 250 ? "#ffffff" : "#888888") : "#8888ff", (KDFlashMana % 500 > 250 ? "#444444" : KDTextGray0));
 						barInt += 1;
 					}
@@ -3082,8 +3086,8 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 
 						if (KinkyDungeonTilesGet(RX + "," + RY).Label && KinkyDungeonTilesGet(RX + "," + RY).required)
 							DrawTextFitKD(KinkyDungeonTilesGet(RX + "," + RY).required[0], (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/1.5, KinkyDungeonGridSizeDisplay, "#aaaaaA");
-						if (KinkyDungeonTilesGet(RX + "," + RY).HighTraffic)
-							DrawTextFitKD("HiTraffic", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/3, KinkyDungeonGridSizeDisplay, "#55ff55");
+						if (KDMapData.Traffic[RY][RX])
+							DrawTextFitKD("traffic_" + KDMapData.Traffic[RY][RX], (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/3, KinkyDungeonGridSizeDisplay, "#55ff55");
 
 						if (KinkyDungeonTilesGet(RX + "," + RY).OffLimits)
 							DrawTextFitKD("OffLimits", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/3, KinkyDungeonGridSizeDisplay, "#ff5555");

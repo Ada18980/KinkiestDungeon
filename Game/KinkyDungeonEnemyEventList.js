@@ -372,7 +372,8 @@ let KDIntentEvents = {
 			KDResetIntent(enemy, AIData);
 			KDBreakTether(KinkyDungeonPlayerEntity);
 			AIData.defeat = true;
-			KDCustomDefeat = KDEnterDemonTransition;
+			KDCustomDefeat = "DemonTransition";
+			KDCustomDefeatEnemy = enemy;
 			return true;
 		},
 	},

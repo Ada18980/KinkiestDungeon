@@ -69,7 +69,7 @@ function KDDrawDialogue(delta) {
 		zIndex: 111,
 	});
 
-	if (KDGameData.CurrentDialog && !(KinkyDungeonSlowMoveTurns > 0)) {
+	if (KDGameData.CurrentDialog && !(KDGameData.SlowMoveTurns > 0)) {
 		KinkyDungeonDrawState = "Game";
 		// Get the current dialogue and traverse down the tree
 		let dialogue = KDGetDialogue();
@@ -309,7 +309,7 @@ let KinkyDungeonDialogueTimer = 0;
 function KDStartDialog(Dialogue, Speaker, Click, Personality, enemy) {
 	KinkyDungeonInterruptSleep();
 	KDDisableAutoWait();
-	KinkyDungeonDialogueTimer = CommonTime() + 700 + KinkyDungeonSlowMoveTurns * 200;
+	KinkyDungeonDialogueTimer = CommonTime() + 700 + KDGameData.SlowMoveTurns * 200;
 	KDOptionOffset = 0;
 	KinkyDungeonFastMovePath = [];
 	KinkyDungeonDrawState = "Game";
@@ -395,7 +395,7 @@ function KDDoDialogue(data) {
 function KDStartDialogInput(Dialogue, Speaker, Click, Personality, enemy) {
 	KinkyDungeonInterruptSleep();
 	KDDisableAutoWait();
-	KinkyDungeonDialogueTimer = CommonTime() + 700 + KinkyDungeonSlowMoveTurns * 200;
+	KinkyDungeonDialogueTimer = CommonTime() + 700 + KDGameData.SlowMoveTurns * 200;
 	KDOptionOffset = 0;
 	KinkyDungeonFastMovePath = [];
 	KinkyDungeonDrawState = "Game";
@@ -1092,7 +1092,7 @@ function KDPrisonerRescue(name, faction, enemytypes) {
 					}
 				}
 			}
-			KDGameData.KinkyDungeonGuardSpawnTimer = 50 + Math.floor(KDRandom() * 10);
+			KDGameData.GuardSpawnTimer = 50 + Math.floor(KDRandom() * 10);
 			return false;
 		},
 		options: {
@@ -1139,7 +1139,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 							KinkyDungeonSetFlag("Recruited", -1);
 							KDChangeFactionRelation("Player", faction, 0.4, true);
 							KDChangeFactionRelation("Player", faction, -0.2);
-							KinkyDungeonSlowMoveTurns = 3;
+							KDGameData.SlowMoveTurns = 3;
 							KinkyDungeonSleepTime = CommonTime() + 200;
 							KinkyDungeonSetFlag(name, -1, 1);
 							return false;
@@ -1197,7 +1197,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 							KinkyDungeonSetFlag("Recruited", -1);
 							KDChangeFactionRelation("Player", faction, 0.4, true);
 							KDChangeFactionRelation("Player", faction, -0.2);
-							KinkyDungeonSlowMoveTurns = 3;
+							KDGameData.SlowMoveTurns = 3;
 							KinkyDungeonSleepTime = CommonTime() + 200;
 							KinkyDungeonSetFlag(name, -1, 1);
 							return false;
@@ -1219,7 +1219,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 								if (!KinkyDungeonInventoryGet(outfitName)) KinkyDungeonInventoryAdd(outfit);
 								//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 								KinkyDungeonSetDress(outfitName, outfitName);
-								KinkyDungeonSlowMoveTurns = 3;
+								KDGameData.SlowMoveTurns = 3;
 								KinkyDungeonSleepTime = CommonTime() + 200;
 							} else {
 								KDIncreaseOfferFatigue(10);
@@ -1621,9 +1621,10 @@ function KDYesNoTemplate(setupFunction, yesFunction, noFunction, domFunction) {
  * @param {string[]} excludeFlags
  * @param {string[]} restraintTags
  * @param {string} Lock
+ * @param {number} WeightMult
  * @returns {KinkyDialogueTrigger}
  */
-function KDDialogueTriggerOffer(name, goddess, restraintTags, allowedPrisonStates, allowedPersonalities, requireTagsSingle, requireTagsSingle2, requireTags, excludeTags, requireFlags, excludeFlags, Lock = "Red") {
+function KDDialogueTriggerOffer(name, goddess, restraintTags, allowedPrisonStates, allowedPersonalities, requireTagsSingle, requireTagsSingle2, requireTags, excludeTags, requireFlags, excludeFlags, Lock = "Red", WeightMult = 1.0) {
 	let trigger = {
 		dialogue: name,
 		allowedPrisonStates: allowedPrisonStates,
@@ -1653,7 +1654,7 @@ function KDDialogueTriggerOffer(name, goddess, restraintTags, allowedPrisonState
 			if (excludeFlags && excludeFlags.some((element) => KinkyDungeonFlags.get(element))) {
 				return 0;
 			}
-			return 1 + 0.4 * Math.max(...goddess.map((element) => {return (Math.abs(KinkyDungeonGoddessRep[element])/100);}));
+			return WeightMult * (1 + 0.4 * Math.max(...goddess.map((element) => {return (Math.abs(KinkyDungeonGoddessRep[element])/100);})));
 		},
 	};
 	return trigger;

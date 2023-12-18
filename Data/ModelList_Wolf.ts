@@ -379,7 +379,7 @@ AddModel({
 });
 AddModel({
 	Name: "WolfSockRight",
-	Folder: "Wolf",
+	Folder: "WolfCatsuit",
 	Parent: "WolfSocks",
 	Layers: ToLayerMap([
 		{ Name: "LegRight", Layer: "StockingRight", Pri: -1,

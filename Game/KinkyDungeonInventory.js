@@ -835,7 +835,9 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 
 		if (item.item.type == Restraint || item.item.type == LooseRestraint) {
 			let restraint = KDRestraint(item.item);
-			DrawTextKD(TextGet("KinkyDungeonRestraintLevel").replace("RestraintLevel", "" + Math.max(1, restraint.displayPower != undefined ? restraint.displayPower : restraint.power)).replace("Rarity", TextGet("KinkyDungeonRarity" + Math.max(0, Math.min(Math.floor((restraint.displayPower != undefined ? restraint.displayPower : restraint.power)/3),10)))),
+			let pp = (restraint.displayPower != undefined ? restraint.displayPower : restraint.power);
+			pp /= 5; // inflection point between 8 (mythic) and 9 (angelic) should be around 47 power
+			DrawTextKD(TextGet("KinkyDungeonRestraintLevel").replace("RestraintLevel", "" + Math.max(1, restraint.displayPower != undefined ? restraint.displayPower : restraint.power)).replace("Rarity", TextGet("KinkyDungeonRarity" + Math.max(0, Math.min(Math.floor(pp),10)))),
 				xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 408, "#000000", KDTextTan, 22, undefined, 130);
 			DrawTextKD(
 			restraint.escapeChance ? (item.item.lock ? (TextGet("KinkyLocked") + " " + TextGet("Kinky" + item.item.lock + "LockType")) :
@@ -2414,7 +2416,7 @@ function KDGiveWeaponVariant(variant, prefix = "", forceName, suffix = "") {
  * @param {KDConsumableVariant} variant
  * @param {string} prefix
  */
-function KDGiveConsumableVariant(variant, prefix = "", forceName, suffix = "") {
+function KDGiveConsumableVariant(variant, prefix = "", forceName, suffix = "", Quantity = 1) {
 	//let origConsumable = KinkyDungeonFindConsumable(variant.template);
 	let events = [];//TODO//origConsumable.events ? JSON.parse(JSON.stringify(origConsumable.events)) : [];
 	let newname = forceName ? forceName : (prefix + variant.template + KinkyDungeonGetItemID());
@@ -2424,8 +2426,8 @@ function KDGiveConsumableVariant(variant, prefix = "", forceName, suffix = "") {
 		KinkyDungeonConsumableVariants[newname] = variant;
 	if (variant.events)
 		Object.assign(events, variant.events);
-	let q = 1;
-	if (KinkyDungeonInventoryGet(newname)) q = KinkyDungeonInventoryGet(newname).quantity + 1;
+	let q = Quantity;
+	if (KinkyDungeonInventoryGet(newname)) q = KinkyDungeonInventoryGet(newname).quantity + Quantity;
 	KinkyDungeonInventoryAdd({name: newname, id: KinkyDungeonGetItemID(), type: Consumable, events:events, quantity: q, showInQuickInv: true,});
 }
 /**

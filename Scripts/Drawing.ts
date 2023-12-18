@@ -191,8 +191,8 @@ function DrawProgressBar(x: number, y: number, w: number, h: number, value: numb
 		Top: y,
 		Width: w,
 		Height: h,
-		Color: "#ffffff",
-		LineWidth: 1,
+		Color: "#aaaaaa",
+		LineWidth: 2,
 		zIndex: 100.02,
 	});
 	FillRectKD(kdcanvas, kdpixisprites, `progbar2,${x}_${y}_${w}_${h}_${value}`, {

@@ -211,8 +211,9 @@ let KinkyDungeonStatsPresets = {
 	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -1},
 	"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1},
 
-	"Stranger": {startPriority: 1000, category: "Enemies", id: "Stranger", cost: 0, block: ["WrongNeighborhood"], tags: ["start"]},
-	"WrongNeighborhood": {startPriority: 1000, category: "Major", id: "WrongNeighborhood", cost: -1, block: ["Stranger"], tags: ["start"]},
+	"Stranger": {startPriority: 1000, category: "Enemies", id: "Stranger", cost: 0, block: ["Bandit", "WrongNeighborhood"], tags: ["start"]},
+	"Bandit": {startPriority: 1000, category: "Enemies", id: "Bandit", cost: 0, block: ["Stranger", "WrongNeighborhood"], tags: ["start"]},
+	"WrongNeighborhood": {startPriority: 1000, category: "Major", id: "WrongNeighborhood", cost: -1, block: ["Bandit", "Stranger"], tags: ["start"]},
 
 	"Strong": {category: "Restraints", id: 0, cost: 2, block: ["Weak"]},
 	"Weak": {category: "Restraints", id: 1, cost: -1, block: ["Strong"]},
@@ -241,7 +242,11 @@ let KinkyDungeonStatsPresets = {
 	"Wanted": {category: "Kinky", id: 11, cost: -1},
 	"QuickDraw": {category: "Combat", id: 55, cost: 1, block: ["Disorganized"]},
 	"Disorganized": {category: "Combat", id: 57, cost: -2, block: ["QuickDraw", "QuickScribe"]},
-	"Brawler": {category: "Combat", id: 20, cost: 1},
+	"Brawler": {category: "Combat", id: 20, cost: 1, block: ["UnarmedSuck"]},
+	"UnarmedSuck": {category: "Combat", id: "UnarmedSuck", cost: -1, block: ["Brawler"]},
+	"UnarmedGrope": {category: "Combat", id: "UnarmedGrope", cost: 0, tags: ["unarmedreplace"], blocktags: ["unarmedreplace"]},
+	"UnarmedPain": {category: "Combat", id: "UnarmedPain", cost: 0, tags: ["unarmedreplace"], blocktags: ["unarmedreplace"]},
+	"UnarmedTickle": {category: "Combat", id: "UnarmedTickle", cost: 0, tags: ["unarmedreplace"], blocktags: ["unarmedreplace"]},
 	"Clumsy": {category: "Combat", id: 21, cost: -1},
 	"Incantation":  {category: "Components", id: "Incantation", cost: -1, block: ["SmoothTalker"]},
 	"SmoothTalker":  {category: "Components", id: "SmoothTalker", cost: 2, block: ["Incantation"]},
@@ -561,14 +566,9 @@ let KDPerkStart = {
 		KinkyDungeonInventoryAddLoose("SturdyLeatherBeltsFeet");
 	},
 	StartLatex: () =>{
+		KDAddQuest("LatexDoll");
 		KinkyDungeonChangeRep("Latex", 10);
-		KinkyDungeonAddRestraintIfWeaker("LatexCatsuit", 5, true, "Red", false, undefined, undefined, "Jail", true);
-		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["latexRestraints", "latexStart", "latexCollar", "latexRestraintsForced"]}, 12, "grv", true, "Red");
-			if (r)
-				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, "Jail", true);
-		}
-		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("KiguMask"), 0, true, "Purple");
+		KDCustomDefeatUniforms.DollShoppe();
 	},
 	DollmakerVisor: () =>{
 		KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
@@ -577,106 +577,44 @@ let KDPerkStart = {
 		KinkyDungeonAddRestraintIfWeaker("DollmakerMask", 5, true, "Gold", false, undefined, undefined, undefined, true);
 	},
 	StartCyberDoll: () =>{
+		KDAddQuest("EscapedDoll");
 		KinkyDungeonChangeRep("Metal", 10);
-		KinkyDungeonAddRestraintIfWeaker("ControlHarness", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
-		KinkyDungeonAddRestraintIfWeaker("TrackingCollar", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
-		KinkyDungeonAddRestraintIfWeaker("TrackingModule", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
 
-
-		KinkyDungeonAddRestraintIfWeaker("CyberBelt", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
-		KinkyDungeonAddRestraintIfWeaker("CyberBra", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
-
-		KinkyDungeonAddRestraintIfWeaker("CyberHeels", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
-		//KinkyDungeonAddRestraintIfWeaker("CyberBallGag", 5, true, "Red", false, undefined, undefined, undefined, true);
-		KinkyDungeonAddRestraintIfWeaker("CyberPlugGag", 5, true, "Red", false, undefined, undefined, "Dollsmith", true);
-		KinkyDungeonAddRestraintIfWeaker("CyberMuzzle", 5, true, "Red", false, undefined, undefined, "Dollsmith", true);
-		//KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
-
-
-
-		KinkyDungeonAddRestraintIfWeaker("CyberArmCuffs", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
-		KinkyDungeonAddRestraintIfWeaker("CyberLegCuffs", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
-		KinkyDungeonAddRestraintIfWeaker("CyberAnkleCuffs", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
-
-		//KinkyDungeonAddRestraintIfWeaker("CyberDollJacket", 5, true, "Red", false, undefined, undefined, undefined, true);
-
-		KinkyDungeonSetDress("CyberDoll", "CyberDoll");
+		KDCustomDefeatUniforms.CyberDoll();
 	},
 	StartMaid: () =>{
+		KDAddQuest("MaidSweeper");
 		KDChangeFactionRelation("Player", "Maidforce", 0.2 - KDFactionRelation("Player", "Maidforce"), true);
-		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["maidRestraints", "maidVibeRestraints", "noMaidJacket", "handcuffer"]}, 12, "grv", true, "Purple");
-			if (r)
-				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, undefined, true);
-		}
-		let outfit = {name: "Maid", id: KinkyDungeonGetItemID(), type: Outfit};
-		if (!KinkyDungeonInventoryGet("Maid")) KinkyDungeonInventoryAdd(outfit);
-		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
-		KinkyDungeonSetDress("Maid", "Maid");
+		KDCustomDefeatUniforms.MaidSweeper();
 	},
 	StartWolfgirl: () =>{
 		KDChangeFactionRelation("Player", "Nevermere", 0.2 - KDFactionRelation("Player", "Nevermere"), true);
-		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: (i < (KinkyDungeonStatsChoice.has("NoWayOut") ? 3 : 1) ? ["wolfCuffs"] : ["wolfGear", "wolfRestraints"])}, 12, "grv", true, "Red");
-			if (r) {
-				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Red", undefined, undefined, undefined, undefined, true);
-				if (r.Link) {
-					let newRestraint = KinkyDungeonGetRestraintByName(r.Link);
-					KinkyDungeonAddRestraintIfWeaker(newRestraint, 0, true, "Red", undefined, undefined, undefined, undefined, true);
-				}
-			}
-		}
+		KDCustomDefeatUniforms.WolfgirlHunters();
 		KDAddQuest("WolfgirlHunters");
-		let outfit = {name: "Wolfgirl", id: KinkyDungeonGetItemID(), type: Outfit};
-		if (!KinkyDungeonInventoryGet("Wolfgirl")) KinkyDungeonInventoryAdd(outfit);
-		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
-		KinkyDungeonSetDress("Wolfgirl", "Wolfgirl");
 	},
 	StartObsidian: () =>{
 		KDChangeFactionRelation("Player", "Elemental", 0.2 - KDFactionRelation("Player", "Elemental"), true);
-		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["obsidianRestraints", "ornateChastity", "genericToys"]}, 12, "grv", true, "Red");
-			if (r) {
-				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", false, undefined, undefined, undefined, true);
-				let item = r;
-				for (let j = 0; j < 2; j++) {
-					if (item && item.Link) {
-						let newRestraint = KinkyDungeonGetRestraintByName(item.Link);
-						KinkyDungeonAddRestraintIfWeaker(newRestraint, 0, true, "Purple", undefined, undefined, undefined, undefined, true);
-						item = newRestraint;
-					}
-				}
-			}
-		}
-		let outfit = {name: "Obsidian", id: KinkyDungeonGetItemID(), type: Outfit};
-		if (!KinkyDungeonInventoryGet("Obsidian")) KinkyDungeonInventoryAdd(outfit);
-		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
-		KinkyDungeonSetDress("Obsidian", "Obsidian");
+		
+		KDAddQuest("ElementalSlave");
+		KDCustomDefeatUniforms.ElementalSlave();
+		
 	},
 	Hogtied: () =>{
-		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsHogtie", "ropeRestraintsWrist", "tapeRestraints", "genericToys"]}, 24, "grv", true, undefined);
-			if (r) {
-				KinkyDungeonAddRestraintIfWeaker(r, 8, true, undefined, false, undefined, undefined, undefined, true);
-				let item = r;
-				for (let j = 0; j < 2; j++) {
-					if (item && item.Link) {
-						let newRestraint = KinkyDungeonGetRestraintByName(item.Link);
-						KinkyDungeonAddRestraintIfWeaker(newRestraint, 8, true, undefined, undefined, undefined, undefined, undefined, true);
-						item = newRestraint;
-					}
-				}
-			}
-		}
-		KinkyDungeonAddRestraintIfWeaker("TrapMittens", 5, true, undefined, false, undefined, undefined, undefined, true);
-		KinkyDungeonAddRestraintIfWeaker("Stuffing", 5, true, undefined, false, undefined, undefined, undefined, true);
-		KinkyDungeonAddRestraintIfWeaker("HarnessPanelGag", 5, true, undefined, false, undefined, undefined, undefined, true);
-		KinkyDungeonAddRestraintIfWeaker("TrapBlindfold", 5, true, undefined, false, undefined, undefined, undefined, true);
+		KDAddQuest("Nawashi");
+		KDCustomDefeatUniforms.RopeDojo();
 
 		for (let w of kdStartWeapons) {
 			if (KinkyDungeonInventoryGet(w)) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet(w));
 		}
 	},
+	Bandit: () =>{
+		for (let key of Object.keys(KinkyDungeonFactionTag)) {
+			KDSetFactionRelation("Player", key, -0.55);
+		}
+		KDChangeFactionRelation("Player", "Bandit", 0.1 - KDFactionRelation("Player", "Bandit"), true);
+		KDChangeFactionRelation("Player", "Nevermere", 0.1 - KDFactionRelation("Player", "Nevermere"), true);
+	},
+	
 	Stranger: () => {
 		for (let key of Object.keys(KinkyDungeonFactionTag)) {
 			KDSetFactionRelation("Player", key, -1 + 0.45 * KDRandom() + 0.45 * KDRandom() + 0.45 * KDRandom());
@@ -1008,4 +946,72 @@ function KDGetRandomPerks(existing, debuff) {
 		}
 	}
 	return perks;
+}
+
+/**
+ * 
+ * @param {string[]} perks 
+ * @returns {string[]}
+ */
+function KDGetPerkShrineBondage(perks) {
+	let ret = [];
+	if (!KinkyDungeonStatsChoice.get("perkNoBondage")) {
+		let cost = 0;
+
+		for (let p of perks) {
+			if (KinkyDungeonStatsPresets[p]) {
+				cost += KDGetPerkCost(KinkyDungeonStatsPresets[p]);
+			}
+		}
+	
+		let chancePos = KinkyDungeonStatsChoice.get("perkBondage") ? 1.0 : 0.5;
+		let chanceNeg = KinkyDungeonStatsChoice.get("perkBondage") ? 1.0 : 0.25;
+		let prev = "";
+		let theme = "";
+		let randTheme = () => {
+			prev = theme;
+			return CommonRandomItemFromList(prev, [
+				"leatherRestraints",
+				"latexRestraints",
+				"mithrilRestraints",
+				"obsidianRestraints",
+				"cyberdollrestraints",
+				"controlHarness",
+				"dragonRestraints",
+				"expRestraints",
+				"dressRestraints",
+				"maidRestraints",
+			]);
+		};
+		theme = randTheme();
+	
+		let getRestraints = () => {
+			let restraints = []
+			for (let i = 0; i < 11; i++) {
+				if (restraints.length == 0) {
+					if (i > 0)
+						randTheme();
+					restraints = KDGetRestraintsEligible({tags: [theme, theme+"Heavy", theme+"Chastity"]}, KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+						true, "Gold");
+					restraints = restraints.filter((r) => {
+						return !ret.includes(r.restraint.name);
+					})
+				} else break;
+			}
+			return restraints;
+		};
+	
+		for (let i = 0; i < (Math.abs(cost) || 1); i++) {
+			if (cost > 0 && KDRandom() < chancePos) {
+				let rests = getRestraints();
+				if (rests) ret.push(rests[Math.floor(KDRandom() * rests.length)].restraint.name);
+			} else if (cost <= 0 && KDRandom() < chanceNeg) {
+				let rests = getRestraints();
+				if (rests) ret.push(rests[Math.floor(KDRandom() * rests.length)].restraint.name);
+			}
+		}
+	
+	}
+	
+	return ret;
 }

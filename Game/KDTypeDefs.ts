@@ -489,7 +489,7 @@ interface restraint extends KDRestraintProps {
 	 * key - Name of the ApplyVariant
 	 * value - weight modifiers
 	 */
-	ApplyVariants?: Record<string, {weightMod: number, playerTags?: Record<string, number>, playerTagsMult?: Record<string, number>, playerTagsMissing?: Record<string, number>, playerTagsMissingMult?: Record<string, number>, enemyTags: Record<string, number>, enemyTagsMult?: Record<string, number>}>,
+	ApplyVariants?: Record<string, {weightMod: number, weightMult: number, playerTags?: Record<string, number>, playerTagsMult?: Record<string, number>, playerTagsMissing?: Record<string, number>, playerTagsMissingMult?: Record<string, number>, enemyTags: Record<string, number>, enemyTagsMult?: Record<string, number>}>,
 }
 
 interface KDEscapeChanceList {
@@ -586,7 +586,7 @@ interface floorParams {
 	shortcuts: {Level: number, checkpoint: string, chance:number}[	],
 	mainpath: {Level: number, checkpoint: string, chance?: number}[],
 
-	traps: {Name: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, Weight: number, strict?: true, teleportTime?: number}[],
+	traps: {Name: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, Weight: number, strict?: true, teleportTime?: number, filterTag?: string, filterBackup?: string, arousalMode?: boolean}[],
 
 	min_width : number,
 	max_width : number,
@@ -1022,7 +1022,6 @@ interface enemy extends KDHasTags {
 	attackMinRange?: number,
 	/** Minimum range to try attacking */
 	specialMinRange?: number,
-
 	/** */
 	noKiteWhenHarmless?: boolean,
 	/** */
@@ -1855,6 +1854,8 @@ interface spell {
 	passive?: boolean;
 	/** An active spell but it has passive effects */
 	mixedPassive?: boolean;
+	/** Active spell for mana cost purposes, only used to override behavior of passive and toggle spells */
+	active?: boolean;
 	/** costOnToggle */
 	costOnToggle?: boolean;
 	/** Type of the spell */
@@ -2251,6 +2252,7 @@ interface KDMapDataType {
 	GroundItems: {x: number, y: number, name: string, amount?: number} [];
 
 	Grid: string;
+	Traffic: number[][];
 	GridWidth: number;
 	GridHeight: number;
 	FogGrid: any[];
@@ -2943,9 +2945,16 @@ enum ModifierEnum {
 
 interface KDEnchantmentType {
 	level: number,
-	filter: (item: string, allEnchant: string[]) => boolean,
-	weight: (item: string, allEnchant: string[]) => number,
-	events: (item: string, Loot: any, curse: string, primaryEnchantment: string, enchantments: string[]) => KinkyDungeonEvent[]
+	filter: (item: string, allEnchant: string[], data: KDHexEnchantWeightData) => boolean,
+	weight: (item: string, allEnchant: string[], data: KDHexEnchantWeightData) => number,
+	events: (item: string, Loot: any, curse: string, primaryEnchantment: string, enchantments: string[], data: KDHexEnchantEventsData) => KinkyDungeonEvent[]
+}
+
+interface KDHexEnchantEventsData {
+	variant: {events: KinkyDungeonEvent[], template: string},
+}
+interface KDHexEnchantWeightData {
+	item: string,
 }
 
 interface KDEnchantment {
@@ -3022,6 +3031,8 @@ interface KDFactionProps {
 	honor_specific: Record<string, number>,
 	/** Weight to have them show up in a given floor type and floor count (and in future floor X and floor Y) */
 	weight: (Floor: number, Checkpoint: string, tags: string[], X: number, Y: number) => number,
+	/** Custom defeat to use */
+	customDefeat?: string,
 }
 
 type KDTile = any;

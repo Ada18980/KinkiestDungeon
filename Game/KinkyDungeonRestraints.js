@@ -559,7 +559,7 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 				if (playerDist > KDRestraint(inv).tether && KDistEuclidean(xTo-inv.tx, yTo-inv.ty) > KDistEuclidean(Entity.x-inv.tx, Entity.y-inv.ty)) {
 					if (Msg) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTetherTooShort").replace("TETHER", TextGet("Restraint" + inv.name)), "#ff0000", 2, true);
 					if (KinkyDungeonCanStand()) {
-						KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, KDLeashPullKneelTime + KinkyDungeonSlowMoveTurns);
+						KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, KDLeashPullKneelTime + KDGameData.SlowMoveTurns);
 						KinkyDungeonChangeWill(-KDLeashPullCost, false);
 					}
 					//return true;
@@ -2777,10 +2777,12 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 
 			if (options?.ApplyVariants && restraint.ApplyVariants) {
 				for (let variant of Object.entries(restraint.ApplyVariants)) {
-					if (Level >= KDApplyVariants[variant[0]].minfloor && !(Level >= KDApplyVariants[variant[0]].maxfloor) && (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, securityEnemy, useAugmented, curse, augmentedInventory,
+					if (Level >= KDApplyVariants[variant[0]].minfloor && !(Level >= KDApplyVariants[variant[0]].maxfloor)
+						&& (!variant[1].enemyTags || Object.keys(variant[1].enemyTags).some((tag) => {return tags.get(tag) != undefined;}))
+						&& (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, securityEnemy, useAugmented, curse, augmentedInventory,
 						KDApplyVariants[variant[0]].powerBonus))) {
 
-						let w = r.w + (variant[1].weightMod || 0);
+						let w = r.w * (variant[1].weightMult || 1) + (variant[1].weightMod || 0);
 
 						if (variant[1].enemyTags)
 							for (let tag in variant[1].enemyTags)
@@ -3108,7 +3110,14 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 	//if (restraint.AssetGroup == "ItemNipplesPiercings" && !KinkyDungeonStatsChoice.get("arousalModePiercing")) return false;
 
 	function bypasses() {
-		return (Bypass || restraint.bypass || !KDGroupBlocked(restraint.Group, true) || KDEnemyPassesSecurity(restraint.Group, securityEnemy));
+		return (
+			(
+			!((KinkyDungeonPlayerTags.get("SupremeBra") && (restraint.Group == "ItemNipples" || restraint.Group == "ItemNipplesPiercings"))
+			|| (KinkyDungeonPlayerTags.get("SupremeBelt") && (restraint.Group == "ItemVulva" || restraint.Group == "ItemVulvaPiercings" || restraint.Group == "ItemButt"))) 
+			&& (Bypass || restraint.bypass || !KDGroupBlocked(restraint.Group, true))
+			)
+			|| KDEnemyPassesSecurity(restraint.Group, securityEnemy)
+			);
 	}
 
 	/*if (restraint.requireSingleTagToEquip) {
@@ -3299,18 +3308,19 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityE
  */
 function KDApplyVarToInvVar(restraint, variant) {
 	let events = [];
-	for (let e of variant.hexes) {
-		events.push(...JSON.parse(JSON.stringify(KDEventHexModular[e].events)));
-	}
-	for (let e of variant.enchants) {
-		events.push(...JSON.parse(JSON.stringify(KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events)));
-	}
-	return {
+	let restvar = {
 		template: restraint.name,
 		events: events,
 		curse: variant.curse,
 		noKeep: variant.noKeep,
 	};
+	for (let e of variant.hexes) {
+		events.push(...JSON.parse(JSON.stringify(KDEventHexModular[e].events({variant: restvar}))));
+	}
+	for (let e of variant.enchants) {
+		events.push(...JSON.parse(JSON.stringify(KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events(restraint.name, undefined, undefined, variant.enchants[0], variant.enchants.slice(1), {variant: variant}))));
+	}
+	return restvar;
 }
 
 

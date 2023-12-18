@@ -646,12 +646,12 @@ AddModel({
 	Group: "Mouth",
 	Categories: ["Accessories", "Latex"],
 	Layers: ToLayerMap([
-		{ Name: "NeckCorset", Layer: "Bodysuit", Pri: -40,
+		{ Name: "NeckCorset", Layer: "NeckCorset", Pri: -40,
 			Invariant: true,
 			HideWhenOverridden: true,
 			InheritColor: "Neck",
 		},
-		{ Name: "NeckCorsetRim", Layer: "Bodysuit", Pri: -39.9,
+		{ Name: "NeckCorsetRim", Layer: "NeckCorset", Pri: -39.9,
 			Invariant: true,
 			HideWhenOverridden: true,
 			NoOverride: true,
@@ -759,6 +759,8 @@ AddModel({
 		},
 	])
 });
+
+
 AddModel({
 	Name: "KittyMuzzle",
 	Folder: "GagLeather",
@@ -1309,7 +1311,7 @@ AddModel(GetModelWithExtraLayers("UltimateSciFiPlugGag2", "AdvancedSciFiPlugGag"
 AddModel({
 	Name: "SimpleSciFiMuzzle",
 	Folder: "GagMetal",
-	TopLevel: false,
+	TopLevel: true,
 	Parent: "SciFiBallGag",
 	Group: "Mouth",
 	Restraint: true,
@@ -1424,3 +1426,15 @@ AddModel(GetModelWithExtraLayers("AdvancedSciFiMuzzle2", "SimpleSciFiMuzzle", [
 	},
 ], "SimpleSciFiMuzzle", false));
 
+
+
+
+AddModel(GetModelFashionVersion("GagMetal", false));
+AddModel(GetModelFashionVersion("GagMetalRiveted", true));
+AddModel(GetModelFashionVersion("GagFabric", false));
+AddModel(GetModelFashionVersion("KittyMuzzle", true));
+
+AddModel(GetModelFashionVersion("SimpleSciFiMuzzle", false));
+AddModel(GetModelFashionVersion("AdvancedSciFiMuzzle2", true));
+AddModel(GetModelFashionVersion("AdvancedSciFiMuzzle", true));
+AddModel(GetModelFashionVersion("SimpleSciFiMuzzle2", true));

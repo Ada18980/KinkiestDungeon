@@ -84,7 +84,7 @@ const KinkyDungeonMapParams = {
 			"cavern": 0,
 		},
 
-		enemyTags: ["magical", "zombie", "leather", "tape", "ribbon"],
+		enemyTags: ["magical", "zombie", "leather", "tape", "ribbon", "explosiveBarrel"],
 
 		"setpieces": [
 			{Type: "Bedroom", Weight: 3},
@@ -111,8 +111,17 @@ const KinkyDungeonMapParams = {
 			{Name: "SpecificSpell", Spell: "TrapRopeWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapLeatherWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapLustCloud", Level: 0, Power: 3, Weight: 30},
-			{Name: "SpawnEnemies", Enemy: "SummonedSkeleton", strict: true, Level: 0, Power: 4, Weight: 10},
-			{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 1, Weight: 10},
+			{Name: "SpawnEnemies", Enemy: "SummonedZombie", strict: true, Level: 0, Power: 4, Weight: 30},
+
+			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "SummonedZombie"},
+			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "SummonedZombie"},
+			{Name: "SpawnEnemies", Enemy: "AnimBlindfold", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemHeadFull", filterBackup: "SummonedZombie"},
+			{Name: "SpawnEnemies", Enemy: "AnimYoke", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "SummonedZombie"},
+			{Name: "SpawnEnemies", Enemy: "AnimArmbinder", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "SummonedZombie"},
+			{Name: "SpawnEnemies", Enemy: "AnimHarness", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemTorsoFull", filterBackup: "SummonedZombie"},
+			{Name: "SpawnEnemies", Enemy: "AnimChastity", strict: true, Level: 0, Power: 1, Weight: 10, arousalMode: true, filterTag: "ItemPelvisFull", filterBackup: "SummonedZombie"},
+			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "SummonedZombie"},
+			//{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 1, Weight: 10},
 		],
 
 		factionList: ["Bandit", "Apprentice", "Bountyhunter", "Elemental", "Dragon", "Maidforce"],
@@ -212,6 +221,15 @@ const KinkyDungeonMapParams = {
 			{Name: "SpawnEnemies", Enemy: "SummonedSkeleton", strict: true, Level: 0, Power: 4, Weight: 10},
 			{Name: "SpawnEnemies", Enemy: "HeavySkeleton", extraTag: "Single", strict: true, Level: 0, Power: 2, Weight: 2},
 			{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 2, Weight: 10},
+
+			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "SummonedSkeleton"},
+			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "SummonedSkeleton"},
+			{Name: "SpawnEnemies", Enemy: "AnimBlindfold", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemHeadFull", filterBackup: "SummonedSkeleton"},
+			{Name: "SpawnEnemies", Enemy: "AnimYoke", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "SummonedSkeleton"},
+			{Name: "SpawnEnemies", Enemy: "AnimArmbinder", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "SummonedSkeleton"},
+			{Name: "SpawnEnemies", Enemy: "AnimHarness", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemTorsoFull", filterBackup: "SummonedSkeleton"},
+			{Name: "SpawnEnemies", Enemy: "AnimChastity", strict: true, Level: 0, Power: 2, Weight: 10, arousalMode: true, filterTag: "ItemPelvisFull", filterBackup: "SummonedSkeleton"},
+			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "SummonedSkeleton"},
 		],
 
 		"min_width" : 5,
@@ -221,7 +239,7 @@ const KinkyDungeonMapParams = {
 
 		factionList: ["AncientRobot", "Bandit", "Apprentice", "Bountyhunter", "Bast", "Dragon", "Maidforce", "Alchemist"],
 
-		enemyTags: ["skeleton", "metal", "rope", "leather"],
+		enemyTags: ["skeleton", "metal", "rope", "leather", "explosiveBarrel"],
 		"defeat_outfit": "Dungeon",
 		"shrines": [
 			{Type: "Latex", Weight: 3},
@@ -373,6 +391,15 @@ const KinkyDungeonMapParams = {
 			{Name: "SpecificSpell", Spell: "TrapLeatherWeak", Level: 0, Power: 3, Weight: 10},
 			{Name: "SpecificSpell", Spell: "TrapLustCloud", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 3, Weight: 10},
+
+			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "VinePlant"},
+			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "VinePlant"},
+			{Name: "SpawnEnemies", Enemy: "AnimBlindfold", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemHeadFull", filterBackup: "VinePlant"},
+			{Name: "SpawnEnemies", Enemy: "AnimYoke", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "VinePlant"},
+			{Name: "SpawnEnemies", Enemy: "AnimArmbinder", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "VinePlant"},
+			{Name: "SpawnEnemies", Enemy: "AnimHarness", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemTorsoFull", filterBackup: "VinePlant"},
+			{Name: "SpawnEnemies", Enemy: "AnimChastity", strict: true, Level: 0, Power: 2, Weight: 10, arousalMode: true, filterTag: "ItemPelvisFull", filterBackup: "VinePlant"},
+			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "VinePlant"},
 		],
 
 		"min_width" : 5,
@@ -382,7 +409,7 @@ const KinkyDungeonMapParams = {
 
 		factionList: ["AncientRobot", "Nevermere", "Bandit", "Bountyhunter", "Elf", "Bast", "Dragon", "Maidforce", "Alchemist"],
 
-		enemyTags: ["plant", "jungle", "slime", "earth"],
+		enemyTags: ["plant", "jungle", "slime", "earth", "explosiveBarrel"],
 		"defeat_outfit": "LatexPrisoner",
 		"shrines": [
 			{Type: "Latex", Weight: 5},
@@ -477,6 +504,15 @@ const KinkyDungeonMapParams = {
 			{Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpawnEnemies", Enemy: "GreaterSkeleton", strict: true, Level: 0, Power: 3, Weight: 10},
 			{Name: "SpawnEnemies", Enemy: "HeavySkeleton", strict: true, Level: 0, Power: 1, Weight: 10},
+
+			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "GreaterSkeleton"},
+			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "GreaterSkeleton"},
+			{Name: "SpawnEnemies", Enemy: "AnimBlindfold", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemHeadFull", filterBackup: "GreaterSkeleton"},
+			{Name: "SpawnEnemies", Enemy: "AnimYoke", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "GreaterSkeleton"},
+			{Name: "SpawnEnemies", Enemy: "AnimArmbinder", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "GreaterSkeleton"},
+			{Name: "SpawnEnemies", Enemy: "AnimHarness", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemTorsoFull", filterBackup: "GreaterSkeleton"},
+			{Name: "SpawnEnemies", Enemy: "AnimChastity", strict: true, Level: 0, Power: 2, Weight: 10, arousalMode: true, filterTag: "ItemPelvisFull", filterBackup: "GreaterSkeleton"},
+			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "GreaterSkeleton"},
 		],
 
 		"min_width" : 5,
@@ -584,6 +620,15 @@ const KinkyDungeonMapParams = {
 			{Name: "SpecificSpell", Spell: "TrapLustCloud", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpawnEnemies", Enemy: "SummonedSkeleton", strict: true, Level: 0, Power: 5, Weight: 10},
 			{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 3, Weight: 10},
+
+			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "MummyCursed"},
+			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "MummyCursed"},
+			{Name: "SpawnEnemies", Enemy: "AnimBlindfold", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemHeadFull", filterBackup: "MummyCursed"},
+			{Name: "SpawnEnemies", Enemy: "AnimYoke", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "MummyCursed"},
+			{Name: "SpawnEnemies", Enemy: "AnimArmbinder", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "MummyCursed"},
+			{Name: "SpawnEnemies", Enemy: "AnimHarness", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemTorsoFull", filterBackup: "MummyCursed"},
+			{Name: "SpawnEnemies", Enemy: "AnimChastity", strict: true, Level: 0, Power: 2, Weight: 10, arousalMode: true, filterTag: "ItemPelvisFull", filterBackup: "MummyCursed"},
+			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "MummyCursed"},
 		],
 
 		"min_width" : 5,
@@ -593,7 +638,7 @@ const KinkyDungeonMapParams = {
 
 		factionList: ["Bast", "Bandit", "AncientRobot", "Elemental", "Dragon"],
 
-		enemyTags: ["mummy", "ghost", "tape", "ribbon", "nature"],
+		enemyTags: ["mummy", "ghost"],
 		"defeat_outfit": "Bast",
 		"shrines": [
 			{Type: "Latex", Weight: 3},
@@ -674,6 +719,15 @@ const KinkyDungeonMapParams = {
 			{Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpawnEnemies", Enemy: "Dressmaker", strict: true, Level: 0, Power: 2, Weight: 10},
 			{Name: "SpawnEnemies", Enemy: "Librarian", strict: true, Level: 4, Power: 1, Weight: 5},
+
+			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "BookBondage"},
+			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "BookBondage"},
+			{Name: "SpawnEnemies", Enemy: "AnimBlindfold", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemHeadFull", filterBackup: "BookBondage"},
+			{Name: "SpawnEnemies", Enemy: "AnimYoke", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "BookBondage"},
+			{Name: "SpawnEnemies", Enemy: "AnimArmbinder", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "BookBondage"},
+			{Name: "SpawnEnemies", Enemy: "AnimHarness", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemTorsoFull", filterBackup: "BookBondage"},
+			{Name: "SpawnEnemies", Enemy: "AnimChastity", strict: true, Level: 0, Power: 2, Weight: 10, arousalMode: true, filterTag: "ItemPelvisFull", filterBackup: "BookBondage"},
+			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "BookBondage"},
 		],
 
 		"min_width" : 5,
@@ -773,6 +827,15 @@ const KinkyDungeonMapParams = {
 			{Name: "SpecificSpell", Spell: "TrapSlimeWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapCrystal", Level: 0, Power: 3, Weight: 50},
 			{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 3, Weight: 10},
+
+			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "Mushy"},
+			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Mushy"},
+			{Name: "SpawnEnemies", Enemy: "AnimBlindfold", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemHeadFull", filterBackup: "Mushy"},
+			{Name: "SpawnEnemies", Enemy: "AnimYoke", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Mushy"},
+			{Name: "SpawnEnemies", Enemy: "AnimArmbinder", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Mushy"},
+			{Name: "SpawnEnemies", Enemy: "AnimHarness", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemTorsoFull", filterBackup: "Mushy"},
+			{Name: "SpawnEnemies", Enemy: "AnimChastity", strict: true, Level: 0, Power: 2, Weight: 10, arousalMode: true, filterTag: "ItemPelvisFull", filterBackup: "Mushy"},
+			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Mushy"},
 		],
 
 		"min_width" : 4,
@@ -782,7 +845,7 @@ const KinkyDungeonMapParams = {
 
 		factionList: ["Nevermere", "Elf", "Bandit", "Apprentice", "Bountyhunter", "Elemental", "Dragon", "Maidforce", "Alchemist"],
 
-		enemyTags: ["mushroom", "slimeBonus", "crystalline", "earth", "slime", "shadow"],
+		enemyTags: ["mushroom", "slimeBonus", "crystalline", "earth", "slime", "shadow", "explosiveBarrel"],
 		"defeat_outfit": "Prisoner",
 		"shrines": [
 			{Type: "Latex", Weight: 3},
@@ -872,6 +935,15 @@ const KinkyDungeonMapParams = {
 			{Name: "SpawnEnemies", Enemy: "ShadowHand", strict: true, Level: 0, Power: 3, Weight: 10},
 			{Name: "SpawnEnemies", Enemy: "TickleTerror", strict: true, Level: 0, Power: 1, Weight: 10},
 			{Name: "SpawnEnemies", Enemy: "HugHorror", strict: true, Level: 0, Power: 1, Weight: 10},
+
+			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "Poltergeist"},
+			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Poltergeist"},
+			{Name: "SpawnEnemies", Enemy: "AnimBlindfold", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemHeadFull", filterBackup: "Poltergeist"},
+			{Name: "SpawnEnemies", Enemy: "AnimYoke", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Poltergeist"},
+			{Name: "SpawnEnemies", Enemy: "AnimArmbinder", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Poltergeist"},
+			{Name: "SpawnEnemies", Enemy: "AnimHarness", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemTorsoFull", filterBackup: "Poltergeist"},
+			{Name: "SpawnEnemies", Enemy: "AnimChastity", strict: true, Level: 0, Power: 2, Weight: 10, arousalMode: true, filterTag: "ItemPelvisFull", filterBackup: "Poltergeist"},
+			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Poltergeist"},
 		],
 
 		"min_width" : 5,
@@ -969,6 +1041,16 @@ const KinkyDungeonMapParams = {
 			{Name: "SpawnEnemies", strict: true, Enemy: "CaptureBot", Level: 0, Power: 2, Weight: 100},
 			{Name: "SpecificSpell", Spell: "TrapSlimeWeak", Level: 0, Power: 3, Weight: 10},
 			{Name: "SpecificSpell", Spell: "TrapLatex", Level: 0, Power: 3, Weight: 30},
+
+			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "OldDrone"},
+			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "OldDrone"},
+			{Name: "SpawnEnemies", Enemy: "AnimBlindfold", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemHeadFull", filterBackup: "OldDrone"},
+			{Name: "SpawnEnemies", Enemy: "AnimYoke", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "OldDrone"},
+			{Name: "SpawnEnemies", Enemy: "AnimArmbinder", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "OldDrone"},
+			{Name: "SpawnEnemies", Enemy: "AnimHarness", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemTorsoFull", filterBackup: "OldDrone"},
+			{Name: "SpawnEnemies", Enemy: "AnimChastity", strict: true, Level: 0, Power: 2, Weight: 10, arousalMode: true, filterTag: "ItemPelvisFull", filterBackup: "OldDrone"},
+			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "OldDrone"},
+
 		],
 
 		"min_width" : 6,
@@ -982,7 +1064,7 @@ const KinkyDungeonMapParams = {
 
 		factionList: ["Nevermere", "AncientRobot", "Bandit", "Dressmaker", "Bountyhunter", "Maidforce", "Alchemist"],
 
-		enemyTags: ["dollsmith", "dollrare", "oldrobot", "oldrobotturret", "tech", "metal", "electric", "fire"],
+		enemyTags: ["dollsmith", "dollrare", "oldrobot", "oldrobotturret", "tech", "metal", "electric", "fire", "explosiveBarrel"],
 		"defeat_outfit": "DollSuit",
 		"shrines": [
 			{Type: "Latex", Weight: 5},
@@ -1069,6 +1151,15 @@ const KinkyDungeonMapParams = {
 			{Name: "SpecificSpell", Spell: "TrapShadowLatex", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapObsidian", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapCrystal", Level: 0, Power: 3, Weight: 25},
+
+			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "Observer"},
+			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Observer"},
+			{Name: "SpawnEnemies", Enemy: "AnimBlindfold", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemHeadFull", filterBackup: "Observer"},
+			{Name: "SpawnEnemies", Enemy: "AnimYoke", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Observer"},
+			{Name: "SpawnEnemies", Enemy: "AnimArmbinder", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Observer"},
+			{Name: "SpawnEnemies", Enemy: "AnimHarness", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemTorsoFull", filterBackup: "Observer"},
+			{Name: "SpawnEnemies", Enemy: "AnimChastity", strict: true, Level: 0, Power: 2, Weight: 10, arousalMode: true, filterTag: "ItemPelvisFull", filterBackup: "Observer"},
+			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Observer"},
 		],
 
 		"min_width" : 5,

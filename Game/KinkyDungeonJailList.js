@@ -27,7 +27,6 @@ let KDJailEvents = {
 					Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"]);
 				}
 			}
-			//KinkyDungeonGetEnemyByName((KinkyDungeonGoddessRep.Prisoner < 0 ? "Guard" : "GuardHeavy"));
 			let guard = {summoned: true, Enemy: Enemy, id: KinkyDungeonGetEnemyID(),
 				x:xx, y:yy, gx: xx - 2, gy: yy, CurrentAction: "jailWander", keys: true, AI: KDGetAITypeOverride(Enemy, "guard") || "guard",
 				hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
@@ -43,13 +42,13 @@ let KDJailEvents = {
 			if (KinkyDungeonTilesGet((xx-1) + "," + yy) && KinkyDungeonTilesGet((xx-1) + "," + yy).Type == "Door") {
 				KinkyDungeonTilesGet((xx-1) + "," + yy).Lock = undefined;
 			}
-			KDGameData.KinkyDungeonJailGuard = guard.id;
+			KDGameData.JailGuard = guard.id;
 			if (KinkyDungeonEnemyAt(guard.x, guard.y)) KDKickEnemy(KinkyDungeonEnemyAt(guard.x, guard.y));
 			KDAddEntity(guard);
 			if (KinkyDungeonVisionGet(guard.x, guard.y))
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardAppear").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "white", 6);
-			KDGameData.KinkyDungeonGuardTimer = KDGameData.KinkyDungeonGuardTimerMax;
-			KDGameData.KinkyDungeonGuardSpawnTimer = KDGameData.KinkyDungeonGuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.KinkyDungeonGuardSpawnTimerMax - KDGameData.KinkyDungeonGuardSpawnTimerMin));
+			KDGameData.GuardTimer = KDGameData.GuardTimerMax;
+			KDGameData.GuardSpawnTimer = KDGameData.GuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
 		},
 	},
 	"spawnRescue": {
@@ -90,7 +89,6 @@ function KDCanSpawnShopkeeper(override) {
 	return (KinkyDungeonStatsChoice.get("easyMode") && (override || (KinkyDungeonFlags.get("JailIntro") && !KinkyDungeonFlags.get("JailRepeat"))) && !KinkyDungeonFlags.get("refusedShopkeeperRescue") && !KDIsPlayerTethered(KinkyDungeonPlayerEntity));
 }
 
-// if (KinkyDungeonGoddessRep.Prisoner) securityLevel = Math.max(0, KinkyDungeonGoddessRep.Prisoner + 50);
 
 let KDGuardActions = {
 	"jailWander": {
@@ -123,7 +121,7 @@ let KDGuardActions = {
 		},
 		assign: (guard, xx, yy) => {
 			KinkyDungeonInterruptSleep();
-			if (KinkyDungeonGoddessRep.Prisoner >= KDSecurityLevelHiSec && KDGameData.RoomType != "Jail" && (!(KDMapData.JailFaction?.length > 0) || KDFactionRelation("Player", KDMapData.JailFaction[0]) < 0.4)) {
+			if (KDGetEffSecurityLevel() >= KDSecurityLevelHiSec && KDGameData.RoomType != "Jail" && (!(KDMapData.JailFaction?.length > 0) || KDFactionRelation("Player", KDMapData.JailFaction[0]) < 0.4)) {
 				KDStartDialog("JailerHiSec", guard.Enemy.name, true, "", guard);
 			} else {
 				KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonRemindJailRelease" + KinkyDungeonCheckRelease()).replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#ffff00", 4, 8);
@@ -163,7 +161,7 @@ let KDGuardActions = {
 			} else {
 				let touchesPlayer = KinkyDungeonCheckLOS(KinkyDungeonJailGuard(), KinkyDungeonPlayerEntity, KDistChebyshev(guard.x - KinkyDungeonPlayerEntity.x, guard.y - KinkyDungeonPlayerEntity.y), 1.5, false, false);
 				if (touchesPlayer) {
-					KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer - 5, 0);
+					KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer - 5, 0);
 					let dmg = KinkyDungeonDealDamage({damage: guard.Enemy.power * 1, type: guard.Enemy.dmgType}, undefined, undefined, true);
 					if (dmg && dmg.string)
 						KinkyDungeonSendTextMessage(5, TextGet("Attack" + guard.Enemy.name).replace("DamageTaken", dmg.string), "yellow", 3);
@@ -248,7 +246,7 @@ let KDGuardActions = {
 			let playerDist = Math.sqrt((guard.x - KinkyDungeonPlayerEntity.x)*(guard.x - KinkyDungeonPlayerEntity.x) + (guard.y - KinkyDungeonPlayerEntity.y)*(guard.y - KinkyDungeonPlayerEntity.y));
 			let touchesPlayer = KinkyDungeonCheckLOS(guard, KinkyDungeonPlayerEntity, playerDist, 1.5, false, false);
 			if (touchesPlayer) {
-				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 2);
+				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 2);
 				let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup);
 				if (KDGameData.GuardApplyTime > applyTime) {
 					if (oldRestraintItem && KDRestraint(oldRestraintItem) && !KDRestraint(oldRestraintItem).noJailRemove) {
@@ -277,7 +275,7 @@ let KDGuardActions = {
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
 			} else {
-				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 2);
+				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 2);
 				KDGameData.GuardApplyTime = 0;
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
@@ -296,7 +294,7 @@ let KDGuardActions = {
 			let playerDist = Math.sqrt((guard.x - KinkyDungeonPlayerEntity.x)*(guard.x - KinkyDungeonPlayerEntity.x) + (guard.y - KinkyDungeonPlayerEntity.y)*(guard.y - KinkyDungeonPlayerEntity.y));
 			let touchesPlayer = KinkyDungeonCheckLOS(guard, KinkyDungeonPlayerEntity, playerDist, 1.5, false, false);
 			if (touchesPlayer) {
-				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 7);
+				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 7);
 				let jrest = KinkyDungeonGetJailRestraintForGroup(guard.CurrentRestraintSwapGroup);
 				let newRestraint = jrest.restraint;
 				if (KDGameData.GuardApplyTime > applyTime) {
@@ -329,7 +327,7 @@ let KDGuardActions = {
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
 			} else {
-				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 7);
+				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 7);
 				KDGameData.GuardApplyTime = 0;
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
@@ -349,7 +347,7 @@ let KDGuardActions = {
 			let touchesPlayer = KinkyDungeonCheckLOS(guard, KinkyDungeonPlayerEntity, playerDist, 1.5, false, false);
 			if (touchesPlayer) {
 
-				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 2);
+				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 2);
 				let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup);
 				if (KDGameData.GuardApplyTime > applyTime) {
 					if (oldRestraintItem && !oldRestraintItem.lock && KinkyDungeonIsLockable(KDRestraint(oldRestraintItem))) {
@@ -379,7 +377,7 @@ let KDGuardActions = {
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
 			} else {
-				KDGameData.KinkyDungeonGuardTimer = Math.max(KDGameData.KinkyDungeonGuardTimer, 2);
+				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 2);
 				KDGameData.GuardApplyTime = 0;
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
@@ -460,12 +458,12 @@ let KDJailOutfits = {
 		restraints: [
 			{Name: "Stuffing", Level: 20},
 			{Name: "TrapGag", Level: 20},
-			{Name: "HighsecBallGag", Level: 45, Variant: "AntiMagic", Condition: "Mage"},
-			{Name: "HighsecBallGag", Level: 35},
+			{Name: "HighsecBallGag", Level: 50, Variant: "AntiMagic", Condition: "Mage"},
+			{Name: "HighsecBallGag", Level: 40},
 			{Name: "HighsecMuzzle", Level: 70},
-			{Name: "FeetShackles", Level: 5},
+			{Name: "FeetShackles", Level: 25},
 			{Name: "HighsecShackles", Level: 40},
-			{Name: "LegShackles", Level: 15},
+			{Name: "LegShackles", Level: 35},
 			{Name: "HighsecLegbinder", Level: 35},
 			{Name: "WristShackles", Level: 0},
 			{Name: "TrapArmbinder", Level: 40},
@@ -478,7 +476,8 @@ let KDJailOutfits = {
 			{Name: "TrapPlug3", Level: 60},
 			{Name: "TrapPlug4", Level: 75},
 			{Name: "TrapPlug5", Level: 90},
-			{Name: "TrapBlindfold", Level: 90},
+			{Name: "TrapBlindfold", Level: 35},
+			{Name: "HighsecLegbinder", Level: 95},
 			{Name: "TrapBoots", Level: 60},
 		],
 	},
@@ -618,15 +617,16 @@ let KDJailOutfits = {
 		parole: true,
 		restraints: [
 			{Name: "LeatherArmCuffs", Level: 5},
-			{Name: "SturdyLeatherBeltsArms", Level: 30},
+			{Name: "SturdyLeatherBeltsArms", Level: 40},
 			{Name: "SturdyLeatherBeltsLegs", Level: 80},
-			{Name: "SturdyLeatherBeltsFeet", Level: 60},
+			{Name: "SturdyLeatherBeltsFeet", Level: 70},
 			{Name: "TrapArmbinder", Level: 50},
-			{Name: "TrapMittens", Level: 0},
+			{Name: "TrapLegbinder", Level: 60},
+			{Name: "TrapMittens", Level: 20},
 			{Name: "PanelGag", Level: 35, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "TrapGag", Level: 10},
-			{Name: "PanelGag", Level: 20},
-			{Name: "TrapHarness", Level: 40},
+			{Name: "PanelGag", Level: 30},
+			{Name: "TrapHarness", Level: 45},
 		],
 	},
 	"dressRestraints": {

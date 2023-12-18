@@ -181,7 +181,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 			if (altRoom?.alwaysRegen || (altRoom && !altRoom?.makeMain)) {
 				// Clear all enemies and remove them so that we pick up allies
 				for (let en of [...KDMapData.Entities]) {
-					if (!KDIsInParty(en))
+					if (!KDIsInParty(en) && !KDCanBringAlly(en))
 						KDRemoveEntity(en, false, true, true);
 				}
 			}
@@ -709,7 +709,7 @@ function KDSlip(dir) {
 	}
 	if (maxReached) {
 		KinkyDungeonSendActionMessage(10, TextGet("KDSlipIce"), "yellow", maxReached + 1);
-		KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, 1);
+		KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, 1);
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "Slipping", type: "none", power: 1.0, duration: 1,});
 		return true;
 	}

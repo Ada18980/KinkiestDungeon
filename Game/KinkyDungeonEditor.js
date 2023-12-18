@@ -1143,6 +1143,7 @@ function KDTE_Create(w, h, chkpoint = 'grv') {
 		}
 		KDMapData.Grid = KDMapData.Grid + "\n";
 	}
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 	KDMapData.Tiles = {};
 	KDMapData.EffectTiles = {};
 	KDMapData.TilesSkin = {};
@@ -1190,6 +1191,7 @@ function KDTE_LoadTile(name, loadedTile) {
 	if (nt.weight != undefined)
 		ElementValue("MapTileWeight", "" + nt.weight);
 	KDMapData.Grid = nt.grid;
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 	KinkyDungeonPOI = [];
 	for (let p of nt.POI) {
 		KinkyDungeonPOI.push(Object.assign({}, p));

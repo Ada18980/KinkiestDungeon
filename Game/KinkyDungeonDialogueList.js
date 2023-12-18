@@ -258,7 +258,7 @@ let KDDialogue = {
 	"PrisonRepeat": {
 		response: "Default",
 		clickFunction: (gagged) => {
-			let GoldAmount = Math.round(KDGetEffLevel() * 100 * (1 + 0.02 * (KinkyDungeonGoddessRep.Prisoner + 50)));
+			let GoldAmount = Math.round(KDGetEffLevel() * 100 * (1 + 0.02 * (KDGetEffSecurityLevel() + 50)));
 			KDGameData.CurrentDialogMsgData = {
 				"BRIBECOST": "" + GoldAmount,
 			};
@@ -313,14 +313,14 @@ let KDDialogue = {
 			},
 			"Bribe": {playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
-					let GoldAmount = Math.round(KDGetEffLevel() * 100 * (1 + 0.02 * (KinkyDungeonGoddessRep.Prisoner + 50)));
-					return KinkyDungeonGoddessRep.Prisoner >= -40 && KinkyDungeonGold >= GoldAmount;
+					let GoldAmount = Math.round(KDGetEffLevel() * 100 * (1 + 0.02 * (KDGetEffSecurityLevel() + 50)));
+					return KDGetEffSecurityLevel() >= -40 && KinkyDungeonGold >= GoldAmount;
 				},
 				options: {
 					"Accept": {playertext: "Default", response: "Default",
 						clickFunction: (gagged, player) => {
-							let GoldAmount = Math.round(KDGetEffLevel() * 100 * (1 + 0.02 * (KinkyDungeonGoddessRep.Prisoner + 50)));
-							if (KinkyDungeonGoddessRep.Prisoner >= 49.5) {
+							let GoldAmount = Math.round(KDGetEffLevel() * 100 * (1 + 0.02 * (KDGetEffSecurityLevel() + 50)));
+							if (KDGetEffSecurityLevel() >= 49.5) {
 								KDGameData.CurrentDialogMsg = "PrisonRepeatBribeFail";
 								return false;
 							}
@@ -346,6 +346,7 @@ let KDDialogue = {
 	"OfferVine": KDYesNoBasic("OfferVine", ["Will"], ["Ghost"], ["vineRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15], 2, 3),
 	"OfferObsidian": KDYesNoBasic("OfferObsidian", ["Elements"], ["Ghost"], ["obsidianRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15], 1, 2),
 	"OfferMaidRestraint": KDYesNoBasic("OfferMaidRestraint", ["Illusion"], ["Ghost"], ["maidRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15], 1, 2),
+	"OfferDusterGag": KDYesNoBasic("OfferDusterGag", ["Illusion"], ["Ghost"], ["dustergag"], [55, 0, 75, 0], [-25, 0, 40, 15], 1, 1),
 	"OfferDragon": KDYesNoBasic("OfferDragon", ["Leather"], ["Ghost"], ["dragonRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15], 1, 2),
 	"OfferComfy": KDYesNoBasic("OfferComfy", ["Conjure"], ["Ghost"], ["comfyRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15]),
 	"OfferShackles": KDYesNoBasic("OfferShackles", ["Metal"], ["Ghost"], ["shackleRestraints", "steelCuffs"], [55, 0, 75, 0], [-25, 0, 40, 15], 1, 3),
@@ -1437,7 +1438,7 @@ let KDDialogue = {
 					KDGameData.CurrentDialogMsgSpeaker = e.Enemy.name;
 					KinkyDungeonSetEnemyFlag(e, "RescuingPlayer", -1);
 
-					KDGameData.KinkyDungeonGuardSpawnTimer = 100;
+					KDGameData.GuardSpawnTimer = 100;
 					return false;
 				},
 				options: {
@@ -1639,14 +1640,14 @@ let KDDialogue = {
 										let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 											false, 0, 50, []));
 										let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
-										if (curs) {
-											events.push(...KDEventHexModular[curs].events);
-										}
 										/** @type {KDRestraintVariant} */
 										let variant = {
 											template: armor,
 											events: events,
 										};
+										if (curs) {
+											events.push(...KDEventHexModular[curs].events({variant: variant}));
+										}
 										KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 											KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
 
@@ -1690,14 +1691,14 @@ let KDDialogue = {
 									let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 										false, 0, 50, []));
 									let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
-									if (curs) {
-										events.push(...KDEventHexModular[curs].events);
-									}
 									/** @type {KDRestraintVariant} */
 									let variant = {
 										template: armor,
 										events: events,
 									};
+									if (curs) {
+										events.push(...KDEventHexModular[curs].events({variant: variant}));
+									}
 									KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 										KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
 									return false;
@@ -1736,14 +1737,14 @@ let KDDialogue = {
 									let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 										false, 0, 50, []));
 									let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
-									if (curs) {
-										events.push(...KDEventHexModular[curs].events);
-									}
 									/** @type {KDRestraintVariant} */
 									let variant = {
 										template: armor,
 										events: events,
 									};
+									if (curs) {
+										events.push(...KDEventHexModular[curs].events({variant: variant}));
+									}
 									KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 										KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
 									return false;
@@ -1782,14 +1783,14 @@ let KDDialogue = {
 									let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 										false, 0, 50, []));
 									let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
-									if (curs) {
-										events.push(...KDEventHexModular[curs].events);
-									}
 									/** @type {KDRestraintVariant} */
 									let variant = {
 										template: armor,
 										events: events,
 									};
+									if (curs) {
+										events.push(...KDEventHexModular[curs].events({variant: variant}));
+									}
 									KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 										KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
 									return false;
@@ -1986,14 +1987,14 @@ let KDDialogue = {
 										let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 											false, 0, 50, []));
 										let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
-										if (curs) {
-											events.push(...KDEventHexModular[curs].events);
-										}
 										/** @type {KDRestraintVariant} */
 										let variant = {
 											template: armor,
 											events: events,
 										};
+										if (curs) {
+											events.push(...KDEventHexModular[curs].events({variant: variant}));
+										}
 										KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 											KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
 										KDGameData.CurrentDialogMsg = "ShopkeeperOfferHelpDebt_Armor_YesCursed";
@@ -2036,14 +2037,14 @@ let KDDialogue = {
 									let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 										false, 0, 50, []));
 									let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
-									if (curs) {
-										events.push(...KDEventHexModular[curs].events);
-									}
 									/** @type {KDRestraintVariant} */
 									let variant = {
 										template: armor,
 										events: events,
 									};
+									if (curs) {
+										events.push(...KDEventHexModular[curs].events({variant: variant}));
+									}
 									KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 										KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
 									return false;
@@ -2082,14 +2083,14 @@ let KDDialogue = {
 									let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 										false, 0, 50, []));
 									let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
-									if (curs) {
-										events.push(...KDEventHexModular[curs].events);
-									}
 									/** @type {KDRestraintVariant} */
 									let variant = {
 										template: armor,
 										events: events,
 									};
+									if (curs) {
+										events.push(...KDEventHexModular[curs].events({variant: variant}));
+									}
 									KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 										KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
 									return false;
@@ -2128,14 +2129,14 @@ let KDDialogue = {
 									let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 										false, 0, 50, []));
 									let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
-									if (curs) {
-										events.push(...KDEventHexModular[curs].events);
-									}
 									/** @type {KDRestraintVariant} */
 									let variant = {
 										template: armor,
 										events: events,
 									};
+									if (curs) {
+										events.push(...KDEventHexModular[curs].events({variant: variant}));
+									}
 									KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 										KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
 									return false;
@@ -3423,6 +3424,7 @@ let KDDialogue = {
 		clickFunction: (gagged, player) => {
 			KinkyDungeonSetFlag("BossUnlocked", -1);
 			KinkyDungeonSetFlag("SpawnMap", -1);
+			if (KinkyDungeonPlayerBuffs?.FuukaOrb) KinkyDungeonPlayerBuffs.FuukaOrb.duration = 0;
 			return false;
 		},
 		options: {

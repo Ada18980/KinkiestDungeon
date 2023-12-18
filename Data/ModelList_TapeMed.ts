@@ -33,7 +33,7 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["EncaseAnkles"],
 	Layers: ToLayerMap([
-		{ Name: "Ankles", Layer: "WrappingLegs", Pri: 40,
+		{ Name: "Ankles", Layer: "WrappingAnklesOver", Pri: 40,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Tape",
@@ -55,14 +55,17 @@ AddModel({
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Tape",
+			HideWhenOverridden: true,
 		},
 		{ Name: "RightLegs", Layer: "WrappingLegsOver", Pri: 45,
 			SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Tape",
+			HideWhenOverridden: true,
 		},
 		{ Name: "StrapCover", Layer: "OverCrotchStrapMid", Pri: 5,
+			TieToLayer: "Legs",
 			Poses: ToMap(["Closed", "Hogtie"]),
 			RequirePoses: ToMap(["CrotchStrap"]),
 			HidePoses: ToMap(["Skirt"]),
@@ -131,7 +134,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 			InheritColor: "Tape",
 		},
-		{ Name: "Chest", Layer: "BindChest", Pri: 40,
+		{ Name: "Chest", Layer: "WrapChest", Pri: 40,
 			Invariant: true,
 			InheritColor: "Tape",
 
@@ -186,7 +189,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 			InheritColor: "Tape",
 		},
-		{ Name: "ChestFull", Layer: "BindChest", Pri: 49,
+		{ Name: "ChestFull", Layer: "WrapChest", Pri: 49,
 			Invariant: true,
 			InheritColor: "Tape",
 
@@ -194,7 +197,7 @@ AddModel({
 			//HideOverrideLayerMulti: ["ChestBinding"],
 			//ForceSingleOverride: true,
 		},
-		{ Name: "ArmFullLeft", Layer: "BindChest", Pri: 45, // BindArmLeft
+		{ Name: "ArmFullLeft", Layer: "WrapChest", Pri: 45, // BindArmLeft
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "WrapForeArms", Crossed: "BindCrossArms"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -208,7 +211,7 @@ AddModel({
 			NoDisplace: true,
 			InheritColor: "Tape",
 		},
-		{ Name: "ArmFullRight", Layer: "BindChest", Pri: 45, // BindArmRight
+		{ Name: "ArmFullRight", Layer: "WrapChest", Pri: 45, // BindArmRight
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "WrapForeArms", Crossed: "BindCrossArms"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),

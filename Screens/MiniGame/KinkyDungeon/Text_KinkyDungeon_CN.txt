@@ -45,7 +45,8 @@ Version
 版本号
 Kinky Dungeon
 淫荡地牢
-
+By Ada18980
+由 Ada18980 制作
 You are an adventurer descending into an ancient underground city of magic.
 你是一个冒险家，前往了一个古老的地下魔法城市。
 Beneath its depths lies the Mistress' Staff, an artifact of untold power.
@@ -114,10 +115,20 @@ Clothes: Chastity over Panties
 衣物：贞操带显示在内裤之上
 Clothes: Chastity Bra over Bras
 衣物：贞操文胸显示在胸罩之上
-Wait Quickly
-快速等待
 Clothes: Simple Color Picker
 衣物：简易取色器
+UI: Center Player
+UI：玩家至中心
+UI: Draw Buffs on Side
+UI：在侧面绘制增益效果
+UI: Show Trajectory on Auto-Path
+UI：自动路径显示轨迹
+UI: Show Player Facing
+UI：显示玩家面向
+UI: Show more learnable spells
+UI：显示更多可学习的法术
+Wait Quickly
+快速等待
 
 Vulnerable
 虚弱
@@ -196,9 +207,9 @@ Select perks to start with.
 Having 10+ spare points will trigger Hard Mode, granting unique loot.
 可用积分大于10将进入困难模式，可获得独特的战利品
  (HARD MODE ENABLED)
-(硬核模式已启用)
+(困难模式已启用)
 Advanced start (choose perks)
-高级启动（选择额外选项）
+高级启动（选择额外技能）
 Confirm and start playing!
 确认并开始游戏！
 
@@ -207,19 +218,72 @@ Choose Class:
 Distraction Mode:
 性奋模式：
 Perks Mode:
-额外模式：
+技能模式：
 Standard
 标准
 Extra
 附加
 Less
 较少
+Much Less
+非常少
 No pain, no gain.
 一份耕耘，一份收获。
 Gain 10 extra perks, to give you a false sense of security.
-获得 10 项额外特权，给你一种虚假的安全感。
+获得 10 项额外技能点，给你一种虚假的安全感。
 Lose 10 perk points, just to keep things interesting.
-失去 10 个特权奖励点，只是为了让事情变得有趣。
+失去 10 个技能点，只是为了让事情保持有趣的感觉。
+Lose 25 perk points, making things very interesting.
+失去 25 个技能点，让事情变得更有趣点吧。
+
+Perk Progression Mode:
+技能进展模式：
+Disabled
+关闭
+Optional
+随意
+Mandatory
+强制
+Debuffs Only
+仅减益效果
+No perks between floors.
+楼层中没有技能。
+The standard mode. You may choose between one of three perk altars between floors.
+标准模式。你可以在楼层之间的三个额外神泉中选择一个。
+A twist on the standard mode. You must choose before progressing.
+标准模式的一个转折。在前进之前你必须做出选择。
+You must pick a debuff between floors before progressing.
+在前进之前，你必须在楼层之间选择一个减益效果。
+
+Perk Shrine Bondage:
+技能神泉束缚：
+Never
+永不
+Sometimes
+偶尔
+Always
+总是
+Perk shrines will not offer bondage as part of the deal.
+技能神泉不会提供束缚。
+Bondage will sometimes be offered alongside perks.
+有时，束缚会与技能一起提供。
+Perk shrines are always accompanied by bondage.
+技能神泉总会提供束缚。
+
+Perk Shrine Bondage Info:
+技能神泉束缚信息：
+Hidden
+隐藏
+Partial
+部分
+Full
+完全
+You do not know if a perk shrine will apply bondage.
+你不知道技能神泉是否会施加束缚。
+You know that a perk shrine will apply bondage, but not what kind.
+你知道技能神泉会施加束缚，但不知道是什么样的。
+You know the exact restraints a perk shrine will apply.
+你知道技能神泉会施加什么束缚具。
 
 Hard Mode:
 难度模式：
@@ -234,7 +298,7 @@ A supposedly reasonable difficulty curve.
 Play the game the way it was intended. Cruel and restrictive.
 按照预期的方式进行游戏。残酷且限制。
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
-玩游戏要自担风险。通过双击“困难模式”按钮解锁。
+以提高自身风险来游玩。通过双击“困难模式”按钮解锁。
 
 Point Cost: AMOUNT
 积分成本：AMOUNT
@@ -302,8 +366,8 @@ Your security level starts at 100 and cannot go below 70.
 
 Studious
 学识渊博
-You start the game with +3 additional spell points.
-开局额外获得3点法术点数。
+You start the game with +1 spell point. Your first two spell categories are free.
+开局以1点法术点开始游戏。你的前两个法术类别是免费的。
 Meditation
 冥想
 You slowly regenerate mana, up to a maximum of 50.
@@ -329,8 +393,27 @@ Distracted
 
 Brawler
 格斗大师
-Unarmed attacks deal +10 damage.
-徒手攻击额外造成10伤害。
+Unarmed attacks deal +10 damage and being slowed does not decrease unarmed damage.
+徒手攻击额外造成10伤害并且减速不会减少徒手伤害。
+
+Way of the Squish
+轻抚攻击
+Unarmed attacks deal grope damage against humans.
+徒手攻击会对人类造成抚摸伤害。
+Way of the Spank
+打屁股攻击
+Unarmed attacks deal pain damage against humans.
+徒手攻击会对人类造成痛苦伤害。
+Way of the Feather
+羽毛攻击
+Unarmed attacks deal tickle damage against humans.
+徒手攻击会对人类造成挠痒伤害。
+
+Harmless
+无害
+Unarmed attacks deal half damage and cost 2x as much stamina.
+徒手攻击仅造成一半伤害并消耗 2 倍的体力。
+
 Clumsy
 笨手笨脚
 0.7x base accuracy
@@ -397,11 +480,6 @@ Latex Doll
 Latex restraints are harder to escape from.
 乳胶拘束更难逃脱。
 
-Hogtied!
-捆绑
-Start the game trussed up in tight ropes.
-开始游戏时被绳索捆绑。
-
 Escapee
 流亡者
 Start with high Leather reputation, and all leather restraints are easier to escape from.
@@ -422,7 +500,7 @@ You can cast Conjuration spells without having the components, at twice the cost
 Magician
 幻术法师
 You can cast Illusion spells without having the components, at twice the cost. Start w/ Shadow Dagger.
-你可以以两倍魔力消耗为代价无视施法条件使用幻术。开局获得技能 阴影匕首。
+你可以以两倍魔力消耗为代价无视施法条件使用幻术。开局获得技能 暗影匕首。
 
 Narcoleptic
 嗜睡症
@@ -865,7 +943,7 @@ Suppress during combat
 战斗中压制
 
 Shadowy Grasp
-阴影之握
+暗影之握
 
 Magical Tornado
 魔法龙卷风
@@ -1072,6 +1150,8 @@ Aggressive Order
 All selected units switch to Aggressive mode
 所有选定的队伍切换到侵略模式
 
+Unique
+独特
 Unlock using magic
 使用魔法解锁
 
@@ -1184,7 +1264,7 @@ Second Wind
 Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage. (Upgrade available in spell tree)
 自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚。（可在技能树中升级）
 Second Wind Perk
-再生之气特权
+再生之气技能
 Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage.
 自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚。
 Triumphant Wind
@@ -1197,7 +1277,7 @@ Locked Up
 While wearing a chastity belt, your Desire lowers when you perform actions such as defeating enemies, opening chests, and breaking orbs. (Upgrades available in spell tree)
 佩戴贞操带时，当你击败敌人、打开宝箱和打破球体等动作时，你的欲望会降低。（可在技能树中升级）
 Locked Up Perk
-禁锢特权
+禁锢技能
 While wearing a chastity belt, your Desire lowers when you perform actions such as capturing, opening chests, and breaking orbs.
 佩戴贞操带时，当你击败敌人、打开宝箱和打破球体等动作时，你的欲望会降低。
 Controlled Urges
@@ -1211,14 +1291,14 @@ Locked Up is 300% effective. When Locked Up triggers, you gain -30% mana costs a
 Recalcitrant
 顽固的
 Relinquish the Locked Up perk. One time only. If you take the perk again, there is no going back.
-放弃禁锢特权。只有这一次。如果你再获得这项特权，就没有回头路了。
+放弃禁锢技能。只有这一次。如果你再获得这项技能，就没有回头路了。
 
 Novice Pet
 新手宠物
 You can now sprint while wearing a petsuit. (Upgrades available in spell tree)
 你现在可以穿着宠物服冲刺了。（可在技能树中升级）
 Novice Pet Perk
-新手宠物特权
+新手宠物技能
 You can now sprint while wearing a petsuit.
 你现在可以穿着宠物服冲刺了。
 Eager Pet
@@ -1236,7 +1316,7 @@ Devoted Pet
 Bad Pet
 坏宠物
 Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back.
-放弃新手宠物特权。只有这一次。如果你再获得这项特权，就没有回头路了。
+放弃新手宠物技能。只有这一次。如果你再获得这项技能，就没有回头路了。
 You are an expert in wearing a petsuit and your mobility is increased.
 你是穿着宠物服的专家，你的灵活度也得到了提高。
 You are too used to wearing petsuits! Sprinting is impaired.
@@ -1374,19 +1454,19 @@ Fighter
 Your training has given you access to the powers of the Fighter class.
 你的训练使你能够获得战士职业的能力。
 Start with 200 willpower and Iron Will, good at melee and blocking attacks.
-从200点意志力和钢铁意志开始，擅长近战和阻挡攻击。
+以 200 点意志力和钢铁意志技能开始游戏，擅长近战攻击和防砍。
 Rogue
 流氓
 Your training has given you access to the powers of the Rogue class.
 你的训练使你能够获得流氓职业的能力。
 Start with 200 stamina and Sneaky, good at stealth and evasive gameplay.
-从200点体力和潜行开始，擅长潜行和躲避游戏。
+以 200 点体力和潜行开始，擅长潜行和躲避。
 Wizard
 法师
 Your training has given you access to the powers of the Wizard class.
 你的训练使你能够获得法师职业的能力。
 Start with 200 mana and Magical Sight, good at casting spells.
-从200点法力和魔之眼开始，擅长施法。
+以 200 点法力和魔之眼技能开始游戏，擅长施法。
 Peasant
 农民
 You possess the agricultural mastery of the Peasant class.
@@ -1467,12 +1547,12 @@ Wolf Trainee
 受训狼女
 Start in a uniform of a naughty wolfgirl.
 开局时穿戴狼女的衣服。
-Latex Doll
-乳胶娃娃
-Start bound in latex restraints.
-开局时穿戴一整套乳胶拘束。
-Iron Slave
-钢铁奴隶
+Latex Toy
+乳胶玩具
+Start bound in lovely latex restraints.
+开局时穿戴一整套可爱的乳胶拘束。
+Elemental Slave
+精灵奴隶
 Start in a full set of magically locked obsidian cuffs.
 开局时穿戴被魔法锁住的全套黑曜石铐。
 
@@ -1503,8 +1583,8 @@ The pressure fans the flames on you, dealing bonus DAMAGEDEALT fire damage!
 压力助长了你身上的火焰，你额外造成 DAMAGEDEALT 点火焰伤害！
 The RestraintName comes off more easily in the presence of water!
 在水的存在下，RestraintName更容易解开！
-You slip on the ice!
-你在冰上滑倒了！
+You slip on the floor!
+你在地板上滑倒了！
 The air around you is ablaze! (-DamageDealt SP)
 你周围的空气在燃烧！ (-DamageDealt SP)
 The Goddess of Illusions shrouds you in shadows!
@@ -1715,12 +1795,12 @@ Slime Form: You gain bonuses and can slip through bars!
 粘液形态：你获得一些加成，并能穿过栅栏！
 Shroud: Visibility decreased, evasion increased.
 影雾：降低可见度，增加闪避。
-Camoflage: While holding still, you are very hard to see.
-伪装：静止不动时，你很难被其他生物察觉到。
+Camoflage: While next to a wall, you are very hard to see.
+伪装：靠近墙壁时，你很难被其他生物察觉到。
 Stone Skin: Increased armor.
 石肤：增加护甲。
 Darkblade: Increased damage.
-阴影之刃：增加伤害。
+暗影之刃：增加伤害。
 Runic Ward: Increased Magic Armor.
 符文盾：增加魔法护甲。
 Great Invisibility: It is impossible for enemies to see you.
@@ -1875,7 +1955,7 @@ No, I wish to press on
 See Perks
 查看技能
 This chest belongs to the FACTION
-这个箱子属于FACTION。
+这个箱子属于 FACTION。
 Devious Dungeon Challenge is enabled.
 Devious Dungeon Challenge 已启用。
 Waiting for game data...
@@ -1896,6 +1976,8 @@ You haven't found the keys for this floor yet.
 你还没有找到本层的钥匙。
 Missing key
 未找到钥匙
+You are protected from damage and can't be bound until the shield is broken!
+你将受到保护，免受伤害，并且在护盾被打破之前无法被束缚！
 Chance for a spell to fizzle: 
 施法失败几率：
 Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
@@ -1976,6 +2058,8 @@ Close a Door
 关门
 Sprint/Hop
 疾跑/跳跃
+Crouch
+蹲伏
 Ahh!
 啊！
 Mmm...
@@ -2126,7 +2210,7 @@ The shadow hands caress you and latch on! (+RestraintAdded)
 影之手爱抚你并紧紧地抓住你！（RestraintAdded）
 
 Shadow Chains
-阴影锁链
+暗影锁链
 You break through the chains!
 你破坏了锁链！
 Conjured Chains
@@ -2188,11 +2272,14 @@ Upcast Spells
 凝聚法力
 Cancel Upcast
 停止凝聚
-Swap Weapon
-切换武器
-Switch to Offhand
-切换到副手
-Switch from Offhand
+Swap Weapon 1
+切换武器 1
+Swap Weapon 2
+切换武器 2
+Swap Weapon 3
+切换武器 3
+Swap Weapon 4
+切换武器 4
 从副手切换
 Weapon Ability
 武器能力
@@ -2210,6 +2297,8 @@ Wait till Interrupted
 等待直到中断
 Make Noise
 制造噪音
+Crouch
+蹲伏
 Play with Self
 玩弄自己
 
@@ -2260,8 +2349,10 @@ Combat Training
 Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 0 WP you gain 1 slow resist.
 你的训练给予了许多奖励：|-每 10 个当前 WP，武器体力消耗减少 1%，最多 40%。|-缓慢效果消失得更快。|-当你的 WP 高于 0 时，你将获得 1 点缓慢抵抗力。
 
-This is your currently held offhand weapon. Click to switch to it.
-这是你当前持有的副手武器。点击即可切换到它。
+This is your current offhand weapon.
+这是你当前副手的武器。
+You are unable to wield this weapon offhand at the moment.
+你目前无法立即使用此武器。
 This is your previously held weapon. Click to switch to it.
 这是你之前持有的武器。点击即可切换到它。
 
@@ -2289,6 +2380,31 @@ There is no room to dash!
 没有冲刺的余地！
 You missed!
 你偏了！
+
+Tools of the Trade
+贸易工具
+Allows you to craft bombs, smoke bombs, flash bombs, and invisibility potions.
+允许你制作炸弹、烟雾弹、闪光弹和隐形药水。
+(You start having crafty thoughts...)|(Gunpowder can be obtained from chests or Alchemists)|(Ectoplasm can be obtained from ghosts)
+（你开始有了制造的想法...）|（火药可以从箱子或炼金术士那里获得）|（灵质可以从幽灵那里获得）
+(You craft a Smoke Bomb)
+（你制作了烟雾弹）
+(You craft 3 Flash Bombs)
+（你制作了 3 个闪光弹）
+(You craft a Bomb)
+（你制作了一个炸弹）
+(You craft an Invisibility Potion)
+（你制作了一瓶隐形药水）
+(You don't have the required material)
+（你没有所需的材料）
+(Use 1 Gunpowder to make a Smoke Bomb)
+(使用 1 个火药制作烟雾弹)
+(Use 1 Gunpowder and one Ancient Crystal to make 3 Smoke Bombs)
+(使用 1 个火药和 1 个远古水晶制作 3 个烟雾弹)
+(Use 2 Gunpowder to make a Bomb)
+(使用 2 个火药制作炸弹)
+(Use 3 Ectoplasm to make an Invisibility Potion)
+使用 3 个灵质制作隐形药水)
 
 Current Key Pressed
 当前按键
@@ -2541,11 +2657,13 @@ You find gold, plus a devious magical trap! (+RestraintType) (+XXX gold)
 Magical runes glow as a trap activates inside the chest!
 魔法符文在箱子里闪烁，一个陷阱被触发了！
 You find a special collar that lets you absorb energy from potions.
-你会发现一个特殊的项圈，可以让你从药水中直接吸收能量。
+你发现一个特殊的项圈，可以让你从药水中直接吸收能量。
 You find a pair of garish pink high heels with a slippery surface.
-你会发现一双华丽的粉红色高跟鞋，表面很光滑。
+你发现一双华丽的粉红色高跟鞋，表面很光滑。
+You find a special gag with a feather duster.
+你发现一个带有鸡毛掸子的特殊堵嘴器。
 You find a gas mask suitable for filtering gases.
-你找到了一个适合过滤气体的防毒面具。
+你发现一个适合过滤气体的防毒面具。
 The pearly chest contains a divine gift! (+ITEMGET)
 珍贵的宝箱里有一份神圣的礼物！ （+得到道具）
 Smoke fills the air around you!
@@ -2673,9 +2791,9 @@ A technologically advanced suit designed for long term wear. Despite being water
 No bonuses, no penalties.
 没有奖励，没有惩罚。
 Shadow Latex Dress
-阴影乳胶连衣裙
+暗影乳胶连衣裙
 A minidress made from shadow latex, a favorite of otherwordly patrons.
-由阴影乳胶制成的迷你裙，是其他顾客的最爱。
+由暗影乳胶制成的迷你裙，是其他顾客的最爱。
 No bonuses, no penalties.
 没有奖励，没有惩罚。
 Elven Dress
@@ -2771,7 +2889,7 @@ Magic Knife
 A magical blade, suitable against ghosts.
 一把适用于对抗幽灵的魔法之剑。
 Deals shadow damage. Can cut enchanted ropes. Offhand: Increase base crit of all magic damage by 20%
-造成阴影伤害，可以切断魔法绳索。副手：所有魔法伤害基础暴击增加20%
+造成暗影伤害，可以切断魔法绳索。副手：所有魔法伤害基础暴击增加20%
 Bola
 投石索
 A pair of weights attached to a rope. Can be thrown.
@@ -2852,12 +2970,42 @@ Reduces distraction to 0 and grants additional decay for 50 turns. Can be used w
 将性奋值减少至 0，并对性奋值给予额外衰减 50 回合，可以在佩戴口塞的情况下使用。
 Smoke Bomb
 烟雾弹
-You toss the smoke bomb and it explodes in your location!
-你抛出烟雾弹，它在你的位置爆炸！
-A type of pyrotechnic often employed by saboteurs. Can be used without hands.
-一种经常被破坏者使用的烟火。无需双手即可使用。
+You toss the smoke bomb and it starts emitting a deep haze!
+你抛出烟雾弹，它开始散发出浓浓的烟雾！
+You ready a smoke bomb...
+你准备好烟雾弹...
+A type of pyrotechnic often employed by saboteurs. Can be rolled and used without hands.
+一种经常被破坏者使用的烟火。无需用手即可卷起和使用。
 Creates a smoke screen lasting 8 turns. You are harder to see while inside the smoke.
 制造持续 8 回合的烟幕。在烟雾中时你更难看到。
+Flash Bomb
+闪光弹
+Flash Bomb x3
+3 枚闪光弹
+You toss the flash bomb and the fuse starts ticking...
+你抛出闪光弹，导火索开始滴答作响……
+You ready a flash bomb...
+你准备好闪光弹...
+A type of explosive used by agents. Blinds nearby targets without causing significant injury.
+一种经常被特工使用的爆炸物。致盲附近目标而不造成重大伤害。
+Blinds for 20 turns in a 3x3 area.
+在 3x3 区域内致盲 20 回合。
+
+Flashbang
+闪光震爆弹
+Flashbang x3
+3 枚闪光震爆弹
+You toss the flashbang and the fuse starts ticking...
+你抛出闪光震爆弹，保险丝开始滴答作响......
+You ready a flashbang...
+你准备好闪光震爆弹...
+A piece of rare special forces equipment. The secrets of its manufacture are strictly kept by the Alchemist's Guild.
+一件稀有的特种部队装备。其制造秘密由炼金术士公会严格保守。
+Blinds for 24 turns in a 3x3 area. Also Slows and Silences them for half the duration.
+在 3x3 区域内造成 24 回合的致盲。还会在一半的时间内减慢和沉默它们。
+Blinds for 24 turns in a 3x3 area. And also Slows and Silences them for half the duration.
+在 3x3 区域内造成 24 回合的致盲。并且还会在一半的时间内减慢和沉默它们。
+
 Invisibility Potion
 隐形药水
 You chug the concoction and see your body fading away.
@@ -3085,13 +3233,13 @@ Deals slash damage. Deals up to 50 bonus damage by waiting 10 turns between atta
 You pick up a katana.
 你捡起一把武士刀。
 Shadow's Edge
-阴影之刃
+暗影之刃
 For those who truly devote themselves to the cause.
 为那些真正献身于事业的人而用。
 Deals shadow damage. Damage is doubled against enemies that are in shadow.
-造成阴影伤害。对处于阴影中的敌人伤害翻倍。
+造成暗影伤害。对处于暗影中的敌人伤害翻倍。
 You pick up Shadow's Edge.
-你拾起了阴影之刃。
+你拾起了一把暗影之刃。
 Stormbreaker
 风暴之锤
 I have the power! Taking electric damage charges you (1 turn/10dmg).
@@ -3180,12 +3328,6 @@ Its powers extend beyond the traditional schools of magic.
 它的力量超越了传统的魔法。
 Deals charm damage. 20% chance to stun the target for 2 turns. Offhand: +5 charm damage on attack for 3 stamina.
 造成妩媚伤害，有 20% 的几率使目标眩晕 2 回合。副手：攻击时 +5 妩媚伤害，持续 3 点体力。
-Feather
-羽毛
-A feather taken from some large fluffy being. Offhand: +5 tickle damage on attack for 3 stamina.
-从一些毛茸茸的大动物上取下的羽毛。副手：攻击时 +5 挠痒伤害，持续 3 点体力。
-Deals tickle damage. Distracts enemies.
-造成挠痒伤害，使敌人性奋。
 Ice Cube
 冰块
 A magical cube of ice that never melts. Convenient!
@@ -3221,13 +3363,13 @@ Four Seasons
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
 激活后，下一次使用时 -50% 火/水/冰/风/雷/岩属性法术的消耗，但每个属性仅可使用一次。
 Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage. Offhand: Applies passive bonus.
-造成阴影伤害，+25% 火/水/冰/风/雷/岩/压力/爆炸伤害。副手：应用被动奖励。
+造成暗影伤害，+25% 火/水/冰/风/雷/岩/压力/爆炸伤害。副手：应用被动奖励。
 The Arbiter
 仲裁者之杖
 I have altered the rules. Pray I do not alter them further.
 我已改变规则，祈祷我不会再进一步改变它们。
 Deals chain damage with 110% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm
-造成锁链伤害，束缚效率 x110%，对召唤物增加 40 点阴影伤害，+25% 的黏液和锁链伤害。远程攻击：解除武装。
+造成锁链伤害，束缚效率 x110%，对召唤物增加 40 点暗影伤害，+25% 的黏液和锁链伤害。远程攻击：解除武装。
 Bondage Buster
 束缚破坏者
 Can fire a beam (1 turn channel) that deals 30 electric damage, but charges when not fired, dealing 90 total damage at 10 turns of charge.
@@ -3267,7 +3409,7 @@ Magic Axe
 Sick and vile, like the hearts of your enemies.
 病态和卑鄙，就像你敌人的心。
 Deals shadow damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns.
-对目标造成阴影伤害，对身边的敌人造成20点阴影伤害。减速3回合。
+对目标造成暗影伤害，对身边的敌人造成20点暗影伤害。减速3回合。
 Pickaxe
 镐
 Used for drilling holes in rock and armor.
@@ -3279,7 +3421,7 @@ Magic Flail
 A blessed censer that distributes pain equally.
 一个用于平等地分配伤害的受祝福的香炉。
 Deals crush damage. Deals 20 bonus shadow damage to the target and enemies near the target
-造成碾压伤害。并对目标及其附近的敌人造成 20 点额外阴影伤害
+造成碾压伤害。并对目标及其附近的敌人造成 20 点额外暗影伤害
 Magic Spear
 附魔长矛
 Seeks and pierces hearts with ease.
@@ -3301,9 +3443,9 @@ Deals crush damage. Deals 3x damage to frozen targets instead of 2x. Triggers Sh
 Dreamcatcher
 梦网
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
-在噩梦中铸造，用钢铁编织。召唤一个阴影武士，对于未察觉的目标，消耗2%的远古能量。
+在噩梦中铸造，用钢铁编织。召唤一个暗影武士，对于未察觉的目标，消耗2%的远古能量。
 Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
-造成阴影伤害。对于未察觉（100%）或易受攻击（50%）的目标，额外造成最多 30 点精神伤害。
+造成暗影伤害。对于未察觉（100%）或易受攻击（50%）的目标，额外造成最多 30 点精神伤害。
 Axe
 斧头
 Great for cutting trees that happen to be underground.
@@ -3412,6 +3554,9 @@ The EnemyName grabs you and pulls you!!!
 EnemyName 抓住你，并拉着你！！！
 The EnemyName misses you!
 EnemyName 没有命中你！
+You duck under the EnemyName's attack!
+你蹲下躲过了 EnemyName 的攻击！
+
 You hear a door creak open nearby!
 你听到附近的门吱吱作响！
 You hear the faint sound of a door opening.
@@ -3501,9 +3646,9 @@ Storm Crystal
 The storm crystal shatters into many crackling pieces.
 风暴水晶破碎成许多噼啪作响的碎片。
 Shadow Warrior
-阴影武士
+暗影武士
 The shadow warrior screeches as it vanishes into mist.
-阴影武士尖叫着消失在雾中。
+暗影武士尖叫着消失在雾中。
 Allied Golem
 友方石魔像
 The words vanish from the golem's forehead as it crashes down.
@@ -3919,11 +4064,11 @@ Shadow Dragonheart
 The Shadow Dragonheart frowns and runs away.
 影龙心蹙眉，转身逃走。
 The Shadow Dragonheart apprehends you! (+RestraintAdded)
-阴影龙心逮捕了你！ （+RestraintAdded）
+暗影龙心逮捕了你！ （+RestraintAdded）
 The Shadow Dragonheart extends her scythe and pulls you closer!!!
 影龙心伸出她的镰刀，把你拉近了！！！
 The Shadow Dragonheart catches you with her scythe! (DamageTaken)
-阴影龙心用她的镰刀抓住了你！ (DamageTaken)
+暗影龙心用她的镰刀抓住了你！ (DamageTaken)
 Dragonheart Leader
 龙心领袖
 The Dragonheart Leader apprehends you! (+RestraintAdded)
@@ -4514,6 +4659,18 @@ The vine plant wraps its tendrils around you! (+RestraintAdded)
 藤蔓植物将卷须缠绕在你周围！（+RestraintAdded）
 The vine plant grips you tightly! (DamageTaken)
 藤本植物紧紧抓住你！（DamageTaken）
+
+Vine Spitter
+藤蔓喷吐者
+The vine spitter leaks purple juices everywhere as it wilts.
+当藤蔓喷吐者枯萎时，紫色的汁液会泄漏到各处。
+The vine spitter slaps you with its tendrils! (DamageTaken)
+藤蔓喷吐者用它的卷须打你！（DamageTaken）
+The vine spitter wraps its tendrils around you! (+RestraintAdded)
+藤蔓喷吐者用它的卷须缠绕着你！（+RestraintAdded）
+The vine spitter grips you tightly! (DamageTaken)
+藤蔓喷吐者紧紧地抓住你！（DamageTaken）
+
 Bramble
 荆棘
 The brambles are hacked away.
@@ -5264,6 +5421,12 @@ Tome of Chains
 锁链之书
 The floating tome burns into ashes!
 漂浮的巨著燃烧成灰烬！
+Tome of Belts
+绑带之书
+Tome of Ropes
+绳索之书
+Tome of Bondage
+束缚之书
 Tome of Light
 光之书
 The floating tome burns into ashes!
@@ -6018,7 +6181,7 @@ Cannot be removed while you are wearing other Star Cursed items.
 The cursed seal on the RestraintName vanishes into a brief veil of stardust.
 RestraintName 上的诅咒印记消失在短暂的星尘面纱中。
 Take AMNT damage to weaken the curse. Excludes shadow, psychic, charm, or damage taken at 0 WP.
-承受 AMNT 伤害来削弱诅咒。 不包括阴影、精神、妩媚或 0 WP 受到的伤害。
+承受 AMNT 伤害来削弱诅咒。不包括暗影、精神、妩媚或 0 WP 受到的伤害。
 You struggle uselessly, sealed in your fate.
 你徒劳地挣扎，被命运所封印。
 You feel your restraints starting to weaken...
@@ -6044,7 +6207,7 @@ With the rush of pleasure, you feel your cursed restraints tighten and strengthe
 随着快感的涌动，你感受到你那被诅咒的束缚收紧、加强！
 
 Corruption: While in the shadows, you slowly gain corruption.
-腐败：在阴影中，你会慢慢得腐败。
+堕落：在阴影中，你会慢慢得堕落。
 Your willpower gain and struggle power is less effective due to your corruption.
 你的意志力增益和奋斗力会因为你的腐败而变得不那么有效。
 
@@ -6320,7 +6483,7 @@ Extraplanar Entity
 Dubious Witch
 可疑的女巫
 Shadow Clan
-阴影族
+暗影族
 Illegal Poacher
 非法偷猎者
 Nature
@@ -6677,6 +6840,13 @@ A pair of heels coated in a nonstick material.
 一双涂有不粘胶或粘液材料的高跟鞋。
 They will slow you down, but you can walk on slime without getting stuck!
 它们会减慢你的速度，但你可以在粘液上行走而不会被黏住！
+
+Duster Gag
+掸子堵嘴
+A special gag designed for maids to be useful even while tied up! It's self-locking too!
+专为女仆设计的特殊堵嘴，即使在被绑着的情况下也能打扫卫生！并且会自动锁定！
+Deals 0.5 tickle damage on attack and adds +30 distraction.
+攻击时造成 0.5 点挠痒伤害，并增加 30 干扰值。
 
 Gas Mask
 防毒面具
@@ -7266,6 +7436,12 @@ A pair of tight leather mittens enclosing your hands.
 一副紧绷的皮手套包住你的双手。
 They make it almost impossible to manipulate keys and tools. Keep your hands to yourself!
 它们使操作按键和工具几乎成为不可能。把手留给自己！
+Leather Legbinder
+皮革束腿套
+A tight leather legbinder that keeps your feet glued together.
+一款紧身皮革束腿套，可将双脚绑在一起。
+It's quite snug and the laces are secured with a lockable panel. Getting at them requires picking the lock.
+它非常舒适，绳结由可锁定的面板遮挡并固定。想要触碰它们就需要先解开锁。
 Leather Armbinder
 皮革束手套
 A tight leather armbinder enclosing your hands and arms completely.
@@ -7293,9 +7469,9 @@ A pair of steel cuffs locked securely around your wrists.
 The lock doesn't seem very complicated.
 锁似乎不是很复杂。
 Steel Yoke
-钢杆
+钢枷锁
 A steel bar clamped firmly around your wrists and neck, leaving you in a helpless position.
-钢杆牢牢地夹在你的手腕和脖子上，使你处于无助的位置。
+钢枷锁牢牢地夹在你的手腕和脖子上，使你处于无助的位置。
 This is not something you can pick by yourself...
 这不是你自己可以选择的东西...
 Leather Harness
@@ -8034,12 +8210,19 @@ A collar for operatives of the Maidforce, a group of covert saboteurs.
 女仆势力特工的项圈，一群隐蔽的破坏者。
 It's reinforced with metal and guarded with an expert-level lock.
 它采用金属加固，并配有专家级锁。
-Plug Gag
-塞子口塞
+Maid Gag
+女仆口塞
 A gag with a long, mouth-filling plug that muffles speech completely.
-一种带有长长的塞子的塞子，可以完全抑制讲话。
+一种带有长长的塞子的口塞，可以让佩戴者完全说不出话。
 It's made of a very tough reinforced leather. It will take some time to cut.
 它由非常坚韧的强化皮革制成。需要一些时间来削减。
+Maid Security Gag
+女仆安全口塞
+A muzzle with a long, mouth-filling plug that muffles speech completely.
+一种带有长长的塞子的口套，可以让佩戴者完全说不出话。
+Reinforced and secured with a disc lock to ensure unruly maids don't skip their duty.
+用圆盘锁加固和固定，以确保不守规矩的女仆不会玩忽职守。
+
 Suspicious Mask
 可疑的面具
 You a padded metal blindfold, glowing magnificently, along with a strange crystal next to it.
@@ -8050,31 +8233,31 @@ It has eyeholes for you to see out of, but blocks access to the face.
 它有眼孔供你向外看，但挡住了接触脸部的通道。
 
 Shadow Heels
-阴影高跟鞋
+暗影高跟鞋
 A set of impractical heels that clasp around your ankles. They make it hard to walk.
 一套不切实际的高跟鞋，紧箍着你的脚踝。它们使行走变得困难
 The material is stronger than leather, and flexes to make struggling difficult.
 这种材料比皮革更坚固，并且可以弯曲，使挣扎变得困难。
 Shadow Jacket
-阴影拘束衣
+暗影拘束衣
 A tight straitjacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
 由超凡脱俗的材料制成的拘束衣。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Its grip encases you tightly, but the material is weaker than most metals.
 它的握力将你紧紧包裹住，但其材料比大多数金属都脆弱。
 Shadow Armbinder
-阴影束手套
+暗影束手套
 A tight armbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
 由超凡脱俗的材料制成的束手套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Its grip encases you tightly, but the material is weaker than most metals.
 它的握力将你紧紧包裹住，但其材料比大多数金属都脆弱。
 Shadow Boxbinder
-阴影盒束包扎带
+暗影盒束包扎带
 A tight boxbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
 由超凡脱俗的材料制成的盒束包扎带。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Its grip encases you tightly, but the material is weaker than most metals.
 它的握力将你紧紧包裹住，但其材料比大多数金属都脆弱。
 Shadow Legbinder
-阴影束腿套
+暗影束腿套
 A tight legbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
 由超凡脱俗的材料制成的束腿套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Its grip encases you tightly, but the material is weaker than most metals.
@@ -8571,25 +8754,25 @@ Magic chains that serve as an anchor point around your waist.
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
 Shadow Chains (Arms)
-阴影锁链（手臂）
+暗影锁链（手臂）
 Black chains for those who cross the divines
 穿越神界者的黑链
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
 Shadow Chains (Legs)
-阴影锁链（腿）
+暗影锁链（腿）
 Black chains for those who cross the divines
 穿越神界者的黑链
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
 Shadow Chains (Ankles)
-阴影链（脚踝）
+暗影链（脚踝）
 Black chains for those who cross the divines
 穿越神界者的黑链
 It doesn't look like a knife is up to the task...
 看来一把刀不能胜任这项任务……
 Shadow Chain
-阴影影链
+暗影影链
 Black chains for those who cross the divines
 穿越神界者的黑链
 It doesn't look like a knife is up to the task...
@@ -8799,20 +8982,20 @@ They are trying to take you somewhere!
 他们正试图带你去某个地方！
 
 The Shadow
-阴影
+暗影
 The Shadow is exorcised... for now.
-阴影已被驱除……暂时。
+暗影已被驱除……暂时。
 The Shadow overwhelms you with its power... (+RestraintAdded)
-阴影以其力量压倒你......（+RestraintAdded）
+暗影以其力量压倒你......（+RestraintAdded）
 The Shadow welcomes you to your new future. (DamageTaken)
-阴影欢迎你来到你的新未来。（DamageTaken）
+暗影欢迎你来到你的新未来。（DamageTaken）
 The Shadow cackles as your restraints are sealed! (DamageTaken)
-当你的束缚被封印时，阴影咯咯地笑了起来！（DamageTaken）
+当你的束缚被封印时，暗影咯咯地笑了起来！（DamageTaken）
 The Shadow smiles and vanishes.
-阴影微笑着消失了。
+暗影微笑着消失了。
 
 The Shadow smiles and vanishes, leaving you locked in a mysterious RNAME...
-阴影微笑着消失，把你锁在一个神秘的 RNAME 中……
+暗影微笑着消失，把你锁在一个神秘的 RNAME 中……
 
 Observer
 观察者
@@ -8824,8 +9007,8 @@ From the Beyond
 
 You briefly spot your reflection as a reflective cube appears!
 当一个反光立方体出现时，你短暂地发现了自己的倒影！
-Liquid Metal Cube
-液态金属立方体
+Mini Metal Cube
+迷你金属立方体
 The liquid metal cube shatters into glittering dust.
 液态金属立方体碎裂成闪闪发光的灰尘。
 The liquid metal cube sticks to you and hardens! (DamageTaken)
@@ -9145,8 +9328,25 @@ You pick up a magical ice cube.
 你拿起了一个神奇的冰块。
 You find some treated hemp rope.
 你找到了一些经过处理的麻绳。
+
+Feather
+羽毛
+A feather taken from some large fluffy being.
+从一些毛茸茸的大动物上取下的羽毛。
+Deals tickle damage. Distracts enemies. Offhand: +5 tickle damage on attack for 3 stamina.
+造成挠痒伤害，使敌人性奋。副手：攻击时 +5 挠痒伤害，持续 3 点体力。
 You pick up a feather.
 你捡起了一根羽毛。
+
+Maid's Feather Duster
+女仆的鸡毛掸子
+An instrument used extensively by maidforce agents carrying out their duties.
+女仆特工在履行职责时广泛使用的一种工具。
+Deals tickle damage. Distracts enemies. Offhand: +15 distraction on attack for 1 stamina.
+造成挠痒伤害。使敌人性奋。副手：攻击时造成 15 干扰值，持续 1 点体力。
+You pick up a feather duster.
+你拿起鸡毛掸子。
+
 You pick up a heavy flail.
 你拿起了沉重的流星锤。
 You pick up a shortspear.
@@ -9241,13 +9441,13 @@ You toss some gunpowder on the floor!
 
 Dual Wield (Rogue)
 双持（盗贼）
-Designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield 2-handed, heavy, or massive weapons in the offhand unless they are multiclass.|(Must equip Dual Wield spell to equip an offhand weapon)
-指定副手武器以获得被动效果，例如光源或额外暴击伤害。|盗贼不能在副手使用双手、重或大型武器，除非它们是多职业的。|（必须装备双持法术才能装备副手武器）
+Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield 2-handed, heavy, or massive weapons in the offhand unless they are multiclass.|(Must equip Dual Wield spell to equip an offhand weapon)
+装备到快捷栏并施放以指定副手武器以获得光源或额外暴击伤害等被动效果。|盗贼不能在副手使用双手、重型或大型武器，除非他们是多职业的。|（必须装备双持法术才能装备副手武器）
 
 Dual Wield (Wizard)
 双持（法师）
-Designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)
-指定副手武器以获得被动效果，例如光源或法术伤害加值。|法师只能在副手使用魔法武器，除非他们是多职业的，并且如果他们挥舞双手、重或双手持式武器，则获得 +1 缓慢等级。 副手的大型魔法武器。|（必须装备双持法术才能装备副手武器）
+Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)
+装备到热键栏并施放以指定副手武器以获得被动效果，例如光源或法术伤害加成。|巫师只能在副手使用魔法武器，除非他们是多职业的，如果他们挥舞双手，则获得 +1 缓慢等级 副手的大型魔法武器。|（必须装备双持法术才能装备副手武器）
 
 Arcane Tome
 奥术之书
@@ -9570,6 +9770,18 @@ Dexterity
 灵巧
 Intelligence
 智力
+Misc
+杂项
+
+Unique
+独特
+Active
+积极
+Passive
+被动
+Upgrades
+升级
+
 Learnable
 可学习
 Unlearned
@@ -9716,9 +9928,10 @@ Beast Girl
 You have animalistic features such as a bite spell, -10% attack stamina cost, and 10 slash damage on hit while hands are free. -100 Charm Resist.
 你拥有兽性特征，例如咬伤法术、-10% 攻击体力消耗以及在双手空闲时击中时造成 10 次斩击伤害。 -100 魅惑抗性。
 
+Demon Girl
 恶魔少女
 You are related to eldritch entities, granting +50% shadow damage and the ability to teleport between shadows. You are weak to holy restraints and bright light.
-你与可怕的实体有联系，给予 +50% 的阴影伤害和在阴影之间传送的能力。你对神圣的束缚和明亮的光芒是软弱的。
+你与可怕的实体有联系，给予 +50% 的暗影伤害和在暗影之间传送的能力。你对神圣的束缚和明亮的光芒是软弱的。
 
 Angelic
 天使
@@ -9774,7 +9987,7 @@ Rubber Ampule
 Latex Ampule
 乳胶安瓿
 Shadowy chains appear from a rift in space!
-阴影锁链从空间裂缝中出现！
+暗影锁链从空间裂缝中出现！
 The roaring inferno deals 10 damage to you!
 咆哮的地狱对你造成 10 点伤害！
 The Reaping
@@ -9919,9 +10132,9 @@ Unlocks summoning spells. Learn Summon Familiar.
 允许学习召唤咒术 并习得咒术 “召唤魔宠”
 
 Blessing of Shadow
-阴影祝福
+暗影祝福
 Unlocks shadow spells. Learn Shadow Dagger.
-允许学习阴影幻术 并习得幻术 “阴影匕首”
+允许学习暗影幻术 并习得幻术 “暗影匕首”
 Blessing of Light
 光之祝福
 Unlocks light spells. Learn Flash.
@@ -9979,8 +10192,8 @@ You avoid the attack in a flurry of impressive maneuvers!
 你在一系列令人印象深刻的动作中避开了攻击！
 Arcane Barrier
 奥术屏障
-When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, the shield absorbs incoming damage and consumes Arcane Energy equal 200% of damage absorbed. While you have Arcane Energy and this is active, you also gain Bondage Resist equal to 4x the Arcane Energy pool, to a max of +200.
-当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，护盾会吸收传入的伤害并消耗相当于吸收伤害 200% 的奥术能量。当你拥有奥术能量并且处于活动状态时，你还会获得相当于奥术能量池 4 倍的束缚抗性，最多为 +200。
+When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 50% Max Mana.
+当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 1:1 的比例缓慢将奥术能量转化为护盾。最大护盾等于 50% 的最大魔法值。
 You sense that a high value target is near.
 你感觉到一个高价值目标正在靠近。
 You push yourself beyond physical limits!
@@ -9989,14 +10202,20 @@ You try to push yourself beyond your capabilities and falter...
 你试图超越自己的极限，却步履蹒跚……
 You are already at max stamina.
 你已经达到最大体力了。
+
+Did the Research
+进行研究
+Unlocks advanced tooltips for enemies showing their weaknesses. Also improves hearing by a small amount.
+解锁高级工具提示，让敌人显示出他们的弱点。听力也能小幅提高。
+
 Well-Placed Traps
 精心布置的陷阱
 Trap spells always critically strike.
 陷阱法术总是会造成暴击。
 Hard to Catch
 难以捕捉
-Adjacent NPCs count as corners/hooks for purposes of escaping. After being restrained, escape speed and power is increased for 12 turns. Removed if you restrain yourself.
-相邻的NPC被视为用于逃生的角落/钩子。被束缚后，逃跑速度和力量增加12回合。如果你束缚自己，就会被移除。
+Adjacent NPCs count as corners/hooks for purposes of escaping. After being restrained, escape speed and power is increased for 12 turns (escape power is increased by +20% plus 2% of Bondage Resist). Removed if you restrain yourself.
+相邻的NPC被视为用于逃生的角落/钩子。被束缚后，逃跑速度和力量增加12回合（逃脱力增加+20%，加上2%的束缚抗性）。如果你自缚的话，就会被移除。
 Struggling is improved and escape is quicker!
 挣扎能力提升，逃跑速度更快！
 Costs 100 Arcane Energy and refunds 100 Mana. Bringing memories to life, you call upon your magical knowledge to ignore arm, leg, and verbal spell components for 3 turns.
@@ -10068,8 +10287,8 @@ Inner power now recharges after 10 turns instead of 16.
 
 Fast Recharge II
 快速充能 II
-Inner power now recharges after 4 turns instead of 16.
-现在内力会在 4 回合（而不是 16 回合）后恢复。
+Inner power now recharges after 6 turns instead of 16.
+现在内力会在 6 回合（而不是 16 回合）后恢复。
 
 Windblast
 暴风
@@ -10088,39 +10307,41 @@ You a throw a knife!
 Choose aim direction
 选择发射方向
 Shadow Dagger
-阴影匕首
+暗影匕首
 A cold shadowy blade that deals DamageDealt damage and pierces all in its path.
-一把冰冷的阴影之刃，对路径上所有格子造成DamageDealt贯穿伤害。
+一把冰冷的暗影之刃，对路径上所有格子造成DamageDealt贯穿伤害。
 You a hurl a shadowy dagger!
-你投出一把阴影匕首！
+你投出一把暗影匕首！
 Choose aim direction
 选择发射方向
 Shadow Slash
-阴影斩
+暗影斩
 Shadow Scythe
-阴影镰刀
-Slice the area in front of you, dealing a delayed DamageDealt damage in an area and slowing briefly.
-切开你面前的区域，在一个区域内造成延迟的 DamageDealt 伤害并短暂减速。
+暗影镰刀
+Slice the area in front of you, dealing a delayed DamageDealt damage in an area and slowing briefly. Deals 50% more damage when you are attacking from the shadows.
+切开你面前的区域，在一个区域内造成延迟的 DamageDealt 伤害并短暂减速。当你在阴影中攻击时，造成的伤害提高 50%。
 You create a tear in space with your finger!
 你用你的手指撕裂了前方的空间！
 Choose aim direction
 选择发射方向
-Portal
-传送门
-Teleport to a nearby location (including into darkness) with twice the range.
-立刻传送到你附近的位置(包括黑暗)，范围是“闪现”的两倍。
-You call upon a misty portal to transport you!
-你打开了一个迷雾传送门来传送你！
-Choose target location
-选择施放位置
-Blink
-闪现
-Instantly teleport to a location you can see.
-立即传送到你可以看到的位置。
+
+Phase
+相位
+Instantly teleport to an adjacent position and gain +50 evasion for 3 turns. Unlocks Blink and Warp when learned.
+瞬间传送到邻近位置，并获得 +50 闪避，持续 3 回合。学习后解锁闪现和扭曲。
 You teleport!
 传送！
 Choose target location
 选择施放位置
+Blink
+闪现
+Instantly teleport up to 2 tiles away. Must have vision of the target point. Stuns an enemy if you teleport behind them.
+立即传送至 2 格之外。目标位置必须可视。如果你传送到敌人身后，则会击晕敌人。
+Warp
+扭曲
+Instantly teleport up to 2 tiles away. Must have vision of the target point. 
+立即传送至 2 格之外。目标位置必须可视。
+
 Ice Shard
 冰枪术
 A shard of ice that does DamageDealt damage and slows for Duration turns. Freezes if already slowed or drenched.
@@ -10189,6 +10410,10 @@ Conjure Chain
 召唤锁链
 Magic Chain
 魔法锁链
+Magic Rope
+魔法绳索
+Magic Belt
+魔法绑带
 Witch's Chain
 女巫的锁链
 Throws a chain that does DamageDealt chain damage. Targets with 50% or more binding take 50 crush damage and are slowed for 4 turns.
@@ -10237,7 +10462,7 @@ The restraining device wraps many elastic cables around you!!!
 拘束装置将许多弹性绳索缠绕在你的周围！！！
 
 Shadowy Grip
-阴影抓
+暗影控制
 A dark hand latches onto you and holds you tight!
 一只深色的手抓住了你，紧紧地握住你！
 Celestial Orb
@@ -10269,9 +10494,9 @@ You ready a bola!
 You are feeling drowsy...
 你感觉昏昏欲睡……
 Shadow Strike
-阴影打击
+暗影打击
 Shadow Heel
-阴影脚
+暗影高跟鞋
 Runic Ward
 符文盾
 Gives yourself or a creature a magic shield for 50 turns, granting +30 Magic Armor.
@@ -10488,12 +10713,12 @@ Corona
 电晕
 Binding Light
 束缚之光
-Binding Light
-束缚之光
 Chaos Beam
 混沌光束
-A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt fire damage to the first target hit.
-引导一束光束 2 回合（让你短暂眩晕），然后立即对击中的第一个目标造成 DamageDealt 点火焰伤害。
+Mystic Beam
+神秘光束
+A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt holy damage to the first target hit. Blinds for 12 turns. 150% crit multiplier.
+引导一束光束 2 回合（让你短暂眩晕），然后立即对第一个击中的目标造成 DamageDealt 点神圣伤害。致盲 12 回合。150% 暴击倍数。
 You charge a powerful beam attack!!!
 你蓄力释放强大的光束攻击！！！
 Choose line direction
@@ -10552,6 +10777,16 @@ You inscribe a transmutation circle on the floor.
 你在地板上释放了转化魔法。
 Choose area containing slime
 选择含有粘液的区域
+
+LiquidMetal
+液态金属
+Solidifies Latex in the area into Liquid Metal. Liquid Metal is slippery, but also adheres to enemies and slowly binds them in metallic bonds. Enemies encased in liquid metal are more susceptible to knockback due to the slippery nature.
+将区域内的乳胶固化成液态金属。液态金属很滑，但也会粘附在敌人身上，并慢慢地将他们束缚在金属中。由于其湿滑特性，包裹在液态金属中的敌人更容易被击退。
+You inscribe a transmutation circle on the floor.
+你在地板上刻下了一个嬗变圆。
+Choose area containing Latex
+选择含有乳胶的区域
+
 Slime Repulsion
 粘液排斥
 Gain +50 glue resist.
@@ -10694,10 +10929,40 @@ You are harder to see when waiting.
 你在等待时很难被发现。
 Dodge I
 闪避 I
++10 Evasion
++10 闪避
 Dodge II
 闪避 II
++15 Evasion (25 total)
++15 闪避（共 25 次）
 Dodge III
 闪避 III
++25 Evasion (50 total)
++25 闪避（共 50 次）
+
+Strength Up
+力量提升
++20% Physical Damage
++20% 物理伤害
+
+Deadly Aim
+致命目标
+Increases crit multiplier by a % equal to your Battle Rhythm.
+将暴击倍数提高等于你的战斗节奏的百分比。
+
+Accuracy I
+精准 I
++10 Accuracy
++10 精准度
+Accuracy II
+精准 II
++15 Accuracy (25 total)
++15 精准度（共 25 次）
+Accuracy III
+精准 III
++25 Accuracy (50 total)
++25 精准度（共 50 次）
+
 Precise Critical
 精准暴击
 When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency.
@@ -10848,8 +11113,8 @@ The armbinder slips itself around your arms and buckles itself tightly!
 束手套紧紧包住了你的手臂！
 The armbinder hits you! (DamageDealt)
 束手套击中了你！（造成 DamageDealt 点伤害）
-Summons an armbinder which deals DamageDealt chain damage and disarms for 13 turns. Blinded/Silenced targets are silenced/blinded for the same time.
-召唤一个造成 DamageDealt 点锁链伤害并缴械 13 回合的束手套。被沉默/致盲的目标会被同时附加沉默/致盲。
+Summons an armbinder which deals DamageDealt chain damage and disarms for 13 turns. Also removes 2 Block tokens from enemy. Cannot be blocked.
+召唤一个束手套，造成 DamageDealt 连锁伤害并缴械，持续 13 回合。还会敌人身上移除 2 个方块标记。无法被阻止。
 You conjure a armbinder!
 你召唤出束手套！
 The armbinder will appear next to you and fly toward the target point.
@@ -10902,8 +11167,8 @@ The legbinder slips itself around your legs and buckles itself tightly!
 束腿套紧紧包住了你的腿！
 The legbinder hits you! (DamageDealt)
 束腿套击中了你！（造成 DamageDealt 点伤害）
-Summons a legbinder which deals DamageDealt chain damage and snares for 10 turns. +50 binding if target is not snared.
-召唤一个造成 DamageDealt 点锁链伤害的束腿套，并拘束 10 回合。对未拘束个体增加 50 点束缚。
+Summons a legbinder which deals DamageDealt chain damage and snares for 10 turns. +50 binding if target is not snared. Cannot be blocked.
+召唤一个造成 DamageDealt 点锁链伤害的束腿套，并拘束 10 回合。对未拘束个体增加 50 点束缚。无法被阻挡。
 You conjure a legbinder!
 你召唤出束腿套！
 The legbinder will appear next to you and fly toward the target point.
@@ -10916,8 +11181,8 @@ The straitjacket slips itself around your body and pulls your arms into its slee
 拘束衣紧紧包住了你的身体，把你的手臂拉入了袖口！
 The straitjacket hits you! (DamageDealt)
 拘束衣击中了你！（造成 DamageDealt 点伤害）
-Summons a straitjacket which adds DamageDealt binding and reduces struggle speed for 14 turns.
-召唤一件造成 DamageDealt 点束缚的拘束衣，并降低挣扎速度 14 回合。
+Summons a straitjacket which adds DamageDealt binding and reduces struggle speed for 14 turns. Also removes 3 Block tokens from enemy. Cannot be blocked.
+召唤一件造成 DamageDealt 点束缚的拘束衣，并降低挣扎速度 14 回合。还会从敌人身上移除 3 个方块标记。无法被阻挡。
 You conjure a straitjacket!
 你召唤了出拘束衣！
 The straitjacket will appear next to you and fly toward the target point.
@@ -10930,8 +11195,8 @@ The harness slips itself around your torso and squeezes tightly as each buckle s
 束衣围在你身体周围并收紧，紧接着带扣一个个地被固定住！
 The harness hits you! (DamageDealt)
 束衣击中了你！（造成 DamageDealt 点伤害）
-Summons a harness which deals DamageDealt crush damage. Adds +50 binding per 25% binding level on target, up to +200.
-召唤一个造成 DamageDealt 碾压伤害的束衣。目标每增加 25% 束缚级就增加 50 点束缚，最多增加 200 点。
+Summons a harness which deals DamageDealt chain damage. Adds +50 binding per 25% binding level on target, up to +200.
+召唤一个造成 DamageDealt 锁链伤害的束衣。目标每增加 25% 束缚级就增加 50 点束缚，最多增加 200 点。
 You conjure a harness!
 你召唤了束衣！
 The harness will appear next to you and fly toward the target point.
@@ -10980,10 +11245,12 @@ Ring
 光环
 Flash Bomb
 闪光弹
+Smoke Bomb
+烟雾弹
 Mirror Image
 镜像
-A flash of light which renders anyone caught within blind for Duration turns
-一道闪光，使受到影响的所有人在 Duration 回合内陷入失明
+A flash of light which renders anyone caught within blind for 7 turns
+一道闪光，使受到影响的所有人在7回合内陷入失明
 You charge up a bright flash!
 你发出一道闪光！
 Select where to center the flash (SpellArea radius)
@@ -10996,8 +11263,8 @@ Select where to center the noise (SpellArea radius)
 选择噪声的中心位置（SpellArea 半径）
 Greater Flash
 大闪光
-A massive flash of light which renders anyone caught within blind for Duration turns
-一道巨大的闪光，使受到影响的所有人在 Duration 回合内陷入失明
+A massive flash of light which renders anyone caught within blind for 16 turns and stuns briefly.
+一道巨大的闪光，使受到影响的所有人在16回合内陷入失明并短暂眩晕。
 You charge up a bright flash!
 你发出一道闪光！
 Select where to center the flash (SpellArea radius)
@@ -11006,8 +11273,8 @@ Focused Flash
 聚焦闪光
 Select where to center the flash (SpellArea radius)
 选择闪光的中心位置（SpellArea 半径）
-A focused flash of light which renders anyone caught within blind for Duration turns
-一道聚焦的闪光，使受到影响的所有人在 Duration 回合内陷入失明
+A focused flash of light which renders anyone caught within blind for 30 turns and stuns for Duration turns.
+一道聚焦的闪光，使受到影响的所有人在30回合内陷入失明，并在 Duration 回合内眩晕
 You slowly charge up a powerful flash!
 你缓慢地释放出一道强力的闪光！
 Shroud
@@ -11040,23 +11307,19 @@ Dagger Parry
 持有小刀或匕首等轻武器时 +15 格挡。
 Steadfast Guard
 坚定的守卫
-+5 Block for each 50 max willpower you have, while holding a non-light weapon.
-当你持有非轻型武器时，每拥有 50 点最大意志力时 +5 格挡。
++5 Block for each 100 max willpower you have, while holding a non-light weapon.
+当你持有非轻型武器时，每拥有 100 点最大意志力时 +5 格挡。
 The Power of Steel
 钢铁般的力量
-+5 Block for each 50 max willpower you have, while holding a weapon that deals physical damage.
-当你持有造成物理伤害的武器时，每拥有 50 点最大意志力时 +5 格挡。
++5 Block for each 100 max willpower you have, while holding a weapon that deals physical damage.
+当你持有造成物理伤害的武器时，每拥有 100 点最大意志力时 +5 格挡。
 Secure Defense
 安全防御
-+10-60 Block, based on your percentage of Willpower.
-+10-60 格挡，基于你的意志力百分比。
++15-30 Block, based on your percentage of Willpower.
++15-30 格挡，基于你的意志力百分比。
 
 You block the EnemyName attack!
 你挡住了 EnemyName 的攻击！
-You block a binding from EnemyName!
-你挡住了 EnemyName 的束缚！
-You dodge a binding from EnemyName!
-你躲开了来自 EnemyName 的束缚！
 You block the EnemyName!
 你挡住了 EnemyName！
 You dodge the EnemyName!
@@ -11114,7 +11377,7 @@ CMD: Disenchant
 Select an area
 选择一个区域
 Target a large area. Permanently slows constructs, reduces attack speed by 50%, and deals 30 shadow damage. Refunds 50% mana at 3 or more targets. Cast on self to disenchant bindings.
-瞄准范围大。永久减慢构造体速度，降低攻击速度 50%，并造成 30 点阴影伤害。到达 3 个或更多目标时退还 50% 的法力值。对自身施放以分解束缚。
+瞄准范围大。永久减慢构造体速度，降低攻击速度 50%，并造成 30 点暗影伤害。到达 3 个或更多目标时退还 50% 的法力值。对自身施放以分解束缚。
 You say a command word, siphoning the magic from nearby constructs!
 你念出咒语，开始从附近的构装体中抽取魔力！
 CMD: Vibrate
@@ -11216,13 +11479,13 @@ Camouflage
 拟态
 Select yourself
 选择自己
-Enemies have a harder time noticing you for Duration turns. Cancels if you move, cast, or sleep.
-在持续时间回合中，敌人很难注意到你。但如果你移动、施法或睡眠，则会失效。
+Enemies have a harder time noticing you for Duration turns. Cancels if you move (unless you are near a wall), cast, or sleep.
+在持续时间回合中，敌人很难注意到你。但如果你移动、施法或睡眠（除非你靠近墙壁），则会失效。
 You pose in a clandestine manner.
 你摆出了一个隐秘的姿势。
 
 Darkblade
-阴影之刃
+暗影之刃
 Select which creature to buff
 选择要增益的个体
 Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks
@@ -11393,15 +11656,27 @@ A watery spirit bubbles up from the ground!
 You call upon the plane of Water!
 你向水之位面呼唤！
 Summon Shadow Warrior
-召唤阴影武士
+召唤暗影武士
 Select where to put the shadow warrior (cannot place on occupied squares)
-选择放置阴影武士的位置（不能放置在已被占用的方格上）
+选择放置暗影武士的位置（不能放置在已被占用的方格上）
 Call forth a shadow warrior for 16 turns who deals DamageDealt damage every other turn.
-召唤一名持续 16 回合的阴影武士，每隔一回合造成 DamageDealt 点伤害。
+召唤一名持续 16 回合的暗影武士，每隔一回合造成 DamageDealt 点伤害。
 ...and the abyss answers!
 ……深渊的答案！
 You call...
 你召唤了...
+
+Summon Nature Spirit
+召唤自然精灵
+Select where to put the nature spirit (cannot place on occupied squares)
+选择放置自然精灵的位置（不能放置在已占用的方块上）
+Create a natural spirit that fires vine projectiles and has a healing aura that restores HP to allies and regenerates your stamina.
+创建一个发射藤蔓射弹的自然精灵，并具有治疗光环，可以为盟友恢复生命值并恢复你的体力。
+A healing wisp appears!
+治愈之光出现！
+You call upon the powers of nature!
+你呼唤自然的力量！
+
 Summon Golem
 召唤傀儡
 Select where to put the golem (cannot place on occupied squares)
@@ -11506,8 +11781,8 @@ Freezing Zombie Orb
 冰冻僵尸宝珠
 Mystic Bolt
 神秘闪电
-The mystic bolt paralyzes you!
-神秘闪电使你瘫痪！
+The mummy's curse paralyzes you!
+木乃伊的诅咒使你瘫痪！
 Rubber Bullets
 橡皮子弹
 You are hit by a fusilade of rubber bullets!
@@ -11572,8 +11847,8 @@ Slime Ball
 粘液球
 Witch's Slime Ball
 女巫的粘液球
-A ball of slime leaves a trail of sticky slime (40 damage when stepped on). It deals DamageDealt glue damage on a hit.
-一团粘液会留下粘糊糊的痕迹（踩到时造成 40 伤害）。它在击中时造成 DamageDealt 点胶水伤害。
+A ball of slime leaves a trail of sticky slime (20 damage when stepped on). It deals DamageDealt glue damage on a hit.
+一团粘液会留下粘糊糊的痕迹（踩到时造成 20 伤害）。它在击中时造成 DamageDealt 点胶水伤害。
 You hurl a ball of slime!
 你扔出一个粘液球！
 Choose aim direction
@@ -11594,11 +11869,23 @@ A bunch of gags fly out from your satchel!
 A floating hand appears and cracks its knuckles!
 一只漂浮的手出现了，它的指关节咔咔作响！
 A floating gag appears and starts flying toward you!
-一个漂浮的口球出现并开始向你飞来！
+一个漂浮的口塞出现并开始向你飞来！
+A floating blindfold appears and starts flying toward you!
+一个漂浮的眼罩出现并开始向你飞来！
+A floating yoke appears and starts flying toward you!
+一个漂浮的枷锁出现并开始向你飞来！
+A floating armbinder appears and starts flying toward you!
+一个漂浮的束手套出现并开始向你飞来！
+A floating straitjacket appears and starts flying toward you!
+一件漂浮的拘束衣出现并开始向你飞来！
+A floating harness appears and starts flying toward you!
+一条漂浮的束衣出现并开始向你飞来！
 A set of shackles opens wide and starts going for your wrists!
 一套镣铐张开，并开始锁在你的手腕上！
 A swarm of shackles approaches you!
 一群镣铐向你靠近！
+A swarm of gags approaches you!
+一群口塞向你逼近！
 A cloud of locks and chains clatters as it levitates toward you!
 一团锁和锁链在咔哒咔哒地向你飘来！
 A huge cloud of locks and chains clatters as it levitates toward you!
@@ -11716,8 +12003,16 @@ You hop and feel the plugs shifting around inside your body.
 你跳跃并感觉到塞子在你体内移动。
 The plugs shift in and out with each hop...
 塞子随着每一跳而进进出出……
-The massive plugs slide in and out mercilessly as you hop...
-当你跳跃时，巨大的插头无情地出入……
+The massive plugs slide in and out sensually as you hop...
+当你跳跃时，巨大的塞子会性感地滑入和滑出......
+You crawl forward!
+你向前爬行！
+You crawl and feel the plugs shifting around inside your body.
+你爬行并感觉到塞子在你体内移动。
+The plugs shift in and out as you crawl...
+当你爬行时，塞子会滑入和滑出……
+The massive plugs slide in and out sensually as you crawl...
+当你爬行时，巨大的塞子会性感地滑入和滑出......
 You inch forward slowly!
 你慢慢向前挪动！
 You inch forward, feeling the movement of your plugs.
@@ -11746,8 +12041,8 @@ You climb into the grate
 你爬进隔间
 You are blinded!
 你失明了！
-You took DamageDealt damage!
-你受到了DamageDealt点伤害！
+You took DamageTaken damage!
+你受到了 DamageTaken 点伤害！
 You get caught in sticky slime!
 你陷入粘稠的粘液中！
 The slime ball sticks to you!
@@ -11762,6 +12057,10 @@ Crystals begin to form around your limbs!
 晶体开始在你的四肢周围形成！
 A magic chain secures itself around your body!
 一条魔链固定在你的身体上！
+A magic rope secures itself around your body!
+一条魔绳固定在你的身体上！
+A magic belt secures itself around your body!
+一条魔法绑带固定在你的身体上！
 A rope wraps itself around your body!
 一根绳子缠绕在你的身上！
 A ribbon animates and becomes entwined around you!
@@ -11980,8 +12279,8 @@ Oblivion, 秘密的守护者
 
 Arcane Energy is stored by casting spells, up to 100% Max mana.
 奥术能量通过施展法术来储存，最高可达 100% 最大法力值。
-Battle Rhythm is gained by spending stamina through attacks, up to 50 total.
-战斗节奏是通过攻击消耗体力来获得的，总共最多 50 点。
+Battle Rhythm is gained by spending stamina through attacks, up to 40 total.
+战斗节奏是通过攻击消耗体力来获得的，总共最多 40 点。
 
 Arcane Blast
 奥术冲击
@@ -12013,7 +12312,7 @@ Slime Trap
 Chain Trap
 锁链陷阱
 Shadow Latex Trap
-阴影乳胶陷阱
+暗影乳胶陷阱
 Demonic Sigil
 恶魔封印
 Unstable Crystals
@@ -12050,7 +12349,7 @@ Slimes pours out from the walls and ceiling!
 Ethereal chains appear all around you!
 灵界锁链出现在你身边！
 Shadows constrict around you!
-阴影在你周围收缩！
+暗影在你周围收缩！
 An otherworldly sigil appears below you!
 一个超凡脱俗的印记出现在你的下方！
 Crystals rise up around you!
@@ -12114,6 +12413,9 @@ Back to Spellbook
 回到法术书
 Return to Game
 返回游戏
+
+Known Abilities
+已知能力
 Spell Tree
 技能树
 Elemental Spells
@@ -12278,7 +12580,7 @@ It is said that fire and water are opposite planes, but I've noticed that the re
 A drawing of many icicles around pools of water. It instructs you to avoid the pools of water and you can see a figure surrounded by ice shards in the distance being set on fire and smashed with a hammer.
 水池周围有许多冰柱的图画。它指示你避开水池，你可以看到远处被冰块包围的人物被点燃并被锤子砸碎。
 The shadow spirits' touch is cold as ice... I have wondered if this temperature property applies to their destructive effects on other types of beings. Unfortunately, I found out the hard way when I tried to summon a shadow creature against an ice elemental...
-影灵的触感像冰一样冰冷……我想知道这种温度特性是否适用于它们对其他类型生物的破坏作用。不幸的是，当我试图召唤一个阴影生物对抗冰元素时，我发现了一个艰难的方法......
+影灵的触感像冰一样冰冷……我想知道这种温度特性是否适用于它们对其他类型生物的破坏作用。不幸的是，当我试图召唤一个暗影生物对抗冰元素时，我发现了一个艰难的方法......
 I was being chased by something fast and heavy, and it was about to crush me when I tossed an Ice Shard behind me. It stopped and I didn't care to look back.
 我被一个又快又重的东西追了上来，当我在身后扔出一块寒冰碎片时，它正要压死我。它停了下来，我不想回头。
 I was walking in the library when I got attacked by a magic book! Fortunately my sword seemed to disapatch it quickly, and I used my spear to stab another one shortly after.
@@ -13002,7 +13304,7 @@ Ancient Heels
 You find a set of glowing heels, glowing magnificently, along with a strange crystal next to it.
 你发现一双发光的高跟鞋，闪闪发光，旁边还有一个奇怪的水晶。
 A pair of towering heels, enchanted with combat magic. When powered, they reduce slow level by 1, and deal 25 shadow damage on-hit with brief slow.
-一双高耸的高跟鞋，刻满了战斗魔法。充能后，它们会降低 1 级减速等级，并在击中时造成 25 点阴影伤害并带有短暂减速。
+一双高耸的高跟鞋，刻满了战斗魔法。充能后，它们会降低 1 级减速等级，并在击中时造成 25 点暗影伤害并带有短暂减速。
 'Shoes of the graceful'
 '优雅之鞋'
 You can barely stand in these heels. They are rigid, metallic, and unbreakable, yet padded on the inside.
@@ -13183,6 +13485,8 @@ Acid
 酸性
 Shadow
 阴影
+Holy
+神圣
 Arcane
 奥术
 Ice
@@ -13294,8 +13598,6 @@ The EnemyName manages to retreat with your items!
 EnemyName 设法带着你的物品撤退！
 The orb contains knowledge of SPELL.
 该水晶包含 SPELL 的知识。
-You capture the EnemyName. You can become a champion in the Reputation screen.
-你捕获了 EnemyName。你可以在声望界面成为卫士。
 You capture the EnemyName.
 你捕获了 EnemyName。
 You capture the EnemyName in the name of the goddess of GODDESS.
@@ -13355,7 +13657,7 @@ Wizard
 Peasant
 普通人
 Start with nothing to your name. For those who want a challenge.
-从你的名字开始。对于那些想要挑战的人。
+从一无所有开始。对于那些想要挑战的人。
 Trainee
 练习生
 Spell Choice:
@@ -13375,9 +13677,9 @@ Save Codes
 Roguelike
 肉鸽游戏
 Grants a save code every floor you can write down. Autosaves only on floor start.
-为你可以写下的每一层授予一个保存代码。 仅在楼层启动时自动保存。
+每当你到达新的楼层时会给予你一个存档码，你可以将其记下。当你进入下一层时存档会自动存档。
 No save codes, forced autosaves. You are in it to win it.
-没有保存代码，强制自动保存。你是为了赢而来的。
+没有存档码，只会自动存档。你来到这里只是为了赢。
 Prison Strictness:
 监狱严密性：
 Normal
@@ -13387,7 +13689,7 @@ Easy
 Strict
 严密
 If you get captured, you might get rescued if you have good relations.
-当你被抓后，如果你有良好的关系，你可能会获救。
+当你被抓后，如果你与其他人良好的关系，你可能会获救。
 If you get captured, you will always get rescued and pay a fee.
 当你被抓后，你总是会被营救并支付费用。
 If you get captured, you are totally on your own.
@@ -13397,7 +13699,7 @@ Start Playing
 Lock your settings in, nice and tight.
 锁定你的设置，又好又紧。
 Choose some perks to spice up your run.
-选择一些额外选项，为你的游玩增添趣味。
+选择一些额外技能，为你的游玩增添趣味。
 This game engages in safe and consensual analytics.
 该游戏涉及安全和自愿的数据分析。
 It sends data about spell choices, levels reached, etc, to help balance and improve the game.
@@ -14093,7 +14395,7 @@ Forming blockade.
 形成屏障。
 
 Looks like I'm up to no good... better stop me!
-看来我不怀好意了……最好阻止我！
+看来我要做坏事了…… 最好阻止我！
 Careful where you point that thing!
 小心你指向的地方！
 Containment breach!
@@ -14287,6 +14589,235 @@ I'd like to place a bid too~
 我也想出价~
 Oooh, that one's mine!
 哦，那个是我的！
+
+No! I don't want to read your magazines!
+不！我才不想看你的杂志！
+No, I don't want to learn about Shibari!
+不，我才不想了解日式绑缚！
+No, I don't want to learn about your toys!
+不，我才不想了解你的玩具！
+I found this book about Shibari... is it yours?
+我找到了这本关于日式绑缚的书...是你的吗？
+I'm so clumsy... maybe you can fix that.
+我太蠢了...也许你可以解决这个问题。
+Gee, looks like I can't keep my mouth shut...
+天啊，看起来我的嘴闭不上了...
+Shhhhh.
+嘘....
+Be quiet.
+安静。
+Keep your hands off my books.
+别把你的手放我书上。
+Heh. Serves you right.
+呵呵。服务你是对的。
+Time to lock you away.
+是时候把你锁起来了。
+Don't get your paws on anything important.
+别把你的爪子放在任何重要的东西上。
+I was reading that!
+我正在读那个！
+You're not supposed to have that.
+你不应该有那个。
+You. Stop.
+你。停下。
+Who are you?
+你是谁？
+You're entering my personal space.
+你正在擅自闯入我的私人空间。
+I'm going to ask you to leave
+我要请你离开
+You're ruining the books!
+你毁了这书！
+Do you need a gag?
+需要堵嘴吗？
+Shut up.
+闭嘴。
+Put that back!
+把它放回去！
+There's nothing to learn from that, you ignorant buffon.
+你个无知的小丑，从中没什么可以学习到的。
+Don't dive into someone else's belongings!
+不要潜入别人的东西里去！
+You've destroyed an ancient artifact, imbecile!
+你毁掉了一件古老的神器，白痴！
+I wish you'd just stay out of trouble...
+我希望你远离麻烦...
+Gotchya.
+明白了。
+You're going to hurt someone with that.
+你这样做会伤害到别人。
+My books!
+我的书！
+Stay down.
+趴下。
+Get back here--
+回来--
+Just give it up.
+放弃吧。
+Why you...
+你为什么...
+Time for you to stay out of trouble.
+是时候让你远离麻烦了。
+Come along.
+一起来。
+Stay put!
+留在原地！
+I'll be taking that back.
+我收回那句话。
+Click.
+咔哒。
+If you really want to know, my name is PTRN. I am the keeper of this place.
+如果你真的想知道的话，我的名字是 PTRN。是这个地方的守护者。
+Typical.
+不出所料。
+*sighs* Another one...
+*叹气* 另一个...
+Keep the damage under control!
+控制伤害！
+Stop fighting, you guys!
+别打架了，伙计们！
+You'll ruin the books!
+你会毁掉这些书的！
+Stop making a mess!
+别再添乱了！
+You're too dangerous to have around.
+你太危险了，不能在身边。
+I don't care what happens to you as long as you're out of here.
+只要你离开这里，我不在乎你会发生什么。
+Get out of my library!
+从我的图书馆滚出去！
+
+No! I didn't do anything wrong...
+不！我没有做错什么...
+Don't punish me! Please!
+别惩罚我！求你了！
+It's not my fault!
+这不是我的错！
+It's your turn, dear~
+轮到你了，亲爱的~
+Looks like I'm the patient now~
+看来我现在是病人了~
+I've been an unruly nurse...
+我曾经是一个不守规矩的护士...
+It's time for your shot...
+是时候开枪了...
+Why are you out of your cell?
+你为什么离开牢房？
+You need my help!
+你需要我的帮助！
+Those are supposed to keep you still you know...
+你知道的，这些应该能让你安静下来......
+You've got an appointment scheduled.
+你已经预约好了。
+Lets get you back in your jacket~
+穿上你的拘束衣吧~
+Patients are not allowed to have toys.
+患者不允许拥有玩具。
+Oh no you don't, sweetie!
+哦不，你不知道，亲爱的！
+Oh my~
+天哪~
+Oof! Looks like you need to be taught a lesson!
+哎哟！看来你需要被教训一下！
+You can be cured if you just give up.
+只要你放弃，你就会被治愈。
+You're going to ruin your progress~
+你会毁掉你的进度的~
+Oh my, that's dangerous!
+天哪，这很危险！
+Patients are forbidden from casting spells!
+病人不允许施展法术！
+Keep those pretty hands to yourself, dear~
+把那双漂亮的手留给自己吧，亲爱的~
+Where'd you find that, dear?
+你在哪里找到的，亲爱的？
+Silly girl, your illness can't be cured by a prayer.
+傻姑娘，你的病不是靠祈祷就能痊愈的。
+That's not yours, sweetie~
+那不是你的，甜心~
+You shouldn't break things, you know~
+你不应该破坏东西，你知道的~
+I knew something was amiss!
+我知道出事了！
+You won't be getting away that easily, dear~
+亲爱的，你不会那么轻易逃脱的~
+Won't be needing this~
+不需要这个~
+Hey, who said you could do that!
+嘿，谁说你可以这么做的！
+I'm so excited!
+我太激动了！
+A slippery one, aren't you?
+你真是个狡猾的人，不是吗？
+Now now, you can't just resist like that~
+现在，你不能反抗了~
+Tsk tsk. You can do better, dear~
+啧啧。亲爱的，你可以做得更好~
+Lets get you back to your cell!
+让我们带你回到你的牢房！
+So nice of you to join me!
+很高兴你能加入我！
+Now let's see, good patients should be still...
+现在我们看看，我们的好病人应该还……在
+A gift? Thank you so much!
+一份礼物？非常感谢！
+You won't be getting out of that any time soon!
+你短期内无法摆脱这种困境！
+Nurse PTRN, reporting for duty!
+护士 PTRN，报到啦！
+Someone call security!
+有人叫保安！
+I will try to subdue them~
+我会努力制服他们的~
+Code Gray!
+格雷码！
+Hold her down! I'll get the jacket!
+按住她！我去拿拘束衣！
+Moving in to support!
+去提供帮助！
+Let's mediate things, shall we?
+让我们调解一下，好吗？
+Why don't you calm down so we can talk. Or not~
+你为什么不冷静下来，这样我们就可以谈谈了。或者你不愿意~
+Now now, what do we have here?
+现在，我们有什么？
+
+I did what the manual said!
+我是按照说明书说的做的！
+I seem to have caught something, won't you help?
+我好像发现了什么东西，你能帮帮我吗？
+It's time for your daily dose of cuddling~
+又到了每日拥抱的时间了~
+I diagose you with excessive subbiness.
+我诊断你过于卑鄙。
+Seems like you've caught a case of female hysteria...
+看来你得了女性歇斯底里症……
+I diagnose you with a case of bratty behavior...
+我诊断你有一种顽皮的行为...
+Have you had your daily cuddles yet?
+你每天都拥抱过吗？
+It's time for your edging treatment~
+是时候进行极限治疗了~
+Sexual health is physical health, my dear~
+性健康就是身体健康，亲爱的~
+PTRN MD here. Let's see what we've got...
+PTRN MD 在这里。让我们看看我们有什么...
+Security!
+安全！
+What's this disturbance...
+这是什么扰乱……
+Must I do everything myself...
+一切都必须我自己做吗...
+Settle down.
+安家。
+I didn't want to get my hands dirty.
+我不想弄脏我的手。
+Looks like the gloves are off~
+看起来手套脱了~
+Let me get my tools.
+让我去拿我的工具。
+I'll take a look.
+我会看一看。
 
 Got you!
 抓住你了！
@@ -15327,8 +15858,8 @@ Wait! That's too much! (PERCENT chance to avoid)
 (The SPEAKER giggles loudly)|(The vines catch up and pin you down)|(When they let go, you're left with a RESTRAINT)
 （SPEAKER 咯咯大笑）|（藤蔓追上并把你压住）|（当它们松开时，你就只剩下 RESTRAINT 了）
 
-(The SPEAKER looks at with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?
-（SPEAKER 用一种哲学的眼光看着）|你有没有想过你想要……|转变？
+(The SPEAKER looks at you with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?
+（SPEAKER 用一种哲学的眼光看着你）|你有没有想过你想要……|转变？
 (The SPEAKER takes a strange mask from her satchel)|Well, I have the answer right here...
 （SPEAKER 从她的跨包里拿出一个奇怪的面具）|好吧，我这里有答案......
 (The SPEAKER nods seriously)|My hypothesis was correct...
@@ -15375,6 +15906,54 @@ Fine, you've convinced me.
 （咯咯笑并点头）
 I don't have time for this. (PERCENT chance to avoid)
 我没有时间做这个。（PERCENT 的概率避开）
+(Shake your head and moan) (PERCENT chance to avoid)
+（摇头并呻吟）（PERCENT 的概率避开）
+
+(The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!
+（SPEAKER 微笑并狡猾地低头看着你）|嘿，我有一份 '工作' 给你！
+(The SPEAKER takes a duster gag from her satchel)|Such a good girl!|So here's what I have for you~|It's a special tool to help keep the place clean.
+（SPEAKER 从书包里拿出一个掸子口塞）|真是个好女孩！|这就是我给你的东西~|这是一个帮助保持地方卫生的特殊工具。
+(The SPEAKER grins)|I'm glad we could come to an understanding~|(She takes out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
+（SPEAKER 笑了）|很高兴我们能达成共识~|（她从书包里拿出一个掸子口塞）|现在，这个地方很脏。|你为什么不戴上这个来帮忙呢？
+(The SPEAKER frowns)|Fair enough.|Perhaps you should reconsider your life choices~
+（SPEAKER 皱起眉头）|很公平。|也许你应该重新考虑一下你的人生选择~
+(The SPEAKER shrugs)|I'll find someone else...
+（SPEAKER 耸耸肩）|那我去找其他人吧......
+(The SPEAKER reaches out to grab you)|Now now,|You shouldn't skip out on your duties~|(She pulls out a duster gag from her satchel and grins)
+（SPEAKER 伸手抓住你）|现在，|你不应该逃避你的职责~|（她从书包里拿出一个掸子口塞并笑了笑）
+(The SPEAKER smiles)|Don't be afraid!|(She turns the gag with the round mouth ball clearly visible)|Now open up...
+（SPEAKER 微笑）|别害怕！|（她转动口塞，圆形口球清晰可见）|现在打开……
+(The SPEAKER shrugs)|Fine, I'll get someone else to clean up.
+（SPEAKER 耸耸肩）|好吧，那我去找其他人来清理。
+(The SPEAKER places the gag in your mouth)|(She then buckles up the straps.)|(You feel a locking mechanism pull the straps in tight...)|Good maid!
+（SPEAKER 将口塞放入你的嘴里）|（然后她扣上带子。）|（你感觉到锁定装置将带子拉紧......）|好女仆！
+(The SPEAKER catches you and forces the gag on you)|(You feel it tighten as it locks on securely...)|I don't want to hear it!|Now go and do your job~
+（SPEAKER 抓住你并强行塞住你的嘴）|（当它牢牢锁定时，你会感觉到它收紧了......）|我不想听！|现在去做你的工作吧~
+
+I'll do it!
+我会做的！
+(Nod seriously)
+（认真点头）
+I don't like the sound of this.
+听起来我并不喜欢。
+(Shake your head)
+（摇头）
+
+Yes miss!
+是的，女士！
+(Nod again)
+（再次点头）
+Actually, maybe not...
+事实上，也许我不想...
+(Shake your head)
+（摇头）
+
+Okay okay... I'll do it.
+好吧好吧…… 我会做的。
+(Giggle and nod)
+（咯咯笑并点头）
+That gag is far too big! (PERCENT chance to avoid)
+这口塞也太大了吧！（PERCENT 的概率避开）
 (Shake your head and moan) (PERCENT chance to avoid)
 （摇头并呻吟）（PERCENT 的概率避开）
 
@@ -15819,6 +16398,8 @@ Not really.
 (Shake your head)
 （摇头）
 
+Fine...
+好吧...
 That sounds fun!
 这听起来很有趣！
 (Nod again)
@@ -18079,22 +18660,24 @@ An item has increased your spell damage!
 
 AMNT ice damage/turn vs. Frozen
 AMNT 冰冻伤害/回合 vs. 冰冻
+AMNT shadow bleed (10 turns)
+AMNT 暗影吸血（10回合）
 
 Sealing Talisman
 封印符
-Fuuka's magic begins sealing your power!
-Fuuka 的魔法开始封印你的力量！
-Fuuka's magic makes you sluggish!!
-Fuuka 的魔法让你变得迟钝！！
-Fuuka's magic renders you helpless!!!
-Fuuka 的魔法让你束手无策！！！
-Fuuka's magic is restricting you!
-Fuuka 的魔法束缚了你！
+You were hit by one of Fuuka's talismans. Fuuka's magic begins sealing your power!
+你被 Fuuka 的一枚护身符击中了。Fuuka 的魔法开始封印你的力量！
+You were hit by one of Fuuka's talismans. Fuuka's magic makes you sluggish!!
+你被 Fuuka 的一枚护身符击中了。Fuuka 的魔法让你变得迟钝！！
+You were hit by one of Fuuka's talismans. Fuuka's magic renders you helpless!!!
+你被 Fuuka 的一枚护身符击中了。Fuuka 的魔法让你束手无策！！！
+You were hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting you!
+你被 Fuuka 的一枚护身符射中了。Fuuka 的魔法束缚了你！
 
 Sealing Shadows
-封印阴影
+封印暗影
 Shadowy magic is restricting you!
-阴影魔法正在束缚你！
+暗影魔法正在束缚你！
 A powerful seal holds you in place temporarily!!!
 强大的封印将你暂时固定在原地！！！
 You lock yourself in magical locks!
@@ -18147,14 +18730,14 @@ Change Pose
 改变姿势
 Quick Color Palette
 快速调色板
-Item Layers and Color Filters
-物品层和滤色器
+Item Color
+物品颜色
 Item Catalog
 物品目录
 Layers:
 层：
-Enter Hex Code:
-输入十六进制颜色码：
+Hex Code:
+十六进制颜色码：
 
 Toggle Struggle UI Mode
 切换挣扎 UI 模式
@@ -18167,8 +18750,8 @@ Show Quick Inventory
 Skip Tutorial
 跳过教程
 
-Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like some brief tips?
-欢迎来到淫荡地牢！您似乎是第一次来到这里，|需要一些简短的提示吗？
+Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?
+欢迎来到淫荡地牢！您似乎是第一次来到这里，|您想了解一下界面的简要介绍吗？
 (Leave and Disable Tutorial)
 （离开并关闭教程）
 (Yes Please!)
@@ -18198,14 +18781,14 @@ There are four main ways to escape restraints:|Struggling, which is effective ag
 逃脱束缚有四种主要方法：|挣扎，这对灵活且较弱的限制有效，|切割，这取决于您持有的武器和物品的属性，|解开扣子/解开，这取决于您是否有可以正常使用的双手，|还有解锁，这是您解开安全扣之前所必需的。
 These are options for how to display your character.|You don't have to worry about them for now,|but when your character is tied up you may find them useful|...or enjoyable.
 这些是如何显示您的角色的选项。|您现在不必担心它们，|但是当您的角色被束缚时，您可能会发现它们很有用|...或享受。
-This is the status bar.|It shows various values and buffs relating to your character.|Distraction determines how easy it is to cast spells and resist teasing.|Stamina is required to sprint and attack with a weapon.|Mana is used to cast spells. You have what is called a 'Mana Pool,'|which is excess mana that slowly refills you mana bar until it runs out.|Finally, running out of Willpower makes it much harder to escape bondage.
-这是状态栏。|它显示与你的角色相关的各种值和增益。|分心决定了施放法术和抵抗戏弄的难易程度。|冲刺和使用武器攻击需要体力。|法力用于施法咒语。你有所谓的 '法力池'，|这是多余的法力，它会慢慢地补充你的法力条，直到耗尽。|最后，意志力耗尽会让你更难逃脱束缚。
+This is the buffs bar.|It shows various values and buffs relating to your character.|You can click the gold triangle to expand it,|Showing additional info about your character.
+这是增益栏。|它显示与您的角色相关的各种值和增益。|您可以单击金色三角形将其展开，|显示有关您的角色的其他信息。
 These are the action buttons.|You can use them to perform various actions like closing doors or sprinting.|You can also toggle various settings such as automatically passing|through allies or auto-pathing when there are no enemies nearby.|You can also swap between recently used weapons.
 这些是动作按钮。|您可以使用它们执行各种动作，例如关门或冲刺。|您还可以切换各种设置，例如自动穿过队友或在附近没有敌人时自动寻路。|您还可以交换最近使用过的武器。
-These are additional toggles used for various purposes.|Hover over them to see what they do.
-这些是用于各种目的的附加开关。|将鼠标悬停在它们上方即可查看它们的作用。
-These are the various submenus.|Your Inventory is used to brows items and use or equip them.|The Journal contains lore, notes, and hints gathered along your journey.|The Journal also contains info on available quests,|and your reputation with various factions.
-这些是各种子菜单。|您的背包用于浏览物品并使用或装备它们。|日记包含您在旅程中收集的知识、笔记和提示。|日记中还包含有关可用任务的信息，|以及您在各个派系中的声誉。
+These are various submenus.|Your Inventory is used to brows items and use or equip them.|The Journal contains lore, notes, and hints gathered along your journey.|The Journal also contains info on available quests,|and your reputation with various factions.
+这些是各种子菜单。|您的背包用于浏览物品并使用或装备它们。|日记包含您在旅程中收集的知识、笔记和提示。|日记还包含有关可用任务的信息，|以及您在各种方面的声誉以及派系。
+This is the status bar, which gives info on your base stats.|Distraction determines how easy it is to cast spells and resist teasing.|Stamina is required to sprint and attack with a weapon.|Mana is used to cast spells. You have what is called a 'Mana Pool,'|which is excess mana that slowly refills you mana bar until it runs out.|Finally, running out of Willpower makes it much harder to escape bondage.
+这是状态栏，提供有关您的基本统计数据的信息。|分心决定了施放法术和抵抗戏弄的难易程度。|冲刺和使用武器攻击需要体力。|法力用于施放法术。你有所谓的'法力池'，|这是多余的法力，它会慢慢地补充你的法力条，直到耗尽。|最后，意志力耗尽会让你更难逃脱束缚。
 This is the hotbar.|Here you will find various spells and customizable actions.|You can customize it through the Spells submenu by clicking on a spell.|You can also add items, armor, and consumables to it from the Inventory.
 这是热栏。|在这里您可以找到各种咒语和可自定义的操作。|您可以通过单击咒语通过咒语子菜单对其进行自定义。|您还可以从背包中向其添加物品、盔甲和消耗品。
 Finally, this is where the message log will be.|It provides a written record of what happened the last few turns.|You can click the 'Log' button to expand the log,|Allowing you to look much further back.
@@ -18305,7 +18888,7 @@ Repel a planar incursion by a dangerous demon.
 Stop some witches from performing a dubious summoning ritual.
 阻止一些女巫进行可疑的召唤仪式。
 Defeat a congregation of the Shadow Clan.
-击败阴影族的会众。
+击败暗影族的教徒。
 
 The Goddess grants you knowledge of SpellLearned!
 女神赐予你法术学习知识！
@@ -18327,3 +18910,506 @@ Challenge Settings
 
 Challenge Settings:
 挑战设置：
+
+Simple
+简单
+Advanced
+高级
+
+Exits locked! Find the key!
+出口被锁住了！寻找钥匙！
+Got the key!
+拿到钥匙了！
+BOSS ROOM
+BOSS 房
+BOSS ROOM CLEARED!
+BOSS 房已清空！
+Room bugged. Please Report.
+房间出现问题。请反馈。
+
+(Cursed)
+（诅咒）
+of Agility
+敏捷
+Precise
+精确
+Silent
+沉默
+Blizzard
+风暴
+of Warding
+守卫
+of Freedom
+自由
+of Resistance
+挣扎
+of Power
+力量
+Arcane
+奥术
+Entuned
+心悦诚服
+Draining
+排水
+of Echoes
+回声
+Infused
+注入
+Focusing
+专注中
+of Empowerment
+赋权
+of Destruction
+毁灭
+
+Phase Dance
+相位之舞
+For 4 turns, your movement does not advance time. Attacking or casting counts as one move and passes time as normal.
+在 4 回合内，你的移动不会使时间提前。攻击或施法算作一招，并正常流逝时间。
+You are F A S T
+你 超 越 了 光 速
+
+Double Accel
+双重加速
+Slow down time by 1/2 for 10 turns (world time). Stamina regens 50% slower.
+时间减慢 1/2，持续 10 回合（世界时间）。体力恢复速度减慢 50%。
+Time is slowed by 2x
+时间减慢了 2 倍
+Triple Accel
+三重加速
+Slow down time by 1/3 for 10 turns (world time). Stamina regens 75% slower.
+时间减慢 1/3，持续 10 回合（世界时间）。体力恢复速度减慢 75%。
+Time is slowed by 3x
+时间减慢了 3 倍
+Quadro Accel
+四重加速
+Slow down time by 1/4 for 10 turns (world time). Stamina does not regen.
+时间减慢 1/4，持续 10 回合（世界时间）。体力不会恢复。
+Time is slowed by 4x
+时间减慢了 4 倍
+Total Accel
+完全加速
+Stop time 10 turns (world time). Stamina does not regen.
+在 10 回合内暂停时间（世界时间）。体力不会恢复
+Time has come to a halt...
+时间已经静止了……
+
+Time slows down by 2x!
+时间慢了 2 倍！
+Double Accel!
+双重加速
+Time slows down by 3x!
+时间慢了 3 倍！
+Triple Accel!
+三重加速！
+Time slows down by 4x!
+时间慢了 4 倍！
+Quadro Accel!
+四重加速器！
+Time has ceased to pass.
+时间已经停止流逝。
+Total Accel!
+完全加速！
+
+You begin to move at lightning speed!
+你开始以闪电般的速度移动！
+ACCEL BEGIN!
+加速开始！
+Not enough mana.
+法力不够。
+You need to free your legs.
+你需要先让你的腿可以自由活动。
+
+Swap
+交换
+Choose a target with a clear line of sight to you and switch places with them.
+选择一个视野清晰的目标并与他交换位置。
+You point at the target and swap places with them!
+你指向目标并与他交换位置！
+You point at the target and try tp swap places, but they resist!
+你指向目标并尝试交换位置，但他拦截了！
+You point at the target and try tp swap places, but they resist and the spell fails!
+你指向目标并尝试交换位置，但他们抵抗并且咒语失败！
+Choose target to swap with
+选择要交换的目标
+
+The ENMY blocked your attack, negating it entirely!
+ENMY 阻挡了你的攻击，将其完全抵消！
+The ENMY blocked your attack, reducing the damage by PCNT%!
+ENMY 阻挡了你的攻击，使伤害减少了 PCNT%！
+The ENMY remains unscathed after putting up a strong defense!
+ENMY 顽强防御后毫发无伤！
+The ENMY puts up surprising resistance, reducing the damage by PCNT%.
+ENMY表现出惊人的抵抗力，将伤害减少了 PCNT%。
+
+no damage
+无伤
+
+Raise Defenses
+提高防御
+Spend 90 stamina to shield yourself from damage equal to your Block. Lasts 10 turns or until you attack.
+花费 90 点体力来保护自己免受等同于格挡的伤害。持续10回合或直到你攻击为止。
+Evasive Maneuvers
+机动躲避
+While active, you evade almost all attacks, but your stamina is drained by 50 per turn plus 10 per slow level. The base stamina cost is reduced by your Evasion.
+活跃时，你可以躲避几乎所有攻击，但你的体力每回合会消耗 50 点，加上每缓慢等级 10 点。基础体力消耗会因躲避而减少。
+Break Free
+挣脱
+Consume 20 Battle Rhythm to increase escape power by +20% plus 1% of Bondage Resist. Lasts 60 turns or until your willpower reaches 0.
+消耗20个战斗节奏，逃跑力+20%，束缚抗力增加1%。持续60回合或直到你的意志力达到0。
+Problem Solving
+解决问题
+While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +40% plus 20% of Bondage Resist
+活跃时，挣扎需要额外 10 回合，但来自工具和增益的逃脱力量加成增加 +40% 加上束缚抗性的 20%
+
+You run out of strength to keep dodging...
+你已经没有力气继续躲避了……
+You can't muster the strength to dodge right now...
+你现在还没有力气躲闪……
+You prepare to dodge!!!
+你准备躲避！！！
+
+Your expertise and skill provides you with additional tool effectiveness! (+AMOUNT%)
+你的专业知识和技能为您提供了额外的工具效率！（+AMOUNT%）
+
+You don't have enough stamina.
+你的体力不够。
+You raise your defences!
+你提高防御！
+Your defenses are raised!
+你的防御力提高了！
+
+You don't have the will to break free.
+你没有挣脱束缚的意志。
+You don't have enough Battle Rhythm. You need 20.
+你的战斗节奏还不够。你需要20。
+You channel your fighting spirit into your desire for freedom!
+你将你的战斗精神转化为你对自由的渴望！
+Your struggle power is greatly increased!!!
+你的奋斗力大大增强！！！
+The teleportation partially succeeds due to an obstruction, placing you near the intended point.
+由于阻碍，传送部分成功，使你接近预定地点。
+The teleportation fizzles due to obstruction.
+由于阻碍，传送失败。
+Confirm
+确认
+What is your name?
+你叫什么名字？
+
+Enrage
+狂暴
+Scream loudly, causing nearby enemies to investigate and increasing Battle Rhythm by 10. Has a 100 turn cooldown.
+大声尖叫，使附近的敌人调查并增加10的战斗节奏。有100回合的冷却时间。
+
+You shout loudly and shake your fist at the sky! (+10 BR)
+你大声喊叫，对着天空挥舞着拳头！（+10 BR）
+Mmmph! (You can't shout while gagged)
+Mmmph!（塞住嘴时不能大声喊叫）
+You are plenty mad enough as is.
+你已经够疯狂的了。
+You are too tired to rage. Perhaps try a warm cozy bed instead?
+你太累了，气不起来。也许可以换一张温暖舒适的床？
+
+turns
+回合
+
+Your shield absorbed AMNT damage.
+你的护盾吸收了 AMNT 的伤害。
+You are currently shielded from damage and some spells.
+你目前被保护免受伤害和一些法术的伤害。
+No offhand weapon set. Activate the spell in your hotbar to set one.
+没有副手武器组。激活快捷栏中的咒语来设置一个。
+
+Flash Portal
+闪光传送门
+After 3 turns, teleport to a nearby location (including into darkness). All adjacent creatures are teleported with you, in random order.
+3 回合后，传送到附近的位置（包括进入黑暗）。所有相邻的生物都会以随机顺序与你一起传送。
+You call upon a misty portal to transport you and nearby creatures!
+你召唤一个迷雾传送门来传送你和附近的生物！
+Choose target location
+选择目标位置
+
+Transportation Portal
+运输传送门
+After 3 turns, teleport to a nearby location (including into darkness). Transports only allies, but they are stunned for the duration.
+3 回合后，传送到附近的位置（包括进入黑暗）。只传送盟友，但他们会在持续时间内被眩晕。
+You call upon a misty portal to transport you and your allies!
+你召唤一个迷雾传送门来传送你和你的盟友！
+
+Banishing Portal
+放逐传送门
+After channeling for 3 turns, teleport all adjacent creatures to a point you can see. Does not teleport yourself.
+引导 3 回合后，将所有相邻生物传送到你可以看到的位置。不会传送自己。
+You call upon a misty portal to transport those around you!
+你召唤一个迷雾传送门来传送你周围的人！
+
+Rift
+裂缝
+Tearing a rift in space, you teleport to a location (including into darkness). Leaves behind a rift for 4 turns, which enemies can follow you through.
+撕裂空间裂缝，你传送到一个位置（包括进入黑暗）。留下一条裂缝 4 回合，敌人可以跟踪你穿过裂缝。
+You tear open a hole in space and step through!
+你撕裂了一个空间裂缝并跨了过去！
+
+Shadow Dance
+阴影之舞
+While standing in a shadowed location, you can teleport to a nearby shadowed location. You can also teleport adjacent to shadow creatures.
+站在阴影位置时，您可以传送到附近的阴影位置。你还可以传送到暗影生物附近。
+You slip between the shadows...
+你在阴影之间滑行……
+Choose a shadow
+选择阴影
+
+Teleportation Circle A
+传送圈 A
+When cast on a point, creates a teleportation circle. When cast on yourself, channel for 10 turns to teleport yourself and nearby allies to the teleportation circle. When learned, unlocks teleportation circle B and C as well.
+当施放于某个点时，会创建一个传送圈。当对自己施放时，引导 10 回合，将自己和附近的盟友传送到传送圈。可通过学习解锁传送圈 B 和 C。
+You begin a teleportation ritual...
+你开始了传送仪式……
+Choose a location to put a teleportation circle, or yourself to teleport to the created circle.
+选择放置传送圈的位置，或者选择传送到你自己创建的圆圈。
+Teleportation Circle B
+传送圈 B
+When cast on a point, creates a teleportation circle. When cast on yourself, channel for 10 turns to teleport yourself and nearby allies to the teleportation circle.
+当施放于某个点时，会创建一个传送圈。当对自己施放时，引导 10 回合，将自己和附近的盟友传送到传送圈。
+
+Nature Spirit
+自然精灵
+The nature spirit returns to the earth from whence it came.
+自然精灵回到了它所来的大地。
+
+Vine Bolt
+藤蔓箭
+
+Gunslinger
+枪手
+Weapons abilities and other abilities that cost charge contribute 20% of their cost to Battle Rhythm.
+武器技能和其他需要消耗能量的技能将其消耗的 20% 贡献给战斗节奏。
+Effortless Assault
+毫不费力的攻击
+Weapon stamina cost is reduced by a percentage equal to your Battle Rhythm.
+武器体力消耗减少的百分比等于你的战斗节奏。
+
++50 Evasion from using Phase
+使用相位时 +50 闪避
+
+Blade Dance
+剑舞
+Costs 60 stamina to dash to an adjacent spot. If you are holding a physical weapon, deals cleave damage to nearby enemies equal to 50% weapon damage. If you have a Light offhand weapon, deal 75% of its damage as well.
+冲向邻近地点需要消耗 60 点体力。如果你持有物理武器，会对附近的敌人造成相当于 50% 武器伤害的劈砍伤害。如果你有一把轻型副手武器，也会造成 75% 的伤害。
+You spin towards a location, slashing at nearby enemies!
+你冲向一个位置，猛击附近的敌人！
+
+The Shadow Within
+内心的阴影
+Shadow Dance no longer requires you to be in shadow in order to dash to another shadow, but the mana cost is doubled when doing so.
+阴影之舞不再需要你处于阴影中才能冲向另一个阴影，但这样做时法力消耗会加倍。
+
+Summon Holy Orb
+召唤圣球
+Select where to put the holy orb (cannot place on occupied squares)
+选择放置圣球的位置（不能放置在已占用的方块上）
+Create a stationary holy orb that lasts indefinitely and heals allies. It also fires blinding bolts at enemies within its aura. If you let go of yourself near a holy orb you are immediately punished. Should not be placed within 8 tiles of each other.
+创建一个永久持续并治愈盟友的固定圣球。它还会向其光环内的敌人发射致盲箭矢。如果你在圣球附近高潮，你会立即受到惩罚。彼此之间不应放置在 8 格以内。
+A holy orb descends, blessing you with its roundness.
+一颗神圣的球体降临，用它的圆度祝福你。
+You call upon the root of all enlightenment!
+你召唤一切觉悟的根源！
+
+Holy Orb
+圣球
+The holy orb returns to its place in the sky.
+圣球回到了天空中的位置。
+
+Holy Bolt
+圣箭
+The holy orb observes your lack of discipline, and issues a punishment.
+圣球观察到你缺乏纪律，并发出惩罚。
+
+Divine Chastity Belt
+神圣贞操带
+A chastity belt forged in holy light. Only a Goddess' will can release you.
+圣光锻造的贞操带。只有女神才能释放你。
+There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge.
+除了悔改，没有任何出路。它的神圣光环会导致振动器在你到达极限之前停止。
+Your Divine Chastity Belt causes the vibrators to stop.
+你的神圣贞操带会使振动器停止。
+
+A chastity belt forged in holy light. Only the will of a Goddess will release you!
+圣光锻造的贞操带。只有女神才能释放你！
+
+You find a heavenly chastity belt. Who could it be for?
+你找到了一条天堂般的贞操带。可以给谁呢？
+
+Magic Arm Belts
+手臂绑带（附魔）
+Highly secure belts enchanted with magic
+具有魔法的高安全绑带
+Lockable and fully adjustable to ensure snugness.
+可锁定且完全可调，以确保舒适。
+Magic Leg Belts
+腿部绑带（附魔）
+Magic Ankle Belts
+脚踝绑带（附魔）
+
+The Liquid Metal starts engulfing you!
+液态金属开始吞噬你！
+The Liquid Metal explodes and covers you!
+液态金属爆开并包裹住你！
+The Liquid Metal takes advantage of your status and engulfs you!
+液态金属正在吞噬你！
+
+Silver Burst
+爆发金属
+Select a liquid metal tile
+选择液态金属块
+Target a liquid metal tile. After 3 turns, it erupts, spreading more liquid metal and engulfing any nearby creatures. Deals DamageDealt crush damage and applies 80 points of metallic binding
+瞄准液态金属块。3 回合后，它会爆发，散布更多液态金属并吞没附近的任何生物。造成伤害造成挤压伤害并施加 80 点金属束缚
+A powerful explosion simmers beneath the surface...
+强大的爆炸在地表下酝酿……
+
+The ground shakes as a huge wall of liquid metal approaches!
+大地震动，巨大的液态金属墙逼近！
+
+Liquid Metal Cube
+液态金属方块
+The liquid metal cube dissolves into a huge pile of glittering dust
+液态金属方块溶解成一大堆闪闪发光的银色灰尘
+The liquid metal cube engulfs you and squeezes tightly! (DamageTaken)
+液态金属方块将你吞没并紧紧挤压！（DamageTaken）
+The liquid metal cube engulfs your body and hardens, taking the form of restraints! (+RestraintAdded)
+液态金属方块吞没你的身体并变硬，变成束缚的形式！（+RestraintAdded）
+
+Skeleton Archer
+骷髅射手
+The Skeleton falls to pieces.
+骷髅四分五裂。
+The Skeleton restrains you! (+RestraintAdded)
+骷髅束缚了你！（+RestraintAdded）
+The Skeleton tackles you! (DamageTaken)
+骷髅来对付你！（DamageTaken）
+
+Cursed Arrow
+诅咒之箭
+Because your hands are unavailable, you kick the target instead.
+因为你的手无法正常活动，所以你只能踢目标。
+
+Your former owners are looking for you across the seven planes.
+你的前主人正在七界寻找你。
+
+A local business is missing one of their models, and will stop at nothing to find her.
+当地一家企业失去了一名模特，并且会不惜一切代价寻找她。
+The Doll Shoppe
+玩偶商店
+Elemental Slavers
+精灵奴隶
+
+Your duty as a maid is to keep the place clear of dirt and other hazards.
+作为女仆，你的职责是保持这个地方没有污垢和其他危险。
+Dirt Pile
+土堆
+You clear out the dirt pile
+你将土堆清理干净
+A ENMY was lurking inside the dirt pile!
+土堆里潜伏着一名 ENMY！
+You skipped your duty and left some dirt missing in the last level!
+你玩忽职守，在最后一个楼层中遗漏了一些泥土忘记清理！
+
+The Dollmaker does not take no for an answer.
+玩偶师不会接受 '不' 的回答。
+Fuuka's shrine maidens would like to have a word with you.
+Fukka的巫女们想和你说句话。
+Your instructor will meet with you at regular intervals for further training.
+你的导师将定期与你会面以进行进一步训练。
+
+Hogtied!
+捆绑
+Experience a comprehensive rope bondage experience.
+体验全面的绳索束缚体验。
+
+Rope Dojo
+绳道场
+Shadow Clan
+暗影教徒
+Fuuka's Shrine
+Fuuka的神龛
+Dollmaker
+玩偶师
+
+Receive the following restraints: 
+受到以下拘束：
+You will be bound with some form of restraint.
+你将受到某种形式的束缚。
+
+Shadow
+暗影
+
+Gag Geist
+鬼魂口塞
+The gag geist goes silent.
+鬼魂口塞沉默了。
+The gag geist teases you playfully!! (DamageTaken)
+鬼魂口塞顽皮地逗你！！（DamageTaken）
+The gag geist gags the girl with a ghastly grimace! (+RestraintAdded)
+鬼魂口塞用可怕的鬼脸堵住了女孩！（+RestraintAdded）
+
+Poltergeist 
+捣蛋鬼
+The poltergeist goes silent.
+捣蛋鬼沉默了。
+The poltergeist gropes and teases you playfully!! (DamageTaken)
+捣蛋鬼顽皮地摸索和戏弄你！（DamageTaken）
+The poltergeist binds you with... something? (+RestraintAdded)
+捣蛋鬼用……什么东西把你束缚住了？ （+RestraintAdded）
+
+Invisible Gag
+隐形口塞
+It's a gag, but invisible!
+这是个口塞，但是是隐形的！
+You wonder what color it is.
+你很好奇它是什么颜色。
+
+Invisible Blindfold
+隐形眼罩
+It's a blindfold, but invisible!
+这是个眼罩，但是是隐形的！
+How exactly is this supposed to work?
+这究竟是如何做到的？
+
+Invisible Armbinder
+隐形束手套
+It's an armbinder, but invisible!
+这是个束手套，但是是隐形的！
+You wonder what color it is.
+你很好奇它是什么颜色。
+
+Invisible Legbinder
+隐形束腿套
+It's an legbinder, but invisible!
+这是个束腿套，但是是隐形的！
+This is starting to get cruel...
+这一切开始变得残酷……
+
+Strangely dressed zombies start approaching you!!
+穿着奇异的僵尸开始向你靠近！！
+You hear moaning as the statues start to move...
+当雕像开始移动时，你会听到呻吟声……
+Devious tomes emerge from the bookshelves!
+书架上出现了狡猾的书籍！
+Armed mushrooms emerge from the ground to defend their home!
+武装蘑菇从地底冒出来保卫家园！
+Playful ghosts slip through the walls, giggling to themselves!
+顽皮的幽灵穿过墙壁，咯咯地笑！
+Ancient drones drop from the ceiling and come to life!
+古老的无人机从天花板上掉下来并重新开始运作！
+You were always being watched...
+你一直被人注视着...
+
+You find a store of gunpowder!
+你发现了一堆火药！
+
+Explosive Barrel
+炸药桶
+The explosive barrel falls apart and drops its gunpowder.
+炸药桶散开，里面的火药掉了出来。
+The explosive barrel catches fire and explodes!
+炸药桶着火并爆炸！

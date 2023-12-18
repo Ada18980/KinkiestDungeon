@@ -141,9 +141,12 @@ class TextCache {
 	/**
 	 * Stores the contents of a CSV file in the TextCache's internal cache
 	 * @param lines - An array of string arrays corresponding to lines in the CSV file
+  	 * Update 15.12.2023 - Certain languages already have this.cache, so they are not processed
 	 */
 	cacheLines(lines: string[][]): void {
-		lines.forEach((line) => (this.cache[line[0]] = line[1]));
+		this.language = TranslationLanguage;
+		const lang = (TranslationLanguage || "").trim().toUpperCase();
+		if (lang !== "RU") {lines.forEach((line) => (this.cache[line[0]] = line[1]));}
 		this.loaded = true;
 	}
 
@@ -184,9 +187,55 @@ class TextCache {
 	 * @param translations - An array of strings in translation file format (with EN and translated values on alternate lines)
 	 * @returns An array of string arrays corresponding to lines in the CSV file with the
 	 * values translated to the current game language
+  	 * Update 15.12.2023 - For certain languages (current only RU), the method of transferring to direct writing to this.cache via arrays has been changed
 	 */
 	buildTranslations(lines: string[][], translations: string[]): string[][] {
+		this.language = TranslationLanguage;
+		const lang = (TranslationLanguage || "").trim().toUpperCase();
 		let [translationsStringLineCache, translationsLineStringCache] = TranslationStringCachePreBuild(translations, "");
+		if (lang === "RU") {
+			lines.forEach((line, numberl) => (this.cache[line[0]] = this.buildTranslationsRU(line[1], lines, translations, numberl, translationsStringLineCache)));
+			return [];
+		}
 		return lines.map(line => ([line[0], TranslationStringCache(line[1], translationsStringLineCache, translationsLineStringCache)]));
+	}
+	/**
+	* Translates a string to another language from the array,
+	* the translation is always the one right after the english line
+	* Works for certain languages as a replacement for TranslationStringCache
+	* And writes the string directly to this.cache
+	* @param S - The original english string to translate
+	* @param massiven - working array
+	* @param massivru - data from translation file
+	* @param numberl - index of lines array
+	* @param {Map<string, number>} translationsStringLineCache
+   	 */
+	buildTranslationsRU(S: string, massiven: string[][], massivru: string[], numberl: number, translationsStringLineCache): string {
+		if (S != null){			
+			let S1 = S.trim();
+			if (S1 !== "") {
+				try {
+					let schet = 0;
+					for (let i = 0; i < numberl; i++) {
+						if (S1 === massiven[i][1]) {schet = schet + 1;}
+					}					
+					for (let i = 0; i < (massivru.length); i++) {
+						if (S1 === massivru[i] && schet === 0) {
+							let s = massivru[i + 1];
+							if (s) {
+								return s;
+							}
+							return S;
+						} else if (S1 === massivru[i] && schet > 0) {
+							schet = schet - 1;
+						}
+					}
+				}
+				catch (e) {
+                		console.warn('TranslationStringCache catch:', S, translationsStringLineCache.get(S1), e);
+				}
+			}
+		}
+	return S;
 	}
 }

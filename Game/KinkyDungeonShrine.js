@@ -16,6 +16,9 @@ let KinkyDungeonShrineBaseCosts = {
 	"Illusion": 200,
 };
 
+let KDRewardProgramScaling = 500;
+let KDRewardProgramBase = 500;
+
 let KDWillShrineWill = 0.25;
 let KinkyDungeonOrbAmount = 0;
 let KDShrineRemoveCount = 30;
@@ -303,11 +306,11 @@ function KinkyDungeonPayShrine(type) {
 
 			KDGameData.ShopRewardProgram += cost;
 			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true);
-			if (!KDGameData.ShopRewardProgramThreshold) KDGameData.ShopRewardProgramThreshold = 500;
+			if (!KDGameData.ShopRewardProgramThreshold) KDGameData.ShopRewardProgramThreshold = KDRewardProgramBase;
 			if (!KDGameData.ShopRewardProgram) KDGameData.ShopRewardProgram = 0;
 			if (point && KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(point.x, point.y)) && KDGameData.ShopRewardProgram > KDGameData.ShopRewardProgramThreshold) {
 				KDGameData.ShopRewardProgram = 0;
-				KDGameData.ShopRewardProgramThreshold += 100;
+				KDGameData.ShopRewardProgramThreshold += KDRewardProgramScaling;
 				KinkyDungeonMapSet(point.x, point.y, ';');
 				KinkyDungeonTilesSet("" + (point.x) + "," + (point.y), {Portal: "CommercePortal", Light: 5, lightColor: 0xffff88});
 			}
@@ -795,10 +798,12 @@ function KinkyDungeonHandleOrb() {
 
 let KDPerkConfirm = false;
 let KDPerkOrbPerks = [];
+let KDPerkOrbBondage = [];
 function KinkyDungeonTakePerk(Amount, X, Y) {
 	KinkyDungeonSetFlag("NoDialogue", 3);
 
 	KDPerkOrbPerks = KinkyDungeonTilesGet(X + "," + Y).Perks;
+	KDPerkOrbBondage = KinkyDungeonTilesGet(X + "," + Y).Bondage;
 	KinkyDungeonDrawState = "PerkOrb";
 	KinkyDungeonOrbAmount = Amount;
 	KDOrbX = X;
@@ -831,6 +836,32 @@ function KinkyDungeonDrawPerkOrb() {
 		});
 		count += 1;
 	}
+	if (KDPerkOrbBondage?.length > 0 && !KinkyDungeonStatsChoice.get("hideperkbondage")) {
+		let str = "";
+		for (let b of KDPerkOrbBondage) {
+			if (str) str = str + ', ';
+			str = str + TextGet("Restraint" + b);
+		}
+		if (KinkyDungeonStatsChoice.get("partialhideperkbondage")) {
+			DrawTextFitKD(TextGet("KDBondageOptionPerkHidden"), 1250, 360 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 30);
+		} else {
+			DrawTextFitKD(TextGet("KDBondageOptionPerk"), 1250, 350 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 24);
+			DrawTextFitKD(str, 1250, 385 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 22);
+		}
+		
+		FillRectKD(kdcanvas, kdpixisprites, "bg_bndg", {
+			Left: 1250-Twidth/2 - 10,
+			Top: 350 + count * pspacing - 30,
+			Width: Twidth + 20,
+			Height: 70 + 20,
+			Color: KDTextGray0,
+			LineWidth: 1,
+			zIndex: 60,
+			alpha: 0.7,
+		});
+		count += 1;
+	}
+	
 
 	if (KDPerkConfirm) {
 		DrawTextFitKD(TextGet("KinkyDungeonPerkConfirm"), 1250, 720, 1300, "#ffffff", KDTextGray2, 30);
@@ -847,7 +878,7 @@ function KinkyDungeonDrawPerkOrb() {
 
 	DrawButtonKDEx("accept", (bdata) => {
 		if (KDPerkConfirm) {
-			KDSendInput("perkorb", {shrine: "perk", perks: KDPerkOrbPerks, Amount: 1, x: KDOrbX, y: KDOrbY});
+			KDSendInput("perkorb", {shrine: "perk", perks: KDPerkOrbPerks, bondage: KDPerkOrbBondage, Amount: 1, x: KDOrbX, y: KDOrbY});
 			KinkyDungeonDrawState = "Game";
 		}
 		KDPerkConfirm = true;

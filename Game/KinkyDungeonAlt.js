@@ -70,6 +70,7 @@ let alts = {
 		noMusic: true,
 		keepMainPath: true,
 		persist: true,
+		prune: true,
 	},
 	"PerkRoom": {
 		name: "PerkRoom",
@@ -79,6 +80,7 @@ let alts = {
 		lightParams: "ore",
 		bossroom: false,
 		persist: true,
+		prune: true,
 
 		events: [
 			{trigger: "tick", type: "PerkRoom"},
@@ -285,8 +287,10 @@ let alts = {
 		name: "JourneyFloor",
 		Title: "JourneyFloor",
 		bossroom: false,
+		prune: true,
 		width: 12,
 		height: 8,
+		nostartstairs: true,
 		skin: "shrine", useDefaultMusic: true,
 		lightParams: "ore",
 
@@ -557,6 +561,7 @@ function KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, openness, dens
 			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
 		KDMapData.Grid = KDMapData.Grid + '\n';
 	}
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 	// Constrict hallways randomly in X
 	for (let Y = 2; Y < KDMapData.GridHeight - 1; Y += 1) {
@@ -834,6 +839,7 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 			KDMapData.Grid = KDMapData.Grid + '1';//KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
 		KDMapData.Grid = KDMapData.Grid + '\n';
 	}
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 	let tagModifiers = data.params.tagModifiers ? data.params.tagModifiers : undefined;
 
@@ -883,6 +889,7 @@ function KinkyDungeonCreateRoom(POI, VisitedRooms, width, height, openness, dens
 			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
 		KDMapData.Grid = KDMapData.Grid + '\n';
 	}
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 }
 
 function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
@@ -903,6 +910,7 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 			KDMapData.Grid = KDMapData.Grid + '1';
 		KDMapData.Grid = KDMapData.Grid + '\n';
 	}
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 
 	// Create the doll cell itself
@@ -1139,6 +1147,7 @@ function KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, openness,
 			KDMapData.Grid = KDMapData.Grid + '1';
 		KDMapData.Grid = KDMapData.Grid + '\n';
 	}
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 
 	// Create the doll cell itself
@@ -1216,6 +1225,7 @@ function KinkyDungeonCreateTunnel(POI, VisitedRooms, width, height, openness, de
 			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
 		KDMapData.Grid = KDMapData.Grid + '\n';
 	}
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 	// Place a shop and a Leyline Tap
 
@@ -1301,6 +1311,7 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
 		KDMapData.Grid = KDMapData.Grid + '\n';
 	}
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 	// Place a shop and a Leyline Tap
 	KinkyDungeonMapSet(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 + 1, 'l');
@@ -1330,9 +1341,10 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 		let perks = {};
 		for (let i = 0; i < perkCount; i++) {
 			let newperks = KinkyDungeonStatsChoice.get("perksdebuff") ? KDGetRandomPerks(perks, true) : KDGetRandomPerks(perks);
+			let bondage = KDGetPerkShrineBondage(newperks);
 			if (newperks.length > 0) {
 				KinkyDungeonMapSet(p1x + i * 2, py, 'P');
-				KinkyDungeonTilesSet("" + (p1x + i * 2) + "," + (py), {Perks: newperks});
+				KinkyDungeonTilesSet("" + (p1x + i * 2) + "," + (py), {Perks: newperks, Bondage: bondage});
 				perksplaced += 1;
 				for (let p of newperks) {
 					perks[p] = true;
@@ -1397,6 +1409,7 @@ function KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openne
 			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
 		KDMapData.Grid = KDMapData.Grid + '\n';
 	}
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 	// Normal end stairs
 	KinkyDungeonMapSet(b1*2 + 2, VisitedRooms[0].y*2, 's');
@@ -1478,6 +1491,7 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
 		KDMapData.Grid = KDMapData.Grid + '\n';
 	}
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 	KD_PasteTile(KDMapTilesList.ShopStart, KDMapData.StartPosition.x, KDMapData.StartPosition.y - 4, data);
 
@@ -1520,6 +1534,7 @@ function KinkyDungeonCreateTestTile(POI, VisitedRooms, width, height, openness, 
 			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
 		KDMapData.Grid = KDMapData.Grid + '\n';
 	}
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 	KD_PasteTile(KDTileToTest, KDMapData.StartPosition.x + 4, 3, data);
 
@@ -1564,6 +1579,7 @@ function KinkyDungeonCreateTutorial(POI, VisitedRooms, width, height, openness, 
 			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
 		KDMapData.Grid = KDMapData.Grid + '\n';
 	}
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 	// Normal end stairs
 	KinkyDungeonMapSet(width*2 - 2, VisitedRooms[0].y*2, 's');

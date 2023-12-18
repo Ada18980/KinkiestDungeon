@@ -32,6 +32,11 @@ let KDModelList_Sublevel = [];
 let KDModelListFilter = "";
 
 let KDWardrobeCategories = [
+	"Hairstyles",
+	"Cosplay",
+	"Face",
+	"Eyes",
+	"Mouth",
 	"Uniforms",
 	"Suits",
 	"Armor",
@@ -48,11 +53,7 @@ let KDWardrobeCategories = [
 	"Pants",
 	"Accessories",
 	"Hats",
-	"Cosplay",
-	"Hairstyles",
-	"Face",
-	"Eyes",
-	"Mouth",
+	"FashionRestraints",
 	"Body",
 ];
 
@@ -966,7 +967,10 @@ function KDDrawWardrobe(screen, Character) {
 			CharacterReleaseTotal(C);
 			CharacterNaked(C);
 			KinkyDungeonCheckClothesLoss = true;
-			KinkyDungeonSetDress("Bikini", "Bikini", C, true);
+			if (KinkyDungeonCurrentDress == "Bikini")
+				KinkyDungeonSetDress("Bikini", "Bikini", C, true);
+			else 
+				KinkyDungeonSetDress("None", "None", C, true);
 			KinkyDungeonDressPlayer(C, true);
 			KDInitProtectedGroups();
 			KinkyDungeonConfigAppearance = true;
