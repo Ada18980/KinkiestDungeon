@@ -3,7 +3,7 @@
 
 
 function KinkyDungeonAddTags(tags, Floor) {
-	let security = (KinkyDungeonGoddessRep.Prisoner + 50);
+	let security = (KDGetEffSecurityLevel() + 50);
 
 
 

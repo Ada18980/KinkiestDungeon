@@ -709,7 +709,7 @@ function KDSlip(dir) {
 	}
 	if (maxReached) {
 		KinkyDungeonSendActionMessage(10, TextGet("KDSlipIce"), "yellow", maxReached + 1);
-		KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, 1);
+		KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, 1);
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "Slipping", type: "none", power: 1.0, duration: 1,});
 		return true;
 	}

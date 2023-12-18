@@ -68,9 +68,13 @@ let KinkyDungeonSpellPagesDefault = {
 	"Illusion": true,
 };
 
-function KDAddSpellPage(page) {
+let KDSpellColumns = {
+
+};
+
+function KDAddSpellPage(page, columnLabels = []) {
 	if (!KDGameData.AllowedSpellPages) KDGameData.AllowedSpellPages = {};
-	KDGameData.AllowedSpellPages[page] = true;
+	KDGameData.AllowedSpellPages[page] = columnLabels;
 }
 
 /**
@@ -1316,7 +1320,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				name: "LiquidMetal",
 				duration: 24,
 			},
-			onhit:"aoe", time: 4, delay: 3, range: 6.99, size: 3, aoe: 1.5, power: 9, bindType: "Metal", bind: 80, damage: "crush", playerEffect: {name: "LiquidMetalEngulf", damage: "crush", power: 9}},
+			onhit:"aoe", time: 4, delay: 3, lifetime: 1, evadeable: true, range: 6.99, size: 3, aoe: 1.5, power: 9, bindType: "Metal", bind: 80, damage: "crush", playerEffect: {name: "LiquidMetalEngulf", damage: "crush", power: 9}},
 		
 		{name: "Engulf", tags: ["latex", "slime", "buff", "offense"], prerequisite: "ApprenticeLatex", sfx: "MagicSlash", school: "Conjure", manacost: 1.5, components: [], level:1, type:"passive", events: [
 			{type: "ElementalEffect", power: 2, damage: "glue", trigger: "playerAttack", cost: 1.0},
@@ -1377,6 +1381,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{goToPage: 6, name: "ApprenticeKnowledge", increasingCost: true, tags: ["magic"], autoLearn: ["TrueSteel"], learnFlags: ["AdvTooltips"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
 		{name: "Analyze", prerequisite: "ApprenticeKnowledge", tags: ["buff", "utility", "knowledge"], school: "Illusion", manacost: 2.5, defaultOff: true, cancelAutoMove: true, costOnToggle: true, components: [], level:1, type:"passive",
+			active: true,
 			events: [{type: "Analyze", trigger: "toggleSpell", power: 5, time: 20}, {type: "Analyze", trigger: "tick", power: 5, time: 20}]},
 
 		{name: "ShadowDance", prerequisite: "ApprenticeShadow", tags: ["shadow", "utility", "defense"], sfx: "MagicSlash", school: "Illusion", spellPointCost: 1,
@@ -2385,7 +2390,7 @@ let KinkyDungeonSpellListEnemies = [
 
 	{enemySpell: true, name: "SummonSkeleton", landsfx: "Bones", minRange: 0, manacost: 8, components: ["Verbal"], level:3, type:"inert", onhit:"summon", summon: [{name: "SummonedSkeleton", count: 1, time: 12, strict: true, bound: true, weakBinding: true}], power: 0, time: 12, delay: 1, range: 4, size: 3, aoe: 2.1, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonSkeletons", landsfx: "Bones", minRange: 0, manacost: 18, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "SummonedSkeleton", count: 4, time: 16, strict: true, bound: true, weakBinding: true}], power: 0, time: 16, delay: 1, range: 4, size: 3, aoe: 2.6, lifetime: 1, damage: "inert"},
-	{enemySpell: true, name: "SummonZombies", landsfx: "Bones", specialCD:16, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "SummonedZombie", count: 4, strict: true, minRange: 1.5, bound: true, weakBinding: true}], power: 0, time: 16, delay: 1, range: 4, size: 3, aoe: 4.6, lifetime: 1, damage: "inert"},
+	{enemySpell: true, name: "SummonZombies", landsfx: "Bones", specialCD:16, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "SummonedZombie", count: 4, time: 18, strict: true, minRange: 1.5, bound: true, weakBinding: true}], power: 0, time: 16, delay: 1, range: 4, size: 3, aoe: 4.6, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonDrones", landsfx: "Teleport", specialCD:12, selfcast: true, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon",
 		summon: [{name: "SummonedDrone", count: 2, strict: true, bound: true, time: 16, faction: "Ambush"}], power: 0, time: 15, delay: 3, range: 8, size: 3, aoe: 4.6, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonCaptureDrones", landsfx: "Teleport", specialCD:7, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon",
@@ -2396,6 +2401,9 @@ let KinkyDungeonSpellListEnemies = [
 	], power: 0, time: 12, delay: 1, range: 8, size: 3, aoe: 10, lifetime: 1, damage: "fire"},
 	{enemySpell: true, name: "GhostAttack", hitsfx: "Evil", manacost: 8, components: ["Verbal"], level:4, type:"hit", onhit:"null", noSprite: true, noSumMsg: true, summon: [
 		{name: "Ghost", count: 1, time: 20, strict: true, bound: true, aware: true,},
+	], power: 0, time: 12, delay: 1, range: 8, size: 3, aoe: 10, lifetime: 1, damage: "fire"},
+	{enemySpell: true, name: "GagGeistAttack", hitsfx: "Evil", castCondition: "NoGag", manacost: 7, components: ["Verbal"], level:4, type:"hit", onhit:"null", noSprite: true, noSumMsg: true, summon: [
+		{name: "GagGeist", count: 1, time: 20, strict: true, bound: true, aware: true,},
 	], power: 0, time: 12, delay: 1, range: 8, size: 3, aoe: 10, lifetime: 1, damage: "fire"},
 	{enemySpell: true, name: "SummonCrystals", noSprite: true, minRange: 0, landsfx: "Freeze", manacost: 12, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "ChaoticCrystal", teleportTime: 1, count: 3, time: 10, bound: true, weakBinding: true}], power: 0, time: 10, delay: 1, range: 40, size: 1, aoe: 2.01, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonChainWalls", noSprite: true, minRange: 0, landsfx: "MagicSlash", manacost: 2, specialCD: 12, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "ChainWall", count: 3, time: 0, bound: true, weakBinding: true}], power: 0, time: 10, delay: 1, range: 40, size: 1, aoe: 3.5, lifetime: 1, damage: "inert"},
@@ -2425,6 +2433,9 @@ let KinkyDungeonSpellListEnemies = [
 		power: 0, damage: "inert", time: 34, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {},
 	},
 	{enemySpell: true, name: "SummonSlime", noSprite: true, minRange: 0, sfx: "Bones", manacost: 3, components: ["Verbal"], level:4, projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "SmallSlimeLeaper", count: 1, strict: true}], power: 0, damage: "inert", time: 12, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {}},
+
+	{enemySpell: true, name: "ExplosiveBarrel", minRange: 0, sfx: "Lightning", school: "Elements", manacost: 4, components: [], mustTarget: true, level:1, type:"hit",
+		onhit:"aoe", time:5, lifetime: 1, delay: 0, power: 6, aoe: 1.5, range: 8, size: 3, damage: "fire", playerEffect: {name: "HeatBlast", time: 1, damage: "fire", power: 6}},
 
 	{enemySpell: true, name: "SummonTapeDrone", noSprite: true, sfx: "MagicSlash", castCondition: "wolfTapeDrone", manacost: 3, specialCD: 10, components: ["Verbal"], level:1, projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "WolfDrone", count: 1, time: 40, weakBinding: true, bound: true}], power: 0, damage: "inert", time: 34, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {}},
 	{enemySpell: true, name: "MirrorImage", noSprite: true, minRange: 0, selfcast: true, sfx: "FireSpell", manacost: 12, components: ["Verbal"], level:4, castRange: 50, type:"inert", onhit:"summon", summon: [{name: "MaidforceStalkerImage", count: 1, time: 12}], power: 0, time: 12, delay: 1, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "inert",
@@ -2835,6 +2846,12 @@ let KDCastConditions = {
 			let restraint = KinkyDungeonGetRestraint({tags: ["mummyRestraints"]}, 100, "tmb");
 			if (!restraint) return true;
 			return false;
+		}
+		return false;
+	},
+	"NoGag": (enemy, target) => {
+		if (target.player && !KinkyDungeonPlayerTags.get("ItemMouthFull")) {
+			return true;
 		}
 		return false;
 	},

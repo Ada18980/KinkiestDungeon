@@ -437,7 +437,10 @@ function KDDrawSpellChoices() {
 			// Render MP cost
 			let data = {
 				spell: spell,
-				cost: Math.round(KinkyDungeonGetManaCost(spell) * 10) + "mp",
+				cost: Math.round(KinkyDungeonGetManaCost(
+					spell, 
+					!spell.active && spell.passive,
+					!spell.active && spell.type == "passive") * 10) + "mp",
 				color: "#ccddFF",
 			};
 			if (data.cost == "0mp") {

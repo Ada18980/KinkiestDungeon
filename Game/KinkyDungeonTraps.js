@@ -109,8 +109,9 @@ let KDTrapTypes = {
 	},
 	SpawnEnemies: (tile, entity, x, y) => {
 		let radius = tile.Power > 4 ? 4 : 2;
+		let Enemy = (tile.FilterBackup && tile.FilterTag && KinkyDungeonPlayerTags.get(tile.FilterTag)) ? tile.FilterBackup : tile.Enemy;
 		let created = KinkyDungeonSummonEnemy(
-			x, y, tile.Enemy, tile.Power, radius, true, undefined, undefined, true, "Ambush", true, 1.5, true);
+			x, y, Enemy, tile.Power, radius, true, undefined, undefined, true, "Ambush", true, 1.5, true);
 		for (let en of created) {
 			if (tile.teleportTime) {
 				en.teleporting = 1+tile.teleportTime;
@@ -125,7 +126,7 @@ let KDTrapTypes = {
 		}
 		return {
 			triggered: created.length > 0,
-			msg: created.length > 0 ? TextGet("KinkyDungeonTrapSpawn" + tile.Enemy) : "",
+			msg: created.length > 0 ? TextGet("KinkyDungeonTrapSpawn" + Enemy) : "",
 		};
 	},
 	SpecificSpell: (tile, entity, x, y) => {
@@ -264,9 +265,9 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 			}
 			if (msg) {
 				if (msg == "Default")
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrap" + tile.Trap + (tile.extraTag || "")), color, 2 + KinkyDungeonSlowMoveTurns);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrap" + tile.Trap + (tile.extraTag || "")), color, 2 + KDGameData.SlowMoveTurns);
 				else
-					KinkyDungeonSendTextMessage(10, msg, color, 2 + KinkyDungeonSlowMoveTurns);
+					KinkyDungeonSendTextMessage(10, msg, color, 2 + KDGameData.SlowMoveTurns);
 			}
 		}
 	}
@@ -277,7 +278,7 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 function KDTrigPanic(chest) {
 	if ((!chest && KinkyDungeonStatsChoice.has("Panic2")) || (chest && KinkyDungeonStatsChoice.has("Panic"))) {
 		KinkyDungeonSendActionMessage(10, TextGet("KDPanic"), "#ff0000", 4);
-		KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, 2);
+		KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, 2);
 	}
 }
 
@@ -303,7 +304,7 @@ function KinkyDungeonGetGoddessTrapTypes() {
 		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "Dragon", Level: 0, Power: 3, Weight: 10 });
 	}
 	if (KinkyDungeonGoddessRep.Leather < KDRAGE) {
-		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "DragonLeader", Level: 0, Power: 2, Weight: 50 });
+		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "DragonLeader", Level: 0, Power: 1, Weight: 50 });
 	}
 	if (KinkyDungeonGoddessRep.Metal < KDANGER) {
 		trapTypes.push({ Name: "SpecificSpell", Spell: "TrapCableWeak", Level: 0, Power: 3, Weight: 15 });
@@ -371,7 +372,7 @@ function KinkyDungeonGetTrap(trapTypes, Level, tags) {
 		let weightMulti = 1.0;
 		let weightBonus = 0;
 
-		if (effLevel >= trap.Level) {
+		if (effLevel >= trap.Level && (!trap.arousalMode || KinkyDungeonStatsChoice.get("arousalMode"))) {
 			trapWeights.push({trap: trap, weight: trapWeightTotal});
 			let weight = trap.Weight + weightBonus;
 			if (trap.terrainTags)
@@ -391,6 +392,8 @@ function KinkyDungeonGetTrap(trapTypes, Level, tags) {
 				Name: trapWeights[L].trap.Name,
 				Restraint: trapWeights[L].trap.Restraint,
 				Enemy: trapWeights[L].trap.Enemy,
+				FilterTag: trapWeights[L].trap.filterTag,
+				FilterBackup: trapWeights[L].trap.filterBackup,
 				Spell: trapWeights[L].trap.Spell,
 				Power: trapWeights[L].trap.Power,
 				extraTag: trapWeights[L].trap.extraTag,

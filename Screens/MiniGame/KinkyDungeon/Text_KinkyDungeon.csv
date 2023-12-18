@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.3 (H)"
+KDVersionStr,"5.0.3 (J)"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -208,8 +208,6 @@ KinkyDungeonStatDesc30,"Start with high Latex reputation, and all latex restrain
 KinkyDungeonStat31,"Latex Doll"
 KinkyDungeonStatDesc31,"Latex restraints are harder to escape from."
 
-KinkyDungeonStatHogtied,"Hogtied!"
-KinkyDungeonStatDescHogtied,"Start the game trussed up in tight ropes."
 
 KinkyDungeonStat32,"Escapee"
 KinkyDungeonStatDesc32,"Start with high Leather reputation, and all leather restraints are easier to escape from."
@@ -454,6 +452,8 @@ KinkyDungeonStatStranger,"Stranger"
 KinkyDungeonStatDescStranger,"Randomizes your relationship to most factions."
 KinkyDungeonStatWrongNeighborhood,"Wrong Neighborhood"
 KinkyDungeonStatDescWrongNeighborhood,"All factions are hostile and united against you."
+KinkyDungeonStatBandit,"Bandit"
+KinkyDungeonStatDescBandit,"Start friendly to bandits, and hostile to most other factions."
 
 KinkyDungeonStatTrespasser,"Trespasser"
 KinkyDungeonStatDescTrespasser,"You lose reputation with the goddesses every time you advance a floor."
@@ -568,8 +568,8 @@ KinkyDungeonStatDescStartMaid,"Start in a magically locked maid outfit."
 KinkyDungeonStatStartWolfgirl,"Wolf Trainee"
 KinkyDungeonStatDescStartWolfgirl,"Start in a uniform of a naughty wolfgirl."
 KinkyDungeonStatStartLatex,"Latex Toy"
-KinkyDungeonStatDescStartLatex,"Start bound in latex restraints."
-KinkyDungeonStatStartObsidian,"Obsidian Slave"
+KinkyDungeonStatDescStartLatex,"Start bound in lovely latex restraints."
+KinkyDungeonStatStartObsidian,"Elemental Slave"
 KinkyDungeonStatDescStartObsidian,"Start in a full set of magically locked obsidian cuffs."
 
 
@@ -1214,7 +1214,7 @@ KinkyDungeonInventoryItemSmokeBombUse,You ready a smoke bomb...
 KinkyDungeonInventoryItemSmokeBombDesc,"A type of pyrotechnic often employed by saboteurs. Can be rolled and used without hands."
 KinkyDungeonInventoryItemSmokeBombDesc2,"Creates a smoke screen lasting 8 turns. You are harder to see while inside the smoke."
 KinkyDungeonInventoryItemFlashBomb,Flash Bomb
-KinkyDungeonInventoryItem3FlashBomb,Flash Bomb x3
+KinkyDungeonInventoryItem3Flash,Flash Bomb x3
 KinkyDungeonSpellCastFlashBomb,You toss the flash bomb and the fuse starts ticking...
 KinkyDungeonInventoryItemFlashBombUse,You ready a flash bomb...
 KinkyDungeonInventoryItemFlashBombDesc,"A type of explosive used by agents. Blinds nearby targets without causing significant injury."
@@ -2745,6 +2745,7 @@ AttackHugHorror,"The monstrous spirit gives a crushing hug!!! (DamageTaken)"
 AttackHugHorrorStun,"The monstrous spirit envelops you in tightness, holding you in place! (DamageTaken)"
 AttackHugHorrorBind,"The monstrous spirit's chains latch on! (+RestraintAdded)"
 
+
 NameGreedyGhast,Greedy Ghast
 KillGreedyGhast,"The ghast vanishes... for now"
 AttackGreedyGhast,"The moaning spirit gropes your body!!! (DamageTaken)"
@@ -3448,6 +3449,8 @@ RestraintHighsecStraitjacketDesc2,"Made of a flexible, yet durable material, it'
 RestraintHighsecLegbinder,High-Security Legbinder
 RestraintHighsecLegbinderDesc,"An mythril legbinder enclosing your legs, making it difficult to move."
 RestraintHighsecLegbinderDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
+
+
 RestraintHighsecShackles,High-Security Shackles
 RestraintHighsecShacklesDesc,"A pair of hardened steel shackles around your feet."
 RestraintHighsecShacklesDesc2,"Nearly indestructable, you are at the mercy of its lock."
@@ -3756,6 +3759,9 @@ RestraintStickySlimeDesc2,"It will slow you for a single turn."
 RestraintTrapMittens,Leather Mittens
 RestraintTrapMittensDesc,"A pair of tight leather mittens enclosing your hands."
 RestraintTrapMittensDesc2,"They make it almost impossible to manipulate keys and tools. Keep your hands to yourself!"
+RestraintTrapLegbinder,Leather Legbinder
+RestraintTrapLegbinderDesc,"A tight leather legbinder that keeps your feet glued together."
+RestraintTrapLegbinderDesc2,"It's quite snug and the laces are secured with a lockable panel. Getting at them requires picking the lock."
 RestraintTrapArmbinder,Leather Armbinder
 RestraintTrapArmbinderDesc,"A tight leather armbinder enclosing your hands and arms completely."
 RestraintTrapArmbinderDesc2,"It's quite snug and secured by lockable buckles in the back. Picking the locks yourself is impossible."
@@ -4210,9 +4216,12 @@ KinkyDungeonUnLinkMaidAnkleCuffs2,"The ankle cuff chain detaches!"
 RestraintMaidCollar,Maid Collar
 RestraintMaidCollarDesc,"A collar for operatives of the Maidforce, a group of covert saboteurs."
 RestraintMaidCollarDesc2,"It's reinforced with metal and guarded with an expert-level lock."
-RestraintMaidGag,Plug Gag
+RestraintMaidGag,Maid Gag
 RestraintMaidGagDesc,"A gag with a long, mouth-filling plug that muffles speech completely."
 RestraintMaidGagDesc2,"It's made of a very tough reinforced leather. It will take some time to cut."
+RestraintMaidMuzzle,Maid Security Gag
+RestraintMaidMuzzleDesc,"A muzzle with a long, mouth-filling plug that muffles speech completely."
+RestraintMaidMuzzleDesc2,"Reinforced and secured with a disc lock to ensure unruly maids don't skip their duty."
 
 RestraintKiguMask,Suspicious Mask
 LootChestKiguMask,"You a padded metal blindfold, glowing magnificently, along with a strange crystal next to it."
@@ -6242,8 +6251,14 @@ KinkyDungeonSummonMultiPlayerGag,A bunch of gags fly out from your satchel!
 
 KinkyDungeonSummonSingleTickleHand,A floating hand appears and cracks its knuckles!
 KinkyDungeonSummonSingleGag,A floating gag appears and starts flying toward you!
+KinkyDungeonSummonSingleAnimBlindfold,A floating blindfold appears and starts flying toward you!
+KinkyDungeonSummonSingleAnimYoke,A floating yoke appears and starts flying toward you!
+KinkyDungeonSummonSingleAnimChastity,A floating armbinder appears and starts flying toward you!
+KinkyDungeonSummonSingleAnimStraitjacket,A floating straitjacket appears and starts flying toward you!
+KinkyDungeonSummonSingleAnimHarness,A floating harness appears and starts flying toward you!
 KinkyDungeonSummonSingleCuffs,A set of shackles opens wide and starts going for your wrists!
 KinkyDungeonSummonMultiCuffs,A swarm of shackles approaches you!
+KinkyDungeonSummonMultiGags,A swarm of gags approaches you!
 KinkyDungeonSummonSingleLock,A cloud of locks and chains clatters as it levitates toward you!
 KinkyDungeonSummonMultiLock,A huge cloud of locks and chains clatters as it levitates toward you!
 KinkyDungeonSummonMultiTickleHand,Floating hands appear by the conjurer's side as she points her staff!
@@ -7231,6 +7246,24 @@ KinkyDungeonPerkProgressionModeDesc0,"No perks between floors."
 KinkyDungeonPerkProgressionModeDesc1,"The standard mode. You may choose between one of three perk altars between floors."
 KinkyDungeonPerkProgressionModeDesc2,"A twist on the standard mode. You must choose before progressing."
 KinkyDungeonPerkProgressionModeDesc3,"You must pick a debuff between floors before progressing."
+
+
+KDPerkBondageMode,"Perk Shrine Bondage:"
+KinkyDungeonPerkBondageMode0,Never
+KinkyDungeonPerkBondageMode1,Sometimes
+KinkyDungeonPerkBondageMode2,Always
+KinkyDungeonPerkBondageModeDesc0,"Perk shrines will not offer bondage as part of the deal."
+KinkyDungeonPerkBondageModeDesc1,"Bondage will sometimes be offered alongside perks."
+KinkyDungeonPerkBondageModeDesc2,"Perk shrines are always accompanied by bondage."
+
+
+KDPerkBondageVisMode,"Perk Shrine Bondage Info:"
+KinkyDungeonPerkBondageVisMode0,Hidden
+KinkyDungeonPerkBondageVisMode1,Partial
+KinkyDungeonPerkBondageVisMode2,Full
+KinkyDungeonPerkBondageVisModeDesc0,"You do not know if a perk shrine will apply bondage."
+KinkyDungeonPerkBondageVisModeDesc1,"You know that a perk shrine will apply bondage, but not what kind."
+KinkyDungeonPerkBondageVisModeDesc2,"You know the exact restraints a perk shrine will apply."
 
 KDHardMode,"Hard Mode:"
 KinkyDungeonHardMode0,Normal Mode
@@ -8988,7 +9021,7 @@ KinkyDungeonRemindJailDomMaidHitPlayer,"It's over."
 KinkyDungeonRemindJailDomMaidMiss,"Nice one."
 KinkyDungeonRemindJailDomMaidBlock,"Nice one."
 KinkyDungeonRemindJailDomMaidMissedMe,"You missed!"
-KinkyDungeonRemindJailDomMaidBlockMe,"You missed!"
+KinkyDungeonRemindJailDomMaidBlockedMe,"You missed!"
 KinkyDungeonRemindJailDomMaidLeash,"I'll hand you over when I'm done with you."
 KinkyDungeonRemindJailDomMaidPull,"Get over here!"
 KinkyDungeonRemindJailDomMaidStun,"Hmph. Stay down."
@@ -15227,7 +15260,7 @@ KDRep,Rep
 KDMagicWeapon,Magical Weapon
 
 KDRepDescriptionGhost,"Your Submissiveness determines how easily your character can resist the temptations of bondage."
-KDRepDescriptionPrisoner,"Your Security Level determines how tightly enemies will secure you in prison."
+KDRepDescriptionPrisoner,"Your Security Level is based on your history and reputation with the MNFCTN."
 KDRepDescriptionPassion,"Your Passion determines how likely you are to lose control of yourself involuntarily."
 KDRepDescriptionFrustration,"Your Frustration affects how quickly your Passion grows. More Frustration = More Passion"
 
@@ -15770,6 +15803,7 @@ KDIntroScene4,"Three hundred years later,a group of adventurers found a lost isl
 KinkyDungeonBuffSpellDamageBuff,An item has increased your spell damage!
 
 KDVariableModifier_AoEDamageFrozen,"AMNT ice damage/turn vs. Frozen"
+KDVariableModifier_ShadowBleed,"AMNT shadow bleed (10 turns)"
 
 KinkyDungeonSpellFuukaOrb,Sealing Talisman
 KinkyDungeonSpellFuukaOrbMulti,Sealing Talisman
@@ -15991,7 +16025,7 @@ KinkyDungeonBuffQuickness5,"Time has come to a halt..."
 KDQuickness2_Yes,"Time slows down by 2x!"
 KDQuickness2_Floater,"Double Accel!"
 KDQuickness3_Yes,"Time slows down by 3x!"
-KDQuickness3_Floater,"Triple  Accel!"
+KDQuickness3_Floater,"Triple Accel!"
 KDQuickness4_Yes,"Time slows down by 4x!"
 KDQuickness4_Floater,"Quadro Accel!"
 KDQuickness5_Yes,"Time has ceased to pass."
@@ -16048,7 +16082,6 @@ KDTeleportNearby,"The teleportation partially succeeds due to an obstruction, pl
 KDTeleportFail,"The teleportation fizzles due to obstruction."
 KDConfirm,Confirm
 KDName,What is your name?
-
 
 KinkyDungeonSpellEnrage,"Enrage"
 KinkyDungeonSpellDescriptionEnrage,"Scream loudly, causing nearby enemies to investigate and increasing Battle Rhythm by 10. Has a 100 turn cooldown."
@@ -16164,6 +16197,8 @@ RestraintMagicBeltFeet,Magic Ankle Belts
 RestraintMagicBeltFeetDesc,"Highly secure belts enchanted with magic."
 RestraintMagicBeltFeetDesc2,"Lockable and fully adjustable to ensure snugness."
 KinkyDungeonLiquidMetal,The Liquid Metal starts engulfing you!
+KinkyDungeonLiquidMetalEngulf,"The Liquid Metal explodes and covers you!"
+KinkyDungeonLiquidMetalSlowEngulf,The Liquid Metal takes advantage of your status and engulfs you!
 
 
 KinkyDungeonSpellLiquidMetalBurst,Silver Burst
@@ -16184,3 +16219,86 @@ AttackSkeletonBindArcher,"The Skeleton restrains you! (+RestraintAdded)"
 AttackSkeletonArcher,"The Skeleton tackles you! (DamageTaken)"
 
 KinkyDungeonSpellCursedArrow,Cursed Arrow
+KDKick,"Because your hands are unavailable, you kick the target instead."
+
+
+
+KDQuest_ElementalSlave,"Your former owners are looking for you across the seven planes."
+
+KDQuest_LatexDoll,"A local business is missing one of their models, and will stop at nothing to find her."
+KinkyDungeonFactionDollShoppe,The Doll Shoppe
+KinkyDungeonFactionOwners,Elemental Slavers
+
+KDQuest_MaidSweeper,"Your duty as a maid is to keep the place clear of dirt and other hazards."
+NameDirtPile,Dirt Pile
+KillDirtPile,You clear out the dirt pile
+KDDirtPileSurprise,A ENMY was lurking inside the dirt pile!
+KDNotEnoughDirtPiles,"You skipped your duty and left some dirt missing in the last level!"
+
+KDQuest_EscapedDoll,"The Dollmaker does not take no for an answer."
+KDQuest_FuukaPet,"Fuuka's shrine maidens would like to have a word with you."
+KDQuest_Nawashi,"Your instructor will meet with you at regular intervals for further training."
+
+KinkyDungeonStatHogtied,"Hogtied!"
+KinkyDungeonStatDescHogtied,"Experience a comprehensive rope bondage experience."
+
+
+KinkyDungeonFactionRopeDojo,Rope Dojo
+KinkyDungeonFactionDollShoppe,Shadow Clan
+KinkyDungeonFactionFuuka,Fuuka's Shrine
+KinkyDungeonFactionDollsmith,Dollmaker
+
+KDBondageOptionPerk,"Receive the following restraints: "
+KDBondageOptionPerkHidden,"You will be bound with some form of restraint."
+
+KDVarPrefShadowBleed,Shadow
+
+NameGagGeist,Gag Geist
+KillGagGeist,"The gag geist goes silent."
+AttackGagGeist,"The gag geist teases you playfully!! (DamageTaken)"
+AttackGagGeistBind,"The gag geist gags the girl with a ghastly grimace! (+RestraintAdded)"
+
+NamePoltergeist,Poltergeist 
+KillPoltergeist,"The poltergeist goes silent."
+AttackPoltergeist,"The poltergeist gropes and teases you playfully!! (DamageTaken)"
+AttackPoltergeistBind,"The poltergeist binds you with... something? (+RestraintAdded)"
+
+RestraintInvisibleGag,Invisible Gag
+RestraintInvisibleGagDesc,"It's a gag, but invisible!"
+RestraintInvisibleGagDesc2,"You wonder what color it is."
+
+RestraintInvisibleBlindfold,Invisible Blindfold
+RestraintInvisibleBlindfoldDesc,"It's a blindfold, but invisible!"
+RestraintInvisibleBlindfoldDesc2,"How exactly is this supposed to work?"
+
+RestraintInvisibleArmbinder,Invisible Armbinder
+RestraintInvisibleArmbinderDesc,"It's an armbinder, but invisible!"
+RestraintInvisibleArmbinderDesc2,"You wonder what color it is."
+
+RestraintInvisibleLegbinder,Invisible Legbinder
+RestraintInvisibleLegbinderDesc,"It's an legbinder, but invisible!"
+RestraintInvisibleLegbinderDesc2,"This is starting to get cruel..."
+
+
+KinkyDungeonTrapSpawnSummonedZombie,Strangely dressed zombies start approaching you!!
+KinkyDungeonTrapSpawnGag,A floating gag appears and starts flying toward you!
+KinkyDungeonTrapSpawnAnimBlindfold,A floating blindfold appears and starts flying toward you!
+KinkyDungeonTrapSpawnAnimYoke,A floating yoke appears and starts flying toward you!
+KinkyDungeonTrapSpawnAnimChastity,A floating armbinder appears and starts flying toward you!
+KinkyDungeonTrapSpawnAnimStraitjacket,A floating straitjacket appears and starts flying toward you!
+KinkyDungeonTrapSpawnAnimHarness,A floating harness appears and starts flying toward you!
+KinkyDungeonTrapSpawnCuffs,A set of shackles opens wide and starts going for your wrists!
+KinkyDungeonTrapSpawnMummyCursed,You hear moaning as the statues start to move...
+KinkyDungeonTrapSpawnBookBondage,Devious tomes emerge from the bookshelves!
+KinkyDungeonTrapSpawnMushy,Armed mushrooms emerge from the ground to defend their home!
+KinkyDungeonTrapPoltergeist,"Playful ghosts slip through the walls, giggling to themselves!"
+KinkyDungeonTrapOldDrones,"Ancient drones drop from the ceiling and come to life!"
+KinkyDungeonTrapObserver,"You were always being watched..."
+
+LootChestGunpowder,You find a store of gunpowder!
+
+KinkyDungeonSpellExplosiveBarrel,Explosive Barrel
+
+NameExplosiveBarrel,Explosive Barrel
+KillExplosiveBarrel,The explosive barrel falls apart and drops its gunpowder.
+KDExplosiveBarrelExplode,The explosive barrel catches fire and explodes!

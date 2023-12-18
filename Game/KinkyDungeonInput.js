@@ -121,7 +121,7 @@ function KDProcessInput(type, data) {
 			if (time > 0) {
 				KinkyDungeonAdvanceTime(1);
 				if (time > 1)
-					KinkyDungeonSlowMoveTurns = time - 1;
+					KDGameData.SlowMoveTurns = time - 1;
 			}
 			KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonEquipWeapon").replace("WEAPONNAME", KDGetItemNameString(data.weapon)), "white", 5);
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
@@ -151,7 +151,7 @@ function KDProcessInput(type, data) {
 		case "dress":
 			KDDelayedActionPrune(["Action", "Dress"]);
 			KinkyDungeonSetDress(data.dress, data.outfit);
-			KinkyDungeonSlowMoveTurns = 5;
+			KDGameData.SlowMoveTurns = 5;
 			KinkyDungeonSleepTime = CommonTime() + 200;
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
 			break;
@@ -480,6 +480,13 @@ function KDProcessInput(type, data) {
 						KinkyDungeonStatsChoice.set(p, true);
 					}
 				}
+				if (data.bondage) {
+					for (let b of data.bondage) {
+						KinkyDungeonAddRestraintIfWeaker(
+							KinkyDungeonGetRestraintByName(b), 20, true, "Gold", true
+							);
+					}
+				}
 
 				KinkyDungeonMapSet(data.x, data.y, 'p');
 				
@@ -572,7 +579,7 @@ function KDProcessInput(type, data) {
 			}
 			if (KinkyDungeonStatsChoice.has("Disorganized")) {
 				KinkyDungeonAdvanceTime(1);
-				KinkyDungeonSlowMoveTurns = 2;
+				KDGameData.SlowMoveTurns = 2;
 			} else if (!KinkyDungeonStatsChoice.has("QuickDraw"))
 				KinkyDungeonAdvanceTime(1);
 			break;
@@ -600,7 +607,7 @@ function KDProcessInput(type, data) {
 			}
 			if (KinkyDungeonStatsChoice.has("Disorganized")) {
 				KinkyDungeonAdvanceTime(1);
-				KinkyDungeonSlowMoveTurns = 2;
+				KDGameData.SlowMoveTurns = 2;
 			} else if (!KinkyDungeonStatsChoice.has("QuickDraw"))
 				KinkyDungeonAdvanceTime(1);*/
 			break;
@@ -619,7 +626,7 @@ function KDProcessInput(type, data) {
 				if (!spell.quick) {
 					if (KinkyDungeonStatsChoice.has("Disorganized")) {
 						KinkyDungeonAdvanceTime(1);
-						KinkyDungeonSlowMoveTurns = 2;
+						KDGameData.SlowMoveTurns = 2;
 					} else if (!KinkyDungeonStatsChoice.has("QuickDraw"))
 						KinkyDungeonAdvanceTime(1);
 				}
@@ -728,7 +735,7 @@ function KDProcessInput(type, data) {
 						
 						if (spell.learnPage) {
 							for (let sp of spell.learnPage) {
-								KDAddSpellPage(sp);
+								KDAddSpellPage(sp, KDSpellColumns[sp] || []);
 							}
 						}
 						KinkyDungeonSetMaxStats();
@@ -736,7 +743,7 @@ function KDProcessInput(type, data) {
 						KinkyDungeonCurrentPage = KinkyDungeonSpellIndex(spell.name);
 						if (KinkyDungeonStatsChoice.has("Disorganized")) {
 							KinkyDungeonAdvanceTime(1);
-							KinkyDungeonSlowMoveTurns = 2;
+							KDGameData.SlowMoveTurns = 2;
 						} else if (!KinkyDungeonStatsChoice.has("QuickDraw"))
 							KinkyDungeonAdvanceTime(1);
 						if (KinkyDungeonIsPlayer()) {

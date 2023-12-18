@@ -724,6 +724,7 @@
             <key type="filename">../Game/EffectTiles/Wire.png</key>
             <key type="filename">../Game/EffectTiles/WireSparks.png</key>
             <key type="filename">../Game/EffectTiles/WireSparksAct.png</key>
+            <key type="filename">../Game/Enemies/AcidBarrel.png</key>
             <key type="filename">../Game/Enemies/Adventurer_Brat_Fighter.png</key>
             <key type="filename">../Game/Enemies/Adventurer_Dom_Fighter.png</key>
             <key type="filename">../Game/Enemies/Adventurer_Sub_Fighter.png</key>
@@ -908,6 +909,7 @@
             <key type="filename">../Game/Enemies/DemonStar.png</key>
             <key type="filename">../Game/Enemies/DemonVoid.png</key>
             <key type="filename">../Game/Enemies/Deputy.png</key>
+            <key type="filename">../Game/Enemies/DirtPile.png</key>
             <key type="filename">../Game/Enemies/DollDoor.png</key>
             <key type="filename">../Game/Enemies/Dollmaker.png</key>
             <key type="filename">../Game/Enemies/DollmakerBoss1.png</key>
@@ -951,6 +953,7 @@
             <key type="filename">../Game/Enemies/EnforcerBot.png</key>
             <key type="filename">../Game/Enemies/EpicenterCursed.png</key>
             <key type="filename">../Game/Enemies/EpicenterCursed2.png</key>
+            <key type="filename">../Game/Enemies/ExplosiveBarrel.png</key>
             <key type="filename">../Game/Enemies/FactoryDoll.png</key>
             <key type="filename">../Game/Enemies/FaithfulZombie.png</key>
             <key type="filename">../Game/Enemies/FastSlime.png</key>
@@ -964,6 +967,8 @@
             <key type="filename">../Game/Enemies/Fuuka1.png</key>
             <key type="filename">../Game/Enemies/Fuuka2.png</key>
             <key type="filename">../Game/Enemies/Gag.png</key>
+            <key type="filename">../Game/Enemies/GagGeist.png</key>
+            <key type="filename">../Game/Enemies/GasBarrel.png</key>
             <key type="filename">../Game/Enemies/Ghost.png</key>
             <key type="filename">../Game/Enemies/GhostAdventurer.png</key>
             <key type="filename">../Game/Enemies/GhostDark.png</key>
@@ -989,6 +994,7 @@
             <key type="filename">../Game/Enemies/LatexCubeMetal.png</key>
             <key type="filename">../Game/Enemies/LatexCubeSmall.png</key>
             <key type="filename">../Game/Enemies/LatexCubeSmallHidden.png</key>
+            <key type="filename">../Game/Enemies/LatexStorageTank.png</key>
             <key type="filename">../Game/Enemies/LearnedRope.png</key>
             <key type="filename">../Game/Enemies/LesserSkeleton.png</key>
             <key type="filename">../Game/Enemies/Librarian.png</key>
@@ -1039,6 +1045,7 @@
             <key type="filename">../Game/Enemies/PinkLabAssistant.png</key>
             <key type="filename">../Game/Enemies/Pixie.png</key>
             <key type="filename">../Game/Enemies/PlayerGag.png</key>
+            <key type="filename">../Game/Enemies/Poltergeist.png</key>
             <key type="filename">../Game/Enemies/PrisonerBandit.png</key>
             <key type="filename">../Game/Enemies/Rat.png</key>
             <key type="filename">../Game/Enemies/RedSlime.png</key>
@@ -1047,6 +1054,7 @@
             <key type="filename">../Game/Enemies/RopeKraken.png</key>
             <key type="filename">../Game/Enemies/RopeMinion.png</key>
             <key type="filename">../Game/Enemies/RopeSnake.png</key>
+            <key type="filename">../Game/Enemies/RubberBarrel.png</key>
             <key type="filename">../Game/Enemies/RubberSilo.png</key>
             <key type="filename">../Game/Enemies/RubberTurret.png</key>
             <key type="filename">../Game/Enemies/SamuraiZombie.png</key>
@@ -2751,6 +2759,7 @@
             <key type="filename">../Game/Bullets/CursingCircleHit.png</key>
             <key type="filename">../Game/Bullets/Earthquake.png</key>
             <key type="filename">../Game/Bullets/EarthquakeHit.png</key>
+            <key type="filename">../Game/Bullets/ExplosiveBarrelHit.png</key>
             <key type="filename">../Game/Bullets/FocusedFlash.png</key>
             <key type="filename">../Game/Bullets/FocusedFlashHit.png</key>
             <key type="filename">../Game/Bullets/FreedomHit.png</key>

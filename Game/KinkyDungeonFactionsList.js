@@ -262,6 +262,52 @@ let KDFactionProperties = {
 			return w;
 		},
 	},
+	
+	Owners: {
+		customDefeat: "ElementalSlave",
+		honor: 1,
+		honor_specific: {
+		},
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			return 0;
+		},
+	},
+	WolfgirlHunters: {
+		customDefeat: "WolfgirlHunters",
+		honor: 1,
+		honor_specific: {
+		},
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			return 0;
+		},
+	},
+	Delinquent: {
+		customDefeat: "MaidSweeper",
+		honor: 1,
+		honor_specific: {
+		},
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			return 0;
+		},
+	},
+	RopeDojo: {
+		customDefeat: "RopeDojo",
+		honor: 1,
+		honor_specific: {
+		},
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			return 0;
+		},
+	},
+	DollShoppe: {
+		customDefeat: "DollShoppe",
+		honor: -1,
+		honor_specific: {
+		},
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			return 0;
+		},
+	},
 };
 
 /** Hidden factions do not auto-rep change when you attack them */
@@ -288,8 +334,12 @@ let KinkyDungeonHiddenFactions = [
 	"Delinquent",
 	"Virus",
 	"ShadowClan",
+	"DollShoppe",
+	"RopeDojo",
+	"Fuuka",
 	"DubiousWitch",
 	"Extraplanar",
+	"Owners",
 	"Debate",
 	"Wolfhunter",
 	"Chase",
@@ -368,8 +418,13 @@ let KinkyDungeonTooltipFactions = [
 	"Delinquent",
 	"DubiousWitch",
 	"Extraplanar",
+	"Owners",
 	"Virus",
 	"ShadowClan",
+	"DollShoppe",
+	"RopeDojo",
+	"Dollsmith",
+	"Fuuka",
 	"Debate",
 	"Wolfhunter",
 	"Rock",
@@ -525,6 +580,8 @@ let KinkyDungeonFactionRelationsBase = {
 		Elf: -0.1,
 		Mushy: -0.1,
 		AncientRobot: -0.3,
+
+		Player: -0.7,
 	},
 	"Virus": {
 		Player: -1,
@@ -543,6 +600,13 @@ let KinkyDungeonFactionRelationsBase = {
 		Chase: -1,
 		Jail: -0.25,
 	},
+	"Owners": {
+		Player: -1,
+		Demon: -1,
+		Elemental: 0.6,
+		Chase: -1,
+		Jail: -0.25,
+	},
 	"Delinquent": {
 		Player: -1,
 		Maidforce: -1,
@@ -554,6 +618,22 @@ let KinkyDungeonFactionRelationsBase = {
 		Demon: 1,
 		Angel: -1,
 		Chase: -1,
+		Jail: -0.25,
+	},
+	"Fuuka": {
+		Player: -1,
+		Chase: -1,
+		Jail: -0.25,
+	},
+	"RopeDojo": {
+		Player: -1,
+		Chase: -1,
+		Jail: -0.25,
+	},
+	"DollShoppe": {
+		Player: -1,
+		Chase: -1,
+		Dressmaker: 0.5,
 		Jail: -0.25,
 	},
 	"Debate": {
@@ -600,8 +680,12 @@ let KinkyDungeonFactionRelationsBase = {
 		Delinquent: -1,
 		"Virus": -1,
 		"ShadowClan": -1,
+		"DollShoppe": -1,
+		RopeDojo: -1,
+		Fuuka: -1,
 		"DubiousWitch": -1,
 		"Extraplanar": -1,
+		"Owners": -1,
 		"Debate": -1,
 		Dollsmith: -1,
 		"Wolfhunter": -1,

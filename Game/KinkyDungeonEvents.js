@@ -220,6 +220,10 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		"NoYoke": (e, item, data) => {
+			if (item == data.item && KinkyDungeonPlayerTags.get("Yoked"))
+				KinkyDungeonRemoveRestraintSpecific(item, true, true);
+		},
 		"EngageCurse": (e, item, data) => {
 			if (item == data.item)
 				KinkyDungeonSendEvent("EngageCurse", {});
@@ -662,7 +666,7 @@ let KDEventMapInventory = {
 				// Trim off the transformation...
 				if (!data.trimTrigger)
 					newvariant.events = newvariant.events.filter((event) => {return event.trigger != "CurseTransform";});
-				newvariant.events = [...newvariant.events, ...KDEventHexModular[selection].events];
+				newvariant.events = [...newvariant.events, ...KDEventHexModular[selection].events({variant: newvariant})];
 				if (data.trimTrigger)
 					newvariant.events = newvariant.events.filter((event) => {return event.trigger != "CurseTransform";});
 				if (curse) {
@@ -2226,7 +2230,21 @@ const KDEventMapBuff = {
 						bind: e.bind,
 						distract: e.distract,
 						bindType: e.bindType,
-					}, false, e.power <= 0.5, undefined, undefined, undefined, undefined, undefined, data.vulnConsumed);
+					}, false, e.power <= 1, undefined, undefined, undefined, undefined, undefined, data.vulnConsumed);
+				}
+			}
+		},
+		"ShadowElementalEffect": (e, buff, entity, data) => {
+			if (buff.duration > 0 && data.enemy && data.enemy.hp > 0 && !KDHelpless(data.enemy) && KinkyDungeonBrightnessGet(entity.x, entity.y) <= KDShadowThreshold) {
+				if (!e.prereq || KDCheckPrereq(entity, e.prereq)) {
+					KinkyDungeonDamageEnemy(data.enemy, {
+						type: e.damage,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						distract: e.distract,
+						bindType: e.bindType,
+					}, false, e.power <= 1, undefined, undefined, undefined, undefined, undefined, data.vulnConsumed);
 				}
 			}
 		},
@@ -2560,6 +2578,61 @@ const KDEventMapBuff = {
 							bindType: e.bindType,
 						flags: ["BurningDamage"]
 					}, false, true, undefined, undefined, undefined);
+				}
+			}
+		},
+		
+		"ShadowElementalEffect": (e, buff, entity, data) => {
+			if (KinkyDungeonBrightnessGet(entity.x, entity.y) <= KDShadowThreshold) {
+				if (buff.duration > 0) {
+					if (entity.player) {
+						KinkyDungeonDealDamage({
+							type: e.damage,
+								damage: e.power,
+								time: e.time,
+								bind: e.bind,
+								distract: e.distract,
+								bindType: e.bindType,
+							flags: ["BurningDamage"]
+						});
+					} else {
+						KinkyDungeonDamageEnemy(entity, {
+							type: e.damage,
+								damage: e.power,
+								time: e.time,
+								bind: e.bind,
+								distract: e.distract,
+								bindType: e.bindType,
+							flags: ["BurningDamage"]
+						}, e.power < 1, true, undefined, undefined, undefined);
+					}
+				}
+			}
+		},
+		"UnShadowElementalEffect": (e, buff, entity, data) => {
+			if (KinkyDungeonBrightnessGet(entity.x, entity.y) > KDShadowThreshold) {
+				if (buff.duration > 0) {
+					if (entity.player) {
+						KinkyDungeonDealDamage({
+							type: e.damage,
+								damage: e.power,
+								time: e.time,
+								bind: e.bind,
+								distract: e.distract,
+								bindType: e.bindType,
+							flags: ["BurningDamage"]
+						});
+					} else {
+						KinkyDungeonDamageEnemy(entity, {
+							type: e.damage,
+								damage: e.power,
+								time: e.time,
+								bind: e.bind,
+								distract: e.distract,
+								bindType: e.bindType,
+							flags: ["BurningDamage"]
+						}, false, true, undefined, undefined, undefined);
+					}
 				}
 			}
 		},
@@ -3112,7 +3185,7 @@ let KDEventMapSpell = {
 		
 		"ManaRegen": (e, spell, data) => {
 			if (!KinkyDungeonPlayerBuffs.ManaRegenSuspend || KinkyDungeonPlayerBuffs.ManaRegenSuspend.duration < 1) {
-				if (data.spell && (!data.spell.passive && !data.passive))
+				if (data.spell && (data.spell.active || (!data.spell.passive && !data.passive)))
 					data.cost = Math.max(0, data.cost - KinkyDungeonStatManaMax*e.mult);
 			}
 		},
@@ -3190,9 +3263,9 @@ let KDEventMapSpell = {
 	},
 	"afterSpellTrigger": {
 		"ManaRegenSuspend": (e, spell, data) => {
-			if ((data.spell && data.spell.manacost != 0) && (!KDEntityHasBuff(KinkyDungeonPlayerEntity, "ManaRegenSuspend") || !KDHasSpell("ManaRegenPlus2"))) {
+			if ((data.spell && !data.Passive && data.spell.manacost != 0) && (!KDEntityHasBuff(KinkyDungeonPlayerEntity, "ManaRegenSuspend") || !KDHasSpell("ManaRegenPlus2"))) {
 				let duration = KDHasSpell("ManaRegenFast2") ? e.time*0.375 : (KDHasSpell("ManaRegenFast") ? e.time*0.625 : e.time);
-				if (!data.notToggle) duration *= 0.5;
+				if (!data.Toggle) duration *= 0.5;
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: "ManaRegenSuspend", type: "ManaRegenSuspend", power: 1, duration: Math.ceil(duration), aura: "#ff5555", buffSprite: true, aurasprite: "AuraX",
 				});
@@ -3203,7 +3276,7 @@ let KDEventMapSpell = {
 		"ArcaneStore": (e, spell, data) => {
 			if (!data.spell) return;
 			if (!data.castID) data.castID = KinkyDungeonGetSpellID();
-			if (!data.manacost) data.manacost = KinkyDungeonGetManaCost(data.spell, data.notPassive, !data.notToggle);
+			if (!data.manacost) data.manacost = KinkyDungeonGetManaCost(data.spell, data.Passive, data.Toggle);
 			if (data.manacost > 0 && !KinkyDungeonFlags.get("ArcaneStore" + data.castID)) {
 				let player = KinkyDungeonPlayerEntity;
 				let mult = 0.4 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(player, "MultArcaneEnergy"));
@@ -3607,7 +3680,7 @@ let KDEventMapSpell = {
 		},
 		"Analyze": (e, spell, data) => {
 			let activate = false;
-			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, true)) && !KinkyDungeonPlayerBuffs.Analyze) {
+			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, false, false)) && !KinkyDungeonPlayerBuffs.Analyze) {
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "Analyze", aura:"#ff5555", type: "MagicalSight", power: e.power, duration: e.time});
 				activate = true;
 			}
@@ -3769,7 +3842,7 @@ let KDEventMapSpell = {
 			if (KinkyDungeonPlayerDamage && (KinkyDungeonPlayerDamage.name == "IceBreaker") && data.enemy && data.enemy.freeze > 0 && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, true))) {
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell, true));
 				KinkyDungeonCastSpell(data.enemy.x, data.enemy.y, KinkyDungeonFindSpell("ShatterStrike", true), undefined, undefined, undefined);
-				//KDTriggerSpell(spell, data, false, true);
+				KDTriggerSpell(spell, data, true, false);
 			}
 		},
 		"BoostDamage": (e, spell, data) => {
@@ -3777,7 +3850,7 @@ let KDEventMapSpell = {
 				if (KDCheckPrereq(null, e.prereq, e, data)) {
 					KinkyDungeonChangeMana(-(e.cost != undefined ? e.cost : KinkyDungeonGetManaCost(spell, false, true)));
 					data.buffdmg = Math.max(0, data.buffdmg + e.power);
-					KDTriggerSpell(spell, data, false, false);
+					KDTriggerSpell(spell, data, false, true);
 				}
 			}
 		},
@@ -3933,7 +4006,7 @@ let KDEventMapSpell = {
 			if (KinkyDungeonPlayerDamage && ((KinkyDungeonPlayerDamage.name && KinkyDungeonPlayerDamage.name != "Unarmed") || KinkyDungeonStatsChoice.get("Brawler")) && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, false, true)) && data.targetX && data.targetY && (data.enemy && KDHostile(data.enemy))) {
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell, false, true));
 				KinkyDungeonCastSpell(data.targetX, data.targetY, KinkyDungeonFindSpell("FlameStrike", true), undefined, undefined, undefined);
-				KDTriggerSpell(spell, data, false, false);
+				KDTriggerSpell(spell, data, false, true);
 			}
 		},
 		"ManaRegenSuspend": (e, spell, data) => {
@@ -3949,7 +4022,7 @@ let KDEventMapSpell = {
 		"ElementalEffect": (e, spell, data) => {
 			if (KinkyDungeonHasMana(e.cost != undefined ? e.cost : KinkyDungeonGetManaCost(spell, false, true)) && !data.miss && !data.disarm && data.targetX && data.targetY && data.enemy && KDHostile(data.enemy)) {
 				KinkyDungeonChangeMana(-(e.cost != undefined ? e.cost : KinkyDungeonGetManaCost(spell, false, true)));
-				KDTriggerSpell(spell, data, false, false);
+				KDTriggerSpell(spell, data, false, true);
 				KinkyDungeonDamageEnemy(data.enemy, {
 					type: e.damage,
 					damage: e.power,
@@ -3963,7 +4036,7 @@ let KDEventMapSpell = {
 		"EffectTile": (e, spell, data) => {
 			if (KinkyDungeonHasMana(e.cost != undefined ? e.cost : KinkyDungeonGetManaCost(spell, false, true)) && !data.miss && !data.disarm && data.targetX && data.targetY && data.enemy && KDHostile(data.enemy)) {
 				KinkyDungeonChangeMana(-(e.cost != undefined ? e.cost : KinkyDungeonGetManaCost(spell, false, true)));
-				KDTriggerSpell(spell, data, false, false);
+				KDTriggerSpell(spell, data, false, true);
 				KDCreateEffectTile(data.targetX, data.targetY, {
 					name: e.kind,
 					duration: e.duration,
@@ -3978,7 +4051,7 @@ let KDEventMapSpell = {
 				KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon(undefined, undefined, weapon));
 				if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name && chanceWithout < chanceWith) {
 					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-					KDTriggerSpell(spell, data, false, false);
+					KDTriggerSpell(spell, data, false, true);
 				}
 			}
 		},
@@ -3989,7 +4062,7 @@ let KDEventMapSpell = {
 		"ModifyStruggle": (e, spell, data) => {
 			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, false, true)) && data.escapeChance != undefined && (!e.StruggleType || e.StruggleType == data.struggleType)) {
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell, false, true));
-				KDTriggerSpell(spell, data, false, false);
+				KDTriggerSpell(spell, data, false, true);
 				if (e.mult && data.escapeChance > 0)
 					data.escapeChance *= e.mult;
 				if (e.power)
@@ -4313,7 +4386,7 @@ let KDEventMapSpell = {
 	
 						if (cost > 0)
 							KinkyDungeonChangeMana(-cost, false, 0, false, true);
-						KDTriggerSpell(spell, data);
+						KDTriggerSpell(spell, data, false, false);
 						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `${TextGet("KDQuickness_Floater")}`, "#ffff77", 3);
 						KinkyDungeonSendTextMessage(10, TextGet("KDQuickness_Yes"), "#ffff77", 2, true);
 					} else {
@@ -4356,7 +4429,7 @@ let KDEventMapSpell = {
 
 						if (cost > 0)
 							KinkyDungeonChangeMana(-cost, false, 0, false, true);
-						KDTriggerSpell(spell, data);
+						KDTriggerSpell(spell, data, false, false);
 						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `${TextGet("KD" + spell.name + "_Floater")}`, "#ffff77", 3);
 						KinkyDungeonSendTextMessage(10, TextGet("KD" + spell.name + "_Yes"), "#ffff77", 2, true);
 						KinkyDungeonAdvanceTime(1);
@@ -4832,6 +4905,23 @@ let KDEventMapWeapon = {
 		},
 	},
 	"afterPlayerAttack": {
+		"ShadowBleed": (e, weapon, data) => {
+			if (data.enemy && !data.miss && !data.disarm && data.damage && data.damage.damage) {
+				if (data.enemy && data.enemy.hp > 0 && !(KDHelpless(data.enemy) && data.enemy.hp < 0.6)) {
+					KinkyDungeonApplyBuffToEntity(data.enemy, {
+						aura: "#aa00ff",
+						power: e.power,
+						type: "ShadowBleed",
+						id: "ShadowBleed",
+						duration: e.time,
+						events: [
+							{trigger: 'tick', type: 'UnShadowElementalEffect', damage: e.damage, power: 0.5*e.power},
+							{trigger: 'tick', type: 'ShadowElementalEffect', damage: e.damage, power: e.power, time: 2},
+						]
+					});
+				}
+			}
+		},
 		"DoubleStrike": (e, weapon, data) => {
 			if (!KinkyDungeonAttackTwiceFlag && (!e.chance || KDRandom() < e.chance)) {
 				if (data.enemy && data.enemy.hp > 0 && !(KDHelpless(data.enemy) && data.enemy.hp < 0.6)) {
@@ -4899,7 +4989,7 @@ let KDEventMapWeapon = {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: (e.kind || weapon.name) + "Armor", type: "Armor", power: e.power, duration: 2,});
 		},
 		"Charge": (e, weapon, data) => {
-			if (KDGameData.AncientEnergyLevel > 0 && KinkyDungeonSlowMoveTurns < 1) {
+			if (KDGameData.AncientEnergyLevel > 0 && KDGameData.SlowMoveTurns < 1) {
 				let currentCharge = KinkyDungeonPlayerBuffs[weapon.name + "Charge"] ? KinkyDungeonPlayerBuffs[weapon.name + "Charge"].duration : 0;
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: weapon.name + "Charge",
@@ -4916,7 +5006,7 @@ let KDEventMapWeapon = {
 			}
 		},
 		"Patience": (e, weapon, data) => {
-			if (KinkyDungeonSlowMoveTurns < 1) {
+			if (KDGameData.SlowMoveTurns < 1) {
 				let currentCharge = KinkyDungeonPlayerBuffs[weapon.name + "Charge"] ? KinkyDungeonPlayerBuffs[weapon.name + "Charge"].duration : 0;
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: weapon.name + "Charge",
@@ -4934,7 +5024,7 @@ let KDEventMapWeapon = {
 		},
 		"Reload": (e, weapon, data) => {
 			let player = data.player || KinkyDungeonPlayerEntity;
-			if (KinkyDungeonSlowMoveTurns < 1 && (!e.prereq || !KDPrereqs[e.prereq] || KDPrereqs[e.prereq](player, e, data))) {
+			if (KDGameData.SlowMoveTurns < 1 && (!e.prereq || !KDPrereqs[e.prereq] || KDPrereqs[e.prereq](player, e, data))) {
 				let originalDuration = KinkyDungeonPlayerBuffs[weapon.name + "Load"]?.duration;
 				let currentLoad = KDEntityBuffedStat(player, weapon.name + "Load") || 0;
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
@@ -6294,7 +6384,8 @@ let KDEventMapEnemy = {
 					KDTripleBuffKill("ShadowEngulf", KinkyDungeonPlayerEntity, 9, (tt) => {
 						if (KDGameData.RoomType != "DemonTransition") {
 							AIData.defeat = true;
-							KDCustomDefeat = KDEnterDemonTransition;
+							KDCustomDefeat = "DemonTransition";
+							KDCustomDefeatEnemy = enemy;
 						} else
 							KinkyDungeonPassOut();
 					}, "Blindness",
@@ -6430,6 +6521,21 @@ let KDEventMapEnemy = {
 							}
 						}
 
+					}
+				}
+			}
+		},
+		"ExplosiveBarrel": (e, enemy, data) => {
+			if (data.dmg > 0 && ['fire', 'holy', 'electric', 'arcane'].includes(data.type) && enemy == data.enemy) {
+				if (enemy.hp <= 0.51 || data.dmg >= e.power || !e.chance || KDRandom() < e.chance) { // Sufficient damage blows it up without a roll
+					if (!KDEnemyHasFlag(enemy, "exploded")) {
+						enemy.hp = 0;
+						KinkyDungeonSendTextMessage(6, TextGet("KDExplosiveBarrelExplode"), "#ffaa44", 4);
+						enemy.summoned = true; // To prevent gunpowder
+						KinkyDungeonSetEnemyFlag(enemy, "exploded", -1);
+
+						KinkyDungeonCastSpell(enemy.x, enemy.y, KinkyDungeonFindSpell(e.spell, true), enemy, undefined, undefined);
+						KDRemoveEntity(enemy);
 					}
 				}
 			}
@@ -6941,9 +7047,12 @@ let KDEventMapGeneric = {
 	"beforePlayerLaunchAttack": {
 		"ReplacePerks": (e, data) => {
 			if (KinkyDungeonPlayerDamage.unarmed && KDIsHumanoid(data.target)) {
-				if (KinkyDungeonStatsChoice.get("UnarmedGrope")) {data.attackData.type = "grope"; data.attackData.sfx = "Damage";}
-				else if (KinkyDungeonStatsChoice.get("UnarmedPain")) data.attackData.type = "pain";
-				else if (KinkyDungeonStatsChoice.get("UnarmedTickle")) {data.attackData.type = "tickle"; data.attackData.sfx = "Tickle";}
+				if (!KinkyDungeonIsArmsBound()) {
+					if (KinkyDungeonStatsChoice.get("UnarmedGrope")) {data.attackData.type = "grope"; data.attackData.sfx = "Damage";}
+					else if (KinkyDungeonStatsChoice.get("UnarmedPain")) data.attackData.type = "pain";
+					else if (KinkyDungeonStatsChoice.get("UnarmedTickle")) {data.attackData.type = "tickle"; data.attackData.sfx = "Tickle";}
+				} else KinkyDungeonSendActionMessage(7, TextGet("KDKick"), "#ffaa88", 1, true);
+				
 
 				if (KinkyDungeonStatsChoice.get("UnarmedSuck")) {
 					data.attackData.dmg *= 0.5;
@@ -7276,7 +7385,7 @@ let KDEventMapGeneric = {
 		},
 		"HardModeReplace": (ev, data) => {
 			if (!KinkyDungeonStatsChoice.get("hardMode")) return;
-			let multiplier = 0.05 * 0.95 * Math.min(1.5, KDGetEffLevel()/(KinkyDungeonMaxLevel - 1));
+			let multiplier = 0.05 + 0.95 * Math.min(1.5, KDGetEffLevel()/(KinkyDungeonMaxLevel - 1));
 
 			let chance = 0.2 * multiplier;
 			let bosschance = 0.3;
@@ -7286,7 +7395,7 @@ let KDEventMapGeneric = {
 			let reg = ["Hardmode_Reg"];
 
 			if (KinkyDungeonStatsChoice.get("extremeMode")) {
-				chance = 1.0 * multiplier;
+				chance = 0.1 + 0.9 * multiplier;
 				bosschance = 0.4;
 				bosshpchance = 1.0;
 				boss.push("ExtremeBoss", "Extreme");
@@ -7877,14 +7986,15 @@ function KDIsHumanoid(enemy) {
 
 /**
  * For spells that arent cast, like toggles and flame blade
+ * @param {spell} spell
  * @param {*} data
- * @param {*} notPassive
- * @param {*} notToggle
+ * @param {boolean} Passive
+ * @param {boolean} Toggle
  */
-function KDTriggerSpell(spell, data, notPassive, notToggle) {
+function KDTriggerSpell(spell, data, Passive, Toggle) {
 	if (!data.spell) data.spell = spell;
-	if (notPassive) data.notPassive = true;
-	if (notToggle) data.notToggle = true;
+	if (Passive) data.Passive = true;
+	if (Toggle) data.Toggle = true;
 	KinkyDungeonSendEvent("spellTrigger", data);
 	KinkyDungeonSendEvent("afterSpellTrigger", data);
 

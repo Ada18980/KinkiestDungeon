@@ -284,6 +284,7 @@ let KinkyDungeonLootTable = {
 		{name: "redkey", key: true, minLevel: 0, weight:1, message:"LootChestRedKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
 		{name: "bola", minLevel: 0, weight:3, message:"LootChestBola", messageColor:"lightgreen", messageTime: 3, allFloors: true},
 		{name: "bomb", minLevel: 0, weight:2, message:"LootChestBomb", messageColor:"lightgreen", messageTime: 3, allFloors: true},
+		{name: "gunpowder", minLevel: 0, weight:8, message:"LootChestGunpowder", messageColor:"lightgreen", messageTime: 3, allFloors: true},
 		{name: "rope", minLevel: 0, weight:1, weapon: "Rope", message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["Rope"]},
 	],
 	"blue": [

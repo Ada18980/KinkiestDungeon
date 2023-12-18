@@ -27,7 +27,7 @@ let KinkyDungeonBulletsVisual = new Map(); // Bullet sprites on the game board
 let KinkyDungeonBulletsID = {}; // Bullets on the game board
 
 let KDVulnerableDmg = 1.0;
-let KDVulnerableHitMult = 1.33;
+let KDVulnerableHitMult = 2.00;
 
 let KDVulnerableBlockHitMult = 2.0;
 let KDPacifistReduction = 0.1;
@@ -381,62 +381,6 @@ function KinkyDungeonGetEvasion(Enemy, NoOverride, IsSpell, IsMagic, cost) {
 	return hitChance;
 }
 
-function KinkyDungeonDoEnemyBlock(Enemy, NoOverride, IsSpell, IsMagic, cost) {
-	let flags = {
-		KDBlockHands: true,
-		KDBlockArms: true,
-		KDBlockSight: true,
-		KDBlockDeaf: true,
-		KDBlockSlow: true,
-	};
-	let data = {enemy: Enemy,
-		isSpell: IsSpell,
-		isMagic: IsMagic,
-		flags: flags,
-		cost: cost,
-		hitmult: 1.0,
-	};
-
-	if (!NoOverride)
-		KinkyDungeonSendEvent("calcBlock", data);
-	let hitChance = (Enemy && Enemy.buffs) ? KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(Enemy.buffs, "Block")) : 1.0;
-	hitChance *= data.hitmult;
-
-	if (KinkyDungeonStatsChoice.get("Clumsy")) hitChance *= KDClumsyAmount;
-	if (KinkyDungeonStatsChoice.get("Unfocused")) {
-		let amount = 1;
-		let dist = KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax;
-		if (dist >= KDUnfocusedParams.ThreshMin) {
-			amount = KDUnfocusedParams.AmountMin + (KDUnfocusedParams.AmountMax - KDUnfocusedParams.AmountMin) * (dist - KDUnfocusedParams.ThreshMin) / (KDUnfocusedParams.ThreshMax - KDUnfocusedParams.ThreshMin);
-		}
-		if (amount != 1) hitChance *= amount;
-	}
-
-	if (Enemy && Enemy.Enemy && Enemy.Enemy.block && ((!(Enemy.stun > 0) && !(Enemy.freeze > 0)) || Enemy.Enemy.alwaysBlock || Enemy.Enemy.block < 0)) hitChance *= Math.max(0,
-		(Enemy.aware ? KinkyDungeonMultiplicativeStat(Enemy.Enemy.block) : Math.max(1, KinkyDungeonMultiplicativeStat(Enemy.Enemy.block))));
-	if (Enemy && Enemy.Enemy && Enemy.Enemy.Resistance?.alwaysBypassedByMagic && (IsMagic || (KinkyDungeonPlayerDamage && KDWeaponIsMagic({name: KinkyDungeonPlayerWeapon})))) hitChance = Math.max(hitChance, 1.0);
-
-	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Accuracy")) {
-		hitChance *= KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Accuracy"));
-	}
-
-	if (!IsSpell) hitChance *= KinkyDungeonPlayerDamage.chance;
-	if (Enemy && Enemy.bind > 0) hitChance *= 3;
-	else if (Enemy && Enemy.slow > 0) hitChance *= 2;
-	if (Enemy && (Enemy.stun > 0 || Enemy.freeze > 0)) hitChance *= 5;
-	else {
-		if (Enemy && Enemy.distraction > 0) hitChance *= 1 + Math.min(1, Enemy.distraction / Enemy.Enemy.maxhp);
-		if (Enemy) hitChance *= 1 + 0.25 * KDBoundEffects(Enemy);
-	}
-	if (Enemy && Enemy.vulnerable) hitChance *= KDVulnerableBlockHitMult;
-
-	if (!IsSpell) {
-		if (flags.KDBlockSight)
-			hitChance = Math.min(hitChance, Math.max(0.1, hitChance - Math.min(3, KinkyDungeonBlindLevel) * KinkyDungeonBlockMissChancePerBlind));
-		if (flags.KDBlockArms && KinkyDungeonIsArmsBound(false, true) && (!KinkyDungeonPlayerDamage?.noHands)) hitChance *= 0.5;
-	}
-	return hitChance;
-}
 
 function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
 	if (Enemy && Enemy.Enemy && (!Spell || !Spell.enemySpell) && (!Faction || Faction == "Player") && !(Enemy.rage > 0) && (!Attacker || Attacker.player || Attacker.Enemy.allied)) {
@@ -1428,7 +1372,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 	}
 	if (data.channel) {
 		KinkyDungeonSetFlag("channeling", data.channel);
-		KinkyDungeonSlowMoveTurns = Math.max(KinkyDungeonSlowMoveTurns, data.channel);
+		KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, data.channel);
 		KinkyDungeonSleepTime = CommonTime() + 200;
 	}
 

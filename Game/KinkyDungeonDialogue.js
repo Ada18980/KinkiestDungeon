@@ -69,7 +69,7 @@ function KDDrawDialogue(delta) {
 		zIndex: 111,
 	});
 
-	if (KDGameData.CurrentDialog && !(KinkyDungeonSlowMoveTurns > 0)) {
+	if (KDGameData.CurrentDialog && !(KDGameData.SlowMoveTurns > 0)) {
 		KinkyDungeonDrawState = "Game";
 		// Get the current dialogue and traverse down the tree
 		let dialogue = KDGetDialogue();
@@ -309,7 +309,7 @@ let KinkyDungeonDialogueTimer = 0;
 function KDStartDialog(Dialogue, Speaker, Click, Personality, enemy) {
 	KinkyDungeonInterruptSleep();
 	KDDisableAutoWait();
-	KinkyDungeonDialogueTimer = CommonTime() + 700 + KinkyDungeonSlowMoveTurns * 200;
+	KinkyDungeonDialogueTimer = CommonTime() + 700 + KDGameData.SlowMoveTurns * 200;
 	KDOptionOffset = 0;
 	KinkyDungeonFastMovePath = [];
 	KinkyDungeonDrawState = "Game";
@@ -395,7 +395,7 @@ function KDDoDialogue(data) {
 function KDStartDialogInput(Dialogue, Speaker, Click, Personality, enemy) {
 	KinkyDungeonInterruptSleep();
 	KDDisableAutoWait();
-	KinkyDungeonDialogueTimer = CommonTime() + 700 + KinkyDungeonSlowMoveTurns * 200;
+	KinkyDungeonDialogueTimer = CommonTime() + 700 + KDGameData.SlowMoveTurns * 200;
 	KDOptionOffset = 0;
 	KinkyDungeonFastMovePath = [];
 	KinkyDungeonDrawState = "Game";
@@ -1139,7 +1139,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 							KinkyDungeonSetFlag("Recruited", -1);
 							KDChangeFactionRelation("Player", faction, 0.4, true);
 							KDChangeFactionRelation("Player", faction, -0.2);
-							KinkyDungeonSlowMoveTurns = 3;
+							KDGameData.SlowMoveTurns = 3;
 							KinkyDungeonSleepTime = CommonTime() + 200;
 							KinkyDungeonSetFlag(name, -1, 1);
 							return false;
@@ -1197,7 +1197,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 							KinkyDungeonSetFlag("Recruited", -1);
 							KDChangeFactionRelation("Player", faction, 0.4, true);
 							KDChangeFactionRelation("Player", faction, -0.2);
-							KinkyDungeonSlowMoveTurns = 3;
+							KDGameData.SlowMoveTurns = 3;
 							KinkyDungeonSleepTime = CommonTime() + 200;
 							KinkyDungeonSetFlag(name, -1, 1);
 							return false;
@@ -1219,7 +1219,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 								if (!KinkyDungeonInventoryGet(outfitName)) KinkyDungeonInventoryAdd(outfit);
 								//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 								KinkyDungeonSetDress(outfitName, outfitName);
-								KinkyDungeonSlowMoveTurns = 3;
+								KDGameData.SlowMoveTurns = 3;
 								KinkyDungeonSleepTime = CommonTime() + 200;
 							} else {
 								KDIncreaseOfferFatigue(10);

@@ -1173,188 +1173,191 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 			// Draw bars
 			if ((!enemy.Enemy.stealth || KDAllied(enemy) || KDHelpless(enemy) || playerDist <= enemy.Enemy.stealth + 0.1) && !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0 && playerDist > 1.5)) {
 
-				// Handle dodge and block tokens
-				if (KDCanBlock(enemy)) {
-												
-					if (enemy.blocks > 0) {
-						let pipY = -15 + canvasOffsetY + (yy - CamY + 1)*KinkyDungeonGridSizeDisplay;
-						let pipSpacing = -0.5 * (KinkyDungeonGridSizeDisplay-25)/2;
-						for (let pip = 0; pip < enemy.blocks && pip < 2; pip++) {
-							if (pip == 0)
-								DrawRectKD(kdenemystatusboard, kdpixisprites, enemy.id + "Bpip" + pip, {
-									Left: canvasOffsetX + 15 + (xx - CamX)*KinkyDungeonGridSizeDisplay,
-									Top: pipY,
-									Width: 10,
-									Height: 10,
-									Color: "#ffffff",
-									zIndex: 10,
-									LineWidth: 2,
-								});
-							else {
-								DrawCrossKD(kdenemystatusboard, kdpixisprites, enemy.id + "Bpip+" + pip, {
-									Left: canvasOffsetX + 15 + (xx - CamX)*KinkyDungeonGridSizeDisplay,
-									Top: pipY + 4,
-									Width: 6,
-									Height: 6,
-									Color: "#ffffff",
-									zIndex: 10,
-									LineWidth: 2,
-								});
+				if ((enemy.ambushtrigger || !KDAIType[KDGetAI(enemy)]?.ambush)) {
+					// Handle dodge and block tokens
+					if (KDCanBlock(enemy)) {
+													
+						if (enemy.blocks > 0) {
+							let pipY = -15 + canvasOffsetY + (yy - CamY + 1)*KinkyDungeonGridSizeDisplay;
+							let pipSpacing = -0.5 * (KinkyDungeonGridSizeDisplay-25)/2;
+							for (let pip = 0; pip < enemy.blocks && pip < 2; pip++) {
+								if (pip == 0)
+									DrawRectKD(kdenemystatusboard, kdpixisprites, enemy.id + "Bpip" + pip, {
+										Left: canvasOffsetX + 15 + (xx - CamX)*KinkyDungeonGridSizeDisplay,
+										Top: pipY,
+										Width: 10,
+										Height: 10,
+										Color: "#ffffff",
+										zIndex: 10,
+										LineWidth: 2,
+									});
+								else {
+									DrawCrossKD(kdenemystatusboard, kdpixisprites, enemy.id + "Bpip+" + pip, {
+										Left: canvasOffsetX + 15 + (xx - CamX)*KinkyDungeonGridSizeDisplay,
+										Top: pipY + 4,
+										Width: 6,
+										Height: 6,
+										Color: "#ffffff",
+										zIndex: 10,
+										LineWidth: 2,
+									});
+								}
+								pipY += pipSpacing;
 							}
-							pipY += pipSpacing;
 						}
 					}
-				}
 
-				if (KDCanDodge(enemy)) {
-					if (enemy.dodges > 0) {
-						let pipY = 15 + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay;
-						let pipSpacing = 0.5 * (KinkyDungeonGridSizeDisplay-25)/2;
-						for (let pip = 0; pip < enemy.dodges && pip < 2; pip++) {
-							if (pip == 1 || enemy.dodges < 2)
-								DrawCircleKD(kdenemystatusboard, kdpixisprites, enemy.id + "Dpip" + pip, {
-									Left: canvasOffsetX + 15 + (xx - CamX)*KinkyDungeonGridSizeDisplay,
-									Top: pipY,
-									Width: 10,
-									Height: 10,
-									Color: "#ffffff",
-									zIndex: 10,
-									LineWidth: 2,
-								});
-							else {
-								DrawCrossKD(kdenemystatusboard, kdpixisprites, enemy.id + "Dpip+" + pip, {
-									Left: canvasOffsetX + 15 + (xx - CamX)*KinkyDungeonGridSizeDisplay,
-									Top: pipY + 4,
-									Width: 6,
-									Height: 6,
-									Color: "#ffffff",
-									zIndex: 10,
-									LineWidth: 2,
-								});
+					if (KDCanDodge(enemy)) {
+						if (enemy.dodges > 0) {
+							let pipY = 15 + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay;
+							let pipSpacing = 0.5 * (KinkyDungeonGridSizeDisplay-25)/2;
+							for (let pip = 0; pip < enemy.dodges && pip < 2; pip++) {
+								if (pip == 1 || enemy.dodges < 2)
+									DrawCircleKD(kdenemystatusboard, kdpixisprites, enemy.id + "Dpip" + pip, {
+										Left: canvasOffsetX + 15 + (xx - CamX)*KinkyDungeonGridSizeDisplay,
+										Top: pipY,
+										Width: 10,
+										Height: 10,
+										Color: "#ffffff",
+										zIndex: 10,
+										LineWidth: 2,
+									});
+								else {
+									DrawCrossKD(kdenemystatusboard, kdpixisprites, enemy.id + "Dpip+" + pip, {
+										Left: canvasOffsetX + 15 + (xx - CamX)*KinkyDungeonGridSizeDisplay,
+										Top: pipY + 4,
+										Width: 6,
+										Height: 6,
+										Color: "#ffffff",
+										zIndex: 10,
+										LineWidth: 2,
+									});
+								}
+								pipY += pipSpacing;
 							}
-							pipY += pipSpacing;
 						}
 					}
-				}
-				if ((KDAllied(enemy) || enemy.distraction > 0 || ((enemy.lifetime != undefined || enemy.playerdmg || (enemy.shield) || enemy.hp < enemy.Enemy.maxhp || enemy.boundTo || enemy.boundLevel))) && KDCanSeeEnemy(enemy, playerDist)) {
-					
-					
-					
-					let spacing = 6;
-					// Draw binding bars
-					let helpless = KDHelpless(enemy);
-					let bindAmpMod = 1;//KDGetBindAmp(enemy, bindAmpModBase);
-					if (enemy.boundLevel != undefined && enemy.boundLevel > 0) {
-						if (!helpless) {
-							let visualbond = bindAmpMod * enemy.visual_boundlevel;
-							let bindingBars = Math.ceil( visualbond / enemy.Enemy.maxhp);
-							let SM = KDGetEnemyStruggleMod(enemy);
-							let futureBound = KDPredictStruggle(enemy, SM, 1);
-							for (let i = 0; i < bindingBars && i < KDMaxBindingBars; i++) {
-								if (i > 0) II++;
-								let mod = visualbond - bindAmpMod * futureBound.boundLevel;
-								// Part that will be struggled out of
-								KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + 0.1)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
-									KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (visualbond - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#ffffff", "#52333f");
-								// Separator between part that will be struggled and not
-								KinkyDungeonBarTo(kdenemystatusboard, 1 + canvasOffsetX + (xx - CamX + 0.1)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
-									KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (visualbond - mod - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#444444", "none");
+				
+					if ((KDAllied(enemy) || enemy.distraction > 0 || ((enemy.lifetime != undefined || enemy.playerdmg || (enemy.shield) || enemy.hp < enemy.Enemy.maxhp || enemy.boundTo || enemy.boundLevel))) && KDCanSeeEnemy(enemy, playerDist)) {
+						
+						
+						
+						let spacing = 6;
+						// Draw binding bars
+						let helpless = KDHelpless(enemy);
+						let bindAmpMod = 1;//KDGetBindAmp(enemy, bindAmpModBase);
+						if (enemy.boundLevel != undefined && enemy.boundLevel > 0) {
+							if (!helpless) {
+								let visualbond = bindAmpMod * enemy.visual_boundlevel;
+								let bindingBars = Math.ceil( visualbond / enemy.Enemy.maxhp);
+								let SM = KDGetEnemyStruggleMod(enemy);
+								let futureBound = KDPredictStruggle(enemy, SM, 1);
+								for (let i = 0; i < bindingBars && i < KDMaxBindingBars; i++) {
+									if (i > 0) II++;
+									let mod = visualbond - bindAmpMod * futureBound.boundLevel;
+									// Part that will be struggled out of
+									KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + 0.1)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
+										KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (visualbond - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#ffffff", "#52333f");
+									// Separator between part that will be struggled and not
+									KinkyDungeonBarTo(kdenemystatusboard, 1 + canvasOffsetX + (xx - CamX + 0.1)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
+										KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (visualbond - mod - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#444444", "none");
 
-							}
-							II -= Math.max(0, Math.min(bindingBars-1, KDMaxBindingBars-1));
-							// Temp value of bondage level, decremented based on special bound level and priority
-							let bb = 0;
-							let bcolor = "#ffae70";
-							let bondage = [];
-							if (futureBound.specialBoundLevel) {
-								for (let b of Object.entries(futureBound.specialBoundLevel)) {
-									bondage.push({name: b[0], amount: b[1] * bindAmpMod, level: 0, pri: KDSpecialBondage[b[0]].priority});
 								}
-								bondage = bondage.sort((a, b) => {
-									return b.pri - a.pri;
-								});
-							} else {
-								bondage.push({name: "Normal", amount: 0, level: futureBound.boundLevel, pri: 0});
-							}
+								II -= Math.max(0, Math.min(bindingBars-1, KDMaxBindingBars-1));
+								// Temp value of bondage level, decremented based on special bound level and priority
+								let bb = 0;
+								let bcolor = "#ffae70";
+								let bondage = [];
+								if (futureBound.specialBoundLevel) {
+									for (let b of Object.entries(futureBound.specialBoundLevel)) {
+										bondage.push({name: b[0], amount: b[1] * bindAmpMod, level: 0, pri: KDSpecialBondage[b[0]].priority});
+									}
+									bondage = bondage.sort((a, b) => {
+										return b.pri - a.pri;
+									});
+								} else {
+									bondage.push({name: "Normal", amount: 0, level: futureBound.boundLevel, pri: 0});
+								}
 
-							for (let b of bondage) {
-								if (!b.level) {
-									b.level = bb + b.amount;
-									bb = b.level;
+								for (let b of bondage) {
+									if (!b.level) {
+										b.level = bb + b.amount;
+										bb = b.level;
+									}
 								}
-							}
-							for (let i = 0; i < bindingBars && i < KDMaxBindingBars; i++) {
-								if (i > 0) II++;
-								// Determine current bondage type
-								let bars = false;
-								for (let bi = bondage.length - 1; bi >= 0; bi--) {
-									let b = bondage[bi];
-									// Filter out anything that doesnt fit currently
-									if (b.level > i * enemy.Enemy.maxhp) {
-										bcolor = KDSpecialBondage[b.name] ? KDSpecialBondage[b.name].color : "#ffae70";
-										// Struggle bars themselves
-										KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + 0.1)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
-											KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (Math.max(0, b.level - i * enemy.Enemy.maxhp)) / enemy.Enemy.maxhp) * 100, bcolor, "none",
-											undefined, undefined, bars ? [0.25, 0.5, 0.75] : undefined, bars ? "#85522c" : undefined, bars ? "#85522c" : undefined, 57.5 + b.pri*0.01);
-										bars = true;
+								for (let i = 0; i < bindingBars && i < KDMaxBindingBars; i++) {
+									if (i > 0) II++;
+									// Determine current bondage type
+									let bars = false;
+									for (let bi = bondage.length - 1; bi >= 0; bi--) {
+										let b = bondage[bi];
+										// Filter out anything that doesnt fit currently
+										if (b.level > i * enemy.Enemy.maxhp) {
+											bcolor = KDSpecialBondage[b.name] ? KDSpecialBondage[b.name].color : "#ffae70";
+											// Struggle bars themselves
+											KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + 0.1)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
+												KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (Math.max(0, b.level - i * enemy.Enemy.maxhp)) / enemy.Enemy.maxhp) * 100, bcolor, "none",
+												undefined, undefined, bars ? [0.25, 0.5, 0.75] : undefined, bars ? "#85522c" : undefined, bars ? "#85522c" : undefined, 57.5 + b.pri*0.01);
+											bars = true;
+										}
+
 									}
 
 								}
-
+							} else {
+								// TODO draw a lock or some other icon
 							}
-						} else {
-							// TODO draw a lock or some other icon
 						}
-					}
-					// Draw HP bar
-					if (!helpless) {
-						if (enemy.hp < enemy.Enemy.maxhp || KDAllied(enemy) || enemy.boundTo || enemy.shield > 0) {
-							// Draw hp bar
-							let fg = enemy.boundTo ? (KDAllied(enemy) ? "#77aaff" : "#dd88ff") : (KDAllied(enemy) ? "#00ff88" : "#ff5555");
-							let bg = KDAllied(enemy) ? "#aa0000" : "#000000";
-							KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
-								hpbarMult * KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), enemy.boundTo? 7 : 9, enemy.visual_hp / enemy.Enemy.maxhp * 100, fg, bg);
-							
-							if (enemy.shield > 0) {
+						// Draw HP bar
+						if (!helpless) {
+							if (enemy.hp < enemy.Enemy.maxhp || KDAllied(enemy) || enemy.boundTo || enemy.shield > 0) {
+								// Draw hp bar
+								let fg = enemy.boundTo ? (KDAllied(enemy) ? "#77aaff" : "#dd88ff") : (KDAllied(enemy) ? "#00ff88" : "#ff5555");
+								let bg = KDAllied(enemy) ? "#aa0000" : "#000000";
+								KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
+									hpbarMult * KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), enemy.boundTo? 7 : 9, enemy.visual_hp / enemy.Enemy.maxhp * 100, fg, bg);
+								
+								if (enemy.shield > 0) {
+									KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay,
+										canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - 2 - II * spacing,
+										shieldbarMult * KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 5, enemy.shield / KDGetMaxShield(enemy) * 100, '#92e8c0', bg);
+								
+								}
+								II++;
+							}
+							if (enemy.Enemy.maxmana > 0) {
 								KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay,
-									canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - 2 - II * spacing,
-									shieldbarMult * KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 5, enemy.shield / KDGetMaxShield(enemy) * 100, '#92e8c0', bg);
+									canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 + 5 - II * spacing,
+									KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 5, (enemy.mana || 0) / enemy.Enemy.maxmana * 100, '#4f6ab8', "#000000");
 							
 							}
-							II++;
-						}
-						if (enemy.Enemy.maxmana > 0) {
-							KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay,
-								canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 + 5 - II * spacing,
-								KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 5, (enemy.mana || 0) / enemy.Enemy.maxmana * 100, '#4f6ab8', "#000000");
-						
-						}
-						
+							
 
-						if (enemy.distraction > 0) {
-							// Draw distraction bar
-							KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + 0.1)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
-								KinkyDungeonGridSizeDisplay * 0.8, 6, enemy.distraction / enemy.Enemy.maxhp * 100, "#fda1ff", "#9300ff");
-							KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_ar_heart", KinkyDungeonRootDirectory + (enemy.distraction >= 0.9 * enemy.Enemy.maxhp ? "UI/HeartExtreme.png" : "UI/Heart.png"),
-								-7 + canvasOffsetX + (xx - CamX + enemy.visual_distraction / enemy.Enemy.maxhp * 0.8 + 0.1)*KinkyDungeonGridSizeDisplay,
-								-4 + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
-								14, 14 , undefined, {
-									zIndex: 63,
-								});
-							II++;
+							if (enemy.distraction > 0) {
+								// Draw distraction bar
+								KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + 0.1)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
+									KinkyDungeonGridSizeDisplay * 0.8, 6, enemy.distraction / enemy.Enemy.maxhp * 100, "#fda1ff", "#9300ff");
+								KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_ar_heart", KinkyDungeonRootDirectory + (enemy.distraction >= 0.9 * enemy.Enemy.maxhp ? "UI/HeartExtreme.png" : "UI/Heart.png"),
+									-7 + canvasOffsetX + (xx - CamX + enemy.visual_distraction / enemy.Enemy.maxhp * 0.8 + 0.1)*KinkyDungeonGridSizeDisplay,
+									-4 + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
+									14, 14 , undefined, {
+										zIndex: 63,
+									});
+								II++;
+							}
+
+							if (enemy.lifetime != undefined && enemy.maxlifetime > 0 && enemy.lifetime <= enemy.maxlifetime && enemy.maxlifetime < 999 && ((!enemy.Enemy.hidetimerbar && !enemy.hideTimer) || KDAllied(enemy))) {
+								// Draw lifetime bar
+								KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
+									KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 8, enemy.visual_lifetime / enemy.maxlifetime * 100, "#cccccc", "#000000"); II++;
+							}
 						}
 
-						if (enemy.lifetime != undefined && enemy.maxlifetime > 0 && enemy.lifetime <= enemy.maxlifetime && enemy.maxlifetime < 999 && ((!enemy.Enemy.hidetimerbar && !enemy.hideTimer) || KDAllied(enemy))) {
+						if (enemy.teleporting > 0 && enemy.teleportingmax > 1 && enemy.teleporting < enemy.teleportingmax) {
 							// Draw lifetime bar
 							KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
-								KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 8, enemy.visual_lifetime / enemy.maxlifetime * 100, "#cccccc", "#000000"); II++;
+								KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 8, (enemy.teleportingmax - enemy.teleporting) / enemy.teleportingmax * 100, "#92e8c0", "#4c6885"); II++;
 						}
-					}
-
-					if (enemy.teleporting > 0 && enemy.teleportingmax > 1 && enemy.teleporting < enemy.teleportingmax) {
-						// Draw lifetime bar
-						KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
-							KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 8, (enemy.teleportingmax - enemy.teleporting) / enemy.teleportingmax * 100, "#92e8c0", "#4c6885"); II++;
 					}
 				}
 			}
@@ -1630,7 +1633,7 @@ function KDDrawEnemyTooltip(enemy, offset) {
 		bg: "#000000",
 		size: 12,
 	});
-	if (!enemy.Enemy.tags?.nobrain) {
+	if (!enemy.Enemy.tags?.nobrain && !enemy.Enemy.tags?.scenery) {
 		let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinion(enemy)/10)));
 		let str = TextGet("KDTooltipOpinion"+opinion);
 		TooltipList.push({
@@ -2798,7 +2801,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 	}
 
 	KDGameData.otherPlaying = 0;
-	let defeatEnemy = undefined;
+	//let defeatEnemy = undefined;
 	// Loop 2
 	for (let E = 0; E < KDMapData.Entities.length; E++) {
 		let enemy = KDMapData.Entities[E];
@@ -2860,7 +2863,14 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					idle = ret.idle;
 					if (ret.defeat) {
 						defeat = true;
-						defeatEnemy = enemy;
+						KDCustomDefeatEnemy = enemy;
+						let fac = KDGetFaction(enemy);
+						if (!KDFactionProperties[fac]) {
+							fac = KDGetFactionOriginal(enemy);
+						}
+						if (KDFactionProperties[fac]?.customDefeat) {
+							KDCustomDefeat = KDFactionProperties[fac]?.customDefeat;
+						}
 					} else {
 						KDMaintainEnemyAction(enemy, delta);
 					}
@@ -3047,15 +3057,18 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 	}
 
 	if (defeat) {
-		if (KDCustomDefeat) KDCustomDefeat();
+		if (KDCustomDefeat && KDCustomDefeats[KDCustomDefeat]) KDCustomDefeats[KDCustomDefeat](KDCustomDefeatEnemy);
 		else if (!KinkyDungeonFlags.get("CustomDefeat"))
-			KinkyDungeonDefeat(KinkyDungeonFlags.has("LeashToPrison"), defeatEnemy);
+			KinkyDungeonDefeat(KinkyDungeonFlags.has("LeashToPrison"), KDCustomDefeatEnemy);
 	}
-	KDCustomDefeat = null;
+	KDCustomDefeat = "";
+	KDCustomDefeatEnemy = null;
 }
 
-/** @type {() => void} */
-let KDCustomDefeat = null;
+/** @type {string} */
+let KDCustomDefeat = "";
+/** @type {entity} */
+let KDCustomDefeatEnemy = null;
 
 function KDMakeHostile(enemy, timer) {
 	if (!timer) timer = KDMaxAlertTimerAggro;
@@ -3249,7 +3262,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.damage = enemy.Enemy.dmgType;
 	AIData.power = enemy.Enemy.power + KinkyDungeonGetBuffedStat(enemy.buffs, "AttackPower");
 
-	AIData.targetRestraintLevel = 0.25 + (enemy.aggro && !enemy.playWithPlayer ? enemy.aggro : 0) + 0.004 * (KinkyDungeonGoddessRep.Prisoner + 50);
+	AIData.targetRestraintLevel = 0.25 + (enemy.aggro && !enemy.playWithPlayer ? enemy.aggro : 0) + 0.004 * (KDGetEffSecurityLevel(KDGetFaction(enemy) || KDGetFactionOriginal(enemy)) + 50);
 	if (enemy.aggro > 0 && delta > 0 && enemy.aggro > enemy.hp / enemy.Enemy.maxhp) enemy.aggro = enemy.aggro * 0.95;
 	if (KinkyDungeonStatsChoice.has("NoWayOut") || (enemy.playWithPlayer > 0 && !KinkyDungeonAggressive(enemy)) || enemy.hp < enemy.Enemy.maxhp * 0.5 || !KDIsHumanoid(enemy)) AIData.targetRestraintLevel = 999;
 	if (enemy.Enemy.Behavior?.thorough) AIData.targetRestraintLevel = Math.max(AIData.targetRestraintLevel, enemy.Enemy.Behavior?.thorough);
@@ -5858,7 +5871,7 @@ function KDPlayerIsDefeated() {
 
 function KDPlayerIsDisabled() {
 	return KinkyDungeonFlags.get("playerDisabled")
-		|| (KinkyDungeonStatBlind > 0 || KinkyDungeonStatBind > 0 || KinkyDungeonStatFreeze > 0 || (KinkyDungeonSlowMoveTurns > 0 && !KinkyDungeonFlags.get("channeling")) || KDGameData.SleepTurns > 0);
+		|| (KinkyDungeonStatBlind > 0 || KinkyDungeonStatBind > 0 || KinkyDungeonStatFreeze > 0 || (KDGameData.SlowMoveTurns > 0 && !KinkyDungeonFlags.get("channeling")) || KDGameData.SleepTurns > 0);
 }
 function KDPlayerIsStunned() {
 	return KDPlayerIsDisabled() || KinkyDungeonFlags.get("playerStun")

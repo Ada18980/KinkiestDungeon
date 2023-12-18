@@ -1,5 +1,9 @@
 "use strict";
 
+/** Affects security level based on owning faction */
+let KDMainFactionSecurityMod = 35;
+
+
 /** Time spent in cage before guards start getting teleported */
 let KDMaxCageTime = 100;
 
@@ -152,10 +156,10 @@ function KinkyDungeonCanPlay(enemy) {
 function KinkyDungeonCheckRelease() {
 	if (KDGameData.RoomType) {
 		let altRoom = KinkyDungeonAltFloor(KDGameData.RoomType);
-		if (altRoom && altRoom.noRelease) return altRoom.releaseOnLowSec ? (KinkyDungeonGoddessRep.Prisoner >= KDSecurityLevelHiSec ? -1 : 1) : -1;
+		if (altRoom && altRoom.noRelease) return altRoom.releaseOnLowSec ? (KDGetEffSecurityLevel() >= KDSecurityLevelHiSec ? -1 : 1) : -1;
 	}
 	let sub = KinkyDungeonGoddessRep.Ghost + 50;
-	let security = KinkyDungeonGoddessRep.Prisoner + 50;
+	let security = KDGetEffSecurityLevel() + 50;
 	if (sub == undefined || isNaN(sub)) sub = 0;
 	if (security == undefined || isNaN(security)) security = 0;
 	let turns = KDGameData.JailTurns - security;
@@ -381,7 +385,7 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 	if (currentItem) {
 		for (let r of KDGetJailRestraints()) {
 			let level = 0;
-			if (KinkyDungeonGoddessRep.Prisoner) level = Math.max(0, KinkyDungeonGoddessRep.Prisoner + 50);
+			if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
 			if (!r.Level || level >= r.Level) {
 				let candidate = KinkyDungeonGetRestraintByName(r.Name);
 				if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
@@ -401,7 +405,7 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 	if (!cand) {
 		for (let r of KDGetJailRestraints()) {
 			let level = 0;
-			if (KinkyDungeonGoddessRep.Prisoner) level = Math.max(0, KinkyDungeonGoddessRep.Prisoner + 50);
+			if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
 			if (!r.Level || level >= r.Level) {
 				let candidate = KinkyDungeonGetRestraintByName(r.Name);
 				if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
@@ -831,6 +835,17 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 	}
 }
 
+function KDGetEffSecurityLevel(faction, noCap) {
+	if (!faction) faction = KDGetMainFaction();
+
+	if (faction) {
+		let mod = -KDFactionRelation("Player", faction) * KDMainFactionSecurityMod;
+		if (noCap) return mod + KinkyDungeonGoddessRep.Prisoner;
+		return Math.max(-50, Math.min(50, mod + KinkyDungeonGoddessRep.Prisoner));
+	}
+	return KinkyDungeonGoddessRep.Prisoner;
+}
+
 /**
  *
  * @param {number} xx
@@ -952,7 +967,7 @@ function KinkyDungeonPassOut(noteleport) {
 	}
 
 	KinkyDungeonLoseJailKeys();
-	KinkyDungeonSlowMoveTurns = 10;
+	KDGameData.SlowMoveTurns = 10;
 }
 
 function KDGetJailDoor(x, y) {
@@ -974,6 +989,7 @@ function KDDefeatedPlayerTick(nodefeat) {
 	if (!nodefeat)
 		KinkyDungeonSetFlag("playerDefeated", 1);
 }
+
 
 function KDEnterDemonTransition() {
 	KDDefeatedPlayerTick();
@@ -1083,7 +1099,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	//let firstTime = KDGameData.KinkyDungeonSpawnJailersMax == 0;
 	KDGameData.GuardSpawnTimer = 4 + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
 	KDGameData.KinkyDungeonSpawnJailersMax = 2;
-	if (KinkyDungeonGoddessRep.Prisoner) KDGameData.KinkyDungeonSpawnJailersMax += Math.round(6 * (KinkyDungeonGoddessRep.Prisoner + 50)/100);
+	KDGameData.KinkyDungeonSpawnJailersMax += Math.round(6 * (KDGetEffSecurityLevel() + 50)/100);
 	//let securityBoost = (firstTime) ? 0 : Math.max(2, Math.ceil(4 * (KDGameData.KinkyDungeonSpawnJailersMax - KDGameData.KinkyDungeonSpawnJailers + 1)/KDGameData.KinkyDungeonSpawnJailersMax));
 
 	KinkyDungeonStatBlind = 3;
@@ -1131,8 +1147,11 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 		//KDGameData.RoomType = "Jail"; // We do a tunnel every other room
 		//KDGameData.MapMod = ""; // Reset the map mod
 		let forceFaction = undefined;
-		if (leashEnemy && KDFactionProperties[KDGetFaction(leashEnemy)]) {
-			forceFaction = KDGetFaction(leashEnemy);
+		if (leashEnemy && (KDFactionProperties[KDGetFaction(leashEnemy)] || KDFactionProperties[KDGetFactionOriginal(leashEnemy)])) {
+			if (KDFactionProperties[KDGetFaction(leashEnemy)])
+				forceFaction = KDGetFaction(leashEnemy);
+			else 
+				forceFaction = KDGetFactionOriginal(leashEnemy);
 		}
 		KinkyDungeonCreateMap(params, "Jail", "", MiniGameKinkyDungeonLevel, undefined, undefined, forceFaction, undefined, undefined, "");
 
@@ -1318,7 +1337,7 @@ function KDKickEnemyLocal(e) {
 function KinkyDungeonStripInventory(KeepPicks) {
 	KinkyDungeonRedKeys = 0;
 	KinkyDungeonBlueKeys = 0;
-	KinkyDungeonLockpicks = KeepPicks ? (Math.min(Math.max(0, Math.round(3 * (1 - (KinkyDungeonGoddessRep.Prisoner + 50)/100))), KinkyDungeonLockpicks)) : 0;
+	KinkyDungeonLockpicks = KeepPicks ? (Math.min(Math.max(0, Math.round(3 * (1 - (KDGetEffSecurityLevel() + 50)/100))), KinkyDungeonLockpicks)) : 0;
 
 	let newInv = KinkyDungeonInventory.get(Restraint);
 	let HasBound = false;
@@ -1396,4 +1415,146 @@ function KDGetJailRestraints(overrideTags, requireJail, requireParole) {
 	}
 
 	return restraints;
+}
+
+/**
+ * @type {Record<string, (enemy: entity) => void>}
+ */
+let KDCustomDefeats = {
+	"DemonTransition": (enemy) => {
+		KDEnterDemonTransition();
+	},
+	WolfgirlHunters: (enemy) => {
+		KinkyDungeonDefeat(true, enemy);
+		KDCustomDefeatUniforms.WolfgirlHunters();
+	},
+	MaidSweeper: (enemy) => {
+		KinkyDungeonDefeat(true, enemy);
+		KDCustomDefeatUniforms.MaidSweeper();
+	},
+	DollShoppe: (enemy) => {
+		KinkyDungeonDefeat(true, enemy);
+		KDCustomDefeatUniforms.DollShoppe();
+	},
+	CyberDoll: (enemy) => {
+		KinkyDungeonDefeat(true, enemy);
+		KDCustomDefeatUniforms.CyberDoll();
+	},
+	ElementalSlave: (enemy) => {
+		KinkyDungeonDefeat(true, enemy);
+		KDCustomDefeatUniforms.ElementalSlave();
+	},
+
+	
+	RopeDojo: (enemy) => {
+		KinkyDungeonPassOut(false);
+		KDCustomDefeatUniforms.RopeDojo();
+	},
+};
+
+let KDCustomDefeatUniforms = {
+	WolfgirlHunters: () => {
+		for (let i = 0; i < 30; i++) {
+			let r = KinkyDungeonGetRestraint({tags: (i < (KinkyDungeonStatsChoice.has("NoWayOut") ? 3 : 1) ? ["wolfCuffs"] : ["wolfGear", "wolfRestraints"])}, 12, "grv", true, "Red");
+			if (r) {
+				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Red", undefined, undefined, undefined, undefined, true);
+				if (r.Link) {
+					let newRestraint = KinkyDungeonGetRestraintByName(r.Link);
+					KinkyDungeonAddRestraintIfWeaker(newRestraint, 0, true, "Red", undefined, undefined, undefined, undefined, true);
+				}
+			}
+		}
+		let outfit = {name: "Wolfgirl", id: KinkyDungeonGetItemID(), type: Outfit};
+		if (!KinkyDungeonInventoryGet("Wolfgirl")) KinkyDungeonInventoryAdd(outfit);
+		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
+		KinkyDungeonSetDress("Wolfgirl", "Wolfgirl");
+	},
+	MaidSweeper: () => {
+		for (let i = 0; i < 30; i++) {
+			let r = KinkyDungeonGetRestraint({tags: ["maidRestraints", "maidVibeRestraints", "noMaidJacket", "handcuffer"]}, 12, "grv", true, "Purple");
+			if (r)
+				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, undefined, true);
+		}
+		let outfit = {name: "Maid", id: KinkyDungeonGetItemID(), type: Outfit};
+		if (!KinkyDungeonInventoryGet("Maid")) KinkyDungeonInventoryAdd(outfit);
+		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
+		KinkyDungeonSetDress("Maid", "Maid");
+	},
+	DollShoppe: () => {
+		KinkyDungeonAddRestraintIfWeaker("LatexCatsuit", 5, true, "Red", false, undefined, undefined, "Jail", true);
+		for (let i = 0; i < 30; i++) {
+			let r = KinkyDungeonGetRestraint({tags: ["latexRestraints", "latexStart", "latexCollar", "latexRestraintsForced"]}, 12, "grv", true, "Red");
+			if (r)
+				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, "Jail", true);
+		}
+		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("KiguMask"), 0, true, "Purple");
+	},
+
+	CyberDoll: () => {
+		KinkyDungeonAddRestraintIfWeaker("ControlHarness", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("TrackingCollar", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("TrackingModule", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
+
+
+		KinkyDungeonAddRestraintIfWeaker("CyberBelt", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("CyberBra", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
+
+		KinkyDungeonAddRestraintIfWeaker("CyberHeels", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
+		//KinkyDungeonAddRestraintIfWeaker("CyberBallGag", 5, true, "Red", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("CyberPlugGag", 5, true, "Red", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("CyberMuzzle", 5, true, "Red", false, undefined, undefined, "Dollsmith", true);
+		//KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
+
+
+
+		KinkyDungeonAddRestraintIfWeaker("CyberArmCuffs", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("CyberLegCuffs", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("CyberAnkleCuffs", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
+
+		//KinkyDungeonAddRestraintIfWeaker("CyberDollJacket", 5, true, "Red", false, undefined, undefined, undefined, true);
+
+		KinkyDungeonSetDress("CyberDoll", "CyberDoll");
+	},
+
+	RopeDojo: () => {
+		for (let i = 0; i < 30; i++) {
+			let r = KinkyDungeonGetRestraint({tags: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsHogtie", "ropeRestraintsWrist", "tapeRestraints", "genericToys"]}, 24, "grv", true, undefined);
+			if (r) {
+				KinkyDungeonAddRestraintIfWeaker(r, 8, true, undefined, false, undefined, undefined, undefined, true);
+				let item = r;
+				for (let j = 0; j < 2; j++) {
+					if (item && item.Link) {
+						let newRestraint = KinkyDungeonGetRestraintByName(item.Link);
+						KinkyDungeonAddRestraintIfWeaker(newRestraint, 8, true, undefined, undefined, undefined, undefined, undefined, true);
+						item = newRestraint;
+					}
+				}
+			}
+		}
+		KinkyDungeonAddRestraintIfWeaker("TrapMittens", 5, true, undefined, false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("Stuffing", 5, true, undefined, false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("HarnessPanelGag", 5, true, undefined, false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("TrapBlindfold", 5, true, undefined, false, undefined, undefined, undefined, true);
+	},
+
+	ElementalSlave: () => {
+		for (let i = 0; i < 30; i++) {
+			let r = KinkyDungeonGetRestraint({tags: ["obsidianRestraints", "ornateChastity", "genericToys"]}, 12, "grv", true, "Red");
+			if (r) {
+				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", false, undefined, undefined, undefined, true);
+				let item = r;
+				for (let j = 0; j < 2; j++) {
+					if (item && item.Link) {
+						let newRestraint = KinkyDungeonGetRestraintByName(item.Link);
+						KinkyDungeonAddRestraintIfWeaker(newRestraint, 0, true, "Purple", undefined, undefined, undefined, undefined, true);
+						item = newRestraint;
+					}
+				}
+			}
+		}
+		let outfit = {name: "Obsidian", id: KinkyDungeonGetItemID(), type: Outfit};
+		if (!KinkyDungeonInventoryGet("Obsidian")) KinkyDungeonInventoryAdd(outfit);
+		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
+		KinkyDungeonSetDress("Obsidian", "Obsidian");
+	},
 }

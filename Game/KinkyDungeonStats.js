@@ -52,7 +52,6 @@ let KinkyDungeonVibeCostPerIntensity = 0.15;
 
 let KinkyDungeonStatWillpowerExhaustion = 0;
 let KinkyDungeonSleepTurnsMax = 41;
-let KinkyDungeonSlowMoveTurns = 0;
 // Note that things which increase max distraction (aphrodiasic) also increase the max stamina drain. This can end up being very dangerous as being edged at extremely high distraction will drain all your energy completely, forcing you to wait until the torment is over or the drugs wear off
 
 // Stamina -- your MP. Used to cast spells and also struggle
@@ -206,7 +205,7 @@ function KinkyDungeonDefaultStats(Load) {
 	KinkyDungeonStaminaRate = KinkyDungeonStatStaminaRegen;
 
 	KinkyDungeonStatBlind = 0;
-	KinkyDungeonSlowMoveTurns = 0;
+	KDGameData.SlowMoveTurns = 0;
 	KDGameData.SleepTurns = 0;
 	KinkyDungeonStatBind = 0;
 	KinkyDungeonStatFreeze = 0;
@@ -637,7 +636,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 }
 
 function KinkyDungeonUpdateDialogue(entity, delta) {
-	if (KinkyDungeonSlowMoveTurns < 1 && !KinkyDungeonStatFreeze && !KDGameData.PlaySelfTurns)
+	if (KDGameData.SlowMoveTurns < 1 && !KinkyDungeonStatFreeze && !KDGameData.PlaySelfTurns)
 		if (entity.dialogue) {
 			if (entity.dialogueDuration > delta) {
 				entity.dialogueDuration = Math.max(0, entity.dialogueDuration - delta);
@@ -726,7 +725,7 @@ function KinkyDungeonChangeDistraction(Amount, NoFloater, lowerPerc, minimum = 0
 	}
 	if (Amount > 0) {
 		let cdBonus = KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionMax ? Math.min(4, Math.max(1, Math.ceil(Amount/1.5))) : 0;
-		KDGameData.DistractionCooldown = Math.max(KDGameData.DistractionCooldown, 3 + cdBonus, KinkyDungeonSlowMoveTurns + 1 + cdBonus);
+		KDGameData.DistractionCooldown = Math.max(KDGameData.DistractionCooldown, 3 + cdBonus, KDGameData.SlowMoveTurns + 1 + cdBonus);
 
 		if (KDToggles.ArousalHearts)
 			for (let i = 0; i < Amount * 10 && i < 100; i++) {
