@@ -39,22 +39,22 @@ Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?
 Intro4,"(This game does not contain spiders)"
 Intro4BC,""
 KDToggleSkipIntro,Skip Intro
-KDToggleForceWarnings,Always Show Warnings
-KDToggleEnableMinimap,Always Show Minimap
+KDToggleForceWarnings,UI: Always Show Warnings
+KDToggleEnableMinimap,UI: Always Show Minimap
 KDToggleSound,Enable Sound
-KDToggleDrool,Art: Drool/Tears
-KDToggleDrawArmor,Art: Draw Armor
+KDToggleDrool,Clothes: Drool/Tears
+KDToggleDrawArmor,Clothes: Draw Armor
 KDToggleMusic,Enable Music
 KDToggleAsyncRendering,GFX: Async Rendering (beta)
 KDToggleBloom,GFX: Bloom & Glow
-KDToggleTransparentUI,Game: Transparent UI
-KDToggleTurnCounter,Game: Turn Counter
+KDToggleTransparentUI,UI: Transparent UI
+KDToggleTurnCounter,UI: Turn Counter
 KDToggleStunFlash,GFX: Flash Screen on Stun
 KDToggleParticlesFX,GFX: Map Particles
 KDToggleArousalHearts,GFX: Distraction Particles
 KDToggleVibeHearts,GFX: Vibration Particles
-KDToggleShowNPCStatuses,Game: Show NPC Status
-KDToggleShowSpellRange,Game: Show Spell Range
+KDToggleShowNPCStatuses,UI: Show NPC Status
+KDToggleShowSpellRange,UI: Show Spell Range
 KDToggleFancyWalls,GFX: Trim Edge Walls
 KDToggleFancyShadows,GFX: Fog Shader
 KDToggleLightmapFilter,GFX: Light Shader
@@ -74,7 +74,6 @@ KDToggleBuffSide,UI: Draw Buffs on Side
 KDToggleShowPath,UI: Show Trajectory on Auto-Path
 KDToggleShowFacing,UI: Show Player Facing
 KDToggleShowSameCatSpells,UI: Show more learnable spells
-KinkyDungeonFastWait,Wait Quickly
 
 
 KDHelpless,Helpless!
