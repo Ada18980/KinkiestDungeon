@@ -6608,7 +6608,7 @@ Binding Dress
 捆绑连衣裙
 It's a devious dress! I hope your elbows are flexible~
 这是一件狡猾的衣服！希望你的手肘灵活~
-So many laces! It would quite a while to put this on normally. That's what magic is for!
+So many laces! It would take quite a while to put this on normally. That's what magic is for!
 这么多带子！正常戴上这个需要相当长的时间。这就是魔法的用途！
 Ornamental Corset
 观赏紧身胸衣
@@ -9221,6 +9221,8 @@ Pants
 短衬裤
 Accessories
 配饰
+Fashion Restraints
+时尚束缚
 Hats
 帽子
 Hairstyles
@@ -19416,3 +19418,12 @@ The explosive barrel falls apart and drops its gunpowder.
 炸药桶散开，里面的火药掉了出来。
 The explosive barrel catches fire and explodes!
 炸药桶着火并爆炸！
+
+The item demands copious mana, more than you can supply. You'll have to tie up a mage.
+该物品需要大量法力，超出了你的供应能力。你必须绑住一个法师。
+The cursed seal glows and pulsates as you struggle fruitlessly.
+当你徒劳地挣扎时，被诅咒的封印会发光并脉动。
+The curse has been lifted through judicious application of spellcasters.
+通过施法者的明智运用，诅咒已被解除。
+The cursed item drains all of the caster's mana. It demands more.
+被诅咒的物品会耗尽施法者的所有法力。它需要更多。
