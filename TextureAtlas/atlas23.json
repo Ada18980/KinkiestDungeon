@@ -2,7 +2,7 @@
 
 "Models/Hair/BackShortCurly.png":
 {
-	"frame": {"x":1,"y":422,"w":303,"h":259},
+	"frame": {"x":599,"y":1,"w":303,"h":259},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":486,"y":113,"w":303,"h":259},
@@ -10,7 +10,7 @@
 },
 "Models/Hair/BackShortCurlyUnderlight.png":
 {
-	"frame": {"x":1,"y":121,"w":304,"h":299},
+	"frame": {"x":1,"y":1,"w":304,"h":299},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":487,"y":115,"w":304,"h":299},
@@ -18,7 +18,7 @@
 },
 "Models/Hair/BraidCustom.png":
 {
-	"frame": {"x":1,"y":1228,"w":274,"h":270},
+	"frame": {"x":606,"y":262,"w":274,"h":270},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":468,"y":117,"w":274,"h":270},
@@ -26,7 +26,7 @@
 },
 "Models/Hair/BraidCustom_Overstrap.png":
 {
-	"frame": {"x":1,"y":975,"w":275,"h":251},
+	"frame": {"x":1,"y":302,"w":275,"h":251},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":468,"y":135,"w":275,"h":251},
@@ -34,15 +34,15 @@
 },
 "Models/Hair/BraidCustomBack.png":
 {
-	"frame": {"x":1,"y":683,"w":290,"h":300},
-	"rotated": true,
+	"frame": {"x":307,"y":1,"w":290,"h":299},
+	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":494,"y":104,"w":290,"h":300},
+	"spriteSourceSize": {"x":494,"y":107,"w":290,"h":299},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Hair/BraidCustomBraid.png":
 {
-	"frame": {"x":1,"y":1,"w":118,"h":326},
+	"frame": {"x":278,"y":302,"w":118,"h":326},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":661,"y":336,"w":118,"h":326},
@@ -50,15 +50,15 @@
 },
 "Models/FaceDask/Brows2Angry.png":
 {
-	"frame": {"x":303,"y":683,"w":26,"h":23},
-	"rotated": true,
+	"frame": {"x":374,"y":422,"w":26,"h":23},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":611,"y":252,"w":26,"h":23},
 	"sourceSize": {"w":700,"h":400}
 },
 "Models/FaceDask/Brows2Annoyed.png":
 {
-	"frame": {"x":307,"y":121,"w":32,"h":20},
+	"frame": {"x":882,"y":262,"w":32,"h":20},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":613,"y":253,"w":32,"h":20},
@@ -66,15 +66,15 @@
 },
 "Models/FaceDask/Brows2Neutral.png":
 {
-	"frame": {"x":306,"y":422,"w":31,"h":21},
-	"rotated": true,
+	"frame": {"x":278,"y":422,"w":31,"h":21},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":611,"y":231,"w":31,"h":21},
 	"sourceSize": {"w":700,"h":400}
 },
 "Models/FaceDask/Brows2Sad.png":
 {
-	"frame": {"x":307,"y":184,"w":33,"h":18},
+	"frame": {"x":882,"y":325,"w":33,"h":18},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":620,"y":234,"w":33,"h":18},
@@ -82,7 +82,7 @@
 },
 "Models/FaceDask/Brows2Surprised.png":
 {
-	"frame": {"x":307,"y":219,"w":33,"h":18},
+	"frame": {"x":278,"y":445,"w":33,"h":18},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":613,"y":244,"w":33,"h":18},
@@ -90,23 +90,23 @@
 },
 "Models/FaceDask/BrowsAngry.png":
 {
-	"frame": {"x":306,"y":455,"w":27,"h":21},
-	"rotated": true,
+	"frame": {"x":345,"y":422,"w":27,"h":21},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":550,"y":259,"w":27,"h":21},
 	"sourceSize": {"w":700,"h":400}
 },
 "Models/FaceDask/BrowsAnnoyed.png":
 {
-	"frame": {"x":307,"y":287,"w":32,"h":17},
-	"rotated": true,
+	"frame": {"x":311,"y":422,"w":32,"h":17},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":544,"y":261,"w":32,"h":17},
 	"sourceSize": {"w":700,"h":400}
 },
 "Models/FaceDask/BrowsNeutral.png":
 {
-	"frame": {"x":307,"y":254,"w":31,"h":18},
+	"frame": {"x":882,"y":360,"w":31,"h":18},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":538,"y":241,"w":31,"h":18},
@@ -114,7 +114,7 @@
 },
 "Models/FaceDask/BrowsSad.png":
 {
-	"frame": {"x":307,"y":155,"w":27,"h":20},
+	"frame": {"x":882,"y":296,"w":27,"h":20},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":537,"y":243,"w":27,"h":20},
@@ -122,7 +122,7 @@
 },
 "Models/FaceDask/BrowsSurprised.png":
 {
-	"frame": {"x":307,"y":321,"w":29,"h":17},
+	"frame": {"x":278,"y":480,"w":29,"h":17},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":543,"y":254,"w":29,"h":17},
@@ -133,8 +133,8 @@
 	"version": "1.1",
 	"image": "atlas23.png",
 	"format": "RGBA8888",
-	"size": {"w":328,"h":1499},
+	"size": {"w":903,"h":554},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:f8fc94e732fd0fbbf4731741ad9cff12:0e1c5eaeae7b8fae119daf15f505b6c1:c64c44dce4ef8e28a98391c7f9355924$"
+	"smartupdate": "$TexturePacker:SmartUpdate:24bc660ce7d99b9258135b81323370ae:6f492fe3a96b9ba50ed6d6a7dd86e705:7afdf74f0a2fc64ffcb4cd5582aad3a1$"
 }
 }
