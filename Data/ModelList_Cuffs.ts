@@ -321,3 +321,27 @@ AddModel({
 		},
 	])
 });
+
+
+
+
+AddModel(GetModelFashionVersion("IronCollar", true));
+AddModel(GetModelFashionVersion("IronBelt", true));
+AddModel(GetModelFashionVersion("SteelCollarRunes", true));
+AddModel(GetModelFashionVersion("SteelCollar", true));
+AddModel(GetModelFashionVersion("ShacklesWristLeft", true));
+AddModel(GetModelFashionVersion("ShacklesWristRight", true));
+AddModel(GetModelFashionVersion("ShacklesWrists", true));
+AddModel(GetModelFashionVersion("ShacklesElbowLeft", true));
+AddModel(GetModelFashionVersion("ShacklesElbowRight", true));
+AddModel(GetModelFashionVersion("ShacklesElbows", true));
+AddModel(GetModelFashionVersion("ShacklesArms", true));
+AddModel(GetModelFashionVersion("ShacklesAnklesLeft", true));
+AddModel(GetModelFashionVersion("ShacklesAnklesRight", true));
+AddModel(GetModelFashionVersion("ShacklesAnkles", true));
+AddModel(GetModelFashionVersion("ShacklesThighLeft", true));
+AddModel(GetModelFashionVersion("ShacklesThighRight", true));
+AddModel(GetModelFashionVersion("ShacklesThigh", true));
+AddModel(GetModelFashionVersion("ThighLink", true));
+AddModel(GetModelFashionVersion("AnkleLink", true));
+

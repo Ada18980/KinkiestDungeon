@@ -367,7 +367,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 				enchants -= 1;
 			}
 		}
-		if (Loot.unlockcurse && (hexVariant || !Loot.hexlist)) {
+		if (Loot.unlockcurse && (hexVariant || !Loot.hexlist) && (Loot.cursechance == undefined || KDRandom() < Loot.cursechance + (Loot.cursescale|| 0) * levelPercent)) {
 			let curselist = [];
 			for (let c of Loot.unlockcurse) {
 				curselist.push(c);

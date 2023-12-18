@@ -337,7 +337,24 @@ let KDEventMapInventory = {
 			if (data.attacker && data.attacker.player && data.enemy) {
 				KinkyDungeonChangeMana(0, false, e.power);
 			}
-		}
+		},
+		"SacrificeMage": (e, item, data) => {
+			if (data.enemy && data.enemy.Enemy?.tags?.mage) {
+				let value = data.enemy.Enemy.unlockCommandLevel || 1;
+				// Increase damage count
+				let count = KDItemDataQuery(item, e.kind) || 0;
+				count = count + Math.max((value * (e.mult || 1)) || 1, 1);
+				KDItemDataSet(item, e.kind, count);
+				// Evaluate damage count
+				if (!e.count || count >= e.count) {
+					item.curse = "";
+					KinkyDungeonLock(item, "");
+					KinkyDungeonSendTextMessage(5, TextGet("KDRemoveSacrificeMage").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
+				} else {
+					KinkyDungeonSendTextMessage(5, TextGet("KDRemoveSacrificeMagePartial").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
+				}
+			}
+		},
 	},
 	"calcPlayChance": {
 		"CurseAttraction": (e, item, data) => {

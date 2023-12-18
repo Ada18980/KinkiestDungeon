@@ -1898,7 +1898,7 @@ function KinkyDungeonCapture(enemy) {
 		} else msg = "KinkyDungeonCaptureMax";
 	} else msg = "KinkyDungeonCaptureBasic";
 
-	KinkyDungeonSendEvent("capture", {enemy: enemy});
+	KinkyDungeonSendEvent("afterCapture", {enemy: enemy});
 	KinkyDungeonSendActionMessage(6, TextGet(msg).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)).replace("GODDESS", TextGet("KinkyDungeonShrine" + KDGameData.Champion)), "lightgreen", 2);
 	return goddessCapture;
 }

@@ -32,6 +32,11 @@ let KDModelList_Sublevel = [];
 let KDModelListFilter = "";
 
 let KDWardrobeCategories = [
+	"Hairstyles",
+	"Cosplay",
+	"Face",
+	"Eyes",
+	"Mouth",
 	"Uniforms",
 	"Suits",
 	"Armor",
@@ -48,11 +53,7 @@ let KDWardrobeCategories = [
 	"Pants",
 	"Accessories",
 	"Hats",
-	"Cosplay",
-	"Hairstyles",
-	"Face",
-	"Eyes",
-	"Mouth",
+	"FashionRestraints",
 	"Body",
 ];
 

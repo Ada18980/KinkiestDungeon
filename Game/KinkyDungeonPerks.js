@@ -611,7 +611,7 @@ let KDPerkStart = {
 		for (let key of Object.keys(KinkyDungeonFactionTag)) {
 			KDSetFactionRelation("Player", key, -0.55);
 		}
-		KDChangeFactionRelation("Player", "Bandit", 0.3 - KDFactionRelation("Player", "Bandit"), true);
+		KDChangeFactionRelation("Player", "Bandit", 0.1 - KDFactionRelation("Player", "Bandit"), true);
 		KDChangeFactionRelation("Player", "Nevermere", 0.1 - KDFactionRelation("Player", "Nevermere"), true);
 	},
 	

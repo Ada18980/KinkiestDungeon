@@ -2451,13 +2451,13 @@ const KinkyDungeonRestraints = [
 	//Endregion invisible
 
 	//region Comfy
-	{name: "ComfyGag", gag: 0.5, Asset: "MuzzleGag", Group: "ItemMouth", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], AssetGroup: "ItemMouth3", Color: "#cccccc", power: 1, weight: 4, escapeChance: {"Struggle": 0.2, "Cut": 0.2, "Remove": 0.4, "Pick": 5}, maxwill: 0.9,
+	{inventory: true, name: "ComfyGag", gag: 0.5, Asset: "MuzzleGag", Group: "ItemMouth", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], AssetGroup: "ItemMouth3", Color: "#cccccc", power: 1, weight: 4, escapeChance: {"Struggle": 0.2, "Cut": 0.2, "Remove": 0.4, "Pick": 5}, maxwill: 0.9,
 		Model: "GagComfy",
 		Filters: {
 			Fabric: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5166666666666666},
 		},
 		enemyTags: {"comfyRestraints":1}, playerTags: {"ItemMouthFull":1}, minLevel: 0, allFloors: true, shrine: ["Gags", "FlatGags", "Illusion"]},
-	{name: "ComfyStraitjacket", Asset: "HighSecurityStraitJacket", Modules: [0, 2, 1], Color: ['#cccccc', '#cccccc', '#cccccc'], Group: "ItemArms", power: 3, weight: 1, bindarms: true, bindhands: 0.9,
+	{inventory: true, name: "ComfyStraitjacket", Asset: "HighSecurityStraitJacket", Modules: [0, 2, 1], Color: ['#cccccc', '#cccccc', '#cccccc'], Group: "ItemArms", power: 3, weight: 1, bindarms: true, bindhands: 0.9,
 
 		LinkableBy: [...KDJacketLink],
 		renderWhenLinked: [...KDJacketRender],

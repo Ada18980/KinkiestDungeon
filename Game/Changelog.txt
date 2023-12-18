@@ -18,6 +18,7 @@ Vague todo:
 TODO add sugar magic ('Blood Energy Magic')
 
 5.0.3
+-Added fashion cuff assets
 -Increased vulnerable accuracy bonus to 2x from 1.33x
 -Fixed issue with legbinder clipping with ankle cuffs
 -Made enchantments correlate more with other enchantments on the item
