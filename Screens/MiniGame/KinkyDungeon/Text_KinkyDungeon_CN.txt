@@ -57,15 +57,15 @@ Will you prevail against forces unknown, or succumb to its dark secrets?
 （本游戏不包含蜘蛛）
 Skip Intro
 跳过简介
-Always Show Warnings
-总是显示警告
-Always Show Minimap
-总是显示小地图
+UI: Always Show Warnings
+UI：总是显示警告
+UI: Always Show Minimap
+UI：总是显示小地图
 Enable Sound
 启用音效
-Art: Drool/Tears
+Clothes: Drool/Tears
 美术: 流口水/眼泪
-Art: Draw Armor
+Clothes: Draw Armor
 美术: 渲染盔甲
 Enable Music
 启用音乐
@@ -73,10 +73,10 @@ GFX: Async Rendering (beta)
 GFX: 异步渲染 (测试版)
 GFX: Bloom & Glow
 GFX: 曝光 & 发光
-Game: Transparent UI
-游戏: 透明UI
-Game: Turn Counter
-游戏: 回合计数器
+UI: Transparent UI
+UI: 透明UI
+UI: Turn Counter
+UI: 回合计数器
 GFX: Flash Screen on Stun
 GFX: 眩晕时闪屏
 GFX: Map Particles
@@ -85,10 +85,10 @@ GFX: Distraction Particles
 GFX: 性奋粒子
 GFX: Vibration Particles
 GFX: 震动粒子
-Game: Show NPC Status
-游戏: 显示NPC状态
-Game: Show Spell Range
-游戏: 显示法术范围
+UI: Show NPC Status
+UI: 显示NPC状态
+UI: Show Spell Range
+UI: 显示法术范围
 GFX: Trim Edge Walls
 GFX: 整理边缘墙
 GFX: Fog Shader
@@ -127,8 +127,6 @@ UI: Show Player Facing
 UI：显示玩家面向
 UI: Show more learnable spells
 UI：显示更多可学习的法术
-Wait Quickly
-快速等待
 
 Vulnerable
 虚弱
