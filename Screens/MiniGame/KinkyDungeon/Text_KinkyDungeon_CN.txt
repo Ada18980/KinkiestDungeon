@@ -4919,6 +4919,8 @@ A lock clicks itself onto one of your restraints! (+RestraintAdded)
 一把锁自动锁在了在你的一个拘束具上！（+RestraintAdded）
 A chain locks itself in place on your body! (DamageTaken)
 一条铁链将自己锁定在你的身体上！（DamageTaken）
+The lock dashes to you!
+锁向你冲来！
 The floating locks and chains rub themselves across your body! (DamageTaken)
 浮动锁和链条在你的身体上摩擦！（DamageTaken）
 Masterful Lock
