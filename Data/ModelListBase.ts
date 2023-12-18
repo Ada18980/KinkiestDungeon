@@ -94,8 +94,6 @@ AddModel({
 		},
 		{ Name: "BraidCustom_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "BraidCustom",
 		},
-		{ Name: "BraidCustomBack", Layer: "HairBack", Pri: -1, InheritColor: "BraidCustom",
-		}
 	])
 });
 AddModel({
@@ -105,7 +103,7 @@ AddModel({
 	Protected: true,
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
-		{ Name: "BraidCustomBack", Layer: "HairBack", Pri: 0,
+		{ Name: "BraidCustomBack", Layer: "HairBack", Pri: -1,
 		},
 		{ Name: "BraidCustomBraid", Layer: "Hair", Pri: -1,
 			SwapLayerPose: {HoodMask: "HairOver"},
