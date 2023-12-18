@@ -18843,6 +18843,8 @@ You have already prayed at this shrine.
 你已经在这座神泉祈祷过。
 Listen to what the Goddess asks of you.
 听听女神对你的要求。
+Accept the Goddess' quest.
+接受女神的任务。
 Drink the mana in the shrine. Can be done once.
 喝神泉里的法力。可以喝一次。
 Bottle the mana in the shrine for later. Can be done once.
