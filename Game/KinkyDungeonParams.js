@@ -84,7 +84,7 @@ const KinkyDungeonMapParams = {
 			"cavern": 0,
 		},
 
-		enemyTags: ["magical", "zombie", "leather", "tape", "ribbon"],
+		enemyTags: ["magical", "zombie", "leather", "tape", "ribbon", "explosiveBarrel"],
 
 		"setpieces": [
 			{Type: "Bedroom", Weight: 3},
@@ -239,7 +239,7 @@ const KinkyDungeonMapParams = {
 
 		factionList: ["AncientRobot", "Bandit", "Apprentice", "Bountyhunter", "Bast", "Dragon", "Maidforce", "Alchemist"],
 
-		enemyTags: ["skeleton", "metal", "rope", "leather"],
+		enemyTags: ["skeleton", "metal", "rope", "leather", "explosiveBarrel"],
 		"defeat_outfit": "Dungeon",
 		"shrines": [
 			{Type: "Latex", Weight: 3},
@@ -409,7 +409,7 @@ const KinkyDungeonMapParams = {
 
 		factionList: ["AncientRobot", "Nevermere", "Bandit", "Bountyhunter", "Elf", "Bast", "Dragon", "Maidforce", "Alchemist"],
 
-		enemyTags: ["plant", "jungle", "slime", "earth"],
+		enemyTags: ["plant", "jungle", "slime", "earth", "explosiveBarrel"],
 		"defeat_outfit": "LatexPrisoner",
 		"shrines": [
 			{Type: "Latex", Weight: 5},
@@ -845,7 +845,7 @@ const KinkyDungeonMapParams = {
 
 		factionList: ["Nevermere", "Elf", "Bandit", "Apprentice", "Bountyhunter", "Elemental", "Dragon", "Maidforce", "Alchemist"],
 
-		enemyTags: ["mushroom", "slimeBonus", "crystalline", "earth", "slime", "shadow"],
+		enemyTags: ["mushroom", "slimeBonus", "crystalline", "earth", "slime", "shadow", "explosiveBarrel"],
 		"defeat_outfit": "Prisoner",
 		"shrines": [
 			{Type: "Latex", Weight: 3},
@@ -1064,7 +1064,7 @@ const KinkyDungeonMapParams = {
 
 		factionList: ["Nevermere", "AncientRobot", "Bandit", "Dressmaker", "Bountyhunter", "Maidforce", "Alchemist"],
 
-		enemyTags: ["dollsmith", "dollrare", "oldrobot", "oldrobotturret", "tech", "metal", "electric", "fire"],
+		enemyTags: ["dollsmith", "dollrare", "oldrobot", "oldrobotturret", "tech", "metal", "electric", "fire", "explosiveBarrel"],
 		"defeat_outfit": "DollSuit",
 		"shrines": [
 			{Type: "Latex", Weight: 5},

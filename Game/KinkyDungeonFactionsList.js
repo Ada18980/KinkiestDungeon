@@ -534,6 +534,8 @@ let KinkyDungeonFactionRelationsBase = {
 		Elf: -0.1,
 		Mushy: -0.1,
 		AncientRobot: -0.3,
+
+		Player: -0.7,
 	},
 	"Virus": {
 		Player: -1,

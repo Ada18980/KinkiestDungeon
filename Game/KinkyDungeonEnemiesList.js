@@ -154,6 +154,17 @@ let KinkyDungeonEnemies = [
 		],
 		terrainTags: {}, floors:KDMapInit([])},
 
+	{name: "ExplosiveBarrel", tags: KDMapInit(["poisonmmune", "soulimmune", "noknockback", "melee", "minor", "scenery", "explosiveBarrel", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile", "fireweakness", "stunweakness"]),
+		faction: "Door", immobile: true, lowpriority: true, evasion: -100, armor: 1, followRange: 100, AI: "wander",
+		difficulty: 0.01,
+		visionRadius: 0, maxhp: 6, minLevel:0, weight:-10, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
+		dropTable: [{name: "Gunpowder", amount: 3, weight: 10, noSummon: true}],
+		events: [
+			{trigger: "afterDamageEnemy", type: "ExplosiveBarrel", chance: 0.5, power: 3.0, spell: "ExplosiveBarrel"},
+			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Gunpowder", time: 4, power: 2, chance: 0.5, aoe: 0.5},
+		],
+		terrainTags: {"explosiveBarrel": 40, open: -16, passage: -30}, allFloors: true},
+
 	{name: "ChainWall", tags: KDMapInit(["construct", "flying", "poisonmmune", "soulimmune", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile"]),
 		faction: "Witch", immobile: true, spellResist: 0, lowpriority: true, evasion: -100, armor: 3, followRange: 100, AI: "wander", regen: -0.25,
 		visionRadius: 0, maxhp: 5, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
@@ -837,6 +848,7 @@ let KinkyDungeonEnemies = [
 		maxblock: 0,
 		maxdodge: 0,
 		nonDirectional: true,
+		projectileTargeting: true,
 		spellResist: 2.0,
 		dropTable: [{name: "BondageTome", weight: 0.5, ignoreInInventory: true}],
 		visionRadius: 6, maxhp: 5, minLevel:0, weight:20, movePoints: 5, attackPoints: 2, attack: "Spell", attackRange: 1, attackWidth: 1, power: 6,
@@ -849,6 +861,7 @@ let KinkyDungeonEnemies = [
 		maxblock: 0,
 		maxdodge: 0,
 		nonDirectional: true,
+		projectileTargeting: true,
 		spellResist: 2.0,
 		dropTable: [{name: "BondageTome", weight: 0.5, ignoreInInventory: true}],
 		visionRadius: 6, maxhp: 5, minLevel:0, weight:20, movePoints: 5, attackPoints: 2, attack: "Spell", attackRange: 1, attackWidth: 1, power: 6,
@@ -861,6 +874,7 @@ let KinkyDungeonEnemies = [
 		maxblock: 0,
 		maxdodge: 0,
 		nonDirectional: true,
+		projectileTargeting: true,
 		spellResist: 2.0,
 		dropTable: [{name: "BondageTome", weight: 0.5, ignoreInInventory: true}],
 		visionRadius: 6, maxhp: 5, minLevel:0, weight:20, movePoints: 5, attackPoints: 2, attack: "Spell", attackRange: 1, attackWidth: 1, power: 6,
@@ -873,6 +887,7 @@ let KinkyDungeonEnemies = [
 		maxblock: 0,
 		maxdodge: 0,
 		nonDirectional: true,
+		projectileTargeting: true,
 		spellResist: 2.0,
 		dropTable: [{name: "ManaOrb", weight: 0.5}, {name: "Nothing", weight: 3, ignoreInInventory: true}],
 		visionRadius: 7, maxhp: 12, minLevel:0, weight:20, movePoints: 5, attackPoints: 2, attack: "Spell", attackRange: 1, attackWidth: 1, power: 6,
@@ -923,6 +938,7 @@ let KinkyDungeonEnemies = [
 		maxblock: 0,
 		maxdodge: 0,
 		nonDirectional: true,
+		projectileTargeting: true,
 		dropTable: [{name: "ArcaneTome", weight: 0.5, ignoreInInventory: true}],
 		terrainTags: {"open": 100, "passage": -7, "alchemist": 2}, floors:KDMapInit(["lib"])},
 	{name: "BookIce", hidetimerbar: true, clusterWith: "book", tags: KDMapInit(["fireweakness", "iceimmune", "blindimmune", "ignoreharmless", "book", "flying", "minor", "ranged", "slashsevereweakness", "acidweakness", "piercesevereweakness"]), followLeashedOnly: true, armor: 0, followRange: 3, AI: "hunt", guardChance: 0.6, noAlert: true,
@@ -958,6 +974,7 @@ let KinkyDungeonEnemies = [
 		],
 		maxblock: 0,
 		maxdodge: 0,
+		projectileTargeting: true,
 		dropTable: [{name: "ArcaneTome", weight: 0.5, ignoreInInventory: true}],
 		nonDirectional: true,
 		terrainTags: {"open": 100, "passage": -8, "mummy": 2}, floors:KDMapInit(["lib", "tmp"])},
@@ -1313,7 +1330,7 @@ let KinkyDungeonEnemies = [
 		attack: "SpellMeleeWill", attackPoints: 2, attackWidth: 1, attackRange: 1, power: 2, dmgType: "electric",
 		minLevel: 7, weight:-50, terrainTags: {"oldrobot": 7, "oldrobotturret": 30, oldrobotturretspawn: 100, open: 50, "latexOptout": -24}, shrines: ["Latex"], floors:KDMapInit(["bel"]),
 		ondeath: [{type: "spellOnSelf", spell: "RubberSlime"}],
-		dropTable: [{name: "AncientPowerSourceSpent", weight: 8, noSummon: true}, {name: "AncientPowerSource", weight: 2, noSummon: true}]},
+		dropTable: [{name: "Gunpowder", weight: 8, noSummon: true}, {name: "AncientPowerSource", weight: 2, noSummon: true}]},
 
 	{name: "Drone", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true, color: "#ff7755",
 		tags: KDMapInit(["ignoreharmless", "disarmimmune", "doortrap", "robot", "flying", "acidweakness", "soulresist", "minor", "melee", "electricsevereweakness", "coldresist", "iceresist",
@@ -1500,7 +1517,7 @@ let KinkyDungeonEnemies = [
 		},
 		attack: "SpellMeleeBind", attackPoints: 2, attackWidth: 1, attackRange: 3.5, power: 1, dmgType: "crush", multiBind: 1, fullBoundBonus: 3,
 		minLevel:7, weight:-106, terrainTags: {"nolatexbot": -1000,"thirdhalf":1, "increasingWeight":0.5, "open": 100, "metalAnger": 44, "metalRage": 13, "metalPleased": 44, "latex": 5, "metalFriendly": 13, "robot": 7}, shrines: ["Metal"], allFloors: true,
-		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 5, noSummon: true}, {name: "AncientPowerSource", weight: 1, noSummon: true}]},
+		dropTable: [{name: "Gunpowder", amountMin: 2, amountMax: 3, weight: 5, noSummon: true}, {name: "AncientPowerSource", weight: 1, noSummon: true}]},
 	{name: "EnforcerBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#2a319c",
 		tags: KDMapInit(["leashing", "disarmresist", "robot", "ranged", "miniboss", "acidweakness", "electricsevereweakness", "unstoppable", "coldresist", "soulresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "search"]),
 		AI: "guard", spellRdy: true, bypass: true,
@@ -4210,12 +4227,13 @@ let KDOndeath = {
 				"AnimYoke",
 			]);
 			KinkyDungeonSummonEnemy(enemy.x, enemy.y, type, 1, 0.5, false, undefined, false, undefined, "Ambush", true, 0, true, undefined, false);
-
+			KDGameData.QuestData.DirtPiles.lastSpawn = type;
 			KinkyDungeonSendTextMessage(9, TextGet("KDDirtPileSurprise").replace("ENMY", TextGet("Name" + type)), "#ff8800", 6);
 			KDGameData.QuestData.DirtPiles.pilesSinceLastSpawn = 0;
 		} else {
 			KDGameData.QuestData.DirtPiles.pilesSinceLastSpawn += 1;
 		}
+		KDGameData.QuestData.DirtPiles.pilesTotal += 1;
 	},
 	"summon": (enemy, o) => {
 		KinkyDungeonSummonEnemy(enemy.x, enemy.y, o.enemy, o.count, o.range, o.strict, o.lifetime, o.hidden, undefined, o.faction || KDGetFaction(enemy), o.hostile, o.minradius, o.startAware, undefined, o.hideTimer);

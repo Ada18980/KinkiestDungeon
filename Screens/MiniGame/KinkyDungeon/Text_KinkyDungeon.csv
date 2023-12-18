@@ -16295,3 +16295,10 @@ KinkyDungeonTrapPoltergeist,"Playful ghosts slip through the walls, giggling to 
 KinkyDungeonTrapOldDrones,"Ancient drones drop from the ceiling and come to life!"
 KinkyDungeonTrapObserver,"You were always being watched..."
 
+LootChestGunpowder,You find a store of gunpowder!
+
+KinkyDungeonSpellExplosiveBarrel,Explosive Barrel
+
+NameExplosiveBarrel,Explosive Barrel
+KillExplosiveBarrel,The explosive barrel falls apart and drops its gunpowder.
+KDExplosiveBarrelExplode,The explosive barrel catches fire and explodes!

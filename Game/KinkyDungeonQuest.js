@@ -246,7 +246,7 @@ let KDQuests = {
 						if (epoint) {
 							let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 							if (ee) {
-								ee.faction = "DressShoppe";
+								ee.faction = "DollShoppe";
 								ee.AI = "patrol";
 							}
 						}
@@ -258,7 +258,7 @@ let KDQuests = {
 						if (e && epoint) {
 							let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 							if (ee) {
-								ee.faction = "DressShoppe";
+								ee.faction = "DollShoppe";
 								ee.AI = "patrol";
 							}
 						}

@@ -2434,6 +2434,9 @@ let KinkyDungeonSpellListEnemies = [
 	},
 	{enemySpell: true, name: "SummonSlime", noSprite: true, minRange: 0, sfx: "Bones", manacost: 3, components: ["Verbal"], level:4, projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "SmallSlimeLeaper", count: 1, strict: true}], power: 0, damage: "inert", time: 12, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {}},
 
+	{enemySpell: true, name: "ExplosiveBarrel", minRange: 0, sfx: "Lightning", school: "Elements", manacost: 4, components: [], mustTarget: true, level:1, type:"hit",
+		onhit:"aoe", time:5, lifetime: 1, delay: 0, power: 6, aoe: 1.5, range: 8, size: 3, damage: "fire", playerEffect: {name: "HeatBlast", time: 1, damage: "fire", power: 6}},
+
 	{enemySpell: true, name: "SummonTapeDrone", noSprite: true, sfx: "MagicSlash", castCondition: "wolfTapeDrone", manacost: 3, specialCD: 10, components: ["Verbal"], level:1, projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "WolfDrone", count: 1, time: 40, weakBinding: true, bound: true}], power: 0, damage: "inert", time: 34, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {}},
 	{enemySpell: true, name: "MirrorImage", noSprite: true, minRange: 0, selfcast: true, sfx: "FireSpell", manacost: 12, components: ["Verbal"], level:4, castRange: 50, type:"inert", onhit:"summon", summon: [{name: "MaidforceStalkerImage", count: 1, time: 12}], power: 0, time: 12, delay: 1, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "inert",
 		spellcast: {spell: "DarkShroud", target: "origin", directional:false, offset: false}},

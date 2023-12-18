@@ -519,6 +519,9 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 	else if (Loot.name == "bomb") {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Bomb, 1);
 	}
+	else if (Loot.name == "gunpowder") {
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Gunpowder, 3 + Math.floor(KDRandom() * 3));
+	}
 	else if (Loot.name == "MistressKey") {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.MistressKey, 1);
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 2);

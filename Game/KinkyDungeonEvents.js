@@ -6520,6 +6520,21 @@ let KDEventMapEnemy = {
 				}
 			}
 		},
+		"ExplosiveBarrel": (e, enemy, data) => {
+			if (data.dmg > 0 && ['fire', 'holy', 'electric'].includes(data.type) && enemy == data.enemy) {
+				if (enemy.hp <= 0.51 || data.dmg >= e.power || !e.chance || KDRandom() < e.chance) { // Sufficient damage blows it up without a roll
+					if (!KDEnemyHasFlag(enemy, "exploded")) {
+						enemy.hp = 0;
+						KinkyDungeonSendTextMessage(6, TextGet("KDExplosiveBarrelExplode"), "#ffaa44", 4);
+						enemy.summoned = true; // To prevent gunpowder
+						KinkyDungeonSetEnemyFlag(enemy, "exploded", -1);
+
+						KinkyDungeonCastSpell(enemy.x, enemy.y, KinkyDungeonFindSpell(e.spell, true), enemy, undefined, undefined);
+						KDRemoveEntity(enemy);
+					}
+				}
+			}
+		},
 	},
 	"duringDamageEnemy": {
 		"damageThreshold": (e, enemy, data) => {
