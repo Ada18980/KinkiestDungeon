@@ -118,7 +118,7 @@ Clothes: Chastity Bra over Bras
 Clothes: Simple Color Picker
 衣物：简易取色器
 UI: Center Player
-UI：玩家至中心
+UI：玩家为中心
 UI: Draw Buffs on Side
 UI：在侧面绘制增益效果
 UI: Show Trajectory on Auto-Path
