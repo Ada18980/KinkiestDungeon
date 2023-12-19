@@ -6016,6 +6016,8 @@ Secure
 安全
 Disc
 圆盘
+Divine
+神圣
 Simple
 简单
 Runic
@@ -6295,6 +6297,8 @@ Secure Lock
 安全锁
 Disc Lock
 圆盘锁
+Divine Lock
+神圣锁
 Simple Lock
 简易锁
 Runic Lock
@@ -19249,12 +19253,26 @@ Divine Chastity Belt
 A chastity belt forged in holy light. Only a Goddess' will can release you.
 圣光锻造的贞操带。只有女神才能释放你。
 There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge.
-除了悔改，没有任何出路。它的神圣光环会导致振动器在你到达极限之前停止。
+除了悔改，没有任何出路。它神圣的光环会导致振动器在你到达极限之前停止。
 Your Divine Chastity Belt causes the vibrators to stop.
 你的神圣贞操带会使振动器停止。
 
 A chastity belt forged in holy light. Only the will of a Goddess will release you!
 圣光锻造的贞操带。只有女神才能释放你！
+
+Heavenly Chastity Belt
+天堂贞操带
+A chastity belt forged in holy light. Only a Goddess' will can release you.
+圣光锻造的贞操带。只有女神才能释放你！
+There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge.
+除了悔改，没有任何出路。它神圣的光环会导致振动器在你到达极限之前减弱。
+Your Divine Chastity Belt magically dampens the vibrations just enough to edge you.
+你的神圣贞操带神奇地减弱振动，足以让你感到紧张。
+
+A chastity belt forged in holy light. Only the will of a Goddess will release you!
+圣光锻造的贞操带。只有女神才能释放你！
+There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge.
+除了悔改，没有任何出路。它神圣的光环会让振动器抑制你到达极限。
 
 You find a heavenly chastity belt. Who could it be for?
 你找到了一条天堂般的贞操带。可以给谁呢？
@@ -19483,3 +19501,6 @@ You twirl your weapon, harvesting AMNT seeds!
 你转动你的武器，收获 AMNT 粒种子！
 There is nothing to harvest.
 没有什么可收获的。
+
+Your divine-locked restraints can only be removed by completing a shrine quest.
+你的神锁束缚只能通过完成神泉的任务来解除。
