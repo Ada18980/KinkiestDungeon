@@ -3910,7 +3910,7 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 
 
 
-				for (let invitem of KDDynamicLinkList(item, true)) {
+				for (let invitem of (!Add && !UnLink) ? KDDynamicLinkList(item, true) : [item]) {
 					let invrest = KDRestraint(invitem);
 					// @ts-ignore
 					let inventoryAs = invitem.inventoryVariant || invitem.inventoryAs || (Remover?.player ? invrest.inventoryAsSelf : invrest.inventoryAs);
@@ -4228,6 +4228,8 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 	KinkyDungeonFastStruggleType = "";
 	KinkyDungeonFastStruggleGroup = "";
 
+	KinkyDungeonSendEvent("beforeSuccessRemove", data);
+
 	if (StruggleType == "Pick" || StruggleType == "Unlock") {
 		if (StruggleType == "Unlock") {
 			if (lockType && lockType.canUnlock(data)) {
@@ -4285,6 +4287,8 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 	let suff = "";
 	if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = "Aroused";
 	KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonStruggle" + StruggleType + "Success" + suff).replace("TargetRestraint", TextGet("Restraint" + KDRestraint(restraint).name)), "lightgreen", 2);
+
+	KinkyDungeonSendEvent("afterSuccessRemove", data);
 
 	return destroy;
 }

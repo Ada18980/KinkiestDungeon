@@ -1369,6 +1369,10 @@ let KDEventMapInventory = {
 			KinkyDungeonEndVibration();
 			KinkyDungeonSendTextMessage(6, TextGet("KDDivineBeltDeny"), "#ffff88", 4);
 		},
+		"DivineBelt2": (e, item, data) => {
+			data.chance *= 0;
+			KinkyDungeonSendTextMessage(6, TextGet("KDDivineBelt2Deny"), "#ffff88", 4);
+		},
 		"ForcedOrgasmPower": (e, item, data) => {
 			data.eventBonus += e.power;
 		},

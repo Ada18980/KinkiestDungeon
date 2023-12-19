@@ -142,6 +142,8 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 		AppearanceCleanup(Character);
 	}
 
+	let restraintModels = {};
+	
 	try {
 		let data = {
 			updateRestraints: false,
@@ -201,7 +203,11 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 					let renderTypes = KDRestraint(inv).shrine;
 					if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
 						KDApplyItem(inv, KinkyDungeonPlayerTags);
-
+						if (KDRestraint(inv).Model) {
+							
+							restraintModels[KDRestraint(inv).Model] = true;
+							restraintModels["Fashion" + KDRestraint(inv).Model] = true;
+						}
 					}
 					restraints.push(inv);
 					if (inv.dynamicLink) {
@@ -210,6 +216,11 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 							if (KDRestraint(link).alwaysRender || (KDRestraint(link).renderWhenLinked && KDRestraint(link).renderWhenLinked.some((element) => {return renderTypes.includes(element);}))) {
 								if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
 									KDApplyItem(link, KinkyDungeonPlayerTags);
+									
+									if (KDRestraint(link).Model) {
+										restraintModels[KDRestraint(link).Model] = true;
+										restraintModels["Fashion" + KDRestraint(link).Model] = true;
+									}
 
 								}
 								restraints.push(link);
@@ -244,9 +255,12 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 			data.updateDress = true;
 			if (!clothes.Lost && KinkyDungeonCheckClothesLoss) {
 				if (StandalonePatched) {
-					if (IsModelLost(Character, clothes.Item))
+					if (clothes.Item && (restraintModels[clothes.Item] || restraintModels[clothes.Item + "Restraint"])) {
+						clothes.Lost = true;
+					} else if (IsModelLost(Character, clothes.Item))
 						clothes.Lost = true;
 				}
+
 
 				if (clothes.Group == "Necklace") {
 					if (KinkyDungeonGetRestraintItem("ItemTorso") && KDRestraint(KinkyDungeonGetRestraintItem("ItemTorso"))?.harness) clothes.Lost = true;

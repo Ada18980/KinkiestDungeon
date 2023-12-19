@@ -381,7 +381,7 @@ let KDQuests = {
 								if (epoint) {
 									let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 									if (ee) {
-										ee.faction = "Ambush";
+										ee.faction = "Owners";
 										ee.AI = "hunt";
 										ee.teleporting = 3;
 										ee.teleportingmax = 3;
@@ -396,7 +396,7 @@ let KDQuests = {
 								if (e && epoint) {
 									let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 									if (ee) {
-										ee.faction = "Ambush";
+										ee.faction = "Owners";
 										ee.AI = "hunt";
 										ee.teleporting = 3;
 										ee.teleportingmax = 3;
