@@ -1365,6 +1365,10 @@ Rusty Bolts
 Most traps have a 25% misfire chance.
 大多数陷阱有 25% 的失效几率。
 
+Not a Pet
+不是宠物
+Petsuits occur less often.
+宠物服出现的概率较低。
 Unmasked
 无面罩
 Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
@@ -2741,70 +2745,76 @@ Jail Uniform
 监狱制服
 The prisoners are kept in revealing outfits to keep them from hiding things.
 囚犯们穿着暴露的衣服，以防止他们隐藏东西。
-A prisoner's 'outfit'. No bonuses, no penalties.
-囚徒的“装束”。没有奖励，没有惩罚。
+Designed to make it hard to conceal weapons. Makes you more visible and vulnerable to the cold.
+使武器难以隐藏。并让你更容易受到寒冷的影响。
 Wolfgirl Suit
 狼女套装
 An advanced suit designed for sport
 专为运动而设计的高级套装
-No bonuses, no penalties.
-没有奖励，没有惩罚。
+Made of latex. Resistant to electricity but does not insulate well.
+由乳胶制成。耐电但绝缘性能不佳。
 Maid Uniform
 女仆制服
 An elegant dress meant to denote a maid's status.
 象征女仆身份的优雅礼服。
 Massively increases accuracy against slime mold.
 攻击黏菌时，准确性大幅提高。
-Maid Uniform
-女仆制服
-An elegant dress meant to denote a maid's status.
-象征女仆身份的优雅礼服。
-Massively increases accuracy against slime mold.
-攻击黏菌时，准确性大幅提高。
-Prisoner Uniform
-囚服
-The uniform of choice for girls captured by the dragonhearts.
-被龙之心抓住的少女们的制服。
-Designed to make it hard to conceal weapons. No bonuses, no penalties.
-其设计使得武器难以苍翼。没有奖励，没有惩罚。
+Harem Outfit
+后宫制服
+A skimpy outfit with antiquated connotations.
+带有过时内涵的轻薄服装。
+Harkening back to an old era.
+让人回想起旧时代。
+Combat Bikini
+战斗比基尼
+A minimalist albeit chilly outfit designed for ease of use.
+简约但寒冷的服装，专为易用性而设计。
+Or perhaps it's just sexy...
+或许只是因为性感……
+Dragonheart Uniform
+龙之心制服
+The uniform of choice for dragonheart of all ranks.
+各级龙之心的首选制服。
+It's made of fire-resistant leather.
+它由防火皮革制成。
 Scientific Uniform
 科幻制服
 An outfit designed to leave little to the imagination.
 一套设计成几乎没有想象空间的服装。
-No bonuses, no penalties.
-没有奖励，没有惩罚。
+Resistant to electricity but does not insulate well.
+耐电但绝缘性能不佳。
 Latex Catsuit
 乳胶紧身衣
 A skintight suit that's stretched on tight. It adheres to latex restraints making struggling more difficult.
 紧紧收缩的束胸。乳胶拘束的粘附性使挣扎变得更加困难。
 An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
 由经过高度加工的粘液制成的服装。天然丝滑，触感顺滑。
-No bonuses, no penalties.
-没有奖励，没有惩罚。
+Resistant to electricity but does not insulate well.
+耐电但绝缘性能不佳。
 Doll Catsuit
 玩偶紧身衣
 An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
 由经过高度加工的粘液制成的服装。天然丝滑，触感顺滑。
-No bonuses, no penalties.
-没有奖励，没有惩罚。
+Resistant to electricity but does not insulate well.
+耐电但绝缘性能不佳。
 Cyber Doll Suit
 赛博玩偶制服
 A technologically advanced suit designed for long term wear. Despite being watertight and skintight it has cleaning and ventilation ports that plug directly into doll storage fixtures.
 这是一套专为长时间穿着而设计的先进技术服装。不仅紧密贴合和防水，而且它具有直接连接到玩偶存储装置的清洁和通风插口。
-No bonuses, no penalties.
-没有奖励，没有惩罚。
+Resistant to electricity but does not insulate well.
+耐电但绝缘性能不佳。
 Shadow Latex Dress
 暗影乳胶连衣裙
 A minidress made from shadow latex, a favorite of otherwordly patrons.
 由暗影乳胶制成的迷你裙，是其他顾客的最爱。
-No bonuses, no penalties.
-没有奖励，没有惩罚。
+Resistant to the elements, but is infused with crystals that amplify psychic damage to yourself.
+能够抵御各种元素，但注入的水晶会放大对自己的精神伤害。
 Elven Dress
 精灵连衣裙
 A regal minidress worn by visitors to the forest.
 给来客穿的豪华迷你裙。
-No bonuses, no penalties.
-没有奖励，没有惩罚。
+Not very good at insulating you from the cold.
+对于抵御寒冷效果较差。
 Scroll of Sleight
 诡计卷轴
 The scroll makes your memories of arm movements clear as day!
@@ -12259,8 +12269,8 @@ Magical Weapon
 
 Your Submissiveness determines how easily your character can resist the temptations of bondage.
 你的顺从程度决定了你的角色抵御束缚诱惑的难易程度。
-Your Security Level is based on your history and reputation with the MNFCTN.
-你的安全等级基于你在 MNFCTN 的历史和声誉。
+Your Security Level is based on your history, and reputation with the MNFCTN.
+你的安全等级基于你的历史，和在 MNFCTN 的声誉。
 Your Passion determines how likely you are to lose control of yourself involuntarily.
 你的激情决定了你有多大可能不由自主地失去对自己的控制。
 Your Frustration affects how quickly your Passion grows. More Frustration = More Passion
@@ -12277,8 +12287,8 @@ Oriel, 科技女神
 
 Ninril, Giver of Life
 Ninril, 生命的赐予者
-Mata, Architect of Reality
-Mata, 现实铸造者
+Matah, Architect of Reality
+Matah, 现实铸造者
 Aether, Keeper of the Cosmos
 Aether, 宇宙的守护者
 Oblivion, Keeper of Secrets
@@ -19431,3 +19441,45 @@ The curse has been lifted through judicious application of spellcasters.
 通过施法者的明智运用，诅咒已被解除。
 The cursed item drains all of the caster's mana. It demands more.
 被诅咒的物品会耗尽施法者的所有法力。它需要更多。
+
+Punishment Suit
+惩罚服
+A tool used by Nevermere on the most difficult and recalcitrant wolfgirls.
+Nevermere 用来对付最难对付、最顽固狼女的工具。
+Designed to contain superhuman strength, struggling out of this would be a major feat.
+旨在容纳超人的力量，从中挣扎出来将是一项伟大的壮举。
+
+Shield of (un)Clarity
+(不)清晰之盾
+Channel your clarity of mind into a powerful shield, filling your distraction bar completely and granting a temporary shield equal to 50% of the DP generated. 10% of the DP gained is gained as Desire, which prevents DP decaying below a certain point.
+将你清晰的头脑转化为强大的护盾，完全填满你的分心栏，并授予相当于所生成 DP 50% 的临时护盾。 获得的 DP 的 10% 作为欲望获得，这可以防止 DP 衰减到某个点以下。
+You form a... distracting mental barrier, shielding yourself for AMNT damage!!!
+你形成了一个...分散干扰值的精神屏障，保护自己免受 AMNT 点伤害！
+You are too distracted to form a mental barrier...
+你干扰值太高，无法形成精神屏障……
+You have the mental clarity but not the magical clarity! (not enough mana)
+你的精神很清晰，但对魔法却很迷茫！（法力值不足）
+
+You have formed a mental barrier...
+你已经形成了一个精神屏障...
+
+Desire Burst
+欲望爆发
+Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have 50% Desire, the damage is reduced based on the amount. (Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
+将你的性欲减少最多最大 DP 的 30%，并将该量转化为强大的爆炸，对附近的敌人造成 (30 + 25% 最大 DP) 点妩媚伤害（暴击倍数为 200%）。如果你没有50%的性欲，伤害会根据数量减少。（性欲是你的DP条下方的心形仪表，通过干扰慢慢提高）
+You channel your distraction into a powerful explosion!
+你可以将你的干扰转化为强大的爆炸！
+You don't have enough of a desire to do that.
+你没有足够的意志力去做这件事。
+You have the desire but not the mana!
+你有性欲，但没有法力！
+
+
+Harvest
+收获
+Requires a slashing weapon equipped. Activate to harvest all adjacent vine tiles, with a 25% chance per tile to obtain a seed.|Seeds can be planted to form gardens, which will grow in 100 turns to become vegetables, which can be eaten to restore WP or sold to the shopkeeper.
+需要装备斩击武器。激活以收割所有相邻几格内的藤蔓，每格有 25% 的几率获得种子。|种子可以种植形成花园，花园会在 100 回合内生长成为蔬菜，可以食用以恢复 WP 或出售给店主。
+You twirl your weapon, harvesting AMNT seeds!
+你转动你的武器，收获 AMNT 粒种子！
+There is nothing to harvest.
+没有什么可收获的。
