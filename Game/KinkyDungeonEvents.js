@@ -3872,6 +3872,17 @@ let KDEventMapSpell = {
 				data.flags.KDDamageArms = false;
 			}
 		},
+		
+	},
+	"calcDamage2": {
+		"FloatingWeapon": (e, spell, data) => {
+			if (!data.IsSpell && !data.forceUse) {
+				if (!KinkyDungeonCanUseWeapon(true, undefined, data.weapon)) {
+					data.canUse = true;
+					data.accuracyMult = 0;
+				}
+			}
+		},
 	},
 	"getWeapon": {
 		"HandsFree": (e, spell, data) => {
@@ -4231,6 +4242,16 @@ let KDEventMapSpell = {
 					DrawTextFitKD(TextGet("KDoffhandMissingTooltip"), 1740, 650, 600, "#ffffff", KDTextGray0, 28, "right", 10)
 					
 				}
+			}
+		},
+		"FloatingWeapon": (e, spell, data) => {
+			if (KinkyDungeonPlayerWeapon && !KinkyDungeonCanUseWeapon(true, undefined, KDWeapon({name: KinkyDungeonPlayerWeapon}))) {
+				KDDraw(kdcanvas, kdpixisprites, "kdfloatingwep", KinkyDungeonRootDirectory + `Items/${KDWeapon({name: KinkyDungeonPlayerWeapon})?.name}.png`,
+					400, 300 + 50 * Math.sin(2 * Math.PI * (CommonTime() % 3000)/3000),//50,
+					//400 + 50 * Math.sin(2 * Math.PI * (CommonTime() % 3000)/3000),
+					200, 200, Math.PI/2, {
+						zIndex: 1,
+					}, true);
 			}
 		},
 		/*"EnemySense": (e, spell, data) => {

@@ -1271,6 +1271,8 @@ interface weapon {
 		requiresEnergy?: boolean,
 		energyCost?: number,
 		range?: number,};
+	/** Can be used with Floating weapon even with no hands */
+	telekinetic?: boolean,
 }
 
 

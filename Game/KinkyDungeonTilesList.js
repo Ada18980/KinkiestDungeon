@@ -437,6 +437,14 @@ let KDMoveObjectFunctions = {
 
 		return true;
 	},
+	'R': (moveX, moveY) => {
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
+		KinkyDungeonLoot(MiniGameKinkyDungeonLevel, MiniGameKinkyDungeonCheckpoint, "rubble");
+
+		KinkyDungeonMapSet(moveX, moveY, 'r');
+		KinkyDungeonAggroAction('rubble', {});
+		return true;
+	},
 	'C': (moveX, moveY) => { // Open the chest
 		let chestType = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).Loot ? KinkyDungeonTilesGet(moveX + "," +moveY).Loot : "chest";
 		let faction = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).Faction ? KinkyDungeonTilesGet(moveX + "," +moveY).Faction : undefined;
@@ -446,6 +454,7 @@ let KDMoveObjectFunctions = {
 		if (faction && !KinkyDungeonChestConfirm) {
 			KinkyDungeonChestConfirm = true;
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChestFaction").replace("FACTION", TextGet("KinkyDungeonFaction" + faction)), "#ff0000", 2, true);
+			return false;
 		} else {
 			let data = {
 				chestType: chestType,

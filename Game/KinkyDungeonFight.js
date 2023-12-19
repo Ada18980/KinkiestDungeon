@@ -214,13 +214,22 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 		KDDamageHands: true.valueOf,
 		KDDamageArms: true.valueOf,
 	};
-	if (!NoOverride)
-		KinkyDungeonSendEvent("calcDamage", {flags: flags});
-
 	let damage = KinkyDungeonPlayerDamageDefault;
 	let weapon = KDWeapon({name: KinkyDungeonPlayerWeapon});
 	if (weapon && weapon?.noHands) HandsFree = true;
-	if (!KinkyDungeonCanUseWeapon(NoOverride, undefined, weapon) && !weapon?.unarmed) {
+
+	let data = {flags: flags, accuracyMult: 1.0, damageMult: 1.0, weapon: weapon, HandsFree: HandsFree,
+		canUse: KinkyDungeonCanUseWeapon(NoOverride, undefined, weapon),
+		forceUse: false, // Set this to true if you want to disable accuracy penalty from Telekinesis 101
+		handBondage:  KDHandBondageTotal(true),
+		armBondage : KinkyDungeonIsArmsBound(false, true)};
+	if (!NoOverride)
+		KinkyDungeonSendEvent("calcDamage", data);
+
+	if (!NoOverride)
+		KinkyDungeonSendEvent("calcDamage2", data);
+
+	if (!data.canUse && !weapon?.unarmed) {
 		damage = KinkyDungeonPlayerDamageDefault;
 		if (!NoOverride) {
 			if (weapon && KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon))
@@ -232,6 +241,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 		damage = weapon;
 	}
 
+
 	KinkyDungeonPlayerDamage = JSON.parse(JSON.stringify(damage));
 	if (KinkyDungeonWeaponVariants[KinkyDungeonPlayerWeapon]) {
 		if (!KinkyDungeonPlayerDamage.events) KinkyDungeonPlayerDamage.events = [];
@@ -239,18 +249,16 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 	}
 
 
-	let handBondage = KDHandBondageTotal(true);
-	let armBondage = KinkyDungeonIsArmsBound(false, true);
 	
 	if (KinkyDungeonStatsChoice.get("Brawler") && isUnarmed(KinkyDungeonPlayerDamage)) {
 		KinkyDungeonPlayerDamage.dmg += KDBrawlerAmount;
 	} else {
-		if (armBondage && (flags.KDDamageArms || weapon?.unarmed) && (!weapon?.noHands) && !weapon?.light) {
+		if (data.armBondage && (flags.KDDamageArms || weapon?.unarmed) && (!weapon?.noHands)) {
 			KinkyDungeonPlayerDamage.chance *= 0.5;
 			if (!KDWeaponIsMagic(KinkyDungeonPlayerDamage)) KinkyDungeonPlayerDamage.dmg /= 2;
-		} else if (handBondage && (flags.KDDamageHands || weapon?.unarmed) && (!weapon || !weapon.noHands || weapon?.unarmed)) {
-			KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, handBondage));
-			if (!KDWeaponIsMagic(KinkyDungeonPlayerDamage)) KinkyDungeonPlayerDamage.dmg *= 0.5 + Math.max(0, 0.5 * Math.min(1, handBondage));
+		} else if (data.handBondage && (flags.KDDamageHands || weapon?.unarmed) && (!weapon || !weapon.noHands || weapon?.unarmed)) {
+			KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, data.handBondage));
+			if (!KDWeaponIsMagic(KinkyDungeonPlayerDamage)) KinkyDungeonPlayerDamage.dmg *= 0.5 + Math.max(0, 0.5 * Math.min(1, data.handBondage));
 		}
 		if (KinkyDungeonSlowLevel > 1 && (!KinkyDungeonPlayerDamage.name || weapon?.unarmed)) {
 			KinkyDungeonPlayerDamage.dmg /= 2;
@@ -260,16 +268,18 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 		KinkyDungeonPlayerDamage.chance *= KDIsHogtied() ? 0.001 : 0.5;
 		if (!KDWeaponIsMagic(KinkyDungeonPlayerDamage)) KinkyDungeonPlayerDamage.dmg *= KDIsHogtied() ? 0.001 : 0.5;
 		if (KinkyDungeonStatsChoice.get("Brawler") && isUnarmed(KinkyDungeonPlayerDamage)) {
-			if (armBondage) {
+			if (data.armBondage) {
 				KinkyDungeonPlayerDamage.chance *= 0.5;
 				KinkyDungeonPlayerDamage.dmg /= 2;
-			} else if (handBondage) {
-				KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, handBondage));
-				KinkyDungeonPlayerDamage.dmg *= 0.5 + Math.max(0, 0.5 * Math.min(1, handBondage));
+			} else if (data.handBondage) {
+				KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, data.handBondage));
+				KinkyDungeonPlayerDamage.dmg *= 0.5 + Math.max(0, 0.5 * Math.min(1, data.handBondage));
 			}
 		}
 	}
 
+	KinkyDungeonPlayerDamage.chance *= data.accuracyMult;
+	KinkyDungeonPlayerDamage.dmg *= data.damageMult;
 	return KinkyDungeonPlayerDamage;
 }
 /**
@@ -486,10 +496,10 @@ function KDRestraintBlockPower(block, power) {
 	return KinkyDungeonMultiplicativeStat(block / Math.max(1, power));
 }
 
-function KinkyDungeonEvasion(Enemy, IsSpell, IsMagic, Attacker) {
+function KinkyDungeonEvasion(Enemy, IsSpell, IsMagic, Attacker, chance) {
 	
 
-	let hitChance = KinkyDungeonGetEvasion(Enemy, undefined, IsSpell, IsMagic, true);
+	let hitChance = chance != undefined ? chance : KinkyDungeonGetEvasion(Enemy, undefined, IsSpell, IsMagic, true);
 
 	if (KDHostile(Enemy) && KinkyDungeonStatsChoice.get("Stealthy")) {
 		hitChance *= KDStealthyEvaMult;
@@ -501,9 +511,9 @@ function KinkyDungeonEvasion(Enemy, IsSpell, IsMagic, Attacker) {
 	if (hitChance > 0) {
 		KinkyDungeonAggro(Enemy, undefined, Attacker);
 		// Smart enemies wont even try if they cant dodge it. Dumb enemies will
-		if (Enemy.dodges > 0 && (Enemy.dodges >= hitChance || KDRandom() < 1 - 0.2 * KDEnemyRank(Enemy))) {
-			if (Enemy?.Enemy.preferDodge || Enemy.hp < 0.35 * Enemy.Enemy.maxhp || ((Enemy.blocks < 1 || !KDCanBlock(Enemy)) && Enemy.hp < 0.65 * Enemy.Enemy.maxhp) || (!Enemy.Enemy.preferBlock && (Enemy.Enemy.hp < 0.8 * Enemy.Enemy.maxhp ? KDRandom() < 0.75 : KDRandom() < 0.33))) {
-				while (Enemy?.dodges > 0 && KDCanDodge(Enemy) && hitChance > 0) {
+		if (Enemy.dodges >= 1 && (Enemy.dodges >= hitChance || KDRandom() < 1 - 0.2 * KDEnemyRank(Enemy))) {
+			if (Enemy?.Enemy.preferDodge || Enemy.hp < 0.5 * Enemy.Enemy.maxhp || ((!Enemy.blocks || Enemy.blocks < 1 || !KDCanBlock(Enemy)) && Enemy.hp < 0.65 * Enemy.Enemy.maxhp) || ((Enemy.Enemy.hp < 0.9 * Enemy.Enemy.maxhp ? true : KDRandom() < 0.33))) {
+				while (Enemy?.dodges >= 1 && KDCanDodge(Enemy) && hitChance > 0) {
 					hitChance -= 1;
 					// The way this works:
 					// Positive accuracy has higher hitchance, so it requires more dodges
@@ -530,7 +540,7 @@ function KinkyDungeonEvasion(Enemy, IsSpell, IsMagic, Attacker) {
 		}
 	}
 
-	if (!dodged && hitChance > 0) return true;
+	if (!dodged && hitChance > 0.6) return true;
 
 
 	if (KDRandom() < hitChance + KinkyDungeonEvasionPityModifier) {
@@ -839,7 +849,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 
 			if (Spell && Spell.hitsfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + Spell.hitsfx + ".ogg");
 			else if (!(Spell && Spell.hitsfx) && predata.dmgDealt > 0 && bullet) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/DealDamage.ogg");
-			if (!predata.blocked && !KinkyDungeonIgnoreBlockTypes.includes(predata.type) && predata.dmgDealt >= 1 && !predata.noblock && Enemy.blocks > 0 && KDCanBlock(Enemy)) {
+			if (!predata.blocked && !KinkyDungeonIgnoreBlockTypes.includes(predata.type) && predata.dmgDealt >= 1 && !predata.noblock && Enemy.blocks >= 1 && KDCanBlock(Enemy)) {
 				let blockCount = 1;
 				Enemy.blocks -= 1;
 				Enemy.blockedordodged = (Enemy.blockedordodged || 0) + 1;
@@ -847,7 +857,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				let orig = predata.dmgDealt;
 				predata.dmgDealt -= Math.max(0, amount);
 
-				while (predata.dmgDealt > 0 && Enemy.blocks > 0 && (predata.dmgDealt > Enemy.hp * 0.1 || predata.dmgDealt > Enemy.Enemy.maxhp*0.5)) {
+				while (predata.dmgDealt > 0 && Enemy.blocks >= 1 && (predata.dmgDealt > Enemy.hp * 0.1 || predata.dmgDealt > Enemy.Enemy.maxhp*0.5)) {
 					blockCount += 1;
 					Enemy.blocks -= 1;
 					Enemy.blockedordodged = (Enemy.blockedordodged || 0) + 1;
@@ -923,10 +933,8 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 					KDDamageQueue.push({floater: Math.round(predata.dmgDealt*10) + ` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[predata.type]?.name)} ${TextGet("KDdmg")}`,
 						Entity: Enemy, Color: "#ff4444", Delay: Delay, });
 				}
-				//KinkyDungeonSendFloater(Enemy, Math.round(Math.min(predata.dmgDealt, Enemy.hp)*10), "#ff4444");
 			}
-			//forceKill = (Enemy.hp <= Enemy.Enemy.maxhp*0.1 || Enemy.hp <= 0.52) && KDistChebyshev(Enemy.x - KinkyDungeonPlayerEntity.x, Enemy.y - KinkyDungeonPlayerEntity.y) < 1.5;
-
+			
 			if (Enemy.shield > 0) {
 				let orig = predata.dmgDealt;
 				Enemy.shield -= predata.dmgDealt;
@@ -1272,9 +1280,10 @@ function KinkyDungeonDisarm(Enemy, suff) {
  *
  * @param {entity} Enemy
  * @param {*} Damage
+ * @param {number} [chance]
  * @returns {boolean}
  */
-function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
+function KinkyDungeonAttackEnemy(Enemy, Damage, chance) {
 	let disarm = false;
 	if (Enemy.Enemy && Enemy.Enemy.disarm && Enemy.disarmflag > 0) {
 		if (Enemy.stun > 0 || Enemy.freeze > 0 || Enemy.blind > 0 || Enemy.teleporting > 0 || (Enemy.playWithPlayer && !Enemy.hostile)) Enemy.disarmflag = 0;
@@ -1283,7 +1292,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, ) {
 			disarm = true;
 		}
 	}
-	let evaded = KinkyDungeonEvasion(Enemy, undefined, undefined, KinkyDungeonPlayerEntity);
+	let evaded = KinkyDungeonEvasion(Enemy, false, undefined, KinkyDungeonPlayerEntity, chance);
 	let dmg = Damage;
 	let buffdmg = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg");
 	let channel = KinkyDungeonPlayerDamage?.channel || 0;
@@ -2650,8 +2659,12 @@ function KDBulletTrailAoEMod(b) {
  * @param {number} yy
  * @param {number} rad
  * @param {string} modifier
+ * @param {originx} xx
+ * @param {originy} yy
  */
-function AOECondition(bx, by, xx, yy, rad, modifier = "") {
+function AOECondition(bx, by, xx, yy, rad, modifier = "", originx, originy) {
+	if (!originx) originx = bx;
+	if (!originy) originx = by;
 	switch (modifier) {
 		case "vert":
 			if (bx != xx) return false;
@@ -2665,6 +2678,7 @@ function AOECondition(bx, by, xx, yy, rad, modifier = "") {
 		case "box":
 			return KDistChebyshev(bx - xx, by - yy) <= rad;
 	}
+	if (KDAOETypes[modifier]) return KDAOETypes[modifier](bx, by, xx, yy, rad, modifier, originx, originy);
 	return KDistEuclidean(bx - xx, by - yy) <= rad;
 }
 
@@ -2734,3 +2748,15 @@ function KDEvasiveManeuversCost() {
 	let eva = KinkyDungeonPlayerEvasion();
 	return (5.0 * eva) + 1 * KinkyDungeonSlowLevel;
 }
+
+let KDAOETypes = {
+	"slash": (bx, by, xx, yy, rad, modifier = "", ox, oy) => {
+		let dist = KDistEuclidean(ox-xx , oy-yy);
+		let dist2 = KDistEuclidean(ox-bx , oy-by);
+		// Special case to reduce aoe in melee
+		if (ox == bx && yy == oy) return false;
+		if (oy == by && xx == ox) return false;
+		//Main case
+		return Math.abs(dist2-dist) < 0.49;
+	}
+};

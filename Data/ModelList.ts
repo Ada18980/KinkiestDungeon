@@ -600,7 +600,7 @@ AddModel({
 	Parent: "ChainArmor",
 	Categories: ["Armor"],
 	Layers: ToLayerMap([
-		{ Name: "Shirt", Layer: "CorsetLiner", Pri: 5,
+		{ Name: "Shirt", Layer: "Shirt", Pri: -40,
 			SwapLayerPose: {Kneel: "CorsetLinerLower", KneelClosed: "CorsetLinerLower"},
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
 			MorphPoses: {Hogtie: "Hogtie"},

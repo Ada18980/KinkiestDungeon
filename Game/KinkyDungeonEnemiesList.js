@@ -152,6 +152,10 @@ let KinkyDungeonEnemies = [
 		ondeath: [
 			{type: "DirtPile"}
 		],
+		Sound: {
+			baseAmount: 0,
+			moveAmount: 0,
+		},
 		terrainTags: {}, floors:KDMapInit([])},
 
 	{name: "ExplosiveBarrel", tags: KDMapInit(["poisonmmune", "soulimmune", "noknockback", "melee", "minor", "scenery", "explosiveBarrel", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile", "fireweakness", "stunweakness"]),
@@ -159,6 +163,10 @@ let KinkyDungeonEnemies = [
 		difficulty: 0.01,
 		visionRadius: 0, maxhp: 6, minLevel:0, weight:-10, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
 		dropTable: [{name: "Gunpowder", amount: 3, weight: 10, noSummon: true}],
+		Sound: {
+			baseAmount: 0,
+			moveAmount: 0,
+		},
 		events: [
 			{trigger: "afterDamageEnemy", type: "ExplosiveBarrel", chance: 0.5, power: 3.0, spell: "ExplosiveBarrel"},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Gunpowder", time: 4, power: 2, chance: 0.5, aoe: 0.5},
@@ -2634,6 +2642,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 8, maxhp: 20, minLevel:2, weight:1, movePoints: 2.0, attackPoints: 2, attack: "SpellMeleeWillBindLock",
 		attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 3, dmgType: "pain", fullBoundBonus: 1,
 		stamina: 5,
+		block: 0.1,
 		events: [
 			{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Nevermere", "Bountyhunter", "Dragon"]},
 		],
@@ -2651,6 +2660,7 @@ let KinkyDungeonEnemies = [
 		specialAttackPoints: 1, specialRange: 3.5, specialMinrange: 2.4, specialsfx: "Miss", castWhileMoving: true, dashThruWalls: true, dashThrough: true,
 		bindOnDisable: true,
 		smartBind: true,
+		block: 0.15,
 		evasion: 0.4, disarm: 0.4,
 		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.0,
 		visionRadius: 8, maxhp: 17, minLevel:5, weight:1, movePoints: 1.4, attackPoints: 2, attack: "MeleeWillBindLock",
@@ -3557,7 +3567,6 @@ let KinkyDungeonEnemies = [
 		armor: 3.0, spellResist: 1.5,
 		evasion: -2.0,
 		maxblock: 2,
-		block: 0.5,
 		blockAmount: 2.5,
 		maxdodge: 0,
 		ignorechance: 0.75, followRange: 1, AI: "hunt",  summon: [{enemy: "SarcoMinion", range: 2.5, count: 3, strict: true}],

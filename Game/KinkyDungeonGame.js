@@ -4079,7 +4079,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				let data = {
 					target: Enemy,
 					attackCost: attackCost,
-					skipTurn: false,
+					skipTurn: true,
 					attackData: {
 						damage: KinkyDungeonPlayerDamage.dmg,
 						type: KinkyDungeonPlayerDamage.type,
@@ -4340,13 +4340,6 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 							}
 						}*/
 
-						if (moveObject == 'R') {
-							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
-							KinkyDungeonLoot(MiniGameKinkyDungeonLevel, MiniGameKinkyDungeonCheckpoint, "rubble");
-
-							KinkyDungeonMapSet(moveX, moveY, 'r');
-							KinkyDungeonAggroAction('rubble', {});
-						}
 						//}
 					}
 

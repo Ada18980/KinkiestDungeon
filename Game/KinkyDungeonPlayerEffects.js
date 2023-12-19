@@ -1674,7 +1674,21 @@ function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass, all
 			KinkyDungeonSendEvent("boundBySpell", {player: KinkyDungeonPlayerEntity, restraintsAdded: rests});
 			return rests;
 		}
-		else return restraintsToAdd;
+		else {
+			let added = [];
+			for (let r of restraintsToAdd) {
+				let bb = 0;
+				bb = KinkyDungeonAddRestraintIfWeaker(r.r, spell?.power || 0,
+					KinkyDungeonStatsChoice.has("MagicHands") || spell, r.r.DefaultLock || Lock,
+					undefined, undefined, undefined, spell?.faction || faction, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
+					undefined, undefined, true, undefined, undefined, undefined, r.v) * 2;
+				if (bb) {
+					added.push(r);
+					KDSendStatus('bound', r.r.name, "spell_" + (spell?.name || "effect"));
+				}
+			}
+			return added;
+		}
 	}
 	return [];
 }

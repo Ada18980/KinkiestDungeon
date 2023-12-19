@@ -195,7 +195,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 
 					if (MiniGameKinkyDungeonLevel > 1) {
 						// Reduce security level when entering a new area
-						KinkyDungeonChangeRep("Prisoner", 5);
+						KinkyDungeonChangeRep("Prisoner", -4);
 
 						if (KinkyDungeonStatsChoice.get("Trespasser")) {
 							KinkyDungeonChangeRep("Rope", -1);

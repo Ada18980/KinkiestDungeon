@@ -1178,7 +1178,7 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 					// Handle dodge and block tokens
 					if (KDCanBlock(enemy)) {
 													
-						if (enemy.blocks > 0) {
+						if (enemy.blocks >= 1) {
 							let pipY = -15 + canvasOffsetY + (yy - CamY + 1)*KinkyDungeonGridSizeDisplay;
 							let pipSpacing = -0.5 * (KinkyDungeonGridSizeDisplay-25)/2;
 							for (let pip = 0; pip < enemy.blocks && pip < 2; pip++) {
@@ -1209,10 +1209,10 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 					}
 
 					if (KDCanDodge(enemy)) {
-						if (enemy.dodges > 0) {
+						if (enemy.dodges >= 1) {
 							let pipY = 15 + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay;
 							let pipSpacing = 0.5 * (KinkyDungeonGridSizeDisplay-25)/2;
-							for (let pip = 0; pip < enemy.dodges && pip < 2; pip++) {
+							for (let pip = 0; pip + 1 <= enemy.dodges && pip < 2; pip++) {
 								if (pip == 1 || enemy.dodges < 2)
 									DrawCircleKD(kdenemystatusboard, kdpixisprites, enemy.id + "Dpip" + pip, {
 										Left: canvasOffsetX + 15 + (xx - CamX)*KinkyDungeonGridSizeDisplay,
@@ -2708,7 +2708,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "ceasefire"});
 			}
 			if (enemy.blind > 0 && bindLevel < 4) {
-				if (enemy.dodges > 0) enemy.dodges -= delta * 1;
+				if (enemy.dodges > 0) enemy.dodges = Math.max(0, enemy.dodges - delta * 1);
 				enemy.blind -= delta * statusBonus / (1 + 1*bindLevel);
 				if (enemy.blind <= 0)
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "blind"});
@@ -2783,10 +2783,9 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 							if (!enemy.blocks) enemy.blocks = 0;
 							// Roll for a token
 							let mult = KDBlockDodgeStat(blockRate);
-							if (KDRandom() < KDGetBaseBlock(enemy) / mult) {
-								enemy.blocks += 1;
-							}
+							enemy.blocks += Math.min(1, KDRandom() * KDGetBaseBlock(enemy) / mult);
 						}
+						//Only raise guard in the right conditions
 						
 						let dodgeRate = (enemy.Enemy.evasion || 0) + KDEntityBuffedStat(enemy, "Dodge") + KDEntityBuffedStat(enemy, "MoveSpeed");
 						
@@ -2794,9 +2793,7 @@ function KinkyDungeonUpdateEnemies(delta, Allied) {
 							if (!enemy.dodges) enemy.dodges = 0;
 							// Roll for a token
 							let mult = KDBlockDodgeStat(dodgeRate);
-							if (KDRandom() < KDGetBaseDodge(enemy) / mult) {
-								enemy.dodges += 1;
-							}
+							enemy.dodges += Math.min(1, KDRandom() * KDGetBaseDodge(enemy) / mult);
 						}
 					}
 				} else if (delta > 0 && enemy.blockedordodged) {
@@ -7007,7 +7004,7 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
  * @returns {number}
  */
 function KDGetMaxBlock(entity) {
-	if (!((entity.Enemy.block || entity.Enemy.maxblock || (KDIsHumanoid(entity) && !entity.Enemy.tags?.submissive)))) return 0;
+	if (!((entity.Enemy.block || entity.Enemy.maxblock != undefined || (KDIsHumanoid(entity) && !entity.Enemy.tags?.submissive)))) return 0;
 	let mod = KDEntityBuffedStat(entity, "MaxBlock");
 	if (entity.Enemy?.maxblock != undefined) return Math.max(0, entity.Enemy?.maxblock + mod);
 	return Math.max(0, mod + Math.max(1, KDEnemyRank(entity)));
@@ -7033,7 +7030,7 @@ function KDGetMaxDodge(entity) {
 function KDGetBaseBlock(entity) {
 	let mod = KDEntityBuffedStat(entity, "BlockRate");
 
-	let spellResist = entity.Enemy.spellResist || -1;
+	/*let spellResist = entity.Enemy.spellResist || -1;
 	if (KDEntityBuffedStat(entity, "SpellResist")) spellResist += KDEntityBuffedStat(entity, "SpellResist");
 	if (KDEntityBuffedStat(entity, "SpellResistBreak")) spellResist -= Math.min(Math.max(0, spellResist), KDEntityBuffedStat(entity, "SpellResistBreak"));
 	let armor = entity.Enemy.armor || -1;
@@ -7043,9 +7040,9 @@ function KDGetBaseBlock(entity) {
 	let armorBonus = Math.max(spellResist, armor) + Math.max(0, 0.5 * Math.min(spellResist, armor));
 	if (entity.Enemy.tags?.meleeresist) armorBonus += 3;
 	else if (entity.Enemy.tags?.meleeimmune) armorBonus += 5;
-	let attackBonus = 2 - entity.Enemy.attackPoints;
+	let attackBonus = 2 - entity.Enemy.attackPoints;*/
 
-	return Math.max(0, mod + 0.05 * (1 + KDEnemyRank(entity)) / (1 + KinkyDungeonMultiplicativeStat(attackBonus + armorBonus)));
+	return Math.max(0, mod + entity.Enemy.block)//0.05 * (1 + KDEnemyRank(entity)) / (1 + KinkyDungeonMultiplicativeStat(attackBonus + armorBonus)));
 }
 /**
  * Gets the max block of an enemy
@@ -7064,7 +7061,7 @@ function KDGetBaseDodge(entity) {
 	let staminabonus = 0.2 * (entity.Enemy.stamina != undefined ? entity.Enemy.stamina : 6) * (entity.Enemy.sprintspeed || 1.7);
 	let reflexBonus = Math.max(0, (entity.Enemy.stealth ? 4 / entity.Enemy.stealth : 0)) + Math.max(0, (entity.Enemy.blindSight ? 4 / entity.Enemy.blindSight : 0))
 
-	return Math.max(0, mod + 0.03 * (1 + KDEnemyRank(entity)) / (1 + KinkyDungeonMultiplicativeStat(staminabonus + moveBonus)));
+	return Math.max(0, mod + 0.1 * (1 + KDEnemyRank(entity)) / (1 + KinkyDungeonMultiplicativeStat(staminabonus + moveBonus + reflexBonus)));
 }
 
 /**
@@ -7076,7 +7073,7 @@ function KDGetBlockAmount(entity) {
 	let mod = KDEntityBuffedStat(entity, "BlockAmount");
 	
 	if (entity.Enemy?.blockAmount) return Math.max(0, entity.Enemy?.blockAmount + mod);
-	return (entity.Enemy.power + mod + 2*(KDEnemyRank(entity)));
+	return (1 + mod + 0.5*(KDEnemyRank(entity)));
 }
 
 /**
