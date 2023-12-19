@@ -2079,6 +2079,8 @@ Ooooh...
 （沉重喘息）
 (Moans softly)
 （轻声呻吟）
+(Moans into her gag)
+（对着口塞呻吟）
 (Incoherent mumbling)
 （含糊不清的咕哝）
 (Moans loudly)
@@ -19492,6 +19494,11 @@ You don't have enough of a desire to do that.
 You have the desire but not the mana!
 你有性欲，但没有法力！
 
+Your divine-locked restraints can only be removed by completing a shrine quest.
+你的神圣锁束缚只能通过完成神泉的任务来解开。
+
+The Goddess hates you. That won't work.
+女神讨厌你。那是行不通的。
 
 Harvest
 收获
@@ -19501,6 +19508,3 @@ You twirl your weapon, harvesting AMNT seeds!
 你转动你的武器，收获 AMNT 粒种子！
 There is nothing to harvest.
 没有什么可收获的。
-
-Your divine-locked restraints can only be removed by completing a shrine quest.
-你的神锁束缚只能通过完成神泉的任务来解除。
