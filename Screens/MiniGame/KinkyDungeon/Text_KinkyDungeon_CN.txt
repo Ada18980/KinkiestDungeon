@@ -19395,8 +19395,8 @@ Poltergeist
 捣蛋鬼
 The poltergeist goes silent.
 捣蛋鬼沉默了。
-The poltergeist gropes and teases you playfully!! (DamageTaken)
-捣蛋鬼顽皮地摸索和戏弄你！（DamageTaken）
+The poltergeist gropes and teases you playfully, exhausting your stamina! (DamageTaken)
+捣蛋鬼顽皮地摸索和戏弄你，耗尽你的体力！（DamageTaken）
 The poltergeist binds you with... something? (+RestraintAdded)
 捣蛋鬼用……什么东西把你束缚住了？ （+RestraintAdded）
 
