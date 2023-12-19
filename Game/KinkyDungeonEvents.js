@@ -4191,7 +4191,7 @@ let KDEventMapSpell = {
 				1750,
 				600,
 				100, 100,
-				"", "#ffffff", KinkyDungeonRootDirectory + `Items/${KDGameData.Offhand || KDGameData.OffhandOld}.png`, "", false, true,
+				"", "#ffffff", KinkyDungeonRootDirectory + `Items/${KDWeapon({name: KDGameData.Offhand || KDGameData.OffhandOld})?.name}.png`, "", false, true,
 				undefined, undefined, undefined, {tint: KDGameData.Offhand ? "#ffffff" : "#444444", scaleImage: true, zIndex: 5,
 					//hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[1]),
 				}
