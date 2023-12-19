@@ -312,6 +312,11 @@ function KDProcessInput(type, data) {
 			break;
 		case "shrineUse":
 			KDDelayedActionPrune(["Action", "World"]);
+			if (KinkyDungeonGoddessRep[data.type] <= -45) {
+				//Cursed
+				KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), "#ff5555", 2);
+				return "Fail";
+			}
 			tile = KinkyDungeonTilesGet(data.targetTile);
 			//KinkyDungeonTargetTile = tile;
 			//KinkyDungeonTargetTileLocation = data.targetTile;
@@ -352,6 +357,12 @@ function KDProcessInput(type, data) {
 		}
 		case "shrinePray": {
 			KDDelayedActionPrune(["Action", "World"]);
+			if (KinkyDungeonGoddessRep[data.type] <= -45) {
+				//Cursed
+				KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), "#ff5555", 2);
+				return "Fail";
+			}
+
 			tile = KinkyDungeonTilesGet(data.targetTile);
 			if (tile) {
 				tile.Rescue = true;
@@ -406,7 +417,12 @@ function KDProcessInput(type, data) {
 
 			let x =  data.targetTile.split(',')[0];
 			let y =  data.targetTile.split(',')[1];
-			KDSummonRevengeMobs(parseInt(x), parseInt(y), tile.type, slimed ? 1.5 : 1);
+			
+			if (KinkyDungeonGoddessRep[data.type] <= -45) {
+				//Cursed
+				KDSummonRevengeMobs(parseInt(x), parseInt(y), tile.type, 5);
+			} else
+				KDSummonRevengeMobs(parseInt(x), parseInt(y), tile.type, slimed ? 1.5 : 1);
 
 			KDMapData.PoolUses += 1;
 			break;

@@ -18,6 +18,7 @@ Vague todo:
 TODO add sugar magic ('Blood Energy Magic')
 
 5.0.3
+-Added divine locks for enforcing Bound Crusaders!
 -WIP Fixed item duplication glitch
 -Fixed bug where outfit pieces that overlapped with restraint models would not get hidden
 -Added auto strip before loading a code

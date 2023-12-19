@@ -190,6 +190,7 @@ function KinkyDungeonRepName(Amount) {
 	return TextGet("KinkyDungeonRepName" + name);
 }
 
+
 /**
  *
  * @param {number} Amount

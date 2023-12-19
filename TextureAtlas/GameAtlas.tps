@@ -275,6 +275,7 @@
             <key type="filename">../Game/Bullets/CursedArrowHit.png</key>
             <key type="filename">../Game/Bullets/Dagger.png</key>
             <key type="filename">../Game/Bullets/DaggerHit.png</key>
+            <key type="filename">../Game/Bullets/DistractionBurstBullet.png</key>
             <key type="filename">../Game/Bullets/DryadBlast.png</key>
             <key type="filename">../Game/Bullets/DryadBlastHit.png</key>
             <key type="filename">../Game/Bullets/EarthformLine.png</key>
@@ -2029,6 +2030,8 @@
             <key type="filename">../Game/Spells/Dagger.png</key>
             <key type="filename">../Game/Spells/Decoy.png</key>
             <key type="filename">../Game/Spells/DisplayStand.png</key>
+            <key type="filename">../Game/Spells/DistractionBurst.png</key>
+            <key type="filename">../Game/Spells/DistractionShield.png</key>
             <key type="filename">../Game/Spells/EarthMote.png</key>
             <key type="filename">../Game/Spells/Earthform.png</key>
             <key type="filename">../Game/Spells/EarthformLine.png</key>
@@ -2219,6 +2222,7 @@
             <key type="filename">../Game/Aura/Chastity.png</key>
             <key type="filename">../Game/Aura/Conduction.png</key>
             <key type="filename">../Game/Aura/Disrobe.png</key>
+            <key type="filename">../Game/Aura/DistractionShield.png</key>
             <key type="filename">../Game/Aura/DoublePlugged.png</key>
             <key type="filename">../Game/Aura/Drenched.png</key>
             <key type="filename">../Game/Aura/EnergyShield.png</key>
@@ -2277,6 +2281,7 @@
             <key type="filename">../Game/Locks/Blue.png</key>
             <key type="filename">../Game/Locks/Curse.png</key>
             <key type="filename">../Game/Locks/Disc.png</key>
+            <key type="filename">../Game/Locks/Divine.png</key>
             <key type="filename">../Game/Locks/Dollmaker.png</key>
             <key type="filename">../Game/Locks/Fuuka.png</key>
             <key type="filename">../Game/Locks/Gold.png</key>
@@ -2383,6 +2388,7 @@
             <key type="filename">../Game/Buffs/buff/buffDildoBatBuff.png</key>
             <key type="filename">../Game/Buffs/buff/buffDisenchantSelf.png</key>
             <key type="filename">../Game/Buffs/buff/buffDistractionCast.png</key>
+            <key type="filename">../Game/Buffs/buff/buffDistractionShield.png</key>
             <key type="filename">../Game/Buffs/buff/buffDrenched.png</key>
             <key type="filename">../Game/Buffs/buff/buffEmpower.png</key>
             <key type="filename">../Game/Buffs/buff/buffForcedSubmission.png</key>
@@ -3232,7 +3238,9 @@
                 <false/>
             </struct>
             <key type="filename">../Game/Particles/Shockwave.png</key>
+            <key type="filename">../Game/Particles/ShockwaveDesire.png</key>
             <key type="filename">../Game/Particles/ShockwaveEnemy.png</key>
+            <key type="filename">../Game/Particles/ShockwaveShield.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
