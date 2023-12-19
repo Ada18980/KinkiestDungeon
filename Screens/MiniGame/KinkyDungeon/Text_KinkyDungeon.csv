@@ -839,6 +839,19 @@ KinkyDungeonChangeDistraction8,"(Heavy breathing)"
 KinkyDungeonChangeDistraction9,"(Moaning uncontrollably)"
 KinkyDungeonChangeDistraction10,"(Shudders with pleasure)"
 
+
+KinkyDungeonChangeDistractionGag0,"Mmmph..."
+KinkyDungeonChangeDistractionGag1,"Mmmph~"
+KinkyDungeonChangeDistractionGag2,"Nnngh..."
+KinkyDungeonChangeDistractionGag3,"Mmmmmmmm..."
+KinkyDungeonChangeDistractionGag4,"(Breaths heavily)"
+KinkyDungeonChangeDistractionGag5,"(Moans into her gag)"
+KinkyDungeonChangeDistractionGag6,"(Incoherent mumbling)"
+KinkyDungeonChangeDistractionGag7,"(Moans loudly)"
+KinkyDungeonChangeDistractionGag8,"(Heavy breathing)"
+KinkyDungeonChangeDistractionGag9,"(Moaning uncontrollably)"
+KinkyDungeonChangeDistractionGag10,"(Shudders with pleasure)"
+
 Wait,"You wait."
 WaitAroused,"You wait, legs trembling with arousal."
 WaitArousedHeavy,"You wait, trembling and moaning."
@@ -18399,10 +18412,12 @@ KDDistractionBurst_NoMana,"You have the desire but not the mana!"
 
 
 
+KDDivineLockReminder,Your divine-locked restraints can only be removed by completing a shrine quest.
+
+KDCursedGoddess,The Goddess hates you. That won't work.
+
 
 KinkyDungeonSpellHarvest,Harvest
 KinkyDungeonSpellDescriptionHarvest,"Requires a slashing weapon equipped. Activate to harvest all adjacent vine tiles, with a 25% chance per tile to obtain a seed.|Seeds can be planted to form gardens, which will grow in 100 turns to become vegetables, which can be eaten to restore WP or sold to the shopkeeper."
 KDHarvest_Yes,"You twirl your weapon, harvesting AMNT seeds!"
 KDHarvest_No,"There is nothing to harvest."
-
-KDDivineLockReminder,Your divine-locked restraints can only be removed by completing a shrine quest.

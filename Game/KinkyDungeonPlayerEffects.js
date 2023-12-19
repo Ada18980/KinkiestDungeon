@@ -1664,14 +1664,17 @@ function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass, all
 		}
 	}
 	if (restraintsToAdd.length > 0) {
-		let rests = KDRunBondageResist(undefined, faction, restraintsToAdd,(r) => {
-			KDDamageQueue.push({floater: TextGet("KDBlockedRestraint"), Entity: {x: player.x - 0.5, y: player.y - 0.5}, Color: "#88ff88", Time: 2, Delay: 0});
-
-			if (!r)
-				KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal"), "#88ff88", 1);
-		}, undefined, spell, Lock);
-		KinkyDungeonSendEvent("boundBySpell", {player: KinkyDungeonPlayerEntity, restraintsAdded: rests});
-		return rests;
+		if (allowBondageResist) {
+			let rests = KDRunBondageResist(undefined, faction, restraintsToAdd,(r) => {
+				KDDamageQueue.push({floater: TextGet("KDBlockedRestraint"), Entity: {x: player.x - 0.5, y: player.y - 0.5}, Color: "#88ff88", Time: 2, Delay: 0});
+	
+				if (!r)
+					KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal"), "#88ff88", 1);
+			}, undefined, spell, Lock);
+			KinkyDungeonSendEvent("boundBySpell", {player: KinkyDungeonPlayerEntity, restraintsAdded: rests});
+			return rests;
+		}
+		else return restraintsToAdd;
 	}
 	return [];
 }
