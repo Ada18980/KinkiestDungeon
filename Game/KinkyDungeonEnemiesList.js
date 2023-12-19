@@ -743,7 +743,7 @@ let KinkyDungeonEnemies = [
 			unlimitedRestraints: true,
 		},
 		stealth: 1.5,
-		visionRadius: 8, blindSight: 8, evasion: 0.2, maxhp: 16, minLevel:4, weight:0.3, movePoints: 2, attackPoints: 2, attack: "MeleeBindWill", attackWidth: 3, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2,
+		visionRadius: 8, blindSight: 8, evasion: 0.2, maxhp: 16, minLevel:4, weight:0.3, movePoints: 2, attackPoints: 2, attack: "MeleeBindWillStamina", attackWidth: 3, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 1, color: "#ffffff"},
 		],

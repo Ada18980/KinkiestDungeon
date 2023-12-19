@@ -950,6 +950,8 @@ interface enemy extends KDHasTags {
 	buffallies?: boolean,
 	/** Special attack property*/
 	stunTime?: number,
+	/** Stamina damage per hit */
+	staminaDamage?: number,
 	/** Special attack property. Cooldown of the special attack.*/
 	specialCD?: number,
 	/** Special attack property. Added to the special attack in addition to the enemy's default attack*/

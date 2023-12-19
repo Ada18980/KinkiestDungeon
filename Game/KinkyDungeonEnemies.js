@@ -23,6 +23,7 @@ let KDDefaultEnemyAlertSound = 5;
 let KDEventableAttackTypes = [
 	"Lock",
 	"Will",
+	"Stamina",
 	"Bind",
 	"Effect",
 	"Stun",
@@ -4325,6 +4326,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					let restraintAdd = [];
 					let restraintFromInventory = [];
 					let willpowerDamage = 0;
+					let staminaDamage = 0;
 					let msgColor = "#ffff00";
 					let Locked = false;
 					let Effected = false;
@@ -4692,6 +4694,16 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							enemy.specialCD = enemy.Enemy.specialCD;
 						}
 					}
+					if (AIData.attack.includes("Stamina") || staminaDamage > 0) {
+						if (staminaDamage == 0)
+							staminaDamage += AIData.power;
+						let buffdmg = KinkyDungeonGetBuffedStat(enemy.buffs, "StaminaDmg");
+						if (buffdmg) staminaDamage = Math.max(0, staminaDamage + buffdmg + enemy.Enemy.staminaDamage);
+						msgColor = "#ff5555";
+						if (enemy.usingSpecial && staminaDamage > 0 && enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialAttack.includes("Stamina")) {
+							enemy.specialCD = enemy.Enemy.specialCD;
+						}
+					}
 					if (player.player) {
 						KinkyDungeonTickBuffTag(enemy, "hit", 1);
 						if (restraintAdd && restraintAdd.length > 0) {
@@ -4759,6 +4771,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							enemy: enemy,
 							bound: bound,
 							damage: willpowerDamage,
+							staminaDamage: staminaDamage,
 							damagetype: AIData.damage,
 							restraintsAdded: restraintAdd,
 							attacker: enemy,
@@ -4770,6 +4783,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						KDDelayedActionPrune(["Hit"]);
 						let dmg = KinkyDungeonDealDamage({damage: data.damage, type: data.damagetype});
 						data.happened += dmg.happened;
+						if (staminaDamage) {
+							KinkyDungeonChangeStamina(-staminaDamage, false, true, false, KDGetStamDamageThresh());
+							data.happened += staminaDamage;
+						}
 						if (!enemy.playWithPlayer)
 							KinkyDungeonSetFlag("NPCCombat",  3);
 						happened = data.happened;

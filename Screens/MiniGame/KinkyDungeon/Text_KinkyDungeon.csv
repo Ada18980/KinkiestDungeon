@@ -18342,7 +18342,7 @@ AttackGagGeistBind,"The gag geist gags the girl with a ghastly grimace! (+Restra
 
 NamePoltergeist,Poltergeist 
 KillPoltergeist,"The poltergeist goes silent."
-AttackPoltergeist,"The poltergeist gropes and teases you playfully!! (DamageTaken)"
+AttackPoltergeist,"The poltergeist gropes and teases you playfully, exhausting your stamina! (DamageTaken)"
 AttackPoltergeistBind,"The poltergeist binds you with... something? (+RestraintAdded)"
 
 RestraintInvisibleGag,Invisible Gag
