@@ -2538,7 +2538,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 					shrineTypes.push("Orb");
 				} else if (type) {
 					KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Type: "Shrine", Name: type, drunk: stype.drunk});
-					if (allowQuests && KDRandom() < 0.3 && quests < KDMAXGODDESSQUESTS) {
+					if (allowQuests && (KDRandom() < 0.4 || list.length < 6) && quests < KDMAXGODDESSQUESTS) {
 						let quest = KDGetShrineQuest(KDMapData, KinkyDungeonTilesGet("" + shrine.x + "," +shrine.y));
 						if (quest) {
 							KDSetShrineQuest(KDMapData, KinkyDungeonTilesGet("" + shrine.x + "," +shrine.y),

@@ -326,9 +326,9 @@ const KinkyDungeonStrictnessTable = new Map([
 
 /** Enforces a sort of progression of restraining loosely based on strictness, useful for progressive stuff like applying curses to zones */
 let KDRestraintGroupProgressiveOrderStrict = [
-	"ItemPelvis", // Chastity for good girls!
-	"ItemBreast", // Goes well with belts
 	"ItemTorso", // Usually just makes other restraints harder
+	"ItemBreast", // Goes well with belts
+	"ItemPelvis", // Chastity is for good girls!
 	"ItemBoots", // Typically doesnt hobble completely
 	"ItemEars", //  Sensory
 	"ItemHead", // Blind, but does not stop from wielding anything
@@ -341,16 +341,16 @@ let KDRestraintGroupProgressiveOrderStrict = [
 
 /** A funner restraining order, starting with non-impactful then locking down spells and finally sealing in helplessness */
 let KDRestraintGroupProgressiveOrderFun = [
-	"ItemPelvis", // Chastity for good girls!
-	"ItemBreast", // Goes well with belts
 	"ItemTorso", // Usually just makes other restraints harder
-	"ItemBoots", // Typically doesnt hobble completely
+	"ItemPelvis", // Chastity is for good girls!
 	"ItemMouth", // Blocks spells and potions
 	"ItemHands", // Blocks weapons but no spells
-	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
+	"ItemBoots", // Typically doesnt hobble completely
 	"ItemArms", // Blocks spells and escaping
-	"ItemFeet", // Makes you very slow
+	"ItemBreast", // Goes well with belts
+	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
 	"ItemHead", // Blind, but does not stop from wielding anything
+	"ItemFeet", // Makes you very slow
 	"ItemEars", //  Sensory
 ];
 
@@ -4355,11 +4355,18 @@ function KDGetItemGoddessBonus(item, data) {
  * Gets a restraint from a list of eligible restraints and a group prioritization order
  * @param {{restraint: restraint, weight: number}[]} RestraintList
  * @param {string[]} GroupOrder
+ * @param {boolean} [skip]
  * @returns {restraint}
  */
-function KDChooseRestraintFromListGroupPri(RestraintList, GroupOrder) {
+function KDChooseRestraintFromListGroupPri(RestraintList, GroupOrder, skip = true) {
+
+	let cycled = false;
 	for (let i = 0; i < GroupOrder.length; i++) {
 		let group = GroupOrder[i];
+		if (skip && (!cycled ||
+			(KinkyDungeonGetRestraintItem(group)
+				&& !KDRestraint(KinkyDungeonGetRestraintItem(group))?.armor
+				&& !KDRestraint(KinkyDungeonGetRestraintItem(group))?.good))) continue;
 		let Restraints = RestraintList.filter((rest) => {
 			return rest.restraint.Group == group;
 		});
@@ -4385,6 +4392,10 @@ function KDChooseRestraintFromListGroupPri(RestraintList, GroupOrder) {
 				}
 			}
 		}
+		if (i == GroupOrder.length - 1 && !cycled) {
+			i = 0;
+			cycled = true;
+		}
 	}
 	return null;
 }
@@ -4394,11 +4405,17 @@ function KDChooseRestraintFromListGroupPri(RestraintList, GroupOrder) {
  * Gets a restraint from a list of eligible restraints and a group prioritization order
  * @param {{restraint: restraint, variant?: ApplyVariant, weight: number}[]} RestraintList
  * @param {string[]} GroupOrder
+ * @param {boolean} [skip]
  * @returns {{r: restraint, v: ApplyVariant}}
  */
-function KDChooseRestraintFromListGroupPriWithVariants(RestraintList, GroupOrder) {
+function KDChooseRestraintFromListGroupPriWithVariants(RestraintList, GroupOrder, skip = true) {
+	let cycled = false;
 	for (let i = 0; i < GroupOrder.length; i++) {
 		let group = GroupOrder[i];
+		if (skip && (!cycled && i < GroupOrder.length - 1 &&
+			(KinkyDungeonGetRestraintItem(group)
+				&& !KDRestraint(KinkyDungeonGetRestraintItem(group))?.armor
+				&& !KDRestraint(KinkyDungeonGetRestraintItem(group))?.good))) continue;
 		let Restraints = RestraintList.filter((rest) => {
 			return rest.restraint.Group == group;
 		});
@@ -4423,6 +4440,11 @@ function KDChooseRestraintFromListGroupPriWithVariants(RestraintList, GroupOrder
 					return {r: restraintWeights[L].restraint, v: restraintWeights[L].variant};
 				}
 			}
+		}
+		
+		if (i == GroupOrder.length - 1 && !cycled) {
+			i = 0;
+			cycled = true;
 		}
 	}
 	return null;

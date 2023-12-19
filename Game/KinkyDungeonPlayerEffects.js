@@ -79,7 +79,7 @@ let KDPlayerEffects = {
 			let curse = KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 100));
 			let restraint = KDChooseRestraintFromListGroupPri(
 				KDGetRestraintsEligible({tags: ['leatherRestraints', 'leatherRestraintsHeavy', "obsidianRestraints", "shadowlatexRestraints"]}, 10, 'grv', true, undefined, undefined, undefined, false, undefined, undefined, undefined, undefined, curse),
-				KDRestraintGroupProgressiveOrderFun)?.name;
+				KDRestraintGroupProgressiveOrderFun, true)?.name;
 
 			if (restraint && KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(restraint), 0, true, "", true, false, undefined, "Observer", true, curse)) {
 				applied = restraint || applied;
@@ -1608,6 +1608,7 @@ let KDPlayerEffects = {
  * @param {string} [Lock]
  * @param {object} [options]
  * @param {boolean} [options.Progressive]
+ * @param {boolean} [options.ProgressiveSkip] - Will skip over stuff already equipped
  * @param {boolean} [options.DontPreferWill]
  * @param {boolean} [options.RequireWill]
  * @returns {{r:restraint, v: ApplyVariant}[]}
@@ -1624,7 +1625,7 @@ function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass, all
 				KDGetRestraintsEligible({tags: tags}, MiniGameKinkyDungeonLevel + (spell?.power || 0), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], bypass, Lock, !options?.DontPreferWill, undefined, false, undefined, undefined, undefined, undefined, undefined, undefined, undefined, true, undefined, {
 					ApplyVariants: true,
 				}),
-				KDRestraintGroupProgressiveOrderFun)
+				KDRestraintGroupProgressiveOrderFun, options.ProgressiveSkip)
 		) : (
 			KDGetRestraintWithVariants({tags: tags}, MiniGameKinkyDungeonLevel + (spell?.power || 0), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], bypass, Lock, !options?.DontPreferWill)
 		)
@@ -1635,7 +1636,7 @@ function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass, all
 					KDGetRestraintsEligible({tags: tags}, MiniGameKinkyDungeonLevel + (spell?.power || 0), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], bypass, Lock, false, undefined, false, undefined, undefined, undefined, undefined, undefined, undefined, undefined, true, undefined, {
 						ApplyVariants: true,
 					}),
-					KDRestraintGroupProgressiveOrderFun)
+					KDRestraintGroupProgressiveOrderFun, options.ProgressiveSkip)
 			) : (
 				KDGetRestraintWithVariants({tags: tags}, MiniGameKinkyDungeonLevel + (spell?.power || 0), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], bypass, Lock, false)
 			)

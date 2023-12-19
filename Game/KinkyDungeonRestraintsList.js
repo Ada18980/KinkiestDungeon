@@ -5264,6 +5264,70 @@ let KDLocks = {
 		loot_special: true,
 		loot_locked: false,
 	},
+	"Divine": {
+		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return false;
+		},
+		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return 0;
+		},
+
+		consume_key: false,
+		lockmult: 5,
+		penalty: {
+			"Struggle": 50,
+			"Cut": 50,
+		},
+
+		// Picking
+		pickable: false, // rather than calling the function (which could vary) this is for classifying the lock
+		pick_speed: 0.0, // Multiplies the picking rate
+		pick_diff: 0.0, // Added to the item's pick difficulty
+
+		canPick: (data) => {
+			return false;
+		},
+		doPick: (data) => {
+			return false;
+		},
+		failPick: (data) => {
+			return "Break";
+		},
+		breakChance: (data) => {
+			return true;
+		},
+
+		// Key
+		unlockable: false, // rather than calling the function (which could vary) this is for classifying the lock
+		key: "Blue",
+		canUnlock: (data) => {
+			return false;
+		},
+		doUnlock: (data) => {
+			return true;
+		},
+		removeKeys: (data) => {
+			//
+		},
+		failUnlock: (data) => {
+			return "Fail";
+		},
+
+		// Start of level -- for gold locks and others
+		levelStart: (item) => {
+			KinkyDungeonSendTextMessage(8, TextGet("KDDivineLockReminder"), "#ffff44", 2, false, true);
+		},
+		shrineImmune: true,
+
+		// Command word
+		commandlevel: 0, // rather than calling the function (which could vary) this is for classifying the lock
+		command_lesser: () => {return 0.0 ;},
+		command_greater: () => {return 0.0;},
+		command_supreme: () => {return 0.0;},
+
+		loot_special: true,
+		loot_locked: false,
+	},
 	"Purple": {
 		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
 			return true;
