@@ -114,7 +114,7 @@ let KinkyDungeonLearnableSpells = [
 			"ArcaneBlast", "AkashicConflux", "ArcaneBarrier",
 
 
-			"ChaoticOverflow",
+			"ChaoticOverflow", "DistractionBurst", "DistractionShield",
 		],
 		[
 			"Gunslinger", "BattleTrance",
@@ -128,7 +128,7 @@ let KinkyDungeonLearnableSpells = [
 			"BattleCrit", "BattleCost",
 			"RogueTraps", "RogueTraps2", "RogueStudy",
 			"ManaHarvesting",
-			"OrgasmBuff",
+			"OrgasmBuff", "MagicalOverload",
 		],
 	],
 	//Page 4: Upgrades
@@ -140,7 +140,7 @@ let KinkyDungeonLearnableSpells = [
 		// Intellect
 		["SummonUp1", "SummonUp2", "StaffUser1", "StaffUser2", "StaffUser3"],
 		// Misc
-		["CriticalStrike", "MagicalOverload", "OrgasmFrequency", "OrgasmFrequency2", "OrgasmResist"],
+		["CriticalStrike", "OrgasmFrequency", "OrgasmFrequency2", "OrgasmResist"],
 	],
 	//Page 1: Elements
 	[
@@ -335,7 +335,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			//{trigger: "calcDisplayDamage", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
 			{trigger: "calcCrit", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
 		]},
-		{name: "MagicalOverload", tags: ["damage", "offense", "buff"], school: "Any", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+		{name: "MagicalOverload", tags: ["damage", "offense", "buff"], school: "Special", classSpecific: "Trainee", prerequisite: "DistractionCast", hideWithout: "DistractionCast", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{trigger: "calcCrit", type: "MagicalOverload", prereq: "damageType", kind: "magic", power: 0.25},
 		]},
 		{name: "CriticalStrikeMagic", tags: ["damage", "offense", "buff"], school: "Any", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
@@ -624,6 +624,17 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				{type: "ChaoticOverflow", trigger: "toggleSpell", time: 10, mult: 0.25},
 			]},
 
+
+		{name: "DistractionShield", tags: ["will", "defense"], prerequisite: "DistractionCast", hideWithout: "DistractionCast", school: "Special", manacost: 2.5, components: [], defaultOff: true, time: 10, level:1, type:"passive", onhit:"", delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "DistractionShield", trigger: "toggleSpell", power: 0.5, mult: 0.1, time: 10}, // power: shield per DP, mult: percentage gained as Desire
+			]},
+			
+		{name: "DistractionBurst", tags: ["will", "offense"], prerequisite: "MagicalOverload", hideWithout: "DistractionCast", school: "Special", manacost: 7, components: [], defaultOff: true, time: 10, level:1, type:"passive", onhit:"", delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "DistractionBurst", trigger: "toggleSpell", mult: 0.25, power: 3, aoe: 2.99, crit: 2, damage: "charm"},
+			]},
+			
 		{name: "ManaRecharge", tags: ["will", "mana", "utility"], prerequisite: "ManaRegen", classSpecific: "Mage", hideWithout: "ManaRegen", school: "Special", manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
 				{type: "ManaRecharge", trigger: "toggleSpell", power: 8.0, mult: 0.1, damage: "soul", count: 3},
@@ -1535,6 +1546,7 @@ let KinkyDungeonSpellListEnemies = [
 	},
 	{name: "Summon", faction: "Enemy", school: "Any", manacost: 0, components: [], level:1, type:"hit", onhit:"instant", time:0, power: 0, delay: 0, range: 4, size: 1, lifetime: 1, damage: "inert"},
 	{name: "BladeDanceBullet", bulletSpin: 0.5, school: "Any", manacost: 0, components: [], level:1, type:"hit", onhit:"instant", time:0, power: 0, delay: 0, range: 4, size: 3, lifetime: 1, damage: "inert"},
+	{name: "DistractionBurstBullet", bulletSpin: 0.5, school: "Any", manacost: 0, components: [], level:1, type:"hit", onhit:"instant", time:0, power: 0, delay: 0, range: 4, size: 1, lifetime: 1, damage: "inert"},
 
 	/** End particle effects */
 

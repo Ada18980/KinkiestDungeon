@@ -59,6 +59,7 @@ let KinkyDungeonVulnerableDamageTypes = ["tickle", "acid", "magicbind"];
 let KinkyDungeonMeltDamageTypes = ["fire", "holy"];
 let KinkyDungeonShatterDamageTypes = ["crush", "stun"];
 let KinkyDungeonIgnoreShieldTypes = ["soul", "holy"];
+let KinkyDungeonIgnoreBlockTypes = ["soul", "charm", "gas"];
 
 let KDDamageEquivalencies = {
 	"frost": "ice",
@@ -838,7 +839,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 
 			if (Spell && Spell.hitsfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + Spell.hitsfx + ".ogg");
 			else if (!(Spell && Spell.hitsfx) && predata.dmgDealt > 0 && bullet) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/DealDamage.ogg");
-			if (!predata.blocked && predata.dmgDealt >= 1 && !predata.noblock && Enemy.blocks > 0 && KDCanBlock(Enemy)) {
+			if (!predata.blocked && !KinkyDungeonIgnoreBlockTypes.includes(predata.type) && predata.dmgDealt >= 1 && !predata.noblock && Enemy.blocks > 0 && KDCanBlock(Enemy)) {
 				let blockCount = 1;
 				Enemy.blocks -= 1;
 				Enemy.blockedordodged = (Enemy.blockedordodged || 0) + 1;

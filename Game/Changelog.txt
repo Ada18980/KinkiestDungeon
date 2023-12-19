@@ -18,6 +18,9 @@ Vague todo:
 TODO add sugar magic ('Blood Energy Magic')
 
 5.0.3
+
+-Magical Overload is now trainee exclusive
+-New spells: Shield of (un)Clarity, Desire Burst
 -Outfits, binding dresses, and petsuits now affect stealth slightly for the matching faction
 -Security level now affected by faction rep
 -Security now decays by 5 per floor instead of 1

@@ -18376,3 +18376,26 @@ KDRemoveSacrificeMagePartial,The cursed item drains all of the caster's mana. It
 RestraintWolfPetsuit,Punishment Suit
 RestraintWolfPetsuitDesc,"A tool used by Nevermere on the most difficult and recalcitrant wolfgirls."
 RestraintWolfPetsuitDesc2,"Designed to contain superhuman strength, struggling out of this would be a major feat."
+
+KinkyDungeonSpellDistractionShield,Shield of (un)Clarity
+KinkyDungeonSpellDescriptionDistractionShield,"Channel your clarity of mind into a powerful shield, filling your distraction bar completely and granting a temporary shield equal to 50% of the DP generated. 10% of the DP gained is gained as Desire, which prevents DP decaying below a certain point."
+KDDistractionShield_Yes,"You form a... distracting mental barrier, shielding yourself for AMNT damage!!!"
+KDDistractionShield_No,"You are too distracted to form a mental barrier..."
+KDDistractionShield_NoMana,"You have the mental clarity but not the magical clarity! (not enough mana)"
+
+KinkyDungeonBuffDistractionShield,"You have formed a mental barrier..."
+
+
+KinkyDungeonSpellDistractionBurst,Desire Burst
+KinkyDungeonSpellDescriptionDistractionBurst,"Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have 50% Desire, the damage is reduced based on the amount. (Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)"
+KDDistractionBurst_Yes,"You channel your distraction into a powerful explosion!"
+KDDistractionBurst_No,"You don't have enough of a desire to do that."
+KDDistractionBurst_NoMana,"You have the desire but not the mana!"
+
+
+
+
+KinkyDungeonSpellHarvest,Harvest
+KinkyDungeonSpellDescriptionHarvest,"Requires a slashing weapon equipped. Activate to harvest all adjacent vine tiles, with a 25% chance per tile to obtain a seed.|Seeds can be planted to form gardens, which will grow in 100 turns to become vegetables, which can be eaten to restore WP or sold to the shopkeeper."
+KDHarvest_Yes,"You twirl your weapon, harvesting AMNT seeds!"
+KDHarvest_No,"There is nothing to harvest."

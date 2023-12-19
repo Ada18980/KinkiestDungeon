@@ -4287,6 +4287,169 @@ let KDEventMapSpell = {
 				}
 			}
 		},
+
+		"BladeDance": (e, b, data) => {
+			// Deals damage to nearby enemies
+			if (!e.prereq || KDCheckPrereq(null, e.prereq, e, data)) {
+				let player = KinkyDungeonPlayerEntity;
+				if (player && KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.unarmed) {
+					let spell = KinkyDungeonFindSpell("BladeDanceBullet", true);
+					if (spell) {
+						KinkyDungeonCastSpell(player.x, player.y, spell, undefined, undefined, undefined);
+					}
+
+					let enemies = KDNearbyEnemies(player.x, player.y, e.dist);
+
+					while (enemies.length > 0) {
+						let en = enemies[Math.floor(KDRandom() * enemies.length)];
+						if (KDHostile(en) && KinkyDungeonAggressive(en) && !KDHelpless(en) && en.hp > 0) {
+							let damage = (KinkyDungeonPlayerDamage?.dmg || 1) * e.power;
+							KinkyDungeonDamageEnemy(en, {
+								type: KinkyDungeonPlayerDamage?.type || "slash",
+								damage: damage,
+								time: e.time,
+								bind: e.bind,
+								bindType: KinkyDungeonPlayerDamage?.bindType,
+								crit: KinkyDungeonPlayerDamage?.crit || KDDefaultCrit,
+								bindcrit: KinkyDungeonPlayerDamage?.bindcrit || KDDefaultBindCrit,
+							}, false, true, undefined, undefined, player);
+							if (KDGameData.Offhand && KinkyDungeonInventoryGet(KDGameData.Offhand) && KDCanOffhand(KinkyDungeonInventoryGet(KDGameData.Offhand))) {
+								let weapon = KDWeapon(KinkyDungeonInventoryGet(KDGameData.Offhand));
+								if (weapon?.light) {
+									damage = (weapon?.dmg || 1) * e.mult;
+									KinkyDungeonDamageEnemy(en, {
+										type: weapon?.type || "slash",
+										damage: damage,
+										time: e.time,
+										bind: e.bind,
+										bindType: weapon?.bindType,
+										crit: weapon?.crit || KDDefaultCrit,
+										bindcrit: weapon?.bindcrit || KDDefaultBindCrit,
+									}, false, true, undefined, undefined, player);
+								}
+							}
+						}
+						enemies.splice(enemies.indexOf(en), 1);
+					}
+				}
+			}
+		},
+
+		"DistractionBurst": (e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+
+				let player = KinkyDungeonPlayerEntity;
+				if (KinkyDungeonStatDistractionLower >= e.power*0.1) {
+					let cost = KinkyDungeonGetManaCost(spell, false, true);
+					if (KinkyDungeonHasMana(cost)) {
+						let frac = 0.3;
+						let amount = Math.min(KinkyDungeonStatDistractionLower, KinkyDungeonStatDistractionMax*frac);
+						let desire = Math.max(0.01, -KinkyDungeonChangeDesire(-amount, false));
+						if (desire > 0) {
+							let nearby = KDNearbyEnemies(player.x, player.y, e.aoe);
+							for (let enemy of nearby) {
+								if (enemy.hp > 0 && KDHostile(enemy) && !KDHelpless(data.enemy)) {
+									KinkyDungeonDamageEnemy(enemy, {
+										type: e.damage,
+										damage: e.power + e.mult * desire/(frac),
+										time: e.time,
+										crit: e.crit,
+									}, true, false, spell, undefined, player);
+
+									let sp = KinkyDungeonFindSpell("DistractionBurstBullet", true);
+									if (sp) {
+										KinkyDungeonCastSpell(enemy.x, enemy.y, sp, undefined, undefined, undefined);
+									}
+
+								}
+							}
+						}
+						if (!KDEventData.shockwaves) KDEventData.shockwaves = [];
+						KDEventData.shockwaves.push({
+							x: player.x,
+							y: player.y,
+							radius: 3,
+							sprite: "Particles/ShockwaveDesire.png",
+						});
+
+						if (cost > 0)
+							KinkyDungeonChangeMana(-cost, false, 0, false, true);
+						KDTriggerSpell(spell, data, false, false);
+						KinkyDungeonSendActionMessage(10, TextGet("KDDistractionBurst_Yes"), "#ff44ff", 2);
+						KinkyDungeonAdvanceTime(1);
+
+					} else {
+						KinkyDungeonSendTextMessage(10, TextGet("KDDistractionBurst_NoMana"), "#ff8888", 2, true);
+					}
+				} else {
+					KinkyDungeonSendTextMessage(10, TextGet("KDDistractionBurst_No"), "#ff8888", 2, true);
+				}
+
+			}
+		},
+
+		"DistractionShield": (e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+
+				let player = KinkyDungeonPlayerEntity;
+				if (KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax) {
+					let cost = KinkyDungeonGetManaCost(spell, false, true);
+					if (KinkyDungeonHasMana(cost)) {
+						let amount = KinkyDungeonChangeDistraction(Math.max(KinkyDungeonStatDistractionMax - KinkyDungeonStatDistraction, 0), false, e.mult);
+
+						if (amount > 0) {
+							let apply = true;
+							if (KinkyDungeonPlayerBuffs.DistractionShield) {
+								if (KinkyDungeonPlayerBuffs.DistractionShield.power < amount*e.power)
+									KinkyDungeonExpireBuff(KinkyDungeonPlayerEntity, "DistractionShield");
+								else {
+									apply = false;
+									KinkyDungeonPlayerBuffs.DistractionShield.duration = e.time;
+								}
+							}
+							if (apply) {
+								KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+									id: "DistractionShield",
+									type: "Shield",
+									aura: "#ff44ff",
+									buffSprite: true,
+									aurasprite: "DistractionShield",
+									power: amount * e.power,
+									duration: e.time,
+								});
+							}
+		
+							KDUpdatePlayerShield();
+
+							if (!KDEventData.shockwaves) KDEventData.shockwaves = [];
+							KDEventData.shockwaves.push({
+								x: player.x,
+								y: player.y,
+								radius: 2,
+								sprite: "Particles/ShockwaveShield.png",
+							});
+
+						}
+
+						
+						if (cost > 0)
+							KinkyDungeonChangeMana(-cost, false, 0, false, true);
+						KDTriggerSpell(spell, data, false, false);
+						KinkyDungeonSendActionMessage(10, TextGet("KDDistractionShield_Yes").replace("AMNT", "" + Math.round(10 * amount*e.power)), "#ff44ff", 2);
+						KinkyDungeonAdvanceTime(1);
+
+					} else {
+						KinkyDungeonSendTextMessage(10, TextGet("KDDistractionShield_NoMana"), "#ff8888", 2, true);
+					}
+				} else {
+					KinkyDungeonSendTextMessage(10, TextGet("KDDistractionShield_No"), "#ff8888", 2, true);
+				}
+
+			}
+		},
+
 		"ExclusiveTag": (e, spell, data) => {
 			if (spell && spell.name == data.spell?.name && KinkyDungeonSpellChoicesToggle[data.index] && !data.recursion?.includes(spell.name))
 				for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
