@@ -16,7 +16,12 @@ Fix graphical glitches
 Add nipple items
 Add new outfits
 
-
+5.0.4
+- Targeting reticule now changes depending on action (attack, move, interact, pass, etc)
+- Removed Floating Weapon; replaced with new Telekinesis spell category
+- New spells: Recover Object, Kinetic Slash, WIP (Sagitta, Grasp, Kinetic Lance, Psychokinesis)
+- Tweaked positioning of ropes for boxtie, strict Ropework
+- Fixed Inertia perk not allowing diagonal 90 degree turns
 
 5.0.3 (December 18)
 - Added explosive barrels to levels. Beat them down without igniting them to take their gunpowder.

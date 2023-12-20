@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.3.1"
+KDVersionStr,"5.0.4"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -719,6 +719,7 @@ KinkyDungeonBuffSlimeMimic,"We did it! We made outselves invisible--mmmmph!!!"
 KinkyDungeonBuffd_SlimeMimic,"You are not currently attempting to disguise yourself. Click to reenable."
 KinkyDungeonBuffDisenchantSelf,"Your restraints are disenchanted, treating them as nonmagical for purposes of cutting."
 KinkyDungeonBuffLeatherBurst,"You can launch another leather restraint instantly!"
+KinkyDungeonBuffSagittaAssault,"You can launch another Sagitta instantly!"
 
 KinkyDungeonBuffDistractionCast,Your motivation is powerful enough your spells cannot be stopped!
 
@@ -3487,7 +3488,7 @@ KinkyDungeonInventoryItemSlimeWalkersDesc2,"They will slow you down, but you can
 
 RestraintDusterGag,Duster Gag
 RestraintDusterGagDesc,"A special gag designed for maids to be useful even while tied up! It's self-locking too!"
-RestraintDusterGagDesc2,"Deals 0.5 tickle damage on attack and adds +30 distraction."
+RestraintDusterGagDesc2,"Deals 0.5 tickle damage on attack and adds +30 distraction. Bonus damage vs dirt and mold."
 KinkyDungeonInventoryItemDusterGag,Duster Gag
 KinkyDungeonInventoryItemDusterGagDesc,"A special gag designed for maids to be useful even while tied up! It's self-locking too!"
 KinkyDungeonInventoryItemDusterGagDesc2,"Deals 0.5 tickle damage on attack and adds +30 distraction."
@@ -5269,18 +5270,18 @@ KinkyDungeonSpellDescriptionShadowSlash,"Slice the area in front of you, dealing
 KinkyDungeonSpellCastShadowSlash,You create a tear in space with your finger!
 KinkyDungeonSpellTargetShadowSlash,Choose aim direction
 
-KinkyDungeonSpellLeap,Phase
+KinkyDungeonSpellLeap,Blink
 KinkyDungeonSpellDescriptionLeap,"Instantly teleport to an adjacent position and gain +50 evasion for 3 turns. Unlocks Blink and Warp when learned."
 KinkyDungeonSpellCastLeap,You teleport!
-KinkyDungeonSpellTargetLeap,Choose target location
-KinkyDungeonSpellLeap2,Blink
+KinkyDungeonSpellTargetLeap,Choose target location (1 tile range)
+KinkyDungeonSpellLeap2,Blink II
 KinkyDungeonSpellDescriptionLeap2,Instantly teleport up to 2 tiles away. Must have vision of the target point. Stuns an enemy if you teleport behind them.
 KinkyDungeonSpellCastLeap2,You teleport!
-KinkyDungeonSpellTargetLeap2,Choose target location
-KinkyDungeonSpellLeap3,Warp
+KinkyDungeonSpellTargetLeap2,Choose target location (2 tile range)
+KinkyDungeonSpellLeap3,Blink III
 KinkyDungeonSpellDescriptionLeap3,Instantly teleport up to 2 tiles away. Must have vision of the target point. 
 KinkyDungeonSpellCastLeap3,You teleport!
-KinkyDungeonSpellTargetLeap3,Choose target location
+KinkyDungeonSpellTargetLeap3,Choose target location (3 tile range)
 
 KinkyDungeonSpellIcebolt,Ice Shard
 KinkyDungeonSpellDescriptionIcebolt,A shard of ice that does DamageDealt damage and slows for Duration turns. Freezes if already slowed or drenched.
@@ -6382,6 +6383,7 @@ KinkyDungeonShock,"You feel a powerful sensation run through your body!"
 KinkyDungeonCoronaShock,"Beams of light wrap around your body and feel warm on your skin!"
 KinkyDungeonCrystalBind,"Crystals begin to form around your limbs!"
 KinkyDungeonSingleMChain,"A magic chain secures itself around your body!"
+KinkyDungeonSingleChain,"An animated chain secures itself around your body!"
 KinkyDungeonSingleMRope,"A magic rope secures itself around your body!"
 KinkyDungeonSingleMBelt,"A magic belt secures itself around your body!"
 KinkyDungeonSingleRope,"A rope wraps itself around your body!"
@@ -18436,9 +18438,39 @@ KinkyDungeonSpellCastFailObstacleRecoverObject,There's an obstacle in the way!
 KinkyDungeonSpellTargetRecoverObject,Select a tile with items
 
 
-KinkyDungeonSpellTelekineticSlash,Telekinetic Slash
-KinkyDungeonSpellDescriptionTelekineticSlash,"Swing an equipped weapon (not unarmed or hands free) in a line, slashing enemies in the way with 20 + 150% weapon damage."
+KinkyDungeonSpellTelekineticSlash,Kinetic Slash
+KinkyDungeonSpellDescriptionTelekineticSlash,"Swing an equipped weapon (not unarmed or hands free) in a line, slashing enemies in the way with 20 + 80% weapon damage. Counts as an attack."
 KinkyDungeonSpellCastTelekineticSlash,You swing!
 KinkyDungeonSpellTargetTelekineticSlash,Choose where to swing (must not be unarmed or hands free weapon)
 
-KDSubby,Can punish without penalty
+
+KinkyDungeonSpellKineticLance,Kinetic Lance
+KinkyDungeonSpellDescriptionKineticLance,"Propel your weapon at devastating speed, piercing enemies for 30+160% Weapon Damage and dropping it at the end of the trajectory. Counts as an attack."
+KinkyDungeonSpellCastKineticLance,You propel your weapon forward!
+KinkyDungeonSpellTargetKineticLance,Choose where to launch your weapon.
+
+
+KinkyDungeonSpellSagitta,Sagitta
+KinkyDungeonSpellDescriptionSagitta,"Fire a projectile. If this projectile hits an enemy, make one attack against an enemy for 10+40% weapon damage."
+KinkyDungeonSpellCastSagitta,You unleash a deadly projectile!
+KinkyDungeonSpellTargetSagitta,Choose aim direction.
+
+
+KinkyDungeonSpellSagittaAssault,Sagitta Assault
+KinkyDungeonSpellDescriptionSagittaAssault,"After casting Sagitta, you can recast it up to three more times without advancing time."
+
+KinkyDungeonSpellPsychokinesis,Psychokinesis
+KinkyDungeonSpellDescriptionPsychokinesis,"You can ignore components for telekinetic spells, however spells generate distraction when cast this way due to the mental strain. Unable to use at 100% DP."
+
+
+KinkyDungeonSpellGrasp,Grasp
+KinkyDungeonSpellDescriptionGrasp,"Cast on an enemy to snare them for 20 turns, or until you leave range/are incapacitated. Cast on a point to throw the grasped enemy in that direction, dealing 40 crush damage if they hit a wall or another enemy."
+KinkyDungeonSpellCastGrasp,You grab the ENMY using telekinesis and hold them in place!
+KinkyDungeonSpellCastThrowGrasp,You throw the ENMY!
+KinkyDungeonSpellTargetGrasp,Choose a target or a location (if a target is currently grasped)
+
+
+KinkyDungeonInventoryItemRock,Rock
+KinkyDungeonInventoryItemRockDesc,"Perfect for a lifestyle of love and peace."
+KinkyDungeonInventoryItemRockDesc2,"Deals crush damage. Stuns on critical. Ouch!"
+ItemPickupRock,"You pick up a particularly nice rock."

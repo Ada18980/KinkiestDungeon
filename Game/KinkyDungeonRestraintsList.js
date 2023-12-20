@@ -2731,6 +2731,8 @@ const KinkyDungeonRestraints = [
 		},
 		events: [
 			{trigger: "playerAttack", type: "ElementalEffect", power: 0.5, distract: 3.0, damage: "tickle", sfx: "Tickle"},
+			{trigger: "playerAttack", type: "DestroyDirt", power: 5, damage: "plush"},
+			{trigger: "playerAttack", type: "DestroyMold", power: 2, damage: "plush"},
 		],
 		value: 100,
 		Asset: "MuzzleGag", Color: "Default", Group: "ItemMouth", AssetGroup: "ItemMouth2", power: 8, weight: 0, DefaultLock: "Blue",
@@ -2871,6 +2873,7 @@ const KinkyDungeonRestraints = [
 			LatexUpper: {"gamma":1,"saturation":1,"contrast":0.8666666666666667,"brightness":2.0833333333333335,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
 		},
 		strictness: 0.2, LinkableBy: [...KDArmbinderLink], Color: ["#4e2a70"], Group: "ItemArms",
+		renderWhenLinked: [...KDArmbinderLink],
 		bindarms: true, bindhands: 1.0, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.3, "Cut": -0.05, "Remove": 0.1, "Pick": 0.2},
 		limitChance: {"Struggle": 0.2, "Cut": 0.1, "Remove": 0.85, "Unlock": 0.2},

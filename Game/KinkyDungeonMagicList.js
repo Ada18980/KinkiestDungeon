@@ -157,13 +157,13 @@ let KinkyDungeonLearnableSpells = [
 	//Page 2: Conjuration
 	[
 		// Verbal
-		["TelekineticSlash", "CommandWord", "CommandWordGreater", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "CommandVibrate", "CommandOrgasm", "ZoneOfExcitement", "Lockdown", "Chastity", "ZoneOfPurity", "Blink", "TransportationPortal", "BanishPortal", "Bomb", "RopeBoltLaunch", "RopeStrike", "Leap", "Leap2", "Leap3", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
+		["TelekineticSlash", "KineticLance", "CommandWord", "CommandWordGreater", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "CommandVibrate", "CommandOrgasm", "ZoneOfExcitement", "Lockdown", "Chastity", "ZoneOfPurity", "Blink", "TransportationPortal", "BanishPortal", "Bomb", "RopeBoltLaunch", "RopeStrike", "Leap", "Leap2", "Leap3", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
 		// Arms
 		["RecoverObject", "TickleCloud", "FeatherCloud", "Swap", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "DisplayStand", "SummonGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
 		// Legs
-		["Snare", "Wall", "Quickness", "Quickness2", "Quickness3", "Quickness4", "Quickness5", "SlimeSplash", "Slime", "SlimeEruption", "SlimeWall", "SlimeWallVert", "LatexWallVert", "SlimeWallHoriz", "LatexWallHoriz", "LatexWall", "SlimeToLatex", "LiquidMetal", "LiquidMetalBurst", "Ally", "NatureSpirit", "StormCrystal", "EarthMote", "Golem"],
+		["Sagitta", "Snare", "Wall", "Quickness", "Quickness2", "Quickness3", "Quickness4", "Quickness5", "SlimeSplash", "Slime", "SlimeEruption", "SlimeWall", "SlimeWallVert", "LatexWallVert", "SlimeWallHoriz", "LatexWallHoriz", "LatexWall", "SlimeToLatex", "LiquidMetal", "LiquidMetalBurst", "Ally", "NatureSpirit", "StormCrystal", "EarthMote", "Golem"],
 		// Passive
-		["Frustration", "LeatherBurst", "OneWithSlime", "SlimeWalk", "SlimeMimic", "Engulf"],
+		["Psychokinesis", "SagittaAssault", "Frustration", "LeatherBurst", "OneWithSlime", "SlimeWalk", "SlimeMimic", "Engulf"],
 	],
 
 	//Page 3: Illusion
@@ -1023,16 +1023,39 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			]
 		},
 
+		{name: "Psychokinesis", tags: ["telekinesis", "defense", "utility"], prerequisite: "FloatingWeapon", school: "Conjure",
+			spellPointCost: 2, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+				{type: "Psychokinesis", trigger: "calcComp", requiredTag: "telekinesis"},
+				{type: "Psychokinesis", trigger: "calcCompPartial", requiredTag: "telekinesis"},
+			
+		]},
 
 		
 		{name: "RecoverObject", prerequisite: "FloatingWeapon", tags: ["telekinesis", "utility"], sfx: "Teleport", school: "Conjure", manacost: 4.0, components: ["Arms"], level:1,
 			type:"special", special: "RecoverObject",
 			onhit:"", time:0, power: 1.0, range: 4.99, size: 1, damage: "glue"},
 
-		{name: "TelekineticSlash", castCondition: "FloatingWeapon", prerequisite: "FloatingWeapon", tags: ["telekinesis", "offense"], sfx: "Teleport", school: "Conjure", manacost: 5.0, components: ["Verbal"], level:1,
+		{name: "TelekineticSlash", castCondition: "FloatingWeapon", prerequisite: "FloatingWeapon", tags: ["telekinesis", "offense"], sfx: "FireSpell", school: "Conjure", manacost: 5.0, components: ["Verbal"], level:1,
 			type:"special", special: "TelekineticSlash", aoetype: "slash", aoe: 1,
 			onhit:"", time:0, power: 2, range: 2.5, size: 1, damage: "crush"},
 		
+		{name: "KineticLance", castCondition: "FloatingWeapon", prerequisite: "TelekineticSlash", tags: ["telekinesis", "offense"], sfx: "Lightning", school: "Conjure",
+			manacost: 6, components: ["Verbal"], level:1, type:"bolt", pierceEnemies: true, projectileTargeting:true, onhit:"", power: 0.0, delay: 0, time: 1, range: 6, speed: 7, size: 3, damage: "crush",
+			events: [
+				{trigger: "bulletHitEnemy", type: "KineticLance", mult: 1.6, power: 3.0},
+				{trigger: "bulletDestroy", type: "KineticLance"},
+			],
+		},
+		
+		{name: "Sagitta", castCondition: "FloatingWeapon", prerequisite: "TelekineticSlash", tags: ["telekinesis", "offense", "sagitta"], sfx: "Lightning", school: "Conjure",
+			meleeOrigin: true, noTargetPlayer: true, noEnemyCollision: true, CastInWalls: true, lifetime: 1,
+			manacost: 1.5, components: ["Legs"], level:1, type:"hit", projectileTargeting:true, onhit:"aoe", power: 0.0, delay: 0, time: 1, range: 4.99, speed: 5, size: 1, damage: "pierce",
+			spellcast: {spell: "SagittaBolt", target: "target", directional:true, randomDirectionFallback: true, alwaysRandomBuff: "SagittaAssault", aimAtTarget: true, noTargetMoveDir: true, offset: false},
+			
+		},
+		{name: "SagittaAssault", prerequisite: "Sagitta", tags: ["buff", "offense", "telekinesis"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: [], level:1, passive: true, type:"",
+			events: [{type: "SagittaAssault", trigger: "playerCast", power: 3}]},
+
 		{name: "CommandWordGreater", tags: ["command", "binding", "utility", "defense"], sfx: "Magic", school: "Conjure", manacost: 14, components: ["Verbal"], level:1, type:"special", special: "CommandWord", noMiscast: true,
 			prerequisite: "CommandWord",
 			onhit:"", time:100, power: 10, aoe: 0.5, range: 4.5, size: 1, damage: ""},
@@ -1376,6 +1399,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 		{name: "OneWithSlime", tags: ["slime", "latex", "utility"], prerequisite: "ApprenticeLatex", school: "Elements", spellPointCost: 3, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "OneWithSlime", trigger: "calcComp", requiredTag: "slime"},
+			{type: "OneWithSlime", trigger: "calcCompPartial", requiredTag: "slime"},
 		]},
 
 		{name: "SlimeMimic", tags: ["slime", "latex", "utility"], prerequisite: "ApprenticeLatex", school: "Elements", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
@@ -1586,6 +1610,14 @@ let KinkyDungeonSpellListEnemies = [
 		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: true, noblock: true, power: 0, bind: 4.0, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "chain",
 		events: [{type: "MakeVulnerable", trigger: "beforeDamageEnemy", time: 3,},],
 		playerEffect: {name: "Bind", damage: "chain", power: 2, tag: "leatherRestraints"},
+	},
+
+
+	{name: "SagittaBolt", castCondition: "FloatingWeapon", prerequisite: "TelekineticSlash", tags: ["telekinesis", "offense"], sfx: "Lightning", school: "Conjure",
+		manacost: 1.5, components: ["Legs"], level:1, type:"bolt", slowStart: true, projectileTargeting:true, onhit:"", power: 0.0, delay: 0, time: 1, range: 4.99, speed: 5, size: 1, damage: "pierce",
+		events: [
+			{trigger: "bulletHitEnemy", type: "Sagitta", mult: 0.4, power: 1},
+		],
 	},
 
 	{name: "GagBolt", tags: ["binding", "leather", "bolt", "offense"], minRange: 1.5, sfx: "MagicSlash", hitsfx: "LightSwing", school: "Conjure", manacost: 3, components: ["Arms"], level:1, type:"bolt",
@@ -1979,7 +2011,7 @@ let KinkyDungeonSpellListEnemies = [
 		spellcasthit: {spell: "WitchElectrify", target: "onhit", chance: 0.22, directional:false, offset: false}, channel: 2},
 
 	{enemySpell: true, name: "IceDragonBreath", color: "#00ffff", sfx: "Freeze", school: "Elements", manacost: 4, components: ["Arms"], level:1, type:"bolt", piercing: true, projectileTargeting:true, nonVolatile: true, onhit:"", time: 1, power: 4, delay: 0, range: 4, speed: 50, size: 1, damage: "inert",
-		trailPower: 4, trailLifetime: 1, trailLifetimeBonus: 4, trailTime: 3, trailspawnaoe: 1.5, trailDamage:"ice", trail:"lingering", trailChance: 0.3, trailPlayerEffect: {name: "Freeze", time: 3}},
+		trailPower: 4, trailLifetime: 1, trailLifetimeBonus: 4, trailTime: 3, trailspawnaoe: 1.5, trailDamage:"ice", trail:"lingering", trailChance: 0.3, trailPlayerEffect: {name: "Freeze", damage: "ice", time: 3}},
 	{enemySpell: true, name: "IceDragonBreathPrepare", color: "#00ffff", minRange: 0, sfx: "MagicSlash", school: "Illusion", manacost: 8, components: ["Arms"], projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 12, range: 5, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert",
 		spellcast: {spell: "IceDragonBreath", target: "target", directional:true, offset: false}, channel: 2},
 

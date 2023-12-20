@@ -162,9 +162,11 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 		}
 		return costt;
 	}
-	if (item.rarity != null) {
-		let rarity = item.rarity;
-		if (item.costMod) rarity += item.costMod;
+	let rarity = item.rarity || KDWeapon(item)?.rarity || KDConsumable(item)?.rarity || KDOutfit(item)?.rarity;
+	if (rarity) {
+		let costMod = item.costMod || KDWeapon(item)?.costMod || KDConsumable(item)?.costMod || KDOutfit(item)?.costMod;
+		
+		if (costMod) rarity += costMod;
 		if (KinkyDungeonConsumableVariants[item.name] || KinkyDungeonWeaponVariants[item.name]) {
 			let enchants = {};
 			for (let ev of KinkyDungeonConsumableVariants[item.name] ? KinkyDungeonConsumableVariants[item.name].events : KinkyDungeonWeaponVariants[item.name].events) {
@@ -241,6 +243,8 @@ function KDAddBasic(item) {
 		KinkyDungeonLockpicks += 4;
 	} else if (item.name == "MaidUniform") {
 		KinkyDungeonInventoryAddOutfit("Maid");
+	} if (item.outfit) {
+		KinkyDungeonInventoryAddOutfit(item.outfit);
 	} else if (item.consumable) {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables[item.consumable], item.quantity);
 	}

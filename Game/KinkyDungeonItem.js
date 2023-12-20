@@ -206,6 +206,10 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 			KinkyDungeonInventoryAddWeapon(Item.name);
 		}
 
+	} else if (KDOutfit(Item)) {
+		priority = 1;
+		color = "white";
+		KinkyDungeonInventoryAddOutfit(Item.name);
 	} else if (Item.name == "Heart") {
 		if (KinkyDungeonStatDistractionMax >= KDMaxStat && KinkyDungeonStatStaminaMax >= KDMaxStat && KinkyDungeonStatManaMax >= KDMaxStat && KinkyDungeonStatWillMax >= KDMaxStat) {
 			KinkyDungeonDrawState = "Game";

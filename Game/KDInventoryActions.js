@@ -133,7 +133,7 @@ let KDInventoryAction = {
 			}
 			// Use partial sum formula (maths)
 			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
-			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
+			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDInventoryActionSell").replace("VLU", value + "");
 		},
 		valid: (player, item) => {
@@ -150,7 +150,7 @@ let KDInventoryAction = {
 			// Use partial sum formula (maths)
 
 			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
-			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
+			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
 			if (!itemInv) return;
 			if (itemInv.type == Consumable)
@@ -187,7 +187,7 @@ let KDInventoryAction = {
 			// Use partial sum formula (maths)
 
 			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
-			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
+			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDInventoryActionSell").replace("VLU", value + "");
 		},
 		valid: (player, item) => {
@@ -204,7 +204,7 @@ let KDInventoryAction = {
 			// Use partial sum formula (maths)
 
 			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
-			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost((KDRestraint(item) ? item : undefined) || (KinkyDungeonFindConsumable(item.name) ? KinkyDungeonFindConsumable(item.name) : KinkyDungeonFindWeapon(item.name)), true, true));
+			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
 			if (!itemInv) return;
 			if (itemInv.type == Consumable)

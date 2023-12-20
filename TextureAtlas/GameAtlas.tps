@@ -449,6 +449,7 @@
             <key type="filename">../Game/Bullets/PoisonDaggerHit.png</key>
             <key type="filename">../Game/Bullets/PoisonDragonBlast.png</key>
             <key type="filename">../Game/Bullets/PoisonDragonBlastHit.png</key>
+            <key type="filename">../Game/Bullets/RecoverObjectHit.png</key>
             <key type="filename">../Game/Bullets/RedSlime.png</key>
             <key type="filename">../Game/Bullets/RedSlimeHit.png</key>
             <key type="filename">../Game/Bullets/RestrainingDevice.png</key>
@@ -470,6 +471,8 @@
             <key type="filename">../Game/Bullets/RubberNuke.png</key>
             <key type="filename">../Game/Bullets/RubberNukeHit.png</key>
             <key type="filename">../Game/Bullets/RubberSlimeHit.png</key>
+            <key type="filename">../Game/Bullets/SagittaBolt.png</key>
+            <key type="filename">../Game/Bullets/SagittaBoltHit.png</key>
             <key type="filename">../Game/Bullets/ShadowBolt.png</key>
             <key type="filename">../Game/Bullets/ShadowBoltHit.png</key>
             <key type="filename">../Game/Bullets/ShadowDance.png</key>
@@ -1916,11 +1919,13 @@
             <key type="filename">../Game/Items/Restraint/SteelPlugs.png</key>
             <key type="filename">../Game/Items/Restraint/Straitjackets.png</key>
             <key type="filename">../Game/Items/Restraint/StrongMagicRopes.png</key>
+            <key type="filename">../Game/Items/Restraint/SupremeBelt.png</key>
             <key type="filename">../Game/Items/Restraint/Ties.png</key>
             <key type="filename">../Game/Items/Restraint/Vibes.png</key>
             <key type="filename">../Game/Items/Restraint/WeakMagicRopes.png</key>
             <key type="filename">../Game/Items/Restraint/Yokes.png</key>
             <key type="filename">../Game/Items/Restraint/liquidMetal.png</key>
+            <key type="filename">../Game/Items/Rock.png</key>
             <key type="filename">../Game/Items/Rope.png</key>
             <key type="filename">../Game/Items/Scissors.png</key>
             <key type="filename">../Game/Items/Scroll.png</key>
@@ -1960,9 +1965,14 @@
             <key type="filename">../Game/Lock.png</key>
             <key type="filename">../Game/ShopBasic/3Bola.png</key>
             <key type="filename">../Game/ShopBasic/3Bomb.png</key>
+            <key type="filename">../Game/ShopBasic/3Flash.png</key>
+            <key type="filename">../Game/ShopBasic/3Smoke.png</key>
             <key type="filename">../Game/ShopBasic/BlueKey.png</key>
+            <key type="filename">../Game/ShopBasic/DivineBelt.png</key>
+            <key type="filename">../Game/ShopBasic/DivineBelt2.png</key>
             <key type="filename">../Game/ShopBasic/Lockpick.png</key>
             <key type="filename">../Game/ShopBasic/RedKey.png</key>
+            <key type="filename">../Game/ShopBasic/SlimeWalkers.png</key>
             <key type="filename">../Game/ShrineAura.png</key>
             <key type="filename">../Game/ShrineAuraQuest.png</key>
             <key type="filename">../Game/SpellRange.png</key>
@@ -2085,6 +2095,7 @@
             <key type="filename">../Game/Spells/Incinerate.png</key>
             <key type="filename">../Game/Spells/Invisibility.png</key>
             <key type="filename">../Game/Spells/IronBlood.png</key>
+            <key type="filename">../Game/Spells/KineticLance.png</key>
             <key type="filename">../Game/Spells/Knife.png</key>
             <key type="filename">../Game/Spells/LatexWall.png</key>
             <key type="filename">../Game/Spells/LatexWallHoriz.png</key>
@@ -2113,10 +2124,12 @@
             <key type="filename">../Game/Spells/Quickness5.png</key>
             <key type="filename">../Game/Spells/Rainstorm.png</key>
             <key type="filename">../Game/Spells/RaiseDefenses.png</key>
+            <key type="filename">../Game/Spells/RecoverObject.png</key>
             <key type="filename">../Game/Spells/Ring.png</key>
             <key type="filename">../Game/Spells/RingOfSlime.png</key>
             <key type="filename">../Game/Spells/RopeBoltLaunch.png</key>
             <key type="filename">../Game/Spells/RopeStrike.png</key>
+            <key type="filename">../Game/Spells/Sagitta.png</key>
             <key type="filename">../Game/Spells/ShadowBlade.png</key>
             <key type="filename">../Game/Spells/ShadowDance.png</key>
             <key type="filename">../Game/Spells/ShadowSlash.png</key>
@@ -2161,6 +2174,7 @@
             <key type="filename">../Game/Spells/SummonUp2.png</key>
             <key type="filename">../Game/Spells/SummonYoke.png</key>
             <key type="filename">../Game/Spells/Swap.png</key>
+            <key type="filename">../Game/Spells/TelekineticSlash.png</key>
             <key type="filename">../Game/Spells/Thunderstorm.png</key>
             <key type="filename">../Game/Spells/TickleCloud.png</key>
             <key type="filename">../Game/Spells/TidalBall.png</key>
@@ -2178,8 +2192,13 @@
             <key type="filename">../Game/Spells/ZoneOfPurity.png</key>
             <key type="filename">../Game/Sprint.png</key>
             <key type="filename">../Game/Target.png</key>
+            <key type="filename">../Game/TargetAction.png</key>
+            <key type="filename">../Game/TargetAttack.png</key>
             <key type="filename">../Game/TargetMove.png</key>
+            <key type="filename">../Game/TargetPass.png</key>
             <key type="filename">../Game/TargetSpell.png</key>
+            <key type="filename">../Game/TargetSub.png</key>
+            <key type="filename">../Game/TargetTalk.png</key>
             <key type="filename">../Game/UI/Cycle.png</key>
             <key type="filename">../Game/UI/ItemAura.png</key>
             <key type="filename">../Game/UI/ItemAuraBG.png</key>
@@ -2410,6 +2429,7 @@
             <key type="filename">../Game/Buffs/buff/buffPoisonDagger.png</key>
             <key type="filename">../Game/Buffs/buff/buffRaiseDefenses.png</key>
             <key type="filename">../Game/Buffs/buff/buffRogueEscape.png</key>
+            <key type="filename">../Game/Buffs/buff/buffSagittaAssault.png</key>
             <key type="filename">../Game/Buffs/buff/buffScrollArms.png</key>
             <key type="filename">../Game/Buffs/buff/buffScrollLegs.png</key>
             <key type="filename">../Game/Buffs/buff/buffScrollVerbal.png</key>
@@ -2616,6 +2636,7 @@
             <key type="filename">../Game/Bullets/IgnitionHit.png</key>
             <key type="filename">../Game/Bullets/Incinerate.png</key>
             <key type="filename">../Game/Bullets/IncinerateHit.png</key>
+            <key type="filename">../Game/Bullets/KineticLanceHit.png</key>
             <key type="filename">../Game/Bullets/LiquidMetalBurst.png</key>
             <key type="filename">../Game/Bullets/LiquidMetalBurstHit.png</key>
             <key type="filename">../Game/Bullets/LustBomb.png</key>
@@ -2660,6 +2681,7 @@
             <key type="filename">../Game/Bullets/RuneTrap_VacCubeHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Vine.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_VineHit.png</key>
+            <key type="filename">../Game/Bullets/SagittaHit.png</key>
             <key type="filename">../Game/Bullets/SarcoEngulf.png</key>
             <key type="filename">../Game/Bullets/SarcoEngulfHit.png</key>
             <key type="filename">../Game/Bullets/SarcoHex.png</key>
@@ -2809,6 +2831,21 @@
                 <rect>53,53,106,106</rect>
                 <key>scale9Paddings</key>
                 <rect>53,53,106,106</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/Bullets/KineticLance.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>54,54,108,109</rect>
+                <key>scale9Paddings</key>
+                <rect>54,54,108,109</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -3118,6 +3155,7 @@
                 <false/>
             </struct>
             <key type="filename">../Game/Items/Restraint/HighCollars.png</key>
+            <key type="filename">../Game/ShopBasic/PotionCollar.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -3241,6 +3279,7 @@
             <key type="filename">../Game/Particles/ShockwaveDesire.png</key>
             <key type="filename">../Game/Particles/ShockwaveEnemy.png</key>
             <key type="filename">../Game/Particles/ShockwaveShield.png</key>
+            <key type="filename">../Game/Particles/Slash.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>

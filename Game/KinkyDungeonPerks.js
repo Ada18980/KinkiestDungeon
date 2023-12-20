@@ -587,6 +587,8 @@ let KDPerkStart = {
 		KDAddQuest("MaidSweeper");
 		KDChangeFactionRelation("Player", "Maidforce", 0.2 - KDFactionRelation("Player", "Maidforce"), true);
 		KDCustomDefeatUniforms.MaidSweeper();
+		
+		KinkyDungeonInventoryAddLoose("DusterGag");
 	},
 	StartWolfgirl: () =>{
 		KDChangeFactionRelation("Player", "Nevermere", 0.2 - KDFactionRelation("Player", "Nevermere"), true);

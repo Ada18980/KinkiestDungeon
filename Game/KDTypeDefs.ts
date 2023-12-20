@@ -1225,11 +1225,15 @@ interface weapon {
 	shield_distract?: boolean, // Distract thru shield
 	shield_vuln?: boolean,
 	arousalMode?: boolean,
+	/** Modifies the cost by changing the rarity for cost purposes only */
+	costMod?: number,
 	name: string;
 	dmg: number;
 	chance: number;
 	type: string;
 	bind?: number;
+	/** For rendering on player portrait */
+	angle?: number,
 	crit?: number;
 	bindcrit?: number;
 	bindType?: string;

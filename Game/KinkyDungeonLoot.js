@@ -7,7 +7,7 @@ let KDTightRestraintsMult = 2;
 
 /**
  * @param {item[]} list
- * @param {boolean} excludeBound - bound weapons, i.e. magic knives and weapons
+ * @param {boolean} excludeBound - "bound weapons", i.e. magic knives and weapons in really old nomenclature back when there were like 4 weapons
  */
 function KinkyDungeonAddLostItems(list, excludeBound) {
 	for (let item of list) {
@@ -828,6 +828,11 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 						//`+${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, "white", 7);
 						remove = true;
 					} else if (lostitem.type == LooseRestraint && KDRestraint(lostitem)) {
+						//if (KinkyDungeonGetRestraintByName(lostitem.name).armor || KinkyDungeonRestraintVariants[lostitem.name] != undefined)
+						//KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
+						//`+ (loose) ${TextGet("Restraint" + lostitem.name)}`, "white", 5);
+						remove = true;
+					} else if (lostitem.type == Outfit && KDOutfit(lostitem)) {
 						//if (KinkyDungeonGetRestraintByName(lostitem.name).armor || KinkyDungeonRestraintVariants[lostitem.name] != undefined)
 						//KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
 						//`+ (loose) ${TextGet("Restraint" + lostitem.name)}`, "white", 5);

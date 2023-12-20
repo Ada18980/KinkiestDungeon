@@ -1751,6 +1751,39 @@ let KDEventMapInventory = {
 		},
 	},
 	"playerAttack": {
+		
+		"DestroyDirt": (e, item, data) => {
+			if (data.enemy && !data.miss && !data.disarm && data.enemy.Enemy?.tags?.dirt) {
+				if ((!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+					if (!e.prereq || KDCheckPrereq(data.enemy, e.prereq)) {
+						KinkyDungeonDamageEnemy(data.enemy, {
+							type: e.damage,
+							damage: e.power,
+							time: e.time,
+							bind: e.bind,
+							distract: e.distract,
+							bindType: e.bindType,
+						}, false, e.power <= 0.1, undefined, undefined, undefined, undefined, undefined, data.vulnConsumed);
+					}
+				}
+			}
+		},
+		"DestroyMold": (e, item, data) => {
+			if (data.enemy && !data.miss && !data.disarm && data.enemy.Enemy?.tags?.mold) {
+				if ((!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+					if (!e.prereq || KDCheckPrereq(data.enemy, e.prereq)) {
+						KinkyDungeonDamageEnemy(data.enemy, {
+							type: e.damage,
+							damage: e.power,
+							time: e.time,
+							bind: e.bind,
+							distract: e.distract,
+							bindType: e.bindType,
+						}, false, e.power <= 0.1, undefined, undefined, undefined, undefined, undefined, data.vulnConsumed);
+					}
+				}
+			}
+		},
 		"ElementalEffect": (e, item, data) => {
 			if (data.enemy && !data.miss && !data.disarm) {
 				if ((!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
@@ -3107,6 +3140,35 @@ let KDEventMapSpell = {
 				}
 			}
 		},
+		"Psychokinesis": (e, spell, data) => {
+			if (data.spell && data.spell.tags && data.failed.length > 0 && data.spell.tags.includes("telekinesis")) {
+				if (KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax - 0.01) {
+					data.failed = [];
+				}
+			}
+		},
+	},
+	"calcCompPartial": {
+		"OneWithSlime": (e, spell, data) => {
+			if (data.spell && data.spell.tags && (data.failed.length > 0 || data.partial.length > 0) && (data.spell.tags.includes("slime") || data.spell.tags.includes("latex"))) {
+				let tiles = KDGetEffectTiles(data.x, data.y);
+				for (let t of Object.values(tiles)) {
+					if (t.tags && (t.tags.includes("slime") || t.tags.includes("latex"))) {
+						data.failed = [];
+						data.partial = [];
+						return;
+					}
+				}
+			}
+		},
+		"Psychokinesis": (e, spell, data) => {
+			if (data.spell && data.spell.tags && (data.failed.length > 0 || data.partial.length > 0) && data.spell.tags.includes("telekinesis")) {
+				if (KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax - 0.01) {
+					data.failed = [];
+					data.partial = [];
+				}
+			}
+		},
 	},
 	"canSprint": {
 		"VaultBasic": (e, spell, data) => {
@@ -3303,6 +3365,13 @@ let KDEventMapSpell = {
 				});
 			}
 		},
+		"Psychokinesis": (e, spell, data) => {
+			if (data.spell && data.spell.tags && data.spell.tags.includes("telekinesis")) {
+				if (!KinkyDungeoCheckComponents(data.spell, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true)) {
+					KinkyDungeonChangeDistraction(data.manacost ? data.manacost : 1);
+				}
+			}
+		},
 	},
 	"afterSpellTrigger": {
 		"ManaRegenSuspend": (e, spell, data) => {
@@ -3454,6 +3523,20 @@ let KDEventMapSpell = {
 						data.delta = 0;
 				} else {
 					KinkyDungeonExpireBuff(KinkyDungeonPlayerEntity, "LeatherBurst");
+				}
+			}
+		},
+		"SagittaAssault": (e, spell, data) => {
+			if (data.spell && data.spell.tags && (data.spell.tags.includes("telekinesis") && data.spell.tags.includes("sagitta"))) {
+				let power = KDEntityBuffedStat(KinkyDungeonPlayerEntity, "SagittaAssault");
+				if (power < e.power) {
+					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+						id: "SagittaAssault", type: "SagittaAssault", aura: "#ffffff", power: power + 1, player: true, duration: 1.1, buffsprite: true,
+					});
+					if (power > 0)
+						data.delta = 0;
+				} else {
+					KinkyDungeonExpireBuff(KinkyDungeonPlayerEntity, "SagittaAssault");
 				}
 			}
 		},
@@ -3877,8 +3960,12 @@ let KDEventMapSpell = {
 	"calcDamage2": {
 		"FloatingWeapon": (e, spell, data) => {
 			if (!data.IsSpell && !data.forceUse) {
-				if (!KinkyDungeonCanUseWeapon(true, undefined, data.weapon)) {
+				if (!KinkyDungeonCanUseWeapon(true, undefined, data.weapon)
+					&& (!KDWeapon({name: data.weapon?.name})?.noHands || KDWeapon({name: data.weapon?.name}).telekinetic)
+					&& !KDWeapon({name: data.weapon?.name})?.unarmed) {
 					data.canUse = true;
+					data.flags.KDDamageHands = false;
+					data.flags.KDDamageArms = false;
 					data.accuracyMult = 0;
 				}
 			}
@@ -4245,12 +4332,14 @@ let KDEventMapSpell = {
 			}
 		},
 		"FloatingWeapon": (e, spell, data) => {
-			if (KinkyDungeonPlayerWeapon && !KinkyDungeonCanUseWeapon(true, undefined, KDWeapon({name: KinkyDungeonPlayerWeapon}))) {
+			if (KinkyDungeonPlayerWeapon && !KinkyDungeonCanUseWeapon(true, undefined, KDWeapon({name: KinkyDungeonPlayerWeapon}))
+				&& (!KDWeapon({name: KinkyDungeonPlayerWeapon})?.noHands || KDWeapon({name: KinkyDungeonPlayerWeapon}).telekinetic)
+				&& !KDWeapon({name: KinkyDungeonPlayerWeapon})?.unarmed) {
 				KDDraw(kdcanvas, kdpixisprites, "kdfloatingwep", KinkyDungeonRootDirectory + `Items/${KDWeapon({name: KinkyDungeonPlayerWeapon})?.name}.png`,
 					400, 300 + 50 * Math.sin(2 * Math.PI * (CommonTime() % 3000)/3000),//50,
 					//400 + 50 * Math.sin(2 * Math.PI * (CommonTime() % 3000)/3000),
-					200, 200, Math.PI/2, {
-						zIndex: 1,
+					200, 200, KDWeapon({name: KinkyDungeonPlayerWeapon})?.angle != undefined ? KDWeapon({name: KinkyDungeonPlayerWeapon}).angle : Math.PI/2, {
+						zIndex: -1,
 					}, true);
 			}
 		},
@@ -5071,6 +5160,18 @@ let KDEventMapWeapon = {
 			data.flags.isMagic = true;
 		},
 	},
+	"draw": {
+		"Float": (e, weapon, data) => {
+			if (KinkyDungeonCanUseWeapon(true, undefined, KDWeapon({name: KinkyDungeonPlayerWeapon}))) {
+				KDDraw(kdcanvas, kdpixisprites, "kdfloatingwep", KinkyDungeonRootDirectory + `Items/${KDWeapon({name: KinkyDungeonPlayerWeapon})?.name}.png`,
+					400, 300 + 50 * Math.sin(2 * Math.PI * (CommonTime() % 3000)/3000),//50,
+					//400 + 50 * Math.sin(2 * Math.PI * (CommonTime() % 3000)/3000),
+					200, 200, KDWeapon({name: KinkyDungeonPlayerWeapon})?.angle != undefined ? KDWeapon({name: KinkyDungeonPlayerWeapon}).angle : Math.PI/2, {
+						zIndex: -1,
+					}, true);
+			}
+		},
+	},
 	"dynamic": {
 		"BuffSelf": (e, weapon, data) => {
 			if (KDCheckPrereq(null, e.prereq, e, data))
@@ -5473,6 +5574,24 @@ let KDEventMapWeapon = {
 			if (data.enemy && !data.miss && !data.disarm) {
 				if (data.enemy && data.enemy.Enemy.bound && KDEnemyCanBeVibed(data.enemy) && (!e.chance || KDRandom() < e.chance)) {
 					KDApplyGenBuffs(data.enemy, "Vibrate1", 90);
+				}
+			}
+		},
+		
+		"ElementalEffectCrit": (e, weapon, data) => {
+			if (data.enemy && !data.miss && !data.disarm && data.predata?.vulnerable) {
+				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+					KinkyDungeonDamageEnemy(data.enemy, {
+						type: e.damage,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						distract: e.distract,
+						bindType: e.bindType,
+					}, false, e.power < 0.5, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
+					if (e.sfx) {
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+					}
 				}
 			}
 		},
@@ -5894,7 +6013,113 @@ let KDEventMapBullet = {
 			KinkyDungeonDropItem({name: "Knife"}, point, KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(point.x, point.y)), true, true);
 		},
 	},
+	"bulletDestroy": {
+		"KineticLance": (e, b, data) => {
+			if (!KinkyDungeonPlayerWeapon) return;
+			let point = {x: b.x, y: b.y};
+			if (!KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(point.x, point.y))) {
+				if (b.vx || b.vy) {
+					let speed = KDistEuclidean(b.vx, b.vy);
+					if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(Math.round(b.x - b.vx / speed), Math.round(b.y - b.vy / speed)))) {
+						point = {x: Math.round(b.x - b.vx / speed), y: Math.round(b.y - b.vy / speed)};
+					}
+					else if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(Math.floor(b.x - b.vx / speed), Math.floor(b.y - b.vy / speed)))) {
+						point = {x: Math.floor(b.x - b.vx / speed), y: Math.floor(b.y - b.vy / speed)};
+					}
+					else {
+						point = {x: Math.ceil(b.x - b.vx / speed), y: Math.ceil(b.y - b.vy / speed)};
+					}
+				}
+			}
+			KinkyDungeonDropItem({name: KinkyDungeonPlayerWeapon}, point, KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(point.x, point.y)), true, true);
+
+
+			//We dont drop the item if we are earth magic and it was a rock
+			//Yay hidden synergies
+			if (KinkyDungeonPlayerWeapon != "Rock" || !KDHasSpell("ApprenticeEarth")) {
+				let oldweapon = KinkyDungeonPlayerWeapon;
+				if (!KDGameData.PreviousWeapon || typeof KDGameData.PreviousWeapon === 'string') KDGameData.PreviousWeapon = [];
+				while (KDGameData.PreviousWeapon.length < KDMaxPreviousWeapon) {
+					KDGameData.PreviousWeapon.push("Unarmed");
+				}
+				KDGameData.PreviousWeapon[KDWeaponSwitchPref] = oldweapon;
+				KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet(KinkyDungeonPlayerWeapon));
+				KDSetWeapon("Unarmed");
+				KinkyDungeonGetPlayerWeaponDamage();
+			}
+			
+		},
+	},
 	"bulletHitEnemy": {
+		"KineticLance": (e, b, data) => {
+			if (b && data.enemy && !KDHelpless(data.enemy) && data.enemy.hp > 0 && KinkyDungeonPlayerDamage && !KDEnemyHasFlag(data.enemy, "KineticLanceHit")) {
+				KinkyDungeonSetEnemyFlag(data.enemy, "KineticLanceHit", 1);
+				let scaling = e.mult * (KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisScale")));
+				let dd = {
+					target: data.enemy,
+					attackCost: 0.0, // Important
+					skipTurn: false,
+					spellAttack: true,
+					attackData: {
+						damage: e.power + KinkyDungeonPlayerDamage.dmg * scaling,
+						type: KinkyDungeonPlayerDamage.type,
+						distract: KinkyDungeonPlayerDamage.distract,
+						distractEff: KinkyDungeonPlayerDamage.distractEff,
+						bind: KinkyDungeonPlayerDamage.bind,
+						bindType: KinkyDungeonPlayerDamage.bindType,
+						bindEff: KinkyDungeonPlayerDamage.bindEff,
+						ignoreshield: KinkyDungeonPlayerDamage.ignoreshield,
+						shield_crit: KinkyDungeonPlayerDamage.shield_crit, // Crit thru shield
+						shield_stun: KinkyDungeonPlayerDamage.shield_stun, // stun thru shield
+						shield_freeze: KinkyDungeonPlayerDamage.shield_freeze, // freeze thru shield
+						shield_bind: KinkyDungeonPlayerDamage.shield_bind, // bind thru shield
+						shield_snare: KinkyDungeonPlayerDamage.shield_snare, // snare thru shield
+						shield_slow: KinkyDungeonPlayerDamage.shield_slow, // slow thru shield
+						shield_distract: KinkyDungeonPlayerDamage.shield_distract, // Distract thru shield
+						shield_vuln: KinkyDungeonPlayerDamage.shield_vuln, // Vuln thru shield
+						boundBonus: KinkyDungeonPlayerDamage.boundBonus,
+						novulnerable: KinkyDungeonPlayerDamage.novulnerable,
+						tease: KinkyDungeonPlayerDamage.tease}
+				};
+				KinkyDungeonSendEvent("beforePlayerLaunchAttack", dd);
+				
+				KinkyDungeonAttackEnemy(data.enemy, dd.attackData, 2.0);
+			}
+		},
+		"Sagitta": (e, b, data) => {
+			if (b && data.enemy && !KDHelpless(data.enemy) && data.enemy.hp > 0 && KinkyDungeonPlayerDamage) {
+				let scaling = e.mult * (KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisScale")));
+				let dd = {
+					target: data.enemy,
+					attackCost: 0.0, // Important
+					skipTurn: false,
+					spellAttack: true,
+					attackData: {
+						damage: e.power + KinkyDungeonPlayerDamage.dmg * scaling,
+						type: KinkyDungeonPlayerDamage.type,
+						distract: KinkyDungeonPlayerDamage.distract,
+						distractEff: KinkyDungeonPlayerDamage.distractEff,
+						bind: KinkyDungeonPlayerDamage.bind,
+						bindType: KinkyDungeonPlayerDamage.bindType,
+						bindEff: KinkyDungeonPlayerDamage.bindEff,
+						ignoreshield: KinkyDungeonPlayerDamage.ignoreshield,
+						shield_crit: KinkyDungeonPlayerDamage.shield_crit, // Crit thru shield
+						shield_stun: KinkyDungeonPlayerDamage.shield_stun, // stun thru shield
+						shield_freeze: KinkyDungeonPlayerDamage.shield_freeze, // freeze thru shield
+						shield_bind: KinkyDungeonPlayerDamage.shield_bind, // bind thru shield
+						shield_snare: KinkyDungeonPlayerDamage.shield_snare, // snare thru shield
+						shield_slow: KinkyDungeonPlayerDamage.shield_slow, // slow thru shield
+						shield_distract: KinkyDungeonPlayerDamage.shield_distract, // Distract thru shield
+						shield_vuln: KinkyDungeonPlayerDamage.shield_vuln, // Vuln thru shield
+						boundBonus: KinkyDungeonPlayerDamage.boundBonus,
+						novulnerable: KinkyDungeonPlayerDamage.novulnerable,
+						tease: KinkyDungeonPlayerDamage.tease}
+				};
+				KinkyDungeonSendEvent("beforePlayerLaunchAttack", dd);
+				
+				KinkyDungeonAttackEnemy(data.enemy, dd.attackData, 0.8);
+			}
+		},
 		"ShadowSlash": (e, b, data) => {
 			if (b && !b.shadowBuff && data.enemy && KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) < KDShadowThreshold) {
 				b.shadowBuff = true;

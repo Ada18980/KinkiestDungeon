@@ -1071,7 +1071,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			if (!altType || altType.shrines)
 				KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTypes, shrinecount,
 					shrinefilter, ghostchance, manaChance, orbcount, (altType && altType.noShrineTypes) ? altType.noShrineTypes : [],
-					Floor, width, height, !altType || (!altType.alwaysRegen && !altType.noQuests));
+					Floor, width, height, !altType || (altType.makeMain && !altType.noQuests));
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for shrine creation`);
 				startTime = performance.now();
@@ -4079,7 +4079,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				let data = {
 					target: Enemy,
 					attackCost: attackCost,
-					skipTurn: true,
+					skipTurn: false,
 					attackData: {
 						damage: KinkyDungeonPlayerDamage.dmg,
 						type: KinkyDungeonPlayerDamage.type,
@@ -4242,8 +4242,9 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 							&& (KinkyDungeonStatsChoice.get("DirectionSlow") || KinkyDungeonStatsChoice.get("DirectionSlow2"))) {
 							let D = Math.abs(KinkyDungeonPlayerEntity.facing_y - lastFacingY)**2
 								+ Math.abs(KinkyDungeonPlayerEntity.facing_x - lastFacingX)**2;
+							let dotProd = KinkyDungeonPlayerEntity.facing_y*lastFacingY + KinkyDungeonPlayerEntity.facing_x*lastFacingX;
 
-							if (D > 3 || (D > 1 && KinkyDungeonStatsChoice.get("DirectionSlow2"))) {
+							if (dotProd < 0 || (D > 1 && KinkyDungeonStatsChoice.get("DirectionSlow2"))) {
 								KDGameData.MovePoints = Math.min(KDGameData.MovePoints, 0);
 								if (D > 2) KinkyDungeonSendTextMessage(10, TextGet("KDTurn2"), "#ffffff", 1);
 								else KinkyDungeonSendTextMessage(9, TextGet("KDTurn1"), "#ffffff", 1);

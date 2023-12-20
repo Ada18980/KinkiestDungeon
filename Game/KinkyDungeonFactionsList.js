@@ -334,6 +334,7 @@ let KinkyDungeonHiddenFactions = [
 	"Delinquent",
 	"Virus",
 	"ShadowClan",
+	"Dollsmith",
 	"DollShoppe",
 	"RopeDojo",
 	"Fuuka",
@@ -570,7 +571,7 @@ let KinkyDungeonFactionRelationsBase = {
 		Bountyhunter: .1,
 		Bandit: .1,
 		Alchemist: .1,
-		Nevermere: 0.5,
+		Nevermere: 0.3,
 		Apprentice: .1,
 		Dressmaker: .1,
 		Witch: .1,
@@ -581,7 +582,7 @@ let KinkyDungeonFactionRelationsBase = {
 		Mushy: -0.1,
 		AncientRobot: -0.3,
 
-		Player: -0.7,
+		Player: -1,
 	},
 	"Virus": {
 		Player: -1,

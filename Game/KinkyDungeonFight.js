@@ -1374,6 +1374,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, chance) {
 		damage: Damage,
 		vulnConsumed: predata.vulnConsumed,
 		attacker: KinkyDungeonPlayerEntity,
+		predata: predata,
 	};
 	KinkyDungeonSendEvent("playerAttack", data);
 

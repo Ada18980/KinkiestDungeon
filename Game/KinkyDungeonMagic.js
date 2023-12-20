@@ -313,7 +313,7 @@ function KDEmpower(data, entity) {
 	}
 }
 
-function KinkyDungeoCheckComponentsPartial(spell, x, y, includeFull) {
+function KinkyDungeoCheckComponentsPartial(spell, x, y, includeFull, noOverride) {
 
 	let failedcomp = [];
 	let failedcompFull = [];
@@ -333,14 +333,15 @@ function KinkyDungeoCheckComponentsPartial(spell, x, y, includeFull) {
 		partial: failedcomp,
 		x: x || KinkyDungeonPlayerEntity.x,
 		y: y || KinkyDungeonPlayerEntity.y};
-	KinkyDungeonSendEvent("calcCompPartial", data);
+	if (!noOverride)
+		KinkyDungeonSendEvent("calcCompPartial", data);
 	if (includeFull) {
 		return [...data.partial, ...data.failed];
 	}
 	return data.partial;
 }
 
-function KinkyDungeoCheckComponents(spell, x, y) {
+function KinkyDungeoCheckComponents(spell, x, y, noOverride) {
 	let failedcomp = [];
 
 	if (spell.components)
@@ -355,7 +356,8 @@ function KinkyDungeoCheckComponents(spell, x, y) {
 		failed: failedcomp,
 		x: x || KinkyDungeonPlayerEntity.x,
 		y: y || KinkyDungeonPlayerEntity.y};
-	KinkyDungeonSendEvent("calcComp", data);
+	if (!noOverride)
+		KinkyDungeonSendEvent("calcComp", data);
 	return data.failed;
 }
 

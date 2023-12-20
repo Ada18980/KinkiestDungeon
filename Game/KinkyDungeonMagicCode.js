@@ -671,7 +671,7 @@ let KinkyDungeonSpellSpecials = {
 		let items = KDMapData.GroundItems.filter((item) => {return item.x == targetX && item.y == targetY;});
 		let tile = KinkyDungeonMapGet(targetX, targetY);
 		let allowedTiles = "CYR";
-		if (items.length < 0 || allowedTiles.includes(tile)) {
+		if (items.length > 0 || allowedTiles.includes(tile)) {
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 			let dist = KDistEuclidean(targetX - entity.x, targetY - entity.y);
 			let pullToX = entity.x;
@@ -728,13 +728,14 @@ let KinkyDungeonSpellSpecials = {
 			let en = KinkyDungeonEnemyAt(tile.x, tile.y);
 			if (en && !KDAllied(en) && !KDHelpless(en) && en.hp > 0) {
 				hit = true;
+				let scaling = 0.9 * (KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisScale")));
 				let data = {
 					target: en,
 					attackCost: 0.0, // Important
-					skipTurn: true,
+					skipTurn: false,
 					spellAttack: true,
 					attackData: {
-						damage: spell.power + KinkyDungeonPlayerDamage.dmg * 1.5,
+						damage: spell.power + KinkyDungeonPlayerDamage.dmg * scaling,
 						type: KinkyDungeonPlayerDamage.type,
 						distract: KinkyDungeonPlayerDamage.distract,
 						distractEff: KinkyDungeonPlayerDamage.distractEff,
@@ -775,6 +776,8 @@ let KinkyDungeonSpellSpecials = {
 		KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 		return "Cast";
 	},
+	
+	
 	"Swap": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		if (!KinkyDungeonCheckPath(entity.x, entity.y, tX, tY, true, false, 1, true)) {
 			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);

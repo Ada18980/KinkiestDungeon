@@ -1766,16 +1766,16 @@ function KDDrawNavBar(skip, quit = false) {
 
 
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goQuit", (bdata) => {
-		if (skip == -1) {
-			KinkyDungeonDrawState = "Restart";
-			KDConfirmDeleteSave = false;
-			if (KDDebugMode) {
-				ElementCreateTextArea("DebugEnemy");
-				ElementValue("DebugEnemy", "Maidforce");
-				ElementCreateTextArea("DebugItem");
-				ElementValue("DebugItem", "TrapArmbinder");
-			}
-		} else {KinkyDungeonDrawState = "Game";}
+		if (skip == 0) {
+			KinkyDungeonDrawState = "Game";
+			
+		} else {KinkyDungeonDrawState = "Restart";
+		KDConfirmDeleteSave = false;
+		if (KDDebugMode) {
+			ElementCreateTextArea("DebugEnemy");
+			ElementValue("DebugEnemy", "Maidforce");
+			ElementCreateTextArea("DebugItem");
+			ElementValue("DebugItem", "TrapArmbinder");}}
 		return true;
 	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KDNavQuit"), "#ffffff",
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_menu.png"), undefined, undefined, false, "", 24, true,

@@ -25,7 +25,7 @@ AddModel({
 			InheritColor: "Rope",
 		},
 		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
-			Poses: ToMap(["Boxtie"]),
+			Poses: ToMap(["Boxtie", "Wristtie"]),
 			DisplacementSprite: "Arm1Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
 			InheritColor: "Rope",
@@ -83,13 +83,12 @@ AddModel({
 		/*{ Name: "Arm1Over", Layer: "StrapsUnderbustOver", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie"]),
 		},*/
-		// For wristtie only
-		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
-			Poses: ToMap(["Wristtie"]),
+		/*{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
+			Poses: ToMap(["Boxtie", "Wristtie"]),
 			DisplacementSprite: "Arm1Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
 			InheritColor: "Rope",
-		},
+		},*/
 		{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie", "Crossed"]),
 			DisplacementSprite: "Arm2Squish",
