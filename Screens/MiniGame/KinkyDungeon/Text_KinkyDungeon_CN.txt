@@ -42,14 +42,22 @@ Will you prevail against forces unknown, or succumb to its dark secrets?
 （本游戏不包含蜘蛛）
 Enable Sound
 音效
+Clothes: Drool/Tears
+美术: 流口水/眼泪
+Clothes: Draw Armor
+美术: 渲染盔甲
 Enable Music
 音乐
+UI: Turn Counter
+UI: 回合计数器
 GFX: Flash Screen on Stun
 GFX: 眩晕时闪屏
 GFX: Distraction Particles
 GFX: 性奋粒子
 GFX: Vibration Particles
 GFX: 震动粒子
+UI: Show NPC Status
+UI: 显示NPC状态
 GFX: Trim Edge Walls
 GFX: 整理边缘墙
 Intense 'Let Go' VFX
@@ -1412,18 +1420,30 @@ Jail Uniform
 监狱制服
 The prisoners are kept in revealing outfits to keep them from hiding things.
 囚犯们穿着的暴露的衣服，用来防止他们隐藏东西。
+Designed to make it hard to conceal weapons. Makes you more visible and vulnerable to the cold.
+使武器难以隐藏。并让你更容易受到寒冷的影响。
 Wolfgirl Suit
 狼女套装
+Made of latex. Resistant to electricity but does not insulate well.
+由乳胶制成。耐电但绝缘性能不佳。
 Maid Uniform
 女仆制服
 An elegant dress meant to denote a maid's status.
 象征女仆身份的优雅礼服。
 Massively increases accuracy against slime mold.
 攻击黏菌时，准确性大幅提高。
+Dragonheart Uniform
+龙之心制服
+The uniform of choice for dragonheart of all ranks.
+各级龙之心的首选制服。
+It's made of fire-resistant leather.
+它由防火皮革制成。
 Scientific Uniform
 科幻制服
 An outfit designed to leave little to the imagination.
 一套设计成几乎没有想象空间的服装。
+Resistant to electricity but does not insulate well.
+耐电但绝缘性能不佳。
 Latex Catsuit
 乳胶紧身服
 An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
@@ -1438,10 +1458,14 @@ Shadow Latex Dress
 暗影乳胶连衣裙
 A minidress made from shadow latex, a favorite of otherwordly patrons.
 由暗影乳胶制成的迷你裙，是其他顾客的最爱。
+Resistant to the elements, but is infused with crystals that amplify psychic damage to yourself.
+能够抵御各种元素，但注入的水晶会放大对自己的精神伤害。
 Elven Dress
 精灵连衣裙
 A regal minidress worn by visitors to the forest.
 给来客穿的豪华迷你裙。
+Not very good at insulating you from the cold.
+对于抵御寒冷效果较差。
 Scroll of Sleight
 诡计卷轴
 The scroll makes your memories of arm movements clear as day!
@@ -2889,7 +2913,7 @@ You hear a fuse going off...
 Miner Bomb
 矿工炸弹
 Bandit
-盗贼
+强盗
 The bandit collapses.
 盗贼崩溃了。
 The bandit restrains you! (+RestraintAdded)
@@ -3290,6 +3314,8 @@ A lock clicks itself onto one of your restraints! (+RestraintAdded)
 一把锁自动锁在了在你的一个拘束具上！（+RestraintAdded）
 A chain locks itself in place on your body! (DamageTaken)
 一条铁链将自己锁定在你的身体上！（DamageTaken）
+The lock dashes to you!
+锁向你冲来！
 The floating locks and chains rub themselves across your body! (DamageTaken)
 浮动锁和链条在你的身体上摩擦！（DamageTaken）
 Conjured Gag
@@ -4504,6 +4530,8 @@ Binding Dress
 捆绑连衣裙
 It's a devious dress! I hope your elbows are flexible~
 这是一件狡猾的衣服！希望你的手肘灵活~
+So many laces! It would take quite a while to put this on normally. That's what magic is for!
+这么多带子！正常戴上这个需要相当长的时间。这就是魔法的用途！
 Ornamental Corset
 观赏紧身胸衣
 Your figure looks gorgeous in this~
@@ -8301,7 +8329,7 @@ An altar stands before you, bestowing a heavenly contract.
 Do you choose to accept its terms?
 你选择接受契约吗？
 Are you sure? This choice is final.
-你确定吗？ 这个选择是最终的。
+你确定吗？选择后无法反悔。
 Yes, I will accept.
 是的，我接受。
 (Accept the contract)
@@ -12740,10 +12768,18 @@ Version
 版本号
 Skip Intro
 跳过简介
+UI: Always Show Warnings
+UI：总是显示警告
+UI: Always Show Minimap
+UI：总是显示小地图
 GFX: Bloom & Glow
 GFX: 曝光 & 发光
+UI: Transparent UI
+UI: 透明UI
 GFX: Map Particles
 GFX: 地图粒子效果
+UI: Show Spell Range
+UI: 显示法术范围
 GFX: Fog Shader
 GFX: 雾着色器
 GFX: Enemy Animations
@@ -12894,6 +12930,18 @@ You climb back up the stairs.
 你爬回了楼梯。
 You discover a golden cookie, wrapped in foil. Beside it are two power crystals.
 你发现了一块用箔纸包裹的金色饼干。旁边还有两颗能量晶体。
+Harem Outfit
+后宫制服
+A skimpy outfit with antiquated connotations.
+带有过时内涵的轻薄服装。
+Harkening back to an old era.
+让人回想起旧时代。
+Combat Bikini
+战斗比基尼
+A minimalist albeit chilly outfit designed for ease of use.
+简约但寒冷的服装，专为易用性而设计。
+Or perhaps it's just sexy...
+或许只是因为性感……
 Crit Multiplier: 
 暴击倍率：
 Bind Crit Multiplier: 
@@ -14134,6 +14182,8 @@ Magical Weapon
 魔法武器
 Your Submissiveness determines how easily your character can resist the temptations of bondage.
 你的顺从程度决定了你的角色抵御束缚诱惑的难易程度。
+Your Security Level is based on your history, and reputation with the MNFCTN.
+你的安全等级基于你的历史，和在 MNFCTN 的声誉。
 Your Passion determines how likely you are to lose control of yourself involuntarily.
 你的激情决定了你有多大可能不由自主地失去对自己的控制。
 Your Frustration affects how quickly your Passion grows. More Frustration = More Passion
@@ -14148,6 +14198,8 @@ Oriel, Goddess of Technology
 Oriel, 科技女神
 Ninril, Giver of Life
 Ninril, 生命的赐予者
+Matah, Architect of Reality
+Matah, 现实铸造者
 Aether, Keeper of the Cosmos
 Aether, 宇宙的守护者
 Oblivion, Keeper of Secrets
@@ -14889,7 +14941,7 @@ Clothes: Chastity Bra over Bras
 Clothes: Simple Color Picker
 衣物：简易取色器
 UI: Center Player
-UI：玩家至中心
+UI：玩家为中心
 UI: Draw Buffs on Side
 UI：在侧面绘制增益效果
 UI: Show Trajectory on Auto-Path
@@ -14918,10 +14970,18 @@ Harmless
 无害
 Unarmed attacks deal half damage and cost 2x as much stamina.
 徒手攻击仅造成一半伤害并消耗 2 倍的体力。
+Start friendly to bandits, and hostile to most other factions.
+开局与强盗派系友好，但是其他大多数派系会对你充满敌意。
+Not a Pet
+不是宠物
+Petsuits occur less often.
+宠物服出现的概率较低。
 You are protected from damage and can't be bound until the shield is broken!
 你将受到保护，免受伤害，并且在护盾被打破之前无法被束缚！
 Crouch
 蹲伏
+(Moans into her gag)
+（对着口塞呻吟）
 Swap Weapon 4
 切换武器 4
 Wait till Interrupted
@@ -14988,6 +15048,8 @@ Tome of Belts
 绑带之书
 Tome of Ropes
 绳索之书
+Divine Lock
+神圣锁
 These runes are meant for someone with less willpower.
 这些符文是为意志力较弱的人准备的。
 Computer Virus
@@ -15230,6 +15292,8 @@ Pants
 短衬裤
 Accessories
 配饰
+Fashion Restraints
+时尚束缚
 Hats
 帽子
 Hairstyles
@@ -15388,6 +15452,8 @@ You have already prayed at this shrine.
 你已经在这座神泉祈祷过。
 Listen to what the Goddess asks of you.
 听听女神对你的要求。
+Accept the Goddess' quest.
+接受女神的任务。
 Drink the mana in the shrine. Can be done once.
 喝神泉里的法力。可以喝一次。
 Bottle the mana in the shrine for later. Can be done once.
@@ -15721,13 +15787,19 @@ Divine Chastity Belt
 A chastity belt forged in holy light. Only a Goddess' will can release you.
 圣光锻造的贞操带。只有女神才能释放你。
 There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge.
-除了悔改，没有任何出路。它的神圣光环会导致振动器在你到达极限之前停止。
+除了悔改，没有任何出路。它神圣的光环会导致振动器在你到达极限之前停止。
 Your Divine Chastity Belt causes the vibrators to stop.
 你的神圣贞操带会使振动器停止。
 A chastity belt forged in holy light. Only the will of a Goddess will release you!
 圣光锻造的贞操带。只有女神才能释放你！
 You find a heavenly chastity belt. Who could it be for?
 你找到了一条天堂般的贞操带。可以给谁呢？
+Heavenly Chastity Belt
+天堂贞操带
+There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge.
+除了悔改，没有任何出路。它神圣的光环会让振动器抑制你到达极限。
+Your Divine Chastity Belt magically dampens the vibrations just enough to edge you.
+你的神圣贞操带神奇地减弱振动，足以让你感到紧张。
 Magic Arm Belts
 手臂绑带（附魔）
 Magic Leg Belts
@@ -15802,6 +15874,8 @@ Poltergeist
 捣蛋鬼
 The poltergeist goes silent.
 捣蛋鬼沉默了。
+The poltergeist gropes and teases you playfully, exhausting your stamina! (DamageTaken)
+捣蛋鬼顽皮地摸索和戏弄你，耗尽你的体力！（DamageTaken）
 The poltergeist binds you with... something? (+RestraintAdded)
 捣蛋鬼用……什么东西把你束缚住了？ （+RestraintAdded）
 Invisible Gag
@@ -15848,3 +15922,51 @@ The explosive barrel falls apart and drops its gunpowder.
 炸药桶散开，里面的火药掉了出来。
 The explosive barrel catches fire and explodes!
 炸药桶着火并爆炸！
+The item demands copious mana, more than you can supply. You'll have to tie up a mage.
+该物品需要大量法力，超出了你的供应能力。你必须绑住一个法师。
+The cursed seal glows and pulsates as you struggle fruitlessly.
+当你徒劳地挣扎时，被诅咒的封印会发光并脉动。
+The curse has been lifted through judicious application of spellcasters.
+通过施法者的明智运用，诅咒已被解除。
+The cursed item drains all of the caster's mana. It demands more.
+被诅咒的物品会耗尽施法者的所有法力。它需要更多。
+Punishment Suit
+惩罚服
+A tool used by Nevermere on the most difficult and recalcitrant wolfgirls.
+Nevermere 用来对付最难对付、最顽固狼女的工具。
+Designed to contain superhuman strength, struggling out of this would be a major feat.
+旨在容纳超人的力量，从中挣扎出来将是一项伟大的壮举。
+Shield of (un)Clarity
+(不)清晰之盾
+Channel your clarity of mind into a powerful shield, filling your distraction bar completely and granting a temporary shield equal to 50% of the DP generated. 10% of the DP gained is gained as Desire, which prevents DP decaying below a certain point.
+将你清晰的头脑转化为强大的护盾，完全填满你的分心栏，并授予相当于所生成 DP 50% 的临时护盾。 获得的 DP 的 10% 作为欲望获得，这可以防止 DP 衰减到某个点以下。
+You form a... distracting mental barrier, shielding yourself for AMNT damage!!!
+你形成了一个...分散干扰值的精神屏障，保护自己免受 AMNT 点伤害！
+You are too distracted to form a mental barrier...
+你干扰值太高，无法形成精神屏障……
+You have the mental clarity but not the magical clarity! (not enough mana)
+你的精神很清晰，但对魔法却很迷茫！（法力值不足）
+You have formed a mental barrier...
+你已经形成了一个精神屏障...
+Desire Burst
+欲望爆发
+Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have 50% Desire, the damage is reduced based on the amount. (Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
+将你的性欲减少最多最大 DP 的 30%，并将该量转化为强大的爆炸，对附近的敌人造成 (30 + 25% 最大 DP) 点妩媚伤害（暴击倍数为 200%）。如果你没有50%的性欲，伤害会根据数量减少。（性欲是你的DP条下方的心形仪表，通过干扰慢慢提高）
+You channel your distraction into a powerful explosion!
+你可以将你的干扰转化为强大的爆炸！
+You don't have enough of a desire to do that.
+你没有足够的意志力去做这件事。
+You have the desire but not the mana!
+你有性欲，但没有法力！
+Your divine-locked restraints can only be removed by completing a shrine quest.
+你的神圣锁束缚只能通过完成神泉的任务来解开。
+The Goddess hates you. That won't work.
+女神讨厌你。那是行不通的。
+Harvest
+收获
+Requires a slashing weapon equipped. Activate to harvest all adjacent vine tiles, with a 25% chance per tile to obtain a seed.|Seeds can be planted to form gardens, which will grow in 100 turns to become vegetables, which can be eaten to restore WP or sold to the shopkeeper.
+需要装备斩击武器。激活以收割所有相邻几格内的藤蔓，每格有 25% 的几率获得种子。|种子可以种植形成花园，花园会在 100 回合内生长成为蔬菜，可以食用以恢复 WP 或出售给店主。
+You twirl your weapon, harvesting AMNT seeds!
+你转动你的武器，收获 AMNT 粒种子！
+There is nothing to harvest.
+没有什么可收获的。
