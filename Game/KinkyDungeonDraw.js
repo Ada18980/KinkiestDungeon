@@ -1239,7 +1239,7 @@ function KinkyDungeonDrawGame() {
 
 						let allowFog = KDAllowFog();
 						if (KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || (allowFog && KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0)) {
-							KDDraw(kdstatusboard, kdpixisprites, "ui_movereticule", KinkyDungeonRootDirectory + "TargetMove.png",
+							KDDraw(kdstatusboard, kdpixisprites, "ui_movereticule", KinkyDungeonRootDirectory + "Target" + KDGetTargetRetType(KinkyDungeonTargetX, KinkyDungeonTargetY) + ".png",
 								(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 									zIndex: 100,
 								});
@@ -1309,7 +1309,7 @@ function KinkyDungeonDrawGame() {
 								DrawTextKD("x" + dist, (xx - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (yy - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
 							}
 						}
-						KDDraw(kdstatusboard, kdpixisprites, "ui_movereticule", KinkyDungeonRootDirectory + "TargetMove.png",
+						KDDraw(kdstatusboard, kdpixisprites, "ui_movereticule", KinkyDungeonRootDirectory + "Target" + KDGetTargetRetType(xx, yy) + ".png",
 							(xx - CamX)*KinkyDungeonGridSizeDisplay, (yy - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 100,
 							});
@@ -3953,3 +3953,19 @@ function KDHotkeyToText(hotkey) {
 	return hotkey.replace("Digit", "").replace("Key", "").replace("Control", "Ctrl");
 }
 
+
+
+function KDGetTargetRetType(x, y) {
+	let enemy = KinkyDungeonEnemyAt(x, y);
+
+	if (enemy) {
+		if (KDHostile(enemy) && KinkyDungeonAggressive(enemy)) return "Attack";
+		if (!KDHostile(enemy) && KinkyDungeonAggressive(enemy) && KDCanDom(enemy)) return "Sub";
+		if (KDCanPassEnemy(KinkyDungeonPlayerEntity, enemy)) return "Pass";
+		return "Talk";
+	}
+
+	let tile = KinkyDungeonMapGet(x, y);
+	if (KinkyDungeonMovableTiles.includes(tile) && !(KinkyDungeonMovableTilesEnemy.includes(tile))) return "Action";
+	return "Move";
+}

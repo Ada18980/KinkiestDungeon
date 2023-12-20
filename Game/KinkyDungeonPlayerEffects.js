@@ -1679,7 +1679,7 @@ function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass, all
 			for (let r of restraintsToAdd) {
 				let bb = 0;
 				bb = KinkyDungeonAddRestraintIfWeaker(r.r, spell?.power || 0,
-					KinkyDungeonStatsChoice.has("MagicHands") || spell, r.r.DefaultLock || Lock,
+					KinkyDungeonStatsChoice.has("MagicHands") || spell, Lock || r.r.DefaultLock,
 					undefined, undefined, undefined, spell?.faction || faction, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
 					undefined, undefined, true, undefined, undefined, undefined, r.v) * 2;
 				if (bb) {
