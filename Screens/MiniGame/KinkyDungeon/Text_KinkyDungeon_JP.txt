@@ -12,33 +12,43 @@ Back
 戻る
 Next
 次へ
-Music: kocaeli|Bound enemy graphics: Song|CN Translation: Alexthymia|KR Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
-音楽: kocaeli|バインドされた敵のグラフィック: 歌|CN 翻訳: Alexthymia|KR 翻訳: Phantasm|コードの貢献者: Ellie、Demopans、Aelie|オーディオ:|ポーション ドリンク - Jamius|クリック - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified| Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw. co.uk) の Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling |はさみ - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
-Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
-Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|シンクからチェーンを引きずり出す - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/ja/users/5944252 - Draws awesome wolfgirls|spark utamaro - 感覚的なバイブレーターのアイデアのために
+Music: kocaeli|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
+Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
 Language
 言語
 English
-英語
+English
 Chinese
-中国語
+Chinese
 Korean
-韓国語
+Korean
+Japanese
+日本語
+Spanish
+Spanish
+French
+French
+Russian
+Russian
 Mods
 MOD
 Mods Loaded.
 MODがロードされました。
 
-This game engages in safe and consensual analytics.
-このゲームは、安全で同意のある分析に取り組んでいます。
-It sends data about spell choices, levels reached, etc, to help balance and improve the game.
-呪文の選択、到達レベルなどに関するデータを送信し、ゲームのバランスと改善に役立てます。
-No personal data is sent or stored.
-個人情報が送信、保存されることはありません。
-Accept
-分析に協力する
-Don't Track Me
-分析に協力しない
+Restart required!
+Restart required!
+需要重启！
+需要重启！
+재시작 필요！
+재시작 필요！
+Restart please!
+適応には再起動が必要です。
+¡Reinicio!
+¡Reinicio!
+Rechargement requis!
+Rechargement requis!
+Restart required!
+Restart required!
 
 You are an adventurer descending into an ancient underground city of magic.
 あなたは古代の地下魔法都市に挑む冒険者です。
@@ -50,38 +60,105 @@ Will you prevail against forces unknown, or succumb to its dark secrets?
 (このゲームにはクモや肉食動物/植物は含まれていません)
 (Check out the latest standalone version at the News and Updates link below!)
 (以下のニュースとアップデートのリンクで最新のスタンドアロン バージョンをチェックしてください!)
+Skip Intro
+オープニングをスキップ
+UI: Always Show Warnings
+UI:常に警告を表示
+UI: Always Show Minimap
+UI:常にミニマップを表示
 Enable Sound
 サウンドを有効にする
-Enable Drool/Tears
-よだれ/涙を有効にする
-Draw Armor
-鎧を描写する
+Clothes: Drool/Tears
+衣装:よだれ/涙を有効にする
+Clothes: Draw Armor
+衣装:鎧を描写する
 Enable Music
 音楽を有効にする
-Turn Counter
+GFX: Async Rendering (beta)
+グラフィック:非同期レンダリング(beta)
+GFX: Bloom & Glow
+グラフィック:ブルーム&グロー
+UI: Transparent UI
+UI:UIを半透明にする
+UI: Turn Counter
 経過ターン数を表示する
-Flash Screen on Stun
-スタン時に画面を明滅させる
-Advanced Distraction VFX
-興奮時のエフェクトを表示する
-Show NPC Status
+GFX: Flash Screen on Stun
+グラフィック:スタン時に画面を明滅させる
+GFX: Map Particles
+グラフィック:マップのパーティクルを表示
+GFX: Distraction Particles
+グラフィック:興奮時のパーティクルを表示
+GFX: Vibration Particles
+グラフィック:バイブ類のパーティクルを表示
+UI: Show NPC Status
 NPCステータスを表示する
-Advanced Fog of War
-高度な戦争の霧
+UI:UI: Show Spell Range
+UI:魔法の効果範囲を表示
+GFX: Trim Edge Walls
+グラフィック:壁の角をなめらかにする
+GFX: Fog Shader
+グラフィック:霧のシェーダー
+GFX: Light Shader
+グラフィック:明かりのシェーダー
 Intense 'Let Go' VFX
-絶頂時のエフェクトを表示する
+絶頂時のエフェクトを再生
 Enable Toy SFX
-ローター類の効果音を再生する
+バイブ類の効果音を再生
 Enable Fullscreen
 フルスクリーンを有効にする
-High Quality Animations
-ハイクオリティのアニメーションを表示する
-Wait Quickly
-待機を高速化させる
-Blocked restraint!
-ブロック拘束！
+Hi-Res Distortion (Needs Restart)
+なめらかな曲線(リスタートが必要)
+GFX: High Quality Animations
+グラフィック:ハイクオリティなアニメーション
+GFX: Enemy Animations
+グラフィック:敵のアニメーション
+Controls: One-Click Move
+操作:1クリックで移動する
+Controls: Latch Shift Key
+操作:トグル式シフトキー
+Clothes: Chastity over Panties
+衣装:パンツの上に貞操帯を表示
+Clothes: Chastity Bra over Bras
+衣装:ブラの上に貞操ブラを表示
+Clothes: Simple Color Picker
+衣装:衣装の色をシンプルに変更
+UI: Center Player
+UI:プレイヤーキャラを画面中央に
+UI: Draw Buffs on Side
+UI:画面横にバフを表示
+UI: Show Trajectory on Auto-Path
+UI:自動移動時の経路を表示
+UI: Show Player Facing
+UI:Show Player Facing
+UI: Show more learnable spells
+UI:習得可能な魔法を全て表示する
+
+Helpless!
+逃げられない！
+Evaded!
+回避した！
+Blocked!
+防御した！
+Resisted Bondage!
+拘束に抵抗した！
+
 You bump into a wall.
 壁にぶつかった。
+Game Resolution:
+画面サイズ：:
+Resolution (needs reload):
+画面サイズ(ゲームの再起動が必要):
+Toy Volume:
+バイブ類のボリューム:
+Music Volume:
+BGMボリューム:
+SFX Volume:
+SEボリューム:
+Animation Time:
+アニメーションの長さ:
+Map Brightness:
+マップの明るさ:
+
 Select a journey. This will determine the ordering of game areas.
 モードを選択してください。エリアの順番が変わります。
 Standard: The intended experience
@@ -90,8 +167,9 @@ Random: A chaotic journey
 ランダム：エリアがランダムで変わります
 Harder: A more difficult journey
 Harder:難しいエリアが選ばれます
+
 Select perks to start with.
-パークを選択する
+パークを選択
 Having 10+ spare points will trigger Hard Mode, granting unique loot.
 10以上のスペアポイントがあると、ハードモードがトリガーされ、ユニークな戦利品が付与されます.
  (HARD MODE ENABLED)
@@ -99,15 +177,18 @@ Having 10+ spare points will trigger Hard Mode, granting unique loot.
 Advanced start (choose perks)
 パークを選択して開始
 Confirm and start playing!
-確認してプレイ開始！
+プレイ開始！
+
 Point Cost: AMOUNT
 パークのコスト: AMOUNT
 Points Available: AMOUNT
 パークポイント: AMOUNT
+
 Resilient Foes
 強靭な敵
-Enemies take 30% less damage.
-敵の受けるダメージが30%減少する
+Enemies have 40% more hp.
+敵のHPが40%上昇する
+
 Strong
 剛腕
 Boosts the Struggle option when escaping.
@@ -116,6 +197,7 @@ Helpless
 非力
 You are physically weak. Struggling is much less effective.
 「もがく」選択時にペナルティを得る
+
 Flexible
 柔軟な体
 Slightly boosts the Remove/Unlock option, escaping is 1.5x as fast except picking, and your feet can use items/buckles.
@@ -124,6 +206,7 @@ Inflexible
 体が固い
 You get a penalty to the Remove and Unlock action, and escaping is 0.75x as fast.
 「取り外し」「解錠」選択時に0.75倍のペナルティを得る
+
 Locksmith
 錠前屋
 You get a bonus to lockpicking, allowing you to pick some high-security locks previously impossible.
@@ -132,6 +215,7 @@ Clueless
 門外漢
 You have no idea how to pick locks. Picking is 0.5x as fast and you can't pick most advanced locks.
 「ピッキング」選択時に0.5倍のペナルティを得る。高度な鍵の解錠が不可能になる
+
 Psychic
 サイキック
 You no longer drop keys and picks, can unlock yourself with bound hands, and don't need hands for items/potions.
@@ -140,6 +224,7 @@ Novice
 素人
 All spells above 1st level cost 2x as many spell points.
 1レベル以上の呪文の習得に倍のスキルポイントがかかる
+
 Blessed
 祝福
 You can drink mana from the shrine fountains once per floor without chance of punishment.
@@ -148,6 +233,7 @@ Cursed
 呪い
 Goddess reputations start at 0 and can never exceed 25.
 ゲーム開始時の「女神からの評価」が0になり、上限が25になる
+
 Submissive
 従順
 Your submissiveness starts at 100 and cannot go below 70.
@@ -156,14 +242,16 @@ Wanted
 指名手配
 Your security level starts at 100 and cannot go below 70.
 ゲーム開始時の「手配度」が100になり、下限が70になる
+
 Studious
 勤勉
-You start the game with +3 additional spell points.
-ゲーム開始時、追加で3ポイントのスキルポイントを得る
+You start the game with +1 spell point. Your first two spell categories are free.
+追加で1スキルポイントを得る。また「スペルツリー」内で最初の二つのみ、スキルポイント無しで習得可能。
 Meditation
 瞑想
 You slowly regenerate mana, up to a maximum of 50.
 マナが50以下の時、最大50までゆっくりと回復する
+
 Willpower
 意志の力
 -50% stamina drain from being at high arousal.
@@ -172,6 +260,7 @@ Bondage Lover
 拘束愛好家
 Attempting to escape arouses you.
 拘束を解除する際、興奮値が上昇する
+
 Focused Dodge
 集中回避
 While your miscast chance is 0%, you gain +40 Evasion.
@@ -180,26 +269,49 @@ Distracted
 注意力散漫
 +15% miscast chance (at all times)
 常に15%の詠唱失敗率を得る
+
 Brawler
 喧嘩屋
-Unarmed attacks deal +10 damage.
-素手の時、ダメージが10増加する
+Unarmed attacks deal +10 damage and being slowed does not decrease unarmed damage.
+素手の時、ダメージが10増加し、減速状態でもダメージが減少しなくなる
+
+Way of the Squish
+くねくねの道
+Unarmed attacks deal grope damage against humans.
+素手の時、人型の敵に対して愛撫属性ダメージを与える
+Way of the Spank
+スパンキングの道
+Unarmed attacks deal pain damage against humans.
+素手の時、人型の敵に対して痛み属性ダメージを与える
+Way of the Feather
+くすぐりの道
+Unarmed attacks deal tickle damage against humans.
+素手の時、人型の敵に対してくすぐり属性ダメージを与える
+
+Harmless
+非力
+Unarmed attacks deal half damage and cost 2x as much stamina.
+素手の時、ダメージが半分になりスタミナコストが2倍になる
+
 Clumsy
 不器用
 0.7x base accuracy
 基礎命中率が0.7倍になる
+
 Unfocused
 焦点が合っていない
 Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distraction.
-興奮値に応じて、命中率が低下する。興奮値が10%の時には命中率が0.9倍になり、興奮値が90%の時には命中率が0.6倍になる。
+興奮値に応じて、命中率が低下する。興奮値が10%の時には命中率が0.9倍になり、興奮値が90%の時には命中率が0.6倍になる
+
 Pristine
 原始的
-There are no shiny loot objects in the dungeon.
-光るルート品が生成されなくなくなる
+There are significantly less shiny loot objects in the dungeon.
+光るルート品が極めて生成されにくくなる
 Lost Technology
 ”ロスト”テクノロジー
 Ancient power cores break with use, and cannot be recharged.
 古代のクリスタルを使用した際、破損して再利用不可能になる
+
 Unchained
 アンチェインド
 Start with high Metal reputation, and all metal restraints are easier to escape from.
@@ -208,24 +320,29 @@ Damsel in Chains
 鎖につながれた乙女
 Metal restraints are harder to escape from.
 金属製の拘束具から抜け出しにくくなる
+
 Forgetful
 忘れっぽい
 You don't remember where you've been in the level.
 ミニマップが記憶されなくなる
+
 Cursed Locks
 呪われた錠前
 Those without keys shall face the Wrath of the Lock. Locked items cannot be cut and are harder to struggle.
 拘束具に鍵がかかっている場合、「切断」が不可能になり、「もがく」選択時にペナルティを得る
+
 The magical warding from the lock protects the item.
-ロックからの魔法の防御がアイテムを保護します
+錠前の呪いが拘束具を守る。
 Undeniable
 否定できない
 Born with an intense submissive desire, you cannot refuse bondage from dialogues.
 NPCとのダイアログで拘束される時、抵抗できなくなる
+
 Frantic Struggle
 めちゃくちゃにもがく
 Your struggling is 3 times as fast, but less efficient in terms of stamina.
 「もがく」選択時に3倍のボーナスを得るが、スタミナをより多く消費する
+
 Escape Artist
 縄抜け
 Start with high Rope reputation, and all rope restraints are easier to escape from.
@@ -234,6 +351,7 @@ Rope Bunny
 ロープバニー
 Rope restraints are harder to escape from.
 縄から抜け出しにくくなる
+
 Slippery
 滑りやすい
 Start with high Latex reputation, and all latex restraints are easier to escape from.
@@ -242,10 +360,7 @@ Latex Doll
 ラテックスドール
 Latex restraints are harder to escape from.
 ラテックス製の拘束具から抜け出しにくくなる
-Hogtied!
-ホッグタイ
-Start the game trussed up in tight ropes.
-ホッグタイの状態でゲームを開始する
+
 Escapee
 奇術師
 Start with high Leather reputation, and all leather restraints are easier to escape from.
@@ -254,6 +369,7 @@ Leather-Bound
 レザーバウンド
 Leather restraints are harder to escape from.
 革製の拘束具から抜け出しにくくなる
+
 Slayer
 スレイヤー
 You can cast Elemental spells without having the components, at twice the cost. Start w/ Firebolt.
@@ -266,14 +382,16 @@ Magician
 マジシャン
 You can cast Illusion spells without having the components, at twice the cost. Start w/ Shadow Dagger.
 詠唱に必要な部位が使用できなくても、2倍のマナを支払うことで幻惑魔法を唱えられる。ゲーム開始時「シャドーダガー」を習得
+
 Narcoleptic
 ナルコレプシー
 You slowly lose stamina over time.
 ターン経過時、スタミナを消費する
+
 Stealth Mission
 ステルスミッション
-You are harder to detect and there are more chests, but enemies take 30% less damage, are more evasive, and drop no gold.
-敵に発見されにくくなり、宝箱の配置数が増える。敵は30%のダメージをカットし、回避力が上昇する。また、倒した際にゴールドをドロップしなくなる
+You are harder to detect and there are more chests, but enemies have 50% more HP, are more evasive, and drop no gold.
+敵に発見されにくくなり、宝箱の配置数が増える。敵はHPが50%上昇し、回避力が上昇する。また、倒した際にゴールドをドロップしなくなる
 Latex Lovers
 ラテックス愛好家
 All humanoids that can bind you also apply latex restraints.
@@ -302,12 +420,11 @@ Adv Latex Lovers
 高度な革愛好家
 All humanoids that can bind you also apply advanced latex restraints.
 全ての人型生物が高度な革の拘束具を使用するようになる
-Start Playing
-ゲームスタート
 Conspicuous
 目立つ
 Enemies detect you more easily.
 敵の感知範囲が拡大する
+
 Bound Power
 バウンドパワー
 Your damage and evasion increases based on the number of restraints worn, up to +40% when thoroughly bound.
@@ -315,7 +432,8 @@ Your damage and evasion increases based on the number of restraints worn, up to 
 Kill Squad
 キル・スクワッド
 Enemies see you through walls and at greater distance.
-敵の感知範囲が拡大し、壁越しに発見されるようになる。
+敵の感知範囲が拡大し、壁越しに発見されるようになる
+
 Supermarket
 スーパーマーケット
 Commerce shrines can appear in levels and have slightly more items.
@@ -324,6 +442,7 @@ Price Gouging
 ぼったくり
 Items are 5x as expensive in the shop.
 販売価格が5倍になる
+
 Supermarket
 スーパーマーケット
 Commerce shrines can appear in levels and have slightly more items.
@@ -332,6 +451,7 @@ Price Gouging
 ぼったくり
 Items are 5x as expensive in the shop.
 販売価格が5倍になる
+
 High Security
 ハイセキュリティ
 Picks are weaker, and randomly generated locks are harsher.
@@ -347,19 +467,34 @@ Ghosts are less likely to help you.
 Search Party
 捜索隊
 More enemies spawn during sleep.
-睡眠中はより多くの敵がスポーンします。
+睡眠中はより多くの敵がスポーンします
+
 No Way Out
 追いつめ
 Enemies will always use the tightest restraints possible and fully bind you.
 敵は最も強力な拘束を使用し、可能な限り拘束を追加しようとする
-Graceful Walk
-優雅な散歩
-You don't lose stamina when walking with one slowing item, unless it binds your legs together.
-両足を拘束されない限り、減速レベル1につき消費するスタミナ量を低減する
+Deft Footwork
+足さばき
+You ignore some consequences of being mildly slowed from heels or slime, and you can cast Leg spells while slowed significantly at 50% miscast chance.
+ヒールやスライムによる減速状態をある程度無視し、50%の詠唱失敗率で大幅に減速した状態でも脚を使う呪文を使用できる
+Poor Form
+へたくそな構え
+Slowing effects on you are amplified.
+減速効果が増幅される
+Poor Coordination
+ダサいコーデ
+You must have both fingers and arms free to cast arm spells. Hand restraints are more effective on you.
+腕を使用する魔法を使う際、両方の腕と手が必要になる。手の拘束がより効果的になる
+Deft Fingering
+器用な指先
+You can cast arm spells using just your fingers, as long as your hands aren't bound.
+手を拘束されていない限り、指だけで腕を使用する魔法を唱えられる
+
 Well-Equipped
 装備充実
 Restraints and traps that are limited by level appear sooner, and enemies will stack many restraints.
 レベル制限のある拘束具と罠の登場が早まる。敵はより多くの拘束具を所持するようになる
+
 Quick-Draw
 クイックドロー
 Switching weapons and spells does not take a turn.
@@ -368,6 +503,7 @@ Quick-Scribe
 クイックスクライブ
 Switching spells and casting from spellbook does not take a turn.
 呪文の切り替えと呪文書からの詠唱にターンを消費しなくなる
+
 Disorganized
 ぐちゃぐちゃ
 Switching weapons, learning/choosing spells, and casting from spellbook takes 3 turns.
@@ -376,10 +512,16 @@ Savour the Taste
 味わう
 Drinking a potion takes 2 turns
 ポーションを飲む際、2ターンかかるようになる
+
 Magic Hands
 マジックハン​​ド
 Enemies can add restraints underneath existing restraints.
 敵は既存の拘束の下に拘束を追加できる
+
+Cyber Doll
+サイバードール
+Start in Cyber restraints.
+サイバー系の拘束具を装備した状態でゲームを開始する
 Fuuka's Pet
 フウカのペット
 Start with Fuuka's collar and a few restraints.
@@ -388,6 +530,19 @@ Fuuka Fan Club
 フウカちゃんファンクラブ
 All humanoids that can bind you also apply Fuuka's special restraints.
 全ての人型生物がフウカ特製の拘束具を使用するようになる
+Dollmaker's Minions
+ドールメイカーの手先
+All humanoids that can bind you also apply Cyber Doll restraints.
+全ての人型生物がサイバー系の拘束具を使用するようになる
+Doll Hunter V
+ドールハンターV
+You start with the Dollmaker's Visor.
+ドールメイカーのバイザーを装備した状態でゲームを開始する
+Doll Hunter M
+ドールハンターM
+You start with the Dollmaker's Mask.
+ドールメイカーのマスクを装備した状態でゲームを開始する
+
 Vengeance
 復讐
 Defeating an enemy greatly distracts you.
@@ -404,26 +559,32 @@ Absolute Focus
 絶対集中
 Miscast chance is doubled.
 詠唱失敗率が2倍になる
+
 Bound Crusader
 バウンドクルセイダー
-Goddesses will expect you to wear their restraints as their champion.
-チャンピオンになった際、対応する属性の拘束具をつけなければ好感度が上昇しなくなる
+Goddesses will equip restraints upon acceptance of a quest.
+女神に対応する属性の拘束具をつけなければクエストを受けられなくなる
+
 Nowhere is Safe
 どこも安全ではない
 Beds and furniture are often trapped.
 ベッドや樽等の家具に罠が混じるようになる
+
 I have... needs
 ちょっと……ほしい
 Distraction builds up over time.
 ターン毎に興奮値が上昇するようになる
+
 Hopeless
 絶望的
 Willpower decays over time.
 ターン毎に気力が低下する
+
 Quickness
 縮地
 Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space without ticking the clock.
 4ターン移動しなかった場合、次の移動にターンを消費しない
+
 Expansive Halls
 広大
 Increases the size of maps by 1 in each direction.
@@ -436,14 +597,20 @@ Labyrinthine Halls
 迷宮
 Increases the size of maps by 3 in each direction.
 マップが更に更に広くなる
+
 Rigger
 リガー
 Chain and glue damage increased by 20%. Binding on enemies is 30% stronger.
 チェーン属性、グルー属性のダメージが20%増加する。敵への拘束ダメージが30%増加する
 Pacifist
 平和主義
-All non-glue, non-chain, or non-teasing damage dealt to humanoid enemies is reduced by 90%.
-人型の敵に攻撃する際、拘束やえっちな属性ではない攻撃は90%軽減される
+All damage dealt to humanoid enemies is reduced by 90% except pain, grope, tickle, charm, psychic, chain, or glue.
+人型の敵に攻撃する際、痛み、愛撫、くすぐり、魅了、サイキック、チェーン、グルー属性以外の攻撃は90%軽減される
+Curse Seeker
+呪いの探求者
+When you pick up cursed armor or restraints from chests, they equip automatically if able.
+呪われた装備を宝箱から発見した際、可能であれば自動で装備する
+
 Burning Desire
 燃えるような欲望
 While above 70% distraction, you ignite nearby objects and gain +40% fire damage.
@@ -452,6 +619,7 @@ Frigid Personality
 冷酷
 While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties.
 興奮値が0%の場合、氷の上を歩く際のペナルティがなくなり、氷属性ダメージが10%上昇する
+
 Grounded in Reality
 現実に根ざす
 While at max mana, your attacks deal an additional 30% of their base damage as electric damage.
@@ -460,14 +628,16 @@ Like the Wind
 風のように
 While above 95% stamina, you gain +30 Evasion and your slow level is reduced by 1.
 スタミナが95%以上の時、回避力が30上昇し、減速状態にある場合、それを1軽減する
+
 Immovable Object
 不退転
-While above 90% willpower, you gain +150 Restraint Block and Earth buff spells cost half mana.
+While above 90% willpower, you gain +150 Bondage Resist and Earth buff spells cost half mana.
 気力が90%以上の場合、拘束抵抗力が150上昇し、地属性のバフ魔法のコストが半減する
 Path of Least Resistance
 楽な道
-While at 0 willpower, you gain +35 Evasion and deal 20% of your max willpower as acid damage when restrained.
+While at 0 WP, you gain +35 Evasion and deal 20% of your max WP as acid damage when enemies restrain you.
 気力が0の場合、回避力が35上昇し、拘束された際に最大気力の20%分の酸ダメージを与える
+
 Sticky Situation
 ねばねば
 You take 40% more glue damage.
@@ -476,10 +646,12 @@ Breathless
 息切れ
 Taking chain, poison, and crush damage makes you dizzy.
 毒、チェーン、打撃属性のダメージを受けた際、めまい状態になる
+
 Kinky Prisoner
 変態囚人
 Guards never remove restraints you are already wearing, unless they are applying something tighter.
 収監された際、看守がより高度な拘束具を所持している場合を除き、拘束具を交換されなくなる
+
 Unfair Doors
 不公平な扉
 Doors are harder to open while your hands are bound.
@@ -498,10 +670,16 @@ You grab the doorknob with your wrists and flex it open.
 手首でなんとかドアノブをひねり、ドアを開ける。
 You use your flexible feet to open the door.
 柔軟な足でドアを開けた。
+
 Poor Technique
 へたくそ
 Instead of fizzling, most miscasted projectiles and AoE spells will target you instead.
 詠唱に失敗した際、発射体と範囲指定は自身を巻き込むようになる
+
+
+
+
+
 Ticklish
 くすぐったい
 You take 50% more tickle damage.
@@ -510,38 +688,109 @@ Stoic
 ストイック
 You gain 82% tickle resist.
 くすぐり属性の耐性が82%増加する
+
 Lascivious
 むっつり
 You take 50% more grope damage.
 受ける愛撫属性のダメージが50%増加する
 Unperturbed
 不感症
-You gain 82% grope resist.
-愛撫属性の耐性が82%増加する
+You gain 82 grope resist.
+愛撫属性の耐性が82増加する
+
 Masochist
 マゾ
 Pain is strongly arousing.
 受ける痛み属性のダメージが増加する
 Pain Tolerance
 痛み耐性
-You gain 200% pain resist.
-痛み属性の耐性が200%増加する
+You gain 200 pain resist.
+痛み属性の耐性が200増加する
+
 Fashionable
 おしゃれ
 When you are jailed, you keep your outfit.
 投獄された際、服がそのままになる
+
 Futile Struggles
 空回り
 Lose 2 WP every time you remove a non-trivial restraint.
 特定の拘束を解除する度に、気力が2ポイント低下する
+
 Second Wind
 セカンドウィンド
-Gain 2 WP every time you remove a non-trivial restraint. Destroys restraints on removal.
-特定の拘束を解除する度に、気力が2ポイント上昇する。解除した拘束具を破壊する
+Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage. (Upgrade available in spell tree)
+手、腕、足のいずれも縛られておらず、猿轡、目隠しを装備していない時、気力が最大値の10%までゆっくり回復する(スキルツリーにてアップグレード可能)
+Second Wind Perk
+セカンドウィンド(パーク)
+Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage.
+手、腕、足のいずれも縛られておらず、猿轡、目隠しを装備していない時、気力が最大値の10%までゆっくり回復する
+Triumphant Wind
+勝利の風
+Second Wind now regenerates up to 25% of your max WP
+パーク「セカンドウィンド」の回復量が気力最大値の25%までになる
+
+Locked Up
+閉鎖
+While wearing a chastity belt, your Desire lowers when you perform actions such as defeating enemies, opening chests, and breaking orbs. (Upgrades available in spell tree)
+貞操帯を装備した状態で、敵を倒す、宝箱を開ける、オーブを割るなどのアクションを行うと、興奮値が下がる(スキルツリーにてアップグレード可能)
+Locked Up Perk
+閉鎖(パーク)
+While wearing a chastity belt, your Desire lowers when you perform actions such as capturing, opening chests, and breaking orbs.
+貞操帯を装備した状態で、敵を倒す、宝箱を開ける、オーブを割るなどのアクションを行うと、興奮値が下がる
+Controlled Urges
+衝動の制御
+Locked Up is 150% effective. Gain +70 psychic/charm resist from a chastity belt and +30 from a chastity bra. While not wearing a chastity belt, your Desire increases slowly.
+パーク「閉鎖」の効果が150%になる。貞操帯を装備時、70の物理/魅了耐性を得る。貞操ブラを装備時は左記の耐性を30得る。貞操帯を装備していない時、興奮値がゆっくりと上昇する
+Ready for Training
+準備万端
+Locked Up is 200% effective. +25% stamina regen per 100 current DP. Playing with yourself is less effective while vibrators are off or set to edge. Slow level is increased by 1 when you aren't wearing any chastity.
+パーク「閉鎖」の効果が200%になる。DP100につきスタミナの自然回復量が25%上昇する。バイブの電源がオフ、または焦らしモードに設定されている時、自慰の効果が減少する。貞操帯を装備していない時、減速値を1得る。
+Efficient Denial
+絶頂拒否
+Locked Up is 300% effective. When Locked Up triggers, you gain -30% mana costs and +25% physical damage for 7 turns (35 when opening a chest or breaking orbs). You cannot orgasm unless you are wearing a chastity belt, and slow level is increased by 2.
+パーク「閉鎖」の効果が300%になる。左記パークの効果が発動した時、7ターンの間(宝箱を開ける、オーブ破壊は35ターン)魔法のマナコスト-30%、物理ダメージ+25%。貞操帯を装備していない時は絶頂できず、減速値を2得る。
+Recalcitrant
+非服従
+Relinquish the Locked Up perk. One time only. If you take the perk again, there is no going back.
+パーク「閉鎖」を放棄する。一度のみ選択可能。再びパークを取得した場合、後戻りはできない
+
+Novice Pet
+新参ペット
+You can now sprint while wearing a petsuit. (Upgrades available in spell tree)
+ペットスーツを装備していても走ることができる(スキルツリーにてアップグレード可能)
+Novice Pet Perk
+新参ペット(パーク)
+You can now sprint while wearing a petsuit.
+ペットスーツを装備していても走ることができる
+Eager Pet
+賢いペット
++1 slow reduction while wearing a petsuit, but sprint costs are increased by 30% when not wearing a petsuit.
+ペットスーツ着用時、減速値が1軽減される。ペットスーツ非着用時、走りのスタミナコストが30%増加
+Experienced Pet
+ベテランペット
++2 slow reduction total while wearing a petsuit (from +1), but sprint costs are increased by 100% (from 30%) when not wearing a petsuit and slow level is increased by +1.
+ペットスーツ着用時、減速値が2軽減される。ペットスーツ非着用時、走りのスタミナコストが100%増加し、減速値が1増加する。
+Devoted Pet
+献身的なペット
++3 slow reduction total while wearing a petsuit (from +2), but you cannot sprint (from +100% cost) when not wearing a petsuit and slow level is increased by +2 (from +1).
+ペットスーツ着用時、減速値が3軽減される。ペットスーツ非着用時、走れなくなり、減速値が2増加する。
+Bad Pet
+悪いペット
+Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back.
+パーク「新参ペット」を放棄する。一度のみ選択可能。再びパークを取得した場合、後戻りはできない
+You are an expert in wearing a petsuit and your mobility is increased.
+ペットスーツの扱いに熟練しており、素早く移動できる。
+You are too used to wearing petsuits! Sprinting is impaired.
+ペットスーツの動きに慣れすぎて走れない。
+You are a disobedient pet. You should put on a petsuit!
+悪い子だ。ペットはペットスーツを着るべきだ。
+
 Dominant
 ドミナント
 They're trapped here with you. Ghosts are more helpful, and you can bind enemies that confront you about bondage.
 幽霊が協力的になる
+
 Stranger
 風来坊
 Randomizes your relationship to most factions.
@@ -550,18 +799,26 @@ Wrong Neighborhood
 ここに来るべきじゃなかった
 All factions are hostile and united against you.
 ゲーム開始時、ほとんどの派閥との関係が0になり、派閥が互いに協力し合う
+Bandit
+盗賊
+Start friendly to bandits, and hostile to most other factions.
+ゲーム開始時、盗賊と友好的になる。代わりに他の勢力と敵対状態になる。
+
 Trespasser
 侵入者
 You lose reputation with the goddesses every time you advance a floor.
 階層を下る際、女神との関係が低下する
+
 Prisoner
 囚人
 Start the game as a submissive prisoner wandering the halls.
 囚人としてゲームを開始する
+
 Rusty Bolts
 錆びたボルト
 Most traps have a 25% misfire chance.
 ほとんどのトラップが25%の確率で不発になる
+
 Unmasked
 マスク嫌い
 Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
@@ -570,10 +827,28 @@ Blackout
 ブラックアウト
 Blindfolds are stronger. While blindfolded you can only see enemies next to you.
 目隠し装備時、隣の敵以外の敵を視認できなくなる
+
 Total Blackout
 完全ブラックアウト
 Blindfolds are extremely punishing and you can't see explored areas while blindfolded.
 目隠し装備時、「ブラックアウト」効果に加え、マップが自身の周囲以外表示されなくなる
+Poor Vision
+目が悪い
+Vision radius is significantly reduced.
+見える範囲が狭くなる
+Keen Hearing
+鋭敏な聴覚
+You can more easily hear enemies and their movements through walls.
+聞こえる範囲が広くなり、壁越しにも音を察知できるようになる
+Archer's Eye
+射手の目
++2 vision radius.
+見える範囲が+2される
+Night Owl
+フクロウの目
+Your vision in dark areas is improved.
+暗いエリアでも見えやすくなる
+
 Not a Doll
 人形じゃない
 You may still enter Doll Terminals, but enemies will not force you onto doll stands.
@@ -582,6 +857,10 @@ No Nurses
 ナースはいらない
 Nurses will not appear in the game.
 ナースがゲームに登場しなくなる
+No Police
+警察はいらない
+Police-based bounty hunters will not appear in the game.
+警察系の敵がゲームに登場しなくなる
 No Brats
 ガキじゃない
 Submissive enemies won't run away from you.
@@ -590,6 +869,7 @@ Brats Only
 ガキばっか
 Submissive enemies will always be bratty and force you to catch them.
 従順な敵が常に逃げるようになる
+
 More Tape
 テープ好き
 Tape-wielding enemies (such as Tape Bots) occur more frequently.
@@ -598,46 +878,92 @@ Less Tape
 テープ嫌い
 Fewer tape-related enemies will appear, although this does not remove tape entirely.
 テープを使用する敵が出現する確率が低下する
+
+No Tape Bots
+テープボット抜き
+The old civilization did not use tape-based restraints in their capture robots.
+旧文明のロボットがテープ系の拘束を使わなくなる
+Less Cable Bots
+ケーブルボット嫌い
+The old civilization used significantly less cable-based restraints in their capture robots.
+旧文明のロボットがケーブル系の拘束を使用しにくくなる
+No Resin Bots
+樹脂拘束抜き
+The old civilization did not use crystal resin-based restraints in their capture robots.
+旧文明のロボットが樹脂口おs句を使用しなくなる
+Lexx Latex Bots
+ラテックスボット嫌い
+The old civilization used significantly less latex-based restraints in their capture robots.
+旧文明のロボットがゴム系の拘束を使用しにくくなる
+
+More Encasement
+固め好き
+Enemies that encase you (e.g slimes, latex cubes) will appear more frequently.
+敵が固め系の拘束をより使用するようになる
+Less Encasement
+固め嫌い
+Fewer encasement-related enemies will appear, although this does not remove it entirely.
+敵が固め系の拘束を使用しにくくなる
+
 Trainee
 ペット
-Your training has given you access to the spells of the Trainee class. (Aroused mode only)
+Your training has given you access to the powers of the Trainee class. (Aroused mode only)
 ペットクラスのスキルが使用できるようになる
 Warrior
 戦士
-Your training has given you access to the spells of the Warrior class.
+Your training has given you access to the powers of the Fighter class.
 戦士クラスのスキルが使用できるようになる
 Rogue
 盗賊
-Your training has given you access to the spells of the Rogue class.
+Your training has given you access to the powers of the Rogue class.
 盗賊クラスのスキルが使用できるようになる
 Wizard
 魔術師
-Your training has given you access to the spells of the Wizard class.
+Your training has given you access to the powers of the Wizard class.
 魔術師クラスのスキルが使用できるようになる
-Panic!!!
-パニック
+Peasant
+持たざるもの
+You possess the agricultural mastery of the Peasant class.
+農奴の農作業に精通している
+
+Panic! (Chests)
+パニック(宝箱)
+When you open a trapped chest, you are stunned for 2 turns.
+罠付きの宝箱を開けた際、2ターンの間スタン状態になる
+Panic! (Traps)
+パニック(罠)
 When you step on a trap, you are stunned for 2 turns.
 罠を踏んだ際、2ターンの間スタン状態になる
 Panic sets in! (Stunned 2 turns)
 パニックになった！(2ターンのスタン)
+
 Butterfingers
 不器用な手先
 Having arms bound prevents you from using your hands to struggle or unlock yourself.
 腕を縛られている際、「もがく」と「解錠」にペナルティを得る
+
 Weak Grip
 握力が弱い
 Having arms bound prevents you from holding weapons or potions.
 腕を縛られている際、武器とポーションを使用できなくなる
+
 You kneel down so you can reach the potion with your mouth...
 跪いて地べたのポーションに口を近づける……
+
 Can't Hear You!
 何言ってるの
 Being gagged blocks you from casting verbal spells regardless of gag power.
 猿轡をかまされている際、強度に関係なく口を使った呪文は使用できなくなる
+Smooth Talker
+滑舌が良い
+Being gagged does not increase your miscast chance for verbal spells unless fully gagged.
+猿轡をかまされても、厳重でない限りは口を使う呪文の詠唱失敗率が上昇しない
+
 Unmasked
 マスク嫌い
 Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
 フードとマスクがゲーム内に登場しなくなる。目隠しがより強力になる
+
 Ball Gag Lover
 ボールギャグ愛好家
 Increase occurrence of ball gags, decrease occurrence of muzzles.
@@ -646,6 +972,7 @@ Muzzle Lover
 マズル愛好家
 Greatly increases the occurrence of muzzles.
 マズルギャグの登場頻度が大幅に上昇する
+
 Armbinder Lover
 アームバインダー愛好家
 More armbinders, less straitjackets.
@@ -654,6 +981,7 @@ Jacket Lover
 拘束衣愛好家
 More straitjackets, less armbinders.
 拘束衣の登場頻度が上がり、アームバインダーの登場頻度が下がる
+
 Maid Sweeper
 お掃除メイド
 Start in a magically locked maid outfit.
@@ -662,14 +990,15 @@ Wolf Trainee
 オオカミのペット
 Start in a uniform of a naughty wolfgirl.
 オオカミ用スーツで拘束された状態でゲームを開始する
-Latex Doll
-ラテックスドール
-Start bound in latex restraints.
-ラテックスで拘束された状態でゲームを開始する
-Iron Slave
-鉄の奴隷
+Latex Toy
+ゴムのオモチャ
+Start bound in lovely latex restraints.
+ラブリーなラテックスで拘束された状態でゲームを開始する
+Elemental Slave
+エレメンタルの奴隷
 Start in a full set of magically locked obsidian cuffs.
-鉄の拘束具で拘束された状態でゲームを開始する
+魔法の鍵が施された黒曜石の枷を装備してゲームを開始する
+
 Mana Burst
 マナバースト
 While at 100% distraction, you get -100% miscast chance but spending too much mana at once may cause you to go over the edge.
@@ -682,10 +1011,12 @@ Clearheaded
 明晰
 Magic puts you in a clear state of mind. Casting spells successfully reduces your distraction.
 呪文を唱えた際、興奮値が低下する
+
 Copy (clipboard)
 クリップボードにコピー
 Paste (clipboard)
 クリップボードを貼り付け
+
 DAMAGEDEALT electric damage conducts to you!!!
 DAMAGEDEALT 電撃ダメージが体を駆け巡った！
 The pressure fans the flames on you, dealing bonus DAMAGEDEALT fire damage!
@@ -706,6 +1037,12 @@ Your body sinks deeper into a sea of bindings...
 全身が縄の海に沈んでいく……
 You struggle to breath as you are buried alive in squirming ropes...
 生きたロープに埋もれて息苦しくなってくる……
+The slime stretches out over your body...
+全身にスライムがまとわりついてきた……
+The slime continues to engulf you, blocking out your vision...
+スライムに飲み込まれ、何も見えない……
+The slime starts to harden, sealing you inside a rubbery prison...
+全身のスライムが固くなり、ゴムの牢獄に閉じ込められた……
 You feel a force compelling you to stop resisting...
 抵抗力を奪う力を感じる……
 Your body struggles to move as you feel a power sealing you!
@@ -722,14 +1059,17 @@ The world goes dark...
 意識が途切れる……
 You wake up in a different place...
 知らない場所で目を覚ました……
+
 Arcane Explosion
 アーケイン・エクスプロージョン
+
 EnemyName says something incomprehensible! Her spell miscasts!
 EnemyName が何かを唱えたが、失敗したようだ。
 EnemyName fumbles her next move!
 EnemyName は失敗した。
 The EnemyName utters a command word on the TargetName!
 EnemyName は TargetName にコマンドワードを放った！
+
 Nipples
 乳首
 Breasts
@@ -744,6 +1084,7 @@ Feet
 足
 Everywhere!
 どこにでも！
+
 Physical Armor:
 物理アーマー：
 Magic Armor:
@@ -753,7 +1094,7 @@ In the Shadows: You are harder to see.
 Invisible: You are very difficult to see.
 透明：とても見つかりにくい
 Quickness: Your next movement is so fast it doesn't advance a turn.
-縮地：次の移動にターンを消費しない
+加速：次の移動にターンを消費しない
 All Damage Reduction:
 全ダメージ軽減：
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
@@ -782,6 +1123,7 @@ Intense vibrations!!
 激しく振動している！
 Torturous vibrations!!!
 激しく暴れ回っている！
+
 Stunned! You can't move!
 スタン状態。動くことができない。
 Your vision is impaired!
@@ -859,11 +1201,11 @@ Ignited: You are dealing fire damage to yourself and nearby enemies!
 You are on fire and taking damage!
 体が燃えている。ターン毎にダメージを受ける
 Arcane Power: Deals bonus damage when you hit an enemy.
-秘術の力：攻撃が命中した際、追加でダメージを与える
+アーケインの力：攻撃が命中した際、追加でダメージを与える
 Arcane Protection: Reduces damage taken, and deals retaliation damage.
-秘術の守護：攻撃を受けた際、一部のダメージをカットし、反射ダメージを与える
+アーケインの守護：攻撃を受けた際、一部のダメージをカットし、反射ダメージを与える
 Arcane Cunning: You turn invisible briefly after attacking.
-秘術の智慧：攻撃を行った際、透明になる
+アーケインの智慧：攻撃を行った際、透明になる
 -MP Cost (Fire)
 MP消費低減(火)
 -MP Cost (Air)
@@ -933,13 +1275,13 @@ Exciting: Orbs give random spells
 Kinky: No save codes, orbs give random spells, start with very little
 Kinky: セーブ コードはありません。オーブはランダムな呪文を与えます。最初はごくわずかです
 Log
-ログ
+日記
 Change Outfit
 着替える
 Reset Outfit
 衣装をリセット
-Code
-コード
+Load from Code
+コードからロード
 Confirm Reset?
 リセットしてもよろしいですか？
 (Copy the code above and save it on your computer to load later)
@@ -947,7 +1289,7 @@ Confirm Reset?
 You come across a black monolith with its face inscribed in runes.
 ルーン文字が刻まれた黒いモノリスを発見した。
 You study them, but can't come up with an interpretation.
-いくら眺めていても、何を書いてあるのかはさっぱりわからない。
+解読しようとしても、何を書いてあるのかはさっぱりわからない。
 They may still prove useful to future adventurers should you get caught...
 もしかしたら、どうしようもなくなったときに役に立つかもしれない……
 (Your game has been saved automatically, but you can save the code for later)
@@ -1073,7 +1415,7 @@ NPCを通り抜ける
 Close a Door
 ドアを閉める
 Sprint/Hop
-スプリント/ホップ
+走る/跳ぶ
 Ahh!
 あぁっ！
 Mmm...
@@ -1186,16 +1528,40 @@ Spell 6
 スペル6
 Spell 7
 スペル7
+Spell 8
+スペル8
+Spell 9
+スペル9
+Spell 10
+スペル10
+Load Hotbar 1
+ホットバー1
+Load Hotbar 2
+ホットバー2
+Load Hotbar 3
+ホットバー3
+Load Loadout 1
+装備セット1
+Load Loadout 2
+装備セット2
+Load Loadout 3
+装備セット3
 Cycle Spell Page
 サイクル呪文ページ
 Upcast Spells
 呪文強化
 Cancel Upcast
 呪文強化をキャンセル
-Swap Weapon
-武器を交換
-Ranged Attack
-遠隔攻撃
+Swap Weapon 1
+武器切り替え1
+Swap Weapon 2
+武器切り替え2
+Swap Weapon 3
+武器切り替え3
+Swap Weapon 4
+武器切り替え4
+Weapon Ability
+武器アビリティ
 Wait
 待機
 Cancel/Back
@@ -1213,9 +1579,19 @@ Auto-Struggle
 Auto-Pathfind
 1クリック移動
 Sprint/Hop
-スプリント/ホップ
+走る/跳ぶ
 Inspect
 調べる
+Expand Minimap
+ミニマップ拡大
+Wait till Interrupted
+何かあるまで待機
+Make Noise
+音を立てる
+Crouch
+しゃがむ
+Play with Self
+自慰
 Quick Inventory
 クイックインベントリ
 Inventory
@@ -2259,9 +2635,9 @@ Mystic Lock
 The mystic lock fades, allowing you to pass once more.
 神秘的な錠が消え、通過できるようになった。
 As you cross the threshold, a mystical lock appears to prevent you from stepping back!
-ここを超えると、新婦的な錠により後戻りができなくなる！
+突如ドアが閉まり、不思議な錠でロックされた！
 As you cross the threshold, a mystical lock appears to prevent you from stepping back!
-ここを超えると、新婦的な錠により後戻りができなくなる！
+突如ドアが閉まり、不思議な錠でロックされた！
 Metal Shield
 メタルシールド
 The shield falls to the floor.
@@ -4397,7 +4773,7 @@ You fiddle with the tool, but your arms lack leverage on the TargetRestraint due
 The TargetRestraint flashes magically as the Goddess' curse resists your efforts!
 拘束具を解こうとすると、女神の呪いが発動して TargetRestraint が魔法の光を発した！
 You pry at the TargetRestraint...
-TargetRestraint をこじあげた……
+TargetRestraint を引き剥がそうとする……
 You moan as the TargetRestraint squeeze you tightly...
 TargetRestraint が突然締め付けを強め、思わずうめき声が漏れた……
 There's no way the TargetRestraint are just letting go!
@@ -4625,7 +5001,7 @@ Close door
 Sprinting!!!
 スプリント!!!
 Sprint!
-スプリント！
+走る！
 Hopping!!!
 ホッピング!!!
 Hop!
@@ -4731,7 +5107,7 @@ TYPE のルーン文字が刻まれた石板
 Teachings of SHRINETYPE
 SHRINETYPE の教え
 Decypher
-デサイファー
+解読
 You read the runes and they imbue you with power!
 ルーン文字を読むと、力が湧いてきた！
 You try to read the runes but cannot understand them.
@@ -4823,11 +5199,11 @@ Cost: ItemCostgp
 You climb down to the next level
 次の階に降りる
 Level RestraintLevel (Rarity)
-拘束のレベル (Rarity)
+拘束のレベル： Rarity
 Consumable
 消耗品
 Equipped
-装備中
+着用中
 Weapons
 武器
 Outfits
@@ -4930,7 +5306,7 @@ Binding Dress
 拘束ドレス
 It's a devious dress! I hope your elbows are flexible~
 美しさと拘束を兼ね備えたドレス。肘すら上手く動かせない。
-So many laces! It would quite a while to put this on normally. That's what magic is for!
+So many laces! It would take quite a while to put this on normally. That's what magic is for!
 紐がたくさんついていて着るには時間がかかりそうだけど、魔法の力で簡単に着られる。
 Ornamental Corset
 観賞用コルセット
@@ -4958,13 +5334,13 @@ It is extremely strict but it is only fabric. The lacing is intricate and will t
 非常にきついが、ただの生地でできている。紐がいっぱいあるので、取り外すのには時間がかかる。
 Ornamental Gag
 観賞用ギャグ
-A gag meant to keep servants of the Resurrection Temple quiet by forcing a dildo into their mouth.
+A gag meant to keep servants of the Resurrection Temple quiet by forcing a plug into their mouth.
 再生の神殿の使用人に装着する、中にディルドのついた猿轡。
 It is difficult to pull off and though it is made from white leather, a magic enchantment protects it from cutting.
 取り外しづらい上に、魔法の力で切断することもままならない白い革製の猿轡。
 Panel Plug Gag
 パネルプラグギャグ
-A gag meant to keep people quiet by forcing a dildo into their mouth.
+A gag meant to keep people quiet by forcing a plug into their mouth.
 内側にディルドのついた猿轡。
 It is difficult to pull off and though it is made from supple, heavy duty leather.
 柔軟で丈夫、それでいて脱げにくい。
@@ -4982,18 +5358,40 @@ A deceptively cruel device, making it impossible to reach your nipples.
 胸を覆う衣装。かつては下着だったが、今ではアウターウェアとして作られたものもある。
 Reinforced with steel plates, this will need bolt cutters to take off.
 鋼板で補強されているため、簡単には取り外せない。
-Nipple Massagers
-ニップルマッサージャー
-A pair of little teasers.
-両乳首に取り付くオモチャ。
-They will make for some great fun!
-乳首を刺激し続ける魔法の道具。
+
+Massagers
+マッサージャー
+A pair of little motion-activated teasers. They trigger when you swing your body for an attack.
+動きを感知する振動体。武器を振ると反応して動きだす。
+They will make for some great fun! Type: Edging
+もっと楽しめるようになる。タイプ：絶頂
+Advanced Massagers
+高性能マッサージャー
+A pair of sensitive motion-activated teasers. They trigger when you attack or struggle.
+動きを敏感に感知する振動体。もがいたり、武器を振ると反応して動きだす。
+They will make for some great fun! Type: Edging
+もっと楽しめるようになる。タイプ：絶頂
+Hi-Tech Massagers
+ハイテクマッサージャー
+A pair of highly-sensitive motion-activated teasers. They detect most forms of motion, including sprinting and hopping.
+動きをとても敏感に感知する振動体。もがく、走る、跳ぶ、武器を振る等に反応して動きだす。
+They will make for some great fun! Type: Edging
+もっと楽しめるようになる。タイプ：絶頂
+
 Control Harness
 コントロールハーネス
 An advanced harness for controlling high-security prisoners.
 危険な囚人に取り付ける強固なハーネス。
 It seems to be made of flexible steel plates.
 柔軟な鋼板でできている。
+
+Cyber Collar
+サイバーカラー
+An advanced collar for registering prisoners into the facility network.
+囚人を施設のネットワークに登録するための高度な技術が使われた首輪。
+It seems to be made of flexible steel plates, and it has a high-security lock.
+柔軟な金属でできており、高度な錠前を備えている。
+
 Tracking Collar
 トラッキングカラー
 An advanced collar for tracking high-security prisoners.
@@ -5004,6 +5402,12 @@ Latex Ball Gag
 ラテックスボールギャグ
 A devious device that looks like a ball gag, but has a mouth-filling rod on the inside.
 ボールギャグのように見えるが、ボール部分がディルドのように伸びていて外すのが難しい。
+The strap is made of a durable but flexible material
+ストラップは柔軟かつ丈夫な素材でできている。
+Large Latex Ball Gag
+大きなラテックスボールギャグ
+A devious device that looks like a large ball gag, but absolutely fills your mouth with a rubber cylinder.
+大きなボールギャグのように見えるが、ボール部分がディルドのように伸びていて外すのが難しい。
 The strap is made of a durable but flexible material
 ストラップは柔軟かつ丈夫な素材でできている。
 Latex Mask
@@ -5050,24 +5454,24 @@ It's incredibly tight and difficult to remove once it's clipped on, but the mate
 とてもタイトな作りで脱ぐのに苦労しそうだが、ゴムでできているため簡単に切れそう。
 You don't meet the conditions to equip that.
 装備できない。
-Latex Boxtie Binder
-ラテックスボックスバインダー
+Experimental Boxtie Binder
+実験用ボックスバインダー
 A secure but comfortable binder meant for long-term wear by the alchemists' pets.
 錬金術師のペットが長時間着用することを想定した快適なバインダー。
 Made from imbued latex, it will be hard to cut but not impossible.
 ゴムで型から作られているので、少し難しいが切ることはできる。
-Binder Straps Cincher
-バインダーストラップ
-A tight cincher attached to a binder used to ensure restraints will not come off.
-バインダーを補強して脱げないようにするストラップ。
+Binder Harness
+バインダーハーネス
+A tight harness attached to a binder used to ensure restraints will not come off.
+バインダーを補強して脱げないようにするハーネス。
 It's tied in the back and reinforced with steel boning.
 後ろにストラップがあり、鉄で補強されている。
 Blacksteel Ankle Cuffs
 黒鉄の足枷
 Highly durable cuffs made from top-quality ancient metal.
 古代の鉄で作られた頑丈な枷。
-They're made of Blacksteel, a metal used by the Old Civilization.
-旧文明で使用されていた黒い鉄でできている。
+They are made of a hardened steel alloy, chemically treated as to be stainless.
+ステンレスのように化学処理がなされている硬化鋼合金製。
 The enemy attaches your ankle cuffs together!
 足首に枷を取り付けられた！
 Blacksteel Cuffs Chain
@@ -5084,6 +5488,13 @@ A strict collar that makes it tougher to escape from other items.
 首の動きを制限し、他の拘束具を解きにくくする首輪。
 It has steel boning but could be cut with enough care.
 鉄で補強されているが、避ければ切ることは可能。
+Latex Ballet Heels
+ラテックスのバレエヒール
+A pair of strict boots for making pets more manageable. A skilled person can still walk in these.
+ペットを管理しやすくする、高いヒールの靴。慣れればまだ歩くことはできる。
+They are reinforced with top-quality hardened latex.
+極めて高品質なゴムで作られている。
+
 Blacksteel Ballet Heels
 黒鉄のバレエヒール
 A pair of strict boots for making pets more manageable. A skilled person can still walk in these.
@@ -5136,28 +5547,47 @@ The enemy attaches your wrist cuffs back together!
 後ろ手に枷同士を取り付けられた！
 High-Security Armbinder
 厳重なアームバインダー
-An mythril armbinder enclosing your hands and arms completely, making your hands useless.
-指先から肘までを覆う、ミスリル製のアームバインダー
+An armbinder enclosing your hands and arms completely, making your hands useless.
+指先から肘までを覆う、厳重なアームバインダー
 Made of a flexible, yet durable material, it's going to be really tough to escape.
-柔軟かつ耐久性のあるミスリルでできているため、抜け出すのは極めて難しい。
+柔軟かつ耐久性のある素材でできているため、抜け出すのは極めて難しい。
+High-Security Boxbinder
+厳重なボックスバインダー
+A boxbinder enclosing your hands and arms completely, making your hands useless.
+指先から肘までを覆う、厳重なボックスバインダー
+Made of a flexible, yet durable material, it's going to be really tough to escape.
+柔軟かつ耐久性のある素材でできているため、抜け出すのは極めて難しい。
+High-Security Straitjacket
+厳重な拘束衣
+A straitjacket enclosing your hands and arms completely, making your hands useless.
+上半身を完全に覆う頑丈な拘束衣。
+Made of a flexible, yet durable material, it's going to be really tough to escape.
+柔軟かつ耐久性のある素材でできているため、抜け出すのは極めて難しい。
 High-Security Legbinder
 厳重なレッグバインダー
 An mythril legbinder enclosing your legs, making it difficult to move.
-足を包み込む、ミスリル製のレッグバインダー。
+足を包み込む、頑丈なレッグバインダー。
 Made of a flexible, yet durable material, it's going to be really tough to escape.
-柔軟かつ耐久性のあるミスリルでできているため、抜け出すのは極めて難しい。
+柔軟かつ耐久性のある素材でできているため、抜け出すのは極めて難しい。
 High-Security Shackles
 厳重な足枷
-A pair of mythril shackles around your feet.
-足に嵌めるミスリル製の枷。
+A pair of hardened steel shackles around your feet.
+足に嵌める頑丈な枷。
 Nearly indestructable, you are at the mercy of its lock.
 極めて頑丈で壊すことはほぼ不可能。解錠するしかない。
-High-Security BallGag
+High-Security Ball Gag
 厳重なボールギャグ
 A rubber gag shoved tightly between your lips.
-ゴム製のボールとミスリル製のストラップでできたボールギャグ。
-The mythril straps are nigh-unbreakable, keeping you securely silenced.
-ミスリルのストラップを壊すことは極めて困難。素直に黙っているしかない。
+ゴム製のボールと頑丈なストラップでできたボールギャグ。
+The cable-reinforced straps are nigh-unbreakable, keeping you securely silenced.
+頑丈なストラップを壊すことは極めて困難。素直に黙っているしかない。
+High-Security Muzzle
+厳重なマズル
+A secure muzzle made with cable-reinforced straps.
+頑丈なケーブルで補強されたマズル。
+It is especially effective at keeping in other gags.
+中の猿轡を守るマズル。
+
 Potion Absorber
 ポーションアブソーバー
 An ancient device that allows direct use of potions even while gagged or bound.
@@ -5210,6 +5640,37 @@ Creates an AoE delayed explosion on attack that stuns enemies and deals 10 acid 
 攻撃後、遅延して爆風を放ち、狭い範囲に追加で10酸ダメージを与え、気絶させる。
 You find a pair of bracers that are transparent like water.
 澄んだ水のように透き通った手甲を見つけた！
+
+Duster Gag
+箒ギャグ
+A special gag designed for maids to be useful even while tied up! It's self-locking too!
+拘束されているメイドが掃除できるよう設計された猿轡。自動でロックされる。
+Deals 0.5 tickle damage on attack and adds +30 distraction.
+0.5くすぐり属性ダメージと30の興奮値を与える。
+Duster Gag
+箒ギャグ
+A special gag designed for maids to be useful even while tied up! It's self-locking too!
+拘束されているメイドが掃除できるよう設計された猿轡。自動でロックされる。
+Deals 0.5 tickle damage on attack and adds +30 distraction.
+0.5くすぐり属性ダメージと30の興奮値を与える。
+
+
+Gas Mask
+ガスマスク
+A respirator designed to protect the wearer from noxious fumes.
+有毒なガスから着用者を守るマスク。
++50 Poison resist. Protects against dizziness caused by sleep gas. Affects speech.
+毒耐性+50。ガスを吸い込まずに済むが、発音が悪くなる。
+Gas Mask
+ガスマスク
+A respirator designed to protect the wearer from noxious fumes.
+有毒なガスから着用者を守るマスク。
++50 Poison resist. Protects against dizziness caused by sleep gas. Affects speech.
+毒耐性+50。ガスを吸い込まずに済むが、発音が悪くなる。
+
+
+
+
 The curse on the RestraintName is lifted!
 RestraintName の呪いが解除された！
 Press RIGHT to confirm buy!
@@ -5366,6 +5827,12 @@ It clings, almost of its own accord, but seems vulnerable to both cutting and st
 自然に巻き付いてくるが、切るのも引っ張るのも有効。
 Leather Panel Gag
 レザーパネルギャグ
+A gag that seals your lips tightly and stuffs your mouth with a ball.
+詰め物を吐き出させないようにするパネルの付いた猿轡。
+Keep your mouth to yourself!
+口を閉じていなさい！
+Harness Panel Gag
+ハーネスパネルギャグ
 A gag that seals your lips tightly and stuffs your mouth with a ball.
 詰め物を吐き出させないようにするパネルの付いた猿轡。
 The harness is comprehensive and it's locked in place.
@@ -5680,12 +6147,24 @@ A pair of tight leather mittens enclosing your hands.
 手を包み込む革のミトン。
 They make it almost impossible to manipulate keys and tools. Keep your hands to yourself!
 指が使えないため、道具を使うのが難しくなる。
+Leather Legbinder
+革のレッグバインダー
+A tight leather legbinder that keeps your feet glued together.
+足を覆い、開けなくする革のレッグバインダー
+It's quite snug and the laces are secured with a lockable panel. Getting at them requires picking the lock.
+長い紐と頑丈なロックで繋ぎ止められている。外すにはピッキングする必要がある。
 Leather Armbinder
 革のアームバインダー
 A tight leather armbinder enclosing your hands and arms completely.
 指先から肘までを覆う革の拘束具。
 It's quite snug and secured by lockable buckles in the back. Picking the locks yourself is impossible.
 腕をすっぽりと覆い、後ろでロックされているため、自分一人の力で解錠するのは不可能。
+Leather Boxbinder
+革のボックスバインダー
+A secure but comfortable binder meant for long-term wear.
+長期間の着用を想定した、厳重で快適なボックスバインダー
+It's quite snug and secured by lockable buckles in the back. Picking the locks yourself is impossible.
+背中側に錠前がついているため、ピッキングは不可能。
 Leather Armbinder Harness
 革のアームバインダーハーネス
 Leather belts securing your armbinder tightly.
@@ -5720,18 +6199,40 @@ A gag made of a red squishy material.
 赤いボールの付いた猿轡。
 You can't seem to enunciate your spells properly with this in.
 呪文を正しく発音できなくなる。
+Large Ball Gag
+大きなボールギャグ
+A mouth-filling gag made of a red squishy material.
+赤い大きなボールの付いた猿轡。
 Tight Ball Gag
 タイトボールギャグ
 A gag made of a red squishy material, buckled as tight as it will go.
 赤いボールが更に大きくなった猿轡。
 You can't seem to enunciate your spells properly with this in.
 呪文を正しく発音できなくなる。
+Huge Ball Gag
+巨大なボールギャグ
+A massive gag made of a red squishy material, buckled as tight as it will go.
+赤いボールが巨大になった猿轡。
+You absolutely can't enunciate your spells properly with this in.
+球が大きく、まともに放つことができなくなる。
 Magic Ball Gag
 マジックボールギャグ
 A gag enchanted with magic. It grows to fill your mouth so you can hardly speak.
 魔法のボールギャグ。口を完全に塞ぎ、発音どころかうめき声しか出ない。
 It's brimming with conjured energy. A normal knife won't work here!
 魔力のせいで普通のナイフでは切れない。
+Anti-Magic Gag
+アンチマジックボールギャグ
+A gag designed to cripple mages. It's made of a squishy rubbery material.
+魔法使いを無力化するための猿轡。柔らかいゴムのような素材でできている。
+It's sealed with a magical spell that rapidly absorbs mana! When it drains 40 mana it will transform into an ordinary gag and inflate.
+魔法を封印し、マナを吸い取る素材で作られている。マナを40吸収すると、普通のボールギャグになる。
+Anti-Mage Gag
+アンチメイジボールギャグ
+A gag designed to cripple experienced spellcasters. It's made of a magic-absorbing rubber.
+強力な魔法使いを無力化するための猿轡。マナを吸収するゴムでできている。
+You feel the energy flowing out of you! When it drains 100 mana it will transform into an ordinary gag and inflate.
+マナが吸収されていくのを感じる。マナを100吸収すると、普通のボールギャグになる。
 Ballet Heels
 バレエヒール
 A pair of shoes with heels so tall it forces you on your toes.
@@ -5739,7 +6240,7 @@ A pair of shoes with heels so tall it forces you on your toes.
 These will take some getting used to.
 なれるまでに時間がかかりそう。
 Leg Irons
-足錠
+足枷
 A pair of solid steel cuffs connecting your ankles inescapably.
 足首を拘束する鉄の枷。
 The lock doesn't seem very complicated.
@@ -5808,52 +6309,65 @@ Magic Egg
 魔法のローター
 An energetic little friend that likes to tease you.
 からかい上手な小さな友達。
-It is charged by residual magic from your spells.
-魔法を行使すると、その魔力の残滓で充電する。
+It is charged by residual magic from your spells. Type: Teasing
+魔法を行使すると、その魔力の残滓で充電する。タイプ：からかい
 Prototype Egg
 プロトタイプのローター
 A teaser that periodically vibrates.
 定期的に振動するローター。
-High efficiency mana conversion means longer tease duration.
-マナを効率よく電池に変換し、長時間駆動する。
+High efficiency mana conversion means longer tease duration. Type: Teasing, Pleasure, Edging
+マナを効率よく電池に変換し、長時間駆動する。タイプ：からかい、快楽、絶頂
 Vibrating Plug
-バイブレーター
+バイブプラグ
 A sizeable plug that makes you happy... a little too happy.
 ちょうどいいサイズでちょっと……かなり気持ちいい。
-It vibrates periodically and allows orgasms.
-定期的に振動し、絶頂に導く。
+It vibrates periodically and adds distraction when moving. Type: Pleasure
+定期的に振動し、歩く度に興奮値が上昇する。タイプ：快楽
 Teaser Plug
-ティーザーバイブ
-A sizeable plug that will tease you but never let you go...
-絶頂しそうになると止まってしまう、焦らし特化のいやらしいバイブ。
+ティーザープラグ
+It vibrates weakly periodically. Type: Teasing, Denial
+絶頂しそうになると止まってしまう、焦らし特化のいやらしいバイブ。タイプ：からかい、焦らし
 It vibrates weakly periodically.
 定期的に弱く振動する。
 Torment Plug
-トーメントバイブ
+トーメントプラグ
 A sizeable plug that will make your life unbearably pleasurable...
-大きくて気持ちいいのにイけそうでイけないバイブ。
-It vibrates strongly periodically and has a denial setting.
-定期的に強く振動するが、絶頂しそうになると焦らしモードに入ってしまう。
+大きくて気持ちいいのにイけそうでイけないプラグ。
+It vibrates strongly periodically and has a denial setting. Type: Denial
+定期的に強く振動するが、絶頂しそうになると焦らしモードに入ってしまう。タイプ：焦らし
 Thundering Plug
-サンダリングバイブ
+サンダリングプラグ
 A sizeable plug that will make your life unbearably pleasurable...
-人の人生を壊すタイプのバイブ。
-You're going to have the time of your life.
-人生で最高の時間を過ごすことになる。
+人の人生を壊すタイプのプラグ。
+Enjoy it while you can. Type: Pleasure, Edging
+今のうちに楽しんでおこう。タイプ：快楽、絶頂
+Intense Training Plug
+激しいトレーニングプラグ
+An energetic plug that will make your life unbearably pleasurable...
+とても激しく動く。たまらなく心地よい……
+You're going to have the time of your life. Type: Pleasure, and lots of it
+人生で最高の時間を過ごすことになる。タイプ：色々……
+Rear Vibrating Plug
+後ろのバイブプラグ
+A device that attacks from multiple angles.
+他方面から攻撃するためのプラグ。
+An enjoyable experience. Type: Edging
+何事も経験が大事。タイプ：絶頂
+
 Maid Egg
 メイドエッグ
 An energetic little friend that likes to tease you and takes orders from the head maid.
 メイド長の使う小さな友達。
-It is charged by residual magic from your spells.
-魔法を行使すると、その魔力の残滓で充電する。
+It is charged by residual magic from your spells. Type: Teasing, Edging
+魔法を行使すると、その魔力の残滓で充電する。タイプ：からかい、絶頂
 Stainless Plug
-ステンレスの張形
+ステンレスのプラグ
 A weighty plug that doesn't vibrate, but you'll certainly notice it walking around...
 振動はしないが重量感がクセになる……
 This one goes in the front.
 前の穴用。
 Stainless Plug
-ステンレスのアナルプラグ
+ステンレスのプラグ
 A weighty plug that doesn't vibrate, but you'll certainly notice it walking around...
 振動はしないが重量感がクセになる……
 This one goes in the back.
@@ -5916,6 +6430,12 @@ Intricate Ropework
 複雑な縄
 A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
 他の縄と組み合わせることで効果を発揮する縛り。
+It's not very secure.
+簡単に抜け出せる。
+Strict Ropework
+とても複雑な縄
+The finishing touches on a tight and strict piece of ropework.
+複雑な縄をきつくしたもの。
 It's not very secure.
 簡単に抜け出せる。
 Rope Hogtie
@@ -6032,6 +6552,12 @@ A tie keeping your feet secured together.
 足を縛るつる。
 The vines twitch as they try to wrap around tighter.
 意志を持っているかのようにきつく縛ろうとうごめくつるの縄。
+High-Security Cuffs
+厳重な手枷
+A set of irish-8-style cuffs that are both restrictive and quick to apply.
+アイリッシュ8スタイルの手枷。素早く拘束できる。
+It uses a standard lock rather than a simple one.
+普通の錠が使われている。
 Quik-Bind Cuffs
 クイックバインドカフ
 A set of high-security cuffs that are both restrictive and quick to apply.
@@ -6070,10 +6596,10 @@ It is reinforced with steel cables, so getting it off will be tricky.
 鋼鉄で補強されており、抜け出すのは難しい。
 Training Collar
 トレーニングカラー
-A collar used to keep unruly wolfgirls in check.
-暴れるウルフガールを鎮圧するための首輪。
-If it works on them, it sure as heck works on you.
-頑強なウルフガールに通用するなら人間にも効く。
+A collar with a decorative tag used to identify wolfgirls.
+ウルフガールが誰かの所有物だということを示す首輪。
+Also good for identifying people in general. What a great idea!
+誰かを特定するにも便利。とても良いアイデアだ！
 Training Leash
 トレーニングリード
 A leash used for training pets.
@@ -6182,7 +6708,7 @@ It feels tight but is actually made of an ethereal material...
 外見は普通の拘束衣だが、中は不思議な素材でできており着心地が良い。
 Latex Jacket
 ラテックスの拘束衣
-A tight jacket that holds your arms completely useless.
+A tight jacket that keeps your arms completely useless.
 腕を前に組んだ形で拘束されるゴム製の衣装。
 It has too much grip to struggle out of, but is made of a fragile material.
 もがいて抜け出すのは難しいが、壊れやすい素材でできている。
@@ -6190,6 +6716,10 @@ Latex Armbinder
 ラテックスのアームバインダー
 A tight armbinder that pins your arms tightly behind your back, enclosed completely.
 指先から肘にかけて覆うゴム製のタイトなアームバインダー。
+It has too much grip to struggle out of, but is made of a fragile material.
+もがいて抜け出すのは難しいが、壊れやすい素材でできている。
+Latex Boxbinder
+ラテックスのボックスバインダー
 It has too much grip to struggle out of, but is made of a fragile material.
 もがいて抜け出すのは難しいが、壊れやすい素材でできている。
 Latex Legbinder
@@ -6328,40 +6858,40 @@ Leather Ankle Cuffs
 革の足枷
 A pair of chained cuffs made of leather. They make it trickier to run away.
 革でできた足枷。逃げるのが難しくなる。
-They're made of tough cowhide.
-丈夫な牛革でできている。
+Made of tough leather.
+丈夫な革でできている。
 The enemy attaches your ankle cuffs together!
 足首に枷を取り付けられた！
 Cuffs Chain
 革の足枷の鎖
 A pair of chained cuffs made of leather. They make it trickier to run away.
 革でできた足枷。逃げるのが難しくなる。
-They're made of tough cowhide.
-丈夫な牛革でできている。
+Made of tough leather.
+丈夫な革でできている。
 The ankle cuff chain detaches!
 足枷の鎖が外れた！
 Leather Leg Cuffs
 レザーレッグカフス
 A pair of chained cuffs made of leather. They make it trickier to run away.
 革でできた脚枷。逃げるのが難しくなる。
-They're made of tough cowhide.
-丈夫な牛革でできている。
+Made of tough leather.
+丈夫な革でできている。
 The enemy attaches your ankle cuffs together!
 脚に枷を取り付けられた！
 Leather Cuffs
 革の手枷
 A pair of leather cuffs that make it easy to restrain you.
 拘束しやすい革の手枷
-They're made of tough cowhide.
-丈夫な牛革でできている。
+Made of tough leather.
+丈夫な革でできている。
 The enemy attaches your wrist cuffs together!
 手に枷をはめられた！
 Lthr Wrist Chain
 革の手枷の鎖
 A pair of leather cuffs keeping your arms behind your back.
 手枷をつなぐための鎖。
-They're made of tough cowhide.
-丈夫な牛革でできている。
+Made of tough leather.
+丈夫な革でできている。
 Your cuffs detatch!
 手枷の鎖を外した！
 The enemy attaches your elbow cuffs together!
@@ -6370,16 +6900,16 @@ Lthr Wrist Chain
 革の手枷の鎖
 A full set of leather cuffs keeping your arms in a strict elbow tie!
 後ろ手に手枷をつなぐための鎖。
-They're made of tough cowhide.
-丈夫な牛革でできている。
+Made of tough leather.
+丈夫な革でできている。
 Your wrists detatch, leaving your elbows still bound!
 手首の鎖が外れても、肘は繋がったままだ！
 Lthr Elbow Chain
 革の肘枷の鎖
 A pair of leather cuffs keeping your elbows locked together!.
 肘枷同士をつなぐための鎖。
-They're made of tough cowhide.
-丈夫な牛革でできている。
+Made of tough leather.
+丈夫な革でできている。
 Your elbows detatch!
 肘枷の鎖を外した！
 The enemy attaches your wrist cuffs back together!
@@ -6438,7 +6968,8 @@ A leather belt used to keep your legs hobbled.
 脚をつなぎ歩幅を制限するベルト。
 It's made of a very tough reinforced leather. It will take some time to cut.
 非常に丈夫な革でできており、切るには時間がかかる。
-Steel Cuffs
+
+Maid Cuffs
 メイドの足枷
 A pair of steel cuffs used by the Maidforce.
 メイドフォースが使う鋼鉄の足枷。
@@ -6446,20 +6977,29 @@ They are made of solid steel.
 頑丈な鋼鉄製。
 The enemy attaches your ankle cuffs together!
 足枷を鎖で繋がれてしまった！
-Linked Steel Cuffs
+Maid Cuff Link
 メイドの足枷の鎖
 A pair of steel cuffs used by the Maidforce.
-足枷同士をつなぐ鎖。
+メイドフォースの使う、足枷同士をつなぐ鎖。
 They are made of solid steel.
 頑丈な鋼鉄製。
 The ankle cuff chain detaches!
 足枷同士をつなぐ鎖が外れた！
+
 Maid Collar
 メイドの首輪
 A collar for operatives of the Maidforce, a group of covert saboteurs.
 秘密工作員集団メイドフォースの首輪。
 It's reinforced with metal and guarded with an expert-level lock.
 金属で補強され、かなり難しい錠前がかけられている。
+Maid Gag
+メイドギャグ
+Maid Security Gag
+メイドのセキュリティギャグ
+A muzzle with a long, mouth-filling plug that muffles speech completely.
+内側に長い棒のついたマズル。正しい発音ができなくなる。
+Reinforced and secured with a disc lock to ensure unruly maids don't skip their duty.
+躾のなっていないメイドが仕事をサボらないよう、ディスクロックでしっかり固定されている猿轡。
 Plug Gag
 プラグギャグ
 A gag with a long, mouth-filling plug that muffles speech completely.
@@ -6474,6 +7014,44 @@ A well-fitted mask, covering your entire head neatly and locking in place.
 顔全体を包み込み、しっかりとフィットするマスク。
 It has eyeholes for you to see out of, but blocks access to the face.
 外を見るための穴はあるが、顔の拘束具に触れることはできなくなる。
+
+Shadow Heels
+影のヒール
+A set of impractical heels that clasp around your ankles. They make it hard to walk.
+高いヒールの付いた、足首丈の靴。とても歩きにくい。
+The material is stronger than leather, and flexes to make struggling difficult.
+革よりも固く柔軟。とても抜け出しにくい。
+Shadow Jacket
+影のジャケット
+A tight straitjacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
+別の世界の素材で作られた拘束衣。光を反射する素材でできており、瞬く星々が自身の苦境を観察しているかのように見える。
+Its grip encases you tightly, but the material is weaker than most metals.
+しっかりと身体を包み込んでいるが、他の金属よりも脆い。
+Shadow Armbinder
+影のアームバインダー
+A tight armbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
+別の世界の素材で作られたアームバインダー。光を反射する素材でできており、瞬く星々が自身の苦境を観察しているかのように見える。
+Its grip encases you tightly, but the material is weaker than most metals.
+しっかりと身体を包み込んでいるが、他の金属よりも脆い。
+Shadow Boxbinder
+影のボックスバインダー
+A tight boxbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
+別の世界の素材で作られたボックスバインダー。光を反射する素材でできており、瞬く星々が自身の苦境を観察しているかのように見える。
+Its grip encases you tightly, but the material is weaker than most metals.
+しっかりと身体を包み込んでいるが、他の金属よりも脆い。
+Shadow Legbinder
+影のレッグバインダー
+A tight legbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
+別の世界の素材で作られたレッグバインダー。光を反射する素材でできており、瞬く星々が自身の苦境を観察しているかのように見える。
+Its grip encases you tightly, but the material is weaker than most metals.
+しっかりと身体を包み込んでいるが、他の金属よりも脆い。
+Obsidian Yoke
+黒曜石のヨーク
+A yoke made from shining obsidian, stars glittering in the darkness. It pins your arms uselessly at your sides.
+黒く輝く黒曜石で作られた、顔の横で両手を固定する拘束具。
+It's made of a dark, glistening volcanic metal.
+黒く輝く黒曜石でできている。
+
 Obsidian Muzzle
 黒曜石のマズル
 A muzzle made from segmented metal pieces, fitting securely over your face.
@@ -6490,16 +7068,16 @@ Obsidian Cuffs
 黒曜石の手枷
 A pair of cuffs that make it easy to restrain you.
 拘束しやすい手枷
-It's made of a dark, glistening volcanic metal.
-黒く輝く黒曜石でできている。
+It's made of a dark, shiny metal. If you hold it close you hear whispering.
+黒く輝く黒曜石でできている。耳に近づけると、かすかにささやき声が聞こえる。
 The enemy attaches your wrist cuffs together!
 手枷を取り付けられた！
 Obs. Wrist Chain
 黒曜石の手枷の鎖
 A pair of cuffs keeping your arms behind your back.
 手枷をつなぐための鎖。
-It's made of a dark, glistening volcanic metal.
-黒く輝く黒曜石でできている。
+It's made of a dark, shiny metal. If you hold it close you hear whispering.
+黒く輝く黒曜石でできている。耳に近づけると、かすかにささやき声が聞こえる。
 Your cuffs detatch!
 手枷の鎖を外した！
 The enemy attaches your elbow cuffs together!
@@ -6508,16 +7086,16 @@ Obs. Wrist Chain
 黒曜石の手枷の鎖
 A full set of cuffs keeping your arms in a strict elbow tie!
 手枷を後ろ手につなぐための鎖。
-It's made of a dark, glistening volcanic metal.
-黒く輝く黒曜石でできている。
+It's made of a dark, shiny metal. If you hold it close you hear whispering.
+黒く輝く黒曜石でできている。耳に近づけると、かすかにささやき声が聞こえる。
 Your wrists detatch, leaving your elbows still bound!
 手首の鎖が外れても、肘は繋がったままだ！
 Obs. Elbow Chain
 黒曜石の肘枷の鎖
 A pair of cuffs keeping your elbows locked together!.
 肘枷同士をつなぐための鎖。
-It's made of a dark, glistening volcanic metal.
-黒く輝く黒曜石でできている。
+It's made of a dark, shiny metal. If you hold it close you hear whispering.
+黒く輝く黒曜石でできている。耳に近づけると、かすかにささやき声が聞こえる。
 Your elbows detatch!
 肘の鎖を外した！
 The enemy attaches your wrist cuffs back together!
@@ -6526,22 +7104,22 @@ Obsidian Leg Cuffs
 黒曜石の脚枷
 A pair of cuffs chaining your legs together.
 ふとももを拘束する枷。
-It's made of a dark, glistening volcanic metal.
-黒く輝く黒曜石でできている。
+It's made of a dark, shiny metal. If you hold it close you hear whispering.
+黒く輝く黒曜石でできている。耳に近づけると、かすかにささやき声が聞こえる。
 Obsidian Ankle Cuffs
 黒曜石の足枷
 A pair of cuffs chaining your legs together.
 足首を拘束する枷。
-It's made of a dark, glistening volcanic metal.
-黒く輝く黒曜石でできている。
+It's made of a dark, shiny metal. If you hold it close you hear whispering.
+黒く輝く黒曜石でできている。耳に近づけると、かすかにささやき声が聞こえる。
 The enemy attaches your ankle cuffs together!
 足首の枷に鎖を取り付けられた！
 Cuffs Chain
 黒曜石の足枷の鎖
 A pair of cuffs chaining your legs together.
 足首の枷同士をつなげる鎖。
-It's made of a dark, glistening volcanic metal.
-黒く輝く黒曜石でできている。
+It's made of a dark, shiny metal. If you hold it close you hear whispering.
+黒く輝く黒曜石でできている。耳に近づけると、かすかにささやき声が聞こえる。
 The ankle cuff chain detaches!
 足枷の鎖を外した！
 Crystal Cuffs
@@ -6590,12 +7168,12 @@ Crystal Ankle Cuffs
 クリスタルの足枷
 A pair of cuffs chaining your legs together.
 足首を拘束する枷。
-It's made of a glowing, brittle material.
-光る脆い鉱石でできている。
+It's made of a glowing, brittle material. You feel your energy flowing into it...
+光る脆い鉱石でできている。装備していると、エネルギーが枷に吸われていく……
 The enemy attaches your ankle cuffs together!
 足首の枷に鎖を取り付けられた！
 Cuffs Chain
-クリスタルの足枷の鎖
+足枷の鎖
 A pair of cuffs chaining your legs together.
 足首の枷同士をつなげる鎖。
 It's made of a glowing, brittle material.
@@ -6630,7 +7208,7 @@ Your wrists detatch, leaving your elbows still bound!
 手首の鎖が外れても、肘は繋がったままだ！
 Slave Elbow Chain
 奴隷の肘枷の鎖
-A pair of cuffs keeping your elbows locked together!.
+A pair of cuffs keeping your elbows locked together!
 肘枷同士をつなぐための鎖。
 It's made of a gold-tinted metal with a magical enchantment.
 エンチャントが施された金色の金属でできている。
@@ -6655,7 +7233,7 @@ The enemy attaches your ankle cuffs together!
 Slave Cuffs Chain
 奴隷の足枷の鎖
 A pair of cuffs chaining your legs together.
-足首の枷同士をつなげる鎖。
+足首の同士を繋げる枷。
 It's made of a gold-tinted metal with a magical enchantment.
 エンチャントが施された金色の金属でできている。
 The ankle cuff chain detaches!
@@ -6836,43 +7414,43 @@ It is an organic material that reforms around every cut you make!
 いくら切ってもすぐに再生する生きた拘束具。
 Rubber (Feet)
 ゴム(つま先)
-Sticky rubber that has fused itself into a shell around your body.
+Sticky rubber that has fused itself into a skintight layer.
 身体にピッタリと張り付く粘着性のゴム。
 There's no struggling out now, but since it's solid it may be cuttable.
 スライムよりももがくのは難しいが、再生能力は失われたので切れるかもしれない。
 Rubber (Ankles)
 ゴム（足）
-Sticky rubber that has fused itself into a shell around your body.
+Sticky rubber that has fused itself into a skintight layer.
 身体にピッタリと張り付く粘着性のゴム。
 There's no struggling out now, but since it's solid it may be cuttable.
 スライムよりももがくのは難しいが、再生能力は失われたので切れるかもしれない。
 Rubber (Legs)
 ゴム（脚）
-Sticky rubber that has fused itself into a shell around your body.
+Sticky rubber that has fused itself into a skintight layer.
 身体にピッタリと張り付く粘着性のゴム。
 There's no struggling out now, but since it's solid it may be cuttable.
 スライムよりももがくのは難しいが、再生能力は失われたので切れるかもしれない。
 Rubber (Arms)
 ゴム（腕）
-Sticky rubber that has fused itself into a shell around your body.
+Sticky rubber that has fused itself into a skintight layer.
 身体にピッタリと張り付く粘着性のゴム。
 There's no struggling out now, but since it's solid it may be cuttable.
 スライムよりももがくのは難しいが、再生能力は失われたので切れるかもしれない。
 Rubber (Hands)
 ゴム（手）
-Sticky rubber that has fused itself into a shell around your body.
+Sticky rubber that has fused itself into a skintight layer.
 身体にピッタリと張り付く粘着性のゴム。
 There's no struggling out now, but since it's solid it may be cuttable.
 スライムよりももがくのは難しいが、再生能力は失われたので切れるかもしれない。
 Rubber (Mouth)
 ゴム（口）
-Sticky rubber that has fused itself into a shell around your body.
+Sticky rubber that has fused itself into a skintight layer.
 身体にピッタリと張り付く粘着性のゴム。
 There's no struggling out now, but since it's solid it may be cuttable.
 スライムよりももがくのは難しいが、再生能力は失われたので切れるかもしれない。
 Rubber (Head)
 ゴム（顔）
-Sticky rubber that has fused itself into a shell around your body.
+Sticky rubber that has fused itself into a skintight layer.
 身体にピッタリと張り付く粘着性のゴム。
 There's no struggling out now, but since it's solid it may be cuttable.
 スライムよりももがくのは難しいが、再生能力は失われたので切れるかもしれない。
@@ -6920,46 +7498,46 @@ It is an organic material that reforms around every cut you make!
 いくら切ってもすぐに再生する生きた拘束具。
 Proto-Rubber (Feet)
 プロトラバー（つま先）
-Sticky slime that has fused itself into a shell around your body.
+Sticky slime that has fused itself into a skintight layer.
 身体にピッタリと張り付く粘着性のゴム。
 There's no struggling out now, but since it's solid it may be cuttable.
-プロトスライムよりももがくのは難しいが、再生能力は失われたので切れるかもしれない。
+ゴムに変わったため、もがいて抜け出しにくくなったが、再生能力は失われたので切れるかもしれない。
 Proto-Rubber (Ankles)
 プロトラバー（足）
-Sticky slime that has fused itself into a shell around your body.
+Sticky slime that has fused itself into a skintight layer.
 身体にピッタリと張り付く粘着性のゴム。
 There's no struggling out now, but since it's solid it may be cuttable.
-プロトスライムよりももがくのは難しいが、再生能力は失われたので切れるかもしれない。
+ゴムに変わったため、もがいて抜け出しにくくなったが、再生能力は失われたので切れるかもしれない。
 Proto-Rubber (Legs)
 プロトラバー（脚）
-Sticky slime that has fused itself into a shell around your body.
+Sticky slime that has fused itself into a skintight layer.
 身体にピッタリと張り付く粘着性のゴム。
 There's no struggling out now, but since it's solid it may be cuttable.
-プロトスライムよりももがくのは難しいが、再生能力は失われたので切れるかもしれない。
+ゴムに変わったため、もがいて抜け出しにくくなったが、再生能力は失われたので切れるかもしれない。
 Proto-Rubber (Arms)
 プロトラバー（腕）
-Sticky slime that has fused itself into a shell around your body.
+Sticky slime that has fused itself into a skintight layer.
 身体にピッタリと張り付く粘着性のゴム。
 There's no struggling out now, but since it's solid it may be cuttable.
-プロトスライムよりももがくのは難しいが、再生能力は失われたので切れるかもしれない。
+ゴムに変わったため、もがいて抜け出しにくくなったが、再生能力は失われたので切れるかもしれない。
 Proto-Rubber (Hands)
 プロトラバー（手）
-Sticky slime that has fused itself into a shell around your body.
+Sticky slime that has fused itself into a skintight layer.
 身体にピッタリと張り付く粘着性のゴム。
 There's no struggling out now, but since it's solid it may be cuttable.
-プロトスライムよりももがくのは難しいが、再生能力は失われたので切れるかもしれない。
+ゴムに変わったため、もがいて抜け出しにくくなったが、再生能力は失われたので切れるかもしれない。
 Proto-Rubber (Mouth)
 プロトラバー（口）
-Sticky slime that has fused itself into a shell around your body.
+Sticky slime that has fused itself into a skintight layer.
 身体にピッタリと張り付く粘着性のゴム。
 There's no struggling out now, but since it's solid it may be cuttable.
-プロトスライムよりももがくのは難しいが、再生能力は失われたので切れるかもしれない。
+ゴムに変わったため、もがいて抜け出しにくくなったが、再生能力は失われたので切れるかもしれない。
 Proto-Rubber (Head)
 プロトラバー（顔）
-Sticky slime that has fused itself into a shell around your body.
+Sticky slime that has fused itself into a skintight layer.
 身体にピッタリと張り付く粘着性のゴム。
 There's no struggling out now, but since it's solid it may be cuttable.
-プロトスライムよりももがくのは難しいが、再生能力は失われたので切れるかもしれない。
+ゴムに変わったため、もがいて抜け出しにくくなったが、再生能力は失われたので切れるかもしれない。
 Tape Mittens
 テープミトン
 Sticky tape that holds your hands into a fist!
@@ -7080,6 +7658,23 @@ It is said that even heaven has its hierarchies...
 天国にもヒエラルキーがあるとは……
 A shining muzzle made of holy metal. Nothing can touch it.
 聖なる金属でできた輝くマズル。どういうわけか触れることができない。
+
+Cleave Gag
+噛ませ猿轡
+A piece of cloth forced between your lips.
+口に噛ませ、舌を噛みちぎらせないようにする細長い布の猿轡。
+Thick Cleave Gag
+太い噛ませ猿轡
+A piece of cloth that makes it hard to speak.
+口に噛ませ、発音を封じる太い布の猿轡。
+It's somewhat effective.
+中々効果的だ。
+Knotted Cloth Gag
+コブ付き噛ませ猿轡
+A piece of cloth tied in a knot and tied over your mouth.
+口に噛ませ、発音を封じるコブの付いた猿轡。
+It's pretty effective at keeping you quiet.
+とても効果的だ。
 Blindfold
 布の目隠し
 A piece of cloth secured onto your face and blocking vision.
@@ -7099,7 +7694,7 @@ A piece of cloth tightened over your mouth.
 On its own it's not very restrictive.
 単体なら簡単に抜け出せる。
 Blindfold
-スカーフの目隠し
+目隠し
 A scarf secured onto your face and blocking vision.
 顔に巻き付くスカーフの目隠し。
 You can still see through the gap around your nose.
@@ -7133,44 +7728,80 @@ Arm Belts
 A ludicrous amount of belts secured with a buckle.
 しっかりと固定された大量のベルト。
 Lockable and fully adjustable to ensure snugness.
-ぴったりとフィットするように、細い位置で調整可能。
+ぴったりとフィットするように、細かい位置で調整可能。
 Leg Belts
 脚のベルト
 A ludicrous amount of belts secured with a buckle.
 しっかりと固定された大量のベルト。
 Lockable and fully adjustable to ensure snugness.
-ぴったりとフィットするように、細い位置で調整可能。
+ぴったりとフィットするように、細かい位置で調整可能。
 Ankle Belts
 足のベルト
 A ludicrous amount of belts secured with a buckle.
 しっかりと固定された大量のベルト。
 Lockable and fully adjustable to ensure snugness.
-ぴったりとフィットするように、細い位置で調整可能。
-Wrist Cuffs
+ぴったりとフィットするように、細かい位置で調整可能。
+Iron Cuffs
 手枷
-Heavy shackles with a rudimentary lock.
-簡単な錠前の付いた重い枷。
+Tough shackles with a rudimentary lock.
+簡単な錠前の付いた枷。
 You could pick these with a hairpin.
 ロックピックで簡単に開けられる。
 Shackles
 足枷
 Heavy shackles with a rudimentary lock.
-簡単な錠前の付いた重い枷。
+簡単な錠前の付いた枷。
 You could pick these with a hairpin.
 ロックピックで簡単に開けられる。
-Leg Shackles
+
+Thumbcuffs
+指枷
+Interferes with the use of your hands.
+手の仕様を妨害する枷。
+Another layer of restriction.
+珍しい箇所の拘束。
+Hinged Handcuffs
+ヒンジ付き手錠
+Hinged cuffs with a rudimentary lock.
+簡単な錠前の付いたヒンジの枷
+Difficult to unlock, let alone pick by yourself.
+一人で解錠するのは難しい。
+
+Heavy Handcuffs
+重い手枷
+A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock.
+簡単な錠前の付いたアイリッシュ8スタイルの手枷。
+The position is too awkward to free yourself, even with a key...
+鍵を使っても抜け出すのが難しい……
+
+Heavy Leg Irons
+重い脚枷
+A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock.
+簡単な錠前の付いたアイリッシュ8スタイルの脚枷。
+The position is awkward, but it's on your feet so you can remove them yourself if you have free hands.
+鍵を使っても抜け出すのが難しい……
+
+Thigh Shackles
 脚枷
 Heavy shackles with a rudimentary lock.
 簡単な錠前の付いた重い枷。
 You could pick these with a hairpin.
 ロックピックで簡単に開けられる。
+Linked Thigh Shackles
+脚枷の鎖
+Heavy shackles with a rudimentary lock.
+簡単な錠前の付いた重い枷。
+You could pick these with a hairpin.
+ロックピックで簡単に開けられる。
+The leg shackles chain detaches!
+脚枷をつなぐ鎖が外れた！
 Ankle Shackles
 足枷
 Heavy shackles with a rudimentary lock.
 簡単な錠前の付いた重い枷。
 You could pick these with a hairpin.
 ロックピックで簡単に開けられる。
-Ankle Shackles
+Linked Ankle Shackles
 足枷の鎖
 The enemy attaches your ankle cuffs together!
 足枷に鎖を取り付けられた！
@@ -7371,7 +8002,7 @@ As you strike again, your weapon is pulled out of your grasp!
 Your weapon slips out of your hand as you try to cut with it...
 武器がてから滑り落ちた……
 You put away the WEAPONNAME
-WEAPONNAME を地面に置いた。
+WEAPONNAME を外した。
 You equip the WEAPONNAME
 WEAPONNAME を装備した。
 Unequip
@@ -7455,7 +8086,7 @@ Casting Runes
 Mystical runes used for casting spells
 呪文を行使する神秘のルーン
 Embers
-埋み火
+ぼや
 Ignition source. Blocks vision.
 着火源。視界を遮る。
 Inferno
@@ -7553,11 +8184,11 @@ A book of manipulative spells
 Components:
 使用部位:
 Verbal
-言葉
+口
 Arm Movements
-腕の動き
+腕
 Leg Gestures
-足のジェスチャー
+足
 The incantation comes out as a garbled mess!
 でたらめな呪文が出た！
 You can't raise your arms to cast the spell!
@@ -7575,7 +8206,7 @@ Last Page
 Random Page (your hands are tied)
 Random Page (手が縛られている)
 Verbal
-言葉
+口
 Arms
 腕
 Legs
@@ -8139,7 +8770,7 @@ Choose target AoE location
 Raincloud
 レイン
 After 3 turns, rain falls, creating a 3x3 grid of water and dealing DamageDealt acid damage to enemies within.
-3ターン後、3x3の範囲に雨が降り、水が生成する。その中にいる敵に DamageDealt 酸ダメージを与える。
+3ターン後、3x3の範囲に雨が降り、水が生成する。中にいる敵に DamageDealt 酸ダメージを与える。
 You create a stormy cloud!
 雨雲を呼び出した！
 Choose target AoE location
@@ -8155,7 +8786,7 @@ Choose target AoE location (5x5)
 Healing Light
 ヒーリングライト
 Channel to heal 15 hitpoints per turn to summoned allies within a 5x5 area.
-5x5 エリア内味方をターン毎に15ポイント回復させる。
+5x5 エリア内の味方を、ターン毎に15ポイント回復させる。
 You conjure a healing light!
 癒やしの光を呼び起こした！
 Choose target AoE location (5x5)
@@ -8469,7 +9100,7 @@ Your willpower provides you with additional strength! (+AMOUNT%)
 Athlete
 アスリート
 Sprinting costs 40% less stamina.
-スプリントのスタミナ消費が40%低下する。
+走りのスタミナ消費が40%低下する。
 Sneaky
 隠密
 You are harder to see when waiting.
@@ -8513,7 +9144,7 @@ Increases the size of the passive mana pool by +100.
 Archmage
 アークメイジ
 Upcasted spells cost 25% less mana.
-強化した呪文のマナコストを25%現象する。
+強化した呪文のマナコストを25%低減する。
 Temperature Play
 温度プレイ
 Fire and Ice damage do 30% more damage to fully bound enemies.
@@ -8719,7 +9350,7 @@ You conjure a harness!
 The harness will appear next to you and fly toward the target point.
 ハーネスが隣に現れ、まっすぐ飛んでいった！
 Firecracker
-焼夷
+ファイアボム
 A small delayed explosion that deals DamageDealt fire damage.
 数ターン後に爆発し、 DamageDealt 火ダメージを与える爆弾を召喚する。
 You shout an incendiary retort!
@@ -8777,7 +9408,7 @@ Choose a helpless target
 Lesser Flash
 レッサーフラッシュ
 Ring
-指輪
+フラッシュリング
 Flash Bomb
 フラッシュバン
 Sparkles!
@@ -9734,6 +10365,8 @@ You breathe in the gas, and a wave of pleasure hits your whole body.
 ガスを吸い込むと、全身が性感帯になったかのように感じた。
 You breathe in the gas, and feel lethargic...
 あなたはガスを吸い込むと、力が抜けていった……
+Items
+インベントリ
 Inventory
 インベントリ
 Reputation
@@ -9783,7 +10416,7 @@ You need a higher level in SCHOOL magic to learn this spell.
 You need more spell points.
 スキルポイントが足りない。
 You don't have enough maximum mana to cast this spell!
-最大マナを超える呪文は唱えられない。
+最大マナを超える呪文は覚えられない。
 School:
 分野：
 Elements
@@ -9793,7 +10426,7 @@ Conjuration
 Illusion
 幻惑
 Generic
-ジェネリック
+パッシブスキル
 Learn Spell
 呪文を覚える
 Spell Points:
@@ -10177,9 +10810,9 @@ KeyAmount の魔法の鍵を持っている。試してみよう……
 You have KeyAmount key(s) for this item.
 KeyAmount の鍵を試してみた。
 The angel helps you struggle and use items
-天使が拘束具から抜け出すのを助けてくれる。
+天使は拘束具から抜け出すのを助けてくれる。
 The ghost helps you struggle and use items
-幽霊が拘束具から抜け出すのを助けてくれる。
+幽霊は拘束具から抜け出すのを助けてくれる。
 The ghost is unhelpful
 幽霊は助けにならない。
 Angel: Greetings!
@@ -10613,9 +11246,10 @@ Your command word is heard and the charger unlocks!
 Are you sure you want to attack?
 本当に攻撃する？
 Are you sure you want to go to the next level? (Click self to confirm)
+Are you sure you want to go to the next level? (Click self to confirm)
 次の階層へ(自身をクリックして決定)
 You shudder as you apply the RestraintName to yourself...
-RestraintName を自分につける……
+RestraintName を自身に取り付けた……
 You insert the RestraintName and close your belt's shield over it, with a click as it locks in place.
 RestraintName を付け、貞操帯を閉める……
 You attack the RestraintName and close your bra's shield over it, with a click as it locks in place.
@@ -10630,11 +11264,11 @@ You find a chastity belt, glowing magnificently, along with a strange crystal ne
 脇に奇妙なクリスタルの添えられた、輝く貞操帯を見つけた。
 A chastity belt of sleek, ancient design. While powered, it gives -30% miscast chance due to distraction and slowly regenerates stamina.
 洗練された古風なデザインの貞操帯。エネルギーがある間は、興奮値による詠唱失敗率を-30％し、スタミナの自然回復量を増加する。
-Belt of the devoted
+'Belt of the devoted'
 献身のベルト
 You tug at your chastity belt, but you can't even stick a finger inside because it's so tight...
 貞操帯を引っ張るが、きつくて指を中に入れることもできない……
-'Ancient Chastity Bra'
+Ancient Chastity Bra
 古代の貞操ブラ
 You find a chastity bra, glowing magnificently, along with a strange crystal next to it.
 脇に奇妙なクリスタルの添えられた、輝く貞操ブラを見つけた。
@@ -11016,10 +11650,68 @@ Standard
 なし
 Extra
 追加
+Less
+少ない
+Much Less
+とても少ない
 No pain, no gain.
 痛みなくして得るものなし
 Gain 10 extra perks, to give you a false sense of security.
 追加で10のパークポイントと偽りの安心感を得る。
+Lose 10 perk points, just to keep things interesting.
+パークポイントが10減る。ゲームを面白くするためにね。
+Lose 25 perk points, making things very interesting.
+パークポイントが25減る。ゲームをさらに面白くするためにね。
+
+Perk Progression Mode:
+階層ボーナス：
+Disabled
+なし
+Optional
+選択
+Mandatory
+強制
+Debuffs Only
+デバフのみ
+No perks between floors.
+階層を降った際に、パークが出なくなる。
+The standard mode. You may choose between one of three perk altars between floors.
+通常のモード。階層を下るごとに、3つのパークから1つだけ選べる。
+A twist on the standard mode. You must choose before progressing.
+3つのパークから必ず選ぶ必要がある。通常モードに一捻り。
+You must pick a debuff between floors before progressing.
+デバフのみが出現する。
+
+Perk Shrine Bondage:
+祭壇の拘束：
+Never
+なし
+Sometimes
+時々
+Always
+常に
+Perk shrines will not offer bondage as part of the deal.
+パークの祭壇からパークを受け取っても拘束されない。
+Bondage will sometimes be offered alongside perks.
+パークの祭壇からパークを受け取った時、稀に拘束される。
+Perk shrines are always accompanied by bondage.
+パークの祭壇からパークを受け取った時、常に拘束される。
+
+Perk Shrine Bondage Info:
+祭壇の拘束の説明：
+Hidden
+隠す
+Partial
+一部
+Full
+全部
+You do not know if a perk shrine will apply bondage.
+選んで見るまでわからない。
+You know that a perk shrine will apply bondage, but not what kind.
+祭壇に拘束されることはわかるが、種類まではわからない。
+You know the exact restraints a perk shrine will apply.
+祭壇に拘束される際、種類が全てわかる。
+
 Hard Mode:
 ハードモード
 Normal Mode
@@ -11082,9 +11774,9 @@ Save Codes
 セーブコード
 Roguelike
 ローグライク
-Grants a save code every floor you can write down. Autosaves only on floor start."
+Grants a save code every floor you can write down. Autosaves only on floor start.
 フロア毎にセーブコードが出現。フロアのはじめにオートセーブ。
-No save codes, forced autosaves. You are in it to win it."
+No save codes, forced autosaves. You are in it to win it.
 セーブなし。一本勝負。
 Prison Strictness:
 牢屋
@@ -16553,7 +17245,7 @@ Never! (PERCENT chance to avoid)
 (The SPEAKER waves)|Greetings,|I manufacture all sorts of goods.|Would you like to buy some?
 (SPEAKER は手を振っている)|やぁ。|私はいろんな商品を作っているんだ。|何か買っていくかい？
 (The SPEAKER drops her hammer and cracks her knuckles)|Put em up!
-(SPEAKER はハンマーを置き、指を鳴らしだした)|やめろ！
+(SPEAKER はハンマーを置き、指を鳴らしだした)|やる気か！？
 (The SPEAKER looks at you.)|But you already have one?
 (SPEAKER が見つめてきた)|でも、それはもう持っているだろう？
 (The SPEAKER folds her arms)|I don't do charity, ma'am.
@@ -16947,7 +17639,7 @@ Why don't we have a little fun?
 (Stop receiving help)
 (止める)
 (Never mind...)
-(まだ必要)
+(やめておく)
 (The SPEAKER will no longer help you.)
 (SPEAKER は拘束具から抜け出す手助けをやめた)
 (You sigh as you realize you really need her help.)
@@ -17853,7 +18545,7 @@ SPELL を強化する
 Upcast Level LEVEL
 強化レベル LEVEL
 Prerequisite
-前提
+前提：
 KDUnlocks,"Unlocks: 
 解放済み：
 You need to learn REQUIREDSPELL before you can learn this one.
@@ -18007,7 +18699,7 @@ Feel free to try.
 Mmmmmghh!
 「むむむぅ！」
 Sounds fun... but I really need to get going.
-「人形には少し興味があるけど、先に進まなきゃ」
+「人形には少し興味があるけど……先に進まなきゃ」
 Mmmmph...
 「んん……」
 (The Dollmaker folds her arms as she walks over)|All tight and shiny!|You'll be my prized possession~
@@ -18234,6 +18926,55 @@ The straps on your gag prevent you from loosening the blindfold!
 猿轡のベルトのせいで目隠しを緩ませられない。
 The straps on your gag keep your blindfold securely in place!
 猿轡のベルトが目隠しをしっかりと固定している。
+
+Revert
+戻す
+Confirm Revert?
+本当に戻す？
+Save
+保存
+Save Changes?
+この服装を保存する？
+Back to Menu
+メニューに戻る
+Back to Wardrobe
+着替えに戻る
+Confirm Strip?
+服を全て脱ぐ？
+Strip!
+ストリップ！
+Export Outfit
+服を読み込む
+Export AlwaysDress
+
+
+Gamma
+ガンマ値
+Original Color
+ベース色
+Contrast
+コントラスト
+Brightness
+明るさ
+Red
+Red
+Green
+Green
+Blue
+Blue
+Transparency
+透明度
+Reset Layer!
+色をリセット
+Export All Layers
+エクスポート
+Copy
+コピー
+Paste
+ペースト
+Preloading Character Assets: 
+キャラクターアセットをロード中：
+
 Items on Ground:
 アイテムが落ちている：
 Hide Items
@@ -18399,7 +19140,7 @@ Parry
 Dagger Parry
 ダガーパリィ
 +15 Block while holding a light weapon such as a knife or dagger.
-小さなを装備している間、ブロック値+15
+小さな装備をしている間、ブロック値+15
 Steadfast Guard
 堅牢
 +5 Block for each 50 max willpower you have, while holding a non-light weapon.
@@ -18540,6 +19281,12 @@ A tie keeping your feet secured together.
 足首同士を括り付ける縄。
 The ropes squeeze you gently.
 縄が優しく締め上げてくる。
+Toe Rope
+指縄
+A tie keeping your toes tightly together.
+両足の親指を括り付ける縄。
+The ropes squeeze you gently.
+縄が優しく締め上げてくる。
 Notebook Page
 ページ
 You're going to stay with me for a while~
@@ -18581,11 +19328,11 @@ Ancient
 Cursed
 呪い
 Heavy
-重装
+ヘビー
 Mage
 魔法
 Light
-軽装
+ライト
 Accessory
 アクセサリー
 Restraint
@@ -18634,6 +19381,86 @@ Boots
 ブーツ
 Toys
 オモチャ
+
+Spellbound Boxtie
+呪文の高手小手縛り
+A box tie keeping your arms secured behind your back.
+後ろ手に組んだ形で縛る呪文の縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Rope Cuffs
+呪文の手縄
+A quick tie for apprehending prisoners.
+囚人を素早く縛るための呪文の縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Ropework
+呪文の複雑な縄
+A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
+他の拘束具と繋ぎ合わせ、拘束を強固にするための縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Strict Spellbound Ropework
+呪文のとても複雑な縄
+The finishing touches on a tight and strict piece of ropework.
+複雑な縄をきつくしたもの。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Hogtie
+呪文のホッグタイ
+A very strict and tight hogtie, good for subduing unruly captives.
+手首と足首をつなぎ、暴れる捕虜を鎮圧する呪文の縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Hogtie
+呪文のホッグタイ
+A very strict and tight hogtie, good for subduing unruly captives.
+手首と足首をつなぎ、暴れる捕虜を鎮圧する呪文の縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Rope Belt
+呪文の縄のベルト
+A harness acting as a handle to pull you around
+囚人を引っ張るための縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Harness
+呪文の菱形縛り
+A harness that secures your other restraints and makes them tighter.
+他の拘束具と繋ぎ合わせ、拘束を強固にするための縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Crotch Rope
+呪文の股縄
+A tight rope impressing upon your most private areas...
+股に通された呪文の縄。歩く度に擦れる……
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Wrist Tie
+呪文の後ろ手縛り
+A wrist and elbow tie keeping your arms secured behind your back.
+後ろ手に縛るための呪文の縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Leg Tie
+呪文の脚縄
+A tie that hobbles your legs together..
+脚を縛り、歩きにくくするための縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Ankle Tie
+呪文の足縄
+A tie keeping your feet secured together.
+足首同士を括り付ける呪文の縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Toe Rope
+呪文の指縄
+A tie keeping your toes secured together.
+両足の親指を括り付ける縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+
 Magic Boxtie
 魔法の高手小手縛り
 A box tie keeping your arms secured behind your back.
@@ -18647,9 +19474,15 @@ A quick tie for apprehending prisoners.
 It's not very secure.
 簡単に抜け出せる。
 Magic Ropework
-複雑な縄
+複雑な魔法の縄
 A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
 他の拘束具と繋ぎ合わせ、拘束を強固にするための縄。
+It's not very secure.
+簡単に抜け出せる。
+Strict Magic Ropework
+とても複雑な魔法の縄
+The finishing touches on a tight and strict piece of ropework.
+複雑な縄をきつくしたもの。
 It's not very secure.
 簡単に抜け出せる。
 Magic Hogtie
@@ -18657,7 +19490,13 @@ Magic Hogtie
 A very strict and tight hogtie, good for subduing unruly captives.
 手首と足首をつなぎ、暴れる捕虜を鎮圧する魔法の縄。
 It's very secure. You tug on the rope connecting your feet and struggle.
-高手小手縛りと繋がっている。足や手を捩り、無理やり抜け出すしかない。
+腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
+Magic Hogtie
+魔法のホッグタイ
+A very strict and tight hogtie, good for subduing unruly captives.
+手首と足首をつなぎ、暴れる捕虜を鎮圧する魔法の縄。
+It's very secure. You tug on the rope connecting your feet and struggle.
+腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
 Magic Rope Belt
 魔法の縄のベルト
 A harness acting as a handle to pull you around
@@ -18685,7 +19524,7 @@ They glow with a trace of magic.
 Magic Leg Tie
 魔法の脚縄
 A tie that hobbles your legs together..
-脚を縛り、歩きにくくするための縄。
+脚を縛り、歩きにくくするための魔法の縄。
 They glow with a trace of magic.
 魔法の込められた縄。淡く輝いている。
 Magic Ankle Tie
@@ -18694,6 +19533,166 @@ A tie keeping your feet secured together.
 足首同士を括り付ける魔法の縄。
 They glow with a trace of magic.
 魔法の込められた縄。淡く輝いている。
+
+Holy Boxtie
+聖なる高手小手縛り
+A box tie keeping your arms secured behind your back.
+後ろ手に組んだ形で縛る聖なる縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+Holy Rope Cuffs
+聖なる手縄
+A quick tie for apprehending prisoners.
+囚人を素早く縛るための聖なる縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+Holy Ropework
+複雑な聖なる縄
+A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
+他の拘束具と繋ぎ合わせ、拘束を強固にするための縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+Strict Holy Ropework
+とても複雑な聖なる縄
+The finishing touches on a tight and strict piece of ropework.
+複雑な縄をきつくしたもの。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+Holy Hogtie
+聖なるホッグタイ
+A very strict and tight hogtie, good for subduing unruly captives.
+手首と足首をつなぎ、暴れる捕虜を鎮圧する聖なる縄。
+It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle.
+腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
+Holy Hogtie
+聖なるホッグタイ
+A very strict and tight hogtie, good for subduing unruly captives.
+手首と足首をつなぎ、暴れる捕虜を鎮圧する聖なる縄。
+It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle.
+腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
+Holy Rope Belt
+聖なる縄のベルト
+A harness acting as a handle to pull you around
+囚人を引っ張るための縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+Holy Rope Harness
+聖なる菱形縛り
+A harness that secures your other restraints and makes them tighter.
+他の拘束具と繋ぎ合わせ、拘束を強固にするための縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+Holy Crotch Rope
+聖なる股縄
+A tight rope impressing upon your most private areas...
+股に通された聖なる縄。歩く度に擦れる……
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+Holy Wrist Rope
+聖なる後ろ手縛り
+A wrist and elbow tie keeping your arms secured behind your back.
+後ろ手に縛るための聖なる縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+Holy Leg Ropes
+聖なる脚縄
+A tie that hobbles your legs together..
+脚を縛り、歩きにくくするための縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+Holy Ankle Ropes
+聖なる足縄
+A tie keeping your feet secured together.
+足首同士を括り付ける聖なる縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+Holy Toe Rope
+聖なる指縄
+A tie keeping your toes secured together.
+両足の親指を括り付ける聖なる縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+
+
+Mithril Boxtie
+ミスリルの高手小手縛り
+A box tie keeping your arms secured behind your back.
+後ろ手に組んだ形で縛る縄。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+Mithril Rope Cuffs
+ミスリルの魔法の手縄
+A quick tie for apprehending prisoners.
+囚人を素早く縛るための縄。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+Mithril Ropework
+ミスリルの複雑な縄
+A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
+他の拘束具と繋ぎ合わせ、拘束を強固にするための縄。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+Strict Mithril Ropework
+ミスリルのとても複雑な縄
+The finishing touches on a tight and strict piece of ropework.
+複雑な縄をきつくしたもの。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+Mithril Hogtie
+ミスリルのホッグタイ
+A very strict and tight hogtie, good for subduing unruly captives.
+手首と足首をつなぎ、暴れる捕虜を鎮圧するミスリルの縄。
+It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle.
+腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
+Mithril Hogtie
+ミスリルのホッグタイ
+A very strict and tight hogtie, good for subduing unruly captives.
+手首と足首をつなぎ、暴れる捕虜を鎮圧する縄。
+It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle.
+腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
+Mithril Rope Belt
+ミスリル縄のベルト
+A harness acting as a handle to pull you around
+囚人を引っ張るための縄。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+Mithril Rope Harness
+ミスリルの菱形縛り
+A harness that secures your other restraints and makes them tighter.
+他の拘束具と繋ぎ合わせ、拘束を強固にするための縄。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+Mithril Crotch Rope
+ミスリルの股縄
+A tight rope impressing upon your most private areas...
+股に通された縄。歩く度に擦れる……
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+Mithril Wrist Rope
+ミスリルの後ろ手縛り
+A wrist and elbow tie keeping your arms secured behind your back.
+後ろ手に縛るための縄。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+Mithril Leg Ropes
+ミスリルの脚縄
+A tie that hobbles your legs together..
+脚を縛り、歩きにくくするための縄。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+Mithril Ankle Ropes
+ミスリルの足縄
+A tie keeping your feet secured together.
+足首同士を括り付ける縄。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+Mithril Toe Ropes
+ミスリルの指縄
+A tie keeping your toes secured together.
+両足の親指を括り付ける縄。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+
 Dark Portal
 ダークポータル
 They are trying to take you somewhere!
@@ -18730,46 +19729,46 @@ The liquid metal cube expands across your body and hardens, taking the form of r
 リキッドメタルキューブが身体にまとわりつき、固くなっていく！ (+RestraintAdded)
 Liquid Metal (Feet)
 液体金属(つま先)
-A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion.
+A metallic substance that is both flexible and hard. It weighs you down, reducing evasion.
 柔軟でありながら非常に硬い金属物質。重量があるため、回避力が低下する。
-It will be quite difficult to escape this.
+Forming a skintight layer, it will be quite difficult to escape this.
 抜け出すのは極めて難しい。
 Liquid Metal (Ankles)
 液体金属(足)
-A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion.
+A metallic substance that is both flexible and hard. It weighs you down, reducing evasion.
 柔軟でありながら非常に硬い金属物質。重量があるため、回避力が低下する。
-It will be quite difficult to escape this.
-抜け出すのは極めて難しい。
+Forming a skintight layer, it will be quite difficult to escape this.
+形を変え、肌にピッタリと張り付いてくる。抜け出すのは極めて難しい。
 Liquid Metal (Legs)
 液体金属(脚)
-A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion.
+A metallic substance that is both flexible and hard. It weighs you down, reducing evasion.
 柔軟でありながら非常に硬い金属物質。重量があるため、回避力が低下する。
-It will be quite difficult to escape this.
-抜け出すのは極めて難しい。
+Forming a skintight layer, it will be quite difficult to escape this.
+形を変え、肌にピッタリと張り付いてくる。抜け出すのは極めて難しい。
 Liquid Metal (Arms)
 液体金属(腕)
-A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion.
+A metallic substance that is both flexible and hard. It weighs you down, reducing evasion.
 柔軟でありながら非常に硬い金属物質。重量があるため、回避力が低下する。
-It will be quite difficult to escape this.
-抜け出すのは極めて難しい。
+Forming a skintight layer, it will be quite difficult to escape this.
+形を変え、肌にピッタリと張り付いてくる。抜け出すのは極めて難しい。
 Liquid Metal (Hands)
 液体金属(手)
-A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion.
+A metallic substance that is both flexible and hard. It weighs you down, reducing evasion.
 柔軟でありながら非常に硬い金属物質。重量があるため、回避力が低下する。
-It will be quite difficult to escape this.
-抜け出すのは極めて難しい。
+Forming a skintight layer, it will be quite difficult to escape this.
+形を変え、肌にピッタリと張り付いてくる。抜け出すのは極めて難しい。
 Liquid Metal (Mouth)
 液体金属(口)
-A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion.
+A metallic substance that is both flexible and hard. It weighs you down, reducing evasion.
 柔軟でありながら非常に硬い金属物質。重量があるため、回避力が低下する。
-It will be quite difficult to escape this.
-抜け出すのは極めて難しい。
+Forming a skintight layer, it will be quite difficult to escape this.
+形を変え、肌にピッタリと張り付いてくる。抜け出すのは極めて難しい。
 Liquid Metal (Head)
 液体金属(顔)
-A metallic substance that is both flexible and extremely hard. It weighs you down, reducing evasion.
+A metallic substance that is both flexible and hard. It weighs you down, reducing evasion.
 柔軟でありながら非常に硬い金属物質。重量があるため、回避力が低下する。
-It will be quite difficult to escape this.
-抜け出すのは極めて難しい。
+Forming a skintight layer, it will be quite difficult to escape this.
+形を変え、肌にピッタリと張り付いてくる。抜け出すのは極めて難しい。
 The stairs dissolve right before you!
 眼の前の階段が消えていった！
 The stairs dissolve as you step onto them, pulling you with them to somewhere else.
@@ -19480,3 +20479,1636 @@ Belts within belts, a fractal belt pattern buckled into oblivion.
 チェーン属性。革での拘束値が20%増加し、デバフの持続時間が30%伸びる。アクティブ時：敵を手前に引き寄せ、少量の拘束値を加える。
 You pick up a staff of belts wrapped tightly in leather.
 革にベルトが絡まった杖を拾った。
+
+Binding Lock
+バインディングロック
+A LKTYP lock clasps on to one of your restraints!
+拘束具に LKTYP の鍵がかかった！
+You are caught in a constricting field! (Dmgdlt)
+収縮フィールドに囚われた！ (Dmgdlt)
+
+Resin Coating
+樹脂
+A layer of transparent resin derived from Green Latex. Unlike other forms of latex, this one is solid and fixes you in place.
+緑のゴムからできた、半透明な樹脂。他のゴムとは違い、囚われると指一本動かせない。
+It's like you're an art piece! If only you had some way to blast it off...
+精巧な彫刻のように固められてしまう。どうにかして吹き飛ばす方法があれば……
+
+You hear a motor whirring...
+モーターの作動音が聞こえる……
+A bubble of latex envelops you!
+ゴムの泡に包み込まれた！
+The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range.
+周囲のラテックスに攻撃を減衰させられる。物理ダメージが30％減少し、視界の範囲が狭くなる。
+
+Latex Bubble
+ラテックスバブル
+
+...Lab Assistant?
+ラボの研究員……？
+You rescue the lab assistant.
+ラボの研究員を救った。
+The assistant restrains you! (+RestraintAdded)
+研究員に拘束された！ (+RestraintAdded)
+The assistant gropes you playfully! (DamageTaken)
+研究員が愛撫してきた！ (DamageTaken)
+The assistant applies a lock! (DamageTaken)
+研究員に拘束具をロックされた！ (DamageTaken)
+The assistant splashes a solvent in your face, blinding you! (DamageTaken)
+研究員に奇妙な液体をかけられ、目潰しされた！ (DamageTaken)
+ 
+...Glue Technician?
+グルーの技術士……？
+You rescue the glue technician.
+グルーの技術士を救った！
+The technician slaps adhesive restraints onto your body! (+RestraintAdded)
+グルーの技術士に拘束された！ (+RestraintAdded)
+The technician polishes your restraints thoroughly! (DamageTaken)
+グルーの技術士が拘束具に塗料を塗ってきた！ (DamageTaken)
+The technician pours glue on you to make you stay still! (DamageTaken)
+グルーの技術士に接着剤をかけられた！ (DamageTaken)
+The technician inspects your restraints and adds a lock to spec! (DamageTaken)
+グルーの技術士に拘束具をロックされた！ (DamageTaken)
+
+
+Lab Assistant
+ラボの研究員
+The assistant envelops herself in her own bubble for protection.
+ラボの研究員はプロテクション・バブルの中に避難した！
+The assistant restrains you! (+RestraintAdded)
+研究員に拘束された！ (+RestraintAdded)
+The assistant gropes you playfully! (DamageTaken)
+研究員が愛撫してきた！ (DamageTaken)
+The assistant applies a lock! (DamageTaken)
+研究員に拘束具をロックされた！ (DamageTaken)
+The assistant splashes a solvent in your face, blinding you! (DamageTaken)
+研究員に奇妙な液体をかけられ、目潰しされた！ (DamageTaken)
+
+Glue Bomb
+グルーボム
+
+Glue Technician
+グルーの技術士
+The technician trips and glues herself to the floor.
+グルーの技術士は接着剤まみれの床につまずき、動けなくなった！
+The technician slaps adhesive restraints onto your body! (+RestraintAdded)
+グルーの技術士に拘束された！ (+RestraintAdded)
+The technician polishes your restraints thoroughly! (DamageTaken)
+グルーの技術士が拘束具に塗料を塗ってきた！ (DamageTaken)
+The technician pours glue on you to make you stay still! (DamageTaken)
+グルーの技術士に接着剤をかけられた！ (DamageTaken)
+The technician inspects your restraints and adds a lock to spec! (DamageTaken)
+グルーの技術士に拘束具をロックされた！ (DamageTaken)
+
+Quite sticky, innit?
+かなりベタベタしている。
+
+Bow
+弓
+Bow: This is a ranged weapon with a weapon ability.
+弓：アビリティを使用することで、屋を放つことができる。
+Magic
+魔法
+Magic: Ignores evasion of ghost type enemies, can be used with abilities that require magic weapons.
+魔法：ゴーストタイプの敵の回避力を無視する。魔法武器を必要とするアビリティを使用可能になる。
+Light
+軽い
+Light: Can be used to cut even with bound arms. 50% reduced accuracy penalty from being bound. Can be held in mouth.
+軽い：腕を縛られていても、拘束具をカットできる。縛られていることによる命中率ペナルティを50%軽減できる。口にくわえることができる。
+Offhand
+オフハンド
+Offhand: This weapon can be dual-wielded by some classes.
+オフハンド：二刀流可能。
+2 Handed
+両手持ち
+2 Handed: While wielding this as your primary weapon, you cannot wield an offhand weapon. Also this weapon can't be used while arms are tied.
+両手持ち：他の武器との二刀流が不可能。腕を縛られている時、この武器は使用できない。
+Hands-Free
+ハンズフリー
+Hands-Free: Weapon can be used without free hands.
+ハンズフリー：手を使わずに使用可能。
+Shield
+盾
+Shield: This weapon is intended for defensive use.
+盾：敵の攻撃を防御できる。
+Heavy
+重い
+Heavy: This weapon takes +1 turns to switch to. Cannot be reduced to 0 by perks or upgrades.
+重い：武器を変更するのに追加で１ターンかかる。この効果はパーク等で０にできない。
+Massive
+強打
+Massive: This weapon either stuns or slows you after attacking with it. Handle with care!
+強打：この武器で攻撃した後、気絶させるかスロウ状態にする。取り扱いには注意しよう！
+Illumination
+灯り
+Illumination: This weapon is a light source.
+灯り：装備すると光る。
+Dual Wield
+二刀流
+Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|(Must equip Dual Wield spell to equip an offhand weapon)
+空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|(このスキルを使用し、装備する武器を選択する必要がある)
+
+Equip Offhand
+もう一本の武器を装備する
+
+Make a ranged attack with the spear.
+槍で遠距離を攻撃する。
+Make a ranged attack with the spear.
+槍で遠距離を攻撃する。
+Make a ranged attack with the pike.
+パイクで遠距離を攻撃する。
+
+Ranged Attack
+遠距離攻撃
+
+
+Combat Training
+戦闘訓練
+Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 0 WP you gain 1 slow resist.
+戦闘訓練を積んだことにより、様々な効果を得た：|-WP10につき1%スタミナを軽減する。最大40%まで。|-減速効果がより早く切れる。|-WPが0のとき、減速効果を1軽減する。
+
+This is your current offhand weapon.
+反対の手に持っている武器
+You are unable to wield this weapon offhand at the moment.
+今この武器を振るうことはできない。
+This is your previously held weapon. Click to switch to it.
+以前持っていた武器。クリックで変更可能。
+
+You can't hold the WPN in your current state.
+今の状態では WPN を持つことはできない。
+
+Charge!
+吶喊！
+Dash and make an attack attack against a target within 2 tiles. If it deals 20% of their current hp in damage, you knock them back and take their place, otherwise they take +15% max hp crush damage from hitting the wall. If the attack misses, you still dash. Costs stamina equal to your sprint cost plus your attack cost.
+2マス以内の目標に向かって素早く突進し、攻撃を行う。相手の現在のHPの20％のダメージを与えた場合、ノックバックさせ、その場所に移動する。走りと攻撃コスト両方分のスタミナを消費する。
+You charge at the target!
+相手に向かって突撃した！
+Choose a target.
+ターゲットを選択
+
+You need to target an enemy.
+敵を選択する必要がある。
+You don't have enough stamina.
+スタミナが足りない。
+You need to be able to sprint.
+走れない。
+You need to be able to attack.
+攻撃できない。
+There is no room to dash!
+走るスペースがない。
+You missed!
+攻撃を外した！
+
+Tools of the Trade
+仕事道具
+Allows you to craft bombs, smoke bombs, flash bombs, and invisibility potions.
+爆弾、煙幕弾、閃光弾、透明ポーションを作ることができる。
+
+(You start having crafty thoughts...)|(Gunpowder can be obtained from chests or Alchemists)|(Ectoplasm can be obtained from ghosts)
+(アイテムを作ろう……)|(火薬は錬金術師や宝箱から入手できる)|(エクトプラズムは幽霊から入手できる)
+(You craft a Smoke Bomb)
+(煙幕弾を作った)
+(You craft 3 Flash Bombs)
+(閃光弾を3つ作った)
+(You craft a Bomb)
+(爆弾を作った)
+(You craft an Invisibility Potion)
+(透明ポーションを作った)
+(You don't have the required material)
+(必要素材を持っていない)
+(Use 1 Gunpowder to make a Smoke Bomb)
+(火薬1つで煙幕弾を作る)
+(Use 1 Gunpowder and one Ancient Crystal to make 3 Smoke Bombs)
+(火薬1つと古代のクリスタル1つで煙幕弾を3つ作る)
+(Use 2 Gunpowder to make a Bomb)
+(火薬2つで爆弾を作る)
+(Use 3 Ectoplasm to make an Invisibility Potion)
+(エクトプラズム3つで透明ポーションを作る)
+
+Gunpowder
+火薬
+Gunpowder
+火薬
+You toss some gunpowder on the floor! No picking it back up now...
+火薬を地面に撒いた！もう回収はできない……
+Highly flammable. Do not eat.
+発火注意。食べないでください。
+Creates gunpowder tiles on the target area, which can be ignited.
+指定したエリアに火薬を撒く。撒かれたエリアは発火可能。
+You pick up a sack of gunpowder.
+火薬入りの袋を見つけた。
+You toss some gunpowder on the floor!
+火薬を地面に撒いた！
+
+Dual Wield (Rogue)
+二刀流(盗賊)
+Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield 2-handed, heavy, or massive weapons in the offhand unless they are multiclass.|(Must equip Dual Wield spell to equip an offhand weapon)
+空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|盗賊はマルチクラスでない限り、両手持ち、重い、強打武器をオフハンドに装備できない。|(このスキルを使用し、装備する武器を選択する必要がある)
+Dual Wield (Wizard)
+二刀流(魔術師)
+Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)
+空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|魔術師はマルチクラスでない限り、オフハンドには魔法の武器のみを持つことができ、両手持ち、重い、強打の魔法の武器を装備した際、減速1を得る。|(このスキルを使用し、装備する武器を選択する必要がある)
+
+Arcane Tome
+アーケインの書
+Contains advanced formulas and thrilling tales of thirsty wizards.
+高度な魔法の技術と、知識に飢えた魔法使いのスリリングな物語を収録。
++5% magic damage. Offhand: Applies passive bonus.
+魔法ダメージ+5%。　オフハンド時：左記をパッシブ効果とする。
+You find a magical tome.
+魔導書を見つけた。
+Open the book. What can go wrong?
+本を開くことの何が悪い？
+
+Tome of Bondage
+緊縛の書
+Contains a malevolent spirit that wishes only to tie up damsels.
+少女を縛るのが大好きな悪鬼が封印されている。
++10% binding effectiveness. Offhand: Applies passive bonus.
+拘束力+10%。　オフハンド時：左記をパッシブ効果とする。
+You find a magical tome with a sealed padlock on it.
+錠前が施されている本を見つけた。
+Open the book. What can go wrong?
+本を開くことの何が悪い？
+
+Leyline Map
+レイラインマップ
+You know the location of ancient leylines and can draw upon 100 additional mana.
+古代のレイラインの場所を知っており、さらに100マナを引き出すことができる。
+
+KDPrereqFailHasWill,"You don't want to open the book... (need willpower)
+本を開くための気力がわかない……(気力が必要)
+Chain Spirit
+チェーンスピリット
+You open the book and suddenly a binding aura surrounds you!
+本を開くと、突然拘束のオーラが周囲に現れた！
+Mathematical Error
+数学的誤り
+You open the book to an unfinished page and the magic ink short-circuits!
+本を開くと未完成のページが現れ、魔法のインクがショートしてしまった！
+
+Cracks begin to form in your RestraintName!
+RestraintName に亀裂が入り始めた！
+Your RestraintName shatters and falls off!
+RestraintName は粉々に砕け落ちた！
+
+Load Hotbar 
+ホットバーをロード
+Save Hotbar 
+ホットバーをセーブ
+Clear Hotbar
+ホットバーをクリア
+
+Confirm clearing hotbar?
+本当にホットバーをクリアする？
+
+Add to Hotbar
+ホットバーに加える
+Back
+戻る
+
+Surrender: Your willpower is 0, giving huge penalties to struggling, Block, Evasion, and Bondage Resist.
+屈服：気力が0になっている。もがく、防御、回避、拘束回避に大きなペナルティ。
+
+Unbound Keybindings! -->
+未設定のキーあり -->
+KDKeysNoBoundEasterEgg,"You've not enough keys!!! -->
+未設定のキーが大量にあり -->
+KDKeysUpdate,"Update your Keybindings!!! -->
+キー設定をしてください。 -->
+I have altered the keybindings. Pray I do not alter them further.
+キーバインドを変更しました。これ以上変更しないことを祈っています。
+
+Barricade
+バリケード
+You knock over the barricade!
+バリケードを打ち壊した！
+
+Anti-Damsel Barrier
+少女監禁バリア
+You disable the barrier!
+バリアを解除した！
+
+Barrier
+バリア
+You shatter the barrier!
+バリアを打ち砕いた！
+
+Magical Barrier
+魔法のバリア
+You destroy the barrier!
+魔法のバリアを破壊した！
+
+Mass of Shadow Hands
+影の手の塊
+You banish the shadow hands!
+影の手を祓った！
+The shadow hands caress you and latch on! (DamageTaken)
+影の手がまとわりつき、大量の手で全身を愛撫してきた！ (DamageTaken)
+The shadow hands caress you and latch on! (+RestraintAdded)
+影の手がまとわりつき、大量の手で全身を愛撫してきた！ (+RestraintAdded)
+
+Shadow Chains
+影の鎖
+You break through the chains!
+影の鎖を突き破った！
+Conjured Chains
+召喚された鎖
+You break through the chains!
+召喚された鎖を突き破った！
+
+Magic
+魔法
+Divine
+神聖
+Magic Damage
+魔法ダメージ
+Physical Damage
+物理ダメージ
+Special Ability
+アビリティ
+Ranged
+遠距離
+Melee
+近距離
+Staff
+杖
+Shield
+盾
+Toy
+オモチャ
+Bondage
+拘束
+Teasing
+イタズラ
+
+A rope trap springs upon you!
+縄の罠が作動した！
+A ribbon trap springs upon you!
+リボンの罠が作動した！
+A chain trap springs upon you!
+鎖の罠が作動した！
+Magical vines wrap around you suddenly!
+魔法のツタが絡みついてきた！
+A belt trap springs upon you!
+ベルトの罠が作動した！
+You find yourself suddenly bound tightly by magic gear!
+気がつくと、魔法の拘束具で拘束されていた！
+Magical rubber emerges from the floor and encases you!
+地面から湧き出た魔法のゴムに包み込まれてしまった！
+Slime appears at your feet and starts encasing you!
+スライムが足にまとわりつき、体を覆い始めた！
+You find yourself suddenly bound tightly in latex gear!
+気がつくと、ラテックスの拘束具で拘束されていた！
+A rubber cube rushes out of the floor and engulfs you!
+地面からせり上がってきたゴムの箱に取り込まれてしまった！
+
+Sharp Claws
+鋭利な爪
+While your hands aren't covered, your attacks deal 10 bonus slash damage on hit and you can cut restraints.
+手が覆われていない時、攻撃時に追加で10の斬撃属性ダメージを与える。また、拘束具を切断できる。
+
+Powerful Bite
+獣の顎
+Gain access to the Bite spell.
+野生の魔法を使用可能になる。
+
+Slime Girl
+スライムガール
+You are a shapeshifting slime, granting +100 Glue Resist and can squeeze thru bars. Escaping is easy, but your powers are sealed while wearing cursed or magic restraints.
+姿を変えられるスライムだ。グルー耐性が+100され、格子をすり抜けられる。拘束から容易に抜け出せるようになるが、呪いか魔法の拘束具で力を封印される。
+Cybernetic
+サイボーグ
+You have mechanical parts, granting +10 Physical Armor, +15 Block, and +10% base physical damage. -100 Electric Resist.
+機械の体を持っている。物理アーマー+10、防御+15、物理ダメージ+10%、電気耐性-100。
+Magic Blood
+魔法使いの血統
+You come from a magical lineage, granting +10 Magic Armor and +10% magic damage.
+魔法使いの一族だ。魔法アーマー+10、魔法ダメージ+10%。
+Beast Girl
+ケモ少女
+You have animalistic features such as a bite spell, -10% attack stamina cost, and 10 slash damage on hit while hands are free. -100 Charm Resist.
+獣の血により、野生魔法を使用できる。攻撃に使用するスタミナ-10%、手が自由な時、10の斬撃属性ダメージを与える。魅了耐性-100。
+Demon Girl
+悪魔
+You are related to eldritch entities, granting +50% shadow damage and the ability to teleport between shadows. You are weak to holy restraints and bright light.
+禁忌の存在と関わりがある。影属性ダメージ+50%。影の間をてレポートする能力を得る。光に当たるか聖なる拘束具を装備している時、弱体化する。
+Angelic
+天使
+You are a minor angel sent to perform a specific task. You are forced to wear a full set of divine restraints, but gain an infinite mana pool, +20 Magic Armor, and +25% magic damage.
+特殊な任務を与えられた末端の天使だ。常に神の拘束具を着用しなければならないが、マナプールが無限になり、魔法アーマー+20、魔法ダメージ+25%。
+Elven Ancestry
+エルフの血族
+You were blessed with immortality by Ninril, Goddess of Restoration, granting -50% sprint cost and -30 Physical Resist. While your WP is above 0, you regenerate WP and heal nearby allies.
+ニンリルの加護を受けている。走りのスタミナ消費-50%、物理耐性-30。気力が1以上のとき、気力が自動回復し、近くの味方を回復する。
+Bast's Blessing
+バストの加護
+You were granted undead immortality by Bast, granting a bite, claws, catlike senses, and stamina regen scaling with your current WP. Your WP gain is halved and you get -100 Fire Resist.
+バストの不死の加護を受けている。牙と爪、そして猫の感知能力を持ち、スタミナの回復量が現在の気力の量に比例する。気力の回復量が半減し、火耐性-100。
+
+
+Minefield
+地雷原
+Booby traps set by enemies are much more common.
+敵が罠を頻繁に設置するようになる。
+Fortified
+要塞化
+Barricades set up by enemies do not expire, and enemies set them up even when not alerted.
+敵が設置したバリケードが時間で消えなくなり、警戒していなくても設置するようになる。
+
+
+Pass thru helpless allies
+完全拘束された味方を通り過ぎる
+Pass thru helpless allies
+完全拘束された敵を通り過ぎる
+Pass thru allies
+味方を通り過ぎる
+Pass thru neutrals
+中立NPCを通り過ぎる
+Pass thru summons
+召喚物を通り過ぎる
+Pass thru shopkeepers
+店主を通り過ぎる
+Pass thru special NPCs
+特殊NPCを通り過ぎる
+
+Stop when enemies are first sighted
+敵を発見したら停止
+Suppress during combat
+戦闘中は自動移動しない
+
+Shadowy Grasp
+影の掌握
+
+
+Magical Tornado
+魔法の嵐
+The tornado blasts you with powerful winds! (DamageTaken)
+強力な風に吹き飛ばされた！ (DamageTaken)
+You dispel the tornado!
+嵐を解呪した！
+Shield of Flame
+炎の盾
+You dispel the shield!
+炎の盾を解呪した！
+Overgrowth
+生い茂るツタ
+You cut through the overgrowth!
+生い茂るツタを刈り取った！
+Wall of Water
+水の壁
+You dispel the water wall!
+水の壁を解呪した！
+Ice Spikes
+氷の棘
+You break through the ice!
+氷の壁を打ち破った！
+Earth Monoliths
+地のモノリス
+You shatter the monoliths!
+地のモノリスを粉砕した！
+Gravitational Pull
+指向性重力
+The earth emits a deep hum below your feet...
+足元から地響きを感じる……
+Electrified Sphere
+超電磁スフィア
+You smash the electrified sphere!
+超電磁スフィアを破壊した！
+A bolt of lightning arcs to you! (DamageTaken)
+スフィアから放たれる電気に打たれた！ (DamageTaken)
+
+Earth Keeper
+アースキーパー
+The earth keeper sinks into the wall.
+アースキーパーは壁の中に沈んでいった。
+The earth keeper conjures restraints on your body! (+RestraintAdded)
+アースキーパーが身体に直接拘束具を召喚してきた！ (+RestraintAdded)
+The earth keeper locks a restraint!
+アースキーパーに拘束具をロックされた！
+The earth keeper knocks you away with a powerful kick!
+アースキーパーに吹き飛ばされた！
+The earth keeper massages you gently! (DamageTaken)
+アースキーパーに優しくマッサージされた！ (DamageTaken)
+The earth keeper knocks you away with a strong kick! (DamageTaken)
+アースキーパーは強力なキックを繰り出してきた！ (DamageTaken)
+
+Flame Keeper
+フレイムキーパー
+The flame keeper steps away into a fiery portal.
+フレイムキーパーは燃え盛るポータルに消えていった。
+The flame keeper grabs you, and volcanic restraints emerge from her armor! (+RestraintAdded)
+フレイムキーパーに掴まれると、彼女の鎧から燃え盛る拘束具が飛び出してきた！ (+RestraintAdded)
+The flame keeper locks a restraint!
+フレイムキーパーに拘束具をロックされた！
+The flame keeper flanks you!
+フレイムキーパーが飛び込んできた！
+The flame keeper offers a painful caress! (DamageTaken)
+フレイムキーパーに熱烈な愛撫をされた！ (DamageTaken)
+The flame keeper rides forth on a wave of fire!
+フレイムキーパーは炎の波に乗って距離を詰めてきた！
+
+Smoldering Trail
+くすぶる軌道
+Fiery Greatsword
+炎の大剣
+
+Tangling Vines
+タングルバイン
+Enchanted Bubble
+エンチャントバブル
+A bubble of magic water envelops you!
+魔法の泡に包まれた！
+Magical water reduces your accuracy and slows you significantly!
+魔法の泡で命中率と速度が大幅に低下している！
+KinkyDungeonBuffBattleTrance,You attack twice!
+二回攻撃！
+
+Access denied.
+アクセス拒否。
+Facility is under lockdown.
+工場はロックダウン中です。
+Please scan ID to continue.
+もう一度IDをかざしてください。
+
+Security Door
+セキュリティドア
+You break through the security door!
+セキュリティドアを破った！
+
+High Security Door
+ハイセキュリティドア
+You knock down the security door!
+ハイセキュリティドアをぶち破った！
+
+Blast Door
+ブラストドア
+You knock down the blast door!
+ブラストドアを破壊した！
+
+Sell for VLU gp
+VLU ゴールドで売る
+You sell the ITM for VLU gp.
+ITM を VLU ゴールドで売った
+You sell #x ITM for VLU gp.
+ #x 個の ITM を VLU ゴールドで売った
+
+
+Directional Vision
+視野が狭い
+Your vision is reduced except in the direction you are facing.
+向いている方向以外の視界が狭くなる
+Inertia
+慣性移動
+Turning 180 degrees while moving requires an extra turn
+向きを180度変える時、追加のターンが必要になる
+Heavy Inertia
+超慣性移動
+Turning 90 degrees while moving requires an extra turn
+向きを90度変える時、追加のターンが必要になる
+
+You turn.
+横に向いた
+You turn around.
+振り向いた
+
+Take Command
+コマンド入力
+Unlocks several spells for commanding allies.
+味方を指揮するための魔法を覚える
+
+Attention!
+注目！
+Select allies in an area
+エリア内の仲間を指定
+Designate allies in a 3x3 area to follow orders.
+3x3エリア内の味方を指定し、命令に従うようにする。
+You select the units.
+仲間を選択した。
+
+Deselect
+選択解除
+Select allies in an area
+エリア内の仲間を指定
+Deselect allies in a 3x3 area
+3x3エリア内の味方の選択を解除する。
+You deselect the units.
+仲間の選択を解除した。
+
+Toggle Selection
+選択切り替え
+Select ally
+仲間を選択
+Toggle an allied unit's selection status.
+エリア内の仲間の選択/選択解除を切り替える。
+You toggle the unit's selection.
+仲間の選択を切り替えた。
+
+Maneuver
+移動
+Select target location
+位置を選択
+Order all selected units to move to the targeted point.
+選択された味方を指定した位置に動かす。
+You order your units to move!
+指定した場所に移動！
+
+Hold Position
+待機
+Selected units do not pursue enemies.
+敵を追っていない味方を選択。
+Free Movement
+自由に動くようになった。
+Cancels Hold Position on selected units.
+選択した味方の待機を解除
+
+Deselect All
+選択全解除
+Deselects all selected units.
+全ての味方の選択を解除する。
+On Me!
+ついてきて！
+All selected units start following you
+全ての選択した味方がついてくる
+Disperse
+分散
+All selected units stop following you
+全ての選択した味方が追従しなくなる
+Defensive Order
+防御命令
+All selected units switch to Defensive mode
+全ての選択した味方が敵に対して消極的になる
+Aggressive Order
+攻撃命令
+All selected units switch to Aggressive mode
+全ての選択した味方が積極的に攻撃を仕掛ける
+
+Command
+コマンド
+Unique
+ユニーク
+
+Unlock using magic
+魔法を使って解錠
+
+Include Weapons,
+武器を含む
+Merge Armor
+鎧を統合
+
+You need a special tool to pick this kind of lock.
+特別なピッキングツールが必要みたいだ。
+
+The NPC does not have enough money left!
+十分なお金を持っていないようだ。
+
+You order the ENMY to come to you.
+ENMY に近くに来るよう命令を出した。
+You order the ENMY to disperse.
+ENMY に分散するよう命令を出した。
+You deselect all allies and select only the ENMY.
+ENMY 以外の選択を解除した。
+You remove the ENMY from your party.
+ENMY をパーティから追放した。
+
+Anti-Magic
+アンチマジック
+Enchanted
+エンチャント
+Cursed
+呪われている
+
+Long ago, war raged across the globe.|Countless lives were lost fighting over pieces of rock in a vast ocean.|People turned to science, religion, and magic, anything to escape this cruel fate.
+はるか昔、世界中を巻き込んだ戦争が勃発した。|広大な海に浮かぶ小さな土地を巡って、無数の命が失われた。|人々はこの残酷な運命から逃れるために、科学、宗教、魔法など、あらゆるものに縋った。
+Then the archmagus, Sariel Vinlaga, discovered the secret of immortality.|Sharing her research across the globe, she laid the groundwork for an era of peace.|A great civilization arose, where magic and technology flourished.
+ある日、偉大なる魔術師サリエル・ヴィンラーガは、不死の秘法を発見した。|彼女は世界中に研究を共有し、平和な時代への基礎を築いた。|魔法と科学の融合した、偉大なる文明が幕を開けた。
+But in the end, Sariel's experiments left her weakened and unable to save herself from death.|Without a leader, the Old Civilization collapsed into tyranny as warlords enslaved thousands.|Refugees fled across the sea in search of a new life, and in time the old empire was forgotten.
+しかし、偉大なるサリエルは探求の果てに衰弱し、死亡してしまう。|指導者を失った旧文明は愚者による専制が始まり、軍は無辜の市民を次々と奴隷にしていった。|難を逃れようと民は海を渡り、民を失った旧き帝国は次第に朽ち、忘れられていった。
+Three hundred years later,a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
+300年後、冒険家たちは古代の技術が眠る島を発見した。|今では、富と知恵を求めて無数の冒険者が遺跡を訪れている……|……はるか昔に封印された、邪悪な秘密も知らずに。
+
+An item has increased your spell damage!
+アイテムが魔法の威力を強化している！
+
+AMNT ice damage/turn vs. Frozen
+凍結により AMNT 氷属性ダメージを毎ターン受ける
+AMNT shadow bleed (10 turns)
+出血により10ターンの間 AMNT 影属性ダメージを毎ターン受ける
+
+Sealing Talisman
+封印の護符
+Sealing Talisman
+封印の護符
+You were hit by one of Fuuka's talismans. Fuuka's magic begins sealing your power!
+フウカの護符が身体に張り付いた。力が封印されていくのを感じる。
+You were hit by one of Fuuka's talismans. Fuuka's magic makes you sluggish!!
+フウカの護符が身体に張り付いた。フウカの魔力により身体が重く感じる。
+You were hit by one of Fuuka's talismans. Fuuka's magic renders you helpless!!!
+フウカの護符が身体に張り付いた。フウカの魔力により手も足も出ない。
+You were hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting you!
+フウカの護符が身体に張り付いた。フウカの魔力により動きを制限されている。
+
+Sealing Shadows
+封印の影
+Shadowy magic is restricting you!
+影の魔法に動きを制限される！
+A powerful seal holds you in place temporarily!!!
+強力な封印により一時的に動きを封じられた！
+
+You lock yourself in magical locks!
+自身の拘束具に魔法のロックを掛けた！
+A collar module comes off with the collar!
+首輪と一緒にモジュールが外れた！
+
+Shock Module
+ショックモジュール
+A sinister device used to keep unruly wolfgirls in check.
+手のかかるウルフガールを躾けるための不吉なモジュール。
+If it works on them, it sure as heck works on you. It has a warning label that says: 'CAUTION: NOT WATERPROOF'
+彼女たちに効くなら、人間にも効く。ラベルにはこう書いてある：水につけるな
+Tracking Module
+トラッキングモジュール
+A homing device used to track unruly pets that wander too far.
+よく迷子になるペットを追跡するためのモジュール。
+It has a warning label that says: 'CAUTION: NOT WATERPROOF'
+ラベルにはこう書いてある：水につけるな
+
+Your RestraintName stops working due to water damage!
+RestraintName は水に浸かった影響で動作を停止した！
+Your RestraintName sustains water damage from the high-pressure water!
+RestraintName は高圧水の影響でダメージを受けた！
+
+Quit Game
+ゲームをやめる
+
+Your RSTRNT glows as the shrine's energy fills the air. You can unlock it.
+祭壇からエネルギーを得て、 RSTRNT が光りだす。取り外せるようになった。
+
+The seal on your RESTRAINTNAME weakens as you simmer just below the edge.
+RESTRAINTNAME の封印は快楽を得るにつれて弱くなっていった。
+Through your determination, you suprress the seal on your RESTRAINTNAME!!!
+意を決して RESTRAINTNAME の封印を解いた！
+The seal on your RESTRAINTNAME weakens as you maintain your composure.
+冷静さを取り戻すにつれ、 RESTRAINTNAME の封印が弱くなった。
+Through your determination, you suprress the seal on your RESTRAINTNAME.
+意を決して RESTRAINTNAME の封印を解いた！
+You lose focus and the seal on your RESTRAINTNAME strengthens!
+集中力を失い、 RESTRAINTNAME の封印が強まってしまった！
+The item refuses to budge as you try to take it off.
+いくら脱ごうとしても、この拘束具はびくともしない。
+
+
+
+The item bears a seal of dark pleasure. You can suppress it by edging yourself.
+この拘束具には暗い喜びの印がある。快楽を得ることで、封印を弱められるかもしれない。
+
+The seal on your RESTRAINTNAME weakens as you simmer just below the edge.
+RESTRAINTNAME の封印は快楽を得るにつれて弱くなっていった。
+Through your determination, you suprress the seal on your RESTRAINTNAME!!!
+意を決して RESTRAINTNAME の封印を解いた！
+The seal on your RESTRAINTNAME weakens as you maintain your composure.
+冷静さを取り戻すにつれ、 RESTRAINTNAME の封印が弱くなった。
+Through your determination, you suprress the seal on your RESTRAINTNAME.
+意を決して RESTRAINTNAME の封印を解いた！
+You lose focus and the seal on your RESTRAINTNAME strengthens!
+集中力を失い、 RESTRAINTNAME の封印が強まってしまった！
+The item refuses to budge as you try to take it off.
+いくら脱ごうとしても、この拘束具はびくともしない。
+
+
+
+
+The item bears a seal of dark pleasure. You can suppress it by edging yourself.
+この拘束具には暗い喜びの印がある。快楽を得ることで、封印を弱められるかもしれない。
+
+Saved Outfits
+セーブした服装
+Manage this Outfit
+衣装の管理
+Change Pose
+ポーズ変更
+Quick Color Palette
+カラーパレット
+Item Color
+色
+Item Catalog
+カタログ
+Layers:
+パーツ：
+Hex Code:
+Hex Code:
+
+Toggle Struggle UI Mode
+UIの拘束具表示
+Change Character Pose
+ポーズ変更
+X-Ray Vision
+X-Ray
+Show Quick Inventory
+クイックインベントリ
+Skip Tutorial
+チュートリアルをスキップ
+
+Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?
+Kinky Dungeonにようこそ！新顔みたいだね！|UIについての説明をする？
+(Leave and Disable Tutorial)
+(チュートリアルをオフにする)
+(Yes Please!)
+(チュートリアルを見る)
+(It'd like a hands-on lesson)
+体験レッスンのようなもの
+
+Sure! I can lead you through some excercises in a safe and controlled environment.|This way you can figure things out at your own pace.|To start, choose one of the lessons below:
+よし！それじゃあちゃんとした環境でいくつか教えていくね！|そうすれば自分のペースでできるからね！|それじゃあ学びたいことを選んで：
+(Give me some rope lessons)
+(縄について学びたい)
+(Give me a nice leather outfit)
+(革の衣装が欲しい)
+(I enjoy the cold embrace of steel)
+(冷たい鉄が好き)
+(I love rubber!)
+(ラバー大好き！)
+(On second thought, maybe not)
+(やめておく)
+
+(About that hands-on lesson...)
+(体験レッスンについて……)
+
+This is you.|Over the course of the game, you will probably get tied up.|The controls to escape are located over your character.|Simply hover the mouse over your character to see them.
+この子があなた。|ゲーム中、すぐに縛られることになるだろうね。|拘束から抜け出すためのボタンはこのキャラクターの上にあるよ。|マウスオーバーしてみて。
+There are four main ways to escape restraints:|Struggling, which is effective against flexible and weaker restraints,|Cutting, which depends on your held weapon and the item's properties,|Unbuckle/Untying, which depends on having free hands,|And Unlocking, which is required before you can Unbuckle.
+拘束から抜け出すためには、主に4種類の方法があるよ。|まずはもがく。柔軟で、拘束力の弱い拘束具に有効だよ。|次に切断。これは持っている刃物や拘束具の材質によって抜け出しやすさが異なるよ。|次にバックルを外す/ほどく。両手が空いているかどうかによって効率が異なるよ。|最後に解錠。バックルを外す前に必要になるよ。
+These are options for how to display your character.|You don't have to worry about them for now,|but when your character is tied up you may find them useful|...or enjoyable.
+次に、キャラクターの表示オプション。|今のところ特に必要はないけど、|キャラクターが縛られているときに役に立つよ。|……もしくは、楽しめるよ。
+This is the buffs bar.|It shows various values and buffs relating to your character.|You can click the gold triangle to expand it,|Showing additional info about your character.
+これはバフの表示欄。|キャラクターに付与された様々なバフが表示されるよ。|黄色い三角をクリックすると、全てのバフが表示されて、|詳細が見られるよ。
+These are the action buttons.|You can use them to perform various actions like closing doors or sprinting.|You can also toggle various settings such as automatically passing|through allies or auto-pathing when there are no enemies nearby.|You can also swap between recently used weapons.
+これらはアクションボタン。|ドアを閉じたり、走ったりできるよ。|すり抜けやしゃがみはトグル式で切り替えられるよ。|仲間を通過したり、敵が近くにいないときに自動で移動したり。|最近使った武器を素早く切り替えることもできるよ。
+These are various submenus.|Your Inventory is used to brows items and use or equip them.|The Journal contains lore, notes, and hints gathered along your journey.|The Journal also contains info on available quests,|and your reputation with various factions.
+ここはサブメニューだよ。|アイテムではアイテムを装備したり使用したりできるよ。|日記では関係性やクエスト、集めたノートを見られるよ。|クエストの詳細を見たり、|様々な派閥との関係性も確認できるよ。
+This is the status bar, which gives info on your base stats.|Distraction determines how easy it is to cast spells and resist teasing.|Stamina is required to sprint and attack with a weapon.|Mana is used to cast spells. You have what is called a 'Mana Pool,'|which is excess mana that slowly refills you mana bar until it runs out.|Finally, running out of Willpower makes it much harder to escape bondage.
+これはステータスバー。基本ステータスが分かるよ。|興奮値は呪文の失敗率や、愛撫への抵抗力に関係するよ。|スタミナは走ったり攻撃をしたりするときに使うよ。|マナは魔法の詠唱に使うよ。ゲージの下にある白い線がマナプールだよ。|マナが減ると、マナプールからゆっくりと補充されるよ。|気力は減ると拘束から抜け出しにくくなるよ。
+This is the hotbar.|Here you will find various spells and customizable actions.|You can customize it through the Spells submenu by clicking on a spell.|You can also add items, armor, and consumables to it from the Inventory.
+これはホットバー。|魔法を初め様々な動作をここから素早く行えるよ。|「呪文」からは魔法を登録できるよ。|「アイテム」からも消耗品や鎧とかを登録できるよ。
+Finally, this is where the message log will be.|It provides a written record of what happened the last few turns.|You can click the 'Log' button to expand the log,|Allowing you to look much further back.
+最後に、ここにメッセージのログが表示されるよ。|ここ数ターンの間で何が起こったか記録されているよ。|黄色い三角形をクリックすれば、|より多くのメッセージを表示できるよ。
+Thats it for the UI.|If you want a more hands on tutorial, enter the portal to the top right,|near the training dummies.|You can click on NPCs (such as the ghosts in this room) to talk to them.
+UIについてはここまで。|もっとチュートリアルが見たいなら、|上にあるポータルを通ってね。|クリックすればNPC(この部屋にいる幽霊のような存在)と会話できるよ。
+
+Game
+ゲーム
+Menu
+メニュー
+
+
+Search ITMNS:
+ITMNS 検索：
+Search Items:
+アイテム検索：
+Search Spells:
+魔法検索
+
+Free
+自由
+Disarmed!!!
+武装解除された！
+Show Buffs and Stats
+ステータスを見る
+
+Quests
+クエスト
+
+Pray for Assistance
+アシスタントを呼ぶ
+This shrine bears a request carved in stone:
+祭壇の石に願いが刻まれている：
+Accept the Quest
+クエストを受領
+
+You accept the goddess' quest.
+神のクエストを受領した！
+You cannot accept that quest right now.
+今はクエストを受けられない。
+
+Offer gold to the Goddess in exchange for help. Destroys the shrine.
+お金を寄進し、助力を乞う。祭壇は破壊される。
+Ask for help without offering gold.
+寄進なしに助力を乞う。
+You have already prayed at this shrine.
+この祭壇では既に助力を乞うている。
+Listen to what the Goddess asks of you.
+女神の言葉に耳を傾ける。
+Accept the Goddess' quest.
+クエストを受領する
+Drink the mana in the shrine. Can be done once.
+祭壇の泉にある水を飲み、マナを回復する。一度だけ可能。
+Bottle the mana in the shrine for later. Can be done once.
+祭壇の泉にある水を瓶に詰める。一度だけ可能。
+
+Cancel Quest
+クエストをキャンセル
+Cancels the quest. You will not be penalized.
+クエストをキャンセルする。ペナルティなし。
+You can't cancel this quest.
+このクエストはキャンセルできない。
+
+You have no quests currently.
+受領しているクエストがない。
+A new quest has been added to your Journal.
+新しいクエストが日記に記載された。
+
+Find the dressmaker's prized dress and wear it in front of her.
+仕立て屋の落としたドレスを探し出し、着てから話しかける。
+Rescue the bandit from false imprisonment.
+不当に収監された盗賊を探し出し、助け出す。
+Teach some unruly maids a lesson.
+躾のなっていないメイドを探し出し、"教育"する。
+Defeat a rebel leader and show them their place.
+逆賊のリーダーを倒し、立場を教えてやる。
+Help the student acquire a scroll!
+生徒が探している巻物を渡す。
+You are being chased by a band of relentless poachers.
+執拗な狩人達に狙われている。
+
+Slay the Rope Kraken.
+ロープクラーケンを討伐する。
+You did not do your quest! The Goddess has decided to punish you.
+クエストを達成できなかった。女神を怒らせてしまった。
+You have pleased the Goddess.
+女神を喜ばせることができた。
+Rescue some alchemists from their own experiment.
+錬金術師を救出する。
+You did not do your quest! The Goddess has decided to punish you.
+クエストを達成できなかった。女神を怒らせてしまった。
+You have pleased the Goddess.
+女神を喜ばせることができた。
+Stop a rebels from making a pact with primordial beings.
+逆賊が原初の存在と協定を結ぶのを阻止する。
+You did not do your quest! The Goddess has decided to punish you.
+クエストを達成できなかった。女神を怒らせてしまった。
+You have pleased the Goddess.
+女神を喜ばせることができた。
+Decommission some malfunctioning drones.
+故障したドローンを機能停止する。
+You did not do your quest! The Goddess has decided to punish you.
+クエストを達成できなかった。女神を怒らせてしまった。
+You have pleased the Goddess.
+女神を喜ばせることができた。
+Resolve a dispute between elves and catgirls by tying up both sides.
+エルフと猫の争いを調停する。
+You did not do your quest! The Goddess has decided to punish you.
+クエストを達成できなかった。女神を怒らせてしまった。
+KDQuestSucceed_WillQuest,You have pleased the Goddess.
+女神を喜ばせることができた。
+Repel a planar incursion by a dangerous demon.
+世界を脅かす悪魔を退治する。
+You did not do your quest! The Goddess has decided to punish you.
+クエストを達成できなかった。女神を怒らせてしまった。
+You have pleased the Goddess.
+女神を喜ばせることができた。
+Stop some witches from performing a dubious summoning ritual.
+怪しげな召喚儀式を行う魔女達を排除する。
+You did not do your quest! The Goddess has decided to punish you.
+クエストを達成できなかった。女神を怒らせてしまった。
+You have pleased the Goddess.
+女神を喜ばせることができた。
+Defeat a congregation of the Shadow Clan.
+影の一族を倒す。
+You did not do your quest! The Goddess has decided to punish you.
+クエストを達成できなかった。女神を怒らせてしまった。
+You have pleased the Goddess.
+女神を喜ばせることができた。
+
+
+The Goddess grants you knowledge of SpellLearned!
+褒賞として SpellLearned の知識を頂戴した！
+You Goddess grants you +AMOUNT spell points!
+褒賞として +AMOUNT スキルポイントを頂戴した！
+The Goddess bestows a WeaponAcquired on you!
+褒賞として WeaponAcquired を頂戴した！
+The Goddess grants you a ArmorAcquired!
+褒賞として ArmorAcquired を頂戴した！
+The Goddess gives you a heavenly pastry
+褒賞として天国のお菓子を頂戴した！
+KDGoddessQuestReward_MistressKey,The Goddess awards you an ancient key of great importance.
+褒賞として黄金色に輝く鍵を頂戴した！
+
+Game Setup
+基本
+Challenge Settings
+チャレンジ
+
+
+
+Challenge Settings:
+チャレンジ：
+
+Simple
+シンプル
+Advanced
+詳細
+
+Exits locked! Find the key!
+出口は塞がっている。鍵を探そう！
+Got the key!
+鍵を手に入れよう！
+BOSS ROOM
+ボス部屋
+BOSS ROOM CLEARED!
+ボス部屋(クリア)
+Room bugged. Please Report.
+！！！バグです、ご報告お願い致します！！！
+
+
+KDVarSuffCursed,(Cursed)
+
+KDVarSuffEvasion,of Agility
+
+KDVarPrefAccuracy,Precise
+
+KDVarPrefSneak,Silent
+
+KDVarPrefAoEDamageFrozen,Blizzard
+
+KDVarSuffSpellWard,of Warding
+
+KDVarSuffBondageResist,of Freedom
+
+KDVarSuffDamageResist,of Resistance
+
+KDVarSuffDamageBuff,of Power
+
+KDVarPrefManaCost,Arcane
+
+KDVarPrefManaCostSpecific,Entuned
+
+KDVarPrefManaRegenOnKill,Draining
+
+KDVarSuffElementalEcho,of Echoes
+
+KDVarPrefElementalDmg,Infused
+
+KDVarPrefManaRegen,Focusing
+
+KDVarSuffBaseDamageBuffMelee,of Empowerment
+
+KDVarSuffBaseDamageBuffMagic,of Destruction
+
+
+Phase Dance
+フェーズダンス
+For 4 turns, your movement does not advance time. Attacking or casting counts as one move and passes time as normal.
+4ターンの間、移動で時間が経過しなくなる。攻撃や詠唱は移動としてカウントされ、時間は通常通り経過する。
+You are F A S T
+
+
+Double Accel
+ダブルアクセル
+Slow down time by 1/2 for 10 turns (world time). Stamina regens 50% slower.
+10ターンの間、周囲の時間が1/2になる。スタミナ回復量が50%遅くなる。
+Time is slowed by 2x
+時の流れが1/2になっている
+Triple Accel
+トリプルアクセル
+Slow down time by 1/3 for 10 turns (world time). Stamina regens 75% slower.
+10ターンの間、周囲の時間が1/3になる。スタミナ回復量が75%遅くなる。
+Time is slowed by 3x
+時の流れが1/3になっている
+Quadro Accel
+クアドロアクセル
+Slow down time by 1/4 for 10 turns (world time). Stamina does not regen.
+10ターンの間、周囲の時間が1/4になる。スタミナが回復しなくなる。
+Time is slowed by 4x
+時の流れが1/4になっている
+Total Accel
+トータルアクセル
+Stop time 10 turns (world time). Stamina does not regen.
+10ターンの間、時間を完全に止める。スタミナが回復しなくなる。
+Time has come to a halt...
+時は止まった。
+
+Time slows down by 2x!
+時の流れが1/2になった！
+Double Accel!
+ダブルアクセル！
+Time slows down by 3x!
+時の流れが1/3になった！
+Triple Accel!
+トリプルアクセル！
+Time slows down by 4x!
+時の流れが1/4になった！
+Quadro Accel!
+クアドロアクセル！
+Time has ceased to pass.
+時よ止まれ！
+Total Accel!
+トータルアクセル！
+
+You begin to move at lightning speed!
+光の速度で動けるようになった！
+ACCEL BEGIN!
+加速開始！
+Not enough mana.
+マナが足りない。
+You need to free your legs.
+足を自由に使える必要がある。
+
+Swap
+スワップ
+Choose a target with a clear line of sight to you and switch places with them.
+対象と自身の場所を入れ替える。対象は視界内におり、障害物で隔たれていない必要がある。
+You point at the target and swap places with them!
+対象と自身の場所を入れ替えた！
+You point at the target and try tp swap places, but they resist!
+対象と自身の場所を入れ替えようとしたが抵抗された！
+You point at the target and try tp swap places, but they resist and the spell fails!
+対象と自身の場所を入れ替えようとしたが失敗した！
+Choose target to swap with
+入れ替える対象を選択
+
+The ENMY blocked your attack, negating it entirely!
+ENMY に攻撃を完全に無効化された！
+The ENMY blocked your attack, reducing the damage by PCNT%!
+ENMY に攻撃をブロックされ、ダメージを PCNT% 軽減された！
+The ENMY remains unscathed after putting up a strong defense!
+ENMY の強固なブロックで攻撃を完全に無効化された！
+The ENMY puts up surprising resistance, reducing the damage by PCNT%.
+ENMY は意外な抵抗をみせ、ダメージを PCNT% 軽減された！
+
+no damage
+NO DAMAGE
+
+
+Raise Defenses
+ハイガード
+Spend 90 stamina to shield yourself from damage equal to your Block. Lasts 10 turns or until you attack.
+スタミナを90消費し、自分のブロック値までのダメージから身を守る。10ターン経過、または攻撃するまで継続。
+Evasive Maneuvers
+集中回避
+While active, you evade almost all attacks, but your stamina is drained by 50 per turn plus 10 per slow level. The base stamina cost is reduced by your Evasion.
+アクティブ時、全ての攻撃を回避するが、ターン毎に50のスタミナを消費する。スタミナの消費量は減速値1につき10増加し、回避力に応じて減少する。
+Break Free
+回避のリズム
+Consume 20 Battle Rhythm to increase escape power by +20% plus 1% of Bondage Resist. Lasts 60 turns or until your willpower reaches 0.
+戦闘のリズムを20消費し、拘束から抜け出す力が20%上昇し、拘束耐性が1%上昇する。60ターン経過、または気力が0になるまで続く。
+Problem Solving
+一挙解決
+While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +40% plus 20% of Bondage Resist
+アクティブ時、「もがく」が10ターン継続するようになる。拘束から抜け出す時、道具やバフによるボーナスが+40%増加する。拘束耐性が20%上昇する。
+
+
+You run out of strength to keep dodging...
+回避に割く集中力がなくなった……
+You can't muster the strength to dodge right now...
+今は回避に集中できない……
+You prepare to dodge!!!
+回避に意識を集中した！
+
+Your expertise and skill provides you with additional tool effectiveness! (+AMOUNT%)
+培った知識と技術により、道具を有効活用できた！ (+AMOUNT%)
+
+You don't have enough stamina.
+スタミナが足りない。
+You raise your defences!
+守備を固めた！
+Your defenses are raised!
+守備を固めている
+
+
+You don't have the will to break free.
+気力が足りない。
+You don't have enough Battle Rhythm. You need 20.
+使用するには戦闘のリズムが20必要。
+You channel your fighting spirit into your desire for freedom!
+自由への渇望に闘志を燃やした！
+Your struggle power is greatly increased!!!
+もがく力が大幅に上昇している！
+
+KDTeleportNearby,"The teleportation partially succeeds due to an obstruction, placing you near the intended point.
+障害物に阻まれ、指定位置の近くにテレポートした。
+The teleportation fizzles due to obstruction.
+障害物に阻まれ、テレポートは失敗した。
+Confirm
+決定
+What is your name?
+名前を決めてください
+
+Enrage
+憤怒
+Scream loudly, causing nearby enemies to investigate and increasing Battle Rhythm by 10. Has a 100 turn cooldown.
+大声で叫び、戦闘のリズムを10増加させる。音を発するため、近くの敵を呼び寄せる。クールタイム100ターン。
+
+You shout loudly and shake your fist at the sky! (+10 BR)
+大声で叫び、天に拳を突き出した！ (+10 BR)
+Mmmph! (You can't shout while gagged)
+「んフォぉお！」(猿轡をかまされていては叫べない)
+You are plenty mad enough as is.
+クールタイム中
+You are too tired to rage. Perhaps try a warm cozy bed instead?
+怒り疲れた。少しベッドで休みたい。
+
+turns
+ターン
+
+Your shield absorbed AMNT damage.
+盾が AMNT のダメージを防いだ。
+You are currently shielded from damage and some spells.
+盾のおかげでダメージとある程度の魔法を防げる。
+No offhand weapon set. Activate the spell in your hotbar to set one.
+オフハンドに武器を装備していない。二刀流のスキルを使用し、オフハンドに持つ武器を決めよう。
+
+
+
+Flash Portal
+フラッシュポータル
+After 3 turns, teleport to a nearby location (including into darkness). All adjacent creatures are teleported with you, in random order.
+3ターン後、視界外を含む近くの場所にワープする。敵が近くにいる場合、その敵もワープする。
+You call upon a misty portal to transport you and nearby creatures!
+霧のポータルを呼び出し、自身と近くの存在を転送する！
+Choose target location
+位置を選択
+
+Transportation Portal
+トランスポータル
+After 3 turns, teleport to a nearby location (including into darkness). Transports only allies, but they are stunned for the duration.
+3ターン後、視界外を含む近くの場所にワープする。自身と味方のみワープ可能。味方が転送された場合、duration ターンの間気絶する。
+You call upon a misty portal to transport you and your allies!
+霧のポータルを呼び出し、自身と近くの存在を転送する！
+Choose target location
+位置を選択
+
+Banishing Portal
+バニシングポータル
+After channeling for 3 turns, teleport all adjacent creatures to a point you can see. Does not teleport yourself.
+3ターンかけて発動する。近くにいる全ての敵を、見える範囲内の指定された位置に転送する。自身は転送されない。
+You call upon a misty portal to transport those around you!
+霧のポータルを呼び出し、周囲の敵を転送する！
+Choose target location
+位置を選択
+
+Rift
+リフト
+Tearing a rift in space, you teleport to a location (including into darkness). Leaves behind a rift for 4 turns, which enemies can follow you through.
+空間に裂け目を作り、指定された位置にワープする。裂け目は4ターン残り、敵も通ることができる。
+You tear open a hole in space and step through!
+空間に裂け目を作り、飛び込んだ！
+Choose target location
+位置を選択
+
+Shadow Dance
+シャドーダンス
+While standing in a shadowed location, you can teleport to a nearby shadowed location. You can also teleport adjacent to shadow creatures.
+影のあるマスに立っている場合のみ発動可能。近くの影のあるマスか影属性の敵の隣にテレポートする。
+You slip between the shadows...
+影の中に潜り込んだ……
+
+Choose a shadow
+影を選択
+
+Teleportation Circle A
+テレポート・ポイントA
+When cast on a point, creates a teleportation circle. When cast on yourself, channel for 10 turns to teleport yourself and nearby allies to the teleportation circle. When learned, unlocks teleportation circle B and C as well.
+指定した位置を記憶する。記憶した状態で自身に唱えた際、10ターンかけて発動する。自身と近くの味方が記憶した位置にワープする。この魔法を習得した際、ポイントBとCも同時に習得する。
+You begin a teleportation ritual...
+転送の準備を始めた……
+
+Choose a location to put a teleportation circle, or yourself to teleport to the created circle.
+記憶する位置を選択するか、自身を選択。
+Teleportation Circle B
+テレポート・ポイントB
+When cast on a point, creates a teleportation circle. When cast on yourself, channel for 10 turns to teleport yourself and nearby allies to the teleportation circle.
+指定した位置を記憶する。記憶した状態で自身に唱えた際、10ターンかけて発動する。自身と近くの味方が記憶した位置にワープする。
+You begin a teleportation ritual...
+転送の準備を始めた……
+Choose a location to put a teleportation circle, or yourself to teleport to the created circle.
+記憶する位置を選択するか、自身を選択。
+Teleportation Circle C
+テレポート・ポイントC
+When cast on a point, creates a teleportation circle. When cast on yourself, channel for 10 turns to teleport yourself and nearby allies to the teleportation circle.
+指定した位置を記憶する。記憶した状態で自身に唱えた際、10ターンかけて発動する。自身と近くの味方が記憶した位置にワープする。
+You begin a teleportation ritual...
+転送の準備を始めた……
+Choose a location to put a teleportation circle, or yourself to teleport to the created circle.
+記憶する位置を選択するか、自身を選択。
+
+
+Nature Spirit
+自然の精霊
+The nature spirit returns to the earth from whence it came.
+自然の精霊は大地に帰っていった。
+
+Vine Bolt
+ヴァインボルト
+
+
+Gunslinger
+ガンスリンガー
+Weapons abilities and other abilities that cost charge contribute 20% of their cost to Battle Rhythm.
+エネルギーを消費する武器アビリティ等を使用した際、消費したエネルギーの20%分を戦闘のリズムに加える。
+Effortless Assault
+
+Weapon stamina cost is reduced by a percentage equal to your Battle Rhythm.
+武器攻撃のスタミナ消費量を、戦闘のリズム%分低減する。
+
++50 Evasion from using Phase
+フェーズにより回避力+50
+
+Blade Dance
+ブレードダンス
+Costs 60 stamina to dash to an adjacent spot. If you are holding a physical weapon, deals cleave damage to nearby enemies equal to 50% weapon damage. If you have a Light offhand weapon, deal 75% of its damage as well.
+スタミナを60消費し、指定したポイントまで攻撃しながら走る。物理属性の武器を持っている場合、近くの敵を薙ぎ払い、50%のダメージを与える。オフハンドに軽い武器を持っている場合、威力が75%になる。
+You spin towards a location, slashing at nearby enemies!
+刃を手に舞い踊りながら駆けた！
+Choose target location
+位置を選択
+
+The Shadow Within
+内なる影
+Shadow Dance no longer requires you to be in shadow in order to dash to another shadow, but the mana cost is doubled when doing so.
+シャドーダンスを使用する際、影のあるマスに立つ必要がなくなるが、影のないマスで使用した際、マナコストが2倍になる。
+
+
+
+Summon Holy Orb
+ホーリーオーブ召喚
+Select where to put the holy orb (cannot place on occupied squares)
+召喚するマスを選択(既に何かがある位置には召喚不可)
+Create a stationary holy orb that lasts indefinitely and heals allies. It also fires blinding bolts at enemies within its aura. If you let go of yourself near a holy orb you are immediately punished. Should not be placed within 8 tiles of each other.
+制限時間のない、味方を回復するオーブを召喚する。また、近くの敵を攻撃し、目隠し状態にする。ホーリーオーブの近くで絶頂した場合、罰を受ける。8タイル以内に配置してはならない。
+A holy orb descends, blessing you with its roundness.
+ホーリーオーブが降臨し、祝福の光が降り注ぐ！
+You call upon the root of all enlightenment!
+悟りの根源に呼びかけた！
+
+Holy Orb
+ホーリーオーブ
+The holy orb returns to its place in the sky.
+ホーリーオーブは空に帰っていった。
+
+Holy Bolt
+ホーリーボルト
+
+The holy orb observes your lack of discipline, and issues a punishment.
+ホーリーオーブに監視されていた。戒律を破った罰を受ける……
+
+
+Divine Chastity Belt
+神の貞操帯
+A chastity belt forged in holy light. Only a Goddess' will can release you.
+聖なる光によって作り出された貞操帯。神によってのみ解放される。
+There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge.
+慙悔によってのみ解放される。神聖なオーラで絶頂直前にバイブを止める。
+Your Divine Chastity Belt causes the vibrators to stop.
+貞操帯の放つ神聖なオーラでバイブレーターが停止した。
+
+Divine Chastity Belt
+神の貞操帯
+A chastity belt forged in holy light. Only the will of a Goddess will release you!
+聖なる光によって作り出された貞操帯。神によってのみ解放される。
+There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge.
+慙悔によってのみ解放される。神聖なオーラで絶頂直前にバイブを止める。
+
+You find a heavenly chastity belt. Who could it be for?
+神聖な貞操帯を見つけた。一体誰に使うのだろう？
+
+
+Magic Arm Belts
+魔法のベルト(腕)
+Highly secure belts enchanted with magic.
+魔法の施された、頑丈なベルト。
+Lockable and fully adjustable to ensure snugness.
+施錠可能で細かい調整もできる。
+Magic Leg Belts
+魔法のベルト(脚)
+Highly secure belts enchanted with magic.
+魔法の施された、頑丈なベルト。
+Lockable and fully adjustable to ensure snugness.
+施錠可能で細かい調整もできる。
+Magic Ankle Belts
+魔法のベルト(足)
+Highly secure belts enchanted with magic.
+魔法の施された、頑丈なベルト。
+Lockable and fully adjustable to ensure snugness.
+施錠可能で細かい調整もできる。
+The Liquid Metal starts engulfing you!
+液体金属に飲み込まれる！
+The Liquid Metal explodes and covers you!
+液体金属の爆発に巻き込まれ、身体に付着した！
+The Liquid Metal takes advantage of your status and engulfs you!
+液体金属に飲み込まれる！
+
+
+Silver Burst
+シルバーバースト
+Select a liquid metal tile
+液体金属のあるマスを選択
+Target a liquid metal tile. After 3 turns, it erupts, spreading more liquid metal and engulfing any nearby creatures. Deals DamageDealt crush damage and applies 80 points of metallic binding.
+液体金属のあるマスを選択して使用。3ターン後、噴火して近くの敵を巻き込む。 DamageDealt 打撃ダメージを与え、80の金属拘束値を与える。
+A powerful explosion simmers beneath the surface...'
+強大なエネルギーが液体金属の水面下で煮えたぎっている……
+
+The ground shakes as a huge wall of liquid metal approaches!
+地を揺らしながら巨大な液体金属の壁が向かってきた！
+Liquid Metal Cube
+リキッドメタルキューブ
+The liquid metal cube dissolves into a huge pile of glittering dust.
+リキッドメタルキューブは粉々に爆ぜた。
+The liquid metal cube engulfs you and squeezes tightly! (DamageTaken)
+リキッドメタルキューブがきつく飲み込んできた！ (DamageTaken)
+The liquid metal cube engulfs your body and hardens, taking the form of restraints! (+RestraintAdded)
+リキッドメタルキューブに包み込まれ、一部が固まってしまった！ (+RestraintAdded)
+
+
+Skeleton Archer
+スケルトンアーチャー
+The Skeleton falls to pieces.
+スケルトンは崩れ落ちた。
+The Skeleton restrains you! (+RestraintAdded)
+スケルトンが拘束してきた！ (+RestraintAdded)
+The Skeleton tackles you! (DamageTaken)
+スケルトンにタックルされた！ (DamageTaken)
+
+Cursed Arrow
+呪いの矢
+
+Because your hands are unavailable, you kick the target instead.
+手が使えないため、代わりに蹴った。
+
+
+
+Your former owners are looking for you across the seven planes.
+前のご主人さまが、7つの平面を超えて探しに来た。
+
+A local business is missing one of their models, and will stop at nothing to find her.
+ある会社に所属しているモデルが行方不明になった。どんな手段を使っても、彼女を見つけ出そう。
+The Doll Shoppe
+人形店
+Elemental Slavers
+エレメンタルの奴隷商
+
+Your duty as a maid is to keep the place clear of dirt and other hazards.
+メイドとしての仕事を受けた。ホコリやその他の危険を掃除しよう。
+Dirt Pile
+ホコリの山
+You clear out the dirt pile
+ホコリの山を綺麗にした。
+A ENMY was lurking inside the dirt pile!
+ホコリの山から ENMY が出てきた！
+You skipped your duty and left some dirt missing in the last level!
+まだフロアにホコリが残っていたようだ……
+
+The Dollmaker does not take no for an answer.
+ドールメイカーは拒否を受け付けない。
+Fuuka's shrine maidens would like to have a word with you.
+フウカの使いから話があるようだ。
+Your instructor will meet with you at regular intervals for further training.
+インストラクターから定期的にトレーニングを受けよう。
+
+Hogtied!
+ホッグタイ
+Experience a comprehensive rope bondage experience.
+ホッグタイの状態でゲームを開始する
+
+
+Rope Dojo
+縄師
+Shadow Clan
+影の一族
+Fuuka's Shrine
+フウカの眷属
+Dollmaker
+ドールメイカー
+
+Receive the following restraints: 
+次の拘束をされる：
+You will be bound with some form of restraint.
+何らかの拘束具で縛られることになる。
+
+Shadow
+影
+
+Gag Geist
+ギャグガイスト
+The gag geist goes silent.
+ギャグガイスト現象は収まった。
+The gag geist teases you playfully!! (DamageTaken)
+ギャグガイストが見えない手で愛撫してくる！ (DamageTaken)
+The gag geist gags the girl with a ghastly grimace! (+RestraintAdded)
+ギャグガイストがぞっとするような笑みで猿轡を噛ませてきた！ (+RestraintAdded)
+
+Poltergeist 
+ポルターガイスト
+The poltergeist goes silent.
+ポルターガイスト現象は収まった。
+"The poltergeist gropes and teases you playfully!! (DamageTaken)
+ポルターガイストが見えない手で愛撫してくる！ (DamageTaken)
+The poltergeist binds you with... something? (+RestraintAdded)
+ポルターガイストが……何かで拘束してきた。(+RestraintAdded)
+
+Invisible Gag
+透明なボールギャグ
+It's a gag, but invisible!
+ただのボールギャグ。透明なことを除けば。
+You wonder what color it is.
+何色なんだろう？
+
+Invisible Blindfold
+透明な目隠し
+It's a blindfold, but invisible!
+ただの目隠し。透明なことを除けば。
+How exactly is this supposed to work?
+どうして機能しているのか全くわからない。
+Invisible Armbinder
+透明なアームバインダー
+It's an armbinder, but invisible!
+ただのアームバインダー。透明なことを除けば。
+You wonder what color it is.
+何色なんだろう？
+
+Invisible Legbinder
+透明なレッグバインダー
+It's an legbinder, but invisible!
+ただのレッグバインダー。透明なことを除けば。
+This is starting to get cruel...
+なんて酷い……
+
+
+Strangely dressed zombies start approaching you!!
+奇妙な格好をしたゾンビが近づいてきた！
+A floating gag appears and starts flying toward you!
+浮遊するボールギャグがこちらに向かってきた！
+A floating blindfold appears and starts flying toward you!
+浮遊する目隠しがこちらに向かってきた！
+A floating yoke appears and starts flying toward you!
+浮遊するヨークがこちらに向かってきた！
+A floating armbinder appears and starts flying toward you!
+浮遊するアームバインダーがこちらに向かってきた！
+A floating straitjacket appears and starts flying toward you!
+浮遊する拘束衣がこちらに向かってきた！
+A floating harness appears and starts flying toward you!
+浮遊するハーネスがこちらに向かってきた！
+A set of shackles opens wide and starts going for your wrists!
+浮遊する枷がこちらに向かってきた！
+You hear moaning as the statues start to move...
+うめき声とともに像が動き出した……
+Devious tomes emerge from the bookshelves!
+本棚から呪いの本が飛び出してきた！
+Armed mushrooms emerge from the ground to defend their home!
+我が家を守らんと武装したキノコが地面から飛び出してきた！
+Playful ghosts slip through the walls, giggling to themselves!
+ケラケラと笑いながら壁からいたずら好きな幽霊が飛び出してきた！
+Ancient drones drop from the ceiling and come to life!
+古代のドローンが天井から落下し、活動を開始した！
+You were always being watched...
+お前を見ているぞ
+
+You find a store of gunpowder!
+火薬箱を見つけた！
+
+Explosive Barrel
+火薬樽
+
+Explosive Barrel
+火薬樽
+The explosive barrel falls apart and drops its gunpowder.
+火薬樽はバラバラになり、火薬が飛び散った。
+The explosive barrel catches fire and explodes!
+火薬樽が爆発した！
+
+The item demands copious mana, more than you can supply. You'll have to tie up a mage.
+この拘束具は大量のマナを要求している。魔法使いを捕まえなければならない。
+The cursed seal glows and pulsates as you struggle fruitlessly.
+呪いの拘束具から逃れようともがくと、拘束具が光り出した。
+The curse has been lifted through judicious application of spellcasters.
+魔術師を生贄に捧げ、呪いを解くことができた。
+The cursed item drains all of the caster's mana. It demands more.
+この呪いの拘束具は着用者のマナを食らい続ける。
+
+Ankle Chain
+足枷の鎖
+Short Ankle Chain
+短い足枷の鎖
+A pair of cuffs chaining your feet tightly together.
+足枷同士を繋ぐ短い鎖。
+A pair of cuffs on your legs.
+腿に取り付く枷。
+
+They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone...
+魔法の氷で作られた拘束具。自然には溶けず、付けていると身も心も冷たくなっていく……
+
+Ice Cuffs
+氷の手枷
+Ice Ankle Cuffs
+氷の足枷
+Ice Leg Cuffs
+氷の脚枷
+
+Thigh Chain
+脚枷の鎖
+They are made from leather cured from the hide of dragons.
+ドラゴンの革を硬めて作られた拘束具。
+Dragonscale Ankle Cuffs
+竜鱗の足枷
+
+Goddess:
+属性：
