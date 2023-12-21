@@ -732,8 +732,8 @@ More enemies spawn during sleep.
 
 No Way Out
 无法挣脱
-Enemies will always use the tightest restraints possible and fully bind you.
-敌人将始终使用最严格的拘束具来完全束缚你。
+Enemies will always use the tightest restraints possible regardless of willpower. +10 Security level.
+无论意志力如何，敌人总是会使用最严格的拘束具来完全束缚你。+10 安全级别。
 Deft Footwork
 步法灵巧
 You ignore some consequences of being mildly slowed from heels or slime, and you can cast Leg spells while slowed significantly at 50% miscast chance.
@@ -753,8 +753,8 @@ You can cast arm spells using just your fingers, as long as your hands aren't bo
 
 Well-Equipped
 设备精良
-Restraints and traps that are limited by level appear sooner, and enemies will stack many restraints.
-限制在一定层数后出现的拘束具和陷阱会更早的出现，并且敌人会堆叠更多的束缚。
+Restraints and traps that are limited by level appear sooner, and will stack more. +10 security level.
+限制在一定层数后出现的拘束具和陷阱会更早的出现，并且敌人会堆叠更多的束缚。+10 安全级别。
 
 Quick-Draw
 快速拔刀
@@ -796,11 +796,11 @@ Dollmaker's Minions
 All humanoids that can bind you also apply Cyber Doll restraints.
 所有可束缚你的人形生物可以使用赛博拘束具。
 Doll Hunter V
-玩偶猎人V
+玩偶猎人 V
 You start with the Dollmaker's Visor.
 开局时穿戴玩偶制造商的面罩
 Doll Hunter M
-玩偶猎人M
+玩偶猎人 M
 You start with the Dollmaker's Mask.
 开局时穿戴玩偶制造商的面具
 
@@ -1193,8 +1193,8 @@ Taking chain, poison, and crush damage makes you dizzy.
 
 Kinky Prisoner
 变态囚犯
-Guards never remove restraints you are already wearing, unless they are applying something tighter.
-警卫永远不会移除你已经佩戴的束缚，除非他们使用更严格的束缚。
+Guards won't remove restraints unless they have something tighter. +10 Security level.
+警卫不会移除你的束缚，除非他们使用紧的束缚。+10 安全级别。
 
 Unfair Doors
 困难的门
@@ -1834,6 +1834,8 @@ Your restraints are disenchanted, treating them as nonmagical for purposes of cu
 你的身上的拘束具被解除了，它们在解除时被视为非魔法物品。
 You can launch another leather restraint instantly!
 你可以立即发射另一个皮革束缚！
+You can launch another Sagitta instantly!
+你可以立即发射另一个箭！
 Your motivation is powerful enough your spells cannot be stopped!
 你的动力足够强大，无法阻止你的法术！
 Locked Down: Struggling power is greatly reduced.
@@ -1876,18 +1878,6 @@ Confirm Reset?
 确认重置？
 Back to Menu
 返回菜单
-
-Your movement sets off your [RESTRAINTNAME]
-你的动作引发了你的 [RESTRAINTNAME]
-Your struggling sets off your [RESTRAINTNAME]
-你的挣扎引发了你的 [RESTRAINTNAME]
-Your attack sets off your [RESTRAINTNAME]
-你的攻击引发了你的 [RESTRAINTNAME]
-
-The straps on your gag prevent you from loosening the blindfold!
-堵嘴物上的带子可以防止眼罩松动！
-The straps on your gag keep your blindfold securely in place!
-堵嘴物上的带子可将眼罩牢固固定住！
 
 Revert
 恢复
@@ -2075,22 +2065,20 @@ Nnngh...
 嗯...
 Ooooh...
 噢...
-(Breaths heavily)
-（沉重喘息）
-(Moans softly)
-（轻声呻吟）
-(Moans into her gag)
-（对着口塞呻吟）
-(Incoherent mumbling)
-（含糊不清的咕哝）
-(Moans loudly)
-（大声呻吟）
 (Heavy breathing)
 （沉重喘息）
-(Moaning uncontrollably)
+(Soft moaning)
+（轻声呻吟）
+(Incoherent mumbling)
+（含糊不清的咕哝）
+(Loud moans)
+（大声呻吟）
+(Deep breaths)
+（深呼吸）
+(Uncontrollable moaning)
 （无法自控地呻吟）
-(Shudders with pleasure)
-（因快感而颤抖）
+(Horny noises)
+（淫荡的声音）
 You wait.
 等待。
 You wait, legs trembling with arousal.
@@ -2546,6 +2534,13 @@ The item sticks to your rubber catsuit, making it harder to pull off...
 The item hugs your catsuit tightly, adhering firmly!
 这件衣服紧紧地拥抱着你的紧身衣，牢牢地粘在一起！
 
+Your RSTRN holds you securely, making your struggling ineffectual...
+你的 RSTRN 牢牢地束缚着你，使你的挣扎毫无效果……
+Your RSTRN holds you tight, making it harder to move...
+你的 RSTRN 将你紧紧抱住，让你难以移动……
+Your RSTRN keeps you tied tight, making it harder to escape...
+你的 RSTRN 将你紧紧束缚，让你更难逃脱……
+
 The bright light weakens the shadow hands!
 明亮的光线削弱了影之手！
 
@@ -2993,6 +2988,12 @@ A type of pyrotechnic often employed by saboteurs. Can be rolled and used withou
 一种经常被破坏者使用的烟火。无需用手即可卷起和使用。
 Creates a smoke screen lasting 8 turns. You are harder to see while inside the smoke.
 制造持续 8 回合的烟幕。在烟雾中时你更难看到。
+Smoke Bomb x3
+三枚烟雾弹
+A type of pyrotechnic often employed by saboteurs. Can be rolled and used without hands.
+一种经常被破坏者使用的烟火。无需用手即可卷起和使用。
+Creates a smoke screen lasting 8 turns. You are harder to see while inside the smoke.
+产生持续 8 回合的烟雾。当你在烟雾中时，你会更难被发现。
 Flash Bomb
 闪光弹
 Flash Bomb x3
@@ -6866,8 +6867,8 @@ Duster Gag
 掸子堵嘴
 A special gag designed for maids to be useful even while tied up! It's self-locking too!
 专为女仆设计的特殊堵嘴，即使在被绑着的情况下也能打扫卫生！并且会自动锁定！
-Deals 0.5 tickle damage on attack and adds +30 distraction.
-攻击时造成 0.5 点挠痒伤害，并增加 30 干扰值。
+Deals 0.5 tickle damage on attack and adds +30 distraction. Bonus damage vs dirt and mold.
+攻击时造成 0.5 点挠痒伤害，并增加 30 干扰值。对抗污垢和霉菌会造成额外伤害。
 
 Gas Mask
 防毒面具
@@ -9670,8 +9671,8 @@ Chain Sword
 链剑
 Cut through their defenses and tie them up in the process!
 在此过程中突破他们的防御并捆绑他们！
-Deals slash damage. Adds 5 metal binding.
-造成斩击伤害。添加 5 个金属束缚。
+Deals slash damage. Adds 10 metal binding.
+造成斩击伤害。添加 10 个金属束缚。
 You pick up sword with a bunch of chains attached.
 你拿起附有一堆链条的剑。
 
@@ -10147,8 +10148,8 @@ Unlocks leather spells. Learn Conjure Gag.
 允许学习皮革咒术 并习得咒术 “召唤口球”
 Physics 101
 物理 101
-Unlocks teleportation and physical manipulation spells. Learn Wall.
-允许学习物理、传送和控制咒术 并习得咒术 “墙”
+Unlocks teleportation and spatial manipulation spells. Learn Wall.
+允许学习空间、传送和控制咒术。并习得咒术 “墙”
 Summoning 101
 召唤 101
 Unlocks summoning spells. Learn Summon Familiar.
@@ -10348,22 +10349,26 @@ You create a tear in space with your finger!
 Choose aim direction
 选择发射方向
 
-Phase
-相位
+Blink
+闪现
 Instantly teleport to an adjacent position and gain +50 evasion for 3 turns. Unlocks Blink and Warp when learned.
 瞬间传送到邻近位置，并获得 +50 闪避，持续 3 回合。学习后解锁闪现和扭曲。
 You teleport!
 传送！
-Choose target location
-选择施放位置
-Blink
+Choose target location (1 tile range)
+选择施放位置（1 格范围）
+Blink II
 闪现
 Instantly teleport up to 2 tiles away. Must have vision of the target point. Stuns an enemy if you teleport behind them.
 立即传送至 2 格之外。目标位置必须可视。如果你传送到敌人身后，则会击晕敌人。
-Warp
+Choose target location (2 tile range)
+选择施放位置（2 格范围）
+Blink III
 扭曲
 Instantly teleport up to 2 tiles away. Must have vision of the target point. 
 立即传送至 2 格之外。目标位置必须可视。
+Choose target location (3 tile range)
+选择施放位置（3 格范围）
 
 Ice Shard
 冰枪术
@@ -11556,10 +11561,6 @@ Light
 光芒
 Produce a bright light for Duration turns. Has no effect in dark rooms.
 产生持续 Duration 回合的亮光，在黑暗房间内没有效果。
-Floating Weapon
-漂浮武器
-When enabled: While hands are bound, you can still use weapons, but attacks cost mana.
-启用后：当双手被束缚时，你仍然可以使用武器，但攻击需要消耗法力。
 Iron Blood
 铁血
 Select yourself
@@ -12080,6 +12081,8 @@ Crystals begin to form around your limbs!
 晶体开始在你的四肢周围形成！
 A magic chain secures itself around your body!
 一条魔链固定在你的身体上！
+An animated chain secures itself around your body!
+一条活化链固定在你的身体上！
 A magic rope secures itself around your body!
 一条魔绳固定在你的身体上！
 A magic belt secures itself around your body!
@@ -12803,12 +12806,12 @@ Your fingers pass right through the collar. Pity your neck doesn't pass through 
 You channel ghastly energy into the lock and break the seal!!!
 你将可怕的能量引导到锁中并打破密封！！！
 
-It would take many lifetimes to crack the code. You'll have to find the data somehow.
-破解密码需要好几辈子的时间。你您用力拉动紧固件，但无济于事。必须以某种方式找到数据。
-You tug against the fastenings to no avail.
-你用力拉动紧固件，但无济于事。
-One of your Doll IDs seems to have had corrupted data on it, causing the program to crash.
-你的一个娃娃 ID 上的数据似乎已损坏，导致程序崩溃。
+It would take many lifetimes to crack the code. You'll have to find another way to break the program...
+破解密码需要好几辈子的时间。你必须找到另一种方法来破坏程序......
+You tug against the straps to no avail.
+你用力拉动带子，但无济于事。
+One of your Doll IDs seems to have had corrupted data on it, causing the program to crash and unlock.
+你的一个娃娃 ID 上的数据似乎已损坏，导致程序崩溃并锁定。
 
 The item seems to drain divine energy from shrines. Maybe that has something to do with it.
 该物品似乎从神殿中汲取了神圣能量。也许这与它有关。
@@ -16974,6 +16977,8 @@ You're giving me everything you have.
 （SPEAKER 拔出一把刀）|我想是的。你不会那么轻易带走我的！
 (The SPEAKER nods)|Could help out in a bind.
 （SPEAKER 点头）|可以帮忙解决束缚。
+(The SPEAKER chuckles)|Lights out, eh...
+（SPEAKER 轻笑）|熄灯，呃……
 (The SPEAKER nods)|I could use one of these!
 （SPEAKER 点头）|我可以使用其中之一！
 (The SPEAKER smiles)|For when things go south...
@@ -18468,6 +18473,190 @@ The Dollmaker releases many drones with robotic arms to capture you!
 Zombies emerge from the ground!
 僵尸从地底冒了出来！
 
+Cyber Ankle Cuffs
+网络脚铐
+Ankle cuffs of exquisite quality, bearing all the marks of Old Civilization technology.
+脚铐品质精美，带有旧文明技术的所有痕迹。
+Though made of ultra-tough metal, they feel light on your ankles...
+虽然它们由超坚韧的金属制成，但戴在脚踝上却感觉很轻......
+An energy link appears, linking your ankles close together!
+一条能量链条出现，将你的脚踝紧密地连接在一起！
+
+Energy Link
+能量链条
+An energy link connecting your ankle cuffs together.
+将脚铐链接在一起的能量链条。
+It's powered by a chaos-resonance matrix, which can be overloaded by cutting the field.
+它由混沌共振矩阵提供动力，可以通过切割磁场来使其过载。
+The energy link disappears, freeing your ankles!
+能量链条消失，你的脚踝自由了！
+The energy link disappears, freeing your legs!
+能量链条消失，你的腿自由了！
+Your ankles snap together as the cuffs activate!
+当铐子激活时，你的脚踝会扣在一起！
+
+Cyber Cuffs Chain
+链式网络手铐
+A magnetic link keeping your ankles tightly connected.
+磁力链接使你的脚踝保持紧密连接。
+The cuffs are closely attached, so you can't cut the link apart.
+手铐紧密相连，因此你无法将链条切断。
+The ankle cuffs detach with a beep!
+脚铐随着 '嘟' 的一声解开了！
+
+Cyber Leg Cuffs
+网络腿铐
+Thigh cuffs of exquisite quality, bearing all the marks of Old Civilization technology.
+腿铐品质精美，带有旧文明技术的所有痕迹。
+Though made of ultra-tough metal, they feel light on your legs...
+虽然它们由超坚韧的金属制成的，但戴在腿上却感觉很轻......
+An energy link appears, linking your thighs close together!
+一条能量链条出现，将你的大腿紧紧地连接在一起！
+
+Cyber Cuffs
+网络手铐
+Wrist and elbow cuffs of exquisite quality, bearing all the marks of Old Civilization technology.
+手腕和肘部手铐品质精美，带有旧文明技术的所有痕迹。
+Though made of ultra-tough metal, they feel light on your wrists...
+虽然它们由超坚韧的金属制成，但戴在手腕上却感觉很轻......
+Your wrists are pulled together as the cuffs activate!
+当铐子启动时，你的手腕被拉到一起！
+
+Cyber Wrist Link
+网络腕链
+A magnetic link keeping your wrists secured together.
+磁力链条将你的手腕固定在一起。
+The cuffs are closely attached, so you can't cut the link apart.
+铐子紧密相连，因此你无法将链条切断。
+Your cuffs detatch with a beep!
+铐子随着 '嘟' 的一声解开了！
+Your elbows snap together as the cuffs engage fully!
+当铐子完全链接时，你的肘部会被锁在一起！
+
+Cyber Connection
+网络链接
+A magnetic link keeping your wrists and elbows inescapably secured.
+磁力链条使你的手腕和肘部牢牢固定。
+Your wrists detatch with a beep, leaving your elbows still bound!
+随着 '嘟' 的一声，你的手腕自由了，但你的肘部仍然被束缚着！
+Your arms snap fully together as the cuffs activate!
+当铐子激活时，你的手臂会完全合拢！
+
+Cyber Elbow Link
+网络肘链
+A magnetic link keeping your elbows pressed tightly together!
+磁力链条将你的肘部紧紧地压在一起！
+The cuffs are closely attached, so you can't cut the link apart.
+铐子紧密相连，因此你无法将链条切断。
+Your elbows detatch with a beep!
+肘部随着 '嘟' 的一声解开了！
+
+Doll Gag
+玩偶口塞
+A soft ball pressed against your lips and held in place with metallic straps.
+一个柔软的球压在你的嘴唇上，并用金属带固定到位。
+The straps are made of a flexible metal with no visible seams along the straps.
+带子由柔性金属制成，带子上没有可见的接缝。
+
+Doll Plug Gag
+玩偶塞子口塞
+A soft, flexible plug pressed into your mouth and held in place with a metal shield.
+将柔软、灵活的塞子压入你的嘴中，并用金属罩固定到位。
+
+Doll Muzzle
+玩偶口套
+A metallic shield preventing you from removing any gags underneath.
+金属罩可防止你移除下面的任何口塞。
+It's made of exquisite Old Civilization metals, resistant to almost all forms of damage.
+它由精致的旧文明金属制成，可以抵抗几乎所有形式的损坏。
+
+Doll Heels
+玩偶高跟鞋
+A pair of tall heels used to improve the aesthetics and controllability of dolls.
+一双高跟鞋用来提高玩偶的美观度和操控性。
+
+Cyber Doll Belt
+网络玩偶贞操带
+A chastity belt created by the Old Civilization. Truly a marvel of science!
+旧文明制造的贞操带。真是科学奇迹！
+It's made of exquisite Old Civilization metals, resistant to almost all forms of damage, and padded with a advanced form of latex designed for permanent wear.
+它由精致的旧文明金属制成，可以抵抗几乎所有形式的损坏，并填充有专为永久磨损而设计的高级乳胶。
+Cyber Doll Bra
+网络玩偶贞操文胸
+A chastity bra created by the Old Civilization. Truly a marvel of science!
+旧文明制造的贞操文胸。真是科学奇迹！
+
+Doll Jacket
+玩偶拘束衣
+A jacket used to secure particularly unruly dolls.
+用于束缚特别不守规矩玩偶的拘束衣。
+The material is somehow both stretchy yet hard enough to chip a knife on. The pinnacle of Old Civilization materials science.
+这种材料既有弹性又坚硬，足以用刀划破。旧文明材料科学的顶峰。
+
+Dollmaker's Visor
+玩偶师的面罩
+A visor used by the Dollmaker for assigning arbitrary tasks to her dolls. Dims vision unless you perform your duties capturing dolls.
+玩偶师用来给她的玩偶分配任意任务的面罩。除非你履行捕捉玩偶的职责，否则视线会变暗。
+It's made of metallic glass, almost indestructible. Fortunately, it's still possible to see through.
+它由金属玻璃制成，几乎坚不可摧。幸好，还是可以看穿的。
+Dollmaker's Mask
+玩偶师的面具
+A mask used by the Dollmaker for assigning arbitrary tasks to her dolls. Dims vision unless you perform your duties capturing dolls.
+玩偶师用来给她的玩偶分配任意任务的面具。除非你履行捕捉玩偶的职责，否则视线会变暗。
+
+Detected new hardware.
+检测到新硬件。
+[Restriction Protocol] Detected new hardware: RESTRAINTNAME. Install progress: PERCENT%
+[限制协议] 检测到新硬件：RESTRAINTNAME。安装进度：PERCENT%
+[Restriction Protocol] Installation complete. Engage mobility restrictions.
+[限制协议] 安装完成。参与行动限制。
+
+[Training Protocol] Detected hardware: RESTRAINTNAME. Install progress: PERCENT%
+[训练协议] 检测到硬件：RESTRAINTNAME。安装进度：PERCENT%
+Supplemental Stimulation
+补充刺激
+Endurance Training
+耐力训练
+Frustration Tolerance
+挫折容忍度
+Mental Resistance
+心理抵抗
+[Training Protocol] Installation complete. Engage training mode: CHASTITYMODE
+[训练协议] 安装完成。参与训练模式：CHASTITYMODE
+You feel your belt insert new toys into your body...
+你感觉你的贞操带将新玩具插入你的身体......
+
+[Sensory Protocol] Detected hardware: RESTRAINTNAME. Install progress: PERCENT%
+[感官协议] 检测到硬件：RESTRAINTNAME。安装进度：PERCENT%
+[Sensory Protocol] Installation complete. Engage sensory restrictions.
+[感官协议] 安装完成。参与感官限制。
+
+[Tracking Protocol] Detected hardware: RESTRAINTNAME. Install progress: PERCENT%
+[追踪协议] 检测到硬件：RESTRAINTNAME。安装进度：PERCENT%
+[Tracking Protocol] Installation complete. Engage tracing system.
+[追踪协议] 安装完成。启用追踪系统。
+
+Your visor dims to help you focus on your task.
+你的面罩变暗，以帮助你专注于你的任务。
+
+Escaped Doll
+逃跑的玩偶
+You return the doll to her rightful owner.
+你把玩偶归还给她的合法主人。
+
+Your movement sets off your [RESTRAINTNAME]
+你的动作引发了你的 [RESTRAINTNAME]
+Your struggling sets off your [RESTRAINTNAME]
+你的挣扎引发了你的 [RESTRAINTNAME]
+Your attack sets off your [RESTRAINTNAME]
+你的攻击引发了你的 [RESTRAINTNAME]
+
+The straps on your gag prevent you from loosening the blindfold!
+堵嘴物上的带子可以防止眼罩松动！
+The straps on your gag keep your blindfold securely in place!
+堵嘴物上的带子可将眼罩牢固固定住！
+
+
 (Nod happily)
 （高兴地点头）
 (Attack her without saying anything)
@@ -18566,18 +18755,34 @@ A wrist and elbow tie keeping your arms secured behind your back.
 手腕和肘部系带将你的手臂固定在背后。
 The ropes squeeze you gently.
 绳索轻轻地压迫你。
-Leg Ropes
-腿部绳缚
-A tie that hobbles your legs together..
-一条能把你的腿绑在一起的捆绑。。
+Upper Knee Ropes
+上膝绳缚
+A tie that hobbles your knees together..
+一条能把你的膝盖绑在一起的捆绑。。
 The ropes squeeze you gently.
 绳索轻轻地压迫你。
+Thigh Ropes
+大腿绳缚
+A tie that hobbles your legs together..
+一条能把你的腿绑在一起的捆绑。。
+Upper Thigh Ropes
+上腿绳缚
+A tie that hobbles your thighs together..
+一条能把你的大腿绑在一起的捆绑。。
 Ankle Ropes
 脚踝绳缚
 A tie keeping your feet secured together.
 一条将双脚固定在一起的捆绑。
 The ropes squeeze you gently.
 绳索轻轻地压迫你。
+Lower Leg Ropes
+小腿绳缚
+A tie keeping your feet secured together.
+一条将双脚固定在一起的捆绑。
+Lower Knee Ropes
+下膝绳缚
+A tie keeping your knees secured together.
+一条将膝盖固定在一起的捆绑。
 Toe Rope
 趾绳
 A tie keeping your toes tightly together.
@@ -19367,8 +19572,8 @@ Experience a comprehensive rope bondage experience.
 
 Rope Dojo
 绳道场
-Shadow Clan
-暗影教徒
+Doll Shoppe
+玩偶商店
 Fuuka's Shrine
 Fuuka的神龛
 Dollmaker
@@ -19508,3 +19713,119 @@ You twirl your weapon, harvesting AMNT seeds!
 你转动你的武器，收获 AMNT 粒种子！
 There is nothing to harvest.
 没有什么可收获的。
+
+Telekinesis 101
+心灵感应 101
+Unlocks telekinetic abilities. Can equip weapons while bound, but at 0% accuracy. Learn Recover Object.
+解锁心灵感应能力。被束缚时可以装备武器，但精准度为 0%。习得'恢复对象'。
+
+Recover Object
+恢复对象
+Use telekinesis to pick up items and open chests from a distance. Refunds 75% of mana cost if not used to open a chest.
+使用心灵感应从远处拾取物品并打开箱子。如果不用于打开箱子，则退还 75% 的法力消耗。
+The items float to you!
+物品飘向了你！
+There's nothing to pick up.
+没有什么能捡到的。
+There's an obstacle in the way!
+路上有障碍物！
+Select a tile with items
+选择包含物品的位置
+
+Enhanced Recovery
+增强恢复
+Upcast to increase range and recover objects in an area.
+向上投射以增加范围并恢复区域内的物体。
+Select an area with items
+选择有物品的区域
+
+Kinetic Slash
+动能斩
+Swing an equipped weapon (not unarmed or hands free) in a line, slashing enemies in the way with 20 + 150% weapon damage. Counts as an attack. +10 mana cost if wielding a Heavy weapon.
+沿一条线挥动装备好的武器（不是徒手或空手），以 20 + 150% 武器伤害砍杀沿途的敌人。算作一次攻击。如果使用重型武器，+10 法力消耗。
+You swing!
+你挥动武器！
+Choose where to swing (must not be unarmed or hands free weapon)
+选择挥动的位置（不得使用徒手武器或无需通过手臂即可使用的武器）
+
+Kinetic Lance
+动能枪
+Propel your weapon at devastating speed, piercing enemies for 30+160% Weapon Damage and dropping it at the end of the trajectory. Counts as an attack. +15 mana cost if wielding a Heavy weapon.
+以毁灭性的速度推进你的武器，刺穿敌人，造成 30+160% 武器伤害，并其会掉落在轨迹末端。算作一次攻击。如果使用重型武器，+15 法力消耗。
+You propel your weapon forward!
+你把武器向前推进！
+Choose where to launch your weapon.
+选择发射武器的位置。
+
+Sagitta
+射手箭
+Fire a projectile. If this projectile hits an enemy, make one attack against an enemy for 10+40% weapon damage. +5 mana cost if wielding a Heavy weapon.
+发射一枚炮弹。如果这枚炮弹击中敌人，对敌人造成一次攻击，造成10 + 40%的武器伤害。如果使用重型武器，+5 法力消耗。
+You unleash a deadly projectile!
+你发射了一枚致命的炮弹！
+Choose aim direction.
+选择目标方向。
+
+Sagitta Assault
+射手突击
+After casting Sagitta, you can recast it up to three more times without advancing time.
+铸造射手座后，你可以在不提前时间的情况下再重铸三次。
+
+Psychokinesis
+念力
+You can ignore components for telekinetic spells, however spells generate distraction when cast this way due to the mental strain. Unable to use at 100% DP.
+你可以忽略心灵感应需要的法术的成分，但是当以这种方式施放法术时，由于精神紧张，法术会产生干扰。无法在 100% DP 下使用。
+
+Kinetic Mastery
+动力学掌握
+Negates the penalty for 2-handed weapons. Also gain the following effects:|-Kinetic spells and Sagitta cost 30% less while wielding a Light weapon.|-Kinetic spells and Sagitta gain +15 base damage when wielding a Heavy weapon.
+取消对双手武器的惩罚。还获得以下效果：|-挥舞轻型武器时，动能法术和箭矢成本降低 30%。|-挥舞重型武器时，动能法术和箭矢获得 +15 基础伤害。
+
+Grasp
+抓握
+Cast on an enemy to snare them for 20 turns, or until you leave range/are incapacitated. Cast on a point to throw the grasped enemy in that direction, dealing 40 crush damage if they hit a wall or another enemy.
+对敌人施放以诱捕他们 20 回合，或直到你离开范围/丧失行动能力。对某个点施放，将抓住的敌人扔向该方向，如果他们被扔到墙壁或其他敌人上，则会造成 40 点挤压伤害。
+You grab the ENMY using telekinesis and hold them in place!
+你可以使用心灵感应抓住敌人并将他们固定在原地！
+You throw the ENMY!
+你投掷了 ENMY！
+Choose a target or a location (if a target is currently grasped)
+选择一个目标或位置（如果当前已抓住目标）
+
+Rock
+岩石
+Perfect for a lifestyle of love and peace.
+非常适合爱与和平的生活方式。
+Deals crush damage. Stuns on critical. Ouch!
+造成挤压伤害。暴击会施加眩晕。哎哟！
+You pick up a particularly nice rock.
+你捡到一块非常漂亮的石头。
+
+You pick up a device for snuffing out candles and torches.
+你拿起一个用来熄灭蜡烛和火把的装置。
+Candle Snuffer
+灭烛器
+You put out the torch.
+你熄灭了火把。
+A handy device for putting out torches and lanterns.
+一种用于熄灭火把和灯笼的简易装置。
+But why would you want to do that? You hidin' something?
+但你为什么要这么做呢？你想隐藏什么吗？
+
+You find a bag... full of bags.
+你发现一个包……满满当当的包。
+Sack of Sacks
+一袋麻袋
+You cover the light source.
+你遮住光源。
+Bags inside a bag of bags inside a bag of bags...
+袋子里面有个袋子里面有个袋子里面有个袋子......
+Can be placed over light sources to cover them.
+可以放置在光源上方以遮住它们。
+
+The snuffer doesn't work on that light source.
+灭烛器对该光源不起作用。
+The bag can't cover that light source.
+袋子遮不住那个光源。
+You remove the bag from its light source and place it back inside your bag.
+你将袋子从光源上取下，然后将其放回袋子内。
