@@ -159,11 +159,11 @@ let KinkyDungeonLearnableSpells = [
 		// Verbal
 		["TelekineticSlash", "KineticLance", "CommandWord", "CommandWordGreater", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "CommandVibrate", "CommandOrgasm", "ZoneOfExcitement", "Lockdown", "Chastity", "ZoneOfPurity", "Blink", "TransportationPortal", "BanishPortal", "Bomb", "RopeBoltLaunch", "RopeStrike", "Leap", "Leap2", "Leap3", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
 		// Arms
-		["RecoverObject", "TickleCloud", "FeatherCloud", "Swap", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "DisplayStand", "SummonGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
+		["RecoverObject", "RecoverObject2", "TickleCloud", "FeatherCloud", "Swap", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "DisplayStand", "SummonGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
 		// Legs
 		["Sagitta", "Snare", "Wall", "Quickness", "Quickness2", "Quickness3", "Quickness4", "Quickness5", "SlimeSplash", "Slime", "SlimeEruption", "SlimeWall", "SlimeWallVert", "LatexWallVert", "SlimeWallHoriz", "LatexWallHoriz", "LatexWall", "SlimeToLatex", "LiquidMetal", "LiquidMetalBurst", "Ally", "NatureSpirit", "StormCrystal", "EarthMote", "Golem"],
 		// Passive
-		["Psychokinesis", "SagittaAssault", "Frustration", "LeatherBurst", "OneWithSlime", "SlimeWalk", "SlimeMimic", "Engulf"],
+		["Psychokinesis", "KineticMastery", "SagittaAssault", "Frustration", "LeatherBurst", "OneWithSlime", "SlimeWalk", "SlimeMimic", "Engulf"],
 	],
 
 	//Page 3: Illusion
@@ -1030,25 +1030,43 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			
 		]},
 
+		{name: "KineticMastery", tags: ["telekinesis", "defense", "utility"], prerequisite: "TelekineticSlash", school: "Conjure", learnFlags: ["KineticMastery"],
+			spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+				{type: "KineticMastery", trigger: "beforeMultMana", requiredTag: "kinetic", mult: 0.7},
+		]},
+
 		
 		{name: "RecoverObject", prerequisite: "FloatingWeapon", tags: ["telekinesis", "utility"], sfx: "Teleport", school: "Conjure", manacost: 4.0, components: ["Arms"], level:1,
 			type:"special", special: "RecoverObject",
 			onhit:"", time:0, power: 1.0, range: 4.99, size: 1, damage: "glue"},
+			
+		{name: "RecoverObject2", prerequisite: "RecoverObject", tags: ["telekinesis", "utility"], sfx: "Teleport", school: "Conjure", manacost: 8.0, components: ["Arms"], level:1,
+			upcastFrom: "RecoverObject", upcastLevel: 1,
+			type:"special", special: "RecoverObject",
+			onhit:"", time:0, power: 1.0, range: 7.99, aoe: 2.5, size: 1, damage: "glue"},
 
-		{name: "TelekineticSlash", castCondition: "FloatingWeapon", prerequisite: "FloatingWeapon", tags: ["telekinesis", "offense"], sfx: "FireSpell", school: "Conjure", manacost: 5.0, components: ["Verbal"], level:1,
+		{name: "TelekineticSlash", castCondition: "FloatingWeapon", prerequisite: "FloatingWeapon", tags: ["telekinesis", "kinetic", "offense"], sfx: "FireSpell", school: "Conjure", manacost: 5.0, components: ["Verbal"], level:1,
 			type:"special", special: "TelekineticSlash", aoetype: "slash", aoe: 1,
-			onhit:"", time:0, power: 2, range: 2.5, size: 1, damage: "crush"},
+			events: [
+				{trigger: "calcMana", type: "HeavyKinetic", power: 1.0},
+			],
+			onhit:"", time:0, power: 1.0, range: 2.5, size: 1, damage: "crush"},
 		
-		{name: "KineticLance", castCondition: "FloatingWeapon", prerequisite: "TelekineticSlash", tags: ["telekinesis", "offense"], sfx: "Lightning", school: "Conjure",
+		{name: "KineticLance", castCondition: "FloatingWeapon", prerequisite: "TelekineticSlash", tags: ["telekinesis", "kinetic", "offense"], sfx: "Lightning", school: "Conjure",
+			noise: 6,
 			manacost: 6, components: ["Verbal"], level:1, type:"bolt", pierceEnemies: true, projectileTargeting:true, onhit:"", power: 0.0, delay: 0, time: 1, range: 6, speed: 7, size: 3, damage: "crush",
 			events: [
 				{trigger: "bulletHitEnemy", type: "KineticLance", mult: 1.6, power: 3.0},
 				{trigger: "bulletDestroy", type: "KineticLance"},
+				{trigger: "calcMana", type: "HeavyKinetic", power: 1.5},
 			],
 		},
 		
-		{name: "Sagitta", castCondition: "FloatingWeapon", prerequisite: "TelekineticSlash", tags: ["telekinesis", "offense", "sagitta"], sfx: "Lightning", school: "Conjure",
+		{name: "Sagitta", castCondition: "FloatingWeapon", prerequisite: "TelekineticSlash", tags: ["telekinesis", "kinetic", "offense", "sagitta"], sfx: "FireSpell", school: "Conjure",
 			meleeOrigin: true, noTargetPlayer: true, noEnemyCollision: true, CastInWalls: true, lifetime: 1,
+			events: [
+				{trigger: "calcMana", type: "HeavyKinetic", power: 0.5},
+			],
 			manacost: 1.5, components: ["Legs"], level:1, type:"hit", projectileTargeting:true, onhit:"aoe", power: 0.0, delay: 0, time: 1, range: 4.99, speed: 5, size: 1, damage: "pierce",
 			spellcast: {spell: "SagittaBolt", target: "target", directional:true, randomDirectionFallback: true, alwaysRandomBuff: "SagittaAssault", aimAtTarget: true, noTargetMoveDir: true, offset: false},
 			
@@ -2024,6 +2042,7 @@ let KinkyDungeonSpellListEnemies = [
 			{id: "Shroud", type: "Evasion", power: 7.0, player: true, enemies: true, tags: ["darkness"], range: 1.5},
 			{id: "Shroud2", aura: "#444488", type: "Sneak", power: 4.0, player: true, duration: 8, enemies: false, tags: ["darkness"], range: 1.5}
 		], onhit:"", time:14, aoe: 1.5, power: 0, delay: 8, range: 3.5, size: 3, damage: "",
+		noMiscast: true,
 		effectTileDurationModPre: 3, effectTilePre: {
 			name: "Smoke",
 			duration: 8,
@@ -2038,6 +2057,7 @@ let KinkyDungeonSpellListEnemies = [
 		
 	{name: "FlashBomb", color: "#ff2200", minRange: 0, sfx: "Miss", school: "Illusion", manacost: 3, specialCD: 12, components: ["Verbal"], hideWarnings: true,
 		hitColor: 0xffffff, hitLight: 7,
+		noMiscast: true,
 		hitevents: [
 			{type: "BlindAll", trigger: "bulletHitEnemy", time: 20},
 		],

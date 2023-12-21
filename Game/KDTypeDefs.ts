@@ -363,6 +363,8 @@ interface KDRestraintPropsBase {
 	Type?: string,
 	/** Item is removed when the wearer goes to prison */
 	removePrison?: boolean,
+	/** stronger version */
+	forceRemovePrison?: boolean,
 	/** Changes the dialogue text when you fail to remove the item */
 	failSuffix?: Record<string, string>,
 	/** Changes the dialogue text when you try to struggle completely */
@@ -631,14 +633,20 @@ interface overrideDisplayItem {
 	OverridePriority?: number[]|number,
 }
 interface alwaysDressModel {
-	/** Standalone club asset */
+	/** Standalone 5.0+ asset */
 	Model: string,
+	/** Group */
+	Group?: string,
 	/** Filters */
 	Filters?: Record<string, LayerFilter>,
-	/** Faction color index */
-	factionColor?: number[][],
+	/** Faction filter index */
+	factionFilters?: Record<string, {color: string, override: boolean}>,
 	/** Inherits the filters of the main */
 	inheritFilters?: boolean,
+	/** Whether or not it overrides items already on */
+	override?: boolean,
+	/** Uses the player's hair color as the item color */
+	useHairColor?: boolean,
 }
 
 interface KDLoadout {name: string, tags?: string[], singletag: string[], singletag2?: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number, multiplier?: number};

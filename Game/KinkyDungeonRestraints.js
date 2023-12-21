@@ -1767,6 +1767,15 @@ function KDGetDynamicItem(group, index) {
  */
 function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
+	if (!KinkyDungeonCanTalk() && KDRandom() < KinkyDungeonGagMumbleChanceRestraint) {
+		let msg = "KinkyDungeonGagStruggle" + (StruggleType != "Struggle" ? "Quiet" : "");
+		let gagMsg = Math.floor(KDRandom() * 3);
+		
+		msg = msg + gagMsg;
+
+		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), "#ffffff", 5, 3);
+	}
+
 	KinkyDungeonSetFlag("tryescaping", 3);
 	let restraint = KinkyDungeonGetRestraintItem(struggleGroup);
 	let host = restraint;
@@ -3463,7 +3472,17 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 		}
 
 		ret = KinkyDungeonAddRestraint(restraint, Tightness + Math.round(0.1 * KinkyDungeonDifficulty), Bypass, Lock, Keep, false, !linkableCurrent, events, faction, undefined, undefined, Curse, undefined, securityEnemy, inventoryAs, data);
+		if (!KinkyDungeonCanTalk() && KDRandom() < KinkyDungeonGagMumbleChanceRestraint) {
+			let msg = "KinkyDungeonGagRestraint";
+			let gagMsg = Math.floor(KDRandom() * 3);
 
+			if (restraint.power > 8 && KDRandom() < .8) gagMsg = 2;
+			else if (restraint.power > 4 && KDRandom() < .5) gagMsg = 2;
+			
+			msg = msg + gagMsg;
+	
+			KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), "#ffffff", 5, 3);
+		}
 		return ret;
 	}
 	return 0;
@@ -4471,7 +4490,11 @@ let KDRopeParts = {
 	"Hogtie": {enemyTagSuffix: "Hogtie"},
 	"HogtieWrist": {enemyTagSuffix: "Hogtie"},
 	"Feet": {},
+	"Feet2": {},
+	"Feet3": {},
 	"Legs": {},
+	"Legs2": {},
+	"Legs3": {},
 	"Belt": {},
 	"Harness": {},
 	"Crotch": {},

@@ -11,6 +11,7 @@ let KDFocusableTextFields = [
 let KDMAXGODDESSQUESTS = 3;
 
 
+let KinkyDungeonGagMumbleChanceRestraint = 0.4;
 let KinkyDungeonGagMumbleChance = 0.02;
 let KinkyDungeonGagMumbleChancePerRestraint = 0.0025;
 

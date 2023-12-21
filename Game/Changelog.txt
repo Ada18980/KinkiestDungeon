@@ -22,6 +22,12 @@ Add new outfits
 - New spells: Recover Object, Kinetic Slash, WIP (Sagitta, Grasp, Kinetic Lance, Psychokinesis)
 - Tweaked positioning of ropes for boxtie, strict Ropework
 - Fixed Inertia perk not allowing diagonal 90 degree turns
+- Fixed jail doors not being locked properly
+- Added Candle Snuffer and Bag of Bags
+- Kinky Prisoner, No Way Out, and Well-Equipped increase Security level by 30 (no way to lower except by Rep)
+- Added lots of new definitions for prison restraints based on tags including maid, different rope types, and gave alchemist latex
+- Added more sections of leg rope for a much tighter and more secure experience
+- Floater messages now distribute themselves for greater readability
 
 5.0.3 (December 18)
 - Added explosive barrels to levels. Beat them down without igniting them to take their gunpowder.

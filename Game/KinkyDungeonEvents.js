@@ -1239,12 +1239,7 @@ let KDEventMapInventory = {
 		"RequireCollar": (e, item, data) => {
 			if (data.item !== item && KDRestraint(item).Group) {
 				let collar = false;
-				for (let inv of KinkyDungeonAllRestraint()) {
-					if (KDRestraint(inv).shrine && (KDRestraint(inv).shrine.includes("Collars"))) {
-						collar = true;
-						break;
-					}
-				}
+				if (KinkyDungeonPlayerTags.get("Collars")) collar = true;
 				if (!collar) {
 					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, false, false, false);
 				}
@@ -1717,6 +1712,13 @@ let KDEventMapInventory = {
 				KinkyDungeonSendTextMessage(5, TextGet("KDLatexDebuff" + Math.floor(KDRandom() * 3)), "#38a2c3", 2, true);
 			}
 		},
+		"ropeDebuff": (e, item, data) => {
+			if (data.restraint && data.struggleType === "Struggle" && item != data.restraint && e.requireTags?.some((tag) => {return KDRestraint(data.restraint).shrine.includes(tag);})) {
+				data.escapePenalty += e.power ? e.power : 0.075;
+				KinkyDungeonSendTextMessage(5, TextGet("KDRopeDebuff" + Math.floor(KDRandom() * 3)).replace("RSTRN", TextGet("Restraint" + item.name)), "#e0af88", 2, true);
+			}
+		},
+		
 		"shadowBuff": (e, item, data) => {
 			if (data.restraint && data.struggleType === "Struggle" && item == data.restraint) {
 
@@ -3287,7 +3289,11 @@ let KDEventMapSpell = {
 		},
 	},
 	"beforeMultMana": {
-		
+		"KineticMastery": (e, spell, data) => {
+			if (data.spell?.tags?.includes(e.requiredTag) && KinkyDungeonPlayerDamage?.light) {
+				data.cost = Math.max(0, data.cost*e.mult);
+			}
+		},
 		"ManaRegen": (e, spell, data) => {
 			if (!KinkyDungeonPlayerBuffs.ManaRegenSuspend || KinkyDungeonPlayerBuffs.ManaRegenSuspend.duration < 1) {
 				if (data.spell && (data.spell.active || (!data.spell.passive && !data.passive)))
@@ -3296,7 +3302,11 @@ let KDEventMapSpell = {
 		},
 	},
 	"calcMana": {
-		
+		"HeavyKinetic": (e, spell, data) => {
+			if (data.spell == spell && KinkyDungeonPlayerDamage?.heavy) {
+				data.cost += e.power;
+			}
+		},
 		"StaffUser2": (e, spell, data) => {
 			if (data.spell && !data.spell.passive && data.spell.type != 'passive')
 				data.cost = Math.max(data.cost - e.power, Math.min(data.cost, 1));
@@ -6054,6 +6064,7 @@ let KDEventMapBullet = {
 		"KineticLance": (e, b, data) => {
 			if (b && data.enemy && !KDHelpless(data.enemy) && data.enemy.hp > 0 && KinkyDungeonPlayerDamage && !KDEnemyHasFlag(data.enemy, "KineticLanceHit")) {
 				KinkyDungeonSetEnemyFlag(data.enemy, "KineticLanceHit", 1);
+				let mod = (KinkyDungeonFlags.get("KineticMastery") ? 1.5 : 0) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisBase");
 				let scaling = e.mult * (KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisScale")));
 				let dd = {
 					target: data.enemy,
@@ -6061,7 +6072,7 @@ let KDEventMapBullet = {
 					skipTurn: false,
 					spellAttack: true,
 					attackData: {
-						damage: e.power + KinkyDungeonPlayerDamage.dmg * scaling,
+						damage: e.power + mod + KinkyDungeonPlayerDamage.dmg * scaling,
 						type: KinkyDungeonPlayerDamage.type,
 						distract: KinkyDungeonPlayerDamage.distract,
 						distractEff: KinkyDungeonPlayerDamage.distractEff,
@@ -6089,13 +6100,14 @@ let KDEventMapBullet = {
 		"Sagitta": (e, b, data) => {
 			if (b && data.enemy && !KDHelpless(data.enemy) && data.enemy.hp > 0 && KinkyDungeonPlayerDamage) {
 				let scaling = e.mult * (KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisScale")));
+				let mod = (KinkyDungeonFlags.get("KineticMastery") ? 1.5 : 0) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisBase");
 				let dd = {
 					target: data.enemy,
 					attackCost: 0.0, // Important
 					skipTurn: false,
 					spellAttack: true,
 					attackData: {
-						damage: e.power + KinkyDungeonPlayerDamage.dmg * scaling,
+						damage: e.power + mod + KinkyDungeonPlayerDamage.dmg * scaling,
 						type: KinkyDungeonPlayerDamage.type,
 						distract: KinkyDungeonPlayerDamage.distract,
 						distractEff: KinkyDungeonPlayerDamage.distractEff,

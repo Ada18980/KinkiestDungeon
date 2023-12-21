@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.4"
+KDVersionStr,"5.0.4 (B)"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -267,7 +267,7 @@ KinkyDungeonStat51,"Search Party"
 KinkyDungeonStatDesc51,"More enemies spawn during sleep."
 
 KinkyDungeonStat52,"No Way Out"
-KinkyDungeonStatDesc52,"Enemies will always use the tightest restraints possible and fully bind you."
+KinkyDungeonStatDesc52,"Enemies will always use the tightest restraints possible regardless of willpower. +10 Security level."
 KinkyDungeonStat53,"Deft Footwork"
 KinkyDungeonStatDesc53,"You ignore some consequences of being mildly slowed from heels or slime, and you can cast Leg spells while slowed significantly at 50% miscast chance."
 KinkyDungeonStatPoorForm,"Poor Form"
@@ -278,7 +278,7 @@ KinkyDungeonStatSomaticPlus,"Deft Fingering"
 KinkyDungeonStatDescSomaticPlus,"You can cast arm spells using just your fingers, as long as your hands aren't bound."
 
 KinkyDungeonStat54,"Well-Equipped"
-KinkyDungeonStatDesc54,"Restraints and traps that are limited by level appear sooner, and enemies will stack many restraints."
+KinkyDungeonStatDesc54,"Restraints and traps that are limited by level appear sooner, and will stack more. +10 security level."
 
 KinkyDungeonStat55,"Quick-Draw"
 KinkyDungeonStatDesc55,"Switching weapons and spells does not take a turn."
@@ -368,7 +368,7 @@ KinkyDungeonStatDescBreathless,"Taking chain, poison, and crush damage makes you
 
 
 KinkyDungeonStatKinkyPrison,"Kinky Prisoner"
-KinkyDungeonStatDescKinkyPrison,"Guards never remove restraints you are already wearing, unless they are applying something tighter."
+KinkyDungeonStatDescKinkyPrison,"Guards won't remove restraints unless they have something tighter. +10 Security level."
 
 KinkyDungeonStatDoorknobs,"Unfair Doors"
 KinkyDungeonStatDescDoorknobs,"Doors are harder to open while your hands are bound."
@@ -832,26 +832,26 @@ KinkyDungeonChangeDistraction0,"Ahh!"
 KinkyDungeonChangeDistraction1,"Mmm..."
 KinkyDungeonChangeDistraction2,"Nnngh..."
 KinkyDungeonChangeDistraction3,"Ooooh..."
-KinkyDungeonChangeDistraction4,"(Breaths heavily)"
-KinkyDungeonChangeDistraction5,"(Moans softly)"
+KinkyDungeonChangeDistraction4,"(Heavy breathing)"
+KinkyDungeonChangeDistraction5,"(Soft moaning)"
 KinkyDungeonChangeDistraction6,"(Incoherent mumbling)"
-KinkyDungeonChangeDistraction7,"(Moans loudly)"
-KinkyDungeonChangeDistraction8,"(Heavy breathing)"
-KinkyDungeonChangeDistraction9,"(Moaning uncontrollably)"
-KinkyDungeonChangeDistraction10,"(Shudders with pleasure)"
+KinkyDungeonChangeDistraction7,"(Loud moans)"
+KinkyDungeonChangeDistraction8,"(Deep breaths)"
+KinkyDungeonChangeDistraction9,"(Uncontrollable moaning)"
+KinkyDungeonChangeDistraction10,"(Horny noises)"
 
 
 KinkyDungeonChangeDistractionGag0,"Mmmph..."
 KinkyDungeonChangeDistractionGag1,"Mmmph~"
 KinkyDungeonChangeDistractionGag2,"Nnngh..."
 KinkyDungeonChangeDistractionGag3,"Mmmmmmmm..."
-KinkyDungeonChangeDistractionGag4,"(Breaths heavily)"
-KinkyDungeonChangeDistractionGag5,"(Moans into her gag)"
+KinkyDungeonChangeDistractionGag4,"(Heavy breathing)"
+KinkyDungeonChangeDistractionGag5,"(Soft moaning)"
 KinkyDungeonChangeDistractionGag6,"(Incoherent mumbling)"
-KinkyDungeonChangeDistractionGag7,"(Moans loudly)"
-KinkyDungeonChangeDistractionGag8,"(Heavy breathing)"
-KinkyDungeonChangeDistractionGag9,"(Moaning uncontrollably)"
-KinkyDungeonChangeDistractionGag10,"(Shudders with pleasure)"
+KinkyDungeonChangeDistractionGag7,"(Loud moans)"
+KinkyDungeonChangeDistractionGag8,"(Deep breaths)"
+KinkyDungeonChangeDistractionGag9,"(Uncontrollable moaning)"
+KinkyDungeonChangeDistractionGag10,"(Horny noises)"
 
 Wait,"You wait."
 WaitAroused,"You wait, legs trembling with arousal."
@@ -3301,6 +3301,10 @@ KDCrotchRopeBlock2,"The toy won't wiggle loose. It's kept in place by your restr
 KDLatexDebuff0,"Your catsuit adheres to latex, making struggling more difficult!"
 KDLatexDebuff1,"The item sticks to your rubber catsuit, making it harder to pull off..."
 KDLatexDebuff2,"The item hugs your catsuit tightly, adhering firmly!"
+
+KDRopeDebuff0,"Your RSTRN holds you securely, making your struggling ineffectual..."
+KDRopeDebuff1,"Your RSTRN holds you tight, making it harder to move..."
+KDRopeDebuff2,"Your RSTRN keeps you tied tight, making it harder to escape..."
 
 KDShadowBuff,"The bright light weakens the shadow hands!"
 
@@ -6374,6 +6378,19 @@ KinkyDungeonGagMumbleAroused5,Mmm~
 KinkyDungeonGagMumbleAroused6,Mmmmm~~
 KinkyDungeonGagMumbleAroused7,Mmmmmm~~~
 
+
+KinkyDungeonGagRestraint0,Mmph...
+KinkyDungeonGagRestraint1,Mmmm!
+KinkyDungeonGagRestraint2,MMM!!!
+
+KinkyDungeonGagStruggleQuiet0,Hmmph.
+KinkyDungeonGagStruggleQuiet1,Mmmm...
+KinkyDungeonGagStruggleQuiet2,Mmmph.
+
+KinkyDungeonGagStruggle0,Mmmmmmph!!!
+KinkyDungeonGagStruggle1,Gmmmmph!
+KinkyDungeonGagStruggle2,Hmmmmph~!!
+
 KinkyDungeonBlindSelf,"You are blinded!"
 KinkyDungeonDamageSelf,"You took DamageTaken damage!"
 KinkyDungeonSlime,"You get caught in sticky slime!"
@@ -6721,9 +6738,9 @@ KinkyDungeonCurseInfoGhostLock,"The lock is protected by a revanent seal. You'll
 KinkyDungeonCurseStruggleGhostLock,"Your fingers pass right through the collar. Pity your neck doesn't pass through it."
 KinkyDungeonCurseUnlockGhostLock,"You channel ghastly energy into the lock and break the seal!!!"
 
-KinkyDungeonCurseInfoDollLock,"It would take many lifetimes to crack the code. You'll have to find the data somehow."
-KinkyDungeonCurseStruggleDollLock,"You tug against the fastenings to no avail."
-KinkyDungeonCurseUnlockDollLock,"One of your Doll IDs seems to have had corrupted data on it, causing the program to crash."
+KinkyDungeonCurseInfoDollLock,"It would take many lifetimes to crack the code. You'll have to find another way to break the program..."
+KinkyDungeonCurseStruggleDollLock,"You tug against the straps to no avail."
+KinkyDungeonCurseUnlockDollLock,"One of your Doll IDs seems to have had corrupted data on it, causing the program to crash and unlock."
 
 KinkyDungeonCurseInfoShadowCurse,"The item seems to drain divine energy from shrines. Maybe that has something to do with it."
 KinkyDungeonCurseStruggleShadowCurse,"The collar is enchanted with multiple layers of magical seals."
@@ -10912,6 +10929,7 @@ rBombSellGunpowder,"(The SPEAKER smiles)|Yes! I can make more bombs!"
 rThiefSell,"(The SPEAKER takes a whiff of her cigar)|Hey friend. Im in the market for some 'tools,'|...if you catch my frift."
 rThiefSellAttack,"(The SPEAKER pulls out a knife)|Thought so. You won't take me that easily!"
 rThiefSellCuffKeys,"(The SPEAKER nods)|Could help out in a bind."
+rThiefSellSnuffer,"(The SPEAKER chuckles)|Lights out, eh..."
 rThiefSellDiscPick,"(The SPEAKER nods)|I could use one of these!"
 rThiefSellBomb,"(The SPEAKER smiles)|For when things go south..."
 rThiefSellSmokeBomb,"(The SPEAKER smiles)|For when things go south..."
@@ -11864,10 +11882,10 @@ RestraintCyberDollJacketDesc2,"The material is somehow both stretchy yet hard en
 
 
 RestraintDollmakerVisor,Dollmaker's Visor
-RestraintDollmakerVisorDesc,"A visor used by the Dollmaker for assigning arbitrary tasks to her dolls."
+RestraintDollmakerVisorDesc,"A visor used by the Dollmaker for assigning arbitrary tasks to her dolls. Dims vision unless you perform your duties capturing dolls."
 RestraintDollmakerVisorDesc2,"It's made of metallic glass, almost indestructible. Fortunately, it's still possible to see through."
 RestraintDollmakerMask,Dollmaker's Mask
-RestraintDollmakerMaskDesc,"A mask used by the Dollmaker for assigning arbitrary tasks to her dolls."
+RestraintDollmakerMaskDesc,"A mask used by the Dollmaker for assigning arbitrary tasks to her dolls. Dims vision unless you perform your duties capturing dolls."
 RestraintDollmakerMaskDesc2,"It's made of metallic glass, almost indestructible. Fortunately, it's still possible to see through."
 
 KDControlHarnessTest,"Detected new hardware."
@@ -16716,12 +16734,24 @@ RestraintRopeSnakeCrotchDesc2,"The ropes squeeze you gently."
 RestraintRopeSnakeArmsWrist,Wrist Rope
 RestraintRopeSnakeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
 RestraintRopeSnakeArmsWristDesc2,"The ropes squeeze you gently."
-RestraintRopeSnakeLegs,Leg Ropes
-RestraintRopeSnakeLegsDesc,"A tie that hobbles your legs together.."
+RestraintRopeSnakeLegs,Upper Knee Ropes
+RestraintRopeSnakeLegsDesc,"A tie that hobbles your knees together.."
 RestraintRopeSnakeLegsDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeLegs2,Thigh Ropes
+RestraintRopeSnakeLegs2Desc,"A tie that hobbles your legs together.."
+RestraintRopeSnakeLegs2Desc2,"The ropes squeeze you gently."
+RestraintRopeSnakeLegs3,Upper Thigh Ropes
+RestraintRopeSnakeLegs3Desc,"A tie that hobbles your thighs together.."
+RestraintRopeSnakeLegs3Desc2,"The ropes squeeze you gently."
 RestraintRopeSnakeFeet,Ankle Ropes
 RestraintRopeSnakeFeetDesc,"A tie keeping your feet secured together."
 RestraintRopeSnakeFeetDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeFeet2,Lower Leg Ropes
+RestraintRopeSnakeFeet2Desc,"A tie keeping your feet secured together."
+RestraintRopeSnakeFeet2Desc2,"The ropes squeeze you gently."
+RestraintRopeSnakeFeet3,Lower Knee Ropes
+RestraintRopeSnakeFeet3Desc,"A tie keeping your knees secured together."
+RestraintRopeSnakeFeet3Desc2,"The ropes squeeze you gently."
 RestraintRopeSnakeToes,Toe Rope
 RestraintRopeSnakeToesDesc,"A tie keeping your toes tightly together."
 RestraintRopeSnakeToesDesc2,"The ropes squeeze you gently."
@@ -16811,12 +16841,24 @@ RestraintStrongMagicRopeCrotchDesc2,"The knots appear to tie themselves together
 RestraintStrongMagicRopeArmsWrist,Spellbound Wrist Tie
 RestraintStrongMagicRopeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
 RestraintStrongMagicRopeArmsWristDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
-RestraintStrongMagicRopeLegs,Spellbound Leg Tie
-RestraintStrongMagicRopeLegsDesc,"A tie that hobbles your legs together.."
+RestraintStrongMagicRopeLegs,Spellbound Knees
+RestraintStrongMagicRopeLegsDesc,"A tie that hobbles your knees together.."
 RestraintStrongMagicRopeLegsDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
-RestraintStrongMagicRopeFeet,Spellbound Ankle Tie
+RestraintStrongMagicRopeLegs2,Spellbound Thighs
+RestraintStrongMagicRopeLegs2Desc,"A tie that holds your legs together.."
+RestraintStrongMagicRopeLegs2Desc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeLegs3,Spellbound Upper Thighs
+RestraintStrongMagicRopeLegs3Desc,"A tie that holds your thighs together.."
+RestraintStrongMagicRopeLegs3Desc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeFeet,Spellbound Ankles
 RestraintStrongMagicRopeFeetDesc,"A tie keeping your feet secured together."
 RestraintStrongMagicRopeFeetDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeFeet2,Spellbound Lower Legs
+RestraintStrongMagicRopeFeet2Desc,"A tie keeping your legs secured together."
+RestraintStrongMagicRopeFeet2Desc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeFeet3,Spellbound Lower Knees
+RestraintStrongMagicRopeFeet3Desc,"A tie keeping your knees secured together."
+RestraintStrongMagicRopeFeet3Desc2,"The knots appear to tie themselves together again, making them impossible to undo!"
 RestraintStrongMagicRopeToes,Spellbound Toe Rope
 RestraintStrongMagicRopeToesDesc,"A tie keeping your toes secured together."
 RestraintStrongMagicRopeToesDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
@@ -16852,12 +16894,24 @@ RestraintWeakMagicRopeCrotchDesc2,"They glow with a trace of magic."
 RestraintWeakMagicRopeArmsWrist,Magic Wrist Tie
 RestraintWeakMagicRopeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
 RestraintWeakMagicRopeArmsWristDesc2,"They glow with a trace of magic."
-RestraintWeakMagicRopeLegs,Magic Leg Tie
-RestraintWeakMagicRopeLegsDesc,"A tie that hobbles your legs together.."
+RestraintWeakMagicRopeLegs,Magic Knee Tie
+RestraintWeakMagicRopeLegsDesc,"A tie that hobbles your knees together.."
 RestraintWeakMagicRopeLegsDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeLegs2,Magic Thigh Ropes
+RestraintWeakMagicRopeLegs2Desc,"A tie that hobbles your legs together.."
+RestraintWeakMagicRopeLegs2Desc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeLegs3,Magic Upper Thigh Ropes
+RestraintWeakMagicRopeLegs3Desc,"A tie that hobbles your thighs together.."
+RestraintWeakMagicRopeLegs3Desc2,"They glow with a trace of magic."
 RestraintWeakMagicRopeFeet,Magic Ankle Tie
 RestraintWeakMagicRopeFeetDesc,"A tie keeping your feet secured together."
 RestraintWeakMagicRopeFeetDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeFeet2,Magic Lower Leg Tie
+RestraintWeakMagicRopeFeet2Desc,"A tie keeping your legs secured together."
+RestraintWeakMagicRopeFeet2Desc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeFeet3,Magic Lower Knee Tie
+RestraintWeakMagicRopeFeet3Desc,"A tie keeping your knees secured together."
+RestraintWeakMagicRopeFeet3Desc2,"They glow with a trace of magic."
 RestraintWeakMagicRopeToes,Magic Toe Rope
 RestraintWeakMagicRopeToesDesc,"A tie keeping your toes secured together."
 RestraintWeakMagicRopeToesDesc2,"They glow with a trace of magic."
@@ -16893,12 +16947,24 @@ RestraintCelestialRopeCrotchDesc2,"A set of ropes that emit a calm, soothing aur
 RestraintCelestialRopeArmsWrist,Holy Wrist Rope
 RestraintCelestialRopeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
 RestraintCelestialRopeArmsWristDesc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
-RestraintCelestialRopeLegs,Holy Leg Ropes
-RestraintCelestialRopeLegsDesc,"A tie that hobbles your legs together.."
+RestraintCelestialRopeLegs,Holy Upper Knee Ropes
+RestraintCelestialRopeLegsDesc,"A tie that hobbles your knees together.."
 RestraintCelestialRopeLegsDesc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
+RestraintCelestialRopeLegs2,Holy Thigh Ropes
+RestraintCelestialRopeLegs2Desc,"A tie that hobbles your legs together.."
+RestraintCelestialRopeLegs2Desc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
+RestraintCelestialRopeLegs3,Holy Upper Thigh Ropes
+RestraintCelestialRopeLegs3Desc,"A tie that holds your thighs together.."
+RestraintCelestialRopeLegs3Desc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
 RestraintCelestialRopeFeet,Holy Ankle Ropes
 RestraintCelestialRopeFeetDesc,"A tie keeping your feet secured together."
 RestraintCelestialRopeFeetDesc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
+RestraintCelestialRopeFeet2,Holy Lower Leg Ropes
+RestraintCelestialRopeFeet2Desc,"A tie keeping your legs secured together."
+RestraintCelestialRopeFeet2Desc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
+RestraintCelestialRopeFeet3,Holy Lower Knee Ropes
+RestraintCelestialRopeFeet3Desc,"A tie keeping your knees secured together."
+RestraintCelestialRopeFeet3Desc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
 RestraintCelestialRopeToes,Holy Toe Rope
 RestraintCelestialRopeToesDesc,"A tie keeping your toes secured together."
 RestraintCelestialRopeToesDesc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
@@ -16935,12 +17001,24 @@ RestraintMithrilRopeCrotchDesc2,"A lightweight rope made out of woven mithril, s
 RestraintMithrilRopeArmsWrist,Mithril Wrist Rope
 RestraintMithrilRopeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
 RestraintMithrilRopeArmsWristDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
-RestraintMithrilRopeLegs,Mithril Leg Ropes
-RestraintMithrilRopeLegsDesc,"A tie that hobbles your legs together.."
+RestraintMithrilRopeLegs,Mithril Lower Knee Ropes
+RestraintMithrilRopeLegsDesc,"A tie that hobbles your knees together.."
 RestraintMithrilRopeLegsDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
+RestraintMithrilRopeLegs2,Mithril Thigh Ropes
+RestraintMithrilRopeLegs2Desc,"A tie that hobbles your thighs together.."
+RestraintMithrilRopeLegs2Desc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
+RestraintMithrilRopeLegs3,Mithril Upper Thigh Ropes
+RestraintMithrilRopeLegs3Desc,"A tie that holds your thighs together.."
+RestraintMithrilRopeLegs3Desc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
 RestraintMithrilRopeFeet,Mithril Ankle Ropes
 RestraintMithrilRopeFeetDesc,"A tie keeping your feet secured together."
 RestraintMithrilRopeFeetDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
+RestraintMithrilRopeFeet2,Mithril Lower Leg Ropes
+RestraintMithrilRopeFeet2Desc,"A tie keeping your legs secured together."
+RestraintMithrilRopeFeet2Desc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
+RestraintMithrilRopeFeet3,Mithril Lower Knee Ropes
+RestraintMithrilRopeFeet3Desc,"A tie keeping your knees secured together."
+RestraintMithrilRopeFeet3Desc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
 RestraintMithrilRopeToes,Mithril Toe Ropes
 RestraintMithrilRopeToesDesc,"A tie keeping your toes secured together."
 RestraintMithrilRopeToesDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
@@ -18438,20 +18516,27 @@ KinkyDungeonSpellCastFailObstacleRecoverObject,There's an obstacle in the way!
 KinkyDungeonSpellTargetRecoverObject,Select a tile with items
 
 
+KinkyDungeonSpellRecoverObject2,Enhanced Recovery
+KinkyDungeonSpellDescriptionRecoverObject2,"Upcast to increase range and recover objects in an area."
+KinkyDungeonSpellCastRecoverObject2,The items float to you!
+KinkyDungeonSpellCastFailRecoverObject2,There's nothing to pick up.
+KinkyDungeonSpellTargetRecoverObject2,Select an area with items
+
+
 KinkyDungeonSpellTelekineticSlash,Kinetic Slash
-KinkyDungeonSpellDescriptionTelekineticSlash,"Swing an equipped weapon (not unarmed or hands free) in a line, slashing enemies in the way with 20 + 80% weapon damage. Counts as an attack."
+KinkyDungeonSpellDescriptionTelekineticSlash,"Swing an equipped weapon (not unarmed or hands free) in a line, slashing enemies in the way with 20 + 80% weapon damage. Counts as an attack. +10 mana cost if wielding a Heavy weapon."
 KinkyDungeonSpellCastTelekineticSlash,You swing!
 KinkyDungeonSpellTargetTelekineticSlash,Choose where to swing (must not be unarmed or hands free weapon)
 
 
 KinkyDungeonSpellKineticLance,Kinetic Lance
-KinkyDungeonSpellDescriptionKineticLance,"Propel your weapon at devastating speed, piercing enemies for 30+160% Weapon Damage and dropping it at the end of the trajectory. Counts as an attack."
+KinkyDungeonSpellDescriptionKineticLance,"Propel your weapon at devastating speed, piercing enemies for 30+160% Weapon Damage and dropping it at the end of the trajectory. Counts as an attack. +15 mana cost if wielding a Heavy weapon."
 KinkyDungeonSpellCastKineticLance,You propel your weapon forward!
 KinkyDungeonSpellTargetKineticLance,Choose where to launch your weapon.
 
 
 KinkyDungeonSpellSagitta,Sagitta
-KinkyDungeonSpellDescriptionSagitta,"Fire a projectile. If this projectile hits an enemy, make one attack against an enemy for 10+40% weapon damage."
+KinkyDungeonSpellDescriptionSagitta,"Fire a projectile. If this projectile hits an enemy, make one attack against an enemy for 10+40% weapon damage. +5 mana cost if wielding a Heavy weapon."
 KinkyDungeonSpellCastSagitta,You unleash a deadly projectile!
 KinkyDungeonSpellTargetSagitta,Choose aim direction.
 
@@ -18462,6 +18547,8 @@ KinkyDungeonSpellDescriptionSagittaAssault,"After casting Sagitta, you can recas
 KinkyDungeonSpellPsychokinesis,Psychokinesis
 KinkyDungeonSpellDescriptionPsychokinesis,"You can ignore components for telekinetic spells, however spells generate distraction when cast this way due to the mental strain. Unable to use at 100% DP."
 
+KinkyDungeonSpellKineticMastery,Kinetic Mastery
+KinkyDungeonSpellDescriptionKineticMastery,"Negates the penalty for 2-handed weapons. Also gain the following effects:|-Kinetic spells and Sagitta cost 30% less while wielding a Light weapon.|-Kinetic spells and Sagitta gain +15 base damage when wielding a Heavy weapon."
 
 KinkyDungeonSpellGrasp,Grasp
 KinkyDungeonSpellDescriptionGrasp,"Cast on an enemy to snare them for 20 turns, or until you leave range/are incapacitated. Cast on a point to throw the grasped enemy in that direction, dealing 40 crush damage if they hit a wall or another enemy."
@@ -18474,3 +18561,20 @@ KinkyDungeonInventoryItemRock,Rock
 KinkyDungeonInventoryItemRockDesc,"Perfect for a lifestyle of love and peace."
 KinkyDungeonInventoryItemRockDesc2,"Deals crush damage. Stuns on critical. Ouch!"
 ItemPickupRock,"You pick up a particularly nice rock."
+
+
+ItemPickupSnuffer,"You pick up a device for snuffing out candles and torches."
+KinkyDungeonInventoryItemSnuffer,Candle Snuffer
+KinkyDungeonInventoryItemSnufferUse,"You put out the torch."
+KinkyDungeonInventoryItemSnufferDesc,"A handy device for putting out torches and lanterns."
+KinkyDungeonInventoryItemSnufferDesc2,"But why would you want to do that? You hidin' something?"
+
+ItemPickupSackOfSacks,"You find a bag... full of bags."
+KinkyDungeonInventoryItemSackOfSacks,Sack of Sacks
+KinkyDungeonInventoryItemSackOfSacksUse,"You cover the light source."
+KinkyDungeonInventoryItemSackOfSacksDesc,"Bags inside a bag of bags inside a bag of bags..."
+KinkyDungeonInventoryItemSackOfSacksDesc2,"Can be placed over light sources to cover them."
+
+KDNotSnuffable,The snuffer doesn't work on that light source.
+KDNotBaggable,The bag can't cover that light source.
+KDUnbag,You remove the bag from its light source and place it back inside your bag.

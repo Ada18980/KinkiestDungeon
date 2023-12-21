@@ -255,13 +255,16 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 }
 
 
-function KinkyDungeonItemCheck(x, y, Index) {
+function KinkyDungeonItemCheck(x, y, Index, autoEquip) {
 	for (let I = 0; I < KDMapData.GroundItems.length; I++) {
 		let item = KDMapData.GroundItems[I];
 		if (x == item.x && y == item.y) {
 			KDMapData.GroundItems.splice(I, 1);
 			I -= 1;
 			KinkyDungeonItemEvent(item);
+			if (autoEquip && KDWeapon(item) && KinkyDungeonPlayerWeapon == "Unarmed") {
+				KDSetWeapon(item.name);
+			}
 		}
 	}
 }

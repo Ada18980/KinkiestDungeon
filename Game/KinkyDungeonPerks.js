@@ -225,7 +225,9 @@ let KinkyDungeonStatsPresets = {
 	//"SearchParty": {category: "Enemies", id: 51, cost: -1},
 	"NoWayOut": {category: "Restraints", id: 52, cost: -1},
 	"TightRestraints": {category: "Restraints", id: 54, cost: -1},
+	"KinkyPrison":  {category: "Restraints", id: "KinkyPrison", cost: -1},
 	"MagicHands": {category: "Restraints", id: "MagicHands", cost: -1},
+	"KeepOutfit":  {category: "Restraints", id: "KeepOutfit", cost: 0},
 	"CursedLocks": {category: "Restraints", id: "CursedLocks", cost: -1},
 	"FranticStruggle": {category: "Restraints", id: "FranticStruggle", cost: 1},
 	"Unchained": {category: "Kinky", id: 26, cost: 2, block: ["Damsel"]},
@@ -377,9 +379,6 @@ let KinkyDungeonStatsPresets = {
 	"CommonWolf": {category: "Common", id: "CommonWolf", cost: -1, costGroup: "common"},
 	"CommonKitty": {category: "Common", id: "CommonKitty", cost: -1, costGroup: "common"},
 
-	"KeepOutfit":  {category: "Kinky", id: "KeepOutfit", cost: 0},
-
-	"KinkyPrison":  {category: "Map", id: "KinkyPrison", cost: -1},
 	"Doorknobs":  {category: "Map", id: "Doorknobs", cost: -1},
 
 

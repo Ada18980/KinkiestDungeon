@@ -710,6 +710,7 @@
             <key type="filename">../Game/EffectTiles/Ropes.png</key>
             <key type="filename">../Game/EffectTiles/Runes.png</key>
             <key type="filename">../Game/EffectTiles/RunesTrap.png</key>
+            <key type="filename">../Game/EffectTiles/Sack.png</key>
             <key type="filename">../Game/EffectTiles/Sleet.png</key>
             <key type="filename">../Game/EffectTiles/Slime.png</key>
             <key type="filename">../Game/EffectTiles/SlimeBurning.png</key>
@@ -1927,6 +1928,7 @@
             <key type="filename">../Game/Items/Restraint/liquidMetal.png</key>
             <key type="filename">../Game/Items/Rock.png</key>
             <key type="filename">../Game/Items/Rope.png</key>
+            <key type="filename">../Game/Items/SackOfSacks.png</key>
             <key type="filename">../Game/Items/Scissors.png</key>
             <key type="filename">../Game/Items/Scroll.png</key>
             <key type="filename">../Game/Items/ScrollArms.png</key>
@@ -1942,6 +1944,7 @@
             <key type="filename">../Game/Items/SlimeSword.png</key>
             <key type="filename">../Game/Items/Slimethrower.png</key>
             <key type="filename">../Game/Items/SmokeBomb.png</key>
+            <key type="filename">../Game/Items/Snuffer.png</key>
             <key type="filename">../Game/Items/Spear.png</key>
             <key type="filename">../Game/Items/StaffBind.png</key>
             <key type="filename">../Game/Items/StaffChain.png</key>
@@ -2125,6 +2128,7 @@
             <key type="filename">../Game/Spells/Rainstorm.png</key>
             <key type="filename">../Game/Spells/RaiseDefenses.png</key>
             <key type="filename">../Game/Spells/RecoverObject.png</key>
+            <key type="filename">../Game/Spells/RecoverObject2.png</key>
             <key type="filename">../Game/Spells/Ring.png</key>
             <key type="filename">../Game/Spells/RingOfSlime.png</key>
             <key type="filename">../Game/Spells/RopeBoltLaunch.png</key>

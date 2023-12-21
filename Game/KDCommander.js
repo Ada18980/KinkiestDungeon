@@ -301,6 +301,7 @@ let KDCommanderOrders = {
 
 		// Role maintenance
 		maintain: (enemy, data) => {
+			if (enemy.ignore) return false;
 			if (KDAssaulters > KDMaxAssaulters && KDRandom() < 0.2) {
 				if (!KDEnemyIsTemporary(enemy))
 					return false;
@@ -390,6 +391,7 @@ let KDCommanderOrders = {
 			let fort = KinkyDungeonStatsChoice.get("Fortify_Barricade");
 			if (!fort && data.globalIgnore) return false;
 			let aware = enemy.aware || enemy.vp > 0 || KDGameData.tickAlertTimer || fort;
+			if (enemy.ignore || (!enemy.aware && KDFactionRelation(KDGetFaction(enemy), KDGetMainFaction())) < -0.09) return false;
 			if (!enemy.IntentAction && data.aggressive && aware && !KDIsImmobile(enemy) && !KDEnemyHasFlag(enemy, "noGuard")) {
 				let xx = KinkyDungeonPlayerEntity.x + KD_Avg_VX*4;
 				let yy = KinkyDungeonPlayerEntity.y + KD_Avg_VY*4;
@@ -428,6 +430,7 @@ let KDCommanderOrders = {
 
 		// Role maintenance
 		maintain: (enemy, data) => {
+			if (enemy.ignore) return false;
 			let fort = KinkyDungeonStatsChoice.get("Fortify_Barricade");
 			if (!enemy.IntentAction && !(KDEnemyHasFlag(enemy, "noGuard") || KDEnemyHasFlag(enemy, "targ_ally") || KDEnemyHasFlag(enemy, "targ_npc"))
 				&& (KDGameData.tickAlertTimer || fort || KDEnemyHasFlag(enemy, "CMDR_stationed") || KDEnemyHasFlag(enemy, "CMDR_moveToChoke"))
@@ -617,8 +620,7 @@ let KDCommanderOrders = {
 				&& !KDIsImmobile(enemy)
 				&& (!KDAIType[KDGetAI(enemy)]
 					|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)))
-				&& (enemy.hp < enemy.Enemy.maxhp * data.fleeThresh || enemy.Enemy.tags?.minor)
-				&& !KDEnemyHasFlag(enemy, "targ_player")) return true;
+				&& (enemy.hp < enemy.Enemy.maxhp * data.fleeThresh || (enemy.Enemy.tags?.minor && !KDEnemyHasFlag(enemy, "targ_player")))) return true;
 			return false;
 		},
 		weight: (enemy, data) => {

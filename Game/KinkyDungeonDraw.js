@@ -135,9 +135,14 @@ let kdstatusboard = new PIXI.Container();
 kdstatusboard.zIndex = 5;
 kdstatusboard.sortableChildren = true;
 let kdfloatercanvas = new PIXI.Container();
-kdfloatercanvas.zIndex = 100;
+kdfloatercanvas.zIndex = 200;
 kdfloatercanvas.sortableChildren = false;
 kdstatusboard.addChild(kdfloatercanvas);
+
+let kddialoguecanvas = new PIXI.Container();
+kddialoguecanvas.zIndex = 60;
+kddialoguecanvas.sortableChildren = false;
+kdstatusboard.addChild(kddialoguecanvas);
 
 
 let kditemsboard = new PIXI.Container();
@@ -825,6 +830,11 @@ function KinkyDungeonDrawGame() {
 		} else {
 			if (KinkyDungeonDrawState == "Magic") {
 				KinkyDungeonDrawState = "MagicSpells";
+				KinkyDungeonGameKey.keyPressed[9] = false;
+				KinkyDungeonKeybindingCurrentKey = '';
+				KinkyDungeonInspect = false;
+			} else if (KDConfigHotbar) {
+				KDConfigHotbar = false;
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
 				KinkyDungeonInspect = false;
@@ -1573,10 +1583,10 @@ function KinkyDungeonDrawGame() {
 
 			if (KinkyDungeonPlayerEntity.dialogue) {
 				let yboost = 0;//-1*KinkyDungeonGridSizeDisplay/7;
-				DrawTextFitKD(KinkyDungeonPlayerEntity.dialogue,
+				DrawTextFitKDTo(kddialoguecanvas, KinkyDungeonPlayerEntity.dialogue,
 					canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offsetVis)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2,
-					yboost + canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offsetVis)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5,
-					10 + KinkyDungeonPlayerEntity.dialogue.length * 8, KinkyDungeonPlayerEntity.dialogueColor, KDTextGray0);
+					yboost + canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offsetVis)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2,
+					700, KinkyDungeonPlayerEntity.dialogueColor, KDTextGray0, 24);
 			}
 
 
@@ -1954,7 +1964,7 @@ let KDBulletSpeed = 40;
 
 // We use this to offset floaters
 let KDEntitiesFloaterRegisty = new Map();
-let KDFloaterSpacing = 36 / KinkyDungeonGridSizeDisplay;
+let KDFloaterSpacing = 18 / KinkyDungeonGridSizeDisplay;
 
 function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, suff = "") {
 	if (Entity.x && Entity.y) {
@@ -1978,24 +1988,53 @@ function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, 
 
 function KinkyDungeonDrawFloaters(CamX, CamY) {
 	let delta = CommonTime() - KinkyDungeonLastFloaterTime;
+
+	let KDFloaterYCache = {};
 	let max = 40;
 	let i = 0;
+	let floatermult = 1.5; // Global tweak value
 	if (delta > 0) {
 		for (let floater of KinkyDungeonFloaters) {
-			floater.t += delta/1000;
+			floater.t += floatermult * delta/1000;
 			if (i > max) break;
 			i += 1;
 		}
 	}
 	let newFloaters = [];
 	i = 0;
-	for (let floater of KinkyDungeonFloaters) {
+	for (let floater of KinkyDungeonFloaters.reverse()) {
 		if (i <= max) {
 			let x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay;
-			let y = floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay;
+			let y = (floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay);
+			let overlap = false;
+			let overlapAmount = 20;
+			for (let iii = -overlapAmount; iii < overlapAmount; iii += 3) {
+				if (KDFloaterYCache[Math.round(y + iii)]) {
+					overlap = true;
+				}
+			}
+			let ii = 0;
+			let direction = -1;
+			while ( overlap && ii < 20) {
+				floater.y -= (floater.override ? 8 : 8/KinkyDungeonGridSizeDisplay) * direction;
+				//floater.x += -20 + Math.random() * 40;
+				x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay
+				y = (floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay);
+				overlap = false;
+				for (let iii = -overlapAmount; iii < overlapAmount; iii += 3) {
+					if (KDFloaterYCache[Math.round(y + iii)]) {
+						overlap = true;
+					}
+				}
+				ii += 1;
+			}
+			for (let iii = -overlapAmount; iii < overlapAmount; iii++) {
+				KDFloaterYCache[Math.round(y + iii)] = true;
+			}
+			
 			DrawTextFitKDTo(kdfloatercanvas, floater.text,
-				x, y - floater.speed*floater.t,
-				1000, floater.color, KDTextGray1, undefined, undefined, 120, KDEase(floater.t / floater.lifetime));
+				x, y - floater.speed*floater.t/floatermult,
+				1000, floater.color, KDTextGray1, 24, undefined, undefined, KDEase(floater.t / floater.lifetime));
 		}
 		if (floater.t < floater.lifetime) newFloaters.push(floater);
 		i += 1;

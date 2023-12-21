@@ -1128,6 +1128,18 @@ let KDEffectTileCreateFunctionsExisting = {
 		}
 		return true;
 	},
+	"Sack": (newTile, existingTile) => {
+		if (newTile?.tags?.includes("snuffable")) {
+			newTile.duration = 0;
+			KDCreateEffectTile(existingTile.x, existingTile.y, {
+				name: newTile.name + "Unlit",
+				duration: 9999,
+			}, 0);
+		} else if (newTile?.tags?.includes("fire") || newTile?.tags?.includes("ignite")) {
+			existingTile.duration = 0;
+		}
+		return true;
+	},
 	"Torch": (newTile, existingTile) => {
 		if (newTile.tags.includes("freeze")) {
 			existingTile.duration = 0;

@@ -261,6 +261,13 @@ let KDEffectTiles = {
 		affinities: ["Fire", "Hot"],
 		tags: ["ignite", "hot"],
 	},
+	"Sack": {
+		name: "Sack",
+		duration: 9999,
+		priority: 10,
+		yoffset: -1,
+		tags: ["unbaggable", "brightnessblock", "darkarea"],
+	},
 	"Torch": {
 		name: "Torch",
 		duration: 9999,
@@ -269,14 +276,14 @@ let KDEffectTiles = {
 		lightColor: 0xff8933,
 		yoffset: -1,
 		affinitiesStanding: ["Fire", "Hot"],
-		tags: ["hot"],
+		tags: ["hot", "snuffable"],
 	},
 	"TorchUnlit": {
 		name: "TorchUnlit",
 		duration: 9999,
 		priority: 5,
 		yoffset: -1,
-		tags: [],
+		tags: ["sackable"],
 	},
 	"Lantern": {
 		name: "Lantern",
@@ -286,7 +293,7 @@ let KDEffectTiles = {
 		lightColor: 0xffee83,
 		affinitiesStanding: ["Hook", "Edge", "Fire", "Hot"],
 		yoffset: -1,
-		tags: ["hot"],
+		tags: ["hot", "snuffable"],
 	},
 	"LanternUnlit": {
 		name: "LanternUnlit",
@@ -294,7 +301,7 @@ let KDEffectTiles = {
 		priority: 5,
 		affinitiesStanding: ["Hook", "Edge"],
 		yoffset: -1,
-		tags: [],
+		tags: ["sackable"],
 	},
 	"TorchOrb": {
 		name: "TorchOrb",
@@ -304,7 +311,7 @@ let KDEffectTiles = {
 		lightColor: 0x99aaff,
 		affinitiesStanding: ["Hook", "Edge", "SmallMagic"],
 		yoffset: -1,
-		tags: [],
+		tags: ["sackable"],
 	},
 	"IllusOrb": {
 		name: "IllusOrb",
@@ -314,7 +321,7 @@ let KDEffectTiles = {
 		lightColor: 0xffffff,
 		affinitiesStanding: ["Hook", "Edge", "SmallMagic"],
 		yoffset: -1,
-		tags: [],
+		tags: ["sackable"],
 	},
 	"IllusOrbDead": {
 		name: "IllusOrbDead",

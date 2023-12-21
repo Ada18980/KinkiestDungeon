@@ -33,6 +33,8 @@ let KinkyDungeonConsumables = {
 
 	"DollID" : {name: "DollID", rarity: 0, shop: false, type: "dollID", noHands: true, sfx: "FutureLock"},
 	"CuffKeys" : {name: "CuffKeys", rarity: 1, sub: 0.25, shop: false, type: "CuffKeys", noConsumeOnUse: true},
+	"Snuffer" : {name: "Snuffer", rarity: 3, costMod: -1, shop: true, type: "Snuffer", noConsumeOnUse: true},
+	"SackOfSacks" : {name: "SackOfSacks", rarity: 3, costMod: -2, shop: true, type: "SackOfSacks", noConsumeOnUse: true},
 	"DiscPick" : {name: "DiscPick", rarity: 4, costMod: -1, sub: 0.2, shop: true, type: "DiscPick", noConsumeOnUse: true},
 
 	"DivineTear" : {name: "DivineTear", rarity: 6, sub: 0.05, shop: true, delay: 3, power: 10, noHands: true, duration: 0, sfx: "Cookie", type: "RemoveCurseOrHex", noConsumeOnUse: true},
@@ -82,6 +84,41 @@ let KinkyDungneonShopRestraints = {
 
 /** @type {Record<string, (consumable) => void>} */
 let KDConsumableEffects = {
+	"Snuffer": (Consumable) => {
+		let tiles = KDGetEffectTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+		for (let tile of Object.values(tiles)) {
+			if (tile?.tags?.includes("snuffable")) {
+				tile.duration = 0;
+				KDCreateEffectTile(tile.x, tile.y, {
+					name: tile.name + "Unlit",
+					duration: 9999,
+				}, 0);
+				KinkyDungeonAdvanceTime(1);
+				return;
+			}
+		}
+		KinkyDungeonSendTextMessage(10, TextGet("KDNotSnuffable"), "#ff5555", 3);
+	},
+	"SackOfSacks": (Consumable) => {
+		let tiles = KDGetEffectTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+		for (let tile of Object.values(tiles)) {
+			if (tile?.tags?.includes("unsackable")) {
+				tile.duration = 0;
+				KinkyDungeonAdvanceTime(1);
+				KinkyDungeonSendTextMessage(10, TextGet("KDUnbag"), "#ff5555", 3);
+				return;
+			}
+			if (tile?.tags?.includes("sackable")) {
+				KDCreateEffectTile(tile.x, tile.y, {
+					name: "Sack",
+					duration: 8000,
+				}, 0);
+				KinkyDungeonAdvanceTime(1);
+				return;
+			}
+		}
+		KinkyDungeonSendTextMessage(10, TextGet("KDNotBaggable"), "#ff5555", 3);
+	},
 	"RemoveCurseOrHex": (Consumable) => {
 		if (KinkyDungeonAllRestraintDynamic().some((r) => {return KDHasRemovableCurse(r.item, Consumable.power) || KDHasRemovableHex(r.item, Consumable.power);})) {
 			KDGameData.InventoryAction = "RemoveCurseOrHex";

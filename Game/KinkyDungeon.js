@@ -478,7 +478,7 @@ let KDGameDataBase = {
 
 	JailGuard: 0,
 	GuardTimer: 0,
-	GuardTimerMax: 28,
+	GuardTimerMax: 35,
 	GuardSpawnTimer: 0,
 	GuardSpawnTimerMax: 80,
 	GuardSpawnTimerMin: 50,
@@ -488,8 +488,8 @@ let KDGameDataBase = {
 	PrisonGoodBehaviorFromLeash: 0,
 
 	KinkyDungeonJailTourTimer: 0,
-	KinkyDungeonJailTourTimerMin: 20,
-	KinkyDungeonJailTourTimerMax: 40,
+	KinkyDungeonJailTourTimerMin: 40,
+	KinkyDungeonJailTourTimerMax: 60,
 
 	KinkyDungeonPenanceCostCurrent: 100,
 
