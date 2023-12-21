@@ -19652,13 +19652,13 @@ Shadow
 暗影
 
 Gag Geist
-鬼魂口塞
+恶作剧幽灵
 The gag geist goes silent.
-鬼魂口塞沉默了。
+恶作剧幽灵沉默了。
 The gag geist teases you playfully!! (DamageTaken)
-鬼魂口塞顽皮地逗你！！（DamageTaken）
+恶作剧幽灵顽皮地逗你！！（DamageTaken）
 The gag geist gags the girl with a ghastly grimace! (+RestraintAdded)
-鬼魂口塞用可怕的鬼脸堵住了女孩！（+RestraintAdded）
+恶作剧幽灵做了一个可怕的鬼脸，堵住了女孩的嘴！（+RestraintAdded）
 
 Poltergeist 
 捣蛋鬼
