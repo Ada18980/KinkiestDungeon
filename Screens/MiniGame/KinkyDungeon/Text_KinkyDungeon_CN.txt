@@ -7227,18 +7227,34 @@ A wrist and elbow tie keeping your arms secured behind your back.
 手腕和肘部系带将你的手臂固定在背后。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
-Spellbound Leg Tie
-腿缚带（符咒）
-A tie that hobbles your legs together..
-一条带子将你的双腿束缚在一起。
+Spellbound Knees
+膝盖缚带（符咒）
+A tie that hobbles your knees together..
+一条带子将你的膝盖束缚在一起。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
-Spellbound Ankle Tie
+Spellbound Thighs
+大腿缚带（符咒）
+A tie that holds your legs together..
+一条带子将你的双腿束缚在一起。
+Spellbound Upper Thighs
+上腿缚带（符咒）
+A tie that holds your thighs together..
+一条带子将你的大腿束缚在一起。
+Spellbound Ankle
 脚踝束带（符咒）
 A tie keeping your feet secured together.
 束带将双脚固定在一起。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
+Spellbound Lower Legs
+小腿束带（符咒）
+A tie keeping your legs secured together.
+束带将双腿固定在一起。
+Spellbound Lower Knees
+下膝束带（符咒）
+A tie keeping your knees secured together.
+束带将膝盖固定在一起。
 Spellbound Toe Rope
 脚趾绳缚（符咒）
 A tie keeping your toes secured together.
@@ -7292,18 +7308,34 @@ A wrist and elbow tie keeping your arms secured behind your back.
 手腕和肘部系带将你的手臂固定在背后。
 They glow with a trace of magic.
 它们散发着一丝魔法的光芒。
-Magic Leg Tie
-腿缚带（附魔）
+Magic Knee Tie
+膝盖缚带（附魔）
+A tie that hobbles your knees together..
+一条带子将你的膝盖束缚在一起。
+Magic Thigh Ropes
+大腿绳缚（附魔）
 A tie that hobbles your legs together..
 一条带子将你的双腿束缚在一起。
-They glow with a trace of magic.
-它们散发着一丝魔法的光芒。
+Magic Upper Thigh Ropes
+上腿绳缚（附魔）
+A tie that hobbles your thighs together..
+一条带子将你的大腿束缚在一起。
 Magic Ankle Tie
 脚踝束带（附魔）
 A tie keeping your feet secured together.
 束带将双脚固定在一起。
 They glow with a trace of magic.
 它们散发着一丝魔法的光芒。
+Magic Lower Leg Tie
+小腿缚带（附魔）
+A tie keeping your legs secured together.
+束带将双腿固定在一起。
+They glow with a trace of magic.
+它们散发着一丝魔法的光芒。
+Magic Lower Knee Tie
+下膝缚带（附魔）
+A tie keeping your knees secured together.
+束带将膝盖固定在一起。
 The knots appear to tie themselves together again, making them impossible to undo!
 结似乎再次将自己绑在一起，使它们无法解开！
 Magic Toe Rope
@@ -7348,18 +7380,34 @@ A harness acting as a handle to pull you around
 能使你被拉住的绳衣
 A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
 由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
-Mithril Leg Ropes
-腿部绳缚（秘银）
-A tie that hobbles your legs together..
-一条绳子将你的双腿束缚在一起。
-A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
-由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
+Mithril Lower Knee Ropes
+下膝绳缚（秘银）
+A tie that hobbles your knees together..
+一条能把你的膝盖绑在一起的捆绑。。
+Mithril Thigh Ropes
+大腿绳缚（秘银）
+A tie that hobbles your thighs together..
+一条能把你的大腿绑在一起的捆绑。。
+Mithril Upper Thigh Ropes
+上腿绳缚（秘银）
+A tie that holds your thighs together..
+一条绳子将你的大腿束缚在一起。
 Mithril Ankle Ropes
 脚踝绳缚（秘银）
 A tie keeping your feet secured together.
 绳索将双脚固定在一起。
 A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
 由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
+Mithril Lower Leg Ropes
+小腿绳缚（秘银）
+A tie that hobbles your legs together..
+一条绳子将你的双腿束缚在一起。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+由秘银编织而成的轻质绳索，光滑且几乎牢不可破。
+Mithril Lower Knee Ropes
+下膝绳缚（秘银）
+A tie keeping your knees secured together.
+绳索将膝盖固定在一起。
 Mithril Toe Ropes
 脚趾绳缚（秘银）
 A tie keeping your toes secured together.
@@ -7747,14 +7795,30 @@ A set of ropes that emit a calm, soothing aura. They magically stretch to fit yo
 一组散发出平静、舒缓气息的绳索。它们神奇地伸展以贴合你的身体。
 Holy Wrist Rope
 神圣手腕绳缚
-Holy Leg Ropes
-神圣腿部绳缚
+Holy Upper Knee Ropes
+神圣上膝绳缚
+A tie that hobbles your knees together..
+一条能把你的膝盖绑在一起的捆绑...
+Holy Thigh Ropes
+神圣大腿腿绳缚
 A tie that hobbles your legs together..
 一条能把你的腿绑在一起的捆绑...
+Holy Upper Thigh Ropes
+神圣上腿绳缚
+A tie that holds your thighs together..
+一条能把你的大腿绑在一起的捆绑...
 Holy Ankle Ropes
 神圣脚踝绳缚
 A tie keeping your feet secured together.
 一条将双脚固定在一起的捆绑。
+Holy Lower Leg Ropes
+神圣小腿绳缚
+A tie keeping your legs secured together.
+一条将双腿固定在一起的捆绑。
+Holy Lower Knee Ropes
+神圣下膝绳缚
+A tie keeping your knees secured together.
+一条将下膝固定在一起的捆绑。
 Holy Toe Rope
 神圣脚趾绳缚
 A tie keeping your toes secured together.
