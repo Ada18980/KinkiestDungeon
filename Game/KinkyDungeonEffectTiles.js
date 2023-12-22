@@ -68,6 +68,22 @@ let KDEffectTiles = {
 		affinities: ["Latex"],
 		tags: ["latex", "insulator", "terrain"],
 	},
+	"LatexBlue": {
+		name: "LatexBlue",
+		functionName: "Latex",
+		duration: 80,
+		priority: -2.01,
+		affinities: ["Latex"],
+		tags: ["latex", "insulator", "terrain"],
+	},
+	"LatexThinBlue": {
+		name: "LatexThinBlue",
+		functionName: "Latex",
+		duration: 30,
+		priority: -2.01,
+		affinities: ["Latex"],
+		tags: ["latex", "insulator", "terrain"],
+	},
 	"Ropes": {
 		name: "Ropes",
 		duration: 30,

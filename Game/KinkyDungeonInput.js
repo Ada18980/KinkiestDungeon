@@ -72,23 +72,24 @@ function KDProcessInput(type, data) {
 			KDDelayedActionPrune(["Action", "Struggle"]);
 			KinkyDungeonCurseUnlock(data.group, data.index, data.curse);
 			break;
-		case "toggleSpell":
+		case "toggleSpell": {
 			KinkyDungeonSpellChoicesToggle[data.i] = !KinkyDungeonSpellChoicesToggle[data.i];
 			let spell = KDGetUpcast(KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]].name,
 				KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellEmpower")) || KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]];
 			KinkyDungeonSendEvent("toggleSpell", {index: data.i, spell: spell},
 				spell);
-				
+
 			if (KinkyDungeonSpellChoicesToggle[data.i] && spell.costOnToggle) {
 				if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell))) {
 					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 				} else KinkyDungeonSpellChoicesToggle[data.i] = false;
 			}
-			
+
 			if (spell.name != KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]].name) {
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "upcast", 1);
 			}
 			break;
+		}
 		case "consumable":
 			//KDModalArea = false;
 			KinkyDungeonAttemptConsumable(data.item, data.quantity);
@@ -222,9 +223,10 @@ function KDProcessInput(type, data) {
 			let gagTotal = KinkyDungeonGagTotal(true);
 			KinkyDungeonMakeNoise(Math.ceil(10 - 8 * Math.min(1, gagTotal * gagTotal)), KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 			KinkyDungeonSendTextMessage(10, TextGet("KDShoutHelp" + Math.min(3, Math.floor(gagTotal *3.3))), "yellow", 1);
+			KinkyDungeonSetFlag("CallForHelp", 12);
 			break;
 		}
-		
+
 		case "crouch": {
 			KDGameData.Crouch = !KDGameData.Crouch;
 			KinkyDungeonAdvanceTime(0);
@@ -417,7 +419,7 @@ function KDProcessInput(type, data) {
 
 			let x =  data.targetTile.split(',')[0];
 			let y =  data.targetTile.split(',')[1];
-			
+
 			if (KinkyDungeonGoddessRep[data.type] <= -45) {
 				//Cursed
 				KDSummonRevengeMobs(parseInt(x), parseInt(y), tile.type, 5);
@@ -505,7 +507,7 @@ function KDProcessInput(type, data) {
 				}
 
 				KinkyDungeonMapSet(data.x, data.y, 'p');
-				
+
 				KinkyDungeonSetFlag("choseperk", 3);
 				for (let x = 0; x < KDMapData.GridWidth; x++) {
 					if (KinkyDungeonMapGet(x, data.y) == 'P') {
@@ -748,7 +750,7 @@ function KDProcessInput(type, data) {
 								KinkyDungeonFlags.set(sp, -1);
 							}
 						}
-						
+
 						if (spell.learnPage) {
 							for (let sp of spell.learnPage) {
 								KDAddSpellPage(sp, KDSpellColumns[sp] || []);

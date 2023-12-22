@@ -1072,6 +1072,10 @@ interface enemy extends KDHasTags {
 		alwaysHitByMagic?: boolean,
 		/** This enemy cannot BLOCK if the attacking weapon is magical */
 		alwaysBypassedByMagic?: boolean,
+		/** Physical block: applied only when not disabled or vulnerable */
+		block_phys?: number,
+		/** Magic block: applied only when not disabled or vulnerable */
+		block_magic?: number,
 	},
 	/** */
 	summonRage?: boolean,

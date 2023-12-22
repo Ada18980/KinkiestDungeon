@@ -143,7 +143,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 	}
 
 	let restraintModels = {};
-	
+
 	try {
 		let data = {
 			updateRestraints: false,
@@ -204,7 +204,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 					if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
 						KDApplyItem(inv, KinkyDungeonPlayerTags);
 						if (KDRestraint(inv).Model) {
-							
+
 							restraintModels[KDRestraint(inv).Model] = true;
 							restraintModels["Fashion" + KDRestraint(inv).Model] = true;
 						}
@@ -216,7 +216,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 							if (KDRestraint(link).alwaysRender || (KDRestraint(link).renderWhenLinked && KDRestraint(link).renderWhenLinked.some((element) => {return renderTypes.includes(element);}))) {
 								if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
 									KDApplyItem(link, KinkyDungeonPlayerTags);
-									
+
 									if (KDRestraint(link).Model) {
 										restraintModels[KDRestraint(link).Model] = true;
 										restraintModels["Fashion" + KDRestraint(link).Model] = true;
@@ -260,7 +260,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 			if (alreadyClothed[clothes.Group || clothes.Item]) continue;
 			data.updateDress = true;
 			if (!clothes.Lost && KinkyDungeonCheckClothesLoss) {
-				
+
 
 
 				if (clothes.Group == "Necklace") {
@@ -751,7 +751,7 @@ function KinkyDungeonWearForcedClothes(restraints, C) {
 			KDRestraint(inv).alwaysDressModel.forEach(dress=>{ // for .. of  loop has issues with iterations
 				let canReplace = (dress.override!==null && dress.override===true) ? true : !InventoryGet(C,dress.Group);
 
-				if (!canReplace) {return;}
+				if (dress.Group && !canReplace) {return;}
 				if (dress.Group && KDProtectedCosplay.includes(dress.Group)){return;}
 				let filters = Object.assign({}, dress.Filters || {});
 				let faction = inv.faction;

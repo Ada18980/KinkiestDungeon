@@ -321,7 +321,7 @@ function KinkyDungeonGetGoddessTrapTypes() {
 	if (KinkyDungeonGoddessRep.Latex < KDRAGE) {
 		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "SlimeEnthusiast", Level: 0, Power: 2, Weight: 20 });
 		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "BigSlime", Level: 0, Power: 3, Weight: 10 });
-		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "ElementalLatex", Level: 0, Power: 2, Weight: 20 });
+		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "ElementalRubber", Level: 0, Power: 2, Weight: 20 });
 	}
 	if (KinkyDungeonGoddessRep.Elements < KDANGER) {
 		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "ElementalFire", Level: 0, Power: 2, Weight: 5 });

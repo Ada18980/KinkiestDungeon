@@ -629,7 +629,7 @@ let KDCommanderOrders = {
 		apply: (enemy, data) => {
 			if (enemy.aware || enemy.vp > 0.1)
 				KinkyDungeonSendDialogue(enemy,
-					TextGet("KinkyDungeonRemindJailPlayBrat" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + Math.floor(KDRandom() * 3))
+					TextGet((KDHelpless(enemy) ? "KinkyDungeonRemindJailPlayHelpless" : "KinkyDungeonRemindJailPlayBrat") + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + Math.floor(KDRandom() * 3))
 						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
 					6, 8, false, true);
 		},

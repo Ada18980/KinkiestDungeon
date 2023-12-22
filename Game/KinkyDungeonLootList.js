@@ -740,8 +740,8 @@ let KinkyDungeonLootTable = {
 			enchantlist: "Gold", enchantchance: 1,
 			enchantlevelmin: 0, enchantlevelmax: 20,
 			message:"KDGoddessQuestReward_Armor", messageColor:"lightblue", messageTime: 3, allFloors: true},
-			
-			
+
+
 		{name: "MikoDress", minLevel: 0, weight: 10,
 			armor: "MikoDress",
 			amtMult: 5,
@@ -808,7 +808,7 @@ let KinkyDungeonLootTable = {
 			enchantlist: "Gold", enchantchance: 1,
 			enchantlevelmin: 0, enchantlevelmax: 20,
 			message:"KDGoddessQuestReward_Armor", messageColor:"lightblue", messageTime: 3, allFloors: true},
-			
+
 		{name: "ComfyStraitjacket", minLevel: 0, weight: 10,
 			armor: "ComfyStraitjacket",
 			amtMult: 5,
@@ -872,7 +872,7 @@ let KinkyDungeonLootTable = {
 			enchantlist: "Gold", enchantchance: 1,
 			enchantlevelmin: 0, enchantlevelmax: 20,
 			message:"KDGoddessQuestReward_Armor", messageColor:"lightblue", messageTime: 3, allFloors: true},
-		
+
 		{name: "MaidDress", minLevel: 0, weight: 10,
 			armor: "MaidDress",
 			amtMult: 5,

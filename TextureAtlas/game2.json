@@ -416,6 +416,14 @@
 	"spriteSourceSize": {"x":1,"y":6,"w":215,"h":205},
 	"sourceSize": {"w":216,"h":216}
 },
+"Game/Bullets/EnemyLatexLegbinderBolt.png":
+{
+	"frame": {"x":1988,"y":1934,"w":56,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":2,"w":56,"h":69},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Bullets/Entangle.png":
 {
 	"frame": {"x":1848,"y":1433,"w":183,"h":180},
@@ -616,7 +624,7 @@
 	"spriteSourceSize": {"x":28,"y":17,"w":21,"h":30},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Bullets/LegbinderBolt.png":
+"Game/Bullets/LatexLegbinderBolt.png":
 {
 	"frame": {"x":1988,"y":1934,"w":56,"h":69},
 	"rotated": false,
@@ -2320,6 +2328,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game3.json", "game4.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:09314865a8688fcb9953ca6b4cb4792d:03c0d97431f7bbeb5085f2181c4576eb:701e665c5fc69e47e58c28f8fa547b2b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:5836c5c6c9898dd7dac8183674461b42:c8bf86969454678f1062ec9dfb8b4546:701e665c5fc69e47e58c28f8fa547b2b$"
 }
 }

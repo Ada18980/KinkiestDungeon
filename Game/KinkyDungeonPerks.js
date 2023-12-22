@@ -310,6 +310,9 @@ let KinkyDungeonStatsPresets = {
 	"CommonCyber": {category: "Boss", id: "CommonCyber", cost: -1, locked: true},
 	"CommonFuuka": {category: "Boss", id: "CommonFuuka", buff: true, cost: -1, locked: true},
 
+	"BulletHell": {category: "Enemies", id: "BulletHell", cost: -2, block: ["BulletHell2"]},
+	"BulletHell2": {category: "Enemies", id: "BulletHell2", cost: -3, block: ["BulletHell"]},
+
 	"Nowhere": {category: "Enemies", id: "Nowhere", cost: -1},
 	"StunBondage": {category: "Enemies", id: "StunBondage", cost: -2},
 	"Prisoner": {category: "Start", id: "Prisoner", cost: 0},
@@ -586,7 +589,7 @@ let KDPerkStart = {
 		KDAddQuest("MaidSweeper");
 		KDChangeFactionRelation("Player", "Maidforce", 0.2 - KDFactionRelation("Player", "Maidforce"), true);
 		KDCustomDefeatUniforms.MaidSweeper();
-		
+
 		KinkyDungeonInventoryAddLoose("DusterGag");
 	},
 	StartWolfgirl: () =>{
@@ -596,10 +599,10 @@ let KDPerkStart = {
 	},
 	StartObsidian: () =>{
 		KDChangeFactionRelation("Player", "Elemental", 0.2 - KDFactionRelation("Player", "Elemental"), true);
-		
+
 		KDAddQuest("ElementalSlave");
 		KDCustomDefeatUniforms.ElementalSlave();
-		
+
 	},
 	Hogtied: () =>{
 		KDAddQuest("Nawashi");
@@ -616,7 +619,7 @@ let KDPerkStart = {
 		KDChangeFactionRelation("Player", "Bandit", 0.1 - KDFactionRelation("Player", "Bandit"), true);
 		KDChangeFactionRelation("Player", "Nevermere", 0.1 - KDFactionRelation("Player", "Nevermere"), true);
 	},
-	
+
 	Stranger: () => {
 		for (let key of Object.keys(KinkyDungeonFactionTag)) {
 			KDSetFactionRelation("Player", key, -1 + 0.45 * KDRandom() + 0.45 * KDRandom() + 0.45 * KDRandom());
@@ -951,8 +954,8 @@ function KDGetRandomPerks(existing, debuff) {
 }
 
 /**
- * 
- * @param {string[]} perks 
+ *
+ * @param {string[]} perks
  * @returns {string[]}
  */
 function KDGetPerkShrineBondage(perks) {
@@ -965,7 +968,7 @@ function KDGetPerkShrineBondage(perks) {
 				cost += KDGetPerkCost(KinkyDungeonStatsPresets[p]);
 			}
 		}
-	
+
 		let chancePos = KinkyDungeonStatsChoice.get("perkBondage") ? 1.0 : 0.5;
 		let chanceNeg = KinkyDungeonStatsChoice.get("perkBondage") ? 1.0 : 0.25;
 		let prev = "";
@@ -986,7 +989,7 @@ function KDGetPerkShrineBondage(perks) {
 			]);
 		};
 		theme = randTheme();
-	
+
 		let getRestraints = () => {
 			let restraints = []
 			for (let i = 0; i < 11; i++) {
@@ -1002,7 +1005,7 @@ function KDGetPerkShrineBondage(perks) {
 			}
 			return restraints;
 		};
-	
+
 		for (let i = 0; i < (Math.abs(cost) || 1); i++) {
 			if (cost > 0 && KDRandom() < chancePos) {
 				let rests = getRestraints();
@@ -1012,8 +1015,8 @@ function KDGetPerkShrineBondage(perks) {
 				if (rests) ret.push(rests[Math.floor(KDRandom() * rests.length)].restraint.name);
 			}
 		}
-	
+
 	}
-	
+
 	return ret;
 }

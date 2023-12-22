@@ -1791,7 +1791,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	if (KinkyDungeonPlayerEntity && !KinkyDungeonCanTalk() && KDRandom() < KinkyDungeonGagMumbleChanceRestraint) {
 		let msg = "KinkyDungeonGagStruggle" + (StruggleType != "Struggle" ? "Quiet" : "");
 		let gagMsg = Math.floor(KDRandom() * 3);
-		
+
 		msg = msg + gagMsg;
 
 		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), "#ffffff", 5, 3);
@@ -1920,7 +1920,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 	if (StruggleType == "Pick") data.escapeChance += KinkyDungeonGetPickBonus()*toolMult;
 	data.origEscapeChance = data.escapeChance;
-	
+
 
 	KinkyDungeonInterruptSleep();
 
@@ -2683,6 +2683,7 @@ let KDNoOverrideTags = [
  * @param {boolean} [options.dontAugmentWeight]
  * @param {boolean} [options.ApplyVariants]
  * @param {boolean} [options.dontPreferVariant]
+ * @param {boolean} [options.allowLowPower]
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]}} [filter] - Filters for items
  * @returns {{restraint: restraint, variant?: ApplyVariant, weight: number}[]}
  */
@@ -2748,10 +2749,14 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 						weight += restraint.enemyTags[t];
 						enabled = true;
 					}
-					if (restraint.enemyTagsMult && restraint.enemyTagsMult[t] != undefined) {
-						weight *= restraint.enemyTagsMult[t];
-					}
 				}
+
+				if (restraint.enemyTagsMult)
+					for (let t of tags.keys()) {
+						if (restraint.enemyTagsMult[t] != undefined) {
+							weight *= restraint.enemyTagsMult[t];
+						}
+					}
 				if (enabled) {
 					cache.push({r: restraint, w:weight});
 				}
@@ -2811,7 +2816,7 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 					if (Level >= KDApplyVariants[variant[0]].minfloor && !(Level >= KDApplyVariants[variant[0]].maxfloor)
 						&& (!variant[1].enemyTags || Object.keys(variant[1].enemyTags).some((tag) => {return tags.get(tag) != undefined;}))
 						&& (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, securityEnemy, useAugmented, curse, augmentedInventory,
-						KDApplyVariants[variant[0]].powerBonus))) {
+							KDApplyVariants[variant[0]].powerBonus))) {
 
 						let w = r.w * (variant[1].weightMult || 1) + (variant[1].weightMod || 0);
 
@@ -2857,13 +2862,35 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 		}
 	}
 
+	let RestraintsList2 = [];
+	if (!options?.allowLowPower) {
+		// Only does strictest for that group
+		let noway = KinkyDungeonStatsChoice.get("NoWayOut");
+		let groupPower = {};
+		let wornGroups = {};
+		for (let inv of KinkyDungeonAllRestraint()) {
+			wornGroups[KDRestraint(inv)?.Group] = true;
+		}
+		for (let r of RestraintsList) {
+			if (!wornGroups[r.restraint.Group] || !groupPower[r.restraint.Group] || noway) {
+				if (!groupPower[r.restraint.Group] || r.restraint.power > groupPower[r.restraint.Group].restraint.power)
+					groupPower[r.restraint.Group] = r;
+			}
+		}
+		for (let value of Object.values(groupPower)) {
+			RestraintsList2.push(value);
+		}
+	}
+
+
 	if (minWeightFallback && RestraintsList.length == 0) {
 		return KDGetRestraintsEligible(
 			enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack,
 			extraTags, agnostic, filter, securityEnemy, curse, 0, false, useAugmented, augmentedInventory, options);
 	}
-
-	return RestraintsList;
+	if (!options?.allowLowPower)
+		return RestraintsList2;
+	else return RestraintsList;
 }
 
 /**
@@ -3143,12 +3170,12 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 	function bypasses() {
 		return (
 			(
-			!((KinkyDungeonPlayerTags.get("SupremeBra") && (restraint.Group == "ItemNipples" || restraint.Group == "ItemNipplesPiercings"))
-			|| (KinkyDungeonPlayerTags.get("SupremeBelt") && (restraint.Group == "ItemVulva" || restraint.Group == "ItemVulvaPiercings" || restraint.Group == "ItemButt"))) 
+				!((KinkyDungeonPlayerTags.get("SupremeBra") && (restraint.Group == "ItemNipples" || restraint.Group == "ItemNipplesPiercings"))
+			|| (KinkyDungeonPlayerTags.get("SupremeBelt") && (restraint.Group == "ItemVulva" || restraint.Group == "ItemVulvaPiercings" || restraint.Group == "ItemButt")))
 			&& (Bypass || restraint.bypass || !KDGroupBlocked(restraint.Group, true))
 			)
 			|| KDEnemyPassesSecurity(restraint.Group, securityEnemy)
-			);
+		);
 	}
 
 	/*if (restraint.requireSingleTagToEquip) {
@@ -3499,9 +3526,9 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 
 			if (restraint.power > 8 && KDRandom() < .8) gagMsg = 2;
 			else if (restraint.power > 4 && KDRandom() < .5) gagMsg = 2;
-			
+
 			msg = msg + gagMsg;
-	
+
 			KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), "#ffffff", 5, 3);
 		}
 		return ret;
@@ -4488,7 +4515,7 @@ function KDChooseRestraintFromListGroupPriWithVariants(RestraintList, GroupOrder
 				}
 			}
 		}
-		
+
 		if (i == GroupOrder.length - 1 && !cycled) {
 			i = 0;
 			cycled = true;
@@ -5141,8 +5168,8 @@ function KDLinkCategorySize(item, linkCategory, ignoreItem) {
 }
 
 /**
- * 
- * @param {item} item 
+ *
+ * @param {item} item
  * @returns {item}
  */
 function KDGetRestraintHost(item) {
@@ -5155,6 +5182,6 @@ function KDGetRestraintHost(item) {
 		link = link.dynamicLink;
 	}
 
-	
+
 	return host;
 }

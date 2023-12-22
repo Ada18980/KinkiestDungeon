@@ -143,6 +143,10 @@ let kddialoguecanvas = new PIXI.Container();
 kddialoguecanvas.zIndex = 60;
 kddialoguecanvas.sortableChildren = false;
 kdstatusboard.addChild(kddialoguecanvas);
+let kdenemydialoguecanvas = new PIXI.Container();
+kdenemydialoguecanvas.zIndex = 60;
+kdenemydialoguecanvas.sortableChildren = false;
+kdstatusboard.addChild(kdenemydialoguecanvas);
 
 
 let kditemsboard = new PIXI.Container();
@@ -927,6 +931,9 @@ function KinkyDungeonDrawGame() {
 				kdlightmapGFX.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
 				kdenemystatusboard.x = kdgameboard.x;
 				kdenemystatusboard.y = kdgameboard.y;
+				kdenemydialoguecanvas.x = kdgameboard.x;
+				kdenemydialoguecanvas.y = kdgameboard.y;
+
 			}
 
 			let CamX_offset = (StandalonePatched ? 0 : CamX_offsetVis);
@@ -1472,9 +1479,9 @@ function KinkyDungeonDrawGame() {
 							KinkyDungeonPlayerEntity.visual_mana = KDEaseValue(KDDrawDelta || 0, (KinkyDungeonPlayerEntity.visual_mana != undefined ? KinkyDungeonPlayerEntity.visual_mana : KinkyDungeonStatManaMax), KinkyDungeonStatMana, KDBarAdvanceRate, KDBarAdvanceRateMin * KinkyDungeonStatManaMax);
 						}
 						KinkyDungeonBar(canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offsetVis)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 12 - 13 * barInt,
-							KinkyDungeonGridSizeDisplay, 8, 100 * KinkyDungeonPlayerEntity.visual_mana / KinkyDungeonStatManaMax, (KDFlashMana > 0 || (KinkyDungeonTargetingSpell && KinkyDungeonStatMana < 
+							KinkyDungeonGridSizeDisplay, 8, 100 * KinkyDungeonPlayerEntity.visual_mana / KinkyDungeonStatManaMax, (KDFlashMana > 0 || (KinkyDungeonTargetingSpell && KinkyDungeonStatMana <
 								KinkyDungeonGetManaCost(
-									KinkyDungeonTargetingSpell, 
+									KinkyDungeonTargetingSpell,
 									!KinkyDungeonTargetingSpell.active && KinkyDungeonTargetingSpell.passive,
 									!KinkyDungeonTargetingSpell.active && KinkyDungeonTargetingSpell.type == "passive"))) ?
 								(KDFlashMana % 500 > 250 ? "#ffffff" : "#888888") : "#8888ff", (KDFlashMana % 500 > 250 ? "#444444" : KDTextGray0));
@@ -2018,7 +2025,7 @@ function KinkyDungeonDrawFloaters(CamX, CamY) {
 			while ( overlap && ii < 20) {
 				floater.y -= (floater.override ? 8 : 8/KinkyDungeonGridSizeDisplay) * direction;
 				//floater.x += -20 + Math.random() * 40;
-				x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay
+				x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay;
 				y = (floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay);
 				overlap = false;
 				for (let iii = -overlapAmount; iii < overlapAmount; iii += 3) {
@@ -2031,7 +2038,7 @@ function KinkyDungeonDrawFloaters(CamX, CamY) {
 			for (let iii = -overlapAmount; iii < overlapAmount; iii++) {
 				KDFloaterYCache[Math.round(y + iii)] = true;
 			}
-			
+
 			DrawTextFitKDTo(kdfloatercanvas, floater.text,
 				x, y - floater.speed*floater.t/floatermult,
 				1000, floater.color, KDTextGray1, 24, undefined, undefined, KDEase(floater.t / floater.lifetime));
