@@ -14,8 +14,17 @@ let KDInventoryAction = {
 		/** Happens when you click the button */
 		click: (player, item) => {
 			if (KDHasRemovableCurse(item, KDGameData.CurseLevel) || KDHasRemovableHex(item, KDGameData.CurseLevel)) {
-				if (KDHasRemovableCurse(item, KDGameData.CurseLevel))
+				if (KDHasRemovableCurse(item, KDGameData.CurseLevel)) {
+					if (item.curse && KDCurses[item.curse]) {
+						KDCurses[item.curse].remove(item, KDGetRestraintHost(item));
+					}
+
+					let inventoryAs = item.inventoryVariant || (KDRestraint(item).inventoryAs);
 					item.curse = undefined;
+					if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+						KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+					}
+				}
 				let removeHexes = {};
 				for (let e of KDGetRemovableHex(item, KDGameData.CurseLevel)) {
 					removeHexes[e.original] = true;

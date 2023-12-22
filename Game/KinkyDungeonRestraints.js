@@ -812,7 +812,14 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 		// Get the most powerful item
 		let item = items.length > 0 ? items.reduce((prev, current) => (KinkyDungeonRestraintPower(prev, true) > KinkyDungeonRestraintPower(current, true)) ? prev : current) : null;
 		if (item) {
+			if (item.curse && KDCurses[item.curse]) {
+				KDCurses[item.curse].remove(item, KDGetRestraintHost(item));
+			}
+			let inventoryAs = item.inventoryVariant || (KDRestraint(item).inventoryAs);
 			item.curse = undefined;
+			if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+				KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+			}
 			KinkyDungeonRemoveRestraint(KDRestraint(item).Group, Keep, false, false, true, undefined, !noPlayer ? KinkyDungeonPlayerEntity : undefined);
 			KDSendStatus('escape', item.name, "shrine_" + shrine);
 			count++;
@@ -827,7 +834,14 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 			if (item) {
 				let groupItem = KinkyDungeonGetRestraintItem(KDRestraint(item).Group);
 				if (groupItem == item) {
+					if (item.curse && KDCurses[item.curse]) {
+						KDCurses[item.curse].remove(item, KDGetRestraintHost(item));
+					}
+					let inventoryAs = item.inventoryVariant || (KDRestraint(item).inventoryAs);
 					item.curse = undefined;
+					if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+						KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+					}
 					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, Keep, false, false, true, undefined, !noPlayer ? KinkyDungeonPlayerEntity : undefined);
 					KDSendStatus('escape', item.name, "shrine_" + shrine);
 					count++;
@@ -836,7 +850,14 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 					let link = host.dynamicLink;
 					while (link) {
 						if (link == item) {
+							if (item.curse && KDCurses[item.curse]) {
+								KDCurses[item.curse].remove(item, KDGetRestraintHost(item));
+							}
+							let inventoryAs = item.inventoryVariant || (KDRestraint(item).inventoryAs);
 							item.curse = undefined;
+							if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+								KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+							}
 							KinkyDungeonRemoveDynamicRestraint(host, Keep, false, !noPlayer ? KinkyDungeonPlayerEntity : undefined);
 							KDSendStatus('escape', item.name, "shrine_" + shrine);
 							count++;
@@ -1767,7 +1788,7 @@ function KDGetDynamicItem(group, index) {
  */
 function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
-	if (!KinkyDungeonCanTalk() && KDRandom() < KinkyDungeonGagMumbleChanceRestraint) {
+	if (KinkyDungeonPlayerEntity && !KinkyDungeonCanTalk() && KDRandom() < KinkyDungeonGagMumbleChanceRestraint) {
 		let msg = "KinkyDungeonGagStruggle" + (StruggleType != "Struggle" ? "Quiet" : "");
 		let gagMsg = Math.floor(KDRandom() * 3);
 		
@@ -3472,7 +3493,7 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 		}
 
 		ret = KinkyDungeonAddRestraint(restraint, Tightness + Math.round(0.1 * KinkyDungeonDifficulty), Bypass, Lock, Keep, false, !linkableCurrent, events, faction, undefined, undefined, Curse, undefined, securityEnemy, inventoryAs, data);
-		if (!KinkyDungeonCanTalk() && KDRandom() < KinkyDungeonGagMumbleChanceRestraint) {
+		if (KinkyDungeonPlayerEntity && !KinkyDungeonCanTalk() && KDRandom() < KinkyDungeonGagMumbleChanceRestraint) {
 			let msg = "KinkyDungeonGagRestraint";
 			let gagMsg = Math.floor(KDRandom() * 3);
 
@@ -3946,6 +3967,9 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 							let origRestraint = KinkyDungeonGetRestraintByName(inventoryAs);
 							if (origRestraint && invrest.shrine?.includes("Cursed") && !origRestraint.shrine?.includes("Cursed")) {
 								KinkyDungeonSendTextMessage(10, TextGet("KDCursedArmorUncurse").replace("RestraintName", TextGet("Restraint" + invrest.name)), "#aaffaa", 1);
+								if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+									KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+								}
 							}
 
 							if (!KinkyDungeonInventoryGetLoose(inventoryAs)) {
@@ -4041,8 +4065,12 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover, Fo
 				)) {
 				if (inventoryAs) {
 					let origRestraint = KinkyDungeonGetRestraintByName(inventoryAs);
-					if (origRestraint && rest.shrine?.includes("Cursed") && !origRestraint.shrine?.includes("Cursed"))
+					if (origRestraint && rest.shrine?.includes("Cursed") && !origRestraint.shrine?.includes("Cursed")) {
 						KinkyDungeonSendTextMessage(10, TextGet("KDCursedArmorUncurse").replace("RestraintName", TextGet("Restraint" + rest.name)), "#aaffaa", 1);
+						if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+							KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+						}
+					}
 					if (!KinkyDungeonInventoryGetLoose(inventoryAs)) {
 						let loose = {name: inventoryAs, id: KinkyDungeonGetItemID(), type: LooseRestraint, events: item.events || KDGetEventsForRestraint(inventoryAs), quantity: 1};
 						if (item.inventoryVariant) loose.inventoryVariant = item.inventoryVariant;
@@ -5110,4 +5138,23 @@ function KDLinkCategorySize(item, linkCategory, ignoreItem) {
 		}
 	}
 	return total;
+}
+
+/**
+ * 
+ * @param {item} item 
+ * @returns {item}
+ */
+function KDGetRestraintHost(item) {
+	let host = KinkyDungeonGetRestraintItem(KDRestraint(item)?.Group);
+	let link = item.dynamicLink;
+
+	while (link) {
+		if (link.id == item.id) return host;
+		host = link;
+		link = link.dynamicLink;
+	}
+
+	
+	return host;
 }

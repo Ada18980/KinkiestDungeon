@@ -3151,7 +3151,7 @@ function KDGetEnemyPlayLine(enemy) {
  * @returns {boolean}
  */
 function KDEnemyCanTalk(enemy) {
-	return enemy.Enemy && !enemy.Enemy.tags?.gagged && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || KDGetEnemyPlayLine(enemy)) && !(enemy.silence > 0);
+	return enemy?.Enemy && !enemy.Enemy.tags?.gagged && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || KDGetEnemyPlayLine(enemy)) && !(enemy.silence > 0);
 }
 
 /** @type {KDAIData} */

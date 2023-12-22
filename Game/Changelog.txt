@@ -15,6 +15,12 @@ Add new cyber assets
 Fix graphical glitches
 Add nipple items
 Add new outfits
+"Quick attacks" by enemies
+Screen to view all your captured cuties
+Spellcaster witch that channels a defensive ward, rapidly gives shield to nearby allies
+Monk class?
+- Passive: enchantments apply to unarmed strikes
+- Active: Increase unarmed base damage for 20 turns. After using, need to meditate 10 turns to recharge. Free.
 
 5.0.4
 - Targeting reticule now changes depending on action (attack, move, interact, pass, etc)

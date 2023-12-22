@@ -3708,7 +3708,7 @@ RestraintMithrilLegCuffs2Desc2,"They feel like they aren't even there, but the m
 KinkyDungeonUnLinkMithrilLegCuffs2,"The leg cuff chain detaches!"
 
 RestraintMithrilAnkleCuffs,Mithril Ankle Cuffs
-RestraintMithrilAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintMithrilAnkleCuffsDesc,"A pair of cuffs on your ankles."
 RestraintMithrilAnkleCuffsDesc2,"They feel like they aren't even there, but the material is rigid and unyielding."
 KinkyDungeonLinkMithrilAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintMithrilAnkleCuffs2,Ankle Chain
@@ -3755,7 +3755,7 @@ RestraintLeatherLegCuffs2Desc2,"Made of tough leather."
 KinkyDungeonUnLinkLeatherLegCuffs2,"The leg cuff chain detaches!"
 
 RestraintLeatherAnkleCuffs,Leather Ankle Cuffs
-RestraintLeatherAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintLeatherAnkleCuffsDesc,"A pair of cuffs on your ankles."
 RestraintLeatherAnkleCuffsDesc2,"Made of tough leather."
 KinkyDungeonLinkLeatherAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintLeatherAnkleCuffs2,Ankle Chain
@@ -4142,7 +4142,7 @@ RestraintBlacksteelLegCuffs2Desc2,"They are made of a hardened steel alloy, chem
 KinkyDungeonUnLinkBlacksteelLegCuffs2,"The leg cuff chain detaches!"
 
 RestraintBlacksteelAnkleCuffs,Blacksteel Ankle Cuffs
-RestraintBlacksteelAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintBlacksteelAnkleCuffsDesc,"A pair of cuffs on your ankles."
 RestraintBlacksteelAnkleCuffsDesc2,"They are made of a hardened steel alloy, chemically treated as to be stainless."
 KinkyDungeonLinkBlacksteelAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintBlacksteelAnkleCuffs2,Ankle Chain
@@ -4194,7 +4194,7 @@ RestraintScaleLegCuffs2Desc2,"They are made from leather cured from the hide of 
 KinkyDungeonUnLinkScaleLegCuffs2,"The leg cuff chain detaches!"
 
 RestraintScaleAnkleCuffs,Dragonscale Ankle Cuffs
-RestraintScaleAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintScaleAnkleCuffsDesc,"A pair of cuffs on your ankles."
 RestraintScaleAnkleCuffsDesc2,"They are made from leather cured from the hide of dragons."
 KinkyDungeonLinkScaleAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintScaleAnkleCuffs2,Ankle Chain
@@ -4304,7 +4304,7 @@ RestraintObsidianLegCuffs2Desc2,"It's made of a dark, shiny metal. If you hold i
 KinkyDungeonUnLinkObsidianLegCuffs2,"The leg cuff chain detaches!"
 
 RestraintObsidianAnkleCuffs,Obsidian Ankle Cuffs
-RestraintObsidianAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintObsidianAnkleCuffsDesc,"A pair of cuffs on your ankles."
 RestraintObsidianAnkleCuffsDesc2,"It's made of a dark, shiny metal. If you hold it close you hear whispering."
 KinkyDungeonLinkObsidianAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintObsidianAnkleCuffs2,Ankle Chain
@@ -4352,7 +4352,7 @@ RestraintCrystalLegCuffs2Desc2,"It's made of a glowing, brittle material. You fe
 KinkyDungeonUnLinkCrystalLegCuffs2,"The leg cuff chain detaches!"
 
 RestraintCrystalAnkleCuffs,Crystal Ankle Cuffs
-RestraintCrystalAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintCrystalAnkleCuffsDesc,"A pair of cuffs on your ankles."
 RestraintCrystalAnkleCuffsDesc2,"It's made of a glowing, brittle material. You feel your energy flowing into it..."
 KinkyDungeonLinkCrystalAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintCrystalAnkleCuffs2,Ankle Chain
@@ -4400,7 +4400,7 @@ RestraintIceLegCuffs2Desc2,"They're made of enchanted ice. They won't melt on th
 KinkyDungeonUnLinkIceLegCuffs2,"The leg cuff chain detaches!"
 
 RestraintIceAnkleCuffs,Ice Ankle Cuffs
-RestraintIceAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintIceAnkleCuffsDesc,"A pair of cuffs on your ankles."
 RestraintIceAnkleCuffsDesc2,"They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone..."
 KinkyDungeonLinkIceAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintIceAnkleCuffs2,Ankle Chain
@@ -4438,7 +4438,7 @@ KinkyDungeonUnLinkBanditArmCuffs4,"Your elbows detatch!"
 KinkyDungeonLinkBanditArmCuffs4,"The enemy attaches your wrist cuffs back together!"
 
 RestraintBanditLegCuffs,Slave Leg Cuffs
-RestraintBanditLegCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintBanditLegCuffsDesc,"A pair of cuffs on your ankles."
 RestraintBanditLegCuffsDesc2,"It's made of a gold-tinted metal with a magical enchantment."
 RestraintBanditAnkleCuffs,Slave Ankle Cuffs
 RestraintBanditAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
@@ -5681,6 +5681,13 @@ KinkyDungeonSpellAccurate2,Accuracy II
 KinkyDungeonSpellDescriptionAccurate2,"+15 Accuracy (25 total)"
 KinkyDungeonSpellAccurate3,Accuracy III
 KinkyDungeonSpellDescriptionAccurate3,"+25 Accuracy (50 total)"
+
+KinkyDungeonSpellUnarmed1,Martial Arts I
+KinkyDungeonSpellDescriptionUnarmed1,"Unarmed strikes gain 15% accuracy and -10% stamina cost."
+KinkyDungeonSpellUnarmed2,Martial Arts II
+KinkyDungeonSpellDescriptionUnarmed2,"Unarmed strikes gain 20% accuracy (35% total) and -15% stamina cost (25% total)."
+KinkyDungeonSpellUnarmed3,Martial Arts III
+KinkyDungeonSpellDescriptionUnarmed3,"Unarmed strikes gain 25% accuracy (60% total) and -25% stamina cost (50% total)."
 
 KinkyDungeonSpellCriticalStrike,Precise Critical
 KinkyDungeonSpellDescriptionCriticalStrike,"When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency."

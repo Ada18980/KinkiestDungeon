@@ -2300,7 +2300,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 			statsDraw.meleeDamage = {
 				text: TextGet("KinkyDungeonPlayerDamage")
 					.replace("DAMAGEDEALT", "" + Math.round(meleeDamage*10))
-					.replace("STMNA", Math.round(10 * KDAttackCost()) + "")
+					.replace("STMNA", Math.round(-10 * KDAttackCost()) + "")
 					.replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + KinkyDungeonPlayerDamage.type)),
 				count: "" + Math.round(meleeDamage*10),
 				category: "info", color: "#ffffff", bgcolor: "#333333", icon: "infoDamageMelee", priority: 10.1
