@@ -7480,8 +7480,8 @@ They feel like they aren't even there, but the material is rigid and unyielding.
 他们觉得他们甚至不在那里，但材料是刚性和不屈不挠的。
 Mithril Ankle Cuffs
 秘银脚铐
-A pair of cuffs chaining your legs together.
-一对手铐将你的双腿拴在一起。
+A pair of cuffs on your ankles.
+有一对脚铐戴在你的脚踝上。
 They feel like they aren't even there, but the material is rigid and unyielding.
 他们觉得他们甚至不在那里，但材料是刚性和不屈不挠的。
 The enemy attaches your ankle cuffs together!
@@ -11054,6 +11054,19 @@ Accuracy III
 精准 III
 +25 Accuracy (50 total)
 +25 精准度（共 50 次）
+
+Martial Arts I
+武术 I
+Unarmed strikes gain 15% accuracy and -10% stamina cost.
+徒手攻击提高 15% 精准度并且 -10% 的体力消耗。
+Martial Arts II
+武术 II
+Unarmed strikes gain 20% accuracy (35% total) and -15% stamina cost (25% total).
+徒手攻击提高 20% 精准度（总计 35%）并且 -15% 的体力消耗（总计 25%）。
+Martial Arts III
+武术 III
+Unarmed strikes gain 25% accuracy (60% total) and -25% stamina cost (50% total).
+徒手攻击提高 25% 精准度（总计 60%）并且 -25% 的体力消耗（总计 50%）。
 
 Precise Critical
 精准暴击
