@@ -868,6 +868,9 @@ let KDDialogue = {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
 					KinkyDungeonSetFlag("slept", -1);
+					if (KinkyDungeonPlayerInCell(true)) {
+						KinkyDungeonChangeRep("Ghost", KinkyDungeonIsArmsBound() ? 5 : 2);
+					}
 					//KinkyDungeonChangeWill(KinkyDungeonStatWillMax * KDSleepBedPercentage);
 					KDGameData.SleepTurns = KinkyDungeonSleepTurnsMax;
 					KinkyDungeonChangeMana(KinkyDungeonStatManaMax, false, 0, false, true);
@@ -3491,7 +3494,7 @@ let KDDialogue = {
 		["Bomb", "Bomb", "Bomb"]),
 	"CookieSell": KDShopDialogue("CookieSell", ["Cookie", "Brownies", "Donut", "CookieJailer", "DivineTear"], [], ["human"], 0.14,
 		["Cookie", "Brownies", "Donut"]),
-	"ThiefSell": KDShopDialogue("ThiefSell", ["DiscPick", "CuffKeys", "Bomb", "FlashBomb", "SmokeBomb"], [], ["human"], 0.1,
+	"ThiefSell": KDShopDialogue("ThiefSell", ["DiscPick", "CuffKeys", "Snuffer", "Bomb", "FlashBomb", "SmokeBomb"], [], ["human"], 0.1,
 		["DiscPick", "CuffKeys"]),
 	"GunSell": KDShopDialogue("GunSell", ["Blaster", "EscortDrone", "Gunpowder", "CrossbowHeavy", "CrossbowPistol", "Crossbow"], [], ["maid", "bandit", "gun", "bountyhunter"], 0.33,
 		["CrossbowPistol", "Gunpowder"]),

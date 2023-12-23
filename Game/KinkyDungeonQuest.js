@@ -271,7 +271,7 @@ let KDQuests = {
 		}
 	},
 
-	
+
 	"MaidSweeper": {
 		name: "MaidSweeper",
 		npc: "DirtPile",
@@ -329,7 +329,7 @@ let KDQuests = {
 					KinkyDungeonSendTextMessage(10, TextGet("KDNotEnoughDirtPiles"), "#ff8800", 4);
 				}
 
-				
+
 				let count = 14 + 6 * KDRandom();
 				for (let i = 0; i < count; i++) {
 					let epoint = KinkyDungeonGetRandomEnemyPoint(true);
@@ -371,7 +371,7 @@ let KDQuests = {
 					if (tiles.length > 0 && KDRandom() < 0.4) {
 						let altar = tiles[0];
 
-						let point = KinkyDungeonGetNearbyPoint(altar.x, altar.y, true, undefined, false);;
+						let point = KinkyDungeonGetNearbyPoint(altar.x, altar.y, true, undefined, false);
 						if (point) {
 							let element = CommonRandomItemFromList("", ['fire', 'earth', 'air', 'water', 'ice']);
 
@@ -406,12 +406,12 @@ let KDQuests = {
 							}
 						}
 					}
-					
+
 				}
 			}
 		},
 	},
-	
+
 	"EscapedDoll": {
 		name: "EscapedDoll",
 		npc: "DollmakerBoss1",
@@ -455,7 +455,7 @@ let KDQuests = {
 		}
 	},
 
-	
+
 	"Nawashi": {
 		name: "Nawashi",
 		npc: "Nawashi",
@@ -1077,10 +1077,17 @@ function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountM
 		nocancel: true,
 		accept: () => {
 			if (KinkyDungeonStatsChoice.get("BoundCrusader")) {
+				for (let i = 0; i < 2; i++) {
+					KDPlayerEffectRestrain(undefined, 1, restraintsTags, "Goddess", false, true, false, false, false, "Divine", {
+						Progressive: true,
+						ProgressiveSkip: true,
+						DontPreferWill: true,
+					});
+				}
 				KDPlayerEffectRestrain(undefined, 1, restraintsTags, "Goddess", false, true, false, false, false, "Divine", {
-					Progressive: true,
-					ProgressiveSkip: true,
-					DontPreferWill: true,
+					Progressive: false,
+					ProgressiveSkip: false,
+					DontPreferWill: false,
 				});
 			}
 			KDSetQuestData(Name, {

@@ -677,6 +677,12 @@ function KDGetGroupPreviewImage(Group) {
  * @returns {string}
  */
 function KDGetRestraintPreviewImage(restraint) {
+	if (PIXI.Assets.cache.has(KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`)) return KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`;
+	for (let tag of restraint.shrine) {
+		if (PIXI.Assets.cache.has(KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`)) return KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`;
+	}
+
+
 	try {
 		if (KDTex(KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`)?.valid) return KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`;
 	} catch (e) {
@@ -1948,7 +1954,7 @@ function KinkyDungeonDrawQuickInv() {
 							if (KDSendInput("equip", {name: item.item.name,
 								inventoryVariant: item.item.name != newItem.name ?
 									item.item.name : undefined,
-									faction: item.item.faction,
+								faction: item.item.faction,
 								group: newItem.Group, curse: item.item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.item.events)})) return true;
 						}
 					}

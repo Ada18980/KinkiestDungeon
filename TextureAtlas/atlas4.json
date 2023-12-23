@@ -114,7 +114,7 @@
 },
 "Models/FaceKjus/BrowsAngry.png":
 {
-	"frame": {"x":1640,"y":1057,"w":44,"h":18},
+	"frame": {"x":1656,"y":1057,"w":44,"h":18},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":528,"y":262,"w":44,"h":18},
@@ -122,7 +122,7 @@
 },
 "Models/FaceKjus/BrowsNeutral.png":
 {
-	"frame": {"x":1542,"y":1057,"w":49,"h":18},
+	"frame": {"x":1558,"y":1057,"w":49,"h":18},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":529,"y":249,"w":49,"h":18},
@@ -130,7 +130,7 @@
 },
 "Models/FaceKjus/BrowsSad.png":
 {
-	"frame": {"x":1401,"y":1057,"w":51,"h":19},
+	"frame": {"x":1417,"y":1057,"w":51,"h":19},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":523,"y":254,"w":51,"h":19},
@@ -146,7 +146,7 @@
 },
 "Models/FaceKjus/Eyes2Closed.png":
 {
-	"frame": {"x":1328,"y":1057,"w":52,"h":20},
+	"frame": {"x":1344,"y":1057,"w":52,"h":20},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":621,"y":284,"w":52,"h":20},
@@ -162,7 +162,7 @@
 },
 "Models/FaceKjus/EyesClosed.png":
 {
-	"frame": {"x":1591,"y":1057,"w":49,"h":18},
+	"frame": {"x":1607,"y":1057,"w":49,"h":18},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":530,"y":293,"w":49,"h":18},
@@ -178,7 +178,7 @@
 },
 "Models/FaceKjus/WhitesEyes2Closed.png":
 {
-	"frame": {"x":1328,"y":1057,"w":52,"h":20},
+	"frame": {"x":1344,"y":1057,"w":52,"h":20},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":621,"y":284,"w":52,"h":20},
@@ -194,7 +194,7 @@
 },
 "Models/FaceKjus/WhitesEyesClosed.png":
 {
-	"frame": {"x":1591,"y":1057,"w":49,"h":18},
+	"frame": {"x":1607,"y":1057,"w":49,"h":18},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":530,"y":293,"w":49,"h":18},
@@ -210,7 +210,7 @@
 },
 "Models/FaceKoi/BrowsNeutral.png":
 {
-	"frame": {"x":1499,"y":1057,"w":43,"h":19},
+	"frame": {"x":1515,"y":1057,"w":43,"h":19},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":59,"y":149,"w":43,"h":19},
@@ -258,7 +258,7 @@
 },
 "Models/FutureHarness/DisplayMid.png":
 {
-	"frame": {"x":1452,"y":1057,"w":47,"h":19},
+	"frame": {"x":1468,"y":1057,"w":47,"h":19},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":539,"y":731,"w":47,"h":19},
@@ -266,7 +266,7 @@
 },
 "Models/GagMetal/HarnessDisplay.png":
 {
-	"frame": {"x":1684,"y":1057,"w":120,"h":16},
+	"frame": {"x":1700,"y":1057,"w":120,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":78,"y":247,"w":120,"h":16},
@@ -338,7 +338,7 @@
 },
 "Models/LeatherCuffs/HardwareAnkleLeftKneel.png":
 {
-	"frame": {"x":1380,"y":1057,"w":21,"h":20},
+	"frame": {"x":1396,"y":1057,"w":21,"h":20},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":708,"y":949,"w":21,"h":20},
@@ -350,6 +350,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":709,"y":600,"w":54,"h":28},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/LeatherCuffs/HardwareWristRightFront.png":
+{
+	"frame": {"x":1328,"y":1057,"w":16,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":471,"y":542,"w":16,"h":22},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/LeatherCuffs/WristLeftYoked.png":
@@ -376,7 +384,7 @@
 	"spriteSourceSize": {"x":583,"y":978,"w":144,"h":22},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Mittens/PawLeftFree.png":
+"Models/Mittens/PawRightFree.png":
 {
 	"frame": {"x":905,"y":596,"w":66,"h":71},
 	"rotated": false,
@@ -520,6 +528,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:4e0dafae8640b7d7ba5d77a9b37cf2c9:f0cde2fd38bfe0cea666db56c1fb6883:a3fd7012179a3f2bcc17f729b6b49f45$"
+	"smartupdate": "$TexturePacker:SmartUpdate:193a9ee2f97a8c488f05acfe5c651ee3:5abf41564dea289f2387fcc552b04184:a3fd7012179a3f2bcc17f729b6b49f45$"
 }
 }

@@ -233,9 +233,10 @@ let KinkyDungeonLootTable = {
 		{name: "AncientCoreSingle", minLevel: 0, weight:0.1, count: 1, message:"LootChestAncientCoreSingle", messageColor:"yellow", messageTime: 3, allFloors: true},
 		{name: "AncientCoreSingleSpent", minLevel: 0, weight:1.5, count: 1, message:"LootChestAncientCoreSingleSpent", messageColor:"yellow", messageTime: 3, allFloors: true},
 
+		{name: "Rock", minLevel: 0, weapon: "Rock", weight:10, message:"LootChestWeapon", messageColor:"lightgreen", messageTime: 3, allFloors: true, noweapon: ["Rock"]},
 		{name: "knife", minLevel: 0, weight:5, message:"LootRubbleKnife", messageColor:"lightgreen", messageTime: 3, allFloors: true, noweapon: ["Knife"]},
 		{name: "Torch", minLevel: 0, weight:7, weapon: "Torch", noweapon: ["Torch"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
-		{name: "Rope", minLevel: 0, weight:10, weapon: "Rope", noweapon: ["Rope"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "Rope", minLevel: 0, weight:8, weapon: "Rope", noweapon: ["Rope"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "Scissors", minLevel: 0, weight:5, weapon: "Scissors", noweapon: ["Scissors"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "BagOfGoodies", arousalMode: true, minLevel: 0, weight:1.0, weapon: "BagOfGoodies", noweapon: ["BagOfGoodies"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	],
@@ -739,8 +740,8 @@ let KinkyDungeonLootTable = {
 			enchantlist: "Gold", enchantchance: 1,
 			enchantlevelmin: 0, enchantlevelmax: 20,
 			message:"KDGoddessQuestReward_Armor", messageColor:"lightblue", messageTime: 3, allFloors: true},
-			
-			
+
+
 		{name: "MikoDress", minLevel: 0, weight: 10,
 			armor: "MikoDress",
 			amtMult: 5,
@@ -807,7 +808,7 @@ let KinkyDungeonLootTable = {
 			enchantlist: "Gold", enchantchance: 1,
 			enchantlevelmin: 0, enchantlevelmax: 20,
 			message:"KDGoddessQuestReward_Armor", messageColor:"lightblue", messageTime: 3, allFloors: true},
-			
+
 		{name: "ComfyStraitjacket", minLevel: 0, weight: 10,
 			armor: "ComfyStraitjacket",
 			amtMult: 5,
@@ -871,7 +872,7 @@ let KinkyDungeonLootTable = {
 			enchantlist: "Gold", enchantchance: 1,
 			enchantlevelmin: 0, enchantlevelmax: 20,
 			message:"KDGoddessQuestReward_Armor", messageColor:"lightblue", messageTime: 3, allFloors: true},
-		
+
 		{name: "MaidDress", minLevel: 0, weight: 10,
 			armor: "MaidDress",
 			amtMult: 5,

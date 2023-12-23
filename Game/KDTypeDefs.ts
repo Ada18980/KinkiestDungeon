@@ -363,6 +363,8 @@ interface KDRestraintPropsBase {
 	Type?: string,
 	/** Item is removed when the wearer goes to prison */
 	removePrison?: boolean,
+	/** stronger version */
+	forceRemovePrison?: boolean,
 	/** Changes the dialogue text when you fail to remove the item */
 	failSuffix?: Record<string, string>,
 	/** Changes the dialogue text when you try to struggle completely */
@@ -631,14 +633,20 @@ interface overrideDisplayItem {
 	OverridePriority?: number[]|number,
 }
 interface alwaysDressModel {
-	/** Standalone club asset */
+	/** Standalone 5.0+ asset */
 	Model: string,
+	/** Group */
+	Group?: string,
 	/** Filters */
 	Filters?: Record<string, LayerFilter>,
-	/** Faction color index */
-	factionColor?: number[][],
+	/** Faction filter index */
+	factionFilters?: Record<string, {color: string, override: boolean}>,
 	/** Inherits the filters of the main */
 	inheritFilters?: boolean,
+	/** Whether or not it overrides items already on */
+	override?: boolean,
+	/** Uses the player's hair color as the item color */
+	useHairColor?: boolean,
 }
 
 interface KDLoadout {name: string, tags?: string[], singletag: string[], singletag2?: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number, multiplier?: number};
@@ -1064,6 +1072,10 @@ interface enemy extends KDHasTags {
 		alwaysHitByMagic?: boolean,
 		/** This enemy cannot BLOCK if the attacking weapon is magical */
 		alwaysBypassedByMagic?: boolean,
+		/** Physical block: applied only when not disabled or vulnerable */
+		block_phys?: number,
+		/** Magic block: applied only when not disabled or vulnerable */
+		block_magic?: number,
 	},
 	/** */
 	summonRage?: boolean,
@@ -1225,11 +1237,15 @@ interface weapon {
 	shield_distract?: boolean, // Distract thru shield
 	shield_vuln?: boolean,
 	arousalMode?: boolean,
+	/** Modifies the cost by changing the rarity for cost purposes only */
+	costMod?: number,
 	name: string;
 	dmg: number;
 	chance: number;
 	type: string;
 	bind?: number;
+	/** For rendering on player portrait */
+	angle?: number,
 	crit?: number;
 	bindcrit?: number;
 	bindType?: string;
@@ -1852,6 +1868,8 @@ interface spell {
 	classSpecific?: string;
 	/** Verbal, arms, or legs */
 	components?: string[];
+	/** The bullet's position is always fixed toward the caster */
+	followCaster?: boolean,
 	/** Spell level */
 	level: number;
 	/** Whether the spell is passive (like the summon count up) or active like the bolt or toggle spells*/

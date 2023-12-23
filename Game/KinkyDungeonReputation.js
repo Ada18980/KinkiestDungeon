@@ -252,7 +252,7 @@ function KinkyDungeonChangeRep(Rep, Amount) {
 		if (Math.abs(KinkyDungeonGoddessRep[Rep] - start) > 0.1) {
 			let value = KinkyDungeonGoddessRep[Rep] - start;
 			let amount = Math.round((value)*10)/10;
-			KinkyDungeonSendFloater({x: 600, y: 800 - KDRecentRepIndex * 40}, `${amount > 0 ? '+' : ''}${amount}% ${TextGet("KinkyDungeonShrine" + Rep)} ${!KDStatRep.includes(Rep) ? TextGet("KDRep") : ""}`, "white", 5, true);
+			KinkyDungeonSendFloater({x: 700, y: 800 - KDRecentRepIndex * 40}, `${amount > 0 ? '+' : ''}${amount}% ${TextGet("KinkyDungeonShrine" + Rep)} ${!KDStatRep.includes(Rep) ? TextGet("KDRep") : ""}`, "white", 5, true);
 			KDRecentRepIndex += 1;
 		}
 
@@ -344,7 +344,8 @@ function KinkyDungeonDrawReputation() {
 			if (MouseIn(canvasOffsetX_ui + xOffset + XX, yPad + canvasOffsetY_ui + spacing * i - 1 - spacing/2, 500, spacing - 2)) {
 				DrawTextFitKD(TextGet("KDRepDescription" + rep).replace("MNFCTN", TextGet("KinkyDungeonFaction" + KDGetMainFaction())), 1100, 880, 1250, "#ffffff", "#000000");
 			}
-			let numSuff = rep == "Prisoner" ? `+${Math.round(KDGetEffSecurityLevel() - value)} ` : " ";
+			let v2 = Math.round(KDGetEffSecurityLevel() - value);
+			let numSuff = rep == "Prisoner" ? `${v2 >= 0 ? '+' + v2 : v2} ` : " ";
 			DrawTextKD(" " + (Math.round(value)+50) + numSuff, canvasOffsetX_ui + xOffset + 275 + XX + 100,  2+yPad + canvasOffsetY_ui + spacing * i, "white", "black");
 
 			if (KDFactionRepIndex < 0.1) {

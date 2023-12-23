@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.3.1"
+KDVersionStr,"5.0.4 (C)"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -267,7 +267,7 @@ KinkyDungeonStat51,"Search Party"
 KinkyDungeonStatDesc51,"More enemies spawn during sleep."
 
 KinkyDungeonStat52,"No Way Out"
-KinkyDungeonStatDesc52,"Enemies will always use the tightest restraints possible and fully bind you."
+KinkyDungeonStatDesc52,"Enemies will always use the tightest restraints possible regardless of willpower. +10 Security level."
 KinkyDungeonStat53,"Deft Footwork"
 KinkyDungeonStatDesc53,"You ignore some consequences of being mildly slowed from heels or slime, and you can cast Leg spells while slowed significantly at 50% miscast chance."
 KinkyDungeonStatPoorForm,"Poor Form"
@@ -278,7 +278,7 @@ KinkyDungeonStatSomaticPlus,"Deft Fingering"
 KinkyDungeonStatDescSomaticPlus,"You can cast arm spells using just your fingers, as long as your hands aren't bound."
 
 KinkyDungeonStat54,"Well-Equipped"
-KinkyDungeonStatDesc54,"Restraints and traps that are limited by level appear sooner, and enemies will stack many restraints."
+KinkyDungeonStatDesc54,"Restraints and traps that are limited by level appear sooner, and will stack more. +10 security level."
 
 KinkyDungeonStat55,"Quick-Draw"
 KinkyDungeonStatDesc55,"Switching weapons and spells does not take a turn."
@@ -320,6 +320,11 @@ KinkyDungeonStatDescBoundCrusader,"Goddesses will equip restraints upon acceptan
 
 KinkyDungeonStatNowhere,"Nowhere is Safe"
 KinkyDungeonStatDescNowhere,"Beds and furniture are often trapped."
+
+KinkyDungeonStatBulletHell,"Bullet Hell"
+KinkyDungeonStatDescBulletHell,"Hides warning lines for non-AoE bullets and projectiles."
+KinkyDungeonStatBulletHell2,"Bullet Armageddon"
+KinkyDungeonStatDescBulletHell2,"Hides warning lines for AoE spells, bullets, and projectiles."
 
 KinkyDungeonStatNeeds,"I have... needs"
 KinkyDungeonStatDescNeeds,"Distraction builds up over time."
@@ -368,7 +373,7 @@ KinkyDungeonStatDescBreathless,"Taking chain, poison, and crush damage makes you
 
 
 KinkyDungeonStatKinkyPrison,"Kinky Prisoner"
-KinkyDungeonStatDescKinkyPrison,"Guards never remove restraints you are already wearing, unless they are applying something tighter."
+KinkyDungeonStatDescKinkyPrison,"Guards won't remove restraints unless they have something tighter. +10 Security level."
 
 KinkyDungeonStatDoorknobs,"Unfair Doors"
 KinkyDungeonStatDescDoorknobs,"Doors are harder to open while your hands are bound."
@@ -719,6 +724,7 @@ KinkyDungeonBuffSlimeMimic,"We did it! We made outselves invisible--mmmmph!!!"
 KinkyDungeonBuffd_SlimeMimic,"You are not currently attempting to disguise yourself. Click to reenable."
 KinkyDungeonBuffDisenchantSelf,"Your restraints are disenchanted, treating them as nonmagical for purposes of cutting."
 KinkyDungeonBuffLeatherBurst,"You can launch another leather restraint instantly!"
+KinkyDungeonBuffSagittaAssault,"You can launch another Sagitta instantly!"
 
 KinkyDungeonBuffDistractionCast,Your motivation is powerful enough your spells cannot be stopped!
 
@@ -831,26 +837,26 @@ KinkyDungeonChangeDistraction0,"Ahh!"
 KinkyDungeonChangeDistraction1,"Mmm..."
 KinkyDungeonChangeDistraction2,"Nnngh..."
 KinkyDungeonChangeDistraction3,"Ooooh..."
-KinkyDungeonChangeDistraction4,"(Breaths heavily)"
-KinkyDungeonChangeDistraction5,"(Moans softly)"
+KinkyDungeonChangeDistraction4,"(Heavy breathing)"
+KinkyDungeonChangeDistraction5,"(Soft moaning)"
 KinkyDungeonChangeDistraction6,"(Incoherent mumbling)"
-KinkyDungeonChangeDistraction7,"(Moans loudly)"
-KinkyDungeonChangeDistraction8,"(Heavy breathing)"
-KinkyDungeonChangeDistraction9,"(Moaning uncontrollably)"
-KinkyDungeonChangeDistraction10,"(Shudders with pleasure)"
+KinkyDungeonChangeDistraction7,"(Loud moans)"
+KinkyDungeonChangeDistraction8,"(Deep breaths)"
+KinkyDungeonChangeDistraction9,"(Uncontrollable moaning)"
+KinkyDungeonChangeDistraction10,"(Horny noises)"
 
 
 KinkyDungeonChangeDistractionGag0,"Mmmph..."
 KinkyDungeonChangeDistractionGag1,"Mmmph~"
 KinkyDungeonChangeDistractionGag2,"Nnngh..."
 KinkyDungeonChangeDistractionGag3,"Mmmmmmmm..."
-KinkyDungeonChangeDistractionGag4,"(Breaths heavily)"
-KinkyDungeonChangeDistractionGag5,"(Moans into her gag)"
+KinkyDungeonChangeDistractionGag4,"(Heavy breathing)"
+KinkyDungeonChangeDistractionGag5,"(Soft moaning)"
 KinkyDungeonChangeDistractionGag6,"(Incoherent mumbling)"
-KinkyDungeonChangeDistractionGag7,"(Moans loudly)"
-KinkyDungeonChangeDistractionGag8,"(Heavy breathing)"
-KinkyDungeonChangeDistractionGag9,"(Moaning uncontrollably)"
-KinkyDungeonChangeDistractionGag10,"(Shudders with pleasure)"
+KinkyDungeonChangeDistractionGag7,"(Loud moans)"
+KinkyDungeonChangeDistractionGag8,"(Deep breaths)"
+KinkyDungeonChangeDistractionGag9,"(Uncontrollable moaning)"
+KinkyDungeonChangeDistractionGag10,"(Horny noises)"
 
 Wait,"You wait."
 WaitAroused,"You wait, legs trembling with arousal."
@@ -2129,10 +2135,11 @@ AttackPinkAlkahestorBind,"The alkahestor releases a vial of liquid that wraps ar
 AttackPinkAlkahestorLock,"The alkahestor uses an ornate-looking lock! (DamageTaken)"
 AttackPinkAlkahestor,"The alkahestor shoves you! (DamageTaken)"
 
-NameElementalLatex,Latex Elemental
-KillElementalLatex,"The latex elemental melts into sticky rubber."
-AttackElementalLatexBind,"The latex elemental molds itself into restraints! (+RestraintAdded)"
-AttackElementalLatex,"The latex elemental slaps you with its appendages! (DamageTaken)"
+NameElementalLatex,Latex Homonculus
+KillElementalLatex,"The latex homonculus melts into sticky rubber."
+AttackElementalLatexBind,"The latex homonculus molds itself into restraints! (+RestraintAdded)"
+AttackElementalLatex,"The latex homonculus slaps you with its appendages! (DamageTaken)"
+
 
 NameElementalRope,Rope Elemental
 KillElementalRope,"The rope elemental gets knotted and falls to the floor, inert."
@@ -2300,8 +2307,8 @@ KinkyDungeonSummonMultiMikoGhost,Fuuka uses a talisman to call forth the spirits
 KinkyDungeonSummonSingleLatexElemental,A pool of latex bubbles and a twisted elemental appears!
 
 KinkyDungeonSpellRedSlime,The red liquid bubbles and a round slime pops out!
-KinkyDungeonSummonSingleElementalLatex,Latex Elemental
-KinkyDungeonSpellCastSummonLatexElemental,Latex Elemental
+KinkyDungeonSummonSingleElementalLatex,Latex Homunculus
+KinkyDungeonSpellCastSummonLatexElemental,Latex Homunculus
 
 KinkyDungeonSpellRedSlime,Red Slime
 NameRedSlime,Red Slime
@@ -2508,6 +2515,7 @@ AttackWitchIce,"The witch slaps you playfully! (DamageTaken)"
 KinkyDungeonSpellWitchBoulder,Magic Stone
 KinkyDungeonSpellWitchIcebolt,Ice Bolt
 KinkyDungeonSpellWitchWaterBall,Waterblast
+
 
 NameWitchRope,Rope Witch
 KillWitchRope,"The rope witch retreats as her animated ropes chase her."
@@ -2888,6 +2896,8 @@ KinkyDungeonStruggleCantPickBlueLock,"The lock seems to be magical and rejects a
 KinkyDungeonStruggleCantPickGoldLock,"The lock is definitely magical and forces your pick out!"
 KinkyDungeonStruggleCantPickDivineLock,"The lock is divine. A mortal shouldn't even try to pick it."
 KinkyDungeonStruggleUnlockNoDivineKey,"You must perform your quest! Don't even think of unlocking it..."
+KinkyDungeonStruggleCantPickRubberLock,"The lock is made of solid rubber. You can't pick that."
+KinkyDungeonStruggleUnlockNoRubberKey,"You need something sharp to cut the lock."
 KinkyDungeonStruggleCantPickPurpleLock,"The lock doesn't even have a keyhole to pick!"
 KinkyDungeonStruggleCantPickDiscLock,"You need a special tool to pick this kind of lock."
 KinkyDungeonStruggleCantPickHiSecLock,"The lock is brimming with security features and is nigh impossible to pick!"
@@ -3108,6 +3118,7 @@ KinkyRed_MedLockType,"Standard"
 KinkyRed_HiLockType,"Standard"
 KinkyHiSecLockType,"Secure"
 KinkyDiscLockType,"Disc"
+KinkyRubberLockType,"Rubber"
 KinkyDivineLockType,"Divine"
 KinkyWhiteLockType,"Simple"
 KinkyBlueLockType,"Runic"
@@ -3119,6 +3130,7 @@ KinkyRed_MedLock,"Standard Lock"
 KinkyRed_HiLock,"Standard Lock"
 KinkyHiSecLock,"Secure Lock"
 KinkyDiscLock,"Disc Lock"
+KinkyRubberLock,"Rubber Lock"
 KinkyDivineLock,"Divine Lock"
 KinkyWhiteLock,"Simple Lock"
 KinkyBlueLock,"Runic Lock"
@@ -3300,6 +3312,10 @@ KDCrotchRopeBlock2,"The toy won't wiggle loose. It's kept in place by your restr
 KDLatexDebuff0,"Your catsuit adheres to latex, making struggling more difficult!"
 KDLatexDebuff1,"The item sticks to your rubber catsuit, making it harder to pull off..."
 KDLatexDebuff2,"The item hugs your catsuit tightly, adhering firmly!"
+
+KDRopeDebuff0,"Your RSTRN holds you securely, making your struggling ineffectual..."
+KDRopeDebuff1,"Your RSTRN holds you tight, making it harder to move..."
+KDRopeDebuff2,"Your RSTRN keeps you tied tight, making it harder to escape..."
 
 KDShadowBuff,"The bright light weakens the shadow hands!"
 
@@ -3487,7 +3503,7 @@ KinkyDungeonInventoryItemSlimeWalkersDesc2,"They will slow you down, but you can
 
 RestraintDusterGag,Duster Gag
 RestraintDusterGagDesc,"A special gag designed for maids to be useful even while tied up! It's self-locking too!"
-RestraintDusterGagDesc2,"Deals 0.5 tickle damage on attack and adds +30 distraction."
+RestraintDusterGagDesc2,"Deals 0.5 tickle damage on attack and adds +30 distraction. Bonus damage vs dirt and mold."
 KinkyDungeonInventoryItemDusterGag,Duster Gag
 KinkyDungeonInventoryItemDusterGagDesc,"A special gag designed for maids to be useful even while tied up! It's self-locking too!"
 KinkyDungeonInventoryItemDusterGagDesc2,"Deals 0.5 tickle damage on attack and adds +30 distraction."
@@ -3703,7 +3719,7 @@ RestraintMithrilLegCuffs2Desc2,"They feel like they aren't even there, but the m
 KinkyDungeonUnLinkMithrilLegCuffs2,"The leg cuff chain detaches!"
 
 RestraintMithrilAnkleCuffs,Mithril Ankle Cuffs
-RestraintMithrilAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintMithrilAnkleCuffsDesc,"A pair of cuffs on your ankles."
 RestraintMithrilAnkleCuffsDesc2,"They feel like they aren't even there, but the material is rigid and unyielding."
 KinkyDungeonLinkMithrilAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintMithrilAnkleCuffs2,Ankle Chain
@@ -3750,7 +3766,7 @@ RestraintLeatherLegCuffs2Desc2,"Made of tough leather."
 KinkyDungeonUnLinkLeatherLegCuffs2,"The leg cuff chain detaches!"
 
 RestraintLeatherAnkleCuffs,Leather Ankle Cuffs
-RestraintLeatherAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintLeatherAnkleCuffsDesc,"A pair of cuffs on your ankles."
 RestraintLeatherAnkleCuffsDesc2,"Made of tough leather."
 KinkyDungeonLinkLeatherAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintLeatherAnkleCuffs2,Ankle Chain
@@ -4137,7 +4153,7 @@ RestraintBlacksteelLegCuffs2Desc2,"They are made of a hardened steel alloy, chem
 KinkyDungeonUnLinkBlacksteelLegCuffs2,"The leg cuff chain detaches!"
 
 RestraintBlacksteelAnkleCuffs,Blacksteel Ankle Cuffs
-RestraintBlacksteelAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintBlacksteelAnkleCuffsDesc,"A pair of cuffs on your ankles."
 RestraintBlacksteelAnkleCuffsDesc2,"They are made of a hardened steel alloy, chemically treated as to be stainless."
 KinkyDungeonLinkBlacksteelAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintBlacksteelAnkleCuffs2,Ankle Chain
@@ -4189,7 +4205,7 @@ RestraintScaleLegCuffs2Desc2,"They are made from leather cured from the hide of 
 KinkyDungeonUnLinkScaleLegCuffs2,"The leg cuff chain detaches!"
 
 RestraintScaleAnkleCuffs,Dragonscale Ankle Cuffs
-RestraintScaleAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintScaleAnkleCuffsDesc,"A pair of cuffs on your ankles."
 RestraintScaleAnkleCuffsDesc2,"They are made from leather cured from the hide of dragons."
 KinkyDungeonLinkScaleAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintScaleAnkleCuffs2,Ankle Chain
@@ -4299,7 +4315,7 @@ RestraintObsidianLegCuffs2Desc2,"It's made of a dark, shiny metal. If you hold i
 KinkyDungeonUnLinkObsidianLegCuffs2,"The leg cuff chain detaches!"
 
 RestraintObsidianAnkleCuffs,Obsidian Ankle Cuffs
-RestraintObsidianAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintObsidianAnkleCuffsDesc,"A pair of cuffs on your ankles."
 RestraintObsidianAnkleCuffsDesc2,"It's made of a dark, shiny metal. If you hold it close you hear whispering."
 KinkyDungeonLinkObsidianAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintObsidianAnkleCuffs2,Ankle Chain
@@ -4347,7 +4363,7 @@ RestraintCrystalLegCuffs2Desc2,"It's made of a glowing, brittle material. You fe
 KinkyDungeonUnLinkCrystalLegCuffs2,"The leg cuff chain detaches!"
 
 RestraintCrystalAnkleCuffs,Crystal Ankle Cuffs
-RestraintCrystalAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintCrystalAnkleCuffsDesc,"A pair of cuffs on your ankles."
 RestraintCrystalAnkleCuffsDesc2,"It's made of a glowing, brittle material. You feel your energy flowing into it..."
 KinkyDungeonLinkCrystalAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintCrystalAnkleCuffs2,Ankle Chain
@@ -4395,7 +4411,7 @@ RestraintIceLegCuffs2Desc2,"They're made of enchanted ice. They won't melt on th
 KinkyDungeonUnLinkIceLegCuffs2,"The leg cuff chain detaches!"
 
 RestraintIceAnkleCuffs,Ice Ankle Cuffs
-RestraintIceAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintIceAnkleCuffsDesc,"A pair of cuffs on your ankles."
 RestraintIceAnkleCuffsDesc2,"They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone..."
 KinkyDungeonLinkIceAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 RestraintIceAnkleCuffs2,Ankle Chain
@@ -4433,7 +4449,7 @@ KinkyDungeonUnLinkBanditArmCuffs4,"Your elbows detatch!"
 KinkyDungeonLinkBanditArmCuffs4,"The enemy attaches your wrist cuffs back together!"
 
 RestraintBanditLegCuffs,Slave Leg Cuffs
-RestraintBanditLegCuffsDesc,"A pair of cuffs chaining your legs together."
+RestraintBanditLegCuffsDesc,"A pair of cuffs on your ankles."
 RestraintBanditLegCuffsDesc2,"It's made of a gold-tinted metal with a magical enchantment."
 RestraintBanditAnkleCuffs,Slave Ankle Cuffs
 RestraintBanditAnkleCuffsDesc,"A pair of cuffs chaining your legs together."
@@ -4840,6 +4856,13 @@ KinkyDungeonInventoryItemDusterDesc2,"Deals tickle damage. Distracts enemies. Of
 ItemPickupDuster,"You pick up a feather duster."
 
 
+
+KinkyDungeonInventoryItemRopeRune,Rope Rune
+KinkyDungeonInventoryItemRopeRuneUse,"You smash the rune in front of you, and a flash of light enchants nearby ropes!"
+KinkyDungeonInventoryItemRopeRuneDesc,"It feels tantalizing to look at."
+KinkyDungeonInventoryItemRopeRuneDesc2,"Allows you to enchant ropes into more powerful restraints."
+ItemPickupRopeRune,"You pick up a kinky trinket with a glowing red sigil."
+
 ItemPickupFlail,"You pick up a heavy flail."
 ItemPickupSpear,"You pick up a shortspear."
 ItemPickupPike,"You pick up a long spear."
@@ -4912,6 +4935,10 @@ KDEffectTileTooltipLatex,Liquid Latex
 KDEffectTileTooltipLatexDesc,"Engulfs creatures"
 KDEffectTileTooltipLatexThin,Liquid Latex
 KDEffectTileTooltipLatexThinDesc,"Engulfs creatures"
+KDEffectTileTooltipLatexBlue,Liquid Latex
+KDEffectTileTooltipLatexBlueDesc,"Engulfs creatures"
+KDEffectTileTooltipLatexThinBlue,Liquid Latex
+KDEffectTileTooltipLatexThinBlueDesc,"Engulfs creatures"
 KDEffectTileTooltipSlime,Slime
 KDEffectTileTooltipSlimeDesc,"Slows creatures"
 KDEffectTileTooltipGlue,Glue
@@ -5269,18 +5296,18 @@ KinkyDungeonSpellDescriptionShadowSlash,"Slice the area in front of you, dealing
 KinkyDungeonSpellCastShadowSlash,You create a tear in space with your finger!
 KinkyDungeonSpellTargetShadowSlash,Choose aim direction
 
-KinkyDungeonSpellLeap,Phase
+KinkyDungeonSpellLeap,Blink
 KinkyDungeonSpellDescriptionLeap,"Instantly teleport to an adjacent position and gain +50 evasion for 3 turns. Unlocks Blink and Warp when learned."
 KinkyDungeonSpellCastLeap,You teleport!
-KinkyDungeonSpellTargetLeap,Choose target location
-KinkyDungeonSpellLeap2,Blink
+KinkyDungeonSpellTargetLeap,Choose target location (1 tile range)
+KinkyDungeonSpellLeap2,Blink II
 KinkyDungeonSpellDescriptionLeap2,Instantly teleport up to 2 tiles away. Must have vision of the target point. Stuns an enemy if you teleport behind them.
 KinkyDungeonSpellCastLeap2,You teleport!
-KinkyDungeonSpellTargetLeap2,Choose target location
-KinkyDungeonSpellLeap3,Warp
-KinkyDungeonSpellDescriptionLeap3,Instantly teleport up to 2 tiles away. Must have vision of the target point. 
+KinkyDungeonSpellTargetLeap2,Choose target location (2 tile range)
+KinkyDungeonSpellLeap3,Blink III
+KinkyDungeonSpellDescriptionLeap3,Instantly teleport up to 2 tiles away. Must have vision of the target point.
 KinkyDungeonSpellCastLeap3,You teleport!
-KinkyDungeonSpellTargetLeap3,Choose target location
+KinkyDungeonSpellTargetLeap3,Choose target location (3 tile range)
 
 KinkyDungeonSpellIcebolt,Ice Shard
 KinkyDungeonSpellDescriptionIcebolt,A shard of ice that does DamageDealt damage and slows for Duration turns. Freezes if already slowed or drenched.
@@ -5333,11 +5360,24 @@ KinkyDungeonSpellCastChainBolt,You a hurl a strand of chain!
 KinkyDungeonSpellTargetChainBolt,Choose aim direction
 
 
+KinkyDungeonSpellEnchantRope,Enchant Rope
+KinkyDungeonSpellEnemyEnchantRope,Rope Enchantment
+KinkyDungeonSpellEnemyEnchantRope2,Spellbinding
+KinkyDungeonSpellDescriptionEnchantRope,"Convert rope binding on a target into magical bindings, which are much more powerful. Deals a small amount of arcane damage."
+KinkyDungeonSpellCastEnchantRope,You whisper an enchanting tale of rope bondage...
+KinkyDungeonSpellTargetEnchantRope,Choose targets to tighten the ropes of
+
 KinkyDungeonSpellRopeBoltLaunch,Conjure Ropes
 KinkyDungeonSpellRopeBolt,Animated Rope
-KinkyDungeonSpellDescriptionRopeBoltLaunch,Launch 3 ropes that deal DamageDealt chain damage each and add 22 rope binding.
+KinkyDungeonSpellDescriptionRopeBoltLaunch,Launch 3 ropes that deal DamageDealt chain damage each and add 32 rope binding.
 KinkyDungeonSpellCastRopeBoltLaunch,You animate a bunch of ropes!
 KinkyDungeonSpellTargetRopeBoltLaunch,Choose aim direction
+
+KinkyDungeonSpellRopeBoltLaunchMany,Ropestorm
+KinkyDungeonSpellRopeBolt,Animated Rope
+KinkyDungeonSpellDescriptionRopeBoltLaunchMany,Launch 9 ropes that deal DamageDealt chain damage each and add 32 rope binding. Best in open spaces.
+KinkyDungeonSpellCastRopeBoltLaunchMany,You animate a sizeable quantity of ropes!
+KinkyDungeonSpellTargetRopeBoltLaunchMany,Choose aim direction
 
 KinkyDungeonSpellSteelRainBurst,Steel Torrent
 KinkyDungeonSpellSteelRainPlug,Steel Rain
@@ -5677,6 +5717,13 @@ KinkyDungeonSpellDescriptionAccurate2,"+15 Accuracy (25 total)"
 KinkyDungeonSpellAccurate3,Accuracy III
 KinkyDungeonSpellDescriptionAccurate3,"+25 Accuracy (50 total)"
 
+KinkyDungeonSpellUnarmed1,Martial Arts I
+KinkyDungeonSpellDescriptionUnarmed1,"Unarmed strikes gain 15% accuracy and -10% stamina cost."
+KinkyDungeonSpellUnarmed2,Martial Arts II
+KinkyDungeonSpellDescriptionUnarmed2,"Unarmed strikes gain 20% accuracy (35% total) and -15% stamina cost (25% total)."
+KinkyDungeonSpellUnarmed3,Martial Arts III
+KinkyDungeonSpellDescriptionUnarmed3,"Unarmed strikes gain 25% accuracy (60% total) and -25% stamina cost (50% total)."
+
 KinkyDungeonSpellCriticalStrike,Precise Critical
 KinkyDungeonSpellDescriptionCriticalStrike,"When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency."
 KinkyDungeonSpellCriticalStrikeMagic,Precise Magic
@@ -5750,28 +5797,13 @@ KinkyDungeonSpellCastSnare,You conjure a rope trap!
 KinkyDungeonSpellTargetSnare,Choose location for trap
 
 KinkyDungeonSpellRopeStrike,Rope Burst
-KinkyDungeonSpellDescriptionRopeStrike,An explosion of rope deals DamageDealt chain damage in a 3x3 AoE and applies 40 points of rope binding. Snares for Duration turns.
+KinkyDungeonSpellDescriptionRopeStrike,An explosion of rope deals DamageDealt chain damage in a 3x3 AoE and applies 50 points of rope binding. Snares for Duration turns.
 KinkyDungeonSpellCastRopeStrike,You call forth ropes from the abyss!
 KinkyDungeonSpellTargetRopeStrike,Select center of a a 3x3 AoE
 
 KinkyDungeonSpellLeatherBurst,Leather Package
 KinkyDungeonSpellDescriptionLeatherBurst,"After conjuring a leather restraint, you can conjure up to three more without advancing time."
 
-KinkyDungeonSpellSummonGag,Conjure Gag
-KinkyDungeonSpellGagBolt,Conjured Gag
-KinkyDungeonSpellGagBoltBind,The gag forces itself into your mouth and buckles tightly!
-KinkyDungeonSpellGagBoltDamage,The gag hits you! (DamageDealt)
-KinkyDungeonSpellDescriptionSummonGag,"Summons a gag which deals DamageDealt chain damage and silences for 15 turns. +40 binding if target is not silenced."
-KinkyDungeonSpellCastSummonGag,You conjure a gag!
-KinkyDungeonSpellTargetSummonGag,The gag will appear next to you and fly toward the target point.
-
-KinkyDungeonSpellSummonArmbinder,Conjure Armbinder
-KinkyDungeonSpellArmbinderBolt,Conjured Armbinder
-KinkyDungeonSpellArmbinderBoltBind,The armbinder slips itself around your arms and buckles itself tightly!
-KinkyDungeonSpellArmbinderBoltDamage,The armbinder hits you! (DamageDealt)
-KinkyDungeonSpellDescriptionSummonArmbinder,"Summons an armbinder which deals DamageDealt chain damage and disarms for 13 turns. Also removes 2 Block tokens from enemy. Cannot be blocked."
-KinkyDungeonSpellCastSummonArmbinder,You conjure a armbinder!
-KinkyDungeonSpellTargetSummonArmbinder,The armbinder will appear next to you and fly toward the target point.
 
 KinkyDungeonSpellSummonLeatherCuffs,Conjure Leather Cuffs
 KinkyDungeonSpellLeatherCuffsBolt,Conjured Leather Cuffs
@@ -5798,6 +5830,22 @@ KinkyDungeonSpellCastSummonCuffs,You conjure a pair of cuffs!
 KinkyDungeonSpellTargetSummonCuffs,The cuffs will appear next to you and fly toward the target point.
 
 
+KinkyDungeonSpellSummonGag,Conjure Gag
+KinkyDungeonSpellGagBolt,Conjured Gag
+KinkyDungeonSpellGagBoltBind,The gag forces itself into your mouth and buckles tightly!
+KinkyDungeonSpellGagBoltDamage,The gag hits you! (DamageDealt)
+KinkyDungeonSpellDescriptionSummonGag,"Summons a gag which deals DamageDealt chain damage and silences for 15 turns. +40 binding if target is not silenced."
+KinkyDungeonSpellCastSummonGag,You conjure a gag!
+KinkyDungeonSpellTargetSummonGag,The gag will appear next to you and fly toward the target point.
+
+KinkyDungeonSpellSummonArmbinder,Conjure Armbinder
+KinkyDungeonSpellArmbinderBolt,Conjured Armbinder
+KinkyDungeonSpellArmbinderBoltBind,The armbinder slips itself around your arms and buckles itself tightly!
+KinkyDungeonSpellArmbinderBoltDamage,The armbinder hits you! (DamageDealt)
+KinkyDungeonSpellDescriptionSummonArmbinder,"Summons an armbinder which deals DamageDealt chain damage and disarms for 13 turns. Cannot be blocked."
+KinkyDungeonSpellCastSummonArmbinder,You conjure a armbinder!
+KinkyDungeonSpellTargetSummonArmbinder,The armbinder will appear next to you and fly toward the target point.
+
 KinkyDungeonSpellSummonLegbinder,Conjure Legbinder
 KinkyDungeonSpellLegbinderBolt,Conjured Legbinder
 KinkyDungeonSpellLegbinderBoltBind,The legbinder slips itself around your legs and buckles itself tightly!
@@ -5807,11 +5855,48 @@ KinkyDungeonSpellCastSummonLegbinder,You conjure a legbinder!
 KinkyDungeonSpellTargetSummonLegbinder,The legbinder will appear next to you and fly toward the target point.
 
 
+KinkyDungeonSpellSummonLatexGag,Conjure Latex Gag
+KinkyDungeonSpellLatexGagBolt,Conjured Latex Gag
+KinkyDungeonSpellEnemyLatexGagBolt,Latex Gag
+KinkyDungeonSpellEnemyLatexRestraintBolt,Latex Glob
+KinkyDungeonSpellLatexGagBoltBind,The gag forces itself into your mouth and snaps on tightly!
+KinkyDungeonSpellEnemyLatexGagBoltBind,The gag forces itself into your mouth and snaps on tightly!
+KinkyDungeonSpellEnemyLatexRestraintBoltBind,The amorphous rubber stretches out into a restraint on your body!
+KinkyDungeonSpellLatexGagBoltDamage,The gag hits you! (DamageDealt)
+KinkyDungeonSpellEnemyLatexGagBoltDamage,The gag hits you! (DamageDealt)
+KinkyDungeonSpellEnemyLatexRestraintBoltDamage,The amorphous rubber sticks to you! (DamageDealt)
+KinkyDungeonSpellDescriptionSummonLatexGag,"Summons a gag which deals DamageDealt glue damage and silences for 15 turns. +40 binding if target is not silenced."
+KinkyDungeonSpellCastSummonLatexGag,You conjure a gag!
+KinkyDungeonSpellTargetSummonLatexGag,The gag will appear next to you and fly toward the target point.
+
+KinkyDungeonSpellSummonLatexArmbinder,Conjure Latex Armbinder
+KinkyDungeonSpellLatexArmbinderBolt,Conjured Latex Armbinder
+KinkyDungeonSpellEnemyLatexArmbinderBolt,Latex Armbinder
+KinkyDungeonSpellLatexArmbinderBoltBind,The armbinder slips itself around your arms and buckles itself tightly!
+KinkyDungeonSpellLatexArmbinderBoltDamage,The armbinder hits you! (DamageDealt)
+KinkyDungeonSpellEnemyLatexArmbinderBoltBind,The armbinder slips itself around your arms and snaps on tightly!
+KinkyDungeonSpellEnemyLatexArmbinderBoltDamage,The armbinder hits you! (DamageDealt)
+KinkyDungeonSpellDescriptionSummonLatexArmbinder,"Summons an armbinder which deals DamageDealt glue damage and disarms for 13 turns. Cannot be blocked."
+KinkyDungeonSpellCastSummonLatexArmbinder,You conjure a armbinder!
+KinkyDungeonSpellTargetSummonLatexArmbinder,The armbinder will appear next to you and fly toward the target point.
+
+KinkyDungeonSpellSummonLatexLegbinder,Conjure Latex Legbinder
+KinkyDungeonSpellLatexLegbinderBolt,Conjured Latex Legbinder
+KinkyDungeonSpellEnemyLatexLegbinderBolt,Latex Legbinder
+KinkyDungeonSpellLatexLegbinderBoltBind,The legbinder slips itself around your legs and buckles itself tightly!
+KinkyDungeonSpellLatexLegbinderBoltDamage,The legbinder hits you! (DamageDealt)
+KinkyDungeonSpellEnemyLatexLegbinderBoltBind,The legbinder slips itself around your legs and snaps on tightly!
+KinkyDungeonSpellEnemyLatexLegbinderBoltDamage,The legbinder hits you! (DamageDealt)
+KinkyDungeonSpellDescriptionSummonLatexLegbinder,"Summons a legbinder which deals DamageDealt glue damage and snares for 10 turns. +50 binding if target is not snared. Cannot be blocked."
+KinkyDungeonSpellCastSummonLatexLegbinder,You conjure a legbinder!
+KinkyDungeonSpellTargetSummonLatexLegbinder,The legbinder will appear next to you and fly toward the target point.
+
+
 KinkyDungeonSpellSummonStraitjacket,Conjure Straitjacket
 KinkyDungeonSpellStraitjacketBolt,Conjured Straitjacket
 KinkyDungeonSpellStraitjacketBoltBind,The straitjacket slips itself around your body and pulls your arms into its sleeves!
 KinkyDungeonSpellStraitjacketBoltDamage,The straitjacket hits you! (DamageDealt)
-KinkyDungeonSpellDescriptionSummonStraitjacket,"Summons a straitjacket which adds DamageDealt binding and reduces struggle speed for 14 turns. Also removes 3 Block tokens from enemy. Cannot be blocked."
+KinkyDungeonSpellDescriptionSummonStraitjacket,"Summons a straitjacket which adds DamageDealt binding and reduces struggle speed for 14 turns. Cannot be blocked."
 KinkyDungeonSpellCastSummonStraitjacket,You conjure a straitjacket!
 KinkyDungeonSpellTargetSummonStraitjacket,The straitjacket will appear next to you and fly toward the target point.
 
@@ -6373,6 +6458,19 @@ KinkyDungeonGagMumbleAroused5,Mmm~
 KinkyDungeonGagMumbleAroused6,Mmmmm~~
 KinkyDungeonGagMumbleAroused7,Mmmmmm~~~
 
+
+KinkyDungeonGagRestraint0,Mmph...
+KinkyDungeonGagRestraint1,Mmmm!
+KinkyDungeonGagRestraint2,MMM!!!
+
+KinkyDungeonGagStruggleQuiet0,Hmmph.
+KinkyDungeonGagStruggleQuiet1,Mmmm...
+KinkyDungeonGagStruggleQuiet2,Mmmph.
+
+KinkyDungeonGagStruggle0,Mmmmmmph!!!
+KinkyDungeonGagStruggle1,Gmmmmph!
+KinkyDungeonGagStruggle2,Hmmmmph~!!
+
 KinkyDungeonBlindSelf,"You are blinded!"
 KinkyDungeonDamageSelf,"You took DamageTaken damage!"
 KinkyDungeonSlime,"You get caught in sticky slime!"
@@ -6382,6 +6480,7 @@ KinkyDungeonShock,"You feel a powerful sensation run through your body!"
 KinkyDungeonCoronaShock,"Beams of light wrap around your body and feel warm on your skin!"
 KinkyDungeonCrystalBind,"Crystals begin to form around your limbs!"
 KinkyDungeonSingleMChain,"A magic chain secures itself around your body!"
+KinkyDungeonSingleChain,"An animated chain secures itself around your body!"
 KinkyDungeonSingleMRope,"A magic rope secures itself around your body!"
 KinkyDungeonSingleMBelt,"A magic belt secures itself around your body!"
 KinkyDungeonSingleRope,"A rope wraps itself around your body!"
@@ -6389,7 +6488,7 @@ KinkyDungeonSingleFabric,"A ribbon animates and becomes entwined around you!"
 KinkyDungeonSingleBelt,"A belt buckles itself tightly around your body!"
 KinkyDungeonSingleVine,"A vine slithers across your body and tightens!"
 KinkyDungeonSlowedBySpell,"The spell hits you and slows you down!"
-KinkyDungeonSpellWitchRope,"Rope"
+KinkyDungeonSpellWitchRope,"Witch's Rope"
 KinkyDungeonSpellRopeEngulf,"Rope Tendrils"
 KinkyDungeonSpellSarcoEngulf,"Blessed Wrappings"
 KinkyDungeonSpellSarcoHex,"The Blessing"
@@ -6578,7 +6677,7 @@ KinkyDungeonLore10,"(A letter between bandit leaders) One of my subordinates has
 KinkyDungeonLore11,"(The note is a letter from the school of conjuration) We really would like to know... why did you summon a frog in the laboratory? People are wondering, you know. One of the student's projects got eaten."
 KinkyDungeonLore12,"(You find a carving on the floor, a half-finished magic circle of celestial conjuration. Perhaps a cleric wished to call forth an angel for guidance, before realizing there was a shrine a short walk away, where she could contact the heavens much more easily.)"
 KinkyDungeonLore13,"(It looks like a... receipt) Thank you for your offering to CELESTIAL COMMERCE. Please accept this fine-quality steel blade as compensation for your continued devotion and selflessness."
-KinkyDungeonLore14,"(A note written in cursive) To whomever assaulted our courier and left them tied up here: The shrines of the Goddess of ILLUSION are NOT to be used in this manner. If you desire a subject for your lewd experimentations, please attempt to do so on one of the locals and for heaven's sake do not call up an angelic courier just so you may tie her up. It does not matter than she consented, nor that you paid, our couriers have responsibilities that they must attend to. Signed: HERONA, enforcer of the GODDESS of ILLUSIONS."
+KinkyDungeonLore14,"(A note written in cursive) To whomever assaulted our courier and left them tied up here: The shrines of the Goddess of ILLUSION are NOT to be used in this manner. If you desire a subject for your lewd experimentations, please attempt to do so on one of the locals and for heaven's sake do not call up an angelic courier just so you may tie her up. It does not matter that she consented, nor that you paid, our couriers have responsibilities that they must attend to. Signed: HERONA, enforcer of the GODDESS of ILLUSIONS."
 KinkyDungeonLore15,"(From an essay titled 'On Celestial Supply Chains') It is known that the heavens seek gold. We do not know why it is that the heavens seek it, but we do know that the Goddesses grant us fragments of their limitless power in exchange for this otherwise-useless metal we dredge up from the earth. They care about it so much that shrines are commonplace, each hosting an angelic courier lying in wait for any adventurer willing to part with hers."
 KinkyDungeonLore16,"They say that the maiden who safeguards the graveyard is kind to her pets..."
 KinkyDungeonLore17,"They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Blink out of jail and into the hallway where they kept all my things!"
@@ -6719,9 +6818,9 @@ KinkyDungeonCurseInfoGhostLock,"The lock is protected by a revanent seal. You'll
 KinkyDungeonCurseStruggleGhostLock,"Your fingers pass right through the collar. Pity your neck doesn't pass through it."
 KinkyDungeonCurseUnlockGhostLock,"You channel ghastly energy into the lock and break the seal!!!"
 
-KinkyDungeonCurseInfoDollLock,"It would take many lifetimes to crack the code. You'll have to find the data somehow."
-KinkyDungeonCurseStruggleDollLock,"You tug against the fastenings to no avail."
-KinkyDungeonCurseUnlockDollLock,"One of your Doll IDs seems to have had corrupted data on it, causing the program to crash."
+KinkyDungeonCurseInfoDollLock,"It would take many lifetimes to crack the code. You'll have to find another way to break the program..."
+KinkyDungeonCurseStruggleDollLock,"You tug against the straps to no avail."
+KinkyDungeonCurseUnlockDollLock,"One of your Doll IDs seems to have had corrupted data on it, causing the program to crash and unlock."
 
 KinkyDungeonCurseInfoShadowCurse,"The item seems to drain divine energy from shrines. Maybe that has something to do with it."
 KinkyDungeonCurseStruggleShadowCurse,"The collar is enchanted with multiple layers of magical seals."
@@ -6794,7 +6893,7 @@ KinkyDungeonTrapSpawnElementalFire,"In a puff of smoke, a group of fire elementa
 KinkyDungeonTrapSpawnElementalIce,"In a flash of fog a group of ice elementals appear around you!"
 KinkyDungeonTrapSpawnElementalWater,"In a burst of mist, a group of water elementals appear around you!"
 KinkyDungeonTrapSpawnElementalEarth,"A group of earth elementals rise out of the ground!"
-KinkyDungeonTrapSpawnElementalLatex,"You hear pouring liquid and a group of latex elementals come out of the walls!"
+KinkyDungeonTrapSpawnElementalRubber,"You hear pouring liquid and a group of rubber elementals come out of the walls!"
 KinkyDungeonTrapSpawnElementalAir,"In a flash of light, a group of air elementals appear around you!"
 KinkyDungeonTrapSpawnTickleHand,"Several ethereal hands appear all around you!"
 KinkyDungeonTrapSpawnConjurer,"You have stumbled upon a conjurer's study!"
@@ -7095,6 +7194,9 @@ KinkyDungeonNoItemToRemove,You don't have any valid targets on your body for tha
 KinkyDungeonHappyGas,"The air swirls with traces of pleasing magic..."
 KinkyDungeonSporeGas,"The spores make you feel sleepy..."
 
+KinkyDungeonTooltipBlockPhys,"Physical Block: AMOUNT"
+KinkyDungeonTooltipBlockMagic,"Magic Block: AMOUNT"
+
 KinkyDungeonTooltipWeakness,"DAMAGETYPE: MULTIPLIERx modifier"
 KinkyDungeonTooltipArmor,"Physical Armor: AMOUNT"
 KinkyDungeonTooltipSpellResist,"Magic Armor: AMOUNT"
@@ -7337,6 +7439,15 @@ KinkyDungeonRemoveJailKey,"Your key to the stairs is taken away!"
 ItemPickupKeyring,"You found a keyring to the stairs! Now you just need to get there."
 KinkyDungeonNeedJailKey,"There seems to be a locked high-security door. Looks like you need a key."
 
+KinkyDungeonRemindJailPlayHelplessFuuka0,"Oh noes..."
+KinkyDungeonRemindJailPlayHelplessFuuka1,"Ueeee!"
+KinkyDungeonRemindJailPlayHelplessFuuka2,"I don't want to be your slave!"
+KinkyDungeonRemindJailPlayBratFuuka0,"Catch me if you can!"
+KinkyDungeonRemindJailPlayBratFuuka1,"Ueeee!"
+KinkyDungeonRemindJailPlayBratFuuka2,"I don't want to be your slave!"
+KinkyDungeonRemindJailPlaySubFuuka0,"I've been naughty, looks like I need to be punished..."
+KinkyDungeonRemindJailPlaySubFuuka1,"I've been a bad girl, won't you do something about it?"
+KinkyDungeonRemindJailPlaySubFuuka2,"Mmmph... maybe I talk too much..."
 KinkyDungeonRemindJailPlayFuuka0,"Well well, what have we got here?"
 KinkyDungeonRemindJailPlayFuuka1,"You're not here to take away my pets, are you?"
 KinkyDungeonRemindJailPlayFuuka2,"You'd make a lovely pet..."
@@ -7384,6 +7495,15 @@ KinkyDungeonRemindJailChaseFuukaCommandDefend,""
 KinkyDungeonRemindJailChaseFuukaCommandAssault,""
 KinkyDungeonRemindJailChaseFuukaCommandBlock,""
 
+KinkyDungeonRemindJailPlayHelplessDollmaker0,"Release me at once."
+KinkyDungeonRemindJailPlayHelplessDollmaker1,"This is unacceptable!"
+KinkyDungeonRemindJailPlayHelplessDollmaker2,"Guards! Guards... Guards? Well drat."
+KinkyDungeonRemindJailPlayBratDollmaker0,"Catch me if you can!"
+KinkyDungeonRemindJailPlayBratDollmaker1,"You'll never get away with this!"
+KinkyDungeonRemindJailPlayBratDollmaker2,"I don't want to be your slave!"
+KinkyDungeonRemindJailPlaySubDollmaker0,"I've been naughty, looks like I need to be punished..."
+KinkyDungeonRemindJailPlaySubDollmaker1,"I've been a bad girl, won't you do something about it?"
+KinkyDungeonRemindJailPlaySubDollmaker2,"Mmmph... maybe I talk too much..."
 KinkyDungeonRemindJailPlayDollmaker0,"Look, another one of my dolls~"
 KinkyDungeonRemindJailPlayDollmaker1,"Come to me, my lovely thing~"
 KinkyDungeonRemindJailPlayDollmaker2,"I want to hear you moan~"
@@ -7434,6 +7554,9 @@ KinkyDungeonRemindJailChaseDollmakerCommandBlock,""
 
 
 
+KinkyDungeonRemindJailPlayHelpless0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelpless1,"You'll never get away with this!"
+KinkyDungeonRemindJailPlayHelpless2,"I can't get free!"
 KinkyDungeonRemindJailPlayBrat0,"Catch me if you can!"
 KinkyDungeonRemindJailPlayBrat1,"You'll never get away with this!"
 KinkyDungeonRemindJailPlayBrat2,"I don't want to be your slave!"
@@ -7488,6 +7611,9 @@ KinkyDungeonRemindJailChaseCommandAssault,"Come and get me!"
 KinkyDungeonRemindJailChaseCommandBlock,"You'll never escape!"
 
 
+KinkyDungeonRemindJailPlayHelplessGagged0,"Mmmmph!!!"
+KinkyDungeonRemindJailPlayHelplessGagged1,"Mmmmm~"
+KinkyDungeonRemindJailPlayHelplessGagged2,"Mmmgh!"
 KinkyDungeonRemindJailPlayBratGagged0,"Mmmmph!!!"
 KinkyDungeonRemindJailPlayBratGagged1,"Mmmmm~"
 KinkyDungeonRemindJailPlayBratGagged2,"Mmmgh!"
@@ -7544,6 +7670,9 @@ KinkyDungeonRemindJailChaseGaggedCommandBlock,""
 
 
 
+KinkyDungeonRemindJailPlayHelplessGaggedMummy0,"Mmmmph!!!"
+KinkyDungeonRemindJailPlayHelplessGaggedMummy1,"Mmmmm~"
+KinkyDungeonRemindJailPlayHelplessGaggedMummy2,"Mmmgh!"
 KinkyDungeonRemindJailPlayBratGaggedMummy0,"Mmmmph!!!"
 KinkyDungeonRemindJailPlayBratGaggedMummy1,"Mmmmm~"
 KinkyDungeonRemindJailPlayBratGaggedMummy2,"Mmmgh!"
@@ -7597,6 +7726,10 @@ KinkyDungeonRemindJailChaseGaggedMummyCommandDefend,""
 KinkyDungeonRemindJailChaseGaggedMummyCommandAssault,"MMMMMPH!!!"
 KinkyDungeonRemindJailChaseGaggedMummyCommandBlock,""
 
+
+KinkyDungeonRemindJailPlayHelplessBandit0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessBandit1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessBandit2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratBandit0,"You'll never catch me!"
 KinkyDungeonRemindJailPlayBratBandit1,"Where'd you come from?"
 KinkyDungeonRemindJailPlayBratBandit2,"No! Definitely don't like... tie me up and punish me!"
@@ -7650,6 +7783,9 @@ KinkyDungeonRemindJailChaseBanditCommandDefend,"I'm coming!"
 KinkyDungeonRemindJailChaseBanditCommandAssault,"You're mine."
 KinkyDungeonRemindJailChaseBanditCommandBlock,"You can't get away."
 
+KinkyDungeonRemindJailPlayHelplessSkeleton0,"*wiggles*"
+KinkyDungeonRemindJailPlayHelplessSkeleton1,"*struggles*"
+KinkyDungeonRemindJailPlayHelplessSkeleton2,"*rattles*"
 KinkyDungeonRemindJailPlayBratSkeleton0,"This is a bug, please report"
 KinkyDungeonRemindJailPlayBratSkeleton1,"This is a bug, please report"
 KinkyDungeonRemindJailPlayBratSkeleton2,"This is a bug, please report"
@@ -7703,6 +7839,9 @@ KinkyDungeonRemindJailChaseSkeletonCommandDefend,""
 KinkyDungeonRemindJailChaseSkeletonCommandAssault,""
 KinkyDungeonRemindJailChaseSkeletonCommandBlock,"*marches*"
 
+KinkyDungeonRemindJailPlayHelplessCyborg0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessCyborg1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessCyborg2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratCyborg0,"This... this unit is doing a good job! I swear!"
 KinkyDungeonRemindJailPlayBratCyborg1,"It's just business as usual, nothing to see here..."
 KinkyDungeonRemindJailPlayBratCyborg2,"It's not like I need reconfiguring or anything..."
@@ -7810,6 +7949,9 @@ KinkyDungeonRemindJailChaseRobotCommandDefend,"Moving to assist."
 KinkyDungeonRemindJailChaseRobotCommandAssault,"Moving to capture."
 KinkyDungeonRemindJailChaseRobotCommandBlock,"Forming blockade."
 
+KinkyDungeonRemindJailPlayHelplessAlchemist0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessAlchemist1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessAlchemist2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratAlchemist0,"Looks like I'm up to no good... better stop me!"
 KinkyDungeonRemindJailPlayBratAlchemist1,"Careful where you point that thing!"
 KinkyDungeonRemindJailPlayBratAlchemist2,"Containment breach!"
@@ -7863,6 +8005,9 @@ KinkyDungeonRemindJailChaseAlchemistCommandDefend,"Need an assistant?"
 KinkyDungeonRemindJailChaseAlchemistCommandAssault,"I smell an opportunity!"
 KinkyDungeonRemindJailChaseAlchemistCommandBlock,"Do I have to?"
 
+KinkyDungeonRemindJailPlayHelplessDressmaker0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessDressmaker1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessDressmaker2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratDressmaker0,"Oh my, looks like I'm in trouble!"
 KinkyDungeonRemindJailPlayBratDressmaker1,"What a shame it would be if I got caught~"
 KinkyDungeonRemindJailPlayBratDressmaker2,"Looks like I'd better get going~"
@@ -7917,6 +8062,9 @@ KinkyDungeonRemindJailChaseDressmakerCommandAssault,""
 KinkyDungeonRemindJailChaseDressmakerCommandBlock,""
 
 
+KinkyDungeonRemindJailPlayHelplessLibrarian0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessLibrarian1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessLibrarian2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratLibrarian0,"No! I don't want to read your magazines!"
 KinkyDungeonRemindJailPlayBratLibrarian1,"No, I don't want to learn about Shibari!"
 KinkyDungeonRemindJailPlayBratLibrarian2,"No, I don't want to learn about your toys!"
@@ -7970,6 +8118,9 @@ KinkyDungeonRemindJailChaseLibrarianCommandDefend,""
 KinkyDungeonRemindJailChaseLibrarianCommandAssault,""
 KinkyDungeonRemindJailChaseLibrarianCommandBlock,""
 
+KinkyDungeonRemindJailPlayHelplessNurse0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessNurse1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessNurse2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratNurse0,"No! I didn't do anything wrong..."
 KinkyDungeonRemindJailPlayBratNurse1,"Don't punish me! Please!"
 KinkyDungeonRemindJailPlayBratNurse2,"It's not my fault!"
@@ -8024,6 +8175,9 @@ KinkyDungeonRemindJailChaseNurseCommandAssault,""
 KinkyDungeonRemindJailChaseNurseCommandBlock,""
 
 
+KinkyDungeonRemindJailPlayHelplessDoctor0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessDoctor1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessDoctor2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratDoctor0,"No! I didn't do anything wrong..."
 KinkyDungeonRemindJailPlayBratDoctor1,"Don't punish me! Please!"
 KinkyDungeonRemindJailPlayBratDoctor2,"I did what the manual said!"
@@ -8077,6 +8231,9 @@ KinkyDungeonRemindJailChaseDoctorCommandDefend,""
 KinkyDungeonRemindJailChaseDoctorCommandAssault,""
 KinkyDungeonRemindJailChaseDoctorCommandBlock,""
 
+KinkyDungeonRemindJailPlayHelplessTemplate0,""
+KinkyDungeonRemindJailPlayHelplessTemplate1,""
+KinkyDungeonRemindJailPlayHelplessTemplate2,""
 KinkyDungeonRemindJailPlayBratTemplate0,""
 KinkyDungeonRemindJailPlayBratTemplate1,""
 KinkyDungeonRemindJailPlayBratTemplate2,""
@@ -8133,6 +8290,9 @@ KinkyDungeonRemindJailChaseTemplateCommandBlock,""
 
 
 
+KinkyDungeonRemindJailPlayHelplessMelissa0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessMelissa1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessMelissa2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratMelissa0,"Ooh, a shiny rock…"
 KinkyDungeonRemindJailPlayBratMelissa1,"I wonder what's over here?"
 KinkyDungeonRemindJailPlayBratMelissa2,"I'm bored, bye!"
@@ -8186,6 +8346,9 @@ KinkyDungeonRemindJailChaseMelissaCommandDefend,""
 KinkyDungeonRemindJailChaseMelissaCommandAssault,""
 KinkyDungeonRemindJailChaseMelissaCommandBlock,""
 
+KinkyDungeonRemindJailPlayHelplessAdventurer_Brat_Fighter0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessAdventurer_Brat_Fighter1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessAdventurer_Brat_Fighter2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratAdventurer_Brat_Fighter0,"Kya~ I have no mana, I'm so defenseless right now~"
 KinkyDungeonRemindJailPlayBratAdventurer_Brat_Fighter1,"I have all this bondage gear on me, I sure hope nobody ties me up with it~!"
 KinkyDungeonRemindJailPlayBratAdventurer_Brat_Fighter2,"Oh no, how will I ever find my way out of here~"
@@ -8240,6 +8403,9 @@ KinkyDungeonRemindJailChaseAdventurer_Brat_FighterCommandAssault,""
 KinkyDungeonRemindJailChaseAdventurer_Brat_FighterCommandBlock,""
 
 
+KinkyDungeonRemindJailPlayHelplessAdventurer_Sub_Fighter0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessAdventurer_Sub_Fighter1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessAdventurer_Sub_Fighter2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratAdventurer_Sub_Fighter0,"I wonder what to do with all these cuffs..."
 KinkyDungeonRemindJailPlayBratAdventurer_Sub_Fighter1,"I have made a huge mistake..."
 KinkyDungeonRemindJailPlayBratAdventurer_Sub_Fighter2,"I'll just be going..."
@@ -8294,6 +8460,9 @@ KinkyDungeonRemindJailChaseAdventurer_Sub_FighterCommandAssault,""
 KinkyDungeonRemindJailChaseAdventurer_Sub_FighterCommandBlock,""
 
 
+KinkyDungeonRemindJailPlayHelplessAdventurer_Switch_Fighter0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessAdventurer_Switch_Fighter1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessAdventurer_Switch_Fighter2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratAdventurer_Switch_Fighter0,"Give me another chance!"
 KinkyDungeonRemindJailPlayBratAdventurer_Switch_Fighter1,"No! Wait! I can explain..."
 KinkyDungeonRemindJailPlayBratAdventurer_Switch_Fighter2,"I'll be right back..."
@@ -8348,6 +8517,9 @@ KinkyDungeonRemindJailChaseAdventurer_Switch_FighterCommandAssault,""
 KinkyDungeonRemindJailChaseAdventurer_Switch_FighterCommandBlock,""
 
 
+KinkyDungeonRemindJailPlayHelplessAdventurer_Dom_Fighter0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessAdventurer_Dom_Fighter1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessAdventurer_Dom_Fighter2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratAdventurer_Dom_Fighter0,"Be nice!"
 KinkyDungeonRemindJailPlayBratAdventurer_Dom_Fighter1,"No! Be gentle!"
 KinkyDungeonRemindJailPlayBratAdventurer_Dom_Fighter2,"Ahhhh!"
@@ -8401,6 +8573,9 @@ KinkyDungeonRemindJailChaseAdventurer_Dom_FighterCommandDefend,""
 KinkyDungeonRemindJailChaseAdventurer_Dom_FighterCommandAssault,""
 KinkyDungeonRemindJailChaseAdventurer_Dom_FighterCommandBlock,""
 
+KinkyDungeonRemindJailPlayHelplessDragonShadowGwen0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessDragonShadowGwen1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessDragonShadowGwen2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratDragonShadowGwen0,"Let's play all night!"
 KinkyDungeonRemindJailPlayBratDragonShadowGwen1,"Let's play all night!"
 KinkyDungeonRemindJailPlayBratDragonShadowGwen2,"Let's play all night!"
@@ -8456,6 +8631,9 @@ KinkyDungeonRemindJailChaseDragonShadowGwenCommandBlock,"Give me a moment~"
 
 
 
+KinkyDungeonRemindJailPlayHelplessOfficer0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessOfficer1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessOfficer2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratOfficer0,"You'll have to try harder if you want to discipline me, ma'am."
 KinkyDungeonRemindJailPlayBratOfficer1,"I... don't have time for training right now, ma'am..."
 KinkyDungeonRemindJailPlayBratOfficer2,"Did I do something wrong?"
@@ -8510,6 +8688,9 @@ KinkyDungeonRemindJailChaseOfficerCommandAssault,"Requesting backup!"
 KinkyDungeonRemindJailChaseOfficerCommandBlock,"Calling in a blockade!"
 
 
+KinkyDungeonRemindJailPlayHelplessHunter0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessHunter1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessHunter2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratHunter0,"I'm not in trouble, am I?"
 KinkyDungeonRemindJailPlayBratHunter1,"I'm not hiding anything, if you know what I mean..."
 KinkyDungeonRemindJailPlayBratHunter2,"Who are you looking for? Me?"
@@ -8564,6 +8745,9 @@ KinkyDungeonRemindJailChaseHunterCommandAssault,"Time for a test of skill."
 KinkyDungeonRemindJailChaseHunterCommandBlock,"I'll get you! Eventually..."
 
 
+KinkyDungeonRemindJailPlayHelplessWolfgirl0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessWolfgirl1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessWolfgirl2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratWolfgirl0,"I'm not in trouble, am I?"
 KinkyDungeonRemindJailPlayBratWolfgirl1,"I'm not hiding anything, if you know what I mean..."
 KinkyDungeonRemindJailPlayBratWolfgirl2,"Who are you looking for? Me?"
@@ -8618,6 +8802,9 @@ KinkyDungeonRemindJailChaseWolfgirlCommandAssault,"Let's make this fun~"
 KinkyDungeonRemindJailChaseWolfgirlCommandBlock,"What's that about backup?"
 
 
+KinkyDungeonRemindJailPlayHelplessElf0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessElf1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessElf2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratElf0,"An outsider!"
 KinkyDungeonRemindJailPlayBratElf1,"Hide!"
 KinkyDungeonRemindJailPlayBratElf2,"Do not pursue me!"
@@ -8672,6 +8859,9 @@ KinkyDungeonRemindJailChaseElfCommandAssault,"You leave me no choice."
 KinkyDungeonRemindJailChaseElfCommandBlock,"I stand firm."
 
 
+KinkyDungeonRemindJailPlayHelplessDryad0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessDryad1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessDryad2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratDryad0,"I don't like the way you're looking at me!"
 KinkyDungeonRemindJailPlayBratDryad1,"Yes, I've got the secrets of nature right here..."
 KinkyDungeonRemindJailPlayBratDryad2,"Why don't you come after me?"
@@ -8780,6 +8970,9 @@ KinkyDungeonRemindJailChaseMushyCommandAssault,"Rawr!"
 KinkyDungeonRemindJailChaseMushyCommandBlock,""
 
 
+KinkyDungeonRemindJailPlayHelplessFungal0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessFungal1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessFungal2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratFungal0,"So this is what it's like..."
 KinkyDungeonRemindJailPlayBratFungal1,"I believe I am feeling an emotion called 'fear.'"
 KinkyDungeonRemindJailPlayBratFungal2,"Stay back! I am not your toy."
@@ -8834,6 +9027,9 @@ KinkyDungeonRemindJailChaseFungalCommandAssault,"You leave us no choice."
 KinkyDungeonRemindJailChaseFungalCommandBlock,"You cannot comprehend our tactics."
 
 
+KinkyDungeonRemindJailPlayHelplessMummy0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessMummy1,"Nyah! This is impossible!"
+KinkyDungeonRemindJailPlayHelplessMummy2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratMummy0,"Meow!!!"
 KinkyDungeonRemindJailPlayBratMummy1,"No! This kitty did nothing wrong!"
 KinkyDungeonRemindJailPlayBratMummy2,"Why are you looking at me like that?!"
@@ -8888,6 +9084,9 @@ KinkyDungeonRemindJailChaseMummyCommandAssault,"I've caught you!"
 KinkyDungeonRemindJailChaseMummyCommandBlock,"Let's play cat and mouse~"
 
 
+KinkyDungeonRemindJailPlayHelplessElemental0,"This... this can't be..."
+KinkyDungeonRemindJailPlayHelplessElemental1,"Release me mortal!"
+KinkyDungeonRemindJailPlayHelplessElemental2,"How did you do this!?"
 KinkyDungeonRemindJailPlayBratElemental0,"Gasp! An adventurer!"
 KinkyDungeonRemindJailPlayBratElemental1,"Don't let her catch you!"
 KinkyDungeonRemindJailPlayBratElemental2,"You'll never trap my soul!"
@@ -8943,6 +9142,9 @@ KinkyDungeonRemindJailChaseElementalCommandBlock,"Where do you think you're goin
 
 
 
+KinkyDungeonRemindJailPlayHelplessAngel0,"This... this can't be..."
+KinkyDungeonRemindJailPlayHelplessAngel1,"Release me mortal!"
+KinkyDungeonRemindJailPlayHelplessAngel2,"How did you do this!?"
 KinkyDungeonRemindJailPlayBratAngel0,"Oh no, it's an adventurer!"
 KinkyDungeonRemindJailPlayBratAngel1,"They've come for me!"
 KinkyDungeonRemindJailPlayBratAngel2,"It wasn't my fault!"
@@ -8996,6 +9198,9 @@ KinkyDungeonRemindJailChaseAngelCommandDefend,"Do not mess with us!"
 KinkyDungeonRemindJailChaseAngelCommandAssault,"I shall take you myself~"
 KinkyDungeonRemindJailChaseAngelCommandBlock,"Where do you think you're going?"
 
+KinkyDungeonRemindJailPlayHelplessDomMaid0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessDomMaid1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessDomMaid2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratDomMaid0,"Not the edging training! Anything but that!"
 KinkyDungeonRemindJailPlayBratDomMaid1,"Forgive me!"
 KinkyDungeonRemindJailPlayBratDomMaid2,"No! Don't punish me!"
@@ -9050,6 +9255,9 @@ KinkyDungeonRemindJailChaseDomMaidCommandAssault,"You really think you're specia
 KinkyDungeonRemindJailChaseDomMaidCommandBlock,"Combat formation bravo."
 
 
+KinkyDungeonRemindJailPlayHelplessSubMaid0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessSubMaid1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessSubMaid2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratSubMaid0,"I'm sorry! I didn't mean to break that vase!"
 KinkyDungeonRemindJailPlayBratSubMaid1,"I won't do it again, I swear!"
 KinkyDungeonRemindJailPlayBratSubMaid2,"Please no! I don't want the edging training again!"
@@ -9104,6 +9312,9 @@ KinkyDungeonRemindJailChaseSubMaidCommandAssault,"Please surrender, miss!"
 KinkyDungeonRemindJailChaseSubMaidCommandBlock,"I'll just stay here!"
 
 
+KinkyDungeonRemindJailPlayHelplessGunnerMaid0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessGunnerMaid1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessGunnerMaid2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratGunnerMaid0,"I'm sorry! I didn't mean to break that vase!"
 KinkyDungeonRemindJailPlayBratGunnerMaid1,"I won't do it again, I swear!"
 KinkyDungeonRemindJailPlayBratGunnerMaid2,"Please no! I don't want the pleasure training again!"
@@ -9157,6 +9368,9 @@ KinkyDungeonRemindJailChaseGunnerMaidCommandDefend,"Providing cover fire!"
 KinkyDungeonRemindJailChaseGunnerMaidCommandAssault,"Cover me, I'm going in!"
 KinkyDungeonRemindJailChaseGunnerMaidCommandBlock,"Commence overwatch!"
 
+KinkyDungeonRemindJailPlayHelplessHeadMaid0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessHeadMaid1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessHeadMaid2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratHeadMaid0,"I'll be heading out..."
 KinkyDungeonRemindJailPlayBratHeadMaid1,"Looks like I'll be taking my leave."
 KinkyDungeonRemindJailPlayBratHeadMaid2,"Looks like I'll be reporting you~"
@@ -9210,6 +9424,9 @@ KinkyDungeonRemindJailChaseHeadMaidCommandDefend,"Don't get ahead of yourself."
 KinkyDungeonRemindJailChaseHeadMaidCommandAssault,"I'll do this myself."
 KinkyDungeonRemindJailChaseHeadMaidCommandBlock,"I'll support from the rear."
 
+KinkyDungeonRemindJailPlayHelplessWitch0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessWitch1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessWitch2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratWitch0,"Looks like I've earned some punishment..."
 KinkyDungeonRemindJailPlayBratWitch1,"I'll turn you into a newt! If you don't stop me..."
 KinkyDungeonRemindJailPlayBratWitch2,"Don't let me get away~"
@@ -9264,6 +9481,9 @@ KinkyDungeonRemindJailChaseWitchCommandDefend,"Oh no you don't?"
 KinkyDungeonRemindJailChaseWitchCommandAssault,"I'll make you my pet!"
 KinkyDungeonRemindJailChaseWitchCommandBlock,"Tsk tsk, you won't get away!"
 
+KinkyDungeonRemindJailPlayHelplessSelly0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessSelly1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessSelly2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratSelly0,"Looks like I've earned some punishment..."
 KinkyDungeonRemindJailPlayBratSelly1,"I'll turn you into a newt! If you don't stop me..."
 KinkyDungeonRemindJailPlayBratSelly2,"Don't let me get away~"
@@ -9318,6 +9538,9 @@ KinkyDungeonRemindJailChaseSellyCommandDefend,"Not so fast~"
 KinkyDungeonRemindJailChaseSellyCommandAssault,"Why don't we have a little talk~"
 KinkyDungeonRemindJailChaseSellyCommandBlock,"Going somewhere, are we?"
 
+KinkyDungeonRemindJailPlayHelplessApprentice0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessApprentice1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessApprentice2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratApprentice0,"I promise I'll be back later!"
 KinkyDungeonRemindJailPlayBratApprentice1,"I didn't do anything wrong!"
 KinkyDungeonRemindJailPlayBratApprentice2,"I won't get in your way, miss!"
@@ -9371,6 +9594,9 @@ KinkyDungeonRemindJailChaseApprenticeCommandDefend,"Be careful!"
 KinkyDungeonRemindJailChaseApprenticeCommandAssault,"That's it! You made me mad!"
 KinkyDungeonRemindJailChaseApprenticeCommandBlock,"I'll just... go."
 
+KinkyDungeonRemindJailPlayHelplessNecromancer0,"This is too tight..."
+KinkyDungeonRemindJailPlayHelplessNecromancer1,"You won't get me like this!"
+KinkyDungeonRemindJailPlayHelplessNecromancer2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratNecromancer0,"Sticks and stones may break my bones... but you'll never catch me!"
 KinkyDungeonRemindJailPlayBratNecromancer1,"Got a bone to pick with me?"
 KinkyDungeonRemindJailPlayBratNecromancer2,"I must make my escape!"
@@ -9424,6 +9650,9 @@ KinkyDungeonRemindJailChaseNecromancerCommandDefend,"Stand straight!"
 KinkyDungeonRemindJailChaseNecromancerCommandAssault,"Why don't you bend the knee..."
 KinkyDungeonRemindJailChaseNecromancerCommandBlock,"Who goes there?"
 
+KinkyDungeonRemindJailPlayHelplessZombie0,"Can't... Move..."
+KinkyDungeonRemindJailPlayHelplessZombie1,"Tight..."
+KinkyDungeonRemindJailPlayHelplessZombie2,"This... is... fun..."
 KinkyDungeonRemindJailPlayBratZombie0,"Scary..."
 KinkyDungeonRemindJailPlayBratZombie1,"Run... Away..."
 KinkyDungeonRemindJailPlayBratZombie2,"*giggles*"
@@ -10910,6 +11139,7 @@ rBombSellGunpowder,"(The SPEAKER smiles)|Yes! I can make more bombs!"
 rThiefSell,"(The SPEAKER takes a whiff of her cigar)|Hey friend. Im in the market for some 'tools,'|...if you catch my frift."
 rThiefSellAttack,"(The SPEAKER pulls out a knife)|Thought so. You won't take me that easily!"
 rThiefSellCuffKeys,"(The SPEAKER nods)|Could help out in a bind."
+rThiefSellSnuffer,"(The SPEAKER chuckles)|Lights out, eh..."
 rThiefSellDiscPick,"(The SPEAKER nods)|I could use one of these!"
 rThiefSellBomb,"(The SPEAKER smiles)|For when things go south..."
 rThiefSellSmokeBomb,"(The SPEAKER smiles)|For when things go south..."
@@ -11862,10 +12092,10 @@ RestraintCyberDollJacketDesc2,"The material is somehow both stretchy yet hard en
 
 
 RestraintDollmakerVisor,Dollmaker's Visor
-RestraintDollmakerVisorDesc,"A visor used by the Dollmaker for assigning arbitrary tasks to her dolls."
+RestraintDollmakerVisorDesc,"A visor used by the Dollmaker for assigning arbitrary tasks to her dolls. Dims vision unless you perform your duties capturing dolls."
 RestraintDollmakerVisorDesc2,"It's made of metallic glass, almost indestructible. Fortunately, it's still possible to see through."
 RestraintDollmakerMask,Dollmaker's Mask
-RestraintDollmakerMaskDesc,"A mask used by the Dollmaker for assigning arbitrary tasks to her dolls."
+RestraintDollmakerMaskDesc,"A mask used by the Dollmaker for assigning arbitrary tasks to her dolls. Dims vision unless you perform your duties capturing dolls."
 RestraintDollmakerMaskDesc2,"It's made of metallic glass, almost indestructible. Fortunately, it's still possible to see through."
 
 KDControlHarnessTest,"Detected new hardware."
@@ -16714,12 +16944,24 @@ RestraintRopeSnakeCrotchDesc2,"The ropes squeeze you gently."
 RestraintRopeSnakeArmsWrist,Wrist Rope
 RestraintRopeSnakeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
 RestraintRopeSnakeArmsWristDesc2,"The ropes squeeze you gently."
-RestraintRopeSnakeLegs,Leg Ropes
-RestraintRopeSnakeLegsDesc,"A tie that hobbles your legs together.."
+RestraintRopeSnakeLegs,Upper Knee Ropes
+RestraintRopeSnakeLegsDesc,"A tie that hobbles your knees together.."
 RestraintRopeSnakeLegsDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeLegs2,Thigh Ropes
+RestraintRopeSnakeLegs2Desc,"A tie that hobbles your legs together.."
+RestraintRopeSnakeLegs2Desc2,"The ropes squeeze you gently."
+RestraintRopeSnakeLegs3,Upper Thigh Ropes
+RestraintRopeSnakeLegs3Desc,"A tie that hobbles your thighs together.."
+RestraintRopeSnakeLegs3Desc2,"The ropes squeeze you gently."
 RestraintRopeSnakeFeet,Ankle Ropes
 RestraintRopeSnakeFeetDesc,"A tie keeping your feet secured together."
 RestraintRopeSnakeFeetDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeFeet2,Lower Leg Ropes
+RestraintRopeSnakeFeet2Desc,"A tie keeping your feet secured together."
+RestraintRopeSnakeFeet2Desc2,"The ropes squeeze you gently."
+RestraintRopeSnakeFeet3,Lower Knee Ropes
+RestraintRopeSnakeFeet3Desc,"A tie keeping your knees secured together."
+RestraintRopeSnakeFeet3Desc2,"The ropes squeeze you gently."
 RestraintRopeSnakeToes,Toe Rope
 RestraintRopeSnakeToesDesc,"A tie keeping your toes tightly together."
 RestraintRopeSnakeToesDesc2,"The ropes squeeze you gently."
@@ -16809,12 +17051,24 @@ RestraintStrongMagicRopeCrotchDesc2,"The knots appear to tie themselves together
 RestraintStrongMagicRopeArmsWrist,Spellbound Wrist Tie
 RestraintStrongMagicRopeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
 RestraintStrongMagicRopeArmsWristDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
-RestraintStrongMagicRopeLegs,Spellbound Leg Tie
-RestraintStrongMagicRopeLegsDesc,"A tie that hobbles your legs together.."
+RestraintStrongMagicRopeLegs,Spellbound Knees
+RestraintStrongMagicRopeLegsDesc,"A tie that hobbles your knees together.."
 RestraintStrongMagicRopeLegsDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
-RestraintStrongMagicRopeFeet,Spellbound Ankle Tie
+RestraintStrongMagicRopeLegs2,Spellbound Thighs
+RestraintStrongMagicRopeLegs2Desc,"A tie that holds your legs together.."
+RestraintStrongMagicRopeLegs2Desc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeLegs3,Spellbound Upper Thighs
+RestraintStrongMagicRopeLegs3Desc,"A tie that holds your thighs together.."
+RestraintStrongMagicRopeLegs3Desc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeFeet,Spellbound Ankles
 RestraintStrongMagicRopeFeetDesc,"A tie keeping your feet secured together."
 RestraintStrongMagicRopeFeetDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeFeet2,Spellbound Lower Legs
+RestraintStrongMagicRopeFeet2Desc,"A tie keeping your legs secured together."
+RestraintStrongMagicRopeFeet2Desc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeFeet3,Spellbound Lower Knees
+RestraintStrongMagicRopeFeet3Desc,"A tie keeping your knees secured together."
+RestraintStrongMagicRopeFeet3Desc2,"The knots appear to tie themselves together again, making them impossible to undo!"
 RestraintStrongMagicRopeToes,Spellbound Toe Rope
 RestraintStrongMagicRopeToesDesc,"A tie keeping your toes secured together."
 RestraintStrongMagicRopeToesDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
@@ -16850,12 +17104,24 @@ RestraintWeakMagicRopeCrotchDesc2,"They glow with a trace of magic."
 RestraintWeakMagicRopeArmsWrist,Magic Wrist Tie
 RestraintWeakMagicRopeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
 RestraintWeakMagicRopeArmsWristDesc2,"They glow with a trace of magic."
-RestraintWeakMagicRopeLegs,Magic Leg Tie
-RestraintWeakMagicRopeLegsDesc,"A tie that hobbles your legs together.."
+RestraintWeakMagicRopeLegs,Magic Knee Tie
+RestraintWeakMagicRopeLegsDesc,"A tie that hobbles your knees together.."
 RestraintWeakMagicRopeLegsDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeLegs2,Magic Thigh Ropes
+RestraintWeakMagicRopeLegs2Desc,"A tie that hobbles your legs together.."
+RestraintWeakMagicRopeLegs2Desc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeLegs3,Magic Upper Thigh Ropes
+RestraintWeakMagicRopeLegs3Desc,"A tie that hobbles your thighs together.."
+RestraintWeakMagicRopeLegs3Desc2,"They glow with a trace of magic."
 RestraintWeakMagicRopeFeet,Magic Ankle Tie
 RestraintWeakMagicRopeFeetDesc,"A tie keeping your feet secured together."
 RestraintWeakMagicRopeFeetDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeFeet2,Magic Lower Leg Tie
+RestraintWeakMagicRopeFeet2Desc,"A tie keeping your legs secured together."
+RestraintWeakMagicRopeFeet2Desc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeFeet3,Magic Lower Knee Tie
+RestraintWeakMagicRopeFeet3Desc,"A tie keeping your knees secured together."
+RestraintWeakMagicRopeFeet3Desc2,"They glow with a trace of magic."
 RestraintWeakMagicRopeToes,Magic Toe Rope
 RestraintWeakMagicRopeToesDesc,"A tie keeping your toes secured together."
 RestraintWeakMagicRopeToesDesc2,"They glow with a trace of magic."
@@ -16891,12 +17157,24 @@ RestraintCelestialRopeCrotchDesc2,"A set of ropes that emit a calm, soothing aur
 RestraintCelestialRopeArmsWrist,Holy Wrist Rope
 RestraintCelestialRopeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
 RestraintCelestialRopeArmsWristDesc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
-RestraintCelestialRopeLegs,Holy Leg Ropes
-RestraintCelestialRopeLegsDesc,"A tie that hobbles your legs together.."
+RestraintCelestialRopeLegs,Holy Upper Knee Ropes
+RestraintCelestialRopeLegsDesc,"A tie that hobbles your knees together.."
 RestraintCelestialRopeLegsDesc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
+RestraintCelestialRopeLegs2,Holy Thigh Ropes
+RestraintCelestialRopeLegs2Desc,"A tie that hobbles your legs together.."
+RestraintCelestialRopeLegs2Desc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
+RestraintCelestialRopeLegs3,Holy Upper Thigh Ropes
+RestraintCelestialRopeLegs3Desc,"A tie that holds your thighs together.."
+RestraintCelestialRopeLegs3Desc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
 RestraintCelestialRopeFeet,Holy Ankle Ropes
 RestraintCelestialRopeFeetDesc,"A tie keeping your feet secured together."
 RestraintCelestialRopeFeetDesc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
+RestraintCelestialRopeFeet2,Holy Lower Leg Ropes
+RestraintCelestialRopeFeet2Desc,"A tie keeping your legs secured together."
+RestraintCelestialRopeFeet2Desc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
+RestraintCelestialRopeFeet3,Holy Lower Knee Ropes
+RestraintCelestialRopeFeet3Desc,"A tie keeping your knees secured together."
+RestraintCelestialRopeFeet3Desc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
 RestraintCelestialRopeToes,Holy Toe Rope
 RestraintCelestialRopeToesDesc,"A tie keeping your toes secured together."
 RestraintCelestialRopeToesDesc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
@@ -16933,12 +17211,24 @@ RestraintMithrilRopeCrotchDesc2,"A lightweight rope made out of woven mithril, s
 RestraintMithrilRopeArmsWrist,Mithril Wrist Rope
 RestraintMithrilRopeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
 RestraintMithrilRopeArmsWristDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
-RestraintMithrilRopeLegs,Mithril Leg Ropes
-RestraintMithrilRopeLegsDesc,"A tie that hobbles your legs together.."
+RestraintMithrilRopeLegs,Mithril Lower Knee Ropes
+RestraintMithrilRopeLegsDesc,"A tie that hobbles your knees together.."
 RestraintMithrilRopeLegsDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
+RestraintMithrilRopeLegs2,Mithril Thigh Ropes
+RestraintMithrilRopeLegs2Desc,"A tie that hobbles your thighs together.."
+RestraintMithrilRopeLegs2Desc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
+RestraintMithrilRopeLegs3,Mithril Upper Thigh Ropes
+RestraintMithrilRopeLegs3Desc,"A tie that holds your thighs together.."
+RestraintMithrilRopeLegs3Desc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
 RestraintMithrilRopeFeet,Mithril Ankle Ropes
 RestraintMithrilRopeFeetDesc,"A tie keeping your feet secured together."
 RestraintMithrilRopeFeetDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
+RestraintMithrilRopeFeet2,Mithril Lower Leg Ropes
+RestraintMithrilRopeFeet2Desc,"A tie keeping your legs secured together."
+RestraintMithrilRopeFeet2Desc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
+RestraintMithrilRopeFeet3,Mithril Lower Knee Ropes
+RestraintMithrilRopeFeet3Desc,"A tie keeping your knees secured together."
+RestraintMithrilRopeFeet3Desc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
 RestraintMithrilRopeToes,Mithril Toe Ropes
 RestraintMithrilRopeToesDesc,"A tie keeping your toes secured together."
 RestraintMithrilRopeToesDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
@@ -17101,7 +17391,7 @@ KDVariableModifier_ManaCost,"AMNT% Mana Costs"
 KDVariableModifier_ManaCostSpecific,"AMNT% TYPE Mana Costs"
 KDVariableModifier_ManaRegen,"AMNT% regen from mana pool"
 KDVariableModifier_ManaRegenOnKill,"AMNT mana pool on capture"
-KDVariableModifier_Sneak,"AMNT% Visibility"
+KDVariableModifier_Sneak,"AMNT% Visibility Reduction"
 KDVariableModifier_DPDecay,"AMNT Distraction Decay"
 KDVariableModifier_DPGain,"AMNT Distraction Per Turn"
 KDVariableModifier_DPGainWhenAttacked,"AMNT AP from attacks"
@@ -18342,7 +18632,7 @@ KillGagGeist,"The gag geist goes silent."
 AttackGagGeist,"The gag geist teases you playfully!! (DamageTaken)"
 AttackGagGeistBind,"The gag geist gags the girl with a ghastly grimace! (+RestraintAdded)"
 
-NamePoltergeist,Poltergeist 
+NamePoltergeist,Poltergeist
 KillPoltergeist,"The poltergeist goes silent."
 AttackPoltergeist,"The poltergeist gropes and teases you playfully, exhausting your stamina! (DamageTaken)"
 AttackPoltergeistBind,"The poltergeist binds you with... something? (+RestraintAdded)"
@@ -18425,7 +18715,7 @@ KDHarvest_Yes,"You twirl your weapon, harvesting AMNT seeds!"
 KDHarvest_No,"There is nothing to harvest."
 
 KinkyDungeonSpellFloatingWeapon,Telekinesis 101
-KinkyDungeonSpellDescriptionFloatingWeapon,"Unlocks telekinetic abilities. Can equip weapons while bound, but at 0% accuracy. Learn Recover Object." 
+KinkyDungeonSpellDescriptionFloatingWeapon,"Unlocks telekinetic abilities. Can equip weapons while bound, but at 0% accuracy. Learn Recover Object."
 
 
 KinkyDungeonSpellRecoverObject,Recover Object
@@ -18436,8 +18726,98 @@ KinkyDungeonSpellCastFailObstacleRecoverObject,There's an obstacle in the way!
 KinkyDungeonSpellTargetRecoverObject,Select a tile with items
 
 
-KinkyDungeonSpellTelekineticSlash,Telekinetic Slash
-KinkyDungeonSpellDescriptionTelekineticSlash,"Swing an equipped weapon (not unarmed or hands free) in a line, slashing enemies in the way with 20 + 150% weapon damage."
+KinkyDungeonSpellRecoverObject2,Enhanced Recovery
+KinkyDungeonSpellDescriptionRecoverObject2,"Upcast to increase range and recover objects in an area."
+KinkyDungeonSpellCastRecoverObject2,The items float to you!
+KinkyDungeonSpellCastFailRecoverObject2,There's nothing to pick up.
+KinkyDungeonSpellTargetRecoverObject2,Select an area with items
+
+
+KinkyDungeonSpellTelekineticSlash,Kinetic Slash
+KinkyDungeonSpellDescriptionTelekineticSlash,"Swing an equipped weapon (not unarmed or hands free) in a line, slashing enemies in the way with 20 + 80% weapon damage. Counts as an attack. +10 mana cost if wielding a Heavy weapon."
 KinkyDungeonSpellCastTelekineticSlash,You swing!
 KinkyDungeonSpellTargetTelekineticSlash,Choose where to swing (must not be unarmed or hands free weapon)
 
+
+KinkyDungeonSpellKineticLance,Kinetic Lance
+KinkyDungeonSpellDescriptionKineticLance,"Propel your weapon at devastating speed, piercing enemies for 30+160% Weapon Damage and dropping it at the end of the trajectory. Counts as an attack. +15 mana cost if wielding a Heavy weapon."
+KinkyDungeonSpellCastKineticLance,You propel your weapon forward!
+KinkyDungeonSpellTargetKineticLance,Choose where to launch your weapon.
+
+
+KinkyDungeonSpellSagitta,Sagitta
+KinkyDungeonSpellDescriptionSagitta,"Fire a projectile. If this projectile hits an enemy, make one attack against an enemy for 10+40% weapon damage. +5 mana cost if wielding a Heavy weapon."
+KinkyDungeonSpellCastSagitta,You unleash a deadly projectile!
+KinkyDungeonSpellTargetSagitta,Choose aim direction.
+
+
+KinkyDungeonSpellSagittaAssault,Sagitta Assault
+KinkyDungeonSpellDescriptionSagittaAssault,"After casting Sagitta, you can recast it up to three more times without advancing time."
+
+KinkyDungeonSpellPsychokinesis,Psychokinesis
+KinkyDungeonSpellDescriptionPsychokinesis,"You can ignore components for telekinetic spells, however spells generate distraction when cast this way due to the mental strain. Unable to use at 100% DP."
+
+KinkyDungeonSpellKineticMastery,Kinetic Mastery
+KinkyDungeonSpellDescriptionKineticMastery,"Negates the penalty for 2-handed weapons. Also gain the following effects:|-Kinetic spells and Sagitta cost 30% less while wielding a Light weapon.|-Kinetic spells and Sagitta gain +15 base damage when wielding a Heavy weapon."
+
+KinkyDungeonSpellGrasp,Grasp
+KinkyDungeonSpellDescriptionGrasp,"Cast on an enemy to snare them for 20 turns, or until you leave range/are incapacitated. Cast on a point to throw the grasped enemy in that direction, dealing 40 crush damage if they hit a wall or another enemy."
+KinkyDungeonSpellCastGrasp,You grab the ENMY using telekinesis and hold them in place!
+KinkyDungeonSpellCastThrowGrasp,You throw the ENMY!
+KinkyDungeonSpellTargetGrasp,Choose a target or a location (if a target is currently grasped)
+
+
+KinkyDungeonInventoryItemRock,Rock
+KinkyDungeonInventoryItemRockDesc,"Perfect for a lifestyle of love and peace."
+KinkyDungeonInventoryItemRockDesc2,"Deals crush damage. Stuns on critical. Ouch!"
+ItemPickupRock,"You pick up a particularly nice rock."
+
+
+ItemPickupSnuffer,"You pick up a device for snuffing out candles and torches."
+KinkyDungeonInventoryItemSnuffer,Candle Snuffer
+KinkyDungeonInventoryItemSnufferUse,"You put out the torch."
+KinkyDungeonInventoryItemSnufferDesc,"A handy device for putting out torches and lanterns."
+KinkyDungeonInventoryItemSnufferDesc2,"But why would you want to do that? You hidin' something?"
+
+ItemPickupSackOfSacks,"You find a bag... full of bags."
+KinkyDungeonInventoryItemSackOfSacks,Sack of Sacks
+KinkyDungeonInventoryItemSackOfSacksUse,"You cover the light source."
+KinkyDungeonInventoryItemSackOfSacksDesc,"Bags inside a bag of bags inside a bag of bags..."
+KinkyDungeonInventoryItemSackOfSacksDesc2,"Can be placed over light sources to cover them."
+
+KDNotSnuffable,The snuffer doesn't work on that light source.
+KDNotBaggable,The bag can't cover that light source.
+KDUnbag,You remove the bag from its light source and place it back inside your bag.
+
+KDCombatLine_YoureFinished_Dom0,There. Now it's time to have some fun~
+KDCombatLine_YoureFinished_Dom1,How utterly helpless~
+KDCombatLine_YoureFinished_Dom2,Let's see how long you last.
+
+KDCombatLine_YoureFinished_0,I've got you! Now let's have some fun!
+KDCombatLine_YoureFinished_1,"I think I'll help myself to you for a bit~"
+KDCombatLine_YoureFinished_2,"Gosh, you're so cute like that!"
+
+KDCombatLine_YoureFinished_Sub0,"I'm going to have to search you, miss~"
+KDCombatLine_YoureFinished_Sub1,"Let's check your restraints."
+KDCombatLine_YoureFinished_Sub2,"You look so cute like that, miss!"
+
+KDCombatLine_YoureFinished_Brat0,All nice and tight. Certainly no longer a threat~
+KDCombatLine_YoureFinished_Brat1,"I'm going to make sure you're nice and tight~"
+KDCombatLine_YoureFinished_Brat2,"Surely nothing can happen now!"
+
+NameElementalRubber,Rubber Elemental
+KillElementalRubber,"The rubber elemental's restraints snap onto her and she falls over hogtied."
+AttackElementalRubberBind,"The rubber elemental molds itself into restraints! (+RestraintAdded)"
+AttackElementalRubber,"The rubber elemental squeezes you with its appendages! (DamageTaken)"
+AttackElementalRubberLock,"The rubber elemental forms rubber locks around all your restraints! (DamageTaken)"
+
+KDEnchantRope1,Your ropes are enchanted with a lesser spell!
+KDEnchantRope2,Your ropes are enchanted with a magic spell!
+
+
+NameWitchShibari,Shibari Witch
+KillWitchShibari,"The shibari witch blows a kiss and says goodbye."
+AttackWitchShibariBind,"The shibari witch ties you tight! (+RestraintAdded)"
+AttackWitchShibariLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
+AttackWitchShibari,"The witch rubs your body sensually! (DamageTaken)"
+KDWitchShibariDisrobe,The ENMY takes your clothes off!

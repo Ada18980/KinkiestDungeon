@@ -506,18 +506,18 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 
 	if (!KinkyDungeonIgnoreShieldTypes.includes(data.type) && KDGameData.Shield && data.dmg > 0) {
 		let amt = data.dmg;
-		
+
 		data.dmg -= KDGameData.Shield;
 		if (!noMsg) {
 			KinkyDungeonSendTextMessage(6, TextGet("KDShieldAbsorb").replace("AMNT", "" + Math.round(10 * (amt - Math.max(0, data.dmg)))), "#92e8c0", 1);
 			KDDamageQueue.push({floater: Math.round((amt - Math.max(0, data.dmg))*10) + ` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[data.type].name)} ${TextGet("KDdmg")}`,
 				Entity: KinkyDungeonPlayerEntity, Color: "#92e8c0", Delay: 0, });
 		}
-		
+
 		KDDamagePlayerShield(Math.max(0, Math.min(KDGameData.Shield, amt - Math.max(0, data.dmg))));
 		if (data.dmg < 0) data.dmg = 0;
 	}
-	
+
 
 
 
@@ -535,7 +535,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 				KinkyDungeonTeaseLevel += amt * (1 + (0.01 * (KinkyDungeonGoddessRep.Passion + 50) || 0));
 			}
 		}
-	
+
 		if (data.distractionTypesWeak.includes(data.type)) {
 			let amt = data.dmg/2 * data.arouseMod;
 			if (str) str = str + ", ";
@@ -594,13 +594,13 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 		}
 		if (!noInterrupt)
 			KinkyDungeonInterruptSleep();
-	
+
 		if (data.dmg > 0 && KinkyDungeonStatsChoice.get("Breathless")) {
 			let sleepAmount = data.dmg > 3 ? 6 : (data.dmg > 1 ? 4 : 2);
 			if (["chain", "poison", "crush"].includes(data.type))
 				KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness, KinkyDungeonSleepiness + sleepAmount);
 		}
-	
+
 		if (KinkyDungeonStatFreeze > 0 && KinkyDungeonMeleeDamageTypes.includes(data.type)) {
 			KinkyDungeonChangeWill(-data.dmg, true);
 			KinkyDungeonStatFreeze = 0;
@@ -722,7 +722,7 @@ function KinkyDungeonChangeDistraction(Amount, NoFloater, lowerPerc, minimum = 0
 	let amountChanged = KinkyDungeonStatDistraction;
 	KinkyDungeonStatDistraction += Amount;
 	KinkyDungeonStatDistraction = Math.min(Math.max(minLevel, KinkyDungeonStatDistraction), KinkyDungeonStatDistractionMax);
-	
+
 	amountChanged = KinkyDungeonStatDistraction - amountChanged;
 	if (!KDGameData.DistractionCooldown) {
 		KDGameData.DistractionCooldown = 0;

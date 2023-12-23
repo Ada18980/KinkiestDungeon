@@ -20,65 +20,83 @@ let KinkyDungeonFactionColors = {
  */
 let KinkyDungeonFactionFilters = {
 	"Jail": {
+		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8833333333333333,"brightness":1.5666666666666669,"red":4.216666666666667,"green":0.7166666666666667,"blue":0.7000000000000001,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":2.4,"green":1,"blue":1,"alpha":1},
 	},
 	"Bountyhunter": {
+		Catsuit: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0.1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 	},
 	"Dressmaker": {
+		Catsuit: {"gamma":1,"saturation":0,"contrast":0.91,"brightness":1,"red":2.1372549019607843,"green":1.1764705882352942,"blue":3.1176470588235294,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1.7666666666666666,"green":1,"blue":2.4166666666666665,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0.11666666666666667,"contrast":1.3166666666666664,"brightness":2.3000000000000003,"red":1,"green":1,"blue":1,"alpha":1},
 	},
 	"Dollsmith": {
+		Catsuit: {"gamma":1,"saturation":0,"contrast":0.9299999999999999,"brightness":1,"red":4.254901960784314,"green":1.3529411764705883,"blue":2.607843137254902,"alpha":1},
 		// Tis inverted, light is dark and dark is light
 		LightNeutral: {"gamma":1.4166666666666665,"saturation":0.1,"contrast":2.05,"brightness":0.3,"red":1,"green":1,"blue":1,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":2.4166666666666665,"green":1,"blue":1.76,"alpha":1},
 		Highlight: {"gamma":1.4166666666666665,"saturation":0.1,"contrast":2.05,"brightness":0.3,"red":1,"green":1,"blue":1,"alpha":1},
 	},
 	"Latex": {
+		Catsuit: {"gamma":1,"saturation":0,"contrast":0.9299999999999999,"brightness":1,"red":4.509803921568627,"green":0.8431372549019608,"blue":4.745098039215686,"alpha":1},
 		DarkNeutral: {"gamma":0.8333333333333333,"saturation":1,"contrast":1.2,"brightness":1.2,"red":1,"green":1,"blue":1,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0.11666666666666667,"contrast":1.3166666666666664,"brightness":2.3000000000000003,"red":1,"green":1,"blue":1,"alpha":1},
 	},
 	"Slime": {
+		Catsuit: {"gamma":1,"saturation":0,"contrast":0.9299999999999999,"brightness":1,"red":4.980392156862745,"green":0.6078431372549019,"blue":5,"alpha":1},
 		DarkNeutral: {"gamma":0.8,"saturation":1,"contrast":0.8666666666666667,"brightness":1.4166666666666665,"red":2.05,"green":1,"blue":2.15,"alpha":1},
 		Highlight: {"gamma":0.8,"saturation":1,"contrast":0.8666666666666667,"brightness":1.4166666666666665,"red":2.05,"green":1,"blue":2.15,"alpha":1},
 	},
 	"Alchemist": {
+		Catsuit: {"gamma":1,"saturation":0,"contrast":0.7899999999999999,"brightness":1,"red":1.8627450980392157,"green":1.607843137254902,"blue":4.450980392156863,"alpha":1},
 		DarkNeutral: {"gamma":0.8333333333333333,"saturation":1,"contrast":1.2,"brightness":1.2,"red":1,"green":1,"blue":1,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0,"contrast":0.77,"brightness":1,"red":0.5294117647058824,"green":1.7450980392156863,"blue":3.9019607843137254,"alpha":1},
+		//Catsuit: {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0.11666666666666667,"contrast":1.3166666666666664,"brightness":2.3000000000000003,"red":1,"green":2.466666666666667,"blue":1,"alpha":1},
 	},
 	"Apprentice": {
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+		Catsuit: {"gamma":1,"saturation":0,"contrast":1.0499999999999998,"brightness":1,"red":2.019607843137255,"green":3.0980392156862746,"blue":4.137254901960785,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":2.4,"alpha":1},
 	},
 	"Witch": {
+		Catsuit: {"gamma":1,"saturation":0,"contrast":1.0499999999999998,"brightness":1,"red":2.8823529411764706,"green":2.196078431372549,"blue":3.980392156862745,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":0.6333333333333334,"red":1.3,"green":1,"blue":1.5333333333333332,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0,"contrast":1.4833333333333334,"brightness":1.35,"red":0.48333333333333334,"green":0.6666666666666666,"blue":0.8666666666666667,"alpha":1},
 	},
 	"Curse": {
+		Catsuit: {"gamma":1.8333333333333333,"saturation":0,"contrast":0.7833333333333334,"brightness":0.3833333333333333,"red":2.3000000000000003,"green":1,"blue":4.833333333333333,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":0.6333333333333334,"red":1.3,"green":1,"blue":1.5333333333333332,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0,"contrast":1.4833333333333334,"brightness":1.35,"red":0.48333333333333334,"green":0.6666666666666666,"blue":0.8666666666666667,"alpha":1},
 	},
 	"AncientRobot": {
+		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":0.7666666666666666,"green":1,"blue":4.833333333333333,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":2.4166666666666665,"alpha":1},
 		Highlight: {"gamma":1,"saturation":1,"contrast":1.0833333333333335,"brightness":1.6833333333333333,"red":0.55,"green":1.9666666666666666,"blue":1.8333333333333333,"alpha":1},
 	},
 	"Mushy": {
+		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":1.7333333333333334,"green":2.5166666666666666,"blue":1.55,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":0.6333333333333334,"red":1.3,"green":1,"blue":1.5333333333333332,"alpha":1},
 		Highlight: {"gamma":1,"saturation":1,"contrast":1.0833333333333335,"brightness":1.6833333333333333,"red":0.55,"green":1.9666666666666666,"blue":1.8333333333333333,"alpha":1},
 	},
 	"Bast": {
+		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":4,"green":2.5166666666666666,"blue":1.55,"alpha":1},
 		// DarkNeutral is much lighter than usual
 		DarkNeutral: {"gamma":1.4166666666666665,"saturation":0,"contrast":1,"brightness":1.1333333333333333,"red":1.3666666666666667,"green":1.2333333333333334,"blue":1,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":2.4,"blue":1,"alpha":1},
 	},
 	"Elf": {
+		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":1.7333333333333334,"green":2.5166666666666666,"blue":1.55,"alpha":1},
+		//Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":2.4,"blue":1,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":2.4,"blue":1,"alpha":1},
 		Highlight: {"gamma":1.4166666666666665,"saturation":0,"contrast":1,"brightness":1.1333333333333333,"red":1.3666666666666667,"green":1.2333333333333334,"blue":1,"alpha":1},
 	},
 	"Goddess": {
+		Catsuit: {"gamma":1,"saturation":0,"contrast":0.8666666666666667,"brightness":1.7666666666666666,"red":3.5166666666666666,"green":2.9333333333333336,"blue":1.6,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.5,"alpha":1},
 		Highlight: {"gamma":1.4166666666666665,"saturation":0,"contrast":1,"brightness":1.333333333333333,"red":1.3666666666666667,"green":1.2333333333333334,"blue":1,"alpha":1},
 	},
@@ -334,6 +352,7 @@ let KinkyDungeonHiddenFactions = [
 	"Delinquent",
 	"Virus",
 	"ShadowClan",
+	"Dollsmith",
 	"DollShoppe",
 	"RopeDojo",
 	"Fuuka",
@@ -570,7 +589,7 @@ let KinkyDungeonFactionRelationsBase = {
 		Bountyhunter: .1,
 		Bandit: .1,
 		Alchemist: .1,
-		Nevermere: 0.5,
+		Nevermere: 0.3,
 		Apprentice: .1,
 		Dressmaker: .1,
 		Witch: .1,
@@ -581,7 +600,7 @@ let KinkyDungeonFactionRelationsBase = {
 		Mushy: -0.1,
 		AncientRobot: -0.3,
 
-		Player: -0.7,
+		Player: -1,
 	},
 	"Virus": {
 		Player: -1,

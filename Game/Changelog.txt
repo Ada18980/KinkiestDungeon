@@ -15,8 +15,37 @@ Add new cyber assets
 Fix graphical glitches
 Add nipple items
 Add new outfits
+"Quick attacks" by enemies
+Screen to view all your captured cuties
+Spellcaster witch that channels a defensive ward, rapidly gives shield to nearby allies
+Monk class?
+- Passive: enchantments apply to unarmed strikes
+- Active: Increase unarmed base damage for 20 turns. After using, need to meditate 10 turns to recharge. Free.
 
+5.0.4 C
+- New perks: Bullet Hell, Bullet Armageddon
+- Commited some graphical fixes
+- Some bugfixes
+- Enemies will sometimes toy with you before taking you away
+- Fixed some dialogue lines
+- New enemy: Rubber Elemental, Shibari Witch
+- New lock type: Rubber
+- New spells: Ropestorm. Enchant Ropes. Conjure Latex Armbinder, Gag, Legbinder
+- Rope spell binding and struggle rate tweaked
+- High value targets are a little weaker but have more buffs
 
+5.0.4
+- Targeting reticule now changes depending on action (attack, move, interact, pass, etc)
+- Removed Floating Weapon; replaced with new Telekinesis spell category
+- New spells: Recover Object, Kinetic Slash, WIP (Sagitta, Grasp, Kinetic Lance, Psychokinesis)
+- Tweaked positioning of ropes for boxtie, strict Ropework
+- Fixed Inertia perk not allowing diagonal 90 degree turns
+- Fixed jail doors not being locked properly
+- Added Candle Snuffer and Bag of Bags
+- Kinky Prisoner, No Way Out, and Well-Equipped increase Security level by 30 (no way to lower except by Rep)
+- Added lots of new definitions for prison restraints based on tags including maid, different rope types, and gave alchemist latex
+- Added more sections of leg rope for a much tighter and more secure experience
+- Floater messages now distribute themselves for greater readability
 
 5.0.3 (December 18)
 - Added explosive barrels to levels. Beat them down without igniting them to take their gunpowder.

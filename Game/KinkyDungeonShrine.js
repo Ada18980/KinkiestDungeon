@@ -139,7 +139,7 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 		if (KinkyDungeonRestraintVariants[item.name]) {
 			let enchants = {};
 			for (let ev of KinkyDungeonRestraintVariants[item.name].events) {
-				if (ev.original && KDEventEnchantmentModular[ev.original]) enchants[ev.original] = KDEventEnchantmentModular[ev.original].types[KDModifierEnum.restraint].level;
+				if (ev.original && KDEventEnchantmentModular[ev.original]) enchants[ev.original] = KDEventEnchantmentModular[ev.original].types[KDModifierEnum[item.type || 'restraint']].level;
 			}
 			let sum = 0;
 			for (let amt of Object.values(enchants)) {
@@ -162,13 +162,15 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 		}
 		return costt;
 	}
-	if (item.rarity != null) {
-		let rarity = item.rarity;
-		if (item.costMod) rarity += item.costMod;
+	let rarity = item.rarity || KDWeapon(item)?.rarity || KDConsumable(item)?.rarity || KDOutfit(item)?.rarity;
+	if (rarity) {
+		let costMod = item.costMod || KDWeapon(item)?.costMod || KDConsumable(item)?.costMod || KDOutfit(item)?.costMod;
+
+		if (costMod) rarity += costMod;
 		if (KinkyDungeonConsumableVariants[item.name] || KinkyDungeonWeaponVariants[item.name]) {
 			let enchants = {};
 			for (let ev of KinkyDungeonConsumableVariants[item.name] ? KinkyDungeonConsumableVariants[item.name].events : KinkyDungeonWeaponVariants[item.name].events) {
-				if (ev.original && KDEventEnchantmentModular[ev.original]) enchants[ev.original] = KDEventEnchantmentModular[ev.original].types[KDModifierEnum.restraint].level;
+				if (ev.original && KDEventEnchantmentModular[ev.original]) enchants[ev.original] = KDEventEnchantmentModular[ev.original].types[KDModifierEnum[item.type || 'restraint']].level;
 			}
 			let sum = 0;
 			for (let amt of Object.values(enchants)) {
@@ -241,6 +243,8 @@ function KDAddBasic(item) {
 		KinkyDungeonLockpicks += 4;
 	} else if (item.name == "MaidUniform") {
 		KinkyDungeonInventoryAddOutfit("Maid");
+	} if (item.outfit) {
+		KinkyDungeonInventoryAddOutfit(item.outfit);
 	} else if (item.consumable) {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables[item.consumable], item.quantity);
 	}
@@ -848,7 +852,7 @@ function KinkyDungeonDrawPerkOrb() {
 			DrawTextFitKD(TextGet("KDBondageOptionPerk"), 1250, 350 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 24);
 			DrawTextFitKD(str, 1250, 385 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 22);
 		}
-		
+
 		FillRectKD(kdcanvas, kdpixisprites, "bg_bndg", {
 			Left: 1250-Twidth/2 - 10,
 			Top: 350 + count * pspacing - 30,
@@ -861,7 +865,7 @@ function KinkyDungeonDrawPerkOrb() {
 		});
 		count += 1;
 	}
-	
+
 
 	if (KDPerkConfirm) {
 		DrawTextFitKD(TextGet("KinkyDungeonPerkConfirm"), 1250, 720, 1300, "#ffffff", KDTextGray2, 30);

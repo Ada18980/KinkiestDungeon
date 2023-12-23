@@ -664,55 +664,74 @@ let KinkyDungeonSpellSpecials = {
 		} else return "Fail";
 	},
 	"RecoverObject": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
-		if (!KinkyDungeonCheckPath(entity.x, entity.y, tX, tY, true, false)) {
+		if (!spell.aoe && !KinkyDungeonCheckPath(entity.x, entity.y, tX, tY, true, false)) {
 			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFailObstacle"+spell.name), "#ff5555", 1);
 			return "Fail";
 		}
-		let items = KDMapData.GroundItems.filter((item) => {return item.x == targetX && item.y == targetY;});
-		let tile = KinkyDungeonMapGet(targetX, targetY);
-		let allowedTiles = "CYR";
-		if (items.length < 0 || allowedTiles.includes(tile)) {
-			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-			let dist = KDistEuclidean(targetX - entity.x, targetY - entity.y);
-			let pullToX = entity.x;
-			let pullToY = entity.y;
-			KDCreateParticle(tX, tY, "RecoverObjectHit");
-			let lastx = targetX;
-			let lasty = targetY;
-			let xxx = targetX;
-			let yyy = targetY;
-
-			for (let i = dist; i > 0; i -= 0.2499) {
-				if (KDistChebyshev(pullToX - xxx, pullToY - yyy) > 1.5) {
-					let newX = pullToX + Math.round((xxx - pullToX) * i / dist);
-					let newY = pullToY + Math.round((yyy - pullToY) * i / dist);
-					xxx = newX;
-					yyy = newY;
-					if (xxx != lastx || yyy != lasty) {
-						lastx = xxx;
-						lasty = yyy;
-						KDCreateParticle(xxx, yyy, "RecoverObjectHit");
-					}
-				} else break;
-			}
-			let success = true;
-			KinkyDungeonItemCheck(targetX, targetY, MiniGameKinkyDungeonLevel);
-			if (allowedTiles.includes(tile)) {
-				if (KDMoveObjectFunctions[tile]) {
-					success = KDMoveObjectFunctions[tile](targetX, targetY);
+		let tilesToCheck = [{x:targetX, y:targetY}];
+		if (spell.aoe) {
+			tilesToCheck = [];
+			for (let x = Math.floor(-spell.aoe); x < Math.ceil(spell.aoe); x++)
+				for (let y = Math.floor(-spell.aoe); y < Math.ceil(spell.aoe); y++) {
+					if (AOECondition(targetX, targetY, targetX+x, targetY+y, spell.aoe, spell.aoetype, entity.x, entity.y)) {
+						tilesToCheck.push({x:targetX+x, y:targetY+y});
 				}
 			}
-
-			if (success) {
-				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell) * (tile == 'C' ? 1.0 : 0.25));
-				KDCreateParticle(targetX, targetY, "RecoverObjectHit");
-				return "Cast";
-			}
-			return "Fail";
-		} else {
-			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);
-			return "Fail";
 		}
+		let found = false;
+		let grabbed = false;
+		let chest = false;
+		for (let tt of tilesToCheck) {
+			let items = KDMapData.GroundItems.filter((item) => {return item.x == tt.x && item.y == tt.y;});
+			let tile = KinkyDungeonMapGet(tt.x, tt.y);
+			let allowedTiles = "CYR";
+			if (items.length > 0 || allowedTiles.includes(tile)) {
+				let dist = KDistEuclidean(tt.x - entity.x, tt.y - entity.y);
+				let pullToX = entity.x;
+				let pullToY = entity.y;
+				KDCreateParticle(tX, tY, "RecoverObjectHit");
+				let lastx = tt.x;
+				let lasty = tt.y;
+				let xxx = tt.x;
+				let yyy = tt.y;
+	
+				for (let i = dist; i > 0; i -= 0.2499) {
+					if (KDistChebyshev(pullToX - xxx, pullToY - yyy) > 1.5) {
+						let newX = pullToX + Math.round((xxx - pullToX) * i / dist);
+						let newY = pullToY + Math.round((yyy - pullToY) * i / dist);
+						xxx = newX;
+						yyy = newY;
+						if (xxx != lastx || yyy != lasty) {
+							lastx = xxx;
+							lasty = yyy;
+							KDCreateParticle(xxx, yyy, "RecoverObjectHit");
+						}
+					} else break;
+				}
+				let success = true;
+				KinkyDungeonItemCheck(tt.x, tt.y, MiniGameKinkyDungeonLevel, true);
+				if (allowedTiles.includes(tile)) {
+					if (KDMoveObjectFunctions[tile]) {
+						if (spell.aoe) KinkyDungeonChestConfirm = true;
+						success = KDMoveObjectFunctions[tile](tt.x, tt.y);
+						KinkyDungeonChestConfirm = false;
+					}
+				}
+	
+				if (success) {
+					if (tile == 'C') chest = true;
+					KDCreateParticle(tt.x, tt.y, "RecoverObjectHit");
+					grabbed = true;
+				}
+				found = true;
+			} 
+		}
+		if (grabbed) {
+			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell) * (chest ? 1.0 : 0.25));
+			return "Cast";
+		} else if (!found) KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);
+		return "Fail";
 	},
 	"TelekineticSlash": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let tilesHit = [];
@@ -728,13 +747,15 @@ let KinkyDungeonSpellSpecials = {
 			let en = KinkyDungeonEnemyAt(tile.x, tile.y);
 			if (en && !KDAllied(en) && !KDHelpless(en) && en.hp > 0) {
 				hit = true;
+				let mod = (KinkyDungeonFlags.get("KineticMastery") ? 1.5 : 0) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisBase");
+				let scaling = 0.9 * (KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisScale")));
 				let data = {
 					target: en,
 					attackCost: 0.0, // Important
-					skipTurn: true,
+					skipTurn: false,
 					spellAttack: true,
 					attackData: {
-						damage: spell.power + KinkyDungeonPlayerDamage.dmg * 1.5,
+						damage: spell.power + mod + KinkyDungeonPlayerDamage.dmg * scaling,
 						type: KinkyDungeonPlayerDamage.type,
 						distract: KinkyDungeonPlayerDamage.distract,
 						distractEff: KinkyDungeonPlayerDamage.distractEff,
@@ -763,6 +784,7 @@ let KinkyDungeonSpellSpecials = {
 			if (KinkyDungeonStatsChoice.has("BerserkerRage")) {
 				KinkyDungeonChangeDistraction(0.7 + 0.5 * KinkyDungeonGetManaCost(spell), false, 0.33);
 			}
+			if (!KDEventData.shockwaves) KDEventData.shockwaves = [];
 			KDEventData.shockwaves.push({
 				x: targetX,
 				y: targetY,
@@ -775,6 +797,8 @@ let KinkyDungeonSpellSpecials = {
 		KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 		return "Cast";
 	},
+	
+	
 	"Swap": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		if (!KinkyDungeonCheckPath(entity.x, entity.y, tX, tY, true, false, 1, true)) {
 			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);

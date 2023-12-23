@@ -206,6 +206,10 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 			KinkyDungeonInventoryAddWeapon(Item.name);
 		}
 
+	} else if (KDOutfit(Item)) {
+		priority = 1;
+		color = "white";
+		KinkyDungeonInventoryAddOutfit(Item.name);
 	} else if (Item.name == "Heart") {
 		if (KinkyDungeonStatDistractionMax >= KDMaxStat && KinkyDungeonStatStaminaMax >= KDMaxStat && KinkyDungeonStatManaMax >= KDMaxStat && KinkyDungeonStatWillMax >= KDMaxStat) {
 			KinkyDungeonDrawState = "Game";
@@ -251,13 +255,16 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 }
 
 
-function KinkyDungeonItemCheck(x, y, Index) {
+function KinkyDungeonItemCheck(x, y, Index, autoEquip) {
 	for (let I = 0; I < KDMapData.GroundItems.length; I++) {
 		let item = KDMapData.GroundItems[I];
 		if (x == item.x && y == item.y) {
 			KDMapData.GroundItems.splice(I, 1);
 			I -= 1;
 			KinkyDungeonItemEvent(item);
+			if (autoEquip && KDWeapon(item) && KinkyDungeonPlayerWeapon == "Unarmed") {
+				KDSetWeapon(item.name);
+			}
 		}
 	}
 }
@@ -281,10 +288,11 @@ function KDGetItemType(item) {
 }
 
 function KinkyDungeonDrawItems(canvasOffsetX, canvasOffsetY, CamX, CamY) {
+	let sprite = null;
 	for (let item of KDMapData.GroundItems) {
-		let sprite = KDGetItemPreview({name: item.name, type: KDGetItemType(item)})?.preview || (KinkyDungeonRootDirectory + "Items/" + item.name + ".png");
 		//if (KinkyDungeonGetRestraintByName(item.name)) sprite = "Restraint";
 		if (item.x >= CamX && item.y >= CamY && item.x < CamX + KinkyDungeonGridWidthDisplay && item.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(item.x, item.y) > 0) {
+			sprite = KDGetItemPreview({name: item.name, type: KDGetItemType(item)})?.preview || (KinkyDungeonRootDirectory + "Items/" + item.name + ".png");
 			if (KDCanSeeDroppedItem(item))
 				KDDraw(kditemsboard, kdpixisprites, item.x + "," + item.y + "_" + item.name, sprite,
 					(item.x - CamX)*KinkyDungeonGridSizeDisplay, (item.y - CamY)*KinkyDungeonGridSizeDisplay,

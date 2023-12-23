@@ -35,6 +35,15 @@ let KinkyDungeonWeapons = {
 	"Unarmed": {name: "Unarmed", dmg: 2, chance: 0.9, type: "unarmed", unarmed: true, rarity: 0, shop: false, noequip: true, sfx: "Unarmed",
 		tags: ["unarmed"],},
 
+		
+	"Rock": {name: "Rock", dmg: 3, chance: 0.8, staminacost: 3.8, type: "crush", unarmed: false, rarity: 0, shop: true, heavy: true, sfx: "HeavySwing",
+		crit: 1.5,
+		tags: ["rock"],
+		events: [
+			{type: "ElementalEffectCrit", trigger: "playerAttack", power: 0, damage: "stun", time: 6}
+		],
+	},
+
 	// Knives
 	"Knife": {name: "Knife", dmg: 2.0, chance: 1.1, staminacost: 1.5, type: "slash", unarmed: false, rarity: 1, cutBonus: 0.05, shop: true, sfx: "Unarmed", light: true,
 		crit: 1.5,
@@ -276,7 +285,8 @@ let KinkyDungeonWeapons = {
 	// Tier 1 orbs
 	"ArcaneCrystal": {name: "ArcaneCrystal", dmg: 3.3, chance: 0.8, staminacost: 3.0, type: "arcane", noHands: true, unarmed: false, novulnerable: true, magic: true, rarity: 2, shop: true, sfx: "Laser",
 		tags: ["illum"],
-		events: [{type: "WeaponLight", trigger: "getLights", offhand: true, power: 3.5, color: "#6700ff"}]},
+		angle: 0,
+		events: [{type: "WeaponLight", trigger: "getLights", offhand: true, power: 3.5, color: "#6700ff"}, {type: "Float", trigger: "draw"}, ]},
 	"ArcaneTome": {name: "ArcaneTome", dmg: 1.0, chance: 1.0, staminacost: 1.5, crit: 1.5,
 		tags: ["tome"],
 		type: "arcane", unarmed: false, novulnerable: true, magic: true, rarity: 2, shop: true, sfx: "Laser",
@@ -301,7 +311,9 @@ let KinkyDungeonWeapons = {
 	"EscortDrone": {name: "EscortDrone", dmg: 1.5, chance: 1.0, staminacost: 0.0, type: "electric", noHands: true, unarmed: false, rarity: 5, shop: false, sfx: "Laser",
 		tags: ["illum", "drone"],
 		crit: 1.1,
-		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 0, chance: 0.33, damage: "electric", time: 4}, {type: "WeaponLight", offhand: true, trigger: "getLights", power: 4}]},
+		angle: 0,
+		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 0, chance: 0.33, damage: "electric", time: 4},
+			{type: "Float", trigger: "draw"}, {type: "WeaponLight", offhand: true, trigger: "getLights", power: 4}]},
 
 	// Special
 	"BoltCutters": {name: "BoltCutters", dmg: 3.5, staminacost: 3.8, chance: 1.0, type: "crush", unarmed: false, rarity: 4, shop: false, cutBonus: 0.3, sfx: "Unarmed",
