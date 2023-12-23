@@ -23,7 +23,7 @@ let KDPlayerEffects = {
 		if (!RopeDresses.includes(KinkyDungeonCurrentDress)) {
 			KinkyDungeonSetDress(RopeDresses[Math.floor(Math.random() * RopeDresses.length)], "");
 			KinkyDungeonDressPlayer();
-			KinkyDungeonSendTextMessage(1, TextGet("KDWitchShibariDisrobe").replace("ENMY", TextGet("Name" + entity)), "#ffff00", 3);
+			KinkyDungeonSendTextMessage(1, TextGet("KDWitchShibariDisrobe").replace("ENMY", TextGet("Name" + entity?.name)), "#ffff00", 3);
 			return {sfx: "Tickle", effect: true};
 		}
 		return {sfx: "", effect: false};

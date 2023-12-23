@@ -2155,9 +2155,9 @@ let KinkyDungeonSpellListEnemies = [
 		manacost: 5, components: ["Verbal"], projectileTargeting: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 6, power: 1, range: 7, meleeOrigin: true, noDirectionOffset: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
 		followCaster: true,
 		spellcast: {spell: "WitchRopeBoltLaunchSingle", target: "target", directional:true, aimAtTarget: true, offset: false}},
-	{enemySpell: true, name: "WitchRopeBoltLaunchSingle", tags: ["rope", "bolt", "binding", "offense"], prerequisite: "ApprenticeRope", sfx: "MagicSlash", school: "Conjure",
+	{enemySpell: true, name: "WitchRopeBoltLaunchSingle", tags: ["rope", "bolt", "binding", "offense"], prerequisite: "ApprenticeRope", school: "Conjure",
 		manacost: 1, components: ["Verbal"], projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 1, range: 9, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert",
-		noMiscast: false, noCastOnHit: false, fastStart: true, hideWarnings: true,
+		noMiscast: false, noCastOnHit: false, fastStart: true, hideWarnings: true, landsfx: "FireSpell",sfx: "FireSpell",hitsfx: "FireSpell",
 		shotgunCount: 1, shotgunDistance: 6, shotgunSpread: 0.1, shotgunSpeedBonus: 0, shotgunFan: true,
 		spellcast: {spell: "WitchRope", target: "target", directional:true, randomDirectionPartial: true, aimAtTarget: true, noTargetMoveDir: true, offset: false}},
 

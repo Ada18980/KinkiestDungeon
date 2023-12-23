@@ -7715,9 +7715,9 @@ let KDEventMapGeneric = {
 					//&& KDCanSeeEnemy(enemy)
 				) {
 					KDDraw(kdcanvas, kdpixisprites, enemy.id + "_hvtarg", KinkyDungeonRootDirectory + "UI/HighValueTarget.png",
-						(enemy.visual_x - data.CamX - data.CamX_offset - 0.5) * KinkyDungeonGridSizeDisplay,
-						(enemy.visual_y - data.CamY - data.CamY_offset - 0.5) * KinkyDungeonGridSizeDisplay,
-						KinkyDungeonSpriteSize * 2, KinkyDungeonSpriteSize * 2, undefined, {
+						(enemy.visual_x - data.CamX - data.CamX_offset) * KinkyDungeonGridSizeDisplay,
+						(enemy.visual_y - data.CamY - data.CamY_offset) * KinkyDungeonGridSizeDisplay,
+						KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 							zIndex: 10,
 						});
 				}

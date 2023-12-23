@@ -1320,8 +1320,8 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 
 								if (enemy.shield > 0) {
 									KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay,
-										canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - 2 - II * spacing,
-										shieldbarMult * KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 5, enemy.shield / KDGetMaxShield(enemy) * 100, '#92e8c0', bg);
+										canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - 5 - II * spacing,
+										shieldbarMult * KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), 8, enemy.shield / KDGetMaxShield(enemy) * 100, '#92e8c0', bg);
 
 								}
 								II++;
@@ -1483,7 +1483,7 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 				}
 
 				if (enemy.dialogue && !tooltip) {
-					let dialogueOffset = 0;
+					let dialogueOffset = 6;
 					while (dialogueOffset < 300 && (KDDialogueSlots[yboost + canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5 - dialogueOffset])) {
 						dialogueOffset += 18;
 					}
@@ -6743,7 +6743,7 @@ function KDMakeHighValue(enemy) {
 	});
 
 	// Hitpoint bonuses
-	let hp = Math.round(KDRandom()*10) + Math.min(20, enemy.Enemy.maxhp * 10) * (1.5 + Math.round(KDRandom()*10)/10);
+	let hp = Math.max(10, enemy.Enemy.maxhp) * (1.5 + Math.round(KDRandom()*5)/10);
 	enemy.Enemy = JSON.parse(JSON.stringify(enemy.Enemy));
 	enemy.Enemy.maxhp = hp;
 	enemy.hp = hp;
@@ -6787,7 +6787,13 @@ function KDMakeHighValue(enemy) {
 		enemy.items.unshift("PotionWill");
 	}
 
-	let buff = KDGetByWeight(KDGetSpecialBuffList(enemy, ["HighValue"]));
+	let list = KDGetSpecialBuffList(enemy, ["HighValue"]);
+	let buff = KDGetByWeight(list);
+	if (buff) {
+		KDSpecialBuffs[buff].apply(enemy, ["HighValue"]);
+		delete list[buff];
+	}
+	buff = KDGetByWeight(list);
 	if (buff) {
 		KDSpecialBuffs[buff].apply(enemy, ["HighValue"]);
 	}

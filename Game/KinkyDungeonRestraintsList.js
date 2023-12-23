@@ -2903,8 +2903,7 @@ const KinkyDungeonRestraints = [
 	{renderWhenLinked: [...KDLegbinderRender], inventory: true, sfx: "Fwoosh", name: "ShadowLatexLegbinder", inaccessible: true, Asset: "SeamlessLegBinder", LinkableBy: [...KDLegbinderLink], Color: ["#4e2a70"], Group: "ItemLegs",
 		Model: "Hobbleskirt",
 		Filters: {
-			Binder: {"gamma":1.3333333333333333,"saturation":1,"contrast":1.45,"brightness":1.1333333333333333,"red":1,"green":1,"blue":2.0833333333333335,"alpha":1},
-			Laces: {"gamma":1.2666666666666668,"saturation":1,"contrast":1,"brightness":2.8833333333333333,"red":1,"green":1,"blue":1.45,"alpha":1},
+			Rubber: {"gamma":1.3333333333333333,"saturation":0,"contrast":1.45,"brightness":1,"red":0.6078431372549019,"green":0.6078431372549019,"blue":1.196078431372549,"alpha":0.8333333333333333},
 		},
 		hobble: 1, addTag: ["FeetLinked"], power: 9, weight: 0, blockfeet: true,
 		escapeChance: {"Struggle": -0.25, "Cut": -0.05, "Remove": 0.1, "Pick": 0.25},
