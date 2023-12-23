@@ -1525,7 +1525,7 @@ let KDDialogueSlots = {};
  * @returns {number}
  */
 function KDDrawEnemyTooltip(enemy, offset) {
-	let analyze = KinkyDungeonFlags.get("AdvTooltip") || KDHasSpell("ApprenticeKnowledge");
+	let analyze = KinkyDungeonFlags.get("AdvTooltips") || KDHasSpell("ApprenticeKnowledge");
 	// Previously this was dependent on using a spell called Analyze. Now it is enabled by default if you have Knowledge
 	let TooltipList = [];
 	if (enemy.CustomName)

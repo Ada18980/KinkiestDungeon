@@ -17,6 +17,7 @@ let KinkyDungeonConsumables = {
 	"Ectoplasm" : {name: "Ectoplasm", noHands: true, rarity: 1, shop: false, type: "spell", spell: "LesserInvisibility", sfx: "Invis"},
 	"Gunpowder" : {name: "Gunpowder", rarity: 1, shop: true, useQuantity: 1, noConsumeOnUse: true, type: "targetspell", spell: "Gunpowder", sfx: "FireSpell"},
 	"EarthRune" : {name: "EarthRune", rarity: 2, costMod: -1, shop: false, type: "spell", spell: "Earthrune", sfx: "HeavySwing"},
+	"RopeRune" : {name: "RopeRune", rarity: 2, costMod: -1, shop: false, type: "spell", spell: "EnchantRope", sfx: "HeavySwing"},
 	"WaterRune" : {name: "WaterRune", rarity: 2, costMod: -1, shop: false, type: "spell", spell: "WaterRune", sfx: "HeavySwing"},
 	"Bola" : {name: "Bola", rarity: 0, costMod: -1, shop: false, useQuantity: 1, noConsumeOnUse: true, type: "targetspell", spell: "PlayerBola"},
 	"IceRune" : {name: "IceRune", rarity: 2, costMod: -1, shop: false, type: "spell", spell: "Icerune", sfx: "Freeze"},

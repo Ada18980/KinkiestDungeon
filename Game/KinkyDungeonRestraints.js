@@ -728,7 +728,7 @@ function KinkyDungeonLock(item, lock, NoEvent = false) {
 	if (lock != "") {
 		if (KinkyDungeonIsLockable(KDRestraint(item))) {
 			item.lock = lock;
-			if (lock == "Gold") item.lockTimer = MiniGameKinkyDungeonLevel + 2;
+			if (!KDLocks[lock].shrineImmune) item.lockTimer = MiniGameKinkyDungeonLevel + 2;
 			if (!StandalonePatched)
 				InventoryLock(KinkyDungeonPlayer, InventoryGet(KinkyDungeonPlayer, KDRestraint(item).AssetGroup ? KDRestraint(item).AssetGroup : KDRestraint(item).Group), "IntricatePadlock", Player.MemberNumber, true);
 			item.pickProgress = 0;
@@ -779,13 +779,13 @@ function KinkyDungeonGetRestraintsWithShrine(shrine, ignoreGold, recursive, igno
 	let ret = [];
 
 	for (let item of KinkyDungeonAllRestraint()) {
-		if (((!KDRestraint(item).noShrine && (!KDGetCurse(item) || !KDCurses[KDGetCurse(item)].noShrine)) || ignoreShrine) && KDRestraint(item).shrine && KDRestraint(item).shrine.includes(shrine) && (ignoreGold || item.lock != "Gold")) {
+		if (((!KDRestraint(item).noShrine && (!KDGetCurse(item) || !KDCurses[KDGetCurse(item)].noShrine)) || ignoreShrine) && KDRestraint(item).shrine && KDRestraint(item).shrine.includes(shrine) && (ignoreGold || !KDLocks[item.lock].shrineImmune)) {
 			ret.push(item);
 		}
 		if (recursive) {
 			let link = item.dynamicLink;
 			while (link) {
-				if (((!KDRestraint(link).noShrine && (!KDGetCurse(link) || !KDCurses[KDGetCurse(link)].noShrine)) || ignoreShrine) && KDRestraint(link).shrine && KDRestraint(link).shrine.includes(shrine) && (ignoreGold || link.lock != "Gold")) {
+				if (((!KDRestraint(link).noShrine && (!KDGetCurse(link) || !KDCurses[KDGetCurse(link)].noShrine)) || ignoreShrine) && KDRestraint(link).shrine && KDRestraint(link).shrine.includes(shrine) && (ignoreGold || !KDLocks[link.lock].shrineImmune)) {
 					ret.push(link);
 				}
 				link = link.dynamicLink;
@@ -808,7 +808,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 		/**
 		 * @type {item[]}
 		 */
-		let items = KinkyDungeonAllRestraint().filter((r) => {return ((!KDRestraint(r).noShrine && (!KDGetCurse(r) || !KDCurses[KDGetCurse(r)].noShrine)) || ignoreShrine) && KDRestraint(r).shrine && KDRestraint(r).shrine.includes(shrine) && (ignoreGold || r.lock != "Gold");});
+		let items = KinkyDungeonAllRestraint().filter((r) => {return ((!KDRestraint(r).noShrine && (!KDGetCurse(r) || !KDCurses[KDGetCurse(r)].noShrine)) || ignoreShrine) && KDRestraint(r).shrine && KDRestraint(r).shrine.includes(shrine) && (ignoreGold || !KDLocks[r.lock].shrineImmune);});
 		// Get the most powerful item
 		let item = items.length > 0 ? items.reduce((prev, current) => (KinkyDungeonRestraintPower(prev, true) > KinkyDungeonRestraintPower(current, true)) ? prev : current) : null;
 		if (item) {
@@ -4905,7 +4905,7 @@ function KDGetTotalRestraintPower(player, requireSingleTag, requireAllTags, igno
 				continue;
 			}
 		}
-		if (ignoregold && item.lock == "Gold") continue;
+		if (ignoregold && KDLocks[item.lock].shrineImmune) continue;
 		if (!ignoreShrine && (KDGetCurse(item) && KDCurses[KDGetCurse(item)].noShrine)) continue;
 		power += KinkyDungeonRestraintPower(item);
 	}

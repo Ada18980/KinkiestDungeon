@@ -738,7 +738,32 @@ function KinkyDungeonLoad() {
 	}
 
 	KinkyDungeonSetupCrashHandler();
+
 	KDStartTime = CommonTime();
+
+	// Override right click and make it trigger the Skip key
+	// Normally we don't override right click on websites but this is a game
+	if (!CommonIsMobile)
+		document.addEventListener('contextmenu', event => {
+			// @ts-ignore
+			if (CommonIsMobile || document.activeElement?.type == "text" || document.activeElement?.type == "textarea") {
+				// Trigger mouse clicked
+				//MouseClicked = true;
+			} else {
+				event.preventDefault();
+				let code = KinkyDungeonKeySkip[0];
+				if (!KinkyDungeonKeybindingCurrentKey) {
+					KinkyDungeonKeybindingCurrentKey = code;
+					KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime() + 100;
+					// We also press it for 100 msec
+					(async function() {
+						KinkyDungeonGameKey.keyPressed[9] = true;
+						await sleep(100);
+						KinkyDungeonGameKey.keyPressed[9] = false;
+					})();
+				}
+			}
+		});
 
 	for (let entry of Object.entries(KDLoadingTextKeys)) {
 		addTextKey(entry[0], entry[1]);
@@ -1079,29 +1104,7 @@ function KinkyDungeonRun() {
 	}
 
 
-	// Override right click and make it trigger the Skip key
-	// Normally we don't override right click on websites but this is a game
-	if (!CommonIsMobile)
-		document.addEventListener('contextmenu', event => {
-			// @ts-ignore
-			if (CommonIsMobile || document.activeElement?.type == "text" || document.activeElement?.type == "textarea") {
-				// Trigger mouse clicked
-				//MouseClicked = true;
-			} else {
-				event.preventDefault();
-				let code = KinkyDungeonKeySkip[0];
-				if (!KinkyDungeonKeybindingCurrentKey) {
-					KinkyDungeonKeybindingCurrentKey = code;
-					KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime() + 100;
-					// We also press it for 100 msec
-					(async function() {
-						KinkyDungeonGameKey.keyPressed[9] = true;
-						await sleep(100);
-						KinkyDungeonGameKey.keyPressed[9] = false;
-					})();
-				}
-			}
-		});
+
 
 	// Reset the sprites drawn cache
 	kdSpritesDrawn = new Map();
@@ -1733,7 +1736,7 @@ function KinkyDungeonRun() {
 			if (MouseInKD("KinkyDungeonPerkBondageVisMode0")) {
 				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageVisModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 			}
-	
+
 			DrawButtonKDEx("KinkyDungeonPerkBondageVisMode1", (bdata) => {
 				KinkyDungeonPerkBondageVisMode = 1;
 				localStorage.setItem("KinkyDungeonPerkBondageVisMode", KinkyDungeonPerkBondageVisMode + "");
@@ -1742,7 +1745,7 @@ function KinkyDungeonRun() {
 			if (MouseInKD("KinkyDungeonPerkBondageVisMode1")) {
 				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageVisModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 			}
-	
+
 			DrawButtonKDEx("KinkyDungeonPerkBondageVisMode2", (bdata) => {
 				KinkyDungeonPerkBondageVisMode = 2;
 				localStorage.setItem("KinkyDungeonPerkBondageVisMode", KinkyDungeonPerkBondageVisMode + "");
@@ -1752,7 +1755,7 @@ function KinkyDungeonRun() {
 				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageVisModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 			}
 		}
-		
+
 
 	} else if (KinkyDungeonState == "Diff") {
 		KDDrawGameSetupTabs();
@@ -3126,7 +3129,7 @@ function KDUpdatePlugSettings(evalHardMode) {
 	KinkyDungeonStatsChoice.set("perksdebuff", KinkyDungeonPerkProgressionMode == 3 ? true : undefined);
 	KinkyDungeonStatsChoice.set("perkBondage", KinkyDungeonPerkBondageMode == 2 ? true : undefined);
 	KinkyDungeonStatsChoice.set("perkNoBondage", KinkyDungeonPerkBondageMode == 0 ? true : undefined);
-	
+
 	KinkyDungeonStatsChoice.set("hideperkbondage", KinkyDungeonPerkBondageVisMode == 0 ? true : undefined);
 	KinkyDungeonStatsChoice.set("partialhideperkbondage", KinkyDungeonPerkBondageVisMode == 1 ? true : undefined);
 
@@ -3944,7 +3947,7 @@ function KinkyDungeonLoadGame(String) {
 
 			if (saveData.statchoice != undefined) KinkyDungeonStatsChoice = new Map(saveData.statchoice);
 			if (saveData.uniqueHits != undefined) KDUniqueBulletHits = new Map(saveData.uniqueHits);
-			
+
 
 			KinkyDungeonSexyMode = KinkyDungeonStatsChoice.get("arousalMode");
 			KinkyDungeonSexyPlug = KinkyDungeonStatsChoice.get("arousalModePlug");

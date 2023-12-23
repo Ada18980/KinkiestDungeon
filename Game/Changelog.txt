@@ -23,12 +23,15 @@ Monk class?
 - Active: Increase unarmed base damage for 20 turns. After using, need to meditate 10 turns to recharge. Free.
 
 5.0.4 C
+- New perks: Bullet Hell, Bullet Armageddon
+- Commited some graphical fixes
 - Some bugfixes
 - Enemies will sometimes toy with you before taking you away
 - Fixed some dialogue lines
-- New enemy: Rubber Elemental
+- New enemy: Rubber Elemental, Shibari Witch
 - New lock type: Rubber
-- New spells: Conjure Latex Armbinder, Gag, Legbinder
+- New spells: Ropestorm. Enchant Ropes. Conjure Latex Armbinder, Gag, Legbinder
+- Rope spell binding and struggle rate tweaked
 
 5.0.4
 - Targeting reticule now changes depending on action (attack, move, interact, pass, etc)

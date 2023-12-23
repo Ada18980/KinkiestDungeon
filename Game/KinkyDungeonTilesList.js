@@ -367,6 +367,7 @@ let KDTileUpdateFunctions = {
 };
 
 /**
+ * Return true if movement is stopped
  * @type {Record<string, (moveX, moveY) => boolean>}
  */
 let KDMoveObjectFunctions = {
@@ -454,7 +455,7 @@ let KDMoveObjectFunctions = {
 		if (faction && !KinkyDungeonChestConfirm) {
 			KinkyDungeonChestConfirm = true;
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChestFaction").replace("FACTION", TextGet("KinkyDungeonFaction" + faction)), "#ff0000", 2, true);
-			return false;
+			return true;
 		} else {
 			let data = {
 				chestType: chestType,
@@ -773,7 +774,7 @@ let KDEffectTileFunctions = {
 				return true;
 			}
 		}
-		
+
 		if (entity.player && KinkyDungeonPlayerBuffs.Slipping && !KinkyDungeonFlags.get("slipped")) {
 			KDSlip({x: KinkyDungeonPlayerEntity.x - KinkyDungeonPlayerEntity.lastx, y: KinkyDungeonPlayerEntity.y - KinkyDungeonPlayerEntity.lasty});
 			KinkyDungeonSetFlag("slipped", 1);

@@ -1435,6 +1435,23 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 
 		for (let b of KDMapData.Bullets) {
 			if ((Allied && b.bullet && b.bullet.spell && !b.bullet.spell.enemySpell) || (!Allied && !(b.bullet && b.bullet.spell && !b.bullet.spell.enemySpell))) {
+				if (b.bullet.followPlayer) {
+					b.x = KinkyDungeonPlayerEntity.x;
+					b.y = KinkyDungeonPlayerEntity.y;
+				} else if (b.bullet.followCaster) {
+					let enemy = KinkyDungeonFindID(b.bullet.followCaster);
+					if (enemy) {
+						b.x = enemy.x;
+						b.y = enemy.y;
+					}
+				}
+				if (b.bullet.cancelCaster) {
+					let enemy = KinkyDungeonFindID(b.bullet.cancelCaster);
+					if (!enemy) {
+						b.lifetime = 0;
+					}
+				}
+
 				KinkyDungeonSendEvent("bulletTick", {bullet: b, delta: delta, allied: Allied});
 				if (b.bullet && b.bullet.dot) {
 					KinkyDungeonBulletDoT(b);
@@ -1443,11 +1460,17 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 					let xx = b.bullet.cast.tx;
 					let yy = b.bullet.cast.ty;
 					if (b.bullet.cast.targetID) {
-						let enemy = KinkyDungeonFindID(b.bullet.cast.targetID);
-						if (enemy) {
-							xx = enemy.x;
-							yy = enemy.y;
+						if (b.bullet.cast.targetID == -1) {
+							xx = KinkyDungeonPlayerEntity.x;
+							yy = KinkyDungeonPlayerEntity.y;
+						} else {
+							let enemy = KinkyDungeonFindID(b.bullet.cast.targetID);
+							if (enemy) {
+								xx = enemy.x;
+								yy = enemy.y;
+							}
 						}
+
 					}
 					let castingSpell = KinkyDungeonFindSpell(b.bullet.cast.spell, true);
 					if (b.bullet.cast.spread) {

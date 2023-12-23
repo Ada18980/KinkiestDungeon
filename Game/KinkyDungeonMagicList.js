@@ -33,6 +33,7 @@ let filtersExtra = [
 	["upgrade", "magic"],
 	["upgrade", "magic"],
 	["will", "stamina", "mana", "damage"],
+	["will", "stamina", "mana", "binding"],
 	["fire", "ice", "earth", "electric", "air", "water"],
 	["binding", "slime", "summon", "physics", "metal", "leather", "rope"],
 	["stealth", "light", "shadow", "knowledge"],
@@ -157,9 +158,9 @@ let KinkyDungeonLearnableSpells = [
 	//Page 2: Conjuration
 	[
 		// Verbal
-		["TelekineticSlash", "KineticLance", "CommandWord", "CommandWordGreater", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "CommandVibrate", "CommandOrgasm", "ZoneOfExcitement", "Lockdown", "Chastity", "ZoneOfPurity", "Blink", "TransportationPortal", "BanishPortal", "Bomb", "RopeBoltLaunch", "RopeStrike", "Leap", "Leap2", "Leap3", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
+		["TelekineticSlash", "KineticLance", "CommandWord", "CommandWordGreater", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "CommandVibrate", "CommandOrgasm", "ZoneOfExcitement", "Lockdown", "Chastity", "ZoneOfPurity", "Blink", "TransportationPortal", "BanishPortal", "Bomb", "RopeBoltLaunch", "RopeBoltLaunchMany", "EnchantRope", "RopeStrike", "Leap", "Leap2", "Leap3", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
 		// Arms
-		["RecoverObject", "RecoverObject2", "TickleCloud", "FeatherCloud", "Swap", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "DisplayStand", "SummonGag", "SummonLatexGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonLatexArmbinder", "SummonStraitjacket", "SummonLegbinder", "SummonLatexLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
+		["RecoverObject", "RecoverObject2", "TickleCloud", "FeatherCloud", "Swap", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "DisplayStand", "SummonGag", "SummonLatexGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLatexArmbinder", "SummonLegbinder", "SummonLatexLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
 		// Legs
 		["Sagitta", "Snare", "Wall", "Quickness", "Quickness2", "Quickness3", "Quickness4", "Quickness5", "SlimeSplash", "Slime", "SlimeEruption", "SlimeWall", "SlimeWallVert", "LatexWallVert", "SlimeWallHoriz", "LatexWallHoriz", "LatexWall", "SlimeToLatex", "LiquidMetal", "LiquidMetalBurst", "Ally", "NatureSpirit", "StormCrystal", "EarthMote", "Golem"],
 		// Passive
@@ -1148,7 +1149,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			upcastFrom: "SummonLeatherCuffs", upcastLevel: 2,
 			sfx: "MagicSlash", school: "Conjure", manacost: 7, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe",
 			time: 0, delay: 1, power: 12, range: 6, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert",
-			spellcast: {spell: "StraitjacketBolt", target: "target", directional:true, randomDirectionFallback: true, aimAtTarget: true, noTargetMoveDir: true, offset: false}},
+			spellcast: {spell: "StraitjacketBolt", target: "target", directional:true, randomDirectionFallback: true, alwaysRandomBuff: "LeatherBurst", aimAtTarget: true, noTargetMoveDir: true, offset: false}},
 
 
 		{name: "Petsuit", prerequisite: "SummonHarness", tags: ["leather", "summon", "utility", "petsuit"], sfx: "Magic", school: "Conjure", manacost: 1, components: [], level:1,
@@ -1161,12 +1162,23 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 		{name: "RopeBoltLaunch", tags: ["rope", "bolt", "binding", "offense"], prerequisite: "ApprenticeRope", sfx: "MagicSlash", school: "Conjure",
 			manacost: 3, components: ["Verbal"], projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 1, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
-			spellcast: {spell: "RopeBolt", target: "target", directional:true, offset: false}},
+			spellcast: {spell: "RopeBolt", target: "target", directional:true, aimAtTarget: true, offset: false}},
 
+		{name: "RopeBoltLaunchMany", tags: ["rope", "bolt", "binding", "offense"], prerequisite: "RopeBoltLaunch", sfx: "MagicSlash", school: "Conjure",
+			upcastFrom: "RopeBoltLaunch", upcastLevel: 1,
+			manacost: 7, components: ["Verbal"], projectileTargeting: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 9, power: 1, range: 8, meleeOrigin: true, noDirectionOffset: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
+			followCaster: true,
+			spellcast: {spell: "RopeBoltLaunchSingle", target: "target", directional:true, aimAtTarget: true, offset: false}},
+		{name: "EnchantRope", color: "#ffae70", tags: ["rope", "utility", "binding", "offense"], prerequisite: "ApprenticeRope", sfx: "Freeze", school: "Conjure", manacost: 5.5, components: ["Verbal"],
+			level:1, type:"hit", onhit:"instant", evadeable: false, noblock: true, power: 1.0, range: 2.99, size: 3, lifetime: 1, aoe: 1.5, damage: "arcane",
+			playerEffect: {name: "EnchantRope", power: 2},
+			events: [
+				{type: "EnchantRope", trigger: "bulletHitEnemy", mult: 1.0},
+			]},
 		{name: "RopeStrike", prerequisite: "RopeBoltLaunch", tags: ["rope", "binding", "aoe", "offense"], sfx: "MagicSlash", effectTileDurationMod: 10, effectTile: {
 			name: "Ropes",
 			duration: 20,
-		}, bulletSpin: 1, school: "Conjure", manacost: 3.5, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", delay: 1, power: 3, bind: 4, time: 6, range: 3.5, size: 3, aoe: 1.5, lifetime: 1, damage: "chain",  bindType: "Rope", playerEffect: {name: "MagicRope", time: 4, tags: ["rest_rope_weakmagic"], msg: "Rope"}},
+		}, bulletSpin: 1, school: "Conjure", manacost: 3.5, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", delay: 1, power: 3, bind: 5, time: 6, range: 3.5, size: 3, aoe: 1.5, lifetime: 1, damage: "chain",  bindType: "Rope", playerEffect: {name: "MagicRope", time: 4, tags: ["rest_rope_weakmagic"], msg: "Rope"}},
 		{name: "Slime", color: "#ff00ff", prerequisite: "SlimeSplash", tags: ["latex", "slime", "aoe", "offense"], landsfx: "MagicSlash", school: "Conjure", manacost: 4, components: ["Legs"], level:1, type:"inert",
 			upcastFrom: "SlimeSplash", upcastLevel: 1,
 			requireLOS: true,
@@ -1649,6 +1661,7 @@ let KinkyDungeonSpellListEnemies = [
 
 	{name: "SagittaBolt", castCondition: "FloatingWeapon", prerequisite: "TelekineticSlash", tags: ["telekinesis", "offense"], sfx: "Lightning", school: "Conjure",
 		manacost: 1.5, components: ["Legs"], level:1, type:"bolt", slowStart: true, projectileTargeting:true, onhit:"", power: 0.0, delay: 0, time: 1, range: 4.99, speed: 5, size: 1, damage: "pierce",
+		bulletLifetime: 5,
 		events: [
 			{trigger: "bulletHitEnemy", type: "Sagitta", mult: 0.4, power: 1},
 		],
@@ -1719,7 +1732,19 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 20,
 		},
 	},
+	{enemySpell: true, name: "EnemyEnchantRope", castCondition: "EnemyEnchantRope", color: "#e64539", tags: ["rope", "utility", "binding", "offense"], prerequisite: "ApprenticeRope", sfx: "Freeze", school: "Conjure", manacost: 5.5, components: ["Verbal"],
+		level:1, type:"inert", onhit:"aoe", evadeable: false, noblock: true, power: 1.0, range: 2.99, size: 3, lifetime: 1, aoe: 1.5, damage: "arcane", delay: 1,
+		playerEffect: {name: "EnchantRope", power: 1},
+		events: [
+			{type: "EnchantRope", trigger: "bulletHitEnemy", mult: 0.5},
+		]},
 
+	{enemySpell: true, name: "EnemyEnchantRope2", castCondition: "EnemyEnchantRope2", color: "#92e8c0", tags: ["rope", "utility", "binding", "offense"], prerequisite: "ApprenticeRope", sfx: "Freeze", school: "Conjure", manacost: 5.5, components: ["Verbal"],
+		level:1, type:"inert", onhit:"aoe", evadeable: false, noblock: true, power: 1.0, range: 2.99, size: 3, lifetime: 1, aoe: 1.5, damage: "arcane", delay: 1,
+		playerEffect: {name: "EnchantRope", power: 2},
+		events: [
+			{type: "EnchantRope", trigger: "bulletHitEnemy", mult: 1.0},
+		]},
 
 	{enemySpell: true, name: "EnemyLatexRestraintBolt", tags: ["binding", "leather", "bolt", "offense"], sfx: "MagicSlash", hitsfx: "LightSwing", school: "Conjure", manacost: 4, components: ["Arms"], level:1, type:"bolt",
 		bindType: "Latex", slowStart: true, color: "#9abcf7",
@@ -2117,15 +2142,35 @@ let KinkyDungeonSpellListEnemies = [
 
 
 	{name: "RopeBolt", color: "#ffff00", sfx: "Miss", school: "Conjure", manacost: 1, tags: ["rope"], components: ["Verbal"], level:1, type:"bolt",
-		projectileTargeting:true, onhit:"",  power: 2.0, bind: 2.2, delay: 0, range: 50, damage: "chain", bindType: "Rope", speed: 3, playerEffect: {name: "SingleRope"},
+		projectileTargeting:true, onhit:"",  power: 1.0, bind: 3.2, delay: 0, range: 50, damage: "chain", bindType: "Rope", speed: 3, playerEffect: {name: "SingleRope"},
+		evadeable: true,
 		effectTileDurationMod: 10, effectTileAoE: 0.5, effectTile: {
 			name: "Ropes",
 			duration: 20,
 		},},
 
 
+	{enemySpell: true, name: "WitchRopeBoltLaunchMany", tags: ["rope", "bolt", "binding", "offense"], prerequisite: "RopeBoltLaunch", sfx: "MagicSlash", school: "Conjure",
+		upcastFrom: "RopeBoltLaunch", upcastLevel: 1, specialCD: 20, hideWarnings: true,
+		manacost: 5, components: ["Verbal"], projectileTargeting: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 6, power: 1, range: 7, meleeOrigin: true, noDirectionOffset: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
+		followCaster: true,
+		spellcast: {spell: "WitchRopeBoltLaunchSingle", target: "target", directional:true, aimAtTarget: true, offset: false}},
+	{enemySpell: true, name: "WitchRopeBoltLaunchSingle", tags: ["rope", "bolt", "binding", "offense"], prerequisite: "ApprenticeRope", sfx: "MagicSlash", school: "Conjure",
+		manacost: 1, components: ["Verbal"], projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 1, range: 9, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert",
+		noMiscast: false, noCastOnHit: false, fastStart: true, hideWarnings: true,
+		shotgunCount: 1, shotgunDistance: 6, shotgunSpread: 0.1, shotgunSpeedBonus: 0, shotgunFan: true,
+		spellcast: {spell: "WitchRope", target: "target", directional:true, randomDirectionPartial: true, aimAtTarget: true, noTargetMoveDir: true, offset: false}},
+
+	{name: "RopeBoltLaunchSingle", tags: ["rope", "bolt", "binding", "offense"], prerequisite: "ApprenticeRope", sfx: "MagicSlash", school: "Conjure",
+		manacost: 1, components: ["Verbal"], projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 1, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert",
+		noMiscast: false, noCastOnHit: false,
+		shotgunCount: 1, shotgunDistance: 6, shotgunSpread: 0.1, shotgunSpeedBonus: 0, shotgunFan: true,
+		spellcast: {spell: "RopeBolt", target: "target", directional:true, randomDirectionPartial: true, aimAtTarget: true, noTargetMoveDir: true, offset: false}},
+
+
 	{name: "Icicle", sfx: "MagicSlash", hitsfx: "Freeze", school: "Elements", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", time: 4,
 		power: 3, delay: 0, range: 50, damage: "frost", speed: 2, playerEffect: {name: "Damage"},
+		evadeable: true,
 		bulletColor: 0x92e4e8, bulletLight: 3,
 		events: [{type: "ElementalOnSlowOrBindOrDrench", trigger: "bulletHitEnemy", damage: "ice", time: 3, power: 0},]},
 	{name: "Boulder", sfx: "Bones", hitsfx: "HeavySwing", school: "Elements", manacost: 3, components: ["Arms"], level:1,
@@ -2250,7 +2295,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "RopeEngulf", color: "#ff2200", sfx: "Struggle", effectTileDurationMod: 10, effectTileDensity: 0.33, effectTile: {
 		name: "Ropes",
 		duration: 20,
-	}, manacost: 3, minRange: 0, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4.5, range: 2, size: 3, aoe: 1, lifetime: 1, damage: "chain", playerEffect: {name: "RopeEngulf", power: 2}},
+	}, manacost: 3, minRange: 0, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4.5, range: 2, size: 3, aoe: 1, lifetime: 1, damage: "chain", playerEffect: {name: "RopeEngulf", power: 3}},
 	{enemySpell: true, name: "RopeEngulfWeak", color: "#ff2200", sfx: "Struggle", effectTileDurationMod: 10, effectTile: {
 		name: "Ropes",
 		duration: 20,
@@ -2325,7 +2370,10 @@ let KinkyDungeonSpellListEnemies = [
 		duration: 20,
 	},},
 	{enemySpell: true, name: "BanditBola",  bindType: "Rope", color: "#ff2200", sfx: "Miss", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 1.5, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "BanditBola"}}, // Throws a chain which stuns the target for 1 turn
-	{enemySpell: true, name: "WitchRope",  bindType: "Rope", color: "#ff2200", sfx: "Miss", effectTileDurationMod: 10, effectTile: {
+
+
+
+	{enemySpell: true, name: "WitchRope",  bindType: "Rope", color: "#ffae70", sfx: "Miss", effectTileDurationMod: 10, effectTile: {
 		name: "Ropes",
 		duration: 20,
 	}, manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "chain", speed: 3, playerEffect: {name: "SingleRope"}},
@@ -2918,7 +2966,15 @@ let KDSpecialBondage = {
 	"Rope": {
 		priority: -3,
 		color: "#ffae70",
-		struggleRate: 2.0,
+		struggleRate: 4.0,
+		powerStruggleBoost: 1.0,
+		healthStruggleBoost: 1.0,
+		enemyBondageMult: 2.0,
+	},
+	"MagicRope": {
+		priority: -4,
+		color: "#b7e892",
+		struggleRate: 1.5,
 		powerStruggleBoost: 1.0,
 		healthStruggleBoost: 1.0,
 		enemyBondageMult: 2.0,
@@ -3087,6 +3143,20 @@ let KDCastConditions = {
 		if (target.player && !KinkyDungeonPlayerTags.get("ItemMouthFull")) {
 			return true;
 		}
+		return false;
+	},
+	"EnemyEnchantRope": (enemy, target) => {
+		if (target.player && KinkyDungeonPlayerTags.get("RopeSnake")) {
+			return true;
+		}
+		else if (target?.specialBoundLevel?.Rope > 0) return true;
+		return false;
+	},
+	"EnemyEnchantRope2": (enemy, target) => {
+		if (target.player && (KinkyDungeonPlayerTags.get("RopeSnake") || KinkyDungeonPlayerTags.get("WeakMagicRopes"))) {
+			return true;
+		}
+		else if (target?.specialBoundLevel?.Rope > 0) return true;
 		return false;
 	},
 };

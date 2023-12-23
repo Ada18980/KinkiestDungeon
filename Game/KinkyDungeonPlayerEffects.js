@@ -18,6 +18,16 @@ let KDPlayerEffects = {
 		}
 		return {sfx: "Shield", effect: false};
 	},
+	"Disrobe": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let RopeDresses = ["Leotard", "Bikini", "Lingerie"];
+		if (!RopeDresses.includes(KinkyDungeonCurrentDress)) {
+			KinkyDungeonSetDress(RopeDresses[Math.floor(Math.random() * RopeDresses.length)], "");
+			KinkyDungeonDressPlayer();
+			KinkyDungeonSendTextMessage(1, TextGet("KDWitchShibariDisrobe").replace("ENMY", TextGet("Name" + entity)), "#ffff00", 3);
+			return {sfx: "Tickle", effect: true};
+		}
+		return {sfx: "", effect: false};
+	},
 	"EnvDamage": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage, flags: playerEffect?.flags}, bullet);
 		if (dmg.happened) {
@@ -892,6 +902,48 @@ let KDPlayerEffects = {
 
 		return {sfx: "RubberBolt", effect: effect};
 	},
+	"EnchantRope": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let effect = false;
+		let transmuteLevel = 0;
+		if (KinkyDungeonPlayerTags.get("RopeSnake")) {
+			transmuteLevel = 1;
+		}
+		if (playerEffect.power > 1 && KinkyDungeonPlayerTags.get("WeakMagicRopes")) {
+			transmuteLevel = 2;
+		}
+
+		if (transmuteLevel > 0) {
+			if (KDTestSpellHits(spell, 0.0, 1.0)) {
+
+
+				if (transmuteLevel > 1) {
+					for (let inv of KinkyDungeonAllRestraintDynamic()) {
+						if (KDRestraint(inv.item)?.shrine?.includes("WeakMagicRopes")) {
+							KDChangeItemName(inv.item, Restraint,KDRestraint(inv.item).name.replace("WeakMagicRope", "StrongMagicRope"));
+							effect = true;
+						}
+					}
+				}
+
+				if (transmuteLevel > 0) {
+					for (let inv of KinkyDungeonAllRestraintDynamic()) {
+						if (KDRestraint(inv.item)?.shrine?.includes("RopeSnake")) {
+							KDChangeItemName(inv.item, Restraint,KDRestraint(inv.item).name.replace("RopeSnake", "WeakMagicRope"));
+							effect = true;
+						}
+					}
+				}
+
+				if (effect && transmuteLevel > 0) {
+					KinkyDungeonSendTextMessage(7, TextGet("KDEnchantRope" + transmuteLevel), "#ff5555", 1);
+
+				}
+			}
+		}
+
+		return {sfx: "MagicSlash", effect: effect};
+	},
+
 	"Slime": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
 		if (KDTestSpellHits(spell, 0.5, 0.5)) {
@@ -1168,9 +1220,9 @@ let KDPlayerEffects = {
 		if (KDTestSpellHits(spell, 0.5, 0.5)) {
 			let added = [];
 			for (let i = 0; i < playerEffect.power; i++) {
-				let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeMagicStrong", "ropeAuxiliary", "clothRestraints", "tapeRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+				let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeRestraints", "ropeAuxiliary", "clothRestraints", "tapeRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 				if (restraintAdd) {
-					KDPlayerEffectRestrain(spell, 1, ["ropeMagicStrong", "ropeAuxiliary", "clothRestraints", "tapeRestraints"], faction);
+					KDPlayerEffectRestrain(spell, 1, ["ropeRestraints", "ropeAuxiliary", "clothRestraints", "tapeRestraints"], faction);
 					KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 					added.push(restraintAdd);
 					effect = true;

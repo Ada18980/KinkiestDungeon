@@ -2201,14 +2201,14 @@ const KDEventMapBuff = {
 			}
 		},
 		"Flammable": (e, buff, entity, data) => {
-			if ((!data.flags || !data.flags.includes("BurningDamage")) && !KDEntityHasBuff(entity, "Drenched") && data.dmg > 0 && (data.type == "fire")) {
+			if (entity == data.enemy && (!data.flags || !data.flags.includes("BurningDamage")) && !KDEntityHasBuff(entity, "Drenched") && data.dmg > 0 && (data.type == "fire")) {
 				KinkyDungeonApplyBuffToEntity(entity, KDBurning);
 			}
 		},
 	},
 	"beforePlayerDamage": {
 		"Flammable": (e, buff, entity, data) => {
-			if ((!data.flags || !data.flags.includes("BurningDamage")) && !KDEntityHasBuff(entity, "Drenched") && data.dmg > 0 && (data.type == "fire")) {
+			if (entity == KinkyDungeonPlayerEntity && (!data.flags || !data.flags.includes("BurningDamage")) && !KDEntityHasBuff(entity, "Drenched") && data.dmg > 0 && (data.type == "fire")) {
 				KinkyDungeonApplyBuffToEntity(entity, KDBurning);
 			}
 		},
@@ -5438,7 +5438,11 @@ let KDEventMapWeapon = {
 		"AoEDamageBurning": (e, weapon, data) => {
 			let trigger = false;
 			for (let enemy of KDMapData.Entities) {
-				if (KDHostile(enemy) && KDEntityHasBuff(enemy, "Burning") && (!e.chance || KDRandom() < e.chance) && enemy.hp > 0 && KDistEuclidean(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) <= e.aoe) {
+				if (KDHostile(enemy)
+					&& KDEntityHasBuff(enemy, "Burning")
+					&& (!e.chance || KDRandom() < e.chance)
+					&& enemy.hp > 0
+					&& KDistEuclidean(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) <= e.aoe) {
 					KinkyDungeonDamageEnemy(enemy, {
 						type: e.damage,
 						damage: e.power,
@@ -6351,6 +6355,17 @@ let KDEventMapBullet = {
 				}
 			}
 		},
+
+		"EnchantRope": (e, b, data) => {
+			if (b && data.enemy) {
+				if (data.enemy.specialBoundLevel?.Rope) {
+					KDTieUpEnemy(data.enemy, data.enemy.specialBoundLevel.Rope, "MagicRope", "arcane", true);
+					data.enemy.boundLevel -= data.enemy.specialBoundLevel.Rope;
+					delete data.enemy.specialBoundLevel.Rope;
+				}
+			}
+		},
+
 		"Elemental": (e, b, data) => {
 			if (b && data.enemy) {
 				KinkyDungeonDamageEnemy(data.enemy, {

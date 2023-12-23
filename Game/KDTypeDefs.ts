@@ -1868,6 +1868,8 @@ interface spell {
 	classSpecific?: string;
 	/** Verbal, arms, or legs */
 	components?: string[];
+	/** The bullet's position is always fixed toward the caster */
+	followCaster?: boolean,
 	/** Spell level */
 	level: number;
 	/** Whether the spell is passive (like the summon count up) or active like the bolt or toggle spells*/
