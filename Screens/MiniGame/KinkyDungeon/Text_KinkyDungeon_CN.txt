@@ -9455,6 +9455,17 @@ Deals tickle damage. Distracts enemies. Offhand: +15 distraction on attack for 1
 You pick up a feather duster.
 你拿起鸡毛掸子。
 
+Rope Rune
+绳索符文
+You smash the rune in front of you, and a flash of light enchants nearby ropes!
+你打碎了面前的符文，一道闪光对附近的绳子施了魔法！
+It feels tantalizing to look at.
+让人看着就觉得很诱人。
+Allows you to enchant ropes into more powerful restraints.
+允许你将绳索附魔成更强大的束缚。
+You pick up a kinky trinket with a glowing red sigil.
+你拿起一个带有发光红色印记的古怪饰品。
+
 You pick up a heavy flail.
 你拿起了沉重的流星锤。
 You pick up a shortspear.
@@ -10534,16 +10545,39 @@ You a hurl a strand of chain!
 你投掷出一条锁链！
 Choose aim direction
 选择发射方向
+
+Enchant Rope
+附魔绳索
+Rope Enchantment
+绳索魔法
+Spellbinding
+诱惑
+Convert rope binding on a target into magical bindings, which are much more powerful. Deals a small amount of arcane damage.
+将目标上的绳索束缚转化为魔法束缚，威力更加强大。造成少量奥术伤害。
+You whisper an enchanting tale of rope bondage...
+你低声地对着绳索束缚施着魔法……
+Choose targets to tighten the ropes of
+选择目标来收紧绳索
+
 Conjure Ropes
 召唤绳索
 Animated Rope
-移动的绳索
-Launch 3 ropes that deal DamageDealt chain damage each and add 22 rope binding.
-发射 3 根绳索，每根绳索造成 DamageDealt 点锁链伤害，并增加 22 点绳索束缚。
+活化绳索
+Launch 3 ropes that deal DamageDealt chain damage each and add 32 rope binding.
+发射 3 根绳索，每根绳索造成 DamageDealt 点锁链伤害，并增加 32 点绳索束缚。
 You animate a bunch of ropes!
 你让一堆绳子动了起来！
 Choose aim direction
 选择发射方向
+
+Ropestorm
+绳索风暴
+Launch 9 ropes that deal DamageDealt chain damage each and add 32 rope binding. Best in open spaces.
+发射 9 根绳索，每根绳索都会造成 DamageDealt 锁链伤害，并添加 32 根绳索束缚。最好在空旷的空间下使用。
+You animate a sizeable quantity of ropes!
+你活化了大量的绳索！
+
+
 Steel Torrent
 钢铁洪流
 Steel Rain
@@ -11206,8 +11240,8 @@ Choose location for trap
 选择陷阱位置
 Rope Burst
 绳索爆发
-An explosion of rope deals DamageDealt chain damage in a 3x3 AoE and applies 40 points of rope binding. Snares for Duration turns.
-使绳索在 3x3 区域内爆发，造成 DamageDealt 点锁链伤害，增加 40 点绳索束缚，并拘束 Duration 回合。
+An explosion of rope deals DamageDealt chain damage in a 3x3 AoE and applies 50 points of rope binding. Snares for Duration turns.
+使绳索在 3x3 区域内爆发，造成 DamageDealt 点锁链伤害，增加 50 点绳索束缚，并拘束 Duration 回合。
 You call forth ropes from the abyss!
 你从深渊中召唤绳索！
 Select center of a a 3x3 AoE
@@ -12246,8 +12280,8 @@ A vine slithers across your body and tightens!
 一根藤蔓滑过你的身体并收紧！
 The spell hits you and slows you down!
 咒语击中你并减慢你的速度！
-Rope
-绳索
+Witch's Rope
+女巫的绳索
 Rope Tendrils
 绳卷须
 Blessed Wrappings
@@ -12732,8 +12766,8 @@ Bellows
 （你在地板上发现了一个雕刻，一个半完成的天界咒法法阵。也许一个牧师想召唤一个天使来指导，然后才意识到不远处有一座神殿，她可以在那里更多地接触天堂容易地。）
 (It looks like a... receipt) Thank you for your offering to CELESTIAL COMMERCE. Please accept this fine-quality steel blade as compensation for your continued devotion and selflessness.
 （看起来像……收据）感谢您向 CELESTIAL COMMERCE 提供的服务。请接受这把优质钢刀片作为对您持续奉献和无私的补偿。
-(A note written in cursive) To whomever assaulted our courier and left them tied up here: The shrines of the Goddess of ILLUSION are NOT to be used in this manner. If you desire a subject for your lewd experimentations, please attempt to do so on one of the locals and for heaven's sake do not call up an angelic courier just so you may tie her up. It does not matter than she consented, nor that you paid, our couriers have responsibilities that they must attend to. Signed: HERONA, enforcer of the GODDESS of ILLUSIONS.
-（草书纸条） 对袭击我们的信使并将他们绑在此处的人： 幻象女神的神殿不得以这种方式使用。如果你想要一个用于你下流实验的主题，请尝试在其中一个当地人身上这样做，看在上帝的份上，不要打电话给天使信使，这样你就可以把她绑起来。不管她是否同意，你是否支付，我们的快递员都有他们必须承担的责任。签名：HERONA，幻象女神的执行者。
+(A note written in cursive) To whomever assaulted our courier and left them tied up here: The shrines of the Goddess of ILLUSION are NOT to be used in this manner. If you desire a subject for your lewd experimentations, please attempt to do so on one of the locals and for heaven's sake do not call up an angelic courier just so you may tie her up. It does not matter that she consented, nor that you paid, our couriers have responsibilities that they must attend to. Signed: HERONA, enforcer of the GODDESS of ILLUSIONS.
+（草书字条）致那些袭击我们的信使并把他们绑在这里的人：幻影女神的神殿不能以这种方式使用。如果你想要一个淫荡实验的对象，请尝试在当地人身上这样做，看在老天爷的份上，不要打电话给天使信使，这样你就可以把她绑起来。 无论她是否同意，也无论您是否付款，我们的快递员都有必须承担的责任。署名：HERONA，幻象女神的执行者。
 (From an essay titled 'On Celestial Supply Chains') It is known that the heavens seek gold. We do not know why it is that the heavens seek it, but we do know that the Goddesses grant us fragments of their limitless power in exchange for this otherwise-useless metal we dredge up from the earth. They care about it so much that shrines are commonplace, each hosting an angelic courier lying in wait for any adventurer willing to part with hers.
 （摘自一篇题为《论天上供应链》的文章）众所周知，天上求金。我们不知道为什么上天会寻找它，但我们知道女神赐予我们无限力量的碎片，以换取我们从地球上挖出的这种原本无用的金属。他们非常关心它，以至于神社司空见惯，每个神社都有一个天使信使，等待任何愿意与她分手的冒险者。
 I am writing this from inside prison. Who would have known they cared so much about me using a shrine? Sheesh.
@@ -20065,3 +20099,21 @@ The rubber elemental squeezes you with its appendages! (DamageTaken)
 橡胶精灵用它的附肢挤压你！（DamageTaken）
 The rubber elemental forms rubber locks around all your restraints! (DamageTaken)
 橡胶精灵在你的所有束缚具周围形成橡胶锁！（DamageTaken）
+
+Your ropes are enchanted with a lesser spell!
+你的绳索被一个较小的咒语所附魔！
+Your ropes are enchanted with a magic spell!
+你的绳索被施了魔法！
+
+Shibari Witch
+绑缚女巫
+The shibari witch blows a kiss and says goodbye.
+绑缚女巫飞吻道别。
+The shibari witch ties you tight! (+RestraintAdded)
+绑缚女巫把你绑得紧紧的！（+RestraintAdded）
+The witch dangles a lock in front of you before putting it on! (DamageTaken)
+女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
+The witch rubs your body sensually! (DamageTaken)
+女巫性感地摩擦你的身体！（DamageTaken）
+The ENMY takes your clothes off!
+ENMY 脱去了你的衣服！
