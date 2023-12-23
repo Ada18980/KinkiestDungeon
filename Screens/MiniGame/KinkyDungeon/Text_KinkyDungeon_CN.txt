@@ -830,6 +830,16 @@ Nowhere is Safe
 草木皆兵
 Beds and furniture are often trapped.
 床和木桶经常会是陷阱。
+
+Bullet Hell
+子弹地狱
+Hides warning lines for non-AoE bullets and projectiles.
+隐藏非有效区域子弹和射弹的警告线。
+Bullet Armageddon
+子弹末日
+Hides warning lines for AoE spells, bullets, and projectiles.
+隐藏区域法术、子弹和射弹的警告线。
+
 Apprehended
 逮捕
 When you are bound by an enemy attack or spell, you are stunned 1 turn per restraint added.
@@ -4411,14 +4421,14 @@ The alkahestor shoves you! (DamageTaken)
 You rescue the Alkahestor
 你救下了万能炼金士。
 
-Latex Elemental
-乳胶精灵
-The latex elemental melts into sticky rubber.
-乳胶精灵融化成了黏糊糊的橡胶。
-The latex elemental molds itself into restraints! (+RestraintAdded)
-乳胶精灵将自己塑造成拘束具！（+RestraintAdded）
-The latex elemental slaps you with its appendages! (DamageTaken)
-乳胶精灵用它的肢体拍打你！（DamageTaken）
+Latex Homunculus
+乳胶小人
+The latex homunculus melts into sticky rubber.
+乳胶小人融化成了黏糊糊的橡胶。
+The latex homunculus molds itself into restraints! (+RestraintAdded)
+乳胶小人将自己塑造成拘束具！（+RestraintAdded）
+The latex homunculus slaps you with its appendages! (DamageTaken)
+乳胶小人用它的肢体拍打你！（DamageTaken）
 
 Rope Elemental
 绳索精灵
@@ -4703,10 +4713,8 @@ Fuuka uses a talisman to call forth the spirits of her pets!
 Fuuka 使用丝带召唤她的宠物的灵魂！
 A pool of latex bubbles and a twisted elemental appears!
 一池乳胶冒出气泡，一个扭曲的精灵出现了！
-Latex Elemental
-乳胶精灵
-Latex Elemental
-乳胶精灵
+Latex Homunculus
+乳胶小人
 Red Slime
 红粘液团
 The red slime bounces away.
@@ -5627,6 +5635,14 @@ The lock seems to be magical and rejects all picking attempts!
 这把锁似乎很神奇，拒绝所有的撬锁尝试！
 The lock is definitely magical and forces your pick out!
 锁绝对是神奇的，其迫使你必须撬锁！
+The lock is divine. A mortal shouldn't even try to pick it.
+锁是神圣的。一个凡人不应该试图去摘它。
+You must perform your quest! Don't even think of unlocking it...
+你必须完成你的任务！否则就别想解锁……
+The lock is made of solid rubber. You can't pick that.
+锁由实心橡胶制成。你解不开它。
+You need something sharp to cut the lock.
+你需要一些锋利的东西来切断锁。
 The lock doesn't even have a keyhole to pick!
 这锁甚至连钥匙孔都没有！
 The lock is brimming with security features and is nigh impossible to pick!
@@ -6019,6 +6035,8 @@ Secure
 安全
 Disc
 圆盘
+Rubber
+橡胶
 Divine
 神圣
 Simple
@@ -6129,8 +6147,8 @@ AMNT% regen from mana pool
 来自法力池 AMNT% 的回复
 AMNT mana pool on capture
 AMNT 捕获时的法力池
-AMNT% Visibility
-AMNT% 可见度
+AMNT% Visibility Reduction
+AMNT% 可见度降低
 AMNT Distraction Decay
 AMNT 分心衰减
 AMNT Distraction Per Turn
@@ -6300,6 +6318,8 @@ Secure Lock
 安全锁
 Disc Lock
 圆盘锁
+Rubber Lock
+橡胶锁
 Divine Lock
 神圣锁
 Simple Lock
@@ -10429,7 +10449,7 @@ Choose target location (2 tile range)
 选择施放位置（2 格范围）
 Blink III
 扭曲
-Instantly teleport up to 2 tiles away. Must have vision of the target point. 
+Instantly teleport up to 2 tiles away. Must have vision of the target point.
 立即传送至 2 格之外。目标位置必须可视。
 Choose target location (3 tile range)
 选择施放位置（3 格范围）
@@ -11196,34 +11216,6 @@ Leather Package
 皮革包裹
 After conjuring a leather restraint, you can conjure up to three more without advancing time.
 在召唤出皮革拘束具后，可在同一回合内继续召唤 3 个拘束具。
-Conjure Gag
-召唤口球
-Conjured Gag
-咒术口球
-The gag forces itself into your mouth and buckles tightly!
-口球自动进入你的嘴巴并紧紧扣住！
-The gag hits you! (DamageDealt)
-口球击中了你！（造成 DamageDealt 点伤害）
-Summons a gag which deals DamageDealt chain damage and silences for 15 turns. +40 binding if target is not silenced.
-召唤一个造成 DamageDealt 点锁链伤害并沉默 15 回合的口球。对沉默个体增加 40 点束缚。
-You conjure a gag!
-你召唤出口球！
-The gag will appear next to you and fly toward the target point.
-口球出现在你旁边并飞向目标点。
-Conjure Armbinder
-召唤束手套
-Conjured Armbinder
-魔法束手套
-The armbinder slips itself around your arms and buckles itself tightly!
-束手套紧紧包住了你的手臂！
-The armbinder hits you! (DamageDealt)
-束手套击中了你！（造成 DamageDealt 点伤害）
-Summons an armbinder which deals DamageDealt chain damage and disarms for 13 turns. Also removes 2 Block tokens from enemy. Cannot be blocked.
-召唤一个束手套，造成 DamageDealt 连锁伤害并缴械，持续 13 回合。还会敌人身上移除 2 个方块标记。无法被阻止。
-You conjure a armbinder!
-你召唤出束手套！
-The armbinder will appear next to you and fly toward the target point.
-束手套出现在你旁边并飞向目标点。
 Conjure Leather Cuffs
 召唤皮革铐
 Conjured Leather Cuffs
@@ -11264,12 +11256,42 @@ You conjure a pair of cuffs!
 你召唤了一对手铐！
 The cuffs will appear next to you and fly toward the target point.
 皮革铐出现在你身边并飞向目标点。
+
+Conjure Gag
+召唤口塞
+Conjured Gag
+魔法口塞
+The gag forces itself into your mouth and buckles tightly!
+口塞自动塞入你的嘴巴并紧紧扣住！
+The gag hits you! (DamageDealt)
+口塞击中了你！（造成 DamageDealt 点伤害）
+Summons a gag which deals DamageDealt chain damage and silences for 15 turns. +40 binding if target is not silenced.
+召唤一个造成 DamageDealt 点锁链伤害并沉默 15 回合的口塞。对沉默个体增加 40 点束缚。
+You conjure a gag!
+你召唤出口塞！
+The gag will appear next to you and fly toward the target point.
+口塞出现在你旁边并飞向目标点。
+Conjure Armbinder
+召唤束手套
+Conjured Armbinder
+魔法束手套
+The armbinder slips itself around your arms and buckles itself tightly!
+束手套自动套在你的手臂上并紧紧包住了你的手臂！
+The armbinder hits you! (DamageDealt)
+束手套击中了你！（造成 DamageDealt 点伤害）
+Summons an armbinder which deals DamageDealt chain damage and disarms for 13 turns. Also removes 2 Block tokens from enemy. Cannot be blocked.
+召唤一个束手套，造成 DamageDealt 连锁伤害并缴械，持续 13 回合。还会敌人身上移除 2 个方块标记。无法被阻止。
+You conjure a armbinder!
+你召唤出束手套！
+The armbinder will appear next to you and fly toward the target point.
+束手套出现在你旁边并飞向目标点。
+
 Conjure Legbinder
 召唤束腿套
 Conjured Legbinder
 魔法束腿套
 The legbinder slips itself around your legs and buckles itself tightly!
-束腿套紧紧包住了你的腿！
+束腿套自动套在你的腿上并紧紧包住了你的腿！
 The legbinder hits you! (DamageDealt)
 束腿套击中了你！（造成 DamageDealt 点伤害）
 Summons a legbinder which deals DamageDealt chain damage and snares for 10 turns. +50 binding if target is not snared. Cannot be blocked.
@@ -11278,6 +11300,56 @@ You conjure a legbinder!
 你召唤出束腿套！
 The legbinder will appear next to you and fly toward the target point.
 束腿套出现在你旁边并飞向目标点。
+
+Conjure Latex Gag
+召唤乳胶口塞
+Conjured Latex Gag
+魔法乳胶口塞
+Latex Gag
+乳胶口塞
+Latex Glob
+乳胶球
+The gag forces itself into your mouth and snaps on tightly!
+口塞自动塞入你的嘴里并紧紧地扣住！
+The amorphous rubber stretches out into a restraint on your body!
+不规则的橡胶伸展开来，形成对你身体的束缚！
+The amorphous rubber sticks to you! (DamageDealt)
+不规则的橡胶粘在了你的身上！（DamageDealt）
+Summons a gag which deals DamageDealt glue damage and silences for 15 turns. +40 binding if target is not silenced.
+召唤一个口塞，造成 DamageDealt 胶水伤害并沉默 15 回合。如果目标没有被沉默，则 +40 捆绑。
+The gag will appear next to you and fly toward the target point.
+口塞出现在你旁边并飞向目标点。
+
+Conjure Latex Armbinder
+召唤乳胶束手套
+Conjured Latex Armbinder
+魔法乳胶束手套
+Latex Armbinder
+乳胶束手套
+The armbinder slips itself around your arms and snaps on tightly!
+束手套自动滑入你的手臂上并紧紧包住了你的手臂！
+Summons an armbinder which deals DamageDealt glue damage and disarms for 13 turns. Cannot be blocked.
+召唤一件束手套，造成 DamageDealt 胶水伤害并解除武装，持续 13 回合。无法被阻挡。
+You conjure a armbinder!
+你召唤了一件束手套！
+The armbinder will appear next to you and fly toward the target point.
+束手套出现在你旁边并飞向目标点。
+
+Conjure Latex Legbinder
+召唤乳胶束腿套
+Conjured Latex Legbinder
+魔法乳胶束腿套
+Latex Legbinder
+乳胶束腿套
+The legbinder slips itself around your legs and snaps on tightly!
+束腿套自动滑入你的腿上并紧紧包住了你的腿！
+Summons a legbinder which deals DamageDealt glue damage and snares for 10 turns. +50 binding if target is not snared. Cannot be blocked.
+召唤束腿套，造成 DamageDealt 胶水伤害并召唤陷阱，持续 10 回合。如果目标没有被诱捕，则 +50 捆绑。无法被阻挡。
+You conjure a legbinder!
+你召唤了一件束腿套！
+The legbinder will appear next to you and fly toward the target point.
+束腿套出现在你旁边并飞向目标点。
+
 Conjure Straitjacket
 召唤拘束衣
 Conjured Straitjacket
@@ -11286,8 +11358,8 @@ The straitjacket slips itself around your body and pulls your arms into its slee
 拘束衣紧紧包住了你的身体，把你的手臂拉入了袖口！
 The straitjacket hits you! (DamageDealt)
 拘束衣击中了你！（造成 DamageDealt 点伤害）
-Summons a straitjacket which adds DamageDealt binding and reduces struggle speed for 14 turns. Also removes 3 Block tokens from enemy. Cannot be blocked.
-召唤一件造成 DamageDealt 点束缚的拘束衣，并降低挣扎速度 14 回合。还会从敌人身上移除 3 个方块标记。无法被阻挡。
+Summons a straitjacket which adds DamageDealt binding and reduces struggle speed for 14 turns. Cannot be blocked.
+召唤一件造成 DamageDealt 点束缚的拘束衣，并降低挣扎速度 14 回合。无法被阻挡。
 You conjure a straitjacket!
 你召唤了出拘束衣！
 The straitjacket will appear next to you and fly toward the target point.
@@ -13023,8 +13095,8 @@ In a burst of mist, a group of water elementals appear around you!
 一阵雾气中，一群水精灵出现在你身边！
 A group of earth elementals rise out of the ground!
 一群大地精灵从地里出现！
-You hear pouring liquid and a group of latex elementals come out of the walls!
-你听到倒出液体的声音，一群乳胶精灵从墙上冒出来！
+You hear pouring liquid and a group of rubber elementals come out of the walls!
+你听到倒出液体的声音，一群橡胶精灵从墙上冒出来！
 In a flash of light, a group of air elementals appear around you!
 光芒一闪，一群风精灵出现在你身边！
 Several ethereal hands appear all around you!
@@ -13520,6 +13592,12 @@ The air swirls with traces of pleasing magic...
 空气中弥漫着令人愉悦的魔法痕迹……
 The spores make you feel sleepy...
 孢子让你感到疲劳...
+
+Physical Block: AMOUNT
+物理防砍：AMOUNT
+Magic Block: AMOUNT
+魔法防砍：AMOUNT
+
 DAMAGETYPE: MULTIPLIERx modifier
 DAMAGETYPE：MULTIPLIERx 修正
 Physical Armor: AMOUNT
@@ -13820,6 +13898,20 @@ You found a keyring to the stairs! Now you just need to get there.
 There seems to be a locked high-security door. Looks like you need a key.
 似乎有一扇锁着的高安全门。看来你需要一把钥匙。
 
+Oh noes...
+哦不……
+Ueeee!
+呃呃！
+I don't want to be your slave!
+我不想成为你的奴隶！
+Catch me if you can!
+如果可以的话来抓我吧！
+I've been naughty, looks like I need to be punished...
+我太调皮了，看来我需要受到惩罚……
+I've been a bad girl, won't you do something about it?
+我是个坏女孩，你能做点什么吗？
+Mmmph... maybe I talk too much...
+嗯嗯……可能是我说太多了……
 Well well, what have we got here?
 好了好了，看看这是什么？
 You're not here to take away my pets, are you?
@@ -13907,8 +13999,16 @@ You can't do that!
 Hey, stop that!
 嘿，别这样！
 
+Release me at once.
+赶紧放开我。
+This is unacceptable!
+这是无法接受的！
+Guards! Guards... Guards? Well drat.
+警卫！警卫……警卫？ 好吧，该死。
+You'll never get away with this!
+你永远逃脱不了这个！
 Look, another one of my dolls~
-你看，我的又一个玩偶~
+看，我的又一个玩偶~
 Come to me, my lovely thing~
 来找我吧，我的小可爱~
 I want to hear you moan~
@@ -13988,6 +14088,10 @@ Fine, then.
 Know your place!
 知道你的位置！
 
+This is too tight...
+这太紧了...
+I can't get free!
+我无法获得自由！
 Catch me if you can!
 如果可以的话来抓我吧！
 You'll never get away with this!
@@ -14224,6 +14328,12 @@ You're mine.
 You can't get away.
 你无法逃脱。
 
+*wiggles*
+*摇晃*
+*struggles*
+*挣扎*
+*rattles*
+*惊恐*
 This is a bug, please report
 这是一个漏洞，请反馈
 *starts chasing you*
@@ -14298,6 +14408,16 @@ This is a bug, please report
 *嘎嘎作响*
 *marches*
 *游荡*
+
+This... this can't be...
+这……这不可能……
+Release me mortal!
+放开我！你这个凡人！
+How did you do this!?
+你是怎么做到的！？
+You won't get me like this!
+你不会这样得到我的！
+
 
 This... this unit is doing a good job! I swear!
 这……这个小队干得很好！我发誓！
@@ -19673,7 +19793,7 @@ The gag geist teases you playfully!! (DamageTaken)
 The gag geist gags the girl with a ghastly grimace! (+RestraintAdded)
 恶作剧幽灵做了一个可怕的鬼脸，堵住了女孩的嘴！（+RestraintAdded）
 
-Poltergeist 
+Poltergeist
 捣蛋鬼
 The poltergeist goes silent.
 捣蛋鬼沉默了。
@@ -19906,3 +20026,42 @@ The bag can't cover that light source.
 袋子遮不住那个光源。
 You remove the bag from its light source and place it back inside your bag.
 你将袋子从光源上取下，然后将其放回袋子内。
+
+There. Now it's time to have some fun~
+那样。现在是时候好好享受一下了~
+How utterly helpless~
+真是无能为力啊~
+Let's see how long you last.
+让我看看你能坚持多久。
+
+I've got you! Now let's have some fun!
+你是我的了！现在让我们一起开心的玩吧！
+I think I'll help myself to you for a bit~
+我想我会帮你一点忙的~
+Gosh, you're so cute like that!
+天哪，你真是太可爱了！
+
+I'm going to have to search you, miss~
+我得去找你了，小姐~
+Let's check your restraints.
+让我检查一下你的束缚。
+You look so cute like that, miss!
+你这样看起来真可爱，小姐！
+
+All nice and tight. Certainly no longer a threat~
+一切又好又紧。你不再是个威胁了~
+I'm going to make sure you're nice and tight~
+我会确保你又好又紧~
+Surely nothing can happen now!
+现在肯定什么都不会发生了！
+
+Rubber Elemental
+橡胶精灵
+The rubber elemental's restraints snap onto her and she falls over hogtied.
+橡胶精灵的束缚突然卡在了她身上，她被绑住了。
+The rubber elemental molds itself into restraints! (+RestraintAdded)
+橡胶精灵将自身塑造成束缚具！（+RestraintAdded）
+The rubber elemental squeezes you with its appendages! (DamageTaken)
+橡胶精灵用它的附肢挤压你！（DamageTaken）
+The rubber elemental forms rubber locks around all your restraints! (DamageTaken)
+橡胶精灵在你的所有束缚具周围形成橡胶锁！（DamageTaken）
