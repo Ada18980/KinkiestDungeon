@@ -241,3 +241,24 @@ AddModel({
 		...GetModelLayers("IronBelt", "Hardware", "", "Hardware", 0.4),
 	])
 });
+
+
+
+
+AddModel(GetModelFashionVersion("LeatherCollar", true));
+AddModel(GetModelFashionVersion("LeatherBelt", true));
+AddModel(GetModelFashionVersion("LeatherCollarBell", true));
+AddModel(GetModelFashionVersion("LeatherCollarBow", true));
+AddModel(GetModelFashionVersion("CuffsWristLeft", true));
+AddModel(GetModelFashionVersion("CuffsWristRight", true));
+AddModel(GetModelFashionVersion("CuffsWrists", true));
+AddModel(GetModelFashionVersion("CuffsElbowLeft", true));
+AddModel(GetModelFashionVersion("CuffsElbowRight", true));
+AddModel(GetModelFashionVersion("CuffsElbows", true));
+AddModel(GetModelFashionVersion("CuffsArms", true));
+AddModel(GetModelFashionVersion("CuffsAnklesLeft", true));
+AddModel(GetModelFashionVersion("CuffsAnklesRight", true));
+AddModel(GetModelFashionVersion("CuffsAnkles", true));
+AddModel(GetModelFashionVersion("CuffsThighLeft", true));
+AddModel(GetModelFashionVersion("CuffsThighRight", true));
+AddModel(GetModelFashionVersion("CuffsThigh", true));

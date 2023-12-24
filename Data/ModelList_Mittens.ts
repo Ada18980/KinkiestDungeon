@@ -141,3 +141,11 @@ AddModel({
 		...GetModelLayers("LeatherPawMittenRight"),
 	])
 });
+
+
+AddModel(GetModelFashionVersion("LeatherMittenRight", true));
+AddModel(GetModelFashionVersion("LeatherMittenLeft", true));
+AddModel(GetModelFashionVersion("LeatherMittens", true));
+AddModel(GetModelFashionVersion("LeatherPawMittenRight", true));
+AddModel(GetModelFashionVersion("LeatherPawMittenLeft", true));
+AddModel(GetModelFashionVersion("LeatherPawMittens", true));

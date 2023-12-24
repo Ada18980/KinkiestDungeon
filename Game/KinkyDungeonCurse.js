@@ -20,6 +20,15 @@ let KDCurseUnlockList = {
 		"TakeDamageChain",
 		"OrgasmResist",
 		"Mana",
+		"SacrificeMage",
+	],
+	"Divine": [
+		"ShrineWill",
+		"ShrineIllusion",
+		"ShrineElements",
+		"ShrineConjure",
+		"OrgasmResist",
+		"SacrificeMage",
 	],
 	"CursedCollar": [
 		"CursedDamage",
@@ -233,6 +242,19 @@ let KDCurses = {
 		remove: (item, host) => {},
 		events: [
 			{type: "RemoveOnDmg", power: 1, count: 5, damage: "chain", trigger: "beforePlayerDamage", kind: "CurseChain"}
+		],
+	},
+	"SacrificeMage" : {
+		powerMult: 2.5,
+		activatecurse: true,
+		level: 6,
+		weight: (item) => {
+			return 10;
+		},
+		condition: (item) => {return false;},
+		remove: (item, host) => {},
+		events: [
+			{type: "SacrificeMage", power: 1, count: 5, mult: 1, trigger: "capture", kind: "SacrificeMage"}
 		],
 	},
 	"Will" : {
@@ -467,6 +489,12 @@ function KinkyDungeonCurseUnlock(group, index, Curse) {
 		else console.log("Error! Please report the item combination and screenshot to Ada!");
 	}
 
+	let inventoryAs = restraint.inventoryVariant || (KDRestraint(restraint).inventoryAs);
+	restraint.curse = undefined;
+	if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+		KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+	}
+
 	if (KDCurses[Curse]) {
 		KDCurses[Curse].remove(restraint, host);
 	}
@@ -480,6 +508,8 @@ function KinkyDungeonCurseUnlock(group, index, Curse) {
 			KinkyDungeonRemoveRestraint(group, keep, undefined, undefined, undefined, undefined, KinkyDungeonPlayerEntity);
 		}
 	}
+
+	
 }
 
 /**

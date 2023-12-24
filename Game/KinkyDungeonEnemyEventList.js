@@ -214,6 +214,54 @@ let KDIntentEvents = {
 			return false;
 		},
 	},
+	"ToyWithPlayer": {
+		// Capture and bring to jail
+		aggressive: true,
+		nonaggressive: false,
+		noplay: true,
+		forceattack: true,
+		overrideIgnore: true,
+		// This is the basic leash to jail mechanic
+		weight: (enemy, AIData, allied, hostile, aggressive) => {
+			if (!["", "Dom", "Sub", "Brat"].includes(KDJailPersonality(enemy))) return 0;
+			if (KinkyDungeonLeashingEnemy() || KDGameData.PrisonerState == 'chase') return 0;
+			if (KDBoundPowerLevel < 0.5) return 0;
+			if (KinkyDungeonFlags.get("PlayerCombat") || KinkyDungeonFlags.get("ToyedWith")) return 0;
+			return (hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && !KDEnemyHasFlag(enemy, "dontChase")) ?
+				KDBoundPowerLevel * 10 + (KinkyDungeonFlags.get("CallForHelp") ? 40 : 0)
+			: 0;
+		},
+		trigger: (enemy, AIData) => {
+			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 20);
+			for (let en of KDNearbyEnemies(enemy.x, enemy.y, 10)) {
+				if (en != enemy) en.ceasefire = 20;
+			}
+			enemy.playWithPlayer = 0;
+			enemy.IntentAction = 'ToyWithPlayer';
+			KinkyDungeonSetFlag("ToyedWith", 100);
+
+			KinkyDungeonSendDialogue(enemy, TextGet("KDCombatLine_YoureFinished_" + KDJailPersonality(enemy) + Math.floor(Math.random() * 3)), KDGetColor(enemy), 9, 10);
+
+		},
+		maintain: (enemy, delta, AIData) => {
+			if (KinkyDungeonFlags.get("PlayerCombat") || KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) > 5.5) {
+				KinkyDungeonAggroAction('attack', {enemy: enemy});
+				return false;
+			}
+			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 5.5) {
+
+				KinkyDungeonSetEnemyFlag(enemy, "nobind", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "noleash", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "nosteal", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "alwayswill", 2);
+
+				enemy.gx = KinkyDungeonPlayerEntity.x;
+				enemy.gy = KinkyDungeonPlayerEntity.y;
+				return true;
+			}
+			return false;
+		},
+	},
 	"TempLeash": {
 		aggressive: false,
 		nonaggressive: true,

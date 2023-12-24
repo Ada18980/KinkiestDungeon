@@ -176,6 +176,22 @@ function GetModelRestraintVersion(BaseModel: string, Parent: boolean): Model {
 	}
 	return null;
 }
+
+function GetModelFashionVersion(BaseModel: string, Parent: boolean): Model {
+	if (ModelDefs[BaseModel]) {
+		let model: Model = JSON.parse(JSON.stringify(ModelDefs[BaseModel]));
+		model.Name = "Fashion" + model.Name;
+		if (Parent) {
+			model.Parent = "Fashion" + model.Parent;
+		}
+		if (!model.Categories) model.Categories = [];
+		model.Categories.push("FashionRestraints");
+		model.Restraint = false;
+		delete model.Group;
+		return model;
+	}
+	return null;
+}
 function GetOverCorset(BaseModel: string): Model {
 	if (ModelDefs[BaseModel]) {
 		let model: Model = JSON.parse(JSON.stringify(ModelDefs[BaseModel]));

@@ -11,6 +11,7 @@ let KDFocusableTextFields = [
 let KDMAXGODDESSQUESTS = 3;
 
 
+let KinkyDungeonGagMumbleChanceRestraint = 0.4;
 let KinkyDungeonGagMumbleChance = 0.02;
 let KinkyDungeonGagMumbleChancePerRestraint = 0.0025;
 
@@ -1071,7 +1072,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			if (!altType || altType.shrines)
 				KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTypes, shrinecount,
 					shrinefilter, ghostchance, manaChance, orbcount, (altType && altType.noShrineTypes) ? altType.noShrineTypes : [],
-					Floor, width, height, !altType || (!altType.alwaysRegen && !altType.noQuests));
+					Floor, width, height, !altType || (altType.makeMain && !altType.noQuests));
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for shrine creation`);
 				startTime = performance.now();
@@ -2538,7 +2539,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 					shrineTypes.push("Orb");
 				} else if (type) {
 					KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Type: "Shrine", Name: type, drunk: stype.drunk});
-					if (allowQuests && KDRandom() < 0.3 && quests < KDMAXGODDESSQUESTS) {
+					if (allowQuests && (KDRandom() < 0.4 || list.length < 6) && quests < KDMAXGODDESSQUESTS) {
 						let quest = KDGetShrineQuest(KDMapData, KinkyDungeonTilesGet("" + shrine.x + "," +shrine.y));
 						if (quest) {
 							KDSetShrineQuest(KDMapData, KinkyDungeonTilesGet("" + shrine.x + "," +shrine.y),
@@ -4242,8 +4243,9 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 							&& (KinkyDungeonStatsChoice.get("DirectionSlow") || KinkyDungeonStatsChoice.get("DirectionSlow2"))) {
 							let D = Math.abs(KinkyDungeonPlayerEntity.facing_y - lastFacingY)**2
 								+ Math.abs(KinkyDungeonPlayerEntity.facing_x - lastFacingX)**2;
+							let dotProd = KinkyDungeonPlayerEntity.facing_y*lastFacingY + KinkyDungeonPlayerEntity.facing_x*lastFacingX;
 
-							if (D > 3 || (D > 1 && KinkyDungeonStatsChoice.get("DirectionSlow2"))) {
+							if (dotProd < 0 || (D > 1 && KinkyDungeonStatsChoice.get("DirectionSlow2"))) {
 								KDGameData.MovePoints = Math.min(KDGameData.MovePoints, 0);
 								if (D > 2) KinkyDungeonSendTextMessage(10, TextGet("KDTurn2"), "#ffffff", 1);
 								else KinkyDungeonSendTextMessage(9, TextGet("KDTurn1"), "#ffffff", 1);
@@ -4340,13 +4342,6 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 							}
 						}*/
 
-						if (moveObject == 'R') {
-							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
-							KinkyDungeonLoot(MiniGameKinkyDungeonLevel, MiniGameKinkyDungeonCheckpoint, "rubble");
-
-							KinkyDungeonMapSet(moveX, moveY, 'r');
-							KinkyDungeonAggroAction('rubble', {});
-						}
 						//}
 					}
 

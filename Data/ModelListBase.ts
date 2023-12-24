@@ -83,6 +83,45 @@ AddModel({
 	])
 });
 AddModel({
+	Name: "BraidCustom",
+	Parent: "Braid",
+	Folder: "Hair",
+	Protected: true,
+	Categories: ["Hairstyles"],
+	Layers: ToLayerMap([
+		{ Name: "BraidCustom", Layer: "Hair", Pri: 0,
+			SwapLayerPose: {HoodMask: "HairOver"},
+		},
+		{ Name: "BraidCustom_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "BraidCustom",
+		},
+	])
+});
+AddModel({
+	Name: "BraidCustomBack",
+	Parent: "Braid",
+	Folder: "Hair",
+	Protected: true,
+	Categories: ["Hairstyles", "BackHair"],
+	Layers: ToLayerMap([
+		{ Name: "BraidCustomBack", Layer: "HairBack", Pri: -1,
+		},
+		{ Name: "BraidCustomBraid", Layer: "Hair", Pri: -1,
+			SwapLayerPose: {HoodMask: "HairOver"},
+		},
+	])
+});
+AddModel({
+	Name: "BraidCustomBackNoBraid",
+	Parent: "Braid",
+	Folder: "Hair",
+	Protected: true,
+	Categories: ["Hairstyles", "BackHair"],
+	Layers: ToLayerMap([
+		{ Name: "BraidCustomBack", Layer: "HairBack", Pri: 0,
+		},
+	])
+});
+AddModel({
 	Name: "BackStraight",
 	Folder: "Hair",
 	TopLevel: true,
@@ -188,7 +227,22 @@ AddModel({
 		{ Name: "BackShortMessy", Layer: "HairBack", Pri: 0,
 		},
 		{ Name: "BackShortMessyUnderlight", Layer: "HairBack", Pri: -0.1,
-		  NoOverride: true, TieToLayer: "BackShortMessy", 
+		  NoOverride: true, TieToLayer: "BackShortMessy",
+		},
+	])
+});
+AddModel({
+	Name: "ShortCurlyBack",
+	Parent: "Curly",
+	Folder: "Hair",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Hairstyles", "BackHair"],
+	Layers: ToLayerMap([
+		{ Name: "BackShortCurly", Layer: "HairBack", Pri: 0,
+		},
+		{ Name: "BackShortCurlyUnderlight", Layer: "HairBack", Pri: -0.1,
+		  NoOverride: true, TieToLayer: "BackShortCurly",
 		},
 	])
 });
@@ -378,4 +432,3 @@ AddModel({
 		},
 	])
 });
-

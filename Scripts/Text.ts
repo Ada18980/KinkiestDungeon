@@ -192,24 +192,25 @@ class TextCache {
 	buildTranslations(lines: string[][], translations: string[]): string[][] {
 		this.language = TranslationLanguage;
 		const lang = (TranslationLanguage || "").trim().toUpperCase();
-		if (lang === "RU") {
-			lines.forEach((line, numberl) => (this.cache[line[0]] = this.buildTranslationsRU(line[1], lines, translations, numberl)));
-			return "";
-		}
 		let [translationsStringLineCache, translationsLineStringCache] = TranslationStringCachePreBuild(translations, "");
+		if (lang === "RU") {
+			lines.forEach((line, numberl) => (this.cache[line[0]] = this.buildTranslationsRU(line[1], lines, translations, numberl, translationsStringLineCache)));
+			return [];
+		}
 		return lines.map(line => ([line[0], TranslationStringCache(line[1], translationsStringLineCache, translationsLineStringCache)]));
 	}
 	/**
- 	 * Translates a string to another language from the array,
-	 * the translation is always the one right after the english line
-  	 * Works for certain languages as a replacement for TranslationStringCache
-    	 * And writes the string directly to this.cache
-      	 * @param S - The original english string to translate
-	 * @param massiven - working array
-  	 * @param massivru - data from translation file
-    	 * @param numberl - index of lines array
+	* Translates a string to another language from the array,
+	* the translation is always the one right after the english line
+	* Works for certain languages as a replacement for TranslationStringCache
+	* And writes the string directly to this.cache
+	* @param S - The original english string to translate
+	* @param massiven - working array
+	* @param massivru - data from translation file
+	* @param numberl - index of lines array
+	* @param {Map<string, number>} translationsStringLineCache
    	 */
-	buildTranslationsRU(S: string, massiven: string[][], massivru: string[], numberl: number): string {
+	buildTranslationsRU(S: string, massiven: string[][], massivru: string[], numberl: number, translationsStringLineCache): string {
 		if (S != null){			
 			let S1 = S.trim();
 			if (S1 !== "") {

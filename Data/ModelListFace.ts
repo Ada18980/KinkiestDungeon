@@ -303,6 +303,27 @@ AddModel({
 });
 
 AddModel({
+	Name: "DaskBrows",
+	Folder: "FaceDask",
+	TopLevel: true,
+	Protected: true,
+	Group: "Brows",
+	Categories: ["Eyes","Face"],
+	Layers: ToLayerMap([
+		{ Name: "Brows", Layer: "Brows", Pri: 0,
+			Sprite: "", // Because pose is called BrowsNeutral lol
+			Poses: ToMap(BROWPOSES),
+			HidePoses: ToMap(["EncaseHead"]),
+		},
+		{ Name: "Brows2", Layer: "Brows", Pri: 0,
+			Sprite: "", // Because pose is called BrowsNeutral lol
+			Poses: ToMap(BROW2POSES),
+			HidePoses: ToMap(["EncaseHead"]),
+		},
+	])
+});
+
+AddModel({
 	Name: "DaskEyes",
 	Folder: "FaceDask",
 	TopLevel: true,

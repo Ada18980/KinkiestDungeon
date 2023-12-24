@@ -367,6 +367,7 @@ let KDTileUpdateFunctions = {
 };
 
 /**
+ * Return true if movement is stopped
  * @type {Record<string, (moveX, moveY) => boolean>}
  */
 let KDMoveObjectFunctions = {
@@ -437,6 +438,14 @@ let KDMoveObjectFunctions = {
 
 		return true;
 	},
+	'R': (moveX, moveY) => {
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
+		KinkyDungeonLoot(MiniGameKinkyDungeonLevel, MiniGameKinkyDungeonCheckpoint, "rubble");
+
+		KinkyDungeonMapSet(moveX, moveY, 'r');
+		KinkyDungeonAggroAction('rubble', {});
+		return true;
+	},
 	'C': (moveX, moveY) => { // Open the chest
 		let chestType = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).Loot ? KinkyDungeonTilesGet(moveX + "," +moveY).Loot : "chest";
 		let faction = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).Faction ? KinkyDungeonTilesGet(moveX + "," +moveY).Faction : undefined;
@@ -446,6 +455,7 @@ let KDMoveObjectFunctions = {
 		if (faction && !KinkyDungeonChestConfirm) {
 			KinkyDungeonChestConfirm = true;
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChestFaction").replace("FACTION", TextGet("KinkyDungeonFaction" + faction)), "#ff0000", 2, true);
+			return true;
 		} else {
 			let data = {
 				chestType: chestType,
@@ -764,7 +774,7 @@ let KDEffectTileFunctions = {
 				return true;
 			}
 		}
-		
+
 		if (entity.player && KinkyDungeonPlayerBuffs.Slipping && !KinkyDungeonFlags.get("slipped")) {
 			KDSlip({x: KinkyDungeonPlayerEntity.x - KinkyDungeonPlayerEntity.lastx, y: KinkyDungeonPlayerEntity.y - KinkyDungeonPlayerEntity.lasty});
 			KinkyDungeonSetFlag("slipped", 1);
@@ -1116,6 +1126,18 @@ let KDEffectTileCreateFunctionsExisting = {
 				name: "Torch",
 				duration: 9999,
 			}, 0);
+		}
+		return true;
+	},
+	"Sack": (newTile, existingTile) => {
+		if (newTile?.tags?.includes("snuffable")) {
+			newTile.duration = 0;
+			KDCreateEffectTile(existingTile.x, existingTile.y, {
+				name: newTile.name + "Unlit",
+				duration: 9999,
+			}, 0);
+		} else if (newTile?.tags?.includes("fire") || newTile?.tags?.includes("ignite")) {
+			existingTile.duration = 0;
 		}
 		return true;
 	},

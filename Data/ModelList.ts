@@ -209,7 +209,7 @@ AddModel({
 		{ Name: "SleevelessTop", Layer: "Bodysuit", Pri: -4,
 			InheritColor: "Latex",
 		},
-		{ Name: "SleevelessTopChest", Layer: "Chest", Pri: -4,
+		{ Name: "SleevelessTopChest", Layer: "SuitChest", Pri: -4,
 			InheritColor: "Latex",
 		},
 
@@ -225,7 +225,7 @@ AddModel({
 		{ Name: "SleevelessTopV", Layer: "Bodysuit", Pri: -3.5,
 			InheritColor: "Latex",
 		},
-		{ Name: "SleevelessTopVChest", Layer: "Chest", Pri: -3.5,
+		{ Name: "SleevelessTopVChest", Layer: "SuitChest", Pri: -3.5,
 			InheritColor: "Latex",
 		},
 
@@ -600,7 +600,7 @@ AddModel({
 	Parent: "ChainArmor",
 	Categories: ["Armor"],
 	Layers: ToLayerMap([
-		{ Name: "Shirt", Layer: "CorsetLiner", Pri: 5,
+		{ Name: "Shirt", Layer: "Shirt", Pri: -40,
 			SwapLayerPose: {Kneel: "CorsetLinerLower", KneelClosed: "CorsetLinerLower"},
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
 			MorphPoses: {Hogtie: "Hogtie"},
