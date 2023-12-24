@@ -12193,6 +12193,13 @@ l_KoiBlush_Blush,"Blush"
 m_Braid,"Braid"
 l_Braid_Braid,"Braid Front"
 l_Braid_BraidBack,"Braid Back"
+m_BraidCustom,"Bangs Only"
+l_BraidCustom_BraidCustom,"Bangs"
+m_BraidCustomBack,"Braid+Back"
+l_BraidCustomBack_BraidCustomBack,"Braid Upper"
+l_BraidCustomBack_BraidCustomBraid,"Braid Lower"
+m_BraidCustomBackNoBraid,"Back Only"
+l_BraidCustomBackNoBraid_BraidCustomBack,"Braid Upper"
 m_Ahoge,"Ahoge"
 l_Ahoge_Ahoge,"Ahoge"
 m_Body,"Body"
@@ -12423,48 +12430,48 @@ l_RopeArms_ChestLower,"Lower Chest Straps"
 l_RopeArms_Arms,"Arm Straps"
 
 m_HairBow,HairBow
-m_HairBow_l_Bow,Bow
+l_HairBow_Bow,Bow
 m_HairBowFrilly,HairBowFrilly
-m_HairBowFrilly_l_Bow,Bow
-m_HairBowFrilly_l_BowFrills,BowFrills
+l_HairBowFrilly_Bow,Bow
+l_HairBowFrilly_BowFrills,BowFrills
 m_Hairband,Hairband
-m_Hairband_l_Hairband,Hairband
+l_Hairband_Hairband,Hairband
 m_MaidHairband,MaidHairband
-m_MaidHairband_l_Hairband,Hairband
-m_MaidHairband_l_MaidFrill,MaidFrill
-m_Braid_l_Braid,Braid
-m_Braid_l_Braid_Overstrap,Braid_Overstrap
-m_Braid_l_BraidBack,BraidBack
+l_MaidHairband_Hairband,Hairband
+l_MaidHairband_Frill,MaidFrill
 m_BackStraight,BackStraight
-m_BackStraight_l_BackStraight,BackStraight
+l_BackStraight_BackStraight,BackStraight
 m_Curly,Curly
-m_Curly_l_Curly,Curly
-m_Curly_l_Curly_Overstrap,Curly_Overstrap
+l_Curly_Curly,Curly
+l_Curly_Curly_Overstrap,Curly_Overstrap
 m_Fluffy,Fluffy
-m_Fluffy_l_Fuzzy,Fuzzy
-m_Fluffy_l_Fuzzy_Overstrap,Fuzzy_Overstrap
+l_Fluffy_Fuzzy,Fuzzy
+l_Fluffy_Fuzzy_Overstrap,Fuzzy_Overstrap
 m_FrontStraight,FrontStraight
-m_FrontStraight_l_FrontStraight,FrontStraight
-m_FrontStraight_l_FrontStraight_Overstrap,FrontStraight_Overstrap
+l_FrontStraight_FrontStraight,FrontStraight
+l_FrontStraight_FrontStraight_Overstrap,FrontStraight_Overstrap
 m_Straight,Straight
-m_Straight_l_Straight,Straight
-m_Straight_l_Straight_Overstrap,Straight_Overstrap
+l_Straight_Straight,Straight
+l_Straight_Straight_Overstrap,Straight_Overstrap
 m_StraightBangs,StraightBangs
-m_StraightBangs_l_StraightBangs,StraightBangs
-m_StraightBangs_l_StraightBangs_Overstrap,StraightBangs_Overstrap
+l_StraightBangs_StraightBangs,StraightBangs
+l_StraightBangs_StraightBangs_Overstrap,StraightBangs_Overstrap
 m_MessyBack,MessyBack
-m_MessyBack_l_Messy,Messy
-m_ShortMessyBack,ShortMessyBack
-m_ShortMessyBack_l_BackShortMessy,BackShortMessy
-m_ShortMessyBack_l_BackShortMessyUnderlight,BackShortMessyUnderlight
+l_MessyBack_Messy,Messy
+m_ShortMessyBack,MessyBackShort
+l_ShortMessyBack_BackShortMessy,"Short Messy"
+l_ShortMessyBack_BackShortMessyUnderlight,"Underlight"
+m_ShortCurlyBack,CurlyBack
+l_ShortCurlyBack_BackShortCurly,"Curly Back"
+l_ShortCurlyBack_BackShortCurlyUnderlight,"Underlight"
 m_Ponytail,Ponytail
-m_Ponytail_l_Ponytail,Ponytail
+l_Ponytail_Ponytail,Ponytail
 m_FluffyPonytail,FluffyPonytail
-m_FluffyPonytail_l_Ponytail2,Ponytail2
+l_FluffyPonytail_Ponytail2,Ponytail2
 m_TwintailLeft,TwintailLeft
-m_TwintailLeft_l_TwintailLeft,TwintailLeft
+l_TwintailLeft_TwintailLeft,TwintailLeft
 m_TwintailRight,TwintailRight
-m_TwintailRight_l_TwintailRight,TwintailRight
+l_TwintailRight_TwintailRight,TwintailRight
 m_Ahoge_l_Ahoge,Ahoge
 m_Body_l_Head,Head
 m_Body_l_ArmRight,ArmRight
@@ -12485,84 +12492,87 @@ m_Body_l_FootLeftHogtie,FootLeftHogtie
 m_Body_l_LegRight,LegRight
 m_Body_l_Butt,Butt
 m_KoiEyes_l_Eyes,Eyes
-m_KoiEyes_l_Eyes2,Eyes2
-m_KoiEyes_l_Whites,Whites
-m_KoiEyes_l_Whites2,Whites2
+l_KoiEyes_Eyes2,Eyes2
+l_KoiEyes_Whites,Whites
+l_KoiEyes_Whites2,Whites2
 m_HumanEyes,HumanEyes
-m_HumanEyes_l_Eyes,Eyes
-m_HumanEyes_l_Eyes2,Eyes2
-m_HumanEyes_l_Whites,Whites
-m_HumanEyes_l_Whites2,Whites2
+l_HumanEyes_Eyes,"Right Eye"
+l_HumanEyes_Eyes2,"Left Eye"
+l_HumanEyes_Whites,Whites
+l_HumanEyes_Whites2,Whites2
 m_KoiBrows_l_Brows,Brows
 m_KoiBrows_l_Brows2,Brows2
 m_KoiMouth_l_Mouth,Mouth
 m_KoiBlush_l_Blush,Blush
 m_KjusEyes,KjusEyes
-m_KjusEyes_l_Eyes,Eyes
-m_KjusEyes_l_Eyes2,Eyes2
-m_KjusEyes_l_Whites,Whites
-m_KjusEyes_l_Whites2,Whites2
+l_KjusEyes_Eyes,"Right Eye"
+l_KjusEyes_Eyes2,"Left Eye"
+l_KjusEyes_Whites,Whites
+l_KjusEyes_Whites2,Whites2
 m_KjusBrows,KjusBrows
-m_KjusBrows_l_Brows,Brows
-m_KjusBrows_l_Brows2,Brows2
+l_KjusBrows_Brows,"Right Brow"
+l_KjusBrows_Brows2,"Left Brow"
 m_KjusMouth,KjusMouth
-m_KjusMouth_l_Mouth,Mouth
+l_KjusMouth_Mouth,Mouth
 m_KjusBlush,KjusBlush
-m_KjusBlush_l_Blush,Blush
+l_KjusBlush_Blush,Blush
+m_DaskBrows,Hikimayu
+l_DaskBrows_Brows,"Right Brow"
+l_DaskBrows_Brows2,"Left Brow"
 m_DaskEyes,DaskEyes
-m_DaskEyes_l_Eyes,Eyes
-m_DaskEyes_l_Eyes2,Eyes2
-m_DaskEyes_l_Whites,Whites
-m_DaskEyes_l_Whites2,Whites2
+l_DaskEyes_Eyes,"Right Eye"
+l_DaskEyes_Eyes2,"Left Eye"
+l_DaskEyes_Whites,Whites
+l_DaskEyes_Whites2,Whites2
 m_ElfEars,ElfEars
-m_ElfEars_l_ElfFront,ElfFront
-m_ElfEars_l_ElfBack,ElfBack
+l_ElfEars_ElfFront,ElfFront
+l_ElfEars_ElfBack,ElfBack
 m_ElfEarsLong,ElfEarsLong
-m_ElfEarsLong_l_ElfLongFront,ElfLongFront
-m_ElfEarsLong_l_ElfLongBack,ElfLongBack
+l_ElfEarsLong_ElfLongFront,ElfLongFront
+l_ElfEarsLong_ElfLongBack,ElfLongBack
 m_ElfEarsFloppy,ElfEarsFloppy
-m_ElfEarsFloppy_l_ElfFloppyFront,ElfFloppyFront
-m_ElfEarsFloppy_l_ElfFloppyBack,ElfFloppyBack
+l_ElfEarsFloppy_ElfFloppyFront,ElfFloppyFront
+l_ElfEarsFloppy_ElfFloppyBack,ElfFloppyBack
 m_ElfEarrings,ElfEarrings
-m_ElfEarrings_l_ElfEarringsFront,ElfEarringsFront
-m_ElfEarrings_l_ElfEarringsBack,ElfEarringsBack
+l_ElfEarrings_ElfEarringsFront,ElfEarringsFront
+l_ElfEarrings_ElfEarringsBack,ElfEarringsBack
 m_Earrings,Earrings
-m_Earrings_l_Earrings,Earrings
-m_Earrings_l_EarringsBack,EarringsBack
+l_Earrings_Earrings,Earrings
+l_Earrings_EarringsBack,EarringsBack
 m_BunnyEars,BunnyEars
-m_BunnyEars_l_Ears,Ears
-m_BunnyEars_l_EarsInner,EarsInner
+l_BunnyEars_Ears,Ears
+l_BunnyEars_InnerEars,EarsInner
 m_KittyEars,KittyEars
-m_KittyEars_l_Kitty,Kitty
-m_KittyEars_l_KittyInner,KittyInner
+l_KittyEars_Ears,Kitty
+l_KittyEars_InnerEars,KittyInner
 m_WolfEars,WolfEars
-m_WolfEars_l_Wolf,Wolf
-m_WolfEars_l_WolfInner,WolfInner
+l_WolfEars_Ears,Wolf
+l_WolfEars_InnerEars,WolfInner
 m_FoxEars,FoxEars
-m_FoxEars_l_Fox,Fox
-m_FoxEars_l_FoxInner,FoxInner
+l_FoxEars_Ears,Fox
+l_FoxEars_InnerEars,FoxInner
 m_WolfTail,WolfTail
-m_WolfTail_l_Wolf,Wolf
+l_WolfTail_Tail,Wolf
 m_KittyTail,KittyTail
-m_KittyTail_l_Kitty,Kitty
+l_KittyTail_Tail,Kitty
 m_Kitty2Tail,Kitty2Tail
-m_Kitty2Tail_l_Kitty,Kitty
-m_Kitty2Tail_l_Kitty2,Kitty2
+l_Kitty2Tail_Tail1,Kitty
+l_Kitty2Tail_Tail2,Kitty2
 m_FoxTail,FoxTail
-m_FoxTail_l_Fox,Fox
+l_FoxTail_Tail,Fox
 m_Fox2Tail,Fox2Tail
-m_Fox2Tail_l_Fox,Fox
-m_Fox2Tail_l_Fox2,Fox2
+l_Fox2Tail_Tail1,Fox
+l_Fox2Tail_Tail2,Fox2
 m_Fox3Tail,Fox3Tail
-m_Fox3Tail_l_Fox3,Fox3
+l_Fox3Tail_Tail,Fox3
 m_Fox4Tail,Fox4Tail
-m_Fox4Tail_l_Fox4,Fox4
+l_Fox4Tail_Tail,Fox4
 m_Fox5Tail,Fox5Tail
-m_Fox5Tail_l_Fox5,Fox5
+l_Fox5Tail_Tail,Fox5
 m_Fox6Tail,Fox6Tail
-m_Fox6Tail_l_Fox6,Fox6
+l_Fox6Tail_Tail,Fox6
 m_Fox7Tail,Fox7Tail
-m_Fox7Tail_l_Fox7,Fox7
+l_Fox7Tail_Tail,Fox7
 m_CatsuitLower,CatsuitLower
 m_CatsuitLower_l_TorsoLower,TorsoLower
 m_CatsuitLower_l_FootRight,FootRight
@@ -13232,8 +13242,8 @@ m_ElfCollar_l_Collar,Collar
 m_ElfCollarRestraint,ElfCollarRestraint
 m_ElfCollarRestraint_l_Collar,Collar
 m_ElfCirclet,ElfCirclet
-m_ElfCirclet_l_Circlet,Circlet
-m_ElfCirclet_l_Gem,Gem
+l_ElfCirclet_Circlet,Circlet
+l_ElfCirclet_Gem,Gem
 m_ElfSkirtBack,ElfSkirtBack
 m_ElfSkirtBack_l_SkirtBack,SkirtBack
 m_ElfSkirt,ElfSkirt
