@@ -663,7 +663,7 @@ function KDDrawSpellChoices() {
 				if (consumable) {
 					let con = KinkyDungeonInventoryGetConsumable(consumable);
 					//if (con) {
-					DrawTextFitKD((con.quantity || 0) + "x", buttonDimSmall.x + buttonDim.hsmall - 1, buttonDimSmall.y + buttonDim.hsmall - 6, 50,
+					DrawTextFitKD((con?.quantity || 0) + "x", buttonDimSmall.x + buttonDim.hsmall - 1, buttonDimSmall.y + buttonDim.hsmall - 6, 50,
 						"#ffffff", KDTextGray0, 12, "right");
 					//}
 				}

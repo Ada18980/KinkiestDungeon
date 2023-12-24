@@ -3907,6 +3907,9 @@ RestraintSteelPlugRDesc2,"This one goes in the back."
 RestraintShadowHandMouth,Shadow Hand Gag
 RestraintShadowHandMouthDesc,"It clasps tightly over the mouth and prevents you from casting your spells!"
 RestraintShadowHandMouthDesc2,"You have no choice but to struggle."
+RestraintShadowHandEyes,Shadow Hand Eyes
+RestraintShadowHandEyesDesc,"Shadow hands clasped over your eyes, making it hard to see."
+RestraintShadowHandEyesDesc2,"You have no choice but to struggle."
 
 RestraintShadowHandLegs,Shadow Hands (Legs)
 RestraintShadowHandLegsDesc,"They are wrapped around your legs!"
@@ -18821,3 +18824,24 @@ AttackWitchShibariBind,"The shibari witch ties you tight! (+RestraintAdded)"
 AttackWitchShibariLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchShibari,"The witch rubs your body sensually! (DamageTaken)"
 KDWitchShibariDisrobe,The ENMY takes your clothes off!
+
+
+KinkyDungeonStat,""
+KinkyDungeonStatDesc,""
+
+KinkyDungeonStatAHardPlace,"A Hard Place"
+KinkyDungeonStatDescAHardPlace,"While your willpower is 0, your mana pool slowly drains and your stamina regen is reduced by 30%."
+
+KinkyDungeonStatSparkOfMagic,"The Spark of Magic"
+KinkyDungeonStatDescSparkOfMagic,"When your mana pool is exhausted, your attacks deal 50% reduced base damage."
+
+KinkyDungeonStat,""
+KinkyDungeonStatDesc,""
+
+KinkyDungeonStatBurnedOut,"Burned Out"
+KinkyDungeonStatDescBurnedOut,"Casting spells reduces willpower based on how little distraction you have, also you cannot play with yourself."
+
+KinkyDungeonStatWinded,"Winded"
+KinkyDungeonStatDescWinded,"While below 10% stamina, evasion is severely reduced and your slow level is increased by 1."
+
+
