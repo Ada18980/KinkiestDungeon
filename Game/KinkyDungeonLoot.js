@@ -7,7 +7,7 @@ let KDTightRestraintsMult = 2;
 
 /**
  * @param {item[]} list
- * @param {boolean} excludeBound - bound weapons, i.e. magic knives and weapons
+ * @param {boolean} excludeBound - "bound weapons", i.e. magic knives and weapons in really old nomenclature back when there were like 4 weapons
  */
 function KinkyDungeonAddLostItems(list, excludeBound) {
 	for (let item of list) {
@@ -58,6 +58,7 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 		if ((effLevel >= loot.minLevel || KinkyDungeonNewGame > 0) && (loot.allFloors || loot.floors[Index])) {
 			let prereqs = true;
 			if (loot.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) prereqs = false;
+			
 
 			if (loot.noflag?.some((flag) => {return KinkyDungeonFlags.get(flag) != undefined})) prereqs = false;
 			if (loot.notag?.some((flag) => {return KinkyDungeonPlayerTags.get(flag) != undefined})) prereqs = false;
@@ -72,8 +73,11 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 					if (count < loot.minCurseCount || count > loot.maxCurseCount)
 						prereqs = false;
 				}
+				
+
 				if (prereqs && loot.hardmode && !KinkyDungeonStatsChoice.get("hardMode")) prereqs = false;
 				if (prereqs && loot.nohardmode && KinkyDungeonStatsChoice.get("hardMode")) prereqs = false;
+				if (prereqs && loot.prerequisites.includes("nopetsuit") && KinkyDungeonPlayerTags.get("NoPet")) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("vibe") && KinkyDungeonPlayerTags.get("NoVibes")) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("alreadyBelted") && KinkyDungeonChastityMult() < 0.9) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("lowlevel")) maxlevel = 2;
@@ -824,6 +828,11 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 						//`+${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, "white", 7);
 						remove = true;
 					} else if (lostitem.type == LooseRestraint && KDRestraint(lostitem)) {
+						//if (KinkyDungeonGetRestraintByName(lostitem.name).armor || KinkyDungeonRestraintVariants[lostitem.name] != undefined)
+						//KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
+						//`+ (loose) ${TextGet("Restraint" + lostitem.name)}`, "white", 5);
+						remove = true;
+					} else if (lostitem.type == Outfit && KDOutfit(lostitem)) {
 						//if (KinkyDungeonGetRestraintByName(lostitem.name).armor || KinkyDungeonRestraintVariants[lostitem.name] != undefined)
 						//KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
 						//`+ (loose) ${TextGet("Restraint" + lostitem.name)}`, "white", 5);

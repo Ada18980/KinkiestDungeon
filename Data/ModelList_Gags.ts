@@ -643,7 +643,6 @@ AddModel({
 	Name: "LatexNeckCorset",
 	Folder: "GagLatex",
 	TopLevel: true,
-	Group: "Mouth",
 	Categories: ["Accessories", "Latex"],
 	Layers: ToLayerMap([
 		{ Name: "NeckCorset", Layer: "NeckCorset", Pri: -40,
@@ -666,7 +665,6 @@ AddModel({
 	Folder: "GagLatex",
 	Parent: "LatexNeckCorset",
 	TopLevel: false,
-	Group: "Mouth",
 	Categories: ["Accessories","Gags","Latex"],
 	AddPose: ["FaceCoverGag"],
 	AddPoseConditional: {

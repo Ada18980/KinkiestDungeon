@@ -438,7 +438,7 @@ function KDDrawSpellChoices() {
 			let data = {
 				spell: spell,
 				cost: Math.round(KinkyDungeonGetManaCost(
-					spell, 
+					spell,
 					!spell.active && spell.passive,
 					!spell.active && spell.type == "passive") * 10) + "mp",
 				color: "#ccddFF",
@@ -534,17 +534,17 @@ function KDDrawSpellChoices() {
 			//KDGetItemPreview({name: item, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)}).preview, "", false, true);
 			if (KDGetItemPreview({name: item, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)})) {
 				DrawButtonKDEx("UseItem" + index,
-				() => {
-					KinkyDungeonHandleSpell(index);
-					return true;
-				},
-				true,
-				buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h, "", "rgba(0, 0, 0, 0)",
-				KDGetItemPreview({name: item, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)}).preview, "", false, true,
-				undefined, undefined, undefined, {
-					hotkey: KDHotkeyToText(KinkyDungeonKeySpell[i]),
-					scaleImage: true,
-				});
+					() => {
+						KinkyDungeonHandleSpell(index);
+						return true;
+					},
+					true,
+					buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h, "", "rgba(0, 0, 0, 0)",
+					KDGetItemPreview({name: item, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)}).preview, "", false, true,
+					undefined, undefined, undefined, {
+						hotkey: KDHotkeyToText(KinkyDungeonKeySpell[i]),
+						scaleImage: true,
+					});
 
 				if (MouseIn(buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h)) {
 					DrawTextFitKD(TextGet((arm ? "Restraint" : ("KinkyDungeonInventoryItem")) + name),
@@ -571,7 +571,7 @@ function KDDrawSpellChoices() {
 					});
 				//DrawImage(KinkyDungeonRootDirectory + "Spells/" + sp + ".png", buttonDim.x + 2, buttonDim.y + 2,);
 			}
-			
+
 		}
 		let icon = 0;
 		// Draw icons for the other pages, if applicable
@@ -637,7 +637,7 @@ function KDDrawSpellChoices() {
 					//});
 				}
 			} else if (item) {
-				
+
 				let buttonDimSmall = {
 					x: buttonDim.x-1 + buttonDim.wsmall * (page - 1),
 					y: buttonDim.y-1 - buttonDim.hsmall,
@@ -658,7 +658,7 @@ function KDDrawSpellChoices() {
 						"rgba(0, 0, 0, 0)", "", "", false, true);
 
 				}
-				
+
 
 				if (consumable) {
 					let con = KinkyDungeonInventoryGetConsumable(consumable);
@@ -932,13 +932,16 @@ function KDDrawWeaponSwap(x, y) {
 		for (let wep of KDGameData.PreviousWeapon) {
 			if (ii >= KDMaxPreviousWeapon) break;
 			let Index = ii;
-			if (wep && DrawButtonKDEx("previousweapon" + wep + "," + ii,(bdata) => {
+			if (wep && KDWeapon({name: wep}) && DrawButtonKDEx("previousweapon" + wep + "," + ii,(bdata) => {
 				if (!KinkyDungeonControlsEnabled()) return false;
-				KDSwitchWeapon(wep, Index);
+				if (KinkyDungeonInventoryGet(wep))
+					KDSwitchWeapon(wep, Index);
+				else
+					KDSwitchWeapon("Unarmed", Index);
 				return true;
 			}, KDGameData.PreviousWeapon != undefined, x + 10 + 0.45*width + (ii*0.35*width), y-0.35*width, 0.35*width, 0.35*width, "", "#ffffff",
-			KinkyDungeonRootDirectory + "Items/" + KDWeapon(KinkyDungeonInventoryGetWeapon(wep))?.name + ".png",
-			undefined, undefined, KDWeaponSwitchPref != ii, undefined, undefined, undefined, {
+			KinkyDungeonRootDirectory + "Items/" + KDWeapon({name: wep})?.name + ".png",
+			undefined, undefined, KDWeaponSwitchPref != ii, !KinkyDungeonInventoryGet(wep) ? "#ff5555" : undefined, undefined, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[ii]),
 				scaleImage: true,
 			})) {
@@ -952,7 +955,7 @@ function KDDrawWeaponSwap(x, y) {
 		}
 	}
 	if (KinkyDungeonPlayerWeapon && KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon)) {
-		DrawTextFitKD(TextGet("StatWeapon") + KDGetItemName(KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon)),
+		DrawTextFitKD(TextGet("StatWeapon") + KDGetItemName({name: KinkyDungeonPlayerWeapon, type: Weapon, id: -1}),
 			x + 0.45/2*width, y - 16, width, "#ffffff", "#333333", 16);
 	}
 	if (DrawButtonKDEx("switchWeapon", (bdata) => {
@@ -961,7 +964,7 @@ function KDDrawWeaponSwap(x, y) {
 		return true;
 	}, KDGameData.PreviousWeapon != undefined, x, y - 0.45*width, 0.45*width, 0.45*width, "", "#ffffff",
 	KinkyDungeonPlayerWeapon && KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon) ?
-		KinkyDungeonRootDirectory + "Items/" + KDWeapon(KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon))?.name + ".png"
+		KinkyDungeonRootDirectory + "Items/" + KDWeapon({name: KinkyDungeonPlayerWeapon})?.name + ".png"
 		: KinkyDungeonRootDirectory + "Items/Unarmed.png",
 	undefined, undefined, true, undefined, undefined, undefined, {
 		//hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[0]),
@@ -1181,7 +1184,7 @@ function KinkyDungeonDrawActionBar(x, y) {
 	// Crouch button
 	if (DrawButtonKDEx("toggleCrouch", (bdata) => {
 		KDSendInput("crouch", {});
-		
+
 		return true;
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY - 80, actionBarWidth, actionbarHeight, "", "",
 	KinkyDungeonRootDirectory + (KDGameData.Crouch ? "UI/CrouchOn.png" : "UI/CrouchOff.png"),
@@ -1766,16 +1769,16 @@ function KDDrawNavBar(skip, quit = false) {
 
 
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goQuit", (bdata) => {
-		if (skip == -1) {
-			KinkyDungeonDrawState = "Restart";
+		if (skip == 0) {
+			KinkyDungeonDrawState = "Game";
+
+		} else {KinkyDungeonDrawState = "Restart";
 			KDConfirmDeleteSave = false;
 			if (KDDebugMode) {
 				ElementCreateTextArea("DebugEnemy");
 				ElementValue("DebugEnemy", "Maidforce");
 				ElementCreateTextArea("DebugItem");
-				ElementValue("DebugItem", "TrapArmbinder");
-			}
-		} else {KinkyDungeonDrawState = "Game";}
+				ElementValue("DebugItem", "TrapArmbinder");}}
 		return true;
 	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KDNavQuit"), "#ffffff",
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_menu.png"), undefined, undefined, false, "", 24, true,
@@ -2217,10 +2220,10 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 
 	if (KDGameData.Shield > 0) {
 		statsDraw.shield = {text: TextGet("KDStatShield"), category: "status", icon: "shield", color: "#88aaff", bgcolor: "#333333", priority: 9,
-	
-		count: "" + Math.round(KDGameData.Shield * 10),
-		countcolor: "#ffffff",
-	};
+
+			count: "" + Math.round(KDGameData.Shield * 10),
+			countcolor: "#ffffff",
+		};
 	}
 	let help = KinkyDungeonHasAllyHelp() || KinkyDungeonHasGhostHelp();
 	if (help) {
@@ -2300,7 +2303,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 			statsDraw.meleeDamage = {
 				text: TextGet("KinkyDungeonPlayerDamage")
 					.replace("DAMAGEDEALT", "" + Math.round(meleeDamage*10))
-					.replace("STMNA", Math.round(10 * KDAttackCost()) + "")
+					.replace("STMNA", Math.round(-10 * KDAttackCost()) + "")
 					.replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + KinkyDungeonPlayerDamage.type)),
 				count: "" + Math.round(meleeDamage*10),
 				category: "info", color: "#ffffff", bgcolor: "#333333", icon: "infoDamageMelee", priority: 10.1
@@ -2776,7 +2779,7 @@ function KDDrawStruggleGroups() {
 				if (KinkyDungeonControlsEnabled())
 					for (let button_index = 0; button_index < buttons.length; button_index++) {
 						let btn = buttons[sg.left ? button_index : (buttons.length - 1 - button_index)];
-						
+
 						if (btn == "Struggle") {
 							DrawButtonKDEx("sgStruggle" + button_index + sg.group, (b) => {
 								if ((KDGetCurse(item))) KDSendInput("struggleCurse", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});

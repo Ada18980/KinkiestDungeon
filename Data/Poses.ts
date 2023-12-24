@@ -388,6 +388,18 @@ function KDGetAvailablePosesArms(C: Character): string[] {
 			delete poses.Crossed;
 		}
 	}
+
+	if (CheckPoseOrTags(C, "PreferWristtie") && poses.Wristtie) {
+		poses = {Wristtie: true};
+	}
+
+	if (CheckPoseOrTags(C, "PreferBoxtie") && poses.Boxtie) {
+		poses = {Boxtie: true};
+	}
+
+	if (CheckPoseOrTags(C, "PreferCrossed") && poses.Crossed) {
+		poses = {Crossed: true};
+	}
 	//} else {
 	// Logic for NPC
 	// ???

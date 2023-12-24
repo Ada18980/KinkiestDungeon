@@ -187,6 +187,7 @@ function GetModelFashionVersion(BaseModel: string, Parent: boolean): Model {
 		if (!model.Categories) model.Categories = [];
 		model.Categories.push("FashionRestraints");
 		model.Restraint = false;
+		delete model.Group;
 		return model;
 	}
 	return null;

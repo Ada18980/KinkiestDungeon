@@ -250,6 +250,14 @@ let KDLoadouts = {
 		chance: 1.0,
 		items: ["EarthRune"],
 	},
+	"elemental_Rope": {
+		name: "elemental_Rope",
+		tags: ["jailer"],
+		singletag: ["rope"],
+		forbidtags: [],
+		chance: 1.0,
+		items: ["RopeRune"],
+	},
 	"elemental_Air": {
 		name: "elemental_Air",
 		tags: ["jailer"],

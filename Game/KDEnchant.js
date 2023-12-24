@@ -192,9 +192,10 @@ let KDEventEnchantmentModular = {
 					let power = Math.max(KDGetItemPower(item), 2);
 					let amt = 5 + Math.round((0.4 + 0.6*KDRandom()) * 5 * Math.pow(power, 0.5));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
+					amt = Math.pow(amt, 0.9);
 					return [
 						{original: "Sneak", trigger: "tick", type: "sneakBuff", power: amt/100, inheritLinked: true},
-						{original: "Sneak", trigger: "inventoryTooltip", type: "varModifier", msg: "Sneak", power: -amt, color: "#330033", bgcolor: "#692464"},
+						{original: "Sneak", trigger: "inventoryTooltip", type: "varModifier", msg: "Sneak", power: amt, color: "#330033", bgcolor: "#692464"},
 						{original: "Sneak", trigger: "icon", type: "tintIcon", power: 1, color: "#692464"},
 					];}},
 		}},
@@ -371,7 +372,7 @@ let KDEventEnchantmentModular = {
 					let amt = 2 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.75));
 					let types = ['fire', 'ice', 'acid', 'slash', 'pierce', 'unarmed', 'pain', 'cold', 'glue', 'chain', 'tickle', 'crush', 'electric', 'soul', 'charm'];
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
-					
+
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "DamageBuff", trigger: "tick", type: "buff", power: amt/100, buff: type+"DamageBuff", kind: type, inheritLinked: true},
@@ -433,7 +434,7 @@ let KDEventEnchantmentModular = {
 					let power = Math.max(KDGetItemPower(item), 3);
 					let amt = 5 + Math.round((0.4 + 0.6*KDRandom()) * 70 * (1-Math.pow(0.975, power)));
 					let types = ['air', 'earth', 'fire', 'water', 'electric', 'ice', 'latex', 'metal', 'rope', 'leather', 'light', 'shadow', 'stealth', 'summon', 'knowledge', 'arrow'];
-					
+
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
 
 					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -487,7 +488,7 @@ let KDEventEnchantmentModular = {
 					let power = Math.max(KDGetItemPower(item), 1);
 					let amt = 2 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.5));
 					let types = ['fire', 'ice', 'acid', 'cold', 'electric', 'stun', 'soul'];
-					
+
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
@@ -514,7 +515,7 @@ let KDEventEnchantmentModular = {
 					let power = Math.max(KDGetItemRarity(item), 1);
 					let amt = 3 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.7));
 					let types = ['fire', 'ice', 'acid', 'cold', 'electric', 'stun', 'soul'];
-					
+
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
@@ -536,7 +537,7 @@ let KDEventEnchantmentModular = {
 					let power = Math.max(KDGetItemPower(item), 1);
 					let amt = 0.8 + Math.round((0.4 + 0.6*KDRandom()) * 2.8 * Math.pow(power, 0.4));
 					let types = ['fire', 'ice', 'acid', 'cold', 'electric', 'stun', 'soul'];
-					
+
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
@@ -634,14 +635,14 @@ function KDGetItemRarity(item) {
 }
 
 /**
- * 
- * @param {string} item 
- * @param {*} Loot 
- * @param {string} curse 
- * @param {string} primaryEnchantment 
- * @param {string[]} enchantments 
- * @param {KDHexEnchantEventsData} data 
- * @param {string[]} types 
+ *
+ * @param {string} item
+ * @param {*} Loot
+ * @param {string} curse
+ * @param {string} primaryEnchantment
+ * @param {string[]} enchantments
+ * @param {KDHexEnchantEventsData} data
+ * @param {string[]} types
  * @returns {string}
  */
 function KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types) {

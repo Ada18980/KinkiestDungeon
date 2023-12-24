@@ -1081,13 +1081,30 @@ function KDDrawWardrobe(screen, Character) {
 	}, true, 20, 942, 380, 50, TextGet("KDWardrobeSave"), "#ffffff", "");
 }
 
-function KDSaveCodeOutfit() {
+function KDSaveCodeOutfit(C) {
+	if (!C) C = KinkyDungeonPlayer;
 	// Save outfit
-	KDChangeWardrobe(KinkyDungeonPlayer);
+	KDChangeWardrobe(C);
 	let decompressed = LZString.decompressFromBase64(ElementValue("saveInputField"));
 	if (decompressed) {
-		CharacterAppearanceRestore(KinkyDungeonPlayer, decompressed);
-		CharacterRefresh(KinkyDungeonPlayer);
+
+		// Strips first
+		KDChangeWardrobe(C);
+		CharacterReleaseTotal(C);
+		CharacterNaked(C);
+		KinkyDungeonCheckClothesLoss = true;
+		if (KinkyDungeonCurrentDress == "Bikini")
+			KinkyDungeonSetDress("Bikini", "Bikini", C, true);
+		else 
+			KinkyDungeonSetDress("None", "None", C, true);
+		KinkyDungeonDressPlayer(C, true);
+		KDInitProtectedGroups();
+		KinkyDungeonConfigAppearance = true;
+		KinkyDungeonReplaceConfirm = 0;
+
+		// Then decompresses
+		CharacterAppearanceRestore(C, decompressed);
+		CharacterRefresh(C);
 		KDInitProtectedGroups();
 	}
 

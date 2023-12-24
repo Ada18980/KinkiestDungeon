@@ -55,3 +55,6 @@ AddModel({
 		},
 	])
 });
+
+
+AddModel(GetModelFashionVersion("KiguMask", true));

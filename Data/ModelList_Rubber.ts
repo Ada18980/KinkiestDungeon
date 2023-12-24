@@ -195,6 +195,23 @@ AddModel({
 	])
 });
 
+
+AddModel({
+	Name: "Hobbleskirt",
+	Folder: "Rubber",
+	Parent: "Rubber",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Rubber"],
+	AddPose: ["FeetLinked", "EncaseTorsoLower", "EncaseLegs", "FeetLinked", "EncaseAnkles"],
+	Layers: ToLayerMap([
+		...GetModelLayers("RubberThighs"),
+		...GetModelLayers("RubberTorsoLower"),
+		...GetModelLayers("RubberFeet"),
+	])
+});
+
+
 AddModel({
 	Name: "RubberArmLeft",
 	Folder: "Rubber",

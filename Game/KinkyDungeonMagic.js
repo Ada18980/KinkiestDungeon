@@ -142,9 +142,9 @@ function KinkyDungeonSearchSpell(list, name) {
 let KDSpellMemo = {};
 
 /**
- * 
- * @param {string} name 
- * @param {boolean} SearchEnemies 
+ *
+ * @param {string} name
+ * @param {boolean} SearchEnemies
  * @returns {spell}
  */
 function KinkyDungeonFindSpell(name, SearchEnemies = false) {
@@ -313,7 +313,7 @@ function KDEmpower(data, entity) {
 	}
 }
 
-function KinkyDungeoCheckComponentsPartial(spell, x, y, includeFull) {
+function KinkyDungeoCheckComponentsPartial(spell, x, y, includeFull, noOverride) {
 
 	let failedcomp = [];
 	let failedcompFull = [];
@@ -333,14 +333,15 @@ function KinkyDungeoCheckComponentsPartial(spell, x, y, includeFull) {
 		partial: failedcomp,
 		x: x || KinkyDungeonPlayerEntity.x,
 		y: y || KinkyDungeonPlayerEntity.y};
-	KinkyDungeonSendEvent("calcCompPartial", data);
+	if (!noOverride)
+		KinkyDungeonSendEvent("calcCompPartial", data);
 	if (includeFull) {
 		return [...data.partial, ...data.failed];
 	}
 	return data.partial;
 }
 
-function KinkyDungeoCheckComponents(spell, x, y) {
+function KinkyDungeoCheckComponents(spell, x, y, noOverride) {
 	let failedcomp = [];
 
 	if (spell.components)
@@ -355,7 +356,8 @@ function KinkyDungeoCheckComponents(spell, x, y) {
 		failed: failedcomp,
 		x: x || KinkyDungeonPlayerEntity.x,
 		y: y || KinkyDungeonPlayerEntity.y};
-	KinkyDungeonSendEvent("calcComp", data);
+	if (!noOverride)
+		KinkyDungeonSendEvent("calcComp", data);
 	return data.failed;
 }
 
@@ -868,7 +870,10 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 				}
 
 			}
-			if (cast.aimAtTarget && KinkyDungeonEnemyAt(targetX, targetY) && KDCanSeeEnemy(KinkyDungeonEnemyAt(targetX, targetY), KDistEuclidean(entity.x - targetX, entity.y - targetY))) {
+			if (cast.aimAtTarget && KinkyDungeonPlayerEntity.x == targetX && KinkyDungeonPlayerEntity.x == targetY) {
+				cast.targetID = -1;
+			}
+			else if (cast.aimAtTarget && KinkyDungeonEnemyAt(targetX, targetY) && KDCanSeeEnemy(KinkyDungeonEnemyAt(targetX, targetY), KDistEuclidean(entity.x - targetX, entity.y - targetY))) {
 				cast.targetID = KinkyDungeonEnemyAt(targetX, targetY).id;
 			}
 		}
@@ -897,6 +902,8 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					source: entity?.player ? -1 : entity?.id, cast: cast, dot: spell.dot,
 					bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
 					bulletSpin: spell.bulletSpin,
+					followPlayer: (!enemy && player && spell.followCaster) ? true : undefined,
+					followCaster: (enemy && spell.followCaster) ? enemy.id : undefined,
 					effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
 					effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
 					passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
@@ -936,6 +943,8 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 						(spell.delayRandom ? Math.floor(KDRandom() * spell.delayRandom) : 0), cast: cast, dot: spell.dot, events: spell.events, alwaysCollideTags: spell.alwaysCollideTags,
 					bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
 					bulletSpin: spell.bulletSpin,
+					followPlayer: (!enemy && player && spell.followCaster) ? true : undefined,
+					followCaster: (enemy && spell.followCaster) ? enemy.id : undefined,
 					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit, noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
 					damage: spell.type == "inert" ? null : {evadeable: spell.evadeable, noblock: spell.noblock,  damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff,
 						shield_crit: spell?.shield_crit, // Crit thru shield
@@ -966,6 +975,8 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 				vx: moveDirection.x,vy: moveDirection.y, born: 1,
 				bullet: {noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, width:sz, height:sz, summon:spell.summon,
 					targetX: tX, targetY: tY,
+					followPlayer: (!enemy && player && spell.followCaster) ? true : undefined,
+					followCaster: (enemy && spell.followCaster) ? enemy.id : undefined,
 					source: entity?.player ? -1 : entity?.id, lifetime:spell.lifetime, cast: cast, dot: spell.dot, events: spell.events, aoe: spell.aoe,
 					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit, noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
 					damage: {evadeable: spell.evadeable, noblock: spell.noblock,  damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff,
@@ -1780,7 +1791,7 @@ function KinkyDungeonListSpells(Mode) {
 		}
 		col++;
 	}
-	
+
 	if ( KDSpellListIndex > 0)
 		DrawButtonKDEx("spellsUp", (bdata) => {
 			KDSpellListIndex = Math.max(0, KDSpellListIndex - 3);
@@ -1801,7 +1812,7 @@ function KinkyDungeonListSpells(Mode) {
 	let center = canvasOffsetX_ui + xOffset + 705;
 	let tabWidth = 200;
 	let tabHeight = 35;
-	
+
 	if (left.length < 3) center -= tabWidth * (3 - left.length);
 	else if (right.length < 3) center += tabWidth * (3 - right.length);
 
@@ -1946,7 +1957,7 @@ function KinkyDungeonGetCompList(spell) {
 function KinkyDungeonSendMagicEvent(Event, data, forceSpell) {
 	if (!KDMapHasEvent(KDEventMapSpell, Event)) return;
 	for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
-		let spell = 
+		let spell =
 			(KinkyDungeonSpells[KinkyDungeonSpellChoices[i]]
 				? KDGetUpcast(KinkyDungeonSpells[KinkyDungeonSpellChoices[i]].name, KDEntityBuffedStat(KinkyDungeonPlayerEntity, "SpellEmpower"))
 				: null)

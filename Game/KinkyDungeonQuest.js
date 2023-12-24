@@ -271,7 +271,7 @@ let KDQuests = {
 		}
 	},
 
-	
+
 	"MaidSweeper": {
 		name: "MaidSweeper",
 		npc: "DirtPile",
@@ -329,7 +329,7 @@ let KDQuests = {
 					KinkyDungeonSendTextMessage(10, TextGet("KDNotEnoughDirtPiles"), "#ff8800", 4);
 				}
 
-				
+
 				let count = 14 + 6 * KDRandom();
 				for (let i = 0; i < count; i++) {
 					let epoint = KinkyDungeonGetRandomEnemyPoint(true);
@@ -371,7 +371,7 @@ let KDQuests = {
 					if (tiles.length > 0 && KDRandom() < 0.4) {
 						let altar = tiles[0];
 
-						let point = KinkyDungeonGetNearbyPoint(altar.x, altar.y, true, undefined, false);;
+						let point = KinkyDungeonGetNearbyPoint(altar.x, altar.y, true, undefined, false);
 						if (point) {
 							let element = CommonRandomItemFromList("", ['fire', 'earth', 'air', 'water', 'ice']);
 
@@ -381,7 +381,7 @@ let KDQuests = {
 								if (epoint) {
 									let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 									if (ee) {
-										ee.faction = "Ambush";
+										ee.faction = "Owners";
 										ee.AI = "hunt";
 										ee.teleporting = 3;
 										ee.teleportingmax = 3;
@@ -396,7 +396,7 @@ let KDQuests = {
 								if (e && epoint) {
 									let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 									if (ee) {
-										ee.faction = "Ambush";
+										ee.faction = "Owners";
 										ee.AI = "hunt";
 										ee.teleporting = 3;
 										ee.teleportingmax = 3;
@@ -406,12 +406,12 @@ let KDQuests = {
 							}
 						}
 					}
-					
+
 				}
 			}
 		},
 	},
-	
+
 	"EscapedDoll": {
 		name: "EscapedDoll",
 		npc: "DollmakerBoss1",
@@ -455,7 +455,7 @@ let KDQuests = {
 		}
 	},
 
-	
+
 	"Nawashi": {
 		name: "Nawashi",
 		npc: "Nawashi",
@@ -633,7 +633,7 @@ let KDQuests = {
 			}
 
 		}
-	}, 1.5, ["mithrilRestraints"]),
+	}, 1.5, ["mithrilCuffs", "leatherRestraints", "leatherRestraintsHeavy"]),
 
 	"RopeQuest": KDGenQuestTemplate("RopeQuest", "RopeKraken", "Rope", (goddess, flag) => {
 		let point = KinkyDungeonGetRandomEnemyPoint(true);
@@ -647,7 +647,7 @@ let KDQuests = {
 				enemy.AI = "looseguard";
 			}
 		}
-	}, 2, ["ropeMagicStrong"]),
+	}, 2, ["dressRestraints", "leatherRestraints", "leatherRestraintsHeavy"]),
 
 	"LeatherQuest": KDGenQuestTemplate("LeatherQuest", "ChainBeing", "Leather", (goddess, flag) => {
 		let point = KinkyDungeonGetRandomEnemyPoint(true);
@@ -1077,9 +1077,17 @@ function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountM
 		nocancel: true,
 		accept: () => {
 			if (KinkyDungeonStatsChoice.get("BoundCrusader")) {
-				KDPlayerEffectRestrain(undefined, 3, restraintsTags, "Goddess", false, true, false, false, false, "Purple", {
-					Progressive: true,
-					DontPreferWill: true,
+				for (let i = 0; i < 2; i++) {
+					KDPlayerEffectRestrain(undefined, 1, restraintsTags, "Goddess", false, true, false, false, false, "Divine", {
+						Progressive: true,
+						ProgressiveSkip: true,
+						DontPreferWill: true,
+					});
+				}
+				KDPlayerEffectRestrain(undefined, 1, restraintsTags, "Goddess", false, true, false, false, false, "Divine", {
+					Progressive: false,
+					ProgressiveSkip: false,
+					DontPreferWill: false,
 				});
 			}
 			KDSetQuestData(Name, {
@@ -1118,6 +1126,9 @@ function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountM
 				KinkyDungeonChangeRep(Goddess, Rep);
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed_" + Name), "#ffffff", 1);
 				KDRemoveQuest(Name);
+				for (let inv of KinkyDungeonAllRestraintDynamic()) {
+					if (inv.item.lock == "Divine") KinkyDungeonLock(inv.item, "");
+				}
 			}
 		},
 		weight: (RoomType, MapMod, data, currentQuestList) => {

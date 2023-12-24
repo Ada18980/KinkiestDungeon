@@ -43,6 +43,7 @@ AddModel({
 	])
 });
 
+AddModel(GetModelFashionVersion("ClothBlindfold", true));
 AddModel({
 	Name: "BlindfoldBasic",
 	Folder: "Blindfold",
@@ -69,6 +70,7 @@ AddModel({
 	])
 });
 
+AddModel(GetModelFashionVersion("BlindfoldBasic", true));
 AddModel({
 	Name: "BlindfoldLeather",
 	Folder: "Blindfold",
@@ -113,6 +115,8 @@ AddModel({
 });
 
 
+AddModel(GetModelFashionVersion("BlindfoldLeather", true));
+AddModel(GetModelFashionVersion("KittyBlindfold", true));
 AddModel({
 	Name: "BlindfoldTape",
 	Folder: "Blindfold",
@@ -130,3 +134,5 @@ AddModel({
 		},
 	])
 });
+
+AddModel(GetModelFashionVersion("BlindfoldTape", true));

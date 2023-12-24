@@ -28,7 +28,7 @@ let KDTrapTypes = {
 				let player = KinkyDungeonEnemyAt(x, y) ? KinkyDungeonEnemyAt(x, y) : KinkyDungeonPlayerEntity;
 				KinkyDungeonCastSpell(x, y, spell, { x: startX, y: startY }, player, undefined);
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
-				KinkyDungeonTilesDelete(x + "," + y);
+				delete KinkyDungeonTilesGet(x + "," + y).Trap;
 				return {
 					triggered: true,
 					msg: "",
@@ -39,7 +39,7 @@ let KDTrapTypes = {
 				if (spell) {
 					KinkyDungeonCastSpell(x, y, spell, undefined, undefined, undefined);
 					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
-					KinkyDungeonTilesDelete(x + "," + y);
+					delete KinkyDungeonTilesGet(x + "," + y).Trap;
 					return {
 						triggered: true,
 						msg: TextGet("KinkyDungeonSpellCast" + spell.name),
@@ -100,7 +100,7 @@ let KDTrapTypes = {
 		}
 		if (created.length > 0) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
-			KinkyDungeonTilesDelete(x + "," + y);
+			delete KinkyDungeonTilesGet(x + "," + y).Trap;
 		}
 		return {
 			triggered: true,
@@ -122,7 +122,7 @@ let KDTrapTypes = {
 		}
 		if (created.length > 0) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
-			KinkyDungeonTilesDelete(x + "," + y);
+			delete KinkyDungeonTilesGet(x + "," + y).Trap;
 		}
 		return {
 			triggered: created.length > 0,
@@ -143,7 +143,7 @@ let KDTrapTypes = {
 			}
 			KinkyDungeonCastSpell(x + xx, y + yy, spell, undefined, undefined, undefined, "Trap");
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
-			KinkyDungeonTilesDelete(x + "," + y);
+			delete KinkyDungeonTilesGet(x + "," + y).Trap;
 			let etiles = Object.values(KDGetEffectTiles(x, y)).filter((etile) => {
 				return etile.tags && etile.tags.includes("runetrap");
 			});
@@ -197,7 +197,7 @@ let KDTrapTypesStepOff = {
 				if (created > 0) {
 					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
 					KinkyDungeonMakeNoise(12, x, y);
-					KinkyDungeonTilesDelete(x + "," + y);
+					delete KinkyDungeonTilesGet(x + "," + y).StepOffTrap;
 					KinkyDungeonMapSet(x, y, 'D');
 				}
 			} else
@@ -321,7 +321,7 @@ function KinkyDungeonGetGoddessTrapTypes() {
 	if (KinkyDungeonGoddessRep.Latex < KDRAGE) {
 		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "SlimeEnthusiast", Level: 0, Power: 2, Weight: 20 });
 		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "BigSlime", Level: 0, Power: 3, Weight: 10 });
-		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "ElementalLatex", Level: 0, Power: 2, Weight: 20 });
+		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "ElementalRubber", Level: 0, Power: 2, Weight: 20 });
 	}
 	if (KinkyDungeonGoddessRep.Elements < KDANGER) {
 		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "ElementalFire", Level: 0, Power: 2, Weight: 5 });
