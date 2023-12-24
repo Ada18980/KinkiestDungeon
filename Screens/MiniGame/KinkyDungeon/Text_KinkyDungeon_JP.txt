@@ -471,8 +471,8 @@ More enemies spawn during sleep.
 
 No Way Out
 追いつめ
-Enemies will always use the tightest restraints possible and fully bind you.
-敵は最も強力な拘束を使用し、可能な限り拘束を追加しようとする
+Enemies will always use the tightest restraints possible regardless of willpower. +10 Security level.
+気力に関係なく、敵が最も強力な拘束を使用する。手配度+10
 Deft Footwork
 足さばき
 You ignore some consequences of being mildly slowed from heels or slime, and you can cast Leg spells while slowed significantly at 50% miscast chance.
@@ -492,8 +492,8 @@ You can cast arm spells using just your fingers, as long as your hands aren't bo
 
 Well-Equipped
 装備充実
-Restraints and traps that are limited by level appear sooner, and enemies will stack many restraints.
-レベル制限のある拘束具と罠の登場が早まる。敵はより多くの拘束具を所持するようになる
+Restraints and traps that are limited by level appear sooner, and will stack more. +10 security level.
+レベル制限のある拘束具と罠の登場が早まる。敵はより多くの拘束具を所持するようになる。手配度+10
 
 Quick-Draw
 クイックドロー
@@ -819,6 +819,11 @@ Rusty Bolts
 Most traps have a 25% misfire chance.
 ほとんどのトラップが25%の確率で不発になる
 
+
+Not a Pet
+ペットじゃない
+Petsuits occur less often.
+ペットスーツの出現率が減少する。
 Unmasked
 マスク嫌い
 Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
@@ -1786,6 +1791,8 @@ Divine
 神聖
 Quantity:
 量：
+Use One
+使う
 Use Item (Consumes 1)
 アイテムを使う（1個消費）
 way of the fist
@@ -1794,12 +1801,18 @@ Lockpick
 ロックピック
 Exit Keys
 戻る
-Wizard's Outfit
-ウィザードの衣装
+Adventurer's Outfit
+冒険者の服
 Your favorite outfit for adventuring.
 お気に入りの冒険服。
 Your original outfit. No bonuses, no penalties.
 オリジナルの衣装。ボーナスなし、ペナルティなし
+Tactical Catsuit
+タクティカルキャットスーツ
+A sleek catsuit worn by stealth operatives. No frills, no nonsense.
+潜入工作員用のキャットスーツ。フリルはないが野暮ではない。
+Increases stealth by 10% in the dark.
+
 Jail Uniform
 刑務所の制服
 The prisoners are kept in revealing outfits to keep them from hiding things.
@@ -1818,48 +1831,66 @@ An elegant dress meant to denote a maid's status.
 メイドの身分を表すエレガントなドレス。
 Massively increases accuracy against slime mold.
 粘菌に対する命中率が大幅にアップする。
+Harem Outfit
+ハーレムの衣装
+A skimpy outfit with antiquated connotations.
+露出の多い、古代の衣装。
+Harkening back to an old era.
+古代の生活を思い起こさせる。
+Combat Bikini
+コンバットビキニ
+A minimalist albeit chilly outfit designed for ease of use.
+少し肌寒いが、使いやすさを追求し尽くした合理的な服装。
+Or perhaps it's just sexy...
+もしくはただのビキニ。
 Maid Uniform
 メイド服
 An elegant dress meant to denote a maid's status.
 メイドの身分を表すエレガントなドレス。
 Massively increases accuracy against slime mold.
 粘菌に対する命中率が大幅にアップする。
-Prisoner Uniform
-囚人服
-The uniform of choice for girls captured by the dragonhearts.
-ドラゴンハート特性の囚人服。
-Designed to make it hard to conceal weapons. No bonuses, no penalties.
-ものを隠せないように露出度を高められた囚人服。ボーナスなし、ペナルティなし。
+Dragonheart Uniform
+ドラゴンハーツの衣装
+The uniform of choice for dragonheart of all ranks.
+全てのドラゴンハーツが袖を通す衣装。
+It's made of fire-resistant leather.
+炎に耐性のある皮でできている。
 Scientific Uniform
 科学的ユニフォーム
 An outfit designed to leave little to the imagination.
 ピッタリとしたスーツ。
-No bonuses, no penalties.
-ボーナスなし、ペナルティなし
+Resistant to electricity but does not insulate well.
+電気には強いが、断熱性は低い。
 Latex Catsuit
 ラテックスキャットスーツ
 An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
 スライムを大量に加工した衣装。シルクのような柔らかな肌触り。
-No bonuses, no penalties.
-ボーナスなし、ペナルティなし
+Resistant to electricity but does not insulate well.
+電気には強いが、断熱性は低い。
 Doll Catsuit
 ドールのキャットスーツ
 An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
 スライムを大量に加工した衣装。シルクのような柔らかな肌触り。
-No bonuses, no penalties.
-ボーナスなし、ペナルティなし
+Resistant to electricity but does not insulate well.
+電気には強いが、断熱性は低い。
+Cyber Doll Suit
+サイバードールのスーツ
+A technologically advanced suit designed for long term wear. Despite being watertight and skintight it has cleaning and ventilation ports that plug directly into doll storage fixtures.
+高度な技術力を用い、長期間の着用を想定して作られたスーツ。肌にピッタリと張り付き、防水性だが換気・クリーニングポートに人形収納用の差込口までついている。
+Resistant to electricity but does not insulate well.
+電気には強いが、断熱性は低い。
 Shadow Latex Dress
 シャドーラテックスドレス
 A minidress made from shadow latex, a favorite of otherwordly patrons.
 シャドーラテックスで作られたミニドレス。異界の常連客のお気に入り。
-No bonuses, no penalties.
-ボーナスなし、ペナルティなし
+Resistant to the elements, but is infused with crystals that amplify psychic damage to yourself.
+エレメント属性には強いが、サイキックダメージを増幅させるクリスタルがついている。
 Elven Dress
 エルフのドレス
 A regal minidress worn by visitors to the forest.
 森への訪問者が身に着ける堂々としたミニドレス。
-No bonuses, no penalties.
-ボーナスなし、ペナルティなし
+Not very good at insulating you from the cold.
+少し肌寒い。
 Scroll of Sleight
 奇術の巻物
 The scroll makes your memories of arm movements clear as day!
@@ -2482,6 +2513,10 @@ Unarmed
 素手
 Accuracy:
 命中率：
+Crit Multiplier: 
+会心ダメージ率：
+Bind Crit Multiplier: 
+拘束会心ダメージ率：
 Find the keys..
 鍵を見つける……
 Find the exit!
@@ -2536,8 +2571,13 @@ The vibration is torturous!
 拷問のような振動を感じる！
 Edged!
 絶頂した！
-Satisfied~
-満足した……
+Satisfied. Miscast chance is reduced.
+満足した……。詠唱失敗率が減少する。
+
+Crit: 
+クリティカル：
+Bind: 
+拘束：
 Damage:
 ダメージ：
 Accuracy:
@@ -5066,6 +5106,10 @@ That door is open. Do you want to close it?
 ドアを閉じる？
 You slam the door and jam it shut!
 ドアを思い切り閉めた！
+Passion
+情欲
+Frustration
+欲求不満
 Submissiveness
 服従度
 Security Level
@@ -5116,6 +5160,8 @@ Allies:
 味方：
 Enemies:
 敵:
+Favorable:
+良好：
 Nevermere Trainers
 ネバーミアトレーナーズ
 DressUp Co.
@@ -8233,6 +8279,8 @@ Learnable
 習得可能
 Unlearned
 未習得
+Learned
+習得済み
 Excl. Upgrades
 強化呪文を除外
 Passive
@@ -8459,12 +8507,21 @@ Choose aim direction
 発射方向を選択
 Windblast
 ウインドブラスト
-Three puffs of wind that do DamageDealt pressure damage, stun briefly, and push targets back.
+Three scattered puffs of wind that do DamageDealt blast damage at close range, stun briefly, and push targets back.
 風を3回吹き付けて DamageDealt ダメージを与える。命中した敵を気絶させ、ノックバックさせる。
 You press your wrists together and conjure a blast of wind!
 圧縮した風を押し出す！
 Choose aim direction
 照準方向を選択
+Gust
+ガスト
+Three puffs of wind in a tight cone that deal DamageDealt blast damage and push targets back.
+鋭い風を3回吹き付け、 DamageDealt ダメージを与え、命中した敵をノックバックさせる。
+You exhale a mighty wind!
+強力な風を吐き出した！
+Choose aim direction
+照準方向を選択
+
 Knife
 ナイフ
 Throw one of your knives DamageDealt damage. Lands in the target's tile, but is recoverable afterward.
@@ -8485,8 +8542,8 @@ Shadow Slash
 シャドースラッシュ
 Shadow Scythe
 シャドーサイス
-Slice the area in front of you, dealing a delayed DamageDealt damage in an area and slowing briefly.
-前方のエリアを切り裂き、一定ターン数後に DamageDealt ダメージを与え、減速効果を付与する。
+Slice the area in front of you, dealing a delayed DamageDealt damage in an area and slowing briefly. Deals 50% more damage when you are attacking from the shadows.
+前方のエリアを切り裂き、一定ターン数後に DamageDealt ダメージを与え、減速効果を付与する。影の中から攻撃を仕掛けた場合、ダメージが50%上昇する。
 You create a tear in space with your finger!
 指で宙をなぞり、空間を切り裂く！
 Choose aim direction
@@ -8499,6 +8556,32 @@ You call upon a misty portal to transport you!
 ポータルを召喚する！
 Choose target location
 ターゲットの場所を選択
+
+Blink
+ブリンク I
+Instantly teleport to an adjacent position and gain +50 evasion for 3 turns. Unlocks Blink and Warp when learned.
+隣接するマスに瞬時に移動し、3ターンの間回避力+50。習得すると「ブリンク」と「ワープ」がアンロックされる。
+You teleport!
+瞬間移動した！
+Choose target location (1 tile range)
+移動先を選択(1マス先)
+Blink II
+ブリンク II
+Instantly teleport up to 2 tiles away. Must have vision of the target point. Stuns an enemy if you teleport behind them.
+視界範囲内の、2マス先まで瞬時に移動する。敵の後ろにワープした場合、敵をスタンさせる。
+You teleport!
+瞬間移動した！
+Choose target location (2 tile range)
+移動先を選択(2マス先)
+Blink III
+ブリンク III
+Instantly teleport up to 3 tiles away. Must have vision of the target point. 
+視界範囲内の、3マス先まで瞬時に移動する。
+You teleport!
+瞬間移動した！
+Choose target location (3 tile range)
+移動先を選択(3マス先)
+
 Blink
 ブリンク
 Instantly teleport to a location you can see.
@@ -8541,8 +8624,8 @@ Choose aim direction
 照準方向を選択
 Freeze
 フリーズ
-Freeze an adjacent target for Duration turns.
-Duration ターンの間、隣接するターゲットを凍結させる。
+Chill an adjacent target for DamageDealt ice damage and slows for Duration turns. Freezes if already slowed or drenched.
+隣接する対象に DamageDealt 氷属性ダメージを与える。命中したターゲットが水浸し、減速状態出会った場合、 Duration ターンの間凍結させる。
 You utter dark words of ice-cold truths.
 黒き氷の真実を口にした。
 Choose a target to freeze
@@ -8745,10 +8828,18 @@ The elemental channels the force of the storm!
 エレメンタルの力が嵐を引き起こす！
 Fireball
 ファイアボール
-A slow moving ball of flame that explodes for 120 fire damage to the target and DamageDealt damage to surrounding enemies.
-動きの遅い火の玉を発射し、ターゲットに 120 の火ダメージを与え、周囲の敵に DamageDealt 火ダメージを与える。
+A slow moving ball of flame that explodes for 180 fire damage to the target and DamageDealt damage to surrounding enemies.
+動きの遅い火の玉を発射し、ターゲットに 180 の火ダメージを与え、周囲の敵に DamageDealt 火ダメージを与える。
 You a hurl a fireball!
 火の玉を投げた！
+Choose aim direction
+照準方向を選択
+Fireblast
+ファイアブラスト
+A slow moving ball of flame that explodes for 100 fire damage to the target and DamageDealt damage to surrounding enemies.
+動きの遅い火の玉を発射し、ターゲットに 100 の火ダメージを与え、周囲の敵に DamageDealt 火ダメージを与える。
+You a hurl a blast of flame!
+強力な火球を投げつけた！
 Choose aim direction
 照準方向を選択
 Incinerate
@@ -8833,8 +8924,8 @@ Lightning Rune
 雷のルーン
 Lightning Rune
 雷のルーン
-A trap that deals DamageDealt electric damage and stuns for 4 turns. Takes 5 turns to setup.
-DamageDealt 電気ダメージを与え、4ターンの間スタン状態を付与するトラップを作り出す。設置まで5ターンかかる。
+A trap that deals DamageDealt electric damage and stuns for 4 turns. Takes 3 turns to setup. 200% crit multiplier.
+5ターンかけて DamageDealt 電気ダメージを与え、4ターンの間スタン状態を付与するトラップを作り出す。この攻撃の会心ダメージ倍率は200%。
 You conjure a charged trap!
 雷の罠を仕掛けた！
 Choose location for trap
@@ -8842,9 +8933,9 @@ Choose location for trap
 Freeze Rune
 氷のルーン
 Freeze Rune
-フリーズルーン
-A trap that deals DamageDealt ice damage and freezes for 30 turns. Takes 5 turns to setup.
-DamageDealt 電気ダメージを与え、30ターンの間凍結状態を付与するトラップを作り出す。設置まで5ターンかかる。
+氷のルーン
+A trap that deals DamageDealt ice damage and freezes for 30 turns. Takes 3 turns to setup. 200% crit multiplier.
+5ターンかけて DamageDealt 電気ダメージを与え、30ターンの間凍結状態を付与するトラップを作り出す。この攻撃の会心ダメージ倍率は200%。
 You conjure an icy trap!
 氷の罠を仕掛けた！
 Choose location for trap
@@ -8853,8 +8944,8 @@ Flame Rune
 炎のルーン
 Flame Rune
 炎のルーン
-A trap that deals DamageDealt fire damage in an area. Takes 5 turns to setup.
-範囲内に DamageDealt 火ダメージを与えるトラップを作り出す。設置まで5ターンかかる。
+A trap that deals DamageDealt fire damage in an area. Takes 3 turns to setup. 200% crit multiplier.
+5ターンかけて範囲内に DamageDealt 火ダメージを与えるトラップを作り出す。この攻撃の会心ダメージ倍率は200%。
 You conjure an incendiary trap!
 炎の罠を仕掛けた！
 Choose location for trap
@@ -8965,6 +9056,16 @@ You inscribe a transmutation circle on the floor.
 床に変化のサークルを刻む。
 Choose area containing slime
 スライムがいるエリアを選択
+
+LiquidMetal
+リキッドメタル
+Solidifies Latex in the area into Liquid Metal. Liquid Metal is slippery, but also adheres to enemies and slowly binds them in metallic bonds. Enemies encased in liquid metal are more susceptible to knockback due to the slippery nature.
+周囲のゴムを固めて液体金属にする。液体金属は滑りやすいが、敵に徐々に付着する。液体金属に包まれた敵は滑りやすくなるため、ノックバックしやすくなる。
+You inscribe a transmutation circle on the floor.
+床に変化のサークルを刻んだ！
+Choose area containing Latex
+ゴムがある床を選択
+
 Slime Repulsion
 スライム反発
 Gain +50 glue resist.
@@ -9087,16 +9188,16 @@ Iron Will
 鉄の意志
 While you have 100 current willpower or more, regain an additional 4 stamina per turn.
 現在の気力が100以上の時、毎ターン4ポイントのスタミナを追加で回復する。
-Steadfast Guard
-揺るぎない守護
-For each 10 current willpower you have over 50, gain +5 Restraint Block.
+Defiance
+反抗
+For each 10 current willpower you have over 50, gain +5 Bondage Resist.
 現在の気力が50以上の時、10を超えるごとに5ポイントの拘束抵抗力を得る。
 Willful Struggle
-意志のあるもがき
-For each 10 current willpower you have over 50, gain +1% struggle effectiveness.
+決意の抵抗
+For each 10 current willpower you have over 50, gain +1% struggle power.
 現在の気力が50以上の時、10を超えるごとに「もがく」の効果が1%上昇する
 Your willpower provides you with additional strength! (+AMOUNT%)
-あなたの意志の力はあなたにさらなる強さをもたらします！ (+AMOUNT%)
+強い意志を持ってもがいた！！ (+AMOUNT%)
 Athlete
 アスリート
 Sprinting costs 40% less stamina.
@@ -9105,22 +9206,67 @@ Sneaky
 隠密
 You are harder to see when waiting.
 待機中、見つかりにくくなる。
+
+Vault
+通り抜け
+You can sprint under flying enemies and through vulnerable, slowed, or disabled enemies. Does not work on immobile enemies such as doors and turrets.
+走ることで、飛行、脆弱状態、減速状態、行動不能状態の敵をすり抜けることができる。ドアやタレットのような動かない敵はすり抜けられない。
+Improved Vault
+風のように
+You can dash through enemies that aren't immobile.
+動かない敵もすり抜けられるようになる。
 Dodge I
-回避アップ1
+回避アップ I
 +10 Evasion
 回避力が10増加する
 Dodge II
-回避アップ2
+回避アップ II
 +15 Evasion (25 total)
 回避力が15増加する(合計25)
 Dodge III
-回避アップ3
+回避アップ III
 +25 Evasion (50 total)
 回避力が25増加する(合計50)
+
+Strength Up
+筋力増強
++20% Physical Damage
+物理ダメージ+20%
+Deadly Aim
+死の標的
+Increases crit multiplier by a % equal to your Battle Rhythm.
+戦闘のリズム分、会心ダメージ倍率が上昇する。
+Accuracy I
+精確 I
++10 Accuracy
+命中率+10
+Accuracy II
+精確 II
++15 Accuracy (25 total)
+命中率+15(合計25)
+Accuracy III
+精確 III
++25 Accuracy (50 total)
+命中率+25(合計50)
+
 Critical Strike
 クリティカルストライク
 Excess accuracy (over 100%) is converted to bonus physical damage percentage at 50% efficiency.
 命中率が100%以上の時、超過分の50%を物理ダメージに加える。
+
+Precise Critical
+精確無比
+When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency.
+物理ダメージで「クリティカルストライク」を発動した時、100%を超えた命中率の50%が会心ダメージ倍率に変換される。
+Precise Magic
+精密魔法
+When landing a critical strike with magic damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency.
+魔法ダメージで「クリティカルストライク」を発動した時、100%を超えた命中率の50%が会心ダメージ倍率に変換される。
+Magical Overload
+過負荷魔法
+When landing a critical strike with magic damage, crit multiplier is increased by 25% of your current DP.
+魔法ダメージで「クリティカルストライク」を発動した時、現在DPの25%が会心ダメージ倍率に変換される。
+
 Brute Force
 強力
 When enabled, your attacks deal 10% of your willpower as additional crush damage but cost 10 more stamina.
@@ -9131,16 +9277,16 @@ While standing on slime/latex, you can cast rubber spells without components.
 スライムかラテックスの上に立っている時、ラバー系のスペルに動作を必要としない。
 Convincing Disguise
 納得の見た目
-While completely covered in slime and not moving, your visibility is reduced considerably.
-全身をスライムに覆われている状態で待機した際、敵に見つかりにくくなる。
+While standing still on slime, or fully bound with at least one latex item, you are harder to notice. Each latex restraint you are wearing increases this amount. Can be toggled off by clicking the buff icon.
+スライムの上で待機中、もしくはラテックス製の拘束具を身に着けている間は、気づかれにくくなる。身につけているラテックス製の拘束具が増えるごとに、効果が増す。バフアイコンをクリックすることで切替可能。
 Magical Implements
 魔法の道具
-While holding a magical weapon like a staff or enchanted knife, your mana costs are reduced by 20%.
+While holding a magical weapon like a staff or magic knife, your mana costs are reduced by 20%.
 杖や魔法の武器を持っている時、マナコストが20%減少する。
 Mage Circuits
-魔術回路
-Increases the size of the passive mana pool by +100.
-マナプールが100増加する
+魔法回路
+Increases the size of the passive mana pool by +400.
+マナプールが400増加する
 Archmage
 アークメイジ
 Upcasted spells cost 25% less mana.
@@ -9166,27 +9312,27 @@ Frustration
 When enabled, enemies in chastity become angry Frustrated Pets when becoming helpless.
 有効時、貞操帯を装備した敵が完全拘束された時に怒るようになる。
 Mana Up I
-マナアップ1
+マナアップ I
 Increases maximum MP by 12
 最大MPが12増加する
 Mana Up II
-マナアップ2
+マナアップ II
 Increases maximum MP by 12
 最大MPが12増加する(合計24)
 Mana Up III
-マナアップ3
+マナアップ III
 Increases maximum MP by 12
 最大MPが12増加する(合計36)
 Strong Mind I
-ストロングマインド1
+ストロングマインド I
 Increases maximum Distraction by 33% of base and Distraction regen by -0.1 per turn
 最大興奮値が33%上昇し、ターン経過時の興奮値低下量が0.1増える。
 Strong Mind II
-ストロングマインド2
+ストロングマインド II
 Increases maximum Distraction by 33% of base and Distraction regen by -0.1 per turn
 最大興奮値が33%上昇し、ターン経過時の興奮値低下量が0.1増える。
 Strong Mind III
-ストロングマインド3
+ストロングマインド III
 Increases maximum Distraction by 33% of base and Distraction regen by -0.1 per turn
 最大興奮値が33%上昇し、ターン経過時の興奮値低下量が0.1増える。
 Expert Wizard
@@ -9217,10 +9363,10 @@ Fire in the hole!
 グレネード！
 Choose target AoE location
 位置を選択
-Rope Snare
-縄の罠
-An invisible trap on the ground that stuns anyone who walks on it for Duration turns and applies 150 points of binding.
-透明な罠を設置する。罠を踏むと、 Duration ターンの間気絶し、拘束値が150増加する。
+Rope Rune
+縄のルーン
+An AoE trap on the ground that deals 25 chain damage, roots for 8 turns, and applies 80 points of binding. Takes 3 turns to setup. 200% crit multiplier.
+3ターンかけて縄のルーンを設置する。ルーン発動時、範囲内の敵に25チェーンダメージと拘束値80を与え、8ターンの間地面に張り付ける。この攻撃の会心ダメージ倍率は200%。
 You set an invisible trap!
 透明な縄の罠を仕掛けた！
 Select where to put the trap (it will be invisible)
@@ -9417,8 +9563,8 @@ Mirror Image
 鏡像
 
 
-A flash of light which renders anyone caught within blind for Duration turns
-Duration ターンの間、小さな閃光で範囲内の敵を盲目状態にする。
+A flash of light which renders anyone caught within blind for 7 turns
+7ターンの間、小さな閃光で範囲内の敵を盲目状態にする。
 You charge up a bright flash!
 閃光を放つ呪文を唱えた！！
 Select where to center the flash (SpellArea radius)
@@ -9431,8 +9577,8 @@ Select where to center the noise (SpellArea radius)
 場所を選択 (範囲 RADIUS)
 Greater Flash
 グレーターフラッシュ
-A massive flash of light which renders anyone caught within blind for Duration turns
-Duration ターンの間、大きな閃光で範囲内の敵を盲目にする。
+A massive flash of light which renders anyone caught within blind for 16 turns and stuns briefly.
+16ターンの間、大きな閃光で範囲内の敵を盲目にする。
 You charge up a bright flash!
 巨大な閃光を放つ呪文を唱えた！
 Select where to center the flash (SpellArea radius)
@@ -9441,8 +9587,8 @@ Focused Flash
 フォーカスフラッシュ
 Select where to center the flash (SpellArea radius)
 場所を選択 (範囲 RADIUS)
-A focused flash of light which renders anyone caught within blind for Duration turns
-Duration ターンの間、圧縮された光で敵を盲目にする。
+A focused flash of light which renders anyone caught within blind for 30 turns and stuns for Duration turns.
+30ターンの間、圧縮された光で敵を盲目にし、 Duration ターンの間スタンさせる。
 You slowly charge up a powerful flash!
 光を圧縮し、閃光を放つ呪文を唱えた！
 Shroud
@@ -9598,21 +9744,31 @@ Select area to bind
 Commands nearby restraints to bind targets standing on them. Rope: 30 chain dmg/5 turn snare. Chain: 30 crush dmg/8 turn disarm. Belts: 50 binding/3 turns vulnerability.
 落ちている拘束具に、その上の敵を拘束するよう命令する。種類により追加効果。ロープ：30チェーンダメージと5ターンの減速。鎖：30打撃ダメージと8ターン武装解除。ベルト：拘束値50追加と脆弱状態3ターン。
 You say a command word, and the bindings on the ground do your bidding!
-呪文を唱え、地面の拘束具に命令を出した！
+コマンドを唱え、地面の拘束具に命令を出した！
 CMD: Unlock
-CMD: ロック解除
+CMD: ロック解除(小)
 Select which creature to unlock
 対象を選択
-On yourself: Removes all purple locks. On a creature: Reduces the target's binding by 20 points.
-自分：すべての紫色のロックを解除する。他：拘束値を20減らす。
+On yourself: Removes one magical lock. On a creature: Reduces the target's binding by 20 points.
+自分：魔法のロックを1つ解除する。他：拘束値を20減らす。
 You speak a command word!
-呪文を唱え、拘束具を解除する！
+コマンドを唱え、拘束具を解除する！
 None of the locks you are wearing respond to your magic.
 どのロックにも効果がないようだ。
 You can't help her with this.
 この魔法を使っても意味はない。
 You must target yourself, an enemy, or a locked object.
 ロックされた拘束具を付けている対象を選ぶ必要がある。
+
+CMD: Greater Unlock
+CMD: ロック解除(大)
+Select which creature to unlock
+対象を選択
+On yourself: Removes all magical locks. On a creature: Reduces the target's binding by 100 points.
+自分：魔法のロックを全て解除する。他：拘束値を100減らす。
+You speak a powerful command word!
+強力なコマンドを唱え、拘束具を解除する！
+
 Lesser Invisibility
 半透明化
 Select which creature to buff
@@ -9625,8 +9781,8 @@ Camouflage
 カモフラージュ
 Select yourself
 自分を選択
-Enemies have a harder time noticing you for Duration turns. Cancels if you move, cast, or sleep.
-Duration ターンの間、隠密性が上がる。移動、詠唱、睡眠で効果が消失する。
+Enemies have a harder time noticing you for Duration turns. Cancels if you move (unless you are near a wall), cast, or sleep.
+Duration ターンの間、隠密性が上がる。移動(壁の近くにいる場合を除く)、詠唱、睡眠で効果が消失する。
 You pose in a clandestine manner.
 ポーズをとり、周囲に溶け込んだ！
 Darkblade
@@ -9671,10 +9827,10 @@ Truesight
 トゥルーサイト
 When enabled: Drain mana every turn to see through walls and increase accuracy by 40%.
 有効時: 毎ターンマナを消費し、壁を透視する。また、命中率を40%上昇させる。
-Heartsense
-ハートセンサー
-Highlight the locations of enemies through walls on the map for 12 turns.
-12ターンの間、敵の位置を強調表示する。
+Echolocation
+エコーロケーション
+Close your eyes to dramatically improve your hearing and locate enemies through walls.
+目を閉じて聴覚を鋭敏に研ぎ澄まし、壁越しにも敵の位置を特定できるようにする。
 Light
 ライト
 Produce a bright light for Duration turns. Has no effect in dark rooms.
@@ -9821,6 +9977,17 @@ Call forth a shadow warrior for 16 turns who deals DamageDealt damage every othe
 深淵が呼びかけに応じた！
 You call...
 闇に呼びかける……
+
+Summon Nature Spirit
+自然の精霊召喚
+Select where to put the nature spirit (cannot place on occupied squares)
+配置する位置を選択（何もないマスのみ）
+Create a natural spirit that fires vine projectiles and has a healing aura that restores HP to allies and regenerates your stamina.
+自然の精霊を召喚する。自然の精霊は周囲の味方の体力とスタミナを回復するオーラを持ち、つるの魔法を発射する。
+A healing wisp appears!
+ヒーリングウィスプが現れた！
+You call upon the powers of nature!
+自然の力に仮初めの命を吹き込んだ！
 Summon Golem
 ゴーレム召喚
 Select where to put the golem (cannot place on occupied squares)
@@ -10383,6 +10550,8 @@ Back to Spellbook
 魔法書に戻る
 Return to Game
 ゲームに戻る
+Known Abilities
+習得済み
 Spell Tree
 スペルツリー
 Elemental Spells
@@ -10483,6 +10652,8 @@ Replace Spell 7
   現在の呪文 7:
 ???
 ???
+Unfiled
+未分類
 Adventuring 101
 冒険のススメ
 History
@@ -10653,8 +10824,8 @@ Yes! I've done it! I have created another red slime! I shall call him Fred, yes,
 (キャサリン・ウィローズの日記　70ページ）：地下のジャングルはとても不思議なところです。天井の割れ目から降り注ぐ光は、植物の生命を維持するには弱すぎます。にもかかわらず、再生の女神は古代の知恵をもって、この場所を残すと決めたようです。私が単なる通りすがりであることに気づくまで、何体のドライアドを差し向けるつもりでしょうか。
 The unseen maid is the deadliest.
 見えないメイドにこそ警戒が必要だ。
-(The note is blank)"
-ノートは空白だ。
+(The note is blank)
+何も書かれていない。
 The note reads: Mmmmmmmph! Mmmm! MMMMMPH!!!!-- (The entire note is just gagged mumblings...)
 ノートにはこう書いてある|んんぅ！むぐぐ、んんん～！(ノートいっぱいに猿轡をかまされたかのような文章が書いてある……)
 (The note is illegible)
@@ -15366,6 +15537,8 @@ Damage and Resists
 ダメージと耐性
 Magic
 魔法
+Spell Components
+必要部位
 Threats
 敵
 World Generation
@@ -18872,14 +19045,14 @@ The material is somehow both stretchy yet hard enough to chip a knife on. The pi
 身体に張り付く柔軟性とナイフでも傷つけられない硬度を持つ。旧文明の科学の頂点。
 Dollmaker's Visor
 ドールメイカーのバイザー
-A visor used by the Dollmaker for assigning arbitrary tasks to her dolls.
-ドールメイカーが人形に指示を与えるためのバイザー。
+A visor used by the Dollmaker for assigning arbitrary tasks to her dolls. Dims vision unless you perform your duties capturing dolls.
+ドールメイカーが人形に指示を与えるためのバイザー。人形を捕獲する任務をこなさなければ、視界が暗くなっていく。
 It's made of metallic glass, almost indestructible. Fortunately, it's still possible to see through.
 金属ガラス製で、破壊することはほぼ不可能。幸いなことに、薄っすらと透けている。
 Dollmaker's Mask
 ドールメイカーのマスク
-A mask used by the Dollmaker for assigning arbitrary tasks to her dolls.
-ドールメイカーが人形に指示を与えるためのマスク。
+A mask used by the Dollmaker for assigning arbitrary tasks to her dolls. Dims vision unless you perform your duties capturing dolls.
+ドールメイカーが人形に指示を与えるためのマスク。人形を捕獲する任務をこなさなければ、視界が暗くなっていく。
 It's made of metallic glass, almost indestructible. Fortunately, it's still possible to see through.
 金属ガラス製で、破壊することはほぼ不可能。幸いなことに、薄っすらと透けている。
 Detected new hardware.
@@ -18974,6 +19147,57 @@ Paste
 ペースト
 Preloading Character Assets: 
 キャラクターアセットをロード中：
+
+
+Uniforms
+衣装セット
+Suits
+スーツ
+Armor
+アーマー
+Underwear
+下着
+Bras
+ブラジャー
+Bodysuits
+ボディスーツ
+Socks
+靴下
+Shoes
+靴
+Tops
+トップス
+Sleeves
+スリーブ
+Corsets
+コルセット
+Skirts
+スカート
+Pants
+ズボン
+Accessories
+アクセサリー
+Fashion Restraints
+拘束具(アクセサリー)
+Hats
+帽子
+Hairstyles
+ヘアスタイル
+Face
+顔
+Eyes
+目
+Mouth
+口
+Body
+身体
+Gloves
+グローブ
+'Cosplay'
+”コスプレ”
+
+
+
 
 Items on Ground:
 アイテムが落ちている：
@@ -19091,32 +19315,32 @@ Targe
 盾
 Hide behind it while you still can.
 今のうちに隠れろ。
-+60 Block. Deals crush damage and stuns for 4 turns.
-打撃属性。装備時ブロック値+60。攻撃が命中した時、4ターンの間スタンさせる。
++60 Block. Deals crush damage and stuns for 4 turns. Offhand: Gives the same block bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
+打撃属性。装備時ブロック値+60。攻撃が命中した時、4ターンの間スタンさせる。オフハンド：メイン装備時と同等のブロック値を得る。この効果はメインに装備している武器のブロック値とスタックしない。
 You pick up a wooden shield.
 木の盾を拾った。
 Tower Shield
 タワーシールド
 Now with more leg room.
 体全体を防御できるようになった盾。
-+120 Block, +30 Physical Armor. Increases slow level by 1. Deals crush damage and stuns for 7 turns.
-打撃属性。装備時ブロック値＋120、物理アーマー＋30。減速値1を得る。攻撃が命中した時、7ターンの間スタンさせる。
++120 Block, +30 Physical Armor. Increases slow level by 1. Deals crush damage and stuns for 7 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
+打撃属性。装備時ブロック値＋120、物理アーマー＋30。減速値1を得る。攻撃が命中した時、7ターンの間スタンさせる。オフハンド：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
 You pick up a metal tower shield.
 金属で補強された大きな盾を拾った。
 Reinforced Shield
 強化シールド
 New and improved, but also clumsier.
 新たに金属の補強が追加された盾。少し扱いにくくなった。
-+80 Block, +15 Physical Armor. Deals crush damage and stuns for 5 turns.
-打撃属性。装備時ブロック値＋80、物理アーマー＋15。攻撃が命中した時、5ターンの間スタンさせる。
++80 Block, +15 Physical Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
+打撃属性。装備時ブロック値＋80、物理アーマー＋15。攻撃が命中した時、5ターンの間スタンさせる。オフハンド：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
 You pick up a reinforced shield.
 金属で補強された盾を拾った。
 Runic Shield
 ルーンシールド
 For when you've been tied up one too many times...
 何度も縛られたあなたに……
-+80 Block, +20 Magic Armor. Deals crush damage and stuns for 5 turns.
-打撃属性。装備時ブロック値＋80、魔法アーマー＋20。攻撃が命中した時、5ターンの間スタンさせる。
++80 Block, +20 Magic Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
+打撃属性。装備時ブロック値＋80、魔法アーマー＋20。攻撃が命中した時、5ターンの間スタンさせる。オフハンド：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
 You pick up a runic shield.
 ルーンの刻まれた盾を拾った。
 Vanish
@@ -19143,16 +19367,16 @@ Dagger Parry
 小さな装備をしている間、ブロック値+15
 Steadfast Guard
 堅牢
-+5 Block for each 50 max willpower you have, while holding a non-light weapon.
-軽くない武器を持っている間、気力50ごとにブロック値+5。
++5 Block for each 100 max willpower you have, while holding a non-light weapon.
+軽くない武器を持っており、気力が最大の時、ブロック値+5。
 The Power of Steel
 鉄の力
-+5 Block for each 50 max willpower you have, while holding a weapon that deals physical damage.
-物理属性の武器を持っている間、気力50ごとにブロック値+5。
++5 Block for each 100 max willpower you have, while holding a weapon that deals physical damage.
+物理属性の武器を持っており、気力が最大の時、ブロック値+5。
 Secure Defense
 堅忍不抜
-+10-60 Block, based on your percentage of Willpower.
-気力の量に応じて、ブロック値+10～60。
++15-30 Block, based on your percentage of Willpower.
+気力の量に応じて、ブロック値+15～30。
 You block the EnemyName attack!
 EnemyName の攻撃をブロックした！
 You block a binding from EnemyName!
@@ -19275,9 +19499,42 @@ A tie that hobbles your legs together..
 脚を縛り、歩きにくくするための縄。
 The ropes squeeze you gently.
 縄が優しく締め上げてくる。
+
+
+Upper Knee Ropes
+脚縄(軽)
+A tie that hobbles your knees together..
+脚を縛り、歩きにくくするための縄。
+The ropes squeeze you gently.
+縄が優しく締め上げてくる。
+Thigh Ropes
+脚縄(中)
+A tie that hobbles your legs together..
+脚を縛り、歩きにくくするための縄。
+The ropes squeeze you gently.
+縄が優しく締め上げてくる。
+Upper Thigh Ropes
+脚縄(重)
+A tie that hobbles your thighs together..
+脚を縛り、歩きにくくするための縄。
+The ropes squeeze you gently.
+縄が優しく締め上げてくる。
 Ankle Ropes
-足縄
+足縄(軽)
 A tie keeping your feet secured together.
+足首同士を括り付ける縄。
+The ropes squeeze you gently.
+縄が優しく締め上げてくる。
+
+Lower Leg Ropes
+足縄(中)
+A tie keeping your feet secured together.
+足首同士を括り付ける縄。
+The ropes squeeze you gently.
+縄が優しく締め上げてくる。
+Lower Knee Ropes
+足縄(重)
+A tie keeping your knees secured together.
 足首同士を括り付ける縄。
 The ropes squeeze you gently.
 縄が優しく締め上げてくる。
@@ -19461,6 +19718,45 @@ A tie keeping your toes secured together.
 The knots appear to tie themselves together again, making them impossible to undo!
 解こうとしても、結び目が勝手にきつくなる魔法の縄。
 
+
+Spellbound Knees
+呪文の脚縄(軽)
+A tie that hobbles your knees together..
+脚を縛り、歩きにくくするための縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Thighs
+呪文の脚縄(中)
+A tie that holds your legs together..
+脚を縛り、歩きにくくするための縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Upper Thighs
+呪文の脚縄(重)
+A tie that holds your thighs together..
+脚を縛り、歩きにくくするための縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Ankles
+呪文の足縄(軽)
+A tie keeping your feet secured together.
+足首同士を括り付ける呪文の縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Lower Legs
+呪文の足縄(中)
+RestraintStrongMagicRopeFeet2Desc,"A tie keeping your legs secured together.
+足首同士を括り付ける呪文の縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+Spellbound Lower Knees
+呪文の足縄(重)
+A tie keeping your knees secured together.
+足首同士を括り付ける呪文の縄。
+The knots appear to tie themselves together again, making them impossible to undo!
+解こうとしても、結び目が勝手にきつくなる魔法の縄。
+
+
 Magic Boxtie
 魔法の高手小手縛り
 A box tie keeping your arms secured behind your back.
@@ -19527,12 +19823,47 @@ A tie that hobbles your legs together..
 脚を縛り、歩きにくくするための魔法の縄。
 They glow with a trace of magic.
 魔法の込められた縄。淡く輝いている。
+
+
+Magic Knee Tie
+魔法の脚縄(軽)
+A tie that hobbles your knees together..
+脚を縛り、歩きにくくするための魔法の縄。
+They glow with a trace of magic.
+魔法の込められた縄。淡く輝いている。
+Magic Thigh Ropes
+魔法の脚縄(中)
+A tie that hobbles your legs together..
+脚を縛り、歩きにくくするための魔法の縄。
+They glow with a trace of magic.
+魔法の込められた縄。淡く輝いている。
+Magic Upper Thigh Ropes
+魔法の脚縄(重)
+A tie that hobbles your thighs together..
+脚を縛り、歩きにくくするための魔法の縄。
+They glow with a trace of magic.
+魔法の込められた縄。淡く輝いている。
 Magic Ankle Tie
-魔法の足縄
+魔法の足縄(軽)
 A tie keeping your feet secured together.
 足首同士を括り付ける魔法の縄。
 They glow with a trace of magic.
 魔法の込められた縄。淡く輝いている。
+
+Magic Lower Leg Tie
+魔法の足縄(中)
+A tie keeping your legs secured together.
+足首同士を括り付ける魔法の縄。
+They glow with a trace of magic.
+魔法の込められた縄。淡く輝いている。
+Magic Lower Knee Tie
+魔法の足縄(重)
+A tie keeping your knees secured together.
+足首同士を括り付ける魔法の縄。
+They glow with a trace of magic.
+魔法の込められた縄。淡く輝いている。
+
+
 
 Holy Boxtie
 聖なる高手小手縛り
@@ -19594,24 +19925,58 @@ A wrist and elbow tie keeping your arms secured behind your back.
 後ろ手に縛るための聖なる縄。
 A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
 不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
-Holy Leg Ropes
-聖なる脚縄
-A tie that hobbles your legs together..
-脚を縛り、歩きにくくするための縄。
-A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
-不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
-Holy Ankle Ropes
-聖なる足縄
-A tie keeping your feet secured together.
-足首同士を括り付ける聖なる縄。
-A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
-不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
 Holy Toe Rope
 聖なる指縄
 A tie keeping your toes secured together.
 両足の親指を括り付ける聖なる縄。
 A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
 不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+
+Holy Leg Ropes
+聖なる脚縄
+A tie that hobbles your legs together..
+脚を縛り、歩きにくくするための縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+
+
+Holy Upper Knee Ropes
+聖なる脚縄(軽)
+A tie that hobbles your knees together..
+脚を縛り、歩きにくくするための縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+Holy Thigh Ropes
+聖なる脚縄(中)
+A tie that hobbles your legs together..
+脚を縛り、歩きにくくするための縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+Holy Upper Thigh Ropes
+聖なる脚縄(重)
+A tie that holds your thighs together..
+脚を縛り、歩きにくくするための縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+Holy Ankle Ropes
+聖なる足縄(軽)
+A tie keeping your feet secured together.
+足首同士を括り付ける聖なる縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+Holy Lower Leg Ropes
+聖なる足縄(中)
+A tie keeping your legs secured together.
+足首同士を括り付ける聖なる縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+Holy Lower Knee Ropes
+聖なる足縄(重)
+A tie keeping your knees secured together.
+足首同士を括り付ける聖なる縄。
+A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
+不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
+
 
 
 Mithril Boxtie
@@ -19674,23 +20039,56 @@ A wrist and elbow tie keeping your arms secured behind your back.
 後ろ手に縛るための縄。
 A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
 ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
-Mithril Leg Ropes
-ミスリルの脚縄
-A tie that hobbles your legs together..
-脚を縛り、歩きにくくするための縄。
-A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
-ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
-Mithril Ankle Ropes
-ミスリルの足縄
-A tie keeping your feet secured together.
-足首同士を括り付ける縄。
-A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
-ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
 Mithril Toe Ropes
 ミスリルの指縄
 A tie keeping your toes secured together.
 両足の親指を括り付ける縄。
 A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+
+Mithril Leg Ropes
+ミスリルの脚縄(軽)
+A tie that hobbles your legs together..
+脚を縛り、歩きにくくするための縄。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+Mithril Ankle Ropes
+ミスリルの足縄(軽)
+A tie keeping your feet secured together.
+足同士を括り付ける縄。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+
+
+Mithril Lower Knee Ropes
+ミスリルの脚縄(軽)
+A tie that hobbles your knees together..
+脚を縛り、歩きにくくするための縄。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+Mithril Thigh Ropes
+ミスリルの脚縄(中)
+A tie that hobbles your thighs together..
+脚を縛り、歩きにくくするための縄。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+Mithril Upper Thigh Ropes
+ミスリルの脚縄(重)
+A tie that holds your thighs together..
+脚を縛り、歩きにくくするための縄。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+Mithril Lower Leg Ropes
+ミスリルの足縄(中)
+A tie keeping your legs secured together.
+足同士を括り付ける縄。
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
+Mithril Lower Knee Ropes
+ミスリルの足縄(重)
+A tie keeping your knees secured together.
+足同士を括り付ける縄。
+"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
 ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
 
 Dark Portal
@@ -20281,8 +20679,8 @@ Magical Weapon
 魔法の武器
 Your Submissiveness determines how easily your character can resist the temptations of bondage.
 服従度は拘束の誘惑にどれだけ抵抗しやすいかを示す。
-Your Security Level determines how tightly enemies will secure you in prison.
-手配度は刑期の長さと牢屋でどれだけ拘束されるかを示す。
+Your Security Level is based on your history, and reputation with the MNFCTN.
+手配度は、これまでの行動と MNFCTN との関係に基づく。
 Your Passion determines how likely you are to lose control of yourself involuntarily.
 欲情値はどれだけ自身をコントロールできるかを示す。
 Your Frustration affects how quickly your Passion grows. More Frustration = More Passion
@@ -20297,7 +20695,7 @@ Oriel, Goddess of Technology
 文明の神オーリエル
 Ninril, Giver of Life
 命を与えしものニンリル
-Mata, Architect of Reality
+Matah, Architect of Reality
 真実の創造者マタ
 Aether, Keeper of the Cosmos
 コスモスの守護者エーテル
@@ -20305,8 +20703,111 @@ Oblivion, Keeper of Secrets
 遍く秘密の守り手オブリビオン
 Arcane Energy is stored by casting spells, up to 100% Max mana.
 呪文を唱えてマナを消費すると、アーケインエネルギーとして蓄積するようになる。マナの最大値まで蓄積。
-Battle Rhythm is gained by spending stamina through attacks, up to 50 total.
-攻撃によってスタミナを消費すると、戦闘のリズムを得る。最大50まで。
+
+Battle Rhythm
+戦闘のリズム
+Stores 10% of the stamina spent from attacks as Rhythm, up to a total of 40. While you have over 10 Rhythm, you gain +10 Block and Evasion. Enemy base accuracy against you is decreased by a % equal to your Rhythm. If an attack misses or is blocked because of this, reduce Rhythm by 25% of the enemy attack power. Decays when not attacking.
+攻撃で消費したスタミナの10%を戦闘のリズムとして蓄積する(最大40)。戦闘のリズムが10以上の時、ブロックと回避力が+10され、敵の基礎命中率が戦闘のリズムの分低下する。敵の攻撃をブロック、または回避した際、敵の攻撃力の25%分の戦闘のリズムを消費する。戦闘のリズムは、攻撃を行わなかった際に低下する。
+
+The Reaping
+刈り取り
++20% damage to plants
+植物に対してダメージ量+20%
+
+Magically Iliterate
+魔法は専門外
+You've never read a magic book. Elemental, Conjuration, and Illusion spells cost 3x as many spell points.
+魔導書を読んだことがない。エレメンタル、幻惑、召喚の呪文を習得する際、必要スキルポイントが3倍になる。
+
+Magical Spark
+魔道の覚醒
+Reduce the penalty from Magically Iliterate to 2x.
+「魔法は専門外」の必要スキルポイントが3倍から2倍になる。
+Magical Training
+修行の成果
+Remove the penalty from Magically Iliterate.
+「魔法は専門外」のペナルティがなくなる。
+
+Reap What You Sow
+自分で蒔いた種
+Defeating a non-humanoid enemy causes vines to sprout on their space temporarily.
+人型以外の敵を倒すと、倒した敵のマスにつるが生える。
+
+
+Limit Surge
+応急処置
+Spend 50 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns.
+WPを50消費してスタミナを全回復し、20ターンの間スタミナ回復量が30%増加する。このスキルの効果でWPが0になった場合、2ターンの間気絶する。
+
+Battle Trance
+バトルトランス
+While at 40 Battle Rhythm, you attack twice per turn.
+戦闘のリズムが40以上の時、一度の攻撃で二回攻撃する。
+
+Devious Ingenuity
+悪巧み
+Trap-type spells and consumables take 1 turn to cast instead of several.
+罠タイプの呪文やアイテムの使用にかかるターン数が1ターンになる。
+
+Inner Power
+秘めたる力
+As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana AFTER other modifiers. Toggled passive spells apply half the cooldown.
+魔法使いとして、内なる神秘的な力を引き出す術を得た。16ターンの間攻撃や詠唱をしなかった場合、次に唱える呪文のマナコストが、他の修正を除いたマナコストの最大20%分減少する。パッシブ系のスキルを切り替えた際には、クールタイムが半分になる。
+
+Battlemage
+バトルメイジ
+Inner Power is no longer paused after attacking.
+「秘めたる力」の発動が、攻撃を行った際にも阻害されない。
+
+Relentless Casting
+容赦なき詠唱
+Inner Power is no longer paused after casting spells.
+「秘めたる力」の発動が、詠唱を行った際にも阻害されない。
+
+Arcane Recharge
+アーケインリチャージ
+Calling upon chaotic energies, your willpower is assaulted in exchange for power. Deals 80 psychic damage to self and drains 10% of your max Willpower to fully restore mana. Does not refill the mana pool.
+自身の被害を顧みず、混沌のエネルギーを体に宿す。80精神ダメージを受け、気力を最大値の10%消費し、マナを完全回復する。マナプールは補充されない。
+
+Way of Pleasure
+快楽の道
+You have chosen the path of absolute pleasure. After letting go of yourself, you restore 25 mana, restoring the same amount to the Mana Pool if you have willpower to spare. Blocks Way of Discipline.
+欲望に素直になった。絶頂後、マナを25回復し、マナプールを気力分回復する。このスキルを習得した場合、「鍛錬の道」を習得することができなくなる。
+
+Intense Power
+強烈な解放
+After letting go of yourself, you feel an immense surge of power, increasing magic damage by 40% for 8 turns after you regain control, and by 10% while you remain satisfied.
+絶頂後、強大な力を得る。8ターンの間魔法ダメージが40%上昇し、満足している間は10%上昇する。
+
+Pleasure Training I
+快楽のトレーニング I
+You remain satisfied for much less time after letting go. Letting go costs 50% less stamina.
+絶頂後に満足する時間が短くなる。絶頂のスタミナコスト-50%
+Pleasure Training II
+快楽のトレーニング II
+You are quite difficult to satisfy. Letting go costs 50% less stamina (75% total) and 50% less willpower.
+絶頂後に満足感を得るのが難しくなる。絶頂のスタミナコスト-50%(合計75%)、気力コスト-50%。
+
+Mental Resistance
+抵抗の精神
++100 Psychic and Charm Resist. You can no longer let go involuntarily unless your willpower is 0 (click the buff to toggle), and willpower drains 70% slower while edged.
+精神、魅了耐性+100。気力が0でない限り、絶頂することがなくなり(切替可能)、絶頂中の気力減少-70%。
+Mental Resistance: You cannot orgasm except by choice. Click to toggle.
+抵抗の精神：絶頂することができなくなる。クリックで切り替え。
+Mental Resistance: You are allowing yourself to let go if forced to. Click to toggle.
+抵抗の精神：絶頂可能。クリックで切り替え。
+
+
+Way of Discipline
+鍛錬の道
+You have chosen the path of absolute discipline. Being in an Edged state increases passive mana recovery and you regenerate 0.5 mana per turn, restoring the same amount to the Mana Pool if you have willpower to spare. Blocks Way of Pleasure.
+鍛錬の道を歩んだ。絶頂中、マナの回復量が増加し、1ターンに0.5回復するようになる。このスキルを習得した場合、「快楽の道」を習得することができなくなる。
+
+Way of Denial
+禁欲の道
+Harnessing your mental discipline, you regenerate 20 mana each time you are denied, restoring the same amount to the Mana Pool if you have willpower to spare.
+鍛錬を活かし、焦らされる度にマナを20回復し、マナプールを気力分回復する。
+
 Arcane Blast
 アーケインブラスト
 When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. Casting this spell consumes it to deal up 25% Max Mana as Arcane damage. Pierces enemies and walls.
@@ -20329,8 +20830,8 @@ You avoid the attack in a flurry of impressive maneuvers!
 華麗な機動で攻撃を回避した！
 Arcane Barrier
 アーケインバリア
-When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, the shield absorbs incoming damage and consumes Arcane Energy equal 200% of damage absorbed. While you have Arcane Energy and this is active, you also gain Bondage Resist equal to 4x the Arcane Energy pool, to a max of +200.
-この呪文以外の呪文を唱えてマナを消費すると、その40%をアーケインエネルギーとして蓄積するようになる。マナの最大値まで蓄積。シールドを貼っている間、ダメージを吸収し、吸収したダメージの200%分のアーケインエネルギーを消費する。バリアが有効な間、アーケインエネルギーの4倍に相当する拘束耐性を得る。
+When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 50% Max Mana.
+この呪文以外の呪文を唱えてマナを消費すると、その40%をアーケインエネルギーとして蓄積するようになる。マナの最大値まで蓄積。発動時、ゆっくりとアーケインエネルギーを等量分シールドに変換する。シールドの最大値はマナの最大値の50%分まで。
 You sense that a high value target is near.
 近くに価値のあるターゲットがいる。
 You push yourself beyond physical limits!
@@ -20339,14 +20840,20 @@ You try to push yourself beyond your capabilities and falter...
 肉体の限界を超えられなかった……
 You are already at max stamina.
 既にスタミナが最大値だ。
+
+Did the Research
+調査済み
+Unlocks advanced tooltips for enemies showing their weaknesses. Also improves hearing by a small amount.
+敵の高度な情報を得られるようになる。また、聴覚が僅かに向上する。
+
 Well-Placed Traps
 巧妙な罠
 Trap spells always critically strike.
 罠呪文が命中した時、常に会心の一撃になる。
 Hard to Catch
-捕まらない
-Adjacent NPCs count as corners/hooks for purposes of escaping. After being restrained, escape speed and power is increased for 12 turns. Removed if you restrain yourself.
-隣接するNPCが、コーナー/フックとして機能する。拘束された後、12ターンの間、脱出速度と力が増加する。自縛した場合は効果が解除される。
+捕まるものか
+Adjacent NPCs count as corners/hooks for purposes of escaping. After being restrained, escape speed and power is increased for 12 turns (escape power is increased by +20% plus 2% of Bondage Resist). Removed if you restrain yourself.
+隣接するNPCが、コーナー/フックとして機能する。拘束された後、12ターンの間、抜け出す力が20%+拘束抵抗値の2%増加する。。自縛した場合は効果が解除される。
 Struggling is improved and escape is quicker!
 もがく力が強くなり、抜け出すスピードが早くなっている。
 Akashic Conflux
@@ -20406,11 +20913,11 @@ As you are low on mana, you are unable to store Arcane Energy.
 You are recharging your next mana cost reduction.
 次のマナコスト軽減をチャージしている。
 Fast Recharge I
-ファストチャージ１
+ファストチャージ I
 Inner power now recharges after 10 turns instead of 16.
 インナーパワーのチャージが１６ターンから１０ターンになる。
 Fast Recharge II
-ファストチャージ２
+ファストチャージ II
 Inner power now recharges after 4 turns instead of 16.
 インナーパワーのチャージが１６ターンから４ターンになる。
 Precise Targeting
@@ -20418,7 +20925,7 @@ Precise Targeting
 Your first critical hit on a target is 1.5x more powerful.
 ターゲットへの最初のクリティカルヒットの威力が1.5倍になる。
 Surprise Bondage
-突然の拘束
+効果的な拘束
 Binding from critical hits is 40% stronger
 クリティカルによる拘束力が40%増加
 High Profile
@@ -21806,7 +22313,7 @@ Gunslinger
 Weapons abilities and other abilities that cost charge contribute 20% of their cost to Battle Rhythm.
 エネルギーを消費する武器アビリティ等を使用した際、消費したエネルギーの20%分を戦闘のリズムに加える。
 Effortless Assault
-
+理に適った攻撃
 Weapon stamina cost is reduced by a percentage equal to your Battle Rhythm.
 武器攻撃のスタミナ消費量を、戦闘のリズム%分低減する。
 
@@ -21871,6 +22378,22 @@ There is no way out but to repent. Its divine aura causes vibrators to cease rig
 You find a heavenly chastity belt. Who could it be for?
 神聖な貞操帯を見つけた。一体誰に使うのだろう？
 
+Heavenly Chastity Belt
+天国の貞操帯
+A chastity belt forged in holy light. Only a Goddess' will can release you.
+聖なる光によって鍛えられた貞操帯。神のみがこの貞操帯を取り外せる。
+There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge.
+慙悔によってのみ解放される。神聖なオーラで絶頂直前にバイブを止める。
+Your Divine Chastity Belt magically dampens the vibrations just enough to edge you.
+貞操帯の放つ神聖なオーラでバイブレーターが停止した。
+Heavenly Chastity Belt
+天国の貞操帯
+A chastity belt forged in holy light. Only the will of a Goddess will release you!
+聖なる光によって鍛えられた貞操帯。神のみがこの貞操帯を取り外せる。
+There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge.
+慙悔によってのみ解放される。神聖なオーラで絶頂直前にバイブを止める。
+You find a heavenly chastity belt. Who could it be for?
+天国の貞操帯を見つけた。一体誰が置いたのだろうか？
 
 Magic Arm Belts
 魔法のベルト(腕)
@@ -22084,6 +22607,8 @@ The curse has been lifted through judicious application of spellcasters.
 The cursed item drains all of the caster's mana. It demands more.
 この呪いの拘束具は着用者のマナを食らい続ける。
 
+
+
 Ankle Chain
 足枷の鎖
 Short Ankle Chain
@@ -22112,3 +22637,175 @@ Dragonscale Ankle Cuffs
 
 Goddess:
 属性：
+
+
+Punishment Suit
+懲罰用ペットスーツ
+A tool used by Nevermere on the most difficult and recalcitrant wolfgirls.
+ネバーミアが最も反抗的と認定したウルフガールに使用されるペットスーツ。
+Designed to contain superhuman strength, struggling out of this would be a major feat.
+常人を遥かに超える者を想定して作られているので、抜け出すのは至難の業。
+
+Shield of (un)Clarity
+(不)明瞭のバリア
+Channel your clarity of mind into a powerful shield, filling your distraction bar completely and granting a temporary shield equal to 50% of the DP generated. 10% of the DP gained is gained as Desire, which prevents DP decaying below a certain point.
+DPをMAXにし、増えた分のDPの50%分のシールドを一時的に獲得する。上昇したDPの10%分の欲望値を獲得し、最低DPが増える。
+You form a... distracting mental barrier, shielding yourself for AMNT damage!!!
+情欲のバリアを生成し、 AMNT ダメージ分のシールドを得た！
+You are too distracted to form a mental barrier...
+バリアを生成するだけの集中力がない……
+You have the mental clarity but not the magical clarity! (not enough mana)
+バリアを生成するだけの集中力はあるが、マナが足りない！
+
+You have formed a mental barrier...
+情欲のバリアで守られている……
+
+Desire Burst
+デザイアバースト
+Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have 50% Desire, the damage is reduced based on the amount. (Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
+欲望値を最大DPの30%まで減少させ、近くの敵に30+最大のDP25%分の魅了ダメージを与える強力な爆風を起こす。欲望値が50%以下の場合、その分のダメージが減少する。(欲望値はDPバーの下にあるハート型のメーターで、一定の行動で蓄積していく)
+You channel your distraction into a powerful explosion!
+自身の欲望を強力な爆発に変換した！
+You don't have enough of a desire to do that.
+欲望値が足りない。
+You have the desire but not the mana!
+欲望は十分だが、マナが足りない。
+
+
+
+Your divine-locked restraints can only be removed by completing a shrine quest.
+女神の封印が施された拘束具は、祭壇のクエストをクリアすることでしか取り外せない。
+The Goddess hates you. That won't work.
+機能しない。女神に見放されたようだ。
+
+Harvest
+
+Requires a slashing weapon equipped. Activate to harvest all adjacent vine tiles, with a 25% chance per tile to obtain a seed.|Seeds can be planted to form gardens, which will grow in 100 turns to become vegetables, which can be eaten to restore WP or sold to the shopkeeper.
+斬撃属性の武器が必要。隣接する植物を刈り取り、１マスにつき25%の確率で種を入手できる。種を植えると100ターン後で成長して野菜になり、食べた際にはWPを回復し、販売も可能。
+You twirl your weapon, harvesting AMNT seeds!
+刃を振るって草を刈り取り、 AMNT の種を回収した！
+There is nothing to harvest.
+周囲に刈り取れる草がない。
+
+Telekinesis 101
+テレキネシス入門
+Unlocks telekinetic abilities. Can equip weapons while bound, but at 0% accuracy. Learn Recover Object.
+テレキネシスのスキルツリーを開放する。拘束されていても武器を装備できるが、命中率は0%。「念動力」を習得。
+
+Recover Object
+念動力
+Use telekinesis to pick up items and open chests from a distance. Refunds 75% of mana cost if not used to open a chest.
+念動力で遠距離からアイテムを取得するか宝箱を開ける。アイテムを取得する場合、75%のマナコストとなる。
+The items float to you!
+念動力でアイテムを手繰り寄せた！
+There's nothing to pick up.
+念動力で取れるものがない。
+There's an obstacle in the way!
+障害物がある！
+Select a tile with items
+アイテムのある位置を選択
+
+
+Enhanced Recovery
+強化念動力
+Upcast to increase range and recover objects in an area.
+呪文強化により、距離と範囲が伸びた。
+The items float to you!
+念動力でアイテムを手繰り寄せた！
+There's nothing to pick up.
+念動力で取れるものがない。
+Select an area with items
+アイテムのあるエリアを選択
+
+Kinetic Slash
+キネティックスラッシュ
+Swing an equipped weapon (not unarmed or hands free) in a line, slashing enemies in the way with 20 + 80% weapon damage. Counts as an attack. +10 mana cost if wielding a Heavy weapon.
+念動力で線状に武器を振るい、20+武器攻撃力の80%のダメージを与える。この行動は攻撃とみなされ、重い武器を使用した際にはマナコストが10増加する。
+You swing!
+念動力で武器を振るった！
+Choose where to swing (must not be unarmed or hands free weapon)
+武器を振る位置を選択
+
+Kinetic Lance
+キネティックランス
+Propel your weapon at devastating speed, piercing enemies for 30+160% Weapon Damage and dropping it at the end of the trajectory. Counts as an attack. +15 mana cost if wielding a Heavy weapon.
+武器をまっすぐ射出し、30+武器攻撃力の160%のダメージを与える。射出した武器は弾道の終点に落下する。この行動は攻撃とみなされ、重い武器を使用した際にはマナコストが15増加する。
+You propel your weapon forward!
+念動力で武器を射出した！
+Choose where to launch your weapon.
+武器を射出する位置を選択
+
+
+Sagitta
+サジッタ
+Fire a projectile. If this projectile hits an enemy, make one attack against an enemy for 10+40% weapon damage. +5 mana cost if wielding a Heavy weapon.
+武器から魔力の弾丸を発射し、命中した敵に10+武器攻撃力の40%のダメージを与える。重い武器を使用した際にはマナコストが5増加する。
+You unleash a deadly projectile!
+死の弾丸を発射した！
+Choose aim direction.
+狙う位置を選択
+
+Sagitta Assault
+サジッタ・アサルト
+After casting Sagitta, you can recast it up to three more times without advancing time.
+「サジッタ」を使用した後、3回までターンを進めずに「サジッタ」を使用できる。
+
+Psychokinesis
+サイコキネシス
+You can ignore components for telekinetic spells, however spells generate distraction when cast this way due to the mental strain. Unable to use at 100% DP.
+念動力魔法を使用する際、必要部位が使えなくても魔法を唱えられるようになる。その際、精神的な負荷により、DPが上昇する。DPが100%の時は使用不可能。
+
+Kinetic Mastery
+キネティック・マスタリー
+Negates the penalty for 2-handed weapons. Also gain the following effects:|-Kinetic spells and Sagitta cost 30% less while wielding a Light weapon.|-Kinetic spells and Sagitta gain +15 base damage when wielding a Heavy weapon.
+両手武器のペナルティを無効化する。また、以下の効果を得る。：|-軽い武器を装備している時、念動力魔法とサジッタのマナコスト-30%|-重い武器を装備している時、念動力魔法とサジッタの威力+15。
+
+Grasp
+グリップ
+Cast on an enemy to snare them for 20 turns, or until you leave range/are incapacitated. Cast on a point to throw the grasped enemy in that direction, dealing 40 crush damage if they hit a wall or another enemy.
+念動力で敵を捕らえ、20ターン経過か、距離が離れるか、自身が行動不能になるまで移動を封じる。この魔法で敵を捕らえた状態で再度この魔法を使用すると、指定した方向に敵を投げ飛ばし、壁や他の敵に当たると40打撃属性ダメージを与える。
+You grab the ENMY using telekinesis and hold them in place!
+ENMY を念動力で捕らえた！
+You throw the ENMY!
+ENMY を投げ飛ばした！
+Choose a target or a location (if a target is currently grasped)
+ターゲットか位置を選択
+
+Rock
+岩
+Perfect for a lifestyle of love and peace.
+愛と平和を好む者がよく使う。
+Deals crush damage. Stuns on critical. Ouch!
+打撃属性。痛い！
+You pick up a particularly nice rock.
+いい感じの石を拾った。
+
+
+You pick up a device for snuffing out candles and torches.
+蝋燭や松明を消す道具を拾った。
+Candle Snuffer
+キャンドルスナッファー
+You put out the torch.
+松明の炎を消した。
+A handy device for putting out torches and lanterns.
+松明やランタンの灯りを消すのに便利な道具。
+But why would you want to do that? You hidin' something?
+しかしどうしてそんなことを？何か隠し事でも？
+
+You find a bag... full of bags.
+袋の詰め込まれた袋を見つけた……
+Sack of Sacks
+袋入りの袋
+You cover the light source.
+明かりを袋で覆った。
+Bags inside a bag of bags inside a bag of bags...
+袋の中の袋の中の袋の中の袋の中の……
+Can be placed over light sources to cover them.
+光源を覆うことができる。
+
+The snuffer doesn't work on that light source.
+この光源には使えないようだ。
+The bag can't cover that light source.
+この光源には使えないようだ。
+You remove the bag from its light source and place it back inside your bag.
+光源から袋を外して袋に入れた。
