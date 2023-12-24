@@ -1,0 +1,140 @@
+{"frames": {
+
+"Models/Hair/BackShortCurly.png":
+{
+	"frame": {"x":599,"y":1,"w":303,"h":259},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":486,"y":113,"w":303,"h":259},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Hair/BackShortCurlyUnderlight.png":
+{
+	"frame": {"x":1,"y":1,"w":304,"h":299},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":487,"y":115,"w":304,"h":299},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Hair/BraidCustom.png":
+{
+	"frame": {"x":606,"y":262,"w":274,"h":270},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":468,"y":117,"w":274,"h":270},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Hair/BraidCustom_Overstrap.png":
+{
+	"frame": {"x":1,"y":302,"w":275,"h":251},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":468,"y":135,"w":275,"h":251},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Hair/BraidCustomBack.png":
+{
+	"frame": {"x":307,"y":1,"w":290,"h":299},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":494,"y":107,"w":290,"h":299},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Hair/BraidCustomBraid.png":
+{
+	"frame": {"x":278,"y":302,"w":118,"h":326},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":661,"y":336,"w":118,"h":326},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/FaceDask/Brows2Angry.png":
+{
+	"frame": {"x":374,"y":422,"w":26,"h":23},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":611,"y":252,"w":26,"h":23},
+	"sourceSize": {"w":700,"h":400}
+},
+"Models/FaceDask/Brows2Annoyed.png":
+{
+	"frame": {"x":882,"y":262,"w":32,"h":20},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":613,"y":253,"w":32,"h":20},
+	"sourceSize": {"w":700,"h":400}
+},
+"Models/FaceDask/Brows2Neutral.png":
+{
+	"frame": {"x":278,"y":422,"w":31,"h":21},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":611,"y":231,"w":31,"h":21},
+	"sourceSize": {"w":700,"h":400}
+},
+"Models/FaceDask/Brows2Sad.png":
+{
+	"frame": {"x":882,"y":325,"w":33,"h":18},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":620,"y":234,"w":33,"h":18},
+	"sourceSize": {"w":700,"h":400}
+},
+"Models/FaceDask/Brows2Surprised.png":
+{
+	"frame": {"x":278,"y":445,"w":33,"h":18},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":613,"y":244,"w":33,"h":18},
+	"sourceSize": {"w":700,"h":400}
+},
+"Models/FaceDask/BrowsAngry.png":
+{
+	"frame": {"x":345,"y":422,"w":27,"h":21},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":550,"y":259,"w":27,"h":21},
+	"sourceSize": {"w":700,"h":400}
+},
+"Models/FaceDask/BrowsAnnoyed.png":
+{
+	"frame": {"x":311,"y":422,"w":32,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":544,"y":261,"w":32,"h":17},
+	"sourceSize": {"w":700,"h":400}
+},
+"Models/FaceDask/BrowsNeutral.png":
+{
+	"frame": {"x":882,"y":360,"w":31,"h":18},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":538,"y":241,"w":31,"h":18},
+	"sourceSize": {"w":700,"h":400}
+},
+"Models/FaceDask/BrowsSad.png":
+{
+	"frame": {"x":882,"y":296,"w":27,"h":20},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":537,"y":243,"w":27,"h":20},
+	"sourceSize": {"w":700,"h":400}
+},
+"Models/FaceDask/BrowsSurprised.png":
+{
+	"frame": {"x":278,"y":480,"w":29,"h":17},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":543,"y":254,"w":29,"h":17},
+	"sourceSize": {"w":700,"h":400}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "atlas23.png",
+	"format": "RGBA8888",
+	"size": {"w":903,"h":554},
+	"scale": "0.5",
+	"smartupdate": "$TexturePacker:SmartUpdate:24bc660ce7d99b9258135b81323370ae:6f492fe3a96b9ba50ed6d6a7dd86e705:7afdf74f0a2fc64ffcb4cd5582aad3a1$"
+}
+}
