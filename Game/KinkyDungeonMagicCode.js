@@ -758,6 +758,7 @@ let KinkyDungeonSpellSpecials = {
 					skipTurn: false,
 					spellAttack: true,
 					attackData: {
+						nodisarm: true,
 						damage: spell.power + mod + KinkyDungeonPlayerDamage.dmg * scaling,
 						type: KinkyDungeonPlayerDamage.type,
 						distract: KinkyDungeonPlayerDamage.distract,

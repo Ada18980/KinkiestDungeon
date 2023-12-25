@@ -1295,7 +1295,7 @@ function KinkyDungeonDisarm(Enemy, suff) {
  */
 function KinkyDungeonAttackEnemy(Enemy, Damage, chance) {
 	let disarm = false;
-	if (Enemy.Enemy && Enemy.Enemy.disarm && Enemy.disarmflag > 0) {
+	if ((Damage && !Damage.nodisarm) && Enemy.Enemy && Enemy.Enemy.disarm && Enemy.disarmflag > 0) {
 		if (Enemy.stun > 0 || Enemy.freeze > 0 || Enemy.blind > 0 || Enemy.teleporting > 0 || (Enemy.playWithPlayer && !Enemy.hostile)) Enemy.disarmflag = 0;
 		else if (Enemy.Enemy && Enemy.Enemy.disarm && Enemy.disarmflag >= 0.97 && KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.unarmed) {
 			Enemy.disarmflag = 0;

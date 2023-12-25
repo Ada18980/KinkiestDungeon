@@ -6095,6 +6095,7 @@ let KDEventMapBullet = {
 					skipTurn: false,
 					spellAttack: true,
 					attackData: {
+						nodisarm: true,
 						damage: e.power + mod + KinkyDungeonPlayerDamage.dmg * scaling,
 						type: KinkyDungeonPlayerDamage.type,
 						distract: KinkyDungeonPlayerDamage.distract,
@@ -6130,6 +6131,7 @@ let KDEventMapBullet = {
 					skipTurn: false,
 					spellAttack: true,
 					attackData: {
+						nodisarm: true,
 						damage: e.power + mod + KinkyDungeonPlayerDamage.dmg * scaling,
 						type: KinkyDungeonPlayerDamage.type,
 						distract: KinkyDungeonPlayerDamage.distract,
