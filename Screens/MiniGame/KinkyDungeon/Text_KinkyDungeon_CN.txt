@@ -2326,6 +2326,8 @@ Latex Projector
 乳胶投射器
 Deals crush damage. Can be used to spray a '+' shaped pool of slime.
 造成碾压伤害。可用于喷洒“+”形粘液池。
+Spend 15 charge to create a pool of slime that deals 35 glue damage per tile and slows enemies.
+花费 15 点能量来制造一滩粘液，每块造成 35 点胶水伤害并减缓敌人的速度。
 Magic Axe
 魔法斧
 Sick and vile, like the hearts of your enemies.
