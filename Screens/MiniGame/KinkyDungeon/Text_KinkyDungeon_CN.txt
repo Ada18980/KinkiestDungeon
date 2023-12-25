@@ -5608,6 +5608,10 @@ It clasps tightly over the mouth and prevents you from casting your spells!
 它紧紧地扣在嘴上，阻止你施法！
 You have no choice but to struggle.
 你别无选择，只能挣扎。
+Shadow Hand Eyes
+影之手（眼）
+Shadow hands clasped over your eyes, making it hard to see.
+影之手捂住你的眼睛，让你看不清任何事物。
 Shadow Hands (Legs)
 影之手（腿）
 They are wrapped around your legs!
