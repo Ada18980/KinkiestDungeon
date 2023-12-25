@@ -4794,6 +4794,10 @@ MaidForce
 女仆势力
 Fungal Kingdom
 真菌王国
+Adventurer
+冒险家
+Cursed Spirit
+诅咒之灵
 Delinquent
 违法者
 Computer Virus
