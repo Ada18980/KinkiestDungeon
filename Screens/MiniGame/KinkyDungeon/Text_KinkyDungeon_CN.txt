@@ -14926,6 +14926,46 @@ Your cursed items have attracted a powerful cursed spirit!
 你的诅咒物品吸引了强大的诅咒之灵！
 The seal on your RESTRAINTNAME is weakening.
 你 RESTRAINTNAME 上的封印正在减弱。
+The fighter pouts and runs away!
+战士撅起嘴，逃跑了！
+The fighter knocks you to the ground and binds you! (+RestraintAdded)
+战士将你击倒在地并绑住你！（+RestraintAdded）
+The fighter strikes you with her weapon! (DamageTaken)
+战士用她的武器攻击你！（DamageTaken）
+The fighter takes you down with the back of her weapon! (DamageTaken)
+战士用她的武器从背后把你打倒！（DamageTaken）
+The fighter puts you in a hold and manages to slip on a lock! (DamageTaken)
+战士将你困住并设法上锁！（DamageTaken）
+The fighter vanishes and ends up behind you
+战士消失并出现在你身后
+The fighter moans loudly and rolls around on the floor!
+战士大声呻吟，在地板上打滚！
+The fighter wraps her arms around you with bindings in hand! (+RestraintAdded)
+战士用手绑住你的胳膊！（+RestraintAdded）
+The fighter pins you with her weapon and grabs your breast! (DamageTaken)
+战士用她的武器压住你并抓住你的胸部！（DamageTaken）
+The fighter enchants her weapon and strikes you! (DamageTaken)
+战士给她的武器附魔并攻击你！（DamageTaken）
+The fighter smiles lasciviously as she dangles a lock in front of you! (DamageTaken)
+战士在你面前挂一把锁，并露出淫荡的微笑！（DamageTaken）
+The fighter enchants her weapon and flies forward!
+战士使她的武器附魔并向前飞行！
+The fighter drops her weapon and admits defeat!
+战士丢下武器并承认失败！
+The fighter knocks you to the ground and binds you! (+RestraintAdded)
+战士将你击倒在地并绑住你！（+RestraintAdded）
+The fighter feints and strikes, slapping you with the flat of her blade! (DamageTaken)
+战士佯装攻击，用她的刀刃击打你！（DamageTaken）
+The fighter proudly clicks on a lock! (DamageTaken)
+战士自豪地锁了一把锁！（DamageTaken）
+The fighter briefly vanishes and ends up behind you!
+战士短暂消失并出现在你身后！
+The fighter falls on her knees and begs!
+战士跪下哀求！
+The fighter throws an enchanted binding ring at you! (+RestraintAdded)
+战士向你扔出一个附魔的束缚环！（+RestraintAdded）
+The fighter throws her weapon at you! (DamageTaken)
+战士将武器扔向你！（DamageTaken）
 Casting SPNME
 铸造 SPNME
 The door suddenly locks behind you!
