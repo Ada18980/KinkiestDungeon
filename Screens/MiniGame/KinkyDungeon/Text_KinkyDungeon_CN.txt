@@ -11844,6 +11844,26 @@ Nope. Not doing that.
 不。别这样做。
 Okay, for science...
 好吧，为了科学...
+(An excited SPEAKER turns to you)|Eureka, I've done it!|Do you want to see?
+（兴奋的 SPEAKER 转向你）|我发现了，我已经做到了！|你想看吗？
+(The SPEAKER pulls out a pressurized flask)|Behold! A gaseous form of latex!|I've coated the interior with a layer of inert slime to keep it secure.|Here, have a look!|(She holds out the container)
+（SPEAKER 拿出一个加压瓶）|看哪！气态乳胶！|我在内部涂了一层惰性粘液以保持其安全。|这边，看，看！|（她拿出容器）
+(The flask springs a leak)|Oh no! That wasn't supposed to happen!|(The gas crystalizes into a RESTRAINT across your body)
+（瓶体漏气）|哦不！这是不应该发生的！|（气体在你的身体上结晶成 RESTRAINT）
+(The SPEAKER scoffs)|You'll see... you'll all see!
+（SPEAKER 嘲笑）|你们会看到的……你们都会看到的！
+(The SPEAKER sighs)|So hard to find good help out here...
+（SPEAKER 叹了口气）|这里很难找到好的帮助......
+(The SPEAKER frowns)|What, do you doubt my results? See for yourself!|(She unscrews the cap)
+（SPEAKER 皱起眉头）|什么，你怀疑我的结果吗？你自己看看吧！|（她拧开盖子）
+(The green gas starts leaking)|Oh no! It wasn't supposed to do that!
+（绿色气体开始泄漏）|哦不！不应该这样！
+(You push her out of the way, but she frowns)|Hmph. This is your fault.
+（你把她推开，她却皱起了眉头）|哼。这是你的错。
+(You push her out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!
+（你把她推开，但你自己却被困在雾里）|（气体在你的身体上结晶成 RESTRAINT）|哦不，那本来应该在我身上发生！
+(The gas moves toward you, as if by its own will)|(The gas crystalizes into a RESTRAINT across your body)|That wasn't supposed to happen...
+（气体向你移动，仿佛按照自己的意志一样）|（气体在你的身体上结晶成 RESTRAINT）|那不应该发生......
 (A SPEAKER whispers to you)|Ever wonder how wolfgirls feel?|Or why they're so obedient?
 （SPEAKER 对你轻声细语）|有没有想过狼女们的感受|或者他们为什么这么听话？
 (The SPEAKER grins)|I've got a RESTRAINT here~|Wanna give it a try?
