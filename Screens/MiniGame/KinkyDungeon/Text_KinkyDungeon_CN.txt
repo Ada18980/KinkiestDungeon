@@ -11846,6 +11846,26 @@ Nope. Not doing that.
 不。别这样做。
 Okay, for science...
 好吧，为了科学...
+(A SPEAKER whispers to you)|Ever wonder how wolfgirls feel?|Or why they're so obedient?
+（SPEAKER 对你轻声细语）|有没有想过狼女们的感受|或者他们为什么这么听话？
+(The SPEAKER grins)|I've got a RESTRAINT here~|Wanna give it a try?
+（SPEAKER 咧嘴一笑）|我这里有一件RESTRAINT~|想尝试一下吗？
+(The SPEAKER puts on the RESTRAINT)|Perfect. Better behave now~|(The SPEAKER pats your butt)
+（SPEAKER 为你佩戴 RESTRAINT）|完美。现在乖一点吧~|（SPEAKER 拍了拍你的屁股）
+(The SPEAKER rolls her eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~
+（SPEAKER 翻白眼）|你见过狼女吧？|啊，不管怎样，玩去吧~
+(The SPEAKER nods glumly)|Not a fan?|Shame, I am~
+（SPEAKER 闷闷不乐地点点头）|不是粉丝？|耻辱，我是~
+(The SPEAKER grabs you quickly)|Oh, it's very strict~|And great for being trained...
+（SPEAKER 迅速地抓住你）|哦，很严格~|而且非常适合接受训练...
+(The SPEAKER looks at you deviously)|You're going to wear this RESTRAINT,|if you want to or not~
+（SPEAKER 阴险地看着你）|你要佩戴上这个RESTRAINT，|无论你是否愿意~
+(The SPEAKER sulks)|Have it your way then.
+（SPEAKER 生闷气）|那就随你吧。
+(The SPEAKER adds the RESTRAINT)|(You feel her tighten everything before locking it)|Good girl~
+（SPEAKER 添加了 RESTRAINT）|（你感觉到她在上锁之前收紧了所有束缚）|好女孩~
+(The SPEAKER pushes you to the ground)|I'll make it extra tight for you~|(The RESTRAINT locks tightly onto you)
+(SPEAKER 将你推倒在地)|我会让你更紧~|(RESTRAINT 紧紧地锁住你)
 Ah! Don't you dare! (PERCENT chance to avoid)
 啊! 你不敢！（有 PERCENT 的机会避开）
 (Shake your head and whimper) (PERCENT chance to avoid)
