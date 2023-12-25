@@ -12953,3 +12953,5 @@ RestraintTrackingModuleDesc2,"It has a warning label that says: 'CAUTION: NOT WA
 
 KDDamageModule,"Your RestraintName stops working due to water damage!"
 KDDamageModuleProgress,"Your RestraintName sustains water damage from the high-pressure water!"
+
+KDPlayNew,Play the graphics update for free at:

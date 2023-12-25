@@ -1087,6 +1087,17 @@ function KinkyDungeonRun() {
 		}, true, 1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
 		//DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
 	} else if (KinkyDungeonState == "Menu") {
+
+		if (!StandalonePatched) {
+			DrawTextKD(TextGet("KDPlayNew"), 1600, 470, "#ffffff", KDTextGray2);
+			DrawButtonKDEx("KDPlayNew", () => {
+				let url = 'https://ada18980.itch.io/kinky-dungeon';
+				window.open(url, '_blank');
+				return true;
+			}, true, 1450, 500, 300, 64, "itch.io/ada18980/kinky-dungeon", "#ffffff", "");
+		}
+
+
 		KinkyDungeonGameFlag = false;
 		DrawCheckboxVis(1700, 100, 64, 64, TextGet("KDToggleSound"), KDToggles.Sound, false, "#ffffff");
 		// Draw temp start screen
