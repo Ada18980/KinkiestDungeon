@@ -886,7 +886,7 @@ function KDDrawWardrobe(screen, Character) {
 
 			if (NewOutfit) {
 				KDOriginalValue = KDOutfitOriginalStore[KDCurrentOutfit] || "";
-				CharacterAppearanceRestore(KinkyDungeonPlayer, LZString.decompressFromBase64(NewOutfit));
+				CharacterAppearanceRestore(KinkyDungeonPlayer, DecompressB64(NewOutfit));
 				CharacterRefresh(KinkyDungeonPlayer);
 				KDInitProtectedGroups();
 				KinkyDungeonDressPlayer();
@@ -904,7 +904,7 @@ function KDDrawWardrobe(screen, Character) {
 
 	DrawTextFitKD(TextGet("KDLabelSaved"), 575, 75, 220, "#ffffff", KDTextGray0);
 
-	
+
 	DrawButtonKDEx("KDOutfitSaved_V", (bdata) => {
 		KDMaxOutfitsIndex += 3;
 		if (KDMaxOutfitsIndex > KDMaxOutfits-5) KDMaxOutfitsIndex = Math.floor(KDMaxOutfits-5);
@@ -927,7 +927,7 @@ function KDDrawWardrobe(screen, Character) {
 		if (KDOutfitInfo[index])
 			DrawButtonKDEx("ClickOutfit" + i, clickButton(index), true, 475, 140 + 50 * i, 200, 45,
 				KDOutfitInfo[index] + (((index == KDCurrentOutfit && KDOriginalValue) || KDOutfitOriginalStore[index]) ? "(*)" : ""),
-				index == KDCurrentOutfit ? "#ffffff" : "#888888", "", undefined, undefined, index != KDCurrentOutfit);	
+				index == KDCurrentOutfit ? "#ffffff" : "#888888", "", undefined, undefined, index != KDCurrentOutfit);
 
 	}
 	DrawBoxKD(450, 55, 250, 10 + KDOutfitInfo.length * 50, KDButtonColor, false, 0.5, -10);
@@ -969,7 +969,7 @@ function KDDrawWardrobe(screen, Character) {
 			KinkyDungeonCheckClothesLoss = true;
 			if (KinkyDungeonCurrentDress == "Bikini")
 				KinkyDungeonSetDress("Bikini", "Bikini", C, true);
-			else 
+			else
 				KinkyDungeonSetDress("None", "None", C, true);
 			KinkyDungeonDressPlayer(C, true);
 			KDInitProtectedGroups();
@@ -1085,7 +1085,7 @@ function KDSaveCodeOutfit(C) {
 	if (!C) C = KinkyDungeonPlayer;
 	// Save outfit
 	KDChangeWardrobe(C);
-	let decompressed = LZString.decompressFromBase64(ElementValue("saveInputField"));
+	let decompressed = DecompressB64(ElementValue("saveInputField"));
 	if (decompressed) {
 
 		// Strips first
@@ -1095,7 +1095,7 @@ function KDSaveCodeOutfit(C) {
 		KinkyDungeonCheckClothesLoss = true;
 		if (KinkyDungeonCurrentDress == "Bikini")
 			KinkyDungeonSetDress("Bikini", "Bikini", C, true);
-		else 
+		else
 			KinkyDungeonSetDress("None", "None", C, true);
 		KinkyDungeonDressPlayer(C, true);
 		KDInitProtectedGroups();
@@ -1122,7 +1122,7 @@ function KDSaveCodeOutfit(C) {
 function KDRestoreOutfit() {
 	// Restore the original outfit
 	if (KDOriginalValue) {
-		CharacterAppearanceRestore(KinkyDungeonPlayer, LZString.decompressFromBase64(KDOriginalValue));
+		CharacterAppearanceRestore(KinkyDungeonPlayer, DecompressB64(KDOriginalValue));
 		CharacterRefresh(KinkyDungeonPlayer);
 		KDInitProtectedGroups();
 		KinkyDungeonDressPlayer();

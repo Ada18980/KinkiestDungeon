@@ -489,7 +489,7 @@ function KinkyDungeonCurseUnlock(group, index, Curse) {
 		else console.log("Error! Please report the item combination and screenshot to Ada!");
 	}
 
-	let inventoryAs = restraint.inventoryVariant || (KDRestraint(restraint).inventoryAs);
+	let inventoryAs = restraint.inventoryVariant || restraint.name || (KDRestraint(restraint).inventoryAs);
 	restraint.curse = undefined;
 	if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
 		KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;

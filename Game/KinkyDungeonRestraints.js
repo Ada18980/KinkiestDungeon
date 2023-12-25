@@ -815,7 +815,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 			if (item.curse && KDCurses[item.curse]) {
 				KDCurses[item.curse].remove(item, KDGetRestraintHost(item));
 			}
-			let inventoryAs = item.inventoryVariant || (KDRestraint(item).inventoryAs);
+			let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
 			item.curse = undefined;
 			if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
 				KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
@@ -837,7 +837,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 					if (item.curse && KDCurses[item.curse]) {
 						KDCurses[item.curse].remove(item, KDGetRestraintHost(item));
 					}
-					let inventoryAs = item.inventoryVariant || (KDRestraint(item).inventoryAs);
+					let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
 					item.curse = undefined;
 					if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
 						KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
@@ -853,7 +853,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 							if (item.curse && KDCurses[item.curse]) {
 								KDCurses[item.curse].remove(item, KDGetRestraintHost(item));
 							}
-							let inventoryAs = item.inventoryVariant || (KDRestraint(item).inventoryAs);
+							let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
 							item.curse = undefined;
 							if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
 								KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;

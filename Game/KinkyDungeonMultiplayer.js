@@ -36,7 +36,7 @@ function KinkyDungeonMultiplayerUpdate(Delay) {
 function KinkyDungeonUnpackData(KinkyData) {
 	if (CurrentScreen != "KinkyDungeon" || KinkyDungeonState != "Game" || !KinkyDungeonPlayerCharacter) return;
 	if (KinkyDungeonIsPlayer()) return; // Prevent griefing
-	let data = JSON.parse(LZString.decompressFromBase64(KinkyData));
+	let data = JSON.parse(DecompressB64(KinkyData));
 
 	if (!KinkyDungeonGameData) KinkyDungeonGameData = {};
 

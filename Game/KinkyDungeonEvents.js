@@ -484,17 +484,19 @@ let KDEventMapInventory = {
 	},
 	"drawBuffIcons": {
 		"curseInfo": (e, item, data) => {
-			let curse = KDGetCurse(item);
-			let pre = "[" + TextGet("Restraint" + item.name) + "] ";
-			if (curse && (e.always || KDCurses[curse].activatecurse) && (!e.prereq || KDCheckPrereq(undefined, e.prereq, e, data))) {
-				data.stats[curse + ',' +item.name] = {
-					text: pre + TextGet("curseInfo" + e.msg),
-					count: "",
-					icon: e.buffSprite,
-					category: "buffs",
-					color: e.color, bgcolor: "#333333",
-					priority: e.power || 10,
-				};
+			if (KDToggleShowAllBuffs) {
+				let curse = KDGetCurse(item);
+				let pre = "[" + TextGet("Restraint" + item.name) + "] ";
+				if (curse && (e.always || KDCurses[curse].activatecurse) && (!e.prereq || KDCheckPrereq(undefined, e.prereq, e, data))) {
+					data.stats[curse + ',' +item.name] = {
+						text: pre + TextGet("curseInfo" + e.msg),
+						count: "",
+						icon: e.buffSprite || ("curse/" + (KDCurses[curse]?.customIcon_hud || "Curse")),
+						category: "curse",
+						color: e.color, bgcolor: "#333333",
+						priority: e.power || 10,
+					};
+				}
 			}
 		},
 	},
@@ -631,7 +633,7 @@ let KDEventMapInventory = {
 						KDCurses[item.curse].remove(item, KDGetRestraintHost(item));
 					}
 
-					let inventoryAs = item.inventoryVariant || (KDRestraint(item).inventoryAs);
+					let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
 					item.curse = undefined;
 					if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
 						KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
@@ -1169,7 +1171,7 @@ let KDEventMapInventory = {
 					KDPlayerEffectRestrain(undefined, e.count, e.tags, "Ghost", false, true, false, false, false);
 				} else if (KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y,
 					KDEntityBuffedStat(KinkyDungeonPlayerEntity, "ForcedSubmission") ? e.dist : 1.5,
-					KinkyDungeonPlayerEntity).length > 0) {
+					KinkyDungeonPlayerEntity).filter((en) => {return en.Enemy?.bound && !en.Enemy.nonHumanoid}).length > 0) {
 					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "ForcedSubmission",
 						type: "ForcedSubmission",

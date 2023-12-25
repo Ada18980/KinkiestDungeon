@@ -173,18 +173,24 @@ let KDStatsSkipLine = {
 	"info": 1,
 	"status": 1,
 	"dmg": 1,
+	"resist": 1,
 };
 let KDStatsSkipLineBefore = {
 	"kinky": 1,
+	"curse": 1,
+	"perk": 1,
 };
 
 let KDStatsOrder = {
 	"info": 10000,
-	"help": 3500, // Always good, so since they are buffs they should be high priority
 	"status": 7000,
-	"buffs": 1000,
+	"resist": 2500,
 	"dmg": 2000,
+	"help": 1500, // Always good, so since they are buffs they should be high priority
+	"buffs": 1000,
+	"perk": -500,
 	"kinky": -1000,
+	"curse": -2000,
 };
 
 let KDUIColor = "#111111";
@@ -1030,23 +1036,29 @@ function KinkyDungeonDrawActionBar(x, y) {
 	let resourcesY = 825 - 10 - 1 * resourceSpacing;
 
 
-	KDDraw(kdcanvas, kdpixisprites, "gold", KinkyDungeonRootDirectory + "Items/Gold.png", resourcesX - 8, resourcesY - 10 + resourcesIndex*resourceSpacing, 80, 80);
-	DrawTextFitKD("" + KinkyDungeonGold, resourcesX + 32, resourcesY + 40 + resourcesIndex*resourceSpacing, 80, "#ffffff", "#333333", 18);
+	KDDraw(kdcanvas, kdpixisprites, "gold", KinkyDungeonRootDirectory + "Items/Gold.png", resourcesX - 8, resourcesY - 10 + resourcesIndex*resourceSpacing, 80, 80, undefined, {
+		zIndex: 90
+	});
+	DrawTextFitKD("" + KinkyDungeonGold, resourcesX + 32, resourcesY + 40 + resourcesIndex*resourceSpacing, 80, "#ffffff", "#333333", 18, undefined, 90);
 	if (MouseIn(resourcesX - 10, resourcesY + resourcesIndex*resourceSpacing, 80, 80))
 		DrawTextKD(TextGet("KinkyDungeonInventoryItemGold"),
 			resourcesX + 60, MouseY, "#ffffff", "#333333", 24, "left");
 	resourcesIndex--;
 
-	KDDraw(kdcanvas, kdpixisprites, "pick", KinkyDungeonRootDirectory + "Items/Pick.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50);
-	DrawTextFitKD("" + KinkyDungeonLockpicks, resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, "#ffffff", "#333333", 18);
+	KDDraw(kdcanvas, kdpixisprites, "pick", KinkyDungeonRootDirectory + "Items/Pick.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50, undefined, {
+		zIndex: 90
+	});
+	DrawTextFitKD("" + KinkyDungeonLockpicks, resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, "#ffffff", "#333333", 18, undefined, 90);
 	if (MouseIn(resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50))
 		DrawTextKD(TextGet("KinkyDungeonInventoryItemLockpick"),
 			resourcesX + 60, MouseY, "#ffffff", "#333333", 24, "left");
 
 
 	resourcesIndex--;
-	KDDraw(kdcanvas, kdpixisprites, "redkey", KinkyDungeonRootDirectory + "Items/RedKey.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50);
-	DrawTextFitKD("" + KinkyDungeonRedKeys, resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, "#ffffff", "#333333", 18);
+	KDDraw(kdcanvas, kdpixisprites, "redkey", KinkyDungeonRootDirectory + "Items/RedKey.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50, undefined, {
+		zIndex: 90
+	});
+	DrawTextFitKD("" + KinkyDungeonRedKeys, resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, "#ffffff", "#333333", 18, undefined, 90);
 	if (MouseIn(resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50))
 		DrawTextKD(TextGet("KinkyDungeonInventoryItemRedKey"),
 			resourcesX + 60, MouseY, "#ffffff", "#333333", 24, "left");
@@ -1055,8 +1067,10 @@ function KinkyDungeonDrawActionBar(x, y) {
 
 
 	if (KinkyDungeonBlueKeys > 0) {
-		KDDraw(kdcanvas, kdpixisprites, "bluekey", KinkyDungeonRootDirectory + "Items/BlueKey.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50);
-		DrawTextFitKD("" + KinkyDungeonBlueKeys, resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, "#ffffff", "#333333", 18);
+		KDDraw(kdcanvas, kdpixisprites, "bluekey", KinkyDungeonRootDirectory + "Items/BlueKey.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50, undefined, {
+			zIndex: 90
+		});
+		DrawTextFitKD("" + KinkyDungeonBlueKeys, resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, "#ffffff", "#333333", 18, undefined, 90);
 		if (MouseIn(resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50))
 			DrawTextKD(TextGet("KinkyDungeonInventoryItemMagicKey"),
 				resourcesX + 60, MouseY, "#ffffff", "#333333", 24, "left");
@@ -2212,14 +2226,14 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 				count: Math.round(visibility * 100) + "%",
 				icon: "visibility",
 				countcolor: visibility < 1 ? "#c4efaa" : "#ff5555",
-				category: "status", color: "#ceaaed", bgcolor: KDTextGray0, priority: 2
+				category: "info", color: "#ceaaed", bgcolor: KDTextGray0, priority: 2
 			};
 			//DrawTextFitKD(TextGet("KinkyDungeonPlayerVisibility") + Math.round(visibility * 100) + "%", X1, 900 - i * 35, 200, KDTextGray0, "#ceaaed"); i++;
 		}
 	}
 
 	if (KDGameData.Shield > 0) {
-		statsDraw.shield = {text: TextGet("KDStatShield"), category: "status", icon: "shield", color: "#88aaff", bgcolor: "#333333", priority: 9,
+		statsDraw.shield = {text: TextGet("KDStatShield"), category: "info", icon: "shield", color: "#88aaff", bgcolor: "#333333", priority: 9,
 
 			count: "" + Math.round(KDGameData.Shield * 10),
 			countcolor: "#ffffff",
@@ -2309,6 +2323,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 				category: "info", color: "#ffffff", bgcolor: "#333333", icon: "infoDamageMelee", priority: 10.1
 			};
 		}
+
 		let bindAmp = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp");
 		if (bindAmp > 0) {
 			statsDraw.bindAmp = {
@@ -2345,7 +2360,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 					count: (resist > 1 ? '+' : "") + Math.round(resist * 100 - 100) + "%",
 					countcolor: resist < 1 ? "#c4efaa" : "#ff5555",
 					icon: "dmg" + type,
-					category: "dmg", color: color, bgcolor: "#333333", priority: resist * 10
+					category: "resist", color: color, bgcolor: "#333333", priority: resist * 10
 				};
 				//DrawTextFitKD(TextGet("KinkyDungeonPlayerDamageResist").replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + type)) + Math.round(resist * 100) + "%", X2, 900 - i * 25, 150, color, "#333333"); i++;
 			}
@@ -2462,7 +2477,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 					count: KDPerkCount[perk] ? KDPerkCount[perk]() : undefined,
 					icon: "perk/perk" + perk,
 					//countcolor: b.aura ? b.aura : b.labelcolor,
-					category: "perks", color: "#ffffff", bgcolor: "#333333", priority: 0,
+					category: "perk", color: "#ffffff", bgcolor: "#333333", priority: 0,
 				};
 			}
 		}

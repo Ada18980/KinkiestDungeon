@@ -858,11 +858,11 @@ function KinkyDungeonLoad() {
 
 			KinkyDungeonNewDress = true;
 			KDCurrentOutfit = parseInt(localStorage.getItem("kdcurrentoutfit") || 0);
-			let appearance = LZString.decompressFromBase64(localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit));
+			let appearance = DecompressB64(localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit));
 			if (!appearance || (StandalonePatched && JSON.parse(appearance).length && JSON.parse(appearance)[0]?.Asset)) {
 				KinkyDungeonNewDress = false;
 				if (StandalonePatched)
-					appearance = LZString.decompressFromBase64("NobwRAsg9gJgpgGzALjAIVgTzAGjAEQEsAzYwgYwFcEAXbZABjwGEoEoAnFAuYgQ2o0wAXxzho8JKgDSUQgFFMcAM64CJMlVr0mYVuy6p8vAbTUAxQrTgdVycIpUpwAcz4Bbd3xQBGAHQMAGzBIaGhAOx4ynw0lBwxhFAAdii65Mk08cpCyP4AzACseABGHIQuABY0SSp2/gAcRWAccDCpfnn1ed09vb14Li1wKYx+BWETIZFgxQiUcCh5fgCcTXwIAA4V3rmiYI7KAEzOYG6eO/5BkxPT0bHxNIkjaRlZOflNpeVVNcp1fo08C02qNOn1wT0BkNnmNrjcSnMFsglqs8OsthdhFixJBYIhuLJCGgOFAAO6qPBEUgUQQ6FhsTjcYz8QQiHESfEyOTQSg0CpqKmaWmpekGJkmVmicR4qRgQloObKfmUjQ07QivQMww8FlmKW4yTcACCFSgLgWKupWjoGv0jKMErMeEs1lsJxNZqRrg8XnahQYAcDQaDeSiMTiCWSvjw6SSmT42WjMzKlWqtSTwN8fjhEyagzgw3ahx8OYiCPmRZLpeC03R218WP1HNlaD45AA1gBlePfISWoXqxii+060x9sAumg2OzgVsd7vxXsnM6+0EFYMbwOhsB3COPKO5GOvBPvEopn7pw/NVpZ6shPPQyt3wLTWYV0bF5+1zb13bY6WGqgC58L2rZJC4FLqFawpDpqYoOrq46TtOJzAaBfDgTOpw+jsDAdOum4btuu4PE8SaxvGiZXl8qa/HUQI3rk2bPg+BYwp+d6voiT6cWiP6Yv+BqcugGEwIQNAYFANCQYKao2rBdragAxKQqnEBYVhTm69hgJ2ppwAAMrwOTeucWYACyERuPhhvckYwgwEJOduFFvFmBRdM5/TJr2dG3p5XndAxII2acj7UdxV51pieB6VAcAAEpLjpK4XH4llWUGoUkfZ7SOYF3muSe7kBYFZ6+Ze/iBKVXnBUm+aFhF76hdFDaCc23AAOrieQFQKlAlDKBaUEDvJuiKdwKlqepTYyl1PUVKwthwOOsnWnScEjlNakaa6WFLUNJnYWZTHmU0OX7jC5lfkecZudR55pn8GaMaFDUjKFb5Ii1/FtbNgGQCBMCdu2hAcKtqrrbaWqTdN6nOppKE6SDYNHalSYXWRH4FT05m3ZRp4+bRlV1Ve71Jl97lrL9TEMFW1aNuyc2oBAQOdlAHYyZDMHjTDqDbapu1aVh7MdklqbLjhGPhqRB4vHdxUPRVz1XpmZPhZ9kU/RiDaxRz7ZGcQaNS1emNy/j92fY9fmq69UJsRTWt8Trf7/cJwEbBsmBoIQoNJIQArc4OvPwaOkpMwDBkxHAAAexLeP2ckbRNCFjiIAC6QA");
+					appearance = DecompressB64("NobwRAsg9gJgpgGzALjAIVgTzAGjAEQEsAzYwgYwFcEAXbZABjwGEoEoAnFAuYgQ2o0wAXxzho8JKgDSUQgFFMcAM64CJMlVr0mYVuy6p8vAbTUAxQrTgdVycIpUpwAcz4Bbd3xQBGAHQMAGzBIaGhAOx4ynw0lBwxhFAAdii65Mk08cpCyP4AzACseABGHIQuABY0SSp2/gAcRWAccDCpfnn1ed09vb14Li1wKYx+BWETIZFgxQiUcCh5fgCcTXwIAA4V3rmiYI7KAEzOYG6eO/5BkxPT0bHxNIkjaRlZOflNpeVVNcp1fo08C02qNOn1wT0BkNnmNrjcSnMFsglqs8OsthdhFixJBYIhuLJCGgOFAAO6qPBEUgUQQ6FhsTjcYz8QQiHESfEyOTQSg0CpqKmaWmpekGJkmVmicR4qRgQloObKfmUjQ07QivQMww8FlmKW4yTcACCFSgLgWKupWjoGv0jKMErMeEs1lsJxNZqRrg8XnahQYAcDQaDeSiMTiCWSvjw6SSmT42WjMzKlWqtSTwN8fjhEyagzgw3ahx8OYiCPmRZLpeC03R218WP1HNlaD45AA1gBlePfISWoXqxii+060x9sAumg2OzgVsd7vxXsnM6+0EFYMbwOhsB3COPKO5GOvBPvEopn7pw/NVpZ6shPPQyt3wLTWYV0bF5+1zb13bY6WGqgC58L2rZJC4FLqFawpDpqYoOrq46TtOJzAaBfDgTOpw+jsDAdOum4btuu4PE8SaxvGiZXl8qa/HUQI3rk2bPg+BYwp+d6voiT6cWiP6Yv+BqcugGEwIQNAYFANCQYKao2rBdragAxKQqnEBYVhTm69hgJ2ppwAAMrwOTeucWYACyERuPhhvckYwgwEJOduFFvFmBRdM5/TJr2dG3p5XndAxII2acj7UdxV51pieB6VAcAAEpLjpK4XH4llWUGoUkfZ7SOYF3muSe7kBYFZ6+Ze/iBKVXnBUm+aFhF76hdFDaCc23AAOrieQFQKlAlDKBaUEDvJuiKdwKlqepTYyl1PUVKwthwOOsnWnScEjlNakaa6WFLUNJnYWZTHmU0OX7jC5lfkecZudR55pn8GaMaFDUjKFb5Ii1/FtbNgGQCBMCdu2hAcKtqrrbaWqTdN6nOppKE6SDYNHalSYXWRH4FT05m3ZRp4+bRlV1Ve71Jl97lrL9TEMFW1aNuyc2oBAQOdlAHYyZDMHjTDqDbapu1aVh7MdklqbLjhGPhqRB4vHdxUPRVz1XpmZPhZ9kU/RiDaxRz7ZGcQaNS1emNy/j92fY9fmq69UJsRTWt8Trf7/cJwEbBsmBoIQoNJIQArc4OvPwaOkpMwDBkxHAAAexLeP2ckbRNCFjiIAC6QA");
 				else appearance = CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player);
 			}
 
@@ -1332,7 +1332,7 @@ function KinkyDungeonRun() {
 				let current = LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
 				if (orig != current) KDOriginalValue = orig;
 			}
-			let appearance = LZString.decompressFromBase64(localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit));
+			let appearance = DecompressB64(localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit));
 			if (appearance) {
 				CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);
 				CharacterRefresh(KinkyDungeonPlayer);
@@ -1473,7 +1473,7 @@ function KinkyDungeonRun() {
 
 		let newValue = ElementValue("saveInputField");
 		if (newValue != KDOldValue) {
-			let decompressed = LZString.decompressFromBase64(ElementValue("saveInputField"));
+			let decompressed = DecompressB64(ElementValue("saveInputField"));
 			if (decompressed) {
 				let origAppearance = KinkyDungeonPlayer.Appearance;
 				try {
@@ -3239,7 +3239,7 @@ function KinkyDungeonHandleClick() {
 				KinkyDungeonState = "Wardrobe";
 
 			} else {
-				let decompressed = LZString.decompressFromBase64(ElementValue("saveInputField"));
+				let decompressed = DecompressB64(ElementValue("saveInputField"));
 				if (decompressed) {
 					let origAppearance = KinkyDungeonPlayer.Appearance;
 					try {
@@ -3871,7 +3871,7 @@ function KinkyDungeonCompressSave(save) {
 
 // N4IgNgpgbhYgXARgDQgMYAsJoNYAcB7ASwDsAXBABlQCcI8FQBxDAgZwvgFoBWakAAo0ibAiQg0EvfgBkIAQzJZJ8fgFkIZeXFWoASgTwQqqAOpEwO/gFFIAWwjk2JkAGExAKwCudFwElLLzYiMSoAX1Q0djJneGAIkAIaACNYgG0AXUisDnSskAATOjZYkAARCAAzeS8wClQAcwIwApdCUhiEAGZUSBgwWNBbCAcnBBQ3Tx9jJFQAsCCQknGEtiNLPNRSGHIkgE8ENNAokjYvO3lkyEYQEnkHBEECMiW1eTuQBIBHL3eXsgOSAixzEZwuVxmoDuD3gTxeYgAylo7KR5J9UD8/kQAStkCDTudLtc4rd7jM4UsAGLCBpEVrfX7kbGAxDAkAAdwUhGWJOh5IA0iQiJVjGE2cUyDR5B0bnzHmUvGgyAAVeRGOQNZwJF4NDBkcQlca9Ai4R7o0ASqUy3lk+WKlVqiCUiCaNTnOwHbVEXX6iCG2bgE04M1hDJhIA=
 function KinkyDungeonLoadGame(String) {
-	let str = String ? LZString.decompressFromBase64(String.trim()) : (localStorage.getItem('KinkyDungeonSave') ? LZString.decompressFromBase64(localStorage.getItem('KinkyDungeonSave')) : "");
+	let str = String ? DecompressB64(String.trim()) : (localStorage.getItem('KinkyDungeonSave') ? DecompressB64(localStorage.getItem('KinkyDungeonSave')) : "");
 	if (str) {
 		let saveData = JSON.parse(str);
 		if (saveData
@@ -4244,3 +4244,13 @@ function KDDrawGameSetupTabs(xOffset) {
 	}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
 }
 
+
+
+/**
+ *
+ * @param {string} str
+ * @returns {string}
+ */
+function DecompressB64(str) {
+	return LZString.decompressFromBase64("".concat(...str.trim().split('\n')));
+}
