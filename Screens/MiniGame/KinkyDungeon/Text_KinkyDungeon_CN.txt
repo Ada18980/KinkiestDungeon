@@ -12037,7 +12037,7 @@ Stop! (PERCENT chance to avoid)
 Any time~
 随时~
 I'd rather you didn't.
-我宁愿你不要。
+你最好不要。
 Sounds great!
 听起来很棒！
 Actually, I don't want that.
