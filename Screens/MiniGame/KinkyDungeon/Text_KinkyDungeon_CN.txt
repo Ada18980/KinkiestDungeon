@@ -14904,8 +14904,8 @@ You avoid the attack in a flurry of impressive maneuvers!
 你在一系列令人印象深刻的动作中避开了攻击！
 Arcane Barrier
 奥术屏障
-When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 50% Max Mana.
-当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 1:1 的比例缓慢将奥术能量转化为护盾。最大护盾等于 50% 的最大魔法值。
+When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 60 + 10% Max Mana.
+当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 1:1 的比例缓慢将奥术能量转化为护盾。最大护盾等于 60 + 10% 的最大魔法值。
 You sense that a high value target is near.
 你感觉到一个高价值目标正在靠近。
 You push yourself beyond physical limits!
@@ -15992,14 +15992,14 @@ No offhand weapon set. Activate the spell in your hotbar to set one.
 没有副手武器组。激活快捷栏中的咒语来设置一个。
 Flash Portal
 闪光传送门
-After 3 turns, teleport to a nearby location (including into darkness). All adjacent creatures are teleported with you, in random order.
-3 回合后，传送到附近的位置（包括进入黑暗）。所有相邻的生物都会以随机顺序与你一起传送。
+After channeling for 2 turns, teleport to a nearby location (including into darkness). All adjacent creatures are teleported with you, in random order.
+引导 2 回合后，传送到附近的位置（包括进入黑暗）。所有相邻的生物都会以随机顺序与你一起传送。
 You call upon a misty portal to transport you and nearby creatures!
 你召唤一个迷雾传送门来传送你和附近的生物！
 Transportation Portal
 运输传送门
-After 3 turns, teleport to a nearby location (including into darkness). Transports only allies, but they are stunned for the duration.
-3 回合后，传送到附近的位置（包括进入黑暗）。只传送盟友，但他们会在持续时间内被眩晕。
+After channeling for 3 turns, teleport to a nearby location (including into darkness). Transports only allies, but they are stunned for the duration.
+引导 3 回合后，传送到附近的位置（包括进入黑暗）。只传送盟友，但他们会在持续时间内被眩晕。
 You call upon a misty portal to transport you and your allies!
 你召唤一个迷雾传送门来传送你和你的盟友！
 Banishing Portal
@@ -16416,5 +16416,43 @@ The witch dangles a lock in front of you before putting it on! (DamageTaken)
 女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
 The witch rubs your body sensually! (DamageTaken)
 女巫性感地摩擦你的身体！（DamageTaken）
-The ENMY takes your clothes off!
-ENMY 脱去了你的衣服！
+The Shibari Witch takes your clothes off!
+绑缚女巫脱去了你的衣服！
+
+A Hard Place
+艰难之地
+While your willpower is 0, your mana pool slowly drains and your stamina regen is reduced by 30%.
+当你的意志力为0时，你的法力池会慢慢耗尽，你的体力回复会减少30%。
+
+The Spark of Magic
+魔法的火花
+When your mana pool is exhausted, your attacks deal 50% reduced base damage.
+当你的法力池耗尽时，你的攻击造成的基础伤害减少 50%。
+
+Burned Out
+筋疲力尽
+Casting spells reduces willpower based on how little distraction you have, also you cannot play with yourself
+施法会根据你分心的程度来降低意志力，并且你不再能自慰
+
+Winded
+气喘吁吁
+While below 10% stamina, evasion is severely reduced and your slow level is increased by 1
+当体力低于 10% 时，闪避率会大幅降低，并且你的缓慢程度会增加 1 点
+
+Time Ghost
+时间幽灵
+The time ghost vanishes.
+时间幽灵消失了。
+The time ghost grabs you, causing your body parts to freeze in time!!! (DamageTaken)
+时间幽灵抓住了你，让你身体的部位被瞬间冻结！！！（DamageTaken）
+The time time ghost has already bound you! (+RestraintAdded)
+时空幽灵已经将你束缚了！（+RestraintAdded）
+
+The Timekeeper
+计时员
+The Timekeeper releases her grip on the timeline.
+计时员松开了对时间线的控制。
+The Timekeeper takes the time to enjoy herself with you... (DamageTaken)
+计时员会花时间和你一起享受时光......（DamageTaken）
+The Timekeeper enacts judgement for disrupting time! (+RestraintAdded)
+计时员对扰乱时间做出判决！（+RestraintAdded）
