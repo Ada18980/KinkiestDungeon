@@ -4648,6 +4648,14 @@ Unlock
 开锁
 Command
 命令
+You utter a command word and release the lock!
+你说出命令词并释放锁！
+You mutter an unintelligible command word and your locks do not open.
+你咕哝着一个难以理解的命令词，但你的锁却打不开。
+You mumble a command word but the lock opens!
+你咕哝了一个命令，但锁打开了！
+You mess up saying the command word. The lock stays put!
+你说命令词时搞砸了。锁纹丝不动！
 Pick
 撬锁
 (No way to open)
