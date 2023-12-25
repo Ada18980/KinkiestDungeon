@@ -16206,6 +16206,8 @@ Your Divine Chastity Belt magically dampens the vibrations just enough to edge y
 你的神圣贞操带神奇地减弱振动，足以让你感到紧张。
 Magic Arm Belts
 手臂绑带（附魔）
+Highly secure belts enchanted with magic.
+高度安全的绑带，带有魔法。
 Magic Leg Belts
 腿部绑带（附魔）
 Magic Ankle Belts
