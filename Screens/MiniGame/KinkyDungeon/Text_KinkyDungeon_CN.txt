@@ -8296,6 +8296,14 @@ Curious Spell
 好奇的咒语
 You have been flummoxed!
 你陷入了混乱！
+Cuff Bola
+铐球
+Throw Syringe
+投掷注射器
+You feel a prick as a small syringe hits you, and you start feeling drowsy...
+当一个小型注射器击中你时，你会感到刺痛，然后你开始感到昏昏欲睡……
+The thrown cuffs snap shut around your ankles and slow you down!!!
+抛出的手铐会卡住你的脚踝，让你慢下来！
 Ribbon Burst
 丝带爆裂
 Spores
