@@ -86,7 +86,7 @@ let DisplacementMaps = [
 'Calf3SquishHogtie.png',
 'Calf3SquishKneelClosed.png',
 'CorsetSquish.png',
-'CrotchRopeSquish.png',
+'CrotchropeSquish.png',
 'CuffLeftCrossed.png',
 'CuffLeftFree.png',
 'CuffLeftFront.png',
