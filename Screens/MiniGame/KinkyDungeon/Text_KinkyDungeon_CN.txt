@@ -1706,6 +1706,8 @@ Designed to make it hard to conceal weapons. Makes you more visible and vulnerab
 使武器难以隐藏。并让你更容易受到寒冷的影响。
 Wolfgirl Suit
 狼女套装
+An advanced suit designed for sport, breathable and also warm.
+专为运动而设计的高级套装，透气且保暖。
 Made of latex. Resistant to electricity but does not insulate well.
 由乳胶制成。耐电但绝缘性能不佳。
 Maid Uniform
