@@ -12144,6 +12144,36 @@ W-Whoa! S-Sure...
 （SPEAKER 咯咯大笑）|（藤蔓追上并把你压住）|（当它们松开时，你就只剩下 RESTRAINT 了）
 (Shake your head) (PERCENT chance to avoid)
 （摇头）（PERCENT 的概率避开）
+Always!
+总是！
+That sounds exciting!
+听起来让人兴奋不已！
+Wait, not like this!
+等等，不是这样的！
+W-Well- o-okay...
+嗯-好- 好-好吧...
+Don't! (PERCENT chance to avoid)
+不！（PERCENT 的概率避开）
+(A SPEAKER approaches)|Nothing quite beats a strong metal|chain, right?
+（SPEAKER 走近）|没有什么比坚固的金属|锁链更胜一筹了，对吧？
+(The SPEAKER nods happily)|Exactly!|Want one for yourself?
+（SPEAKER 高兴地点点头）|完全正确！|想要给自己一个吗？
+(The SPEAKER wraps a long chain around you)|This should do the trick~|(RESTRAINT settles in place)
+（SPEAKER 将一条长链缠绕在你身上）|这样应该就可以了~|（RESTRAINT 就位）
+(The SPEAKER sighs)|Ah well.
+（SPEAKER 叹了口气）|啊，好吧。
+(The SPEAKER frowns sadly)|But they make the best noise!
+（SPEAKER 悲伤地皱起眉头）|但他们发出的声音是最好听的！
+(The SPEAKER rolls her eyes)|Tough luck then~|You're getting one!
+（SPEAKER 翻了个白眼）|那就倒霉了~|你得了一个！
+(The SPEAKER grins)|See how you feel when|you're wearing one!
+（SPEAKER 笑了）|看看当你戴着它时|你的感觉如何！
+(The SPEAKER sighs)|Maybe another time then.
+（SPEAKER 叹了口气）|也许下次吧。
+(The SPEAKER wraps a long chain around you)|(RESTRAINT hugs your body closely)|(You shiver as the cold metal touches you)
+（SPEAKER 用一条长链将你缠住）|（RESTRAINT 紧紧地拥抱住你的身体）|（当冰冷的金属接触到你时，你颤抖起来）
+(The SPEAKER grins as she binds your body)|(RESTRAINT digs into you a little)|Enjoy, cutie~
+（SPEAKER 在束缚你的身体时咧嘴一笑）|（RESTRAINT 对你有一点影响）|享受吧，小可爱~
 I love chains!
 我喜欢锁链！
 Plenty beats it.
