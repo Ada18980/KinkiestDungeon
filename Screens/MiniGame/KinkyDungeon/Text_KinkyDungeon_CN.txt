@@ -71,9 +71,9 @@ GFX: 异步渲染 (测试版)
 GFX: Bloom & Glow
 GFX: 曝光 & 发光
 UI: Transparent UI
-UI: 透明UI
+UI：透明UI
 UI: Turn Counter
-UI: 回合计数器
+UI：回合计数器
 GFX: Flash Screen on Stun
 GFX: 眩晕时闪屏
 GFX: Map Particles
@@ -83,9 +83,9 @@ GFX: 性奋粒子
 GFX: Vibration Particles
 GFX: 震动粒子
 UI: Show NPC Status
-UI: 显示NPC状态
+UI：显示NPC状态
 UI: Show Spell Range
-UI: 显示法术范围
+UI：显示法术范围
 GFX: Trim Edge Walls
 GFX: 整理边缘墙
 GFX: Fog Shader
