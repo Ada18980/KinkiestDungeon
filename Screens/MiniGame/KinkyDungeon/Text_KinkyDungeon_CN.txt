@@ -8482,8 +8482,6 @@ You wriggle uselessly, tormented by the massive plugs inside of you!
 你无用地扭动着，被你体内的巨大塞子折磨着！
 You climb into the grate
 你爬进隔间
-Hmmph.
-嗯。
 You are blinded!
 你失明了！
 You took DamageTaken damage!
@@ -12925,7 +12923,7 @@ I don't want to be a pet, so you'll have to force me.
 I'd love to be your pet!
 我很想成为你的宠物！
 (SPEAKER pouts)|Hmmph. Suit yourself.
-（SPEAKER 撅起嘴）|哼。你自便。
+（SPEAKER 撅起嘴）|嗯。你自便。
 Pledge my soul? That changes things...
 以我的灵魂为誓？ 这改变了事情......
 (SPEAKER giggles)|Hehe... you sound interested.
@@ -12955,7 +12953,7 @@ What the heck are 'Resurrection Arts'?
 It's time for a true display of skill!
 是时候展现真正的技能了！
 Hmmph. (Look away)
-嗯。 （移开视线）
+呜嗯。（移开视线）
 (She grins)|We'll wipe that pout off your face soon enough...
 （她笑了）|我很快就会把你撅着的嘴抹平的……
 (She frowns)|Well, you will soon.
@@ -12991,7 +12989,7 @@ Fair enough. I am an adventurer.
 We'll see about that.
 我们会看到的。
 Hmmph. (Scoff into your gag)
-嗯。 （隔着你的口塞嘲笑）
+呜嗯。（隔着你的口塞嘲笑）
 It is indeed!
 确实！
 I'm an adventurer, miss.
@@ -13041,9 +13039,9 @@ About those 'reincarnated ones'...
 You have no power over me
 你可没权力干涉我
 Hmmph. (Stand proudly)
-嗯。 （骄傲地站着）
+呜嗯。（骄傲地站着）
 (SPEAKER smiles)|Then let us fight!|If I win, I will make you my pet.|If you win, I will let you pass.
-（SPEAKER笑）|那我们打吧！|如果我赢了，我会让你成为我的宠物。|如果你赢了，我会让你过去。
+（SPEAKER 笑）|那我们开打吧！|如果我赢了，你就得成为我的宠物。|如果你赢了，我会让你过去。
 I don't want to fight, miss...
 我不想打架，小姐...
 Mmph! (Shake your head frantically)
@@ -13633,7 +13631,7 @@ And who might you be?
 (Tilt your head)
 （歪着头）
 (The woman's mask reflects the harsh industrial light)|You don't know who I am?|Hmmph, and I suppose my servants haven't told you...|They call me the Dollmaker.
-（女人的面具反射着刺眼的工业光）|你不知道我是谁？|哼，我想我的仆人还没有告诉你……|他们叫我玩偶师。
+（女人的面具反射着刺眼的工业光）|你不知道我是谁？|嗯，看来我的仆人还没有告诉你……|他们叫我玩偶师。
 So you're the one they talked about.
 所以你就是他们谈论的那个人。
 (Nod and continue)
