@@ -4359,7 +4359,7 @@ let KDEventMapSpell = {
 			}
 		},
 		"FloatingWeapon": (e, spell, data) => {
-			if (KinkyDungeonPlayerWeapon && !KinkyDungeonCanUseWeapon(true, undefined, KDWeapon({name: KinkyDungeonPlayerWeapon}))
+			if (KinkyDungeonPlayerWeapon //  && !KinkyDungeonCanUseWeapon(true, undefined, KDWeapon({name: KinkyDungeonPlayerWeapon})
 				&& (!KDWeapon({name: KinkyDungeonPlayerWeapon})?.noHands || KDWeapon({name: KinkyDungeonPlayerWeapon}).telekinetic)
 				&& !KDWeapon({name: KinkyDungeonPlayerWeapon})?.unarmed) {
 				KDDraw(kdcanvas, kdpixisprites, "kdfloatingwep", KinkyDungeonRootDirectory + `Items/${KDWeapon({name: KinkyDungeonPlayerWeapon})?.name}.png`,

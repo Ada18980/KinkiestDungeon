@@ -694,7 +694,7 @@ let KinkyDungeonSpellSpecials = {
 				let lasty = tt.y;
 				let xxx = tt.x;
 				let yyy = tt.y;
-	
+
 				for (let i = dist; i > 0; i -= 0.2499) {
 					if (KDistChebyshev(pullToX - xxx, pullToY - yyy) > 1.5) {
 						let newX = pullToX + Math.round((xxx - pullToX) * i / dist);
@@ -717,14 +717,14 @@ let KinkyDungeonSpellSpecials = {
 						KinkyDungeonChestConfirm = false;
 					}
 				}
-	
+
 				if (success) {
 					if (tile == 'C') chest = true;
 					KDCreateParticle(tt.x, tt.y, "RecoverObjectHit");
 					grabbed = true;
 				}
 				found = true;
-			} 
+			}
 		}
 		if (grabbed) {
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
@@ -746,10 +746,13 @@ let KinkyDungeonSpellSpecials = {
 		for (let tile of tilesHit) {
 			let en = KinkyDungeonEnemyAt(tile.x, tile.y);
 			if (en && !KDAllied(en) && !KDHelpless(en) && en.hp > 0) {
+				if (!hit) {
+					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+				}
 				hit = true;
 				let mod = (KinkyDungeonFlags.get("KineticMastery") ? 1.5 : 0) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisBase");
 				let scaling = 0.9 * (KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisScale")));
-				let data = {
+				data = {
 					target: en,
 					attackCost: 0.0, // Important
 					skipTurn: false,
@@ -776,7 +779,7 @@ let KinkyDungeonSpellSpecials = {
 						tease: KinkyDungeonPlayerDamage.tease}
 				};
 				KinkyDungeonSendEvent("beforePlayerLaunchAttack", data);
-				
+
 				KinkyDungeonAttackEnemy(en, data.attackData, 1.0);
 			}
 		}
@@ -792,13 +795,12 @@ let KinkyDungeonSpellSpecials = {
 				sprite: "Particles/Slash.png",
 			});
 		}
-		
+
 		KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-		KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 		return "Cast";
 	},
-	
-	
+
+
 	"Swap": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		if (!KinkyDungeonCheckPath(entity.x, entity.y, tX, tY, true, false, 1, true)) {
 			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);
@@ -812,21 +814,21 @@ let KinkyDungeonSpellSpecials = {
 				if (!(en.Enemy.tags?.unstoppable)) {
 					KDMovePlayer(en.x, en.y, true, false, false, true);
 					KDMoveEntity(en, newX, newY, false, false, KDHostile(en));
-	
-					KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));	
+
+					KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 				} else {
 					let point = KinkyDungeonGetNearbyPoint(en.x, en.y, true, undefined, true, true);
 					if (point) {
 						KDMovePlayer(point.x, point.y, true, false, false, true);
-		
-						KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastPartial"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));	
+
+						KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastPartial"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 						KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 					} else {
-						KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));	
+						KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 					}
 				}
-				
+
 				return "Cast";
 			} else return "Fail";
 		} else return "Fail";
@@ -1052,7 +1054,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	
+
 	"DollConvert": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let enList = KDNearbyEnemies(tX, tY, spell.aoe);
 
