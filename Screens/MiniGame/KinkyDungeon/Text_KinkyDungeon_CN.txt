@@ -11838,6 +11838,20 @@ Hey! Stop! (PERCENT chance to avoid)
 （摇头并发出呜呜声）（有 PERCENT 的机会避开）
 (Nod slowly)
 （缓缓点头）
+Seems interesting!
+看起来很有趣！
+Seems boring.
+看起来很无聊。
+Are you sure this is a good idea?
+你确定这是个好主意吗？
+Keep that away from me!
+让那玩意离我远点！
+I'll stop it!
+我会阻止它！
+(Run toward her to help)
+（跑向她帮忙）
+(Run away!) (PERCENT chance to avoid)
+（逃跑！）（PERCENT 的概率避开）
 Sure.
 当然。
 Absolutely not.
@@ -11868,6 +11882,24 @@ Okay, for science...
 （你把她推开，但你自己却被困在雾里）|（气体在你的身体上结晶成 RESTRAINT）|哦不，那本来应该在我身上发生！
 (The gas moves toward you, as if by its own will)|(The gas crystalizes into a RESTRAINT across your body)|That wasn't supposed to happen...
 （气体向你移动，仿佛按照自己的意志一样）|（气体在你的身体上结晶成 RESTRAINT）|那不应该发生......
+(A messy looking SPEAKER turns to you)|Hmm, curious. Very curious.|Can you help me with an experiment?
+（一个看起来凌乱的 SPEAKER 转向你）|嗯，好奇。很好奇|你能帮我做个实验吗？
+(The SPEAKER pulls out a flask)|I isolated some slime, but it's inert.|Would you let me spill some on you?
+（SPEAKER 拿出一个烧瓶）|我分离出了一些粘液，但它是惰性的。|你能让我洒一些在你身上吗？
+(The SPEAKER tips out the entire flask)|Aha! It's growing again! Fascinating.|(Sticky RESTRAINT clings to you)
+（SPEAKER 将整个烧瓶倒出）|啊哈！它又长大了！令人着迷。|（粘性 RESTRAINT 粘在你身上）
+(The SPEAKER tuts disapprovingly)|Not one for chemistry, eh?
+（SPEAKER 不以为然地哼了一声）|不是化学专业的，嗯？
+(The SPEAKER glares at you)|You've got no sense of adventure!|For science!
+（SPEAKER 瞪着你）|你没有冒险精神！|为了科学！
+Ah, but it'll be quick!|(The SPEAKER begins tipping the flask)|See? It's already moving toward you!
+啊，但它会很快|！|（SPEAKER 开始倾斜烧瓶）|看到了吗？它已经向你走来了！
+(The SPEAKER tosses the slime on you)|(The slime flops off limply)|Ah. Back to the drawing board.
+（SPEAKER 把粘液扔到你身上）|（粘液软软地滑了下来）|啊。从头再来。
+(The SPEAKER pours the slime onto you)|That's the spirit girl!|(Sticky RESTRAINT clings to you)
+（SPEAKER 将粘液倒在你身上）|这就是精灵女孩！|（粘性 RESTRAINT 粘在你身上）
+(The SPEAKER tosses the slime on you)|Ha, look, it's alive!|(Sticky RESTRAINT clings to you)
+（SPEAKER 把粘液扔到你身上）|哈，看，它是活的！|（粘性 RESTRAINT 粘在你身上）
 (A SPEAKER whispers to you)|Ever wonder how wolfgirls feel?|Or why they're so obedient?
 （SPEAKER 对你轻声细语）|有没有想过狼女们的感受|或者他们为什么这么听话？
 (The SPEAKER grins)|I've got a RESTRAINT here~|Wanna give it a try?
