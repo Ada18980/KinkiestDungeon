@@ -11938,6 +11938,66 @@ Ah, but it'll be quick!|(The SPEAKER begins tipping the flask)|See? It's already
 （SPEAKER 添加了 RESTRAINT）|（你感觉到她在上锁之前收紧了所有束缚）|好女孩~
 (The SPEAKER pushes you to the ground)|I'll make it extra tight for you~|(The RESTRAINT locks tightly onto you)
 (SPEAKER 将你推倒在地)|我会让你更紧~|(RESTRAINT 紧紧地锁住你)
+(A SPEAKER gracefully gestures to you)|So good to see a friendly face~|Care to see some elven goods?
+（SPEAKER 优雅地向你打手势）|很高兴看到一张友好的面孔~|想看看一些精灵商品吗？
+(The SPEAKER holds up a RESTRAINT)|These are some of our strictest.|Want to try?
+（SPEAKER 举起 RESTRAINT）|这些是我们最严格的束缚具。|想试试吗？
+(The SPEAKER smiles sweetly)|Such a good girl~|(The RESTRAINT locks with a loud click)
+（SPEAKER 甜甜地笑）|真是个好女孩~|（'咔哒' 一声，RESTRAINT 锁上了）
+(The SPEAKER sagely nods)|As you wish~
+（SPEAKER 睿智地点点头）|如你所愿~
+(The SPEAKER frowns briefly)|I understand~
+（SPEAKER 皱起眉头）|我明白了~
+(The SPEAKER leans closer)|Then you can test their escapability!|(The SPEAKER dives towards you!)
+（SPEAKER 靠得更近）|然后你可以测试他们的逃脱能力！|（SPEAKER 俯冲向你！）
+(The SPEAKER shifts her weight back)|I'm afraid I must insist.|(She's gripping a RESTRAINT)|(The SPEAKER dives towards you!)
+（SPEAKER 将她的体重向后转移）|恐怕我必须坚持。|（她抓住了一件 RESTRAINT）|（SPEAKER 向你扑来！）
+(The SPEAKER rolls past harmlessly)|Oh! So fast~
+（SPEAKER 无害地滚过去）|哦！真快~
+(The SPEAKER snaps the RESTRAINT on)|There, much better.|Now squirm for me cutie~
+（SPEAKER 打开了 RESTRAINT）|好了，好多了。|现在为我蠕动吧，小可爱~
+(The SPEAKER trips you over)|(Before you can move, the RESTRAINT closes firmly)|Strict, isn't it?~
+（SPEAKER 绊倒了你）|（你还没来得及移动，RESTRAINT 就牢牢地关闭了）|严格吧？~
+(A SPEAKER plays with silvery rope)|Hmm, I need to get better with this.|Can I practice on you?
+（SPEAKER 在玩银色的绳子）|嗯，我需要在这方面做得更好。|我可以在你身上练习吗？
+(The SPEAKER grins happily)|Thank you girl~|I'll tie with RESTRAINT then~
+（SPEAKER 开心地笑）|谢谢你，女孩~|那我就为你绑上 RESTRAINT 了~
+(The SPEAKER binds you tightly)|(The rope is tight, and she's clearly and expert.)|Mmm, not too bad~
+（SPEAKER 把你绑得紧紧的）|（绳子很紧，她的思路清晰又熟练。）|嗯，还不错~
+(The SPEAKER pouts indignantly)|Why say yes then?!|(The SPEAKER walks off grumbling)
+（SPEAKER 愤怒地撅起嘴）|那为什么要说'是'？！|（SPEAKER 抱怨着走开）
+(The SPEAKER sighs)|Very well then~
+（SPEAKER 叹了口气）|那好吧~
+(The SPEAKER pouts indignantly)|Oh no, you don't get out that easy.|You said you'd help!
+（SPEAKER 愤怒地撅起嘴）|哦不，你没那么容易出去。|你说过你会帮忙的！
+(The SPEAKER smirks)|Ooh, a chance to practice against resistance~|I can't pass that up!
+（SPEAKER 傻笑）|哦，一个练习对抗束缚的机会~|我不能错过！
+(The SPEAKER can't keep the knots tight)|(Eventually, she gives up)|S-Stupid human...
+（SPEAKER 无法把结打紧）|（最终，她放弃了）|愚-愚蠢的人类......
+(The SPEAKER strictly ties you up)|(You can feel she's done this many times)|(She smirks at you as she departs)
+（SPEAKER 严格的把你绑起来）|（你能感觉到她已经这样做过很多次了）|（她离开时对你傻笑）
+(The SPEAKER strictly ties you up)|(There's no slack anywhere!)|(She makes a face at you as she leaves)
+（SPEAKER 严格的把你绑起来）|（任何地方都不能松懈！）|（她离开时对你做了个鬼脸）
+(The SPEAKER quickly motions to you)|Hey! Over here!| I got something to show you!
+（SPEAKER 快速向你示意）|嘿！这里！| 我有东西要给你看！
+(The SPEAKER giggles)|You'll be wearing this~|(A RESTRAINT is in her hands)
+（SPEAKER 咯咯笑）|你穿这个吧~|（RESTRAINT 在她手中）
+(The SPEAKER looks surprised)|Oh, uh, sure!|(They quickly add the RESTRAINT)
+（SPEAKER 看起来很惊讶）|哦，呃，当然！|（他们很快添加了 RESTRAINT）
+(The SPEAKER grins sneakily)|I thought you might say that~|But- ahh!|(They drop the item and you slip away)
+（SPEAKER 偷偷地笑）|我以为你会这么说~|但是-啊！|（他们扔掉了物品，你溜走了）
+(The SPEAKER looks angry)|Hey! HEY! I'm talking to-|Ah, forget it.
+（SPEAKER 看起来很生气）|嘿！嘿！我正在和-|啊，算了。
+(The SPEAKER grins sneakily)|I thought you might say that~|But it wasn't a choice...
+（SPEAKER 偷偷地笑）|我以为你会这么说~|但这不是一个选择......
+(The SPEAKER follows you)|Not so fast there~|(She blocks your path)
+（SPEAKER 跟着你）|别走那么快啊~|（她挡住了你的路）
+(The SPEAKER fumbles with the RESTRAINT)|C-Come on, open-|(You quickly walk away)
+（SPEAKER 摸索着使用 RESTRAINT）|来-来吧，打开-|（你快步走开）
+(The SPEAKER adds the RESTRAINT)|Good luck with that one~|(She sounds like she's gloating...)
+（SPEAKER 添加了 RESTRAINT）|祝那个人好运~|（她听起来像是在幸灾乐祸……）
+(The SPEAKER roughly forces you down)|(Pushing your head down, the RESTRAINT slides on)|(The SPEAKER tugs your hair, then walks away)
+（SPEAKER 粗暴地将你压倒）|（将你的头压低，RESTRAINT 滑动）|（SPEAKER 拉扯你的头发，然后走开）
 Ah! Don't you dare! (PERCENT chance to avoid)
 啊! 你不敢！（有 PERCENT 的机会避开）
 (Shake your head and whimper) (PERCENT chance to avoid)
