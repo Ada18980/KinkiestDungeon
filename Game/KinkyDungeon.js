@@ -4252,5 +4252,6 @@ function KDDrawGameSetupTabs(xOffset) {
  * @returns {string}
  */
 function DecompressB64(str) {
+	if (!str || !str.trim) return str;
 	return LZString.decompressFromBase64("".concat(...str.trim().split('\n')));
 }
