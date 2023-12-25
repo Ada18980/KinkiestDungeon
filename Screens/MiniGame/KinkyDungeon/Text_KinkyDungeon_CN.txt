@@ -1690,6 +1690,8 @@ Adventurer's Outfit
 冒险家装束
 Your favorite outfit for adventuring.
 你最喜欢的冒险服装。
+Your original outfit. No bonuses, no penalties.
+你原来的服装。没有奖励，没有惩罚。
 Tactical Catsuit
 战术紧身衣
 A sleek catsuit worn by stealth operatives. No frills, no nonsense.
