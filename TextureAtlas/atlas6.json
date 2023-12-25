@@ -58,7 +58,7 @@
 },
 "Models/EyesK4/EyesClosed.png":
 {
-	"frame": {"x":1445,"y":1328,"w":54,"h":24},
+	"frame": {"x":1364,"y":1328,"w":54,"h":24},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":526,"y":283,"w":54,"h":24},
@@ -74,7 +74,7 @@
 },
 "Models/EyesK4/WhitesEyesClosed.png":
 {
-	"frame": {"x":1445,"y":1328,"w":54,"h":24},
+	"frame": {"x":1364,"y":1328,"w":54,"h":24},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":526,"y":283,"w":54,"h":24},
@@ -82,7 +82,7 @@
 },
 "Models/FaceDask/EyesClosed.png":
 {
-	"frame": {"x":1878,"y":1862,"w":52,"h":23},
+	"frame": {"x":1507,"y":1328,"w":52,"h":23},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":55,"y":189,"w":52,"h":23},
@@ -90,7 +90,7 @@
 },
 "Models/FaceDask/WhitesEyesClosed.png":
 {
-	"frame": {"x":1878,"y":1862,"w":52,"h":23},
+	"frame": {"x":1507,"y":1328,"w":52,"h":23},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":55,"y":189,"w":52,"h":23},
@@ -104,49 +104,17 @@
 	"spriteSourceSize": {"x":606,"y":248,"w":49,"h":25},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/FaceKjus/Brows2Neutral.png":
-{
-	"frame": {"x":1364,"y":1328,"w":81,"h":24},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":575,"y":243,"w":81,"h":24},
-	"sourceSize": {"w":725,"h":424}
-},
-"Models/FaceKjus/BrowsAnnoyed.png":
-{
-	"frame": {"x":1588,"y":1328,"w":40,"h":15},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":534,"y":267,"w":40,"h":15},
-	"sourceSize": {"w":765,"h":427}
-},
-"Models/FaceKjus/BrowsSurprised.png":
-{
-	"frame": {"x":1978,"y":1862,"w":47,"h":14},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":523,"y":259,"w":47,"h":14},
-	"sourceSize": {"w":738,"h":409}
-},
 "Models/FaceKoi/Brows2Angry.png":
 {
-	"frame": {"x":1499,"y":1328,"w":47,"h":24},
+	"frame": {"x":1418,"y":1328,"w":47,"h":24},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":142,"y":124,"w":47,"h":24},
 	"sourceSize": {"w":321,"h":332}
 },
-"Models/FaceKoi/Brows2Annoyed.png":
-{
-	"frame": {"x":1930,"y":1862,"w":48,"h":16},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":142,"y":133,"w":48,"h":16},
-	"sourceSize": {"w":321,"h":332}
-},
 "Models/FaceKoi/BrowsSurprised.png":
 {
-	"frame": {"x":1546,"y":1328,"w":42,"h":24},
+	"frame": {"x":1465,"y":1328,"w":42,"h":24},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":59,"y":143,"w":42,"h":24},
@@ -319,7 +287,7 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
-	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:193a9ee2f97a8c488f05acfe5c651ee3:5abf41564dea289f2387fcc552b04184:a3fd7012179a3f2bcc17f729b6b49f45$"
+	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:2f9826a081dfd82d267b5b831a8d0e16:83999df76f35d7a688122389864fd105:9ddc1915ee0a48cdf7b33ba967881c67$"
 }
 }

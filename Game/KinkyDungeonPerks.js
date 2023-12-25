@@ -507,6 +507,7 @@ let KDPerkStart = {
 
 	Submissive: () => {
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BasicCollar"), 0, true, "Red", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BasicLeash"), 0, true, "", false, undefined, undefined, undefined, true);
 	},
 	Pacifist: () =>{
 		KinkyDungeonInventoryAddWeapon("Rope");
@@ -556,6 +557,7 @@ let KDPerkStart = {
 		if (KinkyDungeonStatsChoice.get("arousalModePlug")) {
 			KinkyDungeonInventoryAddLoose("RearVibe1");
 		}
+		KinkyDungeonInventoryAddLoose("TrapMittens");
 		KinkyDungeonInventoryAddLoose("TrapCuffs");
 		KinkyDungeonInventoryAddLoose("TrapGag");
 		KinkyDungeonInventoryAddLoose("TrapBlindfold");

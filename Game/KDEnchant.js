@@ -654,10 +654,10 @@ function KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantme
 			} else if (types.includes(event.damage) && KDRandom() < 0.8) {
 				return event.damage;
 			} else if (event.kind == "melee" && KDRandom() < 0.8) {
-				types.filter((typ) => {return KinkyDungeonMeleeDamageTypes.includes(typ);})
+				types.filter((typ) => {return KinkyDungeonMeleeDamageTypes.includes(typ);});
 				return CommonRandomItemFromList("", types) || type;
 			} else if (event.kind == "magic" && KDRandom() < 0.8) {
-				types.filter((typ) => {return !KinkyDungeonMeleeDamageTypes.includes(typ);})
+				types.filter((typ) => {return !KinkyDungeonMeleeDamageTypes.includes(typ);});
 				return CommonRandomItemFromList("", types) || type;
 			}
 			else if (event.kind == "latex" && types.includes('glue') && KDRandom() < 0.8) {

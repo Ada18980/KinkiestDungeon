@@ -22,6 +22,16 @@ Monk class?
 - Passive: enchantments apply to unarmed strikes
 - Active: Increase unarmed base damage for 20 turns. After using, need to meditate 10 turns to recharge. Free.
 
+5.0.4 D
+- The past now comes back to haunt you if you abuse time magic
+- More hairstyles by Dask!
+- New leash graphics by Koirin!
+- Portal spells are now channeled
+- Additional RU translation by Osiris
+- Additional CN translation by Mitki
+- Arcane barrier nerfed to 60 + 10% max mana
+- Portal spells now all channel
+
 5.0.4 C
 - New perks: Bullet Hell, Bullet Armageddon
 - Commited some graphical fixes

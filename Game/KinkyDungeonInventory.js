@@ -2194,7 +2194,7 @@ function KDSaveQuickLoadout(num) {
 
 	for (let item of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(item)?.good || KDRestraint(item)?.armor) {
-			loadout.push(item.name);
+			loadout.push(item.inventoryVariant || item.name);
 		}
 	}
 

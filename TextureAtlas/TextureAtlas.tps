@@ -708,6 +708,9 @@
             <key type="filename">../Models/FutureHarness/DisplayChest.png</key>
             <key type="filename">../Models/FutureHarness/DisplayLower.png</key>
             <key type="filename">../Models/FutureHarness/DisplayMid.png</key>
+            <key type="filename">../Models/FutureHarness/LockChest.png</key>
+            <key type="filename">../Models/FutureHarness/LockLower.png</key>
+            <key type="filename">../Models/FutureHarness/LockMid.png</key>
             <key type="filename">../Models/FutureHarness/MetalChest.png</key>
             <key type="filename">../Models/FutureHarness/MetalLower.png</key>
             <key type="filename">../Models/FutureHarness/MetalMid.png</key>
@@ -717,6 +720,8 @@
             <key type="filename">../Models/GagLatex/NeckCorset.png</key>
             <key type="filename">../Models/GagLatex/NeckCorsetRim.png</key>
             <key type="filename">../Models/Hair/Ahoge.png</key>
+            <key type="filename">../Models/Hair/BackShortCurly.png</key>
+            <key type="filename">../Models/Hair/BackShortCurlyUnderlight.png</key>
             <key type="filename">../Models/Hair/BackShortMessy.png</key>
             <key type="filename">../Models/Hair/BackShortMessyUnderlight.png</key>
             <key type="filename">../Models/Hair/BackStraight.png</key>
@@ -724,6 +729,10 @@
             <key type="filename">../Models/Hair/BowFrills.png</key>
             <key type="filename">../Models/Hair/Braid.png</key>
             <key type="filename">../Models/Hair/BraidBack.png</key>
+            <key type="filename">../Models/Hair/BraidCustom.png</key>
+            <key type="filename">../Models/Hair/BraidCustomBack.png</key>
+            <key type="filename">../Models/Hair/BraidCustomBraid.png</key>
+            <key type="filename">../Models/Hair/BraidCustom_Overstrap.png</key>
             <key type="filename">../Models/Hair/Braid_Overstrap.png</key>
             <key type="filename">../Models/Hair/Curly.png</key>
             <key type="filename">../Models/Hair/Curly_Overstrap.png</key>
@@ -898,6 +907,15 @@
             <key type="filename">../Models/Labcoat/ShouldersSpread.png</key>
             <key type="filename">../Models/Labcoat/ShouldersUp.png</key>
             <key type="filename">../Models/Labcoat/ShouldersYoked.png</key>
+            <key type="filename">../Models/Leash/Leash.png</key>
+            <key type="filename">../Models/Leash/LeashCrossed.png</key>
+            <key type="filename">../Models/Leash/LeashFree.png</key>
+            <key type="filename">../Models/Leash/LeashFront.png</key>
+            <key type="filename">../Models/Leash/LeashHogtie.png</key>
+            <key type="filename">../Models/Leash/LeashHogtiePulled.png</key>
+            <key type="filename">../Models/Leash/LeashKneel.png</key>
+            <key type="filename">../Models/Leash/LeashKneelPulled.png</key>
+            <key type="filename">../Models/Leash/LeashPulled.png</key>
             <key type="filename">../Models/LeatherCuffs/AnkleLeftClosed.png</key>
             <key type="filename">../Models/LeatherCuffs/AnkleLeftKneel.png</key>
             <key type="filename">../Models/LeatherCuffs/AnkleLeftKneelClosed.png</key>
@@ -2107,6 +2125,30 @@
                 <rect>390,280,781,559</rect>
                 <key>scale9Paddings</key>
                 <rect>390,280,781,559</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/FaceDask/Brows2Angry.png</key>
+            <key type="filename">../Models/FaceDask/Brows2Annoyed.png</key>
+            <key type="filename">../Models/FaceDask/Brows2Neutral.png</key>
+            <key type="filename">../Models/FaceDask/Brows2Sad.png</key>
+            <key type="filename">../Models/FaceDask/Brows2Surprised.png</key>
+            <key type="filename">../Models/FaceDask/BrowsAngry.png</key>
+            <key type="filename">../Models/FaceDask/BrowsAnnoyed.png</key>
+            <key type="filename">../Models/FaceDask/BrowsNeutral.png</key>
+            <key type="filename">../Models/FaceDask/BrowsSad.png</key>
+            <key type="filename">../Models/FaceDask/BrowsSurprised.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>350,200,700,400</rect>
+                <key>scale9Paddings</key>
+                <rect>350,200,700,400</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

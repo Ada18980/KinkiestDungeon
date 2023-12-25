@@ -233,6 +233,7 @@ let KDIntentEvents = {
 		},
 		trigger: (enemy, AIData) => {
 			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 20);
+			KinkyDungeonSetEnemyFlag(enemy, "toyWithPlayer", 20 + Math.floor(KDRandom() * 10));
 			for (let en of KDNearbyEnemies(enemy.x, enemy.y, 10)) {
 				if (en != enemy) en.ceasefire = 20;
 			}
@@ -244,7 +245,7 @@ let KDIntentEvents = {
 
 		},
 		maintain: (enemy, delta, AIData) => {
-			if (KinkyDungeonFlags.get("PlayerCombat") || KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) > 5.5) {
+			if (KinkyDungeonFlags.get("PlayerCombat") || !KDEnemyHasFlag(enemy, "toyWithPlayer") || KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) > 5.5) {
 				KinkyDungeonAggroAction('attack', {enemy: enemy});
 				return false;
 			}

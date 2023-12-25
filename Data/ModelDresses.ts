@@ -30,7 +30,7 @@ let KDModelDresses: {[_: string]: KinkyDungeonDress} = {
 		}},
 	],
 	"None" : [
-		
+
 	],
 	"Lingerie" : [
 		{Item: "LacePanties", Group: "Panties", Color: "#53428D", Lost: false},
@@ -47,8 +47,8 @@ let KDModelDresses: {[_: string]: KinkyDungeonDress} = {
 	],
 	"DollSuit" : [
 		{Item: "Catsuit", Group: "Catsuit", Color: "#7F3C9B", Lost: false, Filters: {
-			TorsoUpper: {"gamma":0.8333333333333333,"saturation":1,"contrast":0.75,"brightness":1.2333333333333334,"red":3.7166666666666663,"green":1,"blue":3.283333333333333,"alpha":1},
-			TorsoLower: {"gamma":0.8333333333333333,"saturation":1,"contrast":0.75,"brightness":1.2333333333333334,"red":3.7166666666666663,"green":1,"blue":3.283333333333333,"alpha":1},
+			TorsoUpper: {"gamma":1,"saturation":0,"contrast":0.8300000000000001,"brightness":1,"red":1.2549019607843137,"green":1,"blue":4,"alpha":1},
+			TorsoLower: {"gamma":1,"saturation":0,"contrast":0.8300000000000001,"brightness":1,"red":1.2549019607843137,"green":1,"blue":4,"alpha":1},
 		}},
 	],
 	"SlimeSuit" : [
@@ -59,8 +59,8 @@ let KDModelDresses: {[_: string]: KinkyDungeonDress} = {
 	],
 	"CyberDoll" : [
 		{Item: "Catsuit", Group: "Catsuit", Color: "#7F3C9B", Lost: false, Filters: {
-			TorsoUpper: {"gamma":0.8333333333333333,"saturation":1,"contrast":0.75,"brightness":1.2333333333333334,"red":3.7166666666666663,"green":1,"blue":3.283333333333333,"alpha":1},
-			TorsoLower: {"gamma":0.8333333333333333,"saturation":1,"contrast":0.75,"brightness":1.2333333333333334,"red":3.7166666666666663,"green":1,"blue":3.283333333333333,"alpha":1},
+			TorsoUpper: {"gamma":1,"saturation":0,"contrast":0.8300000000000001,"brightness":1,"red":1.2549019607843137,"green":1,"blue":4,"alpha":1},
+			TorsoLower: {"gamma":1,"saturation":0,"contrast":0.8300000000000001,"brightness":1,"red":1.2549019607843137,"green":1,"blue":4,"alpha":1},
 		}},
 	],
 	"ProtoSlimeSuit" : [

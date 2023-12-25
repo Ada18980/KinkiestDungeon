@@ -1138,6 +1138,7 @@
             <key type="filename">../Game/Enemies/TickleHand.png</key>
             <key type="filename">../Game/Enemies/TickleHandSlave.png</key>
             <key type="filename">../Game/Enemies/TickleTerror.png</key>
+            <key type="filename">../Game/Enemies/TimeGhost.png</key>
             <key type="filename">../Game/Enemies/Toad.png</key>
             <key type="filename">../Game/Enemies/UnforseenRope.png</key>
             <key type="filename">../Game/Enemies/VinePlant.png</key>

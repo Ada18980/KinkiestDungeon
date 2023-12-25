@@ -4,14 +4,14 @@
 let KinkyDungeonOutfitsBase = [
 	{name: "OutfitDefault", dress: "Default", shop: false, rarity: 1,},// To avoid breaking saves
 	{name: "Default", dress: "Default", shop: false, rarity: 1},
-	{name: "JailUniform", dress: "JailUniform", shop: false, rarity: 1, 
+	{name: "JailUniform", dress: "JailUniform", shop: false, rarity: 1,
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 1.2},
 			{type: "damageResist", trigger: 'tick', damage: "tickle", power: -0.1},
 			{type: "damageResist", trigger: 'tick', damage: "grope", power: -0.1},
 		],
 	},
-	{name: "Bast", dress: "Bast", shop: false, rarity: 1, 
+	{name: "Bast", dress: "Bast", shop: false, rarity: 1,
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Bast"},
 			{type: "damageResist", trigger: 'tick', damage: "tickle", power: -0.2},
@@ -25,55 +25,55 @@ let KinkyDungeonOutfitsBase = [
 			{type: "damageResist", trigger: 'tick', damage: "electric", power: 0.2},
 			{type: "damageResist", trigger: 'tick', damage: "ice", power: -0.2},
 		],},
-	{name: "Bikini", dress: "Bikini", shop: false, rarity: 1, 
+	{name: "Bikini", dress: "Bikini", shop: false, rarity: 1,
 		events: [
 			{type: "damageResist", trigger: 'tick', damage: "ice", power: -0.2},
 			{type: "damageResist", trigger: 'tick', damage: "tickle", power: -0.2},
 			{type: "damageResist", trigger: 'tick', damage: "grope", power: -0.2},
 			{type: "damageResist", trigger: 'tick', damage: "acid", power: 0.3},
 		],},
-	{name: "Maid", dress: "Maid", shop: false, rarity: 2, 
+	{name: "Maid", dress: "Maid", shop: false, rarity: 2,
 		events: [
 			{trigger: "calcEvasion", type: "AccuracyBuff", requiredTag: "mold", power: 10.0},
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Maidforce"},
 		],},
-	{name: "Dragon", dress: "Dragon", shop: false, rarity: 2, 
+	{name: "Dragon", dress: "Dragon", shop: false, rarity: 2,
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Dragon"},
 			{type: "damageResist", trigger: 'tick', damage: "fire", power: 0.2},
 		],},
-	{name: "Elven", dress: "Elven", shop: false, rarity: 2, 
+	{name: "Elven", dress: "Elven", shop: false, rarity: 2,
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Elf"},
 			{type: "damageResist", trigger: 'tick', damage: "tickle", power: -0.2},
 			{type: "damageResist", trigger: 'tick', damage: "grope", power: -0.2},
 		],},
-	{name: "Wolfgirl", dress: "Wolfgirl", shop: false, rarity: 2, 
+	{name: "Wolfgirl", dress: "Wolfgirl", shop: false, rarity: 2,
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Nevermere"},
 			{type: "damageResist", trigger: 'tick', damage: "electric", power: 0.2},
 		],},
-	{name: "CyberDoll", dress: "CyberDoll", shop: false, rarity: 3, 
+	{name: "CyberDoll", dress: "CyberDoll", shop: false, rarity: 3,
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "AncientRobot"},
 			{type: "damageResist", trigger: 'tick', damage: "electric", power: 0.2},
 		],},
-	{name: "BlueSuitPrison", dress: "BlueSuitPrison", shop: false, rarity: 2, 
+	{name: "BlueSuitPrison", dress: "BlueSuitPrison", shop: false, rarity: 2,
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Alchemist"},
 			{type: "damageResist", trigger: 'tick', damage: "electric", power: 0.2},
 		],},
-	{name: "DollSuit", dress: "DollSuit", shop: false, rarity: 2, 
+	{name: "DollSuit", dress: "DollSuit", shop: false, rarity: 2,
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Dollsmith"},
 			{type: "damageResist", trigger: 'tick', damage: "electric", power: 0.2},
 		],},
-	{name: "BlueSuit", dress: "BlueSuit", shop: false, rarity: 2, 
+	{name: "BlueSuit", dress: "BlueSuit", shop: false, rarity: 2,
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Alchemist"},
 			{type: "damageResist", trigger: 'tick', damage: "electric", power: 0.2},
 		],},
-	{name: "Obsidian", dress: "Obsidian", shop: false, rarity: 2, 
+	{name: "Obsidian", dress: "Obsidian", shop: false, rarity: 2,
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Elemental"},
 			{type: "damageResist", trigger: 'tick', damage: "soul", power: -0.3},
@@ -223,6 +223,6 @@ let KinkyDungeonDresses = {
 
 
 if (StandalonePatched) {
-	KinkyDungeonDefaultDefaultDress = [{"Item":"BanditBoots","Group":"BanditBoots","Color":"#ffffff","Lost":false,"Filters":{"ShoeLeft":{"gamma":1.4000000000000001,"saturation":0.03333333333333333,"contrast":1.5833333333333333,"brightness":1.6833333333333333,"red":1,"green":1,"blue":1,"alpha":1},"ShoeRight":{"gamma":1.4000000000000001,"saturation":0.03333333333333333,"contrast":1.5833333333333333,"brightness":1.6833333333333333,"red":1,"green":1,"blue":1,"alpha":1}}},{"Item":"WitchBlouse","Group":"WitchBlouse","Color":"#ffffff","Lost":false},{"Item":"WitchCorset","Group":"WitchCorset","Color":"#ffffff","Lost":false,"Filters":{"Corset":{"gamma":1.45,"saturation":0.4666666666666667,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}},{"Item":"MaidSkirt","Group":"MaidSkirt","Color":"#ffffff","Lost":false,"Filters":{"Skirt":{"gamma":1,"saturation":0.23333333333333334,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.55,"alpha":1.0166666666666666}}},{"Item":"MaidSocks","Group":"MaidSocks","Color":"#ffffff","Lost":false,"Filters":{"SockRight":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},"SockLeft":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}},{"Item":"StrappyBikini","Group":"StrappyBikini","Color":"#ffffff","Lost":false},{"Item":"LatexBra","Group":"LatexBra","Color":"#ffffff","Lost":false}]
+	KinkyDungeonDefaultDefaultDress = [{"Item":"BanditBoots","Group":"BanditBoots","Color":"#ffffff","Lost":false,"Filters":{"ShoeLeft":{"gamma":1.4000000000000001,"saturation":0.03333333333333333,"contrast":1.5833333333333333,"brightness":1.6833333333333333,"red":1,"green":1,"blue":1,"alpha":1},"ShoeRight":{"gamma":1.4000000000000001,"saturation":0.03333333333333333,"contrast":1.5833333333333333,"brightness":1.6833333333333333,"red":1,"green":1,"blue":1,"alpha":1}}},{"Item":"WitchBlouse","Group":"WitchBlouse","Color":"#ffffff","Lost":false},{"Item":"WitchCorset","Group":"WitchCorset","Color":"#ffffff","Lost":false,"Filters":{"Corset":{"gamma":1.45,"saturation":0.4666666666666667,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}},{"Item":"MaidSkirt","Group":"MaidSkirt","Color":"#ffffff","Lost":false,"Filters":{"Skirt":{"gamma":1,"saturation":0.23333333333333334,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.55,"alpha":1.0166666666666666}}},{"Item":"MaidSocks","Group":"MaidSocks","Color":"#ffffff","Lost":false,"Filters":{"SockRight":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},"SockLeft":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}},{"Item":"StrappyBikini","Group":"StrappyBikini","Color":"#ffffff","Lost":false},{"Item":"LatexBra","Group":"LatexBra","Color":"#ffffff","Lost":false}];
 
 }

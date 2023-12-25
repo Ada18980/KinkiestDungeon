@@ -509,7 +509,7 @@ function KinkyDungeonCurseUnlock(group, index, Curse) {
 		}
 	}
 
-	
+
 }
 
 /**

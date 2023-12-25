@@ -28,7 +28,7 @@ AddModel({
 
 AddModel({
 	Name: "Leash",
-	Folder: "Collars",
+	Folder: "Leash",
 	Parent: "Leash",
 	TopLevel: true,
 	Restraint: true,
@@ -37,9 +37,14 @@ AddModel({
 		{ Name: "Leash", Layer: "Leash", Pri: 0,
 			Invariant: true,
 			HideWhenOverridden: true,
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", Hogtie: "Hogtie", HandsBound: "", Pulled: "", HandsBehind: "",
+				Free: "Free", Crossed: "Crossed", Front: "Front"},
+			AppendPose: {Pulled: "Pulled"},
 		},
 	])
 });
+
+AddModel(GetModelFashionVersion("Leash", true));
 
 AddModel({
 	Name: "MikoCollar",

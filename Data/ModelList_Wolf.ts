@@ -175,26 +175,26 @@ AddModel({
 			NoOverride: true,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", }
 		},
-		{ Name: "HarnessLower", Layer: "HarnessLower", Pri: 30,
+		{ Name: "HarnessLower", Layer: "HarnessMid", Pri: 30,
 			Invariant: true,
 			InheritColor: "Lining",
-			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			MorphPoses: {Kneel: "Kneel", Hogtie: "Closed", Closed: "Closed", KneelClosed: "Kneel", }
 		},
-		{ Name: "HarnessBandLower", Layer: "HarnessLower", Pri: 30.1,
+		{ Name: "HarnessBandLower", Layer: "HarnessMid", Pri: 30.1,
 			Invariant: true,
 			InheritColor: "Band",
 			TieToLayer: "HarnessLower",
 			NoOverride: true,
-			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			MorphPoses: {Kneel: "Kneel", Hogtie: "Closed", Closed: "Closed", KneelClosed: "Kneel", }
 		},
-		{ Name: "HarnessHardwareLower", Layer: "HarnessLower", Pri: 30.2,
+		{ Name: "HarnessHardwareLower", Layer: "HarnessMid", Pri: 30.2,
 			Invariant: true,
 			InheritColor: "Hardware",
 			TieToLayer: "HarnessLower",
 			NoOverride: true,
-			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			MorphPoses: {Kneel: "Kneel", Hogtie: "Closed", Closed: "Closed", KneelClosed: "Kneel", }
 		},
 	])

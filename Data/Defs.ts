@@ -1,6 +1,11 @@
 let LAYERS_BASE = [
 	"FurnitureFront",
 
+	// These are in front b/c the collar acc goes over the leash for visibility
+	// and the leash shouldnt go thru the head when hogtied
+	"CollarAcc",
+	"Leash",
+
 	"HatDeco",
 	"Hat",
 	"Brows", // Brows should get hidden with mask
@@ -49,8 +54,6 @@ let LAYERS_BASE = [
 
 
 	// Collar and collar accessories
-	"CollarAcc",
-	"Leash",
 	"Collar",
 	"NeckCorset",
 
@@ -241,17 +244,32 @@ let LAYERS_BASE = [
 	"ShoeLeftDeco",
 	"ShoeLeft",
 	"ShoeLeftUnder",
-	"WrappingLegsUnder",
-	"OverSocks",
-	"StockingLeft",
-	"FootLeft",
-	"LegLeft",
 
+
+	"Option_ChastityBelt",
+
+	// Panties go here when standing
+	"Panties",
+
+	// Upper body underwear and bodysuits
+	"CorsetLiner",
+	"Bodysuit",
+
+	"ChastityBelt",
 	// Lower harness
 	"OverCrotchStrap",
 	"HarnessLower",
 	"CrotchPanelLower",
 	"WrappingTorso",
+
+
+	"WrappingLegsUnder",
+
+	"OverSocks",
+	"StockingLeft",
+	"FootLeft",
+	"LegLeft",
+
 
 	// These are for the base skirt layer when kneeling
 	// The over layer is for kneeling
@@ -277,16 +295,7 @@ let LAYERS_BASE = [
 
 	"HarnessUnder",
 
-	"Option_ChastityBelt",
 
-	// Panties go here when standing
-	"Panties",
-
-	// Upper body underwear and bodysuits
-	"CorsetLiner",
-	"Bodysuit",
-
-	"ChastityBelt",
 
 	// For waist belt
 	"BeltBack",
@@ -1169,7 +1178,7 @@ let LayerGroups = {
 	"Hood", // For Kigu
 	"MaskOver",
 
-	
+
 	"NeckCorset",
 	// Hair mid
 	"Mask",

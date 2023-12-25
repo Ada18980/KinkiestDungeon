@@ -596,7 +596,10 @@ const KinkyDungeonRestraints = [
 		],
 		Model: "CyberBelt",
 		factionFilters: {
-			Lining: {color: "Highlight", override: true},
+			Lining: {color: "DarkNeutral", override: true},
+			Metal: {color: "LightNeutral", override: true},
+			Display: {color: "Highlight", override: true},
+			Plug: {color: "Highlight", override: true},
 		},
 		maxwill: 0.4,
 		LinkableBy: ["Wrapping"],
@@ -609,6 +612,12 @@ const KinkyDungeonRestraints = [
 		factionColor: [[2, 5], [2], [0]],
 		chastitybra: true, power: 15, weight: 0, DefaultLock: "Gold",
 		Model: "BraCyber",
+		factionFilters: {
+			Display: {color: "Highlight", override: true},
+			Lining: {color: "DarkNeutral", override: true},
+			Metal: {color: "LightNeutral", override: true},
+			Cups: {color: "DarkNeutral", override: true},
+		},
 		Security: {
 			level_tech: 2,
 		},
@@ -626,6 +635,8 @@ const KinkyDungeonRestraints = [
 		Model: "FutureHarness",
 		factionFilters: {
 			Display: {color: "Highlight", override: true},
+			Straps: {color: "LightNeutral", override: true},
+			Metal: {color: "DarkNeutral", override: true},
 		},
 		Color: ['#499ed6', '#555555', '#555555', '#000000'],
 		factionColor: [[], [], [0]],
@@ -643,6 +654,12 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, sfx: "FutureLock", name: "TrackingCollar", debris: "Chains", accessible: true, Asset: "FuturisticCollar",
 		Model: "FutureCollar",
+		factionFilters: {
+			Display: {color: "Highlight", override: true},
+			Base: {color: "DarkNeutral", override: true},
+			Rim: {color: "LightNeutral", override: true},
+			Band: {color: "LightNeutral", override: true},
+		},
 		Color: ['#499ed6', '#555555', '#b927a8', '#000000'],
 		factionColor: [[], [2], [0]],
 		DefaultLock: "Disc",
@@ -692,6 +709,18 @@ const KinkyDungeonRestraints = [
 	},
 
 	{inventory: true, sfx: "FutureLock", name: "CyberBallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink],
+
+		factionFilters: {
+			Display: {color: "Highlight", override: true},
+			Harness: {color: "DarkNeutral", override: true},
+			Strap: {color: "LightNeutral", override: true},
+			SideStrap: {color: "LightNeutral", override: true},
+			HarnessMask: {color: "DarkNeutral", override: true},
+			Mask: {color: "DarkNeutral", override: true},
+			HarnessDisplay: {color: "Highlight", override: true},
+			HarnessRim: {color: "LightNeutral", override: true},
+			Muzzle: {color: "LightNeutral", override: true},
+		},
 		Model: "AdvancedSciFiBallGag",
 		Asset: "FuturisticHarnessBallGag", strictness: 0.35, gag: 0.65,
 		Color: ['#499ed6', '#b927a8', '#222222', '#FFFFFF', '#000000'], Group: "ItemMouth", power: 12, weight: 0,
@@ -714,6 +743,17 @@ const KinkyDungeonRestraints = [
 		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Gags", "BallGags", "Metal", "Cyber"]},
 	{inventory: true, sfx: "FutureLock", name: "CyberPlugGag", debris: "Belts", LinkableBy: [...KDPlugGagLink], renderWhenLinked: [...KDPlugGagLink],
 		Model: "AdvancedSciFiPlugGag",
+		factionFilters: {
+			Display: {color: "Highlight", override: true},
+			Harness: {color: "DarkNeutral", override: true},
+			Strap: {color: "LightNeutral", override: true},
+			SideStrap: {color: "LightNeutral", override: true},
+			HarnessMask: {color: "DarkNeutral", override: true},
+			Mask: {color: "DarkNeutral", override: true},
+			HarnessDisplay: {color: "Highlight", override: true},
+			HarnessRim: {color: "LightNeutral", override: true},
+			Muzzle: {color: "LightNeutral", override: true},
+		},
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagRemoveBlindfold", inheritLinked: true,StruggleType: "Remove", power: 0.35, requiredTag: "Blindfolds"},
@@ -728,6 +768,17 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, sfx: "FutureLock", name: "CyberMuzzle", debris: "Belts", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink],
 		Model: "AdvancedSciFiMuzzle2",
+		factionFilters: {
+			Display: {color: "Highlight", override: true},
+			Harness: {color: "DarkNeutral", override: true},
+			Strap: {color: "LightNeutral", override: true},
+			SideStrap: {color: "LightNeutral", override: true},
+			HarnessMask: {color: "DarkNeutral", override: true},
+			Mask: {color: "DarkNeutral", override: true},
+			HarnessDisplay: {color: "Highlight", override: true},
+			HarnessRim: {color: "LightNeutral", override: true},
+			Muzzle: {color: "LightNeutral", override: true},
+		},
 		inaccessible: true,
 		Asset: "FuturisticMuzzle", strictness: 0.35, gag: 0.5,
 		Color: ['#499ed6', '#222222', '#555555', '#FFFFFF', '#000000'], Group: "ItemMouth", power: 12, weight: 0,
@@ -758,7 +809,13 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, sfx: "FutureLock", name: "CyberHeels", inaccessible: true, Asset: "FuturisticHeels2", remove: ["Shoes"],
 		Model: "FlatBalletHeelsRestraint",
-		Filters: {"Sole":{"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":2.0666666666666664,"green":1,"blue":2.033333333333333,"alpha":1},"Shoe":{"gamma":1,"saturation":1,"contrast":1.1833333333333333,"brightness":1.4166666666666665,"red":1,"green":1,"blue":1,"alpha":1}},
+		factionFilters: {
+			Sole: {color: "DarkNeutral", override: true},
+			Shoe: {color: "LightNeutral", override: true},
+		},
+		Filters: {
+			"Sole":{"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":2.0666666666666664,"green":1,"blue":2.033333333333333,"alpha":1},
+			"Shoe":{"gamma":1,"saturation":1,"contrast":1.1833333333333333,"brightness":1.4166666666666665,"red":1,"green":1,"blue":1,"alpha":1}},
 		factionColor: [[0], [4], [1]],
 		Color: ["#222222", "#499ed6", "#ffffff", "Default", "#b927a8", "#222222", "#000000"],
 		Group: "ItemBoots", hobble: 1, power: 10, weight: 0,
@@ -1168,6 +1225,10 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "ShockModule", debris: "Belts", accessible: true, Asset: "AutoShockCollar", Color: ['#6EAF81', '#6EAF81'],
 		Group: "ItemNeck", LinkableBy: [...KDCollarModuleLink], power: 10, weight: 0, escapeChance: {"Struggle": -0.05, "Cut": 0, "Remove": 0.1, "Pick": -0.15},
 		Model: "ShockModule",
+		factionFilters: {
+			Module: {color: "LightNeutral", override: true},
+			ModuleDisplay: {color: "Highlight", override: true},
+		},
 		DefaultLock: "Red_Hi",
 		maxwill: 0.35, enemyTags: {"wolfRestraints":3, "wolfGear":3, "wolfLeash": 1, "shockmodule": 10},
 		playerTags: {}, playerTagsMissing: {Collars: -1000}, minLevel: 2, allFloors: true, shrine: ["Modules", "Metal"],
@@ -1185,6 +1246,10 @@ const KinkyDungeonRestraints = [
 		Group: "ItemNeck", LinkableBy: [...KDCollarModuleLink], power: 6, weight: 0, escapeChance: {"Struggle": -0.05, "Cut": 0, "Remove": 0.1, "Pick": -0.15},
 		Model: "TrackingModule",
 		DefaultLock: "Red_Hi",
+		factionFilters: {
+			Module: {color: "LightNeutral", override: true},
+			ModuleDisplay: {color: "Highlight", override: true},
+		},
 		maxwill: 0.35, enemyTags: {"controlHarness":5, "roboPrisoner" : 100, "cyberdollrestraints" : 10, "trackingmodule": 10},
 		playerTags: {}, playerTagsMissing: {Collars: -1000}, minLevel: 2, allFloors: true, shrine: ["Modules", "Metal"],
 		linkCategory: "ModuleUtility", linkSize: 0.6,
@@ -1836,10 +1901,13 @@ const KinkyDungeonRestraints = [
 			level_key: 3,
 		},
 		Model: "ProtoBelt",
-		LinkableBy: ["Wrapping", "Ornate"],
 		factionFilters: {
-			Lining: {color: "Highlight", override: true},
+			Lining: {color: "DarkNeutral", override: true},
+			Metal: {color: "LightNeutral", override: true},
+			Display: {color: "Highlight", override: true},
+			Plug: {color: "Highlight", override: true},
 		},
+		LinkableBy: ["Wrapping", "Ornate"],
 		Filters: {
 			Lock: {"gamma":1,"saturation":0.06666666666666667,"contrast":2.1333333333333333,"brightness":1.6500000000000001,"red":1,"green":1.0166666666666666,"blue":1.0166666666666666,"alpha":1},
 			Lining: {"gamma":1,"saturation":0.06666666666666667,"contrast":1.7833333333333334,"brightness":1,"red":1,"green":1.0166666666666666,"blue":1.0166666666666666,"alpha":1},
@@ -1897,6 +1965,9 @@ const KinkyDungeonRestraints = [
 		Model: "BraProto",
 		factionFilters: {
 			Display: {color: "Highlight", override: true},
+			Lining: {color: "Highlight", override: true},
+			Metal: {color: "LightNeutral", override: true},
+			Cups: {color: "DarkNeutral", override: true},
 		},
 		/*Filters: {
 			Lining: {"gamma":1,"saturation":0,"contrast":2.033333333333333,"brightness":1,"red":2.5333333333333337,"green":1.9,"blue":1,"alpha":1},
@@ -2443,6 +2514,9 @@ const KinkyDungeonRestraints = [
 	{inventory: true, trappable: true, name: "InvisibleBlindfold", Asset: "LeatherBlindfold", LinkableBy: [...KDBlindfoldLink], renderWhenLinked: [...KDBlindfoldLink], Color: "Default", Group: "ItemHead",
 		power: 3, weight: 2,
 		Model: "BlindfoldLeather",
+		events: [
+			{trigger: "tick", type: "InvisibleGhosts"},
+		],
 		Filters: {
 			Blindfold: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.01},
 			Rim: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.01},

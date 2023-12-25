@@ -663,7 +663,6 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 				Xray.push("XrayBra");
 			}
 		}
-
 		UpdateModels(Character, Xray);
 		if (Force) {
 			ForceRefreshModels(Character);
@@ -1008,13 +1007,23 @@ function KinkyDungeonSendOutfitEvent(Event, data) {
 	}
 }
 
-
+/**
+ *
+ * @param {Character} C
+ * @returns {string[]}
+ */
 function KDGetExtraPoses(C) {
 	let poses = [];
 	if (C == KinkyDungeonPlayer) {
 		// For player
 		if (KinkyDungeonPlayerTags.get("LinkFeet")) {
 			poses.push("FeetLinked");
+		}
+		if (KinkyDungeonIsHandsBound()) {
+			poses.push("HandsBound");
+		}
+		if (KDIsPlayerTethered(KinkyDungeonPlayerEntity) && KinkyDungeonLeashingEnemy()) {
+			poses.push("Pulled");
 		}
 	} else {
 		// For NPC
@@ -1487,5 +1496,12 @@ function KDUpdateTempPoses(Character) {
 			delete KDCurrentModels.get(Character).TempPoses[pose];
 		else
 			KDCurrentModels.get(Character).Poses[pose] = true;
+	}
+
+	let extraPose = KDGetExtraPoses(Character);
+	if (extraPose) {
+		for (let pose of extraPose) {
+			KDCurrentModels.get(Character).Poses[pose] = true;
+		}
 	}
 }

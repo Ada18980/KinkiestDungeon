@@ -1891,11 +1891,11 @@ function KinkyDungeonRun() {
 
 		let NF = KDTextField("PlayerNameField",
 			975, 450, 550, 64
-			);
+		);
 		if (NF.Created) {
 			ElementValue("PlayerNameField",
 				localStorage.getItem("PlayerName") || "Ada"
-				);
+			);
 		}
 
 		DrawButtonKDEx("selectName", () => {

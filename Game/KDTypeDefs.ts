@@ -3055,6 +3055,8 @@ interface KDFactionProps {
 	weight: (Floor: number, Checkpoint: string, tags: string[], X: number, Y: number) => number,
 	/** Custom defeat to use */
 	customDefeat?: string,
+	/** Custom jail allied faction to use */
+	jailAlliedFaction?: string,
 }
 
 type KDTile = any;

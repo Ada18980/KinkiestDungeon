@@ -35,11 +35,11 @@ let KinkyDungeonFactionFilters = {
 		Highlight: {"gamma":1,"saturation":0.11666666666666667,"contrast":1.3166666666666664,"brightness":2.3000000000000003,"red":1,"green":1,"blue":1,"alpha":1},
 	},
 	"Dollsmith": {
-		Catsuit: {"gamma":1,"saturation":0,"contrast":0.9299999999999999,"brightness":1,"red":4.254901960784314,"green":1.3529411764705883,"blue":2.607843137254902,"alpha":1},
+		Catsuit: {"gamma":1,"saturation":0,"contrast":0.8300000000000001,"brightness":1,"red":1.2549019607843137,"green":1,"blue":4,"alpha":1},
 		// Tis inverted, light is dark and dark is light
 		LightNeutral: {"gamma":1.4166666666666665,"saturation":0.1,"contrast":2.05,"brightness":0.3,"red":1,"green":1,"blue":1,"alpha":1},
-		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":2.4166666666666665,"green":1,"blue":1.76,"alpha":1},
-		Highlight: {"gamma":1.4166666666666665,"saturation":0.1,"contrast":2.05,"brightness":0.3,"red":1,"green":1,"blue":1,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0, "contrast":1,"brightness":1,"red":2.4166666666666665,"green":0.4,"blue":1.76,"alpha":1},
+		DarkNeutral: {"gamma":1,"saturation":0.1,"contrast":1.15,"brightness":0.7,"red":1.2166666666666665,"green":0.65,"blue":1.76,"alpha":1},
 	},
 	"Latex": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.9299999999999999,"brightness":1,"red":4.509803921568627,"green":0.8431372549019608,"blue":4.745098039215686,"alpha":1},
@@ -49,7 +49,7 @@ let KinkyDungeonFactionFilters = {
 	"Slime": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.9299999999999999,"brightness":1,"red":4.980392156862745,"green":0.6078431372549019,"blue":5,"alpha":1},
 		DarkNeutral: {"gamma":0.8,"saturation":1,"contrast":0.8666666666666667,"brightness":1.4166666666666665,"red":2.05,"green":1,"blue":2.15,"alpha":1},
-		Highlight: {"gamma":0.8,"saturation":1,"contrast":0.8666666666666667,"brightness":1.4166666666666665,"red":2.05,"green":1,"blue":2.15,"alpha":1},
+		Highlight: {"gamma":0.8,"saturation":0,"contrast":0.8666666666666667,"brightness":1.4166666666666665,"red":2.05,"green":1,"blue":2.15,"alpha":1},
 	},
 	"Alchemist": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.7899999999999999,"brightness":1,"red":1.8627450980392157,"green":1.607843137254902,"blue":4.450980392156863,"alpha":1},
@@ -76,12 +76,12 @@ let KinkyDungeonFactionFilters = {
 	"AncientRobot": {
 		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":0.7666666666666666,"green":1,"blue":4.833333333333333,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":2.4166666666666665,"alpha":1},
-		Highlight: {"gamma":1,"saturation":1,"contrast":1.0833333333333335,"brightness":1.6833333333333333,"red":0.55,"green":1.9666666666666666,"blue":1.8333333333333333,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":1.6833333333333333,"red":0.55,"green":1.9666666666666666,"blue":1.8333333333333333,"alpha":1},
 	},
 	"Mushy": {
 		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":1.7333333333333334,"green":2.5166666666666666,"blue":1.55,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":1,"contrast":1,"brightness":0.6333333333333334,"red":1.3,"green":1,"blue":1.5333333333333332,"alpha":1},
-		Highlight: {"gamma":1,"saturation":1,"contrast":1.0833333333333335,"brightness":1.6833333333333333,"red":0.55,"green":1.9666666666666666,"blue":1.8333333333333333,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":1.6833333333333333,"red":0.55,"green":1.9666666666666666,"blue":1.8333333333333333,"alpha":1},
 	},
 	"Bast": {
 		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":4,"green":2.5166666666666666,"blue":1.55,"alpha":1},
@@ -280,9 +280,10 @@ let KDFactionProperties = {
 			return w;
 		},
 	},
-	
+
 	Owners: {
 		customDefeat: "ElementalSlave",
+		jailAlliedFaction: "Elemental",
 		honor: 1,
 		honor_specific: {
 		},
@@ -292,6 +293,7 @@ let KDFactionProperties = {
 	},
 	WolfgirlHunters: {
 		customDefeat: "WolfgirlHunters",
+		jailAlliedFaction: "Nevermere",
 		honor: 1,
 		honor_specific: {
 		},
@@ -301,6 +303,7 @@ let KDFactionProperties = {
 	},
 	Delinquent: {
 		customDefeat: "MaidSweeper",
+		jailAlliedFaction: "Maidforce",
 		honor: 1,
 		honor_specific: {
 		},
@@ -310,6 +313,7 @@ let KDFactionProperties = {
 	},
 	RopeDojo: {
 		customDefeat: "RopeDojo",
+		jailAlliedFaction: "Apprentice",
 		honor: 1,
 		honor_specific: {
 		},
@@ -319,6 +323,7 @@ let KDFactionProperties = {
 	},
 	DollShoppe: {
 		customDefeat: "DollShoppe",
+		jailAlliedFaction: "Dressmaker",
 		honor: -1,
 		honor_specific: {
 		},
@@ -459,15 +464,26 @@ let KinkyDungeonFactionTag = {
 	Alchemist: "alchemist",
 	Nevermere: "nevermere",
 	Apprentice: "apprentice",
+	RopeDojo: "apprentice",
 	Dressmaker: "dressmaker",
+	DollShoppe: "dressmaker",
 	//Witch: "witch",
 	Elemental: "elemental",
+	Owners: "elemental",
 	Dragon: "dragon",
 	Maidforce: "maid",
+	Delinquent: "maid",
 	Bast: "mummy",
 	Elf: "elf",
 	//Mushy: "mushy",
 	AncientRobot: "robot",
+	ShadowClan: "shadow",
+	Debate: "elf",
+	Wolfhunter: "nevermere",
+	Extraplanar: "demon",
+	DubiousWitch: "mage",
+	Virus: "robot",
+	Dollsmith: "dollsmith",
 };
 
 let KinkyDungeonFactionRelationsBase = {

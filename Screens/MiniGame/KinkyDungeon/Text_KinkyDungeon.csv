@@ -17663,7 +17663,7 @@ KDBattleRhythm,Rhythm
 KDBattleRhythmDodge,You avoid the attack in a flurry of impressive maneuvers!
 
 KinkyDungeonSpellArcaneBarrier,Arcane Barrier
-KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 50% Max Mana."
+KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 60 + 10% Max Mana."
 
 KinkyDungeonBuffHighValueFound,You sense that a high value target is near.
 
@@ -18473,12 +18473,12 @@ KDoffhandMissingTooltip,No offhand weapon set. Activate the spell in your hotbar
 
 
 KinkyDungeonSpellBlink,Flash Portal
-KinkyDungeonSpellDescriptionBlink,"After 3 turns, teleport to a nearby location (including into darkness). All adjacent creatures are teleported with you, in random order."
+KinkyDungeonSpellDescriptionBlink,"After channeling for 2 turns, teleport to a nearby location (including into darkness). All adjacent creatures are teleported with you, in random order."
 KinkyDungeonSpellCastBlink,You call upon a misty portal to transport you and nearby creatures!
 KinkyDungeonSpellTargetBlink,Choose target location
 
 KinkyDungeonSpellTransportationPortal,Transportation Portal
-KinkyDungeonSpellDescriptionTransportationPortal,"After 3 turns, teleport to a nearby location (including into darkness). Transports only allies, but they are stunned for the duration."
+KinkyDungeonSpellDescriptionTransportationPortal,"After channeling for 3 turns, teleport to a nearby location (including into darkness). Transports only allies, but they are stunned for the duration."
 KinkyDungeonSpellCastTransportationPortal,You call upon a misty portal to transport you and your allies!
 KinkyDungeonSpellTargetTransportationPortal,Choose target location
 
@@ -18833,7 +18833,7 @@ KillWitchShibari,"The shibari witch blows a kiss and says goodbye."
 AttackWitchShibariBind,"The shibari witch ties you tight! (+RestraintAdded)"
 AttackWitchShibariLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchShibari,"The witch rubs your body sensually! (DamageTaken)"
-KDWitchShibariDisrobe,The ENMY takes your clothes off!
+KDWitchShibariDisrobe,The Shibari Witch takes your clothes off!
 
 
 KinkyDungeonStat,""
@@ -18854,4 +18854,12 @@ KinkyDungeonStatDescBurnedOut,"Casting spells reduces willpower based on how lit
 KinkyDungeonStatWinded,"Winded"
 KinkyDungeonStatDescWinded,"While below 10% stamina, evasion is severely reduced and your slow level is increased by 1."
 
+NameTimeGhost,Time Ghost
+KillTimeGhost,"The time ghost vanishes."
+AttackTimeGhost,"The time ghost grabs you, causing your body parts to freeze in time!!! (DamageTaken)"
+AttackTimeGhostBind,"The time time ghost has already bound you! (+RestraintAdded)"
 
+NameTimekeeper,The Timekeeper
+KillTimekeeper,"The Timekeeper releases her grip on the timeline."
+AttackTimekeeper,"The Timekeeper takes the time to enjoy herself with you... (DamageTaken)"
+AttackTimekeeperBind,"The Timekeeper enacts judgement for disrupting time! (+RestraintAdded)"

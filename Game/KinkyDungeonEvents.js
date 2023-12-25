@@ -726,6 +726,13 @@ let KDEventMapInventory = {
 		},
 	},
 	"tick": {
+		"InvisibleGhosts": (e, item, data) => {
+			for (let entity of KDMapData.Entities) {
+				if (entity.Enemy?.tags?.ghost) {
+					KinkyDungeonSetEnemyFlag(entity, "hidden", 2);
+				}
+			}
+		},
 		"ShrineUnlockWiggle": (e, item, data) => {
 			if (item && KDCurses[e.kind].condition(item) && (!KinkyDungeonFlags.get("CurseHintTick") || KDEventData.CurseHintTick)) {
 				KinkyDungeonSendTextMessage(1, TextGet("KDShrineUnlockWiggle").replace("RSTRNT", KDGetItemName(item)), "#88ff88", 1, false, true);
@@ -2634,21 +2641,21 @@ const KDEventMapBuff = {
 				if (entity.player) {
 					KinkyDungeonDealDamage({
 						type: e.damage,
-							damage: e.power,
-							time: e.time,
-							bind: e.bind,
-							distract: e.distract,
-							bindType: e.bindType,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						distract: e.distract,
+						bindType: e.bindType,
 						flags: ["BurningDamage"]
 					});
 				} else {
 					KinkyDungeonDamageEnemy(entity, {
 						type: e.damage,
-							damage: e.power,
-							time: e.time,
-							bind: e.bind,
-							distract: e.distract,
-							bindType: e.bindType,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						distract: e.distract,
+						bindType: e.bindType,
 						flags: ["BurningDamage"]
 					}, false, true, undefined, undefined, undefined);
 				}
@@ -2661,21 +2668,21 @@ const KDEventMapBuff = {
 					if (entity.player) {
 						KinkyDungeonDealDamage({
 							type: e.damage,
-								damage: e.power,
-								time: e.time,
-								bind: e.bind,
-								distract: e.distract,
-								bindType: e.bindType,
+							damage: e.power,
+							time: e.time,
+							bind: e.bind,
+							distract: e.distract,
+							bindType: e.bindType,
 							flags: ["BurningDamage"]
 						});
 					} else {
 						KinkyDungeonDamageEnemy(entity, {
 							type: e.damage,
-								damage: e.power,
-								time: e.time,
-								bind: e.bind,
-								distract: e.distract,
-								bindType: e.bindType,
+							damage: e.power,
+							time: e.time,
+							bind: e.bind,
+							distract: e.distract,
+							bindType: e.bindType,
 							flags: ["BurningDamage"]
 						}, e.power < 1, true, undefined, undefined, undefined);
 					}
@@ -2688,21 +2695,21 @@ const KDEventMapBuff = {
 					if (entity.player) {
 						KinkyDungeonDealDamage({
 							type: e.damage,
-								damage: e.power,
-								time: e.time,
-								bind: e.bind,
-								distract: e.distract,
-								bindType: e.bindType,
+							damage: e.power,
+							time: e.time,
+							bind: e.bind,
+							distract: e.distract,
+							bindType: e.bindType,
 							flags: ["BurningDamage"]
 						});
 					} else {
 						KinkyDungeonDamageEnemy(entity, {
 							type: e.damage,
-								damage: e.power,
-								time: e.time,
-								bind: e.bind,
-								distract: e.distract,
-								bindType: e.bindType,
+							damage: e.power,
+							time: e.time,
+							bind: e.bind,
+							distract: e.distract,
+							bindType: e.bindType,
 							flags: ["BurningDamage"]
 						}, false, true, undefined, undefined, undefined);
 					}
@@ -3003,7 +3010,7 @@ let KDEventMapSpell = {
 				let mult = e.mult * KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(player, "MultBattleRhythm"));
 				let powerAdded = 10 * -data.change * mult;
 				if (powerAdded > 0)
-						KinkyDungeonSetFlag("BRCombat", 20);
+					KinkyDungeonSetFlag("BRCombat", 20);
 				if (!buff) {
 					powerAdded = Math.min(powerAdded, max);
 					KinkyDungeonApplyBuffToEntity(player,
@@ -3292,7 +3299,7 @@ let KDEventMapSpell = {
 		"TheShadowWithin": (e, spell, data) => {
 			let player = KinkyDungeonPlayerEntity;
 			if (data.spell?.name == "ShadowDance")
-				if (!(KinkyDungeonBrightnessGet(player.x, player.y) < KDShadowThreshold || KDNearbyEnemies(player.x, player.y, 1.5).some((en) => {return en.Enemy?.tags?.shadow})))
+				if (!(KinkyDungeonBrightnessGet(player.x, player.y) < KDShadowThreshold || KDNearbyEnemies(player.x, player.y, 1.5).some((en) => {return en.Enemy?.tags?.shadow;})))
 					data.cost = Math.max(data.cost*e.mult);
 		},
 	},
@@ -3608,7 +3615,7 @@ let KDEventMapSpell = {
 							});
 						}
 
-						if (buff && buff.power > 0 && shieldBuff.power < KinkyDungeonStatManaMax * (0.5 + 0.5*KDEntityBuffedStat(player, "ArcaneBarrierShield")) && KDGameData.ShieldDamage < 1) {
+						if (buff && buff.power > 0 && shieldBuff.power < (6+0.1*KinkyDungeonStatManaMax) * (1 + KDEntityBuffedStat(player, "ArcaneBarrierShield")) && KDGameData.ShieldDamage < 1) {
 							buff.power = Math.max(0, buff.power - data.delta * .1);
 							shieldBuff.power = Math.min(KinkyDungeonStatManaMax * (0.5 + 0.5*KDEntityBuffedStat(player, "ArcaneBarrierShield")), shieldBuff.power + data.delta*shieldRate);
 							if (buff.power <= 0) buff.duration = 0;
@@ -4131,7 +4138,7 @@ let KDEventMapSpell = {
 				let mult = 0.1 * KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(player, "MultBattleRhythm"));
 				let powerAdded = 0.1 * -data.attackCost * mult;
 				if (powerAdded > 0)
-						KinkyDungeonSetFlag("BRCombat", 20);
+					KinkyDungeonSetFlag("BRCombat", 20);
 				if (!buff) {
 					powerAdded = Math.min(powerAdded, max);
 					KinkyDungeonApplyBuffToEntity(player,
@@ -4312,7 +4319,7 @@ let KDEventMapSpell = {
 					//hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[1]),
 				}
 				)) {
-					DrawTextFitKD(KDGameData.Offhand ? TextGet("KDoffhandTooltip") : TextGet("KDoffhandOldTooltip"), 1740, 650, 600, "#ffffff", KDTextGray0, 28, "right", 10)
+					DrawTextFitKD(KDGameData.Offhand ? TextGet("KDoffhandTooltip") : TextGet("KDoffhandOldTooltip"), 1740, 650, 600, "#ffffff", KDTextGray0, 28, "right", 10);
 
 				}
 
@@ -4344,7 +4351,7 @@ let KDEventMapSpell = {
 					//hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[1]),
 				}
 				)) {
-					DrawTextFitKD(TextGet("KDoffhandMissingTooltip"), 1740, 650, 600, "#ffffff", KDTextGray0, 28, "right", 10)
+					DrawTextFitKD(TextGet("KDoffhandMissingTooltip"), 1740, 650, 600, "#ffffff", KDTextGray0, 28, "right", 10);
 
 				}
 			}
@@ -4756,6 +4763,8 @@ let KDEventMapSpell = {
 							duration: e.time,
 							power: -e.mult,
 						});
+
+						KinkyDungeonSummonEnemy(player.x, player.y, "TimeGhost", Math.ceil(Math.pow(Math.max(3, cost + 4), 0.7)), 20, false, undefined, false, true, undefined, true, 12, true);
 
 						let timeslow = KDEntityBuffedStat(KinkyDungeonPlayerEntity, "TimeSlow");
 						if (timeslow <= e.power)
@@ -6290,11 +6299,11 @@ let KDEventMapBullet = {
 				if (!(data.enemy.silence > 0)) {
 					KinkyDungeonDamageEnemy(data.enemy, {
 						type: e.damage,
-							damage: e.power,
-							time: e.time,
-							bind: e.bind,
-							distract: e.distract,
-							bindType: e.bindType,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						distract: e.distract,
+						bindType: e.bindType,
 					}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 				}
 			}
@@ -6304,11 +6313,11 @@ let KDEventMapBullet = {
 				if (!(data.enemy.blind > 0)) {
 					KinkyDungeonDamageEnemy(data.enemy, {
 						type: e.damage,
-							damage: e.power,
-							time: e.time,
-							bind: e.bind,
-							distract: e.distract,
-							bindType: e.bindType,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						distract: e.distract,
+						bindType: e.bindType,
 					}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 				}
 			}
@@ -6318,11 +6327,11 @@ let KDEventMapBullet = {
 				if (!(data.enemy.disarm > 0)) {
 					KinkyDungeonDamageEnemy(data.enemy, {
 						type: e.damage,
-							damage: e.power,
-							time: e.time,
-							bind: e.bind,
-							distract: e.distract,
-							bindType: e.bindType,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						distract: e.distract,
+						bindType: e.bindType,
 					}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 				}
 			}
@@ -6332,11 +6341,11 @@ let KDEventMapBullet = {
 				if (!(data.enemy.bind > 0)) {
 					KinkyDungeonDamageEnemy(data.enemy, {
 						type: e.damage,
-							damage: e.power,
-							time: e.time,
-							bind: e.bind,
-							distract: e.distract,
-							bindType: e.bindType,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						distract: e.distract,
+						bindType: e.bindType,
 					}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 				}
 			}
@@ -6346,11 +6355,11 @@ let KDEventMapBullet = {
 				if (KDBoundEffects(data.enemy) > 1) {
 					KinkyDungeonDamageEnemy(data.enemy, {
 						type: e.damage,
-							damage: e.power,
-							time: e.time,
-							bind: e.bind,
-							distract: e.distract,
-							bindType: e.bindType,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						distract: e.distract,
+						bindType: e.bindType,
 					}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 				}
 			}
@@ -6369,12 +6378,12 @@ let KDEventMapBullet = {
 		"Elemental": (e, b, data) => {
 			if (b && data.enemy) {
 				KinkyDungeonDamageEnemy(data.enemy, {
-											type: e.damage,
-							damage: e.power,
-							time: e.time,
-							bind: e.bind,
-							distract: e.distract,
-							bindType: e.bindType,
+					type: e.damage,
+					damage: e.power,
+					time: e.time,
+					bind: e.bind,
+					distract: e.distract,
+					bindType: e.bindType,
 				}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 			}
 		},
@@ -6395,24 +6404,24 @@ let KDEventMapBullet = {
 		"ElementalOnSlowOrBindOrDrench": (e, b, data) => {
 			if (b && data.enemy && (KinkyDungeonIsSlowed(data.enemy) || data.enemy.bind > 0 || (data.enemy.buffs && data.enemy.buffs.Drenched))) {
 				KinkyDungeonDamageEnemy(data.enemy, {
-											type: e.damage,
-							damage: e.power,
-							time: e.time,
-							bind: e.bind,
-							distract: e.distract,
-							bindType: e.bindType,
+					type: e.damage,
+					damage: e.power,
+					time: e.time,
+					bind: e.bind,
+					distract: e.distract,
+					bindType: e.bindType,
 				}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 			}
 		},
 		"ElementalOnDrench": (e, b, data) => {
 			if (b && data.enemy && (data.enemy.buffs && data.enemy.buffs.Drenched)) {
 				KinkyDungeonDamageEnemy(data.enemy, {
-											type: e.damage,
-							damage: e.power,
-							time: e.time,
-							bind: e.bind,
-							distract: e.distract,
-							bindType: e.bindType,
+					type: e.damage,
+					damage: e.power,
+					time: e.time,
+					bind: e.bind,
+					distract: e.distract,
+					bindType: e.bindType,
 				}, true, (b.bullet.NoMsg || e.power == 0), b.bullet.spell, b, undefined, b.delay, true);
 			}
 		},
@@ -6462,7 +6471,7 @@ let KDEventMapBullet = {
 				let enemies = KDNearbyEnemies(player.x, player.y, e.dist);
 				if (enemies.length > 0) {
 					for (let en of enemies) {
-						if (en.hp > 0 && (KDHostile(en) || KinkyDungeonAggressive(en))) {
+						if (en.hp > 0 && (!KDAllied(en) || KinkyDungeonAggressive(en))) {
 							KinkyDungeonApplyBuffToEntity(en, {
 								id: "BanishPortal",
 								aura: "#92e8c0",
@@ -6811,6 +6820,11 @@ let KDEventMapEnemy = {
 				enemy.modified = true;
 
 				KinkyDungeonSetEnemyFlag(enemy, "assignedHP", -1);
+			}
+		},
+		"TimeGhostDecay": (e, enemy, data) => {
+			if (!KinkyDungeonFlags.get("TimeSlow")) {
+				enemy.hp -= data.delta * e.power;
 			}
 		},
 		"AdventurerAssignFaction": (e, enemy, data) => {
@@ -7243,7 +7257,7 @@ let KDEventMapEnemy = {
 						if (en == enemy || en.Enemy.name != "HolyOrb") {
 							if (((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy))) && en.hp > 0.52) en.hp = Math.min(en.hp + e.power, en.Enemy.maxhp);
 						} else {
-							en.hp = Math.max(en.hp - e.power, 0)
+							en.hp = Math.max(en.hp - e.power, 0);
 						}
 					}
 				}
@@ -8304,7 +8318,8 @@ let KDEventMapGeneric = {
 		"shadowChest": (e, data) => {
 			if ((data.chestType == "shadow" || data.chestType == "lessershadow") && KDCanCurse(["ChestCollar"])) {
 				// Shadow chests spawn cursed epicenter
-				KDSummonCurseTrap(data.x, data.y);
+				if (data.chestType == "shadow" || KDRandom() < 0.2)
+					KDSummonCurseTrap(data.x, data.y);
 			}
 		},
 		"lessergoldChest": (e, data) => {

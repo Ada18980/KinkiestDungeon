@@ -1202,7 +1202,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			}
 
 			/*for (let e of KinkyDungeonGetAllies()) {
-				
+
 			}*/
 			KDUpdateEnemyCache = true;
 			KDUnPackEnemies(KDMapData);
@@ -1370,8 +1370,8 @@ function KinkyDungeonGetAllies() {
 }
 
 /**
- * 
- * @param {entity} e 
+ *
+ * @param {entity} e
  * @returns {boolean}
  */
 function KDCanBringAlly(e) {
@@ -1686,6 +1686,21 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				},
 				BonusTags,
 				currentCluster ? filterTagsCluster : filterTags);
+			if (!Enemy) {
+				Enemy = KinkyDungeonGetEnemy(
+					tags,
+					KDGetEffLevel() + levelBoost,
+					forceIndex || KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+					KinkyDungeonMapGet(X, Y),
+					required,
+					{
+						requireHostile: ((!altRoom || altRoom.reduceNeutrals) && ncount > neutralCount && (!box || !box.ignoreAllyCount)) ? "Player" : "",
+						requireAllied: altRoom?.factionSpawnsRequired ? KDFactionProperties[KDGetMainFaction()]?.jailAlliedFaction : "",
+						requireNonHostile: altRoom?.neutralSpawnsRequired ? KDGetMainFaction() : "",
+					},
+					BonusTags,
+					currentCluster ? filterTagsCluster : filterTags);
+			}
 			if (box && !Enemy) {
 				box.currentCount += 0.05;
 			}
@@ -1937,7 +1952,7 @@ function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs, 
 	}
 
 	KDMapData.MainPath = checkpoint;
-	if (KDMapData.MainPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDMapData.MainPath}, KDMapData.EndPosition.x, KDMapData.EndPosition.y, 4.99);
+	if (KDMapData.MainPath != MiniGameKinkyDungeonCheckpoint && !nostartstairs) KinkyDungeonSkinArea({skin: KDMapData.MainPath}, KDMapData.EndPosition.x, KDMapData.EndPosition.y, 4.99);
 	KinkyDungeonSpecialAreas.push({x: KDMapData.EndPosition.x, y: KDMapData.EndPosition.y, radius: 2});
 }
 
@@ -3587,7 +3602,7 @@ function KinkyDungeonClickGame(Level) {
 			CharacterRefresh = _CharacterRefresh;
 			CharacterAppearanceBuildCanvas = _CharacterAppearanceBuildCanvas;
 		}
-		
+
 		return;
 	}
 	// beep
@@ -4106,7 +4121,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				if (attackCost < 0 && KinkyDungeonStatsChoice.has("BerserkerRage")) {
 					KinkyDungeonChangeDistraction(0.7 - 0.5 * data.attackCost, false, 0.33);
 				}
-				
+
 				if (KinkyDungeonAttackEnemy(data.target, data.attackData)) {
 					result = "hit";
 				} else {
@@ -4521,7 +4536,7 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 			}
 		}
 	}
-	
+
 
 
 	let _CharacterRefresh = CharacterRefresh;
@@ -4562,6 +4577,7 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	KinkyDungeonItemCheck(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, MiniGameKinkyDungeonLevel); //console.log("Item Check " + (performance.now() - now));
 	if (pauseTime && delta > 0) {
 		delta = 0;
+		KinkyDungeonFlags.set("TimeSlowTick", 1);
 	} else pauseTime = false;
 	KDGameData.ShieldDamage = 0;
 	KinkyDungeonUpdateBuffs(delta, pauseTime);
@@ -4583,16 +4599,19 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 		let enemy = KDMapData.Entities[E];
 		if (KinkyDungeonEnemyCheckHP(enemy, E)) { E -= 1; continue;}
 	}
-	
+
 	KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
 	KinkyDungeonUpdateJailKeys();
 
 	KDCommanderUpdate(delta);
 
-	if (pauseTime) delta = 1;
+	if (pauseTime) {
+		delta = 1;
+		KinkyDungeonFlags.set("TimeSlowTick", 0);
+	}
 
 	KinkyDungeonUpdateStats(delta);
-	
+
 	let toTile = KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 	KinkyDungeonHandleMoveToTile(toTile);
 	// else if (KinkyDungeonStatWillpower == 0) {
@@ -4679,13 +4698,13 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	KinkyDungeonUpdateStats(0);
 
 	KDTickNeeds(delta);
-	
+
 
 	let Dstart = performance.now();
 
 	KDUpdateForceOutfit(KinkyDungeonPlayer);
 	KinkyDungeonDressPlayer();
-	
+
 	if (KDDebug) console.log(`Dressing ${KinkyDungeonCurrentTick} took ${(performance.now() - Dstart)} milliseconds.`);
 	KDGetEnemyCache();
 
@@ -4705,7 +4724,7 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	}
 	KDQuestTick(KDGameData.Quests, delta);
 	KinkyDungeonUpdateFlags(delta);
-	
+
 }
 let KDAllowDialogue = true;
 
@@ -5022,10 +5041,10 @@ let KDKeyCheckers = {
 };
 
 /**
- * 
- * @param {number} Floor 
- * @param {string} [MapMod] 
- * @param {string} [RoomType] 
+ *
+ * @param {number} Floor
+ * @param {string} [MapMod]
+ * @param {string} [RoomType]
  * @returns {any}
  */
 function KDGetAltType(Floor, MapMod, RoomType) {

@@ -1227,7 +1227,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			onhit:"", time:25, power: 2, range: 3.5, size: 1, damage: ""},
 		{name: "Leap", prerequisite: "ApprenticePhysics", tags: ["physics", "utility", "defense"], sfx: "Teleport", school: "Conjure", spellPointCost: 1, autoLearn: ["Leap2", "Leap3"],
 			events: [
-				{trigger: "afterBulletHit", type: "FlashPortal"},
+				{trigger: "afterBulletHit", type: "Phase"},
 			],
 			manacost: 1.5, components: ["Verbal"], requireLOS: true, noTargetEnemies: true, level:1, type:"hit", onhit:"teleport", delay: 0, lifetime:1, range: 1.5, damage: ""}, // A quick blink
 		{name: "Leap2", prerequisite: "Leap", tags: ["physics", "utility", "defense"], sfx: "Teleport", school: "Conjure", spellPointCost: 1,
@@ -1239,14 +1239,14 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 
 
-		{name: "Blink", prerequisite: "ApprenticeSummon", tags: ["physics", "utility", "defense"], sfx: "Teleport", school: "Conjure", CastInDark: true,
+		{name: "Blink", prerequisite: "ApprenticeSummon", tags: ["physics", "utility", "defense"], sfx: "Teleport", school: "Conjure", CastInDark: true, channel: 2,
 			events: [
 				{trigger: "afterBulletHit", type: "FlashPortal"},
 				{trigger: "bulletTick", type: "FlashPortal", dist: 1.5},
 			],
-			manacost: 4, components: ["Verbal"], level:1, type:"inert", power: 0.1, onhit:"teleport", delay: 3, lifetime:1, range: 5.99, damage: "arcane"}, // portal
+			manacost: 4, components: ["Verbal"], level:1, type:"inert", power: 0.1, onhit:"teleport", delay: 2, lifetime:1, range: 5.99, damage: "arcane"}, // portal
 
-		{name: "TransportationPortal", prerequisite: "Blink", tags: ["physics", "utility", "defense"], sfx: "Teleport", school: "Conjure", CastInDark: true,
+		{name: "TransportationPortal", prerequisite: "Blink", tags: ["physics", "utility", "defense"], sfx: "Teleport", school: "Conjure", CastInDark: true, channel: 3,
 			upcastFrom: "Blink", upcastLevel: 1,
 			events: [
 				{trigger: "afterBulletHit", type: "TransportationPortal"},

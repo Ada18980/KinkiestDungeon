@@ -448,9 +448,12 @@ let KinkyDungeonEnemies = [
 		],
 		terrainTags: {"mummy": 3, "zombieTrap": 10}, floors:KDMapInit(["grv", "tmb"]), dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10}]},
 	{name: "SamuraiZombie", bound: "SamuraiZombie", playLine: "Zombie", clusterWith: "zombie", tags: KDMapInit(["leashing", "zombie", "zombieTrap", "melee", "elite", "fireweakness", "unflinching", "ropeRestraints", "ropeRestraints2", "meleeweakness", "hunter"]),
-		evasion: -1, armor: 2.5, followRange: 1, AI: "hunt",
+		evasion: -1, armor: 1, followRange: 1, AI: "hunt",
 		stunTime: 2, specialCD: 6, specialAttack: "Stun", specialRemove: "BindLock", specialPower: 5, specialDamage: "pain",
 		attackLock: "White",
+		Resistance: {
+			block_phys: 2,
+		},
 		stamina: 2,
 		specialCDonAttack: false, visionRadius: 6, maxhp: 20, minLevel:4, weight:9, movePoints: 3, attackPoints: 3, attack: "MeleeBindLock",
 		attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 3, specialWidth: 5, specialRange: 1,
@@ -753,6 +756,25 @@ let KinkyDungeonEnemies = [
 		maxdodge: 0,
 		terrainTags: {"ghost" : 3.9, "increasingWeight": 0.15, "chestTrap": 80, revenge: 60, "goddessRage": 5}, shrines: ["Illusion"], allFloors: true,
 		dropTable: [{name: "Ectoplasm", weight: 1}]},
+	{name: "TimeGhost", faction: "Ghost", color: "#FFFFFF", tags: KDMapInit(["timeghost", "timestealth", "ignoreharmless", "invisRestraints", "timeimmune", "spooky", "ghost", "flying", "melee", "glueimmune", "chainimmune", "meleeresist"]),
+		ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",  noAlert: true,
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
+		Sound: {
+			baseAmount: 0,
+			moveAmount: 0,
+		},
+		stealth: 4.5,
+		stunTime: 3,
+		visionRadius: 14, blindSight: 14, evasion: 1.0, maxhp: 10, minLevel:0, weight:-1000, movePoints: 3.5, attackPoints: 2, attack: "MeleeBindWillStamina", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 2,
+		events: [
+			{trigger: "tick", type: "TimeGhostDecay", power: 5},
+		], regen: 4,
+		maxblock: 0,
+		maxdodge: 0,
+		terrainTags: {"timeghost" : 1010}, shrines: ["Illusion"], allFloors: true,},
+
 	{name: "Poltergeist", faction: "Ghost", color: "#FFFFFF", tags: KDMapInit(["illusionTrap", "chestTrap", "ignoreharmless", "invisRestraints", "spooky", "ghost", "flying", "melee", "glueimmune", "chainimmune", "meleeresist", "magicweakness"]),
 		ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",  noAlert: true,
 		RestraintFilter: {
