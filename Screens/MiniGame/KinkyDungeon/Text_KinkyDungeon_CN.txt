@@ -997,7 +997,7 @@ Your bindings are PERCENT more effective.
 Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
 你的基础攻击可造成 DAMAGEDEALT 点 DAMAGETYPE 伤害，花费的体力为 STMNA。
 Plugged!
-插上！
+插入！
 Plugged up!!!
 完全插入！
 Denied! You won't be getting off that easy~
