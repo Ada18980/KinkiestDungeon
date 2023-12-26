@@ -5506,6 +5506,12 @@ A gag enchanted with magic. It grows to fill your mouth so you can hardly speak.
 一个被附魔的堵嘴物。它会长到填满你的嘴巴，所以你几乎不能说话。
 It's brimming with conjured energy. A normal knife won't work here!
 它充满了魔法能量。普通的刀在这里是行不通的！
+Anti-Magic Gag
+反魔法口塞
+A gag designed to cripple mages. It's made of a squishy rubbery material.
+旨在削弱法师的口塞。它由柔软的橡胶材料制成。
+It's sealed with a magical spell that rapidly absorbs mana! When it drains 40 mana it will transform into an ordinary gag and inflate.
+它被封印着快速吸收魔力的魔法咒语！当它耗尽 40 点法力时，它会变成一个普通的口塞并膨胀。
 Ballet Heels
 芭蕾高跟鞋
 A pair of shoes with heels so tall it forces you on your toes.
