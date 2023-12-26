@@ -479,11 +479,11 @@ All humanoids that can bind you also apply Cyber Doll restraints.
 Doll Hunter V
 玩偶猎人 V
 You start with the Dollmaker's Visor.
-开局时穿戴玩偶制造商的面罩
+开局时穿戴玩偶师的面罩
 Doll Hunter M
 玩偶猎人 M
 You start with the Dollmaker's Mask.
-开局时穿戴玩偶制造商的面具
+开局时穿戴玩偶师的面具
 Vengeance
 复仇
 Defeating an enemy greatly distracts you.
