@@ -7816,14 +7816,18 @@ Choose location
 选择位置
 Conjure Petsuit
 召唤宠物服
+Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana recovery from mana pool.
+仅可对无助的敌人施放。将它们变成跟随你的宠物，并增加你从法力池中恢复的被动法力。
 You conjure an enchanted petsuit which wraps around your target, forcing her to follow you!
 你召唤出的魔法宠物服，紧紧包住了你瞄准的目标，使她不得不跟着你！
 You watch in horror as your own creation lunges toward you, binding your hands and feet!
 你惊恐地看着你自己的造物冲向了你，束缚了你的手脚！
 Choose a helpless target
-选择一个无助的个体
+选择一个无助的目标
 Conjure Display Stand
 召唤展示架
+Target only Helpless enemies. Creates a fixture that increases passive mana recovery from mana pool, restores 50 Charge, and makes nearby enemies take 50% more charm/psychic damage.
+仅可对无助的敌人施放。创建一个装置，可以增加法力池中的被动法力恢复，恢复 50 点能量，并使附近的敌人受到 50% 的妩媚/精神伤害。
 You conjure a fixture to hold your helpless target in place!
 你召唤出一个装置来束缚无助的目标！
 You watch in horror as your own creation surrounds you, locking you in place with a hefty click!
