@@ -1226,7 +1226,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 								let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 								if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 									KDMakeHostile(enemy);
-									KinkyDungeonChangeRep(goddess, -2);
+									//KinkyDungeonChangeRep(goddess, -2);
 								}
 							}
 							KinkyDungeonSetFlag(name, -1, 1);
@@ -1724,7 +1724,11 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 			}
 			return false;
 		},(refused) => { // Yes function. This happens if the user submits willingly
-			KinkyDungeonChangeRep(goddess[0], 1);
+			if (!KinkyDungeonFlags.get("BoundOfferRep" + goddess[0])) {
+				KinkyDungeonChangeRep(goddess[0], 3);
+				KinkyDungeonSetFlag("BoundOfferRep" + goddess[0], -1, 1);
+			}
+
 			if (Ally)
 				KDAllySpeaker(9999, true);
 			else

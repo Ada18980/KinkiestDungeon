@@ -18280,6 +18280,8 @@ KDExpandBuffs,Show Buffs and Stats
 
 KinkyDungeonQuest,Quests
 
+KDShrineActionChampionRemove,Remove Devotion
+KDShrineActionChampion,Devote Yourself
 KDShrineActionPray,Pray for Assistance
 KDShrineActionQuest,This shrine bears a request carved in stone:
 KDShrineActionQuestAccept,Accept the Quest
@@ -18287,6 +18289,10 @@ KDShrineActionQuestAccept,Accept the Quest
 KDShrineQuestAccepted,You accept the goddess' quest.
 KDShrineQuestAcceptedFail,You cannot accept that quest right now.
 
+KDShrineActionDescChampionRemove,"Removes your devotion from this goddess."
+KDShrineActionDescChampionRemoveFail,You are not devoted to this goddess.
+KDShrineActionDescChampion,"Guarantees a quest from this goddess on every floor."
+KDShrineActionDescChampionFail,You are already a devotee of this goddess.
 KDShrineActionDescOffer,Offer gold to the Goddess in exchange for help. Destroys the shrine.
 KDShrineActionDescPray,Ask for help without offering gold.
 KDShrineActionDescPrayFail,You have already prayed at this shrine.

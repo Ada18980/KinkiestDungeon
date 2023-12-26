@@ -357,6 +357,17 @@ function KDProcessInput(type, data) {
 			KinkyDungeonSendActionMessage(9, TextGet("KDShrineQuestAcceptedFail"), "#ffffff", 1);
 			return "Fail";
 		}
+		case "shrineDevote": {
+			KDDelayedActionPrune(["Action", "World"]);
+			if (KinkyDungeonGoddessRep[data.type] <= -45 && KDGameData.Champion != data.type) {
+				//Cursed
+				KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), "#ff5555", 2);
+				return "Fail";
+			}
+
+			KDGameData.Champion = data.type;
+			return "Pass";
+		}
 		case "shrinePray": {
 			KDDelayedActionPrune(["Action", "World"]);
 			if (KinkyDungeonGoddessRep[data.type] <= -45) {

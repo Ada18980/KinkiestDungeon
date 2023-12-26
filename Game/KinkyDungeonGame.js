@@ -2524,14 +2524,16 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 			if (count == shrinecount && KDRandom() > shrinechance)
 				KinkyDungeonMapSet(shrine.x, shrine.y, 'a');
 			else {
+				let placedChampion = !allowQuests;
 				let playerTypes = KinkyDungeonRestraintTypes(shrinefilter);
 				/**
 				 * @type {{type: string, drunk?: boolean}}
 				 */
 				let stype = shrineTypes.length < orbcount ? {type: "Orb"}
-					: (shrineTypes.length == orbcount && playerTypes.length > 0 ?
-						{type: playerTypes[Math.floor(KDRandom() * playerTypes.length)]}
-						: KinkyDungeonGenerateShrine(Floor, filterTypes, manaChance));
+					: ((KDGameData.Champion && !placedChampion) ? {type: KDGameData.Champion} :
+						((shrineTypes.length == ((KDGameData.Champion && allowQuests) ? orbcount + 1 : orbcount) && playerTypes.length > 0) ?
+							{type: playerTypes[Math.floor(KDRandom() * playerTypes.length)]}
+								: KinkyDungeonGenerateShrine(Floor, filterTypes, manaChance)));
 				let type = stype.type;
 				let tile = 'A';
 				if (type != "Orb" && shrineTypes.includes(type) && (KDRandom() < 0.5 || type == "Commerce")) type = "";
@@ -2554,7 +2556,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 					shrineTypes.push("Orb");
 				} else if (type) {
 					KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Type: "Shrine", Name: type, drunk: stype.drunk});
-					if (allowQuests && (KDRandom() < 0.4 || list.length < 6) && quests < KDMAXGODDESSQUESTS) {
+					if (allowQuests && quests < KDMAXGODDESSQUESTS) {
 						let quest = KDGetShrineQuest(KDMapData, KinkyDungeonTilesGet("" + shrine.x + "," +shrine.y));
 						if (quest) {
 							KDSetShrineQuest(KDMapData, KinkyDungeonTilesGet("" + shrine.x + "," +shrine.y),
@@ -2563,6 +2565,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 						}
 					}
 					shrineTypes.push(type);
+					placedChampion = true;
 				} else if (!shrineTypes.includes("Ghost") || KDRandom() < 0.5) {
 					shrineTypes.push("Ghost");
 					tile = 'G';

@@ -1104,7 +1104,7 @@ function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountM
 				KDRemoveQuest(Name);
 				KinkyDungeonChangeRep(Goddess, -KDDefaultGoddessQuestRep);
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestFail_" + Name), "#ffffff", 1);
-				KDPlayerEffectRestrain(undefined, Math.round(restraintsCountMult * (1 + KDGetEffLevel()/3)), restraintsTags, "Goddess", false, true, false, false, false, "Purple", {
+				KDPlayerEffectRestrain(undefined, Math.round(restraintsCountMult * (1 + KDGetEffLevel()/3)), restraintsTags, "Goddess", false, true, false, false, false, "Divine", {
 					Progressive: true,
 					DontPreferWill: true,
 				});
@@ -1123,7 +1123,9 @@ function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountM
 					KinkyDungeonLoot(KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], Name);
 				}
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
-				KinkyDungeonChangeRep(Goddess, Rep);
+
+				KinkyDungeonChangeRep(Goddess, (!KinkyDungeonFlags.get("QuestFirstRep")) ? 5 + Rep : Rep);
+				KinkyDungeonSetFlag("QuestFirstRep", -1, 1);
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed_" + Name), "#ffffff", 1);
 				KDRemoveQuest(Name);
 				for (let inv of KinkyDungeonAllRestraintDynamic()) {
