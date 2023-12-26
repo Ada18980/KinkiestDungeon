@@ -5378,6 +5378,8 @@ Your wrists detatch, leaving your elbows still bound!
 你的手腕松开了，你的手肘仍然被束缚着！
 Elbow Chain
 肘链
+A pair of leather cuffs keeping your elbows locked together!.
+一对皮革手铐将你的肘部固定在一起！
 A pair of cuffs keeping your elbows locked together!
 一对手铐将你的肘部固定在一起！
 Your elbows detatch!
@@ -5392,6 +5394,10 @@ The enemy attaches your leg cuffs together!
 敌人将你的腿铐绑在一起！
 A pair of cuffs chaining your legs together.
 一对手铐将你的双腿拴在一起。
+Thigh Chain
+大腿链
+The leg cuff chain detaches!
+腿铐链条脱落！
 Mithril Ankle Cuffs
 秘银脚铐
 A pair of cuffs on your ankles.
