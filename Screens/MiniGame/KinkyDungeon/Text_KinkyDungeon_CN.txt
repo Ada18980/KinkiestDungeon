@@ -5742,6 +5742,10 @@ Asylum Leg Cuffs
 安全足拷
 They're made of tough cowhide.
 它们由坚韧的牛皮制成。
+Transport Jacket
+运输拘束衣
+This jacket goes over a straitjacket to keep the arms trapped.
+这件拘束衣套在拘束衣外面，可以锁住胳膊。
 Comfy Muzzle
 舒适口套
 A lovely muzzle that's extraordinarily comfy!
