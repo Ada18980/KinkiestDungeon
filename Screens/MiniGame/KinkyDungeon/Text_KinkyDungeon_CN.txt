@@ -7498,6 +7498,14 @@ Sneaky
 影于暗处
 You are harder to see when waiting.
 你在等待时很难被发现。
+Vault
+腾跃
+You can sprint under flying enemies and through vulnerable, slowed, or disabled enemies. Does not work on immobile enemies such as doors and turrets.
+你可以在飞行的敌人下方冲刺，也可以冲过脆弱、缓慢或残疾的敌人。对门和炮塔等不动的敌人不起作用。
+Improved Vault
+改进的腾跃
+You can dash through enemies that aren't immobile.
+你可以冲过不动的敌人。
 Dodge I
 闪避 I
 +10 Evasion
