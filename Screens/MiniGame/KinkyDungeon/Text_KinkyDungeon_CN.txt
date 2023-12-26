@@ -14754,6 +14754,8 @@ You find some enchanted rope.
 你找到一些附魔绳子。
 Without mana to control it, the enchanted rope springs back upon you!
 如果没有法力来控制它，魔法绳子就会弹回到你身上！
+Bow
+弓
 Light Bow
 轻弓
 Pointy stick delivery system.
