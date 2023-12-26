@@ -8226,6 +8226,8 @@ Apprentice's Slime
 学徒的粘液团
 Witch's Slime
 女巫的粘液团
+Rubber Explosion
+橡胶爆炸
 Witch's Slime Ball
 女巫的粘液球
 Robotic Arm
