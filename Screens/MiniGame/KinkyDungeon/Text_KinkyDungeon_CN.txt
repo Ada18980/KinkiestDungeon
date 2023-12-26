@@ -8042,6 +8042,10 @@ Truesight
 真实视野
 When enabled: Drain mana every turn to see through walls and increase accuracy by 40%.
 启用时：每回合消耗法力以透视墙壁并将精准度提高 40%。
+Echolocation
+声波定位
+Close your eyes to dramatically improve your hearing and locate enemies through walls.
+闭上眼睛时大大提高你的听力，并透过墙壁找到敌人。
 Produce a bright light for Duration turns. Has no effect in dark rooms.
 产生持续 Duration 回合的亮光，在黑暗房间内没有效果。
 Iron Blood
