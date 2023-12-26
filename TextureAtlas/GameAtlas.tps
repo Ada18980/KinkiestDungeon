@@ -1880,6 +1880,7 @@
             <key type="filename">../Game/Items/Flail.png</key>
             <key type="filename">../Game/Items/Flamberge.png</key>
             <key type="filename">../Game/Items/FlashBomb.png</key>
+            <key type="filename">../Game/Items/Flashbang.png</key>
             <key type="filename">../Game/Items/Foil.png</key>
             <key type="filename">../Game/Items/FourSeasons.png</key>
             <key type="filename">../Game/Items/FrostSword.png</key>
@@ -2334,6 +2335,7 @@
             <key type="filename">../Game/AutoStruggle.png</key>
             <key type="filename">../Game/AutoStruggleOff.png</key>
             <key type="filename">../Game/Buckle.png</key>
+            <key type="filename">../Game/Buffs/curse/Blocked.png</key>
             <key type="filename">../Game/CurseInfo.png</key>
             <key type="filename">../Game/CurseUnlock.png</key>
             <key type="filename">../Game/FastMove.png</key>
@@ -2502,6 +2504,22 @@
             <key type="filename">../Game/Buffs/buff/buffd_OrgasmResist.png</key>
             <key type="filename">../Game/Buffs/buff/buffd_SlimeMimic.png</key>
             <key type="filename">../Game/Buffs/buff/buffe_OrgasmResist.png</key>
+            <key type="filename">../Game/Buffs/curse/Blind.png</key>
+            <key type="filename">../Game/Buffs/curse/Blue.png</key>
+            <key type="filename">../Game/Buffs/curse/Curse.png</key>
+            <key type="filename">../Game/Buffs/curse/Disc.png</key>
+            <key type="filename">../Game/Buffs/curse/Divine.png</key>
+            <key type="filename">../Game/Buffs/curse/Dollmaker.png</key>
+            <key type="filename">../Game/Buffs/curse/Fuuka.png</key>
+            <key type="filename">../Game/Buffs/curse/Gold.png</key>
+            <key type="filename">../Game/Buffs/curse/HiSec.png</key>
+            <key type="filename">../Game/Buffs/curse/Purple.png</key>
+            <key type="filename">../Game/Buffs/curse/Red.png</key>
+            <key type="filename">../Game/Buffs/curse/Red_Hi.png</key>
+            <key type="filename">../Game/Buffs/curse/Red_Med.png</key>
+            <key type="filename">../Game/Buffs/curse/Rubber.png</key>
+            <key type="filename">../Game/Buffs/curse/StarCurse.png</key>
+            <key type="filename">../Game/Buffs/curse/White.png</key>
             <key type="filename">../Game/Buffs/damageresist.png</key>
             <key type="filename">../Game/Buffs/debuff.png</key>
             <key type="filename">../Game/Buffs/dmg.png</key>
@@ -2669,6 +2687,7 @@
             <key type="filename">../Game/Bullets/FlashBomb.png</key>
             <key type="filename">../Game/Bullets/FlashBombHit.png</key>
             <key type="filename">../Game/Bullets/FlashHit.png</key>
+            <key type="filename">../Game/Bullets/FlashbangHit.png</key>
             <key type="filename">../Game/Bullets/FreezeRuneStrike.png</key>
             <key type="filename">../Game/Bullets/FreezeRuneStrikeHit.png</key>
             <key type="filename">../Game/Bullets/Glue.png</key>

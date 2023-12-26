@@ -479,6 +479,25 @@ function KDProcessInput(type, data) {
 
 					if (spell) {
 						KinkyDungeonSpells.push(spell);
+						if (spell.autoLearn) {
+							for (let sp of spell.autoLearn) {
+								if (KinkyDungeonSpellIndex(sp) < 0) {
+									KinkyDungeonSpells.push(KinkyDungeonFindSpell(sp, true));
+									KDSendStatus('learnspell', sp);
+								}
+							}
+						}
+						if (spell.learnFlags) {
+							for (let sp of spell.learnFlags) {
+								KinkyDungeonFlags.set(sp, -1);
+							}
+						}
+
+						if (spell.learnPage) {
+							for (let sp of spell.learnPage) {
+								KDAddSpellPage(sp, KDSpellColumns[sp] || []);
+							}
+						}
 						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonOrbSpell").replace("SPELL", TextGet("KinkyDungeonSpell" + spell.name)), "lightblue", 2);
 					}
 				} else {
