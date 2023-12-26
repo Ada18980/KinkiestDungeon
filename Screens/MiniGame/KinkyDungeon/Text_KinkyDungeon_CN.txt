@@ -8848,6 +8848,24 @@ I am writing this from inside prison. Who would have known they cared so much ab
 我是在监狱里写这篇文章的。谁能知道他们对我使用神泉如此关心？嘘。
 (A drawing of a bunch of zombies, ordered by danger level. Of note are a zombie surrounded by charms, a zombie surrounded by talismans, a zombie warrior with a sword, and... some kind of shrine maiden that you've never seen before)
 （一组僵尸的图画，按危险等级排序。值得注意的是一个被符咒包围的僵尸，一个被丝带包围的僵尸，一个拿着剑的僵尸战士，还有……某种你从未见过的巫女以前看过）
+(An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE)|The first thing to understand is that tying someone up is difficult if they are not in a vulnerable position. If your opponent is vulnerable, then binding will be twice as effective!
+（摘自束缚巫术：学生指南）|首先要明白的是，如果某人不处于弱势，那么将其捆绑起来是很困难的。如果你的对手很脆弱，那么束缚的效果会加倍！
+(An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE)|Once your opponent is nicely trussed up, you can break their will by ticking them with a Feather, Ice Cube, or Magic Wand. This will deal extra damage.
+（摘自束缚巫术：学生指南）|一旦你的对手被很好地束缚起来，你就可以通过用羽毛、冰块或魔杖打他们来打破他们的意志。这会造成额外伤害。
+(An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE)|Bigger and more resilient opponents are much more effective at breaking out of your binds. Try to deal some damage to them to decrease the speed at which they struggle out of your restraints.
+（摘自束缚巫术：学生指南）|更强壮、更有韧性的对手更能有效地突破你造成的束缚。尝试对他们造成一些伤害，以降低他们挣脱你的束缚的速度。
+(An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE)|Many mages utilize magical runes to set traps. If you want to check for traps, try learning the spell 'Magical Sight' in the Illusion school.
+（摘自束缚巫术：学生指南）|许多法师利用魔法符文来设置陷阱。如果你想检查陷阱，可以尝试在幻术学院学习法术'魔之眼'。
+From Adventuring 101: A guide to combat|Your opponent will become vulnerable in many ways, such as missing you with an attack. You can also teleport to the other side of them when they are attacking you, and this will confuse them briefly.|Vulnerable enemies take extra damage, and are easier to tie up!
+摘自《冒险101：战斗指南》|你的对手会在很多方面变得脆弱，比如在攻击中错过你。当他们攻击你时，你也可以传送到他们的另一边，这会让他们短暂迷惑。|脆弱的敌人会受到额外伤害，并且更容易被束缚！
+From Adventuring 101: A guide to combat|Drenching your opponents makes them more vulnerable to ice and electricity, but may increase their resistance to fire.
+摘自《冒险101：战斗指南》|淋湿你的对手会让他们更容易受到冰和电的伤害，但可能会增加他们的火抗性。
+From Adventuring 101: A guide to combat|Hitting enemies with melee damage while they are frozen will break the ice, but this also doubles the damage dealt by the attack.
+摘自《冒险101：战斗指南》|在敌人被冰冻时用近战伤害击中敌人会打破冰冻，但这也会使攻击造成的伤害翻倍。
+From Adventuring 101: A guide to combat|Did you know that hitting enemies with fire while they are frozen is extra powerful? Enemies take 40% additional damage from fire while frozen, although fire will rapidly unfreeze them.
+摘自《冒险101：战斗指南》|你知道吗，在敌人被冰冻的时候用火攻击他们会带来额外的威力？敌人在冰冻状态下会受到 40% 的额外火焰伤害，但火焰会迅速解冻他们。
+From Adventuring 101: A guide to combat|When you're in a bind, try to play along and look for an opportunity to escape. Fighting back will only make your enemies want to tighten your restraints.
+摘自《冒险101：战斗指南》|当你陷入困境时，尝试配合敌人并寻找逃脱的机会。反击只会让敌人更想收紧你的束缚。
 (A drawing of a suit of armor. It reads: DO NOT TRUST)
 （一套盔甲的图纸。上面写着：不要相信）
 (The note starts with a drawing of a witch in dark robes with bright pink hair) A necromancer. Powerful spellcaster, weak up close.
