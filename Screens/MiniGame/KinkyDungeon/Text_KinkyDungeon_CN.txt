@@ -2292,6 +2292,8 @@ I have altered the rules. Pray I do not alter them further.
 我已改变规则，祈祷我不会再进一步改变它们。
 Bondage Buster
 束缚破坏者
+Blaster
+爆破者
 Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns.
 近战模式造成挠痒伤害，并标记敌人为易受攻击状态，持续 4 回合。
 Nevermere Blaster
