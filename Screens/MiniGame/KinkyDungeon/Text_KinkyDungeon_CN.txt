@@ -13942,6 +13942,8 @@ An energy link appears, linking your ankles close together!
 一条能量链条出现，将你的脚踝紧密地连接在一起！
 Energy Link
 能量链条
+An energy link connecting your leg cuffs together.
+将双腿链接在一起的能量链条。
 An energy link connecting your ankle cuffs together.
 将脚铐链接在一起的能量链条。
 It's powered by a chaos-resonance matrix, which can be overloaded by cutting the field.
