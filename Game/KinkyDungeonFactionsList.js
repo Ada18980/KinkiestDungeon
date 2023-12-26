@@ -599,6 +599,7 @@ let KinkyDungeonFactionRelationsBase = {
 		Mushy: .1,
 		AncientRobot: .1,
 	},
+	dollsmith: {}, // Dummy to help peoples old saves
 	"Dollsmith": {
 		KinkyConstruct: .1,
 		Dragon: -0.5,

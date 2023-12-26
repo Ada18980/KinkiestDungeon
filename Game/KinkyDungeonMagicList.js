@@ -2216,20 +2216,27 @@ let KinkyDungeonSpellListEnemies = [
 		duration: 8,
 	}}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
 
-	{enemySpell: true, name: "EnemyFlashBomb", color: "#ff2200", minRange: 0, sfx: "Miss", school: "Illusion", manacost: 3, specialCD: 12, components: ["Verbal"], hideWarnings: true,
+	{enemySpell: true, name: "EnemyFlashBomb", color: "#ff2200", minRange: 0, sfx: "Miss", landsfx: "Lightning", school: "Illusion", manacost: 3, specialCD: 12, components: ["Verbal"], hideWarnings: true,
 		hitColor: 0xffffff, hitLight: 7,
 		hitevents: [
 			{type: "BlindAll", trigger: "bulletHitEnemy", time: 9},
 		],
 		level:1, type:"inert", onhit:"aoe", time: 0, delay: 1, power: 1, range: 3.5, size: 3, aoe: 1.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 3}},
 
-	{name: "FlashBomb", color: "#ff2200", minRange: 0, sfx: "Miss", school: "Illusion", manacost: 3, specialCD: 12, components: ["Verbal"], hideWarnings: true,
+	{name: "FlashBomb", color: "#ff2200", minRange: 0, sfx: "Miss", landsfx: "Lightning", school: "Illusion", manacost: 3, specialCD: 12, components: ["Verbal"], hideWarnings: true,
 		hitColor: 0xffffff, hitLight: 7,
 		noMiscast: true,
 		hitevents: [
 			{type: "BlindAll", trigger: "bulletHitEnemy", time: 20},
 		],
 		level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 1, range: 4, size: 3, aoe: 1.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 6}},
+	{name: "Flashbang", color: "#ff2200", minRange: 0, landsfx: "Lightning", school: "Illusion", manacost: 3, specialCD: 12, components: ["Verbal"], hideWarnings: true,
+		hitColor: 0xffffff, hitLight: 7,
+		noMiscast: true,
+		hitevents: [
+			{type: "BlindAll", trigger: "bulletHitEnemy", time: 30},
+		],
+		level:1, type:"instant", onhit:"aoe", time: 6, delay: 1, power: 1, range: 4, size: 3, aoe: 1.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 7}},
 	{enemySpell: true, name: "EnemyFlash", color: "#ffffff", minRange: 0, noise: 8, sfx: "FireSpell", school: "Illusion", manacost: 4, components: ["Verbal"], level:1,
 		hitColor: 0xffffff, hitLight: 7,
 		hitevents: [

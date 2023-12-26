@@ -1575,7 +1575,7 @@ const KinkyDungeonRestraints = [
 		Model: "DisplayStand",
 		escapeChance: {"Struggle": -0.1, "Cut": -0.8, "Remove": 0.15, "Pick": -0.1, "Unlock": -0.1},
 		helpChance: {"Remove": 0.35, "Pick": 0.25, "Unlock": 0.5},
-		removeShrine: ["Hogties"],
+		//removeShrine: ["Hogties"],
 		addTag: ["ForceStand"],
 		blockfeet: true,
 		enemyTags: {"displaySpell":100, "display": 100, "displaystand": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "FeetLinked", "BlockKneel", "DiscourageHogtie"], ignoreSpells: true, removeOnLeash: true,
@@ -1595,7 +1595,7 @@ const KinkyDungeonRestraints = [
 		Model: "DisplayStand",
 		escapeChance: {"Struggle": -0.1, "Cut": -0.6, "Remove": 0.5, "Pick": 0.1, "Unlock": -0.05},
 		helpChance: {"Remove": 0.8, "Pick": 0.35, "Unlock": 0.8},
-		removeShrine: ["Hogties"],
+		//removeShrine: ["Hogties"],
 		enemyTags: {"dollstandSpell":100, "dollstand": 100}, playerTags: {"arousalMode": -1000}, minLevel: 0, allFloors: true, shrine: ["Furniture", "FeetLinked", "BlockKneel", "DiscourageHogtie"], ignoreSpells: true, removeOnLeash: true,
 	},
 	// Bed trap, always possible to struggle out but takes time

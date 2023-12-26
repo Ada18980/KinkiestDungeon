@@ -5189,14 +5189,19 @@ function KDIsImmobile(enemy) {
  * @returns
  */
 function KinkyDungeonCanSwapWith(e, Enemy) {
-	if (KDIsImmobile(e) && (e.Enemy.immobile || !(Enemy == KinkyDungeonJailGuard() || Enemy == KinkyDungeonLeashingEnemy()))) return false; // Definition of noSwap
+	if (KDIsImmobile(e) && (e.Enemy.immobile)) return false; // Definition of noSwap
 	if (e && KDEnemyHasFlag(e, "noswap")) return false; // Definition of noSwap
 
-	if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OffLimits && Enemy != KinkyDungeonJailGuard() && !KinkyDungeonAggressive(Enemy)) return false;
-	// Only jailguard or aggressive enemy is allowed to swap into offlimits spaces unless hostile
+	if (e == KinkyDungeonLeashingEnemy() && Enemy) return false;
 
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.ethereal && e && e.Enemy && !e.Enemy.ethereal) return false; // Ethereal enemies NEVER have seniority, this can teleport other enemies into walls
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.squeeze && e && e.Enemy && !e.Enemy.squeeze) return false; // Squeeze enemies NEVER have seniority, this can teleport other enemies into walls
+
+	if (!e.Enemy.tags || (e.Enemy.tags.scenery && !Enemy.Enemy.tags.scenery))
+		return true;
+
+	if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OffLimits && Enemy != KinkyDungeonJailGuard() && !KinkyDungeonAggressive(Enemy)) return false;
+	// Only jailguard or aggressive enemy is allowed to swap into offlimits spaces unless hostile
 
 	// Should not swap or block the leasher
 	if (e == KinkyDungeonLeashingEnemy() && Enemy) return false;
@@ -5208,8 +5213,6 @@ function KinkyDungeonCanSwapWith(e, Enemy) {
 
 	if (e.idle && !Enemy.idle) return true;
 	if (KDBoundEffects(e) > 3) return true;
-	if (!e.Enemy.tags || (e.Enemy.tags.scenery && !Enemy.Enemy.tags.scenery))
-		return true;
 	else if (!e.Enemy.tags || (e.Enemy.tags.minor && !Enemy.Enemy.tags.minor))
 		return true;
 	else if (Enemy && Enemy.Enemy && Enemy.Enemy.tags && Enemy.Enemy.tags.elite) {

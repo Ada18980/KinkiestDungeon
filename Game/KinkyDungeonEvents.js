@@ -22,6 +22,7 @@ let KDEventDataBase = {
 	SlimeLevel: 0,
 	SlimeLevelStart: 0,
 	CurseHintTick: false,
+	ActivationsThisTurn: 0,
 };
 let KDEventData = Object.assign({}, KDEventDataBase);
 
@@ -212,9 +213,10 @@ let KDEventMapInventory = {
 							}
 						}
 						category.updateFunction(e, item, data, [...restMap.keys()]);
-						if (restMap.size == category.activateCount) {
+						if (restMap.size == category.activateCount && KDEventData.ActivationsThisTurn < 100) {
 							// ACTIVATE
 							category.activateFunction(e, item, data, [...restMap.keys()]);
+							KDEventData.ActivationsThisTurn = (KDEventData.ActivationsThisTurn || 0) + 1;
 						}
 					}
 				}
@@ -7710,6 +7712,7 @@ let KDEventMapGeneric = {
 		 * You can add your own event like this one
 		 */
 		"resetVars": (e, data) => {
+			KDEventData.ActivationsThisTurn = 0;
 			KDEventData.CurseHintTick = false;
 			if (KDEventData.SlimeLevel < 0)
 				KDEventData.SlimeLevel = 0;

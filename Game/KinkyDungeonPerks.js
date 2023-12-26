@@ -1011,10 +1011,10 @@ function KDGetPerkShrineBondage(perks) {
 		for (let i = 0; i < (Math.abs(cost) || 1); i++) {
 			if (cost > 0 && KDRandom() < chancePos) {
 				let rests = getRestraints();
-				if (rests) ret.push(rests[Math.floor(KDRandom() * rests.length)].restraint.name);
+				if (rests?.length > 0) ret.push(rests[Math.floor(KDRandom() * rests.length)].restraint.name);
 			} else if (cost <= 0 && KDRandom() < chanceNeg) {
 				let rests = getRestraints();
-				if (rests) ret.push(rests[Math.floor(KDRandom() * rests.length)].restraint.name);
+				if (rests?.length > 0) ret.push(rests[Math.floor(KDRandom() * rests.length)].restraint.name);
 			}
 		}
 
