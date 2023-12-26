@@ -67,31 +67,31 @@ Clothes: Draw Armor
 Enable Music
 启用音乐
 GFX: Async Rendering (beta)
-GFX: 异步渲染 (测试版)
+图像特效：异步渲染 (测试版)
 GFX: Bloom & Glow
-GFX: 曝光 & 发光
+图像特效：曝光 & 发光
 UI: Transparent UI
 UI：透明UI
 UI: Turn Counter
 UI：回合计数器
 GFX: Flash Screen on Stun
-GFX: 眩晕时闪屏
+图像特效：眩晕时闪屏
 GFX: Map Particles
-GFX: 地图粒子效果
+图像特效：地图粒子效果
 GFX: Distraction Particles
-GFX: 性奋粒子
+图像特效：性奋粒子
 GFX: Vibration Particles
-GFX: 震动粒子
+图像特效：震动粒子
 UI: Show NPC Status
 UI：显示NPC状态
 UI: Show Spell Range
 UI：显示法术范围
 GFX: Trim Edge Walls
-GFX: 整理边缘墙
+图像特效：整理边缘墙
 GFX: Fog Shader
-GFX: 雾着色器
+图像特效：雾着色器
 GFX: Light Shader
-GFX: 灯光着色器
+图像特效：灯光着色器
 Intense 'Let Go' VFX
 强烈高潮视效
 Enable Toy SFX
@@ -101,9 +101,9 @@ Enable Fullscreen
 Hi-Res Distortion (Needs Restart)
 高分辨率失真（需重启）
 GFX: High Quality Animations
-GFX: 高品质动画
+图像特效：高品质动画
 GFX: Enemy Animations
-GFX: 敌人动画
+图像特效：敌人动画
 Controls: One-Click Move
 控制: 单击移动
 Controls: Latch Shift Key
