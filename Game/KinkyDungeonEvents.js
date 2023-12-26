@@ -271,7 +271,11 @@ let KDEventMapInventory = {
 				KDItemDataSet(item, e.kind, count);
 				// Evaluate damage count
 				if (!e.count || count >= e.count) {
-					item.curse = "";
+					let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
+					item.curse = undefined;
+					if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+						KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+					}
 					KinkyDungeonLock(item, "");
 					KinkyDungeonSendTextMessage(5, TextGet(e.msg).replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
 				} else {
@@ -289,7 +293,11 @@ let KDEventMapInventory = {
 				KDItemDataSet(item, e.kind, count);
 				// Evaluate damage count
 				if (!e.count || count >= e.count) {
-					item.curse = "";
+					let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
+					item.curse = undefined;
+					if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+						KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+					}
 					KinkyDungeonLock(item, "");
 					KinkyDungeonSendTextMessage(5, TextGet(e.msg).replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
 				} else {
@@ -342,14 +350,18 @@ let KDEventMapInventory = {
 		},
 		"SacrificeMage": (e, item, data) => {
 			if (data.enemy && data.enemy.Enemy?.tags?.mage) {
-				let value = data.enemy.Enemy.unlockCommandLevel || 1;
+				let value = Math.max(1, Math.max(1, KDEnemyRank(data.enemy)) * (data.enemy.Enemy.unlockCommandLevel || 1));
 				// Increase damage count
 				let count = KDItemDataQuery(item, e.kind) || 0;
 				count = count + Math.max((value * (e.mult || 1)) || 1, 1);
 				KDItemDataSet(item, e.kind, count);
 				// Evaluate damage count
 				if (!e.count || count >= e.count) {
-					item.curse = "";
+					let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
+					item.curse = undefined;
+					if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+						KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+					}
 					KinkyDungeonLock(item, "");
 					KinkyDungeonSendTextMessage(5, TextGet("KDRemoveSacrificeMage").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
 				} else {
@@ -752,7 +764,11 @@ let KDEventMapInventory = {
 				KDItemDataSet(item, e.kind, count);
 				// Evaluate damage count
 				if (!e.count || count >= e.count) {
-					item.curse = "";
+					let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
+					item.curse = undefined;
+					if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+						KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+					}
 					KinkyDungeonLock(item, "");
 					KinkyDungeonSendTextMessage(5, TextGet(e.msg).replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
 				} else if ((!KinkyDungeonFlags.get("CurseHintTick") || KDEventData.CurseHintTick)) {
@@ -868,7 +884,11 @@ let KDEventMapInventory = {
 		},
 		"RemoveOnBuffName": (e, item, data) => {
 			if (KinkyDungeonPlayerBuffs[e.kind] && (!e.chance || KDRandom() < e.chance)) {
-				item.curse = "";
+				let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
+				item.curse = undefined;
+				if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+					KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+				}
 				KinkyDungeonLock(item, "");
 				KinkyDungeonSendTextMessage(5, TextGet("KDRemoveOnDmgType").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
 			}
@@ -1153,7 +1173,11 @@ let KDEventMapInventory = {
 				KDItemDataSet(item, e.kind, count);
 				// Evaluate damage count
 				if (!e.count || count >= e.count) {
-					item.curse = "";
+					let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
+					item.curse = undefined;
+					if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+						KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+					}
 					KinkyDungeonLock(item, "");
 					KinkyDungeonSendTextMessage(5, TextGet("KDRemoveOnDmgType").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
 				} else {
@@ -1440,7 +1464,11 @@ let KDEventMapInventory = {
 					KDItemDataSet(item, e.kind, count);
 					// Evaluate damage count
 					if (!e.count || count >= e.count) {
-						item.curse = "";
+						let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
+						item.curse = undefined;
+						if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+							KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+						}
 						KinkyDungeonLock(item, "");
 						KinkyDungeonSendTextMessage(5, TextGet("KDRemoveOnDmgType").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
 					} else {

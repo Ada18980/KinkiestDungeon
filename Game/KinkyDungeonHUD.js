@@ -2106,7 +2106,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 			text: TextGet("StatEvasion")
 				.replace("Percent", ("") + Math.round((1 - evasion) * 100))
 				.replace("EVASIONSUM", ("") + Math.round((KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion")) * 100))
-				.replace("EVASIONPENALTY", ("") + Math.round((1 - KinkyDungeonMultiplicativeStat(KDPlayerEvasionPenalty())) * -100)),
+				.replace("EVASIONPENALTY", ("") + Math.round(KDPlayerEvasionPenalty() * -100)),
 			count: ("") + Math.round((1 - evasion) * 100) + "%",
 			icon: "infoEvasion",
 			countcolor: evasion < 1 ? "#65d45d" : (evasion == 1 ? "#ffffff" : "#ff5555"),
@@ -2116,7 +2116,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 			text: TextGet("StatBlock")
 				.replace("Percent", ("") + Math.round((1 - block) * 100))
 				.replace("BLOCKSUM", ("") + Math.round((KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block")) * 100))
-				.replace("BLOCKPENALTY", ("") + Math.round((1 - KinkyDungeonMultiplicativeStat(KDPlayerBlockPenalty())) * -100)),
+				.replace("BLOCKPENALTY", ("") + Math.round(KDPlayerBlockPenalty() * -100)),
 			count: ("") + Math.round((1 - block) * 100) + "%",
 			icon: "infoBlock",
 			countcolor: block < 1 ? "#65d45d" : (block == 1 ? "#ffffff" : "#ff5555"),

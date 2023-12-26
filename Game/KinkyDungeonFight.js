@@ -446,15 +446,17 @@ function KDCalcRestraintBlock() {
 function KinkyDungeonPlayerEvasion(Event) {
 	let data = {
 		playerEvasionMult: 1.0,
+		penalty: KDPlayerEvasionPenalty(),
 		eva: KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion"),
 		evaPenalty: 0,
 		val: 0
 	};
-	data.evaPenalty = data.eva > 0 ? Math.min(data.eva, KDPlayerEvasionPenalty()) : 0;
+
+	data.evaPenalty = data.eva > 0 ? Math.min(1, data.penalty) : 0;
 
 
 	KinkyDungeonSendEvent(Event ? "beforecalcPlayerEvasionEvent" : "beforecalcPlayerEvasion", data);
-	data.val = data.playerEvasionMult * KinkyDungeonMultiplicativeStat(data.eva * (1 - data.evaPenalty)
+	data.val = data.playerEvasionMult * KinkyDungeonMultiplicativeStat(data.eva * (1 - data.evaPenalty) / Math.max(1, data.penalty)
 	+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "EvasionProtected"));
 
 	KinkyDungeonSendEvent(Event ? "calcPlayerEvasionEvent" : "calcPlayerEvasion", data);
@@ -465,7 +467,7 @@ function KinkyDungeonPlayerEvasion(Event) {
 function KinkyDungeonPlayerBlock(Event) {
 	let playerBlockMult = 1.0;
 	let blk = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block");
-	let playerBlockPenalty = blk > 0 ? Math.min(blk, KDPlayerBlockPenalty()) : 0;
+	let playerBlockPenalty = blk > 0 ? Math.min(1, KDPlayerBlockPenalty()) : 0;
 	let val = playerBlockMult * KinkyDungeonMultiplicativeStat(blk * (1 - playerBlockPenalty)
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BlockProtected"));
 
@@ -475,7 +477,7 @@ function KinkyDungeonPlayerBlock(Event) {
 function KinkyDungeonPlayerBlockLinear() {
 	let playerBlockMult = 1.0;
 	let blk = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block");
-	let playerBlockPenalty = blk > 0 ? Math.min(blk, KDPlayerBlockPenalty()) : 0;
+	let playerBlockPenalty = blk > 0 ? Math.min(1, KDPlayerBlockPenalty()) : 0;
 	let val = playerBlockMult * (blk * (1 - playerBlockPenalty)
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BlockProtected"));
 
