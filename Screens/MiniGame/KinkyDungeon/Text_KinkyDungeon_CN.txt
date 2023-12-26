@@ -5512,6 +5512,12 @@ A gag designed to cripple mages. It's made of a squishy rubbery material.
 旨在削弱法师的口塞。它由柔软的橡胶材料制成。
 It's sealed with a magical spell that rapidly absorbs mana! When it drains 40 mana it will transform into an ordinary gag and inflate.
 它被封印着快速吸收魔力的魔法咒语！当它耗尽 40 点法力时，它会变成一个普通的口塞并膨胀。
+Anti-Mage Gag
+反法师口塞
+A gag designed to cripple experienced spellcasters. It's made of a magic-absorbing rubber.
+旨在削弱经验丰富的法师的口塞。它是由吸魔橡胶制成的。
+You feel the energy flowing out of you! When it drains 100 mana it will transform into an ordinary gag and inflate.
+你感觉到能量从你身上流出！当它耗尽 100 点法力时，它会变成一个普通的口塞并膨胀。
 Ballet Heels
 芭蕾高跟鞋
 A pair of shoes with heels so tall it forces you on your toes.
