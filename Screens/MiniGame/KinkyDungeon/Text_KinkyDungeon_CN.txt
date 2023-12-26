@@ -12980,6 +12980,8 @@ Why don't we have a little fun?
 （购买物品）
 Dollmaker
 玩偶师
+DOLLMAKER
+玩偶师
 The Dollmaker throws a device to the ground, teleporting her instantly!
 玩偶师将一个装置扔到地上，她立马就被传送走了！
 The Dollmaker's necklace flashes as you find yourself suddenly restrained! (+RestraintAdded)
