@@ -5380,6 +5380,8 @@ Elbow Chain
 肘链
 A pair of leather cuffs keeping your elbows locked together!.
 一对皮革手铐将你的肘部固定在一起！
+A pair of cuffs keeping your elbows locked together!.
+一对手铐将你的肘部固定在一起！
 A pair of cuffs keeping your elbows locked together!
 一对手铐将你的肘部固定在一起！
 Your elbows detatch!
