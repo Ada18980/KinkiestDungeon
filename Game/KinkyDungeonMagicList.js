@@ -2236,7 +2236,7 @@ let KinkyDungeonSpellListEnemies = [
 		hitevents: [
 			{type: "BlindAll", trigger: "bulletHitEnemy", time: 30},
 		],
-		level:1, type:"instant", onhit:"aoe", time: 6, delay: 1, power: 1, range: 4, size: 3, aoe: 1.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 7}},
+		level:1, type:"hit", onhit:"aoe", time: 6, delay: 1, power: 1, range: 4, size: 3, aoe: 1.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 7}},
 	{enemySpell: true, name: "EnemyFlash", color: "#ffffff", minRange: 0, noise: 8, sfx: "FireSpell", school: "Illusion", manacost: 4, components: ["Verbal"], level:1,
 		hitColor: 0xffffff, hitLight: 7,
 		hitevents: [
