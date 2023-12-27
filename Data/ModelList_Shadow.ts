@@ -214,7 +214,7 @@ AddModel({
 			Invariant: true,
 			InheritColor: "Ribbon",
 			DisplacementInvariant: true,
-			DisplacementSprite: "CrotchropeSquish",
+			DisplacementSprite: "CrotchropeSquished",
 			DisplaceLayers: ToMap(["RibbonTorso"]),
 
 		},
