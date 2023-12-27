@@ -124,6 +124,10 @@ UI: Show Player Facing
 UI：显示玩家面向
 UI: Show more learnable spells
 UI：显示更多可学习的法术
+UI: Hide Player Buff Auras
+UI：隐藏玩家增益光环
+UI: Hide Enemy Buff Auras
+UI：隐藏敌人增益光环
 Helpless!
 无助！
 Evaded!
@@ -8052,16 +8056,16 @@ You utter a word of healing.
 你咏唱治愈的咒语。
 Flame Blade
 火焰之刃
-When enabled: Weapon attacks cost mana and create a flame strike that deals 30 fire damage to adjacent targets.
-启用后武器攻击消耗法力值并造成火焰伤害，对相邻目标造成 30 点火焰伤害。
+When enabled: Melee weapon attacks cost mana and create a flame strike that deals 30 fire damage to adjacent targets.
+启用后近战武器攻击消耗法力值并造成火焰伤害，对相邻目标造成 30 点火焰伤害。
 Engulf
 吞噬
 When enabled: Your melee attacks deal +20 glue damage and create slime.
 启用时：你的近战攻击额外造成 20 点胶水伤害并制造粘液。
-Strengthen
-强化
-When enabled: Struggling is more powerful, and your attack damage is increased by +20 if your weapon deals physical damage.
-激活时可快速挣扎 +20 点物理武器伤害。
+Super Strengthen
+超级强化
+When enabled: Struggling is more powerful, and your melee attack damage is increased by +20 if your weapon deals physical damage.
+启用时：挣扎更加强大，如果你的武器造成物理伤害，你的近战攻击力会提高20。
 Your body glows with magical energy!
 你的身体散发着神奇的能量！
 Enhance Will
@@ -14810,8 +14814,8 @@ Fire Arrow
 火焰箭
 Vine Arrows
 藤蔓箭
-Converts arrows to all-natural organic versions for 20 extra charge, which apply 50 binding to the target and deal chain damage instead.
-将箭转换为纯天然有机版本，需要 20 次额外充能，这会对目标施加 50 点束缚并造成锁链伤害。
+Converts arrows to all-natural organic versions for 20 extra charge, which apply 80 binding to the target and deal chain damage instead.
+将箭转换为纯天然有机版本，需要 20 次额外充能，这会对目标施加 80 点束缚并造成锁链伤害。
 You switch to using vine arrows.
 你切换到使用藤蔓箭。
 Vine Arrow
@@ -16024,6 +16028,10 @@ Disarmed!!!
 缴械！！！
 Show Buffs and Stats
 显示增益和统计数据
+Remove Devotion
+消除忠诚
+Devote Yourself
+忠诚自己
 Pray for Assistance
 祈求帮助
 This shrine bears a request carved in stone:
@@ -16034,6 +16042,14 @@ You accept the goddess' quest.
 你接受了女神的任务。
 You cannot accept that quest right now.
 你现在不能接受此任务。
+Removes your devotion from this goddess.
+消除你对这位女神的忠诚度。
+You are not devoted to this goddess.
+你并不忠诚于这位女神。
+Guarantees a quest from this goddess on every floor.
+保证每层都有这位女神的任务。
+You are already a devotee of this goddess.
+你已经忠诚于这位女神了。
 Offer gold to the Goddess in exchange for help. Destroys the shrine.
 向女神提供金币以换取帮助。破坏神泉。
 Ask for help without offering gold.
@@ -16076,6 +16092,8 @@ You did not do your quest! The Goddess has decided to punish you.
 你没有完成你的任务！女神决定惩罚你。
 You have pleased the Goddess.
 你已经让女神高兴了。
+The Goddess calls you a good girl.
+女神夸你是个好女孩。
 Rescue some alchemists from their own experiment.
 从他们自己的实验中拯救一些炼金术士。
 Stop a rebels from making a pact with primordial beings.
@@ -16588,6 +16606,8 @@ The items float to you!
 物品飘向了你！
 There's nothing to pick up.
 没有什么能捡到的。
+The chest is locked.
+箱子是锁住的。
 Select a tile with items
 选择包含物品的位置
 Enhanced Recovery
