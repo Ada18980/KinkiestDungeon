@@ -1725,7 +1725,7 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 			return false;
 		},(refused) => { // Yes function. This happens if the user submits willingly
 			if (!KinkyDungeonFlags.get("BoundOfferRep" + goddess[0])) {
-				KinkyDungeonChangeRep(goddess[0], 3);
+				KinkyDungeonChangeRep(goddess[0], 1.5);
 				KinkyDungeonSetFlag("BoundOfferRep" + goddess[0], -1, 1);
 			}
 

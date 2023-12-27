@@ -258,7 +258,7 @@ function KinkyDungeonPayShrine(type) {
 
 	// TODO shrine effects
 	if (KinkyDungeonShrineTypeRemove.includes(type)) {
-		rep = KinkyDungeonRemoveRestraintsWithShrine(type, KDShrineRemoveCount, true);
+		rep = Math.min(2, KinkyDungeonRemoveRestraintsWithShrine(type, KDShrineRemoveCount, true) * 0.5);
 		KinkyDungeonChangeRep("Ghost", -rep);
 
 		ShrineMsg = TextGet("KinkyDungeonPayShrineRemoveRestraints");
@@ -281,9 +281,9 @@ function KinkyDungeonPayShrine(type) {
 			]});
 		}
 		KDSendStatus('goddess', type, 'shrineDonate');
-		rep = 2.5;
+		rep = 2;
 	} else if (type == "Will") {
-		rep = Math.ceil(5 - KinkyDungeonStatMana * 1.5 / KinkyDungeonStatManaMax - KinkyDungeonStatWill * 3.5 / KinkyDungeonStatWillMax);
+		rep = Math.min(2, Math.ceil(5 - KinkyDungeonStatMana * 1.5 / KinkyDungeonStatManaMax - KinkyDungeonStatWill * 3.5 / KinkyDungeonStatWillMax));
 		KinkyDungeonChangeMana(KinkyDungeonStatManaMax, false, 0, false, true);
 		KinkyDungeonChangeWill(KDWillShrineWill * KinkyDungeonStatWillMax);
 		KinkyDungeonNextDataSendStatsTime = 0;

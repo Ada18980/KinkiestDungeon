@@ -448,7 +448,7 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 							KinkyDungeonFastStruggleSuppress = true;
 					}
 				}
-				if (enemy.buffs && (!KDGetAI(enemy) || !KDAIType[KDGetAI(enemy)] || !KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)) {
+				if (KDToggles.EnemyAura && enemy.buffs && (!KDGetAI(enemy) || !KDAIType[KDGetAI(enemy)] || !KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)) {
 					let aura_scale = 0;
 					let aura_scale_max = 0;
 					for (let b of Object.values(enemy.buffs)) {

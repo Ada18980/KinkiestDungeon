@@ -1293,9 +1293,10 @@ function KinkyDungeonDisarm(Enemy, suff) {
  * @param {entity} Enemy
  * @param {*} Damage
  * @param {number} [chance]
+ * @param {any} [bullet]
  * @returns {boolean}
  */
-function KinkyDungeonAttackEnemy(Enemy, Damage, chance) {
+function KinkyDungeonAttackEnemy(Enemy, Damage, chance, bullet) {
 	let disarm = false;
 	if ((Damage && !Damage.nodisarm) && Enemy.Enemy && Enemy.Enemy.disarm && Enemy.disarmflag > 0) {
 		if (Enemy.stun > 0 || Enemy.freeze > 0 || Enemy.blind > 0 || Enemy.teleporting > 0 || (Enemy.playWithPlayer && !Enemy.hostile)) Enemy.disarmflag = 0;
@@ -1310,6 +1311,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, chance) {
 	let channel = KinkyDungeonPlayerDamage?.channel || 0;
 	let slow = KinkyDungeonPlayerDamage?.channelslow || 0;
 	let predata = {
+		bullet: bullet,
 		channel: channel,
 		slow: slow,
 		targetX: Enemy.x,
@@ -1344,7 +1346,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, chance) {
 
 
 	let hp = Enemy.hp;
-	KinkyDungeonDamageEnemy(Enemy, (predata.eva) ? dmg : null, undefined, undefined, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, predata.vulnConsumed, predata.critical);
+	KinkyDungeonDamageEnemy(Enemy, (predata.eva) ? dmg : null, undefined, undefined, undefined, bullet, KinkyDungeonPlayerEntity, undefined, undefined, predata.vulnConsumed, predata.critical);
 	if (predata.eva && (Damage.sfx || (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.sfx))) {
 		if (KDToggles.Sound) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "Audio/" + (Damage.sfx || KinkyDungeonPlayerDamage.sfx) + ".ogg"});
 		//AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + KinkyDungeonPlayerDamage.sfx + ".ogg");
@@ -1376,6 +1378,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, chance) {
 		Enemy.disarmflag += Enemy.Enemy.disarm;
 	}
 	let data = {
+		bullet: bullet,
 		channel: predata.channel,
 		slow: predata.slow,
 		targetX: Enemy.x,

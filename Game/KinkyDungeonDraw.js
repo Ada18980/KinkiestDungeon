@@ -982,7 +982,7 @@ function KinkyDungeonDrawGame() {
 
 				KDDrawEffectTiles(canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset);
 
-				if (KDToggles.ForceWarnings || KDMouseInPlayableArea()) {
+				if (KDToggles.PlayerAura && (KDToggles.ForceWarnings || KDMouseInPlayableArea())) {
 					let aura_scale = 0;
 					let aura_scale_max = 0;
 					for (let b of Object.values(KinkyDungeonPlayerBuffs)) {

@@ -2029,28 +2029,46 @@ let KinkyDungeonSpellListEnemies = [
 		faction: "Player",
 		staminacost: 2,
 		crit: 1.5,
+		events: [
+			{trigger: "bulletHitEnemy", type: "Arrow"},
+		],
 		projectileTargeting:true, onhit:"", power: 2.5, delay: 0, range: 7.5, damage: "pierce", speed: 2.5},
 	{name: "ArrowRecurve", tags: ["arrowreplace"], color: "#88ff88", sfx: "Arrow", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
 		faction: "Player",
 		staminacost: 3.5,
 		crit: 1.5,
+		events: [
+			{trigger: "bulletHitEnemy", type: "Arrow"},
+		],
 		projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 8.5, damage: "pierce", speed: 3},
 	{name: "ArrowLongbow", tags: ["arrowreplace"], color: "#88ff88", sfx: "Arrow", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
 		faction: "Player",
 		staminacost: 6.0,
 		crit: 1.5,
+		events: [
+			{trigger: "bulletHitEnemy", type: "Arrow"},
+		],
 		projectileTargeting:true, onhit:"", power: 6.0, delay: 0, range: 10, damage: "pierce", speed: 3.5},
 	{name: "ArrowBolt", tags: ["arrowreplace"], color: "#88ff88", sfx: "ArrowBolt", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
 		crit: 2.0,
+		events: [
+			{trigger: "bulletHitEnemy", type: "Arrow"},
+		],
 		faction: "Player",
 		projectileTargeting:true, onhit:"", power: 6.5, delay: 0, range: 10, damage: "pierce", speed: 3},
 	{name: "ArrowBoltPistol", tags: ["arrowreplace"], color: "#88ff88", sfx: "ArrowBolt", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
 		crit: 2.0,
+		events: [
+			{trigger: "bulletHitEnemy", type: "Arrow"},
+		],
 		faction: "Player",
 		projectileTargeting:true, onhit:"", power: 4.5, delay: 0, range: 7.5, damage: "pierce", speed: 2.5},
 	{name: "ArrowBoltHeavy", tags: ["arrowreplace"], color: "#88ff88", sfx: "ArrowBolt", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
 		crit: 2.5, pierceEnemies: true,
 		faction: "Player",
+		events: [
+			{trigger: "bulletHitEnemy", type: "Arrow"},
+		],
 		projectileTargeting:true, onhit:"", power: 7, delay: 0, range: 14, damage: "pierce", speed: 4},
 
 	{name: "ArrowFire", tags: ["arrowspecial"], color: "#ffff00", sfx: "FireSpell", landsfx: "Lightning", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt", projectileTargeting:true,
@@ -2060,6 +2078,9 @@ let KinkyDungeonSpellListEnemies = [
 			name: "Ember",
 			duration: -4,
 		},
+		events: [
+			{trigger: "bulletHitEnemy", type: "Arrow"},
+		],
 		onhit:"aoe", power: 4, noDirectDamage: true, delay: 0, range: 7.5, aoe: 1.5, lifetime: 1, damage: "fire", speed: 2.5, playerEffect: {name: "HeatBlast", time: 1, damage: "fire", power: 4}},
 	{name: "ArrowVine", tags: ["arrowspecial"], color: "#55ff55", sfx: "FireSpell", landsfx: "MagicSlash", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt", projectileTargeting:true,
 		crit: 1.5,
@@ -2069,7 +2090,10 @@ let KinkyDungeonSpellListEnemies = [
 			name: "Vines",
 			duration: 20,
 		},
-		onhit:"", power: 4, delay: 0, range: 7.5, bind: 5, lifetime: 1, damage: "chain", speed: 2.5, playerEffect: {name: "Bind", damage: "chain", power: 2, tag: "vineRestraints"}},
+		events: [
+			{trigger: "bulletHitEnemy", type: "Arrow"},
+		],
+		onhit:"", power: 4, delay: 0, range: 7.5, bind: 8, lifetime: 1, damage: "chain", speed: 2.5, playerEffect: {name: "Bind", damage: "chain", power: 2, tag: "vineRestraints"}},
 
 	{name: "BlasterBlast", hitsfx: "Shock", sfx: "Laser", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 2.5, time: 1, delay: 0,
 		bulletColor: 0xffff00, bulletLight: 5, noMiscast: true,

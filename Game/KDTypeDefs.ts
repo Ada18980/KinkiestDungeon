@@ -1357,6 +1357,8 @@ interface KinkyDungeonEvent {
 	dist?: number;
 	aoe?: number;
 	buffType?: string;
+	bullet?: boolean,
+	melee?: boolean,
 	time?: number;
 	bindType?: string;
 	chance?: number;

@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.4 (Bugfix 1)"
+KDVersionStr,"5.0.5"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -74,6 +74,8 @@ KDToggleBuffSide,UI: Draw Buffs on Side
 KDToggleShowPath,UI: Show Trajectory on Auto-Path
 KDToggleShowFacing,UI: Show Player Facing
 KDToggleShowSameCatSpells,UI: Show more learnable spells
+KDTogglePlayerAura,UI: Hide Player Buff Auras
+KDToggleEnemyAura,UI: Hide Enemy Buff Auras
 
 
 KDHelpless,Helpless!
@@ -6104,14 +6106,14 @@ KinkyDungeonSpellDescriptionHeal2,Restore 45 hitpoints to an allied creature.
 KinkyDungeonSpellCastHeal2,You utter a word of healing.
 
 KinkyDungeonSpellFlameBlade,Flame Blade
-KinkyDungeonSpellDescriptionFlameBlade,When enabled: Weapon attacks cost mana and create a flame strike that deals 30 fire damage to adjacent targets.
+KinkyDungeonSpellDescriptionFlameBlade,When enabled: Melee weapon attacks cost mana and create a flame strike that deals 30 fire damage to adjacent targets.
 KinkyDungeonSpellFlameStrike,Flame Blade
 
 KinkyDungeonSpellEngulf,Engulf
 KinkyDungeonSpellDescriptionEngulf,When enabled: Your melee attacks deal +20 glue damage and create slime.
 
-KinkyDungeonSpellStrength,Strengthen
-KinkyDungeonSpellDescriptionStrength,"When enabled: Struggling is more powerful, and your attack damage is increased by +20 if your weapon deals physical damage."
+KinkyDungeonSpellStrength,Super Strength
+KinkyDungeonSpellDescriptionStrength,"When enabled: Struggling is more powerful, and your melee attack damage is increased by +20 if your weapon deals physical damage."
 KinkyDungeonSpellStrengthStruggle,Your body glows with magical energy!
 
 KinkyDungeonSpellWillpower,Enhance Will
@@ -17368,7 +17370,7 @@ KDSwitchArrowFireSpell,"You switch to using fire arrows."
 KinkyDungeonSpellArrowFire,Fire Arrow
 
 KinkyDungeonSpellArrowVineSpell,Vine Arrows
-KinkyDungeonSpellDescriptionArrowVineSpell,"Converts arrows to all-natural organic versions for 20 extra charge, which apply 50 binding to the target and deal chain damage instead."
+KinkyDungeonSpellDescriptionArrowVineSpell,"Converts arrows to all-natural organic versions for 20 extra charge, which apply 80 binding to the target and deal chain damage instead."
 KDSwitchArrowVineSpell,"You switch to using vine arrows."
 KinkyDungeonSpellArrowVine,Vine Arrow
 KinkyDungeonSpellArrowVineBind,"A sudden burst of vines overtakes you as you find yourself wrapped up tightly!"
@@ -18318,28 +18320,36 @@ KDQuest_WolfgirlHunters,You are being chased by a band of relentless poachers.
 KDQuest_RopeQuest,Slay the Rope Kraken.
 KDQuestFail_RopeQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_RopeQuest,You have pleased the Goddess.
+KDQuestSucceedSub_RopeQuest,The Goddess calls you a good girl.
 KDQuest_LatexQuest,Rescue some alchemists from their own experiment.
 KDQuestFail_LatexQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_LatexQuest,You have pleased the Goddess.
+KDQuestSucceedSub_LatexQuest,The Goddess calls you a good girl.
 KDQuest_LeatherQuest,Stop a rebels from making a pact with primordial beings.
 KDQuestFail_LeatherQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_LeatherQuest,You have pleased the Goddess.
+KDQuestSucceedSub_LeatherQuest,You have pleased the Goddess.
 KDQuest_MetalQuest,Decommission some malfunctioning drones.
 KDQuestFail_MetalQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_MetalQuest,You have pleased the Goddess.
+KDQuestSucceedSub_MetalQuest,The Goddess calls you a good girl.
 
 KDQuest_WillQuest,Resolve a dispute between elves and catgirls by tying up both sides.
 KDQuestFail_WillQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_WillQuest,You have pleased the Goddess.
+KDQuestSucceedSub_WillQuest,The Goddess calls you a good girl.
 KDQuest_ElementsQuest,Repel a planar incursion by a dangerous demon.
 KDQuestFail_ElementsQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_ElementsQuest,You have pleased the Goddess.
+KDQuestSucceedSub_ElementsQuest,The Goddess calls you a good girl.
 KDQuest_ConjureQuest,Stop some witches from performing a dubious summoning ritual.
 KDQuestFail_ConjureQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_ConjureQuest,You have pleased the Goddess.
+KDQuestSucceedSub_ConjureQuest,The Goddess calls you a good girl.
 KDQuest_IllusionQuest,Defeat a congregation of the Shadow Clan.
 KDQuestFail_IllusionQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_IllusionQuest,You have pleased the Goddess.
+KDQuestSucceedSub_IllusionQuest,The Goddess calls you a good girl.
 
 
 

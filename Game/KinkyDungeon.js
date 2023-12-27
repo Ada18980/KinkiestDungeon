@@ -156,6 +156,8 @@ let KDToggles = {
 	ShowPath: true,
 	ShowFacing: false,
 	ShowSameCatSpells: true,
+	PlayerAura: false,
+	EnemyAura: true,
 	LazyWalk: false,
 	ShiftLatch: true,
 };
