@@ -3281,12 +3281,12 @@ let KDEventMapSpell = {
 
 	"orgasm": {
 		"RestoreOrgasmMana": (e, spell, data) => {
-			if (KinkyDungeonStatWill > 0) {
-				let willPercentage = data.wpcost < 0 ? -KinkyDungeonStatWill/data.wpcost : 1.0;
-				if (willPercentage > 0)
-					KinkyDungeonChangeMana(0, false, e.power * willPercentage);
-				KinkyDungeonChangeMana(e.power, false, 0, false, willPercentage > 0.5);
-			}
+			//if (KinkyDungeonStatWill > 0) {
+			let willPercentage = data.wpcost < 0 ? -KinkyDungeonStatWill/data.wpcost : 1.0;
+			if (willPercentage > 0)
+				KinkyDungeonChangeMana(0, false, e.power * willPercentage);
+			KinkyDungeonChangeMana(e.power, false, 0, false, willPercentage > 0.5);
+			//}
 		},
 		"OrgasmDamageBuff": (e, spell, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
