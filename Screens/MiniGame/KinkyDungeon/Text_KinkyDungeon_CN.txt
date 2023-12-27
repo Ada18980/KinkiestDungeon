@@ -124,10 +124,14 @@ UI: Show Player Facing
 UI：显示玩家面向
 UI: Show more learnable spells
 UI：显示更多可学习的法术
-UI: Hide Player Buff Auras
-UI：隐藏玩家增益光环
-UI: Hide Enemy Buff Auras
-UI：隐藏敌人增益光环
+UI: Show Player Buff Auras
+UI：显示玩家增益光环
+UI: Show Enemy Buff Auras
+UI：显示敌人增益光环
+UI: Minimalist Enemy Auras
+UI：极简敌人光环
+UI: More Pixelation
+UI：更多像素化
 Helpless!
 无助！
 Evaded!
@@ -11494,8 +11498,26 @@ Give... Hug...
 给……拥抱……
 The weapon requires power from an Ancient Crystal to function.
 该武器需要来自远古水晶的能量才能发挥作用。
+Target an enemy: Attack with Dragonslaver. Target a tile: Spend 8 charge to launch binding belts
+瞄准敌人：用驯龙者攻击。瞄准一个方块：花费 8 点能量来发射捆绑带
+25 charge to enter Slime Form for 25 turns, and create slime around yourself.
+25 次充能进入粘液形态 25 回合，并在自己周围制造出粘液。
+50 charge to reduce mana cost of next fire, earth, air, and water spell by 50 (once for each element)
+50 点费用可将下一个火、土、空气和水法术的法力消耗减少 50（每个元素一次）
+25 charge to disarm a target for 8 turns, rendering them unable to attack.
+25 次冲锋可以解除目标的武装，持续8回合，使其无法攻击。
+5 charge (+2.5 per charge) to channel and fire a beam that deals 30 + 3/charge electric damage, or 90 at max charge.
+5 次充能（每次充能 +2.5）可引导并发射光束，造成 30 + 3/充能电伤害，或最大充能时造成 90 点伤害。
+10 charge to fire a blast that deals 25 electric damage.
+10 次充能可发射爆炸，造成 25 点电击伤害。
+50 charge to fire an arrow that enrages a target.
+50 冲锋发射一支箭，激怒目标。
+50 charge: Free nearby allies and disrobe enemies, increasing charm damage by 100% and removing 100 armor.
+50 点充能：释放附近的盟友并脱去敌人的衣服，增加100%的魅力伤害并去除100点护甲。
 Create a '+' shaped pool of slime that deals 35 glue damage per hit
 创建一个十字粘液池，每一击造成 35 点胶水伤害
+Ignite torches and nearby objects
+点燃火把和附近的物体
 Preferences
 偏好
 Multiclass
@@ -16780,3 +16802,6 @@ The Timekeeper takes the time to enjoy herself with you... (DamageTaken)
 计时员会花时间和你一起享受时光......（DamageTaken）
 The Timekeeper enacts judgement for disrupting time! (+RestraintAdded)
 计时员对扰乱时间做出判决！（+RestraintAdded）
+
+Analysis
+分析
