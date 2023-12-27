@@ -121,7 +121,7 @@ let KinkyDungeonSpellSpecials = {
 			if (succeed) {
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
 				KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-				KinkyDungeonChangeCharge(KinkyDungeonGetChargeCost(spell));
+				KinkyDungeonChangeCharge(-KinkyDungeonGetChargeCost(spell));
 				return "Cast";
 			}
 

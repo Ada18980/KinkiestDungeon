@@ -74,8 +74,10 @@ KDToggleBuffSide,UI: Draw Buffs on Side
 KDToggleShowPath,UI: Show Trajectory on Auto-Path
 KDToggleShowFacing,UI: Show Player Facing
 KDToggleShowSameCatSpells,UI: Show more learnable spells
-KDTogglePlayerAura,UI: Hide Player Buff Auras
-KDToggleEnemyAura,UI: Hide Enemy Buff Auras
+KDTogglePlayerAura,UI: Show Player Buff Auras
+KDToggleEnemyAura,UI: Show Enemy Buff Auras
+KDToggleOutlineAura,UI: Minimalist Enemy Auras
+KDToggleNearestNeighbor,UI: More Pixelation
 
 
 KDHelpless,Helpless!
@@ -6890,7 +6892,7 @@ KinkyDungeonTrapSpawnDragonLeader,"You are ambushed by dragonhearts!"
 KinkyDungeonTrapSpawnDrone,"A pack of drones descends from the ceiling!"
 KinkyDungeonTrapSpawnCaptureBot,"You hear sirens as a group of robots closes in!"
 KinkyDungeonTrapSpawnDressmaker,"You stumble upon a group of mages wanting to play dress-up!"
-KinkyDungeonTrapSpawnLibrary,"You step on an open book, only to find a furious librarian staring you down!"
+KinkyDungeonTrapSpawnLibrarian,"You step on an open book, only to find a furious librarian staring you down!"
 KinkyDungeonTrapSpawnWolfgirl,"You are ambushed by wolfgirls!"
 KinkyDungeonTrapSpawnAlkahestor,"You are ambushed by an alkahestor!"
 KinkyDungeonTrapSpawnSmallSlime,"Small blobs of slime fall from the ceiling!"
@@ -9721,7 +9723,7 @@ KinkyDungeonSpecialArbiter,"25 charge to disarm a target for 8 turns, rendering 
 KinkyDungeonSpecialBondageBuster,"5 charge (+2.5 per charge) to channel and fire a beam that deals 30 + 3/charge electric damage, or 90 at max charge."
 KinkyDungeonSpecialBlaster,"10 charge to fire a blast that deals 25 electric damage."
 KinkyDungeonSpecialMessengerOfLove,"50 charge to fire an arrow that enrages a target."
-KinkyDungeonSpecialMoiraiScissors,"50 charge to enter a frenzy for 10 turns, attacking twice per turn."
+KinkyDungeonSpecialMoiraiScissors,"50 charge: Free nearby allies and disrobe enemies, increasing charm damage by 100% and removing 100 armor."
 KinkyDungeonSpecialSlimethrower,Create a '+' shaped pool of slime that deals 35 glue damage per hit
 KinkyDungeonSpecialTorch,Ignite torches and nearby objects
 KinkyDungeonSpecialFlamberge,Ignite torches and nearby objects
@@ -18882,3 +18884,5 @@ NameTimekeeper,The Timekeeper
 KillTimekeeper,"The Timekeeper releases her grip on the timeline."
 AttackTimekeeper,"The Timekeeper takes the time to enjoy herself with you... (DamageTaken)"
 AttackTimekeeperBind,"The Timekeeper enacts judgement for disrupting time! (+RestraintAdded)"
+
+KinkyDungeonBuffAnalyze,Analysis

@@ -23,6 +23,15 @@ Monk class?
 - Passive: enchantments apply to unarmed strikes
 - Active: Increase unarmed base damage for 20 turns. After using, need to meditate 10 turns to recharge. Free.
 
+5.0.6
+- Fixed bugs with moirai's scissors (now costs charge instead of generating it, description matches ability)
+- Fixed vine trap message
+- Fixed librarian spawn message
+- Added buff icon for Magical Sight
+- Added option to outline enemies instead of showing buff aura
+- Added option to pixelate the game board
+- Added option to use "minimalist" buff outlines
+
 5.0.5
 - Fixed a few more bugs
 - You can now devote yourself to a goddess to guarantee a quest on future floors

@@ -158,6 +158,8 @@ let KDToggles = {
 	ShowSameCatSpells: true,
 	PlayerAura: false,
 	EnemyAura: true,
+	OutlineAura: true,
+	NearestNeighbor: true,
 	LazyWalk: false,
 	ShiftLatch: true,
 };

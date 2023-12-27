@@ -104,7 +104,7 @@ let KDTrapTypes = {
 		}
 		return {
 			triggered: true,
-			msg: created.length > 0 ? "Default" : "",
+			msg: created.length > 0 ? TextGet("KinkyDungeonTrapCustomVine") : "Default",
 		};
 	},
 	SpawnEnemies: (tile, entity, x, y) => {

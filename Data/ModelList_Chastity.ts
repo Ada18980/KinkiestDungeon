@@ -12,7 +12,7 @@ AddModel({
 	Folder: "Chastity",
 	Parent: "LatexTop",
 	TopLevel: true,
-	Categories: ["Bras", "Tops"],
+	Categories: ["Bras"],
 	Layers: ToLayerMap([
 		{ Name: "BraProtoLining", Layer: "BraChest", Pri:-40.1,
 			Invariant: true,
@@ -43,7 +43,7 @@ AddModel({
 	Folder: "Chastity",
 	Parent: "LatexTop",
 	TopLevel: false,
-	Categories: ["Bras", "Tops"],
+	Categories: ["Bras"],
 	Layers: ToLayerMap([
 		{ Name: "BraProtoLiningZip", Layer: "BraChest", Pri: -40.1,
 			Invariant: true,

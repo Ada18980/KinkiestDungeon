@@ -3864,7 +3864,7 @@ let KDEventMapSpell = {
 		"Analyze": (e, spell, data) => {
 			let activate = false;
 			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, false, false)) && !KinkyDungeonPlayerBuffs.Analyze) {
-				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "Analyze", aura:"#ff5555", type: "MagicalSight", power: e.power, duration: e.time});
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "Analyze", buffSprite: true, aura:"#ff5555", type: "MagicalSight", power: e.power, duration: e.time});
 				activate = true;
 			}
 			if (KinkyDungeonPlayerBuffs.Analyze && KinkyDungeonPlayerBuffs.Analyze.duration > 1) {

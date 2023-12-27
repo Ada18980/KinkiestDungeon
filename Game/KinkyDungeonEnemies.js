@@ -463,26 +463,42 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 							if (b && b.aura && b.duration > 0 && !(b.aurasprite == "Null") && (!b.hideHelpless || !KDHelpless(enemy))) {
 								aura_scale += 1/aura_scale_max;
 								let s = aura_scale;
-								if (b.noAuraColor) {
-									KDDraw(kdenemyboard, kdpixisprites, enemy.id + "," + b.id, KinkyDungeonRootDirectory + "Aura/" + (b.aurasprite ? b.aurasprite : "Aura") + ".png",
-										(tx - CamX)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s + KinkyDungeonGridSizeDisplay * (1 + s) * 0.167,
-										(ty - CamY)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s + KinkyDungeonGridSizeDisplay * (1 + s) * 0.167,
-										KinkyDungeonSpriteSize * (1 + s) * 0.67,
-										KinkyDungeonSpriteSize * (1 + s) * 0.67, undefined, {
-											zIndex: 2,
-										});
-								} else {
-									KDDraw(kdenemyboard, kdpixisprites, enemy.id + "," + b.id, KinkyDungeonRootDirectory + "Aura/" + (b.aurasprite ? b.aurasprite : "Aura") + ".png",
-										(tx - CamX)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s + KinkyDungeonGridSizeDisplay * (1 + s) * 0.167,
-										(ty - CamY)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s + KinkyDungeonGridSizeDisplay * (1 + s) * 0.167,
-										KinkyDungeonSpriteSize * (1 + s) * 0.67,
-										KinkyDungeonSpriteSize * (1 + s) * 0.67,
-										undefined, {
-											tint: string2hex(b.aura),
-											zIndex: 2,
-										});
-								}
+								if (StandalonePatched && KDToggles.OutlineAura && !(b.noAuraColor && b.aurasprite)) {
+									let o = {tint: string2hex(b.aura), blendMode: PIXI.BLEND_MODES.SCREEN, zIndex: -2,};
 
+									let w = (1 + 0.25 * s) * (enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay);
+									let h = (1 + 0.25 * s) * (enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay);
+
+									let spr = KDDraw(kdenemyboard, kdpixisprites, enemy.id + "," + b.id, KinkyDungeonRootDirectory + "Enemies/" + sprite + ".png",
+										(tx + (enemy.offX || 0) - CamX)*KinkyDungeonGridSizeDisplay - ((enemy.flip ? -1 : 1) * w - KinkyDungeonGridSizeDisplay)/2,
+										(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
+										w, h, undefined, o);
+									if (enemy.flip && spr?.scale.x > 0) spr.scale.x = -spr.scale.x;
+									else if (!enemy.flip && spr?.scale.x < 0) spr.scale.x = -spr.scale.x;
+								} else {
+
+									let w = enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay;
+									let h = enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay;
+									// Legacy
+									if (b.noAuraColor && b.aurasprite) {
+										KDDraw(kdenemyboard, kdpixisprites, enemy.id + "," + b.id, KinkyDungeonRootDirectory + "Aura/" + (b.aurasprite ? b.aurasprite : "Aura") + ".png",
+											(tx + (enemy.offX || 0) - CamX + (enemy.flip ? 1 : 0))*KinkyDungeonGridSizeDisplay - (w - KinkyDungeonGridSizeDisplay)/2,
+											(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
+											w, h, undefined, {
+												zIndex: 2,
+											});
+									} else {
+										KDDraw(kdenemyboard, kdpixisprites, enemy.id + "," + b.id, KinkyDungeonRootDirectory + "Aura/" + (b.aurasprite ? b.aurasprite : "Aura") + ".png",
+											(tx - CamX)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s + KinkyDungeonGridSizeDisplay * (1 + s) * 0.167,
+											(ty - CamY)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s + KinkyDungeonGridSizeDisplay * (1 + s) * 0.167,
+											KinkyDungeonSpriteSize * (1 + s) * 0.67,
+											KinkyDungeonSpriteSize * (1 + s) * 0.67,
+											undefined, {
+												tint: string2hex(b.aura),
+												zIndex: 2,
+											});
+									}
+								}
 							}
 						}
 					}
