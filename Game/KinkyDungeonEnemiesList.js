@@ -2793,7 +2793,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterEnemyTick", type: "createIce", power: 1, chance: 1.0, aoe: 1.0},
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#00ffff"},
 		],
-		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}, {name: "IceRune", weight: 1}, {name: "IceBreaker", weight: 0.1, ignoreInInventory: true}]},
+		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}, {name: "IceRune", weight: 1}, {name: "IceBreaker", weight: 1, ignoreInInventory: true}]},
 	{name: "ElementalWater", faction: "Elemental", playLine: "Elemental", clusterWith: "ice", bound: "ElementalWater", color: "#57ff88", tags: KDMapInit(["opendoors", "flying", "antiMagic", "water", "elemental", "ranged", "fireresist", "acidimmune", "electricsevereweakness", "latexRestraints", "ropeRestraints", "elite", "leashing", "jail", "jailer", "hunter"]),
 		armor: 0, kite: 1.5, followRange: 3, AI: "hunt", guardChance: 0.6, evasion: 0.25, summon: [{enemy: "ElementalIce", range: 2.5, count: 1, chance: 0.6, strict: true}],
 		specialCD: 5, specialAttack: "PullWill", specialCDonAttack: true, specialAttackPoints: 4, specialRange: 4, specialWidth: 3, specialMinrange: 1.5, specialsfx: "Song", hitsfx: "Song", tilesMinRangeSpecial: 2,
@@ -2864,7 +2864,7 @@ let KinkyDungeonEnemies = [
 		stamina: 10,
 		visionRadius: 7, maxhp: 12, minLevel:7, weight:-2, movePoints: 1.25, attackPoints: 2, attack: "SpellMeleeBindLock", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 3,
 		terrainTags: {"secondhalf":1, "thirdhalf":2, "elementsAnger": 12, "elementsRage": 6, "temple": 5, "elemental": 4, "electric": 4, "air": 4}, allFloors: true, shrines: ["Elements", "Latex"],
-		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}]},
+		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "StormBreaker", weight: 1, ignoreInInventory: true}]},
 
 	{name: "Dryad", faction: "Elf", clusterWith: "nature", bound: "Dryad", playLine: "Dryad", color: "#67ff44", tags: KDMapInit(["opendoors", "nature", "elf", "leashing", "plant", "ranged", "vineRestraints", "slashweakness", "pierceweakness", "fireweakness", "search"]), cohesion: 0.0,
 		followLeashedOnly: true, ignorechance: 0, armor: 0, followRange: 3, AI: "hunt",

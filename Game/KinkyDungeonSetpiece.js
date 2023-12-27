@@ -50,7 +50,7 @@ function KinkyDungeonPlaceSetPieces(POI, trapLocations, chestlist, shrinelist, c
 		if (KinkyDungeonStatsChoice.get("hardMode")) {
 			setpieces.push({Type: "ShadowChest", Weight: 10000});
 			forbiddenChance = 1;
-			greaterChance = Math.max(greaterChance, 0.8);
+			greaterChance = Math.max(greaterChance, 1.0);
 		}
 		if (KDRandom() < forbiddenChance) {
 			if (KDRandom() < greaterChance) {

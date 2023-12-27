@@ -7,6 +7,7 @@ Vague todo:
 - TODO add scroll to log, rep
 
 TODO add sugar magic ('Blood Energy Magic')
+TODO make hostile faction enemies able to not attack the player if their opinion is high
 
 
 5.1 ()

@@ -675,12 +675,13 @@ let KinkyDungeonSpellSpecials = {
 				for (let y = Math.floor(-spell.aoe); y < Math.ceil(spell.aoe); y++) {
 					if (AOECondition(targetX, targetY, targetX+x, targetY+y, spell.aoe, spell.aoetype, entity.x, entity.y)) {
 						tilesToCheck.push({x:targetX+x, y:targetY+y});
+					}
 				}
-			}
 		}
 		let found = false;
 		let grabbed = false;
 		let chest = false;
+		let locked = false;
 		for (let tt of tilesToCheck) {
 			let items = KDMapData.GroundItems.filter((item) => {return item.x == tt.x && item.y == tt.y;});
 			let tile = KinkyDungeonMapGet(tt.x, tt.y);
@@ -712,9 +713,14 @@ let KinkyDungeonSpellSpecials = {
 				KinkyDungeonItemCheck(tt.x, tt.y, MiniGameKinkyDungeonLevel, true);
 				if (allowedTiles.includes(tile)) {
 					if (KDMoveObjectFunctions[tile]) {
-						if (spell.aoe) KinkyDungeonChestConfirm = true;
-						success = KDMoveObjectFunctions[tile](tt.x, tt.y);
-						KinkyDungeonChestConfirm = false;
+						if (!KinkyDungeonTilesGet(tt.x + ',' + tt.y)?.Lock) {
+							if (spell.aoe) KinkyDungeonChestConfirm = true;
+							success = KDMoveObjectFunctions[tile](tt.x, tt.y);
+							KinkyDungeonChestConfirm = false;
+						} {
+							locked = true;
+							success = false;
+						}
 					}
 				}
 
@@ -726,6 +732,7 @@ let KinkyDungeonSpellSpecials = {
 				found = true;
 			}
 		}
+		if (locked) KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFailLock"+spell.name), "#ff5555", 1);
 		if (grabbed) {
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell) * (chest ? 1.0 : 0.25));

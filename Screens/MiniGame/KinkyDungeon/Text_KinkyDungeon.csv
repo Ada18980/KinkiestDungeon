@@ -18753,6 +18753,7 @@ KinkyDungeonSpellRecoverObject,Recover Object
 KinkyDungeonSpellDescriptionRecoverObject,"Use telekinesis to pick up items and open chests from a distance. Refunds 75% of mana cost if not used to open a chest."
 KinkyDungeonSpellCastRecoverObject,The items float to you!
 KinkyDungeonSpellCastFailRecoverObject,There's nothing to pick up.
+KinkyDungeonSpellCastFailLockRecoverObject,The chest is locked.
 KinkyDungeonSpellCastFailObstacleRecoverObject,There's an obstacle in the way!
 KinkyDungeonSpellTargetRecoverObject,Select a tile with items
 

@@ -2530,7 +2530,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 				 * @type {{type: string, drunk?: boolean}}
 				 */
 				let stype = shrineTypes.length < orbcount ? {type: "Orb"}
-					: ((KDGameData.Champion && !placedChampion) ? {type: KDGameData.Champion} :
+					: ((KDGameData.Champion && !placedChampion && shrineTypes.length == orbcount) ? {type: KDGameData.Champion} :
 						((shrineTypes.length == ((KDGameData.Champion && allowQuests) ? orbcount + 1 : orbcount) && playerTypes.length > 0) ?
 							{type: playerTypes[Math.floor(KDRandom() * playerTypes.length)]}
 								: KinkyDungeonGenerateShrine(Floor, filterTypes, manaChance)));

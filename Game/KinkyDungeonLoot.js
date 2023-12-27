@@ -58,7 +58,7 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 		if ((effLevel >= loot.minLevel || KinkyDungeonNewGame > 0) && (loot.allFloors || loot.floors[Index])) {
 			let prereqs = true;
 			if (loot.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) prereqs = false;
-			
+
 
 			if (loot.noflag?.some((flag) => {return KinkyDungeonFlags.get(flag) != undefined})) prereqs = false;
 			if (loot.notag?.some((flag) => {return KinkyDungeonPlayerTags.get(flag) != undefined})) prereqs = false;
@@ -73,7 +73,7 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 					if (count < loot.minCurseCount || count > loot.maxCurseCount)
 						prereqs = false;
 				}
-				
+
 
 				if (prereqs && loot.hardmode && !KinkyDungeonStatsChoice.get("hardMode")) prereqs = false;
 				if (prereqs && loot.nohardmode && KinkyDungeonStatsChoice.get("hardMode")) prereqs = false;
@@ -398,7 +398,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 			for (let e of enchant_extra) {
 				events.push(...KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events(armor, Loot, hexVariant, enchantVariant, enchant_extra, {variant: variant}));
 			}
-			
+
 			let equipped = 0;
 			if (forceequip) {
 				equipped = KDEquipInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, 0, true, undefined, true, false, Loot.faction || "Curse", true, unlockcurse, undefined, false, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
@@ -828,11 +828,6 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 						//`+${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, "white", 7);
 						remove = true;
 					} else if (lostitem.type == LooseRestraint && KDRestraint(lostitem)) {
-						//if (KinkyDungeonGetRestraintByName(lostitem.name).armor || KinkyDungeonRestraintVariants[lostitem.name] != undefined)
-						//KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
-						//`+ (loose) ${TextGet("Restraint" + lostitem.name)}`, "white", 5);
-						remove = true;
-					} else if (lostitem.type == Outfit && KDOutfit(lostitem)) {
 						//if (KinkyDungeonGetRestraintByName(lostitem.name).armor || KinkyDungeonRestraintVariants[lostitem.name] != undefined)
 						//KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
 						//`+ (loose) ${TextGet("Restraint" + lostitem.name)}`, "white", 5);
