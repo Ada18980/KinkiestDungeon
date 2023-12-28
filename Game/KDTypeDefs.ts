@@ -2600,6 +2600,7 @@ type KDLockType = {
 	key: string;
 	canUnlock: (data: any) => boolean;
 	doUnlock: (data: any) => boolean;
+	doLock?: (data: any) => void;
 	failUnlock: (data: any) => string;
 	removeKeys: (data: any) => void;
 

@@ -535,7 +535,7 @@ function KDProcessInput(type, data) {
 					for (let b of data.bondage) {
 						KinkyDungeonAddRestraintIfWeaker(
 							KinkyDungeonGetRestraintByName(b), 20, true, "Gold", true
-							);
+						);
 					}
 				}
 

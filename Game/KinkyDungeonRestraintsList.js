@@ -5447,6 +5447,11 @@ let KDLocks = {
 			return "Fail";
 		},
 
+		doLock: (data) => {
+			if (data.item) {
+				data.item.lockTimer = MiniGameKinkyDungeonLevel + 2;
+			}
+		},
 		// Start of level -- for gold locks and others
 		levelStart: (item) => {
 			if ((MiniGameKinkyDungeonLevel >= item.lockTimer || !item.lockTimer || item.lockTimer >= KinkyDungeonMaxLevel)) {
