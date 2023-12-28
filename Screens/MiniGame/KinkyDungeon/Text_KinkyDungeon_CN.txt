@@ -5772,6 +5772,10 @@ Transport Jacket
 运输拘束衣
 This jacket goes over a straitjacket to keep the arms trapped.
 这件拘束衣套在拘束衣外面，可以锁住胳膊。
+Asylum Cuffs
+安全铐
+A pair of leather cuffs that make it easy to restrain you.
+一对皮革铐，可以轻松束缚您。
 Comfy Muzzle
 舒适口套
 A lovely muzzle that's extraordinarily comfy!
