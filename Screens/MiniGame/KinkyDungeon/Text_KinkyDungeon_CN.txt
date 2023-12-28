@@ -5726,6 +5726,8 @@ Training Collar
 训练项圈
 A collar with a decorative tag used to identify wolfgirls.
 带有装饰标签的项圈，用于识别狼女。
+Also good for identifying people in general. What a great idea!
+也有助于识别一般人。真是个好主意！
 Training Leash
 训练牵绳
 A leash used for training pets.
