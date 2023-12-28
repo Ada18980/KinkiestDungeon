@@ -132,6 +132,12 @@ UI: Minimalist Enemy Auras
 UI：极简敌人光环
 UI: Pixelated GFX (needs restart)
 UI：像素化图像特效（需重启）
+Controls: Auto-Crouch when Tripped
+控制：绊倒时自动蹲下
+Zoom In
+放大
+Zoom Out
+缩小
 Helpless!
 无助！
 Evaded!
@@ -2446,6 +2452,8 @@ Crit:
 暴击：
 SP Cost: 
 体力消耗：
+Cut PWR: AMNT%
+力量削减：AMNT%
 It appears to be a receptacle
 它似乎是一个容器
 Place live crystal
@@ -5546,6 +5554,10 @@ A pair of shoes with heels so tall it forces you on your toes.
 一双鞋跟太高，会迫使你踮起脚尖。
 These will take some getting used to.
 这些需要一些时间来适应。
+Training Heels
+训练高跟鞋
+A pair of unreasonably high heels owned by you personally.
+你个人拥有的一双高得离谱的高跟鞋。
 Leg Irons
 钢腿铐
 A pair of solid steel cuffs connecting your ankles inescapably.
@@ -10588,6 +10600,12 @@ Target needs retraining...
 目标需要重新调教...
 Sorry, rules are rules~
 抱歉，规矩就是规矩~
+Does not compute.
+无法计算。
+Some kind of miscalculation has occurred.
+发生了某种误算。
+This was unforseen.
+这是出乎意料的。
 Unit is retreating.
 小队正在撤退。
 Activating self-preservation instincts.
@@ -16872,3 +16890,65 @@ You're too tied up to close the door.
 你被束缚的太紧了，无法关门。
 The chest opens on its own.
 箱子会自动打开。
+You can't use your hands for that, but you can crouch to use your mouth.
+你不能用手来做这件事，但你可以蹲下来用嘴。
+Heel Training
+高跟鞋训练
+Start locked in a pair of heels with no heel training.
+在没有进行高跟鞋训练的情况下开始时穿戴一双锁定的高跟鞋。
+Gag Training
+堵嘴训练
+Start locked in a gag with no gag training.
+在没有进行堵嘴训练的情况下开始时佩戴一件锁定的口塞。
+Corset Training
+束胸训练
+Start locked in a corset with no corset training.
+在没有进行束胸训练的情况下开始时穿戴一件锁定的束胸。
+Sensory Training
+感官训练
+Start locked in a blindfold and headphones with no Sensory training.
+在没有进行感官训练的情况下开始时佩戴一件锁定的耳罩和耳机。
+Hard to Master: Heels
+难以掌握：高跟鞋
+Heel training is significantly slower.
+高跟鞋训练进度明显变慢。
+Hard to Master: Gags
+难以掌握：堵嘴
+Gag training is significantly slower.
+堵嘴训练进度明显变慢。
+Hard to Master: Corsets
+难以掌握：束胸
+Corset training is significantly slower.
+束胸训练进度明显变慢。
+Hard to Master: Sensory
+难以掌握：感官
+Sensory training is significantly slower.
+感官训练进度明显变慢。
+Head Start: Heels
+领先优势：高跟鞋
+Start at Heel training level 5.
+开始时高跟鞋训练等级为 5 级。
+Head Start: Gags
+领先优势：堵嘴
+Start at Gag training level 5.
+开始时堵嘴训练等级为 5 级。
+Head Start: Corsets
+领先优势：束胸
+Start at Corset training level 5.
+开始时束胸训练等级为 5 级。
+Head Start: Sensory
+领先优势：感官
+Start at Sensory training level 5.
+开始时感官训练等级为 5 级。
+Classic Heels
+经典高跟鞋
+Removes Heel Training and tripping mechanic. Restraining heels slow instead.
+移除高跟鞋训练和绊倒机制。相反，束缚脚跟的速度会变慢。
+Balance: AMNT%
+平衡：AMNT%
+Balance: AMNT% (Sprinting Disabled!!!)
+平衡：AMNT%（冲刺已禁用！！！）
+You lose your balance and fall over!!!
+你失去平衡摔倒了！
+Training Level: AMNT
+训练等级：AMNT
