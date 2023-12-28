@@ -5378,6 +5378,8 @@ Wrist Chain
 腕链
 A pair of cuffs keeping your arms behind your back.
 一对手铐将你的手臂束缚在背后。
+A pair of leather cuffs keeping your arms behind your back.
+一对皮革手铐将你的手臂束缚在背后。
 Your cuffs detatch!
 你的手铐松了！
 The enemy attaches your elbow cuffs together!
