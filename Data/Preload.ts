@@ -223,7 +223,14 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 	}
 	for (let dataFile of list) {
 		let amount = 100;
-		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile) : await PIXI.Assets.load(dataFile);
+		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile).then(() => {}, () => {
+			CurrentLoading = "Error Loading " + dataFile;
+			KDLoadingDone += amount;
+		})
+		 : await PIXI.Assets.load(dataFile).then(() => {}, () => {
+			CurrentLoading = "Error Loading " + dataFile;
+			KDLoadingDone += amount;
+		});
 
 		//console.log(value)
 		CurrentLoading = "Loaded " + dataFile;

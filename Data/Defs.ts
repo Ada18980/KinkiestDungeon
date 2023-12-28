@@ -46,16 +46,6 @@ let LAYERS_BASE = [
 
 	"Yoke",
 
-	// Clothes that go over the chest and hang down
-	"Shoulders",
-
-	// Hair mid
-	"HairMid",
-
-
-	// Collar and collar accessories
-	"Collar",
-	"NeckCorset",
 
 	// Bondage
 	"WrapForeArms",
@@ -89,6 +79,18 @@ let LAYERS_BASE = [
 	"ForeGloveRight",
 	"ForeHandRight",
 	"ForeArmRight",
+
+	// Clothes that go over the chest and hang down
+	"Shoulders",
+
+	// Hair mid
+	"HairMid",
+
+
+	// Collar and collar accessories
+	"Collar",
+	"NeckCorset",
+
 
 
 

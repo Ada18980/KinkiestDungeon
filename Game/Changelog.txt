@@ -31,6 +31,8 @@ Monk class?
 - Added option to outline enemies instead of showing buff aura
 - Added option to pixelate the game board
 - Added option to use "minimalist" buff outlines
+- Fixed 'summon up' upgrades being invisible
+- Party members not on the map are x'ed out which lets you remove them
 
 5.0.5
 - Fixed a few more bugs

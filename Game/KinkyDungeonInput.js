@@ -514,6 +514,9 @@ function KDProcessInput(type, data) {
 				} else {
 					KinkyDungeonSpellPoints += data.Amount;
 				}
+				if (KinkyDungeonTilesGet(data.x + ',' + data.y)) {
+					KinkyDungeonTilesGet(data.x + ',' + data.y).Light = undefined;
+				}
 				KinkyDungeonMapSet(data.x, data.y, 'o');
 				KinkyDungeonAggroAction('orb', {});
 			}
@@ -728,10 +731,14 @@ function KDProcessInput(type, data) {
 		case "cancelParty": {
 			if (data.enemy) {
 				let enemy = KinkyDungeonFindID(data.enemy.id);
-				if (enemy.buffs?.AllySelect) enemy.buffs.AllySelect.duration = 0;
-				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", -1);
-				KDRemoveFromParty(enemy, false);
-				KinkyDungeonSendTextMessage(10, TextGet("KDOrderRemove").replace("ENMY", TextGet("Name" + enemy.Enemy.name)), "#ffffff", 1);
+				if (!enemy && KDGameData.Party) enemy = KDGameData.Party.find((entity) => {return entity.id == data.enemy.id;});
+				if (enemy) {
+					if (enemy.buffs?.AllySelect) enemy.buffs.AllySelect.duration = 0;
+					KinkyDungeonSetEnemyFlag(enemy, "NoFollow", -1);
+					KDRemoveFromParty(enemy, false);
+					KinkyDungeonSendTextMessage(10, TextGet("KDOrderRemove").replace("ENMY", TextGet("Name" + enemy.Enemy.name)), "#ffffff", 1);
+
+				}
 			}
 			break;
 		}

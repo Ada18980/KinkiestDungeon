@@ -1295,7 +1295,7 @@ const KinkyDungeonRestraints = [
 		alwaysDressModel: [
 			{
 				Model: "BindingDress",
-				Filters: {"Skirt":{"gamma":1,"saturation":0.05,"contrast":1,"brightness":1.7166666666666666,"red":1,"green":1,"blue":1,"alpha":1}}
+				Filters: {"Skirt":{"gamma":1,"saturation":0.05,"contrast":1,"brightness":1.7166666666666666,"red":1,"green":1,"blue":1,"alpha":1}, SkirtBack: {"gamma":1,"saturation":0,"contrast":0.5700000000000001,"brightness":1,"red":0.5294117647058824,"green":0.35294117647058826,"blue":0.6470588235294118,"alpha":1}}
 			}
 		],
 		addPose: ["PreferWristtie"],
@@ -1445,7 +1445,8 @@ const KinkyDungeonRestraints = [
 		alwaysDressModel: [
 			{
 				Model: "BindingDress",
-				Filters: {"Skirt":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":0.6,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Stripes":{"gamma":1,"saturation":1,"contrast":0.6666666666666666,"brightness":2.5166666666666666,"red":1,"green":1,"blue":1,"alpha":1},"Crystal":{"gamma":1,"saturation":1,"contrast":0.6666666666666666,"brightness":0.7166666666666667,"red":3.433333333333333,"green":1,"blue":1,"alpha":1},"Base":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":1.6833333333333333,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Panties":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":1.7999999999999998,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Trim":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":2.0833333333333335,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Lace":{"gamma":1,"saturation":0.03333333333333333,"contrast":0.6666666666666666,"brightness":2.5166666666666666,"red":1,"green":1,"blue":1,"alpha":1}}
+				Filters: {SkirtBack: {"gamma":1,"saturation":0,"contrast":0.5700000000000001,"brightness":1,"red":0.5294117647058824,"green":0.35294117647058826,"blue":0.3570588235294118,"alpha":1},
+					"Skirt":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":0.6,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Stripes":{"gamma":1,"saturation":1,"contrast":0.6666666666666666,"brightness":2.5166666666666666,"red":1,"green":1,"blue":1,"alpha":1},"Crystal":{"gamma":1,"saturation":1,"contrast":0.6666666666666666,"brightness":0.7166666666666667,"red":3.433333333333333,"green":1,"blue":1,"alpha":1},"Base":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":1.6833333333333333,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Panties":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":1.7999999999999998,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Trim":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":2.0833333333333335,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Lace":{"gamma":1,"saturation":0.03333333333333333,"contrast":0.6666666666666666,"brightness":2.5166666666666666,"red":1,"green":1,"blue":1,"alpha":1}}
 			}
 		],
 		value: 200,

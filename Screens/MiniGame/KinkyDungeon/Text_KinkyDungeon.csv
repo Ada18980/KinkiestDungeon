@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.5"
+KDVersionStr,"5.0.6"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -5314,7 +5314,7 @@ KinkyDungeonSpellDescriptionLeap2,Instantly teleport up to 2 tiles away. Must ha
 KinkyDungeonSpellCastLeap2,You teleport!
 KinkyDungeonSpellTargetLeap2,Choose target location (2 tile range)
 KinkyDungeonSpellLeap3,Blink III
-KinkyDungeonSpellDescriptionLeap3,Instantly teleport up to 2 tiles away. Must have vision of the target point.
+KinkyDungeonSpellDescriptionLeap3,Instantly teleport up to 3 tiles away. Must have vision of the target point.
 KinkyDungeonSpellCastLeap3,You teleport!
 KinkyDungeonSpellTargetLeap3,Choose target location (3 tile range)
 
@@ -5457,6 +5457,7 @@ KinkyDungeonSpellTargetThunderstorm,Choose target 3x3 area
 
 KinkyDungeonSpellWitchElectrify,Witch's Electricity
 KinkyDungeonSpellFireexp,Firey Explosion
+KinkyDungeonSpellIceexp,Icey Explosion
 KinkyDungeonSpellWitchElectricOrb,Witch's Electric Orb
 KinkyDungeonSpellWitchElectricBurst,Witch's Electric Burst
 
@@ -17840,6 +17841,8 @@ KDWeaponTag_offhand,Offhand
 KDWeaponTagD_offhand,"Offhand: This weapon can be dual-wielded by some classes."
 KDWeaponTag_clumsy,2 Handed
 KDWeaponTagD_clumsy,"2 Handed: While wielding this as your primary weapon, you cannot wield an offhand weapon. Also this weapon can't be used while arms are tied."
+KDWeaponTag_precision,Precision
+KDWeaponTagD_precision,"Precision: Your arms need to be free to use this weapon."
 KDWeaponTag_noHands,Hands-Free
 KDWeaponTagD_noHands,"Hands-Free: Weapon can be used without free hands."
 KDWeaponTag_shield,Shield
@@ -18029,7 +18032,7 @@ KinkyDungeonStatDescFortify_Barricade,"Barricades set up by enemies do not expir
 
 
 KDFocusControlsAutoPassHelplessAllies,"Pass thru helpless allies"
-KDFocusControlsAutoPassHelplessEnemies,"Pass thru helpless allies"
+KDFocusControlsAutoPassHelplessEnemies,"Pass thru helpless enemies"
 KDFocusControlsAutoPassAllies,"Pass thru allies"
 KDFocusControlsAutoPassNeutral,"Pass thru neutrals"
 KDFocusControlsAutoPassSummons,"Pass thru summons"
@@ -18886,3 +18889,5 @@ AttackTimekeeper,"The Timekeeper takes the time to enjoy herself with you... (Da
 AttackTimekeeperBind,"The Timekeeper enacts judgement for disrupting time! (+RestraintAdded)"
 
 KinkyDungeonBuffAnalyze,Analysis
+
+ItemPickupSlimethrower,You pick up a latex projector

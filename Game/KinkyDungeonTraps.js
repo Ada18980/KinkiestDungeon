@@ -389,6 +389,7 @@ function KinkyDungeonGetTrap(trapTypes, Level, tags) {
 	for (let L = trapWeights.length - 1; L >= 0; L--) {
 		if (selection > trapWeights[L].weight) {
 			return {
+				StepOffTrap: trapWeights[L].trap.StepOffTrap,
 				Name: trapWeights[L].trap.Name,
 				Restraint: trapWeights[L].trap.Restraint,
 				Enemy: trapWeights[L].trap.Enemy,

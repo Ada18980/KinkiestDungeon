@@ -2543,8 +2543,9 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 
 						if (KinkyDungeonStatsChoice.get("randomMode")) {
 							let spell = KDGetRandomSpell();
-							KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Spell: spell.name});
-						}
+							KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Spell: spell.name, Light: 5, lightColor: 0x28B4FF});
+						} else
+							KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Light: 5, lightColor: 0x28B4FF});
 
 
 
@@ -2812,18 +2813,33 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 				KinkyDungeonMapSet(trap.x, trap.y, 'T');
 				let t = KinkyDungeonGetTrap(traptypes, Floor, []);
 				let tile = KinkyDungeonTilesGet(trap.x + "," + trap.y);
-				KinkyDungeonTilesSet(trap.x + "," + trap.y, {
-					Type: "Trap",
-					Trap: t.Name,
-					Restraint: t.Restraint,
-					Enemy: t.Enemy,
-					FilterTag: t.FilterTag,
-					FilterBackup: t.FilterBackup,
-					Spell: t.Spell,
-					extraTag: t.extraTag,
-					Power: t.Power,
-					OffLimits: tile?.OffLimits,
-				});
+				if (t.StepOffTrap) {
+					KinkyDungeonTilesSet(trap.x + "," + trap.y, {
+						StepOffTrap: t.Name,
+						Restraint: t.Restraint,
+						Enemy: t.Enemy,
+						FilterTag: t.FilterTag,
+						FilterBackup: t.FilterBackup,
+						Spell: t.Spell,
+						extraTag: t.extraTag,
+						Power: t.Power,
+						OffLimits: tile?.OffLimits,
+					});
+				} else {
+					KinkyDungeonTilesSet(trap.x + "," + trap.y, {
+						Type: "Trap",
+						Trap: t.Name,
+						Restraint: t.Restraint,
+						Enemy: t.Enemy,
+						FilterTag: t.FilterTag,
+						FilterBackup: t.FilterBackup,
+						Spell: t.Spell,
+						extraTag: t.extraTag,
+						Power: t.Power,
+						OffLimits: tile?.OffLimits,
+					});
+				}
+
 				if (KDRandom() < 0.05) {
 					let dropped = {x:trap.x, y:trap.y, name: "Gold", amount: 1};
 					KDMapData.GroundItems.push(dropped);
@@ -4527,6 +4543,8 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 		KDEntitiesFloaterRegisty = new Map();
 		lastFloaterRefresh = CommonTime();
 	}
+
+
 
 	let pauseTime = false;
 	if (delta > 0) {

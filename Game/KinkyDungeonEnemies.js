@@ -4436,8 +4436,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							if (AIData.leashed) {
 
 								let leashToExit = AIData.leashing && !KinkyDungeonHasWill(0.1) && AIData.playerDist < 1.5;
-
-								KDAssignLeashPoint(enemy);
+								if (!enemy.IntentLeashPoint) {
+									KDAssignLeashPoint(enemy);
+								}
 
 								let leashPos = AIData.aggressive ? (AIData.nearestJail) : {x: enemy.x, y: enemy.y, type: "", radius: 1};
 								let findMaster = undefined;
