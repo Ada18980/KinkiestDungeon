@@ -16794,27 +16794,22 @@ The witch rubs your body sensually! (DamageTaken)
 女巫性感地摩擦你的身体！（DamageTaken）
 The Shibari Witch takes your clothes off!
 绑缚女巫脱去了你的衣服！
-
 A Hard Place
 艰难之地
 While your willpower is 0, your mana pool slowly drains and your stamina regen is reduced by 30%.
 当你的意志力为0时，你的法力池会慢慢耗尽，你的体力回复会减少30%。
-
 The Spark of Magic
 魔法的火花
 When your mana pool is exhausted, your attacks deal 50% reduced base damage.
 当你的法力池耗尽时，你的攻击造成的基础伤害减少 50%。
-
 Burned Out
 筋疲力尽
 Casting spells reduces willpower based on how little distraction you have, also you cannot play with yourself
 施法会根据你分心的程度来降低意志力，并且你不再能自慰
-
 Winded
 气喘吁吁
 While below 10% stamina, evasion is severely reduced and your slow level is increased by 1
 当体力低于 10% 时，闪避率会大幅降低，并且你的缓慢程度会增加 1 点
-
 Time Ghost
 时间幽灵
 The time ghost vanishes.
@@ -16823,7 +16818,6 @@ The time ghost grabs you, causing your body parts to freeze in time!!! (DamageTa
 时间幽灵抓住了你，让你身体的部位被瞬间冻结！！！（DamageTaken）
 The time time ghost has already bound you! (+RestraintAdded)
 时空幽灵已经将你束缚了！（+RestraintAdded）
-
 The Timekeeper
 计时员
 The Timekeeper releases her grip on the timeline.
@@ -16832,13 +16826,10 @@ The Timekeeper takes the time to enjoy herself with you... (DamageTaken)
 计时员会花时间和你一起享受时光......（DamageTaken）
 The Timekeeper enacts judgement for disrupting time! (+RestraintAdded)
 计时员对扰乱时间做出判决！（+RestraintAdded）
-
 Analysis
 分析
-
 You pick up a latex projector
 你拿起一台乳胶投影仪
-
 Can't Touch That
 碰不到
 When both arms and hands are severely bound, you can no longer pick up items without an ally nearby.
