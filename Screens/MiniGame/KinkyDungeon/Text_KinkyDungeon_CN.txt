@@ -4985,7 +4985,7 @@ It's a devious dress! I hope your elbows are flexible~
 So many laces! It would take quite a while to put this on normally. That's what magic is for!
 这么多带子！正常戴上这个需要相当长的时间。这就是魔法的用途！
 Ornamental Corset
-观赏紧身胸衣
+装饰束胸
 Your figure looks gorgeous in this~
 你的身材看起来真漂亮〜
 It's so tight you won't be able to undo the laces yourself, dear!
@@ -14241,7 +14241,7 @@ Tops
 Sleeves
 袖子
 Corsets
-紧身胸衣
+束胸
 Skirts
 裙子
 Pants
