@@ -160,8 +160,11 @@ let KDToggles = {
 	EnemyAura: true,
 	OutlineAura: true,
 	NearestNeighbor: true,
+	ZoomIn: true,
+	ZoomOut: true,
 	LazyWalk: false,
 	ShiftLatch: true,
+	//AutoCrouchOnTrip: true,
 };
 
 let KDDefaultKB = {
@@ -408,12 +411,16 @@ let KDDefaultMaxParty = 3;
 * ShieldTokensMax: number,
 * Shield: number,
 * ShieldDamage: number,
+* Balance: number,
+* HeelPower: number,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	Balance: 1,
+	HeelPower: 1,
 	SlowMoveTurns: 0,
 	Shield: 0,
 	ShieldDamage: 0,

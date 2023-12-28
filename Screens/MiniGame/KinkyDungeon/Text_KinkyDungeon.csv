@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.6"
+KDVersionStr,"5.0.7"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -78,6 +78,9 @@ KDTogglePlayerAura,UI: Show Player Buff Auras
 KDToggleEnemyAura,UI: Show Enemy Buff Auras
 KDToggleOutlineAura,UI: Minimalist Enemy Auras
 KDToggleNearestNeighbor,UI: Pixelated GFX (needs restart)
+KDToggleAutoCrouchOnTrip,Controls: Auto-Crouch when Tripped
+KDToggleZoomIn,Zoom In
+KDToggleZoomOut,Zoom Out
 
 
 KDHelpless,Helpless!
@@ -1564,6 +1567,7 @@ KinkyDungeonWeaponCrit,"Crit: "
 KinkyDungeonWeaponBindCrit,"Crit: "
 KinkyDungeonWeaponAccuracy,"Accuracy: "
 KinkyDungeonWeaponStamina,"SP Cost: "
+KinkyDungeonWeaponCutPower,"Cut PWR: AMNT%"
 
 KinkyDungeonCharger,It appears to be a receptacle
 KinkyDungeonChargerPlaceCrystal,Place live crystal
@@ -3839,6 +3843,9 @@ RestraintAntiMagicGag2Desc2,"You feel the energy flowing out of you! When it dra
 RestraintTrapBoots,Ballet Heels
 RestraintTrapBootsDesc,"A pair of shoes with heels so tall it forces you on your toes."
 RestraintTrapBootsDesc2,"These will take some getting used to."
+RestraintTrainingHeels,Training Heels
+RestraintTrainingHeelsDesc,"A pair of unreasonably high heels owned by you personally."
+RestraintTrainingHeelsDesc2,"These will take some getting used to."
 RestraintTrapLegirons,Leg Irons
 RestraintTrapLegironsDesc,"A pair of solid steel cuffs connecting your ankles inescapably."
 RestraintTrapLegironsDesc2,"The lock doesn't seem very complicated."
@@ -7907,6 +7914,9 @@ KinkyDungeonRemindJailChaseCyborgCommandAssault,""
 KinkyDungeonRemindJailChaseCyborgCommandBlock,""
 
 
+KinkyDungeonRemindJailPlayHelplessRobot0,"Does not compute."
+KinkyDungeonRemindJailPlayHelplessRobot1,"Some kind of miscalculation has occurred."
+KinkyDungeonRemindJailPlayHelplessRobot2,"This was unforseen."
 KinkyDungeonRemindJailPlayBratRobot0,"Unit is retreating."
 KinkyDungeonRemindJailPlayBratRobot1,"Activating self-preservation instincts."
 KinkyDungeonRemindJailPlayBratRobot2,"Commence tactical withdrawal."
@@ -18906,3 +18916,40 @@ KDGetUpCorner,You get back up using the corner.
 KDGetUpWall,You get up to your knees using the wall.
 KDCantCloseDoor,You're too tied up to close the door.
 KDAutoChest,The chest opens on its own.
+
+KDMouthGround,"You can't use your hands for that, but you can crouch to use your mouth."
+
+KinkyDungeonStatHeelTraining,"Heel Training"
+KinkyDungeonStatDescHeelTraining,"Start locked in a pair of heels with no heel training."
+KinkyDungeonStatGagTraining,"Gag Training"
+KinkyDungeonStatDescGagTraining,"Start locked in a gag with no gag training."
+KinkyDungeonStatCorsetTraining,"Corset Training"
+KinkyDungeonStatDescCorsetTraining,"Start locked in a corset with no corset training."
+KinkyDungeonStatSensesTraining,"Sensory Training"
+KinkyDungeonStatDescSensesTraining,"Start locked in a blindfold and headphones with no Sensory training."
+
+KinkyDungeonStatMasteryHeels,"Hard to Master: Heels"
+KinkyDungeonStatDescMasteryHeels,"Heel training is significantly slower."
+KinkyDungeonStatMasteryGags,"Hard to Master: Gags"
+KinkyDungeonStatDescMasteryGags,"Gag training is significantly slower."
+KinkyDungeonStatMasteryCorsets,"Hard to Master: Corsets"
+KinkyDungeonStatDescMasteryCorsets,"Corset training is significantly slower."
+KinkyDungeonStatMasterySenses,"Hard to Master: Sensory"
+KinkyDungeonStatDescMasterySenses,"Sensory training is significantly slower."
+
+KinkyDungeonStatHeadStartHeels,"Head Start: Heels"
+KinkyDungeonStatDescHeadStartHeels,"Start at Heel training level 5."
+KinkyDungeonStatHeadStartGags,"Head Start: Gags"
+KinkyDungeonStatDescHeadStartGags,"Start at Gag training level 5."
+KinkyDungeonStatHeadStartCorsets,"Head Start: Corsets"
+KinkyDungeonStatDescHeadStartCorsets,"Start at Corset training level 5."
+KinkyDungeonStatHeadStartSenses,"Head Start: Sensory"
+KinkyDungeonStatDescHeadStartSenses,"Start at Sensory training level 5."
+
+KinkyDungeonStatClassicHeels,"Classic Heels"
+KinkyDungeonStatDescClassicHeels,"Removes Heel Training and tripping mechanic. Restraining heels slow instead."
+
+KDBalance,"Balance: AMNT%"
+KDBalanceNoSprint,"Balance: AMNT% (Sprinting Disabled!!!)"
+KDTrip,You lose your balance and fall over!!!
+KDBalanceTraining,Training Level: AMNT

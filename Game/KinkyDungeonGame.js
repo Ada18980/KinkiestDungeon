@@ -10,6 +10,11 @@ let KDFocusableTextFields = [
 
 let KDMAXGODDESSQUESTS = 3;
 
+let KDBalanceSprintMult = 3;
+let KDBalanceInertiaMult = 0.7;
+let KDBalanceAttackMult = 0.4;
+let KDBalanceCastArmsMult = 1;
+let KDBalanceCastLegsMult = 3;
 
 let KinkyDungeonGagMumbleChanceRestraint = 0.4;
 let KinkyDungeonGagMumbleChance = 0.02;
@@ -387,6 +392,8 @@ function KinkyDungeonInitialize(Level, Load) {
 	KDUpdateEnemyCache = true;
 	KDMapData.Bullets = [];
 	KDMapData.GroundItems = [];
+
+	KDGameData.Balance = 1;
 
 
 	KDGameData.Quests = [];
@@ -3993,7 +4000,7 @@ function KinkyDungeonGameKeyUp(lastPress) {
 				case KinkyDungeonKeyToggle[2]: KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor; break;
 				case KinkyDungeonKeyToggle[3]: KDAutoStruggleClick(); break;
 				case KinkyDungeonKeyToggle[4]: KinkyDungeonFastMove = !KinkyDungeonFastMove; break;
-				case KinkyDungeonKeyToggle[5]: KinkyDungeonInspect = !KinkyDungeonInspect; break;
+				case KinkyDungeonKeyToggle[5]: KinkyDungeonInspect = !KinkyDungeonInspect; KinkyDungeonUpdateLightGrid = true; break;
 			}
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
@@ -4140,6 +4147,8 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				if (attackCost < 0 && KinkyDungeonStatsChoice.has("BerserkerRage")) {
 					KinkyDungeonChangeDistraction(0.7 - 0.5 * data.attackCost, false, 0.33);
 				}
+				if (KDGameData.HeelPower > 0)
+					KDChangeBalance(attackCost * KDGetBalanceCost() * KDBalanceAttackMult, true);
 
 				if (KinkyDungeonAttackEnemy(data.target, data.attackData)) {
 					result = "hit";
@@ -4272,7 +4281,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 
 						KinkyDungeonPlayerEntity.facing_x = Math.min(1, Math.abs(moveX - KinkyDungeonPlayerEntity.x)) * Math.sign(moveX - KinkyDungeonPlayerEntity.x);
 						KinkyDungeonPlayerEntity.facing_y = Math.min(1, Math.abs(moveY - KinkyDungeonPlayerEntity.y)) * Math.sign(moveY - KinkyDungeonPlayerEntity.y);
-
+						let inertia = KinkyDungeonPlayerEntity.facing_y*lastFacingY + KinkyDungeonPlayerEntity.facing_x*lastFacingX;
 						if ((KinkyDungeonPlayerEntity.facing_y || KinkyDungeonPlayerEntity.facing_x)
 							&& (KinkyDungeonStatsChoice.get("DirectionSlow") || KinkyDungeonStatsChoice.get("DirectionSlow2"))) {
 							let D = Math.abs(KinkyDungeonPlayerEntity.facing_y - lastFacingY)**2
@@ -4354,6 +4363,12 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 										KinkyDungeonChangeStamina(moveMult * (KinkyDungeonStatStaminaRegenPerSlowLevel * KinkyDungeonSlowLevel) * delta, false, moveMult, true);
 									}
 								}
+								if (KDGameData.HeelPower > 0 && !KDGameData.Crouch ) {
+
+									KDChangeBalance(-KDGetBalanceCost() * (1 + Math.max(-inertia, 0) * KDBalanceInertiaMult), true);
+								} else {
+									KDChangeBalance((KDGameData.KneelTurns > 0 ? 0.5 : 0.25) * KDGetBalanceRate()*delta, true);
+								}
 								let plugIncreaseAmount = (KinkyDungeonStatPlugLevel * KinkyDungeonDistractionPerPlug);
 								KinkyDungeonStatDistraction += plugIncreaseAmount;
 								if (plugIncreaseAmount > 0) KinkyDungeonStatDistractionLower += plugIncreaseAmount * 0.2;
@@ -4379,6 +4394,9 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 						//}
 					}
 
+					if (KDGameData.Balance <= 0 && !KDGameData.Crouch && newDelta < 10 && !quick) {
+						KDTrip(delta + Math.max(1, newDelta));
+					}
 					KinkyDungeonAdvanceTime(quick ? 0 : 1);
 				}
 				KinkyDungeonInterruptSleep();
@@ -4394,6 +4412,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 					}
 				}
 			} else {
+				KDChangeBalance((KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
 				KDGameData.MovePoints = Math.min(KDGameData.MovePoints + 1, 0);
 				KinkyDungeonPlayerEntity.facing_x = 0;
 				KinkyDungeonPlayerEntity.facing_y = 0;
@@ -4492,9 +4511,11 @@ function KinkyDungeonMoveTo(moveX, moveY, willSprint, allowPass) {
 
 				KinkyDungeonSendEvent("sprint", data);
 
+
 				if (!data.cancelSprint) {
 					KinkyDungeonChangeStamina(data.sprintCost, false, 1);
 					KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), "lightgreen", 2);
+					KDChangeBalance(-KDGetBalanceCost() * KDBalanceSprintMult, true);
 					if (KinkyDungeonSlowLevel < 2) {
 						// Move faster
 						KinkyDungeonTrapMoved = true;
@@ -4516,9 +4537,14 @@ function KinkyDungeonMoveTo(moveX, moveY, willSprint, allowPass) {
 	//return 0;
 }
 
+function KDBalanceSprint() {
+	let threshold = 0.5 * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BalanceSprintThreshold"));
+	return KDGameData.Balance >= threshold;
+}
+
 function KDCanSprint() {
 	let data = {
-		canSprint: true,
+		canSprint: KDBalanceSprint(),
 		mustStand: true,
 		mustNotBeSlow: true,
 	};
@@ -4978,7 +5004,7 @@ let KDKeyCheckers = {
 				case KinkyDungeonKeyToggle[2]: KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor; break;
 				case KinkyDungeonKeyToggle[3]: KDAutoStruggleClick(); break;
 				case KinkyDungeonKeyToggle[4]: KinkyDungeonFastMove = !KinkyDungeonFastMove; break;
-				case KinkyDungeonKeyToggle[5]: KinkyDungeonInspect = !KinkyDungeonInspect; break;
+				case KinkyDungeonKeyToggle[5]: KinkyDungeonInspect = !KinkyDungeonInspect; KinkyDungeonUpdateLightGrid = true; break;
 			}
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;

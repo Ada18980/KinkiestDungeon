@@ -272,7 +272,7 @@ let KDIntentEvents = {
 			return (AIData?.playerDist > 2.99
 				&& KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints")
 				&& !KinkyDungeonFlags.has("TempLeashCD")
-				&& KDGameData.PrisonerState == 'parole'
+				&& (KDGameData.PrisonerState == 'parole' || KinkyDungeonGoddessRep.Ghost > 0)
 				&& KDStrictPersonalities.includes(KDJailPersonality(enemy))
 				&& KDEnemyCanTalk(enemy)
 				&& !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) ?
@@ -287,6 +287,8 @@ let KDIntentEvents = {
 			enemy.playWithPlayer = 12;
 			enemy.playWithPlayerCD = 40;
 			enemy.IntentAction = 'TempLeash';
+			KDTickTraining("Heels", KDGameData.HeelPower > 0,
+				KDGameData.HeelPower <= 0, 4, 2.5);
 			KinkyDungeonSendDialogue(enemy,
 				TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashTime").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				KDGetColor(enemy), 14, 10);
@@ -297,7 +299,11 @@ let KDIntentEvents = {
 			if (!KinkyDungeonFlags.has("TempLeash") || !(KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints"))) {
 				enemy.IntentAction = '';
 				enemy.IntentLeashPoint = null;
+
 				if (KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, enemy.x, enemy.y, enemy)) {
+					if (!KinkyDungeonFlags.has("TempLeash"))
+						KDTickTraining("Heels", KDGameData.HeelPower > 0,
+							KDGameData.HeelPower <= 0, 6, 2.5);
 					KDBreakTether(KinkyDungeonPlayerEntity);
 					enemy.playWithPlayer = 0;
 					enemy.playWithPlayerCD = 30;

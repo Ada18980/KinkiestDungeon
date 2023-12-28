@@ -8045,6 +8045,11 @@ let KDEventMapGeneric = {
 		},
 	},*/
 	"playerAttack": {
+		"trainHeels": (e, data) => {
+			if (KDHostile(data.enemy) && KDIsHumanoid(data.enemy)) {
+				KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0), KDGameData.HeelPower <= 0 && !KinkyDungeonGetRestraintItem("ItemBoots"), 1);
+			}
+		},
 		"GroundedInReality": (e, data) => {
 			if (KinkyDungeonPlayerDamage && KinkyDungeonStatMana >= KinkyDungeonStatManaMax * 0.999 && KinkyDungeonStatsChoice.has("GroundedInReality")) {
 				if (!data.miss && !data.disarm && data.targetX && data.targetY && data.enemy && KDHostile(data.enemy)) {
@@ -8076,6 +8081,13 @@ let KDEventMapGeneric = {
 		}
 	},
 	"tick": {
+		"trainHeels": (e, data) => {
+			if (KinkyDungeonLastAction == "Move") {
+				let danger = KinkyDungeonInDanger();
+				KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0) && danger,
+					KDGameData.HeelPower <= 0 && !danger, 0.01);
+			}
+		},
 		"HighProfile": (e, data) => {
 			if (!KinkyDungeonStatsChoice.get("HighProfile")) return;
 			let altType = KDGetAltType(MiniGameKinkyDungeonLevel);

@@ -248,6 +248,14 @@ let LAYERS_BASE = [
 	"ShoeLeftUnder",
 
 
+
+	"WrappingLegsUnder",
+
+	"OverSocks",
+	"StockingLeft",
+	"FootLeft",
+	"LegLeft",
+
 	"Option_ChastityBelt",
 
 	// Panties go here when standing
@@ -264,13 +272,6 @@ let LAYERS_BASE = [
 	"CrotchPanelLower",
 	"WrappingTorso",
 
-
-	"WrappingLegsUnder",
-
-	"OverSocks",
-	"StockingLeft",
-	"FootLeft",
-	"LegLeft",
 
 
 	// These are for the base skirt layer when kneeling

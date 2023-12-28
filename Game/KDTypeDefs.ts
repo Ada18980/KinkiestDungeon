@@ -352,6 +352,8 @@ interface KDRestraintPropsBase {
 	harness?: boolean,
 	/** hobble is the simplest kind of slowing restraint, increasing slow by this amount*/
 	hobble?: number,
+	/** Multiplier to the max heel level */
+	heelpower?: number,
 	/** Blocking feet is for restraints that tie the legs together, forcing the player into SLow Level 2 or higher */
 	blockfeet?: boolean,
 	/** Your total gag level is the sum of the gag values of all your variables. Ball gags have 0.3-0.75 based on size and harness, muzzles are 1.0 */
@@ -2862,10 +2864,15 @@ interface KDPresetLoadout {
 }
 
 interface KDTrainingRecord {
+	/** Turns in this floor's session that have been trained */
 	turns_trained: number,
+	/** Sessions where an opportunity to train was presented but player circumvented it */
 	turns_skipped: number,
+	/** Sessions where an opportunity to train was presented */
 	turns_total: number,
+	/** Current training amount */
 	training_points: number,
+	/** Current training level, basically floor(training_points) */
 	training_stage: number,
 }
 

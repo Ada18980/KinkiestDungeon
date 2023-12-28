@@ -441,7 +441,7 @@ let KDMoveObjectFunctions = {
 		return true;
 	},
 	'R': (moveX, moveY) => {
-		let allowManip = !KinkyDungeonStatsChoice.get("CantTouchThat") || KinkyDungeonHasHelp() || (!KinkyDungeonIsArmsBound() && !KinkyDungeonIsHandsBound(false, true, 0.01));
+		let allowManip = KDAllowUseItems(true);
 		if (allowManip) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, MiniGameKinkyDungeonCheckpoint, "rubble");
@@ -449,14 +449,15 @@ let KDMoveObjectFunctions = {
 			KinkyDungeonMapSet(moveX, moveY, 'r');
 			KinkyDungeonAggroAction('rubble', {});
 		} else {
-			KinkyDungeonSendTextMessage(6, TextGet("KDCantTouchThat"), "#ff8800",1, false, true);
+			KinkyDungeonSendActionMessage(6, TextGet("KDCantTouchThat"), "#ff8800",1, false, true);
+			return false;
 		}
 
 		return true;
 	},
 	'C': (moveX, moveY) => { // Open the chest
 		let chestType = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).Loot ? KinkyDungeonTilesGet(moveX + "," +moveY).Loot : "chest";
-		let allowManip = KDHandsfreeChestTypes.includes(chestType) || !KinkyDungeonStatsChoice.get("CantTouchThat") || KinkyDungeonHasHelp() || (!KinkyDungeonIsArmsBound() && !KinkyDungeonIsHandsBound(false, true, 0.01));
+		let allowManip = KDHandsfreeChestTypes.includes(chestType) || KDAllowUseItems(true);
 		if (allowManip) {
 
 			let faction = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).Faction ? KinkyDungeonTilesGet(moveX + "," +moveY).Faction : undefined;
@@ -498,14 +499,14 @@ let KDMoveObjectFunctions = {
 				KinkyDungeonAggroAction('chest', {faction: faction});
 			}
 		} else {
-			KinkyDungeonSendTextMessage(6, TextGet("KDCantTouchThat"), "#ff8800",1, false, true);
+			KinkyDungeonSendActionMessage(6, TextGet("KDCantTouchThat"), "#ff8800",1, false, true);
 		}
 
 
 		return true;
 	},
 	'Y': (moveX, moveY) => { // Open the chest
-		let allowManip = !KinkyDungeonStatsChoice.get("CantTouchThat") || KinkyDungeonHasHelp() || (!KinkyDungeonIsArmsBound() && !KinkyDungeonIsHandsBound(false, true, 0.01));
+		let allowManip = KDAllowUseItems(true);
 		if (allowManip) {
 			let chestType = KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] == "lib" ? "shelf" : "rubble";
 			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], chestType);
@@ -513,7 +514,7 @@ let KDMoveObjectFunctions = {
 			KinkyDungeonMapSet(moveX, moveY, 'X');
 			KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
 		} else {
-			KinkyDungeonSendTextMessage(6, TextGet("KDCantTouchThat"), "#ff8800",1, false, true);
+			KinkyDungeonSendActionMessage(6, TextGet("KDCantTouchThat"), "#ff8800",1, false, true);
 		}
 		return true;
 	},

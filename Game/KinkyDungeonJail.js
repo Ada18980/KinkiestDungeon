@@ -779,13 +779,17 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 			|| KDRandom() < 0.01)) {
 			KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints--;
 			if (KinkyDungeonJailGuard().NextJailLeashTourWaypointX > KinkyDungeonJailLeashX + 2) {
-				if (KDRandom() < 0.5 && KinkyDungeonLastAction == "Move") {
-					let index = "0";
-					if (KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions < 1) {
-						index = "" + Math.floor(KDRandom() * 6);
-						//KinkyDungeonChangeRep("Ghost", 8);
+				if (KinkyDungeonLastAction == "Move") {
+					if (KDRandom() < 0.5) {
+						let index = "0";
+						if (KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions < 1) {
+							index = "" + Math.floor(KDRandom() * 6);
+							//KinkyDungeonChangeRep("Ghost", 8);
+						}
+						KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerGoodGirl" + index).replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#ffff00", 4, 9);
 					}
-					KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerGoodGirl" + index).replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#ffff00", 4, 9);
+					KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0),
+						KDGameData.HeelPower <= 0, 2, 2.0);
 				}
 			}
 			KinkyDungeonJailGuardGetLeashWaypoint(xx, yy, type);

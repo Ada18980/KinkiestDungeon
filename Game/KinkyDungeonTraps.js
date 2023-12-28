@@ -204,7 +204,7 @@ let KDTrapTypesStepOff = {
 				KinkyDungeonMapSet(x, y, 'd');
 		}
 		return {
-			msg: created > 0 ? "Default" : "",
+			msg: "Default",
 		};
 	}
 };

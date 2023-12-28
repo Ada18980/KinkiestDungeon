@@ -194,6 +194,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 					if (KDGameData.PriorJailbreaks > 0) KDGameData.PriorJailbreaksDecay = (KDGameData.PriorJailbreaksDecay + 1) || 1;
 
 					if (MiniGameKinkyDungeonLevel > 1) {
+						KDAdvanceTraining();
 						// Reduce security level when entering a new area
 						KinkyDungeonChangeRep("Prisoner", -4);
 

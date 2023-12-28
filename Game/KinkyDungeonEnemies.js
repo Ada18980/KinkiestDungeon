@@ -1055,7 +1055,7 @@ function KDMaxEnemyViewDist(enemy) {
 	//KinkyDungeonSendEvent("calcEnemyRad", data);
 	if (enemy.hp < enemy.Enemy.maxhp || enemy.attackPoints > 0) return KDMaxVisionDist;
 	if (KinkyDungeonBlindLevel < 2) return KDMaxVisionDist;
-	else return Math.max(1.5, KDMaxVisionDist - KinkyDungeonBlindLevel * data.blindMult);
+	else return Math.max(KinkyDungeonStatsChoice.get("TotalBlackout") ? 0.5 : 1.5, KDMaxVisionDist - KinkyDungeonBlindLevel * data.blindMult);
 }
 
 /**

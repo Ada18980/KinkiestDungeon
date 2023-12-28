@@ -255,8 +255,18 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 }
 
 
+function KDAllowUseItems(Message) {
+	let ret = !KinkyDungeonStatsChoice.get("CantTouchThat") || KinkyDungeonHasHelp() || (!KinkyDungeonIsArmsBound() && !KinkyDungeonIsHandsBound(false, true, 0.01))
+	if (!ret && KinkyDungeonCanTalk()) {
+		if (KDGameData.KneelTurns > 0) {return true;}
+		if (Message) KinkyDungeonSendActionMessage(7, TextGet("KDMouthGround"), "#ffaa44", 3, undefined, true);
+		return false;
+	}
+	return ret;
+}
+
 function KinkyDungeonItemCheck(x, y, Index, autoEquip) {
-	let allowManip = !KinkyDungeonStatsChoice.get("CantTouchThat") || KinkyDungeonHasHelp() || (!KinkyDungeonIsArmsBound() && !KinkyDungeonIsHandsBound(false, true, 0.01));
+	let allowManip = KDAllowUseItems(false);
 	let msg = false;
 	for (let I = 0; I < KDMapData.GroundItems.length; I++) {
 		let item = KDMapData.GroundItems[I];
@@ -269,7 +279,16 @@ function KinkyDungeonItemCheck(x, y, Index, autoEquip) {
 					KDSetWeapon(item.name);
 				}
 			} else {
-				let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true, true);
+				let point = null;
+				if (KinkyDungeonLastAction == "Move" && (KinkyDungeonPlayerEntity.lastx != KinkyDungeonPlayerEntity.x || KinkyDungeonPlayerEntity.lasty != KinkyDungeonPlayerEntity.y)) {
+					point = {
+						x: KinkyDungeonPlayerEntity.x * 2 - KinkyDungeonPlayerEntity.lastx,
+						y: KinkyDungeonPlayerEntity.y * 2 - KinkyDungeonPlayerEntity.lasty,
+					};
+					if (!KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(point.x, point.y))) point = null;
+				}
+				if (!point)
+					point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true, true);
 				if (point) {
 					item.x = point.x;
 					item.y = point.y;

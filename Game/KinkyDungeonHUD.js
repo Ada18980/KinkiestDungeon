@@ -986,6 +986,17 @@ function KDDrawWeaponSwap(x, y) {
 
 function KinkyDungeonDrawActionBar(x, y) {
 	let str = "";
+	let BalanceOffset = KDToggles.BuffSide ? 850 : 800;
+	if (KDGameData.Balance < 1 && KDGameData.HeelPower > 0) {
+		DrawTextFitKDTo(kdstatusboard, TextGet(KDBalanceSprint() ? "KDBalance" : "KDBalanceNoSprint").replace("AMNT", "" + Math.round(KDGameData.Balance * 100)), 1000, BalanceOffset, 300, "#ffffff", KDTextGray2,
+			24, "left", 110, 0.9);
+		KinkyDungeonBarTo(kdstatusboard, 1000, BalanceOffset + 8, 500, 12, 100*KDGameData.Balance,
+			"#63ab3f", "#283540", KDGameData.Balance * 100, "#ffee83",
+			KDSteps(KDGameData.Balance, -KDGetBalanceCost()), "#283540", "#63ab3f");
+		DrawTextFitKDTo(kdstatusboard, TextGet("KDBalanceTraining").replace("AMNT", "" + (KDGameData.Training.Heels?.training_stage || 0)), 1500, BalanceOffset, 200, "#ffffff", KDTextGray2,
+			10, "right", 111, 0.9);
+
+	}
 
 	if (DrawButtonKDEx("RestHide", (bdata) => {
 		KinkyDungeonDrawStruggle += 1;

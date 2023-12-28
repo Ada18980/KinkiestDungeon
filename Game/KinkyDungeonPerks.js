@@ -289,6 +289,9 @@ let KinkyDungeonStatsPresets = {
 	"AbsoluteFocus": {category: "Magic", id: "AbsoluteFocus", cost: -1},
 
 	"SelfBondage": {category: "Start", id: "SelfBondage", cost: 0, tags: ["start"]},
+	"HeelTraining": {category: "Start", id: "HeelTraining", cost: 0, tags: ["start"]},
+	"ClassicHeels": {category: "Toggles", id: "ClassicHeels", cost: 0, tags: ["start"], blocktags: ["heels"]},
+
 
 	"Hogtied": {startPriority: 50, category: "Start", id: "Hogtied", cost: -1, tags: ["start"]},
 	"StartObsidian": {startPriority: 5, category: "Start", id: "StartObsidian", cost: -2, outfit: "Obsidian", tags: ["start"]},
@@ -574,6 +577,16 @@ let KDPerkStart = {
 		KinkyDungeonInventoryAddLoose("SturdyLeatherBeltsArms");
 		KinkyDungeonInventoryAddLoose("SturdyLeatherBeltsLegs");
 		KinkyDungeonInventoryAddLoose("SturdyLeatherBeltsFeet");
+	},
+	HeelTraining: () =>{
+		KDGameData.Training.Heels = {
+			training_points: 0,
+			training_stage: 0,
+			turns_skipped: 0,
+			turns_total: 0,
+			turns_trained: 0,
+		};
+		KinkyDungeonAddRestraintIfWeaker("TrainingHeels", 20, true, "HiSec", false, undefined, undefined, undefined, true);
 	},
 	StartLatex: () =>{
 		KDAddQuest("LatexDoll");
