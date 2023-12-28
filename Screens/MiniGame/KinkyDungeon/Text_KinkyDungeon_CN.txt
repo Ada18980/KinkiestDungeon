@@ -5310,6 +5310,12 @@ Bast Petsuit
 Bast 宠物套装
 Enhanced suit used for select members of the Bast cult.
 用于 Bast 教派特定成员的增强套装。
+Magic Petsuit
+魔法宠物套装
+A set of straps and buckles enchanted with a powerful spell to render you helpless.
+一套带有强大咒语的带子和带扣，让你束手无策。
+It's warded against cutting by nonmagic blades.
+它可以防止非魔法刀片的切割。
 Blessed Wrappings (Head)
 祝福丝带包裹（头）
 A band of magic embalming ribbon wrapped tight around your eyes.
