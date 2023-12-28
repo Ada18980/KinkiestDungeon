@@ -160,8 +160,8 @@ let KDToggles = {
 	EnemyAura: true,
 	OutlineAura: true,
 	NearestNeighbor: true,
-	ZoomIn: true,
-	ZoomOut: true,
+	ZoomIn: false,
+	ZoomOut: false,
 	LazyWalk: false,
 	ShiftLatch: true,
 	//AutoCrouchOnTrip: true,
@@ -2244,7 +2244,7 @@ function KinkyDungeonRun() {
 
 		let XX = 840;
 		let YYstart = 60;
-		let YYmax = 760;
+		let YYmax = 800;
 		let YY = YYstart;
 		let YYd = 54;
 		let XXd = 350;

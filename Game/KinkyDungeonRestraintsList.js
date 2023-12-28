@@ -3337,7 +3337,7 @@ const KinkyDungeonRestraints = [
 		Color: "Default", Group: "ItemArms", bindarms: true, power: 1.5, weight: 0, escapeChance: {"Struggle": 0.185, "Cut": 0.45, "Remove": 0},
 		affinity: {Remove: ["Hook"],},
 		maxwill: 0.7, enemyTags: {"ropeRestraintsWrist":4}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "Wristties"]},
-	{unlimited: true, inventory: false, name: "RopeSnakeHogtie", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Type: "Hogtied", Color: "Default", Group: "ItemArms", bindarms: true, power: 6, weight: 0,
+	{unlimited: true, inventory: true, name: "RopeSnakeHogtie", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Type: "Hogtied", Color: "Default", Group: "ItemArms", bindarms: true, power: 6, weight: 0,
 		Model: "RopeBoxtie1",
 		alwaysDressModel: [
 			{Model: "RopeChestStraps2", inheritFilters: true,}
@@ -3346,9 +3346,9 @@ const KinkyDungeonRestraints = [
 		struggleMult: {"Struggle": 0.4, "Remove": 0.3},
 		escapeChance: {"Struggle": 0.0, "Cut": 0.15, "Remove": 0}, affinity: {Remove: ["Hook"],},
 		maxwill: 0.25, enemyTags: {"ropeRestraintsHogtie":12}, playerTags: {}, minLevel: 2, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "Hogties", "Boxties"],
-		events: [{trigger: "postRemoval", type: "replaceItem", list: ["RopeSnakeArmsBoxtie"], power: 6}]
+		//events: [{trigger: "postRemoval", type: "replaceItem", list: ["RopeSnakeArmsBoxtie"], power: 6}]
 	},
-	{unlimited: true, inventory: false, name: "RopeSnakeHogtieWrist", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Type: "Hogtied", Color: "Default", Group: "ItemArms", bindarms: true, power: 6, weight: 0,
+	{unlimited: true, inventory: true, name: "RopeSnakeHogtieWrist", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Type: "Hogtied", Color: "Default", Group: "ItemArms", bindarms: true, power: 6, weight: 0,
 		Model: "RopeWristtie1",
 		alwaysDressModel: [
 			{Model: "RopeChestStraps2"}
@@ -3357,7 +3357,7 @@ const KinkyDungeonRestraints = [
 		struggleMult: {"Struggle": 0.4, "Remove": 0.3},
 		escapeChance: {"Struggle": 0.1, "Cut": 0.15, "Remove": -0.05}, affinity: {Remove: ["Hook"],},
 		maxwill: 0.25, enemyTags: {"ropeRestraintsHogtie":12}, playerTags: {}, minLevel: 2, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "Hogties", "Wristties"],
-		events: [{trigger: "postRemoval", type: "replaceItem", list: ["RopeSnakeArmsWrist"], power: 6}]
+		//events: [{trigger: "postRemoval", type: "replaceItem", list: ["RopeSnakeArmsWrist"], power: 6}]
 	},
 	{unlimited: true, renderWhenLinked: [...KDLegRopesRender], inventory: true, name: "RopeSnakeFeet", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Color: "Default", LinkableBy: ["Ties", "Wrapping", "Encase", "Belts"], Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 1, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.5, "Remove": 0.15},
 		Model: "RopeAnkles1",

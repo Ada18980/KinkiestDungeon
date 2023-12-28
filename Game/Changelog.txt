@@ -30,6 +30,7 @@ Monk class?
 - You can train up your heel walking ability. It levels up when you reach a new highest floor, and is based on how often you were wearing heels the last level. Grinding the same level won't help you.
 - Added more enchanted restraint types as quest rewards (mostly chastity and toys)
 - Added experimental option to zoom in and out (in game options)
+- Hogtie no longer forces arm bondage but can now be kept in inventory
 
 5.0.6
 - New perks: Can't Touch That, Grounded

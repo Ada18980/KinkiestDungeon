@@ -798,9 +798,9 @@ let KDLastKeyTime = {
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
 	if (KDToggles.ZoomIn) {
-		KinkyDungeonGridSizeDisplay = 50;
-	} else if (KDToggles.ZoomOut) {
 		KinkyDungeonGridSizeDisplay = 100;
+	} else if (KDToggles.ZoomOut) {
+		KinkyDungeonGridSizeDisplay = 50;
 	} else KinkyDungeonGridSizeDisplay = 72;
 
 	// Breath the sound outlines
