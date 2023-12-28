@@ -739,8 +739,9 @@ function KinkyDungeonIsLockable(restraint) {
 function KinkyDungeonLock(item, lock, NoEvent = false) {
 	if (lock != "") {
 		if (KinkyDungeonIsLockable(KDRestraint(item))) {
+			if (KDLocks[lock] && KDLocks[lock].doLock) KDLocks[lock].doLock({item: item});
 			item.lock = lock;
-			if (!KDLocks[lock]?.shrineImmune) item.lockTimer = MiniGameKinkyDungeonLevel + 2;
+
 			if (!StandalonePatched)
 				InventoryLock(KinkyDungeonPlayer, InventoryGet(KinkyDungeonPlayer, KDRestraint(item).AssetGroup ? KDRestraint(item).AssetGroup : KDRestraint(item).Group), "IntricatePadlock", Player.MemberNumber, true);
 			item.pickProgress = 0;
