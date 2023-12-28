@@ -36,6 +36,18 @@ let StruggleTypeHandThresh = {
 
 let KDRestraintArchetypes = ["Rope", "Latex", "Ribbon", "Leather", "Cyber", "Metal", "Armbinders", "Boxbinders", "Straitjackets", "Legbinders"];
 
+
+/**
+ * @type {Record<string, (data : KDEventData_affinity) => boolean>}
+ */
+let KDCustomAffinity = {
+	Wall: (data) => {
+		// Intentionally only a + shape
+		if (KDNearbyMapTiles(data.entity.x, data.entity.y, 1.1)?.some((tile) => {return KinkyDungeonBlockTiles.includes(tile.tile);})) return true;
+		return KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
+	}
+};
+
 /**
  * Returns the multiplier of a restraint based on the player's current restraint counts
  * @param {entity} player
@@ -1072,7 +1084,7 @@ let KDAffinityList = ["Hook", "Edge", "Sticky", "Sharp"];
  * @param {boolean} Message - Show a message?
  * @param {string} affinity
  * @param {string} [group]
- * @param {string} [entity]
+ * @param {entity} [entity]
  * @returns {boolean}
  */
 function KinkyDungeonGetAffinity(Message, affinity, group, entity) {
@@ -1087,39 +1099,41 @@ function KinkyDungeonGetAffinity(Message, affinity, group, entity) {
 		group: group,
 		Message: Message,
 		entity: entity,
+		msgedstand: false,
+		canStand: KinkyDungeonCanStand(),
+		groupIsHigh: !group || (
+			group.startsWith("ItemM")
+			|| group == "ItemArms"
+			|| (group == "ItemHands" || !KinkyDungeonIsArmsBound())
+			|| group == "ItemEars"
+			|| group == "ItemHood"
+			|| group == "ItemHead"
+			|| group == "ItemNeck"
+			|| group == "ItemNeckAccessories"
+			|| group == "ItemNeckRestraints"
+		),
 	};
 	KinkyDungeonSendEvent("affinity", data);
 	if (data.forceFalse > 0 && data.forceFalse >= data.forceTrue) return false;
 	if (data.forceTrue > 0) return true;
 
 	let effectTiles = KDGetEffectTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
-	let groupIsHigh = !group || (
-		group.startsWith("ItemM")
-		|| group == "ItemArms"
-		|| (group == "ItemHands" || !KinkyDungeonIsArmsBound())
-		|| group == "ItemEars"
-		|| group == "ItemHood"
-		|| group == "ItemHead"
-		|| group == "ItemNeck"
-		|| group == "ItemNeckAccessories"
-		|| group == "ItemNeckRestraints"
-	);
-	let canStand = KinkyDungeonCanStand();
-	let msgedStand = false;
 	if (effectTiles)
 		for (let t of Object.values(effectTiles)) {
 			if (t.affinities && t.affinities.includes(affinity)) return true;
-			else if (canStand && groupIsHigh && t.affinitiesStanding && t.affinitiesStanding.includes(affinity)) return true;
-			else if (Message && !msgedStand && (!canStand || !groupIsHigh) && t.affinitiesStanding && t.affinitiesStanding.includes(affinity)) {
-				msgedStand = true;
+			else if (data.canStand && data.groupIsHigh && t.affinitiesStanding && t.affinitiesStanding.includes(affinity)) return true;
+			else if (Message && !data.msgedStand && (!data.canStand || !data.groupIsHigh) && t.affinitiesStanding && t.affinitiesStanding.includes(affinity)) {
+				data.msgedStand = true;
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), "#ff0000", 2);
 			}
 		}
-	if (affinity == "Hook") {
+	if (KDCustomAffinity[data.affinity]) {
+		return KDCustomAffinity[data.affinity](data);
+	} if (affinity == "Hook") {
 		let tile = KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		if (tile == '?') {
-			if (canStand && groupIsHigh) return true;
-			else if (!msgedStand && Message) KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), "#ff0000", 2);
+			if (data.canStand && data.groupIsHigh) return true;
+			else if (!data.msgedStand && Message) KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), "#ff0000", 2);
 		} else if (KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y - 1) == ',') return true;
 		return KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
 	} else if (affinity == "Edge") {
@@ -5185,3 +5199,4 @@ function KDGetRestraintHost(item) {
 
 	return host;
 }
+

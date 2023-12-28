@@ -19,12 +19,13 @@ let KDCategoriesStart = [
 	{name: "Multiclass", buffs: [], debuffs: [],},
 	{name: "Major", buffs: [], debuffs: [],},
 	{name: "Restraints", buffs: [], debuffs: [],},
+	{name: "Restriction", buffs: [], debuffs: [],},
+	{name: "Senses", buffs: [], debuffs: [],},
 	{name: "Kinky", buffs: [], debuffs: [],},
 	{name: "Damage", buffs: [], debuffs: [],},
-	{name: "Senses", buffs: [], debuffs: [],},
 	{name: "Combat", buffs: [], debuffs: [],},
 	{name: "Magic", buffs: [], debuffs: [],},
-	{name: "Components", buffs: [], debuffs: [],},
+	//{name: "Components", buffs: [], debuffs: [],},
 	{name: "Enemies", buffs: [], debuffs: [],},
 	{name: "Common", buffs: [], debuffs: [],},
 	{name: "Map", buffs: [], debuffs: [],},
@@ -250,15 +251,10 @@ let KinkyDungeonStatsPresets = {
 	"UnarmedPain": {category: "Combat", id: "UnarmedPain", cost: 0, tags: ["unarmedreplace"], blocktags: ["unarmedreplace"]},
 	"UnarmedTickle": {category: "Combat", id: "UnarmedTickle", cost: 0, tags: ["unarmedreplace"], blocktags: ["unarmedreplace"]},
 	"Clumsy": {category: "Combat", id: 21, cost: -1},
-	"Incantation":  {category: "Components", id: "Incantation", cost: -1, block: ["SmoothTalker"]},
-	"SmoothTalker":  {category: "Components", id: "SmoothTalker", cost: 2, block: ["Incantation"]},
-	"SomaticPlus": {category: "Components", id: "SomaticPlus", cost: 2, block: ["SomaticMinus"]},
-	"SomaticMinus": {category: "Components", id: "SomaticMinus", cost: -1, block: ["SomaticPlus"]},
-	"HeelWalker": {category: "Components", id: 53, cost: 2, block: ["PoorForm"]},
-	"PoorForm": {category: "Components", id: "PoorForm", cost: -1, block: ["HeelWalker"]},
-	"Slayer": {category: "Components", id: 34, cost: 3},
-	"Magician": {category: "Components", id: 36, cost: 3},
-	"Conjurer": {category: "Components", id: 35, cost: 3},
+
+	"Slayer": {category: "Magic", id: 34, cost: 3},
+	"Magician": {category: "Magic", id: 36, cost: 3},
+	"Conjurer": {category: "Magic", id: 35, cost: 3},
 	"Unfocused": {category: "Combat", id: "Unfocused", cost: -2},
 	"BondageLover": {category: "Kinky", id: 15, cost: -1},
 	"Undeniable": {category: "Kinky", id: "Undeniable", cost: -1},
@@ -340,8 +336,8 @@ let KinkyDungeonStatsPresets = {
 	"Trespasser": {category: "Map", id: "Trespasser", cost: -2},
 
 
-	"Butterfingers":  {category: "Restraints", id: "Butterfingers", cost: -1},
-	"WeakGrip":  {category: "Restraints", id: "WeakGrip", cost: -1},
+	"Butterfingers":  {category: "Restriction", id: "Butterfingers", cost: -1},
+	"WeakGrip":  {category: "Restriction", id: "WeakGrip", cost: -1},
 
 
 	"Blackout":  {category: "Senses", id: "Blackout", cost: -1, block: ["TotalBlackout"]},
@@ -382,7 +378,16 @@ let KinkyDungeonStatsPresets = {
 	"CommonWolf": {category: "Common", id: "CommonWolf", cost: -1, costGroup: "common"},
 	"CommonKitty": {category: "Common", id: "CommonKitty", cost: -1, costGroup: "common"},
 
-	"Doorknobs":  {category: "Map", id: "Doorknobs", cost: -1},
+	"Incantation":  {category: "Restriction", id: "Incantation", cost: -1, block: ["SmoothTalker"]},
+	"SmoothTalker":  {category: "Restriction", id: "SmoothTalker", cost: 2, block: ["Incantation"]},
+	"SomaticPlus": {category: "Restriction", id: "SomaticPlus", cost: 2, block: ["SomaticMinus"]},
+	"SomaticMinus": {category: "Restriction", id: "SomaticMinus", cost: -1, block: ["SomaticPlus"]},
+	"HeelWalker": {category: "Restriction", id: 53, cost: 2, block: ["PoorForm"]},
+	"PoorForm": {category: "Restriction", id: "PoorForm", cost: -1, block: ["HeelWalker"]},
+
+	"Doorknobs":  {category: "Restriction", id: "Doorknobs", cost: -1},
+	"CantTouchThat":  {category: "Restriction", id: "CantTouchThat", cost: -1},
+	"Grounded":  {category: "Restriction", id: "Grounded", cost: -1},
 
 
 	"MapLarge": {category: "Map", id: "MapLarge", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},

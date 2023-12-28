@@ -1244,7 +1244,44 @@ function KinkyDungeonUpdateStats(delta) {
 	// Process wait equation
 	if (delta > 0 && KDGameData.StaminaPause > 0) KDGameData.StaminaPause -= delta;
 	if (delta > 0 && KDGameData.StaminaSlow > 0) KDGameData.StaminaSlow -= delta;
-	if (delta > 0 && KDGameData.KneelTurns > 0) KDGameData.KneelTurns -= delta;
+
+	let kneelRate = KinkyDungeonIsArmsBound() ? 0.8 : 1;
+	if (KinkyDungeonSlowLevel > 2) kneelRate *= 0.6;
+
+	let minKneel = 0;
+	if (KinkyDungeonStatsChoice.get("Grounded") && (KinkyDungeonIsArmsBound() && KinkyDungeonLegsBlocked())) {
+		minKneel = 1;
+	}
+
+	if (KDGameData.KneelTurns > 0 && !KDGameData.Crouch && (kneelRate < 1 || minKneel > 0)) {
+		if (KinkyDungeonHasHelp()) {
+			kneelRate = 1;
+			if (minKneel > 0) {
+				minKneel = 0;
+			}
+			KinkyDungeonSendTextMessage(4, TextGet("KDGetUpAlly"), "#ffffff",1, !(KDGameData.KneelTurns <= delta*kneelRate));
+
+		} else if (KinkyDungeonStatsChoice.get("Grounded") && KinkyDungeonGetAffinity(false, "Corner", undefined, undefined)) {
+			minKneel = 0;
+			kneelRate = Math.min(1, kneelRate + 0.2);
+			KinkyDungeonSendTextMessage(4, TextGet("KDGetUpCorner"), "#ffffff",1, !(KDGameData.KneelTurns <= delta*kneelRate));
+		} else if (KinkyDungeonStatsChoice.get("Grounded") && KinkyDungeonGetAffinity(false, "Wall", undefined, undefined)) {
+			minKneel = 0;
+			kneelRate *= 0.5;
+			//if (KDGameData.KneelTurns <= kneelRate) {
+			KinkyDungeonSendTextMessage(4, TextGet("KDGetUpWall"), "#ffffff",1, !(KDGameData.KneelTurns <= delta*kneelRate));
+			//}
+		}
+
+		if (minKneel > 0) {
+			KinkyDungeonSendActionMessage(1, TextGet("KDKneelCannot"), "#ff8800",1, true);
+		} else if (kneelRate < 1) {
+			KinkyDungeonSendTextMessage(4, TextGet("KDKneelSlow"), "#ffffff",1, true);
+		}
+	}
+
+
+	if (delta > 0 && KDGameData.KneelTurns > minKneel) KDGameData.KneelTurns -= delta*kneelRate;
 	if (KDGameData.Crouch) KDGameData.KneelTurns = Math.max(1, KDGameData.KneelTurns || 0);
 	if (KDGameData.Wait > 0) {
 		if (delta > 0) {
@@ -1534,7 +1571,10 @@ function KinkyDungeonCalculateSlowLevel(delta) {
 			}
 		}
 		// If your hands are free you are faster
-		if (!KinkyDungeonCanStand()) KinkyDungeonSlowLevel = Math.max(KinkyDungeonIsArmsBound() ? 3 : 2, KinkyDungeonSlowLevel + 1);
+		if (!KinkyDungeonCanStand()) {
+			KinkyDungeonSlowLevel = Math.max(KinkyDungeonIsArmsBound() ? 3 : 2, KinkyDungeonSlowLevel + 1);
+			if (delta > 0) KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, delta);
+		}
 		if (KDIsHogtied()) KinkyDungeonSlowLevel = Math.max(KinkyDungeonIsArmsBound() ? 4 : 3, KinkyDungeonSlowLevel + 1);
 		for (let inv of KinkyDungeonAllRestraint()) {
 			if (KDRestraint(inv).freeze) KinkyDungeonSlowLevel = Math.max(2, KinkyDungeonSlowLevel);

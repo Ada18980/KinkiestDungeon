@@ -77,7 +77,7 @@ KDToggleShowSameCatSpells,UI: Show more learnable spells
 KDTogglePlayerAura,UI: Show Player Buff Auras
 KDToggleEnemyAura,UI: Show Enemy Buff Auras
 KDToggleOutlineAura,UI: Minimalist Enemy Auras
-KDToggleNearestNeighbor,UI: More Pixelation
+KDToggleNearestNeighbor,UI: Pixelated GFX (needs restart)
 
 
 KDHelpless,Helpless!
@@ -280,6 +280,7 @@ KinkyDungeonStatSomaticMinus,"Poor Coordination"
 KinkyDungeonStatDescSomaticMinus,"You must have both fingers and arms free to cast arm spells. Hand restraints are more effective on you."
 KinkyDungeonStatSomaticPlus,"Deft Fingering"
 KinkyDungeonStatDescSomaticPlus,"You can cast arm spells using just your fingers, as long as your hands aren't bound."
+
 
 KinkyDungeonStat54,"Well-Equipped"
 KinkyDungeonStatDesc54,"Restraints and traps that are limited by level appear sooner, and will stack more. +10 security level."
@@ -9734,6 +9735,7 @@ KinkyDungeonSpecialStaffIncineration,Ignite torches and nearby objects
 KDCategoryToggles,Preferences
 KDCategoryMulticlass,Multiclass
 KDCategoryMajor,Game-Changing
+KDCategoryRestriction,Restriction
 KDCategoryRestraints,Restraints
 KDCategoryCombat,Combat
 KDCategoryKinky,Kinks
@@ -18891,3 +18893,16 @@ AttackTimekeeperBind,"The Timekeeper enacts judgement for disrupting time! (+Res
 KinkyDungeonBuffAnalyze,Analysis
 
 ItemPickupSlimethrower,You pick up a latex projector
+
+KinkyDungeonStatCantTouchThat,"Can't Touch That"
+KinkyDungeonStatDescCantTouchThat,"When both arms and hands are severely bound, you can no longer pick up items without an ally nearby."
+KDCantTouchThat,You can't pick that up without help.
+KinkyDungeonStatGrounded,"Grounded"
+KinkyDungeonStatDescGrounded,"When arms are tied and feet are linked, you cannot get up from a kneeling position without help or a wall."
+KDKneelSlow,You take more time getting up due to your bindings.
+KDKneelCannot,You can't get up without help.
+KDGetUpAlly,Your ally helps you back up.
+KDGetUpCorner,You get back up using the corner.
+KDGetUpWall,You get up to your knees using the wall.
+KDCantCloseDoor,You're too tied up to close the door.
+KDAutoChest,The chest opens on its own.

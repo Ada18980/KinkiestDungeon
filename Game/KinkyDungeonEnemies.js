@@ -482,7 +482,7 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 									// Legacy
 									if (b.noAuraColor && b.aurasprite) {
 										KDDraw(kdenemyboard, kdpixisprites, enemy.id + "," + b.id, KinkyDungeonRootDirectory + "Aura/" + (b.aurasprite ? b.aurasprite : "Aura") + ".png",
-											(tx + (enemy.offX || 0) - CamX + (enemy.flip ? 1 : 0))*KinkyDungeonGridSizeDisplay - (w - KinkyDungeonGridSizeDisplay)/2,
+											(tx + (enemy.offX || 0) - CamX)*KinkyDungeonGridSizeDisplay - (w - KinkyDungeonGridSizeDisplay)/2,
 											(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
 											w, h, undefined, {
 												zIndex: 2,

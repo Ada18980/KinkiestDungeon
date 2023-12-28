@@ -1290,7 +1290,9 @@ function KinkyDungeonDrawActionBar(x, y) {
 
 	// Door button
 	if (DrawButtonKDEx("toggleDoor", (bdata) => {
-		KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor;
+		if (KinkyDungeonStatsChoice.get("Doorknobs") && KinkyDungeonIsArmsBound(true) && KinkyDungeonIsHandsBound(true, true, 0.5))
+			KinkyDungeonSendTextMessage(8, TextGet("KDCantCloseDoor"), "#ff8800", 2);
+		else KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor;
 		return true;
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, actionbarHeight,
 	"", "", KinkyDungeonRootDirectory + (KinkyDungeonToggleAutoDoor ? "UI/DoorClose.png" : "UI/Door.png"),
