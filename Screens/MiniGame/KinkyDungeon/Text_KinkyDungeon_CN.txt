@@ -5132,6 +5132,8 @@ A boxbinder enclosing your hands and arms completely, making your hands useless.
 盒束包扎带将你的手和手臂完全包住，使你的手变得毫无用处。
 High-Security Straitjacket
 高安全性拘束衣
+A straitjacket enclosing your hands and arms completely, making your hands useless.
+紧身衣将你的手和手臂完全包住，使你的手变得毫无用处。
 High-Security Legbinder
 高安全性束腿套
 An mythril legbinder enclosing your legs, making it difficult to move.
