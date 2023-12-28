@@ -2436,6 +2436,7 @@
             <key type="filename">../Game/Buffs/boundStun.png</key>
             <key type="filename">../Game/Buffs/buff/buff.png</key>
             <key type="filename">../Game/Buffs/buff/buffAkashicConflux.png</key>
+            <key type="filename">../Game/Buffs/buff/buffAnalyze.png</key>
             <key type="filename">../Game/Buffs/buff/buffArcaneEnergy.png</key>
             <key type="filename">../Game/Buffs/buff/buffAvatarAir.png</key>
             <key type="filename">../Game/Buffs/buff/buffAvatarEarth.png</key>

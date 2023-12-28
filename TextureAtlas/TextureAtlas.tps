@@ -630,6 +630,10 @@
             <key type="filename">../Models/Dress/SkirtKneelCrotchStrap.png</key>
             <key type="filename">../Models/Dress/SkirtOverKneel.png</key>
             <key type="filename">../Models/Dress/SkirtOverKneelCrotchStrap.png</key>
+            <key type="filename">../Models/Dress/SkirtSplit.png</key>
+            <key type="filename">../Models/Dress/SkirtSplitClosed.png</key>
+            <key type="filename">../Models/Dress/SkirtSplitKneel.png</key>
+            <key type="filename">../Models/Dress/SkirtSplitOverKneel.png</key>
             <key type="filename">../Models/Ears/Earrings.png</key>
             <key type="filename">../Models/Ears/EarringsBack.png</key>
             <key type="filename">../Models/Ears/ElfBack.png</key>
@@ -1741,6 +1745,10 @@
             <key type="filename">../Models/Witch/SkirtRuffleKneelCrotchStrap.png</key>
             <key type="filename">../Models/Witch/SkirtRuffleOverKneel.png</key>
             <key type="filename">../Models/Witch/SkirtRuffleOverKneelCrotchStrap.png</key>
+            <key type="filename">../Models/Witch/SkirtSplit.png</key>
+            <key type="filename">../Models/Witch/SkirtSplitClosed.png</key>
+            <key type="filename">../Models/Witch/SkirtSplitKneel.png</key>
+            <key type="filename">../Models/Witch/SkirtSplitOverKneel.png</key>
             <key type="filename">../Models/Witch/WitchHat.png</key>
             <key type="filename">../Models/Witch/WitchHatBack.png</key>
             <key type="filename">../Models/Wolf/AnkleLeftClosed.png</key>
