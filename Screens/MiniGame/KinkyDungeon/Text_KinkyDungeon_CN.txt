@@ -130,8 +130,8 @@ UI: Show Enemy Buff Auras
 UI：显示敌人增益光环
 UI: Minimalist Enemy Auras
 UI：极简敌人光环
-UI: More Pixelation
-UI：更多像素化
+UI: Pixelated GFX (needs restart)
+UI：像素化图像特效（需重启）
 Helpless!
 无助！
 Evaded!
@@ -7040,7 +7040,7 @@ Choose target location (2 tile range)
 选择施放位置（2 格范围）
 Blink III
 扭曲
-Instantly teleport up to 2 tiles away. Must have vision of the target point.
+Instantly teleport up to 3 tiles away. Must have vision of the target point.
 立即传送至 2 格之外。目标位置必须可视。
 Choose target location (3 tile range)
 选择施放位置（3 格范围）
@@ -7230,6 +7230,8 @@ Witch's Electricity
 女巫的落雷
 Firey Explosion
 火焰爆炸
+Icey Explosion
+冰冷爆炸
 Witch's Electric Orb
 女巫的雷电球
 Witch's Electric Burst
@@ -11524,6 +11526,8 @@ Multiclass
 多类别
 Game-Changing
 改变游戏规则
+Restriction
+限制
 Combat
 战斗
 Kinks
@@ -15432,18 +15436,42 @@ The technician trips and glues herself to the floor.
 技师绊倒并把自己粘在地板上。
 Quite sticky, innit?
 很粘，不是吗？
+Bow: This is a ranged weapon with a weapon ability.
+弓：这是一种具有武器能力的远程武器。
+Magic: Ignores evasion of ghost type enemies, can be used with abilities that require magic weapons.
+魔法：无视幽灵类敌人的躲避，可以与需要魔法武器的技能一起使用。
+Light: Can be used to cut even with bound arms. 50% reduced accuracy penalty from being bound. Can be held in mouth.
+光：即使手臂被束缚也可以用来切割。因被束缚而造成的准确度损失降低 50%。可以含在嘴里。
 Offhand
 副手
+Offhand: This weapon can be dual-wielded by some classes.
+副手：某些职业可以双持该武器。
 2 Handed
 双手
+2 Handed: While wielding this as your primary weapon, you cannot wield an offhand weapon. Also this weapon can't be used while arms are tied.
+双手：当你使用它作为你的主要武器时，你不能使用副手武器。此外，当手臂被绑住时，该武器无法使用。
+Precision
+精确
+Precision: Your arms need to be free to use this weapon.
+精确：你的手臂需要能够自由地使用此武器。
 Hands-Free
 双手自由
+Hands-Free: Weapon can be used without free hands.
+双手自由：无需空出双手即可使用武器。
 Shield
 盾
+Shield: This weapon is intended for defensive use.
+盾牌：该武器用于防御。
+Heavy: This weapon takes +1 turns to switch to. Cannot be reduced to 0 by perks or upgrades.
+重型：该武器需要 +1 回合才能切换。无法通过技能或升级将其减少至 0。
 Massive
 大
+Massive: This weapon either stuns or slows you after attacking with it. Handle with care!
+大：此武器在攻击后会击晕或减慢你的速度。小心轻放！
 Illumination
 照明
+Illumination: This weapon is a light source.
+照明：该武器是一个光源。
 Dual Wield
 双持
 Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|(Must equip Dual Wield spell to equip an offhand weapon)
@@ -15692,6 +15720,8 @@ Barricades set up by enemies do not expire, and enemies set them up even when no
 敌人设置的路障不会过期，即使没有警报，敌人也会设置路障。
 Pass thru helpless allies
 绕过无助的盟友
+Pass thru helpless enemies
+绕过无助的敌人
 Pass thru neutrals
 绕过中立实体
 Pass thru summons
@@ -16805,3 +16835,31 @@ The Timekeeper enacts judgement for disrupting time! (+RestraintAdded)
 
 Analysis
 分析
+
+You pick up a latex projector
+你拿起一台乳胶投影仪
+
+Can't Touch That
+碰不到
+When both arms and hands are severely bound, you can no longer pick up items without an ally nearby.
+当双臂和双手都被严重束缚时，如果附近没有盟友，你将无法再拾取物品。
+You can't pick that up without help.
+如果没有帮助，你就无法拿起它。
+Grounded
+地面限制
+When arms are tied and feet are linked, you cannot get up from a kneeling position without help or a wall.
+当手臂被绑住，且双脚相连时，如果没有帮助或墙壁，你就无法从跪着的姿势站起来。
+You take more time getting up due to your bindings.
+由于束缚，你起身需要更多时间。
+You can't get up without help.
+没有帮助你就无法站起来。
+Your ally helps you back up.
+你的盟友会帮助你起身。
+You get back up using the corner.
+你可以利用角落重新站起来。
+You get up to your knees using the wall.
+你靠着墙站起来。
+You're too tied up to close the door.
+你被束缚的太紧了，无法关门。
+The chest opens on its own.
+箱子会自动打开。
