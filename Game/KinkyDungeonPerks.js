@@ -21,6 +21,7 @@ let KDCategoriesStart = [
 	{name: "Restraints", buffs: [], debuffs: [],},
 	{name: "Restriction", buffs: [], debuffs: [],},
 	{name: "Senses", buffs: [], debuffs: [],},
+	{name: "Training", buffs: [], debuffs: [],},
 	{name: "Kinky", buffs: [], debuffs: [],},
 	{name: "Damage", buffs: [], debuffs: [],},
 	{name: "Combat", buffs: [], debuffs: [],},
@@ -292,6 +293,9 @@ let KinkyDungeonStatsPresets = {
 	"HeelTraining": {category: "Start", id: "HeelTraining", cost: 0, tags: ["start"]},
 	"ClassicHeels": {category: "Toggles", id: "ClassicHeels", cost: 0, tags: ["start"], blocktags: ["heels"]},
 
+	"MasteryHeels": {category: "Training", id: "MasteryHeels", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
+	"PoorBalance": {category: "Combat", id: "PoorBalance", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
+	"HeadStartHeels": {category: "Training", id: "HeadStartHeels", cost: 1, tags: ["start", "heels"], block: ["ClassicHeels"]},
 
 	"Hogtied": {startPriority: 50, category: "Start", id: "Hogtied", cost: -1, tags: ["start"]},
 	"StartObsidian": {startPriority: 5, category: "Start", id: "StartObsidian", cost: -2, outfit: "Obsidian", tags: ["start"]},
@@ -396,6 +400,8 @@ let KinkyDungeonStatsPresets = {
 	"MapLarge": {category: "Map", id: "MapLarge", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
 	"MapHuge": {category: "Map", id: "MapHuge", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
 	"MapGigantic": {category: "Map", id: "MapGigantic", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
+
+	"TrustFall": {category: "Restriction", id: "TrustFall", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
 };
 
 
@@ -587,6 +593,17 @@ let KDPerkStart = {
 			turns_trained: 0,
 		};
 		KinkyDungeonAddRestraintIfWeaker("TrainingHeels", 20, true, "HiSec", false, undefined, undefined, undefined, true);
+	},
+	HeadStartHeels: () =>{
+		KDGameData.Training.Heels = {
+			training_points: 0,
+			training_stage: 5,
+			turns_skipped: 0,
+			turns_total: 0,
+			turns_trained: 0,
+		};
+		KinkyDungeonInventoryAddLoose("TrainingHeels");
+
 	},
 	StartLatex: () =>{
 		KDAddQuest("LatexDoll");

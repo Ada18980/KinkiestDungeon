@@ -53,6 +53,18 @@ function KDProcessInput(type, data) {
 			}
 			return "Fail";
 		}
+		case "lock": {
+			KDDelayedActionPrune(["Action", "Struggle"]);
+			let item = KinkyDungeonGetRestraintItem(data.group);
+			if (data.index) {
+				let surfaceItems = KDDynamicLinkListSurface(item);
+				if (surfaceItems[data.index])
+					item = surfaceItems[data.index];
+				else console.log("Error! Please report the item combination and screenshot to Ada!");
+			}
+			KinkyDungeonLock(item, data.type);
+			break;
+		}
 		case "struggle":
 			KDDelayedActionPrune(["Action", "Struggle"]);
 			return KinkyDungeonStruggle(data.group, data.type, data.index);
@@ -167,8 +179,8 @@ function KDProcessInput(type, data) {
 			break;
 		}
 		case "inventoryAction": {
-			if (KDInventoryAction[KDGameData.InventoryAction] && KDInventoryAction[KDGameData.InventoryAction].valid(data.player, data.item)) {
-				KDInventoryAction[KDGameData.InventoryAction].click(data.player, data.item);
+			if (KDInventoryAction[data.action || KDGameData.InventoryAction] && KDInventoryAction[data.action || KDGameData.InventoryAction].valid(data.player, data.item)) {
+				KDInventoryAction[data.action || KDGameData.InventoryAction].click(data.player, data.item);
 			}
 			break;
 		}

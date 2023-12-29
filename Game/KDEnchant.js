@@ -158,7 +158,9 @@ let KDEventEnchantmentModular = {
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("Accuracy")) return 0;
 					if (KDRestraint({name: item})?.blindfold) return 40;
-					return 10;
+					if (KDRestraint({name: item})?.bindhands) return 4;
+					if (KDRestraint({name: item})?.bindarms) return 1;
+					return 24;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 3);
@@ -481,8 +483,11 @@ let KDEventEnchantmentModular = {
 				},
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("ElementalEcho")) return 0;
+					if (KDRestraint({name: item})?.bindarms) return 1;
+					if (KDRestraint({name: item})?.bindhands) return 2;
 					if (KDRestraint({name: item})?.armor) return 40;
-					return 9;
+					if (["ItemArms", "ItemHands", "ItemBoots", "ItemHead", "ItemVulva", "ItemVulvaPiercings", "ItemNipplesPiercings"].includes(KDRestraint({name: item})?.Group)) return 13;
+					return 3;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 1);
@@ -509,7 +514,8 @@ let KDEventEnchantmentModular = {
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("ElementalDmg")) return 0;
 					if (!KinkyDungeonMeleeDamageTypes.includes(KinkyDungeonWeapons[item]?.type)) return 0;
-					return 17;
+					if (["ItemArms", "ItemHands", "ItemBoots", "ItemHead", "ItemVulva", "ItemVulvaPiercings", "ItemNipplesPiercings"].includes(KDRestraint({name: item})?.Group)) return 20;
+					return 14;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemRarity(item), 1);
@@ -528,10 +534,10 @@ let KDEventEnchantmentModular = {
 				filter: (item, allEnchant) => {
 					return true;
 				},
-				weight: (item, allEnchant) => {
+				weight: (item, allEnchant, data) => {
 					if (allEnchant.includes("ElementalDmg")) return 0;
 					if (KDRestraint({name: item})?.armor) return 11;
-					return 7;
+					return 8;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 1);
@@ -583,8 +589,9 @@ let KDEventEnchantmentModular = {
 				},
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("BaseDamageBuffMelee")) return 0;
-					if (KDRestraint({name: item})?.bindhands) return 40;
-					return 5;
+					if (KDRestraint({name: item})?.bindarms) return 3;
+					if (KDRestraint({name: item})?.bindhands) return 1;
+					return 18;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 1);
@@ -610,7 +617,9 @@ let KDEventEnchantmentModular = {
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("BaseDamageBuffMagic")) return 0;
 					if (KDRestraint({name: item})?.bindarms) return 15;
+					if (KDRestraint({name: item})?.bindhands) return 11;
 					if (KDRestraint({name: item})?.gag) return 9;
+					if (KDRestraint({name: item})?.heelpower) return 5;
 					return 3;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {

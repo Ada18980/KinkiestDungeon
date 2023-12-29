@@ -570,7 +570,7 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 				// Fallback
 				if (playerDist > KDRestraint(inv).tether && KDistEuclidean(xTo-inv.tx, yTo-inv.ty) > KDistEuclidean(Entity.x-inv.tx, Entity.y-inv.ty)) {
 					if (Msg) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTetherTooShort").replace("TETHER", TextGet("Restraint" + inv.name)), "#ff0000", 2, true);
-					if (KinkyDungeonCanStand()) {
+					if (KinkyDungeonCanStand() && !KDForcedToGround()) {
 						KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, KDLeashPullKneelTime + KDGameData.SlowMoveTurns);
 						KinkyDungeonChangeWill(-KDLeashPullCost, false);
 					}
@@ -1101,7 +1101,7 @@ function KinkyDungeonGetAffinity(Message, affinity, group, entity) {
 		Message: Message,
 		entity: entity,
 		msgedstand: false,
-		canStand: KinkyDungeonCanStand(),
+		canStand: KinkyDungeonCanStand() && !KDForcedToGround(),
 		groupIsHigh: !group || (
 			group.startsWith("ItemM")
 			|| group == "ItemArms"
@@ -1182,7 +1182,7 @@ function KinkyDungeonWallCrackAndKnife(Message) {
 			if (X == KinkyDungeonPlayerEntity.x || Y == KinkyDungeonPlayerEntity.y) {
 				let tile = KinkyDungeonMapGet(X, Y);
 				if (tile == '4' || tile == '\\') {
-					if (!KinkyDungeonIsArmsBound(true) || KinkyDungeonCanStand()) {
+					if (!KinkyDungeonIsArmsBound(true) || (KinkyDungeonCanStand() && !KDForcedToGround())) {
 						if (Message) {
 							if (!KinkyDungeonIsArmsBound(true))
 								KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonUseCrack"), "lightgreen", 2, true);

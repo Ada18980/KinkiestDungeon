@@ -185,6 +185,8 @@ let DisplacementMaps = [
 'TapeTopLeftBoxtie.png',
 'TapeTopLeftCrossed.png',
 'TapeTopLeftWristtie.png',
+'EraseCorsetKneel.png',
+'EraseCorsetKneelEncase.png',
 ];
 
 // Scale factor for displacement and erase maps

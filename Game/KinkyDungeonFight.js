@@ -264,7 +264,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 			KinkyDungeonPlayerDamage.dmg /= 2;
 		}
 	}
-	if ((!KinkyDungeonCanStand() && KinkyDungeonIsArmsBound()) && (flags.KDDamageHands || weapon?.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
+	if (((KDForcedToGround() || !KinkyDungeonCanStand()) && KinkyDungeonIsArmsBound()) && (flags.KDDamageHands || weapon?.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
 		KinkyDungeonPlayerDamage.chance *= KDIsHogtied() ? 0.001 : 0.5;
 		if (!KDWeaponIsMagic(KinkyDungeonPlayerDamage)) KinkyDungeonPlayerDamage.dmg *= KDIsHogtied() ? 0.001 : 0.5;
 		if (KinkyDungeonStatsChoice.get("Brawler") && isUnarmed(KinkyDungeonPlayerDamage)) {

@@ -987,7 +987,7 @@ function KDDrawWeaponSwap(x, y) {
 function KinkyDungeonDrawActionBar(x, y) {
 	let str = "";
 	let BalanceOffset = KDToggles.BuffSide ? 850 : 800;
-	if (KDGameData.Balance < 1 && KDGameData.HeelPower > 0) {
+	if (KDGameData.Balance < 1 && !KinkyDungeonStatsChoice.get("TrustFall")) {
 		DrawTextFitKDTo(kdstatusboard, TextGet(KDBalanceSprint() ? "KDBalance" : "KDBalanceNoSprint").replace("AMNT", "" + Math.round(KDGameData.Balance * 100)), 1000, BalanceOffset, 300, "#ffffff", KDTextGray2,
 			24, "left", 110, 0.9);
 		KinkyDungeonBarTo(kdstatusboard, 1000, BalanceOffset + 8, 500, 12, 100*KDGameData.Balance,

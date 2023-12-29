@@ -3634,8 +3634,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (KinkyDungeonLastAction == "" || (KinkyDungeonSlowLevel > 1 && KinkyDungeonLastAction == "Move")) AIData.sneakMult *= 0.5;
 	else if (KinkyDungeonLastAction == "Cast" || KinkyDungeonLastAction == "Attack" || KinkyDungeonLastAction == "Move") AIData.sneakMult *= 1.5;
 
-	if (enemy.vp > 0.2 && KinkyDungeonCanStand()) AIData.sneakMult += 0.1;
-	if (enemy.vp > 0.5 && KinkyDungeonCanStand()) AIData.sneakMult += 0.3;
+	if (enemy.vp > 0.2 && (!KDForcedToGround() && KinkyDungeonCanStand())) AIData.sneakMult += 0.1;
+	if (enemy.vp > 0.5 && (!KDForcedToGround() && KinkyDungeonCanStand())) AIData.sneakMult += 0.3;
 
 	let sneakPerc = (AIData.canSensePlayer || AIData.canSeePlayer || AIData.canShootPlayer || AIData.canSeePlayerChase) ?
 		KinkyDungeonTrackSneak(enemy, delta * (AIData.sneakMult), player, (AIData.canSensePlayer) ? 0 : (enemy.Enemy.tags.darkvision ? 0.5 : 1.5))
@@ -4081,7 +4081,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				let wanderfar = AIType.wander_far(enemy, player, AIData);
 				let wandernear = AIType.wander_near(enemy, player, AIData);
 				if ((wanderfar || wandernear) && !AIData.allyFollowPlayer && (!enemy.Enemy.allied && !KDEnemyHasFlag(enemy, "StayHere")) && !KDEnemyHasFlag(enemy, "StayHere") && enemy.movePoints < 1 && (!enemy.aware || !AIData.aggressive)) {
-					if ((Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 1.5 || (KDRandom() < 0.02 && KDEnemyHasFlag(enemy, "failpath"))) || (!(enemy.vp > 0.05) && (!enemy.path || KDRandom() < 0.1))) {
+					if ((Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 2.5 || (KDRandom() < 0.02 && KDEnemyHasFlag(enemy, "failpath"))) || (!(enemy.vp > 0.05) && (!enemy.path || KDRandom() < 0.1))) {
 						AIData.master = KinkyDungeonFindMaster(enemy).master;
 						if (!KDEnemyHasFlag(enemy, "wander")) {
 							if (!AIData.master && wanderfar) {
@@ -4261,7 +4261,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						if (harnessChance > 0) {
 							let roll = KDRandom();
 							let bonus = 0;
-							if (!KinkyDungeonCanStand()) bonus += KinkyDungeonTorsoGrabChanceBonus;
+							if (KDForcedToGround() || !KinkyDungeonCanStand()) bonus += KinkyDungeonTorsoGrabChanceBonus;
 							if (KinkyDungeonStatWill < 0.01) bonus += KinkyDungeonTorsoGrabChanceBonus;
 							for (let T = 0; T < harnessChance; T++) {
 								roll = Math.min(roll, KDRandom());
@@ -4492,7 +4492,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 						} else if (AIData.attack.includes("Bind")
 							&& (((enemy.Enemy.smartBind && !KinkyDungeonFlags.get("PlayerCombat"))
-								|| (!enemy.usingSpecial && !enemy.Enemy.bindOnDisable) || (enemy.usingSpecial && !enemy.Enemy.bindOnDisableSpecial)) || !KinkyDungeonHasWill(0.01) || !KinkyDungeonHasStamina(2.5) || !KinkyDungeonCanStand())) {
+								|| (!enemy.usingSpecial && !enemy.Enemy.bindOnDisable) || (enemy.usingSpecial && !enemy.Enemy.bindOnDisableSpecial)) || !KinkyDungeonHasWill(0.01) || !KinkyDungeonHasStamina(2.5)
+								|| !KinkyDungeonCanStand() || KDForcedToGround())) {
 
 							if (AIData.addMoreRestraints || AIData.addLeash || enemy.usingSpecial) {
 								if (!AIData.intentToLeash && !KinkyDungeonFlags.get("Released") && enemy.Enemy.bound

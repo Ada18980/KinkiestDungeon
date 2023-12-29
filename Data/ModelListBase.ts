@@ -429,6 +429,10 @@ AddModel({
 			HideWhenOverridden: true,
 			InheritColor: "Torso",
 			Poses: ToMap(KNEELPOSES),
+			EraseLayers: {BustierPoses: true},
+			EraseSprite: "EraseCorsetKneel",
+			EraseInvariant: true,
+			EraseMorph: {EncaseTorsoLower: "Encase"},
 		},
 	])
 });

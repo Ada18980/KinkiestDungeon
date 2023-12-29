@@ -169,6 +169,8 @@ let LAYERS_BASE = [
 	"OverSkirt",
 	"Greaves",
 
+	"WrappingTorsoMid", // For stuff that goes over a shirt and clothes but under restraints, e.g. tape
+
 	"StrapsUnderbust",
 
 	"OverCrotchStrapMid",
@@ -177,7 +179,6 @@ let LAYERS_BASE = [
 	"BeltUnder",
 
 	"CrotchPanelMid",
-	"WrappingTorsoMid", // For stuff that goes over a shirt and clothes but under restraints, e.g. tape
 
 
 
@@ -256,6 +257,9 @@ let LAYERS_BASE = [
 	"FootLeft",
 	"LegLeft",
 
+	"WrappingTorso",
+	"OverCrotchStrap",
+
 	"Option_ChastityBelt",
 
 	// Panties go here when standing
@@ -267,10 +271,8 @@ let LAYERS_BASE = [
 
 	"ChastityBelt",
 	// Lower harness
-	"OverCrotchStrap",
 	"HarnessLower",
 	"CrotchPanelLower",
-	"WrappingTorso",
 
 
 
@@ -428,7 +430,11 @@ let LayerGroups = {
 	"CrotchRope": ToMap([
 		"HarnessLower",
 	]),
-
+	BustierPoses: ToMap([
+		"Bustier",
+		"Corset",
+		"CorsetLiner",
+	]),
 
 	// region slime
 	"SlimeLegs": ToMap([
@@ -1180,7 +1186,7 @@ let LayerGroups = {
 	"MouthProp",
 	"Hood", // For Kigu
 	"MaskOver",
-
+	"OverCrotchStrapMid",
 
 	"NeckCorset",
 	// Hair mid

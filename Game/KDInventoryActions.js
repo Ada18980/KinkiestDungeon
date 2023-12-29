@@ -6,7 +6,417 @@ let KDMarketRateDecay = 0.95;
  * @type {Record<string, KDInventoryActionDef>}
  */
 let KDInventoryAction = {
+	"Equip": {
+		text: (player, item) => {
+			return TextGet("KDInventoryAction" + (KinkyDungeonPlayerWeapon != item.name ? "Equip" : "Unequip"));
+		},
+		icon: (player, item) => {
+			if (item.type == LooseRestraint) {
+				let newItem = null;
+				let currentItem = null;
+
+				newItem = KDRestraint(item);
+				if (newItem) {
+					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
+					if (!currentItem
+						|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
+							((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
+							|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))))) {
+						return "InventoryAction/Equip";
+					} else return "InventoryAction/Unequip";
+				}
+			}
+			return KinkyDungeonPlayerWeapon != item.name ? "InventoryAction/Equip" : "InventoryAction/Unequip";
+		},
+		valid: (player, item) => {
+			if ((item?.type == Restraint)) return false;
+			if (item.type == LooseRestraint) {
+				let newItem = null;
+				let currentItem = null;
+
+				newItem = KDRestraint(item);
+				if (newItem) {
+					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
+					if (!currentItem
+						|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
+							((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
+							|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))))) {
+						return true;
+					} else return false;
+				}
+				return true;
+			}
+			return item.type == Outfit || item.type == Weapon;
+		},
+		click: (player, item) => {
+			if (item.type == LooseRestraint) {
+				let equipped = false;
+				let newItem = null;
+				let currentItem = null;
+
+				newItem = KDRestraint(item);
+				if (newItem) {
+					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
+					if (!currentItem
+						|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
+							((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
+							|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))))) {
+						equipped = false;
+					} else equipped = true;
+				}
+				if (!equipped && newItem) {
+					if (KDGameData.InventoryAction && !KDConfirmOverInventoryAction) {
+						KDConfirmOverInventoryAction = true;
+						return true;
+					} else if (KDSendInput("equip", {name: item.name,
+						faction: item.faction,
+						inventoryVariant: item.name != newItem.name ?
+							item.name : undefined,
+						group: newItem.Group, curse: item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.events)})) return true;
+
+				}
+			} else if (item.type == Weapon) {
+				let weapon = item.name;
+				let equipped = item.name == KinkyDungeonPlayerWeapon;
+				if (equipped) {
+					KDSendInput("unequipweapon", {weapon: weapon});
+				} else {
+					KDSendInput("switchWeapon", {weapon: weapon});
+				}
+			} else if (item.type == Outfit) {
+				let outfit = item.name;
+				let toWear = KinkyDungeonGetOutfit(outfit);
+				if (toWear) {
+					let dress = toWear.dress;
+					if (dress == "JailUniform" && KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]])
+						dress = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].defeat_outfit;
+					KDSendInput("dress", {dress: dress, outfit: outfit});
+				}
+			}
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+	"Drop": {
+		icon: (player, item) => {
+			return "InventoryAction/Drop";
+		},
+		valid: (player, item) => {
+			if ((item?.type == Restraint)) return false;
+			return true;
+		},
+		click: (player, item) => {
+			KDSendInput("drop", {item: item.name});
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+	"Hotbar": {
+		icon: (player, item) => {
+			return "InventoryAction/Hotbar";
+		},
+		valid: (player, item) => {
+			return true;
+		},
+		click: (player, item) => {
+			KDConfigHotbar = !KDConfigHotbar;
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+	"Remove": {
+		icon: (player, item) => {
+			return "InventoryAction/Remove";
+		},
+		show: (player, item) => {
+			return !KDGetCurse(item) && !item.lock;
+		},
+		valid: (player, item) => {
+			let r = KDRestraint(item);
+			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
+			return !sg.blocked;
+		},
+		click: (player, item) => {
+			let itemIndex = KDGetItemLinkIndex(item, false);
+			let r = KDRestraint(item);
+			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
+			if (itemIndex >= 0 && !sg.blocked) {
+				KDSendInput("struggle", {group: sg.group, index: itemIndex, type: "Remove"});
+			}
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+	"Unlock": {
+		icon: (player, item) => {
+			return "Locks/" + item.lock;
+		},
+		show: (player, item) => {
+			return !KDGetCurse(item) && !item.lock == false;
+		},
+		valid: (player, item) => {
+			let r = KDRestraint(item);
+			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
+			return !sg.blocked;
+		},
+		click: (player, item) => {
+			let itemIndex = KDGetItemLinkIndex(item, false);
+			let r = KDRestraint(item);
+			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
+			if (itemIndex >= 0 && !sg.blocked) {
+				KDSendInput("struggle", {group: sg.group, index: itemIndex, type: "Unlock"});
+			}
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+	"Lock": {
+		icon: (player, item) => {
+			return "InventoryAction/Lock";
+		},
+		show: (player, item) => {
+			return !KDGetCurse(item) && !item.lock && KinkyDungeonIsLockable(KDRestraint(item));
+		},
+		valid: (player, item) => {
+			let r = KDRestraint(item);
+			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
+			return !sg.blocked;
+		},
+		click: (player, item) => {
+			let itemIndex = KDGetItemLinkIndex(item, false);
+			let r = KDRestraint(item);
+			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
+			if (itemIndex >= 0 && !sg.blocked) {
+				KDSendInput("lock", {group: sg.group, index: itemIndex, type: "White"});
+			}
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+	"Pick": {
+		icon: (player, item) => {
+			return "InventoryAction/Pick";
+		},
+		show: (player, item) => {
+			return !KDGetCurse(item) && !item.lock == false;
+		},
+		valid: (player, item) => {
+			let r = KDRestraint(item);
+			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
+			return KinkyDungeonLockpicks > 0 && !sg.blocked;
+		},
+		click: (player, item) => {
+			let itemIndex = KDGetItemLinkIndex(item, false);
+			let r = KDRestraint(item);
+			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
+			if (itemIndex >= 0 && !sg.blocked) {
+				KDSendInput("struggle", {group: sg.group, index: itemIndex, type: "Unlock"});
+			}
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+
+	"CurseInfo": {
+		icon: (player, item) => {
+			return "InventoryAction/CurseInfo";
+		},
+		show: (player, item) => {
+			return !(KDGetCurse(item) || item.lock);
+		},
+		valid: (player, item) => {
+			return true;
+		},
+		click: (player, item) => {
+			KinkyDungeonCurseInfo(item, (KDGetCurse(item)));
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+	"CurseUnlock": {
+		icon: (player, item) => {
+			return "InventoryAction/CurseUnlock";
+		},
+		show: (player, item) => {
+			return !KDGetCurse(item) == true;
+		},
+		valid: (player, item) => {
+			return KinkyDungeonCurseAvailable(item, (KDGetCurse(item)));
+		},
+		click: (player, item) => {
+			let itemIndex = KDGetItemLinkIndex(item, false);
+			if (itemIndex >= 0 && KinkyDungeonCurseAvailable(item, (KDGetCurse(item)))) {
+				let r = KDRestraint(item);
+				let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
+				KDSendInput("curseUnlock", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});
+			}
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+	"Struggle": {
+		icon: (player, item) => {
+			return "InventoryAction/Struggle";
+		},
+		show: (player, item) => {
+			return !KDGetCurse(item) && !item.lock;
+		},
+		valid: (player, item) => {
+			return true;
+		},
+		click: (player, item) => {
+			let itemIndex = KDGetItemLinkIndex(item, false);
+			if (itemIndex >= 0) {
+				let r = KDRestraint(item);
+				let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
+				KDSendInput(KDGetCurse(item) ? "struggleCurse" : "struggle", {group: sg.group, index: itemIndex, type: "Struggle", curse: KDGetCurse(item)});
+			}
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+	"Cut": {
+		icon: (player, item) => {
+			return (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name && !KinkyDungeonPlayerDamage.unarmed) ? "Items/" + KinkyDungeonPlayerWeapon :"InventoryAction/Cut";
+		},
+		show: (player, item) => {
+			let r = KDRestraint(item);
+			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
+			return !KDGetCurse(item) && !sg.noCut;
+		},
+		valid: (player, item) => {
+			let r = KDRestraint(item);
+			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
+			return !sg.blocked;
+		},
+		click: (player, item) => {
+			let itemIndex = KDGetItemLinkIndex(item, false);
+			let r = KDRestraint(item);
+			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
+			if (itemIndex >= 0 && !sg.blocked && !sg.noCut) {
+				KDSendInput("struggle", {group: sg.group, index: itemIndex, type: "Cut"});
+			}
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+
+	"Favorite": {
+		text: (player, item) => {
+			return TextGet("KDInventoryAction" + (!(KDGameData.ItemPriority[item.name|| item.name] > 9) ? "Favorite" : "Unfavorite"));
+		},
+		icon: (player, item) => {
+			return !(KDGameData.ItemPriority[item.name|| item.name] > 9) ? "InventoryAction/Favorite" : "InventoryAction/Unfavorite";
+		},
+		valid: (player, item) => {
+			return true;
+		},
+		click: (player, item) => {
+			if (!KDGameData.ItemPriority) KDGameData.ItemPriority = {};
+			if (!(KDGameData.ItemPriority[item.name|| item.name] > 9)) KDGameData.ItemPriority[item.name|| item.name] = 10;
+			else KDGameData.ItemPriority[item.name|| item.name] = 0;
+			KDSortInventory(KinkyDungeonPlayerEntity);
+
+
+			let filteredInventory = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined, undefined, undefined, undefined, KDInvFilter);
+			let index = filteredInventory.findIndex((element) => {return element.item.name == item.name;});
+			if (index >= 0) {
+				KinkyDungeonCurrentPageInventory = index;
+			}
+
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+	"Use": {
+		icon: (player, item) => {
+			return "InventoryAction/Use";
+		},
+		valid: (player, item) => {
+			return item.quantity > 0;
+		},
+		click: (player, item) => {
+			KDSendInput("consumable", {item: item.name, quantity: 1});
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+
+	"QuickSlot1": {
+		icon: (player, item) => {
+			return KDGameData.PreviousWeapon[0] ? "Items/" + KDGameData.PreviousWeapon[0] : "InventoryAction/Quickslot";
+		},
+		valid: (player, item) => {
+			return KDGameData.PreviousWeapon[0] != item.name;
+		},
+		click: (player, item) => {
+			KDGameData.PreviousWeapon[0] = item.name;
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+	"QuickSlot2": {
+		icon: (player, item) => {
+			return KDGameData.PreviousWeapon[1] ? "Items/" + KDGameData.PreviousWeapon[1] : "InventoryAction/Quickslot";
+		},
+		valid: (player, item) => {
+			return KDGameData.PreviousWeapon[1] != item.name;
+		},
+		click: (player, item) => {
+			KDGameData.PreviousWeapon[1] = item.name;
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+	"QuickSlot3": {
+		icon: (player, item) => {
+			return KDGameData.PreviousWeapon[2] ? "Items/" + KDGameData.PreviousWeapon[2] : "InventoryAction/Quickslot";
+		},
+		valid: (player, item) => {
+			return KDGameData.PreviousWeapon[2] != item.name;
+		},
+		click: (player, item) => {
+			KDGameData.PreviousWeapon[2] = item.name;
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+	"QuickSlot4": {
+		icon: (player, item) => {
+			return KDGameData.PreviousWeapon[3] ? "Items/" + KDGameData.PreviousWeapon[3] : "InventoryAction/Quickslot";
+		},
+		valid: (player, item) => {
+			return KDGameData.PreviousWeapon[3] != item.name;
+		},
+		click: (player, item) => {
+			KDGameData.PreviousWeapon[3] = item.name;
+		},
+		cancel: (player, delta) => {
+			return false; // NA for default actions
+		},
+	},
+
+
 	"RemoveCurseOrHex": {
+		icon: (player, item) => {
+			return "InventoryAction/Macaron";
+		},
 		valid: (player, item) => {
 			if (!(item?.type == Restraint)) return false;
 			return KDHasRemovableCurse(item, KDGameData.CurseLevel) || KDHasRemovableHex(item, KDGameData.CurseLevel);
@@ -82,6 +492,9 @@ let KDInventoryAction = {
 		},
 	},
 	"RemoveMagicLock": {
+		icon: (player, item) => {
+			return "InventoryAction/CommandWord";
+		},
 		valid: (player, item) => {
 			if (!(item?.type == Restraint)) return false;
 			return KDMagicLocks.includes(item.lock);
@@ -111,6 +524,9 @@ let KDInventoryAction = {
 		},
 	},
 	"Offhand": {
+		icon: (player, item) => {
+			return "InventoryAction/Offhand";
+		},
 		valid: (player, item) => {
 			if (!(item?.type == Weapon && KDCanOffhand(item))) return false;
 			return KinkyDungeonCanUseWeapon(false, undefined, KDWeapon(item));
@@ -133,6 +549,9 @@ let KDInventoryAction = {
 		},
 	},
 	"Sell": {
+		icon: (player, item) => {
+			return "InventoryAction/Sell";
+		},
 		text:  (player, item) => {
 			let mult = 1;
 			let quantity = 1;
@@ -186,6 +605,9 @@ let KDInventoryAction = {
 		},
 	},
 	"SellBulk": {
+		icon: (player, item) => {
+			return "InventoryAction/Sell";
+		},
 		text:  (player, item) => {
 			let mult = 1;
 			let quantity = ((item.quantity) ? item.quantity : 1);
@@ -240,6 +662,9 @@ let KDInventoryAction = {
 		},
 	},
 	"Bondage": {
+		icon: (player, item) => {
+			return "InventoryAction/Bondage";
+		},
 		/** Returns if the button is greyed out */
 		valid: (player, item) => {
 			if (!(item?.type == LooseRestraint)) return false;
@@ -309,6 +734,65 @@ let KDInventoryAction = {
 				let nearby = KDNearbyEnemies(player.x, player.y, 1.5);
 				for (let enemy of nearby) {
 					if (enemy.id == KDGameData.BondageTarget && (KinkyDungeonIsDisabled(enemy) || (enemy.playWithPlayer && KDCanDom(enemy)))) {
+						return false;
+					}
+				}
+				return true;
+			}
+			return false;
+		},
+	},
+	"Food": {
+		icon: (player, item) => {
+			return "InventoryAction/Cookie";
+		},
+		/** Returns if the button is greyed out */
+		valid: (player, item) => {
+			if (!(item?.type == Consumable) || item.quantity < 1 || !KDConsumable(item)?.wp_instant) return false;
+			let nearby = KDNearbyEnemies(player.x, player.y, 1.5);
+			for (let enemy of nearby) {
+				if (enemy.id == KDGameData.FoodTarget && enemy.hp < enemy.Enemy.maxhp) {
+					return true;
+				}
+			}
+			return false;
+		},
+		/** Happens when you click the button */
+		click: (player, item) => {
+			let nearby = KDNearbyEnemies(player.x, player.y, 1.5);
+			for (let enemy of nearby) {
+				if (enemy.id == KDGameData.FoodTarget) {
+					enemy.hp = Math.min(enemy.Enemy.maxhp, enemy.hp + KDConsumable(item)?.wp_instant * 5);
+					let faction2 = KDGetFaction(enemy);
+					if (!KinkyDungeonHiddenFactions.includes(faction2)) {
+						KinkyDungeonChangeFactionRep(faction2, 0.01 * KDConsumable(item)?.wp_instant);
+					}
+
+					KinkyDungeonSendTextMessage(10,
+						TextGet("KDGiveFood")
+							.replace("RSTR", KDGetItemName(item))//TextGet("Restraint" + KDRestraint(item)?.name))
+							.replace("ENNME", TextGet("Name" + enemy.Enemy.name))
+							.replace("AMNT1", "" + Math.round(10 * enemy.hp))
+							.replace("AMNT2", "" + Math.round(10 * enemy.Enemy.maxhp)),
+						"#ffffff", 1);
+
+
+					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Cookie.ogg");
+
+					if (item.quantity > 1) item.quantity -= 1;
+					else KinkyDungeonInventoryRemoveSafe(item);
+					KinkyDungeonAdvanceTime(1, true, true);
+
+					break;
+				}
+			}
+		},
+		/** Return true to cancel it */
+		cancel: (player, delta) => {
+			if (delta > 0) {
+				let nearby = KDNearbyEnemies(player.x, player.y, 1.5);
+				for (let enemy of nearby) {
+					if (enemy.id == KDGameData.FoodTarget) {
 						return false;
 					}
 				}

@@ -2189,9 +2189,11 @@ interface VibeMod {
 
 interface KDInventoryActionDef {
 	text?: (player: entity, item: item) => string;
+	show?: (player: entity, item: item) => boolean;
 	valid: (player: entity, item: item) => boolean;
-	click: (player: entity, item: item) => void;
+	click: (player: entity, item: item,) => void;
 	cancel: (player: entity, delta: number) => boolean;
+	icon: (player: entity, item: item) => string;
 }
 
 interface KinkyDungeonSave {

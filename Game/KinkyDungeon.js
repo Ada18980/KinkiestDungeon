@@ -274,6 +274,7 @@ let KDDefaultMaxParty = 3;
 * CurseLevel: number,
 * UsingConsumable: string,
 * BondageTarget: number,
+* FoodTarget: number,
 * KeysNeeded: boolean,
 * JailRemoveRestraintsTimer: number;
 * KinkyDungeonSpawnJailers: number;
@@ -412,6 +413,7 @@ let KDDefaultMaxParty = 3;
 * Shield: number,
 * ShieldDamage: number,
 * Balance: number,
+* BalancePause: boolean,
 * HeelPower: number,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
@@ -420,6 +422,7 @@ let KDDefaultMaxParty = 3;
 */
 let KDGameDataBase = {
 	Balance: 1,
+	BalancePause: false,
 	HeelPower: 1,
 	SlowMoveTurns: 0,
 	Shield: 0,
@@ -447,6 +450,7 @@ let KDGameDataBase = {
 	InventoryActionManaCost: 0,
 	SellMarkup: 1,
 	BondageTarget: -1,
+	FoodTarget: -1,
 	ShopRewardProgram: 0,
 	ShopRewardProgramThreshold: 500,
 
@@ -2479,6 +2483,7 @@ function DrawButtonKD(name, enabled, Left, Top, Width, Height, Label, Color, Ima
  * @param {number} [options.alpha] - Dont show text backgrounds
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
+ * @param {boolean} [options.centered] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
@@ -2524,6 +2529,7 @@ function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Co
  * @param {number} [options.alpha] - Dont show text backgrounds
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
+ * @param {boolean} [options.centered] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey

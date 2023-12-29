@@ -2782,6 +2782,7 @@ function FillRectKD(Container, Map, id, Params) {
  * @param {number} [options.alpha]
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
+ * @param {boolean} [options.centered] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
@@ -2816,6 +2817,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.unique] - This button is not differentiated by position
  * @param {boolean} [options.scaleImage] - zIndex
+ * @param {boolean} [options.centered] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
@@ -2864,7 +2866,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 			};
 			if (options?.tint) o.tint = options.tint;
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-			Image, Left + 2, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
+			Image, (options?.centered ? Width/2 - img.orig.height/2 : 2) + Left, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
 		}
 		textPush = img.orig.width;
 	}

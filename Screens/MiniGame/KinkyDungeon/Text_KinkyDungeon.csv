@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.7"
+KDVersionStr,"5.0.7 (B)"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -9746,6 +9746,7 @@ KDCategoryToggles,Preferences
 KDCategoryMulticlass,Multiclass
 KDCategoryMajor,Game-Changing
 KDCategoryRestriction,Restriction
+KDCategoryTraining,Training
 KDCategoryRestraints,Restraints
 KDCategoryCombat,Combat
 KDCategoryKinky,Kinks
@@ -11261,6 +11262,11 @@ dGenericAllyStopFollowingMe_Leave,"(Never mind...)"
 rGenericAllyStopFollowingMe,"(Confirm? You will have to find the SPEAKER again.)"
 rGenericAllyStopFollowingMe_Leave,"(You decide you still need the help)"
 rGenericAllyStopFollowingMe_Fail,"(The SPEAKER refuses to follow your orders)"
+
+dGenericAllyFood,"(Give her a restoration item)"
+rGenericAllyFood,"(The SPEAKER appreciates the thought!)"
+
+
 
 dGenericAllyFollowMe,"(Follow me)"
 dGenericAllyFollowMe_Confirm,"(Follow me)"
@@ -17616,7 +17622,7 @@ KinkyDungeonInventoryItemCrossbowPistol,Pistol Crossbow
 KinkyDungeonInventoryItemCrossbowPistolDesc,"Lethal. Sustainable. Portable."
 KinkyDungeonInventoryItemCrossbowPistolDesc2,"Reload time: 3 turns. Deals crush damage on melee. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 45 pierce damage."
 ItemPickupCrossbowPistol,"You find a pistol crossbow."
-KinkyDungeonSpecialCrossbowPistol,"15 charge to fire a bolt. Deals 45 pierce damage."
+KinkyDungeonSpecialCrossbowPistol,"20 charge to fire a bolt. Deals 45 pierce damage."
 KinkyDungeonSpellTargetArrowBoltPistol,Choose projectile path
 KinkyDungeonSpellArrowBoltPistol,Pistol Bolt
 KinkyDungeonSpellCastArrowBoltPistol,"You pull the trigger!"
@@ -17682,7 +17688,7 @@ KDBattleRhythm,Rhythm
 KDBattleRhythmDodge,You avoid the attack in a flurry of impressive maneuvers!
 
 KinkyDungeonSpellArcaneBarrier,Arcane Barrier
-KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 60 + 10% Max Mana."
+KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 2:1 ratio. Max shield is equal to 60 + 10% Max Mana."
 
 KinkyDungeonBuffHighValueFound,You sense that a high value target is near.
 
@@ -18890,10 +18896,10 @@ KinkyDungeonStatDescBurnedOut,"Casting spells reduces willpower based on how lit
 KinkyDungeonStatWinded,"Winded"
 KinkyDungeonStatDescWinded,"While below 10% stamina, evasion is severely reduced and your slow level is increased by 1."
 
-NameTimeGhost,Time Ghost
-KillTimeGhost,"The time ghost vanishes."
-AttackTimeGhost,"The time ghost grabs you, causing your body parts to freeze in time!!! (DamageTaken)"
-AttackTimeGhostBind,"The time time ghost has already bound you! (+RestraintAdded)"
+NameTimeGhost,The Lost
+KillTimeGhost,"The being vanishes in front of you."
+AttackTimeGhost,"The being grabs you, causing your body parts to freeze in time!!! (DamageTaken)"
+AttackTimeGhostBind,"The being has already bound you! (+RestraintAdded)"
 
 NameTimekeeper,The Timekeeper
 KillTimekeeper,"The Timekeeper releases her grip on the timeline."
@@ -18948,8 +18954,39 @@ KinkyDungeonStatDescHeadStartSenses,"Start at Sensory training level 5."
 
 KinkyDungeonStatClassicHeels,"Classic Heels"
 KinkyDungeonStatDescClassicHeels,"Removes Heel Training and tripping mechanic. Restraining heels slow instead."
+KinkyDungeonStatTrustFall,"Trust Fall"
+KinkyDungeonStatDescTrustFall,"Hides the balance meter while wearing heels and/or unsteady."
+
+KinkyDungeonStatPoorBalance,"Poor Balance"
+KinkyDungeonStatDescPoorBalance,"You take longer to get up and are less skilled at wearing high heels."
 
 KDBalance,"Balance: AMNT%"
 KDBalanceNoSprint,"Balance: AMNT% (Sprinting Disabled!!!)"
 KDTrip,You lose your balance and fall over!!!
 KDBalanceTraining,Training Level: AMNT
+
+KDInventoryActionUse,Use One
+KDInventoryActionEquip,Equip
+KDInventoryActionUnequip,Unequip
+KDInventoryActionFavorite,Favorite
+KDInventoryActionUnfavorite,Unfavorite
+KDInventoryActionHotbar,Add to Hotbar
+KDInventoryActionDrop,Drop
+
+KDInventoryActionQuickSlot1,Add to Quick Slot 1
+KDInventoryActionQuickSlot2,Add to Quick Slot 2
+KDInventoryActionQuickSlot3,Add to Quick Slot 3
+KDInventoryActionQuickSlot4,Add to Quick Slot 4
+
+KDInventoryActionCut,Try to Cut
+KDInventoryActionStruggle,Struggle!
+KDInventoryActionUnlock,Try to Unlock
+KDInventoryActionLock,Add a Lock
+KDInventoryActionRemove,Try to Remove
+KDInventoryActionPick,Try to Pick
+KDInventoryActionCurseInfo,Examine the Curse
+KDInventoryActionCurseRemove,Remove the Curse
+KDInventoryActionFood,Feed this to her
+
+KDGiveFood,"You feed the RSTR to the ENNME! (AMNT1/AMNT2 hp)"
+KDFoodTarget,"Choose a food item or willpower potion"

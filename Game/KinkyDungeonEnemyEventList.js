@@ -280,7 +280,7 @@ let KDIntentEvents = {
 				: 0;
 		},
 		trigger: (enemy, AIData) => {
-			let duration = 40 + Math.round(KDRandom()*30);
+			let duration = 60 + Math.round(KDRandom()*40);
 			KinkyDungeonSetFlag("TempLeash", duration);
 			KinkyDungeonSetFlag("TempLeashCD", duration*2);
 			KinkyDungeonSetFlag("noResetIntent", 12);
@@ -288,7 +288,7 @@ let KDIntentEvents = {
 			enemy.playWithPlayerCD = 40;
 			enemy.IntentAction = 'TempLeash';
 			KDTickTraining("Heels", KDGameData.HeelPower > 0,
-				KDGameData.HeelPower <= 0, 4, 2.5);
+				KDGameData.HeelPower <= 0, 4, 25);
 			KinkyDungeonSendDialogue(enemy,
 				TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashTime").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				KDGetColor(enemy), 14, 10);
@@ -303,7 +303,7 @@ let KDIntentEvents = {
 				if (KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, enemy.x, enemy.y, enemy)) {
 					if (!KinkyDungeonFlags.has("TempLeash"))
 						KDTickTraining("Heels", KDGameData.HeelPower > 0,
-							KDGameData.HeelPower <= 0, 6, 2.5);
+							KDGameData.HeelPower <= 0, 6, 25);
 					KDBreakTether(KinkyDungeonPlayerEntity);
 					enemy.playWithPlayer = 0;
 					enemy.playWithPlayerCD = 30;
@@ -345,6 +345,24 @@ let KDIntentEvents = {
 				} else {
 					// We will wander more than usual
 					KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
+					KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
+					if (enemy.idle) {
+						if (KDRandom() < 0.33) {
+							let newPoint = KinkyDungeonGetRandomEnemyPoint(false,
+								enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
+							if (newPoint) {
+								enemy.gx = newPoint.x;
+								enemy.gy = newPoint.y;
+							}
+						} else {
+							let newPoint = KinkyDungeonGetNearbyPoint(enemy.x, enemy.y, false);
+							if (newPoint) {
+								enemy.gx = newPoint.x;
+								enemy.gy = newPoint.y;
+							}
+						}
+
+					}
 				}
 
 			}

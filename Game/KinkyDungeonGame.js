@@ -11,7 +11,7 @@ let KDFocusableTextFields = [
 let KDMAXGODDESSQUESTS = 3;
 
 let KDBalanceSprintMult = 3;
-let KDBalanceInertiaMult = 0.7;
+let KDBalanceInertiaMult = 1.5;
 let KDBalanceAttackMult = 0.4;
 let KDBalanceCastArmsMult = 1;
 let KDBalanceCastLegsMult = 3;
@@ -4367,7 +4367,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 
 									KDChangeBalance(-KDGetBalanceCost() * (1 + Math.max(-inertia, 0) * KDBalanceInertiaMult), true);
 								} else {
-									KDChangeBalance((KDGameData.KneelTurns > 0 ? 0.5 : 0.25) * KDGetBalanceRate()*delta, true);
+									//KDChangeBalance((KDGameData.KneelTurns > 0 ? 0.5 : 0.25) * KDGetBalanceRate()*delta, true);
 								}
 								let plugIncreaseAmount = (KinkyDungeonStatPlugLevel * KinkyDungeonDistractionPerPlug);
 								KinkyDungeonStatDistraction += plugIncreaseAmount;
@@ -4412,7 +4412,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 					}
 				}
 			} else {
-				KDChangeBalance((KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
+				//KDChangeBalance((KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
 				KDGameData.MovePoints = Math.min(KDGameData.MovePoints + 1, 0);
 				KinkyDungeonPlayerEntity.facing_x = 0;
 				KinkyDungeonPlayerEntity.facing_y = 0;
@@ -4551,7 +4551,7 @@ function KDCanSprint() {
 	KinkyDungeonSendEvent("canSprint", data);
 	return data.canSprint && (!data.mustNotBeSlow || KinkyDungeonSlowLevel < 4)
 		&& KinkyDungeonHasStamina(KDSprintCostBase + KDSprintCostSlowLevel[Math.min(Math.round(KinkyDungeonSlowLevel), KDSprintCostSlowLevel.length)])
-		&& (!data.mustStand || KinkyDungeonCanStand());
+		&& (!data.mustStand || (KinkyDungeonCanStand() && !KDForcedToGround()));
 }
 
 let KinkyDungeonLastAction = "";

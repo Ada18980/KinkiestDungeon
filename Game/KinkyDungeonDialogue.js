@@ -603,6 +603,29 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 			},
 		}
 	};
+
+	dialog.options.Food = {playertext: name + "Food", response: "Default",
+		prerequisiteFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				return enemy.hp < enemy.Enemy.maxhp;
+			}
+			return false;
+		},
+		clickFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				KDGameData.InventoryAction = "Food";
+				KDGameData.FoodTarget = enemy.id;
+				KinkyDungeonDrawState = "Inventory";
+				KinkyDungeonCurrentFilter = Consumable;
+				KinkyDungeonSendTextMessage(8, TextGet("KDFoodTarget"), "#ffffff", 1, true);
+
+			}
+			return false;
+		},
+		leadsToStage: "", dontTouchText: true,
+	};
 	dialog.options.Flirt = {playertext: name + "Flirt", response: "Default",
 		clickFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
