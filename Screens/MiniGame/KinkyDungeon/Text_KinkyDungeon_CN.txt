@@ -16123,9 +16123,9 @@ Disarmed!!!
 Show Buffs and Stats
 显示增益和统计数据
 Remove Devotion
-消除忠诚
+停止奉献
 Devote Yourself
-忠诚自己
+奉献自己
 Pray for Assistance
 祈求帮助
 This shrine bears a request carved in stone:
@@ -16137,7 +16137,7 @@ You accept the goddess' quest.
 You cannot accept that quest right now.
 你现在不能接受此任务。
 Removes your devotion from this goddess.
-消除你对这位女神的忠诚度。
+不再对这位女神奉献自己。
 You are not devoted to this goddess.
 你并不忠诚于这位女神。
 Guarantees a quest from this goddess on every floor.
