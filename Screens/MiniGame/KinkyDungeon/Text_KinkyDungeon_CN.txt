@@ -11564,6 +11564,8 @@ Game-Changing
 改变游戏规则
 Restriction
 限制
+Training
+训练
 Combat
 战斗
 Kinks
@@ -12960,6 +12962,10 @@ There is no valid space next to you!
 （你认为你仍然需要帮助）
 (The SPEAKER refuses to follow your orders)
 （SPEAKER 拒绝听从你的命令）
+(Give her a restoration item)
+（给她一个恢复物品）
+(The SPEAKER appreciates the thought!)
+（SPEAKER 很欣赏这个想法！）
 (Follow me)
 （跟我来）
 (The SPEAKER starts following you)
@@ -15188,8 +15194,8 @@ Reload time: 3 turns. Deals crush damage on melee. Draws 15 charge and no stamin
 装弹时间：3 回合。近战造成挤压伤害。需要 15 次充能且无需体力即可发射普通箭，造成 45 点穿刺伤害。
 You find a pistol crossbow.
 你找到一把手枪弩。
-15 charge to fire a bolt. Deals 45 pierce damage.
-15 次充能即可发射箭矢。造成 45 点穿刺伤害。
+20 charge to fire a bolt. Deals 45 pierce damage.
+20 次充能即可发射箭矢。造成 45 点穿刺伤害。
 Pistol Bolt
 手枪弩箭
 Arbalest
@@ -15272,8 +15278,8 @@ You avoid the attack in a flurry of impressive maneuvers!
 你在一系列令人印象深刻的动作中避开了攻击！
 Arcane Barrier
 奥术屏障
-When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 60 + 10% Max Mana.
-当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 1:1 的比例缓慢将奥术能量转化为护盾。最大护盾等于 60 + 10% 的最大魔法值。
+When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 2:1 ratio. Max shield is equal to 60 + 10% Max Mana.
+当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 2:1 的比例缓慢将奥术能量转化为护盾。最大护盾等于 60 + 10% 的最大魔法值。
 You sense that a high value target is near.
 你感觉到一个高价值目标正在靠近。
 You push yourself beyond physical limits!
@@ -16846,14 +16852,14 @@ Winded
 气喘吁吁
 While below 10% stamina, evasion is severely reduced and your slow level is increased by 1
 当体力低于 10% 时，闪避率会大幅降低，并且你的缓慢程度会增加 1 点
-Time Ghost
-时间幽灵
-The time ghost vanishes.
-时间幽灵消失了。
-The time ghost grabs you, causing your body parts to freeze in time!!! (DamageTaken)
-时间幽灵抓住了你，让你身体的部位被瞬间冻结！！！（DamageTaken）
-The time time ghost has already bound you! (+RestraintAdded)
-时空幽灵已经将你束缚了！（+RestraintAdded）
+The Lost
+失落者
+The being vanishes in front of you.
+生物在你面前消失了。
+The being grabs you, causing your body parts to freeze in time!!! (DamageTaken)
+生物抓住了你，让你身体的部位被瞬间冻结！！！（DamageTaken）
+The being has already bound you! (+RestraintAdded)
+生物已经将你束缚了！（+RestraintAdded）
 The Timekeeper
 计时员
 The Timekeeper releases her grip on the timeline.
@@ -16944,6 +16950,14 @@ Classic Heels
 经典高跟鞋
 Removes Heel Training and tripping mechanic. Restraining heels slow instead.
 移除高跟鞋训练和绊倒机制。相反，束缚脚跟的速度会变慢。
+Trust Fall
+信任下降
+Hides the balance meter while wearing heels and/or unsteady.
+穿高跟鞋或站不稳时隐藏平衡计。
+Poor Balance
+平衡不佳
+You take longer to get up and are less skilled at wearing high heels.
+你起身需要更长的时间，并且穿高跟鞋的技巧较差。
 Balance: AMNT%
 平衡：AMNT%
 Balance: AMNT% (Sprinting Disabled!!!)
@@ -16952,3 +16966,37 @@ You lose your balance and fall over!!!
 你失去平衡摔倒了！
 Training Level: AMNT
 训练等级：AMNT
+Favorite
+喜欢
+Unfavorite
+不喜欢
+Drop
+丢弃
+Add to Quick Slot 1
+添加到快捷栏 1
+Add to Quick Slot 2
+添加到快捷栏 2
+Add to Quick Slot 3
+添加到快捷栏 3
+Add to Quick Slot 4
+添加到快捷栏 4
+Try to Cut
+尝试切断
+Struggle!
+挣扎！
+Try to Unlock
+尝试解锁
+Add a Lock
+上锁
+Try to Remove
+尝试移除
+Try to Pick
+尝试撬开
+Examine the Curse
+检查诅咒
+Remove the Curse
+移除诅咒
+Feed this to her
+把这个喂给她
+You feed the RSTR to the ENNME! (AMNT1/AMNT2 hp)
+你将 RSTR 喂给 ENNME！ (AMNT1/AMNT2 血量)
