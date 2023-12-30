@@ -712,10 +712,10 @@ function KinkyDungeonWearForcedClothes(restraints, C) {
 					let faction = inv.faction;
 					if (inv.faction) {
 						if (StandalonePatched) {
-							if (dress.factionFilters && faction && KinkyDungeonFactionFilters[faction]) {
+							if (dress.factionFilters && faction && KDGetFactionFilters(faction)) {
 								for (let f of Object.entries(dress.factionFilters)) {
-									if (KinkyDungeonFactionFilters[faction][f[1].color])
-										filters[f[0]] = KinkyDungeonFactionFilters[faction][f[1].color]; // 0 is the primary color
+									if (KDGetFactionFilters(faction)[f[1].color])
+										filters[f[0]] = KDGetFactionFilters(faction)[f[1].color]; // 0 is the primary color
 								}
 							}
 						} else {
@@ -756,10 +756,10 @@ function KinkyDungeonWearForcedClothes(restraints, C) {
 				let faction = inv.faction;
 				if (inv.faction) {
 					if (StandalonePatched) {
-						if (dress.factionFilters && faction && KinkyDungeonFactionFilters[faction]) {
+						if (dress.factionFilters && faction && KDGetFactionFilters(faction)) {
 							for (let f of Object.entries(dress.factionFilters)) {
-								if (KinkyDungeonFactionFilters[faction][f[1].color])
-									filters[f[0]] = KinkyDungeonFactionFilters[faction][f[1].color]; // 0 is the primary color
+								if (KDGetFactionFilters(faction)[f[1].color])
+									filters[f[0]] = KDGetFactionFilters(faction)[f[1].color]; // 0 is the primary color
 							}
 						}
 					}
@@ -865,16 +865,16 @@ function KDApplyItem(inv, tags) {
 		let color = (typeof restraint.Color === "string") ? [restraint.Color] : restraint.Color;
 		let filters = Object.assign({}, restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters || {});
 
-		if (restraint.factionFilters && faction && KinkyDungeonFactionFilters[faction]) {
+		if (restraint.factionFilters && faction && KDGetFactionFilters(faction)) {
 			for (let f of Object.entries(restraint.factionFilters)) {
-				if (KinkyDungeonFactionFilters[faction][f[1].color]) {
+				if (KDGetFactionFilters(faction)[f[1].color]) {
 					if (f[1].override || !filters[f[0]]) {
-						filters[f[0]] = KinkyDungeonFactionFilters[faction][f[1].color];
+						filters[f[0]] = KDGetFactionFilters(faction)[f[1].color];
 					} else {
 						filters[f[0]].saturation = 0;
-						filters[f[0]].red = KinkyDungeonFactionFilters[faction][f[1].color].red;
-						filters[f[0]].blue = KinkyDungeonFactionFilters[faction][f[1].color].blue;
-						filters[f[0]].green = KinkyDungeonFactionFilters[faction][f[1].color].green;
+						filters[f[0]].red = KDGetFactionFilters(faction)[f[1].color].red;
+						filters[f[0]].blue = KDGetFactionFilters(faction)[f[1].color].blue;
+						filters[f[0]].green = KDGetFactionFilters(faction)[f[1].color].green;
 					}
 				}
 			}
@@ -1487,6 +1487,23 @@ let KDExpressions = {
 			};
 		},
 	},
+	"Sleepy": {
+		stackable: true,
+		priority: 11,
+		criteria: (C) => {
+			return KinkyDungeonSleepiness > 3.99;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesClosed",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "",
+				MouthPose: "",
+			};
+		},
+	},
 };
 
 function KDUpdateTempPoses(Character) {
@@ -1504,4 +1521,13 @@ function KDUpdateTempPoses(Character) {
 			KDCurrentModels.get(Character).Poses[pose] = true;
 		}
 	}
+}
+
+
+function KDGetFactionFilters(faction) {
+	if (KinkyDungeonFactionFilters[faction])
+		return KinkyDungeonFactionFilters[faction];
+	if (KDFactionProperties[faction]?.jailAlliedFaction && KinkyDungeonFactionFilters[KDFactionProperties[faction]?.jailAlliedFaction])
+		return KinkyDungeonFactionFilters[KDFactionProperties[faction]?.jailAlliedFaction];
+	return undefined;
 }

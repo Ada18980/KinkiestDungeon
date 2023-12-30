@@ -345,6 +345,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 						(KinkyDungeonPlayerEntity.facing_x || 0) * (X - KinkyDungeonPlayerEntity.x)
 						+ (KinkyDungeonPlayerEntity.facing_y || 0) * (Y - KinkyDungeonPlayerEntity.y) <= 0
 					)
+					&& (X != KinkyDungeonPlayerEntity.x || Y != KinkyDungeonPlayerEntity.y)
 					//&& ((KinkyDungeonPlayerEntity.facing_x && (X - KinkyDungeonPlayerEntity.x) && Math.sign(KinkyDungeonPlayerEntity.facing_x) != Math.sign(X - KinkyDungeonPlayerEntity.x))
 					//|| (KinkyDungeonPlayerEntity.facing_y && (Y - KinkyDungeonPlayerEntity.y) && Math.sign(KinkyDungeonPlayerEntity.facing_y) != Math.sign(Y - KinkyDungeonPlayerEntity.y)))
 					) {
@@ -434,6 +435,9 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 			//KinkyDungeonLightGrid = KinkyDungeonLightGrid + '\n';
 		}
 	} else {
+
+
+
 		// Generate the grid
 		let minDist = KDMinVisionDist;
 		let dist = 0;
@@ -458,6 +462,17 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 					if (fog)
 						KDMapData.FogGrid[X + Y*(width)] = Math.max(KDMapData.FogGrid[X + Y*(width)], KDMapExtraData.VisionGrid[X + Y*(width)] ? 2 : 0);
 				}
+		}
+		for (let X = 0; X < KDMapData.GridWidth; X++) {
+			for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
+				if (X >= 0 && X <= width-1 && Y >= 0 && Y <= height-1) {
+					if (KDGameData.RevealedTiles && KDGameData.RevealedTiles[X + ',' + Y] >= 0) {
+						KDMapExtraData.VisionGrid[X + Y*(width)] = Math.max(KDMapExtraData.VisionGrid[X + Y*(width)] || 0, 1);
+					} else if (KDGameData.RevealedFog && KDGameData.RevealedFog[X + ',' + Y] >= 0) {
+						KDMapData.FogGrid[X + Y*(width)] = Math.max(KDMapData.FogGrid[X + Y*(width)] || 0, 1);
+					}
+				}
+			}
 		}
 	}
 }
@@ -487,7 +502,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 		let l = 0;
 		let pad = 0;
 
-		let allFog = KinkyDungeonFlags.get("TimeSlow");//KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "TimeSlow");
+		let allFog = KinkyDungeonFlags.get("TimeSlow") || KinkyDungeonBlindLevel >= 2;//KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "TimeSlow");
 
 		for (let R = -1; R <= KinkyDungeonGridHeightDisplay + 2; R++)  {
 			for (let X = -1; X <= KinkyDungeonGridWidthDisplay + 2; X++)  {
@@ -651,22 +666,22 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 					KinkyDungeonGridHeightDisplay*KinkyDungeonGridSizeDisplay,);
 				kdlightmapGFX.endFill();
 			} else
-			for (let R = 0; R <= KinkyDungeonGridHeightDisplay; R++)  {
-				for (let X = 0; X <= KinkyDungeonGridWidthDisplay; X++)  {
-					RY = R+CamY;
-					RX = X+CamX;
+				for (let R = 0; R <= KinkyDungeonGridHeightDisplay; R++)  {
+					for (let X = 0; X <= KinkyDungeonGridWidthDisplay; X++)  {
+						RY = R+CamY;
+						RX = X+CamX;
 
-					if (KDMapExtraData.VisionGrid[RX + RY*KDMapData.GridWidth] == 0) {
-						kdlightmapGFX.beginFill(0xffffff, 1.);
-						kdlightmapGFX.drawRect(
-							xMult*(X - CamX_offset)*KinkyDungeonGridSizeDisplay - pad,
-							yMult*(R - CamY_offset)*KinkyDungeonGridSizeDisplay - pad,
-							xMult*KinkyDungeonGridSizeDisplay + pad*2,
-							yMult*KinkyDungeonGridSizeDisplay + pad*2);
-						kdlightmapGFX.endFill();
-					}
+						if (KDMapExtraData.VisionGrid[RX + RY*KDMapData.GridWidth] == 0) {
+							kdlightmapGFX.beginFill(0xffffff, 1.);
+							kdlightmapGFX.drawRect(
+								xMult*(X - CamX_offset)*KinkyDungeonGridSizeDisplay - pad,
+								yMult*(R - CamY_offset)*KinkyDungeonGridSizeDisplay - pad,
+								xMult*KinkyDungeonGridSizeDisplay + pad*2,
+								yMult*KinkyDungeonGridSizeDisplay + pad*2);
+							kdlightmapGFX.endFill();
+						}
 
-					/*kdlightmapGFX.beginFill(0xffffff, 0.5);
+						/*kdlightmapGFX.beginFill(0xffffff, 0.5);
 					kdlightmapGFX.drawRect(
 						xMult*(X - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
 						yMult*(R - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
@@ -674,8 +689,8 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 						KinkyDungeonGridSizeDisplay/2);
 					kdlightmapGFX.endFill();*/
 
+					}
 				}
-			}
 
 			PIXIapp.renderer.render(kdlightmapGFX, {
 				renderTexture: kdlightmap

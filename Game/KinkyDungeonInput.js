@@ -117,7 +117,8 @@ function KDProcessInput(type, data) {
 				while (KDGameData.PreviousWeapon.length < KDMaxPreviousWeapon) {
 					KDGameData.PreviousWeapon.push("Unarmed");
 				}
-				KDGameData.PreviousWeapon[KDWeaponSwitchPref] = oldweapon;
+				if (!KDGameData.PreviousWeaponLock || !KDGameData.PreviousWeaponLock[KDWeaponSwitchPref])
+					KDGameData.PreviousWeapon[KDWeaponSwitchPref] = oldweapon;
 			}
 			/*while (KDGameData.PreviousWeapon?.length > KDMaxPreviousWeapon) {
 				KDGameData.PreviousWeapon.splice(0, 1);

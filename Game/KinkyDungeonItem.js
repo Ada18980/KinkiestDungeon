@@ -256,7 +256,7 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 
 
 function KDAllowUseItems(Message) {
-	let ret = !KinkyDungeonStatsChoice.get("CantTouchThat") || KinkyDungeonHasHelp() || (!KinkyDungeonIsArmsBound() && !KinkyDungeonIsHandsBound(false, true, 0.01))
+	let ret = !KinkyDungeonStatsChoice.get("CantTouchThat") || KinkyDungeonHasHelp() || !(KinkyDungeonIsArmsBound() && !KinkyDungeonCanUseFeet() && KinkyDungeonIsHandsBound(false, true, 0.01));
 	if (!ret && KinkyDungeonCanTalk()) {
 		if (KDGameData.KneelTurns > 0) {return true;}
 		if (Message) KinkyDungeonSendActionMessage(7, TextGet("KDMouthGround"), "#ffaa44", 3, undefined, true);
@@ -271,7 +271,7 @@ function KinkyDungeonItemCheck(x, y, Index, autoEquip) {
 	for (let I = 0; I < KDMapData.GroundItems.length; I++) {
 		let item = KDMapData.GroundItems[I];
 		if (x == item.x && y == item.y) {
-			if (allowManip) {
+			if (allowManip || (item.name == "Keyring" && "SsH".includes(KinkyDungeonMapGet(item.x, item.y)))) {
 				KDMapData.GroundItems.splice(I, 1);
 				I -= 1;
 				KinkyDungeonItemEvent(item);

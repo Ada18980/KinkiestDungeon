@@ -39,7 +39,14 @@ Release B
 - Reworked some of the buttons in the inventory screen
 - You can now lock your items with simple locks
 - Arcane Barrier recovers more slowly but is more efficient
-- WIP: Feeding allies sweets in order to heal them
+- You can feed allies sweets in order to heal them
+Release C
+- More bugfixes
+- Enemies will now let go when their distraction is maxed out.
+- Enemies have a Desire level now, which affects the amount of damage they take when letting go
+- New spell: Sonar
+- Added Divine Chastity Bra
+
 
 5.0.6
 - New perks: Can't Touch That, Grounded

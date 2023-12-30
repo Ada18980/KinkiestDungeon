@@ -162,9 +162,10 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 		}
 		return costt;
 	}
-	let rarity = item.rarity || KDWeapon(item)?.rarity || KDConsumable(item)?.rarity || KDOutfit(item)?.rarity;
-	if (rarity) {
-		let costMod = item.costMod || KDWeapon(item)?.costMod || KDConsumable(item)?.costMod || KDOutfit(item)?.costMod;
+	let rarity = item.rarity || KDWeapon(item)?.rarity || KDConsumable(item)?.rarity || KDOutfit(item)?.rarity || 0;
+	if (rarity != undefined) {
+		let costMod = item.costMod || KDWeapon(item)?.costMod || KDConsumable(item)?.costMod || KDOutfit(item)?.costMod || 0;
+		if (KDWeapon(item)) costMod += 1;
 
 		if (costMod) rarity += costMod;
 		if (KinkyDungeonConsumableVariants[item.name] || KinkyDungeonWeaponVariants[item.name]) {

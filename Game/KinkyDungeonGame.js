@@ -895,7 +895,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		let doorchance = MapParams.doorchance;
 		let nodoorchance = MapParams.nodoorchance;
 		let doorlockchance = MapParams.doorlockchance;
-		let gasChance = (MapParams.gaschance && KDRandom() < MapParams.gaschance) ? (MapParams.gasdensity ? MapParams.gasdensity : 0) : 0;
+		let gasChance = ((!altType || altType.noClutter) && MapParams.gaschance && KDRandom() < MapParams.gaschance) ? (MapParams.gasdensity ? MapParams.gasdensity : 0) : 0;
 		let gasType = MapParams.gastype ? MapParams.gastype : 0;
 		let brickchance = MapParams.brickchance; // Chance for brickwork to start being placed
 		let wallRubblechance = MapParams.wallRubblechance ? MapParams.wallRubblechance : 0;
@@ -2372,6 +2372,7 @@ function KinkyDungeonPlaceHeart(width, height, Floor) {
 	for (let X = 1; X < width; X += 1)
 		for (let Y = 1; Y < height; Y += 1)
 			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))
+				&& KDMapData.RandomPathablePoints[(X) + ',' + (Y)]
 				&& !KinkyDungeonEnemyAt(X, Y)
 				&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)
 				&& KDistChebyshev(X - KDMapData.StartPosition.x, Y - KDMapData.StartPosition.y) > 8
@@ -4127,6 +4128,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 						type: KinkyDungeonPlayerDamage.type,
 						distract: KinkyDungeonPlayerDamage.distract,
 						distractEff: KinkyDungeonPlayerDamage.distractEff,
+						desireMult: KinkyDungeonPlayerDamage.desireMult,
 						bind: KinkyDungeonPlayerDamage.bind,
 						bindType: KinkyDungeonPlayerDamage.bindType,
 						bindEff: KinkyDungeonPlayerDamage.bindEff,
@@ -4365,7 +4367,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 								}
 								if (KDGameData.HeelPower > 0 && !KDGameData.Crouch ) {
 
-									KDChangeBalance(-KDGetBalanceCost() * (1 + Math.max(-inertia, 0) * KDBalanceInertiaMult), true);
+									KDChangeBalance(-KDGetBalanceCost() * (1 + Math.max(-inertia, 0) * KDBalanceInertiaMult)*moveMult, true);
 								} else {
 									//KDChangeBalance((KDGameData.KneelTurns > 0 ? 0.5 : 0.25) * KDGetBalanceRate()*delta, true);
 								}
@@ -4411,6 +4413,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 						KDGameData.MovePoints = Math.min(KDGameData.MovePoints, 1-newDelta);
 					}
 				}
+				KDGameData.BalancePause = true;
 			} else {
 				//KDChangeBalance((KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
 				KDGameData.MovePoints = Math.min(KDGameData.MovePoints + 1, 0);
@@ -4470,7 +4473,7 @@ function KinkyDungeonMoveTo(moveX, moveY, willSprint, allowPass) {
 	let yy = KinkyDungeonPlayerEntity.y;
 	if (KinkyDungeonPlayerEntity.x != moveX || KinkyDungeonPlayerEntity.y != moveY) {
 		KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "move", 1);
-		if (KDNearbyMapTiles(moveX, moveY, 1.5).some((tile) => {return (tile.x == moveX || tile.y == moveY) && !KinkyDungeonMovableTilesEnemy.includes(tile.tile)})) {
+		if (KDNearbyMapTiles(moveX, moveY, 1.5).some((tile) => {return (tile.x == moveX || tile.y == moveY) && !KinkyDungeonMovableTilesEnemy.includes(tile.tile);})) {
 			KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "moveWall", 1);
 		} else KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "moveOpen", 1);
 		stepOff = true;
@@ -4772,6 +4775,25 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	KDQuestTick(KDGameData.Quests, delta);
 	KinkyDungeonUpdateFlags(delta);
 
+
+	if (delta > 0) {
+		if (KDGameData.RevealedTiles) {
+			for (let entry of Object.entries(KDGameData.RevealedTiles)) {
+				KDGameData.RevealedTiles[entry[0]] = entry[1] - delta;
+				if (KDGameData.RevealedTiles[entry[0]] < 0) {
+					delete KDGameData.RevealedTiles[entry[0]];
+				}
+			}
+		}
+		if (KDGameData.RevealedFog) {
+			for (let entry of Object.entries(KDGameData.RevealedFog)) {
+				KDGameData.RevealedFog[entry[0]] = entry[1] - delta;
+				if (KDGameData.RevealedFog[entry[0]] < 0) {
+					delete KDGameData.RevealedFog[entry[0]];
+				}
+			}
+		}
+	}
 }
 let KDAllowDialogue = true;
 

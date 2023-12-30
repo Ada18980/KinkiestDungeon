@@ -462,6 +462,7 @@ function KinkyDungeonPlaceJailKeys() {
 	for (let X = 1; X < KDMapData.GridWidth; X += 1)
 		for (let Y = 1; Y < KDMapData.GridHeight; Y += 1)
 			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))
+				&& KDMapData.RandomPathablePoints[(X) + ',' + (Y)]
 				&& KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y) > 15
 				&& KDistChebyshev(X - KDMapData.EndPosition.x, Y - KDMapData.EndPosition.y) > 15
 				&& (!KDMapData.ShortcutPosition || KDistChebyshev(X - KDMapData.ShortcutPosition.x, Y - KDMapData.ShortcutPosition.y) > 15)
@@ -835,9 +836,9 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 							KinkyDungeonJailGuard().y = guardPath[0].y;
 						}
 					}
-					let enemy = KinkyDungeonEnemyAt(guardPath[0].x, guardPath[0].y);
-					if (enemy) {
-						KDMoveEntity(enemy, KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, true, undefined, undefined, true);
+					let en = KinkyDungeonEnemyAt(guardPath[0].x, guardPath[0].y);
+					if (en) {
+						KDMoveEntity(en, KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, true, undefined, undefined, true);
 						if (KinkyDungeonJailGuard()) {
 							KinkyDungeonJailGuard().x = guardPath[0].x;
 							KinkyDungeonJailGuard().y = guardPath[0].y;
@@ -1061,6 +1062,7 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 		KinkyDungeonSetDress(defeat_outfit, defeat_outfit);
 	}
 
+	KDFixPlayerClothes("Dollsmith");
 	KinkyDungeonDressPlayer();
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
 
@@ -1146,7 +1148,6 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
 
 	KinkyDungeonSetDress(defeat_outfit, "JailUniform");
-	KinkyDungeonDressPlayer();
 	KinkyDungeonStripInventory(true);
 
 	if (defeat_outfit != params.defeat_outfit) {
@@ -1179,6 +1180,9 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 		nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 
 	}
+
+	KDFixPlayerClothes(KDGetMainFaction() || "Jail");
+	KinkyDungeonDressPlayer();
 
 	KDMovePlayer(nearestJail.x + (nearestJail.direction?.x || 0), nearestJail.y + (nearestJail.direction?.y || 0), false);
 	if (nearestJail.direction) {
@@ -1219,13 +1223,6 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	KDKickEnemies(nearestJail);
 	KDResetAllAggro();
 
-	if (KDMapData.JailFaction?.length > 0) {
-		let faction = KDMapData.JailFaction[0];
-		if (KinkyDungeonFactionFilters[faction])
-			for (let inv of KinkyDungeonAllRestraintDynamic()) {
-				inv.item.faction = faction;
-			}
-	}
 }
 
 /**
@@ -1577,4 +1574,10 @@ let KDCustomDefeatUniforms = {
 		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Obsidian", "Obsidian");
 	},
+};
+
+function KDFixPlayerClothes(faction) {
+	for (let inv of KinkyDungeonAllRestraintDynamic()) {
+		inv.item.faction = faction;
+	}
 }

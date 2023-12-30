@@ -7,7 +7,7 @@ KinkyDungeonPatreon,Support @ Patreon
 KinkyDungeonPatronsList,"Thank you to the following awesome people for supporting me at patreon.com/ada18980"
 KinkyDungeonBack,Back
 KinkyDungeonNext,Next
-KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
+KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3, Plasmadragon|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
 KinkyDungeonCreditsList1,"Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators"
 
 Language,Language
@@ -31,57 +31,67 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.7 (B)"
+KDVersionStr,"5.0.7 (D)"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
 Intro4,"(This game does not contain spiders)"
 Intro4BC,""
+KDToggleTabGFX,GFX
+KDToggleTabClothes,Character
+KDToggleTabMain,Main
+KDToggleTabUI,UI
+KDToggleTabControls,Controls
+KDToggleTabKeybindings,Keybindings
+
 KDToggleSkipIntro,Skip Intro
-KDToggleForceWarnings,UI: Always Show Warnings
-KDToggleEnableMinimap,UI: Always Show Minimap
+KDToggleForceWarnings,Always Show Warnings
+KDToggleEnableMinimap,Always Show Minimap
 KDToggleSound,Enable Sound
-KDToggleDrool,Clothes: Drool/Tears
-KDToggleDrawArmor,Clothes: Draw Armor
+KDToggleDrool,Drool/Tears
+KDToggleDrawArmor,Draw Armor
 KDToggleMusic,Enable Music
-KDToggleAsyncRendering,GFX: Async Rendering (beta)
-KDToggleBloom,GFX: Bloom & Glow
-KDToggleTransparentUI,UI: Transparent UI
-KDToggleTurnCounter,UI: Turn Counter
-KDToggleStunFlash,GFX: Flash Screen on Stun
-KDToggleParticlesFX,GFX: Map Particles
-KDToggleArousalHearts,GFX: Distraction Particles
-KDToggleVibeHearts,GFX: Vibration Particles
-KDToggleShowNPCStatuses,UI: Show NPC Status
-KDToggleShowSpellRange,UI: Show Spell Range
-KDToggleFancyWalls,GFX: Trim Edge Walls
-KDToggleFancyShadows,GFX: Fog Shader
-KDToggleLightmapFilter,GFX: Light Shader
+KDToggleAsyncRendering,Async Rendering (beta)
+KDToggleBloom,Bloom & Glow
+KDToggleTransparentUI,Transparent UI
+KDToggleTurnCounter,Turn Counter
+KDToggleStunFlash,Flash Screen on Stun
+KDToggleParticlesFX,Map Particles
+KDToggleArousalHearts,Distraction Particles
+KDToggleVibeHearts,Vibration Particles
+KDToggleShowNPCStatuses,Show NPC Status
+KDToggleShowSpellRange,Show Spell Range
+KDToggleFancyWalls,Trim Edge Walls
+KDToggleFancyShadows,Fog Shader
+KDToggleLightmapFilter,Light Shader
 KDToggleIntenseOrgasm,Intense 'Let Go' VFX
 KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
 KDToggleHighResDisplacement,Hi-Res Distortion (Needs Restart)
-KDToggleGraphicsQuality,GFX: High Quality Animations
-KDToggleEnemyAnimations,GFX: Enemy Animations
-KDToggleLazyWalk,Controls: One-Click Move
-KDToggleShiftLatch,Controls: Latch Shift Key
-KDToggleChastityOption,Clothes: Chastity over Panties
-KDToggleChastityBraOption,Clothes: Chastity Bra over Bras
-KDToggleSimpleColorPicker,Clothes: Simple Color Picker
-KDToggleCenter,UI: Center Player
-KDToggleBuffSide,UI: Draw Buffs on Side
-KDToggleShowPath,UI: Show Trajectory on Auto-Path
-KDToggleShowFacing,UI: Show Player Facing
-KDToggleShowSameCatSpells,UI: Show more learnable spells
-KDTogglePlayerAura,UI: Show Player Buff Auras
-KDToggleEnemyAura,UI: Show Enemy Buff Auras
-KDToggleOutlineAura,UI: Minimalist Enemy Auras
-KDToggleNearestNeighbor,UI: Pixelated GFX (needs restart)
-KDToggleAutoCrouchOnTrip,Controls: Auto-Crouch when Tripped
+KDToggleGraphicsQuality,High Quality Animations
+KDToggleEnemyAnimations,Enemy Animations
+KDToggleLazyWalk,One-Click Move
+KDToggleShiftLatch,Latch Shift Key
+KDToggleChastityOption,Chastity over Panties
+KDToggleChastityBraOption,Chastity Bra over Bras
+KDToggleSimpleColorPicker,Simple Color Picker
+KDToggleCenter,Center Player
+KDToggleBuffSide,Draw Buffs on Side
+KDToggleShowPath,Show Trajectory on Auto-Path
+KDToggleShowFacing,Show Player Facing
+KDToggleShowSameCatSpells,Show more learnable spells
+KDTogglePlayerAura,Show Player Buff Auras
+KDToggleEnemyAura,Show Enemy Buff Auras
+KDToggleOutlineAura,Minimalist Enemy Auras
+KDToggleNearestNeighbor,Pixelated GFX (needs restart)
+KDToggleAutoCrouchOnTrip,Auto-Crouch when Tripped
 KDToggleZoomIn,Zoom In
 KDToggleZoomOut,Zoom Out
-
+KDToggleNipples,Enable Nipples
+KDToggleNippleToysOption,Show Nipple Toys Over Bras
+KDToggleNippleToysHide,Hide Nipple Clamps
+KDToggleNipplePiercingsHide,Hide Nipple Piercings
 
 KDHelpless,Helpless!
 KDMissed,Evaded!
@@ -2907,6 +2917,8 @@ KinkyDungeonStruggleCantPickBlueLock,"The lock seems to be magical and rejects a
 KinkyDungeonStruggleCantPickGoldLock,"The lock is definitely magical and forces your pick out!"
 KinkyDungeonStruggleCantPickDivineLock,"The lock is divine. A mortal shouldn't even try to pick it."
 KinkyDungeonStruggleUnlockNoDivineKey,"You must perform your quest! Don't even think of unlocking it..."
+KinkyDungeonStruggleCantPickDivine2Lock,"The lock is divine. A mortal shouldn't even try to pick it."
+KinkyDungeonStruggleUnlockNoDivine2Key,"You're not sure a key for this even exists in the mortal realm."
 KinkyDungeonStruggleCantPickRubberLock,"The lock is made of solid rubber. You can't pick that."
 KinkyDungeonStruggleUnlockNoRubberKey,"You need something sharp to cut the lock."
 KinkyDungeonStruggleCantPickPurpleLock,"The lock doesn't even have a keyhole to pick!"
@@ -3131,6 +3143,7 @@ KinkyHiSecLockType,"Secure"
 KinkyDiscLockType,"Disc"
 KinkyRubberLockType,"Rubber"
 KinkyDivineLockType,"Divine"
+KinkyDivine2LockType,"Divine"
 KinkyWhiteLockType,"Simple"
 KinkyBlueLockType,"Runic"
 KinkyPurpleLockType,"Magic"
@@ -3143,6 +3156,7 @@ KinkyHiSecLock,"Secure Lock"
 KinkyDiscLock,"Disc Lock"
 KinkyRubberLock,"Rubber Lock"
 KinkyDivineLock,"Divine Lock"
+KinkyDivine2Lock,"Divine Lock"
 KinkyWhiteLock,"Simple Lock"
 KinkyBlueLock,"Runic Lock"
 KinkyPurpleLock,"Purple Lock"
@@ -3409,6 +3423,9 @@ RestraintNippleClampsDesc2,"They will make for some great fun! Type: Edging"
 RestraintNippleClamps2,Advanced Massagers
 RestraintNippleClamps2Desc,"A pair of sensitive motion-activated teasers. They trigger when you attack or struggle."
 RestraintNippleClamps2Desc2,"They will make for some great fun! Type: Edging"
+RestraintNippleWeights,Nipple Weights
+RestraintNippleWeightsDesc,"A pair of dense weights dangling from your sensitive bits."
+RestraintNippleWeightsDesc2,"They tend to swing around when attacking or casting arm spells."
 RestraintNippleClamps3,Hi-Tech Massagers
 RestraintNippleClamps3Desc,"A pair of highly-sensitive motion-activated teasers. They detect most forms of motion, including sprinting and hopping."
 RestraintNippleClamps3Desc2,"They will make for some great fun! Type: Edging"
@@ -4863,7 +4880,7 @@ ItemPickupRope,"You find some treated hemp rope."
 
 KinkyDungeonInventoryItemFeather,Feather
 KinkyDungeonInventoryItemFeatherDesc,"A feather taken from some large fluffy being."
-KinkyDungeonInventoryItemFeatherDesc2,"Deals tickle damage. Distracts enemies. Offhand: +5 tickle damage on attack for 3 stamina."
+KinkyDungeonInventoryItemFeatherDesc2,"Deals tickle damage. Greatly distracting. Offhand: +1 tickle damage on attack for 3 stamina. Greatly distracting."
 ItemPickupFeather,"You pick up a feather."
 
 
@@ -11311,7 +11328,7 @@ rGenericAllyFlirt_BondageOffer,"(The SPEAKER smiles)|Am I thinking what you're t
 rGenericAllyFlirt_BondageOfferDom,"(The SPEAKER grins)|Why yes, I have just the thing~"
 rGenericAllyFlirt_BondageOfferSub,"(The SPEAKER blushes)|Oh... let me check."
 rGenericAllyFlirt_BondageOfferBrat,"(The SPEAKER smirks)|Be careful what you ask for~"
-rGenericAllyFlirt_BondageOfferRobot,"(The SPEAKER flashes its lights)|Calculating strictness threshold..."
+rGenericAllyFlirt_BondageOfferRobot,"(The SPEAKER pauses)|Calculating strictness threshold..."
 dGenericAllyFlirt_BondageOffer_Yes,"Yes please! (Hold out your wrists)"
 dGenericAllyFlirt_BondageOffer_YesGag,"(Nod and blush)"
 dGenericAllyFlirt_BondageOffer_No,"Maybe not..."
@@ -11323,7 +11340,15 @@ rGenericAllyFlirt_PlayRequest,"(The SPEAKER smiles)|Am I thinking what you're th
 rGenericAllyFlirt_PlayRequestDom,"(The SPEAKER grins)|Why yes, I have just the thing~"
 rGenericAllyFlirt_PlayRequestSub,"(The SPEAKER blushes)|Oh... let me check."
 rGenericAllyFlirt_PlayRequestBrat,"(The SPEAKER smirks)|Be careful what you ask for~"
-rGenericAllyFlirt_PlayRequestRobot,"(The SPEAKER flashes its lights)|Calculating strictness threshold..."
+rGenericAllyFlirt_PlayRequestRobot,"(The SPEAKER pauses)|Calculating strictness threshold..."
+
+dGenericAllyFlirt_LeashWalk,"Let's go for a walk!"
+dGenericAllyFlirt_LeashWalkGag,"(Jump excitedly, presenting your collar for a leash)"
+rGenericAllyFlirt_LeashWalk,"(The SPEAKER smiles)|Sure! I'll take you for a walk, but only if you behave."
+rGenericAllyFlirt_LeashWalkDom,"(The SPEAKER smiles)|Yes, I haven't had a nice walk in a while~"
+rGenericAllyFlirt_LeashWalkSub,"(The SPEAKER blushes)|Sure! I'll make sure you don't get into trouble~"
+rGenericAllyFlirt_LeashWalkBrat,"(The SPEAKER giggles)|Time for walkies!"
+rGenericAllyFlirt_LeashWalkRobot,"(The SPEAKER calculates)|Routing coordinates..."
 
 dGenericAllyHelpMe,"(Ask her for help)"
 dGenericAllyHelpMe_Confirm,"(Ask her for help)"
@@ -11957,6 +11982,7 @@ KDMetalMachine,Metallic arms wrap you in strict restraints!
 KDBearTrapHit,"You've sprung a trap! You've been stunned."
 KinkyDungeonSpellCastBearTrap,"The bandit leaves behind a sneaky trap..."
 KinkyDungeonSpellBearTrap,Damsel Trap
+KinkyDungeonSpellBearTrapStrike,Damsel Trap
 
 KinkyDungeonSpellCastDollConvert,"The ENEMYNAME transforms nearby dolls into her subjects!"
 KinkyDungeonSpellCastDollConvertMany,"The ENEMYNAME transforms nearby dolls into her subjects!"
@@ -12200,6 +12226,7 @@ cat_Pants,"Pants"
 cat_Accessories,"Accessories"
 cat_FashionRestraints,"Fashion Restraints"
 cat_Hats,"Hats"
+cat_Toys,"Toys and Piercings"
 cat_Hairstyles,"Hairstyles"
 cat_Face,"Face"
 cat_Eyes,"Eyes"
@@ -17012,6 +17039,31 @@ KinkyDungeonJailerDomLeashed,"That's better! Now stay close to me~"
 KinkyDungeonJailerDomLeashEndSoon,"Looks like our time is coming to an end..."
 KinkyDungeonJailerDomLeashEndNow,"You've been quite adorable! Until next time~"
 
+KinkyDungeonJailerSubLeashTime,"It's time for your walk, miss."
+KinkyDungeonJailerSubLeashed,"Now let's see, where to go..."
+KinkyDungeonJailerSubLeashEndSoon,"I think we've reached a stopping point."
+KinkyDungeonJailerSubLeashEndNow,"It's been fun playing with you miss!"
+
+KinkyDungeonJailerGaggedLeashTime,"(reaches for your leash)"
+KinkyDungeonJailerGaggedLeashed,"(holds your leash firmly)"
+KinkyDungeonJailerGaggedLeashEndSoon,"Mmmmph~"
+KinkyDungeonJailerGaggedLeashEndNow,"(waves goodbye)"
+
+KinkyDungeonJailerLeashTime,"WHy don't we go for a walk?"
+KinkyDungeonJailerLeashed,"That's better! Now come along~"
+KinkyDungeonJailerLeashEndSoon,"This has been lots of fun!"
+KinkyDungeonJailerLeashEndNow,"Good girl~ Let's go again later~"
+
+KinkyDungeonJailerBratLeashTime,"It's time for walkies!"
+KinkyDungeonJailerBratLeashed,"That's a good girl!"
+KinkyDungeonJailerBratLeashEndSoon,"I want to keep you longer, but I've got things to do."
+KinkyDungeonJailerBratLeashEndNow,"(pats you on the head)"
+
+KinkyDungeonJailerRobotLeashTime,"It is time for your mandatory exercise."
+KinkyDungeonJailerRobotLeashed,"Please maintain proximity."
+KinkyDungeonJailerRobotLeashEndSoon,"Progress Level: 90%"
+KinkyDungeonJailerRobotLeashEndNow,"Uploading logs to database. Error... no connection."
+
 NameMimicLatex,Latex Mimic
 KillMimicLatex,"The latex mimic melts into a shiny puddle."
 AttackMimicLatexBind,"The latex mimic spits out a glob of rubber at you! (+RestraintAdded)"
@@ -18120,7 +18172,6 @@ KillBarricadeHighSecurityDoor,"You knock down the security door!"
 NameBarricadeBlastDoor,Blast Door
 KillBarricadeBlastDoor,"You knock down the blast door!"
 
-KDInventoryActionSell,Sell for VLU gp
 KDSell,You sell the ITM for VLU gp.
 KDSellBulk,You sell #x ITM for VLU gp.
 
@@ -18594,12 +18645,23 @@ RestraintDivineBeltDesc2,"A chastity belt forged in holy light. Only a Goddess' 
 RestraintDivineBeltDesc,"There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge."
 KDDivineBeltDeny,Your Divine Chastity Belt causes the vibrators to stop.
 
+
 KinkyDungeonInventoryItemDivineBelt,Divine Chastity Belt
 KinkyDungeonInventoryItemDivineBeltDesc,"A chastity belt forged in holy light. Only the will of a Goddess will release you!"
 KinkyDungeonInventoryItemDivineBeltDesc2,"There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge."
 
 KinkyDungeonLootDivineBelt,You find a heavenly chastity belt. Who could it be for?
 
+RestraintDivineBra,Divine Chastity Bra
+RestraintDivineBraDesc2,"A chastity bra forged in holy light. Only a Goddess' will can release you."
+RestraintDivineBraDesc,"There is no way out but to repent. Its divine aura prevents you from pleasuring yourself."
+KDDivineBraDeny,Your Divine Chastity Bra causes your whole body to go numb.
+
+KinkyDungeonInventoryItemDivineBra,Divine Chastity Bra
+KinkyDungeonInventoryItemDivineBraDesc,"A chastity bra forged in holy light. Only the will of a Goddess will release you!"
+KinkyDungeonInventoryItemDivineBraDesc2,"There is no way out but to repent. Its divine aura prevents you from pleasuring yourself."
+
+KinkyDungeonLootDivineBra,You find a heavenly chastity bra. Who could it be for?
 
 RestraintDivineBelt2,Heavenly Chastity Belt
 RestraintDivineBelt2Desc2,"A chastity belt forged in holy light. Only a Goddess' will can release you."
@@ -18611,6 +18673,17 @@ KinkyDungeonInventoryItemDivineBelt2Desc,"A chastity belt forged in holy light. 
 KinkyDungeonInventoryItemDivineBelt2Desc2,"There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge."
 
 KinkyDungeonLootDivineBelt2,You find a heavenly chastity belt. Who could it be for?
+
+RestraintDivineBra2,Heavenly Chastity Bra
+RestraintDivineBra2Desc2,"A chastity bra forged in holy light. Only a Goddess' will can release you."
+RestraintDivineBra2Desc,"There is no way out but to repent. Its divine aura converts self-pleasure to stamina."
+KDDivineBra2Deny,The divine aura drains the pleasure from your self-pleasuring and converts it to stamina.
+
+KinkyDungeonInventoryItemDivineBra2,Heavenly Chastity Bra
+KinkyDungeonInventoryItemDivineBra2Desc,"A chastity bra forged in holy light. Only the will of a Goddess will release you!"
+KinkyDungeonInventoryItemDivineBra2Desc2,"There is no way out but to repent. Its divine aura converts self-pleasure to stamina."
+
+KinkyDungeonLootDivineBra2,You find a heavenly chastity bra. Who could it be for?
 
 
 
@@ -18987,6 +19060,32 @@ KDInventoryActionPick,Try to Pick
 KDInventoryActionCurseInfo,Examine the Curse
 KDInventoryActionCurseRemove,Remove the Curse
 KDInventoryActionFood,Feed this to her
+KDInventoryActionSell,Sell for VLU gp
+KDInventoryActionSellBulk,Sell ALL for VLU gp
 
 KDGiveFood,"You feed the RSTR to the ENNME! (AMNT1/AMNT2 hp)"
 KDFoodTarget,"Choose a food item or willpower potion"
+
+KinkyDungeonSpellRuneTrap_Rope,Rope Rune
+KinkyDungeonSpellRuneTrap_Chain,Chain Rune
+KinkyDungeonSpellRuneTrap_Ribbon,Ribbon Rune
+KinkyDungeonSpellRuneTrap_Vine,Nature Rune
+KinkyDungeonSpellRuneTrap_Belt,Belt Rune
+KinkyDungeonSpellRuneTrap_Leather,Leather Rune
+KinkyDungeonSpellRuneTrap_Latex,Latex Rune
+KinkyDungeonSpellRuneTrap_VacCube,Latex Cube Rune
+KinkyDungeonSpellRuneTrap_Rubber,Rubber Rune
+KinkyDungeonSpellRuneTrap_Slime,Slime Rune
+
+KDGP,"+AMNT gp"
+KDLocked,Locked
+
+KDEnemyLetGo,"ENMY lets go of herself for AMNT damage!"
+
+KinkyDungeonSpellSonar,Sonar
+KinkyDungeonSpellDescriptionSonar,Emit a ping to highlight floors and tiles in a large radius. The ping is audible and attracts enemies to your position.
+
+KDSonar_Yes,"You emit a loud noise and listen for echoes..."
+KDSonar_NoComp,"Your mouth is too heavily stuffed!"
+KDSonar_NoMana,"You don't have the mana to cast Sonar!"
+KDNippleWeights,The weights swing around and tug on your nipples!

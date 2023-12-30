@@ -97,8 +97,9 @@ let KinkyDungeonFactionFilters = {
 	},
 	"Goddess": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.8666666666666667,"brightness":1.7666666666666666,"red":3.5166666666666666,"green":2.9333333333333336,"blue":1.6,"alpha":1},
-		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.35,"brightness":1.0666666666666667,"red":0.5666666666666667,"green":0.9333333333333333,"blue":2.1166666666666667,"alpha":1},
-		Highlight: {"gamma":0.5666666666666667,"saturation":0,"contrast":2.2666666666666666,"brightness":0.5333333333333333,"red":2.9333333333333336,"green":2.166666666666667,"blue":1.6333333333333333,"alpha":1},
+		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.09,"brightness":0.6833333333333333,"red":1.4901960784313726,"green":1.5490196078431373,"blue":1.607843137254902,"alpha":1},
+		LightNeutral: {"gamma":1.5333333333333332,"saturation":0.016666666666666666,"contrast":1.5166666666666666,"brightness":1.1333333333333333,"red":1.6666666666666665,"green":1.6166666666666665,"blue":1.6333333333333333,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0.016666666666666666,"contrast":1.5166666666666666,"brightness":0.5333333333333333,"red":2.9333333333333336,"green":2.166666666666667,"blue":1.6333333333333333,"alpha":1},
 	},
 };
 

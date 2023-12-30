@@ -331,11 +331,11 @@ let KinkyDungeonWeapons = {
 		special: {type: "ignite"},},
 
 	// BDSM Gear
-	"Feather": {name: "Feather", dmg: 0.5, chance: 1.25,
+	"Feather": {name: "Feather", dmg: 0.1, chance: 1.25,
 		tags: ["toy"],
 		crit: 2.0,
 		events: [
-			{type: "ElementalEffectStamCost", trigger: "playerAttack", power: 0.5, damage: "tickle", offhand: true, offhandonly: true, cost: 0.3, sfx: "Tickle"},
+			{type: "ElementalEffectStamCost", trigger: "playerAttack", power: 0.1, distract: 1, damage: "tickle", offhand: true, offhandonly: true, cost: 0.3, sfx: "Tickle"},
 		],
 		staminacost: 0.5, distract: 2, type: "tickle", unarmed: false, rarity: 1, shop: true, sfx: "Tickle"},
 	"Duster": {name: "Duster", dmg: 1.5, chance: 1.5,

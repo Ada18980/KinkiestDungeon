@@ -54,6 +54,7 @@ let KDWardrobeCategories = [
 	"Accessories",
 	"Hats",
 	"FashionRestraints",
+	"Toys",
 	"Body",
 ];
 

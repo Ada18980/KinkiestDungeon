@@ -124,9 +124,12 @@ let LAYERS_BASE = [
 	"ShirtCollar",
 	"ShirtChest",
 	"Option_BindChestLower",
+	"NippleToysOption",
 	"BraChest",
 	"BindChestLower",
 	"SuitChest",
+	"NippleToys",
+	"Nipples",
 	"Chest",
 
 	"WrappingTorsoUpper",

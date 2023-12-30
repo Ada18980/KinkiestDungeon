@@ -58,7 +58,7 @@ let KinkyDungeonSpellSpecials = {
 							shield_slow: spell2?.shield_slow, // slow thru shield
 							shield_distract: spell2?.shield_distract, // Distract thru shield
 							shield_vuln: spell2?.shield_vuln, // Vuln thru shield
-							bindEff: spell2.bindEff, distract: spell2.distract, distractEff: spell2.distractEff, boundBonus: spell2.boundBonus, time:spell2.time, flags:spell2.damageFlags}, spell: spell2}, miscast);
+							bindEff: spell2.bindEff, distract: spell2.distract, distractEff: spell2.distractEff, desireMult: spell2.desireMult, boundBonus: spell2.boundBonus, time:spell2.time, flags:spell2.damageFlags}, spell: spell2}, miscast);
 				b.visual_x = entity.x;
 				b.visual_y = entity.y;
 			} else return "Fail";
@@ -770,6 +770,7 @@ let KinkyDungeonSpellSpecials = {
 						type: KinkyDungeonPlayerDamage.type,
 						distract: KinkyDungeonPlayerDamage.distract,
 						distractEff: KinkyDungeonPlayerDamage.distractEff,
+						desireMult: KinkyDungeonPlayerDamage.desireMult,
 						bind: KinkyDungeonPlayerDamage.bind,
 						bindType: KinkyDungeonPlayerDamage.bindType,
 						bindEff: KinkyDungeonPlayerDamage.bindEff,

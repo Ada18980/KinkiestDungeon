@@ -715,6 +715,49 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 					},
 				},
 			},
+			LeashWalk: {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (gagged, player) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						return (KinkyDungeonCanPlay(enemy) && KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints") && !enemy.playWithPlayer) == true;
+					}
+					return false;
+				},
+				clickFunction: (gagged, player) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						KinkyDungeonSetEnemyFlag(enemy, "allowLeashWalk", -1);
+
+						enemy.aware = true;
+						enemy.gx = enemy.x;
+						enemy.gy = enemy.y;
+						enemy.path = undefined;
+						// Make the enemy see you
+
+						let duration = 60 + Math.round(KDRandom()*40);
+						KinkyDungeonSetEnemyFlag(enemy, "notouchie", duration);
+						KinkyDungeonSetFlag("TempLeash", duration);
+						KinkyDungeonSetFlag("TempLeashCD", duration + 1);
+						KinkyDungeonSetFlag("noResetIntent", 12);
+						enemy.playWithPlayer = 12;
+						enemy.playWithPlayerCD = 40;
+						enemy.IntentAction = 'TempLeash';
+						KDTickTraining("Heels", KDGameData.HeelPower > 0,
+							KDGameData.HeelPower <= 0, 4, 25);
+						KinkyDungeonSendDialogue(enemy,
+							TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged") + "LeashTime").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+							KDGetColor(enemy), 14, 10);
+						KDAddThought(enemy.id, "Play", 7, enemy.playWithPlayer);
+
+						enemy.vp = Math.max(enemy.vp || 0, 3);
+						KDStunTurns(1, true);
+					}
+					KDGameData.CurrentDialogMsg = name + "Flirt" + (!KDEnemyCanTalk(enemy) ? "Gagged" : (enemy.personality || ""));
+					return false;
+				},
+				leadsToStage: "", dontTouchText: true, exitDialogue: true,
+			},
 		}
 	};
 	dialog.options.LetMePass = {playertext: name + "LetMePass", response: "Default",

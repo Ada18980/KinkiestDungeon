@@ -1796,7 +1796,7 @@ function KinkyDungeonDrawGame() {
 		DrawButtonVis(975, 900, 550, 64, TextGet("KinkyDungeonRestartYes" + (KDConfirmDeleteSave ? "Confirm" : "")), "#ffffff", "");
 		DrawButtonVis(1650, 900, 300, 64, TextGet("KinkyDungeonCheckPerks"), "#ffffff", "");
 
-		DrawButtonKDEx("GameConfigKeys", () => {
+		/*DrawButtonKDEx("GameConfigKeys", () => {
 			KinkyDungeonState = "Keybindings";
 			if (!KinkyDungeonKeybindings)
 				KDSetDefaultKeybindings();
@@ -1805,7 +1805,7 @@ function KinkyDungeonDrawGame() {
 				Object.assign(KinkyDungeonKeybindingsTemp, KinkyDungeonKeybindings);
 			}
 			return true;
-		}, true, 975, 450, 260, 64, TextGet("GameConfigKeys"), "#ffffff", "");
+		}, true, 975, 450, 260, 64, TextGet("GameConfigKeys"), "#ffffff", "");*/
 		DrawButtonKDEx("GameToggles", () => {
 			KinkyDungeonState = "Toggles";
 			return true;

@@ -272,11 +272,11 @@ let KDIntentEvents = {
 			return (AIData?.playerDist > 2.99
 				&& KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints")
 				&& !KinkyDungeonFlags.has("TempLeashCD")
-				&& (KDGameData.PrisonerState == 'parole' || KinkyDungeonGoddessRep.Ghost > 0)
-				&& KDStrictPersonalities.includes(KDJailPersonality(enemy))
+				&& (KDGameData.PrisonerState == 'parole' || KinkyDungeonGoddessRep.Ghost > 0 || KDEnemyHasFlag(enemy, "allowLeashWalk"))
+				//&& KDStrictPersonalities.includes(KDJailPersonality(enemy))
 				&& KDEnemyCanTalk(enemy)
 				&& !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) ?
-				100 // Very high just to test
+				((KDStrictPersonalities.includes(KDJailPersonality(enemy)) || KDJailPersonality(enemy) == "Robot") ? 100 : 10)
 				: 0;
 		},
 		trigger: (enemy, AIData) => {
@@ -284,13 +284,14 @@ let KDIntentEvents = {
 			KinkyDungeonSetFlag("TempLeash", duration);
 			KinkyDungeonSetFlag("TempLeashCD", duration*2);
 			KinkyDungeonSetFlag("noResetIntent", 12);
+
 			enemy.playWithPlayer = 12;
 			enemy.playWithPlayerCD = 40;
 			enemy.IntentAction = 'TempLeash';
 			KDTickTraining("Heels", KDGameData.HeelPower > 0,
 				KDGameData.HeelPower <= 0, 4, 25);
 			KinkyDungeonSendDialogue(enemy,
-				TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashTime").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+				TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged") + "LeashTime").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				KDGetColor(enemy), 14, 10);
 			KDAddThought(enemy.id, "Play", 7, enemy.playWithPlayer);
 

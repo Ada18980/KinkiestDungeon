@@ -30,7 +30,7 @@ let KDTileUpdateFunctionsLocal = {
 				time: 0,
 				bind: 0,
 				distract: 2.5,
-			})
+			});
 	},
 	"[": (delta, X, Y) => {// Sleepy Gas!
 		if (delta > 0)
@@ -39,7 +39,7 @@ let KDTileUpdateFunctionsLocal = {
 				damage: 0.0,
 				time: 4,
 				bind: 0,
-			})
+			});
 	},
 	'z': (delta, X, Y) => {
 		let entity = KinkyDungeonEntityAt(X, Y);

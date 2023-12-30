@@ -10,7 +10,7 @@ let KinkyDungeonConsumables = {
 	"ManaOrb" : {name: "ManaOrb", noHands: true, rarity: 2, shop: true, type: "restore", mp_instant: 0, mpool_instant: 20, mp_gradual: 0, scaleWithMaxMP: false, duration: 0, sfx: "Invis"},
 	"PotionWill" : {name: "PotionWill", potion: true, rarity: 1, shop: true, type: "restore", wp_instant: 2.5, wp_gradual: 0, scaleWithMaxWP: true, duration: 0, gagFloor: 0.5, sfx: "PotionDrink"},
 	"PotionStamina" : {name: "PotionStamina", potion: true, rarity: 1, shop: true, type: "restore", sp_instant: 5, sp_gradual: 25, scaleWithMaxSP: true, duration: 25, gagFloor: 0.5, sfx: "PotionDrink"},
-	"PotionFrigid" : {name: "PotionFrigid", potion: true, rarity: 1, shop: true, type: "restore", ap_instant: -10, ap_gradual: -20, duration: 50, arousalRatio: 1.0, gagFloor: 0.5, sfx: "PotionDrink"},
+	"PotionFrigid" : {name: "PotionFrigid", potion: true, rarity: 1, costMod: 1, shop: true, type: "restore", ap_instant: -10, ap_gradual: -20, duration: 50, arousalRatio: 1.0, gagFloor: 0.5, sfx: "PotionDrink"},
 	"SmokeBomb" : {name: "SmokeBomb", noHands: true, rarity: 2, costMod: -1, shop: false, noConsumeOnUse: true, type: "targetspell", sfx: "FireSpell", spell: "SmokeBomb"},
 	"FlashBomb" : {name: "FlashBomb", noHands: true, rarity: 3, costMod: -1, shop: false, noConsumeOnUse: true, type: "targetspell", sfx: "FireSpell", spell: "FlashBomb"},
 	"Flashbang" : {name: "Flashbang", noHands: true, rarity: 4, costMod: -1, shop: false, noConsumeOnUse: true, type: "targetspell", sfx: "FireSpell", spell: "Flashbang"},
@@ -78,8 +78,10 @@ let KinkyDungneonBasic = {
 
 let KinkyDungneonShopRestraints = {
 	"SlimeWalkers" : {name: "SlimeWalkers", rarity: 2, shop: true},
-	"DivineBelt" : {name: "DivineBelt", rarity: 4, shop: true},
-	"DivineBelt2" : {name: "DivineBelt2", rarity: 4, shop: true},
+	"DivineBelt" : {name: "DivineBelt", rarity: 5, shop: true},
+	"DivineBelt2" : {name: "DivineBelt2", rarity: 5, shop: true},
+	"DivineBra" : {name: "DivineBra", rarity: 5, shop: true},
+	"DivineBra2" : {name: "DivineBra2", rarity: 5, shop: true},
 	"DusterGag" : {name: "DusterGag", rarity: 2, shop: true},
 	"GasMask" : {name: "GasMask", rarity: 2, shop: true},
 	"PotionCollar" : {name: "PotionCollar", rarity: 2, shop: true},

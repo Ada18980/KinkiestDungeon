@@ -108,6 +108,7 @@ AddModel({
 	Parent: "Catsuit",
 	Categories: ["Suits"],
 	Folder: "Catsuit",
+	AddPose: ["HideNipples"],
 	Layers: ToLayerMap([
 		{ Name: "ArmRight", Layer: "ArmRight", Pri: 1,
 			InheritColor: "TorsoUpper",
@@ -186,6 +187,7 @@ AddModel({
 	Parent: "Catsuit",
 	Categories: ["Suits"],
 	Folder: "Catsuit",
+	AddPose: ["HideNipples"],
 	Layers: ToLayerMap([
 		{ Name: "SleevelessTorsoUpper", Layer: "TorsoUpper", Pri: 1,
 			InheritColor: "TorsoUpper",
@@ -238,6 +240,7 @@ AddModel({
 	Parent: "Catsuit",
 	Categories: ["Suits"],
 	Folder: "Catsuit",
+	AddPose: ["HideNipples"],
 	Layers: ToLayerMap([
 		{ Name: "ArmRight", Layer: "ArmRight", Pri: 1,
 			InheritColor: "TorsoUpper",

@@ -2,6 +2,7 @@
 // Player entity
 let KinkyDungeonPlayerEntity = null; // The current player entity
 
+let KDBaseBalanceDmgLevel = 5; // Decides how much heels affect balance loss from attacks. higher = less loss
 let KDShadowThreshold = 1.5;
 
 let KDSleepWillFraction = 0.5;
@@ -366,8 +367,8 @@ function KinkyDungeonInterruptSleep() {
 }
 
 let KDBaseDamageTypes = {
-	knockbackTypes: ["fire", "electric", "shock", "tickle", "plush", "cold", "slash", "pierce"],
-	knockbackTypesStrong: ["blast", "crush", "grope", "acid", "pain", "arcane"],
+	knockbackTypes: ["fire", "electric", "shock", "tickle", "plush", "cold", "slash", "grope", "pierce"],
+	knockbackTypesStrong: ["blast", "crush", "acid", "pain", "arcane"],
 	arouseTypes: ["grope", "plush", "charm", "happygas"],
 	bypassTeaseTypes: ["charm", "happygas"],
 	distractionTypesWeakNeg: ["pain", "acid"],
@@ -514,12 +515,12 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 		data.knockbackTypesStrong.includes(data.type)
 		|| data.knockbackTypes.includes(data.type)
 	)) {
-		if (data.knockbackTypes.includes(data.type)) {
+		if (KDGameData.HeelPower > 0 && data.knockbackTypes.includes(data.type)) {
 			let amt = data.dmg;
-			KDChangeBalance(0.5*-KDBalanceDmgMult() * amt/KinkyDungeonStatWill, true);
+			KDChangeBalance((KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * amt/KinkyDungeonStatWillMax, true);
 		} else if (data.knockbackTypesStrong.includes(data.type)) {
 			let amt = data.dmg;
-			KDChangeBalance(-KDBalanceDmgMult() * amt/KinkyDungeonStatWill, true);
+			KDChangeBalance((KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * -KDBalanceDmgMult() * amt/KinkyDungeonStatWillMax, true);
 		}
 	}
 
@@ -1303,7 +1304,7 @@ function KinkyDungeonUpdateStats(delta) {
 	if (delta > 0 && KDGameData.StaminaPause > 0) KDGameData.StaminaPause -= delta;
 	if (delta > 0 && KDGameData.StaminaSlow > 0) KDGameData.StaminaSlow -= delta;
 
-	let baseRate = KinkyDungeonStatsChoice.get("PoorBalance") ? 0.5 : 0;
+	let baseRate = KinkyDungeonStatsChoice.get("PoorBalance") ? 0.5 : 1;
 	let kneelRate = baseRate * (KinkyDungeonIsArmsBound() ? 0.8 : 1);
 	if (KinkyDungeonSlowLevel > 2) kneelRate *= 0.6;
 
@@ -1406,6 +1407,9 @@ function KinkyDungeonUpdateStats(delta) {
 		}
 		if (KinkyDungeonSleepiness > 0) {
 			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonSleepy"), "#ff0000", 1, true);
+		}
+		if (KinkyDungeonSleepiness > 4.99) {
+			KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns || 0, 2);
 		}
 	}
 	if ((!sleepRate || sleepRate <= 0) && KinkyDungeonSleepiness > 0) KinkyDungeonSleepiness = Math.max(0, KinkyDungeonSleepiness - delta);
@@ -1790,7 +1794,7 @@ function KinkyDungeonDoPlayWithSelf(tease) {
 
 	KinkyDungeonAlert = Math.max(KinkyDungeonAlert || 0, data.alertRadius); // Alerts nearby enemies because of your moaning~
 
-	KinkyDungeonChangeDistraction(0.5 + Math.sqrt(Math.max(0, data.amount * KinkyDungeonPlayWithSelfMult)) * KinkyDungeonStatDistractionMax/KDMaxStatStart, false, 0.05);
+	KinkyDungeonChangeDistraction(Math.sqrt(Math.max(0, data.amount * KinkyDungeonPlayWithSelfMult)) * KinkyDungeonStatDistractionMax/KDMaxStatStart, false, 0.05);
 	KinkyDungeonChangeStamina(data.cost, true, 3);
 	if (data.playSound) {
 		if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.playSelfSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KinkyDungeonPlayerDamage.playSelfSound + ".ogg");
@@ -1852,7 +1856,7 @@ let KinkyDungeonEdgeWillpowerCost = -0.5;
 let KinkyDungeonPlayCost = -0.1;
 
 let KinkyDungeonOrgasmStunTime = 4;
-let KinkyDungeonPlayWithSelfMult = 0.25;
+let KinkyDungeonPlayWithSelfMult = 0.5;
 
 function KDGetPlaySelfThreshold() {
 	return KinkyDungeonDistractionPlaySelfThreshold - 0.01 * (
@@ -2087,5 +2091,5 @@ function KDForcedToGround() {
 }
 function KDBalanceDmgMult() {
 	let mult = KinkyDungeonStatsChoice.get("PoorBalance") ? 3 : 2;
-	return mult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BalanceDamageMult"));
+	return mult * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BalanceDamageMult"));
 }

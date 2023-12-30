@@ -1254,6 +1254,7 @@ interface weapon {
 	distract?: number;
 	bindEff?: number;
 	distractEff?: number;
+	desireMult?: number;
 	light?: boolean;
 	heavy?: boolean;
 	massive?: boolean;
@@ -1343,6 +1344,8 @@ interface KinkyDungeonEvent {
 	restraint?: string;
 	sfx?: string;
 	power?: number;
+	distractEff?: number;
+	desireMult?: number;
 	count?: number;
 	player?: boolean;
 	bind?: number;
@@ -1520,6 +1523,7 @@ interface entity {
 	boundLevel?: number,
 	specialBoundLevel?: Record<string, number>,
 	distraction?: number,
+	desire?: number,
 	lifetime?: number,
 	maxlifetime?: number,
 	attackPoints?: number,
@@ -1783,6 +1787,7 @@ interface spell {
 	shotgunSpeedBonus?: number,
 
 	distractEff?: number,
+	desireMult?: number,
 	bindEff?: number,
 
 	nonmagical?: boolean,
@@ -1868,6 +1873,7 @@ interface spell {
 	learnFlags?: string[],
 	/** Increases the more you do */
 	increasingCost?: boolean,
+	decreaseCost?: boolean,
 	/** Specific to a class */
 	classSpecific?: string;
 	/** Verbal, arms, or legs */
@@ -2189,11 +2195,16 @@ interface VibeMod {
 
 interface KDInventoryActionDef {
 	text?: (player: entity, item: item) => string;
+	label?: (player: entity, item: item) => string;
+	itemlabel?: (player: entity, item: item) => string;
+	labelcolor?: (player: entity, item: item) => string;
+	itemlabelcolor?: (player: entity, item: item) => string;
 	show?: (player: entity, item: item) => boolean;
 	valid: (player: entity, item: item) => boolean;
 	click: (player: entity, item: item,) => void;
 	cancel: (player: entity, delta: number) => boolean;
 	icon: (player: entity, item: item) => string;
+	alsoShow?: string[],
 }
 
 interface KinkyDungeonSave {

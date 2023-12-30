@@ -60,8 +60,8 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 			if (loot.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) prereqs = false;
 
 
-			if (loot.noflag?.some((flag) => {return KinkyDungeonFlags.get(flag) != undefined})) prereqs = false;
-			if (loot.notag?.some((flag) => {return KinkyDungeonPlayerTags.get(flag) != undefined})) prereqs = false;
+			if (loot.noflag?.some((flag) => {return KinkyDungeonFlags.get(flag) != undefined;})) prereqs = false;
+			if (loot.notag?.some((flag) => {return KinkyDungeonPlayerTags.get(flag) != undefined;})) prereqs = false;
 
 			if (loot.prerequisites && prereqs) {
 
@@ -995,19 +995,19 @@ let KDChestTrapWeights = {
 		mult: 1,
 	},
 	skeletonTrap: {
-		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("skeleton") ? 300 : 0},
+		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("skeleton") ? 300 : 0;},
 		mult: 1.4,
 	},
 	zombieTrap: {
-		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("zombie") ? 300 : 0},
+		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("zombie") ? 300 : 0;},
 		mult: 1.5,
 	},
 	mummyTrap: {
-		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("mummy") ? 300 : 0},
+		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("mummy") ? 300 : 0;},
 		mult: 1,
 	},
 	mushroomTrap: {
-		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("mushroom") ? 300 : 0},
+		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("mushroom") ? 300 : 0;},
 		mult: 1,
 	},
 };

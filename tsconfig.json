@@ -146,6 +146,7 @@
         "Data/ModelList_Collars.ts",
         "Data/ModelList_Visors.ts",
         "Data/ModelList_Petsuit.ts",
+        "Data/ModelList_Toys.ts",
         "Data/ModelDresses.ts",
         "Game/KDWardrobe.js",
     ],

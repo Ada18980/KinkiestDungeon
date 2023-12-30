@@ -360,10 +360,23 @@ let KDInventoryAction = {
 			return KDGameData.PreviousWeapon[0] ? "Items/" + KDGameData.PreviousWeapon[0] : "InventoryAction/Quickslot";
 		},
 		valid: (player, item) => {
-			return KDGameData.PreviousWeapon[0] != item.name;
+			return true;//KDGameData.PreviousWeapon[0] != item.name;
+		},
+		label: (player, item) => {
+			if (KDGameData.PreviousWeaponLock && KDGameData.PreviousWeaponLock[0]) {
+				return TextGet("KDLocked");
+			}
+			return "";
 		},
 		click: (player, item) => {
 			KDGameData.PreviousWeapon[0] = item.name;
+			if (!KDGameData.PreviousWeaponLock) {
+				KDGameData.PreviousWeaponLock = [];
+				for (let i = 0; i < KDMaxPreviousWeapon; i++) {
+					KDGameData.PreviousWeaponLock.push(false);
+				}
+			}
+			KDGameData.PreviousWeaponLock[0] = !KDGameData.PreviousWeaponLock[0];
 		},
 		cancel: (player, delta) => {
 			return false; // NA for default actions
@@ -374,10 +387,23 @@ let KDInventoryAction = {
 			return KDGameData.PreviousWeapon[1] ? "Items/" + KDGameData.PreviousWeapon[1] : "InventoryAction/Quickslot";
 		},
 		valid: (player, item) => {
-			return KDGameData.PreviousWeapon[1] != item.name;
+			return true;//KDGameData.PreviousWeapon[0] != item.name;
+		},
+		label: (player, item) => {
+			if (KDGameData.PreviousWeaponLock && KDGameData.PreviousWeaponLock[1]) {
+				return TextGet("KDLocked");
+			}
+			return "";
 		},
 		click: (player, item) => {
 			KDGameData.PreviousWeapon[1] = item.name;
+			if (!KDGameData.PreviousWeaponLock) {
+				KDGameData.PreviousWeaponLock = [];
+				for (let i = 0; i < KDMaxPreviousWeapon; i++) {
+					KDGameData.PreviousWeaponLock.push(false);
+				}
+			}
+			KDGameData.PreviousWeaponLock[1] = !KDGameData.PreviousWeaponLock[1];
 		},
 		cancel: (player, delta) => {
 			return false; // NA for default actions
@@ -388,10 +414,23 @@ let KDInventoryAction = {
 			return KDGameData.PreviousWeapon[2] ? "Items/" + KDGameData.PreviousWeapon[2] : "InventoryAction/Quickslot";
 		},
 		valid: (player, item) => {
-			return KDGameData.PreviousWeapon[2] != item.name;
+			return true;//KDGameData.PreviousWeapon[0] != item.name;
+		},
+		label: (player, item) => {
+			if (KDGameData.PreviousWeaponLock && KDGameData.PreviousWeaponLock[2]) {
+				return TextGet("KDLocked");
+			}
+			return "";
 		},
 		click: (player, item) => {
 			KDGameData.PreviousWeapon[2] = item.name;
+			if (!KDGameData.PreviousWeaponLock) {
+				KDGameData.PreviousWeaponLock = [];
+				for (let i = 0; i < KDMaxPreviousWeapon; i++) {
+					KDGameData.PreviousWeaponLock.push(false);
+				}
+			}
+			KDGameData.PreviousWeaponLock[2] = !KDGameData.PreviousWeaponLock[2];
 		},
 		cancel: (player, delta) => {
 			return false; // NA for default actions
@@ -402,10 +441,23 @@ let KDInventoryAction = {
 			return KDGameData.PreviousWeapon[3] ? "Items/" + KDGameData.PreviousWeapon[3] : "InventoryAction/Quickslot";
 		},
 		valid: (player, item) => {
-			return KDGameData.PreviousWeapon[3] != item.name;
+			return true;//KDGameData.PreviousWeapon[0] != item.name;
+		},
+		label: (player, item) => {
+			if (KDGameData.PreviousWeaponLock && KDGameData.PreviousWeaponLock[3]) {
+				return TextGet("KDLocked");
+			}
+			return "";
 		},
 		click: (player, item) => {
-			KDGameData.PreviousWeapon[3] = item.name;
+			KDGameData.PreviousWeapon[0] = item.name;
+			if (!KDGameData.PreviousWeaponLock) {
+				KDGameData.PreviousWeaponLock = [];
+				for (let i = 0; i < KDMaxPreviousWeapon; i++) {
+					KDGameData.PreviousWeaponLock.push(false);
+				}
+			}
+			KDGameData.PreviousWeaponLock[3] = !KDGameData.PreviousWeaponLock[3];
 		},
 		cancel: (player, delta) => {
 			return false; // NA for default actions
@@ -549,9 +601,36 @@ let KDInventoryAction = {
 		},
 	},
 	"Sell": {
+		alsoShow: ["SellBulk"],
 		icon: (player, item) => {
 			return "InventoryAction/Sell";
 		},
+		label:  (player, item) => {
+			if (KDWeapon(item)?.unarmed) return "";
+			let mult = 1;
+			let quantity = 1;
+			let quantitystart = 0;
+			if (KDGameData.ItemsSold && KDGameData.ItemsSold[item.name]) {
+				quantitystart = KDGameData.ItemsSold[item.name];
+			}
+			// Use partial sum formula (maths)
+			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
+			return TextGet("KDGP").replace("AMNT", value + "");
+		},
+		itemlabel:  (player, item) => {
+			let mult = 1;
+			let quantity = 1;
+			let quantitystart = 0;
+			if (KDGameData.ItemsSold && KDGameData.ItemsSold[item.name]) {
+				quantitystart = KDGameData.ItemsSold[item.name];
+			}
+			// Use partial sum formula (maths)
+			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
+			return TextGet("KDGP").replace("AMNT", value + "");
+		},
+		itemlabelcolor: (player, item) => {return "#ffff44";},
 		text:  (player, item) => {
 			let mult = 1;
 			let quantity = 1;
@@ -565,6 +644,7 @@ let KDInventoryAction = {
 			return TextGet("KDInventoryActionSell").replace("VLU", value + "");
 		},
 		valid: (player, item) => {
+			if (KDWeapon(item)?.unarmed) return false;
 			return item?.type == Weapon || item?.type == LooseRestraint || item?.type == Consumable;
 		},
 		/** Happens when you click the button */
@@ -606,7 +686,20 @@ let KDInventoryAction = {
 	},
 	"SellBulk": {
 		icon: (player, item) => {
-			return "InventoryAction/Sell";
+			return "InventoryAction/SellBulk";
+		},
+		label:  (player, item) => {
+			let mult = 1;
+			let quantity = ((item.quantity) ? item.quantity : 1);
+			let quantitystart = 0;
+			if (KDGameData.ItemsSold && KDGameData.ItemsSold[item.name]) {
+				quantitystart = KDGameData.ItemsSold[item.name];
+			}
+			// Use partial sum formula (maths)
+
+			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
+			return TextGet("KDGP").replace("AMNT", value + "");
 		},
 		text:  (player, item) => {
 			let mult = 1;
@@ -619,10 +712,13 @@ let KDInventoryAction = {
 
 			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
-			return TextGet("KDInventoryActionSell").replace("VLU", value + "");
+			return TextGet("KDInventoryActionSellBulk").replace("VLU", value + "");
 		},
 		valid: (player, item) => {
-			return item?.type == Weapon || item?.type == LooseRestraint || item?.type == Consumable;
+			return item?.type == LooseRestraint || item?.type == Consumable;
+		},
+		show: (player, item) => {
+			return item?.type == LooseRestraint || item?.type == Consumable;
 		},
 		/** Happens when you click the button */
 		click: (player, item) => {

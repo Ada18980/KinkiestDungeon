@@ -335,7 +335,7 @@ function KinkyDungeonDrawReputation() {
 			if (suff) {
 				DrawTextFitKD(suff, canvasOffsetX_ui + xOffset + 275 + XX + 240, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
 			}
-			DrawProgressBar(canvasOffsetX_ui + xOffset + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + 
+			DrawProgressBar(canvasOffsetX_ui + xOffset + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 +
 				(rep == "Prisoner" ? KDGetEffSecurityLevel(undefined, true) :
 				value), color, KDTextGray2);
 			if (KinkyDungeonShrineBaseCosts[rep])

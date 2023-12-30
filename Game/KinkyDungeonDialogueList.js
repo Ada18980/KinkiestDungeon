@@ -2223,7 +2223,7 @@ let KDDialogue = {
 							return false;
 						},
 					},
-					"SellBulk": {
+					/*"SellBulk": {
 						playertext: "Default", response: "Default",
 						exitDialogue: true,
 						clickFunction: (gagged, player) => {
@@ -2233,7 +2233,7 @@ let KDDialogue = {
 							KinkyDungeonCurrentFilter = Weapon;
 							return false;
 						},
-					},
+					},*/
 					"Return": {
 						playertext: "Return", response: "Default",
 						leadsToStage: "",

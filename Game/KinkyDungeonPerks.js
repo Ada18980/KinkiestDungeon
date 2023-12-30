@@ -393,7 +393,7 @@ let KinkyDungeonStatsPresets = {
 	"PoorForm": {category: "Restriction", id: "PoorForm", cost: -1, block: ["HeelWalker"]},
 
 	"Doorknobs":  {category: "Restriction", id: "Doorknobs", cost: -1},
-	"CantTouchThat":  {category: "Restriction", id: "CantTouchThat", cost: -1},
+	"CantTouchThat":  {category: "Restriction", id: "CantTouchThat", cost: -2},
 	"Grounded":  {category: "Restriction", id: "Grounded", cost: -1},
 
 
@@ -538,6 +538,8 @@ let KDPerkStart = {
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true, undefined, false, undefined, undefined, undefined, true);
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoDress"), 0, true, undefined, false, undefined, undefined, undefined, true);
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoGag"), 0, true, undefined, false, undefined, undefined, undefined, true);
+
+		KDFixPlayerClothes("Fuuka");
 	},
 	Prisoner: () =>{
 		KDGameData.PrisonerState = 'parole';
@@ -612,15 +614,18 @@ let KDPerkStart = {
 	},
 	DollmakerVisor: () =>{
 		KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
+		KDFixPlayerClothes("Dollsmith");
 	},
 	DollmakerMask: () =>{
 		KinkyDungeonAddRestraintIfWeaker("DollmakerMask", 5, true, "Gold", false, undefined, undefined, undefined, true);
+		KDFixPlayerClothes("Dollsmith");
 	},
 	StartCyberDoll: () =>{
 		KDAddQuest("EscapedDoll");
 		KinkyDungeonChangeRep("Metal", 10);
 
 		KDCustomDefeatUniforms.CyberDoll();
+		KDFixPlayerClothes("AncientRobot");
 	},
 	StartMaid: () =>{
 		KDAddQuest("MaidSweeper");
@@ -628,11 +633,13 @@ let KDPerkStart = {
 		KDCustomDefeatUniforms.MaidSweeper();
 
 		KinkyDungeonInventoryAddLoose("DusterGag");
+		KDFixPlayerClothes("Maidforce");
 	},
 	StartWolfgirl: () =>{
 		KDChangeFactionRelation("Player", "Nevermere", 0.2 - KDFactionRelation("Player", "Nevermere"), true);
 		KDCustomDefeatUniforms.WolfgirlHunters();
 		KDAddQuest("WolfgirlHunters");
+		KDFixPlayerClothes("Nevermere");
 	},
 	StartObsidian: () =>{
 		KDChangeFactionRelation("Player", "Elemental", 0.2 - KDFactionRelation("Player", "Elemental"), true);
@@ -640,6 +647,7 @@ let KDPerkStart = {
 		KDAddQuest("ElementalSlave");
 		KDCustomDefeatUniforms.ElementalSlave();
 
+		KDFixPlayerClothes("Elemental");
 	},
 	Hogtied: () =>{
 		KDAddQuest("Nawashi");
@@ -1031,7 +1039,7 @@ function KDGetPerkShrineBondage(perks) {
 		theme = randTheme();
 
 		let getRestraints = () => {
-			let restraints = []
+			let restraints = [];
 			for (let i = 0; i < 11; i++) {
 				if (restraints.length == 0) {
 					if (i > 0)
@@ -1040,7 +1048,7 @@ function KDGetPerkShrineBondage(perks) {
 						true, "Gold");
 					restraints = restraints.filter((r) => {
 						return !ret.includes(r.restraint.name);
-					})
+					});
 				} else break;
 			}
 			return restraints;

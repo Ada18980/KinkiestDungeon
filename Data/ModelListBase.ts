@@ -434,5 +434,11 @@ AddModel({
 			EraseInvariant: true,
 			EraseMorph: {EncaseTorsoLower: "Encase"},
 		},
+		{ Name: "Nipples", Layer: "Nipples", Pri: 0,
+			HideWhenOverridden: true,
+			InheritColor: "Nipples",
+			Invariant: true,
+			HidePoses: {HideNipples: true},
+		},
 	])
 });
