@@ -37,7 +37,7 @@ Russian
 Mods
 模组
 Mods Loaded.
-模组清单
+模组已载入。
 Version
 版本号
 Kinky Dungeon
@@ -47,17 +47,17 @@ By Ada18980
 You are an adventurer descending into an ancient underground city of magic.
 你是一名冒险家，前往了一个古老的地下魔法城市探险。
 Beneath its depths lies the Mistress' Staff, an artifact of untold power.
-在它的深处隐藏着女主人的法杖，这是一件拥有无穷力量的神器
+在它的深处隐藏着女主人的法杖，这是一件拥有无穷力量的神器。
 Will you prevail against forces unknown, or succumb to its dark secrets?
 你会战胜未知的力量，还是屈服于它的黑暗秘密？
 (This game does not contain spiders)
-（本游戏不包含蜘蛛） 
+（本游戏不包含蜘蛛）
 Skip Intro
 跳过序言
 UI: Always Show Warnings
-UI：总是显示警告 
+UI：总是显示警告
 UI: Always Show Minimap
-UI：总是显示小地图 
+UI：总是显示小地图
 Enable Sound
 启用音效
 Clothes: Drool/Tears
