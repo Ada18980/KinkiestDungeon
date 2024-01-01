@@ -1021,7 +1021,7 @@ Teasing vibrations...
 Gentle vibrations...
 温和的震动...
 Mild vibrations...
-明显的震动...
+轻微的震动...
 Strong vibrations!
 强烈的震动！
 Intense vibrations!!
@@ -1197,7 +1197,7 @@ Confirm Reset?
 You come across a black monolith with its face inscribed in runes.
 你会看到一个黑色的石碑，上面刻着符文。
 You study them, but can't come up with an interpretation.
-你尝试研究它们，但无法做出解释。
+你尝试研究它们，但无法提出解释。
 They may still prove useful to future adventurers should you get caught...
 如果你被抓住，它们可能仍然对未来的冒险者有用......
 (Your game has been saved automatically, but you can save the code for later)
@@ -1277,14 +1277,14 @@ Stamina recovers more quickly when you aren't spending it.
 Willpower is restored by food, sleep, and potions. Without willpower, it becomes very difficult to escape.
 意志力通过食物、睡眠和药剂恢复。没有意志力，就很难逃脱。
 Charge is used to power various magic items and weapons.
- 充能用于为各种魔法物品和武器提供能量。
+充能用于为各种魔法物品和武器提供能量。
 WP: CURRENT/MAX
- 意志值: CURRENT/MAX
+意志值: CURRENT/MAX
 Charge: PERCENT
- 充能: PERCENT
+充能: PERCENT
 Use Potion
 使用药水
-MP
+ MP
 魔力
 Go to sleep
 睡觉
@@ -1375,7 +1375,7 @@ Back to main menu
 Load Mod .zip
 加载 Mod .zip
 Delete Mod
- 移除模组
+移除模组
 Clear Perks
 清除词条
 Config 
@@ -1387,7 +1387,7 @@ Filter
 DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
 【警告】加载模组具有危险性，因为其可在你的计算机上肆意执行任何代码。
 Like connecting to a server, etc. Only load mods from a TRUSTED source.
-就如同连接到不可信的服务器一样。请仅仅只加载来源可信赖的模组 。
+就如同连接到不可信的服务器一样。请仅仅只加载来源可信赖的模组。
 Up
 向上
 Down
@@ -1512,7 +1512,7 @@ You can't climb down until you get out of this leash...
 在你摆脱牵绳之前，你不能进入下一层......
 You climb down and find yourself in a strange new place.
 你进入了下一层，发现自己身处在一个陌生的新地方。
-plus XXX
+ plus XXX
 加 XXX
 Graveyard
 墓地
@@ -1797,7 +1797,7 @@ Scroll of Sauntering
 The scroll lets you move your body in swift and accurate ways!
 卷轴让你以快速准确的方式移动你的身体！
 A scroll used by dancers to upgrade their moves.
- 舞者用来开展轻巧动作的卷轴。
+舞者用来开展轻巧动作的卷轴。
 Allows you to cast Leg spells without components for 12 turns.
 允许你在 12 回合内使用需要腿部释放的法术。
 Ancient Key
@@ -1815,29 +1815,29 @@ Power Crystal
 You hold the crystal and the power flows into you.
 你拿着水晶，力量流入到你的体内。
 You're not sure how they charged these...
- 你不知道他们是如何充能的...
+你不知道他们是如何充能的...
 A mysterious device used by the old civilization, powering their ancient devices.
 古老文明使用的神秘装置，为他们古老的装置提供动力。
 You are already full of ancient power.
 你已经充满了远古的力量。
 Spent Power Crystal
- 耗尽的能量水晶
+耗尽的能量水晶
 You touch the spent crystal and it siphons 100 gold from your bag!
- 你触摸耗尽的水晶，它从你的包里吸走了 100 金币！
+你触摸耗尽的水晶，它从你的包里吸走了 100 金币！
 You are not sure how to charge this back up.
 你不知道如何给它们充能。
 A mysterious device used by the old civilization, now depleted.
- 旧文明使用的神秘装置，现已耗尽充能。
+旧文明使用的神秘装置，现已耗尽充能。
 Gold
 金币
 Key
 钥匙
 A key with traces of magic that fades with one use.
- 一把含有些许魔力的普通钥匙，一次使用就会消失。
+一把含有些许魔力的普通钥匙，一次使用就会消失。
 Magic Key
 魔法钥匙
 A glowing key enchanted with magic that fades with one use.
- 一把充盈着发光魔力的魔法钥匙，使用一次就会消失。
+一把充盈着发光魔力的魔法钥匙，使用一次就会消失。
 Can be used to unlock a blue lock.
 可用于解锁蓝色锁。
 A magical key with the power to open blue locks.
@@ -3433,7 +3433,7 @@ The vine plant grips you tightly! (DamageTaken)
 Vine Spitter
 藤蔓喷吐者
 The vine spitter leaks purple juices everywhere as it wilts.
- 藤蔓喷吐者枯萎了，紫色的汁液会泄漏到各处。
+藤蔓喷吐者枯萎了，紫色的汁液会泄漏到各处。
 The vine spitter slaps you with its tendrils! (DamageTaken)
 藤蔓喷吐者用它的卷须打你！（DamageTaken）
 The vine spitter wraps its tendrils around you! (+RestraintAdded)
@@ -3505,7 +3505,7 @@ The encased adventurer moans as she throws herself against you for help! (Damage
 The encased adventurer sticks to you as she mumbles incoherently! (DamageTaken)
 被包裹的冒险家粘在你身上，语无伦次地咕哝着！（DamageTaken）
 The encased adventurer pleads for help as her slime spreads to you! (+RestraintAdded)
- 被困住的冒险家向你寻求帮助，她的粘液蔓延到了你的身上！（+RestraintAdded）
+被困住的冒险家向你寻求帮助，她的粘液蔓延到了你的身上！（+RestraintAdded）
 Slime
 粘液
 The slime melts into a puddle.
@@ -4309,7 +4309,7 @@ You can't hold your knife like this...
 The TargetRestraint is too secure to struggle out.
 TargetRestraint 安全性太高了，无法挣脱。
 You groan in frustration as you realize the TargetRestraint is too tight to escape.
- 你意识到 TargetRestraint 太紧而无法挣脱，你沮丧地呻吟着。
+你意识到 TargetRestraint 太紧而无法挣脱，你沮丧地呻吟着。
 The TargetRestraint tightens itself as you try to squeeze out!
 TargetRestraint 会在你尝试挣脱时自动收紧！
 You will need someone's help to squeeze out of the TargetRestraint.
@@ -9595,7 +9595,7 @@ Ancient Blindfold
 A full-blackout mask. When powered, it negates accuracy penalties due to vision, boosts accuracy by +100%, and boosts melee damage by +10.
 完全遮光的面具。充能后，它可以消除视觉造成的精准度损失，将精准度提高 +100%，并将近战伤害提高 +10。
 'Mask of the Warrior'
-《战士的眼罩》
+《战士的面罩》
 You tug at the mask but it won't come off. It's molded so close to your face that no light shines through!
 你拉扯面具，但它不会脱落。它的模制非常贴近你的脸，没有光线透过！
 Ancient Muzzle
