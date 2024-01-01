@@ -1,7 +1,7 @@
 By Strait-Laced Games
 由 Strait-Laced Games 呈现
 Credits
-制作者
+贡献者
 Patrons
 赞助者
 News and Updates
@@ -47,7 +47,7 @@ By Ada18980
 You are an adventurer descending into an ancient underground city of magic.
 你是一名冒险家，前往了一个古老的地下魔法城市探险。
 Beneath its depths lies the Mistress' Staff, an artifact of untold power.
-在它的深处隐藏着女城主的法杖，这是一件拥有无穷力量的神器
+在它的深处隐藏着女主人的法杖，这是一件拥有无穷力量的神器
 Will you prevail against forces unknown, or succumb to its dark secrets?
 你会战胜未知的力量，还是屈服于它的黑暗秘密？
 (This game does not contain spiders)
@@ -117,7 +117,7 @@ Clothes: Simple Color Picker
 UI: Center Player
 UI：玩家为中心
 UI: Draw Buffs on Side
-在屏幕一侧绘制增益效果
+UI: 在屏幕一侧绘制增益效果
 UI: Show Trajectory on Auto-Path
 UI：预览自动路径轨迹
 UI: Show Player Facing
@@ -8883,7 +8883,7 @@ Bellows
 (Pg. 25 from Catherine Willows' journal) ...They make a crucial mistake: The treasure chests aren't trapped. Rather, they are full of gold. And we know that gold is pleasing to the gods: our economy runs on it, and the gods only make interventions in our day-to-day affairs because we give them gold. Lesser gods, known as spirits, also love gold, but unlike the gods we know, these lesser spirits cannot consume gold on an altar in one fell swoop like the gods can. Therefore, they need to physically inhabit the place where the gold sits, slowly draining it of its pleasing essence.
 （凯瑟琳·威洛斯（Catherine Willows）日记第 25 页）......他们犯了一个重大错误：宝箱没有被困住。相反，它们充满了黄金。而且我们知道黄金是神所喜悦的：我们的经济在它上面运行，神只干预我们的日常事务，因为我们给了他们黄金。被称为精灵的小神也喜欢黄金，但与我们所知道的神不同的是，这些小精灵不能像众神一样一举消耗祭坛上的黄金。因此，他们需要实际居住在黄金所在的地方，慢慢地抽干它令人愉悦的本质。
 (Pg. 26 from Catherine Willows' journal) So the question is not 'why did somebody lay these traps.' The answer is that they are not traps at all. I surmise that the upper floors were once a place of offering for the dead. And when the old civilization perished and the entire complex sank into the ground, there was no longer anyone to drive the spirits away and keep them from inhabiting the upstairs. As for why there are so many restraints in general rather than your typical sort of spirits... well we know what the Mistress surrounded herself with.
-（凯瑟琳·威洛斯（Catherine Willows）日记第 26 页）因此，问题不是 '为什么有人要设置这些陷阱'。 答案是它们根本不是陷阱。我推测楼上曾经是祭祀死者的地方。当旧文明消亡，整个建筑群沉入地下时，就不再有人驱赶鬼魂，阻止它们居住在楼上。至于为什么会有这么多的束缚，而不是你典型的那种精神……我们知道女主人周围是什么。
+（凯瑟琳·威洛斯（Catherine Willows）日记第 26 页）因此，问题不是 '为什么有人要设置这些陷阱'。答案是它们根本不是陷阱。我推测楼上曾经是祭祀死者的地方。当旧文明消亡，整个建筑群沉入地下时，就不再有人驱赶鬼魂，阻止它们居住在楼上。至于为什么会有这么多的束缚，而不是你典型的那种精神……我们知道女主人周围是什么。
 (The note starts with a drawing of a witch with many chains hanging from her body) She can block melee attacks with her chains. However, they conduct lightning and heat directly to her body, and I was able to take out her chains with bolt cutters.
 （笔记开始于一个女巫的图画，她身上挂着许多锁链）她可以用她的锁链阻挡近战攻击。但是，它们将闪电和热量直接传导到她的身体，我能够用断线钳将她的锁链取出。
 (The note starts with a drawing of a witch with lightning crackling from her fingertips) Water will cause her to short-circuit. I can't seem to hit her with lightning, though. She always redirects it.
