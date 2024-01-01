@@ -965,6 +965,8 @@ function KinkyDungeonBar(x, y, w, h, value, foreground = "#66FF66", background =
 function KinkyDungeonBarTo(canvas, x, y, w, h, value, foreground = "#66FF66", background = "#ff0000", orig = undefined, origColor = "#ff4444", notches = undefined, notchcolor = "#ffffff", notchbg = "#ffffff", zIndex = 55) {
 	if (value < 0) value = 0;
 	if (value > 100) value = 100;
+	let reverse = w < 0;
+	if (w < 0) w *= -1;
 	let id = x + "," + y + "," + w + "," + h + foreground;
 	if (background != "none")
 		FillRectKD(canvas, kdpixisprites, id + '1', {
@@ -977,7 +979,7 @@ function KinkyDungeonBarTo(canvas, x, y, w, h, value, foreground = "#66FF66", ba
 			zIndex: zIndex+value*0.0001,
 		});
 	FillRectKD(canvas, kdpixisprites, id + '2', {
-		Left: x + 2,
+		Left: reverse ? x - 2 + w - Math.floor((w - 4) * value / 100) : x + 2,
 		Top: y + 2,
 		Width: Math.floor((w - 4) * value / 100),
 		Height: h - 4,
@@ -987,7 +989,7 @@ function KinkyDungeonBarTo(canvas, x, y, w, h, value, foreground = "#66FF66", ba
 	});
 	if (background != "none")
 		FillRectKD(canvas, kdpixisprites, id + '3', {
-			Left: Math.floor(x + 2 + (w - 4) * value / 100),
+			Left: reverse ? x + 2 : Math.floor(x + 2 + (w - 4) * value / 100),
 			Top: y + 2,
 			Width: Math.floor((w - 4) * (100 - value) / 100),
 			Height: h - 4,
@@ -997,7 +999,10 @@ function KinkyDungeonBarTo(canvas, x, y, w, h, value, foreground = "#66FF66", ba
 		});
 	if (orig != undefined)
 		FillRectKD(canvas, kdpixisprites, id + '4', {
-			Left: Math.min(
+			Left: reverse ? Math.max(
+				Math.floor(x - 2 + w - (w - 4) * orig / 100),
+				Math.floor(x - 2 + w - (w - 4) * value / 100)
+			) : Math.min(
 				Math.floor(x + 2 + (w - 4) * orig / 100),
 				Math.floor(x + 2 + (w - 4) * value / 100)
 			),
@@ -1012,7 +1017,8 @@ function KinkyDungeonBarTo(canvas, x, y, w, h, value, foreground = "#66FF66", ba
 		for (let n of notches) {
 			if (n > 0 && n < 1) {
 				FillRectKD(canvas, kdpixisprites, id + '5' + n, {
-					Left: x + Math.floor((w - 4) * n) - 1,
+					Left: reverse ? x - 4 + w - Math.floor((w - 4) * n) - 1
+						: x + Math.floor((w - 4) * n) - 1,
 					Top: y + 2,
 					Width: 3,
 					Height: h - h,
@@ -1021,7 +1027,8 @@ function KinkyDungeonBarTo(canvas, x, y, w, h, value, foreground = "#66FF66", ba
 					zIndex: zIndex + .4,
 				});
 				FillRectKD(canvas, kdpixisprites, id + '6' + n, {
-					Left: x + Math.floor((w - 4) * n),
+					Left: reverse ? x - 4 + w - Math.floor((w - 4) * n)
+						: x + Math.floor((w - 4) * n),
 					Top: y + 2,
 					Width: 1,
 					Height: h - 4,
@@ -4041,7 +4048,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								enemy == KinkyDungeonJailGuard() || enemy != KinkyDungeonLeashingEnemy() || KDEnemyHasFlag(enemy, "blocked"), KDEnemyHasFlag(enemy, "blocked"),
 								enemy == KinkyDungeonLeashingEnemy() || AIData.ignoreLocks, AIData.MovableTiles,
 								undefined, undefined, undefined, enemy, enemy != KinkyDungeonJailGuard() && enemy != KinkyDungeonLeashingEnemy() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
-							KinkyDungeonSetEnemyFlag(enemy, "genpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 1 : 100);
+							KinkyDungeonSetEnemyFlag(enemy, "genpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 1 : (KinkyDungeonTilesGet(enemy.x + ',' + enemy.y)?.OffLimits ? 2 + Math.floor(KDRandom() * 4) : 10 + Math.floor(KDRandom() * 30)));
 						}
 						if (enemy.path) {
 							if (enemy.path && enemy.path.length > 0 && Math.max(Math.abs(enemy.path[0].x - enemy.x),Math.abs(enemy.path[0].y - enemy.y)) < 1.5) {
@@ -4109,6 +4116,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 									if (newPoint) {
 										enemy.gx = newPoint.x;
 										enemy.gy = newPoint.y;
+										KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
 									}
 								}
 								KinkyDungeonSetEnemyFlag(enemy, "wander", AIType.wanderDelay_long(enemy) || 50);
@@ -4127,6 +4135,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 										if (AIData.master && KDRandom() < masterCloseness) {
 											ex = AIData.master.x;
 											ey = AIData.master.y;
+											KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
 										} else if (KDRandom() < cohesion) {
 											let minDist = enemy.Enemy.cohesionRange ? enemy.Enemy.cohesionRange : AIData.visionRadius;
 											let ent = KDNearbyEnemies(enemy.x, enemy.y, minDist);
@@ -4147,6 +4156,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 													if (ePoint) {
 														ex = ePoint.x;
 														ey = ePoint.y;
+														KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
 													}
 												}
 											}
@@ -4156,6 +4166,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 											if (!AIType.strictwander || KinkyDungeonCheckPath(enemy.x, enemy.y, newPoint.x, newPoint.y)) {
 												enemy.gx = newPoint.x;
 												enemy.gy = newPoint.y;
+												KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
 											}
 										}
 									}

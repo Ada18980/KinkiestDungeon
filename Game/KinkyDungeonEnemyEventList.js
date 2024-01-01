@@ -315,7 +315,7 @@ let KDIntentEvents = {
 					}
 				} else {
 					// Bring back!
-					if (AIData?.playerDist < 5.5) {
+					if (AIData?.playerDist < 7.5) {
 						if (enemy.playWithPlayer < 10 && !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
 							enemy.playWithPlayer = 10;
 						}// else enemy.playWithPlayer += delta;
@@ -351,6 +351,7 @@ let KDIntentEvents = {
 						KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 						KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
 						if (enemy.idle) {
+							KDResetGuardSpawnTimer();
 							let newPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]) || KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
 							if (newPoint) {
 								enemy.gx = newPoint.x;
@@ -366,7 +367,25 @@ let KDIntentEvents = {
 										if (!playerInCell) {
 											let point = {x: nearestJail.x, y: nearestJail.y};//KinkyDungeonGetNearbyPoint(nearestJail.x, nearestJail.y, true, undefined, true);
 											if (point) {
+												let lastx = KinkyDungeonPlayerEntity.x;
+												let lasty = KinkyDungeonPlayerEntity.y;
 												KDMovePlayer(point.x, point.y, false);
+												KDMoveEntity(enemy, lastx, lasty, true);
+												let newPoint2 = KinkyDungeonGetRandomEnemyPoint(true,
+													false, enemy);
+												if (newPoint2) {
+													enemy.path = undefined;
+													KinkyDungeonSetEnemyFlag(enemy, "blocked", 24);
+													KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
+													enemy.gx = newPoint2.x;
+													enemy.gy = newPoint2.y;
+												} else {
+													enemy.path = undefined;
+													KinkyDungeonSetEnemyFlag(enemy, "blocked", 24);
+													KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
+													enemy.gx = KDMapData.EndPosition.x;
+													enemy.gy = KDMapData.EndPosition.y;
+												}
 											}
 										}
 										KDBreakTether(KinkyDungeonPlayerEntity);
@@ -419,6 +438,7 @@ let KDIntentEvents = {
 					KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 					KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
 					if (enemy.idle) {
+						KDResetGuardSpawnTimer();
 						if (KDRandom() < 0.33) {
 							let newPoint = KinkyDungeonGetRandomEnemyPoint(false,
 								enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");

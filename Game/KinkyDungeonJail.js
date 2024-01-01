@@ -1118,7 +1118,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	}
 	KDGameData.KinkyDungeonPrisonReduction = 0;
 	//let firstTime = KDGameData.KinkyDungeonSpawnJailersMax == 0;
-	KDGameData.GuardSpawnTimer = 4 + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
+	KDResetGuardSpawnTimer();
 	KDGameData.KinkyDungeonSpawnJailersMax = 2;
 	KDGameData.KinkyDungeonSpawnJailersMax += Math.round(6 * (KDGetEffSecurityLevel(undefined, true) + 50)/100);
 	//let securityBoost = (firstTime) ? 0 : Math.max(2, Math.ceil(4 * (KDGameData.KinkyDungeonSpawnJailersMax - KDGameData.KinkyDungeonSpawnJailers + 1)/KDGameData.KinkyDungeonSpawnJailersMax));
@@ -1581,4 +1581,8 @@ function KDFixPlayerClothes(faction) {
 	for (let inv of KinkyDungeonAllRestraintDynamic()) {
 		inv.item.faction = faction;
 	}
+}
+
+function KDResetGuardSpawnTimer() {
+	KDGameData.GuardSpawnTimer = 4 + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
 }
