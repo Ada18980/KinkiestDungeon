@@ -320,7 +320,27 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 
 	}
 	if (Loot.spell) {
-		KinkyDungeonSpells.push(KinkyDungeonFindSpell(Loot.spell, true));
+		let spell = KinkyDungeonFindSpell(Loot.spell, true);
+		KinkyDungeonSpells.push(spell);
+		if (spell.autoLearn) {
+			for (let sp of spell.autoLearn) {
+				if (KinkyDungeonSpellIndex(sp) < 0) {
+					KinkyDungeonSpells.push(KinkyDungeonFindSpell(sp, true));
+					KDSendStatus('learnspell', sp);
+				}
+			}
+		}
+		if (spell.learnFlags) {
+			for (let sp of spell.learnFlags) {
+				KinkyDungeonFlags.set(sp, -1);
+			}
+		}
+
+		if (spell.learnPage) {
+			for (let sp of spell.learnPage) {
+				KDAddSpellPage(sp, KDSpellColumns[sp] || []);
+			}
+		}
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("SpellLearned", TextGet("KinkyDungeonSpell" + Loot.spell));
 	}

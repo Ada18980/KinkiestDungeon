@@ -367,7 +367,7 @@ function KinkyDungeonInterruptSleep() {
 }
 
 let KDBaseDamageTypes = {
-	knockbackTypes: ["fire", "electric", "shock", "tickle", "cold", "slash", "grope", "pierce"],
+	knockbackTypes: ["fire", "electric", "shock", "tickle", "cold", "slash", "grope", "pierce", "soul", "charm"],
 	knockbackTypesStrong: ["blast", "crush", "acid", "plush", "poison", "pain", "arcane"],
 	arouseTypes: ["grope", "plush", "charm", "happygas"],
 	bypassTeaseTypes: ["charm", "happygas"],
