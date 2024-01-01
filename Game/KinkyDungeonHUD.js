@@ -1290,7 +1290,9 @@ function KinkyDungeonDrawActionBar(x, y) {
 
 	// Door button
 	if (DrawButtonKDEx("toggleDoor", (bdata) => {
-		KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor;
+		if (KinkyDungeonStatsChoice.get("Doorknobs") && KinkyDungeonIsArmsBound(true) && KinkyDungeonIsHandsBound(true, true, 0.5))
+			KinkyDungeonSendTextMessage(8, TextGet("KDCantCloseDoor"), "#ff8800", 2);
+		else KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor;
 		return true;
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, actionbarHeight,
 	"", "", KinkyDungeonRootDirectory + (KinkyDungeonToggleAutoDoor ? "UI/DoorClose.png" : "UI/Door.png"),
@@ -1982,13 +1984,14 @@ function KDDrawPartyMembers(PartyX, PartyY, tooltips) {
 	if (KDGameData.Party && KinkyDungeonDrawState == "Game") {
 		let PartyDy = 72;
 		let PartyPad = 8;
+		let zIndex = KDToggleShowAllBuffs ? 149 : 152;
 
 		for (let i = 0; i < KDGameData.Party.length; i++) {
 			let PM = KinkyDungeonFindID(KDGameData.Party[i].id);
 			if (PM) {
-				KDDrawEnemySprite(kdstatusboard, PM, PartyX/KinkyDungeonGridSizeDisplay, PartyY/KinkyDungeonGridSizeDisplay, 0, 0, true, 110, "PM");
+				KDDrawEnemySprite(kdstatusboard, PM, PartyX/KinkyDungeonGridSizeDisplay, PartyY/KinkyDungeonGridSizeDisplay, 0, 0, true, zIndex, "PM");
 				KinkyDungeonBarTo(kdstatusboard, PartyX, PartyY,
-					PartyDy, 10, PM.visual_hp / PM.Enemy.maxhp * 100, "#88ff88", "#ff5555", undefined, undefined, undefined, undefined, undefined, 111);
+					PartyDy, 10, PM.visual_hp / PM.Enemy.maxhp * 100, "#88ff88", "#ff5555", undefined, undefined, undefined, undefined, undefined, zIndex + 0.05);
 
 				let selected = (PM.buffs?.AllySelect?.duration > 0);
 
@@ -1996,31 +1999,79 @@ function KDDrawPartyMembers(PartyX, PartyY, tooltips) {
 					KDSendInput("select", {enemy: PM});
 					return true;
 				}, true, PartyX, PartyY, PartyDy, PartyDy, "", KDButtonColor, undefined, undefined, false, !selected,
-				"#000000", undefined, undefined, {zIndex: 109,});
+				"#000000", undefined, undefined, {zIndex: zIndex - 0.1,});
 
 				if (selected) {
 					DrawButtonKDExTo(kdstatusboard, "PM" + i + "remove", (bdata) => {
 						KDSendInput("cancelParty", {enemy: PM});
 						return true;
 					}, true, PartyX + 170, PartyY, 38, 38, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/X.png", undefined, false, false,
-					"#000000", undefined, undefined, {zIndex: 109,});
+					"#000000", undefined, undefined, {zIndex: zIndex,});
 					DrawButtonKDExTo(kdstatusboard, "PM" + i + "come", (bdata) => {
 						KDSendInput("onMe", {enemy: PM, player: KinkyDungeonPlayerEntity});
 						return true;
 					}, true, PartyX + 90, PartyY, 38, 38, "", KDButtonColor, KinkyDungeonRootDirectory + ((!KDEnemyHasFlag(PM, "NoFollow")) ? "UI/Recall.png" : "UI/Disperse.png"), undefined, false, false,
-					"#000000", undefined, undefined, {zIndex: 109,});
+					"#000000", undefined, undefined, {zIndex: zIndex,});
 
 					DrawButtonKDExTo(kdstatusboard, "PM" + i + "choose", (bdata) => {
 						KDSendInput("selectOnly", {enemy: PM});
 						return true;
 					}, true, PartyX + 130, PartyY, 38, 38, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Select.png", undefined, false, false,
-					"#000000", undefined, undefined, {zIndex: 109,});
+					"#000000", undefined, undefined, {zIndex: zIndex,});
 				}
 
 				if (MouseIn(PartyX, PartyY, PartyDy, PartyDy)) {
 					tooltips.push((offset) => KDDrawEnemyTooltip(PM, offset));
 				}
 
+			} else {
+				PM = KDGameData.Party[i];
+				KDDrawEnemySprite(kdstatusboard, PM, PartyX/KinkyDungeonGridSizeDisplay, PartyY/KinkyDungeonGridSizeDisplay, 0, 0, true, zIndex, "PM");
+				KDDraw(kdstatusboard, kdpixisprites, "pmFailFind" + PM.id, KinkyDungeonRootDirectory + "Spells/SpellFail.png",
+					PartyX, PartyY, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+						zIndex: zIndex + 0.1,
+						alpha: 0.5,
+					},
+				);
+				KinkyDungeonBarTo(kdstatusboard, PartyX, PartyY,
+					PartyDy, 10, PM.visual_hp / PM.Enemy.maxhp * 100, "#88ff88", "#ff5555", undefined, undefined, undefined, undefined, undefined, zIndex + 0.05);
+
+				let selected = (PM.buffs?.AllySelect?.duration > 0);
+
+				DrawButtonKDExTo(kdstatusboard, "PM" + i + "click", (bdata) => {
+					KDSendInput("select", {enemy: PM});
+					return true;
+				}, true, PartyX, PartyY, PartyDy, PartyDy, "", KDButtonColor, undefined, undefined, false, !selected,
+				"#000000", undefined, undefined, {zIndex: zIndex - 0.1,});
+
+				if (selected) {
+					DrawButtonKDExTo(kdstatusboard, "PM" + i + "remove", (bdata) => {
+						KDSendInput("cancelParty", {enemy: PM});
+						return true;
+					}, true, PartyX + 170, PartyY, 38, 38, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/X.png", undefined, false, false,
+					"#000000", undefined, undefined, {zIndex: zIndex,});
+
+				}
+
+				if (MouseIn(PartyX, PartyY, PartyDy, PartyDy)) {
+					tooltips.push((offset) => KDDrawEnemyTooltip(PM, offset));
+				}
+			}
+			if (PM) {
+				FillRectKD(
+					kdstatusboard,
+					kdpixisprites,
+					"bgPM" + PM.id,
+					{
+						Left: PartyX,
+						Top: PartyY,
+						Width: KinkyDungeonGridSizeDisplay,
+						Height: KinkyDungeonGridSizeDisplay,
+						Color: "#000000",
+						alpha: 0.9,
+						zIndex: zIndex - 0.1,
+					}
+				);
 			}
 			PartyY += PartyDy + PartyPad;
 		}
@@ -2106,7 +2157,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 			text: TextGet("StatEvasion")
 				.replace("Percent", ("") + Math.round((1 - evasion) * 100))
 				.replace("EVASIONSUM", ("") + Math.round((KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion")) * 100))
-				.replace("EVASIONPENALTY", ("") + Math.round((1 - KinkyDungeonMultiplicativeStat(KDPlayerEvasionPenalty())) * -100)),
+				.replace("EVASIONPENALTY", ("") + Math.round(KDPlayerEvasionPenalty() * -100)),
 			count: ("") + Math.round((1 - evasion) * 100) + "%",
 			icon: "infoEvasion",
 			countcolor: evasion < 1 ? "#65d45d" : (evasion == 1 ? "#ffffff" : "#ff5555"),
@@ -2116,7 +2167,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 			text: TextGet("StatBlock")
 				.replace("Percent", ("") + Math.round((1 - block) * 100))
 				.replace("BLOCKSUM", ("") + Math.round((KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block")) * 100))
-				.replace("BLOCKPENALTY", ("") + Math.round((1 - KinkyDungeonMultiplicativeStat(KDPlayerBlockPenalty())) * -100)),
+				.replace("BLOCKPENALTY", ("") + Math.round(KDPlayerBlockPenalty() * -100)),
 			count: ("") + Math.round((1 - block) * 100) + "%",
 			icon: "infoBlock",
 			countcolor: block < 1 ? "#65d45d" : (block == 1 ? "#ffffff" : "#ff5555"),
@@ -2551,8 +2602,8 @@ function KDDrawBuffIcons(minXX, minYY, statsDraw, side) {
 		currCategory = stat.category;
 
 		if (stat.count)
-			DrawTextFitKD(stat.count, XX + spriteSize/2, YY + spriteSize/2 - 10, textWidth, stat.countcolor || "#ffffff", "#000000",
-				16, undefined, 114, 0.8, 5);
+			DrawTextFitKDTo(kdstatusboard, stat.count, XX + spriteSize/2, YY + spriteSize/2 - 10, textWidth, stat.countcolor || "#ffffff", "#000000",
+				16, undefined, 151.1, undefined, 5);
 
 		if (!tooltip && MouseIn(XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize)) {
 			DrawTextFitKD(stat.text, side ? XX + 100 : minXX, side ? YY : tooltipY, 1000, stat.color, "#000000", 22, "left", 160, 1.0, 8);

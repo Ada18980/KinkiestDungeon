@@ -30,8 +30,8 @@ let bosses = {
 	"Dollmaker": {
 		boss: "Dollmaker",
 		bossroom: true,
-		jailType: "dollsmith",
-		guardType: "dollsmith",
+		jailType: "Dollsmith",
+		guardType: "Dollsmith",
 		width: 21,
 		height: 21,
 		setpieces: {

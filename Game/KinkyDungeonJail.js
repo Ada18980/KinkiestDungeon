@@ -214,7 +214,7 @@ function KinkyDungeonAggroAction(action, data) {
 				KinkyDungeonStartChase(e, "Chest");
 			}
 			if (data.faction) {
-				KinkyDungeonAggroFaction(data.faction, false, 2);
+				KinkyDungeonAggroFaction(data.faction, false, 4);
 
 			}
 			break;
@@ -599,7 +599,7 @@ function KinkyDungeonHandleJailSpawns(delta) {
 	}
 	if (KDGameData.GuardSpawnTimerMax == undefined) {
 		// Fix the save file
-		
+
 		KDGameData.JailGuard = 0;
 		KDGameData.GuardSpawnTimer = 0;
 		KDGameData.GuardSpawnTimerMax = 80;
@@ -848,7 +848,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 
 function KDGetEffSecurityLevel(faction, Cap) {
 	if (!faction) faction = KDGetMainFaction();
-	let basemod = 
+	let basemod =
 		(KinkyDungeonStatsChoice.get("NoWayOut") ? 10 : 0)
 		+ (KinkyDungeonStatsChoice.get("KinkyPrison") ? 10 : 0)
 		+ (KinkyDungeonStatsChoice.get("TightRestraints") ? 10 : 0);
@@ -1165,7 +1165,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 		if (leashEnemy && (KDFactionProperties[KDGetFaction(leashEnemy)] || KDFactionProperties[KDGetFactionOriginal(leashEnemy)])) {
 			if (KDFactionProperties[KDGetFaction(leashEnemy)])
 				forceFaction = KDGetFaction(leashEnemy);
-			else 
+			else
 				forceFaction = KDGetFactionOriginal(leashEnemy);
 		}
 		KinkyDungeonCreateMap(params, "Jail", "", MiniGameKinkyDungeonLevel, undefined, undefined, forceFaction, undefined, undefined, "");
@@ -1461,7 +1461,7 @@ let KDCustomDefeats = {
 		KDCustomDefeatUniforms.ElementalSlave();
 	},
 
-	
+
 	RopeDojo: (enemy) => {
 		KinkyDungeonPassOut(false);
 		KDCustomDefeatUniforms.RopeDojo();

@@ -344,6 +344,14 @@
 	"spriteSourceSize": {"x":67,"y":69,"w":83,"h":79},
 	"sourceSize": {"w":216,"h":216}
 },
+"Game/Bullets/FlashbangHit.png":
+{
+	"frame": {"x":1692,"y":1410,"w":216,"h":216},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":216,"h":216},
+	"sourceSize": {"w":216,"h":216}
+},
 "Game/Bullets/FlashBombHit.png":
 {
 	"frame": {"x":1692,"y":1410,"w":216,"h":216},
@@ -1320,6 +1328,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game2.json", "game3.json", "game4.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:12c3ede39e3692d0e29183e449ada3cb:61ddeb347e23766428a4438f8b76bb00:701e665c5fc69e47e58c28f8fa547b2b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:849e7f44420d75c306b63978f4862680:44af4e1db218169f4d89c95776688de2:701e665c5fc69e47e58c28f8fa547b2b$"
 }
 }

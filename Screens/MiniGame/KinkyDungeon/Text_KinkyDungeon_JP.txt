@@ -132,6 +132,14 @@ UI: Show Player Facing
 UI:Show Player Facing
 UI: Show more learnable spells
 UI:習得可能な魔法を全て表示する
+UI: Hide Player Buff Auras
+UI:プレイヤーのオーラを隠す
+UI: Hide Enemy Buff Auras
+UI:敵のオーラを隠す
+UI: Show Spell Range
+UI:魔法の有効範囲を表示
+
+
 
 Helpless!
 逃げられない！
@@ -570,6 +578,15 @@ Nowhere is Safe
 Beds and furniture are often trapped.
 ベッドや樽等の家具に罠が混じるようになる
 
+Bullet Hell
+シューティング
+Hides warning lines for non-AoE bullets and projectiles.
+範囲攻撃以外の遠距離攻撃の警告線が表示されなくなる
+Bullet Armageddon
+弾幕シューティング
+Hides warning lines for AoE spells, bullets, and projectiles.
+範囲攻撃と遠距離攻撃の警告線が表示されなくなる
+
 I have... needs
 ちょっと……ほしい
 Distraction builds up over time.
@@ -649,8 +666,8 @@ Taking chain, poison, and crush damage makes you dizzy.
 
 Kinky Prisoner
 変態囚人
-Guards never remove restraints you are already wearing, unless they are applying something tighter.
-収監された際、看守がより高度な拘束具を所持している場合を除き、拘束具を交換されなくなる
+Guards won't remove restraints unless they have something tighter. +10 Security level.
+収監された際、看守がより高度な拘束具を所持している場合を除き、拘束具を交換されなくなる。手配度+10
 
 Unfair Doors
 不公平な扉
@@ -1108,8 +1125,8 @@ You deal PERCENT more DAMAGETYPE damage.
 DAMAGETYPE のダメージが PERCENT 増加する
 Your bindings are PERCENT more effective.
 拘束は PERCENT 効果的
-Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage.
-攻撃は DAMAGEDEALT DAMAGETYPE の基本ダメージを与える
+Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
+攻撃は DAMAGEDEALT DAMAGETYPE の基本ダメージを与え、 STMNA のスタミナを消費する。
 Plugged!
 挿入されている！
 Plugged up!!!
@@ -1266,9 +1283,9 @@ Spell Dance: You can cast leg spells while tied up.
 Bondage Buster: Lazor is charging...
 ボンデージバスター：エネルギー充填中……
 Katana: Patience is key...
-刀：耐え難きを耐え……
+刀：虎視眈々
 Stormbreaker: You have the Power.
-ストームブレイカー: 大いなる力
+ストームブリンガー: 大いなる力
 Game Setup:
 ゲームのセットアップ:
 Beginner: Get a save code every 3 levels, autosave after each floor
@@ -1347,8 +1364,15 @@ Missing key
 鍵がない
 Chance for a spell to fizzle:
 詠唱失敗率:
-Dodge Chance: Percent%, based on EVASIONSUM Evasion, -EVASIONPENALTY penalty from bindings
-回避率: Percent%、EVASIONSUM に基づく、バインディングからの -EVASIONPENALTY ペナルティ
+Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
+回避率: Percent%。基礎回避率 EVASIONSUM に EVASIONPENALTY% のペナルティを受けている。
+
+Chance to resist a level 10 restraint: AMNT1%, based on AMNT2 Bondage Resist and RESBLKPENALTY penalty.
+レベル10の拘束を封じる確率:AMNT1%。基礎拘束回避率 AMNT2 に RESBLKPENALTY のペナルティを受けている。
+
+Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
+ブロック率： Percent%。基礎ブロック率 BLOCKSUM に BLOCKPENALTY% のペナルティを受けている。
+
 Chance to block a level 10 restraint: Percent%
 レベル10の拘束を封じる確率:%
 Sight Range: RADIUS
@@ -1977,8 +2001,8 @@ Magic Knife
 魔法のナイフ
 A magical blade, suitable against ghosts.
 霊体を切るのに適した魔法のナイフ。
-Deals shadow damage. Can cut enchanted ropes.
-影属性のダメージを与える。魔法のロープを切断することができる。
+Deals shadow damage. Can cut enchanted ropes. Offhand: Increase base crit of all magic damage by 20%
+影属性のダメージを与える。魔法のロープを切断することができる。オフハンド：魔法の会心ダメージ倍率+20%。
 Bola
 投げ縄
 A pair of weights attached to a rope. Can be thrown.
@@ -2052,9 +2076,9 @@ Restores 25% willpower instantly. Can be used while gagged.
 Frigid Potion
 冷静のポーション
 You chug the concoction and your senses numb, helping you concentrate.
-飲むと頭がスッキリする。
-A freezing cold bottle with a bitter scent.
-苦い香りの凍えるような冷たいポーション。
+飲むと頭がスッキリし、集中力が高まる。
+Like bottled snow. Helps to get your mind on track.
+瓶詰めの雪のよう。集中力を高めるのに役立つ。
 Reduces distraction to 0 and grants additional decay for 50 turns. Can be used while gagged.
 興奮値を0にする。50ターンの間、興奮値の上昇を抑制する。猿轡かませた状態でも使用可能。
 Smoke Bomb
@@ -2169,26 +2193,26 @@ Staff of Incineration
 焼却の杖
 A magical weapon made for intermediates to use.
 中級者向けに作られた魔法の武器。
-+25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn.
-火属性。火属性のダメージが25%増加する。燃えている敵は、ターン経過時に5ポイントのダメージを受ける。
++25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn. Offhand: Applies %fire damage bonus.
+火属性。火属性のダメージが25%増加する。燃えている敵は、ターン経過時に5ポイントのダメージを受ける。オフハンド：火属性ダメージが20%増加する。
 Staff of Storms
 嵐の杖
 A magical weapon made for intermediates to use.
 中級者向けに作られた魔法の武器。
-+20% electric damage. Deals electric damage. Enemies hit by electric damage echo 15 additional Electric damage in a 5x5 area.
-電気属性。電気属性のダメージが20%増加する。電気ダメージを受けた敵は5x5エリア内に15の追加電気ダメージを反射する。
++20% electric damage. Deals electric damage. Enemies hit by electric damage echo 15 additional Electric damage in a 5x5 area. Offhand: Applies electric damage bonus.
+電気属性。電気属性のダメージが20%増加する。電気ダメージを受けた敵は5x5エリア内に15の追加電気ダメージを反射する。オフハンド：電気属性ダメージが20%増加する。
 Staff of Frostbite
 凍傷の杖
 A magical weapon with a 33% chance to freeze the target for 4 turns.
 33%の確率で対象を4ターン凍結させる魔法の武器。
-+20% ice damage. Deals ice damage. Frozen enemies take 5 ice damage per turn.
-氷属性。氷属性のダメージが20%増加する。ターン経過時、凍結した敵は5ダメージを受ける。
++20% ice damage. Deals ice damage. Frozen enemies take 5 ice damage per turn. Offhand: Applies ice damage bonus.
+氷属性。氷属性のダメージが20%増加する。ターン経過時、凍結した敵は5ダメージを受ける。オフハンド：氷属性ダメージが20%増加する。
 Staff of Binding
 束縛の杖
 A magical weapon made to use on novices.
 初心者用に作られた魔法の武器
-+20% chain damage. Deals chain damage and roots the target for 4 turns. 150% binding efficiency.
-チェーン属性のダメージが20%増加し、通常攻撃が命中した時、4ターンの間敵を移動不可状態にする。拘束力が150%増加する。
++20% chain damage. Deals chain damage and roots the target for 4 turns. 150% binding efficiency. Offhand: Applies chain damage bonus.
+チェーン属性のダメージが20%増加し、通常攻撃が命中した時、4ターンの間敵を移動不可状態にする。拘束力が150%増加する。オフハンド：チェーン属性ダメージが20%増加する。
 Arcane Orb
 アルケインオーブ
 Look into my eyes...
@@ -2199,32 +2223,32 @@ Staff of Flame
 炎の杖
 A magical weapon made for novices to use.
 初心者向けに作られた魔法の武器
-+15% fire damage. Deals fire damage.
-火属性。火属性のダメージが15%増加する。
++15% fire damage. Deals fire damage. Offhand: Applies passive bonus.
+火属性。火属性のダメージが15%増加する。オフハンド：火属性ダメージが15%増加する。
 Staff of Slime
 スライムの杖
 A slimy and magical implement..
 ぬるぬるした魔法の道具……
-+10% glue damage. Deals glue damage.
-グルー属性。グルー属性のダメージが10%増加する。
++10% glue damage. Deals glue damage. Offhand: Applies passive bonus.
+グルー属性。グルー属性のダメージが10%増加する。オフハンド：グルー属性ダメージが10%増加する。
 Staff of Shocking
 衝撃の杖
 A magical weapon made for novices to use.
 初心者向けに作られた魔法の武器
-+10% electric damage. Deals electric damage. 10% chance to stun for 3 turns.
-電気属性。電気属性のダメージが10%増加する。命中時に10%の確率で敵をスタン状態にする。
++10% electric damage. Deals electric damage. 10% chance to stun for 3 turns. Offhand: Applies electric damage bonus.
+電気属性。電気属性のダメージが10%増加する。命中時に10%の確率で敵をスタン状態にする。オフハンド：電気属性ダメージが10%増加する。
 Staff of Permafrost
 永久凍土の杖
 A magical weapon with a 15% chance to freeze the target for 4 turns.
 15%の確率で対象を4ターン凍結させる魔法の武器。
-+10% ice damage. Deals ice damage. Multiplies the duration of freeze effects on enemies by 1.5x (min +1 duration)
-氷属性。氷属性のダメージが10%増加する。敵にかかっている凍結効果の持続時間を1.5倍にする (最低+1持続時間)
++10% ice damage. Deals ice damage. Multiplies the duration of freeze effects on enemies by 1.5x (min +1 duration). Offhand: Applies ice damage bonus.
+氷属性。氷属性のダメージが10%増加する。敵にかかっている凍結効果の持続時間を1.5倍にする (最低+1持続時間)オフハンド：氷属性ダメージが10%増加する。
 Staff of Chains
 鎖の杖
 A magical weapon made for novices in the art of bondage.
 束縛術の初心者のために作られた魔法の武器。
-+10% chain damage. Deals chain damage. 150% binding efficiency.
-チェーン属性。チェーン属性のダメージが10%増加する。拘束力が150%増加する。
++10% chain damage. Deals chain damage. 150% binding efficiency. Offhand: Applies chain damage bonus.
+チェーン属性。チェーン属性のダメージが10%増加する。拘束力が150%増加する。オフハンド：チェーン属性ダメージが10%増加する。
 You pick up a staff of binding. You remember these from wizard school...
 束縛の杖を手に入れた。魔法学校で何度も使った覚えがある。
 You pick up a staff of the storm. Your hair stands on end.
@@ -2251,8 +2275,8 @@ Crop
 ムチ
 For those unruly subs.
 しつけのための道具
-Deals pain damage. Highly distracting.
-痛み属性のダメージを与える。興奮値が溜まりやすい。
+Deals pain damage. Highly distracting. Offhand: +5 pain damage on attack for 3 stamina
+痛み属性のダメージを与える。興奮値が溜まりやすい。オフハンド：攻撃時、追加でスタミナを3消費し、5痛み属性ダメージを追加で与える。
 You pick up a riding crop.
 馬用のムチを手に入れた。
 Scissors
@@ -2267,8 +2291,8 @@ Dagger
 ダガー
 Designed with subterfuge in mind.
 不意打ち用の武器。
-Deals slash damage. Deals 55 pierce damage instead on unaware targets.
-斬撃属性。プレイヤーを認識していない敵を攻撃した際、55ポイントの刺突属性ダメージを与える。
+Deals slash damage. Deals 40 pierce damage instead on unaware targets, before crit modifiers. Offhand: +10% Base Weapon Crit
+斬撃属性。プレイヤーを認識していない敵を攻撃した際、40ポイントの刺突属性ダメージを与える。オフハンド：会心率+10%。
 You pick up a dagger.
 ダガーを手に入れた。
 Katana
@@ -2288,13 +2312,13 @@ Deals shadow damage. Damage is doubled against enemies that are in shadow.
 You pick up Shadow's Edge.
 シャドウエッジを手に入れた。
 Stormbreaker
-ストームブレイカー
+ストームブリンガー
 I have the power! Taking electric damage charges you (1 turn/10dmg).
 これが力だ！電気属性のダメージを受けた場合、1ターンに10ダメージ分チャージをする。
 Deals crush damage. Deals bonus electric damage in an area when charged, up to +40.
 打撃属性。チャージしていた場合、電気属性範囲ダメージを与える。最大40ダメージ。
 You pick up Stormbreaker.
-ストームブレイカーを手に入れた。
+ストームブリンガーを手に入れた。
 Rapier
 レイピア
 For the ostentatious and flashy duelist.
@@ -2339,8 +2363,8 @@ Knife
 ナイフ
 A go-to for travelers and adventurers.
 旅行者や冒険家の頼りになる護身武器。
-Deals slash damage.
-斬撃属性。
+Deals slash damage. Offhand: +10 Block
+斬撃属性。オフハンド：ブロック値+10。
 Torch
 松明
 Second only to the mighty towel in usefulness.
@@ -2363,8 +2387,8 @@ Flamberge
 フランベルジェ
 A blade forged in a magical fire.
 魔法の炎で鍛えられた刃
-Deals 20 bonus fire damage on hit.
-命中時、20ポイントの火属性追加ダメージを与える。
+Deals 20 bonus slash damage on hit. Offhand: Produces light.
+命中時、20ポイントの斬撃性追加ダメージを与える。オフハンド：武器が光る。
 Escort Drone
 エスコートドローン
 A semi-autonomous drone with a personal defense beam. Does not require hands to equip.
@@ -2381,14 +2405,24 @@ Feather
 羽根
 A feather useful for tickling.
 くすぐりに便利な羽根
-Deals tickle damage (50% effectiveness vs. non-vulnerable enemies). Distracts enemies.
-くすぐり属性。(弱点ではない敵に対して50%の有効性)敵の興奮値を増加させる。
+Deals tickle damage. Distracts enemies. Offhand: +5 tickle damage on attack for 3 stamina.
+くすぐり属性。敵の興奮値を増加させる。オフハンド：攻撃時、追加でスタミナを3消費し、5くすぐり属性ダメージを追加で与える。
+
+Maid's Feather Duster
+メイドの羽箒
+An instrument used extensively by maidforce agents carrying out their duties.
+メイドフォースのエージェントが任務を遂行する際に多用する道具。
+Deals tickle damage. Distracts enemies. Offhand: +15 distraction on attack for 1 stamina.
+くすぐり属性。敵の興奮値を上昇させる。オフハンド：攻撃時、追加でスタミナを1消費し、敵の興奮値+15。
+You pick up a feather duster.
+羽箒を拾った。
+
 Ice Cube
 アイスキューブ
 A magical cube of ice that never melts. Convenient!
 溶けない魔法の氷。便利！
-Deals 10 ice damage with a 10% chance to freeze for 3 turns.
-10ポイントの氷属性ダメージを与え、10%の確率で3ターン凍結させる。
+Deals 10 ice damage with a 10% chance to freeze for 1 turn. Slows targets on hit. Offhand: Slows the target.
+10ポイントの氷属性ダメージを与え、10%の確率で1ターン凍結させる。オフハンド：攻撃が命中した相手を減速させる。
 Rope
 ロープ
 A kidnapper's most versatile tool.
@@ -2411,14 +2445,14 @@ Metamorphosis
 変身装置
 You can enter slime form for 25 turns, which lets you pass thru bars, +50 Evasion, and deals 25 glue damage when attacked.
 25ターンの間、スライム形態になる。スライム状態では、バーを通り抜けることができ、回避力が50増加し、攻撃されたときにグルーダメージを25与える.
-Deals glue damage. Roots targets for 2 turns on a hit.
-グルー属性。命中時、敵は2ターンの間スタンする。
+Deals glue damage. Roots targets for 2 turns on a hit. Offhand: Roots targets on hit.
+グルー属性。命中時、敵は2ターンの間スタンする。オフハンド：敵を地面に拘束する。
 Four Seasons
 四季の杖
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
 発動すると、次の火、水/氷、風/雷、土の呪文のコストを、属性ごとに1回ずつ50減らす。
-Deals shadow damage. +25% fire, ice, acid, crush, electric, pressure damage.
-影属性。火、氷、酸、打撃、電気、圧力のダメージが25%増加する。
+Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage. Offhand: Applies passive bonus.
+影属性。火、氷、酸、打撃、電気、圧力のダメージが25%増加する。オフハンド：火、氷、酸、打撃、電気、圧力のダメージが25%増加する。
 The Arbiter
 アービター
 I have altered the rules. Pray I do not alter them further.
@@ -5691,14 +5725,14 @@ Duster Gag
 箒ギャグ
 A special gag designed for maids to be useful even while tied up! It's self-locking too!
 拘束されているメイドが掃除できるよう設計された猿轡。自動でロックされる。
-Deals 0.5 tickle damage on attack and adds +30 distraction.
-0.5くすぐり属性ダメージと30の興奮値を与える。
+Deals 0.5 tickle damage on attack and adds +30 distraction. Bonus damage vs dirt and mold.
+0.5くすぐり属性ダメージと30の興奮値を与える。粘菌とホコリに攻撃時、ボーナスを得る。
 Duster Gag
 箒ギャグ
 A special gag designed for maids to be useful even while tied up! It's self-locking too!
 拘束されているメイドが掃除できるよう設計された猿轡。自動でロックされる。
-Deals 0.5 tickle damage on attack and adds +30 distraction.
-0.5くすぐり属性ダメージと30の興奮値を与える。
+Deals 0.5 tickle damage on attack and adds +30 distraction. Bonus damage vs dirt and mold.
+0.5くすぐり属性ダメージと30の興奮値を与える。粘菌とホコリに攻撃時、ボーナスを得る。
 
 
 Gas Mask
@@ -8666,6 +8700,30 @@ You a hurl a strand of chain!
 鎖を召喚して投げつけた！
 Choose aim direction
 照準方向を選択
+
+Enchant Rope
+エンチャントロープ
+Rope Enchantment
+魔法のロープ
+KinkyDungeonSpellEnemyEnchantRope2,Spellbinding
+緊縛の呪文
+KinkyDungeonSpellDescriptionEnchantRope,"Convert rope binding on a target into magical bindings, which are much more powerful. Deals a small amount of arcane damage.
+対象を拘束している縄に魔法をかける。拘束がより強固になり、少量のアーケインダメージを与える。
+KinkyDungeonSpellCastEnchantRope,You whisper an enchanting tale of rope bondage...
+緊縛の物語を囁いた……
+Choose targets to tighten the ropes of
+縄で縛られている対象を選択
+Ropestorm
+ロープストーム
+Animated Rope
+動くロープ
+Launch 9 ropes that deal DamageDealt chain damage each and add 32 rope binding. Best in open spaces.
+DamageDealt チェーン属性ダメージと32の縄拘束値を与える縄を9発発射する。広いところで使おう。
+You animate a sizeable quantity of ropes!
+様々なロープを召喚した！
+Choose aim direction
+照準方向を選択
+
 Conjure Ropes
 ロープ召喚
 Animated Rope
@@ -8992,8 +9050,8 @@ Chaos Beam
 カオスビーム
 Mystic Beam
 ミスティックビーム
-A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt fire damage to the first target hit.
-2ターンの間チャージし、命中したターゲットに DamageDealt 火ダメージを与えるビームを放つ。
+A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt holy damage to the first target hit. Blinds for 12 turns. 150% crit multiplier.
+2ターンの間チャージし、命中したターゲットに DamageDealt 火ダメージを与えるビームを放つ。命中した敵は12ターンの間盲目状態になる。この攻撃の会心ダメージ倍率は150%。
 You charge a powerful beam attack!!!
 敵を償却するレーザーを放つ！
 Choose line direction
@@ -9446,7 +9504,7 @@ Conjured Cuffs
 The cuffs pull your wrists together and click tightly!
 鉄枷に両手首を手繰り寄せられ、拘束されてしまった！
 The cuffs hit you! (DamageDealt)
-袖口がぶつかってきた！(DamageDealt)
+枷がぶつかってきた！(DamageDealt)
 Summons a pair of cuffs which deals DamageDealt chain damage and disarms for 5 turns. +40 binding if target is not disarmed.
 DamageDealt チェーンダメージを与え、5ターンの間武装解除する鉄の枷を召喚する。ターゲットが武装解除状態でない場合、拘束値が40増加する。
 You conjure a pair of cuffs!
@@ -9467,6 +9525,76 @@ You conjure a legbinder!
 レッグバインダーを召喚した！
 The legbinder will appear next to you and fly toward the target point.
 レッグバインダーが隣に現れ、まっすぐ飛んでいった！
+
+Conjure Latex Gag
+ラテックスボールギャグ召喚
+Conjured Latex Gag
+召喚したラテックスボールギャグ
+Latex Gag
+ラテックスボールギャグ
+Latex Glob
+ゴムの塊
+The gag forces itself into your mouth and snaps on tightly!
+ボールギャグが口の中に飛び込んできた！
+The gag forces itself into your mouth and snaps on tightly!
+ボールギャグが口の中に飛び込んできた！
+The amorphous rubber stretches out into a restraint on your body!
+ゴムが形を変え、拘束具となって取り付いてきた！
+The gag hits you! (DamageDealt)
+ボールギャグがぶつかってきた！ (DamageDealt)
+The gag hits you! (DamageDealt)
+ボールギャグがぶつかってきた！ (DamageDealt)
+The amorphous rubber sticks to you! (DamageDealt)
+不定形のゴムがネバネバとくっついてくる！ (DamageDealt)
+Summons a gag which deals DamageDealt glue damage and silences for 15 turns. +40 binding if target is not silenced.
+DamageDealt グルーダメージを与え、15ターンの間沈黙させるボールギャグを召喚する。ターゲットが沈黙していない場合、拘束値が40増加する。
+You conjure a gag!
+ボールギャグを召喚した！
+The gag will appear next to you and fly toward the target point.
+ボールギャグが眼の前に現れ、まっすぐ飛んでいった！
+
+Conjure Latex Armbinder
+ラテックスアームバインダー召喚
+Conjured Latex Armbinder
+召喚したラテックスアームバインダー
+Latex Armbinder
+ラテックスアームバインダー
+The armbinder slips itself around your arms and buckles itself tightly!
+アームバインダーは両腕を覆い、ベルトを締めてしまった！
+The armbinder hits you! (DamageDealt)
+アームバインダーがぶつかってきた！ (DamageDealt)
+The armbinder slips itself around your arms and snaps on tightly!
+アームバインダーは両腕を覆い、ベルトを締めてしまった！
+The armbinder hits you! (DamageDealt)
+アームバインダーがぶつかってきた！ (DamageDealt)
+Summons an armbinder which deals DamageDealt glue damage and disarms for 13 turns. Cannot be blocked.
+DamageDealt グルーダメージを与え、13ターンの間武装解除するア​​ームバインダーを召喚する。この魔法はブロックされない。
+You conjure a armbinder!
+アームバインダーを召喚した！
+The armbinder will appear next to you and fly toward the target point.
+アームバインダーが隣に現れ、まっすぐ飛んでいった！
+
+Conjure Latex Legbinder
+ラテックスレッグバインダー召喚
+Conjured Latex Legbinder
+召喚したラテックスレッグバインダー
+Latex Legbinder
+ラテックスレッグバインダー
+The legbinder slips itself around your legs and buckles itself tightly!
+レッグバインダーが両足をすっぽりと覆い、ベルトが締まってしまった！
+The legbinder hits you! (DamageDealt)
+レッグバインダーがぶつかってきた！ (DamageDealt)
+The legbinder slips itself around your legs and snaps on tightly!
+レッグバインダーが両足をすっぽりと覆い、ベルトが締まってしまった！
+The legbinder hits you! (DamageDealt)
+レッグバインダーがぶつかってきた！ (DamageDealt)
+Summons a legbinder which deals DamageDealt glue damage and snares for 10 turns. +50 binding if target is not snared. Cannot be blocked.
+DamageDealt グルーダメージとを与え、10ターンの移動不能状態を付与するレッグバインダーを召喚する。ターゲットが減速状態でない場合、拘束値が50増加する。この魔法はブロックされない。
+You conjure a legbinder!
+レッグバインダーを召喚した！
+The legbinder will appear next to you and fly toward the target point.
+レッグバインダーが隣に現れ、まっすぐ飛んでいった！
+
 Conjure Straitjacket
 拘束衣召喚
 Conjured Straitjacket
@@ -9726,15 +9854,15 @@ Chains wrap around you! (DamageDealt)
 A web of belts buckles in place around your body! (DamageDealt)
 ベルトの網に捕まってしまった！ (DamageDealt)
 Awaken
-目覚め
+アウェイクスライム
 Awaken
-目覚め
+アウェイクスライム
 The slime awakens and turns on you!!!
 スライムが湧き上がり、こちらに向かってきた！
 Select area to awaken
 エリアを選択
-Activates the slime in an area, causing it to deal DamageDealt glue damage. Encases fully bound targets.
-範囲内のスライムを活性化し、 DamageDealt グルーダメージを与える。完全に拘束された敵を包み込む。
+Activates the slime in an area, causing it to deal 25 glue damage. Encases fully bound targets.
+範囲内のスライムを活性化し、25グルーダメージを与える。完全に拘束された敵を包み込む。
 You command the slime to draw in targets!
 スライムに取り付くよう指示を出した！
 CMD: Bind
@@ -9817,6 +9945,14 @@ When enabled: Struggling is more powerful, and your attack damage is increased b
 有効時: 「もがく」選択時にボーナス。物理ダメージを与える際、20ダメージ増加する。
 Your body glows with magical energy!
 全身の筋肉にマナを流し込んだ！
+
+Super Strength
+筋力強化
+When enabled: Struggling is more powerful, and your melee attack damage is increased by +20 if your weapon deals physical damage.
+有効時: 「もがく」選択時にボーナス。物理ダメージを与える際、20ダメージ増加する。
+Your body glows with magical energy!
+全身の筋肉にマナを流し込んだ！
+
 Enhance Will
 意志強化
 When enabled: Miscast chance is halved
@@ -19196,7 +19332,124 @@ Gloves
 'Cosplay'
 ”コスプレ”
 
+Outfit1
+セーブ1
+Outfit2
+セーブ2
+Outfit3
+セーブ3
+Outfit4
+セーブ4
+Outfit5
+セーブ5
+Outfit6
+セーブ6
+Outfit7
+セーブ7
 
+HairBow
+リボン
+Hairband
+ヘアバンド
+MaidHaiirband
+メイドのヘアバンド
+MaidFrill
+フリル
+Braid
+三つ編み
+Braid Front
+前
+Braid Back
+後
+Bangs Only
+前髪のみ
+Bangs
+前
+Braid+Back
+三つ編みと後ろ髪
+Braid Upper
+上
+Braid Lower
+下
+Back Only
+後ろ髪のみ
+BackStraight
+後-ストレート
+Curly
+前-くせっ毛
+Underight
+影
+CurlyBack
+後-くせっ毛
+Fluffy
+前-ふわふわ
+Zuzzy
+色
+FrontStraight
+前-パッツン
+Straight
+前-ストレート
+StraightBangs
+前-ナチュラル
+MessyBack
+後-ナチュラル
+MessyBackShort
+後-ナチュラル(短)
+Ponytail
+後-ポニーテール
+FluffyPonytail
+後-ふわふわポニーテール
+Ponytail2
+ポニーテール
+TwintailLeft
+ツインテール(左)
+TwintailRight
+ツインテール(右)
+Ahoge
+アホ毛
+ElfCirclet
+エルフのサークレット
+Circlet
+サークレット
+Gem
+宝石
+
+
+
+ElfEars
+エルフ耳
+ElfEarsLong
+エルフ耳(長)
+ElfEarsFloppy
+エルフ耳(垂れ)
+BunnyEars
+うさみみ
+KittyEars
+ネコ耳
+FoxEars
+キツネ耳
+WolfEars
+犬耳
+WolfTail
+オオカミの尻尾
+KittyTail
+猫の尻尾
+Kitty2Tail
+猫又の尻尾
+FoxTail
+狐の尻尾
+Fox2Tail
+狐の尻尾(2本)
+Fox3Tail
+狐の尻尾(3本)
+Fox4Tail
+狐の尻尾(4本)
+Fox5Tail
+狐の尻尾(5本)
+Fox6Tail
+狐の尻尾(6本)
+Fox7Tail
+狐の尻尾(7本)
 
 
 Items on Ground:
@@ -20191,8 +20444,8 @@ Bag of Goodies
 秘密のカバン
 Someone's secret stash.
 誰かの秘密の遊び道具。
-Deals charm damage. Applies a toy to targets hit for 40 turns. 
-魅了属性。攻撃が命中した敵に、40ターンの間オモチャを取り付ける。
+Deals charm damage. Applies a toy to targets hit for 40 turns. Offhand: Applies a toy to targets you hit.
+魅了属性。攻撃が命中した敵に、40ターンの間オモチャを取り付ける。オフハンド：攻撃が命中した敵にオモチャを取り付ける。
 You find a bag filled with various toys and vibrators...
 色々な気持ちよさそうなオモチャがつまったカバンを見つけた……
 You play with yourself using some of the toys in the bag...
@@ -20201,8 +20454,8 @@ Magic Remote
 魔法のリモコン
 The key to absolute power.
 絶対服従の鍵。
-Deals (tiny) charm damage. Triggers long-duration edging on basic attack if the target has a toy.
-少量の魅了属性ダメージを与える。オモチャを装備している敵に攻撃が命中した際、長時間オモチャを振動させ、興奮値を継続的に増加させる。
+Triggers long-duration edging on basic attack if the target has a toy. Offhand: Applies short-duration teasing to targets you hit.
+対象がオモチャを装備している場合、攻撃時に長時間振動させる。オフハンド：対象がオモチャを装備している場合、攻撃時に短時間振動させる。
 You find a bag filled with various toys and vibrators...
 色々な気持ちよさそうなオモチャがつまったカバンを見つけた……
 Vibrator Remote
@@ -20831,7 +21084,8 @@ You avoid the attack in a flurry of impressive maneuvers!
 Arcane Barrier
 アーケインバリア
 When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 50% Max Mana.
-この呪文以外の呪文を唱えてマナを消費すると、その40%をアーケインエネルギーとして蓄積するようになる。マナの最大値まで蓄積。発動時、ゆっくりとアーケインエネルギーを等量分シールドに変換する。シールドの最大値はマナの最大値の50%分まで。
+When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:1 ratio. Max shield is equal to 60 + 10% Max Mana.
+この呪文以外の呪文を唱えてマナを消費すると、その40%をアーケインエネルギーとして蓄積するようになる。マナの最大値まで蓄積。発動時、ゆっくりとアーケインエネルギーを等量分シールドに変換する。シールドの最大値は60+最大マナ10%分まで。
 You sense that a high value target is near.
 近くに価値のあるターゲットがいる。
 You push yourself beyond physical limits!
@@ -21116,7 +21370,7 @@ Designate an Offhand weapon to gain passive effects such as a light source, armo
 空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|(このスキルを使用し、装備する武器を選択する必要がある)
 
 Equip Offhand
-もう一本の武器を装備する
+オフハンドに装備する
 
 Make a ranged attack with the spear.
 槍で遠距離を攻撃する。
@@ -21221,7 +21475,7 @@ Arcane Tome
 Contains advanced formulas and thrilling tales of thirsty wizards.
 高度な魔法の技術と、知識に飢えた魔法使いのスリリングな物語を収録。
 +5% magic damage. Offhand: Applies passive bonus.
-魔法ダメージ+5%。　オフハンド時：左記をパッシブ効果とする。
+魔法ダメージ+5%。　オフハンド時：魔法ダメージ+5%。
 You find a magical tome.
 魔導書を見つけた。
 Open the book. What can go wrong?
@@ -21232,7 +21486,7 @@ Tome of Bondage
 Contains a malevolent spirit that wishes only to tie up damsels.
 少女を縛るのが大好きな悪鬼が封印されている。
 +10% binding effectiveness. Offhand: Applies passive bonus.
-拘束力+10%。　オフハンド時：左記をパッシブ効果とする。
+拘束力+10%。　オフハンド時：拘束力+10%。
 You find a magical tome with a sealed padlock on it.
 錠前が施されている本を見つけた。
 Open the book. What can go wrong?
@@ -21873,7 +22127,7 @@ ITMNS 検索：
 Search Items:
 アイテム検索：
 Search Spells:
-魔法検索
+検索
 
 Free
 自由
@@ -22690,7 +22944,7 @@ There is nothing to harvest.
 Telekinesis 101
 テレキネシス入門
 Unlocks telekinetic abilities. Can equip weapons while bound, but at 0% accuracy. Learn Recover Object.
-テレキネシスのスキルツリーを開放する。拘束されていても武器を装備できるが、命中率は0%。「念動力」を習得。
+テレキネシスのスキルツリーを開放する。拘束されていても武器を装備できるが、基礎命中率は0%。「念動力」を習得。
 
 Recover Object
 念動力
@@ -22809,3 +23063,97 @@ The bag can't cover that light source.
 この光源には使えないようだ。
 You remove the bag from its light source and place it back inside your bag.
 光源から袋を外して袋に入れた。
+
+
+I've got you! Now let's have some fun!
+捕まえた！さあ、楽しみましょうか。
+I think I'll help myself to you for a bit~
+少し手を貸してあげましょうか～？
+Gosh, you're so cute like that!
+あら、可愛い姿ね！
+
+I'm going to have to search you, miss~
+身体検査をさせていただきますね～。
+Let's check your restraints.
+拘束具をチェックしますね。
+You look so cute like that, miss!
+すごく可愛いですね……♡
+
+
+All nice and tight. Certainly no longer a threat~
+拘束具は全部いい感じね、もう何もできないでしょ～？
+I'm going to make sure you're nice and tight~
+もっときつくしてあげるわ！
+Surely nothing can happen now!
+どうすることもできないわよね？
+
+Rubber Elemental
+ゴムの精霊
+The rubber elemental's restraints snap onto her and she falls over hogtied.
+ゴムの精霊は誤って自縛してしまった。
+The rubber elemental molds itself into restraints! (+RestraintAdded)
+ゴムの精霊は自らの身体を拘束具に変え、取り付いてきた！ (+RestraintAdded)
+The rubber elemental squeezes you with its appendages! (DamageTaken)
+ゴムの精霊が触腕で圧迫してきた！ (DamageTaken)
+The rubber elemental forms rubber locks around all your restraints! (DamageTaken)
+ゴムの精霊に拘束具をロックされた。 (DamageTaken)
+
+Your ropes are enchanted with a lesser spell!
+ロープがかすかな魔力を帯びた！
+Your ropes are enchanted with a magic spell!
+ロープが強力な魔力を帯びた！
+
+Shibari Witch
+縄の魔女
+KillWitchShibari,"The shibari witch blows a kiss and says goodbye.
+縄の魔女は投げキスを寄越し、去っていった。
+The shibari witch ties you tight! (+RestraintAdded)
+縄の魔女に縛られた！ (+RestraintAdded)
+The witch dangles a lock in front of you before putting it on! (DamageTaken)
+縄の魔女に拘束具をロックされた。 (DamageTaken)
+The witch rubs your body sensually! (DamageTaken)
+魔女が身体を官能的に揉んできた！ (DamageTaken)
+The Shibari Witch takes your clothes off!
+縄の魔女に服を脱がされた！
+
+
+A Hard Place
+立ち往生
+While your willpower is 0, your mana pool slowly drains and your stamina regen is reduced by 30%.
+気力が0の間、マナプールが徐々に減少し、スタミナ回復量-30%。
+
+The Spark of Magic
+線香花火
+When your mana pool is exhausted, your attacks deal 50% reduced base damage.
+マナプールが枯渇している間、自身の基礎攻撃力-50%。
+
+Burned Out
+バーンアウト
+Casting spells reduces willpower based on how little distraction you have, also you cannot play with yourself.
+呪文を唱えた際、興奮値に応じて気力が下がる。また、自慰ができなくなる。
+
+Winded
+風に吹かれて
+While below 10% stamina, evasion is severely reduced and your slow level is increased by 1.
+スタミナが10%以下の間、回避が極端に低下し、減速値1を得る。
+
+Time Ghost
+タイムゴースト
+The time ghost vanishes.
+タイムゴーストを祓った！
+The time ghost grabs you, causing your body parts to freeze in time!!! (DamageTaken)
+タイムゴーストに掴まれ、体の一部の時間を止められた！ (DamageTaken)
+The time time ghost has already bound you! (+RestraintAdded)
+タイムゴーストに既に縛られていた！ (+RestraintAdded)
+
+The Timekeeper
+タイムキーパー
+The Timekeeper releases her grip on the timeline.
+タイムキーパーはこの時間軸から飛び去った！
+The Timekeeper takes the time to enjoy herself with you... (DamageTaken)
+タイムキーパーが楽しむために時間を割いてくれた…… (DamageTaken)
+The Timekeeper enacts judgement for disrupting time! (+RestraintAdded)
+タイムキーパーに時空を見出した罰を受けた！ (+RestraintAdded)
+
+Analysis
+アナライズ

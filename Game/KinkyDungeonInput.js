@@ -357,6 +357,17 @@ function KDProcessInput(type, data) {
 			KinkyDungeonSendActionMessage(9, TextGet("KDShrineQuestAcceptedFail"), "#ffffff", 1);
 			return "Fail";
 		}
+		case "shrineDevote": {
+			KDDelayedActionPrune(["Action", "World"]);
+			if (KinkyDungeonGoddessRep[data.type] <= -45 && KDGameData.Champion != data.type) {
+				//Cursed
+				KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), "#ff5555", 2);
+				return "Fail";
+			}
+
+			KDGameData.Champion = data.type;
+			return "Pass";
+		}
 		case "shrinePray": {
 			KDDelayedActionPrune(["Action", "World"]);
 			if (KinkyDungeonGoddessRep[data.type] <= -45) {
@@ -479,10 +490,32 @@ function KDProcessInput(type, data) {
 
 					if (spell) {
 						KinkyDungeonSpells.push(spell);
+						if (spell.autoLearn) {
+							for (let sp of spell.autoLearn) {
+								if (KinkyDungeonSpellIndex(sp) < 0) {
+									KinkyDungeonSpells.push(KinkyDungeonFindSpell(sp, true));
+									KDSendStatus('learnspell', sp);
+								}
+							}
+						}
+						if (spell.learnFlags) {
+							for (let sp of spell.learnFlags) {
+								KinkyDungeonFlags.set(sp, -1);
+							}
+						}
+
+						if (spell.learnPage) {
+							for (let sp of spell.learnPage) {
+								KDAddSpellPage(sp, KDSpellColumns[sp] || []);
+							}
+						}
 						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonOrbSpell").replace("SPELL", TextGet("KinkyDungeonSpell" + spell.name)), "lightblue", 2);
 					}
 				} else {
 					KinkyDungeonSpellPoints += data.Amount;
+				}
+				if (KinkyDungeonTilesGet(data.x + ',' + data.y)) {
+					KinkyDungeonTilesGet(data.x + ',' + data.y).Light = undefined;
 				}
 				KinkyDungeonMapSet(data.x, data.y, 'o');
 				KinkyDungeonAggroAction('orb', {});
@@ -502,7 +535,7 @@ function KDProcessInput(type, data) {
 					for (let b of data.bondage) {
 						KinkyDungeonAddRestraintIfWeaker(
 							KinkyDungeonGetRestraintByName(b), 20, true, "Gold", true
-							);
+						);
 					}
 				}
 
@@ -698,10 +731,14 @@ function KDProcessInput(type, data) {
 		case "cancelParty": {
 			if (data.enemy) {
 				let enemy = KinkyDungeonFindID(data.enemy.id);
-				if (enemy.buffs?.AllySelect) enemy.buffs.AllySelect.duration = 0;
-				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", -1);
-				KDRemoveFromParty(enemy, false);
-				KinkyDungeonSendTextMessage(10, TextGet("KDOrderRemove").replace("ENMY", TextGet("Name" + enemy.Enemy.name)), "#ffffff", 1);
+				if (!enemy && KDGameData.Party) enemy = KDGameData.Party.find((entity) => {return entity.id == data.enemy.id;});
+				if (enemy) {
+					if (enemy.buffs?.AllySelect) enemy.buffs.AllySelect.duration = 0;
+					KinkyDungeonSetEnemyFlag(enemy, "NoFollow", -1);
+					KDRemoveFromParty(enemy, false);
+					KinkyDungeonSendTextMessage(10, TextGet("KDOrderRemove").replace("ENMY", TextGet("Name" + enemy.Enemy.name)), "#ffffff", 1);
+
+				}
 			}
 			break;
 		}

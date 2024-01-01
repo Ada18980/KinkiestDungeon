@@ -556,7 +556,7 @@ AddModel({
 			HideWhenOverridden: true,
 			SwapLayerPose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
 			MorphPoses: {Hogtie: "Closed", Closed: "Closed", Kneel: "Kneel", KneelClosed: "Kneel"},
-			AppendPose: ToMapDupe(["CrotchStrap"]),
+			AppendPose: {Hogtie: "CrotchStrap", CrotchStrap: "CrotchStrap"},
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			Invariant: true,
 		},
@@ -574,15 +574,54 @@ AddModel({
 
 
 AddModel({
+	Name: "DressSkirtSplit",
+	Folder: "Dress",
+	Parent: "Dress",
+	TopLevel: true,
+	Categories: ["Skirts"],
+	AddPoseConditional: {
+		EncaseTorsoLower: ["Skirt"]
+	},
+	Layers: ToLayerMap([
+		{ Name: "Skirt", Layer: "SkirtBack", Pri: 9,
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+			//SwapLayerPose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
+			MorphPoses: {Hogtie: "Closed", Closed: "Closed", Kneel: "Kneel", KneelClosed: "Kneel"},
+			AppendPose: {Hogtie: "CrotchStrap", CrotchStrap: "CrotchStrap"},
+			InheritColor: "SkirtBack",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			Invariant: true,
+		},
+		{ Name: "SkirtSplit", Layer: "Skirt", Pri: 14,
+			Poses: ToMap([...LEGPOSES]), NoOverride: true,
+			SwapLayerPose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
+			MorphPoses: {Hogtie: "Closed", Closed: "Closed", Kneel: "Kneel", KneelClosed: "Kneel"},
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			InheritColor: "Skirt",
+			Invariant: true,
+		},
+		{ Name: "SkirtSplitOver", Layer: "SkirtOver", Pri: 17,
+			Poses: ToMap([...KNEELPOSES]),
+			//RequirePoses: ToMap(["CrotchStrap"]),
+			TieToLayer: "Skirt", NoOverride: true,
+			InheritColor: "Skirt",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			//Invariant: true,
+		},
+	])
+});
+
+AddModel({
 	Name: "BindingDress",
 	Folder: "Dress",
 	Parent: "Dress",
 	TopLevel: true,
 	Categories: ["Restraints"],
-	AddPose: ["CrotchStrap"],
+	//AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
 		...GetModelLayers("LaceCorset"),
-		...GetModelLayers("DressSkirt"),
+		...GetModelLayers("DressSkirtSplit"),
 		...GetModelLayers("LaceCrotchPanel"),
 
 

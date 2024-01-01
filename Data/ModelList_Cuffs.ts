@@ -192,7 +192,7 @@ AddModel({
 		{ Name: "ThighLeft", Layer: "ThighLeft", Pri: 30,
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
-			DisplacementSprite: "ThighCuffLeft",
+			DisplacementSprite: "ThighCuffsLeft",
 			DisplaceLayers: ToMap(["LegCuffs"]),
 			DisplaceAmount: 50,
 			InheritColor: "BaseMetal",
@@ -210,7 +210,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "ThighRight", Layer: "ThighRight", Pri: 30,
 			Poses: ToMap([...LEGPOSES]),
-			DisplacementSprite: "ThighCuffRight",
+			DisplacementSprite: "ThighCuffsRight",
 			DisplaceLayers: ToMap(["LegCuffs"]),
 			DisplaceAmount: 50,
 			InheritColor: "BaseMetal",

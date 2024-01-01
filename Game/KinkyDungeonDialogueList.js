@@ -2380,6 +2380,7 @@ let KDDialogue = {
 				KDGameData.CurrentDialogMsgValue = {};
 				let bonus = KinkyDungeonGetPickBonus();
 				KDGameData.CurrentDialogMsgValue.JamPercent = 1/Math.max(1, (2 + ((bonus > 0) ? 5*bonus : 2*bonus)));
+				if (KinkyDungeonFlags.get("LockJamPity")) KDGameData.CurrentDialogMsgValue.JamPercent /= 2;
 				KDGameData.CurrentDialogMsgData.JAMPERCENT = `${Math.round(100 * KDGameData.CurrentDialogMsgValue.JamPercent)}%`;
 			} else {
 				KDGameData.CurrentDialogStage = "Jammed";
@@ -2488,7 +2489,9 @@ let KDDialogue = {
 									KinkyDungeonSetEnemyFlag(e, "LockJammed", -1);
 									KDGameData.CurrentDialogStage = "JammedRecent";
 									KDGameData.CurrentDialogMsg = "PrisonerJailPickJam";
+									KinkyDungeonSetFlag("LockJamPity", -1);
 								} else {
+									KinkyDungeonSetFlag("LockJamPity", 0);
 									let e = KDDialogueEnemy();
 									e.boundLevel = 0;
 									KinkyDungeonSetEnemyFlag(e, "imprisoned", 0);

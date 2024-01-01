@@ -156,6 +156,10 @@ let KDToggles = {
 	ShowPath: true,
 	ShowFacing: false,
 	ShowSameCatSpells: true,
+	PlayerAura: false,
+	EnemyAura: true,
+	OutlineAura: true,
+	NearestNeighbor: true,
 	LazyWalk: false,
 	ShiftLatch: true,
 };
@@ -1732,7 +1736,7 @@ function KinkyDungeonRun() {
 				KinkyDungeonPerkBondageVisMode = 0;
 				localStorage.setItem("KinkyDungeonPerkBondageVisMode", KinkyDungeonPerkBondageVisMode + "");
 				return true;
-			}, true, 875, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageVisMode0"), KinkyDungeonPerkBondageVisMode == 0 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
+			}, true, 1400, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageVisMode0"), KinkyDungeonPerkBondageVisMode == 0 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
 			if (MouseInKD("KinkyDungeonPerkBondageVisMode0")) {
 				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageVisModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 			}
@@ -1750,7 +1754,7 @@ function KinkyDungeonRun() {
 				KinkyDungeonPerkBondageVisMode = 2;
 				localStorage.setItem("KinkyDungeonPerkBondageVisMode", KinkyDungeonPerkBondageVisMode + "");
 				return true;
-			}, true, 1400, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageVisMode2"), KinkyDungeonPerkBondageVisMode == 2 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
+			}, true, 875, 190 + II*spacing, 226, 50, TextGet("KinkyDungeonPerkBondageVisMode2"), KinkyDungeonPerkBondageVisMode == 2 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
 			if (MouseInKD("KinkyDungeonPerkBondageVisMode2")) {
 				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageVisModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 			}

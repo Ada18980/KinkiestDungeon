@@ -7,6 +7,7 @@ Vague todo:
 - TODO add scroll to log, rep
 
 TODO add sugar magic ('Blood Energy Magic')
+TODO make hostile faction enemies able to not attack the player if their opinion is high
 
 
 5.1 ()
@@ -21,6 +22,29 @@ Spellcaster witch that channels a defensive ward, rapidly gives shield to nearby
 Monk class?
 - Passive: enchantments apply to unarmed strikes
 - Active: Increase unarmed base damage for 20 turns. After using, need to meditate 10 turns to recharge. Free.
+
+5.0.7
+
+5.0.6
+- New perks: Can't Touch That, Grounded
+- Fixed bugs with moirai's scissors (now costs charge instead of generating it, description matches ability)
+- Fixed vine trap message
+- Fixed librarian spawn message
+- Added buff icon for Magical Sight
+- Added option to outline enemies instead of showing buff aura
+- Added option to pixelate the game board
+- Added option to use "minimalist" buff outlines
+- Fixed 'summon up' upgrades being invisible
+- Party members not on the map are x'ed out which lets you remove them
+
+5.0.5
+- Fixed a few more bugs
+- You can now devote yourself to a goddess to guarantee a quest on future floors
+- 2.5% goddess rep on first quest completed on a floor
+- Bondage offers only give goddess rep the first time
+- Security level penalty for stealing from a faction chest is doubled
+- Bows now count as attacks for purpose of enchanted gear and Grounded in Reality
+- Added options to disable player and enemy buff auras
 
 5.0.4 D
 - The past now comes back to haunt you if you abuse time magic

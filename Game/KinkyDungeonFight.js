@@ -446,15 +446,17 @@ function KDCalcRestraintBlock() {
 function KinkyDungeonPlayerEvasion(Event) {
 	let data = {
 		playerEvasionMult: 1.0,
+		penalty: KDPlayerEvasionPenalty(),
 		eva: KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion"),
 		evaPenalty: 0,
 		val: 0
 	};
-	data.evaPenalty = data.eva > 0 ? Math.min(data.eva, KDPlayerEvasionPenalty()) : 0;
+
+	data.evaPenalty = data.eva > 0 ? Math.min(1, data.penalty) : 0;
 
 
 	KinkyDungeonSendEvent(Event ? "beforecalcPlayerEvasionEvent" : "beforecalcPlayerEvasion", data);
-	data.val = data.playerEvasionMult * KinkyDungeonMultiplicativeStat(data.eva * (1 - data.evaPenalty)
+	data.val = data.playerEvasionMult * KinkyDungeonMultiplicativeStat(data.eva * (1 - data.evaPenalty) / Math.max(1, data.penalty)
 	+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "EvasionProtected"));
 
 	KinkyDungeonSendEvent(Event ? "calcPlayerEvasionEvent" : "calcPlayerEvasion", data);
@@ -465,7 +467,7 @@ function KinkyDungeonPlayerEvasion(Event) {
 function KinkyDungeonPlayerBlock(Event) {
 	let playerBlockMult = 1.0;
 	let blk = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block");
-	let playerBlockPenalty = blk > 0 ? Math.min(blk, KDPlayerBlockPenalty()) : 0;
+	let playerBlockPenalty = blk > 0 ? Math.min(1, KDPlayerBlockPenalty()) : 0;
 	let val = playerBlockMult * KinkyDungeonMultiplicativeStat(blk * (1 - playerBlockPenalty)
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BlockProtected"));
 
@@ -475,7 +477,7 @@ function KinkyDungeonPlayerBlock(Event) {
 function KinkyDungeonPlayerBlockLinear() {
 	let playerBlockMult = 1.0;
 	let blk = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block");
-	let playerBlockPenalty = blk > 0 ? Math.min(blk, KDPlayerBlockPenalty()) : 0;
+	let playerBlockPenalty = blk > 0 ? Math.min(1, KDPlayerBlockPenalty()) : 0;
 	let val = playerBlockMult * (blk * (1 - playerBlockPenalty)
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BlockProtected"));
 
@@ -1291,9 +1293,10 @@ function KinkyDungeonDisarm(Enemy, suff) {
  * @param {entity} Enemy
  * @param {*} Damage
  * @param {number} [chance]
+ * @param {any} [bullet]
  * @returns {boolean}
  */
-function KinkyDungeonAttackEnemy(Enemy, Damage, chance) {
+function KinkyDungeonAttackEnemy(Enemy, Damage, chance, bullet) {
 	let disarm = false;
 	if ((Damage && !Damage.nodisarm) && Enemy.Enemy && Enemy.Enemy.disarm && Enemy.disarmflag > 0) {
 		if (Enemy.stun > 0 || Enemy.freeze > 0 || Enemy.blind > 0 || Enemy.teleporting > 0 || (Enemy.playWithPlayer && !Enemy.hostile)) Enemy.disarmflag = 0;
@@ -1308,6 +1311,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, chance) {
 	let channel = KinkyDungeonPlayerDamage?.channel || 0;
 	let slow = KinkyDungeonPlayerDamage?.channelslow || 0;
 	let predata = {
+		bullet: bullet,
 		channel: channel,
 		slow: slow,
 		targetX: Enemy.x,
@@ -1342,7 +1346,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, chance) {
 
 
 	let hp = Enemy.hp;
-	KinkyDungeonDamageEnemy(Enemy, (predata.eva) ? dmg : null, undefined, undefined, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, predata.vulnConsumed, predata.critical);
+	KinkyDungeonDamageEnemy(Enemy, (predata.eva) ? dmg : null, undefined, undefined, undefined, bullet, KinkyDungeonPlayerEntity, undefined, undefined, predata.vulnConsumed, predata.critical);
 	if (predata.eva && (Damage.sfx || (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.sfx))) {
 		if (KDToggles.Sound) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "Audio/" + (Damage.sfx || KinkyDungeonPlayerDamage.sfx) + ".ogg"});
 		//AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + KinkyDungeonPlayerDamage.sfx + ".ogg");
@@ -1374,6 +1378,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, chance) {
 		Enemy.disarmflag += Enemy.Enemy.disarm;
 	}
 	let data = {
+		bullet: bullet,
 		channel: predata.channel,
 		slow: predata.slow,
 		targetX: Enemy.x,

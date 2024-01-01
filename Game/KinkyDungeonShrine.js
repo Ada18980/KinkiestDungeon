@@ -258,7 +258,7 @@ function KinkyDungeonPayShrine(type) {
 
 	// TODO shrine effects
 	if (KinkyDungeonShrineTypeRemove.includes(type)) {
-		rep = KinkyDungeonRemoveRestraintsWithShrine(type, KDShrineRemoveCount, true);
+		rep = Math.min(2, KinkyDungeonRemoveRestraintsWithShrine(type, KDShrineRemoveCount, true) * 0.5);
 		KinkyDungeonChangeRep("Ghost", -rep);
 
 		ShrineMsg = TextGet("KinkyDungeonPayShrineRemoveRestraints");
@@ -281,9 +281,9 @@ function KinkyDungeonPayShrine(type) {
 			]});
 		}
 		KDSendStatus('goddess', type, 'shrineDonate');
-		rep = 2.5;
+		rep = 2;
 	} else if (type == "Will") {
-		rep = Math.ceil(5 - KinkyDungeonStatMana * 1.5 / KinkyDungeonStatManaMax - KinkyDungeonStatWill * 3.5 / KinkyDungeonStatWillMax);
+		rep = Math.min(2, Math.ceil(5 - KinkyDungeonStatMana * 1.5 / KinkyDungeonStatManaMax - KinkyDungeonStatWill * 3.5 / KinkyDungeonStatWillMax));
 		KinkyDungeonChangeMana(KinkyDungeonStatManaMax, false, 0, false, true);
 		KinkyDungeonChangeWill(KDWillShrineWill * KinkyDungeonStatWillMax);
 		KinkyDungeonNextDataSendStatsTime = 0;
@@ -525,6 +525,29 @@ function KinkyDungeonDrawShrine() {
 			DrawTextFitKD(TextGet("KDShrineActionDescBottle"),
 				KDModalArea_x+400, KDModalArea_y + 55 - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 20, "left", 70);
 
+		II++;
+
+		if (KDGameData.Champion == type) {
+			if (DrawButtonKDEx("shrineDevote", (bdata) => {
+				KDSendInput("shrineDevote", {type: "", cost: cost, targetTile: KinkyDungeonTargetTileLocation});
+				KinkyDungeonTargetTileLocation = "";
+				KinkyDungeonTargetTile = null;
+				return true;
+			}, !KinkyDungeonTargetTile.Rescue, KDModalArea_x, KDModalArea_y + 25 - II*shrineActionSpacing, 325, 60,
+			TextGet("KDShrineActionChampionRemove"), KinkyDungeonTargetTile?.Rescue ? KDTextGray2 : "#ffffff", "", ""))
+				DrawTextFitKD(TextGet(KDGameData.Champion != type ? "KDShrineActionDescChampionRemoveFail" : "KDShrineActionDescChampionRemove"),
+					KDModalArea_x+400, KDModalArea_y + 55  - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 20, "left", 70);
+		} else {
+			if (DrawButtonKDEx("shrineDevote", (bdata) => {
+				KDSendInput("shrineDevote", {type: type, cost: cost, targetTile: KinkyDungeonTargetTileLocation});
+				KinkyDungeonTargetTileLocation = "";
+				KinkyDungeonTargetTile = null;
+				return true;
+			}, !KinkyDungeonTargetTile.Rescue, KDModalArea_x, KDModalArea_y + 25 - II*shrineActionSpacing, 325, 60,
+			TextGet("KDShrineActionChampion"), KinkyDungeonTargetTile?.Rescue ? KDTextGray2 : "#ffffff", "", ""))
+				DrawTextFitKD(TextGet(KDGameData.Champion == type ? "KDShrineActionDescChampionFail" : "KDShrineActionDescChampion"),
+					KDModalArea_x+400, KDModalArea_y + 55  - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 20, "left", 70);
+		}
 		II++;
 
 		if (KinkyDungeonTargetTile?.Quest) {

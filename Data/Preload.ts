@@ -14,14 +14,14 @@ let DisplacementMaps = [
 'Thigh3SquishClosed.png',
 'Thigh3SquishHogtie.png',
 'Thigh3SquishKneelClosed.png',
-'ThighCuffLeftClosed.png',
-'ThighCuffLeftKneel.png',
-'ThighCuffLeftKneelClosed.png',
-'ThighCuffLeftSpread.png',
-'ThighCuffRightClosed.png',
-'ThighCuffRightKneel.png',
-'ThighCuffRightKneelClosed.png',
-'ThighCuffRightSpread.png',
+'ThighCuffsLeftClosed.png',
+'ThighCuffsLeftKneel.png',
+'ThighCuffsLeftKneelClosed.png',
+'ThighCuffsLeftSpread.png',
+'ThighCuffsRightClosed.png',
+'ThighCuffsRightKneel.png',
+'ThighCuffsRightKneelClosed.png',
+'ThighCuffsRightSpread.png',
 'Xray.png',
 'XrayBra.png',
 'XrayFace.png',
@@ -86,7 +86,7 @@ let DisplacementMaps = [
 'Calf3SquishHogtie.png',
 'Calf3SquishKneelClosed.png',
 'CorsetSquish.png',
-'CrotchropeSquish.png',
+'CrotchropeSquished.png',
 'CuffLeftCrossed.png',
 'CuffLeftFree.png',
 'CuffLeftFront.png',
@@ -223,18 +223,26 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 	}
 	for (let dataFile of list) {
 		let amount = 100;
-		let result = preload ? PIXI.Assets.backgroundLoad(dataFile) : PIXI.Assets.load(dataFile);
-
-		result.then((value) => {
-			console.log(value)
-			//console.log(value)
-			CurrentLoading = "Loaded " + dataFile;
-			//console.log(dataFile);
+		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile).then(() => {}, () => {
+			CurrentLoading = "Error Loading " + dataFile;
 			KDLoadingDone += amount;
-		}, () => {
+		})
+		 : await PIXI.Assets.load(dataFile).then(() => {}, () => {
 			CurrentLoading = "Error Loading " + dataFile;
 			KDLoadingDone += amount;
 		});
+
+		//console.log(value)
+		CurrentLoading = "Loaded " + dataFile;
+		//console.log(dataFile);
+		KDLoadingDone += amount;
+
+		/*result.then((value) => {
+
+		}, () => {
+			CurrentLoading = "Error Loading " + dataFile;
+			KDLoadingDone += amount;
+		});*/
 		//let atlas = await result;
 	}
 
@@ -282,6 +290,10 @@ async function PreloadDisplacement(list) {
 KDLoadToggles();
 if (!KDToggles.HighResDisplacement) DisplacementScale = 0.25
 
-LoadTextureAtlas(nearestList, PIXI.SCALE_MODES.NEAREST);
-LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
-PreloadDisplacement(displacementList);
+async function load() {
+
+	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
+	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
+	await PreloadDisplacement(displacementList);
+}
+load();

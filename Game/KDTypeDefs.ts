@@ -1357,6 +1357,8 @@ interface KinkyDungeonEvent {
 	dist?: number;
 	aoe?: number;
 	buffType?: string;
+	bullet?: boolean,
+	melee?: boolean,
 	time?: number;
 	bindType?: string;
 	chance?: number;
@@ -2598,6 +2600,7 @@ type KDLockType = {
 	key: string;
 	canUnlock: (data: any) => boolean;
 	doUnlock: (data: any) => boolean;
+	doLock?: (data: any) => void;
 	failUnlock: (data: any) => string;
 	removeKeys: (data: any) => void;
 
@@ -2832,6 +2835,9 @@ type KDEventData_affinity = {
     affinity: string;
     group: string;
     Message: boolean;
+    canStand: boolean;
+    msgedstand: boolean;
+	groupIsHigh: boolean;
 };
 type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean}
 type KDEventData_CurseCount = {restraints: {item: item, host: item}[], count: number, activatedOnly: boolean}
