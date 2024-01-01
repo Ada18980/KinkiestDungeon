@@ -616,7 +616,7 @@ let KinkyDungeonLootTable = {
 			enchantlevelmin: 0, enchantlevelmax: 20,
 			message:"KDGoddessQuestReward_Armor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "LatexHeels", minLevel: 0, weight: 10,
-			armor: "LatexHeels",
+			armor: "LatexBoots",
 			amtMult: 2,
 			maxEnchants: 3,
 			minEnchants: 1,

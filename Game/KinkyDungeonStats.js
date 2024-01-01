@@ -367,8 +367,8 @@ function KinkyDungeonInterruptSleep() {
 }
 
 let KDBaseDamageTypes = {
-	knockbackTypes: ["fire", "electric", "shock", "tickle", "plush", "cold", "slash", "grope", "pierce"],
-	knockbackTypesStrong: ["blast", "crush", "acid", "pain", "arcane"],
+	knockbackTypes: ["fire", "electric", "shock", "tickle", "cold", "slash", "grope", "pierce"],
+	knockbackTypesStrong: ["blast", "crush", "acid", "plush", "pain", "arcane"],
 	arouseTypes: ["grope", "plush", "charm", "happygas"],
 	bypassTeaseTypes: ["charm", "happygas"],
 	distractionTypesWeakNeg: ["pain", "acid"],
@@ -2032,6 +2032,7 @@ function KDTripDuration() {
 function KDGetBalanceCost() {
 	let mult = KinkyDungeonStatsChoice.has("HeelWalker") ? 0.5 : 1;
 	if (KinkyDungeonStatsChoice.get("PoorBalance")) mult *= 1.7;
+	if (!KinkyDungeonIsArmsBound()) mult *= 0.5;
 
 	let training = KDGetHeelTraining();
 	return KDGameData.HeelPower * (0.01*mult*5/(5+training) - (KinkyDungeonStatsChoice.has("HeelWalker") ? 0.003 : 0.001));

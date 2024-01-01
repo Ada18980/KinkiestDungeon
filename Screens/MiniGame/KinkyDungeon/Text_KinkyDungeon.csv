@@ -7261,7 +7261,7 @@ KDTooltipInventoryFull,"...and NUMBER more"
 KDTooltipWeakBinding,"Takes damage if the caster is stunned"
 KDTooltipNormalBinding,"Disappears if the caster is defeated"
 KDTooltipBoundTo,"Caster: ENEMYNAME"
-KDTooltipDisappearing,"Demise immanent"
+KDTooltipDisappearing,"Demise imminent"
 
 KDStatusTooltipEnemyVulnerable,Vulnerable
 KDStatusTooltipEnemyStunned,Stunned
@@ -17037,31 +17037,37 @@ KinkyDungeonInventoryItemLore,"Notebook Page"
 KinkyDungeonJailerDomLeashTime,"You're going to stay with me for a while~"
 KinkyDungeonJailerDomLeashed,"That's better! Now stay close to me~"
 KinkyDungeonJailerDomLeashEndSoon,"Looks like our time is coming to an end..."
+KinkyDungeonJailerDomLeashEndReturn,"Time to bring you back to your place~"
 KinkyDungeonJailerDomLeashEndNow,"You've been quite adorable! Until next time~"
 
 KinkyDungeonJailerSubLeashTime,"It's time for your walk, miss."
 KinkyDungeonJailerSubLeashed,"Now let's see, where to go..."
 KinkyDungeonJailerSubLeashEndSoon,"I think we've reached a stopping point."
+KinkyDungeonJailerSubLeashEndReturn,"I have to put you back now~"
 KinkyDungeonJailerSubLeashEndNow,"It's been fun playing with you miss!"
 
 KinkyDungeonJailerGaggedLeashTime,"(reaches for your leash)"
 KinkyDungeonJailerGaggedLeashed,"(holds your leash firmly)"
 KinkyDungeonJailerGaggedLeashEndSoon,"Mmmmph~"
+KinkyDungeonJailerGaggedLeashEndReturn,"(giggles)"
 KinkyDungeonJailerGaggedLeashEndNow,"(waves goodbye)"
 
-KinkyDungeonJailerLeashTime,"WHy don't we go for a walk?"
+KinkyDungeonJailerLeashTime,"Why don't we go for a walk?"
 KinkyDungeonJailerLeashed,"That's better! Now come along~"
 KinkyDungeonJailerLeashEndSoon,"This has been lots of fun!"
+KinkyDungeonJailerLeashEndReturn,"I have to go return you~"
 KinkyDungeonJailerLeashEndNow,"Good girl~ Let's go again later~"
 
 KinkyDungeonJailerBratLeashTime,"It's time for walkies!"
 KinkyDungeonJailerBratLeashed,"That's a good girl!"
 KinkyDungeonJailerBratLeashEndSoon,"I want to keep you longer, but I've got things to do."
+KinkyDungeonJailerBratLeashEndReturn,"It's time to go back to your little house~"
 KinkyDungeonJailerBratLeashEndNow,"(pats you on the head)"
 
 KinkyDungeonJailerRobotLeashTime,"It is time for your mandatory exercise."
 KinkyDungeonJailerRobotLeashed,"Please maintain proximity."
 KinkyDungeonJailerRobotLeashEndSoon,"Progress Level: 90%"
+KinkyDungeonJailerRobotLeashEndReturn,"Exercise complete. Returning to storage."
 KinkyDungeonJailerRobotLeashEndNow,"Uploading logs to database. Error... no connection."
 
 NameMimicLatex,Latex Mimic
@@ -17780,7 +17786,7 @@ KinkyDungeonBuffChaoticOverflow,"Chaotic energy flows through you! You have a ba
 
 ItemPickupDivineTear,"You find a shimmering macaron."
 KinkyDungeonInventoryItemDivineTear,Heavenly Crunch Macaron
-KinkyDungeonInventoryItemDivineTearUse,"You feel holy energy neutralizing the cursed magic..."
+KinkyDungeonInventoryItemDivineTearUse,"You feel holy energy neutralizing the cursed magic permanently."
 KinkyDungeonInventoryItemDivineTearDesc,"Some say it comes from a bakery in heaven itself. Others say it is simply made from lab-grade materials, and actually tastes awful."
 KinkyDungeonInventoryItemDivineTearDesc2,"Unlocks a common cursed item and/or removes all curses from one currently worn item of your choice."
 
@@ -18452,6 +18458,8 @@ KDEscapeKey_Fail_None,Room bugged. Please Report.
 KDEscapeKey_Pass_None,""
 
 KDVarSuffCursed,(Cursed)
+KDVarSuffPurified,(Purified)
+KDVarPrefPurified,(Purified)
 KDVarSuffEvasion,of Agility
 KDVarPrefAccuracy,Precise
 KDVarPrefSneak,Silent

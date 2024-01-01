@@ -3950,13 +3950,13 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 									if (!KinkyDungeonNoEnemyExceptSub(enemy.x + dir.x, enemy.y + dir.y, false, enemy)
 										|| !AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
 										enemy.path = null;
-										KinkyDungeonSetEnemyFlag(enemy, "failpath", enemy == KinkyDungeonJailGuard() ? 2 : 20);
+										KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
 										KinkyDungeonSetEnemyFlag(enemy, "blocked", 24);
 									}
 									splice = true;
 								} else {
 									enemy.path = null;
-									KinkyDungeonSetEnemyFlag(enemy, "failpath", enemy == KinkyDungeonJailGuard() ? 2 : 20);
+									KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
 									if (!AIData.canSensePlayer) {
 										if (enemy.aware) KDAddThought(enemy.id, "Lose", 1, 4);
 										enemy.aware = false;
@@ -4038,10 +4038,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						if (!enemy.path && !KDEnemyHasFlag(enemy, "genpath")) {
 							enemy.path = KinkyDungeonFindPath(
 								enemy.x, enemy.y, enemy.gx, enemy.gy,
-								enemy == KinkyDungeonJailGuard() || KDEnemyHasFlag(enemy, "blocked"), KDEnemyHasFlag(enemy, "blocked"),
+								enemy == KinkyDungeonJailGuard() || enemy != KinkyDungeonLeashingEnemy() || KDEnemyHasFlag(enemy, "blocked"), KDEnemyHasFlag(enemy, "blocked"),
 								enemy == KinkyDungeonLeashingEnemy() || AIData.ignoreLocks, AIData.MovableTiles,
-								undefined, undefined, undefined, enemy, enemy != KinkyDungeonJailGuard() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
-							KinkyDungeonSetEnemyFlag(enemy, "genpath", enemy == KinkyDungeonJailGuard() ? 1 : 100);
+								undefined, undefined, undefined, enemy, enemy != KinkyDungeonJailGuard() && enemy != KinkyDungeonLeashingEnemy() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
+							KinkyDungeonSetEnemyFlag(enemy, "genpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 1 : 100);
 						}
 						if (enemy.path) {
 							if (enemy.path && enemy.path.length > 0 && Math.max(Math.abs(enemy.path[0].x - enemy.x),Math.abs(enemy.path[0].y - enemy.y)) < 1.5) {
@@ -4049,13 +4049,13 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								if (!KinkyDungeonNoEnemyExceptSub(enemy.x + dir.x, enemy.y + dir.y, false, enemy)
 									|| !AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
 									enemy.path = null;
-									KinkyDungeonSetEnemyFlag(enemy, "failpath", enemy == KinkyDungeonJailGuard() ? 2 : 20);
+									KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
 									KinkyDungeonSetEnemyFlag(enemy, "blocked", 24);
 								}
 								splice = true;
 							} else {
 								enemy.path = null;
-								KinkyDungeonSetEnemyFlag(enemy, "failpath", enemy == KinkyDungeonJailGuard() ? 2 : 20);
+								KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
 							}
 						}
 
@@ -5816,7 +5816,7 @@ let KDDomThresh_PerkMod = -0.5;
  */
 function KDCanDom(enemy, ignoreRelative = false) {
 	if (!ignoreRelative) {
-		if (enemy == KinkyDungeonJailGuard()) return false;
+		if ((enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy())) return false;
 		if (KDGameData.KinkyDungeonLeashedPlayer > 0) return false;
 	}
 	if (!enemy.Enemy.bound) return false;

@@ -6,6 +6,7 @@ let LAYERS_BASE = [
 	"CollarAcc",
 	"Leash",
 
+	"AnimalEarsFront",
 	"HatDeco",
 	"Hat",
 	"Brows", // Brows should get hidden with mask
@@ -1466,6 +1467,7 @@ let LayerProperties = {
 	CircletUnder: {Parent: "Head"},
 	HatBack: {Parent: "Head"},
 	AnimalEars: {Parent: "Head"},
+	AnimalEarsFront: {Parent: "Head"},
 	Tail: {Parent: "Torso"},
 
 

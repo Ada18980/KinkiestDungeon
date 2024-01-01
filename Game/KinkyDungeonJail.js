@@ -1145,6 +1145,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 		if (KDRestraint(collar).name == "MithrilCollar") defeat_outfit = "Elven";
 		if (KDRestraint(collar).name == "ObsidianCollar") defeat_outfit = "Obsidian";
 	}
+	if (KDGetMainFaction() && KDFactionProperties[KDGetMainFaction()]?.jailOutfit) defeat_outfit = KDFactionProperties[KDGetMainFaction()]?.jailOutfit;
 	if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
 
 	KinkyDungeonSetDress(defeat_outfit, "JailUniform");

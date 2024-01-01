@@ -6295,7 +6295,7 @@ let KDEventMapBullet = {
 				};
 				KinkyDungeonSendEvent("beforePlayerLaunchAttack", dd);
 
-				KinkyDungeonAttackEnemy(data.enemy, dd.attackData, 2.0);
+				KinkyDungeonAttackEnemy(data.enemy, dd.attackData, Math.max(2.0, 2 * KinkyDungeonGetEvasion(undefined, false, true, true)));
 			}
 		},
 
@@ -6333,7 +6333,7 @@ let KDEventMapBullet = {
 				};
 				KinkyDungeonSendEvent("beforePlayerLaunchAttack", dd);
 
-				KinkyDungeonAttackEnemy(data.enemy, dd.attackData, 0.8, b);
+				KinkyDungeonAttackEnemy(data.enemy, dd.attackData, Math.max(0.8, 0.8 * KinkyDungeonGetEvasion(undefined, false, true, true)), b);
 			}
 		},
 		"Arrow": (e, b, data) => {
@@ -6350,7 +6350,7 @@ let KDEventMapBullet = {
 				dd.attackData.nodisarm = true;
 				KinkyDungeonSendEvent("beforePlayerLaunchAttack", dd);
 
-				KinkyDungeonAttackEnemy(data.enemy, dd.attackData, Math.max(1, KinkyDungeonPlayerDamage?.chance || 1), b);
+				KinkyDungeonAttackEnemy(data.enemy, dd.attackData, Math.max(1, KinkyDungeonGetEvasion(undefined, false, true, false)), b);
 			}
 		},
 		"ShadowSlash": (e, b, data) => {
@@ -7959,7 +7959,9 @@ let KDEventMapGeneric = {
 
 		"QuestMarker": (e, data) => {
 			for (let enemy of KDMapData.Entities) {
-				if (KDEnemyHasFlag(enemy, "questtarget") && !enemy.aware && enemy.idle) {
+				if (KDEnemyHasFlag(enemy, "questtarget") && !enemy.aware && enemy.idle
+					&& (enemy.x - data.x + .5) * data.scale > 0 && (enemy.y - data.y + .5) * data.scale > 0
+					&& (enemy.x - data.x + .5) * data.scale < KDMinimapWidth()+21 && (enemy.y - data.y + .5) * data.scale < KDMinimapHeight() + 21) {
 					/*KDDraw(kdminimap, kdminimapsprites, enemy.id + "_questtargmm", KinkyDungeonRootDirectory + "UI/DollmakerTarget.png",
 						(enemy.x - data.x - 1) * data.scale,
 						(enemy.y - data.y - 1) * data.scale,

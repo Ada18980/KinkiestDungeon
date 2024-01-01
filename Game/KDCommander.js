@@ -640,6 +640,7 @@ let KDCommanderOrders = {
 		},
 		remove: (enemy, data) => {},
 		update: (enemy, data) => {
+			if (KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) KDBreakTether(KinkyDungeonPlayerEntity);
 			KinkyDungeonSetEnemyFlag(enemy, "runAway", 5 + Math.round(5 * KDRandom()));
 		},
 

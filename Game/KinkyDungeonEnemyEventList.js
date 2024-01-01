@@ -298,20 +298,91 @@ let KDIntentEvents = {
 		},
 		maintain: (enemy, delta, AIData) => {
 			if (!KinkyDungeonFlags.has("TempLeash") || !(KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints"))) {
-				enemy.IntentAction = '';
-				enemy.IntentLeashPoint = null;
+				if (!(KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints")) || KDGameData.PrisonerState != 'jail') {
+					enemy.IntentAction = '';
+					enemy.IntentLeashPoint = null;
 
-				if (KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, enemy.x, enemy.y, enemy)) {
-					if (!KinkyDungeonFlags.has("TempLeash"))
-						KDTickTraining("Heels", KDGameData.HeelPower > 0,
-							KDGameData.HeelPower <= 0, 6, 25);
-					KDBreakTether(KinkyDungeonPlayerEntity);
-					enemy.playWithPlayer = 0;
-					enemy.playWithPlayerCD = 30;
-					KinkyDungeonSendDialogue(enemy,
-						TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndNow").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
-						KDGetColor(enemy), 7, 10);
+					if (KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, enemy.x, enemy.y, enemy)) {
+						if (!KinkyDungeonFlags.has("TempLeash"))
+							KDTickTraining("Heels", KDGameData.HeelPower > 0,
+								KDGameData.HeelPower <= 0, 6, 25);
+						KDBreakTether(KinkyDungeonPlayerEntity);
+						enemy.playWithPlayer = 0;
+						enemy.playWithPlayerCD = 30;
+						KinkyDungeonSendDialogue(enemy,
+							TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndNow").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+							KDGetColor(enemy), 7, 10);
+					}
+				} else {
+					// Bring back!
+					if (AIData?.playerDist < 5.5) {
+						if (enemy.playWithPlayer < 10 && !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
+							enemy.playWithPlayer = 10;
+						}// else enemy.playWithPlayer += delta;
+						KinkyDungeonSetFlag("noResetIntentFull", 10);
+					}
+
+					// Enemies will still be able to play with you!
+					KinkyDungeonSetFlag("overrideleashprotection", 2);
+
+					if (!KinkyDungeonFlags.get("TempLeashReturn")) {
+						KinkyDungeonSetFlag("TempLeashReturn", 40);
+						KinkyDungeonSendDialogue(enemy,
+							TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndReturn").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+							KDGetColor(enemy), 7, 7);
+					}
+					if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
+						enemy.gx = KinkyDungeonPlayerEntity.x;
+						enemy.gy = KinkyDungeonPlayerEntity.y;
+						if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5) {
+							// Leash the player if they are close
+							KinkyDungeonAttachTetherToEntity(4.5, enemy);
+							if (KinkyDungeonGetRestraintItem("ItemDevices")) {
+								KinkyDungeonRemoveRestraint("ItemDevices", false, false, false);
+							}
+							KinkyDungeonSendDialogue(enemy,
+								TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Leashed").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+								KDGetColor(enemy), 5, 10);
+
+							KDAddThought(enemy.id, "Happy", 6, enemy.playWithPlayer);
+						}
+					} else {
+						// We will wander more than usual
+						KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
+						KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
+						if (enemy.idle) {
+							let newPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]) || KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
+							if (newPoint) {
+								enemy.gx = newPoint.x;
+								enemy.gy = newPoint.y;
+								if (KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) < 1.5) {
+									if (newPoint == KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"])) {
+										KDSettlePlayerInFurniture(enemy, AIData);
+									} else {
+										let nearestJail = KinkyDungeonNearestJailPoint(enemy.x, enemy.y);
+										let jailRadius = (nearestJail && nearestJail.radius) ? nearestJail.radius : 1.5;
+										let playerInCell = nearestJail ? (Math.abs(KinkyDungeonPlayerEntity.x - nearestJail.x) < jailRadius - 1 && Math.abs(KinkyDungeonPlayerEntity.y - nearestJail.y) <= jailRadius)
+											: null;
+										if (!playerInCell) {
+											let point = {x: nearestJail.x, y: nearestJail.y};//KinkyDungeonGetNearbyPoint(nearestJail.x, nearestJail.y, true, undefined, true);
+											if (point) {
+												KDMovePlayer(point.x, point.y, false);
+											}
+										}
+										KDBreakTether(KinkyDungeonPlayerEntity);
+									}
+									enemy.IntentAction = '';
+									enemy.IntentLeashPoint = null;
+								}
+							} else {
+								enemy.IntentAction = '';
+								enemy.IntentLeashPoint = null;
+							}
+
+						}
+					}
 				}
+
 			} else {
 				if (AIData?.playerDist < 5.5) {
 					if (enemy.playWithPlayer < 10 && !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
@@ -325,7 +396,7 @@ let KDIntentEvents = {
 
 				if (KinkyDungeonFlags.get("TempLeash") == 10) {
 					KinkyDungeonSendDialogue(enemy,
-						TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndSoon").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+						TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndReturn").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 						KDGetColor(enemy), 7, 7);
 				}
 				if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {

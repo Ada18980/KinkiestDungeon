@@ -1005,9 +1005,9 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					KinkyDungeonSendEvent("playerCast", data);
 					if (KDGameData.HeelPower > 0) {
 						if (spell.components?.includes("Arms"))
-							KDChangeBalance(KDGetBalanceCost() * KDBalanceCastArmsMult, true);
+							KDChangeBalance(-KDGetBalanceCost() * KDBalanceCastArmsMult, true);
 						if (spell.components?.includes("Legs"))
-							KDChangeBalance(KDGetBalanceCost() * KDBalanceCastLegsMult, true);
+							KDChangeBalance(-KDGetBalanceCost() * KDBalanceCastLegsMult, true);
 					}
 					if (spell.school) KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast_" + spell.school.toLowerCase(), 1);
 					KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast", 1);
@@ -1078,9 +1078,9 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		KinkyDungeonSendEvent("playerCast", data);
 		if (KDGameData.HeelPower > 0) {
 			if (spell.components?.includes("Arms"))
-				KDChangeBalance(KDGetBalanceCost() * KDBalanceCastArmsMult, true);
+				KDChangeBalance(-KDGetBalanceCost() * KDBalanceCastArmsMult, true);
 			if (spell.components?.includes("Legs"))
-				KDChangeBalance(KDGetBalanceCost() * KDBalanceCastLegsMult, true);
+				KDChangeBalance(-KDGetBalanceCost() * KDBalanceCastLegsMult, true);
 		}
 		//let cost = spell.staminacost ? spell.staminacost : KinkyDungeonGetCost(spell.level);
 

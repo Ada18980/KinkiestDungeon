@@ -789,7 +789,7 @@ let KinkyDungeonSpellSpecials = {
 				};
 				KinkyDungeonSendEvent("beforePlayerLaunchAttack", data);
 
-				KinkyDungeonAttackEnemy(en, data.attackData, 1.0);
+				KinkyDungeonAttackEnemy(en, data.attackData, Math.max(1, KinkyDungeonGetEvasion(undefined, false, true, true)));
 			}
 		}
 		if (hit) {

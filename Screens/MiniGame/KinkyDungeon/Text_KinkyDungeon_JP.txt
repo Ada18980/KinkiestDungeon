@@ -2513,9 +2513,9 @@ Unarmed
 素手
 Accuracy:
 命中率：
-Crit Multiplier: 
+Crit Multiplier:
 会心ダメージ率：
-Bind Crit Multiplier: 
+Bind Crit Multiplier:
 拘束会心ダメージ率：
 Find the keys..
 鍵を見つける……
@@ -2574,9 +2574,9 @@ Edged!
 Satisfied. Miscast chance is reduced.
 満足した……。詠唱失敗率が減少する。
 
-Crit: 
+Crit:
 クリティカル：
-Bind: 
+Bind:
 拘束：
 Damage:
 ダメージ：
@@ -8575,7 +8575,7 @@ Choose target location (2 tile range)
 移動先を選択(2マス先)
 Blink III
 ブリンク III
-Instantly teleport up to 3 tiles away. Must have vision of the target point. 
+Instantly teleport up to 3 tiles away. Must have vision of the target point.
 視界範囲内の、3マス先まで瞬時に移動する。
 You teleport!
 瞬間移動した！
@@ -11266,7 +11266,7 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 関係性3を捧げることによって、拘束から抜け出しやすくなる。
 For 3 rep the goddess will grant you a key.
 関係性3を捧げることによって、鍵を授かる。
-For 3 rep the goddess will grant you 
+For 3 rep the goddess will grant you
 関係性3を捧げることによって、
 For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
@@ -11276,7 +11276,7 @@ For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
 For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
-For 3 rep the goddess 
+For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
 The goddess will fully restore your mana in exchange for AMOUNT rep
 AMOUNT の関係性と引き換えに、神にマナを補充してもらった。
@@ -11581,9 +11581,9 @@ Can disarm (chance: DISARMCHANCE%)
 武装解除可能 (確率: DISARMCHANCE%)
 Resistances:
 耐性:
-HP: 
-HP: 
-Binding: 
+HP:
+HP:
+Binding:
 拘束：
 Ambivalent
 関係
@@ -11893,7 +11893,7 @@ Extreme
 エクストリーム
 A supposedly reasonable difficulty curve.
 普通の難易度。サクサクプレイ用
-Play the game the way it was intended. Cruel and restrictive. 
+Play the game the way it was intended. Cruel and restrictive.
 本来意図された難易度。積極的に捕まりたい人用
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 自己責任。ハードモードをダブルクリックで解除。
@@ -13551,6 +13551,8 @@ Enjoying yourself? Let's have some fun~
 一人で楽しんでいるのかい？一緒に楽しもうよ！
 You seem like you're having fun! Why don't we go for a walk~
 楽しそうだね、一緒にお散歩しようよ！
+Why don't we go for a walk~
+一緒にお散歩しようよ！
 Wouldn't it be more interesting if...
 楽しいことになりそうだね……
 What have you got there?
@@ -17201,7 +17203,7 @@ What? (PERCENT chance to avoid)
 (SPEAKER は軽く咳払いをする)|ああ、私達は新人を募集しているんだ。|正義のために戦う意志があるなら、いつでも大歓迎だ！
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER と固い握手を交わした)|ようこそドラゴンハーツへ！
-(The SPEAKER tilts her head and shrugs)|Ah well. 
+(The SPEAKER tilts her head and shrugs)|Ah well.
 (SPEAKER は首をかしげて肩をすくめる)|ああ、そうか。
 (The SPEAKER nods)|Fair enough.
 (SPEAKER は素直に頷いた)|残念だ。
@@ -17245,7 +17247,7 @@ What are you going to do about it? (PERCENT chance to avoid)
 (SPEAKER は咳払いをする)|アンタは今私達の縄張りに侵入しているわけだけど。|条件さえ飲んでくれれば私達も見逃してやろうと思う。|私達に危害を加えないと約束してほしいんだ。
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER と固い握手をかわした)|これからよろしく頼むよ！
-(The SPEAKER tilts her head and shrugs)|Ah well. 
+(The SPEAKER tilts her head and shrugs)|Ah well.
 (SPEAKER は首をかしげて肩をすくめる)|ああ、そうかい。
 (The SPEAKER nods)|Fair enough.
 (SPEAKER は素直に頷いた)|そうかい。
@@ -18719,7 +18721,7 @@ Upcast Level LEVEL
 強化レベル LEVEL
 Prerequisite
 前提：
-KDUnlocks,"Unlocks: 
+KDUnlocks,"Unlocks:
 解放済み：
 You need to learn REQUIREDSPELL before you can learn this one.
 このスキルを学ぶには REQUIREDSPELL を先に習得する必要がある。
@@ -18755,7 +18757,7 @@ Initiating prisoner lockdown protocol
 収監プロトコル開始
 Your RestraintName suddenly snap together as the EnemyName activates them
 EnemyName が RestraintName をアクティブにしたようだ。
-Turn Count: 
+Turn Count:
 ターン数：
 The Shopkeeper leashes you!
 店主にリードを掴まれた。
@@ -19145,7 +19147,7 @@ Copy
 コピー
 Paste
 ペースト
-Preloading Character Assets: 
+Preloading Character Assets:
 キャラクターアセットをロード中：
 
 
@@ -19301,7 +19303,7 @@ Deals glue damage. Adds 25 slime binding.
 グルー属性。25のスライム属性拘束値を与える。
 You pick up slime-covered sword.
 スライムに覆われた剣を拾った
-Preloading Character Assets: 
+Preloading Character Assets:
 キャラクターアセット：
 Frost Blade
 フロストブレード
@@ -20191,7 +20193,7 @@ Bag of Goodies
 秘密のカバン
 Someone's secret stash.
 誰かの秘密の遊び道具。
-Deals charm damage. Applies a toy to targets hit for 40 turns. 
+Deals charm damage. Applies a toy to targets hit for 40 turns.
 魅了属性。攻撃が命中した敵に、40ターンの間オモチャを取り付ける。
 You find a bag filled with various toys and vibrators...
 色々な気持ちよさそうなオモチャがつまったカバンを見つけた……
@@ -20231,7 +20233,7 @@ Rubber Stick
 ラバースティック
 A rubber cylinder without any lewd intentions whatsoever.
 ゴムの棒。卑猥が一切ない。
-Deals grope damage. 
+Deals grope damage.
 愛撫属性。
 You pick up a flexible rubber stick.
 ぐにゃぐにゃしたゴムの棒を拾った。
@@ -21023,7 +21025,7 @@ The assistant applies a lock! (DamageTaken)
 研究員に拘束具をロックされた！ (DamageTaken)
 The assistant splashes a solvent in your face, blinding you! (DamageTaken)
 研究員に奇妙な液体をかけられ、目潰しされた！ (DamageTaken)
- 
+
 ...Glue Technician?
 グルーの技術士……？
 You rescue the glue technician.
@@ -21259,9 +21261,9 @@ RestraintName に亀裂が入り始めた！
 Your RestraintName shatters and falls off!
 RestraintName は粉々に砕け落ちた！
 
-Load Hotbar 
+Load Hotbar
 ホットバーをロード
-Save Hotbar 
+Save Hotbar
 ホットバーをセーブ
 Clear Hotbar
 ホットバーをクリア
@@ -22502,7 +22504,7 @@ Fuuka's Shrine
 Dollmaker
 ドールメイカー
 
-Receive the following restraints: 
+Receive the following restraints:
 次の拘束をされる：
 You will be bound with some form of restraint.
 何らかの拘束具で縛られることになる。
@@ -22519,7 +22521,7 @@ The gag geist teases you playfully!! (DamageTaken)
 The gag geist gags the girl with a ghastly grimace! (+RestraintAdded)
 ギャグガイストがぞっとするような笑みで猿轡を噛ませてきた！ (+RestraintAdded)
 
-Poltergeist 
+Poltergeist
 ポルターガイスト
 The poltergeist goes silent.
 ポルターガイスト現象は収まった。

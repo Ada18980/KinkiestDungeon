@@ -837,6 +837,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			}
 			height = altType.height;
 			width = altType.width;
+			KDGameData.JailKey = false;
 		}
 		KinkyDungeonSetFlag("BossUnlocked", 0);
 		if (altType && !bossRules && altType.nokeys) {
@@ -3985,7 +3986,7 @@ function KinkyDungeonGameKeyUp(lastPress) {
 		if (KinkyDungeonKeyMenu.includes(KinkyDungeonKeybindingCurrentKeyRelease)) {
 			switch (KinkyDungeonKeybindingCurrentKeyRelease) {
 				// QuikInv, Inventory, Reputation, Magic, Log
-				case KinkyDungeonKeyMenu[0]: KinkyDungeonShowInventory = !KinkyDungeonShowInventory; break;
+				case KinkyDungeonKeyMenu[0]: if (KinkyDungeonDrawState == 'Game') KinkyDungeonShowInventory = !KinkyDungeonShowInventory; break;
 				case KinkyDungeonKeyMenu[1]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Inventory" ? "Game" : "Inventory"; break;
 				case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Reputation" ? "Game" : "Reputation"; break;
 				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = KinkyDungeonDrawState == "MagicSpells" ? "Game" : "MagicSpells"; break;
@@ -3993,7 +3994,7 @@ function KinkyDungeonGameKeyUp(lastPress) {
 			}
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
-		} else if (KinkyDungeonKeyToggle.includes(KinkyDungeonKeybindingCurrentKeyRelease)) {
+		} else if (KinkyDungeonKeyToggle.includes(KinkyDungeonKeybindingCurrentKeyRelease) && KinkyDungeonDrawState == 'Game') {
 			switch (KinkyDungeonKeybindingCurrentKeyRelease) {
 				// Log, Passing, Door, Auto Struggle, Auto Pathfind
 				//case KinkyDungeonKeyToggle[0]: KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle; break;
@@ -4150,7 +4151,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 					KinkyDungeonChangeDistraction(0.7 - 0.5 * data.attackCost, false, 0.33);
 				}
 				if (KDGameData.HeelPower > 0)
-					KDChangeBalance(attackCost * KDGetBalanceCost() * KDBalanceAttackMult, true);
+					KDChangeBalance(data.attackCost * KDGetBalanceCost() * KDBalanceAttackMult, true);
 
 				if (KinkyDungeonAttackEnemy(data.target, data.attackData)) {
 					result = "hit";
@@ -4344,12 +4345,12 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 						let plugLevel = Math.round(Math.min(3, KinkyDungeonStatPlugLevel));
 						let dict = KinkyDungeonPlugCount > 1 ? "plugs" : "plug";
 						let dicts = KinkyDungeonPlugCount > 1 ? "" : "s";
-						if (KinkyDungeonSlowLevel == 0 && KinkyDungeonPlugCount > 0) KinkyDungeonSendTextMessage(0, TextGet("KinkyDungeonPlugWalk" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "yellow", 2, true);
-						if (KinkyDungeonSlowLevel == 1 && !KinkyDungeonStatsChoice.has("HeelWalker")) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonSlowed" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "yellow", 2, true);
-						else if (KinkyDungeonSlowLevel == 2) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonHopping" + (KDGameData.Crouch ? "Crouch" : "") + plugLevel).replace("plugs", dict).replace("(s)", dicts), "orange", 2, true);
-						else if (KinkyDungeonSlowLevel == 3) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonInching" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "#ff0000", 2, true);
-						else if (KinkyDungeonSlowLevel > 3 && KinkyDungeonSlowLevel < 10) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrawling" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "#ff0000", 2, true);
-						else if (KinkyDungeonSlowLevel >= 10) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCantMove" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "#ff0000", 2, true);
+						if (KinkyDungeonSlowLevel == 0 && KinkyDungeonPlugCount > 0) KinkyDungeonSendActionMessage(0, TextGet("KinkyDungeonPlugWalk" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "yellow", 2, true);
+						if (KinkyDungeonSlowLevel == 1 && !KinkyDungeonStatsChoice.has("HeelWalker")) KinkyDungeonSendActionMessage(1, TextGet("KinkyDungeonSlowed" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "yellow", 2, true);
+						else if (KinkyDungeonSlowLevel == 2) KinkyDungeonSendActionMessage(1, TextGet("KinkyDungeonHopping" + (KDGameData.Crouch ? "Crouch" : "") + plugLevel).replace("plugs", dict).replace("(s)", dicts), "orange", 2, true);
+						else if (KinkyDungeonSlowLevel == 3) KinkyDungeonSendActionMessage(1, TextGet("KinkyDungeonInching" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "#ff0000", 2, true);
+						else if (KinkyDungeonSlowLevel > 3 && KinkyDungeonSlowLevel < 10) KinkyDungeonSendActionMessage(1, TextGet("KinkyDungeonCrawling" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "#ff0000", 2, true);
+						else if (KinkyDungeonSlowLevel >= 10) KinkyDungeonSendActionMessage(1, TextGet("KinkyDungeonCantMove" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "#ff0000", 2, true);
 
 						let moveMult = Math.max(1, KinkyDungeonSlowLevel);
 
@@ -4413,7 +4414,8 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 						KDGameData.MovePoints = Math.min(KDGameData.MovePoints, 1-newDelta);
 					}
 				}
-				KDGameData.BalancePause = true;
+				if (!(KDGameData.KneelTurns > 0))
+					KDGameData.BalancePause = true;
 			} else {
 				//KDChangeBalance((KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
 				KDGameData.MovePoints = Math.min(KDGameData.MovePoints + 1, 0);

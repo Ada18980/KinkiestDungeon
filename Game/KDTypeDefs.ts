@@ -3083,6 +3083,8 @@ interface KDFactionProps {
 	customDefeat?: string,
 	/** Custom jail allied faction to use */
 	jailAlliedFaction?: string,
+	/** Custom jail outfit to use */
+	jailOutfit: string,
 }
 
 type KDTile = any;

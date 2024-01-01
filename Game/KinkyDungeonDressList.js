@@ -4,6 +4,9 @@
 let KinkyDungeonOutfitsBase = [
 	{name: "OutfitDefault", dress: "Default", shop: false, rarity: 1,},// To avoid breaking saves
 	{name: "Default", dress: "Default", shop: false, rarity: 1},
+	{name: "LatexPrisoner", dress: "LatexPrisoner", shop: false, rarity: 1},
+	{name: "Dungeon", dress: "Dungeon", shop: false, rarity: 1},
+	{name: "Prisoner", dress: "Prisoner", shop: false, rarity: 1},
 	{name: "JailUniform", dress: "JailUniform", shop: false, rarity: 1,
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 1.2},

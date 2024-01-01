@@ -511,6 +511,8 @@ let KDInventoryAction = {
 
 				if (KDGetRestraintVariant(item)) {
 					KDGetRestraintVariant(item).events = JSON.parse(JSON.stringify(item.events));
+					if (KDGetRestraintVariant(item).suffix == "Cursed") KDGetRestraintVariant(item).suffix = "Purified";
+					if (KDGetRestraintVariant(item).prefix == "Cursed") KDGetRestraintVariant(item).prefix = "Purified";
 				}
 
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Evil.ogg");

@@ -321,6 +321,7 @@ AddModel({
 	Categories: ["Suits"],
 	Folder: "Catsuit",
 	Group: "Catsuit",
+	AddPose: ["HideNipples"],
 	Layers: ToLayerMap([
 		...GetModelLayers("CatsuitUpper"),
 		...GetModelLayers("CatsuitLower"),
@@ -335,6 +336,7 @@ AddModel({
 	Parent: "TransparentCatsuit",
 	Categories: ["Suits"],
 	Folder: "Catsuit",
+	AddPose: ["HideNipples"],
 	Filters: {
 		TorsoUpper: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
 		TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
@@ -349,6 +351,7 @@ AddModel({
 	Parent: "TransparentCatsuit",
 	Categories: ["Suits"],
 	Folder: "Catsuit",
+	AddPose: ["HideNipples"],
 	Filters: {
 		TorsoUpper: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
 		TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
@@ -394,6 +397,7 @@ AddModel({
 	Categories: ["Suits"],
 	Folder: "Catsuit",
 	Group: "Catsuit",
+	AddPose: ["HideNipples"],
 	Filters: {
 		TorsoUpper: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
 		TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},

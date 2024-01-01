@@ -52,8 +52,8 @@ let KinkyDungeonFactionFilters = {
 		Highlight: {"gamma":0.8,"saturation":0,"contrast":0.8666666666666667,"brightness":1.4166666666666665,"red":2.05,"green":1,"blue":2.15,"alpha":1},
 	},
 	"Alchemist": {
-		Catsuit: {"gamma":1,"saturation":0,"contrast":0.7899999999999999,"brightness":1,"red":1.8627450980392157,"green":1.607843137254902,"blue":4.450980392156863,"alpha":1},
-		DarkNeutral: {"gamma":0.8333333333333333,"saturation":1,"contrast":1.2,"brightness":1.2,"red":1,"green":1,"blue":1,"alpha":1},
+		Catsuit: {"gamma":1.7666666666666666,"saturation":0.016666666666666666,"contrast":0.6833333333333333,"brightness":1.9,"red":1,"green":1,"blue":1,"alpha":1},
+		DarkNeutral: {"gamma":0.8333333333333333,"saturation":0,"contrast":1.2,"brightness":1.2,"red":1,"green":1,"blue":1,"alpha":1},
 		LightNeutral: {"gamma":1,"saturation":0,"contrast":1.1833333333333333,"brightness":0.6666666666666666,"red":0.5294117647058824,"green":1.7450980392156863,"blue":3.9019607843137254,"alpha":1},
 		//Catsuit: {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
 		Highlight: {"gamma":0.65,"saturation":0.06666666666666667,"contrast":2.283333333333333,"brightness":1,"red":0.5833333333333334,"green":1.55,"blue":0.8166666666666667,"alpha":1},
@@ -121,6 +121,7 @@ let KDFactionProperties = {
 			if (tags.includes("dollsmith")) w += 10;
 			return w;
 		},
+		jailOutfit: "Bikini",
 	},
 	Bountyhunter: {
 		honor: 1,
@@ -135,6 +136,7 @@ let KDFactionProperties = {
 			if (tags.includes("tech")) w += 5;
 			return w;
 		},
+		jailOutfit: "LatexPrisoner",
 	},
 	AncientRobot: {
 		honor: 0,
@@ -151,6 +153,7 @@ let KDFactionProperties = {
 			if (tags.includes("industrial")) w += 15;
 			return w;
 		},
+		jailOutfit: "CyberDoll",
 	},
 	Elf: {
 		honor: 1,
@@ -166,6 +169,7 @@ let KDFactionProperties = {
 			if (tags.includes("jungle")) w += 10;
 			return w;
 		},
+		jailOutfit: "Elven",
 	},
 	Bast: {
 		honor: 0,
@@ -178,6 +182,7 @@ let KDFactionProperties = {
 			if (tags.includes("egyptian")) w += 10;
 			return w;
 		},
+		jailOutfit: "Bast",
 	},
 	Maidforce: {
 		honor: 1,
@@ -192,6 +197,7 @@ let KDFactionProperties = {
 			if (tags.includes("tech")) w += 5;
 			return w;
 		},
+		jailOutfit: "Maid",
 	},
 	Dragon: {
 		honor: 1,
@@ -206,6 +212,7 @@ let KDFactionProperties = {
 			if (tags.includes("crystalline")) w += 5;
 			return w;
 		},
+		jailOutfit: "Dragon",
 	},
 	Elemental: {
 		honor: -1,
@@ -222,6 +229,7 @@ let KDFactionProperties = {
 			if (tags.includes("angel")) w += 5;
 			return w;
 		},
+		jailOutfit: "Obsidian",
 	},
 	Apprentice: {
 		honor: 1,
@@ -238,6 +246,7 @@ let KDFactionProperties = {
 			if (tags.includes("book")) w += 15;
 			return w;
 		},
+		jailOutfit: "Lingerie",
 	},
 	Nevermere: {
 		honor: -1,
@@ -252,6 +261,7 @@ let KDFactionProperties = {
 			if (tags.includes("tech")) w += 5;
 			return w;
 		},
+		jailOutfit: "Wolfgirl",
 	},
 	Alchemist: {
 		honor: 0,
@@ -267,6 +277,7 @@ let KDFactionProperties = {
 			if (tags.includes("magical")) w += 5;
 			return w;
 		},
+		jailOutfit: "BlueSuit",
 	},
 	Bandit: {
 		honor: -1,
@@ -280,6 +291,7 @@ let KDFactionProperties = {
 			if (tags.includes("nature")) w += 5;
 			return w;
 		},
+		jailOutfit: "Prisoner",
 	},
 
 	Owners: {
@@ -291,6 +303,7 @@ let KDFactionProperties = {
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			return 0;
 		},
+		jailOutfit: "Obsidian",
 	},
 	WolfgirlHunters: {
 		customDefeat: "WolfgirlHunters",
@@ -301,6 +314,7 @@ let KDFactionProperties = {
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			return 0;
 		},
+		jailOutfit: "Nevermere",
 	},
 	Delinquent: {
 		customDefeat: "MaidSweeper",
@@ -311,6 +325,7 @@ let KDFactionProperties = {
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			return 0;
 		},
+		jailOutfit: "Lingerie",
 	},
 	RopeDojo: {
 		customDefeat: "RopeDojo",
@@ -321,6 +336,7 @@ let KDFactionProperties = {
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			return 0;
 		},
+		jailOutfit: "Bikini",
 	},
 	DollShoppe: {
 		customDefeat: "DollShoppe",
@@ -331,6 +347,7 @@ let KDFactionProperties = {
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			return 0;
 		},
+		jailOutfit: "BindingDress",
 	},
 };
 
