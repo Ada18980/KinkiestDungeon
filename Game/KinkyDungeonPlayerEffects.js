@@ -1353,9 +1353,9 @@ let KDPlayerEffects = {
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
 		let added = [];
 		for (let i = 0; i < playerEffect.count; i++) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["obsidianRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["crystalRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 			if (restraintAdd) {
-				KDPlayerEffectRestrain(spell, 1, ["obsidianRestraints"], faction);
+				KDPlayerEffectRestrain(spell, 1, ["crystalRestraints"], faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 				added.push(restraintAdd);
 				effect = true;

@@ -163,7 +163,7 @@ AddModel({
 			InheritColor: "Tape",
 			HideWhenOverridden: true,
 		},
-		{ Name: "Chest", Layer: "WrapChest", Pri: 50,
+		{ Name: "Chest", Layer: "WrappingChest", Pri: 50,
 			Invariant: true,
 			InheritColor: "Tape",
 			HideWhenOverridden: true,

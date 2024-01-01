@@ -117,8 +117,8 @@ let LAYERS_BASE = [
 	"Necklace",
 
 
-	"HarnessOver",
 	"WrapChest",
+	"HarnessOver",
 	"BindChest",
 	"BustierCollar",
 	"BustierChest",
@@ -169,6 +169,7 @@ let LAYERS_BASE = [
 
 	// Skirts that dont follow shilhouette
 	"WrappingLegsOver2",
+	"LegbinderLegsOver2",
 	"OverSkirtDeco",
 	"OverSkirt",
 	"Greaves",
@@ -217,6 +218,7 @@ let LAYERS_BASE = [
 
 
 	"WrappingLegsOver",
+	"LegbinderLegsOver",
 
 	"WrappingTorsoUnder",// For skintight stuff
 
@@ -293,6 +295,9 @@ let LAYERS_BASE = [
 	// Right leg
 	"WrappingLegsRightOver",
 	"BindThighRight",
+	"RightThighs3",
+	"RightThighs2",
+	"RightThighs1",
 	"KneeAccRight",
 	"ThighRight",
 	"AnkleRight",
@@ -1259,6 +1264,7 @@ let LayerGroups = {
 
 	// Skirts that dont follow shilhouette
 	"WrappingLegsOver2",
+	"LegbinderLegsOver2",
 	"OverSkirtDeco",
 	"OverSkirt",
 	"Greaves",
@@ -1276,6 +1282,7 @@ let LayerGroups = {
 	"SkirtOver",
 
 	"WrappingLegsOver",
+	"LegbinderLegsOver",
 	"WrappingAnklesOver",
 
 	// Corsets that go under harness and poofy skirt

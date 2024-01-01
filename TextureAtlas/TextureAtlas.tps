@@ -341,6 +341,7 @@
             <key type="filename">../Models/Body/TorsoSpread.png</key>
             <key type="filename">../Models/Body/TorsoSpreadChastity.png</key>
             <key type="filename">../Models/Bunny/Ears.png</key>
+            <key type="filename">../Models/Bunny/EarsFront.png</key>
             <key type="filename">../Models/Bunny/EarsInner.png</key>
             <key type="filename">../Models/Bunny/FootSockLeftHogtie.png</key>
             <key type="filename">../Models/Bunny/FootSockRightKneel.png</key>

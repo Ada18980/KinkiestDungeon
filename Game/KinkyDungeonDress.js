@@ -1266,6 +1266,40 @@ let KDExpressions = {
 			};
 		},
 	},
+	"Edged": {
+		stackable: true,
+		priority: 6,
+		criteria: (C) => {
+			return (KinkyDungeonGoddessRep.Frustration > 0 && KDIsEdged(KinkyDungeonPlayerEntity));
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesDazed",
+				Eyes2Pose: "Eyes2Dazed",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "",
+				MouthPose: "",
+			};
+		},
+	},
+	"Tormented": {
+		stackable: true,
+		priority: 7,
+		criteria: (C) => {
+			return (KDIsEdged(KinkyDungeonPlayerEntity) && KinkyDungeonVibeLevel > 2);
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesDazed",
+				Eyes2Pose: "Eyes2Dazed",
+				BrowsPose: "BrowsSad",
+				Brows2Pose: "Brows2Sad",
+				BlushPose: "BlushExtreme",
+				MouthPose: "",
+			};
+		},
+	},
 	"Frustrated": {
 		stackable: true,
 		priority: 2.25,

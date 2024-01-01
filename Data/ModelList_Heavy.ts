@@ -66,7 +66,7 @@ AddModel({
 			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 		},
-		
+
 		{ Name: "StrapsUnderbust", Layer: "StrapsUnderbust", Pri: -10,
 			Invariant: true,
 			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
@@ -216,19 +216,19 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Legbinder", "Leather"],
 	Layers: ToLayerMap([
-		{ Name: "Legbinder", Layer: "WrappingLegsOver", Pri: -20,
+		{ Name: "Legbinder", Layer: "LegbinderLegsOver", Pri: -20,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			HideWhenOverridden: true,
 			InheritColor: "Binder",
 
 		},
-		{ Name: "LegLegbinder", Layer: "WrappingAnklesOver", Pri: -20,
+		{ Name: "LegLegbinder", Layer: "LegbinderAnklesOver", Pri: -20,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Binder",
 		},
-		{ Name: "RightLegbinder", Layer: "WrappingLegsOver", Pri: -20,
+		{ Name: "RightLegbinder", Layer: "LegbinderLegsOver", Pri: -20,
 			SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
@@ -236,7 +236,7 @@ AddModel({
 			InheritColor: "Binder",
 
 		},
-		{ Name: "LegRightLegbinder", Layer: "WrappingAnklesOver", Pri: -20,
+		{ Name: "LegRightLegbinder", Layer: "LegbinderAnklesOver", Pri: -20,
 			SwapLayerPose: {Kneel: "WrappingLegsRight", KneelClosed: "WrappingLegsRight"},
 			Poses: ToMap(["Closed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["Hogtie"]),
@@ -244,7 +244,7 @@ AddModel({
 			InheritColor: "Binder",
 
 		},
-		{ Name: "LacesLegbinder", Layer: "WrappingLegsOver", Pri: 10,
+		{ Name: "LacesLegbinder", Layer: "LegbinderLegsOver", Pri: 10,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			NoOverride: true,

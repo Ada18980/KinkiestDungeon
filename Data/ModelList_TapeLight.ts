@@ -167,7 +167,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 			InheritColor: "Tape",
 		},
-		{ Name: "ChestStrap", Layer: "WrapChest", Pri: 35,
+		{ Name: "ChestStrap", Layer: "WrappingChest", Pri: 35,
 			Invariant: true,
 			InheritColor: "Tape",
 

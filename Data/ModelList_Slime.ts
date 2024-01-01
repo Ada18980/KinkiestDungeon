@@ -300,7 +300,7 @@ AddModel({
 				ItemArmsRubberOver: 45,
 			},
 		},
-		{ Name: "Chest", Layer: "WrapChest", Pri: 15,
+		{ Name: "Chest", Layer: "WrappingChest", Pri: 15,
 			Invariant: true,
 			CrossHideOverride: true,
 			HideWhenOverridden: true,
