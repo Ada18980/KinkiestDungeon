@@ -1,7 +1,7 @@
 By Strait-Laced Games
 由 Strait-Laced Games 呈现
 Credits
-贡献者
+制作者
 Patrons
 赞助者
 News and Updates
@@ -9,7 +9,7 @@ News and Updates
 Support @ Patreon
 赞助@Patreon
 Thank you to the following awesome people for supporting me at patreon.com/ada18980
-感谢以下这些很棒的人在 patreon.com/ada18980 上赞助了我
+感谢以下用户在 patreon.com/ada18980 上慷慨赞助了我
 Back
 后退
 Next
@@ -37,7 +37,7 @@ Russian
 Mods
 模组
 Mods Loaded.
-已加载 Mods
+模组清单
 Version
 版本号
 Kinky Dungeon
@@ -45,37 +45,37 @@ Kinky Dungeon
 By Ada18980
 由 Ada18980 制作
 You are an adventurer descending into an ancient underground city of magic.
-你是一个冒险家，前往了一个古老的地下魔法城市。
+你是一名冒险家，前往了一个古老的地下魔法城市探险。
 Beneath its depths lies the Mistress' Staff, an artifact of untold power.
-在它的深处隐藏着女主人的法杖，这是一件拥有无穷力量的神器。
+在它的深处隐藏着女城主的法杖，这是一件拥有无穷力量的神器
 Will you prevail against forces unknown, or succumb to its dark secrets?
 你会战胜未知的力量，还是屈服于它的黑暗秘密？
 (This game does not contain spiders)
-（本游戏不包含蜘蛛）
+（本游戏不包含蜘蛛） 
 Skip Intro
-跳过简介
+跳过序言
 UI: Always Show Warnings
-UI：总是显示警告
+UI：总是显示警告 
 UI: Always Show Minimap
-UI：总是显示小地图
+UI：总是显示小地图 
 Enable Sound
 启用音效
 Clothes: Drool/Tears
-美术: 流口水/眼泪
+衣物: 流口水/眼泪
 Clothes: Draw Armor
-美术: 渲染盔甲
+衣物: 渲染盔甲
 Enable Music
 启用音乐
 GFX: Async Rendering (beta)
 GFX: 异步渲染 (测试版)
 GFX: Bloom & Glow
-GFX: 曝光 & 发光
+GFX: 曝光 & 发光 
 UI: Transparent UI
-UI: 透明UI
+UI: 透明UI 
 UI: Turn Counter
 UI: 回合计数器
 GFX: Flash Screen on Stun
-GFX: 眩晕时闪屏
+GFX: 眩晕时闪屏 
 GFX: Map Particles
 GFX: 地图粒子效果
 GFX: Distraction Particles
@@ -87,11 +87,11 @@ UI: 显示NPC状态
 UI: Show Spell Range
 UI: 显示法术范围
 GFX: Trim Edge Walls
-GFX: 整理边缘墙
+GFX:对齐墙壁边缘
 GFX: Fog Shader
-GFX: 雾着色器
+GFX:启用雾着色器
 GFX: Light Shader
-GFX: 灯光着色器
+GFX:启用灯光着色器
 Intense 'Let Go' VFX
 强烈高潮视效
 Enable Toy SFX
@@ -117,11 +117,11 @@ Clothes: Simple Color Picker
 UI: Center Player
 UI：玩家为中心
 UI: Draw Buffs on Side
-UI：在侧面绘制增益效果
+在屏幕一侧绘制增益效果
 UI: Show Trajectory on Auto-Path
-UI：自动路径显示轨迹
+UI：预览自动路径轨迹
 UI: Show Player Facing
-UI：显示玩家面向
+UI：显示玩家朝向
 UI: Show more learnable spells
 UI：显示更多可学习的法术
 Helpless!
@@ -199,7 +199,7 @@ Clueless
 You have no idea how to pick locks. Picking is 0.5x as fast and you can't pick most advanced locks.
 你不知道如何撬锁，撬锁速度变为原来的 0.5 倍，而且您无法撬开最先进的锁具。
 Psychic
-超凡之力
+念动力
 You no longer drop keys and picks, can unlock yourself with bound hands, and don't need hands for items/potions.
 你不将会掉落钥匙和镐，可以用拘束住的手解锁自己，并且不需要手来使用物品/药水。
 Novice
@@ -209,7 +209,7 @@ All spells above 1st level cost 2x as many spell points.
 Blessed
 祝福
 You can drink mana from the shrine fountains once per floor without chance of punishment.
-你可以在每层第一次饮用神泉恢复法力时不可能受到任何惩罚。
+你在每层第一次饮用神泉恢复法力时不受到任何惩罚。
 Cursed
 诅咒
 Goddess reputations start at 0 and can never exceed 25.
@@ -237,13 +237,13 @@ Willpower
 Bondage Lover
 束缚爱好
 Attempting to escape arouses you.
-试图挣脱会提高你的干扰值。
+试图挣脱会提高你的分心值。
 Focused Dodge
 集中闪避
 While your miscast chance is 0%, you gain +40 Evasion.
 施法失败率为 0% 时，闪避 +40。
 Distracted
-干扰
+分心
 +15% miscast chance (at all times)
 增加 15% 施法失败几率（始终）
 Brawler
@@ -277,9 +277,9 @@ Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distracti
 Pristine
 质朴
 There are significantly less shiny loot objects in the dungeon.
-地牢闪亮的战利品数量明显下降。
+地牢高价值的战利品数量明显下降。
 Lost Technology
-遗落之术
+失落技术
 Ancient power cores break with use, and cannot be recharged.
 远古的能量核心会随着使用而损坏，并且无法充能。
 Unchained
@@ -297,7 +297,7 @@ You don't remember where you've been in the level.
 Cursed Locks
 禁锢诅咒
 Those without keys shall face the Wrath of the Lock. Locked items cannot be cut and are harder to struggle.
-没有钥匙的人将受到禁锢的诅咒，锁定的物品不能被切割，且更难挣扎。
+没有钥匙的人将受到禁锢诅咒，锁定的物品不能被切割，且更难挣扎。
 The magical warding from the lock protects the item.
 魔法锁保护着物品。
 Undeniable
@@ -313,11 +313,11 @@ Escape Artist
 Start with high Rope reputation, and all rope restraints are easier to escape from.
 开局绳索声望更高，所有绳索拘束更容易逃脱。
 Rope Bunny
-绳模
+天生绳模
 Rope restraints are harder to escape from.
 绳索拘束更难逃脱。
 Slippery
-滑溜溜
+滑溜溜 
 Start with high Latex reputation, and all latex restraints are easier to escape from.
 开局乳胶声望更高，所有乳胶拘束更容易摆脱。
 Latex Doll
@@ -325,7 +325,7 @@ Latex Doll
 Latex restraints are harder to escape from.
 乳胶拘束更难逃脱。
 Escapee
-流亡者
+流亡者 
 Start with high Leather reputation, and all leather restraints are easier to escape from.
 开局皮革声望更高，所有皮革束缚更容易逃脱。
 Leather-Bound
@@ -395,7 +395,7 @@ Enemies see you through walls and at greater distance.
 Supermarket
 超市
 Commerce shrines can appear in levels and have slightly more items.
-商业神殿可以出现在不同的层次上，并拥有更多的物品。
+商业神殿各层均可出现，并拥有更多的物品。
 Price Gouging
 敲竹杠
 Items are 5x as expensive in the shop.
@@ -413,25 +413,25 @@ Oppression
 Ghosts are less likely to help you.
 幽灵不愿意帮助你。
 Search Party
-搜查队伍
+搜查队
 More enemies spawn during sleep.
-更多的敌人在睡眠期间生成。
+睡眠期间会有更多的敌人生成。
 No Way Out
 无法挣脱
 Enemies will always use the tightest restraints possible regardless of willpower. +10 Security level.
-无论意志力如何，敌人总是会使用最严格的拘束具来完全束缚你。+10 安全级别。
+无论意志力如何，敌人总是会使用最严格的拘束具来完全束缚你。+10 安全等级。
 Deft Footwork
 步法灵巧
 You ignore some consequences of being mildly slowed from heels or slime, and you can cast Leg spells while slowed significantly at 50% miscast chance.
-无视高跟鞋或粘液导致的轻微减速，并且可以在50%的失败率下施放腿部的法术。
+你无视高跟鞋或粘液导致的轻微减速，并可以以50%成功率施放腿部的法术。
 Poor Form
-形式不佳
+动作笨拙
 Slowing effects on you are amplified.
 减速效果对你的影响会被放大。
 Poor Coordination
 协调性差
 You must have both fingers and arms free to cast arm spells. Hand restraints are more effective on you.
-你必须有两个手指和手臂才能施展手臂法术。束手装置对你更有效。
+你的手指和手臂均未被束缚时候才能施展手臂法术。束手装置对你更有效。
 Deft Fingering
 指法灵巧
 You can cast arm spells using just your fingers, as long as your hands aren't bound.
@@ -439,7 +439,7 @@ You can cast arm spells using just your fingers, as long as your hands aren't bo
 Well-Equipped
 设备精良
 Restraints and traps that are limited by level appear sooner, and will stack more. +10 security level.
-限制在一定层数后出现的拘束具和陷阱会更早的出现，并且敌人会堆叠更多的束缚。+10 安全级别。
+有楼层数限制的拘束具和陷阱会更早出现，并且敌人会堆叠更多的束缚。+10 安全等级。
 Quick-Draw
 快速拔刀
 Switching weapons and spells does not take a turn.
@@ -459,7 +459,7 @@ Drinking a potion takes 2 turns
 Magic Hands
 魔法之手
 Enemies can add restraints underneath existing restraints.
-敌人可以在现有拘束具上添加额外拘束。
+敌人可以透过外层拘束具添加内层拘束。
 Cyber Doll
 赛博娃娃
 Start in Cyber restraints.
@@ -487,7 +487,7 @@ You start with the Dollmaker's Mask.
 Vengeance
 复仇
 Defeating an enemy greatly distracts you.
-击败敌人会极大地提高你的干扰值。
+击败敌人会极大地提高你的分心值。
 Berserker Rage
 狂暴之怒
 Melee attacks distract you, but melee (including chain) damage increases by up to 30% at max distraction.
@@ -503,25 +503,25 @@ Miscast chance is doubled.
 Bound Crusader
 束缚十字军
 Goddesses will equip restraints upon acceptance of a quest.
-女神在接受任务后会装备束缚具。
+在接受女神任务后会强制装备束缚具。
 Nowhere is Safe
 草木皆兵
 Beds and furniture are often trapped.
-床和木桶经常会是陷阱。
+床和场景家具通常会是陷阱。
 Bullet Hell
 子弹地狱
 Hides warning lines for non-AoE bullets and projectiles.
-隐藏非有效区域子弹和射弹的警告线。
+隐藏非范围攻击子弹和射弹的警告线。
 Bullet Armageddon
 子弹末日
 Hides warning lines for AoE spells, bullets, and projectiles.
-隐藏区域法术、子弹和射弹的警告线。
+隐藏范围攻击法术、子弹和射弹的警告线。
 I have... needs
 我...想要...
 Distraction builds up over time.
-干扰值随时间累计。
+分心值随时间累计。
 Hopeless
-绝望的
+绝望
 Willpower decays over time.
 意志力会随着时间的推移而衰减。
 Quickness
@@ -553,7 +553,7 @@ Curse Seeker
 When you pick up cursed armor or restraints from chests, they equip automatically if able.
 当你从箱子中拿起被诅咒的盔甲或束缚具时，如果可以的话会自动装备。
 Burning Desire
-焚心望火
+焚心欲火
 While above 70% distraction, you ignite nearby objects and gain +40% fire damage.
 当性奋值超过 70% 时，自身造成的火焰伤害提高 40%，并且你会点燃附近的物体。
 Frigid Personality
@@ -561,7 +561,7 @@ Frigid Personality
 While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties.
 当性奋值为 0% 时，自身造成的寒冰伤害提高 10%，并且可以在冰上无惩罚的行走。
 Grounded in Reality
-现实之源
+现实锚定
 While at max mana, your attacks deal an additional 30% of their base damage as electric damage.
 当法力值最大时，攻击可造成额外 30% 基础伤害的电击伤害。
 Like the Wind
@@ -587,29 +587,29 @@ Taking chain, poison, and crush damage makes you dizzy.
 Kinky Prisoner
 变态囚犯
 Guards won't remove restraints unless they have something tighter. +10 Security level.
-警卫不会移除你的束缚，除非他们使用紧的束缚。+10 安全级别。
+警卫不会移除你的束缚，除非他们使用更紧的束缚。+10 安全等级。
 Unfair Doors
-困难的门
+沉重门闩
 Doors are harder to open while your hands are bound.
 当你的手被束缚时，门更难打开。
 You rattle the doorknob uselessly and end up banging on the door.
-你无力地拨动着门把手，结果最终却只是敲打着门。
+你无力地拨动着门把手，结果最终却只是敲了敲门。
 You can't quite get a grip on the doorknob.
-你无法完全抓住门把手。
+你几乎抓不住门把手。
 Someone hears you banging and opens the door from the other side!
 有人听到你的敲门声，然后从另一边打开了门！
 Someone notices you fiddling with the door and opens it from the other side!
-有人注意到你在摆弄门，然后从另一边打开了门！
+有人注意到你在尝试开门，然后从另一边打开了门！
 The door squeaks open as the latch wasn't fully engaged.
 门因为没有完全锁上而吱嘎吱嘎地打开了。
 You grab the doorknob with your wrists and flex it open.
-你用手腕抓住门把手并用力扭动，成功将门打开。
+你成功地用手腕抓住门把手并用力扭动，将门打开。
 You use your flexible feet to open the door.
 你利用灵活的双脚打开了门。
 Poor Technique
 技巧欠佳
 Instead of fizzling, most miscasted projectiles and AoE spells will target you instead.
-大多数施法失败的投射物和AOE法术将不会失效，而是会改为以你为目标。
+施法失败的射弹以及范围攻击魔法大多不会失效，而是转而将你为目标。
 Ticklish
 怕痒
 You take 50% more tickle damage.
@@ -643,37 +643,37 @@ Futile Struggles
 Lose 2 WP every time you remove a non-trivial restraint.
 每次移除特殊拘束时消耗 2 WP。
 Second Wind
-再生之气
+再生之风
 Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage. (Upgrade available in spell tree)
-自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚。（可在技能树中升级）
+身体自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚。（可在技能树中升级）
 Second Wind Perk
-再生之气技能
+再生之风技能
 Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage.
-自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚。
+身体自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚。
 Triumphant Wind
-凯旋之气
+凯旋之风
 Second Wind now regenerates up to 25% of your max WP
-再生之气现在可以恢复你最大 WP 的 25%
+再生之风现在可以恢复你最大 WP 的 25%
 Locked Up
 禁锢
 While wearing a chastity belt, your Desire lowers when you perform actions such as defeating enemies, opening chests, and breaking orbs. (Upgrades available in spell tree)
-佩戴贞操带时，当你击败敌人、打开宝箱和打破球体等动作时，你的欲望会降低。（可在技能树中升级）
+佩戴贞操带时，每当你击败敌人、打开宝箱和打破球体等动作，你的欲望会降低。（可在技能树中升级）
 Locked Up Perk
 禁锢技能
 While wearing a chastity belt, your Desire lowers when you perform actions such as capturing, opening chests, and breaking orbs.
-佩戴贞操带时，当你击败敌人、打开宝箱和打破球体等动作时，你的欲望会降低。
+佩戴贞操带时，每当你击败敌人、打开宝箱和打破球体等动作，你的欲望会降低。
 Controlled Urges
 抑制冲动
 Locked Up is 150% effective. Gain +70 psychic/charm resist from a chastity belt and +30 from a chastity bra. While not wearing a chastity belt, your Desire increases slowly.
-禁锢有效率为 150%。 通过贞操带获得 +70 精神/妩媚抗性，通过贞操文胸获得 +30 精神/妩媚抗性。你的欲望会在没有佩戴贞操带时慢慢增加。
+“禁锢”技能有效率为 150%。 佩戴贞操带可获得 +70 精神/妩媚抗性，佩戴贞操文胸可获得 +30 精神/妩媚抗性。你的欲望会在没有佩戴贞操带时慢慢增加。
 Ready for Training
 准备训练
 Locked Up is 300% effective. When Locked Up triggers, you gain -30% mana costs and +25% physical damage for 7 turns (35 when opening a chest or breaking orbs). You cannot orgasm unless you are wearing a chastity belt, and slow level is increased by 2.
-禁锢有效率为 300%。当锁定触发时，你会增益-30%魔法消耗和+25%的物理伤害，持续7回合（打开箱子或打碎球体时为35）。在未佩戴贞操带时，你将无法达到性高潮，并且缓慢等级增加至2。
+“禁锢”技能有效率为 300%。当该技能触发时，你获得-30%魔法消耗和+25%的物理伤害的增益，持续7回合（打开箱子或打碎球体时为35）。在未佩戴贞操带时，你将无法达到性高潮，并且缓慢等级增加至2。
 Recalcitrant
 顽固的
 Relinquish the Locked Up perk. One time only. If you take the perk again, there is no going back.
-放弃禁锢技能。只有这一次。如果你再获得这项技能，就没有回头路了。
+放弃“禁锢”技能树。一次性选项，如果你再点出“禁锢”技能树，就无法放弃了。
 Novice Pet
 新手宠物
 You can now sprint while wearing a petsuit. (Upgrades available in spell tree)
@@ -685,11 +685,11 @@ You can now sprint while wearing a petsuit.
 Eager Pet
 渴望宠物
 +1 slow reduction while wearing a petsuit, but sprint costs are increased by 30% when not wearing a petsuit.
-穿着宠物服时减速+1，但不穿着宠物服时冲刺成本增加 30%。
+穿着宠物服时减速+1，但不穿着宠物服时冲刺消耗增加 30%。
 Experienced Pet
 经验丰富的宠物
 +2 slow reduction total while wearing a petsuit (from +1), but sprint costs are increased by 100% (from 30%) when not wearing a petsuit and slow level is increased by +1.
-穿着宠物套装时，减速总计+2（原为+1），但不穿宠物服时，冲刺成本增加100%（原为30%），并且减速等级增加+1。
+穿着宠物套装时，减速总计+2（原为+1），但不穿宠物服时，冲刺小号增加100%（原为30%），并且减速等级增加+1。
 Devoted Pet
 忠诚的宠物
 +3 slow reduction total while wearing a petsuit (from +2), but you cannot sprint (from +100% cost) when not wearing a petsuit and slow level is increased by +2 (from +1).
@@ -697,7 +697,7 @@ Devoted Pet
 Bad Pet
 坏宠物
 Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back.
-放弃新手宠物技能。只有这一次。如果你再获得这项技能，就没有回头路了。
+放弃“新手宠物”技能树。只有这一次。如果你再点出这项技能，就没有回头路了。
 You are an expert in wearing a petsuit and your mobility is increased.
 你是穿着宠物服的专家，你的灵活度也得到了提高。
 You are too used to wearing petsuits! Sprinting is impaired.
@@ -707,13 +707,13 @@ You are a disobedient pet. You should put on a petsuit!
 Dominant
 支配者
 They're trapped here with you. Ghosts are more helpful, and you can bind enemies that confront you about bondage.
-他们和你一起被困在这里。幽灵更有帮助，你可以束缚与你对抗的敌人。
+“他们和你一起被困在这里。” 现在幽灵提供更有力帮助，同时面对试图向你提供拘束的敌人你可以反向束缚她。
 Stranger
-未知实体
+异乡人
 Randomizes your relationship to most factions.
 随机化你与大多数派系的关系。
 Wrong Neighborhood
-敌意实体
+不受欢迎
 All factions are hostile and united against you.
 所有派系都对你敌对并联合起来反对你。
 Bandit
@@ -733,7 +733,7 @@ Rusty Bolts
 Most traps have a 25% misfire chance.
 大多数陷阱有 25% 的失效几率。
 Not a Pet
-不是宠物
+我不是宠物！
 Petsuits occur less often.
 宠物服出现的概率较低。
 Unmasked
@@ -747,7 +747,7 @@ Blindfolds are stronger. While blindfolded you can only see enemies next to you.
 Total Blackout
 阴影护目
 Blindfolds are extremely punishing and you can't see explored areas while blindfolded.
-眼罩变得非常痛苦，当佩戴眼罩时，你看不到已探索区域。
+眼罩变得非常令人痛苦，当佩戴眼罩时，你看不到已探索区域。
 Poor Vision
 视力障碍
 Vision radius is significantly reduced.
@@ -765,7 +765,7 @@ Night Owl
 Your vision in dark areas is improved.
 你在黑暗区域的视力得到增强。
 Not a Doll
-非玩偶状态
+我不是玩偶！
 You may still enter Doll Terminals, but enemies will not force you onto doll stands.
 你仍然可以进入玩偶终端，但敌人不会强迫你站在玩偶架上。
 No Nurses
@@ -791,7 +791,7 @@ Tape-wielding enemies (such as Tape Bots) occur more frequently.
 Less Tape
 更少胶带
 Fewer tape-related enemies will appear, although this does not remove tape entirely.
-较少的与胶带有关的敌人将出现，尽管这并不能完全去除胶带。
+与胶带有关的敌人将较少出现，但胶带系的拘束不会完全消失。
 No Tape Bots
 无胶带机器人
 The old civilization did not use tape-based restraints in their capture robots.
@@ -811,11 +811,11 @@ The old civilization used significantly less latex-based restraints in their cap
 More Encasement
 更多包裹
 Enemies that encase you (e.g slimes, latex cubes) will appear more frequently.
-包裹你的敌人（例如史莱姆、乳胶块）会更频繁地出现。
+包裹系的敌人（例如史莱姆、乳胶块）会更频繁地出现。
 Less Encasement
 减少包裹
 Fewer encasement-related enemies will appear, although this does not remove it entirely.
-与包裹相关的敌人会减少，尽管这并不能完全消除它。
+包裹系的敌人（例如史莱姆、乳胶块）出现频率会降低，但不会完全消失。
 Trainee
 练习生
 Your training has given you access to the powers of the Trainee class. (Aroused mode only)
@@ -825,9 +825,9 @@ Fighter
 Your training has given you access to the powers of the Fighter class.
 你的训练使你能够获得战士职业的能力。
 Rogue
-流氓
+盗贼
 Your training has given you access to the powers of the Rogue class.
-你的训练使你能够获得流氓职业的能力。
+你的训练使你能够获得盗贼职业的能力。
 Wizard
 法师
 Your training has given you access to the powers of the Wizard class.
@@ -845,11 +845,11 @@ Panic! (Traps)
 When you step on a trap, you are stunned for 2 turns.
 当你踩到陷阱时，你会晕眩2回合。
 Panic sets in! (Stunned 2 turns)
-恐慌！（眩晕2回合）
+陷入恐慌！（眩晕2回合）
 Butterfingers
 黄油手指
 Having arms bound prevents you from using your hands to struggle or unlock yourself.
-被束缚的手臂会阻止你用手挣扎或解锁自己。
+手臂被束缚会阻止你用手挣扎或解锁。
 Weak Grip
 弱式握杆
 Having arms bound prevents you from holding weapons or potions.
@@ -859,7 +859,7 @@ You kneel down so you can reach the potion with your mouth...
 Can't Hear You!
 听不见你说话！
 Being gagged blocks you from casting verbal spells regardless of gag power.
-堵嘴会阻止你施放言语咒语，无论堵嘴的等级如何。
+无论等级如何，堵嘴类装备都会阻止你施放言语类咒语。
 Smooth Talker
 以和为贵
 Being gagged does not increase your miscast chance for verbal spells unless fully gagged.
@@ -899,7 +899,7 @@ Start in a full set of magically locked obsidian cuffs.
 Mana Burst
 法力冲击
 While at 100% distraction, you get -100% miscast chance but spending too much mana at once may cause you to go over the edge.
-当性奋值为 100% ，施法失败几率 -100%，但一次消耗过多的法力值可能会导致高潮。
+当性奋值为 100% ，施法失败概率会 -100%，但一次消耗过多的法力值可能会导致高潮。
 Arousing Magic
 催化魔法
 Your magic is powered by otherworldly distracting energies. Casting spells increases distraction based on the mana spent.
@@ -909,9 +909,9 @@ Clearheaded
 Magic puts you in a clear state of mind. Casting spells successfully reduces your distraction.
 魔法可以让你头脑清醒，成功施法时可以减少性奋值。
 Copy (clipboard)
-复制 (粘贴板)
+复制 (到剪贴板)
 Paste (clipboard)
-粘贴 (粘贴板)
+粘贴 (从剪贴板)
 DAMAGEDEALT electric damage conducts to you!!!
 DAMAGEDEALT 点电击伤害传导到你身上！
 The pressure fans the flames on you, dealing bonus DAMAGEDEALT fire damage!
@@ -931,7 +931,7 @@ The ropes squeeze you tighter and tighter...
 Your body sinks deeper into a sea of bindings...
 你的身体更深地沉入了束缚的海洋……
 You struggle to breath as you are buried alive in squirming ropes...
-当你被活埋在蠕动的绳索中时，你呼吸困难……
+你被活埋在蠕动的绳索中，你呼吸困难……
 The slime stretches out over your body...
 黏液慢慢伸展开来，覆盖着你的身体...
 The slime continues to engulf you, blocking out your vision...
@@ -953,7 +953,7 @@ You struggle to breath as you are pulled into the mass of shadow hands...
 The world goes dark...
 世界变暗了……
 You wake up in a different place...
-你在不同的地方醒来...
+你在陌生的地方醒来...
 Arcane Explosion
 奥术爆发
 EnemyName says something incomprehensible! Her spell miscasts!
@@ -985,7 +985,7 @@ In the Shadows: You are harder to see.
 Invisible: You are very difficult to see.
 隐形：你非常难以被敌人察觉。
 Quickness: Your next movement is so fast it doesn't advance a turn.
-迅捷：你的下一个动作极其迅速，使得其不消耗回合时间。
+迅捷：你的下一个动作极其迅速，不消耗回合时间。
 All Damage Reduction: 
 所有伤害减免：
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
@@ -997,17 +997,17 @@ Your bindings are PERCENT more effective.
 Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
 你的基础攻击可造成 DAMAGEDEALT 点 DAMAGETYPE 伤害，花费的体力为 STMNA。
 Plugged!
-插上！
+被插入！
 Plugged up!!!
-完全插入！
+被完全插入！
 Denied! You won't be getting off that easy~
-拒绝！不会让你这么容易就出来的~
+不行！不会让你这么容易就出来的~
 Teasing vibrations...
-诱惑的震动...
+挑逗的震动...
 Gentle vibrations...
-温柔的震动...
+温和的震动...
 Mild vibrations...
-轻微的震动...
+明显的震动...
 Strong vibrations!
 强烈的震动！
 Intense vibrations!!
@@ -1019,17 +1019,17 @@ Stunned! You can't move!
 Your vision is impaired!
 你的视野受到影响！
 Arms are bound!
-手臂被束缚！
+你的手臂被束缚！
 Hands are useless!
-双手无法使用！
+你的双手无法使用！
 Hands are impaired! Some tasks will be harder...
-双手受到束缚！一些操作会更加困难...
+你的双手受到束缚！一些操作会更加困难...
 Movement significantly impaired!
-移动明显受限！
+你的移动明显受限！
 Movement slightly impaired.
-移动略有受限。
+你的移动略有受限。
 Movement severely impaired!
-移动严重受限！
+你的移动严重受限！
 Movement is almost impossible. Sprinting and hopping are disabled.
 移动几乎不可能，你无法奔跑和跳跃。
 Immobilized!
@@ -1183,7 +1183,7 @@ Confirm Reset?
 You come across a black monolith with its face inscribed in runes.
 你会看到一个黑色的石碑，上面刻着符文。
 You study them, but can't come up with an interpretation.
-你研究它们，但无法做出解释。
+你尝试研究它们，但无法做出解释。
 They may still prove useful to future adventurers should you get caught...
 如果你被抓住，它们可能仍然对未来的冒险者有用......
 (Your game has been saved automatically, but you can save the code for later)
@@ -1247,30 +1247,30 @@ Very Slow
 Immobile
 无法移动
 DP: PERCENT%
-干扰值: PERCENT%
+分心值: PERCENT%
 SP: CURRENT/MAX
 体力值: CURRENT/MAX
 Willpower: CURRENT/MAX
-体力值: CURRENT/MAX
+意志值: CURRENT/MAX
 MP: CURRENT/MAX
 魔力值：CURRENT/MAX
 Mana slowly recovers from a pool equal to POOLMANA. Drink potions to restore the pool.
 法力从有着 POOLMANA 点储备法力的储备池中缓慢恢复，喝药水可以恢复储备池。
 Your Desire is the baseline Distraction you decay toward, and is increased by distracting things.
-你的欲望是你逐渐走向的性奋的基线，并且会因性奋的事物而增加。
+你的欲望程度是你性奋值增加的基准，并且会因性奋的事物而增加。
 Stamina recovers more quickly when you aren't spending it.
 当你休息时，体力恢复得更快。
 Willpower is restored by food, sleep, and potions. Without willpower, it becomes very difficult to escape.
 意志力通过食物、睡眠和药剂恢复。没有意志力，就很难逃脱。
 Charge is used to power various magic items and weapons.
-电荷用于为各种魔法物品和武器提供能量。
+ 充能用于为各种魔法物品和武器提供能量。
 WP: CURRENT/MAX
-意志力: CURRENT/MAX
+ 意志值: CURRENT/MAX
 Charge: PERCENT
-电荷: PERCENT
+ 充能: PERCENT
 Use Potion
 使用药水
- MP
+MP
 魔力
 Go to sleep
 睡觉
@@ -1331,7 +1331,7 @@ You wait, trembling and moaning.
 You wait to regain your strength.
 你等待着体力恢复。
 You wait to regain your composure, panting with frustration.
-你等待着恢复镇定，怒气冲冲地喘息着。
+ 你等待着恢复镇定，沮丧地喘息着。
 You wait to regain your composure, shaking with frustration.
 你等待着恢复镇定，颤抖着表达沮丧之情。
 You are exhausted from spellcasting.
@@ -1369,7 +1369,7 @@ Back to main menu
 Load Mod .zip
 加载 Mod .zip
 Delete Mod
-移除 Mod
+ 移除模组
 Clear Perks
 清除词条
 Config 
@@ -1379,9 +1379,9 @@ Cancel
 Filter
 筛选
 DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
-【警告】加载 Mod 具有危险性，因为其可在你的计算机上肆意执行任何代码。
+【警告】加载模组具有危险性，因为其可在你的计算机上肆意执行任何代码。
 Like connecting to a server, etc. Only load mods from a TRUSTED source.
-就如同连接到不可信的服务器一样。请仅仅只加载来源可信赖的 Mod 。
+就如同连接到不可信的服务器一样。请仅仅只加载来源可信赖的模组 。
 Up
 向上
 Down
@@ -1506,7 +1506,7 @@ You can't climb down until you get out of this leash...
 在你摆脱牵绳之前，你不能进入下一层......
 You climb down and find yourself in a strange new place.
 你进入了下一层，发现自己身处在一个陌生的新地方。
- plus XXX
+plus XXX
 加 XXX
 Graveyard
 墓地
@@ -1787,7 +1787,7 @@ Scroll of Sauntering
 The scroll lets you move your body in swift and accurate ways!
 卷轴让你以快速准确的方式移动你的身体！
 A scroll used by dancers to upgrade their moves.
-舞者用来升级动作的卷轴。
+ 舞者用来开展轻巧动作的卷轴。
 Allows you to cast Leg spells without components for 12 turns.
 允许你在 12 回合内使用需要腿部释放的法术。
 Ancient Key
@@ -1805,29 +1805,29 @@ Power Crystal
 You hold the crystal and the power flows into you.
 你拿着水晶，力量流入到你的体内。
 You're not sure how they charged these...
-你不知道他们是如何充能...
+ 你不知道他们是如何充能的...
 A mysterious device used by the old civilization, powering their ancient devices.
 古老文明使用的神秘装置，为他们古老的装置提供动力。
 You are already full of ancient power.
 你已经充满了远古的力量。
 Spent Power Crystal
-使用过的能量水晶
+ 耗尽的能量水晶
 You touch the spent crystal and it siphons 100 gold from your bag!
-你触摸用过的水晶，它从你的包里吸走了 100 金！
+ 你触摸耗尽的水晶，它从你的包里吸走了 100 金币！
 You are not sure how to charge this back up.
 你不知道如何给它们充能。
 A mysterious device used by the old civilization, now depleted.
-旧文明使用的神秘装置，现已耗尽。
+ 旧文明使用的神秘装置，现已耗尽充能。
 Gold
 金币
 Key
 钥匙
 A key with traces of magic that fades with one use.
-一把带有魔法痕迹的钥匙，一次使用就会消失。
+ 一把含有些许魔力的普通钥匙，一次使用就会消失。
 Magic Key
 魔法钥匙
 A glowing key enchanted with magic that fades with one use.
-一把带有魔法的发光钥匙，使用一次就会消失。
+ 一把充盈着发光魔力的魔法钥匙，使用一次就会消失。
 Can be used to unlock a blue lock.
 可用于解锁蓝色锁。
 A magical key with the power to open blue locks.
@@ -2427,7 +2427,7 @@ Your toys vibrate intensely!
 The vibration is torturous!
 痛苦的震动
 Edged!
-极限！
+高潮边缘！
 Satisfied. Miscast chance is reduced.
 满足。减少失误的概率
 Damage: 
@@ -3417,7 +3417,7 @@ The vine plant grips you tightly! (DamageTaken)
 Vine Spitter
 藤蔓喷吐者
 The vine spitter leaks purple juices everywhere as it wilts.
-当藤蔓喷吐者枯萎时，紫色的汁液会泄漏到各处。
+ 藤蔓喷吐者枯萎了，紫色的汁液会泄漏到各处。
 The vine spitter slaps you with its tendrils! (DamageTaken)
 藤蔓喷吐者用它的卷须打你！（DamageTaken）
 The vine spitter wraps its tendrils around you! (+RestraintAdded)
@@ -3489,7 +3489,7 @@ The encased adventurer moans as she throws herself against you for help! (Damage
 The encased adventurer sticks to you as she mumbles incoherently! (DamageTaken)
 被包裹的冒险家粘在你身上，语无伦次地咕哝着！（DamageTaken）
 The encased adventurer pleads for help as her slime spreads to you! (+RestraintAdded)
-当她的粘液蔓延到你身上时，被困住的冒险家恳求帮助！（+RestraintAdded）
+ 被困住的冒险家向你寻求帮助，她的粘液蔓延到了你的身上！（+RestraintAdded）
 Slime
 粘液
 The slime melts into a puddle.
@@ -3727,7 +3727,7 @@ Waterblast
 Rope Witch
 绳索女巫
 The rope witch retreats as her animated ropes chase her.
-当她那充满活力的绳索追赶她时，绳索女巫撤退了。
+绳索女巫和她的绳索们一起撤退了。
 Magnet Witch
 磁力女巫
 The witch is pulled away by an unseen force.
@@ -4023,7 +4023,7 @@ You are sucked in by a powerful gravitational force!!! (DamageTaken)
 You are sucked in by a powerful gravitational force!!!
 你被强大的引力吸住了！！！
 The demon cracks its knuckles as it locks your restraints! (DamageTaken)
-当恶魔锁住你的束缚时，指关节会发出响声！（DamageTaken）
+恶魔一边咔咔地捏响指关节，一边锁住你的束缚时！（DamageTaken）
 Cosmic Force
 宇宙的力量
 Demon
@@ -4275,7 +4275,7 @@ TargetRestraint 上的锁孔几乎够不到......
 You unlock the TargetRestraint and sigh with relief.
 你解锁 TargetRestraint 并松了一口气。
 You give out a huge moan as you squeeze out of the TargetRestraint!
-当你脱出 TargetRestraint 时，你发出一声巨大的呻吟！
+你终于脱出 TargetRestraint ，不禁发出一声长长的呻吟！
 You pick the lock on the TargetRestraint with a sigh of relief!
 你松了一口气，撬开了 TargetRestraint 上的锁！
 Trembling, you free yourself from the TargetRestraint!
@@ -4293,13 +4293,13 @@ You can't hold your knife like this...
 The TargetRestraint is too secure to struggle out.
 TargetRestraint 安全性太高了，无法挣脱。
 You groan in frustration as you realize the TargetRestraint is too tight to escape.
-当你意识到因为 TargetRestraint 太紧而无法挣脱时，你沮丧地呻吟着。
+ 你意识到 TargetRestraint 太紧而无法挣脱，你沮丧地呻吟着。
 The TargetRestraint tightens itself as you try to squeeze out!
-TargetRestraint 会在你尝试挤出时自动收紧！
+TargetRestraint 会在你尝试挣脱时自动收紧！
 You will need someone's help to squeeze out of the TargetRestraint.
 你需要有人的帮助才能挣脱 TargetRestraint。
 The TargetRestraint flashes magically as the Goddess' curse resists your efforts!
-TargetRestraint 会在女神的诅咒抵抗你努力的挣脱时神奇地闪烁！
+ TargetRestraint 闪烁着奇异的光芒，它在女神诅咒加持下无情地抵消你的挣脱！
 You pull and tug but your other restraints keep the TargetRestraint securely in place!
 你又拉又拽，但你的其他束缚具将 TargetRestraint 牢牢地固定在适当的位置！
 You groan and tug but nothing budges on the TargetRestraint. You're bound too tightly by something else.
@@ -4307,11 +4307,11 @@ You groan and tug but nothing budges on the TargetRestraint. You're bound too ti
 You are too tightly bound to have a chance against the TargetRestraint.
 你被束缚得太紧了，没有机会尝试挣脱 TargetRestraint。
 You shake and moan as you realize your struggles against the TargetRestraint are futile.
-当你意识到你与 TargetRestraint 的斗争是徒劳的时，你颤抖和呻吟。
+你意识到你与 TargetRestraint 的斗争是徒劳的，你开始害怕地颤抖和呻吟。
 You can't find a keyhole on the TargetRestraint!
 你在 TargetRestraint 上找不到锁孔！
 You sigh as you give up trying to find any kind of keyhole on the TargetRestraint.
-当你放弃在 TargetRestraint 上寻找任何类型的锁孔时，你叹了口气。
+你叹了口气，最终放弃在 TargetRestraint 上寻找任何类型的锁孔。
 The TargetRestraint can't be unlocked without a special command!
 如果没有特殊指令，TargetRestraint 无法解锁！
 You can't reach the keyhole on the TargetRestraint by yourself!
@@ -4367,11 +4367,11 @@ This is not a job for your trembling fingers right now.
 Tugging on the TargetRestraint is useless. Maybe if you had something sharp...
 拉扯 TargetRestraint 是没有用的。也许如果你有锋利的东西...
 You sigh as the TargetRestraint resists all your attempts at breaking through.
-当 TargetRestraint 抵御了你所有的挣脱尝试时，你叹了口气。
+你叹了口气， TargetRestraint 抵御了你所有的挣脱尝试。
 You fidget with the TargetRestraint but can't reach the clasps without some kind of edge.
-你对 TargetRestraint 感到不安，但如果没有某种边缘就无法够到扣子。
+你很想挣脱 TargetRestraint ，但如果没有某种边缘你就无法够到扣子。
 You flail about but your hands are unable to reach the TargetRestraint.
-你四处挥动，但够不到 TargetRestraint。
+你尝试挥动双手去够它，但够不到 TargetRestraint。
 You can't reach the clasps on the TargetRestraint. If only you had some other way...
 你够不到 TargetRestraint 的扣子。如果有其他办法就好了……
 You squirm around, rubbing the TargetRestraint against the smooth floor to no avail...
@@ -4405,7 +4405,7 @@ Your futile struggles do nothing to loosen the fasteners on the TargetRestraint.
 You try to undo the fasteners on the TargetRestraint, but they are blocked by other straps!
 你尝试松开 TargetRestraint 上的紧固件，但它们被其他带子挡住了！
 You rub your body uselessly as you find another strap securing the TargetRestraint.
-当你发现另一条固定 TargetRestraint 的带子时，你徒劳地摩擦着自己的身体。
+你摩擦自己的身体试图挣脱，但当你发现另一条固定 TargetRestraint 的带子时，你意识到之前所有努力都是徒劳。
 You feel the Goddess' hand keeping the TargetRestraint tightly secured!
 你会感觉到女神的手紧紧地抓住了 TargetRestraint！
 The TargetRestraint is too durable to cut.
@@ -4419,7 +4419,7 @@ You can't get any leverage to cut the TargetRestraint with...
 You can't hold the knife firmly enough to cut the TargetRestraint.
 你无法用足够牢固的刀来切割 TargetRestraint。
 You cry out in your bindings as the knife bounces against the TargetRestraint uselessly.
-当刀徒劳地弹到 TargetRestraint 上时，你在束缚中大喊。
+刀徒劳地在 TargetRestraint 上弹开，你在束缚中无奈大喊。
 Your arms are kept from having leverage on the TargetRestraint due to another item.
 由于其他物品，你的手臂无法对 TargetRestraint 施加外力作用。
 You fiddle with the tool, but your arms lack leverage on the TargetRestraint due to another item
@@ -4561,7 +4561,7 @@ That would really hurt...
 You realize that would really hurt...
 你知道那真的很痛...
 The TargetRestraint tug on your nipples as you squirm!
-当你蠕动时，TargetRestraint 会拉动你的乳头！
+你蠕动时，TargetRestraint 会强行拉动你的乳头！
 The chest is too smooth to help. Maybe if you opened it?
 箱子表面太光滑了。也许你可以打开它？
 Lockable
@@ -4859,7 +4859,7 @@ Miscellaneous
 Armor
 盔甲
 The terrain makes noise as you rush across it...
-当你冲过去时，地形会发出噪音......
+你冲过去时，地板会发出噪音......
 You can't reach the cuffs on your elbows, the chain is too short...
 你够不到手肘处的手铐，链条太短了
 You contort your arms trying to reach the cuffs on your elbows, to no avail...
@@ -4877,7 +4877,7 @@ You feel drained of energy...
 Your collar tingles and suddenly you feel weaker...
 你的项圈一阵刺痛，你突然感觉浑身无力……
 Your collar drains your energy as you struggle...
-当你挣扎时，你的项圈会耗尽你的能量……
+你挣扎时，你的项圈会耗尽你的能量……
 The rope between your legs keeps the toy secure...
 你两腿之间的绳子可以保证玩具的安全......
 Try as you might, the toy is held in place tight.
@@ -5011,7 +5011,7 @@ Massagers
 A pair of little motion-activated teasers. They trigger when you swing your body for an attack.
 一对通过动作激活的挑逗器。当你摆动身体进行攻击时，它们就会触发。
 They will make for some great fun! Type: Edging
-他们会带来很多乐趣！ 类型：极限
+他们会带来很多乐趣！ 类型：寸止
 Advanced Massagers
 高级按摩器
 A pair of sensitive motion-activated teasers. They trigger when you attack or struggle.
@@ -5151,7 +5151,7 @@ Duster Gag
 A special gag designed for maids to be useful even while tied up! It's self-locking too!
 专为女仆设计的特殊堵嘴，即使在被绑着的情况下也能打扫卫生！并且会自动锁定！
 Deals 0.5 tickle damage on attack and adds +30 distraction. Bonus damage vs dirt and mold.
-攻击时造成 0.5 点挠痒伤害，并增加 30 干扰值。对抗污垢和霉菌会造成额外伤害。
+攻击时造成 0.5 点挠痒伤害，并增加 30 分心值。对抗污垢和霉菌会造成额外伤害。
 Gas Mask
 防毒面具
 A respirator designed to protect the wearer from noxious fumes.
@@ -5555,17 +5555,17 @@ Prototype Egg
 A teaser that periodically vibrates.
 周期性振动的小玩具。
 High efficiency mana conversion means longer tease duration. Type: Teasing, Pleasure, Edging
-高效率法力转换意味着更长的振动持续时间。类型：戏弄、快感、极限
+高效率法力转换意味着更长的振动持续时间。类型：戏弄、快感、寸止
 Vibrating Plug
 振动塞
 A sizeable plug that makes you happy... a little too happy.
 一个让你开心的大插头……有点太开心了。
 It vibrates periodically and adds distraction when moving. Type: Pleasure
-它会定期振动并在移动时提高干扰值。类型：快感
+它会定期振动并在移动时提高分心值。类型：快感
 Teaser Plug
 逗弄塞
 A sizeable plug that will tease you but never let you go...
-一个相当大的插头，会挑逗你，但永远不会让你高潮......
+一个相当大的肛塞，会挑逗你，但永远不会让你高潮......
 It vibrates weakly periodically. Type: Teasing, Denial
 它周期性地微弱振动。类型：戏弄、拒绝
 Torment Plug
@@ -5577,7 +5577,7 @@ It vibrates strongly periodically and has a denial setting. Type: Denial
 Thundering Plug
 雷霆塞
 Enjoy it while you can. Type: Pleasure, Edging
-当你有空的时候好好享受它。类型：快感、极限
+当你有空的时候好好享受它。类型：快感、寸止
 Intense Training Plug
 强化训练塞
 An energetic plug that will make your life unbearably pleasurable...
@@ -5589,13 +5589,13 @@ Rear Vibrating Plug
 A device that attacks from multiple angles.
 从多个角度攻击的装置。
 An enjoyable experience. Type: Edging
-一次愉快的经历。 类型：极限
+一次愉快的经历。 类型：寸止
 Maid Egg
 女仆跳蛋
 An energetic little friend that likes to tease you and takes orders from the head maid.
 精力充沛的小伙伴，会挑逗你，听从女仆长的吩咐。
 It is charged by residual magic from your spells. Type: Teasing, Edging
-它由你的法术残留的魔法充电。类型：戏弄、极限
+它由你的法术残留的魔法充电。类型：戏弄、寸止
 Stainless Plug
 不锈钢塞子
 A weighty plug that doesn't vibrate, but you'll certainly notice it walking around...
@@ -6405,7 +6405,7 @@ Maid's Feather Duster
 An instrument used extensively by maidforce agents carrying out their duties.
 女仆特工在履行职责时广泛使用的一种工具。
 Deals tickle damage. Distracts enemies. Offhand: +15 distraction on attack for 1 stamina.
-造成挠痒伤害。使敌人性奋。副手：攻击时造成 15 干扰值，持续 1 点体力。
+造成挠痒伤害。使敌人性奋。副手：攻击时造成 15 分心值，持续 1 点体力。
 You pick up a feather duster.
 你拿起鸡毛掸子。
 You pick up a heavy flail.
@@ -6813,7 +6813,7 @@ Devious Ingenuity
 Trap-type spells and consumables take 1 turn to cast instead of several.
 陷阱类法术和消耗品需要 1 回合即可施放，而不是数回合。
 As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus...
-作为一名学员，你已经学会了在 100% 干扰值的情况下通过恍惚状态引入清晰度的技术。然而，这种状态是不稳定的，施展法术可能会让你失去注意力……
+作为一名学员，你已经学会了在 100% 分心值的情况下通过恍惚状态引入清晰度的技术。然而，这种状态是不稳定的，施展法术可能会让你失去注意力……
 Inner Power
 内力
 As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana AFTER other modifiers. Toggled passive spells apply half the cooldown.
@@ -7093,7 +7093,7 @@ The plug directs itself between your legs!
 Fire 4 Steel Rain in quick succession toward the target point. Best in open spaces.
 向目标点快速连续发射 4 片“钢之雨”，最好在空旷的地方施放。
 Fires a steel plug that deals DamageDealt piercing damage. Bound targets are Plugged, which increases Distraction over time.
-发射一个造成 DamageDealt 点穿刺伤害的钢制插入物。被束缚的目标会被插入，随着时间的推移会增加干扰值。
+发射一个造成 DamageDealt 点穿刺伤害的钢制插入物。被束缚的目标会被插入，随着时间的推移会增加分心值。
 You raise your hand and a steel projectile appears!
 你举起手，一枚钢弹出现了！
 You raise your hand and several steel projectiles appear!
@@ -7593,7 +7593,7 @@ Mana Up III
 Strong Mind I
 意志坚定 I
 Increases maximum Distraction by 33% of base and Distraction regen by -0.1 per turn
-将最大干扰值提高基础值的 33% ，干扰值每回合降低0.1
+将最大分心值提高基础值的 33% ，分心值每回合降低0.1
 Strong Mind II
 意志坚定 II
 Strong Mind III
@@ -7865,7 +7865,7 @@ Chastity
 Select which creature to lock in a belt
 选择要锁定在贞操带中的个体
 Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs/toys, and distracts constantly.
-对无助的敌人释放，增加 DamageDealt 点束缚，并装备贞操带以阻止目标移除插入的物体或玩具，并不断增加干扰值。
+对无助的敌人释放，增加 DamageDealt 点束缚，并装备贞操带以阻止目标移除插入的物体或玩具，并不断增加分心值。
 You conjure a chastity belt, which latches onto your target!
 你召唤出贞操带，它将佩戴在你的目标身上！
 Your own spell locks you in chastity!
@@ -9469,9 +9469,9 @@ You can barely stand in these heels. They are rigid, metallic, and unbreakable, 
 Ancient Blindfold
 远古眼罩
 A full-blackout mask. When powered, it negates accuracy penalties due to vision, boosts accuracy by +100%, and boosts melee damage by +10.
-完全遮光的面具。充能后，它可以消除视觉造成的准确度损失，将准确度提高 +100%，并将近战伤害提高 +10。
+完全遮光的眼罩。充能后，它可以消除视觉造成的准确度损失，将准确度提高 +100%，并将近战伤害提高 +10。
 'Mask of the Warrior'
-《战士的面具》
+《战士的眼罩》
 You tug at the mask but it won't come off. It's molded so close to your face that no light shines through!
 你拉扯面具，但它不会脱落。它的模制非常贴近你的脸，没有光线透过！
 Ancient Muzzle
@@ -9499,7 +9499,7 @@ Ancient Rear Plug
 You find a huge, flexible, segmented plug, along with a strange crystal next to it.
 你会发现一个巨大的、灵活的、分段的肛塞，旁边还有一个奇怪的水晶。
 A plug that shocks the wearer when someone disciplines them, after orgasm, and mildly when spellcasting. When powered, reduces miscast chance by 30%.
-当有人鞭笞使用者，在性高潮之后，以及在施法时温和地电击使用者。充能后，减少 30% 的施法失败几率。
+当受到鞭打，正在性高潮，以及在施法时肛塞会释放电击。充能后，减少 30% 的施法失败几率。
 'Plug of the Obedient'
 '顺从者的肛塞'
 You realize the magical plug has expanded inside your body. It won't come out.
@@ -9547,7 +9547,7 @@ Ancient Ankle Cuffs
 You find a pair of glowing cuffs, glowing magnificently, along with a strange crystal next to it.
 你会发现一对发光的脚铐，闪闪发光，旁边还有一个奇怪的水晶。
 A pair of cuffs designed for summoners. Heals nearby summons by 15 per turn, and also boosts your evasion by +50% (to 2/3rds). Closes without power.
-一对为召唤师设计的手铐。每回合为附近的召唤物治疗 15 点，并使你的闪避提高 50%（至 2/3 次）。充能时会变成脚镣，无充能时则会连起来。
+一对为召唤师设计的脚铐。每回合为附近的召唤物治疗 15 点，并使你的闪避提高 50%（至 2/3 次）。充能时会变成脚镣，无充能时则会连起来。
 'Anklets of the Faithful Friend'
 '忠实朋友的脚链'
 You jingle the chains around and realize that these unbreakable restraints won't be coming off.
@@ -9711,7 +9711,7 @@ Unflinching
 You found a magical amulet! Choose one of the following to determine its benefits:
 你发现了一个神奇的护身符！ 选择以下选项之一来确定其优点：
 Focus: +50% max distraction and faster decay. +5% stamina protected from damage (base: 30%).
-专注：+50% 最大干扰和更快的衰减。 +5% 体力伤害保护（基础：30%）。
+专注：+50% 最大分心和更快的衰减。 +5% 体力伤害保护（基础：30%）。
 Stamina: +50 max stamina, +50% stamina potion effectiveness.
 体力：+50 最大体力，+50% 体力药水效果。
 Magic: +50 max mana. +50% mana potion effectiveness.
@@ -13295,7 +13295,7 @@ There's a zombie over there!|Fortunately zombies are weak to fire.|Firebolt has 
 Mana potions restore mana, allowing you to cast spells.|Youll notice that your mana also regenerates slowly.|This mana comes from your mana pool,|which is a thin line displayed under the mana bar.|When that runs out, you can't cast spells anymore!
 法力药水可以恢复法力，让你能够施展法术。|你会注意到你的法力也会缓慢恢复。|恢复的法力来自你的法力池，|它是法力条下方显示的一条细线。|当法力耗尽时，你可以再次施展法术了！
 Your DP, or Distraction, is a measure of...|How much you are enjoying things.|These sorts of thoughts cloud your mind,|so spellcasting is more difficult when you are distracted.|Go grab the potion over there.
-你的DP，或干扰值，是标准…|你享受事物的程度|这些想法让你的头脑变得模糊，所以当你性奋时，施法会更加困难|去那边拿药水。
+你的DP，或分心值，是标准…|你享受事物的程度|这些想法让你的头脑变得模糊，所以当你性奋时，施法会更加困难|去那边拿药水。
 Did you like that?|Anyway, there's a zombie over there. You should drink that potion.|It will clear your mind so you can cast again.|Hurry, or it will get you!
 你喜欢吗|不管怎样，那边有个僵尸。你应该喝那种药水|它会让你头脑清醒，这样你就可以再次施展|快点，不然它会抓住你的！
 That wasn't so hard, was it?|Now then, there's a treasure chest over here. Why don't you open it?
@@ -16067,7 +16067,7 @@ Select where to put the holy orb (cannot place on occupied squares)
 Create a stationary holy orb that lasts indefinitely and heals allies. It also fires blinding bolts at enemies within its aura. If you let go of yourself near a holy orb you are immediately punished. Should not be placed within 8 tiles of each other.
 创建一个永久持续并治愈盟友的固定圣球。它还会向其光环内的敌人发射致盲箭矢。如果你在圣球附近高潮，你会立即受到惩罚。彼此之间不应放置在 8 格以内。
 A holy orb descends, blessing you with its roundness.
-一颗神圣的球体降临，用它的圆度祝福你。
+一颗神圣的球体降临，赐予你圆满的祝福。
 You call upon the root of all enlightenment!
 你召唤一切觉悟的根源！
 Holy Orb
@@ -16083,17 +16083,17 @@ Divine Chastity Belt
 A chastity belt forged in holy light. Only a Goddess' will can release you.
 圣光锻造的贞操带。只有女神才能释放你。
 There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge.
-除了悔改，没有任何出路。它神圣的光环会导致振动器在你到达极限之前停止。
+除了悔改，没有任何出路。它神圣的光环会导致振动器在你到达高潮边缘之前停止。
 Your Divine Chastity Belt causes the vibrators to stop.
 你的神圣贞操带会使振动器停止。
 A chastity belt forged in holy light. Only the will of a Goddess will release you!
 圣光锻造的贞操带。只有女神才能释放你！
 You find a heavenly chastity belt. Who could it be for?
-你找到了一条天堂般的贞操带。可以给谁呢？
+你找到了一条天堂贞操带。可以给谁呢？
 Heavenly Chastity Belt
 天堂贞操带
 There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge.
-除了悔改，没有任何出路。它神圣的光环会让振动器抑制你到达极限。
+除了悔改，没有任何出路。它神圣的光环会让振动器抑制你到达高潮边缘。
 Your Divine Chastity Belt magically dampens the vibrations just enough to edge you.
 你的神圣贞操带神奇地减弱振动，足以让你感到紧张。
 Magic Arm Belts
@@ -16243,9 +16243,9 @@ Shield of (un)Clarity
 Channel your clarity of mind into a powerful shield, filling your distraction bar completely and granting a temporary shield equal to 50% of the DP generated. 10% of the DP gained is gained as Desire, which prevents DP decaying below a certain point.
 将你清晰的头脑转化为强大的护盾，完全填满你的分心栏，并授予相当于所生成 DP 50% 的临时护盾。 获得的 DP 的 10% 作为欲望获得，这可以防止 DP 衰减到某个点以下。
 You form a... distracting mental barrier, shielding yourself for AMNT damage!!!
-你形成了一个...分散干扰值的精神屏障，保护自己免受 AMNT 点伤害！
+你形成了一个...分散分心值的精神屏障，保护自己免受 AMNT 点伤害！
 You are too distracted to form a mental barrier...
-你干扰值太高，无法形成精神屏障……
+你分心值太高，无法形成精神屏障……
 You have the mental clarity but not the magical clarity! (not enough mana)
 你的精神很清晰，但对魔法却很迷茫！（法力值不足）
 You have formed a mental barrier...
@@ -16253,9 +16253,9 @@ You have formed a mental barrier...
 Desire Burst
 欲望爆发
 Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have 50% Desire, the damage is reduced based on the amount. (Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
-将你的性欲减少最多最大 DP 的 30%，并将该量转化为强大的爆炸，对附近的敌人造成 (30 + 25% 最大 DP) 点妩媚伤害（暴击倍数为 200%）。如果你没有50%的性欲，伤害会根据数量减少。（性欲是你的DP条下方的心形仪表，通过干扰慢慢提高）
+将你的性欲减少最多最大 DP 的 30%，并将该量转化为强大的爆炸，对附近的敌人造成 (30 + 25% 最大 DP) 点妩媚伤害（暴击倍数为 200%）。如果你没有50%的性欲，伤害会根据数量减少。（性欲是你的DP条下方的心形仪表，通过分心慢慢提高）
 You channel your distraction into a powerful explosion!
-你可以将你的干扰转化为强大的爆炸！
+你可以将你的分心转化为强大的爆炸！
 You don't have enough of a desire to do that.
 你没有足够的意志力去做这件事。
 You have the desire but not the mana!
@@ -16321,7 +16321,7 @@ After casting Sagitta, you can recast it up to three more times without advancin
 Psychokinesis
 念力
 You can ignore components for telekinetic spells, however spells generate distraction when cast this way due to the mental strain. Unable to use at 100% DP.
-你可以忽略心灵感应需要的法术的成分，但是当以这种方式施放法术时，由于精神紧张，法术会产生干扰。无法在 100% DP 下使用。
+你可以忽略心灵感应需要的法术的成分，但是当以这种方式施放法术时，由于精神紧张，法术会产生分心。无法在 100% DP 下使用。
 Kinetic Mastery
 动力学掌握
 Negates the penalty for 2-handed weapons. Also gain the following effects:|-Kinetic spells and Sagitta cost 30% less while wielding a Light weapon.|-Kinetic spells and Sagitta gain +15 base damage when wielding a Heavy weapon.
