@@ -14,8 +14,8 @@ Back
 后退
 Next
 下一页
-Music: kocaeli|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
-音乐: kocaeli|拘束敌人图形: Song|俄语翻译: Osiris|中文翻译: Alexthymia, Mitki, Timeline|韩语，日语翻译: Phantasm|代码贡献者: Ellie, Demopans, Aelie|美术：Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|音频:|饮用药水 - Jamius|点击 - StrikeWhistler - 已修改|石门_关闭 - AudioTorpedo - 已修改|脚步 - Fission9 - 已修改|火魔法 - Julien Matthey|轻击 - qubodup|重击 - orangesheepdog|空击 - Brsjak - 已修改|Clap - DWSD - 已修改|'门, 正面, 关闭, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'门, 正面, 打开, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|打开箱子 - spookymodem - 已修改|解锁 - BeezleFM|解开 - danhelbling|剪刀 - qubodup|翻找物品 - adcbicycle|仙尘 - jacksonacademyashmore|金属物品破碎 - gristi
+Music: kocaeli|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3, Plasmadragon|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
+音乐: kocaeli|拘束敌人图形: Song|俄语翻译: Osiris|中文翻译: Alexthymia, Mitki, Timeline|韩语，日语翻译: Phantasm|代码贡献者: Ellie, Demopans, Aelie|美术：Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3, Plasmadragon|音频:|饮用药水 - Jamius|点击 - StrikeWhistler - 已修改|石门_关闭 - AudioTorpedo - 已修改|脚步 - Fission9 - 已修改|火魔法 - Julien Matthey|轻击 - qubodup|重击 - orangesheepdog|空击 - Brsjak - 已修改|Clap - DWSD - 已修改|'门, 正面, 关闭, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'门, 正面, 打开, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|打开箱子 - spookymodem - 已修改|解锁 - BeezleFM|解开 - danhelbling|剪刀 - qubodup|翻找物品 - adcbicycle|仙尘 - jacksonacademyashmore|金属物品破碎 - gristi
 Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
 Door locked.wav - mitchanary - 已修改|Coins.wav - Saviraz|打开石棺 - Breviceps - 已修改|磨刀 - Anthousai|纸声 - Bash360 - 已修改|冻结通电 - JustInvoke - 已修改|水声 - patchytherat - 已修改|grab 3 - ihitokage - 已修改|枪声 - qubodup - 已修改|黄铜掉落 - movingplaid - 已修改|能量武器镭射声 - rkkaleikau - 已修改|雷声 - deleted_user_7146007 - 已修改|把铁链从水槽拖出来 - Hitrison - 已修改|Hihat 7 - TheCoolManARM2 - 已修改|Ambientsoundapp - Lightning Storm.wav - 已修改|kev_durr - Arc Welding.wav - 已修改|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||艺术家与灵感|Hotel01 - https://www.pixiv.net/en/users/5944252 - 画了一个非常棒的狼女|spark utamaro - 对于受到震动器感觉的点子
 Language
@@ -52,46 +52,54 @@ Will you prevail against forces unknown, or succumb to its dark secrets?
 你会战胜未知的力量，还是屈服于它的黑暗秘密？
 (This game does not contain spiders)
 （本游戏不包含蜘蛛）
+GFX
+图像特效
+Character
+角色
+Main
+主要
+Controls
+控制
 Skip Intro
 跳过序言
-UI: Always Show Warnings
-UI：总是显示警告
-UI: Always Show Minimap
-UI：总是显示小地图
+Always Show Warnings
+总是显示警告
+Always Show Minimap
+总是显示小地图
 Enable Sound
 启用音效
-Clothes: Drool/Tears
-衣物: 流口水/眼泪
-Clothes: Draw Armor
-衣物: 渲染盔甲
+Drool/Tears
+流口水/眼泪
+Draw Armor
+渲染盔甲
 Enable Music
 启用音乐
-GFX: Async Rendering (beta)
-图像特效：异步渲染 (测试版)
-GFX: Bloom & Glow
-图像特效：曝光 & 发光
-UI: Transparent UI
-UI：透明UI
-UI: Turn Counter
-UI：回合计数器
-GFX: Flash Screen on Stun
-图像特效：眩晕时闪屏
-GFX: Map Particles
-图像特效：地图粒子效果
-GFX: Distraction Particles
-图像特效：性奋粒子
-GFX: Vibration Particles
-图像特效：震动粒子
-UI: Show NPC Status
-UI：显示NPC状态
-UI: Show Spell Range
-UI：显示法术范围
-GFX: Trim Edge Walls
-图像特效：对齐墙壁边缘
-GFX: Fog Shader
-图像特效：启用雾着色器
-GFX: Light Shader
-图像特效：启用灯光着色器
+Async Rendering (beta)
+异步渲染 (测试版)
+Bloom & Glow
+曝光 & 发光
+Transparent UI
+透明 UI
+Turn Counter
+回合计数器
+Flash Screen on Stun
+眩晕时闪屏
+Map Particles
+地图粒子效果
+Distraction Particles
+性奋粒子
+Vibration Particles
+震动粒子
+Show NPC Status
+显示NPC状态
+Show Spell Range
+显示法术范围
+Trim Edge Walls
+对齐墙壁边缘
+Fog Shader
+启用雾着色器
+Light Shader
+启用灯光着色器
 Intense 'Let Go' VFX
 强烈高潮视效
 Enable Toy SFX
@@ -100,44 +108,52 @@ Enable Fullscreen
 启用全屏
 Hi-Res Distortion (Needs Restart)
 高分辨率失真（需重启）
-GFX: High Quality Animations
-图像特效：高品质动画
-GFX: Enemy Animations
-图像特效：敌人动画
-Controls: One-Click Move
-控制: 单击移动
-Controls: Latch Shift Key
-控制: 闩锁移位键
-Clothes: Chastity over Panties
-衣物：贞操带显示在内裤之上
-Clothes: Chastity Bra over Bras
-衣物：贞操文胸显示在胸罩之上
-Clothes: Simple Color Picker
-衣物：简易取色器
-UI: Center Player
-UI：玩家为中心
-UI: Draw Buffs on Side
-UI: 在屏幕一侧绘制增益效果
-UI: Show Trajectory on Auto-Path
-UI：预览自动路径轨迹
-UI: Show Player Facing
-UI：显示玩家朝向
-UI: Show more learnable spells
-UI：显示更多可学习的法术
-UI: Show Player Buff Auras
-UI：显示玩家增益光环
-UI: Show Enemy Buff Auras
-UI：显示敌人增益光环
-UI: Minimalist Enemy Auras
-UI：极简敌人光环
-UI: Pixelated GFX (needs restart)
-UI：像素化图像特效（需重启）
-Controls: Auto-Crouch when Tripped
-控制：绊倒时自动蹲下
+High Quality Animations
+高品质动画
+Enemy Animations
+敌人动画
+One-Click Move
+单击移动
+Latch Shift Key
+闩锁移位键
+Chastity over Panties
+贞操带显示在内裤之上
+Chastity Bra over Bras
+贞操文胸显示在胸罩之上
+Simple Color Picker
+简易取色器
+Center Player
+玩家为中心
+Draw Buffs on Side
+在屏幕一侧绘制增益效果
+Show Trajectory on Auto-Path
+预览自动路径轨迹
+Show Player Facing
+显示玩家朝向
+Show more learnable spells
+显示更多可学习的法术
+Show Player Buff Auras
+显示玩家增益光环
+Show Enemy Buff Auras
+显示敌人增益光环
+Minimalist Enemy Auras
+极简敌人光环
+Pixelated GFX (needs restart)
+像素化图像特效（需重启）
+Auto-Crouch when Tripped
+绊倒时自动蹲下
 Zoom In
 放大
 Zoom Out
 缩小
+Enable Nipples
+启用乳头
+Show Nipple Toys Over Bras
+乳头玩具显示在胸罩之上
+Hide Nipple Clamps
+隐藏乳头夹
+Hide Nipple Piercings
+隐藏乳头穿孔
 Helpless!
 无助！
 Evaded!
@@ -2238,6 +2254,8 @@ Deals fire damage. Provides light.
 造成火焰伤害。可以提供光亮。
 Unarmed
 徒手
+Physical
+躯体
 Fight with your hands and feet.
 用你的手和脚战斗。
 Deals unarmed damage.
@@ -4242,6 +4260,8 @@ The lock is divine. A mortal shouldn't even try to pick it.
 锁是神圣的。一个凡人不应该试图去摘它。
 You must perform your quest! Don't even think of unlocking it...
 你必须完成你的任务！否则就别想解锁……
+You're not sure a key for this even exists in the mortal realm.
+你甚至不确定人间是否存在这把钥匙。
 The lock is made of solid rubber. You can't pick that.
 锁由实心橡胶制成。你解不开它。
 You need something sharp to cut the lock.
@@ -5044,6 +5064,12 @@ Advanced Massagers
 高级按摩器
 A pair of sensitive motion-activated teasers. They trigger when you attack or struggle.
 一对较为敏感通过动作激活的挑逗器。当你摆动身体进行攻击或挣扎时，它们就会触发。
+Nipple Weights
+乳头砝码
+A pair of dense weights dangling from your sensitive bits.
+一对沉重的砝码悬挂在你的敏感部位上。
+They tend to swing around when attacking or casting arm spells.
+他们在攻击或施展手臂法术时往往会左右摇摆。
 Hi-Tech Massagers
 高科技按摩器
 A pair of highly-sensitive motion-activated teasers. They detect most forms of motion, including sprinting and hopping.
@@ -6466,8 +6492,8 @@ Feather
 羽毛
 A feather taken from some large fluffy being.
 从一些毛茸茸的大动物上取下的羽毛。
-Deals tickle damage. Distracts enemies. Offhand: +5 tickle damage on attack for 3 stamina.
-造成挠痒伤害，使敌人性奋。副手：攻击时 +5 挠痒伤害，持续 3 点体力。
+Deals tickle damage. Greatly distracting. Offhand: +1 tickle damage on attack for 3 stamina. Greatly distracting.
+造成挠痒伤害，极大地分散注意力。副手：攻击时 +1 挠痒伤害，持续 3 点体力。极大地分散注意力。
 Rope Rune
 绳索符文
 You smash the rune in front of you, and a flash of light enchants nearby ropes!
@@ -9752,8 +9778,8 @@ Disappears if the caster is defeated
 如果敌人被击溃，就会消失
 Caster: ENEMYNAME
 敌人: ENEMYNAME
-Demise immanent
-灭亡
+Demise imminent
+即将灭亡
 Vulnerable
 虚弱
 Stunned
@@ -13016,8 +13042,22 @@ Got something for me?
 （SPEAKER 脸红了）|哦……让我检查一下。
 (The SPEAKER smirks)|Be careful what you ask for~
 （SPEAKER 傻笑）|小心你的要求~
-(The SPEAKER flashes its lights)|Calculating strictness threshold...
-（SPEAKER 闪烁）|正在计算严格阈值...
+(The SPEAKER pauses)|Calculating strictness threshold...
+（SPEAKER 停顿）|正在计算严格阈值...
+Let's go for a walk!
+让我们出去走走！
+(Jump excitedly, presenting your collar for a leash)
+（兴奋地跳起来，露出你项圈上的牵绳）
+(The SPEAKER smiles)|Sure! I'll take you for a walk, but only if you behave.
+（SPEAKER 微笑）|当然！我会带你去散步，但前提是你要乖一点。
+(The SPEAKER smiles)|Yes, I haven't had a nice walk in a while~
+（SPEAKER 微笑）|是的，我已经有一段时间没有好好散步了~
+(The SPEAKER blushes)|Sure! I'll make sure you don't get into trouble~
+（SPEAKER 脸红了）|当然！我保证你不会遇到麻烦~
+(The SPEAKER giggles)|Time for walkies!
+（SPEAKER 咯咯地笑着）|该走了！
+(The SPEAKER calculates)|Routing coordinates...
+（SPEAKER 计算中）|路径坐标...
 Yes please! (Hold out your wrists)
 是的，请！（伸出手腕）
 (Nod and blush)
@@ -14520,8 +14560,58 @@ That's better! Now stay close to me~
 这样更好！ 现在就靠近我吧~
 Looks like our time is coming to an end...
 看来属于我们的时间即将结束了……
+Time to bring you back to your place~
+是时候带你回到原处了~
 You've been quite adorable! Until next time~
 你真是太可爱了！直到下次~
+It's time for your walk, miss.
+小姐，该散步了。
+Now let's see, where to go...
+现在让我们看看，该去哪里……
+I think we've reached a stopping point.
+我想我们已经到了终点。
+I have to put you back now~
+我现在必须把你带回去了~
+It's been fun playing with you miss!
+和你一起玩很有趣，小姐！
+(reaches for your leash)
+（伸手去拉你的牵绳）
+(holds your leash firmly)
+（牢牢握住你的牵绳）
+(giggles)
+（咯咯笑）
+(waves goodbye)
+（挥手告别）
+Why don't we go for a walk?
+我们为什么不去散步呢？
+That's better! Now come along~
+这样更好！现在来吧~
+This has been lots of fun!
+这真是太有趣了！
+I have to go return you~
+我得去还你~
+Good girl~ Let's go again later~
+好女孩~ 我们一会儿再去吧~
+It's time for walkies!
+该走了！
+That's a good girl!
+真是个好女孩！
+I want to keep you longer, but I've got things to do.
+我想让你多待一会儿，但我还有事要做。
+It's time to go back to your little house~
+是时候回你的小房子了~
+(pats you on the head)
+（拍拍你的头）
+It is time for your mandatory exercise.
+是时候进行强制性锻炼了。
+Please maintain proximity.
+请保持距离。
+Progress Level: 90%
+进度水平：90%
+Exercise complete. Returning to storage.
+练习完毕。返回存储。
+Uploading logs to database. Error... no connection
+正在将日志上传到数据库。出错... 无连接
 Latex Mimic
 乳胶模仿者
 The latex mimic melts into a shiny puddle.
@@ -15330,8 +15420,8 @@ You find a shimmering macaron.
 你发现了一个闪闪发光的马卡龙。
 Heavenly Crunch Macaron
 神圣脆脆马卡龙
-You feel holy energy neutralizing the cursed magic...
-你感觉到神圣的能量中和了被诅咒的魔法......
+You feel holy energy neutralizing the cursed magic permanently.
+你感觉到神圣的能量永久地中和了被诅咒的魔法。
 Some say it comes from a bakery in heaven itself. Others say it is simply made from lab-grade materials, and actually tastes awful.
 有人说它来自天堂的面包店。其他人则说它只是由实验室材料制成，实际上味道很糟糕。
 Unlocks a common cursed item and/or removes all curses from one currently worn item of your choice.
@@ -15874,8 +15964,6 @@ Blast Door
 防爆门
 You knock down the blast door!
 你把防爆门撞坏了！
-Sell for VLU gp
-以 VLU gp 出售
 You sell the ITM for VLU gp.
 你以 VLU gp 的价格出售 ITM。
 You sell #x ITM for VLU gp.
@@ -16234,6 +16322,8 @@ Room bugged. Please Report.
 房间出现问题。请反馈。
 (Cursed)
 （诅咒）
+(Purified)
+（净化）
 of Agility
 敏捷
 Precise
@@ -16504,12 +16594,30 @@ A chastity belt forged in holy light. Only the will of a Goddess will release yo
 圣光锻造的贞操带。只有女神才能释放你！
 You find a heavenly chastity belt. Who could it be for?
 你找到了一条天堂贞操带。可以给谁呢？
+Divine Chastity Bra
+神圣贞操文胸
+A chastity bra forged in holy light. Only a Goddess' will can release you.
+圣光锻造的贞操文胸。只有女神才能释放你。
+There is no way out but to repent. Its divine aura prevents you from pleasuring yourself.
+除了悔改，没有任何出路。它神圣的光环会阻止你自慰。
+Your Divine Chastity Bra causes your whole body to go numb.
+你的神圣贞操文胸会让你整个身体变得麻木。
+A chastity bra forged in holy light. Only the will of a Goddess will release you!
+圣光锻造的贞操文胸。只有女神才能释放你！
+You find a heavenly chastity bra. Who could it be for?
+你找到了一件天堂般的贞操文胸。可以给谁呢？
 Heavenly Chastity Belt
 天堂贞操带
 There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge.
 除了悔改，没有任何出路。它神圣的光环会让振动器抑制你到达高潮边缘。
 Your Divine Chastity Belt magically dampens the vibrations just enough to edge you.
 你的神圣贞操带神奇地减弱振动，足以让你感到紧张。
+Heavenly Chastity Bra
+天堂贞操文胸
+There is no way out but to repent. Its divine aura converts self-pleasure to stamina.
+除了悔改，没有任何出路。它神圣的光环会将自我取悦转化为体力。
+The divine aura drains the pleasure from your self-pleasuring and converts it to stamina.
+神圣的光环会耗尽你自慰的快乐，并将其转化为体力。
 Magic Arm Belts
 手臂绑带（附魔）
 Highly secure belts enchanted with magic.
@@ -16998,5 +17106,45 @@ Remove the Curse
 移除诅咒
 Feed this to her
 把这个喂给她
+Sell for VLU gp
+以 VLU gp 出售
+Sell ALL for VLU gp
+以 VLU gp 出售所有
 You feed the RSTR to the ENNME! (AMNT1/AMNT2 hp)
 你将 RSTR 喂给 ENNME！ (AMNT1/AMNT2 血量)
+Chain Rune
+锁链符文
+Ribbon Rune
+丝带符文
+Nature Rune
+自然符文
+Belt Rune
+贞操带符文
+Leather Rune
+皮革符文
+Latex Rune
+乳胶符文
+Latex Cube Rune
+乳胶立方体符文
+Rubber Rune
+橡胶符文
+Slime Rune
+粘液符文
++AMNT gp
++AMNT 金币
+Locked
+已锁定
+ENMY lets go of herself for AMNT damage!
+ENMY 因 AMNT 伤害而放弃了自己！
+Sonar
+声纳
+Emit a ping to highlight floors and tiles in a large radius. The ping is audible and attracts enemies to your position.
+发出 ping 信号以突出显示大半径范围内的地板和瓷砖。发出的声音会吸引敌人到你的位置。
+You emit a loud noise and listen for echoes...
+你发出巨大的噪音并聆听回声......
+Your mouth is too heavily stuffed!
+你的嘴被塞得太严实了！
+You don't have the mana to cast Sonar!
+你没有法力来施放声纳！
+The weights swing around and tug on your nipples!
+砝码会左右摆动并拉扯你的乳头！
