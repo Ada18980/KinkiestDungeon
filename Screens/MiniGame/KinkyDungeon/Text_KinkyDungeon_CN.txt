@@ -347,7 +347,7 @@ Rope Bunny
 Rope restraints are harder to escape from.
 绳索拘束更难逃脱。
 Slippery
-滑溜溜 
+滑溜溜
 Start with high Latex reputation, and all latex restraints are easier to escape from.
 开局乳胶声望更高，所有乳胶拘束更容易摆脱。
 Latex Doll
@@ -355,7 +355,7 @@ Latex Doll
 Latex restraints are harder to escape from.
 乳胶拘束更难逃脱。
 Escapee
-流亡者 
+流亡者
 Start with high Leather reputation, and all leather restraints are easier to escape from.
 开局皮革声望更高，所有皮革束缚更容易逃脱。
 Leather-Bound
