@@ -109,6 +109,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("BraProto", true));
 
 AddModel({
 	Name: "BraCyber",
@@ -143,6 +144,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("BraCyber", true));
 
 AddModel({
 	Name: "ChastityBra",
@@ -180,6 +182,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("ChastityBra", true));
 
 
 AddModel({
@@ -232,6 +235,8 @@ AddModel({
 		},
 	])
 });
+
+AddModel(GetModelFashionVersion("HeartBelt", true));
 
 
 AddModel({
@@ -288,6 +293,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("CyberBelt", true));
 
 AddModel({
 	Name: "ProtoBelt",
@@ -344,6 +350,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("ProtoBelt", true));
 
 
 
@@ -438,6 +445,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("DivineBelt", true));
 
 
 AddModel({
@@ -531,6 +539,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("DivineBeltRunic", true));
 
 AddModel({
 	Name: "DivineBra",
@@ -610,6 +619,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("DivineBra", true));
 
 
 AddModel({
@@ -690,3 +700,4 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("DivineBraRunic", true));

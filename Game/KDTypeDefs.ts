@@ -3069,6 +3069,25 @@ interface KDCommanderOrder {
 	global_after: (data: KDCommanderOrderData) => void;
 }
 
+interface KDCollectionEntry {
+	name: string,
+	color: string,
+	type: string,
+	sprite: string,
+	customSprite: boolean,
+	id: number,
+	Enemy?: enemy, // for unique ones
+
+	/** Status: Guest, Prisoner, Servant, or Manager */
+	status: string,
+	class: string,
+
+	Faction: string,
+	Opinion: number,
+	Training: number,
+	Willpower: number,
+}
+
 interface KDFactionProps {
 	/** Negative - will join their allies on sight against you
 	 * Neutral - will only join if they see you attacking their ally or their ally is otherwise neutral with you

@@ -24,12 +24,12 @@
 	"spriteSourceSize": {"x":458,"y":1433,"w":146,"h":189},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Chastity/BraProtoLock.png":
+"Models/Chastity/CyberLock.png":
 {
-	"frame": {"x":1734,"y":1559,"w":17,"h":30},
+	"frame": {"x":1741,"y":1416,"w":12,"h":18},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":560,"y":573,"w":17,"h":30},
+	"spriteSourceSize": {"x":569,"y":850,"w":12,"h":18},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Collars/TrackingModuleDisplay.png":
@@ -62,6 +62,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":469,"y":1031,"w":110,"h":60},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/DivineBelt/LockBraLines.png":
+{
+	"frame": {"x":1664,"y":1177,"w":88,"h":210},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":534,"y":432,"w":88,"h":210},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Dress/BlouseArmRightWristtie.png":
@@ -296,6 +304,14 @@
 	"spriteSourceSize": {"x":543,"y":733,"w":39,"h":15},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/GagLeather/MuzzleHarness.png":
+{
+	"frame": {"x":1664,"y":1416,"w":77,"h":223},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":91,"y":10,"w":77,"h":223},
+	"sourceSize": {"w":321,"h":332}
+},
 "Models/GagMetal/Display.png":
 {
 	"frame": {"x":2021,"y":1962,"w":22,"h":25},
@@ -322,7 +338,7 @@
 },
 "Models/Handcuffs/Irish8AnkleLeftClosed.png":
 {
-	"frame": {"x":1664,"y":1447,"w":88,"h":29},
+	"frame": {"x":1664,"y":1387,"w":88,"h":29},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":592,"y":1431,"w":88,"h":29},
@@ -360,14 +376,6 @@
 	"spriteSourceSize": {"x":332,"y":391,"w":620,"h":1122},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/LeatherCuffs/BandElbowRightFront.png":
-{
-	"frame": {"x":1734,"y":1611,"w":15,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":430,"y":613,"w":15,"h":22},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/LeatherCuffs/BandWristRightFree.png":
 {
 	"frame": {"x":2009,"y":100,"w":39,"h":68},
@@ -398,6 +406,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":428,"y":598,"w":25,"h":52},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/LeatherCuffs/HardwareElbowLeftWristtie.png":
+{
+	"frame": {"x":1741,"y":1434,"w":11,"h":24},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":700,"y":623,"w":11,"h":24},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/LeatherCuffs/HardwareThighRightClosed.png":
@@ -432,20 +448,12 @@
 	"spriteSourceSize": {"x":375,"y":635,"w":28,"h":17},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/LeatherCuffs/HardwareWristRightFront.png":
+"Models/Legbinder/LacesLegbinderClosed.png":
 {
-	"frame": {"x":1734,"y":1589,"w":16,"h":22},
+	"frame": {"x":1664,"y":887,"w":88,"h":290},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":471,"y":542,"w":16,"h":22},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Legbinder/LacesLegbinderHogtie.png":
-{
-	"frame": {"x":1664,"y":887,"w":88,"h":560},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":533,"y":946,"w":88,"h":560},
+	"spriteSourceSize": {"x":533,"y":946,"w":88,"h":290},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Mittens/LockLeftYoked.png":
@@ -608,14 +616,6 @@
 	"spriteSourceSize": {"x":77,"y":622,"w":1111,"h":849},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/TapeHeavy/ArmFullRightWristtie.png":
-{
-	"frame": {"x":1664,"y":1559,"w":70,"h":80},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":461,"y":429,"w":70,"h":80},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/TapeHeavy/HandRightBoxtie.png":
 {
 	"frame": {"x":2009,"y":549,"w":39,"h":39},
@@ -624,28 +624,12 @@
 	"spriteSourceSize": {"x":681,"y":679,"w":39,"h":39},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/TapeLight/HandRightFront.png":
-{
-	"frame": {"x":1664,"y":1476,"w":87,"h":83},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":494,"y":467,"w":87,"h":83},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/TapeLight/TopWristtie.png":
 {
 	"frame": {"x":2009,"y":0,"w":39,"h":100},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":678,"y":660,"w":39,"h":100},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/TapeMed/ArmFullRightWristtie.png":
-{
-	"frame": {"x":1664,"y":1559,"w":70,"h":80},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":461,"y":429,"w":70,"h":80},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/TapeMed/ArmLeftWristtie.png":
@@ -712,6 +696,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:3cf291404f1192607467cd9533b85c85:7813aae2ba5c0365cad55ecc4f0b7e7b:9ddc1915ee0a48cdf7b33ba967881c67$"
+	"smartupdate": "$TexturePacker:SmartUpdate:b0365fa1be03ed88f591af8c3b5ecf03:318d755bb693377b6d8cda405c0b3bdc:9ddc1915ee0a48cdf7b33ba967881c67$"
 }
 }

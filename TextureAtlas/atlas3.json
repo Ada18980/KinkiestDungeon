@@ -16,6 +16,14 @@
 	"spriteSourceSize": {"x":535,"y":735,"w":185,"h":104},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/Chastity/BraProtoLock.png":
+{
+	"frame": {"x":2026,"y":1733,"w":17,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":560,"y":573,"w":17,"h":30},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/Chastity/ProtoLock.png":
 {
 	"frame": {"x":2026,"y":1419,"w":21,"h":30},
@@ -62,6 +70,22 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":275,"y":736,"w":529,"h":357},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Ears/EarringsBack.png":
+{
+	"frame": {"x":2026,"y":1763,"w":15,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":548,"y":334,"w":15,"h":37},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Ears/ElfEarringsBack.png":
+{
+	"frame": {"x":2026,"y":1763,"w":15,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":522,"y":322,"w":15,"h":37},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Elf/ShoeLeftKneel.png":
@@ -240,6 +264,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:3cf291404f1192607467cd9533b85c85:7813aae2ba5c0365cad55ecc4f0b7e7b:9ddc1915ee0a48cdf7b33ba967881c67$"
+	"smartupdate": "$TexturePacker:SmartUpdate:b0365fa1be03ed88f591af8c3b5ecf03:318d755bb693377b6d8cda405c0b3bdc:9ddc1915ee0a48cdf7b33ba967881c67$"
 }
 }

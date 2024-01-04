@@ -1054,8 +1054,8 @@
             <key type="filename">../Models/LeatherCuffs/WristRightFront.png</key>
             <key type="filename">../Models/LeatherCuffs/WristRightYoked.png</key>
             <key type="filename">../Models/Legbinder/LacesLegbinderClosed.png</key>
-            <key type="filename">../Models/Legbinder/LacesLegbinderHogtie.png</key>
             <key type="filename">../Models/Legbinder/LacesLegbinderKneelClosed.png</key>
+            <key type="filename">../Models/Legbinder/LegLacesLegbinderClosed.png</key>
             <key type="filename">../Models/Legbinder/LegLegbinderClosed.png</key>
             <key type="filename">../Models/Legbinder/LegLegbinderHogtie.png</key>
             <key type="filename">../Models/Legbinder/LegLegbinderKneelClosed.png</key>
@@ -1063,6 +1063,7 @@
             <key type="filename">../Models/Legbinder/LegbinderClosed.png</key>
             <key type="filename">../Models/Legbinder/LegbinderHogtie.png</key>
             <key type="filename">../Models/Legbinder/LegbinderKneelClosed.png</key>
+            <key type="filename">../Models/Legbinder/RightLacesLegbinderKneelClosed.png</key>
             <key type="filename">../Models/Legbinder/RightLegbinderClosed.png</key>
             <key type="filename">../Models/Legbinder/RightLegbinderHogtie.png</key>
             <key type="filename">../Models/Legbinder/RightLegbinderKneelClosed.png</key>

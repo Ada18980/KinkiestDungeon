@@ -1681,6 +1681,12 @@ function KinkyDungeonDrawGame() {
 			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
 		}
 		KinkyDungeonDrawQuest();
+	} else if (KinkyDungeonDrawState == "Collection") {
+		KDDrawNavBar(3);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
+		KinkyDungeonDrawCollection();
 	} else if (KinkyDungeonDrawState == "Reputation") {
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KDDrawNavBar(3);
@@ -2866,7 +2872,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 			};
 			if (options?.tint) o.tint = options.tint;
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-			Image, (options?.centered ? Width/2 - img.orig.height/2 : 2) + Left, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
+			Image, (options?.centered ? Width/2 - img.orig.width/2 : 2) + Left, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
 		}
 		textPush = img.orig.width;
 	}
@@ -3422,7 +3428,7 @@ function KDUpdateVision(CamX, CamY, CamX_offset, CamY_offset) {
 
 
 	if (CamX != undefined) {
-		if (KDToggles.Bloom) {
+		if (KDToggles.Bloom && !(KinkyDungeonBlindLevel >= 2)) {
 			let pad = (324-KinkyDungeonGridSizeDisplay)/2;
 			for (let light of [...data.lights, ...data.maplights, ...data.effecttilelights]) {
 				if (KinkyDungeonVisionGet(light.x_orig || light.x, light.y_orig || light.y)) {

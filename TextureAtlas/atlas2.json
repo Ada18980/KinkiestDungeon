@@ -40,14 +40,6 @@
 	"spriteSourceSize": {"x":567,"y":554,"w":14,"h":133},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Chastity/CyberLock.png":
-{
-	"frame": {"x":2034,"y":873,"w":12,"h":18},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":569,"y":850,"w":12,"h":18},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/Collars/TrackingModule.png":
 {
 	"frame": {"x":2009,"y":648,"w":28,"h":29},
@@ -94,22 +86,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":688,"y":329,"w":15,"h":37},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Ears/EarringsBack.png":
-{
-	"frame": {"x":2033,"y":1097,"w":15,"h":37},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":548,"y":334,"w":15,"h":37},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Ears/ElfEarringsBack.png":
-{
-	"frame": {"x":2033,"y":1097,"w":15,"h":37},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":522,"y":322,"w":15,"h":37},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Ears/ElfEarringsFront.png":
@@ -240,12 +216,20 @@
 	"spriteSourceSize": {"x":343,"y":436,"w":269,"h":247},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/LeatherCuffs/HardwareElbowLeftWristtie.png":
+"Models/LeatherCuffs/BandElbowRightFront.png":
 {
-	"frame": {"x":2037,"y":526,"w":11,"h":24},
+	"frame": {"x":2032,"y":1137,"w":15,"h":22},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":700,"y":623,"w":11,"h":24},
+	"spriteSourceSize": {"x":430,"y":613,"w":15,"h":22},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/LeatherCuffs/HardwareWristRightFront.png":
+{
+	"frame": {"x":2032,"y":1115,"w":16,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":471,"y":542,"w":16,"h":22},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Mittens/LockRightFree.png":
@@ -392,6 +376,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:3cf291404f1192607467cd9533b85c85:7813aae2ba5c0365cad55ecc4f0b7e7b:9ddc1915ee0a48cdf7b33ba967881c67$"
+	"smartupdate": "$TexturePacker:SmartUpdate:b0365fa1be03ed88f591af8c3b5ecf03:318d755bb693377b6d8cda405c0b3bdc:9ddc1915ee0a48cdf7b33ba967881c67$"
 }
 }

@@ -126,6 +126,7 @@ let LAYERS_BASE = [
 	"ShirtChest",
 	"Option_BindChestLower",
 	"NippleToysOption",
+	"SuitChestOver",
 	"BraChest",
 	"BindChestLower",
 	"SuitChest",
@@ -233,6 +234,7 @@ let LAYERS_BASE = [
 	"ThighLeft",
 
 	"WrappingAnklesOver",
+	"LegbinderAnklesOver",
 
 	"AnklesOver",
 	"Ankles",
@@ -245,6 +247,7 @@ let LAYERS_BASE = [
 	"WrappingLegs",
 
 	"PantsAccLeft",
+	"ShortsLeft",
 	"PantLeft",
 
 	"BindFeet",
@@ -258,6 +261,8 @@ let LAYERS_BASE = [
 
 	"WrappingLegsUnder",
 
+	"Shorts",
+
 	"OverSocks",
 	"StockingLeft",
 	"FootLeft",
@@ -267,6 +272,7 @@ let LAYERS_BASE = [
 	"OverCrotchStrap",
 
 	"Option_ChastityBelt",
+	"BodysuitOver",
 
 	// Panties go here when standing
 	"Panties",
@@ -305,7 +311,7 @@ let LAYERS_BASE = [
 	"AnkleRightOver",
 	"PantsAccRight",
 	"PantRight",
-	"Pants",
+	"PantLegs",
 
 	"HarnessUnder",
 
@@ -443,6 +449,8 @@ let LayerGroups = {
 		"Bustier",
 		"Corset",
 		"CorsetLiner",
+		"HarnessLower",
+		"HarnessMid",
 	]),
 
 	// region slime
@@ -497,6 +505,8 @@ let LayerGroups = {
 	"SlimeTorsoLower": ToMap([
 		"OverSkirt",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 	]),
 	// endregion
 
@@ -791,6 +801,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		"OverSocks",
 		"StockingLeft",
@@ -819,6 +831,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		"OverSocks",
 		"StockingLeft",
@@ -889,6 +903,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		"OverSocks",
 		"StockingLeft",
@@ -924,6 +940,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		// Shoes
 		"ShoeLeftDeco",
@@ -993,6 +1011,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		"OverSocks",
 		"StockingLeft",
@@ -1041,6 +1061,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		"OverSocks",
 		"StockingLeft",
@@ -1069,6 +1091,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		// Shoes
 		"ShoeLeftDeco",
@@ -1116,6 +1140,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		// Shoes
 		"ShoeLeftDeco",
@@ -1284,6 +1310,7 @@ let LayerGroups = {
 	"WrappingLegsOver",
 	"LegbinderLegsOver",
 	"WrappingAnklesOver",
+	"LegbinderAnklesOver",
 
 	// Corsets that go under harness and poofy skirt
 	//"Corset",
@@ -1333,6 +1360,8 @@ let LayerGroups = {
 	"PantsAccRight",
 	"PantRight",
 	"Pants",
+	"ShortsLeft",
+	"Shorts",
 
 	"SleeveDecoLeft",
 	"SleeveLeft",

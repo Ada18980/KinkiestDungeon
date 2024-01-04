@@ -363,7 +363,7 @@ let KDCommanderOrders = {
 
 		// Role maintenance
 		maintain: (enemy, data) => {
-			return (!enemy.IntentAction && data.aggressive && enemy.vp > 0 && !KinkyDungeonIsDisabled(enemy));
+			return (!enemy.IntentAction && data.aggressive && KDHostile(enemy) && enemy.vp > 0 && !KinkyDungeonIsDisabled(enemy));
 		},
 		remove: (enemy, data) => {},
 		update: (enemy, data) => {
@@ -445,6 +445,8 @@ let KDCommanderOrders = {
 				return (d1 > 1.5
 					|| KDAssaulters >= KDMaxAssaulters
 					|| enemy.hp > enemy.Enemy.maxhp * 0.6)
+				&& enemy != KinkyDungeonLeashingEnemy()
+				&& enemy != KinkyDungeonJailGuard()
 				&& (dist < 24 || enemy.aware || enemy.vp > 0 || fort);
 			}
 			return false;
@@ -636,7 +638,7 @@ let KDCommanderOrders = {
 
 		// Role maintenance
 		maintain: (enemy, data) => {
-			return (!enemy.IntentAction && data.aggressive && enemy.vp > 0 && KDEnemyHasFlag(enemy, "targ_player"));
+			return (!enemy.IntentAction && data.aggressive && KDHostile(enemy) && enemy.vp > 0 && KDEnemyHasFlag(enemy, "targ_player"));
 		},
 		remove: (enemy, data) => {},
 		update: (enemy, data) => {
@@ -690,6 +692,8 @@ let KDCommanderOrders = {
 				;
 			})) return false;
 			return (!enemy.IntentAction
+				&& enemy != KinkyDungeonLeashingEnemy()
+				&& enemy != KinkyDungeonJailGuard()
 				&& (enemy.attackPoints < 1)
 				&& (!enemy.aware || KDAssaulters >= KDMaxAssaulters)
 				&& KDBoundEffects(enemy) < 4);

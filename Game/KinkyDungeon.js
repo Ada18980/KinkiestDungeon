@@ -102,7 +102,7 @@ let KinkyDungeonKeyEnter = ['Enter'];
 let KinkyDungeonKeySprint = ['ShiftLeft'];
 let KinkyDungeonKeyWeapon = ['R',];
 let KinkyDungeonKeyUpcast = ['ControlLeft', 'AltLeft'];
-let KinkyDungeonKeyMenu = ['V', 'I', 'U', 'M', 'L', '*']; // QuikInv, Inventory, Reputation, Magic, Log, Quest
+let KinkyDungeonKeyMenu = ['V', 'I', 'U', 'M', 'L', '*', '-']; // QuikInv, Inventory, Reputation, Magic, Log, Quest, Collection
 let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight", 'T', '?', '/', "'"]; // Log, Passing, Door, Auto Struggle, Auto Pathfind, Inspect, Wait till interrupted, Make Noise, Crouch
 let KinkyDungeonKeySpellPage = ['`'];
 let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H', 'J']; // Swap, Offhand, OffhandPrevious
@@ -171,6 +171,7 @@ let KDToggles = {
 	NippleToysHide: false,
 	NipplePiercingsHide: false,
 	//AutoCrouchOnTrip: true,
+	FlipStatusBars: false,
 };
 
 let KDToggleCategories = {
@@ -211,6 +212,7 @@ let KDToggleCategories = {
 	NearestNeighbor: "GFX",
 	ZoomIn: "UI",
 	ZoomOut: "UI",
+	FlipStatusBars: "UI",
 	//LazyWalk: "Controls",
 	//ShiftLatch: "Controls",
 };
@@ -265,6 +267,7 @@ let KDDefaultKB = {
 	Magic: KinkyDungeonKeyMenu[3],
 	Log: KinkyDungeonKeyMenu[4],
 	Quest: KinkyDungeonKeyMenu[5],
+	Collection: KinkyDungeonKeyMenu[6],
 
 
 	MsgLog: KinkyDungeonKeyToggle[0],
@@ -465,6 +468,7 @@ let KDDefaultMaxParty = 3;
 * ShieldDamage: number,
 * Balance: number,
 * BalancePause: boolean,
+* Collection: Record<string, KDCollectionEntry>,
 * HeelPower: number,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
@@ -472,6 +476,7 @@ let KDDefaultMaxParty = 3;
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	Collection: {},
 	RevealedTiles: {},
 	RevealedFog: {},
 	Balance: 1,
@@ -2598,7 +2603,7 @@ function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Co
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
- * @returns {void} - Nothing
+ * @returns {boolean} - Whether or not the mouse is in the button
  */
 function DrawButtonKDExScroll(name, scrollfunc, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
 	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
@@ -2613,6 +2618,7 @@ function DrawButtonKDExScroll(name, scrollfunc, func, enabled, Left, Top, Width,
 		scrollfunc: scrollfunc,
 		hotkeyPress: options?.hotkeyPress,
 	};
+	return MouseIn(Left,Top,Width,Height);
 }
 
 /**
@@ -2641,7 +2647,7 @@ function DrawButtonKDExScroll(name, scrollfunc, func, enabled, Left, Top, Width,
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
  * @param {boolean} [options.unique] - This button is unique, so X and Y are not differentiators
- * @returns {void} - Nothing
+ * @returns {boolean} - Whether or not the mouse is in the button
  */
 function DrawButtonKDExTo(Container, name, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
 	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
@@ -2655,6 +2661,7 @@ function DrawButtonKDExTo(Container, name, func, enabled, Left, Top, Width, Heig
 		priority: (options?.zIndex || 0),
 		hotkeyPress: options?.hotkeyPress,
 	};
+	return MouseIn(Left,Top,Width,Height);
 }
 
 function KDMouseWheel(event) {
@@ -2663,6 +2670,7 @@ function KDMouseWheel(event) {
 		if (KDProcessButtonScroll(event.deltaY, 15)) return;
 	} else return;
 	if (KDFunctionOptionsScroll(event.deltaY)) return;
+	if (KDFunctionCollectionScroll(event.deltaY)) return;
 	if (KDFunctionDialogueScroll(event.deltaY)) return;
 	if (KDFunctionPerksScroll(event.deltaY || event.deltaX)) return;
 	if (KDFunctionQuestScroll(event.deltaY || event.deltaX)) return;
@@ -2703,11 +2711,22 @@ function KDFunctionPerksScroll(amount) {
 	return false;
 }
 function KDFunctionQuestScroll(amount) {
-	if (KinkyDungeonState == "Quest") {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Quest") {
 		if (amount > 0) {
 			KDClickButton("questDown");
 		} else {
 			KDClickButton("questUp");
+		}
+		return true;
+	}
+	return false;
+}
+function KDFunctionCollectionScroll(amount) {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Collection") {
+		if (amount > 0) {
+			KDClickButton("collDOWN");
+		} else {
+			KDClickButton("collUP");
 		}
 		return true;
 	}
@@ -3139,6 +3158,7 @@ function KDCommitKeybindings() {
 		KinkyDungeonKeybindings.Magic,
 		KinkyDungeonKeybindings.Log,
 		KinkyDungeonKeybindings.Quest,
+		KinkyDungeonKeybindings.Collection,
 	];
 	KinkyDungeonKeyToggle = [
 		KinkyDungeonKeybindings.MsgLog,

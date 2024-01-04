@@ -2389,7 +2389,7 @@ function KDBulletHitEnemy(bullet, enemy, d, nomsg) {
 	} else if (bullet.bullet.faction == "Player" || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0)
 	{
 		// Avoid damaging the enemy if its a no direct damage spell
-		if (!(!bullet.secondary && bullet.bullet.spell && bullet.bullet.spell.noDirectDamage))
+		if (!(!bullet.secondary && bullet.bullet.spell && bullet.bullet.spell.noDirectDamage) && bullet.bullet.damage.type != "inert")
 			KinkyDungeonDamageEnemy(enemy, bullet.bullet.damage, true, nomsg, bullet.bullet.spell, bullet, undefined, d);
 	}
 }

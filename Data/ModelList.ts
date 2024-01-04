@@ -650,28 +650,6 @@ AddModel({
 });
 
 AddModel({
-	Name: "BanditShorts",
-	Folder: "Bandit",
-	Parent: "Bandit",
-	TopLevel: true,
-	Categories: ["Pants"],
-	AddPose: ["Pants"],
-	Layers: ToLayerMap([
-		{ Name: "Shorts", Layer: "Pants", Pri: 7,
-			Poses: ToMap([...LEGPOSES]),
-			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
-			//MorphPoses: {Hogtie: "Hogtie"},
-		},
-		{ Name: "ShortsLeft", Layer: "PantLeft", Pri: 7,
-			Poses: ToMap([...LEGPOSES]),
-			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
-			//MorphPoses: {Hogtie: "Hogtie"},
-		},
-	])
-});
-
-
-AddModel({
 	Name: "BanditPouch",
 	Folder: "Bandit",
 	Parent: "Bandit",

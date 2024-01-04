@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.7 (D)"
+KDVersionStr,"5.0.7 (E)"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -86,6 +86,7 @@ KDToggleEnemyAura,Show Enemy Buff Auras
 KDToggleOutlineAura,Minimalist Enemy Auras
 KDToggleNearestNeighbor,Pixelated GFX (needs restart)
 KDToggleAutoCrouchOnTrip,Auto-Crouch when Tripped
+KDToggleFlipStatusBars,Flip Status Bars
 KDToggleZoomIn,Zoom In
 KDToggleZoomOut,Zoom Out
 KDToggleNipples,Enable Nipples
@@ -19097,3 +19098,41 @@ KDSonar_Yes,"You emit a loud noise and listen for echoes..."
 KDSonar_NoComp,"Your mouth is too heavily stuffed!"
 KDSonar_NoMana,"You don't have the mana to cast Sonar!"
 KDNippleWeights,The weights swing around and tug on your nipples!
+
+
+KinkyDungeonStatMoreKinkyFurniture,"More Kinky Furniture"
+KinkyDungeonStatDescMoreKinkyFurniture,"Replaces 60% of cages with a different kind of kinky furniture such as display stands."
+
+KinkyDungeonKeyCollection,Collection
+KinkyDungeonCollection,Collection
+
+KDPrisonersCurrent,Storage
+KDPrisonersManagement,Management
+KDPrisonersNoManagement,You don't have anywhere to manage your prisoners! Yet...
+
+KDCollectionEmpty,Your collection is empty. Use binding attacks to tie up and capture damsels!
+
+KDPrisonerStat_Personality,Personality
+KDPersonality,Switch
+KDPersonalitySub,Submissive
+KDPersonalityDom,Dominant
+KDPersonalityBrat,Bratty
+KDPersonalityRobot,Drone
+KDPersonalityCorrupt,Corrupted
+KDPersonalityFeral,Feral
+
+KDPrisonerStat_Status,Status
+KDPrisonerStatus,Prisoner
+KDPrisonerStatusGuest,Guest
+KDPrisonerStatusServant,Servant
+KDPrisonerStatusManager,Manager
+
+KDPrisonerStat_Opinion,Opinion
+KDPrisonerStat_Training,Training
+KDPrisonerStat_Willpower,Willpower
+
+KDPrisonerNum,Prisoner #NUMR/TTL
+
+
+KDCollectionSelect,Select a character to examine
+KDFormerFaction,"Former Faction: "

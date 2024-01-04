@@ -46,6 +46,10 @@ Release C
 - Enemies have a Desire level now, which affects the amount of damage they take when letting go
 - New spell: Sonar
 - Added Divine Chastity Bra
+Release E
+- Added a collection where you can view captured NPCs
+- Fixed some more bugs
+- Added fashion chastity belts and fashion gags
 
 
 5.0.6

@@ -3206,7 +3206,7 @@ function KinkyDungeonPlaceFurniture(barrelChance, cageChance, width, height, alt
 						|| (KDRandom() < barrelChance && KinkyDungeonMapGet(X, Y+1) == '1' && KinkyDungeonMapGet(X, Y-1) == '0' && KinkyDungeonMapGet(X+1, Y-1) == '0' && KinkyDungeonMapGet(X-1, Y-1) == '0'))) {
 					KinkyDungeonMapSet(X, Y, 'L'); // Barrel
 					if (KDRandom() < cageChance) {
-						let furn = KDRandom() ? "Cage" : "DisplayStand";
+						let furn = KDRandom() < (KinkyDungeonStatsChoice.get("MoreKinkyFurniture") ? 0.6 : 0.9) ? "Cage" : "DisplayStand";
 						KinkyDungeonTilesSet(X + "," + Y, {Furniture: furn});
 						KDMapData.JailPoints.push({x: X, y: Y, type: "furniture", radius: 1}); // , requireFurniture: true Standing in the cage alone will prevent jailbreak--good for stealth!
 					}
@@ -3906,6 +3906,33 @@ function KinkyDungeonGameKeyDown() {
 				}
 				else KinkyDungeonDrawState = "MagicSpells";
 			}
+		} else if (KinkyDungeonDrawState == "Collection" && (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey)) {
+			let index = Object.values(KDGameData.Collection || {}).findIndex((entry) => {return entry.id == (KDCollectionSelected || -1);});
+			if (index > -1) {
+				if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
+					index += 1;
+					if (index >= Object.values(KDGameData.Collection || {}).length) {
+						index = 0;
+					}
+				} else if (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey && KinkyDungeonCurrentPage >= 0) {
+					index -= 1;
+					if (index < 0 ) {
+						index = Object.values(KDGameData.Collection || {}).length - 1;
+					}
+				}
+				if (index > -1 && Object.values(KDGameData.Collection || {})[index]) {
+					KDCollectionSelected = Object.values(KDGameData.Collection || {})[index].id;
+					index = Object.values(KDGameData.Collection || {}).findIndex((entry) => {return entry.id == (KDCollectionSelected || -1);});
+					while (index >= KDCollectionIndex + KDCollectionColumns*KDCollectionRows) {
+						KDCollectionIndex += KDCollectionColumns;
+					}
+					while (index < KDCollectionIndex) {
+						KDCollectionIndex -= KDCollectionColumns;
+					}
+
+				}
+			}
+
 		} else if (KinkyDungeonDrawState == "MagicSpells"
 			&& (KinkyDungeonKey[0] == KinkyDungeonKeybindingCurrentKey
 				|| KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey
@@ -3936,6 +3963,7 @@ function KinkyDungeonGameKeyDown() {
 				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = KinkyDungeonDrawState == "MagicSpells" ? "Game" : "MagicSpells"; break;
 				case KinkyDungeonKeyMenu[4]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Logbook" ? "Game" : "Logbook"; break;
 				case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Quest" ? "Game" : "Quest"; break;
+				case KinkyDungeonKeyMenu[6]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Collection" ? "Game" : " "; break;
 			}
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
@@ -4169,6 +4197,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				KinkyDungeonSendEvent("capture", {enemy: Enemy, attacker: KinkyDungeonPlayerEntity, skip: skip});
 				KinkyDungeonChangeStamina(attackCost, false, 1);
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "capture", 1);
+				KDAddCollection(Enemy);
 				result = "capture";
 			}
 

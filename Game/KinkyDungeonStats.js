@@ -1634,8 +1634,9 @@ function KinkyDungeonCalculateHeelLevel(delta, overrideKneel) {
 				heelpower = Math.max(heelpower, power);
 			}
 		}
+	if (heelpower && heelpower < 2) heelpower = 2;
 	KDGameData.HeelPower = Math.max(0,
-		heelpower
+		Math.pow(heelpower, 0.75)
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "HeelPower")
 		+ Math.max(KinkyDungeonSleepiness));
 }
@@ -1914,12 +1915,13 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 	data.amount *= data.eventMult;
 
 	if (data.cancelOrgasm) return;
-	if (data.amount > KinkyDungeonPlaySelfOrgasmThreshold && KDRandom() < data.chance) {
+	if (data.amount > KinkyDungeonPlaySelfOrgasmThreshold && KDRandom() < data.chance && !KinkyDungeonFlags.get("nogasm")) {
 		// You finally shudder and tremble as a wave of pleasure washes over you...
 		KinkyDungeonStatBlind = data.stunTime + 2;
 		//KinkyDungeonOrgasmStunTime = 4;
 		KinkyDungeonSetFlag("OrgSuccess", data.stunTime + 3);
 		KinkyDungeonSetFlag("PlayerOrgasm", data.stunTime);
+		KinkyDungeonSetFlag("nogasm", data.stunTime + Math.floor(KDRandom() * 3));
 		KinkyDungeonSetFlag("PlayerOrgasmFilter", data.stunTime + 1);
 		KDGameData.OrgasmStamina = data.satisfaction;
 		KinkyDungeonChangeStamina(data.spcost);
@@ -2030,12 +2032,12 @@ function KDTripDuration() {
 }
 
 function KDGetBalanceCost() {
-	let mult = KinkyDungeonStatsChoice.has("HeelWalker") ? 0.5 : 1;
+	let mult = 1;//KinkyDungeonStatsChoice.has("HeelWalker") ? 0.5 : 1;
 	if (KinkyDungeonStatsChoice.get("PoorBalance")) mult *= 1.7;
 	if (!KinkyDungeonIsArmsBound()) mult *= 0.5;
 
 	let training = KDGetHeelTraining();
-	return KDGameData.HeelPower * (0.01*mult*5/(5+training) - (KinkyDungeonStatsChoice.has("HeelWalker") ? 0.003 : 0.001));
+	return KDGameData.HeelPower * (0.01*mult*5/(5+training) - (0.001));
 }
 
 /**

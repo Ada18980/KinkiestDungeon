@@ -752,9 +752,10 @@ function KDDrawStatusBars(x, y, width = 125) {
 	let barHeightOffset2ndSet = 2.5;
 	let barAmountScale = 0;
 	let barBaseScale = 1.0;
+	let flip = KDToggles.FlipStatusBars ? -1 : 1;
 
 	// Draw Stamina
-	KinkyDungeonBar(x - 5, y + 5 - 2.5*heightPerBar, -width * (barBaseScale + barAmountScale*KinkyDungeonStatStaminaMax/KDMaxStatStart), heightPerBar, 100*KinkyDungeonStatStamina/KinkyDungeonStatStaminaMax,
+	KinkyDungeonBar(x - 5, y + 5 - 2.5*heightPerBar, flip * width * (barBaseScale + barAmountScale*KinkyDungeonStatStaminaMax/KDMaxStatStart), heightPerBar, 100*KinkyDungeonStatStamina/KinkyDungeonStatStaminaMax,
 		"#63ab3f", "#283540", KDGameData.LastSP/KinkyDungeonStatStaminaMax * 100, "#ffee83",
 		KDSteps(KinkyDungeonStatStamina/KinkyDungeonStatStaminaMax, attackCost/KinkyDungeonStatStaminaMax), "#283540", "#63ab3f");
 	DrawTextFitKD(
@@ -776,10 +777,10 @@ function KDDrawStatusBars(x, y, width = 125) {
 
 
 	// Draw mana
-	KinkyDungeonBar(x - 5, y - 1*heightPerBar, -width * (barBaseScale + barAmountScale*KinkyDungeonStatManaMax/KDMaxStatStart), heightPerBar, 100*KinkyDungeonStatMana/KinkyDungeonStatManaMax,
+	KinkyDungeonBar(x - 5, y - 1*heightPerBar, flip * width * (barBaseScale + barAmountScale*KinkyDungeonStatManaMax/KDMaxStatStart), heightPerBar, 100*KinkyDungeonStatMana/KinkyDungeonStatManaMax,
 		"#4fa4b8", "#4c6885", KDGameData.LastMP/KinkyDungeonStatManaMax * 100, "#92e8c0",
 		KDLinspace(0, 1, Math.ceil(KinkyDungeonStatManaMax/5)), "#4c6885", "#4fa4b8");
-	KinkyDungeonBar(x - 5, y - offBarHeight, -width * (barBaseScale + barAmountScale*KinkyDungeonStatManaMax/KDMaxStatStart), offBarHeight, 100*KinkyDungeonStatManaPool/KinkyDungeonStatManaPoolMax,
+	KinkyDungeonBar(x - 5, y - offBarHeight, flip * width * (barBaseScale + barAmountScale*KinkyDungeonStatManaMax/KDMaxStatStart), offBarHeight, 100*KinkyDungeonStatManaPool/KinkyDungeonStatManaPoolMax,
 		"#efefff", "none", undefined, undefined, undefined, undefined, undefined, 56);
 	DrawTextFitKD(
 		TextGet("StatMana").replace("MAX", KinkyDungeonStatManaMax*10 + "")
@@ -801,18 +802,18 @@ function KDDrawStatusBars(x, y, width = 125) {
 
 
 	// Draw distraction
-	KinkyDungeonBar(x - 5 + width * barWidthOffset2ndSet, y - 0.75*heightPerBar + heightPerBar * barHeightOffset2ndSet, -width * (barBaseScale + barAmountScale*KinkyDungeonStatDistractionMax/KDMaxStatStart), heightPerBar/2,
+	KinkyDungeonBar(x - 5 + width * barWidthOffset2ndSet, y - 0.75*heightPerBar + heightPerBar * barHeightOffset2ndSet, flip * width * (barBaseScale + barAmountScale*KinkyDungeonStatDistractionMax/KDMaxStatStart), heightPerBar/2,
 		100*KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax, "#ff5277",
 		"#692464", KDGameData.LastAP/KinkyDungeonStatDistractionMax * 100, "#ffa1b4",
 		distRate < 0 ? KDSteps(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax, KDGetDistractionRate(0)/KinkyDungeonStatDistractionMax, 3) : undefined, distRate < 0 ? "#692464" : undefined, distRate < 0 ? "#692464" : undefined);
 	if (KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax >= 0.05) {
 		KDDraw(kdcanvas, kdpixisprites, "dist_lower", KinkyDungeonRootDirectory + "UI/Heart.png",
-			x - heightPerBar*0.32 + width * (1 - KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax),
+			x - heightPerBar*0.32 + (flip < 0 ? width * (1 - KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax) : width * KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax),
 			y + heightPerBar * barHeightOffset2ndSet - heightPerBar*0.28,
 			undefined, undefined, undefined, {
 				zIndex: 57,
 			});
-		KinkyDungeonBar(x - 5 + width * barWidthOffset2ndSet, y - 0.18*heightPerBar + heightPerBar * barHeightOffset2ndSet, -width * (barBaseScale + barAmountScale*KinkyDungeonStatDistractionMax/KDMaxStatStart),
+		KinkyDungeonBar(x - 5 + width * barWidthOffset2ndSet, y - 0.18*heightPerBar + heightPerBar * barHeightOffset2ndSet, flip * width * (barBaseScale + barAmountScale*KinkyDungeonStatDistractionMax/KDMaxStatStart),
 			offBarHeight, 100*KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax,
 			"#ff5277", "none", undefined, undefined, undefined, undefined, undefined, 56);
 
@@ -838,7 +839,7 @@ function KDDrawStatusBars(x, y, width = 125) {
 
 
 	// Draw will
-	KinkyDungeonBar(x - 5 + width * barWidthOffset2ndSet, y - 5 - 2*heightPerBar + heightPerBar * barHeightOffset2ndSet, -width * (barBaseScale + barAmountScale*KinkyDungeonStatDistractionMax/KDMaxStatStart), heightPerBar,
+	KinkyDungeonBar(x - 5 + width * barWidthOffset2ndSet, y - 5 - 2*heightPerBar + heightPerBar * barHeightOffset2ndSet, flip * width * (barBaseScale + barAmountScale*KinkyDungeonStatDistractionMax/KDMaxStatStart), heightPerBar,
 		100*KinkyDungeonStatWill/KinkyDungeonStatWillMax, "#ff4444", "#222222",
 		KDGameData.LastWP/KinkyDungeonStatWillMax * 100, "#aa0000",
 		KDLinspace(0, 1, 4), "#222222", "#ff4444");
@@ -1821,7 +1822,7 @@ function KDDrawNavBar(skip, quit = false) {
 	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KinkyDungeonInventory"), "#ffffff",
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_inventory.png"), undefined, undefined, false, "", 24, true,
 	{
-		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[1]),
+		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[2]),
 	}); bindex++; bInc();
 	/*DrawButtonKDEx("goRep", (bdata) => {
 		if (skip == bindex)

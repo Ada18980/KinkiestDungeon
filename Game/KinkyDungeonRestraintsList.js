@@ -3792,8 +3792,9 @@ const KinkyDungeonRestraints = [
 			BaseMetal: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1.8833333333333333,"green":1.1166666666666667,"blue":0.3833333333333333,"alpha":1},
 		},
 		enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: []},
-	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, good: true, name: "SlimeWalkers", debris: "Belts", inaccessible: true, Asset: "BalletHeels", Color: "#ff00ff", Group: "ItemBoots", hobble: 1, power: 1, weight: 0, slimeWalk: true,
+	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, good: true, name: "SlimeWalkers", debris: "Belts", inaccessible: true, Asset: "BalletHeels", Color: "#ff00ff", Group: "ItemBoots", power: 1, weight: 0, slimeWalk: true,
 		value: 250,
+		heelpower: 0.5,
 		Model: "BalletHeelsRestraint",
 		Filters: {
 			Shoe: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1.9666666666666666,"green":1,"blue":3.616666666666667,"alpha":1},
@@ -3912,7 +3913,9 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "beforeDamage", type: "ModifyDamageFlat", power: -1, requireEnergy: true, energyCost: 0.01, inheritLinked: true}
 		]},
-	{curse: "MistressKey", enchantedDrain: 0.00001, inventory: true, enchanted: true, name: "EnchantedHeels", Asset: "BalletWedges", Color: "#AE915C", Group: "ItemBoots", hobble: 1, power: 44, weight: 0,
+	{curse: "MistressKey", enchantedDrain: 0.00001, inventory: true, enchanted: true, name: "EnchantedHeels", Asset: "BalletWedges", Color: "#AE915C", Group: "ItemBoots", power: 44, weight: 0,
+
+		heelpower: 0.8,
 		Model: "BalletHeelsRestraint",
 		Filters: {
 			Shoe: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1.9666666666666666,"green":1.1500000000000001,"blue":0.5666666666666667,"alpha":1},

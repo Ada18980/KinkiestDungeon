@@ -251,5 +251,18 @@ AddModel({
 			TieToLayer: "Legbinder",
 			InheritColor: "Laces",
 		},
+		{ Name: "RightLacesLegbinder", Layer: "WrappingLegsRightOver", Pri: 10,
+			Poses: ToMap(["KneelClosed"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			NoOverride: true,
+			TieToLayer: "Legbinder",
+			InheritColor: "Laces",
+		},
+		{ Name: "LegLacesLegbinder", Layer: "LegbinderAnklesOver", Pri: 10,
+			Poses: ToMap(["Closed"]),
+			NoOverride: true,
+			TieToLayer: "Legbinder",
+			InheritColor: "Laces",
+		},
 	])
 });

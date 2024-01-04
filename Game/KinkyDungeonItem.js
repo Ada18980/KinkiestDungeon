@@ -255,7 +255,8 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 }
 
 
-function KDAllowUseItems(Message) {
+function KDAllowUseItems(Message,x, y) {
+
 	let ret = !KinkyDungeonStatsChoice.get("CantTouchThat") || KinkyDungeonHasHelp() || !(KinkyDungeonIsArmsBound() && !KinkyDungeonCanUseFeet() && KinkyDungeonIsHandsBound(false, true, 0.01));
 	if (!ret && KinkyDungeonCanTalk()) {
 		if (KDGameData.KneelTurns > 0) {return true;}
@@ -266,14 +267,18 @@ function KDAllowUseItems(Message) {
 }
 
 function KinkyDungeonItemCheck(x, y, Index, autoEquip) {
-	let allowManip = KDAllowUseItems(false);
+	let allowManip = KDAllowUseItems(false, x, y);
 	let msg = false;
+	let pickedone = false;
 	for (let I = 0; I < KDMapData.GroundItems.length; I++) {
 		let item = KDMapData.GroundItems[I];
 		if (x == item.x && y == item.y) {
-			if (allowManip || (item.name == "Keyring" && "SsH".includes(KinkyDungeonMapGet(item.x, item.y)))) {
+			if (allowManip
+				|| (item.name == "Keyring" && "SsH".includes(KinkyDungeonMapGet(item.x, item.y)))
+				|| (!pickedone && KinkyDungeonStatsChoice.get("Psychic") && x && y && KDistChebyshev(KinkyDungeonPlayerEntity.x-x, KinkyDungeonPlayerEntity.y - y) < 1.5)) {
 				KDMapData.GroundItems.splice(I, 1);
 				I -= 1;
+				pickedone = true;
 				KinkyDungeonItemEvent(item);
 				if (autoEquip && KDWeapon(item) && KinkyDungeonPlayerWeapon == "Unarmed") {
 					KDSetWeapon(item.name);

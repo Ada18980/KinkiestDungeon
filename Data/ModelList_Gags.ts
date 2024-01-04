@@ -43,6 +43,8 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("MaidGag", true));
+
 AddModel({
 	Name: "DusterGag",
 	Folder: "GagFrilly",
@@ -88,6 +90,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("DusterGag", true));
 
 AddModel({
 	Name: "BallGag",
@@ -129,7 +132,9 @@ AddModel(GetModelWithExtraLayers("BallGagHarnessSecure", "BallGagHarness", [
 		Invariant: true,
 	},
 ], "BallGag", false));
-
+AddModel(GetModelFashionVersion("BallGag", true));
+AddModel(GetModelFashionVersion("BallGagHarness", true));
+AddModel(GetModelFashionVersion("BallGagHarnessSecure", true));
 
 
 AddModel({
@@ -215,7 +220,9 @@ AddModel(GetModelWithExtraLayers("PanelGagHarnessSecure", "PanelGagHarness", [
 		Invariant: true,
 	},
 ], "PanelGag", false));
-
+AddModel(GetModelFashionVersion("PanelGag", true));
+AddModel(GetModelFashionVersion("PanelGagHarness", true));
+AddModel(GetModelFashionVersion("PanelGagHarnessSecure", true));
 
 
 AddModel({
@@ -261,6 +268,9 @@ AddModel(GetModelWithExtraLayers("MuzzleGagHarnessSecure", "MuzzleGagHarness", [
 		Invariant: true,
 	},
 ], "MuzzleGag", false));
+AddModel(GetModelFashionVersion("MuzzleGag", true));
+AddModel(GetModelFashionVersion("MuzzleGagHarness", true));
+AddModel(GetModelFashionVersion("MuzzleGagHarnessSecure", true));
 
 
 
@@ -302,6 +312,12 @@ AddModel(GetModelWithExtraLayers("PlugPanelGagHarnessSecure", "PanelGagHarnessSe
 	...GetModelLayers("PlugGagPlug"),
 ], "PanelGag", false));
 
+AddModel(GetModelFashionVersion("PlugMuzzleGag", true));
+AddModel(GetModelFashionVersion("PlugMuzzleGagHarness", true));
+AddModel(GetModelFashionVersion("PlugMuzzleGagHarnessSecure", true));
+AddModel(GetModelFashionVersion("PlugPanelGag", true));
+AddModel(GetModelFashionVersion("PlugPanelGagHarness", true));
+AddModel(GetModelFashionVersion("PlugPanelGagHarnessSecure", true));
 
 
 
@@ -533,6 +549,8 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("ClothOTN", true));
+AddModel(GetModelFashionVersion("ClothOTM", true));
 
 AddModel({
 	Name: "GagLatex",
@@ -598,6 +616,11 @@ AddModel(GetModelWithExtraLayers("GagLatexFlatHarnessSecure", "GagLatexFlatHarne
 	},
 ], "GagLatex", false));
 
+AddModel(GetModelFashionVersion("GagLatex", true));
+AddModel(GetModelFashionVersion("GagLatexFlat", true));
+AddModel(GetModelFashionVersion("GagLatexFlatHarness", true));
+AddModel(GetModelFashionVersion("GagLatexFlatHarnessSecure", true));
+
 AddModel({
 	Name: "GagLatexPlug",
 	Folder: "GagLatex",
@@ -638,6 +661,10 @@ AddModel(GetModelWithExtraLayers("GagLatexPlugHarnessSecure", "GagLatexPlugHarne
 		Invariant: true,
 	},
 ], "GagLatex", false));
+
+AddModel(GetModelFashionVersion("GagLatexPlug", true));
+AddModel(GetModelFashionVersion("GagLatexPlugHarness", true));
+AddModel(GetModelFashionVersion("GagLatexPlugHarnessSecure", true));
 
 AddModel({
 	Name: "LatexNeckCorset",
@@ -712,6 +739,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("LatexNeckCorsetPlugGag", true));
 
 
 AddModel({
@@ -757,6 +785,8 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("GagFabric", true));
+AddModel(GetModelFashionVersion("GagMetal", true));
 
 
 AddModel({
@@ -818,6 +848,8 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("KittyMuzzle", true));
+AddModel(GetModelFashionVersion("KittyHarnessPanelGag", true));
 
 
 AddModel({
@@ -871,6 +903,7 @@ AddModel({
 	])
 });
 
+AddModel(GetModelFashionVersion("GagMetalRiveted", true));
 
 
 AddModel({
@@ -915,6 +948,7 @@ AddModel(GetModelWithExtraLayers("SmoothBallGagHarnessSecure", "SmoothBallGagHar
 	},
 ], "SmoothBallGag", false));
 
+AddModel(GetModelFashionVersion("SmoothBallGag", true));
 
 AddModel({
 	Name: "SmoothLargeBallGag",
@@ -1067,7 +1101,6 @@ AddModel(GetModelWithExtraLayers("UltimateSciFiBallGag2", "AdvancedSciFiBallGag"
 
 
 
-
 AddModel({
 	Name: "SegmentedLargePanelGag",
 	Folder: "GagMetal",
@@ -1180,6 +1213,13 @@ AddModel(GetModelWithExtraLayers("UltimateSciFiPanelGag2", "AdvancedSciFiPanelGa
 	},
 }));
 
+AddModel(GetModelFashionVersion("SegmentedLargePanelGag", true));
+AddModel(GetModelFashionVersion("SegmentedLargePanelGagHarness", true));
+AddModel(GetModelFashionVersion("SciFiPanelGag", true));
+AddModel(GetModelFashionVersion("AdvancedSciFiPanelGag", true));
+AddModel(GetModelFashionVersion("UltimateSciFiPanelGag", true));
+AddModel(GetModelFashionVersion("UltimateSciFiPanelGag2", true));
+
 
 
 
@@ -1223,6 +1263,8 @@ AddModel({
 		},
 	])
 });
+
+AddModel(GetModelFashionVersion("SegmentedPlugGag", true));
 
 AddModel(GetModelWithExtraLayers("SegmentedPlugGagHarness", "SegmentedPlugGag", [
 	{ Name: "Harness", Layer: "GagFlatStraps", Pri: 16,
@@ -1345,6 +1387,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("SimpleSciFiMuzzle", true));
 
 AddModel(GetModelWithExtraLayers("AdvancedSciFiMuzzle", "SimpleSciFiMuzzle", [
 	{ Name: "Mask", Layer: "GagMuzzleStraps", Pri: 19,
@@ -1354,6 +1397,8 @@ AddModel(GetModelWithExtraLayers("AdvancedSciFiMuzzle", "SimpleSciFiMuzzle", [
 		Invariant: true,
 	},
 ], "SimpleSciFiMuzzle", false));
+
+AddModel(GetModelFashionVersion("AdvancedSciFiMuzzle", true));
 
 AddModel(GetModelWithExtraLayers("SciFiPlugMuzzle", "SimpleSciFiMuzzle", [
 	{ Name: "Plug", Layer: "GagMuzzleStraps", Pri: 110.1,
@@ -1376,6 +1421,8 @@ AddModel(GetModelWithExtraLayers("AdvancedSciFiPlugMuzzle", "AdvancedSciFiMuzzle
 	},
 ], "SimpleSciFiMuzzle", false));
 
+AddModel(GetModelFashionVersion("SciFiPlugMuzzle", true));
+AddModel(GetModelFashionVersion("AdvancedSciFiPlugMuzzle", true));
 
 // Transparent
 AddModel({
@@ -1424,15 +1471,7 @@ AddModel(GetModelWithExtraLayers("AdvancedSciFiMuzzle2", "SimpleSciFiMuzzle", [
 	},
 ], "SimpleSciFiMuzzle", false));
 
-
-
-
-AddModel(GetModelFashionVersion("GagMetal", false));
-AddModel(GetModelFashionVersion("GagMetalRiveted", true));
-AddModel(GetModelFashionVersion("GagFabric", false));
-AddModel(GetModelFashionVersion("KittyMuzzle", true));
-
-AddModel(GetModelFashionVersion("SimpleSciFiMuzzle", false));
+AddModel(GetModelFashionVersion("SimpleSciFiMuzzle", true));
 AddModel(GetModelFashionVersion("AdvancedSciFiMuzzle2", true));
-AddModel(GetModelFashionVersion("AdvancedSciFiMuzzle", true));
-AddModel(GetModelFashionVersion("SimpleSciFiMuzzle2", true));
+
+
