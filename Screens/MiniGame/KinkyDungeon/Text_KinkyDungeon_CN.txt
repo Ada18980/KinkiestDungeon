@@ -142,6 +142,8 @@ Pixelated GFX (needs restart)
 像素化图像特效（需重启）
 Auto-Crouch when Tripped
 绊倒时自动蹲下
+Flip Status Bars
+翻转状态栏
 Zoom In
 放大
 Zoom Out
@@ -245,7 +247,7 @@ Cursed
 Goddess reputations start at 0 and can never exceed 25.
 所有女神的声望从0开始，永远不能超过25。
 Submissive
-温顺小甜心
+顺从
 Your submissiveness starts at 100 and cannot go below 70.
 开局顺从度变为 100 ，且游戏中顺从度不会低于 70。
 Wanted
@@ -4391,7 +4393,7 @@ You struggle madly, trying to push against the TargetRestraint. You need more le
 That doesn't seem to work. Maybe something else will help with the TargetRestraint.
 这似乎不起作用。 也许其他东西会对解开 TargetRestraint 有所帮助。
 You squirm helplessly against the furniture. Maybe something else will help with the TargetRestraint.
-你无助地靠在家具上蠕动。 也许其他东西会对解开 TargetRestraint 有所帮助。
+你无助地靠在家具上蠕动。也许其他东西会对解开 TargetRestraint 有所帮助。
 You twist your body trying to use the furniture, but it doesn't seem to work. The TargetRestraint remains tight.
 你扭动着身体试图使用家具，但似乎不起作用。 TargetRestraint 仍然很紧。
 You wiggle and squirm, trying to use the furniture to no avail. The TargetRestraint remains tight.
@@ -17150,3 +17152,53 @@ You don't have the mana to cast Sonar!
 你没有法力来施放声纳！
 The weights swing around and tug on your nipples!
 砝码会左右摆动并拉扯你的乳头！
+More Kinky Furniture
+更多古怪的家具
+Replaces 60% of cages with a different kind of kinky furniture such as display stands.
+用不同种类的古怪场景家具（例如展示架）取代 60% 的笼子。
+Collection
+收藏
+Storage
+存储
+Management
+管理
+You don't have anywhere to manage your prisoners! Yet...
+你没有地方可以管理你的囚犯！但是...
+Your collection is empty. Use binding attacks to tie up and capture damsels!
+你的收藏是空的。使用束缚攻击来捆绑并捕获少女！
+Personality
+性格
+Switch
+转变
+Dominant
+支配
+Bratty
+不顺从
+Drone
+无人机
+Corrupted
+已损坏
+Feral
+野性
+Status
+状态
+Prisoner
+囚犯
+Guest
+游客
+Servant
+仆人
+Manager
+管家
+Opinion
+观点
+Training
+训练
+Willpower
+意志
+Prisoner #NUMR/TTL
+囚犯 #NUMR/TTL
+Select a character to examine
+选择要检查的角色
+Former Faction: 
+前派系：
