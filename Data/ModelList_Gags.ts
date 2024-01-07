@@ -443,6 +443,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("TapeCleave", true));
 
 
 
@@ -549,6 +550,9 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelFashionVersion("ClothKnot", true));
+AddModel(GetModelFashionVersion("ClothCleaveThick", true));
+AddModel(GetModelFashionVersion("ClothCleave", true));
 AddModel(GetModelFashionVersion("ClothOTN", true));
 AddModel(GetModelFashionVersion("ClothOTM", true));
 

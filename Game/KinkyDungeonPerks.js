@@ -170,6 +170,26 @@ let KDPerkUpdateStats = {
 	"CommonKitty": () => {
 		KDExtraEnemyTags.kittyRestraints = 0;
 	},
+	"CommonToyPleasure": () => {
+		KDExtraEnemyTags.toyPleasure = 0;
+		KDExtraEnemyTags.toyPleasureMid = 3;
+		KDExtraEnemyTags.toyPleasureIntense = 7;
+	},
+	"CommonToyEdge": () => {
+		KDExtraEnemyTags.toyEdge = 0;
+		KDExtraEnemyTags.toyEdgeMid = 3;
+		KDExtraEnemyTags.toyEdgeIntense = 7;
+	},
+	"CommonToyDeny": () => {
+		KDExtraEnemyTags.toyDeny = 0;
+		KDExtraEnemyTags.toyDenyMid = 3;
+		KDExtraEnemyTags.toyDenyIntense = 7;
+	},
+	"CommonToyTease": () => {
+		KDExtraEnemyTags.toyTease = 0;
+		KDExtraEnemyTags.toyTeaseMid = 3;
+		KDExtraEnemyTags.toyTeaseIntense = 7;
+	},
 };
 
 /**
@@ -351,7 +371,8 @@ let KinkyDungeonStatsPresets = {
 	"Blackout":  {category: "Senses", id: "Blackout", cost: -1, block: ["TotalBlackout"]},
 	"TotalBlackout":  {category: "Senses", id: "TotalBlackout", cost: -2, block: ["Blackout", "Forgetful"]},
 	"Forgetful": {category: "Senses", id: "Forgetful", cost: -1, block: ["TotalBlackout"]},
-	"NightOwl": {category: "Senses", id: "NightOwl", cost: 2},
+	"NightOwl": {category: "Senses", id: "NightOwl", cost: 2, block: ["NightBlindness"]},
+	"NightBlindness": {category: "Senses", id: "NightBlindness", cost: -1, block: ["NightOwl"]},
 	"Nearsighted": {category: "Senses", id: "Nearsighted", cost: -1, block: ["ArchersEye"]},
 	"KeenHearing": {category: "Senses", id: "KeenHearing", cost: 1},
 	"ArchersEye": {category: "Senses", id: "ArchersEye", cost: 1, block: ["Nearsighted"]},
@@ -385,6 +406,10 @@ let KinkyDungeonStatsPresets = {
 	"CommonDress": {category: "Common", id: "CommonDress", cost: -1, costGroup: "common"},
 	"CommonWolf": {category: "Common", id: "CommonWolf", cost: -1, costGroup: "common"},
 	"CommonKitty": {category: "Common", id: "CommonKitty", cost: -1, costGroup: "common"},
+	"CommonToyPleasure": {category: "Common", id: "CommonToyPleasure", cost: 0, requireArousal: true},
+	"CommonToyEdge": {category: "Common", id: "CommonToyEdge", cost: 0, requireArousal: true},
+	"CommonToyDeny": {category: "Common", id: "CommonToyDeny", cost: 0, requireArousal: true},
+	"CommonToyTease": {category: "Common", id: "CommonToyTease", cost: 0, requireArousal: true},
 
 	"Incantation":  {category: "Restriction", id: "Incantation", cost: -1, block: ["SmoothTalker"]},
 	"SmoothTalker":  {category: "Restriction", id: "SmoothTalker", cost: 2, block: ["Incantation"]},
@@ -612,6 +637,7 @@ let KDPerkStart = {
 		KDAddQuest("LatexDoll");
 		KinkyDungeonChangeRep("Latex", 10);
 		KDCustomDefeatUniforms.DollShoppe();
+		KDFixPlayerClothes("Dressmaker");
 	},
 	DollmakerVisor: () =>{
 		KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
@@ -657,6 +683,7 @@ let KDPerkStart = {
 		for (let w of kdStartWeapons) {
 			if (KinkyDungeonInventoryGet(w)) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet(w));
 		}
+		KDFixPlayerClothes("Jail");
 	},
 	Bandit: () =>{
 		for (let key of Object.keys(KinkyDungeonFactionTag)) {

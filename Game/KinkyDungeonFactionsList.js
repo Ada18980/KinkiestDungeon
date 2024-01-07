@@ -22,16 +22,19 @@ let KinkyDungeonFactionFilters = {
 	"Jail": {
 		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8833333333333333,"brightness":1.5666666666666669,"red":4.216666666666667,"green":0.7166666666666667,"blue":0.7000000000000001,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0.25,"contrast":1.0,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		Highlight: {"gamma":0.6833333333333333,"saturation":0,"contrast":2.55,"brightness":0.41666666666666663,"red":2.5333333333333337,"green":0.7666666666666666,"blue":0.8500000000000001,"alpha":1},
 	},
 	"Bountyhunter": {
 		Catsuit: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0.25,"contrast":1.0,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		Highlight: {"gamma":0.7333333333333334,"saturation":0.1,"contrast":2.3499999999999996,"brightness":0.8166666666666667,"red":1.7833333333333334,"green":0.9666666666666667,"blue":0.6,"alpha":1},
 	},
 	"Dressmaker": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.91,"brightness":1,"red":2.1372549019607843,"green":1.1764705882352942,"blue":3.1176470588235294,"alpha":1},
-		DarkNeutral: {"gamma":0.8333333333333333,"saturation":0.1,"contrast":1.6166666666666665,"brightness":0.7666666666666666,"red":1.7666666666666666,"green":1,"blue":2.4166666666666665,"alpha":1},
+		DarkNeutral: {"gamma":0.8333333333333333,"saturation":0.1,"contrast":1.03,"brightness":1,"red":2.372549019607843,"green":1.7058823529411764,"blue":3.2941176470588234,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0,"contrast":1.83,"brightness":1,"red":5,"green":0.5686274509803921,"blue":1.8823529411764706,"alpha":1},
 		Highlight: {"gamma":0.5333333333333333,"saturation":0.11666666666666667,"contrast":2.05,"brightness":1.2833333333333332,"red":1,"green":1,"blue":1,"alpha":1},
 	},
 	"Dollsmith": {
@@ -44,11 +47,13 @@ let KinkyDungeonFactionFilters = {
 	"Latex": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.9299999999999999,"brightness":1,"red":4.509803921568627,"green":0.8431372549019608,"blue":4.745098039215686,"alpha":1},
 		DarkNeutral: {"gamma":0.8333333333333333,"saturation":1,"contrast":1.2,"brightness":1.2,"red":1,"green":1,"blue":1,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0,"contrast":0.9299999999999999,"brightness":1,"red":4.549019607843137,"green":1.0392156862745099,"blue":4.764705882352941,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0.11666666666666667,"contrast":1.3,"brightness":1.1166666666666667,"red":1,"green":1,"blue":1,"alpha":1},
 	},
 	"Slime": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.9299999999999999,"brightness":1,"red":4.980392156862745,"green":0.6078431372549019,"blue":5,"alpha":1},
 		DarkNeutral: {"gamma":0.8,"saturation":0.1,"contrast":0.8666666666666667,"brightness":1.4166666666666665,"red":2.05,"green":1,"blue":2.15,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0,"contrast":0.9299999999999999,"brightness":1,"red":4.549019607843137,"green":1.0392156862745099,"blue":4.764705882352941,"alpha":1},
 		Highlight: {"gamma":0.8,"saturation":0,"contrast":0.8666666666666667,"brightness":1.4166666666666665,"red":2.05,"green":1,"blue":2.15,"alpha":1},
 	},
 	"Alchemist": {
@@ -61,39 +66,46 @@ let KinkyDungeonFactionFilters = {
 	"Apprentice": {
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
 		Catsuit: {"gamma":1,"saturation":0,"contrast":1.0499999999999998,"brightness":1,"red":2.019607843137255,"green":3.0980392156862746,"blue":4.137254901960785,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0,"contrast":1.1833333333333333,"brightness":0.6666666666666666,"red":0.5294117647058824,"green":1.1666666666666667,"blue":3.9019607843137254,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":1,"red":0.5294117647058824,"green":1.0784313725490196,"blue":1.0196078431372548,"alpha":1},
 	},
 	"Witch": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":1.0499999999999998,"brightness":1,"red":2.8823529411764706,"green":2.196078431372549,"blue":3.980392156862745,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0.1,"contrast":0.7,"brightness":1,"red":0.8823529411764706,"green":0.7058823529411765,"blue":0.8823529411764706,"alpha":1},
+		LightNeutral: {"gamma":0.43333333333333335,"saturation":0,"contrast":2.3166666666666664,"brightness":0.9666666666666667,"red":0.6,"green":0.6833333333333333,"blue":1.5333333333333332,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0,"contrast":2.216666666666667,"brightness":1.35,"red":0.41666666666666663,"green":0.35000000000000003,"blue":0.8666666666666667,"alpha":1},
 	},
 	"Curse": {
 		Catsuit: {"gamma":1.8333333333333333,"saturation":0,"contrast":0.7833333333333334,"brightness":0.3833333333333333,"red":2.3000000000000003,"green":1,"blue":4.833333333333333,"alpha":1},
-		DarkNeutral: {"gamma":0.43333333333333335,"saturation":0,"contrast":2.3166666666666664,"brightness":0.9666666666666667,"red":0.6,"green":0.6833333333333333,"blue":1.5333333333333332,"alpha":1},
+		DarkNeutral: {"gamma":0.6666666666666666,"saturation":0,"contrast":0.95,"brightness":1,"red":1.5098039215686274,"green":1.8431372549019607,"blue":3.7254901960784315,"alpha":1},
+		LightNeutral: {"gamma":0.43333333333333335,"saturation":0,"contrast":2.3166666666666664,"brightness":0.9666666666666667,"red":0.6,"green":0.6833333333333333,"blue":1.5333333333333332,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0,"contrast":1.4833333333333334,"brightness":1.0833333333333335,"red":1.0666666666666667,"green":0.6666666666666666,"blue":0.8666666666666667,"alpha":1},
 	},
 	"AncientRobot": {
 		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":0.7666666666666666,"green":1,"blue":4.833333333333333,"alpha":1},
-		DarkNeutral: {"gamma":0.7666666666666666,"saturation":0,"contrast":2.1166666666666667,"brightness":0.8833333333333333,"red":0.3666666666666667,"green":0.6666666666666666,"blue":2.4166666666666665,"alpha":1},
-		Highlight: {"gamma":0.5333333333333333,"saturation":0,"contrast":2.6500000000000004,"brightness":0.95,"red":0.8833333333333333,"green":1.3666666666666667,"blue":2.466666666666667,"alpha":1},
+		DarkNeutral: {"gamma":1.5,"saturation":0,"contrast":2.1166666666666667,"brightness":0.8833333333333333,"red":0.3666666666666667,"green":0.6666666666666666,"blue":2.4166666666666665,"alpha":1},
+		LightNeutral: {"gamma":0.7666666666666666,"saturation":0,"contrast":2.1166666666666667,"brightness":0.8833333333333333,"red":0.3666666666666667,"green":0.6666666666666666,"blue":2.4166666666666665,"alpha":1},
+		Highlight: {"gamma":0.5333333333333333,"saturation":0,"contrast":2.6500000000000004,"brightness":0.95,"red":1.85,"green":0.7833333333333334,"blue":0.7666666666666666,"alpha":1},
 	},
 	"Mushy": {
 		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":1.7333333333333334,"green":2.5166666666666666,"blue":1.55,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1,"brightness":0.6333333333333334,"red":1.3,"green":1,"blue":1.5333333333333332,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":1.4166666666666665,"red":0.55,"green":1.4666666666666668,"blue":1.2333333333333334,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":1.6833333333333333,"red":0.55,"green":1.9666666666666666,"blue":1.8333333333333333,"alpha":1},
 	},
 	"Bast": {
 		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":4,"green":2.5166666666666666,"blue":1.55,"alpha":1},
 		// DarkNeutral is much lighter than usual
 		DarkNeutral: {"gamma":1.3166666666666664,"saturation":0,"contrast":1.6500000000000001,"brightness":0.7333333333333333,"red":1.3666666666666667,"green":1.2333333333333334,"blue":1,"alpha":1},
+		LightNeutral: {"gamma":1.3166666666666664,"saturation":0,"contrast":1.1833333333333333,"brightness":0.7333333333333333,"red":1.4166666666666665,"green":1.2333333333333334,"blue":1,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0,"contrast":1,"brightness":0.8,"red":1,"green":2.4,"blue":1,"alpha":1},
 	},
 	"Elf": {
 		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":1.7333333333333334,"green":2.5166666666666666,"blue":1.55,"alpha":1},
 		//Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":2.4,"blue":1,"alpha":1},
-		DarkNeutral: {"gamma":0.4666666666666667,"saturation":0,"contrast":1.5833333333333333,"brightness":0.7000000000000001,"red":1,"green":2.4,"blue":1.3,"alpha":1},
-		Highlight: {"gamma":0.8333333333333333,"saturation":0,"contrast":1,"brightness":1.1166666666666667,"red":1.3666666666666667,"green":1.2333333333333334,"blue":1,"alpha":1},
+		DarkNeutral: {"gamma":1.1500000000000001,"saturation":0,"contrast":1.5833333333333333,"brightness":0.7000000000000001,"red":1,"green":2.4,"blue":1.3,"alpha":1},
+		LightNeutral: {"gamma":0.4666666666666667,"saturation":0,"contrast":1.1166666666666667,"brightness":0.5666666666666667,"red":1.0666666666666667,"green":1.6166666666666665,"blue":1.1833333333333333,"alpha":1},
+		Highlight: {"gamma":0.8333333333333333,"saturation":0,"contrast":0.65,"brightness":1.1166666666666667,"red":1.3666666666666667,"green":1.2333333333333334,"blue":1,"alpha":1},
 	},
 	"Goddess": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.8666666666666667,"brightness":1.7666666666666666,"red":3.5166666666666666,"green":2.9333333333333336,"blue":1.6,"alpha":1},

@@ -5,7 +5,57 @@ let KDModIndex = 0;
 let KDModCount = 9;
 let KDModSpacing = 50;
 
+let KDGetMods = false;
+let KDOffline = false;
+
+
+function KDGetModsLoad() {
+	try {
+		//@ts-ignore
+		let win = nw.Window.get();
+		if (win) {
+			KDOffline = true;
+			if (localStorage.getItem("KDMods") && JSON.parse(localStorage.getItem("KDMods"))) {
+				let mods = JSON.parse(localStorage.getItem("KDMods"));
+				for (let m of mods) {
+					// Read file with Node.js API
+					//@ts-ignore
+					const fs = nw.require('fs');
+					//@ts-ignore
+					const path = nw.require('path');
+					// Extract path and filename using path module
+					const { dir, base } = path.parse(m);
+
+					// Read the file content into a buffer
+					//@ts-ignore
+					fs.readFile(m, (err, fileContent) => {
+
+						// Create a Blob using the buffer
+						const blob = new Blob([fileContent], { type: 'application/octet-stream' });
+
+						// Create a File object with the Blob
+						const fileObject = new File([blob], base, { type: 'application/octet-stream' });
+
+
+						// Create a File object using the stream
+						//const fileObject = new File([blob], base, { type: 'application/x-zip-compressed' });
+						if (fileObject) KDMods[base] = fileObject;
+					});
+
+
+				}
+			}
+		}
+	} catch (err) {
+		// We are online and no local mod loading :()
+	}
+}
+
 function KDDrawMods() {
+	if (!KDGetMods) {
+		KDGetMods = true;
+		KDGetModsLoad();
+	}
 	let count = 0;
 	let keys = Object.keys(KDMods);
 	for (let i = KDModIndex; i < keys.length && count < KDModCount; i++) {
@@ -38,9 +88,29 @@ function KDLoadMod(files: any[]) {
 	}
 }
 
+let KDExecuted = false;
+
+async function KDExecuteModsAndStart() {
+	await KDExecuteMods();
+	KinkyDungeonStartNewGame(true);
+}
+
 async function KDExecuteMods() {
+	if (KDExecuted) return;
 	KDAwaitingModLoad = true;
 	KDAllModFiles = [];
+
+	if (KDOffline) {
+		let mods = [];
+		for (let file of Object.values(KDMods)) {
+		//@ts-ignore
+			console.log(file.path);
+			//@ts-ignore
+			mods.push(file.path);
+		}
+		//@ts-ignore
+		localStorage.setItem("KDMods", JSON.stringify(mods));
+	}
 	for (let file of Object.values(KDMods)) {
 		let entries = await model.getEntries(file, {});
 		if (entries && entries.length) {
@@ -77,9 +147,21 @@ async function KDExecuteMods() {
 			// Eval js files. eval() is dangerous. Don't load untrusted mods.
 			reader.onload = function(event) {
 				console.log("EXECUTING MOD FILE " + file.name);
-				if (typeof event.target.result === "string")
-					// eslint-disable-next-line no-eval
-					eval(event.target.result);
+				if (typeof event.target.result === "string") {
+					if (
+						// Some basic safety features to prevent file io
+						!(event.target.result.includes("require("))
+						&& !(event.target.result.includes("nw.("))
+						&& !(event.target.result.includes("'fs'"))
+						&& !(event.target.result.includes("\"fs\""))
+						&& !(event.target.result.includes("`fs`"))
+						&& !(event.target.result.includes("`fs`"))
+					) {
+						//@ts-ignore
+						eval(event.target.result);
+					}
+
+				}
 			};
 			reader.readAsText(file);
 		} else {

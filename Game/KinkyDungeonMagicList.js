@@ -1029,6 +1029,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			spellPointCost: 2, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 				{type: "Psychokinesis", trigger: "calcComp", requiredTag: "telekinesis"},
 				{type: "Psychokinesis", trigger: "calcCompPartial", requiredTag: "telekinesis"},
+				{type: "Psychokinesis", trigger: "afterPlayerCast", requiredTag: "telekinesis"},
 
 			]},
 

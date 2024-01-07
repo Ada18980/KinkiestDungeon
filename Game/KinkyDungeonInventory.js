@@ -703,11 +703,14 @@ function KDGetGroupPreviewImage(Group) {
  * @returns {string}
  */
 function KDGetRestraintPreviewImage(restraint) {
-	if (PIXI.Assets.cache.has(KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`)) return KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`;
+	if (KDModFiles[KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`]
+		|| PIXI.Assets.cache.has(KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`))
+		return KDModFiles[KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png` || KinkyDungeonRootDirectory] + `Items/Restraint/${restraint.preview || restraint.name}.png`;
 	for (let tag of restraint.shrine) {
-		if (PIXI.Assets.cache.has(KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`)) return KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`;
+		if (KDModFiles[KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`]
+			|| PIXI.Assets.cache.has(KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`))
+			return KDModFiles[KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`] || KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`;
 	}
-
 
 	try {
 		if (KDTex(KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`)?.valid) return KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`;

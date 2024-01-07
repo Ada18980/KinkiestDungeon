@@ -23,18 +23,21 @@ AddModel({
 			DisplacementMorph: {Crossed:"Crossed"},
 			DisplaceLayers: ToMap(["Rope1"]),
 			InheritColor: "Rope",
+			NoOverride: true,
 		},
 		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
 			Poses: ToMap(["Boxtie", "Wristtie"]),
 			DisplacementSprite: "Arm1Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
 			InheritColor: "Rope",
+			NoOverride: true,
 		},
 		{ Name: "ForeArm1", Layer: "BindArmLeft", Pri: 0,
 			Poses: ToMap(["Wristtie"]),
 			DisplacementSprite: "ForeArm1Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
 			InheritColor: "Rope",
+			NoOverride: true,
 		},
 	])
 });
@@ -94,12 +97,14 @@ AddModel({
 			DisplacementSprite: "Arm2Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
 			InheritColor: "Rope",
+			NoOverride: true,
 		},
 		{ Name: "ForeArm2", Layer: "BindArmLeft", Pri: 0,
 			Poses: ToMap(["Wristtie"]),
 			DisplacementSprite: "ForeArm2Squish",
 			DisplaceLayers: ToMap(["Rope1"]),
 			InheritColor: "Rope",
+			NoOverride: true,
 		},
 	])
 });
@@ -157,16 +162,19 @@ AddModel({
 			DisplaceLayers: ToMap(["Rope1"]),
 			Invariant: true,
 			InheritColor: "Rope",
+			NoOverride: true,
 		},
 		{ Name: "ArmStrapHarness", Layer: "ChestStraps", Pri: -2,
 			Poses: ToMap(["Crossed"]),
 			MorphPoses: {Crossed:"Crossed"},
 			InheritColor: "Rope",
+			NoOverride: true,
 		},
 		{ Name: "ArmHarnessUp", Sprite: "ArmHarness", Layer: "ChestStraps", Pri: -1,
 			Poses: ToMap([...ARMPOSES]),
 			Invariant: true,
 			InheritColor: "Rope",
+			NoOverride: true,
 		},
 	])
 });
@@ -216,6 +224,7 @@ AddModel({
 			DisplacementSprite: "CuffsSquish",
 			DisplaceLayers: ToMap(["RopeFore"]),
 			InheritColor: "Rope",
+			NoOverride: true,
 		},
 	])
 });
@@ -233,6 +242,7 @@ AddModel({
 			DisplacementSprite: "BeltSquish",
 			DisplaceLayers: ToMap(["RopeCalf"]),
 			InheritColor: "Rope",
+			NoOverride: true,
 		},
 	])
 });
@@ -308,6 +318,7 @@ AddModel({
 			CrossHideOverride: true,
 			HideOverrideLayerMulti: ["ToeTie"],
 			InheritColor: "Rope",
+			NoOverride: true,
 		},
 	])
 });
@@ -329,6 +340,7 @@ AddModel({
 			AppendPose: {EncaseFeet: "Over"},
 			NoAppendDisplacement: true,
 			InheritColor: "Rope",
+			NoOverride: true,
 		},
 	])
 });
@@ -356,6 +368,7 @@ AddModel({
 			AppendPose: {EncaseAnkles: "Over"},
 			NoAppendDisplacement: true,
 			InheritColor: "Rope",
+			NoOverride: true,
 		},
 	])
 });
@@ -370,6 +383,7 @@ AddModel(GetModelWithExtraLayers("RopeAnkles2", "RopeAnkles1", [
 		AppendPose: {EncaseAnkles: "Over"},
 		NoAppendDisplacement: true,
 		InheritColor: "Rope",
+		NoOverride: true,
 	},
 ], "RopeHarness", false));
 
@@ -384,6 +398,7 @@ AddModel(GetModelWithExtraLayers("RopeAnkles3", "RopeAnkles2", [
 		AppendPose: {EncaseAnkles: "Over"},
 		NoAppendDisplacement: true,
 		InheritColor: "Rope",
+		NoOverride: true,
 	},
 ], "RopeHarness", false));
 
@@ -408,11 +423,13 @@ AddModel({
 			AppendPose: {EncaseLegs: "Over"},
 			NoAppendDisplacement: true,
 			InheritColor: "Rope",
+			NoOverride: true,
 		},
 		{ Name: "RightThigh1", Layer: "RightThighs1", Pri: 0,
 			Poses: ToMap(["KneelClosed"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			InheritColor: "Rope",
+			NoOverride: true,
 		},
 	])
 });
@@ -428,11 +445,13 @@ AddModel(GetModelWithExtraLayers("RopeLegs2", "RopeLegs1", [
 		AppendPose: {EncaseLegs: "Over"},
 		NoAppendDisplacement: true,
 		InheritColor: "Rope",
+		NoOverride: true,
 	},
 	{ Name: "RightThigh2", Layer: "RightThighs2", Pri: 0,
 		Poses: ToMap(["KneelClosed"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed"]),
 		InheritColor: "Rope",
+		NoOverride: true,
 	},
 ], "RopeHarness", false));
 
@@ -448,10 +467,12 @@ AddModel(GetModelWithExtraLayers("RopeLegs3", "RopeLegs2", [
 		AppendPose: {EncaseLegs: "Over"},
 		NoAppendDisplacement: true,
 		InheritColor: "Rope",
+		NoOverride: true,
 	},
 	{ Name: "RightThigh3", Layer: "RightThighs3", Pri: 0,
 		Poses: ToMap(["KneelClosed"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed"]),
 		InheritColor: "Rope",
+		NoOverride: true,
 	},
 ], "RopeHarness", false));

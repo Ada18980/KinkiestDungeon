@@ -3467,7 +3467,7 @@ let KDEventMapSpell = {
 		},
 		"Psychokinesis": (e, spell, data) => {
 			if (data.spell && data.spell.tags && data.spell.tags.includes("telekinesis")) {
-				if (!KinkyDungeoCheckComponents(data.spell, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true)) {
+				if (KinkyDungeoCheckComponents(data.spell, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true).length > 0) {
 					KinkyDungeonChangeDistraction(data.manacost ? data.manacost : 1);
 				}
 			}
@@ -4787,7 +4787,7 @@ let KDEventMapSpell = {
 
 				let player = KinkyDungeonPlayerEntity;
 				let cost = KinkyDungeonGetManaCost(spell, false, true);
-				if (KinkyDungeoCheckComponents(spell, player.x, player.y)) {
+				if (KinkyDungeoCheckComponents(spell, player.x, player.y).length == 0) {
 					if (KinkyDungeonHasMana(cost)) {
 
 						KinkyDungeonApplyBuffToEntity(player, {
@@ -4822,7 +4822,7 @@ let KDEventMapSpell = {
 
 				let player = KinkyDungeonPlayerEntity;
 				let cost = KinkyDungeonGetManaCost(spell, false, true);
-				if (KinkyDungeoCheckComponents(spell, player.x, player.y)) {
+				if (KinkyDungeoCheckComponents(spell, player.x, player.y).length == 0) {
 					if (KinkyDungeonHasMana(cost)) {
 						KinkyDungeonUpdateLightGrid = true;
 						KinkyDungeonApplyBuffToEntity(player, {
@@ -4867,7 +4867,7 @@ let KDEventMapSpell = {
 
 				let player = KinkyDungeonPlayerEntity;
 				let cost = KinkyDungeonGetManaCost(spell, false, true);
-				if (KinkyDungeoCheckComponents(spell, player.x, player.y)) {
+				if (KinkyDungeoCheckComponents(spell, player.x, player.y).length == 0) {
 					if (KinkyDungeonHasMana(cost)) {
 						KinkyDungeonUpdateLightGrid = true;
 						if (!KDGameData.RevealedTiles) KDGameData.RevealedTiles = {};
@@ -5359,7 +5359,8 @@ let KDEventMapWeapon = {
 						if (charge >= 9) dmgMult *= 2;
 						data.bulletfired.bullet.damage.damage = data.bulletfired.bullet.damage.damage + dmgMult * charge;
 						data.bulletfired.bullet.damage.bind = (data.bulletfired.bullet.damage.bind || 0) + dmgMult * charge;
-						KinkyDungeonPlayerBuffs[weapon.name + "Charge"].duration = 0;
+						if (KinkyDungeonPlayerBuffs[weapon.name + "Charge"])
+							KinkyDungeonPlayerBuffs[weapon.name + "Charge"].duration = 0;
 
 						if (e.energyCost) KinkyDungeonChangeCharge(- e.energyCost * charge);
 						if (e.sfx && charge > 9) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
@@ -8624,12 +8625,17 @@ let KDEventMapGeneric = {
 	"vision": {
 		"NightOwl": (e, data) => {
 			if (KinkyDungeonStatsChoice.get("NightOwl")) {
-				data.flags.nightVision *= 2.5;
+				data.flags.nightVision *= 2;
+			}
+		},
+		"NightBlindness": (e, data) => {
+			if (KinkyDungeonStatsChoice.get("NightBlindness")) {
+				data.flags.nightVision *= 0.7;
 			}
 		},
 		"Nearsighted": (e, data) => {
 			if (KinkyDungeonStatsChoice.get("Nearsighted")) {
-				data.flags.nightVision *= 0.7;
+				data.flags.nightVision *= 0.85;
 			}
 		},
 	},

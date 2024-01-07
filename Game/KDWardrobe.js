@@ -889,7 +889,7 @@ function KDDrawWardrobe(screen, Character) {
 				KDOriginalValue = KDOutfitOriginalStore[KDCurrentOutfit] || "";
 				CharacterAppearanceRestore(KinkyDungeonPlayer, DecompressB64(NewOutfit));
 				CharacterRefresh(KinkyDungeonPlayer);
-				KDInitProtectedGroups();
+				KDInitProtectedGroups(KinkyDungeonPlayer);
 				KinkyDungeonDressPlayer();
 			} else {
 				KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
@@ -897,7 +897,7 @@ function KDDrawWardrobe(screen, Character) {
 				CharacterReleaseTotal(KinkyDungeonPlayer);
 				KinkyDungeonSetDress("Default", "Default", C, true);
 				KinkyDungeonDressPlayer();
-				KDInitProtectedGroups();
+				KDInitProtectedGroups(KinkyDungeonPlayer);
 			}
 			return true;
 		};
@@ -954,7 +954,7 @@ function KDDrawWardrobe(screen, Character) {
 			CharacterReleaseTotal(KinkyDungeonPlayer);
 			KinkyDungeonSetDress("Default", "Default", C, true);
 			KinkyDungeonDressPlayer();
-			KDInitProtectedGroups();
+			KDInitProtectedGroups(KinkyDungeonPlayer);
 			UpdateModels(KinkyDungeonPlayer);
 			KinkyDungeonConfigAppearance = true;
 			KinkyDungeonReplaceConfirm = 0;
@@ -982,7 +982,7 @@ function KDDrawWardrobe(screen, Character) {
 			else
 				KinkyDungeonSetDress("None", "None", C, true);
 			KinkyDungeonDressPlayer(C, true);
-			KDInitProtectedGroups();
+			KDInitProtectedGroups(KinkyDungeonPlayer);
 			KinkyDungeonConfigAppearance = true;
 			KinkyDungeonReplaceConfirm = 0;
 			return true;
@@ -1091,7 +1091,7 @@ function KDDrawWardrobe(screen, Character) {
 	}, true, 20, 942, 380, 50, TextGet("KDWardrobeSave"), "#ffffff", "");
 }
 
-function KDSaveCodeOutfit(C) {
+function KDSaveCodeOutfit(C, clothesOnly = false) {
 	if (!C) C = KinkyDungeonPlayer;
 	// Save outfit
 	KDChangeWardrobe(C);
@@ -1108,14 +1108,14 @@ function KDSaveCodeOutfit(C) {
 		else
 			KinkyDungeonSetDress("None", "None", C, true);
 		KinkyDungeonDressPlayer(C, true);
-		KDInitProtectedGroups();
+		KDInitProtectedGroups(KinkyDungeonPlayer);
 		KinkyDungeonConfigAppearance = true;
 		KinkyDungeonReplaceConfirm = 0;
 
 		// Then decompresses
-		CharacterAppearanceRestore(C, decompressed);
+		CharacterAppearanceRestore(C, decompressed, clothesOnly);
 		CharacterRefresh(C);
-		KDInitProtectedGroups();
+		KDInitProtectedGroups(KinkyDungeonPlayer);
 	}
 
 	KinkyDungeonCheckClothesLoss = true;
@@ -1134,7 +1134,7 @@ function KDRestoreOutfit() {
 	if (KDOriginalValue) {
 		CharacterAppearanceRestore(KinkyDungeonPlayer, DecompressB64(KDOriginalValue));
 		CharacterRefresh(KinkyDungeonPlayer);
-		KDInitProtectedGroups();
+		KDInitProtectedGroups(KinkyDungeonPlayer);
 		KinkyDungeonDressPlayer();
 	}
 }

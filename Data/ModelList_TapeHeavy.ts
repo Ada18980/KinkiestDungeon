@@ -16,7 +16,7 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["EncaseFeet"],
 	Layers: ToLayerMap([
-		{ Name: "Feet", Layer: "WrappingLegsUnder", Pri: 10,
+		{ Name: "Feet", Layer: "WrappingLegs", Pri: 10,
 			Poses: ToMap(["Closed", "KneelClosed"]),
 			//GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			DisplacementSprite: "TapeAnklesSquish",

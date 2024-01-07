@@ -421,10 +421,10 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 
 			let equipped = 0;
 			if (forceequip) {
-				equipped = KDEquipInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, 0, true, undefined, true, false, Loot.faction || "Curse", true, unlockcurse, undefined, false, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
+				equipped = KDEquipInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, 0, true, undefined, true, false, Loot.faction || (unlockcurse ? "Curse" : undefined), true, unlockcurse, undefined, false, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
 			}
 			if (!equipped) {
-				KDGiveInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, unlockcurse, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix, Loot.faction || "Curse");
+				KDGiveInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, unlockcurse, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix, Loot.faction || (unlockcurse ? "Curse" : undefined));
 			} else {
 				KinkyDungeonSendTextMessage(10, TextGet("KDCursedChestEquip" + (unlockcurse ? "Cursed" : ""))
 					.replace("NEWITM", TextGet("Restraint" + variant.template)),
@@ -434,7 +434,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 			if (Replacemsg)
 				Replacemsg = Replacemsg.replace("ArmorAcquired", (enchantVariant ? TextGet("KDVarPrefEnchanted") : "") + ' ' + TextGet("Restraint" + armor));
 		} else {
-			KinkyDungeonInventoryAddLoose(armor, unlockcurse, Loot.faction || "Curse");
+			KinkyDungeonInventoryAddLoose(armor, unlockcurse, Loot.faction || (unlockcurse ? "Curse" : undefined));
 			if (Replacemsg)
 				Replacemsg = Replacemsg.replace("ArmorAcquired", TextGet("Restraint" + armor));
 		}

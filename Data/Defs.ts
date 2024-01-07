@@ -130,6 +130,7 @@ let LAYERS_BASE = [
 	"BraChest",
 	"BindChestLower",
 	"SuitChest",
+	"CatsuitChest",
 	"NippleToys",
 	"Nipples",
 	"Chest",
@@ -1046,12 +1047,14 @@ let LayerGroups = {
 	"CorsetBra": ToMap([
 		"Chest",
 		"ShirtChest",
+		"SuitChestOver",
 		"SuitChest",
 		"BraChest",
 		"BindChestLower",
 	]),
 	"ShirtCutoffBra": ToMap([
 		"Chest",
+		"SuitChestOver",
 		"SuitChest",
 		"BraChest",
 		"BindChestLower",
@@ -1365,6 +1368,7 @@ let LayerGroups = {
 
 	"SleeveDecoLeft",
 	"SleeveLeft",
+	"SuitChestOver",
 
 	// Right Shoes
 	"ShoeRightOver",

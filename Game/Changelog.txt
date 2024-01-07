@@ -23,6 +23,12 @@ Monk class?
 - Passive: enchantments apply to unarmed strikes
 - Active: Increase unarmed base damage for 20 turns. After using, need to meditate 10 turns to recharge. Free.
 
+5.0.8
+Release A
+- Added offline mod loading
+- Added suspicious mod detection and filtering
+- New perks: Edging, Pleasure, Denial, and Teasing lovers
+
 5.0.7
 Release A
 - Cut power is now shown in the weapon card
@@ -50,6 +56,8 @@ Release E
 - Added a collection where you can view captured NPCs
 - Fixed some more bugs
 - Added fashion chastity belts and fashion gags
+Release F
+- Added palette options
 
 
 5.0.6

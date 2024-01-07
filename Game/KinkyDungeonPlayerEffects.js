@@ -671,6 +671,7 @@ let KDPlayerEffects = {
 		if (Math.round(
 			playerEffect.time * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "lightDamageResist"))
 		) > 0) {
+			KDGameData.visionAdjust = Math.min(1, (KDGameData.visionAdjust || 0) + 1.5);
 			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonBlindSelf"), "#ff0000", Math.round(
 				playerEffect.time * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "lightDamageResist"))

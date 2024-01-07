@@ -7,6 +7,7 @@ let KinkyDungeonOutfitsBase = [
 	{name: "LatexPrisoner", dress: "LatexPrisoner", shop: false, rarity: 1},
 	{name: "Dungeon", dress: "Dungeon", shop: false, rarity: 1},
 	{name: "Prisoner", dress: "Prisoner", shop: false, rarity: 1},
+	{name: "Lingerie", dress: "Lingerie", shop: true, rarity: 0},
 	{name: "JailUniform", dress: "JailUniform", shop: false, rarity: 1,
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 1.2},
@@ -28,7 +29,7 @@ let KinkyDungeonOutfitsBase = [
 			{type: "damageResist", trigger: 'tick', damage: "electric", power: 0.2},
 			{type: "damageResist", trigger: 'tick', damage: "ice", power: -0.2},
 		],},
-	{name: "Bikini", dress: "Bikini", shop: false, rarity: 1,
+	{name: "Bikini", dress: "Bikini", shop: true, rarity: 0,
 		events: [
 			{type: "damageResist", trigger: 'tick', damage: "ice", power: -0.2},
 			{type: "damageResist", trigger: 'tick', damage: "tickle", power: -0.2},

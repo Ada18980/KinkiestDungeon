@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.7 (E)"
+KDVersionStr,"5.0.8 (A)"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -45,6 +45,8 @@ KDToggleTabUI,UI
 KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
 
+KDToggleAllowSusMods,Allow Suspicious Mods
+KDToggleAutoLoadMods,Auto Load Mods (offline only)
 KDToggleSkipIntro,Skip Intro
 KDToggleForceWarnings,Always Show Warnings
 KDToggleEnableMinimap,Always Show Minimap
@@ -93,6 +95,8 @@ KDToggleNipples,Enable Nipples
 KDToggleNippleToysOption,Show Nipple Toys Over Bras
 KDToggleNippleToysHide,Hide Nipple Clamps
 KDToggleNipplePiercingsHide,Hide Nipple Piercings
+KDToggleForcePalette,Force restraints to use palette
+KDToggleFlipPlayer,Flip Player Display
 
 KDHelpless,Helpless!
 KDMissed,Evaded!
@@ -243,6 +247,14 @@ KinkyDungeonStatDesc37,"You slowly lose stamina over time."
 
 KinkyDungeonStat38,"Stealth Mission"
 KinkyDungeonStatDesc38,"You are harder to detect and there are more chests, but enemies have 50% more HP, are more evasive, and drop no gold."
+KinkyDungeonStatCommonToyEdge,"Edging Lovers"
+KinkyDungeonStatDescCommonToyEdge,"All humanoids that can bind you also apply edging toys."
+KinkyDungeonStatCommonToyDeny,"Denial Lovers"
+KinkyDungeonStatDescCommonToyDeny,"All humanoids that can bind you also apply denial toys."
+KinkyDungeonStatCommonToyPleasure,"Pleasure Lovers"
+KinkyDungeonStatDescCommonToyPleasure,"All humanoids that can bind you also apply pleasurable toys."
+KinkyDungeonStatCommonToyTease,"Teasing Lovers"
+KinkyDungeonStatDescCommonToyTease,"All humanoids that can bind you also apply teasing toys."
 KinkyDungeonStatCommonLatex,"Latex Lovers"
 KinkyDungeonStatDescCommonLatex,"All humanoids that can bind you also apply latex restraints."
 KinkyDungeonStatCommonLeather,"Leather Lovers"
@@ -504,6 +516,8 @@ KinkyDungeonStatArchersEye,"Archer's Eye"
 KinkyDungeonStatDescArchersEye,"+2 vision radius."
 KinkyDungeonStatNightOwl,"Night Owl"
 KinkyDungeonStatDescNightOwl,"Your vision in dark areas is improved."
+KinkyDungeonStatNightBlindness,"Fear of the Dark"
+KinkyDungeonStatDescNightBlindness,"Your vision in dark areas is reduced."
 
 KinkyDungeonStatNoDoll,"Not a Doll"
 KinkyDungeonStatDescNoDoll,"You may still enter Doll Terminals, but enemies will not force you onto doll stands."
@@ -894,6 +908,7 @@ KinkyDungeonNewGamePlus,New Game+
 GameContinue,Continue Last Save
 LoadGame,Load From Code
 LoadOutfit,Save Outfit (overwrites!)
+LoadOutfitClothes,Save Outfit (Clothes Only!)
 GameReturnToMenu,Save Keybindings
 GameReturnToMenu2,Cancel Changes
 GameReturnToMenuFromOptions,Return
@@ -1122,6 +1137,9 @@ KinkyDungeonInventoryItemBastDesc2,"Harkening back to an old era."
 KinkyDungeonInventoryItemBikini,Combat Bikini
 KinkyDungeonInventoryItemBikiniDesc,"A minimalist albeit chilly outfit designed for ease of use."
 KinkyDungeonInventoryItemBikiniDesc2,"Or perhaps it's just sexy..."
+KinkyDungeonInventoryItemLingerie,Lingerie
+KinkyDungeonInventoryItemLingerieDesc,"A minimalist yet aesthetically pleasing outfit."
+KinkyDungeonInventoryItemLingerieDesc2,"No bonuses."
 
 KinkyDungeonInventoryItemMaidUniform,Maid Uniform
 KinkyDungeonInventoryItemMaidUniformDesc,An elegant dress meant to denote a maid's status.
@@ -3365,10 +3383,12 @@ RestraintDisplayTrap,Display Stand
 RestraintDisplayTrapDesc,"A display stand, fit for only the prettiest of trophies!"
 RestraintDisplayTrapDesc2,"Your arms are pinned behind your back and you can barely move!"
 KDCageTrap,"You hear a click as the door shuts behind you..."
+KDDisplayTrap,"The display stand suddenly locks into place around you!"
 
 RestraintDollStand,Doll Stand
 RestraintDollStandDesc,"A mobile display stand for dolls to keep them in place."
 RestraintDollStandDesc2,"As long as it's... inserted, you won't be going anywhere!"
+
 
 RestraintDollStandSFW,Doll Stand
 RestraintDollStandSFWDesc,"A mobile display stand for dolls to keep them in place."
@@ -5219,10 +5239,10 @@ KinkyDungeonSpellManaRegen,Inner Power
 KinkyDungeonSpellDescriptionManaRegen,"As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana AFTER other modifiers. Toggled passive spells apply half the cooldown."
 
 KinkyDungeonSpellManaRegenPlus,Battlemage
-KinkyDungeonSpellDescriptionManaRegenPlus,"Inner Power is no longer paused after attacking."
+KinkyDungeonSpellDescriptionManaRegenPlus,"Inner Power cooldown is no longer reset after attacking."
 
 KinkyDungeonSpellManaRegenPlus2,Relentless Casting
-KinkyDungeonSpellDescriptionManaRegenPlus2,"Inner Power is no longer paused after casting spells."
+KinkyDungeonSpellDescriptionManaRegenPlus2,"While on cooldown, Inner Power cooldown is no longer reset after casting spells."
 
 KinkyDungeonSpellManaRecharge,Arcane Recharge
 KinkyDungeonSpellDescriptionManaRecharge,"Calling upon chaotic energies, your willpower is assaulted in exchange for power. Deals 80 psychic damage to self and drains 10% of your max Willpower to fully restore mana. Does not refill the mana pool."
@@ -18892,7 +18912,7 @@ KinkyDungeonSpellSagittaAssault,Sagitta Assault
 KinkyDungeonSpellDescriptionSagittaAssault,"After casting Sagitta, you can recast it up to three more times without advancing time."
 
 KinkyDungeonSpellPsychokinesis,Psychokinesis
-KinkyDungeonSpellDescriptionPsychokinesis,"You can ignore components for telekinetic spells, however spells generate distraction when cast this way due to the mental strain. Unable to use at 100% DP."
+KinkyDungeonSpellDescriptionPsychokinesis,"You can ignore components for telekinetic spells, however spells generate distraction (based on mana cost) when cast this way due to the mental strain. Unable to use at 100% DP."
 
 KinkyDungeonSpellKineticMastery,Kinetic Mastery
 KinkyDungeonSpellDescriptionKineticMastery,"Negates the penalty for 2-handed weapons. Also gain the following effects:|-Kinetic spells and Sagitta cost 30% less while wielding a Light weapon.|-Kinetic spells and Sagitta gain +15 base damage when wielding a Heavy weapon."
@@ -19136,3 +19156,29 @@ KDPrisonerNum,Prisoner #NUMR/TTL
 
 KDCollectionSelect,Select a character to examine
 KDFormerFaction,"Former Faction: "
+
+KinkyDungeonSpellMinigun,Minigun
+
+KDPalette,None
+KDPaletteJail,Prisoner
+KDPaletteBountyhunter,Bounty Hunter
+KDPaletteDressmaker,Dressup Co.
+KDPaletteDollsmith,Dollmaker
+KDPaletteLatex,Latex
+KDPaletteSlime,Slime
+KDPaletteAlchemist,Alchemist
+KDPaletteApprentice,Scholarly
+KDPaletteWitch,Witch's Coven
+KDPaletteCurse,Curse
+KDPaletteAncientRobot,Old Guardians
+KDPaletteMushy,Fungal
+KDPaletteBast,Bast
+KDPaletteElf,Elven
+KDPaletteGoddess,Divine
+
+KDSelectPalette,Choose restraint palette:
+
+KDAutoLoadMods,Auto Load Mods
+KDModVirus,SUSPICIOUS MOD DETECTED
+
+KDVisionBlind,The bright light hurts your dark-adjusted eyes!

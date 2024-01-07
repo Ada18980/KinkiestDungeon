@@ -113,11 +113,52 @@ function KDDrawSelectedCollectionMember(value, x, y, index) {
 	if (value.Faction && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.includes(value.Faction)))
 		DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), x + 220, y + 500, 500, "#ffffff", KDTextGray05, 18);
 
-	KDDraw(kdcanvas, kdpixisprites, value.name + "_coll," + value.id, KinkyDungeonRootDirectory + dir + sp + ".png",
-		x + 20,
-		y + 80,
-		400, 400, undefined);
+	if (!KDNPCChar.get(value.id)) {
+		KDSpeakerNPC = suppressCanvasUpdate(() => CharacterLoadNPC("coll" + value.id));
+		KDNPCChar.set(value.id, KDSpeakerNPC);
+		KDNPCStyle.set(KDSpeakerNPC, value);
+		if (!value.bodystyle || !value.facestyle || !value.hairstyle) {
+			if (enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style) {
+				if (KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style]) {
+					let style = KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style];
+					if (!value.bodystyle && style.Bodystyle) {
+						value.bodystyle = style.Bodystyle[Math.floor(Math.random() * style.Bodystyle.length)];
+					}
+					if (!value.hairstyle && style.Hairstyle) {
+						value.hairstyle = style.Hairstyle[Math.floor(Math.random() * style.Hairstyle.length)];
+					}
+					if (!value.facestyle && style.Facestyle) {
+						value.facestyle = style.Facestyle[Math.floor(Math.random() * style.Facestyle.length)];
+					}
+				}
+			}
+		}
+		if (enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit) {
+			KinkyDungeonSetDress(enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit, enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit, KDSpeakerNPC, true);
+		}
+		KinkyDungeonCheckClothesLoss = true;
+	} else {
+		KDSpeakerNPC = KDNPCChar.get(value.id);
+	}
+
+	if (KDSpeakerNPC) {
+		KinkyDungeonDressPlayer(KDSpeakerNPC, true);
+		DrawCharacter(KDSpeakerNPC,
+			x + 20 + 100,
+			y + 80,
+			400/1000, true, undefined, PIXI.SCALE_MODES.NEAREST, [], undefined, false);
+	} else {
+		KDDraw(kdcanvas, kdpixisprites, value.name + "_coll," + value.id, KinkyDungeonRootDirectory + dir + sp + ".png",
+			x + 20,
+			y + 80,
+			400, 400, undefined);
+	}
+
+
 }
+
+let KDNPCChar = new Map();
+let KDNPCStyle = new Map();
 
 let KDCollectionSelected = 0;
 let KDCollectionIndex = 0;
@@ -169,6 +210,8 @@ function KDDrawCollectionInventory(x, y) {
 	for (let value of Object.values(KDGameData.Collection)) {
 		if (KDCollectionSelected == value.id) selectedIndex = II + 1;
 		if (II++ < KDCollectionIndex || row >= KDCollectionRows) continue;
+
+
 		let sp = (value.sprite || value.type);
 		let dir = "Enemies/";
 		let enemyType = value.Enemy || KinkyDungeonGetEnemyByName(value.type);

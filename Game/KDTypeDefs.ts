@@ -890,6 +890,10 @@ interface enemy extends KDHasTags {
 	dmgType?: string,
 	/** */
 	bound?: string,
+	/** Outfit for paperdoll */
+	outfit?: string,
+	/** Outfit for paperdoll */
+	style?: string,
 	/** Enemy is not a humanoid, used for skeletons */
 	nonHumanoid?: boolean,
 	/** */
@@ -1594,7 +1598,7 @@ interface entity {
 
 type KinkyDungeonDress = {
 	Item: string;
-	Group: string;
+	Group?: string;
 	Color: string | string[];
 	Filters?: Record<string, LayerFilter>;
 	Lost: boolean;
@@ -3077,6 +3081,11 @@ interface KDCollectionEntry {
 	customSprite: boolean,
 	id: number,
 	Enemy?: enemy, // for unique ones
+
+	outfit?: string,
+	hairstyle?: string,
+	bodystyle?: string,
+	facestyle?: string,
 
 	/** Status: Guest, Prisoner, Servant, or Manager */
 	status: string,

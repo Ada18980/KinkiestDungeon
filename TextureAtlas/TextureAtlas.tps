@@ -366,6 +366,12 @@
             <key type="filename">../Models/Bunny/HighLeotard.png</key>
             <key type="filename">../Models/Bunny/HighLeotardClosed.png</key>
             <key type="filename">../Models/Bunny/HighLeotardKneel.png</key>
+            <key type="filename">../Models/Bunny/LegSockLeftClosed.png</key>
+            <key type="filename">../Models/Bunny/LegSockLeftHogtie.png</key>
+            <key type="filename">../Models/Bunny/LegSockLeftSpread.png</key>
+            <key type="filename">../Models/Bunny/LegSockRightClosed.png</key>
+            <key type="filename">../Models/Bunny/LegSockRightHogtie.png</key>
+            <key type="filename">../Models/Bunny/LegSockRightSpread.png</key>
             <key type="filename">../Models/Bunny/Leotard.png</key>
             <key type="filename">../Models/Bunny/LeotardChest.png</key>
             <key type="filename">../Models/Bunny/LeotardClosed.png</key>
@@ -1131,12 +1137,14 @@
             <key type="filename">../Models/Mittens/LatexLeftFree.png</key>
             <key type="filename">../Models/Mittens/LatexLeftFront.png</key>
             <key type="filename">../Models/Mittens/LatexLeftYoked.png</key>
+            <key type="filename">../Models/Mittens/LatexRightCrossed.png</key>
             <key type="filename">../Models/Mittens/LatexRightFree.png</key>
             <key type="filename">../Models/Mittens/LatexRightFront.png</key>
             <key type="filename">../Models/Mittens/LatexRightYoked.png</key>
             <key type="filename">../Models/Mittens/LeatherLeftFree.png</key>
             <key type="filename">../Models/Mittens/LeatherLeftFront.png</key>
             <key type="filename">../Models/Mittens/LeatherLeftYoked.png</key>
+            <key type="filename">../Models/Mittens/LeatherRightCrossed.png</key>
             <key type="filename">../Models/Mittens/LeatherRightFree.png</key>
             <key type="filename">../Models/Mittens/LeatherRightFront.png</key>
             <key type="filename">../Models/Mittens/LeatherRightYoked.png</key>

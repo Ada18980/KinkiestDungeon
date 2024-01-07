@@ -1,6 +1,7 @@
 "use strict";
 // Player entity
-let KinkyDungeonPlayerEntity = null; // The current player entity
+/** @type {any} */
+let KinkyDungeonPlayerEntity = {id: -1, Enemy: undefined, hp: 10, x: 0, y:0, player:true}; // The current player entity
 
 let KDBaseBalanceDmgLevel = 5; // Decides how much heels affect balance loss from attacks. higher = less loss
 let KDShadowThreshold = 1.5;
@@ -290,8 +291,15 @@ function KinkyDungeonGetVisionRadius() {
 		max: 8,
 		min: KinkyDungeonStatsChoice.get("TotalBlackout") ? 0.5 : (KinkyDungeonStatsChoice.get("Blackout") ? 1.5 : 2.9),
 		nightVision: 1.0,
+		blindRadius: KDGameData.visionBlind || 0,
 	};
+	if (KinkyDungeonStatsChoice.get("NightBlindness") && KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) < KDShadowThreshold) {
+		data.min = Math.min(data.min, KDGameData.visionAdjust < -0.1 ? 1.5 : 0.5);
+	}
 	KinkyDungeonSendEvent("calcVision", data);
+	if (data.blindRadius > 0) {
+		data.blindlevel += KDMaxVisionDist * data.blindRadius;
+	}
 	KDMaxVisionDist = data.max;
 	KDMinVisionDist = data.min;
 	KDNightVision = data.nightVision;
@@ -2009,7 +2017,8 @@ function KDIsEdged(player) {
 }
 
 function KDGetHeelTraining() {
-	return (KDGameData.Training.Heels?.training_stage || 0) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "HeelTraining");
+	if (!KDGameData.Training) KDGameData.Training = {};
+	return (KDGameData.Training?.Heels?.training_stage || 0) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "HeelTraining");
 }
 
 function KDTrip(delta) {
@@ -2044,6 +2053,7 @@ function KDGetBalanceCost() {
  * Goes thru all training categories and advances them by an amount, and resets the turns
  */
 function KDAdvanceTraining() {
+	if (!KDGameData.Training) KDGameData.Training = {};
 	for (let entry of Object.entries(KDGameData.Training)) {
 		//let training = entry[0];
 		let data = entry[1];
@@ -2072,6 +2082,7 @@ function KDAdvanceTraining() {
  * @param {number} bonus - Multiplier for turns trained or skipped
  */
 function KDTickTraining(Name, trained, skipped, total, bonus = 1) {
+	if (!KDGameData.Training) KDGameData.Training = {};
 	if (!KDGameData.Training[Name]) {
 		KDGameData.Training[Name] = {
 			training_points: 0,

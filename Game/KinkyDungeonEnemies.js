@@ -3694,7 +3694,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	if (AIData.canSeePlayer) AIData.sneakMult += 0.15;
 	if (AIData.canSeePlayerMedium) AIData.sneakMult += 0.2;
-	if (AIData.canSeePlayerMedium) AIData.sneakMult += 0.2;
+	if (AIData.canSeePlayerClose) AIData.sneakMult += 0.2;
 	if (AIData.canSeePlayerVeryClose) AIData.sneakMult += 0.4;
 	//if (KinkyDungeonAlert > 0) AIData.sneakMult += 1;
 
@@ -3705,7 +3705,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (enemy.vp > 0.5 && (!KDForcedToGround() && KinkyDungeonCanStand())) AIData.sneakMult += 0.3;
 
 	let sneakPerc = (AIData.canSensePlayer || AIData.canSeePlayer || AIData.canShootPlayer || AIData.canSeePlayerChase) ?
-		KinkyDungeonTrackSneak(enemy, delta * (AIData.sneakMult), player, (AIData.canSensePlayer) ? 0 : (enemy.Enemy.tags.darkvision ? 0.5 : 1.5))
+		KinkyDungeonTrackSneak(enemy, delta * (AIData.sneakMult), player, (AIData.canSeePlayerClose) ? 0 : (enemy.Enemy.tags.darkvision ? 0.5 : 1.5))
 		: 0;
 
 
@@ -4222,7 +4222,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		}
 	}
 
-	if (enemy.aware && enemy.idle && !enemy.path && !AIData.canSensePlayer && !enemy.vp) {
+	if (enemy.aware && enemy.idle && (!KDEnemyHasFlag(enemy, "targ_player") ? (enemy.vp || 0) < sneakThreshold : ((enemy.vp || 0) < sneakThreshold * 0.25 && !enemy.path && !AIData.canSensePlayer))) {
 		if (enemy.aware) KDAddThought(enemy.id, "Lose", 1, 4);
 		enemy.aware = false;
 	}
@@ -6346,7 +6346,12 @@ function KDPlugEnemy(enemy) {
  * @returns {Record<string, boolean>}
  */
 function KDGetTags(enemy, removeSpecial) {
-	let addOn = enemy.Enemy.bound ? KDExtraEnemyTags : undefined;
+	let addOn = enemy.Enemy.bound ? Object.assign({}, KDExtraEnemyTags) : undefined;
+	if (addOn) {
+		for (let entry of Object.entries(addOn)) {
+			if (entry[1] > 0 && KDGetEffLevel() > entry[1]) delete addOn[entry[0]];
+		}
+	}
 
 	let tags = Object.assign({}, enemy.Enemy.tags);
 	if (addOn) Object.assign(tags, addOn);
@@ -6366,7 +6371,12 @@ function KDGetTags(enemy, removeSpecial) {
  * @returns {Record<string, boolean>}
  */
 function KDGetExtraTags(enemy, useSpecial) {
-	let addOn = enemy.Enemy.bound ? KDExtraEnemyTags : undefined;
+	let addOn = enemy.Enemy.bound ? Object.assign({}, KDExtraEnemyTags) : undefined;
+	if (addOn) {
+		for (let entry of Object.entries(addOn)) {
+			if (entry[1] > 0 && KDGetEffLevel() > entry[1]) delete addOn[entry[0]];
+		}
+	}
 
 	let tags = addOn ? Object.assign({}, addOn) : {};
 	if (useSpecial && enemy.Enemy.specialExtraTags) {
@@ -7159,6 +7169,8 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
 			KDRemoveFromParty(data.enemy, data.capture && KDGetFaction(data.enemy) == "Player");
 		}
 	}
+
+	KDDropStolenItems(enemy);
 
 	KDSpliceIndex(forceIndex || KDMapData.Entities.indexOf(data.enemy), 1);
 	return true;

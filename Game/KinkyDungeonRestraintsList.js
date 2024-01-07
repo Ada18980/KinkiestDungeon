@@ -971,6 +971,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.25, enemyTags: {"latexRestraintsHeavy" : 3, "latexjacketSpell": 10, "jailRestraints": 1}, playerTagsMult: {"ItemArmsEmpty": 0.05}, playerTags: {"posLatex": -1, "latexRage": 4}, minLevel: 0, allFloors: true, shrine: ["Latex", "Straitjackets", "Block_ItemHands"]},
 	{inventory: true, name: "LatexArmbinder", inaccessible: true, factionColor: [[0]], Asset: "SeamlessLatexArmbinder", strictness: 0.1,
 		LinkableBy: [...KDArmbinderLink], Color: ["#499ed6"], Group: "ItemArms", bindarms: true, bindhands: 1.0, power: 7, weight: 0,
+		renderWhenLinked: [...KDArmbinderLink],
 		Model: "SmoothArmbinderGwen",
 		Filters: {
 			Straps: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1.5333333333333332,"blue":4.116666666666667,"alpha":1},
@@ -2010,7 +2011,7 @@ const KinkyDungeonRestraints = [
 		vibeLocation: "ItemNipples",
 		Model: "NippleClamps",
 		escapeChance: {"Struggle": -10, "Cut": -0.05, "Remove": 0.5, "Pick": 0.25}, failSuffix: {"Struggle": "Clamps"},
-		maxwill: 1.0, enemyTags: {"dressRestraints" : 5, "genericToys": 5, "maidRestraints": 3, "maidRestraintsLight": 1, "roboAngry": 10, "teasetoys": 3}, playerTags: {"NoVibes": -1000}, minLevel: 0, maxLevel: 8, allFloors: true, shrine: ["Vibes", "Toys"], linkedVibeTags: ["teaser", "piercings"],
+		maxwill: 1.0, enemyTags: {"dressRestraints" : 5, "toyTease": 2, "genericToys": 5, "maidRestraints": 3, "maidRestraintsLight": 1, "roboAngry": 10, "teasetoys": 3}, playerTags: {"NoVibes": -1000}, minLevel: 0, maxLevel: 8, allFloors: true, shrine: ["Vibes", "Toys"], linkedVibeTags: ["teaser", "piercings"],
 		allowRemote: true, events: [
 			{trigger:"playerAttack",  type: "MotionSensitive", chance: 0.5, msg: "KDPunishAttack", inheritLinked: true},
 			{trigger:"punish", type: "PunishSelf", power: 1, time: 24, edgeOnly: true, inheritLinked: true},
@@ -2019,7 +2020,7 @@ const KinkyDungeonRestraints = [
 		vibeLocation: "ItemNipples",
 		Model: "VibePiercings",
 		escapeChance: {"Struggle": -10, "Cut": -0.05, "Remove": 0.5, "Pick": 0.25}, failSuffix: {"Struggle": "Clamps"},
-		maxwill: 0.25, enemyTags: {"dressRestraints" : 3, "genericToys": 3, "maidRestraints": 2, "maidRestraintsLight": 1, "roboAngry": 10, "teasetoys": 2}, playerTags: {"NoVibes": -1000}, minLevel: 4, allFloors: true, shrine: ["Vibes", "Toys"], linkedVibeTags: ["teaser", "piercings"],
+		maxwill: 0.25, enemyTags: {"dressRestraints" : 3, "genericToys": 3, "maidRestraints": 2, "maidRestraintsLight": 1, "roboAngry": 10, "toyTeaseMid": 2, "teasetoys": 2}, playerTags: {"NoVibes": -1000}, minLevel: 4, allFloors: true, shrine: ["Vibes", "Toys"], linkedVibeTags: ["teaser", "piercings"],
 		allowRemote: true, events: [
 			{trigger:"playerAttack",  type: "MotionSensitive", chance: 0.5, msg: "KDPunishAttack", inheritLinked: true},
 			{trigger:"struggle",  type: "VibeOnStruggle", chance: 0.5, msg: "KDPunishStruggle", inheritLinked: true},
@@ -2028,7 +2029,7 @@ const KinkyDungeonRestraints = [
 	{inventory: true, arousalMode: true, name: "NippleWeights", unlimited: true, Asset: "HeartPasties", Color: "Default", Group: "ItemNipples", power: 4, weight: 0,
 		Model: "NippleWeights",
 		escapeChance: {"Struggle": -10, "Cut": -0.05, "Remove": 0.5, "Pick": 0.25}, failSuffix: {"Struggle": "Clamps"},
-		maxwill: 1.0, enemyTags: {"obsidianRestraints" : 3, "bandit": 0.1, "genericToys": 1}, playerTags: {"NoVibes": -1000}, minLevel: 3, allFloors: true, shrine: ["Weights", "Toys"],
+		maxwill: 1.0, enemyTags: {"obsidianRestraints" : 3, "bandit": 0.1, "genericToys": 1, "toyTease": 2}, playerTags: {"NoVibes": -1000}, minLevel: 3, allFloors: true, shrine: ["Weights", "Toys"],
 		allowRemote: true, events: [
 			{trigger:"sprint",  type: "NippleWeights", chance: 0.5, mult: 0.25, msg: "KDNippleWeights", inheritLinked: true},
 			{trigger:"playerAttack",  type: "NippleWeights", chance: 0.25, msg: "KDNippleWeights", mult: 0.25, power: 2.0, inheritLinked: true},
@@ -2039,7 +2040,7 @@ const KinkyDungeonRestraints = [
 		vibeLocation: "ItemNipples",
 		Model: "RingVibes",
 		escapeChance: {"Struggle": -10, "Cut": -0.05, "Remove": 0.5, "Pick": 0.25}, failSuffix: {"Struggle": "Clamps"},
-		maxwill: 0.25, enemyTags: {"dressRestraints" : 1, "genericToys": 1, "maidRestraints": 1, "roboAngry": 10, "teasetoys": 1}, playerTags: {"NoVibes": -1000}, minLevel: 8, allFloors: true, shrine: ["Vibes", "Toys"], linkedVibeTags: ["teaser", "piercings"],
+		maxwill: 0.25, enemyTags: {"dressRestraints" : 1, "genericToys": 1, "maidRestraints": 1, "roboAngry": 10, "teasetoys": 1, "toyTeaseIntense": 2}, playerTags: {"NoVibes": -1000}, minLevel: 8, allFloors: true, shrine: ["Vibes", "Toys"], linkedVibeTags: ["teaser", "piercings"],
 		allowRemote: true, events: [
 			{trigger:"playerAttack",  type: "MotionSensitive", chance: 1.0, msg: "KDPunishAttack", inheritLinked: true},
 			{trigger:"struggle",  type: "VibeOnStruggle", chance: 1.0, msg: "KDPunishStruggle", inheritLinked: true},
@@ -2050,7 +2051,7 @@ const KinkyDungeonRestraints = [
 	// Vibrators - These generally trigger on magic
 	{inventory: true, arousalMode: true, name: "TrapVibe", Asset: "TapedClitEgg", Color: "Default", Group: "ItemVulvaPiercings", power: 1, weight: 2,
 		failSuffix: {"Struggle": "Egg"},
-		escapeChance: {"Struggle": 0.15}, enemyTags: {"trap":100, "maidRestraintsLight": 5, "genericToys": 2, "teasetoys": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes", "Toys"], linkedVibeTags: ["teaser"], vibeLocation: "ItemVulvaPiercings",
+		escapeChance: {"Struggle": 0.15}, enemyTags: {"trap":100, "maidRestraintsLight": 5, "genericToys": 2, "teasetoys": 2, "toyTease": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes", "Toys"], linkedVibeTags: ["teaser"], vibeLocation: "ItemVulvaPiercings",
 		allowRemote: true, events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true}, // Harder to remove by crotch rope
 			{trigger:"playerCast",  type: "MagicallySensitive"},
@@ -2058,7 +2059,7 @@ const KinkyDungeonRestraints = [
 		]},
 	{inventory: true, arousalMode: true, name: "TrapVibeProto", Asset: "TapedClitEgg", Color: "Default", Group: "ItemVulvaPiercings", power: 1, weight: 2,
 		failSuffix: {"Struggle": "Egg"},
-		escapeChance: {"Struggle": 0.25}, enemyTags: {"protoToys": 2, "roboAngry": 10}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes", "Toys"], linkedVibeTags: ["teaser", "piercings"], vibeLocation: "ItemVulvaPiercings",
+		escapeChance: {"Struggle": 0.25}, enemyTags: {"protoToys": 2, "roboAngry": 10, "toyTeaseIntense": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes", "Toys"], linkedVibeTags: ["teaser", "piercings"], vibeLocation: "ItemVulvaPiercings",
 		allowRemote: true, events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true}, // Harder to remove by crotch rope
 			{trigger:"playerCast",  type: "MagicallySensitive"},
@@ -2069,7 +2070,7 @@ const KinkyDungeonRestraints = [
 		]},
 	{inventory: true, arousalMode: true, name: "MaidVibe", Asset: "TapedClitEgg", Color: "Default", Group: "ItemVulvaPiercings", power: 4, weight: 2, escapeChance: {"Struggle": 0.15},
 		failSuffix: {"Struggle": "Egg"},
-		enemyTags: {"maidVibeRestraints": 1000, "maidVibeRestraintsLimited": 100}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes", "Toys"], linkedVibeTags: ["teaser"], vibeLocation: "ItemVulva",
+		enemyTags: {"maidVibeRestraints": 1000, "maidVibeRestraintsLimited": 100, "toyTeaseMid": 1}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Vibes", "Toys"], linkedVibeTags: ["teaser"], vibeLocation: "ItemVulva",
 		allowRemote: true, events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true}, // Harder to remove by crotch rope
 			{trigger:"playerCast",  type: "MagicallySensitive", chance: 0.5},
@@ -2079,7 +2080,7 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, arousalMode: true, name: "TrapPlug", unlimited: true, Asset: "VibratingDildo", Color: "Default", Group: "ItemVulva", plugSize: 1.0, power: 3, weight: 2,
 		failSuffix: {"Struggle": "Plug"},
-		escapeChance: {"Struggle": 0.25}, enemyTags: {"trap":10, "maidRestraintsLight": 2, "genericToys": 2, 'machinePlug': 5}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs", "Vibes", "Toys"], linkedVibeTags: ["plugs"],
+		escapeChance: {"Struggle": 0.25}, enemyTags: {"trap":10, "maidRestraintsLight": 2, "genericToys": 2, 'machinePlug': 5, "toyPleasure": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs", "Vibes", "Toys"], linkedVibeTags: ["plugs"],
 		allowRemote: true, events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
 			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 12, edgeOnly: true},
@@ -2089,7 +2090,7 @@ const KinkyDungeonRestraints = [
 		]},
 	{inventory: true, arousalMode: true, name: "TrapPlug2", unlimited: true, Asset: "VibratingDildo", Color: "Default", Group: "ItemVulva", plugSize: 1.0, power: 4, weight: 2,
 		failSuffix: {"Struggle": "Plug"},
-		escapeChance: {"Struggle": 0.25}, enemyTags: {"trap":0, 'machinePlug': 5, "teasetoys": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs", "Vibes", "Toys"], linkedVibeTags: ["plugs"],
+		escapeChance: {"Struggle": 0.25}, enemyTags: {"trap":0, 'machinePlug': 5, "teasetoys": 2, "toyEdge": 2, "toyDeny": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs", "Vibes", "Toys"], linkedVibeTags: ["plugs"],
 		allowRemote: true, events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
 			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 12, edgeOnly: true},
@@ -2097,7 +2098,7 @@ const KinkyDungeonRestraints = [
 		]},
 	{inventory: true, arousalMode: true, name: "TrapPlug3", unlimited: true, Asset: "VibratingDildo", Color: "Default", Group: "ItemVulva", plugSize: 1.0, power: 5, weight: 2,
 		failSuffix: {"Struggle": "Plug"},
-		escapeChance: {"Struggle": 0.25}, enemyTags: {"trap":0, 'machinePlug': 5, "teasetoys": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs", "Vibes", "Toys"], linkedVibeTags: ["plugs"],
+		escapeChance: {"Struggle": 0.25}, enemyTags: {"trap":0, 'machinePlug': 5, "teasetoys": 2, "toyDenyMid": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs", "Vibes", "Toys"], linkedVibeTags: ["plugs"],
 		allowRemote: true, events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
 			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 12, edgeOnly: false},
@@ -2105,7 +2106,7 @@ const KinkyDungeonRestraints = [
 		]},
 	{inventory: true, arousalMode: true, name: "TrapPlug4", unlimited: true, Asset: "VibratingDildo", Color: "Default", Group: "ItemVulva", plugSize: 1.0, power: 5, weight: 1,
 		failSuffix: {"Struggle": "Plug"},
-		escapeChance: {"Struggle": 0.25}, enemyTags: {"trap":0, 'machinePlug': 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs", "Vibes", "Toys"], linkedVibeTags: ["plugs"],
+		escapeChance: {"Struggle": 0.25}, enemyTags: {"trap":0, 'machinePlug': 2, "toyPleasureMid": 2, "toyEdgeMid": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs", "Vibes", "Toys"], linkedVibeTags: ["plugs"],
 		allowRemote: true, events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
 			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 12, edgeOnly: false},
@@ -2118,7 +2119,7 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, arousalMode: true, name: "TrapPlug5", unlimited: true, Asset: "VibratingDildo", Color: "Default", Group: "ItemVulva", plugSize: 1.0, power: 5, weight: 1,
 		failSuffix: {"Struggle": "Plug"},
-		escapeChance: {"Struggle": 0.25}, enemyTags: {"trap":0, 'machinePlug': 2, "intensetoys": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs", "Vibes", "Toys"], linkedVibeTags: ["plugs"],
+		escapeChance: {"Struggle": 0.25}, enemyTags: {"trap":0, 'machinePlug': 2, "intensetoys": 2, "toyPleasureIntense": 4}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs", "Vibes", "Toys"], linkedVibeTags: ["plugs"],
 		allowRemote: true, events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
 			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 12, edgeOnly: false},
@@ -2130,21 +2131,23 @@ const KinkyDungeonRestraints = [
 
 
 	{inventory: true, arousalMode: true, name: "SteelPlugF", Asset: "VibratingDildo", Color: "#ffffff", Group: "ItemVulva", plugSize: 1.5, power: 1, weight: 2,
-		escapeChance: {"Struggle": 0.35}, enemyTags: {"plugSpell":1}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs", "Toys"],
+		limited: true,
+		escapeChance: {"Struggle": 0.35}, enemyTags: {"plugSpell":1, "toyTease": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs", "Toys"],
 		events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
 		],
 		failSuffix: {"Struggle": "Plug"},
 	},
 	{inventory: true, arousalMode: true, name: "SteelPlugR", Asset: "VibratingDildoPlug", Color: "#ffffff", Group: "ItemButt", plugSize: 1.5, power: 1, weight: 2,
-		escapeChance: {"Struggle": 0.35}, enemyTags: {"plugSpell":1, 'machinePlug': 4}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs", "Toys"],
+		limited: true,
+		escapeChance: {"Struggle": 0.35}, enemyTags: {"plugSpell":1, 'machinePlug': 4, "toyTease": 2}, playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs", "Toys"],
 		events: [
 			{trigger: "beforeStruggleCalc", type: "vibeStruggle", inheritLinked: true},
 		],
 		failSuffix: {"Struggle": "Plug"},
 	},
 	{inventory: true, arousalMode: true, name: "RearVibe1", Asset: "VibratingDildoPlug", Color: "Default", Group: "ItemButt", plugSize: 1.0, power: 5, weight: 1, escapeChance: {"Struggle": 0.25},
-		enemyTags: {"genericToys": 1, "rearToys": 10},
+		enemyTags: {"genericToys": 1, "rearToys": 10, "toyEdgeMid": 2},
 		playerTags: {"NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Plugs", "Vibes", "Toys"],
 		failSuffix: {"Struggle": "Plug"},
 		linkedVibeTags: ["plugs"], allowRemote: true, events: [
@@ -2471,7 +2474,7 @@ const KinkyDungeonRestraints = [
 		sfxGroup: "Handcuffs",
 		Model: "ShacklesThigh",
 		alwaysDressModel: [
-			{Model: "ThighLink"}
+			{Model: "ThighLink", inheritFilters: true}
 		],
 		Group: "ItemLegs", hobble: 1, Type: "Chained", Color: ["Default", "#888888", "#AAAAAA"], power: 3,
 		events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, tags: ["lowwill"], noLeash: true}],
@@ -2494,7 +2497,7 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "FeetShackles", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices], Link: "FeetShackles2",
 		Model: "ShacklesAnkles",
 		alwaysDressModel: [
-			{Model: "AnkleLink"}
+			{Model: "AnkleLink", inheritFilters: true}
 		],
 		Filters: {
 			BaseMetal: {"gamma":1,"saturation":1,"contrast":1.4833333333333334,"brightness":2.0166666666666666,"red":1,"green":1,"blue":1,"alpha":1},
@@ -2783,7 +2786,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 1.0, enemyTags: {"maidRestraints":10, "maidRestraintsNonChastity": 10, "maidRestraintsLight":1}, playerTags: {"ItemLegsFull":-2}, minLevel: 2, allFloors: true, shrine: ["Leather", "Belts"]},
 	{inventory: true, name: "MaidAnkleCuffs", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices], Link: "MaidAnkleCuffs2", Type: "Chained", Color: "Default", Group: "ItemFeet",
 		alwaysDressModel: [
-			{Model: "AnkleLink"}
+			{Model: "AnkleLink", inheritFilters: true}
 		],
 		Model: "ShacklesAnkles",
 		Filters: {
@@ -2876,6 +2879,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.25, enemyTags: {"dragonRestraints" : 2}, playerTagsMult: {"ItemArmsEmpty": 0.05}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Boxbinders", "Block_ItemHands"]},
 	{inventory: true, name: "DragonStraps", debris: "Belts", Asset: "ThinLeatherStraps", LinkableBy: ["Boxbinders"], Color: "#9B1818", Group: "ItemArms", bindarms: true, power: 9, weight: 0,
 		Model: "JacketStraps",
+		accessible: true,
 		Filters: {
 			BeltsArms: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":2.1333333333333333,"green":1,"blue":1,"alpha":1},
 			BeltsChest: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":2.1333333333333333,"green":1,"blue":1,"alpha":1},
@@ -3076,7 +3080,7 @@ const KinkyDungeonRestraints = [
 			BaseMetal: {"gamma":1.4166666666666665,"saturation":1,"contrast":1.4833333333333334,"brightness":1.1833333333333333,"red":2.3499999999999996,"green":1.9666666666666666,"blue":1.1333333333333333,"alpha":1},
 		},
 		alwaysDressModel: [
-			{Model: "AnkleLink"}
+			{Model: "AnkleLink", inheritFilters: true}
 		],
 		escapeChance: {"Struggle": -0.2, "Cut": 0.1, "Remove": 0.2, "Pick": 0.35},
 		maxwill: 0.8, enemyTags: {"banditMagicRestraints":6}, playerTags: {"ItemLegsFull":-2}, minLevel: 7,
@@ -3367,7 +3371,7 @@ const KinkyDungeonRestraints = [
 	{unlimited: true, inventory: true, name: "RopeSnakeHogtieWrist", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Type: "Hogtied", Color: "Default", Group: "ItemArms", bindarms: true, power: 6, weight: 0,
 		Model: "RopeWristtie1",
 		alwaysDressModel: [
-			{Model: "RopeChestStraps2"}
+			{Model: "RopeChestStraps2", inheritFilters: true}
 		],
 		linkCategory: "Hogtie", linkSize: 0.51,
 		renderWhenLinked: [...KDArmRopesRender],
@@ -3670,7 +3674,7 @@ const KinkyDungeonRestraints = [
 			level_magic: 4,
 			level_tech: 4,
 		},
-		Model: "DivineBeltRunic",
+		Model: "DivineBelt",
 		factionFilters: {
 			Lining: {color: "Highlight", override: true},
 		},
@@ -3693,7 +3697,7 @@ const KinkyDungeonRestraints = [
 			level_magic: 4,
 			level_tech: 4,
 		},
-		Model: "HeartBelt",
+		Model: "DivineBeltRunic",
 		factionFilters: {
 			Lining: {color: "Highlight", override: true},
 		},
@@ -3945,7 +3949,7 @@ const KinkyDungeonRestraints = [
 		LinkableBy: [...KDBindable, ...KDDevices], renderWhenLinked: [...KDBindable],
 		Model: "ShacklesAnkles",
 		alwaysDressModel: [
-			{Model: "AnkleLink"},
+			{Model: "AnkleLink", inheritFilters: true},
 		],
 		Filters: {
 			BaseMetal: {"gamma":0.8999999999999999,"saturation":0.2,"contrast":1.7166666666666666,"brightness":1.4833333333333334,"red":2.816666666666667,"green":1.9333333333333333,"blue":1,"alpha":1},

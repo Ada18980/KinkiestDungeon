@@ -1420,7 +1420,7 @@ function KinkyDungeonDrawGame() {
 			}
 
 			if (StandalonePatched)
-				DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
+				DrawCharacter(KinkyDungeonPlayer, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, KDToggles.FlipPlayer);
 
 			if (KinkyDungeonSleepiness) {
 				CharacterSetFacialExpression(KinkyDungeonPlayer, "Emoticon", "Sleep");
@@ -3439,7 +3439,7 @@ function KDUpdateVision(CamX, CamY, CamX_offset, CamY_offset) {
 						KinkyDungeonGridSizeDisplay + pad*2, KinkyDungeonGridSizeDisplay + pad*2,
 						undefined, {
 							tint: light.color || 0xffffff,
-							alpha: Math.min(1, Math.max(0.001, light.brightness/20)),
+							alpha: Math.min(1, (1 - 0.5 * (KDGameData.visionAdjust || 0)) * Math.max(0.001, light.brightness/20)),
 							blendMode: PIXI.BLEND_MODES.ADD,
 							zIndex: -0.1,
 						},
@@ -4031,4 +4031,49 @@ function KDGetTargetRetType(x, y) {
 	let tile = KinkyDungeonMapGet(x, y);
 	if (KinkyDungeonMovableTiles.includes(tile) && !(KinkyDungeonMovableTilesEnemy.includes(tile))) return "Action";
 	return "Move";
+}
+
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {number} w
+ * @param {number} scale
+ */
+function KDDrawPalettes(x, y, w, scale = 72) {
+	let XX = x;
+	let YY = y;
+	let row = 0;
+	let column = 0;
+	let spacing = 80;
+	/** @type {[string, Record<string, LayerFilter>]} */
+	let zero = ["", {Highlight: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}];
+	DrawTextFitKD(TextGet("KDSelectPalette"), x + scale*(0.5 + w)/2, y - 36, scale*w, "#ffffff", KDTextGray0, 20);
+
+	for (let value of [zero, ...Object.entries(KinkyDungeonFactionFilters)]) {
+		KDDraw(kdcanvas, kdpixisprites, "palette" + value[0], KinkyDungeonRootDirectory + "UI/greyColor.png",
+			XX, YY, scale, scale, undefined, {
+			filters: [
+				new PIXI.filters.AdjustmentFilter(value[1].Highlight),
+			]
+		});
+		DrawButtonKDEx("choosepalette" + value[0], (b) => {
+			KDDefaultPalette = value[0];
+			localStorage.setItem("KDDefaultPalette", value[0]);
+			return true;
+		}, true, XX - 3, YY - 3, scale + 7, scale + 7, "", "#ffffff", "", undefined, false, value[0] != KDDefaultPalette, KDButtonColor, undefined, undefined, {
+			zIndex: -10,
+		}
+		);
+		DrawTextFitKD(TextGet("KDPalette" + value[0]), XX + scale/2, YY + scale - 12, scale, "#ffffff", KDTextGray0, 18);
+		column++;
+		if (column >= w) {
+			column = 0;
+			row++;
+			YY += spacing;
+			XX = x;
+		} else {
+			XX += spacing;
+		}
+	}
 }

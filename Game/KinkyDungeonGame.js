@@ -900,7 +900,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		let gasType = MapParams.gastype ? MapParams.gastype : 0;
 		let brickchance = MapParams.brickchance; // Chance for brickwork to start being placed
 		let wallRubblechance = MapParams.wallRubblechance ? MapParams.wallRubblechance : 0;
-		let barrelChance = MapParams.barrelChance ? MapParams.barrelChance : 0.045;
+		let barrelChance = MapParams.barrelChance ? MapParams.barrelChance : 0.08;
 		let foodChance = MapParams.foodChance ? MapParams.foodChance : 0.2;
 		let cageChance = MapParams.cageChance ? MapParams.cageChance : 0.25;
 		let wallhookchance = MapParams.wallhookchance ? MapParams.wallhookchance : 0.025;

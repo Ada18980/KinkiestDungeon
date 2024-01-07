@@ -97,7 +97,7 @@ AddModel({
 		{ Name: "VibePiercingsBullet", Layer: "NippleToys", Pri: 39.9,
 			Invariant: true,
 			NoOverride: true,
-			TieToLayer: "Clamps",
+			TieToLayer: "VibePiercings",
 			InheritColor: "Vibe",
 			SwapLayerPose: {NippleToysOption: "NippleToysOption"},
 			HidePoses: {HideNipplePiercings: true}
@@ -105,6 +105,7 @@ AddModel({
 		// Replace with clamps
 		{ Name: "Clamps", Layer: "NippleToys", Pri: 50,
 			Invariant: true,
+			NoOverride: true,
 			Poses: {HideNipplePiercings: true},
 			HideWhenOverridden: true,
 			InheritColor: "Base",
