@@ -156,6 +156,10 @@ Hide Nipple Clamps
 隐藏乳头夹
 Hide Nipple Piercings
 隐藏乳头穿孔
+Force restraints to use palette
+强制束缚具使用主色调
+Flip Player Display
+翻转玩家显示
 Helpless!
 无助！
 Evaded!
@@ -384,6 +388,22 @@ Stealth Mission
 隐匿任务
 You are harder to detect and there are more chests, but enemies have 50% more HP, are more evasive, and drop no gold.
 你将更难被敌人发现，且地图上的宝箱会更多。但敌人将不会再掉落金币，且会提高 50% 的血量 ，拥有更高的闪避。
+Edging Lovers
+寸止之恋
+All humanoids that can bind you also apply edging toys.
+所有可束缚你的人形生物可以使用寸止玩具。
+Denial Lovers
+拒绝之恋
+All humanoids that can bind you also apply denial toys.
+所有可束缚你的人形生物可以使用拒绝玩具。
+Pleasure Lovers
+快感之恋
+All humanoids that can bind you also apply pleasurable toys.
+所有可束缚你的人形生物可以使用快感玩具。
+Teasing Lovers
+戏弄之恋
+All humanoids that can bind you also apply teasing toys.
+所有可束缚你的人形生物可以使用戏弄玩具。
 Latex Lovers
 乳胶之恋
 All humanoids that can bind you also apply latex restraints.
@@ -796,6 +816,10 @@ Night Owl
 猫头鹰
 Your vision in dark areas is improved.
 你在黑暗区域的视力得到增强。
+Fear of the Dark
+恐惧黑暗
+Your vision in dark areas is reduced.
+你在黑暗区域的视力将会降低。
 Not a Doll
 我不是玩偶！
 You may still enter Doll Terminals, but enemies will not force you onto doll stands.
@@ -1376,6 +1400,8 @@ Load From Code
 从代码加载
 Save Outfit (overwrites!)
 保存服装（覆盖！）
+Save Outfit (Clothes Only!)
+保存服装（仅衣物！）
 Save Keybindings
 保存键位
 Cancel Changes
@@ -1384,6 +1410,10 @@ Return
 返回
 Keybindings
 按键绑定
+Allow Suspicious Mods
+允许可疑模组
+Auto Load Mods (offline only)
+自动加载模组（仅离线版）
 Game Options
 游戏选项
 Load from code
@@ -1752,6 +1782,12 @@ A minimalist albeit chilly outfit designed for ease of use.
 简约但寒冷的服装，专为易用性而设计。
 Or perhaps it's just sexy...
 或许只是因为性感……
+Lingerie
+内衣
+A minimalist yet aesthetically pleasing outfit.
+简约而又美观的服装。
+No bonuses.
+没有奖励。
 Dragonheart Uniform
 龙之心制服
 The uniform of choice for dragonheart of all ranks.
@@ -4978,6 +5014,8 @@ Your arms are pinned behind your back and you can barely move!
 你的手臂被反扣在背后，几乎无法动弹！
 You hear a click as the door shuts behind you...
 你听到门在你身后关上的咔哒声...
+The display stand suddenly locks into place around you!
+展示架突然在你周围锁定！
 Doll Stand
 玩偶架
 A mobile display stand for dolls to keep them in place.
@@ -6928,12 +6966,12 @@ As a wizard, you are able to draw upon mystical sources of energy that others ca
 作为一名巫师，你能够利用其他人甚至看不到的神秘能量源。在 16 回合未施展法术或攻击后，你的下一个法术的法力消耗在其他调整后会减少你最大法力值的 20%。 切换被动法术的冷却时间减半。
 Battlemage
 战斗法师
-Inner Power is no longer paused after attacking.
-攻击后内力不再暂停。
+Inner Power cooldown is no longer reset after attacking.
+攻击后内力冷却时间不再重置。
 Relentless Casting
 无情的铸造
-Inner Power is no longer paused after casting spells.
-施法后内力不再暂停。
+While on cooldown, Inner Power cooldown is no longer reset after casting spells.
+在冷却时，施展法术后内力冷却时间不再重置。
 Arcane Recharge
 奥术充能
 Calling upon chaotic energies, your willpower is assaulted in exchange for power. Deals 80 psychic damage to self and drains 10% of your max Willpower to fully restore mana. Does not refill the mana pool.
@@ -16850,8 +16888,8 @@ After casting Sagitta, you can recast it up to three more times without advancin
 铸造射手座后，你可以在不提前时间的情况下再重铸三次。
 Psychokinesis
 念力
-You can ignore components for telekinetic spells, however spells generate distraction when cast this way due to the mental strain. Unable to use at 100% DP.
-你可以忽略心灵感应需要的法术的成分，但是当以这种方式施放法术时，由于精神紧张，法术会产生分心。无法在 100% DP 下使用。
+You can ignore components for telekinetic spells, however spells generate distraction (based on mana cost) when cast this way due to the mental strain. Unable to use at 100% DP.
+你可以忽略心灵感应需要的法术的成分，但是当以这种方式施放法术时，由于精神紧张，法术会产生分心（基于法力消耗）。无法在 100% DP 下使用。
 Kinetic Mastery
 动力学掌握
 Negates the penalty for 2-handed weapons. Also gain the following effects:|-Kinetic spells and Sagitta cost 30% less while wielding a Light weapon.|-Kinetic spells and Sagitta gain +15 base damage when wielding a Heavy weapon.
@@ -17182,8 +17220,6 @@ Feral
 野性
 Status
 状态
-Prisoner
-囚犯
 Guest
 游客
 Servant
@@ -17202,3 +17238,27 @@ Select a character to examine
 选择要检查的角色
 Former Faction: 
 前派系：
+Minigun
+机枪
+None
+无
+Bounty Hunter
+赏金猎人
+Scholarly
+学术
+Witch's Coven
+女巫团
+Curse
+诅咒
+Fungal
+真菌
+Elven
+精灵
+Choose restraint palette:
+选择束缚具主色调：
+Auto Load Mods
+自动加载模组
+SUSPICIOUS MOD DETECTED
+检测到可疑模组
+The bright light hurts your dark-adjusted eyes!
+明亮的光线会伤害你适应黑暗的眼睛！
