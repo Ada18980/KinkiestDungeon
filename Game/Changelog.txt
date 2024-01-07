@@ -23,7 +23,42 @@ Monk class?
 - Passive: enchantments apply to unarmed strikes
 - Active: Increase unarmed base damage for 20 turns. After using, need to meditate 10 turns to recharge. Free.
 
+5.0.8
+Release A
+- Added offline mod loading
+- Added suspicious mod detection and filtering
+- New perks: Edging, Pleasure, Denial, and Teasing lovers
+
 5.0.7
+Release A
+- Cut power is now shown in the weapon card
+- New perks: Heel training, Classic Heels
+- Ballet heel restraints no longer hobble. instead you have a balance meter which drains when you walk, attack, and cast arm/leg spells
+- You can train up your heel walking ability. It levels up when you reach a new highest floor, and is based on how often you were wearing heels the last level. Grinding the same level won't help you.
+- Added more enchanted restraint types as quest rewards (mostly chastity and toys)
+- Added experimental option to zoom in and out (in game options)
+- Hogtie no longer forces arm bondage but can now be kept in inventory
+Release B
+- Fixed more bugs
+- Tweaked enchantment probabilities based on restraint type some more
+- New perks: Hard to Master: Heels, Poor Balance, Head Start: Heels
+- Reworked some of the buttons in the inventory screen
+- You can now lock your items with simple locks
+- Arcane Barrier recovers more slowly but is more efficient
+- You can feed allies sweets in order to heal them
+Release C
+- More bugfixes
+- Enemies will now let go when their distraction is maxed out.
+- Enemies have a Desire level now, which affects the amount of damage they take when letting go
+- New spell: Sonar
+- Added Divine Chastity Bra
+Release E
+- Added a collection where you can view captured NPCs
+- Fixed some more bugs
+- Added fashion chastity belts and fashion gags
+Release F
+- Added palette options
+
 
 5.0.6
 - New perks: Can't Touch That, Grounded

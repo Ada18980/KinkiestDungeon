@@ -24,6 +24,10 @@ AddModel({
 			NoOverride: true,
 			InheritColor: "InnerEars",
 		},
+		{ Name: "EarsFront", Layer: "AnimalEarsFront", Pri: 10,
+			Invariant: true,
+			InheritColor: "EarsFront",
+		},
 	])
 });
 

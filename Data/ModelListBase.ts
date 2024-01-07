@@ -47,6 +47,22 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "Hairband2",
+	Folder: "GagLeather",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Hairstyles", "Accessories", "Hairbands"],
+	Layers: ToLayerMap([
+		{ Name: "Hairband", Layer: "HairFront", Pri: 20,
+			Sprite: "BallSideStrap",
+			NoOverride: true,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+	])
+});
 
 AddModel({
 	Name: "MaidHairband",
@@ -72,6 +88,7 @@ AddModel({
 	TopLevel: true,
 	Protected: true,
 	Categories: ["Hairstyles"],
+	AddPose: ["Hair"],
 	Layers: ToLayerMap([
 		{ Name: "Braid", Layer: "Hair", Pri: 0,
 			SwapLayerPose: {HoodMask: "HairOver"},
@@ -88,6 +105,7 @@ AddModel({
 	Folder: "Hair",
 	Protected: true,
 	Categories: ["Hairstyles"],
+	AddPose: ["Hair"],
 	Layers: ToLayerMap([
 		{ Name: "BraidCustom", Layer: "Hair", Pri: 0,
 			SwapLayerPose: {HoodMask: "HairOver"},
@@ -138,6 +156,7 @@ AddModel({
 	TopLevel: true,
 	Protected: true,
 	Categories: ["Hairstyles", "FrontHair"],
+	AddPose: ["Hair"],
 	Layers: ToLayerMap([
 		{ Name: "Curly", Layer: "Hair", Pri: 0,
 			SwapLayerPose: {HoodMask: "HairOver"},
@@ -153,6 +172,7 @@ AddModel({
 	TopLevel: true,
 	Protected: true,
 	Categories: ["Hairstyles", "FrontHair"],
+	AddPose: ["Hair"],
 	Layers: ToLayerMap([
 		{ Name: "Fuzzy", Layer: "Hair", Pri: 0,
 			SwapLayerPose: {HoodMask: "HairOver"},
@@ -169,6 +189,7 @@ AddModel({
 	TopLevel: true,
 	Protected: true,
 	Categories: ["Hairstyles", "FrontHair"],
+	AddPose: ["Hair"],
 	Layers: ToLayerMap([
 		{ Name: "FrontStraight", Layer: "Hair", Pri: 0,
 			SwapLayerPose: {HoodMask: "HairOver"},
@@ -183,6 +204,7 @@ AddModel({
 	TopLevel: true,
 	Protected: true,
 	Categories: ["Hairstyles", "FrontHair"],
+	AddPose: ["Hair"],
 	Layers: ToLayerMap([
 		{ Name: "Straight", Layer: "Hair", Pri: 0,
 			SwapLayerPose: {HoodMask: "HairOver"},
@@ -197,6 +219,7 @@ AddModel({
 	TopLevel: true,
 	Protected: true,
 	Categories: ["Hairstyles", "FrontHair"],
+	AddPose: ["Hair"],
 	Layers: ToLayerMap([
 		{ Name: "StraightBangs", Layer: "Hair", Pri: 0,
 			SwapLayerPose: {HoodMask: "HairOver"},
@@ -312,6 +335,7 @@ AddModel({
 	Protected: true,
 	Categories: ["Body"],
 	Folder: "Body",
+	AddPose: ["Body"],
 	Layers: ToLayerMap([
 		{ Name: "Head", Layer: "Head", Pri: 0,
 			MorphPoses: {AnimalEars: "NoEar"},
@@ -393,6 +417,10 @@ AddModel({
 			AppendPose: {CrotchStrap: "Chastity"},
 			InheritColor: "Torso",
 			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Closed"},
+			EraseLayers: {BustierPoses: true},
+			EraseSprite: "EraseCorset",
+			EraseInvariant: true,
+			EraseMorph: {EncaseTorsoLower: "Encase"},
 		},
 		{ Name: "Chest", Layer: "Chest", Pri: 0,
 			HideWhenOverridden: true,
@@ -429,6 +457,16 @@ AddModel({
 			HideWhenOverridden: true,
 			InheritColor: "Torso",
 			Poses: ToMap(KNEELPOSES),
+			EraseLayers: {BustierPoses: true},
+			EraseSprite: "EraseCorsetKneel",
+			EraseInvariant: true,
+			EraseMorph: {EncaseTorsoLower: "Encase"},
+		},
+		{ Name: "Nipples", Layer: "Nipples", Pri: 0,
+			HideWhenOverridden: true,
+			InheritColor: "Nipples",
+			Invariant: true,
+			HidePoses: {HideNipples: true},
 		},
 	])
 });

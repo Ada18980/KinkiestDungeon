@@ -53,6 +53,18 @@ function KDProcessInput(type, data) {
 			}
 			return "Fail";
 		}
+		case "lock": {
+			KDDelayedActionPrune(["Action", "Struggle"]);
+			let item = KinkyDungeonGetRestraintItem(data.group);
+			if (data.index) {
+				let surfaceItems = KDDynamicLinkListSurface(item);
+				if (surfaceItems[data.index])
+					item = surfaceItems[data.index];
+				else console.log("Error! Please report the item combination and screenshot to Ada!");
+			}
+			KinkyDungeonLock(item, data.type);
+			break;
+		}
 		case "struggle":
 			KDDelayedActionPrune(["Action", "Struggle"]);
 			return KinkyDungeonStruggle(data.group, data.type, data.index);
@@ -105,7 +117,8 @@ function KDProcessInput(type, data) {
 				while (KDGameData.PreviousWeapon.length < KDMaxPreviousWeapon) {
 					KDGameData.PreviousWeapon.push("Unarmed");
 				}
-				KDGameData.PreviousWeapon[KDWeaponSwitchPref] = oldweapon;
+				if (!KDGameData.PreviousWeaponLock || !KDGameData.PreviousWeaponLock[KDWeaponSwitchPref])
+					KDGameData.PreviousWeapon[KDWeaponSwitchPref] = oldweapon;
 			}
 			/*while (KDGameData.PreviousWeapon?.length > KDMaxPreviousWeapon) {
 				KDGameData.PreviousWeapon.splice(0, 1);
@@ -167,8 +180,8 @@ function KDProcessInput(type, data) {
 			break;
 		}
 		case "inventoryAction": {
-			if (KDInventoryAction[KDGameData.InventoryAction] && KDInventoryAction[KDGameData.InventoryAction].valid(data.player, data.item)) {
-				KDInventoryAction[KDGameData.InventoryAction].click(data.player, data.item);
+			if (KDInventoryAction[data.action || KDGameData.InventoryAction] && KDInventoryAction[data.action || KDGameData.InventoryAction].valid(data.player, data.item)) {
+				KDInventoryAction[data.action || KDGameData.InventoryAction].click(data.player, data.item);
 			}
 			break;
 		}
@@ -486,7 +499,7 @@ function KDProcessInput(type, data) {
 				KDSendStatus('goddess', data.shrine, 'takeOrb');
 				if (KinkyDungeonStatsChoice.get("randomMode")) {
 					let tt = KinkyDungeonTilesGet(data.x + "," + data.y);
-					let spell = KinkyDungeonFindSpell(tt.Spell) || KDGetRandomSpell();
+					let spell = (tt ? KinkyDungeonFindSpell(tt.Spell) : null) || KDGetRandomSpell();
 
 					if (spell) {
 						KinkyDungeonSpells.push(spell);

@@ -86,6 +86,7 @@ let DisplacementMaps = [
 'Calf3SquishHogtie.png',
 'Calf3SquishKneelClosed.png',
 'CorsetSquish.png',
+'CorsetSquishTight.png',
 'CrotchropeSquished.png',
 'CuffLeftCrossed.png',
 'CuffLeftFree.png',
@@ -141,6 +142,7 @@ let DisplacementMaps = [
 'Leg1SquishClosed.png',
 'MittsFree.png',
 'MittsFront.png',
+'MittsCrossed.png',
 'MittsYoked.png',
 'Null.png',
 'RightFrogtieSquishKneel.png',
@@ -185,6 +187,10 @@ let DisplacementMaps = [
 'TapeTopLeftBoxtie.png',
 'TapeTopLeftCrossed.png',
 'TapeTopLeftWristtie.png',
+'EraseCorsetKneel.png',
+'EraseCorsetKneelEncase.png',
+'EraseCorset.png',
+'EraseCorsetEncase.png',
 ];
 
 // Scale factor for displacement and erase maps

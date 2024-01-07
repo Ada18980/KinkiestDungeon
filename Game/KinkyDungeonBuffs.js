@@ -324,9 +324,9 @@ function KinkyDungeonHasBuff(list, Buff) {
 }
 
 /**
- * 
- * @param {entity} entity 
- * @param {string} buff 
+ *
+ * @param {entity} entity
+ * @param {string} buff
  * @returns {boolean}
  */
 function KDEntityHasBuff(entity, buff) {
@@ -335,10 +335,10 @@ function KDEntityHasBuff(entity, buff) {
 	} else return KinkyDungeonHasBuff(entity.buffs, buff);
 }
 /**
- * 
- * @param {entity} entity 
- * @param {string} stat 
- * @param {boolean} [onlyPositiveDuration] 
+ *
+ * @param {entity} entity
+ * @param {string} stat
+ * @param {boolean} [onlyPositiveDuration]
  * @returns {number}
  */
 function KDEntityBuffedStat(entity, stat, onlyPositiveDuration) {
@@ -348,10 +348,10 @@ function KDEntityBuffedStat(entity, stat, onlyPositiveDuration) {
 	} else return KinkyDungeonGetBuffedStat(entity.buffs, stat, onlyPositiveDuration);
 }
 /**
- * 
- * @param {entity} entity 
- * @param {string} stat 
- * @param {boolean} [onlyPositiveDuration] 
+ *
+ * @param {entity} entity
+ * @param {string} stat
+ * @param {boolean} [onlyPositiveDuration]
  * @returns {number}
  */
 function KDEntityMaxBuffedStat(entity, stat, onlyPositiveDuration) {
@@ -361,8 +361,8 @@ function KDEntityMaxBuffedStat(entity, stat, onlyPositiveDuration) {
 }
 
 /**
- * 
- * @param {entity} entity 
+ *
+ * @param {entity} entity
  */
 function KDEntityGetBuff(entity, buff) {
 	if (entity.player) {

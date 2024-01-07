@@ -195,30 +195,9 @@ function KinkyDungeonResetMagic() {
 	KinkyDungeonSpellPoints = 3;
 	KDSpellPage = 0;
 	if (KinkyDungeonStatsChoice.get("randomMode")) {
-		KinkyDungeonSpells.push({name: "ApprenticeFire", hideLearned: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-		KinkyDungeonSpells.push({name: "ApprenticeWater", hideLearned: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-		KinkyDungeonSpells.push({name: "ApprenticeEarth", hideLearned: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-		KinkyDungeonSpells.push({name: "ApprenticeAir", hideLearned: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-		KinkyDungeonSpells.push({name: "ApprenticeIce", hideLearned: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-		KinkyDungeonSpells.push({name: "ApprenticeLightning", hideLearned: true, school: "Elements", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-
-		KinkyDungeonSpells.push({name: "ApprenticeLeather", hideLearned: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-		KinkyDungeonSpells.push({name: "ApprenticeRope", hideLearned: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-		KinkyDungeonSpells.push({name: "ApprenticeMetal", hideLearned: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-		KinkyDungeonSpells.push({name: "ApprenticeSummon", hideLearned: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-		KinkyDungeonSpells.push({name: "ApprenticeLatex", hideLearned: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-		KinkyDungeonSpells.push({name: "ApprenticePhysics", hideLearned: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-
-		KinkyDungeonSpells.push({name: "ApprenticeShadow", hideLearned: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-		KinkyDungeonSpells.push({name: "ApprenticeLight", hideLearned: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-		KinkyDungeonSpells.push({name: "ApprenticeMystery", hideLearned: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-		KinkyDungeonSpells.push({name: "ApprenticeKnowledge", hideLearned: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-		KinkyDungeonSpells.push({name: "ApprenticeProjection", hideLearned: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},);
-
-
-		//KinkyDungeonSpells.push({name: "SpellChoiceUp1", school: "Any", manacost: 0, components: [], spellPointCost: 1, level:3, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"});
-		//KinkyDungeonSpells.push({name: "SpellChoiceUp2", school: "Any", manacost: 0, components: [], spellPointCost: 1, level:4, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"});
-		//KinkyDungeonSpells.push({name: "SpellChoiceUp3", school: "Any", manacost: 0, components: [], spellPointCost: 1, level:5, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"});
+		for (let s of [...KinkyDungeonSpellList.Conjure, ...KinkyDungeonSpellList.Elements, ...KinkyDungeonSpellList.Illusion]) {
+			if (s.tags?.includes("randomfree")) KinkyDungeonSpells.push(s);
+		}
 	}
 }
 
@@ -452,7 +431,7 @@ function KinkyDungeonClickSpell(i) {
 			KDSendInput("equip", {name: item.name,
 				inventoryVariant: item.name != newItem.name ?
 					item.name : undefined,
-					faction: item.faction,
+				faction: item.faction,
 				group: newItem.Group, curse: item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.events)});
 		}
 		KinkyDungeonSpellPress = "";
@@ -593,7 +572,8 @@ function KinkyDungeonGetCost(Spell) {
 	let bonus = 0;
 	if (Spell.increasingCost) {
 		for (let s of KinkyDungeonSpells) {
-			if (s != Spell && s.increasingCost) bonus += 1;
+			if (s != Spell && s.increasingCost && (!KinkyDungeonStatsChoice.get("randomMode") || !s.tags?.includes("randomfree"))) bonus += 1;
+			if (s != Spell && s.decreaseCost) bonus -= 1;
 		}
 		if (KinkyDungeonStatsChoice.get("Studious")) bonus = Math.max(-1, bonus - 2);
 	}
@@ -610,7 +590,7 @@ function KinkyDungeonMakeNoise(radius, noiseX, noiseY, hideShockwave) {
 	};
 	KinkyDungeonSendEvent("beforeNoise", data);
 	for (let e of KDMapData.Entities) {
-		if ((!e.aware || e.idle) && (!e.action || e.action == "investigatesound") && !e.Enemy.tags.deaf && !KDAmbushAI(e) && KDistEuclidean(e.x - data.x, e.y - data.y) <= data.radius) {
+		if ((!e.aware || e.idle) && (!e.action || e.action == "investigatesound") && !KDAllied(e) && !e.Enemy.tags.deaf && !KDAmbushAI(e) && KDistEuclidean(e.x - data.x, e.y - data.y) <= data.radius) {
 			e.gx = data.x;
 			e.gy = data.y;
 			e.action = "investigatesound";
@@ -909,7 +889,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
 					pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
 					lifetime:miscast || selfCast ? 1 : (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: entity.x, y: entity.y}, range: spellRange, hit:spell.onhit,
-					damage: {evadeable: spell.evadeable,  noblock: spell.noblock, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff,
+					damage: {evadeable: spell.evadeable,  noblock: spell.noblock, damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, desireMult: spell.desireMult, bindEff: spell.bindEff,
 						shield_crit: spell?.shield_crit, // Crit thru shield
 						shield_stun: spell?.shield_stun, // stun thru shield
 						shield_freeze: spell?.shield_freeze, // freeze thru shield
@@ -946,7 +926,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					followPlayer: (!enemy && player && spell.followCaster) ? true : undefined,
 					followCaster: (enemy && spell.followCaster) ? enemy.id : undefined,
 					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit, noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
-					damage: spell.type == "inert" ? null : {evadeable: spell.evadeable, noblock: spell.noblock,  damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff,
+					damage: spell.type == "inert" ? null : {evadeable: spell.evadeable, noblock: spell.noblock,  damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, desireMult: spell.desireMult,
 						shield_crit: spell?.shield_crit, // Crit thru shield
 						shield_stun: spell?.shield_stun, // stun thru shield
 						shield_freeze: spell?.shield_freeze, // freeze thru shield
@@ -979,7 +959,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					followCaster: (enemy && spell.followCaster) ? enemy.id : undefined,
 					source: entity?.player ? -1 : entity?.id, lifetime:spell.lifetime, cast: cast, dot: spell.dot, events: spell.events, aoe: spell.aoe,
 					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit, noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
-					damage: {evadeable: spell.evadeable, noblock: spell.noblock,  damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, bindEff: spell.bindEff,
+					damage: {evadeable: spell.evadeable, noblock: spell.noblock,  damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, desireMult: spell.desireMult, bindEff: spell.bindEff,
 						shield_crit: spell?.shield_crit, // Crit thru shield
 						shield_stun: spell?.shield_stun, // stun thru shield
 						shield_freeze: spell?.shield_freeze, // freeze thru shield
@@ -1023,6 +1003,12 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			if (ret) {
 				if (!enemy && !bullet && player && ret == "Cast") {
 					KinkyDungeonSendEvent("playerCast", data);
+					if (KDGameData.HeelPower > 0) {
+						if (spell.components?.includes("Arms"))
+							KDChangeBalance(-KDGetBalanceCost() * KDBalanceCastArmsMult, true);
+						if (spell.components?.includes("Legs"))
+							KDChangeBalance(-KDGetBalanceCost() * KDBalanceCastLegsMult, true);
+					}
 					if (spell.school) KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast_" + spell.school.toLowerCase(), 1);
 					KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast", 1);
 					if (spell.tags) {
@@ -1090,7 +1076,12 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		KDSendSpellCast(spell.name);
 
 		KinkyDungeonSendEvent("playerCast", data);
-
+		if (KDGameData.HeelPower > 0) {
+			if (spell.components?.includes("Arms"))
+				KDChangeBalance(-KDGetBalanceCost() * KDBalanceCastArmsMult, true);
+			if (spell.components?.includes("Legs"))
+				KDChangeBalance(-KDGetBalanceCost() * KDBalanceCastLegsMult, true);
+		}
 		//let cost = spell.staminacost ? spell.staminacost : KinkyDungeonGetCost(spell.level);
 
 		//KinkyDungeonStatWillpowerExhaustion += spell.exhaustion + 1;
@@ -1606,7 +1597,7 @@ function KinkyDungeonListSpells(Mode) {
 		: pages[currentPage];
 
 	if (currentPage == 0 && spellPages[3] && spellPages[4]) {
-		spellPages[3] = [...spellPages[3], ...spellPages[4]]
+		spellPages[3] = [...spellPages[3], ...spellPages[4]];
 		spellPages.splice(4, 1);
 	}
 	let pageNames = KDFilterSpellPageNames();

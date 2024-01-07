@@ -570,7 +570,7 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 				// Fallback
 				if (playerDist > KDRestraint(inv).tether && KDistEuclidean(xTo-inv.tx, yTo-inv.ty) > KDistEuclidean(Entity.x-inv.tx, Entity.y-inv.ty)) {
 					if (Msg) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTetherTooShort").replace("TETHER", TextGet("Restraint" + inv.name)), "#ff0000", 2, true);
-					if (KinkyDungeonCanStand()) {
+					if (KinkyDungeonCanStand() && !KDForcedToGround()) {
 						KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, KDLeashPullKneelTime + KDGameData.SlowMoveTurns);
 						KinkyDungeonChangeWill(-KDLeashPullCost, false);
 					}
@@ -1101,7 +1101,7 @@ function KinkyDungeonGetAffinity(Message, affinity, group, entity) {
 		Message: Message,
 		entity: entity,
 		msgedstand: false,
-		canStand: KinkyDungeonCanStand(),
+		canStand: KinkyDungeonCanStand() && !KDForcedToGround(),
 		groupIsHigh: !group || (
 			group.startsWith("ItemM")
 			|| group == "ItemArms"
@@ -1182,7 +1182,7 @@ function KinkyDungeonWallCrackAndKnife(Message) {
 			if (X == KinkyDungeonPlayerEntity.x || Y == KinkyDungeonPlayerEntity.y) {
 				let tile = KinkyDungeonMapGet(X, Y);
 				if (tile == '4' || tile == '\\') {
-					if (!KinkyDungeonIsArmsBound(true) || KinkyDungeonCanStand()) {
+					if (!KinkyDungeonIsArmsBound(true) || (KinkyDungeonCanStand() && !KDForcedToGround())) {
 						if (Message) {
 							if (!KinkyDungeonIsArmsBound(true))
 								KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonUseCrack"), "lightgreen", 2, true);
@@ -3027,6 +3027,10 @@ function KinkyDungeonUpdateRestraints(delta) {
 		let inv = inv2.item;
 		playerTags.set("Item_"+inv.name, true);
 
+		if ((!inv.faction || KDToggles.ForcePalette) && KDDefaultPalette && KinkyDungeonFactionFilters[KDDefaultPalette]) {
+			inv.faction = KDDefaultPalette;
+		}
+
 		if (KDRestraint(inv).Link)
 			playerTags.set("LinkTo_"+KDRestraint(inv).Link, true);
 		if (KDRestraint(inv).UnLink)
@@ -3992,7 +3996,7 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 
 
 
-				for (let invitem of (!Add && !UnLink) ? KDDynamicLinkList(item, true) : [item]) {
+				for (let invitem of KDDynamicLinkList(item, true)) {
 					let invrest = KDRestraint(invitem);
 					// @ts-ignore
 					let inventoryAs = invitem.inventoryVariant || invitem.inventoryAs || (Remover?.player ? invrest.inventoryAsSelf : invrest.inventoryAs);
@@ -4009,9 +4013,9 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 							let origRestraint = KinkyDungeonGetRestraintByName(inventoryAs);
 							if (origRestraint && invrest.shrine?.includes("Cursed") && !origRestraint.shrine?.includes("Cursed")) {
 								KinkyDungeonSendTextMessage(10, TextGet("KDCursedArmorUncurse").replace("RestraintName", TextGet("Restraint" + invrest.name)), "#aaffaa", 1);
-								if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
-									KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
-								}
+							}
+							if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+								KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
 							}
 
 							if (!KinkyDungeonInventoryGetLoose(inventoryAs)) {
@@ -4019,14 +4023,14 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 								if (invitem.inventoryVariant) loose.inventoryVariant = invitem.inventoryVariant;
 								if (KinkyDungeonRestraintVariants[inventoryAs]) loose.showInQuickInv = true;
 								KinkyDungeonInventoryAdd(loose);
-							} else {
+							} else if (!Add && !UnLink) {
 								if (!KinkyDungeonInventoryGetLoose(inventoryAs).quantity) KinkyDungeonInventoryGetLoose(inventoryAs).quantity = 0;
 								KinkyDungeonInventoryGetLoose(inventoryAs).quantity += 1;
 							}
 						} else {
 							if (!KinkyDungeonInventoryGetLoose(invrest.name)) {
 								KinkyDungeonInventoryAdd({name: invrest.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:invrest.events, quantity: 1});
-							} else {
+							} else if (!Add && !UnLink) {
 								if (!KinkyDungeonInventoryGetLoose(invrest.name).quantity) KinkyDungeonInventoryGetLoose(invrest.name).quantity = 0;
 								KinkyDungeonInventoryGetLoose(invrest.name).quantity += 1;
 							}

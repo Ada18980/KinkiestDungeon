@@ -20,14 +20,17 @@ AddModel({
 			DisplacementMorph: {Boxtie: "Boxtie",Wristtie: "Wristtie",Front: "Boxtie",Crossed: "Boxtie",},
 			DisplaceLayers: ToMap(["Ribbon1"]),
 			Invariant: true,
+			NoOverride: true,
 		},
 		{ Name: "LeftArm1", Layer: "BindArmLeft", Pri: 60,
 			InheritColor: "Belt",
 			Poses: ToMap(["Wristtie", "Boxtie"]),
+			NoOverride: true,
 		},
 		{ Name: "RightArm1", Layer: "BindArmRight", Pri: 60,
 			InheritColor: "Belt",
 			Poses: ToMap(["Wristtie", "Boxtie"]),
+			NoOverride: true,
 		},
 	])
 });
@@ -42,16 +45,19 @@ AddModel({
 		{ Name: "Arms2", Layer: "StrapsUnderbust", Pri: 60,
 			InheritColor: "Belt",
 			Invariant: true,
+			NoOverride: true,
 			DisplacementSprite: "Arm1Squish",
 			DisplacementMorph: {Boxtie: "Boxtie",Wristtie: "Wristtie",Front: "Boxtie",Crossed: "Boxtie",},
 			DisplaceLayers: ToMap(["Ribbon1"]),
 		},
 		{ Name: "LeftArm2", Layer: "BindArmLeft", Pri: 60,
 			InheritColor: "Belt",
+			NoOverride: true,
 			Poses: ToMap(["Wristtie", "Boxtie"]),
 		},
 		{ Name: "RightArm2", Layer: "BindArmRight", Pri: 60,
 			InheritColor: "Belt",
+			NoOverride: true,
 			Poses: ToMap(["Wristtie", "Boxtie"]),
 		},
 	])
@@ -89,10 +95,12 @@ AddModel({
 			DisplacementSprite: "BeltLegs1Squish",
 			DisplaceAmount: 50,
 			DisplaceLayers: ToMap(["RibbonThighs"]),
+			NoOverride: true,
 		},
 		{ Name: "RightLegs1", Layer: "BindThighRight", Pri: 60,
 			Poses: ToMap(["Kneel", "KneelClosed"]),
 			InheritColor: "Belt",
+			NoOverride: true,
 		},
 	])
 });
@@ -112,10 +120,12 @@ AddModel({
 			DisplacementSprite: "BeltLegs2Squish",
 			DisplaceAmount: 50,
 			DisplaceLayers: ToMap(["RibbonThighs"]),
+			NoOverride: true,
 		},
 		{ Name: "RightLegs2", Layer: "BindThighRight", Pri: 60,
 			Poses: ToMap(["Kneel", "KneelClosed"]),
 			InheritColor: "Belt",
+			NoOverride: true,
 		},
 	])
 });
@@ -150,6 +160,7 @@ AddModel({
 			DisplacementSprite: "BeltFeet1Squish",
 			DisplaceAmount: 50,
 			DisplaceLayers: ToMap(["RibbonCalf"]),
+			NoOverride: true,
 		},
 	])
 });
@@ -169,6 +180,7 @@ AddModel({
 			DisplacementSprite: "BeltFeet2Squish",
 			DisplaceAmount: 50,
 			DisplaceLayers: ToMap(["RibbonCalf"]),
+			NoOverride: true,
 		},
 	])
 });
@@ -199,6 +211,7 @@ AddModel({
 			InheritColor: "Belt",
 			DisplacementSprite: "BeltSquish",
 			DisplaceLayers: ToMap(["RibbonCalf"]),
+			NoOverride: true,
 		},
 	])
 });

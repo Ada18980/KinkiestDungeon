@@ -108,6 +108,7 @@ AddModel({
 	Parent: "Catsuit",
 	Categories: ["Suits"],
 	Folder: "Catsuit",
+	AddPose: ["HideNipples"],
 	Layers: ToLayerMap([
 		{ Name: "ArmRight", Layer: "ArmRight", Pri: 1,
 			InheritColor: "TorsoUpper",
@@ -173,7 +174,7 @@ AddModel({
 		{ Name: "TorsoUpper", Layer: "TorsoUpper", Pri: 1,
 			InheritColor: "TorsoUpper",
 		},
-		{ Name: "Chest", Layer: "Chest", Pri: 1,
+		{ Name: "Chest", Layer: "CatsuitChest", Pri: 1,
 			InheritColor: "TorsoUpper",
 			GlobalDefaultOverride: ToMap(["Hogtie"]),
 		},
@@ -186,11 +187,12 @@ AddModel({
 	Parent: "Catsuit",
 	Categories: ["Suits"],
 	Folder: "Catsuit",
+	AddPose: ["HideNipples"],
 	Layers: ToLayerMap([
 		{ Name: "SleevelessTorsoUpper", Layer: "TorsoUpper", Pri: 1,
 			InheritColor: "TorsoUpper",
 		},
-		{ Name: "Chest", Layer: "Chest", Pri: 1,
+		{ Name: "Chest", Layer: "CatsuitChest", Pri: 1,
 			InheritColor: "TorsoUpper",
 			GlobalDefaultOverride: ToMap(["Hogtie"]),
 		},
@@ -238,6 +240,7 @@ AddModel({
 	Parent: "Catsuit",
 	Categories: ["Suits"],
 	Folder: "Catsuit",
+	AddPose: ["HideNipples"],
 	Layers: ToLayerMap([
 		{ Name: "ArmRight", Layer: "ArmRight", Pri: 1,
 			InheritColor: "TorsoUpper",
@@ -303,7 +306,7 @@ AddModel({
 		{ Name: "TorsoUpperCrop", Layer: "TorsoUpper", Pri: 1,
 			InheritColor: "TorsoUpper",
 		},
-		{ Name: "Chest", Layer: "Chest", Pri: 1,
+		{ Name: "Chest", Layer: "CatsuitChest", Pri: 1,
 			InheritColor: "TorsoUpper",
 			GlobalDefaultOverride: ToMap(["Hogtie"]),
 		},
@@ -318,6 +321,7 @@ AddModel({
 	Categories: ["Suits"],
 	Folder: "Catsuit",
 	Group: "Catsuit",
+	AddPose: ["HideNipples"],
 	Layers: ToLayerMap([
 		...GetModelLayers("CatsuitUpper"),
 		...GetModelLayers("CatsuitLower"),
@@ -608,10 +612,27 @@ AddModel({
 		},
 		{ Name: "ShirtChest", Layer: "ShirtChest", Pri: 5,
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
-			MorphPoses: {Hogtie: "Hogtie"},
+			MorphPoses: {Hogtie: "Hogtie", Up: "Up", Free: "Free", Yoked: "Free"},
 			InheritColor: "Shirt",
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			Invariant: true,
+			NoOverride: true,
+		},
+	])
+});
+AddModel({
+	Name: "ChainBikini",
+	Folder: "ArmorChain",
+	Parent: "ChainArmor",
+	Categories: ["Armor"],
+	Layers: ToLayerMap([
+		{ Name: "ShirtChest", Layer: "ShirtChest", Pri: 5.5,
+			Poses: ToMap([...ARMPOSES, "Hogtie"]),
+			MorphPoses: {Hogtie: "Hogtie", Up: "Up", Free: "Free", Yoked: "Free"},
+			InheritColor: "Bikini",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			Invariant: true,
+			NoOverride: true,
 		},
 	])
 });
@@ -641,28 +662,6 @@ AddModel({
 		...GetModelLayers("ChainSkirt"),
 	])
 });
-
-AddModel({
-	Name: "BanditShorts",
-	Folder: "Bandit",
-	Parent: "Bandit",
-	TopLevel: true,
-	Categories: ["Pants"],
-	AddPose: ["Pants"],
-	Layers: ToLayerMap([
-		{ Name: "Shorts", Layer: "Pants", Pri: 7,
-			Poses: ToMap([...LEGPOSES]),
-			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
-			//MorphPoses: {Hogtie: "Hogtie"},
-		},
-		{ Name: "ShortsLeft", Layer: "PantLeft", Pri: 7,
-			Poses: ToMap([...LEGPOSES]),
-			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
-			//MorphPoses: {Hogtie: "Hogtie"},
-		},
-	])
-});
-
 
 AddModel({
 	Name: "BanditPouch",
@@ -806,10 +805,10 @@ AddModel({
 		...GetModelLayers("BanditShorts"),
 		...GetModelLayers("BanditBreastplate"),
 		...GetModelLayers("BanditWrist"),
-		...GetModelLayers("BanditShoes"),
 		...GetModelLayers("BanditPouch"),
 		...GetModelLayers("BanditKnee"),
 		...GetModelLayers("BanditChoker"),
+		...GetModelLayers("BanditBoots"),
 	])
 });
 
@@ -926,7 +925,7 @@ AddModel({
 	Categories: ["Corsets"],
 	Layers: ToLayerMap([
 		{ Name: "Corset", Layer: "Bustier", Pri: 1,
-			SwapLayerPose: {Pants: "CorsetUnder"},
+			//SwapLayerPose: {Pants: "CorsetUnder"},
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
 			Invariant: true,
@@ -1147,7 +1146,7 @@ AddModel({
 	Categories: ["Corsets"],
 	Layers: ToLayerMap([
 		{ Name: "Corset", Layer: "Bustier", Pri: 1,
-			SwapLayerPose: {Pants: "CorsetUnder"},
+			//SwapLayerPose: {Pants: "CorsetUnder"},
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
 			Invariant: true,
@@ -1513,6 +1512,25 @@ AddModel({
 		},
 	])
 });
+/*
+AddModel({
+	Name: "WarriorBeltTight",
+	Folder: "Warrior",
+	Parent: "Dragonheart",
+	TopLevel: true,
+	Categories: ["Corsets"],
+	Layers: ToLayerMap([
+		{ Name: "Belt", Layer: "Belt", Pri: 15,
+			Invariant: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper", "TorsoLower"],
+			HideWhenOverridden: true,
+			DisplaceAmount: 200,
+			DisplaceLayers: ToMap(["CorsetTorso"]),
+			DisplacementSprite: "CorsetSquishTight",
+			DisplacementInvariant: true,
+		},
+	])
+});*/
 
 AddModel({
 	Name: "DragonNecklace",

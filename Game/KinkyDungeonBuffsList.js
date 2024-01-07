@@ -172,7 +172,7 @@ let KDAttackSlow = {
 	id: "AttackSlow", type: "AttackSlow", power: 0.5, player: true, enemies: true, duration: 1
 };
 let KDUnsteady = {id: "Unsteady", aura: "#aa8888", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 1,};
-let KDUnsteady2 = {id: "Unsteady2", aura: "#aa8888", type: "Armor", power: -1.0, player: true, enemies: false, duration: 3,};
+let KDUnsteady2 = {id: "Unsteady2", aura: "#aa8888", type: "HeelPower", power: 2.5, player: true, enemies: false, duration: 3,};
 let KDUnsteady3 = {id: "Unsteady3", type: "Evasion", power: -0.5, player: true, enemies: false, duration: 3,};
 
 let KDNoChill = {id: "ChillWalk", aura: "#73efe8", type: "ChillWalk", power: -1.0, player: true, enemies: true, duration: 2,};

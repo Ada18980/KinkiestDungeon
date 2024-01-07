@@ -671,6 +671,7 @@ let KDPlayerEffects = {
 		if (Math.round(
 			playerEffect.time * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "lightDamageResist"))
 		) > 0) {
+			KDGameData.visionAdjust = Math.min(1, (KDGameData.visionAdjust || 0) + 1.5);
 			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonBlindSelf"), "#ff0000", Math.round(
 				playerEffect.time * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "lightDamageResist"))
@@ -1353,9 +1354,9 @@ let KDPlayerEffects = {
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
 		let added = [];
 		for (let i = 0; i < playerEffect.count; i++) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["obsidianRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["crystalRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 			if (restraintAdd) {
-				KDPlayerEffectRestrain(spell, 1, ["obsidianRestraints"], faction);
+				KDPlayerEffectRestrain(spell, 1, ["crystalRestraints"], faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 				added.push(restraintAdd);
 				effect = true;
@@ -1667,6 +1668,7 @@ let KDPlayerEffects = {
  * @param {boolean} [options.Progressive]
  * @param {boolean} [options.ProgressiveSkip] - Will skip over stuff already equipped
  * @param {boolean} [options.DontPreferWill]
+ * @param {boolean} [options.Keep]
  * @param {boolean} [options.RequireWill]
  * @returns {{r:restraint, v: ApplyVariant}[]}
  */
@@ -1727,7 +1729,7 @@ function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass, all
 
 				if (!r)
 					KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal"), "#88ff88", 1);
-			}, undefined, spell, Lock);
+			}, undefined, spell, Lock, options?.Keep);
 			KinkyDungeonSendEvent("boundBySpell", {player: KinkyDungeonPlayerEntity, restraintsAdded: rests});
 			return rests;
 		}

@@ -75,6 +75,28 @@ let KDTrapTypes = {
 			msg: TextGet("KDCageTrap"),
 		};
 	},
+	DisplayTrap: (tile, entity, x, y) => {
+		if (entity.player)
+			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DisplayTrap"), 0, true);
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		tile.Trap = undefined;
+		tile.Type = undefined;
+		return {
+			triggered: true,
+			msg: TextGet("KDDisplayTrap"),
+		};
+	},
+	DisplayStandTrap: (tile, entity, x, y) => {
+		if (entity.player)
+			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DisplayTrap"), 0, true);
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		tile.Trap = undefined;
+		tile.Type = undefined;
+		return {
+			triggered: true,
+			msg: TextGet("KDDisplayTrap"),
+		};
+	},
 	BarrelTrap: (tile, entity, x, y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BarrelTrap"), 0, true);
@@ -204,7 +226,7 @@ let KDTrapTypesStepOff = {
 				KinkyDungeonMapSet(x, y, 'd');
 		}
 		return {
-			msg: created > 0 ? "Default" : "",
+			msg: "Default",
 		};
 	}
 };

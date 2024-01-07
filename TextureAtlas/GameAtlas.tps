@@ -1836,6 +1836,29 @@
             <key type="filename">../Game/Floors/Floor_tmp/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_tmp/Wall.png</key>
             <key type="filename">../Game/Floors/Floor_tmp/WallVert.png</key>
+            <key type="filename">../Game/InventoryAction/Bondage.png</key>
+            <key type="filename">../Game/InventoryAction/CommandWord.png</key>
+            <key type="filename">../Game/InventoryAction/Cookie.png</key>
+            <key type="filename">../Game/InventoryAction/CurseInfo.png</key>
+            <key type="filename">../Game/InventoryAction/CurseStruggle.png</key>
+            <key type="filename">../Game/InventoryAction/CurseUnlock.png</key>
+            <key type="filename">../Game/InventoryAction/Cut.png</key>
+            <key type="filename">../Game/InventoryAction/Drop.png</key>
+            <key type="filename">../Game/InventoryAction/Equip.png</key>
+            <key type="filename">../Game/InventoryAction/Favorite.png</key>
+            <key type="filename">../Game/InventoryAction/Hotbar.png</key>
+            <key type="filename">../Game/InventoryAction/Lock.png</key>
+            <key type="filename">../Game/InventoryAction/Macaron.png</key>
+            <key type="filename">../Game/InventoryAction/Offhand.png</key>
+            <key type="filename">../Game/InventoryAction/Pick.png</key>
+            <key type="filename">../Game/InventoryAction/Quickslot.png</key>
+            <key type="filename">../Game/InventoryAction/Remove.png</key>
+            <key type="filename">../Game/InventoryAction/Sell.png</key>
+            <key type="filename">../Game/InventoryAction/SellBulk.png</key>
+            <key type="filename">../Game/InventoryAction/Struggle.png</key>
+            <key type="filename">../Game/InventoryAction/Unequip.png</key>
+            <key type="filename">../Game/InventoryAction/Unfavorite.png</key>
+            <key type="filename">../Game/InventoryAction/Use.png</key>
             <key type="filename">../Game/Items/AncientPowerSource.png</key>
             <key type="filename">../Game/Items/AncientPowerSourceSpent.png</key>
             <key type="filename">../Game/Items/Arbiter.png</key>
@@ -2195,6 +2218,7 @@
             <key type="filename">../Game/Spells/SlimeWallVert.png</key>
             <key type="filename">../Game/Spells/Snare.png</key>
             <key type="filename">../Game/Spells/Snowball.png</key>
+            <key type="filename">../Game/Spells/Sonar.png</key>
             <key type="filename">../Game/Spells/Sowing.png</key>
             <key type="filename">../Game/Spells/SpellChoiceUp1.png</key>
             <key type="filename">../Game/Spells/SpellChoiceUp2.png</key>
@@ -2351,6 +2375,7 @@
             <key type="filename">../Game/Locks/Curse.png</key>
             <key type="filename">../Game/Locks/Disc.png</key>
             <key type="filename">../Game/Locks/Divine.png</key>
+            <key type="filename">../Game/Locks/Divine2.png</key>
             <key type="filename">../Game/Locks/Dollmaker.png</key>
             <key type="filename">../Game/Locks/Fuuka.png</key>
             <key type="filename">../Game/Locks/Gold.png</key>
@@ -3151,6 +3176,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/Items/Restraint/BitGagHarness.png</key>
             <key type="filename">../Game/Items/Restraint/Bracers.png</key>
             <key type="filename">../Game/Items/Restraint/Breastplate.png</key>
             <key type="filename">../Game/Items/Restraint/Bustier.png</key>
@@ -3228,6 +3254,10 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/Items/Restraint/DivineBelt.png</key>
+            <key type="filename">../Game/Items/Restraint/DivineBelt2.png</key>
+            <key type="filename">../Game/Items/Restraint/DivineBra.png</key>
+            <key type="filename">../Game/Items/Restraint/DivineBra2.png</key>
             <key type="filename">../Game/Items/Restraint/HighCollars.png</key>
             <key type="filename">../Game/ShopBasic/PotionCollar.png</key>
             <struct type="IndividualSpriteSettings">
@@ -3256,6 +3286,24 @@
                 <rect>24,24,47,47</rect>
                 <key>scale9Paddings</key>
                 <rect>24,24,47,47</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/Items/Restraint/NippleClamps.png</key>
+            <key type="filename">../Game/Items/Restraint/NippleClamps2.png</key>
+            <key type="filename">../Game/Items/Restraint/NippleClamps3.png</key>
+            <key type="filename">../Game/Items/Restraint/NippleWeights.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>30,30,60,60</rect>
+                <key>scale9Paddings</key>
+                <rect>30,30,60,60</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

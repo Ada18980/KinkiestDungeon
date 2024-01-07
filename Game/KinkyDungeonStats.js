@@ -1,7 +1,9 @@
 "use strict";
 // Player entity
-let KinkyDungeonPlayerEntity = null; // The current player entity
+/** @type {any} */
+let KinkyDungeonPlayerEntity = {id: -1, Enemy: undefined, hp: 10, x: 0, y:0, player:true}; // The current player entity
 
+let KDBaseBalanceDmgLevel = 5; // Decides how much heels affect balance loss from attacks. higher = less loss
 let KDShadowThreshold = 1.5;
 
 let KDSleepWillFraction = 0.5;
@@ -188,6 +190,8 @@ function KinkyDungeonDefaultStats(Load) {
 	KinkyDungeonRedKeys = 0;
 	KinkyDungeonBlueKeys = 0;
 
+	KDGameData.Balance = 1;
+
 
 	KinkyDungeonHasCrotchRope = false;
 
@@ -285,10 +289,17 @@ function KinkyDungeonGetVisionRadius() {
 		blindMult: (KinkyDungeonStatsChoice.get("Blackout") || KinkyDungeonStatsChoice.get("TotalBlackout")) ? 2 : 1,
 		visionMult: 1.0,
 		max: 8,
-		min: 2.9,
+		min: KinkyDungeonStatsChoice.get("TotalBlackout") ? 0.5 : (KinkyDungeonStatsChoice.get("Blackout") ? 1.5 : 2.9),
 		nightVision: 1.0,
+		blindRadius: KDGameData.visionBlind || 0,
 	};
+	if (KinkyDungeonStatsChoice.get("NightBlindness") && KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) < KDShadowThreshold) {
+		data.min = Math.min(data.min, KDGameData.visionAdjust < -0.1 ? 1.5 : 0.5);
+	}
 	KinkyDungeonSendEvent("calcVision", data);
+	if (data.blindRadius > 0) {
+		data.blindlevel += KDMaxVisionDist * data.blindRadius;
+	}
 	KDMaxVisionDist = data.max;
 	KDMinVisionDist = data.min;
 	KDNightVision = data.nightVision;
@@ -364,6 +375,8 @@ function KinkyDungeonInterruptSleep() {
 }
 
 let KDBaseDamageTypes = {
+	knockbackTypes: ["fire", "electric", "shock", "tickle", "cold", "slash", "grope", "pierce", "soul", "charm"],
+	knockbackTypesStrong: ["blast", "crush", "acid", "plush", "poison", "pain", "arcane"],
 	arouseTypes: ["grope", "plush", "charm", "happygas"],
 	bypassTeaseTypes: ["charm", "happygas"],
 	distractionTypesWeakNeg: ["pain", "acid"],
@@ -432,6 +445,8 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 		buffresist: KDBuffResist(KinkyDungeonPlayerBuffs, Damage.type),
 		arouseAmount: 0,
 		arouseMod: 1,
+		knockbackTypesStrong: Object.assign([], KDBaseDamageTypes.knockbackTypesStrong),
+		knockbackTypes: Object.assign([], KDBaseDamageTypes.knockbackTypes),
 		arouseTypes: Object.assign([], KDBaseDamageTypes.arouseTypes),
 		bypassTeaseTypes: Object.assign([], KDBaseDamageTypes.bypassTeaseTypes),
 		distractionTypesWeakNeg: Object.assign([], KDBaseDamageTypes.distractionTypesWeakNeg),
@@ -503,6 +518,19 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 
 
 	KinkyDungeonSendEvent("duringPlayerDamage", data);
+
+	if (data.dmg > 0 && KDGameData.KneelTurns <= 0 && (
+		data.knockbackTypesStrong.includes(data.type)
+		|| data.knockbackTypes.includes(data.type)
+	)) {
+		if (KDGameData.HeelPower > 0 && data.knockbackTypes.includes(data.type)) {
+			let amt = data.dmg;
+			KDChangeBalance((KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * amt/KinkyDungeonStatWillMax, true);
+		} else if (data.knockbackTypesStrong.includes(data.type)) {
+			let amt = data.dmg;
+			KDChangeBalance((KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * -KDBalanceDmgMult() * amt/KinkyDungeonStatWillMax, true);
+		}
+	}
 
 	if (!KinkyDungeonIgnoreShieldTypes.includes(data.type) && KDGameData.Shield && data.dmg > 0) {
 		let amt = data.dmg;
@@ -687,6 +715,7 @@ let KDOrigStamina = KDMaxStatStart*10;
 let KDOrigMana = KDMaxStatStart*10;
 let KDOrigWill = KDMaxStatStart*10;
 let KDOrigCharge = 1000;
+let KDOrigBalance = 100;
 let KDOrigDistraction = 0;
 let KDOrigDesire = 0;
 
@@ -975,6 +1004,44 @@ function KinkyDungeonChangeWill(Amount, NoFloater, minimum = 0) {
 }
 
 
+function KDChangeBalance(Amount, NoFloater) {
+	if (KinkyDungeonStatsChoice.get("ClassicHeels")) return 0;
+	if (isNaN(Amount)) {
+		console.trace();
+		Amount = 0;
+	}
+
+	let data = {
+		NoFloater: NoFloater,
+		Amount: Amount,
+		mult: Math.max(0,
+			Amount > 0 ? (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatGainBalance"))
+			: (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatLossBalance"))
+		),
+	};
+	KinkyDungeonSendEvent("changeBalance", data);
+	NoFloater = data.NoFloater;
+	Amount = data.Amount * data.mult;
+
+	if (!KDGameData.Balance) KDGameData.Balance = 0;
+	let orig = KDGameData.Balance;
+	KDGameData.Balance = Math.min(1, Math.max(0, KDGameData.Balance + Amount));
+	if (Amount < 0) KDGameData.BalancePause = true;
+
+	data.change = KDGameData.Balance - orig;
+	KinkyDungeonSendEvent("afterChangeBalance", data);
+	if (!NoFloater && Math.abs(KDOrigBalance - Math.floor(KDGameData.Balance * 100)) >= 0.99) {
+		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KDGameData.Balance * 100) - KDOrigBalance, "#ffff44", undefined, undefined, " balance");
+		KDOrigBalance = Math.floor(KDGameData.Balance * 100);
+	}
+
+
+	if (isNaN(KDGameData.Balance)) {
+		console.trace();
+		KDGameData.Balance = 0;
+	}
+}
+
 function KinkyDungeonChangeCharge(Amount, NoFloater) {
 	if (isNaN(Amount)) {
 		console.trace();
@@ -1238,14 +1305,15 @@ function KinkyDungeonUpdateStats(delta) {
 	let sleepRegen = KinkyDungeonStatStaminaRegenSleep * KinkyDungeonStatStaminaMax / KDMaxStatStart;
 	let sleepRegenDistraction = KinkyDungeonStatArousalLowerRegenSleep * KinkyDungeonStatDistractionMax / KDMaxStatStart;
 	if (KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) == 'B') sleepRegen *= 2;
-	let stamMult = KDGameData.StaminaSlow > 0 ? Math.max(0.5, (!KinkyDungeonCanStand() ? 0.5 : 1.0) - 0.1 * KDGameData.StaminaSlow) : 1.0;
+	let stamMult = KDGameData.StaminaSlow > 0 ? Math.max(0.5, (KDForcedToGround() ? 0.5 : 1.0) - 0.1 * KDGameData.StaminaSlow) : 1.0;
 	let stamRegen = KDGameData.StaminaPause > 0 ? 0 : KinkyDungeonSetMaxStats().staminaRate * stamMult;
 
 	// Process wait equation
 	if (delta > 0 && KDGameData.StaminaPause > 0) KDGameData.StaminaPause -= delta;
 	if (delta > 0 && KDGameData.StaminaSlow > 0) KDGameData.StaminaSlow -= delta;
 
-	let kneelRate = KinkyDungeonIsArmsBound() ? 0.8 : 1;
+	let baseRate = KinkyDungeonStatsChoice.get("PoorBalance") ? 0.5 : 1;
+	let kneelRate = baseRate * (KinkyDungeonIsArmsBound() ? 0.8 : 1);
 	if (KinkyDungeonSlowLevel > 2) kneelRate *= 0.6;
 
 	let minKneel = 0;
@@ -1253,9 +1321,9 @@ function KinkyDungeonUpdateStats(delta) {
 		minKneel = 1;
 	}
 
-	if (KDGameData.KneelTurns > 0 && !KDGameData.Crouch && (kneelRate < 1 || minKneel > 0)) {
+	if (KDGameData.KneelTurns > 0 && !KDGameData.Crouch && (kneelRate < baseRate || minKneel > 0)) {
 		if (KinkyDungeonHasHelp()) {
-			kneelRate = 1;
+			kneelRate = baseRate;
 			if (minKneel > 0) {
 				minKneel = 0;
 			}
@@ -1263,7 +1331,7 @@ function KinkyDungeonUpdateStats(delta) {
 
 		} else if (KinkyDungeonStatsChoice.get("Grounded") && KinkyDungeonGetAffinity(false, "Corner", undefined, undefined)) {
 			minKneel = 0;
-			kneelRate = Math.min(1, kneelRate + 0.2);
+			kneelRate = Math.min(baseRate * 1.4, kneelRate + 0.2);
 			KinkyDungeonSendTextMessage(4, TextGet("KDGetUpCorner"), "#ffffff",1, !(KDGameData.KneelTurns <= delta*kneelRate));
 		} else if (KinkyDungeonStatsChoice.get("Grounded") && KinkyDungeonGetAffinity(false, "Wall", undefined, undefined)) {
 			minKneel = 0;
@@ -1330,7 +1398,8 @@ function KinkyDungeonUpdateStats(delta) {
 
 	KinkyDungeonUpdateStruggleGroups();
 	// Slowness calculation
-	KinkyDungeonCalculateSlowLevel();
+	KinkyDungeonCalculateSlowLevel(delta);
+	KinkyDungeonCalculateHeelLevel(delta);
 	let sleepRate = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sleepiness")
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SleepinessGas") * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2)
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SleepinessPoison") * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"));
@@ -1346,6 +1415,9 @@ function KinkyDungeonUpdateStats(delta) {
 		}
 		if (KinkyDungeonSleepiness > 0) {
 			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonSleepy"), "#ff0000", 1, true);
+		}
+		if (KinkyDungeonSleepiness > 4.99) {
+			KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns || 0, 2);
 		}
 	}
 	if ((!sleepRate || sleepRate <= 0) && KinkyDungeonSleepiness > 0) KinkyDungeonSleepiness = Math.max(0, KinkyDungeonSleepiness - delta);
@@ -1404,6 +1476,12 @@ function KinkyDungeonUpdateStats(delta) {
 	KinkyDungeonStatBlind = Math.max(0, KinkyDungeonStatBlind - delta);
 	KinkyDungeonStatFreeze = Math.max(0, KinkyDungeonStatFreeze - delta);
 	KinkyDungeonStatBind = Math.max(0, KinkyDungeonStatBind - delta);
+
+	if (delta > 0) {
+		if (!KDGameData.BalancePause)
+			KDChangeBalance((KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
+		KDGameData.BalancePause = false;
+	}
 
 	KinkyDungeonCapStats();
 
@@ -1508,7 +1586,7 @@ function KinkyDungeonGetBlindLevel() {
 	let blindness = 0;
 	for (let inv2 of KinkyDungeonAllRestraintDynamic()) {
 		let inv = inv2.item;
-		if (KDRestraint(inv).blindfold) blindness = Math.max(Math.min(5, blindness + 1), KDRestraint(inv).blindfold);
+		if (KDRestraint(inv).blindfold) blindness = Math.max(Math.min(8, blindness + 1), KDRestraint(inv).blindfold);
 	}
 	let data = {
 		player: KinkyDungeonPlayerEntity,
@@ -1554,26 +1632,46 @@ function KinkyDungeonCanKneel() {
 	return true;
 }
 
+function KinkyDungeonCalculateHeelLevel(delta, overrideKneel) {
+	let heelpower = 0;
+	if (overrideKneel || (!KDForcedToGround() && KinkyDungeonCanStand()))
+		for (let inv2 of KinkyDungeonAllRestraintDynamic()) {
+			let inv = inv2.item;
+			if ((KDRestraint(inv)?.heelpower)) {
+				let power = KDRestraint(inv).power * KDRestraint(inv).heelpower;
+				heelpower = Math.max(heelpower, power);
+			}
+		}
+	if (heelpower && heelpower < 2) heelpower = 2;
+	KDGameData.HeelPower = Math.max(0,
+		Math.pow(heelpower, 0.75)
+		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "HeelPower")
+		+ Math.max(KinkyDungeonSleepiness));
+}
+
 function KinkyDungeonCalculateSlowLevel(delta) {
 	KinkyDungeonSlowLevel = 0;
 	if (KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).immobile;})) {KinkyDungeonSlowLevel += 100;}
 	else {
-		for (let inv of KinkyDungeonAllRestraint()) {
-			if ((KDRestraint(inv).blockfeet || KDRestraint(inv).hobble)) {
-				let hobbleAmount = KDRestraint(inv).hobble || 1;
+		for (let inv2 of KinkyDungeonAllRestraintDynamic()) {
+			let inv = inv2.item;
+			if ((KDRestraint(inv).blockfeet || KDRestraint(inv).hobble || (KinkyDungeonStatsChoice.get("ClassicHeels") && KDRestraint(inv).heelpower))) {
+				let hobbleAmount = KDRestraint(inv).hobble || (KinkyDungeonStatsChoice.get("ClassicHeels") ? Math.round(KDRestraint(inv).heelpower + 0.1) : 1) || 1;
 				KinkyDungeonSlowLevel = Math.min(Math.max(3, hobbleAmount), KinkyDungeonSlowLevel + hobbleAmount);
 			}
 		}
-		for (let inv of KinkyDungeonAllRestraint()) {
+		for (let inv2 of KinkyDungeonAllRestraintDynamic()) {
+			let inv = inv2.item;
 			if (KDRestraint(inv).blockfeet) {
 				KinkyDungeonSlowLevel = Math.max(KinkyDungeonSlowLevel, 2);
 				break;
 			}
 		}
 		// If your hands are free you are faster
-		if (!KinkyDungeonCanStand()) {
+		if (!KinkyDungeonCanStand() || KDForcedToGround()) {
 			KinkyDungeonSlowLevel = Math.max(KinkyDungeonIsArmsBound() ? 3 : 2, KinkyDungeonSlowLevel + 1);
-			if (delta > 0) KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, delta);
+			if (delta > 0 && KDForcedToGround())
+				KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, delta);
 		}
 		if (KDIsHogtied()) KinkyDungeonSlowLevel = Math.max(KinkyDungeonIsArmsBound() ? 4 : 3, KinkyDungeonSlowLevel + 1);
 		for (let inv of KinkyDungeonAllRestraint()) {
@@ -1705,7 +1803,7 @@ function KinkyDungeonDoPlayWithSelf(tease) {
 
 	KinkyDungeonAlert = Math.max(KinkyDungeonAlert || 0, data.alertRadius); // Alerts nearby enemies because of your moaning~
 
-	KinkyDungeonChangeDistraction(0.5 + Math.sqrt(Math.max(0, data.amount * KinkyDungeonPlayWithSelfMult)) * KinkyDungeonStatDistractionMax/KDMaxStatStart, false, 0.05);
+	KinkyDungeonChangeDistraction(Math.sqrt(Math.max(0, data.amount * KinkyDungeonPlayWithSelfMult)) * KinkyDungeonStatDistractionMax/KDMaxStatStart, false, 0.05);
 	KinkyDungeonChangeStamina(data.cost, true, 3);
 	if (data.playSound) {
 		if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.playSelfSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KinkyDungeonPlayerDamage.playSelfSound + ".ogg");
@@ -1767,7 +1865,7 @@ let KinkyDungeonEdgeWillpowerCost = -0.5;
 let KinkyDungeonPlayCost = -0.1;
 
 let KinkyDungeonOrgasmStunTime = 4;
-let KinkyDungeonPlayWithSelfMult = 0.25;
+let KinkyDungeonPlayWithSelfMult = 0.5;
 
 function KDGetPlaySelfThreshold() {
 	return KinkyDungeonDistractionPlaySelfThreshold - 0.01 * (
@@ -1825,12 +1923,13 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 	data.amount *= data.eventMult;
 
 	if (data.cancelOrgasm) return;
-	if (data.amount > KinkyDungeonPlaySelfOrgasmThreshold && KDRandom() < data.chance) {
+	if (data.amount > KinkyDungeonPlaySelfOrgasmThreshold && KDRandom() < data.chance && !KinkyDungeonFlags.get("nogasm")) {
 		// You finally shudder and tremble as a wave of pleasure washes over you...
 		KinkyDungeonStatBlind = data.stunTime + 2;
 		//KinkyDungeonOrgasmStunTime = 4;
 		KinkyDungeonSetFlag("OrgSuccess", data.stunTime + 3);
 		KinkyDungeonSetFlag("PlayerOrgasm", data.stunTime);
+		KinkyDungeonSetFlag("nogasm", data.stunTime + Math.floor(KDRandom() * 3));
 		KinkyDungeonSetFlag("PlayerOrgasmFilter", data.stunTime + 1);
 		KDGameData.OrgasmStamina = data.satisfaction;
 		KinkyDungeonChangeStamina(data.spcost);
@@ -1915,4 +2014,96 @@ function KDBuffResist(buffs, type) {
  */
 function KDIsEdged(player) {
 	return KDGameData.OrgasmTurns > KinkyDungeonOrgasmTurnsCrave && !(KDGameData.OrgasmStamina > 0);
+}
+
+function KDGetHeelTraining() {
+	if (!KDGameData.Training) KDGameData.Training = {};
+	return (KDGameData.Training?.Heels?.training_stage || 0) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "HeelTraining");
+}
+
+function KDTrip(delta) {
+	KinkyDungeonSendTextMessage(10, TextGet("KDTrip"), "#ff5555", 5);
+	KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns + delta, delta + KDTripDuration());
+	KDGameData.Balance = KDGetRecoverBalance();
+	KinkyDungeonMakeNoise(4, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+}
+
+function KDGetRecoverBalance() {
+	return (0.1 + 0.4 * KinkyDungeonStatStamina/KinkyDungeonStatStaminaMax) * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "TripBalanceRecovery"));
+}
+
+function KDGetBalanceRate() {
+	return (0.15 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RegenBalance")) * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RegenBalanceMult"));
+}
+function KDTripDuration() {
+	let mult = 4 / (4 + KDGetHeelTraining());
+	return Math.max(2, Math.round(5 * mult));
+}
+
+function KDGetBalanceCost() {
+	let mult = 1;//KinkyDungeonStatsChoice.has("HeelWalker") ? 0.5 : 1;
+	if (KinkyDungeonStatsChoice.get("PoorBalance")) mult *= 1.7;
+	if (!KinkyDungeonIsArmsBound()) mult *= 0.5;
+
+	let training = KDGetHeelTraining();
+	return KDGameData.HeelPower * (0.01*mult*5/(5+training) - (0.001));
+}
+
+/**
+ * Goes thru all training categories and advances them by an amount, and resets the turns
+ */
+function KDAdvanceTraining() {
+	if (!KDGameData.Training) KDGameData.Training = {};
+	for (let entry of Object.entries(KDGameData.Training)) {
+		//let training = entry[0];
+		let data = entry[1];
+		if (data.turns_total == 0) continue; // No advance
+		let trainingPercentage = Math.min(1, data.turns_total/KDTrainingSoftScale)
+			* (Math.max(0, data.turns_trained * 1.11 - data.turns_skipped)/data.turns_total);
+		if (KinkyDungeonStatsChoice.get("Mastery" + entry[0])) trainingPercentage *= 0.4;
+		data.training_points += 1 * trainingPercentage;
+		data.turns_total = 0;
+		data.turns_skipped = 0;
+		data.turns_trained = 0;
+
+		while (data.training_points > data.training_stage + 1) {
+			data.training_stage += 1;
+			data.training_points -= data.training_stage;
+		}
+	}
+}
+
+/**
+ *
+ * @param {string} Name
+ * @param {boolean} trained
+ * @param {boolean} skipped
+ * @param {number} total
+ * @param {number} bonus - Multiplier for turns trained or skipped
+ */
+function KDTickTraining(Name, trained, skipped, total, bonus = 1) {
+	if (!KDGameData.Training) KDGameData.Training = {};
+	if (!KDGameData.Training[Name]) {
+		KDGameData.Training[Name] = {
+			training_points: 0,
+			training_stage: 0,
+			turns_skipped: 0,
+			turns_total: 0,
+			turns_trained: 0,
+		};
+	}
+	KDGameData.Training[Name].turns_trained += trained ? total * bonus : 0;
+	KDGameData.Training[Name].turns_skipped += skipped ? total * bonus : 0;
+	KDGameData.Training[Name].turns_total += total;
+}
+
+/** This many training turns are requred, any less is scaled down by this amount */
+let KDTrainingSoftScale = 10;
+
+function KDForcedToGround() {
+	return (KinkyDungeonPlayerTags.get("ForceKneel") || KinkyDungeonPlayerTags.get("ForceHogtie") || KinkyDungeonPlayerTags.get("Hogties"));
+}
+function KDBalanceDmgMult() {
+	let mult = KinkyDungeonStatsChoice.get("PoorBalance") ? 3 : 2;
+	return mult * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BalanceDamageMult"));
 }

@@ -9,8 +9,9 @@ AddModel({
 	Folder: "FaceKoi",
 	TopLevel: true,
 	Protected: true,
-	Group: "Eyes",
+	//Group: "Eyes",
 	Categories: ["Eyes","Face"],
+	AddPose: ["Eyes"],
 	Layers: ToLayerMap([
 		{ Name: "Eyes", Layer: "Eyes", Pri: 0,
 			Sprite: "", // Because pose is called EyesNeutral lol
@@ -45,8 +46,9 @@ AddModel({
 	Folder: "FaceKoi",
 	TopLevel: true,
 	Protected: true,
-	Group: "Eyes",
+	//Group: "Eyes",
 	Categories: ["Eyes","Face"],
+	AddPose: ["Eyes"],
 	Layers: ToLayerMap([
 		{ Name: "Eyes", Layer: "Eyes", Pri: 0,
 			Sprite: "Human", // Because pose is called EyesNeutral lol
@@ -81,7 +83,7 @@ AddModel({
 	Folder: "FaceKoi",
 	TopLevel: true,
 	Protected: true,
-	Group: "Brows",
+	//Group: "Brows",
 	Categories: ["Eyes","Face"],
 	Layers: ToLayerMap([
 		{ Name: "Brows", Layer: "Brows", Pri: 0,
@@ -123,7 +125,7 @@ AddModel({
 	Folder: "FaceKoi",
 	TopLevel: true,
 	Protected: true,
-	Group: "Blush",
+	//Group: "Blush",
 	Categories: ["Face"],
 	Layers: ToLayerMap([
 		{ Name: "Blush", Layer: "Blush", Pri: 0,
@@ -142,8 +144,9 @@ AddModel({
 	Folder: "FaceKjus",
 	TopLevel: true,
 	Protected: true,
-	Group: "Eyes",
+	//Group: "Eyes",
 	Categories: ["Eyes","Face"],
+	AddPose: ["Eyes"],
 	Layers: ToLayerMap([
 		{ Name: "Eyes", Layer: "Eyes", Pri: 0,
 			Sprite: "", // Because pose is called EyesNeutral lol
@@ -172,8 +175,9 @@ AddModel({
 	Folder: "EyesK2",
 	TopLevel: true,
 	Protected: true,
-	Group: "Eyes",
+	//Group: "Eyes",
 	Categories: ["Eyes","Face"],
+	AddPose: ["Eyes"],
 	Layers: ToLayerMap([
 		{ Name: "Eyes", Layer: "Eyes", Pri: 0,
 			Sprite: "", // Because pose is called EyesNeutral lol
@@ -200,8 +204,9 @@ AddModel({
 	Folder: "EyesK3",
 	TopLevel: true,
 	Protected: true,
-	Group: "Eyes",
+	//Group: "Eyes",
 	Categories: ["Eyes","Face"],
+	AddPose: ["Eyes"],
 	Layers: ToLayerMap([
 		{ Name: "Eyes", Layer: "Eyes", Pri: 0,
 			Sprite: "", // Because pose is called EyesNeutral lol
@@ -227,8 +232,9 @@ AddModel({
 	Folder: "EyesK4",
 	TopLevel: true,
 	Protected: true,
-	Group: "Eyes",
+	//Group: "Eyes",
 	Categories: ["Eyes","Face"],
+	AddPose: ["Eyes"],
 	Layers: ToLayerMap([
 		{ Name: "Eyes", Layer: "Eyes", Pri: 0,
 			Sprite: "", // Because pose is called EyesNeutral lol
@@ -256,7 +262,7 @@ AddModel({
 	Folder: "FaceKjus",
 	TopLevel: true,
 	Protected: true,
-	Group: "Brows",
+	//Group: "Brows",
 	Categories: ["Eyes","Face"],
 	Layers: ToLayerMap([
 		{ Name: "Brows", Layer: "Brows", Pri: 0,
@@ -292,7 +298,7 @@ AddModel({
 	Folder: "FaceKjus",
 	TopLevel: true,
 	Protected: true,
-	Group: "Blush",
+	//Group: "Blush",
 	Categories: ["Face"],
 	Layers: ToLayerMap([
 		{ Name: "Blush", Layer: "Blush", Pri: 0,
@@ -307,7 +313,7 @@ AddModel({
 	Folder: "FaceDask",
 	TopLevel: true,
 	Protected: true,
-	Group: "Brows",
+	//Group: "Brows",
 	Categories: ["Eyes","Face"],
 	Layers: ToLayerMap([
 		{ Name: "Brows", Layer: "Brows", Pri: 0,
@@ -328,8 +334,9 @@ AddModel({
 	Folder: "FaceDask",
 	TopLevel: true,
 	Protected: true,
-	Group: "Eyes",
+	//Group: "Eyes",
 	Categories: ["Eyes","Face"],
+	AddPose: ["Eyes"],
 	Layers: ToLayerMap([
 		{ Name: "Eyes", Layer: "Eyes", Pri: 0,
 			Sprite: "",

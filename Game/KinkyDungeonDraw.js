@@ -797,6 +797,12 @@ let KDLastKeyTime = {
 
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
+	if (KDToggles.ZoomIn) {
+		KinkyDungeonGridSizeDisplay = 100;
+	} else if (KDToggles.ZoomOut) {
+		KinkyDungeonGridSizeDisplay = 50;
+	} else KinkyDungeonGridSizeDisplay = 72;
+
 	// Breath the sound outlines
 	if (StandalonePatched)
 		kdoutlinefilter.alpha = 0.5 + 0.1 * Math.sin(2 * Math.PI * (CommonTime() % 2000 / 2000) );
@@ -1414,7 +1420,7 @@ function KinkyDungeonDrawGame() {
 			}
 
 			if (StandalonePatched)
-				DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
+				DrawCharacter(KinkyDungeonPlayer, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, KDToggles.FlipPlayer);
 
 			if (KinkyDungeonSleepiness) {
 				CharacterSetFacialExpression(KinkyDungeonPlayer, "Emoticon", "Sleep");
@@ -1675,6 +1681,12 @@ function KinkyDungeonDrawGame() {
 			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
 		}
 		KinkyDungeonDrawQuest();
+	} else if (KinkyDungeonDrawState == "Collection") {
+		KDDrawNavBar(3);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
+		KinkyDungeonDrawCollection();
 	} else if (KinkyDungeonDrawState == "Reputation") {
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KDDrawNavBar(3);
@@ -1790,7 +1802,7 @@ function KinkyDungeonDrawGame() {
 		DrawButtonVis(975, 900, 550, 64, TextGet("KinkyDungeonRestartYes" + (KDConfirmDeleteSave ? "Confirm" : "")), "#ffffff", "");
 		DrawButtonVis(1650, 900, 300, 64, TextGet("KinkyDungeonCheckPerks"), "#ffffff", "");
 
-		DrawButtonKDEx("GameConfigKeys", () => {
+		/*DrawButtonKDEx("GameConfigKeys", () => {
 			KinkyDungeonState = "Keybindings";
 			if (!KinkyDungeonKeybindings)
 				KDSetDefaultKeybindings();
@@ -1799,7 +1811,7 @@ function KinkyDungeonDrawGame() {
 				Object.assign(KinkyDungeonKeybindingsTemp, KinkyDungeonKeybindings);
 			}
 			return true;
-		}, true, 975, 450, 260, 64, TextGet("GameConfigKeys"), "#ffffff", "");
+		}, true, 975, 450, 260, 64, TextGet("GameConfigKeys"), "#ffffff", "");*/
 		DrawButtonKDEx("GameToggles", () => {
 			KinkyDungeonState = "Toggles";
 			return true;
@@ -2776,6 +2788,7 @@ function FillRectKD(Container, Map, id, Params) {
  * @param {number} [options.alpha]
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
+ * @param {boolean} [options.centered] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
@@ -2810,6 +2823,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.unique] - This button is not differentiated by position
  * @param {boolean} [options.scaleImage] - zIndex
+ * @param {boolean} [options.centered] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
@@ -2858,7 +2872,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 			};
 			if (options?.tint) o.tint = options.tint;
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-			Image, Left + 2, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
+			Image, (options?.centered ? Width/2 - img.orig.width/2 : 2) + Left, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
 		}
 		textPush = img.orig.width;
 	}
@@ -3414,7 +3428,7 @@ function KDUpdateVision(CamX, CamY, CamX_offset, CamY_offset) {
 
 
 	if (CamX != undefined) {
-		if (KDToggles.Bloom) {
+		if (KDToggles.Bloom && !(KinkyDungeonBlindLevel >= 2)) {
 			let pad = (324-KinkyDungeonGridSizeDisplay)/2;
 			for (let light of [...data.lights, ...data.maplights, ...data.effecttilelights]) {
 				if (KinkyDungeonVisionGet(light.x_orig || light.x, light.y_orig || light.y)) {
@@ -3425,7 +3439,7 @@ function KDUpdateVision(CamX, CamY, CamX_offset, CamY_offset) {
 						KinkyDungeonGridSizeDisplay + pad*2, KinkyDungeonGridSizeDisplay + pad*2,
 						undefined, {
 							tint: light.color || 0xffffff,
-							alpha: Math.min(1, Math.max(0.001, light.brightness/20)),
+							alpha: Math.min(1, (1 - 0.5 * (KDGameData.visionAdjust || 0)) * Math.max(0.001, light.brightness/20)),
 							blendMode: PIXI.BLEND_MODES.ADD,
 							zIndex: -0.1,
 						},
@@ -4017,4 +4031,49 @@ function KDGetTargetRetType(x, y) {
 	let tile = KinkyDungeonMapGet(x, y);
 	if (KinkyDungeonMovableTiles.includes(tile) && !(KinkyDungeonMovableTilesEnemy.includes(tile))) return "Action";
 	return "Move";
+}
+
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {number} w
+ * @param {number} scale
+ */
+function KDDrawPalettes(x, y, w, scale = 72) {
+	let XX = x;
+	let YY = y;
+	let row = 0;
+	let column = 0;
+	let spacing = 80;
+	/** @type {[string, Record<string, LayerFilter>]} */
+	let zero = ["", {Highlight: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}];
+	DrawTextFitKD(TextGet("KDSelectPalette"), x + scale*(0.5 + w)/2, y - 36, scale*w, "#ffffff", KDTextGray0, 20);
+
+	for (let value of [zero, ...Object.entries(KinkyDungeonFactionFilters)]) {
+		KDDraw(kdcanvas, kdpixisprites, "palette" + value[0], KinkyDungeonRootDirectory + "UI/greyColor.png",
+			XX, YY, scale, scale, undefined, {
+			filters: [
+				new PIXI.filters.AdjustmentFilter(value[1].Highlight),
+			]
+		});
+		DrawButtonKDEx("choosepalette" + value[0], (b) => {
+			KDDefaultPalette = value[0];
+			localStorage.setItem("KDDefaultPalette", value[0]);
+			return true;
+		}, true, XX - 3, YY - 3, scale + 7, scale + 7, "", "#ffffff", "", undefined, false, value[0] != KDDefaultPalette, KDButtonColor, undefined, undefined, {
+			zIndex: -10,
+		}
+		);
+		DrawTextFitKD(TextGet("KDPalette" + value[0]), XX + scale/2, YY + scale - 12, scale, "#ffffff", KDTextGray0, 18);
+		column++;
+		if (column >= w) {
+			column = 0;
+			row++;
+			YY += spacing;
+			XX = x;
+		} else {
+			XX += spacing;
+		}
+	}
 }

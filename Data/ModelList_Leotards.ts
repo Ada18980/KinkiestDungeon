@@ -6,10 +6,10 @@
  */
 
 AddModel({
-	Name: "Swimsuit",
+	Name: "SwimsuitUnder",
 	Folder: "Swimsuit",
 	Parent: "Swimsuit",
-	TopLevel: true,
+	TopLevel: false,
 	Categories: ["Bodysuits"],
 	Layers: ToLayerMap([
 		{ Name: "Swimsuit", Layer: "Bodysuit", Pri: 5,
@@ -17,6 +17,24 @@ AddModel({
 			Poses: ToMap([...LEGPOSES]),
 		},
 		{ Name: "SwimsuitChest", Layer: "SuitChest", Pri: 5,
+			Poses: ToMap([...ARMPOSES]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			InheritColor: "Swimsuit",
+		},
+	])
+});
+AddModel({
+	Name: "Swimsuit",
+	Folder: "Swimsuit",
+	Parent: "Swimsuit",
+	TopLevel: true,
+	Categories: ["Bodysuits"],
+	Layers: ToLayerMap([
+		{ Name: "Swimsuit", Layer: "BodysuitOver", Pri: 5,
+			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
+			Poses: ToMap([...LEGPOSES]),
+		},
+		{ Name: "SwimsuitChest", Layer: "SuitChestOver", Pri: 5,
 			Poses: ToMap([...ARMPOSES]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			InheritColor: "Swimsuit",
@@ -106,6 +124,13 @@ AddModel({
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 		},
+		{ Name: "LegSockLeft", Layer: "BodysuitLower", Pri: 80,
+			NoOverride: true,
+			TieToLayer: "SockLeft",
+			InheritColor: "SockLeft",
+			Poses: ToMap([...STANDPOSES, "Hogtie"]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+		},
 		{ Name: "FootSockLeftHogtie", Layer: "SockLeftHogtie", Pri: -1,
 			Poses: ToMap(["Hogtie"]),
 			InheritColor: "SockLeft",
@@ -121,6 +146,13 @@ AddModel({
 		{ Name: "SockRight", Layer: "StockingRight", Pri: -1,
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+		},
+		{ Name: "LegSockRight", Layer: "BodysuitLower", Pri: 80,
+			NoOverride: true,
+			TieToLayer: "SockRight",
+			InheritColor: "SockRight",
+			Poses: ToMap([...STANDPOSES, "Hogtie"]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
 		},
 		{ Name: "FootSockRightKneel", Layer: "SockRightKneel", Pri: 1.5,
 			HidePoses: ToMap(["FeetLinked"]),
@@ -200,10 +232,10 @@ AddModel({
 AddModel(GetModelRestraintVersion("BunnyGloves", true));
 
 AddModel({
-	Name: "BunnyLeotard",
+	Name: "BunnyLeotardUnder",
 	Folder: "Bunny",
 	Parent: "Bunny",
-	TopLevel: true,
+	TopLevel: false,
 	Categories: ["Bodysuits"],
 	Layers: ToLayerMap([
 		{ Name: "Leotard", Layer: "Bodysuit", Pri: -1,
@@ -218,7 +250,7 @@ AddModel({
 	])
 });
 AddModel({
-	Name: "BunnyLeotardHigh",
+	Name: "BunnyLeotardHighUnder",
 	Folder: "Bunny",
 	Parent: "BunnyLeotard",
 	TopLevel: false,
@@ -229,6 +261,44 @@ AddModel({
 			MorphPoses: {Closed: "Closed"}
 		},
 		{ Name: "LeotardChest", Layer: "SuitChest", Pri: 1.6,
+			Invariant: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			InheritColor: "Leotard",
+		},
+	])
+});
+
+
+AddModel({
+	Name: "BunnyLeotard",
+	Folder: "Bunny",
+	Parent: "Bunny",
+	TopLevel: true,
+	Categories: ["Bodysuits"],
+	Layers: ToLayerMap([
+		{ Name: "Leotard", Layer: "BodysuitOver", Pri: -1,
+			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
+			MorphPoses: {Closed: "Closed"}
+		},
+		{ Name: "LeotardChest", Layer: "SuitChestOver", Pri: 1.5,
+			Invariant: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			InheritColor: "Leotard",
+		},
+	])
+});
+AddModel({
+	Name: "BunnyLeotardHigh",
+	Folder: "Bunny",
+	Parent: "BunnyLeotard",
+	TopLevel: false,
+	Categories: ["Bodysuits"],
+	Layers: ToLayerMap([
+		{ Name: "HighLeotard", Layer: "BodysuitOver", Pri: -0.9,
+			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
+			MorphPoses: {Closed: "Closed"}
+		},
+		{ Name: "LeotardChest", Layer: "SuitChestOver", Pri: 1.6,
 			Invariant: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			InheritColor: "Leotard",

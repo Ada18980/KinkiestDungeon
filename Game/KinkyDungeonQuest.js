@@ -330,11 +330,11 @@ let KDQuests = {
 				}
 
 
-				let count = 14 + 6 * KDRandom();
-				for (let i = 0; i < count; i++) {
+				let count2 = 14 + 6 * KDRandom();
+				for (let i = 0; i < count2; i++) {
 					let epoint = KinkyDungeonGetRandomEnemyPoint(true);
 					if (epoint) {
-						let ee = DialogueCreateEnemy(epoint.x, epoint.y, "DirtPile");
+						DialogueCreateEnemy(epoint.x, epoint.y, "DirtPile");
 						KDGameData.QuestData.DirtPiles.quota += 1;
 					}
 				}
@@ -1082,12 +1082,14 @@ function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountM
 						Progressive: true,
 						ProgressiveSkip: true,
 						DontPreferWill: true,
+						Keep: true,
 					});
 				}
 				KDPlayerEffectRestrain(undefined, 1, restraintsTags, "Goddess", false, true, false, false, false, "Divine", {
 					Progressive: false,
 					ProgressiveSkip: false,
 					DontPreferWill: false,
+					Keep: true,
 				});
 			}
 			KDSetQuestData(Name, {
@@ -1107,6 +1109,7 @@ function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountM
 				KDPlayerEffectRestrain(undefined, Math.round(restraintsCountMult * (1 + KDGetEffLevel()/3)), restraintsTags, "Goddess", false, true, false, false, false, "Divine", {
 					Progressive: true,
 					DontPreferWill: true,
+					Keep: true,
 				});
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Evil" + ".ogg");
 			}
