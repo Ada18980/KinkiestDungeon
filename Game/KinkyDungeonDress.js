@@ -165,6 +165,8 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 
 		// if true, nakeds the player, then reclothes
 		if (KinkyDungeonCheckClothesLoss) {
+
+
 			if (!KDNaked) KDCharacterNaked(Character);
 			// We refresh all the restraints
 			/*=if (StandalonePatched && CommonTime() > KDLastForceRefresh + KDLastForceRefreshInterval) {
@@ -364,6 +366,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 		// Apply poses from restraints
 		if (StandalonePatched && KDCurrentModels.get(Character)) {
 			RefreshTempPoses(Character, true);
+			KDRefreshPoseOptions(Character);
 		}
 
 
@@ -666,6 +669,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 
 	if (StandalonePatched && KDCurrentModels.get(Character)) {
 
+		KDRefreshPoseOptions(Character);
 
 		let Xray = [];
 		if (KDToggleXRay > 0) {
@@ -1606,6 +1610,7 @@ let KDExpressions = {
  * @param {Character} Character
  */
 function KDUpdateTempPoses(Character) {
+	KDRefreshPoseOptions(Character);
 	// Append temp poses
 	for (let pose of Object.keys(KDCurrentModels.get(Character).TempPoses)) {
 		if (KDCurrentModels.get(Character).Poses[pose])

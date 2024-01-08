@@ -5226,7 +5226,7 @@ KinkyDungeonSpellBattleTrance,"Battle Trance"
 KinkyDungeonSpellDescriptionBattleTrance,"While at 40 Battle Rhythm, you attack twice per turn."
 
 KinkyDungeonSpellRogueTraps,Devious Ingenuity
-KinkyDungeonSpellDescriptionRogueTraps,"Trap-type spells and consumables take 1 turn to cast instead of several."
+KinkyDungeonSpellDescriptionRogueTraps,"Trap-type spells and consumables no longer require you to channel them, but still have a delay before arming."
 
 
 
