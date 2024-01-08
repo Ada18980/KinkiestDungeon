@@ -124,7 +124,7 @@ let KDPlayerEffects = {
 						duration: playerEffect.time,
 					});
 				} else {
-					let happened = KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Curse", false, false, false, false, false);
+					let happened = KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Curse", false, true, false, false, false);
 
 					if (happened.length > 0) {
 						for (let en of KDMapData.Entities) {

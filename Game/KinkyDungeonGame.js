@@ -4179,7 +4179,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 					KinkyDungeonChangeDistraction(0.7 - 0.5 * data.attackCost, false, 0.33);
 				}
 				if (KDGameData.HeelPower > 0)
-					KDChangeBalance(data.attackCost * KDGetBalanceCost() * KDBalanceAttackMult, true);
+					KDChangeBalance(data.attackCost * KDGetBalanceCost() * (0.75 + 0.5 * KDRandom()) * KDBalanceAttackMult, true);
 
 				if (KinkyDungeonAttackEnemy(data.target, data.attackData)) {
 					result = "hit";
@@ -4397,7 +4397,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 								}
 								if (KDGameData.HeelPower > 0 && !KDGameData.Crouch ) {
 
-									KDChangeBalance(-KDGetBalanceCost() * (1 + Math.max(-inertia, 0) * KDBalanceInertiaMult)*moveMult, true);
+									KDChangeBalance(-KDGetBalanceCost() * (0.75 + 0.5 * KDRandom()) * (1 + Math.max(-inertia, 0) * KDBalanceInertiaMult)*moveMult, true);
 								} else {
 									//KDChangeBalance((KDGameData.KneelTurns > 0 ? 0.5 : 0.25) * KDGetBalanceRate()*delta, true);
 								}
@@ -4549,7 +4549,7 @@ function KinkyDungeonMoveTo(moveX, moveY, willSprint, allowPass) {
 				if (!data.cancelSprint) {
 					KinkyDungeonChangeStamina(data.sprintCost, false, 1);
 					KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), "lightgreen", 2);
-					KDChangeBalance(-KDGetBalanceCost() * KDBalanceSprintMult, true);
+					KDChangeBalance(-KDGetBalanceCost() * (0.5 + 1 * KDRandom()) * KDBalanceSprintMult, true);
 					if (KinkyDungeonSlowLevel < 2) {
 						// Move faster
 						KinkyDungeonTrapMoved = true;

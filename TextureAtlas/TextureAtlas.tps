@@ -189,6 +189,7 @@
             <key type="filename">../Models/Armbinder/WolfHarness.png</key>
             <key type="filename">../Models/ArmorChain/Shirt.png</key>
             <key type="filename">../Models/ArmorChain/ShirtChest.png</key>
+            <key type="filename">../Models/ArmorChain/ShirtChestFree.png</key>
             <key type="filename">../Models/ArmorChain/ShirtChestHogtie.png</key>
             <key type="filename">../Models/ArmorChain/ShirtChestUp.png</key>
             <key type="filename">../Models/ArmorChain/ShirtHogtie.png</key>

@@ -250,7 +250,9 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		KDGeneratePoseArray(),
 	) : KDCurrentModels.get(C);
 
-	if (MC.Models.size == 0) UpdateModels(C);
+	if (MC.Models.size == 0) {
+		UpdateModels(C);
+	}
 
 	let containerID = `${X},${Y},${Zoom}`;
 	let refreshfilters = false;
@@ -1165,17 +1167,7 @@ function UpdateModels(C: Character, Xray?: string[]) {
 		}
 	}
 
-	// base body
-	//if (!MC.Models.get("Body"))
-	//	MC.addModel(ModelDefs.Body);
-
-	/*
-	MC.addModel(ModelDefs.Catsuit);
-	//MC.addModel(ModelDefs.Labcoat);
-	//MC.addModel(ModelDefs.Pauldrons);
-	//MC.addModel(ModelDefs.Breastplate);
-	MC.addModel(ModelDefs.Bandit);
-	*/
+	KDRefreshPoseOptionsMC(MC);
 }
 
 
