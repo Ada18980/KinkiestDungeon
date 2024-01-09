@@ -1880,7 +1880,7 @@ let KinkyDungeonEnemies = [
 		nonDirectional: true,
 		maxblock: 0,
 		maxdodge: 2,
-		specialCD: 5, specialAttack: "Dash", specialRemove: "Bind", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 3, specialMinrange: 1.5, specialsfx: "Miss",
+		specialCD: 5, specialAttack: "DashBonus", specialRemove: "Bind", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 3, specialMinrange: 1.5, specialsfx: "Miss",
 		visionRadius: 9, maxhp: 1, minLevel: 3, weight:-5, movePoints: 1, attackPoints: 2, attack: "MeleeBindSuicide", suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "glue", fullBoundBonus: 2,
 		terrainTags: {"increasingWeight":-1, "mold": 25}, allFloors: true, shrines: ["Latex"]},
 
@@ -1941,7 +1941,7 @@ let KinkyDungeonEnemies = [
 			moveAmount: 7,
 		},
 		nopickpocket: true,
-		specialCD: 5, specialAttack: "Dash", specialRemove: "BindSuicideWill", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.5, specialMinrange: 1.5, specialsfx: "Miss",
+		specialCD: 5, specialAttack: "DashBonus", specialRemove: "BindSuicideWill", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.99, specialMinrange: 1.5, specialsfx: "Miss",
 		terrainTags: {"increasingWeight":-1, "slime": 4, "slimeOptOut": -2, "slimePref": 2, "jungle": 20, "alchemist": 4}, allFloors: true, shrines: ["Latex"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
@@ -3202,8 +3202,8 @@ let KinkyDungeonEnemies = [
 			levelBonus: 4,
 		},
 		nopickpocket: true,
-		specialCD: 8, specialAttack: "Dash", specialRemove: "BindSuicide", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.5, specialMinrange: 1.5, dashThrough: true, specialsfx: "Miss",
-		visionRadius: 3, visionSummoned: 12, maxhp: 4, minLevel: 0, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeBindSuicide", focusPlayer: true,
+		specialCD: 8, specialAttack: "DashBonus", specialRemove: "BindSuicide", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.99, specialMinrange: 1.5, dashThrough: true, specialsfx: "Miss",
+		visionRadius: 5, visionSummoned: 12, maxhp: 4, minLevel: 0, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeBindSuicide", focusPlayer: true,
 		suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 1,
 		terrainTags: {"trap": 50, revenge: 50, gag: -40}, allFloors: true, shrines: [], summonTags: ["gag"],
 		events: [
@@ -3291,7 +3291,7 @@ let KinkyDungeonEnemies = [
 			levelBonus: 4,
 		},
 		nopickpocket: true,
-		specialCD: 8, specialAttack: "Dash", specialRemove: "BindSuicide", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.5, specialMinrange: 1.5, dashThrough: true, specialsfx: "Miss",
+		specialCD: 8, specialAttack: "DashBonus", specialRemove: "BindSuicide", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.99, specialMinrange: 1.5, dashThrough: true, specialsfx: "Miss",
 		visionRadius: 9, visionSummoned: 12, maxhp: 4, minLevel: 4, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeBindSuicide", focusPlayer: true,
 		suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 1,
 		terrainTags: {"trap": 25, revenge: 25, blindfold: -20}, allFloors: true, shrines: [], summonTags: ["blindfold"],
@@ -3336,8 +3336,8 @@ let KinkyDungeonEnemies = [
 			levelBonus: 4,
 		},
 		nopickpocket: true,
-		specialCD: 8, specialAttack: "Dash", specialRemove: "BindSuicide", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.5, specialMinrange: 1.5, dashThrough: true, specialsfx: "Miss",
-		visionRadius: 4, visionSummoned: 12, maxhp: 2, minLevel: 0, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeBindSuicide", suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "charm", fullBoundBonus: 1,
+		specialCD: 8, specialAttack: "DashBonus", specialRemove: "BindSuicide", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.99, specialMinrange: 1.5, dashThrough: true, specialsfx: "Miss",
+		visionRadius: 5, visionSummoned: 12, maxhp: 2, minLevel: 0, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeBindSuicide", suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "charm", fullBoundBonus: 1,
 		terrainTags: {"doortrap": 6, revenge: 50, "trap": 50, cuffs: -40}, allFloors: true, shrines: ["Metal"], summonTags: ["cuffs"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
@@ -3396,8 +3396,8 @@ let KinkyDungeonEnemies = [
 		maxblock: 0,
 		maxdodge: 0,
 		nonDirectional: true,
-		specialCD: 8, specialAttack: "MeleeDash", specialRemove: "SuicideMeleeBindLockWill", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.5, specialMinrange: 1.5, dashThrough: true, specialsfx: "Miss",
-		visionRadius: 3, visionSummoned: 12, maxhp: 4, minLevel: 0, weight:0, movePoints: 1, attackPoints: 3, attack: "SuicideMeleeBindLockWill", attackWidth: 3, tilesMinRange: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2,
+		specialCD: 8, specialAttack: "MeleeDash", specialRemove: "SuicideMeleeBindLockWill", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.99, specialMinrange: 1.5, dashThrough: false, specialsfx: "Miss",
+		visionRadius: 5, visionSummoned: 12, maxhp: 4, minLevel: 0, weight:0, movePoints: 1, attackPoints: 3, attack: "SuicideMeleeBindLockWill", attackWidth: 3, tilesMinRange: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"secondhalf":1, "lastthird":1, revenge: 60, "doortrap": 5, "trap": 40}, allFloors: true, shrines: ["Metal"],
 		maxLevel: 3,
 		events: [
@@ -3514,7 +3514,7 @@ let KinkyDungeonEnemies = [
 		Resistance: {
 			profile: ["rope", "construct"],
 		},
-		specialCD: 8, specialAttack: "Dash", specialRemove: "BindSuicide", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.5, specialMinrange: 1.5, dashThrough: true, specialsfx: "Miss",
+		specialCD: 8, specialAttack: "DashBonus", specialRemove: "BindSuicide", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.99, specialMinrange: 1.5, dashThrough: true, specialsfx: "Miss",
 		visionRadius: 5, maxhp: 8, minLevel: 2, weight:1, movePoints: 1, attackPoints: 3, attack: "MeleeBindSuicideWill", suicideOnAdd: true, attackWidth: 1, attackRange: 2.5, power: 2, multiBind: 2, dmgType: "chain", fullBoundBonus: 2,
 		terrainTags: {"trap": 30, revenge: 30}, allFloors: true, shrines: ["Rope"],
 		events: [
