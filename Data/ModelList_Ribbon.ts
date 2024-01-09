@@ -429,3 +429,6 @@ AddModel(GetModelWithExtraLayers("RibbonLegs3", "RibbonLegs2", [
 		InheritColor: "Ribbon",
 	},
 ], "RibbonHarness", false));
+
+AddModel(GetModelFashionVersion("RibbonHarness", true));
+AddModel(GetModelFashionVersion("RibbonCrotch", true));

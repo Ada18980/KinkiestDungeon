@@ -52,7 +52,7 @@ AddModel({
 	AddPose: ["Mittens"],
 	Layers: ToLayerMap([
 		{ Name: "LeatherRight", Layer: "MittenRight", Pri: 100,
-			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie", "Boxtie", "Up"]),
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie", "Up"]),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			SwapLayerPose: {Crossed: "CrossMittenRight", Front: "ForeMittenRight"},
 			InheritColor: "Mitten",
