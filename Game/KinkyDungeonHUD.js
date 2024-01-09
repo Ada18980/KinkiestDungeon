@@ -993,7 +993,7 @@ function KinkyDungeonDrawActionBar(x, y) {
 			24, "left", 110, 0.9);
 		KinkyDungeonBarTo(kdstatusboard, 1000, BalanceOffset + 8, 500, 12, 100*KDGameData.Balance,
 			"#63ab3f", "#283540", KDGameData.Balance * 100, "#ffee83",
-			KDSteps(KDGameData.Balance, -KDGetBalanceCost()), "#283540", "#63ab3f");
+			KDSteps(KDGameData.Balance, -KDGetBalanceCost()*1.5), "#283540", "#63ab3f");
 
 		if (!KDGameData.Training) KDGameData.Training = {};
 		DrawTextFitKDTo(kdstatusboard, TextGet("KDBalanceTraining").replace("AMNT", "" + (KDGameData.Training.Heels?.training_stage || 0)), 1500, BalanceOffset, 200, "#ffffff", KDTextGray2,

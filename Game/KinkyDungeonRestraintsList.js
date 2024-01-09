@@ -2310,6 +2310,20 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.9, enemyTags: {"kittyRestraints":8}, playerTags: {}, minLevel: 4, allFloors: true, shrine: ["Leather", "Mittens", "Will"]},
 	{inventory: true, name: "KittySuit", debris: "Belts", Asset: "BitchSuit", Color: "Default", Group: "ItemArms", DefaultLock: "Red",
 		Model: "Petsuit",
+		factionFilters: {
+			Arms: {
+				color: "DarkNeutral", override: true,
+			},
+			ArmsBelts: {
+				color: "LightNeutral", override: true,
+			},
+			Legs: {
+				color: "DarkNeutral", override: true,
+			},
+			LegsBelts: {
+				color: "LightNeutral", override: true,
+			},
+		},
 		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"],
 		hobble: 2,
 		power: 11, weight: 0, escapeChance: {"Struggle": -0.2, "Cut": 0.1, "Remove": -0.1, "Pick": 0.15},
@@ -2321,6 +2335,20 @@ const KinkyDungeonRestraints = [
 		Model: "Petsuit",
 		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"], power: 12, weight: 0,
 		hobble: 2,
+		factionFilters: {
+			Arms: {
+				color: "DarkNeutral", override: true,
+			},
+			ArmsBelts: {
+				color: "LightNeutral", override: true,
+			},
+			Legs: {
+				color: "DarkNeutral", override: true,
+			},
+			LegsBelts: {
+				color: "LightNeutral", override: true,
+			},
+		},
 		escapeChance: {"Struggle": -0.15, "Cut": 0.12, "Remove": -0.05, "Pick": 0.15},
 		helpChance: {"Remove": 0.2}, maxwill: 0.15, enemyTags: {"petsuitSpell": 1}, playerTags: {"NoPet": -1000}, minLevel: 0, allFloors: true, shrine: ["Leather", "Petsuits", "Conjure"]},
 	{inventory: true, name: "WolfPetsuit", inaccessible: true, debris: "Belts", Asset: "StrictLeatherPetCrawler", Color: "Default", Group: "ItemArms",
@@ -2328,6 +2356,20 @@ const KinkyDungeonRestraints = [
 		Model: "Petsuit",
 		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"], power: 14, weight: 0,
 		hobble: 2,
+		factionFilters: {
+			Arms: {
+				color: "DarkNeutral", override: true,
+			},
+			ArmsBelts: {
+				color: "Highlight", override: true,
+			},
+			Legs: {
+				color: "DarkNeutral", override: true,
+			},
+			LegsBelts: {
+				color: "Highlight", override: true,
+			},
+		},
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', kind: "Nevermere", mult: 0.8, power: 2,},
 		],
@@ -2337,6 +2379,20 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "KittyPetSuit", inaccessible: true, debris: "Belts", Asset: "BitchSuit", Color: "Default", Group: "ItemArms",
 		DefaultLock: "Blue",
 		Model: "Petsuit",
+		factionFilters: {
+			Arms: {
+				color: "DarkNeutral", override: true,
+			},
+			ArmsBelts: {
+				color: "Highlight", override: true,
+			},
+			Legs: {
+				color: "DarkNeutral", override: true,
+			},
+			LegsBelts: {
+				color: "Highlight", override: true,
+			},
+		},
 		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"],power: 14, weight: 0,
 		hobble: 2,
 		escapeChance: {"Struggle": -0.3, "Cut": 0.0, "Remove": -0.3, "Pick": 0.15},
@@ -3790,11 +3846,9 @@ const KinkyDungeonRestraints = [
 
 	},
 	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, good: true, name: "PotionCollar", accessible: true, Asset: "SlenderSteelCollar", Color: ["#6E5B38"], Group: "ItemNeck", power: 1, weight: 0, escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.5, "Pick": 0.15}, potionCollar: true, allowPotions: true,
-		Model: "SteelCollar",
+		Model: "MageCollar",
 		value: 500,
-		Filters: {
-			BaseMetal: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1.8833333333333333,"green":1.1166666666666667,"blue":0.3833333333333333,"alpha":1},
-		},
+		Filters: {"Hardware":{"gamma":1,"saturation":0,"contrast":1.24,"brightness":1,"red":1.8431372549019607,"green":1.0980392156862746,"blue":0.29411764705882354,"alpha":1}},
 		enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: []},
 	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, good: true, name: "SlimeWalkers", debris: "Belts", inaccessible: true, Asset: "BalletHeels", Color: "#ff00ff", Group: "ItemBoots", power: 1, weight: 0, slimeWalk: true,
 		value: 250,

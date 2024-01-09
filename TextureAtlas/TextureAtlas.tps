@@ -189,6 +189,7 @@
             <key type="filename">../Models/Armbinder/WolfHarness.png</key>
             <key type="filename">../Models/ArmorChain/Shirt.png</key>
             <key type="filename">../Models/ArmorChain/ShirtChest.png</key>
+            <key type="filename">../Models/ArmorChain/ShirtChestFree.png</key>
             <key type="filename">../Models/ArmorChain/ShirtChestHogtie.png</key>
             <key type="filename">../Models/ArmorChain/ShirtChestUp.png</key>
             <key type="filename">../Models/ArmorChain/ShirtHogtie.png</key>
@@ -500,6 +501,16 @@
             <key type="filename">../Models/Chastity/ProtoLining.png</key>
             <key type="filename">../Models/Chastity/ProtoLock.png</key>
             <key type="filename">../Models/Chastity/ProtoPlug.png</key>
+            <key type="filename">../Models/China/Bra.png</key>
+            <key type="filename">../Models/China/Dress.png</key>
+            <key type="filename">../Models/China/DressSkirt.png</key>
+            <key type="filename">../Models/China/DressSkirtClosed.png</key>
+            <key type="filename">../Models/China/DressSkirtClosedCrotchStrap.png</key>
+            <key type="filename">../Models/China/DressSkirtCrotchStrap.png</key>
+            <key type="filename">../Models/China/DressSkirtKneel.png</key>
+            <key type="filename">../Models/China/DressSkirtKneelCrotchStrap.png</key>
+            <key type="filename">../Models/China/DressSkirtOverKneel.png</key>
+            <key type="filename">../Models/China/Highlights.png</key>
             <key type="filename">../Models/Collars/Choker.png</key>
             <key type="filename">../Models/Collars/DragonCollar.png</key>
             <key type="filename">../Models/Collars/Future.png</key>
@@ -1073,6 +1084,24 @@
             <key type="filename">../Models/Legbinder/RightLegbinderClosed.png</key>
             <key type="filename">../Models/Legbinder/RightLegbinderHogtie.png</key>
             <key type="filename">../Models/Legbinder/RightLegbinderKneelClosed.png</key>
+            <key type="filename">../Models/Mage/Band.png</key>
+            <key type="filename">../Models/Mage/BandCrotchStrap.png</key>
+            <key type="filename">../Models/Mage/BandKneel.png</key>
+            <key type="filename">../Models/Mage/BandKneelCrotchStrap.png</key>
+            <key type="filename">../Models/Mage/MageBra.png</key>
+            <key type="filename">../Models/Mage/MageBraStripes.png</key>
+            <key type="filename">../Models/Mage/MageCollar.png</key>
+            <key type="filename">../Models/Mage/MageCollarCrystal.png</key>
+            <key type="filename">../Models/Mage/MageCollarHardware.png</key>
+            <key type="filename">../Models/Mage/MageCollarTie.png</key>
+            <key type="filename">../Models/Mage/MageCorset.png</key>
+            <key type="filename">../Models/Mage/MageCorsetStripes.png</key>
+            <key type="filename">../Models/Mage/Skirt.png</key>
+            <key type="filename">../Models/Mage/SkirtCrotchStrap.png</key>
+            <key type="filename">../Models/Mage/SkirtKneel.png</key>
+            <key type="filename">../Models/Mage/SkirtKneelCrotchStrap.png</key>
+            <key type="filename">../Models/Mage/SkirtOverKneel.png</key>
+            <key type="filename">../Models/Mage/SkirtOverKneelCrotchStrap.png</key>
             <key type="filename">../Models/Maid/Apron.png</key>
             <key type="filename">../Models/Maid/ApronKneel.png</key>
             <key type="filename">../Models/Maid/Blouse.png</key>
@@ -1137,6 +1166,7 @@
             <key type="filename">../Models/Mittens/LatexLeftFree.png</key>
             <key type="filename">../Models/Mittens/LatexLeftFront.png</key>
             <key type="filename">../Models/Mittens/LatexLeftYoked.png</key>
+            <key type="filename">../Models/Mittens/LatexRightBoxtie.png</key>
             <key type="filename">../Models/Mittens/LatexRightCrossed.png</key>
             <key type="filename">../Models/Mittens/LatexRightFree.png</key>
             <key type="filename">../Models/Mittens/LatexRightFront.png</key>
@@ -1144,6 +1174,7 @@
             <key type="filename">../Models/Mittens/LeatherLeftFree.png</key>
             <key type="filename">../Models/Mittens/LeatherLeftFront.png</key>
             <key type="filename">../Models/Mittens/LeatherLeftYoked.png</key>
+            <key type="filename">../Models/Mittens/LeatherRightBoxtie.png</key>
             <key type="filename">../Models/Mittens/LeatherRightCrossed.png</key>
             <key type="filename">../Models/Mittens/LeatherRightFree.png</key>
             <key type="filename">../Models/Mittens/LeatherRightFront.png</key>
@@ -1170,6 +1201,65 @@
             <key type="filename">../Models/Ninja/BeltLines.png</key>
             <key type="filename">../Models/Ninja/Collar.png</key>
             <key type="filename">../Models/Ninja/CollarTag.png</key>
+            <key type="filename">../Models/Ninja/KneeLeftClosed.png</key>
+            <key type="filename">../Models/Ninja/KneeLeftHogtie.png</key>
+            <key type="filename">../Models/Ninja/KneeLeftKneel.png</key>
+            <key type="filename">../Models/Ninja/KneeLeftKneelClosed.png</key>
+            <key type="filename">../Models/Ninja/KneeLeftSpread.png</key>
+            <key type="filename">../Models/Ninja/KneeRightClosed.png</key>
+            <key type="filename">../Models/Ninja/KneeRightHogtie.png</key>
+            <key type="filename">../Models/Ninja/KneeRightKneel.png</key>
+            <key type="filename">../Models/Ninja/KneeRightKneelClosed.png</key>
+            <key type="filename">../Models/Ninja/KneeRightSpread.png</key>
+            <key type="filename">../Models/Ninja/LegLeftHogtie.png</key>
+            <key type="filename">../Models/Ninja/ShoeLeftClosed.png</key>
+            <key type="filename">../Models/Ninja/ShoeLeftHogtie.png</key>
+            <key type="filename">../Models/Ninja/ShoeLeftKneel.png</key>
+            <key type="filename">../Models/Ninja/ShoeLeftKneelClosed.png</key>
+            <key type="filename">../Models/Ninja/ShoeLeftSpread.png</key>
+            <key type="filename">../Models/Ninja/ShoeRightClosed.png</key>
+            <key type="filename">../Models/Ninja/ShoeRightKneel.png</key>
+            <key type="filename">../Models/Ninja/ShoeRightSpread.png</key>
+            <key type="filename">../Models/Ninja/Skirt.png</key>
+            <key type="filename">../Models/Ninja/SkirtBand.png</key>
+            <key type="filename">../Models/Ninja/SkirtBandCrotchStrap.png</key>
+            <key type="filename">../Models/Ninja/SkirtBandKneel.png</key>
+            <key type="filename">../Models/Ninja/SkirtBandKneelCrotchStrap.png</key>
+            <key type="filename">../Models/Ninja/SkirtBandOverKneel.png</key>
+            <key type="filename">../Models/Ninja/SkirtCrotchStrap.png</key>
+            <key type="filename">../Models/Ninja/SkirtKneel.png</key>
+            <key type="filename">../Models/Ninja/SkirtKneelCrotchStrap.png</key>
+            <key type="filename">../Models/Ninja/SkirtOverKneel.png</key>
+            <key type="filename">../Models/Ninja/SkirtOverKneelCrotchStrap.png</key>
+            <key type="filename">../Models/Ninja/SockLeftClosed.png</key>
+            <key type="filename">../Models/Ninja/SockLeftKneel.png</key>
+            <key type="filename">../Models/Ninja/SockLeftKneelClosed.png</key>
+            <key type="filename">../Models/Ninja/SockLeftSpread.png</key>
+            <key type="filename">../Models/Ninja/SockRightClosed.png</key>
+            <key type="filename">../Models/Ninja/SockRightKneel.png</key>
+            <key type="filename">../Models/Ninja/SockRightSpread.png</key>
+            <key type="filename">../Models/Ninja/ThighLeftClosed.png</key>
+            <key type="filename">../Models/Ninja/ThighLeftHogtie.png</key>
+            <key type="filename">../Models/Ninja/ThighLeftKneel.png</key>
+            <key type="filename">../Models/Ninja/ThighLeftKneelClosed.png</key>
+            <key type="filename">../Models/Ninja/ThighLeftSpread.png</key>
+            <key type="filename">../Models/Ninja/ThighRightClosed.png</key>
+            <key type="filename">../Models/Ninja/ThighRightHogtie.png</key>
+            <key type="filename">../Models/Ninja/ThighRightKneel.png</key>
+            <key type="filename">../Models/Ninja/ThighRightKneelClosed.png</key>
+            <key type="filename">../Models/Ninja/ThighRightSpread.png</key>
+            <key type="filename">../Models/Ninja/Top.png</key>
+            <key type="filename">../Models/Ninja/TopBand.png</key>
+            <key type="filename">../Models/Ninja/TopBandChest.png</key>
+            <key type="filename">../Models/Ninja/TopBandChestTied.png</key>
+            <key type="filename">../Models/Ninja/TopBandChestUp.png</key>
+            <key type="filename">../Models/Ninja/TopBandRim.png</key>
+            <key type="filename">../Models/Ninja/TopBandRimChest.png</key>
+            <key type="filename">../Models/Ninja/TopBandRimChestTied.png</key>
+            <key type="filename">../Models/Ninja/TopBandRimChestUp.png</key>
+            <key type="filename">../Models/Ninja/TopChest.png</key>
+            <key type="filename">../Models/Ninja/TopChestTied.png</key>
+            <key type="filename">../Models/Ninja/TopChestUp.png</key>
             <key type="filename">../Models/Nipples/Clamps.png</key>
             <key type="filename">../Models/Nipples/ClampsBullet.png</key>
             <key type="filename">../Models/Nipples/Rings.png</key>
@@ -1177,9 +1267,34 @@
             <key type="filename">../Models/Nipples/VibePiercings.png</key>
             <key type="filename">../Models/Nipples/VibePiercingsBullet.png</key>
             <key type="filename">../Models/Nipples/Weights.png</key>
+            <key type="filename">../Models/OperaGloves/ForeGloveLeftCrossed.png</key>
+            <key type="filename">../Models/OperaGloves/ForeGloveLeftFront.png</key>
+            <key type="filename">../Models/OperaGloves/ForeGloveRightCrossed.png</key>
+            <key type="filename">../Models/OperaGloves/ForeGloveRightFront.png</key>
+            <key type="filename">../Models/OperaGloves/GloveLeftBoxtie.png</key>
+            <key type="filename">../Models/OperaGloves/GloveLeftCrossed.png</key>
+            <key type="filename">../Models/OperaGloves/GloveLeftFree.png</key>
+            <key type="filename">../Models/OperaGloves/GloveLeftFront.png</key>
+            <key type="filename">../Models/OperaGloves/GloveLeftUp.png</key>
+            <key type="filename">../Models/OperaGloves/GloveLeftWristtie.png</key>
+            <key type="filename">../Models/OperaGloves/GloveLeftYoked.png</key>
+            <key type="filename">../Models/OperaGloves/GloveRightBoxtie.png</key>
+            <key type="filename">../Models/OperaGloves/GloveRightCrossed.png</key>
+            <key type="filename">../Models/OperaGloves/GloveRightFree.png</key>
+            <key type="filename">../Models/OperaGloves/GloveRightFront.png</key>
+            <key type="filename">../Models/OperaGloves/GloveRightUp.png</key>
+            <key type="filename">../Models/OperaGloves/GloveRightWristtie.png</key>
+            <key type="filename">../Models/OperaGloves/GloveRightYoked.png</key>
             <key type="filename">../Models/Petsuit/Arms.png</key>
+            <key type="filename">../Models/Petsuit/ArmsBelts.png</key>
+            <key type="filename">../Models/Petsuit/LeftLegsBeltsKneel.png</key>
+            <key type="filename">../Models/Petsuit/LeftLegsBeltsKneelClosed.png</key>
             <key type="filename">../Models/Petsuit/LeftLegsKneel.png</key>
+            <key type="filename">../Models/Petsuit/LeftLegsKneelBelts.png</key>
             <key type="filename">../Models/Petsuit/LeftLegsKneelClosed.png</key>
+            <key type="filename">../Models/Petsuit/LegsBeltsHogtie.png</key>
+            <key type="filename">../Models/Petsuit/LegsBeltsKneel.png</key>
+            <key type="filename">../Models/Petsuit/LegsBeltsKneelClosed.png</key>
             <key type="filename">../Models/Petsuit/LegsHogtie.png</key>
             <key type="filename">../Models/Petsuit/LegsKneel.png</key>
             <key type="filename">../Models/Petsuit/LegsKneelClosed.png</key>
@@ -1444,6 +1559,41 @@
             <key type="filename">../Models/Rubber/TorsoLower.png</key>
             <key type="filename">../Models/Rubber/TorsoLowerKneel.png</key>
             <key type="filename">../Models/Rubber/TorsoUpper.png</key>
+            <key type="filename">../Models/Sailor/Bust.png</key>
+            <key type="filename">../Models/Sailor/BustStripe.png</key>
+            <key type="filename">../Models/Sailor/Collar.png</key>
+            <key type="filename">../Models/Sailor/CollarStripe.png</key>
+            <key type="filename">../Models/Sailor/CollarStripeTied.png</key>
+            <key type="filename">../Models/Sailor/CollarStripeUp.png</key>
+            <key type="filename">../Models/Sailor/CollarStripeYoked.png</key>
+            <key type="filename">../Models/Sailor/CollarTied.png</key>
+            <key type="filename">../Models/Sailor/CollarUp.png</key>
+            <key type="filename">../Models/Sailor/CollarYoked.png</key>
+            <key type="filename">../Models/Sailor/HemLeft.png</key>
+            <key type="filename">../Models/Sailor/HemLeftTied.png</key>
+            <key type="filename">../Models/Sailor/HemLeftUp.png</key>
+            <key type="filename">../Models/Sailor/HemLeftYoked.png</key>
+            <key type="filename">../Models/Sailor/HemRight.png</key>
+            <key type="filename">../Models/Sailor/HemRightTied.png</key>
+            <key type="filename">../Models/Sailor/HemRightUp.png</key>
+            <key type="filename">../Models/Sailor/HemRightYoked.png</key>
+            <key type="filename">../Models/Sailor/Ribbon.png</key>
+            <key type="filename">../Models/Sailor/RibbonTied.png</key>
+            <key type="filename">../Models/Sailor/RibbonUp.png</key>
+            <key type="filename">../Models/Sailor/RibbonYoked.png</key>
+            <key type="filename">../Models/Sailor/Shirt.png</key>
+            <key type="filename">../Models/Sailor/ShirtChest.png</key>
+            <key type="filename">../Models/Sailor/ShirtChestTied.png</key>
+            <key type="filename">../Models/Sailor/ShirtChestUp.png</key>
+            <key type="filename">../Models/Sailor/ShirtChestYoked.png</key>
+            <key type="filename">../Models/Sailor/SleeveLeft.png</key>
+            <key type="filename">../Models/Sailor/SleeveLeftTied.png</key>
+            <key type="filename">../Models/Sailor/SleeveLeftUp.png</key>
+            <key type="filename">../Models/Sailor/SleeveLeftYoked.png</key>
+            <key type="filename">../Models/Sailor/SleeveRight.png</key>
+            <key type="filename">../Models/Sailor/SleeveRightTied.png</key>
+            <key type="filename">../Models/Sailor/SleeveRightUp.png</key>
+            <key type="filename">../Models/Sailor/SleeveRightYoked.png</key>
             <key type="filename">../Models/ShadowHands/Arms1.png</key>
             <key type="filename">../Models/ShadowHands/Arms2.png</key>
             <key type="filename">../Models/ShadowHands/Crotch.png</key>
@@ -2605,6 +2755,51 @@
                 <rect>377,225,754,450</rect>
                 <key>scale9Paddings</key>
                 <rect>377,225,754,450</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/Ninja/SkirtBandOverKneelCrotchStrap.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>2,2,5,5</rect>
+                <key>scale9Paddings</key>
+                <rect>2,2,5,5</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/Ninja/SockRightHogtie.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1,1,1,2</rect>
+                <key>scale9Paddings</key>
+                <rect>1,1,1,2</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/Ninja/SockRightKneelClosed.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1,1,3,2</rect>
+                <key>scale9Paddings</key>
+                <rect>1,1,3,2</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

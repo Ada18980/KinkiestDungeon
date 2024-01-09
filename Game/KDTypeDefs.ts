@@ -1130,6 +1130,7 @@ interface enemy extends KDHasTags {
 		/** Forces the event to play when a dash is blocked, even if there are no eventable attack types*/
 		EventOnDashBlock?: boolean,
 	},
+	attackBonus?: number,
 	/** */
 	cohesion?: number,
 	/** */
@@ -1531,6 +1532,7 @@ interface entity {
 	lifetime?: number,
 	maxlifetime?: number,
 	attackPoints?: number,
+	attackBonus?: number,
 	movePoints?: number,
 	aware?: boolean,
 	vp?: number,

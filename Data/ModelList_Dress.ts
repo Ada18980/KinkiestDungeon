@@ -553,7 +553,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Skirt", Layer: "Skirt", Pri: 9,
 			Poses: ToMap([...LEGPOSES]),
-			HideWhenOverridden: true,
+			//HideWhenOverridden: true,
 			SwapLayerPose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
 			MorphPoses: {Hogtie: "Closed", Closed: "Closed", Kneel: "Kneel", KneelClosed: "Kneel"},
 			AppendPose: {Hogtie: "CrotchStrap", CrotchStrap: "CrotchStrap"},
@@ -903,3 +903,291 @@ AddModel({
 		...GetModelLayers("LaceBra"),
 	])
 });
+
+
+AddModel({
+	Name: "MageSkirt",
+	Folder: "Mage",
+	Parent: "Mage",
+	TopLevel: true,
+	Categories: ["Skirts"],
+	AddPoseConditional: {
+		EncaseTorsoLower: ["Skirt"]
+	},
+	Layers: ToLayerMap([
+		{ Name: "Skirt", Layer: "Skirt", Pri: 13,
+			Poses: ToMap([...LEGPOSES]),
+			NoOverride: true,
+			//HideWhenOverridden: true,
+			SwapLayerPose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
+			AppendPose: ToMapDupe(["CrotchStrap"]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			Invariant: true,
+		},
+		{ Name: "Band", Layer: "Skirt", Pri: 13.1,
+			TieToLayer: "Skirt",
+			NoOverride: true,
+			Poses: ToMap([...LEGPOSES]),
+			//HideWhenOverridden: true,
+			//SwapLayerPose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
+			AppendPose: ToMapDupe(["CrotchStrap"]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			Invariant: true,
+		},
+		{ Name: "SkirtOver", Layer: "SkirtOver", Pri: 9,
+			Poses: ToMap([...KNEELPOSES]),
+			//RequirePoses: ToMap(["CrotchStrap"]),
+			TieToLayer: "Skirt", NoOverride: true,
+			InheritColor: "Skirt",
+			AppendPose: ToMapDupe(["CrotchStrap"]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			//Invariant: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "MageCorset",
+	Folder: "Mage",
+	Parent: "MageTop",
+	TopLevel: true,
+	Categories: ["Corsets"],
+	AddPose: ["Corset"],
+	Layers: ToLayerMap([
+		{ Name: "MageCorset", Layer: "Bustier", Pri: 2.1,
+			Invariant: true,
+			InheritColor: "Base",
+			DisplaceAmount: 100,
+			DisplaceLayers: ToMap(["CorsetTorso"]),
+			DisplacementSprite: "CorsetSquish",
+			DisplacementInvariant: true,
+		},
+		{ Name: "MageCorsetStripes", Layer: "Bustier", Pri: 2,
+			Invariant: true,
+			TieToLayer: "MageCorset",
+			NoOverride: true,
+			InheritColor: "Stripes",
+		},
+	])
+});
+
+AddModel({
+	Name: "MageBra",
+	Folder: "Mage",
+	TopLevel: true,
+	Parent: "MageTop",
+	Categories: ["Bras"],
+	Layers: ToLayerMap([
+		{ Name: "MageBra", Layer: "BraChest", Pri: 7.1,
+			Invariant: true,
+			InheritColor: "BraBase",
+		},
+		{ Name: "MageBraStripes", Layer: "BraChest", Pri: 7,
+			Invariant: true,
+			TieToLayer: "LaceChest",
+			NoOverride: true,
+			InheritColor: "BraStripes",
+		},
+	])
+});
+
+
+AddModel({
+	Name: "MageTop",
+	Folder: "Mage",
+	TopLevel: true,
+	Parent: "Mage",
+	Categories: ["Tops"],
+	Layers: ToLayerMap([
+		{ Name: "MageBra", Layer: "SuitChestOver", Pri: 20.1,
+			Invariant: true,
+			InheritColor: "BraBase",
+		},
+		{ Name: "MageBraStripes", Layer: "SuitChestOver", Pri: 20,
+			Invariant: true,
+			TieToLayer: "LaceChest",
+			NoOverride: true,
+			InheritColor: "BraStripes",
+		},
+		{ Name: "MageCorset", Layer: "Corset", Pri: -10,
+			Invariant: true,
+			InheritColor: "Base",
+			DisplaceAmount: 100,
+			DisplaceLayers: ToMap(["CorsetTorso"]),
+			DisplacementSprite: "CorsetSquish",
+			DisplacementInvariant: true,
+		},
+		{ Name: "MageCorsetStripes", Layer: "Corset", Pri: -10.1,
+			Invariant: true,
+			TieToLayer: "MageCorset",
+			NoOverride: true,
+			InheritColor: "Stripes",
+		},
+	])
+});
+
+
+AddModel({
+	Name: "MageCollar",
+	Folder: "Mage",
+	Parent: "MageTop",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "MageCollar", Layer: "NecklaceCharm", Pri: 20.1,
+			Invariant: true,
+			InheritColor: "Base",
+		},
+		{ Name: "MageCollarCrystal", Layer: "NecklaceCharm", Pri: 20,
+			Invariant: true,
+			TieToLayer: "MageCollar",
+			NoOverride: true,
+			InheritColor: "Crystal",
+		},
+		{ Name: "MageCollarHardware", Layer: "NecklaceCharm", Pri: 20,
+			Invariant: true,
+			TieToLayer: "MageCollar",
+			NoOverride: true,
+			InheritColor: "Hardware",
+		},
+	])
+});
+AddModel({
+	Name: "MageCollar2",
+	Folder: "Mage",
+	Parent: "MageCollar",
+	TopLevel: false,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		...GetModelLayers("MageCollar"),
+		{ Name: "MageCollarTie", Layer: "NecklaceCharm", Pri: 19.9,
+			Invariant: true,
+			TieToLayer: "MageCollar",
+			NoOverride: true,
+			InheritColor: "Tie",
+		},
+	])
+});
+
+
+
+
+AddModel({
+	Name: "Mage",
+	Folder: "Mage",
+	TopLevel: true,
+	Categories: ["Uniforms"],
+	Layers: ToLayerMap([
+		...GetModelLayers("MageTop"),
+		...GetModelLayers("MageSkirt"),
+		...GetModelLayers("MageCollar2"),
+	])
+});
+
+
+AddModel({
+	Name: "ChineseDress",
+	Folder: "China",
+	Parent: "ChineseDress",
+	TopLevel: true,
+	Categories: ["Tops", "Uniforms"],
+	RemovePoses: ["EncaseTorsoUpper"],
+	Layers: ToLayerMap([
+		{ Name: "Dress", Layer: "Shirt", Pri: 1,
+			InheritColor: "Dress",
+			//HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			//MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel",},
+		},
+		{ Name: "Bra", Layer: "ShirtChest", Pri: 1,
+			InheritColor: "Top",
+			Poses: ToMap([...ARMPOSES]),
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
+			Invariant: true,
+		},
+		{ Name: "Highlights", Layer: "ShirtChest", Pri: 1.1,
+			InheritColor: "Highlights",
+			TieToLayer: "Bra",
+			NoOverride: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
+			Invariant: true,
+		},
+		{ Name: "DressSkirt", Layer: "Skirt", Pri: -10,
+			//NoOverride: true,
+			//InheritColor: "Skirt",
+			//HideWhenOverridden: true,
+			AppendPose: {Hogtie: "CrotchStrap", CrotchStrap: "CrotchStrap"},
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			SwapLayerPose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", Closed: "Closed",},
+		},
+		{ Name: "DressSkirtOverKneel", Layer: "Skirt", Pri: -10,
+			Poses: ToMap([...KNEELPOSES]),
+			Invariant: true,
+			InheritColor: "DressSkirt",
+			NoOverride: true,
+			//NoOverride: true,
+			TieToLayer: "DressSkirt",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "ChineseBra",
+	Folder: "China",
+	Parent: "ChineseDress",
+	TopLevel: true,
+	Categories: ["Bras"],
+	RemovePoses: ["EncaseTorsoUpper"],
+	Layers: ToLayerMap([
+		{ Name: "Bra", Layer: "BraChest", Pri: 1,
+			InheritColor: "Top",
+			Poses: ToMap([...ARMPOSES]),
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
+			Invariant: true,
+		},
+		{ Name: "Highlights", Layer: "BraChest", Pri: 1.1,
+			InheritColor: "Highlights",
+			TieToLayer: "Bra",
+			NoOverride: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
+			Invariant: true,
+		},
+
+	])
+});
+
+AddModel({
+	Name: "ChineseTop",
+	Folder: "China",
+	Parent: "ChineseDress",
+	TopLevel: false,
+	Categories: ["Tops"],
+	RemovePoses: ["EncaseTorsoUpper"],
+	Layers: ToLayerMap([
+		{ Name: "Bra", Layer: "ShirtChest", Pri: 1,
+			InheritColor: "Top",
+			Poses: ToMap([...ARMPOSES]),
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
+			Invariant: true,
+		},
+		{ Name: "Highlights", Layer: "ShirtChest", Pri: 1.1,
+			InheritColor: "Highlights",
+			TieToLayer: "Bra",
+			NoOverride: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
+			Invariant: true,
+		},
+
+	])
+});
+
