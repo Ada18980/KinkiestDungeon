@@ -28,6 +28,7 @@ Release A
 - Added offline mod loading
 - Added suspicious mod detection and filtering
 - New perks: Edging, Pleasure, Denial, and Teasing lovers
+- Some enemies, when dashing, will be able to attack immediately after dashing
 
 5.0.7
 Release A

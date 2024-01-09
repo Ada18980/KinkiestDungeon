@@ -909,6 +909,7 @@ function KinkyDungeonDrawEnemiesWarning(canvasOffsetX, canvasOffsetY, CamX, CamY
 					let special = enemy.usingSpecial ? "Special" : "";
 					let attackMult = KinkyDungeonGetBuffedStat(enemy.buffs, "AttackSlow", true);
 					let attackPoints = enemy.attackPoints - attackMult + 1.1;
+
 					//let preHit = false;
 					if (((enemy.usingSpecial && enemy.Enemy.specialAttackPoints) ? enemy.Enemy.specialAttackPoints : enemy.Enemy.attackPoints) > attackPoints) {
 						special = special + "Basic";
@@ -1911,47 +1912,50 @@ function KDDrawEnemyTooltip(enemy, offset) {
 		let list = Array.from(Object.keys(map));
 		let magic = false;
 		let repeats = {};
-		for (let t of list) {
-			for (let dt of Object.values(KinkyDungeonDamageTypes)) {
-				if ((t == dt.name + "resist" || t == dt.name + "weakness" || t == dt.name + "immune" || t == dt.name + "severeweakness")
-					|| (dt.name == "magic" && t.includes("magic") && enemy.Enemy.spellResist)) {
-					let mult = 1.0;
-					if (t == dt.name + "resist") mult = 0.5;
-					else if (t == dt.name + "weakness") mult = 1.5;
-					else if (t == dt.name + "immune") mult = 0;
-					else if (t == dt.name + "severeweakness") mult = 2.0;
-					if (dt.name == "magic" && !magic && enemy.Enemy.spellResist) {
-						magic = true;
-						mult *= KinkyDungeonMultiplicativeStat(enemy.Enemy.spellResist);
-					}
-					let st = TextGet("KinkyDungeonTooltipWeakness").replace("MULTIPLIER", "" + Math.round(mult * 100)/100).replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType"+ dt.name));
-
-					if (!repeats.DR) {
-						TooltipList.push({
-							str: "",
-							fg: "#ffffff",
-							bg: "#000000",
-							size: 10,
-						});
-						TooltipList.push({
-							str: TextGet("KDTooltipDamageResists"),
-							fg: "#ffffff",
-							bg: "#000000",
-							size: 20,
-						});
-						repeats.DR = true;
-					}
-					if (!repeats[st])
-						TooltipList.push({
-							str: st,
-							fg: dt.color,
-							bg: dt.bg,
-							size: 18,
-						});
-					repeats[st] = true;
+		//for (let t of list) {
+		let t = list;
+		for (let dt of Object.values(KinkyDungeonDamageTypes)) {
+			if ((t.includes(dt.name + "resist") || t.includes(dt.name + "weakness") || t.includes(dt.name + "immune") || t.includes(dt.name + "severeweakness"))
+				|| (dt.name == "magic" && t.includes("magic"))) {
+				let mult = 1.0;
+				if (t.includes(dt.name + "resist")) mult = 0.5;
+				else if (t.includes(dt.name + "weakness")) mult = 1.5;
+				else if (t.includes(dt.name + "immune")) mult = 0;
+				else if (t.includes(dt.name + "severeweakness")) mult = 2.0;
+				if (dt.name == "magic" && !magic) {
+					magic = true;
 				}
+				let st = TextGet("KinkyDungeonTooltipWeakness")
+					.replace("MULTIPLIER", "" + Math.round(mult * 100)/100)
+					.replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType"+ dt.name));
+				let name = TextGet("KinkyDungeonDamageType"+ dt.name);
+
+				if (!repeats.DR) {
+					TooltipList.push({
+						str: "",
+						fg: "#ffffff",
+						bg: "#000000",
+						size: 10,
+					});
+					TooltipList.push({
+						str: TextGet("KDTooltipDamageResists"),
+						fg: "#ffffff",
+						bg: "#000000",
+						size: 20,
+					});
+					repeats.DR = true;
+				}
+				if (!repeats[name])
+					TooltipList.push({
+						str: st,
+						fg: dt.color,
+						bg: dt.bg,
+						size: 18,
+					});
+				repeats[name] = true;
 			}
 		}
+		//}
 	}
 	return KDDrawTooltip(TooltipList, offset);
 }
@@ -3449,33 +3453,47 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	}
 	let specialCondition = enemy.Enemy.specialAttack != undefined && (!enemy.specialCD || enemy.specialCD <= 0) && (!enemy.Enemy.specialMinrange || AIData.playerDist > enemy.Enemy.specialMinrange);
 	let specialConditionSpecial = (enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialCondition) ? KDSpecialConditions[enemy.Enemy.specialCondition].criteria(enemy, AIData) : true;
-	if (specialCondition && specialConditionSpecial) {
-		AIData.attack = AIData.attack + enemy.Enemy.specialAttack;
-		if (!enemy.attackPoints) {
-			AIData.refreshWarningTiles = !enemy.usingSpecial;
-			enemy.usingSpecial = true;
-		}
 
-		if (enemy.Enemy && enemy.Enemy.hitsfxSpecial) AIData.hitsfx = enemy.Enemy.hitsfxSpecial;
+	let updateSpecial = () => {
+		specialCondition = enemy.Enemy.specialAttack != undefined && (!enemy.specialCD || enemy.specialCD <= 0) && (!enemy.Enemy.specialMinrange || AIData.playerDist > enemy.Enemy.specialMinrange);
+		specialConditionSpecial = (enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialCondition) ? KDSpecialConditions[enemy.Enemy.specialCondition].criteria(enemy, AIData) : true;
 
-		if (enemy.Enemy.specialRemove) AIData.attack = AIData.attack.replace(enemy.Enemy.specialRemove, "");
-		if (enemy.Enemy.specialRange && enemy.usingSpecial) {
-			AIData.range = enemy.Enemy.specialRange == 1 ? 1.5 : enemy.Enemy.specialRange;
+		AIData.hitsfx = (enemy.Enemy && enemy.Enemy.hitsfx) ? enemy.Enemy.hitsfx : "";
+		AIData.attack = enemy.Enemy.attack;
+		AIData.range = (enemy.Enemy.attackRange == 1 ? 1.5 : enemy.Enemy.attackRange) + KinkyDungeonGetBuffedStat(enemy.buffs, "AttackRange");
+		AIData.width = enemy.Enemy.attackWidth + KinkyDungeonGetBuffedStat(enemy.buffs, "AttackWidth");
+		AIData.damage = enemy.Enemy.dmgType;
+		AIData.power = enemy.Enemy.power + KinkyDungeonGetBuffedStat(enemy.buffs, "AttackPower");
+
+		if (specialCondition && specialConditionSpecial) {
+			AIData.attack = AIData.attack + enemy.Enemy.specialAttack;
+			if (!enemy.attackPoints) {
+				AIData.refreshWarningTiles = !enemy.usingSpecial;
+				enemy.usingSpecial = true;
+			}
+
+			if (enemy.Enemy && enemy.Enemy.hitsfxSpecial) AIData.hitsfx = enemy.Enemy.hitsfxSpecial;
+
+			if (enemy.Enemy.specialRemove) AIData.attack = AIData.attack.replace(enemy.Enemy.specialRemove, "");
+			if (enemy.Enemy.specialRange && enemy.usingSpecial) {
+				AIData.range = enemy.Enemy.specialRange == 1 ? 1.5 : enemy.Enemy.specialRange;
+			}
+			if (enemy.Enemy.specialWidth && enemy.usingSpecial) {
+				AIData.width = enemy.Enemy.specialWidth;
+			}
+			if (enemy.Enemy.specialPower && enemy.usingSpecial) {
+				AIData.power = enemy.Enemy.specialPower;
+			}
+			if (enemy.Enemy.specialDamage && enemy.usingSpecial) {
+				AIData.damage = enemy.Enemy.specialDamage;
+			}
 		}
-		if (enemy.Enemy.specialWidth && enemy.usingSpecial) {
-			AIData.width = enemy.Enemy.specialWidth;
+		if (enemy.usingSpecial && !specialConditionSpecial) {
+			enemy.usingSpecial = false;
+			if (KDSpecialConditions[enemy.Enemy.specialCondition].resetCD) enemy.specialCD = enemy.Enemy.specialCD;
 		}
-		if (enemy.Enemy.specialPower && enemy.usingSpecial) {
-			AIData.power = enemy.Enemy.specialPower;
-		}
-		if (enemy.Enemy.specialDamage && enemy.usingSpecial) {
-			AIData.damage = enemy.Enemy.specialDamage;
-		}
-	}
-	if (enemy.usingSpecial && !specialConditionSpecial) {
-		enemy.usingSpecial = false;
-		if (KDSpecialConditions[enemy.Enemy.specialCondition].resetCD) enemy.specialCD = enemy.Enemy.specialCD;
-	}
+	};
+	updateSpecial();
 
 	if (KDEnemyHasFlag(enemy, "nobind")) {
 		AIData.addMoreRestraints = false;
@@ -4244,9 +4262,13 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		&& (!AIData.ignoreRanged || AIData.playerDist < 1.5)
 		&& AIType.attack(enemy, player, AIData)
 		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.range, !enemy.Enemy.projectileAttack, !enemy.Enemy.projectileAttack);
-	if (canAttack) {//Player is adjacent
+	let first = true;
+	while (canAttack && (first || enemy.attackBonus > 0)) {//Player is adjacent
 		AIData.idle = false;
 		enemy.revealed = true;
+		if (!first) {
+			updateSpecial();
+		}
 
 		let dir = KinkyDungeonGetDirection(player.x - enemy.x, player.y - enemy.y);
 
@@ -4260,7 +4282,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			let attackMult = KinkyDungeonGetBuffedStat(enemy.buffs, "AttackSlow");
 			let attackTiles = enemy.warningTiles ? enemy.warningTiles : [dir];
 			let ap = (KDGameData.MovePoints < 0 && !KinkyDungeonHasWill(0.1) && KinkyDungeonLeashingEnemy()?.id == enemy.id) ? enemy.Enemy.movePoints+moveMult+1 : enemy.Enemy.attackPoints + attackMult;
-			if (!KinkyDungeonEnemyTryAttack(enemy, player, attackTiles, delta, enemy.x + dir.x, enemy.y + dir.y, (enemy.usingSpecial && enemy.Enemy.specialAttackPoints) ? enemy.Enemy.specialAttackPoints : ap, undefined, undefined, enemy.usingSpecial, AIData.refreshWarningTiles, AIData.attack, AIData.MovableTiles)) {
+			if (!KinkyDungeonEnemyTryAttack(enemy, player, attackTiles, first ? delta : 0, enemy.x + dir.x, enemy.y + dir.y, (enemy.usingSpecial && enemy.Enemy.specialAttackPoints) ? enemy.Enemy.specialAttackPoints : ap, undefined, undefined, enemy.usingSpecial, AIData.refreshWarningTiles, AIData.attack, AIData.MovableTiles)) {
 				if (enemy.warningTiles.length == 0 || (AIData.refreshWarningTiles && enemy.usingSpecial)) {
 					let minrange = enemy.Enemy.tilesMinRange ? enemy.Enemy.tilesMinRange : 1;
 					if (enemy.usingSpecial && enemy.Enemy.tilesMinRangeSpecial) minrange = enemy.Enemy.tilesMinRangeSpecial;
@@ -4299,6 +4321,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							}
 						}
 					}
+				}
+
+				if (first && AIData.attack.includes("Bonus") && !enemy.movePoints) {
+					if (!enemy.attackBonus) enemy.attackBonus = 0;
+					enemy.attackBonus += enemy.Enemy.attackBonus || 1; // bonus means they can attack again
 				}
 				// Easier to evase harness grabs
 				let BaseBlock = KinkyDungeonMultiplicativeStat(0.0 + AIData.accuracy - 1);
@@ -4461,6 +4488,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 					if (AIData.attack.includes("Dash") && !enemy.Enemy.Dash?.noDashOnBlock) {
 						KDDash(enemy, player, AIData.MovableTiles);
+					}
+					if (first && AIData.attack.includes("Bonus") && !enemy.movePoints) {
+						if (!enemy.attackBonus) enemy.attackBonus = 0;
+						enemy.attackBonus += enemy.Enemy.attackBonus || 1; // bonus means they can attack again
 					}
 					hit = false;
 				}
@@ -4832,6 +4863,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						Dash = d.Dash;
 						happened += d.happened;
 					}
+					if (first && AIData.attack.includes("Bonus") && !enemy.movePoints) {
+						if (!enemy.attackBonus) enemy.attackBonus = 0;
+						enemy.attackBonus += enemy.Enemy.attackBonus || 1; // bonus means they can attack again
+					}
 					if (AIData.attack.includes("Will") || willpowerDamage > 0 || KDEnemyHasFlag(enemy, "alwayswill")) {
 						if (willpowerDamage == 0)
 							willpowerDamage += AIData.power;
@@ -5050,7 +5085,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			enemy.fx = enemy.x + dir.x;
 			enemy.fy = enemy.y + dir.y;
 		}
-	} else {
+
+		first = false;
+	}
+	if (first) {
 		enemy.warningTiles = [];
 		enemy.attackPoints = 0;
 	}
@@ -5466,6 +5504,10 @@ function KinkyDungeonEnemyTryAttack(enemy, player, Tiles, delta, x, y, points, r
 	}
 
 	enemy.attackPoints += delta * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(enemy.buffs, "AttackSpeed"));
+	if (enemy.attackBonus) {
+		enemy.attackPoints += enemy.attackBonus * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(enemy.buffs, "AttackSpeed"));
+		enemy.attackBonus = 0;
+	}
 	if (!enemy.playWithPlayer)
 		KinkyDungeonSetFlag("NPCCombat",  3);
 
@@ -5654,6 +5696,7 @@ function KDDash(enemy, player, MovableTiles) {
 		if (tile && (tile.x != player.x || tile.y != player.y) && (tile.x != KinkyDungeonPlayerEntity.x || tile.y != KinkyDungeonPlayerEntity.y) && MovableTiles.includes(KinkyDungeonMapGet(tile.x, tile.y))) {
 			Dash = true;
 			KDMoveEntity(enemy, tile.x, tile.y, true);
+			enemy.movePoints = 0;
 			enemy.path = null;
 			happened += 1;
 			if (enemy.usingSpecial && enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialAttack.includes("Dash")) {
