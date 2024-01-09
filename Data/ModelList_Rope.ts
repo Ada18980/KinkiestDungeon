@@ -476,3 +476,8 @@ AddModel(GetModelWithExtraLayers("RopeLegs3", "RopeLegs2", [
 		NoOverride: true,
 	},
 ], "RopeHarness", false));
+
+
+AddModel(GetModelFashionVersion("RopeHarness", true));
+AddModel(GetModelFashionVersion("RopeCrotch", true));
+AddModel(GetModelFashionVersion("RopeChestStraps2", true));
