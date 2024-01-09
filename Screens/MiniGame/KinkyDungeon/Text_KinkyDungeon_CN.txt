@@ -6956,8 +6956,8 @@ While at 40 Battle Rhythm, you attack twice per turn.
 当战斗节奏达到 40 时，你每回合可以攻击两次。
 Devious Ingenuity
 邪恶的独创性
-Trap-type spells and consumables take 1 turn to cast instead of several.
-陷阱类法术和消耗品需要 1 回合即可施放，而不是数回合。
+Trap-type spells and consumables no longer require you to channel them, but still have a delay before arming.
+陷阱类法术和消耗品不再需要你引导它们，但在装备之前仍然有延迟。
 As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus...
 作为一名学员，你已经学会了在 100% 分心值的情况下通过恍惚状态引入清晰度的技术。然而，这种状态是不稳定的，施展法术可能会让你失去注意力……
 Inner Power
