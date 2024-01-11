@@ -13473,6 +13473,8 @@ Enjoying yourself? Let's have some fun~
 Наслаждаешься собой? Давайте немного повеселимся~
 You seem like you're having fun! Why don't we go for a walk~
 Похоже, тебе весело! Почему бы нам не прогуляться~
+Why don't we go for a walk?
+Почему бы нам не прогуляться~
 Wouldn't it be more interesting if...
 Разве не было бы интереснее, если бы...
 What have you got there?

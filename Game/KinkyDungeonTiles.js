@@ -147,11 +147,13 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 		KDStairsAltAction[KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).AltStairAction](toTile, suppressCheckPoint);
 	}
 	else {
-		if (!KinkyDungeonJailGuard() || !KinkyDungeonTetherLength() || (!(KDistEuclidean(KinkyDungeonJailGuard().x - KinkyDungeonPlayerEntity.x, KinkyDungeonJailGuard().y - KinkyDungeonPlayerEntity.y) <= KinkyDungeonTetherLength() + 2))) {
+		if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity) && (!KinkyDungeonJailGuard()
+			|| !KinkyDungeonTetherLength()
+			|| (!(KDistEuclidean(KinkyDungeonJailGuard().x - KinkyDungeonPlayerEntity.x, KinkyDungeonJailGuard().y - KinkyDungeonPlayerEntity.y) <= KinkyDungeonTetherLength() + 2)))) {
 
 			let tile = KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y);
 			let roomType = "";
-			let currCheckpoint = MiniGameKinkyDungeonCheckpoint;
+			//let currCheckpoint = MiniGameKinkyDungeonCheckpoint;
 			let originalRoom = KDGameData.RoomType;
 			let altRoom = KDGameData.RoomType ? KinkyDungeonAltFloor(KDGameData.RoomType) : KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel);
 			let altRoomTarget = (tile && tile.RoomType) ? KinkyDungeonAltFloor(tile.RoomType) : undefined;
@@ -194,6 +196,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 					if (KDGameData.PriorJailbreaks > 0) KDGameData.PriorJailbreaksDecay = (KDGameData.PriorJailbreaksDecay + 1) || 1;
 
 					if (MiniGameKinkyDungeonLevel > 1) {
+						KDAdvanceTraining();
 						// Reduce security level when entering a new area
 						KinkyDungeonChangeRep("Prisoner", -4);
 

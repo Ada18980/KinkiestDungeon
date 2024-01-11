@@ -352,6 +352,8 @@ interface KDRestraintPropsBase {
 	harness?: boolean,
 	/** hobble is the simplest kind of slowing restraint, increasing slow by this amount*/
 	hobble?: number,
+	/** Multiplier to the max heel level */
+	heelpower?: number,
 	/** Blocking feet is for restraints that tie the legs together, forcing the player into SLow Level 2 or higher */
 	blockfeet?: boolean,
 	/** Your total gag level is the sum of the gag values of all your variables. Ball gags have 0.3-0.75 based on size and harness, muzzles are 1.0 */
@@ -888,6 +890,10 @@ interface enemy extends KDHasTags {
 	dmgType?: string,
 	/** */
 	bound?: string,
+	/** Outfit for paperdoll */
+	outfit?: string,
+	/** Outfit for paperdoll */
+	style?: string,
 	/** Enemy is not a humanoid, used for skeletons */
 	nonHumanoid?: boolean,
 	/** */
@@ -1252,6 +1258,7 @@ interface weapon {
 	distract?: number;
 	bindEff?: number;
 	distractEff?: number;
+	desireMult?: number;
 	light?: boolean;
 	heavy?: boolean;
 	massive?: boolean;
@@ -1341,6 +1348,8 @@ interface KinkyDungeonEvent {
 	restraint?: string;
 	sfx?: string;
 	power?: number;
+	distractEff?: number;
+	desireMult?: number;
 	count?: number;
 	player?: boolean;
 	bind?: number;
@@ -1518,6 +1527,7 @@ interface entity {
 	boundLevel?: number,
 	specialBoundLevel?: Record<string, number>,
 	distraction?: number,
+	desire?: number,
 	lifetime?: number,
 	maxlifetime?: number,
 	attackPoints?: number,
@@ -1588,7 +1598,7 @@ interface entity {
 
 type KinkyDungeonDress = {
 	Item: string;
-	Group: string;
+	Group?: string;
 	Color: string | string[];
 	Filters?: Record<string, LayerFilter>;
 	Lost: boolean;
@@ -1781,6 +1791,7 @@ interface spell {
 	shotgunSpeedBonus?: number,
 
 	distractEff?: number,
+	desireMult?: number,
 	bindEff?: number,
 
 	nonmagical?: boolean,
@@ -1866,6 +1877,7 @@ interface spell {
 	learnFlags?: string[],
 	/** Increases the more you do */
 	increasingCost?: boolean,
+	decreaseCost?: boolean,
 	/** Specific to a class */
 	classSpecific?: string;
 	/** Verbal, arms, or legs */
@@ -2187,9 +2199,16 @@ interface VibeMod {
 
 interface KDInventoryActionDef {
 	text?: (player: entity, item: item) => string;
+	label?: (player: entity, item: item) => string;
+	itemlabel?: (player: entity, item: item) => string;
+	labelcolor?: (player: entity, item: item) => string;
+	itemlabelcolor?: (player: entity, item: item) => string;
+	show?: (player: entity, item: item) => boolean;
 	valid: (player: entity, item: item) => boolean;
-	click: (player: entity, item: item) => void;
+	click: (player: entity, item: item,) => void;
 	cancel: (player: entity, delta: number) => boolean;
+	icon: (player: entity, item: item) => string;
+	alsoShow?: string[],
 }
 
 interface KinkyDungeonSave {
@@ -2863,10 +2882,15 @@ interface KDPresetLoadout {
 }
 
 interface KDTrainingRecord {
+	/** Turns in this floor's session that have been trained */
 	turns_trained: number,
+	/** Sessions where an opportunity to train was presented but player circumvented it */
 	turns_skipped: number,
+	/** Sessions where an opportunity to train was presented */
 	turns_total: number,
+	/** Current training amount */
 	training_points: number,
+	/** Current training level, basically floor(training_points) */
 	training_stage: number,
 }
 
@@ -3049,6 +3073,30 @@ interface KDCommanderOrder {
 	global_after: (data: KDCommanderOrderData) => void;
 }
 
+interface KDCollectionEntry {
+	name: string,
+	color: string,
+	type: string,
+	sprite: string,
+	customSprite: boolean,
+	id: number,
+	Enemy?: enemy, // for unique ones
+
+	outfit?: string,
+	hairstyle?: string,
+	bodystyle?: string,
+	facestyle?: string,
+
+	/** Status: Guest, Prisoner, Servant, or Manager */
+	status: string,
+	class: string,
+
+	Faction: string,
+	Opinion: number,
+	Training: number,
+	Willpower: number,
+}
+
 interface KDFactionProps {
 	/** Negative - will join their allies on sight against you
 	 * Neutral - will only join if they see you attacking their ally or their ally is otherwise neutral with you
@@ -3063,6 +3111,8 @@ interface KDFactionProps {
 	customDefeat?: string,
 	/** Custom jail allied faction to use */
 	jailAlliedFaction?: string,
+	/** Custom jail outfit to use */
+	jailOutfit: string,
 }
 
 type KDTile = any;

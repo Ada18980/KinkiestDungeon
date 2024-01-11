@@ -356,7 +356,7 @@ function KDGetAvailablePosesArms(C: Character): string[] {
 			delete poses.Crossed;
 		}
 		if (CheckPoseOrTags(C, "HandsBehind")) {
-			
+
 			if (!(CheckPoseOrTags(C, "Yokes")))
 				delete poses.Yoked;
 			if (!(CheckPoseOrTags(C, "Butterfly") || CheckPoseOrTags(C, "HandsUp")))
@@ -438,6 +438,18 @@ function RefreshTempPoses(Character: Character, Restraints: boolean) {
 
 	if (KDToggles.ChastityOption) {
 		KDCurrentModels.get(Character).TempPoses.ChastityOption = true;
+	}
+	if (!KDToggles.Nipples) {
+		KDCurrentModels.get(Character).TempPoses.HideNipples = true;
+	}
+	if (KDToggles.NippleToysHide) {
+		KDCurrentModels.get(Character).TempPoses.HideNippleToys = true;
+	}
+	if (KDToggles.NipplePiercingsHide) {
+		KDCurrentModels.get(Character).TempPoses.HideNipplePiercings = true;
+	}
+	if (KDToggles.NippleToysOption) {
+		KDCurrentModels.get(Character).TempPoses.NippleToysOption = true;
 	}
 	if (KDToggles.ChastityBraOption) {
 		KDCurrentModels.get(Character).TempPoses.ChastityBraOption = true;

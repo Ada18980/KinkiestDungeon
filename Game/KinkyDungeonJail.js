@@ -462,6 +462,7 @@ function KinkyDungeonPlaceJailKeys() {
 	for (let X = 1; X < KDMapData.GridWidth; X += 1)
 		for (let Y = 1; Y < KDMapData.GridHeight; Y += 1)
 			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))
+				&& KDMapData.RandomPathablePoints[(X) + ',' + (Y)]
 				&& KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y) > 15
 				&& KDistChebyshev(X - KDMapData.EndPosition.x, Y - KDMapData.EndPosition.y) > 15
 				&& (!KDMapData.ShortcutPosition || KDistChebyshev(X - KDMapData.ShortcutPosition.x, Y - KDMapData.ShortcutPosition.y) > 15)
@@ -779,13 +780,17 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 			|| KDRandom() < 0.01)) {
 			KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints--;
 			if (KinkyDungeonJailGuard().NextJailLeashTourWaypointX > KinkyDungeonJailLeashX + 2) {
-				if (KDRandom() < 0.5 && KinkyDungeonLastAction == "Move") {
-					let index = "0";
-					if (KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions < 1) {
-						index = "" + Math.floor(KDRandom() * 6);
-						//KinkyDungeonChangeRep("Ghost", 8);
+				if (KinkyDungeonLastAction == "Move") {
+					if (KDRandom() < 0.5) {
+						let index = "0";
+						if (KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions < 1) {
+							index = "" + Math.floor(KDRandom() * 6);
+							//KinkyDungeonChangeRep("Ghost", 8);
+						}
+						KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerGoodGirl" + index).replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#ffff00", 4, 9);
 					}
-					KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerGoodGirl" + index).replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#ffff00", 4, 9);
+					KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0),
+						KDGameData.HeelPower <= 0, 2, 20);
 				}
 			}
 			KinkyDungeonJailGuardGetLeashWaypoint(xx, yy, type);
@@ -831,9 +836,9 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 							KinkyDungeonJailGuard().y = guardPath[0].y;
 						}
 					}
-					let enemy = KinkyDungeonEnemyAt(guardPath[0].x, guardPath[0].y);
-					if (enemy) {
-						KDMoveEntity(enemy, KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, true, undefined, undefined, true);
+					let en = KinkyDungeonEnemyAt(guardPath[0].x, guardPath[0].y);
+					if (en) {
+						KDMoveEntity(en, KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, true, undefined, undefined, true);
 						if (KinkyDungeonJailGuard()) {
 							KinkyDungeonJailGuard().x = guardPath[0].x;
 							KinkyDungeonJailGuard().y = guardPath[0].y;
@@ -1057,6 +1062,7 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 		KinkyDungeonSetDress(defeat_outfit, defeat_outfit);
 	}
 
+	KDFixPlayerClothes("Dollsmith");
 	KinkyDungeonDressPlayer();
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
 
@@ -1112,7 +1118,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	}
 	KDGameData.KinkyDungeonPrisonReduction = 0;
 	//let firstTime = KDGameData.KinkyDungeonSpawnJailersMax == 0;
-	KDGameData.GuardSpawnTimer = 4 + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
+	KDResetGuardSpawnTimer();
 	KDGameData.KinkyDungeonSpawnJailersMax = 2;
 	KDGameData.KinkyDungeonSpawnJailersMax += Math.round(6 * (KDGetEffSecurityLevel(undefined, true) + 50)/100);
 	//let securityBoost = (firstTime) ? 0 : Math.max(2, Math.ceil(4 * (KDGameData.KinkyDungeonSpawnJailersMax - KDGameData.KinkyDungeonSpawnJailers + 1)/KDGameData.KinkyDungeonSpawnJailersMax));
@@ -1139,10 +1145,10 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 		if (KDRestraint(collar).name == "MithrilCollar") defeat_outfit = "Elven";
 		if (KDRestraint(collar).name == "ObsidianCollar") defeat_outfit = "Obsidian";
 	}
+	if (KDGetMainFaction() && KDFactionProperties[KDGetMainFaction()]?.jailOutfit) defeat_outfit = KDFactionProperties[KDGetMainFaction()]?.jailOutfit;
 	if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
 
 	KinkyDungeonSetDress(defeat_outfit, "JailUniform");
-	KinkyDungeonDressPlayer();
 	KinkyDungeonStripInventory(true);
 
 	if (defeat_outfit != params.defeat_outfit) {
@@ -1175,6 +1181,9 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 		nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 
 	}
+
+	KDFixPlayerClothes(KDGetMainFaction() || "Jail");
+	KinkyDungeonDressPlayer();
 
 	KDMovePlayer(nearestJail.x + (nearestJail.direction?.x || 0), nearestJail.y + (nearestJail.direction?.y || 0), false);
 	if (nearestJail.direction) {
@@ -1215,13 +1224,6 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	KDKickEnemies(nearestJail);
 	KDResetAllAggro();
 
-	if (KDMapData.JailFaction?.length > 0) {
-		let faction = KDMapData.JailFaction[0];
-		if (KinkyDungeonFactionFilters[faction])
-			for (let inv of KinkyDungeonAllRestraintDynamic()) {
-				inv.item.faction = faction;
-			}
-	}
 }
 
 /**
@@ -1573,4 +1575,14 @@ let KDCustomDefeatUniforms = {
 		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 		KinkyDungeonSetDress("Obsidian", "Obsidian");
 	},
+};
+
+function KDFixPlayerClothes(faction) {
+	for (let inv of KinkyDungeonAllRestraintDynamic()) {
+		inv.item.faction = faction;
+	}
+}
+
+function KDResetGuardSpawnTimer() {
+	KDGameData.GuardSpawnTimer = 4 + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
 }

@@ -255,21 +255,45 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 }
 
 
+function KDAllowUseItems(Message,x, y) {
+
+	let ret = !KinkyDungeonStatsChoice.get("CantTouchThat") || KinkyDungeonHasHelp() || !(KinkyDungeonIsArmsBound() && !KinkyDungeonCanUseFeet() && KinkyDungeonIsHandsBound(false, true, 0.01));
+	if (!ret && KinkyDungeonCanTalk()) {
+		if (KDGameData.KneelTurns > 0) {return true;}
+		if (Message) KinkyDungeonSendActionMessage(7, TextGet("KDMouthGround"), "#ffaa44", 3, undefined, true);
+		return false;
+	}
+	return ret;
+}
+
 function KinkyDungeonItemCheck(x, y, Index, autoEquip) {
-	let allowManip = !KinkyDungeonStatsChoice.get("CantTouchThat") || KinkyDungeonHasHelp() || (!KinkyDungeonIsArmsBound() && !KinkyDungeonIsHandsBound(false, true, 0.01));
+	let allowManip = KDAllowUseItems(false, x, y);
 	let msg = false;
+	let pickedone = false;
 	for (let I = 0; I < KDMapData.GroundItems.length; I++) {
 		let item = KDMapData.GroundItems[I];
 		if (x == item.x && y == item.y) {
-			if (allowManip) {
+			if (allowManip
+				|| (item.name == "Keyring" && "SsH".includes(KinkyDungeonMapGet(item.x, item.y)))
+				|| (!pickedone && KinkyDungeonStatsChoice.get("Psychic") && x && y && KDistChebyshev(KinkyDungeonPlayerEntity.x-x, KinkyDungeonPlayerEntity.y - y) < 1.5)) {
 				KDMapData.GroundItems.splice(I, 1);
 				I -= 1;
+				pickedone = true;
 				KinkyDungeonItemEvent(item);
 				if (autoEquip && KDWeapon(item) && KinkyDungeonPlayerWeapon == "Unarmed") {
 					KDSetWeapon(item.name);
 				}
 			} else {
-				let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true, true);
+				let point = null;
+				if (KinkyDungeonLastAction == "Move" && (KinkyDungeonPlayerEntity.lastx != KinkyDungeonPlayerEntity.x || KinkyDungeonPlayerEntity.lasty != KinkyDungeonPlayerEntity.y)) {
+					point = {
+						x: KinkyDungeonPlayerEntity.x * 2 - KinkyDungeonPlayerEntity.lastx,
+						y: KinkyDungeonPlayerEntity.y * 2 - KinkyDungeonPlayerEntity.lasty,
+					};
+					if (!KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(point.x, point.y))) point = null;
+				}
+				if (!point)
+					point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true, true);
 				if (point) {
 					item.x = point.x;
 					item.y = point.y;

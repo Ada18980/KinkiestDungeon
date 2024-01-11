@@ -273,7 +273,7 @@ AddModel({
 				ItemArmsRubberOver: 45,
 			},
 		},
-		{ Name: "Chest", Layer: "WrapChest", Pri: 25,
+		{ Name: "Chest", Layer: "WrappingChest", Pri: 25,
 			Invariant: true,
 			InheritColor: "Rubber",
 			HideWhenOverridden: true,

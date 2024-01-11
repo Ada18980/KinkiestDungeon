@@ -13,7 +13,7 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
 	Layers: ToLayerMap([
-		{ Name: "Feet", Layer: "WrappingLegsUnder", Pri: 10,
+		{ Name: "Feet", Layer: "WrappingLegs", Pri: 10,
 			Poses: ToMap(["Closed", "KneelClosed"]),
 			//GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			DisplacementSprite: "TapeAnklesSquish",
@@ -167,7 +167,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 			InheritColor: "Tape",
 		},
-		{ Name: "ChestStrap", Layer: "WrapChest", Pri: 35,
+		{ Name: "ChestStrap", Layer: "WrappingChest", Pri: 35,
 			Invariant: true,
 			InheritColor: "Tape",
 

@@ -590,14 +590,14 @@ let KDJailOutfits = {
 		],
 	},
 
-	
+
 	"maid": {
 		overridelowerpriority: false,
 		priority: 1,
 		jail: true,
 		parole: false,
 		restraints: [
-			
+
 
 			{Name: "TrapMittens", Level: 0},
 			{Name: "Stuffing", Level: 20},
@@ -611,14 +611,14 @@ let KDJailOutfits = {
 			{Name: "MaidAnkleCuffs", Level: 40},
 
 			{Name: "MaidJacket", Level: 60},
-		
 
-			
+
+
 
 			{Name: "MaidDress", Level: 100},
 			{Name: "MaidBelt", Level: 120},
 
-			
+
 		],
 	},
 
@@ -745,7 +745,7 @@ let KDJailOutfits = {
 			{Name: "ShadowLatexStraitjacket", Level: 75},
 			{Name: "ShadowLatexHeels", Level: 85},
 			{Name: "ShadowLatexLegbinder", Level: 100},
-			
+
 		],
 	},
 	"mithrilRestraints": {
@@ -758,7 +758,7 @@ let KDJailOutfits = {
 			{Name: "MithrilLegCuffs", Level: 60},
 			{Name: "MithrilAnkleCuffs", Level: 10},
 			{Name: "MithrilCollar", Level: 0},
-			
+
 		],
 	},
 	"leatherRestraints": {

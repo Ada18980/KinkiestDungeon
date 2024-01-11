@@ -60,8 +60,8 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 			if (loot.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) prereqs = false;
 
 
-			if (loot.noflag?.some((flag) => {return KinkyDungeonFlags.get(flag) != undefined})) prereqs = false;
-			if (loot.notag?.some((flag) => {return KinkyDungeonPlayerTags.get(flag) != undefined})) prereqs = false;
+			if (loot.noflag?.some((flag) => {return KinkyDungeonFlags.get(flag) != undefined;})) prereqs = false;
+			if (loot.notag?.some((flag) => {return KinkyDungeonPlayerTags.get(flag) != undefined;})) prereqs = false;
 
 			if (loot.prerequisites && prereqs) {
 
@@ -320,7 +320,27 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 
 	}
 	if (Loot.spell) {
-		KinkyDungeonSpells.push(KinkyDungeonFindSpell(Loot.spell, true));
+		let spell = KinkyDungeonFindSpell(Loot.spell, true);
+		KinkyDungeonSpells.push(spell);
+		if (spell.autoLearn) {
+			for (let sp of spell.autoLearn) {
+				if (KinkyDungeonSpellIndex(sp) < 0) {
+					KinkyDungeonSpells.push(KinkyDungeonFindSpell(sp, true));
+					KDSendStatus('learnspell', sp);
+				}
+			}
+		}
+		if (spell.learnFlags) {
+			for (let sp of spell.learnFlags) {
+				KinkyDungeonFlags.set(sp, -1);
+			}
+		}
+
+		if (spell.learnPage) {
+			for (let sp of spell.learnPage) {
+				KDAddSpellPage(sp, KDSpellColumns[sp] || []);
+			}
+		}
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("SpellLearned", TextGet("KinkyDungeonSpell" + Loot.spell));
 	}
@@ -401,10 +421,10 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 
 			let equipped = 0;
 			if (forceequip) {
-				equipped = KDEquipInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, 0, true, undefined, true, false, Loot.faction || "Curse", true, unlockcurse, undefined, false, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
+				equipped = KDEquipInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, 0, true, undefined, true, false, Loot.faction || (unlockcurse ? "Curse" : undefined), true, unlockcurse, undefined, false, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
 			}
 			if (!equipped) {
-				KDGiveInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, unlockcurse, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix, Loot.faction || "Curse");
+				KDGiveInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, unlockcurse, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix, Loot.faction || (unlockcurse ? "Curse" : undefined));
 			} else {
 				KinkyDungeonSendTextMessage(10, TextGet("KDCursedChestEquip" + (unlockcurse ? "Cursed" : ""))
 					.replace("NEWITM", TextGet("Restraint" + variant.template)),
@@ -414,7 +434,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 			if (Replacemsg)
 				Replacemsg = Replacemsg.replace("ArmorAcquired", (enchantVariant ? TextGet("KDVarPrefEnchanted") : "") + ' ' + TextGet("Restraint" + armor));
 		} else {
-			KinkyDungeonInventoryAddLoose(armor, unlockcurse, Loot.faction || "Curse");
+			KinkyDungeonInventoryAddLoose(armor, unlockcurse, Loot.faction || (unlockcurse ? "Curse" : undefined));
 			if (Replacemsg)
 				Replacemsg = Replacemsg.replace("ArmorAcquired", TextGet("Restraint" + armor));
 		}
@@ -995,19 +1015,19 @@ let KDChestTrapWeights = {
 		mult: 1,
 	},
 	skeletonTrap: {
-		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("skeleton") ? 300 : 0},
+		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("skeleton") ? 300 : 0;},
 		mult: 1.4,
 	},
 	zombieTrap: {
-		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("zombie") ? 300 : 0},
+		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("zombie") ? 300 : 0;},
 		mult: 1.5,
 	},
 	mummyTrap: {
-		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("mummy") ? 300 : 0},
+		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("mummy") ? 300 : 0;},
 		mult: 1,
 	},
 	mushroomTrap: {
-		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("mushroom") ? 300 : 0},
+		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("mushroom") ? 300 : 0;},
 		mult: 1,
 	},
 };

@@ -3,6 +3,8 @@
 let KDFullscreen = false;
 let KDExitButton = false;
 
+let KDDefaultPalette = "";
+
 // Disable interpolation when scaling, will make texture be pixelated
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR;
 
@@ -64,6 +66,7 @@ let KinkyDungeonBackground = "BrickWall";
  * @type {Character}
  */
 let KinkyDungeonPlayer = null;
+let KDSpeakerNPC = null;
 let KinkyDungeonState = "Logo";
 
 let KDIntroProgress = [0, 0, 0, 0];
@@ -102,7 +105,7 @@ let KinkyDungeonKeyEnter = ['Enter'];
 let KinkyDungeonKeySprint = ['ShiftLeft'];
 let KinkyDungeonKeyWeapon = ['R',];
 let KinkyDungeonKeyUpcast = ['ControlLeft', 'AltLeft'];
-let KinkyDungeonKeyMenu = ['V', 'I', 'U', 'M', 'L', '*']; // QuikInv, Inventory, Reputation, Magic, Log, Quest
+let KinkyDungeonKeyMenu = ['V', 'I', 'U', 'M', 'L', '*', '-']; // QuikInv, Inventory, Reputation, Magic, Log, Quest, Collection
 let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight", 'T', '?', '/', "'"]; // Log, Passing, Door, Auto Struggle, Auto Pathfind, Inspect, Wait till interrupted, Make Noise, Crouch
 let KinkyDungeonKeySpellPage = ['`'];
 let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H', 'J']; // Swap, Offhand, OffhandPrevious
@@ -121,6 +124,8 @@ let kdSpecialModePerks = [
 
 
 let KinkyDungeonGraphicsQuality = true;
+
+let KDToggleGroups = ["Main", "GFX", "UI", "Clothes", "Keybindings"];
 
 let KDToggles = {
 	Fullscreen: false,
@@ -160,8 +165,65 @@ let KDToggles = {
 	EnemyAura: true,
 	OutlineAura: true,
 	NearestNeighbor: true,
+	ZoomIn: false,
+	ZoomOut: false,
 	LazyWalk: false,
 	ShiftLatch: true,
+	Nipples: false,
+	NippleToysOption: false,
+	NippleToysHide: false,
+	NipplePiercingsHide: false,
+	//AutoCrouchOnTrip: true,
+	FlipStatusBars: false,
+	ForcePalette: false,
+	AllowSusMods: false,
+	AutoLoadMods: false,
+	FlipPlayer: true,
+};
+
+let KDToggleCategories = {
+	HighResDisplacement: "GFX",
+	Bloom: "GFX",
+	StunFlash: "UI",
+	AsyncRendering: "GFX",
+	ParticlesFX: "GFX",
+	ArousalHearts: "GFX",
+	VibeHearts: "GFX",
+	FancyWalls: "GFX",
+	FancyShadows: "GFX",
+	LightmapFilter: "GFX",
+	EnemyAnimations: "GFX",
+	DrawArmor: "Clothes",
+	ChastityOption: "Clothes",
+	ChastityBraOption: "Clothes",
+	SimpleColorPicker: "Clothes",
+	Nipples: "Clothes",
+	NippleToysOption: "Clothes",
+	NippleToysHide: "Clothes",
+	NipplePiercingsHide: "Clothes",
+	TransparentUI: "UI",
+	Center: "UI",
+	TurnCounter: "UI",
+	ShowNPCStatuses: "UI",
+	ShowSpellRange: "UI",
+	ForceWarnings: "UI",
+	//Drool: true,
+	EnableMinimap: "UI",
+	BuffSide: "UI",
+	ShowPath: "UI",
+	ShowFacing: "UI",
+	ShowSameCatSpells: "UI",
+	PlayerAura: "UI",
+	EnemyAura: "UI",
+	OutlineAura: "UI",
+	NearestNeighbor: "GFX",
+	ZoomIn: "UI",
+	ZoomOut: "UI",
+	FlipStatusBars: "UI",
+	ForcePalette: "Clothes",
+	//LazyWalk: "Controls",
+	//ShiftLatch: "Controls",
+	FlipPlayer: "Clothes",
 };
 
 let KDDefaultKB = {
@@ -214,6 +276,7 @@ let KDDefaultKB = {
 	Magic: KinkyDungeonKeyMenu[3],
 	Log: KinkyDungeonKeyMenu[4],
 	Quest: KinkyDungeonKeyMenu[5],
+	Collection: KinkyDungeonKeyMenu[6],
 
 
 	MsgLog: KinkyDungeonKeyToggle[0],
@@ -271,6 +334,7 @@ let KDDefaultMaxParty = 3;
 * CurseLevel: number,
 * UsingConsumable: string,
 * BondageTarget: number,
+* FoodTarget: number,
 * KeysNeeded: boolean,
 * JailRemoveRestraintsTimer: number;
 * KinkyDungeonSpawnJailers: number;
@@ -350,9 +414,12 @@ let KDDefaultMaxParty = 3;
 * Hunters: number[],
 * Quests: string[],
 * QuestData: Record<string, any>,
+* RevealedTiles: Record<string, number>,
+* RevealedFog: Record<string, number>,
 * PriorJailbreaks: number,
 * PriorJailbreaksDecay: number,
 * PreviousWeapon: string[],
+* PreviousWeaponLock: boolean[],
 * StaminaPause: number,
 * StaminaSlow: number,
 * ManaSlow: number,
@@ -408,12 +475,24 @@ let KDDefaultMaxParty = 3;
 * ShieldTokensMax: number,
 * Shield: number,
 * ShieldDamage: number,
+* Balance: number,
+* BalancePause: boolean,
+* Collection: Record<string, KDCollectionEntry>,
+* HeelPower: number,
+* visionAdjust: number,
+* visionBlind: number,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	Collection: {},
+	RevealedTiles: {},
+	RevealedFog: {},
+	Balance: 1,
+	BalancePause: false,
+	HeelPower: 1,
 	SlowMoveTurns: 0,
 	Shield: 0,
 	ShieldDamage: 0,
@@ -440,6 +519,7 @@ let KDGameDataBase = {
 	InventoryActionManaCost: 0,
 	SellMarkup: 1,
 	BondageTarget: -1,
+	FoodTarget: -1,
 	ShopRewardProgram: 0,
 	ShopRewardProgramThreshold: 500,
 
@@ -569,6 +649,7 @@ let KDGameDataBase = {
 
 	Favors: {},
 	PreviousWeapon: ["Unarmed", "Unarmed", "Unarmed", "Unarmed"],
+	PreviousWeaponLock: [false, false, false, false],
 	QuickLoadout: [],
 
 	StaminaPause: 0,
@@ -596,6 +677,8 @@ let KDGameDataBase = {
 	FloorRobotType: {},
 
 	Crouch: false,
+	visionAdjust: 1, // Eyes start out fully light adjusted
+	visionBlind: 0, // Penalty to vision radius based on overbright
 };
 /**
  * @type {KDGameDataBase}
@@ -709,6 +792,8 @@ function KDistTaxicab(x, y) {
 }
 
 function KDLoadToggles() {
+	KDDefaultPalette = localStorage.getItem("KDDefaultPalette") || "";
+
 	let loaded = localStorage.getItem("KDToggles") ? JSON.parse(localStorage.getItem("KDToggles")) : {};
 	for (let t of Object.keys(KDToggles)) {
 		if (loaded[t] != undefined)
@@ -798,6 +883,13 @@ function KinkyDungeonLoad() {
 			KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: true, };
 
 			KDLoadToggles();
+
+			if (KDToggles.AutoLoadMods) {
+				if (!KDGetMods) {
+					KDGetMods = true;
+					KDGetModsLoad();
+				}
+			}
 
 			KinkyDungeonBones = localStorage.getItem("KinkyDungeonBones") != undefined ? localStorage.getItem("KinkyDungeonBones") : KinkyDungeonBones;
 
@@ -893,7 +985,7 @@ function KinkyDungeonLoad() {
 			KinkyDungeonCheckClothesLoss = true;
 			KinkyDungeonDressPlayer();
 
-			KDInitProtectedGroups();
+			KDInitProtectedGroups(KinkyDungeonPlayer);
 
 		}
 
@@ -1161,7 +1253,7 @@ function KinkyDungeonRun() {
 	}
 	// Draw the characters
 	if (KinkyDungeonState != "Consent" && KinkyDungeonState != "Logo" && (KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "Stats" && KinkyDungeonState != "TileEditor")
-		DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
+		DrawCharacter(KinkyDungeonPlayer, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, KDToggles.FlipPlayer);
 
 	if (CommonIsMobile && mouseDown && !KDMouseInPlayableArea()) {
 		KDDraw(kdcanvas, kdpixisprites, "cursor", KinkyDungeonRootDirectory + "Cursor.png", MouseX, MouseY, 72, 72, undefined, {
@@ -1264,7 +1356,8 @@ function KinkyDungeonRun() {
 
 
 		DrawButtonKDEx("GameContinue", () => {
-			KinkyDungeonStartNewGame(true);
+			KDExecuteModsAndStart();
+
 			return true;
 		}, localStorage.getItem('KinkyDungeonSave') != '', 1000-350/2, 360, 350, 64, TextGet("GameContinue"), localStorage.getItem('KinkyDungeonSave') ? "#ffffff" : "pink", "");
 		DrawButtonKDEx("GameStart", () => {
@@ -1273,10 +1366,11 @@ function KinkyDungeonRun() {
 		}, true, 1000-350/2, 440, 350, 64, TextGet("GameStart"), "#ffffff", "");
 		DrawButtonKDEx("LoadGame", () => {
 			KinkyDungeonState = "Load";
+			KDExecuteMods();
 			ElementCreateTextArea("saveInputField");
 			return true;
 		}, true, 1000-350/2, 520, 350, 64, TextGet("LoadGame"), "#ffffff", "");
-		DrawButtonKDEx("GameConfigKeys", () => {
+		/*DrawButtonKDEx("GameConfigKeys", () => {
 			KinkyDungeonState = "Keybindings";
 
 			if (!KinkyDungeonKeybindings)
@@ -1286,7 +1380,7 @@ function KinkyDungeonRun() {
 				Object.assign(KinkyDungeonKeybindingsTemp, KinkyDungeonKeybindings);
 			}
 			return true;
-		}, true, 1000-350/2, 600, 350, 64, TextGet("GameConfigKeys"), "#ffffff", "");
+		}, true, 1000-350/2, 600, 350, 64, TextGet("GameConfigKeys"), "#ffffff", "");*/
 
 		if (KinkyDungeonKeybindingsTemp?.Spell1 && KinkyDungeonKeybindingsTemp.Spell1.length > 1 && (KinkyDungeonKeybindingsTemp.Spell1.includes("Digit") || KinkyDungeonKeybindingsTemp.Spell1.includes("Key")))
 			DrawTextFitKD(TextGet("KDKeysUpdate" + (KDEasterEgg ? "EasterEgg" : "")), 1000-350/2, 600 + 32, 500, "#ffffff", undefined, 18, "right");
@@ -1296,9 +1390,9 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx("GameToggles", () => {
 			KinkyDungeonState = "Toggles";
 			return true;
-		}, true, 1000-350/2, 680, 350, 64, TextGet("GameToggles"), "#ffffff", "");
+		}, true, 1000-350/2, 600, 350, 64, TextGet("GameToggles"), "#ffffff", "");
 
-		let ii = 760;
+		let ii = 680;
 		if (KDExitButton) {
 			DrawButtonKDEx("KDExitButton", () => {
 				//@ts-ignore
@@ -1475,6 +1569,15 @@ function KinkyDungeonRun() {
 		DrawButtonVis(875, 750, 350, 64, TextGet("LoadOutfit"), "#ffffff", "");
 		DrawButtonVis(1275, 750, 350, 64, TextGet("KDWardrobeBackTo" + (StandalonePatched ? "Wardrobe" : "Menu")), "#ffffff", "");
 
+		if (StandalonePatched) {
+			DrawButtonKDEx("loadclothes", (b) => {
+				KDSaveCodeOutfit(KinkyDungeonPlayer, true);
+				KinkyDungeonState = "Wardrobe";
+
+				ElementRemove("saveInputField");
+				return true;}, true, 875, 820, 350, 64, TextGet("LoadOutfitClothes"), "#ffffff", "");
+		}
+
 		let newValue = ElementValue("saveInputField");
 		if (newValue != KDOldValue) {
 			let decompressed = DecompressB64(ElementValue("saveInputField"));
@@ -1482,10 +1585,11 @@ function KinkyDungeonRun() {
 				let origAppearance = KinkyDungeonPlayer.Appearance;
 				try {
 					console.log("Trying BC code...");
-					CharacterAppearanceRestore(KinkyDungeonPlayer, decompressed);
+					CharacterAppearanceRestore(KinkyDungeonPlayer, decompressed, true);
 					CharacterRefresh(KinkyDungeonPlayer);
 					KDOldValue = newValue;
-					KDInitProtectedGroups();
+					KDInitProtectedGroups(KinkyDungeonPlayer);
+					KinkyDungeonDressPlayer(KinkyDungeonPlayer, true);
 
 					if (KinkyDungeonPlayer.Appearance.length == 0)
 						throw new DOMException();
@@ -1504,7 +1608,7 @@ function KinkyDungeonRun() {
 								ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
 							}
 							KDOldValue = newValue;
-							KDInitProtectedGroups();
+							KDInitProtectedGroups(KinkyDungeonPlayer);
 						} else {
 							console.log("Invalid code. Maybe its corrupt?");
 						}
@@ -1907,6 +2011,8 @@ function KinkyDungeonRun() {
 			localStorage.setItem("PlayerName", ElementValue("PlayerNameField") || "Ada");
 			KDGameData.PlayerName = ElementValue("PlayerNameField") || "Ada";
 			KinkyDungeonState = "Diff";
+
+			KDExecuteMods();
 			KinkyDungeonLoadStats();
 			return true;
 		}, true, 875, 650, 750, 64, TextGet("KDConfirm"), "#ffffff", "");
@@ -2101,6 +2207,7 @@ function KinkyDungeonRun() {
 				if (CommonTime() > KinkyDungeonSleepTime) {
 					KDSendInput("tick", {delta: 1}, false, true);
 					KDGameData.PlaySelfTurns -= 1;
+					KDGameData.BalancePause = true;
 					KinkyDungeonSleepTime = CommonTime() + (KinkyDungeonFlags.get("PlayerOrgasm") ? KinkyDungeonOrgasmTime : KinkyDungeonPlaySelfTime) * (0.25 + KDAnimSpeed * 0.75);
 				}
 				if (KDGameData.SleepTurns == 0) {
@@ -2109,12 +2216,14 @@ function KinkyDungeonRun() {
 			} else if (KinkyDungeonStatFreeze > 0) {
 				if (CommonTime() > KinkyDungeonSleepTime) {
 					KinkyDungeonStatFreeze -= 1;
+					KDGameData.BalancePause = true;
 					KDSendInput("tick", {delta: 1, NoUpdate: false, NoMsgTick: true}, false, true);
 					KinkyDungeonSleepTime = CommonTime() + KinkyDungeonFreezeTime * (0.25 + KDAnimSpeed * 0.75);
 				}
 			} else if (KDGameData.SlowMoveTurns > 0) {
 				if (CommonTime() > KinkyDungeonSleepTime) {
 					KDGameData.SlowMoveTurns -= 1;
+					KDGameData.BalancePause = true;
 					KDSendInput("tick", {delta: 1, NoUpdate: false, NoMsgTick: true}, false, true);
 					KinkyDungeonSleepTime = CommonTime() + 150 * (0.25 + KDAnimSpeed * 0.75);
 				}
@@ -2177,135 +2286,145 @@ function KinkyDungeonRun() {
 
 		DrawButtonVis(1075, 650, 350, 64, TextGet("KinkyDungeonNewGamePlus"), "#ffffff", "");
 		DrawButtonVis(1075, 750, 350, 64, TextGet("GameReturnToMenu"), "#ffffff", "");
-	} else if (KinkyDungeonState == "Keybindings") {
-		// Draw temp start screen
-		DrawButtonKDEx("KBBack", () => {
-			KinkyDungeonKeybindings = KinkyDungeonKeybindingsTemp;
-			if (KinkyDungeonGameFlag) {
-				KinkyDungeonState = "Game";
-				if (KinkyDungeonKeybindings) {
-					KDCommitKeybindings();
-				}
-			} else KinkyDungeonState = "Menu";
-			localStorage.setItem("KinkyDungeonKeybindings", JSON.stringify(KinkyDungeonKeybindings));
-			//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
-			return true;
-		}, true, 1450, 780, 350, 64, TextGet("GameReturnToMenu"), "#ffffff", "");
-
-		// Draw temp start screen
-		DrawButtonKDEx("KBBack2", () => {
-			KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
-			if (KinkyDungeonGameFlag) {
-				KinkyDungeonState = "Game";
-			} else KinkyDungeonState = "Menu";
-			//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
-			return true;
-		}, true, 1450, 700, 350, 64, TextGet("GameReturnToMenu2"), "#ffffff", "");
-
-
-
-		// Draw key buttons
-
-		let maxY = 850;
-
-		let sY = 80;
-
-		let X = 500;
-		let Y = sY;
-		let dX = 300;
-		let dY = 40;
-		let pad = 1;
-		let xpad = 15;
-
-		for (let key of Object.keys(KDDefaultKB)) {
-			DrawButtonKDEx("KB" + key, () => {KinkyDungeonKeybindingsTemp[key] = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
-				X, Y, dX, dY, TextGet("KinkyDungeonKey" + key) + ": '" + (KinkyDungeonKeybindingsTemp[key]) + "'",
-				KinkyDungeonKeybindingsTemp[key] == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true, KDButtonColor);
-
-			Y += dY + pad;
-			if (Y > maxY) {
-				Y = sY;
-				X += dX + xpad;
-			}
-		}
-
-		if (KinkyDungeonKeybindingCurrentKey)
-			DrawTextKD(TextGet("KinkyDungeonCurrentPress") + ": '" + (KinkyDungeonKeybindingCurrentKey) + "'", 1250, 900, "#ffffff", KDTextGray2);
-
-		DrawTextKD(TextGet("KinkyDungeonCurrentPressInfo"), 1250, 950, "#ffffff", KDTextGray2);
 	} else if (KinkyDungeonState == "Toggles") {
+		KDDrawToggleTabs(500);
 
-		let XX = 840;
-		let YYstart = 60;
-		let YYmax = 760;
-		let YY = YYstart;
-		let YYd = 54;
-		let XXd = 350;
-		let toggles = Object.keys(KDToggles);
-		//MainCanvas.textAlign = "left";
-		for (let toggle of toggles) {
+		if (KDToggleTab == "Keybindings") {
 			// Draw temp start screen
-			DrawCheckboxKDEx("toggle" + toggle, () => {
-				KDToggles[toggle] = !KDToggles[toggle];
-				KDSaveToggles();
+			DrawButtonKDEx("KBBack", () => {
+				KinkyDungeonKeybindings = KinkyDungeonKeybindingsTemp;
+				if (KinkyDungeonGameFlag) {
+					KinkyDungeonState = "Game";
+					if (KinkyDungeonKeybindings) {
+						KDCommitKeybindings();
+					}
+				} else KinkyDungeonState = "Menu";
+				localStorage.setItem("KinkyDungeonKeybindings", JSON.stringify(KinkyDungeonKeybindings));
+				//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
 				return true;
-			}, true, XX, YY, 48, 48, TextGet("KDToggle" + toggle), KDToggles[toggle], false, "#ffffff", undefined, {
-				maxWidth: 250,
-				fontSize: 18,
-				scaleImage: true,
-			});
+			}, true, 1450, 780, 350, 64, TextGet("GameReturnToMenu"), "#ffffff", "");
 
-			YY += YYd;
-			if (YY > YYmax) {
-				YY = YYstart;
-				XX += XXd;
+			// Draw temp start screen
+			DrawButtonKDEx("KBBack2", () => {
+				KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
+				if (KinkyDungeonGameFlag) {
+					KinkyDungeonState = "Game";
+				} else KinkyDungeonState = "Menu";
+				//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
+				return true;
+			}, true, 1450, 700, 350, 64, TextGet("GameReturnToMenu2"), "#ffffff", "");
+
+
+
+			// Draw key buttons
+
+			let maxY = 850;
+
+			let sY = 80;
+
+			let X = 500;
+			let Y = sY;
+			let dX = 300;
+			let dY = 40;
+			let pad = 1;
+			let xpad = 15;
+
+			for (let key of Object.keys(KDDefaultKB)) {
+				DrawButtonKDEx("KB" + key, () => {KinkyDungeonKeybindingsTemp[key] = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
+					X, Y, dX, dY, TextGet("KinkyDungeonKey" + key) + ": '" + (KinkyDungeonKeybindingsTemp[key]) + "'",
+					KinkyDungeonKeybindingsTemp[key] == KinkyDungeonKeybindingCurrentKey ? "#ffffff" : "#aaaaaa", "", undefined, undefined, true, KDButtonColor);
+
+				Y += dY + pad;
+				if (Y > maxY) {
+					Y = sY;
+					X += dX + xpad;
+				}
 			}
+
+			if (KinkyDungeonKeybindingCurrentKey)
+				DrawTextKD(TextGet("KinkyDungeonCurrentPress") + ": '" + (KinkyDungeonKeybindingCurrentKey) + "'", 1250, 900, "#ffffff", KDTextGray2);
+
+			DrawTextKD(TextGet("KinkyDungeonCurrentPressInfo"), 1250, 950, "#ffffff", KDTextGray2);
+		} else {
+			let XX = KDToggleTab == "Main" ? 940 : 540;
+			let YYstart = 60;
+			let YYmax = 800;
+			let YY = YYstart;
+			let YYd = 74;
+			let XXd = 450;
+			let toggles = Object.keys(KDToggles);
+			//MainCanvas.textAlign = "left";
+			for (let toggle of toggles.filter((tog) => {return KDToggleCategories[tog] == KDToggleTab || (!KDToggleCategories[tog] && KDToggleTab == "Main");})) {
+				// Draw temp start screen
+				DrawCheckboxKDEx("toggle" + toggle, () => {
+					KDToggles[toggle] = !KDToggles[toggle];
+					KDSaveToggles();
+					return true;
+				}, true, XX, YY, 64, 64, TextGet("KDToggle" + toggle), KDToggles[toggle], false, "#ffffff", undefined, {
+					maxWidth: 350,
+					fontSize: 24,
+					scaleImage: true,
+				});
+
+				YY += YYd;
+				if (YY > YYmax) {
+					YY = YYstart;
+					XX += XXd;
+				}
+			}
+			//MainCanvas.textAlign = "center";
+
+			YY = YYstart + 50;
+			YYd = 80;
+			let CombarXX = 550;
+
+			if (KDToggleTab == "Main") {
+				if (StandalonePatched) {
+					DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + Math.round(KDResolution * 100) + "%", "#ffffff", "",
+						() => KDResolutionList[(KDResolutionListIndex + KDResolutionList.length - 1) % KDResolutionList.length] * 100 + "%",
+						() => KDResolutionList[(KDResolutionListIndex + 1) % KDResolutionList.length] * 100 + "%");
+					YY += YYd;
+					DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDGamma") + " " + (Math.round(KDGamma * 100) + "%"), "#ffffff", "",
+						() => KDGammaList[(KDGammaListIndex + KDGammaList.length - 1) % KDGammaList.length] * 100 + "%",
+						() => KDGammaList[(KDGammaListIndex + 1) % KDGammaList.length] * 100 + "%");
+					YY += YYd * 2;
+				}
+
+				DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDVibeVolume") + " " + (KDVibeVolume * 100 + "%"), "#ffffff", "",
+					() => KDVibeVolumeList[(KDVibeVolumeListIndex + KDVibeVolumeList.length - 1) % KDVibeVolumeList.length] * 100 + "%",
+					() => KDVibeVolumeList[(KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length] * 100 + "%");
+				YY += YYd;
+				DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDMusicVolume") + " " + (KDMusicVolume * 100 + "%"), "#ffffff", "",
+					() => KDMusicVolumeList[(KDMusicVolumeListIndex + KDMusicVolumeList.length - 1) % KDMusicVolumeList.length] * 100 + "%",
+					() => KDMusicVolumeList[(KDMusicVolumeListIndex + 1) % KDMusicVolumeList.length] * 100 + "%");
+				YY += YYd;
+				DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDSfxVolume") + " " + (KDSfxVolume * 100 + "%"), "#ffffff", "",
+					() => KDSfxVolumeList[(KDSfxVolumeListIndex + KDSfxVolumeList.length - 1) % KDSfxVolumeList.length] * 100 + "%",
+					() => KDSfxVolumeList[(KDSfxVolumeListIndex + 1) % KDSfxVolumeList.length] * 100 + "%");
+				YY += YYd;
+				DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDAnimSpeed") + " " + (KDAnimSpeed * 100 + "%"), "#ffffff", "",
+					() => KDAnimSpeedList[(KDAnimSpeedListIndex + KDAnimSpeedList.length - 1) % KDAnimSpeedList.length] * 100 + "%",
+					() => KDAnimSpeedList[(KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length] * 100 + "%");
+				YY += YYd;
+
+
+
+
+
+
+			} else if (KDToggleTab == "Clothes") {
+				KDDrawPalettes(1500, 250, 4);
+			}
+			DrawButtonKDEx("KBBackOptions", () => {
+				KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
+				if (KinkyDungeonGameFlag) {
+					KinkyDungeonState = "Game";
+				} else KinkyDungeonState = "Menu";
+				//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
+				return true;
+			}, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "");
+
 		}
-		//MainCanvas.textAlign = "center";
-
-		YY = YYstart;
-		YYd = 80;
-
-		if (StandalonePatched) {
-			DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + Math.round(KDResolution * 100) + "%", "#ffffff", "",
-				() => KDResolutionList[(KDResolutionListIndex + KDResolutionList.length - 1) % KDResolutionList.length] * 100 + "%",
-				() => KDResolutionList[(KDResolutionListIndex + 1) % KDResolutionList.length] * 100 + "%");
-			YY += YYd;
-			DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDGamma") + " " + (Math.round(KDGamma * 100) + "%"), "#ffffff", "",
-				() => KDGammaList[(KDGammaListIndex + KDGammaList.length - 1) % KDGammaList.length] * 100 + "%",
-				() => KDGammaList[(KDGammaListIndex + 1) % KDGammaList.length] * 100 + "%");
-			YY += YYd * 2;
-		}
-
-		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDVibeVolume") + " " + (KDVibeVolume * 100 + "%"), "#ffffff", "",
-			() => KDVibeVolumeList[(KDVibeVolumeListIndex + KDVibeVolumeList.length - 1) % KDVibeVolumeList.length] * 100 + "%",
-			() => KDVibeVolumeList[(KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length] * 100 + "%");
-		YY += YYd;
-		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDMusicVolume") + " " + (KDMusicVolume * 100 + "%"), "#ffffff", "",
-			() => KDMusicVolumeList[(KDMusicVolumeListIndex + KDMusicVolumeList.length - 1) % KDMusicVolumeList.length] * 100 + "%",
-			() => KDMusicVolumeList[(KDMusicVolumeListIndex + 1) % KDMusicVolumeList.length] * 100 + "%");
-		YY += YYd;
-		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDSfxVolume") + " " + (KDSfxVolume * 100 + "%"), "#ffffff", "",
-			() => KDSfxVolumeList[(KDSfxVolumeListIndex + KDSfxVolumeList.length - 1) % KDSfxVolumeList.length] * 100 + "%",
-			() => KDSfxVolumeList[(KDSfxVolumeListIndex + 1) % KDSfxVolumeList.length] * 100 + "%");
-		YY += YYd;
-		DrawBackNextButtonVis(450, YY, 350, 64, TextGet("KDAnimSpeed") + " " + (KDAnimSpeed * 100 + "%"), "#ffffff", "",
-			() => KDAnimSpeedList[(KDAnimSpeedListIndex + KDAnimSpeedList.length - 1) % KDAnimSpeedList.length] * 100 + "%",
-			() => KDAnimSpeedList[(KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length] * 100 + "%");
-		YY += YYd;
-
-
-
-
-		DrawButtonKDEx("KBBackOptions", () => {
-			KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
-			if (KinkyDungeonGameFlag) {
-				KinkyDungeonState = "Game";
-			} else KinkyDungeonState = "Menu";
-			//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
-			return true;
-		}, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "");
-
 	}
 
 	// Cull temp elements
@@ -2472,6 +2591,7 @@ function DrawButtonKD(name, enabled, Left, Top, Width, Height, Label, Color, Ima
  * @param {number} [options.alpha] - Dont show text backgrounds
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
+ * @param {boolean} [options.centered] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
@@ -2517,10 +2637,11 @@ function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Co
  * @param {number} [options.alpha] - Dont show text backgrounds
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
+ * @param {boolean} [options.centered] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
- * @returns {void} - Nothing
+ * @returns {boolean} - Whether or not the mouse is in the button
  */
 function DrawButtonKDExScroll(name, scrollfunc, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
 	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
@@ -2535,6 +2656,7 @@ function DrawButtonKDExScroll(name, scrollfunc, func, enabled, Left, Top, Width,
 		scrollfunc: scrollfunc,
 		hotkeyPress: options?.hotkeyPress,
 	};
+	return MouseIn(Left,Top,Width,Height);
 }
 
 /**
@@ -2563,7 +2685,7 @@ function DrawButtonKDExScroll(name, scrollfunc, func, enabled, Left, Top, Width,
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
  * @param {boolean} [options.unique] - This button is unique, so X and Y are not differentiators
- * @returns {void} - Nothing
+ * @returns {boolean} - Whether or not the mouse is in the button
  */
 function DrawButtonKDExTo(Container, name, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
 	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
@@ -2577,6 +2699,7 @@ function DrawButtonKDExTo(Container, name, func, enabled, Left, Top, Width, Heig
 		priority: (options?.zIndex || 0),
 		hotkeyPress: options?.hotkeyPress,
 	};
+	return MouseIn(Left,Top,Width,Height);
 }
 
 function KDMouseWheel(event) {
@@ -2584,6 +2707,8 @@ function KDMouseWheel(event) {
 		// If we fail we dilate the buttons vertically
 		if (KDProcessButtonScroll(event.deltaY, 15)) return;
 	} else return;
+	if (KDFunctionOptionsScroll(event.deltaY)) return;
+	if (KDFunctionCollectionScroll(event.deltaY)) return;
 	if (KDFunctionDialogueScroll(event.deltaY)) return;
 	if (KDFunctionPerksScroll(event.deltaY || event.deltaX)) return;
 	if (KDFunctionQuestScroll(event.deltaY || event.deltaX)) return;
@@ -2596,6 +2721,22 @@ function KDMouseWheel(event) {
 	if (KDFunctionSpellPageScroll(event.deltaY || event.deltaX)) return;
 }
 
+function KDFunctionOptionsScroll(amount) {
+	if (KinkyDungeonState == "Toggles") {
+		let index = KDToggleGroups.indexOf(KDToggleTab);
+		if (amount > 0) {
+			if (index >= 0) index += 1;
+			if (index >= KDToggleGroups.length) index = 0;
+		} else {
+			if (index >= 0) index -= 1;
+			if (index < 0) index = KDToggleGroups.length-1;
+		}
+		if (index >= 0)
+			KDToggleTab = KDToggleGroups[index];
+		return true;
+	}
+	return false;
+}
 function KDFunctionPerksScroll(amount) {
 	if (KinkyDungeonState == "Stats" || KinkyDungeonDrawState == "Perks2" ) {
 		if (amount > 0) {
@@ -2608,11 +2749,22 @@ function KDFunctionPerksScroll(amount) {
 	return false;
 }
 function KDFunctionQuestScroll(amount) {
-	if (KinkyDungeonState == "Quest") {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Quest") {
 		if (amount > 0) {
 			KDClickButton("questDown");
 		} else {
 			KDClickButton("questUp");
+		}
+		return true;
+	}
+	return false;
+}
+function KDFunctionCollectionScroll(amount) {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Collection") {
+		if (amount > 0) {
+			KDClickButton("collDOWN");
+		} else {
+			KDClickButton("collUP");
 		}
 		return true;
 	}
@@ -3044,6 +3196,7 @@ function KDCommitKeybindings() {
 		KinkyDungeonKeybindings.Magic,
 		KinkyDungeonKeybindings.Log,
 		KinkyDungeonKeybindings.Quest,
+		KinkyDungeonKeybindings.Collection,
 	];
 	KinkyDungeonKeyToggle = [
 		KinkyDungeonKeybindings.MsgLog,
@@ -3083,6 +3236,7 @@ let afterLoaded = false;
 let KDModsAfterLoad = () => {};
 
 function KinkyDungeonStartNewGame(Load) {
+
 	KinkyDungeonNewGame = 0;
 	let cp = KinkyDungeonMapIndex.grv;
 	KDUpdateHardMode();
@@ -3249,7 +3403,7 @@ function KinkyDungeonHandleClick() {
 					try {
 						CharacterAppearanceRestore(KinkyDungeonPlayer, decompressed);
 						CharacterRefresh(KinkyDungeonPlayer);
-						KDInitProtectedGroups();
+						KDInitProtectedGroups(KinkyDungeonPlayer);
 					} catch (e) {
 						// If we fail, it might be a BCX code. try it!
 						KinkyDungeonPlayer.Appearance = origAppearance;
@@ -3262,7 +3416,7 @@ function KinkyDungeonHandleClick() {
 									}
 									CharacterRefresh(KinkyDungeonPlayer);
 								}
-								KDInitProtectedGroups();
+								KDInitProtectedGroups(KinkyDungeonPlayer);
 							} else {
 								console.log("Invalid code. Maybe its corrupt?");
 							}
@@ -3306,7 +3460,7 @@ function KinkyDungeonHandleClick() {
 				KinkyDungeonInitializeDresses();
 				KinkyDungeonCheckClothesLoss = true;
 				KinkyDungeonDressPlayer();
-				KDInitProtectedGroups();
+				KDInitProtectedGroups(KinkyDungeonPlayer);
 				CharacterRefresh(KinkyDungeonPlayer);
 
 				return true;
@@ -3323,7 +3477,7 @@ function KinkyDungeonHandleClick() {
 				KinkyDungeonInitializeDresses();
 				KinkyDungeonCheckClothesLoss = true;
 				KinkyDungeonDressPlayer();
-				KDInitProtectedGroups();
+				KDInitProtectedGroups(KinkyDungeonPlayer);
 				CharacterRefresh(KinkyDungeonPlayer);
 
 				return true;
@@ -3366,7 +3520,7 @@ function KinkyDungeonHandleClick() {
 					CharacterReleaseTotal(KinkyDungeonPlayer);
 					KinkyDungeonSetDress("Default", "Default");
 					KinkyDungeonDressPlayer();
-					KDInitProtectedGroups();
+					KDInitProtectedGroups(KinkyDungeonPlayer);
 					KinkyDungeonConfigAppearance = true;
 					return true;
 				} else {
@@ -3401,56 +3555,62 @@ function KinkyDungeonHandleClick() {
 		let YY = YYstart;
 		let YYd = 54;
 
-		YY = YYstart;
+		YY = YYstart + 50;
 		YYd = 80;
 
-		if (StandalonePatched) {
-			if (MouseIn(450, YY, 350, 64)) {
-				if (MouseX <= 450 + 350/2) KDResolutionListIndex = (KDResolutionList.length + KDResolutionListIndex - 1) % KDResolutionList.length;
-				else KDResolutionListIndex = (KDResolutionListIndex + 1) % KDResolutionList.length;
-				KDResolution = KDResolutionList[KDResolutionListIndex];
-				KDResolutionConfirm = true;
-				localStorage.setItem("KDResolution", "" + KDResolutionListIndex);
+		let CombarXX = 550;
+
+		if (KDToggleTab == "Main") {
+			if (StandalonePatched) {
+				if (MouseIn(CombarXX, YY, 350, 64)) {
+					if (MouseX <= CombarXX + 350/2) KDResolutionListIndex = (KDResolutionList.length + KDResolutionListIndex - 1) % KDResolutionList.length;
+					else KDResolutionListIndex = (KDResolutionListIndex + 1) % KDResolutionList.length;
+					KDResolution = KDResolutionList[KDResolutionListIndex];
+					KDResolutionConfirm = true;
+					localStorage.setItem("KDResolution", "" + KDResolutionListIndex);
+				}
+				YY += YYd;
+				if (MouseIn(CombarXX, YY, 350, 64)) {
+					if (MouseX <= CombarXX + 350/2) KDGammaListIndex = (KDGammaList.length + KDGammaListIndex - 1) % KDGammaList.length;
+					else KDGammaListIndex = (KDGammaListIndex + 1) % KDGammaList.length;
+					KDGamma = KDGammaList[KDGammaListIndex] || 0;
+					localStorage.setItem("KDGamma", "" + KDGammaListIndex);
+					kdgammafilterstore[0] = KDGamma;
+				}
+				YY += YYd*2;
+			}
+
+			if (MouseIn(CombarXX, YY, 350, 64)) {
+				if (MouseX <= CombarXX + 350/2) KDVibeVolumeListIndex = (KDVibeVolumeList.length + KDVibeVolumeListIndex - 1) % KDVibeVolumeList.length;
+				else KDVibeVolumeListIndex = (KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length;
+				KDVibeVolume = KDVibeVolumeList[KDVibeVolumeListIndex];
+				localStorage.setItem("KDVibeVolume", "" + KDVibeVolumeListIndex);
 			}
 			YY += YYd;
-			if (MouseIn(450, YY, 350, 64)) {
-				if (MouseX <= 450 + 350/2) KDGammaListIndex = (KDGammaList.length + KDGammaListIndex - 1) % KDGammaList.length;
-				else KDGammaListIndex = (KDGammaListIndex + 1) % KDGammaList.length;
-				KDGamma = KDGammaList[KDGammaListIndex] || 0;
-				localStorage.setItem("KDGamma", "" + KDGammaListIndex);
-				kdgammafilterstore[0] = KDGamma;
+			if (MouseIn(CombarXX, YY, 350, 64)) {
+				if (MouseX <= CombarXX + 350/2) KDMusicVolumeListIndex = (KDMusicVolumeList.length + KDMusicVolumeListIndex - 1) % KDMusicVolumeList.length;
+				else KDMusicVolumeListIndex = (KDMusicVolumeListIndex + 1) % KDMusicVolumeList.length;
+				KDMusicVolume = KDMusicVolumeList[KDMusicVolumeListIndex];
+				localStorage.setItem("KDMusicVolume", "" + KDMusicVolumeListIndex);
 			}
-			YY += YYd*2;
+			YY += YYd;
+			if (MouseIn(CombarXX, YY, 350, 64)) {
+				if (MouseX <= CombarXX + 350/2) KDSfxVolumeListIndex = (KDSfxVolumeList.length + KDSfxVolumeListIndex - 1) % KDSfxVolumeList.length;
+				else KDSfxVolumeListIndex = (KDSfxVolumeListIndex + 1) % KDSfxVolumeList.length;
+				KDSfxVolume = KDSfxVolumeList[KDSfxVolumeListIndex];
+				localStorage.setItem("KDSfxVolume", "" + KDSfxVolumeListIndex);
+			}
+			YY += YYd;
+			if (MouseIn(CombarXX, YY, 350, 64)) {
+				if (MouseX <= CombarXX + 350/2) KDAnimSpeedListIndex = (KDAnimSpeedList.length + KDAnimSpeedListIndex - 1) % KDAnimSpeedList.length;
+				else KDAnimSpeedListIndex = (KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length;
+				KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex] || 0;
+				localStorage.setItem("KDAnimSpeed", "" + KDAnimSpeedListIndex);
+			}
+			YY += YYd;
 		}
 
-		if (MouseIn(450, YY, 350, 64)) {
-			if (MouseX <= 450 + 350/2) KDVibeVolumeListIndex = (KDVibeVolumeList.length + KDVibeVolumeListIndex - 1) % KDVibeVolumeList.length;
-			else KDVibeVolumeListIndex = (KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length;
-			KDVibeVolume = KDVibeVolumeList[KDVibeVolumeListIndex];
-			localStorage.setItem("KDVibeVolume", "" + KDVibeVolumeListIndex);
-		}
-		YY += YYd;
-		if (MouseIn(450, YY, 350, 64)) {
-			if (MouseX <= 450 + 350/2) KDMusicVolumeListIndex = (KDMusicVolumeList.length + KDMusicVolumeListIndex - 1) % KDMusicVolumeList.length;
-			else KDMusicVolumeListIndex = (KDMusicVolumeListIndex + 1) % KDMusicVolumeList.length;
-			KDMusicVolume = KDMusicVolumeList[KDMusicVolumeListIndex];
-			localStorage.setItem("KDMusicVolume", "" + KDMusicVolumeListIndex);
-		}
-		YY += YYd;
-		if (MouseIn(450, YY, 350, 64)) {
-			if (MouseX <= 450 + 350/2) KDSfxVolumeListIndex = (KDSfxVolumeList.length + KDSfxVolumeListIndex - 1) % KDSfxVolumeList.length;
-			else KDSfxVolumeListIndex = (KDSfxVolumeListIndex + 1) % KDSfxVolumeList.length;
-			KDSfxVolume = KDSfxVolumeList[KDSfxVolumeListIndex];
-			localStorage.setItem("KDSfxVolume", "" + KDSfxVolumeListIndex);
-		}
-		YY += YYd;
-		if (MouseIn(450, YY, 350, 64)) {
-			if (MouseX <= 450 + 350/2) KDAnimSpeedListIndex = (KDAnimSpeedList.length + KDAnimSpeedListIndex - 1) % KDAnimSpeedList.length;
-			else KDAnimSpeedListIndex = (KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length;
-			KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex] || 0;
-			localStorage.setItem("KDAnimSpeed", "" + KDAnimSpeedListIndex);
-		}
-		YY += YYd;
+
 	} else if (KinkyDungeonState == "End") {
 		if (MouseIn(1075, 650, 350, 64)) {
 			KinkyDungeonState = "Game";
@@ -4258,4 +4418,41 @@ function KDDrawGameSetupTabs(xOffset) {
 function DecompressB64(str) {
 	if (!str || !str.trim) return str;
 	return LZString.decompressFromBase64("".concat(...str.trim().split('\n')));
+}
+
+let KDToggleTab = "Main";
+
+function KDDrawToggleTabs(xOffset) {
+	let w = 1990 - xOffset;
+	FillRectKD(kdcanvas, kdpixisprites, "maintogglebg", {
+		Left: xOffset,
+		Top: canvasOffsetY_ui - 150,
+		Width: w,
+		Height: 970,
+		Color: "#000000",
+		LineWidth: 1,
+		zIndex: -19,
+		alpha: 0.3
+	});
+	DrawRectKD(kdcanvas, kdpixisprites, "maintogglebg2", {
+		Left: xOffset,
+		Top: canvasOffsetY_ui - 150,
+		Width: w,
+		Height: 970,
+		Color: "#000000",
+		LineWidth: 1,
+		zIndex: -19,
+		alpha: 0.9
+	});
+	let list = KDToggleGroups;
+	let II = 0;
+	for (let tab of list) {
+		DrawButtonKDEx("TabTog" + tab, (b) => {
+			KDToggleTab = tab;
+			return true;
+		}, true, xOffset + II * w / list.length, 10, w / list.length - 4, 40,
+		TextGet("KDToggleTab" + tab), "#ffffff", undefined, undefined, undefined,
+		KDToggleTab != tab, KDButtonColor);
+		II++;
+	}
 }

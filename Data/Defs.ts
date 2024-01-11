@@ -6,6 +6,7 @@ let LAYERS_BASE = [
 	"CollarAcc",
 	"Leash",
 
+	"AnimalEarsFront",
 	"HatDeco",
 	"Hat",
 	"Brows", // Brows should get hidden with mask
@@ -116,17 +117,22 @@ let LAYERS_BASE = [
 	"Necklace",
 
 
-	"HarnessOver",
 	"WrapChest",
+	"HarnessOver",
 	"BindChest",
 	"BustierCollar",
 	"BustierChest",
 	"ShirtCollar",
 	"ShirtChest",
 	"Option_BindChestLower",
+	"NippleToysOption",
+	"SuitChestOver",
 	"BraChest",
 	"BindChestLower",
 	"SuitChest",
+	"CatsuitChest",
+	"NippleToys",
+	"Nipples",
 	"Chest",
 
 	"WrappingTorsoUpper",
@@ -165,9 +171,12 @@ let LAYERS_BASE = [
 
 	// Skirts that dont follow shilhouette
 	"WrappingLegsOver2",
+	"LegbinderLegsOver2",
 	"OverSkirtDeco",
 	"OverSkirt",
 	"Greaves",
+
+	"WrappingTorsoMid", // For stuff that goes over a shirt and clothes but under restraints, e.g. tape
 
 	"StrapsUnderbust",
 
@@ -177,7 +186,6 @@ let LAYERS_BASE = [
 	"BeltUnder",
 
 	"CrotchPanelMid",
-	"WrappingTorsoMid", // For stuff that goes over a shirt and clothes but under restraints, e.g. tape
 
 
 
@@ -212,6 +220,7 @@ let LAYERS_BASE = [
 
 
 	"WrappingLegsOver",
+	"LegbinderLegsOver",
 
 	"WrappingTorsoUnder",// For skintight stuff
 
@@ -226,6 +235,7 @@ let LAYERS_BASE = [
 	"ThighLeft",
 
 	"WrappingAnklesOver",
+	"LegbinderAnklesOver",
 
 	"AnklesOver",
 	"Ankles",
@@ -238,6 +248,7 @@ let LAYERS_BASE = [
 	"WrappingLegs",
 
 	"PantsAccLeft",
+	"ShortsLeft",
 	"PantLeft",
 
 	"BindFeet",
@@ -248,7 +259,21 @@ let LAYERS_BASE = [
 	"ShoeLeftUnder",
 
 
+
+	"WrappingLegsUnder",
+
+	"Shorts",
+
+	"OverSocks",
+	"StockingLeft",
+	"FootLeft",
+	"LegLeft",
+
+	"WrappingTorso",
+	"OverCrotchStrap",
+
 	"Option_ChastityBelt",
+	"BodysuitOver",
 
 	// Panties go here when standing
 	"Panties",
@@ -259,18 +284,9 @@ let LAYERS_BASE = [
 
 	"ChastityBelt",
 	// Lower harness
-	"OverCrotchStrap",
 	"HarnessLower",
 	"CrotchPanelLower",
-	"WrappingTorso",
 
-
-	"WrappingLegsUnder",
-
-	"OverSocks",
-	"StockingLeft",
-	"FootLeft",
-	"LegLeft",
 
 
 	// These are for the base skirt layer when kneeling
@@ -286,6 +302,9 @@ let LAYERS_BASE = [
 	// Right leg
 	"WrappingLegsRightOver",
 	"BindThighRight",
+	"RightThighs3",
+	"RightThighs2",
+	"RightThighs1",
 	"KneeAccRight",
 	"ThighRight",
 	"AnkleRight",
@@ -293,7 +312,7 @@ let LAYERS_BASE = [
 	"AnkleRightOver",
 	"PantsAccRight",
 	"PantRight",
-	"Pants",
+	"PantLegs",
 
 	"HarnessUnder",
 
@@ -427,7 +446,13 @@ let LayerGroups = {
 	"CrotchRope": ToMap([
 		"HarnessLower",
 	]),
-
+	BustierPoses: ToMap([
+		"Bustier",
+		"Corset",
+		"CorsetLiner",
+		"HarnessLower",
+		"HarnessMid",
+	]),
 
 	// region slime
 	"SlimeLegs": ToMap([
@@ -481,6 +506,8 @@ let LayerGroups = {
 	"SlimeTorsoLower": ToMap([
 		"OverSkirt",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 	]),
 	// endregion
 
@@ -775,6 +802,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		"OverSocks",
 		"StockingLeft",
@@ -803,6 +832,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		"OverSocks",
 		"StockingLeft",
@@ -873,6 +904,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		"OverSocks",
 		"StockingLeft",
@@ -908,6 +941,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		// Shoes
 		"ShoeLeftDeco",
@@ -977,6 +1012,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		"OverSocks",
 		"StockingLeft",
@@ -1010,12 +1047,14 @@ let LayerGroups = {
 	"CorsetBra": ToMap([
 		"Chest",
 		"ShirtChest",
+		"SuitChestOver",
 		"SuitChest",
 		"BraChest",
 		"BindChestLower",
 	]),
 	"ShirtCutoffBra": ToMap([
 		"Chest",
+		"SuitChestOver",
 		"SuitChest",
 		"BraChest",
 		"BindChestLower",
@@ -1025,6 +1064,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		"OverSocks",
 		"StockingLeft",
@@ -1053,6 +1094,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		// Shoes
 		"ShoeLeftDeco",
@@ -1100,6 +1143,8 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"ShortsLeft",
+		"Shorts",
 
 		// Shoes
 		"ShoeLeftDeco",
@@ -1179,7 +1224,7 @@ let LayerGroups = {
 	"MouthProp",
 	"Hood", // For Kigu
 	"MaskOver",
-
+	"OverCrotchStrapMid",
 
 	"NeckCorset",
 	// Hair mid
@@ -1248,6 +1293,7 @@ let LayerGroups = {
 
 	// Skirts that dont follow shilhouette
 	"WrappingLegsOver2",
+	"LegbinderLegsOver2",
 	"OverSkirtDeco",
 	"OverSkirt",
 	"Greaves",
@@ -1265,7 +1311,9 @@ let LayerGroups = {
 	"SkirtOver",
 
 	"WrappingLegsOver",
+	"LegbinderLegsOver",
 	"WrappingAnklesOver",
+	"LegbinderAnklesOver",
 
 	// Corsets that go under harness and poofy skirt
 	//"Corset",
@@ -1315,9 +1363,12 @@ let LayerGroups = {
 	"PantsAccRight",
 	"PantRight",
 	"Pants",
+	"ShortsLeft",
+	"Shorts",
 
 	"SleeveDecoLeft",
 	"SleeveLeft",
+	"SuitChestOver",
 
 	// Right Shoes
 	"ShoeRightOver",
@@ -1456,6 +1507,7 @@ let LayerProperties = {
 	CircletUnder: {Parent: "Head"},
 	HatBack: {Parent: "Head"},
 	AnimalEars: {Parent: "Head"},
+	AnimalEarsFront: {Parent: "Head"},
 	Tail: {Parent: "Torso"},
 
 

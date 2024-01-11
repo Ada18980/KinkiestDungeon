@@ -41,7 +41,7 @@ AddModel({
 	Categories: ["Corsets"],
 	Layers: ToLayerMap([
 		{ Name: "Belt", Layer: "Bustier", Pri: 1,
-			SwapLayerPose: {Pants: "CorsetUnder"},
+			//SwapLayerPose: {Pants: "CorsetUnder"},
 			HideWhenOverridden: true,
 			Invariant: true,
 			DisplaceAmount: 100,
@@ -62,7 +62,7 @@ AddModel({
 		...GetModelLayers("ClothBelt"),
 		{ Name: "BeltLines", Layer: "Bustier", Pri: 1.1,
 			NoOverride: true, TieToLayer: "Belt",
-			SwapLayerPose: {Pants: "CorsetUnder"},
+			//SwapLayerPose: {Pants: "CorsetUnder"},
 			Invariant: true,
 		},
 	])

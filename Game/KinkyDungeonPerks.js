@@ -21,6 +21,7 @@ let KDCategoriesStart = [
 	{name: "Restraints", buffs: [], debuffs: [],},
 	{name: "Restriction", buffs: [], debuffs: [],},
 	{name: "Senses", buffs: [], debuffs: [],},
+	{name: "Training", buffs: [], debuffs: [],},
 	{name: "Kinky", buffs: [], debuffs: [],},
 	{name: "Damage", buffs: [], debuffs: [],},
 	{name: "Combat", buffs: [], debuffs: [],},
@@ -169,6 +170,26 @@ let KDPerkUpdateStats = {
 	"CommonKitty": () => {
 		KDExtraEnemyTags.kittyRestraints = 0;
 	},
+	"CommonToyPleasure": () => {
+		KDExtraEnemyTags.toyPleasure = 0;
+		KDExtraEnemyTags.toyPleasureMid = 3;
+		KDExtraEnemyTags.toyPleasureIntense = 7;
+	},
+	"CommonToyEdge": () => {
+		KDExtraEnemyTags.toyEdge = 0;
+		KDExtraEnemyTags.toyEdgeMid = 3;
+		KDExtraEnemyTags.toyEdgeIntense = 7;
+	},
+	"CommonToyDeny": () => {
+		KDExtraEnemyTags.toyDeny = 0;
+		KDExtraEnemyTags.toyDenyMid = 3;
+		KDExtraEnemyTags.toyDenyIntense = 7;
+	},
+	"CommonToyTease": () => {
+		KDExtraEnemyTags.toyTease = 0;
+		KDExtraEnemyTags.toyTeaseMid = 3;
+		KDExtraEnemyTags.toyTeaseIntense = 7;
+	},
 };
 
 /**
@@ -289,6 +310,12 @@ let KinkyDungeonStatsPresets = {
 	"AbsoluteFocus": {category: "Magic", id: "AbsoluteFocus", cost: -1},
 
 	"SelfBondage": {category: "Start", id: "SelfBondage", cost: 0, tags: ["start"]},
+	"HeelTraining": {category: "Start", id: "HeelTraining", cost: 0, tags: ["start"]},
+	"ClassicHeels": {category: "Toggles", id: "ClassicHeels", cost: 0, tags: ["start"], blocktags: ["heels"]},
+
+	"MasteryHeels": {category: "Training", id: "MasteryHeels", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
+	"PoorBalance": {category: "Combat", id: "PoorBalance", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
+	"HeadStartHeels": {category: "Training", id: "HeadStartHeels", cost: 1, tags: ["start", "heels"], block: ["ClassicHeels"]},
 
 	"Hogtied": {startPriority: 50, category: "Start", id: "Hogtied", cost: -1, tags: ["start"]},
 	"StartObsidian": {startPriority: 5, category: "Start", id: "StartObsidian", cost: -2, outfit: "Obsidian", tags: ["start"]},
@@ -322,6 +349,7 @@ let KinkyDungeonStatsPresets = {
 	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0, tags: ["start"]},
 	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0, tags: ["start"]},
 	"NoPolice": {category: "Toggles", id: "NoPolice", cost: 0, tags: ["start"]},
+	"MoreKinkyFurniture": {category: "Toggles", id: "MoreKinkyFurniture", cost: 0, tags: ["start"]},
 	"NoBrats": {category: "Toggles", id: "NoBrats", cost: 0, tags: ["start"], debuff: true, block: ["OnlyBrats"]},
 	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, tags: ["start"], debuff: true, block: ["NoBrats"]},
 	"TapePref": {category: "Toggles", id: "TapePref", cost: 0, tags: ["start"], block: ["TapeOptout"]},
@@ -343,7 +371,8 @@ let KinkyDungeonStatsPresets = {
 	"Blackout":  {category: "Senses", id: "Blackout", cost: -1, block: ["TotalBlackout"]},
 	"TotalBlackout":  {category: "Senses", id: "TotalBlackout", cost: -2, block: ["Blackout", "Forgetful"]},
 	"Forgetful": {category: "Senses", id: "Forgetful", cost: -1, block: ["TotalBlackout"]},
-	"NightOwl": {category: "Senses", id: "NightOwl", cost: 2},
+	"NightOwl": {category: "Senses", id: "NightOwl", cost: 2, block: ["NightBlindness"]},
+	"NightBlindness": {category: "Senses", id: "NightBlindness", cost: -1, block: ["NightOwl"]},
 	"Nearsighted": {category: "Senses", id: "Nearsighted", cost: -1, block: ["ArchersEye"]},
 	"KeenHearing": {category: "Senses", id: "KeenHearing", cost: 1},
 	"ArchersEye": {category: "Senses", id: "ArchersEye", cost: 1, block: ["Nearsighted"]},
@@ -377,6 +406,10 @@ let KinkyDungeonStatsPresets = {
 	"CommonDress": {category: "Common", id: "CommonDress", cost: -1, costGroup: "common"},
 	"CommonWolf": {category: "Common", id: "CommonWolf", cost: -1, costGroup: "common"},
 	"CommonKitty": {category: "Common", id: "CommonKitty", cost: -1, costGroup: "common"},
+	"CommonToyPleasure": {category: "Common", id: "CommonToyPleasure", cost: 0, requireArousal: true},
+	"CommonToyEdge": {category: "Common", id: "CommonToyEdge", cost: 0, requireArousal: true},
+	"CommonToyDeny": {category: "Common", id: "CommonToyDeny", cost: 0, requireArousal: true},
+	"CommonToyTease": {category: "Common", id: "CommonToyTease", cost: 0, requireArousal: true},
 
 	"Incantation":  {category: "Restriction", id: "Incantation", cost: -1, block: ["SmoothTalker"]},
 	"SmoothTalker":  {category: "Restriction", id: "SmoothTalker", cost: 2, block: ["Incantation"]},
@@ -386,13 +419,15 @@ let KinkyDungeonStatsPresets = {
 	"PoorForm": {category: "Restriction", id: "PoorForm", cost: -1, block: ["HeelWalker"]},
 
 	"Doorknobs":  {category: "Restriction", id: "Doorknobs", cost: -1},
-	"CantTouchThat":  {category: "Restriction", id: "CantTouchThat", cost: -1},
+	"CantTouchThat":  {category: "Restriction", id: "CantTouchThat", cost: -2},
 	"Grounded":  {category: "Restriction", id: "Grounded", cost: -1},
 
 
 	"MapLarge": {category: "Map", id: "MapLarge", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
 	"MapHuge": {category: "Map", id: "MapHuge", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
 	"MapGigantic": {category: "Map", id: "MapGigantic", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
+
+	"TrustFall": {category: "Restriction", id: "TrustFall", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
 };
 
 
@@ -529,6 +564,8 @@ let KDPerkStart = {
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true, undefined, false, undefined, undefined, undefined, true);
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoDress"), 0, true, undefined, false, undefined, undefined, undefined, true);
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoGag"), 0, true, undefined, false, undefined, undefined, undefined, true);
+
+		KDFixPlayerClothes("Fuuka");
 	},
 	Prisoner: () =>{
 		KDGameData.PrisonerState = 'parole';
@@ -575,22 +612,47 @@ let KDPerkStart = {
 		KinkyDungeonInventoryAddLoose("SturdyLeatherBeltsLegs");
 		KinkyDungeonInventoryAddLoose("SturdyLeatherBeltsFeet");
 	},
+	HeelTraining: () =>{
+		KDGameData.Training.Heels = {
+			training_points: 0,
+			training_stage: 0,
+			turns_skipped: 0,
+			turns_total: 0,
+			turns_trained: 0,
+		};
+		KinkyDungeonAddRestraintIfWeaker("TrainingHeels", 20, true, "HiSec", false, undefined, undefined, undefined, true);
+	},
+	HeadStartHeels: () =>{
+		KDGameData.Training.Heels = {
+			training_points: 0,
+			training_stage: 5,
+			turns_skipped: 0,
+			turns_total: 0,
+			turns_trained: 0,
+		};
+		KinkyDungeonInventoryAddLoose("TrainingHeels");
+
+	},
 	StartLatex: () =>{
 		KDAddQuest("LatexDoll");
 		KinkyDungeonChangeRep("Latex", 10);
 		KDCustomDefeatUniforms.DollShoppe();
+		KDFixPlayerClothes("Dressmaker");
 	},
 	DollmakerVisor: () =>{
 		KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
+		KDFixPlayerClothes("Dollsmith");
 	},
 	DollmakerMask: () =>{
 		KinkyDungeonAddRestraintIfWeaker("DollmakerMask", 5, true, "Gold", false, undefined, undefined, undefined, true);
+		KDFixPlayerClothes("Dollsmith");
 	},
 	StartCyberDoll: () =>{
 		KDAddQuest("EscapedDoll");
 		KinkyDungeonChangeRep("Metal", 10);
 
 		KDCustomDefeatUniforms.CyberDoll();
+		KDFixPlayerClothes("AncientRobot");
 	},
 	StartMaid: () =>{
 		KDAddQuest("MaidSweeper");
@@ -598,11 +660,13 @@ let KDPerkStart = {
 		KDCustomDefeatUniforms.MaidSweeper();
 
 		KinkyDungeonInventoryAddLoose("DusterGag");
+		KDFixPlayerClothes("Maidforce");
 	},
 	StartWolfgirl: () =>{
 		KDChangeFactionRelation("Player", "Nevermere", 0.2 - KDFactionRelation("Player", "Nevermere"), true);
 		KDCustomDefeatUniforms.WolfgirlHunters();
 		KDAddQuest("WolfgirlHunters");
+		KDFixPlayerClothes("Nevermere");
 	},
 	StartObsidian: () =>{
 		KDChangeFactionRelation("Player", "Elemental", 0.2 - KDFactionRelation("Player", "Elemental"), true);
@@ -610,6 +674,7 @@ let KDPerkStart = {
 		KDAddQuest("ElementalSlave");
 		KDCustomDefeatUniforms.ElementalSlave();
 
+		KDFixPlayerClothes("Elemental");
 	},
 	Hogtied: () =>{
 		KDAddQuest("Nawashi");
@@ -618,6 +683,7 @@ let KDPerkStart = {
 		for (let w of kdStartWeapons) {
 			if (KinkyDungeonInventoryGet(w)) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet(w));
 		}
+		KDFixPlayerClothes("Jail");
 	},
 	Bandit: () =>{
 		for (let key of Object.keys(KinkyDungeonFactionTag)) {
@@ -1001,7 +1067,7 @@ function KDGetPerkShrineBondage(perks) {
 		theme = randTheme();
 
 		let getRestraints = () => {
-			let restraints = []
+			let restraints = [];
 			for (let i = 0; i < 11; i++) {
 				if (restraints.length == 0) {
 					if (i > 0)
@@ -1010,7 +1076,7 @@ function KDGetPerkShrineBondage(perks) {
 						true, "Gold");
 					restraints = restraints.filter((r) => {
 						return !ret.includes(r.restraint.name);
-					})
+					});
 				} else break;
 			}
 			return restraints;

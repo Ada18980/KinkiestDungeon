@@ -632,7 +632,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						if (!DisplaceFilters[dg]) DisplaceFilters[dg] = [];
 						DisplaceFilters[dg].push(
 							{
-								amount: l.DisplaceAmount || 50,
+								amount: (l.DisplaceAmount || 50) * Zoom,
 								hash: id + m.Name + "," + l.Name,
 								sprite: KDDraw(
 									ContainerContainer.Container,
@@ -690,7 +690,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						if (!EraseFilters[dg]) EraseFilters[dg] = [];
 						EraseFilters[dg].push(
 							{
-								amount: l.EraseAmount || 50,
+								amount: (l.EraseAmount || 50) * Zoom,
 								hash: id + m.Name + "," + l.Name,
 								sprite: KDDraw(
 									ContainerContainer.Container,

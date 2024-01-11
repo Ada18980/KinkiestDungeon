@@ -224,7 +224,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "BowCorsetLong", Layer: "Bustier", Pri: 40.1,
 			Invariant: true,
-			SwapLayerPose: {Pants: "CorsetUnder", Kneel: "CorsetUnder", KneelClosed: "CorsetUnder"},
+			//SwapLayerPose: {Pants: "CorsetUnder", Kneel: "CorsetUnder", KneelClosed: "CorsetUnder"},
 			InheritColor: "Corset",
 			DisplaceAmount: 100,
 			DisplaceLayers: ToMap(["CorsetTorso"]),
@@ -232,7 +232,7 @@ AddModel({
 			DisplacementInvariant: true,
 		},
 		{ Name: "BowCorsetLongRuffle", Layer: "Bustier", Pri: 40.1,
-			SwapLayerPose: {Pants: "CorsetUnder", Kneel: "CorsetUnder", KneelClosed: "CorsetUnder"},
+			//SwapLayerPose: {Pants: "CorsetUnder", Kneel: "CorsetUnder", KneelClosed: "CorsetUnder"},
 			Invariant: true,
 			InheritColor: "Ruffle",
 			NoOverride: true,
