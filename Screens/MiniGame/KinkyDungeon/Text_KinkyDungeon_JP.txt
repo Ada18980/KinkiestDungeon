@@ -162,6 +162,12 @@ Flip Status Bars
 Auto-Crouch when Tripped
 転んだときに自動でしゃがむ
 
+Flip Player Display
+キャラを反転
+Allow Suspicious Mods
+危険なMODを許可
+Auto Load Mods (offline only)
+MODを自動で読み込む(オフライン専用)
 
 
 
@@ -424,6 +430,24 @@ Stealth Mission
 ステルスミッション
 You are harder to detect and there are more chests, but enemies have 50% more HP, are more evasive, and drop no gold.
 敵に発見されにくくなり、宝箱の配置数が増える。敵はHPが50%上昇し、回避力が上昇する。また、倒した際にゴールドをドロップしなくなる
+
+Edging Lovers
+絶頂愛好家
+All humanoids that can bind you also apply edging toys.
+全ての人型生物が絶頂用オモチャを使用するようになる
+Denial Lovers
+焦らしプレイ愛好家
+All humanoids that can bind you also apply denial toys.
+全ての人型生物が焦らし用オモチャを使用するようになる
+Pleasure Lovers
+快楽愛好家
+All humanoids that can bind you also apply pleasurable toys.
+全ての人型生物が快楽用オモチャを使用するようになる
+Teasing Lovers
+からかい愛好家
+All humanoids that can bind you also apply teasing toys.
+全ての人型生物がからかい用オモチャを使用するようになる
+
 Latex Lovers
 ラテックス愛好家
 All humanoids that can bind you also apply latex restraints.
@@ -1057,6 +1081,11 @@ Clearheaded
 明晰
 Magic puts you in a clear state of mind. Casting spells successfully reduces your distraction.
 呪文を唱えた際、興奮値が低下する
+
+Fear of the Dark
+暗所恐怖症
+Your vision in dark areas is reduced.
+暗闇にいる時、視界範囲が狭くなる
 
 Copy (clipboard)
 クリップボードにコピー
@@ -2307,7 +2336,7 @@ Crop
 ムチ
 For those unruly subs.
 しつけのための道具
-Deals pain damage. Highly distracting. Offhand: +5 pain damage on attack for 3 stamina
+Deals pain damage. Highly distracting. Offhand: +5 pain damage on attack for 3 stamina.
 痛み属性のダメージを与える。興奮値が溜まりやすい。オフハンド：攻撃時、追加でスタミナを3消費し、5痛み属性ダメージを追加で与える。
 You pick up a riding crop.
 馬用のムチを手に入れた。
@@ -2378,17 +2407,28 @@ Flail
 Very fast and hard to dodge as long as you know what you're doing.
 棒と鉄球が鎖で繋がっている打撃武器。回避するのが難しい。
 Also deals 10 damage to targets next to you. Deals crush damage.
-対打撃属性。隣の敵には10ポイントの打撃属性のダメージを与える。
+打撃属性。隣の敵には10ポイントの打撃属性のダメージを与える。
 Spear
 槍
 Speak softly and carry a pointy stick.
 穏やかに話し、先のとがった棒を持つ。
-Deals pierce damage to the target and one square behind it.
-対象とその後ろの1マスに刺突属性ダメージを与える。
+Deals pierce damage to the target and one square behind it. Can be used to make a ranged attack 2 tiles away.
+刺突属性。ターゲットを貫通し、2マス先まで攻撃が届く。
+
+Pike
+パイク
+An 11 foot pole, for things you wouldn't want to touch with a 10 foot pole.
+3.3メートルの長槍。3メートルの槍で触れたくないものを触れるためのもの。
+Deals pierce damage to the target and one square behind it. Can be used to make a ranged attack 3 tiles away.
+刺突属性。ターゲットを貫通し、3マス先まで攻撃が届く。
+
+Magic Axe
+魔法の斧
+
 Bolt Cutters
 ボルトカッター
-A cutting tool useful as a bludgeon, and also for cutting locks and chains.
-棍棒として、また錠前や鎖を切るのにも役立つ切断具。
+The universal key.
+万能の鍵。
 Also assists in cutting restraints when equipped.
 装備時「切断」コマンドにボーナスを得る。
 Knife
@@ -2461,7 +2501,7 @@ A kidnapper's most versatile tool.
 誘拐犯がよく使う道具。
 Deals chain damage and applies 50 points of binding.
 チェーン属性。50ポイントの拘束値を付与する。
-Enchanted Sword
+Magic Sword
 魔法の剣
 Slices through ghosts with ease!
 幽霊だってなます切り！
@@ -2489,12 +2529,12 @@ The Arbiter
 アービター
 I have altered the rules. Pray I do not alter them further.
 ルールを変更しました。これ以上変更しないでください。
-Deals chain damage with 110% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm
-チェーン属性のダメージを与え、110%の威力で拘束値を増加させる。召喚物を攻撃する際、40ポイントの影属性追加ダメージを与える。チェーン属性とグルー属性のダメージが25%増加する。遠距離攻撃: 武装解除
+Deals chain damage with 125% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Weapon Ability: Disarm
+チェーン属性のダメージを与え、125%の威力で拘束値を増加させる。召喚物を攻撃する際、40ポイントの影属性追加ダメージを与える。チェーン属性とグルー属性のダメージが25%増加する。アビリティ: 武装解除
 Bondage Buster
 ボンデージバスター
-Can fire a beam (1 turn channel) that deals 30 electric damage, but charges when not fired, dealing 90 total damage at 10 turns of charge.
-30ポイントの電気属性ダメージを与えるビームを発射する。発射しなかった場合は充電され、10ターンの充電で合計90のダメージを与える。
+Can fire a beam (1 turn channel) that deals 30 electric damage and applies an equal amount of energy bondage. Charges when not fired, dealing 90 total damage at 10 turns of charge.
+1ターンかけてチャージし、30電気属性ダメージと拘束値を与えるビームを発射する。発射しなかった場合は充電され、10ターンの充電で合計90のダメージを与える。
 Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns.
 近接モードではくすぐり属性のダメージを与え、敵に4ターンの間くすぐり弱点を付与する。
 Nevermere Blaster
@@ -2515,10 +2555,10 @@ Can fire an arrow that makes an enemy extremely lustful, causing them to attack 
 敵の興奮値を増加させ、同士討ちをさせる矢を放つ。弱い敵には永遠に続き、高レベルの敵には30ターン、ボスには10ターン効果が続く。
 Moirai's Scissors
 モイライのはさみ
-Safety first!
-安全第一！
-Deals slash damage. Adds up to 30 bonus psychic damage her hit by converting binding into damage. Drains 5 charge to attack twice.
-斬撃属性。拘束をダメージに変換することで、命中に最大30ボーナスのサイキックダメージを追加する。チャージを5消費して2回攻撃する。
+Cutting the threads of fate.
+運命を断ち切るもの。
+Deals slash damage. Ignores up to 100 Magic and Physical armor. Active ability: Spend 50 charge to free all nearby allies and disrobe enemies, increasing charm damage on them by 100% and applying the armor shred.
+斬撃属性。物理/魔法アーマーを100まで無視する。アビリティ：エネルギーを50消費して近くの味方全員を拘束から解放し、敵の服を切り裂き、魅了属性ダメージを100%増加する。
 Latex Projector
 ラテックスプロジェクター
 Deals crush damage. Can be used to spray a '+' shaped pool of slime.
@@ -2537,12 +2577,12 @@ Used for drilling holes in rock and armor.
 岩や防具に穴を開けるのに使われる。
 Deals pierce damage. Reduces enemy armor by 15 for 6 turns.
 刺突属性。6ターンの間、敵のアーマー値を15減少させる。
-Enchanted Flail
+Magic Flail
 魔法のフレイル
 A blessed censer that distributes pain equally.
 群がる者共を平等に痛めつけるフレイル。
-Deals crush damage to the target and all enemies near the target.
-ターゲットとターゲットの近くのすべての敵に打撃属性ダメージを与える。
+Deals crush damage. Deals 20 bonus shadow damage to the target and enemies near the target.
+打撃属性。攻撃時、ターゲットと近くの敵に追加で20の影属性ダメージを与える。
 Enchanted Spear
 魔法の槍
 Seeks and pierces hearts with ease.
@@ -2555,10 +2595,10 @@ Made of a magical, resonant material.
 魔法の共鳴する素材で作られている。
 Deals crush damage and knocks the target back. Helps to bash open restraints while cutting.
 打撃属性。ターゲットをノックバックする。拘束から抜け出しているときに役に立つ。
-IceBreaker
+Icebreaker
 アイスブレイカー
-A frigid lightweight hammer with a spike on the end.
-先端にスパイクが付いた軽量のハンマー
+A frigid magical hammer useful for both climbing up and destroying ice.
+氷に刺して登ったり、砕いたりするための便利な魔法のハンマー。
 Deals crush damage. Deals 3x damage to frozen targets instead of 2x. Triggers Shatter.
 打撃属性。凍結したターゲットに2倍ではなく3倍のダメージを与える。粉々に砕け散る。
 Dreamcatcher
@@ -2579,9 +2619,9 @@ Unarmed
 素手
 Accuracy:
 命中率：
-Crit Multiplier:
+Crit Multiplier: 
 会心ダメージ率：
-Bind Crit Multiplier:
+Bind Crit Multiplier: 
 拘束会心ダメージ率：
 Find the keys..
 鍵を見つける……
@@ -2640,9 +2680,9 @@ Edged!
 Satisfied. Miscast chance is reduced.
 満足した……。詠唱失敗率が減少する。
 
-Crit:
+Crit: 
 クリティカル：
-Bind:
+Bind: 
 拘束：
 Damage:
 ダメージ：
@@ -2650,6 +2690,9 @@ Accuracy:
 命中率：
 SP Cost:
 消費SP：
+Cut PWR: AMNT%
+切断力： AMNT%
+
 It appears to be a receptacle
 クリスタルを設置する台座のようだ
 Place live crystal
@@ -6418,6 +6461,12 @@ A pair of shoes with heels so tall it forces you on your toes.
 常につま先立ちになり、まともに歩けなくなる靴。
 These will take some getting used to.
 なれるまでに時間がかかりそう。
+
+Training Heels
+トレーニングヒール
+A pair of unreasonably high heels owned by you personally.
+自宅から持ってきた非常に高いヒールの靴。
+
 Leg Irons
 足枷
 A pair of solid steel cuffs connecting your ankles inescapably.
@@ -6925,12 +6974,32 @@ An excruciatingly tight corset that hugs your body, with straps securing your ot
 胴を締め付けるタイトなコルセット。他の拘束具とつなぐことで抜け出しにくくする。
 It has too much grip to struggle out of, but is made of a fragile material.
 もがいて抜け出すのは難しいが、壊れやすい素材でできている。
-Blue Latex Catsuit
-ブルーラテックスキャットスーツ
+Latex Catsuit
+テックスキャットスーツ
 A skintight suit that's stretched on tight. It adheres to latex restraints making struggling more difficult.
 首から下を覆う青いゴム製のキャットスーツ。他のゴム製の拘束具にくっつくため、抜け出すのが困難になる。
 Blue latex is silky smooth, very stretchy, and very good at adhering to itself.
 ブルーラテックスはシルクのように滑らかで、非常に伸縮性があり、接着力が非常に優れている。
+
+Latex Cube
+ラテックスキューブ
+A gelatinous cube that engulfed you at some point in the past.
+全身を包み込むゼラチン質の生命体。
+It seems quite content staying where it is.
+動きたくないようだ。
+Slime Bubble
+スライムの泡
+A squishy and sticky bubble that you can't get out of!
+ふにゃふにゃべとべとの泡。もがいて抜け出すのは困難。
+It will slow you down severely but can be popped if you can reach a knife...
+泡に包まれた状態では、まともに動けなくなる。刃物があれば抜け出せるだろう……
+Bubble
+泡
+A squishy bubble that you can't get out of!
+ふにゃふにゃの泡。もがいて抜け出すのは困難。
+It will slow you down severely but can be popped if you can reach a knife...
+泡に包まれた状態では、まともに動けなくなる。刃物があれば抜け出せるだろう……
+
 Scale Boxtie Binder
 竜鱗のボックスタイバインダー
 A secure but comfortable binder meant for long-term wear by long-term prisoners of the Dragonhearts.
@@ -7043,6 +7112,10 @@ Leather Ankle Cuffs
 革の足枷
 A pair of chained cuffs made of leather. They make it trickier to run away.
 革でできた足枷。逃げるのが難しくなる。
+
+A pair of cuffs on your ankles.
+足首に取り付けられた枷。
+
 Made of tough leather.
 丈夫な革でできている。
 The enemy attaches your ankle cuffs together!
@@ -8714,7 +8787,7 @@ Choose target location (2 tile range)
 移動先を選択(2マス先)
 Blink III
 ブリンク III
-Instantly teleport up to 3 tiles away. Must have vision of the target point.
+Instantly teleport up to 3 tiles away. Must have vision of the target point. 
 視界範囲内の、3マス先まで瞬時に移動する。
 You teleport!
 瞬間移動した！
@@ -11519,7 +11592,7 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 関係性3を捧げることによって、拘束から抜け出しやすくなる。
 For 3 rep the goddess will grant you a key.
 関係性3を捧げることによって、鍵を授かる。
-For 3 rep the goddess will grant you
+For 3 rep the goddess will grant you 
 関係性3を捧げることによって、
 For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
@@ -11529,7 +11602,7 @@ For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
 For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
-For 3 rep the goddess
+For 3 rep the goddess 
 神に関係性を捧げ、助けてもらう。
 The goddess will fully restore your mana in exchange for AMOUNT rep
 AMOUNT の関係性と引き換えに、神にマナを補充してもらった。
@@ -11834,9 +11907,9 @@ Can disarm (chance: DISARMCHANCE%)
 武装解除可能 (確率: DISARMCHANCE%)
 Resistances:
 耐性:
-HP:
-HP:
-Binding:
+HP: 
+HP: 
+Binding: 
 拘束：
 Ambivalent
 関係
@@ -12146,7 +12219,7 @@ Extreme
 エクストリーム
 A supposedly reasonable difficulty curve.
 普通の難易度。サクサクプレイ用
-Play the game the way it was intended. Cruel and restrictive.
+Play the game the way it was intended. Cruel and restrictive. 
 本来意図された難易度。積極的に捕まりたい人用
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 自己責任。ハードモードをダブルクリックで解除。
@@ -13804,8 +13877,6 @@ Enjoying yourself? Let's have some fun~
 一人で楽しんでいるのかい？一緒に楽しもうよ！
 You seem like you're having fun! Why don't we go for a walk~
 楽しそうだね、一緒にお散歩しようよ！
-Why don't we go for a walk~
-一緒にお散歩しようよ！
 Wouldn't it be more interesting if...
 楽しいことになりそうだね……
 What have you got there?
@@ -17454,7 +17525,7 @@ What? (PERCENT chance to avoid)
 (SPEAKER は軽く咳払いをする)|ああ、私達は新人を募集しているんだ。|正義のために戦う意志があるなら、いつでも大歓迎だ！
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER と固い握手を交わした)|ようこそドラゴンハーツへ！
-(The SPEAKER tilts her head and shrugs)|Ah well.
+(The SPEAKER tilts her head and shrugs)|Ah well. 
 (SPEAKER は首をかしげて肩をすくめる)|ああ、そうか。
 (The SPEAKER nods)|Fair enough.
 (SPEAKER は素直に頷いた)|残念だ。
@@ -17498,7 +17569,7 @@ What are you going to do about it? (PERCENT chance to avoid)
 (SPEAKER は咳払いをする)|アンタは今私達の縄張りに侵入しているわけだけど。|条件さえ飲んでくれれば私達も見逃してやろうと思う。|私達に危害を加えないと約束してほしいんだ。
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER と固い握手をかわした)|これからよろしく頼むよ！
-(The SPEAKER tilts her head and shrugs)|Ah well.
+(The SPEAKER tilts her head and shrugs)|Ah well. 
 (SPEAKER は首をかしげて肩をすくめる)|ああ、そうかい。
 (The SPEAKER nods)|Fair enough.
 (SPEAKER は素直に頷いた)|そうかい。
@@ -18972,7 +19043,7 @@ Upcast Level LEVEL
 強化レベル LEVEL
 Prerequisite
 前提：
-KDUnlocks,"Unlocks:
+KDUnlocks,"Unlocks: 
 解放済み：
 You need to learn REQUIREDSPELL before you can learn this one.
 このスキルを学ぶには REQUIREDSPELL を先に習得する必要がある。
@@ -19008,7 +19079,7 @@ Initiating prisoner lockdown protocol
 収監プロトコル開始
 Your RestraintName suddenly snap together as the EnemyName activates them
 EnemyName が RestraintName をアクティブにしたようだ。
-Turn Count:
+Turn Count: 
 ターン数：
 The Shopkeeper leashes you!
 店主にリードを掴まれた。
@@ -19398,7 +19469,7 @@ Copy
 コピー
 Paste
 ペースト
-Preloading Character Assets:
+Preloading Character Assets: 
 キャラクターアセットをロード中：
 
 
@@ -19713,7 +19784,6 @@ BunnyLeotardHigh
 LaceBra
 レース付きブラ
 
-
 Items on Ground:
 アイテムが落ちている：
 Hide Items
@@ -19816,7 +19886,7 @@ Deals glue damage. Adds 25 slime binding.
 グルー属性。25のスライム属性拘束値を与える。
 You pick up slime-covered sword.
 スライムに覆われた剣を拾った
-Preloading Character Assets:
+Preloading Character Assets: 
 キャラクターアセット：
 Frost Blade
 フロストブレード
@@ -20746,7 +20816,7 @@ Rubber Stick
 ラバースティック
 A rubber cylinder without any lewd intentions whatsoever.
 ゴムの棒。卑猥が一切ない。
-Deals grope damage.
+Deals grope damage. 
 愛撫属性。
 You pick up a flexible rubber stick.
 ぐにゃぐにゃしたゴムの棒を拾った。
@@ -21348,8 +21418,8 @@ You avoid the attack in a flurry of impressive maneuvers!
 華麗な機動で攻撃を回避した！
 Arcane Barrier
 アーケインバリア
-When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 2:1 ratio. Max shield is equal to 60 + 10% Max Mana.
-この呪文以外の呪文を唱えてマナを消費すると、その40%をアーケインエネルギーとして蓄積するようになる。マナの最大値まで蓄積。発動時、ゆっくりとアーケインエネルギーを等量分シールドに変換する。シールドの最大値は60+最大マナ10%分まで。
+When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 40 + 10% Max Mana.
+この呪文以外の呪文を唱えてマナを消費すると、その40%をアーケインエネルギーとして蓄積するようになる。マナの最大値まで蓄積。発動時、徐々にアーケインエネルギー2を1シールドに変換し続ける。シールドの最大値は40+最大マナ10%分まで。
 You sense that a high value target is near.
 近くに価値のあるターゲットがいる。
 You push yourself beyond physical limits!
@@ -21541,7 +21611,7 @@ The assistant applies a lock! (DamageTaken)
 研究員に拘束具をロックされた！ (DamageTaken)
 The assistant splashes a solvent in your face, blinding you! (DamageTaken)
 研究員に奇妙な液体をかけられ、目潰しされた！ (DamageTaken)
-
+ 
 ...Glue Technician?
 グルーの技術士……？
 You rescue the glue technician.
@@ -21777,9 +21847,9 @@ RestraintName に亀裂が入り始めた！
 Your RestraintName shatters and falls off!
 RestraintName は粉々に砕け落ちた！
 
-Load Hotbar
+Load Hotbar 
 ホットバーをロード
-Save Hotbar
+Save Hotbar 
 ホットバーをセーブ
 Clear Hotbar
 ホットバーをクリア
@@ -22929,7 +22999,7 @@ You find a heavenly chastity belt. Who could it be for?
 
 Heavenly Chastity Bra
 天国の貞操ブラ
-A chastity bra forged in holy light. Only the will of a Goddess will release you!
+A chastity bra forged in holy light. Only a Goddess' will can release you.
 聖なる光によって鍛えられた貞操帯。神のみがこの貞操帯を取り外せる。
 There is no way out but to repent. Its divine aura converts self-pleasure to stamina.
 慙悔によってのみ解放される。神聖なオーラで快楽をスタミナに変換する。
@@ -22941,6 +23011,7 @@ A chastity bra forged in holy light. Only the will of a Goddess will release you
 There is no way out but to repent. Its divine aura prevents you from pleasuring yourself.
 慙悔によってのみ解放される。神聖なオーラで自慰が妨げられる。
 You find a heavenly chastity bra. Who could it be for?
+天国の貞操ブラを見つけた。一体誰が置いたのだろう？
 
 Magic Arm Belts
 魔法のベルト(腕)
@@ -23049,7 +23120,7 @@ Fuuka's Shrine
 Dollmaker
 ドールメイカー
 
-Receive the following restraints:
+Receive the following restraints: 
 次の拘束をされる：
 You will be bound with some form of restraint.
 何らかの拘束具で縛られることになる。
@@ -23066,7 +23137,7 @@ The gag geist teases you playfully!! (DamageTaken)
 The gag geist gags the girl with a ghastly grimace! (+RestraintAdded)
 ギャグガイストがぞっとするような笑みで猿轡を噛ませてきた！ (+RestraintAdded)
 
-Poltergeist
+Poltergeist 
 ポルターガイスト
 The poltergeist goes silent.
 ポルターガイスト現象は収まった。
@@ -23594,7 +23665,12 @@ Start at Sensory training level 5.
 Classic Heels
 クラッシック仕様(ヒール)
 Removes Heel Training and tripping mechanic. Restraining heels slow instead.
-ヒールの熟練度を取り除く。ヒールを装備した際、減速値を得るのみにする。
+ヒールの熟練度を取り除く。ヒールを装備した際、減速値を得るのみにする
+
+Poor Balance
+よろよろ
+You take longer to get up and are less skilled at wearing high heels.
+ハイヒールを履いている時、通常よりもバランスが取りにくくなり、立ち上がるのに更に時間がかかるようになる
 
 Trust Fall
 すっ転び
@@ -23820,3 +23896,21 @@ GFX
 画面設定
 Character
 キャラクター
+
+Auto Load Mods
+MODを自動で読むこむ
+SUSPICIOUS MOD DETECTED
+危険なMODを検知
+
+The bright light hurts your dark-adjusted eyes!
+強い光に目を潰される！
+
+Unconventional Warfare
+不正規戦闘
+Select a weapon to attach it to your body. You can have one attached weapon at a time. Attaching it takes 5 turns.|An attached weapon can be equipped without hands and maintains 60% accuracy as long as you have arms or legs unbound.
+5ターンかけて、選択した武器1つを体に取り付ける。|取り付けた武器は手を使わずに使用でき、腕や脚が拘束されていない限り60%の命中率を持つ。
+
+Guerilla Fighting
+ゲリラ戦法
+Light weapons can be wielded if you have your mouth free, at 75% accuracy.
+軽い武器を口で持てるようになる。その際、命中率は75%になる。
