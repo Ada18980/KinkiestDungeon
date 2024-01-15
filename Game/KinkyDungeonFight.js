@@ -158,6 +158,7 @@ function KDWeapon(item) {
 	return KinkyDungeonWeapons[KinkyDungeonWeaponVariants[item.name]?.template || item.name];
 }
 
+
 function KinkyDungeonFindWeapon(Name) {
 	for (let con of Object.values(KinkyDungeonWeapons)) {
 		if (con.name == Name) return con;

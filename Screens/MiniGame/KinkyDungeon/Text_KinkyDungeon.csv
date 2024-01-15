@@ -18322,7 +18322,7 @@ KDDamageModuleProgress,"Your RestraintName sustains water damage from the high-p
 
 KDExit,Quit Game
 
-KDShrineUnlockWiggle,"Your RSTRNT glows as the shrine's energy fills the air. You can unlock it."
+KDShrineUnlockWiggle,"Your RSTRNT glows and its seal vanishes as the shrine's energy fills the air."
 
 KDRemoveOnEdgePartial,"The seal on your RESTRAINTNAME weakens as you simmer just below the edge."
 KDRemoveOnEdge,"Through your determination, you suprress the seal on your RESTRAINTNAME!!!"

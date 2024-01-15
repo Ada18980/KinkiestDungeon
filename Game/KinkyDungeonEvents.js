@@ -750,10 +750,16 @@ let KDEventMapInventory = {
 			}
 		},
 		"ShrineUnlockWiggle": (e, item, data) => {
-			if (item && KDCurses[e.kind].condition(item) && (!KinkyDungeonFlags.get("CurseHintTick") || KDEventData.CurseHintTick)) {
+			if (item && KDCurses[e.kind].condition(item)) {
 				KinkyDungeonSendTextMessage(1, TextGet("KDShrineUnlockWiggle").replace("RSTRNT", KDGetItemName(item)), "#88ff88", 1, false, true);
-				KinkyDungeonSetFlag("CurseHintTick", 1 + Math.round(KDRandom() * 4));
-				KDEventData.CurseHintTick = true;
+				//KinkyDungeonSetFlag("CurseHintTick", 1 + Math.round(KDRandom() * 4));
+				//KDEventData.CurseHintTick = true;
+				let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
+				item.curse = undefined;
+				if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+					KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+				}
+				KinkyDungeonLock(item, "");
 			}
 		},
 		"RemoveOnEdge": (e, item, data) => {
@@ -4073,7 +4079,7 @@ let KDEventMapSpell = {
 		},
 		"GuerillaFighting": (e, spell, data) => {
 			if (!data.IsSpell && !data.forceUse) {
-				if (!KinkyDungeonCanUseWeapon(true, undefined, data.weapon)
+				if ((!KinkyDungeonCanUseWeapon(true, undefined, data.weapon) || KinkyDungeonIsArmsBound(false, true))
 					&& (KinkyDungeonGagTotal() < 0.01) && (data.flags.KDDamageHands || data.flags.KDDamageArms)
 					&& (!KDWeapon({name: data.weapon?.name})?.noHands)
 					&& !KDWeapon({name: data.weapon?.name})?.unarmed

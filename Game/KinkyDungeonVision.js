@@ -421,6 +421,18 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 					let brightness = KinkyDungeonVisionGet(X, Y);
 					if (brightness > 0.5 / Math.max(1, flags.nightVision)) {
 						let decay = 2 / Math.min(2, Math.max(0.1, flags.nightVision));
+
+						if (KinkyDungeonStatsChoice.get("DirectionVision") && (KinkyDungeonPlayerEntity.facing_x || KinkyDungeonPlayerEntity.facing_y)
+						&& (
+							(KinkyDungeonPlayerEntity.facing_x || 0) * (X - KinkyDungeonPlayerEntity.x)
+							+ (KinkyDungeonPlayerEntity.facing_y || 0) * (Y - KinkyDungeonPlayerEntity.y) <= 0
+						)
+						&& (X != KinkyDungeonPlayerEntity.x || Y != KinkyDungeonPlayerEntity.y)
+						//&& ((KinkyDungeonPlayerEntity.facing_x && (X - KinkyDungeonPlayerEntity.x) && Math.sign(KinkyDungeonPlayerEntity.facing_x) != Math.sign(X - KinkyDungeonPlayerEntity.x))
+						//|| (KinkyDungeonPlayerEntity.facing_y && (Y - KinkyDungeonPlayerEntity.y) && Math.sign(KinkyDungeonPlayerEntity.facing_y) != Math.sign(Y - KinkyDungeonPlayerEntity.y)))
+						) {
+							decay += 5;
+						}
 						if (!KinkyDungeonTransparentObjects.includes(tile)) decay += 3;
 
 						if (brightness > 0) {

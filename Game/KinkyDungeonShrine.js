@@ -130,8 +130,8 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 	if (!item) return 0;
 	if (item.cost != null) return item.cost;
 
-	if (KinkyDungeonGetRestraintByName(item.name)) {
-		let restraint = KinkyDungeonGetRestraintByName(item.name);
+	if (KDRestraint(item)) {
+		let restraint = KDRestraint(item);
 		let power = restraint.displayPower || restraint.power;
 		if (!power || power < 0.1) power = 0.1;
 		if (restraint.armor) power += 1;
@@ -147,7 +147,7 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 			}
 			power += sum;
 		}
-		let costt = KinkyDungeonGetRestraintByName(item.name).value || (
+		let costt = KDRestraint(item).value || (
 			//Math.ceil((1 + MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint/2.5 * (noScale ? 0 : 1))*(
 			//sell ? (40 * (-0.5*power-0.6+1.25**(2.38*power)))
 			//: (50 * 1.25**(2.38*power))
@@ -299,8 +299,14 @@ function KinkyDungeonPayShrine(type) {
 			else if (item.shoptype == Weapon)
 				KinkyDungeonInventoryAddWeapon(item.name);
 			else if (item.shoptype == LooseRestraint) {
-				let restraint = KinkyDungeonGetRestraintByName(item.name);
-				KinkyDungeonInventoryAdd({name: item.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:restraint.events});
+				let restraint = KDRestraint(item);
+				if (!KinkyDungeonInventoryGetLoose(item.name)) {
+					KinkyDungeonInventoryAdd({name: item.name, type: LooseRestraint, events:restraint.events, quantity: 1, id: KinkyDungeonGetItemID()});
+				} else {
+					if (!KinkyDungeonInventoryGetLoose(item.name).quantity) KinkyDungeonInventoryGetLoose(item.name).quantity = 0;
+					KinkyDungeonInventoryGetLoose(item.name).quantity += 1;
+				}
+				//KinkyDungeonInventoryAdd({name: item.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:restraint.events});
 			}
 			else if (item.shoptype == "basic") {
 				KDAddBasic(item);

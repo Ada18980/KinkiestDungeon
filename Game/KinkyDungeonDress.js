@@ -8,6 +8,11 @@ let KinkyDungeonOutfitCache = new Map();
 /**@type {string[]} Contains protected zones*/
 let KDProtectedCosplay = [];
 
+/**
+ *
+ * @param {Named} item
+ * @returns {outfit}
+ */
 function KDOutfit(item) {
 	return KinkyDungeonOutfitCache.get(item.name);
 }

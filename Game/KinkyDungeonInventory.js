@@ -2296,7 +2296,7 @@ function KDRemoveConsumableVariant(Name, Prefix="KinkyDungeonInventoryItem") {
  * @param {boolean} loose
  * @param {boolean} lost
  */
-function KDPruneInventoryVariants(worn = true, loose = true, lost = true, ground = true, hotbar = true) {
+function KDPruneInventoryVariants(worn = true, loose = true, lost = true, ground = true, hotbar = true, entities = true) {
 	let entries = Object.entries(KinkyDungeonRestraintVariants);
 	let entrieswep = Object.entries(KinkyDungeonWeaponVariants);
 	let entriescon = Object.entries(KinkyDungeonConsumableVariants);
@@ -2399,6 +2399,25 @@ function KDPruneInventoryVariants(worn = true, loose = true, lost = true, ground
 			}
 			if (KinkyDungeonWeaponVariants[inv.name]) {
 				found[inv.name] = true;
+			}
+		}
+
+	}
+	if (entities) {
+		let list = KDMapData.Entities;
+		for (let enemy of list) {
+			if (enemy.items) {
+				for (let inv of enemy.items) {
+					if (KinkyDungeonRestraintVariants[inv]) {
+						found[inv] = true;
+					}
+					if (KinkyDungeonConsumableVariants[inv]) {
+						found[inv] = true;
+					}
+					if (KinkyDungeonWeaponVariants[inv]) {
+						found[inv] = true;
+					}
+				}
 			}
 		}
 
@@ -2553,3 +2572,58 @@ function KDEquipInventoryVariant(variant, prefix = "", Tightness, Bypass, Lock, 
 	return KinkyDungeonAddRestraintIfWeaker(origRestraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, curse, securityEnemy, useAugmentedPower, newname);
 }
 
+/**
+ *
+ * @param {Named} item
+ * @returns {weapon | restraint | outfit | consumable}
+ */
+function KDItem(item) {
+	return KDRestraint(item) || KDConsumable(item) || KDWeapon(item) || KDOutfit(item) || KinkyDungneonBasic[item?.name];
+}
+
+/**
+ *
+ * @param {string} name
+ * @returns {boolean}
+ */
+function KDGiveItem(name, quantity = 1) {
+
+	if (KinkyDungeonWeaponVariants[name]) {
+		KDGiveWeaponVariant(KinkyDungeonWeaponVariants[name], undefined, name);
+		return true;
+	} else if (KDWeapon({name: name})) {
+		if (!KinkyDungeonInventoryGetWeapon(name))
+			KinkyDungeonInventoryAddWeapon(name);
+		else return false;
+		return true;
+	} else if (KinkyDungeonConsumableVariants[name]) {
+		KDGiveConsumableVariant(KinkyDungeonConsumableVariants[name], undefined, name, undefined, quantity);
+		return true;
+	} else if (KDConsumable({name: name})) {
+		KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable(name), quantity);
+		return true;
+	} else if (KinkyDungeonRestraintVariants[name]) {
+		let variant = KinkyDungeonRestraintVariants[name];
+		KDGiveInventoryVariant(variant, undefined, variant.curse, undefined, name, KinkyDungeonRestraintVariants[name].suffix);
+		return true;
+	} else if (KDRestraint({name: name})) {
+		let restraint = KDRestraint({name: name});
+		if (!KinkyDungeonInventoryGetLoose(name)) {
+			KinkyDungeonInventoryAdd({name: name, type: LooseRestraint, events:restraint.events, quantity: 1, id: KinkyDungeonGetItemID()});
+		} else {
+			if (!KinkyDungeonInventoryGetLoose(name).quantity) KinkyDungeonInventoryGetLoose(name).quantity = 0;
+			KinkyDungeonInventoryGetLoose(name).quantity += 1;
+		}
+		return true;
+	} else if (KDOutfit({name: name})) {
+		if (!KinkyDungeonInventoryGet(name)) {
+			KinkyDungeonInventoryAdd({name: name, type: Outfit, id: KinkyDungeonGetItemID()});
+		}
+		else return false;
+		return true;
+	} else if (KinkyDungneonBasic[name]) {
+		KDAddBasic(KinkyDungneonBasic[name]);
+		return true;
+	}
+	return false;
+}

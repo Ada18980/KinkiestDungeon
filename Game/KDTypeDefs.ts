@@ -3133,6 +3133,8 @@ interface KDFactionProps {
 	jailOutfit: string,
 }
 
+type outfit = {name: string, dress: string, shop: boolean, rarity: number, events?: KinkyDungeonEvent[], costMod?: number};
+
 type KDTile = any;
 
 type KDTrapType = (tile: KDTile, entity: entity, x: number, y: number) => {msg: string, triggered: boolean}

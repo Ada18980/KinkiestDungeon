@@ -772,6 +772,14 @@
             <key type="filename">../Models/FutureHarness/StrapsMid.png</key>
             <key type="filename">../Models/GagLatex/NeckCorset.png</key>
             <key type="filename">../Models/GagLatex/NeckCorsetRim.png</key>
+            <key type="filename">../Models/Gothic/Skirt.png</key>
+            <key type="filename">../Models/Gothic/SkirtClosed.png</key>
+            <key type="filename">../Models/Gothic/SkirtClosedCrotchStrap.png</key>
+            <key type="filename">../Models/Gothic/SkirtCrotchStrap.png</key>
+            <key type="filename">../Models/Gothic/SkirtKneel.png</key>
+            <key type="filename">../Models/Gothic/SkirtKneelCrotchStrap.png</key>
+            <key type="filename">../Models/Gothic/SkirtOverKneel.png</key>
+            <key type="filename">../Models/Gothic/SkirtOverKneelCrotchStrap.png</key>
             <key type="filename">../Models/Hair/Ahoge.png</key>
             <key type="filename">../Models/Hair/BackShortCurly.png</key>
             <key type="filename">../Models/Hair/BackShortCurlyUnderlight.png</key>
@@ -1294,7 +1302,6 @@
             <key type="filename">../Models/Petsuit/LeftLegsBeltsKneel.png</key>
             <key type="filename">../Models/Petsuit/LeftLegsBeltsKneelClosed.png</key>
             <key type="filename">../Models/Petsuit/LeftLegsKneel.png</key>
-            <key type="filename">../Models/Petsuit/LeftLegsKneelBelts.png</key>
             <key type="filename">../Models/Petsuit/LeftLegsKneelClosed.png</key>
             <key type="filename">../Models/Petsuit/LegsBeltsHogtie.png</key>
             <key type="filename">../Models/Petsuit/LegsBeltsKneel.png</key>
@@ -1302,6 +1309,8 @@
             <key type="filename">../Models/Petsuit/LegsHogtie.png</key>
             <key type="filename">../Models/Petsuit/LegsKneel.png</key>
             <key type="filename">../Models/Petsuit/LegsKneelClosed.png</key>
+            <key type="filename">../Models/Petsuit/Petsuit.png</key>
+            <key type="filename">../Models/Petsuit/Petsuit.psd</key>
             <key type="filename">../Models/Ribbon/Arm1Boxtie.png</key>
             <key type="filename">../Models/Ribbon/Arm1Up.png</key>
             <key type="filename">../Models/Ribbon/Arm1Wristtie.png</key>
@@ -1563,6 +1572,15 @@
             <key type="filename">../Models/Rubber/TorsoLower.png</key>
             <key type="filename">../Models/Rubber/TorsoLowerKneel.png</key>
             <key type="filename">../Models/Rubber/TorsoUpper.png</key>
+            <key type="filename">../Models/SMoonlight/BallMittens.png</key>
+            <key type="filename">../Models/SMoonlight/PostureCollar.png</key>
+            <key type="filename">../Models/SMoonlight/PostureCollarHardware.png</key>
+            <key type="filename">../Models/SMoonlight/PostureCollarLoop.png</key>
+            <key type="filename">../Models/SMoonlight/PostureCollarRim.png</key>
+            <key type="filename">../Models/SMoonlight/ReverseBinderHardware.png</key>
+            <key type="filename">../Models/SMoonlight/ReverseBinderLeft.png</key>
+            <key type="filename">../Models/SMoonlight/ReverseBinderRight.png</key>
+            <key type="filename">../Models/SMoonlight/ReverseBinderStraps.png</key>
             <key type="filename">../Models/Sailor/Bust.png</key>
             <key type="filename">../Models/Sailor/BustStripe.png</key>
             <key type="filename">../Models/Sailor/Collar.png</key>
@@ -2804,6 +2822,51 @@
                 <rect>1,1,3,2</rect>
                 <key>scale9Paddings</key>
                 <rect>1,1,3,2</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/SMoonlight/BondageHarness.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>240,325,481,651</rect>
+                <key>scale9Paddings</key>
+                <rect>240,325,481,651</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/SMoonlight/RPArmbinder Back.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>250,300,500,600</rect>
+                <key>scale9Paddings</key>
+                <rect>250,300,500,600</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/SMoonlight/RpArmbinder Secure.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>225,338,450,675</rect>
+                <key>scale9Paddings</key>
+                <rect>225,338,450,675</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
