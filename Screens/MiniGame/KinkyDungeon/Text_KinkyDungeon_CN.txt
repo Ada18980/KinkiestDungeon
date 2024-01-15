@@ -16413,8 +16413,48 @@ The shibari witch blows a kiss and says goodbye.
 The shibari witch ties you tight! (+RestraintAdded)
 绑缚女巫把你绑得紧紧的！（+RestraintAdded）
 The witch dangles a lock in front of you before putting it on! (DamageTaken)
-女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
+女巫在你面前晃了晃锁，然后把它戴上！（DamageTaken）
 The witch rubs your body sensually! (DamageTaken)
-女巫性感地摩擦你的身体！（DamageTaken）
+女巫在你身上肆意揉捏！（DamageTaken）
 The ENMY takes your clothes off!
 ENMY 脱去了你的衣服！
+More Kinky Furniture
+多种展台
+Replaces 60% of cages with a different kind of kinky furniture such as display stands.
+用展示架等不同的色情设备取代 60% 的笼子
+Classic Heels
+传统高跟
+Removes Heel Training and tripping mechanic. Restraining heels slow instead.
+移除 "高跟训练 "和 "绊倒 "机制。取而代之的是限制高跟鞋的速度。
+Restriction
+受限
+Can't Touch That
+触不可及
+When both arms and hands are severely bound, you can no longer pick up items without an ally nearby.
+当双臂和双手被严格捆绑时，你将无法拾取物品，除非周围有盟友。
+Grounded
+脚踏实地
+When arms are tied and feet are linked, you cannot get up from a kneeling position without help or a wall.
+当双臂被绑住、双脚被固定在一起时，如果得不到帮助或墙壁的支撑，你将无法从跪姿站起。
+Trust Fall
+不顾脚下
+Hides the balance meter while wearing heels and/or unsteady.
+在穿高跟鞋和/或站立不稳时隐藏平衡条。
+Training
+训练
+Head Start: Heels
+初始训练:高跟
+Start at Heel training level 5
+初始高跟鞋熟练度为5级
+Hard to Master: Heels
+难以精通:高跟
+Heel training is significantly slower.
+高跟鞋精通的速度明显较慢。
+Poor Balance
+缺乏平衡性
+You take longer to get up and are less skilled at wearing high heels.
+起身需要更长的时间，穿高跟鞋走路也不那么熟练。
+Heel Training
+高跟初学者
+Start locked in a pair of heels with no heel training.
+开始时穿着上锁的高跟鞋
