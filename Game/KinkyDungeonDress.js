@@ -309,7 +309,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 						if (KinkyDungeonGetRestraintItem("ItemPelvis") && KinkyDungeonGetRestraintItem("ItemPelvis") && KDRestraint(KinkyDungeonGetRestraintItem("ItemPelvis"))?.chastity) clothes.Lost = true;
 					}
 					if (clothes.Group == "ClothLower" && clothes.Skirt) {
-						if (KinkyDungeonGetRestraintItem("ItemPelvis")) clothes.Lost = true;
+						//if (KinkyDungeonPlayerTags?.get("EncaseLegs")) clothes.Lost = true;
 						if (KDGroupBlocked("ItemLegs")) clothes.Lost = true;
 						if (KDGroupBlocked("ClothLower")) clothes.Lost = true;
 					}

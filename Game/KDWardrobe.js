@@ -1066,15 +1066,18 @@ function KDDrawWardrobe(screen, Character) {
 		}, true, 725, 790, 100, 60,
 		TextGet("KDCreateOutfit"), "#99ff99", "");
 		DrawButtonKDEx("KDCreateAlwaysDress", (bdata) => {
+			/** @type {alwaysDressModel[]} */
 			let exportData = [];
 			if (C?.Appearance)
 				for (let a of C.Appearance) {
 					if (a.Model && !a.Model.Protected && !a.Model.Restraint && !a.Model.Cosplay) {
 						exportData.push({
-							Item: a.Model.Name,
+							Model: a.Model.Name,
 							Group: a.Model.Group || a.Model.Name,
 							override: true,
 							Filters: a.Model.Filters,
+							factionFilters: {},
+							inheritFilters: false,
 						},);
 					}
 				}

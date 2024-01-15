@@ -459,6 +459,7 @@ let LayerGroups = {
 		"SleeveDecoLeft",
 		"SleeveRight",
 		"SleeveDecoRight",
+		"BeltBack",
 	]),
 	BustierPoses: ToMap([
 		"Bustier",

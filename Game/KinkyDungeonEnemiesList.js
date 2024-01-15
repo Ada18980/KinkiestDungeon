@@ -4209,7 +4209,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 8, maxhp: 80, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 		attackLock: "White",
 		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue", dialogue:"FuukaStage2", click: true}]},
-	{name: "Fuuka2", outfit: "Prisoner", playLine: "Fuuka", bound: "Fuuka", faction: "Boss", clusterWith: "zombie", tags: KDMapInit(["nosub", "leashing", "fuuka", "zombie", "ranged", "mikoRestraints", "stageBoss", "boss", "unstoppable"]),
+	{name: "Fuuka2", outfit: "Fuuka", style: "Fuuka", nameList: "Fuuka", playLine: "Fuuka", bound: "Fuuka", faction: "Boss", clusterWith: "zombie", tags: KDMapInit(["nosub", "leashing", "fuuka", "zombie", "ranged", "mikoRestraints", "stageBoss", "boss", "unstoppable"]),
 		armor: 0, followRange: 1, AI: "hunt",
 		RestraintFilter: {
 			unlimitedRestraints: true,

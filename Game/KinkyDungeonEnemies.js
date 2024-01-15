@@ -6472,15 +6472,15 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 	let added = [];
 	let name = enemy ? TextGet("Name" + enemy.Enemy.name) : (spell ? TextGet("KinkyDungeonSpell" + spell.name) : "");
 	if (enemy && ((enemy.Enemy.power * 0.5) || 0) < KDGameData.Shield) {
-		restraintblock = 1.1;
+		restraintblock = -1;
 	} else if (spell && (spell.power*0.5 || 0) < KDGameData.Shield) {
-		restraintblock = 1.1;
+		restraintblock = -1;
 	} else if (KDEntityBuffedStat(KinkyDungeonPlayerEntity, "bondageImmune")) {
 		KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "bondageResist", 1);
-		restraintblock = 1.1;
+		restraintblock = -1;
 	} else if (restraintblock > 0)
 		restraintblock = KDRestraintBlockPower(restraintblock, restraintpower + (enemy?.Enemy.power || spell?.power || 0));
-	if (!restraintblock || KDRandom() > restraintblock) {
+	if (!restraintblock || KDRandom() < restraintblock) { // lower = FAILING, it gets smaller the more block
 		let protection = 0;
 		let multiPower = restraintsToAdd.length;
 		let targetGroups = {};

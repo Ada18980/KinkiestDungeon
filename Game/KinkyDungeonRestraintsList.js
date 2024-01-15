@@ -2826,7 +2826,7 @@ const KinkyDungeonRestraints = [
 			BeltsArms: {"gamma":1,"saturation":0.05,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			BeltsChest: {"gamma":1,"saturation":0.05,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		},
-		forceOutfit: "Maid",
+		forceOutfit: "Lingerie",
 		forceOutfitPriority: 1,
 		Group: "ItemArms", LinkableBy: [...KDDressLink], alwaysRender: true, bindarms: true, bindhands: 1.0, power: 8.5, weight: 0,
 		escapeChance: {"Struggle": -0.175, "Cut": 0.1, "Remove": -0.2, "Pick": 0.15},
@@ -2843,7 +2843,126 @@ const KinkyDungeonRestraints = [
 			{Item: "Band1", Group: "Hat", Color: "#767676", override: true},
 			{Item: "Shoes5", Group: "Shoes", Color: "#575757", override: true},
 			{Item: "Socks6", Group: "Socks", Color: ['#080808', 'Default'], override: true}
-		], maxwill: 0.3, enemyTags: {"maidRestraints":3, "maidRestraintsHeavy":14, "maidRestraintsNonChastity": 5},
+		],
+		alwaysDressModel: [
+			{"Model":"MaidShoes","Group":"MaidShoes","override":true,
+				"Filters":{
+					"ShoeLeft":{"gamma":1,"saturation":0,"contrast":1,"brightness":0.18333333333333335,"red":1.2,"green":1,"blue":1,"alpha":1},
+					"ShoeRight":{"gamma":1,"saturation":0,"contrast":1,"brightness":0.18333333333333335,"red":1.2,"green":1,"blue":1,"alpha":1}},
+				"factionFilters":
+				{
+					ShoeLeft: {color: "LightNeutral", override: true},
+					ShoeRight: {color: "LightNeutral", override: true},
+				},
+				"inheritFilters":false},{"Model":"LaceBra","Group":"LaceBra","override":true,"Filters":
+				{
+					"BraBase":{"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+					"BraCups":{"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+					"BraStripes":{"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}
+				},"factionFilters":
+				{
+					BraBase: {color: "DarkNeutral", override: true},
+					BraCups: {color: "DarkNeutral", override: true},
+					BraStripes: {color: "LightNeutral", override: true},
+				},
+			"inheritFilters":false},{"Model":"LacePanties","Group":"LacePanties","override":true,"Filters":
+				{
+					"LaceCrotchPanel":{"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+					"Panties":{"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+					"Trim":{"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+					"Lace":{"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}
+				}, "factionFilters":
+
+				{
+					LaceCrotchPanel: {color: "LightNeutral", override: true},
+					Panties: {color: "DarkNeutral", override: true},
+					Trim: {color: "LightNeutral", override: true},
+					Lace: {color: "LightNeutral", override: true},
+				},
+			"inheritFilters":false},{"Model":"BunnySocks","Group":"BunnySocks","override":true,"Filters":
+				{
+					"SockRight":{"gamma":1.2,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.0980392156862746,"alpha":1},
+					"SockLeft":{"gamma":1.2,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.0980392156862746,"alpha":1}
+				},"factionFilters":
+
+				{
+					SockRight: {color: "DarkNeutral", override: true},
+					SockLeft: {color: "DarkNeutral", override: true},
+				},
+			"inheritFilters":false},{"Model":"LeatherGloves","Group":"LeatherGloves","override":true,"Filters":
+				{
+					"GloveLeft":{"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0},
+					"BandRight":{"gamma":1,"saturation":0,"contrast":0.9833333333333333,"brightness":0.5,"red":1.05,"green":1,"blue":1,"alpha":1},
+					"GloveRight":{"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0},
+					"RimRight":{"gamma":2,"saturation":0,"contrast":1,"brightness":1.9333333333333333,"red":1,"green":1,"blue":1,"alpha":1},
+					"RimLeft":{"gamma":2,"saturation":0,"contrast":1,"brightness":1.9333333333333333,"red":1,"green":1,"blue":1,"alpha":1},
+					"BandLeft":{"gamma":1,"saturation":0,"contrast":0.9833333333333333,"brightness":0.5,"red":1.05,"green":1,"blue":1,"alpha":1}
+				},"factionFilters":
+
+				{
+					GloveLeft: {color: "DarkNeutral", override: true},
+					GloveRight: {color: "DarkNeutral", override: true},
+					RimRight: {color: "LightNeutral", override: true},
+					RimLeft: {color: "LightNeutral", override: true},
+					BandRight: {color: "Highlight", override: true},
+					BandLeft: {color: "Highlight", override: true},
+				},
+			"inheritFilters":false},{"Model":"BowCorsetLongOverbust","Group":"BowCorsetLongOverbust","override":true,"Filters":
+				{
+					"CorsetBust":{"gamma":1.9,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.1,"alpha":1},
+					"RuffleBust":{"gamma":1.9,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.1,"alpha":1},
+					"Corset":{"gamma":1.9,"saturation":0,"contrast":1,"brightness":1.2,"red":1,"green":1,"blue":1.1,"alpha":1},
+					"Ruffle":{"gamma":1.9,"saturation":0,"contrast":1,"brightness":1.2,"red":1,"green":1,"blue":1.1,"alpha":1}
+				},"factionFilters":
+
+				{
+					CorsetBust: {color: "LightNeutral", override: true},
+					RuffleBust: {color: "Highlight", override: true},
+					Corset: {color: "LightNeutral", override: true},
+					Ruffle: {color: "Highlight", override: true},
+				},
+			"inheritFilters":false},{"Model":"DressBlouseBust","Group":"DressBlouseBust","override":true,"Filters":
+				{
+					"BlouseSkirt":{"gamma":1,"saturation":0,"contrast":1,"brightness":0.18333333333333335,"red":1.2,"green":1,"blue":1,"alpha":1},
+					"Neck":{"gamma":1,"saturation":0,"contrast":1,"brightness":0.18333333333333335,"red":1.2,"green":1,"blue":1,"alpha":1},
+					"Collar":{"gamma":1.9,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.1,"alpha":1},
+					"Blouse":{"gamma":1.9,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.1,"alpha":1}
+				},"factionFilters":
+
+				{
+					Blouse: {color: "DarkNeutral", override: true},
+					Collar: {color: "LightNeutral", override: true},
+					BlouseSkirt: {color: "DarkNeutral", override: true},
+					Neck: {color: "DarkNeutral", override: true},
+				},
+			"inheritFilters":false},{"Model":"WitchBlouse","Group":"WitchBlouse","override":true,"Filters":
+				{
+					"BlouseLeft":{"gamma":1,"saturation":0,"contrast":1,"brightness":0.18333333333333335,"red":1.2,"green":1,"blue":1,"alpha":1},
+					"BlouseRight":{"gamma":1,"saturation":0,"contrast":1,"brightness":0.18333333333333335,"red":1.2,"green":1,"blue":1,"alpha":1},
+					"BlouseLiner":{"gamma":1,"saturation":0,"contrast":1,"brightness":0.18333333333333335,"red":1.2,"green":1,"blue":1,"alpha":1},
+					"Blouse":{"gamma":1,"saturation":0,"contrast":1,"brightness":0.18333333333333335,"red":1.2,"green":1,"blue":1,"alpha":1}
+				},"factionFilters":
+
+				{
+					BlouseLeft: {color: "DarkNeutral", override: true},
+					BlouseLiner: {color: "DarkNeutral", override: true},
+					Blouse: {color: "DarkNeutral", override: true},
+					BlouseRight: {color: "DarkNeutral", override: true},
+				},
+			"inheritFilters":false},{"Model":"BowCorsetBow","Group":"BowCorsetBow","override":true,"Filters":
+				{"Bow":{"gamma":1.9,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.1,"alpha":1}},"factionFilters":
+				{Bow: {color: "Highlight", override: true},},
+			"inheritFilters":false},{"Model":"Ribbon","Group":"Ribbon","override":true,"Filters":
+				{
+					"RibbonBelt":{"gamma":1.9,"saturation":0,"contrast":1,"brightness":1.5666666666666669,"red":1,"green":1,"blue":1.1,"alpha":1},
+					"RibbonBack":{"gamma":1.9,"saturation":0,"contrast":1,"brightness":1.5666666666666669,"red":1,"green":1,"blue":1.1,"alpha":1}
+				},"factionFilters":
+				{
+					RibbonBelt: {color: "LightNeutral", override: true},
+					RibbonBack: {color: "LightNeutral", override: true},
+				},
+			"inheritFilters":false}],
+		maxwill: 0.3, enemyTags: {"maidRestraints":3, "maidRestraintsHeavy":14, "maidRestraintsNonChastity": 5},
 		playerTagsMult: {"ItemArmsEmpty": 0.05}, playerTags: {}, minLevel: 7, allFloors: true,
 		addPose: ["PreferWristtie"],
 		shrine: ["Latex", "HandsBehind", "Block_ItemHands", "BindingDress", "Illusion"]},
