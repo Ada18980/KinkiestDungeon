@@ -2029,7 +2029,7 @@ function KinkyDungeonDrawFloaters(CamX, CamY) {
 			let x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay;
 			let y = (floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay);
 			let overlap = false;
-			let overlapAmount = 20;
+			let overlapAmount = 9;
 			for (let iii = -overlapAmount; iii < overlapAmount; iii += 3) {
 				if (KDFloaterYCache[Math.round(y + iii)]) {
 					overlap = true;
@@ -2037,13 +2037,13 @@ function KinkyDungeonDrawFloaters(CamX, CamY) {
 			}
 			let ii = 0;
 			let direction = -1;
-			while ( overlap && ii < 20) {
-				floater.y -= (floater.override ? 8 : 8/KinkyDungeonGridSizeDisplay) * direction;
+			while ( overlap && ii < 13) {
+				floater.y -= (floater.override ? 4 : 4/KinkyDungeonGridSizeDisplay) * direction;
 				//floater.x += -20 + Math.random() * 40;
 				x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay;
 				y = (floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay);
 				overlap = false;
-				for (let iii = -overlapAmount; iii < overlapAmount; iii += 3) {
+				for (let iii = -overlapAmount; iii < overlapAmount; iii += 4) {
 					if (KDFloaterYCache[Math.round(y + iii)]) {
 						overlap = true;
 					}
@@ -3425,7 +3425,10 @@ function KDUpdateVision(CamX, CamY, CamX_offset, CamY_offset) {
 
 	KinkyDungeonMakeBrightnessMap(KDMapData.GridWidth, KDMapData.GridHeight, KDMapData.MapBrightness, data.lights, KDVisionUpdate);
 	KinkyDungeonMakeVisionMap(KDMapData.GridWidth, KDMapData.GridHeight, viewpoints, data.lights, KDVisionUpdate, KDMapData.MapBrightness);
-
+	if (KinkyDungeonUpdateLightGrid) {
+		// Do it again!
+		KinkyDungeonMakeVisionMap(KDMapData.GridWidth, KDMapData.GridHeight, viewpoints, data.lights, 0, KDMapData.MapBrightness);
+	}
 
 	if (CamX != undefined) {
 		if (KDToggles.Bloom && !(KinkyDungeonBlindLevel >= 2)) {

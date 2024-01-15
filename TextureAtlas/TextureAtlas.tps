@@ -459,9 +459,11 @@
             <key type="filename">../Models/Catsuit/TorsoLower.png</key>
             <key type="filename">../Models/Catsuit/TorsoLowerClosed.png</key>
             <key type="filename">../Models/Catsuit/TorsoLowerHogtie.png</key>
+            <key type="filename">../Models/Catsuit/TorsoLowerLeotard.png</key>
             <key type="filename">../Models/Catsuit/TorsoLowerLowRise.png</key>
             <key type="filename">../Models/Catsuit/TorsoLowerLowRiseClosed.png</key>
             <key type="filename">../Models/Catsuit/TorsoLowerLowRiseSpread.png</key>
+            <key type="filename">../Models/Catsuit/TorsoLowerPanties.png</key>
             <key type="filename">../Models/Catsuit/TorsoLowerSpread.png</key>
             <key type="filename">../Models/Catsuit/TorsoUpper.png</key>
             <key type="filename">../Models/Catsuit/TorsoUpperCrop.png</key>
@@ -738,9 +740,11 @@
             <key type="filename">../Models/EyesKertasu/EyesWhitesNeutral.png</key>
             <key type="filename">../Models/EyesKertasu/EyesWhitesSurprised.png</key>
             <key type="filename">../Models/FaceKjus/Brows2Angry.png</key>
+            <key type="filename">../Models/Furniture/BallSuit.png</key>
             <key type="filename">../Models/Furniture/Barrel.png</key>
             <key type="filename">../Models/Furniture/Bed.png</key>
             <key type="filename">../Models/Furniture/BedHogtie.png</key>
+            <key type="filename">../Models/Furniture/Bubble.png</key>
             <key type="filename">../Models/Furniture/CageBack.png</key>
             <key type="filename">../Models/Furniture/CageFront.png</key>
             <key type="filename">../Models/Furniture/DisplayFront.png</key>

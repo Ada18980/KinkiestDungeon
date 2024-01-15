@@ -187,6 +187,7 @@ function KinkyDungeonResetMagic() {
 	KDClearChoices();
 	KinkyDungeonSpellChoiceCount = 30;
 	KinkyDungeonSpells = [];
+	KDRefreshSpellCache = true;
 	Object.assign(KinkyDungeonSpells, KinkyDungeonSpellsStart); // Copy the dictionary
 	KinkyDungeonMysticSeals = 1.3;
 	KinkyDungeonSpellPress = "";
@@ -196,8 +197,40 @@ function KinkyDungeonResetMagic() {
 	KDSpellPage = 0;
 	if (KinkyDungeonStatsChoice.get("randomMode")) {
 		for (let s of [...KinkyDungeonSpellList.Conjure, ...KinkyDungeonSpellList.Elements, ...KinkyDungeonSpellList.Illusion]) {
-			if (s.tags?.includes("randomfree")) KinkyDungeonSpells.push(s);
+			if (s.tags?.includes("randomfree")) KDPushSpell(s);
 		}
+	}
+}
+
+let KDRefreshSpellCache = true;
+function KDPushSpell(spell) {
+	KinkyDungeonSpells.push(spell);
+	KDRefreshSpellCache = true;
+}
+
+let KDSpellCache = new Map();
+let KDUpcastFromCache = new Map();
+let KDEventSpells = new Map();
+
+function KDUpdateSpellCache() {
+	if (KDRefreshSpellCache) {
+		KDSpellCache = new Map();
+		KDUpcastFromCache = new Map();
+		KDEventSpells = new Map();
+		for (let sp of KinkyDungeonSpells) {
+			KDSpellCache.set(sp.name, sp);
+			if (sp.upcastFrom) {
+				if (!KDUpcastFromCache.get(sp.upcastFrom)) KDUpcastFromCache.set(sp.upcastFrom, []);
+				KDUpcastFromCache.get(sp.upcastFrom).push(sp);
+			}
+			if (sp.events) {
+				for (let e of sp.events) {
+					if (!KDEventSpells.get(e.trigger)) KDEventSpells.set(e.trigger, new Map());
+					KDEventSpells.get(e.trigger).set(sp, true);
+				}
+			}
+		}
+		KDRefreshSpellCache = false;
 	}
 }
 
@@ -221,16 +254,20 @@ function KDHasSpell(name) {
  */
 function KDGetUpcast(name, Level) {
 	if (Level < 0) {
-		for (let sp of KinkyDungeonSpells) {
+		KDUpdateSpellCache();
+		return KDUpcastFromCache.get(name) ? KDUpcastFromCache.get(name)[0] : null;
+		/*for (let sp of KinkyDungeonSpells) {
 			if (sp.upcastFrom && sp.upcastFrom == name) {
 				return sp;
 			}
-		}
+		}*/
 	} else {
 		for (let i = Level; i > 0; i--) {
-			for (let sp of KinkyDungeonSpells) {
-				if (i == sp.upcastLevel && sp.upcastFrom && sp.upcastFrom == name) {
-					return sp;
+			if (KDUpcastFromCache.get(name)) {
+				for (let sp of KDUpcastFromCache.get(name)) {
+					if (i == sp.upcastLevel) {
+						return sp;
+					}
 				}
 			}
 		}
@@ -244,12 +281,7 @@ function KDGetUpcast(name, Level) {
  * @returns {boolean}
  */
 function KDHasUpcast(name) {
-	for (let sp of KinkyDungeonSpells) {
-		if (sp.upcastFrom && sp.upcastFrom == name) {
-			return true;
-		}
-	}
-	return false;
+	return KDUpcastFromCache.get(name);
 }
 /**
  *
@@ -1947,30 +1979,46 @@ function KinkyDungeonGetCompList(spell) {
 
 function KinkyDungeonSendMagicEvent(Event, data, forceSpell) {
 	if (!KDMapHasEvent(KDEventMapSpell, Event)) return;
-	for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
-		let spell =
-			(KinkyDungeonSpells[KinkyDungeonSpellChoices[i]]
-				? KDGetUpcast(KinkyDungeonSpells[KinkyDungeonSpellChoices[i]].name, KDEntityBuffedStat(KinkyDungeonPlayerEntity, "SpellEmpower"))
-				: null)
-			|| KinkyDungeonSpells[KinkyDungeonSpellChoices[i]];
-		if (spell && spell.events) {
-			for (let e of spell.events) {
-				if (e.trigger == Event && ((KinkyDungeonSpellChoicesToggle[i] && spell.type == "passive") || spell.type != "passive" || e.always || spell.name == forceSpell?.name)) {
-					KinkyDungeonHandleMagicEvent(Event, e, spell, data);
+	let iteration = 0;
+	let stack = true;
+	let upcastLevel = KDEntityBuffedStat(KinkyDungeonPlayerEntity, "SpellEmpower");
+	while ((stack) && iteration < 100) {
+		stack = false;
+		for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
+			let spell =
+				(KinkyDungeonSpells[KinkyDungeonSpellChoices[i]]
+					? KDGetUpcast(KinkyDungeonSpells[KinkyDungeonSpellChoices[i]].name, upcastLevel)
+					: null)
+				|| KinkyDungeonSpells[KinkyDungeonSpellChoices[i]];
+			if (spell && spell.events && KDEventSpells.get(Event)?.get(spell)) {
+				for (let e of spell.events) {
+					if (e.trigger == Event && ((KinkyDungeonSpellChoicesToggle[i] && spell.type == "passive") || spell.type != "passive" || e.always || spell.name == forceSpell?.name)) {
+						if (iteration == (e.delayedOrder ? e.delayedOrder : 0)) {
+							KinkyDungeonHandleMagicEvent(Event, e, spell, data);
+						} else {
+							stack = true;//stack.push(() => {KinkyDungeonHandleMagicEvent(Event, e, spell, data);});
+						}
+					}
 				}
 			}
 		}
-	}
-	for (let i = 0; i < KinkyDungeonSpells.length; i++) {
-		let spell = KinkyDungeonSpells[i];
-		if (spell && (spell.passive) && spell.events) {
-			for (let e of spell.events) {
-				if (e.trigger == Event) {
-					KinkyDungeonHandleMagicEvent(Event, e, spell, data);
+		if (KDEventSpells.get(Event))
+			for (let spell of KDEventSpells.get(Event).keys()) {
+				if ((spell.passive) && spell.events) {
+					for (let e of spell.events) {
+						if (e.trigger == Event) {
+							if (iteration == (e.delayedOrder ? e.delayedOrder : 0)) {
+								KinkyDungeonHandleMagicEvent(Event, e, spell, data);
+							} else {
+								stack = true;//stack.push(() => {KinkyDungeonHandleMagicEvent(Event, e, spell, data);});
+							}
+						}
+					}
 				}
 			}
-		}
+		iteration += 1;
 	}
+
 }
 
 

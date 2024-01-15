@@ -1152,7 +1152,7 @@ function KinkyDungeonGetAffinity(Message, affinity, group, entity) {
 	} else if (affinity == "Sticky") {
 		return KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
 	} else if (affinity == "Sharp") {
-		if (((KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && KinkyDungeonAllWeapon().some((inv) => {return KDWeapon(inv).light && KDWeapon(inv).cutBonus != undefined;})) || KinkyDungeonWeaponCanCut(true)) return true;
+		if (((KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && KinkyDungeonAllWeapon().some((inv) => {return KDWeapon(inv).light && KDWeapon(inv).cutBonus != undefined;})) || KinkyDungeonWeaponCanCut(false)) return true;
 		if (KinkyDungeonAllWeapon().some((inv) => {return KDWeapon(inv).light && KDWeapon(inv).cutBonus != undefined;}) && (!KinkyDungeonIsArmsBound() || KinkyDungeonStatsChoice.has("Psychic") || KinkyDungeonWallCrackAndKnife(false))) return true;
 		let tile = KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		if (tile == '/') {
@@ -1901,8 +1901,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		wcost: KinkyDungeonStatWillCostStruggle,
 		escapePenalty: -KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StrugglePower"),
 		willEscapePenalty: KDGetWillPenalty(),
-		canCut: KinkyDungeonWeaponCanCut(true, false),
-		canCutMagic: KinkyDungeonWeaponCanCut(true, true),
+		canCut: KinkyDungeonWeaponCanCut(false, false),
+		canCutMagic: KinkyDungeonWeaponCanCut(false, true),
 		toolBonus: 0.0,
 		toolMult: 1.0,
 		buffBonus: 0.0,
@@ -1968,7 +1968,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		}
 		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum")) data.escapeChance = Math.max(data.escapeChance, KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum"));
 	}
-	if (StruggleType == "Cut" && !KDRestraint(restraint).magic && KinkyDungeonWeaponCanCut(true, true)) {
+	if (StruggleType == "Cut" && !KDRestraint(restraint).magic && KinkyDungeonWeaponCanCut(false, true)) {
 		data.escapeChance += KinkyDungeonEnchantedKnifeBonus*toolMult;
 		data.origEscapeChance += KinkyDungeonEnchantedKnifeBonus*toolMult;
 	}
@@ -2135,7 +2135,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	}
 
 	// Reduce cutting power if you dont have hands
-	if (StruggleType == "Cut" && !KinkyDungeonWeaponCanCut(true) && KinkyDungeonIsHandsBound(true)) {
+	if (StruggleType == "Cut" && KinkyDungeonIsHandsBound(true)) {
 		if (KinkyDungeonAllWeapon().some((inv) => {return KDWeapon(inv).light && KDWeapon(inv).cutBonus != undefined;})) {
 			if (KinkyDungeonWallCrackAndKnife(true)) {
 				data.escapeChance *= 0.92;
@@ -2395,7 +2395,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			} else {
 				// Failure block for the different failure types
 				if (StruggleType == "Cut") {
-					if (((handsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound) || (armsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound)) && KinkyDungeonWeaponCanCut(true) && KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name) {
+					if (((handsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound) || (armsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound)) && KinkyDungeonWeaponCanCut(false) && KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name) {
 						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
 							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).KnifeDrop) ? KDGetEscapeSFX(restraint).KnifeDrop : "Miss")
 							+ ".ogg");
@@ -3350,7 +3350,7 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityE
 
 	if (restraint.bypass) bypass = true;
 	return (!restraint.linkCategory || (KDLinkCategorySize(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group),
-		restraint.linkCategory, ignoreItem) + KDLinkSize(restraint) <= (NoStack ? 0.1 : 1.0))
+		restraint.linkCategory, ignoreItem) + KDLinkSize(restraint) <= (NoStack ? 0.01 : 1.0))
 	)
 		&& ((restraint.linkCategory && !restraint.noDupe)
 			|| !KDDynamicLinkList(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group), true).some((item) => {

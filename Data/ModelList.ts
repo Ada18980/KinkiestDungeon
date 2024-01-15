@@ -101,6 +101,18 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "CatsuitLowerLeotard",
+	TopLevel: true,
+	Categories: ["Suits", "Underwear"],
+	Folder: "Catsuit",
+	Parent: "Catsuit",
+	Layers: ToLayerMap([
+		{ Name: "TorsoLowerLeotard", Layer: "TorsoLower", Pri: 1,
+			InheritColor: "TorsoLower",
+		},
+	])
+});
 
 AddModel({
 	Name: "CatsuitUpper",
@@ -372,6 +384,25 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayersNoOverride("CatsuitLower"),
 	]),
+});
+
+
+AddModel({
+	Name: "TransparentCatsuitLowerLeotard",
+	TopLevel: true,
+	Categories: ["Suits", "Underwear"],
+	Folder: "Catsuit",
+	Parent: "Catsuit",
+	Filters: {
+		TorsoUpper: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
+		TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
+	},
+	Layers: ToLayerMap([
+		{ Name: "TorsoLowerLeotard", Layer: "TorsoLower", Pri: 1,
+			InheritColor: "TorsoLower",
+			//MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Closed"},
+		},
+	])
 });
 
 AddModel({
@@ -924,10 +955,11 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Corsets"],
 	Layers: ToLayerMap([
-		{ Name: "Corset", Layer: "Bustier", Pri: 1,
+		{ Name: "Corset", Layer: "Bustier", Pri: 25,
 			//SwapLayerPose: {Pants: "CorsetUnder"},
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
+			NoOverride: true,
 			Invariant: true,
 			DisplaceAmount: 100,
 			DisplaceLayers: ToMap(["CorsetTorso"]),

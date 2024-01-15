@@ -1515,11 +1515,12 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 									KinkyDungeonGridSizeDisplay * 0.7, 7, enemy.vp / sneakThreshold * 100, "#ffffff", "#333333");
 						}
 						if (enemy.vulnerable > 0)
-							KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_vuln", KinkyDungeonRootDirectory + "Conditions/Vulnerable.png",
-								canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
-								KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
-									zIndex: 22,
-								});
+							KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_vuln", KinkyDungeonRootDirectory + "Conditions/" + (
+								KDToughArmor(enemy) ? "VulnerableBlocked" : "Vulnerable") + ".png",
+							canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
+							KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
+								zIndex: 22,
+							});
 					}
 					if (!tooltip && (((!KDAmbushAI(enemy) || enemy.ambushtrigger)
 					&& (MouseIn(canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay)
@@ -1813,6 +1814,23 @@ function KDDrawEnemyTooltip(enemy, offset) {
 		});
 	} else if (enemy.Enemy.tags.unflinching) {
 		let st = TextGet("KDunflinching");
+		TooltipList.push({
+			str: st,
+			fg: "#ffffff",
+			bg: "#000000",
+			size: 20,
+		});
+	}
+	if (KDAbsoluteArmor(enemy)) {
+		let st = TextGet("KDAbsoluteArmor");
+		TooltipList.push({
+			str: st,
+			fg: "#ffffff",
+			bg: "#000000",
+			size: 20,
+		});
+	} else if (KDToughArmor(enemy)) {
+		let st = TextGet("KDToughArmor");
 		TooltipList.push({
 			str: st,
 			fg: "#ffffff",
@@ -3455,7 +3473,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	let specialConditionSpecial = (enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialCondition) ? KDSpecialConditions[enemy.Enemy.specialCondition].criteria(enemy, AIData) : true;
 
 	let updateSpecial = () => {
-		specialCondition = enemy.Enemy.specialAttack != undefined && (!enemy.specialCD || enemy.specialCD <= 0) && (!enemy.Enemy.specialMinrange || AIData.playerDist > enemy.Enemy.specialMinrange);
+		specialCondition = enemy.Enemy.specialAttack != undefined && (!enemy.specialCD || enemy.specialCD <= 0) && (!enemy.Enemy.specialMinrange || AIData.playerDist > enemy.Enemy.specialMinrange)
+			&& (!enemy.Enemy.specialCharges || enemy.specialCharges > 0);
 		specialConditionSpecial = (enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialCondition) ? KDSpecialConditions[enemy.Enemy.specialCondition].criteria(enemy, AIData) : true;
 
 		AIData.hitsfx = (enemy.Enemy && enemy.Enemy.hitsfx) ? enemy.Enemy.hitsfx : "";
@@ -6452,13 +6471,16 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 	}
 	let added = [];
 	let name = enemy ? TextGet("Name" + enemy.Enemy.name) : (spell ? TextGet("KinkyDungeonSpell" + spell.name) : "");
-	if (enemy && ((enemy.Enemy.power * 0.5) || 0) > KDGameData.Shield) {
+	if (enemy && ((enemy.Enemy.power * 0.5) || 0) < KDGameData.Shield) {
 		restraintblock = 1.1;
-	} else if (spell && (spell.power*0.5 || 0) > KDGameData.Shield) {
+	} else if (spell && (spell.power*0.5 || 0) < KDGameData.Shield) {
 		restraintblock = 1.1;
-	} else
+	} else if (KDEntityBuffedStat(KinkyDungeonPlayerEntity, "bondageImmune")) {
+		KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "bondageResist", 1);
+		restraintblock = 1.1;
+	} else if (restraintblock > 0)
 		restraintblock = KDRestraintBlockPower(restraintblock, restraintpower + (enemy?.Enemy.power || spell?.power || 0));
-	if (!restraintblock || KDRandom() < restraintblock) {
+	if (!restraintblock || KDRandom() > restraintblock) {
 		let protection = 0;
 		let multiPower = restraintsToAdd.length;
 		let targetGroups = {};
@@ -7175,6 +7197,10 @@ function KDAddEntity(entity) {
 		if (!entity.data) entity.data = {};
 		Object.assign(entity.data, data.data);
 	}
+	if (entity.Enemy?.startBuffs) {
+		if (!entity.buffs) entity.buffs = [];
+		entity.buffs.push(...JSON.parse(JSON.stringify(entity.Enemy?.startBuffs)));
+	}
 	KDUpdateEnemyCache = true;
 }
 function KDSpliceIndex(index, num = 1) {
@@ -7339,4 +7365,22 @@ function KDAddDistraction(entity, amount, desireMult = 0.25) {
 		KinkyDungeonSetEnemyFlag(entity, "d_turn", 2);
 	}
 	return entity.distraction - origDistraction;
+}
+
+/**
+ *
+ * @param {entity} entity
+ * @returns {boolean}
+ */
+function KDToughArmor(entity) {
+	return (entity?.aware && (entity.Enemy?.Resistance?.toughArmor || (KDEntityBuffedStat(entity, "ToughArmor") > 0)))
+		|| KDAbsoluteArmor(entity);
+}
+/**
+ *
+ * @param {entity} entity
+ * @returns {boolean}
+ */
+function KDAbsoluteArmor(entity) {
+	return entity?.Enemy?.Resistance?.toughArmorAlways || (KDEntityBuffedStat(entity, "ToughArmorAlways") > 0);
 }

@@ -7,7 +7,7 @@ KinkyDungeonPatreon,Support @ Patreon
 KinkyDungeonPatronsList,"Thank you to the following awesome people for supporting me at patreon.com/ada18980"
 KinkyDungeonBack,Back
 KinkyDungeonNext,Next
-KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3, Plasmadragon|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
+KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3, Plasmadragon, GoldieKitsune|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
 KinkyDungeonCreditsList1,"Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators"
 
 Language,Language
@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.0.8 (A)"
+KDVersionStr,"5.1.4"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -309,7 +309,7 @@ KinkyDungeonStatDescSomaticPlus,"You can cast arm spells using just your fingers
 
 
 KinkyDungeonStat54,"Well-Equipped"
-KinkyDungeonStatDesc54,"Restraints and traps that are limited by level appear sooner, and will stack more. +10 security level."
+KinkyDungeonStatDesc54,"Restraints and traps that are limited by level appear sooner, and enemies stack more restraints in general. +10 security level."
 
 KinkyDungeonStat55,"Quick-Draw"
 KinkyDungeonStatDesc55,"Switching weapons and spells does not take a turn."
@@ -382,7 +382,7 @@ KinkyDungeonStatCurseSeeker,"Curse Seeker"
 KinkyDungeonStatDescCurseSeeker,"When you pick up cursed armor or restraints from chests, they equip automatically if able."
 
 KinkyDungeonStatBurningDesire,"Burning Desire"
-KinkyDungeonStatDescBurningDesire,"While above 70% distraction, you ignite nearby objects and gain +40% fire damage."
+KinkyDungeonStatDescBurningDesire,"While above 70% distraction, you ignite nearby objects and gain +25% fire damage."
 KinkyDungeonStatFrigidPersonality,"Frigid Personality"
 KinkyDungeonStatDescFrigidPersonality,"While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties."
 
@@ -730,9 +730,9 @@ KinkyDungeonBuffChillWalk,Ignore Ice Tiles
 KinkyDungeonBuffIgnite,"Ignited: You are dealing fire damage to yourself and nearby enemies!"
 KinkyDungeonBuffBurning,"You are on fire and taking damage!"
 
-KinkyDungeonBuffShrineElements,"Arcane Power: Deals bonus damage when you hit an enemy."
-KinkyDungeonBuffShrineConjure,"Arcane Protection: Reduces damage taken, and deals retaliation damage."
-KinkyDungeonBuffShrineIllusion,"Arcane Cunning: You turn invisible briefly after attacking."
+KinkyDungeonBuffShrineElements,"Divine Punishment: Deals bonus damage when you hit an enemy."
+KinkyDungeonBuffShrineConjure,"Divine Protection: Automatically blocks the next 3 times an enemy tries to bind you."
+KinkyDungeonBuffShrineIllusion,"Divine Cunning: You turn invisible briefly after attacking."
 
 KinkyDungeonBuffAvatarFire,-MP Cost (Fire)
 KinkyDungeonBuffAvatarAir,-MP Cost (Air)
@@ -4109,6 +4109,16 @@ RestraintLatexCatsuit,Latex Catsuit
 RestraintLatexCatsuitDesc,"A skintight suit that's stretched on tight. It adheres to latex restraints making struggling more difficult."
 RestraintLatexCatsuitDesc2,"Blue latex is silky smooth, very stretchy, and very good at adhering to itself."
 
+RestraintLatexCube,Latex Cube
+RestraintLatexCubeDesc,A gelatinous cube that engulfed you at some point in the past.
+RestraintLatexCubeDesc2,It seems quite content staying where it is.
+RestraintSlimeBubble,Slime Bubble
+RestraintSlimeBubbleDesc,A squishy and sticky bubble that you can't get out of!
+RestraintSlimeBubbleDesc2,It will slow you down severely but can be popped if you can reach a knife...
+RestraintBubble,Bubble
+RestraintBubbleDesc,A squishy bubble that you can't get out of!
+RestraintBubbleDesc2,It will slow you down severely but can be popped if you can reach a knife...
+
 RestraintDragonArmbinder,Scale Boxtie Binder
 RestraintDragonArmbinderDesc,"A secure but comfortable binder meant for long-term wear by long-term prisoners of the Dragonhearts."
 RestraintDragonArmbinderDesc2,"It is made from durable dragonscale, but secured with ordinary buckles."
@@ -5320,7 +5330,7 @@ KinkyDungeonSpellFirebolt,Firebolt
 KinkyDungeonSpellAllyFirebolt,Elemental's Firebolt
 KinkyDungeonSpellAllyWindBlast,Elemental's Gust
 KinkyDungeonSpellEnemyWindBlast,Gust
-KinkyDungeonSpellDescriptionFirebolt,A ball of flame that does DamageDealt damage.
+KinkyDungeonSpellDescriptionFirebolt,A ball of flame that does DamageDealt damage to one target.
 KinkyDungeonSpellCastFirebolt,You a hurl a firebolt!
 KinkyDungeonSpellTargetFirebolt,Choose aim direction
 
@@ -5515,12 +5525,12 @@ KinkyDungeonSpellTargetElectrify,Choose target location
 KinkyDungeonSpellCastAreaElectrify,The elemental channels the force of the storm!
 
 KinkyDungeonSpellFireball,Fireball
-KinkyDungeonSpellDescriptionFireball,A slow moving ball of flame that explodes for 180 fire damage to the target and DamageDealt damage to surrounding enemies.
+KinkyDungeonSpellDescriptionFireball,A slow moving ball of flame that explodes for DamageDealt fire damage in a wide area.
 KinkyDungeonSpellCastFireball,You a hurl a massive fireball!
 KinkyDungeonSpellTargetFireball,Choose aim direction
 
 KinkyDungeonSpellFireblast,Fireblast
-KinkyDungeonSpellDescriptionFireblast,A slow moving ball of flame that explodes for 100 fire damage to the target and DamageDealt damage to surrounding enemies.
+KinkyDungeonSpellDescriptionFireblast,A bolt of flame that explodes for DamageDealt fire damage in an area.
 KinkyDungeonSpellCastFireblast,You a hurl a blast of flame!
 KinkyDungeonSpellTargetFireblast,Choose aim direction
 
@@ -9164,9 +9174,9 @@ KinkyDungeonRemindJailChaseElementalAlert,"I will take you for myself!"
 KinkyDungeonRemindJailChaseElementalAttack0,"Such feeble attempts."
 KinkyDungeonRemindJailChaseElementalAttack1,"Humans are fun to play with."
 KinkyDungeonRemindJailChaseElementalAttack2,"Toying with me? I shall oblige!"
-KinkyDungeonRemindJailChaseElementalSpell0,"Cast your last pathetic spell, human."
-KinkyDungeonRemindJailChaseElementalSpell1,"Your magic is weak, human."
-KinkyDungeonRemindJailChaseElementalSpell2,"It tickles, hehe!"
+KinkyDungeonRemindJailChaseElementalSpell0,"Cast your last pathetic spell, mortal."
+KinkyDungeonRemindJailChaseElementalSpell1,"Your mere attempt at magic insults me."
+KinkyDungeonRemindJailChaseElementalSpell2,"Do you really think that will stop me?"
 KinkyDungeonRemindJailChaseElementalSpellItem,"Look what humans need to match only a fraction of our power!"
 KinkyDungeonRemindJailChaseElementalShrine,"Our goddess doesn't need to listen to the likes of you!"
 KinkyDungeonRemindJailChaseElementalChest,"Keep your hands out of our possessions."
@@ -12213,6 +12223,9 @@ KDConfirmStrip,Confirm Strip?
 KDDressStrip,Strip!
 KDCreateOutfit,Export Outfit
 KDCreateAlwaysDress,Export AlwaysDress
+KDCreateHair,Export Hair
+KDCreateFace,Export Face
+KDCreateCosplay,Export Cosplay
 
 KDColorSlidergamma,Gamma
 KDColorSlidersaturation,Original Color
@@ -17767,7 +17780,7 @@ KDBattleRhythm,Rhythm
 KDBattleRhythmDodge,You avoid the attack in a flurry of impressive maneuvers!
 
 KinkyDungeonSpellArcaneBarrier,Arcane Barrier
-KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 2:1 ratio. Max shield is equal to 60 + 10% Max Mana."
+KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 40 + 10% Max Mana."
 
 KinkyDungeonBuffHighValueFound,You sense that a high value target is near.
 
@@ -19074,6 +19087,8 @@ KDInventoryActionFavorite,Favorite
 KDInventoryActionUnfavorite,Unfavorite
 KDInventoryActionHotbar,Add to Hotbar
 KDInventoryActionDrop,Drop
+KDInventoryActionAttach,Attach
+KDAttached,Attached
 
 KDInventoryActionQuickSlot1,Add to Quick Slot 1
 KDInventoryActionQuickSlot2,Add to Quick Slot 2
@@ -19091,6 +19106,7 @@ KDInventoryActionCurseRemove,Remove the Curse
 KDInventoryActionFood,Feed this to her
 KDInventoryActionSell,Sell for VLU gp
 KDInventoryActionSellBulk,Sell ALL for VLU gp
+KDInventoryActionSellExcess,Sell all but one for VLU gp
 
 KDGiveFood,"You feed the RSTR to the ENNME! (AMNT1/AMNT2 hp)"
 KDFoodTarget,"Choose a food item or willpower potion"
@@ -19103,6 +19119,8 @@ KinkyDungeonSpellRuneTrap_Belt,Belt Rune
 KinkyDungeonSpellRuneTrap_Leather,Leather Rune
 KinkyDungeonSpellRuneTrap_Latex,Latex Rune
 KinkyDungeonSpellRuneTrap_VacCube,Latex Cube Rune
+KinkyDungeonSpellRuneTrap_SlimeBubble,Slime Bubble Rune
+KinkyDungeonSpellRuneTrap_Bubble,Bubble Rune
 KinkyDungeonSpellRuneTrap_Rubber,Rubber Rune
 KinkyDungeonSpellRuneTrap_Slime,Slime Rune
 
@@ -19182,3 +19200,16 @@ KDAutoLoadMods,Auto Load Mods
 KDModVirus,SUSPICIOUS MOD DETECTED
 
 KDVisionBlind,The bright light hurts your dark-adjusted eyes!
+
+KinkyDungeonSpellUnconventionalWarfare,"Unconventional Warfare"
+KinkyDungeonSpellDescriptionUnconventionalWarfare,"Select a weapon to attach it to your body. You can have one attached weapon at a time. Attaching it takes 5 turns.|An attached weapon can be equipped without hands and maintains 60% accuracy as long as you have arms or legs unbound."
+
+KinkyDungeonSpellGuerillaFighting,"Guerilla Fighting"
+KinkyDungeonSpellDescriptionGuerillaFighting,"Light weapons can be wielded if you have your mouth free, at 75% accuracy."
+
+
+KDToughArmor,"Tough Armor (1/2 crit mult while aware)"
+KDAbsoluteArmor,"Absolute Armor (1/2 crit mult)"
+
+KDDressNPC,Change Outfit
+KDBackToGame,Back to Game

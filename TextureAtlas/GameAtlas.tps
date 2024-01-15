@@ -1836,6 +1836,7 @@
             <key type="filename">../Game/Floors/Floor_tmp/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_tmp/Wall.png</key>
             <key type="filename">../Game/Floors/Floor_tmp/WallVert.png</key>
+            <key type="filename">../Game/InventoryAction/Attach.png</key>
             <key type="filename">../Game/InventoryAction/Bondage.png</key>
             <key type="filename">../Game/InventoryAction/CommandWord.png</key>
             <key type="filename">../Game/InventoryAction/Cookie.png</key>
@@ -2196,6 +2197,7 @@
             <key type="filename">../Game/Spells/RecoverObject2.png</key>
             <key type="filename">../Game/Spells/Ring.png</key>
             <key type="filename">../Game/Spells/RingOfSlime.png</key>
+            <key type="filename">../Game/Spells/RopeBoltLaunch.png</key>
             <key type="filename">../Game/Spells/RopeBoltLaunchMany.png</key>
             <key type="filename">../Game/Spells/RopeStrike.png</key>
             <key type="filename">../Game/Spells/Sagitta.png</key>
@@ -2256,6 +2258,7 @@
             <key type="filename">../Game/Spells/Tremor.png</key>
             <key type="filename">../Game/Spells/TrueSight.png</key>
             <key type="filename">../Game/Spells/TrueSteel.png</key>
+            <key type="filename">../Game/Spells/UnconventionalWarfare.png</key>
             <key type="filename">../Game/Spells/Volcanism.png</key>
             <key type="filename">../Game/Spells/Wall.png</key>
             <key type="filename">../Game/Spells/WaterBall.png</key>
@@ -2757,6 +2760,8 @@
             <key type="filename">../Game/Bullets/RubberSlime.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Belt.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_BeltHit.png</key>
+            <key type="filename">../Game/Bullets/RuneTrap_Bubble.png</key>
+            <key type="filename">../Game/Bullets/RuneTrap_BubbleHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Chain.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_ChainHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Latex.png</key>
@@ -2770,6 +2775,8 @@
             <key type="filename">../Game/Bullets/RuneTrap_Rubber.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_RubberHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Slime.png</key>
+            <key type="filename">../Game/Bullets/RuneTrap_SlimeBubble.png</key>
+            <key type="filename">../Game/Bullets/RuneTrap_SlimeBubbleHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_SlimeHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_VacCube.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_VacCubeHit.png</key>

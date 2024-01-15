@@ -67,7 +67,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([
-		{ Name: "Collar", Layer: "Collar", Pri: 35,
+		{ Name: "Collar", Layer: "Collar", Pri: 15,
 			Invariant: true,
 			HideWhenOverridden: true,
 		},

@@ -4191,7 +4191,8 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				KinkyDungeonChangeStamina(data.attackCost, false, 1);
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "attack", 1);
 			} else {
-				KinkyDungeonAggro(Enemy, undefined, KinkyDungeonPlayerEntity);
+				if ((Enemy.lifetime > 9000 || !Enemy.maxlifetime))
+					KinkyDungeonAggro(Enemy, undefined, KinkyDungeonPlayerEntity);
 				Enemy.hp = 0;
 				KinkyDungeonKilledEnemy = Enemy;
 				KinkyDungeonSendEvent("capture", {enemy: Enemy, attacker: KinkyDungeonPlayerEntity, skip: skip});

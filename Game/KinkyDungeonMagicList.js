@@ -105,7 +105,7 @@ let KinkyDungeonLearnableSpells = [
 		[
 			"Bondage",
 			"BattleRhythm", "ManaRegen", "Peasant", "RogueTargets", "DistractionCast",
-			"Offhand", "RogueOffhand", "WizardOffhand",
+			"Offhand", "RogueOffhand", "WizardOffhand", "UnconventionalWarfare", "GuerillaFighting",
 
 
 		],
@@ -397,6 +397,25 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			],
 			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
 
+		{name: "UnconventionalWarfare", tags: ["utility", "defense", "offense"], quick: true, school: "Special", prerequisite: "CombatTraining", classSpecific: "Fighter", hideWithout: "BattleRhythm",
+			manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
+			events: [
+				{type: "UnconventionalWarfare", trigger: "toggleSpell", },
+				{type: "UnconventionalWarfare", trigger: "calcDamage", always: true, delayedOrder: 2},
+				{type: "UnconventionalWarfare", trigger: "getWeapon", always: true, delayedOrder: 2},
+			],
+			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
+
+		{name: "GuerillaFighting", tags: ["utility", "defense", "offense"], school: "Special", prerequisite: "RogueTargets", classSpecific: "Rogue", hideWithout: "RogueTargets",
+			manacost: 0, components: [], level:1, spellPointCost: 0, type:"", passive: true,
+			events: [
+				{type: "GuerillaFighting", trigger: "calcDamage", always: true, delayedOrder: 1},
+				{type: "GuerillaFighting", trigger: "getWeapon", always: true, delayedOrder: 1},
+			],
+			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
+
+
+
 		{name: "RogueOffhand", tags: ["utility", "defense", "offense"], school: "Special", prerequisite: "RogueTargets", classSpecific: "Rogue", hideWithout: "RogueTargets",
 			hideLearned: true, hideWith: "Offhand",
 			events: [
@@ -496,7 +515,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				{type: "ArcaneStore", trigger: "playerCast", always: true},
 				//{type: "ArcaneEnergyBondageResist", trigger: "tick", power: 200, mult: 4},
 				//{type: "ArcaneBarrier", trigger: "duringPlayerDamage", power: 0},
-				{type: "ArcaneBarrier", trigger: "tick", mult: 2, power: 1, count: 5},
+				{type: "ArcaneBarrier", trigger: "tick", mult: 0.5, power: 1, count: 5},
 			]},
 
 
@@ -812,14 +831,14 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				name: "Ember",
 				duration: 3,
 			}}, // Throws a fireball in a direction that moves 1 square each turn
-		{name: "Fireblast", prerequisite: "Firebolt", tags: ["fire", "bolt", "aoe", "offense"], sfx: "FireSpell", school: "Elements", manacost: 6, components: ["Arms"], level:1,
-			noise: 5,
+		{name: "Fireblast", prerequisite: "Firebolt", tags: ["fire", "bolt", "aoe", "offense"], sfx: "FireSpell", school: "Elements", manacost: 5.5, components: ["Arms"], level:1,
+			noise: 5, noDirectDamage: true,
 			upcastFrom: "Firebolt", upcastLevel: 1,
 			hideWarnings: true,
 			bulletColor: 0xb83716, bulletLight: 6.5,
 			hitColor: 0xe64539, hitLight: 8,
 			landsfx: "Lightning",
-			type:"bolt", projectileTargeting:true, onhit:"aoe", power: 5, delay: 0, range: 50, aoe: 1.5, size: 3, lifetime:1, damage: "fire", speed: 2, playerEffect: {name: "Damage"},
+			type:"bolt", projectileTargeting:true, onhit:"aoe", power: 6, delay: 0, range: 50, aoe: 1.5, size: 3, lifetime:1, damage: "fire", speed: 2, playerEffect: {name: "Damage"},
 			effectTileDurationModTrail: 8, effectTileTrail: {
 				name: "Ember",
 				duration: 2,
@@ -829,14 +848,14 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				duration: 5,
 			}}, // Throws a fireball in a direction that moves 1 square each turn
 
-		{name: "Fireball", prerequisite: "Fireblast", tags: ["fire", "bolt", "aoe", "offense"], sfx: "FireSpell", school: "Elements", manacost: 11, components: ["Arms"], level:1,
-			noise: 8,
+		{name: "Fireball", prerequisite: "Fireblast", tags: ["fire", "bolt", "aoe", "offense"], sfx: "FireSpell", school: "Elements", manacost: 10, components: ["Arms"], level:1,
+			noise: 8, noDirectDamage: true,
 			upcastFrom: "Firebolt", upcastLevel: 2,
 			bulletColor: 0xb83716, bulletLight: 8,
 			hitColor: 0xe64539, hitLight: 11,
 			landsfx: "Lightning",
 			hideWarnings: true,
-			type:"bolt", projectileTargeting:true, onhit:"aoe", power: 9, delay: 0, range: 50, aoe: 2.8, size: 5, lifetime:1, damage: "fire", speed: 1.5, playerEffect: {name: "Damage"},
+			type:"bolt", projectileTargeting:true, onhit:"aoe", power: 10, delay: 0, range: 50, aoe: 2.8, size: 5, lifetime:1, damage: "fire", speed: 1.5, playerEffect: {name: "Damage"},
 			effectTileDurationModTrail: 12, effectTileTrail: {
 				name: "Ember",
 				duration: 4,
@@ -1019,8 +1038,8 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{goToPage: 5, name: "FloatingWeapon", increasingCost: true, tags: ["magic", "randomfree"], autoLearn: ["RecoverObject"], hideLearned: true, hideUnlearnable: true, school: "Conjure", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
 				//{type: "FloatingWeapon", trigger: "playerAttack"},
-				{type: "HandsFree", trigger: "getWeapon"},
-				{type: "FloatingWeapon", trigger: "calcDamage2"},
+				{type: "HandsFree", trigger: "getWeapon", delayedOrder: 3},
+				{type: "FloatingWeapon", trigger: "calcDamage2", delayedOrder: 3},
 				{type: "FloatingWeapon", trigger: "draw"},
 			]
 		},
@@ -1558,8 +1577,9 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			bulletColor: 0xffff77, bulletLight: 5,
 			tags: ["light", "offense"], prerequisite: "Light", sfx: "MagicSlash", school: "Illusion", spellPointCost: 1, manacost: 7, components: ["Arms"], projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 12, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert",
 			spellcast: {spell: "CoronaBeam", target: "target", directional:true, offset: false}, channel: 2},
-		{name: "TrueSight", prerequisite: "ApprenticeKnowledge", tags: ["buff", "utility", "knowledge"], school: "Illusion", manacost: 1, defaultOff: true, cancelAutoMove: true, components: [], level:1, type:"passive", events: [
+		{name: "TrueSight", prerequisite: "ApprenticeKnowledge", tags: ["buff", "utility", "knowledge"], school: "Illusion", manacost: 0.8, defaultOff: true, cancelAutoMove: true, components: [], level:1, type:"passive", events: [
 			{type: "TrueSight", trigger: "vision"},
+			{type: "TrueSight", trigger: "toggleSpell"},
 			{type: "Blindness", trigger: "calcStats", power: -1},
 			{type: "AccuracyBuff", trigger: "tick", power: 0.4},
 		]},
@@ -2101,7 +2121,7 @@ let KinkyDungeonSpellListEnemies = [
 		],
 		onhit:"", power: 4, delay: 0, range: 7.5, bind: 8, lifetime: 1, damage: "chain", speed: 2.5, playerEffect: {name: "Bind", damage: "chain", power: 2, tag: "vineRestraints"}},
 
-	{name: "BlasterBlast", hitsfx: "Shock", sfx: "Laser", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 2.5, time: 1, delay: 0,
+	{name: "BlasterBlast", hitsfx: "Shock", sfx: "Laser", school: "Elements", manacost: 0, components: [], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 2.5, time: 1, delay: 0,
 		bulletColor: 0xffff00, bulletLight: 5, noMiscast: true,
 		range: 8, speed: 3, size: 1, damage: "electric", playerEffect: {name: "Shock", time: 3}},
 	{enemySpell: true, name: "EnemyBlast", noFirstChoice: true, hitsfx: "Shock", sfx: "Laser", school: "Elements", manacost: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 2.5, time: 1, delay: 0,
@@ -2802,9 +2822,13 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 20,
 		},
 		effectTileDoT: {
-			name: "BoobyTrapMagic",
+			name: "Ropes",
 			duration: 2,
 		}, effectTileDistDoT: 0.5,
+		effectTileDoT2: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		},
 		hitColor: 0xff73ef, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["rest_rope_weakmagic"], msg: "Rope"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
@@ -2816,9 +2840,13 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 20,
 		},
 		effectTileDoT: {
-			name: "BoobyTrapMagic",
+			name: "Chains",
 			duration: 2,
 		}, effectTileDistDoT: 0.5,
+		effectTileDoT2: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		},
 		hitColor: 0xcf52ff, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["chainRestraintsMagic"], msg: "Chain"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
@@ -2830,9 +2858,13 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 20,
 		},
 		effectTileDoT: {
-			name: "BoobyTrapMagic",
+			name: "Fabric",
 			duration: 2,
 		}, effectTileDistDoT: 0.5,
+		effectTileDoT2: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		},
 		hitColor: 0xcf52ff, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["ribbonRestraints", "magicRibbonsHarsh"], msg: "Ribbon"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
@@ -2844,9 +2876,13 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 20,
 		},
 		effectTileDoT: {
-			name: "BoobyTrapMagic",
+			name: "Vines",
 			duration: 2,
 		}, effectTileDistDoT: 0.5,
+		effectTileDoT2: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		},
 		hitColor: 0x3b7d4f, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["vineRestraints"], msg: "Vine"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
@@ -2858,9 +2894,13 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 20,
 		},
 		effectTileDoT: {
-			name: "BoobyTrapMagic",
+			name: "Belts",
 			duration: 2,
 		}, effectTileDistDoT: 0.5,
+		effectTileDoT2: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		},
 		hitColor: 0xffffff, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["beltRestraints"], msg: "Belt"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
@@ -2868,13 +2908,17 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "RuneTrap_Leather", bulletColor: 0xffffff, tags: ["rope", "trap"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
-			name: "Chains",
+			name: "Belts",
 			duration: 20,
 		},
 		effectTileDoT: {
-			name: "BoobyTrapMagic",
+			name: "Belts",
 			duration: 2,
 		}, effectTileDistDoT: 0.5,
+		effectTileDoT2: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		},
 		hitColor: 0xffffff, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["leatherRestraints", "leatherRestraintsHeavy"], msg: "Leather"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
@@ -2886,9 +2930,13 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 20,
 		},
 		effectTileDoT: {
-			name: "BoobyTrapMagic",
+			name: "LatexThinBlue",
 			duration: 2,
 		}, effectTileDistDoT: 0.5,
+		effectTileDoT2: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		},
 		hitColor: 0x4fa4b8, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["latexRestraints", "latexRestraintsHeavy"], msg: "Latex"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
@@ -2896,27 +2944,71 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "RuneTrap_VacCube", bulletColor: 0x4fa4b8, tags: ["latex", "trap"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
-			name: "Belts",
+			name: "Latex",
 			duration: 20,
 		},
 		effectTileDoT: {
-			name: "BoobyTrapMagic",
+			name: "LatexThin",
 			duration: 2,
 		}, effectTileDistDoT: 0.5,
+		effectTileDoT2: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		},
 		hitColor: 0x4fa4b8, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["latexcube"], msg: "VacCube"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
 
-	{enemySpell: true, name: "RuneTrap_Rubber", bulletColor: 0xff5277, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Bubble", bulletColor: 0x8888ff, tags: ["water", "trap"],
+		hideWarnings: true,
+		effectTileDurationMod: 10, effectTile: {
+			name: "Water",
+			duration: 20,
+		},
+		effectTileDoT: {
+			name: "Water",
+			duration: 2,
+		}, effectTileDistDoT: 0.5,
+		effectTileDoT2: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		},
+		hitColor: 0x4fa4b8, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
+		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["bubble"], msg: "Bubble"},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "acid"},
+
+	{enemySpell: true, name: "RuneTrap_SlimeBubble", bulletColor: 0xff00ff, tags: ["latex", "trap"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Slime",
 			duration: 20,
 		},
 		effectTileDoT: {
-			name: "BoobyTrapMagic",
+			name: "Slime",
 			duration: 2,
 		}, effectTileDistDoT: 0.5,
+		effectTileDoT2: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		},
+		hitColor: 0x4fa4b8, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
+		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["slimebubble"], msg: "SlimeBubble"},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
+
+	{enemySpell: true, name: "RuneTrap_Rubber", bulletColor: 0xff5277, tags: ["rope", "trap"],
+		hideWarnings: true,
+		effectTileDurationMod: 10, effectTile: {
+			name: "LatexThin",
+			duration: 20,
+		},
+		effectTileDoT: {
+			name: "LatexThin",
+			duration: 2,
+		}, effectTileDistDoT: 0.5,
+		effectTileDoT2: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		},
 		hitColor: 0xff5277, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["latexEncaseRandom"], msg: "Rubber"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
@@ -2928,9 +3020,13 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 20,
 		},
 		effectTileDoT: {
-			name: "BoobyTrapMagic",
+			name: "Slime",
 			duration: 2,
 		}, effectTileDistDoT: 0.5,
+		effectTileDoT2: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		},
 		hitColor: 0xff5277, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
 		playerEffect: {name: "MagicRope", time: 3, count: 1, tags: ["slimeRestraints"], msg: "Slime"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},

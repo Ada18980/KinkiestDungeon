@@ -320,20 +320,22 @@ function KDGetAvailablePosesLegs(C: Character): string[] {
 				delete poses[p];
 			}
 		}
+
+
+		if (Object.keys(poses).length == 0) {
+			if (CheckPoseOrTags(C, "DefaultStand")) {
+				poses = {Hogtie: true};
+			} else if (CheckPoseOrTags(C, "DefaultKneel")) {
+				poses = {Hogtie: true};
+			} else {
+				poses = {Hogtie: true};
+			}
+		}
 	} else {
 		// Logic for NPC
 		// ???
 	}
 
-	if (Object.keys(poses).length == 0) {
-		if (CheckPoseOrTags(C, "DefaultStand")) {
-			poses = {Hogtie: true};
-		} else if (CheckPoseOrTags(C, "DefaultKneel")) {
-			poses = {Hogtie: true};
-		} else {
-			poses = {Hogtie: true};
-		}
-	}
 	return Object.keys(poses);
 }
 

@@ -192,6 +192,8 @@ let LAYERS_BASE = [
 	// For form-fitting stuff that nonetheless goes over a shirt
 	"Bustier",
 
+	"ShirtOver",
+
 	// Skirt part that goes in front of corsets, shirts, etc
 	"SkirtOverDeco",
 	"SkirtOver",
@@ -269,6 +271,10 @@ let LAYERS_BASE = [
 	"FootLeft",
 	"LegLeft",
 
+	// Lower harness
+	"HarnessLower",
+	"CrotchPanelLower",
+
 	"WrappingTorso",
 	"OverCrotchStrap",
 
@@ -283,9 +289,6 @@ let LAYERS_BASE = [
 	"Bodysuit",
 
 	"ChastityBelt",
-	// Lower harness
-	"HarnessLower",
-	"CrotchPanelLower",
 
 
 
@@ -436,13 +439,16 @@ let LayerGroups = {
 	"Breastplate": ToMap([
 		"Chest",
 		"Shirt",
+		"ShirtOver",
 	]),
 	"ChestBinding": ToMap([
 		"Chest",
 		//"Shirt",
+		//"ShirtOver",
 	]),
 	"TopBinding": ToMap([
 		"Shirt",
+		"ShirtOver",
 	]),
 	"CrotchRope": ToMap([
 		"HarnessLower",
@@ -625,6 +631,7 @@ let LayerGroups = {
 	]),
 	"ArmsAll": ToMap([
 		"Shirt",
+		"ShirtOver",
 		"SleeveLeft",
 		"SleeveDecoLeft",
 		"SleeveRight",
@@ -700,6 +707,7 @@ let LayerGroups = {
 		"HarnessLower",
 
 		"Shirt",
+		"ShirtOver",
 		"SleeveLeft",
 		"SleeveDecoLeft",
 		"SleeveRight",
@@ -776,6 +784,7 @@ let LayerGroups = {
 	// Region rope
 	"Rope1": ToMap([
 		"Shirt",
+		"ShirtOver",
 		"SleeveLeft",
 		"SleeveDecoLeft",
 		"SleeveRight",
@@ -794,6 +803,7 @@ let LayerGroups = {
 	]),
 	"RopeTorso": ToMap([
 		"Shirt",
+		"ShirtOver",
 		"CorsetLiner",
 		// Skirts that dont follow shilhouette and are puffy
 		"SkirtOverDeco",
@@ -824,6 +834,7 @@ let LayerGroups = {
 	]),
 	"CorsetTorso": ToMap([
 		"Shirt",
+		"ShirtOver",
 		"CorsetLiner",
 		// Skirts that dont follow shilhouette and are puffy
 		"SkirtOverDeco",
@@ -989,6 +1000,7 @@ let LayerGroups = {
 	// Region Ribbon
 	"Ribbon1": ToMap([
 		"Shirt",
+		"ShirtOver",
 		"SleeveLeft",
 		"SleeveDecoLeft",
 		"SleeveRight",
@@ -1007,6 +1019,7 @@ let LayerGroups = {
 	]),
 	"RibbonTorso": ToMap([
 		"Shirt",
+		"ShirtOver",
 		"CorsetLiner",
 		// Skirts that dont follow shilhouette and are puffy
 		"SkirtOverDeco",
@@ -1181,6 +1194,7 @@ let LayerGroups = {
 
 	"Yoke": ToMap([
 		"Shirt",
+		"ShirtOver",
 		"MittenLeft",
 		"MittenRight",
 		"GloveLeft",
@@ -1196,6 +1210,7 @@ let LayerGroups = {
 	"Cuffs": ToMap([
 		// Affect clothes only not skintight
 		"Shirt",
+		"ShirtOver",
 		//"MittenLeft",
 		//"MittenRight",
 		//"GloveLeft",
@@ -1311,6 +1326,7 @@ let LayerGroups = {
 	// For form-fitting stuff that nonetheless goes over a shirt
 	"Bustier",
 	"Shirt",
+	"ShirtOver",
 
 	"WrappingTorsoUnder", // For skintight stuff
 

@@ -705,7 +705,7 @@ function KDGetGroupPreviewImage(Group) {
 function KDGetRestraintPreviewImage(restraint) {
 	if (KDModFiles[KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`]
 		|| PIXI.Assets.cache.has(KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`))
-		return KDModFiles[KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png` || KinkyDungeonRootDirectory] + `Items/Restraint/${restraint.preview || restraint.name}.png`;
+		return KDModFiles[KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`] || KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`;
 	for (let tag of restraint.shrine) {
 		if (KDModFiles[KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`]
 			|| PIXI.Assets.cache.has(KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`))
@@ -1438,40 +1438,63 @@ function KinkyDungeonDrawInventory() {
 
 function KinkyDungeonSendInventoryEvent(Event, data) {
 	if (!KDMapHasEvent(KDEventMapInventory, Event)) return;
-	for (let item of KinkyDungeonAllRestraint()) {
-		let curse = KDGetCurse(item);
-		if (item.dynamicLink)
-			for (let d_item of KDDynamicLinkList(item)) {
-				let oldEvents = d_item.events;
-				let d_curse = KDGetCurse(d_item);
-				if (oldEvents)
-					for (let e of oldEvents) {
-						if (e.inheritLinked && e.trigger === Event && (!e.curse || d_curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
-							KinkyDungeonHandleInventoryEvent(Event, e, d_item, data);
+	let iteration = 0;
+	let stack = true;
+	while ((stack) && iteration < 100) {
+		stack = false;
+		for (let item of KinkyDungeonAllRestraint()) {
+			let curse = KDGetCurse(item);
+			if (item.dynamicLink)
+				for (let d_item of KDDynamicLinkList(item)) {
+					let oldEvents = d_item.events;
+					let d_curse = KDGetCurse(d_item);
+					if (oldEvents)
+						for (let e of oldEvents) {
+							if (e.inheritLinked && e.trigger === Event && (!e.curse || d_curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+								if (iteration == (e.delayedOrder ? e.delayedOrder : 0)) {
+									KinkyDungeonHandleInventoryEvent(Event, e, d_item, data);
+								} else {
+									stack = true;
+								}
+
+							}
+						}
+					if (d_curse && KDCurses[d_curse]?.events) {
+						for (let e of KDCurses[d_curse].events) {
+							if (e.trigger === Event && (!e.curse || d_curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+								if (iteration == (e.delayedOrder ? e.delayedOrder : 0)) {
+									KinkyDungeonHandleInventoryEvent(Event, e, d_item, data);
+								} else {
+									stack = true;
+								}
+							}
 						}
 					}
-				if (d_curse && KDCurses[d_curse]?.events) {
-					for (let e of KDCurses[d_curse].events) {
-						if (e.trigger === Event && (!e.curse || d_curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
-							KinkyDungeonHandleInventoryEvent(Event, e, d_item, data);
+				}
+			if (item.events) {
+				for (let e of item.events) {
+					if (e.trigger === Event && (!e.curse || curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+						if (iteration == (e.delayedOrder ? e.delayedOrder : 0)) {
+							KinkyDungeonHandleInventoryEvent(Event, e, item, data);
+						} else {
+							stack = true;
 						}
 					}
 				}
 			}
-		if (item.events) {
-			for (let e of item.events) {
-				if (e.trigger === Event && (!e.curse || curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
-					KinkyDungeonHandleInventoryEvent(Event, e, item, data);
+			if (curse && KDCurses[curse]?.events) {
+				for (let e of KDCurses[curse].events) {
+					if (e.trigger === Event && (!e.curse || curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+						if (iteration == (e.delayedOrder ? e.delayedOrder : 0)) {
+							KinkyDungeonHandleInventoryEvent(Event, e, item, data);
+						} else {
+							stack = true;
+						}
+					}
 				}
 			}
 		}
-		if (curse && KDCurses[curse]?.events) {
-			for (let e of KDCurses[curse].events) {
-				if (e.trigger === Event && (!e.curse || curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
-					KinkyDungeonHandleInventoryEvent(Event, e, item, data);
-				}
-			}
-		}
+		iteration += 1;
 	}
 }
 

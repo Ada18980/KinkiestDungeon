@@ -454,7 +454,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 		},
 		{ Name: "Butt", Layer: "Butt", Pri: 0,
-			HideWhenOverridden: true,
+			//HideWhenOverridden: true,
 			InheritColor: "Torso",
 			Poses: ToMap(KNEELPOSES),
 			EraseLayers: {BustierPoses: true},

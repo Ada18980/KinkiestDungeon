@@ -502,11 +502,11 @@ function KDProcessInput(type, data) {
 					let spell = (tt ? KinkyDungeonFindSpell(tt.Spell) : null) || KDGetRandomSpell();
 
 					if (spell) {
-						KinkyDungeonSpells.push(spell);
+						KDPushSpell(spell);
 						if (spell.autoLearn) {
 							for (let sp of spell.autoLearn) {
 								if (KinkyDungeonSpellIndex(sp) < 0) {
-									KinkyDungeonSpells.push(KinkyDungeonFindSpell(sp, true));
+									KDPushSpell(KinkyDungeonFindSpell(sp, true));
 									KDSendStatus('learnspell', sp);
 								}
 							}
@@ -565,16 +565,16 @@ function KDProcessInput(type, data) {
 			break;
 		case "heart":
 			if (data.type == "AP") {
-				if (KinkyDungeonStatDistractionMax < KDMaxStat) KinkyDungeonSpells.push(KinkyDungeonFindSpell("APUp1"));
+				if (KinkyDungeonStatDistractionMax < KDMaxStat) KDPushSpell(KinkyDungeonFindSpell("APUp1"));
 				KinkyDungeonUpdateStats(0);
 			}else if (data.type == "SP") {
-				if (KinkyDungeonStatStaminaMax < KDMaxStat) KinkyDungeonSpells.push(KinkyDungeonFindSpell("SPUp1"));
+				if (KinkyDungeonStatStaminaMax < KDMaxStat) KDPushSpell(KinkyDungeonFindSpell("SPUp1"));
 				KinkyDungeonUpdateStats(0);
 			} else if (data.type == "MP") {
-				if (KinkyDungeonStatManaMax < KDMaxStat) KinkyDungeonSpells.push(KinkyDungeonFindSpell("MPUp1"));
+				if (KinkyDungeonStatManaMax < KDMaxStat) KDPushSpell(KinkyDungeonFindSpell("MPUp1"));
 				KinkyDungeonUpdateStats(0);
 			} else if (data.type == "WP") {
-				if (KinkyDungeonStatWillMax < KDMaxStat) KinkyDungeonSpells.push(KinkyDungeonFindSpell("WPUp1"));
+				if (KinkyDungeonStatWillMax < KDMaxStat) KDPushSpell(KinkyDungeonFindSpell("WPUp1"));
 				KinkyDungeonUpdateStats(0);
 			}
 			KDGameData.CollectedHearts = (KDGameData.CollectedHearts || 0) + 1;
@@ -782,7 +782,7 @@ function KDProcessInput(type, data) {
 				if (KinkyDungeonSpellPoints >= cost) {
 					if (spell.manacost <= KinkyDungeonStatManaMax) {
 						KinkyDungeonSpellPoints -= cost;
-						KinkyDungeonSpells.push(spell);
+						KDPushSpell(spell);
 						KDSendStatus('learnspell', spell.name);
 						if (spell.goToPage) {
 							KinkyDungeonCurrentSpellsPage = spell.goToPage;
@@ -790,7 +790,7 @@ function KDProcessInput(type, data) {
 						if (spell.autoLearn) {
 							for (let sp of spell.autoLearn) {
 								if (KinkyDungeonSpellIndex(sp) < 0) {
-									KinkyDungeonSpells.push(KinkyDungeonFindSpell(sp, true));
+									KDPushSpell(KinkyDungeonFindSpell(sp, true));
 									KDSendStatus('learnspell', sp);
 								}
 							}

@@ -110,14 +110,17 @@ function KDDrawSelectedCollectionMember(value, x, y, index) {
 	DrawTextFitKD(value.name, x + 220, y + 50, 500, "#ffffff", (value.color && value.color != "#ffffff") ? value.color : KDTextGray05, 36);
 	DrawTextFitKD(TextGet("KDPrisonerNum").replace("NUMR", "" + index).replace("TTL", "" + Object.values(KDGameData.Collection).length), x + 220, y + 15, 500, "#ffffff", KDTextGray05, 18);
 
-	if (value.Faction && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.includes(value.Faction)))
-		DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), x + 220, y + 500, 500, "#ffffff", KDTextGray05, 18);
+	let II = 0;
+	DrawTextFitKD(TextGet("Name" + enemyType.name), x + 220, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18);
+
+	if (value.Faction && !KDFactionNoCollection.includes(value.Faction) && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.includes(value.Faction)))
+		DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), x + 220, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18);
 
 	if (!KDNPCChar.get(value.id)) {
 		KDSpeakerNPC = suppressCanvasUpdate(() => CharacterLoadNPC("coll" + value.id));
 		KDNPCChar.set(value.id, KDSpeakerNPC);
 		KDNPCStyle.set(KDSpeakerNPC, value);
-		if (!value.bodystyle || !value.facestyle || !value.hairstyle) {
+		if (!value.bodystyle || !value.facestyle || !value.hairstyle || value.cosplaystyle == undefined) {
 			if (enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style) {
 				if (KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style]) {
 					let style = KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style];
@@ -130,6 +133,10 @@ function KDDrawSelectedCollectionMember(value, x, y, index) {
 					if (!value.facestyle && style.Facestyle) {
 						value.facestyle = style.Facestyle[Math.floor(Math.random() * style.Facestyle.length)];
 					}
+					if (!value.cosplaystyle && style.Cosplay) {
+						value.cosplaystyle = style.Cosplay[Math.floor(Math.random() * style.Cosplay.length)];
+					}
+
 				}
 			}
 		}
@@ -147,6 +154,44 @@ function KDDrawSelectedCollectionMember(value, x, y, index) {
 			x + 20 + 100,
 			y + 80,
 			400/1000, true, undefined, PIXI.SCALE_MODES.NEAREST, [], undefined, false);
+		if (DrawButtonKDEx("dressNPC", (b) => {
+			//KDSpeakerNPC = null;
+			KinkyDungeonState = "Wardrobe";
+			KDOriginalValue = "";
+			KDWardrobeCallback = () => {
+				if (KDOriginalValue) {
+					value.customOutfit = LZString.compressToBase64(CharacterAppearanceStringify(KDSpeakerNPC));
+				}
+			};
+			if (value.customOutfit) {
+				let outfit = value.customOutfit;
+				KDWardrobeRevertCallback = () => {
+					CharacterAppearanceRestore(KDSpeakerNPC, DecompressB64(outfit));
+					CharacterRefresh(KDSpeakerNPC);
+					KDInitProtectedGroups(KDSpeakerNPC);
+					KinkyDungeonDressPlayer(KDSpeakerNPC, true);
+				};
+				KDWardrobeResetCallback = () => {
+					delete value.customOutfit;
+				};
+			} else {
+				KDWardrobeRevertCallback = null;
+				KDWardrobeResetCallback = null;
+			}
+
+			KDPlayerSetPose = false;
+			KDInitCurrentPose();
+			KinkyDungeonInitializeDresses();
+			KDUpdateModelList();
+			KDRefreshOutfitInfo();
+			let orig = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
+			let current = LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
+			if (orig != current) KDOriginalValue = orig;
+			return true;
+		}, true, x + 10, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Dress.png")) {
+			DrawTextFitKD(TextGet("KDDressNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+		}
+
 	} else {
 		KDDraw(kdcanvas, kdpixisprites, value.name + "_coll," + value.id, KinkyDungeonRootDirectory + dir + sp + ".png",
 			x + 20,
@@ -256,113 +301,15 @@ function KDDrawCollectionInventory(x, y) {
 
 }
 
+/**
+ *
+ * @param {entity} enemy
+ * @returns {string}
+ */
 function KDGetEnemyName(enemy) {
 	let faction = KDGetFaction(enemy) || KDGetFactionOriginal(enemy);
-	if (KDNameList[faction]) return KDNameList[faction][Math.floor(KDNameList[faction].length * KDRandom())];
+	let nameList = KDFactionProperties[faction]?.nameList ? KDFactionProperties[faction].nameList[Math.floor(Math.random() * KDFactionProperties[faction].nameList.length)] : faction;
+	if (enemy.Enemy?.nameList) nameList = enemy.Enemy?.nameList;
+	if (KDNameList[nameList]) return KDNameList[nameList][Math.floor(KDNameList[nameList].length * KDRandom())];
 	else return KDNameList.default[Math.floor(KDNameList.default.length * KDRandom())];
 }
-
-let KDNameList = {
-	default: [
-		"Emma",
-		"Olivia",
-		"Ava",
-		"Isabella",
-		"Sophia",
-		"Mia",
-		"Amelia",
-		"Harper",
-		"Evelyn",
-		"Abigail",
-		"Emily",
-		"Ella",
-		"Scarlett",
-		"Grace",
-		"Chloe",
-		"Lily",
-		"Avery",
-		"Sofia",
-		"Riley",
-		"Aria",
-		"Zoe",
-		"Stella",
-		"Hazel",
-		"Luna",
-		"Nora",
-		"Nova",
-		"Penelope",
-		"Mila",
-		"Aurora",
-		"Sarah",
-		"Hailey",
-		"Layla",
-		"Eleanor",
-		"Violet",
-		"Sadie",
-		"Aubrey",
-		"Brooklyn",
-		"Paisley",
-		"Madison",
-		"Scarlet",
-		"Lillian",
-		"Victoria",
-		"Natalie",
-		"Katherine",
-		"Zara",
-		"Camila",
-		"Genesis",
-		"Leah",
-		"Alexa",
-		"Allison",
-		"Hana",
-		"Yuki",
-		"Aya",
-		"Miyuki",
-		"Sakura",
-		"Haruka",
-		"Natsumi",
-		"Kaori",
-		"Emi",
-		"Aiko",
-		"Riko",
-		"Yui",
-		"Sora",
-		"Nana",
-		"Kana",
-		"Mio",
-		"Rina",
-		"Kotone",
-		"Rika",
-		"Mei",
-		"Yuna",
-		"Kokoro",
-		"Nozomi",
-		"Mari",
-		"Ayumi",
-		"Yuri",
-		"Asuka",
-		"Ai",
-		"Kairi",
-		"Miku",
-		"Tomoko",
-		"Misaki",
-		"Yoko",
-		"Natsu",
-		"Asumi",
-		"Maki",
-		"Nao",
-		"Reina",
-		"Yuriko",
-		"Izumi",
-		"Satsuki",
-		"Akari",
-		"Hinata",
-		"Mayu",
-		"Kazumi",
-		"Rin",
-		"Yuki",
-		"Mana",
-		"Hikari",
-		"Sayuri",
-	],
-};

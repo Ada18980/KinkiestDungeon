@@ -321,11 +321,11 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 	}
 	if (Loot.spell) {
 		let spell = KinkyDungeonFindSpell(Loot.spell, true);
-		KinkyDungeonSpells.push(spell);
+		KDPushSpell(spell);
 		if (spell.autoLearn) {
 			for (let sp of spell.autoLearn) {
 				if (KinkyDungeonSpellIndex(sp) < 0) {
-					KinkyDungeonSpells.push(KinkyDungeonFindSpell(sp, true));
+					KDPushSpell(KinkyDungeonFindSpell(sp, true));
 					KDSendStatus('learnspell', sp);
 				}
 			}
@@ -455,7 +455,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		let spell = SpellsUnlearned[spellIndex];
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("SpellLearned", TextGet("KinkyDungeonSpell" + spell.name));
-		KinkyDungeonSpells.push(spell);
+		KDPushSpell(spell);
 	}
 	else if (Loot.name == "spell_conjuration_low") {
 		let SpellsUnlearned = KinkyDungeonGetUnlearnedSpells(0, 2, KinkyDungeonSpellList.Conjure);
@@ -464,7 +464,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		let spell = SpellsUnlearned[spellIndex];
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("SpellLearned", TextGet("KinkyDungeonSpell" + spell.name));
-		KinkyDungeonSpells.push(spell);
+		KDPushSpell(spell);
 	}
 	else if (Loot.name == "spell_elemental_low") {
 		let SpellsUnlearned = KinkyDungeonGetUnlearnedSpells(0, 2, KinkyDungeonSpellList.Elements);
@@ -473,7 +473,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		let spell = SpellsUnlearned[spellIndex];
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("SpellLearned", TextGet("KinkyDungeonSpell" + spell.name));
-		KinkyDungeonSpells.push(spell);
+		KDPushSpell(spell);
 	}
 	else if (Loot.name == "pearlReward") {
 		let rewardAvailable = [];
@@ -494,7 +494,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 				Replacemsg = Replacemsg.replace("ITEMGET", TextGet("KinkyDungeonInventoryItem" + reward));
 		}
 		else if (KinkyDungeonFindSpell(reward, true)) {
-			KinkyDungeonSpells.push(KinkyDungeonFindSpell(reward, true));
+			KDPushSpell(KinkyDungeonFindSpell(reward, true));
 			if (Replacemsg)
 				Replacemsg = Replacemsg.replace("ITEMGET", TextGet("KinkyDungeonSpell" + reward));
 		}

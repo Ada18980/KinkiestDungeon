@@ -15,6 +15,8 @@ let KinkyDungeonFactionColors = {
 	"Witch": ["#222222", "#8359b3"],
 };
 
+let KDFactionNoCollection = ["Ambush"];
+
 /**
  * @type {Record<string, Record<string, LayerFilter>>}
  */
@@ -136,6 +138,7 @@ let KDFactionProperties = {
 		jailOutfit: "Bikini",
 	},
 	Bountyhunter: {
+		nameList: ["bountyhunter"],
 		honor: 1,
 		honor_specific: {
 		},
