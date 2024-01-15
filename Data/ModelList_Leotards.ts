@@ -13,7 +13,7 @@ AddModel({
 	Categories: ["Bodysuits"],
 	Layers: ToLayerMap([
 		{ Name: "Swimsuit", Layer: "Bodysuit", Pri: 5,
-			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
+			//swaplayerpose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
 			Poses: ToMap([...LEGPOSES]),
 		},
 		{ Name: "SwimsuitChest", Layer: "SuitChest", Pri: 5,
@@ -31,7 +31,7 @@ AddModel({
 	Categories: ["Bodysuits"],
 	Layers: ToLayerMap([
 		{ Name: "Swimsuit", Layer: "BodysuitOver", Pri: 5,
-			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
+			//swaplayerpose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
 			Poses: ToMap([...LEGPOSES]),
 		},
 		{ Name: "SwimsuitChest", Layer: "SuitChestOver", Pri: 5,
@@ -66,7 +66,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "VBikini", Layer: "Panties", Pri: 39,
 			Invariant: true,
-			SwapLayerPose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
+			//swaplayerpose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
 			MorphPoses: {Closed: "Closed", Hogtie: "Closed"},
 		},
 	])
@@ -81,7 +81,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "StrappyLower", Layer: "Panties", Pri: 40,
 			Invariant: true,
-			SwapLayerPose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
+			//swaplayerpose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
 		},
 	])
 });
@@ -239,7 +239,7 @@ AddModel({
 	Categories: ["Bodysuits"],
 	Layers: ToLayerMap([
 		{ Name: "Leotard", Layer: "Bodysuit", Pri: -1,
-			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
+			//swaplayerpose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
 			MorphPoses: {Closed: "Closed"}
 		},
 		{ Name: "LeotardChest", Layer: "SuitChest", Pri: 1.5,
@@ -257,7 +257,7 @@ AddModel({
 	Categories: ["Bodysuits"],
 	Layers: ToLayerMap([
 		{ Name: "HighLeotard", Layer: "Bodysuit", Pri: -0.9,
-			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
+			//swaplayerpose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
 			MorphPoses: {Closed: "Closed"}
 		},
 		{ Name: "LeotardChest", Layer: "SuitChest", Pri: 1.6,
@@ -277,7 +277,7 @@ AddModel({
 	Categories: ["Bodysuits"],
 	Layers: ToLayerMap([
 		{ Name: "Leotard", Layer: "BodysuitOver", Pri: -1,
-			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
+			//swaplayerpose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
 			MorphPoses: {Closed: "Closed"}
 		},
 		{ Name: "LeotardChest", Layer: "SuitChestOver", Pri: 1.5,
@@ -295,7 +295,7 @@ AddModel({
 	Categories: ["Bodysuits"],
 	Layers: ToLayerMap([
 		{ Name: "HighLeotard", Layer: "BodysuitOver", Pri: -0.9,
-			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
+			//swaplayerpose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
 			MorphPoses: {Closed: "Closed"}
 		},
 		{ Name: "LeotardChest", Layer: "SuitChestOver", Pri: 1.6,

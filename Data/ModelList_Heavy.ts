@@ -206,7 +206,7 @@ AddModel({
 		...GetModelLayers("JacketBolero"),
 
 		{ Name: "LatexLower", Layer: "Bodysuit", Pri: 13,
-			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
+			//swaplayerpose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
 		},
 		{ Name: "LatexChest", Layer: "SuitChest", Pri: 14,
 			InheritColor: "LatexUpper",
@@ -237,7 +237,7 @@ AddModel({
 			InheritColor: "Binder",
 		},
 		{ Name: "RightLegbinder", Layer: "LegbinderLegsOver", Pri: -20,
-			SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
+			//SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			TieToLayer: "Legbinder",

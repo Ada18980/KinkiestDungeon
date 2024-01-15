@@ -3274,7 +3274,6 @@ KinkyDungeonFactionDressmaker,DressUp Co.
 KinkyDungeonFactionBountyhunter,Bounty Hunters Guild
 KinkyDungeonFactionBandit,Bandits
 KinkyDungeonFactionKinkyConstruct,Constructs
-KinkyDungeonFactionWitch,Witches' Coven
 KinkyDungeonFactionApprentice,School of Magic
 KinkyDungeonFactionAncientRobot,Old Guardians
 KinkyDungeonFactionElf,Cult of the Wild
@@ -3284,6 +3283,19 @@ KinkyDungeonFactionElemental,Elementals
 KinkyDungeonFactionDragon,Dragonheart Order
 KinkyDungeonFactionMaidforce,MaidForce
 KinkyDungeonFactionMushy,Fungal Kingdom
+
+KinkyDungeonFactionWitch,Witches' Coven
+KinkyDungeonFactionLoveCrafters,Love Crafters
+KinkyDungeonFactionNecromancer,Velvet Pact
+KinkyDungeonFactionKnights,Knights Errant
+KinkyDungeonFactionScavenger,Scavengers
+KinkyDungeonFactionFae,Fae Tricksters
+KinkyDungeonFactionPirate,Zora's Crew
+
+KinkyDungeonFactionRopeDojo,Rope Dojo
+KinkyDungeonFactionDollShoppe,Doll Shoppe
+KinkyDungeonFactionFuuka,Fuuka's Shrine
+KinkyDungeonFactionDollsmith,Dollmaker Inc.
 
 KinkyDungeonFactionAdventurer,Adventurer
 KinkyDungeonFactionCurse,Cursed Spirit
@@ -18786,10 +18798,6 @@ KinkyDungeonStatHogtied,"Hogtied!"
 KinkyDungeonStatDescHogtied,"Experience a comprehensive rope bondage experience."
 
 
-KinkyDungeonFactionRopeDojo,Rope Dojo
-KinkyDungeonFactionDollShoppe,Doll Shoppe
-KinkyDungeonFactionFuuka,Fuuka's Shrine
-KinkyDungeonFactionDollsmith,Dollmaker
 
 KDBondageOptionPerk,"Receive the following restraints: "
 KDBondageOptionPerkHidden,"You will be bound with some form of restraint."

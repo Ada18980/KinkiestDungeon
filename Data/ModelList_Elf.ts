@@ -15,7 +15,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Panties", Layer: "Panties", Pri: -30,
 			Invariant: true,
-			SwapLayerPose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
+			//swaplayerpose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
 		},
 	])
 });
@@ -126,7 +126,7 @@ AddModel({
 	},
 	Layers: ToLayerMap([
 		{ Name: "Skirt", Layer: "Skirt", Pri: 100,
-			SwapLayerPose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
+			//swaplayerpose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
 			Invariant: true,
 			HideWhenOverridden: true,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},

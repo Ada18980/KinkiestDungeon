@@ -247,6 +247,7 @@ let LAYERS_BASE = [
 	"AnkleLeftOver",
 	"AnkleLeft",
 
+	"WrappingLegs2",
 	"WrappingLegs",
 
 	"PantsAccLeft",
@@ -453,12 +454,38 @@ let LayerGroups = {
 	"CrotchRope": ToMap([
 		"HarnessLower",
 	]),
+	ButtSleeves: ToMap([
+		"SleeveLeft",
+		"SleeveDecoLeft",
+		"SleeveRight",
+		"SleeveDecoRight",
+	]),
 	BustierPoses: ToMap([
 		"Bustier",
 		"Corset",
 		"CorsetLiner",
 		"HarnessLower",
 		"HarnessMid",
+		"ChastityBelt",
+		"Option_ChastityBelt",
+		"Panties",
+		"CrotchPanelMid",
+		"Bodysuit",
+		//"Skirt",
+		//"WrappingTorsoMid",
+	]),
+	BustierPoses2: ToMap([
+		"Bustier",
+		"Corset",
+		"CorsetLiner",
+		"HarnessLower",
+		"HarnessMid",
+		"ChastityBelt",
+		"Option_ChastityBelt",
+		"Panties",
+		"CrotchPanelMid",
+		"Bodysuit",
+		"WrappingTorsoMid",
 	]),
 
 	// region slime
@@ -1356,6 +1383,7 @@ let LayerGroups = {
 	"ThighRightOver",
 	"AnkleRightOver",
 
+	"WrappingLegs2",
 	"WrappingLegs",
 	"WrappingLegsUnder",
 

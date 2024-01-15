@@ -1533,14 +1533,16 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				{type: "BlindAll", trigger: "bulletHitEnemy", time: 31},
 			],
 			noise: 10, sfx: "FireSpell", school: "Illusion", manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 4, delay: 2, power: 1, range: 2.5, size: 5, aoe: 2.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 10}}, // Longer delay, but the stun lasts much longer.
-		{name: "Shroud", prerequisite: "ApprenticeShadow", tags: ["aoe", "buff", "utility", "stealth", "defense"], sfx: "Fwoosh", school: "Illusion", manacost: 5, components: ["Verbal"], level:1, type:"inert", buffs: [
-			{id: "Shroud", type: "Evasion", power: 7.0, player: true, enemies: true, tags: ["darkness"], range: 1.5},
-			{id: "Shroud2", aura: "#444488", type: "Sneak", power: 4.0, player: true, duration: 8, enemies: false, tags: ["darkness"], range: 1.5}
-		], onhit:"", time:8, aoe: 1.5, power: 0, delay: 8, range: 4.5, size: 3, damage: "",
-		effectTileDurationModPre: 3, effectTilePre: {
-			name: "Smoke",
-			duration: 8,
-		}}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
+		{name: "Shroud", prerequisite: "ApprenticeShadow", tags: ["aoe", "buff", "utility", "stealth", "defense"], sfx: "Fwoosh", school: "Illusion", manacost: 5, components: ["Verbal"], level:1, type:"inert",
+			noise: 3.5,// Attracts some enemies
+			buffs: [
+				{id: "Shroud", type: "Evasion", power: 7.0, player: true, enemies: true, tags: ["darkness"], range: 1.5},
+				{id: "Shroud2", aura: "#444488", type: "Sneak", power: 4.0, player: true, duration: 8, enemies: false, tags: ["darkness"], range: 1.5}
+			], onhit:"", time:8, aoe: 1.5, power: 0, delay: 8, range: 4.5, size: 3, damage: "",
+			effectTileDurationModPre: 3, effectTilePre: {
+				name: "Smoke",
+				duration: 8,
+			}}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
 		{name: "Invisibility", prerequisite: "ApprenticeMystery", tags: ["buff", "utility", "stealth", "defense"], sfx: "Invis", school: "Illusion", manacost: 6, components: ["Verbal"], mustTarget: true, level:1, type:"buff",
 			buffs: [
 				{id: "Invisibility", aura: "#888888", type: "Sneak", duration: 12, power: 15.0, player: true, enemies: true, tags: ["invisibility"]},

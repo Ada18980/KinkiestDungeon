@@ -3972,11 +3972,11 @@ let KinkyDungeonEnemies = [
 		stamina: 2,
 		maxblock: 1,
 		maxdodge: 0,
-		tags: KDMapInit(["leashing", "guardCall", "opendoors", "jailer", "closedoors", "human", "witch", "antiMagic", "shadowclan",
+		tags: KDMapInit(["leashing", "guardCall", "opendoors", "jailer", "closedoors", "human", "witch", "antiMagic", "shadowclan", "velvetpact",
 			"ranged", "mage", "miniboss", "unflinching", "meleeweakness", "hunter"]), followRange: 1, cohesion: 0.9,
 		spells: ["SummonSkeleton", "SummonSkeletons", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 16, spellCooldownMult: 1, spellCooldownMod: 2, spellRdy: true,
 		AI: "hunt", guardChance: 0.6, visionRadius: 6, maxhp: 20, minLevel: 2, weight:3, movePoints: 3, attackPoints: 3, attack: "MeleeLockAllWillSpellBind", attackWidth: 1, attackRange: 1, power: 5, dmgType: "grope",
-		terrainTags: {"secondhalf":3, "lastthird":3, "miniboss": -7, "tech": -20}, shrines: [], floors:KDMapInit(["cat", "jng", "tmb", "tmp"]), attackLock: "White",
+		terrainTags: {"secondhalf":3, "lastthird":3, "miniboss": -7, "tech": -20, "velvet": 4, "skeleton": 3}, shrines: [], floors:KDMapInit(["cat", "jng", "tmb", "tmp"]), attackLock: "White",
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 14, noSummon: true}]},
 
 	{name: "HighWizard", nameList: "witch", outfit: "WitchShock", style: "Water", clusterWith: "mushroom", bound: "HighWizard", faction: "Mushy", playLine: "Witch", color: "#a583ff", tags: KDMapInit(["leashing", "mage", "mushy", "imprisonable", "opendoors", "closedoors", "human", "ranged", "unflinching", "hunter"]), squeeze: true,

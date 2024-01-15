@@ -15,7 +15,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Panties", Layer: "Panties", Pri: 10,
 			Invariant: true,
-			SwapLayerPose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
+			//swaplayerpose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
 			MorphPoses: {Kneel: "Kneel", Hogtie: "Closed", Closed: "Closed", KneelClosed: "Kneel", }
 		},
 	])
@@ -414,7 +414,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "TorsoLower", Layer: "Bodysuit", Pri: 10,
 			Invariant: true,
-			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
+			//swaplayerpose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
 			MorphPoses: {Kneel: "Kneel", Hogtie: "Closed", Closed: "Closed", KneelClosed: "Kneel", }
 		},
 	])

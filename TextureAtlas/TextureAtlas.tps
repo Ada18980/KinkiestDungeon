@@ -629,6 +629,8 @@
             <key type="filename">../Models/Dress/BlouseNeckUp.png</key>
             <key type="filename">../Models/Dress/BlouseSkirt.png</key>
             <key type="filename">../Models/Dress/BlouseSkirtKneel.png</key>
+            <key type="filename">../Models/Dress/BlouseSkirtLone.png</key>
+            <key type="filename">../Models/Dress/BlouseSkirtLoneKneel.png</key>
             <key type="filename">../Models/Dress/BlouseSkirtOverKneel.png</key>
             <key type="filename">../Models/Dress/BlouseSkirtUnder.png</key>
             <key type="filename">../Models/Dress/BlouseTorso.png</key>

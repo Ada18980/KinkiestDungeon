@@ -29,6 +29,7 @@ Monk class?
 - Changed fireball and fireblast to deal full AoE damage but no double damage to the target hit
 - Burning desire now 25% fire damage instead of 40%
 - Added 'sell excess' button
+- Changed the way that
 
 5.1.3
 - Graphical optimizations, should be MUCH less laggy lategame with many spells
