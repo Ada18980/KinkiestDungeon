@@ -469,6 +469,7 @@ AddModel({
 			EraseLayers: {ButtSleeves: true},
 			EraseSprite: "ButtSleeves",
 			EraseInvariant: true,
+			Invariant: true,
 			//EraseMorph: {EncaseTorsoLower: "Encase"},
 		},
 

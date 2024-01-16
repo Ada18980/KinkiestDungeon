@@ -806,7 +806,7 @@ let KDEventMapInventory = {
 						type: "StatGainWill",
 						aurasprite: "Null",
 						power: -0.01,
-						duration: 9999,
+						duration: 9999, infinite: true,
 						text: "-1%",
 						events: [
 							{trigger: "tick", type: "Corrupted", power: 0.01},
@@ -816,7 +816,7 @@ let KDEventMapInventory = {
 						id: "Corrupted2",
 						type: "StrugglePower",
 						power: -0.01,
-						duration: 9999,
+						duration: 9999, infinite: true,
 						events: [
 							{trigger: "tick", type: "Corrupted", power: 0.01},
 						],
@@ -3102,7 +3102,7 @@ let KDEventMapSpell = {
 							aurasprite: "Null",
 							buffSprite: true,
 							power: powerAdded,
-							duration: 9999,
+							duration: 9999, infinite: true,
 							text: Math.round(100 * powerAdded),
 						}
 					);
@@ -3691,7 +3691,7 @@ let KDEventMapSpell = {
 								id: "ArcaneEnergyShield",
 								type: "Shield",
 								power: 0,
-								duration: 9999,
+								duration: 9999, infinite: true,
 								tags: ["shield"],
 							});
 						}
@@ -4273,7 +4273,7 @@ let KDEventMapSpell = {
 							aurasprite: "Null",
 							buffSprite: true,
 							power: powerAdded,
-							duration: 9999,
+							duration: 9999, infinite: true,
 							text: Math.round(100 * powerAdded),
 						}
 					);
@@ -5208,7 +5208,7 @@ let KDEventMapSpell = {
 										aurasprite: "Null",
 										buffSprite: true,
 										power: powerAdded,
-										duration: 9999,
+										duration: 9999, infinite: true,
 										text: Math.round(100 * powerAdded),
 									}
 								);
@@ -7181,7 +7181,7 @@ let KDEventMapEnemy = {
 
 					// Instead it applies a debuff, and leash
 					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
-						{id: "ShadowDommed", type: "Flag", duration: 9999, power: 1, maxCount: 1, currentCount: 1, tags: ["attack", "cast"], events: [
+						{id: "ShadowDommed", type: "Flag", duration: 9999, infinite: true, power: 1, maxCount: 1, currentCount: 1, tags: ["attack", "cast"], events: [
 							{type: "ShadowDommed", trigger: "tick"},
 						]}
 					);
@@ -8812,7 +8812,7 @@ function KDAddArcaneEnergy(player, powerAdded) {
 				buffSprite: true,
 				//buffSprite: true,
 				power: powerAdded,
-				duration: 9999,
+				duration: 9999, infinite: true,
 				text: Math.round(10 * powerAdded),
 			}
 		);

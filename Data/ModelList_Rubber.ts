@@ -135,6 +135,9 @@ AddModel({
 			AddPriWithPose: {
 				ItemLegsRubberOver: 45,
 			},
+			DisplaceAmount: 100,
+			DisplaceLayers: ToMap(["SlimeThighs"]),
+			DisplacementSprite: "SlimeThighs",
 		},
 		{ Name: "LegRight", Layer: "WrappingLegsOver2", Pri: 25,
 			//SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
@@ -177,6 +180,7 @@ AddModel({
 		{ Name: "AnkleLeft", Layer: "WrappingAnklesOver", Pri: 25,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			SwapLayerPose: {Kneel: "WrappingLegsOver", KneelClosed: "WrappingLegsOver"},
 			InheritColor: "Rubber",
 			HideWhenOverridden: true,
 			AddPriWithPose: {

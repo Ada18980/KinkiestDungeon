@@ -4202,6 +4202,16 @@ function KinkyDungeonLoadGame(String) {
 
 			KDUpdateEnemyCache = true;
 
+			// bandaid
+			for (let enemy of KDMapData.Entities) {
+				if (enemy.buffs) {
+					for (let b of Object.keys(enemy.buffs)) {
+						if (!enemy.buffs[b]) {
+							delete enemy.buffs[b];
+						}
+					}
+				}
+			}
 
 			if (typeof KDGameData.PreviousWeapon == 'string') KDGameData.PreviousWeapon = ["Unarmed", "Unarmed", "Unarmed", "Unarmed"];
 

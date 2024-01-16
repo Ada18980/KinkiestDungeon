@@ -267,17 +267,17 @@ function KinkyDungeonPayShrine(type) {
 	} else if (type == "Elements" || type == "Illusion" || type == "Conjure") {
 		ShrineMsg = TextGet("KinkyDungeonPayShrineBuff" + type).replace("SCHOOL", TextGet("KinkyDungeonSpellsSchool" + type));
 		if (type == "Elements") {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineElements", type: "event", maxCount: 10, tags: ["offense", "shrineElements"], aura: "#f1641f", power: 1.5, duration: 9999, events: [
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineElements", type: "event", maxCount: 10, tags: ["offense", "shrineElements"], aura: "#f1641f", power: 1.5, duration: 9999, infinite: true, events: [
 				{trigger: "afterDamageEnemy", type: "ShrineElements", spell: "ArcaneStrike"},
 			]});
 		} else if (type == "Conjure") {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineConjure", type: "bondageImmune", maxCount: 3, tags: ["defense", "shrineConjure", "bondageResist"], aura: "#4572e3", power: 1.5, duration: 9999, events: [
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineConjure", type: "bondageImmune", maxCount: 3, tags: ["defense", "shrineConjure", "bondageResist"], aura: "#4572e3", power: 1.5, duration: 9999, infinite: true, events: [
 			//{trigger: "beforeAttack", type: "CounterattackSpell", spell: "ArcaneStrike", requiredTag: "shrineConjure", prereq: "hit-hostile"},
 			]});
 			//KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineConjure2", type: "SpellResist", maxCount: 10, tags: ["defense", "shrineConjure", "bondageResist"], power: 5, duration: 9999});
 			//KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineConjure3", type: "Armor", maxCount: 10, tags: ["defense", "shrineConjure", "bondageResist"], power: 5, duration: 9999});
 		} else if (type == "Illusion") {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineIllusion", type: "event", maxCount: 10, tags: ["defense", "shrineIllusion"], aura: "#9052bc", power: 1.5, duration: 9999, events: [
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineIllusion", type: "event", maxCount: 10, tags: ["defense", "shrineIllusion"], aura: "#9052bc", power: 1.5, duration: 9999, infinite: true, events: [
 				{trigger: "playerAttack", type: "ShadowStep", time: 6, requiredTag: "shrineIllusion"},
 			]});
 		}

@@ -193,6 +193,13 @@ let DisplacementMaps = [
 'EraseCorsetEncase.png',
 'ReversePrayer.png',
 'ButtSleeves.png',
+'PetsuitSquish.png',
+'LegbinderSquishClosed.png',
+'LegbinderSquishHogtie.png',
+'LegbinderSquishKneelClosed.png',
+'SlimeThighsKneelClosed.png',
+'SlimeThighsClosed.png',
+'SlimeThighsHogtie.png',
 ];
 
 // Scale factor for displacement and erase maps

@@ -612,22 +612,6 @@ AddModel({
 	])
 });
 
-AddModel({
-	Name: "BindingDress",
-	Folder: "Dress",
-	Parent: "Dress",
-	TopLevel: true,
-	Categories: ["Restraints"],
-	//AddPose: ["CrotchStrap"],
-	Layers: ToLayerMap([
-		...GetModelLayers("LaceCorset"),
-		...GetModelLayers("DressSkirtSplit"),
-		...GetModelLayers("LaceCrotchPanel"),
-
-
-	])
-});
-
 
 AddModel({
 	Name: "BlouseCollar",
@@ -661,10 +645,11 @@ AddModel({
 			NoOverride: true,
 			//InheritColor: "Skirt",
 			HideWhenOverridden: true,
-			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			//swaplayerpose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel",},
 			HidePoses: ToMap(["EncaseTorsoLower"]),
+			InheritColor: "BlouseSkirt",
 		},
 		{ Name: "BlouseSkirtOverKneel", Layer: "SkirtOver", Pri: 100,
 			Poses: ToMap([...KNEELPOSES]),
@@ -699,7 +684,7 @@ AddModel({
 			NoOverride: true,
 			//InheritColor: "Skirt",
 			HideWhenOverridden: true,
-			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			//swaplayerpose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel",},
 			HidePoses: ToMap(["EncaseTorsoLower"]),
@@ -947,7 +932,7 @@ AddModel({
 
 AddModel({
 	Name: "MageSkirt",
-	Folder: "Mage",
+	Folder: "Dress",
 	Parent: "Mage",
 	TopLevel: true,
 	Categories: ["Skirts"],
@@ -955,7 +940,7 @@ AddModel({
 		EncaseTorsoLower: ["Skirt"]
 	},
 	Layers: ToLayerMap([
-		{ Name: "Skirt", Layer: "Skirt", Pri: 13,
+		{ Name: "MageSkirt", Layer: "Skirt", Pri: 13,
 			Poses: ToMap([...LEGPOSES]),
 			NoOverride: true,
 			//HideWhenOverridden: true,
@@ -976,7 +961,7 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			Invariant: true,
 		},
-		{ Name: "SkirtOver", Layer: "SkirtOver", Pri: 9,
+		{ Name: "MageSkirtOver", Layer: "SkirtOver", Pri: 9,
 			Poses: ToMap([...KNEELPOSES]),
 			//RequirePoses: ToMap(["CrotchStrap"]),
 			TieToLayer: "Skirt", NoOverride: true,
@@ -991,7 +976,7 @@ AddModel({
 
 AddModel({
 	Name: "MageCorset",
-	Folder: "Mage",
+	Folder: "Dress",
 	Parent: "MageTop",
 	TopLevel: true,
 	Categories: ["Corsets"],
@@ -1016,7 +1001,7 @@ AddModel({
 
 AddModel({
 	Name: "MageBra",
-	Folder: "Mage",
+	Folder: "Dress",
 	TopLevel: true,
 	Parent: "MageTop",
 	Categories: ["Bras"],
@@ -1037,7 +1022,7 @@ AddModel({
 
 AddModel({
 	Name: "MageTop",
-	Folder: "Mage",
+	Folder: "Dress",
 	TopLevel: true,
 	Parent: "Mage",
 	Categories: ["Tops"],
@@ -1072,14 +1057,14 @@ AddModel({
 
 AddModel({
 	Name: "MageCollar",
-	Folder: "Mage",
+	Folder: "Dress",
 	Parent: "MageTop",
 	TopLevel: true,
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([
 		{ Name: "MageCollar", Layer: "NecklaceCharm", Pri: 20.1,
 			Invariant: true,
-			InheritColor: "Base",
+			InheritColor: "BaseMetal",
 		},
 		{ Name: "MageCollarCrystal", Layer: "NecklaceCharm", Pri: 20,
 			Invariant: true,
@@ -1097,7 +1082,7 @@ AddModel({
 });
 AddModel({
 	Name: "MageCollar2",
-	Folder: "Mage",
+	Folder: "Dress",
 	Parent: "MageCollar",
 	TopLevel: false,
 	Categories: ["Accessories"],
@@ -1117,7 +1102,7 @@ AddModel({
 
 AddModel({
 	Name: "Mage",
-	Folder: "Mage",
+	Folder: "Dress",
 	TopLevel: true,
 	Categories: ["Uniforms"],
 	Layers: ToLayerMap([
@@ -1236,3 +1221,23 @@ AddModel({
 	])
 });
 
+
+
+
+AddModel({
+	Name: "BindingDress",
+	Folder: "Dress",
+	Parent: "Dress",
+	TopLevel: true,
+	Categories: ["Restraints"],
+	//AddPose: ["CrotchStrap"],
+	Layers: ToLayerMap([
+		//...GetModelLayers("LaceCorset"),
+		...GetModelLayers("DressSkirtSplit"),
+		...GetModelLayers("LaceCrotchPanel"),
+		...GetModelLayers("MageTop"),
+		...GetModelLayers("MageCollar2"),
+
+
+	])
+});

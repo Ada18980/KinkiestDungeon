@@ -1418,7 +1418,7 @@ function KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openne
 	KinkyDungeonTilesSet("" + (b1*2 + 2) + "," + (VisitedRooms[0].y*2 + 1), {Type: "Ghost", Msg: "JourneyNone"});
 	KDCreateEffectTile(b1*2 + 2, VisitedRooms[0].y*2, {
 		name: "Portals/Portal",
-		duration: 9999,
+		duration: 9999, infinite: true,
 	}, 0);
 
 	// Tutorial end stairs
@@ -1427,7 +1427,7 @@ function KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openne
 	KinkyDungeonTilesSet("" + (VisitedRooms[0].x*2 + 3) + "," + (VisitedRooms[0].y*2 - 2), {RoomType: "Tutorial", Skin: "TabletSpent"});
 	KDCreateEffectTile(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 2, {
 		name: "Portals/Portal",
-		duration: 9999,
+		duration: 9999, infinite: true,
 	}, 0);
 	KinkyDungeonTilesSet("" + (VisitedRooms[0].x*2 + 3) + "," + (VisitedRooms[0].y*2 - 1), {Type: "Ghost", Msg: "JourneyTutorial"});
 
@@ -1451,7 +1451,7 @@ function KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openne
 			KinkyDungeonTilesSet("" + (x) + "," + (VisitedRooms[0].y*2 - 5), {Type: "Ghost", Msg: "Journey" + KDJourneyList[i]});
 			KDCreateEffectTile(x, (VisitedRooms[0].y*2 - 6), {
 				name: "Portals/Portal",
-				duration: 9999,
+				duration: 9999, infinite: true,
 			}, 0);
 		}
 		i++;

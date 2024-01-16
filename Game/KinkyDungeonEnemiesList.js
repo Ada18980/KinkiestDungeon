@@ -2620,7 +2620,7 @@ let KinkyDungeonEnemies = [
 				id: "DragonShieldCritArmor",
 				power: 1,
 				type: "ToughArmor",
-				duration: 9999,
+				duration: 9999, infinite: true,
 				aura: "#ffffff",
 				currentCount: 0, maxCount: 1, tags: ["defense", "crit"],
 			}
@@ -4463,7 +4463,7 @@ let KDSpecialBuffs = {
 				aura: "#ffffff",
 				aurasprite: "Armored",
 				noAuraColor: true,
-				duration: 9999,
+				duration: 9999, infinite: true,
 				power: 3,
 				type: "Armor",
 			});
@@ -4483,7 +4483,7 @@ let KDSpecialBuffs = {
 				aura: "#ffffff",
 				aurasprite: "Fast",
 				noAuraColor: true,
-				duration: 9999,
+				duration: 9999, infinite: true,
 				power: 0.5,
 				type: "MoveSpeed",
 			});
@@ -4503,13 +4503,13 @@ let KDSpecialBuffs = {
 				aura: "#ffffff",
 				aurasprite: "Muscle",
 				noAuraColor: true,
-				duration: 9999,
+				duration: 9999, infinite: true,
 				power: enemy.Enemy.power*2,
 				type: "AttackPower",
 			});
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "Muscle2",
-				duration: 9999,
+				duration: 9999, infinite: true,
 				power: 1,
 				type: "AttackWidth",
 			});
@@ -4527,14 +4527,14 @@ let KDSpecialBuffs = {
 				id: "EnergyShield",
 				aura: "#ffffff",
 				aurasprite: "EnergyShield",
-				duration: 9999,
+				duration: 9999, infinite: true,
 				noAuraColor: true,
 				power: enemy.Enemy.maxhp * 0.25,
 				type: "MaxShield",
 			});
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "EnergyShield2",
-				duration: 9999,
+				duration: 9999, infinite: true,
 				power: 0.5,
 				type: "ShieldRegen",
 			});
@@ -4553,7 +4553,7 @@ let KDSpecialBuffs = {
 				id: "HealingAuraSBuff",
 				aura: "#ffffff",
 				aurasprite: "HealingAura",
-				duration: 9999,
+				duration: 9999, infinite: true,
 				noAuraColor: true,
 				power: 1,
 				events: [
@@ -4576,7 +4576,7 @@ let KDSpecialBuffs = {
 			else if (enemy.Enemy.tags?.elite) count = Math.max(count, 2);
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "Missiles",
-				duration: 9999,
+				duration: 9999, infinite: true,
 				power: count,
 				aura: "#ffffff",
 				aurasprite: "Missiles4",
@@ -4599,7 +4599,7 @@ let KDSpecialBuffs = {
 			let count = 2;
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "Airbender",
-				duration: 9999,
+				duration: 9999, infinite: true,
 				power: count,
 				aura: "#ffffff",
 				aurasprite: "Airbender1",
@@ -4620,7 +4620,7 @@ let KDSpecialBuffs = {
 		apply: (enemy, types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "ElectrifyX",
-				duration: 9999,
+				duration: 9999, infinite: true,
 				power: 1,
 				events: [
 					{trigger: "afterEnemyTick", type: "spellX", time: 4, spell: "WitchElectrify"},
@@ -4639,7 +4639,7 @@ let KDSpecialBuffs = {
 		apply: (enemy, types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "FireexpX",
-				duration: 9999,
+				duration: 9999, infinite: true,
 				power: 1,
 				events: [
 					{trigger: "afterEnemyTick", type: "spellX", time: 3, spell: "Fireexp"},
@@ -4657,7 +4657,7 @@ let KDSpecialBuffs = {
 		apply: (enemy, types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "VineexpX",
-				duration: 9999,
+				duration: 9999, infinite: true,
 				power: 1,
 				events: [
 					{trigger: "afterEnemyTick", type: "spellX", time: 3, spell: "Vineexp"},
@@ -4676,7 +4676,7 @@ let KDSpecialBuffs = {
 		apply: (enemy, types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "BubbleexpX",
-				duration: 9999,
+				duration: 9999, infinite: true,
 				power: 1,
 				events: [
 					{trigger: "afterEnemyTick", type: "spellX", time: 6, spell: "Bubbleexp"},
@@ -4694,7 +4694,7 @@ let KDSpecialBuffs = {
 		apply: (enemy, types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "IceexpX",
-				duration: 9999,
+				duration: 9999, infinite: true,
 				power: 1,
 				events: [
 					{trigger: "afterEnemyTick", type: "spellX", time: 6, spell: "Iceexp"},
@@ -4713,7 +4713,7 @@ let KDSpecialBuffs = {
 		apply: (enemy, types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "BearTrapper",
-				duration: 9999,
+				duration: 9999, infinite: true,
 				power: 1,
 				events: [
 					{trigger: "afterEnemyTick", type: "spellX", time: 8, spell: "BearTrap", always: true, count: 1},

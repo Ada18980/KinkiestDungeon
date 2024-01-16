@@ -1656,6 +1656,7 @@ interface KinkyDialogueTrigger {
 interface effectTile {
     x?: number,
     y?: number,
+    infinite?: boolean,
 	lightColor?: number,
 	//shadowColor?: number,
 	yoffset?: number,
@@ -1690,6 +1691,7 @@ interface effectTile {
 /** For spells */
 interface effectTileRef {
     name: string,
+    infinite?: boolean,
     duration?: number,
 	data?: any,
 	pauseDuration?: number,

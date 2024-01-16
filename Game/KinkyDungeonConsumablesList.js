@@ -97,7 +97,7 @@ let KDConsumableEffects = {
 				tile.duration = 0;
 				KDCreateEffectTile(tile.x, tile.y, {
 					name: tile.name + "Unlit",
-					duration: 9999,
+					duration: 9999, infinite: true,
 				}, 0);
 				KinkyDungeonAdvanceTime(1);
 				return;

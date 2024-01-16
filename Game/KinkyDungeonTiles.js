@@ -535,7 +535,7 @@ function KDUpdateEffectTiles(delta) {
 		for (let t of Object.entries(location)) {
 			if (t[1].pauseDuration > 0) {
 				t[1].pauseDuration -= delta;
-			} else {
+			} else if (!t[1].infinite) {
 				if (t[1].duration > 0 && t[1].duration < 9000) t[1].duration -= delta;
 			}
 			if (t[1].pauseDuration <= 0.001) t[1].pauseSprite = undefined;

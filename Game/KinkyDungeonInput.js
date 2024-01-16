@@ -718,7 +718,7 @@ function KDProcessInput(type, data) {
 					id: "AllySelect",
 					aura: "#ffffff",
 					aurasprite: "Select",
-					duration: 9999,
+					duration: 9999, infinite: true,
 					type: "Sel",
 					power: 1,
 				});
@@ -732,7 +732,7 @@ function KDProcessInput(type, data) {
 					id: "AllySelect",
 					aura: "#ffffff",
 					aurasprite: "Select",
-					duration: 9999,
+					duration: 9999, infinite: true,
 					type: "Sel",
 					power: 1,
 				});
@@ -844,7 +844,7 @@ function KDProcessInput(type, data) {
 						}
 					} else {
 						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
-							{id: "Tablet" + tile.Name, aura: KDGoddessColor(tile.Name), type: "event", duration: 9999, power: 2, player: true, enemies: false, maxCount: 3, tags: ["cast_" + tile.Name.toLowerCase(), "trigger_" + tile.Name.toLowerCase()], events: [
+							{id: "Tablet" + tile.Name, aura: KDGoddessColor(tile.Name), type: "event", duration: 9999, infinite: true, power: 2, player: true, enemies: false, maxCount: 3, tags: ["cast_" + tile.Name.toLowerCase(), "trigger_" + tile.Name.toLowerCase()], events: [
 								{trigger: "calcMana", type: "Tablet", requiredTag: tile.Name.toLowerCase(), power: 0.5},
 							]}
 						);

@@ -1278,7 +1278,7 @@ const KinkyDungeonRestraints = [
 
 	//region Cosplay
 	{inventory: true, name: "BindingDress", debris: "Fabric", inaccessible: true, remove: ["Cloth", "Bra", "Tops", "Bras"], Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#473488'], Group: "ItemArms",
-		Model: "ArmbinderSecure",
+		Model: "ArmbinderGwen",
 		Filters: {
 			"Straps":{"gamma":1,"saturation":0.08333333333333333,"contrast":0.7333333333333334,"brightness":1.25,"red":1.25,"green":0.6666666666666666,"blue":2.0833333333333335,"alpha":1},
 			"BinderStraps":{"gamma":1,"saturation":1,"contrast":0.6666666666666666,"brightness":2.5166666666666666,"red":1,"green":1,"blue":1,"alpha":1},
@@ -1295,10 +1295,29 @@ const KinkyDungeonRestraints = [
 			{Item: "PleatedSkirt", Group: "ClothLower", Color: ['#6B48E0'], override: true},
 			{Item: "SleevelessCatsuit", Group: "Suit", Color: ['#473488'], override: true},
 			{Item: "CatsuitPanties", Group: "SuitLower", Color: ['#473488'], override: true}],
+		forceOutfit: "Lingerie",
+		forceOutfitPriority: 1,
 		alwaysDressModel: [
 			{
 				Model: "BindingDress",
-				Filters: {"Skirt":{"gamma":1,"saturation":0.05,"contrast":1,"brightness":1.7166666666666666,"red":1,"green":1,"blue":1,"alpha":1}, SkirtBack: {"gamma":1,"saturation":0,"contrast":0.5700000000000001,"brightness":1,"red":0.5294117647058824,"green":0.35294117647058826,"blue":0.6470588235294118,"alpha":1}}
+				Filters: {
+					"Skirt":{"gamma":1,"saturation":0.05,"contrast":1,"brightness":1.7166666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+					SkirtBack: {"gamma":1,"saturation":0,"contrast":0.5700000000000001,"brightness":1,"red":0.5294117647058824,"green":0.35294117647058826,"blue":0.6470588235294118,"alpha":1}
+				},
+				factionFilters: {
+					Base: {override: true, color: "DarkNeutral"},
+					Hardware: {override: true, color: "Highlight"},
+					Stripes: {override: true, color: "LightNeutral"},
+					BraBase: {override: true, color: "DarkNeutral"},
+					BraStripes: {override: true, color: "DarkNeutral"},
+					BaseMetal: {override: false, color: "DarkNeutral"},
+					Crystal: {override: false, color: "Highlight"},
+					Skirt: {override: true, color: "LightNeutral"},
+					SkirtBack: {override: false, color: "DarkNeutral"},
+					Trim: {override: false, color: "Highlight"},
+					Lace: {override: false, color: "Highlight"},
+					Tie: {override: false, color: "Highlight"},
+				},
 			}
 		],
 		addPose: ["PreferWristtie"],
@@ -1438,18 +1457,35 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.2, "Cut": 0.2, "Remove": 0.15, "Pick": 0.07},
 		maxwill: 0.6, enemyTags: {"mikoRestraints" : 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Gags", "PlugGags"]},
 	{inventory: true, name: "MikoDress", debris: "Fabric", inaccessible: true, remove: ["Cloth", "Bra", "Tops", "Bras"], Type: "Strap", Asset: "LeatherArmbinder", strictness: 0.25, Color: ['#ffffff'], Group: "ItemArms", bindarms: true, bindhands: 1.0, power: 8, weight: 0, DefaultLock: "Blue",
-		Model: "JacketArmbinderSecure",
+		Model: "ArmbinderSmooth",
 		LinkableBy: [...KDDressLink], alwaysRender: true,
 		Filters: {
 			Arms: {"gamma":1,"saturation":1,"contrast":1,"brightness":3.2666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
 			BeltsArms: {"gamma":1,"saturation":0.06666666666666667,"contrast":1,"brightness":1,"red":2.816666666666667,"green":1,"blue":1,"alpha":1},
 			BeltsChest: {"gamma":1,"saturation":0.06666666666666667,"contrast":1,"brightness":1,"red":2.816666666666667,"green":1,"blue":1,"alpha":1},
 		},
+
+		forceOutfit: "Lingerie",
+		forceOutfitPriority: 1,
 		alwaysDressModel: [
 			{
 				Model: "BindingDress",
 				Filters: {SkirtBack: {"gamma":1,"saturation":0,"contrast":0.5700000000000001,"brightness":1,"red":0.5294117647058824,"green":0.35294117647058826,"blue":0.3570588235294118,"alpha":1},
-					"Skirt":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":0.6,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Stripes":{"gamma":1,"saturation":1,"contrast":0.6666666666666666,"brightness":2.5166666666666666,"red":1,"green":1,"blue":1,"alpha":1},"Crystal":{"gamma":1,"saturation":1,"contrast":0.6666666666666666,"brightness":0.7166666666666667,"red":3.433333333333333,"green":1,"blue":1,"alpha":1},"Base":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":1.6833333333333333,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Panties":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":1.7999999999999998,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Trim":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":2.0833333333333335,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Lace":{"gamma":1,"saturation":0.03333333333333333,"contrast":0.6666666666666666,"brightness":2.5166666666666666,"red":1,"green":1,"blue":1,"alpha":1}}
+					"Skirt":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":0.6,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Stripes":{"gamma":1,"saturation":1,"contrast":0.6666666666666666,"brightness":2.5166666666666666,"red":1,"green":1,"blue":1,"alpha":1},"Crystal":{"gamma":1,"saturation":1,"contrast":0.6666666666666666,"brightness":0.7166666666666667,"red":3.433333333333333,"green":1,"blue":1,"alpha":1},"Base":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":1.6833333333333333,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Panties":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":1.7999999999999998,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Trim":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":2.0833333333333335,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1},"Lace":{"gamma":1,"saturation":0.03333333333333333,"contrast":0.6666666666666666,"brightness":2.5166666666666666,"red":1,"green":1,"blue":1,"alpha":1}},
+				factionFilters: {
+					Base: {override: true, color: "DarkNeutral"},
+					Hardware: {override: true, color: "Highlight"},
+					Stripes: {override: true, color: "LightNeutral"},
+					BraBase: {override: true, color: "DarkNeutral"},
+					BraStripes: {override: true, color: "DarkNeutral"},
+					BaseMetal: {override: false, color: "DarkNeutral"},
+					Crystal: {override: false, color: "Highlight"},
+					Skirt: {override: true, color: "LightNeutral"},
+					SkirtBack: {override: false, color: "DarkNeutral"},
+					Trim: {override: false, color: "Highlight"},
+					Lace: {override: false, color: "Highlight"},
+					Tie: {override: false, color: "Highlight"},
+				},
 			}
 		],
 		value: 200,
@@ -1510,7 +1546,7 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "ExpBoots", debris: "Belts",  remove: ["Shoes"], inaccessible: true, Asset: "BalletWedges", Color: "#748395", Group: "ItemBoots", LinkableBy: ["Wrapping", "Encase",], power: 8, weight: 0, escapeChance: {"Struggle": -0.25, "Cut": 0.0, "Remove": 0.07, "Pick": 0.25},
 		Model: "ShinyBalletHeelsRestraint",
 		heelpower: 1.25,
-		maxwill: 0.9, enemyTags: {"expRestraints" : 6, "latexBoots" : 3, "blacksteelrestraints":10}, playerTags: {}, minLevel: 2, allFloors: true, shrine: ["Metal", "Boots"]},
+		maxwill: 0.9, enemyTags: {"expRestraints" : 6, "latexBoots" : 3, "blacksteelrestraints":10}, playerTags: {}, minLevel: 2, allFloors: true, shrine: ["Latex", "Boots"]},
 	//endregion
 
 	// TODO AlwaysDebris
@@ -2851,8 +2887,8 @@ const KinkyDungeonRestraints = [
 					"ShoeRight":{"gamma":1,"saturation":0,"contrast":1,"brightness":0.18333333333333335,"red":1.2,"green":1,"blue":1,"alpha":1}},
 				"factionFilters":
 				{
-					ShoeLeft: {color: "LightNeutral", override: true},
-					ShoeRight: {color: "LightNeutral", override: true},
+					ShoeLeft: {color: "DarkNeutral", override: true},
+					ShoeRight: {color: "DarkNeutral", override: true},
 				},
 				"inheritFilters":false},{"Model":"LaceBra","Group":"LaceBra","override":true,"Filters":
 				{
@@ -2886,8 +2922,8 @@ const KinkyDungeonRestraints = [
 				},"factionFilters":
 
 				{
-					SockRight: {color: "DarkNeutral", override: true},
-					SockLeft: {color: "DarkNeutral", override: true},
+					SockRight: {color: "LightNeutral", override: true},
+					SockLeft: {color: "LightNeutral", override: true},
 				},
 			"inheritFilters":false},{"Model":"LeatherGloves","Group":"LeatherGloves","override":true,"Filters":
 				{
@@ -2918,12 +2954,11 @@ const KinkyDungeonRestraints = [
 				{
 					CorsetBust: {color: "LightNeutral", override: true},
 					RuffleBust: {color: "Highlight", override: true},
-					Corset: {color: "LightNeutral", override: true},
+					Corset: {color: "Highlight", override: true},
 					Ruffle: {color: "Highlight", override: true},
 				},
-			"inheritFilters":false},{"Model":"DressBlouseBust","Group":"DressBlouseBust","override":true,"Filters":
+			"inheritFilters":false},{"Model":"DressBlouseBustCropped","Group":"DressBlouseBust","override":true,"Filters":
 				{
-					"BlouseSkirt":{"gamma":1,"saturation":0,"contrast":1,"brightness":0.18333333333333335,"red":1.2,"green":1,"blue":1,"alpha":1},
 					"Neck":{"gamma":1,"saturation":0,"contrast":1,"brightness":0.18333333333333335,"red":1.2,"green":1,"blue":1,"alpha":1},
 					"Collar":{"gamma":1.9,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.1,"alpha":1},
 					"Blouse":{"gamma":1.9,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.1,"alpha":1}
@@ -2932,9 +2967,16 @@ const KinkyDungeonRestraints = [
 				{
 					Blouse: {color: "DarkNeutral", override: true},
 					Collar: {color: "LightNeutral", override: true},
-					BlouseSkirt: {color: "DarkNeutral", override: true},
 					Neck: {color: "DarkNeutral", override: true},
 				},
+			"inheritFilters":false},{"Model":"BlouseSkirt","Group":"DressBlouseBust","override":true,"Filters":
+			{
+				"BlouseSkirt":{"gamma":1,"saturation":0,"contrast":1,"brightness":0.18333333333333335,"red":1.2,"green":1,"blue":1,"alpha":1},
+			},"factionFilters":
+
+			{
+				BlouseSkirt: {color: "DarkNeutral", override: true},
+			},
 			"inheritFilters":false},{"Model":"WitchBlouse","Group":"WitchBlouse","override":true,"Filters":
 				{
 					"BlouseLeft":{"gamma":1,"saturation":0,"contrast":1,"brightness":0.18333333333333335,"red":1.2,"green":1,"blue":1,"alpha":1},
@@ -2958,8 +3000,8 @@ const KinkyDungeonRestraints = [
 					"RibbonBack":{"gamma":1.9,"saturation":0,"contrast":1,"brightness":1.5666666666666669,"red":1,"green":1,"blue":1.1,"alpha":1}
 				},"factionFilters":
 				{
-					RibbonBelt: {color: "LightNeutral", override: true},
-					RibbonBack: {color: "LightNeutral", override: true},
+					RibbonBelt: {color: "Highlight", override: true},
+					RibbonBack: {color: "Highlight", override: true},
 				},
 			"inheritFilters":false}],
 		maxwill: 0.3, enemyTags: {"maidRestraints":3, "maidRestraintsHeavy":14, "maidRestraintsNonChastity": 5},

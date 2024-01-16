@@ -56,6 +56,7 @@ let KDWardrobeCategories = [
 	"FashionRestraints",
 	"Toys",
 	"Body",
+	"Weapon",
 ];
 
 if (TestMode) KDWardrobeCategories.push("Restraints");
@@ -638,12 +639,13 @@ function KDUpdateModelList(level = 0) {
 
 /** Call BEFORE making any changes */
 function KDChangeWardrobe(C) {
-	try {
-		if (!KDOriginalValue)
-			KDOriginalValue = LZString.compressToBase64(CharacterAppearanceStringify(C));
-	} catch (e) {
-		// Fail
-	}
+	if (C == KinkyDungeonPlayer)
+		try {
+			if (!KDOriginalValue)
+				KDOriginalValue = LZString.compressToBase64(CharacterAppearanceStringify(C));
+		} catch (e) {
+			// Fail
+		}
 	UpdateModels(C);
 }
 
@@ -1015,13 +1017,16 @@ function KDDrawWardrobe(screen, Character) {
 			CharacterReleaseTotal(C);
 			CharacterNaked(C);
 			KinkyDungeonCheckClothesLoss = true;
-			if (KinkyDungeonCurrentDress == "Bikini")
+			if (KinkyDungeonCurrentDress != "Bikini")
 				KinkyDungeonSetDress("Bikini", "Bikini", C, true);
 			else
 				KinkyDungeonSetDress("None", "None", C, true);
 			KinkyDungeonDressPlayer(C, true);
-			KDInitProtectedGroups(KinkyDungeonPlayer);
-			KinkyDungeonConfigAppearance = true;
+			if (C == KinkyDungeonPlayer) {
+				KDInitProtectedGroups(C);
+				KinkyDungeonConfigAppearance = true;
+			}
+
 			KinkyDungeonReplaceConfirm = 0;
 			return true;
 		} else {

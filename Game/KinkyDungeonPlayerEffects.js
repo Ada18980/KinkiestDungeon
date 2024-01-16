@@ -52,7 +52,7 @@ let KDPlayerEffects = {
 				],
 				aura: "#ffffff",
 				aurasprite: "Null",
-				duration: 9999,});
+				duration: 9999, infinite: true,});
 		return {sfx: "Evil", effect: true};
 	},
 	"ObserverBeam": (target, damage, playerEffect, spell, faction, bullet, entity) => {
@@ -73,7 +73,7 @@ let KDPlayerEffects = {
 						],
 						aura: "#4488ff",
 						aurasprite: "Null",
-						duration: 9999,});
+						duration: 9999, infinite: true,});
 
 				KinkyDungeonSendTextMessage(3, TextGet("KDObserverCurseApply").KDReplaceOrAddDmg(dmg.string), "#ff5555", 1);
 				return {sfx: "Evil", effect: true};

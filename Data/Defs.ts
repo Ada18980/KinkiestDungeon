@@ -1,4 +1,5 @@
 let LAYERS_BASE = [
+	"Weapon",
 	"FurnitureFront",
 
 	// These are in front b/c the collar acc goes over the leash for visibility
@@ -223,6 +224,7 @@ let LAYERS_BASE = [
 
 	"WrappingLegsOver",
 	"LegbinderLegsOver",
+	"PetsuitLegs",
 
 	"WrappingTorsoUnder",// For skintight stuff
 
@@ -428,6 +430,7 @@ let LAYERS_BASE = [
 	"HatBack",
 
 	"Tail",
+	"Wings",
 	"Cape",
 
 	"FurnitureBackLinked",
@@ -547,6 +550,61 @@ let LayerGroups = {
 	// endregion
 
 	// region armor
+	"Petsuit": ToMap([
+		"AnklesOver",
+		"Ankles",
+		"Ankles3",
+		"Ankles2",
+		"Ankles1",
+		"AnkleLeft",
+		"AnkleRight",
+		"AnkleLeftOver",
+		"AnkleRightOver",
+		"BindFeet",
+		"OverShoes",
+		"ShoeLeftUnder",
+		"ShoeRightUnder",
+		"WrappingLegsUnder",
+		"WrappingLegsRight",
+	]),
+	"Legbinder": ToMap([
+		"AnklesOver",
+		"Ankles",
+		"Ankles3",
+		"Ankles2",
+		"Ankles1",
+		"AnkleLeft",
+		"AnkleRight",
+		"AnkleLeftOver",
+		"AnkleRightOver",
+		"BindFeet",
+		"OverShoes",
+		"ShoeLeftUnder",
+		"ShoeRightUnder",
+		"WrappingLegsUnder",
+		"WrappingLegsRight",
+		"PetsuitLegs",
+	]),
+	"SlimeThighs": ToMap([
+		"AnklesOver",
+		"Ankles",
+		"Ankles3",
+		"Ankles2",
+		"Ankles1",
+		"AnkleLeft",
+		"AnkleRight",
+		"AnkleLeftOver",
+		"AnkleRightOver",
+		"BindFeet",
+		"OverShoes",
+		"ShoeLeftUnder",
+		"ShoeRightUnder",
+		"WrappingLegsUnder",
+		"WrappingLegsRight",
+		"LegbinderLegsOver",
+		"LegbinderAnklesOver",
+		"PetsuitLegs",
+	]),
 	"Boots": ToMap([
 		"AnklesOver",
 		"Ankles",
@@ -585,11 +643,9 @@ let LayerGroups = {
 		"OverSocks",
 		"FootLeft",
 		"StockingLeft",
-		"FootLeft",
 		"LegLeft",
 		"FootRight",
 		"StockingRight",
-		"FootRight",
 		"LegRight",
 		"ShoeLeftUnder",
 		"ShoeRightUnder",
@@ -1345,6 +1401,8 @@ let LayerGroups = {
 	// Skirts that dont follow shilhouette
 	"WrappingLegsOver2",
 	"LegbinderLegsOver2",
+	"WrappingLegsOver",
+	"LegbinderLegsOver",
 	"OverSkirtDeco",
 	"OverSkirt",
 	"Greaves",
@@ -1364,6 +1422,7 @@ let LayerGroups = {
 
 	"WrappingLegsOver",
 	"LegbinderLegsOver",
+	"PetsuitLegs",
 	"WrappingAnklesOver",
 	"LegbinderAnklesOver",
 

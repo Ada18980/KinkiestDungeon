@@ -553,7 +553,7 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					undefined
 					: {tint: 0x888888, blendMode: PIXI.BLEND_MODES.SCREEN};
 
-				let spr = KDDraw(kdgamesound, kdpixisprites, "spr_sound_" + enemy.id, KinkyDungeonRootDirectory + "Enemies/" + sprite + ".png",
+				let spr = KDDraw(kdgamesound, kdpixisprites, "spr_sound_" + enemy.id, KinkyDungeonRootDirectory + (KDBoundEffects(enemy) > 3 ? "EnemiesBound/" : "Enemies/") + sprite + ".png",
 					(tx + (enemy.offX || 0) - CamX + (enemy.flip ? 1 : 0))*KinkyDungeonGridSizeDisplay - (w - KinkyDungeonGridSizeDisplay)/2,
 					(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
 					w, h, undefined, o);
@@ -1041,7 +1041,7 @@ function KinkyDungeonBarTo(canvas, x, y, w, h, value, foreground = "#66FF66", ba
 			Left: reverse ? Math.max(
 				Math.floor(x - 2 + w - (w - 4) * orig / 100),
 				Math.floor(x - 2 + w - (w - 4) * value / 100)
-			) : Math.min(
+			) - Math.floor((w - 4) * Math.abs(value - orig) / 100): Math.min(
 				Math.floor(x + 2 + (w - 4) * orig / 100),
 				Math.floor(x + 2 + (w - 4) * value / 100)
 			),
@@ -3623,7 +3623,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		if (AIData.playChance < 0.1) AIData.playChance = 0.1;
 		else AIData.playChance = 0.9;
 	}
-	let aware = (enemy.vp > sneakThreshold || enemy.aware);
+	let aware = (enemy.vp > sneakThreshold || (enemy.aware && (!player.player || enemy.vp > 0.5)));
 
 	let playData = {
 		playChance: AIData.playChance,
@@ -3996,7 +3996,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 			// Also if the enemy is supposed to go to the player (goal x and y are same as players) and the enemy can see, it just does it
 			// Party members get a free pass too on sight
-			if (player && ((enemy.aware && AIData.canSensePlayer) || KDIsInParty(enemy)) && enemy.gx == player.x && enemy.gy == player.y) {
+			if (player && ((enemy.aware && (!player.player || enemy.vp > 0.5) && AIData.canSensePlayer) || KDIsInParty(enemy)) && enemy.gx == player.x && enemy.gy == player.y) {
 				AIData.moveTowardPlayer = true;
 			}
 
@@ -4111,7 +4111,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						enemy.gy = player.y;
 					}
 				} else if (!AIData.canSensePlayer) {
-					if (enemy.aware && KinkyDungeonAggressive(enemy, player)) {
+					if (enemy.aware && (!player.player || enemy.vp > 0.5) && KinkyDungeonAggressive(enemy, player)) {
 						enemy.path = null;
 					}
 					enemy.aware = false;
@@ -4274,7 +4274,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	let canAttack = !(enemy.disarm > 0)
 		&& AIData.wantsToAttack
 		&& (!player?.player || !enemy.Enemy.followLeashedOnly || KDPlayerDeservesPunishment(enemy, player) || KDGameData.KinkyDungeonLeashedPlayer < 1 || KinkyDungeonLeashingEnemy()?.id == enemy.id || KinkyDungeonFlags.get("overrideleashprotection"))
-		&& (enemy.warningTiles.length > 0 || (enemy.aware && KDCanDetect(enemy, player)) || (!KDAllied(enemy) && !AIData.hostile))
+		&& (enemy.warningTiles.length > 0 || (enemy.aware && (!player.player || enemy.vp > 0.25) && KDCanDetect(enemy, player)) || (!KDAllied(enemy) && !AIData.hostile))
 		&& !AIData.ignore
 		&& (!minRange || (AIData.playerDist > minRange))
 		&& (AIData.attack.includes("Melee") || (enemy.Enemy.tags && AIData.leashing && !KinkyDungeonHasWill(0.1)))
@@ -5133,7 +5133,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		&& (!enemy.Enemy.noSpellLeashing || KinkyDungeonLeashingEnemy()?.id != enemy.id || KDGameData.KinkyDungeonLeashedPlayer < 1)
 		&& (!enemy.Enemy.followLeashedOnly || (KDGameData.KinkyDungeonLeashedPlayer < 1 || KinkyDungeonLeashingEnemy()?.id == enemy.id))
 		&& (AIData.hostile || (!player.player && (KDHostile(player) || enemy.rage)))
-		&& ((enemy.aware && (KDCanDetect(enemy, player))) || (!KDAllied(enemy) && !AIData.hostile))
+		&& ((enemy.aware && (!player.player || enemy.vp > 0.5) && (KDCanDetect(enemy, player))) || (!KDAllied(enemy) && !AIData.hostile))
 		&& !AIData.ignore && (!AIData.moved || enemy.Enemy.castWhileMoving) && enemy.Enemy.attack.includes("Spell")
 		&& !AIData.ignoreRanged
 		&& AIType.spell(enemy, player, AIData)
@@ -5728,15 +5728,17 @@ function KDDash(enemy, player, MovableTiles) {
 
 function KinkyDungeonSendEnemyEvent(Event, data) {
 	if (!KDMapHasEvent(KDEventMapEnemy, Event)) return;
-	for (let enemy of KDMapData.Entities) {
-		if (enemy.Enemy.events) {
-			for (let e of enemy.Enemy.events) {
-				if (e.trigger === Event) {
-					KinkyDungeonHandleEnemyEvent(Event, e, enemy, data);
+	KDGetEnemyCache();
+	if (KDEnemyEventCache.get(Event))
+		for (let enemy of KDMapData.Entities) {
+			if (enemy.Enemy.events && KDEnemyEventCache.get(Event).get(enemy.id)) {
+				for (let e of enemy.Enemy.events) {
+					if (e.trigger === Event) {
+						KinkyDungeonHandleEnemyEvent(Event, e, enemy, data);
+					}
 				}
 			}
 		}
-	}
 }
 
 
@@ -6138,7 +6140,7 @@ function KDGetAwareTooltip(enemy) {
 		suff: "Talking",
 		color: "#ffffff",
 	};
-	if (enemy.aware) {
+	if (enemy.aware && enemy.vp > 0.5) {
 		if (KDHostile(enemy)) {
 			if (enemy.ignore) return {
 				suff: "AwareIgnore",
@@ -6940,7 +6942,7 @@ function KDMakeHighValue(enemy) {
 		id: "HighValue",
 		type: "MoveSpeed",
 		power: 0.1,
-		duration: 9999,
+		duration: 9999, infinite: true,
 	});
 
 	// Hitpoint bonuses
@@ -6956,7 +6958,7 @@ function KDMakeHighValue(enemy) {
 			id: "HighValue_MS",
 			type: "MoveSpeed",
 			power: 0.1 * Math.ceil(KDRandom()*10),
-			duration: 9999,
+			duration: 9999, infinite: true,
 		});
 	}
 
@@ -6966,7 +6968,7 @@ function KDMakeHighValue(enemy) {
 			id: "HighValue_AS",
 			type: "AttackSpeed",
 			power: 0.1 * Math.ceil(KDRandom()*10),
-			duration: 9999,
+			duration: 9999, infinite: true,
 		});
 	}
 

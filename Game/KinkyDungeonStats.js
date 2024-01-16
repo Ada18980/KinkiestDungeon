@@ -1324,7 +1324,7 @@ function KinkyDungeonUpdateStats(delta) {
 		minKneel = 1;
 	}
 
-	if (KDGameData.KneelTurns > 0 && !KDGameData.Crouch && (kneelRate < baseRate || minKneel > 0)) {
+	if (KDGameData.KneelTurns > 0 && !KDForcedToGround() && !KDGameData.Crouch && (kneelRate < baseRate || minKneel > 0)) {
 		if (KinkyDungeonHasHelp()) {
 			kneelRate = baseRate;
 			if (minKneel > 0) {
@@ -1919,7 +1919,7 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 		satisfaction: KinkyDungeonStatDistraction,
 		distractionCooldown: Math.max(KDGameData.DistractionCooldown, 13),
 		cancelOrgasm: false,
-		lowerFloorTo: Math.max(0, KinkyDungeonStatDistractionLower * 0.6 - 1),
+		lowerFloorTo: Math.max(0, KinkyDungeonStatDistractionLower * (1 - 0.1 * KDGameData.OrgasmStage/KinkyDungeonMaxOrgasmStage) - KinkyDungeonStatDistractionMax*0.25),
 	};
 
 	KinkyDungeonSendEvent("tryOrgasm", data);
