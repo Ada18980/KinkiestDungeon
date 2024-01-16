@@ -219,7 +219,7 @@ AddModel({
 
 		},
 		{ Name: "CrotchStrap", Layer: "HarnessMid", Pri: -105.1,
-			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			Invariant: true,
 			InheritColor: "Ribbon",
 		},

@@ -1,4 +1,5 @@
 let LAYERS_BASE = [
+	"Weapon",
 	"FurnitureFront",
 
 	// These are in front b/c the collar acc goes over the leash for visibility
@@ -192,6 +193,8 @@ let LAYERS_BASE = [
 	// For form-fitting stuff that nonetheless goes over a shirt
 	"Bustier",
 
+	"ShirtOver",
+
 	// Skirt part that goes in front of corsets, shirts, etc
 	"SkirtOverDeco",
 	"SkirtOver",
@@ -221,6 +224,7 @@ let LAYERS_BASE = [
 
 	"WrappingLegsOver",
 	"LegbinderLegsOver",
+	"PetsuitLegs",
 
 	"WrappingTorsoUnder",// For skintight stuff
 
@@ -245,6 +249,7 @@ let LAYERS_BASE = [
 	"AnkleLeftOver",
 	"AnkleLeft",
 
+	"WrappingLegs2",
 	"WrappingLegs",
 
 	"PantsAccLeft",
@@ -269,6 +274,10 @@ let LAYERS_BASE = [
 	"FootLeft",
 	"LegLeft",
 
+	// Lower harness
+	"HarnessLower",
+	"CrotchPanelLower",
+
 	"WrappingTorso",
 	"OverCrotchStrap",
 
@@ -283,9 +292,6 @@ let LAYERS_BASE = [
 	"Bodysuit",
 
 	"ChastityBelt",
-	// Lower harness
-	"HarnessLower",
-	"CrotchPanelLower",
 
 
 
@@ -374,6 +380,7 @@ let LAYERS_BASE = [
 	"FootRight",
 	"LegRight",
 	"ShoulderLeft",
+	"UpSleeveRight",
 	"ShoulderRight",
 	"TorsoUpper",
 	"Butt",
@@ -423,6 +430,7 @@ let LAYERS_BASE = [
 	"HatBack",
 
 	"Tail",
+	"Wings",
 	"Cape",
 
 	"FurnitureBackLinked",
@@ -435,16 +443,26 @@ let LayerGroups = {
 	"Breastplate": ToMap([
 		"Chest",
 		"Shirt",
+		"ShirtOver",
 	]),
 	"ChestBinding": ToMap([
 		"Chest",
 		//"Shirt",
+		//"ShirtOver",
 	]),
 	"TopBinding": ToMap([
 		"Shirt",
+		"ShirtOver",
 	]),
 	"CrotchRope": ToMap([
 		"HarnessLower",
+	]),
+	ButtSleeves: ToMap([
+		"SleeveLeft",
+		"SleeveDecoLeft",
+		"SleeveRight",
+		"SleeveDecoRight",
+		"BeltBack",
 	]),
 	BustierPoses: ToMap([
 		"Bustier",
@@ -452,6 +470,26 @@ let LayerGroups = {
 		"CorsetLiner",
 		"HarnessLower",
 		"HarnessMid",
+		"ChastityBelt",
+		"Option_ChastityBelt",
+		"Panties",
+		"CrotchPanelMid",
+		"Bodysuit",
+		//"Skirt",
+		//"WrappingTorsoMid",
+	]),
+	BustierPoses2: ToMap([
+		"Bustier",
+		"Corset",
+		"CorsetLiner",
+		"HarnessLower",
+		"HarnessMid",
+		"ChastityBelt",
+		"Option_ChastityBelt",
+		"Panties",
+		"CrotchPanelMid",
+		"Bodysuit",
+		"WrappingTorsoMid",
 	]),
 
 	// region slime
@@ -512,6 +550,61 @@ let LayerGroups = {
 	// endregion
 
 	// region armor
+	"Petsuit": ToMap([
+		"AnklesOver",
+		"Ankles",
+		"Ankles3",
+		"Ankles2",
+		"Ankles1",
+		"AnkleLeft",
+		"AnkleRight",
+		"AnkleLeftOver",
+		"AnkleRightOver",
+		"BindFeet",
+		"OverShoes",
+		"ShoeLeftUnder",
+		"ShoeRightUnder",
+		"WrappingLegsUnder",
+		"WrappingLegsRight",
+	]),
+	"Legbinder": ToMap([
+		"AnklesOver",
+		"Ankles",
+		"Ankles3",
+		"Ankles2",
+		"Ankles1",
+		"AnkleLeft",
+		"AnkleRight",
+		"AnkleLeftOver",
+		"AnkleRightOver",
+		"BindFeet",
+		"OverShoes",
+		"ShoeLeftUnder",
+		"ShoeRightUnder",
+		"WrappingLegsUnder",
+		"WrappingLegsRight",
+		"PetsuitLegs",
+	]),
+	"SlimeThighs": ToMap([
+		"AnklesOver",
+		"Ankles",
+		"Ankles3",
+		"Ankles2",
+		"Ankles1",
+		"AnkleLeft",
+		"AnkleRight",
+		"AnkleLeftOver",
+		"AnkleRightOver",
+		"BindFeet",
+		"OverShoes",
+		"ShoeLeftUnder",
+		"ShoeRightUnder",
+		"WrappingLegsUnder",
+		"WrappingLegsRight",
+		"LegbinderLegsOver",
+		"LegbinderAnklesOver",
+		"PetsuitLegs",
+	]),
 	"Boots": ToMap([
 		"AnklesOver",
 		"Ankles",
@@ -550,11 +643,9 @@ let LayerGroups = {
 		"OverSocks",
 		"FootLeft",
 		"StockingLeft",
-		"FootLeft",
 		"LegLeft",
 		"FootRight",
 		"StockingRight",
-		"FootRight",
 		"LegRight",
 		"ShoeLeftUnder",
 		"ShoeRightUnder",
@@ -604,6 +695,7 @@ let LayerGroups = {
 		"SleeveDecoLeft",
 		"SleeveRight",
 		"SleeveDecoRight",
+		"UpSleeveRight",
 		"ArmLeft",
 		"ArmRight",
 		//"TorsoUpper",
@@ -623,10 +715,12 @@ let LayerGroups = {
 	]),
 	"ArmsAll": ToMap([
 		"Shirt",
+		"ShirtOver",
 		"SleeveLeft",
 		"SleeveDecoLeft",
 		"SleeveRight",
 		"SleeveDecoRight",
+		"UpSleeveRight",
 		"ArmLeft",
 		"ArmRight",
 		"TorsoUpper",
@@ -697,10 +791,12 @@ let LayerGroups = {
 		"HarnessLower",
 
 		"Shirt",
+		"ShirtOver",
 		"SleeveLeft",
 		"SleeveDecoLeft",
 		"SleeveRight",
 		"SleeveDecoRight",
+		"UpSleeveRight",
 		"ArmLeft",
 		"ArmRight",
 		"TorsoUpper",
@@ -772,10 +868,12 @@ let LayerGroups = {
 	// Region rope
 	"Rope1": ToMap([
 		"Shirt",
+		"ShirtOver",
 		"SleeveLeft",
 		"SleeveDecoLeft",
 		"SleeveRight",
 		"SleeveDecoRight",
+		"UpSleeveRight",
 		"ArmLeft",
 		"ArmRight",
 		"TorsoUpper",
@@ -789,6 +887,7 @@ let LayerGroups = {
 	]),
 	"RopeTorso": ToMap([
 		"Shirt",
+		"ShirtOver",
 		"CorsetLiner",
 		// Skirts that dont follow shilhouette and are puffy
 		"SkirtOverDeco",
@@ -819,6 +918,7 @@ let LayerGroups = {
 	]),
 	"CorsetTorso": ToMap([
 		"Shirt",
+		"ShirtOver",
 		"CorsetLiner",
 		// Skirts that dont follow shilhouette and are puffy
 		"SkirtOverDeco",
@@ -984,10 +1084,12 @@ let LayerGroups = {
 	// Region Ribbon
 	"Ribbon1": ToMap([
 		"Shirt",
+		"ShirtOver",
 		"SleeveLeft",
 		"SleeveDecoLeft",
 		"SleeveRight",
 		"SleeveDecoRight",
+		"UpSleeveRight",
 		"ArmLeft",
 		"ArmRight",
 		"TorsoUpper",
@@ -1001,6 +1103,7 @@ let LayerGroups = {
 	]),
 	"RibbonTorso": ToMap([
 		"Shirt",
+		"ShirtOver",
 		"CorsetLiner",
 		// Skirts that dont follow shilhouette and are puffy
 		"SkirtOverDeco",
@@ -1175,6 +1278,7 @@ let LayerGroups = {
 
 	"Yoke": ToMap([
 		"Shirt",
+		"ShirtOver",
 		"MittenLeft",
 		"MittenRight",
 		"GloveLeft",
@@ -1183,12 +1287,14 @@ let LayerGroups = {
 		"SleeveDecoLeft",
 		"SleeveRight",
 		"SleeveDecoRight",
+		"UpSleeveRight",
 		"ArmLeft",
 		"ArmRight",
 	]),
 	"Cuffs": ToMap([
 		// Affect clothes only not skintight
 		"Shirt",
+		"ShirtOver",
 		//"MittenLeft",
 		//"MittenRight",
 		//"GloveLeft",
@@ -1197,6 +1303,7 @@ let LayerGroups = {
 		"SleeveDecoLeft",
 		"SleeveRight",
 		"SleeveDecoRight",
+		"UpSleeveRight",
 		//"ArmLeft",
 		//"ArmRight",
 	]),
@@ -1294,6 +1401,8 @@ let LayerGroups = {
 	// Skirts that dont follow shilhouette
 	"WrappingLegsOver2",
 	"LegbinderLegsOver2",
+	"WrappingLegsOver",
+	"LegbinderLegsOver",
 	"OverSkirtDeco",
 	"OverSkirt",
 	"Greaves",
@@ -1303,6 +1412,7 @@ let LayerGroups = {
 	// For form-fitting stuff that nonetheless goes over a shirt
 	"Bustier",
 	"Shirt",
+	"ShirtOver",
 
 	"WrappingTorsoUnder", // For skintight stuff
 
@@ -1312,6 +1422,7 @@ let LayerGroups = {
 
 	"WrappingLegsOver",
 	"LegbinderLegsOver",
+	"PetsuitLegs",
 	"WrappingAnklesOver",
 	"LegbinderAnklesOver",
 
@@ -1332,6 +1443,7 @@ let LayerGroups = {
 	"ThighRightOver",
 	"AnkleRightOver",
 
+	"WrappingLegs2",
 	"WrappingLegs",
 	"WrappingLegsUnder",
 
@@ -1369,6 +1481,7 @@ let LayerGroups = {
 	"SleeveDecoLeft",
 	"SleeveLeft",
 	"SuitChestOver",
+	"UpSleeveRight",
 
 	// Right Shoes
 	"ShoeRightOver",

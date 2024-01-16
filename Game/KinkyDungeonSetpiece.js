@@ -865,7 +865,7 @@ function KDTorch(X, Y, altType, MapParams) {
 	let torchreplace = (altType && altType.torchreplace) ? altType.torchreplace : (MapParams.torchreplace ? MapParams.torchreplace : null);
 	KDCreateEffectTile(X, Y + 1, {
 		name: torchreplace?.sprite ? torchreplace.sprite : "Torch",
-		duration: 9999,
+		duration: 9999, infinite: true,
 	}, 0);
 	// Create dummy tile to prevent replace at worldgen
 	if (!KinkyDungeonTilesGet(X + "," + Y))
@@ -876,7 +876,7 @@ function KDTorchUnlit(X, Y, altType, MapParams) {
 	let torchreplace = (altType && altType.torchreplace) ? altType.torchreplace : (MapParams.torchreplace ? MapParams.torchreplace : null);
 	KDCreateEffectTile(X, Y + 1, {
 		name: torchreplace?.unlitsprite ? torchreplace.unlitsprite : "TorchUnlit",
-		duration: 9999,
+		duration: 9999, infinite: true,
 	}, 0);
 	// Create dummy tile to prevent replace at worldgen
 	if (!KinkyDungeonTilesGet(X + "," + Y))
@@ -1024,14 +1024,14 @@ function KDAddPipes(pipechance, pipelatexchance, thinlatexchance, heavylatexspre
 								if (KinkyDungeonMapGet(XX, YY) == '0' && KDRandom() < heavylatexspreadchance) {
 									KDCreateEffectTile(x, y + 1, {
 										name: "LatexThin",
-										duration: 9999,
+										duration: 9999, infinite: true,
 									}, 0);
 								}
 							}
 					}
 					KDCreateEffectTile(x, y + 1, {
 						name: name,
-						duration: 9999,
+						duration: 9999, infinite: true,
 					}, 0);
 				}
 			}

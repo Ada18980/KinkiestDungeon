@@ -328,14 +328,27 @@ function KDGetItemType(item) {
 
 function KinkyDungeonDrawItems(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 	let sprite = null;
+	let counts = {};
+	let max = 10;
 	for (let item of KDMapData.GroundItems) {
 		//if (KinkyDungeonGetRestraintByName(item.name)) sprite = "Restraint";
 		if (item.x >= CamX && item.y >= CamY && item.x < CamX + KinkyDungeonGridWidthDisplay && item.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(item.x, item.y) > 0) {
-			sprite = KDGetItemPreview({name: item.name, type: KDGetItemType(item)})?.preview || (KinkyDungeonRootDirectory + "Items/" + item.name + ".png");
-			if (KDCanSeeDroppedItem(item))
+			let scale = 0.5;
+			if (KDRestraint({name: item.name}) && !KDRestraint({name: item.name}).armor) {
+				sprite = KinkyDungeonRootDirectory + "Items/Restraint.png";
+				scale = 1;
+			}
+			else sprite = KDGetItemPreview({name: item.name, type: KDGetItemType(item)})?.preview || (KinkyDungeonRootDirectory + "Items/" + item.name + ".png");
+			if (KDCanSeeDroppedItem(item)) {
 				KDDraw(kditemsboard, kdpixisprites, item.x + "," + item.y + "_" + item.name, sprite,
-					(item.x - CamX)*KinkyDungeonGridSizeDisplay, (item.y - CamY)*KinkyDungeonGridSizeDisplay,
-					KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
+					(item.x - CamX + ((0.25/max) * (counts[item.x + ',' + item.y] || 0)))*KinkyDungeonGridSizeDisplay, (item.y - CamY + (1 - scale))*KinkyDungeonGridSizeDisplay,
+					KinkyDungeonGridSizeDisplay*scale, KinkyDungeonGridSizeDisplay*scale);
+				if (!counts[item.x + ',' + item.y]) {
+					counts[item.x + ',' + item.y] = 0;
+				}
+				if (counts[item.x + ',' + item.y] < max)
+					counts[item.x + ',' + item.y] += 1;
+			}
 		}
 	}
 }

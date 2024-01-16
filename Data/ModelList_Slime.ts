@@ -127,7 +127,7 @@ AddModel({
 	},
 	Layers: ToLayerMap([
 		{ Name: "TorsoLower", Layer: "WrappingTorsoMid", Pri: 54,
-			SwapLayerPose: {Kneel: "WrappingTorso", KneelClosed: "WrappingTorso"},
+			//swaplayerpose: {Kneel: "WrappingTorso", KneelClosed: "WrappingTorso"},
 			Invariant: true,
 			ApplyFilterToLayerGroup: ToMap(["SlimeTorsoLower"]),
 			InheritColor: "Slime",
@@ -152,7 +152,7 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
-		{ Name: "LegLeft", Layer: "WrappingLegsOver", Pri: 50,
+		{ Name: "LegLeft", Layer: "WrappingLegsOver2", Pri: 50,
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			ApplyFilterToLayerGroup: ToMap(["SlimeLegs"]),
@@ -161,9 +161,12 @@ AddModel({
 			AddPriWithPose: {
 				ItemLegsRubberOver: 45,
 			},
+			DisplaceAmount: 100,
+			DisplaceLayers: ToMap(["SlimeThighs"]),
+			DisplacementSprite: "SlimeThighs",
 		},
-		{ Name: "LegRight", Layer: "WrappingLegsOver", Pri: 50,
-			SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
+		{ Name: "LegRight", Layer: "WrappingLegsOver2", Pri: 50,
+			//SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			ApplyFilterToLayerGroup: ToMap(["SlimeLegs"]),
@@ -211,6 +214,7 @@ AddModel({
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes"]),
+			SwapLayerPose: {Kneel: "WrappingLegsOver", KneelClosed: "WrappingLegsOver"},
 			InheritColor: "Slime",
 			HideWhenOverridden: true,
 			AddPriWithPose: {

@@ -23,11 +23,48 @@ Monk class?
 - Passive: enchantments apply to unarmed strikes
 - Active: Increase unarmed base damage for 20 turns. After using, need to meditate 10 turns to recharge. Free.
 
-5.0.8
-Release A
+5.1.6
+- Added PureWind mod by PureWind
+- Fixed many asset layering glitches
+
+5.1.5
+- Minor bugfixes
+- Fixed bug with bondage resist being inversely correlated with how much you have
+
+5.1.4
+- Can now dress your collection
+- Water mote durability increased, stun duration decreased
+- Unstoppable enemies are more stoppable
+- Changed fireball and fireblast to deal full AoE damage but no double damage to the target hit
+- Burning desire now 25% fire damage instead of 40%
+- Added 'sell excess' button
+- Bugfixes
+
+5.1.3
+- Graphical optimizations, should be MUCH less laggy lategame with many spells
+
+5.1.2
+- Fix guerilla fighter and unconventional warfare
+- Fixed restraint block calculation
+- Shrine buff titles changed from Arcane X to Divine X
+- Conjuration buff changed from (retaliation damage and armor for 10 hits) to (blocks the next 3 restraining instances)
+
+5.1.1
+- Added Guerilla Fighting (rogue), Unconventional Warfare (fighter)
+- Fixed some graphical glitches
+- Added a wide variety of names to NPCs
+- fixed truesight and reduced mana cost to 8/turn (from 10/turn). It now costs mana the first time you use it, but it also updates instantly without having to spend a turn
+- Arcane barrier nerfed to 40+10% max mana (from a base of 60), but efficiency increased to 0.5 to 1.
+- Arcane Protection (conjure shrine buff) armor and spellward buff now ends sooner when you take damage
+
+5.1.0
 - Added offline mod loading
 - Added suspicious mod detection and filtering
 - New perks: Edging, Pleasure, Denial, and Teasing lovers
+- Some enemies, when dashing, will be able to attack immediately after dashing
+- Added many new assets
+- Added paperdolls to NPCs in your collection. Please let me know if there are any crashes!
+- Added flip player option
 
 5.0.7
 Release A

@@ -659,6 +659,8 @@ interface enemy extends KDHasTags {
 	/** This enemy will give an intro when it first sees you*/
 	intro?: string,
 
+	nameList?: string,
+
 
 	/** These enemies always carry these items at the start */
 	startingItems?: string[]
@@ -906,6 +908,8 @@ interface enemy extends KDHasTags {
 	silenceTime?: number,
 	/** List of spells*/
 	spells?: string[],
+	/** starting buffs */
+	startBuffs?: any[],
 	/** This enemy will not miscast spells when distracted*/
 	noMiscast?: boolean,
 	/** Sound effect when miscasting */
@@ -1082,6 +1086,10 @@ interface enemy extends KDHasTags {
 		block_phys?: number,
 		/** Magic block: applied only when not disabled or vulnerable */
 		block_magic?: number,
+		/** Crits are half as effective when enemy is aware */
+		toughArmor?: boolean,
+		/** Same as tough armor, but also applies while unaware */
+		toughArmorAlways?: boolean,
 	},
 	/** */
 	summonRage?: boolean,
@@ -1130,6 +1138,7 @@ interface enemy extends KDHasTags {
 		/** Forces the event to play when a dash is blocked, even if there are no eventable attack types*/
 		EventOnDashBlock?: boolean,
 	},
+	attackBonus?: number,
 	/** */
 	cohesion?: number,
 	/** */
@@ -1300,6 +1309,10 @@ interface weapon {
 
 
 interface KinkyDungeonEvent {
+	/** This is an integer. if an event has this the game skips it and comes back after executing everything else.
+	 * Best to keep it low for performance reasons, if in a draw loop.
+	 */
+	delayedOrder?: number;
 	/** A dynamic event is specified as 'dynamic' and is specified under ItemMap.dynamic
 	 * (replace ItemMap with the event map you need)
 	 * This lets you use the same code for multiple events, which is risky but convenient
@@ -1531,6 +1544,7 @@ interface entity {
 	lifetime?: number,
 	maxlifetime?: number,
 	attackPoints?: number,
+	attackBonus?: number,
 	movePoints?: number,
 	aware?: boolean,
 	vp?: number,
@@ -1642,6 +1656,7 @@ interface KinkyDialogueTrigger {
 interface effectTile {
     x?: number,
     y?: number,
+    infinite?: boolean,
 	lightColor?: number,
 	//shadowColor?: number,
 	yoffset?: number,
@@ -1676,6 +1691,7 @@ interface effectTile {
 /** For spells */
 interface effectTileRef {
     name: string,
+    infinite?: boolean,
     duration?: number,
 	data?: any,
 	pauseDuration?: number,
@@ -1776,6 +1792,7 @@ interface spell {
 	effectTileDensityTrail?: number,
 	effectTileTrailAoE?: number,
 	effectTileDoT?: effectTileRef,
+	effectTileDoT2?: effectTileRef,
 	effectTileDistDoT?: number,
 	effectTileDurationModDoT?: number,
 	effectTileDensityDoT?: number,
@@ -3083,9 +3100,11 @@ interface KDCollectionEntry {
 	Enemy?: enemy, // for unique ones
 
 	outfit?: string,
+	customOutfit?: string,
 	hairstyle?: string,
 	bodystyle?: string,
 	facestyle?: string,
+	cosplaystyle?: string,
 
 	/** Status: Guest, Prisoner, Servant, or Manager */
 	status: string,
@@ -3098,6 +3117,7 @@ interface KDCollectionEntry {
 }
 
 interface KDFactionProps {
+	nameList?: string[],
 	/** Negative - will join their allies on sight against you
 	 * Neutral - will only join if they see you attacking their ally or their ally is otherwise neutral with you
 	 * Positive - will only join if their ally would otherwise be neutral with you
@@ -3114,6 +3134,8 @@ interface KDFactionProps {
 	/** Custom jail outfit to use */
 	jailOutfit: string,
 }
+
+type outfit = {name: string, dress: string, shop: boolean, rarity: number, events?: KinkyDungeonEvent[], costMod?: number};
 
 type KDTile = any;
 

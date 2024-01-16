@@ -272,7 +272,7 @@ AddModel({
 			InheritColor: "Rope",
 		},
 		{ Name: "HarnessLowerStrap", Layer: "HarnessMid", Pri: -50.1,
-			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			Invariant: true,
 			InheritColor: "Rope",
 		},
@@ -297,7 +297,7 @@ AddModel({
 
 		},
 		{ Name: "CrotchropeStrap", Layer: "HarnessMid", Pri: -101,
-			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			Invariant: true,
 			InheritColor: "Rope",
 		},
@@ -476,3 +476,8 @@ AddModel(GetModelWithExtraLayers("RopeLegs3", "RopeLegs2", [
 		NoOverride: true,
 	},
 ], "RopeHarness", false));
+
+
+AddModel(GetModelFashionVersion("RopeHarness", true));
+AddModel(GetModelFashionVersion("RopeCrotch", true));
+AddModel(GetModelFashionVersion("RopeChestStraps2", true));

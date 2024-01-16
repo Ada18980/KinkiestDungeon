@@ -94,6 +94,7 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		}
 		]
 	},
+
 	Hogtie: {
 		rotation: -90,
 		pri_rotation: 1,
@@ -123,6 +124,18 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		],
 	},
 
+	KneelDown: {
+		filter_pose: ["Kneel"],
+		offset_y: .3,
+		pri_offset: 2,
+		mods: [
+			{
+				Layer: "BG",
+				offset_x: 0,
+				offset_y: -.3,
+			},
+		]
+	},
 	Kneel: {
 		offset_y: 0.15,
 		pri_offset: 1,
@@ -307,20 +320,22 @@ function KDGetAvailablePosesLegs(C: Character): string[] {
 				delete poses[p];
 			}
 		}
+
+
+		if (Object.keys(poses).length == 0) {
+			if (CheckPoseOrTags(C, "DefaultStand")) {
+				poses = {Hogtie: true};
+			} else if (CheckPoseOrTags(C, "DefaultKneel")) {
+				poses = {Hogtie: true};
+			} else {
+				poses = {Hogtie: true};
+			}
+		}
 	} else {
 		// Logic for NPC
 		// ???
 	}
 
-	if (Object.keys(poses).length == 0) {
-		if (CheckPoseOrTags(C, "DefaultStand")) {
-			poses = {Hogtie: true};
-		} else if (CheckPoseOrTags(C, "DefaultKneel")) {
-			poses = {Hogtie: true};
-		} else {
-			poses = {Hogtie: true};
-		}
-	}
 	return Object.keys(poses);
 }
 
@@ -409,6 +424,8 @@ function KDGetAvailablePosesArms(C: Character): string[] {
 }
 
 function RefreshTempPoses(Character: Character, Restraints: boolean) {
+	KDRefreshPoseOptions(Character);
+
 	for (let pose of Object.keys(KDCurrentModels.get(Character).TempPoses))
 		delete KDCurrentModels.get(Character).Poses[pose];
 	KDCurrentModels.get(Character).TempPoses = {};
@@ -436,22 +453,54 @@ function RefreshTempPoses(Character: Character, Restraints: boolean) {
 
 		}
 
+
+	KDRefreshPoseOptions(Character);
+}
+
+function KDRefreshPoseOptions(Character: Character) {
 	if (KDToggles.ChastityOption) {
 		KDCurrentModels.get(Character).TempPoses.ChastityOption = true;
+		KDCurrentModels.get(Character).Poses.ChastityOption = true;
 	}
 	if (!KDToggles.Nipples) {
 		KDCurrentModels.get(Character).TempPoses.HideNipples = true;
+		KDCurrentModels.get(Character).Poses.HideNipples = true;
 	}
 	if (KDToggles.NippleToysHide) {
 		KDCurrentModels.get(Character).TempPoses.HideNippleToys = true;
+		KDCurrentModels.get(Character).Poses.HideNippleToys = true;
 	}
 	if (KDToggles.NipplePiercingsHide) {
 		KDCurrentModels.get(Character).TempPoses.HideNipplePiercings = true;
+		KDCurrentModels.get(Character).Poses.HideNipplePiercings = true;
 	}
 	if (KDToggles.NippleToysOption) {
 		KDCurrentModels.get(Character).TempPoses.NippleToysOption = true;
+		KDCurrentModels.get(Character).Poses.NippleToysOption = true;
 	}
 	if (KDToggles.ChastityBraOption) {
 		KDCurrentModels.get(Character).TempPoses.ChastityBraOption = true;
+		KDCurrentModels.get(Character).Poses.ChastityBraOption = true;
+	}
+}
+
+function KDRefreshPoseOptionsMC(MC: ModelContainer) {
+	if (KDToggles.ChastityOption) {
+		MC.Poses.ChastityOption = true;
+	}
+	if (!KDToggles.Nipples) {
+		MC.Poses.HideNipples = true;
+	}
+	if (KDToggles.NippleToysHide) {
+		MC.Poses.HideNippleToys = true;
+	}
+	if (KDToggles.NipplePiercingsHide) {
+		MC.Poses.HideNipplePiercings = true;
+	}
+	if (KDToggles.NippleToysOption) {
+		MC.Poses.NippleToysOption = true;
+	}
+	if (KDToggles.ChastityBraOption) {
+		MC.Poses.ChastityBraOption = true;
 	}
 }

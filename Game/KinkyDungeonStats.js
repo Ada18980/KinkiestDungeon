@@ -1228,11 +1228,14 @@ function KinkyDungeonUpdateStats(delta) {
 	KDBoundPowerLevel = 0;
 	KDBoundPowerLevel += 0.1 * Math.max(0, Math.min(1, KinkyDungeonBlindLevel / 3));
 	if (KinkyDungeonIsArmsBound(false, false)) KDBoundPowerLevel += 0.2;
-	if (KinkyDungeonIsHandsBound(false, false, 0.65)) KDBoundPowerLevel += 0.1;
-	if (KinkyDungeonIsHandsBound(false, false, 0.99)) KDBoundPowerLevel += 0.1;
+	if (KinkyDungeonIsHandsBound(false, false, 0.65)) KDBoundPowerLevel += 0.75;
+	if (KinkyDungeonIsHandsBound(false, false, 0.99)) KDBoundPowerLevel += 0.75;
 	KDBoundPowerLevel += 0.1 * KinkyDungeonChastityMult();
 	KDBoundPowerLevel += 0.2 * KinkyDungeonGagTotal();
-	KDBoundPowerLevel += 0.2 * Math.max(0, Math.min(1, KinkyDungeonSlowLevel / 2));
+	if (KDGameData.KneelTurns > 0) {
+		if (KinkyDungeonSlowLevel > 2) KDBoundPowerLevel += 0.15;
+	} else KDBoundPowerLevel += 0.15 * Math.max(0, Math.min(1, KinkyDungeonSlowLevel / 2));
+	KDBoundPowerLevel += 0.1 * Math.max(0, Math.min(1, KDGameData.HeelPower / 4));
 	if (KDBoundPowerLevel > 1) KDBoundPowerLevel = 1;
 	if (KinkyDungeonStatsChoice.get("BoundPower")) {
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
@@ -1321,7 +1324,7 @@ function KinkyDungeonUpdateStats(delta) {
 		minKneel = 1;
 	}
 
-	if (KDGameData.KneelTurns > 0 && !KDGameData.Crouch && (kneelRate < baseRate || minKneel > 0)) {
+	if (KDGameData.KneelTurns > 0 && !KDForcedToGround() && !KDGameData.Crouch && (kneelRate < baseRate || minKneel > 0)) {
 		if (KinkyDungeonHasHelp()) {
 			kneelRate = baseRate;
 			if (minKneel > 0) {
@@ -1394,6 +1397,8 @@ function KinkyDungeonUpdateStats(delta) {
 	KinkyDungeonDeaf = false;//KinkyDungeonPlayer.IsDeaf();
 
 	// Unarmed damage calc
+	if (KinkyDungeonPlayerWeapon && !KinkyDungeonInventoryGet(KinkyDungeonPlayerWeapon))
+		KDSetWeapon(null);
 	KinkyDungeonPlayerDamage = KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon(undefined, undefined, KinkyDungeonPlayerDamage));
 
 	KinkyDungeonUpdateStruggleGroups();
@@ -1914,7 +1919,7 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 		satisfaction: KinkyDungeonStatDistraction,
 		distractionCooldown: Math.max(KDGameData.DistractionCooldown, 13),
 		cancelOrgasm: false,
-		lowerFloorTo: Math.max(0, KinkyDungeonStatDistractionLower * 0.6 - 1),
+		lowerFloorTo: Math.max(0, KinkyDungeonStatDistractionLower * (1 - 0.1 * KDGameData.OrgasmStage/KinkyDungeonMaxOrgasmStage) - KinkyDungeonStatDistractionMax*0.25),
 	};
 
 	KinkyDungeonSendEvent("tryOrgasm", data);

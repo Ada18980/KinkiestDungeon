@@ -672,6 +672,7 @@
             <key type="filename">../Game/Conditions/Thought/Thought.png</key>
             <key type="filename">../Game/Conditions/Tired.png</key>
             <key type="filename">../Game/Conditions/Vulnerable.png</key>
+            <key type="filename">../Game/Conditions/VulnerableBlocked.png</key>
             <key type="filename">../Game/Conditions/vp.png</key>
             <key type="filename">../Game/Cursor.png</key>
             <key type="filename">../Game/DamageTypes/acid.png</key>
@@ -1836,6 +1837,7 @@
             <key type="filename">../Game/Floors/Floor_tmp/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_tmp/Wall.png</key>
             <key type="filename">../Game/Floors/Floor_tmp/WallVert.png</key>
+            <key type="filename">../Game/InventoryAction/Attach.png</key>
             <key type="filename">../Game/InventoryAction/Bondage.png</key>
             <key type="filename">../Game/InventoryAction/CommandWord.png</key>
             <key type="filename">../Game/InventoryAction/Cookie.png</key>
@@ -1855,6 +1857,7 @@
             <key type="filename">../Game/InventoryAction/Remove.png</key>
             <key type="filename">../Game/InventoryAction/Sell.png</key>
             <key type="filename">../Game/InventoryAction/SellBulk.png</key>
+            <key type="filename">../Game/InventoryAction/SellExcess.png</key>
             <key type="filename">../Game/InventoryAction/Struggle.png</key>
             <key type="filename">../Game/InventoryAction/Unequip.png</key>
             <key type="filename">../Game/InventoryAction/Unfavorite.png</key>
@@ -2196,6 +2199,7 @@
             <key type="filename">../Game/Spells/RecoverObject2.png</key>
             <key type="filename">../Game/Spells/Ring.png</key>
             <key type="filename">../Game/Spells/RingOfSlime.png</key>
+            <key type="filename">../Game/Spells/RopeBoltLaunch.png</key>
             <key type="filename">../Game/Spells/RopeBoltLaunchMany.png</key>
             <key type="filename">../Game/Spells/RopeStrike.png</key>
             <key type="filename">../Game/Spells/Sagitta.png</key>
@@ -2256,6 +2260,7 @@
             <key type="filename">../Game/Spells/Tremor.png</key>
             <key type="filename">../Game/Spells/TrueSight.png</key>
             <key type="filename">../Game/Spells/TrueSteel.png</key>
+            <key type="filename">../Game/Spells/UnconventionalWarfare.png</key>
             <key type="filename">../Game/Spells/Volcanism.png</key>
             <key type="filename">../Game/Spells/Wall.png</key>
             <key type="filename">../Game/Spells/WaterBall.png</key>
@@ -2757,6 +2762,8 @@
             <key type="filename">../Game/Bullets/RubberSlime.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Belt.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_BeltHit.png</key>
+            <key type="filename">../Game/Bullets/RuneTrap_Bubble.png</key>
+            <key type="filename">../Game/Bullets/RuneTrap_BubbleHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Chain.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_ChainHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Latex.png</key>
@@ -2770,6 +2777,8 @@
             <key type="filename">../Game/Bullets/RuneTrap_Rubber.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_RubberHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Slime.png</key>
+            <key type="filename">../Game/Bullets/RuneTrap_SlimeBubble.png</key>
+            <key type="filename">../Game/Bullets/RuneTrap_SlimeBubbleHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_SlimeHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_VacCube.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_VacCubeHit.png</key>
@@ -3145,6 +3154,7 @@
             <key type="filename">../Game/InvItemSortLeft.png</key>
             <key type="filename">../Game/InvItemSortRight.png</key>
             <key type="filename">../Game/InvVisible.png</key>
+            <key type="filename">../Game/UI/Dress.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -3304,6 +3314,36 @@
                 <rect>30,30,60,60</rect>
                 <key>scale9Paddings</key>
                 <rect>30,30,60,60</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/Items/Restraint/Petsuits.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>375,438,750,875</rect>
+                <key>scale9Paddings</key>
+                <rect>375,438,750,875</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/Items/Restraint/ReversePrayer.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>250,300,500,600</rect>
+                <key>scale9Paddings</key>
+                <rect>250,300,500,600</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

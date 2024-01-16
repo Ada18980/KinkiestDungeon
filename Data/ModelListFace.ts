@@ -374,6 +374,7 @@ AddModel({
 	TopLevel: true,
 	Protected: true,
 	Categories: ["Body", "Face", "Cosplay"],
+	AddPose: ["Cosplay"],
 	Folder: "Ears",
 	Layers: ToLayerMap([
 		{ Name: "ElfFront", Layer: "Head", Pri: 0.1,
@@ -392,6 +393,7 @@ AddModel({
 	TopLevel: false,
 	Protected: true,
 	Categories: ["Body", "Face", "Cosplay"],
+	AddPose: ["Cosplay"],
 	Folder: "Ears",
 	Layers: ToLayerMap([
 		{ Name: "ElfLongFront", Layer: "Head", Pri: 0.1,
@@ -410,6 +412,7 @@ AddModel({
 	TopLevel: false,
 	Protected: true,
 	Categories: ["Body", "Face", "Cosplay"],
+	AddPose: ["Cosplay"],
 	Folder: "Ears",
 	Layers: ToLayerMap([
 		{ Name: "ElfFloppyFront", Layer: "Head", Pri: 0.1,

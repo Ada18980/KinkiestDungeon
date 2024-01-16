@@ -13,7 +13,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Cages"],
-	AddPose: ["Caged", "UprightHogtie"],
+	AddPose: ["Caged", "UprightHogtie", "KneelDown"],
 	Layers: ToLayerMap([
 		{ Name: "CageFront", Layer: "FurnitureFront", Pri: 50,
 			Invariant: true,
@@ -79,6 +79,37 @@ AddModel({
 			Invariant: true,
 		},
 		{ Name: "LatexCubeBack", Layer: "FurnitureBack", Pri: 40,
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "Bubble",
+	Folder: "Furniture",
+	TopLevel: true,
+	Group: "Devices",
+	Restraint: true,
+	Categories: ["Restraints","Furniture", "Latex"],
+	AddPose: ["UprightHogtie", "ForceKneel"],
+	Layers: ToLayerMap([
+		{ Name: "Bubble", Layer: "FurnitureFront", Pri: -40,
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "SlimeBubble",
+	Folder: "Furniture",
+	TopLevel: true,
+	Group: "Devices",
+	Restraint: true,
+	Categories: ["Restraints","Furniture", "Latex"],
+	AddPose: ["UprightHogtie", "ForceKneel"],
+	Filters: {
+		Bubble: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":1.7000000000000002,"green":0.5166666666666666,"blue":2.3833333333333333,"alpha":1},
+	},
+	Layers: ToLayerMap([
+		{ Name: "Bubble", Layer: "FurnitureFront", Pri: -40,
 			Invariant: true,
 		},
 	])

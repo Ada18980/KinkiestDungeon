@@ -11,6 +11,7 @@ function KinkyDungeonSendBuffEvent(Event, data) {
 			}
 		}
 	}
+
 	for (let ent of KDMapData.Entities) {
 		if (ent.buffs) {
 			for (let buff of Object.values(ent.buffs)) {
