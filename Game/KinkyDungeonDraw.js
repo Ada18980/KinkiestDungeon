@@ -619,6 +619,69 @@ const KDOverlays = {
 	"B": (x, y, Fog, noReplace) => {
 		return "Bed";
 	},
+	"G": (x, y, Fog, noReplace) => {
+		let sprite = "Ghost";
+		if (KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Msg || KinkyDungeonTilesGet(x + "," + y).Dialogue)) {
+			sprite = "GhostImportant";
+		}
+		return sprite;
+	},
+	"L": (x, y, Fog, noReplace) => {
+		if (KinkyDungeonTilesGet(x + "," + y)) {
+			let furn = KinkyDungeonTilesGet(x + "," + y).Furniture ? KDFurniture[KinkyDungeonTilesGet(x + "," + y).Furniture] : "";
+			if (furn) {
+				return furn.sprite;
+			}
+		}
+	},
+	"F": (x, y, Fog, noReplace) => {
+		let sprite = "Table";
+		if (KinkyDungeonTilesGet(x + "," + y)) {
+			let table = "Table";
+			if (KinkyDungeonTilesGet(x + "," + y).Food) {
+				sprite = table + KinkyDungeonTilesGet(x + "," + y).Food;
+			}
+		}
+		return sprite;
+	},
+	"4": (x, y, Fog, noReplace) => {
+		let left = KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x - 1, y));
+		let right = KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x + 1, y));
+		let up = KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x, y - 1));
+		let down = KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x, y + 1));
+		if (down) {
+			return "Crack";
+		} else if (up) {
+			return "CrackHoriz";
+		} else if (left && right) {
+			return "CrackVert";
+		} else if (left) {
+			return "CrackLeft";
+		} else if (right) {
+			return "CrackRight";
+		}
+		return "CrackNone";
+	},
+
+
+
+	"c": (x, y, Fog, noReplace) => {
+		return (KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "gold" || KinkyDungeonTilesGet(x + "," + y).Loot == "lessergold")) ? "ChestGoldOpen" :
+		((KinkyDungeonTilesGet(x + "," + y) && (KDSpecialChests[KinkyDungeonTilesGet(x + "," + y).Loot])) ? KDSpecialChests[KinkyDungeonTilesGet(x + "," + y).Loot] + "Open" :
+			((KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "blue")) ? "ChestBlueOpen" :
+			((KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "dark")) ? "ChestDarkOpen" :
+			((KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "pearl" || KinkyDungeonTilesGet(x + "," + y).Loot == "lesserpearl")) ? "ChestPearlOpen" : "ChestOpen"))));
+	},
+
+	"C": (x, y, Fog, noReplace) => {
+		return (KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "gold" || KinkyDungeonTilesGet(x + "," + y).Loot == "lessergold")) ? "ChestGold" :
+		((KinkyDungeonTilesGet(x + "," + y) && (KDSpecialChests[KinkyDungeonTilesGet(x + "," + y).Loot])) ? KDSpecialChests[KinkyDungeonTilesGet(x + "," + y).Loot] :
+		((KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "blue")) ? "ChestBlue" :
+		((KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "dark")) ? "ChestDark" :
+		((KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "pearl" || KinkyDungeonTilesGet(x + "," + y).Loot == "lesserpearl")) ? "ChestPearl" : "Chest"))));
+	},
+
+
 	"@": (x, y, Fog, noReplace) => {
 		return "Signal/Button";
 	},
@@ -727,56 +790,6 @@ function KinkyDungeonGetSpriteOverlay(code, x, y, Fog, noReplace) {
 	if (KinkyDungeonTilesGet(x + "," + y) && KinkyDungeonTilesGet(x + "," + y).Skin) {
 		sprite = KinkyDungeonTilesGet(x + "," + y).Skin;
 	}
-	else if (code == "G") {
-		sprite = "Ghost";
-		if (KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Msg || KinkyDungeonTilesGet(x + "," + y).Dialogue)) {
-			sprite = "GhostImportant";
-		}
-	}
-
-	else if (code == "L") {
-		if (KinkyDungeonTilesGet(x + "," + y)) {
-			let furn = KinkyDungeonTilesGet(x + "," + y).Furniture ? KDFurniture[KinkyDungeonTilesGet(x + "," + y).Furniture] : "";
-			if (furn) {
-				return furn.sprite;
-			}
-		}
-	} else if (code == "F") {
-		sprite = "Table";
-		if (KinkyDungeonTilesGet(x + "," + y)) {
-			let table = "Table";
-			if (KinkyDungeonTilesGet(x + "," + y).Food) {
-				sprite = table + KinkyDungeonTilesGet(x + "," + y).Food;
-			}
-		}
-	} else if (code == "4") {
-		let left = KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x - 1, y));
-		let right = KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x + 1, y));
-		let up = KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x, y - 1));
-		let down = KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x, y + 1));
-		if (down) {
-			sprite = "Crack";
-		} else if (up) {
-			sprite = "CrackHoriz";
-		} else if (left && right) {
-			sprite = "CrackVert";
-		} else if (left) {
-			sprite = "CrackLeft";
-		} else if (right) {
-			sprite = "CrackRight";
-		} else
-			sprite = "CrackNone";
-	}
-	else if (code == "C") sprite = (KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "gold" || KinkyDungeonTilesGet(x + "," + y).Loot == "lessergold")) ? "ChestGold" :
-		((KinkyDungeonTilesGet(x + "," + y) && (KDSpecialChests[KinkyDungeonTilesGet(x + "," + y).Loot])) ? KDSpecialChests[KinkyDungeonTilesGet(x + "," + y).Loot] :
-		((KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "blue")) ? "ChestBlue" :
-		((KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "dark")) ? "ChestDark" :
-		((KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "pearl" || KinkyDungeonTilesGet(x + "," + y).Loot == "lesserpearl")) ? "ChestPearl" : "Chest"))));
-	else if (code == "c") sprite = (KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "gold" || KinkyDungeonTilesGet(x + "," + y).Loot == "lessergold")) ? "ChestGoldOpen" :
-	((KinkyDungeonTilesGet(x + "," + y) && (KDSpecialChests[KinkyDungeonTilesGet(x + "," + y).Loot])) ? KDSpecialChests[KinkyDungeonTilesGet(x + "," + y).Loot] + "Open" :
-		((KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "blue")) ? "ChestBlueOpen" :
-		((KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "dark")) ? "ChestDarkOpen" :
-		((KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "pearl" || KinkyDungeonTilesGet(x + "," + y).Loot == "lesserpearl")) ? "ChestPearlOpen" : "ChestOpen"))));
 	return sprite;
 }
 
