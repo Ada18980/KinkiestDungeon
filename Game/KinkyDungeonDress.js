@@ -757,13 +757,16 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
  */
 function KDInitProtectedGroups(C) {
 	if (!C) C = KinkyDungeonPlayer;
-	KDProtectedCosplay = [];
-	// init protected slots
-	for (let a of C.Appearance) {
-		if (a.Asset?.Group?.BodyCosplay || (a.Model?.SuperProtected && a.Model.Group)){
-			KDProtectedCosplay.push(a.Asset.Group?.Name || a.Model.Group);
+	if (C == KinkyDungeonPlayer) {
+		KDProtectedCosplay = [];
+		// init protected slots
+		for (let a of C.Appearance) {
+			if (a.Asset?.Group?.BodyCosplay || (a.Model?.SuperProtected && a.Model.Group)){
+				KDProtectedCosplay.push(a.Asset.Group?.Name || a.Model.Group);
+			}
 		}
 	}
+
 }
 
 
@@ -788,7 +791,7 @@ function KinkyDungeonWearForcedClothes(C, restraints) {
 					let canReplace = (dress.override!==null && dress.override===true) ? true : !InventoryGet(C,dress.Group);
 
 					if (!canReplace) {return;}
-					if (KDProtectedCosplay.includes(dress.Group)){return;}
+					if (C == KinkyDungeonPlayer && KDProtectedCosplay.includes(dress.Group)){return;}
 					let filters = Object.assign({}, dress.Filters || {});
 					/** @type string|string[] */
 					let color = (typeof dress.Color === "string") ? [dress.Color] : dress.Color;
@@ -834,7 +837,7 @@ function KinkyDungeonWearForcedClothes(C, restraints) {
 				let canReplace = (dress.override!==null && dress.override===true) ? true : !InventoryGet(C,dress.Group);
 
 				if (dress.Group && !canReplace) {return;}
-				if (dress.Group && KDProtectedCosplay.includes(dress.Group)){return;}
+				if (dress.Group && C == KinkyDungeonPlayer && KDProtectedCosplay.includes(dress.Group)){return;}
 				let filters = Object.assign({}, dress.Filters || {});
 				let faction = inv.faction;
 				if (inv.faction) {
@@ -908,8 +911,8 @@ function KDCharacterAppearanceNaked(C) {
 			if (!C.Appearance[A].Model.Restraint){
 				// conditional filter
 				let f = !(C.Appearance[A].Model
-					&& (
-						KDProtectedCosplay.includes(C.Appearance[A].Model.Group)
+					&& ((C == KinkyDungeonPlayer &&
+						KDProtectedCosplay.includes(C.Appearance[A].Model.Group))
 						|| C.Appearance[A].Model.Protected
 						|| C.Appearance[A].Model.SuperProtected));
 				if (!f){continue;}
@@ -920,7 +923,7 @@ function KDCharacterAppearanceNaked(C) {
 				(C.Appearance[A].Asset.Group.Category === "Appearance")){
 				// conditional filter
 				let f = !(C.Appearance[A].Asset.Group.BodyCosplay
-					&& (KDProtectedCosplay.includes(C.Appearance[A].Asset.Group.Name)));
+					&& C == KinkyDungeonPlayer && (KDProtectedCosplay.includes(C.Appearance[A].Asset.Group.Name)));
 				if (!f){continue;}
 				C.Appearance.splice(A, 1);
 			}

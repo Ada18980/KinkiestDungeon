@@ -128,6 +128,7 @@ let KinkyDungeonGraphicsQuality = true;
 let KDToggleGroups = ["Main", "GFX", "UI", "Clothes", "Keybindings"];
 
 let KDToggles = {
+	HiResModel: false,
 	Fullscreen: false,
 	SkipIntro: false,
 	SkipTutorial: false,
@@ -182,6 +183,7 @@ let KDToggles = {
 };
 
 let KDToggleCategories = {
+	HiResModel: "GFX",
 	HighResDisplacement: "GFX",
 	Bloom: "GFX",
 	StunFlash: "UI",
@@ -4163,6 +4165,7 @@ function KinkyDungeonLoadGame(String) {
 					if (KDConsumable(item) != undefined || KDWeapon(item) != undefined || KDRestraint(item) != undefined || KDOutfit(item) != undefined)
 						KinkyDungeonInventoryAdd(item);
 				}
+				KDUpdateItemEventCache = true;
 			}
 
 			KinkyDungeonSpells = [];

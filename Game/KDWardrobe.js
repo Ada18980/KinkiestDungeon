@@ -1202,6 +1202,7 @@ function KDDrawWardrobe(screen, Character) {
 	} else {
 		DrawButtonKDEx("KDBackToGame", (bdata) => {
 			KinkyDungeonState = "Game";
+			ForceRefreshModelsAsync(C);
 			if (KDWardrobeCallback) KDWardrobeCallback();
 			//KinkyDungeonDressSet(Character);
 			return true;
@@ -1231,14 +1232,14 @@ function KDSaveCodeOutfit(C, clothesOnly = false) {
 		else
 			KinkyDungeonSetDress("None", "None", C, true);
 		KinkyDungeonDressPlayer(C, true);
-		KDInitProtectedGroups(KinkyDungeonPlayer);
+		KDInitProtectedGroups(C);
 		KinkyDungeonConfigAppearance = true;
 		KinkyDungeonReplaceConfirm = 0;
 
 		// Then decompresses
 		CharacterAppearanceRestore(C, decompressed, clothesOnly);
 		CharacterRefresh(C);
-		KDInitProtectedGroups(KinkyDungeonPlayer);
+		KDInitProtectedGroups(C);
 	}
 
 	KinkyDungeonCheckClothesLoss = true;

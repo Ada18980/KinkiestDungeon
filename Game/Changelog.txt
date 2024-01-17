@@ -23,9 +23,17 @@ Monk class?
 - Passive: enchantments apply to unarmed strikes
 - Active: Increase unarmed base damage for 20 turns. After using, need to meditate 10 turns to recharge. Free.
 
+5.1.7
+- Added mod texture packer support
+
 5.1.6
-- Added PureWind mod by PureWind
+- Added PureWind mod assets by PureWind
 - Fixed many asset layering glitches
+- More minor bugfixes
+- Optimizations to help make the game smoother, this time with worn restraints
+- edging yourself for longer means more Desire lost
+- few QoL fixes and changes
+- Nevermere blaster and bondage buster now count as attacks
 
 5.1.5
 - Minor bugfixes

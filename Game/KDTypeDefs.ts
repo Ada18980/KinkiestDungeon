@@ -2385,46 +2385,46 @@ type AIType = {
 	/** This is the tile for the AI which registers as tooltip */
 	ambushtile?: string,
 	/** Happens at the start immediately after AI is assigned*/
-	init: (enemy, player, aidata) => void,
+	init: (enemy: entity, player: entity, aidata) => void,
 	/** Happens before movement. Return true to skip movement loop*/
-	beforemove: (enemy, player, aidata) => boolean,
+	beforemove: (enemy: entity, player: entity, aidata) => boolean,
 	/** Whether the enemy chases the target if it sees them */
-	chase: (enemy, player, aidata) => boolean,
+	chase: (enemy: entity, player: entity, aidata) => boolean,
 	/** Similar to chase but not quite.
 	 * Will the enemy choose to go to the last seen target location?
 	 * If it sees the target
 	 * Can be false if you want an enemy to be more reserved about where it goes*/
-	trackvisibletarget: (enemy, player, aidata) => boolean,
+	trackvisibletarget: (enemy: entity, player: entity, aidata) => boolean,
 	/** Whether enemy will chase the player across a long distance */
-	persist: (enemy, player, aidata) => boolean,
+	persist: (enemy: entity, player: entity, aidata) => boolean,
 	/** Whether the enemy moves toward gx */
-	move: (enemy, player, aidata) => boolean,
+	move: (enemy: entity, player: entity, aidata) => boolean,
 	/** whether the enemy obeys commands like Follow Me and such */
-	follower: (enemy, player, aidata) => boolean,
+	follower: (enemy: entity, player: entity, aidata) => boolean,
 	/** Whether the enemy follows sound sources or not */
-	followsound: (enemy, player, aidata) => boolean,
+	followsound: (enemy: entity, player: entity, aidata) => boolean,
 	/** Whether enemy will randomly wander to nearby points*/
-	wander_near: (enemy, player, aidata) => boolean,
+	wander_near: (enemy: entity, player: entity, aidata) => boolean,
 	/** Whether enemy will randomly choose points on the map to wander to */
-	wander_far: (enemy, player, aidata) => boolean,
+	wander_far: (enemy: entity, player: entity, aidata) => boolean,
 	/** Function to replace wandernear. Return true to cancel stock func, false otherwise*/
-	wandernear_func?: (enemy, player, aidata) => boolean,
+	wandernear_func?: (enemy: entity, player: entity, aidata) => boolean,
 	/** Function to replace wanderfar. Return true to cancel stock func, false otherwise*/
-	wanderfar_func?: (enemy, player, aidata) => boolean,
+	wanderfar_func?: (enemy: entity, player: entity, aidata) => boolean,
 	/** Whether it sets gx to gxx when idle, and gy to gyy */
-	resetguardposition: (enemy, player, aidata) => boolean,
+	resetguardposition: (enemy: entity, player: entity, aidata) => boolean,
 	/** Whether enemy attacks */
-	attack: (enemy, player, aidata) => boolean,
+	attack: (enemy: entity, player: entity, aidata) => boolean,
 	/** whether enemy casts spells */
-	spell: (enemy, player, aidata) => boolean,
+	spell: (enemy: entity, player: entity, aidata) => boolean,
 	/** This function executes before wander location changes. Return True to override wander behavior */
-	aftermove: (enemy, player, aidata) => boolean,
+	aftermove: (enemy: entity, player: entity, aidata) => boolean,
 	/** This executes after enemy is determined to be idle or not. If true, prevents spells.*/
-	afteridle?: (enemy, player, aidata) => boolean,
+	afteridle?: (enemy: entity, player: entity, aidata) => boolean,
 	/** Returns the current wander long delay.*/
-	wanderDelay_long?: (enemy, aidata) => number,
+	wanderDelay_long?: (enemy: entity, aidata) => number,
 	/** Returns the current wander short delay.*/
-	wanderDelay_short?: (enemy, aidata) => number,
+	wanderDelay_short?: (enemy: entity, aidata) => number,
 
 }
 
@@ -3170,6 +3170,8 @@ type PIXIArray = import('pixi.js').ITypedArray;
 type PIXIAdjustmentFilter = import('pixi-filters').AdjustmentFilter;
 type PIXIFilter = import('pixi.js').Filter;
 
+//type PIXIExtensionType = import('pixi.js').ExtensionType;
+//type PIXIUnresolvedAsset = import('pixi.js').Assets;
 
 type PIXIMatrix = import('pixi.js').Matrix;
 type PIXIPoint = import('pixi.js').Point;
@@ -3178,4 +3180,4 @@ type ISpriteMaskTarget = import('pixi.js').ISpriteMaskTarget;
 type PIXICLEAR_MODES = import('pixi.js').CLEAR_MODES;
 type PIXIFilterSystem = import('pixi.js').FilterSystem;
 
-
+type PIXIUnresolvedAsset = any; // The dreaded

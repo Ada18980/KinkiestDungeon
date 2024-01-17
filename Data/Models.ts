@@ -122,13 +122,14 @@ function ToLayerMap(Layers: ModelLayer[]): {[_: string]: ModelLayer} {
 	return ToNamedMap(Layers);
 }
 
-function GetModelLayers(ModelName: string, PrependString?: string, AppendString?: string, InheritColor?: string, PriBonus?: number): ModelLayer[] {
+function GetModelLayers(ModelName: string, PrependString?: string, AppendString?: string, InheritColor?: string, PriBonus?: number, layerSwap?: string,): ModelLayer[] {
 	if (ModelDefs[ModelName]) {
 		let ret : ModelLayer[] = JSON.parse(JSON.stringify(Object.values(ModelDefs[ModelName].Layers)));
 		for (let layer of ret) {
 			layer.Name = (PrependString || "") + layer.Name + (AppendString || "");
 			if (InheritColor) layer.InheritColor = InheritColor;
 			if (PriBonus) layer.Pri += PriBonus;
+			if (layerSwap) layer.Layer = layerSwap;
 		}
 		return ret;
 	}
@@ -319,7 +320,8 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 	}
 	let created = false;
 	if (!MC.Containers.get(containerID)) {
-		let RT = PIXI.RenderTexture.create({ width: MODELWIDTH*MODEL_SCALE * 2 * Zoom, height: MODELHEIGHT*MODEL_SCALE * 2 * Zoom, resolution: resolution});
+
+		let RT = PIXI.RenderTexture.create({ width: MODELWIDTH*MODEL_SCALE * 2 * Zoom, height: MODELHEIGHT*MODEL_SCALE * 2 * Zoom, resolution: resolution*(KDToggles.HiResModel ? 2 : 1)});
 		let Mesh = new PIXI.SimplePlane(RT, 100, 100);
 		let Container = {
 			Container: new PIXI.Container(),
@@ -329,6 +331,11 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			SpriteList: new Map(),
 			Matrix: Object.assign([], Mesh.geometry.getBuffer('aVertexPosition').data),
 		};
+
+		//Container.Container.scale.x = 1;
+		//Container.Container.scale.y = 1;
+		Container.Mesh.scale.x = 1;
+		Container.Mesh.scale.y = 1;
 		//console.log("Matrix: " + Container.Matrix);
 		Container.Mesh.zIndex = 1;
 		Container.Mesh.pivot.set(MODELWIDTH*MODEL_SCALE * 1 * Zoom, MODELHEIGHT*MODEL_SCALE * 1 * Zoom);
@@ -1172,6 +1179,13 @@ function UpdateModels(C: Character, Xray?: string[]) {
 
 
 function ForceRefreshModels(C: Character) {
+	let MC: ModelContainer = KDCurrentModels.get(C);
+	if (!MC) return;
+	MC.Update.clear();
+	MC.ForceUpdate.clear();
+}
+async function ForceRefreshModelsAsync(C: Character, ms = 100) {
+	await sleep(ms);
 	let MC: ModelContainer = KDCurrentModels.get(C);
 	if (!MC) return;
 	MC.Update.clear();

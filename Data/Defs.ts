@@ -10,6 +10,7 @@ let LAYERS_BASE = [
 	"AnimalEarsFront",
 	"HatDeco",
 	"Hat",
+	"InflatableHead",
 	"Brows", // Brows should get hidden with mask
 	"Ahoge",
 	"Circlet",
@@ -46,6 +47,8 @@ let LAYERS_BASE = [
 	"Head",
 
 
+	"InflatableArms",
+	"InflatableLegs",
 	"Yoke",
 
 
@@ -1323,11 +1326,28 @@ let LayerGroups = {
 	]),
 	// endregion
 
+	HairHelmet: ToMap(
+		[
+
+			"AnimalEars",
+			"AnimalEarsFront",
+			"Ahoge",
+			"MouthProp",
+			"HairFront",
+			"HairOver",
+			"HairBack",
+			"Hood",
+			"Hair",
+		]
+	),
 	// region Xray
 	Xray: ToMap(
 		[
 			"FurnitureFront",
 
+			"InflatableHead",
+			"InflatableArms",
+			"InflatableLegs",
 	"MouthProp",
 	"Hood", // For Kigu
 	"MaskOver",

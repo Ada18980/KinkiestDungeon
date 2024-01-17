@@ -2719,7 +2719,6 @@ let KDNameList = {
 		"Cthughia",
 		"Dhola",
 		"Eihorta",
-		"Fungalia",
 		"Guglia",
 		"Huitzilopochtlia",
 		"Ilua",

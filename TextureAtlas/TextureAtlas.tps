@@ -153,7 +153,7 @@
             <key>scale</key>
             <double>0.5</double>
             <key>scaleMode</key>
-            <enum type="ScaleMode">Smooth</enum>
+            <enum type="ScaleMode">Fast</enum>
             <key>extrude</key>
             <uint>0</uint>
             <key>trimThreshold</key>
@@ -341,6 +341,15 @@
             <key type="filename">../Models/Body/TorsoClosedChastity.png</key>
             <key type="filename">../Models/Body/TorsoSpread.png</key>
             <key type="filename">../Models/Body/TorsoSpreadChastity.png</key>
+            <key type="filename">../Models/Bubble/Arms.png</key>
+            <key type="filename">../Models/Bubble/Bubble.png</key>
+            <key type="filename">../Models/Bubble/BubbleSquishy.png</key>
+            <key type="filename">../Models/Bubble/BubbleSquishyBack.png</key>
+            <key type="filename">../Models/Bubble/Head.png</key>
+            <key type="filename">../Models/Bubble/LatexSphere.png</key>
+            <key type="filename">../Models/Bubble/LatexSphereCutaway.png</key>
+            <key type="filename">../Models/Bubble/LatexSphereCutawayBack.png</key>
+            <key type="filename">../Models/Bubble/Legs.png</key>
             <key type="filename">../Models/Bunny/Ears.png</key>
             <key type="filename">../Models/Bunny/EarsFront.png</key>
             <key type="filename">../Models/Bunny/EarsInner.png</key>
@@ -760,11 +769,9 @@
             <key type="filename">../Models/EyesKertasu/EyesWhitesNeutral.png</key>
             <key type="filename">../Models/EyesKertasu/EyesWhitesSurprised.png</key>
             <key type="filename">../Models/FaceKjus/Brows2Angry.png</key>
-            <key type="filename">../Models/Furniture/BallSuit.png</key>
             <key type="filename">../Models/Furniture/Barrel.png</key>
             <key type="filename">../Models/Furniture/Bed.png</key>
             <key type="filename">../Models/Furniture/BedHogtie.png</key>
-            <key type="filename">../Models/Furniture/Bubble.png</key>
             <key type="filename">../Models/Furniture/CageBack.png</key>
             <key type="filename">../Models/Furniture/CageFront.png</key>
             <key type="filename">../Models/Furniture/DisplayFront.png</key>

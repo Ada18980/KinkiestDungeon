@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.1.6"
+KDVersionStr,"5.1.7"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -71,6 +71,7 @@ KDToggleIntenseOrgasm,Intense 'Let Go' VFX
 KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
 KDToggleHighResDisplacement,Hi-Res Distortion (Needs Restart)
+KDToggleHiResModel,Hi-Res Model (no restart needed)
 KDToggleGraphicsQuality,High Quality Animations
 KDToggleEnemyAnimations,Enemy Animations
 KDToggleLazyWalk,One-Click Move
@@ -1469,6 +1470,10 @@ KinkyDungeonInventoryItemBoltCuttersDesc2,"Also assists in cutting restraints wh
 KinkyDungeonInventoryItemKnife,Knife
 KinkyDungeonInventoryItemKnifeDesc,"A go-to for travelers and adventurers."
 KinkyDungeonInventoryItemKnifeDesc2,"Deals slash damage. Offhand: +10 Block"
+KinkyDungeonInventoryItemFlashlight,Flashlight
+KinkyDungeonInventoryItemFlashlightDesc,"A weapon of mass illumination."
+KinkyDungeonInventoryItemFlashlightDesc2,"Provides a highly directional light source."
+ItemPickupFlashlight,"You pick up a flashlight."
 KinkyDungeonInventoryItemTorch,Torch
 KinkyDungeonInventoryItemTorchDesc,"Second only to the mighty towel in usefulness."
 KinkyDungeonInventoryItemTorchDesc2,"Deals fire damage. Provides light."
@@ -4895,6 +4900,7 @@ ItemPickupAncientPowerSourceSpent,"You retrieve a spent ancient power crystal."
 ItemPickupHeart,"You pick up a magical amulet and use it to boost your stats."
 ItemPickupLeylineMap,"You pick up a Leyline Map."
 ItemPickupKnife,"You pick up a knife."
+
 ItemPickupTorch,"You pick up a torch."
 ItemPickupKnives,"You found a bundle of discarded knives!"
 ItemPickupEnchKnife,"You pick up a magic knife."
@@ -6180,8 +6186,8 @@ KinkyDungeonSpellFlameBlade,Flame Blade
 KinkyDungeonSpellDescriptionFlameBlade,When enabled: Melee weapon attacks cost mana and create a flame strike that deals 30 fire damage to adjacent targets.
 KinkyDungeonSpellFlameStrike,Flame Blade
 
-KinkyDungeonSpellEngulf,Engulf
-KinkyDungeonSpellDescriptionEngulf,When enabled: Your melee attacks deal +20 glue damage and create slime.
+KinkyDungeonSpellEngulf,Tentacle Slap
+KinkyDungeonSpellDescriptionEngulf,You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +20 glue damage and create slime.
 
 KinkyDungeonSpellStrength,Super Strength
 KinkyDungeonSpellDescriptionStrength,"When enabled: Struggling is more powerful, and your melee attack damage is increased by +20 if your weapon deals physical damage."

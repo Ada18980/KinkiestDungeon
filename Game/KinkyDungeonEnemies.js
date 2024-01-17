@@ -464,10 +464,10 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 						//let sprite = enemy.Enemy.name;
 						if (enemy.buffs) {
 							for (let b of Object.values(enemy.buffs)) {
-								if (b.replaceSpriteBound && KDBoundEffects(enemy) > 3 && (b.replacePower || b.power > buffSpritePower)) {
+								if (b?.replaceSpriteBound && KDBoundEffects(enemy) > 3 && (b.replacePower || b.power > buffSpritePower)) {
 									buffSpritePower = b.replacePower || b.power;
 									buffSprite = b.replaceSpriteBound;
-								} else if (b.replaceSprite && (b.replacePower || b.power > buffSpritePower)) {
+								} else if (b?.replaceSprite && (b.replacePower || b.power > buffSpritePower)) {
 									buffSpritePower = b.replacePower || b.power;
 									buffSprite = b.replaceSprite;
 								}
@@ -6413,7 +6413,7 @@ function KDGetTags(enemy, removeSpecial) {
 	let addOn = enemy.Enemy.bound ? Object.assign({}, KDExtraEnemyTags) : undefined;
 	if (addOn) {
 		for (let entry of Object.entries(addOn)) {
-			if (entry[1] > 0 && KDGetEffLevel() > entry[1]) delete addOn[entry[0]];
+			if (entry[1] > 0 && KDGetEffLevel() < entry[1]) delete addOn[entry[0]];
 		}
 	}
 
@@ -6994,7 +6994,7 @@ function KDMakeHighValue(enemy) {
 	let buff = KDGetByWeight(list);
 	if (buff) {
 		KDSpecialBuffs[buff].apply(enemy, ["HighValue"]);
-		delete list[buff];
+		list[buff] = 0;
 	}
 	buff = KDGetByWeight(list);
 	if (buff) {
@@ -7201,7 +7201,9 @@ function KDAddEntity(entity) {
 	}
 	if (entity.Enemy?.startBuffs) {
 		if (!entity.buffs) entity.buffs = [];
-		entity.buffs.push(...JSON.parse(JSON.stringify(entity.Enemy?.startBuffs)));
+		let buffs = JSON.parse(JSON.stringify(entity.Enemy?.startBuffs));
+		if (buffs)
+			entity.buffs.push(...buffs);
 	}
 	KDUpdateEnemyCache = true;
 }

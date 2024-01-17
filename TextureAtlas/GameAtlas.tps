@@ -1907,6 +1907,7 @@
             <key type="filename">../Game/Items/Flamberge.png</key>
             <key type="filename">../Game/Items/FlashBomb.png</key>
             <key type="filename">../Game/Items/Flashbang.png</key>
+            <key type="filename">../Game/Items/Flashlight.png</key>
             <key type="filename">../Game/Items/Foil.png</key>
             <key type="filename">../Game/Items/FourSeasons.png</key>
             <key type="filename">../Game/Items/FrostSword.png</key>

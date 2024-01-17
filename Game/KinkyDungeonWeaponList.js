@@ -327,8 +327,13 @@ let KinkyDungeonWeapons = {
 	"Torch": {name: "Torch", dmg: 1.5, chance: 0.75, type: "fire", unarmed: false, rarity: 1, shop: true, sfx: "FireSpell",
 		crit: 1.1,
 		tags: ["illum", "utility"],
-		events: [{type: "WeaponLight", trigger: "getLights", offhand: true, power: 6, color: "#ff8933"}],
+		events: [{type: "WeaponLight", trigger: "getLights", offhand: true, power: 5, color: "#ff8933"}],
 		special: {type: "ignite"},},
+	"Flashlight": {name: "Flashlight", dmg: 1.0, chance: 1.0, type: "crush", unarmed: false, rarity: 2, shop: true, sfx: "Miss", light: true,
+		crit: 1.1,
+		tags: ["illum", "utility"],
+		events: [{type: "WeaponLightDirectional", trigger: "getLights", offhand: true, power: 7, dist: 5, color: "#ffdd00"}],
+	},
 
 	// BDSM Gear
 	"Feather": {name: "Feather", dmg: 0.1, chance: 1.25,

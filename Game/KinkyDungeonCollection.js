@@ -157,6 +157,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index) {
 		if (DrawButtonKDEx("dressNPC", (b) => {
 			//KDSpeakerNPC = null;
 			KinkyDungeonState = "Wardrobe";
+			ForceRefreshModels(KDSpeakerNPC);
 			KDOriginalValue = "";
 			KDWardrobeCallback = () => {
 				if (KDOriginalValue) {
@@ -187,6 +188,8 @@ function KDDrawSelectedCollectionMember(value, x, y, index) {
 			let orig = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
 			let current = LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
 			if (orig != current) KDOriginalValue = orig;
+			ForceRefreshModelsAsync(KDSpeakerNPC);
+			//KinkyDungeonDressPlayer(KDSpeakerNPC, true, true);
 			return true;
 		}, true, x + 10, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Dress.png")) {
 			DrawTextFitKD(TextGet("KDDressNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);

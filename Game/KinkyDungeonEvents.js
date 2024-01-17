@@ -677,6 +677,7 @@ let KDEventMapInventory = {
 		"transform": (e, item, data) => {
 			// You can call CurseTransform with a forceItems to force one or more item to transform regardless of chance
 			if (!e.chance || KDRandom() < e.chance || (data.forceItems && data.forceItems.includes(item))) {
+				KDUpdateItemEventCache = true;
 				// In this first section we get the various lists
 				let listname = e.cursetype || KDRestraint(data.curseditem)?.name || "Common";
 				if (data.noDupe) {
@@ -699,6 +700,7 @@ let KDEventMapInventory = {
 						}, undefined,
 						curse || "");
 				}
+				KDUpdateItemEventCache = true;
 				// Add the new curse
 				if (newRestraint) {
 					newvariant.template = newRestraint.name;
@@ -725,7 +727,9 @@ let KDEventMapInventory = {
 						.replace("OLDITM", TextGet("Restraint" + KDRestraint(item).name)),
 					"#ffffff", 2);
 				}
+				KDUpdateItemEventCache = true;
 				KDMorphToInventoryVariant(item, newvariant, "", curse);
+
 			}
 		},
 	},
@@ -3860,7 +3864,7 @@ let KDEventMapSpell = {
 		"DistractionCast": (e, spell, data) => {
 			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.99)
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-					id: "DistractionCast", type: "sfx", power: 1, duration: 4, sfxApply: "PowerMagic", aura: "#ff8888", aurasprite: "Heart"
+					id: "DistractionCast", type: "sfx", power: 1, duration: 3, sfxApply: "PowerMagic", aura: "#ff8888", aurasprite: "Heart"
 				});
 		},
 		"Buff": (e, spell, data) => {
@@ -5499,6 +5503,25 @@ let KDEventMapWeapon = {
 			data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y,
 				color: string2hex(e.color || "#ffffff")});
 		},
+		"WeaponLightDirectional": (e, spell, data) => {
+			let x = KinkyDungeonPlayerEntity.x;
+			let y = KinkyDungeonPlayerEntity.y;
+			let size = e.power - e.dist/2;
+			for (let i = 0; i < e.dist; i++) {
+				let x2 = x + KinkyDungeonPlayerEntity.facing_x;
+				let y2 = y + KinkyDungeonPlayerEntity.facing_y;
+				if (KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(x2, y2))) {
+					x = x2;
+					y = y2;
+					size += 0.5;
+				} else {
+					break;
+				}
+			}
+			data.lights.push({brightness: size, x: x, y: y, nobloom: true,
+				color: string2hex(e.color || "#ffffff")});
+		},
+
 	},
 	"tick": {
 		"AccuracyBuff": (e, weapon, data) => {
@@ -6407,6 +6430,23 @@ let KDEventMapBullet = {
 		"Arrow": (e, b, data) => {
 			if (b && data.enemy && !KDHelpless(data.enemy) && data.enemy.hp > 0 && b.bullet?.damage) {
 				let scaling = (e.mult || 1) * (KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ArrowDamage")));
+				let dd = {
+					target: data.enemy,
+					attackCost: 0.0, // Important
+					skipTurn: false,
+					spellAttack: true,
+					attackData: Object.assign({}, b.bullet.damage),
+				};
+				dd.attackData.damage *= scaling;
+				dd.attackData.nodisarm = true;
+				KinkyDungeonSendEvent("beforePlayerLaunchAttack", dd);
+
+				KinkyDungeonAttackEnemy(data.enemy, dd.attackData, Math.max(1, KinkyDungeonGetEvasion(undefined, false, true, false)), b);
+			}
+		},
+		"Blaster": (e, b, data) => {
+			if (b && data.enemy && !KDHelpless(data.enemy) && data.enemy.hp > 0 && b.bullet?.damage) {
+				let scaling = (e.mult || 1) * (KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BlasterDamage")));
 				let dd = {
 					target: data.enemy,
 					attackCost: 0.0, // Important

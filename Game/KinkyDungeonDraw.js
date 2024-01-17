@@ -2030,20 +2030,20 @@ function KinkyDungeonDrawFloaters(CamX, CamY) {
 			let y = (floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay);
 			let overlap = false;
 			let overlapAmount = 9;
-			for (let iii = -overlapAmount; iii < overlapAmount; iii += 3) {
+			for (let iii = -overlapAmount; iii < overlapAmount; iii += 2) {
 				if (KDFloaterYCache[Math.round(y + iii)]) {
 					overlap = true;
 				}
 			}
 			let ii = 0;
 			let direction = -1;
-			while ( overlap && ii < 13) {
+			while ( overlap && ii < 60) {
 				floater.y -= (floater.override ? 4 : 4/KinkyDungeonGridSizeDisplay) * direction;
 				//floater.x += -20 + Math.random() * 40;
 				x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay;
 				y = (floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay);
 				overlap = false;
-				for (let iii = -overlapAmount; iii < overlapAmount; iii += 4) {
+				for (let iii = -overlapAmount; iii < overlapAmount; iii += 2) {
 					if (KDFloaterYCache[Math.round(y + iii)]) {
 						overlap = true;
 					}
@@ -3434,7 +3434,7 @@ function KDUpdateVision(CamX, CamY, CamX_offset, CamY_offset) {
 		if (KDToggles.Bloom && !(KinkyDungeonBlindLevel >= 2)) {
 			let pad = (324-KinkyDungeonGridSizeDisplay)/2;
 			for (let light of [...data.lights, ...data.maplights, ...data.effecttilelights]) {
-				if (KinkyDungeonVisionGet(light.x_orig || light.x, light.y_orig || light.y)) {
+				if (!light.nobloom && KinkyDungeonVisionGet(light.x_orig || light.x, light.y_orig || light.y)) {
 					KDDraw(kdgameboard, kdlightsprites, `${light.x},${light.y}_${light.brightness}_${light.color || 0xffffff}`,
 						KinkyDungeonRootDirectory + "Light.png",
 						(light.x - CamX + (light.visualxoffset || 0))*KinkyDungeonGridSizeDisplay - pad,
@@ -4005,6 +4005,7 @@ function KDMouseInPlayableArea() {
 		&& !MouseIn(0, 0, 500, 1000)
 		&& !MouseIn(1940, 0, 70, 1000)
 		&& !MouseIn(0, 920, 2000, 100)
+		&& !MouseIn(1730, 255, 255, 150)
 		&& !KDButtonHovering
 		&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height))
 }

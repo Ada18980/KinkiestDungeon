@@ -2462,6 +2462,7 @@ function KDMorphToInventoryVariant(item, variant, prefix = "", curse) {
 		KinkyDungeonRestraintVariants[newname] = variant;
 	if (variant.events)
 		Object.assign(events, variant.events);
+	KDUpdateItemEventCache = true;
 	KDChangeItemName(item, item.type, variant.template);
 	if (item.type == LooseRestraint) {
 		item.name = newname;
@@ -2474,6 +2475,7 @@ function KDMorphToInventoryVariant(item, variant, prefix = "", curse) {
 		item.events = events;
 		item.inventoryVariant = newname;
 	}
+	KDUpdateItemEventCache = true;
 }
 
 /**
@@ -2559,6 +2561,7 @@ function KDGiveInventoryVariant(variant, prefix = "", curse = undefined, ID="", 
  * @param {string} ID
  */
 function KDEquipInventoryVariant(variant, prefix = "", Tightness, Bypass, Lock, Keep, Trapped, faction, Deep, curse, securityEnemy, useAugmentedPower, inventoryAs, ID = "", suffix = "") {
+	KDUpdateItemEventCache = true;
 	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
 	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
 	let newname = prefix + variant.template + (ID || (KinkyDungeonGetItemID() + "")) + (curse ? curse : "");

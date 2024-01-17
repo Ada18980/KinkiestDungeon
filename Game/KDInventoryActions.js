@@ -849,7 +849,7 @@ let KDInventoryAction = {
 			if (!itemInv) return;
 			if (itemInv.type == Consumable)
 				KinkyDungeonChangeConsumable(KDConsumable(itemInv), -quantity);
-			else KinkyDungeonInventoryRemoveSafe(itemInv);
+			else KinkyDungeonInventoryGetSafe(item.name).quantity = 1;
 			if (!KDGameData.ItemsSold) KDGameData.ItemsSold = {};
 			KDGameData.ItemsSold[item.name] = (KDGameData.ItemsSold[item.name] || 0) + quantity;
 			KinkyDungeonAddGold(value);

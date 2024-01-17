@@ -340,6 +340,7 @@ function KDResetEventData(Data) {
 function KinkyDungeonInitialize(Level, Load) {
 	KDCurrentWorldSlot = {x: 0, y: 0};
 	KDUpdateChokes = true;
+	KDUpdateItemEventCache = true;
 
 	if (StandalonePatched)
 		KDInitCurrentPose(true);
@@ -4834,17 +4835,28 @@ let KDUpdateItemEventCache = false;
 function KDGetItemEventCache() {
 	if (!KDItemEventCache || KDUpdateItemEventCache) {
 		KDItemEventCache = new Map();
+		let set = false;
 		for (let inv of KinkyDungeonAllRestraintDynamic()) {
-			if (KDRestraint(inv.item)?.events) {
+			//set = false;
+			if (!set && KDRestraint(inv.item)?.events) {
 				for (let e of KDRestraint(inv.item)?.events) {
 					if (!KDItemEventCache.get(e.trigger)) KDItemEventCache.set(e.trigger, new Map());
 					KDItemEventCache.get(e.trigger).set(KDRestraint(inv.item).Group, true);
+					//set = true;
 				}
 			}
-			if (KDCurses[KDGetCurse(inv.item)]?.events) {
+			if (!set && inv.item.events) {
+				for (let e of inv.item.events) {
+					if (!KDItemEventCache.get(e.trigger)) KDItemEventCache.set(e.trigger, new Map());
+					KDItemEventCache.get(e.trigger).set(KDRestraint(inv.item).Group, true);
+					//set = true;
+				}
+			}
+			if (!set && KDCurses[KDGetCurse(inv.item)]?.events) {
 				for (let e of KDCurses[KDGetCurse(inv.item)]?.events) {
 					if (!KDItemEventCache.get(e.trigger)) KDItemEventCache.set(e.trigger, new Map());
 					KDItemEventCache.get(e.trigger).set(KDRestraint(inv.item).Group, true);
+					//set = true;
 				}
 			}
 		}

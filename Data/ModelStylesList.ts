@@ -564,7 +564,6 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Maid2",
 			"Maid3",
 			"Maid4",
-			"Maid5",
 			"Maid6",
 		],
 		Bodystyle: [

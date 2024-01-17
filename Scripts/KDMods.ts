@@ -177,6 +177,21 @@ async function KDExecuteMods() {
 
 	}
 
+	for (let entry of Object.entries(KDModFiles)) {
+		// compat w/ PIXI loading
+		let ext = PIXI.utils.path.extname(entry[0]);
+		//if (ext) PIXI.Assets.load();
+		KDModFiles[PIXI.utils.path.toAbsolute(entry[0])] = entry[1];
+		PIXI.Assets.resolver.add(entry[0], {
+			src: entry[1],
+			format: ext,
+		});
+		PIXI.Assets.resolver.add(PIXI.utils.path.toAbsolute(entry[0]), {
+			src: entry[1],
+			format: ext,
+		});
+	}
+
 	if (KDAllModFiles.length > 0)
 		KDModsLoaded = true;
 

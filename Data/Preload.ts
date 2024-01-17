@@ -310,5 +310,143 @@ async function load() {
 	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
 	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
 	await PreloadDisplacement(displacementList);
+	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
+	PIXI.BaseTexture.defaultOptions.anisotropicLevel = 4;
+
 }
 load();
+
+(() => {
+	let extensions = PIXI.extensions;
+	// Alternatively your plugin could be an object, such as with the @pixi/assets parsers
+	const modAtlasLoader = {
+		extension: {
+			type: PIXI.ExtensionType.LoadParser,
+			name: 'modAtlasLoader',
+		},
+		name: 'modAtlasLoader',
+
+		async load<T>(url: string): Promise<T>
+		{
+			if (KDModFiles[url]) url = KDModFiles[url];
+			else {
+				url = url.substring(url.indexOf("blob:http:/"));
+				url = url.replace("blob:http:/", "blob:http://")
+			}
+
+			const response = await PIXI.settings.ADAPTER.fetch(url);
+
+			const json = await response.json();
+
+			//json.meta.image = "TextureAtlas/" + json.meta.image;
+			console.log(json)
+
+			return json as T;
+		},
+	}
+
+
+	// Make sure to "register" the extension!
+	extensions.add(modAtlasLoader);
+
+	const validImageExtensions = ['.jpeg', '.jpg', '.png', '.webp', '.avif'];
+	const validImageMIMEs = [
+		'image/jpeg',
+		'image/png',
+		'image/webp',
+		'image/avif',
+	];
+
+	// Alternatively your plugin could be an object, such as with the @pixi/assets parsers
+	const modTextureLoader = {
+		extension: {
+			type: PIXI.ExtensionType.LoadParser,
+			name: 'modTextureLoader',
+			priority: PIXI.LoaderParserPriority.High + 1,
+		},
+		name: 'modTextureLoader',
+
+		config: {
+			preferWorkers: true,
+			preferCreateImageBitmap: true,
+			crossOrigin: 'anonymous',
+		},
+
+		test(url: string): boolean
+		{
+			return (PIXI.checkDataUrl(url, validImageMIMEs) || PIXI.checkExtension(url, validImageExtensions)) && KDModFiles[url];
+		},
+
+		async load(url: string, asset: any, loader: any): Promise<any>
+		{
+			if (KDModFiles[url]) url = KDModFiles[url];
+			const useImageBitmap = globalThis.createImageBitmap && this.config.preferCreateImageBitmap;
+			let src: HTMLImageElement | ImageBitmap;
+
+			if (useImageBitmap)
+			{
+
+				src = await PIXI.loadImageBitmap(url);
+			}
+			else
+			{
+				src = await new Promise((resolve, reject) =>
+				{
+					const src = new Image();
+
+					src.crossOrigin = this.config.crossOrigin;
+					src.src = url;
+					if (src.complete)
+					{
+						resolve(src);
+					}
+					else
+					{
+						src.onload = () => resolve(src);
+						src.onerror = (e) => reject(e);
+					}
+				});
+			}
+
+			const options = { ...asset.data };
+
+			options.resolution ??= PIXI.utils.getResolutionOfUrl(url);
+			if (useImageBitmap && options.resourceOptions?.ownsImageBitmap === undefined)
+			{
+				options.resourceOptions = { ...options.resourceOptions };
+				options.resourceOptions.ownsImageBitmap = true;
+			}
+
+			const base = new PIXI.BaseTexture(src, options);
+
+			base.resource.src = url;
+
+			return PIXI.createTexture(base, loader, url);
+		},
+
+		unload(texture: PIXITexture): void
+		{
+			texture.destroy(true);
+		}
+	}
+
+	// Make sure to "register" the extension!
+	extensions.add(modTextureLoader);
+
+	const resolveModURL = {
+		extension: {
+			type: PIXI.ExtensionType.ResolveParser,
+			name: 'resolveModURL',
+			priority: PIXI.LoaderParserPriority.High,
+		},
+		test: (url) => KDModFiles[url] != undefined,
+		parse: (value: string): PIXIUnresolvedAsset =>
+			({
+				resolution: parseFloat(PIXI.settings.RETINA_PREFIX.exec(value)?.[1] ?? '1'),
+				format: PIXI.utils.path.extname(value).slice(1),
+				src: KDModFiles[value],
+			}),
+	}
+
+	extensions.add(resolveModURL);
+})();

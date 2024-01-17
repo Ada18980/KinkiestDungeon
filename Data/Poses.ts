@@ -46,7 +46,8 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		pri_rotation: 2,
 		offset_x: 0,
 		offset_y: 0.1,
-		pri_offset: 3,
+		pri_offsetx: 3,
+		pri_offsety: 3,
 		global_default: "Closed",
 		mods: [
 		{
@@ -73,7 +74,8 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		pri_rotation: 2,
 		offset_x: 0,
 		offset_y: 0.0,
-		pri_offset: 4,
+		pri_offsetx: 4,
+		pri_offsety: 4,
 		global_default: "Closed",
 		mods: [
 		{
@@ -100,7 +102,8 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		pri_rotation: 1,
 		offset_x: 0.32,
 		offset_y: 0.1,
-		pri_offset: 2,
+		pri_offsetx: 2,
+		pri_offsety: 2,
 		global_default: "Closed",
 		mods: [{
 			Layer: "Head",
@@ -124,10 +127,24 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		],
 	},
 
+	SuspendedKneel: {
+		filter_pose: ["Kneel", "KneelClosed"],
+		offset_y: 0,
+		pri_offsetx: 3,
+		pri_offsety: 3,
+		mods: [
+			{
+				Layer: "BG",
+				offset_x: 0,
+				offset_y: -.15,
+			},
+		]
+	},
 	KneelDown: {
-		filter_pose: ["Kneel"],
+		filter_pose: ["Kneel", "KneelClosed"],
 		offset_y: .3,
-		pri_offset: 2,
+		pri_offsetx: 2,
+		pri_offsety: 2,
 		mods: [
 			{
 				Layer: "BG",
@@ -136,9 +153,14 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 			},
 		]
 	},
+	ShiftRight: {
+		offset_x: .2,
+		pri_offsetx: 5,
+	},
 	Kneel: {
 		offset_y: 0.15,
-		pri_offset: 1,
+		pri_offsetx: 1,
+		pri_offsety: 1,
 		mods: [{
 			Layer: "BG",
 			offset_x: 0,
@@ -157,7 +179,8 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 	},
 	KneelClosed: {
 		offset_y: 0.15,
-		pri_offset: 1,
+		pri_offsetx: 1,
+		pri_offsety: 1,
 		global_default: "Kneel",
 		mods: [{
 			Layer: "ShoeLeft",
@@ -207,10 +230,11 @@ function ModelGetMaxPose(Poses: {[_: string]: boolean}, CheckVar: string, Filter
 }
 
 function ModelGetPoseOffsets(Poses: {[_: string]: boolean}) {
-	let pose = ModelGetMaxPose(Poses, "pri_offset");
+	let pose = ModelGetMaxPose(Poses, "pri_offsetx");
 	let x = 0;
-	let y = 0;
 	if (PoseProperties[pose]?.offset_x) x = PoseProperties[pose]?.offset_x;
+	pose = ModelGetMaxPose(Poses, "pri_offsety");
+	let y = 0;
 	if (PoseProperties[pose]?.offset_y) y = PoseProperties[pose]?.offset_y;
 	return {X_Offset: x, Y_Offset: y};
 }
@@ -256,85 +280,85 @@ function KDGetAvailablePosesLegs(C: Character): string[] {
 	for (let p of LEGPOSES) {
 		poses[p] = true;
 	}
-	if (C == KinkyDungeonPlayer) {
-		let closed = false;
-		let spread = false;
-		// Logic for the player
-		if (["FeetLinked", "Legbinders", "LegBind", "Hobbleskirts"].some((tag) => {return CheckPoseOrTags(C, tag);})) {
-			delete poses.Spread;
-			delete poses.Kneel;
-			closed = true;
-		} else if (CheckPoseOrTags(C, "ForceKneel")) {
-			delete poses.Spread;
-			delete poses.Closed;
-		}
-		if (!closed && CheckPoseOrTags(C, "FeetSpreader")) {
-			delete poses.Closed;
-			spread = true;
-		}
-		if (CheckPoseOrTags(C, "Hogties") || CheckPoseOrTags(C, "ForceHogtie")) {
-			for (let p of STANDPOSES) {
-				delete poses[p];
-			}
-			for (let p of KNEELPOSES) {
-				delete poses[p];
-			}
-		} else if (CheckPoseOrTags(C, "ForceKneel")) {
-			for (let p of STANDPOSES) {
-				delete poses[p];
-			}
-		}
-
-		if (closed) {
-			for (let p of SPREADPOSES) {
-				delete poses[p];
-			}
-		} else if (spread) {
-			for (let p of CLOSEDPOSES) {
-				delete poses[p];
-			}
-		}
-
-		if (CheckPoseOrTags(C, "BlockHogtie")) {
-			for (let p of HOGTIEPOSES) {
-				delete poses[p];
-			}
-		}
-		if (CheckPoseOrTags(C, "BlockKneel")) {
-			for (let p of KNEELPOSES) {
-				delete poses[p];
-			}
-		}
-		if (CheckPoseOrTags(C, "DiscourageHogtie") && Object.keys(poses).length > Object.keys(HOGTIEPOSES).length) {
-			for (let p of HOGTIEPOSES) {
-				delete poses[p];
-			}
-		}
-		if (CheckPoseOrTags(C, "DiscourageKneel") && Object.keys(poses).length > Object.keys(KNEELPOSES).length) {
-			for (let p of KNEELPOSES) {
-				delete poses[p];
-			}
-		}
-		if (CheckPoseOrTags(C, "DiscourageStand") && Object.keys(poses).length > Object.keys(STANDPOSES).length) {
-			for (let p of STANDPOSES) {
-				delete poses[p];
-			}
-		}
-
-
-		if (Object.keys(poses).length == 0) {
-			if (CheckPoseOrTags(C, "DefaultStand")) {
-				poses = {Hogtie: true};
-			} else if (CheckPoseOrTags(C, "DefaultKneel")) {
-				poses = {Hogtie: true};
-			} else {
-				poses = {Hogtie: true};
-			}
-		}
-	} else {
-		// Logic for NPC
-		// ???
+	//if (C == KinkyDungeonPlayer) {
+	let closed = false;
+	let spread = false;
+	// Logic for the player
+	if (["FeetLinked", "Legbinders", "LegBind", "Hobbleskirts"].some((tag) => {return CheckPoseOrTags(C, tag);})) {
+		delete poses.Spread;
+		delete poses.Kneel;
+		closed = true;
+	} else if (CheckPoseOrTags(C, "ForceKneel")) {
+		delete poses.Spread;
+		delete poses.Closed;
 	}
+	if (!closed && CheckPoseOrTags(C, "FeetSpreader")) {
+		delete poses.Closed;
+		spread = true;
+	}
+	if (CheckPoseOrTags(C, "Hogties") || CheckPoseOrTags(C, "ForceHogtie")) {
+		for (let p of STANDPOSES) {
+			delete poses[p];
+		}
+		for (let p of KNEELPOSES) {
+			delete poses[p];
+		}
+	} else if (CheckPoseOrTags(C, "ForceKneel")) {
+		for (let p of STANDPOSES) {
+			delete poses[p];
+		}
+	}
+
+	if (closed) {
+		for (let p of SPREADPOSES) {
+			delete poses[p];
+		}
+	} else if (spread) {
+		for (let p of CLOSEDPOSES) {
+			delete poses[p];
+		}
+	}
+
+	if (CheckPoseOrTags(C, "BlockHogtie")) {
+		for (let p of HOGTIEPOSES) {
+			delete poses[p];
+		}
+	}
+	if (CheckPoseOrTags(C, "BlockKneel")) {
+		for (let p of KNEELPOSES) {
+			delete poses[p];
+		}
+	}
+	if (CheckPoseOrTags(C, "DiscourageHogtie") && Object.keys(poses).length > Object.keys(HOGTIEPOSES).length) {
+		for (let p of HOGTIEPOSES) {
+			delete poses[p];
+		}
+	}
+	if (CheckPoseOrTags(C, "DiscourageKneel") && Object.keys(poses).length > Object.keys(KNEELPOSES).length) {
+		for (let p of KNEELPOSES) {
+			delete poses[p];
+		}
+	}
+	if (CheckPoseOrTags(C, "DiscourageStand") && Object.keys(poses).length > Object.keys(STANDPOSES).length) {
+		for (let p of STANDPOSES) {
+			delete poses[p];
+		}
+	}
+
+
+	if (Object.keys(poses).length == 0) {
+		if (CheckPoseOrTags(C, "DefaultStand")) {
+			poses = {Hogtie: true};
+		} else if (CheckPoseOrTags(C, "DefaultKneel")) {
+			poses = {Hogtie: true};
+		} else {
+			poses = {Hogtie: true};
+		}
+	}
+	//} else {
+	// Logic for NPC
+	// ???
+	//}
 
 	return Object.keys(poses);
 }
@@ -362,7 +386,7 @@ function KDGetAvailablePosesArms(C: Character): string[] {
 	} else if (CheckPoseOrTags(C, "Petsuits") || CheckPoseOrTags(C, "Fiddles")) {
 		poses = {Front: true};
 	}
-	if (KinkyDungeonIsArmsBound(false, false)) {
+	if (KinkyDungeonIsArmsBoundC(C, false, false)) {
 		delete poses.Free;
 		if (!CheckPoseOrTags(C, "HandsFrontAllowed") && !CheckPoseOrTags(C, "HandsFront") && !CheckPoseOrTags(C, "Petsuits") && !CheckPoseOrTags(C, "Fiddles")) {
 			delete poses.Front;

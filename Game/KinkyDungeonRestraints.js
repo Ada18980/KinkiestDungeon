@@ -737,6 +737,7 @@ function KinkyDungeonIsLockable(restraint) {
  * @param {boolean} NoEvent
  */
 function KinkyDungeonLock(item, lock, NoEvent = false) {
+	KDUpdateItemEventCache = true;
 	if (lock != "") {
 		if (KinkyDungeonIsLockable(KDRestraint(item))) {
 			if (KDLocks[lock] && KDLocks[lock].doLock) KDLocks[lock].doLock({item: item});
@@ -1404,6 +1405,21 @@ function KinkyDungeonIsArmsBound(ApplyGhost, Other) {
 	return (!ApplyGhost || !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())) &&
 		blocked;
 }
+/**
+ * @param {Character} C
+ * @param {boolean} [ApplyGhost]
+ * @param {boolean} [Other] - Is this on yourself or another?
+ * @returns {boolean}
+ */
+function KinkyDungeonIsArmsBoundC(C, ApplyGhost, Other) {
+	if (C == KinkyDungeonPlayerCharacter) {
+		return KinkyDungeonIsArmsBound(ApplyGhost, Other);
+	} else {
+		return false;
+	}
+}
+
+
 
 /**
  *
@@ -3844,6 +3860,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				KDUpdateItemEventCache = true;
 				KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: item, host: undefined, keep: Keep, Link: Link});
 
+				KDUpdateItemEventCache = true;
 				if (Curse && KDCurses[Curse] && KDCurses[Curse].onApply) {
 					KDCurses[Curse].onApply(item, undefined);
 				}
@@ -3852,12 +3869,14 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				else if (restraint.DefaultLock && !Unlink) KinkyDungeonLock(item, KDProcessLock(restraint.DefaultLock));
 
 				KDUpdateLinkCaches(item);
+				KDUpdateItemEventCache = true;
 			} else if ((!Link && !linked) || SwitchItems) {
 				KinkyDungeonCancelFlag = false;
 				// Otherwise, if we did unlink an item, and we are not in the process of linking (very important to prevent loops)
 				// Then we link the new item to the unlinked item if possible
 				r = KinkyDungeonGetRestraintItem(restraint.Group);
 				if (SwitchItems) {
+					KDUpdateItemEventCache = true;
 					KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, false, undefined, faction, undefined, Curse, securityEnemy, undefined, inventoryAs, data);
 				} else if (r && KDRestraint(r) && KinkyDungeonIsLinkable({
 					oldRestraint: KDRestraint(r),
@@ -3893,6 +3912,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				}
 				KinkyDungeonSendEvent("postRemoval", {item: prevR, add: eventsAdd, keep: Keep, Link: Link, shrine: undefined});
 			}
+			KDUpdateItemEventCache = true;
 			KinkyDungeonCancelFlag = false;
 		}
 
@@ -4235,6 +4255,7 @@ function KinkyDungeonLinkItem(newRestraint, oldItem, tightness, Lock, Keep, fact
 
 
 			KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: newItem, host: undefined, keep: Keep, Link: true});
+			KDUpdateItemEventCache = true;
 			return newItem;
 		}
 	}
