@@ -755,7 +755,7 @@ let KDEffectTileFunctions = {
 		if (tile.pauseDuration > 0) {
 			// Meep
 		} else {
-			let result = (entity.player && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") >= 0.45))
+			let result = (entity.player && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") >= 0.75))
 			|| (!entity.player && !entity.Enemy.tags?.metal);
 			let slimeWalker = entity.player && KDSlimeWalker(entity);
 			if (!slimeWalker) {

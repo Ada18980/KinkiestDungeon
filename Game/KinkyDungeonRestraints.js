@@ -1412,7 +1412,7 @@ function KinkyDungeonIsArmsBound(ApplyGhost, Other) {
  * @returns {boolean}
  */
 function KinkyDungeonIsArmsBoundC(C, ApplyGhost, Other) {
-	if (C == KinkyDungeonPlayerCharacter) {
+	if (C == KinkyDungeonPlayer) {
 		return KinkyDungeonIsArmsBound(ApplyGhost, Other);
 	} else {
 		return false;

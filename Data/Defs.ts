@@ -285,6 +285,7 @@ let LAYERS_BASE = [
 	"OverCrotchStrap",
 
 	"Option_ChastityBelt",
+	"Option_CrotchRope",
 	"BodysuitOver",
 
 	// Panties go here when standing
@@ -295,6 +296,7 @@ let LAYERS_BASE = [
 	"Bodysuit",
 
 	"ChastityBelt",
+	"CrotchRope",
 
 
 
@@ -474,7 +476,9 @@ let LayerGroups = {
 		"HarnessLower",
 		"HarnessMid",
 		"ChastityBelt",
+		"CrotchRope",
 		"Option_ChastityBelt",
+		"Option_CrotchRope",
 		"Panties",
 		"CrotchPanelMid",
 		"Bodysuit",
@@ -488,7 +492,9 @@ let LayerGroups = {
 		"HarnessLower",
 		"HarnessMid",
 		"ChastityBelt",
+		"CrotchRope",
 		"Option_ChastityBelt",
+		"Option_CrotchRope",
 		"Panties",
 		"CrotchPanelMid",
 		"Bodysuit",

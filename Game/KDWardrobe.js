@@ -893,11 +893,11 @@ function KDDrawWardrobe(screen, Character) {
 
 			if (NewOutfit) {
 				KDOriginalValue = KDOutfitOriginalStore[KDCurrentOutfit] || "";
-				CharacterAppearanceRestore(KinkyDungeonPlayer, DecompressB64(NewOutfit));
-				CharacterRefresh(KinkyDungeonPlayer);
-				KDInitProtectedGroups(KinkyDungeonPlayer);
-				KinkyDungeonDressPlayer();
-			} else {
+				CharacterAppearanceRestore(C, DecompressB64(NewOutfit));
+				CharacterRefresh(C);
+				KDInitProtectedGroups(C);
+				KinkyDungeonDressPlayer(C, true);
+			} else if (C == KinkyDungeonPlayer) {
 				KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
 				CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
 				CharacterReleaseTotal(KinkyDungeonPlayer);

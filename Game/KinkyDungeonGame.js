@@ -1054,7 +1054,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 				startTime = performance.now();
 			}
 			if (!altType || altType.chests)
-				KinkyDungeonPlaceChests(MapParams, chestlist, shrinelist, treasurechance, treasurecount, rubblechance, Floor, width, height); // Place treasure chests inside dead ends
+				KinkyDungeonPlaceChests(MapParams, chestlist, spawnPoints, shrinelist, treasurechance, treasurecount, rubblechance, Floor, width, height); // Place treasure chests inside dead ends
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for chest creation`);
 				startTime = performance.now();
@@ -2089,7 +2089,7 @@ function KinkyDungeonPlaceShortcut(checkpoint, width, height) {
 
 let KDMinBoringness = 0; // Minimum boringness for treasure spawn
 
-function KinkyDungeonPlaceChests(params, chestlist, shrinelist, treasurechance, treasurecount, rubblechance, Floor, width, height) {
+function KinkyDungeonPlaceChests(params, chestlist, spawnPoints, shrinelist, treasurechance, treasurecount, rubblechance, Floor, width, height) {
 
 	let shrinePoints = new Map();
 
@@ -2267,6 +2267,23 @@ function KinkyDungeonPlaceChests(params, chestlist, shrinelist, treasurechance, 
 				KinkyDungeonTilesSet("" + chest.x + "," +chest.y, {Loot: chest.Loot ? chest.Loot : "chest", Faction: chest.Faction, Roll: KDRandom(),
 					NoTrap: chest.NoTrap,
 					lootTrap: KDGenChestTrap(false, chest.x, chest.y, (chest.Loot ? chest.Loot : "chest"), lock, chest.noTrap),});
+			}
+
+			if (!KinkyDungeonTilesGet(chest.x + ',' + chest.y)?.lootTrap) {
+				// Chests in the open receive an extra guard
+				let point = KinkyDungeonGetNearbyPoint(chest.x, chest.y, true, undefined, true, false);
+				// Try again but a short dist away
+				if (!point) point = KinkyDungeonGetNearbyPoint(chest.x, chest.y, true, undefined, false, false);
+				if (point) {
+					let t = ["jailer"];
+					if (KinkyDungeonFactionTag[KDGetMainFaction()]) {
+						t.push(KinkyDungeonFactionTag[KDGetMainFaction()]);
+					}
+					spawnPoints.push({x:point.x, y:point.y, required: t, AI: "guard", priority: true, force: true, keys: true, faction: KinkyDungeonTilesGet(chest.x + ',' + chest.y)?.Faction || KDGetMainFaction() || "Enemy"});
+					if (!KinkyDungeonTilesGet(chest.x + ',' + chest.y).Faction) {
+						KinkyDungeonTilesGet(chest.x + ',' + chest.y).Faction = KDGetMainFaction();
+					}
+				}
 			}
 
 			if (KDAlreadyOpened(chest.x, chest.y)) {

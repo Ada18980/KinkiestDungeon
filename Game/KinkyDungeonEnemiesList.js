@@ -1077,7 +1077,7 @@ let KinkyDungeonEnemies = [
 			lighting: true,
 			AmbushSprite: "VinePlant",
 		},
-		spells: ["MiniSlime"], castWhileMoving: true, spellRdy: false, spellCooldownMult: 1, spellCooldownMod: 3, projectileAttack: true,
+		spells: ["VineSlimeBall"], castWhileMoving: true, spellRdy: false, spellCooldownMult: 1, spellCooldownMod: 3, projectileAttack: true,
 		maxblock: 0,
 		maxdodge: 0,
 		kite: 1.5,

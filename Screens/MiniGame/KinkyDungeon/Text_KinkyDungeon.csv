@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.1.7"
+KDVersionStr,"5.1.8"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -385,7 +385,7 @@ KinkyDungeonStatDescCurseSeeker,"When you pick up cursed armor or restraints fro
 KinkyDungeonStatBurningDesire,"Burning Desire"
 KinkyDungeonStatDescBurningDesire,"While above 70% distraction, you ignite nearby objects and gain +25% fire damage."
 KinkyDungeonStatFrigidPersonality,"Frigid Personality"
-KinkyDungeonStatDescFrigidPersonality,"While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties."
+KinkyDungeonStatDescFrigidPersonality,"While below 10% distraction, you gain +10% ice damage and can walk on ice without penalties."
 
 KinkyDungeonStatGroundedInReality,"Grounded in Reality"
 KinkyDungeonStatDescGroundedInReality,"While at max mana, your attacks deal an additional 30% of their base damage as electric damage."
@@ -5167,6 +5167,7 @@ KinkyDungeonFilterair,Air
 KinkyDungeonFilterelectric,Lightning
 KinkyDungeonFilterwater,Water
 KinkyDungeonFilterslime,Rubber
+KinkyDungeonFilterlatex,Rubber
 KinkyDungeonFilterteleport,Teleport
 KinkyDungeonFilterphysics,Physics
 KinkyDungeonFilterconjure,Conjuration
@@ -5691,7 +5692,7 @@ KinkyDungeonSpellCastLiquidMetal,"You inscribe a transmutation circle on the flo
 KinkyDungeonSpellTargetLiquidMetal,Choose area containing Latex
 
 KinkyDungeonSpellSlimeWalk,Slime Repulsion
-KinkyDungeonSpellDescriptionSlimeWalk,"Gain +50 glue resist."
+KinkyDungeonSpellDescriptionSlimeWalk,"Gain +50 glue resist. (Having 45 or more Glue Resist negates many negative effects from slime)"
 
 KinkyDungeonSpellSpread,Spread
 KinkyDungeonSpellDescriptionSpread,"Slime in the target area expands by 1 unit in the four cardinal directions. Refreshes duration to 12-20 turns."
@@ -5743,6 +5744,11 @@ KinkyDungeonSpellEarthformLine,Earthshape (Line)
 KinkyDungeonSpellDescriptionEarthformLine,Create a 4-tile line of Earthen Monoliths. They have 50 hitpoints and 25 armor.
 KinkyDungeonSpellCastEarthformLine,You stomp your foot and monoliths emerge from the ground!
 KinkyDungeonSpellTargetEarthformLine,Choose line direction
+
+KinkyDungeonSpellEarthformArc,Earthshape (Arc)
+KinkyDungeonSpellDescriptionEarthformArc,Create a 5-wide arc of Earthen Monoliths. They have 50 hitpoints and 25 armor.
+KinkyDungeonSpellCastEarthformArc,You stomp your foot and monoliths emerge from the ground!
+KinkyDungeonSpellTargetEarthformArc,Choose line direction
 
 KinkyDungeonSpellBoulderLaunch,Rock
 KinkyDungeonSpellBoulder,Rock
@@ -19230,3 +19236,5 @@ KDAbsoluteArmor,"Absolute Armor (1/2 crit mult)"
 
 KDDressNPC,Change Outfit
 KDBackToGame,Back to Game
+
+KinkyDungeonSpellVineSlimeBall,Slimy Spit

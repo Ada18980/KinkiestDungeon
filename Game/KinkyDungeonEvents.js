@@ -2860,7 +2860,8 @@ const KDEventMapBuff = {
 										shield_distract: spell?.shield_distract, // Distract thru shield
 										shield_vuln: spell?.shield_vuln, // Vuln thru shield
 
-										damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, desireMult: spell.desireMult, bindEff: spell.bindEff, bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, false);
+										damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, desireMult: spell.desireMult, bindEff: spell.bindEff,
+										bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, false, enemy.x, enemy.y);
 							b.visual_x = origin.x;
 							b.visual_y = origin.y;
 							let dist = KDistEuclidean(player.x - origin.x, player.y - origin.y);
@@ -2926,7 +2927,7 @@ const KDEventMapBuff = {
 										shield_distract: spell?.shield_distract, // Distract thru shield
 										shield_vuln: spell?.shield_vuln, // Vuln thru shield
 										damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, desireMult: spell.desireMult, bindEff: spell.bindEff, bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags},
-									spell: spell}, false);
+									spell: spell}, false, enemy.x, enemy.y);
 							b.visual_x = origin.x;
 							b.visual_y = origin.y;
 							let dist = KDistEuclidean(player.x - origin.x, player.y - origin.y);
@@ -7510,7 +7511,8 @@ let KDEventMapEnemy = {
 										shield_slow: spell?.shield_slow, // slow thru shield
 										shield_distract: spell?.shield_distract, // Distract thru shield
 										shield_vuln: spell?.shield_vuln, // Vuln thru shield
-										damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, desireMult: spell.desireMult, bindEff: spell.bindEff, bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, false);
+										damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, desireMult: spell.desireMult, bindEff: spell.bindEff, bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags},
+									spell: spell}, false, enemy.x, enemy.y);
 							b.visual_x = origin.x;
 							b.visual_y = origin.y;
 							let dist = KDistEuclidean(player.x - origin.x, player.y - origin.y);
@@ -8578,7 +8580,7 @@ let KDEventMapGeneric = {
 		},
 
 		"FrigidPersonality": (e, data) => {
-			if (KinkyDungeonStatDistraction <= KinkyDungeonStatDistractionMax * 0.01 && KinkyDungeonStatsChoice.has("FrigidPersonality")) {
+			if (KinkyDungeonStatDistraction <= KinkyDungeonStatDistractionMax * 0.1 && KinkyDungeonStatsChoice.has("FrigidPersonality")) {
 				let px = KinkyDungeonPlayerEntity.x - 1 + Math.round(2 * KDRandom());
 				let py = KinkyDungeonPlayerEntity.y - 1 + Math.round(2 * KDRandom());
 				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(px, py)))

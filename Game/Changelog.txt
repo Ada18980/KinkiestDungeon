@@ -23,6 +23,16 @@ Monk class?
 - Passive: enchantments apply to unarmed strikes
 - Active: Increase unarmed base damage for 20 turns. After using, need to meditate 10 turns to recharge. Free.
 
+5.1.9
+
+5.1.8
+- Frigid personality now ends at 10% distraction rather than 1%
+- Liquid metal tile effects are now ignored by the player at 75 Glue Resist rather than 45 Glue Resist
+- Vine spitters have a more powerful attack
+- Added Earthshape Arc
+- Fixed slime wall and latex wall not existing
+- Fixed mistakenly switching the player outfit when choosing an outfit to put on an NPC
+
 5.1.7
 - Added mod texture packer support
 

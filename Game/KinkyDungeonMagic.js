@@ -930,7 +930,8 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 						shield_slow: spell?.shield_slow, // slow thru shield
 						shield_distract: spell?.shield_distract, // Distract thru shield
 						shield_vuln: spell?.shield_vuln, // Vuln thru shield
-						bind: spell.bind, crit: spell.crit, bindcrit: spell.bindcrit, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, miscast);
+						bind: spell.bind, crit: spell.crit, bindcrit: spell.bindcrit, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, miscast,
+				entity.x, entity.y);
 			b.visual_x = entity.x;
 			b.visual_y = entity.y;
 			data.bulletfired = b;
@@ -969,7 +970,8 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 						shield_vuln: spell?.shield_vuln, // Vuln thru shield
 						bindEff: spell.bindEff,
 						bind: spell.bind, crit: spell.crit, bindcrit: spell.bindcrit, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell
-				}, miscast);
+				}, miscast,
+				entity.x, entity.y);
 			data.bulletfired = b;
 		} else if (spell.type == "hit") {
 			let sz = spell.size;
@@ -985,6 +987,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			}
 			let b = {x: tX, y:tY,
 				vx: moveDirection.x,vy: moveDirection.y, born: 1,
+				ox: entity.x, oy: entity.y,
 				bullet: {noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, width:sz, height:sz, summon:spell.summon,
 					targetX: tX, targetY: tY,
 					followPlayer: (!enemy && player && spell.followCaster) ? true : undefined,

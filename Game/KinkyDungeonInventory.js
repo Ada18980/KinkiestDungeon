@@ -1445,7 +1445,7 @@ function KinkyDungeonSendInventoryEvent(Event, data) {
 	while ((stack) && iteration < 100) {
 		stack = false;
 		for (let item of KinkyDungeonAllRestraint()) {
-			if (!KDItemEventCache.get(Event).get(KDRestraint(item)?.Group)) continue;
+			if (!KDItemEventCache.get(Event)?.get(KDRestraint(item)?.Group)) continue;
 			let curse = KDGetCurse(item);
 			if (item.dynamicLink)
 				for (let d_item of KDDynamicLinkList(item)) {

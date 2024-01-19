@@ -501,7 +501,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Brown1",
 			"Brown2",
 			"Brown3",
-			"Amber",
+			"Amber1",
 			"Amber2",
 			"Amber3",
 			"RedOpen",

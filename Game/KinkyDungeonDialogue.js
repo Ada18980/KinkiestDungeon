@@ -1751,7 +1751,12 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 				KinkyDungeonSetFlag(f.name, f.duration, f.floors);
 			}
 			// This is the restraint that the dialogue offers to add. It's selected from a set of tags. You can change the tags to change the restraint
-			let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], undefined, Lock);
+			let r = KinkyDungeonGetRestraint(
+				{tags: restraint},
+				KDGetEffLevel() * 1.5 + KDGetOfferLevelMod(),
+				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+				undefined,
+				Lock);
 			if (r) {
 				KDGameData.CurrentDialogMsgData = {
 					"Data_r": r.name,

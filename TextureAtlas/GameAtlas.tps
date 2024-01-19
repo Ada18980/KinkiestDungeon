@@ -589,6 +589,8 @@
             <key type="filename">../Game/Bullets/TrapSleepDart.png</key>
             <key type="filename">../Game/Bullets/TrapSleepDartHit.png</key>
             <key type="filename">../Game/Bullets/TrueSteelHit.png</key>
+            <key type="filename">../Game/Bullets/VineSlimeBall.png</key>
+            <key type="filename">../Game/Bullets/VineSlimeBallHit.png</key>
             <key type="filename">../Game/Bullets/Vineexp.png</key>
             <key type="filename">../Game/Bullets/VineexpHit.png</key>
             <key type="filename">../Game/Bullets/Wall.png</key>
@@ -2115,6 +2117,7 @@
             <key type="filename">../Game/Spells/DistractionShield.png</key>
             <key type="filename">../Game/Spells/EarthMote.png</key>
             <key type="filename">../Game/Spells/Earthform.png</key>
+            <key type="filename">../Game/Spells/EarthformArc.png</key>
             <key type="filename">../Game/Spells/EarthformLine.png</key>
             <key type="filename">../Game/Spells/EarthformMound.png</key>
             <key type="filename">../Game/Spells/EarthformRing.png</key>
