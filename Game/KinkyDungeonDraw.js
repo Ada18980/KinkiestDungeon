@@ -55,6 +55,7 @@ if (StandalonePatched) {
 	kdgamesound.alpha = 0.5;
 }
 
+let KDOutlineFilterCache = new Map();
 
 let kdminimap = new PIXI.Graphics();
 kdminimap.x = 500;
@@ -1283,38 +1284,38 @@ function KinkyDungeonDrawGame() {
 									zIndex: 100,
 								});
 							if (KinkyDungeonSlowLevel < 10) {
-								if (!KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY)
-									|| KDCanPassEnemy(KinkyDungeonPlayerEntity, KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY))) {
-									let diststart = Math.max(1, Math.round(KinkyDungeonSlowLevel));
-									let dist = diststart;
-									//let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
-									let requireLight = KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0;
-									let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY,
-										false, false, false, KinkyDungeonMovableTilesEnemy, requireLight, false, true,
-										undefined, false, undefined, false, true);
-									if (path?.length > 1) {
-										dist *= path.length;
-									}
-									if (KDGameData.MovePoints < 0) {
-										if (path?.length > 1) {
-											dist -= Math.min(0, KDGameData.MovePoints + 1);
-										} else dist = 1 - KDGameData.MovePoints;
-									} else if (!KDToggles.LazyWalk) {
-										if (path?.length > 1) {
-											dist -= Math.max(0, diststart - 1);
-										} else dist = 1;
-									}
-									dist = Math.ceil(Math.max(0, dist));
-									DrawTextKD("x" + dist, (KinkyDungeonTargetX - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
-									if (path && KDToggles.ShowPath)
-										for (let p of path) {
-											if (p.x != KinkyDungeonTargetX || p.y != KinkyDungeonTargetY)
-												KDDraw(kdstatusboard, kdpixisprites, `ui_movereticule_${p.x},${p.y}`, KinkyDungeonRootDirectory + "UI/PathDisplay.png",
-													(p.x - CamX)*KinkyDungeonGridSizeDisplay, (p.y - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
-														zIndex: 100,
-													});
-										}
+								//if (!KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY)
+								//|| KDCanPassEnemy(KinkyDungeonPlayerEntity, KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY))) {
+								let diststart = Math.max(1, Math.round(KinkyDungeonSlowLevel));
+								let dist = diststart;
+								//let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
+								let requireLight = KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0;
+								let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY,
+									true, false, false, KinkyDungeonMovableTilesEnemy, requireLight, false, true,
+									undefined, false, undefined, false, true);
+								if (path?.length > 1) {
+									dist *= path.length;
 								}
+								if (KDGameData.MovePoints < 0) {
+									if (path?.length > 1) {
+										dist -= Math.min(0, KDGameData.MovePoints + 1);
+									} else dist = 1 - KDGameData.MovePoints;
+								} else if (!KDToggles.LazyWalk) {
+									if (path?.length > 1) {
+										dist -= Math.max(0, diststart - 1);
+									} else dist = 1;
+								}
+								dist = Math.ceil(Math.max(0, dist));
+								DrawTextKD("x" + dist, (KinkyDungeonTargetX - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
+								if (path && KDToggles.ShowPath)
+									for (let p of path) {
+										if (p.x != KinkyDungeonTargetX || p.y != KinkyDungeonTargetY)
+											KDDraw(kdstatusboard, kdpixisprites, `ui_movereticule_${p.x},${p.y}`, KinkyDungeonRootDirectory + "UI/PathDisplay.png",
+												(p.x - CamX)*KinkyDungeonGridSizeDisplay, (p.y - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+													zIndex: 100,
+												});
+									}
+								//}
 							}
 						}
 					} else if ((mouseDown && KDMouseInPlayableArea()) || (KinkyDungeonMoveDirection.x != 0 || KinkyDungeonMoveDirection.y != 0)) {
@@ -4093,4 +4094,29 @@ function KDDrawPalettes(x, y, w, scale = 72) {
 			XX += spacing;
 		}
 	}
+}
+
+/**
+ *
+ * @param {number} color
+ * @param {number} alpha
+ * @param {number} quality
+ * @param {number} thickness
+ * @returns {PIXIFilter}
+ */
+function KDGetOutlineFilter(color, alpha, quality, thickness) {
+	if (StandalonePatched) {
+		if (!KDOutlineFilterCache.get(`${color}_${alpha}_${quality}`)) {
+			KDOutlineFilterCache.set(`${color}_${alpha}_${quality}`, new PIXI.filters.OutlineFilter(thickness, color, quality, alpha, true));
+		}
+		return KDOutlineFilterCache.get(`${color}_${alpha}_${quality}`);
+	}
+	return null;
+}
+
+function KDClearOutlineFilterCache() {
+	for (let f of KDOutlineFilterCache.values()) {
+		f.destroy();
+	}
+	KDOutlineFilterCache = new Map();
 }

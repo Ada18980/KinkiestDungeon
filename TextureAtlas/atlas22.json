@@ -138,10 +138,18 @@
 },
 "Models/Elf/BandRightFront.png":
 {
-	"frame": {"x":2002,"y":1052,"w":44,"h":40},
+	"frame": {"x":2002,"y":1101,"w":44,"h":40},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":459,"y":494,"w":44,"h":40},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Elf/CircletGem.png":
+{
+	"frame": {"x":2002,"y":1258,"w":43,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":560,"y":169,"w":43,"h":40},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Elf/SkirtKneel.png":
@@ -168,6 +176,14 @@
 	"spriteSourceSize": {"x":521,"y":275,"w":59,"h":39},
 	"sourceSize": {"w":725,"h":425}
 },
+"Models/FaceKjus/MouthDistracted.png":
+{
+	"frame": {"x":2002,"y":1052,"w":44,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":585,"y":322,"w":44,"h":49},
+	"sourceSize": {"w":745,"h":474}
+},
 "Models/FaceKjus/WhitesEyesDazed.png":
 {
 	"frame": {"x":1989,"y":1940,"w":59,"h":39},
@@ -192,20 +208,28 @@
 	"spriteSourceSize": {"x":495,"y":104,"w":290,"h":303},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/Handcuffs/Irish8AnkleLeftKneelClosed.png":
+{
+	"frame": {"x":2002,"y":1207,"w":43,"h":51},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":718,"y":949,"w":43,"h":51},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Handcuffs/LegironsLeftKneelClosed.png":
+{
+	"frame": {"x":2002,"y":1207,"w":43,"h":51},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":718,"y":949,"w":43,"h":51},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/Harness/HardwareTop.png":
 {
 	"frame": {"x":1637,"y":1579,"w":74,"h":64},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":555,"y":462,"w":74,"h":64},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Heels/BalletLaceLeftClosed.png":
-{
-	"frame": {"x":2002,"y":1092,"w":43,"h":195},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":582,"y":1391,"w":43,"h":195},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Heels/TallLegRightKneel.png":
@@ -432,6 +456,22 @@
 	"spriteSourceSize": {"x":665,"y":167,"w":194,"h":259},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/Rope/Calf2KneelClosed.png":
+{
+	"frame": {"x":2002,"y":1141,"w":43,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":610,"y":981,"w":43,"h":66},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Rope/Calf2KneelClosedOver.png":
+{
+	"frame": {"x":2002,"y":1141,"w":43,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":610,"y":981,"w":43,"h":66},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/Rope/FrogThigh1Kneel.png":
 {
 	"frame": {"x":1024,"y":660,"w":335,"h":244},
@@ -608,6 +648,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas23.json", "atlas24.json", "atlas25.json", "atlas26.json", "atlas27.json", "atlas28.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:31eec2413d54176acb07f6b45e87d97a:b858f2e6131fe093791ac8fffd47de05:13f4c206675433a4b5a7dd3d0494a762$"
+	"smartupdate": "$TexturePacker:SmartUpdate:0b9b81983ce5816a7d4758e4714ed3d8:9b5e08421b9139eeaafde0fa4a54003f:13f4c206675433a4b5a7dd3d0494a762$"
 }
 }

@@ -482,8 +482,11 @@ let KDMoveObjectFunctions = {
 					level: MiniGameKinkyDungeonLevel,
 					index: KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 					lootTrap: lootTrap,
+					aggro: true,
 				};
 				KinkyDungeonSendEvent("beforeChest", data);
+				if (data.aggro)
+					KinkyDungeonAggroAction('chest', {faction: faction, x: moveX, y: moveY});
 				chestType = data.chestType;
 				roll = data.roll;
 				noTrap = data.noTrap;
@@ -496,7 +499,6 @@ let KDMoveObjectFunctions = {
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ChestOpen.ogg");
 				KinkyDungeonMapSet(moveX, moveY, 'c');
 				KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
-				KinkyDungeonAggroAction('chest', {faction: faction});
 			}
 		} else {
 			KinkyDungeonSendActionMessage(6, TextGet("KDCantTouchThat"), "#ff8800",1, false, true);

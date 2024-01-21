@@ -169,6 +169,9 @@ interface KDRestraintPropsBase {
 	debris?: string,
 	debrisChance?: number,
 
+	/** This item is not kept in the lost items chest unless it is magical */
+	noRecover?: boolean,
+
 	/** These items can only be applied if an enemy has the items in her inventory or the unlimited enemy tag */
 	limited?: boolean,
 	/** Forced to allow these, mainly leashes and collars */
@@ -661,6 +664,8 @@ interface enemy extends KDHasTags {
 
 	nameList?: string,
 
+	/** Multiplier to tease damage */
+	teaseMod?: number,
 
 	/** These enemies always carry these items at the start */
 	startingItems?: string[]
@@ -890,6 +895,8 @@ interface enemy extends KDHasTags {
 	power?: number,
 	/** */
 	dmgType?: string,
+	/** Tease attacks list to use */
+	teaseAttacks?: string,
 	/** */
 	bound?: string,
 	/** Outfit for paperdoll */
@@ -3142,6 +3149,18 @@ type KDTile = any;
 type KDTrapType = (tile: KDTile, entity: entity, x: number, y: number) => {msg: string, triggered: boolean}
 
 type KDSprites = {[_: string]: (x: number, y: number, fog: boolean, noReplace: string) => string}
+type KDTeaseAttackListsType = {[_: string]: string[]}
+type KDTeaseAttacksType = {[_: string]: KDTeaseAttack}
+type KDTeaseAttack = {
+	name: string,
+	priority: number,
+	blockable: boolean,
+	dodgeable: boolean,
+	/** Allows this to be added to the list */
+	filter: (enemy: entity, player: entity, AIData: any) => boolean,
+	/** Returns true if it connects, false otherwise if blocked/ignored somehow */
+	apply: (enemy: entity, player: entity, AIData: any, blocked: boolean, evaded: boolean, damageMod: number) => boolean,
+};
 
 declare const zip: any;
 declare const guessLanguage: {

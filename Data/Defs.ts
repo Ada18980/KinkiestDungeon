@@ -49,7 +49,7 @@ let LAYERS_BASE = [
 
 	"InflatableArms",
 	"InflatableLegs",
-	"Yoke",
+	"FiddleFront",
 
 
 	// Bondage
@@ -84,6 +84,8 @@ let LAYERS_BASE = [
 	"ForeGloveRight",
 	"ForeHandRight",
 	"ForeArmRight",
+
+	"Yoke",
 
 	// Clothes that go over the chest and hang down
 	"Shoulders",
@@ -956,6 +958,35 @@ let LayerGroups = {
 		"TorsoLower",
 		"Torso",
 	]),
+	"TightChastityBelt": ToMap([
+		"CorsetLiner",
+		// Skirts that dont follow shilhouette and are puffy
+		"SkirtOverDeco",
+		"SkirtOver",
+		"SkirtOverLower",
+		// Skirts that are slim and follow the shilhouette
+		"SkirtDeco",
+		"Skirt",
+		"SkirtLower",
+
+		"PantLeft",
+		"PantRight",
+		"Pants",
+		"ShortsLeft",
+		"Shorts",
+
+		"OverSocks",
+		"StockingLeft",
+		"StockingRight",
+
+		"Bodysuit",
+		"Panties",
+		"Torso",
+		"TorsoUpper",
+		"Butt",
+		"TorsoLower",
+		"Torso",
+	]),
 
 	"PetsuitArms": ToMap([
 		"BindForeElbowLeft",
@@ -1299,6 +1330,50 @@ let LayerGroups = {
 		"UpSleeveRight",
 		"ArmLeft",
 		"ArmRight",
+	]),
+	"Fiddle": ToMap([
+
+		"GloveLeft",
+		"GloveRight",
+		"SleeveLeft",
+		"SleeveDecoLeft",
+		"SleeveRight",
+		"SleeveDecoRight",
+		"ArmLeft",
+		"ArmRight",
+
+
+		"WrapForeArms",
+		"BindForeArms",
+		"BindForeElbowLeft",
+		"BindForeWristLeft",
+		"BindForeWristRight",
+		"BindForeHandLeft",
+		"BindForeHandRight",
+		"BindForeArmLeft",
+		"BindForeArmRight",
+
+		"ForeWrists",
+
+
+		// Forearms (only in HandsFront)
+		"ForeWristLeft",
+
+		"ForeSleeveDecoLeft",
+		"ForeSleeveLeft",
+		"ForeMittenLeft",
+		"ForeGloveLeft",
+		"ForeHandLeft",
+		"ForeArmLeft",
+
+		"ForeWristRight",
+
+		"ForeSleeveDecoRight",
+		"ForeSleeveRight",
+		"ForeMittenRight",
+		"ForeGloveRight",
+		"ForeHandRight",
+		"ForeArmRight",
 	]),
 	"Cuffs": ToMap([
 		// Affect clothes only not skintight

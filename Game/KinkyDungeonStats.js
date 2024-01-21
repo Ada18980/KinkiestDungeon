@@ -375,8 +375,8 @@ function KinkyDungeonInterruptSleep() {
 }
 
 let KDBaseDamageTypes = {
-	knockbackTypes: ["fire", "electric", "shock", "tickle", "cold", "slash", "grope", "pierce", "soul", "charm"],
-	knockbackTypesStrong: ["blast", "crush", "acid", "plush", "poison", "pain", "arcane"],
+	knockbackTypes: ["fire", "electric", "shock", "tickle", "cold", "slash", "grope", "pierce", "soul", "plush", "charm"],
+	knockbackTypesStrong: ["blast", "crush", "acid", "poison", "pain", "arcane"],
 	arouseTypes: ["grope", "plush", "charm", "happygas"],
 	bypassTeaseTypes: ["charm", "happygas"],
 	distractionTypesWeakNeg: ["pain", "acid"],
@@ -523,7 +523,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 		data.knockbackTypesStrong.includes(data.type)
 		|| data.knockbackTypes.includes(data.type)
 	)) {
-		if (KDGameData.HeelPower > 0 && data.knockbackTypes.includes(data.type)) {
+		if ((KDGameData.HeelPower > 0 || data.type == "plush") && data.knockbackTypes.includes(data.type)) {
 			let amt = data.dmg;
 			KDChangeBalance((KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * amt/KinkyDungeonStatWillMax, true);
 		} else if (data.knockbackTypesStrong.includes(data.type)) {
@@ -1693,6 +1693,9 @@ function KinkyDungeonCalculateSlowLevel(delta) {
 
 	if (KDGameData.Crouch) {
 		// Force slowness when crouching
+		if (KinkyDungeonSlowLevel < 2 && delta > 0 && KinkyDungeonLastAction == "Move") {
+			KinkyDungeonSendActionMessage(9, TextGet("KDPetsuitCrawl"), "#ffffff", 1, true);
+		}
 		KinkyDungeonSlowLevel = Math.max(2, KinkyDungeonSlowLevel);
 	}
 	if (delta > 0 && KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowLevelEnergyDrain")) KDGameData.AncientEnergyLevel =

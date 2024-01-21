@@ -19,6 +19,13 @@ function KinkyDungeonAddLostItems(list, excludeBound) {
 				break;
 			}
 		}
+		if (!KinkyDungeonRestraintVariants[item.name]
+			&& (KDRestraint(item)?.noRecover))
+			unique = false;
+		if (!KinkyDungeonWeaponVariants[item.name]
+			&& (KDWeapon(item).rarity < 3))
+			unique = false;
+
 		if (unique && (!excludeBound || item.type != Weapon || (KDWeapon(item).magic))) {
 			KinkyDungeonLostItems.push(item);
 			if (item.type == Consumable) {

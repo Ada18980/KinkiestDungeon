@@ -72,6 +72,9 @@ let KDSpellComponentTypes = {
 		partialMiscastType: (spell, x, y) => {
 			return "Gagged";
 		},
+		cast: (spell, data) => {
+			KinkyDungeonSetFlag("verbalspell", 2);
+		}
 	},
 	"Arms": {
 		stringShort: (ret) => {
@@ -101,6 +104,9 @@ let KDSpellComponentTypes = {
 			if (KinkyDungeonStatsChoice.get("SomaticPlus")) return "Fingers";
 			return "Bug";
 		},
+		cast: (spell, data) => {
+			KinkyDungeonSetFlag("armspell", 2);
+		}
 	},
 	"Legs": {
 		stringShort: (ret) => {
@@ -126,6 +132,9 @@ let KDSpellComponentTypes = {
 			if (KinkyDungeonStatsChoice.get("PoorForm")) return "PoorForm";
 			return "Legs";
 		},
+		cast: (spell, data) => {
+			KinkyDungeonSetFlag("legspell", 2);
+		}
 	},
 
 };
@@ -667,6 +676,11 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 	}
 
 
+	if (!enemy && !bullet && player) {
+		// Face spell cast direction
+		KDTurnToFace(targetX - KinkyDungeonPlayerEntity.x, targetY - KinkyDungeonPlayerEntity.y);
+	}
+
 
 
 	let gaggedMiscastFlag = false;
@@ -757,6 +771,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ " + (spell.miscastSfx || "SoftShield") + ".ogg");
 		KinkyDungeonSendEvent("miscast", data);
+		KinkyDungeonSetFlag("miscast", 2);
 
 		return {result: "Miscast", data: data};
 	}

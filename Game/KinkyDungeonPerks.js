@@ -223,6 +223,17 @@ let KinkyDungeonStatsPresets = {
 	"MC_Peasant":  {category: "Multiclass", id: "MC_Peasant", debuff: true, cost: 1, blockclass: ["Peasant"], tags: ["start", "mc"]},
 	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", cost: 2, requireArousal: true, blockclass: ["Trainee"], tags: ["start", "mc"]},
 
+
+	"More_Armbinders":  {category: "Toggles", id: "More_Armbinders", cost: 0, block: ["Less_Armbinders"]},
+	"More_Jackets":  {category: "Toggles", id: "More_Jackets", cost: 0, block: ["Less_Jackets"]},
+	"More_Boxbinders":  {category: "Toggles", id: "More_Boxbinders", cost: 0, block: ["Less_Boxbinders"]},
+	"More_Yokes":  {category: "Toggles", id: "More_Yokes", cost: 0, block: ["Less_Yokes"]},
+
+	"Less_Armbinders":  {category: "Toggles", id: "Less_Armbinders", cost: 0, block: ["More_Armbinders"], debuff: true,},
+	"Less_Jackets":  {category: "Toggles", id: "Less_Jackets", cost: 0, block: ["More_Jackets"], debuff: true,},
+	"Less_Boxbinders":  {category: "Toggles", id: "Less_Boxbinders", cost: 0, block: ["More_Boxbinders"], debuff: true,},
+	"Less_Yokes":  {category: "Toggles", id: "Less_Yokes", cost: 0, block: ["More_Yokes"], debuff: true,},
+
 	"NovicePet":  {category: "Major", id: "NovicePet", cost: 1},
 	"Fortify_Barricade":  {category: "Major", id: "Fortify_Barricade", cost: -2},
 	"Fortify_Trap":  {category: "Major", id: "Fortify_Trap", cost: -2},
@@ -273,9 +284,10 @@ let KinkyDungeonStatsPresets = {
 	"UnarmedTickle": {category: "Combat", id: "UnarmedTickle", cost: 0, tags: ["unarmedreplace"], blocktags: ["unarmedreplace"]},
 	"Clumsy": {category: "Combat", id: 21, cost: -1},
 
-	"Slayer": {category: "Magic", id: 34, cost: 3},
-	"Magician": {category: "Magic", id: 36, cost: 3},
-	"Conjurer": {category: "Magic", id: 35, cost: 3},
+	//"Slayer": {category: "Magic", id: 34, cost: 3},
+	//"Magician": {category: "Magic", id: 36, cost: 3},
+	//"Conjurer": {category: "Magic", id: 35, cost: 3},
+
 	"Unfocused": {category: "Combat", id: "Unfocused", cost: -2},
 	"BondageLover": {category: "Kinky", id: 15, cost: -1},
 	"Undeniable": {category: "Kinky", id: "Undeniable", cost: -1},

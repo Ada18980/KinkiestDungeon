@@ -627,6 +627,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	}
 
 	let predata = {
+		shieldBlocked: false,
 		aggro: false,
 		faction: "Enemy",
 		enemy: Enemy,
@@ -964,6 +965,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				} else {
 					Enemy.playerdmg = (Enemy.playerdmg || 0) + orig;
 					predata.dmgDealt = 0;
+					predata.shieldBlocked = true;
 				}
 			}
 			if (predata.dmgDealt > 0) {
@@ -1204,7 +1206,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 
 	if (!NoMsg && (!predata.blocked) && (predata.dmgDealt > 0 || !Spell || effect) && (!Damage || Damage.damage > 0)) {KinkyDungeonSendActionMessage(4 + predata.dmgDealt * 0.01, (Damage && predata.dmgDealt > 0) ?
 		TextGet((Ranged) ? "PlayerRanged" + mod : "PlayerAttack" + mod).replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)).replace("AttackName", atkname).replace("DamageDealt", "" + Math.round(predata.dmgDealt * 10)).replace("DamageType", ("" + damageName).toLowerCase())
-		: TextGet("PlayerMiss" + ((Damage && !miss) ? "Armor" : "")).replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)),
+		: TextGet("PlayerMiss" + ((Damage && !miss) ? (predata.shieldBlocked ? "Shield" : "Armor") : "")).replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)),
 			(Damage && (predata.dmg > 0 || effect)) ? "orange" : "#ff0000", 2, undefined, undefined, Enemy);
 	}
 
@@ -1259,6 +1261,9 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	if (predata.dmg > 0) {
 		KinkyDungeonTickBuffTag(Enemy, "takeDamage", 1);
 		KinkyDungeonSetEnemyFlag(Enemy, "wander", 0);
+		KinkyDungeonSetEnemyFlag(Enemy, "blocked", 0);
+		KinkyDungeonSetEnemyFlag(Enemy, "genpath", 0);
+		KinkyDungeonSetEnemyFlag(Enemy, "failpath", 0);
 	}
 
 	return predata.dmg;

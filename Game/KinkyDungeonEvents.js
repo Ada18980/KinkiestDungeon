@@ -1171,7 +1171,14 @@ let KDEventMapInventory = {
 					KDEventData.SlimeLevelStart = Math.min(KDEventData.SlimeLevelStart, 0.5);
 				}
 			}
-		}
+		},
+
+		"ApplyConduction": (e, item, data) => {
+			let bb = Object.assign({}, KDConduction);
+			if (e.duration) bb.duration = e.duration;
+			if (e.power) bb.power = e.power;
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, bb);
+		},
 	},
 	"tickAfter": {
 		"RemoveOnETTag": (e, item, data) => {
@@ -3479,7 +3486,7 @@ let KDEventMapSpell = {
 		"Psychokinesis": (e, spell, data) => {
 			if (data.spell && data.spell.tags && data.spell.tags.includes("telekinesis")) {
 				if (KinkyDungeoCheckComponents(data.spell, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true).length > 0) {
-					KinkyDungeonChangeDistraction(data.manacost ? data.manacost : 1);
+					KinkyDungeonChangeDistraction((data.spell.manacost ? data.spell.manacost : 1) * e.mult);
 				}
 			}
 		},
@@ -3920,10 +3927,10 @@ let KDEventMapSpell = {
 			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, false, false)) && !KinkyDungeonPlayerBuffs.Analyze) {
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "Analyze", buffSprite: true, aura:"#ff5555", type: "MagicalSight", power: e.power, duration: e.time});
 				activate = true;
+				//KDTriggerSpell(spell, data, false, false);
 			}
 			if (KinkyDungeonPlayerBuffs.Analyze && KinkyDungeonPlayerBuffs.Analyze.duration > 1) {
 				// Nothing!
-				KDTriggerSpell(spell, data, false, false);
 			} else if (!activate) {
 				KinkyDungeonDisableSpell("Analyze");
 				KinkyDungeonExpireBuff(KinkyDungeonPlayerEntity, "Analyze");
@@ -4325,6 +4332,7 @@ let KDEventMapSpell = {
 					bind: e.bind,
 					distract: e.distract,
 					bindType: e.bindType,
+					bindEff: e.bindEff,
 				}, false, e.power < 0.5, undefined, undefined, KinkyDungeonPlayerEntity);
 			}
 		},
@@ -4533,7 +4541,7 @@ let KDEventMapSpell = {
 			let activate = false;
 			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, false, true)) && !KinkyDungeonPlayerBuffs.Light) {
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "Light", type: "Light", duration: e.time, aura: "#ffffff"});
-				KDTriggerSpell(spell, data, false, true);
+				//KDTriggerSpell(spell, data, false, true);
 				activate = true;
 				KinkyDungeonUpdateLightGrid = true;
 			}
@@ -5297,17 +5305,36 @@ let KDEventMapSpell = {
 		"Light": (e, spell, data) => {
 			if (data.spell?.name == spell?.name) {
 				KinkyDungeonUpdateLightGrid = true;
-				if (KinkyDungeonPlayerBuffs.Light && KinkyDungeonPlayerBuffs.Light.duration > 1) {
-					KinkyDungeonExpireBuff(KinkyDungeonPlayerEntity, "Light");
+				if (KinkyDungeonSpellChoicesToggle[data.index]) {
+					let cost = KinkyDungeonGetManaCost(spell, false, true);
+					if (KinkyDungeonHasMana(cost)) {
+						if (cost > 0)
+							KinkyDungeonChangeMana(-cost, false, 0, false, true);
+						KDTriggerSpell(spell, data, false, true);
+						if (KinkyDungeonPlayerBuffs.Light && KinkyDungeonPlayerBuffs.Light.duration > 1) {
+							KinkyDungeonExpireBuff(KinkyDungeonPlayerEntity, "Light");
+						}
+					}
 				}
+
 			}
 		},
 		"Analyze": (e, spell, data) => {
 			if (data.spell?.name == spell?.name) {
 				if (KinkyDungeonPlayerBuffs.Analyze && KinkyDungeonPlayerBuffs.Analyze.duration > 1) {
 					KinkyDungeonExpireBuff(KinkyDungeonPlayerEntity, "Analyze");
+				} else {
+
+					if (KinkyDungeonSpellChoicesToggle[data.index]) {
+						let cost = KinkyDungeonGetManaCost(spell, false, true);
+						if (KinkyDungeonHasMana(cost)) {
+							if (cost > 0)
+								KinkyDungeonChangeMana(-cost, false, 0, false, true);
+							KDTriggerSpell(spell, data, false, true);
+							KinkyDungeonAdvanceTime(0, true, true);
+						}
+					}
 				}
-				KinkyDungeonAdvanceTime(0, true, true);
 			}
 		},
 		"PassTime": (e, spell, data) => {

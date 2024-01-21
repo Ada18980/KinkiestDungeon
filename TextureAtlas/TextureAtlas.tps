@@ -769,6 +769,11 @@
             <key type="filename">../Models/EyesKertasu/EyesWhitesNeutral.png</key>
             <key type="filename">../Models/EyesKertasu/EyesWhitesSurprised.png</key>
             <key type="filename">../Models/FaceKjus/Brows2Angry.png</key>
+            <key type="filename">../Models/Fiddle/BackFiddleBody.png</key>
+            <key type="filename">../Models/Fiddle/BackFiddleLines.png</key>
+            <key type="filename">../Models/Fiddle/FiddleBody.png</key>
+            <key type="filename">../Models/Fiddle/FiddleLines.png</key>
+            <key type="filename">../Models/Fiddle/FiddleLock.png</key>
             <key type="filename">../Models/Furniture/Barrel.png</key>
             <key type="filename">../Models/Furniture/Bed.png</key>
             <key type="filename">../Models/Furniture/BedHogtie.png</key>

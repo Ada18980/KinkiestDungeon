@@ -2684,6 +2684,17 @@ function KinkyDungeonGetLockMult(Lock, item, curse) {
 	return mult;
 }
 
+let KDHeavyRestraintPrefs = [
+	"More_Armbinders",
+	"More_Boxbinders",
+	"More_Jackets",
+	"More_Yokes",
+	"Less_Armbinders",
+	"Less_Boxbinders",
+	"Less_Jackets",
+	"Less_Yokes",
+];
+
 /** Tags which the 'agnostic' option on KinkyDungeonGetRestraint does not override */
 let KDNoOverrideTags = [
 	"NoVibes",
@@ -2691,6 +2702,7 @@ let KDNoOverrideTags = [
 	"Unchained",
 	"Damsel",
 	"NoPet",
+	...KDHeavyRestraintPrefs,
 ];
 /**
  *
@@ -3083,6 +3095,10 @@ function KinkyDungeonUpdateRestraints(delta) {
 			}*/
 		}
 
+	}
+
+	for (let t of KDHeavyRestraintPrefs) {
+		if (KinkyDungeonStatsChoice.get(t)) playerTags.set(t, true);
 	}
 	if (KinkyDungeonStatsChoice.get("Deprived")) playerTags.set("NoVibes", true);
 	if (KinkyDungeonStatsChoice.get("Unmasked")) playerTags.set("Unmasked", true);
@@ -5031,7 +5047,7 @@ function KDHasRemovableHex(item, level) {
 function KDGetRemovableHex(item, level) {
 	if (item.events) {
 		return item.events.filter((event) => {
-			return event.trigger == "CurseTransform" && KDEventHexModular[event.original] && KDEventHexModular[event.original].level <= level;
+			return KDEventHexModular[event.original] && KDEventHexModular[event.original].level <= level; // event.trigger == "CurseTransform" &&
 		});
 	}
 	return [];

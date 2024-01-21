@@ -214,7 +214,7 @@ function KinkyDungeonAggroAction(action, data) {
 				KinkyDungeonStartChase(e, "Chest");
 			}
 			if (data.faction) {
-				KinkyDungeonAggroFaction(data.faction, false, 4);
+				KinkyDungeonAggroFaction(data.faction, false, KDChestSecurity(data));
 
 			}
 			break;
@@ -1585,4 +1585,29 @@ function KDFixPlayerClothes(faction) {
 
 function KDResetGuardSpawnTimer() {
 	KDGameData.GuardSpawnTimer = 4 + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
+}
+
+let KDChestRank = {
+	"gold": 3,
+	"lessergold": 3,
+	"silver": 2,
+	"storage": 0,
+};
+
+/**
+ *
+ * @param {{enemy?: entity, x?: number, y?: number, faction?: string}} data
+ * @returns {number}
+ */
+function KDChestSecurity(data) {
+	if (data.x) {
+		let tile = KinkyDungeonTilesGet(data.x + "," + data.y);
+		if (tile) {
+			if (KDChestRank[tile.Loot] != undefined) return KDChestRank[tile.Loot];
+			return 1;
+		}
+	}
+
+
+	return 0.25;
 }

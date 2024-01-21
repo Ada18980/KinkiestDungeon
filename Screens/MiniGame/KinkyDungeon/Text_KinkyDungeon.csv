@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.1.8"
+KDVersionStr,"5.1.9"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -98,6 +98,7 @@ KDToggleNippleToysHide,Hide Nipple Clamps
 KDToggleNipplePiercingsHide,Hide Nipple Piercings
 KDToggleForcePalette,Force restraints to use palette
 KDToggleFlipPlayer,Flip Player Display
+KDToggleGreyscaleBlindness,Grayscale when Blind
 
 KDHelpless,Helpless!
 KDMissed,Evaded!
@@ -2641,6 +2642,10 @@ KillBanditQuest,You murder the thug!
 
 NameBlacksmithQuest,Blacksmith
 KillBlacksmithQuest,You murder the blacksmith!
+NameArmorerQuest,Armorer
+KillArmorerQuest,You murder the armorer!
+NameBowyerQuest,Bowyer
+KillBowyerQuest,You murder the bowyer!
 
 NameDressmaker,Dressmaker
 KillDressmaker,"The dressmaker storms out in a rage."
@@ -2896,6 +2901,7 @@ KinkyDungeonBasicAttack,attack
 KinkyDungeonBasicDamage,damage
 PlayerMiss,"You miss the TargetEnemy!"
 PlayerMissArmor,"Your attack is too feeble to hurt the TargetEnemy!"
+PlayerMissShield,"Your attack was absorbed by the TargetEnemy's shield!"
 KinkyDungeonStruggleStruggleFail,"You try to pull the TargetRestraint off..."
 KinkyDungeonStruggleStruggleFailAroused,"You try to squirm and moan out of the TargetRestraint..."
 KinkyDungeonStruggleStruggleFail2,"You tug on the TargetRestraint with increased power..."
@@ -3870,7 +3876,13 @@ RestraintTrapCuffsDesc,"A pair of steel cuffs locked securely around your wrists
 RestraintTrapCuffsDesc2,"The lock doesn't seem very complicated."
 RestraintTrapYoke,Steel Yoke
 RestraintTrapYokeDesc,"A steel bar clamped firmly around your wrists and neck, leaving you in a helpless position."
-RestraintTrapYokeDesc2,"This is not something you can pick by yourself..."
+RestraintTrapYokeDesc2,"The awkward position makes it difficult to get out of alone."
+RestraintHeavyYoke,Heavy Yoke
+RestraintHeavyYokeDesc,"A series of armor-grade plates cut with precision machining, sandwiched into an unbreakable layer that clasps firmly in place around your neck and wrists."
+RestraintHeavyYokeDesc2,"The awkward position makes it difficult to get out of alone."
+RestraintTrapFiddle,Steel Fiddle
+RestraintTrapFiddleDesc,"A steel fixture keeping your hands in an awkward and submissive position."
+RestraintTrapFiddleDesc2,"The awkward position prevents you from easily reaching the lock."
 RestraintTrapHarness,Leather Harness
 RestraintTrapHarnessDesc,"A leather harness of tight straps buckled around your torso."
 RestraintTrapHarnessDesc2,"It provides an anchor point for enemies to grab onto!"
@@ -6195,6 +6207,15 @@ KinkyDungeonSpellFlameStrike,Flame Blade
 KinkyDungeonSpellEngulf,Tentacle Slap
 KinkyDungeonSpellDescriptionEngulf,You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +20 glue damage and create slime.
 
+KinkyDungeonSpellChainStrike,Chain Strike
+KinkyDungeonSpellDescriptionChainStrike,You have the power to summon chains when you attack. When enabled: Your attacks deal +20 chain damage and create chains.
+
+KinkyDungeonSpellRopework,Ropework
+KinkyDungeonSpellDescriptionRopework,You have the power to weave ropes between your attacks. When enabled: Your attacks deal +20 chain damage and create ropes.
+
+KinkyDungeonSpellLeatherWhip,Leather Whip
+KinkyDungeonSpellDescriptionLeatherWhip,You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +20 pain damage and create belts.
+
 KinkyDungeonSpellStrength,Super Strength
 KinkyDungeonSpellDescriptionStrength,"When enabled: Struggling is more powerful, and your melee attack damage is increased by +20 if your weapon deals physical damage."
 KinkyDungeonSpellStrengthStruggle,Your body glows with magical energy!
@@ -8446,9 +8467,9 @@ KinkyDungeonRemindJailPlayHelplessAdventurer_Brat_Fighter2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratAdventurer_Brat_Fighter0,"Kya~ I have no mana, I'm so defenseless right now~"
 KinkyDungeonRemindJailPlayBratAdventurer_Brat_Fighter1,"I have all this bondage gear on me, I sure hope nobody ties me up with it~!"
 KinkyDungeonRemindJailPlayBratAdventurer_Brat_Fighter2,"Oh no, how will I ever find my way out of here~"
-KinkyDungeonRemindJailPlaySubAdventurer_Brat_Fighter0,"If I focus really hard, I can make my blade go on fire! I'd show you, but I don't feel like drinking a mana potion."
+KinkyDungeonRemindJailPlaySubAdventurer_Brat_Fighter0,"If I focus really hard, I can make my blade go on fire!"
 KinkyDungeonRemindJailPlaySubAdventurer_Brat_Fighter1,"I ran out of mana, but I'm sure I can find the exit before long!"
-KinkyDungeonRemindJailPlaySubAdventurer_Brat_Fighter2,"Hey, be careful with my enchanted rope! I don't have the mana right now to control it when it wakes up!"
+KinkyDungeonRemindJailPlaySubAdventurer_Brat_Fighter2,"Hey, be careful with my enchanted rope!"
 KinkyDungeonRemindJailPlayAdventurer_Brat_Fighter0,"Hey, you wouldn't happen to have a mana potion, would you?"
 KinkyDungeonRemindJailPlayAdventurer_Brat_Fighter1,"Say, I happen to know a thing or two about knots~"
 KinkyDungeonRemindJailPlayAdventurer_Brat_Fighter2,"I am an artist with rope... in more ways than one."
@@ -8482,7 +8503,7 @@ KinkyDungeonRemindJailAdventurer_Brat_FighterPull,"*giggles*"
 KinkyDungeonRemindJailAdventurer_Brat_FighterStun,"Kya! Take that!"
 KinkyDungeonRemindJailAdventurer_Brat_FighterPickpocket,"Nice loot! I'll take it~"
 KinkyDungeonRemindJailAdventurer_Brat_FighterLock,"Can never be too sure!"
-KinkyDungeonRemindJailAdventurer_Brat_FighterIntro,"Nice to meet you! You wouldn't happen to have a mana potion or 3 would you?... Never mind."
+KinkyDungeonRemindJailAdventurer_Brat_FighterIntro,"You wouldn't happen to have a mana potion or 3 would you?"
 KinkyDungeonRemindJailChaseAdventurer_Brat_FighterDefend0,"Looks like it's time for me to shine!"
 KinkyDungeonRemindJailChaseAdventurer_Brat_FighterDefend1,"Stand down, or I won't go easy on you!"
 KinkyDungeonRemindJailChaseAdventurer_Brat_FighterDefend2,"Help is on the way!"
@@ -11121,7 +11142,7 @@ dOfferTempForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
 
 
 
-rBlacksmithShop,"(The SPEAKER waves)|Greetings,|I manufacture all sorts of goods.|Would you like to buy some?"
+rBlacksmithShop,"(The SPEAKER waves)|Greetings,|I manufacture all sorts of weapons.|Would you like to buy some?"
 rBlacksmithShopAttack,"(The SPEAKER drops her hammer and cracks her knuckles)|Put em up!"
 rBlacksmithShop_AlreadyHave,"(The SPEAKER looks at you.)|But you already have one?"
 rBlacksmithShop_NoMoney,"(The SPEAKER folds her arms)|I don't do charity, ma'am."
@@ -11131,8 +11152,36 @@ rBlacksmithShopSword,"(The SPEAKER nods)|A versatile weapon. One of my favorites
 rBlacksmithShopSpear,"(The SPEAKER nods)|Keep your friends close, and your enemies far away."
 rBlacksmithShopKnife,"(The SPEAKER nods)|Handy to have one of these around."
 rBlacksmithShopAxe,"(The SPEAKER nods)|The best defense is a good offense."
-rBlacksmithShopShield,"(The SPEAKER nods)|You can never be too careful."
+rBlacksmithShopHammer,"(The SPEAKER nods)|Speak softly and carry a big hammer."
 rBlacksmithShopTrapCuffs,"(The SPEAKER smiles)|Can never be too prepared~"
+
+rArmorerShop,"(The SPEAKER waves)|Greetings,|I manufacture all sorts of armor.|Would you like to buy some?"
+rArmorerShopAttack,"(The SPEAKER drops her hammer and cracks her knuckles)|Put em up!"
+rArmorerShop_AlreadyHave,"(The SPEAKER looks at you.)|But you already have one?"
+rArmorerShop_NoMoney,"(The SPEAKER folds her arms)|I don't do charity, girl."
+rArmorerShopBreastplate,"(The SPEAKER nods)|The most high-impact of sports bras."
+rArmorerShopSteelBoots,"(The SPEAKER nods)|These aren't for hiking, just so you know."
+rArmorerShopGauntlets,"(The SPEAKER nods)|I've been thinking about making a lockable version..."
+rArmorerShopBracers,"(The SPEAKER nods)|These are sensibly sized, unlike those you see in movies."
+rArmorerShopChainTunic,"(The SPEAKER nods)|Sometimes you just have to be flexible."
+rArmorerShopChainBikini,"(The SPEAKER nods)|For when you value style over protection..."
+rArmorerShopShield,"(The SPEAKER nods)|You can never be too careful."
+rArmorerShopTrapBelt,"(The SPEAKER chuckles)|I hear female adventurers like to wear these for protection.|Or something like that."
+rArmorerShopTrapBra,"(The SPEAKER chuckles)|I hear female adventurers like to wear these for protection.|Or something like that."
+
+rBowyerShop,"(The SPEAKER waves)|Hello miss!|What brings you here today?"
+rBowyerShopAttack,"(The SPEAKER folds her arms)|That's not very nice!"
+rBowyerShop_AlreadyHave,"(The SPEAKER looks at you.)|But you already have one?"
+rBowyerShop_NoMoney,"(The SPEAKER folds her arms)|I don't do charity, miss."
+rBowyerShopLeatherBoots,"(The SPEAKER nods)|Could use a higher heel..."
+rBowyerShopLeatherGloves,"(The SPEAKER nods)|Back to the basics."
+rBowyerShopBustier,"(The SPEAKER smiles)|I see you have good taste!"
+rBowyerShopBow,"(The SPEAKER nods)|It's a classic!|What's not to like?"
+rBowyerShopBowRecurve,"(The SPEAKER smiles)|It's an upgrade for your best friend!"
+rBowyerShopCrossbow,"(The SPEAKER shrugs)|It's big and bulky, but I guess it has its uses."
+rBowyerShopCrossbowPistol,"(The SPEAKER giggles)|Smile for the camera!"
+rBowyerShopAncientPowerSource,"(The SPEAKER nods)|It's like mana, but much more portable!|It powers duplication runes so you don't run out of arrows."
+rBowyerShopTrapBlindfold,"(The SPEAKER giggles)|I like to include these as a gift with every purchase~"
 
 rShopBuy,"(Select an item to buy from the SPEAKER)"
 rShopBuyAttack,"(Attack the SPEAKER?)"
@@ -11698,7 +11747,7 @@ rShopkeeperStartGag,"Daww! What a cutie!|(She smiles and pats your head gently)"
 
 dShopkeeperStart_Buy,"Do you have anything for sale?"
 dShopkeeperStart_BuyGag,"(Look around for items to buy)"
-rShopkeeperStartBuy,"I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside a dungeon? That's crazy!|But you adventurers bring in a steady supply of loot,|so if you've got something to sell me, I'll take it off your hands~"
+rShopkeeperStartBuy,"I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside a dungeon? That's crazy!|But you adventurers bring in a steady supply of loot,|so if you've got something to sell me, I'll take it off your hands~|You can also talk to my guests, perhaps they have something for you."
 
 dReturn,"(Return)"
 
@@ -17412,25 +17461,25 @@ AttackLatexCubeMetal,"The liquid metal cube sticks to you and hardens! (DamageTa
 AttackLatexCubeMetalBind,"The liquid metal cube expands across your body and hardens, taking the form of restraints! (+RestraintAdded)"
 
 RestraintLiquidMetalBoots,Liquid Metal (Feet)
-RestraintLiquidMetalBootsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalBootsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalBootsDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalFeet,Liquid Metal (Ankles)
-RestraintLiquidMetalFeetDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalFeetDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalFeetDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalLegs,Liquid Metal (Legs)
-RestraintLiquidMetalLegsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalLegsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalLegsDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalArms,Liquid Metal (Arms)
-RestraintLiquidMetalArmsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalArmsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalArmsDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalHands,Liquid Metal (Hands)
-RestraintLiquidMetalHandsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalHandsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalHandsDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalMouth,Liquid Metal (Mouth)
-RestraintLiquidMetalMouthDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalMouthDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalMouthDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalHead,Liquid Metal (Head)
-RestraintLiquidMetalHeadDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalHeadDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalHeadDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 
 KDRandomStairTeleportFail,"The stairs dissolve right before you!"
@@ -17848,7 +17897,7 @@ ItemPickupDivineTear,"You find a shimmering macaron."
 KinkyDungeonInventoryItemDivineTear,Heavenly Crunch Macaron
 KinkyDungeonInventoryItemDivineTearUse,"You feel holy energy neutralizing the cursed magic permanently."
 KinkyDungeonInventoryItemDivineTearDesc,"Some say it comes from a bakery in heaven itself. Others say it is simply made from lab-grade materials, and actually tastes awful."
-KinkyDungeonInventoryItemDivineTearDesc2,"Unlocks a common cursed item and/or removes all curses from one currently worn item of your choice."
+KinkyDungeonInventoryItemDivineTearDesc2,"Unlocks a cursed item and/or removes all curses from one currently worn item of your choice."
 
 rCommercePortal,"Congratulations! Your continued patronage has earned you|one (1) round trip to the nearest affiliated shop!|Simply step into the portal to continue...|(the Goddess is not responsible for any mishaps or fraud pertaining to the use of this portal)"
 rCommercePortalGo,"(You step through the portal. An unperturbed shopkeeper greets you.)|Another visitor? Oh, it's just you~"
@@ -18512,6 +18561,10 @@ KDColorPickerAdvanced,Advanced
 
 KDEscapeKey_Fail_Default,Exits locked! Find the key!
 KDEscapeKey_Pass_Default,Got the key!
+KDEscapeKey_Fail_Lever,Exits locked! Find a lever!
+KDEscapeKey_Pass_Lever,Exits unlocked!
+KDEscapeKey_Fail_Panel,Exits locked! Find control panel!
+KDEscapeKey_Pass_Panel,Exits unlocked!
 KDEscapeKey_Fail_Boss,BOSS ROOM
 KDEscapeKey_Pass_Boss,BOSS ROOM CLEARED!
 KDEscapeKey_Fail_None,Room bugged. Please Report.
@@ -19238,3 +19291,63 @@ KDDressNPC,Change Outfit
 KDBackToGame,Back to Game
 
 KinkyDungeonSpellVineSlimeBall,Slimy Spit
+
+KDServants,Servants and Guests
+KDPrisoners,Prisoners
+
+KDPromoteNPC,Promote to Servant
+KDDemoteNPC,Demote to Prisoner
+
+KDTeaseAttack_SquishBreast,The ENMY reaches out and gives your breast a squeeze! (DMGDLT)
+KDTeaseAttackResist_SquishBreast,"The ENMY reaches for you and fails!"
+KDTeaseAttack_SpankButt,The ENMY gives your butt a light slap! (DMGDLT)
+KDTeaseAttack_SpankButtMove,The ENMY gives your butt a light slap as you move past! (DMGDLT)
+KDTeaseAttackResist_SpankButt,"The ENMY tries to spank you but misses!"
+KDTeaseAttack_SqueezeButt,The ENMY gives your butt a squeeze! (DMGDLT)
+KDTeaseAttack_SqueezeButtMove,The ENMY gives your butt a squeeze as you move past! (DMGDLT)
+KDTeaseAttackResist_SqueezeButt,"The ENMY reaches for you but misses!"
+KDTeaseAttack_TickleArmpits,The ENMY tickles your exposed armpits! (DMGDLT)
+KDTeaseAttackResist_TickleArmpits,"The ENMY tries to tickle you!"
+KDTeaseAttack_TickleFeet,The ENMY tickles your feet! (DMGDLT)
+KDTeaseAttackResist_TickleFeet,"The ENMY tries to tickle you!"
+KDTeaseAttack_TickleFeetRemove,The ENMY takes off your shoes and tickles your feet! (DMGDLT)
+KDTeaseAttack_Headpat,The ENMY pats you gently on the head. (DMGDLT)
+KDTeaseAttackResist_Headpat,"The ENMY tries to pat you on the head but decides not to."
+KDTeaseAttack_ShoulderMassage,The ENMY behind you gives your shoulders a nice massage! (DMGDLT)
+KDTeaseAttackResist_ShoulderMassage,"The ENMY reaches for your shoulders but you slip free!"
+KDTeaseAttack_Praise,The ENMY calls you cute! (DMGDLT)
+KDTeaseAttackResist_Praise,"The ENMY blushes at your cuteness!"
+KDTeaseAttack_Insult,The ENMY makes fun of you! (DMGDLT)
+KDTeaseAttackResist_Insult,"The ENMY struggles to find words!"
+KDTeaseAttack_VibeToy,The ENMY buzzes you with her VTY! (DMGDLT)
+KDTeaseAttackResist_VibeToy,"The ENMY reaches for her VTY!"
+KDTeaseAttack_InsertToy,The ENMY sticks a VTY into you! (DMGDLT)
+KDTeaseAttackResist_InsertToy,"The ENMY reaches for her VTY!"
+KDTeaseAttack_AddStuffing,The ENMY sticks a stuffing into your open mouth! (DMGDLT)
+KDTeaseAttackResist_AddStuffing,"The ENMY reaches for your mouth and fails!"
+KDTeaseAttack_AddCarabiner,The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
+KDTeaseAttackResist_AddCarabiner,"The ENMY grabs your wrists but you pull away!"
+
+KinkyDungeonStatMore_Armbinders,"More Armbinders"
+KinkyDungeonStatDescMore_Armbinders,"Armbinders are favored over other heavy bondage."
+KinkyDungeonStatLess_Armbinders,"Less Armbinders"
+KinkyDungeonStatDescLess_Armbinders,"Armbinders are less favored over other heavy bondage."
+KinkyDungeonStatMore_Boxbinders,"More Boxbinders"
+KinkyDungeonStatDescMore_Boxbinders,"Boxbinders are favored over other heavy bondage."
+KinkyDungeonStatLess_Boxbinders,"Less Boxbinders"
+KinkyDungeonStatDescLess_Boxbinders,"Boxbinders are less favored over other heavy bondage."
+KinkyDungeonStatMore_Jackets,"More Straitjackets"
+KinkyDungeonStatDescMore_Jackets,"Straitjackets are favored over other heavy bondage."
+KinkyDungeonStatLess_Jackets,"Less Straitjackets"
+KinkyDungeonStatDescLess_Jackets,"Straitjackets are less favored over other heavy bondage."
+KinkyDungeonStatMore_Yokes,"More Yokes"
+KinkyDungeonStatDescMore_Yokes,"Yokes are favored over other heavy bondage."
+KinkyDungeonStatLess_Yokes,"Less Yokes"
+KinkyDungeonStatDescLess_Yokes,"Yokes are less favored over other heavy bondage."
+
+
+ResistTypeBlock," (blocked!)"
+ResistTypeDodge," (dodged!)"
+ResistType,""
+
+KDPetsuitCrawl,"You crouch and move slowly."

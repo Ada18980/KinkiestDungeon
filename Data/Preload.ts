@@ -23,6 +23,8 @@ let DisplacementMaps = [
 'ThighCuffsRightKneelClosed.png',
 'ThighCuffsRightSpread.png',
 'Xray.png',
+'Fiddle.png',
+'TightBelt.png',
 'XrayBra.png',
 'XrayFace.png',
 'XrayPanties.png',

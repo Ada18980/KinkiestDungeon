@@ -134,7 +134,7 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 		let restraint = KDRestraint(item);
 		let power = restraint.displayPower || restraint.power;
 		if (!power || power < 0.1) power = 0.1;
-		if (restraint.armor) power += 1;
+		if (restraint.armor) power += 3;
 		if (restraint.protection) power += 3*restraint.protection;
 		if (KinkyDungeonRestraintVariants[item.name]) {
 			let enchants = {};

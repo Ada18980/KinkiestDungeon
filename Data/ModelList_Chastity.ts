@@ -701,3 +701,161 @@ AddModel({
 	])
 });
 AddModel(GetModelFashionVersion("DivineBraRunic", true));
+
+
+
+AddModel({
+	Name: "SteelChastityBelt_Padlock",
+	Folder: "SteelChastity",
+	Parent: "SteelChastityBelt_Padlock",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "ChastityBelt", "Metal"],
+	//AddPose: ["CrotchStrap"],
+	Layers: ToLayerMap([
+		{ Name: "Belt", Layer: "ChastityBelt", Pri: -40.1,
+			PrependLayerPrefix: {ChastityOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			DisplacementSprite: "TightBelt",
+			DisplaceAmount: 100,
+			DisplaceLayers: ToMap(["TightChastityBelt"]),
+			InheritColor: "BaseMetal",
+		},
+		{ Name: "BeltPadlock", Layer: "ChastityBelt", Pri: -39.9,
+			PrependLayerPrefix: {ChastityOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			InheritColor: "Lock",
+		},
+	])
+});
+AddModel({
+	Name: "SteelChastityBelt_Radial",
+	Folder: "SteelChastity",
+	Parent: "SteelChastityBelt_Padlock",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "ChastityBelt", "Metal"],
+	//AddPose: ["CrotchStrap"],
+	Layers: ToLayerMap([
+		{ Name: "Belt", Layer: "ChastityBelt", Pri: -40.1,
+			PrependLayerPrefix: {ChastityOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			DisplacementSprite: "TightBelt",
+			DisplaceAmount: 100,
+			DisplaceLayers: ToMap(["TightChastityBelt"]),
+			InheritColor: "BaseMetal",
+		},
+		{ Name: "BeltRadial", Layer: "ChastityBelt", Pri: -39.9,
+			PrependLayerPrefix: {ChastityOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			InheritColor: "Lock",
+		},
+	])
+});
+AddModel({
+	Name: "SteelChastityBelt_Segu",
+	Folder: "SteelChastity",
+	Parent: "SteelChastityBelt_Padlock",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "ChastityBelt", "Metal"],
+	//AddPose: ["CrotchStrap"],
+	Layers: ToLayerMap([
+		{ Name: "Belt", Layer: "ChastityBelt", Pri: -40.1,
+			PrependLayerPrefix: {ChastityOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			DisplacementSprite: "TightBelt",
+			DisplaceAmount: 100,
+			DisplaceLayers: ToMap(["TightChastityBelt"]),
+			InheritColor: "BaseMetal",
+		},
+		{ Name: "BeltSegu", Layer: "ChastityBelt", Pri: -39.9,
+			PrependLayerPrefix: {ChastityOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			InheritColor: "Lock",
+		},
+	])
+});
+
+AddModel(GetModelFashionVersion("SteelChastityBelt_Padlock", true));
+AddModel(GetModelFashionVersion("SteelChastityBelt_Radial", true));
+AddModel(GetModelFashionVersion("SteelChastityBelt_Segu", true));
+
+
+
+AddModel({
+	Name: "SteelChastityBra_Padlock",
+	Folder: "SteelChastity",
+	Parent: "SteelChastityBra_Padlock",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "ChastityBra", "Metal"],
+	//AddPose: ["CrotchStrap"],
+	Layers: ToLayerMap([
+		{ Name: "Bra", Layer: "BindChestLower", Pri: -30.1,
+			PrependLayerPrefix: {ChastityBraOption: "Option_"},
+			Invariant: true,
+			InheritColor: "BaseMetal",
+		},
+		{ Name: "BraPadlock", Layer: "BindChestLower", Pri: -29.9,
+			PrependLayerPrefix: {ChastityBraOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			InheritColor: "Lock",
+		},
+	])
+});
+AddModel({
+	Name: "SteelChastityBra_Radial",
+	Folder: "SteelChastity",
+	Parent: "SteelChastityBra_Padlock",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "ChastityBra", "Metal"],
+	//AddPose: ["CrotchStrap"],
+	Layers: ToLayerMap([
+		{ Name: "Bra", Layer: "BindChestLower", Pri: -30.1,
+			PrependLayerPrefix: {ChastityBraOption: "Option_"},
+			Invariant: true,
+			InheritColor: "BaseMetal",
+		},
+		{ Name: "BraRadial", Layer: "BindChestLower", Pri: -29.9,
+			PrependLayerPrefix: {ChastityBraOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			InheritColor: "Lock",
+		},
+	])
+});
+AddModel({
+	Name: "SteelChastityBra_Segu",
+	Folder: "SteelChastity",
+	Parent: "SteelChastityBra_Padlock",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "ChastityBra", "Metal"],
+	//AddPose: ["CrotchStrap"],
+	Layers: ToLayerMap([
+		{ Name: "Bra", Layer: "BindChestLower", Pri: -30.1,
+			PrependLayerPrefix: {ChastityBraOption: "Option_"},
+			Invariant: true,
+			InheritColor: "BaseMetal",
+		},
+		{ Name: "BraSegu", Layer: "BindChestLower", Pri: -29.9,
+			PrependLayerPrefix: {ChastityBraOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			InheritColor: "Lock",
+		},
+	])
+});
+
+AddModel(GetModelFashionVersion("SteelChastityBra_Padlock", true));
+AddModel(GetModelFashionVersion("SteelChastityBra_Radial", true));
+AddModel(GetModelFashionVersion("SteelChastityBra_Segu", true));

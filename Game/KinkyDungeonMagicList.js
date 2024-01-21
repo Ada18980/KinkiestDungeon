@@ -35,7 +35,7 @@ let filtersExtra = [
 	["will", "stamina", "mana", "damage"],
 	["will", "stamina", "mana", "binding"],
 	["fire", "ice", "earth", "electric", "air", "water"],
-	["binding", "rubber", "summon", "physics", "metal", "leather", "rope"],
+	["binding", "latex", "summon", "physics", "metal", "leather", "rope"],
 	["stealth", "light", "shadow", "knowledge"],
 ];
 
@@ -164,7 +164,7 @@ let KinkyDungeonLearnableSpells = [
 		// Legs
 		["Sagitta", "Snare", "Wall", "Quickness", "Quickness2", "Quickness3", "Quickness4", "Quickness5", "SlimeSplash", "Slime", "SlimeEruption", "SlimeWall", "SlimeWallVert", "LatexWallVert", "SlimeWallHoriz", "LatexWallHoriz", "LatexWall", "SlimeToLatex", "LiquidMetal", "LiquidMetalBurst", "Ally", "NatureSpirit", "StormCrystal", "EarthMote", "Golem"],
 		// Passive
-		["Psychokinesis", "KineticMastery", "SagittaAssault", "Frustration", "LeatherBurst", "OneWithSlime", "SlimeWalk", "SlimeMimic", "Engulf"],
+		["Psychokinesis", "KineticMastery", "SagittaAssault", "Frustration", "ChainStrike", "Ropework", "LeatherBurst", "LeatherWhip", "OneWithSlime", "SlimeWalk", "SlimeMimic", "Engulf"],
 	],
 
 	//Page 3: Illusion
@@ -1056,7 +1056,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			spellPointCost: 2, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 				{type: "Psychokinesis", trigger: "calcComp", requiredTag: "telekinesis"},
 				{type: "Psychokinesis", trigger: "calcCompPartial", requiredTag: "telekinesis"},
-				{type: "Psychokinesis", trigger: "afterPlayerCast", requiredTag: "telekinesis"},
+				{type: "Psychokinesis", trigger: "afterPlayerCast", requiredTag: "telekinesis", mult: 2},
 
 			]},
 
@@ -1446,9 +1446,21 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			},
 			onhit:"aoe", time: 4, delay: 3, lifetime: 1, evadeable: true, range: 6.99, size: 3, aoe: 1.5, power: 9, bindType: "Metal", bind: 80, damage: "crush", playerEffect: {name: "LiquidMetalEngulf", damage: "crush", power: 9}},
 
-		{name: "Engulf", tags: ["latex", "slime", "buff", "offense"], prerequisite: "ApprenticeLatex", sfx: "MagicSlash", school: "Conjure", manacost: 1.5, components: [], level:1, type:"passive", events: [
+		{name: "Engulf", tags: ["latex", "slime", "buff", "offense"], prerequisite: "ApprenticeLatex", sfx: "MagicSlash", school: "Conjure", manacost: 1.6, components: [], level:1, type:"passive", events: [
 			{type: "ElementalEffect", power: 2, damage: "glue", trigger: "playerAttack"},
-			{type: "EffectTile", kind: "Slime", duration: 8, trigger: "playerAttack", cost: 0},
+			{type: "EffectTile", kind: "Slime", duration: 7, trigger: "playerAttack", cost: 0},
+		]},
+		{name: "ChainStrike", tags: ["chain", "metal", "buff", "offense"], prerequisite: "ApprenticeMetal", sfx: "MagicSlash", school: "Conjure", manacost: 1.4, components: [], level:1, type:"passive", events: [
+			{type: "ElementalEffect", power: 2, damage: "chain", bindType: "Metal", bindEff: 0.9, trigger: "playerAttack"},
+			{type: "EffectTile", kind: "Chains", duration: 16, trigger: "playerAttack", cost: 0},
+		]},
+		{name: "LeatherWhip", tags: ["latex", "slime", "buff", "offense"], prerequisite: "ApprenticeLeather", sfx: "MagicSlash", school: "Conjure", manacost: 1.2, components: [], level:1, type:"passive", events: [
+			{type: "ElementalEffect", power: 2, damage: "pain", trigger: "playerAttack"},
+			{type: "EffectTile", kind: "Belts", duration: 12, trigger: "playerAttack", cost: 0},
+		]},
+		{name: "Ropework", tags: ["rope", "buff", "offense"], prerequisite: "ApprenticeRope", sfx: "MagicSlash", school: "Conjure", manacost: 1.5, components: [], level:1, type:"passive", events: [
+			{type: "ElementalEffect", power: 2, damage: "chain", bindType: "Rope", bindEff: 1.8, trigger: "playerAttack"},
+			{type: "EffectTile", kind: "Ropes", duration: 12, trigger: "playerAttack", cost: 0},
 		]},
 
 		{name: "Awaken", prerequisite: "Spread", tags: ["slime", "latex", "binding", "offense", "aoe"], sfx: "MagicSlash", school: "Conjure", manacost: 2.0, components: ["Verbal"], level:1,
@@ -1505,8 +1517,8 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{goToPage: 6, name: "ApprenticeProjection", increasingCost: true, tags: ["magic", "randomfree"], autoLearn: ["Decoy"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{goToPage: 6, name: "ApprenticeKnowledge", increasingCost: true, tags: ["magic", "randomfree"], autoLearn: ["TrueSteel"], learnFlags: ["AdvTooltips"], hideLearned: true, hideUnlearnable: true, school: "Illusion", manacost: 0, spellPointCost: 1, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
-		{name: "Analyze", prerequisite: "ApprenticeKnowledge", tags: ["buff", "utility", "knowledge"], school: "Illusion", manacost: 2.5, defaultOff: true, cancelAutoMove: true, costOnToggle: true, components: [], level:1, type:"passive",
-			active: true,
+		{name: "Analyze", prerequisite: "ApprenticeKnowledge", tags: ["buff", "utility", "knowledge"], school: "Illusion", manacost: 2.5, defaultOff: true, cancelAutoMove: true, components: [], level:1, type:"passive",
+
 			events: [{type: "Analyze", trigger: "toggleSpell", power: 5, time: 20}, {type: "Analyze", trigger: "tick", power: 5, time: 20}]},
 
 		{name: "ShadowDance", prerequisite: "ApprenticeShadow", tags: ["shadow", "utility", "defense"], sfx: "MagicSlash", school: "Illusion", spellPointCost: 1,

@@ -3692,10 +3692,12 @@ function KinkyDungeonClickGame(Level) {
 				} else if (KinkyDungeonIsPlayer() && KDMouseInPlayableArea()) {
 					let fastMove = KinkyDungeonFastMove && !KinkyDungeonToggleAutoSprint;
 					if (fastMove && KDistChebyshev(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x, KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y) > 0.5
-						&& (KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || KDistChebyshev(KinkyDungeonPlayerEntity.x - KinkyDungeonTargetX, KinkyDungeonPlayerEntity.y - KinkyDungeonTargetY) < 1.5)) {
+						&& (KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0
+							|| KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0
+							|| KDistChebyshev(KinkyDungeonPlayerEntity.x - KinkyDungeonTargetX, KinkyDungeonPlayerEntity.y - KinkyDungeonTargetY) < 1.5)) {
 						let requireLight = KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0;
 						let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY,
-							false, false, false, KinkyDungeonMovableTilesEnemy, requireLight, false, true,
+							true, false, false, KinkyDungeonMovableTilesEnemy, requireLight, false, true,
 							undefined, false, undefined, false, true);
 						if (path) {
 							KDSetFocusControl("");
@@ -3925,22 +3927,23 @@ function KinkyDungeonGameKeyDown() {
 				else KinkyDungeonDrawState = "MagicSpells";
 			}
 		} else if (KinkyDungeonDrawState == "Collection" && (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey)) {
-			let index = Object.values(KDGameData.Collection || {}).findIndex((entry) => {return entry.id == (KDCollectionSelected || -1);});
+			if (!KDGameData.CollectionSorted) {KDSortCollection();}
+			let index = KDGameData.CollectionSorted.findIndex((entry) => {return entry.id == (KDCollectionSelected || -1);});
 			if (index > -1) {
 				if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
 					index += 1;
-					if (index >= Object.values(KDGameData.Collection || {}).length) {
+					if (index >= KDGameData.CollectionSorted.length) {
 						index = 0;
 					}
 				} else if (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey && KinkyDungeonCurrentPage >= 0) {
 					index -= 1;
 					if (index < 0 ) {
-						index = Object.values(KDGameData.Collection || {}).length - 1;
+						index = KDGameData.CollectionSorted.length - 1;
 					}
 				}
-				if (index > -1 && Object.values(KDGameData.Collection || {})[index]) {
-					KDCollectionSelected = Object.values(KDGameData.Collection || {})[index].id;
-					index = Object.values(KDGameData.Collection || {}).findIndex((entry) => {return entry.id == (KDCollectionSelected || -1);});
+				if (index > -1 && KDGameData.CollectionSorted[index]) {
+					KDCollectionSelected = KDGameData.CollectionSorted[index].id;
+					index = KDGameData.CollectionSorted.findIndex((entry) => {return entry.id == (KDCollectionSelected || -1);});
 					while (index >= KDCollectionIndex + KDCollectionColumns*KDCollectionRows) {
 						KDCollectionIndex += KDCollectionColumns;
 					}
@@ -4128,6 +4131,9 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 	let attackCost = KDAttackCost();
 	let capture = false;
 	let result = "fail";
+	if (Enemy) {
+		KDTurnToFace(Enemy.x - KinkyDungeonPlayerEntity.x, Enemy.y - KinkyDungeonPlayerEntity.y);
+	}
 
 	if (Enemy && KDHelpless(Enemy) && Enemy.hp < 0.52) {
 		attackCost = 0;
@@ -4208,6 +4214,8 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				if (data.skipTurn) skip = 1;
 				KinkyDungeonChangeStamina(data.attackCost, false, 1);
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "attack", 1);
+				KinkyDungeonSetFlag("armattack", 2);
+				KinkyDungeonSetEnemyFlag(data.target, "targetedForAttack", 2);
 			} else {
 				if ((Enemy.lifetime > 9000 || !Enemy.maxlifetime))
 					KinkyDungeonAggro(Enemy, undefined, KinkyDungeonPlayerEntity);
@@ -5339,4 +5347,10 @@ function KDPruneWorld() {
 			if (alt?.prune || alt?.alwaysRegen) delete slot.data[entry[0]];
 		}
 	}
+}
+
+
+function KDTurnToFace(dx, dy) {
+	KinkyDungeonPlayerEntity.facing_x = Math.min(1, Math.abs(dx)) * Math.sign(dx);
+	KinkyDungeonPlayerEntity.facing_y = Math.min(1, Math.abs(dy)) * Math.sign(dy);
 }

@@ -165,6 +165,7 @@ let KDToggles = {
 	PlayerAura: false,
 	EnemyAura: true,
 	OutlineAura: true,
+	GreyscaleBlindness: true,
 	NearestNeighbor: true,
 	ZoomIn: false,
 	ZoomOut: false,
@@ -226,6 +227,7 @@ let KDToggleCategories = {
 	//LazyWalk: "Controls",
 	//ShiftLatch: "Controls",
 	FlipPlayer: "Clothes",
+	GreyscaleBlindness: "GFX",
 };
 
 let KDDefaultKB = {
@@ -481,9 +483,11 @@ let KDDefaultMaxParty = 3;
 * Balance: number,
 * BalancePause: boolean,
 * Collection: Record<string, KDCollectionEntry>,
+* CollectionSorted: KDCollectionEntry[],
 * HeelPower: number,
 * visionAdjust: number,
 * visionBlind: number,
+* CollectionGuests: number,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
@@ -492,6 +496,7 @@ let KDDefaultMaxParty = 3;
 let KDGameDataBase = {
 	AttachedWep: "",
 	Collection: {},
+	CollectionSorted: [],
 	RevealedTiles: {},
 	RevealedFog: {},
 	Balance: 1,
@@ -677,6 +682,7 @@ let KDGameDataBase = {
 	Wait: 0,
 	Class: "",
 	EpicenterLevel: 0,
+	CollectionGuests: 0,
 
 	FloorRobotType: {},
 

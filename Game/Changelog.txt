@@ -24,6 +24,14 @@ Monk class?
 - Active: Increase unarmed base damage for 20 turns. After using, need to meditate 10 turns to recharge. Free.
 
 5.1.9
+- Added Steel Fiddle, Heavy Yoke
+- Enemies can now tease, tickle, and insert stuff into you between their attacks
+- New spells: Chain Strike, Ropework, Leather Whip
+- New graphics for some belts and bras
+- Added perks for different heavy bondage preferences
+- Removed Slayer, Magician, Conjurer perks
+- Liquid metal now debuffs electric resist
+- Liquid metal and steel armor now apply conduction to the player
 
 5.1.8
 - Frigid personality now ends at 10% distraction rather than 1%
