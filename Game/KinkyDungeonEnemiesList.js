@@ -4304,7 +4304,7 @@ let KinkyDungeonEnemies = [
 	{name: "DollmakerBoss3", nameList: "Dollmaker", outfit: "Dollmaker", style: "Dollmaker", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
 		applyFaction: "Dollsmith",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "dollsmith", "ranged",
-			"glueresist", "electricresist", "crushresist", "iceweakness", "dollmakerrestraints", "cyberdollchastity", "cyberdollrestraints", "cyberdollheavy", "controlharness", "teasetoys", "stageBoss", "boss", "nocapture", "unstoppable"]),
+			"glueresist", "electricresist", "crushresist", "iceweakness", "dollmakerrestraints", "cyberdollchastity", "cyberdollrestraints", "cyberdollheavy", "controlharness", "teasetoys", "stageBoss", "boss", "unstoppable"]),
 		spellResist: 2.0, armor: 0.5, followRange: 1.5, AI: "guard",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff88ff"},

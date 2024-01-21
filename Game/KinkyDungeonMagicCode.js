@@ -1107,8 +1107,12 @@ let KinkyDungeonSpellSpecials = {
 			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
 			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
 			if (KinkyDungeonPlayerTags.get("ItemNipplesPiercingsFull")) vibes.push("ItemNipplesPiercings");
-			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 0.5, 30, undefined, undefined, undefined, undefined, true);
 
+			if (!KDGameData.CurrentVibration) {
+				KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 0.5, 30, undefined, undefined, undefined, undefined, true);
+			} else {
+				KinkyDungeonAddVibeModifier(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 1, 30, undefined, false, false, false, false, true, 0.1, 0.2);
+			}
 			cast = true;
 		}
 		cast = cast || KDCastSpellToEnemies((en) => {
