@@ -106,6 +106,15 @@ class ModelContainer {
 						Model.Filters[l.InheritColor || l.Name] = JSON.parse(JSON.stringify(copiedFrom.Filters[l.ImportColorFromGroup[1]]));
 					}
 				}
+				if (l.ImportColorFromCategory) {
+					let copiedFrom = [...this.Models.values()].find((model) => {
+						return model.Categories.includes(l.ImportColorFromCategory[0]) && model.Filters && model.Filters[l.ImportColorFromCategory[1]]
+					});
+					if (copiedFrom) {
+						if (!Model.Filters) Model.Filters = {};
+						Model.Filters[l.InheritColor || l.Name] = JSON.parse(JSON.stringify(copiedFrom.Filters[l.ImportColorFromCategory[1]]));
+					}
+				}
 			}
 		}
 	}

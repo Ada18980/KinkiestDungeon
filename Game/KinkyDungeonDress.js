@@ -1529,7 +1529,7 @@ let KDExpressions = {
 				BrowsPose: "",
 				Brows2Pose: "",
 				BlushPose: "",
-				MouthPose: "MouthSmile",
+				MouthPose: KinkyDungeonGoddessRep.Passion - KinkyDungeonGoddessRep.Frustration > 25 ? "MouthSmile" : (KinkyDungeonGoddessRep.Passion - KinkyDungeonGoddessRep.Frustration > -25 ? "MouthEmbarrassed" : "MouthPout"),
 			};
 		},
 	},

@@ -17,33 +17,35 @@ function KDGetModsLoad() {
 			KDOffline = true;
 			if (localStorage.getItem("KDMods") && JSON.parse(localStorage.getItem("KDMods"))) {
 				let mods = JSON.parse(localStorage.getItem("KDMods"));
-				for (let m of mods) {
-					// Read file with Node.js API
-					//@ts-ignore
-					const fs = nw.require('fs');
-					//@ts-ignore
-					const path = nw.require('path');
-					// Extract path and filename using path module
-					const { dir, base } = path.parse(m);
+				if (mods)
+					for (let m of mods) {
+						if (m) {
+							// Read file with Node.js API
+							//@ts-ignore
+							const fs = nw.require('fs');
+							//@ts-ignore
+							const path = nw.require('path');
+							// Extract path and filename using path module
+							const { dir, base } = path.parse(m);
 
-					// Read the file content into a buffer
-					//@ts-ignore
-					fs.readFile(m, (err, fileContent) => {
+							// Read the file content into a buffer
+							//@ts-ignore
+							fs.readFile(m, (err, fileContent) => {
 
-						// Create a Blob using the buffer
-						const blob = new Blob([fileContent], { type: 'application/octet-stream' });
+								// Create a Blob using the buffer
+								const blob = new Blob([fileContent], { type: 'application/octet-stream' });
 
-						// Create a File object with the Blob
-						const fileObject = new File([blob], base, { type: 'application/octet-stream' });
-
-
-						// Create a File object using the stream
-						//const fileObject = new File([blob], base, { type: 'application/x-zip-compressed' });
-						if (fileObject) KDMods[base] = fileObject;
-					});
+								// Create a File object with the Blob
+								const fileObject = new File([blob], base, { type: 'application/octet-stream' });
 
 
-				}
+								// Create a File object using the stream
+								//const fileObject = new File([blob], base, { type: 'application/x-zip-compressed' });
+								if (fileObject) KDMods[base] = fileObject;
+							});
+
+						}
+					}
 			}
 		}
 	} catch (err) {
@@ -52,7 +54,7 @@ function KDGetModsLoad() {
 }
 
 function KDDrawMods() {
-	if (!KDGetMods) {
+	if (!KDGetMods && KDToggles.AutoLoadMods) {
 		KDGetMods = true;
 		KDGetModsLoad();
 	}
@@ -126,55 +128,59 @@ async function KDExecuteMods() {
 
 	}
 
-	for (let entry of KDAllModFiles) {
-		console.log(entry);
-		const controller = new AbortController();
-		const signal = controller.signal;
-		const blobURL = await model.getURL(entry, {
-			password: undefined,
-			onprogress: (index, max) => {
-				console.log(`Loading progress: ${index},${max}`);
-			},
-			signal
-		});
-		console.log(blobURL);
-		let blob = await fetch(blobURL).then(r => r.blob());
-		console.log(blob);
-		let reader = new FileReader();
+	try {
+		for (let entry of KDAllModFiles) {
+			console.log(entry);
+			const controller = new AbortController();
+			const signal = controller.signal;
+			const blobURL = await model.getURL(entry, {
+				password: undefined,
+				onprogress: (index, max) => {
+					console.log(`Loading progress: ${index},${max}`);
+				},
+				signal
+			});
+			console.log(blobURL);
+			let blob = await fetch(blobURL).then(r => r.blob());
+			console.log(blob);
+			let reader = new FileReader();
 
-		if (entry.filename.endsWith('.js') || entry.filename.endsWith('.ks')) {
-			let file = new File([blob], entry.filename);
-			// Eval js files. eval() is dangerous. Don't load untrusted mods.
-			reader.onload = function(event) {
-				console.log("EXECUTING MOD FILE " + file.name);
-				if (typeof event.target.result === "string") {
-					if (
-						// Some basic safety features to prevent file io
-						!(event.target.result.includes("require("))
-						&& !(event.target.result.includes("nw.("))
-						&& !(event.target.result.includes("'fs'"))
-						&& !(event.target.result.includes("\"fs\""))
-						&& !(event.target.result.includes("`fs`"))
-						&& !(event.target.result.includes("`fs`"))
-					) {
-						//@ts-ignore
-						eval(event.target.result);
+			if (entry.filename.endsWith('.js') || entry.filename.endsWith('.ks')) {
+				let file = new File([blob], entry.filename);
+				// Eval js files. eval() is dangerous. Don't load untrusted mods.
+				reader.onload = function(event) {
+					console.log("EXECUTING MOD FILE " + file.name);
+					if (typeof event.target.result === "string") {
+						if (
+							// Some basic safety features to prevent file io
+							!(event.target.result.includes("require("))
+							&& !(event.target.result.includes("nw.("))
+							&& !(event.target.result.includes("'fs'"))
+							&& !(event.target.result.includes("\"fs\""))
+							&& !(event.target.result.includes("`fs`"))
+							&& !(event.target.result.includes("`fs`"))
+						) {
+							//@ts-ignore
+							eval(event.target.result);
+						}
+
 					}
+				};
+				reader.readAsText(file);
+			} else {
+				KDModFiles[KinkyDungeonRootDirectory + entry.filename] = URL.createObjectURL(blob);
+				KDModFiles[KinkyDungeonRootDirectory + "" + entry.filename] = KDModFiles[KinkyDungeonRootDirectory + entry.filename];
 
-				}
-			};
-			reader.readAsText(file);
-		} else {
-			KDModFiles[KinkyDungeonRootDirectory + entry.filename] = URL.createObjectURL(blob);
-			KDModFiles[KinkyDungeonRootDirectory + "" + entry.filename] = KDModFiles[KinkyDungeonRootDirectory + entry.filename];
+				if (entry.filename?.startsWith("Data/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
+				if (entry.filename?.startsWith("DisplacementMaps/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
+				if (entry.filename?.startsWith("Models/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
+				if (entry.filename?.startsWith("TextureAtlas/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
+				if (entry.filename?.startsWith("Music/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
+			}
 
-			if (entry.filename?.startsWith("Data/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
-			if (entry.filename?.startsWith("DisplacementMaps/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
-			if (entry.filename?.startsWith("Models/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
-			if (entry.filename?.startsWith("TextureAtlas/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
-			if (entry.filename?.startsWith("Music/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
 		}
-
+	} catch (e) {
+		console.log(e);
 	}
 
 	for (let entry of Object.entries(KDModFiles)) {

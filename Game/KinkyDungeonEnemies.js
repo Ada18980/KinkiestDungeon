@@ -4265,10 +4265,6 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		}
 	}
 
-	if (enemy.aware && enemy.idle && (!KDEnemyHasFlag(enemy, "targ_player") ? (enemy.vp || 0) < sneakThreshold : ((enemy.vp || 0) < sneakThreshold * 0.25 && !enemy.path && !AIData.canSensePlayer))) {
-		if (enemy.aware) KDAddThought(enemy.id, "Lose", 1, 4);
-		enemy.aware = false;
-	}
 
 	if (enemy.usingSpecial && !enemy.specialCD) enemy.specialCD = 0;
 
@@ -5061,7 +5057,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						AIData.damage == "pain" ? "Slap"
 						: (AIData.damage == "grope" ? "Grope"
 							: (AIData.damage == "tickle" ? "Tickle"
-								: (data.type(data.damage > 1 ? "Damage" : "DamageWeak"))))
+								: (data.damage > 1 ? "Damage" : "DamageWeak")))
 							;
 						if (enemy.usingSpecial && enemy.Enemy.specialsfx) sfx = enemy.Enemy.specialsfx;
 						KinkyDungeonSendEvent("hit", data);
@@ -5243,6 +5239,12 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		}
 		if (AIData.aggressive && AIData.canSensePlayer && enemy.Enemy.RemoteControl?.punishRemote && AIData.playerDist < enemy.Enemy.RemoteControl?.punishRemote && player?.player) {
 			KinkyDungeonSendEvent("remotePunish", {enemy});
+		}
+
+
+		if (enemy.aware && enemy.idle && (!KDEnemyHasFlag(enemy, "targ_player") ? (enemy.vp || 0) < sneakThreshold : ((enemy.vp || 0) < sneakThreshold * 0.25 && !enemy.path && !AIData.canSensePlayer))) {
+			if (enemy.aware) KDAddThought(enemy.id, "Lose", 1, 4);
+			enemy.aware = false;
 		}
 	}
 
@@ -6300,7 +6302,7 @@ function KDAddLostItemSingle(item, quantity = 1) {
 		return true;
 	} else if (KDRestraint({name: item}) && (
 		KinkyDungeonRestraintVariants[item]
-		|| (KDRestraint({name: "item"}).armor && !KDRestraint({name: "item"})?.noRecover)
+		|| (KDRestraint({name: item}).armor && !KDRestraint({name: item})?.noRecover)
 		|| KDRestraintSpecial(item))) {
 		KinkyDungeonAddLostItems([{name: item, type: LooseRestraint, quantity: 1, id: KinkyDungeonGetItemID()}], false);
 		return true;

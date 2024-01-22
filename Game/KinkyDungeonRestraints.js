@@ -4688,8 +4688,8 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 			}
 			/** @type {KDRestraintPropsBase} */
 			let props = {
-				Model: CuffModels[origRestraint.Group] || (origRestraint.Model + ModelSuffix + (cuffInfo.ModelSuffix || "")),
-				Asset: CuffAssets[origRestraint.Group] || (origRestraint.Asset),
+				Model: CuffModels[cuffPart] || (origRestraint.Model + ModelSuffix + (cuffInfo.ModelSuffix || "")),
+				Asset: CuffAssets[cuffPart] || (origRestraint.Asset),
 				power: origRestraint.power + addPower,
 				shrine: shrine,
 				enemyTags: enemyTags,

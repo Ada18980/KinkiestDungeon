@@ -1810,7 +1810,7 @@ let KinkyDungeonEnemies = [
 		stamina: 4,
 		terrainTags: {"BanditEnemy": 10, "increasingWeight":-1, "BanditWanted": 10, "BanditHated": 5}, shrines: ["Leather"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 20, weight: 24}, {name: "Rope", weight: 100.5, ignoreInInventory: true},]},
-	{name: "Miner", outfit: "Earth", faction: "Bandit", clusterWith: "human", playLine: "Bandit", bound: "Miner", tags: KDMapInit(["opendoors", "closedoors", "leashing", "bandit", "human", "miner", "imprisonable", "melee", "leatherRestraints", "leatherRestraintsHeavy", "clothRestraints", "chainweakness", "glueweakness", "search"]),
+	{name: "Miner", outfit: "Bandit", style: "Earth", faction: "Bandit", clusterWith: "human", playLine: "Bandit", bound: "Miner", tags: KDMapInit(["opendoors", "closedoors", "leashing", "bandit", "human", "miner", "imprisonable", "melee", "leatherRestraints", "leatherRestraintsHeavy", "clothRestraints", "chainweakness", "glueweakness", "search"]),
 		cohesion: 0.9, armor: 2.0, followRange: 1, AI: "hunt",
 		maxblock: 1,
 		maxdodge: 0,

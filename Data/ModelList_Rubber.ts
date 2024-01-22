@@ -85,7 +85,7 @@ AddModel({
 		},
 		{ Name: "FootRight", Layer: "WrappingLegsRight", Pri: 50,
 			//SwapLayerPose: {Kneel: "WrappingLegsRight", KneelClosed: "WrappingLegsRight"},
-			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
+			Poses: ToMap(["Closed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			NoOverride: true,
 			InheritColor: "Rubber",

@@ -23,6 +23,14 @@ Monk class?
 - Passive: enchantments apply to unarmed strikes
 - Active: Increase unarmed base damage for 20 turns. After using, need to meditate 10 turns to recharge. Free.
 
+
+- TODO add chains
+- TODO display stand turret
+
+5.1.10
+- TODO add mimic curse
+- TODO add lairs
+
 5.1.9
 - Added Steel Fiddle, Heavy Yoke
 - Enemies can now tease, tickle, and insert stuff into you between their attacks

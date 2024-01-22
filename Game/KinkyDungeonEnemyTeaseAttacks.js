@@ -177,7 +177,7 @@ let KDTeaseAttacks = {
 				&& (
 					KDGetVibeToys(enemy).length > 0
 					&& KDGetVibeToys(enemy).some((toy) => {
-						return KDCanAddRestraint(KDRestraint({name: toy}), false, "", true, undefined, false, true) != undefined;
+						return KDCanAddRestraint(KDRestraint({name: toy}), false, "", true, undefined, false, true);
 					})
 					&& (KDPlayerIsStunned() != false || (KDPlayerFacingAway(player, enemy) && !KinkyDungeonCanStand()))
 				);

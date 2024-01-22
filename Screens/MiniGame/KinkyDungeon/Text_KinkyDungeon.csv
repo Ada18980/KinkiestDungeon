@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.1.9"
+KDVersionStr,"5.1.11"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -447,9 +447,9 @@ KinkyDungeonStatFutileStruggles,"Futile Struggles"
 KinkyDungeonStatDescFutileStruggles,"Lose 2 WP every time you remove a non-trivial restraint."
 
 KinkyDungeonStatSecondWind,"Second Wind"
-KinkyDungeonStatDescSecondWind,"Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage. (Upgrade available in spell tree)"
+KinkyDungeonStatDescSecondWind,"Regenerate WP when unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, gag, or slows. (Upgrade available in spell tree)"
 KinkyDungeonSpellSecondWind0,Second Wind Perk
-KinkyDungeonSpellDescriptionSecondWind0,"Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage."
+KinkyDungeonSpellDescriptionSecondWind0,"Regenerate WP when you are unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, or gag bondage, and no slows."
 KinkyDungeonSpellSecondWind1,Triumphant Wind
 KinkyDungeonSpellDescriptionSecondWind1,"Second Wind now regenerates up to 25% of your max WP"
 
@@ -5095,6 +5095,7 @@ KDTileTooltipa,Ruined Shrine
 KDTileTooltipO,Orb Altar
 KDTileTooltipo,Empty Altar
 KDTileTooltipC,Chest
+KDTileTooltipC2,Faction Chest
 KDTileTooltipc,Empty Chest
 KDTileTooltipR,Shiny Object
 KDTileTooltipY,Shiny Object
@@ -19351,3 +19352,5 @@ ResistTypeDodge," (dodged!)"
 ResistType,""
 
 KDPetsuitCrawl,"You crouch and move slowly."
+
+KDChestTooltip,"Owned by: "

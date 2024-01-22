@@ -1385,7 +1385,7 @@ function KinkyDungeonDrawGame() {
 						}
 					}
 					let tile = ambushTile || KinkyDungeonMapGet(cursorX, cursorY);
-					if (KDTileTooltips[tile] && (KinkyDungeonInspect || KDTileTooltips[tile]().noInspect)) {
+					if (KDTileTooltips[tile] && (KinkyDungeonInspect || KDTileTooltips[tile](cursorX, cursorY).noInspect)) {
 						tooltips.push((offset) => KDDrawTileTooltip(tile, cursorX, cursorY, offset));
 					}
 				}
@@ -3472,7 +3472,7 @@ function KDUpdateVision(CamX, CamY, CamX_offset, CamY_offset) {
 }
 
 /**
- * @type {Record<string, () => {color: string, text: string, noInspect?: boolean}>}
+ * @type {Record<string, (x: number, y: number) => {color: string, text: string, desc?: string, noInspect?: boolean}>}
  */
 let KDTileTooltips = {
 	'1': () => {return {color: "#aaaaaa", text: "1"};},
@@ -3486,7 +3486,11 @@ let KDTileTooltips = {
 	'a': () => {return {color: "#ffffff", text: "a"};},
 	'O': () => {return {color: "#92e8c0", text: "O"};},
 	'o': () => {return {color: "#ffffff", text: "o"};},
-	'C': () => {return {color: "#ffee83", noInspect: true, text: "C"};},
+	'C': (x, y) => {
+		let tile = KinkyDungeonTilesGet(x + ',' + y);
+		return {color: "#ffee83", noInspect: true, text: tile?.Faction ? "C2" : "C", desc:
+			tile?.Faction ? TextGet("KDChestTooltip") + TextGet("KinkyDungeonFaction" + (tile.Faction))
+			: undefined};},
 	'c': () => {return {color: "#ffffff", text: "c"};},
 	'T': () => {return {color: "#444444", text: "T"};},
 	'4': () => {return {color: "#ffffff", noInspect: true, text: "4"};},
@@ -3529,7 +3533,7 @@ function KDGetTileColor(x, y) {
 	} else {
 		let tile = KinkyDungeonMapGet(x, y);
 		if (KDTileTooltips[tile]) {
-			color = KDTileTooltips[tile]().color;
+			color = KDTileTooltips[tile](x, y).color;
 		}
 	}
 
@@ -3540,10 +3544,18 @@ function KDGetTileColor(x, y) {
 function KDDrawTileTooltip(maptile, x, y, offset) {
 	let TooltipList = [];
 	TooltipList.push({
-		str: TextGet("KDTileTooltip" + KDTileTooltips[maptile]().text),
-		fg: KDTileTooltips[maptile]().color,
+		str: TextGet("KDTileTooltip" + KDTileTooltips[maptile](x, y).text),
+		fg: KDTileTooltips[maptile](x, y).color,
 		bg: "#000000",
 		size: 24,
+		center: true,
+	});
+	if (KDTileTooltips[maptile](x, y).desc)
+	TooltipList.push({
+		str: KDTileTooltips[maptile](x, y).desc,
+		fg: "#ffffff",
+		bg: "#000000",
+		size: 18,
 		center: true,
 	});
 
