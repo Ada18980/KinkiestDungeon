@@ -610,8 +610,8 @@ While above 70% distraction, you ignite nearby objects and gain +40% fire damage
 当性奋值超过 70% 时，自身造成的火焰伤害提高 40%，并且你会点燃附近的物体。
 Frigid Personality
 冰清玉洁
-While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties.
-当性奋值为 0% 时，自身造成的寒冰伤害提高 10%，并且可以在冰上无惩罚的行走。
+While below 10% distraction, you gain +10% ice damage and can walk on ice without penalties.
+当性奋值低于 10% 时，自身造成的寒冰伤害提高 10%，并且可以在冰上无惩罚的行走。
 Grounded in Reality
 现实锚定
 While at max mana, your attacks deal an additional 30% of their base damage as electric damage.
@@ -696,12 +696,12 @@ Lose 2 WP every time you remove a non-trivial restraint.
 每次移除特殊拘束时消耗 2 WP。
 Second Wind
 再生之风
-Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage. (Upgrade available in spell tree)
-身体自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚。（可在技能树中升级）
+Regenerate WP when unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, gag, or slows. (Upgrade available in spell tree)
+完好无损时恢复 WP，最高可达最大 WP 的 10%。完好无损意味着没有手臂、手、腿、眼睛被蒙住、被堵住或减速。（可在技能树中升级）
 Second Wind Perk
 再生之风技能
-Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage.
-身体自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚。
+Regenerate WP when you are unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, or gag bondage, and no slows.
+当你完好无损时恢复 WP，最高可达最大 WP 的 10%。完好无损意味着没有手臂、手、腿、眼睛被蒙住、被堵住或减速。
 Triumphant Wind
 凯旋之风
 Second Wind now regenerates up to 25% of your max WP
@@ -6748,6 +6748,8 @@ Empty Altar
 空祭坛
 Chest
 箱子
+Faction Chest
+派系宝箱
 Empty Chest
 空箱子
 Shiny Object
@@ -7454,6 +7456,12 @@ You unleash a bolt of lightning!
 你释放出一道闪电！
 Choose line direction
 选择直线区域
+Earthshape (Arc)
+塑造大地（弧形）
+Create a 5-wide arc of Earthen Monoliths. They have 50 hitpoints and 25 armor.
+创建一个 5 宽的土制巨石弧。他们有 50 点生命值和 25 点护甲。
+You stomp your foot and monoliths emerge from the ground!
+你一跺脚，巨石从地里冒出来！
 Corona
 电晕
 Binding Light
@@ -7520,8 +7528,8 @@ Choose area containing Latex
 选择含有乳胶的区域
 Slime Repulsion
 粘液排斥
-Gain +50 glue resist.
-增加 50 点胶水抗性。
+Gain +50 glue resist. (Having 45 or more Glue Resist negates many negative effects from slime)
+增加 50 点胶水抗性。（具有 45 或更高的胶水抗性可以消除粘液的许多负面影响）
 Spread
 增殖
 Slime in the target area expands by 1 unit in the four cardinal directions. Refreshes duration to 12-20 turns.
@@ -14890,8 +14898,8 @@ The liquid metal cube expands across your body and hardens, taking the form of r
 液态金属立方体在你的身体上膨胀并变硬，以束缚的形式出现！（+RestraintAdded）
 Liquid Metal (Feet)
 液态金属（脚）
-A metallic substance that is both flexible and hard. It weighs you down, reducing evasion.
-一种既柔软又坚硬的金属物质。它会减轻你的负担，减少逃避。
+A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity.
+一种既柔软又坚硬的金属物质。它会减轻你的负担，降低闪避，并导电。
 Forming a skintight layer, it will be quite difficult to escape this.
 形成一层紧密的外壳，逃脱这个是相当困难的。
 Liquid Metal (Ankles)
@@ -15466,8 +15474,8 @@ You feel holy energy neutralizing the cursed magic permanently.
 你感觉到神圣的能量永久地中和了被诅咒的魔法。
 Some say it comes from a bakery in heaven itself. Others say it is simply made from lab-grade materials, and actually tastes awful.
 有人说它来自天堂的面包店。其他人则说它只是由实验室材料制成，实际上味道很糟糕。
-Unlocks a common cursed item and/or removes all curses from one currently worn item of your choice.
-解锁一件常见的被诅咒物品 和/或 选择你当前佩戴的一件物品，移除其的所有诅咒。
+Unlocks a cursed item and/or removes all curses from one currently worn item of your choice.
+解锁一件被诅咒的物品 和/或 选择你当前佩戴的一件物品，移除其的所有诅咒。
 Congratulations! Your continued patronage has earned you|one (1) round trip to the nearest affiliated shop!|Simply step into the portal to continue...|(the Goddess is not responsible for any mishaps or fraud pertaining to the use of this portal)
 恭喜！ 你的持续惠顾为您赢得了|一（1）次往返最近的附属商店的机会！|只需进入传送门即可继续...|（女神对与使用此传送门有关的任何事故或欺诈概不负责）
 (You step through the portal. An unperturbed shopkeeper greets you.)|Another visitor? Oh, it's just you~
@@ -16356,6 +16364,12 @@ Exits locked! Find the key!
 出口被锁住了！寻找钥匙！
 Got the key!
 拿到钥匙了！
+Exits locked! Find a lever!
+出口被锁住了！寻找拉杆！
+Exits unlocked!
+出口已解锁！
+Exits locked! Find control panel!
+出口被锁住了！寻找控制面板！
 BOSS ROOM
 BOSS 房
 BOSS ROOM CLEARED!
@@ -17262,3 +17276,107 @@ SUSPICIOUS MOD DETECTED
 检测到可疑模组
 The bright light hurts your dark-adjusted eyes!
 明亮的光线会伤害你适应黑暗的眼睛！
+Slimy Spit
+粘糊糊的口水
+Servants and Guests
+仆人和客人
+Prisoners
+囚犯
+Promote to Servant
+晋升为仆人
+Demote to Prisoner
+降级为囚犯
+The ENMY reaches out and gives your breast a squeeze! (DMGDLT)
+ENMY 伸出手来揉捏你的乳房！(DMGDLT)
+The ENMY reaches for you and fails!
+ENMY 向你伸出手，但失败了！
+The ENMY gives your butt a light slap! (DMGDLT)
+ENMY 轻轻地朝你的屁股打了一巴掌！(DMGDLT)
+The ENMY gives your butt a light slap as you move past! (DMGDLT)
+当你走过时，ENMY 会轻轻地拍打你的屁股！(DMGDLT)
+The ENMY tries to spank you but misses!
+ENMY 试图打你的屁股，但没有打中！
+The ENMY gives your butt a squeeze! (DMGDLT)
+ENMY 揉捏你的屁股！(DMGDLT)
+The ENMY gives your butt a squeeze as you move past! (DMGDLT)
+当你经过时，ENMY 揉捏你的屁股！(DMGDLT)
+The ENMY reaches for you but misses!
+ENMY 向你伸手，但没有摸中！
+The ENMY tickles your exposed armpits! (DMGDLT)
+ENMY 会挠你暴露的腋窝！(DMGDLT)
+The ENMY tries to tickle you!
+ENMY 试图挠你痒痒！
+The ENMY tickles your feet! (DMGDLT)
+ENMY 正在挠你的脚！(DMGDLT)
+The ENMY takes off your shoes and tickles your feet! (DMGDLT)
+ENMY 脱掉你的鞋子并挠你的脚！(DMGDLT)
+The ENMY pats you gently on the head. (DMGDLT)
+ENMY 轻轻地拍了拍你的头。(DMGDLT)
+The ENMY tries to pat you on the head but decides not to.
+ENMY 试图拍拍你的头，但想了想还是算了。
+The ENMY behind you gives your shoulders a nice massage! (DMGDLT)
+你身后的 ENMY 给你的肩膀做了一次很好的按摩！(DMGDLT)
+The ENMY reaches for your shoulders but you slip free!
+ENMY 伸手抓住你的肩膀，但你却逃脱了！
+The ENMY calls you cute! (DMGDLT)
+ENMY 称赞你很可爱！(DMGDLT)
+The ENMY blushes at your cuteness!
+ENMY 因为你太可爱而脸红！
+The ENMY makes fun of you! (DMGDLT)
+ENMY 取笑你！(DMGDLT)
+The ENMY struggles to find words!
+ENMY 很难找到言语！
+The ENMY buzzes you with her VTY! (DMGDLT)
+ENMY 拿她嗡嗡作响的振动玩具走向你！(DMGDLT)
+The ENMY reaches for her VTY!
+ENMY 伸手去拿她的振动玩具！
+The ENMY sticks a VTY into you! (DMGDLT)
+ENMY 将震动玩具插入你的体内！(DMGDLT)
+The ENMY sticks a stuffing into your open mouth! (DMGDLT)
+ENMY 将填充物塞入你张开的嘴里！(DMGDLT)
+The ENMY reaches for your mouth and fails!
+ENMY 将手伸向你的嘴，但失败了！
+The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
+ENMY 将你们的双手拉到一起，并在你们的双手之间夹上一个绑带！(DMGDLT)
+The ENMY grabs your wrists but you pull away!
+ENMY 抓住你的手腕，但你却挣脱了！
+More Armbinders
+更多束手套
+Armbinders are favored over other heavy bondage.
+与其他沉重的束缚相比，束手套更受青睐。
+Less Armbinders
+减少束手套
+Armbinders are less favored over other heavy bondage.
+与其他沉重的束缚相比，束手套似乎不太受青睐。
+More Boxbinders
+更多盒束包扎带
+Boxbinders are favored over other heavy bondage.
+与其他沉重的束缚相比，盒束包扎带更受青睐。
+Less Boxbinders
+减少盒束包扎带
+Boxbinders are less favored over other heavy bondage.
+与其他沉重的束缚相比，盒束包扎带似乎不太受青睐。
+More Straitjackets
+更多拘束衣
+Straitjackets are favored over other heavy bondage.
+与其他沉重的束缚相比，拘束衣更受青睐。
+Less Straitjackets
+减少拘束衣
+Straitjackets are less favored over other heavy bondage.
+与其他沉重的束缚相比，拘束衣似乎不太受青睐。
+More Yokes
+更多枷锁
+Yokes are favored over other heavy bondage.
+与其他沉重的束缚相比，枷锁更受青睐。
+Less Yokes
+减少枷锁
+Yokes are less favored over other heavy bondage.
+与其他沉重的束缚相比，枷锁似乎不太受青睐。
+ (blocked!)
+（格挡！）
+ (dodged!)
+（躲开！）
+You crouch and move slowly.
+你蹲下并缓慢移动。
+Owned by: 
+拥有者：
