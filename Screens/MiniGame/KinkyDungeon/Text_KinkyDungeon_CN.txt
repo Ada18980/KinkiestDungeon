@@ -490,8 +490,8 @@ You can cast arm spells using just your fingers, as long as your hands aren't bo
 只要你的手没有被束缚，你就可以只用手指施展手臂的法术。
 Well-Equipped
 设备精良
-Restraints and traps that are limited by level appear sooner, and will stack more. +10 security level.
-有楼层数限制的拘束具和陷阱会更早出现，并且敌人会堆叠更多的束缚。+10 安全等级。
+Restraints and traps that are limited by level appear sooner, and enemies stack more restraints in general. +10 security level.
+有楼层数限制的拘束具和陷阱会更早出现，而且敌人通常会堆叠更多的束缚。+10 安全等级。
 Quick-Draw
 快速拔刀
 Switching weapons and spells does not take a turn.
@@ -606,7 +606,7 @@ When you pick up cursed armor or restraints from chests, they equip automaticall
 当你从箱子中拿起被诅咒的盔甲或束缚具时，如果可以的话会自动装备。
 Burning Desire
 焚心欲火
-While above 70% distraction, you ignite nearby objects and gain +40% fire damage.
+While above 70% distraction, you ignite nearby objects and gain +25% fire damage.
 当性奋值超过 70% 时，自身造成的火焰伤害提高 40%，并且你会点燃附近的物体。
 Frigid Personality
 冰清玉洁
@@ -1146,12 +1146,12 @@ Ignited: You are dealing fire damage to yourself and nearby enemies!
 燃烧：你对自己和附近的敌人造成火焰伤害！
 You are on fire and taking damage!
 你正在燃烧并受到伤害！
-Arcane Power: Deals bonus damage when you hit an enemy.
-奥术之力：当你击中敌人时，造成额外的伤害。
-Arcane Protection: Reduces damage taken, and deals retaliation damage.
-奥术保护：减少所受伤害，并反弹给造成伤害的敌人。
-Arcane Cunning: You turn invisible briefly after attacking.
-奥术之灵：你在攻击后短暂变得隐形。
+Divine Punishment: Deals bonus damage when you hit an enemy.
+狂暴状态：当你击中敌人时，造成额外的伤害。
+Divine Protection: Reduces damage taken, and deals retaliation damage.
+神圣保护：减少所受伤害，并反弹给造成伤害的敌人。
+Divine Cunning: You turn invisible briefly after attacking.
+神圣之灵：你在攻击后短暂变得隐形。
 -MP Cost (Fire)
 减少火焰法术的 MP 消耗
 -MP Cost (Air)
@@ -7090,8 +7090,8 @@ Elemental's Gust
 元素之风
 Gust
 风
-A ball of flame that does DamageDealt damage.
-释放造成 DamageDealt 点火焰伤害的火焰弹。
+A ball of flame that does DamageDealt damage to one target.
+释放对一个目标造成 DamageDealt 点火焰伤害的火焰弹。
 You a hurl a firebolt!
 你投掷了火焰弹！
 Choose aim direction
@@ -7346,6 +7346,10 @@ The elemental channels the force of the storm!
 元素引导风暴之力！
 Fireball
 火球
+A slow moving ball of flame that explodes for DamageDealt fire damage in a wide area.
+缓慢移动的火球爆炸，在大范围内造成 DamageDealt 点火焰伤害。
+You a hurl a massive fireball!
+你投出了一个巨大的火球！
 Fireblast
 火焰冲击波
 A slow moving ball of flame that explodes for 100 fire damage to the target and DamageDealt damage to surrounding enemies.
@@ -11198,12 +11202,12 @@ Humans are fun to play with.
 和人类一起玩很有趣。
 Toying with me? I shall oblige!
 戏弄我？我会让你履约的！
-Cast your last pathetic spell, human.
-这会是你最后一个咒语，人类。
-Your magic is weak, human.
-你的魔法很弱，人类。
-It tickles, hehe!
-就跟挠痒一样，呵呵！
+Cast your last pathetic spell, mortal.
+这会是你最后一个咒语，凡人。
+Your mere attempt at magic insults me.
+你仅仅尝试魔法就侮辱了我。
+Do you really think that will stop me?
+你真的认为这会阻止我吗？
 Look what humans need to match only a fraction of our power!
 看看人类需要什么才能匹配我们的一小部分力量！
 Our goddess doesn't need to listen to the likes of you!
@@ -14287,7 +14291,13 @@ Strip!
 Export Outfit
 导出衣服
 Export AlwaysDress
-导出 AlwaysDress
+导出强制着装
+Export Hair
+导出发型
+Export Face
+导出脸部
+Export Cosplay
+导出 Cosplay
 Gamma
 伽马值
 Original Color
@@ -14366,6 +14376,20 @@ A huge rubber cube rises up out of the floor!
 一个巨大的橡胶立方体从地板上升起！
 Latex Cube
 乳胶立方体
+A gelatinous cube that engulfed you at some point in the past.
+一个凝胶状的立方体，在过去的某个时刻吞没了你。
+It seems quite content staying where it is.
+它在原地似乎很满足。
+Slime Bubble
+粘液泡泡
+A squishy and sticky bubble that you can't get out of!
+一个又软又粘的泡泡，你无法挣脱！
+It will slow you down severely but can be popped if you can reach a knife...
+它会严重减慢你的速度，但如果你能拿到刀，它就会从你身体弹出......
+Bubble
+泡泡
+A squishy bubble that you can't get out of!
+一个软软的泡沫，你无法挣脱！
 The latex cube hardens into a solid, harmless entity.
 乳胶立方体硬化成固体、无害的实体。
 The latex cube slowly engulfs you! (DamageTaken)
@@ -15418,8 +15442,8 @@ You avoid the attack in a flurry of impressive maneuvers!
 你在一系列令人印象深刻的动作中避开了攻击！
 Arcane Barrier
 奥术屏障
-When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 2:1 ratio. Max shield is equal to 60 + 10% Max Mana.
-当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 2:1 的比例缓慢将奥术能量转化为护盾。最大护盾等于 60 + 10% 的最大魔法值。
+When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 40 + 10% Max Mana.
+当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 1:2 的比例缓慢将奥术能量转化为护盾。最大护盾等于 40 + 10% 的最大魔法值。
 You sense that a high value target is near.
 你感觉到一个高价值目标正在靠近。
 You push yourself beyond physical limits!
@@ -16162,8 +16186,8 @@ Your RestraintName sustains water damage from the high-pressure water!
 你的 RestraintName 因高压水而受到水损害！
 Quit Game
 退出游戏
-Your RSTRNT glows as the shrine's energy fills the air. You can unlock it.
-当神泉的能量充满空气时，你的 RSTRNT 就会发光。你可以解锁它。
+Your RSTRNT glows and its seal vanishes as the shrine's energy fills the air.
+当神泉的能量充满空气时，你的 RSTRNT 就会发光，它的封印也会消失。
 The seal on your RESTRAINTNAME weakens as you simmer just below the edge.
 当你在边缘下方小火慢煮时，RESTRAINTNAME 上的密封会减弱。
 Through your determination, you suprress the seal on your RESTRAINTNAME!!!
@@ -17136,6 +17160,10 @@ Unfavorite
 不喜欢
 Drop
 丢弃
+Attach
+附着
+Attached
+已附着
 Add to Quick Slot 1
 添加到快捷栏 1
 Add to Quick Slot 2
@@ -17163,9 +17191,11 @@ Remove the Curse
 Feed this to her
 把这个喂给她
 Sell for VLU gp
-以 VLU gp 出售
+以 VLU 金币出售
 Sell ALL for VLU gp
-以 VLU gp 出售所有
+以 VLU 金币出售所有
+Sell all but one for VLU gp
+出售除一件以外的所有物品以换取 VLU 金币
 You feed the RSTR to the ENNME! (AMNT1/AMNT2 hp)
 你将 RSTR 喂给 ENNME！ (AMNT1/AMNT2 血量)
 Chain Rune
@@ -17182,6 +17212,10 @@ Latex Rune
 乳胶符文
 Latex Cube Rune
 乳胶立方体符文
+Slime Bubble Rune
+粘液泡泡符文
+Bubble Rune
+泡泡符文
 Rubber Rune
 橡胶符文
 Slime Rune
@@ -17276,6 +17310,20 @@ SUSPICIOUS MOD DETECTED
 检测到可疑模组
 The bright light hurts your dark-adjusted eyes!
 明亮的光线会伤害你适应黑暗的眼睛！
+Unconventional Warfare
+非常规战争
+Select a weapon to attach it to your body. You can have one attached weapon at a time. Attaching it takes 5 turns.|An attached weapon can be equipped without hands and maintains 60% accuracy as long as you have arms or legs unbound.
+选择一把武器将其附着在你的身上。你一次可以拥有一件附加武器。将其附着在身上需要 5 回合。|附加武器可以在没有手的情况下装备，并且只要你的手臂或腿没有被束缚，就可以保持 60% 的精准度。
+Guerilla Fighting
+游击战
+Light weapons can be wielded if you have your mouth free, at 75% accuracy.
+如果你的嘴巴被堵住了，就可以使用轻型武器，精准度为 75%。
+Tough Armor (1/2 crit mult while aware)
+坚韧护甲（意识状态下暴击倍数为 1/2）
+Absolute Armor (1/2 crit mult)
+绝对护甲（1/2 暴击倍率）
+Back to Game
+返回游戏
 Slimy Spit
 粘糊糊的口水
 Servants and Guests
