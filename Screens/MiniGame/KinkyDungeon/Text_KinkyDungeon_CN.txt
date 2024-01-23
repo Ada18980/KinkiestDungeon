@@ -248,8 +248,8 @@ You can drink mana from the shrine fountains once per floor without chance of pu
 你在每层第一次饮用神泉恢复法力时不受到任何惩罚。
 Cursed
 诅咒
-Goddess reputations start at 0 and can never exceed 25.
-所有女神的声望从0开始，永远不能超过25。
+Goddess reputations can never exceed 25.
+女神的声望永远不会超过25。
 Submissive
 顺从
 Your submissiveness starts at 100 and cannot go below 70.
@@ -524,6 +524,14 @@ Fuuka Fan Club
 Fuuka俱乐部粉丝
 All humanoids that can bind you also apply Fuuka's special restraints.
 所有可束缚你的人形生物可以使用Fuuka特制的拘束具。
+Collected
+搜集
+Start with The Warden's special collar and some restraints.
+从典狱长的特殊项圈和一些束缚开始。
+The Warden's Property
+典狱长的财产
+All humanoids that can bind you also apply The Warden's special restraints.
+所有能够束缚你的类人生物也会应用典狱长的特殊束缚。
 Dollmaker's Minions
 玩偶师的宠儿
 All humanoids that can bind you also apply Cyber Doll restraints.
@@ -5142,6 +5150,10 @@ A slick layer of blue latex stretched over the mouth.
 一层光滑的蓝色乳胶覆盖在嘴巴上。
 It's very tight and makes it hard to move your mouth.
 它非常紧，让你的嘴很难移动。
+Secure Latex Mask
+安全乳胶面具
+A slick layer of blue latex stretched over the mouth. It has a lockable strap which prevents it from being removed.
+一层光滑的蓝色乳胶覆盖在嘴巴上。它有一条可锁定的带子，可防止其被移除。
 Rubberized Gloves
 橡胶手套
 Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!
@@ -5576,6 +5588,12 @@ A leather harness of tight straps buckled around your torso.
 一条由紧身带制成的皮革背带扣在你的躯干上。
 It provides an anchor point for enemies to grab onto!
 它为敌人提供了一个可以抓住的地方！
+Rubberized Harness
+橡胶束衣
+A harness made of latex polymer, resistant to most solvents and corrosion.
+由乳胶聚合物制成的束衣，可抵抗大多数溶剂和腐蚀。
+Can be worn all day! Also convenient to hold.
+可以穿一整天！握持也方便。
 Ball Gag
 口球
 A gag made of a red squishy material.
@@ -6964,8 +6982,8 @@ As a trainee, you have learned the technique of inducing clarity via a trance-li
 作为一名学员，你已经学会了在 100% 分心值的情况下通过恍惚状态引入清晰度的技术。然而，这种状态是不稳定的，施展法术可能会让你失去注意力……
 Inner Power
 内力
-As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana AFTER other modifiers. Toggled passive spells apply half the cooldown.
-作为一名巫师，你能够利用其他人甚至看不到的神秘能量源。在 16 回合未施展法术或攻击后，你的下一个法术的法力消耗在其他调整后会减少你最大法力值的 20%。 切换被动法术的冷却时间减半。
+As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana BEFORE multipliers. Toggled passive spells apply half the cooldown.
+作为一名巫师，你能够利用其他人甚至看不到的神秘能量源。在 16 回合未施展法术或攻击后，你的下一个法术的法力消耗会减少你乘数前最大法力值的 20%。 切换被动法术的冷却时间减半。
 Battlemage
 战斗法师
 Inner Power cooldown is no longer reset after attacking.
@@ -9812,10 +9830,10 @@ Pursuing you!
 正在追击你！
 Ignoring you!
 无视你！
-Slightly suspicious
-感到有点可疑
-Saw something...
-看到一些可疑迹象...
+Investigating!
+调查中!
+Suspicious
+可疑
 Notices you!
 注意到你了！
 Unaware
@@ -16764,6 +16782,8 @@ Doll Shoppe
 玩偶商店
 Fuuka's Shrine
 Fuuka的神龛
+The Collectors
+收藏家
 Receive the following restraints: 
 受到以下拘束：
 You will be bound with some form of restraint.
