@@ -17448,3 +17448,19 @@ You crouch and move slowly.
 你蹲下并缓慢移动。
 Owned by: 
 拥有者：
+The Warden's Collar
+典狱长的项圈
+A golden collar that marks you as part of someone's collection.
+金色项圈标志着你是某人收藏的一部分。
+You may go on your way, but only as long your freedom is useful to her
+你可以继续你的路，但前提是你的自由对她有用
+The Warden
+典狱长
+The Warden disappears into a trapdoor!
+典狱长消失在活板门中！
+The Warden forces you to kneel, and presents you with a restraint! (+RestraintAdded)
+典狱长强迫你跪下，并对你进行束缚！（+RestraintAdded）
+The Warden's staff emits a flash of blinding light! (DamageTaken)
+典狱长的法杖发出耀眼的光芒！（DamageTaken）
+The Warden's staff emits a mystical area, which congeals into locks! (DamageTaken)
+典狱长的法杖释放出一个神秘区域，凝结成锁！（DamageTaken）
