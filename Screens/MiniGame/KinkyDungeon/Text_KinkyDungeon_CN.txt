@@ -14,8 +14,8 @@ Back
 后退
 Next
 下一页
-Music: kocaeli|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3, Plasmadragon|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
-音乐: kocaeli|拘束敌人图形: Song|俄语翻译: Osiris|中文翻译: Alexthymia, Mitki, Timeline|韩语，日语翻译: Phantasm|代码贡献者: Ellie, Demopans, Aelie|美术：Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3, Plasmadragon|音频:|饮用药水 - Jamius|点击 - StrikeWhistler - 已修改|石门_关闭 - AudioTorpedo - 已修改|脚步 - Fission9 - 已修改|火魔法 - Julien Matthey|轻击 - qubodup|重击 - orangesheepdog|空击 - Brsjak - 已修改|Clap - DWSD - 已修改|'门, 正面, 关闭, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'门, 正面, 打开, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|打开箱子 - spookymodem - 已修改|解锁 - BeezleFM|解开 - danhelbling|剪刀 - qubodup|翻找物品 - adcbicycle|仙尘 - jacksonacademyashmore|金属物品破碎 - gristi
+Music: kocaeli|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3, Plasmadragon, GoldieKitsune|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
+音乐: kocaeli|拘束敌人图形: Song|俄语翻译: Osiris|中文翻译: Alexthymia, Mitki, Timeline|韩语，日语翻译: Phantasm|代码贡献者: Ellie, Demopans, Aelie|美术：Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3, Plasmadragon, GoldieKitsune|音频:|饮用药水 - Jamius|点击 - StrikeWhistler - 已修改|石门_关闭 - AudioTorpedo - 已修改|脚步 - Fission9 - 已修改|火魔法 - Julien Matthey|轻击 - qubodup|重击 - orangesheepdog|空击 - Brsjak - 已修改|Clap - DWSD - 已修改|'门, 正面, 关闭, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'门, 正面, 打开, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|打开箱子 - spookymodem - 已修改|解锁 - BeezleFM|解开 - danhelbling|剪刀 - qubodup|翻找物品 - adcbicycle|仙尘 - jacksonacademyashmore|金属物品破碎 - gristi
 Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
 Door locked.wav - mitchanary - 已修改|Coins.wav - Saviraz|打开石棺 - Breviceps - 已修改|磨刀 - Anthousai|纸声 - Bash360 - 已修改|冻结通电 - JustInvoke - 已修改|水声 - patchytherat - 已修改|grab 3 - ihitokage - 已修改|枪声 - qubodup - 已修改|黄铜掉落 - movingplaid - 已修改|能量武器镭射声 - rkkaleikau - 已修改|雷声 - deleted_user_7146007 - 已修改|把铁链从水槽拖出来 - Hitrison - 已修改|Hihat 7 - TheCoolManARM2 - 已修改|Ambientsoundapp - Lightning Storm.wav - 已修改|kev_durr - Arc Welding.wav - 已修改|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||艺术家与灵感|Hotel01 - https://www.pixiv.net/en/users/5944252 - 画了一个非常棒的狼女|spark utamaro - 对于受到震动器感觉的点子
 Language
@@ -248,8 +248,8 @@ You can drink mana from the shrine fountains once per floor without chance of pu
 你在每层第一次饮用神泉恢复法力时不受到任何惩罚。
 Cursed
 诅咒
-Goddess reputations start at 0 and can never exceed 25.
-所有女神的声望从0开始，永远不能超过25。
+Goddess reputations can never exceed 25.
+女神的声望永远不会超过25。
 Submissive
 顺从
 Your submissiveness starts at 100 and cannot go below 70.
@@ -490,8 +490,8 @@ You can cast arm spells using just your fingers, as long as your hands aren't bo
 只要你的手没有被束缚，你就可以只用手指施展手臂的法术。
 Well-Equipped
 设备精良
-Restraints and traps that are limited by level appear sooner, and will stack more. +10 security level.
-有楼层数限制的拘束具和陷阱会更早出现，并且敌人会堆叠更多的束缚。+10 安全等级。
+Restraints and traps that are limited by level appear sooner, and enemies stack more restraints in general. +10 security level.
+有楼层数限制的拘束具和陷阱会更早出现，而且敌人通常会堆叠更多的束缚。+10 安全等级。
 Quick-Draw
 快速拔刀
 Switching weapons and spells does not take a turn.
@@ -524,6 +524,14 @@ Fuuka Fan Club
 Fuuka俱乐部粉丝
 All humanoids that can bind you also apply Fuuka's special restraints.
 所有可束缚你的人形生物可以使用Fuuka特制的拘束具。
+Collected
+搜集
+Start with The Warden's special collar and some restraints.
+从典狱长的特殊项圈和一些束缚开始。
+The Warden's Property
+典狱长的财产
+All humanoids that can bind you also apply The Warden's special restraints.
+所有能够束缚你的类人生物也会应用典狱长的特殊束缚。
 Dollmaker's Minions
 玩偶师的宠儿
 All humanoids that can bind you also apply Cyber Doll restraints.
@@ -606,12 +614,12 @@ When you pick up cursed armor or restraints from chests, they equip automaticall
 当你从箱子中拿起被诅咒的盔甲或束缚具时，如果可以的话会自动装备。
 Burning Desire
 焚心欲火
-While above 70% distraction, you ignite nearby objects and gain +40% fire damage.
+While above 70% distraction, you ignite nearby objects and gain +25% fire damage.
 当性奋值超过 70% 时，自身造成的火焰伤害提高 40%，并且你会点燃附近的物体。
 Frigid Personality
 冰清玉洁
-While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties.
-当性奋值为 0% 时，自身造成的寒冰伤害提高 10%，并且可以在冰上无惩罚的行走。
+While below 10% distraction, you gain +10% ice damage and can walk on ice without penalties.
+当性奋值低于 10% 时，自身造成的寒冰伤害提高 10%，并且可以在冰上无惩罚的行走。
 Grounded in Reality
 现实锚定
 While at max mana, your attacks deal an additional 30% of their base damage as electric damage.
@@ -696,12 +704,12 @@ Lose 2 WP every time you remove a non-trivial restraint.
 每次移除特殊拘束时消耗 2 WP。
 Second Wind
 再生之风
-Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage. (Upgrade available in spell tree)
-身体自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚。（可在技能树中升级）
+Regenerate WP when unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, gag, or slows. (Upgrade available in spell tree)
+完好无损时恢复 WP，最高可达最大 WP 的 10%。完好无损意味着没有手臂、手、腿、眼睛被蒙住、被堵住或减速。（可在技能树中升级）
 Second Wind Perk
 再生之风技能
-Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage.
-身体自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚。
+Regenerate WP when you are unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, or gag bondage, and no slows.
+当你完好无损时恢复 WP，最高可达最大 WP 的 10%。完好无损意味着没有手臂、手、腿、眼睛被蒙住、被堵住或减速。
 Triumphant Wind
 凯旋之风
 Second Wind now regenerates up to 25% of your max WP
@@ -1146,12 +1154,12 @@ Ignited: You are dealing fire damage to yourself and nearby enemies!
 燃烧：你对自己和附近的敌人造成火焰伤害！
 You are on fire and taking damage!
 你正在燃烧并受到伤害！
-Arcane Power: Deals bonus damage when you hit an enemy.
-奥术之力：当你击中敌人时，造成额外的伤害。
-Arcane Protection: Reduces damage taken, and deals retaliation damage.
-奥术保护：减少所受伤害，并反弹给造成伤害的敌人。
-Arcane Cunning: You turn invisible briefly after attacking.
-奥术之灵：你在攻击后短暂变得隐形。
+Divine Punishment: Deals bonus damage when you hit an enemy.
+狂暴状态：当你击中敌人时，造成额外的伤害。
+Divine Protection: Reduces damage taken, and deals retaliation damage.
+神圣保护：减少所受伤害，并反弹给造成伤害的敌人。
+Divine Cunning: You turn invisible briefly after attacking.
+神圣之灵：你在攻击后短暂变得隐形。
 -MP Cost (Fire)
 减少火焰法术的 MP 消耗
 -MP Cost (Air)
@@ -5142,6 +5150,10 @@ A slick layer of blue latex stretched over the mouth.
 一层光滑的蓝色乳胶覆盖在嘴巴上。
 It's very tight and makes it hard to move your mouth.
 它非常紧，让你的嘴很难移动。
+Secure Latex Mask
+安全乳胶面具
+A slick layer of blue latex stretched over the mouth. It has a lockable strap which prevents it from being removed.
+一层光滑的蓝色乳胶覆盖在嘴巴上。它有一条可锁定的带子，可防止其被移除。
 Rubberized Gloves
 橡胶手套
 Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!
@@ -5576,6 +5588,12 @@ A leather harness of tight straps buckled around your torso.
 一条由紧身带制成的皮革背带扣在你的躯干上。
 It provides an anchor point for enemies to grab onto!
 它为敌人提供了一个可以抓住的地方！
+Rubberized Harness
+橡胶束衣
+A harness made of latex polymer, resistant to most solvents and corrosion.
+由乳胶聚合物制成的束衣，可抵抗大多数溶剂和腐蚀。
+Can be worn all day! Also convenient to hold.
+可以穿一整天！握持也方便。
 Ball Gag
 口球
 A gag made of a red squishy material.
@@ -6748,6 +6766,8 @@ Empty Altar
 空祭坛
 Chest
 箱子
+Faction Chest
+派系宝箱
 Empty Chest
 空箱子
 Shiny Object
@@ -6962,8 +6982,8 @@ As a trainee, you have learned the technique of inducing clarity via a trance-li
 作为一名学员，你已经学会了在 100% 分心值的情况下通过恍惚状态引入清晰度的技术。然而，这种状态是不稳定的，施展法术可能会让你失去注意力……
 Inner Power
 内力
-As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana AFTER other modifiers. Toggled passive spells apply half the cooldown.
-作为一名巫师，你能够利用其他人甚至看不到的神秘能量源。在 16 回合未施展法术或攻击后，你的下一个法术的法力消耗在其他调整后会减少你最大法力值的 20%。 切换被动法术的冷却时间减半。
+As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana BEFORE multipliers. Toggled passive spells apply half the cooldown.
+作为一名巫师，你能够利用其他人甚至看不到的神秘能量源。在 16 回合未施展法术或攻击后，你的下一个法术的法力消耗会减少你乘数前最大法力值的 20%。 切换被动法术的冷却时间减半。
 Battlemage
 战斗法师
 Inner Power cooldown is no longer reset after attacking.
@@ -7088,8 +7108,8 @@ Elemental's Gust
 元素之风
 Gust
 风
-A ball of flame that does DamageDealt damage.
-释放造成 DamageDealt 点火焰伤害的火焰弹。
+A ball of flame that does DamageDealt damage to one target.
+释放对一个目标造成 DamageDealt 点火焰伤害的火焰弹。
 You a hurl a firebolt!
 你投掷了火焰弹！
 Choose aim direction
@@ -7344,6 +7364,10 @@ The elemental channels the force of the storm!
 元素引导风暴之力！
 Fireball
 火球
+A slow moving ball of flame that explodes for DamageDealt fire damage in a wide area.
+缓慢移动的火球爆炸，在大范围内造成 DamageDealt 点火焰伤害。
+You a hurl a massive fireball!
+你投出了一个巨大的火球！
 Fireblast
 火焰冲击波
 A slow moving ball of flame that explodes for 100 fire damage to the target and DamageDealt damage to surrounding enemies.
@@ -7454,6 +7478,12 @@ You unleash a bolt of lightning!
 你释放出一道闪电！
 Choose line direction
 选择直线区域
+Earthshape (Arc)
+塑造大地（弧形）
+Create a 5-wide arc of Earthen Monoliths. They have 50 hitpoints and 25 armor.
+创建一个 5 宽的土制巨石弧。他们有 50 点生命值和 25 点护甲。
+You stomp your foot and monoliths emerge from the ground!
+你一跺脚，巨石从地里冒出来！
 Corona
 电晕
 Binding Light
@@ -7520,8 +7550,8 @@ Choose area containing Latex
 选择含有乳胶的区域
 Slime Repulsion
 粘液排斥
-Gain +50 glue resist.
-增加 50 点胶水抗性。
+Gain +50 glue resist. (Having 45 or more Glue Resist negates many negative effects from slime)
+增加 50 点胶水抗性。（具有 45 或更高的胶水抗性可以消除粘液的许多负面影响）
 Spread
 增殖
 Slime in the target area expands by 1 unit in the four cardinal directions. Refreshes duration to 12-20 turns.
@@ -9800,10 +9830,10 @@ Pursuing you!
 正在追击你！
 Ignoring you!
 无视你！
-Slightly suspicious
-感到有点可疑
-Saw something...
-看到一些可疑迹象...
+Investigating!
+调查中!
+Suspicious
+可疑
 Notices you!
 注意到你了！
 Unaware
@@ -11190,12 +11220,12 @@ Humans are fun to play with.
 和人类一起玩很有趣。
 Toying with me? I shall oblige!
 戏弄我？我会让你履约的！
-Cast your last pathetic spell, human.
-这会是你最后一个咒语，人类。
-Your magic is weak, human.
-你的魔法很弱，人类。
-It tickles, hehe!
-就跟挠痒一样，呵呵！
+Cast your last pathetic spell, mortal.
+这会是你最后一个咒语，凡人。
+Your mere attempt at magic insults me.
+你仅仅尝试魔法就侮辱了我。
+Do you really think that will stop me?
+你真的认为这会阻止我吗？
 Look what humans need to match only a fraction of our power!
 看看人类需要什么才能匹配我们的一小部分力量！
 Our goddess doesn't need to listen to the likes of you!
@@ -14279,7 +14309,13 @@ Strip!
 Export Outfit
 导出衣服
 Export AlwaysDress
-导出 AlwaysDress
+导出强制着装
+Export Hair
+导出发型
+Export Face
+导出脸部
+Export Cosplay
+导出 Cosplay
 Gamma
 伽马值
 Original Color
@@ -14358,6 +14394,20 @@ A huge rubber cube rises up out of the floor!
 一个巨大的橡胶立方体从地板上升起！
 Latex Cube
 乳胶立方体
+A gelatinous cube that engulfed you at some point in the past.
+一个凝胶状的立方体，在过去的某个时刻吞没了你。
+It seems quite content staying where it is.
+它在原地似乎很满足。
+Slime Bubble
+粘液泡泡
+A squishy and sticky bubble that you can't get out of!
+一个又软又粘的泡泡，你无法挣脱！
+It will slow you down severely but can be popped if you can reach a knife...
+它会严重减慢你的速度，但如果你能拿到刀，它就会从你身体弹出......
+Bubble
+泡泡
+A squishy bubble that you can't get out of!
+一个软软的泡沫，你无法挣脱！
 The latex cube hardens into a solid, harmless entity.
 乳胶立方体硬化成固体、无害的实体。
 The latex cube slowly engulfs you! (DamageTaken)
@@ -14890,8 +14940,8 @@ The liquid metal cube expands across your body and hardens, taking the form of r
 液态金属立方体在你的身体上膨胀并变硬，以束缚的形式出现！（+RestraintAdded）
 Liquid Metal (Feet)
 液态金属（脚）
-A metallic substance that is both flexible and hard. It weighs you down, reducing evasion.
-一种既柔软又坚硬的金属物质。它会减轻你的负担，减少逃避。
+A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity.
+一种既柔软又坚硬的金属物质。它会减轻你的负担，降低闪避，并导电。
 Forming a skintight layer, it will be quite difficult to escape this.
 形成一层紧密的外壳，逃脱这个是相当困难的。
 Liquid Metal (Ankles)
@@ -15410,8 +15460,8 @@ You avoid the attack in a flurry of impressive maneuvers!
 你在一系列令人印象深刻的动作中避开了攻击！
 Arcane Barrier
 奥术屏障
-When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 2:1 ratio. Max shield is equal to 60 + 10% Max Mana.
-当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 2:1 的比例缓慢将奥术能量转化为护盾。最大护盾等于 60 + 10% 的最大魔法值。
+When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 40 + 10% Max Mana.
+当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 1:2 的比例缓慢将奥术能量转化为护盾。最大护盾等于 40 + 10% 的最大魔法值。
 You sense that a high value target is near.
 你感觉到一个高价值目标正在靠近。
 You push yourself beyond physical limits!
@@ -15466,8 +15516,8 @@ You feel holy energy neutralizing the cursed magic permanently.
 你感觉到神圣的能量永久地中和了被诅咒的魔法。
 Some say it comes from a bakery in heaven itself. Others say it is simply made from lab-grade materials, and actually tastes awful.
 有人说它来自天堂的面包店。其他人则说它只是由实验室材料制成，实际上味道很糟糕。
-Unlocks a common cursed item and/or removes all curses from one currently worn item of your choice.
-解锁一件常见的被诅咒物品 和/或 选择你当前佩戴的一件物品，移除其的所有诅咒。
+Unlocks a cursed item and/or removes all curses from one currently worn item of your choice.
+解锁一件被诅咒的物品 和/或 选择你当前佩戴的一件物品，移除其的所有诅咒。
 Congratulations! Your continued patronage has earned you|one (1) round trip to the nearest affiliated shop!|Simply step into the portal to continue...|(the Goddess is not responsible for any mishaps or fraud pertaining to the use of this portal)
 恭喜！ 你的持续惠顾为您赢得了|一（1）次往返最近的附属商店的机会！|只需进入传送门即可继续...|（女神对与使用此传送门有关的任何事故或欺诈概不负责）
 (You step through the portal. An unperturbed shopkeeper greets you.)|Another visitor? Oh, it's just you~
@@ -16154,8 +16204,8 @@ Your RestraintName sustains water damage from the high-pressure water!
 你的 RestraintName 因高压水而受到水损害！
 Quit Game
 退出游戏
-Your RSTRNT glows as the shrine's energy fills the air. You can unlock it.
-当神泉的能量充满空气时，你的 RSTRNT 就会发光。你可以解锁它。
+Your RSTRNT glows and its seal vanishes as the shrine's energy fills the air.
+当神泉的能量充满空气时，你的 RSTRNT 就会发光，它的封印也会消失。
 The seal on your RESTRAINTNAME weakens as you simmer just below the edge.
 当你在边缘下方小火慢煮时，RESTRAINTNAME 上的密封会减弱。
 Through your determination, you suprress the seal on your RESTRAINTNAME!!!
@@ -16356,6 +16406,12 @@ Exits locked! Find the key!
 出口被锁住了！寻找钥匙！
 Got the key!
 拿到钥匙了！
+Exits locked! Find a lever!
+出口被锁住了！寻找拉杆！
+Exits unlocked!
+出口已解锁！
+Exits locked! Find control panel!
+出口被锁住了！寻找控制面板！
 BOSS ROOM
 BOSS 房
 BOSS ROOM CLEARED!
@@ -16726,6 +16782,8 @@ Doll Shoppe
 玩偶商店
 Fuuka's Shrine
 Fuuka的神龛
+The Collectors
+收藏家
 Receive the following restraints: 
 受到以下拘束：
 You will be bound with some form of restraint.
@@ -17122,6 +17180,10 @@ Unfavorite
 不喜欢
 Drop
 丢弃
+Attach
+附着
+Attached
+已附着
 Add to Quick Slot 1
 添加到快捷栏 1
 Add to Quick Slot 2
@@ -17149,9 +17211,11 @@ Remove the Curse
 Feed this to her
 把这个喂给她
 Sell for VLU gp
-以 VLU gp 出售
+以 VLU 金币出售
 Sell ALL for VLU gp
-以 VLU gp 出售所有
+以 VLU 金币出售所有
+Sell all but one for VLU gp
+出售除一件以外的所有物品以换取 VLU 金币
 You feed the RSTR to the ENNME! (AMNT1/AMNT2 hp)
 你将 RSTR 喂给 ENNME！ (AMNT1/AMNT2 血量)
 Chain Rune
@@ -17168,6 +17232,10 @@ Latex Rune
 乳胶符文
 Latex Cube Rune
 乳胶立方体符文
+Slime Bubble Rune
+粘液泡泡符文
+Bubble Rune
+泡泡符文
 Rubber Rune
 橡胶符文
 Slime Rune
@@ -17262,3 +17330,137 @@ SUSPICIOUS MOD DETECTED
 检测到可疑模组
 The bright light hurts your dark-adjusted eyes!
 明亮的光线会伤害你适应黑暗的眼睛！
+Unconventional Warfare
+非常规战争
+Select a weapon to attach it to your body. You can have one attached weapon at a time. Attaching it takes 5 turns.|An attached weapon can be equipped without hands and maintains 60% accuracy as long as you have arms or legs unbound.
+选择一把武器将其附着在你的身上。你一次可以拥有一件附加武器。将其附着在身上需要 5 回合。|附加武器可以在没有手的情况下装备，并且只要你的手臂或腿没有被束缚，就可以保持 60% 的精准度。
+Guerilla Fighting
+游击战
+Light weapons can be wielded if you have your mouth free, at 75% accuracy.
+如果你的嘴巴被堵住了，就可以使用轻型武器，精准度为 75%。
+Tough Armor (1/2 crit mult while aware)
+坚韧护甲（意识状态下暴击倍数为 1/2）
+Absolute Armor (1/2 crit mult)
+绝对护甲（1/2 暴击倍率）
+Back to Game
+返回游戏
+Slimy Spit
+粘糊糊的口水
+Servants and Guests
+仆人和客人
+Prisoners
+囚犯
+Promote to Servant
+晋升为仆人
+Demote to Prisoner
+降级为囚犯
+The ENMY reaches out and gives your breast a squeeze! (DMGDLT)
+ENMY 伸出手来揉捏你的乳房！(DMGDLT)
+The ENMY reaches for you and fails!
+ENMY 向你伸出手，但失败了！
+The ENMY gives your butt a light slap! (DMGDLT)
+ENMY 轻轻地朝你的屁股打了一巴掌！(DMGDLT)
+The ENMY gives your butt a light slap as you move past! (DMGDLT)
+当你走过时，ENMY 会轻轻地拍打你的屁股！(DMGDLT)
+The ENMY tries to spank you but misses!
+ENMY 试图打你的屁股，但没有打中！
+The ENMY gives your butt a squeeze! (DMGDLT)
+ENMY 揉捏你的屁股！(DMGDLT)
+The ENMY gives your butt a squeeze as you move past! (DMGDLT)
+当你经过时，ENMY 揉捏你的屁股！(DMGDLT)
+The ENMY reaches for you but misses!
+ENMY 向你伸手，但没有摸中！
+The ENMY tickles your exposed armpits! (DMGDLT)
+ENMY 会挠你暴露的腋窝！(DMGDLT)
+The ENMY tries to tickle you!
+ENMY 试图挠你痒痒！
+The ENMY tickles your feet! (DMGDLT)
+ENMY 正在挠你的脚！(DMGDLT)
+The ENMY takes off your shoes and tickles your feet! (DMGDLT)
+ENMY 脱掉你的鞋子并挠你的脚！(DMGDLT)
+The ENMY pats you gently on the head. (DMGDLT)
+ENMY 轻轻地拍了拍你的头。(DMGDLT)
+The ENMY tries to pat you on the head but decides not to.
+ENMY 试图拍拍你的头，但想了想还是算了。
+The ENMY behind you gives your shoulders a nice massage! (DMGDLT)
+你身后的 ENMY 给你的肩膀做了一次很好的按摩！(DMGDLT)
+The ENMY reaches for your shoulders but you slip free!
+ENMY 伸手抓住你的肩膀，但你却逃脱了！
+The ENMY calls you cute! (DMGDLT)
+ENMY 称赞你很可爱！(DMGDLT)
+The ENMY blushes at your cuteness!
+ENMY 因为你太可爱而脸红！
+The ENMY makes fun of you! (DMGDLT)
+ENMY 取笑你！(DMGDLT)
+The ENMY struggles to find words!
+ENMY 很难找到言语！
+The ENMY buzzes you with her VTY! (DMGDLT)
+ENMY 拿她嗡嗡作响的振动玩具走向你！(DMGDLT)
+The ENMY reaches for her VTY!
+ENMY 伸手去拿她的振动玩具！
+The ENMY sticks a VTY into you! (DMGDLT)
+ENMY 将震动玩具插入你的体内！(DMGDLT)
+The ENMY sticks a stuffing into your open mouth! (DMGDLT)
+ENMY 将填充物塞入你张开的嘴里！(DMGDLT)
+The ENMY reaches for your mouth and fails!
+ENMY 将手伸向你的嘴，但失败了！
+The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
+ENMY 将你们的双手拉到一起，并在你们的双手之间夹上一个绑带！(DMGDLT)
+The ENMY grabs your wrists but you pull away!
+ENMY 抓住你的手腕，但你却挣脱了！
+More Armbinders
+更多束手套
+Armbinders are favored over other heavy bondage.
+与其他沉重的束缚相比，束手套更受青睐。
+Less Armbinders
+减少束手套
+Armbinders are less favored over other heavy bondage.
+与其他沉重的束缚相比，束手套似乎不太受青睐。
+More Boxbinders
+更多盒束包扎带
+Boxbinders are favored over other heavy bondage.
+与其他沉重的束缚相比，盒束包扎带更受青睐。
+Less Boxbinders
+减少盒束包扎带
+Boxbinders are less favored over other heavy bondage.
+与其他沉重的束缚相比，盒束包扎带似乎不太受青睐。
+More Straitjackets
+更多拘束衣
+Straitjackets are favored over other heavy bondage.
+与其他沉重的束缚相比，拘束衣更受青睐。
+Less Straitjackets
+减少拘束衣
+Straitjackets are less favored over other heavy bondage.
+与其他沉重的束缚相比，拘束衣似乎不太受青睐。
+More Yokes
+更多枷锁
+Yokes are favored over other heavy bondage.
+与其他沉重的束缚相比，枷锁更受青睐。
+Less Yokes
+减少枷锁
+Yokes are less favored over other heavy bondage.
+与其他沉重的束缚相比，枷锁似乎不太受青睐。
+ (blocked!)
+（格挡！）
+ (dodged!)
+（躲开！）
+You crouch and move slowly.
+你蹲下并缓慢移动。
+Owned by: 
+拥有者：
+The Warden's Collar
+典狱长的项圈
+A golden collar that marks you as part of someone's collection.
+金色项圈标志着你是某人收藏的一部分。
+You may go on your way, but only as long your freedom is useful to her
+你可以继续你的路，但前提是你的自由对她有用
+The Warden
+典狱长
+The Warden disappears into a trapdoor!
+典狱长消失在活板门中！
+The Warden forces you to kneel, and presents you with a restraint! (+RestraintAdded)
+典狱长强迫你跪下，并对你进行束缚！（+RestraintAdded）
+The Warden's staff emits a flash of blinding light! (DamageTaken)
+典狱长的法杖发出耀眼的光芒！（DamageTaken）
+The Warden's staff emits a mystical area, which congeals into locks! (DamageTaken)
+典狱长的法杖释放出一个神秘区域，凝结成锁！（DamageTaken）
