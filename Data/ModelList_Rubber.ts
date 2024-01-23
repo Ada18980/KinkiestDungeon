@@ -106,7 +106,7 @@ AddModel({
 	AddPose: ["EncaseTorsoLower"],
 	Layers: ToLayerMap([
 		{ Name: "TorsoLower", Layer: "WrappingTorsoMid", Pri: 55,
-			SwapLayerPose: {Kneel: "WrappingTorso", KneelClosed: "WrappingTorso"},
+			//swaplayerpose: {Kneel: "WrappingTorso", KneelClosed: "WrappingTorso"},
 			Invariant: true,
 			InheritColor: "Rubber",
 			MorphPoses: {KneelClosed: "Kneel"},
@@ -127,7 +127,7 @@ AddModel({
 	Categories: ["Restraints", "Rubber"],
 	AddPose: ["FeetLinked", "EncaseLegs"],
 	Layers: ToLayerMap([
-		{ Name: "LegLeft", Layer: "WrappingLegsOver", Pri: 25,
+		{ Name: "LegLeft", Layer: "WrappingLegsOver2", Pri: 25,
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Rubber",
@@ -135,9 +135,12 @@ AddModel({
 			AddPriWithPose: {
 				ItemLegsRubberOver: 45,
 			},
+			DisplaceAmount: 100,
+			DisplaceLayers: ToMap(["SlimeThighs"]),
+			DisplacementSprite: "SlimeThighs",
 		},
-		{ Name: "LegRight", Layer: "WrappingLegsOver", Pri: 25,
-			SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
+		{ Name: "LegRight", Layer: "WrappingLegsOver2", Pri: 25,
+			//SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Rubber",
@@ -177,6 +180,7 @@ AddModel({
 		{ Name: "AnkleLeft", Layer: "WrappingAnklesOver", Pri: 25,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			SwapLayerPose: {Kneel: "WrappingLegsOver", KneelClosed: "WrappingLegsOver"},
 			InheritColor: "Rubber",
 			HideWhenOverridden: true,
 			AddPriWithPose: {

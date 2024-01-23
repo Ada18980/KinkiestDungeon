@@ -264,7 +264,7 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Accessories"],
 	Layers: ToLayerMap([
-		{ Name: "Collar", Layer: "Collar", Pri: 25,
+		{ Name: "Collar", Layer: "Collar", Pri: 20,
 			Invariant: true,
 			InheritColor: "BaseMetal",
 		},
@@ -279,7 +279,7 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Accessories"],
 	Layers: ToLayerMap([
-		{ Name: "SteelCollar", Layer: "Collar", Pri: 45,
+		{ Name: "SteelCollar", Layer: "Collar", Pri: 25,
 			Invariant: true,
 			InheritColor: "BaseMetal",
 		},
@@ -295,7 +295,7 @@ AddModel({
 	Categories: ["Restraints", "Accessories"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SteelCollar"),
-		{ Name: "SteelCollarRunes", Layer: "Collar", Pri: 45.1,
+		{ Name: "SteelCollarRunes", Layer: "Collar", Pri: 25.1,
 			Invariant: true,
 			NoOverride: true,
 			TieToLayer: "SteelCollar",

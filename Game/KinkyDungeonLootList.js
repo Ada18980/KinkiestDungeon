@@ -418,6 +418,16 @@ let KinkyDungeonLootTable = {
 	"magicrestraint": [
 		...KDEnchantedRestraints,
 	],
+	"wizard": [
+		{name: "MageArmor", minLevel: 0, weight: 5,
+			armor: "MageArmor",
+			hexlist: "Common", enchantlist: "Gold", hexchance: KD_hexchance_Default/2, enchantchance: 1.0, alwaysenchanthex: true,
+			hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
+			maxEnchants: 3,
+			minEnchants: 2,
+			unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 30, enchantlevelmin: 0, enchantlevelmax: 30,
+			nouncursed: ["MageArmor"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+	],
 	"gold": [
 		{name: "MistressKey", minLevel: 0, weight:6, message:"LootChestMistressKey", messageColor:"yellow", messageTime: 3, allFloors: true},
 		{name: "AncientCores", max: 1, minLevel: 0, weight:7, count: 3, message:"LootChestAncientCores", messageColor:"yellow", messageTime: 3, allFloors: true, submissive: 50},

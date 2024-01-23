@@ -121,10 +121,13 @@ let KDDialogue = {
 					KinkyDungeonSendTextMessage(10, TextGet("KDWeaponConfiscated"), "#ff0000", 2);
 					if (!isUnarmed(KinkyDungeonPlayerDamage)) {
 						KinkyDungeonChangeRep("Ghost", 3);
-						let item = KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerDamage.name);
+						let item = KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon);
 						KDSetWeapon(null);
-						KinkyDungeonAddLostItems([item], false);
-						KinkyDungeonInventoryRemove(item);
+						if (item) {
+							KinkyDungeonAddLostItems([item], false);
+							KinkyDungeonInventoryRemove(item);
+						}
+
 						KinkyDungeonSetFlag("demand", 4);
 					}
 					return false;
@@ -1217,7 +1220,7 @@ let KDDialogue = {
 			"Leave": {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
-					KinkyDungeonSpells.push(KinkyDungeonFindSpell("ManaPoolUp"));
+					KDPushSpell(KinkyDungeonFindSpell("ManaPoolUp"));
 					KinkyDungeonUpdateStats(0);
 					return false;
 				},
@@ -1230,7 +1233,7 @@ let KDDialogue = {
 						playertext: "Default", response: "Default",
 						exitDialogue: true,
 						clickFunction: (gagged, player) => {
-							KinkyDungeonSpells.push(KinkyDungeonFindSpell("ManaPoolUp"));
+							KDPushSpell(KinkyDungeonFindSpell("ManaPoolUp"));
 							KinkyDungeonUpdateStats(0);
 							return false;
 						},

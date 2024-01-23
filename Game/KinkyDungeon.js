@@ -128,6 +128,7 @@ let KinkyDungeonGraphicsQuality = true;
 let KDToggleGroups = ["Main", "GFX", "UI", "Clothes", "Keybindings"];
 
 let KDToggles = {
+	HiResModel: false,
 	Fullscreen: false,
 	SkipIntro: false,
 	SkipTutorial: false,
@@ -182,6 +183,7 @@ let KDToggles = {
 };
 
 let KDToggleCategories = {
+	HiResModel: "GFX",
 	HighResDisplacement: "GFX",
 	Bloom: "GFX",
 	StunFlash: "UI",
@@ -328,6 +330,7 @@ let KDDefaultMaxParty = 3;
 
 /**
 *  @typedef {{
+* AttachedWep: string,
 * InventoryAction: string,
 * InventoryActionManaCost: number,
 * SellMarkup: number,
@@ -487,6 +490,7 @@ let KDDefaultMaxParty = 3;
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	AttachedWep: "",
 	Collection: {},
 	RevealedTiles: {},
 	RevealedFog: {},
@@ -1252,7 +1256,7 @@ function KinkyDungeonRun() {
 		kdgamefog.visible = KinkyDungeonState != "TileEditor";
 	}
 	// Draw the characters
-	if (KinkyDungeonState != "Consent" && KinkyDungeonState != "Logo" && (KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "Stats" && KinkyDungeonState != "TileEditor")
+	if (KinkyDungeonState != "Consent" && KinkyDungeonState != "Logo" && (KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "Stats" && KinkyDungeonState != "TileEditor" && KinkyDungeonState != "Wardrobe")
 		DrawCharacter(KinkyDungeonPlayer, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, KDToggles.FlipPlayer);
 
 	if (CommonIsMobile && mouseDown && !KDMouseInPlayableArea()) {
@@ -1420,7 +1424,10 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx("GoToWardrobe", (bdata) => {
 
 			if (StandalonePatched) {
+				KDSpeakerNPC = null;
 				KinkyDungeonState = "Wardrobe";
+				KDWardrobeCallback = null;
+				KDWardrobeRevertCallback = null;
 				KDPlayerSetPose = false;
 				KDInitCurrentPose();
 				KinkyDungeonInitializeDresses();
@@ -1573,6 +1580,8 @@ function KinkyDungeonRun() {
 			DrawButtonKDEx("loadclothes", (b) => {
 				KDSaveCodeOutfit(KinkyDungeonPlayer, true);
 				KinkyDungeonState = "Wardrobe";
+				KDWardrobeCallback = null;
+				KDWardrobeRevertCallback = null;
 
 				ElementRemove("saveInputField");
 				return true;}, true, 875, 820, 350, 64, TextGet("LoadOutfitClothes"), "#ffffff", "");
@@ -2024,7 +2033,7 @@ function KinkyDungeonRun() {
 
 
 	} else if (KinkyDungeonState == "Wardrobe") {
-		KDDrawWardrobe("menu");
+		KDDrawWardrobe("menu", KDSpeakerNPC);
 	} else if (KinkyDungeonState == "Stats") {
 
 		let tooltip = KinkyDungeonDrawPerks(false);
@@ -3395,6 +3404,8 @@ function KinkyDungeonHandleClick() {
 			if (StandalonePatched) {
 				KDSaveCodeOutfit();
 				KinkyDungeonState = "Wardrobe";
+				KDWardrobeCallback = null;
+				KDWardrobeRevertCallback = null;
 
 			} else {
 				let decompressed = DecompressB64(ElementValue("saveInputField"));
@@ -3437,6 +3448,8 @@ function KinkyDungeonHandleClick() {
 			if (StandalonePatched) {
 				KDRestoreOutfit();
 				KinkyDungeonState = "Wardrobe";
+				KDWardrobeCallback = null;
+				KDWardrobeRevertCallback = null;
 			} else {
 				KinkyDungeonState = "Menu";
 			}
@@ -4149,15 +4162,17 @@ function KinkyDungeonLoadGame(String) {
 						KinkyDungeonInventoryAdd(item);
 					}
 				} else {
-					if (item.type != LooseRestraint || KDRestraint(item) != undefined)
+					if (KDConsumable(item) != undefined || KDWeapon(item) != undefined || KDRestraint(item) != undefined || KDOutfit(item) != undefined)
 						KinkyDungeonInventoryAdd(item);
 				}
+				KDUpdateItemEventCache = true;
 			}
 
 			KinkyDungeonSpells = [];
+			KDRefreshSpellCache = true;
 			for (let spell of saveData.spells) {
 				let sp = KinkyDungeonFindSpell(spell);
-				if (sp) KinkyDungeonSpells.push(sp);
+				if (sp) KDPushSpell(sp);
 			}
 
 			if (saveData.KDWorldMap) KDWorldMap = JSON.parse(JSON.stringify(saveData.KDWorldMap));
@@ -4190,6 +4205,16 @@ function KinkyDungeonLoadGame(String) {
 
 			KDUpdateEnemyCache = true;
 
+			// bandaid
+			for (let enemy of KDMapData.Entities) {
+				if (enemy.buffs) {
+					for (let b of Object.keys(enemy.buffs)) {
+						if (!enemy.buffs[b]) {
+							delete enemy.buffs[b];
+						}
+					}
+				}
+			}
 
 			if (typeof KDGameData.PreviousWeapon == 'string') KDGameData.PreviousWeapon = ["Unarmed", "Unarmed", "Unarmed", "Unarmed"];
 

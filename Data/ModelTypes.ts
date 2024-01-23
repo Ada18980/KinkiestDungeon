@@ -31,7 +31,8 @@ type PoseProperty = {
 	/** The side-to-side offset of the pose*/
 	offset_x?: number,
 	/** Priority of the offset. Only the highest will offset the character at all*/
-	pri_offset?: number,
+	pri_offsetx?: number,
+	pri_offsety?: number,
 	/** Greedy priority: If this pose isn't the top offset in both x and y, it won't do either*/
 	greedy_offset?: boolean,
 	/** These are modifications to particular layers, such as the head and anything with the head as parent*/

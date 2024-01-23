@@ -130,8 +130,8 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 	if (!item) return 0;
 	if (item.cost != null) return item.cost;
 
-	if (KinkyDungeonGetRestraintByName(item.name)) {
-		let restraint = KinkyDungeonGetRestraintByName(item.name);
+	if (KDRestraint(item)) {
+		let restraint = KDRestraint(item);
 		let power = restraint.displayPower || restraint.power;
 		if (!power || power < 0.1) power = 0.1;
 		if (restraint.armor) power += 1;
@@ -147,7 +147,7 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 			}
 			power += sum;
 		}
-		let costt = KinkyDungeonGetRestraintByName(item.name).value || (
+		let costt = KDRestraint(item).value || (
 			//Math.ceil((1 + MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint/2.5 * (noScale ? 0 : 1))*(
 			//sell ? (40 * (-0.5*power-0.6+1.25**(2.38*power)))
 			//: (50 * 1.25**(2.38*power))
@@ -267,17 +267,17 @@ function KinkyDungeonPayShrine(type) {
 	} else if (type == "Elements" || type == "Illusion" || type == "Conjure") {
 		ShrineMsg = TextGet("KinkyDungeonPayShrineBuff" + type).replace("SCHOOL", TextGet("KinkyDungeonSpellsSchool" + type));
 		if (type == "Elements") {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineElements", type: "event", maxCount: 10, tags: ["offense", "shrineElements"], aura: "#f1641f", power: 1.5, duration: 9999, events: [
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineElements", type: "event", maxCount: 10, tags: ["offense", "shrineElements"], aura: "#f1641f", power: 1.5, duration: 9999, infinite: true, events: [
 				{trigger: "afterDamageEnemy", type: "ShrineElements", spell: "ArcaneStrike"},
 			]});
 		} else if (type == "Conjure") {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineConjure", type: "event", maxCount: 10, tags: ["defense", "shrineConjure"], aura: "#4572e3", power: 1.5, duration: 9999, events: [
-				{trigger: "beforeAttack", type: "CounterattackSpell", spell: "ArcaneStrike", requiredTag: "shrineConjure", prereq: "hit-hostile"},
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineConjure", type: "bondageImmune", maxCount: 3, tags: ["defense", "shrineConjure", "bondageResist"], aura: "#4572e3", power: 1.5, duration: 9999, infinite: true, events: [
+			//{trigger: "beforeAttack", type: "CounterattackSpell", spell: "ArcaneStrike", requiredTag: "shrineConjure", prereq: "hit-hostile"},
 			]});
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineConjure2", type: "SpellResist", maxCount: 10, tags: ["defense", "shrineConjure"], power: 5, duration: 9999});
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineConjure3", type: "Armor", maxCount: 10, tags: ["defense", "shrineConjure"], power: 5, duration: 9999});
+			//KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineConjure2", type: "SpellResist", maxCount: 10, tags: ["defense", "shrineConjure", "bondageResist"], power: 5, duration: 9999});
+			//KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineConjure3", type: "Armor", maxCount: 10, tags: ["defense", "shrineConjure", "bondageResist"], power: 5, duration: 9999});
 		} else if (type == "Illusion") {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineIllusion", type: "event", maxCount: 10, tags: ["defense", "shrineIllusion"], aura: "#9052bc", power: 1.5, duration: 9999, events: [
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineIllusion", type: "event", maxCount: 10, tags: ["defense", "shrineIllusion"], aura: "#9052bc", power: 1.5, duration: 9999, infinite: true, events: [
 				{trigger: "playerAttack", type: "ShadowStep", time: 6, requiredTag: "shrineIllusion"},
 			]});
 		}
@@ -299,8 +299,14 @@ function KinkyDungeonPayShrine(type) {
 			else if (item.shoptype == Weapon)
 				KinkyDungeonInventoryAddWeapon(item.name);
 			else if (item.shoptype == LooseRestraint) {
-				let restraint = KinkyDungeonGetRestraintByName(item.name);
-				KinkyDungeonInventoryAdd({name: item.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:restraint.events});
+				let restraint = KDRestraint(item);
+				if (!KinkyDungeonInventoryGetLoose(item.name)) {
+					KinkyDungeonInventoryAdd({name: item.name, type: LooseRestraint, events:restraint.events, quantity: 1, id: KinkyDungeonGetItemID()});
+				} else {
+					if (!KinkyDungeonInventoryGetLoose(item.name).quantity) KinkyDungeonInventoryGetLoose(item.name).quantity = 0;
+					KinkyDungeonInventoryGetLoose(item.name).quantity += 1;
+				}
+				//KinkyDungeonInventoryAdd({name: item.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:restraint.events});
 			}
 			else if (item.shoptype == "basic") {
 				KDAddBasic(item);

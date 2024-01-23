@@ -13,7 +13,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Cages"],
-	AddPose: ["Caged", "UprightHogtie"],
+	AddPose: ["Caged", "UprightHogtie", "KneelDown"],
 	Layers: ToLayerMap([
 		{ Name: "CageFront", Layer: "FurnitureFront", Pri: 50,
 			Invariant: true,
@@ -83,6 +83,7 @@ AddModel({
 		},
 	])
 });
+
 AddModel({
 	Name: "Barrel",
 	Folder: "Furniture",

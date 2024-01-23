@@ -66,6 +66,7 @@ let KinkyDungneonBasic = {
 	"RedKey" : {name: "RedKey", rarity: 0, shop: true},
 	"BlueKey" : {name: "BlueKey", rarity: 2, costMod: 2, shop: true},
 	"Lockpick" : {name: "Lockpick", rarity: 0, shop: true},
+	"Pick" : {name: "Lockpick", rarity: 0, shop: true},
 	//"4Lockpick" : {name: "4Lockpick", rarity: 1, shop: true},
 	"3Bola" : {name: "3Bola", consumable: "Bola", quantity: 3, rarity: 0, shop: true},
 	"3Bomb" : {name: "3Bomb", consumable: "Bomb", quantity: 3, rarity: 1, shop: true},
@@ -96,7 +97,7 @@ let KDConsumableEffects = {
 				tile.duration = 0;
 				KDCreateEffectTile(tile.x, tile.y, {
 					name: tile.name + "Unlit",
-					duration: 9999,
+					duration: 9999, infinite: true,
 				}, 0);
 				KinkyDungeonAdvanceTime(1);
 				return;

@@ -101,6 +101,18 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "CatsuitLowerLeotard",
+	TopLevel: true,
+	Categories: ["Suits", "Underwear"],
+	Folder: "Catsuit",
+	Parent: "Catsuit",
+	Layers: ToLayerMap([
+		{ Name: "TorsoLowerLeotard", Layer: "TorsoLower", Pri: 1,
+			InheritColor: "TorsoLower",
+		},
+	])
+});
 
 AddModel({
 	Name: "CatsuitUpper",
@@ -374,6 +386,25 @@ AddModel({
 	]),
 });
 
+
+AddModel({
+	Name: "TransparentCatsuitLowerLeotard",
+	TopLevel: true,
+	Categories: ["Suits", "Underwear"],
+	Folder: "Catsuit",
+	Parent: "Catsuit",
+	Filters: {
+		TorsoUpper: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
+		TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
+	},
+	Layers: ToLayerMap([
+		{ Name: "TorsoLowerLeotard", Layer: "TorsoLower", Pri: 1,
+			InheritColor: "TorsoLower",
+			//MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Closed"},
+		},
+	])
+});
+
 AddModel({
 	Name: "TransparentCatsuitLowerLowRise",
 	TopLevel: false,
@@ -605,7 +636,7 @@ AddModel({
 	Categories: ["Armor"],
 	Layers: ToLayerMap([
 		{ Name: "Shirt", Layer: "Shirt", Pri: -40,
-			SwapLayerPose: {Kneel: "CorsetLinerLower", KneelClosed: "CorsetLinerLower"},
+			//swaplayerpose: {Kneel: "CorsetLinerLower", KneelClosed: "CorsetLinerLower"},
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
 			MorphPoses: {Hogtie: "Hogtie"},
 			Invariant: true,
@@ -827,7 +858,7 @@ AddModel({
 		{ Name: "Skirt", Layer: "Skirt", Pri: 14,
 			Poses: ToMap([...LEGPOSES]),
 			HideWhenOverridden: true,
-			SwapLayerPose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
+			//swaplayerpose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
 			MorphPoses: {Hogtie: "Closed", Closed: "Closed", Kneel: "Kneel", KneelClosed: "Kneel"},
 			AppendPose: ToMapDupe(["CrotchStrap"]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
@@ -838,7 +869,7 @@ AddModel({
 			NoOverride: true,
 			Poses: ToMap([...LEGPOSES]),
 			HideWhenOverridden: true,
-			SwapLayerPose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
+			//swaplayerpose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
 			MorphPoses: {Hogtie: "Closed", Closed: "Closed", Kneel: "Kneel", KneelClosed: "Kneel"},
 			AppendPose: ToMapDupe(["CrotchStrap"]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
@@ -889,7 +920,7 @@ AddModel({
 	Categories: ["Tops"],
 	Layers: ToLayerMap([
 		{ Name: "Blouse", Layer: "CorsetLiner", Pri: 3,
-			SwapLayerPose: {Kneel: "CorsetLinerLower", KneelClosed: "CorsetLinerLower"},
+			//swaplayerpose: {Kneel: "CorsetLinerLower", KneelClosed: "CorsetLinerLower"},
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
 			Invariant: true,
@@ -924,10 +955,11 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Corsets"],
 	Layers: ToLayerMap([
-		{ Name: "Corset", Layer: "Bustier", Pri: 1,
+		{ Name: "Corset", Layer: "Bustier", Pri: 25,
 			//SwapLayerPose: {Pants: "CorsetUnder"},
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
+			NoOverride: true,
 			Invariant: true,
 			DisplaceAmount: 100,
 			DisplaceLayers: ToMap(["CorsetTorso"]),
@@ -1122,7 +1154,7 @@ AddModel({
 			//AppendPose: ToMapDupe(["RopesUpper"], {TorsoUpperTight: "Tight"}),
 		},
 		{ Name: "BlouseLiner", Layer: "CorsetLiner", Pri: 4,
-			SwapLayerPose: {Kneel: "CorsetLinerLower", KneelClosed: "CorsetLinerLower"},
+			//swaplayerpose: {Kneel: "CorsetLinerLower", KneelClosed: "CorsetLinerLower"},
 			Invariant: true,
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
@@ -1236,8 +1268,8 @@ AddModel({
 		EncaseTorsoLower: ["Skirt"]
 	},
 	Layers: ToLayerMap([
-		{ Name: "Skirt", Layer: "Skirt", Pri: 14,
-			SwapLayerPose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
+		{ Name: "Skirt", Layer: "Skirt", Pri: 12,
+			//swaplayerpose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
 			Poses: ToMap([...LEGPOSES]),
 			HideWhenOverridden: true,
 			MorphPoses: {Hogtie: "Closed", Closed: "", Kneel: "Kneel", KneelClosed: "Kneel"},
@@ -1245,7 +1277,7 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			Invariant: true,
 		},
-		{ Name: "SkirtOver", Layer: "SkirtOver", Pri: 14,
+		{ Name: "SkirtOver", Layer: "SkirtOver", Pri: 12,
 			Poses: ToMap([...KNEELPOSES]),
 			TieToLayer: "Skirt",
 			NoOverride: true,
@@ -1254,7 +1286,7 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			//Invariant: true,
 		},
-		{ Name: "SkirtRuffleOver", Layer: "Skirt", Pri: 14.1,
+		{ Name: "SkirtRuffleOver", Layer: "Skirt", Pri: 12.1,
 			Poses: ToMap([...KNEELPOSES]),
 			TieToLayer: "Skirt",
 			NoOverride: true,
@@ -1263,8 +1295,8 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			//Invariant: true,
 		},
-		{ Name: "SkirtBelt", Layer: "Skirt", Pri: 14.1,
-			SwapLayerPose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
+		{ Name: "SkirtBelt", Layer: "Skirt", Pri: 12.1,
+			//swaplayerpose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
 			Poses: ToMap([...LEGPOSES]),
 			TieToLayer: "Skirt", NoOverride: true,
 			InheritColor: "Belt",
@@ -1272,8 +1304,8 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			Invariant: true,
 		},
-		{ Name: "SkirtRuffle", Layer: "Skirt", Pri: 14.1,
-			SwapLayerPose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
+		{ Name: "SkirtRuffle", Layer: "Skirt", Pri: 12.1,
+			//swaplayerpose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
 			Poses: ToMap([...LEGPOSES]),
 			TieToLayer: "Skirt", NoOverride: true,
 			InheritColor: "Ruffle",
@@ -1589,9 +1621,9 @@ AddModel({
 	},
 	Layers: ToLayerMap([
 		{ Name: "Skirt", Layer: "Skirt", Pri: 7,
-			SwapLayerPose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
+			//swaplayerpose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
 			Poses: ToMap([...LEGPOSES]),
-			HideWhenOverridden: true,
+			//HideWhenOverridden: true,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			AppendPose: ToMapDupe(["CrotchStrap"]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
@@ -1900,9 +1932,9 @@ AddModel({
 	},
 	Layers: ToLayerMap([
 		{ Name: "Skirt", Layer: "Skirt", Pri: 7,
-			SwapLayerPose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
+			//swaplayerpose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
 			Poses: ToMap([...LEGPOSES]),
-			HideWhenOverridden: true,
+			//HideWhenOverridden: true,
 			MorphPoses: {Closed: "Closed", Hogtie: "Closed", Kneel: "Kneel", KneelClosed: "Kneel"},
 			AppendPose: ToMapDupe(["CrotchStrap"]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],

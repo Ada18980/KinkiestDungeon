@@ -210,7 +210,7 @@ AddModel({
 		...GetModelLayers("IronCollar", "", "", "Cuff"),
 		...GetModelLayers("IronCollar", "Band", "", "Band", 0.4),
 		...GetModelLayers("IronCollar", "Hardware", "", "Hardware", 0.4),
-		...GetModelLayers("IronCollar", "Bell", "", "Bell", 0.5),
+		...GetModelLayers("IronCollar", "Bell", "", "Bell", 0.5, "CollarAcc"),
 	])
 });
 AddModel({
@@ -224,8 +224,8 @@ AddModel({
 		...GetModelLayers("IronCollar", "", "", "Cuff"),
 		...GetModelLayers("IronCollar", "Band", "", "Band", 0.4),
 		...GetModelLayers("IronCollar", "Hardware", "", "Hardware", 0.4),
-		...GetModelLayers("IronCollar", "BowBell", "", "Bell", 0.6),
-		...GetModelLayers("IronCollar", "Bow", "", "Bow", 0.5),
+		...GetModelLayers("IronCollar", "BowBell", "", "Bell", 0.6, "CollarAcc"),
+		...GetModelLayers("IronCollar", "Bow", "", "Bow", 0.5, "CollarAcc"),
 	])
 });
 

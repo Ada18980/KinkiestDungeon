@@ -15,7 +15,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Panties", Layer: "Panties", Pri: 10,
 			Invariant: true,
-			SwapLayerPose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
+			//swaplayerpose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
 			MorphPoses: {Kneel: "Kneel", Hogtie: "Closed", Closed: "Closed", KneelClosed: "Kneel", }
 		},
 	])
@@ -48,14 +48,14 @@ AddModel({
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([
 		...GetModelLayers("WolfCollar"),
-		{ Name: "CollarHardware", Layer: "Collar", Pri: 40.3,
+		{ Name: "CollarHardware", Layer: "CollarAcc", Pri: -5,
 			Invariant: true,
 			InheritColor: "Hardware",
 			TieToLayer: "Collar",
 			NoOverride: true,
 			HidePoses: {HideModuleMiddle: true},
 		},
-		{ Name: "CollarTag", Layer: "Collar", Pri: 40.2,
+		{ Name: "CollarTag", Layer: "CollarAcc", Pri: -5.1,
 			Invariant: true,
 			InheritColor: "Tag",
 			TieToLayer: "Collar",
@@ -91,14 +91,14 @@ AddModel({
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([
 		...GetModelLayers("WolfCollarSmall"),
-		{ Name: "FCollarHardware", Layer: "Collar", Pri: 40.3,
+		{ Name: "FCollarHardware", Layer: "CollarAcc", Pri: -5.1,
 			Invariant: true,
 			InheritColor: "Hardware",
 			TieToLayer: "Collar",
 			NoOverride: true,
 			HidePoses: {HideModuleMiddle: true},
 		},
-		{ Name: "FCollarTag", Layer: "Collar", Pri: 40.2,
+		{ Name: "FCollarTag", Layer: "CollarAcc", Pri: -5,
 			Invariant: true,
 			InheritColor: "Tag",
 			TieToLayer: "Collar",
@@ -178,7 +178,7 @@ AddModel({
 		{ Name: "HarnessLower", Layer: "HarnessMid", Pri: 30,
 			Invariant: true,
 			InheritColor: "Lining",
-			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			MorphPoses: {Kneel: "Kneel", Hogtie: "Closed", Closed: "Closed", KneelClosed: "Kneel", }
 		},
 		{ Name: "HarnessBandLower", Layer: "HarnessMid", Pri: 30.1,
@@ -186,7 +186,7 @@ AddModel({
 			InheritColor: "Band",
 			TieToLayer: "HarnessLower",
 			NoOverride: true,
-			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			MorphPoses: {Kneel: "Kneel", Hogtie: "Closed", Closed: "Closed", KneelClosed: "Kneel", }
 		},
 		{ Name: "HarnessHardwareLower", Layer: "HarnessMid", Pri: 30.2,
@@ -194,7 +194,7 @@ AddModel({
 			InheritColor: "Hardware",
 			TieToLayer: "HarnessLower",
 			NoOverride: true,
-			SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			MorphPoses: {Kneel: "Kneel", Hogtie: "Closed", Closed: "Closed", KneelClosed: "Kneel", }
 		},
 	])
@@ -414,7 +414,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "TorsoLower", Layer: "Bodysuit", Pri: 10,
 			Invariant: true,
-			SwapLayerPose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
+			//swaplayerpose: {Kneel: "BodysuitLower", KneelClosed: "BodysuitLower"},
 			MorphPoses: {Kneel: "Kneel", Hogtie: "Closed", Closed: "Closed", KneelClosed: "Kneel", }
 		},
 	])

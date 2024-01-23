@@ -1307,7 +1307,7 @@ let KinkyDungeonSpellSpecials = {
 				id: "AllySelect",
 				aura: "#ffffff",
 				aurasprite: "Select",
-				duration: 9999,
+				duration: 9999, infinite: true,
 				type: "Sel",
 				power: 1,
 			});
@@ -1323,7 +1323,7 @@ let KinkyDungeonSpellSpecials = {
 					id: "AllySelect",
 					aura: "#ffffff",
 					aurasprite: "Select",
-					duration: 9999,
+					duration: 9999, infinite: true,
 					type: "Sel",
 					power: 1,
 				});

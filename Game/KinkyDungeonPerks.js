@@ -571,15 +571,15 @@ let KDPerkStart = {
 		KDGameData.PrisonerState = 'parole';
 	},
 	Slayer: () =>{
-		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Firebolt"));
+		KDPushSpell(KinkyDungeonFindSpell("Firebolt"));
 		KinkyDungeonSpellChoices[0] = KinkyDungeonSpells.length - 1;
 	},
 	Conjurer: () =>{
-		KinkyDungeonSpells.push(KinkyDungeonFindSpell("ChainBolt"));
+		KDPushSpell(KinkyDungeonFindSpell("ChainBolt"));
 		KinkyDungeonSpellChoices[0] = KinkyDungeonSpells.length - 1;
 	},
 	Magician: () =>{
-		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Dagger"));
+		KDPushSpell(KinkyDungeonFindSpell("Dagger"));
 		KinkyDungeonSpellChoices[0] = KinkyDungeonSpells.length - 1;
 	},
 	Brawler: () =>{
@@ -713,21 +713,21 @@ let KDPerkStart = {
 		KinkyDungeonChangeFactionRep("Angel", -100);
 	},
 	MC_Trainee: () => {
-		KinkyDungeonSpells.push(KinkyDungeonFindSpell("DistractionCast"));
+		KDPushSpell(KinkyDungeonFindSpell("DistractionCast"));
 	},
 	MC_Wizard: () => {
-		KinkyDungeonSpells.push(KinkyDungeonFindSpell("ManaRegen"));
+		KDPushSpell(KinkyDungeonFindSpell("ManaRegen"));
 	},
 	MC_Rogue: () => {
-		KinkyDungeonSpells.push(KinkyDungeonFindSpell("RogueTargets"));
+		KDPushSpell(KinkyDungeonFindSpell("RogueTargets"));
 	},
 	MC_Peasant: () => {
-		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Peasant"));
+		KDPushSpell(KinkyDungeonFindSpell("Peasant"));
 	},
 	MC_Fighter: () => {
-		KinkyDungeonSpells.push(KinkyDungeonFindSpell("BattleRhythm"));
+		KDPushSpell(KinkyDungeonFindSpell("BattleRhythm"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
-		KinkyDungeonSpells.push(KinkyDungeonFindSpell("Offhand"));
+		KDPushSpell(KinkyDungeonFindSpell("Offhand"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 
 	},

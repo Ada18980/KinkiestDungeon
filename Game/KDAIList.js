@@ -39,6 +39,16 @@ let KDAIType = {
 		aftermove: (enemy, player, AIData) => {return false;},
 		wanderDelay_long: (enemy, AIData) => {return 35 + Math.floor(KDRandom() * 35);},
 		wanderDelay_short: (enemy, AIData) => {return 10 + Math.floor(KDRandom() * 25);},
+		wanderfar_func: (enemy, player, AIData) => {
+			let newPoint = (KDRandom() < 0.4 && (enemy.spawnX || enemy.spawnY)) ? KinkyDungeonGetNearbyPoint(enemy.spawnX, enemy.spawnY, true, undefined, false, false) : KinkyDungeonGetRandomEnemyPoint(false, false);
+			if (!newPoint) newPoint = KinkyDungeonGetRandomEnemyPoint(false, false);
+			if (newPoint) {
+				enemy.gx = newPoint.x;
+				enemy.gy = newPoint.y;
+				return true;
+			}
+			return false;
+		},
 	},
 	"huntshadow": {
 		init: (enemy, player, AIData) => {},

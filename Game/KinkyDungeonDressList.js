@@ -1,6 +1,9 @@
 "use strict";
 
 // Outfit resource, uncached
+/**
+ * @type {outfit[]}
+ */
 let KinkyDungeonOutfitsBase = [
 	{name: "OutfitDefault", dress: "Default", shop: false, rarity: 1,},// To avoid breaking saves
 	{name: "Default", dress: "Default", shop: false, rarity: 1},

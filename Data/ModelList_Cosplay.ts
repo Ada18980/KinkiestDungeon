@@ -12,7 +12,7 @@ AddModel({
 	TopLevel: true,
 	Protected: true,
 	Categories: ["Ears", "Bunny", "Face", "Cosplay"],
-	AddPose: ["AnimalEars", "Bunny"],
+	AddPose: ["AnimalEars", "Bunny", "Cosplay"],
 	Layers: ToLayerMap([
 		{ Name: "Ears", Layer: "AnimalEars", Pri: 10,
 			Invariant: true,
@@ -38,7 +38,7 @@ AddModel({
 	TopLevel: true,
 	Protected: true,
 	Categories: ["Ears", "Kitty", "Face", "Cosplay"],
-	AddPose: ["AnimalEars", "Kitty"],
+	AddPose: ["AnimalEars", "Kitty", "Cosplay"],
 	Layers: ToLayerMap([
 		{ Name: "Kitty", Layer: "AnimalEars", Pri: 10,
 			Invariant: true,
@@ -59,7 +59,7 @@ AddModel({
 	TopLevel: true,
 	Protected: true,
 	Categories: ["Ears", "Wolf", "Face", "Cosplay"],
-	AddPose: ["AnimalEars", "Wolf"],
+	AddPose: ["AnimalEars", "Wolf", "Cosplay"],
 	Layers: ToLayerMap([
 		{ Name: "Wolf", Layer: "AnimalEars", Pri: 10,
 			Invariant: true,
@@ -80,7 +80,7 @@ AddModel({
 	TopLevel: true,
 	Protected: true,
 	Categories: ["Ears", "Fox", "Face", "Cosplay"],
-	AddPose: ["AnimalEars", "Fox"],
+	AddPose: ["AnimalEars", "Fox", "Cosplay"],
 	Layers: ToLayerMap([
 		{ Name: "Fox", Layer: "AnimalEars", Pri: 10,
 			Invariant: true,
@@ -103,7 +103,7 @@ AddModel({
 	TopLevel: true,
 	Protected: true,
 	Categories: ["Tails", "Wolf", "Cosplay"],
-	AddPose: ["Tails", "Wolf"],
+	AddPose: ["Tails", "Wolf", "Cosplay"],
 	Layers: ToLayerMap([
 		{ Name: "Wolf", Layer: "Tail", Pri: 0,
 			Invariant: true,
@@ -119,7 +119,7 @@ AddModel({
 	TopLevel: true,
 	Protected: true,
 	Categories: ["Tails", "Kitty", "Cosplay"],
-	AddPose: ["Tails", "Kitty"],
+	AddPose: ["Tails", "Kitty", "Cosplay"],
 	Layers: ToLayerMap([
 		{ Name: "Kitty", Layer: "Tail", Pri: 0,
 			Invariant: true,
@@ -134,7 +134,7 @@ AddModel({
 	TopLevel: false,
 	Protected: true,
 	Categories: ["Tails", "Kitty", "Cosplay"],
-	AddPose: ["Tails", "Kitty"],
+	AddPose: ["Tails", "Kitty", "Cosplay"],
 	Layers: ToLayerMap([
 		{ Name: "Kitty", Layer: "Tail", Pri: 0,
 			Invariant: true,
@@ -154,7 +154,7 @@ AddModel({
 	TopLevel: true,
 	Protected: true,
 	Categories: ["Tails", "Fox", "Cosplay"],
-	AddPose: ["Tails", "Fox"],
+	AddPose: ["Tails", "Fox", "Cosplay"],
 	Layers: ToLayerMap([
 		{ Name: "Fox", Layer: "Tail", Pri: 0,
 			Invariant: true,
@@ -170,7 +170,7 @@ AddModel({
 	TopLevel: false,
 	Protected: true,
 	Categories: ["Tails", "Fox", "Cosplay"],
-	AddPose: ["Tails", "Fox"],
+	AddPose: ["Tails", "Fox", "Cosplay"],
 	Layers: ToLayerMap([
 		{ Name: "Fox", Layer: "Tail", Pri: 0,
 			Invariant: true,
@@ -189,7 +189,7 @@ AddModel({
 	TopLevel: false,
 	Protected: true,
 	Categories: ["Tails", "Fox", "Cosplay"],
-	AddPose: ["Tails", "Fox"],
+	AddPose: ["Tails", "Fox", "Cosplay"],
 	Layers: ToLayerMap([
 		{ Name: "Fox3", Layer: "Tail", Pri: 0,
 			Invariant: true,
@@ -219,7 +219,7 @@ AddModel({
 	TopLevel: false,
 	Protected: true,
 	Categories: ["Tails", "Fox", "Cosplay"],
-	AddPose: ["Tails", "Fox"],
+	AddPose: ["Tails", "Fox", "Cosplay"],
 	Layers: ToLayerMap([
 		{ Name: "Fox5", Layer: "Tail", Pri: 0,
 			Invariant: true,
@@ -234,7 +234,7 @@ AddModel({
 	TopLevel: false,
 	Protected: true,
 	Categories: ["Tails", "Fox", "Cosplay"],
-	AddPose: ["Tails", "Fox"],
+	AddPose: ["Tails", "Fox", "Cosplay"],
 	Layers: ToLayerMap([
 		{ Name: "Fox6", Layer: "Tail", Pri: 0,
 			Invariant: true,
@@ -249,7 +249,7 @@ AddModel({
 	TopLevel: false,
 	Protected: true,
 	Categories: ["Tails", "Fox", "Cosplay"],
-	AddPose: ["Tails", "Fox"],
+	AddPose: ["Tails", "Fox", "Cosplay"],
 	Layers: ToLayerMap([
 		{ Name: "Fox7", Layer: "Tail", Pri: 0,
 			Invariant: true,

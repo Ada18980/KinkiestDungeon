@@ -602,8 +602,44 @@ let KDInventoryAction = {
 			return false;
 		},
 	},
+	"Attach": {
+		icon: (player, item) => {
+			return "InventoryAction/Attach";
+		},
+		valid: (player, item) => {
+			if (!(item?.type == Weapon && !KDWeapon(item)?.noHands && !KDWeapon(item)?.unarmed)) return false;
+			return item.name != KDGameData.AttachedWep;
+		},
+		label:  (player, item) => {
+			if (KDGameData.AttachedWep && KinkyDungeonInventoryGet(KDGameData.AttachedWep))
+				return KDGetItemNameString(KDGameData.AttachedWep);
+			return "";
+		},
+		itemlabel:  (player, item) => {
+			if (KDGameData.AttachedWep == item.name)
+				return TextGet("KDAttached");
+			return "";
+		},
+		/** Happens when you click the button */
+		click: (player, item) => {
+			KDGameData.AttachedWep = item.name;
+			KinkyDungeonAdvanceTime(1, true, true);
+			KDStunTurns(4, true);
+			KinkyDungeonDrawState = "Game";
+			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Tape.ogg");
+		},
+		/** Return true to cancel it */
+		cancel: (player, delta) => {
+			if (delta > 0) {
+				if (KinkyDungeonLastTurnAction) {
+					return true;
+				}
+			}
+			return false;
+		},
+	},
 	"Sell": {
-		alsoShow: ["SellBulk"],
+		alsoShow: ["SellBulk", "SellExcess"],
 		icon: (player, item) => {
 			return "InventoryAction/Sell";
 		},
@@ -621,6 +657,7 @@ let KDInventoryAction = {
 			return TextGet("KDGP").replace("AMNT", value + "");
 		},
 		itemlabel:  (player, item) => {
+			if (KDWeapon(item)?.unarmed) return "";
 			let mult = 1;
 			let quantity = 1;
 			let quantitystart = 0;
@@ -747,6 +784,80 @@ let KDInventoryAction = {
 				.replace("ITM", TextGet( (itemInv.type == LooseRestraint ? "Restraint" : "KinkyDungeonInventoryItem") + item.name))
 				.replace("VLU", "" + value)
 				.replace("#", "" + (itemInv.quantity || 1))
+			, "#ffffff", 2);
+		},
+		/** Return true to cancel it */
+		cancel: (player, delta) => {
+			if (delta > 0) {
+				if (KinkyDungeonLastTurnAction) {
+					return true;
+				}
+			}
+			return false;
+		},
+	},
+	"SellExcess": {
+		icon: (player, item) => {
+			return "InventoryAction/SellExcess";
+		},
+		label:  (player, item) => {
+			let mult = 1;
+			let quantity = ((item.quantity) ? item.quantity : 1) - 1;
+			let quantitystart = 0;
+			if (KDGameData.ItemsSold && KDGameData.ItemsSold[item.name]) {
+				quantitystart = KDGameData.ItemsSold[item.name];
+			}
+			// Use partial sum formula (maths)
+
+			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
+			return TextGet("KDGP").replace("AMNT", value + "");
+		},
+		text:  (player, item) => {
+			let mult = 1;
+			let quantity = ((item.quantity) ? item.quantity : 1) - 1;
+			let quantitystart = 0;
+			if (KDGameData.ItemsSold && KDGameData.ItemsSold[item.name]) {
+				quantitystart = KDGameData.ItemsSold[item.name];
+			}
+			// Use partial sum formula (maths)
+
+			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
+			return TextGet("KDInventoryActionSellExcess").replace("VLU", value + "");
+		},
+		valid: (player, item) => {
+			return item?.type == LooseRestraint || item?.type == Consumable;
+		},
+		show: (player, item) => {
+			if (!item.quantity || item.quantity == 1) return false;
+			return item?.type == LooseRestraint || item?.type == Consumable;
+		},
+		/** Happens when you click the button */
+		click: (player, item) => {
+			let mult = 1;
+			let quantity = ((item.quantity) ? item.quantity : 1) - 1;
+			let quantitystart = 0;
+			if (KDGameData.ItemsSold && KDGameData.ItemsSold[item.name]) {
+				quantitystart = KDGameData.ItemsSold[item.name];
+			}
+			// Use partial sum formula (maths)
+
+			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
+			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
+			if (!itemInv) return;
+			if (itemInv.type == Consumable)
+				KinkyDungeonChangeConsumable(KDConsumable(itemInv), -quantity);
+			else KinkyDungeonInventoryGetSafe(item.name).quantity = 1;
+			if (!KDGameData.ItemsSold) KDGameData.ItemsSold = {};
+			KDGameData.ItemsSold[item.name] = (KDGameData.ItemsSold[item.name] || 0) + quantity;
+			KinkyDungeonAddGold(value);
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
+			KinkyDungeonSendTextMessage(10, TextGet("KDSellExcess")
+				.replace("ITM", TextGet( (itemInv.type == LooseRestraint ? "Restraint" : "KinkyDungeonInventoryItem") + item.name))
+				.replace("VLU", "" + value)
+				.replace("#", "" + (quantity || 1))
 			, "#ffffff", 2);
 		},
 		/** Return true to cancel it */

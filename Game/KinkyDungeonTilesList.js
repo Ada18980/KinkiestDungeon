@@ -1149,7 +1149,7 @@ let KDEffectTileCreateFunctionsExisting = {
 			existingTile.duration = 0;
 			KDCreateEffectTile(existingTile.x, existingTile.y, {
 				name: "Torch",
-				duration: 9999,
+				duration: 9999, infinite: true,
 			}, 0);
 		}
 		return true;
@@ -1159,7 +1159,7 @@ let KDEffectTileCreateFunctionsExisting = {
 			newTile.duration = 0;
 			KDCreateEffectTile(existingTile.x, existingTile.y, {
 				name: newTile.name + "Unlit",
-				duration: 9999,
+				duration: 9999, infinite: true,
 			}, 0);
 		} else if (newTile?.tags?.includes("fire") || newTile?.tags?.includes("ignite")) {
 			existingTile.duration = 0;
@@ -1171,7 +1171,7 @@ let KDEffectTileCreateFunctionsExisting = {
 			existingTile.duration = 0;
 			KDCreateEffectTile(existingTile.x, existingTile.y, {
 				name: "TorchUnlit",
-				duration: 9999,
+				duration: 9999, infinite: true,
 			}, 0);
 		}
 		return true;
@@ -1193,7 +1193,7 @@ let KDEffectTileCreateFunctionsExisting = {
 			existingTile.duration = 0;
 			KDCreateEffectTile(existingTile.x, existingTile.y, {
 				name: "Lantern",
-				duration: 9999,
+				duration: 9999, infinite: true,
 			}, 0);
 		}
 		return true;
@@ -1339,7 +1339,7 @@ let KDEffectTileBulletFunctions = {
 				tile.duration = 0;
 				KDCreateEffectTile(tile.x, tile.y, {
 					name: "TorchUnlit",
-					duration: 9999,
+					duration: 9999, infinite: true,
 				}, 0); // Put out lantern
 			}
 		}
@@ -1352,7 +1352,7 @@ let KDEffectTileBulletFunctions = {
 				tile.duration = 0;
 				KDCreateEffectTile(tile.x, tile.y, {
 					name: "Torch",
-					duration: 9999,
+					duration: 9999, infinite: true,
 				}, 0); // Put out lantern
 			}
 		}
@@ -1365,7 +1365,7 @@ let KDEffectTileBulletFunctions = {
 				tile.duration = 0;
 				KDCreateEffectTile(tile.x, tile.y, {
 					name: "LanternUnlit",
-					duration: 9999,
+					duration: 9999, infinite: true,
 				}, 0); // Put out lantern
 			}
 		}
@@ -1378,7 +1378,7 @@ let KDEffectTileBulletFunctions = {
 				tile.duration = 0;
 				KDCreateEffectTile(tile.x, tile.y, {
 					name: "Lantern",
-					duration: 9999,
+					duration: 9999, infinite: true,
 				}, 0); // Put out lantern
 			}
 		}

@@ -641,7 +641,7 @@ let KDEffectTileGen = {
 		}
 		KDCreateEffectTile(x, y, {
 			name: spr,
-			duration: 9999,
+			duration: 9999, infinite: true,
 		}, 0);*/
 		let mapMod = null;
 		if (KDGameData.MapMod) {
@@ -665,7 +665,7 @@ let KDEffectTileGen = {
 		}
 		KDCreateEffectTile(x, y, {
 			name: spr,
-			duration: 9999,
+			duration: 9999, infinite: true,
 		}, 0);*/
 
 		let mapMod = null;
@@ -680,7 +680,7 @@ let KDEffectTileGen = {
 	"Wire": (x, y, tile, tileGenerator, data) => {
 		KDCreateEffectTile(x, y, {
 			name: "Wire",
-			duration: 9999,
+			duration: 9999, infinite: true,
 		}, 0);
 		return null;
 	},
