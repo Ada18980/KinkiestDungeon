@@ -66,13 +66,16 @@ AddModel({
 	Filters: {
 		"Slime": slimefilter,
 	},
+	AddPoseConditional: {
+		Xray: ["HoodMask",],
+	},
 	Layers: ToLayerMap([
-		{ Name: "FaceFull", Layer: "Blindfold", Pri: -15,
+		{ Name: "FaceFull", Layer: "Hood", Pri: -30,
 			Invariant: true,
 			NoOverride: true,
 			InheritColor: "Slime",
 			AddPriWithPose: {
-				ItemHeadRubberOver: 45,
+				ItemHeadRubberOver: 14,
 			},
 		},
 	])

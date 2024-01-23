@@ -4383,6 +4383,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					}
 				}
 
+				KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", enemy.Enemy?.attackPoints || 2);
+
 				KDEnemyAddSound(enemy, enemy.Enemy.Sound?.attackAmount != undefined ? enemy.Enemy.Sound?.attackAmount : KDDefaultEnemyAttackSound);
 
 				let playerEvasion = 1.01 * (player.player) ? KinkyDungeonPlayerEvasion(true)
@@ -7459,7 +7461,7 @@ function KDGetTeaseAttack(enemy, player, AData) {
 }
 
 function KDBasicTeaseAttack(enemy, player) {
-	return player.player && KDistChebyshev(enemy.x-player.x, enemy.y - player.y) < 1.5 && !KinkyDungeonIsDisabled(enemy) && !(enemy.vulnerable > 0) && !KDEnemyHasFlag(enemy, "targetedForAttack");
+	return player.player && KDistChebyshev(enemy.x-player.x, enemy.y - player.y) < 1.5 && !KDEnemyHasFlag(enemy, "teaseAtkCD") && !KinkyDungeonIsDisabled(enemy) && !(enemy.vulnerable > 0) && !KDEnemyHasFlag(enemy, "targetedForAttack");
 }
 
 

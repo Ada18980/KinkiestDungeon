@@ -53,8 +53,11 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseEyes", "EncaseMouth", "EncaseHead"],
+	AddPoseConditional: {
+		Xray: ["HoodMask",],
+	},
 	Layers: ToLayerMap([
-		{ Name: "FaceFull", Layer: "Blindfold", Pri: -15,
+		{ Name: "FaceFull", Layer: "Hood", Pri: -25,
 			Invariant: true,
 			NoOverride: true,
 			InheritColor: "Rubber",
