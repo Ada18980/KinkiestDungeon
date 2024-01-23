@@ -164,6 +164,10 @@ Auto-Crouch when Tripped
 
 Flip Player Display
 キャラを反転
+
+Grayscale when Blind
+目隠し時に画面を灰色にする
+
 Allow Suspicious Mods
 危険なMODを許可
 Auto Load Mods (offline only)
@@ -666,11 +670,11 @@ Increases the size of maps by 3 in each direction.
 Rigger
 リガー
 Chain and glue damage increased by 20%. Binding on enemies is 30% stronger.
-チェーン属性、グルー属性のダメージが20%増加する。敵への拘束ダメージが30%増加する
+チェーン属性、接着剤属性のダメージが20%増加する。敵への拘束ダメージが30%増加する
 Pacifist
 平和主義
 All damage dealt to humanoid enemies is reduced by 90% except pain, grope, tickle, charm, psychic, chain, or glue.
-人型の敵に攻撃する際、痛み、愛撫、くすぐり、魅了、サイキック、チェーン、グルー属性以外の攻撃は90%軽減される
+人型の敵に攻撃する際、痛み、愛撫、くすぐり、魅了、サイキック、チェーン、接着剤属性以外の攻撃は90%軽減される
 Curse Seeker
 呪いの探求者
 When you pick up cursed armor or restraints from chests, they equip automatically if able.
@@ -678,12 +682,12 @@ When you pick up cursed armor or restraints from chests, they equip automaticall
 
 Burning Desire
 燃えるような欲望
-While above 70% distraction, you ignite nearby objects and gain +40% fire damage.
-興奮値が70%以上の場合、近くのオブジェクトが点火し、火属性ダメージが40%上昇する
+While above 70% distraction, you ignite nearby objects and gain +25% fire damage.
+興奮値が70%以上の場合、近くのオブジェクトが点火し、火属性ダメージが25%上昇する
 Frigid Personality
 冷酷
-While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties.
-興奮値が0%の場合、氷の上を歩く際のペナルティがなくなり、氷属性ダメージが10%上昇する
+While below 10% distraction, you gain +10% ice damage and can walk on ice without penalties.
+興奮値が10%以下の場合、氷の上を歩く際のペナルティがなくなり、氷属性ダメージが10%上昇する
 
 Grounded in Reality
 現実に根ざす
@@ -706,7 +710,7 @@ While at 0 WP, you gain +35 Evasion and deal 20% of your max WP as acid damage w
 Sticky Situation
 ねばねば
 You take 40% more glue damage.
-受けるグルー属性のダメージが40%増加する
+受ける接着剤属性のダメージが40%増加する
 Breathless
 息切れ
 Taking chain, poison, and crush damage makes you dizzy.
@@ -941,11 +945,11 @@ Submissive enemies will always be bratty and force you to catch them.
 従順な敵が常に逃げるようになる
 
 More Tape
-テープ好き
+テープ増量
 Tape-wielding enemies (such as Tape Bots) occur more frequently.
 テープを使用する敵が出現する確率が上昇する
 Less Tape
-テープ嫌い
+テープ減少
 Fewer tape-related enemies will appear, although this does not remove tape entirely.
 テープを使用する敵が出現する確率が低下する
 
@@ -954,7 +958,7 @@ No Tape Bots
 The old civilization did not use tape-based restraints in their capture robots.
 旧文明のロボットがテープ系の拘束を使わなくなる
 Less Cable Bots
-ケーブルボット嫌い
+ケーブルボット減少
 The old civilization used significantly less cable-based restraints in their capture robots.
 旧文明のロボットがケーブル系の拘束を使用しにくくなる
 No Resin Bots
@@ -994,7 +998,7 @@ Your training has given you access to the powers of the Wizard class.
 Peasant
 農民
 You possess the agricultural mastery of the Peasant class.
-農奴の農作業に精通している
+農作業に精通している
 
 Panic! (Chests)
 パニック(宝箱)
@@ -1264,7 +1268,7 @@ Drenched: Grants fire resist, ice weakness, and makes you conductive.
 Chilled: The cold makes it hard to move! You are slowed.
 凍えている: 寒さで動きが鈍くなっている
 Slimed: It's sticky and dense! You are slowed and 30% more vulnerable to glue damage.
-ねばねば: ねばねばが張り付いている。動きが鈍くなり、グルー属性のダメージが30%増加する
+ねばねば: ねばねばが張り付いている。動きが鈍くなり、接着剤属性のダメージが30%増加する
 Unsteady: You're on loose footing. You are easier to hit and are slowed.
 ふらふら: 足元がおぼつかない。動きが鈍くなり、回避力が低下する
 Unsteady: You're on loose footing. You are easier to hit and are slowed.
@@ -1498,6 +1502,7 @@ Close a Door
 ドアを閉める
 Sprint/Hop
 走る/跳ぶ
+
 Ahh!
 んっ……
 Mmm...
@@ -1520,6 +1525,33 @@ Ooooh...
 (うめき声を抑えきれずに)
 (Shudders with pleasure)
 （喜びに身震いする）
+
+(Heavy breathing)
+ふーっ……
+(Soft moaning)
+んんっ……
+(Incoherent mumbling)
+うぅぅ……
+(Loud moans)
+あぅ……
+(Deep breaths)
+はぁ……はぁ……
+(Uncontrollable moaning)
+あんっ……
+(Horny noises)
+んんっ……
+
+
+Mmmph...
+んん……
+Mmmph~
+むうぅ……
+Nnngh...
+んぅぅ……
+Mmmmmmmm...
+ん”ん”っ……
+
+
 You wait.
 待機中……
 You wait, legs trembling with arousal.
@@ -1891,11 +1923,11 @@ A sleek catsuit worn by stealth operatives. No frills, no nonsense.
 Increases stealth by 10% in the dark.
 
 Jail Uniform
-刑務所の制服
+囚人服
 The prisoners are kept in revealing outfits to keep them from hiding things.
 物を隠せないように露出度を高められた囚人服。
-A prisoner's 'outfit'. No bonuses, no penalties.
-囚人の「服」。ボーナスなし、ペナルティなし
+Designed to make it hard to conceal weapons. Makes you more visible and vulnerable to the cold.
+武器を隠しにくいデザイン。人目につき、寒さに弱くなる。
 Wolfgirl Suit
 ウルフガールの服
 An advanced suit designed for sport, breathable and also warm.
@@ -2247,7 +2279,7 @@ Dollmaker's Staff
 You remember this being used on someone else.
 これが誰かの杖だったことは覚えている。
 +15% glue damage. Deals psychic damage. Fully bound enemies captured with this weapon become latex dolls which fight with you.
-グルー属性のダメージが15%増加し、通常攻撃がサイキック属性になる。この武器で完全に拘束された敵は、ラテックス人形になり、仲間になる。
+接着剤属性のダメージが15%増加し、通常攻撃がサイキック属性になる。この武器で完全に拘束された敵は、ラテックス人形になり、仲間になる。
 You are unable to control more than 3 dolls. The new doll is protesting and remains bound.
 同時にコントロールできる人形は3体まで。4体目以降の人形は拘束されたままになる。
 Staff of Incineration
@@ -2291,7 +2323,7 @@ Staff of Slime
 A slimy and magical implement..
 ぬるぬるした魔法の道具……
 +10% glue damage. Deals glue damage. Offhand: Applies passive bonus.
-グルー属性。グルー属性のダメージが10%増加する。オフハンド：グルー属性ダメージが10%増加する。
+接着剤属性。接着剤属性のダメージが10%増加する。オフハンド：接着剤属性ダメージが10%増加する。
 Staff of Shocking
 衝撃の杖
 A magical weapon made for novices to use.
@@ -2516,9 +2548,9 @@ Deals slash damage. Can make ranged attacks.. Drains 0.75% ancient energy to fir
 Metamorphosis
 変身装置
 You can enter slime form for 25 turns, which lets you pass thru bars, +50 Evasion, and deals 25 glue damage when attacked.
-25ターンの間、スライム形態になる。スライム状態では、バーを通り抜けることができ、回避力が50増加し、攻撃されたときにグルーダメージを25与える.
+25ターンの間、スライム形態になる。スライム状態では、バーを通り抜けることができ、回避力が50増加し、攻撃されたときに接着剤ダメージを25与える.
 Deals glue damage. Roots targets for 2 turns on a hit. Offhand: Roots targets on hit.
-グルー属性。命中時、敵は2ターンの間スタンする。オフハンド：敵を地面に拘束する。
+接着剤属性。命中時、敵は2ターンの間スタンする。オフハンド：敵を地面に拘束する。
 Four Seasons
 四季の杖
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
@@ -2530,7 +2562,7 @@ The Arbiter
 I have altered the rules. Pray I do not alter them further.
 ルールを変更しました。これ以上変更しないでください。
 Deals chain damage with 125% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Weapon Ability: Disarm
-チェーン属性のダメージを与え、125%の威力で拘束値を増加させる。召喚物を攻撃する際、40ポイントの影属性追加ダメージを与える。チェーン属性とグルー属性のダメージが25%増加する。アビリティ: 武装解除
+チェーン属性のダメージを与え、125%の威力で拘束値を増加させる。召喚物を攻撃する際、40ポイントの影属性追加ダメージを与える。チェーン属性と接着剤属性のダメージが25%増加する。アビリティ: 武装解除
 Bondage Buster
 ボンデージバスター
 Can fire a beam (1 turn channel) that deals 30 electric damage and applies an equal amount of energy bondage. Charges when not fired, dealing 90 total damage at 10 turns of charge.
@@ -2564,7 +2596,7 @@ Latex Projector
 Deals crush damage. Can be used to spray a '+' shaped pool of slime.
 打撃属性。+形のスライムプールを作ることができる。
 Drains 1.5% ancient energy to create a pool of slime that deals 35 glue damage per tile and slows enemies.
-1.5%のエネルギーを消費して、タイルごとに35のグルー属性ダメージを与え、敵を遅くするスライムのプールを作成する。
+1.5%のエネルギーを消費して、タイルごとに35の接着剤属性ダメージを与え、敵を遅くするスライムのプールを作成する。
 Enchanted Axe
 魔法の斧
 Sick and vile, like the hearts of your enemies.
@@ -4626,17 +4658,17 @@ A light restores the will of its allies!
 You do not have enough resources to cast the spell!
 マナが足りない！
 You AttackName TargetEnemy for DamageDealt DamageType damage!
-TargetEnemy に AttackName し、DamageDealt DamageType のダメージを与えた！
+TargetEnemy に攻撃し、DamageDealt DamageType のダメージを与えた！
 You AttackName TargetEnemy for a decreased DamageDealt DamageType damage!
-TargetEnemy に AttackName したが、耐性があるようだ。 DamageDealt DamageType のダメージを与えた。
+TargetEnemy に攻撃したが、耐性があるようだ。 DamageDealt DamageType のダメージを与えた。
 You AttackName TargetEnemy for an increased DamageDealt DamageType damage!
-TargetEnemy に AttackNameDamage した。弱点を付き、 DamageDealt DamageType のダメージを与えた！
+TargetEnemy に攻撃した。弱点を付き、 DamageDealt DamageType のダメージを与えた！
 You AttackName TargetEnemy for a devastating DamageDealt DamageType damage!
-TargetEnemy に AttackNameDamage した。弱点を付き、 DamageDealt DamageType の大ダメージを与えた！！
+TargetEnemy に攻撃した。弱点を付き、 DamageDealt DamageType の大ダメージを与えた！！
 You AttackName TargetEnemy, but your DamageType weapon has no effect!
-TargetEnemy に AttackNameDamage したが、 DamageType は効果がないようだ。
+TargetEnemy に攻撃したが、 DamageType は効果がないようだ。
 You AttackName TargetEnemy for DamageDealt DamageType damage!, reduced by an anti-magic ward!
-TargetEnemy に AttackName したが、魔力障壁によって阻まれた。 DamageDealt DamageType ダメージを与えた。
+TargetEnemy に攻撃したが、魔力障壁によって阻まれた。 DamageDealt DamageType ダメージを与えた。
 AttackName hits TargetEnemy for DamageDealt DamageType damage!
 AttackName は TargetEnemy に命中し、DamageDealt DamageType のダメージを与えた！
 AttackName hits TargetEnemy for a reduced DamageDealt DamageType damage!
@@ -5638,6 +5670,14 @@ A slick layer of blue latex stretched over the mouth.
 青いゴムの膜が鼻上までピッタリと張り付いている。
 It's very tight and makes it hard to move your mouth.
 とてもタイトで口を動かしにくい。
+
+Secure Latex Mask
+頑丈なラテックスマスク
+A slick layer of blue latex stretched over the mouth. It has a lockable strap which prevents it from being removed.
+青いゴムの膜が鼻上までピッタリと張り付いている。施錠するためのストラップが付いており、簡単には外せない。
+It's very tight and makes it hard to move your mouth.
+とてもタイトで口を動かしにくい。
+
 Rubberized Gloves
 ラバーグローブ
 A mass of alchemical latex stretched over your arms, then hardened to the point that you can barely move your fingers!
@@ -6409,12 +6449,34 @@ A steel bar clamped firmly around your wrists and neck, leaving you in a helples
 両手を顔の左右で固定する高鉄の棒。
 This is not something you can pick by yourself...
 どうあがいても自分で解錠できるものではない……。
+
+Heavy Yoke
+厳重なヨーク
+A series of armor-grade plates cut with precision machining, sandwiched into an unbreakable layer that clasps firmly in place around your neck and wrists.
+精巧で頑丈な金属でできた棒。両手を顔の左右で固定されてしまう。
+The awkward position makes it difficult to get out of alone.
+一人で抜け出すのが極めて困難な姿勢で拘束されてしまう。
+Steel Fiddle
+鋼鉄のフィドル
+A steel fixture keeping your hands in an awkward and submissive position.
+両手を前に拘束する鋼鉄の枷。
+The awkward position prevents you from easily reaching the lock.
+一人で鍵を外すのが極めて困難な姿勢で拘束されてしまう。
+
 Leather Harness
 革のハーネス
 A leather harness of tight straps buckled around your torso.
 胴回りを締め、拘束感を高める革製の拘束具。
 It provides an anchor point for enemies to grab onto!
 着用者を無理やり引っ張るのに便利。
+
+Rubberized Harness
+ゴムのハーネス
+A harness made of latex polymer, resistant to most solvents and corrosion.
+ゴムでできたハーネス。溶剤や腐食に強い。
+Can be worn all day! Also convenient to hold.
+一日中着用でき、持ち運びも便利。
+
 Ball Gag
 ボールギャグ
 A gag made of a red squishy material.
@@ -6954,6 +7016,8 @@ It has too much grip to struggle out of, but is made of a fragile material.
 もがいて抜け出すのは難しいが、壊れやすい素材でできている。
 Latex Boxbinder
 ラテックスのボックスバインダー
+A secure but comfortable binder meant for long-term wear.
+長時間の着用を想定した、厳重で快適な拘束具。
 It has too much grip to struggle out of, but is made of a fragile material.
 もがいて抜け出すのは難しいが、壊れやすい素材でできている。
 Latex Legbinder
@@ -7899,13 +7963,13 @@ Ghostly chains from a ghost that just doesn't want to let go.
 It's made of an ethereal substance.
 不思議な素材でできている。
 Divine Cuffs
-神の手枷
+神の枷
 It is said that even heaven has its hierarchies...
 天国にもヒエラルキーがあるとは……
 Shining cuffs made of holy metal. Nothing can touch it.
 聖なる金属で作られた輝く枷。どういうわけか触れることができない。
 Divine Cuffs
-神の足枷
+神の枷
 It is said that even heaven has its hierarchies...
 天国にもヒエラルキーがあるとは……
 Shining cuffs made of holy metal. Nothing can touch it.
@@ -8600,7 +8664,7 @@ The ampule shatters on impact!
 The gas ampule shatters on impact!
 ガス入り瓶が衝撃で粉々に砕けた！
 The glue ampule shatters on impact!
-グルー入り瓶が衝撃で粉々に砕けた！
+接着剤入り瓶が衝撃で粉々に砕けた！
 The rubber ampule shatters on impact!
 ラバー入り瓶が衝撃で粉々に砕けた！
 The latex ampule shatters on impact and forms a restraint!
@@ -8612,7 +8676,7 @@ The latex ampule shatters on impact and sticks to you!
 Gas Ampule
 ガス入り瓶
 Glue Ampule
-グルー入り瓶
+接着剤入り瓶
 Rubber Ampule
 ラバー入り瓶
 Latex Ampule
@@ -8698,21 +8762,21 @@ Arcane Knowledge
 Unlocks knowledge and critical-strike spells. Learn True Steel, and unlocks advanced tooltips for enemies.
 知識とクリティカル ストライク スペルのロックを解除します。True Steel を学び、敵の高度なツールチップのロックを解除します。
 Glue
-グルー
+接着剤
 The glue attaches to your legs as you try to move through!
-移動しようとすると、グルーがネバネバと張り付いてきた！
+移動しようとすると、接着剤がネバネバと張り付いてきた！
 The glue slows you down!
-グルーのせいで動きが鈍くなった！
+接着剤のせいで動きが鈍くなった！
 The glue slows you down! (-DamageDealt SP)
-グルーのせいで素早く動けない！ (-DamageDealt SP)
+接着剤のせいで素早く動けない！ (-DamageDealt SP)
 Firebolt
 ファイアボルト
 Elemental's Firebolt
 エレメンタルのファイアボルト
 Elemental's Gust
 エレメンタルの突風
-A ball of flame that does DamageDealt damage.
-DamageDealt ダメージを与える火球を放つ。
+A ball of flame that does DamageDealt damage to one target.
+火球を放ち、敵一体に DamageDealt 火ダメージを与える。
 You a hurl a firebolt!
 火球を投げつけた！
 Choose aim direction
@@ -9064,16 +9128,16 @@ The elemental channels the force of the storm!
 エレメンタルの力が嵐を引き起こす！
 Fireball
 ファイアボール
-A slow moving ball of flame that explodes for 180 fire damage to the target and DamageDealt damage to surrounding enemies.
-動きの遅い火の玉を発射し、ターゲットに 180 の火ダメージを与え、周囲の敵に DamageDealt 火ダメージを与える。
+A slow moving ball of flame that explodes for DamageDealt fire damage in a wide area.
+動きの遅い火の玉を発射し、広範囲に DamageDealt 火ダメージを与える。
 You a hurl a fireball!
 火の玉を投げた！
 Choose aim direction
 照準方向を選択
 Fireblast
 ファイアブラスト
-A slow moving ball of flame that explodes for 100 fire damage to the target and DamageDealt damage to surrounding enemies.
-動きの遅い火の玉を発射し、ターゲットに 100 の火ダメージを与え、周囲の敵に DamageDealt 火ダメージを与える。
+A bolt of flame that explodes for DamageDealt fire damage in an area.
+動きの遅い火の玉を発射し、範囲内に DamageDealt 火ダメージを与える。
 You a hurl a blast of flame!
 強力な火球を投げつけた！
 Choose aim direction
@@ -9255,7 +9319,7 @@ Choose monoliths to enchant
 Coalesce
 合体
 Gathers slime and slimed enemies into a central point. Deals DamageDealt glue damage per square of slime and Encases slimed enemies. Costs half mana if there is only slime.
-スライムとスライム化した敵を中心に集める。範囲内の敵に DamageDealt グルーダメージを与え、スライムで包み込む。スライムだけの場合、マナ コストは半分になる。
+スライムとスライム化した敵を中心に集める。範囲内の敵に DamageDealt 接着剤ダメージを与え、スライムで包み込む。スライムだけの場合、マナ コストは半分になる。
 You command the slime to draw enemies in!
 周囲のスライムに集合を命じた！
 Choose area containing slime
@@ -9305,7 +9369,7 @@ Choose area containing Latex
 Slime Repulsion
 スライム反発
 Gain +50 glue resist.
-50のグルー耐性を得る。
+50の接着剤耐性を得る。
 Spread
 スプレッド
 Slime in the target area expands by 1 unit in the four cardinal directions. Refreshes duration to 12-20 turns.
@@ -9341,7 +9405,7 @@ Unlocks horizontal and vertical latex walls that encase enemies that walk throug
 Wall of Latex (Vert)
 ラテックスの壁 (縦)
 Creates a vertical wall of latex for 20 turns. Enemies that pass through are encased, take DamageDealt glue damage if not encased, and blinded.
-20ターン継続する、縦向きのラテックスの壁を生成する。通り抜けようとすると、ラテックスが張り付き DamageDealt グルーダメージを受け、盲目状態になる。
+20ターン継続する、縦向きのラテックスの壁を生成する。通り抜けようとすると、ラテックスが張り付き DamageDealt 接着剤ダメージを受け、盲目状態になる。
 You tap your foot and a wall of latex stretches out across the corridor.
 足を軽く踏み鳴らすと、ゴムの壁が伸びてきた。
 Choose vertical wall origin (5 tiles high)
@@ -9349,7 +9413,7 @@ Choose vertical wall origin (5 tiles high)
 Wall of Latex (Horiz)
 ラテックスの壁 (横)
 Creates a horizontal wall of latex for 20 turns. Enemies that pass through are encased, take DamageDealt glue damage if not encased, and blinded.
-20ターン継続する、横向きのラテックスの壁を生成する。通り抜けようとすると、ラテックスが張り付き DamageDealt グルーダメージを受け、盲目状態になる。
+20ターン継続する、横向きのラテックスの壁を生成する。通り抜けようとすると、ラテックスが張り付き DamageDealt 接着剤ダメージを受け、盲目状態になる。
 You tap your foot and a wall of latex stretches out across the corridor.
 足を軽く踏み鳴らすと、ゴムの壁が伸びてきた。
 Choose horizontal wall origin (5 tiles wide)
@@ -9725,7 +9789,7 @@ The gag hits you! (DamageDealt)
 The amorphous rubber sticks to you! (DamageDealt)
 不定形のゴムがネバネバとくっついてくる！ (DamageDealt)
 Summons a gag which deals DamageDealt glue damage and silences for 15 turns. +40 binding if target is not silenced.
-DamageDealt グルーダメージを与え、15ターンの間沈黙させるボールギャグを召喚する。ターゲットが沈黙していない場合、拘束値が40増加する。
+DamageDealt 接着剤ダメージを与え、15ターンの間沈黙させるボールギャグを召喚する。ターゲットが沈黙していない場合、拘束値が40増加する。
 You conjure a gag!
 ボールギャグを召喚した！
 The gag will appear next to you and fly toward the target point.
@@ -9746,7 +9810,7 @@ The armbinder slips itself around your arms and snaps on tightly!
 The armbinder hits you! (DamageDealt)
 アームバインダーがぶつかってきた！ (DamageDealt)
 Summons an armbinder which deals DamageDealt glue damage and disarms for 13 turns. Cannot be blocked.
-DamageDealt グルーダメージを与え、13ターンの間武装解除するア​​ームバインダーを召喚する。この魔法はブロックされない。
+DamageDealt 接着剤ダメージを与え、13ターンの間武装解除するア​​ームバインダーを召喚する。この魔法はブロックされない。
 You conjure a armbinder!
 アームバインダーを召喚した！
 The armbinder will appear next to you and fly toward the target point.
@@ -9767,7 +9831,7 @@ The legbinder slips itself around your legs and snaps on tightly!
 The legbinder hits you! (DamageDealt)
 レッグバインダーがぶつかってきた！ (DamageDealt)
 Summons a legbinder which deals DamageDealt glue damage and snares for 10 turns. +50 binding if target is not snared. Cannot be blocked.
-DamageDealt グルーダメージとを与え、10ターンの移動不能状態を付与するレッグバインダーを召喚する。ターゲットが減速状態でない場合、拘束値が50増加する。この魔法はブロックされない。
+DamageDealt 接着剤ダメージとを与え、10ターンの移動不能状態を付与するレッグバインダーを召喚する。ターゲットが減速状態でない場合、拘束値が50増加する。この魔法はブロックされない。
 You conjure a legbinder!
 レッグバインダーを召喚した！
 The legbinder will appear next to you and fly toward the target point.
@@ -10040,7 +10104,7 @@ The slime awakens and turns on you!!!
 Select area to awaken
 エリアを選択
 Activates the slime in an area, causing it to deal 25 glue damage. Encases fully bound targets.
-範囲内のスライムを活性化し、25グルーダメージを与える。完全に拘束された敵を包み込む。
+範囲内のスライムを活性化し、25接着剤ダメージを与える。完全に拘束された敵を包み込む。
 You command the slime to draw in targets!
 スライムに取り付くよう指示を出した！
 CMD: Bind
@@ -10113,10 +10177,28 @@ When enabled: Melee weapon attacks cost mana and create a flame strike that deal
 有効時: 武器攻撃時にマナを消費し、追加で30火属性ダメージを与える。
 Flame Blade
 フレイムブレイド
+
+Tentacle Slap
+触手の一撃
+You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +20 glue damage and create slime.
+スライムから触手を形作り、追加で攻撃できるようになる。有効時：攻撃時に追加で20接着剤属性ダメージを与え、床にスライムを撒く。
+Chain Strike
+鎖の一撃
+You have the power to summon chains when you attack. When enabled: Your attacks deal +20 chain damage and create chains.
+鎖を召喚し、追加で攻撃できるようになる。有効時：攻撃時に追加で20チェーンダメージを与え、床に鎖を撒く。
+Ropework
+ロープワーク
+You have the power to weave ropes between your attacks. When enabled: Your attacks deal +20 chain damage and create ropes.
+縄を操り、追加で攻撃できるようになる。有効時：攻撃時に追加で20チェーンダメージを与え、床に縄を撒く。
+Leather Whip
+レザーウィップ
+You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +20 pain damage and create belts.
+革のベルトを召喚し、追加で攻撃できるようになる。有効時：攻撃時に追加で20痛みダメージを与え、床にベルトを撒く。
+
 Engulf
 飲み込み
 When enabled: Your melee attacks deal +20 glue damage and create slime.
-有効時: 近接攻撃時に追加で20グルーダメージを与え、スライムを生成する。
+有効時: 近接攻撃時に追加で20接着剤ダメージを与え、スライムを生成する。
 Strengthen
 魔術筋繊維
 When enabled: Struggling is more powerful, and your attack damage is increased by +20 if your weapon deals physical damage.
@@ -10345,7 +10427,7 @@ Rubber Explosion
 Witch's Slime Ball
 魔女のスライムボール
 A pool of slime deals DamageDealt glue damage to enemies on impact and covers the area in temporary slime.
-着弾時に DamageDealt グルーダメージを与え、周囲の床にスライムを生成する。
+着弾時に DamageDealt 接着剤ダメージを与え、周囲の床にスライムを生成する。
 You conjure a pool of slime!
 スライムのプールを召喚した！
 Select where the slime will appear
@@ -10353,7 +10435,7 @@ Select where the slime will appear
 Slime Eruption
 スライムの噴火
 A huge blast of slime deals DamageDealt glue damage to enemies that enter and binds them friefly.
-スライムの爆発が周囲に DamageDealt グルーダメージと拘束値を与える。
+スライムの爆発が周囲に DamageDealt 接着剤ダメージと拘束値を与える。
 You conjure an explosion of slime!
 スライムの爆発を引き起こす！
 Select where the slime will appear
@@ -10361,7 +10443,7 @@ Select where the slime will appear
 Slime Splash
 スライムスプラッシュ
 After one turn, deals DamageDealt glue damage in a small area and spreads slime.
-1ターン後、狭い範囲内に DamageDealt グルーダメージを与え、周囲の床にスライムを生成する。
+1ターン後、狭い範囲内に DamageDealt 接着剤ダメージを与え、周囲の床にスライムを生成する。
 You conjure a small amount of slime!
 小規模なスライムの爆発を起こした！
 Select where the slime will appear
@@ -10489,7 +10571,7 @@ Slime Ball
 Witch's Slime Ball
 魔女のスライムボール
 A ball of slime leaves a trail of sticky slime (20 damage when stepped on). It deals DamageDealt glue damage on a hit.
-通過したマスにスライムを生成する、スライムの塊を発射する。塊にヒットすると DamageDealt グルーダメージを与え、生成されたスライムを踏むと20ダメージ。
+通過したマスにスライムを生成する、スライムの塊を発射する。塊にヒットすると DamageDealt 接着剤ダメージを与え、生成されたスライムを踏むと20ダメージ。
 You hurl a ball of slime!
 スライムの塊を投げた！
 Choose aim direction
@@ -10650,6 +10732,7 @@ You wriggle uselessly, tormented by the massive plugs inside of you!
 巨大なバイブに激しく責め立てられるも、身動きできずにもがくことしかできない！
 You climb into the grate
 通気口の中に入った。
+
 Mmmph...
 むぅ……
 Mmmmmmmmm...
@@ -10682,6 +10765,29 @@ Mmmmm~~
 ふーっ、ふーっ
 Mmmmmm~~~
 んんっ……
+
+
+Mmph...
+ふぅ～っ……
+Mmmm!
+ん”っ！
+MMM!!!
+ん”ぅ”ぅ”！！
+
+Hmmph.
+ふぅぅっ
+Mmmm...
+んん……
+
+Mmmph.
+むぅぅ
+Mmmmmmph!!!
+んんぉ！
+Gmmmmph!
+んぐぅぅっ！
+Hmmmmph~!!
+んん～っ！
+
 You are blinded!
 盲目になった！
 You took DamageDealt damage!
@@ -11207,7 +11313,7 @@ The item contains technological markings. Perhaps applying some electricity will
 The cursed seal gives off sparks as you struggle fruitlessly against it.
 この呪いの封印はもがくと電気が流れるようだ。
 The item contains an alchemical seal. Perhaps Glue damage will overload it?
-この呪いには錬金術の封印がなされている。グルーダメージでオーバーロードできないだろうか？
+この呪いには錬金術の封印がなされている。接着剤ダメージでオーバーロードできないだろうか？
 The item stretches as you tug on it, but snaps back to its original place.
 この拘束具は引っ張ると伸びるが、はなすと元の位置に戻ってしまう。
 The item is covered in markings of chains. Perhaps you need to take Chain damage?
@@ -11931,6 +12037,12 @@ Aware of you!
 見られている！
 Pursuing you!
 追ってきている！
+Ignoring you!
+無視されている！
+Investigating!
+調べている。
+Suspicious
+疑われている。
 Slightly suspicious
 疑われている
 Saw something...
@@ -12012,7 +12124,7 @@ Charm
 Tickle
 くすぐり
 Grope
-グルー
+股間
 Crush
 打撃
 Gravity
@@ -12044,7 +12156,7 @@ Chain
 Charm
 魅了
 Glue
-グルー
+接着剤
 Unarmed
 非武装
 Melee
@@ -17737,14 +17849,71 @@ Fine. I'll sign it...
 (頷く)
 Never! (PERCENT chance to avoid)
 「絶対に嫌！」(PERCENT の確率で拒否)
+
 (Shake your head and frown) (PERCENT chance to avoid)
 (顔をしかめて首を横に振る)(PERCENT の確率で拒否)
-(The SPEAKER waves)|Greetings,|I manufacture all sorts of goods.|Would you like to buy some?
-(SPEAKER は手を振っている)|やぁ。|私はいろんな商品を作っているんだ。|何か買っていくかい？
+
+(The SPEAKER waves)|Greetings,|I manufacture all sorts of armor.|Would you like to buy some?
+(SPEAKER は手を振っている)|やぁ。|私はいろんな防具を取り扱っているんだ。|何か買っていくかい？
 (The SPEAKER drops her hammer and cracks her knuckles)|Put em up!
 (SPEAKER はハンマーを置き、指を鳴らしだした)|やる気か！？
 (The SPEAKER looks at you.)|But you already have one?
-(SPEAKER が見つめてきた)|でも、それはもう持っているだろう？
+(SPEAKER が見つめてきた)|もう持っているようだけど。
+(The SPEAKER folds her arms)|I don't do charity, girl.
+(SPEAKER は腕を組んだ)|お金が足りないよ、私も慈善でやってるわけじゃあないんだ。
+(The SPEAKER nods)|The most high-impact of sports bras.
+(SPEAKER は頷いている)|一番硬いスポーツブラだ。
+(The SPEAKER nods)|These aren't for hiking, just so you know.
+(SPEAKER は頷いている)|わかっているだろうけど、これはハイキング用じゃないよ。
+(The SPEAKER nods)|I've been thinking about making a lockable version...
+(SPEAKER は頷いている)|これのロックできるバージョンを考えているんだ……
+(The SPEAKER nods)|These are sensibly sized, unlike those you see in movies.
+(SPEAKER は頷いている)|映画で見るのとは違って、現実的なサイズだろう。
+(The SPEAKER nods)|Sometimes you just have to be flexible.
+(SPEAKER は頷いている)|時には鎖帷子の柔軟性が必要なときもある。
+(The SPEAKER nods)|For when you value style over protection...
+(SPEAKER は頷いている)|見た目重視だ。
+(The SPEAKER nods)|You can never be too careful.
+(SPEAKER は頷いている)|用心するに越したことはない。
+(The SPEAKER chuckles)|I hear female adventurers like to wear these for protection.|Or something like that.
+(SPEAKER は苦笑いしている)|身を守るために必要なものだね。|まあそんな感じ。
+(The SPEAKER chuckles)|I hear female adventurers like to wear these for protection.|Or something like that.
+(SPEAKER は苦笑いしている)|身を守るために必要なものだね。|まあそんな感じ。
+
+(The SPEAKER waves)|Hello miss!|What brings you here today?
+(SPEAKER は手を振っている)|ごきげんよう。|私は色々な遠距離武器を取り扱っております。|何か買っていきますか？
+(The SPEAKER folds her arms)|That's not very nice!
+(SPEAKER は腕を組んだ)|やめなさい！
+(The SPEAKER looks at you.)|But you already have one?
+(SPEAKER が見つめてきた)|もう持っているようだけど。
+(The SPEAKER folds her arms)|I don't do charity, miss.
+(SPEAKER は腕を組んだ)|お金が足りませんよ。
+(The SPEAKER nods)|Could use a higher heel...
+(SPEAKER は頷いている)|もう少しヒールが高くても良さそうですね……
+(The SPEAKER nods)|Back to the basics.
+(SPEAKER は頷いている)|基本ですね。
+(The SPEAKER smiles)|I see you have good taste!
+(SPEAKER は笑顔を浮かべている)|良いセンスですね！
+(The SPEAKER nods)|It's a classic!|What's not to like?
+(SPEAKER は頷いている)|基本武器ですね！|気に入ると思いますよ！
+(The SPEAKER smiles)|It's an upgrade for your best friend!
+(SPEAKER は笑顔を浮かべている)|強化された弓です！
+(The SPEAKER shrugs)|It's big and bulky, but I guess it has its uses.
+(SPEAKER は肩を透かしている)|大きくてかさばりますが、役には立つでしょう。
+(The SPEAKER giggles)|Smile for the camera!
+(SPEAKER は薄ら笑みを浮かべている)|はいチーズってね。
+(The SPEAKER nods)|It's like mana, but much more portable!|It powers duplication runes so you don't run out of arrows.
+(SPEAKER は頷いている)|マナのようなものですが、持ち運びできるエネルギー源です。|エネルギーがある限り矢を複製できるので、弓を扱うなら必須ですね。
+(The SPEAKER giggles)|I like to include these as a gift with every purchase~
+(SPEAKER は薄ら笑みを浮かべている)|商品を購入されたお客様にこれをプレゼントするのが好きなんです。
+
+
+(The SPEAKER waves)|Greetings,|I manufacture all sorts of weapons.|Would you like to buy some?
+(SPEAKER は手を振っている)|やぁ。|私はいろんな武器を取り扱っているんだ。|何か買っていくかい？
+(The SPEAKER drops her hammer and cracks her knuckles)|Put em up!
+(SPEAKER はハンマーを置き、指を鳴らしだした)|やる気か！？
+(The SPEAKER looks at you.)|But you already have one?
+(SPEAKER が見つめてきた)|もう持っているようだけど。
 (The SPEAKER folds her arms)|I don't do charity, ma'am.
 (SPEAKER は腕を組んだ)|お金が足りないよ、私も慈善でやってるわけじゃあないんだ。
 (The SPEAKER smirks)|Another adventurer found this lying around.|I wonder who it's for~
@@ -17762,7 +17931,8 @@ Never! (PERCENT chance to avoid)
 (The SPEAKER nods)|You can never be too careful.
 (SPEAKER は頷いた)|注意するに越したことはない。
 (The SPEAKER smiles)|Can never be too prepared~
-(SPEAKER は笑顔になった)|備えあれば憂いなし、だな。
+(SPEAKER は笑顔を浮かべている)|備えあれば憂いなし、だな。
+
 (The SPEAKER approaches you with an offer)|Greetings! I am a potion trader.|Give me your strongest potions!|I pay cash!
 (SPEAKER が取引を持ちかけてきた)|こんにちは！私はポーションを買い取っているのだけど。|何か売ってくれないかな？|ちゃんとお金は払うよ！
 (The SPEAKER doesn't look surprised)|Okay, just let me set these down real quick...
@@ -18562,6 +18732,13 @@ Will you buy my loot?
 「戦利品を買い取って」
 Soon! I'm currently setting up my wares, so you'll have to wait.
 「今準備中だからもう少し待ってね！」
+
+Absolutely! I offer the standard market rate for anything.|I'll take enchanted items too!|I've got plenty of volunteers to check for curses~
+もちろん！ちゃんと適正価格ですよ。|エンチャントされたアイテムも買い取りますよ。|呪いをチェックするボランティアはたくさんいるんです。
+
+(Sell Items)
+(アイテムを売る)
+
 Mmmph!
 「んんぅ！」
 Daww! What a cutie!|(She smiles and pats your head gently)
@@ -18573,8 +18750,8 @@ Do you have anything for sale?
 何を売っているの？
 (Look around for items to buy)
 (商品を見る)
-I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside a dungeon? That's crazy!|But you adventurers bring in a steady supply of loot,|so if you've got something to sell me, I'll take it off your hands~
-ごめんなさい、ここは買い取り専用なんですよ。|ダンジョンの中に店を構えるなんて正気の沙汰ではありませんが、|あなたのような冒険者達が安定して戦利品を運び込んできてくれますから。|なので、何か売りたいものがあったら持ってきてくださいね！
+I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside a dungeon? That's crazy!|But you adventurers bring in a steady supply of loot,|so if you've got something to sell me, I'll take it off your hands~|You can also talk to my guests, perhaps they have something for you.
+ごめんなさい、ここは買い取り専用なんですよ。|ダンジョンの中に店を構えるなんて正気の沙汰ではありませんが、|あなたのような冒険者達が安定して戦利品を運び込んできてくれますから。|なので、何か売りたいものがあったら持ってきてくださいね！|それと、他の商人の方もいらっしゃるので彼女たちとも話してみてくださいね！
 
 
 (The SPEAKER brings you safely back to her shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!
@@ -19784,6 +19961,7 @@ BunnyLeotardHigh
 LaceBra
 レース付きブラ
 
+
 Items on Ground:
 アイテムが落ちている：
 Hide Items
@@ -19883,7 +20061,7 @@ Slime Sword
 It wiggles as you move it around.
 振ると刀身がうねうねと動く。
 Deals glue damage. Adds 25 slime binding.
-グルー属性。25のスライム属性拘束値を与える。
+接着剤属性。25のスライム属性拘束値を与える。
 You pick up slime-covered sword.
 スライムに覆われた剣を拾った
 Preloading Character Assets: 
@@ -20730,8 +20908,8 @@ Forming a skintight layer, it will be quite difficult to escape this.
 形を変え、肌にピッタリと張り付いてくる。抜け出すのは極めて難しい。
 Liquid Metal (Arms)
 液体金属(腕)
-A metallic substance that is both flexible and hard. It weighs you down, reducing evasion.
-柔軟でありながら非常に硬い金属物質。重量があるため、回避力が低下する。
+A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity.
+柔軟でありながら非常に硬い金属物質。重量があるため、回避力が低下し、電導性になる。
 Forming a skintight layer, it will be quite difficult to escape this.
 形を変え、肌にピッタリと張り付いてくる。抜け出すのは極めて難しい。
 Liquid Metal (Hands)
@@ -21613,17 +21791,17 @@ The assistant splashes a solvent in your face, blinding you! (DamageTaken)
 研究員に奇妙な液体をかけられ、目潰しされた！ (DamageTaken)
  
 ...Glue Technician?
-グルーの技術士……？
+接着剤の技術士……？
 You rescue the glue technician.
-グルーの技術士を救った！
+接着剤の技術士を救った！
 The technician slaps adhesive restraints onto your body! (+RestraintAdded)
-グルーの技術士に拘束された！ (+RestraintAdded)
+接着剤の技術士に拘束された！ (+RestraintAdded)
 The technician polishes your restraints thoroughly! (DamageTaken)
-グルーの技術士が拘束具に塗料を塗ってきた！ (DamageTaken)
+接着剤の技術士が拘束具に塗料を塗ってきた！ (DamageTaken)
 The technician pours glue on you to make you stay still! (DamageTaken)
-グルーの技術士に接着剤をかけられた！ (DamageTaken)
+接着剤の技術士に接着剤をかけられた！ (DamageTaken)
 The technician inspects your restraints and adds a lock to spec! (DamageTaken)
-グルーの技術士に拘束具をロックされた！ (DamageTaken)
+接着剤の技術士に拘束具をロックされた！ (DamageTaken)
 
 
 Lab Assistant
@@ -21640,20 +21818,20 @@ The assistant splashes a solvent in your face, blinding you! (DamageTaken)
 研究員に奇妙な液体をかけられ、目潰しされた！ (DamageTaken)
 
 Glue Bomb
-グルーボム
+接着剤ボム
 
 Glue Technician
-グルーの技術士
+接着剤の技術士
 The technician trips and glues herself to the floor.
-グルーの技術士は接着剤まみれの床につまずき、動けなくなった！
+接着剤の技術士は接着剤まみれの床につまずき、動けなくなった！
 The technician slaps adhesive restraints onto your body! (+RestraintAdded)
-グルーの技術士に拘束された！ (+RestraintAdded)
+接着剤の技術士に拘束された！ (+RestraintAdded)
 The technician polishes your restraints thoroughly! (DamageTaken)
-グルーの技術士が拘束具に塗料を塗ってきた！ (DamageTaken)
+接着剤の技術士が拘束具に塗料を塗ってきた！ (DamageTaken)
 The technician pours glue on you to make you stay still! (DamageTaken)
-グルーの技術士に接着剤をかけられた！ (DamageTaken)
+接着剤の技術士に接着剤をかけられた！ (DamageTaken)
 The technician inspects your restraints and adds a lock to spec! (DamageTaken)
-グルーの技術士に拘束具をロックされた！ (DamageTaken)
+接着剤の技術士に拘束具をロックされた！ (DamageTaken)
 
 Quite sticky, innit?
 かなりベタベタしている。
@@ -21971,7 +22149,7 @@ Gain access to the Bite spell.
 Slime Girl
 スライムガール
 You are a shapeshifting slime, granting +100 Glue Resist and can squeeze thru bars. Escaping is easy, but your powers are sealed while wearing cursed or magic restraints.
-姿を変えられるスライムだ。グルー耐性が+100され、格子をすり抜けられる。拘束から容易に抜け出せるようになるが、呪いか魔法の拘束具で力を封印される。
+姿を変えられるスライムだ。接着剤耐性が+100され、格子をすり抜けられる。拘束から容易に抜け出せるようになるが、呪いか魔法の拘束具で力を封印される。
 Cybernetic
 サイボーグ
 You have mechanical parts, granting +10 Physical Armor, +15 Block, and +10% base physical damage. -100 Electric Resist.
@@ -22619,7 +22797,7 @@ Advanced
 Exits locked! Find the key!
 出口は塞がっている。鍵を探そう！
 Got the key!
-鍵を手に入れよう！
+鍵を手に入れた！
 BOSS ROOM
 ボス部屋
 BOSS ROOM CLEARED!
@@ -23886,9 +24064,16 @@ Elven
 エルフ
 Divine
 神
+Maid
+メイド
+Elemental
+エレメンタル
 
 Choose restraint palette:
 拘束具の色：
+
+
+
 
 Main
 オプション
@@ -23897,13 +24082,14 @@ GFX
 Character
 キャラクター
 
+
 Auto Load Mods
 MODを自動で読むこむ
 SUSPICIOUS MOD DETECTED
 危険なMODを検知
 
 The bright light hurts your dark-adjusted eyes!
-強い光に目を潰される！
+明るさに目がくらんだ！
 
 Unconventional Warfare
 不正規戦闘
@@ -23914,3 +24100,156 @@ Guerilla Fighting
 ゲリラ戦法
 Light weapons can be wielded if you have your mouth free, at 75% accuracy.
 軽い武器を口で持てるようになる。その際、命中率は75%になる。
+
+
+Tough Armor (1/2 crit mult while aware)
+タフ(視認している間、会心率が半分になる)
+Absolute Armor (1/2 crit mult)
+絶対的な鎧(会心率が半分になる)
+Change Outfit
+衣装を変更する
+
+Back to Game
+ゲームに戻る
+
+Slimy Spit
+スピットスライム
+
+Servants and Guests
+使用人とゲスト
+Prisoners
+囚人
+Promote to Servant
+使用人に昇格
+Demote to Prisoner
+囚人に降格
+
+The ENMY reaches out and gives your breast a squeeze! (DMGDLT)
+ENMY に胸を揉みしだかれた！ (DMGDLT)
+The ENMY reaches for you and fails!
+ENMY の伸ばした手を振り払った！
+The ENMY gives your butt a light slap! (DMGDLT)
+ENMY にお尻を軽く叩かれた！ (DMGDLT)
+The ENMY gives your butt a light slap as you move past! (DMGDLT)
+すれ違いざまに ENMY に軽くお尻を叩かれた！ (DMGDLT)
+The ENMY tries to spank you but misses!
+ENMY の手を躱した！
+The ENMY gives your butt a squeeze! (DMGDLT)
+ENMY にお尻を揉まれた！ (DMGDLT)
+The ENMY gives your butt a squeeze as you move past! (DMGDLT)
+すれ違いざまに ENMY にお尻を揉まれた！ (DMGDLT)
+The ENMY reaches for you but misses!
+ENMY の手を振り払った！
+The ENMY tickles your exposed armpits! (DMGDLT)
+ENMY にワキをくすぐられた！ (DMGDLT)
+The ENMY tries to tickle you!
+ENMY にワキをくすぐられそうになった！
+The ENMY tickles your feet! (DMGDLT)
+ENMY に足の裏をくすぐられた！ (DMGDLT)
+The ENMY tries to tickle you!
+ENMY に足の裏をくすぐられそうになった！
+The ENMY takes off your shoes and tickles your feet! (DMGDLT)
+ENMY に靴を脱がされ、足の裏をくすぐられた！ (DMGDLT)
+The ENMY pats you gently on the head. (DMGDLT)
+ENMY に頭を撫でられた！ (DMGDLT)
+The ENMY tries to pat you on the head but decides not to.
+ENMY は頭を撫でようとしてきたが、諦めたようだ。
+The ENMY behind you gives your shoulders a nice massage! (DMGDLT)
+ENMY が肩をマッサージしてきた。 (DMGDLT)
+The ENMY reaches for your shoulders but you slip free!
+ENMY に肩をマッサージされそうになったが、躱した。
+The ENMY calls you cute! (DMGDLT)
+ENMY に可愛いと褒められた！ (DMGDLT)
+The ENMY blushes at your cuteness!
+ENMY は赤面している。
+The ENMY makes fun of you! (DMGDLT)
+ENMY にバカにされた！ (DMGDLT)
+The ENMY struggles to find words!
+ENMY は必死に罵倒しようとしている！
+The ENMY buzzes you with her VTY! (DMGDLT)
+ENMY は VTY を使用した！ (DMGDLT)
+The ENMY reaches for her VTY!
+ENMY は VTY を使おうとして失敗した！
+The ENMY sticks a VTY into you! (DMGDLT)
+ENMY に VTY で責められた！ (DMGDLT)
+The ENMY reaches for her VTY!
+ENMY は VTY で遊んでいる！
+The ENMY sticks a stuffing into your open mouth! (DMGDLT)
+ENMY が口に詰め物を詰め込んできた！ (DMGDLT)
+The ENMY reaches for your mouth and fails!
+ENMY が口に詰め物を詰め込もうとしてきたが、失敗した！
+The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
+ENMY に腕を掴まれ、拘束されてしまった！ (DMGDLT)
+The ENMY grabs your wrists but you pull away!
+ENMY に腕を掴まれたが、無理やり引き剥がした！
+
+Armorer
+鎧鍛冶
+
+Bowyer
+弓師
+
+
+More Armbinders
+アームバインダー増加
+Armbinders are favored over other heavy bondage.
+アームバインダーが優先して選ばれるようになる。
+Less Armbinders
+アームバインダー減少
+Armbinders are less favored over other heavy bondage.
+アームバインダーがあまり選ばれなくなる。
+More Boxbinders
+ボックスバインダー増加
+Boxbinders are favored over other heavy bondage.
+ボックスバインダーが優先して選ばれるようになる。
+Less Boxbinders
+ボックスバインダー減少
+Boxbinders are less favored over other heavy bondage.
+ボックスバインダーがあまり選ばれなくなる。
+More Straitjackets
+拘束衣増加
+Straitjackets are favored over other heavy bondage.
+拘束衣が優先して選ばれるようになる。
+Less Straitjackets
+拘束衣減少
+Straitjackets are less favored over other heavy bondage.
+拘束衣があまり選ばれなくなる。
+More Yokes
+ヨーク増加
+Yokes are favored over other heavy bondage.
+ヨークが優先して選ばれるようになる。
+Less Yokes
+ヨーク減少
+Yokes are less favored over other heavy bondage.
+ヨークがあまり選ばれなくなる。
+
+
+ (blocked!)
+ (防御)
+ (dodged!)
+ (回避)
+
+You crouch and move slowly.
+ゆっくりと這いつくばる。
+
+
+Owned by: 
+所有者： 
+
+The Warden's Collar
+看守長の首輪
+A golden collar that marks you as part of someone's collection.
+誰かのコレクションであることを示す金色の首輪。
+You may go on your way, but only as long your freedom is useful to her.
+役に立つ限り、自由でいられる。
+
+The Warden
+看守長
+The Warden disappears into a trapdoor!
+看守長は隠し扉から逃げた！
+The Warden forces you to kneel, and presents you with a restraint! (+RestraintAdded)
+看守長に跪かされ、拘束具を取り付けられた！ (+RestraintAdded)
+The Warden's staff emits a flash of blinding light! (DamageTaken)
+看守長の杖から迸る閃光に目を潰された！ (DamageTaken)
+The Warden's staff emits a mystical area, which congeals into locks! (DamageTaken)
+看守長の杖から不思議な魔法が放たれ、拘束具をロックした！ (DamageTaken)
