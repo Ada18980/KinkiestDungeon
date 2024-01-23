@@ -2732,6 +2732,11 @@ let KDNoOverrideTags = [
  */
 function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, filterEps = 0.9, minWeightFallback = true, useAugmented = false, augmentedInventory = undefined, options) {
 	let RestraintsList = [];
+	let effLevel = Level;
+	if (KinkyDungeonStatsChoice.has("TightRestraints")) {
+		effLevel *= KDTightRestraintsMult;
+		effLevel += KDTightRestraintsMod;
+	}
 
 	if (KinkyDungeonStatsChoice.has("NoWayOut")) RequireWill = false;
 	let willPercent = (KinkyDungeonStatWill / KinkyDungeonStatWillMax - 0.15 * KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax)
@@ -2751,7 +2756,7 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 	}
 	if (extraTags)
 		for (let t of Object.entries(extraTags)) {
-			if (Level >= t[1])
+			if (effLevel >= t[1])
 				tags.set(t[0], true);
 		}
 
@@ -2764,11 +2769,7 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 	let arousalMode = KinkyDungeonStatsChoice.get("arousalMode");
 	let cache = [];
 	for (let restraint of KinkyDungeonRestraints) {
-		let effLevel = Level;
-		if (KinkyDungeonStatsChoice.has("TightRestraints")) {
-			effLevel *= KDTightRestraintsMult;
-			effLevel += KDTightRestraintsMod;
-		}
+
 		if ((
 			effLevel >= restraint.minLevel
 				|| KinkyDungeonNewGame > 0

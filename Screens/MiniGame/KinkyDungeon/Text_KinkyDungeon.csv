@@ -155,7 +155,7 @@ KinkyDungeonStatDesc7,"All spells above 1st level cost 2x as many spell points."
 KinkyDungeonStat8,"Blessed"
 KinkyDungeonStatDesc8,"You can drink mana from the shrine fountains once per floor without chance of punishment."
 KinkyDungeonStat9,"Cursed"
-KinkyDungeonStatDesc9,"Goddess reputations start at 0 and can never exceed 25."
+KinkyDungeonStatDesc9,"Goddess reputations can never exceed 25."
 
 KinkyDungeonStat10,"Submissive"
 KinkyDungeonStatDesc10,"Your submissiveness starts at 100 and cannot go below 70."
@@ -18975,6 +18975,7 @@ KinkyDungeonTrapSpawnAnimYoke,A floating yoke appears and starts flying toward y
 KinkyDungeonTrapSpawnAnimChastity,A floating armbinder appears and starts flying toward you!
 KinkyDungeonTrapSpawnAnimStraitjacket,A floating straitjacket appears and starts flying toward you!
 KinkyDungeonTrapSpawnAnimHarness,A floating harness appears and starts flying toward you!
+KinkyDungeonTrapSpawnAnimArmbinder,A floating harness appears and starts flying toward you!
 KinkyDungeonTrapSpawnCuffs,A set of shackles opens wide and starts going for your wrists!
 KinkyDungeonTrapSpawnMummyCursed,You hear moaning as the statues start to move...
 KinkyDungeonTrapSpawnBookBondage,Devious tomes emerge from the bookshelves!

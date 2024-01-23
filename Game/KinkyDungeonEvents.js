@@ -3303,7 +3303,7 @@ let KDEventMapSpell = {
 		"Cursed": (e, spell, data) => {
 			if (data.perks && data.perks.includes("Cursed")) {
 				for (let shrine in KinkyDungeonShrineBaseCosts) {
-					KinkyDungeonGoddessRep[shrine] = -50;
+					KinkyDungeonGoddessRep[shrine] = -25;
 				}
 			}
 		},

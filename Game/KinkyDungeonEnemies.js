@@ -3377,7 +3377,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 		if (enemy != KinkyDungeonLeashingEnemy() && enemy != KinkyDungeonJailGuard() && (!KinkyDungeonFlags.has("PlayerCombat") || enemy.Enemy.tags.ignorebrat)) {
 			if (enemy.Enemy.tags.ignorenoSP && !KinkyDungeonHasWill(0.1)) AIData.ignore = true;
-			if ((KDGetFaction(enemy) == "Ambush" || (enemy.Enemy.tags.ignoreharmless)) && (!enemy.warningTiles || enemy.warningTiles.length == 0)
+			if (((enemy.Enemy.tags.ignoreharmless)) && (!enemy.warningTiles || enemy.warningTiles.length == 0)
 				&& !(KDGameData.PrisonerState == 'chase' && KDFactionRelation(KDGetFaction(enemy), KDGetMainFaction()) > -0.09) // Dont ignore if the enemy is hunting the player for escape
 				&& AIData.harmless && (!enemy.Enemy.ignorechance || KDRandom() < enemy.Enemy.ignorechance || !KinkyDungeonHasWill(0.1))) AIData.ignore = true;
 			if (enemy.Enemy.tags.ignoretiedup && (!enemy.warningTiles || enemy.warningTiles.length == 0) && enemy.lifetime == undefined
@@ -6402,15 +6402,23 @@ function KDPlugEnemy(enemy) {
  * @returns {Record<string, boolean>}
  */
 function KDGetTags(enemy, removeSpecial) {
-	let addOn = enemy.Enemy.bound ? Object.assign({}, KDExtraEnemyTags) : undefined;
+	/*let addOn = enemy.Enemy.bound ? Object.assign({}, KDExtraEnemyTags) : undefined;
 	if (addOn) {
-		for (let entry of Object.entries(addOn)) {
-			if (entry[1] > 0 && KDGetEffLevel() < entry[1]) delete addOn[entry[0]];
+
+		let effLevel = KDGetEffLevel();
+
+		if (KinkyDungeonStatsChoice.has("TightRestraints")) {
+			effLevel *= KDTightRestraintsMult;
+			effLevel += KDTightRestraintsMod;
 		}
-	}
+		for (let entry of Object.entries(addOn)) {
+			if (entry[1] > 0 && effLevel < entry[1]) delete addOn[entry[0]];
+			else addOn[entry[0]] = true;
+		}
+	}*/
 
 	let tags = Object.assign({}, enemy.Enemy.tags);
-	if (addOn) Object.assign(tags, addOn);
+	//if (addOn) Object.assign(tags, addOn);
 	if (removeSpecial && enemy.Enemy.specialRemoveTags) {
 		for (let t of enemy.Enemy.specialRemoveTags) {
 			delete tags[t];
@@ -6429,9 +6437,17 @@ function KDGetTags(enemy, removeSpecial) {
 function KDGetExtraTags(enemy, useSpecial) {
 	let addOn = enemy.Enemy.bound ? Object.assign({}, KDExtraEnemyTags) : undefined;
 	if (addOn) {
-		for (let entry of Object.entries(addOn)) {
-			if (entry[1] > 0 && KDGetEffLevel() > entry[1]) delete addOn[entry[0]];
-		}
+		/*let effLevel = KDGetEffLevel();
+
+		if (KinkyDungeonStatsChoice.has("TightRestraints")) {
+			effLevel *= KDTightRestraintsMult;
+			effLevel += KDTightRestraintsMod;
+		}*/
+		//for (let entry of Object.entries(addOn)) {
+		//if (entry[1] > 0 && effLevel < entry[1]) delete addOn[entry[0]];
+		//else
+		//addOn[entry[0]] = true;
+		//}
 	}
 
 	let tags = addOn ? Object.assign({}, addOn) : {};

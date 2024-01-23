@@ -138,11 +138,11 @@ let KDPerkUpdateStats = {
 
 	"CommonLatex": () => {
 		KDExtraEnemyTags.latexRestraints = 0;
-		KDExtraEnemyTags.latexRestraintsHeavy = 3;
+		KDExtraEnemyTags.latexRestraintsHeavy = 5;
 	},
 	"CommonLeather": () => {
 		KDExtraEnemyTags.leatherRestraints = 0;
-		KDExtraEnemyTags.leatherRestraintsHeavy = 3;
+		KDExtraEnemyTags.leatherRestraintsHeavy = 5;
 	},
 	"CommonMaid": () => {
 		KDExtraEnemyTags.maidRestraints = 0;
@@ -161,8 +161,8 @@ let KDPerkUpdateStats = {
 	},
 	"CommonCyber": () => {
 		KDExtraEnemyTags.cyberdollrestraints = 0;
-		KDExtraEnemyTags.cyberdollchastity = 3;
-		KDExtraEnemyTags.cyberdollheavy = 7;
+		KDExtraEnemyTags.cyberdollchastity = 5;
+		KDExtraEnemyTags.cyberdollheavy = 10;
 	},
 	"CommonExp": () => {
 		KDExtraEnemyTags.expRestraints = 0;
@@ -172,23 +172,23 @@ let KDPerkUpdateStats = {
 	},
 	"CommonToyPleasure": () => {
 		KDExtraEnemyTags.toyPleasure = 0;
-		KDExtraEnemyTags.toyPleasureMid = 3;
-		KDExtraEnemyTags.toyPleasureIntense = 7;
+		KDExtraEnemyTags.toyPleasureMid = 5;
+		KDExtraEnemyTags.toyPleasureIntense = 10;
 	},
 	"CommonToyEdge": () => {
 		KDExtraEnemyTags.toyEdge = 0;
-		KDExtraEnemyTags.toyEdgeMid = 3;
-		KDExtraEnemyTags.toyEdgeIntense = 7;
+		KDExtraEnemyTags.toyEdgeMid = 5;
+		KDExtraEnemyTags.toyEdgeIntense = 10;
 	},
 	"CommonToyDeny": () => {
 		KDExtraEnemyTags.toyDeny = 0;
-		KDExtraEnemyTags.toyDenyMid = 3;
-		KDExtraEnemyTags.toyDenyIntense = 7;
+		KDExtraEnemyTags.toyDenyMid = 5;
+		KDExtraEnemyTags.toyDenyIntense = 10;
 	},
 	"CommonToyTease": () => {
 		KDExtraEnemyTags.toyTease = 0;
-		KDExtraEnemyTags.toyTeaseMid = 3;
-		KDExtraEnemyTags.toyTeaseIntense = 7;
+		KDExtraEnemyTags.toyTeaseMid = 5;
+		KDExtraEnemyTags.toyTeaseIntense = 10;
 	},
 };
 

@@ -113,14 +113,14 @@ let KDIntentEvents = {
 				if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5) {
 					KinkyDungeonRemoveRestraint("ItemDevices", false, false, false);
 					KDResetIntent(enemy, undefined);
-					if (KDGameData.PrisonerState == 'jail' && KDIntentEvents.CaptureJail.weight(enemy, AIData, AIData.allied, AIData.hostile, AIData.aggressive) > 0) {
-						KDIntentEvents.CaptureJail.trigger(enemy, {});
-					}
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", -1);
-					if (enemy.playWithPlayer > 0)
-						enemy.playWithPlayerCD = Math.max(enemy.playWithPlayer, 30);
 					KinkyDungeonSetFlag("Released", 90);
 					KinkyDungeonSetFlag("nojailbreak", 15);
+					if (KDGameData.PrisonerState == 'jail' && KDIntentEvents.CaptureJail.weight(enemy, AIData, AIData.allied, true, true) > 0) {
+						KDIntentEvents.CaptureJail.trigger(enemy, {});
+					}
+					if (enemy.playWithPlayer > 0)
+						enemy.playWithPlayerCD = Math.max(enemy.playWithPlayer, 30);
 				} else {
 					enemy.gx = KinkyDungeonPlayerEntity.x;
 					enemy.gy = KinkyDungeonPlayerEntity.y;
@@ -154,7 +154,10 @@ let KDIntentEvents = {
 		overrideIgnore: true,
 		// This is the basic leash to jail mechanic
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
-			return (hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && (KinkyDungeonFlags.has("Released")) && !KDEnemyHasFlag(enemy, "dontChase")) ?
+			return (hostile
+				&& (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing)
+				&& (KinkyDungeonFlags.has("Released"))
+				&& !KDEnemyHasFlag(enemy, "dontChase")) ?
 				((KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"]) && !KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"])) ? 0 : 100)
 			: 0;
 		},

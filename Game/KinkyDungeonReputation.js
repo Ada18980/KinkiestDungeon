@@ -156,7 +156,7 @@ function KDPearlRequirement() {
 function KinkyDungeonInitReputation() {
 	KinkyDungeonGoddessRep = {"Ghost" : -50, "Prisoner" : -50, "Frustration" : -50, "Passion" : -50};
 	for (let shrine in KinkyDungeonShrineBaseCosts) {
-		KinkyDungeonGoddessRep[shrine] = KinkyDungeonStatsChoice.get("Cursed") ? -50 : 0;
+		KinkyDungeonGoddessRep[shrine] = KinkyDungeonStatsChoice.get("Cursed") ? -25 : 0;
 	}
 	if (KinkyDungeonStatsChoice.get("Wanted")) KinkyDungeonChangeRep("Prisoner", 100);
 	if (KinkyDungeonStatsChoice.get("Submissive")) KinkyDungeonChangeRep("Ghost", 100);
