@@ -16,7 +16,11 @@ let KDDialogueParams = {
  * @type {string[]}
  */
 let KDResertNGTags = [
-	"BossDialogueFuuka"
+	"BossDialogueFuuka",
+	"BossDialogueTheWarden",
+	"BossDialogueSilverWitch",
+	"BossDialogueSelene",
+	"BossDialogueDollmaker",
 ];
 
 
@@ -3084,7 +3088,7 @@ let KDDialogue = {
 			"Attack": {playertext: "Default", exitDialogue: true},
 		}
 	},
-	"DollmakerStage2": { // Player defeats fuuka's first form
+	"DollmakerStage2": {
 		response: "Default",
 		clickFunction: (gagged, player) => {
 			let point = KinkyDungeonGetNearbyPoint(KDMapData.StartPosition.x + 10, KDMapData.StartPosition.y - 5, true,undefined, true, true);
@@ -3107,7 +3111,7 @@ let KDDialogue = {
 			},
 		}
 	},
-	"DollmakerStage3": { // Player defeats fuuka's first form
+	"DollmakerStage3": {
 		response: "Default",
 		clickFunction: (gagged, player) => {
 			// Remove the doors
@@ -3134,7 +3138,7 @@ let KDDialogue = {
 			},
 		}
 	},
-	"DollmakerWin": { // Player beats Fuuka
+	"DollmakerWin": {
 		response: "Default",
 		clickFunction: (gagged, player) => {
 			KinkyDungeonSetFlag("BossUnlocked", -1);
@@ -3212,7 +3216,7 @@ let KDDialogue = {
 			},
 		}
 	},
-	"DollmakerLose": { // Player loses to Fuuka
+	"DollmakerLose": {
 		response: "Default",
 		clickFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);

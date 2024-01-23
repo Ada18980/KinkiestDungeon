@@ -413,7 +413,7 @@ let KDIntentEvents = {
 				// Enemies will still be able to play with you!
 				KinkyDungeonSetFlag("overrideleashprotection", 2);
 
-				if (KinkyDungeonFlags.get("TempLeash") == 10) {
+				if (KinkyDungeonFlags.get("TempLeash") == 10 && KDGameData.PrisonerState == 'jail') {
 					KinkyDungeonSendDialogue(enemy,
 						TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndReturn").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 						KDGetColor(enemy), 7, 7);

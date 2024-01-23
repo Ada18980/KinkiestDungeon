@@ -451,10 +451,10 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 			let DefaultBound = "Front"; // Default bondage for arms
 			let DefaultHobbled = "Closed"; // Default bondage for legs
 			if (!AllowedLegPoses.includes(DefaultHobbled)) {
-				DefaultHobbled = "KneelClosed"; // Get up from hogtie
+				DefaultHobbled = "Kneel"; // Get up from hogtie
 			}
 			if (!AllowedLegPoses.includes(DefaultHobbled)) {
-				DefaultHobbled = "Kneel"; // Get up from hogtie
+				DefaultHobbled = "KneelClosed"; // Get up from hogtie
 			}
 
 			// Hold to player's preferred pose

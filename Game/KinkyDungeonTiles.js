@@ -18,7 +18,7 @@ let KDAdvanceAmount = {
  * @returns {boolean}
  */
 function KDWettable(entity) {
-	return entity.player || (!entity.Enemy.tags.acidimmune && !entity.Enemy.tags.acidresist && !entity.Enemy.tags.fire && !entity.Enemy.tags.nowet);
+	return entity.player || (!entity.Enemy.tags.acidimmune && !entity.Enemy.tags.acidresist && !entity.Enemy.tags.nowet);
 }
 
 /**
@@ -27,7 +27,7 @@ function KDWettable(entity) {
  * @returns {boolean}
  */
 function KDConducting(entity) {
-	return entity.player || (!entity.Enemy.tags.electricimmune && !entity.Enemy.tags.electricresist && !entity.Enemy.tags.electric && !entity.Enemy.tags.noconduct);
+	return entity.player || (!entity.Enemy.tags.electricimmune && !entity.Enemy.tags.electric && !entity.Enemy.tags.noconduct);
 }
 
 function KinkyDungeonHandleTilesEnemy(enemy, delta) {

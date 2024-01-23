@@ -1997,6 +1997,7 @@ function KinkyDungeonGetCompList(spell) {
 
 function KinkyDungeonSendMagicEvent(Event, data, forceSpell) {
 	if (!KDMapHasEvent(KDEventMapSpell, Event)) return;
+	KDUpdateSpellCache();
 	let iteration = 0;
 	let stack = true;
 	let upcastLevel = KDEntityBuffedStat(KinkyDungeonPlayerEntity, "SpellEmpower");

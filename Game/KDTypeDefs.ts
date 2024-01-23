@@ -816,6 +816,8 @@ interface enemy extends KDHasTags {
 		hearingRadius?: number,
 		/** Creature vision base, affects awareness gain */
 		vision?: number,
+		/** multiplies sneak threshold */
+		senseSpeed?: number,
 	}
 	/** Contains data pertaining to the creature's effect on reputation and its behaviors from it */
 	Reputation?: {

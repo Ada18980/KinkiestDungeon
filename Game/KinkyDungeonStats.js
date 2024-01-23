@@ -205,6 +205,7 @@ function KinkyDungeonDefaultStats(Load) {
 	KinkyDungeonStatDistractionMax = KDMaxStatStart;
 	KinkyDungeonStatStaminaMax = KDMaxStatStart;
 	KinkyDungeonStatManaMax = KDMaxStatStart;
+	KinkyDungeonStatManaPoolMax = KinkyDungeonStatManaPool;
 	KinkyDungeonStatWillMax = KDMaxStatStart;
 	KinkyDungeonStaminaRate = KinkyDungeonStatStaminaRegen;
 
@@ -525,10 +526,10 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 	)) {
 		if ((KDGameData.HeelPower > 0 || data.type == "plush") && data.knockbackTypes.includes(data.type)) {
 			let amt = data.dmg;
-			KDChangeBalance((KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * amt/KinkyDungeonStatWillMax, true);
+			KDChangeBalance((KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * amt*KDFitnessMult(), true);
 		} else if (data.knockbackTypesStrong.includes(data.type)) {
 			let amt = data.dmg;
-			KDChangeBalance((KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * -KDBalanceDmgMult() * amt/KinkyDungeonStatWillMax, true);
+			KDChangeBalance((KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * -KDBalanceDmgMult() * amt*KDFitnessMult(), true);
 		}
 	}
 
@@ -1945,6 +1946,8 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 		KinkyDungeonStatDistractionLower = data.lowerFloorTo;
 		KinkyDungeonAlert = Math.max(KinkyDungeonAlert || 0, data.alertRadius); // Alerts nearby enemies because of your moaning~
 		KDGameData.PlaySelfTurns = data.stunTime;
+		// Balance
+		KDChangeBalance((KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * 4*KDFitnessMult(), true);
 		KinkyDungeonSendEvent("orgasm", data);
 	} else {
 		KinkyDungeonChangeStamina(data.edgespcost);
@@ -2112,6 +2115,10 @@ function KDForcedToGround() {
 	return (KinkyDungeonPlayerTags.get("ForceKneel") || KinkyDungeonPlayerTags.get("ForceHogtie") || KinkyDungeonPlayerTags.get("Hogties"));
 }
 function KDBalanceDmgMult() {
-	let mult = KinkyDungeonStatsChoice.get("PoorBalance") ? 3 : 2;
+	let mult = KinkyDungeonStatsChoice.get("PoorBalance") ? 1.5 : 1;
 	return mult * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BalanceDamageMult"));
+}
+function KDFitnessMult() {
+	let mult = 0.5/KinkyDungeonStatWillMax + 0.5/KinkyDungeonStatStaminaMax;
+	return mult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "FitnessMult"));
 }

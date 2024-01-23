@@ -1648,6 +1648,11 @@ let KDNameList = {
 		"Zoe"
 	],
 	Fuuka: ["Fuuka Windsong"],
+	TheWarden: ["Dawn Carver"],
+	TheWardenFighter: ["Citrina"],
+	TheWardenWizard: ["Agatha"],
+	TheWardenRogue: ["Luna"],
+	TheWardenDoll: ["Doll #51"],
 	Dollmaker: ["Catherine Willows"],
 	chinese: [
 		"Ai",

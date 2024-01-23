@@ -110,9 +110,11 @@ let KDTeaseAttacks = {
 		},
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1.5, type: "grope"});
-			KinkyDungeonChangeDistraction(1, false, 0.25);
+			if (!(blocked || evaded))
+				KinkyDungeonChangeDistraction(1, false, 0.25);
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Slap.ogg");
-			KDChangeBalance((KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * 1.5/KinkyDungeonStatWillMax, true);
+			if (!(blocked || evaded))
+				KDChangeBalance((KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * 1.5*KDFitnessMult(), true);
 			if (dmg.happened) {
 				KinkyDungeonSendTextMessage(4,
 					TextGet("KDTeaseAttack_SpankButt")
@@ -260,7 +262,8 @@ let KDTeaseAttacks = {
 		},
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*0.5, type: "grope"});
-			KinkyDungeonChangeDistraction(1, false, 0.25);
+			if (!(blocked || evaded))
+				KinkyDungeonChangeDistraction(1, false, 0.25);
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
 			if (dmg.happened) {
 				KinkyDungeonSendTextMessage(4,
@@ -326,7 +329,8 @@ let KDTeaseAttacks = {
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*(2 - 1.9*(KinkyDungeonGoddessRep.Ghost + 50)/100), type: "plush"});
 			if ((KinkyDungeonGoddessRep.Ghost + 50)/100 > 0)
-				KinkyDungeonChangeDistraction((KinkyDungeonGoddessRep.Ghost + 50)/100 * 2, false, 0.5);
+				if (!(blocked || evaded))
+					KinkyDungeonChangeDistraction((KinkyDungeonGoddessRep.Ghost + 50)/100 * 2, false, 0.5);
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
 			if (dmg.happened) {
 				KinkyDungeonSendTextMessage(4,

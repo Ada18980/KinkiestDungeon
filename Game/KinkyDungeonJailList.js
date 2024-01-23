@@ -631,6 +631,7 @@ let KDJailOutfits = {
 			{Name: "LatexBoots", Level: 40},
 			{Name: "LatexBallGag", Level: 10, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "LatexBallGag", Level: 0},
+			{Name: "PVCHarness", Level: 30},
 			{Name: "LatexCorset", Level: 65},
 			{Name: "LatexLegbinder", Level: 80},
 			{Name: "LatexArmbinder", Level: 30},

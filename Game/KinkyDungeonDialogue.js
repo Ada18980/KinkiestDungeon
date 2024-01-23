@@ -1632,7 +1632,7 @@ function KDYesNoTemplate(setupFunction, yesFunction, noFunction, domFunction) {
 							return domFunction(false);
 						},
 						prerequisiteFunction: (gagged, player) => {
-							return KDGetSpeaker()?.Enemy?.bound != undefined;
+							return !KinkyDungeonStatsChoice.get("Undeniable") && KDGetSpeaker()?.Enemy?.bound != undefined;
 						},
 						options: {"Leave": {playertext: "Leave", exitDialogue: true}},
 					},

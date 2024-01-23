@@ -2916,12 +2916,17 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 		}
 		for (let r of RestraintsList) {
 			if (!wornGroups[r.restraint.Group] || !groupPower[r.restraint.Group] || noway) {
-				if (!groupPower[r.restraint.Group] || r.restraint.power > groupPower[r.restraint.Group].restraint.power)
-					groupPower[r.restraint.Group] = r;
+				if (!groupPower[r.restraint.Group] || r.restraint.power >= groupPower[r.restraint.Group][0].restraint.power) {
+					if (!groupPower[r.restraint.Group]) groupPower[r.restraint.Group] = [r];
+					else {
+						if (r.restraint.power > groupPower[r.restraint.Group][0].restraint.power) groupPower[r.restraint.Group] = [r];
+						else groupPower[r.restraint.Group].push(r);
+					}
+				}
 			}
 		}
 		for (let value of Object.values(groupPower)) {
-			RestraintsList2.push(value);
+			RestraintsList2.push(...value);
 		}
 	}
 

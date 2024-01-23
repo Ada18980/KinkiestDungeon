@@ -2270,7 +2270,7 @@ function KinkyDungeonTrackSneak(enemy, delta, player, darkmult) {
 
 	let data = {
 		sneakThreshold: enemy.Enemy.sneakThreshold ? enemy.Enemy.sneakThreshold : 2,
-		deltaMult: 0.7/Math.max(1, (1 + KinkyDungeonSubmissiveMult)),
+		deltaMult: 0.7/Math.max(1, (1 + KinkyDungeonSubmissiveMult))*(enemy.Enemy.Awareness?.senseSpeed || 1),
 		visibility: 1.0,
 		darkmult: darkmult,
 		enemy: enemy,
@@ -7354,6 +7354,7 @@ function KDIsTimeImmune(enemy) {
  * @returns {number}
  */
 function KDAddDistraction(entity, amount, desireMult = 0.25) {
+	if (entity?.Enemy?.nonHumanoid) return 0;
 	let origDistraction = entity.distraction || 0;
 	entity.distraction = Math.max(entity.desire || 0, Math.min(entity.Enemy.maxhp, (entity.distraction || 0) + amount));
 
@@ -7442,7 +7443,7 @@ function KDGetTeaseAttack(enemy, player, AData) {
 }
 
 function KDBasicTeaseAttack(enemy, player) {
-	return player.player && !KinkyDungeonIsDisabled(enemy) && !(enemy.vulnerable > 0) && !KDEnemyHasFlag(enemy, "targetedForAttack");
+	return player.player && KDistChebyshev(enemy.x-player.x, enemy.y - player.y) < 1.5 && !KinkyDungeonIsDisabled(enemy) && !(enemy.vulnerable > 0) && !KDEnemyHasFlag(enemy, "targetedForAttack");
 }
 
 

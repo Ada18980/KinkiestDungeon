@@ -39,6 +39,12 @@ let KinkyDungeonFactionFilters = {
 		LightNeutral: {"gamma":1,"saturation":0.25,"contrast":1.0,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		Highlight: {"gamma":0.7333333333333334,"saturation":0.1,"contrast":2.3499999999999996,"brightness":0.8166666666666667,"red":1.7833333333333334,"green":0.9666666666666667,"blue":0.6,"alpha":1},
 	},
+	"Elemental": {
+		Catsuit: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1.5833333333333333,"green":1,"blue":1,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0,"contrast":0.95,"brightness":1.35,"red":0.7833333333333334,"green":0.7833333333333334,"blue":0.8,"alpha":1},
+		Highlight: {"gamma":1,"saturation":1,"contrast":1,"brightness":1.6500000000000001,"red":1.1166666666666667,"green":0.8833333333333333,"blue":0.6833333333333333,"alpha":1},
+	},
 	"Dressmaker": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.91,"brightness":1,"red":2.1372549019607843,"green":1.1764705882352942,"blue":3.1176470588235294,"alpha":1},
 		DarkNeutral: {"gamma":0.8333333333333333,"saturation":0.1,"contrast":1.03,"brightness":1,"red":2.372549019607843,"green":1.7058823529411764,"blue":3.2941176470588234,"alpha":1},
@@ -66,7 +72,7 @@ let KinkyDungeonFactionFilters = {
 	},
 	"Alchemist": {
 		Catsuit: {"gamma":1.7666666666666666,"saturation":0.016666666666666666,"contrast":0.6833333333333333,"brightness":1.9,"red":1,"green":1,"blue":1,"alpha":1},
-		DarkNeutral: {"gamma":0.8333333333333333,"saturation":0,"contrast":1.2,"brightness":1.2,"red":1,"green":1,"blue":1,"alpha":1},
+		DarkNeutral: {"gamma":0.8333333333333333,"saturation":0,"contrast":0.9666666666666667,"brightness":0.6166666666666667,"red":1,"green":1,"blue":1,"alpha":1},
 		LightNeutral: {"gamma":1,"saturation":0,"contrast":1.1833333333333333,"brightness":0.6666666666666666,"red":0.5294117647058824,"green":1.7450980392156863,"blue":3.9019607843137254,"alpha":1},
 		//Catsuit: {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
 		Highlight: {"gamma":0.65,"saturation":0.06666666666666667,"contrast":2.283333333333333,"brightness":1,"red":0.5833333333333334,"green":1.55,"blue":0.8166666666666667,"alpha":1},

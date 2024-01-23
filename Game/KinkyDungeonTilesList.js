@@ -626,7 +626,7 @@ function KDSlimeWalker(entity) {
 
 function KDSlimeImmune(enemy) {
 	return enemy.Enemy?.tags.slime
-		|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "glue", "resist")
+		//|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "glue", "resist")
 		|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "glue", "immune")
 		|| enemy.Enemy?.tags.slimewalk
 		|| KDEntityBuffedStat(enemy, "glueDamageResist") >= 0.45;
@@ -709,12 +709,12 @@ let KDEffectTileFunctions = {
 		} else {
 			let result = false;
 			// Latex slimes entities that are on it
-			if (!KDEntityHasBuff(entity, "Drenched")) {
-				let slimeWalker = KDSlimeWalker(entity);
-				if (!slimeWalker) {
+			let slimeWalker = KDSlimeWalker(entity);
+			if (!slimeWalker) {
+				if (!KDEntityHasBuff(entity, "Drenched")) {
 					KinkyDungeonApplyBuffToEntity(entity, KDSlimed);
-					result = true;
 				}
+				result = true;
 			}
 			// Latex also constantly applies binding
 			if (result || KDEntityBuffedStat(entity, "SlimeProgress")) {
