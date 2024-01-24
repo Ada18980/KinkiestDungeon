@@ -1352,7 +1352,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			onhit:"", time:8, power: 3.5, range: 1.5, size: 1, damage: ""},
 		{name: "ZoneOfPurity", color: "#ffff00", prerequisite: "Chastity", tags: ["metal", "binding", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 7, components: ["Verbal"], level:1, type:"inert",
 			onhit:"aoe", power: 0, delay: 40, range: 4.5, size: 3, lifetime: 1, aoe: 2.5, damage: "charm",
-			events: [{trigger: "bulletTick", type: "ZoneOfPurity", aoe: 2.5, power: 0.5}]
+			events: [{trigger: "bulletTick", type: "ZoneOfPurity", aoe: 2.5, power: 0.01}]
 		},
 		{name: "ZoneOfExcitement", color: "#ff8888", prerequisite: "CommandVibrate", tags: ["binding", "utility"], sfx: "MagicSlash", school: "Conjure", manacost: 3.5, components: ["Verbal"], level:1, type:"inert",
 			onhit:"aoe", power: 0, delay: 30, range: 4.5, size: 3, lifetime: 1, aoe: 1.99, damage: "charm",

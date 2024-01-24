@@ -118,7 +118,7 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["SmallSlime", [
-		{name: "TY", color: "#ff5555", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Ty", color: "#ff5555", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["WitchRope", [

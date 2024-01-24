@@ -187,6 +187,7 @@ let LAYERS_BASE = [
 	"StrapsUnderbust",
 
 	"OverCrotchStrapMid",
+	"Option2_ChastityBelt",
 	"HarnessMid",
 
 	"BeltUnder",

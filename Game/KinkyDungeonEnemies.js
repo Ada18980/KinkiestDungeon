@@ -4354,7 +4354,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				if (teaseAttack) {
 					let dodged = false;
 					let blocked = false;
-					if (teaseAttack.dodgeable) {
+					if (teaseAttack.dodgeable && !KDEnemyHasFlag(enemy, "allyPlay")) {
 						let BaseEvasion = KinkyDungeonMultiplicativeStat(0.25 + AIData.accuracy - 1);
 						let playerEvasion = 1.01 * ((player.player) ?
 							KinkyDungeonPlayerEvasion(true)
@@ -4362,7 +4362,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								* KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(player.buffs, "Evasion")));
 						if (KDRandom() < BaseEvasion-playerEvasion) dodged = true;
 					}
-					if (teaseAttack.blockable && !dodged) {
+					if (teaseAttack.blockable && !dodged && !KDEnemyHasFlag(enemy, "allyPlay")) {
 						let BaseBlock = KinkyDungeonMultiplicativeStat(0.0 + AIData.accuracy - 1);
 						let playerBlock = 1.01 * ((player.player) ?
 							KinkyDungeonPlayerBlock(true)
@@ -7460,8 +7460,8 @@ function KDGetTeaseAttack(enemy, player, AData) {
 	return null;
 }
 
-function KDBasicTeaseAttack(enemy, player) {
-	return player.player && KDistChebyshev(enemy.x-player.x, enemy.y - player.y) < 1.5 && !KDEnemyHasFlag(enemy, "teaseAtkCD") && !KinkyDungeonIsDisabled(enemy) && !(enemy.vulnerable > 0) && !KDEnemyHasFlag(enemy, "targetedForAttack");
+function KDBasicTeaseAttack(enemy, player, noglobal) {
+	return player.player && KDistChebyshev(enemy.x-player.x, enemy.y - player.y) < 1.5 && !KDEnemyHasFlag(enemy, "teaseAtkCD") && (!noglobal || !KinkyDungeonFlags.get("globalteaseAtkCD")) && !KinkyDungeonIsDisabled(enemy) && !(enemy.vulnerable > 0) && !KDEnemyHasFlag(enemy, "targetedForAttack");
 }
 
 

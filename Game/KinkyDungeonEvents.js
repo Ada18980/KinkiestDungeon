@@ -1441,31 +1441,7 @@ let KDEventMapInventory = {
 	"hit": {
 		"linkItem": (e, item, data) => {
 			if ((data.attack && data.attack.includes("Bind") && (!data.enemy || data.enemy.Enemy.bound) && !data.attack.includes("Suicide"))) {
-				let added = false;
-				if (data.restraintsAdded) {
-					for (let r of data.restraintsAdded) {
-						if (r.r.name === item.name) {
-							added = true;
-							break;
-						}
-					}
-				}
-				if (!added) {
-					let subMult = 1;
-					let chance = e.chance ? e.chance : 1.0;
-					if (e.subMult !== undefined) {
-						let rep = (KinkyDungeonGoddessRep.Ghost + 50) / 100;
-						subMult = 1.0 + e.subMult * rep;
-					}
-					if (e.tags?.includes("lowwill") && KinkyDungeonStatWill < 0.1) chance = 1.0;
-					if (item && KDRestraint(item).Link && (KDRandom() < chance * subMult) && (!e.noLeash || KDGameData.KinkyDungeonLeashedPlayer < 1)) {
-						let newRestraint = KinkyDungeonGetRestraintByName(KDRestraint(item).Link);
-						//KinkyDungeonLinkItem(newRestraint, item, item.tightness, "");
-						if (KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true)) {
-							if (KDToggles.Sound && e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
-						}
-					}
-				}
+				KDLinkItemEvent(e, item, data);
 			}
 		}
 	},
@@ -6833,7 +6809,7 @@ let KDEventMapBullet = {
 				let restraintAdd = KinkyDungeonGetRestraint({tags: ["magicBeltForced"]}, MiniGameKinkyDungeonLevel + 10, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 				if (restraintAdd) {
 					KinkyDungeonSendActionMessage(3, TextGet("KDZoneOfPuritySelf"), "#88AAFF", 2);
-					KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, false, undefined, false, false, undefined, undefined);
+					KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, false, undefined, false, false, undefined, "Divine");
 				}
 			}
 		},

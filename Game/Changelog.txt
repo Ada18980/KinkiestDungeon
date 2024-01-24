@@ -23,11 +23,22 @@ Monk class?
 - Passive: enchantments apply to unarmed strikes
 - Active: Increase unarmed base damage for 20 turns. After using, need to meditate 10 turns to recharge. Free.
 
-5.1.11
  - TODO add mimic curse
  - TODO add lairs
  - TODO add chains
  - TODO display stand turret
+
+5.1.12
+ - Made cuffs linkable by anything (only the base level)
+ - Added chastity over harness option
+ - Zone of Purity triggers at any binding level
+ - Added 'make bullets transparent' button and hotkey
+ - Fixed enemy Disarm removing your weapon
+ - enemy Disarm is now an action you are vulnerable to after an enemy weakens your grip
+ - You can now ask an NPC to link your cuffs
+
+5.1.11
+ - Added elemental and Royal palette
  - Tweaked sound levels on ghosts and demons
 
 5.1.10

@@ -62,7 +62,7 @@ AddModel({
 			NoOverride: true,
 			InheritColor: "Rubber",
 			AddPriWithPose: {
-				ItemHeadRubberOver: 45,
+				ItemHeadRubberOver: 10,
 			},
 		},
 	])

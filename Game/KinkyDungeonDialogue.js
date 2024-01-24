@@ -637,6 +637,101 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 			"Leave": {playertext: "Leave", response: "Default",
 				leadsToStage: "",
 			},
+			LinkRequestArms: {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (gagged, player) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						return KinkyDungeonAllRestraintDynamic().some((inv) => {
+							let item = inv.item;
+							if (KDRestraint(item)?.Group == "ItemArms" && KDRestraint(item)?.Link && KDRestraint(item)?.events?.some((e) => {
+								return e.trigger == "hit" && e.type == "linkItem";
+							})) {
+								if (KDCanAddRestraint(KinkyDungeonGetRestraintByName(KDRestraint(item)?.Link), true, undefined, false, undefined, true, true)) {
+									return true;
+								}
+							}
+						}
+						);
+					}
+					return false;
+				},
+				clickFunction: (gagged, player) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						KinkyDungeonAllRestraintDynamic().some((inv) => {
+							let item = inv.item;
+							if (KDRestraint(item)?.Group == "ItemArms" && KDRestraint(item)?.Link && KDRestraint(item)?.events?.some((e) => {
+								return e.trigger == "hit" && e.type == "linkItem";
+							})) {
+								if (KDCanAddRestraint(KinkyDungeonGetRestraintByName(KDRestraint(item)?.Link), true, undefined, false, undefined, true, true)) {
+									KDLinkItemEvent({
+										type: "linkItem",
+										trigger: "link",
+									}, item, {});
+									return true;
+								}
+							}
+						});
+						KinkyDungeonChangeRep("Ghost", 3);
+
+						// Make the enemy see you
+						enemy.vp = Math.max(enemy.vp || 0, 3);
+						KDStunTurns(1, true);
+					}
+					KDGameData.CurrentDialogMsg = name + "Flirt" + (!KDEnemyCanTalk(enemy) ? "Gagged" : (enemy.personality || ""));
+					return false;
+				},
+				leadsToStage: "", dontTouchText: true, exitDialogue: true,
+			},
+			LinkRequestLegs: {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (gagged, player) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						return KinkyDungeonAllRestraintDynamic().some((inv) => {
+							let item = inv.item;
+							if ((KDRestraint(item)?.Group == "ItemLegs" || KDRestraint(item)?.Group == "ItemFeet") && KDRestraint(item)?.Link && KDRestraint(item)?.events?.some((e) => {
+								return e.trigger == "hit" && e.type == "linkItem";
+							})) {
+								if (KDCanAddRestraint(KinkyDungeonGetRestraintByName(KDRestraint(item)?.Link), true, undefined, false, undefined, true)) {
+									return true;
+								}
+							}
+						}
+						);
+					}
+					return false;
+				},
+				clickFunction: (gagged, player) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						KinkyDungeonAllRestraintDynamic().some((inv) => {
+							let item = inv.item;
+							if ((KDRestraint(item)?.Group == "ItemLegs" || KDRestraint(item)?.Group == "ItemFeet") && KDRestraint(item)?.Link && KDRestraint(item)?.events?.some((e) => {
+								return e.trigger == "hit" && e.type == "linkItem";
+							})) {
+								if (KDCanAddRestraint(KinkyDungeonGetRestraintByName(KDRestraint(item)?.Link), true, undefined, false, undefined, true)) {
+									KDLinkItemEvent({
+										type: "linkItem",
+										trigger: "link",
+									}, item, {});
+									return true;
+								}
+							}
+						});
+						KinkyDungeonChangeRep("Ghost", 3);
+
+						// Make the enemy see you
+						enemy.vp = Math.max(enemy.vp || 0, 3);
+						KDStunTurns(1, true);
+
+					}
+					KDGameData.CurrentDialogMsg = name + "Flirt" + (!KDEnemyCanTalk(enemy) ? "Gagged" : (enemy.personality || ""));
+					return false;
+				},
+				leadsToStage: "", dontTouchText: true, exitDialogue: true,
+			},
 			PlayRequest: {
 				playertext: "Default", response: "Default", gag: true,
 				prerequisiteFunction: (gagged, player) => {

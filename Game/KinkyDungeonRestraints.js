@@ -3610,10 +3610,10 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 function KinkyDungeonIsLinkable(data) {
 	if (data.newRestraint.NoLinkOver) return false;
 	//if (!oldRestraint.nonbinding && newRestraint.nonbinding) return false;
+	if (data.item && !KDCheckLinkSize(data.item, data.newRestraint, false, false, undefined, data.ignoreItem, data.props)) return false;
 	if (data.oldRestraint && data.newRestraint && data.oldRestraint && data.oldRestraint.Link) {
 		if (data.newRestraint.name == data.oldRestraint.Link) return true;
 	}
-	if (data.item && !KDCheckLinkSize(data.item, data.newRestraint, false, false, undefined, data.ignoreItem, data.props)) return false;
 	if (data.item && !KDCheckLinkTotal(data.item, data.newRestraint, data.linkUnderItem)) return false;
 	if (data.oldRestraint && data.newRestraint && data.oldRestraint && (data.oldRestraint.LinkableBy || data.oldRestraint.LinkAll) && data.newRestraint.shrine) {
 		if (data.oldRestraint.LinkAll) return true;
@@ -5259,3 +5259,36 @@ function KDGetRestraintHost(item) {
 	return host;
 }
 
+
+/**
+ *
+ * @param {KinkyDungeonEvent} e
+ * @param {item} item
+ */
+function KDLinkItemEvent(e, item, data) {
+	let added = false;
+	if (data.restraintsAdded) {
+		for (let r of data.restraintsAdded) {
+			if (r.r.name === item.name) {
+				added = true;
+				break;
+			}
+		}
+	}
+	if (!added && (KDCanAddRestraint(KinkyDungeonGetRestraintByName(KDRestraint(item)?.Link), true, undefined, false, undefined, true, true))) {
+		let subMult = 1;
+		let chance = e.chance ? e.chance : 1.0;
+		if (e.subMult !== undefined) {
+			let rep = (KinkyDungeonGoddessRep.Ghost + 50) / 100;
+			subMult = 1.0 + e.subMult * rep;
+		}
+		if (e.tags?.includes("lowwill") && KinkyDungeonStatWill < 0.1) chance = 1.0;
+		if (item && KDRestraint(item).Link && (KDRandom() < chance * subMult) && (!e.noLeash || KDGameData.KinkyDungeonLeashedPlayer < 1)) {
+			let newRestraint = KinkyDungeonGetRestraintByName(KDRestraint(item).Link);
+			//KinkyDungeonLinkItem(newRestraint, item, item.tightness, "");
+			if (KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true)) {
+				if (KDToggles.Sound && e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+			}
+		}
+	}
+}

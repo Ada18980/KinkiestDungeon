@@ -99,6 +99,7 @@ async function KDExecuteModsAndStart() {
 
 async function KDExecuteMods() {
 	if (KDExecuted) return;
+	KDExecuted = true;
 	KDAwaitingModLoad = true;
 	KDAllModFiles = [];
 

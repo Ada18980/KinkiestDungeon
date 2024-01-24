@@ -18,7 +18,7 @@ AddModel({
 		Xray: ["HideMouth", "HoodMask"],
 	},
 	Layers: ToLayerMap([
-		{ Name: "Face", Layer: "Hood", Pri: -13,
+		{ Name: "Face", Layer: "Hood", Pri: -20,
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,

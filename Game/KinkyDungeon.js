@@ -148,6 +148,7 @@ let KDToggles = {
 	EnemyAnimations: true,
 	DrawArmor: true,
 	ChastityOption: false,
+	ChastityOption2: false,
 	ChastityBraOption: false,
 	SimpleColorPicker: true,
 	TransparentUI: false,
@@ -198,6 +199,7 @@ let KDToggleCategories = {
 	EnemyAnimations: "GFX",
 	DrawArmor: "Clothes",
 	ChastityOption: "Clothes",
+	ChastityOption2: "Clothes",
 	ChastityBraOption: "Clothes",
 	SimpleColorPicker: "Clothes",
 	Nipples: "Clothes",
@@ -293,6 +295,7 @@ let KDDefaultKB = {
 	MakeNoise: KinkyDungeonKeyToggle[7],
 	PlaySelf: KinkyDungeonKeyToggle[8],
 	Crouch: KinkyDungeonKeyToggle[9],
+	BulletTransparency: KinkyDungeonKeyToggle[10],
 };
 
 let KinkyDungeonRootDirectory = "Screens/MiniGame/KinkyDungeon/";
@@ -3224,6 +3227,7 @@ function KDCommitKeybindings() {
 		KinkyDungeonKeybindings.MakeNoise,
 		KinkyDungeonKeybindings.PlaySelf,
 		KinkyDungeonKeybindings.Crouch,
+		KinkyDungeonKeybindings.BulletTransparency,
 	];
 
 	KinkyDungeonKeyMap = [KinkyDungeonKeybindings.Map];
@@ -3409,6 +3413,10 @@ function KinkyDungeonHandleClick() {
 		if (MouseIn(875, 750, 350, 64)) {
 			if (StandalonePatched) {
 				KDSaveCodeOutfit();
+				CharacterReleaseTotal(KinkyDungeonPlayer);
+				KinkyDungeonDressSet();
+				KinkyDungeonCheckClothesLoss = true;
+				KinkyDungeonDressPlayer();
 				KinkyDungeonState = "Wardrobe";
 				KDWardrobeCallback = null;
 				KDWardrobeRevertCallback = null;

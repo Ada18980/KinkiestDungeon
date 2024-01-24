@@ -77,6 +77,7 @@ KDToggleEnemyAnimations,Enemy Animations
 KDToggleLazyWalk,One-Click Move
 KDToggleShiftLatch,Latch Shift Key
 KDToggleChastityOption,Chastity over Panties
+KDToggleChastityOption2,Chastity over Harness
 KDToggleChastityBraOption,Chastity Bra over Bras
 KDToggleSimpleColorPicker,Simple Color Picker
 KDToggleCenter,Center Player
@@ -982,6 +983,7 @@ KinkyDungeonKeyAStruggle,Auto-Struggle
 KinkyDungeonKeyAPathfind,Auto-Pathfind
 KinkyDungeonKeySprint,Sprint/Hop
 KinkyDungeonKeyInspect,Inspect
+KinkyDungeonKeyBulletTransparency,Hide Bullets
 
 KinkyDungeonKeyQInventory,Quick Inventory
 KinkyDungeonKeyInventory,Inventory
@@ -5008,7 +5010,7 @@ ItemPickupScrollPurity,"You pick up a Scroll of Purity."
 ItemPickupScrollVerbal,"You pick up a Scroll of Speech."
 ItemPickupScrollLegs,"You pick up a Scroll of Sauntering."
 
-KinkyDungeonDisarm,"As you strike again, your weapon is pulled out of your grasp!"
+KinkyDungeonDisarm,"Your weapon is pulled out of your grasp!!!"
 KinkyDungeonDisarmLeash,"Your weapon is pulled out of your hand and tossed away by your captor!"
 KinkyDungeonDisarmCut,"Your weapon slips out of your hand as you try to cut with it..."
 
@@ -6113,7 +6115,7 @@ KDZoneOfExcitementSelf,"Something fun enters your body..."
 
 KinkyDungeonSpellZoneOfPurity,Zone of Purity
 KinkyDungeonSpellTargetZoneOfPurity,Select an area
-KinkyDungeonSpellDescriptionZoneOfPurity,"Creates an area which applies Chastity constantly to any enemy over 50% bondage that steps inside."
+KinkyDungeonSpellDescriptionZoneOfPurity,"Creates an area which applies Chastity constantly to any enemy over with any amount of binding that steps inside."
 KinkyDungeonSpellCastZoneOfPurity,"You conjure a realm of absolute purity."
 
 KinkyDungeonSpellZoneOfExcitement,Zone of Excitement
@@ -11517,6 +11519,8 @@ rGenericAllyFlirt_PlayRequestSub,"(The SPEAKER blushes)|Oh... let me check."
 rGenericAllyFlirt_PlayRequestBrat,"(The SPEAKER smirks)|Be careful what you ask for~"
 rGenericAllyFlirt_PlayRequestRobot,"(The SPEAKER pauses)|Calculating strictness threshold..."
 
+
+
 dGenericAllyFlirt_LeashWalk,"Let's go for a walk!"
 dGenericAllyFlirt_LeashWalkGag,"(Jump excitedly, presenting your collar for a leash)"
 rGenericAllyFlirt_LeashWalk,"(The SPEAKER smiles)|Sure! I'll take you for a walk, but only if you behave."
@@ -12072,7 +12076,7 @@ rTableFood,"FOODMSG|(It invites you to partake in its culinary delights)"
 rTableFoodEat,"(You eat the food and feel your willpower rising)"
 rTableFoodEatFail,"(Being gagged as you are you cannot enjoy the food)"
 rTableFoodTake,"(You steal the food, hoping nobody will notice...)"
-dTableFood_Eat,(Eat it to restore AMOUNT WP)
+dTableFood_Eat,(Eat it to restore AMOUNT% WP)
 dTableFood_Take,(Take it!)
 
 KinkyDungeonFoodCookies,"(Someone left their cookies unattended)"
@@ -18498,6 +18502,7 @@ KDColorHex,Hex Code:
 
 KDHideRest,Toggle Struggle UI Mode
 KDSetPose,Change Character Pose
+KDBulletTransparency,Make Bullets Transparent
 KDXRay,X-Ray Vision
 KDQuickInv,Show Quick Inventory
 KDToggleSkipTutorial,Skip Tutorial
@@ -19341,6 +19346,7 @@ KDPaletteElf,Elven
 KDPaletteGoddess,Divine
 KDPaletteMaidforce,Maid
 KDPaletteElemental,Elemental
+KDPaletteElemental2,Royal
 
 KDSelectPalette,Choose restraint palette:
 
@@ -19369,6 +19375,8 @@ KDPrisoners,Prisoners
 
 KDPromoteNPC,Promote to Servant
 KDDemoteNPC,Demote to Prisoner
+
+KDTeaseAttackResist_LeashGrab,The EnemyName tries to grab you!
 
 KDTeaseAttack_SquishBreast,The ENMY reaches out and gives your breast a squeeze! (DMGDLT)
 KDTeaseAttackResist_SquishBreast,"The ENMY reaches for you and fails!"
@@ -19399,6 +19407,9 @@ KDTeaseAttack_AddStuffing,The ENMY sticks a stuffing into your open mouth! (DMGD
 KDTeaseAttackResist_AddStuffing,"The ENMY reaches for your mouth and fails!"
 KDTeaseAttack_AddCarabiner,The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
 KDTeaseAttackResist_AddCarabiner,"The ENMY grabs your wrists but you pull away!"
+KDTeaseAttack_Disarm,The ENMY pulls your weapon away!
+KDTeaseAttackResist_Disarm,The ENMY tries to pull your weapon away but you maintain your grip!
+
 
 KinkyDungeonStatMore_Armbinders,"More Armbinders"
 KinkyDungeonStatDescMore_Armbinders,"Armbinders are favored over other heavy bondage."
@@ -19612,3 +19623,22 @@ rTheWardenWinAccept,"(SPEAKER looks flabbergasted)|R-really? Okay... I'll give y
 dTheWardenWin_Accept,"(Submit to her anyway)"
 rTheWardenWinGag,"(SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!"
 dTheWardenWin_Gag,"(Gag her)"
+
+KDDisarmFlag,"The ENMY weakens your grip on your weapon! Enemies may disarm you if you stand too close..."
+
+
+dGenericAllyFlirt_LinkRequestArms,"Can you link my arm cuffs?"
+dGenericAllyFlirt_LinkRequestArmsGag,"(Hold out your arm cuffs)"
+rGenericAllyFlirt_LinkRequestArms,"(The SPEAKER smiles)|Why sure, sweetie, I can help you with that~"
+rGenericAllyFlirt_LinkRequestArmsDom,"(The SPEAKER grins)|What a good girl!"
+rGenericAllyFlirt_LinkRequestArmsSub,"(The SPEAKER blushes)|Those look like fun!"
+rGenericAllyFlirt_LinkRequestArmsBrat,"(The SPEAKER smirks)|Sure thing~"
+rGenericAllyFlirt_LinkRequestArmsRobot,"(The SPEAKER beeps)|+10 social credit"
+
+dGenericAllyFlirt_LinkRequestLegs,"Can you link my leg cuffs?"
+dGenericAllyFlirt_LinkRequestLegsGag,"(Hold out your leg cuffs)"
+rGenericAllyFlirt_LinkRequestLegs,"(The SPEAKER smiles)|Why sure, sweetie, I can help you with that~"
+rGenericAllyFlirt_LinkRequestLegsDom,"(The SPEAKER grins)|What a good girl!"
+rGenericAllyFlirt_LinkRequestLegsSub,"(The SPEAKER blushes)|Those look like fun!"
+rGenericAllyFlirt_LinkRequestLegsBrat,"(The SPEAKER smirks)|Sure thing~"
+rGenericAllyFlirt_LinkRequestLegsRobot,"(The SPEAKER beeps)|+10 social credit"

@@ -1305,7 +1305,7 @@ function KinkyDungeonDisarm(Enemy, suff) {
 		}
 
 		if (foundslot) {
-			let weapon = KinkyDungeonPlayerDamage?.name;
+			let weapon = KinkyDungeonPlayerWeapon;
 
 			let dropped = {x:foundslot.x, y:foundslot.y, name: weapon};
 
@@ -1389,7 +1389,12 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, chance, bullet) {
 	} else if (!predata.eva) if (KDToggles.Sound) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "Audio/Miss.ogg"});
 	//AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Miss.ogg");
 	if (disarm) {
-		KinkyDungeonDisarm(Enemy);
+		//KinkyDungeonDisarm(Enemy);
+		KinkyDungeonSendTextMessage(10, TextGet("KDDisarmFlag")
+			.replace("ENMY", TextGet("Name" + Enemy.Enemy.name)),
+		"#ff8844", 2);
+		AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
+		KinkyDungeonSetFlag("disarmFlagVulnerable", 2);
 	}
 	if (!KinkyDungeonPlayerDamage || !KinkyDungeonPlayerDamage.silent || !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Silence") > 0)) {
 		if (Enemy && hp < Enemy.Enemy.maxhp) {
@@ -2526,6 +2531,14 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 			let scale = bullet.scale != undefined ? bullet.scale : 1.0;
 			let alpha = bullet.alpha != undefined ? bullet.alpha : 1.0;
 			let aoe = bullet.aoe ? Number(bullet.aoe) : 3;
+
+			if (KDBulletTransparency) {
+				if (bullet.vx || bullet.vy) {
+					alpha *= 0.7;
+				} else {
+					alpha *= 0.1;
+				}
+			}
 
 			if ((bullet.end) && dd == 0 && (!bullet.scale || bullet.scale <= 0.0)) {
 				KinkyDungeonBulletsVisual.delete(bullet.spriteID);

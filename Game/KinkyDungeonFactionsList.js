@@ -39,6 +39,12 @@ let KinkyDungeonFactionFilters = {
 		LightNeutral: {"gamma":1,"saturation":0.25,"contrast":1.0,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		Highlight: {"gamma":0.7333333333333334,"saturation":0.1,"contrast":2.3499999999999996,"brightness":0.8166666666666667,"red":1.7833333333333334,"green":0.9666666666666667,"blue":0.6,"alpha":1},
 	},
+	"Elemental2": {
+		Catsuit: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+		DarkNeutral: {"gamma":0.6,"saturation":0,"contrast":1.2666666666666668,"brightness":0.44999999999999996,"red":1.5833333333333333,"green":0.43333333333333335,"blue":0.7000000000000001,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":1.0333333333333332,"red":1.2,"green":0.9333333333333333,"blue":0.4666666666666667,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.6666666666666665,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	"Elemental": {
 		Catsuit: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1.5833333333333333,"green":1,"blue":1,"alpha":1},
