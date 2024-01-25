@@ -43,7 +43,7 @@ Version
 Kinky Dungeon
 淫荡地牢
 By Ada18980
-由 Ada18980 制作
+ 由 Ada18980 制作
 You are an adventurer descending into an ancient underground city of magic.
 你是一名冒险家，前往了一个古老的地下魔法城市探险。
 Beneath its depths lies the Mistress' Staff, an artifact of untold power.
@@ -58,6 +58,8 @@ Character
 角色
 Main
 主要
+UI
+界面
 Controls
 控制
 Skip Intro
@@ -5301,45 +5303,45 @@ Blacksteel Chastity Belt
 Charms (Arms)
 丝带（手臂）
 A band of faintly magic ribbon wrapped tight around your arms.
-一条微弱的魔法丝带紧紧地缠绕在你的手臂上。
+一条带着微弱魔力的丝带紧紧缠绕在你的手臂上。
 It clings, almost of its own accord, but seems vulnerable to both cutting and stretching.
-它几乎是自发地紧贴着它，但似乎很容易受到切割和拉扯的影响。
+像是有生命一般的缠绕住，但似乎面对切割和拉扯很脆弱。
 Charms (Legs)
 丝带（腿）
 A band of faintly magic ribbon wrapped tight around your thighs.
-一条微弱的魔法丝带紧紧地缠绕在你的大腿上。
+一条带着微弱魔力的丝带紧紧缠绕在你的大腿上。
 Charms (Feet)
 丝带（脚）
 A band of faintly magic ribbon wrapped tight around your ankles.
-一条微弱的魔法丝带紧紧地缠绕在你的脚踝上。
+一条带着微弱魔力的丝带紧紧缠绕在你的脚踝上。
 Charms (Head)
 丝带（头）
 A band of faintly magic ribbon wrapped tight around your eyes.
-一条淡淡的魔法丝带紧紧地缠绕在你的眼睛上。
+一条带着微弱魔力的丝带紧紧缠绕在你的眼睛上。
 Charm Gag
 绷带堵嘴
 A band of faintly magic ribbon wrapped tight around your mouth.
-一条微弱的魔法丝带紧紧地缠绕在你的嘴边。
+一条带着微弱魔力的丝带紧紧缠绕在你的嘴边。
 Charm Wrapping (Toes)
 丝带包裹（脚趾）
 A layer of faintly magic ribbon wrapped tight around your feet.
-一层淡淡的魔法丝带紧紧的缠绕在你的脚边。
+一层带着微弱魔力的丝带紧紧的缠绕在你的脚边。
 Charm Wrapping (Head)
 丝带包裹（头）
 A layer of faintly magic ribbon wrapped tight around your face.
-一层淡淡的魔法丝带紧紧的缠绕在你的脸上。
+一层带着微弱魔力的丝带紧紧的缠绕在你的脸上。
 Charm Wrapping (Arms)
 丝带包裹（手臂）
 A layer of faintly magic ribbon wrapped tight around your body.
-一层淡淡的魔法丝带紧紧的缠绕在你的身上。
+一层带着微弱魔力的丝带紧紧的缠绕在你的身上。
 Charm Wrapping (Feet)
 丝带包裹（脚）
 A layer of faintly magic ribbon wrapped tight around your shins.
-一层淡淡的魔法丝带紧紧的缠绕在你的小腿上。
+一层带着微弱魔力的丝带紧紧的缠绕在你的小腿上。
 Charm Wrapping (Legs)
 丝带包裹（腿）
 A layer of faintly magic ribbon wrapped tight around your thighs.
-一层淡淡的魔法丝带紧紧的缠绕在你的大腿上。
+一层带着微弱魔力的丝带紧紧的缠绕在你的大腿上。
 Leather Panel Gag
 皮革面板堵嘴
 A gag that seals your lips tightly and stuffs your mouth with a ball.
@@ -7087,19 +7089,21 @@ Elemental's Firebolt
 Elemental's Gust
 元素之风
 Gust
-风
-A ball of flame that does DamageDealt damage.
-释放造成 DamageDealt 点火焰伤害的火焰弹。
+吹风
+A ball of flame that does DamageDealt damage to one target.
+投出一个火焰球，对第一个目标造成 DamageDealt 点火焰伤害。
 You a hurl a firebolt!
 你投掷了火焰弹！
 Choose aim direction
 选择发射方向
 Windblast
 暴风
+Three scattered puffs of wind that do DamageDealt blast damage at close range, stun briefly, and push targets back.
+三股分散的风，在小范围内造成 DamageDealt 点爆炸伤害，短暂眩晕目标并将它们击退。
 You press your wrists together and conjure a blast of wind!
 你并拢手腕召唤出暴风！
 Three puffs of wind in a tight cone that deal DamageDealt blast damage and push targets back.
-在紧密的圆锥体中吹出三股风，造成 DamageDealt 点爆炸伤害并将目标推回原处。
+朝着一个方向吹出三股风，造成 DamageDealt 点爆炸伤害并将目标击退。
 You exhale a mighty wind!
 你呼出一股强大的风！
 Throw one of your knives DamageDealt damage. Lands in the target's tile
@@ -7166,6 +7170,8 @@ You a hurl a frigid orb!
 你掷出一个严寒结晶！
 Freeze
 冻结
+Chill an adjacent target for DamageDealt ice damage and slows for Duration turns. Freezes if already slowed or drenched.
+使身边的一个目标变得冰冷，造成 DamageDealt 寒冰伤害，并减速 Duration 回合。如果该目标已被淋湿或减速，使其冻结
 You utter dark words of ice-cold truths.
 你说出冰封的黑暗咒语。
 Choose a target to freeze
@@ -7343,11 +7349,13 @@ Choose target location
 The elemental channels the force of the storm!
 元素引导风暴之力！
 Fireball
-火球
+炎爆术
 Fireblast
-火焰冲击波
-A slow moving ball of flame that explodes for 100 fire damage to the target and DamageDealt damage to surrounding enemies.
-缓慢移动的火球爆炸，对目标造成 100 点火焰伤害，并对周围的敌人造成伤害。
+火球术
+A bolt of flame that explodes for DamageDealt fire damage in an area.
+释放一个火球，击中敌人后在一个小范围区域造成 DamageDealt 火焰伤害
+A slow moving ball of flame that explodes for DamageDealt fire damage in a wide area.
+释放一个缓慢的大火球，击中一个敌人后在其所在区域造成 DamageDealt 点火焰伤害。
 You a hurl a blast of flame!
 你扔出一道冲击波！
 Incinerate
@@ -7429,9 +7437,11 @@ Freeze Rune
 You conjure an icy trap!
 你设置了一个霜冻陷阱！
 Flame Rune
-火焰符文
+爆炸符文
+A trap that deals DamageDealt fire damage in an area. Takes 3 turns to setup. 200% crit multiplier.
+设置一个触发后对该方格敌人造成 DamageDealt 点火焰伤害的陷阱。设置后需要 3 个回合才能生效。暴击伤害为 200%。
 You conjure an incendiary trap!
-你设置了一个火焰陷阱！
+你设置了一个爆炸陷阱！
 Conjure a sphere for Duration turns that makes nearby entities Conductive and each turn deals DamageDealt electric damage to one of them.
 召唤一个球体 Duration 回合，使相邻的个体导电，且每回合对其中一个个体造成 DamageDealt 电击伤害。
 You summon a grey, featureless sphere adorned by static!
@@ -7647,11 +7657,11 @@ Dodge I
 Dodge II
 闪避 II
 +15 Evasion (25 total)
-+15 闪避（共 25 次）
++15 闪避（总计 25 ）
 Dodge III
 闪避 III
 +25 Evasion (50 total)
-+25 闪避（共 50 次）
++25 闪避（总计 50 ）
 Strength Up
 力量提升
 +20% Physical Damage
@@ -8924,6 +8934,8 @@ Library
 图书馆
 Bellows
 风箱
+They say that the maiden who safeguards the graveyard is kind to her pets...
+据说守护墓园的少女会善待她的宠物...
 (A page from the Book of Aeons)|The 'Graveyard' is a peculiar place. Long ago, human beings lived and died just like the animals. When the Old Civilization existed, they would come to bury their dead in the Graveyard. It remains a mystery why so many of the former dead seem to be alive. Some say that when the Old Civilization cast the spell that spell which overcame Death, even those buried in their graves would rise again. Others simply say that there is a powerful necromancer who lives here, toying with the dead as if they were pets...
 （《万古之书》中的一页）|'墓地' 是一个奇特的地方。很久以前，人类和动物一样生、死。当旧文明存在的时候，他们会来墓地埋葬死者。为什么这么多死者似乎还活着，仍然是一个谜。有人说，当旧文明施展战胜死亡的咒语时，即使是那些埋在坟墓里的人也会复活。还有人干脆说这里住着一个强大的死灵法师，把死人当作宠物一样玩弄……
 (A page from the Book of Aeons)|Beneath the Graveyard lies a relic of a former age, a network of tombs inhabited by the immortal followers of Bast. Very few were graced with this gift of immortality before the great archmagus, Sariel Vinlaga, stole this power from the gods and granted all humans with the power of immortality. The Bast followers are still set in their ways, hoping for a time when their Goddess will return and rebuild their glorious civilization.
@@ -15434,6 +15446,8 @@ Adjacent NPCs count as corners/hooks for purposes of escaping. After being restr
 相邻的NPC被视为用于逃生的角落/钩子。被束缚后，逃跑速度和力量增加12回合（逃脱力增加+20%，加上2%的束缚抗性）。如果你自缚的话，就会被移除。
 Struggling is improved and escape is quicker!
 挣扎能力提升，逃跑速度更快！
+Akashic Conflux
+以太超流
 Costs 100 Arcane Energy and refunds 100 Mana. Bringing memories to life, you call upon your magical knowledge to ignore arm, leg, and verbal spell components for 3 turns.
 花费 100 奥术能量并返还 100 法力。将记忆带入生活，无需手臂、腿和言语即可进行施法，持续 3 回合。
 You can ignore Arm, Leg, and Verbal components!
@@ -15615,7 +15629,7 @@ Bow: This is a ranged weapon with a weapon ability.
 Magic: Ignores evasion of ghost type enemies, can be used with abilities that require magic weapons.
 魔法：无视幽灵类敌人的躲避，可以与需要魔法武器的技能一起使用。
 Light: Can be used to cut even with bound arms. 50% reduced accuracy penalty from being bound. Can be held in mouth.
-光：即使手臂被束缚也可以用来切割。因被束缚而造成的准确度损失降低 50%。可以含在嘴里。
+轻巧：即使手臂被束缚也可以用来切割。因被束缚而造成的准确度损失降低 50%。可以含在嘴里。
 Offhand
 副手
 Offhand: This weapon can be dual-wielded by some classes.
@@ -16839,13 +16853,13 @@ You twirl your weapon, harvesting AMNT seeds!
 There is nothing to harvest.
 没有什么可收获的。
 Telekinesis 101
-心灵感应 101
+念动力 101
 Unlocks telekinetic abilities. Can equip weapons while bound, but at 0% accuracy. Learn Recover Object.
-解锁心灵感应能力。被束缚时可以装备武器，但精准度为 0%。习得'恢复对象'。
+解锁念动力能力。被束缚也可以装备武器，但精准度为 0%。习得'隔空取物'。
 Recover Object
-恢复对象
+隔空取物
 Use telekinesis to pick up items and open chests from a distance. Refunds 75% of mana cost if not used to open a chest.
-使用心灵感应从远处拾取物品并打开箱子。如果不用于打开箱子，则退还 75% 的法力消耗。
+使用念动力从远处拾取物品并打开箱子。如果不用于打开箱子，则退还 75% 的法力消耗。
 The items float to you!
 物品飘向了你！
 There's nothing to pick up.
@@ -16855,31 +16869,33 @@ The chest is locked.
 Select a tile with items
 选择包含物品的位置
 Enhanced Recovery
-增强恢复
+强化取物
 Upcast to increase range and recover objects in an area.
-向上投射以增加范围并恢复区域内的物体。
+增加施法范围并获得较大范围内的物体。
 Select an area with items
 选择有物品的区域
 Kinetic Slash
-动能斩
+念动挥击
+Swing an equipped weapon (not unarmed or hands free) in a line, slashing enemies in the way with 20 + 80% weapon damage. Counts as an attack. +10 mana cost if wielding a Heavy weapon.
+命令装备的武器在一个直线区域挥击，对途中的敌人造成 20 + 80% 的武器伤害。视为普攻。如果使用重型武器，+10 法力消耗。
 You swing!
-你挥动武器！
+你命令武器攻击！
 Choose where to swing (must not be unarmed or hands free weapon)
 选择挥动的位置（不得使用徒手武器或无需通过手臂即可使用的武器）
 Kinetic Lance
-动能枪
+念动投掷
 Propel your weapon at devastating speed, piercing enemies for 30+160% Weapon Damage and dropping it at the end of the trajectory. Counts as an attack. +15 mana cost if wielding a Heavy weapon.
-以毁灭性的速度推进你的武器，刺穿敌人，造成 30+160% 武器伤害，并其会掉落在轨迹末端。算作一次攻击。如果使用重型武器，+15 法力消耗。
+命令你的武器以毁灭性的速度发射出去，刺穿敌人并造成 30+160% 武器伤害，武器掉落在轨迹末端。视为普攻。如果使用重型武器，+15 法力消耗。
 You propel your weapon forward!
-你把武器向前推进！
+你命令武器飞速向前！
 Choose where to launch your weapon.
-选择发射武器的位置。
+选择发射武器的方向。
 Sagitta
-射手箭
+天剑
 Fire a projectile. If this projectile hits an enemy, make one attack against an enemy for 10+40% weapon damage. +5 mana cost if wielding a Heavy weapon.
-发射一枚炮弹。如果这枚炮弹击中敌人，对敌人造成一次攻击，造成10 + 40%的武器伤害。如果使用重型武器，+5 法力消耗。
+召唤并一柄天剑并向指定方向踢出。造成10 + 40%的武器伤害。视为普攻。如果使用重型武器，+5 法力消耗。
 You unleash a deadly projectile!
-你发射了一枚致命的炮弹！
+你踢出了一枚致命的天剑！
 Choose aim direction.
 选择目标方向。
 Sagitta Assault
@@ -17254,6 +17270,12 @@ Fungal
 真菌
 Elven
 精灵
+Breastplate
+胸铠
+Rock-solid and form-fitting.
+坚硬但贴身
+Provides minor protection against enemy attacks. Decreases stealth.
+在敌人攻击时可以提供简单防护，降低隐秘效果。
 Choose restraint palette:
 选择束缚具主色调：
 Auto Load Mods
@@ -17262,3 +17284,5 @@ SUSPICIOUS MOD DETECTED
 检测到可疑模组
 The bright light hurts your dark-adjusted eyes!
 明亮的光线会伤害你适应黑暗的眼睛！
+Back to Game
+回到游戏
