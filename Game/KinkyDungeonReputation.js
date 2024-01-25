@@ -239,7 +239,7 @@ function KinkyDungeonChangeRep(Rep, Amount) {
 	if (KinkyDungeonGoddessRep[Rep] != undefined) {
 		let last = KinkyDungeonGoddessRep[Rep];
 		let minimum = (Rep == "Ghost" && KinkyDungeonStatsChoice.get("Submissive")) || (Rep == "Prisoner" && KinkyDungeonStatsChoice.get("Wanted")) ? 20: -50;
-		let maximum = (KinkyDungeonStatsChoice.get("Cursed") && (Rep != "Ghost" && Rep != "Prisoner")) ? -25: 50;
+		let maximum = (KinkyDungeonStatsChoice.get("Cursed") && !KDStatRep.includes(Rep)) ? -25: 50;
 		//let target = -50;
 		//let interval = 0.02;
 		let start = KinkyDungeonGoddessRep[Rep];

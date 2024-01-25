@@ -28,7 +28,13 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.1.13
+ - New auto mod loader, simply place mods in Mods/ folder to load
+ - Fiddles, yokes added to prison
+ - Prison now mildly respects armbinder/boxbinder preferences (specifically if you do Less_Armbinders it will filter out armbinders from prison)
+
 5.1.12
+ - Added a global cooldown on tease attacks as well as a per enemy cooldown
  - Made cuffs linkable by anything (only the base level)
  - Added chastity over harness option
  - Zone of Purity triggers at any binding level
@@ -36,6 +42,7 @@ Monk class?
  - Fixed enemy Disarm removing your weapon
  - enemy Disarm is now an action you are vulnerable to after an enemy weakens your grip
  - You can now ask an NPC to link your cuffs
+ - Attempted to make cuff linking more sane (please report any bugs)
 
 5.1.11
  - Added elemental and Royal palette

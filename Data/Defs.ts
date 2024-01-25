@@ -281,6 +281,7 @@ let LAYERS_BASE = [
 	"LegLeft",
 
 	// Lower harness
+	"Option2_ChastityBeltLower",
 	"HarnessLower",
 	"CrotchPanelLower",
 
@@ -481,6 +482,7 @@ let LayerGroups = {
 		"ChastityBelt",
 		"CrotchRope",
 		"Option_ChastityBelt",
+		"Option2_ChastityBelt",
 		"Option_CrotchRope",
 		"Panties",
 		"CrotchPanelMid",
@@ -497,6 +499,7 @@ let LayerGroups = {
 		"ChastityBelt",
 		"CrotchRope",
 		"Option_ChastityBelt",
+		"Option2_ChastityBelt",
 		"Option_CrotchRope",
 		"Panties",
 		"CrotchPanelMid",

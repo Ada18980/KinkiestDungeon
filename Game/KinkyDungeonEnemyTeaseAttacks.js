@@ -40,7 +40,7 @@ let KDTeaseAttacks = {
 				&& !KDIsDisarmed(enemy);
 		},
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
-			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", enemy.Enemy?.attackPoints || 2);
+			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*(0.5 + 1.5 * (KinkyDungeonGoddessRep.Ghost + 50)/100), type: "soul"});
 			let index = Math.floor(Math.random() * 3);
@@ -80,7 +80,7 @@ let KDTeaseAttacks = {
 				&& !KDIsDisarmed(enemy);
 		},
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
-			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", enemy.Enemy?.attackPoints || 2);
+			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "grope"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
@@ -114,7 +114,7 @@ let KDTeaseAttacks = {
 				&& !KDIsDisarmed(enemy);
 		},
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
-			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", enemy.Enemy?.attackPoints || 2);
+			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1.5, type: "grope"});
 			if (!(blocked || evaded))
@@ -153,7 +153,7 @@ let KDTeaseAttacks = {
 				);
 		},
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
-			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", enemy.Enemy?.attackPoints || 2);
+			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*(1.5 - 1*KinkyDungeonChastityMult()), type: "charm"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Vibe.ogg");
@@ -194,7 +194,7 @@ let KDTeaseAttacks = {
 				);
 		},
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
-			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", enemy.Enemy?.attackPoints || 2);
+			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "pierce"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
@@ -236,7 +236,7 @@ let KDTeaseAttacks = {
 				);
 		},
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
-			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", enemy.Enemy?.attackPoints || 2);
+			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "chain"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Struggle.ogg");
@@ -274,7 +274,7 @@ let KDTeaseAttacks = {
 				&& !KDIsDisarmed(enemy);
 		},
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
-			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", enemy.Enemy?.attackPoints || 2);
+			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*0.5, type: "grope"});
 			if (!(blocked || evaded))
@@ -310,7 +310,7 @@ let KDTeaseAttacks = {
 				&& !KDIsDisarmed(enemy);
 		},
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
-			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", enemy.Enemy?.attackPoints || 2);
+			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*2, type: "plush"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
@@ -344,7 +344,7 @@ let KDTeaseAttacks = {
 				&& !KDIsDisarmed(enemy);
 		},
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
-			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", enemy.Enemy?.attackPoints || 2);
+			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*(2 - 1.9*(KinkyDungeonGoddessRep.Ghost + 50)/100), type: "plush"});
 			if ((KinkyDungeonGoddessRep.Ghost + 50)/100 > 0)
@@ -381,7 +381,7 @@ let KDTeaseAttacks = {
 				&& !KDIsDisarmed(enemy);
 		},
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
-			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", enemy.Enemy?.attackPoints || 2);
+			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "tickle"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Tickle.ogg");
@@ -417,7 +417,7 @@ let KDTeaseAttacks = {
 				&& !KDIsDisarmed(enemy);
 		},
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
-			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", enemy.Enemy?.attackPoints || 2);
+			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let strip = false;
 			if (player.player) {

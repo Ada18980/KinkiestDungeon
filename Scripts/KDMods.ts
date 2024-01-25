@@ -9,44 +9,35 @@ let KDGetMods = false;
 let KDOffline = false;
 
 
-function KDGetModsLoad() {
+async function KDGetModsLoad() {
 	try {
 		//@ts-ignore
-		let win = nw.Window.get();
-		if (win) {
+		let API = window.kdAPI;
+		if (API) {
 			KDOffline = true;
-			if (localStorage.getItem("KDMods") && JSON.parse(localStorage.getItem("KDMods"))) {
+			/*if (localStorage.getItem("KDMods") && JSON.parse(localStorage.getItem("KDMods"))) {
 				let mods = JSON.parse(localStorage.getItem("KDMods"));
 				if (mods)
 					for (let m of mods) {
 						if (m) {
-							// Read file with Node.js API
-							//@ts-ignore
-							const fs = nw.require('fs');
-							//@ts-ignore
-							const path = nw.require('path');
-							// Extract path and filename using path module
-							const { dir, base } = path.parse(m);
-
-							// Read the file content into a buffer
-							//@ts-ignore
-							fs.readFile(m, (err, fileContent) => {
-
-								// Create a Blob using the buffer
-								const blob = new Blob([fileContent], { type: 'application/octet-stream' });
-
-								// Create a File object with the Blob
-								const fileObject = new File([blob], base, { type: 'application/octet-stream' });
-
-
-								// Create a File object using the stream
-								//const fileObject = new File([blob], base, { type: 'application/x-zip-compressed' });
-								if (fileObject) KDMods[base] = fileObject;
-							});
-
+							let fileObject = await API.getFile(m);
+							if (fileObject) KDMods[fileObject.base] = fileObject.file;
 						}
 					}
+			}*/
+			let modFiles = await API.getMods();
+			for (let mod of modFiles) {
+				if (mod.file) {
+					// Create a Blob using the buffer
+					const blob = new Blob([mod.file], { type: 'application/octet-stream' });
+
+					// Create a File object with the Blob
+					const fileObject = new File([blob], mod.base, { type: 'application/octet-stream' });
+					if (fileObject) KDMods[mod.base] = fileObject;
+				}
+
 			}
+
 		}
 	} catch (err) {
 		// We are online and no local mod loading :()
@@ -152,19 +143,8 @@ async function KDExecuteMods() {
 				reader.onload = function(event) {
 					console.log("EXECUTING MOD FILE " + file.name);
 					if (typeof event.target.result === "string") {
-						if (
-							// Some basic safety features to prevent file io
-							!(event.target.result.includes("require("))
-							&& !(event.target.result.includes("nw.("))
-							&& !(event.target.result.includes("'fs'"))
-							&& !(event.target.result.includes("\"fs\""))
-							&& !(event.target.result.includes("`fs`"))
-							&& !(event.target.result.includes("`fs`"))
-						) {
-							//@ts-ignore
-							eval(event.target.result);
-						}
-
+						//@ts-ignore
+						eval(event.target.result);
 					}
 				};
 				reader.readAsText(file);

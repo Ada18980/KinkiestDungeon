@@ -2404,6 +2404,7 @@
             <key type="filename">../Game/Locks/White.png</key>
             <key type="filename">../Game/Poses/SetPose.png</key>
             <key type="filename">../Game/Struggle.png</key>
+            <key type="filename">../Game/UI/BulletTransparency.png</key>
             <key type="filename">../Game/UI/XRay0.png</key>
             <key type="filename">../Game/UI/XRay1.png</key>
             <key type="filename">../Game/UI/XRay2.png</key>

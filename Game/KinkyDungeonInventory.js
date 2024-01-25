@@ -2206,6 +2206,7 @@ function KDLoadQuickLoadout(num, clearFirst) {
 			if (KinkyDungeonInventoryGetWeapon(item)) {
 				if (!refreshedWeapons) {
 					KDGameData.PreviousWeapon = [];
+					refreshedWeapons = true;
 				}
 				// Equip weapon
 				if (!alreadyEquipped) {

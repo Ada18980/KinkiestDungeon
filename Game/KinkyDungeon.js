@@ -179,7 +179,6 @@ let KDToggles = {
 	//AutoCrouchOnTrip: true,
 	FlipStatusBars: false,
 	ForcePalette: false,
-	AllowSusMods: false,
 	AutoLoadMods: false,
 	FlipPlayer: true,
 };
@@ -829,8 +828,8 @@ function KDSaveToggles() {
 function KinkyDungeonLoad() {
 	try {
 		//@ts-ignore
-		let win = nw.Window.get();
-		if (win) {
+		let API = window.kdAPI;
+		if (API) {
 			KDExitButton = true;
 		}
 	} catch (err) {
@@ -1116,46 +1115,19 @@ let KDLogoEndTime2 = 500;
 
 function KDOpenFullscreen() {
 	try {
-		/*
 		// @ts-ignore
-		if (document.getElementById("MainCanvas")?.requestFullscreen) {
-			// @ts-ignore
-			document.getElementById("MainCanvas")?.requestFullscreen();
-			// @ts-ignore
-		} else if (document.getElementById("MainCanvas")?.webkitRequestFullscreen) {
-		// @ts-ignore
-			document.getElementById("MainCanvas")?.webkitRequestFullscreen();
-		// @ts-ignore
-		} else if (document.getElementById("MainCanvas")?.msRequestFullscreen) {
-		// @ts-ignore
-			document.getElementById("MainCanvas")?.msRequestFullscreen();
-		}*/
-		// @ts-ignore
-		let win = nw.Window.get();
-		if (win?.enterFullscreen) win.enterFullscreen();
+		let API = window.kdAPI;
+		if (API?.setFullscreen) API.setFullscreen();
 	} catch (err) {
 		console.log(err);
 	}
 }
 
 function KDCloseFullscreen() {
-
 	try {
-		/*
-		if (document.exitFullscreen) {
-			document.exitFullscreen();
 		// @ts-ignore
-		} else if (document.webkitExitFullscreen) {
-		// @ts-ignore
-			document.webkitExitFullscreen();
-			// @ts-ignore
-		} else if (document.msExitFullscreen) {
-		// @ts-ignore
-			document.msExitFullscreen();
-		}*/
-		// @ts-ignore
-		let win = nw.Window.get();
-		if (win?.leaveFullscreen) win.leaveFullscreen();
+		let API = window.kdAPI;
+		if (API?.setWindowed) API.setWindowed();
 	} catch (err) {
 		console.log(err);
 	}
@@ -1409,8 +1381,8 @@ function KinkyDungeonRun() {
 		if (KDExitButton) {
 			DrawButtonKDEx("KDExitButton", () => {
 				//@ts-ignore
-				let win = nw.Window.get();
-				win.close();
+				let API = window.kdAPI;
+				if (API?.close) API.close();
 				return true;
 			}, true, 1000-350/2, ii, 350, 64, TextGet("KDExit"), "#ffffff", "");
 			ii += 80;

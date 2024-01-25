@@ -7461,7 +7461,7 @@ function KDGetTeaseAttack(enemy, player, AData) {
 }
 
 function KDBasicTeaseAttack(enemy, player, noglobal) {
-	return player.player && KDistChebyshev(enemy.x-player.x, enemy.y - player.y) < 1.5 && !KDEnemyHasFlag(enemy, "teaseAtkCD") && (!noglobal || !KinkyDungeonFlags.get("globalteaseAtkCD")) && !KinkyDungeonIsDisabled(enemy) && !(enemy.vulnerable > 0) && !KDEnemyHasFlag(enemy, "targetedForAttack");
+	return player.player && KDistChebyshev(enemy.x-player.x, enemy.y - player.y) < 1.5 && !KDEnemyHasFlag(enemy, "teaseAtkCD") && (noglobal || !KinkyDungeonFlags.get("globalteaseAtkCD")) && !KinkyDungeonIsDisabled(enemy) && !(enemy.vulnerable > 0) && !KDEnemyHasFlag(enemy, "targetedForAttack");
 }
 
 
