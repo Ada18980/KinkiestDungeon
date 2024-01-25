@@ -58,7 +58,8 @@ let KinkyDungeonSpellSpecials = {
 							shield_slow: spell2?.shield_slow, // slow thru shield
 							shield_distract: spell2?.shield_distract, // Distract thru shield
 							shield_vuln: spell2?.shield_vuln, // Vuln thru shield
-							bindEff: spell2.bindEff, distract: spell2.distract, distractEff: spell2.distractEff, desireMult: spell2.desireMult, boundBonus: spell2.boundBonus, time:spell2.time, flags:spell2.damageFlags}, spell: spell2}, miscast);
+							bindEff: spell2.bindEff, distract: spell2.distract, distractEff: spell2.distractEff, desireMult: spell2.desireMult, boundBonus: spell2.boundBonus, time:spell2.time, flags:spell2.damageFlags}, spell: spell2}, miscast,
+					entity.x, entity.y);
 				b.visual_x = entity.x;
 				b.visual_y = entity.y;
 			} else return "Fail";
@@ -1106,8 +1107,12 @@ let KinkyDungeonSpellSpecials = {
 			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
 			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
 			if (KinkyDungeonPlayerTags.get("ItemNipplesPiercingsFull")) vibes.push("ItemNipplesPiercings");
-			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 0.5, 30, undefined, undefined, undefined, undefined, true);
 
+			if (!KDGameData.CurrentVibration) {
+				KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 0.5, 30, undefined, undefined, undefined, undefined, true);
+			} else {
+				KinkyDungeonAddVibeModifier(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 1, 30, undefined, false, false, false, false, true, 0.1, 0.2);
+			}
 			cast = true;
 		}
 		cast = cast || KDCastSpellToEnemies((en) => {

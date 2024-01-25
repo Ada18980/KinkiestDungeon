@@ -1412,7 +1412,7 @@ function KinkyDungeonIsArmsBound(ApplyGhost, Other) {
  * @returns {boolean}
  */
 function KinkyDungeonIsArmsBoundC(C, ApplyGhost, Other) {
-	if (C == KinkyDungeonPlayerCharacter) {
+	if (C == KinkyDungeonPlayer) {
 		return KinkyDungeonIsArmsBound(ApplyGhost, Other);
 	} else {
 		return false;
@@ -2684,6 +2684,17 @@ function KinkyDungeonGetLockMult(Lock, item, curse) {
 	return mult;
 }
 
+let KDHeavyRestraintPrefs = [
+	"More_Armbinders",
+	"More_Boxbinders",
+	"More_Jackets",
+	"More_Yokes",
+	"Less_Armbinders",
+	"Less_Boxbinders",
+	"Less_Jackets",
+	"Less_Yokes",
+];
+
 /** Tags which the 'agnostic' option on KinkyDungeonGetRestraint does not override */
 let KDNoOverrideTags = [
 	"NoVibes",
@@ -2691,6 +2702,7 @@ let KDNoOverrideTags = [
 	"Unchained",
 	"Damsel",
 	"NoPet",
+	...KDHeavyRestraintPrefs,
 ];
 /**
  *
@@ -2720,6 +2732,11 @@ let KDNoOverrideTags = [
  */
 function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, filterEps = 0.9, minWeightFallback = true, useAugmented = false, augmentedInventory = undefined, options) {
 	let RestraintsList = [];
+	let effLevel = Level;
+	if (KinkyDungeonStatsChoice.has("TightRestraints")) {
+		effLevel *= KDTightRestraintsMult;
+		effLevel += KDTightRestraintsMod;
+	}
 
 	if (KinkyDungeonStatsChoice.has("NoWayOut")) RequireWill = false;
 	let willPercent = (KinkyDungeonStatWill / KinkyDungeonStatWillMax - 0.15 * KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax)
@@ -2739,7 +2756,7 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 	}
 	if (extraTags)
 		for (let t of Object.entries(extraTags)) {
-			if (Level >= t[1])
+			if (effLevel >= t[1])
 				tags.set(t[0], true);
 		}
 
@@ -2752,11 +2769,7 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 	let arousalMode = KinkyDungeonStatsChoice.get("arousalMode");
 	let cache = [];
 	for (let restraint of KinkyDungeonRestraints) {
-		let effLevel = Level;
-		if (KinkyDungeonStatsChoice.has("TightRestraints")) {
-			effLevel *= KDTightRestraintsMult;
-			effLevel += KDTightRestraintsMod;
-		}
+
 		if ((
 			effLevel >= restraint.minLevel
 				|| KinkyDungeonNewGame > 0
@@ -2904,12 +2917,17 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 		}
 		for (let r of RestraintsList) {
 			if (!wornGroups[r.restraint.Group] || !groupPower[r.restraint.Group] || noway) {
-				if (!groupPower[r.restraint.Group] || r.restraint.power > groupPower[r.restraint.Group].restraint.power)
-					groupPower[r.restraint.Group] = r;
+				if (!groupPower[r.restraint.Group] || r.restraint.power >= groupPower[r.restraint.Group][0].restraint.power) {
+					if (!groupPower[r.restraint.Group]) groupPower[r.restraint.Group] = [r];
+					else {
+						if (r.restraint.power > groupPower[r.restraint.Group][0].restraint.power) groupPower[r.restraint.Group] = [r];
+						else groupPower[r.restraint.Group].push(r);
+					}
+				}
 			}
 		}
 		for (let value of Object.values(groupPower)) {
-			RestraintsList2.push(value);
+			RestraintsList2.push(...value);
 		}
 	}
 
@@ -3083,6 +3101,10 @@ function KinkyDungeonUpdateRestraints(delta) {
 			}*/
 		}
 
+	}
+
+	for (let t of KDHeavyRestraintPrefs) {
+		if (KinkyDungeonStatsChoice.get(t)) playerTags.set(t, true);
 	}
 	if (KinkyDungeonStatsChoice.get("Deprived")) playerTags.set("NoVibes", true);
 	if (KinkyDungeonStatsChoice.get("Unmasked")) playerTags.set("Unmasked", true);
@@ -3588,10 +3610,10 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 function KinkyDungeonIsLinkable(data) {
 	if (data.newRestraint.NoLinkOver) return false;
 	//if (!oldRestraint.nonbinding && newRestraint.nonbinding) return false;
+	if (data.item && !KDCheckLinkSize(data.item, data.newRestraint, false, false, undefined, data.ignoreItem, data.props)) return false;
 	if (data.oldRestraint && data.newRestraint && data.oldRestraint && data.oldRestraint.Link) {
 		if (data.newRestraint.name == data.oldRestraint.Link) return true;
 	}
-	if (data.item && !KDCheckLinkSize(data.item, data.newRestraint, false, false, undefined, data.ignoreItem, data.props)) return false;
 	if (data.item && !KDCheckLinkTotal(data.item, data.newRestraint, data.linkUnderItem)) return false;
 	if (data.oldRestraint && data.newRestraint && data.oldRestraint && (data.oldRestraint.LinkableBy || data.oldRestraint.LinkAll) && data.newRestraint.shrine) {
 		if (data.oldRestraint.LinkAll) return true;
@@ -4672,8 +4694,8 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 			}
 			/** @type {KDRestraintPropsBase} */
 			let props = {
-				Model: CuffModels[origRestraint.Group] || (origRestraint.Model + ModelSuffix + (cuffInfo.ModelSuffix || "")),
-				Asset: CuffAssets[origRestraint.Group] || (origRestraint.Asset),
+				Model: CuffModels[cuffPart] || (origRestraint.Model + ModelSuffix + (cuffInfo.ModelSuffix || "")),
+				Asset: CuffAssets[cuffPart] || (origRestraint.Asset),
 				power: origRestraint.power + addPower,
 				shrine: shrine,
 				enemyTags: enemyTags,
@@ -5031,7 +5053,7 @@ function KDHasRemovableHex(item, level) {
 function KDGetRemovableHex(item, level) {
 	if (item.events) {
 		return item.events.filter((event) => {
-			return event.trigger == "CurseTransform" && KDEventHexModular[event.original] && KDEventHexModular[event.original].level <= level;
+			return KDEventHexModular[event.original] && KDEventHexModular[event.original].level <= level; // event.trigger == "CurseTransform" &&
 		});
 	}
 	return [];
@@ -5237,3 +5259,36 @@ function KDGetRestraintHost(item) {
 	return host;
 }
 
+
+/**
+ *
+ * @param {KinkyDungeonEvent} e
+ * @param {item} item
+ */
+function KDLinkItemEvent(e, item, data) {
+	let added = false;
+	if (data.restraintsAdded) {
+		for (let r of data.restraintsAdded) {
+			if (r.r.name === item.name) {
+				added = true;
+				break;
+			}
+		}
+	}
+	if (!added && (KDCanAddRestraint(KinkyDungeonGetRestraintByName(KDRestraint(item)?.Link), true, undefined, false, undefined, true, true))) {
+		let subMult = 1;
+		let chance = e.chance ? e.chance : 1.0;
+		if (e.subMult !== undefined) {
+			let rep = (KinkyDungeonGoddessRep.Ghost + 50) / 100;
+			subMult = 1.0 + e.subMult * rep;
+		}
+		if (e.tags?.includes("lowwill") && KinkyDungeonStatWill < 0.1) chance = 1.0;
+		if (item && KDRestraint(item).Link && (KDRandom() < chance * subMult) && (!e.noLeash || KDGameData.KinkyDungeonLeashedPlayer < 1)) {
+			let newRestraint = KinkyDungeonGetRestraintByName(KDRestraint(item).Link);
+			//KinkyDungeonLinkItem(newRestraint, item, item.tightness, "");
+			if (KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true)) {
+				if (KDToggles.Sound && e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+			}
+		}
+	}
+}

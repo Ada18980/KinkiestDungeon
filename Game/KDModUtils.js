@@ -23,7 +23,7 @@ function addTextKey(Name, Text) {
 	let ct = 0;
 	for (let screen of TextAllScreenCache.entries()) {
 		if (screen[0].includes("KinkyDungeon")) {
-			screen[1].cache[Name] = Text;
+			screen[1].cache[Name] = screen[1].translationcache[Text] || Text;
 		} else console.log("ERROR LOADING TEXT!!!");
 	}
 	if (ct == 0) KDLoadingTextKeys[Name] = Text;

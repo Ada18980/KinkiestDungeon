@@ -120,6 +120,8 @@ interface ModelLayer extends Namable {
 
 	/** [Group, Color] */
 	ImportColorFromGroup?: string[],
+	/** [Category, Color] */
+	ImportColorFromCategory?: string[],
 
 	/** Adds a Erase map for heel deletion and such. If the same sprite is in use it wont be duped*/
 	EraseSprite?: string,

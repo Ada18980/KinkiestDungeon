@@ -233,7 +233,7 @@ AddModel({
 	AddPose: ["EncaseHandLeft"],
 	Layers: ToLayerMap([
 		{ Name: "HandLeft", Layer: "BindHandLeft", Pri: -5,
-			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie"]),
+			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie", "Yoked"]),
 			SwapLayerPose: {Front: "BindForeHandLeft"},
 			HidePoses: ToMap(["HideHands"]),
 			GlobalDefaultOverride: ToMap(["Front"]),
@@ -251,7 +251,7 @@ AddModel({
 	AddPose: ["EncaseHandRight"],
 	Layers: ToLayerMap([
 		{ Name: "HandRight", Layer: "BindHandRight", Pri: -5,
-			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie"]),
+			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie", "Yoked"]),
 			SwapLayerPose: {Front: "BindForeHandRight"},
 			HidePoses: ToMap(["HideHands"]),
 			GlobalDefaultOverride: ToMap(["Front"]),

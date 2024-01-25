@@ -482,8 +482,11 @@ let KDMoveObjectFunctions = {
 					level: MiniGameKinkyDungeonLevel,
 					index: KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
 					lootTrap: lootTrap,
+					aggro: true,
 				};
 				KinkyDungeonSendEvent("beforeChest", data);
+				if (data.aggro)
+					KinkyDungeonAggroAction('chest', {faction: faction, x: moveX, y: moveY});
 				chestType = data.chestType;
 				roll = data.roll;
 				noTrap = data.noTrap;
@@ -496,7 +499,6 @@ let KDMoveObjectFunctions = {
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ChestOpen.ogg");
 				KinkyDungeonMapSet(moveX, moveY, 'c');
 				KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
-				KinkyDungeonAggroAction('chest', {faction: faction});
 			}
 		} else {
 			KinkyDungeonSendActionMessage(6, TextGet("KDCantTouchThat"), "#ff8800",1, false, true);
@@ -624,7 +626,7 @@ function KDSlimeWalker(entity) {
 
 function KDSlimeImmune(enemy) {
 	return enemy.Enemy?.tags.slime
-		|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "glue", "resist")
+		//|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "glue", "resist")
 		|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "glue", "immune")
 		|| enemy.Enemy?.tags.slimewalk
 		|| KDEntityBuffedStat(enemy, "glueDamageResist") >= 0.45;
@@ -707,12 +709,12 @@ let KDEffectTileFunctions = {
 		} else {
 			let result = false;
 			// Latex slimes entities that are on it
-			if (!KDEntityHasBuff(entity, "Drenched")) {
-				let slimeWalker = KDSlimeWalker(entity);
-				if (!slimeWalker) {
+			let slimeWalker = KDSlimeWalker(entity);
+			if (!slimeWalker) {
+				if (!KDEntityHasBuff(entity, "Drenched")) {
 					KinkyDungeonApplyBuffToEntity(entity, KDSlimed);
-					result = true;
 				}
+				result = true;
 			}
 			// Latex also constantly applies binding
 			if (result || KDEntityBuffedStat(entity, "SlimeProgress")) {
@@ -755,7 +757,7 @@ let KDEffectTileFunctions = {
 		if (tile.pauseDuration > 0) {
 			// Meep
 		} else {
-			let result = (entity.player && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") >= 0.45))
+			let result = (entity.player && !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") >= 0.75))
 			|| (!entity.player && !entity.Enemy.tags?.metal);
 			let slimeWalker = entity.player && KDSlimeWalker(entity);
 			if (!slimeWalker) {

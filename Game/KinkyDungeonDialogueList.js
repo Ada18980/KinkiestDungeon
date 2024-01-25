@@ -16,7 +16,11 @@ let KDDialogueParams = {
  * @type {string[]}
  */
 let KDResertNGTags = [
-	"BossDialogueFuuka"
+	"BossDialogueFuuka",
+	"BossDialogueTheWarden",
+	"BossDialogueSilverWitch",
+	"BossDialogueSelene",
+	"BossDialogueDollmaker",
 ];
 
 
@@ -348,7 +352,7 @@ let KDDialogue = {
 	"OfferChain": KDYesNoBasic("OfferChain", ["Metal"], ["Ghost"], ["chainRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15], 2, 3),
 	"OfferVine": KDYesNoBasic("OfferVine", ["Will"], ["Ghost"], ["vineRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15], 2, 3),
 	"OfferObsidian": KDYesNoBasic("OfferObsidian", ["Elements"], ["Ghost"], ["obsidianRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15], 1, 2),
-	"OfferMaidRestraint": KDYesNoBasic("OfferMaidRestraint", ["Illusion"], ["Ghost"], ["maidRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15], 1, 2),
+	"OfferMaidRestraint": KDYesNoBasic("OfferMaidRestraint", ["Illusion"], ["Ghost"], ["maidRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15], 1, 2, "Blue"),
 	"OfferDusterGag": KDYesNoBasic("OfferDusterGag", ["Illusion"], ["Ghost"], ["dustergag"], [55, 0, 75, 0], [-25, 0, 40, 15], 1, 1),
 	"OfferDragon": KDYesNoBasic("OfferDragon", ["Leather"], ["Ghost"], ["dragonRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15], 1, 2),
 	"OfferComfy": KDYesNoBasic("OfferComfy", ["Conjure"], ["Ghost"], ["comfyRestraints"], [55, 0, 75, 0], [-25, 0, 40, 15]),
@@ -2315,7 +2319,9 @@ let KDDialogue = {
 		}
 	},
 
-	"BlacksmithShop": KDSaleShop("BlacksmithShop", ["Lockpick", "Knife", "Sword", "Shield", "Axe", "Spear", "TrapCuffs"], [], ["blacksmith"], 0.4, 1.5),
+	"BlacksmithShop": KDSaleShop("BlacksmithShop", ["Lockpick", "Knife", "Sword", "Hammer", "Axe", "Spear", "TrapCuffs"], [], ["blacksmith"], 0.4, 1.5),
+	"ArmorerShop": KDSaleShop("ArmorerShop", ["Shield", "Breastplate", "Bracers", "Gauntlets", "SteelBoots", "ChainTunic", "ChainBikini", "TrapBelt", "TrapBra"], [], ["blacksmith"], 0.4, 2.0),
+	"BowyerShop": KDSaleShop("BowyerShop", ["AncientPowerSource", "Bow", "BowRecurve", "Crossbow", "CrossbowPistol", "Bustier", "LeatherGloves", "LeatherBoots", "TrapBlindfold"], [], ["blacksmith"], 0.4, 1.75),
 	"PrisonerBandit": {
 		response: "Default",
 		personalities: ["Sub"],
@@ -3082,7 +3088,7 @@ let KDDialogue = {
 			"Attack": {playertext: "Default", exitDialogue: true},
 		}
 	},
-	"DollmakerStage2": { // Player defeats fuuka's first form
+	"DollmakerStage2": {
 		response: "Default",
 		clickFunction: (gagged, player) => {
 			let point = KinkyDungeonGetNearbyPoint(KDMapData.StartPosition.x + 10, KDMapData.StartPosition.y - 5, true,undefined, true, true);
@@ -3105,7 +3111,7 @@ let KDDialogue = {
 			},
 		}
 	},
-	"DollmakerStage3": { // Player defeats fuuka's first form
+	"DollmakerStage3": {
 		response: "Default",
 		clickFunction: (gagged, player) => {
 			// Remove the doors
@@ -3132,7 +3138,7 @@ let KDDialogue = {
 			},
 		}
 	},
-	"DollmakerWin": { // Player beats Fuuka
+	"DollmakerWin": {
 		response: "Default",
 		clickFunction: (gagged, player) => {
 			KinkyDungeonSetFlag("BossUnlocked", -1);
@@ -3210,7 +3216,7 @@ let KDDialogue = {
 			},
 		}
 	},
-	"DollmakerLose": { // Player loses to Fuuka
+	"DollmakerLose": {
 		response: "Default",
 		clickFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);

@@ -147,8 +147,8 @@ function TranslationString(S: string, T: string[], CharacterName: string): strin
 	if ((S != null) && (S.trim() !== "")) {
 		S = S.trim();
 		for (let P = 0; P < T.length - 1; P++)
-			if (S === T[P].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player)))
-				return T[P + 1].replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player));
+			if (S === T[P])
+				return T[P + 1];
 	}
 	return S;
 }
@@ -163,7 +163,7 @@ function TranslationStringCachePreBuild(translations: string[], CharacterName: s
 	let translationsStringLineCache = new Map();
 	let translationsLineStringCache = new Map();
 	translations.forEach((T, i) => {
-		let S = T.replace("DialogCharacterName", CharacterName).replace("DialogPlayerName", CharacterNickname(Player));
+		let S = T;
 		translationsStringLineCache.set(S, i);
 		translationsLineStringCache.set(i, S);
 	});
@@ -203,17 +203,6 @@ function TranslationStringCache(S: string, translationsStringLineCache: Map<stri
 	return S;
 }
 
-/**
- * Translates a character dialog from the specified array
- * @param C - The character for which we need to translate the dialog array.
- * @param T - The active translation dictionary
- */
-function TranslationDialogArray(C: Character, T: string[]): void {
-	for (let D = 0; D < C.Dialog.length; D++) {
-		C.Dialog[D].Option = TranslationString(C.Dialog[D].Option, T, C.Name);
-		C.Dialog[D].Result = TranslationString(C.Dialog[D].Result, T, C.Name);
-	}
-}
 
 /**
  * Translates a set of tags. Rerenders the login message when on the login page.
@@ -225,37 +214,6 @@ function TranslationTextArray(S: {Tag: string, Value: string}[], T: string[]): v
 		S[P].Value = TranslationString(S[P].Value, T, "");
 }
 
-/**
- * Translate a character dialog if the file is in the dictionary
- * @param C - The character for which we want to translate the dialog
- */
-function TranslationDialog(C: Character): void {
-
-	// If we play in a foreign language
-	if ((TranslationLanguage != null) && (TranslationLanguage.trim() != "") && (TranslationLanguage.trim().toUpperCase() != "EN")) {
-
-		let OnlinePlayer = C.AccountName.indexOf("Online-") >= 0;
-		// Finds the full path of the translation file to use
-		let FullPath = (OnlinePlayer ? "Screens/Online/ChatRoom/Dialog_Online" :  (C.ID == 0) ? "Screens/Character/Player/Dialog_Player" : "Screens/" + CurrentModule + "/" + CurrentScreen + "/Dialog_" + C.AccountName) + "_" + TranslationLanguage + ".txt";
-
-		// If the translation file is already loaded, we translate from it
-		if (TranslationCache[FullPath]) {
-			TranslationDialogArray(C, TranslationCache[FullPath]);
-			return;
-		}
-
-		// If the translation is available, we open the txt file, parse it and returns the result to build the dialog
-		if (TranslationAvailable(FullPath))
-			CommonGet(FullPath, function() {
-				if (this.status == 200) {
-					TranslationCache[FullPath] = TranslationParseTXT(this.responseText);
-					TranslationDialogArray(C, TranslationCache[FullPath]);
-				}
-			});
-
-	}
-
-}
 
 /**
  * Translate an array of tags in the current selected language

@@ -1034,9 +1034,9 @@ Feet
 脚
 Everywhere!
 任何位置！
-Physical Armor: 
+Physical Armor:
 物理护甲：
-Magic Armor: 
+Magic Armor:
 魔法护甲：
 In the Shadows: You are harder to see.
 处在阴影中：你更难被敌人察觉。
@@ -1044,7 +1044,7 @@ Invisible: You are very difficult to see.
 隐形：你非常难以被敌人察觉。
 Quickness: Your next movement is so fast it doesn't advance a turn.
 迅捷：你的下一个动作极其迅速，不消耗回合时间。
-All Damage Reduction: 
+All Damage Reduction:
 所有伤害减免：
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 你受到 PERCENT1 DAMAGETYPE 伤害，基于 PERCENT2 DAMAGETYPE 抗性和 PERCENT3 DAMAGECATEGORY 修正
@@ -1284,7 +1284,7 @@ Missing key
 未找到钥匙
 You are protected from damage and can't be bound until the shield is broken!
 你将受到保护，免受伤害，并且在护盾被打破之前无法被束缚！
-Chance for a spell to fizzle: 
+Chance for a spell to fizzle:
 施法失败几率：
 Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 闪避率：Percent%，基于 EVASIONSUM 闪避和 EVASIONPENALTY% 惩罚。
@@ -1428,7 +1428,7 @@ Delete Mod
 移除模组
 Clear Perks
 清除词条
-Config 
+Config
 配置
 Cancel
 取消
@@ -1544,15 +1544,15 @@ Press a key, then press a button to set that key
 按下一个按键，然后按一个按钮来设置该按键
 Floor FLOORNUMBER: DUNGEONNAME
 楼层 FLOORNUMBER: DUNGEONNAME
-Lockpicks: 
+Lockpicks:
 撬锁工具：
-Keys: 
+Keys:
 钥匙：
-Magic Keys: 
+Magic Keys:
 魔法钥匙：
-Knife: 
+Knife:
 刀：
-Mag. Knife: 
+Mag. Knife:
 魔法刀：
 You climb down the stairs. The passage closes behind you.
 你进入了下一层。通道在你的身后关闭。
@@ -1708,7 +1708,7 @@ You find a snow-like potion that's cold to the touch.
 你会发现一种摸起来很冷的雪状药水。
 You find a medley of potions.
 你会发现一堆药水。
-Rarity: 
+Rarity:
 稀有度：
 Lesser
 无价值的
@@ -2432,7 +2432,7 @@ Dreamcatcher
 梦网
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 在噩梦中铸造，用钢铁编织。召唤一个暗影武士，对于未察觉的目标，消耗2%的远古能量。
-Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
+Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
 造成暗影伤害。对于未察觉（100%）或易受攻击（50%）的目标，额外造成最多 30 点精神伤害。
 Axe
 斧头
@@ -2440,11 +2440,11 @@ Great for cutting trees that happen to be underground.
 对于地下的树木也非常有效。
 Also deals 20 damage to enemies next to you. Deals slash damage.
 同时对你旁边的敌人造成 20 点伤害。造成斩击伤害。
-Accuracy: 
+Accuracy:
 精准度：
-Crit Multiplier: 
+Crit Multiplier:
 暴击倍率：
-Bind Crit Multiplier: 
+Bind Crit Multiplier:
 捆绑暴击倍率：
 Find the keys..
 寻找钥匙...
@@ -2462,9 +2462,9 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 你找到了一个缝隙，可以将刀或工具塞进去，让它保持稳定。
 You found something sticky and might be able to pull off fabrics.
 你找到了一些黏糊糊的东西，也许可以用它来撕掉布料。
-Evasion: 
+Evasion:
 闪避：
-Visibility: 
+Visibility:
 可见度：
 Submissive: Enemies won't attack you, but they will try to play with you.
 顺从者：敌人不会尝试攻击你，但他们会尝试对你做一些奇妙的互动。
@@ -2502,13 +2502,13 @@ Edged!
 高潮边缘！
 Satisfied. Miscast chance is reduced.
 满足。减少失误的概率
-Damage: 
+Damage:
 伤害：
-Bind: 
+Bind:
 捆绑：
-Crit: 
+Crit:
 暴击：
-SP Cost: 
+SP Cost:
 体力消耗：
 Cut PWR: AMNT%
 力量削减：AMNT%
@@ -4646,7 +4646,7 @@ Non-Lockable
 不可上锁
 Unlocked
 解锁的
-Lock Type: 
+Lock Type:
 锁类型：
 Simple
 简单
@@ -4800,15 +4800,15 @@ Commerce
 商业
 Shrine of SHRINETYPE
 SHRINETYPE 神泉
-Goddess: 
+Goddess:
 材质：
-Goddess Blessing: 
+Goddess Blessing:
 女神祝福：
-Goddess Curse: 
+Goddess Curse:
 女神诅咒：
-Mana Bonus: 
+Mana Bonus:
 法力奖励：
-Lack of Mana Penalty: 
+Lack of Mana Penalty:
 缺乏法力惩罚：
 Your excess mana helps you suppress the enchantment!
 你多余的法力可以帮助你抵抗附魔！
@@ -4828,11 +4828,11 @@ These runes are meant for someone with less willpower.
 这些符文是为意志力较弱的人准备的。
 You try to read the runes but cannot understand them.
 你尝试阅读符文，但无法理解它们。
-Allies: 
+Allies:
 盟友：
-Enemies: 
+Enemies:
 敌人：
-Favorable: 
+Favorable:
 喜欢：
 Nevermere Trainers
 Nevermere 训练师
@@ -5260,7 +5260,7 @@ The curse on the RestraintName is lifted!
 对 RestraintName 的诅咒解除了！
 Press RIGHT to confirm buy!
 按 RIGHT 确认购买！
-You find 
+You find
 你找到
 Collar
 项圈
@@ -6788,7 +6788,7 @@ A book of manipulative spells
 一本操纵咒语的书
 Verbal
 口头
-Components: 
+Components:
 施法部位
 Arm Movements
 手臂动作
@@ -8876,7 +8876,7 @@ You need a higher level in SCHOOL magic to learn this spell.
 你需要更高级别的 SCHOOL 魔法才能学习此法术。
 You need more spell points.
 你需要更多的法术点数。
-School: 
+School:
 流派：
 Generic
 通用
@@ -8886,13 +8886,13 @@ Special
 特别
 Learn Spell
 学习法术
-Spell Points: 
+Spell Points:
 法术点：
-Level: 
+Level:
 等级：
-Spell Point Cost: 
+Spell Point Cost:
 法术点消耗：
-Mana Cost: 
+Mana Cost:
 法力消耗：
 Remove Spell 1
 移除法术 1
@@ -8944,7 +8944,7 @@ They say that the maiden who safeguards the graveyard is kind to her pets...
 （《万古之书》中的一页）|有人说 '地下墓穴' 比时间本身还要古老。当旧文明开始研究永生时，没有人知道是否有可能让那些已经死去的人复活。因此，地下墓穴被用来储存前人类的所有遗骸，以便当大法师最终取得突破时，他们也可以复活。
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 （《万古之书》中的一页）|据说大法师萨里尔·文拉加(Sariel Vinlaga)就在这个图书馆学习过。在收集了所有人类知识（魔法、精神、技术）后，她指派十二位小魔法师负责整理和整理她所获得的知识财富。没有人知道她为什么突然放弃它，或者为什么它至今仍如此年久失修。
-(A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
+(A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
 （《万古之书》中的一页）|长袍废墟对于学者来说仍然是一个谜。几乎没有任何光线从天花板的裂缝中透进来，但这个区域却充满了生机。众所周知，人类免于死亡的再生能力依赖于个人自身的法力供应。那么没有法力的植物和野兽如何生存呢？虔诚的人说是恢复女神保护了丛林，但旧文明是否发展出了一种维持地下生命的手段？
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 （《万古之书》中的一页）|能源问题已经困扰了文明数千年。在地脉被发现之前，人类依赖河流和木柴等自然资源。当水晶洞被发现时，发生了一场伟大的革命。文明不再依赖自然资源，可以利用地下混沌能量的源泉为机械提供前所未有的动力。
@@ -9786,9 +9786,9 @@ Can disarm (chance: DISARMCHANCE%)
 可以解下（概率：DISARMCHANCE%）
 Resistances:
 抵抗：
-HP: 
+HP:
 生命值：
-Binding: 
+Binding:
 捆绑值：
 Ambivalent
 矛盾
@@ -13940,7 +13940,7 @@ Upcast Level LEVEL
 LEVEL 级
 Prerequisite
 前置条件
-Unlocks: 
+Unlocks:
 解锁：
 You need to learn REQUIREDSPELL before you can learn this one.
 你需要先学习 REQUIREDSPELL 才能学习这个。
@@ -13976,7 +13976,7 @@ Initiating prisoner lockdown protocol
 启动囚犯封锁协议
 Your RestraintName suddenly snap together as the EnemyName activates them
 当 EnemyName 激活它们时，你的 RestraintName 突然合在一起
-Turn Count: 
+Turn Count:
 回合数：
 The Shopkeeper leashes you!
 店主正在牵着你！
@@ -14318,7 +14318,7 @@ Paste
 粘贴
 Items on Ground:
 地面物品：
-Preloading Character Assets: 
+Preloading Character Assets:
 预载角色资源:
 Uniforms
 制服
@@ -14970,7 +14970,7 @@ Rubber Stick
 橡胶棒
 A rubber cylinder without any lewd intentions whatsoever.
 一个没有任何猥亵意图的橡胶圆棒。
-Deals grope damage. 
+Deals grope damage.
 造成抚摸伤害。
 You pick up a flexible rubber stick.
 你拿起一根柔软的橡胶棒。
@@ -15776,9 +15776,9 @@ Cracks begin to form in your RestraintName!
 你的 RestraintName 开始出现裂缝！
 Your RestraintName shatters and falls off!
 你的 RestraintName 破碎并掉落！
-Load Hotbar 
+Load Hotbar
 加载快捷栏
-Save Hotbar 
+Save Hotbar
 保存快捷栏
 Clear Hotbar
 清空快捷栏
@@ -16740,7 +16740,7 @@ Doll Shoppe
 玩偶商店
 Fuuka's Shrine
 Fuuka的神龛
-Receive the following restraints: 
+Receive the following restraints:
 受到以下拘束：
 You will be bound with some form of restraint.
 你将受到某种形式的束缚。
@@ -17252,7 +17252,7 @@ Prisoner #NUMR/TTL
 囚犯 #NUMR/TTL
 Select a character to examine
 选择要检查的角色
-Former Faction: 
+Former Faction:
 前派系：
 Minigun
 机枪

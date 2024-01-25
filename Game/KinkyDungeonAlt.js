@@ -1496,6 +1496,18 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 	KD_PasteTile(KDMapTilesList.ShopStart, KDMapData.StartPosition.x, KDMapData.StartPosition.y - 4, data);
 
 	DialogueCreateEnemy(KDMapData.StartPosition.x + 5, KDMapData.StartPosition.y, "ShopkeeperStart");
+	DialogueCreateEnemy(KDMapData.StartPosition.x + 1, KDMapData.StartPosition.y - 3, "BlacksmithQuest").AI = "guard";
+	KinkyDungeonMapSet(KDMapData.StartPosition.x + 1, KDMapData.StartPosition.y - 3, '2');
+	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 1) + ',' + (KDMapData.StartPosition.y - 3), {OffLimits: true});
+
+	DialogueCreateEnemy(KDMapData.StartPosition.x + 2, KDMapData.StartPosition.y - 3, "ArmorerQuest").AI = "guard";
+	KinkyDungeonMapSet(KDMapData.StartPosition.x + 2, KDMapData.StartPosition.y - 3, '2');
+	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 2) + ',' + (KDMapData.StartPosition.y - 3), {OffLimits: true});
+
+
+	DialogueCreateEnemy(KDMapData.StartPosition.x + 3, KDMapData.StartPosition.y - 3, "BowyerQuest").AI = "guard";
+	KinkyDungeonMapSet(KDMapData.StartPosition.x + 3, KDMapData.StartPosition.y - 3, '2');
+	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 3) + ',' + (KDMapData.StartPosition.y - 3), {OffLimits: true});
 
 	// Normal end stairs
 	KinkyDungeonMapSet(b1*2 - 1, VisitedRooms[0].y*2 - 4, 's');
