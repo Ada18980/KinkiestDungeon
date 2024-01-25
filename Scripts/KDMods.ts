@@ -9,7 +9,7 @@ let KDGetMods = false;
 let KDOffline = false;
 
 
-async function KDGetModsLoad() {
+async function KDGetModsLoad(execute) {
 	try {
 		//@ts-ignore
 		let API = window.kdAPI;
@@ -42,12 +42,16 @@ async function KDGetModsLoad() {
 	} catch (err) {
 		// We are online and no local mod loading :()
 	}
+
+	if (execute) {
+		KDExecuteMods();
+	}
 }
 
 function KDDrawMods() {
 	if (!KDGetMods && KDToggles.AutoLoadMods) {
 		KDGetMods = true;
-		KDGetModsLoad();
+		KDGetModsLoad(false);
 	}
 	let count = 0;
 	let keys = Object.keys(KDMods);

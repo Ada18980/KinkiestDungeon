@@ -32,6 +32,8 @@ Monk class?
  - New auto mod loader, simply place mods in Mods/ folder to load
  - Fiddles, yokes added to prison
  - Prison now mildly respects armbinder/boxbinder preferences (specifically if you do Less_Armbinders it will filter out armbinders from prison)
+ - Slime Eruption damage reduced from 50 to 40
+ - Slime Blast damage reduced from 40 to 35
 
 5.1.12
  - Added a global cooldown on tease attacks as well as a per enemy cooldown

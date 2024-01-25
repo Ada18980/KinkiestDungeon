@@ -125,7 +125,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {pink: 1100}, shrines: [], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}]},
 	{name: "PinkAlkahestor", faction: "Latex", clusterWith: "alchemist", playLine: "Gagged", bound: "Alkahestor", color: "#ff8888",
-		tags: KDMapInit(["pink", "opendoors", "nocapture", "antiMagic", "leashing", "human", "alchemist", "silenceimmune", "blindimmune", "ranged", "miniboss", "expRestraints", "latexRestraints", "handcuffer", "latexGag"]),
+		tags: KDMapInit(["pink", "opendoors", "nocapture", "antiMagic", "leashing", "human", "alchemist", "silenceimmune", "blindimmune", "ranged", "miniboss", "expRestraints", "latexCollar", "latexRestraints", "handcuffer", "latexGag"]),
 		ignorechance: 0, armor: 1, followRange: 2, AI: "hunt",
 		spells: ["AmpuleBlue"], spellCooldownMult: 1, spellCooldownMod: 4, kite: 1.5, projectileAttack: true,
 		attackLock: "Red",

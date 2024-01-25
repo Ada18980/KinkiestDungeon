@@ -899,7 +899,7 @@ function KinkyDungeonLoad() {
 			if (KDToggles.AutoLoadMods) {
 				if (!KDGetMods) {
 					KDGetMods = true;
-					KDGetModsLoad();
+					KDGetModsLoad(true);
 				}
 			}
 

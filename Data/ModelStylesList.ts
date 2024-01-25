@@ -406,6 +406,31 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Elf3",
 		],
 	},
+	Zombie: {
+		Bodystyle: [
+			"Zombie",
+			"Pale",
+			"ElementalPale",
+		],
+		Facestyle: [
+			"Fuuka",
+			"PinkCute",
+			"PinkAngry",
+			"RedOpen",
+			"RedScary",
+		],
+		Hairstyle: [
+			"PeachShort",
+			"PinkMessy",
+			"PinkNeat",
+			"PinkNeat",
+			"PinkNeat",
+			"BlackTwintails",
+			"SlateTwintails",
+			"DarkPurpleSideBangs",
+			"PurpleBraid",
+		],
+	},
 	Necromancer: {
 		Hairstyle: [
 			"PeachShort",

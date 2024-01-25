@@ -506,6 +506,25 @@ let LayerGroups = {
 		"Bodysuit",
 		"WrappingTorsoMid",
 	]),
+	BustSize: ToMap([
+		"WrapChest",
+		"HarnessOver",
+		"BindChest",
+		"BustierCollar",
+		"BustierChest",
+		"ShirtCollar",
+		"ShirtChest",
+		"Option_BindChestLower",
+		"NippleToysOption",
+		"SuitChestOver",
+		"BraChest",
+		"BindChestLower",
+		"SuitChest",
+		"CatsuitChest",
+		"NippleToys",
+		"Nipples",
+		"Chest",
+	]),
 
 	// region slime
 	"SlimeLegs": ToMap([
