@@ -215,9 +215,11 @@ let KDIntentEvents = {
 				enemy.playWithPlayer = 0;
 				enemy.playWithPlayerCD = 24;
 				return true;
+			} else {
+				KDPutInJail(KinkyDungeonPlayerEntity, enemy);
+				KDResetIntent(enemy, AIData);
+				KDBreakTether(KinkyDungeonPlayerEntity);
 			}
-			AIData.defeat = true;
-			KDBreakTether(KinkyDungeonPlayerEntity);
 			return false;
 		},
 	},

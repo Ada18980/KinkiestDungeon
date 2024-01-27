@@ -57,6 +57,12 @@ let KinkyDungeonFactionFilters = {
 		LightNeutral: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.25,"red":1,"green":1,"blue":1,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.25,"green":1.3833333333333333,"blue":0.8,"alpha":1},
 	},
+	"Nevermere": {
+		Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+		DarkNeutral: {"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":0.8,"red":0.7833333333333334,"green":0.9166666666666666,"blue":0.95,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.25,"red":0.8833333333333333,"green":1,"blue":1.1500000000000001,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0,"contrast":1,"brightness":1.35,"red":0.8333333333333333,"green":1.3833333333333333,"blue":0.4,"alpha":1},
+	},
 	"Dressmaker": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.91,"brightness":1,"red":2.1372549019607843,"green":1.1764705882352942,"blue":3.1176470588235294,"alpha":1},
 		DarkNeutral: {"gamma":0.8333333333333333,"saturation":0.1,"contrast":1.03,"brightness":1,"red":2.372549019607843,"green":1.7058823529411764,"blue":3.2941176470588234,"alpha":1},

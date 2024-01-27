@@ -100,8 +100,9 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 	Hogtie: {
 		rotation: -90,
 		pri_rotation: 1,
-		offset_x: 0.32,
-		offset_y: 0.1,
+		offset_x: 0.52,
+		offset_xFlip: 0.17,
+		offset_y: 0.2,
 		pri_offsetx: 2,
 		pri_offsety: 2,
 		global_default: "Closed",
@@ -126,6 +127,7 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		}
 		],
 	},
+
 
 	SuspendedKneel: {
 		filter_pose: ["Kneel", "KneelClosed"],
@@ -236,10 +238,9 @@ function ModelGetMaxPose(Poses: {[_: string]: boolean}, CheckVar: string, Filter
 	return maxPose;
 }
 
-function ModelGetPoseOffsets(Poses: {[_: string]: boolean}) {
+function ModelGetPoseOffsets(Poses: {[_: string]: boolean}, Flip: boolean) {
 	let pose = ModelGetMaxPose(Poses, "pri_offsetx");
-	let x = 0;
-	if (PoseProperties[pose]?.offset_x) x = PoseProperties[pose]?.offset_x;
+	let x = (Flip ? PoseProperties[pose]?.offset_xFlip : 0) || PoseProperties[pose]?.offset_x || 0;
 	pose = ModelGetMaxPose(Poses, "pri_offsety");
 	let y = 0;
 	if (PoseProperties[pose]?.offset_y) y = PoseProperties[pose]?.offset_y;

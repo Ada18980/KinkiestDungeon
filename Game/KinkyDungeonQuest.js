@@ -874,7 +874,7 @@ let KDQuests = {
 			}
 
 		}
-	}, 1, ["obsidianRestraints"]),
+	}, 1, ["steelbondage", "crystalRestraints", "leatherRestraints", "leatherRestraintsHeavy"]),
 
 	"IllusionQuest": KDGenQuestTemplate("IllusionQuest", "DragonShadow", "Illusion", (goddess, flag) => {
 		let point = KinkyDungeonGetRandomEnemyPoint(true);
@@ -921,7 +921,7 @@ let KDQuests = {
 			}
 
 		}
-	}, 1, ["shadowlatexRestraints", "shadowlatexRestraintsHeavy"])
+	}, 1, ["shadowlatexRestraints", "shadowlatexRestraintsHeavy", "obsidianRestraints"])
 };
 
 

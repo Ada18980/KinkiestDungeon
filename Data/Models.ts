@@ -388,8 +388,8 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		}
 
 		if (PIXI.BaseTexture.defaultOptions.scaleMode != Blend) PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
-		let modified = DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELWIDTH/2, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
-			MC.Containers.get(containerID), refreshfilters);
+		let modified = DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELHEIGHT * 0.25, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
+			MC.Containers.get(containerID), refreshfilters, flip);
 		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
 		MC.Mods.set(containerID, StartMods);
 		MC.Update.add(containerID);
@@ -415,12 +415,13 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			}
 		}
 
-		if (flip && Container.Container?.scale.x > 0) {
-			Container.Container.scale.x *= -1;
+
+		if (flip && Container.Mesh?.scale.x > 0) {
+			Container.Mesh.scale.x *= -1;
 			modified = true;
 		}
-		else if (!flip && Container.Container?.scale.x < 0) {
-			Container.Container.scale.x *= -1;
+		else if (!flip && Container.Mesh?.scale.x < 0) {
+			Container.Mesh.scale.x *= -1;
 			modified = true;
 		}
 
@@ -461,6 +462,8 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			}
 		}
 		Container.SpritesDrawn.clear();
+
+
 	}
 
 	// Update the updated array
@@ -521,7 +524,7 @@ function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : number {
 /**
  * Setup sprites from the modelcontainer
  */
-function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, ContainerContainer, refreshfilters: boolean) : boolean {
+function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, ContainerContainer, refreshfilters: boolean, flip: boolean) : boolean {
 	// We create a list of models to be added
 	let Models = new Map(MC.Models.entries());
 	let modified = false;
@@ -572,13 +575,13 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 
 
 	// TODO hide, filtering based on pose, etc etc
-	let {X_Offset, Y_Offset} = ModelGetPoseOffsets(MC.Poses);
+	let {X_Offset, Y_Offset} = ModelGetPoseOffsets(MC.Poses, flip);
 	let {rotation, X_Anchor, Y_Anchor} = ModelGetPoseRotation(MC.Poses);
 	let mods = ModelGetPoseMods(MC.Poses);
 	ContainerContainer.Container.angle = rotation;
-	ContainerContainer.Container.pivot.x = MODELWIDTH*Zoom * X_Anchor;
+	ContainerContainer.Container.pivot.x = MODELWIDTH*Zoom * X_Anchor + MODEL_XOFFSET*Zoom;
 	ContainerContainer.Container.pivot.y = MODELHEIGHT*Zoom * Y_Anchor;
-	ContainerContainer.Container.x = (MODEL_XOFFSET + MODELWIDTH * (1 + X_Offset)) * Zoom;
+	ContainerContainer.Container.x = (MODELWIDTH * (1 + X_Offset)) * Zoom + MODEL_XOFFSET*Zoom;
 	ContainerContainer.Container.y = (MODELHEIGHT * (1 + Y_Offset)) * Zoom;
 	ContainerContainer.Mesh.x = X;
 	ContainerContainer.Mesh.y = Y;
@@ -1275,7 +1278,7 @@ function GetUnnamedModels() {
 	console.log(keys);
 }
 
-function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number, Hardpoint: string) {
+function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number = 1, Hardpoint: string, Flip: boolean) {
 	let Zoom = (ZoomInit * MODEL_SCALE) || MODEL_SCALE
 	let hp = Hardpoints[Hardpoint];
 	let pos = {x: hp?.X*Zoom || 0, y: hp?.Y*Zoom || 0, angle: hp.Angle};
@@ -1315,27 +1318,26 @@ function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number, H
 	pos.x += ox * MODELWIDTH * Zoom;
 	pos.y += oy * MODELHEIGHT * Zoom;
 	pos.angle += rot * Math.PI / 180;
-	pos.x += ox * MODELWIDTH * Zoom;
-    pos.y += oy * MODELHEIGHT * Zoom;
-    pos.angle += rot * Math.PI / 180;
     pos.x -= (ax - (hp.OffsetX / MODELWIDTH || 0)) * Math.cos(rot * Math.PI / 180);
     pos.y += (ax - (hp.OffsetX / MODELWIDTH || 0)) * Math.sin(rot * Math.PI / 180);
     pos.x -= (ay - (hp.OffsetY / MODELHEIGHT || 0)) * Math.sin(rot * Math.PI / 180);
     pos.y -= (ay - (hp.OffsetY / MODELHEIGHT || 0)) * Math.cos(rot * Math.PI / 180);
-    let { X_Offset, Y_Offset } = ModelGetPoseOffsets(MC.Poses);
+    let { X_Offset, Y_Offset } = ModelGetPoseOffsets(MC.Poses, Flip);
     let { rotation, X_Anchor, Y_Anchor } = ModelGetPoseRotation(MC.Poses);
-    let pivotx = MODELWIDTH * Zoom * X_Anchor;
+    let pivotx = MODELHEIGHT*0.5 * Zoom * X_Anchor;
     let pivoty = MODELHEIGHT * Zoom * Y_Anchor;
     let lx = pos.x - pivotx;
     let ly = pos.y - pivoty;
     let angle = rotation * Math.PI / 180;
-    let xx = (MODEL_XOFFSET + MODELWIDTH * X_Offset) * Zoom;
-    let yy = (MODELHEIGHT * Y_Offset) * Zoom;
     pos.x = pivotx + (lx) * Math.cos(angle) - (ly) * Math.sin(angle);
     pos.y = pivoty + (ly) * Math.cos(angle) + (lx) * Math.sin(angle);
+
+    let xx = (MODELWIDTH * X_Offset) * Zoom + MODEL_XOFFSET*Zoom;
+    let yy = (MODELHEIGHT * Y_Offset) * Zoom;
 
 	pos.x += xx;
 	pos.y += yy;
 
+	if (Flip) pos.x = (0.5 * MODELHEIGHT) * Zoom - pos.x;
 	return pos;
 }

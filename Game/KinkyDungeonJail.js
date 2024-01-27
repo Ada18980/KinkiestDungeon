@@ -740,6 +740,29 @@ function KinkyDungeonTooMuchRestraint() {
 
 /**
  *
+ * @param {entity} player
+ * @param {entity} enemy
+ */
+function KDPutInJail(player, enemy) {
+	let entity = enemy ? enemy : player;
+	let nearestJail = KinkyDungeonNearestJailPoint(entity.x, entity.y);
+	let jailRadius = (nearestJail && nearestJail.radius) ? nearestJail.radius : 1.5;
+	let playerInCell = nearestJail ? (Math.abs(player.x - nearestJail.x) < jailRadius - 1 && Math.abs(player.y - nearestJail.y) <= jailRadius)
+		: null;
+	if (!playerInCell) {
+		let point = {x: nearestJail.x, y: nearestJail.y};//KinkyDungeonGetNearbyPoint(nearestJail.x, nearestJail.y, true, undefined, true);
+		if (point) {
+			KDBreakTether(player);
+			if (player.player)
+				KDMovePlayer(point.x, point.y, false);
+			else
+				KDMoveEntity(player, point.x, point.y, false);
+		}
+	}
+}
+
+/**
+ *
  * @param {number} xx
  * @param {number} yy
  * @param {string} type
@@ -755,17 +778,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 			KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
 		}
 		KDGameData.KinkyDungeonPrisonExtraGhostRep += 2;
-		let entity = KinkyDungeonJailGuard() ? KinkyDungeonJailGuard() : KinkyDungeonPlayerEntity;
-		let nearestJail = KinkyDungeonNearestJailPoint(entity.x, entity.y);
-		let jailRadius = (nearestJail && nearestJail.radius) ? nearestJail.radius : 1.5;
-		let playerInCell = nearestJail ? (Math.abs(KinkyDungeonPlayerEntity.x - nearestJail.x) < jailRadius - 1 && Math.abs(KinkyDungeonPlayerEntity.y - nearestJail.y) <= jailRadius)
-			: null;
-		if (!playerInCell) {
-			let point = {x: nearestJail.x, y: nearestJail.y};//KinkyDungeonGetNearbyPoint(nearestJail.x, nearestJail.y, true, undefined, true);
-			if (point) {
-				KDMovePlayer(point.x, point.y, false);
-			}
-		}
+		KDPutInJail(KinkyDungeonPlayerEntity, KinkyDungeonJailGuard());
 
 		if (KinkyDungeonJailGuard()?.KinkyDungeonJailTourInfractions < 1) {
 			let item = "CookieJailer";

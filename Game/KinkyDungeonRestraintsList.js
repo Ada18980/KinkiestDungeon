@@ -1221,6 +1221,7 @@ const KinkyDungeonRestraints = [
 		Filters: {
 			BinderStraps: {"gamma":1.1,"saturation":2.4333333333333336,"contrast":1.1333333333333333,"brightness":2.15,"red":1.4666666666666668,"green":4.25,"blue":1,"alpha":1},
 		},
+		renderWhenLinked: [...KDArmbinderLink],
 		playerTagsMult: {
 			"ItemArmsEmpty": 0.05,
 			"More_Armbinders": 3.5,
@@ -1896,7 +1897,7 @@ const KinkyDungeonRestraints = [
 		enemyTagsMult: {"backup_harness": 0.05},
 		minLevel: 4, allFloors: true, shrine: ["Leather", "ArmbinderHarness"],
 		maxwill: 0.6, events: [{trigger: "postRemoval", type: "armbinderHarness"}], requireSingleTagToEquip: ["Armbinders", "Boxbinders"]},
-	{renderWhenLinked: ["Belts"], inventory: true, trappable: true, name: "TrapArmbinder", debris: "Belts", inaccessible: true, strictness: 0.1, Asset: "LeatherArmbinder", LinkableBy: [...KDArmbinderLink], Type: "WrapStrap", Group: "ItemArms", Color: "Default", bindarms: true, bindhands: 1.0, power: 6, weight: 2,
+	{renderWhenLinked: [...KDArmbinderLink], inventory: true, trappable: true, name: "TrapArmbinder", debris: "Belts", inaccessible: true, strictness: 0.1, Asset: "LeatherArmbinder", LinkableBy: [...KDArmbinderLink], Type: "WrapStrap", Group: "ItemArms", Color: "Default", bindarms: true, bindhands: 1.0, power: 6, weight: 2,
 		Model: "ArmbinderCross",
 		playerTagsMult: {
 			"ItemArmsEmpty": 0.05,
@@ -1937,7 +1938,7 @@ const KinkyDungeonRestraints = [
 		},
 		Color: "Default", bindarms: true, restricthands: 0.85, power: 6, weight: 0, DefaultLock: "Red",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 10, "Pick": -0.15, "Unlock": -0.15},
-		helpChance: {"Pick": 0.5, "Unlock": 1.0}, enemyTags: {"trap":9, "yokeSpell": 10, "Unchained": -9}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Yokes", "Yoked"]},
+		helpChance: {"Pick": 0.5, "Unlock": 1.0}, enemyTags: {"trap":9, "yokeSpell": 10, "Unchained": -9, "steelbondage": 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Yokes", "Yoked"]},
 	{inventory: true, trappable: true, name: "HeavyYoke", Asset: "Yoke", accessible: true, Group: "ItemArms",
 		Model: "HeavyYoke",
 		playerTagsMult: {
@@ -1946,7 +1947,7 @@ const KinkyDungeonRestraints = [
 		},
 		Color: "Default", bindarms: true, restricthands: 0.85, power: 9, weight: 0, DefaultLock: "Disc",
 		escapeChance: {"Struggle": -1, "Cut": -0.8, "Remove": 0.4, "Pick": -0.25, "Unlock": -0.25},
-		helpChance: {"Pick": 0.25, "Unlock": 0.33}, enemyTags: {"trap":14, "yokeSpell": 50, "Unchained": -25}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["Metal", "Yokes", "Yoked"]},
+		helpChance: {"Pick": 0.25, "Unlock": 0.33}, enemyTags: {"trap":14, "yokeSpell": 50, "Unchained": -25, "steelbondage": 10}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["Metal", "Yokes", "Yoked"]},
 	{inventory: true, trappable: true, name: "TrapFiddle", Asset: "Yoke", accessible: true, Group: "ItemArms",
 		Model: "HeavyFiddle",
 		playerTagsMult: {
@@ -1955,7 +1956,7 @@ const KinkyDungeonRestraints = [
 		},
 		Color: "Default", bindarms: true, restricthands: 0.75, power: 6, weight: 0, DefaultLock: "Red",
 		escapeChance: {"Struggle": -0.6, "Cut": -0.55, "Remove": 4, "Pick": -0.13, "Unlock": -0.09},
-		helpChance: {"Pick": 0.4, "Unlock": 1.0}, enemyTags: {"trap":9, "yokeSpell": 4, "fiddle": 14, "Unchained": -9}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Fiddles"]},
+		helpChance: {"Pick": 0.4, "Unlock": 1.0}, enemyTags: {"trap":9, "yokeSpell": 4, "fiddle": 14, "Unchained": -9, "steelbondage": 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Fiddles"]},
 	{alwaysRender: true, inventory: true, trappable: true, name: "TrapHarness", debris: "Belts", strictness: 0.05, Asset: "LeatherStrapHarness", accessible: true,
 		Model: "Harness",
 		harness: true,
@@ -2818,7 +2819,7 @@ const KinkyDungeonRestraints = [
 		enemyTags: {"invisRestraints":1, },
 		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Illusion", "Blindfolds"]},
 
-	{renderWhenLinked: ["Belts"], inventory: true, trappable: true, name: "InvisibleArmbinder", debris: "Belts", inaccessible: true, strictness: 0.1, Asset: "LeatherArmbinder", LinkableBy: [...KDArmbinderLink], Type: "WrapStrap", Group: "ItemArms", Color: "Default", bindarms: true, bindhands: 1.0, power: 6, weight: 2,
+	{renderWhenLinked: [...KDArmbinderLink], inventory: true, trappable: true, name: "InvisibleArmbinder", debris: "Belts", inaccessible: true, strictness: 0.1, Asset: "LeatherArmbinder", LinkableBy: [...KDArmbinderLink], Type: "WrapStrap", Group: "ItemArms", Color: "Default", bindarms: true, bindhands: 1.0, power: 6, weight: 2,
 		Model: "SmoothArmbinder",
 
 		Filters: {
@@ -4868,7 +4869,7 @@ const KinkyDungeonRestraints = [
 			"",
 			"crystal",
 			{},
-			["Crystal"],
+			["Crystal", "Elements"],
 			[],
 			0,
 			{

@@ -182,7 +182,7 @@ function KDCreateVibeParticle() {
 	let y = 520 + (Hogtied ? 165 : (Kneeling ? 78 : 0));
 	if (StandalonePatched) {
 		// Throw out in favor of new system
-		let pos = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "Front");
+		let pos = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "Front", KDToggles.FlipPlayer);
 		x = pos.x;
 		y = pos.y;
 	}
@@ -202,7 +202,7 @@ function KDCreateVibeParticle() {
 			if (StandalonePatched) {
 				if (Math.random() > 0.5) forceSide = 1;
 				else forceSide = -1;
-				let pos = forceSide > 0 ? GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "BreastRight") : GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "BreastLeft");
+				let pos = forceSide > 0 ? GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "BreastRight", KDToggles.FlipPlayer) : GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "BreastLeft", KDToggles.FlipPlayer);
 				x = pos.x;
 				y = pos.y;
 				vx = ((Math.random() > 0.5) ? -1 : 1) * (0.05 + Math.random()*0.12);

@@ -4186,7 +4186,8 @@ function KinkyDungeonLoadGame(String) {
 				KinkyDungeonResetFog();
 				if (saveData.KinkyDungeonFogGrid) KDMapData.FogGrid = saveData.KinkyDungeonFogGrid;
 			}
-
+			KinkyDungeonLeashingEnemy();
+			KinkyDungeonJailGuard();
 			if (saveData.KDCommanderRoles) KDCommanderRoles = new Map(saveData.KDCommanderRoles);
 
 			KDUpdateEnemyCache = true;
