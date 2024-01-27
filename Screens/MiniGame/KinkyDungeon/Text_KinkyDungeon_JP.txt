@@ -138,7 +138,8 @@ Show Enemy Buff Auras
 敵のオーラを表示
 Minimalist Enemy Auras
 敵のオーラを小さく表示
-Pixelated GFX (needs restart)
+Chastity over Harness
+貞操帯をハーネスの上に表示
 
 Show Spell Range
 魔法の有効範囲を表示
@@ -273,8 +274,8 @@ You can drink mana from the shrine fountains once per floor without chance of pu
 １階につき１度だけ、神の泉から神罰無しで水を飲めるようになる
 Cursed
 呪い
-Goddess reputations start at 0 and can never exceed 25.
-ゲーム開始時の「女神からの評価」が0になり、上限が25になる
+Goddess reputations can never exceed 25.
+「女神からの評価」の上限が25になる
 
 Submissive
 従順
@@ -552,7 +553,7 @@ You can cast arm spells using just your fingers, as long as your hands aren't bo
 
 Well-Equipped
 装備充実
-Restraints and traps that are limited by level appear sooner, and will stack more. +10 security level.
+Restraints and traps that are limited by level appear sooner, and enemies stack more restraints in general. +10 security level.
 レベル制限のある拘束具と罠の登場が早まる。敵はより多くの拘束具を所持するようになる。手配度+10
 
 Quick-Draw
@@ -788,12 +789,12 @@ Lose 2 WP every time you remove a non-trivial restraint.
 
 Second Wind
 セカンドウィンド
-Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage. (Upgrade available in spell tree)
-手、腕、足のいずれも縛られておらず、猿轡、目隠しを装備していない時、気力が最大値の10%までゆっくり回復する(スキルツリーにてアップグレード可能)
+Regenerate WP when unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, gag, or slows. (Upgrade available in spell tree)
+手、腕、足のいずれも縛られておらず、猿轡、目隠しを装備しておらず、減速効果を受けていない時、気力が最大値の10%までゆっくり回復する(スキルツリーにてアップグレード可能)
 Second Wind Perk
 セカンドウィンド(パーク)
-Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage.
-手、腕、足のいずれも縛られておらず、猿轡、目隠しを装備していない時、気力が最大値の10%までゆっくり回復する
+Regenerate WP when you are unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, or gag bondage, and no slows.
+手、腕、足のいずれも縛られておらず、猿轡、目隠しを装備しておらず、減速効果を受けていない時、気力が最大値の10%までゆっくり回復する
 Triumphant Wind
 勝利の風
 Second Wind now regenerates up to 25% of your max WP
@@ -885,9 +886,8 @@ Start the game as a submissive prisoner wandering the halls.
 
 Rusty Bolts
 錆びたボルト
-Most traps have a 25% misfire chance.
+Most traps have a 25% misfire chance each time you step on them.
 ほとんどのトラップが25%の確率で不発になる
-
 
 Not a Pet
 ペットじゃない
@@ -1030,8 +1030,8 @@ Being gagged blocks you from casting verbal spells regardless of gag power.
 猿轡をかまされている際、強度に関係なく口を使った呪文は使用できなくなる
 Smooth Talker
 滑舌が良い
-Being gagged does not increase your miscast chance for verbal spells unless fully gagged.
-猿轡をかまされても、厳重でない限りは口を使う呪文の詠唱失敗率が上昇しない
+Being gagged does not increase your miscast chance for verbal spells unless fully gagged, and reduces gag power by 20%.
+猿轡をかまされても、厳重でない限りは口を使う呪文の詠唱失敗率が上昇せず、猿轡の威力が20%減少する
 
 Unmasked
 マスク嫌い
@@ -1465,7 +1465,7 @@ Charge is used to power various magic items and weapons.
 WP: CURRENT/MAX
 WP： CURRENT/MAX
 Charge: PERCENT
-チャージ: パーセント
+チャージ: PERCENT
 Use Potion
 ポーションを使う
  MP
@@ -1696,6 +1696,8 @@ Sprint/Hop
 走る/跳ぶ
 Inspect
 調べる
+Hide Bullets
+弾を隠す
 Expand Minimap
 ミニマップ拡大
 Wait till Interrupted
@@ -2665,6 +2667,8 @@ You found a hook you can use to pull on straps and loops.
 ストラップや結び目を引っ張るためのフックを見つけた。
 You have access to something sharp and can attempt to cut restraints.
 尖った地形を見つけた。効率よく拘束を切ることができる。
+You have access to something sharp and can attempt to Cut restraints, or Remove more effectively.
+尖ったものを見つけた。効率よく拘束を切断したり、外すことができる。
 You found a corner to help manipulate buckles and snaps with.
 バックルやスナップを動かすためのカドを見つけた。
 You found a crack and could maybe wedge a knife or tool into it to keep it still.
@@ -4405,6 +4409,8 @@ The guard electrocutes you with her taser!!!
 武装警備員はテーザー銃を発射してきた！
 The guard electrocutes you with her taser!!!
 武装警備員はテーザー銃を発射してきた！
+The EnemyName applies a NewRestraintName over your OldRestraintName
+EnemyName は、OldRestraintName を NewRestraintName に置き換ようとしている。
 The EnemyName replaces your OldRestraintName with a NewRestraintName
 EnemyName は、OldRestraintName を NewRestraintName に置き換ようとしている。
 The EnemyName removes your OldRestraintName
@@ -4907,8 +4913,38 @@ This is not a job for your fingers right now. You need something sharp to remove
 指で弄ってもどうすることもできない。TargetRestraint を外すには鋭利なものが必要だ。
 There's no way to loosen the TargetRestraint without some kind of sharp tool...
 鋭利な道具がないと、TargetRestraint を緩めることはできない……
+Tugging on the TargetRestraint is useless. Maybe if you had something sharp...
+いくら TargetRestraint を引っ張っても緩まない。何か鋭利なものがないと……
 You sigh as the TargetRestraint resists all your attempts at breaking through.
 TargetRestraint の突破口が見えず、ため息が漏れた。
+
+You fidget with the TargetRestraint but can't reach the clasps without some kind of edge.
+TargetRestraint の留め具に手を伸ばすが、届かない……
+You flail about but your hands are unable to reach the TargetRestraint.
+TargetRestraint に触れようともがくが、届かない……
+You can't reach the clasps on the TargetRestraint. If only you had some other way...
+TargetRestraint の留め具に手が届かない。何か他に方法があれば……
+You squirm around, rubbing the TargetRestraint against the smooth floor to no avail...
+TargetRestraint を滑らかな地面にこすりつけるが、全く意味がない……
+
+The knots on the TargetRestraint are too tight to pull apart without a hook.
+TargetRestraint の結び目がきつすぎて、フックなしでは解けそうにない。
+You struggle fruitlessly against the knots on the TargetRestraint, but they're too tight.
+TargetRestraint の結び目を解こうともがくが、きつすぎて効果がない。
+The TargetRestraint is too tight against your body. You'll need more leverage to pull it off.
+TargetRestraint を解くには力が足りない。
+You shake yourself around trying to rub off the TargetRestraint, but it's hopeless.
+TargetRestraint をこすりおとそうと身体をゆするが、全く効果がない。
+
+You need more grip to peel off the TargetRestraint...
+TargetRestraint を剥がすには力が足りない。
+Your trembling hands cant grip anything as they are, let alone undo the TargetRestraint.
+手が震えて TargetRestraint を解くどころか何も握ることもできない。
+You need more grip to peel off the TargetRestraint...
+TargetRestraint を剥がすには力が足りない。
+You rub yourself against the floor to no avail...
+床に身体をこすりつけても全く効果がない……
+
 You need some kind of corner for leverage on the TargetRestraint.
 TargetRestraint を緩めるには、何かカドが必要だ。
 You flail about but cant get any leverage on the TargetRestraint without an edge or corner.
@@ -5296,6 +5332,8 @@ It appears to be a receptacle for an ancient crystal.
 パワークリスタルの台座のようだ。
 It's a pile of slag emitting a strange magic smoke...
 灰の山が魔力のこもった煙を上げている……
+That object is locked with a LKTP.
+LKTP の鍵がかかっている。
 That object is locked
 鍵がかかっている。
 A shrine to the goddess of TYPE. A pool of mana glimmers below.
@@ -5439,7 +5477,7 @@ The goddess offers a ItemTraded for ItemCost (NumCurrent/NumMax)
 Next Offer
 次の商品
 Buy (press right)
-買う（右を押す）
+買う
 Cost: ItemCostgp
 値段：ItemCostgp
 You climb down to the next level
@@ -7064,6 +7102,13 @@ A squishy bubble that you can't get out of!
 It will slow you down severely but can be popped if you can reach a knife...
 泡に包まれた状態では、まともに動けなくなる。刃物があれば抜け出せるだろう……
 
+Latex Sphere
+ラテックススフィア
+A giant inflatable sphere that compresses you and leaves you helpless...
+ゴム製の巨大な球体。飲み込まれたら自力では逃げられない……
+You can't see out of it nor can you control its movement. If only you could puncture it!
+動くこともできず、外の様子もわからない。刃物で穴を開けられれば……
+
 Scale Boxtie Binder
 竜鱗のボックスタイバインダー
 A secure but comfortable binder meant for long-term wear by long-term prisoners of the Dragonhearts.
@@ -8191,7 +8236,8 @@ Device
 デバイス
 You found an item that was too small to see!
 小さなアイテムを見つけた！
-You picked up XXX gold.
+
+You pick up XXX gold.
 XXX ゴールドを手に入れた。
 You retrieve an ancient power crystal.
 パワークリスタルを手に入れた。
@@ -8319,10 +8365,10 @@ You pick up a Scroll of Speech.
 口弁の巻物を手に入れた。
 You pick up a Scroll of Sauntering.
 ステップの巻物を手に入れた。
-As you strike again, your weapon is pulled out of your grasp!
-もう一度攻撃すると、武器を落としてしまう！
+Your weapon is pulled out of your grasp!!!
+武器を取り上げられてしまった！
 Your weapon slips out of your hand as you try to cut with it...
-武器がてから滑り落ちた……
+武器が手から滑り落ちた……
 You put away the WEAPONNAME
 WEAPONNAME を外した。
 You equip the WEAPONNAME
@@ -10005,8 +10051,8 @@ Zone of Purity
 純潔のゾーン
 Select an area
 エリアを選択
-Creates an area which applies Chastity constantly to any enemy over 50% bondage that steps inside.
-拘束値が50%以上の敵が侵入すると、貞操帯を取り付けるエリアを生成する。
+Creates an area which applies Chastity constantly to any enemy over with any amount of binding that steps inside.
+拘束値が1以上の敵が侵入すると、貞操帯を取り付けるエリアを生成する。
 You conjure a realm of absolute purity.
 純潔を示す領域を作り出した。
 Zone of Excitement
@@ -10672,7 +10718,7 @@ You feel a gentle buzz...
 オモチャが微弱な振動を繰り返している……
 Your toys tease you gently...
 オモチャが振動している……
-Your toys vibrate noticeably, feeling quite good...
+Your vibrating toys are difficult to ignore...
 オモチャが振動し、快楽に身体が熱くなってくる……
 Your toys buzz strongly, making it difficult to concentrate!
 オモチャが音を立てて激しく振動し、集中力を刈り取られる！
@@ -10918,6 +10964,14 @@ Slimes pours out from the walls and ceiling!
 壁や天井からスライムが溢れ出してきた！
 Ethereal chains appear all around you!
 周囲を鎖に取り囲まれた！
+Shadows constrict around you!
+影が周囲を包み込んだ！
+An otherworldly sigil appears below you!
+異界の紋章が周囲を包み込んだ！
+Crystals rise up around you!
+周囲にクリスタルが浮かび上がった！
+Something shiny seems to be stretched out over the floor!
+床から光る何かが伸びてきた！
 You hear the sound of glass breaking, and a cloud of green gas rises around you!
 ガラスが割れる音が聞こえ、緑色のガスが周囲に立ち込めた！
 You hear the sound of glass breaking, and a cloud of pink gas rises around you!
@@ -11599,7 +11653,7 @@ Favorable
 You run up against the TETHER pulling you back.
 逃げ出そうとしたが、 TETHER にリードを引かれ、戻されてしまった。
 You are yanked back by the TETHER!
-TETHER にリードを引っ張られた！
+リードを引っ張られた！
 We will be going for a walk. Follow me.
 散歩の時間だ、ついてこい！
 Don't get comfortable. Im taking you to a new cell. Follow me.
@@ -15963,8 +16017,8 @@ Multiclass
 マルチクラス
 Game-Changing
 システム変更
-Restraints
-拘束具
+Restriction
+拘束
 Combat
 戦闘
 Kinks
@@ -18129,25 +18183,22 @@ There is no valid space next to you!
 (やめておく)
 (You decide not to)
 (何もしないことにした)
-(Sneak Attack)"
+(Sneak Attack)
 (隠密攻撃)
 (Really attack? Target is unaware and will be stunned 1 turn.)
 (本当に攻撃する？ターゲットはこちらに気付いておらず、この攻撃が命中したら1ターンスタンする。)
 (Attack her)
 (攻撃する)
-(Never mind...)
-(やめておく)
 (You decide not to)
 (何もしないことにした)
-(Walk past)
+
+(Let me through!!)
 (通り過ぎる)
-(Walk past)
-(通り過ぎる)
-(Walk past multiple allies)
-(複数の仲間を通り過ぎる)
-(Never mind...)
-(やめておく)
-(Confirm? You will walk through her for a few turns)
+(Walk past this unit)
+(このユニットを通り過ぎる)
+(Walk past all units)
+(全てのユニットを通り過ぎる)
+(Confirm? You will move through her for a few turns)
 (本当に？数ターンの間、対象を通り過ぎるようになる)
 
 (Stop following me)
@@ -18196,6 +18247,13 @@ There is no valid space next to you!
 (SPEAKER は動かないほうが良いと判断した)
 (The SPEAKER refuses to follow your orders)
 (SPEAKER は命令に従わなかった)
+
+(Give her a restoration item)
+(回復アイテムを渡す)
+(The SPEAKER appreciates the thought!)
+(SPEAKER は感謝している！)
+
+
 (Switch to Aggressive)
 (積極的に戦闘させる)
 (The SPEAKER will now pursue enemies)
@@ -19154,8 +19212,8 @@ FOODMSG|(とても美味しそうな匂いがする……)
 (猿轡をかまされている状態では食べられない)
 (You steal the food, hoping nobody will notice...)
 (誰にも見られていないことを祈りながら、食べ物を盗んだ。)
-(Eat it to restore AMOUNT WP)
-(食べ物を食べて AMOUNT WP回復する)
+(Eat it to restore AMOUNT% WP)
+(食べ物を食べて AMOUNT% のWPを回復する)
 (Take it!)
 (手に取る)
 (Someone left their cookies unattended)
@@ -19960,7 +20018,6 @@ BunnyLeotardHigh
 
 LaceBra
 レース付きブラ
-
 
 Items on Ground:
 アイテムが落ちている：
@@ -21311,7 +21368,7 @@ The fighter puts you in a hold and manages to slip on a lock! (DamageTaken)
 The fighter vanishes and ends up behind you!
 戦士が目にも止まらぬ速度で背後に回ってきた！
 Casting SPNME
-SPNME を詠唱
+SPNME
 The door suddenly locks behind you!
 突然ドアがロックされた！
 Apply To Target
@@ -22575,6 +22632,8 @@ Toggle Struggle UI Mode
 UIの拘束具表示
 Change Character Pose
 ポーズ変更
+Make Bullets Transparent
+弾を透明にする
 X-Ray Vision
 X-Ray
 Show Quick Inventory
@@ -23366,6 +23425,7 @@ A floating straitjacket appears and starts flying toward you!
 浮遊する拘束衣がこちらに向かってきた！
 A floating harness appears and starts flying toward you!
 浮遊するハーネスがこちらに向かってきた！
+
 A set of shackles opens wide and starts going for your wrists!
 浮遊する枷がこちらに向かってきた！
 You hear moaning as the statues start to move...
@@ -23932,6 +23992,14 @@ Latex Rune
 ラテックスのルーン
 Latex Cube Rune
 ラテックスキューブのルーン
+Slime Bubble Rune
+スライム泡のルーン
+Bubble Rune
+泡のルーン
+Spherical Rune
+球体のルーン
+Ball Rune
+ボールのルーン
 Rubber Rune
 ラバーのルーン
 Slime Rune
@@ -24035,7 +24103,7 @@ Minigun
 None
 なし
 Prisoner
-通常
+囚人
 Bounty Hunter
 賞金稼ぎ
 Dressup Co.
@@ -24068,6 +24136,12 @@ Maid
 メイド
 Elemental
 エレメンタル
+Royal
+ロイヤル
+Miku
+ミク
+Nevermere
+ネバーミア
 
 Choose restraint palette:
 拘束具の色：
@@ -24123,6 +24197,9 @@ Promote to Servant
 使用人に昇格
 Demote to Prisoner
 囚人に降格
+
+The EnemyName tries to grab you!
+EnemyName が掴みかかってきた！
 
 The ENMY reaches out and gives your breast a squeeze! (DMGDLT)
 ENMY に胸を揉みしだかれた！ (DMGDLT)
@@ -24182,12 +24259,17 @@ The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
 ENMY に腕を掴まれ、拘束されてしまった！ (DMGDLT)
 The ENMY grabs your wrists but you pull away!
 ENMY に腕を掴まれたが、無理やり引き剥がした！
+The ENMY reaches for your inventory but can't quite reach it!
+ENMY に懐を探られそうになったが、届かなかったようだ。
 
 Armorer
 鎧鍛冶
 
 Bowyer
 弓師
+
+Restraints
+拘束具
 
 
 More Armbinders
@@ -24253,3 +24335,70 @@ The Warden's staff emits a flash of blinding light! (DamageTaken)
 看守長の杖から迸る閃光に目を潰された！ (DamageTaken)
 The Warden's staff emits a mystical area, which congeals into locks! (DamageTaken)
 看守長の杖から不思議な魔法が放たれ、拘束具をロックした！ (DamageTaken)
+
+
+The ENMY weakens your grip on your weapon! Enemies may disarm you if you stand too close...
+ENMY に武器を持つ握力を弱められた！敵に近寄りすぎると武器を外される可能性がある……
+
+Can you link my arm cuffs?
+「手枷を繋げてほしい」
+(Hold out your arm cuffs)
+(手枷を差し出す)
+(The SPEAKER smiles)|Why sure, sweetie, I can help you with that~
+(SPEAKER は笑顔で答える)|ええ、いいわよ。やってあげる。
+(The SPEAKER grins)|What a good girl!
+(SPEAKER はニヤニヤと笑っている)|いい子ね！
+(The SPEAKER blushes)|Those look like fun!
+(SPEAKER は赤面している)|楽しそうですね……
+(The SPEAKER smirks)|Sure thing~
+(SPEAKER はニヤニヤと笑っている)|いいよ～
+(The SPEAKER beeps)|+10 social credit
+(SPEAKER は機械音を立てている)|10クレジット追加。
+
+Can you link my leg cuffs?
+「足枷を繋げてほしい」
+(Hold out your leg cuffs)
+(足枷を差し出す)
+(The SPEAKER smiles)|Why sure, sweetie, I can help you with that~
+(SPEAKER は笑顔で答える)|ええ、いいわよ。やってあげる。
+(The SPEAKER grins)|What a good girl!
+(SPEAKER はニヤニヤと笑っている)|いい子ね！
+(The SPEAKER blushes)|Those look like fun!
+(SPEAKER は赤面している)|楽しそうですね……
+(The SPEAKER smirks)|Sure thing~
+(SPEAKER はニヤニヤと笑っている)|いいよ～
+(The SPEAKER beeps)|+10 social credit
+(SPEAKER は機械音を立てている)|10クレジット追加。
+
+Sunglasses
+サングラス
+Cool people wear these indoors.
+屋外で着用するオシャレアイテム。
++25 holy resist. Reduces blind effects. Prevents blinding from light adjustment.
+聖属性耐性+25。目潰し効果を軽減する。光量の変化による目潰し効果を防ぐ。
+Sunglasses
+サングラス
+Cool people wear these indoors.
+屋外で着用するオシャレアイテム。
++25 holy resist. Reduces blind effects. Prevents blinding from light adjustment.
+聖属性耐性+25。目潰し効果を軽減する。光量の変化による目潰し効果を防ぐ。
+You find a pair of stylish shades.
+イカしたサングラスを見つけた。
+
+Player Background Color
+背景の色
+
+An attack causes you to bounce...
+衝撃でバウンドした……
+
+You find yourself enveloped in a bubble!
+気がつくと泡に包まれていた！
+A sphere of latex coalesces around you, trapping you and inflating until tight!
+ゴムの球体に閉じ込められた！球体は膨らみ、まとわりついてくる……
+You find yourself enveloped in a slime bubble!
+気がつくとスライムの泡に包まれていた！
+
+Your RestraintName pops with a loud bang!
+RestraintName が大きな音を立てて弾けた！
+Your RestraintName starts leaking air! Very, very slowly...
+RestraintName からゆっくりと空気が漏れ出した……
