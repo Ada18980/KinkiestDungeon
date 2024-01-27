@@ -560,7 +560,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 		let l = 0;
 		let pad = 0;
 
-		let allFog = KinkyDungeonFlags.get("TimeSlow") || KinkyDungeonBlindLevel >= 2 || (
+		let allFog = KinkyDungeonFlags.get("TimeSlow") || (KDToggles.GreyscaleBlindness && KinkyDungeonBlindLevel >= 2) || (
 			KinkyDungeonStatsChoice.get("NightBlindness") && KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) < KDShadowThreshold && KDGameData.visionAdjust < -0.5
 		);//KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "TimeSlow");
 

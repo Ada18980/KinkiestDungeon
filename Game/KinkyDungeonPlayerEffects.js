@@ -888,6 +888,7 @@ let KDPlayerEffects = {
 		KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonRemoveLowLevelRope"), "lightGreen", 2);
 		return {sfx: "", effect: effect};
 	},
+
 	"MiniSlime": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {

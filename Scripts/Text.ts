@@ -48,6 +48,7 @@ class TextCache {
 	private warn: string;
 	private language: string;
 	cache: any;
+	translationcache: any;
 	private rebuildListeners: any[];
 	private loaded: boolean;
 
@@ -61,9 +62,19 @@ class TextCache {
 		this.warn = warn;
 		this.language = TranslationLanguage;
 		this.cache = {};
+		this.translationcache = {};
 		this.rebuildListeners = [];
 		this.loaded = false;
 		this.buildCache();
+	}
+
+	/**
+	 * Gets the current translation path
+	 * @returns {string}
+	 */
+	public getPath(): string {
+		const lang = (TranslationLanguage || "").trim().toUpperCase();
+		return this.path.replace(/\/([^/]+)\.csv$/, `/$1_${lang}.txt`);
 	}
 
 	/**
@@ -197,6 +208,12 @@ class TextCache {
 			lines.forEach((line, numberl) => (this.cache[line[0]] = this.buildTranslationsRU(line[1], lines, translations, numberl, translationsStringLineCache)));
 			return [];
 		}
+
+		for (let entry of translationsStringLineCache.entries()) {
+			if (entry[1] % 2 == 0) // even only
+				this.translationcache[entry[0]] = translationsLineStringCache.get(entry[1] + 1);
+		}
+
 		return lines.map(line => ([line[0], TranslationStringCache(line[1], translationsStringLineCache, translationsLineStringCache)]));
 	}
 	/**
@@ -211,14 +228,14 @@ class TextCache {
 	* @param {Map<string, number>} translationsStringLineCache
    	 */
 	buildTranslationsRU(S: string, massiven: string[][], massivru: string[], numberl: number, translationsStringLineCache): string {
-		if (S != null){			
+		if (S != null){
 			let S1 = S.trim();
 			if (S1 !== "") {
 				try {
 					let schet = 0;
 					for (let i = 0; i < numberl; i++) {
 						if (S1 === massiven[i][1]) {schet = schet + 1;}
-					}					
+					}
 					for (let i = 0; i < (massivru.length); i++) {
 						if (S1 === massivru[i] && schet === 0) {
 							let s = massivru[i + 1];

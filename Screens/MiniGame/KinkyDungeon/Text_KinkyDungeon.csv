@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.1.7"
+KDVersionStr,"5.1.12"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -77,6 +77,7 @@ KDToggleEnemyAnimations,Enemy Animations
 KDToggleLazyWalk,One-Click Move
 KDToggleShiftLatch,Latch Shift Key
 KDToggleChastityOption,Chastity over Panties
+KDToggleChastityOption2,Chastity over Harness
 KDToggleChastityBraOption,Chastity Bra over Bras
 KDToggleSimpleColorPicker,Simple Color Picker
 KDToggleCenter,Center Player
@@ -98,6 +99,7 @@ KDToggleNippleToysHide,Hide Nipple Clamps
 KDToggleNipplePiercingsHide,Hide Nipple Piercings
 KDToggleForcePalette,Force restraints to use palette
 KDToggleFlipPlayer,Flip Player Display
+KDToggleGreyscaleBlindness,Grayscale when Blind
 
 KDHelpless,Helpless!
 KDMissed,Evaded!
@@ -154,7 +156,7 @@ KinkyDungeonStatDesc7,"All spells above 1st level cost 2x as many spell points."
 KinkyDungeonStat8,"Blessed"
 KinkyDungeonStatDesc8,"You can drink mana from the shrine fountains once per floor without chance of punishment."
 KinkyDungeonStat9,"Cursed"
-KinkyDungeonStatDesc9,"Goddess reputations start at 0 and can never exceed 25."
+KinkyDungeonStatDesc9,"Goddess reputations can never exceed 25."
 
 KinkyDungeonStat10,"Submissive"
 KinkyDungeonStatDesc10,"Your submissiveness starts at 100 and cannot go below 70."
@@ -331,6 +333,10 @@ KinkyDungeonStatFuukaCollar,"Fuuka's Pet"
 KinkyDungeonStatDescFuukaCollar,"Start with Fuuka's collar and a few restraints."
 KinkyDungeonStatCommonFuuka,"Fuuka Fan Club"
 KinkyDungeonStatDescCommonFuuka,"All humanoids that can bind you also apply Fuuka's special restraints."
+KinkyDungeonStatTheWardenCollar,"Collected"
+KinkyDungeonStatDescTheWardenCollar,"Start with The Warden's special collar and some restraints."
+KinkyDungeonStatCommonTheWarden,"The Warden's Property"
+KinkyDungeonStatDescCommonTheWarden,"All humanoids that can bind you also apply The Warden's special restraints."
 KinkyDungeonStatCommonCyber,"Dollmaker's Minions"
 KinkyDungeonStatDescCommonCyber,"All humanoids that can bind you also apply Cyber Doll restraints."
 KinkyDungeonStatDollmakerVisor,"Doll Hunter V"
@@ -385,7 +391,7 @@ KinkyDungeonStatDescCurseSeeker,"When you pick up cursed armor or restraints fro
 KinkyDungeonStatBurningDesire,"Burning Desire"
 KinkyDungeonStatDescBurningDesire,"While above 70% distraction, you ignite nearby objects and gain +25% fire damage."
 KinkyDungeonStatFrigidPersonality,"Frigid Personality"
-KinkyDungeonStatDescFrigidPersonality,"While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties."
+KinkyDungeonStatDescFrigidPersonality,"While below 10% distraction, you gain +10% ice damage and can walk on ice without penalties."
 
 KinkyDungeonStatGroundedInReality,"Grounded in Reality"
 KinkyDungeonStatDescGroundedInReality,"While at max mana, your attacks deal an additional 30% of their base damage as electric damage."
@@ -446,9 +452,9 @@ KinkyDungeonStatFutileStruggles,"Futile Struggles"
 KinkyDungeonStatDescFutileStruggles,"Lose 2 WP every time you remove a non-trivial restraint."
 
 KinkyDungeonStatSecondWind,"Second Wind"
-KinkyDungeonStatDescSecondWind,"Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage. (Upgrade available in spell tree)"
+KinkyDungeonStatDescSecondWind,"Regenerate WP when unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, gag, or slows. (Upgrade available in spell tree)"
 KinkyDungeonSpellSecondWind0,Second Wind Perk
-KinkyDungeonSpellDescriptionSecondWind0,"Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage."
+KinkyDungeonSpellDescriptionSecondWind0,"Regenerate WP when you are unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, or gag bondage, and no slows."
 KinkyDungeonSpellSecondWind1,Triumphant Wind
 KinkyDungeonSpellDescriptionSecondWind1,"Second Wind now regenerates up to 25% of your max WP"
 
@@ -977,6 +983,7 @@ KinkyDungeonKeyAStruggle,Auto-Struggle
 KinkyDungeonKeyAPathfind,Auto-Pathfind
 KinkyDungeonKeySprint,Sprint/Hop
 KinkyDungeonKeyInspect,Inspect
+KinkyDungeonKeyBulletTransparency,Hide Bullets
 
 KinkyDungeonKeyQInventory,Quick Inventory
 KinkyDungeonKeyInventory,Inventory
@@ -2641,6 +2648,10 @@ KillBanditQuest,You murder the thug!
 
 NameBlacksmithQuest,Blacksmith
 KillBlacksmithQuest,You murder the blacksmith!
+NameArmorerQuest,Armorer
+KillArmorerQuest,You murder the armorer!
+NameBowyerQuest,Bowyer
+KillBowyerQuest,You murder the bowyer!
 
 NameDressmaker,Dressmaker
 KillDressmaker,"The dressmaker storms out in a rage."
@@ -2896,6 +2907,7 @@ KinkyDungeonBasicAttack,attack
 KinkyDungeonBasicDamage,damage
 PlayerMiss,"You miss the TargetEnemy!"
 PlayerMissArmor,"Your attack is too feeble to hurt the TargetEnemy!"
+PlayerMissShield,"Your attack was absorbed by the TargetEnemy's shield!"
 KinkyDungeonStruggleStruggleFail,"You try to pull the TargetRestraint off..."
 KinkyDungeonStruggleStruggleFailAroused,"You try to squirm and moan out of the TargetRestraint..."
 KinkyDungeonStruggleStruggleFail2,"You tug on the TargetRestraint with increased power..."
@@ -3300,6 +3312,7 @@ KinkyDungeonFactionPirate,Zora's Crew
 KinkyDungeonFactionRopeDojo,Rope Dojo
 KinkyDungeonFactionDollShoppe,Doll Shoppe
 KinkyDungeonFactionFuuka,Fuuka's Shrine
+KinkyDungeonFactionWarden,The Collectors
 KinkyDungeonFactionDollsmith,Dollmaker Inc.
 
 KinkyDungeonFactionAdventurer,Adventurer
@@ -3451,6 +3464,7 @@ RestraintMikoCollarDesc,"A collar enchanted with ghastly energy."
 RestraintMikoCollarDesc2,"It seems to react with a pulse of energy whenever a nearby enemy is defeated."
 KDMikoCollarSummmon,"Your collar pulses, and a revenant appears to avenge the enemy you defeated!"
 
+
 RestraintDressBra,Dress Bustier
 RestraintDressBraDesc,"A deceptively cruel device, making it impossible to reach your nipples."
 RestraintDressBraDesc2,"Reinforced with steel plates, this will need bolt cutters to take off."
@@ -3486,6 +3500,10 @@ RestraintLatexBallGagLargeDesc2,"The strap is made of a durable but flexible mat
 RestraintLatexOTNGag,Latex Mask
 RestraintLatexOTNGagDesc,A slick layer of blue latex stretched over the mouth.
 RestraintLatexOTNGagDesc2,It's very tight and makes it hard to move your mouth.
+
+RestraintLatexOTNGagHeavy,Secure Latex Mask
+RestraintLatexOTNGagHeavyDesc,A slick layer of blue latex stretched over the mouth. It has a lockable strap which prevents it from being removed.
+RestraintLatexOTNGagHeavyDesc2,It's very tight and makes it hard to move your mouth.
 
 
 RestraintRedLatexHands,Rubberized Gloves
@@ -3870,10 +3888,19 @@ RestraintTrapCuffsDesc,"A pair of steel cuffs locked securely around your wrists
 RestraintTrapCuffsDesc2,"The lock doesn't seem very complicated."
 RestraintTrapYoke,Steel Yoke
 RestraintTrapYokeDesc,"A steel bar clamped firmly around your wrists and neck, leaving you in a helpless position."
-RestraintTrapYokeDesc2,"This is not something you can pick by yourself..."
+RestraintTrapYokeDesc2,"The awkward position makes it difficult to get out of alone."
+RestraintHeavyYoke,Heavy Yoke
+RestraintHeavyYokeDesc,"A series of armor-grade plates cut with precision machining, sandwiched into an unbreakable layer that clasps firmly in place around your neck and wrists."
+RestraintHeavyYokeDesc2,"The awkward position makes it difficult to get out of alone."
+RestraintTrapFiddle,Steel Fiddle
+RestraintTrapFiddleDesc,"A steel fixture keeping your hands in an awkward and submissive position."
+RestraintTrapFiddleDesc2,"The awkward position prevents you from easily reaching the lock."
 RestraintTrapHarness,Leather Harness
 RestraintTrapHarnessDesc,"A leather harness of tight straps buckled around your torso."
 RestraintTrapHarnessDesc2,"It provides an anchor point for enemies to grab onto!"
+RestraintPVCHarness,Rubberized Harness
+RestraintPVCHarnessDesc,"A harness made of latex polymer, resistant to most solvents and corrosion."
+RestraintPVCHarnessDesc2,"Can be worn all day! Also convenient to hold."
 RestraintTrapGag,Ball Gag
 RestraintTrapGagDesc,"A gag made of a red squishy material."
 RestraintTrapGagDesc2,"You can't seem to enunciate your spells properly with this in."
@@ -4983,7 +5010,7 @@ ItemPickupScrollPurity,"You pick up a Scroll of Purity."
 ItemPickupScrollVerbal,"You pick up a Scroll of Speech."
 ItemPickupScrollLegs,"You pick up a Scroll of Sauntering."
 
-KinkyDungeonDisarm,"As you strike again, your weapon is pulled out of your grasp!"
+KinkyDungeonDisarm,"Your weapon is pulled out of your grasp!!!"
 KinkyDungeonDisarmLeash,"Your weapon is pulled out of your hand and tossed away by your captor!"
 KinkyDungeonDisarmCut,"Your weapon slips out of your hand as you try to cut with it..."
 
@@ -5083,6 +5110,7 @@ KDTileTooltipa,Ruined Shrine
 KDTileTooltipO,Orb Altar
 KDTileTooltipo,Empty Altar
 KDTileTooltipC,Chest
+KDTileTooltipC2,Faction Chest
 KDTileTooltipc,Empty Chest
 KDTileTooltipR,Shiny Object
 KDTileTooltipY,Shiny Object
@@ -5167,6 +5195,7 @@ KinkyDungeonFilterair,Air
 KinkyDungeonFilterelectric,Lightning
 KinkyDungeonFilterwater,Water
 KinkyDungeonFilterslime,Rubber
+KinkyDungeonFilterlatex,Rubber
 KinkyDungeonFilterteleport,Teleport
 KinkyDungeonFilterphysics,Physics
 KinkyDungeonFilterconjure,Conjuration
@@ -5264,7 +5293,7 @@ KinkyDungeonSpellDistractionCast,Mana Burst
 KinkyDungeonSpellDescriptionDistractionCast,"As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus..."
 
 KinkyDungeonSpellManaRegen,Inner Power
-KinkyDungeonSpellDescriptionManaRegen,"As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana AFTER other modifiers. Toggled passive spells apply half the cooldown."
+KinkyDungeonSpellDescriptionManaRegen,"As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana BEFORE multipliers. Toggled passive spells apply half the cooldown."
 
 KinkyDungeonSpellManaRegenPlus,Battlemage
 KinkyDungeonSpellDescriptionManaRegenPlus,"Inner Power cooldown is no longer reset after attacking."
@@ -5691,7 +5720,7 @@ KinkyDungeonSpellCastLiquidMetal,"You inscribe a transmutation circle on the flo
 KinkyDungeonSpellTargetLiquidMetal,Choose area containing Latex
 
 KinkyDungeonSpellSlimeWalk,Slime Repulsion
-KinkyDungeonSpellDescriptionSlimeWalk,"Gain +50 glue resist."
+KinkyDungeonSpellDescriptionSlimeWalk,"Gain +50 glue resist. (Having 45 or more Glue Resist negates many negative effects from slime)"
 
 KinkyDungeonSpellSpread,Spread
 KinkyDungeonSpellDescriptionSpread,"Slime in the target area expands by 1 unit in the four cardinal directions. Refreshes duration to 12-20 turns."
@@ -5743,6 +5772,11 @@ KinkyDungeonSpellEarthformLine,Earthshape (Line)
 KinkyDungeonSpellDescriptionEarthformLine,Create a 4-tile line of Earthen Monoliths. They have 50 hitpoints and 25 armor.
 KinkyDungeonSpellCastEarthformLine,You stomp your foot and monoliths emerge from the ground!
 KinkyDungeonSpellTargetEarthformLine,Choose line direction
+
+KinkyDungeonSpellEarthformArc,Earthshape (Arc)
+KinkyDungeonSpellDescriptionEarthformArc,Create a 5-wide arc of Earthen Monoliths. They have 50 hitpoints and 25 armor.
+KinkyDungeonSpellCastEarthformArc,You stomp your foot and monoliths emerge from the ground!
+KinkyDungeonSpellTargetEarthformArc,Choose line direction
 
 KinkyDungeonSpellBoulderLaunch,Rock
 KinkyDungeonSpellBoulder,Rock
@@ -6081,7 +6115,7 @@ KDZoneOfExcitementSelf,"Something fun enters your body..."
 
 KinkyDungeonSpellZoneOfPurity,Zone of Purity
 KinkyDungeonSpellTargetZoneOfPurity,Select an area
-KinkyDungeonSpellDescriptionZoneOfPurity,"Creates an area which applies Chastity constantly to any enemy over 50% bondage that steps inside."
+KinkyDungeonSpellDescriptionZoneOfPurity,"Creates an area which applies Chastity constantly to any enemy over with any amount of binding that steps inside."
 KinkyDungeonSpellCastZoneOfPurity,"You conjure a realm of absolute purity."
 
 KinkyDungeonSpellZoneOfExcitement,Zone of Excitement
@@ -6188,6 +6222,15 @@ KinkyDungeonSpellFlameStrike,Flame Blade
 
 KinkyDungeonSpellEngulf,Tentacle Slap
 KinkyDungeonSpellDescriptionEngulf,You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +20 glue damage and create slime.
+
+KinkyDungeonSpellChainStrike,Chain Strike
+KinkyDungeonSpellDescriptionChainStrike,You have the power to summon chains when you attack. When enabled: Your attacks deal +20 chain damage and create chains.
+
+KinkyDungeonSpellRopework,Ropework
+KinkyDungeonSpellDescriptionRopework,You have the power to weave ropes between your attacks. When enabled: Your attacks deal +20 chain damage and create ropes.
+
+KinkyDungeonSpellLeatherWhip,Leather Whip
+KinkyDungeonSpellDescriptionLeatherWhip,You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +20 pain damage and create belts.
 
 KinkyDungeonSpellStrength,Super Strength
 KinkyDungeonSpellDescriptionStrength,"When enabled: Struggling is more powerful, and your melee attack damage is increased by +20 if your weapon deals physical damage."
@@ -7302,8 +7345,8 @@ KDTooltipAwareTalking,"Talking to you"
 KDTooltipAwareAwareFriendly,"Aware of you!"
 KDTooltipAwareAware,"Pursuing you!"
 KDTooltipAwareAwareIgnore,"Ignoring you!"
-KDTooltipAwareSuspicious,"Slightly suspicious"
-KDTooltipAwareDanger,"Saw something..."
+KDTooltipAwareSuspicious,"Investigating!"
+KDTooltipAwareDanger,"Suspicious"
 KDTooltipAwareDangerHigh,"Notices you!"
 KDTooltipAwareUnnoticed,"Unaware"
 KDTooltipInventory,"Items carried:"
@@ -7580,6 +7623,7 @@ KinkyDungeonRemindJailChaseFuukaCommandDefend,""
 KinkyDungeonRemindJailChaseFuukaCommandAssault,""
 KinkyDungeonRemindJailChaseFuukaCommandBlock,""
 
+
 KinkyDungeonRemindJailPlayHelplessDollmaker0,"Release me at once."
 KinkyDungeonRemindJailPlayHelplessDollmaker1,"This is unacceptable!"
 KinkyDungeonRemindJailPlayHelplessDollmaker2,"Guards! Guards... Guards? Well drat."
@@ -7637,6 +7681,61 @@ KinkyDungeonRemindJailChaseDollmakerCommandAssault,""
 KinkyDungeonRemindJailChaseDollmakerCommandBlock,""
 
 
+KinkyDungeonRemindJailPlayHelplessTheWarden0,"Release me at once."
+KinkyDungeonRemindJailPlayHelplessTheWarden1,"This is unacceptable!"
+KinkyDungeonRemindJailPlayHelplessTheWarden2,"Guards! Guards... Guards? Well drat."
+KinkyDungeonRemindJailPlayBratTheWarden0,"Catch me if you can!"
+KinkyDungeonRemindJailPlayBratTheWarden1,"You'll never get away with this!"
+KinkyDungeonRemindJailPlayBratTheWarden2,"I don't want to be your slave!"
+KinkyDungeonRemindJailPlaySubTheWarden0,"I've been naughty, looks like I need to be punished..."
+KinkyDungeonRemindJailPlaySubTheWarden1,"I've been a bad girl, won't you do something about it?"
+KinkyDungeonRemindJailPlaySubTheWarden2,"Mmmph... maybe I talk too much..."
+KinkyDungeonRemindJailPlayTheWarden0,"Look, another one of my dolls~"
+KinkyDungeonRemindJailPlayTheWarden1,"Come to me, my lovely thing~"
+KinkyDungeonRemindJailPlayTheWarden2,"I want to hear you moan~"
+KinkyDungeonRemindJailPlayTheWardenStruggle,"Perhaps we need to make things tighter?"
+KinkyDungeonRemindJailPlayTheWardenLeash,"Come with me, dear~"
+KinkyDungeonRemindJailPlayTheWardenFree,"You've had too much freedom."
+KinkyDungeonRemindJailPlayTheWardenLoot,"Leave that for the cleaning robots."
+KinkyDungeonRemindJailPlayTheWardenKey,"Skulking around, are we?"
+KinkyDungeonRemindJailChaseTheWardenAlert,"I see you."
+KinkyDungeonRemindJailChaseTheWardenAttack0,"There's no point in fighting."
+KinkyDungeonRemindJailChaseTheWardenAttack1,"How ineffectual."
+KinkyDungeonRemindJailChaseTheWardenAttack2,"That's cute."
+KinkyDungeonRemindJailChaseTheWardenSpell0,"Your magical potential is impressive~"
+KinkyDungeonRemindJailChaseTheWardenSpell1,"A magnificent display of magic!"
+KinkyDungeonRemindJailChaseTheWardenSpell2,"You would make a great mana source~"
+KinkyDungeonRemindJailChaseTheWardenSpellItem,"Did you think you could outsmart me?"
+KinkyDungeonRemindJailChaseTheWardenShrine,"I am the only goddess you need."
+KinkyDungeonRemindJailChaseTheWardenChest,"Dolls shouldn't mess with things they don't understand."
+KinkyDungeonRemindJailChaseTheWardenOrb,"Oh, that's not going to help~"
+KinkyDungeonRemindJailChaseTheWardenJailbreak,"Let's take you somewhere safe~"
+KinkyDungeonRemindJailTheWardenGrab,"You won't be getting away."
+KinkyDungeonRemindJailTheWardenDisarm,"Did you think that would work?"
+KinkyDungeonRemindJailTheWardenHit,"Let's put those hands of yours away~"
+KinkyDungeonRemindJailTheWardenHitPlayer,"You are mine."
+KinkyDungeonRemindJailTheWardenMiss,"You're a fast one."
+KinkyDungeonRemindJailTheWardenBlocked,"You're a fast one."
+KinkyDungeonRemindJailTheWardenMissedMe,"Your antics amuse me~"
+KinkyDungeonRemindJailTheWardenBlockedMe,"Your antics amuse me~"
+KinkyDungeonRemindJailTheWardenLeash,"It's time for your makeover!"
+KinkyDungeonRemindJailTheWardenPull,"Come to me."
+KinkyDungeonRemindJailTheWardenStun,"A shame it ends here."
+KinkyDungeonRemindJailTheWardenPickpocket,"You won't be needing that."
+KinkyDungeonRemindJailTheWardenLock,"Tsk Tsk. I'll be keeping the keys."
+KinkyDungeonRemindJailTheWardenIntro,"I used to be an adventurer like you~ My name was PTRN..."
+KinkyDungeonRemindJailChaseTheWardenDefend0,"You don't know who you're messing with."
+KinkyDungeonRemindJailChaseTheWardenDefend1,"You won't be allowed to make that mistake twice."
+KinkyDungeonRemindJailChaseTheWardenDefend2,"I'll punish you myself."
+KinkyDungeonRemindJailChaseTheWardenDefendHonor0,"Hands off my property."
+KinkyDungeonRemindJailChaseTheWardenDefendHonor1,"Know your place, girl!"
+KinkyDungeonRemindJailChaseTheWardenDefendHonor2,"You've had your chance."
+KinkyDungeonRemindJailChaseTheWardenHonor0,"Fine, then."
+KinkyDungeonRemindJailChaseTheWardenHonor1,"Know your place!"
+KinkyDungeonRemindJailChaseTheWardenHonor2,"You've had your chance."
+KinkyDungeonRemindJailChaseTheWardenCommandDefend,""
+KinkyDungeonRemindJailChaseTheWardenCommandAssault,""
+KinkyDungeonRemindJailChaseTheWardenCommandBlock,""
 
 
 KinkyDungeonRemindJailPlayHelpless0,"This is too tight..."
@@ -8440,9 +8539,9 @@ KinkyDungeonRemindJailPlayHelplessAdventurer_Brat_Fighter2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratAdventurer_Brat_Fighter0,"Kya~ I have no mana, I'm so defenseless right now~"
 KinkyDungeonRemindJailPlayBratAdventurer_Brat_Fighter1,"I have all this bondage gear on me, I sure hope nobody ties me up with it~!"
 KinkyDungeonRemindJailPlayBratAdventurer_Brat_Fighter2,"Oh no, how will I ever find my way out of here~"
-KinkyDungeonRemindJailPlaySubAdventurer_Brat_Fighter0,"If I focus really hard, I can make my blade go on fire! I'd show you, but I don't feel like drinking a mana potion."
+KinkyDungeonRemindJailPlaySubAdventurer_Brat_Fighter0,"If I focus really hard, I can make my blade go on fire!"
 KinkyDungeonRemindJailPlaySubAdventurer_Brat_Fighter1,"I ran out of mana, but I'm sure I can find the exit before long!"
-KinkyDungeonRemindJailPlaySubAdventurer_Brat_Fighter2,"Hey, be careful with my enchanted rope! I don't have the mana right now to control it when it wakes up!"
+KinkyDungeonRemindJailPlaySubAdventurer_Brat_Fighter2,"Hey, be careful with my enchanted rope!"
 KinkyDungeonRemindJailPlayAdventurer_Brat_Fighter0,"Hey, you wouldn't happen to have a mana potion, would you?"
 KinkyDungeonRemindJailPlayAdventurer_Brat_Fighter1,"Say, I happen to know a thing or two about knots~"
 KinkyDungeonRemindJailPlayAdventurer_Brat_Fighter2,"I am an artist with rope... in more ways than one."
@@ -8476,7 +8575,7 @@ KinkyDungeonRemindJailAdventurer_Brat_FighterPull,"*giggles*"
 KinkyDungeonRemindJailAdventurer_Brat_FighterStun,"Kya! Take that!"
 KinkyDungeonRemindJailAdventurer_Brat_FighterPickpocket,"Nice loot! I'll take it~"
 KinkyDungeonRemindJailAdventurer_Brat_FighterLock,"Can never be too sure!"
-KinkyDungeonRemindJailAdventurer_Brat_FighterIntro,"Nice to meet you! You wouldn't happen to have a mana potion or 3 would you?... Never mind."
+KinkyDungeonRemindJailAdventurer_Brat_FighterIntro,"You wouldn't happen to have a mana potion or 3 would you?"
 KinkyDungeonRemindJailChaseAdventurer_Brat_FighterDefend0,"Looks like it's time for me to shine!"
 KinkyDungeonRemindJailChaseAdventurer_Brat_FighterDefend1,"Stand down, or I won't go easy on you!"
 KinkyDungeonRemindJailChaseAdventurer_Brat_FighterDefend2,"Help is on the way!"
@@ -11115,7 +11214,7 @@ dOfferTempForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
 
 
 
-rBlacksmithShop,"(The SPEAKER waves)|Greetings,|I manufacture all sorts of goods.|Would you like to buy some?"
+rBlacksmithShop,"(The SPEAKER waves)|Greetings,|I manufacture all sorts of weapons.|Would you like to buy some?"
 rBlacksmithShopAttack,"(The SPEAKER drops her hammer and cracks her knuckles)|Put em up!"
 rBlacksmithShop_AlreadyHave,"(The SPEAKER looks at you.)|But you already have one?"
 rBlacksmithShop_NoMoney,"(The SPEAKER folds her arms)|I don't do charity, ma'am."
@@ -11125,8 +11224,36 @@ rBlacksmithShopSword,"(The SPEAKER nods)|A versatile weapon. One of my favorites
 rBlacksmithShopSpear,"(The SPEAKER nods)|Keep your friends close, and your enemies far away."
 rBlacksmithShopKnife,"(The SPEAKER nods)|Handy to have one of these around."
 rBlacksmithShopAxe,"(The SPEAKER nods)|The best defense is a good offense."
-rBlacksmithShopShield,"(The SPEAKER nods)|You can never be too careful."
+rBlacksmithShopHammer,"(The SPEAKER nods)|Speak softly and carry a big hammer."
 rBlacksmithShopTrapCuffs,"(The SPEAKER smiles)|Can never be too prepared~"
+
+rArmorerShop,"(The SPEAKER waves)|Greetings,|I manufacture all sorts of armor.|Would you like to buy some?"
+rArmorerShopAttack,"(The SPEAKER drops her hammer and cracks her knuckles)|Put em up!"
+rArmorerShop_AlreadyHave,"(The SPEAKER looks at you.)|But you already have one?"
+rArmorerShop_NoMoney,"(The SPEAKER folds her arms)|I don't do charity, girl."
+rArmorerShopBreastplate,"(The SPEAKER nods)|The most high-impact of sports bras."
+rArmorerShopSteelBoots,"(The SPEAKER nods)|These aren't for hiking, just so you know."
+rArmorerShopGauntlets,"(The SPEAKER nods)|I've been thinking about making a lockable version..."
+rArmorerShopBracers,"(The SPEAKER nods)|These are sensibly sized, unlike those you see in movies."
+rArmorerShopChainTunic,"(The SPEAKER nods)|Sometimes you just have to be flexible."
+rArmorerShopChainBikini,"(The SPEAKER nods)|For when you value style over protection..."
+rArmorerShopShield,"(The SPEAKER nods)|You can never be too careful."
+rArmorerShopTrapBelt,"(The SPEAKER chuckles)|I hear female adventurers like to wear these for protection.|Or something like that."
+rArmorerShopTrapBra,"(The SPEAKER chuckles)|I hear female adventurers like to wear these for protection.|Or something like that."
+
+rBowyerShop,"(The SPEAKER waves)|Hello miss!|What brings you here today?"
+rBowyerShopAttack,"(The SPEAKER folds her arms)|That's not very nice!"
+rBowyerShop_AlreadyHave,"(The SPEAKER looks at you.)|But you already have one?"
+rBowyerShop_NoMoney,"(The SPEAKER folds her arms)|I don't do charity, miss."
+rBowyerShopLeatherBoots,"(The SPEAKER nods)|Could use a higher heel..."
+rBowyerShopLeatherGloves,"(The SPEAKER nods)|Back to the basics."
+rBowyerShopBustier,"(The SPEAKER smiles)|I see you have good taste!"
+rBowyerShopBow,"(The SPEAKER nods)|It's a classic!|What's not to like?"
+rBowyerShopBowRecurve,"(The SPEAKER smiles)|It's an upgrade for your best friend!"
+rBowyerShopCrossbow,"(The SPEAKER shrugs)|It's big and bulky, but I guess it has its uses."
+rBowyerShopCrossbowPistol,"(The SPEAKER giggles)|Smile for the camera!"
+rBowyerShopAncientPowerSource,"(The SPEAKER nods)|It's like mana, but much more portable!|It powers duplication runes so you don't run out of arrows."
+rBowyerShopTrapBlindfold,"(The SPEAKER giggles)|I like to include these as a gift with every purchase~"
 
 rShopBuy,"(Select an item to buy from the SPEAKER)"
 rShopBuyAttack,"(Attack the SPEAKER?)"
@@ -11391,6 +11518,8 @@ rGenericAllyFlirt_PlayRequestDom,"(The SPEAKER grins)|Why yes, I have just the t
 rGenericAllyFlirt_PlayRequestSub,"(The SPEAKER blushes)|Oh... let me check."
 rGenericAllyFlirt_PlayRequestBrat,"(The SPEAKER smirks)|Be careful what you ask for~"
 rGenericAllyFlirt_PlayRequestRobot,"(The SPEAKER pauses)|Calculating strictness threshold..."
+
+
 
 dGenericAllyFlirt_LeashWalk,"Let's go for a walk!"
 dGenericAllyFlirt_LeashWalkGag,"(Jump excitedly, presenting your collar for a leash)"
@@ -11692,7 +11821,7 @@ rShopkeeperStartGag,"Daww! What a cutie!|(She smiles and pats your head gently)"
 
 dShopkeeperStart_Buy,"Do you have anything for sale?"
 dShopkeeperStart_BuyGag,"(Look around for items to buy)"
-rShopkeeperStartBuy,"I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside a dungeon? That's crazy!|But you adventurers bring in a steady supply of loot,|so if you've got something to sell me, I'll take it off your hands~"
+rShopkeeperStartBuy,"I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside a dungeon? That's crazy!|But you adventurers bring in a steady supply of loot,|so if you've got something to sell me, I'll take it off your hands~|You can also talk to my guests, perhaps they have something for you."
 
 dReturn,"(Return)"
 
@@ -11947,7 +12076,7 @@ rTableFood,"FOODMSG|(It invites you to partake in its culinary delights)"
 rTableFoodEat,"(You eat the food and feel your willpower rising)"
 rTableFoodEatFail,"(Being gagged as you are you cannot enjoy the food)"
 rTableFoodTake,"(You steal the food, hoping nobody will notice...)"
-dTableFood_Eat,(Eat it to restore AMOUNT WP)
+dTableFood_Eat,(Eat it to restore AMOUNT% WP)
 dTableFood_Take,(Take it!)
 
 KinkyDungeonFoodCookies,"(Someone left their cookies unattended)"
@@ -17406,25 +17535,25 @@ AttackLatexCubeMetal,"The liquid metal cube sticks to you and hardens! (DamageTa
 AttackLatexCubeMetalBind,"The liquid metal cube expands across your body and hardens, taking the form of restraints! (+RestraintAdded)"
 
 RestraintLiquidMetalBoots,Liquid Metal (Feet)
-RestraintLiquidMetalBootsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalBootsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalBootsDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalFeet,Liquid Metal (Ankles)
-RestraintLiquidMetalFeetDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalFeetDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalFeetDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalLegs,Liquid Metal (Legs)
-RestraintLiquidMetalLegsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalLegsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalLegsDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalArms,Liquid Metal (Arms)
-RestraintLiquidMetalArmsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalArmsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalArmsDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalHands,Liquid Metal (Hands)
-RestraintLiquidMetalHandsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalHandsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalHandsDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalMouth,Liquid Metal (Mouth)
-RestraintLiquidMetalMouthDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalMouthDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalMouthDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 RestraintLiquidMetalHead,Liquid Metal (Head)
-RestraintLiquidMetalHeadDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion."
+RestraintLiquidMetalHeadDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalHeadDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
 
 KDRandomStairTeleportFail,"The stairs dissolve right before you!"
@@ -17842,7 +17971,7 @@ ItemPickupDivineTear,"You find a shimmering macaron."
 KinkyDungeonInventoryItemDivineTear,Heavenly Crunch Macaron
 KinkyDungeonInventoryItemDivineTearUse,"You feel holy energy neutralizing the cursed magic permanently."
 KinkyDungeonInventoryItemDivineTearDesc,"Some say it comes from a bakery in heaven itself. Others say it is simply made from lab-grade materials, and actually tastes awful."
-KinkyDungeonInventoryItemDivineTearDesc2,"Unlocks a common cursed item and/or removes all curses from one currently worn item of your choice."
+KinkyDungeonInventoryItemDivineTearDesc2,"Unlocks a cursed item and/or removes all curses from one currently worn item of your choice."
 
 rCommercePortal,"Congratulations! Your continued patronage has earned you|one (1) round trip to the nearest affiliated shop!|Simply step into the portal to continue...|(the Goddess is not responsible for any mishaps or fraud pertaining to the use of this portal)"
 rCommercePortalGo,"(You step through the portal. An unperturbed shopkeeper greets you.)|Another visitor? Oh, it's just you~"
@@ -18373,6 +18502,7 @@ KDColorHex,Hex Code:
 
 KDHideRest,Toggle Struggle UI Mode
 KDSetPose,Change Character Pose
+KDBulletTransparency,Make Bullets Transparent
 KDXRay,X-Ray Vision
 KDQuickInv,Show Quick Inventory
 KDToggleSkipTutorial,Skip Tutorial
@@ -18506,6 +18636,10 @@ KDColorPickerAdvanced,Advanced
 
 KDEscapeKey_Fail_Default,Exits locked! Find the key!
 KDEscapeKey_Pass_Default,Got the key!
+KDEscapeKey_Fail_Lever,Exits locked! Find a lever!
+KDEscapeKey_Pass_Lever,Exits unlocked!
+KDEscapeKey_Fail_Panel,Exits locked! Find control panel!
+KDEscapeKey_Pass_Panel,Exits unlocked!
 KDEscapeKey_Fail_Boss,BOSS ROOM
 KDEscapeKey_Pass_Boss,BOSS ROOM CLEARED!
 KDEscapeKey_Fail_None,Room bugged. Please Report.
@@ -18777,7 +18911,7 @@ AttackLiquidMetalCubeBind,"The liquid metal cube engulfs your body and hardens, 
 
 NameSkeletonArcher,Skeleton Archer
 KillSkeletonArcher,"The Skeleton falls to pieces."
-AttackSkeletonBindArcher,"The Skeleton restrains you! (+RestraintAdded)"
+AttackSkeletonArcherBind,"The Skeleton restrains you! (+RestraintAdded)"
 AttackSkeletonArcher,"The Skeleton tackles you! (DamageTaken)"
 
 KinkyDungeonSpellCursedArrow,Cursed Arrow
@@ -18846,6 +18980,7 @@ KinkyDungeonTrapSpawnAnimYoke,A floating yoke appears and starts flying toward y
 KinkyDungeonTrapSpawnAnimChastity,A floating armbinder appears and starts flying toward you!
 KinkyDungeonTrapSpawnAnimStraitjacket,A floating straitjacket appears and starts flying toward you!
 KinkyDungeonTrapSpawnAnimHarness,A floating harness appears and starts flying toward you!
+KinkyDungeonTrapSpawnAnimArmbinder,A floating harness appears and starts flying toward you!
 KinkyDungeonTrapSpawnCuffs,A set of shackles opens wide and starts going for your wrists!
 KinkyDungeonTrapSpawnMummyCursed,You hear moaning as the statues start to move...
 KinkyDungeonTrapSpawnBookBondage,Devious tomes emerge from the bookshelves!
@@ -19210,6 +19345,8 @@ KDPaletteBast,Bast
 KDPaletteElf,Elven
 KDPaletteGoddess,Divine
 KDPaletteMaidforce,Maid
+KDPaletteElemental,Elemental
+KDPaletteElemental2,Royal
 
 KDSelectPalette,Choose restraint palette:
 
@@ -19230,3 +19367,278 @@ KDAbsoluteArmor,"Absolute Armor (1/2 crit mult)"
 
 KDDressNPC,Change Outfit
 KDBackToGame,Back to Game
+
+KinkyDungeonSpellVineSlimeBall,Slimy Spit
+
+KDServants,Servants and Guests
+KDPrisoners,Prisoners
+
+KDPromoteNPC,Promote to Servant
+KDDemoteNPC,Demote to Prisoner
+
+KDTeaseAttackResist_LeashGrab,The EnemyName tries to grab you!
+
+KDTeaseAttack_SquishBreast,The ENMY reaches out and gives your breast a squeeze! (DMGDLT)
+KDTeaseAttackResist_SquishBreast,"The ENMY reaches for you and fails!"
+KDTeaseAttack_SpankButt,The ENMY gives your butt a light slap! (DMGDLT)
+KDTeaseAttack_SpankButtMove,The ENMY gives your butt a light slap as you move past! (DMGDLT)
+KDTeaseAttackResist_SpankButt,"The ENMY tries to spank you but misses!"
+KDTeaseAttack_SqueezeButt,The ENMY gives your butt a squeeze! (DMGDLT)
+KDTeaseAttack_SqueezeButtMove,The ENMY gives your butt a squeeze as you move past! (DMGDLT)
+KDTeaseAttackResist_SqueezeButt,"The ENMY reaches for you but misses!"
+KDTeaseAttack_TickleArmpits,The ENMY tickles your exposed armpits! (DMGDLT)
+KDTeaseAttackResist_TickleArmpits,"The ENMY tries to tickle you!"
+KDTeaseAttack_TickleFeet,The ENMY tickles your feet! (DMGDLT)
+KDTeaseAttackResist_TickleFeet,"The ENMY tries to tickle you!"
+KDTeaseAttack_TickleFeetRemove,The ENMY takes off your shoes and tickles your feet! (DMGDLT)
+KDTeaseAttack_Headpat,The ENMY pats you gently on the head. (DMGDLT)
+KDTeaseAttackResist_Headpat,"The ENMY tries to pat you on the head but decides not to."
+KDTeaseAttack_ShoulderMassage,The ENMY behind you gives your shoulders a nice massage! (DMGDLT)
+KDTeaseAttackResist_ShoulderMassage,"The ENMY reaches for your shoulders but you slip free!"
+KDTeaseAttack_Praise,The ENMY calls you cute! (DMGDLT)
+KDTeaseAttackResist_Praise,"The ENMY blushes at your cuteness!"
+KDTeaseAttack_Insult,The ENMY makes fun of you! (DMGDLT)
+KDTeaseAttackResist_Insult,"The ENMY struggles to find words!"
+KDTeaseAttack_VibeToy,The ENMY buzzes you with her VTY! (DMGDLT)
+KDTeaseAttackResist_VibeToy,"The ENMY reaches for her VTY!"
+KDTeaseAttack_InsertToy,The ENMY sticks a VTY into you! (DMGDLT)
+KDTeaseAttackResist_InsertToy,"The ENMY reaches for her VTY!"
+KDTeaseAttack_AddStuffing,The ENMY sticks a stuffing into your open mouth! (DMGDLT)
+KDTeaseAttackResist_AddStuffing,"The ENMY reaches for your mouth and fails!"
+KDTeaseAttack_AddCarabiner,The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
+KDTeaseAttackResist_AddCarabiner,"The ENMY grabs your wrists but you pull away!"
+KDTeaseAttack_Disarm,The ENMY pulls your weapon away!
+KDTeaseAttackResist_Disarm,The ENMY tries to pull your weapon away but you maintain your grip!
+
+
+KinkyDungeonStatMore_Armbinders,"More Armbinders"
+KinkyDungeonStatDescMore_Armbinders,"Armbinders are favored over other heavy bondage."
+KinkyDungeonStatLess_Armbinders,"Less Armbinders"
+KinkyDungeonStatDescLess_Armbinders,"Armbinders are less favored over other heavy bondage."
+KinkyDungeonStatMore_Boxbinders,"More Boxbinders"
+KinkyDungeonStatDescMore_Boxbinders,"Boxbinders are favored over other heavy bondage."
+KinkyDungeonStatLess_Boxbinders,"Less Boxbinders"
+KinkyDungeonStatDescLess_Boxbinders,"Boxbinders are less favored over other heavy bondage."
+KinkyDungeonStatMore_Jackets,"More Straitjackets"
+KinkyDungeonStatDescMore_Jackets,"Straitjackets are favored over other heavy bondage."
+KinkyDungeonStatLess_Jackets,"Less Straitjackets"
+KinkyDungeonStatDescLess_Jackets,"Straitjackets are less favored over other heavy bondage."
+KinkyDungeonStatMore_Yokes,"More Yokes"
+KinkyDungeonStatDescMore_Yokes,"Yokes are favored over other heavy bondage."
+KinkyDungeonStatLess_Yokes,"Less Yokes"
+KinkyDungeonStatDescLess_Yokes,"Yokes are less favored over other heavy bondage."
+
+
+ResistTypeBlock," (blocked!)"
+ResistTypeDodge," (dodged!)"
+ResistType,""
+
+KDPetsuitCrawl,"You crouch and move slowly."
+
+KDChestTooltip,"Owned by: "
+
+RestraintWardenCollar,The Warden's Collar
+RestraintWardenCollarDesc,"A golden collar that marks you as part of someone's collection."
+RestraintWardenCollarDesc2,"You may go on your way, but only as long your freedom is useful to her."
+
+NameTheWarden1,"The Warden"
+KillTheWarden1,"The Warden disappears into a trapdoor!"
+AttackTheWarden1Bind,"The Warden forces you to kneel, and presents you with a restraint! (+RestraintAdded)"
+AttackTheWarden1,"The Warden's staff emits a flash of blinding light! (DamageTaken)"
+AttackTheWarden1Lock,"The Warden's staff emits a mystical area, which congeals into locks! (DamageTaken)"
+
+
+
+
+
+
+
+
+
+rTheWarden,"(You find a girl wearing an ornate dress)|(She glances at you)|And who might you be?"
+dTheWarden_Aggressive,"I should be asking the same of you."
+dTheWarden_AggressiveGag,"(Growl at her)"
+rTheWardenAggressive,"(She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?"
+dTheWardenAggressive_Question,What kind of name is that?
+rTheWardenAggressive_Question,"(SPEAKER frowns)|It means Windsong!|I bet yours isn't anywhere nearly as cool."
+rTheWardenAggressive_Question_Brat,"(SPEAKER looks enraged)|Because names and meanings are different things!|My name uses the script from the Old Civilization!|You're just a poser!"
+dTheWardenAggressive_Question_Brat,"Why not just call yourself Windsong?"
+dTheWardenAggressive_Question_Brat_Proceed,"(...)"
+dTheWardenAggressive_Question_Proceed,"(...)"
+dTheWardenAggressive_Proceed,I am an adventurer.
+dTheWardenAggressive_ProceedGag,Mmmmph.
+rTheWardenAggressive_ProceedGag,"(SPEAKER blushes)|Ah, right then..."
+dTheWardenAggressive_ProceedGag_Proceed,"(...)"
+rTheWardenAggressive_Brat,"(SPEAKER giggles)|Very well. I don't really care who you are."
+dTheWardenAggressive_Brat,I do not need to introduce myself.
+dTheWardenAggressive_Brat_Proceed,"Neither do I."
+dTheWardenAggressive_Brat_ProceedGag,"(...)"
+dTheWardenAggressive_Brat_Proceed2,"(...)"
+dTheWarden_Defensive,"I'm an adventurer. And who are you?"
+dTheWarden_DefensiveGag,"Mmmmm... (Blush)"
+rTheWardenDefensive,"(She grins)|My name is Fuuka, with the letters for Wind and Song.|The reincarnated ones call me Windsong,|they aren't very bright though."
+dTheWardenDefensive_Question,Reincarnated ones?
+rTheWardenDefensive_Question,"(SPEAKER tilts her head)|I believe the term is 'Zombie' in the common tongue."
+rTheWardenDefensive_Question_Question,"(SPEAKER enjoys the discussion)|When most people die, their spirits pass on to the next life.|But some stay in this world, and with the right blessings,|one can grant them a second chance!|I plan to give them all proper bodies...|Eventually."
+dTheWardenDefensive_Question_Question,"How do they get reincarnated?"
+rTheWardenDefensive_Question_Question2,"(SPEAKER enjoys the discussion)|No, they're people!|People who died long ago.|Now they live a new life, safeguarded by my Resurrection Arts!"
+dTheWardenDefensive_Question_Question2,"Aren't they dolls? They can barely speak."
+rTheWardenDefensive_Question_Question_Question,"(SPEAKER pouts)|Why you...|Long ago, I made a contract with Ninril to guide lost souls back to her.|Do you doubt her blessing?!"
+dTheWardenDefensive_Question_Question_Question,"Your Resurrection Arts don't seem very effective."
+rTheWardenDefensive_Question_Question_Question2,"(SPEAKER looks puzzled)|People don't die anymore, but there are still lots of souls out there.|Whenever they stumble into the dungeon, searching for answers,|I'm still here, waiting!"
+dTheWardenDefensive_Question_Question_Question2,"What do you do now that people don't die?"
+dTheWardenDefensive_Question_Question_Proceed,"(...)"
+rTheWardenDefensive_Question_Question_Question_Question,"(SPEAKER chortles)|So you've noticed!|As you can see, Ninril is very powerful~"
+dTheWardenDefensive_Question_Question_Question_Question,"You don't look very old yourself."
+rTheWardenDefensive_Question_Question_Question_Question2,"(SPEAKER frowns)|Divine blessings shouldn't be used for such silly things!"
+dTheWardenDefensive_Question_Question_Question_Question2,"Can you resurrect my back? It kind of hurts right now..."
+rTheWardenDefensive_Question_Question_Question_Question3,"(SPEAKER smiles)|Those latex-clad idiots don't understand a thing.|Science can only get you so far!|Worship is where it's at!"
+dTheWardenDefensive_Question_Question_Question_Question3,"The Alchemists are always looking for a youth potion."
+rTheWardenDefensive_Question_Question_Question_Question_Question,"(SPEAKER folds her arms)|Oh ho ho~|That's none of your business, for it is also part of my contract|to keep outsiders from interfering with the catacombs below!"
+dTheWardenDefensive_Question_Question_Question_Question_Question,"Do you know what's on the next floor?"
+rTheWardenDefensive_Question_Question_Question_Question_Question2,"(SPEAKER blushes)|Nope, nothing at all!|In fact, whatever it is, you won't find it down here!|Now, would you like to become my pet?"
+dTheWardenDefensive_Question_Question_Question_Question_Question2,"Do you know anything about the Old Civilization?"
+rTheWardenDefensive_Question_Question_Question_Question_Question_Question,"(SPEAKER shrugs)|Oh really...|Must be the fey playing tricks, hehe..."
+dTheWardenDefensive_Question_Question_Question_Question_Question_Question,"I've seen a few robots running around!"
+rTheWardenDefensive_Question_Question_Question_Question_Question_Question2,"(SPEAKER looks nervous)|Oh yeah? Where'd you hear that?|The 'adventurer's guild,' huh?|Why don't you just leave the dead to rest~"
+dTheWardenDefensive_Question_Question_Question_Question_Question_Question2,"I heard there was an ancient facility on this island."
+rTheWardenDefensive_Question_Question_Question_Question_Question_Question3,"(SPEAKER sighs)|Look, the Goddess doesn't tell me everything.|Now then, I have a job to do.|Please stop asking questions!"
+dTheWardenDefensive_Question_Question_Question_Question_Question_Question3,"Is Sariel Vinlaga down here?"
+rTheWardenDefensive_Question_Question_Question_Question_Question_Question3_Question,"(SPEAKER frowns)|What's with all the questions!|There totally isn't some kind of doll processing facility here!|Perhaps you're a brainwashed doll yourself?"
+dTheWardenDefensive_Question_Question_Question_Question_Question_Question3_Question,"Does DressUp Co. get their 'cyber doll' products from here?"
+rTheWardenDefensive_Question_Question_Question_Question_Question_Question3_Question2,"(SPEAKER chuckles)|I smell a hint of jealousy~"
+dTheWardenDefensive_Question_Question_Question_Question_Question_Question3_Question2,"I don't want to be a pet, so you'll have to force me."
+rTheWardenDefensive_Question_Question_Question_Question_Question_Question3_Question3,"(SPEAKER jumps up and down)|You would!?|That's wonderful~|My resurrection magic can make you young again forever!|All you have to do is pledge your soul to Nirin, the Goddess of Restoration!"
+dTheWardenDefensive_Question_Question_Question_Question_Question_Question3_Question3,"I'd love to be your pet!"
+rTheWardenDefensive_Question_Question_Question_Question_Question_Question3_Question3_Proceed,"(SPEAKER pouts)|Hmmph. Suit yourself."
+dTheWardenDefensive_Question_Question_Question_Question_Question_Question3_Question3_Proceed,"Pledge my soul? That changes things..."
+dTheWardenDefensive_Question_Proceed,"(...)"
+dTheWardenDefensive_Proceed,I am an adventurer.
+dTheWardenDefensive_ProceedGag,Mmmmph.
+rTheWardenDefensive_ProceedGag,"(SPEAKER giggles)|Hehe... you sound interested."
+dTheWardenDefensive_ProceedGag_Proceed,"(...)"
+rTheWardenDefensive_Brat,"(SPEAKER frowns)|Never ask a woman about her age!"
+dTheWardenDefensive_Brat,I take it you're the hag in charge?
+dTheWardenDefensive_Brat_Proceed,"You are in charge, right?"
+dTheWardenDefensive_Brat_ProceedGag,"(Giggle)"
+dTheWardenDefensive_Brat_Proceed2,"(...)"
+dTheWarden_Brat,"Don't mess with me, little girl."
+dTheWarden_BratGag,"Mmpphgh? (Pout at her)"
+rTheWardenBrat,"(She smirks)|So you're that kind of visitor, huh?"
+dTheWardenBrat_Question,That's right. How powerful are you?
+rTheWardenBrat_Question,"(She cracks her knuckles)|I have been practicing the resurrection arts for a thousand years."
+rTheWardenBrat_Question_Question,"(She smiles)|All the zombies you seee in the Graveyard?|They are my pets, and I care for each and every one of them."
+dTheWardenBrat_Question_Question,"What the heck are 'Resurrection Arts'?"
+dTheWardenBrat_Question_Question_Proceed,"(...)"
+dTheWardenBrat_Question_Proceed,"(...)"
+dTheWardenBrat_Proceed,It's time for a true display of skill!
+dTheWardenBrat_ProceedGag,Hmmph. (Look away)
+rTheWardenBrat_ProceedGag,"(She grins)|We'll wipe that pout off your face soon enough..."
+dTheWardenBrat_ProceedGag_Proceed,"(Shake your head)"
+rTheWardenBrat_Brat,"(She frowns)|Well, you will soon."
+dTheWardenBrat_Brat,Pfff. Never heard of it.
+dTheWardenBrat_Brat_Proceed,"I bet I could do better."
+dTheWardenBrat_Brat_ProceedGag,"(Giggle)"
+dTheWardenBrat_Brat_Proceed2,"(...)"
+dTheWarden_Dom,"Why does that matter to you?"
+dTheWarden_DomGag,"(Stare at her silently, maintaining your posture)"
+rTheWardenDom,"(She grins)|I am in charge of this place.|Everything that goes through here goes through me.|You may address me as Fuuka Windsong."
+dTheWardenDom_Question,By what authority?
+rTheWardenDom_Question,"(SPEAKER tilts her head)|Ummmm.... uh...|The Old Civilization! Of course!|I've been keeping their traditions for centuries."
+rTheWardenDom_Question_Question,"(SPEAKER blushes)|Umm... That's because...|Oh shut up!"
+dTheWardenDom_Question_Question,"You don't sound too confident."
+dTheWardenDom_Question_Question_Proceed,"Who are you anyway?"
+dTheWardenDom_Question_Proceed,"Who are you anyway?"
+dTheWardenDom_Proceed,Fair enough. I am an adventurer.
+dTheWardenDom_ProceedGag,Hmmph.
+rTheWardenDom_ProceedGag,"(SPEAKER giggles)|Is that a challenge?"
+dTheWardenDom_ProceedGag_Proceed,"(Nod calmly)"
+rTheWardenDom_Brat,"(SPEAKER grins)|Is that a challenge?"
+dTheWardenDom_Brat,We'll see about that.
+dTheWardenDom_BratGag,Hmmph. (Scoff into your gag)
+dTheWardenDom_Brat_Proceed,"It is indeed!"
+dTheWardenDom_Brat_ProceedGag,"(Giggle)"
+dTheWardenDom_Brat_Proceed2,"(...)"
+dTheWarden_Sub,"I'm an adventurer, miss."
+dTheWarden_SubGag,"Mmmpphh~ (Moan and wiggle seductively)"
+rTheWardenSub,"(She grins)|Oh look at you!|I'm going to dress you up and make you my pet!|You can have all the scritches and snuggles you want!|My name's Fuuka!"
+dTheWardenSub_Question,A pet? What kind?
+rTheWardenSub_Question,"(SPEAKER hops up and down excitedly)|Oh I've got dresses!|And all sorts of fun gear!|Maybe even this huge gag for you to chew on!"
+rTheWardenSub_Question_Question,"(SPEAKER grins)|Having second thoughts?"
+dTheWardenSub_Question_Question,"That sounds... harsh."
+dTheWardenSub_Question_Question_Proceed,"...Maybe"
+dTheWardenSub_Question_Proceed,"Exciting!"
+dTheWardenSub_Proceed,That sounds great. But who are you miss?
+dTheWardenSub_ProceedGag,Mmmmph~
+rTheWardenSub_ProceedGag,"(SPEAKER giggles)|Hehe... We will have so much fun~"
+dTheWardenSub_ProceedGag_Proceed,"(...)"
+rTheWardenSub_Brat,"(SPEAKER giggles)|You don't have to consent, dear~"
+dTheWardenSub_Brat,I never said I consented to being a pet!
+dTheWardenSub_BratGag,(Give her a puzzled look and shake your head)
+dTheWardenSub_Brat_Proceed,"No way!"
+dTheWardenSub_Brat_ProceedGag,"(Shake your head)"
+dTheWardenSub_Brat_Proceed2,"(Sigh and shrug)"
+dTheWarden_Attack,(Attack her without saying anything)
+
+rTheWardenPostIntro,"(SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?"
+dTheWardenPostIntro_Brat,"I do what I want."
+dTheWardenPostIntro_BratGag,"(Glare at her and scoff)"
+rTheWardenPostIntro_Brat,"(SPEAKER makes a big grin)|I take that you wish to challenge me?|Very well!|Come at me!"
+dTheWardenPostIntro_Zombie,"About those 'reincarnated ones'..."
+dTheWardenPostIntro_Dom,"You have no power over me"
+dTheWardenPostIntro_DomGag,"Hmmph. (Stand proudly)"
+rTheWardenPostIntro_Dom,"(SPEAKER smiles)|Then let us fight!|If I win, I will make you my pet.|If you win, I will let you pass."
+dTheWardenPostIntro_Sub,"I don't want to fight, miss..."
+dTheWardenPostIntro_SubGag,"Mmph! (Shake your head frantically)"
+rTheWardenPostIntro_Sub,"(SPEAKER giggles)|Come now, I want to see how good you are!"
+dTheWardenPostIntro_Normal,"Yes, I am here to fight you."
+dTheWardenPostIntro_NormalGag,"(Nod)"
+rTheWardenPostIntro_Normal,"(SPEAKER smiles)|Then what are we waiting for?"
+
+dTheWardenFight_Fight1,"You're on!"
+dTheWardenFight_Fight1Gag,"Hmmmph!"
+dTheWardenFight_Fight2,"Let us duel!"
+dTheWardenFight_Fight2Gag,"Mmmmmghh!"
+dTheWardenFight_Fight3,"I suppose..."
+dTheWardenFight_Fight3Gag,"Mmmmph..."
+
+rTheWardenLose,"(SPEAKER smiles as she stands over you)|Well well. Look who won."
+rTheWardenLoseAccept,"(SPEAKER nods)|Absolutely. Now allow me to make my conditions clear.|You will wear my collar from now on.|Then you will be allowed to go."
+rTheWardenLoseDeny,"(SPEAKER giggles)|You're not in a position to resist.|Now then, let me make myself clear.|I will let you go... but only wearing my collar."
+rTheWardenLoseMagic,"(SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(She brandishes a collar) Now including you!"
+dTheWardenLose_Magic,"What's this weird magic?"
+dTheWardenLose_Accept,"You beat me fair and square."
+dTheWardenLose_AcceptGag,"Mmmph. (Submit)"
+dTheWardenLose_Deny,"You cheated!"
+dTheWardenLose_DenyGag,"Mmmph! (Struggle weakly)"
+dTheWardenLose_Continue1,"(Sigh and accept your fate)"
+dTheWardenLose_Continue2,"(Accept the collar eagerly)"
+dTheWardenLose_Continue3,"(Accept the collar begrudgingly)"
+rTheWardenLoseFinish,"(SPEAKER presents you with your collar...)|(She locks it around your neck)|You are free to go now, dear!"
+
+rTheWardenStage2,"(SPEAKER puts up a wall of talismans to regain her strength)|I'm... I'm not finished yet!"
+
+rTheWardenWin,"(SPEAKER is out of breath)|I... can't... believe... it...|She drops her keys..."
+rTheWardenWinAccept,"(SPEAKER looks flabbergasted)|R-really? Okay... I'll give you a reward then..."
+dTheWardenWin_Accept,"(Submit to her anyway)"
+rTheWardenWinGag,"(SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!"
+dTheWardenWin_Gag,"(Gag her)"
+
+KDDisarmFlag,"The ENMY weakens your grip on your weapon! Enemies may disarm you if you stand too close..."
+
+
+dGenericAllyFlirt_LinkRequestArms,"Can you link my arm cuffs?"
+dGenericAllyFlirt_LinkRequestArmsGag,"(Hold out your arm cuffs)"
+rGenericAllyFlirt_LinkRequestArms,"(The SPEAKER smiles)|Why sure, sweetie, I can help you with that~"
+rGenericAllyFlirt_LinkRequestArmsDom,"(The SPEAKER grins)|What a good girl!"
+rGenericAllyFlirt_LinkRequestArmsSub,"(The SPEAKER blushes)|Those look like fun!"
+rGenericAllyFlirt_LinkRequestArmsBrat,"(The SPEAKER smirks)|Sure thing~"
+rGenericAllyFlirt_LinkRequestArmsRobot,"(The SPEAKER beeps)|+10 social credit"
+
+dGenericAllyFlirt_LinkRequestLegs,"Can you link my leg cuffs?"
+dGenericAllyFlirt_LinkRequestLegsGag,"(Hold out your leg cuffs)"
+rGenericAllyFlirt_LinkRequestLegs,"(The SPEAKER smiles)|Why sure, sweetie, I can help you with that~"
+rGenericAllyFlirt_LinkRequestLegsDom,"(The SPEAKER grins)|What a good girl!"
+rGenericAllyFlirt_LinkRequestLegsSub,"(The SPEAKER blushes)|Those look like fun!"
+rGenericAllyFlirt_LinkRequestLegsBrat,"(The SPEAKER smirks)|Sure thing~"
+rGenericAllyFlirt_LinkRequestLegsRobot,"(The SPEAKER beeps)|+10 social credit"

@@ -589,6 +589,8 @@
             <key type="filename">../Game/Bullets/TrapSleepDart.png</key>
             <key type="filename">../Game/Bullets/TrapSleepDartHit.png</key>
             <key type="filename">../Game/Bullets/TrueSteelHit.png</key>
+            <key type="filename">../Game/Bullets/VineSlimeBall.png</key>
+            <key type="filename">../Game/Bullets/VineSlimeBallHit.png</key>
             <key type="filename">../Game/Bullets/Vineexp.png</key>
             <key type="filename">../Game/Bullets/VineexpHit.png</key>
             <key type="filename">../Game/Bullets/Wall.png</key>
@@ -790,6 +792,7 @@
             <key type="filename">../Game/Enemies/Apprentice2.png</key>
             <key type="filename">../Game/Enemies/ApprenticeQuest.png</key>
             <key type="filename">../Game/Enemies/ApprenticeSlime.png</key>
+            <key type="filename">../Game/Enemies/ArmorerQuest.png</key>
             <key type="filename">../Game/Enemies/Bandit.png</key>
             <key type="filename">../Game/Enemies/BanditChief.png</key>
             <key type="filename">../Game/Enemies/BanditGrappler.png</key>
@@ -916,6 +919,7 @@
             <key type="filename">../Game/Enemies/BookSlime.png</key>
             <key type="filename">../Game/Enemies/BookTickle.png</key>
             <key type="filename">../Game/Enemies/BotMissile.png</key>
+            <key type="filename">../Game/Enemies/BowyerQuest.png</key>
             <key type="filename">../Game/Enemies/Bramble.png</key>
             <key type="filename">../Game/Enemies/Bunny_Favourite.png</key>
             <key type="filename">../Game/Enemies/CaptureBot.png</key>
@@ -2093,6 +2097,7 @@
             <key type="filename">../Game/Spells/Camo.png</key>
             <key type="filename">../Game/Spells/CanUpcast.png</key>
             <key type="filename">../Game/Spells/ChainBolt.png</key>
+            <key type="filename">../Game/Spells/ChainStrike.png</key>
             <key type="filename">../Game/Spells/ChaoticOverflow.png</key>
             <key type="filename">../Game/Spells/Charge.png</key>
             <key type="filename">../Game/Spells/Chastity.png</key>
@@ -2115,6 +2120,7 @@
             <key type="filename">../Game/Spells/DistractionShield.png</key>
             <key type="filename">../Game/Spells/EarthMote.png</key>
             <key type="filename">../Game/Spells/Earthform.png</key>
+            <key type="filename">../Game/Spells/EarthformArc.png</key>
             <key type="filename">../Game/Spells/EarthformLine.png</key>
             <key type="filename">../Game/Spells/EarthformMound.png</key>
             <key type="filename">../Game/Spells/EarthformRing.png</key>
@@ -2176,6 +2182,7 @@
             <key type="filename">../Game/Spells/Leap2.png</key>
             <key type="filename">../Game/Spells/Leap3.png</key>
             <key type="filename">../Game/Spells/LeatherBurst.png</key>
+            <key type="filename">../Game/Spells/LeatherWhip.png</key>
             <key type="filename">../Game/Spells/Light.png</key>
             <key type="filename">../Game/Spells/LightningBolt.png</key>
             <key type="filename">../Game/Spells/LightningRune.png</key>
@@ -2203,6 +2210,7 @@
             <key type="filename">../Game/Spells/RopeBoltLaunch.png</key>
             <key type="filename">../Game/Spells/RopeBoltLaunchMany.png</key>
             <key type="filename">../Game/Spells/RopeStrike.png</key>
+            <key type="filename">../Game/Spells/Ropework.png</key>
             <key type="filename">../Game/Spells/Sagitta.png</key>
             <key type="filename">../Game/Spells/ShadowBlade.png</key>
             <key type="filename">../Game/Spells/ShadowDance.png</key>
@@ -2396,6 +2404,7 @@
             <key type="filename">../Game/Locks/White.png</key>
             <key type="filename">../Game/Poses/SetPose.png</key>
             <key type="filename">../Game/Struggle.png</key>
+            <key type="filename">../Game/UI/BulletTransparency.png</key>
             <key type="filename">../Game/UI/XRay0.png</key>
             <key type="filename">../Game/UI/XRay1.png</key>
             <key type="filename">../Game/UI/XRay2.png</key>
@@ -3155,7 +3164,9 @@
             <key type="filename">../Game/InvItemSortLeft.png</key>
             <key type="filename">../Game/InvItemSortRight.png</key>
             <key type="filename">../Game/InvVisible.png</key>
+            <key type="filename">../Game/UI/Demote.png</key>
             <key type="filename">../Game/UI/Dress.png</key>
+            <key type="filename">../Game/UI/Promote.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -3191,6 +3202,7 @@
             <key type="filename">../Game/Items/Restraint/Bracers.png</key>
             <key type="filename">../Game/Items/Restraint/Breastplate.png</key>
             <key type="filename">../Game/Items/Restraint/Bustier.png</key>
+            <key type="filename">../Game/Items/Restraint/ChainBikini.png</key>
             <key type="filename">../Game/Items/Restraint/ChainTunic.png</key>
             <key type="filename">../Game/Items/Restraint/ChastityBras.png</key>
             <key type="filename">../Game/Items/Restraint/ClothGag.png</key>

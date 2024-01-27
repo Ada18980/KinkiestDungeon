@@ -318,6 +318,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 					)) {
 						let inv = KinkyDungeonGetRestraintItem("ItemBoots");
 						if (inv && (!KDRestraint(inv).armor || KDToggles.DrawArmor)) clothes.Lost = true;
+						if (KinkyDungeonFlags.get("stripShoes")) clothes.Lost = true;
 					}
 					if (!NoRestraints) {
 						for (let inv of KinkyDungeonAllRestraint()) {
@@ -450,10 +451,10 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 			let DefaultBound = "Front"; // Default bondage for arms
 			let DefaultHobbled = "Closed"; // Default bondage for legs
 			if (!AllowedLegPoses.includes(DefaultHobbled)) {
-				DefaultHobbled = "KneelClosed"; // Get up from hogtie
+				DefaultHobbled = "Kneel"; // Get up from hogtie
 			}
 			if (!AllowedLegPoses.includes(DefaultHobbled)) {
-				DefaultHobbled = "Kneel"; // Get up from hogtie
+				DefaultHobbled = "KneelClosed"; // Get up from hogtie
 			}
 
 			// Hold to player's preferred pose
@@ -1528,7 +1529,7 @@ let KDExpressions = {
 				BrowsPose: "",
 				Brows2Pose: "",
 				BlushPose: "",
-				MouthPose: "MouthSmile",
+				MouthPose: KinkyDungeonGoddessRep.Passion - KinkyDungeonGoddessRep.Frustration > 25 ? "MouthSmile" : (KinkyDungeonGoddessRep.Passion - KinkyDungeonGoddessRep.Frustration > -25 ? "MouthEmbarrassed" : "MouthPout"),
 			};
 		},
 	},

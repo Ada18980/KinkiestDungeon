@@ -32,6 +32,7 @@ let KDDrawStruggleEnum = {
 let KinkyDungeonDrawStruggle = KDDrawStruggleEnum.MOST;
 let KDPlayerSetPose = false;
 let KDToggleXRay = 0;
+let KDBulletTransparency = false;
 let KD_XRayHidden = ["Wrapping", "Tape"];
 let KinkyDungeonDrawStruggleHover = false;
 let KinkyDungeonDrawState = "Game";
@@ -1011,7 +1012,7 @@ function KinkyDungeonDrawActionBar(x, y) {
 		(KinkyDungeonDrawStruggle == KDDrawStruggleEnum.STRUGGLE ? "Struggle" :
 		(KinkyDungeonDrawStruggle == KDDrawStruggleEnum.NONE ? "True" :
 		"False")))) + ".png", "")) str = "KDHideRest";
-	if (MouseIn(0, 0, 500, 1000) || MouseIn(500, 900, 220, 200) || KDPlayerSetPose || KDToggleXRay) {
+	if (MouseIn(0, 0, 500, 1000) || MouseIn(500, 900, 320, 200) || KDPlayerSetPose || KDToggleXRay) {
 		if (StandalonePatched) {
 			if (DrawButtonKDEx("SetPose", (bdata) => {
 				KDPlayerSetPose = !KDPlayerSetPose;
@@ -1028,6 +1029,13 @@ function KinkyDungeonDrawActionBar(x, y) {
 			return true;
 		}, true, 580, 925, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "UI/XRay" + KDToggleXRay + ".png", "", false, false,
 			KDToggleXRay ? KDTextGray3 : KDButtonColor)) str = "KDXRay";
+	}
+	if (MouseIn(0, 0, 500, 1000) || MouseIn(500, 900, 320, 200) || KDBulletTransparency || KDMapData.Bullets?.length > 0) {
+		if (DrawButtonKDEx("SetTransparentBullets", (bdata) => {
+			KDBulletTransparency = !KDBulletTransparency;
+			return true;
+		}, true, 720, 925, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "UI/BulletTransparency.png", "", false, false,
+		KDBulletTransparency ? KDTextGray3 : KDButtonColor, undefined, undefined)) str = "KDBulletTransparency";
 	}
 	if (KDPlayerSetPose) {
 		KDPlayerDrawPoseButtons(KinkyDungeonPlayer);

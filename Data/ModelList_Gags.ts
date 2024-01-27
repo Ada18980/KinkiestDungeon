@@ -580,6 +580,7 @@ AddModel({
 });
 
 
+
 AddModel({
 	Name: "GagLatexFlat",
 	Folder: "GagLatex",
@@ -620,10 +621,62 @@ AddModel(GetModelWithExtraLayers("GagLatexFlatHarnessSecure", "GagLatexFlatHarne
 	},
 ], "GagLatex", false));
 
+
+AddModel({
+	Name: "GagLatexMute",
+	Folder: "GagLatex",
+	Parent: "GagLatex",
+	TopLevel: false,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags","Latex"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
+	Layers: ToLayerMap([
+		{ Name: "OTNFlat", Layer: "GagFlat", Pri: 30,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Latex",
+		},
+		{ Name: "MuteLogo", Layer: "GagFlat", Pri: 30.1,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "OTNFlat",
+			InheritColor: "Symbol",
+		},
+	])
+});
+
+AddModel(GetModelWithExtraLayers("GagLatexMuteHarness", "GagLatexMute", [
+	{ Name: "Harness", Layer: "GagFlatStraps", Pri: 19,
+		Sprite: "Harness",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "GagLatex", false));
+AddModel(GetModelWithExtraLayers("GagLatexMuteHarnessSecure", "GagLatexMuteHarness", [
+	{ Name: "SideStrap", Layer: "GagFlatStraps", Pri: 21,
+		Sprite: "SideStrap",
+		OffsetX: 942,
+		OffsetY: 200,
+		Invariant: true,
+	},
+], "GagLatex", false));
+
 AddModel(GetModelFashionVersion("GagLatex", true));
 AddModel(GetModelFashionVersion("GagLatexFlat", true));
 AddModel(GetModelFashionVersion("GagLatexFlatHarness", true));
 AddModel(GetModelFashionVersion("GagLatexFlatHarnessSecure", true));
+AddModel(GetModelFashionVersion("GagLatexMute", true));
+AddModel(GetModelFashionVersion("GagLatexMuteHarness", true));
+AddModel(GetModelFashionVersion("GagLatexMuteHarnessSecure", true));
 
 AddModel({
 	Name: "GagLatexPlug",

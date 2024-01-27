@@ -486,6 +486,10 @@ function KDRefreshPoseOptions(Character: Character) {
 		KDCurrentModels.get(Character).TempPoses.ChastityOption = true;
 		KDCurrentModels.get(Character).Poses.ChastityOption = true;
 	}
+	if (KDToggles.ChastityOption2) {
+		KDCurrentModels.get(Character).TempPoses.ChastityOption2 = true;
+		KDCurrentModels.get(Character).Poses.ChastityOption2 = true;
+	}
 	if (!KDToggles.Nipples) {
 		KDCurrentModels.get(Character).TempPoses.HideNipples = true;
 		KDCurrentModels.get(Character).Poses.HideNipples = true;
@@ -511,6 +515,9 @@ function KDRefreshPoseOptions(Character: Character) {
 function KDRefreshPoseOptionsMC(MC: ModelContainer) {
 	if (KDToggles.ChastityOption) {
 		MC.Poses.ChastityOption = true;
+	}
+	if (KDToggles.ChastityOption2) {
+		MC.Poses.ChastityOption2 = true;
 	}
 	if (!KDToggles.Nipples) {
 		MC.Poses.HideNipples = true;

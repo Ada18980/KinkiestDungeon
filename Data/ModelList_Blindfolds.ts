@@ -15,10 +15,10 @@ AddModel({
 	Categories: ["Restraints","Gags", "Blindfolds", "Masks"],
 	AddPose: ["FaceCoverGag"],
 	AddPoseConditional: {
-		Xray: ["HideMouth",],
+		Xray: ["HideMouth", "HoodMask"],
 	},
 	Layers: ToLayerMap([
-		{ Name: "Face", Layer: "MaskOver", Pri: 20,
+		{ Name: "Face", Layer: "Hood", Pri: -20,
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,

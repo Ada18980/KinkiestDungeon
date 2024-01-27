@@ -66,13 +66,16 @@ AddModel({
 	Filters: {
 		"Slime": slimefilter,
 	},
+	AddPoseConditional: {
+		Xray: ["HoodMask",],
+	},
 	Layers: ToLayerMap([
-		{ Name: "FaceFull", Layer: "Blindfold", Pri: -15,
+		{ Name: "FaceFull", Layer: "Hood", Pri: -30,
 			Invariant: true,
 			NoOverride: true,
 			InheritColor: "Slime",
 			AddPriWithPose: {
-				ItemHeadRubberOver: 45,
+				ItemHeadRubberOver: 14,
 			},
 		},
 	])
@@ -92,7 +95,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "FootLeft", Layer: "WrappingLegsUnder", Pri: 150,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
-			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
 			NoOverride: true,
 			InheritColor: "Slime",
 			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes"]),
@@ -102,7 +105,7 @@ AddModel({
 		},
 		{ Name: "FootRight", Layer: "WrappingLegsRight", Pri: -150,
 			//SwapLayerPose: {Kneel: "WrappingLegsRight", KneelClosed: "WrappingLegsRight"},
-			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
+			Poses: ToMap(["Closed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			NoOverride: true,
 			InheritColor: "Slime",

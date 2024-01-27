@@ -148,6 +148,7 @@ let KDToggles = {
 	EnemyAnimations: true,
 	DrawArmor: true,
 	ChastityOption: false,
+	ChastityOption2: false,
 	ChastityBraOption: false,
 	SimpleColorPicker: true,
 	TransparentUI: false,
@@ -165,6 +166,7 @@ let KDToggles = {
 	PlayerAura: false,
 	EnemyAura: true,
 	OutlineAura: true,
+	GreyscaleBlindness: true,
 	NearestNeighbor: true,
 	ZoomIn: false,
 	ZoomOut: false,
@@ -177,7 +179,6 @@ let KDToggles = {
 	//AutoCrouchOnTrip: true,
 	FlipStatusBars: false,
 	ForcePalette: false,
-	AllowSusMods: false,
 	AutoLoadMods: false,
 	FlipPlayer: true,
 };
@@ -197,6 +198,7 @@ let KDToggleCategories = {
 	EnemyAnimations: "GFX",
 	DrawArmor: "Clothes",
 	ChastityOption: "Clothes",
+	ChastityOption2: "Clothes",
 	ChastityBraOption: "Clothes",
 	SimpleColorPicker: "Clothes",
 	Nipples: "Clothes",
@@ -226,6 +228,7 @@ let KDToggleCategories = {
 	//LazyWalk: "Controls",
 	//ShiftLatch: "Controls",
 	FlipPlayer: "Clothes",
+	GreyscaleBlindness: "GFX",
 };
 
 let KDDefaultKB = {
@@ -291,6 +294,7 @@ let KDDefaultKB = {
 	MakeNoise: KinkyDungeonKeyToggle[7],
 	PlaySelf: KinkyDungeonKeyToggle[8],
 	Crouch: KinkyDungeonKeyToggle[9],
+	BulletTransparency: KinkyDungeonKeyToggle[10],
 };
 
 let KinkyDungeonRootDirectory = "Screens/MiniGame/KinkyDungeon/";
@@ -481,9 +485,11 @@ let KDDefaultMaxParty = 3;
 * Balance: number,
 * BalancePause: boolean,
 * Collection: Record<string, KDCollectionEntry>,
+* CollectionSorted: KDCollectionEntry[],
 * HeelPower: number,
 * visionAdjust: number,
 * visionBlind: number,
+* CollectionGuests: number,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
@@ -492,6 +498,7 @@ let KDDefaultMaxParty = 3;
 let KDGameDataBase = {
 	AttachedWep: "",
 	Collection: {},
+	CollectionSorted: [],
 	RevealedTiles: {},
 	RevealedFog: {},
 	Balance: 1,
@@ -677,6 +684,7 @@ let KDGameDataBase = {
 	Wait: 0,
 	Class: "",
 	EpicenterLevel: 0,
+	CollectionGuests: 0,
 
 	FloorRobotType: {},
 
@@ -820,8 +828,8 @@ function KDSaveToggles() {
 function KinkyDungeonLoad() {
 	try {
 		//@ts-ignore
-		let win = nw.Window.get();
-		if (win) {
+		let API = window.kdAPI;
+		if (API) {
 			KDExitButton = true;
 		}
 	} catch (err) {
@@ -891,7 +899,7 @@ function KinkyDungeonLoad() {
 			if (KDToggles.AutoLoadMods) {
 				if (!KDGetMods) {
 					KDGetMods = true;
-					KDGetModsLoad();
+					KDGetModsLoad(true);
 				}
 			}
 
@@ -1107,46 +1115,19 @@ let KDLogoEndTime2 = 500;
 
 function KDOpenFullscreen() {
 	try {
-		/*
 		// @ts-ignore
-		if (document.getElementById("MainCanvas")?.requestFullscreen) {
-			// @ts-ignore
-			document.getElementById("MainCanvas")?.requestFullscreen();
-			// @ts-ignore
-		} else if (document.getElementById("MainCanvas")?.webkitRequestFullscreen) {
-		// @ts-ignore
-			document.getElementById("MainCanvas")?.webkitRequestFullscreen();
-		// @ts-ignore
-		} else if (document.getElementById("MainCanvas")?.msRequestFullscreen) {
-		// @ts-ignore
-			document.getElementById("MainCanvas")?.msRequestFullscreen();
-		}*/
-		// @ts-ignore
-		let win = nw.Window.get();
-		if (win?.enterFullscreen) win.enterFullscreen();
+		let API = window.kdAPI;
+		if (API?.setFullscreen) API.setFullscreen();
 	} catch (err) {
 		console.log(err);
 	}
 }
 
 function KDCloseFullscreen() {
-
 	try {
-		/*
-		if (document.exitFullscreen) {
-			document.exitFullscreen();
 		// @ts-ignore
-		} else if (document.webkitExitFullscreen) {
-		// @ts-ignore
-			document.webkitExitFullscreen();
-			// @ts-ignore
-		} else if (document.msExitFullscreen) {
-		// @ts-ignore
-			document.msExitFullscreen();
-		}*/
-		// @ts-ignore
-		let win = nw.Window.get();
-		if (win?.leaveFullscreen) win.leaveFullscreen();
+		let API = window.kdAPI;
+		if (API?.setWindowed) API.setWindowed();
 	} catch (err) {
 		console.log(err);
 	}
@@ -1400,8 +1381,8 @@ function KinkyDungeonRun() {
 		if (KDExitButton) {
 			DrawButtonKDEx("KDExitButton", () => {
 				//@ts-ignore
-				let win = nw.Window.get();
-				win.close();
+				let API = window.kdAPI;
+				if (API?.close) API.close();
 				return true;
 			}, true, 1000-350/2, ii, 350, 64, TextGet("KDExit"), "#ffffff", "");
 			ii += 80;
@@ -3218,6 +3199,7 @@ function KDCommitKeybindings() {
 		KinkyDungeonKeybindings.MakeNoise,
 		KinkyDungeonKeybindings.PlaySelf,
 		KinkyDungeonKeybindings.Crouch,
+		KinkyDungeonKeybindings.BulletTransparency,
 	];
 
 	KinkyDungeonKeyMap = [KinkyDungeonKeybindings.Map];
@@ -3403,6 +3385,10 @@ function KinkyDungeonHandleClick() {
 		if (MouseIn(875, 750, 350, 64)) {
 			if (StandalonePatched) {
 				KDSaveCodeOutfit();
+				CharacterReleaseTotal(KinkyDungeonPlayer);
+				KinkyDungeonDressSet();
+				KinkyDungeonCheckClothesLoss = true;
+				KinkyDungeonDressPlayer();
 				KinkyDungeonState = "Wardrobe";
 				KDWardrobeCallback = null;
 				KDWardrobeRevertCallback = null;

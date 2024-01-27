@@ -660,6 +660,11 @@ function KDDrawModelList(X, C) {
 		return (bdata) => {
 			if (!en) return false;
 			KDModelList_Categories_index = index;
+			if (KDModelListFilter) {
+				KDModelListFilter = "";
+				KDUpdateModelList(0);
+				KDUpdateModelList(2);
+			}
 			KDUpdateModelList(1);
 			return true;
 		};
@@ -668,6 +673,11 @@ function KDDrawModelList(X, C) {
 		return (bdata) => {
 			if (!en) return false;
 			KDModelList_Toplevel_index = index;
+			if (KDModelListFilter) {
+				KDModelListFilter = "";
+				KDUpdateModelList(0);
+				KDUpdateModelList(1);
+			}
 			KDUpdateModelList(2);
 			let name = KDModelList_Sublevel[KDModelList_Sublevel_index] || "";
 			if (name) {
@@ -723,7 +733,7 @@ function KDDrawModelList(X, C) {
 		MF.Element.oninput = (event) => {
 			KDModelListFilter = ElementValue("KDModelListFilter");
 
-			KDUpdateModelList(1);
+			//KDUpdateModelList(1);
 			KDUpdateModelList(2);
 			KDUpdateModelList(3);
 		};
@@ -893,11 +903,11 @@ function KDDrawWardrobe(screen, Character) {
 
 			if (NewOutfit) {
 				KDOriginalValue = KDOutfitOriginalStore[KDCurrentOutfit] || "";
-				CharacterAppearanceRestore(KinkyDungeonPlayer, DecompressB64(NewOutfit));
-				CharacterRefresh(KinkyDungeonPlayer);
-				KDInitProtectedGroups(KinkyDungeonPlayer);
-				KinkyDungeonDressPlayer();
-			} else {
+				CharacterAppearanceRestore(C, DecompressB64(NewOutfit));
+				CharacterRefresh(C);
+				KDInitProtectedGroups(C);
+				KinkyDungeonDressPlayer(C, true);
+			} else if (C == KinkyDungeonPlayer) {
 				KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
 				CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
 				CharacterReleaseTotal(KinkyDungeonPlayer);

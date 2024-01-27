@@ -450,7 +450,7 @@ let KDInventoryAction = {
 			return "";
 		},
 		click: (player, item) => {
-			KDGameData.PreviousWeapon[0] = item.name;
+			KDGameData.PreviousWeapon[3] = item.name;
 			if (!KDGameData.PreviousWeaponLock) {
 				KDGameData.PreviousWeaponLock = [];
 				for (let i = 0; i < KDMaxPreviousWeapon; i++) {

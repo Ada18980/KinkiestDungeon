@@ -235,6 +235,7 @@ AddModel({
 	Name: "ThighLink",
 	Folder: "Cuffs",
 	TopLevel: true,
+	Restraint: true,
 	Categories: ["Restraints","Cuffs", "Links"],
 	AddPose: ["ThighLink"],
 	Layers: ToLayerMap([
@@ -248,6 +249,7 @@ AddModel({
 	Name: "AnkleLink",
 	Folder: "Cuffs",
 	TopLevel: true,
+	Restraint: true,
 	Categories: ["Restraints","Cuffs", "Links"],
 	AddPose: ["AnkleLink"],
 	Layers: ToLayerMap([

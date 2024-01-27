@@ -18,7 +18,7 @@ let KDAdvanceAmount = {
  * @returns {boolean}
  */
 function KDWettable(entity) {
-	return entity.player || (!entity.Enemy.tags.acidimmune && !entity.Enemy.tags.acidresist && !entity.Enemy.tags.fire && !entity.Enemy.tags.nowet);
+	return entity.player || (!entity.Enemy.tags.acidimmune && !entity.Enemy.tags.acidresist && !entity.Enemy.tags.nowet);
 }
 
 /**
@@ -27,7 +27,7 @@ function KDWettable(entity) {
  * @returns {boolean}
  */
 function KDConducting(entity) {
-	return entity.player || (!entity.Enemy.tags.electricimmune && !entity.Enemy.tags.electricresist && !entity.Enemy.tags.electric && !entity.Enemy.tags.noconduct);
+	return entity.player || (!entity.Enemy.tags.electricimmune && !entity.Enemy.tags.electric && !entity.Enemy.tags.noconduct);
 }
 
 function KinkyDungeonHandleTilesEnemy(enemy, delta) {
@@ -493,6 +493,11 @@ function KDDrawEffectTiles(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					tile.spinAngle += tile.spin * KDTimescale*delta;
 					if (tile.spinAngle > Math.PI * 2) tile.spinAngle -= Math.PI*2;
 					else if (tile.spinAngle < 0) tile.spinAngle += Math.PI*2;
+				}
+				if (KDBulletTransparency) {
+					if (tile.duration < 9000) {
+						op.alpha *= 0.7;
+					}
 				}
 				if (color != undefined) op.tint = color;
 				KDDraw(kdeffecttileboard, kdpixisprites, tileid, KinkyDungeonRootDirectory + "EffectTiles/" + sprite + ".png",

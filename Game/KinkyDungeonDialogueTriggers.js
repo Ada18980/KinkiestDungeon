@@ -206,7 +206,12 @@ function KDDefaultPrereqs(enemy, AIData, dist, maxdist, chance, restraintTags, f
 			&& (!KinkyDungeonFlags.get("BondageOffer") || force)
 			&& !KinkyDungeonFlags.get("NoTalk")
 			&& (KinkyDungeonStatsChoice.get("Undeniable") || KDRandom() < chance || force)
-			&& (!restraintTags || KinkyDungeonGetRestraint({tags: restraintTags}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], undefined, Lock) != undefined)
+			&& (!restraintTags || KinkyDungeonGetRestraint(
+				{tags: restraintTags},
+				KDGetEffLevel() * 1.5 + KDGetOfferLevelMod(),
+				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+				undefined,
+				Lock) != undefined)
 			&& (KinkyDungeonStatsChoice.get("Undeniable") || !KDIsBrat(enemy) || force);
 }
 function KDShopTrigger(name) {
