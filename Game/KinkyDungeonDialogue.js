@@ -815,6 +815,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 				prerequisiteFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						if (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) return false;
 						return (KinkyDungeonCanPlay(enemy) && KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints") && !enemy.playWithPlayer) == true;
 					}
 					return false;

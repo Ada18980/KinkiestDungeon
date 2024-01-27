@@ -450,7 +450,7 @@ let KDJailReleaseTurns = [
 let KDSecurityLevelHiSec = 0;
 
 /**
- * @type {Record<string, {overridelowerpriority: boolean, priority: number, jail: boolean, parole: boolean, restraints: {Name: string, Level: number, Variant?: string, Condition?: string}[]}>}
+ * @type {Record<string, {overridelowerpriority: boolean, priority: number, jail: boolean, parole: boolean, restraints: KDJailRestraint[]}>}
 */
 let KDJailOutfits = {
 	"jailer": {
@@ -469,13 +469,13 @@ let KDJailOutfits = {
 			{Name: "LegShackles", Level: 35},
 			{Name: "HighsecLegbinder", Level: 35},
 			{Name: "WristShackles", Level: 0},
-			{Name: "TrapArmbinder", Level: 40, Condition: "LessArmbinders"},
-			{Name: "TrapBoxbinder", Level: 40, Condition: "LessBoxbinders"},
-			{Name: "TrapYoke", Level: 50, Condition: "LessYokes"},
-			{Name: "TrapFiddle", Level: 60, Condition: "LessYokes"},
-			{Name: "HighsecArmbinder", Level: 70, Condition: "LessArmbinders"},
-			{Name: "HighsecBoxbinder", Level: 70, Condition: "LessBoxbinders"},
-			{Name: "HighsecStraitjacket", Level: 70, Condition: "LessJackets"},
+			{Name: "TrapArmbinder", Level: 40, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
+			{Name: "TrapBoxbinder", Level: 40, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
+			{Name: "TrapYoke", Level: 50, Condition: "LessYokes", Priority: "MoreYokes"},
+			{Name: "TrapFiddle", Level: 60, Condition: "LessYokes", Priority: "MoreYokes"},
+			{Name: "HighsecArmbinder", Level: 70, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
+			{Name: "HighsecBoxbinder", Level: 70, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
+			{Name: "HighsecStraitjacket", Level: 70, Condition: "LessJackets", Priority: "MoreJackets"},
 			{Name: "PrisonBelt", Level: 30},
 			{Name: "TrapPlug", Level: 30},
 			{Name: "TrapPlug2", Level: 45},
@@ -609,17 +609,17 @@ let KDJailOutfits = {
 			{Name: "MaidGag", Level: 30},
 			{Name: "MaidMuzzle", Level: 40},
 
-			{Name: "TrapYoke", Level: 35, Condition: "LessYokes"},
-			{Name: "TrapFiddle", Level: 35, Condition: "LessYokes"},
-			{Name: "TrapArmbinder", Level: 30, Condition: "LessArmbinders"},
-			{Name: "TrapBoxbinder", Level: 30, Condition: "LessBoxbinders"},
+			{Name: "TrapYoke", Level: 35, Condition: "LessYokes", Priority: "MoreYokes"},
+			{Name: "TrapFiddle", Level: 35, Condition: "LessYokes", Priority: "MoreYokes"},
+			{Name: "TrapArmbinder", Level: 30, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
+			{Name: "TrapBoxbinder", Level: 30, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
 
 			{Name: "MaidAnkleCuffs", Level: 40},
 
-			{Name: "MaidJacket", Level: 60, Condition: "LessJackets"},
+			{Name: "MaidJacket", Level: 60, Condition: "LessJackets", Priority: "MoreJackets"},
 
 
-			{Name: "HeavyYoke", Level: 75, Condition: "LessYokes"},
+			{Name: "HeavyYoke", Level: 75, Condition: "LessYokes", Priority: "MoreYokes"},
 
 
 			{Name: "MaidDress", Level: 100},
@@ -641,9 +641,9 @@ let KDJailOutfits = {
 			{Name: "PVCHarness", Level: 30},
 			{Name: "LatexCorset", Level: 65},
 			{Name: "LatexLegbinder", Level: 80},
-			{Name: "LatexArmbinder", Level: 30, Condition: "LessArmbinders"},
-			{Name: "LatexBoxbinder", Level: 30, Condition: "LessBoxbinders"},
-			{Name: "LatexStraitjacket", Level: 60, Condition: "LessJackets"},
+			{Name: "LatexArmbinder", Level: 30, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
+			{Name: "LatexBoxbinder", Level: 30, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
+			{Name: "LatexStraitjacket", Level: 60, Condition: "LessJackets", Priority: "MoreJackets"},
 			{Name: "LatexCatsuit", Level: 40},
 			{Name: "KiguMask", Level: 100, Condition: "NoUnmasked"},
 			{Name: "ExpCollar", Level: 120},
@@ -656,7 +656,7 @@ let KDJailOutfits = {
 		parole: false,
 		restraints: [
 			{Name: "WolfCuffs", Level: 0},
-			{Name: "WolfArmbinder", Level: 30, Condition: "LessBoxbinders"},
+			{Name: "WolfArmbinder", Level: 30, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
 			{Name: "WolfAnkleCuffs", Level: 10},
 			{Name: "WolfHarness", Level: 20},
 			{Name: "ControlHarness", Level: 80},
@@ -673,7 +673,7 @@ let KDJailOutfits = {
 		jail: true,
 		parole: false,
 		restraints: [
-			{Name: "ExpArmbinder", Level: 0, Condition: "LessBoxbinders"},
+			{Name: "ExpArmbinder", Level: 0, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
 			{Name: "ExpArmbinderHarness", Level: 60},
 			{Name: "BlacksteelAnkleCuffs", Level: 30},
 			{Name: "LatexBallGag", Level: 25, Variant: "AntiMagic", Condition: "Mage"},
@@ -697,7 +697,7 @@ let KDJailOutfits = {
 			{Name: "DragonBallGag", Level: 30},
 			{Name: "DragonMuzzleGag", Level: 60},
 			{Name: "DragonCollar", Level: 0},
-			{Name: "DragonArmbinder", Level: 50, Condition: "LessBoxbinders"},
+			{Name: "DragonArmbinder", Level: 50, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
 		],
 	},
 	"dollsmith": {
@@ -714,7 +714,7 @@ let KDJailOutfits = {
 			{Name: "CyberBallGag", Level: 20},
 			{Name: "CyberPlugGag", Level: 40},
 			{Name: "CyberMuzzle", Level: 75},
-			{Name: "CyberDollJacket", Level: 60, Condition: "LessJackets"},
+			{Name: "CyberDollJacket", Level: 60, Condition: "LessJackets", Priority: "MoreJackets"},
 			{Name: "CyberArmCuffs", Level: 0},
 			{Name: "CyberAnkleCuffs", Level: 40},
 			{Name: "CyberLegCuffs", Level: 30},
@@ -750,9 +750,9 @@ let KDJailOutfits = {
 			{Name: "ObsidianGag", Level: 55, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "ObsidianGag", Level: 30},
 			{Name: "ObsidianCollar", Level: 0},
-			{Name: "ShadowLatexArmbinder", Level: 70, Condition: "LessArmbinders"},
-			{Name: "ShadowLatexBoxbinder", Level: 70, Condition: "LessBoxbinders"},
-			{Name: "ShadowLatexStraitjacket", Level: 75, Condition: "LessJackets"},
+			{Name: "ShadowLatexArmbinder", Level: 70, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
+			{Name: "ShadowLatexBoxbinder", Level: 70, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
+			{Name: "ShadowLatexStraitjacket", Level: 75, Condition: "LessJackets", Priority: "MoreJackets"},
 			{Name: "ShadowLatexHeels", Level: 85},
 			{Name: "ShadowLatexLegbinder", Level: 100},
 
@@ -781,8 +781,8 @@ let KDJailOutfits = {
 			{Name: "SturdyLeatherBeltsArms", Level: 40},
 			{Name: "SturdyLeatherBeltsLegs", Level: 80},
 			{Name: "SturdyLeatherBeltsFeet", Level: 70},
-			{Name: "TrapArmbinder", Level: 50, Condition: "LessArmbinders"},
-			{Name: "TrapBoxbinder", Level: 50, Condition: "LessBoxbinders"},
+			{Name: "TrapArmbinder", Level: 50, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
+			{Name: "TrapBoxbinder", Level: 50, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
 			{Name: "TrapLegbinder", Level: 60},
 			{Name: "TrapMittens", Level: 20},
 			{Name: "PanelGag", Level: 35, Variant: "AntiMagic", Condition: "Mage"},
@@ -860,5 +860,17 @@ let KDJailConditions = {
 			|| (KinkyDungeonStatsChoice.get("Less_Jackets")
 			&& KinkyDungeonStatsChoice.get("Less_Boxbinders")
 			&& KinkyDungeonStatsChoice.get("Less_Armbinders"));
+	},
+	MoreArmbinders: (r) => {
+		return KinkyDungeonStatsChoice.get("More_Armbinders");
+	},
+	MoreYokes: (r) => {
+		return KinkyDungeonStatsChoice.get("More_Yokes");
+	},
+	MoreBoxbinders: (r) => {
+		return KinkyDungeonStatsChoice.get("More_Boxbinders");
+	},
+	MoreJackets: (r) => {
+		return KinkyDungeonStatsChoice.get("More_Jackets");
 	},
 };

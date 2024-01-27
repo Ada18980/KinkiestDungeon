@@ -1109,7 +1109,7 @@ function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountM
 					KDPlayerEffectRestrain(undefined, 1, restraintsTags, "Goddess", false, true, false, false, false, "Divine", {
 						Progressive: true,
 						ProgressiveSkip: true,
-						DontPreferWill: true,
+						DontPreferWill: false,
 						Keep: true,
 					});
 				}

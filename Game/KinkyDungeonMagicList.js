@@ -878,6 +878,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				name: "Ice",
 				duration: 20,
 			},
+			noise: 1.5,
 			noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: true, time:6, power: 3, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "frost",
 			events: [{type: "ElementalOnSlowOrBindOrDrench", trigger: "bulletHitEnemy", damage: "ice", time: 6, power: 0},]},
 		{name: "Icebolt", tags: ["ice", "bolt", "offense"], prerequisite: "ApprenticeIce", sfx: "MagicSlash", hitsfx: "Freeze", school: "Elements", manacost: 4, components: ["Arms"], level:1, type:"bolt",

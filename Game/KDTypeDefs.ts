@@ -2455,6 +2455,7 @@ interface KDAITriggerData {
  * Persistently stored as AIData variable for use in some
  */
 interface KDAIData extends KDAITriggerData {
+	playerItems?: item[],
 	/** The target of the AI, NOT the KinkyDungeonPlayerEntity but rather a target entity which CAN be the player */
 	player?: entity,
 	/** Whether or not the enemy can talk */
@@ -2524,6 +2525,7 @@ interface KDAIData extends KDAITriggerData {
 	canAggro?: boolean,
 	/** The enemy actually aggros the target and will make attacks */
 	wantsToAttack?: boolean,
+	wantsToTease?: boolean,
 	/** The enemy actually aggros the target and will cast spells */
 	wantsToCast?: boolean,
 	/** The enemy wants to pull the player instead of just attacking */
@@ -2590,7 +2592,7 @@ interface KDAIData extends KDAITriggerData {
 	playEvent?: boolean,
 }
 
-interface KDJailRestraint {Name: string, Level: number, Variant?: string, Condition?: string};
+interface KDJailRestraint {Name: string, Level: number, Variant?: string, Condition?: string, Priority?: string};
 
 type EnemyEvent = {
 	/** Extremely important for leash events */

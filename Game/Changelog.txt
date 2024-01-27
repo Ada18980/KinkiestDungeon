@@ -34,6 +34,10 @@ Monk class?
  - Prison now mildly respects armbinder/boxbinder preferences (specifically if you do Less_Armbinders it will filter out armbinders from prison)
  - Slime Eruption damage reduced from 50 to 40
  - Slime Blast damage reduced from 40 to 35
+ - Added sunglasses
+ - Enemies fighting you have a harder time using tease attacks
+ - Enemies playing with you have an easier time using tease attacks
+ - Added Miku and Royal palette
 
 5.1.12
  - Added a global cooldown on tease attacks as well as a per enemy cooldown

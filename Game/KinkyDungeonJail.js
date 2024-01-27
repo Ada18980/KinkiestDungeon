@@ -386,19 +386,39 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 	let currentItem = KinkyDungeonGetRestraintItem(Group);
 	// Try first with ones that are linkable
 	if (currentItem) {
+		// Go for priority candidates first
 		for (let r of KDGetJailRestraints()) {
 			let level = 0;
 			if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
 			if (!r.Level || level >= r.Level) {
 				let candidate = KinkyDungeonGetRestraintByName(r.Name);
 				if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
-					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
+					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r)) && KDPriorityCondition(r)) {
 						if (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), candidate)) {
 							cand = candidate;
 							variant = r.Variant;
 							candLevel = candidate.nonbinding ? 0 : r.Level;
 						}
 
+					}
+				}
+			}
+		}
+		if (!cand) {
+			for (let r of KDGetJailRestraints()) {
+				let level = 0;
+				if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
+				if (!r.Level || level >= r.Level) {
+					let candidate = KinkyDungeonGetRestraintByName(r.Name);
+					if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
+						if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
+							if (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), candidate)) {
+								cand = candidate;
+								variant = r.Variant;
+								candLevel = candidate.nonbinding ? 0 : r.Level;
+							}
+
+						}
 					}
 				}
 			}
@@ -412,7 +432,7 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 			if (!r.Level || level >= r.Level) {
 				let candidate = KinkyDungeonGetRestraintByName(r.Name);
 				if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
-					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
+					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r)) && KDPriorityCondition(r)) {
 						cand = candidate;
 						variant = r.Variant;
 						candLevel = candidate.nonbinding ? 0 : r.Level;
@@ -420,6 +440,21 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 				}
 			}
 		}
+		if (!cand)
+			for (let r of KDGetJailRestraints()) {
+				let level = 0;
+				if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
+				if (!r.Level || level >= r.Level) {
+					let candidate = KinkyDungeonGetRestraintByName(r.Name);
+					if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
+						if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
+							cand = candidate;
+							variant = r.Variant;
+							candLevel = candidate.nonbinding ? 0 : r.Level;
+						}
+					}
+				}
+			}
 	}
 	return {restraint: cand, variant: variant};
 }
@@ -435,6 +470,19 @@ function KDJailCondition(r) {
 	}
 	return true;
 }
+
+/**
+ *
+ * @param {KDJailRestraint} r
+ * @returns {boolean}
+ */
+function KDPriorityCondition(r) {
+	if (r.Priority && KDJailConditions[r.Priority]) {
+		return KDJailConditions[r.Priority](r);
+	}
+	return false;
+}
+
 
 function KinkyDungeonGetJailRestraintLevelFor(Name) {
 	for (let r of KDGetJailRestraints()) {

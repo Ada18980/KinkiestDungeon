@@ -190,6 +190,13 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 			offset_x: 915/MODELWIDTH,
 			offset_y: 2160/MODELHEIGHT,
 		},{
+			Layer: "StockingLeftKneel",
+			rotation: -5.84,
+			rotation_x_anchor: 915/MODELWIDTH,
+			rotation_y_anchor: 2160/MODELHEIGHT,
+			offset_x: 915/MODELWIDTH,
+			offset_y: 2160/MODELHEIGHT,
+		},{
 			Layer: "BG",
 			offset_x: 0,
 			offset_y: -.15,

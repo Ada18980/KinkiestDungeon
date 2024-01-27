@@ -85,7 +85,8 @@ let KinkyDungneonShopRestraints = {
 	"DivineBra2" : {name: "DivineBra2", rarity: 5, shop: true},
 	"DusterGag" : {name: "DusterGag", rarity: 2, shop: true},
 	"GasMask" : {name: "GasMask", rarity: 2, shop: true},
-	"PotionCollar" : {name: "PotionCollar", rarity: 2, shop: true},
+	"PotionCollar" : {name: "PotionCollar", rarity: 3, shop: true},
+	"Sunglasses" : {name: "Sunglasses", rarity: 2, shop: true},
 };
 
 /** @type {Record<string, (consumable) => void>} */

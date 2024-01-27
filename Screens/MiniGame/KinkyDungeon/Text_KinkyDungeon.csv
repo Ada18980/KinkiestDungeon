@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.1.12"
+KDVersionStr,"5.1.13 RC2"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -504,7 +504,7 @@ KinkyDungeonStatPrisoner,"Prisoner"
 KinkyDungeonStatDescPrisoner,"Start the game as a submissive prisoner wandering the halls."
 
 KinkyDungeonStatRusted,"Rusty Bolts"
-KinkyDungeonStatDescRusted,"Most traps have a 25% misfire chance."
+KinkyDungeonStatDescRusted,"Most traps have a 25% misfire chance each time you step on them."
 
 KinkyDungeonStatNoPet,"Not a Pet"
 KinkyDungeonStatDescNoPet,"Petsuits occur less often."
@@ -590,7 +590,7 @@ KinkyDungeonCantUsePotionsKneel,You kneel down so you can reach the potion with 
 KinkyDungeonStatIncantation,"Can't Hear You!"
 KinkyDungeonStatDescIncantation,"Being gagged blocks you from casting verbal spells regardless of gag power."
 KinkyDungeonStatSmoothTalker,"Smooth Talker"
-KinkyDungeonStatDescSmoothTalker,"Being gagged does not increase your miscast chance for verbal spells unless fully gagged."
+KinkyDungeonStatDescSmoothTalker,"Being gagged does not increase your miscast chance for verbal spells unless fully gagged, and reduces gag power by 20%."
 
 KinkyDungeonStatUnmasked,"Unmasked"
 KinkyDungeonStatDescUnmasked,"Hoods and full-face covering masks do not appear, but blindfolds are more powerful."
@@ -19330,6 +19330,7 @@ KinkyDungeonSpellMinigun,Minigun
 
 KDPalette,None
 KDPaletteJail,Prisoner
+KDPaletteMiku,Miku
 KDPaletteBountyhunter,Bounty Hunter
 KDPaletteDressmaker,Dressup Co.
 KDPaletteDollsmith,Dollmaker
@@ -19409,6 +19410,7 @@ KDTeaseAttack_AddCarabiner,The ENMY pulls your hands together and sticks a clip 
 KDTeaseAttackResist_AddCarabiner,"The ENMY grabs your wrists but you pull away!"
 KDTeaseAttack_Disarm,The ENMY pulls your weapon away!
 KDTeaseAttackResist_Disarm,The ENMY tries to pull your weapon away but you maintain your grip!
+KDTeaseAttackResist_Pickpocket,The ENMY reaches for your inventory but can't quite reach it!
 
 
 KinkyDungeonStatMore_Armbinders,"More Armbinders"
@@ -19642,3 +19644,12 @@ rGenericAllyFlirt_LinkRequestLegsDom,"(The SPEAKER grins)|What a good girl!"
 rGenericAllyFlirt_LinkRequestLegsSub,"(The SPEAKER blushes)|Those look like fun!"
 rGenericAllyFlirt_LinkRequestLegsBrat,"(The SPEAKER smirks)|Sure thing~"
 rGenericAllyFlirt_LinkRequestLegsRobot,"(The SPEAKER beeps)|+10 social credit"
+
+
+RestraintSunglasses,Sunglasses
+RestraintSunglassesDesc,"Cool people wear these indoors."
+RestraintSunglassesDesc2,"+25 holy resist. Reduces blind effects. Prevents blinding from light adjustment."
+KinkyDungeonInventoryItemSunglasses,Sunglasses
+KinkyDungeonInventoryItemSunglassesDesc,"Cool people wear these indoors."
+KinkyDungeonInventoryItemSunglassesDesc2,"+25 holy resist. Reduces blind effects. Prevents blinding from light adjustment."
+LootSunglasses,"You find a pair of stylish shades."
