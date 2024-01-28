@@ -262,6 +262,7 @@ let KinkyDungeonStatsPresets = {
 	"MagicHands": {category: "Restraints", id: "MagicHands", cost: -1},
 	"KeepOutfit":  {category: "Restraints", id: "KeepOutfit", cost: 0},
 	"CursedLocks": {category: "Restraints", id: "CursedLocks", cost: -1},
+	"LivingCollars": {category: "Restraints", id: "LivingCollars", cost: -1},
 	"FranticStruggle": {category: "Restraints", id: "FranticStruggle", cost: 1},
 	"Unchained": {category: "Kinky", id: 26, cost: 2, block: ["Damsel"]},
 	"Damsel": {category: "Kinky", id: 27, cost: -1, block: ["Unchained"]},
