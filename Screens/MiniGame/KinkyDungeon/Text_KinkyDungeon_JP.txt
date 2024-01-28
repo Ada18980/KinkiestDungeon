@@ -2089,7 +2089,7 @@ Magic Knife
 A magical blade, suitable against ghosts.
 霊体を切るのに適した魔法のナイフ。
 Deals shadow damage. Can cut enchanted ropes. Offhand: Increase base crit of all magic damage by 20%
-影属性のダメージを与える。魔法のロープを切断することができる。オフハンド：魔法の会心ダメージ倍率+20%。
+影属性のダメージを与える。魔法のロープを切断することができる。サブウェポン：魔法の会心ダメージ倍率+20%。
 Bola
 投げ縄
 A pair of weights attached to a rope. Can be thrown.
@@ -2159,7 +2159,7 @@ You drink the willpower potion and feel motivated.
 A sweet potion, brimming with determination.
 気分を向上させる甘いポーション。
 Restores 25% willpower instantly. Can be used while gagged.
-最大気力の25%を瞬時に回復。猿轡かませた状態でも使用可能。
+最大気力の25%を瞬時に回復。猿轡をかまされた状態でも使用可能。
 Frigid Potion
 冷静のポーション
 You chug the concoction and your senses numb, helping you concentrate.
@@ -2167,7 +2167,7 @@ You chug the concoction and your senses numb, helping you concentrate.
 Like bottled snow. Helps to get your mind on track.
 瓶詰めの雪のよう。集中力を高めるのに役立つ。
 Reduces distraction to 0 and grants additional decay for 50 turns. Can be used while gagged.
-興奮値を0にする。50ターンの間、興奮値の上昇を抑制する。猿轡かませた状態でも使用可能。
+興奮値を0にする。50ターンの間、興奮値の上昇を抑制する。猿轡をかまされた状態でも使用可能。
 Smoke Bomb
 煙幕
 You toss the smoke bomb and it explodes in your location!
@@ -2176,6 +2176,37 @@ A type of pyrotechnic often employed by saboteurs. Can be used without hands.
 闇に生きる者がよく使う。手が縛られていても使える。
 Creates a smoke screen lasting 8 turns. You are harder to see while inside the smoke.
 8ターン持続する煙幕を張る。煙の中にいると見えにくくなる。
+
+
+You toss the smoke bomb and it starts emitting a deep haze!
+煙幕を投げると、濃い煙が吹き出てきた。
+You ready a smoke bomb...
+煙幕の準備ができた。
+A type of pyrotechnic often employed by saboteurs. Can be rolled and used without hands.
+闇に生きる者がよく使う。手が縛られていても使える。
+Creates a smoke screen lasting 8 turns. You are harder to see while inside the smoke.
+8ターン持続する煙幕を張る。煙の中にいると見えにくくなる。
+
+You toss the flash bomb and the fuse starts ticking...
+導火線に火の付いた閃光弾を投げた。
+You ready a flash bomb...
+閃光弾の準備ができた。
+A type of explosive used by agents. Blinds nearby targets without causing significant injury.
+諜報員が使用する爆弾の一種。対象を傷つけることなく無力化する。
+Blinds for 20 turns in a 3x3 area.
+3x3マスの対象を20ターンの間盲目状態にする。
+
+You ready a flashbang...
+閃光手榴弾の準備ができた。
+You toss the flashbang and the fuse starts ticking...
+ピンを抜いた閃光手榴弾を投げた。
+A piece of rare special forces equipment. The secrets of its manufacture are strictly kept by the Alchemist's Guild.
+希少な特殊部隊の装備の1つ。製造方法は錬金術師のギルドにより秘匿されている。
+Blinds for 24 turns in a 3x3 area. Also Slows and Silences them for half the duration.
+3x3マスの対象を24ターンの間盲目にし、12ターンの間沈黙と減速状態にする。
+
+Blinds for 24 turns in a 3x3 area. And also Slows and Silences them for half the duration.
+3x3マスの対象を24ターンの間盲目にし、12ターンの間沈黙と減速状態にする。
 
 Flash Bomb x3
 閃光弾 x3
@@ -2289,25 +2320,25 @@ Staff of Incineration
 A magical weapon made for intermediates to use.
 中級者向けに作られた魔法の武器。
 +25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn. Offhand: Applies %fire damage bonus.
-火属性。火属性のダメージが25%増加する。燃えている敵は、ターン経過時に5ポイントのダメージを受ける。オフハンド：火属性ダメージが20%増加する。
+火属性。火属性のダメージが25%増加する。燃えている敵は、ターン経過時に5ポイントのダメージを受ける。サブウェポン：火属性ダメージが20%増加する。
 Staff of Storms
 嵐の杖
 A magical weapon made for intermediates to use.
 中級者向けに作られた魔法の武器。
 +20% electric damage. Deals electric damage. Enemies hit by electric damage echo 15 additional Electric damage in a 5x5 area. Offhand: Applies electric damage bonus.
-電気属性。電気属性のダメージが20%増加する。電気ダメージを受けた敵は5x5エリア内に15の追加電気ダメージを反射する。オフハンド：電気属性ダメージが20%増加する。
+電気属性。電気属性のダメージが20%増加する。電気ダメージを受けた敵は5x5エリア内に15の追加電気ダメージを反射する。サブウェポン：電気属性ダメージが20%増加する。
 Staff of Frostbite
 凍傷の杖
 A magical weapon with a 33% chance to freeze the target for 4 turns.
 33%の確率で対象を4ターン凍結させる魔法の武器。
 +20% ice damage. Deals ice damage. Frozen enemies take 5 ice damage per turn. Offhand: Applies ice damage bonus.
-氷属性。氷属性のダメージが20%増加する。ターン経過時、凍結した敵は5ダメージを受ける。オフハンド：氷属性ダメージが20%増加する。
+氷属性。氷属性のダメージが20%増加する。ターン経過時、凍結した敵は5ダメージを受ける。サブウェポン：氷属性ダメージが20%増加する。
 Staff of Binding
 束縛の杖
 A magical weapon made to use on novices.
 初心者用に作られた魔法の武器
 +20% chain damage. Deals chain damage and roots the target for 4 turns. 150% binding efficiency. Offhand: Applies chain damage bonus.
-チェーン属性のダメージが20%増加し、通常攻撃が命中した時、4ターンの間敵を移動不可状態にする。拘束力が150%増加する。オフハンド：チェーン属性ダメージが20%増加する。
+チェーン属性のダメージが20%増加し、通常攻撃が命中した時、4ターンの間敵を移動不可状態にする。拘束力が150%増加する。サブウェポン：チェーン属性ダメージが20%増加する。
 Arcane Orb
 アルケインオーブ
 Look into my eyes...
@@ -2319,31 +2350,31 @@ Staff of Flame
 A magical weapon made for novices to use.
 初心者向けに作られた魔法の武器
 +15% fire damage. Deals fire damage. Offhand: Applies passive bonus.
-火属性。火属性のダメージが15%増加する。オフハンド：火属性ダメージが15%増加する。
+火属性。火属性のダメージが15%増加する。サブウェポン：火属性ダメージが15%増加する。
 Staff of Slime
 スライムの杖
 A slimy and magical implement..
 ぬるぬるした魔法の道具……
 +10% glue damage. Deals glue damage. Offhand: Applies passive bonus.
-接着剤属性。接着剤属性のダメージが10%増加する。オフハンド：接着剤属性ダメージが10%増加する。
+接着剤属性。接着剤属性のダメージが10%増加する。サブウェポン：接着剤属性ダメージが10%増加する。
 Staff of Shocking
 衝撃の杖
 A magical weapon made for novices to use.
 初心者向けに作られた魔法の武器
 +10% electric damage. Deals electric damage. 10% chance to stun for 3 turns. Offhand: Applies electric damage bonus.
-電気属性。電気属性のダメージが10%増加する。命中時に10%の確率で敵をスタン状態にする。オフハンド：電気属性ダメージが10%増加する。
+電気属性。電気属性のダメージが10%増加する。命中時に10%の確率で敵をスタン状態にする。サブウェポン：電気属性ダメージが10%増加する。
 Staff of Permafrost
 永久凍土の杖
 A magical weapon with a 15% chance to freeze the target for 4 turns.
 15%の確率で対象を4ターン凍結させる魔法の武器。
 +10% ice damage. Deals ice damage. Multiplies the duration of freeze effects on enemies by 1.5x (min +1 duration). Offhand: Applies ice damage bonus.
-氷属性。氷属性のダメージが10%増加する。敵にかかっている凍結効果の持続時間を1.5倍にする (最低+1持続時間)オフハンド：氷属性ダメージが10%増加する。
+氷属性。氷属性のダメージが10%増加する。敵にかかっている凍結効果の持続時間を1.5倍にする (最低+1持続時間)サブウェポン：氷属性ダメージが10%増加する。
 Staff of Chains
 鎖の杖
 A magical weapon made for novices in the art of bondage.
 束縛術の初心者のために作られた魔法の武器。
 +10% chain damage. Deals chain damage. 150% binding efficiency. Offhand: Applies chain damage bonus.
-チェーン属性。チェーン属性のダメージが10%増加する。拘束力が150%増加する。オフハンド：チェーン属性ダメージが10%増加する。
+チェーン属性。チェーン属性のダメージが10%増加する。拘束力が150%増加する。サブウェポン：チェーン属性ダメージが10%増加する。
 You pick up a staff of binding. You remember these from wizard school...
 束縛の杖を手に入れた。魔法学校で何度も使った覚えがある。
 You pick up a staff of the storm. Your hair stands on end.
@@ -2371,7 +2402,7 @@ Crop
 For those unruly subs.
 しつけのための道具
 Deals pain damage. Highly distracting. Offhand: +5 pain damage on attack for 3 stamina.
-痛み属性のダメージを与える。興奮値が溜まりやすい。オフハンド：攻撃時、追加でスタミナを3消費し、5痛み属性ダメージを追加で与える。
+痛み属性のダメージを与える。興奮値が溜まりやすい。サブウェポン：攻撃時、追加でスタミナを3消費し、5痛み属性ダメージを追加で与える。
 You pick up a riding crop.
 馬用のムチを手に入れた。
 Scissors
@@ -2387,7 +2418,7 @@ Dagger
 Designed with subterfuge in mind.
 不意打ち用の武器。
 Deals slash damage. Deals 40 pierce damage instead on unaware targets, before crit modifiers. Offhand: +10% Base Weapon Crit
-斬撃属性。プレイヤーを認識していない敵を攻撃した際、40ポイントの刺突属性ダメージを与える。オフハンド：会心率+10%。
+斬撃属性。プレイヤーを認識していない敵を攻撃した際、40ポイントの刺突属性ダメージを与える。サブウェポン：会心率+10%。
 You pick up a dagger.
 ダガーを手に入れた。
 Katana
@@ -2470,7 +2501,7 @@ Knife
 A go-to for travelers and adventurers.
 旅行者や冒険家の頼りになる護身武器。
 Deals slash damage. Offhand: +10 Block
-斬撃属性。オフハンド：ブロック値+10。
+斬撃属性。サブウェポン：ブロック値+10。
 Torch
 松明
 Second only to the mighty towel in usefulness.
@@ -2494,7 +2525,7 @@ Flamberge
 A blade forged in a magical fire.
 魔法の炎で鍛えられた刃
 Deals 20 bonus slash damage on hit. Offhand: Produces light.
-命中時、20ポイントの斬撃性追加ダメージを与える。オフハンド：武器が光る。
+命中時、20ポイントの斬撃性追加ダメージを与える。サブウェポン：武器が光る。
 Escort Drone
 エスコートドローン
 A semi-autonomous drone with a personal defense beam. Does not require hands to equip.
@@ -2506,20 +2537,20 @@ Magic Wand
 Its powers extend beyond the traditional schools of magic.
 伝統によって受け継がれてきた魔法の杖。
 Deals charm damage. 20% chance to stun the target for 2 turns. Offhand: +5 charm damage on attack for 3 stamina.
-魅了属性。 20%の確率でターゲットを2ターンの間気絶させる。オフハンド：攻撃時に追加でスタミナを3消費し、魅了属性ダメージ+5。
+魅了属性。 20%の確率でターゲットを2ターンの間気絶させる。サブウェポン：攻撃時に追加でスタミナを3消費し、魅了属性ダメージ+5。
 Feather
 羽根
 A feather taken from some large fluffy being.
 くすぐりに便利な羽根
 Deals tickle damage. Greatly distracting. Offhand: +1 tickle damage on attack for 3 stamina. Greatly distracting.
-くすぐり属性。敵の興奮値を増加させる。オフハンド：攻撃時、追加でスタミナを3消費し、1くすぐり属性ダメージを追加で与え、興奮値を増加させる。
+くすぐり属性。敵の興奮値を増加させる。サブウェポン：攻撃時、追加でスタミナを3消費し、1くすぐり属性ダメージを追加で与え、興奮値を増加させる。
 
 Maid's Feather Duster
 メイドの羽箒
 An instrument used extensively by maidforce agents carrying out their duties.
 メイドフォースのエージェントが任務を遂行する際に多用する道具。
 Deals tickle damage. Distracts enemies. Offhand: +15 distraction on attack for 1 stamina.
-くすぐり属性。敵の興奮値を上昇させる。オフハンド：攻撃時、追加でスタミナを1消費し、敵の興奮値+15。
+くすぐり属性。敵の興奮値を上昇させる。サブウェポン：攻撃時、追加でスタミナを1消費し、敵の興奮値+15。
 You pick up a feather duster.
 羽箒を拾った。
 
@@ -2528,7 +2559,7 @@ Ice Cube
 A magical cube of ice that never melts. Convenient!
 溶けない魔法の氷。便利！
 Deals 10 ice damage with a 10% chance to freeze for 1 turn. Slows targets on hit. Offhand: Slows the target.
-10ポイントの氷属性ダメージを与え、10%の確率で1ターン凍結させる。オフハンド：攻撃が命中した相手を減速させる。
+10ポイントの氷属性ダメージを与え、10%の確率で1ターン凍結させる。サブウェポン：攻撃が命中した相手を減速させる。
 Rope
 ロープ
 A kidnapper's most versatile tool.
@@ -2552,13 +2583,13 @@ Metamorphosis
 You can enter slime form for 25 turns, which lets you pass thru bars, +50 Evasion, and deals 25 glue damage when attacked.
 25ターンの間、スライム形態になる。スライム状態では、バーを通り抜けることができ、回避力が50増加し、攻撃されたときに接着剤ダメージを25与える.
 Deals glue damage. Roots targets for 2 turns on a hit. Offhand: Roots targets on hit.
-接着剤属性。命中時、敵は2ターンの間スタンする。オフハンド：敵を地面に拘束する。
+接着剤属性。命中時、敵は2ターンの間スタンする。サブウェポン：敵を地面に拘束する。
 Four Seasons
 四季の杖
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
 発動すると、次の火、水/氷、風/雷、土の呪文のコストを、属性ごとに1回ずつ50減らす。
 Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage. Offhand: Applies passive bonus.
-影属性。火、氷、酸、打撃、電気、圧力のダメージが25%増加する。オフハンド：火、氷、酸、打撃、電気、圧力のダメージが25%増加する。
+影属性。火、氷、酸、打撃、電気、圧力のダメージが25%増加する。サブウェポン：火、氷、酸、打撃、電気、圧力のダメージが25%増加する。
 The Arbiter
 アービター
 I have altered the rules. Pray I do not alter them further.
@@ -8477,6 +8508,7 @@ Can be controlled using CMD spells
 CMD魔法で操作可能
 Can be controlled using Rubbermancy
 ラバーマンシーで操作可能
+
 Floor
 床
 Wall
@@ -8511,6 +8543,8 @@ Empty Altar
 空の祭壇
 Chest
 宝箱
+Faction Chest
+他人の宝箱
 Empty Chest
 空の宝箱
 Shiny Object
@@ -9972,7 +10006,9 @@ Lesser Flash
 Ring
 フラッシュリング
 Flash Bomb
-フラッシュバン
+閃光弾
+Flashbang
+閃光手榴弾
 Sparkles!
 キラキラ！
 Mirror Image
@@ -19677,7 +19713,6 @@ Strip!
 ストリップ！
 Export Outfit
 服を読み込む
-Export AlwaysDress
 
 
 Gamma
@@ -19688,12 +19723,7 @@ Contrast
 コントラスト
 Brightness
 明るさ
-Red
-Red
-Green
-Green
-Blue
-Blue
+
 Transparency
 透明度
 Reset Layer!
@@ -20136,7 +20166,7 @@ Targe
 Hide behind it while you still can.
 今のうちに隠れろ。
 +60 Block. Deals crush damage and stuns for 4 turns. Offhand: Gives the same block bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
-打撃属性。装備時ブロック値+60。攻撃が命中した時、4ターンの間スタンさせる。オフハンド：メイン装備時と同等のブロック値を得る。この効果はメインに装備している武器のブロック値とスタックしない。
+打撃属性。装備時ブロック値+60。攻撃が命中した時、4ターンの間スタンさせる。サブウェポン：メイン装備時と同等のブロック値を得る。この効果はメインに装備している武器のブロック値とスタックしない。
 You pick up a wooden shield.
 木の盾を拾った。
 Tower Shield
@@ -20144,7 +20174,7 @@ Tower Shield
 Now with more leg room.
 体全体を防御できるようになった盾。
 +120 Block, +30 Physical Armor. Increases slow level by 1. Deals crush damage and stuns for 7 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
-打撃属性。装備時ブロック値＋120、物理アーマー＋30。減速値1を得る。攻撃が命中した時、7ターンの間スタンさせる。オフハンド：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
+打撃属性。装備時ブロック値＋120、物理アーマー＋30。減速値1を得る。攻撃が命中した時、7ターンの間スタンさせる。サブウェポン：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
 You pick up a metal tower shield.
 金属で補強された大きな盾を拾った。
 Reinforced Shield
@@ -20152,7 +20182,7 @@ Reinforced Shield
 New and improved, but also clumsier.
 新たに金属の補強が追加された盾。少し扱いにくくなった。
 +80 Block, +15 Physical Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
-打撃属性。装備時ブロック値＋80、物理アーマー＋15。攻撃が命中した時、5ターンの間スタンさせる。オフハンド：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
+打撃属性。装備時ブロック値＋80、物理アーマー＋15。攻撃が命中した時、5ターンの間スタンさせる。サブウェポン：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
 You pick up a reinforced shield.
 金属で補強された盾を拾った。
 Runic Shield
@@ -20160,7 +20190,7 @@ Runic Shield
 For when you've been tied up one too many times...
 何度も縛られたあなたに……
 +80 Block, +20 Magic Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
-打撃属性。装備時ブロック値＋80、魔法アーマー＋20。攻撃が命中した時、5ターンの間スタンさせる。オフハンド：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
+打撃属性。装備時ブロック値＋80、魔法アーマー＋20。攻撃が命中した時、5ターンの間スタンさせる。サブウェポン：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
 You pick up a runic shield.
 ルーンの刻まれた盾を拾った。
 Vanish
@@ -21012,7 +21042,7 @@ Bag of Goodies
 Someone's secret stash.
 誰かの秘密の遊び道具。
 Deals charm damage. Applies a toy to targets hit for 40 turns. Offhand: Applies a toy to targets you hit.
-魅了属性。攻撃が命中した敵に、40ターンの間オモチャを取り付ける。オフハンド：攻撃が命中した敵にオモチャを取り付ける。
+魅了属性。攻撃が命中した敵に、40ターンの間オモチャを取り付ける。サブウェポン：攻撃が命中した敵にオモチャを取り付ける。
 You find a bag filled with various toys and vibrators...
 色々な気持ちよさそうなオモチャがつまったカバンを見つけた……
 You play with yourself using some of the toys in the bag...
@@ -21022,7 +21052,7 @@ Magic Remote
 The key to absolute power.
 絶対服従の鍵。
 Triggers long-duration edging on basic attack if the target has a toy. Offhand: Applies short-duration teasing to targets you hit.
-対象がオモチャを装備している場合、攻撃時に長時間振動させる。オフハンド：対象がオモチャを装備している場合、攻撃時に短時間振動させる。
+対象がオモチャを装備している場合、攻撃時に長時間振動させる。サブウェポン：対象がオモチャを装備している場合、攻撃時に短時間振動させる。
 You find a bag filled with various toys and vibrators...
 色々な気持ちよさそうなオモチャがつまったカバンを見つけた……
 Vibrator Remote
@@ -21906,9 +21936,9 @@ Light
 Light: Can be used to cut even with bound arms. 50% reduced accuracy penalty from being bound. Can be held in mouth.
 軽い：腕を縛られていても、拘束具をカットできる。縛られていることによる命中率ペナルティを50%軽減できる。口にくわえることができる。
 Offhand
-オフハンド
+サブウェポン
 Offhand: This weapon can be dual-wielded by some classes.
-オフハンド：二刀流可能。
+サブウェポン：二刀流可能。
 2 Handed
 両手持ち
 2 Handed: While wielding this as your primary weapon, you cannot wield an offhand weapon. Also this weapon can't be used while arms are tied.
@@ -21939,7 +21969,7 @@ Designate an Offhand weapon to gain passive effects such as a light source, armo
 空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|(このスキルを使用し、装備する武器を選択する必要がある)
 
 Equip Offhand
-オフハンドに装備する
+サブウェポンに装備する
 
 Make a ranged attack with the spear.
 槍で遠距離を攻撃する。
@@ -22033,18 +22063,18 @@ You toss some gunpowder on the floor!
 Dual Wield (Rogue)
 二刀流(盗賊)
 Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield 2-handed, heavy, or massive weapons in the offhand unless they are multiclass.|(Must equip Dual Wield spell to equip an offhand weapon)
-空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|盗賊はマルチクラスでない限り、両手持ち、重い、大きな武器をオフハンドに装備できない。|(このスキルを使用し、装備する武器を選択する必要がある)
+空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|盗賊はマルチクラスでない限り、両手持ち、重い、大きな武器をサブウェポンに装備できない。|(このスキルを使用し、装備する武器を選択する必要がある)
 Dual Wield (Wizard)
 二刀流(魔術師)
 Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)
-空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|魔術師はマルチクラスでない限り、オフハンドには魔法の武器のみを持つことができ、両手持ち、重い、大きな魔法の武器を装備した際、減速1を得る。|(このスキルを使用し、装備する武器を選択する必要がある)
+空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|魔術師はマルチクラスでない限り、サブウェポンには魔法の武器のみを持つことができ、両手持ち、重い、大きな魔法の武器を装備した際、減速1を得る。|(このスキルを使用し、装備する武器を選択する必要がある)
 
 Arcane Tome
 アーケインの書
 Contains advanced formulas and thrilling tales of thirsty wizards.
 高度な魔法の技術と、知識に飢えた魔法使いのスリリングな物語を収録。
 +5% magic damage. Offhand: Applies passive bonus.
-魔法ダメージ+5%。　オフハンド時：魔法ダメージ+5%。
+魔法ダメージ+5%。　サブウェポン時：魔法ダメージ+5%。
 You find a magical tome.
 魔導書を見つけた。
 Open the book. What can go wrong?
@@ -22055,7 +22085,7 @@ Tome of Bondage
 Contains a malevolent spirit that wishes only to tie up damsels.
 少女を縛るのが大好きな悪鬼が封印されている。
 +10% binding effectiveness. Offhand: Applies passive bonus.
-拘束力+10%。　オフハンド時：拘束力+10%。
+拘束力+10%。　サブウェポン時：拘束力+10%。
 You find a magical tome with a sealed padlock on it.
 錠前が施されている本を見つけた。
 Open the book. What can go wrong?
@@ -22854,7 +22884,7 @@ Advanced
 詳細
 
 Exits locked! Find the key!
-出口は塞がっている。鍵を探そう！
+出口には鍵がかかっている。
 Got the key!
 鍵を手に入れた！
 BOSS ROOM
@@ -23060,7 +23090,7 @@ Your shield absorbed AMNT damage.
 You are currently shielded from damage and some spells.
 盾のおかげでダメージとある程度の魔法を防げる。
 No offhand weapon set. Activate the spell in your hotbar to set one.
-オフハンドに武器を装備していない。二刀流のスキルを使用し、オフハンドに持つ武器を決めよう。
+サブウェポンに武器を装備していない。二刀流のスキルを使用し、サブウェポンに持つ武器を決めよう。
 
 
 
@@ -23161,7 +23191,7 @@ Weapon stamina cost is reduced by a percentage equal to your Battle Rhythm.
 Blade Dance
 ブレードダンス
 Costs 60 stamina to dash to an adjacent spot. If you are holding a physical weapon, deals cleave damage to nearby enemies equal to 50% weapon damage. If you have a Light offhand weapon, deal 75% of its damage as well.
-スタミナを60消費し、指定したポイントまで攻撃しながら走る。物理属性の武器を持っている場合、近くの敵を薙ぎ払い、50%のダメージを与える。オフハンドに軽い武器を持っている場合、威力が75%になる。
+スタミナを60消費し、指定したポイントまで攻撃しながら走る。物理属性の武器を持っている場合、近くの敵を薙ぎ払い、50%のダメージを与える。サブウェポンに軽い武器を持っている場合、威力が75%になる。
 You spin towards a location, slashing at nearby enemies!
 刃を手に舞い踊りながら駆けた！
 Choose target location
