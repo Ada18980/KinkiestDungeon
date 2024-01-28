@@ -152,6 +152,7 @@ interface KDRestraintPropsBase {
 	weight?: number,
 	minLevel?: number,
 	allFloors?: boolean,
+	cloneTag?: string,
 
 	escapeChance?: any,
 
@@ -1323,6 +1324,14 @@ interface KinkyDungeonEvent {
 	/** This is an integer. if an event has this the game skips it and comes back after executing everything else.
 	 * Best to keep it low for performance reasons, if in a draw loop.
 	 */
+
+
+	cloneTags?: string[],
+	frequencyMax?: number,
+	frequencyMin?: number,
+	frequencyStep?: number,
+	frequencyTag?: string,
+
 	delayedOrder?: number;
 	/** A dynamic event is specified as 'dynamic' and is specified under ItemMap.dynamic
 	 * (replace ItemMap with the event map you need)
