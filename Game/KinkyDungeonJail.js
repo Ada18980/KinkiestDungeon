@@ -1076,6 +1076,58 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 	KinkyDungeonSaveGame();
 }
 
+function KDApplyLivingCollars() {
+	let options = {ApplyVariants: true};
+	let collars = KDGetRestraintsEligible({tags: ["livingCollar"]}, 24, "grv", true, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, options);
+	let eligible = [];
+	for (let item of collars) {
+	  let collar = item.restraint;
+		let events = collar.events;
+		for (event of events) {
+			if (event.type == "livingRestraints") {
+				let newtags = [];
+				if (!collar.cloneTag) {
+					newtags = event.tags;
+				} else {
+					newtags.push(collar.cloneTag);
+					for (let tag of e.cloneTags) {
+						newtags.push(collar.cloneTag + tag);
+					}
+				}
+				let count = 0;
+				for (let inv of KinkyDungeonAllRestraintDynamic()) {
+					let found = false;
+					for (let tag of newtags) {
+						if (KDRestraint(inv.item).enemyTags[tag] != undefined) {
+							found = true;
+							break;
+						}
+					}
+					if (found) {
+							count++;
+					}
+				}
+				if (count >= event.numToApply) {
+					eligible.push(collar);
+				}
+			}
+		}
+	}
+	if (eligible.length == 0)
+		return;
+		
+	if (KinkyDungeonStatsChoice.has("TightRestraints")) {
+		for (let item of eligible) {
+			KinkyDungeonAddRestraintIfWeaker(item, 8, true, undefined, false, undefined, undefined, undefined, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonLivingAppear").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightblue", 2);
+		}
+	} else {
+		let item = eligible[Math.floor(KDRandom() * eligible.length)];
+		KinkyDungeonAddRestraintIfWeaker(item, 8, true, undefined, false, undefined, undefined, undefined, true);
+		KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonLivingAppear").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightblue", 2);
+	}
+}
+
 function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	KinkyDungeonInterruptSleep();
 
@@ -1110,6 +1162,9 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	KDGameData.JailRemoveRestraintsTimer = 0;
 	//MiniGameKinkyDungeonLevel = Math.min(MiniGameKinkyDungeonLevel, Math.max(Math.floor(MiniGameKinkyDungeonLevel/10)*10, MiniGameKinkyDungeonLevel - KinkyDungeonSpawnJailers + KinkyDungeonSpawnJailersMax - 1));
 	KinkyDungeonSendEvent("defeat", {});
+	
+	if (KinkyDungeonStatsChoice.get("LivingCollars"))
+		KDApplyLivingCollars();
 
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if ((KDRestraint(inv).removePrison || KDRestraint(inv).forceRemovePrison) && (!KinkyDungeonStatsChoice.get("KinkyPrison") || KDRestraint(inv).forceRemovePrison || KDRestraint(inv).removeOnLeash || KDRestraint(inv).freeze || KDRestraint(inv).immobile)) {

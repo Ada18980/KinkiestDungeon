@@ -1172,7 +1172,54 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		"livingRestraints": (e, item, data) => {
+			if (data.delta == 0)
+				return;
+			let timer = KDItemDataQuery(item, "livingTimer") || 0;
+			timer = timer + 1;
+			
+			//Spread accelerates as you get more of that type
+			let frequency = e.frequencyMax 
+			let frequencyTag = e.frequencyTag
+			if (!KDRestraint(item).cloneTag) {
+				frequencyTag = KDRestraint(item).cloneTag;
+			}
+			
+			for (let inv of KinkyDungeonAllRestraintDynamic()) {
+				if (KDRestraint(inv.item).shrine?.includes(e.frequencyTag)) {
+					frequency -= e.frequencyStep;
+				}
+			}
+			if (frequency < e.frequencyMin)
+				frequency = e.frequencyMin;
 
+			if (timer > frequency) {
+				timer = 0;
+				let newtags = [];
+				if (!KDRestraint(item).cloneTag) {
+					newtags = e.tags;
+				} else {
+					newtags.push(KDRestraint(item).cloneTag);
+					for (tag in e.cloneTags) {
+						newtags.push(KDRestraint(item).cloneTag + tag);
+					}
+				}
+				let r = KinkyDungeonGetRestraint({tags: newtags}, 24, "grv", true, undefined);
+				if (r) {
+					KinkyDungeonAddRestraintIfWeaker(r, 8, true, undefined, false, undefined, undefined, undefined, true);
+					let newitem = r;
+					for (let j = 0; j < 2; j++) {
+						if (newitem && newitem.Link) {
+							let newRestraint = KinkyDungeonGetRestraintByName(newitem.Link);
+							KinkyDungeonAddRestraintIfWeaker(newRestraint, 8, true, undefined, undefined, undefined, undefined, undefined, true);
+							newitem = newRestraint;
+						}
+					}
+					KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingSpread").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)).replace("+RestraintAdded", TextGet("Restraint" + newitem.name)), "lightblue", 2);
+				}
+			}
+			KDItemDataSet(item, "livingTimer", timer);
+		},
 		"ApplyConduction": (e, item, data) => {
 			let bb = Object.assign({}, KDConduction);
 			if (e.duration) bb.duration = e.duration;

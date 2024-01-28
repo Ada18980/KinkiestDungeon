@@ -97,6 +97,13 @@ const KinkyDungeonRestraints = [
 
 	//region Charms
 	// Not super punishing but would be hard to apply IRL
+	{inventory: true, name: "DuctTapeCollar", debris: "Fabric", Asset: "LatexCollar2", factionColor: [[], [0]], Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4, DefaultLock: "Blue",
+		Model: "ElfCollar",
+		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
+		unlimited: true,
+		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
+		events: [{trigger: "tick", type: "livingRestraints", tags: ["ribbonRestraints"], cloneTags: [], frequencyMax: 80, frequencyMin: 10, frequencyTag: "Tape", frequencyStep: 5, numToApply: 4}]
+		},
 	{inventory: true, name: "DuctTapeHands", unlimited: true, inaccessible: true, Asset: "DuctTape", Color: "Default", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemHands",
 		factionColor: [[], [0]],
 		Model: "TapeHeavyHands",
@@ -175,6 +182,13 @@ const KinkyDungeonRestraints = [
 	//endregion
 
 	//region BlessedWrappings
+	{inventory: true, name: "MysticDuctTapeCollar", debris: "FabricGreen", Asset: "LatexCollar2", factionColor: [[], [0]], Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4, DefaultLock: "Blue",
+		Model: "ElfCollar",
+		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
+		unlimited: true,
+		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
+		events: [{trigger: "tick", type: "livingRestraints", tags: ["mummyRestraints"], cloneTags: [], frequencyMax: 80, frequencyMin: 10, frequencyTag: "Charms", frequencyStep: 5, numToApply: 4}]
+		},
 	{removePrison: true, name: "MysticDuctTapeHead", unlimited: true, debris: "FabricGreen", inaccessible: true, Type: "Wrap", Asset: "DuctTape", Color: "#55AA22", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemHead", blindfold: 4, power: 1, weight: 0, escapeChance: {"Struggle": 0.2, "Cut": 0.6, "Remove": 0}, failSuffix: {"Remove": "Tape"},
 		Model: "TapeFace",
 		Filters: {
@@ -217,6 +231,13 @@ const KinkyDungeonRestraints = [
 	//endregion
 
 	//region AutoTape
+	{inventory: true, name: "AutoTapeCollar", Asset: "LatexCollar2", factionColor: [[], [0]], Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4, DefaultLock: "Blue",
+		Model: "ElfCollar",
+		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
+		unlimited: true,
+		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
+		events: [{trigger: "tick", type: "livingRestraints", tags: ["autoTape"], cloneTags: [], frequencyMax: 80, frequencyMin: 10, frequencyTag: "Tape", frequencyStep: 5, numToApply: 4}]
+		},
 	{inventory: true, name: "AutoTapeHands", unlimited: true, inaccessible: true, Asset: "DuctTape", Color: "#6E9FA3", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemHands",
 		Model: "TapeHeavyHands",
 		Filters: {
@@ -323,6 +344,14 @@ const KinkyDungeonRestraints = [
 		events: [{trigger: "tick", type: "ShadowHandTether", requiredTag: "shadowHandEnemy", chance: 1.0, dist: 1.5},{trigger: "beforeStruggleCalc", type: "shadowBuff", inheritLinked: true}]},
 
 	//region Slime
+	{inventory: true, name: "SlimeCollar", debris: "Slime", Asset: "LatexCollar2", factionColor: [[], [0]], Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4, DefaultLock: "Blue",
+		Model: "ElfCollar",
+		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
+		unlimited: true,
+		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
+		events: [{trigger: "tick", type: "livingRestraints", tags: ["slimeRestraints"], cloneTags: [], frequencyMax: 80, frequencyMin: 10, frequencyTag: "Slime", frequencyStep: 5, numToApply: 4}]
+		},
+
 	{removePrison: true, name: "SlimeBoots", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeBoots", linkSize: 0.6, Asset: "ToeTape", Type: "Full", Color: "#9B49BD", Group: "ItemBoots", blockfeet: true,power: 4, weight: 0,  escapeChance: {"Struggle": 0.3, "Cut": 0, "Remove": 0},
 		LinkableBy: [...KDRubberLink, ], renderWhenLinked: [...KDRubberLink],
 		events: [{trigger: "tick", type: "slimeSpread", power: 0.04}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 1,
@@ -390,6 +419,13 @@ const KinkyDungeonRestraints = [
 	//endregion
 
 	//region HardSlime
+	{inventory: true, name: "HardSlimeCollar", debris: "Slime", Asset: "LatexCollar2", factionColor: [[], [0]], Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4, DefaultLock: "Blue",
+		Model: "ElfCollar",
+		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
+		unlimited: true,
+		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
+		events: [{trigger: "tick", type: "livingRestraints", tags: ["latexEncase"], cloneTags: [], frequencyMax: 80, frequencyMin: 10, frequencyTag: "SlimeHard", frequencyStep: 5, numToApply: 4}]
+		},
 	{inventory: true, unlimited: true, removePrison: true, name: "HardSlimeBoots", debris: "Slime", linkCategory: "SlimeBoots", linkSize: 0.6, LinkableBy: [...KDRubberLink], renderWhenLinked: [...KDRubberLink], inaccessible: true, Asset: "ToeTape", Type: "Full", Color: "#9B49BD", Group: "ItemBoots", blockfeet: true, addTag: ["FeetLinked"],power: 5, weight: 0,
 		escapeChance: {"Struggle": 0, "Cut": 0.1, "Remove": 0}, failSuffix: {"Remove": "SlimeHard"},
 		affinity: {Struggle: ["Sharp",], Remove: ["Hook"],},
@@ -3670,6 +3706,14 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": 0.12, "Cut": 0.2, "Remove": 0.3, "Pick": 0.35}, enemyTags: {"hitechCables":4}, playerTags: {"ItemTorsoFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Belts"]},
 
 	//region Ribbon
+
+	{inventory: true, name: "RibbonCollar", debris: "Fabric", Asset: "LatexCollar2", factionColor: [[], [0]], Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4, DefaultLock: "Blue",
+		Model: "ElfCollar",
+		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
+		unlimited: true,
+		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
+		events: [{trigger: "tick", type: "livingRestraints", tags: ["magicRibbons","magicRibbonsHarsh"], cloneTags: [], frequencyMax: 80, frequencyMin: 10, frequencyTag: "Ribbons", frequencyStep: 5, numToApply: 4}]
+		},
 	{unlimited: true, inventory: true, removePrison: true, name: "RibbonArms", debris: "Fabric", sfx: "MagicSlash", Asset: "Ribbons", Color: "#a583ff", Group: "ItemArms", bindarms: true, power: 6, weight: 0, magic: true,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.3, "Remove": 0.2,}, struggleMaxSpeed: {"Remove": 0.15}, struggleMinSpeed: {"Struggle": 0.1},
 		affinity: {Remove: ["Hook"],},
@@ -3736,6 +3780,13 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.6, enemyTags: {"cableGag":3}, playerTags: {}, minLevel: 0, maxLevel: 6, allFloors: true, shrine: ["Metal", "Gags", "PlugGags"]},
 
 	//region RopeSnake
+	{inventory: true, name: "RopeSnakeCollar", debris: "Ropes", Asset: "LatexCollar2", factionColor: [[], [0]], Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4, DefaultLock: "Blue",
+		Model: "ElfCollar",
+		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
+		unlimited: true,
+		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
+		events: [{trigger: "tick", type: "livingRestraints", tags: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsWrist"], cloneTags: [], frequencyMax: 80, frequencyMin: 10, frequencyTag: "Rope", frequencyStep: 5, numToApply: 8}]
+		},
 	{unlimited: true, changeRenderType: {"ArmBind": "WristElbowHarnessTie"}, inventory: true, name: "RopeSnakeArmsBoxtie", debris: "Ropes", accessible: true, factionColor: [[], [0]],
 		Model: "RopeBoxtie1",
 		linkCategory: "RopeArms", linkSize: 0.51,

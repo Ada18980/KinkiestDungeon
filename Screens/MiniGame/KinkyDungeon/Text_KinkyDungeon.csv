@@ -471,6 +471,10 @@ KinkyDungeonSpellDescriptionLockedUp3,"Locked Up is 300% effective. When Locked 
 KinkyDungeonSpellLockedUpX,Recalcitrant
 KinkyDungeonSpellDescriptionLockedUpX,"Relinquish the Locked Up perk. One time only. If you take the perk again, there is no going back."
 
+KinkyDungeonStatLivingCollars,"Living Collars"
+KinkyDungeonStatDescLivingCollars,"When getting captured with many of the same type of restraint, gain a collar that occasionally binds you with that type of restraint."
+
+
 KinkyDungeonStatNovicePet,"Novice Pet"
 KinkyDungeonStatDescNovicePet,"You can now sprint while wearing a petsuit. (Upgrades available in spell tree)"
 KinkyDungeonSpellNovicePet0,Novice Pet Perk
@@ -1633,7 +1637,8 @@ KinkyDungeonHearDoorCloseFar,You hear a door being shut in the distance.
 KinkyDungeonSlimeSpread,"The slime is spreading over your body!!!"
 KinkyDungeonSlimeHarden,"The slime starts to harden over your skin..."
 
-
+KinkyDungeonLivingSpread,"The RESTRAINTNAME creates more bindings out of thin air! (+RestraintAdded)"
+KinkyDungeonLivingAppear,"A RESTRAINTNAME has appeared around your neck!  Beware of additional restraints!"
 
 NameAngel,Angel
 KillAngel,"You subdue the angel!"
@@ -3684,6 +3689,10 @@ RestraintDuctTapeFeetMummyDesc2,"It clings, almost of its own accord, but seems 
 RestraintDuctTapeLegsMummy,Charm Wrapping (Legs)
 RestraintDuctTapeLegsMummyDesc,"A layer of faintly magic ribbon wrapped tight around your thighs."
 RestraintDuctTapeLegsMummyDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
+RestraintDuctTapeCollar,Living Charm Collar
+RestraintDuctTapeCollarDesc,"This collar is designed to make sure its wearer does not escape their charms."
+RestraintDuctTapeCollarDesc2,"It will occasionally cause charms to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of charms you have on you."
+
 
 RestraintPanelGag,Leather Panel Gag
 RestraintPanelGagDesc,"A gag that seals your lips tightly and stuffs your mouth with a ball."
@@ -3736,6 +3745,9 @@ RestraintMysticDuctTapeBootsDesc2,"It clings, almost of its own accord, but seem
 RestraintMysticDuctTapeLegsMummy,Blessed Wrappings (Legs)
 RestraintMysticDuctTapeLegsMummyDesc,"A layer of magic embalming ribbon wrapped tight around your thighs."
 RestraintMysticDuctTapeLegsMummyDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
+RestraintMysticDuctTapeCollar,Living Blessed Wrappings Collar
+RestraintMysticDuctTapeCollarDesc,"This collar is designed to make sure its wearer does not escape their wrappings."
+RestraintMysticDuctTapeCollarDesc2,"It will occasionally cause blessed wrappings to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of blessed wrappings you have on you."
 
 
 RestraintAutoTapeHands,Autotape (Hands)
@@ -3759,6 +3771,10 @@ RestraintAutoTapeBootsDesc2,"It's very sticky and tough but you could probably g
 RestraintAutoTapeMouth,Autotape (Mouth)
 RestraintAutoTapeMouthDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
 RestraintAutoTapeMouthDesc2,"It's very sticky and tough but you could probably get a knife through it."
+RestraintAutoTapeCollar,Living Auto Tape Collar
+RestraintAutoTapeCollarDesc,"This collar is designed to make sure its wearer does not escape their tape."
+RestraintAutoTapeCollarDesc2,"It will occasionally cause tape to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of tape you have on you."
+
 
 RestraintStuffing,Stuffing
 RestraintStuffingDesc,"A stuffing of cloth."
@@ -4619,6 +4635,10 @@ RestraintRibbonHandsDesc2,"They are wrapped tightly around your hands with a bow
 RestraintRibbonMouth,Magic Ribbons (Gag)
 RestraintRibbonMouthDesc,"Those ribbons will hold you tight~"
 RestraintRibbonMouthDesc2,"They are wrapped tightly around your mouth with a bow knot!"
+RestraintRibbonCollar,Living Ribbon Collar
+RestraintRibbonCollarDesc,"This collar is designed to make sure its wearer does not escape the ribbons."
+RestraintRibbonCollarDesc2,"It will occasionally cause ribbons to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of ribbons you have on you."
+
 
 RestraintIceArms,Ice (Arms)
 RestraintIceArmsDesc,"Frigid restraints made out of ice."
@@ -4664,6 +4684,10 @@ RestraintSlimeMouthDesc2,"It is an organic material that reforms around every cu
 RestraintSlimeHead,Slime (Head)
 RestraintSlimeHeadDesc,"Sticky slime that adheres to your body. It reacts negatively to mana..."
 RestraintSlimeHeadDesc2,"It is an organic material that reforms around every cut you make!"
+RestraintSlimeCollar,Living Slime Collar
+RestraintSlimeCollarDesc,"This collar is designed to make sure its wearer does not escape their slime."
+RestraintSlimeCollarDesc2,"It will occasionally cause slime to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of slime you have on you."
+
 
 RestraintHardSlimeBoots,Rubber (Feet)
 RestraintHardSlimeBootsDesc,"Sticky rubber that has fused itself into a skintight layer."
@@ -4686,6 +4710,9 @@ RestraintHardSlimeMouthDesc2,"There's no struggling out now, but since it's soli
 RestraintHardSlimeHead,Rubber (Head)
 RestraintHardSlimeHeadDesc,"Sticky rubber that has fused itself into a skintight layer."
 RestraintHardSlimeHeadDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardSlimeCollar,Living Rubber Collar
+RestraintHardSlimeCollarDesc,"This collar is designed to make sure its wearer does not escape their rubber."
+RestraintHardSlimeCollarDesc2,"It will occasionally cause rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you."
 
 
 
@@ -4711,6 +4738,10 @@ RestraintProtoSlimeMouthDesc2,"It is an organic material that reforms around eve
 RestraintProtoSlimeHead,Proto-Slime (Head)
 RestraintProtoSlimeHeadDesc,"It seems to be a precursor to the slimes everyone is familiar with?"
 RestraintProtoSlimeHeadDesc2,"It is an organic material that reforms around every cut you make!"
+RestraintProtoSlimeCollar,Living Proto-Slime Collar
+RestraintProtoSlimeCollarDesc,"This collar is designed to make sure its wearer does not escape the slime."
+RestraintProtoSlimeCollarDesc2,"It will occasionally cause proto-slime to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of proto-slime you have on you."
+
 
 RestraintHardProtoSlimeBoots,Proto-Rubber (Feet)
 RestraintHardProtoSlimeBootsDesc,"Sticky slime that has fused itself into a skintight layer."
@@ -4733,6 +4764,9 @@ RestraintHardProtoSlimeMouthDesc2,"There's no struggling out now, but since it's
 RestraintHardProtoSlimeHead,Proto-Rubber (Head)
 RestraintHardProtoSlimeHeadDesc,"Sticky slime that has fused itself into a skintight layer."
 RestraintHardProtoSlimeHeadDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardProtoSlimeCollar,Living Proto-Rubber Collar
+RestraintHardProtoSlimeCollarDesc,"This collar is designed to make sure its wearer does not escape the rubber."
+RestraintHardProtoSlimeCollarDesc2,"It will occasionally cause proto-rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of proto-rubber you have on you."
 
 
 
@@ -17213,6 +17247,9 @@ RestraintRopeSnakeFeet3Desc2,"The ropes squeeze you gently."
 RestraintRopeSnakeToes,Toe Rope
 RestraintRopeSnakeToesDesc,"A tie keeping your toes tightly together."
 RestraintRopeSnakeToesDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeCollar,Living Rope Collar
+RestraintRopeSnakeCollarDesc,"This collar is designed to make sure its wearer does not escape their ropes."
+RestraintRopeSnakeCollarDesc2,"It will occasionally cause ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you."
 
 
 KinkyDungeonInventoryItemLore,"Notebook Page"
@@ -17351,6 +17388,9 @@ RestraintStrongMagicRopeFeet3Desc2,"The knots appear to tie themselves together 
 RestraintStrongMagicRopeToes,Spellbound Toe Rope
 RestraintStrongMagicRopeToesDesc,"A tie keeping your toes secured together."
 RestraintStrongMagicRopeToesDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeCollar,Living Spellbound Rope Collar
+RestraintStrongMagicRopeCollarDesc,"This collar is designed to make sure its wearer does not escape their ropes."
+RestraintStrongMagicRopeCollarDesc2,"It will occasionally cause spellbound ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you."
 
 
 RestraintWeakMagicRopeArmsBoxtie,Magic Boxtie
@@ -17404,6 +17444,9 @@ RestraintWeakMagicRopeFeet3Desc2,"They glow with a trace of magic."
 RestraintWeakMagicRopeToes,Magic Toe Rope
 RestraintWeakMagicRopeToesDesc,"A tie keeping your toes secured together."
 RestraintWeakMagicRopeToesDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeCollar,Living Magic Rope Collar
+RestraintWeakMagicRopeCollarDesc,"This collar is designed to make sure its wearer does not escape their ropes."
+RestraintWeakMagicRopeCollarDesc2,"It will occasionally cause magic ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you."
 
 
 RestraintCelestialRopeArmsBoxtie,Holy Boxtie
@@ -17457,6 +17500,9 @@ RestraintCelestialRopeFeet3Desc2,"A set of ropes that emit a calm, soothing aura
 RestraintCelestialRopeToes,Holy Toe Rope
 RestraintCelestialRopeToesDesc,"A tie keeping your toes secured together."
 RestraintCelestialRopeToesDesc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
+RestraintCelestialRopeCollar,Living Holy Rope Collar
+RestraintCelestialRopeCollarDesc,"This collar is designed to make sure its wearer does not escape their ropes."
+RestraintCelestialRopeCollarDesc2,"It will occasionally cause holy ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you."
 
 
 
@@ -17511,6 +17557,10 @@ RestraintMithrilRopeFeet3Desc2,"A lightweight rope made out of woven mithril, sm
 RestraintMithrilRopeToes,Mithril Toe Ropes
 RestraintMithrilRopeToesDesc,"A tie keeping your toes secured together."
 RestraintMithrilRopeToesDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
+RestraintMithrilRopeCollar,Living Mithril Rope Collar
+RestraintMithrilRopeCollarDesc,"This collar is designed to make sure its wearer does not escape their ropes."
+RestraintMithrilRopeCollarDesc2,"It will occasionally cause mithril ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you."
+
 
 KDEffectTileTooltipPortals/DarkPortal,Dark Portal
 KDEffectTileTooltipPortals/DarkPortalDesc,"They are trying to take you somewhere!"
@@ -17555,6 +17605,10 @@ RestraintLiquidMetalMouthDesc2,"Forming a skintight layer, it will be quite diff
 RestraintLiquidMetalHead,Liquid Metal (Head)
 RestraintLiquidMetalHeadDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalHeadDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
+RestraintLiquidMetalCollar,Living Liquid Metal Collar
+RestraintLiquidMetalCollarDesc,"This collar is designed to make sure its wearer does not escape the metal."
+RestraintLiquidMetalCollarDesc2,"It will occasionally cause liquid metal to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of liquid metal you have on you."
+
 
 KDRandomStairTeleportFail,"The stairs dissolve right before you!"
 KDRandomStairTeleport,"The stairs dissolve as you step onto them, pulling you with them to somewhere else."

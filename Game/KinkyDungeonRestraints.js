@@ -3480,6 +3480,7 @@ function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, 
 		KDUpdateItemEventCache = true;
 		let lk = linkUnder.dynamicLink;
 		if (!Curse && (Lock)) KinkyDungeonLock(linkUnder.dynamicLink, Lock);
+		else if (restraint.DefaultLock) KinkyDungeonLock(linkUnder.dynamicLink, restraint.DefaultLock)
 		if (inventoryAs) linkUnder.dynamicLink.inventoryVariant = inventoryAs;
 		if (!safeLink) {
 			// Remove the original by iterating down and identifying one we can delete
@@ -4599,6 +4600,7 @@ function KDChooseRestraintFromListGroupPriWithVariants(RestraintList, GroupOrder
 
 
 let KDSlimeParts = {
+	"Collar": {enemyTagSuffix: "Collar"},
 	"Boots": {},
 	"Feet": {},
 	"Legs": {},
@@ -4609,6 +4611,7 @@ let KDSlimeParts = {
 };
 
 let KDRopeParts = {
+	"Collar": {enemyTagSuffix: "Collar"},
 	"ArmsBoxtie": {},
 	"ArmsWrist": {},
 	"Cuffs": {},
@@ -4629,6 +4632,7 @@ let KDRopeParts = {
 };
 
 let KDCuffParts = {
+	"Collar": {},
 	"AnkleCuffs": {base: true, Link: "AnkleCuffs2"},
 	"AnkleCuffs2": {Link: "AnkleCuffs3", UnLink: "AnkleCuffs"}, //, ModelSuffix: "Chained"
 	"AnkleCuffs3": {UnLink: "AnkleCuffs2"},
@@ -4703,6 +4707,7 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 				events: cuffInfo.base ? [...extraEvents, ...(origRestraint.events || [])] : [...(origRestraint.events || [])],
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
+				cloneTag: tagBase,
 			};
 			if (cuffInfo.Link) props.Link = idSuffix + cuffInfo.Link;
 			if (cuffInfo.UnLink) props.UnLink = idSuffix + cuffInfo.UnLink;
@@ -4794,6 +4799,7 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 				events: [...extraEvents, ...(origRestraint.events || [])],
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
+				cloneTag: tagBase,
 			};
 			if (Filters && props.Filters) {
 				for (let layer of Object.keys(Filters)) {
@@ -4858,6 +4864,7 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 				events: JSON.parse(JSON.stringify([...extraEvents, ...(origRestraint.events || [])])),
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
+				cloneTag: tagBase,
 			};
 			if (Filters && props.Filters) {
 				for (let layer of Object.keys(Filters)) {
