@@ -386,19 +386,39 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 	let currentItem = KinkyDungeonGetRestraintItem(Group);
 	// Try first with ones that are linkable
 	if (currentItem) {
+		// Go for priority candidates first
 		for (let r of KDGetJailRestraints()) {
 			let level = 0;
 			if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
 			if (!r.Level || level >= r.Level) {
 				let candidate = KinkyDungeonGetRestraintByName(r.Name);
 				if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
-					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
+					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r)) && KDPriorityCondition(r)) {
 						if (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), candidate)) {
 							cand = candidate;
 							variant = r.Variant;
 							candLevel = candidate.nonbinding ? 0 : r.Level;
 						}
 
+					}
+				}
+			}
+		}
+		if (!cand) {
+			for (let r of KDGetJailRestraints()) {
+				let level = 0;
+				if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
+				if (!r.Level || level >= r.Level) {
+					let candidate = KinkyDungeonGetRestraintByName(r.Name);
+					if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
+						if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
+							if (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), candidate)) {
+								cand = candidate;
+								variant = r.Variant;
+								candLevel = candidate.nonbinding ? 0 : r.Level;
+							}
+
+						}
 					}
 				}
 			}
@@ -412,7 +432,7 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 			if (!r.Level || level >= r.Level) {
 				let candidate = KinkyDungeonGetRestraintByName(r.Name);
 				if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
-					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
+					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r)) && KDPriorityCondition(r)) {
 						cand = candidate;
 						variant = r.Variant;
 						candLevel = candidate.nonbinding ? 0 : r.Level;
@@ -420,6 +440,21 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 				}
 			}
 		}
+		if (!cand)
+			for (let r of KDGetJailRestraints()) {
+				let level = 0;
+				if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
+				if (!r.Level || level >= r.Level) {
+					let candidate = KinkyDungeonGetRestraintByName(r.Name);
+					if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
+						if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
+							cand = candidate;
+							variant = r.Variant;
+							candLevel = candidate.nonbinding ? 0 : r.Level;
+						}
+					}
+				}
+			}
 	}
 	return {restraint: cand, variant: variant};
 }
@@ -435,6 +470,19 @@ function KDJailCondition(r) {
 	}
 	return true;
 }
+
+/**
+ *
+ * @param {KDJailRestraint} r
+ * @returns {boolean}
+ */
+function KDPriorityCondition(r) {
+	if (r.Priority && KDJailConditions[r.Priority]) {
+		return KDJailConditions[r.Priority](r);
+	}
+	return false;
+}
+
 
 function KinkyDungeonGetJailRestraintLevelFor(Name) {
 	for (let r of KDGetJailRestraints()) {
@@ -692,6 +740,29 @@ function KinkyDungeonTooMuchRestraint() {
 
 /**
  *
+ * @param {entity} player
+ * @param {entity} enemy
+ */
+function KDPutInJail(player, enemy) {
+	let entity = enemy ? enemy : player;
+	let nearestJail = KinkyDungeonNearestJailPoint(entity.x, entity.y);
+	let jailRadius = (nearestJail && nearestJail.radius) ? nearestJail.radius : 1.5;
+	let playerInCell = nearestJail ? (Math.abs(player.x - nearestJail.x) < jailRadius - 1 && Math.abs(player.y - nearestJail.y) <= jailRadius)
+		: null;
+	if (!playerInCell) {
+		let point = {x: nearestJail.x, y: nearestJail.y};//KinkyDungeonGetNearbyPoint(nearestJail.x, nearestJail.y, true, undefined, true);
+		if (point) {
+			KDBreakTether(player);
+			if (player.player)
+				KDMovePlayer(point.x, point.y, false);
+			else
+				KDMoveEntity(player, point.x, point.y, false);
+		}
+	}
+}
+
+/**
+ *
  * @param {number} xx
  * @param {number} yy
  * @param {string} type
@@ -707,17 +778,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 			KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
 		}
 		KDGameData.KinkyDungeonPrisonExtraGhostRep += 2;
-		let entity = KinkyDungeonJailGuard() ? KinkyDungeonJailGuard() : KinkyDungeonPlayerEntity;
-		let nearestJail = KinkyDungeonNearestJailPoint(entity.x, entity.y);
-		let jailRadius = (nearestJail && nearestJail.radius) ? nearestJail.radius : 1.5;
-		let playerInCell = nearestJail ? (Math.abs(KinkyDungeonPlayerEntity.x - nearestJail.x) < jailRadius - 1 && Math.abs(KinkyDungeonPlayerEntity.y - nearestJail.y) <= jailRadius)
-			: null;
-		if (!playerInCell) {
-			let point = {x: nearestJail.x, y: nearestJail.y};//KinkyDungeonGetNearbyPoint(nearestJail.x, nearestJail.y, true, undefined, true);
-			if (point) {
-				KDMovePlayer(point.x, point.y, false);
-			}
-		}
+		KDPutInJail(KinkyDungeonPlayerEntity, KinkyDungeonJailGuard());
 
 		if (KinkyDungeonJailGuard()?.KinkyDungeonJailTourInfractions < 1) {
 			let item = "CookieJailer";

@@ -874,7 +874,7 @@ let KDQuests = {
 			}
 
 		}
-	}, 1, ["obsidianRestraints"]),
+	}, 1, ["steelbondage", "crystalRestraints", "leatherRestraints", "leatherRestraintsHeavy"]),
 
 	"IllusionQuest": KDGenQuestTemplate("IllusionQuest", "DragonShadow", "Illusion", (goddess, flag) => {
 		let point = KinkyDungeonGetRandomEnemyPoint(true);
@@ -921,7 +921,7 @@ let KDQuests = {
 			}
 
 		}
-	}, 1, ["shadowlatexRestraints", "shadowlatexRestraintsHeavy"])
+	}, 1, ["shadowlatexRestraints", "shadowlatexRestraintsHeavy", "obsidianRestraints"])
 };
 
 
@@ -1109,7 +1109,7 @@ function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountM
 					KDPlayerEffectRestrain(undefined, 1, restraintsTags, "Goddess", false, true, false, false, false, "Divine", {
 						Progressive: true,
 						ProgressiveSkip: true,
-						DontPreferWill: true,
+						DontPreferWill: false,
 						Keep: true,
 					});
 				}

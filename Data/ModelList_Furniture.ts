@@ -125,7 +125,7 @@ AddModel({
 	Categories: ["Restraints","Furniture", "Stands"],
 	AddPose: ["SuspendedHogtie", "ForceStand"],
 	Layers: ToLayerMap([
-		{ Name: "OneBarFront", Layer: "TorsoLower", Pri: -50,
+		{ Name: "OneBarFront", Layer: "Torso", Pri: -50,
 			Poses: ToMap(["Closed", "Spread"]),
 		},
 		{ Name: "OneBarBack", Layer: "FurnitureBack", Pri: 50,

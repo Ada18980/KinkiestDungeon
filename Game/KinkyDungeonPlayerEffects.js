@@ -659,7 +659,8 @@ let KDPlayerEffects = {
 		if (KDTestSpellHits(spell, 0.2, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
-			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
+			if (!KinkyDungeonGetRestraintItem("ItemEyes"))
+				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonHairpin").KDReplaceOrAddDmg( dmg.string), "#ff0000", playerEffect.time);
 			effect = true;
 		}
@@ -671,8 +672,10 @@ let KDPlayerEffects = {
 		if (Math.round(
 			playerEffect.time * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "lightDamageResist"))
 		) > 0) {
-			KDGameData.visionAdjust = Math.min(1, (KDGameData.visionAdjust || 0) + 1.5);
-			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
+			if (!(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "blindResist") > 0))
+				KDGameData.visionAdjust = Math.min(1, (KDGameData.visionAdjust || 0) + 1.5);
+			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind,
+				Math.round(playerEffect.time * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "blindResist"))));
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonBlindSelf"), "#ff0000", Math.round(
 				playerEffect.time * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "lightDamageResist"))
 			));
@@ -864,7 +867,8 @@ let KDPlayerEffects = {
 			}// else if (KDGameData.PrisonerState != 'jail' && KDGameData.PrisonerState != 'parole') {
 			//KinkyDungeonCallGuard(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 			//}
-			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
+
+			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, Math.round(playerEffect.time * KinkyDungeonMultiplicativeStat(2*KDEntityBuffedStat(KinkyDungeonPlayerEntity, "holyResist"))));
 			KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 			//KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonCoronaShock").KDReplaceOrAddDmg( dmg.string), "#ff0000", playerEffect.time);

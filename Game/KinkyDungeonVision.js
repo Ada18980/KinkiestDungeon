@@ -391,7 +391,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 				if (KDGameData.visionBlind == 0) {
 					KinkyDungeonUpdateLightGrid = true;
 				}
-				KDGameData.visionBlind = 0.6*Math.max(0, avg - KDGameData.visionAdjust);
+				KDGameData.visionBlind = 0.6*Math.max(0, (avg - KDGameData.visionAdjust) * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "blindResist")));
 				if (avg - KDGameData.visionAdjust > 0.5)
 					KinkyDungeonSendTextMessage(4, TextGet("KDVisionBlind"), "#ffffff", 1, false, true);
 

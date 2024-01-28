@@ -878,6 +878,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				name: "Ice",
 				duration: 20,
 			},
+			noise: 1.5,
 			noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: true, time:6, power: 3, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "frost",
 			events: [{type: "ElementalOnSlowOrBindOrDrench", trigger: "bulletHitEnemy", damage: "ice", time: 6, power: 0},]},
 		{name: "Icebolt", tags: ["ice", "bolt", "offense"], prerequisite: "ApprenticeIce", sfx: "MagicSlash", hitsfx: "Freeze", school: "Elements", manacost: 4, components: ["Arms"], level:1, type:"bolt",
@@ -3028,6 +3029,24 @@ let KinkyDungeonSpellListEnemies = [
 		},
 		hitColor: 0x4fa4b8, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["slimebubble"], msg: "SlimeBubble"},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
+
+	{enemySpell: true, name: "RuneTrap_LatexSphere", bulletColor: 0xff00ff, tags: ["latex", "trap"],
+		hideWarnings: true,
+		effectTileDurationMod: 10, effectTile: {
+			name: "LatexThinBlue",
+			duration: 20,
+		},
+		effectTileDoT: {
+			name: "LatexThinBlue",
+			duration: 2,
+		}, effectTileDistDoT: 0.5,
+		effectTileDoT2: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		},
+		hitColor: 0x4fa4b8, hitLight: 6, hitsfx: "RubberBolt", manacost: 2, components: ["Legs"], level:1, type:"dot",
+		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["latexSphere"], msg: "LatexSphere"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
 
 	{enemySpell: true, name: "RuneTrap_Rubber", bulletColor: 0xff5277, tags: ["rope", "trap"],

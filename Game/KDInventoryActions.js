@@ -591,6 +591,8 @@ let KDInventoryAction = {
 			KDGameData.OffhandOld = item.name;
 			KinkyDungeonAdvanceTime(1, true, true);
 			KinkyDungeonDrawState = "Game";
+			KinkyDungeonCheckClothesLoss = true;
+			KinkyDungeonDressPlayer();
 		},
 		/** Return true to cancel it */
 		cancel: (player, delta) => {
@@ -626,6 +628,8 @@ let KDInventoryAction = {
 			KinkyDungeonAdvanceTime(1, true, true);
 			KDStunTurns(4, true);
 			KinkyDungeonDrawState = "Game";
+			KinkyDungeonCheckClothesLoss = true;
+			KinkyDungeonDressPlayer();
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Tape.ogg");
 		},
 		/** Return true to cancel it */

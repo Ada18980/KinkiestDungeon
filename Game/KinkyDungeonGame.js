@@ -374,8 +374,9 @@ function KinkyDungeonInitialize(Level, Load) {
 		KinkyDungeonConfigAppearance = false;
 	}
 	CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayer));
-	KinkyDungeonDressPlayer();
 	KinkyDungeonDrawState = "Game";
+	KinkyDungeonCheckClothesLoss = true;
+	KinkyDungeonDressPlayer();
 
 	KinkyDungeonMapIndex = {};
 	for (let map of KDDefaultJourney) {
@@ -3907,6 +3908,9 @@ function KinkyDungeonGameKeyDown() {
 				KinkyDungeonCurrentPageInventory -= 1;
 			} else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonDrawState = "Game";
+
+				KinkyDungeonCheckClothesLoss = true;
+				KinkyDungeonDressPlayer();
 			}
 		} else if (KinkyDungeonDrawState == "Magic" && (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey)) {
 			if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
@@ -3973,6 +3977,10 @@ function KinkyDungeonGameKeyDown() {
 			}
 			else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonDrawState = "Game";
+
+
+				KinkyDungeonCheckClothesLoss = true;
+				KinkyDungeonDressPlayer();
 			}
 		} else
 		if (KinkyDungeonKeyMenu.includes(KinkyDungeonKeybindingCurrentKey)) {
@@ -4216,7 +4224,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				KinkyDungeonChangeStamina(data.attackCost, false, 1);
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "attack", 1);
 				KinkyDungeonSetFlag("armattack", 2);
-				KinkyDungeonSetEnemyFlag(data.target, "targetedForAttack", 2);
+				KinkyDungeonSetEnemyFlag(data.target, "targetedForAttack", 4);
 			} else {
 				if ((Enemy.lifetime > 9000 || !Enemy.maxlifetime))
 					KinkyDungeonAggro(Enemy, undefined, KinkyDungeonPlayerEntity);
@@ -4578,6 +4586,7 @@ function KinkyDungeonMoveTo(moveX, moveY, willSprint, allowPass) {
 					KinkyDungeonChangeStamina(data.sprintCost, false, 1);
 					KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), "lightgreen", 2);
 					KDChangeBalance(-KDGetBalanceCost() * (0.5 + 1 * KDRandom()) * KDBalanceSprintMult*10*KDFitnessMult(), true);
+					KinkyDungeonSetFlag("sprint", 2);
 					if (KinkyDungeonSlowLevel < 2) {
 						// Move faster
 						KinkyDungeonTrapMoved = true;

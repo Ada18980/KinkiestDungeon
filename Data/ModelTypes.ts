@@ -30,6 +30,7 @@ type PoseProperty = {
 	offset_y?: number,
 	/** The side-to-side offset of the pose*/
 	offset_x?: number,
+	offset_xFlip?: number,
 	/** Priority of the offset. Only the highest will offset the character at all*/
 	pri_offsetx?: number,
 	pri_offsety?: number,

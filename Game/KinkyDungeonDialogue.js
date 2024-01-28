@@ -71,6 +71,9 @@ function KDDrawDialogue(delta) {
 
 	if (KDGameData.CurrentDialog && !(KDGameData.SlowMoveTurns > 0)) {
 		KinkyDungeonDrawState = "Game";
+
+		KinkyDungeonCheckClothesLoss = true;
+		KinkyDungeonDressPlayer();
 		// Get the current dialogue and traverse down the tree
 		let dialogue = KDGetDialogue();
 		// Now that we have the dialogue, we check if we have a message
@@ -317,6 +320,8 @@ function KDStartDialog(Dialogue, Speaker, Click, Personality, enemy) {
 
 
 	KDDoDialogue({dialogue: Dialogue, dialogueStage: "", click: Click, speaker: Speaker, personality: Personality, enemy: enemy ? enemy.id : undefined});
+	KinkyDungeonCheckClothesLoss = true;
+	KinkyDungeonDressPlayer();
 }
 
 
@@ -401,6 +406,9 @@ function KDStartDialogInput(Dialogue, Speaker, Click, Personality, enemy) {
 	KinkyDungeonDrawState = "Game";
 	KDDialogueData.CurrentDialogueIndex = 0;
 	KDSendInput("dialogue", {dialogue: Dialogue, dialogueStage: "", click: Click, speaker: Speaker, personality: Personality, enemy: enemy ? enemy.id : undefined});
+
+	KinkyDungeonCheckClothesLoss = true;
+	KinkyDungeonDressPlayer();
 }
 
 function KDDialogueGagged() {
@@ -815,6 +823,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 				prerequisiteFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						if (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) return false;
 						return (KinkyDungeonCanPlay(enemy) && KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints") && !enemy.playWithPlayer) == true;
 					}
 					return false;

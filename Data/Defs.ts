@@ -276,7 +276,7 @@ let LAYERS_BASE = [
 	"Shorts",
 
 	"OverSocks",
-	"StockingLeft",
+	"StockingLeftKneel", "StockingLeft",
 	"FootLeft",
 	"LegLeft",
 
@@ -660,7 +660,7 @@ let LayerGroups = {
 		"OverShoes",
 		"OverSocks",
 		"FootLeft",
-		"StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
 		"FootLeft",
 		"LegLeft",
 		"FootRight",
@@ -676,7 +676,7 @@ let LayerGroups = {
 		"OverShoes",
 		"OverSocks",
 		"FootLeft",
-		"StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
 		"LegLeft",
 		"FootRight",
 		"StockingRight",
@@ -690,7 +690,7 @@ let LayerGroups = {
 	]),
 	"HeelRight": ToMap([
 		"FootLeft",
-		"StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
 		"FootLeft",
 		"LegLeft",
 		"FootRight",
@@ -705,7 +705,8 @@ let LayerGroups = {
 	]),
 	"BalletHeelRight": ToMap([
 		"FootLeft",
-		"StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
 		"FootLeft",
 		"LegLeft",
 		"FootRight",
@@ -939,7 +940,7 @@ let LayerGroups = {
 		"Shorts",
 
 		"OverSocks",
-		"StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
 		"StockingRight",
 
 		"Bodysuit",
@@ -970,7 +971,7 @@ let LayerGroups = {
 		"Shorts",
 
 		"OverSocks",
-		"StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
 		"StockingRight",
 
 		"Bodysuit",
@@ -999,7 +1000,7 @@ let LayerGroups = {
 		"Shorts",
 
 		"OverSocks",
-		"StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
 		"StockingRight",
 
 		"Bodysuit",
@@ -1071,7 +1072,7 @@ let LayerGroups = {
 		"Shorts",
 
 		"OverSocks",
-		"StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
 		"StockingRight",
 
 		"ShoeLeftDeco",
@@ -1116,7 +1117,7 @@ let LayerGroups = {
 		"ShoeRightUnder",
 
 		"OverSocks",
-		"StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
 		"StockingRight",
 
 		"LegLeft",
@@ -1182,7 +1183,7 @@ let LayerGroups = {
 		"Shorts",
 
 		"OverSocks",
-		"StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
 		"StockingRight",
 
 		"Panties",
@@ -1234,7 +1235,7 @@ let LayerGroups = {
 		"Shorts",
 
 		"OverSocks",
-		"StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
 		"StockingRight",
 
 		"Panties",
@@ -1274,7 +1275,7 @@ let LayerGroups = {
 		"ShoeRightUnder",
 
 		"OverSocks",
-		"StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
 		"StockingRight",
 
 		"LegLeft",
@@ -1323,7 +1324,7 @@ let LayerGroups = {
 		"ShoeRightUnder",
 
 		"OverSocks",
-		"StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
 		"StockingRight",
 
 		"LegLeft",
@@ -1657,6 +1658,36 @@ let LayerGroups = {
 		]
 	),
 	// endregion
+
+	Bubble: ToMap(
+		[
+			"Coat",
+			"AnimalEars",
+
+			// Hair and hat back
+			"HairBack",
+			"HatBack",
+
+			"Tail",
+			"Wings",
+			"Cape",
+			"HatDeco",
+			"Hat",
+			"Weapon",
+			"InflatableHead",
+			"Brows", // Brows should get hidden with mask
+			"Ahoge",
+			"Circlet",
+			"HeadbandDeco",
+			"Headband",
+			"MouthProp",
+			"HairFront",
+			"Hair",
+			"HairOver",
+			"Head",
+			"Hood", // For Kigu
+		]
+	),
 
 	// region ALL
 	"All": ToMap(

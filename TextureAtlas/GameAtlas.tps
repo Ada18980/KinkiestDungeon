@@ -2778,6 +2778,8 @@
             <key type="filename">../Game/Bullets/RuneTrap_ChainHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Latex.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_LatexHit.png</key>
+            <key type="filename">../Game/Bullets/RuneTrap_LatexSphere.png</key>
+            <key type="filename">../Game/Bullets/RuneTrap_LatexSphereHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Leather.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_LeatherHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Ribbon.png</key>
@@ -3221,8 +3223,11 @@
             <key type="filename">../Game/Items/Restraint/SteelArmor.png</key>
             <key type="filename">../Game/Items/Restraint/SteelBoots.png</key>
             <key type="filename">../Game/Items/Restraint/SteelSkirt.png</key>
+            <key type="filename">../Game/Items/Restraint/Sunglasses.png</key>
+            <key type="filename">../Game/Items/Restraint/Sunglasses2.png</key>
             <key type="filename">../Game/Items/Restraint/Thumbcuffs.png</key>
             <key type="filename">../Game/Items/Restraint/WolfCuffs.png</key>
+            <key type="filename">../Game/Items/Sunglasses.png</key>
             <key type="filename">../Game/Outfits/BlueSuit.png</key>
             <key type="filename">../Game/Outfits/Default.png</key>
             <key type="filename">../Game/Outfits/Dragon.png</key>

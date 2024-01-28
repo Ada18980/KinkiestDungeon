@@ -194,6 +194,10 @@ let KDIntentEvents = {
 				enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.x;
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
 
+				// If they are not attacking player
+				if (KDistChebyshev(enemy.gx - enemy.x, enemy.gy - enemy.y) < 1.5 && !AIData.aggressive) {
+					KDIntentEvents.CaptureJail.arrive(enemy, AIData);
+				}
 				// TODO add release case based on alliance
 			}
 			if (enemy.playWithPlayer < 10) {
@@ -211,9 +215,11 @@ let KDIntentEvents = {
 				enemy.playWithPlayer = 0;
 				enemy.playWithPlayerCD = 24;
 				return true;
+			} else {
+				KDPutInJail(KinkyDungeonPlayerEntity, enemy);
+				KDResetIntent(enemy, AIData);
+				KDBreakTether(KinkyDungeonPlayerEntity);
 			}
-			AIData.defeat = true;
-			KDBreakTether(KinkyDungeonPlayerEntity);
 			return false;
 		},
 	},
@@ -287,6 +293,7 @@ let KDIntentEvents = {
 			KinkyDungeonSetFlag("TempLeash", duration);
 			KinkyDungeonSetFlag("TempLeashCD", duration*2);
 			KinkyDungeonSetFlag("noResetIntent", 12);
+			KinkyDungeonSetFlag("nojailbreak", 12);
 
 			enemy.playWithPlayer = 12;
 			enemy.playWithPlayerCD = 40;
@@ -321,6 +328,7 @@ let KDIntentEvents = {
 					if (AIData?.playerDist < 7.5) {
 						if (enemy.playWithPlayer < 10 && !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
 							enemy.playWithPlayer = 10;
+							KinkyDungeonSetFlag("nojailbreak", 2);
 						}// else enemy.playWithPlayer += delta;
 						KinkyDungeonSetFlag("noResetIntentFull", 10);
 					}
@@ -351,15 +359,17 @@ let KDIntentEvents = {
 						}
 					} else {
 						// We will wander more than usual
-						KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
+						KinkyDungeonSetEnemyFlag(enemy, "wander", 2);
 						KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-						if (enemy.idle) {
+						if (enemy.idle || (KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) < 4)) {
 							KDResetGuardSpawnTimer();
 							let newPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]) || KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
 							if (newPoint) {
+								enemy.keys = true;
 								enemy.gx = newPoint.x;
 								enemy.gy = newPoint.y;
-								if (KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) < 1.5) {
+								if (KDistChebyshev(enemy.x - KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]).x, enemy.y - KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]).y) < 1.5
+									|| KDistChebyshev(enemy.x - KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]).x, enemy.y - KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]).y) < 1.5) {
 									if (newPoint == KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"])) {
 										KDSettlePlayerInFurniture(enemy, AIData);
 									} else {
