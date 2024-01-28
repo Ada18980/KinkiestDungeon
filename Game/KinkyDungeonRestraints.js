@@ -5190,7 +5190,9 @@ function KDDynamicLinkListSurface(item) {
 		let inv = tuple.item;
 		let host = tuple.host;
 		if (!inaccess && KDRestraint(host).inaccessible) inaccess = true;
-		if ( KDRestraint(host).alwaysAccessible || (
+		if (!inaccess && KDRestraint(inv).alwaysInaccessible) inaccess = true;
+
+		if ( KDRestraint(inv).alwaysAccessible || (
 			!inaccess
 			&&
 			(

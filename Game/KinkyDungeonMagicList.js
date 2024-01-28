@@ -3031,6 +3031,24 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["slimebubble"], msg: "SlimeBubble"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
 
+	{enemySpell: true, name: "RuneTrap_LatexSphere", bulletColor: 0xff00ff, tags: ["latex", "trap"],
+		hideWarnings: true,
+		effectTileDurationMod: 10, effectTile: {
+			name: "LatexThinBlue",
+			duration: 20,
+		},
+		effectTileDoT: {
+			name: "LatexThinBlue",
+			duration: 2,
+		}, effectTileDistDoT: 0.5,
+		effectTileDoT2: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		},
+		hitColor: 0x4fa4b8, hitLight: 6, hitsfx: "RubberBolt", manacost: 2, components: ["Legs"], level:1, type:"dot",
+		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["latexSphere"], msg: "LatexSphere"},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
+
 	{enemySpell: true, name: "RuneTrap_Rubber", bulletColor: 0xff5277, tags: ["rope", "trap"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {

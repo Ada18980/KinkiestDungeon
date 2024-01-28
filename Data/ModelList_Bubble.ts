@@ -19,6 +19,8 @@ AddModel({
 		{ Name: "Bubble", Layer: "FurnitureFront", Pri: -40,
 			Invariant: true,
 			OffsetY: 350,
+			EraseSprite: "Bubble",
+			EraseLayers: ToMap(["Bubble"]),
 		},
 	])
 });
@@ -38,6 +40,8 @@ AddModel({
 		{ Name: "Bubble", Layer: "FurnitureFront", Pri: -40,
 			Invariant: true,
 			OffsetY: 350,
+			EraseSprite: "Bubble",
+			EraseLayers: ToMap(["Bubble"]),
 		},
 	])
 });
@@ -53,9 +57,12 @@ AddModel({
 		{ Name: "BubbleSquishy", Layer: "FurnitureFront", Pri: -50,
 			Invariant: true,
 			OffsetY: 350,
+			EraseSprite: "Bubble",
+			EraseLayers: ToMap(["Bubble"]),
 		},
 		{ Name: "BubbleSquishyBack", Layer: "FurnitureBack", Pri: 50,
 			Invariant: true,
+			NoErase: true,
 			OffsetY: 350,
 		},
 	])
@@ -69,20 +76,23 @@ AddModel({
 	Categories: ["Restraints","Furniture", "Latex"],
 	AddPose: ["UprightHogtie", "PreferKneel", "ShiftRight"],
 	Layers: ToLayerMap([
-		{ Name: "LatexSphere", Layer: "FurnitureFront", Pri: 20,
+		{ Name: "LatexSphere", Layer: "FurnitureFront", Pri: 21,
 			Invariant: true,
 			OffsetY: 350,
+			Poses: {Menu: true},
 			HidePoses: ToMap(["Xray"]),
 		},
 		{ Name: "LatexSphereCutaway", Layer: "FurnitureFront", Pri: 20,
 			Invariant: true,
 			OffsetY: 350,
-			Poses: ToMap(["Xray"]),
+			NoErase: true,
 		},
 		{ Name: "LatexSphereCutawayBack", Layer: "FurnitureBack", Pri: -20,
 			Invariant: true,
 			OffsetY: 350,
-			Poses: ToMap(["Xray"]),
+			NoErase: true,
+			EraseSprite: "Bubble2",
+			EraseLayers: ToMap(["Bubble"]),
 		},
 	])
 });

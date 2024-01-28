@@ -1026,4 +1026,30 @@ let KDBoobyTraps = {
 			return 20;
 		},
 	},
+	"RuneTrap_Bubble": {
+		filter: (enemy, x, y, checkpoint, type) => {
+			return enemy.Enemy.tags?.water;
+		},
+		weight: (enemy, x, y, checkpoint, type) => {
+			return 20;
+		},
+	},
+	"RuneTrap_SlimeBubble": {
+		filter: (enemy, x, y, checkpoint, type) => {
+			return enemy.Enemy.tags?.slime;
+		},
+		weight: (enemy, x, y, checkpoint, type) => {
+			return 20;
+		},
+	},
+	"RuneTrap_LatexSphere": {
+		filter: (enemy, x, y, checkpoint, type) => {
+			return enemy.Enemy.tags?.latex;
+		},
+		weight: (enemy, x, y, checkpoint, type) => {
+			return 20;
+		},
+	},
+
+
 };

@@ -157,6 +157,7 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 	},
 	ShiftRight: {
 		offset_x: .2,
+		offset_xFlip: -0.2,
 		pri_offsetx: 5,
 	},
 	Kneel: {
@@ -493,6 +494,10 @@ function KDRefreshPoseOptions(Character: Character) {
 	if (KDToggles.ChastityOption) {
 		KDCurrentModels.get(Character).TempPoses.ChastityOption = true;
 		KDCurrentModels.get(Character).Poses.ChastityOption = true;
+	}
+	if (KinkyDungeonDrawState != "Game" || KinkyDungeonState != "Game") {
+		KDCurrentModels.get(Character).TempPoses.Menu = true;
+		KDCurrentModels.get(Character).Poses.Menu = true;
 	}
 	if (KDToggles.ChastityOption2) {
 		KDCurrentModels.get(Character).TempPoses.ChastityOption2 = true;

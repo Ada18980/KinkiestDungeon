@@ -39,11 +39,14 @@ Monk class?
  - Enemies playing with you have an easier time using tease attacks
  - Added Miku and Royal palette
  - RC2: More bug fixes
+ - RC3: Added Nevermere palette
  - RC3: Fix full defeat when an leash walker takes you back to jail
  - RC3: Fix some clipping with legs
  - RC3: Add more restraints to goddess quest punishments
  - RC3: Fix vibration particles in wrong position when player is flipped by option
  - RC3: Fix player flipped wrong in hogtie when player is flipped by option
+ - RC4: Add HUD player background
+ - RC4: Add bubble traps
 
 5.1.12
  - Added a global cooldown on tease attacks as well as a per enemy cooldown

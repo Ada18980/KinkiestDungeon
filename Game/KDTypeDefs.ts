@@ -227,6 +227,8 @@ interface KDRestraintPropsBase {
 	deepAccessible?: boolean,
 	/** WIP, does nothing yet. Should allow you to access the item under even inaccessible stuff */
 	alwaysAccessible?: boolean,
+	/** Always inaccessible if something is on top of it */
+	alwaysInaccessible?: boolean,
 	/** This item can be rendered when linked */
 	renderWhenLinked?: string[];
 	// Player must have one of these PlayerTags to equip

@@ -2277,7 +2277,7 @@ function KinkyDungeonTrackSneak(enemy, delta, player, darkmult) {
 		delta: delta,
 		player: player,
 	};
-	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak")) data.sneakThreshold = Math.max(0.1, data.sneakThreshold + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak"));
+	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak")) data.sneakThreshold = Math.max(0.51, data.sneakThreshold + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak"));
 
 	if (KDGameData.Outfit) {
 		let outfit = KinkyDungeonGetOutfit(KDGameData.Outfit);
@@ -6130,6 +6130,10 @@ function KDGetAwareTooltip(enemy) {
 			color: "#ffffff",
 		};
 	}
+	if (enemy.ignore) return {
+		suff: "AwareIgnore",
+		color: "#ffff55",
+	};
 	if (enemy.vp > 2) return {
 		suff: "DangerHigh",
 		color: "#ff5555",

@@ -879,6 +879,8 @@ function KinkyDungeonDrawGame() {
 				KDRepSelectionMode = "";
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
+				KinkyDungeonCheckClothesLoss = true;
+				KinkyDungeonDressPlayer();
 			}
 		}
 	}
@@ -1433,9 +1435,21 @@ function KinkyDungeonDrawGame() {
 
 			}
 
-			if (StandalonePatched)
+			if (StandalonePatched) {
+				if (KDBGColor) {
+					FillRectKD(kdcanvas, kdpixisprites, "playerbg", {
+						Left: 0,
+						Top: 0,
+						Width: 500,
+						Height: 1000,
+						Color: KDBGColor,
+						zIndex: -1,
+						alpha: StandalonePatched ? KDUIAlpha : 0.01,
+					});
+				}
 				DrawCharacter(KinkyDungeonPlayer, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, KDToggles.FlipPlayer);
 
+			}
 			if (KinkyDungeonSleepiness) {
 				CharacterSetFacialExpression(KinkyDungeonPlayer, "Emoticon", "Sleep");
 			} else CharacterSetFacialExpression(KinkyDungeonPlayer, "Emoticon", null);

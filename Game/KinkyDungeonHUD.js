@@ -291,11 +291,13 @@ function KinkyDungeonDrawInterface(showControls) {
 			Color: KDUIColorHighlight, alpha: KDUIAlphaHighlight, zIndex: -1,
 			LineWidth: 2
 		});
-		FillRectKD(kdcanvas, kdpixisprites, "leftBar", {
-			Left: 0, Top: 0, Width: 500,
-			Height: 1006,
-			Color: KDUIColor, alpha: StandalonePatched ? KDUIAlpha : 0.01, zIndex: -2
-		});
+		if (!KDBGColor) {
+			FillRectKD(kdcanvas, kdpixisprites, "leftBar", {
+				Left: 0, Top: 0, Width: 500,
+				Height: 1006,
+				Color: KDUIColor, alpha: StandalonePatched ? KDUIAlpha : 0.01, zIndex: -2
+			});
+		}
 		/*DrawRectKD(kdcanvas, kdpixisprites, "botBarb", {
 			Left: 504, Top: 1000-Bheight,
 			Width: 2000 - 500,
@@ -1666,6 +1668,10 @@ function KinkyDungeonHandleHUD() {
 			if (KDConfirmDeleteSave) {
 				KDSendInput("defeat", {});
 				KinkyDungeonDrawState = "Game";
+
+
+				KinkyDungeonCheckClothesLoss = true;
+				KinkyDungeonDressPlayer();
 			} else {
 				KDConfirmDeleteSave = true;
 			}
@@ -1687,6 +1693,9 @@ function KinkyDungeonHandleHUD() {
 			return true;
 		} else if (MouseIn(975, 550, 550, 64)) {
 			KinkyDungeonDrawState = "Game";
+
+			KinkyDungeonCheckClothesLoss = true;
+			KinkyDungeonDressPlayer();
 			return true;
 		} else if (KinkyDungeonIsPlayer() && MouseIn(975, 650, 550, 64)) {
 			KinkyDungeonSaveGame();
@@ -1809,6 +1818,8 @@ function KDDrawNavBar(skip, quit = false) {
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goQuit", (bdata) => {
 		if (skip == 0) {
 			KinkyDungeonDrawState = "Game";
+			KinkyDungeonCheckClothesLoss = true;
+			KinkyDungeonDressPlayer();
 
 		} else {KinkyDungeonDrawState = "Restart";
 			KDConfirmDeleteSave = false;
@@ -1817,6 +1828,9 @@ function KDDrawNavBar(skip, quit = false) {
 				ElementValue("DebugEnemy", "Maidforce");
 				ElementCreateTextArea("DebugItem");
 				ElementValue("DebugItem", "TrapArmbinder");}}
+
+		KinkyDungeonCheckClothesLoss = true;
+		KinkyDungeonDressPlayer();
 		return true;
 	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KDNavQuit"), "#ffffff",
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_menu.png"), undefined, undefined, false, "", 24, true,
@@ -1828,6 +1842,8 @@ function KDDrawNavBar(skip, quit = false) {
 			KinkyDungeonDrawState = "Game";
 		else
 			KinkyDungeonDrawState = "Inventory";
+		KinkyDungeonCheckClothesLoss = true;
+		KinkyDungeonDressPlayer();
 		return true;
 	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KinkyDungeonInventory"), "#ffffff",
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_inventory.png"), undefined, undefined, false, "", 24, true,
@@ -1850,6 +1866,9 @@ function KDDrawNavBar(skip, quit = false) {
 			KinkyDungeonDrawState = "Game";
 		else
 			KinkyDungeonDrawState = "MagicSpells";
+
+		KinkyDungeonCheckClothesLoss = true;
+		KinkyDungeonDressPlayer();
 		return true;
 	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KinkyDungeonMagic"), "#ffffff",
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_spells.png"), undefined, undefined, false, "", 24, true,
@@ -1866,6 +1885,8 @@ function KDDrawNavBar(skip, quit = false) {
 			KinkyDungeonDrawState = "Quest";
 			KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
 		}
+		KinkyDungeonCheckClothesLoss = true;
+		KinkyDungeonDressPlayer();
 		return true;
 	}, true, bx, by, bwidth, bheight, logtxt, "#ffffff",
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_logbook.png"), undefined, undefined, false, "", 24, true, {

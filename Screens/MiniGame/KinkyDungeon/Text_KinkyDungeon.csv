@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.1.13 RC2"
+KDVersionStr,"5.1.13"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -4159,6 +4159,9 @@ RestraintLatexCubeDesc2,It seems quite content staying where it is.
 RestraintSlimeBubble,Slime Bubble
 RestraintSlimeBubbleDesc,A squishy and sticky bubble that you can't get out of!
 RestraintSlimeBubbleDesc2,It will slow you down severely but can be popped if you can reach a knife...
+RestraintLatexSphere,Latex Sphere
+RestraintLatexSphereDesc,A giant inflatable sphere that compresses you and leaves you helpless...
+RestraintLatexSphereDesc2,You can't see out of it nor can you control its movement. If only you could puncture it!
 RestraintBubble,Bubble
 RestraintBubbleDesc,A squishy bubble that you can't get out of!
 RestraintBubbleDesc2,It will slow you down severely but can be popped if you can reach a knife...
@@ -19272,6 +19275,8 @@ KinkyDungeonSpellRuneTrap_Latex,Latex Rune
 KinkyDungeonSpellRuneTrap_VacCube,Latex Cube Rune
 KinkyDungeonSpellRuneTrap_SlimeBubble,Slime Bubble Rune
 KinkyDungeonSpellRuneTrap_Bubble,Bubble Rune
+KinkyDungeonSpellRuneTrap_LatexSphere,Spherical Rune
+KinkyDungeonSpellRuneTrap_LatexBallSuit,Ball Rune
 KinkyDungeonSpellRuneTrap_Rubber,Rubber Rune
 KinkyDungeonSpellRuneTrap_Slime,Slime Rune
 
@@ -19654,3 +19659,15 @@ KinkyDungeonInventoryItemSunglasses,Sunglasses
 KinkyDungeonInventoryItemSunglassesDesc,"Cool people wear these indoors."
 KinkyDungeonInventoryItemSunglassesDesc2,"+25 holy resist. Reduces blind effects. Prevents blinding from light adjustment."
 LootSunglasses,"You find a pair of stylish shades."
+
+KDBackgroundColor,Player Background Color
+
+KDBubbleBounce,An attack causes you to bounce...
+
+KinkyDungeonMagicBubble,You find yourself enveloped in a bubble!
+KinkyDungeonMagicLatexSphere,"A sphere of latex coalesces around you, trapping you and inflating until tight!"
+KinkyDungeonMagicSlimeBubble,You find yourself enveloped in a slime bubble!
+
+
+KDDamageBubble,"Your RestraintName pops with a loud bang!"
+KDDamageModuleBubble,"Your RestraintName starts leaking air! Very, very slowly..."

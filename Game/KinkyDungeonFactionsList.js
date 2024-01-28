@@ -30,7 +30,7 @@ let KinkyDungeonFactionFilters = {
 	"Maidforce": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1,"brightness":0.18333333333333335,"red":1.2,"green":1,"blue":1,"alpha":1},
-		LightNeutral: {"gamma":1.2,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.0980392156862746,"alpha":1},
+		LightNeutral: {"gamma":1.2,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.0980392156862746,"alpha":1},
 		Highlight: {"gamma":1.9,"saturation":0,"contrast":1,"brightness":1.5666666666666669,"red":1,"green":1,"blue":1.1,"alpha":1},
 	},
 	"Bountyhunter": {
@@ -78,7 +78,7 @@ let KinkyDungeonFactionFilters = {
 	},
 	"Latex": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.9299999999999999,"brightness":1,"red":4.509803921568627,"green":0.8431372549019608,"blue":4.745098039215686,"alpha":1},
-		DarkNeutral: {"gamma":0.8333333333333333,"saturation":1,"contrast":1.2,"brightness":1.2,"red":1,"green":1,"blue":1,"alpha":1},
+		DarkNeutral: {"gamma":0.8333333333333333,"saturation":0,"contrast":1.2,"brightness":1.2,"red":1,"green":1,"blue":1,"alpha":1},
 		LightNeutral: {"gamma":1,"saturation":0,"contrast":0.9299999999999999,"brightness":1,"red":4.549019607843137,"green":1.0392156862745099,"blue":4.764705882352941,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0.11666666666666667,"contrast":1.3,"brightness":1.1166666666666667,"red":1,"green":1,"blue":1,"alpha":1},
 	},
@@ -142,7 +142,7 @@ let KinkyDungeonFactionFilters = {
 	"Goddess": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.8666666666666667,"brightness":1.7666666666666666,"red":3.5166666666666666,"green":2.9333333333333336,"blue":1.6,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.09,"brightness":0.6833333333333333,"red":1.4901960784313726,"green":1.5490196078431373,"blue":1.607843137254902,"alpha":1},
-		LightNeutral: {"gamma":1.5333333333333332,"saturation":0.016666666666666666,"contrast":1.5166666666666666,"brightness":1.1333333333333333,"red":1.6666666666666665,"green":1.6166666666666665,"blue":1.6333333333333333,"alpha":1},
+		LightNeutral: {"gamma":1.5333333333333332,"saturation":0.016666666666666666,"contrast":1.7833333333333334,"brightness":0.5333333333333333,"red":1.6666666666666665,"green":1.6166666666666665,"blue":1.6333333333333333,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0.016666666666666666,"contrast":1.5166666666666666,"brightness":0.5333333333333333,"red":2.9333333333333336,"green":2.166666666666667,"blue":1.6333333333333333,"alpha":1},
 	},
 };

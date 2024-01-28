@@ -374,8 +374,9 @@ function KinkyDungeonInitialize(Level, Load) {
 		KinkyDungeonConfigAppearance = false;
 	}
 	CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayer));
-	KinkyDungeonDressPlayer();
 	KinkyDungeonDrawState = "Game";
+	KinkyDungeonCheckClothesLoss = true;
+	KinkyDungeonDressPlayer();
 
 	KinkyDungeonMapIndex = {};
 	for (let map of KDDefaultJourney) {
@@ -3907,6 +3908,9 @@ function KinkyDungeonGameKeyDown() {
 				KinkyDungeonCurrentPageInventory -= 1;
 			} else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonDrawState = "Game";
+
+				KinkyDungeonCheckClothesLoss = true;
+				KinkyDungeonDressPlayer();
 			}
 		} else if (KinkyDungeonDrawState == "Magic" && (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey)) {
 			if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
@@ -3973,6 +3977,10 @@ function KinkyDungeonGameKeyDown() {
 			}
 			else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonDrawState = "Game";
+
+
+				KinkyDungeonCheckClothesLoss = true;
+				KinkyDungeonDressPlayer();
 			}
 		} else
 		if (KinkyDungeonKeyMenu.includes(KinkyDungeonKeybindingCurrentKey)) {

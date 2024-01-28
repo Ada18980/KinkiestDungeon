@@ -1659,6 +1659,36 @@ let LayerGroups = {
 	),
 	// endregion
 
+	Bubble: ToMap(
+		[
+			"Coat",
+			"AnimalEars",
+
+			// Hair and hat back
+			"HairBack",
+			"HatBack",
+
+			"Tail",
+			"Wings",
+			"Cape",
+			"HatDeco",
+			"Hat",
+			"Weapon",
+			"InflatableHead",
+			"Brows", // Brows should get hidden with mask
+			"Ahoge",
+			"Circlet",
+			"HeadbandDeco",
+			"Headband",
+			"MouthProp",
+			"HairFront",
+			"Hair",
+			"HairOver",
+			"Head",
+			"Hood", // For Kigu
+		]
+	),
+
 	// region ALL
 	"All": ToMap(
 		LAYERS_BASE
