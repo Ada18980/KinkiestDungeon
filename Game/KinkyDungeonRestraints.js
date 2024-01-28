@@ -3480,7 +3480,7 @@ function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, 
 		KDUpdateItemEventCache = true;
 		let lk = linkUnder.dynamicLink;
 		if (!Curse && (Lock)) KinkyDungeonLock(linkUnder.dynamicLink, Lock);
-		else if (restraint.DefaultLock) KinkyDungeonLock(linkUnder.dynamicLink, restraint.DefaultLock)
+		else if (restraint.DefaultLock) KinkyDungeonLock(linkUnder.dynamicLink, restraint.DefaultLock);
 		if (inventoryAs) linkUnder.dynamicLink.inventoryVariant = inventoryAs;
 		if (!safeLink) {
 			// Remove the original by iterating down and identifying one we can delete
@@ -4632,7 +4632,7 @@ let KDRopeParts = {
 };
 
 let KDCuffParts = {
-	"Collar": {},
+	"Collar": {base: true,},
 	"AnkleCuffs": {base: true, Link: "AnkleCuffs2"},
 	"AnkleCuffs2": {Link: "AnkleCuffs3", UnLink: "AnkleCuffs"}, //, ModelSuffix: "Chained"
 	"AnkleCuffs3": {UnLink: "AnkleCuffs2"},
@@ -4677,10 +4677,11 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 			let enemyTags = {};
 			if (cuffInfo.base) {
 				enemyTags[tagBase + (part[1].enemyTagSuffix || "Cuffs")] = baseWeight;
-				if (!noGeneric)
+				if (!noGeneric) {
 					enemyTags[tagBase + ("Restraints")] = baseWeight;
-				enemyTags[tagBase + ("LessCuffs")] = 0.1 - baseWeight;
-				enemyTags[tagBase + ("NoCuffs")] = -1000;
+					enemyTags[tagBase + ("LessCuffs")] = 0.1 - baseWeight;
+					enemyTags[tagBase + ("NoCuffs")] = -1000;
+				}
 				if (extraTags) {
 					for (let t of Object.entries(extraTags)) {
 						enemyTags[t[0]] = t[1];

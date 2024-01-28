@@ -1197,16 +1197,16 @@ let KDEventMapInventory = {
 				return;
 			let timer = KDItemDataQuery(item, "livingTimer") || 0;
 			timer = timer + 1;
-			
+
 			//Spread accelerates as you get more of that type
-			let frequency = e.frequencyMax 
-			let frequencyTag = e.frequencyTag
+			let frequency = e.frequencyMax;
+			let frequencyTag = e.frequencyTag;
 			if (!KDRestraint(item).cloneTag) {
 				frequencyTag = KDRestraint(item).cloneTag;
 			}
-			
+
 			for (let inv of KinkyDungeonAllRestraintDynamic()) {
-				if (KDRestraint(inv.item).shrine?.includes(e.frequencyTag)) {
+				if (KDRestraint(inv.item).shrine?.includes(frequencyTag)) {
 					frequency -= e.frequencyStep;
 				}
 			}
@@ -1220,7 +1220,7 @@ let KDEventMapInventory = {
 					newtags = e.tags;
 				} else {
 					newtags.push(KDRestraint(item).cloneTag);
-					for (tag in e.cloneTags) {
+					for (let tag in e.cloneTags) {
 						newtags.push(KDRestraint(item).cloneTag + tag);
 					}
 				}

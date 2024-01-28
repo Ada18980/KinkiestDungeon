@@ -1142,13 +1142,13 @@ function KDApplyLivingCollars() {
 	let collars = KDGetRestraintsEligible({tags: ["livingCollar"]}, 24, "grv", true, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, options);
 	let eligible = [];
 	for (let item of collars) {
-	  let collar = item.restraint;
+		let collar = item.restraint;
 		let events = collar.events;
-		for (event of events) {
-			if (event.type == "livingRestraints") {
+		for (let e of events) {
+			if (e.type == "livingRestraints") {
 				let newtags = [];
 				if (!collar.cloneTag) {
-					newtags = event.tags;
+					newtags = e.tags;
 				} else {
 					newtags.push(collar.cloneTag);
 					for (let tag of e.cloneTags) {
@@ -1165,10 +1165,10 @@ function KDApplyLivingCollars() {
 						}
 					}
 					if (found) {
-							count++;
+						count++;
 					}
 				}
-				if (count >= event.numToApply) {
+				if (count >= e.count) {
 					eligible.push(collar);
 				}
 			}
@@ -1176,7 +1176,7 @@ function KDApplyLivingCollars() {
 	}
 	if (eligible.length == 0)
 		return;
-		
+
 	if (KinkyDungeonStatsChoice.has("TightRestraints")) {
 		for (let item of eligible) {
 			KinkyDungeonAddRestraintIfWeaker(item, 8, true, undefined, false, undefined, undefined, undefined, true);
@@ -1223,7 +1223,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	KDGameData.JailRemoveRestraintsTimer = 0;
 	//MiniGameKinkyDungeonLevel = Math.min(MiniGameKinkyDungeonLevel, Math.max(Math.floor(MiniGameKinkyDungeonLevel/10)*10, MiniGameKinkyDungeonLevel - KinkyDungeonSpawnJailers + KinkyDungeonSpawnJailersMax - 1));
 	KinkyDungeonSendEvent("defeat", {});
-	
+
 	if (KinkyDungeonStatsChoice.get("LivingCollars"))
 		KDApplyLivingCollars();
 
