@@ -4788,10 +4788,6 @@ You fiddle with the key on the TargetRestraint...
 鍵を使って TargetRestraint の解錠を試みた……
 The lock requires a key.
 鍵がないと解錠できない。
-The lock requires a key.
-鍵がないと解錠できない。
-The lock requires a key.
-鍵がないと解錠できない。
 The green padlock only accepts green keys.
 緑の鍵がないと緑の錠前は開けられない。
 The yellow padlock requires a red and a green key.
@@ -4804,6 +4800,26 @@ This lock requires a command word to unlock. It doesn't have a keyhole.
 どこにも鍵穴が見当たらない。合言葉がないと、この錠前は開かないようだ。
 You don't have a key for this lock.
 錠前に合う鍵を持っていない。
+
+The lock is definitely magical and forces your pick out!
+錠前には魔法がかかっており、ピッキングはできない。
+The lock is divine. A mortal shouldn't even try to pick it.
+神の力でロックされている。常人にはピッキングできそうにない。
+You must perform your quest! Don't even think of unlocking it...
+決して外そうなどとは考えず、クエストをこなすしかない……
+You're not sure a key for this even exists in the mortal realm.
+はたして人間界に鍵はあるのだろうか。
+The lock is made of solid rubber. You can't pick that.
+錠前はゴムで作られており、ピッキングできそうにない。
+You need something sharp to cut the lock.
+錠前を切断する必要がある。
+The lock doesn't even have a keyhole to pick!
+鍵穴が見当たらない！
+You need a special tool to pick this kind of lock.
+特別な道具が必要なようだ。
+The lock is brimming with security features and is nigh impossible to pick!
+とても精巧な錠前で、ピッキングは不可能に近い。
+
 The lock seems to be magical and rejects all picking attempts!
 この鍵穴にはロックピックを通さない魔法がかかっているようだ。
 The lock is definitely magical and forces your pick out!
@@ -18018,6 +18034,8 @@ Never! (PERCENT chance to avoid)
 (SPEAKER は頷いた)|一本持っていると何かと便利だな。
 (The SPEAKER nods)|The best defense is a good offense.
 (SPEAKER は頷いた)|攻撃は最大の防御なり、だ。
+(The SPEAKER nods)|Speak softly and carry a big hammer.
+(SPEAKER は頷いた)|交渉事に便利だ。
 (The SPEAKER nods)|You can never be too careful.
 (SPEAKER は頷いた)|注意するに越したことはない。
 (The SPEAKER smiles)|Can never be too prepared~
