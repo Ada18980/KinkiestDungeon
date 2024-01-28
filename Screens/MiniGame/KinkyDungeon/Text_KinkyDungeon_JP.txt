@@ -1279,6 +1279,14 @@ Ignited: You are dealing fire damage to yourself and nearby enemies!
 着火: 自分と近くの敵に火のダメージを与える
 You are on fire and taking damage!
 体が燃えている。ターン毎にダメージを受ける
+
+Divine Punishment: Deals bonus damage when you hit an enemy.
+神の力：攻撃が命中した際、追加でダメージを与える
+Divine Protection: Automatically blocks the next 3 times an enemy tries to bind you.
+神の加護：3回まで敵から受ける拘束を無効化する
+Divine Cunning: You turn invisible briefly after attacking.
+神の智慧：攻撃を行った際、透明になる
+
 Arcane Power: Deals bonus damage when you hit an enemy.
 アーケインの力：攻撃が命中した際、追加でダメージを与える
 Arcane Protection: Reduces damage taken, and deals retaliation damage.
@@ -1398,6 +1406,8 @@ No, I wish to press on
 See Perks
 パークを確認
 This chest belongs to the FACTION
+このチェストは FACTION のものだ。
+This belongs to the FACTION
 このチェストは FACTION のものだ。
 Devious Dungeon Challenge is enabled.
 デビオスダンジョンチャレンジが有効になりました。
@@ -1934,8 +1944,8 @@ Wolfgirl Suit
 ウルフガールの服
 An advanced suit designed for sport, breathable and also warm.
 スポーツ用に設計された、通気性と保温性に優れた高度なスーツ。
-No bonuses, no penalties.
-ボーナスなし、ペナルティなし
+Made of latex. Resistant to electricity but does not insulate well.
+ゴムでできているため、電気には耐性があるが断熱性は低い。
 Maid Uniform
 メイド服
 An elegant dress meant to denote a maid's status.
@@ -3622,6 +3632,27 @@ The alkahestor uses an ornate-looking lock! (DamageTaken)
 大錬金術師にきれいな錠前で拘束具をロックされた！ (DamageTaken)
 The alkahestor shoves you! (DamageTaken)
 大錬金術師がに突き飛ばされた！ (DamageTaken)
+
+...Alkahestor?
+……大錬金術師？
+You rescue the Alkahestor
+大錬金術師を助け出した。
+The alkahestor releases a vial of liquid that wraps around you! (+RestraintAdded)
+大錬金術師？に液体を浴びせられてしまった！ (+RestraintAdded)
+The alkahestor uses an ornate-looking lock! (DamageTaken)
+大錬金術師？に拘束具をロックされた！ (DamageTaken)
+The alkahestor shoves you! (DamageTaken)
+大錬金術師？に突き飛ばされた！ (DamageTaken)
+
+Latex Homonculus
+ラテックスのホムンクルス
+The latex homonculus melts into sticky rubber.
+ラテックスのホムンクルスは溶けてネバネバしたゴムになった。
+The latex homonculus molds itself into restraints! (+RestraintAdded)
+ラテックスのホムンクルスの体の一部が拘束具に変化して襲いかかってきた！ (+RestraintAdded)
+The latex homonculus slaps you with its appendages! (DamageTaken)
+ラテックスのホムンクルスに平手打ちされた！ (DamageTaken)
+
 Latex Elemental
 ラテックスの精霊
 The latex elemental melts into sticky rubber.
@@ -5427,6 +5458,16 @@ Goddess Blessing:
 女神の加護：
 Goddess Curse:
 女神の呪い：
+
+Mana Bonus: 
+マナボーナス：
+Lack of Mana Penalty: 
+マナペナルティ：
+Your excess mana helps you suppress the enchantment!
+自身のマナが拘束具の魔法を弱めた！
+Your mana is too weak to fight the magical enchantment...
+拘束具の魔法に打ち勝つにはマナが足りない……
+
 Curses
 呪い
 Willpower
@@ -5437,8 +5478,10 @@ Teachings of SHRINETYPE
 SHRINETYPE の教え
 Decypher
 解読
-You read the runes and they imbue you with power!
+You read the runes and they fill you with power!
 ルーン文字を読むと、力が湧いてきた！
+These runes are meant for someone with less willpower.
+このルーンは意志の弱い人のためにあるようだ。
 You try to read the runes but cannot understand them.
 ルーン文字を読もうとするも、解読できない。
 Allies:
@@ -5491,6 +5534,20 @@ Angels
 天使
 Demons
 悪魔
+
+Computer Virus
+ウィルス
+Extraplanar Entity
+異星からの者
+Dubious Witch
+変態魔女
+Shadow Clan
+影の一族
+Fierce Debater
+言い争っている……
+Very Angry
+怒っている
+
 You sense that the chest contains a trap and a lot of gold.
 宝箱には大量のゴールドが入っているが、罠も仕掛けられているようだ。
 You sense that the chest is safe to open.
@@ -7097,6 +7154,8 @@ Latex Armbinder
 ラテックスのアームバインダー
 A tight armbinder that pins your arms tightly behind your back, enclosed completely.
 指先から肘にかけて覆うゴム製のタイトなアームバインダー。
+A tight armbinder that pins your arms tightly behind your back
+指先から肘にかけて覆うタイトなアームバインダー。
 It has too much grip to struggle out of, but is made of a fragile material.
 もがいて抜け出すのは難しいが、壊れやすい素材でできている。
 Latex Boxbinder
@@ -8292,37 +8351,37 @@ You retrieve a spent ancient power crystal.
 使用済みのパワークリスタルを手に入れた。
 You pick up a magical amulet and use it to boost your stats.
 魔法のアミュレットを手に入れた。能力を上昇させられる。
-You picked up a knife.
+You pick up a knife.
 ナイフを拾った。
-You picked up a torch.
+You pick up a torch.
 松明を拾った。
 You found a bundle of discarded knives!
 捨てられたナイフの束を拾った！
-You picked up an enchanted knife.
+You pick up an enchanted knife.
 エンチャントされたナイフを拾った。
-You picked up a magic knife.
+You pick up a magic knife.
 魔法のナイフを拾った。
-You picked up a lockpick.
+You pick up a lockpick.
 ロックピックを拾った。
-You picked up a normal key.
+You pick up a normal key.
 鍵を拾った。
-You picked up a green key.
+You pick up a green key.
 緑の鍵を拾った。
-You picked up a blue key.
+You pick up a blue key.
 青い鍵を拾った。
-You picked up a willpower potion.
+You pick up a willpower potion.
 気力のポーションを手に入れた。
-You picked up a glowing blue mana potion.
+You pick up a glowing blue mana potion.
 青く輝くマナポーションを手に入れた。
-You picked up a glowing blue orb.
+You pick up a glowing blue orb.
 青白く光るオーブを手に入れた。
-You picked up an invisibility potion.
+You pick up an invisibility potion.
 透明のポーションを手に入れた。
-You picked up a handful of ectoplasm.
+You pick up a handful of ectoplasm.
 一握りのエクトプラズムを手に入れた。
-You picked up a green stamina potion.
+You pick up a green stamina potion.
 緑色のスタミナポーションを拾った。
-You picked up a frigid white potion.
+You pick up a frigid white potion.
 冷たく白いポーションを手に入れた。
 You found a peculiar note on the ground and keep it in your journal.
 奇妙なメモを発見し、日記に写した。
@@ -8368,17 +8427,17 @@ You pick up a powerful axe.
 強力そうな斧を手に入れた。
 You pick up a consumable smoke bomb.
 煙幕弾を手に入れた。
-You picked up a stone trinket with a glowing red sigil.
+You pick up a stone trinket with a glowing red sigil.
 赤く光る印が描かれた石を手に入れた。
-You picked up a wet rock with some kind of symbol on it.
+You pick up a wet rock with some kind of symbol on it.
 何らかのシンボルが描かれている、湿った石を手に入れた。
-You picked up a crystal beautiful as the moon.
+You pick up a crystal beautiful as the moon.
 月のように輝くクリスタルを手に入れた。
-You picked up a strange device with a sharpened razor disc.
+You pick up a strange device with a sharpened razor disc.
 鋭利な円盤のついた奇妙な装置を手に入れた。
 You find a strange ancient device with a sharp cutting blade.
 鋭い刃を持つ古代の奇妙な装置を手に入れた。
-You picked up a stone trinket with a glowing blue sigil.
+You pick up a stone trinket with a glowing blue sigil.
 青く光る印が描かれた石を手に入れた。
 You pick up a bola.
 投げ縄を手に入れた。
@@ -10586,6 +10645,8 @@ Mystic Bolt
 ミスティックボルト
 The mystic bolt paralyzes you!
 ミスティックボルトが命中し、身体が痺れてしまった！
+The mummy's curse paralyzes you!
+バスト教団の呪いで身体が痺れた！
 Rubber Bullets
 ゴム弾
 You are hit by a fusilade of rubber bullets!
@@ -19060,8 +19121,8 @@ Welcome to the dungeon!|Don't panic, this is a turn-based game,|and nothing will
 ダンジョンへようこそ！|このゲームはターン制だよ！|キミが動かなければ、敵も動かない。だからまずは落ち着いて。|画面左に見えるキャラクターがキミだよ。|今はまだ、どこも縛られていないみたいだね。|大丈夫、すぐに見つかるから！
 You might be wondering what all these barrels are for.|Don't worry, they're, uh, totally safe!|When you are inside one you can click on yourself to wait.|Enemies have a hard time seeing you inside a barrel,|so you can wait until they pass by you.
 この樽が気になるかい？|心配しないで、まぁ、ほとんどの樽が安全だよ！|まずは樽の中に移動して、入ってみて。それから自分自身をクリックすると、動かずに次のターンに進められるよ。|何かに隠れて動かなければ、敵もキミを見つけにくくなるんだ。|敵をやり過ごしてみよう！
-On the right you'll see your stats and spells slots.|Your DP, SP, MP, and WP are displayed there, we'll get into what these do.|Below that you'll see your current consumable items,|your gold, and your currently equipped weapon.|Below that, two icons allow you to toggle automatic escape and movement modes.
-右に見えるのが、キミのステータスだ。|DP、SP、MP、そしてWPが確認できるね。|その下には、装備している武器が表示されているね。|更に下には、色々と便利な機能があるよ。|……翻訳中にUIが大幅に変わったからここらへんのセリフも変わるはずだよ！
+On the right you'll see your stats and spells slots.|Your DP, SP, MP, and WP are displayed there, we'll get into what these do.|Below that you'll see your current consumable items,|your gold, and your currently equipped weapon.
+右に見えるのが、キミのステータスだ。|DP、SP、MP、そしてWPが確認できるね。|その下には、装備している武器が表示されているね。
 Your WP, or willpower, is an important resource.|Without it, escaping from restraints is more difficult.|There is a willpower potion on the floor up there. Go get it!
 WPは気力、大事なステータスだ。|気力が低いと、拘束から抜け出しにくくなるよ。|あそこに気力のポーションがあるから、取ってみて！
 Oh no! That trap wiped out all your willpower!|Fortunately you have a potion.|You can drink it by clicking the '+' icon next to your WP bar.|You can also go into your Inventory in the bottom bar.|There is also a quick-inventory icon (backpack).
@@ -19071,7 +19132,7 @@ Another trap!|You'll notice that the trap also drained your stamina considerably
 Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the bottom right.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1.
 MP、つまりマナは呪文の詠唱に必要だよ。|呪文を唱えるには、その呪文を覚える必要があるよ。|画面右にある呪文タブをクリックしてみて。|それから、スペルツリーを選択して表示される火魔術の入門を学べば、ファイアボルトの魔法が覚えられるよ。|覚えられたら、エレメンタル呪文にあるファイアボルトをクリックして、ホットバー１のスロット１に登録してみよう。
 On the right you'll see your stats and spells slots.|You can click on a spell slot or hit 1-4 on your keyboard to cast a spell|then click on the map for where you want to aim it.|The small wrench icon above them will let you|swap them out for another spell from your spellbook.
-画面下にファイアボルトのアイコンが表示されているね。|スペルをクリックするか、対応するキー(デフォルトで１キー)を押せば呪文を唱えられるよ。|撃ち出したいマスを選択すれば、そこに魔法が飛ぶよ。|ファイアボルトの左にある丸いアイコンを選べば、特定の呪文を強化できるよ。|例えば、ファイアブラストの魔法を習得すれば、ファイアボルトを強化して放つことができるんだ。
+画面下にファイアボルトのアイコンが表示されているね。|スペルをクリックするか、対応するキーを押せば呪文を唱えられるよ。|撃ち出したいマスを選択すれば、そこに魔法が飛ぶよ。|ファイアボルトの左にある丸いアイコンを選べば、特定の呪文を強化できるよ。|例えば、ファイアブラストの魔法を習得すれば、ファイアボルトを強化して放つことができるんだ。
 There's a zombie over there!|Fortunately zombies are weak to fire.|Firebolt has a very long range,|so simply cast firebolt and click on the zombie.|Repeat until it is dead.
 ゾンビだ！|幸い、ゾンビは火に弱いんだ。|ファイアボルトは遠くまで届くから、|ゾンビに発射してみよう！|あいつが倒れるまで撃ち続けるんだ！
 Mana potions restore your mana fully.
@@ -19080,6 +19141,8 @@ Your DP, or Distraction, is a measure of...|How much you are enjoying things.|Th
 DPは、つまるところ……|キミがどれだけイきそうになっているか、だね。よくある絶頂ゲージとか快楽ゲージだよ。|蓄積すると集中力がなくなっていって、|呪文を唱えにくくなるんだ。|あのポーションを取ってみて。
 Did you like that?|Anyway, there's a zombie over there. You should drink that potion.|It will clear your mind so you can cast again.|Hurry, or it will get you!
 どんな感じ？|ところで、ゾンビがまた来たみたいだね。|ポーションを飲んでみて。|きっとスッキリして、集中力が戻るはずだよ。|さあ、捕まる前に早くするんだ！
+Mana potions restore mana, allowing you to cast spells.|Youll notice that your mana also regenerates slowly.|This mana comes from your mana pool,|which is a thin line displayed under the mana bar.|When that runs out, you can't cast spells anymore!
+マナポーションを飲むとマナを回復して、再び呪文を唱えられるようになるよ。|マナは時間とともにマナプールからゆっくり補充されるよ。|マナプールはマナゲージの下にある白い線だよ。|これがなくなると完全にマナが枯渇するから注意してね。
 That wasn't so hard, was it?|Now then, there's a treasure chest over here. Why don't you open it?
 ここまでは簡単でしょ？|それじゃああの宝箱を開けてみようか！
 Yikes, looks like you're in a bind!|No worries, though. There's a key to those cuffs over there.|Simply hover over the cuffs item test on the left side.|Then, click the lock icon to remove the lock.|Finally, click the buckle to remove the cuffs.
@@ -21227,6 +21290,46 @@ Sensitivity: AMNT AP from attacks
 欲情：攻撃時対象のDP AMNT 上昇
 KDVariableModifier_,"AMNT Stat
  AMNT 上昇
+ 
+AMNT Evasion
+回避力 AMNT
+AMNT% Accuracy
+命中率 AMNT% 
+AMNT Magic Armor
+マジックアーマー AMNT
+AMNT Physical Armor
+物理アーマー AMNT% 
+AMNT Bondage Resist
+拘束抵抗力 AMNT
+AMNT TYPE Resist
+TYPE 属性への抵抗力 +AMNT
+AMNT% TYPE Damage
+TYPE 属性の威力 +AMNT% 
+AMNT% weapon phys. dmg
+物理ダメージ +AMNT% 
+AMNT% weapon magic dmg
+武器の魔法ダメージ AMNT% 
+Infuse weapon AMNT% TYPE
+武器の TYPE 属性ダメージ AMNT% 
+AMNT TYPE on attack
+攻撃時 AMNT TYPE 追加ダメージ
+AMNT% Mana Costs
+マナコスト AMNT% 
+AMNT% TYPE Mana Costs
+TYPE 属性のマナコスト AMNT% 
+AMNT% regen from mana pool
+マナプールから得られるマナ AMNT% 
+AMNT mana pool on capture
+敵を捕まえたとき AMNT マナプールを回復する
+AMNT% Visibility Reduction
+視認性低下 AMNT% 
+AMNT Distraction Decay
+DP AMNT 低下
+AMNT Distraction Per Turn
+ターン毎にDP AMNT 上昇
+AMNT AP from attacks
+攻撃時にDP AMNT 上昇
+ 
 Drop On Floor
 床に置く
 Remove
@@ -21541,6 +21644,18 @@ A handy key for getting out of common handcuffs and shackles.
 普通の手錠や枷に使用できる鍵。
 It's not sophisticated enough to work on higher-quality locks, but can be used many times.
 複雑な錠前には使えないが、何度も使える。
+
+You pick up a tool for picking disc detainer locks.
+ピッキングの道具を手に入れた。
+Disc Lock Tool
+ディスクロックツール
+You examine the tool. It has a replaceable tip for picking disc detainer locks.
+この工具は先端にロックピックを装着して使用するようだ。
+A handy tool for picking disc detainer locks, popularized by a certain pair of professionals.
+ある二人組が開発した、ディスクロックの解錠に役立つ道具。
+Features a replaceable head in case an unskilled user breaks it. Requires lockpicks to use.
+不慣れなユーザーが壊してしまった場合に備えて、先端が交換可能になっている。使用にはロックピックが必要。
+
 Rep
 関係性
 Magical Weapon
@@ -21617,8 +21732,8 @@ While at 40 Battle Rhythm, you attack twice per turn.
 
 Devious Ingenuity
 悪巧み
-Trap-type spells and consumables take 1 turn to cast instead of several.
-罠タイプの呪文やアイテムの使用にかかるターン数が1ターンになる。
+Trap-type spells and consumables no longer require you to channel them, but still have a delay before arming.
+罠タイプの呪文やアイテムの用意にターンを消費しなくなる。投擲にはターンを消費する。
 
 Inner Power
 秘めたる力
@@ -21807,6 +21922,8 @@ Several enemies on each map will be high value, rewarding more gold and items fo
 +AMNT Bondage!
 TargetEnemy receives AMNT binding!
 TargetEnemy は AMNT の拘束値を受けた！
+TargetEnemy receives AMNT binding!
+AMNT の拘束値を与えた！
 TargetEnemy is disabled and receives an increased AMNT binding!
 TargetEnemy は弱点を付かれ AMNT の拘束値を受けた！
 TargetEnemy resists bondage and receives a reduced AMNT binding!
@@ -22297,7 +22414,7 @@ Barricades set up by enemies do not expire, and enemies set them up even when no
 
 Pass thru helpless allies
 完全拘束された味方を通り過ぎる
-Pass thru helpless allies
+Pass thru helpless enemies
 完全拘束された敵を通り過ぎる
 Pass thru allies
 味方を通り過ぎる
@@ -22913,40 +23030,42 @@ Room bugged. Please Report.
 ！！！バグです、ご報告お願い致します！！！
 
 
-KDVarSuffCursed,(Cursed)
-
-KDVarSuffEvasion,of Agility
-
-KDVarPrefAccuracy,Precise
-
-KDVarPrefSneak,Silent
-
-KDVarPrefAoEDamageFrozen,Blizzard
-
-KDVarSuffSpellWard,of Warding
-
-KDVarSuffBondageResist,of Freedom
-
-KDVarSuffDamageResist,of Resistance
-
-KDVarSuffDamageBuff,of Power
-
-KDVarPrefManaCost,Arcane
-
-KDVarPrefManaCostSpecific,Entuned
-
-KDVarPrefManaRegenOnKill,Draining
-
-KDVarSuffElementalEcho,of Echoes
-
-KDVarPrefElementalDmg,Infused
-
-KDVarPrefManaRegen,Focusing
-
-KDVarSuffBaseDamageBuffMelee,of Empowerment
-
-KDVarSuffBaseDamageBuffMagic,of Destruction
-
+(Cursed)
+(呪われている)
+(Purified)
+(浄化)
+of Agility
+(疾風)
+Precise
+精確の
+Silent
+沈黙の
+Blizzard
+凍てつく
+of Warding
+(呪文)
+of Freedom
+(自由)
+of Resistance
+(抵抗)
+of Power
+(力)
+Arcane
+秘術の
+Entuned
+調律の
+Draining
+吸収の
+of Echoes
+(反響)
+Infused
+属性の
+Focusing
+集中の
+of Empowerment
+(強化)
+of Destruction
+(破壊)
 
 Phase Dance
 フェーズダンス
@@ -23404,6 +23523,10 @@ Fuuka's Shrine
 フウカの眷属
 Dollmaker
 ドールメイカー
+The Collectors
+コレクター
+
+
 
 Receive the following restraints: 
 次の拘束をされる：
@@ -23538,6 +23661,10 @@ They are made from leather cured from the hide of dragons.
 ドラゴンの革を硬めて作られた拘束具。
 Dragonscale Ankle Cuffs
 竜鱗の足枷
+
+Dragonscale Leg Cuffs
+竜鱗の脚枷
+
 
 Goddess:
 属性：
