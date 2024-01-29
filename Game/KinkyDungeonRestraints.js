@@ -3214,6 +3214,10 @@ function KDGetLockVisual(item) {
  * @returns {boolean} - Restraint can be added
  */
 function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpower, securityEnemy, useAugmentedPower, curse, augmentedInventory, powerBonus = 0) {
+	if (!restraint) {
+		console.log("Warning: Requested restraint was empty!");
+		return false;
+	}
 	if (!KinkyDungeonIsLockable(restraint)) Lock = "";
 	if (!curse && restraint.curse) curse = restraint.curse;
 	if (restraint.bypass) Bypass = true;
