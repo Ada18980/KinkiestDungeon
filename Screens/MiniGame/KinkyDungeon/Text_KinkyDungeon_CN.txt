@@ -239,7 +239,7 @@ You have no idea how to pick locks. Picking is 0.5x as fast and you can't pick m
 Psychic
 念动力
 You no longer drop keys and picks, can unlock yourself with bound hands, and don't need hands for items/potions.
-你不将会掉落钥匙和镐，可以用拘束住的手解锁自己，并且不需要手来使用物品/药水。
+你身上的钥匙和撬锁工具将不会掉落，可以用拘束住的手解锁自己，并且不需要手来使用物品/药水。
 Novice
 新手
 All spells above 1st level cost 2x as many spell points.
@@ -492,8 +492,8 @@ You can cast arm spells using just your fingers, as long as your hands aren't bo
 只要你的手没有被束缚，你就可以只用手指施展手臂的法术。
 Well-Equipped
 设备精良
-Restraints and traps that are limited by level appear sooner, and will stack more. +10 security level.
-有楼层数限制的拘束具和陷阱会更早出现，并且敌人会堆叠更多的束缚。+10 安全等级。
+Restraints and traps that are limited by level appear sooner, and enemies stack more restraints in general. +10 security level.
+有楼层数限制的拘束具和陷阱会更早出现，并且敌人通常会堆叠更多的束缚。+10 安全等级。
 Quick-Draw
 快速拔刀
 Switching weapons and spells does not take a turn.
@@ -608,12 +608,12 @@ When you pick up cursed armor or restraints from chests, they equip automaticall
 当你从箱子中拿起被诅咒的盔甲或束缚具时，如果可以的话会自动装备。
 Burning Desire
 焚心欲火
-While above 70% distraction, you ignite nearby objects and gain +40% fire damage.
-当性奋值超过 70% 时，自身造成的火焰伤害提高 40%，并且你会点燃附近的物体。
+While above 70% distraction, you ignite nearby objects and gain +25% fire damage.
+当性奋值超过 70% 时，自身造成的火焰伤害提高 25%，并且你会点燃附近的物体。
 Frigid Personality
 冰清玉洁
-While at 0% distraction, you gain +10% ice damage and can walk on ice without penalties.
-当性奋值为 0% 时，自身造成的寒冰伤害提高 10%，并且可以在冰上无惩罚的行走。
+While below 10% distraction, you gain +10% ice damage and can walk on ice without penalties.
+当性奋值低于 10% 时，自身造成的寒冰伤害提高 10%，并且可以在冰上无惩罚的行走。
 Grounded in Reality
 现实锚定
 While at max mana, your attacks deal an additional 30% of their base damage as electric damage.
@@ -698,8 +698,8 @@ Lose 2 WP every time you remove a non-trivial restraint.
 每次移除特殊拘束时消耗 2 WP。
 Second Wind
 再生之风
-Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage. (Upgrade available in spell tree)
-身体自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚。（可在技能树中升级）
+Regenerate WP when unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, gag, or slows. (Upgrade available in spell tree)
+身体自由时恢复 WP，最多可达最大 WP 的 10%。 自由意味着没有手臂、手、腿、眼睛或嘴巴的束缚且未受到减速。（可在技能树中升级）
 Second Wind Perk
 再生之风技能
 Regenerate WP when you are free, up to 10% of max WP. Free means no arm, hand, leg, blindfold, or gag bondage.
@@ -784,8 +784,8 @@ Start the game as a submissive prisoner wandering the halls.
 作为一个在大厅里游荡的顺从囚犯开始游戏。
 Rusty Bolts
 生锈螺栓
-Most traps have a 25% misfire chance.
-大多数陷阱有 25% 的失效几率。
+Most traps have a 25% misfire chance each time you step on them.
+大多数陷阱在每次触发它们的时候有 25% 的失效几率。
 Not a Pet
 我不是宠物！
 Petsuits occur less often.
@@ -920,8 +920,8 @@ Being gagged blocks you from casting verbal spells regardless of gag power.
 无论等级如何，堵嘴类装备都会阻止你施放言语类咒语。
 Smooth Talker
 以和为贵
-Being gagged does not increase your miscast chance for verbal spells unless fully gagged.
-除非你的嘴被完全堵住，否则堵嘴不会增加你念错咒语的几率。
+Being gagged does not increase your miscast chance for verbal spells unless fully gagged, and reduces gag power by 20%.
+除非你的嘴被完全堵住，否则堵嘴不会增加你念错咒语的几率，并且会降低 20% 的塞嘴威力。
 Ball Gag Lover
 口球爱好者
 Increase occurrence of ball gags, decrease occurrence of muzzles.
@@ -6945,9 +6945,9 @@ Reap What You Sow
 Defeating a non-humanoid enemy causes vines to sprout on their space temporarily.
 击败非人形敌人会导致藤蔓在其空间内暂时发芽。
 Battle Rhythm
-战斗节奏
+战斗节拍
 Stores 10% of the stamina spent from attacks as Rhythm, up to a total of 40. While you have over 10 Rhythm, you gain +10 Block and Evasion. Enemy base accuracy against you is decreased by a % equal to your Rhythm. If an attack misses or is blocked because of this, reduce Rhythm by 25% of the enemy attack power. Decays when not attacking.
-将攻击消耗的体力的 10% 存储为节奏，总共最多 40 个。当你的节奏超过 10 个时，你获得 +10 格挡和闪避。 敌人对你的基础精准度降低了 你的节奏%。 如果攻击因此而失败或被阻挡，则节奏减少敌人攻击力的 25%。不攻击时会腐烂。
+将攻击消耗的体力的 10% 存储为节拍，最多为 40 个。不攻击时衰减。当你的节拍超过 10 个时，你获得 +10 格挡和闪避。 敌人对你的基础精确度降低等于同你的节奏的百分比。如果因此格挡或闪避了一次攻击，则节奏减少敌人攻击力的 25%。
 Limit Surge
 限制浪涌
 Spend 50 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns.
@@ -6955,7 +6955,7 @@ Spend 50 WP to fully restore Stamina, also stamina gain is increased by 30% for 
 Battle Trance
 战斗恍惚
 While at 40 Battle Rhythm, you attack twice per turn.
-当战斗节奏达到 40 时，你每回合可以攻击两次。
+当战斗节拍达到 40 时，你每回合可以攻击两次。
 Devious Ingenuity
 邪恶的独创性
 Trap-type spells and consumables no longer require you to channel them, but still have a delay before arming.
@@ -6964,14 +6964,14 @@ As a trainee, you have learned the technique of inducing clarity via a trance-li
 作为一名学员，你已经学会了在 100% 分心值的情况下通过恍惚状态引入清晰度的技术。然而，这种状态是不稳定的，施展法术可能会让你失去注意力……
 Inner Power
 内力
-As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana AFTER other modifiers. Toggled passive spells apply half the cooldown.
-作为一名巫师，你能够利用其他人甚至看不到的神秘能量源。在 16 回合未施展法术或攻击后，你的下一个法术的法力消耗在其他调整后会减少你最大法力值的 20%。 切换被动法术的冷却时间减半。
+As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana BEFORE multipliers. Toggled passive spells apply half the cooldown.
+作为一名巫师，你能够利用其他人甚至看不到的神秘能量源。在 16 回合未施展法术或攻击后，你下一个法术的法力消耗将在乘数计算之前减少相当于你最大法力值的 20% 。 切换被动法术的冷却时间减半。
 Battlemage
 战斗法师
 Inner Power cooldown is no longer reset after attacking.
 攻击后内力冷却时间不再重置。
 Relentless Casting
-无情的铸造
+无情施法
 While on cooldown, Inner Power cooldown is no longer reset after casting spells.
 在冷却时，施展法术后内力冷却时间不再重置。
 Arcane Recharge
@@ -7629,7 +7629,7 @@ Defiance
 For each 10 current willpower you have over 50, gain +5 Bondage Resist.
 当前意志力每超过 50 点，每 10 点，获得 +5 束缚抗性。
 Willful Struggle
-随意斗争
+战斗意志
 For each 10 current willpower you have over 50, gain +1% struggle power.
 当前意志力每增加 10 点，超过 50 点，战斗力就会增加 1%。
 Your willpower provides you with additional strength! (+AMOUNT%)
@@ -7667,9 +7667,9 @@ Strength Up
 +20% Physical Damage
 +20% 物理伤害
 Deadly Aim
-致命目标
+致命瞄准
 Increases crit multiplier by a % equal to your Battle Rhythm.
-将暴击倍数提高等于你的战斗节奏的百分比。
+将暴击倍数提高等于你的战斗节拍的百分比。
 Accuracy I
 精准 I
 +10 Accuracy
@@ -7677,11 +7677,11 @@ Accuracy I
 Accuracy II
 精准 II
 +15 Accuracy (25 total)
-+15 精准度（共 25 次）
++15 精准度（总计 25 ）
 Accuracy III
 精准 III
 +25 Accuracy (50 total)
-+25 精准度（共 50 次）
++25 精准度（总计 50 ）
 Martial Arts I
 武术 I
 Unarmed strikes gain 15% accuracy and -10% stamina cost.
@@ -8031,7 +8031,7 @@ Magically locks down a target, preventing them from struggling below the current
 You say a command word, and magical locks bind your target!
 你念出咒语，目标被魔法锁束缚！
 Chastity
-贞操
+贞操带
 Select which creature to lock in a belt
 选择要锁定在贞操带中的个体
 Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs/toys, and distracts constantly.
@@ -8046,8 +8046,8 @@ Zone of Purity
 纯洁区
 Select an area
 选择一个区域
-Creates an area which applies Chastity constantly to any enemy over 50% bondage that steps inside.
-创造一个区域，为进入区域且束缚超过 50% 的个体装备贞操带。
+Creates an area which applies Chastity constantly to any enemy over with any amount of binding that steps inside.
+创建一个区域，对踏入该区域的任何敌人装备贞操带。
 You conjure a realm of absolute purity.
 召唤出一个绝对纯洁的区域。
 Zone of Excitement
@@ -8174,10 +8174,10 @@ Engulf
 吞噬
 When enabled: Your melee attacks deal +20 glue damage and create slime.
 启用时：你的近战攻击额外造成 20 点胶水伤害并制造粘液。
-Super Strengthen
-超级强化
+Super Strength
+厚土之力
 When enabled: Struggling is more powerful, and your melee attack damage is increased by +20 if your weapon deals physical damage.
-启用时：挣扎更加强大，如果你的武器造成物理伤害，你的近战攻击力会提高20。
+技能开启时：挣扎变得更强力，如果你的武器造成物理伤害，你的近战攻击力会提高20。
 Your body glows with magical energy!
 你的身体散发着神奇的能量！
 Enhance Will
@@ -12724,10 +12724,62 @@ I'm sorry, I will be a good girl!
 对不起，我会做一个好女孩！
 What? (PERCENT chance to avoid)
 什么？（PERCENT 的概率避开）
+Armorer
+防具师
+Bowyer
+制弓师
+I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside a dungeon? That's crazy!|But you adventurers bring in a steady supply of loot,|so if you've got something to sell me, I'll take it off your hands~|You can also talk to my guests, perhaps they have something for you.
+亲爱的，很抱歉，我这里不卖商品。|谁会在地牢里开设商店呢？那太疯狂了！|不过，你们冒险者们总是带来稳定的战利品，|所以如果你有什么东西要卖，我可以帮你处理掉~|你也可以和我的客人交谈，也许他们有你需要的东西。
+(The SPEAKER waves)|Greetings,|I manufacture all sorts of weapons.|Would you like to buy some?
+（SPEAKER 挥手）|你好，|我制造各种武器。|你想买一些吗？
+(The SPEAKER nods)|Speak softly and carry a big hammer.
+（SPEAKER 点点头）|轻声细语，手持重锤。
+(The SPEAKER waves)|Greetings,|I manufacture all sorts of armor.|Would you like to buy some?
+（SPEAKER 挥手）|你好，|我制造各种防具。|你想买一些吗？
+(The SPEAKER folds her arms)|I don't do charity, girl.
+（SPEAKER 交叉双臂）|我不做慈善事业，小姑娘。
+(The SPEAKER nods)|The most high-impact of sports bras.
+（SPEAKER 点点头）|最具冲击力的运动胸罩。
+(The SPEAKER nods)|These aren't for hiking, just so you know.
+（SPEAKER 点点头）|这些不是用来徒步旅行的，只是先告诉你一下。
+(The SPEAKER nods)|I've been thinking about making a lockable version...
+（SPEAKER 点点头）|我一直在考虑制作一个可上锁的版本...
+(The SPEAKER nods)|These are sensibly sized, unlike those you see in movies.
+（SPEAKER 点点头）|它们的大小很合理，不像你在电影里看到的那样。
+(The SPEAKER nods)|Sometimes you just have to be flexible.
+（SPEAKER 点点头）|有时候，你必须灵活变通。
+(The SPEAKER nods)|For when you value style over protection...
+（SPEAKER 点点头）|当你重视款式而非保护时...
+(The SPEAKER chuckles)|I hear female adventurers like to wear these for protection.|Or something like that.
+（SPEAKER 轻笑）|我听说女性冒险家喜欢穿这个来保护自己。|或者类似的东西。
+(The SPEAKER waves)|Hello miss!|What brings you here today?
+（SPEAKER 挥手）|你好啊小姐！|什么风把您吹到这来了
+(The SPEAKER folds her arms)|That's not very nice!
+（SPEAKER 交叉双臂）|那样做可不好哦！
+(The SPEAKER folds her arms)|I don't do charity, miss.
+（SPEAKER 交叉双臂）|我不做慈善事业，小姐。
+(The SPEAKER nods)|Could use a higher heel...
+（SPEAKER 点点头）|鞋跟或许可以再高一点...
+(The SPEAKER nods)|Back to the basics.
+（SPEAKER 点点头）|传统搭配
+(The SPEAKER smiles)|I see you have good taste!
+（SPEAKER 微笑）|看来你很有品位！
+(The SPEAKER nods)|It's a classic!|What's not to like?
+（SPEAKER 点点头）|这是经典之作！|有什么理由不爱呢？
+(The SPEAKER smiles)|It's an upgrade for your best friend!
+（SPEAKER 微笑）|这是你最好朋友的升级版！
+(The SPEAKER shrugs)|It's big and bulky, but I guess it has its uses.
+（SPEAKER 耸耸肩）|它又大又笨重，但我想它还是有用处的。
+(The SPEAKER giggles)|Smile for the camera!
+（SPEAKER 咯咯笑）|对着镜头微笑！
+(The SPEAKER nods)|It's like mana, but much more portable!|It powers duplication runes so you don't run out of arrows.
+（SPEAKER 点点头）|它就像法力，但更便于携带！它能为复制符文提供能量，这样你就不会缺箭了。
+(The SPEAKER giggles)|I like to include these as a gift with every purchase~
+（SPEAKER 咯咯笑）|我喜欢在每次成交时附上这个作为礼物~
 (The SPEAKER waves)|Greetings,|I manufacture all sorts of goods.|Would you like to buy some?
 （SPEAKER 挥手）|你好，|我这里生产各种各样商品。|你想买一些吗？
 (The SPEAKER drops her hammer and cracks her knuckles)|Put em up!
-（SPEAKER 放下锤子，敲响指关节）|把它们放起来！
+（SPEAKER 放下锤子，指关节吱吱作响）|把手举起来！
 (The SPEAKER looks at you.)|But you already have one?
 （SPEAKER 看着你。）|但是你已经有了一个？
 (The SPEAKER folds her arms)|I don't do charity, ma'am.
@@ -12743,11 +12795,11 @@ What? (PERCENT chance to avoid)
 (The SPEAKER nods)|Handy to have one of these around.
 （SPEAKER 点头）|身边有这样一个就很方便了。
 (The SPEAKER nods)|The best defense is a good offense.
-（SPEAKER 点头）|最好的防守就是最好的进攻。
+（SPEAKER 点头）|进攻是最好的防守。
 (The SPEAKER nods)|You can never be too careful.
-（SPEAKER 点头）|你再小心也不为过。
+（SPEAKER 点头）|小心无大错。
 (The SPEAKER smiles)|Can never be too prepared~
-（SPEAKER 微笑）|永远不能准备得太充分~
+（SPEAKER 微笑）|准备永远不嫌多~
 (Select an item to buy from the SPEAKER)
 （选择你要从 SPEAKER 购买的商品）
 (Attack the SPEAKER?)
@@ -14477,7 +14529,7 @@ Dagger Parry
 +15 Block while holding a light weapon such as a knife or dagger.
 持有小刀或匕首等轻武器时 +15 格挡。
 Steadfast Guard
-坚定的守卫
+坚定卫士
 +5 Block for each 100 max willpower you have, while holding a non-light weapon.
 当你持有非轻型武器时，每拥有 100 点最大意志力时 +5 格挡。
 The Power of Steel
@@ -15401,7 +15453,7 @@ Oblivion, 秘密的守护者
 Arcane Energy is stored by casting spells, up to 100% Max mana.
 奥术能量通过施展法术来储存，最高可达 100% 最大法力值。
 Battle Rhythm is gained by spending stamina through attacks, up to 40 total.
-战斗节奏是通过攻击消耗体力来获得的，总共最多 40 点。
+战斗节拍是通过攻击消耗体力来获得的，总共最多 40 点。
 Arcane Blast
 奥术冲击
 When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. Casting this spell consumes it to deal up 25% Max Mana as Arcane damage. Pierces enemies and walls.
@@ -16435,7 +16487,7 @@ Slow down time by 1/4 for 10 turns (world time). Stamina does not regen.
 Time is slowed by 4x
 时间减慢了 4 倍
 Total Accel
-完全加速
+世界
 Stop time 10 turns (world time). Stamina does not regen.
 在 10 回合内暂停时间（世界时间）。体力不会恢复
 Time has come to a halt...
@@ -16497,7 +16549,7 @@ While active, you evade almost all attacks, but your stamina is drained by 50 pe
 Break Free
 挣脱
 Consume 20 Battle Rhythm to increase escape power by +20% plus 1% of Bondage Resist. Lasts 60 turns or until your willpower reaches 0.
-消耗20个战斗节奏，逃跑力+20%，束缚抗力增加1%。持续60回合或直到你的意志力达到0。
+消耗20个战斗节拍，逃跑力+20%，束缚抗力增加1%。持续60回合或直到你的意志力达到0。
 Problem Solving
 解决问题
 While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +40% plus 20% of Bondage Resist
@@ -16517,7 +16569,7 @@ Your defenses are raised!
 You don't have the will to break free.
 你没有挣脱束缚的意志。
 You don't have enough Battle Rhythm. You need 20.
-你的战斗节奏还不够。你需要20。
+你的战斗节拍还不够。你需要20。
 You channel your fighting spirit into your desire for freedom!
 你将你的战斗精神转化为你对自由的渴望！
 Your struggle power is greatly increased!!!
@@ -16531,9 +16583,9 @@ Confirm
 What is your name?
 你叫什么名字？
 Enrage
-狂暴
+怒吼
 Scream loudly, causing nearby enemies to investigate and increasing Battle Rhythm by 10. Has a 100 turn cooldown.
-大声尖叫，使附近的敌人调查并增加10的战斗节奏。有100回合的冷却时间。
+大声尖叫，使附近的敌人进行调查，增加10的战斗节拍。有100回合的冷却时间。
 You shout loudly and shake your fist at the sky! (+10 BR)
 你大声喊叫，对着天空挥舞着拳头！（+10 BR）
 Mmmph! (You can't shout while gagged)
@@ -16603,11 +16655,11 @@ Vine Bolt
 Gunslinger
 枪手
 Weapons abilities and other abilities that cost charge contribute 20% of their cost to Battle Rhythm.
-武器技能和其他需要消耗能量的技能将其消耗的 20% 贡献给战斗节奏。
+武器技能和其他需要消耗能量的技能会将其 20% 的成本转化为战斗节拍。
 Effortless Assault
-毫不费力的攻击
+连招
 Weapon stamina cost is reduced by a percentage equal to your Battle Rhythm.
-武器体力消耗减少的百分比等于你的战斗节奏。
+基于你你的战斗节拍层数的百分比来减少武器体力消耗。
 +50 Evasion from using Phase
 使用相位时 +50 闪避
 Blade Dance
@@ -16899,17 +16951,17 @@ You unleash a deadly projectile!
 Choose aim direction.
 选择目标方向。
 Sagitta Assault
-射手突击
+天剑阵
 After casting Sagitta, you can recast it up to three more times without advancing time.
-铸造射手座后，你可以在不提前时间的情况下再重铸三次。
+在召唤天剑后，你可以在该回合再多施放三次。
 Psychokinesis
 念力
 You can ignore components for telekinetic spells, however spells generate distraction (based on mana cost) when cast this way due to the mental strain. Unable to use at 100% DP.
 你可以忽略心灵感应需要的法术的成分，但是当以这种方式施放法术时，由于精神紧张，法术会产生分心（基于法力消耗）。无法在 100% DP 下使用。
 Kinetic Mastery
-动力学掌握
+气功大师
 Negates the penalty for 2-handed weapons. Also gain the following effects:|-Kinetic spells and Sagitta cost 30% less while wielding a Light weapon.|-Kinetic spells and Sagitta gain +15 base damage when wielding a Heavy weapon.
-取消对双手武器的惩罚。还获得以下效果：|-挥舞轻型武器时，动能法术和箭矢成本降低 30%。|-挥舞重型武器时，动能法术和箭矢获得 +15 基础伤害。
+取消对双手武器的惩罚。还获得以下效果：|-挥舞轻型武器时，念动法术和天剑消耗降低 30%。-挥舞重型武器时，|念动法术和天剑获得 +15 基础伤害。
 Grasp
 抓握
 Cast on an enemy to snare them for 20 turns, or until you leave range/are incapacitated. Cast on a point to throw the grasped enemy in that direction, dealing 40 crush damage if they hit a wall or another enemy.
@@ -17286,3 +17338,39 @@ The bright light hurts your dark-adjusted eyes!
 明亮的光线会伤害你适应黑暗的眼睛！
 Back to Game
 回到游戏
+More Armbinders
+更多单手套
+Armbinders are favored over other heavy bondage.
+单手套与其他重束缚相比更受青睐
+Less Armbinders
+更少单手套
+Armbinders are less favored over other heavy bondage.
+单手套与其他重束缚相比不受喜爱
+More Straitjackets
+更多束缚衣
+Straitjackets are favored over other heavy bondage.
+束缚衣与其他重束缚相比更受青睐
+Less Straitjackets
+更少束缚衣
+Straitjackets are less favored over other heavy bondage.
+束缚衣与其他重束缚相比不受喜爱
+More Yokes
+更多颈手枷
+Yokes are favored over other heavy bondage.
+颈手枷与其他重束缚相比更受青睐
+Less Yokes
+更少颈手枷
+Yokes are less favored over other heavy bondage.
+颈手枷与其他重束缚相比不受喜爱
+Goddess reputations can never exceed 25.
+女神的声望永远不会超过 25。
+Living Collars
+活体项圈
+When getting captured with many of the same type of restraint, gain a collar that occasionally binds you with that type of restraint.
+当你被相同类型的束缚物多次捕获时，获得一个偶尔会用同种束缚物束缚你的项圈。
+Play the game the way it was intended. Cruel and restrictive. 
+按照游戏的初衷来玩。严厉且充满限制性
+Unconventional Warfare
+非常规作战
+Select a weapon to attach it to your body. You can have one attached weapon at a time. Attaching it takes 5 turns.|An attached weapon can be equipped without hands and maintains 60% accuracy as long as you have arms or legs unbound.
+选择一件武器，将其附在身上。你同时只能拥有一件附加武器。需要 5 个回合来准备。|附加武器可以不用手来装备，只要你的手臂或腿没有被绑住，就能保持 60% 的准确度。
