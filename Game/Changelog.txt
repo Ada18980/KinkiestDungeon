@@ -28,6 +28,16 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.1.15
+ - Tweaked future harness lower
+ -
+
+5.1.14
+ - Fixed Red Binding Dress coloring
+ - Added Living Collars perk by Aelie
+ - Lowered damage of tease attacks
+ - Fixed () in damage reports
+
 5.1.13
  - New auto mod loader, simply place mods in Mods/ folder to load
  - Fiddles, yokes added to prison

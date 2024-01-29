@@ -89,7 +89,7 @@ function AppearanceItemParse(stringified: string): any[] {
 		return value;
 	});
 	for (let r of ret) {
-		if (r.Filters && r.Model) r.Model.Filters = r.Filters;
+		if (r.Filters && r.Model && r.Model.Name) r.Model.Filters = r.Filters;
 	}
 	return ret;
 }

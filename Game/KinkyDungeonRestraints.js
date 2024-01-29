@@ -3061,7 +3061,7 @@ function KinkyDungeonUpdateRestraints(delta) {
 		let inv = inv2.item;
 		playerTags.set("Item_"+inv.name, true);
 
-		if ((!inv.faction || KDToggles.ForcePalette) && KDDefaultPalette && KinkyDungeonFactionFilters[KDDefaultPalette]) {
+		if ((!inv.faction || KDToggles.ForcePalette) && (!KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette])) {
 			inv.faction = KDDefaultPalette;
 		}
 

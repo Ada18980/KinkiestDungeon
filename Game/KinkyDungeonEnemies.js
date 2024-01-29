@@ -4945,7 +4945,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						if (!enemy.playWithPlayer)
 							KinkyDungeonSetFlag("NPCCombat",  3);
 						happened = data.happened;
-						replace.push({keyword:"DamageTaken", value: dmg.string});
+						replace.push({keyword:"DamageTaken", value: dmg.string || TextGet("KDNoDamage")});
 					} else { // if (KDRandom() <= playerEvasion)
 						if (AIData.attack.includes("Slow")) {
 							if (player.movePoints)
@@ -7400,6 +7400,15 @@ function KDIsDisarmed(enemy) {
 
 /**
  *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDHasArms(enemy) {
+	return !enemy.Enemy?.tags?.noarms;
+}
+
+/**
+ *
  * @param {any} player
  * @param {entity} enemy
  * @returns {boolean}
@@ -7471,7 +7480,7 @@ function KDGetVibeToys(enemy) {
 function KDGetTeaseDamageMod(enemy) {
 	let rank = KDEnemyRank(enemy);
 	let mod = enemy.Enemy?.teaseMod || (
-		rank == 0 ? 0.5 : (0.75 + 0.25*rank)
+		rank == 0 ? 0.25 : (0.4 + 0.12*rank)
 	);
 	mod *= KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(enemy, "TeaseDamage"));
 	return mod;
