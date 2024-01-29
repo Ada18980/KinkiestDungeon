@@ -215,10 +215,16 @@ let KDIntentEvents = {
 				enemy.playWithPlayer = 0;
 				enemy.playWithPlayerCD = 24;
 				return true;
-			} else {
+			} else if (KDGameData.PrisonerState == 'jail') {
 				KDPutInJail(KinkyDungeonPlayerEntity, enemy);
 				KDResetIntent(enemy, AIData);
 				KDBreakTether(KinkyDungeonPlayerEntity);
+			} else {
+
+				KDPutInJail(KinkyDungeonPlayerEntity, enemy);
+				KDResetIntent(enemy, AIData);
+				KDBreakTether(KinkyDungeonPlayerEntity);
+				AIData.defeat = true;
 			}
 			return false;
 		},

@@ -1733,7 +1733,7 @@ let KinkyDungeonEnemies = [
 		minLevel:9, weight:-106, terrainTags: {"nocablebot": -1000, "thirdhalf":1, "increasingWeight":0.5, "open": 100, "metalAnger": 44, "metalRage": 13, "metalPleased": 44, "metalFriendly": 13, "robot": 7}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 5, noSummon: true}, {name: "AncientPowerSource", weight: 1, noSummon: true}]},
 
-	{name: "AlchemistPet", style: "Nevermere", outfit: "AlchemistPet", faction: "Alchemist", clusterWith: "alchemist", bound: "AlchemistPet", playLine: "Gagged", color: "#007C59", tags: KDMapInit(["opendoors", "disarmresist", "submissive", "noshop", "gagged", "imprisonable", "ignoreharmless", "alchemist", "ranged", "glueweakness", "electricresist", "ticklesevereweakness", "iceresist", "charmweakness", "stunweakness", "search"]),
+	{name: "AlchemistPet", style: "Nevermere", outfit: "AlchemistPet", faction: "Alchemist", clusterWith: "alchemist", bound: "AlchemistPet", playLine: "Gagged", color: "#007C59", tags: KDMapInit(["opendoors", "disarmresist", "noarms", "submissive", "noshop", "gagged", "imprisonable", "ignoreharmless", "alchemist", "ranged", "glueweakness", "electricresist", "ticklesevereweakness", "iceresist", "charmweakness", "stunweakness", "search"]),
 		ignorechance: 0, armor: 1, followRange: 1.5, AI: "hunt",
 		master: {type: "Alchemist", range: 2, loose: true, aggressive: true}, sneakThreshold: 1, blindSight: 2, projectileAttack: true, strictAttackLOS: true, events: [
 			{trigger: "tick", type: "secretToy"},
@@ -1746,7 +1746,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 6, maxhp: 10, minLevel:3, weight:0, movePoints: 1, attackPoints: 2, attack: "MeleeWill", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"latexAnger": 2, "latexRage": 2, "alchemist": 7}, shrines: ["Latex"], allFloors: true,
 		dropTable: []},
-	{name: "WolfgirlPet", style: "Nevermere", outfit: "Wolfgirl", faction: "Nevermere", clusterWith: "nevermere", bound: "WolfgirlPet", playLine: "Gagged", color: "#009C79", tags: KDMapInit(["opendoors", "wolfSub", "disarmresist", "nevermere", "submissive", "noshop", "gagged", "wolfPet", "alwaysAlert", "imprisonable", "wolfgirl", "minor", "ignoreharmless", "ranged", "glueweakness", "electricresist", "ticklesevereweakness", "iceresist", "charmweakness", "stunweakness", "search"]),
+	{name: "WolfgirlPet", style: "Nevermere", outfit: "Wolfgirl", faction: "Nevermere", clusterWith: "nevermere", bound: "WolfgirlPet", playLine: "Gagged", color: "#009C79", tags: KDMapInit(["opendoors", "wolfSub", "disarmresist", "nevermere", "noarms", "submissive", "noshop", "gagged", "wolfPet", "alwaysAlert", "imprisonable", "wolfgirl", "minor", "ignoreharmless", "ranged", "glueweakness", "electricresist", "ticklesevereweakness", "iceresist", "charmweakness", "stunweakness", "search"]),
 		ignorechance: 0, armor: 1, followRange: 2, AI: "hunt",  cohesion: 0.9,
 		master: {type: "Wolfgirl", range: 2, loose: true, aggressive: true}, sneakThreshold: 1, blindSight: 2, projectileAttack: true, strictAttackLOS: true, difficulty: 0.5, events: [
 			{trigger: "tick", type: "secretToy"},
@@ -1759,7 +1759,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 6, maxhp: 10, minLevel:0, weight:0.1, movePoints: 1, attackPoints: 2, attack: "MeleeWill", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"metalAnger": 3, "metalRage": 3, "metalPleased": 2, "metalFriendly": 2, "nevermere": 2}, shrines: ["Metal"], allFloors: true,
 		dropTable: []},
-	{name: "WolfGuard", style: "Nevermere", outfit: "Wolfgirl", faction: "Nevermere", clusterWith: "nevermere", bound: "WolfGuard", color: "#00dCa9", playLine: "Gagged", tags: KDMapInit(["opendoors", "blindweakness", "disarmimmune", "wolfSub", "nevermere", "submissive", "noshop", "gagged", "wolfPet", "autoTape", "alwaysAlert", "leashing", "wolfLeash", "imprisonable", "wolfgirl", "ranged", "glueweakness", "electricresist", "ticklesevereweakness", "iceresist", "charmweakness", "stunweakness", "search"]),
+	{name: "WolfGuard", style: "Nevermere", outfit: "Wolfgirl", faction: "Nevermere", clusterWith: "nevermere", bound: "WolfGuard", color: "#00dCa9", playLine: "Gagged", tags: KDMapInit(["opendoors", "blindweakness", "disarmimmune", "wolfSub", "nevermere", "noarms", "submissive", "noshop", "gagged", "wolfPet", "autoTape", "alwaysAlert", "leashing", "wolfLeash", "imprisonable", "wolfgirl", "ranged", "glueweakness", "electricresist", "ticklesevereweakness", "iceresist", "charmweakness", "stunweakness", "search"]),
 		ignorechance: 0, armor: 2.5, followRange: 2, AI: "hunt",  cohesion: 0.5, events: [
 			{trigger: "tick", type: "secretToy"},
 		],
@@ -2037,7 +2037,7 @@ let KinkyDungeonEnemies = [
 	{name: "SlimeAdv", faction: "Slime", clusterWith: "slime", bound: "SlimeAdv", playLine: "Gagged", color: "#FF00FF",
 		tags: KDMapInit([
 			"ignoretiedup", "nocapture", "latexTrap", "slime", "disarmresist", "blindimmune", "melee", "slimeRestraints", "electricweakness", "acidresist", "iceweakness", "ticklesevereweakness", "charmweakness",
-			"submissive", "noshop", "gagged", "imprisonable", "rescueslime", "nocapture"
+			"submissive", "noshop", "gagged", "imprisonable", "rescueslime", "nocapture", "noarms"
 		]),
 		Sound: {
 			baseAmount: 4,
@@ -3947,7 +3947,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DollsmithDoll", nameList: "cyborg", outfit: "DollsmithDoll", style: "Water", faction: "Enemy", clusterWith: "dollsmith", bound: "EncasedFactoryDoll", playLine: "Gagged", color: "#ff3388",
 		applyFaction: "Dollsmith",
-		tags: KDMapInit(["opendoors", "doll", "smithdoll", "submissive", "noshop", "gagged", "alwaysAlert", "imprisonable", "minor", "ignorenoSP", "melee",
+		tags: KDMapInit(["opendoors", "doll", "smithdoll", "submissive", "noshop", "gagged", "alwaysAlert", "imprisonable", "minor", "ignorenoSP", "melee", "noarms",
 			"glueresist", "electricresist", "ticklesevereweakness", "chainresist", "charmweakness", "crushresist"]),
 		ignorechance: 0, armor: 1, spellResist: 1.0, followRange: 1, AI: "hunt",  cohesion: 0.9, events: [
 			{trigger: "tick", type: "secretToy"},

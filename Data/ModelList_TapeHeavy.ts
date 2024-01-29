@@ -232,7 +232,7 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["EncaseHandLeft"],
 	Layers: ToLayerMap([
-		{ Name: "HandLeft", Layer: "BindHandLeft", Pri: -5,
+		{ Name: "HandLeft", Layer: "MittenLeft", Pri: -5,
 			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie", "Yoked"]),
 			SwapLayerPose: {Front: "BindForeHandLeft"},
 			HidePoses: ToMap(["HideHands"]),
@@ -250,7 +250,7 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["EncaseHandRight"],
 	Layers: ToLayerMap([
-		{ Name: "HandRight", Layer: "BindHandRight", Pri: -5,
+		{ Name: "HandRight", Layer: "MittenRight", Pri: -5,
 			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie", "Yoked"]),
 			SwapLayerPose: {Front: "BindForeHandRight"},
 			HidePoses: ToMap(["HideHands"]),

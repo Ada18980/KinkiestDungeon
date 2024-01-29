@@ -321,9 +321,9 @@ AddModel({
 	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseHandLeft"],
 	Layers: ToLayerMap([
-		{ Name: "HandLeft", Layer: "BindHandLeft", Pri: 25,
+		{ Name: "HandLeft", Layer: "MittenLeft", Pri: 25,
 			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie", "Yoked"]),
-			SwapLayerPose: {Front: "BindForeHandLeft"},
+			SwapLayerPose: {Front: "ForeMittenLeft"},
 			HidePoses: ToMap(["HideHands"]),
 			GlobalDefaultOverride: ToMap(["Front"]),
 			InheritColor: "Rubber",
@@ -342,9 +342,9 @@ AddModel({
 	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseHandRight"],
 	Layers: ToLayerMap([
-		{ Name: "HandRight", Layer: "BindHandRight", Pri: 25,
+		{ Name: "HandRight", Layer: "MittenRight", Pri: 25,
 			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie", "Yoked"]),
-			SwapLayerPose: {Front: "BindForeHandRight"},
+			SwapLayerPose: {Front: "ForeMittenRight"},
 			HidePoses: ToMap(["HideHands"]),
 			GlobalDefaultOverride: ToMap(["Front"]),
 			InheritColor: "Rubber",
