@@ -11404,7 +11404,7 @@ rThiefSellDiscPick,"(The SPEAKER nods)|I could use one of these!"
 rThiefSellBomb,"(The SPEAKER smiles)|For when things go south..."
 rThiefSellSmokeBomb,"(The SPEAKER smiles)|For when things go south..."
 rThiefSellFlashBomb,"(The SPEAKER smiles)|For when things go south..."
-rThiefSellFlashbang,"(The SPEAKER smiles)|You can never be too safe.""
+rThiefSellFlashbang,"(The SPEAKER smiles)|You can never be too safe."
 
 rCookieSell,"(A distracted SPEAKER munches on a cookie)"
 rCookieSellAttack,"(The SPEAKER continues eating her snack)"
