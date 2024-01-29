@@ -4600,7 +4600,7 @@ function KDChooseRestraintFromListGroupPriWithVariants(RestraintList, GroupOrder
 
 
 let KDSlimeParts = {
-	"Collar": {enemyTagSuffix: "Collar"},
+	"Collar": {enemyTagSuffix: "Collar",enemyTagExtra: {"livingCollar":10}},
 	"Boots": {},
 	"Feet": {},
 	"Legs": {},
@@ -4611,7 +4611,7 @@ let KDSlimeParts = {
 };
 
 let KDRopeParts = {
-	"Collar": {enemyTagSuffix: "Collar"},
+	"Collar": {enemyTagSuffix: "Collar",enemyTagExtra: {"livingCollar":10}},
 	"ArmsBoxtie": {},
 	"ArmsWrist": {},
 	"Cuffs": {},
@@ -4781,6 +4781,12 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 			/** @type {Record<string, number>} */
 			let enemyTags = {};
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
+			if (part[1].enemyTagExtra) {
+				for (let tag in part[1].enemyTagExtra) {
+					enemyTags[tag] = part[1].enemyTagExtra[tag];
+				}
+			}
+			
 
 
 			/** @type {Record<string, number>} */
@@ -4852,6 +4858,12 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 			let enemyTags = {};
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "") + "Random"] = baseWeight + 3;
+			if (part[1].enemyTagExtra) {
+				for (let tag in part[1].enemyTagExtra) {
+					enemyTags[tag] = part[1].enemyTagExtra[tag];
+				}
+			}
+
 			let shrine = [ ...allTag,...KDGetRestraintTags(origRestraint)];
 			for (let t of removeTag) {
 				if (shrine.includes(t)) shrine.splice(shrine.indexOf(t), 1);

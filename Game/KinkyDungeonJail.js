@@ -1138,8 +1138,8 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 }
 
 function KDApplyLivingCollars() {
-	let options = {ApplyVariants: true};
-	let collars = KDGetRestraintsEligible({tags: ["livingCollar"]}, 24, "grv", true, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, options);
+	let options = {ApplyVariants: true, allowLowPower: true};
+	let collars = KDGetRestraintsEligible({tags: ["livingCollar"]}, 24, "grv", true, undefined, undefined, undefined, undefined, undefined, true, undefined, undefined, undefined, undefined, undefined, undefined, undefined, options);
 	let eligible = [];
 	for (let item of collars) {
 		let collar = item.restraint;
@@ -1639,7 +1639,7 @@ let KDCustomDefeatUniforms = {
 		KinkyDungeonAddRestraintIfWeaker("CyberMuzzle", 5, true, "Red", false, undefined, undefined, "Dollsmith", true);
 		//KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
 
-
+		KinkyDungeonAddRestraintIfWeaker("CyberMittens", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
 
 		KinkyDungeonAddRestraintIfWeaker("CyberArmCuffs", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
 		KinkyDungeonAddRestraintIfWeaker("CyberLegCuffs", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);

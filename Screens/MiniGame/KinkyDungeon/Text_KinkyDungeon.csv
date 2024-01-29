@@ -3561,6 +3561,9 @@ RestraintHighsecBoxbinderDesc2,"Made of a flexible, yet durable material, it's g
 RestraintHighsecStraitjacket,High-Security Straitjacket
 RestraintHighsecStraitjacketDesc,"A straitjacket enclosing your hands and arms completely, making your hands useless."
 RestraintHighsecStraitjacketDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
+RestraintHighsecTransportjacket,High-Security Transport Jacket
+RestraintHighsecTransportjacketDesc,"This jacket goes over a straitjacket to keep you from struggling out of it."
+RestraintHighsecTransportjacketDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
 RestraintHighsecLegbinder,High-Security Legbinder
 RestraintHighsecLegbinderDesc,"An mythril legbinder enclosing your legs, making it difficult to move."
 RestraintHighsecLegbinderDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
@@ -4073,6 +4076,9 @@ RestraintWolfAnkleCuffs2Desc2,"Looks like you got yourself in trouble."
 RestraintWolfHarness,Training Harness
 RestraintWolfHarnessDesc,"A harness that keeps a wolfgirl's suit together. It makes escaping more difficult."
 RestraintWolfHarnessDesc2,"While it is weatherproof and rugged, its straps are merely nylon."
+RestraintWolfMittens,Training Mittens
+RestraintWolfMittensDesc,"When wolfgirls won't keep those pesky claws in line, these will make sure she can't cause too much trouble."
+RestraintWolfMittensDesc2,"Made from strong reinforced fabric, your claws won't do anything to these mittens."
 RestraintWolfBallGag,Training Gag
 RestraintWolfBallGagDesc,"A gag used to prevent wolfgirls from biting their owners."
 RestraintWolfBallGagDesc2,"It is reinforced with steel cables, so getting it off will be tricky."
@@ -4150,6 +4156,9 @@ RestraintComfyStraitjacketDesc2,It feels tight but is actually made of an ethere
 RestraintLatexStraitjacket,Latex Jacket
 RestraintLatexStraitjacketDesc,A tight jacket that keeps your arms completely useless.
 RestraintLatexStraitjacketDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
+RestraintLatexTransportjacket,Latex Transport Jacket
+RestraintLatexTransportjacketDesc,This jacket goes over a straitjacket to keep you from struggling out of it.
+RestraintLatexTransportjacketDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 RestraintLatexArmbinder,Latex Armbinder
 RestraintLatexArmbinderDesc,A tight armbinder that pins your arms tightly behind your back, enclosed completely.
 RestraintLatexArmbinderDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
@@ -4168,6 +4177,9 @@ RestraintLatexCorsetDesc2,"It has too much grip to struggle out of, but is made 
 RestraintLatexCatsuit,Latex Catsuit
 RestraintLatexCatsuitDesc,"A skintight suit that's stretched on tight. It adheres to latex restraints making struggling more difficult."
 RestraintLatexCatsuitDesc2,"Blue latex is silky smooth, very stretchy, and very good at adhering to itself."
+RestraintLatexMittens,Latex Mittens
+RestraintLatexMittensDesc,"A pair of mittens keep your hands out of trouble. They adhere to latex restraints making struggling more difficult."
+RestraintLatexMittensDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 
 RestraintLatexCube,Latex Cube
 RestraintLatexCubeDesc,A gelatinous cube that engulfed you at some point in the past.
@@ -4352,6 +4364,9 @@ KinkyDungeonUnLinkScaleAnkleCuffs3,"Your ankle cuff chain loosens!"
 RestraintMaidJacket,Maid Jacket
 RestraintMaidJacketDesc,"A bolero jacket keeping your arms pinned snugly. You can't even move them."
 RestraintMaidJacketDesc2,"There is no hope of struggling out. Better hope you can cut it..."
+RestraintMaidTransportJacket,Maid Transport Jacket
+RestraintMaidTransportJacketDesc,"A bolero transport jacket keeping your arms pinned snugly. You can't even move them."
+RestraintMaidTransportJacketDesc2,"There is no hope of struggling out. Better hope you can cut it..."
 RestraintMaidDress,Devious Maid Costume
 RestraintMaidDressDesc,"A devious maid outfit that forces the arms into an elbows-touching position."
 RestraintMaidDressDesc2,"Makes sure you focus on your work and not fooling around."
@@ -4388,6 +4403,9 @@ RestraintShadowLatexHeelsDesc2,"The material is stronger than leather, and flexe
 RestraintShadowLatexStraitjacket,Shadow Jacket
 RestraintShadowLatexStraitjacketDesc,"A tight straitjacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
 RestraintShadowLatexStraitjacketDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
+RestraintShadowLatexTransportjacket,Shadow Transport Jacket
+RestraintShadowLatexTransportjacketDesc,"A tight transport jacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
+RestraintShadowLatexTransportjacketDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
 RestraintShadowLatexArmbinder,Shadow Armbinder
 RestraintShadowLatexArmbinderDesc,"A tight armbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
 RestraintShadowLatexArmbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
@@ -12344,6 +12362,10 @@ RestraintCyberMuzzle,Doll Muzzle
 RestraintCyberMuzzleDesc,"A metallic shield preventing you from removing any gags underneath."
 RestraintCyberMuzzleDesc2,"It's made of exquisite Old Civilization metals, resistant to almost all forms of damage."
 
+RestraintCyberMittens,Doll Mittens
+RestraintCyberMittensDesc,"These long mittens force your hands into fists, keeping you from using them to do anything useful."
+RestraintCyberMittensDesc2,"It is made of a strong mesh of ancient metallic fiber, with no seams in sight."
+
 RestraintCyberHeels,Doll Heels
 RestraintCyberHeelsDesc,"A pair of tall heels used to improve the aesthetics and controllability of dolls."
 RestraintCyberHeelsDesc2,"It's made of exquisite Old Civilization metals, resistant to almost all forms of damage."
@@ -13478,6 +13500,12 @@ m_LeatherMittenRight,LeatherMittenRight
 m_LeatherMittenRight_l_LeatherRight,LeatherRight
 m_LeatherMittenRight_l_BandRight,BandRight
 m_LeatherMittenRight_l_LockRight,LockRight
+m_LatexMittenLeft,LatexMittenLeft
+m_LatexMittenLeft_l_LatexLeft,LatexLeft
+m_LatexMittenLeft_l_ZipperLeft,ZipperLeft
+m_LatexMittenRight,LatexMittenRight
+m_LatexMittenRight_l_LatexRight,LatexRight
+m_LatexMittenRight_l_ZipperRight,ZipperRight
 m_LeatherPawMittenLeft,LeatherPawMittenLeft
 m_LeatherPawMittenLeft_l_LeatherLeft,LeatherLeft
 m_LeatherPawMittenLeft_l_BandLeft,BandLeft
@@ -13504,6 +13532,27 @@ m_LeatherPawMittens_l_LeatherRight,LeatherRight
 m_LeatherPawMittens_l_BandRight,BandRight
 m_LeatherPawMittens_l_LockRight,LockRight
 m_LeatherPawMittens_l_PawRight,PawRight
+m_LatexMittens,LatexMittens
+m_LatexMittens_l_LatexLeft,LatexLeft
+m_LatexMittens_l_ZipperLeft,ZipperLeft
+m_LatexMittens_l_LatexRight,LatexRight
+m_LatexMittens_l_ZipperRight,ZipperRight
+
+m_LongMittenLeft,LongMittenLeft
+m_LongMittenLeft_l_LongLeft,LongLeft
+m_LongMittenLeft_l_BandLeft,BandLeft
+m_LongMittenLeft_l_LockLeft,LockLeft
+m_LongMittenRight,LongMittenRight
+m_LongMittenRight_l_LongRight,LongRight
+m_LongMittenRight_l_BandRight,BandRight
+m_LongMittenRight_l_LockRight,LockRight
+m_LongMittens,LongMittens
+m_LongMittens_l_LongLeft,LongLeft
+m_LongMittens_l_BandLeft,BandLeft
+m_LongMittens_l_LockLeft,LockLeft
+m_LongMittens_l_LongRight,LongRight
+m_LongMittens_l_BandRight,BandRight
+m_LongMittens_l_LockRight,LockRight
 m_ElfPanties,ElfPanties
 m_ElfPanties_l_Panties,Panties
 m_ElfTop,ElfTop
@@ -15740,6 +15789,10 @@ m_LeatherPawMittenRight_l_LeatherRight,LeatherRight
 m_LeatherPawMittenRight_l_BandRight,BandRight
 m_LeatherPawMittenRight_l_LockRight,LockRight
 m_LeatherPawMittenRight_l_PawRight,PawRight
+m_LatexMittenLeft_l_LatexLeft,LatexLeft
+m_LatexMittenLeft_l_ZipperLeft,ZipperLeft
+m_LatexMittenRight_l_LatexRight,LatexRight
+m_LatexMittenRight_l_ZipperRight,ZipperRight
 m_LeatherMittens_l_LeatherLeft,LeatherLeft
 m_LeatherMittens_l_BandLeft,BandLeft
 m_LeatherMittens_l_LockLeft,LockLeft
@@ -15754,6 +15807,25 @@ m_LeatherPawMittens_l_LeatherRight,LeatherRight
 m_LeatherPawMittens_l_BandRight,BandRight
 m_LeatherPawMittens_l_LockRight,LockRight
 m_LeatherPawMittens_l_PawRight,PawRight
+m_LatexMittens_l_LatexLeft,LatexLeft
+m_LatexMittens_l_ZipperLeft,ZipperLeft
+m_LatexMittens_l_LatexRight,LatexRight
+m_LatexMittens_l_ZipperRight,ZipperRight
+m_LongMittenLeft,LongMittenLeft
+m_LongMittenLeft_l_LongLeft,LongLeft
+m_LongMittenLeft_l_BandLeft,BandLeft
+m_LongMittenLeft_l_LockLeft,LockLeft
+m_LongMittenRight,LongMittenRight
+m_LongMittenRight_l_LongRight,LongRight
+m_LongMittenRight_l_BandRight,BandRight
+m_LongMittenRight_l_LockRight,LockRight
+m_LongMittens,LongMittens
+m_LongMittens_l_LongLeft,LongLeft
+m_LongMittens_l_BandLeft,BandLeft
+m_LongMittens_l_LockLeft,LockLeft
+m_LongMittens_l_LongRight,LongRight
+m_LongMittens_l_BandRight,BandRight
+m_LongMittens_l_LockRight,LockRight
 m_ElfPanties_l_Panties,Panties
 m_ElfTop_l_Chest,Chest
 m_ElfTop_l_Bra,Bra

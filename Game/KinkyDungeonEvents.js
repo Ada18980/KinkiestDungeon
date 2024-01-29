@@ -1193,52 +1193,61 @@ let KDEventMapInventory = {
 			}
 		},
 		"livingRestraints": (e, item, data) => {
-			if (data.delta == 0)
-				return;
+			if (data.delta <= 0) return;
 			let timer = KDItemDataQuery(item, "livingTimer") || 0;
-			timer = timer + 1;
+			let freq = KDItemDataQuery(item, "livingFreq") || e.frequencyMax;
+			if (timer < freq) {
+				timer = timer + 1;
+				KDItemDataSet(item, "livingTimer", timer);
+				return;
+			}
+			KDItemDataSet(item, "livingTimer", 0);
+
+			let newtags = [];
+			if (!KDRestraint(item).cloneTag) {
+				newtags = e.tags;
+			} else {
+				newtags.push(KDRestraint(item).cloneTag);
+				for (let tag in e.cloneTags) {
+					newtags.push(KDRestraint(item).cloneTag + tag);
+				}
+			}
+
+			let r = KinkyDungeonGetRestraint({tags: newtags}, 24, "grv", true, undefined);
+			if (r) {
+				KinkyDungeonAddRestraintIfWeaker(r, 8, true, undefined, false, undefined, undefined, undefined, true);
+				let newitem = r;
+				for (let j = 0; j < 2; j++) {
+					if (newitem && newitem.Link) {
+						let newRestraint = KinkyDungeonGetRestraintByName(newitem.Link);
+						KinkyDungeonAddRestraintIfWeaker(newRestraint, 8, true, undefined, undefined, undefined, undefined, undefined, true);
+						newitem = newRestraint;
+					}
+				}
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingSpread").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)).replace("+RestraintAdded", TextGet("Restraint" + newitem.name)), "lightblue", 2);
+			}
 
 			//Spread accelerates as you get more of that type
 			let frequency = e.frequencyMax;
-			let frequencyTag = e.frequencyTag;
-			if (!KDRestraint(item).cloneTag) {
-				frequencyTag = KDRestraint(item).cloneTag;
-			}
 
 			for (let inv of KinkyDungeonAllRestraintDynamic()) {
-				if (KDRestraint(inv.item).shrine?.includes(frequencyTag)) {
-					frequency -= e.frequencyStep;
+				let found = false;
+				for (let tag of newtags) {
+					if (KDRestraint(inv.item).enemyTags[tag] != undefined) {
+						found = true;
+						break;
+					}
+				}
+				if (found) {
+					frequency *= e.frequencyStep;
 				}
 			}
+			frequency = Math.floor(frequency);
+			
 			if (frequency < e.frequencyMin)
 				frequency = e.frequencyMin;
+			KDItemDataSet(item, "livingFreq", frequency);
 
-			if (timer > frequency) {
-				timer = 0;
-				let newtags = [];
-				if (!KDRestraint(item).cloneTag) {
-					newtags = e.tags;
-				} else {
-					newtags.push(KDRestraint(item).cloneTag);
-					for (let tag in e.cloneTags) {
-						newtags.push(KDRestraint(item).cloneTag + tag);
-					}
-				}
-				let r = KinkyDungeonGetRestraint({tags: newtags}, 24, "grv", true, undefined);
-				if (r) {
-					KinkyDungeonAddRestraintIfWeaker(r, 8, true, undefined, false, undefined, undefined, undefined, true);
-					let newitem = r;
-					for (let j = 0; j < 2; j++) {
-						if (newitem && newitem.Link) {
-							let newRestraint = KinkyDungeonGetRestraintByName(newitem.Link);
-							KinkyDungeonAddRestraintIfWeaker(newRestraint, 8, true, undefined, undefined, undefined, undefined, undefined, true);
-							newitem = newRestraint;
-						}
-					}
-					KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingSpread").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)).replace("+RestraintAdded", TextGet("Restraint" + newitem.name)), "lightblue", 2);
-				}
-			}
-			KDItemDataSet(item, "livingTimer", timer);
 		},
 		"ApplyConduction": (e, item, data) => {
 			let bb = Object.assign({}, KDConduction);
