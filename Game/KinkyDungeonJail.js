@@ -1179,13 +1179,15 @@ function KDApplyLivingCollars() {
 
 	if (KinkyDungeonStatsChoice.has("TightRestraints")) {
 		for (let item of eligible) {
-			KinkyDungeonAddRestraintIfWeaker(item, 8, true, undefined, false, undefined, undefined, undefined, true);
-			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonLivingAppear").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightblue", 2);
+			if (KinkyDungeonAddRestraintIfWeaker(item, 8, true, undefined, false, undefined, undefined, undefined, true)) {
+				KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonLivingAppear").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightblue", 2);
+			}
 		}
 	} else {
 		let item = eligible[Math.floor(KDRandom() * eligible.length)];
-		KinkyDungeonAddRestraintIfWeaker(item, 8, true, undefined, false, undefined, undefined, undefined, true);
-		KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonLivingAppear").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightblue", 2);
+		if (KinkyDungeonAddRestraintIfWeaker(item, 8, true, undefined, false, undefined, undefined, undefined, true)) {
+			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonLivingAppear").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightblue", 2);
+		}
 	}
 }
 

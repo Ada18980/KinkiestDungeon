@@ -1076,7 +1076,7 @@ const KinkyDungeonRestraints = [
 			LatexLower: {color: "DarkNeutral", override: false},
 			LatexUpper: {color: "DarkNeutral", override: false},
 		},
-		escapeChance: {"Struggle": -0.175, "Cut": 0.1, "Remove": 0.1, "Pick": 0.15},
+		escapeChance: {"Struggle": -0.275, "Cut": 0.1, "Remove": 0.1, "Pick": 0.15},
 		limitChance: {"Struggle": 0.12, "Cut": 0.1, "Remove": 0.15, "Unlock": 0.75},
 		maxwill: 0.1, enemyTags: {"latexRestraintsHeavy" : -1}, playerTags: {"LatexStraitjacketWorn": 20, "posLatex": -1, "latexRage": 4}, minLevel: 12, allFloors: true, shrine: ["Latex", "Straitjackets", "TransportJackets","Block_ItemHands"]},
 
