@@ -862,7 +862,19 @@ function KDDrawWardrobe(screen, Character) {
 	if (KDOutfitInfo.length == 0) KDRefreshOutfitInfo();
 
 	let C = Character || KinkyDungeonPlayer;
+	if (KDBGColor) {
+		FillRectKD(kdcanvas, kdpixisprites, "playerbg", {
+			Left: 0,
+			Top: 0,
+			Width: 500,
+			Height: 1000,
+			Color: KDBGColor,
+			zIndex: -1,
+			alpha: StandalonePatched ? KDUIAlpha : 0.01,
+		});
+	}
 	DrawCharacter(C, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, C == KinkyDungeonPlayer ? KDToggles.FlipPlayer : false);
+
 	KDTextField("KDOutfitName", 25, 5, 450, 30);
 	if (!ElementValue("KDOutfitName")) {
 		ElementValue("KDOutfitName", KDOutfitInfo[KDCurrentOutfit]);
@@ -903,15 +915,20 @@ function KDDrawWardrobe(screen, Character) {
 
 			if (NewOutfit) {
 				KDOriginalValue = KDOutfitOriginalStore[KDCurrentOutfit] || "";
-				CharacterAppearanceRestore(C, DecompressB64(NewOutfit));
+				KinkyDungeonSetDress("None", "None", C, true);
+				KinkyDungeonCheckClothesLoss = true;
+				KinkyDungeonDressPlayer(C, true);
+				CharacterAppearanceRestore(C, DecompressB64(NewOutfit), C != KinkyDungeonPlayer);
 				CharacterRefresh(C);
 				KDInitProtectedGroups(C);
+				KinkyDungeonCheckClothesLoss = true;
 				KinkyDungeonDressPlayer(C, true);
 			} else if (C == KinkyDungeonPlayer) {
 				KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
 				CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
 				CharacterReleaseTotal(KinkyDungeonPlayer);
 				KinkyDungeonSetDress("Default", "Default", C, true);
+				KinkyDungeonCheckClothesLoss = true;
 				KinkyDungeonDressPlayer();
 				KDInitProtectedGroups(KinkyDungeonPlayer);
 			}

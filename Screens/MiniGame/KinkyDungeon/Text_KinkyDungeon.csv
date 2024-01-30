@@ -19544,7 +19544,7 @@ KDTeaseAttackResist_Praise,"The ENMY blushes at your cuteness!"
 KDTeaseAttack_Insult,The ENMY makes fun of you! (DMGDLT)
 KDTeaseAttackResist_Insult,"The ENMY struggles to find words!"
 KDTeaseAttack_VibeToy,The ENMY buzzes you with her VTY! (DMGDLT)
-KDTeaseAttack_VibeToy,The ENMY catches you and teases you with her VTY! (DMGDLT)
+KDTeaseAttack_VibeToySlow,The ENMY catches you and teases you with her VTY! (DMGDLT)
 KDTeaseAttackResist_VibeToy,"The ENMY reaches for her VTY!"
 KDTeaseAttack_InsertToy,The ENMY sticks a VTY into you! (DMGDLT)
 KDTeaseAttackResist_InsertToy,"The ENMY reaches for her VTY!"
