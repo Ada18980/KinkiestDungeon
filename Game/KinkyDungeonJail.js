@@ -1688,10 +1688,10 @@ let KDCustomDefeatUniforms = {
 				}
 			}
 		}
-		let outfit = {name: "Obsidian", id: KinkyDungeonGetItemID(), type: Outfit};
-		if (!KinkyDungeonInventoryGet("Obsidian")) KinkyDungeonInventoryAdd(outfit);
+		let outfit = {name: "ElementalDress", id: KinkyDungeonGetItemID(), type: Outfit};
+		if (!KinkyDungeonInventoryGet("ElementalDress")) KinkyDungeonInventoryAdd(outfit);
 		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
-		KinkyDungeonSetDress("Obsidian", "Obsidian");
+		KinkyDungeonSetDress("ElementalDress", "ElementalDress");
 	},
 };
 

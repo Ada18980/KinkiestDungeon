@@ -91,6 +91,17 @@ let KinkyDungeonOutfitsBase = [
 			{type: "damageResist", trigger: 'tick', damage: "electric", power: .1},
 			{type: "damageResist", trigger: 'tick', damage: "stun", power: .1},
 		],},
+	{name: "ElementalDress", dress: "ElementalDress", shop: false, rarity: 2,
+		events: [
+			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Elemental"},
+			{type: "damageResist", trigger: 'tick', damage: "soul", power: -0.3},
+			{type: "damageResist", trigger: 'tick', damage: "fire", power: .1},
+			{type: "damageResist", trigger: 'tick', damage: "ice", power: .1},
+			{type: "damageResist", trigger: 'tick', damage: "acid", power: .1},
+			{type: "damageResist", trigger: 'tick', damage: "crush", power: .1},
+			{type: "damageResist", trigger: 'tick', damage: "electric", power: .1},
+			{type: "damageResist", trigger: 'tick', damage: "stun", power: .1},
+		],},
 ];
 
 /**

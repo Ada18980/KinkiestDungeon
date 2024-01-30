@@ -54,7 +54,7 @@ let KinkyDungeonFactionFilters = {
 	"Miku": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0.03333333333333333,"contrast":1.1333333333333333,"brightness":0.6833333333333333,"red":1,"green":1,"blue":1,"alpha":1},
-		LightNeutral: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.25,"red":1,"green":1,"blue":1,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0.016666666666666666,"contrast":0.8166666666666667,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.25,"green":1.3833333333333333,"blue":0.8,"alpha":1},
 	},
 	"Nevermere": {

@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.1.13"
+KDVersionStr,"5.1.14"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -1180,6 +1180,10 @@ KinkyDungeonInventoryItemCyberDollDesc2,"Resistant to electricity but does not i
 KinkyDungeonInventoryItemObsidian,Shadow Latex Dress
 KinkyDungeonInventoryItemObsidianDesc,"A minidress made from shadow latex, a favorite of otherwordly patrons."
 KinkyDungeonInventoryItemObsidianDesc2,"Resistant to the elements, but is infused with crystals that amplify psychic damage to yourself."
+
+KinkyDungeonInventoryItemElementalDress,Elemental Slave Dress
+KinkyDungeonInventoryItemElementalDressDesc,"A minidress made to adorn mortal slaves in the elemental planes."
+KinkyDungeonInventoryItemElementalDressDesc2,"Resistant to the elements, but is infused with crystals that amplify psychic damage to yourself."
 
 KinkyDungeonInventoryItemElven,Elven Dress
 KinkyDungeonInventoryItemElvenDesc,A regal minidress worn by visitors to the forest.
@@ -11388,6 +11392,7 @@ rNinjaSell,"(The SPEAKER surprises you)|Greetings, traveler.|I am looking for to
 rNinjaSellAttack,"(The SPEAKER doesn't look surprised)|That's how it is, then."
 rNinjaSellSmokeBomb,"(The SPEAKER bows)|Always be prepared."
 rNinjaSellFlashBomb,"(The SPEAKER bows)|Always be prepared."
+rNinjaSellFlashbang,"(The SPEAKER bows)|Always be extra prepared."
 rNinjaSellBomb,"(The SPEAKER bows)|A bit dangerous, but I'll take it."
 rNinjaSellBola,"(The SPEAKER bows)|A tool of the trade."
 rNinjaSellPotionInvisibility,"(The SPEAKER bows)|A most valuable find."
@@ -11405,6 +11410,7 @@ rBombSell,"(The SPEAKER looks somewhat crazed)|I'm looking for some heavy ordnan
 rBombSellAttack,"(The SPEAKER reaches for her backpack)|I'll blow you away!"
 rBombSellSmokeBomb,"(The SPEAKER shrugs)|Cute fireworks, I suppose..."
 rBombSellFlashBomb,"(The SPEAKER shrugs)|Cute fireworks, I suppose..."
+rBombSellFlashbang,"(The SPEAKER giggles)|That's what I'm talking about!"
 rBombSellBomb,"(The SPEAKER rubs her hands together)|Excellent..."
 rBombSellGunpowder,"(The SPEAKER smiles)|Yes! I can make more bombs!"
 
@@ -11416,6 +11422,7 @@ rThiefSellDiscPick,"(The SPEAKER nods)|I could use one of these!"
 rThiefSellBomb,"(The SPEAKER smiles)|For when things go south..."
 rThiefSellSmokeBomb,"(The SPEAKER smiles)|For when things go south..."
 rThiefSellFlashBomb,"(The SPEAKER smiles)|For when things go south..."
+rThiefSellFlashbang,"(The SPEAKER smiles)|You can never be too safe."
 
 rCookieSell,"(A distracted SPEAKER munches on a cookie)"
 rCookieSellAttack,"(The SPEAKER continues eating her snack)"
@@ -12374,7 +12381,7 @@ RestraintCyberBelt,Cyber Doll Belt
 RestraintCyberBeltDesc,"A chastity belt created by the Old Civilization. Truly a marvel of science!"
 RestraintCyberBeltDesc2,"It's made of exquisite Old Civilization metals, resistant to almost all forms of damage, and padded with a advanced form of latex designed for permanent wear."
 RestraintCyberBra,Cyber Doll Bra
-RestraintCyberBraDesc,"A chastity bra created by the Old Civilization. Truly a marvel of science!"
+RestraintCyberBraDesc,"A chastity bra created by the Old Civilization. Truly a marvel of science! The flexible material over the breasts hardens when squeezed, unless allowed for by the program."
 RestraintCyberBraDesc2,"It's made of exquisite Old Civilization metals, resistant to almost all forms of damage, and padded with an advanced form of latex designed for permanent wear."
 
 
@@ -19512,19 +19519,23 @@ KDDemoteNPC,Demote to Prisoner
 KDTeaseAttackResist_LeashGrab,The EnemyName tries to grab you!
 
 KDTeaseAttack_SquishBreast,The ENMY reaches out and gives your breast a squeeze! (DMGDLT)
+KDTeaseAttack_SquishBreastCast,The ENMY squeezes your breasts as you raise your arms for a spell! (DMGDLT)
 KDTeaseAttackResist_SquishBreast,"The ENMY reaches for you and fails!"
-KDTeaseAttack_SpankButt,The ENMY gives your butt a light slap! (DMGDLT)
-KDTeaseAttack_SpankButtMove,The ENMY gives your butt a light slap as you move past! (DMGDLT)
+KDTeaseAttack_SpankButt,The ENMY gives your butt a light slap as you cast! (DMGDLT)
+KDTeaseAttack_SpankButtSprint,The ENMY gives your butt a good slap as you sprint past! (DMGDLT)
 KDTeaseAttackResist_SpankButt,"The ENMY tries to spank you but misses!"
 KDTeaseAttack_SqueezeButt,The ENMY gives your butt a squeeze! (DMGDLT)
-KDTeaseAttack_SqueezeButtMove,The ENMY gives your butt a squeeze as you move past! (DMGDLT)
+KDTeaseAttack_SqueezeButtCast,The ENMY gives your butt a squeeze during your cast! (DMGDLT)
+KDTeaseAttack_SqueezeButtBehind,The ENMY gives your butt a squeeze from behind! (DMGDLT)
 KDTeaseAttackResist_SqueezeButt,"The ENMY reaches for you but misses!"
-KDTeaseAttack_TickleArmpits,The ENMY tickles your exposed armpits! (DMGDLT)
+KDTeaseAttack_TickleArmpits,The ENMY tickles your armpits! (DMGDLT)
+KDTeaseAttack_TickleArmpitsRaised,The ENMY tickles under your raised arms! (DMGDLT)
 KDTeaseAttackResist_TickleArmpits,"The ENMY tries to tickle you!"
 KDTeaseAttack_TickleFeet,The ENMY tickles your feet! (DMGDLT)
 KDTeaseAttackResist_TickleFeet,"The ENMY tries to tickle you!"
 KDTeaseAttack_TickleFeetRemove,The ENMY takes off your shoes and tickles your feet! (DMGDLT)
 KDTeaseAttack_Headpat,The ENMY pats you gently on the head. (DMGDLT)
+KDTeaseAttack_HeadpatCast,The ENMY pats you gently on the head as you fail your spell... (DMGDLT)
 KDTeaseAttackResist_Headpat,"The ENMY tries to pat you on the head but decides not to."
 KDTeaseAttack_ShoulderMassage,The ENMY behind you gives your shoulders a nice massage! (DMGDLT)
 KDTeaseAttackResist_ShoulderMassage,"The ENMY reaches for your shoulders but you slip free!"
@@ -19533,6 +19544,7 @@ KDTeaseAttackResist_Praise,"The ENMY blushes at your cuteness!"
 KDTeaseAttack_Insult,The ENMY makes fun of you! (DMGDLT)
 KDTeaseAttackResist_Insult,"The ENMY struggles to find words!"
 KDTeaseAttack_VibeToy,The ENMY buzzes you with her VTY! (DMGDLT)
+KDTeaseAttack_VibeToy,The ENMY catches you and teases you with her VTY! (DMGDLT)
 KDTeaseAttackResist_VibeToy,"The ENMY reaches for her VTY!"
 KDTeaseAttack_InsertToy,The ENMY sticks a VTY into you! (DMGDLT)
 KDTeaseAttackResist_InsertToy,"The ENMY reaches for her VTY!"
@@ -19797,3 +19809,5 @@ KinkyDungeonMagicSlimeBubble,You find yourself enveloped in a slime bubble!
 
 KDDamageBubble,"Your RestraintName pops with a loud bang!"
 KDDamageModuleBubble,"Your RestraintName starts leaking air! Very, very slowly..."
+
+KDNoDamage,no damage
