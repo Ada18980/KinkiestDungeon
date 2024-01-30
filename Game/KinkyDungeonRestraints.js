@@ -1256,10 +1256,10 @@ function KDGroupBlocked(Group, External) {
 	if (KinkyDungeonPlayerTags.get("ChastityUpper") && ["ItemNipples", "ItemNipplesPiercings"].includes(Group)) return true;
 	if (KinkyDungeonPlayerTags.get("Block_" + Group)) return true;
 
-	if (Group.includes("ItemHands")) {
+	/*if (Group.includes("ItemHands")) {
 		let arms = KinkyDungeonGetRestraintItem("ItemArms");
 		if (arms && !KDIsTreeAccessible(arms)) return true;
-	}
+	}*/
 
 	return false;
 	//let device = null;

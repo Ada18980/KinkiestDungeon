@@ -369,13 +369,15 @@ let KDIntentEvents = {
 						KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
 						if (enemy.idle || (KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) < 4)) {
 							KDResetGuardSpawnTimer();
-							let newPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]) || KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
+							let furn = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]);
+							let jail =  KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
+							let newPoint = furn || jail;
 							if (newPoint) {
 								enemy.keys = true;
 								enemy.gx = newPoint.x;
 								enemy.gy = newPoint.y;
-								if (KDistChebyshev(enemy.x - KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]).x, enemy.y - KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]).y) < 1.5
-									|| KDistChebyshev(enemy.x - KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]).x, enemy.y - KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]).y) < 1.5) {
+								if ((furn && KDistChebyshev(enemy.x - furn.x, enemy.y - furn.y) < 1.5)
+									|| (jail && KDistChebyshev(enemy.x - jail.x, enemy.y - jail.y) < 1.5)) {
 									if (newPoint == KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"])) {
 										KDSettlePlayerInFurniture(enemy, AIData);
 									} else {

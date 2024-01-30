@@ -165,6 +165,9 @@ let KDTeaseAttacks = {
 			let toys = KDGetVibeToys(enemy);
 			let toy = (toys.length > 0) ? toys[Math.floor(KDRandom() * toys.length)] : "";
 			if (dmg.happened) {
+				// Half of it bypasses
+				KinkyDungeonTeaseLevel += 1;
+				KinkyDungeonTeaseLevelBypass += 1;
 				KinkyDungeonSendTextMessage(4,
 					TextGet("KDTeaseAttack_VibeToy" + (KDPlayerIsSlowed() ? "Slow" : ""))
 						.replace("ENMY", TextGet("Name" + enemy.Enemy.name))
