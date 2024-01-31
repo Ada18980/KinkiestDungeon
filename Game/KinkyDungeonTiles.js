@@ -110,8 +110,20 @@ function KinkyDungeonHandleMoveToTile(toTile) {
 	}
 }
 
-function KDCanEscape() {
-	return KDGameData.JailKey || KinkyDungeonFlags.has("BossUnlocked");
+function KDCanEscape(method) {
+	return KinkyDungeonEscapeTypes[method].check();
+}
+
+function KDGetEscapeText(method) {
+	return KinkyDungeonEscapeTypes[method].text();
+}
+
+function KDGetEscapeMethod(level) {
+		let alt = KDGetAltType(MiniGameKinkyDungeonLevel);
+		let escapeMethod = alt?.escapeMethod || (alt?.nokeys ? "None" : "") || "Default";
+		let data = {altType: alt, escapeMethod: escapeMethod};
+		KinkyDungeonSendEvent("calcEscapeMethod", data);
+		return data.escapeMethod;
 }
 
 /**
@@ -140,7 +152,7 @@ function KDEffectTileTags(x, y) {
 
 
 function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
-	if (!KDCanEscape()) {
+	if (!KDCanEscape(KDGetEscapeMethod(MiniGameKinkyDungeonLevel))) {
 		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonNeedJailKey"), "#ffffff", 1);
 	}
 	else if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.AltStairAction) {

@@ -1454,6 +1454,9 @@ interface KinkyDungeonEvent {
 	distStealth?: number;
 	/** Dialogue key an enemy should send */
 	enemyDialogue?: string;
+	
+	escapeMethod?: string;
+	enemy?: string;
 
 	// MUTABLE QUANTITIES
 	prevSlowLevel?: number;
@@ -2361,6 +2364,11 @@ interface KDMapDataType {
 	RoomType: string,
 	MapMod: string,
 
+	KillTarget: string,
+	KillQuota: number,
+	
+	TrapQuota: number,
+	ChestQuota: number,
 
 	JailPoints: KDJailPoint[],
 

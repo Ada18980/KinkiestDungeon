@@ -250,6 +250,9 @@ function KinkyDungeonHandleStepOffTraps(entity, x, y, moveX, moveY) {
 			}
 
 			if (msg) {
+				if (KDMapData.TrapsTriggered > 0) {
+					KDMapData.TrapsTriggered--;
+				}
 				KDTrigPanic();
 
 				if (msg == "Default")
@@ -280,6 +283,11 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 					let res = KDTrapTypes[tile.Trap](tile, entity, x, y);
 					msg = res.msg;
 					triggered = res.triggered;
+				}
+			}
+			if (entity.player && triggered) {
+				if (KDMapData.TrapsTriggered > 0) {
+					KDMapData.TrapsTriggered--;
 				}
 			}
 			if (entity.player && (msg || triggered)) {

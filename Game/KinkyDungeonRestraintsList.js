@@ -740,10 +740,12 @@ const KinkyDungeonRestraints = [
 		enemyTags: {},
 		playerTags: {},
 		events: [
-			{trigger: "tick", type: "DollmakerMask", inheritLinked: true},
+			/*{trigger: "tick", type: "DollmakerMask", inheritLinked: true},
 			{trigger: "calcBlind", type: "DollmakerMask", inheritLinked: true},
 			{trigger: "kill", type: "DollmakerMask", inheritLinked: true},
-			{trigger: "draw", type: "DollmakerMask", inheritLinked: true},
+			{trigger: "draw", type: "DollmakerMask", inheritLinked: true},*/
+			{trigger: "calcEscapeKillTarget", type: "DollmakerMask", inheritLinked: true},
+			{trigger: "calcEscapeMethod", type: "DollmakerMask", inheritLinked: true},
 		],
 		minLevel: 0, allFloors: true, shrine: ["Visors", "Cyber"],
 	},
@@ -757,10 +759,12 @@ const KinkyDungeonRestraints = [
 		enemyTags: {},
 		playerTags: {},
 		events: [
-			{trigger: "tick", type: "DollmakerMask", inheritLinked: true},
+			/*{trigger: "tick", type: "DollmakerMask", inheritLinked: true},
 			{trigger: "calcBlind", type: "DollmakerMask", inheritLinked: true},
 			{trigger: "kill", type: "DollmakerMask", inheritLinked: true},
-			{trigger: "draw", type: "DollmakerMask", inheritLinked: true},
+			{trigger: "draw", type: "DollmakerMask", inheritLinked: true},*/
+			{trigger: "calcEscapeKillTarget", type: "DollmakerMask", inheritLinked: true},
+			{trigger: "calcEscapeMethod", type: "DollmakerMask", inheritLinked: true},	
 		],
 		minLevel: 0, allFloors: true, shrine: ["Masks", "Block_ItemMouth", "Cyber"],
 	},

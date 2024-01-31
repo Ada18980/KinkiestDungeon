@@ -2238,7 +2238,19 @@ let KDEventMapInventory = {
 				}
 			}
 		},
-	}
+	},
+	"calcEscapeMethod": {
+		"DollmakerMask": (e, item, data) => {
+			if (KDGameData.RoomType == "" && !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel)) {
+				data.escapeMethod = "Kill";
+			}
+		},
+	},
+	"calcEscapeKillTarget": {
+		"DollmakerMask": (e, item, data) => {
+			data.enemy = "DollmakerTarget";
+		}
+	},
 };
 
 /**
@@ -8158,7 +8170,20 @@ let KDEventMapGeneric = {
 						});
 				}
 			}
-
+		},
+		"EscapeKillMarker": (e, data) => {
+			if (KDGetEscapeMethod(MiniGameKinkyDungeonLevel) != "Kill") return;
+			for (let enemy of KDMapData.Entities) {
+				if (enemy.Enemy.name == KDMapData.KillTarget) {
+					KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_killtarg", KinkyDungeonRootDirectory + "UI/QuestTarget.png",
+						(enemy.visual_x - data.CamX) * KinkyDungeonGridSizeDisplay,
+						(enemy.visual_y - data.CamY) * KinkyDungeonGridSizeDisplay,
+						KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
+							zIndex: -5,
+							tint: 0xff5555,
+						});
+				}
+			}
 		},
 	},
 	"drawminimap": {
@@ -8184,6 +8209,22 @@ let KDEventMapGeneric = {
 				}
 			}
 
+		},
+		"EscapeKillMarker": (e, data) => {
+			if (KDGetEscapeMethod(MiniGameKinkyDungeonLevel) != "Kill") return;
+			for (let enemy of KDMapData.Entities) {
+				if (enemy.Enemy.name == KDMapData.KillTarget && !enemy.aware && enemy.idle
+					&& (enemy.x - data.x + .5) * data.scale > 0 && (enemy.y - data.y + .5) * data.scale > 0
+					&& (enemy.x - data.x + .5) * data.scale < KDMinimapWidth()+21 && (enemy.y - data.y + .5) * data.scale < KDMinimapHeight() + 21) {
+					kdminimap.lineStyle(3, 0);
+					kdminimap.beginFill(0xff5555, 1.);
+					kdminimap.drawCircle(
+						(enemy.x - data.x + .5) * data.scale,
+						(enemy.y - data.y + .5) * data.scale,
+						data.scale/2);
+					kdminimap.endFill();
+				}
+			}
 		},
 	},
 	/** Stuff that occurs after the quest stuff is generated */

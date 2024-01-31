@@ -18795,6 +18795,12 @@ KDEscapeKey_Fail_Panel,Exits locked! Find control panel!
 KDEscapeKey_Pass_Panel,Exits unlocked!
 KDEscapeKey_Fail_Boss,BOSS ROOM
 KDEscapeKey_Pass_Boss,BOSS ROOM CLEARED!
+KDEscapeKey_Fail_Kill,Exits locked!|Kill NUMBER TYPE!
+KDEscapeKey_Pass_Kill,Quota Reached!
+KDEscapeKey_Fail_Chest,Exits locked!|Open NUMBER Chests!
+KDEscapeKey_Pass_Chest,Quota Reached!
+KDEscapeKey_Fail_Trap,Exits locked!|Trigger NUMBER Traps!
+KDEscapeKey_Pass_Trap,Quota Reached!
 KDEscapeKey_Fail_None,Room bugged. Please Report.
 KDEscapeKey_Pass_None,""
 

@@ -208,6 +208,10 @@ function KDDefaultMapData(RoomType = "", MapMod = "") {
 		JailFaction: [],
 		GuardFaction: [],
 		MapFaction: "",
+		KillTarget: "",
+		KillQuota: -1,
+		TrapQuota: -1,
+		ChestQuota: -1,
 	};
 }
 
@@ -1198,6 +1202,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 				KinkyDungeonSendEvent("tickFlags", {delta: 1});
 
 			KDQuestWorldgenStart(KDGameData.Quests);
+			KDEscapeWorldgenStart(KDGetEscapeMethod(Floor));
 			KinkyDungeonSendEvent("postQuest", {});
 
 
