@@ -127,7 +127,7 @@ let KinkyDungeonEnemies = [
 	{name: "PinkAlkahestor", faction: "Latex", clusterWith: "alchemist", playLine: "Gagged", bound: "Alkahestor", color: "#ff8888",
 		tags: KDMapInit(["pink", "opendoors", "nocapture", "antiMagic", "leashing", "human", "alchemist", "silenceimmune", "blindimmune", "ranged", "miniboss", "expRestraints", "latexCollar", "latexRestraints", "handcuffer", "latexGag"]),
 		ignorechance: 0, armor: 1, followRange: 2, AI: "hunt",
-		spells: ["AmpuleBlue"], spellCooldownMult: 1, spellCooldownMod: 4, kite: 1.5, projectileAttack: true,
+		spells: ["AmpuleBlue", "BubbleBurstSlime"], spellCooldownMult: 1, spellCooldownMod: 4, kite: 1.5, projectileAttack: true,
 		attackLock: "Red",
 		stamina: 4,
 		Resistance: {
@@ -1259,7 +1259,7 @@ let KinkyDungeonEnemies = [
 	{name: "Alkahestor", outfit: "Alchemist", style: "Water", faction: "Alchemist", clusterWith: "alchemist", playLine: "Alchemist", bound: "Alkahestor", color: "#92b9e8",
 		tags: KDMapInit(["opendoors", "antiMagic", "leashing", "guardCall", "human", "alchemist", "ranged", "miniboss", "expRestraints", "latexRestraints", "handcuffer", "jailer", "latexGag", "search"]),
 		ignorechance: 0, armor: 1, followRange: 2, AI: "hunt",
-		spells: ["AmpuleBlue", "SummonLatexElemental"], spellCooldownMult: 1, spellCooldownMod: 4, kite: 1.5, projectileAttack: true,
+		spells: ["AmpuleBlue", "SummonLatexElemental", "BubbleBurstLatex"], spellCooldownMult: 1, spellCooldownMod: 4, kite: 1.5, projectileAttack: true,
 		attackLock: "Red",
 		stamina: 4,
 		Resistance: {
@@ -4081,10 +4081,29 @@ let KinkyDungeonEnemies = [
 		maxdodge: 2,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 14, noSummon: true}],
 	},
+	{name: "WitchAqua", nameList: "witch", outfit: "WitchWater", style: "Water", faction: "Witch", clusterWith: "elemental", bound: "WitchWater", playLine: "Witch", color: "#4572e3",
+		tags: KDMapInit(["leashing", "mage", "guardCall", "jailer", "opendoors", "imprisonable", "handcuffer", "water", "closedoors", "human", "witch", "ranged", "miniboss", "unflinching", "fireresist", "acidresist", "electricsevereweakness", "pierceresist", "hunter", "latexRestraints"]),
+		followRange: 1, dontKiteWhenDisabled: true, kite: 2.5,
+		castWhileMoving: true, spells: ["WitchWaterBall", "EnemyCM1", "BubbleBurst"], unlockCommandLevel: 1, unlockCommandCD: 12, stopToCast: true, spellRdy: true,
+		spellCooldownMult: 1, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 20,
+		Magic: {
+			castCooldownUnique: {
+				WitchWaterBall: 2,
+			},
+		},
+		minLevel:3, weight:2, movePoints: 3, attackPoints: 4, attack: "SpellMeleeBindLock", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 3,
+		terrainTags: {"secondhalf":2, "lastthird":1, "elementsAnger": 6, "tech": -4, "water": 4, "ice": 2}, allFloors: true, shrines: [], followLeashedOnly: true,
+		attackLock: "White",
+		stamina: 5,
+		maxblock: 0,
+		maxdodge: 0,
+		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 14, noSummon: true}],
+	},
 
 
 
-	{name: "WitchShock", nameList: "witch", outfit: "WitchShock", style: "Air", faction: "Witch", clusterWith: "apprentice", bound: "Witch", playLine: "Witch", tags: KDMapInit(["leashing", "mage", "opendoors", "antiMagic", "handcuffer", "electric", "jail", "jailer", "closedoors", "human", "witch", "ranged", "miniboss", "unflinching", "electricresist", "glueweakness", "iceweakness", "hunter"]), followRange: 2,
+	{name: "WitchShock", nameList: "witch", outfit: "WitchShock", style: "Air", faction: "Witch", clusterWith: "apprentice", bound: "Witch", playLine: "Witch",
+		tags: KDMapInit(["leashing", "mage", "opendoors", "antiMagic", "handcuffer", "electric", "jail", "jailer", "closedoors", "human", "witch", "ranged", "miniboss", "unflinching", "electricresist", "glueweakness", "iceweakness", "hunter"]), followRange: 2,
 		castWhileMoving: true, spells: ["WitchElectrify", "WitchElectricOrb", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 12, stopToCast: true, spellRdy: true, kite: 1.5, kiteChance: 0.9,
 		spellCooldownMult: 1, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 15, minLevel:3, weight:2, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 3,
 		terrainTags: {"secondhalf":2, "lastthird":1, "tech": -10, "electric": 6}, allFloors: true, shrines: [], followLeashedOnly: true,
@@ -4137,7 +4156,7 @@ let KinkyDungeonEnemies = [
 		tags: KDMapInit(["leashing", "mage", "slimewalk", "slime", "opendoors", "closedoors", "witch", "jail", "jailer", "ranged", "miniboss", "antiMagic",
 			"unflinching", "slimeRestraints", "glueimmune", "acidweakness", "electricweakness", "iceweakness", "hunter"]), squeeze: true,
 		followLeashedOnly: true, kite: 1.5, kiteChance: 0.9, followRange: 4, castWhileMoving: true,
-		spells: ["ManySlimes", "ManySlimes", "WitchSlimeBall", "WitchSlime", "ManySlimes", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 12, stopToCast: true, spellRdy: true,
+		spells: ["ManySlimes", "ManySlimes", "WitchSlimeBall", "WitchSlime", "BubbleBurstSlime", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 12, stopToCast: true, spellRdy: true,
 		spellCooldownMult: 2, spellCooldownMod: -7, AI: "hunt", guardChance: 0.6, visionRadius: 8, maxhp: 13, minLevel:3, weight:2, movePoints: 3, attackPoints: 3, attack: "Spell", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 1,
 		attackLock: "Purple",
 		maxblock: 0,

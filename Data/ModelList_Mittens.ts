@@ -303,15 +303,15 @@ AddModel({
 });
 
 
-AddModel(GetModelFashionVersion("LeatherMittenRight", true));
-AddModel(GetModelFashionVersion("LeatherMittenLeft", true));
+//AddModel(GetModelFashionVersion("LeatherMittenRight", true));
+//AddModel(GetModelFashionVersion("LeatherMittenLeft", true));
 AddModel(GetModelFashionVersion("LeatherMittens", true));
-AddModel(GetModelFashionVersion("LeatherPawMittenRight", true));
-AddModel(GetModelFashionVersion("LeatherPawMittenLeft", true));
+//AddModel(GetModelFashionVersion("LeatherPawMittenRight", true));
+//AddModel(GetModelFashionVersion("LeatherPawMittenLeft", true));
 AddModel(GetModelFashionVersion("LeatherPawMittens", true));
-AddModel(GetModelFashionVersion("LatexMittenRight", true));
-AddModel(GetModelFashionVersion("LatexMittenLeft", true));
+//AddModel(GetModelFashionVersion("LatexMittenRight", true));
+//AddModel(GetModelFashionVersion("LatexMittenLeft", true));
 AddModel(GetModelFashionVersion("LatexMittens", true));
-AddModel(GetModelFashionVersion("LongMittenRight", true));
-AddModel(GetModelFashionVersion("LongMittenLeft", true));
+//AddModel(GetModelFashionVersion("LongMittenRight", true));
+//AddModel(GetModelFashionVersion("LongMittenLeft", true));
 AddModel(GetModelFashionVersion("LongMittens", true));

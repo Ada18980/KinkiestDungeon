@@ -2392,6 +2392,24 @@ let KinkyDungeonSpellListEnemies = [
 		duration: 20,
 	}, manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 4, range: 6, size: 3, aoe: 1, lifetime: 1, damage: "chain", playerEffect: {name: "VineEngulf", power: 2}},
 
+	{enemySpell: true, name: "BubbleBurst", color: "#88ffff", minRange: 0, sfx: "Grope", landsfx: "RubberBolt", effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
+		name: "Water",
+		duration: 20,
+	}, manacost: 4, specialCD: 12, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 5, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "acid", channel: 2,
+	playerEffect: {name: "WaterBubble", power: 5}},
+
+	{enemySpell: true, name: "BubbleBurstLatex", color: "#88aaff", minRange: 0, sfx: "Grope", landsfx: "RubberBolt", effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
+		name: "LatexThinBlue",
+		duration: 20,
+	}, manacost: 6, specialCD: 17, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 5, power: 6, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "glue", channel: 4,
+	playerEffect: {name: "LatexBubble", power: 6}},
+
+	{enemySpell: true, name: "BubbleBurstSlime", color: "#ff00ff", minRange: 0, sfx: "Grope", landsfx: "RubberBolt", effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
+		name: "Slime",
+		duration: 20,
+	}, manacost: 4, specialCD: 16, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 5, power: 6, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "glue", channel: 4,
+	playerEffect: {name: "SlimeBubble", power: 6, time: 4}},
+
 	{enemySpell: true, name: "CursingCircle", color: "#FF5277", minRange: 0, sfx: "Fwoosh", bulletSpin: 0.1, specialCD: 12,
 		selfcast: true, noTerrainHit: true,
 		manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 4, delay: 3, power: 4, range: 7, size: 5, aoe: 2.5, lifetime: 1, damage: "soul",
@@ -3100,6 +3118,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, faction: "Trap", name: "TrapObsidian", sfx: "Evil", manacost: 4, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 1, power: 3, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "cold", playerEffect: {name: "TrapBindings", text: "KinkyDungeonTrapBindingsObsidian", tags: ["obsidianRestraints"], power: 9, count: 3}},
 	{enemySpell: true, faction: "Trap", distract: 10, name: "TrapCrystal", sfx: "Freeze", manacost: 4, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 1, power: 3, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "arcane", playerEffect: {name: "TrapBindings", text: "KinkyDungeonTrapBindingsCrystal", tags: ["crystalRestraints"], power: 9, count: 3}},
 	{nonmagical: true, faction: "Trap", enemySpell: true, name: "TrapLatex", sfx: "MagicSlash", manacost: 4, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 1, power: 3, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "arcane", playerEffect: {name: "TrapBindings", text: "KinkyDungeonTrapBindingsLatex", tags: ["latexRestraints", "latexRestraintsHeavy", "redLatexBasic"], power: 7, count: 3}},
+	{faction: "Trap", enemySpell: true, name: "TrapLatexBubble", sfx: "Grope", manacost: 6, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 2, power: 4, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "glue", playerEffect: {name: "TrapBindings", text: "KinkyDungeonTrapBindingsLatexBubble", tags: ["latexSphere"], power: 6, count: 1}},
 	{nonmagical: true, enemySpell: true, name: "TrapSleepDart", hideWarnings: true, sfx: "Gunfire", manacost: 1, components: [], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "poison", speed: 2, playerEffect: {name: "TrapSleepDart", power: 5}},
 	{enemySpell: true, faction: "Trap", distract: 20, name: "TrapLustCloud", sfx: "Freeze", manacost: 1, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 1, power: 3, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "happygas", playerEffect: {name: "TrapLustCloud", damage: "happygas", power: 8 }},
 	{enemySpell: true, faction: "Trap", name: "TrapSCloud", sfx: "Freeze", manacost: 1, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 1, power: 3, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "poison", playerEffect: {name: "TrapSPCloud", damage: "poison", power: 5.0 }},

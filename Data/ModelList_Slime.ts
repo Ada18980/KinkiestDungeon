@@ -360,6 +360,8 @@ AddModel({
 			HidePoses: ToMap(["HideHands"]),
 			GlobalDefaultOverride: ToMap(["Front"]),
 			InheritColor: "Slime",
+			EraseSprite: "Mitts",
+			EraseLayers: ToMap(["Mitts"]),
 			AddPriWithPose: {
 				ItemHandsRubberOver: 45,
 			},

@@ -91,7 +91,7 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("Jacket"),
 
-		{ Name: "BinderTorsoLower", Layer: "Corset", Pri: -10,
+		{ Name: "BinderTorsoLower", Layer: "Corset", Pri: 30,
 			InheritColor: "Lower",
 			Invariant: true,
 		},

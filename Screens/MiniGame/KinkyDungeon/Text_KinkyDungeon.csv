@@ -2565,6 +2565,13 @@ AttackWitchWaterBind,"The witch restrains you! (+RestraintAdded)"
 AttackWitchWaterLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchWater,"The witch slaps you playfully! (DamageTaken)"
 
+
+NameWitchAqua,Aqua Witch
+KillWitchAqua,"The aqua witch vanishes into a pile of ash."
+AttackWitchAquaBind,"The witch restrains you! (+RestraintAdded)"
+AttackWitchAquaLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
+AttackWitchAqua,"The witch slaps you playfully! (DamageTaken)"
+
 NameWitchIce,Ice Witch
 KillWitchIce,"The ice witch vanishes into a pile of ash."
 AttackWitchIceBind,"The witch restrains you! (+RestraintAdded)"
@@ -6660,6 +6667,7 @@ KinkyDungeonGagStruggle2,Hmmmmph~!!
 KinkyDungeonBlindSelf,"You are blinded!"
 KinkyDungeonDamageSelf,"You took DamageTaken damage!"
 KinkyDungeonSlime,"You get caught in sticky slime!"
+KinkyDungeonSlimeBubble,"You get caught in a sticky slime bubble!"
 KinkyDungeonMiniSlime,"The slime ball sticks to you!"
 KinkyDungeonMiniSlime2,"The slime ball sticks to you and slows you!"
 KinkyDungeonShock,"You feel a powerful sensation run through your body!"
@@ -6717,6 +6725,7 @@ KinkyDungeonSpellTrapCrystal,Unstable Crystals
 KinkyDungeonSpellTrapLustCloud,Gas Trap
 KinkyDungeonSpellTrapSCloud,Gas Trap
 KinkyDungeonSpellTrapLatex,Latex Engulfment
+KinkyDungeonSpellTrapLatexBubble,Latex Engulfment
 KinkyDungeonSpellTrapSleepDart,Sleep Dart
 KinkyDungeonSpellSleepDart,Sleep Dart
 
@@ -6735,6 +6744,7 @@ KinkyDungeonSpellCastTrapShadowLatex,"Shadows constrict around you!"
 KinkyDungeonSpellCastTrapObsidian,"An otherworldly sigil appears below you!"
 KinkyDungeonSpellCastTrapCrystal,"Crystals rise up around you!"
 KinkyDungeonSpellCastTrapLatex,"Something shiny seems to be stretched out over the floor!"
+KinkyDungeonSpellCastTrapLatexBubble,"A rubber bubble starts forming around you!"
 KinkyDungeonSpellCastTrapLustCloud,"You hear the sound of glass breaking, and a cloud of pink gas rises around you!"
 KinkyDungeonSpellCastTrapSCloud,"You hear the sound of glass breaking, and a cloud of green gas rises around you!"
 KinkyDungeonTrapBindingsCharmWeak,"The charms stick themselves all over your body!"
@@ -6748,6 +6758,7 @@ KinkyDungeonTrapBindingsLeatherWeak,"The leather restraints attach themselves to
 KinkyDungeonTrapBindingsCableWeak,"The high-tech cables wrap themselves over your body!"
 KinkyDungeonTrapBindingsSlimeWeak,"The slime pours all over you!"
 KinkyDungeonTrapBindingsLatex,"A giant cube of latex engulfs you!"
+KinkyDungeonTrapBindingsLatexBubble,"A giant bubble of latex engulfs you and inflates, sealing you in!"
 KinkyDungeonTrapBindingsObsidian,"A sinister power wraps itself around you and solidifies!"
 KinkyDungeonTrapBindingsShadowLatex,"Dark magics swirl around you and solidify into shiny rubber!"
 KinkyDungeonTrapBindingsCrystal,"Crystals grow and spread across your limbs!"
@@ -18189,6 +18200,7 @@ RestraintResinDesc,"A layer of transparent resin derived from Green Latex. Unlik
 RestraintResinDesc2,"It's like you're an art piece! If only you had some way to blast it off..."
 
 KDWindup,"You hear a motor whirring..."
+KDLatexBubbleEngulf,"A bubble of latex surrounds you and inflates, sealing you in!"
 KDLatexBubble,A bubble of latex envelops you!
 KinkyDungeonBuffLatexBubble,"The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range."
 
@@ -18478,9 +18490,14 @@ KDKeeperFlameDash,"The flame keeper rides forth on a wave of fire!"
 KinkyDungeonSpellFlameTrail,Smoldering Trail
 KinkyDungeonSpellFlameKeeperBlade,Fiery Greatsword
 
+KinkyDungeonSpellBubbleBurst,Enchanted Bubble
+KinkyDungeonSpellBubbleBurstLatex,Latex Bubble
+KinkyDungeonSpellBubbleBurstSlime,Slime Bubble
+
 KinkyDungeonSpellVineexp,Tangling Vines
 KinkyDungeonSpellBubbleexp,Enchanted Bubble
-KDWaterBubble,A bubble of magic water envelops you!
+KDWaterBubble,A bubble of magic water starts forming around you!
+KDWaterBubbleEngulf,"The gap in the bubble closes, and you are fully sealed within the bubble!"
 KinkyDungeonBuffWaterBubble,"Magical water reduces your accuracy and slows you significantly!"
 KinkyDungeonBuffBattleTrance,You attack twice!
 
