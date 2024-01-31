@@ -3379,7 +3379,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		if (enemy != KinkyDungeonLeashingEnemy() && enemy != KinkyDungeonJailGuard() && (!KinkyDungeonFlags.has("PlayerCombat") || enemy.Enemy.tags.ignorebrat)) {
 			if (enemy.Enemy.tags.ignorenoSP && !KinkyDungeonHasWill(0.1)) AIData.ignore = true;
 			if (((enemy.Enemy.tags.ignoreharmless)) && (!enemy.warningTiles || enemy.warningTiles.length == 0)
-				&& !(KDGameData.PrisonerState == 'chase' && KDFactionRelation(KDGetFaction(enemy), KDGetMainFaction()) > -0.09) // Dont ignore if the enemy is hunting the player for escape
+				&& !(KDGameData.PrisonerState == 'chase' && KDFactionRelation(KDGetFaction(enemy), KDGetMainFaction()) > 0.09) // Dont ignore if the enemy is hunting the player for escape
 				&& AIData.harmless && (!enemy.Enemy.ignorechance || KDRandom() < enemy.Enemy.ignorechance || !KinkyDungeonHasWill(0.1))) AIData.ignore = true;
 			if (enemy.Enemy.tags.ignoretiedup && (!enemy.warningTiles || enemy.warningTiles.length == 0) && enemy.lifetime == undefined
 				&& !KinkyDungeonCanUseWeapon() && !KinkyDungeonCanTalk() && KinkyDungeonSlowLevel > 1

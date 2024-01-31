@@ -4790,7 +4790,7 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 					enemyTags[tag] = part[1].enemyTagExtra[tag];
 				}
 			}
-			
+
 
 
 			/** @type {Record<string, number>} */

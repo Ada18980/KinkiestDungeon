@@ -244,9 +244,10 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 					}
 					restraints.push(inv);
 					if (inv.dynamicLink) {
+						let accessible = KDRestraint(inv)?.accessible;
 						let link = inv.dynamicLink;
 						for (let I = 0; I < 30; I++) {
-							if (KDRestraint(link).alwaysRender || (KDRestraint(link).renderWhenLinked && KDRestraint(link).renderWhenLinked.some((element) => {return renderTypes.includes(element);}))) {
+							if (accessible || KDRestraint(link).alwaysRender || (KDRestraint(link).renderWhenLinked && KDRestraint(link).renderWhenLinked.some((element) => {return renderTypes.includes(element);}))) {
 								if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
 									KDApplyItem(Character, link, KinkyDungeonPlayerTags);
 

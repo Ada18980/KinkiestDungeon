@@ -73,7 +73,7 @@ let KDSpellComponentTypes = {
 			return "Gagged";
 		},
 		cast: (spell, data) => {
-			KinkyDungeonSetFlag("verbalspell", 2);
+			KinkyDungeonSetFlag("verbalspell", 1);
 		}
 	},
 	"Arms": {
@@ -105,7 +105,7 @@ let KDSpellComponentTypes = {
 			return "Bug";
 		},
 		cast: (spell, data) => {
-			KinkyDungeonSetFlag("armspell", 2);
+			KinkyDungeonSetFlag("armspell", 1);
 		}
 	},
 	"Legs": {
@@ -133,7 +133,7 @@ let KDSpellComponentTypes = {
 			return "Legs";
 		},
 		cast: (spell, data) => {
-			KinkyDungeonSetFlag("legspell", 2);
+			KinkyDungeonSetFlag("legspell", 1);
 		}
 	},
 
@@ -771,7 +771,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ " + (spell.miscastSfx || "SoftShield") + ".ogg");
 		KinkyDungeonSendEvent("miscast", data);
-		KinkyDungeonSetFlag("miscast", 2);
+		KinkyDungeonSetFlag("miscast", 1);
 
 		return {result: "Miscast", data: data};
 	}

@@ -1199,7 +1199,7 @@ function KDDrawWardrobe(screen, Character) {
 	if (C == KinkyDungeonPlayer) {
 		DrawButtonKDEx("KDWardrobeSaveOutfit", (bdata) => {
 			if (KDConfirmType == "save" && KinkyDungeonReplaceConfirm > 0) {
-				if (ElementValue("KDOutfitName")) {
+				if (ElementValue("KDOutfitName").length < 50) {
 					KDOutfitInfo[KDCurrentOutfit] = ElementValue("KDOutfitName");
 					KDSaveOutfitInfo();
 				}

@@ -1243,7 +1243,7 @@ let KDEventMapInventory = {
 				}
 			}
 			frequency = Math.floor(frequency);
-			
+
 			if (frequency < e.frequencyMin)
 				frequency = e.frequencyMin;
 			KDItemDataSet(item, "livingFreq", frequency);

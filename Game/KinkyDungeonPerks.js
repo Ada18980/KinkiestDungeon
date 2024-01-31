@@ -665,7 +665,7 @@ let KDPerkStart = {
 		KinkyDungeonChangeRep("Metal", 10);
 
 		KDCustomDefeatUniforms.CyberDoll();
-		KDFixPlayerClothes("AncientRobot");
+		KDFixPlayerClothes((KinkyDungeonStatsChoice.get("DollmakerVisor") || KinkyDungeonStatsChoice.get("DollmakerMask") || KinkyDungeonStatsChoice.get("CommonCyber")) ? "Dollsmith" : "AncientRobot");
 	},
 	StartMaid: () =>{
 		KDAddQuest("MaidSweeper");

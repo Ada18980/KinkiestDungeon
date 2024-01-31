@@ -4223,7 +4223,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				if (data.skipTurn) skip = 1;
 				KinkyDungeonChangeStamina(data.attackCost, false, 1);
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "attack", 1);
-				KinkyDungeonSetFlag("armattack", 2);
+				KinkyDungeonSetFlag("armattack", 1);
 				KinkyDungeonSetEnemyFlag(data.target, "targetedForAttack", 4);
 			} else {
 				if ((Enemy.lifetime > 9000 || !Enemy.maxlifetime))

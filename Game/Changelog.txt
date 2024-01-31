@@ -30,7 +30,7 @@ Monk class?
 
 5.1.15
  - Tweaked future harness lower
- -
+ - Force restraints to use palette now applies to None palette
 
 5.1.14
  - Fixed Red Binding Dress coloring
