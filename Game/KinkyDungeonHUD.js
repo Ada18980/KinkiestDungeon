@@ -2010,7 +2010,7 @@ function KDDrawMinimap(MinimapX, MinimapY) {
 
 		let escapeMethod = KDGetEscapeMethod(MiniGameKinkyDungeonLevel);
 		let escape = KDCanEscape(escapeMethod);
-		DrawTextFitKD(KDGetEscapeText(escapeMethod), kdminimap.x + KDMinimapWCurrent/2, kdminimap.y + KDMinimapHCurrent - 12, 0.75 * KDMinimapWCurrent,
+		DrawTextFitKD(KDGetEscapeMinimapText(escapeMethod), kdminimap.x + KDMinimapWCurrent/2, kdminimap.y + KDMinimapHCurrent - 12, 0.75 * KDMinimapWCurrent,
 		escape ? "#88ff88" : "#ff5555", KDTextGray0, 16, "center", zIndex + 1);
 	}
 	kdminimap.x = MinimapX;

@@ -5,25 +5,31 @@ let KinkyDungeonEscapeTypes = {
 		check: () => {
 			return true;
 		},
-		text: () => {
+		minimaptext: () => {
 		  let escape = KinkyDungeonEscapeTypes["None"].check();
 		  if (escape)
-				return TextGet("KDEscapeKey_Pass_None");
+				return TextGet("KDEscapeMinimap_Pass_None");
 			else
-				return TextGet("KDEscapeKey_Fail_None");			
+				return TextGet("KDEscapeMinimap_Fail_None");			
+		}
+		doortext: () => {
+			return TextGet("KDEscapeDoor_None");
 		}
 	},
 	"Default": {
 		check: () => {
 			return KDGameData.JailKey;
 		},
-		text: () => {
+		minimaptext: () => {
 		  let escape = KinkyDungeonEscapeTypes["Default"].check();
 		  if (escape)
-				return TextGet("KDEscapeKey_Pass_Default");
+				return TextGet("KDEscapeMinimap_Pass_Default");
 			else
-				return TextGet("KDEscapeKey_Fail_Default");			
-		}
+				return TextGet("KDEscapeMinimap_Fail_Default");			
+		},
+		doortext: () => {
+			return TextGet("KDEscapeDoor_Default");
+		},
 	},
 	"Kill": {
 		worldgenstart: () => {
@@ -54,13 +60,16 @@ let KinkyDungeonEscapeTypes = {
 			KDMapData.KillQuota = count;
 			return KDMapData.KillQuota <= 0;
 		},
-		text: () => {
+		minimaptext: () => {
 		  let escape = KinkyDungeonEscapeTypes["Kill"].check();
 		  if (escape)
-				return TextGet("KDEscapeKey_Pass_Kill");
+				return TextGet("KDEscapeMinimap_Pass_Kill");
 			else
-				return TextGet("KDEscapeKey_Fail_Kill").replace("NUMBER", KDMapData.KillQuota.toString()).replace("TYPE",TextGet("Name" + KDMapData.KillTarget));
-		}
+				return TextGet("KDEscapeMinimap_Fail_Kill").replace("NUMBER", KDMapData.KillQuota.toString()).replace("TYPE",TextGet("Name" + KDMapData.KillTarget));
+		},
+		doortext: () => {
+			return TextGet("KDEscapeDoor_Kill");
+		},
 	},
 	"Miniboss": {
 		worldgenstart: () => {
@@ -92,13 +101,16 @@ let KinkyDungeonEscapeTypes = {
 			KDMapData.KillQuota = count;
 			return KDMapData.KillQuota <= 0;
 		},
-		text: () => {
+		minimaptext: () => {
 		  let escape = KinkyDungeonEscapeTypes["Miniboss"].check();
 		  if (escape)
-				return TextGet("KDEscapeKey_Pass_Miniboss");
+				return TextGet("KDEscapeMinimap_Pass_Miniboss");
 			else
-				return TextGet("KDEscapeKey_Fail_Miniboss").replace("TYPE",TextGet("Name" + KDMapData.KillTarget));
-		}
+				return TextGet("KDEscapeMinimap_Fail_Miniboss").replace("TYPE",TextGet("Name" + KDMapData.KillTarget));
+		},
+		doortext: () => {
+			return TextGet("KDEscapeDoor_Miniboss");
+		},
 	},
 	"Chest": {
 		worldgenstart: () => {
@@ -106,7 +118,7 @@ let KinkyDungeonEscapeTypes = {
 			for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
 				for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
 					if (KinkyDungeonMapGet(X, Y) == 'C' && KinkyDungeonTilesGet(X+','+Y)?.Lock == undefined) {
-						if (KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, X, Y) != undefined) {
+						if (KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, X, Y, false, false, false, KinkyDungeonMovableTilesSmartEnemy) != undefined) {
 							count++;
 						}
 					}
@@ -123,13 +135,16 @@ let KinkyDungeonEscapeTypes = {
 				KinkyDungeonEscapeTypes["Chest"].worldgenstart();				
 			return KDMapData.ChestQuota == 0;
 		},
-		text: () => {
+		minimaptext: () => {
 		  let escape = KinkyDungeonEscapeTypes["Chest"].check();
 		  if (escape)
-				return TextGet("KDEscapeKey_Pass_Chest");
+				return TextGet("KDEscapeMinimap_Pass_Chest");
 			else
-				return TextGet("KDEscapeKey_Fail_Chest").replace("NUMBER", KDMapData.ChestQuota.toString());
-		}
+				return TextGet("KDEscapeMinimap_Fail_Chest").replace("NUMBER", KDMapData.ChestQuota.toString());
+		},
+		doortext: () => {
+			return TextGet("KDEscapeDoor_Chest");
+		},
 	},
 	"Trap": {
 		worldgenstart: () => {
@@ -137,13 +152,14 @@ let KinkyDungeonEscapeTypes = {
 			for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
 				for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
 					if (KinkyDungeonTilesGet(X+','+Y)?.Trap != undefined) {
-						if (KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, X, Y) != undefined) {
+						if (KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, X, Y, false, false, false, KinkyDungeonMovableTilesSmartEnemy) != undefined) {
 							count++;
 						}
 					}
 				}
 			}
 			let quota = Math.floor(Math.random()*5)+30;  //random number 30 to 35
+			if (quota > count) quota = count;
 			let data = {number: quota};
 			KinkyDungeonSendEvent("calcEscapeTrapQuota", data);
 			KDMapData.TrapQuota = data.number;
@@ -153,25 +169,31 @@ let KinkyDungeonEscapeTypes = {
 				KinkyDungeonEscapeTypes["Trap"].worldgenstart();				
 			return KDMapData.TrapQuota == 0;
 		},
-		text: () => {
+		minimaptext: () => {
 		  let escape = KinkyDungeonEscapeTypes["Trap"].check();
 		  if (escape)
-				return TextGet("KDEscapeKey_Pass_Trap");
+				return TextGet("KDEscapeMinimap_Pass_Trap");
 			else
-				return TextGet("KDEscapeKey_Fail_Trap").replace("NUMBER", KDMapData.TrapQuota.toString());
-		}
+				return TextGet("KDEscapeMinimap_Fail_Trap").replace("NUMBER", KDMapData.TrapQuota.toString());
+		},
+		doortext: () => {
+			return TextGet("KDEscapeDoor_Trap");
+		},
 	},
 	"Boss": {
 		check: () => {
 			return KinkyDungeonFlags.has("BossUnlocked");
 		},
-		text: () => {
+		minimaptext: () => {
 		  let escape = KinkyDungeonEscapeTypes["Boss"].check();
 		  if (escape)
-				return TextGet("KDEscapeKey_Pass_Boss");
+				return TextGet("KDEscapeMinimap_Pass_Boss");
 			else
-				return TextGet("KDEscapeKey_Fail_Boss");			
-		}
+				return TextGet("KDEscapeMinimap_Fail_Boss");			
+		},
+		doortext: () => {
+			return TextGet("KDEscapeDoor_Boss");
+		},
 	},
 }
 

@@ -7635,7 +7635,6 @@ KDStartGame,"Proceed"
 
 KinkyDungeonRemoveJailKey,"Your key to the stairs is taken away!"
 ItemPickupKeyring,"You found a keyring to the stairs! Now you just need to get there."
-KinkyDungeonNeedJailKey,"There seems to be a locked high-security door. Looks like you need a key."
 
 KinkyDungeonRemindJailPlayHelplessFuuka0,"Oh noes..."
 KinkyDungeonRemindJailPlayHelplessFuuka1,"Ueeee!"
@@ -18787,24 +18786,33 @@ KinkyDungeonChallenge,Challenge Settings:
 KDColorPickerSimple,Simple
 KDColorPickerAdvanced,Advanced
 
-KDEscapeKey_Fail_Default,Exits locked! Find the key!
-KDEscapeKey_Pass_Default,Got the key!
-KDEscapeKey_Fail_Lever,Exits locked! Find a lever!
-KDEscapeKey_Pass_Lever,Exits unlocked!
-KDEscapeKey_Fail_Panel,Exits locked! Find control panel!
-KDEscapeKey_Pass_Panel,Exits unlocked!
-KDEscapeKey_Fail_Boss,BOSS ROOM
-KDEscapeKey_Pass_Boss,BOSS ROOM CLEARED!
-KDEscapeKey_Fail_Kill,Exits locked!|Kill NUMBER TYPE!
-KDEscapeKey_Pass_Kill,Quota Reached!
-KDEscapeKey_Fail_Miniboss,Exits locked!|Kill Miniboss TYPE!
-KDEscapeKey_Pass_Miniboss,Miniboss killed!
-KDEscapeKey_Fail_Chest,Exits locked!|Open NUMBER Chests!
-KDEscapeKey_Pass_Chest,Quota Reached!
-KDEscapeKey_Fail_Trap,Exits locked!|Trigger NUMBER Traps!
-KDEscapeKey_Pass_Trap,Quota Reached!
-KDEscapeKey_Fail_None,Room bugged. Please Report.
-KDEscapeKey_Pass_None,""
+KDEscapeMinimap_Fail_Default,Exits locked! Find the key!
+KDEscapeMinimap_Pass_Default,Got the key!
+KDEscapeDoor_Default,"There seems to be a locked high-security door. Looks like you need a key to open it."
+KDEscapeMinimap_Fail_Lever,Exits locked! Find a lever!
+KDEscapeMinimap_Pass_Lever,Exits unlocked!
+KDEscapeDoor_Lever,"There seems to be a locked high-security door. Looks like you need to pull a lever to open it."
+KDEscapeMinimap_Fail_Panel,Exits locked! Find control panel!
+KDEscapeMinimap_Pass_Panel,Exits unlocked!
+KDEscapeDoor_Panel,"There seems to be a locked high-security door. Looks like you need find a control panel to open it."
+KDEscapeMinimap_Fail_Boss,BOSS ROOM
+KDEscapeMinimap_Pass_Boss,BOSS ROOM CLEARED!
+KDEscapeDoor_Boss,"There seems to be a locked high-security door. Looks like you need to kill the boss to open it."
+KDEscapeMinimap_Fail_Kill,Exits locked!|Kill NUMBER TYPE!
+KDEscapeMinimap_Pass_Kill,Quota Reached!
+KDEscapeDoor_Kill,"There seems to be a locked high-security door. Looks like you need to kill the targetted enemies to open it."
+KDEscapeMinimap_Fail_Miniboss,Exits locked!|Kill Miniboss TYPE!
+KDEscapeMinimap_Pass_Miniboss,Miniboss killed!
+KDEscapeDoor_Miniboss,"There seems to be a locked high-security door. Looks like you need to kill the miniboss to open it."
+KDEscapeMinimap_Fail_Chest,Exits locked!|Open NUMBER Chests!
+KDEscapeMinimap_Pass_Chest,Quota Reached!
+KDEscapeDoor_Chest,"There seems to be a locked high-security door. Looks like you need to open more chests to open it."
+KDEscapeMinimap_Fail_Trap,Exits locked!|Trigger NUMBER Traps!
+KDEscapeMinimap_Pass_Trap,Quota Reached!
+KDEscapeDoor_Trap,"There seems to be a locked high-security door. Looks like you need to trigger more traps to open it."
+KDEscapeMinimap_Fail_None,Room bugged. Please Report.
+KDEscapeMinimap_Pass_None,Room bugged. Please Report.
+KDEscapeDoor_None,"This door failed to load and cannot be opened.  Please report this bug to Ada with a save code."
 
 KDVarSuffCursed,(Cursed)
 KDVarSuffPurified,(Purified)

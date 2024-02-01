@@ -114,13 +114,21 @@ function KDCanEscape(method) {
 	return KinkyDungeonEscapeTypes[method].check();
 }
 
-function KDGetEscapeText(method) {
-	return KinkyDungeonEscapeTypes[method].text();
+function KDGetEscapeMinimapText(method) {
+	return KinkyDungeonEscapeTypes[method].minimaptext();
 }
+
+function KDGetEscapeDoorText(method) {
+	return KinkyDungeonEscapeTypes[method].doortext();
+}
+
+
+let testDefault = undefined;
 
 function KDGetEscapeMethod(level) {
 		let alt = KDGetAltType(MiniGameKinkyDungeonLevel);
-		let escapeMethod = alt?.escapeMethod || (alt?.nokeys ? "None" : "") || "Default";
+		let defaultMethod = (testDefault != undefined) ? testDefault : "Default";
+		let escapeMethod = alt?.escapeMethod || (alt?.nokeys ? "None" : "") || defaultMethod;
 		let data = {altType: alt, escapeMethod: escapeMethod};
 		KinkyDungeonSendEvent("calcEscapeMethod", data);
 		return data.escapeMethod;
@@ -153,7 +161,7 @@ function KDEffectTileTags(x, y) {
 
 function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 	if (!KDCanEscape(KDGetEscapeMethod(MiniGameKinkyDungeonLevel))) {
-		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonNeedJailKey"), "#ffffff", 1);
+		KinkyDungeonSendActionMessage(10, KDGetEscapeDoorText(KDGetEscapeMethod(MiniGameKinkyDungeonLevel)), "#ffffff", 1);
 	}
 	else if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.AltStairAction) {
 		KDStairsAltAction[KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).AltStairAction](toTile, suppressCheckPoint);
