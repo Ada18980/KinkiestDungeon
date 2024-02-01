@@ -62,9 +62,58 @@ let KinkyDungeonEscapeTypes = {
 				return TextGet("KDEscapeKey_Fail_Kill").replace("NUMBER", KDMapData.KillQuota.toString()).replace("TYPE",TextGet("Name" + KDMapData.KillTarget));
 		}
 	},
+	"Miniboss": {
+		worldgenstart: () => {
+			let enemytype = KinkyDungeonGetEnemy(['miniboss'], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0');
+			let enemynumber = 1;
+			let data = {enemy: enemytype.name, number: enemynumber};
+			KinkyDungeonSendEvent("calcEscapeKillTarget", data);
+			KDMapData.KillTarget = data.enemy;
+			KDMapData.KillQuota = data.number;
+			for (let i = 0; i < data.number; i++) {
+				let point = KinkyDungeonGetRandomEnemyPoint(true);
+				if (point) {
+					let ens = KinkyDungeonSummonEnemy(point.x, point.y, data.enemy, 1, 2.9);
+					KinkyDungeonSetEnemyFlag(ens[0], "killtarget", -1);
+					KDMakeHighValue(ens[0]);
+				}
+			}
+		},
+		check: () => {
+			if (!KDMapData.KillTarget) //if this wasnt the escapemethod when this floor was created, spawn targets now
+				KinkyDungeonEscapeTypes["Miniboss"].worldgenstart();
+
+			var count = 0;
+			for (let enemy of KDMapData.Entities) {
+				if (KDEnemyHasFlag(enemy, "killtarget")) {
+					count++;
+				}
+			}
+			KDMapData.KillQuota = count;
+			return KDMapData.KillQuota <= 0;
+		},
+		text: () => {
+		  let escape = KinkyDungeonEscapeTypes["Miniboss"].check();
+		  if (escape)
+				return TextGet("KDEscapeKey_Pass_Miniboss");
+			else
+				return TextGet("KDEscapeKey_Fail_Miniboss").replace("TYPE",TextGet("Name" + KDMapData.KillTarget));
+		}
+	},
 	"Chest": {
 		worldgenstart: () => {
+			let count = 0;
+			for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
+				for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
+					if (KinkyDungeonMapGet(X, Y) == 'C' && KinkyDungeonTilesGet(X+','+Y)?.Lock == undefined) {
+						if (KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, X, Y) != undefined) {
+							count++;
+						}
+					}
+				}
+			}
 			let quota = Math.floor(Math.random()*2)+8;  //random number 8 to 10
+			if (quota > count) quota = count;
 			let data = {number: quota};
 			KinkyDungeonSendEvent("calcEscapeChestQuota", data);
 			KDMapData.ChestQuota = data.number;
@@ -84,6 +133,16 @@ let KinkyDungeonEscapeTypes = {
 	},
 	"Trap": {
 		worldgenstart: () => {
+			let count = 0;
+			for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
+				for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
+					if (KinkyDungeonTilesGet(X+','+Y)?.Trap != undefined) {
+						if (KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, X, Y) != undefined) {
+							count++;
+						}
+					}
+				}
+			}
 			let quota = Math.floor(Math.random()*5)+30;  //random number 30 to 35
 			let data = {number: quota};
 			KinkyDungeonSendEvent("calcEscapeTrapQuota", data);

@@ -575,7 +575,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":1, "lastthird":1, "illusionAnger": 17, "illusionRage": 11, "maid": 16}, shrines: ["Illusion"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, ]},
 	{name: "MaidforceStalker", nameList: "maid", faction: "Maidforce", bound: "MaidforceStalker", outfit: "MaidforceNinja", style: "Maid", clusterWith: "maid", playLine: "DomMaid", color: "#814BB7",
-		tags: KDMapInit(["leashing", "opendoors", "human", "maid", "melee", "maidRestraints", "handcuffer", "maidVibeRestraintsLimited", "shadowclan", "unarmedresist", "pierceresist", "antiMagic", "tickleweakness", "slashresist", "glueweakness", "chainweakness", "jail", "jailer", "hunter"]),
+		tags: KDMapInit(["leashing", "opendoors", "human", "maid", "melee", "maidRestraints", "handcuffer", "maidRestraintsHeavy", "maidVibeRestraintsLimited", "shadowclan", "unarmedresist", "pierceresist", "antiMagic", "tickleweakness", "slashresist", "glueweakness", "chainweakness", "jail", "jailer", "hunter"]),
 		followLeashedOnly: true, blindSight: 5, followRange: 1, AI: "hunt", guardChance: 0.6, projectileAttack: true, evasion: 0.33, events: [
 			{trigger: "tick", type: "secretToy"},
 		],
@@ -635,7 +635,7 @@ let KinkyDungeonEnemies = [
 		weightMult: 0.5,
 		attackLock: "White",
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}]},
-	{name: "MaidforceHead", nameList: "bountyhunter", faction: "Maidforce", bound: "MaidforceHead", outfit: "MaidforceHead", style: "Maid", clusterWith: "maid", color: "#814BB7", playLine: "HeadMaid", tags: KDMapInit(["leashing", "antiMagic", "guardCall", "tickleweakness", "opendoors", "human", "maid", "unflinching", "boss", "ranged", "maidRestraintsNonChastity", "maidVibeRestraints", "handcuffer", "jailer", "hunter"]), followLeashedOnly: true, followRange: 3.5, AI: "hunt", guardChance: 0.6, projectileAttack: true,
+	{name: "MaidforceHead", nameList: "bountyhunter", faction: "Maidforce", bound: "MaidforceHead", outfit: "MaidforceHead", style: "Maid", clusterWith: "maid", color: "#814BB7", playLine: "HeadMaid", tags: KDMapInit(["leashing", "antiMagic", "guardCall", "tickleweakness", "opendoors", "human", "maid", "unflinching", "boss", "ranged", "maidRestraintsHeavy", "maidRestraintsNonChastity", "maidVibeRestraints", "handcuffer", "jailer", "hunter"]), followLeashedOnly: true, followRange: 3.5, AI: "hunt", guardChance: 0.6, projectileAttack: true,
 		spells: ["AmpuleGreen", "Hairpin", "RestrainingDevice"], spellCooldownMult: 1, spellCooldownMod: 0, hitsfx: "Tickle", disarm: 1, ignoreStaminaForBinds: true, sneakThreshold: 1, focusPlayer: true,
 		useLock: "Red", kite: 2.5, armor: 1.5,
 		RestraintFilter: {
