@@ -1246,6 +1246,11 @@ let KDEventMapInventory = {
 
 			if (frequency < e.frequencyMin)
 				frequency = e.frequencyMin;
+				
+			if (!r) {
+				frequency = 100;
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingDormant").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightblue", 2);
+			}
 			KDItemDataSet(item, "livingFreq", frequency);
 
 		},

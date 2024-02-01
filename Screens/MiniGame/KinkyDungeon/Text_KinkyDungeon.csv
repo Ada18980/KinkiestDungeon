@@ -1643,6 +1643,7 @@ KinkyDungeonSlimeHarden,"The slime starts to harden over your skin..."
 
 KinkyDungeonLivingSpread,"The RESTRAINTNAME creates more bindings out of thin air! (+RestraintAdded)"
 KinkyDungeonLivingAppear,"A RESTRAINTNAME has appeared around your neck!  Beware of additional restraints!"
+KinkyDungeonLivingDormant,"The RESTRAINTNAME has run out of bindings to add and has gone dormant for a period of time."
 
 NameAngel,Angel
 KillAngel,"You subdue the angel!"
