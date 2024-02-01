@@ -1,4 +1,4 @@
-	"use strict";
+"use strict";
 
 let KinkyDungeonEscapeTypes = {
 	"None": {
@@ -7,11 +7,11 @@ let KinkyDungeonEscapeTypes = {
 			return true;
 		},
 		minimaptext: () => {
-		  let escape = KinkyDungeonEscapeTypes["None"].check();
-		  if (escape)
+			let escape = KinkyDungeonEscapeTypes.None.check();
+			if (escape)
 				return TextGet("KDEscapeMinimap_Pass_None");
 			else
-				return TextGet("KDEscapeMinimap_Fail_None");			
+				return TextGet("KDEscapeMinimap_Fail_None");
 		},
 		doortext: () => {
 			return TextGet("KDEscapeDoor_None");
@@ -23,11 +23,11 @@ let KinkyDungeonEscapeTypes = {
 			return KDGameData.JailKey;
 		},
 		minimaptext: () => {
-		  let escape = KinkyDungeonEscapeTypes["Default"].check();
-		  if (escape)
+			let escape = KinkyDungeonEscapeTypes.Default.check();
+			if (escape)
 				return TextGet("KDEscapeMinimap_Pass_Default");
 			else
-				return TextGet("KDEscapeMinimap_Fail_Default");			
+				return TextGet("KDEscapeMinimap_Fail_Default");
 		},
 		doortext: () => {
 			return TextGet("KDEscapeDoor_Default");
@@ -52,7 +52,7 @@ let KinkyDungeonEscapeTypes = {
 		},
 		check: () => {
 			if (!KDMapData.KillTarget) //if this wasnt the escapemethod when this floor was created, spawn targets now
-				KinkyDungeonEscapeTypes["Kill"].worldgenstart();
+				KinkyDungeonEscapeTypes.Kill.worldgenstart();
 
 			var count = 0;
 			for (let enemy of KDMapData.Entities) {
@@ -64,8 +64,8 @@ let KinkyDungeonEscapeTypes = {
 			return KDMapData.KillQuota <= 0;
 		},
 		minimaptext: () => {
-		  let escape = KinkyDungeonEscapeTypes["Kill"].check();
-		  if (escape)
+			let escape = KinkyDungeonEscapeTypes.Kill.check();
+			if (escape)
 				return TextGet("KDEscapeMinimap_Pass_Kill");
 			else
 				return TextGet("KDEscapeMinimap_Fail_Kill").replace("NUMBER", KDMapData.KillQuota.toString()).replace("TYPE",TextGet("Name" + KDMapData.KillTarget));
@@ -77,7 +77,8 @@ let KinkyDungeonEscapeTypes = {
 	"Miniboss": {
 		selectValid: true,
 		worldgenstart: () => {
-			let enemytype = KinkyDungeonGetEnemy(['miniboss'], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0');
+			let enemytype = KinkyDungeonGetEnemy(['miniboss'], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0',
+				["miniboss"]);
 			let enemynumber = 1;
 			let data = {enemy: enemytype.name, number: enemynumber};
 			KinkyDungeonSendEvent("calcEscapeKillTarget", data);
@@ -94,7 +95,7 @@ let KinkyDungeonEscapeTypes = {
 		},
 		check: () => {
 			if (!KDMapData.KillTarget) //if this wasnt the escapemethod when this floor was created, spawn targets now
-				KinkyDungeonEscapeTypes["Miniboss"].worldgenstart();
+				KinkyDungeonEscapeTypes.Miniboss.worldgenstart();
 
 			var count = 0;
 			for (let enemy of KDMapData.Entities) {
@@ -106,8 +107,8 @@ let KinkyDungeonEscapeTypes = {
 			return KDMapData.KillQuota <= 0;
 		},
 		minimaptext: () => {
-		  let escape = KinkyDungeonEscapeTypes["Miniboss"].check();
-		  if (escape)
+			let escape = KinkyDungeonEscapeTypes.Miniboss.check();
+			if (escape)
 				return TextGet("KDEscapeMinimap_Pass_Miniboss");
 			else
 				return TextGet("KDEscapeMinimap_Fail_Miniboss").replace("TYPE",TextGet("Name" + KDMapData.KillTarget));
@@ -137,12 +138,12 @@ let KinkyDungeonEscapeTypes = {
 		},
 		check: () => {
 			if (KDMapData.ChestQuota < 0)
-				KinkyDungeonEscapeTypes["Chest"].worldgenstart();				
+				KinkyDungeonEscapeTypes.Chest.worldgenstart();
 			return KDMapData.ChestsOpened >= KDMapData.ChestQuota;
 		},
 		minimaptext: () => {
-		  let escape = KinkyDungeonEscapeTypes["Chest"].check();
-		  if (escape)
+			let escape = KinkyDungeonEscapeTypes.Chest.check();
+			if (escape)
 				return TextGet("KDEscapeMinimap_Pass_Chest");
 			else
 				return TextGet("KDEscapeMinimap_Fail_Chest").replace("NUMBER", (KDMapData.ChestQuota - KDMapData.ChestsOpened).toString());
@@ -172,12 +173,12 @@ let KinkyDungeonEscapeTypes = {
 		},
 		check: () => {
 			if (KDMapData.TrapQuota < 0)
-				KinkyDungeonEscapeTypes["Trap"].worldgenstart();				
+				KinkyDungeonEscapeTypes.Trap.worldgenstart();
 			return KDMapData.TrapsTriggered >= KDMapData.TrapQuota;
 		},
 		minimaptext: () => {
-		  let escape = KinkyDungeonEscapeTypes["Trap"].check();
-		  if (escape)
+			let escape = KinkyDungeonEscapeTypes.Trap.check();
+			if (escape)
 				return TextGet("KDEscapeMinimap_Pass_Trap");
 			else
 				return TextGet("KDEscapeMinimap_Fail_Trap").replace("NUMBER", (KDMapData.TrapQuota - KDMapData.TrapsTriggered).toString());
@@ -196,12 +197,12 @@ let KinkyDungeonEscapeTypes = {
 		},
 		check: () => {
 			if (KDMapData.QuestQuota < 0)
-				KinkyDungeonEscapeTypes["Quest"].worldgenstart();				
+				KinkyDungeonEscapeTypes.Quest.worldgenstart();
 			return KDMapData.QuestsCompleted >= KDMapData.QuestQuota;
 		},
 		minimaptext: () => {
-		  let escape = KinkyDungeonEscapeTypes["Quest"].check();
-		  if (escape)
+			let escape = KinkyDungeonEscapeTypes.Quest.check();
+			if (escape)
 				return TextGet("KDEscapeMinimap_Pass_Quest");
 			else
 				return TextGet("KDEscapeMinimap_Fail_Quest").replace("NUMBER", (KDMapData.QuestQuota - KDMapData.QuestsCompleted).toString());
@@ -216,11 +217,11 @@ let KinkyDungeonEscapeTypes = {
 			return KinkyDungeonFlags.has("BossUnlocked");
 		},
 		minimaptext: () => {
-		  let escape = KinkyDungeonEscapeTypes["Boss"].check();
-		  if (escape)
+			let escape = KinkyDungeonEscapeTypes.Boss.check();
+			if (escape)
 				return TextGet("KDEscapeMinimap_Pass_Boss");
 			else
-				return TextGet("KDEscapeMinimap_Fail_Boss");			
+				return TextGet("KDEscapeMinimap_Fail_Boss");
 		},
 		doortext: () => {
 			return TextGet("KDEscapeDoor_Boss");
