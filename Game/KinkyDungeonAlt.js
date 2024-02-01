@@ -1355,8 +1355,11 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 
 
 	// Place lost items chest
-	if (KinkyDungeonLostItems.length > 0)
+	if (KinkyDungeonLostItems.length > 0 && !KinkyDungeonStatsChoice.get("itemMode"))
 		KDChest(VisitedRooms[0].x*2 + 0, VisitedRooms[0].y*2 - 2, "lost_items");
+	else if (!KinkyDungeonInventoryGet("Default")) {
+		KDChest(VisitedRooms[0].x*2 + 0, VisitedRooms[0].y*2 - 2, "lost_clothes");
+	}
 
 	// Place the exit stairs
 	if (perksplaced > 0 && KinkyDungeonStatsChoice.get("perksmandatory"))

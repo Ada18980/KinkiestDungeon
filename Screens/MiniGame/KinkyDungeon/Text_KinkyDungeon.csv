@@ -19852,3 +19852,38 @@ RestraintBubbleLegsDesc,A squishy bubble made of a gelatinous substance!
 RestraintBubbleLegsDesc2,"You can pop it with a sharp enough edge, if you can get your tool in the position..."
 
 KDBubbleCombine,The bubbles on you combine into one big bubble!
+
+KDStairsLocked,The stairs have been locked down for NMB more turns.
+
+
+KDItemMode,"Loot Recovery:"
+
+KinkyDungeonItemMode0,Enabled
+KinkyDungeonItemMode1,Disabled
+KinkyDungeonItemMode2,Partial
+KinkyDungeonItemModeDesc0,You recover important items when you advance floors.
+KinkyDungeonItemModeDesc1,"Once items are lost, they are gone for good."
+KinkyDungeonItemModeDesc2,"Each item has a 25% chance of appearing in the chest between floors."
+LootCacheLostClothes,You find a familiar adventuring outfit!
+
+KDNavMap,Navigation Map
+KDNavMap_Info,Choose a path to take by clicking on a highlighted room.
+KDNavMap_Info2,Other paths will become inaccessible.
+KDNavMap_Floor,Floor NMB
+KDNavMap_Tileset,"Tileset: "
+KDNavMap_MapMod,"Map Modifier: "
+KDNavMap_RoomType,"Map Layout: "
+KDNavMap_Faction,"Controlling Faction: "
+KDNavMap_EscapeMethod,"Main Objective: "
+KDNavMap_SideRooms,"Side Objectives: "
+
+KDSideRoom_Lair_Witch,"Magical Study"
+KDSideRoom_Lair_Hall,"Maintenance Hall"
+KDSideRoom_GoldChest,"Ancient Chest"
+KDSideRoom_GuildHall,"Guild Hall"
+KDSideRoom_DemonShrine,"Dark Altar"
+KDSideRoom_DemonTransition,"Dimensional Rift"
+
+KDMapMod_,""
+
+KDRoomType_,""
