@@ -250,9 +250,7 @@ function KinkyDungeonHandleStepOffTraps(entity, x, y, moveX, moveY) {
 			}
 
 			if (msg) {
-				if (KDMapData.TrapQuota > 0) {
-					KDMapData.TrapQuota--;
-				}
+				KDMapData.TrapsTriggered++;
 				KDTrigPanic();
 
 				if (msg == "Default")
@@ -286,9 +284,7 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 				}
 			}
 			if (entity.player && triggered) {
-				if (KDMapData.TrapQuota > 0) {
-					KDMapData.TrapQuota--;
-				}
+				KDMapData.TrapsTriggered++;
 			}
 			if (entity.player && (msg || triggered)) {
 				KDTrigPanic();

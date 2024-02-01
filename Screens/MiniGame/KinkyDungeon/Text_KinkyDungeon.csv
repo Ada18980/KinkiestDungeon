@@ -7535,6 +7535,14 @@ KDClasses,"Choose Class:"
 
 KDSexyMode,"Distraction Mode:"
 
+KDProgressionMode,"Progression Mode:"
+KinkyDungeonProgressionMode0,Key Hunt
+KinkyDungeonProgressionMode1,Random
+KinkyDungeonProgressionMode2,Selected
+KinkyDungeonProgressionModeDesc0,"You will need to find the key to proceed to the next floor."
+KinkyDungeonProgressionModeDesc1,"Each floor will have a random task to unlock the stairs."
+KinkyDungeonProgressionModeDesc2,"You will select your task for each floor before you enter. Requires Perk Progression."
+
 KDPerksMode,"Perks Mode:"
 KinkyDungeonPerksMode0,Standard
 KinkyDungeonPerksMode1,Extra
@@ -18789,31 +18797,54 @@ KDColorPickerAdvanced,Advanced
 
 KDEscapeMinimap_Fail_Default,Exits locked! Find the key!
 KDEscapeMinimap_Pass_Default,Got the key!
-KDEscapeDoor_Default,"There seems to be a locked high-security door. Looks like you need a key to open it."
+KDEscapeMethod_Default,Escape Method: Key Hunt
+KDEscapeMethodDesc_Default,Find the key hidden in the level. Enemies can steal the key if you aren't careful.
+KDEscapeDoor_Default,There seems to be a locked high-security door. Looks like you need a key to open it.
 KDEscapeMinimap_Fail_Lever,Exits locked! Find a lever!
 KDEscapeMinimap_Pass_Lever,Exits unlocked!
-KDEscapeDoor_Lever,"There seems to be a locked high-security door. Looks like you need to pull a lever to open it."
+KDEscapeMethod_Lever,Escape Method: Lever Hunt
+KDEscapeMethodDesc_Lever,Escape Method: Find the lever hidden in the level to unlock the door.
+KDEscapeDoor_Lever,There seems to be a locked high-security door. Looks like you need to pull a lever to open it.
 KDEscapeMinimap_Fail_Panel,Exits locked! Find control panel!
 KDEscapeMinimap_Pass_Panel,Exits unlocked!
-KDEscapeDoor_Panel,"There seems to be a locked high-security door. Looks like you need find a control panel to open it."
+KDEscapeMethod_Panel,Escape Method: Panel Hunt
+KDEscapeMethodDesc_Panel,Escape Method: Find the control panel hidden in the level to unlock the door.
+KDEscapeDoor_Panel,There seems to be a locked high-security door. Looks like you need find a control panel to open it.
 KDEscapeMinimap_Fail_Boss,BOSS ROOM
 KDEscapeMinimap_Pass_Boss,BOSS ROOM CLEARED!
-KDEscapeDoor_Boss,"There seems to be a locked high-security door. Looks like you need to kill the boss to open it."
+KDEscapeMethod_Boss,Escape Method: Boss
+KDEscapeMethodDesc_Boss,Defeat the boss to unlock the door.  You can also unlock it by losing to the boss and being penalized.
+KDEscapeDoor_Boss,There seems to be a locked high-security door. Looks like you need to kill the boss to open it.
 KDEscapeMinimap_Fail_Kill,Exits locked!|Kill NUMBER TYPE!
 KDEscapeMinimap_Pass_Kill,Quota Reached!
-KDEscapeDoor_Kill,"There seems to be a locked high-security door. Looks like you need to kill the targetted enemies to open it."
-KDEscapeMinimap_Fail_Miniboss,Exits locked!|Kill Miniboss TYPE!
+KDEscapeMethod_Kill,Escape Method: Bounty
+KDEscapeMethodDesc_Kill,Defeat the specified targets to unlock the door.
+KDEscapeDoor_Kill,There seems to be a locked high-security door. Looks like you need to kill the targetted enemies to open it.
+KDEscapeMinimap_Fail_Miniboss,Exits locked!|Kill TYPE!
 KDEscapeMinimap_Pass_Miniboss,Miniboss killed!
-KDEscapeDoor_Miniboss,"There seems to be a locked high-security door. Looks like you need to kill the miniboss to open it."
+KDEscapeMethod_Miniboss,Escape Method: Dangerous Bounty
+KDEscapeMethodDesc_Miniboss,Defeat the specified strong enemy to unlock the door.
+KDEscapeDoor_Miniboss,There seems to be a locked high-security door. Looks like you need to kill the miniboss to open it.
 KDEscapeMinimap_Fail_Chest,Exits locked!|Open NUMBER Chests!
 KDEscapeMinimap_Pass_Chest,Quota Reached!
-KDEscapeDoor_Chest,"There seems to be a locked high-security door. Looks like you need to open more chests to open it."
+KDEscapeMethod_Chest,Escape Method: Chest Hunt
+KDEscapeMethodDesc_Chest,Unlock the specified number of chests to unlock the door.
+KDEscapeDoor_Chest,There seems to be a locked high-security door. Looks like you need to open more chests to open it.
+KDEscapeMinimap_Fail_Quest,Exits locked!|Complete NUMBER Quests!
+KDEscapeMinimap_Pass_Quest,Quota Reached!
+KDEscapeMethod_Quest,Escape Method: Quest Hunt
+KDEscapeMethodDesc_Quest,Complete the specified number of goddess quests to unlock the door.
+KDEscapeDoor_Quest,There seems to be a locked high-security door. Looks like you need to complete more quests to open it.
 KDEscapeMinimap_Fail_Trap,Exits locked!|Trigger NUMBER Traps!
 KDEscapeMinimap_Pass_Trap,Quota Reached!
-KDEscapeDoor_Trap,"There seems to be a locked high-security door. Looks like you need to trigger more traps to open it."
+KDEscapeMethod_Trap,Escape Method: Trap Hunt
+KDEscapeMethodDesc_Trap,Trigger the specified number of traps to unlock the door.
+KDEscapeDoor_Trap,There seems to be a locked high-security door. Looks like you need to trigger more traps to open it.
 KDEscapeMinimap_Fail_None,Room bugged. Please Report.
-KDEscapeMinimap_Pass_None,Room bugged. Please Report.
-KDEscapeDoor_None,"This door failed to load and cannot be opened.  Please report this bug to Ada with a save code."
+KDEscapeMinimap_Pass_None,""
+KDEscapeMethod_None,Something went wrong.
+KDEscapeMethod_None,Please report this bug to Ada with a save code.
+KDEscapeDoor_None,This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
 
 KDVarSuffCursed,(Cursed)
 KDVarSuffPurified,(Purified)

@@ -491,14 +491,10 @@ let KDMoveObjectFunctions = {
 				roll = data.roll;
 				noTrap = data.noTrap;
 				lootTrap = data.lootTrap;
-				if (KDMapData.ChestQuota > 0) {
-					KDMapData.ChestQuota--;
-				}
+				KDMapData.ChestsOpened++;
 				KinkyDungeonLoot(data.level, data.index, chestType, roll, data.tile, undefined, noTrap);
 				if (lootTrap) {
-					if (KDMapData.TrapQuota > 0) {
-						KDMapData.TrapQuota--;
-					}
+					KDMapData.TrapsTriggered++;
 					KDTrigPanic(true);
 					KDSpawnLootTrap(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, lootTrap.trap, lootTrap.mult, lootTrap.duration);
 				}

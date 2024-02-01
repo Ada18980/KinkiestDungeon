@@ -132,6 +132,7 @@ let KinkyDungeonNextDataLastTimeReceivedTimeout = 15000; // Clear data if more t
 let KinkyDungeonLastMoveDirection = null;
 /** @type {spell} */
 let KinkyDungeonTargetingSpell = null;
+let KinkyDungeonSelectedEscapeMethod = "Default";
 
 /**
  * Item to decrement by 1 when spell is cast
@@ -208,10 +209,15 @@ function KDDefaultMapData(RoomType = "", MapMod = "") {
 		JailFaction: [],
 		GuardFaction: [],
 		MapFaction: "",
+		EscapeMethod: "Default",
 		KillTarget: "",
 		KillQuota: -1,
 		TrapQuota: -1,
+		TrapsTriggered: 0,
 		ChestQuota: -1,
+		ChestsOpened: 0,
+		QuestQuota: -1,
+		QuestsCompleted: 0,
 	};
 }
 
@@ -1202,7 +1208,23 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 				KinkyDungeonSendEvent("tickFlags", {delta: 1});
 
 			KDQuestWorldgenStart(KDGameData.Quests);
-			KDEscapeWorldgenStart(KDGetEscapeMethod(Floor));
+
+			if (KDGameData.RoomType == "") {
+				KDMapData.EscapeMethod = KinkyDungeonSelectedEscapeMethod;
+				if (KinkyDungeonProgressionMode == "Random") {
+					KDMapData.EscapeMethod = KDGetRandomEscapeMethod();
+					let choices = [];
+					for (let method in KinkyDungeonEscapeTypes) {
+						if (KinkyDungeonEscapeTypes[method].selectValid) {
+							choices.push(method);
+						}
+					}
+					let choice = Math.floor(KDRandom()*choices.length);
+					KDMapData.EscapeMethod = choices[choice];
+				}			
+				KinkyDungeonSelectedEscapeMethod = "Default";
+				KDEscapeWorldgenStart(KDGetEscapeMethod(Floor));
+			}
 			KinkyDungeonSendEvent("postQuest", {});
 
 

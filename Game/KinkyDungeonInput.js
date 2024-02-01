@@ -551,6 +551,9 @@ function KDProcessInput(type, data) {
 						);
 					}
 				}
+				if(data.method) {
+					KinkyDungeonSelectedEscapeMethod = data.method;
+				}
 
 				KinkyDungeonMapSet(data.x, data.y, 'p');
 

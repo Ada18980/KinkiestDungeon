@@ -833,11 +833,13 @@ function KinkyDungeonHandleOrb() {
 let KDPerkConfirm = false;
 let KDPerkOrbPerks = [];
 let KDPerkOrbBondage = [];
+let KDPerkOrbMethod = "Default";
 function KinkyDungeonTakePerk(Amount, X, Y) {
 	KinkyDungeonSetFlag("NoDialogue", 3);
 
 	KDPerkOrbPerks = KinkyDungeonTilesGet(X + "," + Y).Perks;
 	KDPerkOrbBondage = KinkyDungeonTilesGet(X + "," + Y).Bondage;
+	KDPerkOrbMethod = KinkyDungeonTilesGet(X + "," + Y).Method;
 	KinkyDungeonDrawState = "PerkOrb";
 	KinkyDungeonOrbAmount = Amount;
 	KDOrbX = X;
@@ -888,7 +890,24 @@ function KinkyDungeonDrawPerkOrb() {
 			Top: 350 + count * pspacing - 30,
 			Width: Twidth + 20,
 			Height: 70 + 20,
-			Color: KDTextGray0,
+			Color: KDTextRed1,
+			LineWidth: 1,
+			zIndex: 60,
+			alpha: 0.7,
+		});
+		count += 1;
+	}
+
+	if (KinkyDungeonStatsChoice.get("escapeselect")) {
+		DrawTextFitKD(TextGet("KDEscapeMethod_" + KDPerkOrbMethod), 1250, 350 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 30);
+		DrawTextFitKD(TextGet("KDEscapeMethodDesc_" + KDPerkOrbMethod), 1250, 385 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 22);
+
+		FillRectKD(kdcanvas, kdpixisprites, "bg_method", {
+			Left: 1250-Twidth/2 - 10,
+			Top: 350 + count * pspacing - 30,
+			Width: Twidth + 20,
+			Height: 70 + 20,
+			Color: KDTextGreen1,
 			LineWidth: 1,
 			zIndex: 60,
 			alpha: 0.7,
@@ -898,7 +917,7 @@ function KinkyDungeonDrawPerkOrb() {
 
 
 	if (KDPerkConfirm) {
-		DrawTextFitKD(TextGet("KinkyDungeonPerkConfirm"), 1250, 720, 1300, "#ffffff", KDTextGray2, 30);
+		DrawTextFitKD(TextGet("KinkyDungeonPerkConfirm"), 1250, 800, 1300, "#ffffff", KDTextGray2, 30);
 	}
 
 	DrawButtonKDEx("reject", (bdata) => {
@@ -912,7 +931,7 @@ function KinkyDungeonDrawPerkOrb() {
 
 	DrawButtonKDEx("accept", (bdata) => {
 		if (KDPerkConfirm) {
-			KDSendInput("perkorb", {shrine: "perk", perks: KDPerkOrbPerks, bondage: KDPerkOrbBondage, Amount: 1, x: KDOrbX, y: KDOrbY});
+			KDSendInput("perkorb", {shrine: "perk", perks: KDPerkOrbPerks, bondage: KDPerkOrbBondage, method: KDPerkOrbMethod, Amount: 1, x: KDOrbX, y: KDOrbY});
 			KinkyDungeonDrawState = "Game";
 		}
 		KDPerkConfirm = true;

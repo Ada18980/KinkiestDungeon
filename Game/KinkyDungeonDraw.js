@@ -211,6 +211,9 @@ let KDTextGray2 = "#333333";
 let KDTextGray1 = "#111111";
 let KDTextGray05 = "#030303";
 let KDTextGray0 = "#000000";
+let KDTextGreen1 = "#001100";
+let KDTextBlue1 = "#000011";
+let KDTextRed1 = "#110000";
 let KDCurseColor = "#ff55aa";
 let KDGoodColor = "#77ff99";
 

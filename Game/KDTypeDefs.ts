@@ -2364,11 +2364,15 @@ interface KDMapDataType {
 	RoomType: string,
 	MapMod: string,
 
+	EscapeMethod: string,
 	KillTarget: string,
 	KillQuota: number,
-	
 	TrapQuota: number,
+	TrapsTriggered: number,
 	ChestQuota: number,
+	ChestsOpened: number,
+	QuestQuota: number,
+	QuestsCompleted: number,
 
 	JailPoints: KDJailPoint[],
 

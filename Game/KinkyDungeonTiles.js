@@ -122,16 +122,26 @@ function KDGetEscapeDoorText(method) {
 	return KinkyDungeonEscapeTypes[method].doortext();
 }
 
-
-let testDefault = undefined;
-
 function KDGetEscapeMethod(level) {
 		let alt = KDGetAltType(MiniGameKinkyDungeonLevel);
-		let defaultMethod = (testDefault != undefined) ? testDefault : "Default";
-		let escapeMethod = alt?.escapeMethod || (alt?.nokeys ? "None" : "") || defaultMethod;
-		let data = {altType: alt, escapeMethod: escapeMethod};
+		if (alt?.escapeMethod)
+			return alt.escapeMethod;
+		if (alt?.nokeys)
+			return "None";
+		let data = {altType: alt, escapeMethod: KDMapData.EscapeMethod};
 		KinkyDungeonSendEvent("calcEscapeMethod", data);
 		return data.escapeMethod;
+}
+
+function KDGetRandomEscapeMethod() {
+	let choices = [];
+	for (let method in KinkyDungeonEscapeTypes) {
+		if (KinkyDungeonEscapeTypes[method].selectValid) {
+			choices.push(method);
+		}
+	}
+	let choice = Math.floor(KDRandom()*choices.length);
+	return choices[choice];
 }
 
 /**
