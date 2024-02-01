@@ -68,6 +68,35 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		}
 		]
 	},
+	BubbleHogtie: {
+		filter_pose: ["Hogtie"],
+		rotation: -90,
+		pri_rotation: 1.1,
+		offset_x: .5,
+		offset_xFlip: .1,
+		pri_offsetx: 6,
+		offset_y: 0.1,
+		pri_offsety: 3,
+		global_default: "Closed",
+		mods: [
+		{
+			Layer: "Head",
+			rotation: -30,
+			rotation_x_anchor: 1190/MODELWIDTH,
+			rotation_y_anchor: 690/MODELHEIGHT,
+			offset_x: 1190/MODELWIDTH,
+			offset_y: 690/MODELHEIGHT,
+		},
+		{
+			Layer: "BG",
+			rotation: -90,
+			rotation_x_anchor: .5,
+			rotation_y_anchor: .5,
+			offset_x: .5,
+			offset_y: .4,
+		}
+		]
+	},
 	SuspendedHogtie: {
 		filter_pose: ["Hogtie"],
 		rotation: 0,
@@ -357,9 +386,9 @@ function KDGetAvailablePosesLegs(C: Character): string[] {
 
 	if (Object.keys(poses).length == 0) {
 		if (CheckPoseOrTags(C, "DefaultStand")) {
-			poses = {Hogtie: true};
+			poses = {Closed: true};
 		} else if (CheckPoseOrTags(C, "DefaultKneel")) {
-			poses = {Hogtie: true};
+			poses = {Kneel: true};
 		} else {
 			poses = {Hogtie: true};
 		}

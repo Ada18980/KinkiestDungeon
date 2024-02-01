@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.1.15"
+KDVersionStr,"5.2.0"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -559,7 +559,12 @@ KinkyDungeonStatDescRobotVetoTape,"The old civilization used significantly less 
 KinkyDungeonStatSlimePref,"More Encasement"
 KinkyDungeonStatDescSlimePref,"Enemies that encase you (e.g slimes, latex cubes) will appear more frequently."
 KinkyDungeonStatSlimeOptout,"Less Encasement"
-KinkyDungeonStatDescSlimeOptout,"Fewer encasement-related enemies will appear, although this does not remove it entirely."
+KinkyDungeonStatDescSlimeOptout,"Fewer encasement-related enemies will appear, although this does not remove them entirely."
+
+KinkyDungeonStatBubblePref,"More Bubbles"
+KinkyDungeonStatDescBubblePref,"Enemies that use bubbles (e.g. aqua slimes, water witches) will appear more frequently."
+KinkyDungeonStatBubbleOptout,"Less Bubbles"
+KinkyDungeonStatDescBubbleOptout,"Fewer bubble-related enemies will appear, although this does not remove them entirely."
 
 
 
@@ -19828,3 +19833,22 @@ KDDamageBubble,"Your RestraintName pops with a loud bang!"
 KDDamageModuleBubble,"Your RestraintName starts leaking air! Very, very slowly..."
 
 KDNoDamage,no damage
+
+NameAquaSlime,Aqua Slime
+KillAquaSlime,"The aqua slime melts into a wet puddle."
+AttackAquaSlime,"The aqua slime splashes against you! (DamageTaken)"
+AttackAquaSlimeBind,"The aqua slime expands into a bubble and throws itself at you! (+RestraintAdded)"
+
+RestraintBubbleHead,Aqua Bubble (Head)
+RestraintBubbleHeadDesc,A squishy bubble made of a gelatinous substance!
+RestraintBubbleHeadDesc2,"You can pop it with a sharp enough edge, if you can get your tool in the position..."
+
+RestraintBubbleArms,Aqua Bubble (Arms)
+RestraintBubbleArmsDesc,A squishy bubble made of a gelatinous substance!
+RestraintBubbleArmsDesc2,"You can pop it with a sharp enough edge, if you can get your tool in the position..."
+
+RestraintBubbleLegs,Aqua Bubble (Legs)
+RestraintBubbleLegsDesc,A squishy bubble made of a gelatinous substance!
+RestraintBubbleLegsDesc2,"You can pop it with a sharp enough edge, if you can get your tool in the position..."
+
+KDBubbleCombine,The bubbles on you combine into one big bubble!

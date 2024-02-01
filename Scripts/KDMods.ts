@@ -125,6 +125,40 @@ async function KDExecuteMods() {
 	}
 
 	try {
+
+		for (let entry of KDAllModFiles) {
+			console.log(entry);
+			const controller = new AbortController();
+			const signal = controller.signal;
+			const blobURL = await model.getURL(entry, {
+				password: undefined,
+				onprogress: (index, max) => {
+					console.log(`Loading progress: ${index},${max}`);
+				},
+				signal
+			});
+			console.log(blobURL);
+			let blob = await fetch(blobURL).then(r => r.blob());
+			console.log(blob);
+			let reader = new FileReader();
+
+			if (entry.filename.endsWith('.js') || entry.filename.endsWith('.ks')) {
+				// none
+			} else {
+				KDModFiles[KinkyDungeonRootDirectory + entry.filename] = URL.createObjectURL(blob);
+				KDModFiles[KinkyDungeonRootDirectory + "" + entry.filename] = KDModFiles[KinkyDungeonRootDirectory + entry.filename];
+
+				if (entry.filename?.startsWith("Data/")
+					|| entry.filename?.startsWith("DisplacementMaps/")
+					|| entry.filename?.startsWith("Models/")
+					|| entry.filename?.startsWith("TextureAtlas/")
+					|| entry.filename?.startsWith("Music/")) {
+						KDModFiles[entry.filename] = URL.createObjectURL(blob);
+						KDModFiles[PIXI.utils.path.toAbsolute(entry.filename)] = URL.createObjectURL(blob);
+					}
+			}
+
+		}
 		for (let entry of KDAllModFiles) {
 			console.log(entry);
 			const controller = new AbortController();
@@ -153,14 +187,7 @@ async function KDExecuteMods() {
 				};
 				reader.readAsText(file);
 			} else {
-				KDModFiles[KinkyDungeonRootDirectory + entry.filename] = URL.createObjectURL(blob);
-				KDModFiles[KinkyDungeonRootDirectory + "" + entry.filename] = KDModFiles[KinkyDungeonRootDirectory + entry.filename];
-
-				if (entry.filename?.startsWith("Data/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
-				if (entry.filename?.startsWith("DisplacementMaps/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
-				if (entry.filename?.startsWith("Models/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
-				if (entry.filename?.startsWith("TextureAtlas/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
-				if (entry.filename?.startsWith("Music/")) KDModFiles[entry.filename] = URL.createObjectURL(blob);
+				// none
 			}
 
 		}

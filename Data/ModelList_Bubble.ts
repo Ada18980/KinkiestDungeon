@@ -14,7 +14,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Latex"],
-	AddPose: ["UprightHogtie", "PreferKneel", "ShiftRight"],
+	AddPose: ["BubbleHogtie", "PreferKneel", "ShiftRight"],
 	Layers: ToLayerMap([
 		{ Name: "Bubble", Layer: "FurnitureFront", Pri: -40,
 			Invariant: true,
@@ -32,7 +32,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Latex"],
-	AddPose: ["UprightHogtie", "PreferKneel", "ShiftRight"],
+	AddPose: ["BubbleHogtie", "PreferKneel", "ShiftRight"],
 	Filters: {
 		Bubble: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":1.7000000000000002,"green":0.5166666666666666,"blue":2.3833333333333333,"alpha":1},
 	},
@@ -104,12 +104,16 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Latex"],
+	Filters: {
+		Bubble: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5},
+	},
 	Layers: ToLayerMap([
 		{ Name: "Head", Layer: "InflatableHead", Pri: 50,
 			Invariant: true,
 			EraseSprite: "BubbleHead",
 			EraseInvariant: true,
 			EraseLayers: ToMap(["HairHelmet"]),
+			InheritColor: "Bubble",
 		},
 	])
 });
@@ -121,9 +125,13 @@ AddModel({
 	Parent: "BubbleHead",
 	Restraint: true,
 	Categories: ["Restraints", "Latex"],
+	Filters: {
+		Bubble: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5},
+	},
 	Layers: ToLayerMap([
 		{ Name: "Arms", Layer: "InflatableArms", Pri: 50,
 			Invariant: true,
+			InheritColor: "Bubble",
 		},
 	])
 });
@@ -133,9 +141,13 @@ AddModel({
 	TopLevel: false,
 	Parent: "BubbleHead",
 	Categories: ["Restraints", "Latex"],
+	Filters: {
+		Bubble: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5},
+	},
 	Layers: ToLayerMap([
-		{ Name: "Arms", Layer: "InflatableLegs", Pri: 50,
+		{ Name: "Legs", Layer: "InflatableLegs", Pri: 50,
 			Invariant: true,
+			InheritColor: "Bubble",
 		},
 	])
 });

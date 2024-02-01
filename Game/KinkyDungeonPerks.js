@@ -367,6 +367,11 @@ let KinkyDungeonStatsPresets = {
 	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, tags: ["start"], debuff: true, block: ["NoBrats"]},
 	"TapePref": {category: "Toggles", id: "TapePref", cost: 0, tags: ["start"], block: ["TapeOptout"]},
 	"TapeOptout": {category: "Toggles", id: "TapeOptout", cost: 0, tags: ["start"], debuff: true, block: ["TapePref"]},
+	"SlimePref": {category: "Toggles", id: "SlimePref", cost: 0, tags: ["start"], block: ["SlimeOptout"]},
+	"SlimeOptout": {category: "Toggles", id: "SlimeOptout", cost: 0, tags: ["start"], debuff: true, block: ["SlimePref"]},
+	"BubblePref": {category: "Toggles", id: "BubblePref", cost: 0, tags: ["start"], block: ["BubbleOptout"]},
+	"BubbleOptout": {category: "Toggles", id: "BubbleOptout", cost: 0, tags: ["start"], debuff: true, block: ["BubblePref"]},
+
 	"NoDoll": {category: "Toggles", id: "NoDoll", cost: 0, tags: ["start"], debuff: true},
 	"NoPet": {category: "Toggles", id: "NoPet", cost: 0, tags: ["start"], debuff: true},
 
