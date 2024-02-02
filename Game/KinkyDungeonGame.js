@@ -2629,7 +2629,12 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 
 						if (KinkyDungeonStatsChoice.get("randomMode")) {
 							let spell = KDGetRandomSpell();
-							KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Spell: spell.name, Light: 5, lightColor: 0x28B4FF});
+							if (spell!=null){ // Make sure theres some spell left here, so we can create orb!
+								KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Spell: spell.name, Light: 5, lightColor: 0x28B4FF});
+							}
+							else { // just set default orb?
+								KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Light: 5, lightColor: 0x28B4FF});
+							}
 						} else
 							KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Light: 5, lightColor: 0x28B4FF});
 
