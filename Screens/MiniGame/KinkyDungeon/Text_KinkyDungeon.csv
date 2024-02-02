@@ -19915,6 +19915,7 @@ KDBubbleCombine,The bubbles on you combine into one big bubble!
 
 KDStairsLocked,The stairs have been locked down for NMB more turns.
 
+curseInfoTightness,"Curse of Increasing Tightness: Your restraints get tighter over time."
 curseInfoLethargy,"Curse of Lethargy: Reduce distraction over time, but miscast chance is increased by AMNT%."
 curseInfoMute,"Curse of Mute: You cannot converse, and verbal spells cost AMNT% more mana."
 curseInfoClumsy,"Curse of Clumsiness: After casting an arm spell, you drop your currently held weapon."
