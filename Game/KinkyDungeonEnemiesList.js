@@ -1268,7 +1268,7 @@ let KinkyDungeonEnemies = [
 		maxblock: 2,
 		maxdodge: 3,
 		visionRadius: 6, maxhp: 16, minLevel:4, weight:-1, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 1, attackRange: 1, power: 1.5, dmgType: "grope", fullBoundBonus: 2.5,
-		terrainTags: {"secondhalf":1, "thirdhalf":1, "latexAnger": 4, "latexRage": 4, "latexPleased": 3, "latexFriendly": 5, "alchemist": 10}, shrines: ["Latex"], allFloors: true,
+		terrainTags: {"secondhalf":1, "thirdhalf":1, "latexAnger": 4, "bubbleOptOut": -2, "bubblePref": 4, "latexRage": 4, "latexPleased": 3, "latexFriendly": 5, "alchemist": 10}, shrines: ["Latex"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "Gunpowder", amount: 3, weight: 10}]},
 	{name: "ElementalLatex", faction: "Elemental", hidetimerbar: true, playLine: "Elemental", clusterWith: "alchemist", outfit: "ElementalLatex", style: "ElementalLatex", bound: "ElementalLatex", squeeze: true,
 		tags: KDMapInit(["opendoors", "latexTrap", "elemental", "latex", "elite", "slashweakness", "melee", "glueimmune", "coldweakness", "electricresist", "pierceweakness", "acidweakness", "latexRestraints", "latexRestraintsHeavy", "latexGag", "leashing", "search", "doortrap"]),
@@ -2055,6 +2055,20 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"latexAnger": 3, "latexRage": 3, "alchemist": 2, "slimeBonus": 2, "slime": 5, "slimeOptOut": -2, "slimePref": 2, "jungle": 8, revenge: 10}, shrines: ["Latex"], allFloors: true,
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
+		],},
+
+	{name: "AquaSlime", clusterWith: "water", faction: "Slime", color: "#2277ee",
+		tags: KDMapInit(["ignoretiedup", "disarmimmune", "blindimmune", "elementsTrap", "minor", "water", "melee", "aquaRestraints", "pierceweakness", "electricweakness", "acidresist", "iceweakness"]), squeeze: true, ignorechance: 0.75, followRange: 1, AI: "hunt",  sneakThreshold: 1,
+		visionRadius: 4.5, blindSight: 2.5, maxhp: 7, minLevel: 0, weight:8, movePoints: 1.5, attackPoints: 2, attack: "MeleeBindSuicideWill",
+		suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "glue", fullBoundBonus: 2,
+		Animations: ["squishy"],
+		Sound: {
+			baseAmount: 0,
+		},
+		nopickpocket: true,
+		terrainTags: {"water": 4, "bubbleOptOut": -3, "bubblePref": 6, "jungle": 20, "temple": 4, "elements": 4}, allFloors: true, shrines: ["Elements"],
+		events: [
+			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Water", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
 		],},
 
 	{name: "SmallSlime", clusterWith: "slime", faction: "Slime", color: "#FF00FF", tags: KDMapInit(["ignoretiedup", "disarmimmune", "blindimmune", "latexTrap", "minor", "slime", "melee", "slimeRestraints", "meleeresist", "chainimmune", "electricweakness", "acidresist", "iceweakness"]), squeeze: true, ignorechance: 0.75, followRange: 1, AI: "hunt",  sneakThreshold: 1,
@@ -4092,7 +4106,7 @@ let KinkyDungeonEnemies = [
 			},
 		},
 		minLevel:3, weight:2, movePoints: 3, attackPoints: 4, attack: "SpellMeleeBindLock", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 3,
-		terrainTags: {"secondhalf":2, "lastthird":1, "elementsAnger": 6, "tech": -4, "water": 4, "ice": 2}, allFloors: true, shrines: [], followLeashedOnly: true,
+		terrainTags: {"secondhalf":2, "lastthird":1, "bubbleOptOut": -5, "bubblePref": 5, "elementsAnger": 6, "tech": -4, "water": 4, "ice": 2}, allFloors: true, shrines: [], followLeashedOnly: true,
 		attackLock: "White",
 		stamina: 5,
 		maxblock: 0,
@@ -4161,7 +4175,7 @@ let KinkyDungeonEnemies = [
 		attackLock: "Purple",
 		maxblock: 0,
 		maxdodge: 2,
-		terrainTags: {"secondhalf":2, "lastthird":1, "open": 4, "tech": -8, "slime": 4, "slimeOptOut": -2, "slimePref": 2}, allFloors: true, shrines: [],
+		terrainTags: {"secondhalf":2, "lastthird":1, "bubbleOptOut": -2, "bubblePref": 2, "open": 4, "tech": -8, "slime": 4, "slimeOptOut": -2, "slimePref": 2}, allFloors: true, shrines: [],
 		events: [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Slime", time: 14, power: 1, chance: 0.5, aoe: 0.5},
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ff00ff"},
@@ -4446,10 +4460,11 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, shrines: ["Illusion"], floors:KDMapInit([]), dropTable: [{name: "Ectoplasm", chance: 0.6, weight: 10}],},
 
 
-	{name: "TheWarden", outfit: "Fuuka", style: "Fuuka", nameList: "Fuuka", playLine: "TheWarden", bound: "Fuuka", faction: "Boss", clusterWith: "human", tags: KDMapInit(["nosub", "nocapture", "leashing", "noshop", "warden", "zombie", "ranged", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss", "nocapture", "unflinching"]),
-		armor: 0, followRange: 3, AI: "guard",
+	{name: "TheWarden1", outfit: "Jailer", style: "Jailer", nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
+		tags: KDMapInit(["nosub", "nocapture", "leashing", "noshop", "warden", "human", "magicresist", "ranged", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss", "nocapture", "unflinching"]),
+		armor: 1, followRange: 3, AI: "guard",
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},
+			//{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},
 		],
 		RestraintFilter: {
 			unlimitedRestraints: true,
@@ -4467,10 +4482,41 @@ let KinkyDungeonEnemies = [
 				//FuukaOrb: 10,
 			},
 		},
-		spells: ["ZombieOrb", "EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 1.5, projectileAttack: true, accuracy: 0.7, noChannel: true,
-		visionRadius: 8, maxhp: 80, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
-		attackLock: "White",
-		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: []},//{type: "dialogue", dialogue:"FuukaStage2", click: true}
+		spells: ["EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.75, noChannel: true,
+		visionRadius: 8, maxhp: 90, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
+		attackLock: "Purple",
+		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue", dialogue:"TheWardenStage2", click: true}]},
+
+
+
+	{name: "TheWarden2", outfit: "Jailer", style: "Jailer", nameList: "Fuuka", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
+		tags: KDMapInit(["nosub", "nocapture", "leashing", "noshop", "warden", "human", "magicresist", "ranged", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss", "nocapture", "unflinching"]),
+		followRange: 3, AI: "guard",
+		armor: 1,
+		events: [
+			//{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},
+		],
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
+		preferDodge: true,
+		stamina: 4,
+		maxblock: 1,
+		maxdodge: 3,
+		unlockCommandLevel: 3, unlockCommandCD: 7,
+		Magic: {
+			castCooldownUnique: {
+				//FuukaOrb: 12,
+			},
+			priority: {
+				//FuukaOrb: 10,
+			},
+		},
+		spells: ["EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 1.1, noChannel: true,
+		visionRadius: 9, maxhp: 110, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
+		attackLock: "HiSec",
+		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue", dialogue:"TheWardenWin", click: true}]},
+
 
 
 

@@ -28,6 +28,11 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.1.0
+ - Added Loot Recovery challenge mode
+ - Added Aqua Slime and related restraints
+ - Hopefully fixed shrine scarcity on bellows
+
 5.1.15
  - Tweaked future harness lower
  - Force restraints to use palette now applies to None palette
