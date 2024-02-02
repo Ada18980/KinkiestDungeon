@@ -792,8 +792,8 @@ Start the game as a submissive prisoner wandering the halls.
 作为一个在大厅里游荡的顺从囚犯开始游戏。
 Rusty Bolts
 生锈螺栓
-Most traps have a 25% misfire chance.
-大多数陷阱有 25% 的失效几率。
+Most traps have a 25% misfire chance each time you step on them.
+大多数陷阱在每次触发它们的时候有 25% 的失效几率。
 Not a Pet
 我不是宠物！
 Petsuits occur less often.
@@ -928,8 +928,8 @@ Being gagged blocks you from casting verbal spells regardless of gag power.
 无论等级如何，堵嘴类装备都会阻止你施放言语类咒语。
 Smooth Talker
 以和为贵
-Being gagged does not increase your miscast chance for verbal spells unless fully gagged.
-除非你的嘴被完全堵住，否则堵嘴不会增加你念错咒语的几率。
+Being gagged does not increase your miscast chance for verbal spells unless fully gagged, and reduces gag power by 20%.
+除非你的嘴被完全堵住，否则堵嘴不会增加你念错咒语的几率，并且会降低 20% 堵嘴的强度。
 Ball Gag Lover
 口球爱好者
 Increase occurrence of ball gags, decrease occurrence of muzzles.
@@ -7375,9 +7375,9 @@ A slow moving ball of flame that explodes for DamageDealt fire damage in a wide 
 You a hurl a massive fireball!
 你投出了一个巨大的火球！
 Fireblast
-火焰冲击波
-A slow moving ball of flame that explodes for 100 fire damage to the target and DamageDealt damage to surrounding enemies.
-缓慢移动的火球爆炸，对目标造成 100 点火焰伤害，并对周围的敌人造成伤害。
+火球术
+A bolt of flame that explodes for DamageDealt fire damage in an area.
+释放一个火球，击中敌人后在一个小范围区域造成 DamageDealt 火焰伤害。
 You a hurl a blast of flame!
 你扔出一道冲击波！
 Incinerate
@@ -7460,6 +7460,8 @@ You conjure an icy trap!
 你设置了一个霜冻陷阱！
 Flame Rune
 火焰符文
+A trap that deals DamageDealt fire damage in an area. Takes 3 turns to setup. 200% crit multiplier.
+设置一个触发后对该方格敌人造成 DamageDealt 点火焰伤害的陷阱。设置后需要 3 个回合才能生效。暴击伤害为 200%。
 You conjure an incendiary trap!
 你设置了一个火焰陷阱！
 Conjure a sphere for Duration turns that makes nearby entities Conductive and each turn deals DamageDealt electric damage to one of them.
@@ -8057,7 +8059,7 @@ Magically locks down a target, preventing them from struggling below the current
 You say a command word, and magical locks bind your target!
 你念出咒语，目标被魔法锁束缚！
 Chastity
-贞操
+贞操带
 Select which creature to lock in a belt
 选择要锁定在贞操带中的个体
 Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs/toys, and distracts constantly.
@@ -8914,7 +8916,7 @@ Learn Spell
 学习法术
 Spell Points:
 法术点：
-Level: 
+Level:
 等级：
 Spell Point Cost:
 法术点消耗：
