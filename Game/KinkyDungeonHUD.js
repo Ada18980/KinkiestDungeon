@@ -1643,7 +1643,7 @@ function KinkyDungeonHandleHUD() {
 			if (MouseIn(1100, 260, 300, 64)) {
 
 				KDMovePlayer(KDMapData.EndPosition.x, KDMapData.EndPosition.y, false);
-				KDGameData.JailKey = true;
+				KDMapData.KeysHeld++;
 				KinkyDungeonUpdateLightGrid = true;
 				return true;
 			} else
@@ -2008,10 +2008,9 @@ function KDDrawMinimap(MinimapX, MinimapY) {
 
 
 
-		let escape = KDCanEscape();
-		let alt = KDGetAltType(MiniGameKinkyDungeonLevel);
-		let escapeMethod = alt?.escapeMethod || (alt?.nokeys ? "None" : "") || "Default";
-		DrawTextFitKD(TextGet(`KDEscapeKey_${escape ? "Pass" : "Fail"}_${escapeMethod}`), kdminimap.x + KDMinimapWCurrent/2, kdminimap.y + KDMinimapHCurrent - 12, 0.75 * KDMinimapWCurrent,
+		let escapeMethod = KDGetEscapeMethod(MiniGameKinkyDungeonLevel);
+		let escape = KDCanEscape(escapeMethod);
+		DrawTextFitKD(KDGetEscapeMinimapText(escapeMethod), kdminimap.x + KDMinimapWCurrent/2, kdminimap.y + KDMinimapHCurrent - 12, 0.75 * KDMinimapWCurrent,
 		escape ? "#88ff88" : "#ff5555", KDTextGray0, 16, "center", zIndex + 1);
 	}
 	kdminimap.x = MinimapX;
@@ -2252,7 +2251,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 	}
 
 	/*if (KDToggleShowAllBuffs) {
-		let escape = KDCanEscape();
+		let escape = KDCanEscape(KDGetEscapeMethod(MiniGameKinkyDungeonLevel));
 		statsDraw.key = {
 			text: TextGet(escape ? "StatKeyEscapeKey" : "StatKeyEscapeNoKey"),
 			icon: escape ? "infoKey" : "infoNoKey",

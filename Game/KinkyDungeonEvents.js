@@ -1269,6 +1269,11 @@ let KDEventMapInventory = {
 
 			if (frequency < e.frequencyMin)
 				frequency = e.frequencyMin;
+				
+			if (!r) {
+				frequency = 100;
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingDormant").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightblue", 2);
+			}
 			KDItemDataSet(item, "livingFreq", frequency);
 
 		},
@@ -2261,7 +2266,19 @@ let KDEventMapInventory = {
 				}
 			}
 		},
-	}
+	},
+	"calcEscapeMethod": {
+		"DollmakerMask": (e, item, data) => {
+			if (KDGameData.RoomType == "" && !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel)) {
+				data.escapeMethod = "Kill";
+			}
+		},
+	},
+	"calcEscapeKillTarget": {
+		"DollmakerMask": (e, item, data) => {
+			data.enemy = "DollmakerTarget";
+		}
+	},
 };
 
 /**
@@ -2619,7 +2636,9 @@ const KDEventMapBuff = {
 					let restraintAdd = KinkyDungeonGetRestraint({tags: [...tags]}, KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "Purple");
 					if (restraintAdd) {
 						if (KDRandom() < 0.2) {
-							buff.power -= 1;
+							if (!KinkyDungeonStatsChoice.get("Haunted")) {
+								buff.power -= 1;
+							}
 							KinkyDungeonAddRestraintIfWeaker(restraintAdd, KDGetEffLevel(),true, "Purple", true);
 							KinkyDungeonSendTextMessage(5, TextGet("KDObserverCursed").replace("RestraintAdded", TextGet("Restraint" + restraintAdd.name)), "#ff5555", 1);
 							if (e.count > 1) {
@@ -8185,7 +8204,21 @@ let KDEventMapGeneric = {
 						});
 				}
 			}
-
+		},
+		"EscapeKillMarker": (e, data) => {
+			let escapeMethod = KDGetEscapeMethod(MiniGameKinkyDungeonLevel);
+			if (escapeMethod != "Kill" && escapeMethod != "Miniboss") return;
+			for (let enemy of KDMapData.Entities) {
+				if (enemy.Enemy.name == KDMapData.KillTarget) {
+					KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_killtarg", KinkyDungeonRootDirectory + "UI/QuestTarget.png",
+						(enemy.visual_x - data.CamX) * KinkyDungeonGridSizeDisplay,
+						(enemy.visual_y - data.CamY) * KinkyDungeonGridSizeDisplay,
+						KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
+							zIndex: -5,
+							tint: 0xff5555,
+						});
+				}
+			}
 		},
 	},
 	"drawminimap": {
@@ -8211,6 +8244,23 @@ let KDEventMapGeneric = {
 				}
 			}
 
+		},
+		"EscapeKillMarker": (e, data) => {
+			let escapeMethod = KDGetEscapeMethod(MiniGameKinkyDungeonLevel);
+			if (escapeMethod != "Kill" && escapeMethod != "Miniboss") return;
+			for (let enemy of KDMapData.Entities) {
+				if (enemy.Enemy.name == KDMapData.KillTarget && !enemy.aware && enemy.idle
+					&& (enemy.x - data.x + .5) * data.scale > 0 && (enemy.y - data.y + .5) * data.scale > 0
+					&& (enemy.x - data.x + .5) * data.scale < KDMinimapWidth()+21 && (enemy.y - data.y + .5) * data.scale < KDMinimapHeight() + 21) {
+					kdminimap.lineStyle(3, 0);
+					kdminimap.beginFill(0xff5555, 1.);
+					kdminimap.drawCircle(
+						(enemy.x - data.x + .5) * data.scale,
+						(enemy.y - data.y + .5) * data.scale,
+						data.scale/2);
+					kdminimap.endFill();
+				}
+			}
 		},
 	},
 	/** Stuff that occurs after the quest stuff is generated */

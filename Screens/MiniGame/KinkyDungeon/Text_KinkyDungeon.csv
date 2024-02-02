@@ -343,6 +343,8 @@ KinkyDungeonStatDollmakerVisor,"Doll Hunter V"
 KinkyDungeonStatDescDollmakerVisor,"You start with the Dollmaker's Visor."
 KinkyDungeonStatDollmakerMask,"Doll Hunter M"
 KinkyDungeonStatDescDollmakerMask,"You start with the Dollmaker's Mask."
+KinkyDungeonStatStartShadow,"Persisting Desires"
+KinkyDungeonStatDescStartShadow,"Your dark desires are endless."
 
 KinkyDungeonStatVengeance,"Vengeance"
 KinkyDungeonStatDescVengeance,"Defeating an enemy greatly distracts you."
@@ -1648,6 +1650,7 @@ KinkyDungeonSlimeHarden,"The slime starts to harden over your skin..."
 
 KinkyDungeonLivingSpread,"The RESTRAINTNAME creates more bindings out of thin air! (+RestraintAdded)"
 KinkyDungeonLivingAppear,"A RESTRAINTNAME has appeared around your neck!  Beware of additional restraints!"
+KinkyDungeonLivingDormant,"The RESTRAINTNAME has run out of bindings to add and has gone dormant for a period of time."
 
 NameAngel,Angel
 KillAngel,"You subdue the angel!"
@@ -3747,8 +3750,11 @@ RestraintMagicPetsuitDesc,"A set of straps and buckles enchanted with a powerful
 RestraintMagicPetsuitDesc2,"It's warded against cutting by nonmagic blades."
 
 RestraintMysticDuctTapeHead,Blessed Wrappings (Head)
-RestraintMysticDuctTapeHeadDesc,"A band of magic embalming ribbon wrapped tight around your eyes."
+RestraintMysticDuctTapeHeadDesc,"A band of magic embalming ribbon wrapped tight around your face."
 RestraintMysticDuctTapeHeadDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
+RestraintMysticDuctTapeEyes,Blessed Wrappings (Eyes)
+RestraintMysticDuctTapeEyesDesc,"A band of magic embalming ribbon wrapped tight around your eyes."
+RestraintMysticDuctTapeEyesDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintMysticDuctTapeMouth,Blessed Wrappings (Gag)
 RestraintMysticDuctTapeMouthDesc,"A band of magic embalming ribbon wrapped tight around your mouth."
 RestraintMysticDuctTapeMouthDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
@@ -3761,6 +3767,9 @@ RestraintMysticDuctTapeFeetMummyDesc2,"It clings, almost of its own accord, but 
 RestraintMysticDuctTapeBoots,Blessed Wrappings (Toes)
 RestraintMysticDuctTapeBootsDesc,"A layer of magic embalming ribbon wrapped tight around your feet."
 RestraintMysticDuctTapeBootsDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
+RestraintMysticDuctTapeHands,Blessed Wrappings (Hands)
+RestraintMysticDuctTapeHandsDesc,"A layer of magic embalming ribbon wrapped tight around your hands."
+RestraintMysticDuctTapeHandsDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintMysticDuctTapeLegsMummy,Blessed Wrappings (Legs)
 RestraintMysticDuctTapeLegsMummyDesc,"A layer of magic embalming ribbon wrapped tight around your thighs."
 RestraintMysticDuctTapeLegsMummyDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
@@ -7539,6 +7548,14 @@ KDClasses,"Choose Class:"
 
 KDSexyMode,"Distraction Mode:"
 
+KDProgressionMode,"Progression Mode:"
+KinkyDungeonProgressionMode0,Key Hunt
+KinkyDungeonProgressionMode1,Random
+KinkyDungeonProgressionMode2,Selected
+KinkyDungeonProgressionModeDesc0,"You will need to find the key to proceed to the next floor."
+KinkyDungeonProgressionModeDesc1,"Each floor will have a random task to unlock the stairs."
+KinkyDungeonProgressionModeDesc2,"You will select your task for each floor before you enter. Requires Perk Progression."
+
 KDPerksMode,"Perks Mode:"
 KinkyDungeonPerksMode0,Standard
 KinkyDungeonPerksMode1,Extra
@@ -7640,7 +7657,6 @@ KDStartGame,"Proceed"
 
 KinkyDungeonRemoveJailKey,"Your key to the stairs is taken away!"
 ItemPickupKeyring,"You found a keyring to the stairs! Now you just need to get there."
-KinkyDungeonNeedJailKey,"There seems to be a locked high-security door. Looks like you need a key."
 
 KinkyDungeonRemindJailPlayHelplessFuuka0,"Oh noes..."
 KinkyDungeonRemindJailPlayHelplessFuuka1,"Ueeee!"
@@ -18792,16 +18808,56 @@ KinkyDungeonChallenge,Challenge Settings:
 KDColorPickerSimple,Simple
 KDColorPickerAdvanced,Advanced
 
-KDEscapeKey_Fail_Default,Exits locked! Find the key!
-KDEscapeKey_Pass_Default,Got the key!
-KDEscapeKey_Fail_Lever,Exits locked! Find a lever!
-KDEscapeKey_Pass_Lever,Exits unlocked!
-KDEscapeKey_Fail_Panel,Exits locked! Find control panel!
-KDEscapeKey_Pass_Panel,Exits unlocked!
-KDEscapeKey_Fail_Boss,BOSS ROOM
-KDEscapeKey_Pass_Boss,BOSS ROOM CLEARED!
-KDEscapeKey_Fail_None,Room bugged. Please Report.
-KDEscapeKey_Pass_None,""
+KDEscapeMinimap_Fail_Key,Exits locked! Find NUMBER keys!
+KDEscapeMinimap_Pass_Key,Got the keys!
+KDEscapeMethod_Key,Escape Method: Key Hunt
+KDEscapeMethodDesc_Key,Find the keys hidden in the level. Enemies can steal the keys if you aren't careful.
+KDEscapeDoor_Key,There seems to be a locked high-security door. Looks like you need keys to open it.
+KDEscapeMinimap_Fail_Lever,Exits locked! Find a lever!
+KDEscapeMinimap_Pass_Lever,Exits unlocked!
+KDEscapeMethod_Lever,Escape Method: Lever Hunt
+KDEscapeMethodDesc_Lever,Escape Method: Find the lever hidden in the level to unlock the door.
+KDEscapeDoor_Lever,There seems to be a locked high-security door. Looks like you need to pull a lever to open it.
+KDEscapeMinimap_Fail_Panel,Exits locked! Find control panel!
+KDEscapeMinimap_Pass_Panel,Exits unlocked!
+KDEscapeMethod_Panel,Escape Method: Panel Hunt
+KDEscapeMethodDesc_Panel,Escape Method: Find the control panel hidden in the level to unlock the door.
+KDEscapeDoor_Panel,There seems to be a locked high-security door. Looks like you need find a control panel to open it.
+KDEscapeMinimap_Fail_Boss,BOSS ROOM
+KDEscapeMinimap_Pass_Boss,BOSS ROOM CLEARED!
+KDEscapeMethod_Boss,Escape Method: Boss
+KDEscapeMethodDesc_Boss,Defeat the boss to unlock the door.  You can also unlock it by losing to the boss and being penalized.
+KDEscapeDoor_Boss,There seems to be a locked high-security door. Looks like you need to kill the boss to open it.
+KDEscapeMinimap_Fail_Kill,Exits locked!|Kill NUMBER TYPE!
+KDEscapeMinimap_Pass_Kill,Quota Reached!
+KDEscapeMethod_Kill,Escape Method: Bounty
+KDEscapeMethodDesc_Kill,Defeat the specified targets to unlock the door.
+KDEscapeDoor_Kill,There seems to be a locked high-security door. Looks like you need to kill the targetted enemies to open it.
+KDEscapeMinimap_Fail_Miniboss,Exits locked!|Kill TYPE!
+KDEscapeMinimap_Pass_Miniboss,Miniboss killed!
+KDEscapeMethod_Miniboss,Escape Method: Dangerous Bounty
+KDEscapeMethodDesc_Miniboss,Defeat the specified strong enemy to unlock the door.
+KDEscapeDoor_Miniboss,There seems to be a locked high-security door. Looks like you need to kill the miniboss to open it.
+KDEscapeMinimap_Fail_Chest,Exits locked!|Open NUMBER Chests!
+KDEscapeMinimap_Pass_Chest,Quota Reached!
+KDEscapeMethod_Chest,Escape Method: Chest Hunt
+KDEscapeMethodDesc_Chest,Unlock the specified number of chests to unlock the door.
+KDEscapeDoor_Chest,There seems to be a locked high-security door. Looks like you need to open more chests to open it.
+KDEscapeMinimap_Fail_Quest,Exits locked!|Accept NUMBER Quests!
+KDEscapeMinimap_Pass_Quest,Quota Reached!
+KDEscapeMethod_Quest,Escape Method: Quest Hunt
+KDEscapeMethodDesc_Quest,Accept the specified number of goddess quests to unlock the door.
+KDEscapeDoor_Quest,There seems to be a locked high-security door. Looks like you need to accept more quests to open it.
+KDEscapeMinimap_Fail_Trap,Exits locked!|Trigger NUMBER Traps!
+KDEscapeMinimap_Pass_Trap,Quota Reached!
+KDEscapeMethod_Trap,Escape Method: Trap Hunt
+KDEscapeMethodDesc_Trap,Trigger the specified number of traps to unlock the door.
+KDEscapeDoor_Trap,There seems to be a locked high-security door. Looks like you need to trigger more traps to open it.
+KDEscapeMinimap_Fail_None,Room bugged. Please Report.
+KDEscapeMinimap_Pass_None,""
+KDEscapeMethod_None,Something went wrong.
+KDEscapeMethod_None,Please report this bug to Ada with a save code.
+KDEscapeDoor_None,This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
 
 KDVarSuffCursed,(Cursed)
 KDVarSuffPurified,(Purified)

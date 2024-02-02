@@ -132,6 +132,14 @@ let KDPerkUpdateStats = {
 			});
 		}
 	},
+	"StartShadow": () =>{
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
+		{
+			id: "Cursed",	type: "Cursed",	power: 10,duration: 9999, infinite: true,aura: "#4488ff",aurasprite: "Null",
+			events: [
+				{type: "Cursed", trigger: "tick", count: 1},
+			]});
+	},
 	"UnstableMagic": () => {
 		KDDamageAmpPerksSpell += KDUnstableAmp * Math.min(1, Math.max(KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax, KinkyDungeonMiscastChance));
 	},
@@ -335,6 +343,7 @@ let KinkyDungeonStatsPresets = {
 	"StartWolfgirl": {startPriority: 10, category: "Start", id: "StartWolfgirl", cost: -2, outfit: "Wolfgirl", tags: ["start"]},
 	"StartMaid": {startPriority: 20, category: "Start", id: "StartMaid", cost: -2, outfit: "Maid", tags: ["start"]},
 	"StartLatex": {startPriority: 15, category: "Start", id: "StartLatex", cost: -2, tags: ["start"]},
+	"StartShadow": {startPriority: 1, category: "Start", id: "StartShadow", cost: -1, tags: ["start"]},
 
 	"StartCyberDoll": {startPriority: 7, category: "Boss", id: "StartCyberDoll", cost: -2, locked: true, tags: ["start"]},
 
@@ -600,6 +609,7 @@ let KDPerkStart = {
 		KDPushSpell(KinkyDungeonFindSpell("Dagger"));
 		KinkyDungeonSpellChoices[0] = KinkyDungeonSpells.length - 1;
 	},
+
 	Brawler: () =>{
 		KinkyDungeonInventoryAddWeapon("Knife");
 		KDSetWeapon("Knife");

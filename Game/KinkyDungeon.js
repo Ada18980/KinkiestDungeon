@@ -956,7 +956,7 @@ function KinkyDungeonLoad() {
 			KinkyDungeonClassMode = localStorage.getItem("KinkyDungeonClassMode") != undefined ? localStorage.getItem("KinkyDungeonClassMode") : "Mage";
 			KinkyDungeonSexyPiercing = localStorage.getItem("KinkyDungeonSexyPiercing") != undefined ? localStorage.getItem("KinkyDungeonSexyPiercing") == "True" : false;
 			KinkyDungeonSexyPlug = localStorage.getItem("KinkyDungeonSexyPlug") != undefined ? localStorage.getItem("KinkyDungeonSexyPlug") == "True" : false;
-
+			KinkyDungeonProgressionMode = localStorage.getItem("KinkyDungeonProgressionMode") != undefined ? localStorage.getItem("KinkyDungeonProgressionMode") : "Key";
 			KinkyDungeonSaveMode = localStorage.getItem("KinkyDungeonSaveMode") != undefined ? localStorage.getItem("KinkyDungeonSaveMode") == "True" : false;
 			KinkyDungeonHardMode = localStorage.getItem("KinkyDungeonHardMode") != undefined ? localStorage.getItem("KinkyDungeonHardMode") == "True" : false;
 			KinkyDungeonExtremeMode = localStorage.getItem("KinkyDungeonExtremeMode") != undefined ? localStorage.getItem("KinkyDungeonExtremeMode") == "True" : false;
@@ -1083,6 +1083,7 @@ let KinkyDungeonTempWait = false;
 let KinkyDungeonSexyMode = false;
 let KinkyDungeonClassMode = "Mage";
 let KinkyDungeonRandomMode = false;
+let KinkyDungeonProgressionMode = "Key";
 let KinkyDungeonItemMode = 0;
 let KinkyDungeonEasyMode = 0;
 let KinkyDungeonSaveMode = false;
@@ -1770,6 +1771,8 @@ function KinkyDungeonRun() {
 
 		DrawButtonKDEx("KinkyDungeonPerkProgressionMode0", (bdata) => {
 			KinkyDungeonPerkProgressionMode = 0;
+			if (KinkyDungeonProgressionMode == "Key")
+				KinkyDungeonProgressionMode = "Key";
 			localStorage.setItem("KinkyDungeonPerkProgressionMode", KinkyDungeonPerkProgressionMode + "");
 			return true;
 		}, true, 875, 190 + II*spacing, 175, 50, TextGet("KinkyDungeonPerkProgressionMode0"), KinkyDungeonPerkProgressionMode == 0 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
@@ -2030,7 +2033,35 @@ function KinkyDungeonRun() {
 			}, true, 1500, 430, 64, 64, TextGet("KinkyDungeonSexyPiercings"), KinkyDungeonSexyPiercing, false, "#ffffff");*/
 		}
 
+		DrawTextFitKD(TextGet("KDProgressionMode"), 875 - 50, 580 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
+
+		DrawButtonKDEx("KinkyDungeonProgressionMode0", (bdata) => {
+			KinkyDungeonProgressionMode = "Key";
+			localStorage.setItem("KinkyDungeonProgressionMode", "Key");
+			return true;
+		}, true, 875, 580, 175, 50, TextGet("KinkyDungeonProgressionMode0"), KinkyDungeonProgressionMode == "Key" ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
+		if (MouseInKD("KinkyDungeonProgressionMode0")) {
+			DrawTextFitKD(TextGet("KinkyDungeonProgressionModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+		}
+
+		DrawButtonKDEx("KinkyDungeonProgressionMode1", (bdata) => {
+			KinkyDungeonProgressionMode = "Random";
+			localStorage.setItem("KinkyDungeonProgressionMode", "Random");
+			return true;
+		}, true, 1075, 580, 175, 50, TextGet("KinkyDungeonProgressionMode1"), KinkyDungeonProgressionMode == "Random" ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
+		if (MouseInKD("KinkyDungeonProgressionMode1")) {
+			DrawTextFitKD(TextGet("KinkyDungeonProgressionModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+		}
+
+		DrawButtonKDEx("KinkyDungeonProgressionMode2", (bdata) => {
+			KinkyDungeonProgressionMode = "Select";
+			localStorage.setItem("KinkyDungeonProgressionMode", "Select");
+			return true;
+		}, KinkyDungeonPerkProgressionMode != 0, 1275, 580, 175, 50, TextGet("KinkyDungeonProgressionMode2"), KinkyDungeonPerkProgressionMode == 0 ? "#ff5555" : (KinkyDungeonProgressionMode == "Select" ? "#ffffff" : "#888888"), "", undefined, undefined, true, KDButtonColor);
+		if (MouseInKD("KinkyDungeonProgressionMode2")) {
+			DrawTextFitKD(TextGet("KinkyDungeonProgressionModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+		}
 
 
 
@@ -3362,6 +3393,9 @@ function KDUpdatePlugSettings(evalHardMode) {
 	KinkyDungeonStatsChoice.set("hideperkbondage", KinkyDungeonPerkBondageVisMode == 0 ? true : undefined);
 	KinkyDungeonStatsChoice.set("partialhideperkbondage", KinkyDungeonPerkBondageVisMode == 1 ? true : undefined);
 
+	KinkyDungeonStatsChoice.set("escapekey", KinkyDungeonProgressionMode == "Key" ? true : undefined);
+	KinkyDungeonStatsChoice.set("escaperandom", KinkyDungeonProgressionMode == "Random" ? true : undefined);
+	KinkyDungeonStatsChoice.set("escapeselect", KinkyDungeonProgressionMode == "Select" ? true : undefined);
 
 
 

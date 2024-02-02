@@ -1124,6 +1124,7 @@ function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountM
 				QuestLocation: KDCurrentWorldSlot,
 				QuestRoom: KDMapData.RoomType,
 			});
+			KDMapData.QuestsAccepted++;
 			KinkyDungeonSetFlag(Name, -1, -1);
 			spawnFunction(Goddess, Name);
 		},

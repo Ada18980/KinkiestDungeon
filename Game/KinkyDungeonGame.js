@@ -132,6 +132,7 @@ let KinkyDungeonNextDataLastTimeReceivedTimeout = 15000; // Clear data if more t
 let KinkyDungeonLastMoveDirection = null;
 /** @type {spell} */
 let KinkyDungeonTargetingSpell = null;
+let KinkyDungeonSelectedEscapeMethod = "Key";
 
 /**
  * Item to decrement by 1 when spell is cast
@@ -208,6 +209,17 @@ function KDDefaultMapData(RoomType = "", MapMod = "") {
 		JailFaction: [],
 		GuardFaction: [],
 		MapFaction: "",
+		EscapeMethod: "Key",
+		KillTarget: "",
+		KillQuota: -1,
+		TrapQuota: -1,
+		TrapsTriggered: 0,
+		ChestQuota: -1,
+		ChestsOpened: 0,
+		QuestQuota: -1,
+		QuestsAccepted: 0,
+		KeyQuota: -1,
+		KeysHeld: 0,
 	};
 }
 
@@ -650,8 +662,8 @@ function KDInitTempValues(seed) {
 	KDGameData.OfferFatigue = 0;
 	KDGameData.KeyringLocations = [];
 
-	if (KDGameData.JailKey == undefined) {
-		KDGameData.JailKey = false;
+	if (KDMapData.KeysHeld == undefined) {
+		KDMapData.KeysHeld = 0;
 	}
 
 	KDGameData.RescueFlag = false;
@@ -840,7 +852,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			}
 			height = altType.height;
 			width = altType.width;
-			KDGameData.JailKey = false;
+			KDMapData.KeysHeld = 0;
 		}
 		KinkyDungeonSetFlag("BossUnlocked", 0);
 		if (altType && !bossRules && altType.nokeys) {
@@ -1199,6 +1211,23 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 				KinkyDungeonSendEvent("tickFlags", {delta: 1});
 
 			KDQuestWorldgenStart(KDGameData.Quests);
+
+			if (KDGameData.RoomType == "") {
+				KDMapData.EscapeMethod = KinkyDungeonSelectedEscapeMethod;
+				if (KinkyDungeonStatsChoice.get("escaperandom")) {
+					KDMapData.EscapeMethod = KDGetRandomEscapeMethod();
+					let choices = [];
+					for (let method in KinkyDungeonEscapeTypes) {
+						if (KinkyDungeonEscapeTypes[method].selectValid) {
+							choices.push(method);
+						}
+					}
+					let choice = Math.floor(KDRandom()*choices.length);
+					KDMapData.EscapeMethod = choices[choice];
+				}			
+				KinkyDungeonSelectedEscapeMethod = "Key";
+				KDEscapeWorldgenStart(KDGetEscapeMethod(Floor));
+			}
 			KinkyDungeonSendEvent("postQuest", {});
 
 

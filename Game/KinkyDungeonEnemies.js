@@ -3589,7 +3589,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.playAllowed = false;
 	AIData.startedDialogue = false;
 	AIData.playChance = 0.1;
-	if (KDGameData.JailKey) AIData.playChance += 0.25;
+	if (KDMapData.KeysHeld > 0) AIData.playChance += 0.25;
 	if (AIData.playerDist < 1.5) AIData.playChance += 0.1;
 
 	if (!enemy.personality) enemy.personality = KDGetPersonality(enemy);

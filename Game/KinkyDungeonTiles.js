@@ -110,8 +110,38 @@ function KinkyDungeonHandleMoveToTile(toTile) {
 	}
 }
 
-function KDCanEscape() {
-	return KDGameData.JailKey || KinkyDungeonFlags.has("BossUnlocked");
+function KDCanEscape(method) {
+	return KinkyDungeonEscapeTypes[method].check();
+}
+
+function KDGetEscapeMinimapText(method) {
+	return KinkyDungeonEscapeTypes[method].minimaptext();
+}
+
+function KDGetEscapeDoorText(method) {
+	return KinkyDungeonEscapeTypes[method].doortext();
+}
+
+function KDGetEscapeMethod(level) {
+		let alt = KDGetAltType(MiniGameKinkyDungeonLevel);
+		if (alt?.escapeMethod)
+			return alt.escapeMethod;
+		if (alt?.nokeys)
+			return "None";
+		let data = {altType: alt, escapeMethod: KDMapData.EscapeMethod};
+		KinkyDungeonSendEvent("calcEscapeMethod", data);
+		return data.escapeMethod;
+}
+
+function KDGetRandomEscapeMethod() {
+	let choices = [];
+	for (let method in KinkyDungeonEscapeTypes) {
+		if (KinkyDungeonEscapeTypes[method].selectValid) {
+			choices.push(method);
+		}
+	}
+	let choice = Math.floor(KDRandom()*choices.length);
+	return choices[choice];
 }
 
 /**
@@ -140,12 +170,12 @@ function KDEffectTileTags(x, y) {
 
 
 function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
-	if (KinkyDungeonFlags.get("stairslocked")) {
+  if (KinkyDungeonFlags.get("stairslocked")) {
 		KinkyDungeonSendActionMessage(10, TextGet("KDStairsLocked").replace("NMB", "" + KinkyDungeonFlags.get("stairslocked")), "#ffffff", 1);
 	} else
 
-	if (!KDCanEscape()) {
-		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonNeedJailKey"), "#ffffff", 1);
+	if (!KDCanEscape(KDGetEscapeMethod(MiniGameKinkyDungeonLevel))) {
+		KinkyDungeonSendActionMessage(10, KDGetEscapeDoorText(KDGetEscapeMethod(MiniGameKinkyDungeonLevel)), "#ffffff", 1);
 	}
 	else if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.AltStairAction) {
 		KDStairsAltAction[KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).AltStairAction](toTile, suppressCheckPoint);

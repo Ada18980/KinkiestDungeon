@@ -523,7 +523,7 @@ let KDTeaseAttacks = {
 				&& !KinkyDungeonIsSlowed(enemy)
 				&& (
 					player.player && AIData.attack.includes("Bind") && KDCanPickpocketPlayer(player) && !KDEnemyHasFlag(enemy, "nosteal")
-					&& !enemy.Enemy.nopickpocket && !KDGameData.JailKey && KDCanPickpocket(enemy)
+					&& !enemy.Enemy.nopickpocket && KDMapData.KeysHeld==0 && KDCanPickpocket(enemy)
 				) && KDPlayerIsStunned() &&
 				(
 					((KDIsPlayerTethered(KinkyDungeonPlayerEntity) || KinkyDungeonSlowLevel > 9) && KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.unarmed

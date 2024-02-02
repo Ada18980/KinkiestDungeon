@@ -13,7 +13,7 @@ let KDPlayerEffects = {
 			if (roped) KDSendStatus('bound', "WeakMagicRopeArms", "spell_" + spell.name);
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonMagic" + (playerEffect.msg || "Rope")).KDReplaceOrAddDmg( dmg.string)
 				, "#ff0000", playerEffect.time);
-
+			if (roped) KDMapData.TrapsTriggered++;
 			if (roped) return {sfx: "MagicSlash", effect: true};
 		}
 		return {sfx: "Shield", effect: false};

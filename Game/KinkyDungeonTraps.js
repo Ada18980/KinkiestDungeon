@@ -250,6 +250,7 @@ function KinkyDungeonHandleStepOffTraps(entity, x, y, moveX, moveY) {
 			}
 
 			if (msg) {
+				KDMapData.TrapsTriggered++;
 				KDTrigPanic();
 
 				if (msg == "Default")
@@ -281,6 +282,9 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 					msg = res.msg;
 					triggered = res.triggered;
 				}
+			}
+			if (entity.player && triggered) {
+				KDMapData.TrapsTriggered++;
 			}
 			if (entity.player && (msg || triggered)) {
 				KDTrigPanic();
