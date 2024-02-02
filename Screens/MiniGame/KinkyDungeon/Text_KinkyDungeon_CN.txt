@@ -10020,6 +10020,20 @@ Choose Class:
 选择类别：
 Distraction Mode:
 性奋模式：
+Progression Mode:
+进展模式：
+Key Hunt
+寻找钥匙
+Random
+随机
+Selected
+选择
+You will need to find the key to proceed to the next floor.
+你需要找到钥匙才能进入下一层。
+Each floor will have a random task to unlock the stairs.
+每个楼层都会有一个随机任务，你需要完成它才能进入下一层。
+You will select your task for each floor before you enter. Requires Perk Progression.
+在进入之前，你可以自行选择楼层的任务。需要技能: 进度。
 Perks Mode:
 技能模式：
 Extra
