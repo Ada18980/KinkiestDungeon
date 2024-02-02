@@ -2613,7 +2613,9 @@ const KDEventMapBuff = {
 					let restraintAdd = KinkyDungeonGetRestraint({tags: [...tags]}, KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "Purple");
 					if (restraintAdd) {
 						if (KDRandom() < 0.2) {
-							buff.power -= 1;
+							if (!KinkyDungeonStatsChoice.get("Haunted")) {
+								buff.power -= 1;
+							}
 							KinkyDungeonAddRestraintIfWeaker(restraintAdd, KDGetEffLevel(),true, "Purple", true);
 							KinkyDungeonSendTextMessage(5, TextGet("KDObserverCursed").replace("RestraintAdded", TextGet("Restraint" + restraintAdd.name)), "#ff5555", 1);
 							if (e.count > 1) {

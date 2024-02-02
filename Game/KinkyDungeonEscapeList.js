@@ -79,32 +79,26 @@ let KinkyDungeonEscapeTypes = {
 		worldgenstart: () => {
 			let enemytype = KinkyDungeonGetEnemy(['miniboss'], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0',
 				["miniboss"]);
-			let enemynumber = 1;
-			let data = {enemy: enemytype.name, number: enemynumber};
-			KinkyDungeonSendEvent("calcEscapeKillTarget", data);
+			let data = {enemy: enemytype.name};
+			KinkyDungeonSendEvent("calcEscapeMinibossTarget", data);
 			KDMapData.KillTarget = data.enemy;
-			KDMapData.KillQuota = data.number;
-			for (let i = 0; i < data.number; i++) {
-				let point = KinkyDungeonGetRandomEnemyPoint(true);
-				if (point) {
-					let ens = KinkyDungeonSummonEnemy(point.x, point.y, data.enemy, 1, 2.9);
-					KinkyDungeonSetEnemyFlag(ens[0], "killtarget", -1);
-					KDMakeHighValue(ens[0]);
-				}
+			let point = KinkyDungeonGetRandomEnemyPoint(true);
+			if (point) {
+				let ens = KinkyDungeonSummonEnemy(point.x, point.y, data.enemy, 1, 2.9);
+				KinkyDungeonSetEnemyFlag(ens[0], "killtarget", -1);
+				KDMakeHighValue(ens[0]);
 			}
 		},
 		check: () => {
 			if (!KDMapData.KillTarget) //if this wasnt the escapemethod when this floor was created, spawn targets now
 				KinkyDungeonEscapeTypes.Miniboss.worldgenstart();
 
-			var count = 0;
 			for (let enemy of KDMapData.Entities) {
 				if (KDEnemyHasFlag(enemy, "killtarget")) {
-					count++;
+					return false;
 				}
 			}
-			KDMapData.KillQuota = count;
-			return KDMapData.KillQuota <= 0;
+			return true;
 		},
 		minimaptext: () => {
 			let escape = KinkyDungeonEscapeTypes.Miniboss.check();
@@ -198,14 +192,14 @@ let KinkyDungeonEscapeTypes = {
 		check: () => {
 			if (KDMapData.QuestQuota < 0)
 				KinkyDungeonEscapeTypes.Quest.worldgenstart();
-			return KDMapData.QuestsCompleted >= KDMapData.QuestQuota;
+			return KDMapData.QuestsAccepted >= KDMapData.QuestQuota;
 		},
 		minimaptext: () => {
 			let escape = KinkyDungeonEscapeTypes.Quest.check();
 			if (escape)
 				return TextGet("KDEscapeMinimap_Pass_Quest");
 			else
-				return TextGet("KDEscapeMinimap_Fail_Quest").replace("NUMBER", (KDMapData.QuestQuota - KDMapData.QuestsCompleted).toString());
+				return TextGet("KDEscapeMinimap_Fail_Quest").replace("NUMBER", (KDMapData.QuestQuota - KDMapData.QuestsAccepted).toString());
 		},
 		doortext: () => {
 			return TextGet("KDEscapeDoor_Quest");

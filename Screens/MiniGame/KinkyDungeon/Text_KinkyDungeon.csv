@@ -343,6 +343,8 @@ KinkyDungeonStatDollmakerVisor,"Doll Hunter V"
 KinkyDungeonStatDescDollmakerVisor,"You start with the Dollmaker's Visor."
 KinkyDungeonStatDollmakerMask,"Doll Hunter M"
 KinkyDungeonStatDescDollmakerMask,"You start with the Dollmaker's Mask."
+KinkyDungeonStatStartShadow,"Persisting Desires"
+KinkyDungeonStatDescStartShadow,"Your dark desires are endless."
 
 KinkyDungeonStatVengeance,"Vengeance"
 KinkyDungeonStatDescVengeance,"Defeating an enemy greatly distracts you."
@@ -3743,8 +3745,11 @@ RestraintMagicPetsuitDesc,"A set of straps and buckles enchanted with a powerful
 RestraintMagicPetsuitDesc2,"It's warded against cutting by nonmagic blades."
 
 RestraintMysticDuctTapeHead,Blessed Wrappings (Head)
-RestraintMysticDuctTapeHeadDesc,"A band of magic embalming ribbon wrapped tight around your eyes."
+RestraintMysticDuctTapeHeadDesc,"A band of magic embalming ribbon wrapped tight around your face."
 RestraintMysticDuctTapeHeadDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
+RestraintMysticDuctTapeEyes,Blessed Wrappings (Eyes)
+RestraintMysticDuctTapeEyesDesc,"A band of magic embalming ribbon wrapped tight around your eyes."
+RestraintMysticDuctTapeEyesDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintMysticDuctTapeMouth,Blessed Wrappings (Gag)
 RestraintMysticDuctTapeMouthDesc,"A band of magic embalming ribbon wrapped tight around your mouth."
 RestraintMysticDuctTapeMouthDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
@@ -3757,6 +3762,9 @@ RestraintMysticDuctTapeFeetMummyDesc2,"It clings, almost of its own accord, but 
 RestraintMysticDuctTapeBoots,Blessed Wrappings (Toes)
 RestraintMysticDuctTapeBootsDesc,"A layer of magic embalming ribbon wrapped tight around your feet."
 RestraintMysticDuctTapeBootsDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
+RestraintMysticDuctTapeHands,Blessed Wrappings (Hands)
+RestraintMysticDuctTapeHandsDesc,"A layer of magic embalming ribbon wrapped tight around your hands."
+RestraintMysticDuctTapeHandsDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintMysticDuctTapeLegsMummy,Blessed Wrappings (Legs)
 RestraintMysticDuctTapeLegsMummyDesc,"A layer of magic embalming ribbon wrapped tight around your thighs."
 RestraintMysticDuctTapeLegsMummyDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
@@ -18830,11 +18838,11 @@ KDEscapeMinimap_Pass_Chest,Quota Reached!
 KDEscapeMethod_Chest,Escape Method: Chest Hunt
 KDEscapeMethodDesc_Chest,Unlock the specified number of chests to unlock the door.
 KDEscapeDoor_Chest,There seems to be a locked high-security door. Looks like you need to open more chests to open it.
-KDEscapeMinimap_Fail_Quest,Exits locked!|Complete NUMBER Quests!
+KDEscapeMinimap_Fail_Quest,Exits locked!|Accept NUMBER Quests!
 KDEscapeMinimap_Pass_Quest,Quota Reached!
 KDEscapeMethod_Quest,Escape Method: Quest Hunt
-KDEscapeMethodDesc_Quest,Complete the specified number of goddess quests to unlock the door.
-KDEscapeDoor_Quest,There seems to be a locked high-security door. Looks like you need to complete more quests to open it.
+KDEscapeMethodDesc_Quest,Accept the specified number of goddess quests to unlock the door.
+KDEscapeDoor_Quest,There seems to be a locked high-security door. Looks like you need to accept more quests to open it.
 KDEscapeMinimap_Fail_Trap,Exits locked!|Trigger NUMBER Traps!
 KDEscapeMinimap_Pass_Trap,Quota Reached!
 KDEscapeMethod_Trap,Escape Method: Trap Hunt

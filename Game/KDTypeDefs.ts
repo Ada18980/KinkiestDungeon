@@ -2372,7 +2372,7 @@ interface KDMapDataType {
 	ChestQuota: number,
 	ChestsOpened: number,
 	QuestQuota: number,
-	QuestsCompleted: number,
+	QuestsAccepted: number,
 
 	JailPoints: KDJailPoint[],
 
