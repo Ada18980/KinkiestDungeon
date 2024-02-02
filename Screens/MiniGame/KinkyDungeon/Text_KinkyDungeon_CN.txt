@@ -16466,22 +16466,96 @@ Challenge Settings:
 挑战设置：
 Advanced
 高级
-Exits locked! Find the key!
-出口被锁住了！寻找钥匙！
-Got the key!
+Exits locked! Find NUMBER keys!
+出口被锁住了！寻找 NUMBER 把钥匙！
+Got the keys!
 拿到钥匙了！
+Escape Method: Key Hunt
+逃脱方法：寻找钥匙
+Find the keys hidden in the level. Enemies can steal the keys if you aren't careful.
+找到隐藏在关卡中的钥匙。敌人可能会在你不注意的时候偷走钥匙。
+There seems to be a locked high-security door. Looks like you need keys to open it.
+似乎有一扇被锁住的高安全门。看来你需要钥匙才能打开它。
 Exits locked! Find a lever!
 出口被锁住了！寻找拉杆！
 Exits unlocked!
 出口已解锁！
+Escape Method: Lever Hunt
+逃脱方法：寻找拉杆
+Escape Method: Find the lever hidden in the level to unlock the door.
+逃生方法：找到隐藏在关卡中的拉杆来解锁下一层的门。
+There seems to be a locked high-security door. Looks like you need to pull a lever to open it.
+似乎有一扇被锁住的高安全门。看起来你需要拉动拉杆才能打开它。
 Exits locked! Find control panel!
-出口被锁住了！寻找控制面板！
+出口已锁定！寻找控制面板！
+Escape Method: Panel Hunt
+逃生方法：寻找面板
+Escape Method: Find the control panel hidden in the level to unlock the door.
+逃生方法：找到隐藏在关卡中的控制面板来解锁下一层的门。
+There seems to be a locked high-security door. Looks like you need find a control panel to open it.
+似乎有一扇被锁住的高安全门。看来你需要找到一个控制面板才能打开它。
 BOSS ROOM
 BOSS 房
 BOSS ROOM CLEARED!
 BOSS 房已清空！
+Escape Method: Boss
+逃生方法：Boss
+Defeat the boss to unlock the door.  You can also unlock it by losing to the boss and being penalized.
+击败boss即可打开门。你也可以通过输给boss并受到惩罚来解锁它。
+There seems to be a locked high-security door. Looks like you need to kill the boss to open it.
+似乎有一扇被锁住的高安全门。看来需要杀掉boss才能打开。
+Exits locked!|Kill NUMBER TYPE!
+出口已锁定！|需击杀 NUMBER 名 TYPE!
+Quota Reached!
+已达到要求！
+Escape Method: Bounty
+逃生方法：赏金
+Defeat the specified targets to unlock the door.
+击败指定目标即可解锁下一层的门。
+There seems to be a locked high-security door. Looks like you need to kill the targetted enemies to open it.
+似乎有一扇被锁住的高安全门。看来你需要杀死目标敌人才能打开它。
+Exits locked!|Kill TYPE!
+出口已锁定！|需击杀 TYPE!
+Miniboss killed!
+小型boss已击杀！
+Escape Method: Dangerous Bounty
+逃生方法：危险的赏金
+Defeat the specified strong enemy to unlock the door.
+击败指定强敌即可解锁下一层的门。
+There seems to be a locked high-security door. Looks like you need to kill the miniboss to open it.
+似乎有一扇被锁住的高安全门。看来你需要杀死小型boss才能打开它。
+Exits locked!|Open NUMBER Chests!
+出口已锁定！|需要打开 NUMBER 个宝箱！
+Escape Method: Chest Hunt
+逃生方法：寻找宝藏
+Unlock the specified number of chests to unlock the door.
+解锁指定数量的宝藏即可解锁下一层的门。
+There seems to be a locked high-security door. Looks like you need to open more chests to open it.
+似乎有一扇被锁住的高安全门。看来你需要打开更多的箱子才能打开它。
+Exits locked!|Accept NUMBER Quests!
+出口已锁定！|需要接受 NUMBER 个任务！
+Escape Method: Quest Hunt
+逃生方法：寻找任务
+Accept the specified number of goddess quests to unlock the door.
+接受指定数量的女神任务即可解锁下一层的门。
+There seems to be a locked high-security door. Looks like you need to accept more quests to open it.
+似乎有一扇被锁住的高安全门。看来你需要接受更多的任务才能打开它。
+Exits locked!|Trigger NUMBER Traps!
+出口已锁定！|需要触发 NUMBER 个陷阱！
+Escape Method: Trap Hunt
+逃生方法：寻找陷阱
+Trigger the specified number of traps to unlock the door.
+触发指定数量的陷阱即可解锁下一层的门。
+There seems to be a locked high-security door. Looks like you need to trigger more traps to open it.
+似乎有一扇被锁住的高安全门。看来你需要触发更多陷阱才能打开它。
 Room bugged. Please Report.
 房间出现问题。请反馈。
+Something went wrong.
+出了些问题。
+Please report this bug to Ada with a save code.
+请向 Ada 报告此错误及存档码。
+This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
+此门加载失败，无法打开。请向 Ada 报告此错误及存档码。
 (Cursed)
 （诅咒）
 (Purified)
