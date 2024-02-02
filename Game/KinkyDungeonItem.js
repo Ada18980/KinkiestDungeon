@@ -224,7 +224,7 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 			KinkyDungeonSetFlag("NoDialogue", 3);
 		}
 	} else if (Item.name == "Keyring") {
-		KDGameData.JailKey = true;
+		KDMapData.KeysHeld++;
 		KinkyDungeonAggroAction('key', {});
 	} else if (KDRestraint(Item)) {
 		if (KinkyDungeonRestraintVariants[Item.name]) {

@@ -2373,6 +2373,8 @@ interface KDMapDataType {
 	ChestsOpened: number,
 	QuestQuota: number,
 	QuestsAccepted: number,
+	KeyQuota: number,
+	KeysHeld: number,
 
 	JailPoints: KDJailPoint[],
 

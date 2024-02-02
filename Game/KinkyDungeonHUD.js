@@ -1643,7 +1643,7 @@ function KinkyDungeonHandleHUD() {
 			if (MouseIn(1100, 260, 300, 64)) {
 
 				KDMovePlayer(KDMapData.EndPosition.x, KDMapData.EndPosition.y, false);
-				KDGameData.JailKey = true;
+				KDMapData.KeysHeld++;
 				KinkyDungeonUpdateLightGrid = true;
 				return true;
 			} else

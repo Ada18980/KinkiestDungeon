@@ -17,27 +17,43 @@ let KinkyDungeonEscapeTypes = {
 			return TextGet("KDEscapeDoor_None");
 		},
 	},
-	"Default": {
+	"Key": {
 		selectValid: true,
+		worldgenstart: () => {
+			let quota = 1;
+			if (KinkyDungeonStatsChoice.get("escapekey")) {
+				KDMapData.KeyQuota = quota;
+			} else {
+				if (KinkyDungeonStatsChoice.get("extremeMode")) quota = 3;
+				else if (KinkyDungeonStatsChoice.get("hardMode")) quota = 2;
+				let data = {number: quota};
+				KinkyDungeonSendEvent("calcEscapeKeyQuota", data);
+				KDMapData.KeyQuota = data.number;
+			}
+		},
 		check: () => {
-			return KDGameData.JailKey;
+				return KDMapData.KeysHeld >= KDMapData.KeyQuota;
+			
 		},
 		minimaptext: () => {
-			let escape = KinkyDungeonEscapeTypes.Default.check();
+			let escape = KinkyDungeonEscapeTypes.Key.check();
 			if (escape)
-				return TextGet("KDEscapeMinimap_Pass_Default");
+				return TextGet("KDEscapeMinimap_Pass_Key");
 			else
-				return TextGet("KDEscapeMinimap_Fail_Default");
+				return TextGet("KDEscapeMinimap_Fail_Key").replace("NUMBER", (KDMapData.KeyQuota - KDMapData.KeysHeld).toString());
 		},
 		doortext: () => {
-			return TextGet("KDEscapeDoor_Default");
+			return TextGet("KDEscapeDoor_Key");
 		},
 	},
 	"Kill": {
 		selectValid: true,
 		worldgenstart: () => {
 			let enemytype = KinkyDungeonGetEnemy([], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0');
-			let enemynumber = Math.floor(Math.random()*2)+3;  //random number 3 to 5
+			let enemynumber = 3;
+			if (KinkyDungeonStatsChoice.get("extremeMode")) enemynumber = 5;
+			else if (KinkyDungeonStatsChoice.get("hardMode")) enemynumber = 4;
+
 			let data = {enemy: enemytype.name, number: enemynumber};
 			KinkyDungeonSendEvent("calcEscapeKillTarget", data);
 			KDMapData.KillTarget = data.enemy;
@@ -77,8 +93,11 @@ let KinkyDungeonEscapeTypes = {
 	"Miniboss": {
 		selectValid: true,
 		worldgenstart: () => {
-			let enemytype = KinkyDungeonGetEnemy(['miniboss'], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0',
-				["miniboss"]);
+			let category = "miniboss"
+			if (KinkyDungeonStatsChoice.get("extremeMode")) category = "boss";
+
+			let enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0',
+				[category]);
 			let data = {enemy: enemytype.name};
 			KinkyDungeonSendEvent("calcEscapeMinibossTarget", data);
 			KDMapData.KillTarget = data.enemy;
@@ -86,7 +105,7 @@ let KinkyDungeonEscapeTypes = {
 			if (point) {
 				let ens = KinkyDungeonSummonEnemy(point.x, point.y, data.enemy, 1, 2.9);
 				KinkyDungeonSetEnemyFlag(ens[0], "killtarget", -1);
-				KDMakeHighValue(ens[0]);
+				if (KinkyDungeonStatsChoice.get("hardMode") || KinkyDungeonStatsChoice.get("extremeMode")) KDMakeHighValue(ens[0]);
 			}
 		},
 		check: () => {
@@ -124,7 +143,18 @@ let KinkyDungeonEscapeTypes = {
 					}
 				}
 			}
-			let quota = Math.floor(Math.random()*2)+8;  //random number 8 to 10
+			let quota = 5;
+			if (KinkyDungeonStatsChoice.get("extremeMode")) {
+				quota = 9;
+			}
+			else if (KinkyDungeonStatsChoice.get("hardMode")){
+				quota = 7;
+				count = Math.floor(count*.75);
+			}
+			else {
+				count = Math.floor(count*.5);			
+			}
+
 			if (quota > count) quota = count;
 			let data = {number: quota};
 			KinkyDungeonSendEvent("calcEscapeChestQuota", data);
@@ -159,7 +189,17 @@ let KinkyDungeonEscapeTypes = {
 					}
 				}
 			}
-			let quota = Math.floor(Math.random()*5)+30;  //random number 30 to 35
+			let quota = 10;
+			if (KinkyDungeonStatsChoice.get("extremeMode")) {
+				quota = 20;
+			}
+			else if (KinkyDungeonStatsChoice.get("hardMode")){
+				quota = 15;
+				count = Math.floor(count*.75);
+			}
+			else {
+				count = Math.floor(count*.5);			
+			}
 			if (quota > count) quota = count;
 			let data = {number: quota};
 			KinkyDungeonSendEvent("calcEscapeTrapQuota", data);
@@ -185,6 +225,8 @@ let KinkyDungeonEscapeTypes = {
 		selectValid: true,
 		worldgenstart: () => {
 			let quota = 1;
+			if (KinkyDungeonStatsChoice.get("extremeMode")) quota = 3;
+			else if (KinkyDungeonStatsChoice.get("hardMode")) quota = 2;
 			let data = {number: quota};
 			KinkyDungeonSendEvent("calcEscapeQuestQuota", data);
 			KDMapData.QuestQuota = data.number;

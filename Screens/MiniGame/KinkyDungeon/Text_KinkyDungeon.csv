@@ -18803,11 +18803,11 @@ KinkyDungeonChallenge,Challenge Settings:
 KDColorPickerSimple,Simple
 KDColorPickerAdvanced,Advanced
 
-KDEscapeMinimap_Fail_Default,Exits locked! Find the key!
-KDEscapeMinimap_Pass_Default,Got the key!
-KDEscapeMethod_Default,Escape Method: Key Hunt
-KDEscapeMethodDesc_Default,Find the key hidden in the level. Enemies can steal the key if you aren't careful.
-KDEscapeDoor_Default,There seems to be a locked high-security door. Looks like you need a key to open it.
+KDEscapeMinimap_Fail_Key,Exits locked! Find NUMBER keys!
+KDEscapeMinimap_Pass_Key,Got the keys!
+KDEscapeMethod_Key,Escape Method: Key Hunt
+KDEscapeMethodDesc_Key,Find the keys hidden in the level. Enemies can steal the keys if you aren't careful.
+KDEscapeDoor_Key,There seems to be a locked high-security door. Looks like you need keys to open it.
 KDEscapeMinimap_Fail_Lever,Exits locked! Find a lever!
 KDEscapeMinimap_Pass_Lever,Exits unlocked!
 KDEscapeMethod_Lever,Escape Method: Lever Hunt

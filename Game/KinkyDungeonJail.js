@@ -52,7 +52,7 @@ function KDGetJailEvent(guard, xx, yy) {
 function KinkyDungeonLoseJailKeys(Taken, boss, enemy) {
 	// KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail' || KDGameData.PrisonerState == 'chase'
 	if (KinkyDungeonFlags.has("BossUnlocked")) return;
-	if (KDGameData.JailKey) {
+	if (KDMapData.KeysHeld > 0) {
 		if (Taken) {
 			KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonRemoveJailKey"), "#ff0000", 3);
 			if (enemy) {
@@ -61,20 +61,20 @@ function KinkyDungeonLoseJailKeys(Taken, boss, enemy) {
 					enemy.items.push("Keyring");
 			}
 		}
-		KDGameData.JailKey = false;
+		KDMapData.KeysHeld--;
 	}
 	if (boss) {
-		KDGameData.JailKey = false;
+		KDMapData.KeysHeld--;
 		KDMapData.GroundItems = KDMapData.GroundItems.filter((item) => {return item.name != "Keyring";});
 	}
 }
 
 function KinkyDungeonUpdateJailKeys() {
-	if (!KDGameData.JailKey) {
+	if (KDMapData.KeysHeld == 0) {
 		let altRoom = KinkyDungeonAltFloor(KDGameData.RoomType);
 		if ((!altRoom || !altRoom.nokeys) && (!KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel) || !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel).nokeys)) {
 			let keyCount = KDMapData.GroundItems.filter((item) => {return item.name == "Keyring";}).length;
-			for (let i = 0; i < 2 - keyCount; i++) {
+			for (let i = 0; i < 3 - keyCount; i++) {
 				KinkyDungeonPlaceJailKeys();
 			}
 		}
@@ -1027,7 +1027,7 @@ function KinkyDungeonPassOut(noteleport) {
 
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
 
-	KDGameData.JailKey = false;
+	KDMapData.KeysHeld = 0;
 	KDResetAllAggro();
 	KinkyDungeonSaveGame();
 
@@ -1089,7 +1089,7 @@ function KDEnterDemonTransition() {
 	KinkyDungeonDressPlayer();
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Evil.ogg");
 
-	KDGameData.JailKey = false;
+	KDMapData.KeysHeld = 0;
 
 	KDMovePlayer(KDMapData.StartPosition.x, KDMapData.StartPosition.y, false);
 
@@ -1127,7 +1127,7 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 	KinkyDungeonDressPlayer();
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
 
-	KDGameData.JailKey = false;
+	KDMapData.KeysHeld = 0;
 
 	KDMovePlayer(Math.floor(KDMapData.GridWidth/2), Math.floor(KDMapData.GridHeight/2), false);
 
@@ -1279,7 +1279,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	KinkyDungeonDressPlayer();
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
 
-	KDGameData.JailKey = false;
+	KDMapData.KeysHeld = 0;
 	KinkyDungeonSaveGame();
 
 	if (PutInJail) {

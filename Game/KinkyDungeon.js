@@ -1769,7 +1769,7 @@ function KinkyDungeonRun() {
 
 		DrawButtonKDEx("KinkyDungeonPerkProgressionMode0", (bdata) => {
 			KinkyDungeonPerkProgressionMode = 0;
-			if (KinkyDungeonProgressionMode == "Select")
+			if (KinkyDungeonProgressionMode == "Key")
 				KinkyDungeonProgressionMode = "Key";
 			localStorage.setItem("KinkyDungeonPerkProgressionMode", KinkyDungeonPerkProgressionMode + "");
 			return true;
@@ -3354,6 +3354,8 @@ function KDUpdatePlugSettings(evalHardMode) {
 	KinkyDungeonStatsChoice.set("hideperkbondage", KinkyDungeonPerkBondageVisMode == 0 ? true : undefined);
 	KinkyDungeonStatsChoice.set("partialhideperkbondage", KinkyDungeonPerkBondageVisMode == 1 ? true : undefined);
 
+	KinkyDungeonStatsChoice.set("escapekey", KinkyDungeonProgressionMode == "Key" ? true : undefined);
+	KinkyDungeonStatsChoice.set("escaperandom", KinkyDungeonProgressionMode == "Random" ? true : undefined);
 	KinkyDungeonStatsChoice.set("escapeselect", KinkyDungeonProgressionMode == "Select" ? true : undefined);
 
 
