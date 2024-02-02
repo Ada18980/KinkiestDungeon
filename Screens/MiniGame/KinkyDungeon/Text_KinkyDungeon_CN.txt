@@ -16306,6 +16306,8 @@ Toggle Struggle UI Mode
 切换挣扎 UI 模式
 Change Character Pose
 改变角色姿势
+Make Bullets Transparent
+使子弹透明
 X-Ray Vision
 视觉透视
 Show Quick Inventory
