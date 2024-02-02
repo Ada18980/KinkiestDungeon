@@ -12832,6 +12832,8 @@ I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside
 （选择你要从 SPEAKER 购买的商品）
 (Attack the SPEAKER?)
 （攻击 SPEAKER？）
+(Buy ITM# for IC# gp)
+(以 IC# 金币购买 ITM#)
 (The SPEAKER sells you the item)
 （SPEAKER 向你出售该物品）
 (The SPEAKER shakes her head)|I think you'd be better off without that~
