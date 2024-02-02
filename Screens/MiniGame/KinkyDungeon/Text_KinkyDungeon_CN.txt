@@ -546,6 +546,10 @@ Doll Hunter M
 玩偶猎人 M
 You start with the Dollmaker's Mask.
 开局时穿戴玩偶师的面具
+Persisting Desires
+执着于欲望
+Your dark desires are endless.
+你黑暗的欲望是无止境的。
 Vengeance
 复仇
 Defeating an enemy greatly distracts you.
