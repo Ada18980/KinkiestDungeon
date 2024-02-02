@@ -70,7 +70,7 @@ function KinkyDungeonLoseJailKeys(Taken, boss, enemy) {
 }
 
 function KinkyDungeonUpdateJailKeys() {
-	if (KDMapData.KeysHeld == 0) {
+	if (KDMapData.KeysHeld < 3) {
 		let altRoom = KinkyDungeonAltFloor(KDGameData.RoomType);
 		if ((!altRoom || !altRoom.nokeys) && (!KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel) || !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel).nokeys)) {
 			let keyCount = KDMapData.GroundItems.filter((item) => {return item.name == "Keyring";}).length;
