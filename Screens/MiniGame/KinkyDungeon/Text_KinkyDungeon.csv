@@ -19612,11 +19612,15 @@ RestraintWardenCollarDesc2,"You may go on your way, but only as long your freedo
 NameTheWarden1,"The Warden"
 KillTheWarden1,"The Warden disappears into a trapdoor!"
 AttackTheWarden1Bind,"The Warden forces you to kneel, and presents you with a restraint! (+RestraintAdded)"
-AttackTheWarden1,"The Warden's staff emits a flash of blinding light! (DamageTaken)"
-AttackTheWarden1Lock,"The Warden's staff emits a mystical area, which congeals into locks! (DamageTaken)"
+AttackTheWarden1,"The Warden whips you with a belt! (DamageTaken)"
+AttackTheWarden1Lock,"The Warden tosses some enchanted locks at you! (DamageTaken)"
 
 
-
+NameTheWarden2,"The Warden"
+KillTheWarden2,"The Warden falls flat on the ground, exhausted!"
+AttackTheWarden2Bind,"The Warden forces you to kneel, and presents you with a restraint! (+RestraintAdded)"
+AttackTheWarden2,"The Warden strikes you with her whip! (DamageTaken)"
+AttackTheWarden2Lock,"The Warden swings her enchanted whip and conjures locks on your body! (DamageTaken)"
 
 
 
@@ -19855,6 +19859,10 @@ KDBubbleCombine,The bubbles on you combine into one big bubble!
 
 KDStairsLocked,The stairs have been locked down for NMB more turns.
 
+curseInfoLethargy,"Curse of Lethargy: Reduce distraction over time, but miscast chance is increased by AMNT%."
+curseInfoMute,"Curse of Mute: You cannot converse, and verbal spells cost AMNT% more mana."
+curseInfoClumsy,"Curse of Clumsiness: After casting an arm spell, you drop your currently held weapon."
+curseInfoDeflection,"Curse of Deflection: 50% chance for an attack to be redirected against an adjacent hostile target."
 
 KDItemMode,"Loot Recovery:"
 
@@ -19887,3 +19895,5 @@ KDSideRoom_DemonTransition,"Dimensional Rift"
 KDMapMod_,""
 
 KDRoomType_,""
+
+

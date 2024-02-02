@@ -4482,9 +4482,9 @@ let KinkyDungeonEnemies = [
 				//FuukaOrb: 10,
 			},
 		},
-		spells: ["EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.7, noChannel: true,
+		spells: ["EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.75, noChannel: true,
 		visionRadius: 8, maxhp: 90, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
-		attackLock: "Red_Hi",
+		attackLock: "Purple",
 		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue", dialogue:"TheWardenStage2", click: true}]},
 
 
@@ -4512,9 +4512,9 @@ let KinkyDungeonEnemies = [
 				//FuukaOrb: 10,
 			},
 		},
-		spells: ["EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.7, noChannel: true,
-		visionRadius: 8, maxhp: 110, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
-		attackLock: "Red_Hi",
+		spells: ["EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 1.1, noChannel: true,
+		visionRadius: 9, maxhp: 110, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
+		attackLock: "HiSec",
 		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue", dialogue:"TheWardenWin", click: true}]},
 
 
