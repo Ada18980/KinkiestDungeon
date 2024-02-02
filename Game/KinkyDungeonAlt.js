@@ -437,6 +437,9 @@ let KinkyDungeonCreateMapGenType = {
 	"Dollmaker": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
+	"Warden": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateWarden(POI, VisitedRooms, width, height, 0, 10, 0, data);
+	},
 };
 
 
@@ -1163,6 +1166,47 @@ function KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, openness,
 	KD_PasteTile(KDMapTilesList.Arena_Dollmaker, cavityStart, 1, data);
 
 	DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2), KDMapData.StartPosition.y, "DollmakerBoss1");
+
+	KDMapData.EndPosition = {x: KDMapData.StartPosition.x + cavitywidth, y: KDMapData.StartPosition.y};
+
+	KinkyDungeonMapSet(KDMapData.EndPosition.x, KDMapData.EndPosition.y, 's');
+	KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y, 'S');
+	KinkyDungeonTilesSet(KDMapData.StartPosition.x + ',' + KDMapData.StartPosition.y, {
+		RoomType: "Tunnel",
+	}); // Has to be tunnel
+}
+
+function KinkyDungeonCreateWarden(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	// Now we STRETCH the map
+	KDMapData.GridWidth = Math.floor(KDMapData.GridWidth*2);
+	KDMapData.GridHeight = Math.floor(KDMapData.GridHeight*2);
+	KDMapData.Grid = "";
+
+	width = KDMapData.GridWidth;
+	height = KDMapData.GridHeight;
+
+	// Generate the grid
+	for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
+		for (let X = 0; X < KDMapData.GridWidth; X++)
+			KDMapData.Grid = KDMapData.Grid + '1';
+		KDMapData.Grid = KDMapData.Grid + '\n';
+	}
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
+
+
+	// Create the doll cell itself
+	let cavitywidth = 21;
+	let cavityheight = 21;
+	let cavityStart = 2;
+
+	KDMapData.StartPosition = {x: cavityStart, y: 1 + Math.floor(cavityheight/2)};
+
+	// Hollow out a greater cell area
+	KinkyDungeonCreateRectangle(cavityStart, 0, cavitywidth, cavityheight, false, false, false, false);
+
+	KD_PasteTile(KDMapTilesList.Arena_Warden, cavityStart, 1, data);
+
+	DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2), KDMapData.StartPosition.y, "TheWarden1");
 
 	KDMapData.EndPosition = {x: KDMapData.StartPosition.x + cavitywidth, y: KDMapData.StartPosition.y};
 

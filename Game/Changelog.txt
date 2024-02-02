@@ -31,6 +31,7 @@ Monk class?
 5.1.0
  - Added Loot Recovery challenge mode
  - Added Aqua Slime and related restraints
+ - Hopefully fixed shrine scarcity on bellows
 
 5.1.15
  - Tweaked future harness lower

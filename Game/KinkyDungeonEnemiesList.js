@@ -4460,10 +4460,11 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, shrines: ["Illusion"], floors:KDMapInit([]), dropTable: [{name: "Ectoplasm", chance: 0.6, weight: 10}],},
 
 
-	{name: "TheWarden", outfit: "Fuuka", style: "Fuuka", nameList: "Fuuka", playLine: "TheWarden", bound: "Fuuka", faction: "Boss", clusterWith: "human", tags: KDMapInit(["nosub", "nocapture", "leashing", "noshop", "warden", "zombie", "ranged", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss", "nocapture", "unflinching"]),
-		armor: 0, followRange: 3, AI: "guard",
+	{name: "TheWarden1", outfit: "Jailer", style: "Jailer", nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
+		tags: KDMapInit(["nosub", "nocapture", "leashing", "noshop", "warden", "human", "magicresist", "ranged", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss", "nocapture", "unflinching"]),
+		armor: 1, followRange: 3, AI: "guard",
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},
+			//{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},
 		],
 		RestraintFilter: {
 			unlimitedRestraints: true,
@@ -4481,10 +4482,41 @@ let KinkyDungeonEnemies = [
 				//FuukaOrb: 10,
 			},
 		},
-		spells: ["ZombieOrb", "EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 1.5, projectileAttack: true, accuracy: 0.7, noChannel: true,
-		visionRadius: 8, maxhp: 80, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
-		attackLock: "White",
-		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: []},//{type: "dialogue", dialogue:"FuukaStage2", click: true}
+		spells: ["EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.75, noChannel: true,
+		visionRadius: 8, maxhp: 90, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
+		attackLock: "Purple",
+		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue", dialogue:"TheWardenStage2", click: true}]},
+
+
+
+	{name: "TheWarden2", outfit: "Jailer", style: "Jailer", nameList: "Fuuka", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
+		tags: KDMapInit(["nosub", "nocapture", "leashing", "noshop", "warden", "human", "magicresist", "ranged", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss", "nocapture", "unflinching"]),
+		followRange: 3, AI: "guard",
+		armor: 1,
+		events: [
+			//{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ffffff"},
+		],
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
+		preferDodge: true,
+		stamina: 4,
+		maxblock: 1,
+		maxdodge: 3,
+		unlockCommandLevel: 3, unlockCommandCD: 7,
+		Magic: {
+			castCooldownUnique: {
+				//FuukaOrb: 12,
+			},
+			priority: {
+				//FuukaOrb: 10,
+			},
+		},
+		spells: ["EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 1.1, noChannel: true,
+		visionRadius: 9, maxhp: 110, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
+		attackLock: "HiSec",
+		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue", dialogue:"TheWardenWin", click: true}]},
+
 
 
 

@@ -3491,6 +3491,199 @@ let KDDialogue = {
 			},
 		}
 	},
+
+
+	"TheWardenLose": { // Player loses to TheWarden
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				enemy.hostile = 0;
+				enemy.ceasefire = 4;
+				KinkyDungeonSetFlag("BossUnlocked", -1);
+				KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeDefeat"]);
+			}
+			return false;
+		},
+		options: {
+			"Magic": { gagDisabled: true,
+				playertext: "Default", response: "Default",
+				options: {
+					"Continue1": {
+						playertext: "TheWardenLose_Continue1", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+					"Continue2": {
+						playertext: "TheWardenLose_Continue2", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+					"Continue3": {
+						playertext: "TheWardenLose_Continue3", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+				}
+			},
+			"Accept": { gag: true,
+				playertext: "Default", response: "Default",
+				options: {
+					"Continue1": {
+						playertext: "TheWardenLose_Continue1", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+					"Continue2": {
+						playertext: "TheWardenLose_Continue2", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+					"Continue3": {
+						playertext: "TheWardenLose_Continue3", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+				}
+			},
+			"Deny": { gag: true,
+				playertext: "Default", response: "Default",
+				options: {
+					"Continue1": {
+						playertext: "TheWardenLose_Continue1", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+					"Continue2": {
+						playertext: "TheWardenLose_Continue2", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+					"Continue3": {
+						playertext: "TheWardenLose_Continue3", response: "Default",
+						leadsToStage: "Finish",
+						clickFunction: (gagged, player) => {
+							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							return false;
+						},
+					},
+				}
+			},
+			"Finish": {
+				prerequisiteFunction: (gagged, player) => {return false;},
+				playertext: "Default", response: "TheWardenLoseFinish",
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			}
+		}
+	},
+	"TheWardenStage2": { // Player defeats thewarden's first form
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			let point = KinkyDungeonGetNearbyPoint(player.x, player.y, true);
+			if (!point) {
+				point = KinkyDungeonGetRandomEnemyPoint(false, false, null);
+			}
+			let e = DialogueCreateEnemy(point.x, point.y, "TheWarden2");
+			e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
+			if (KinkyDungeonStatsChoice.get("extremeMode")) e.Enemy.maxhp *= 4;
+			else if (KinkyDungeonStatsChoice.get("hardMode")) e.Enemy.maxhp *= 2;
+			e.hp = e.Enemy.maxhp;
+			e.hostile = 300;
+			e.modified = true;
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+	"TheWardenWin": { // Player beats TheWarden
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KinkyDungeonSetFlag("BossUnlocked", -1);
+			KinkyDungeonSetFlag("SpawnMap", -1);
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				clickFunction: (gagged, player) => {
+					if (KinkyDungeonIsPlayer()) {
+						//KDUnlockPerk("FuukaCollar");
+						//KDUnlockPerk("CommonFuuka");
+					}
+					return false;
+				},
+				exitDialogue: true,
+			},
+			"Accept": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+					KinkyDungeonAddGold(1000);
+					if (KinkyDungeonIsPlayer()) {
+						//KDUnlockPerk("FuukaCollar");
+						//KDUnlockPerk("CommonFuuka");
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Gag": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					KinkyDungeonChangeRep("Ghost", -5);
+					if (KinkyDungeonIsPlayer()) {
+						//KDUnlockPerk("FuukaCollar");
+						//KDUnlockPerk("CommonFuuka");
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+		}
+	},
 	"ShopBuy": KDShopBuyDialogue("ShopBuy"),
 	"PotionSell": KDShopDialogue("PotionSell", ["PotionFrigid", "PotionStamina", "PotionMana", "PotionInvisibility"], [], ["witch", "apprentice", "alchemist", "human", "dragon"], 0.2,
 		["PotionWill", "PotionFrigid"]),
