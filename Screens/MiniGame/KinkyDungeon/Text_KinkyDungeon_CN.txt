@@ -16983,7 +16983,7 @@ Upcast to increase range and recover objects in an area.
 Select an area with items
 选择有物品的区域
 Kinetic Slash
-动能斩
+念动斩
 Swing an equipped weapon (not unarmed or hands free) in a line, slashing enemies in the way with 20 + 80% weapon damage. Counts as an attack. +10 mana cost if wielding a Heavy weapon.
 命令装备的武器在一个直线区域挥击，对途中的敌人造成 20 + 80% 的武器伤害。视为普攻。如果使用重型武器，+10 法力消耗。
 You swing!
