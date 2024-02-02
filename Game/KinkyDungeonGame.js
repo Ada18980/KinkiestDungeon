@@ -610,7 +610,8 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	};
 	let aware = KDKickEnemies(undefined, ignoreAware); // Shuffle enemy locations
 	if (ignoreAware && aware) {
-		KinkyDungeonLoseJailKeys();
+		//KinkyDungeonLoseJailKeys();
+		KinkyDungeonSetFlag("stairslocked", 10);
 		KinkyDungeonSendActionMessage(10, TextGet("KDClimbUpTrapped"), "#ff0000", 3);
 	}
 

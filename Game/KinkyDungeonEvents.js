@@ -222,6 +222,29 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		/**
+		 * @param {KDEventData_PostApply} data
+		*/
+		"BubbleCombine": (e, item, data) => {
+			KinkyDungeonUpdateRestraints(0);
+			if ((KinkyDungeonPlayerTags.get("CombineBubble1") || KDRestraint(item)?.shrine?.includes("CombineBubble1"))
+				&& (KinkyDungeonPlayerTags.get("CombineBubble2") || KDRestraint(item)?.shrine?.includes("CombineBubble2"))
+				&& (KinkyDungeonPlayerTags.get("CombineBubble3") || KDRestraint(item)?.shrine?.includes("CombineBubble3"))) {
+					for (let inv of KinkyDungeonAllRestraintDynamic()) {
+						let restraint = KDRestraint(inv.item);
+						if (restraint) {
+							if (restraint.shrine?.includes("CombineBubble1")
+								|| restraint.shrine?.includes("CombineBubble2")
+								|| restraint.shrine?.includes("CombineBubble3")) {
+									KinkyDungeonRemoveRestraintSpecific(inv.item, true, true, true);
+								}
+						}
+					}
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("Bubble"), 10, true, "", true);
+					KinkyDungeonSendTextMessage(7, TextGet("KDBubbleCombine"), "#4477ee", 4);
+			}
+		},
+
 		"NoYoke": (e, item, data) => {
 			if (item == data.item && KinkyDungeonPlayerTags.get("Yoked"))
 				KinkyDungeonRemoveRestraintSpecific(item, true, true);
@@ -7993,6 +8016,10 @@ let KDEventMapGeneric = {
 			// This event adds tags to enemy tag determination based on perk prefs
 			if (KinkyDungeonStatsChoice.get("TapePref")) data.tags.push("tapePref");
 			else if (KinkyDungeonStatsChoice.get("TapeOptout")) data.tags.push("tapeOptout");
+			if (KinkyDungeonStatsChoice.get("SlimePref")) data.tags.push("slimePref");
+			else if (KinkyDungeonStatsChoice.get("SlimeOptout")) data.tags.push("slimeOptout");
+			if (KinkyDungeonStatsChoice.get("BubblePref")) data.tags.push("bubblePref");
+			else if (KinkyDungeonStatsChoice.get("BubbleOptout")) data.tags.push("bubbleOptout");
 		}
 	},
 	"postMapgen": {

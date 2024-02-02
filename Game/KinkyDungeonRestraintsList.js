@@ -184,6 +184,35 @@ const KinkyDungeonRestraints = [
 		enemyTags: {"ribbonRestraints":1}, playerTags: {"ItemFeetFull":3}, minLevel: 0, allFloors: true, shrine: ["Charms", "Wrapping", "Will"]},
 	//endregion
 
+	// region Bubbles
+	{removePrison: true, name: "BubbleHead", unlimited: true, debris: "Water", inaccessible: true, Asset: "DuctTape",
+		Color: "#2277ee", Group: "ItemHead", power: 2, blindfold: 3, weight: 0,
+		escapeChance: {"Struggle": -0.1, "Cut": 1.0, "Remove": -0.5},
+		Model: "BubbleHead",
+		events: [
+			{trigger: "postApply", type: "BubbleCombine", count: 3, inheritLinked: true},
+		],
+		enemyTags: {"aquaRestraints":50}, playerTags: {"Furniture": -100}, minLevel: 0, allFloors: true, shrine: ["CombineBubble1", "Elements", "Encase", "Bubble", "Block_ItemMouth", "Block_ItemEars"]},
+	{removePrison: true, name: "BubbleArms", unlimited: true, debris: "Water", inaccessible: true, Asset: "DuctTape",
+		Color: "#2277ee", Group: "ItemArms", power: 2, bindarms: true, weight: 0,
+		escapeChance: {"Struggle": -0.1, "Cut": 1.0, "Remove": -0.5},
+		Model: "BubbleArms",
+		events: [
+			{trigger: "postApply", type: "BubbleCombine", count: 3, inheritLinked: true},
+		],
+		enemyTags: {"aquaRestraints":1}, playerTags: {"Furniture": -100}, minLevel: 0, allFloors: true, shrine: ["CombineBubble2", "Elements", "Encase", "Bubble", "Block_ItemHands", "Block_ItemBreast", "Block_ItemNipples"]},
+
+	{removePrison: true, name: "BubbleLegs", unlimited: true, debris: "Water", inaccessible: true, Asset: "DuctTape",
+		Color: "#2277ee", Group: "ItemLegs", power: 2, weight: 0, hobble: 2, heelpower: 10,
+		escapeChance: {"Struggle": -0.1, "Cut": 1.0, "Remove": -0.5},
+		Model: "BubbleLegs",
+		events: [
+			{trigger: "postApply", type: "BubbleCombine", count: 3, inheritLinked: true},
+		],
+		enemyTags: {"aquaRestraints":25}, playerTags: {"Furniture": -100}, minLevel: 0, allFloors: true, shrine: ["CombineBubble3", "Elements", "DiscourageKneel", "Encase", "Bubble", "Block_ItemFeet", "Block_ItemBoots", "Block_ItemPelvis", "Block_ItemVulva", "Block_ItemVulvaPiercings"]},
+
+	//endregion
+
 	//region BlessedWrappings
 	{inventory: true, name: "MysticDuctTapeCollar", debris: "FabricGreen", Asset: "LatexCollar2", factionColor: [[], [0]], Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4, DefaultLock: "Blue",
 		Model: "ElfCollar",
@@ -1803,18 +1832,28 @@ const KinkyDungeonRestraints = [
 	{removePrison: true, name: "Bubble", Asset: "VacCube", Color: ["#ff77ff"], Group: "ItemDevices", power: 3, weight: 1, alwaysStruggleable: true,
 		Model: "Bubble",
 		addTag: ["ForceKneel", "NoHogtie"],
-		hobble: 4,
+		hobble: 3,
+		heelpower: 10,
 		escapeChance: {"Struggle": -0.4, "Cut": 0.4, "Remove": -0.5},
 		helpChance: {"Struggle": 0.2, "Pick": 1.0, "Remove": .2},
+		events: [
+			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
+			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.2, sfx: "RubberBolt", inheritLinked: true},
+		],
 		enemyTags: {"bubble":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Elements"], removeOnLeash: true,
 	},
 	{removePrison: true, name: "SlimeBubble", Asset: "VacCube", Color: ["#ff77ff"], Group: "ItemDevices", power: 5, weight: 1, alwaysStruggleable: true,
 		Model: "SlimeBubble",
-		hobble: 4,
+		hobble: 3,
+		heelpower: 10,
 		addTag: ["ForceKneel", "NoHogtie"],
 		escapeChance: {"Struggle": -0.4, "Cut": 0.4, "Remove": -.2},
 		limitChance: {"Cut": 0.3,},
 		helpChance: {"Struggle": 0.2, "Pick": 1.0, "Remove": .2},
+		events: [
+			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
+			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.2, sfx: "RubberBolt", inheritLinked: true},
+		],
 		enemyTags: {"slimebubble":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Latex"], removeOnLeash: true,
 	},
 	{removePrison: true, name: "LatexSphere", Asset: "VacCube", Color: ["#88aaff"], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true, blindfold: 6, enclose: true,

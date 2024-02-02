@@ -1443,6 +1443,7 @@ let LayerGroups = {
 			"HairBack",
 			"Hood",
 			"Hair",
+			"Head",
 		]
 	),
 	// region Xray
@@ -1753,6 +1754,7 @@ let LayerProperties = {
 	Nose: {
 		Parent: "Head",
 	},
+	InflatableHead: {Parent: "Head",},
 	Hat: {Parent: "Head",},
 	Hood: {Parent: "Head",},
 	HeadbandDeco: {Parent: "Head"},
