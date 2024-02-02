@@ -17536,3 +17536,13 @@ The Warden's staff emits a flash of blinding light! (DamageTaken)
 典狱长的法杖发出耀眼的光芒！（DamageTaken）
 The Warden's staff emits a mystical area, which congeals into locks! (DamageTaken)
 典狱长的法杖释放出一个神秘区域，凝结成锁！（DamageTaken）
+Living Collars
+活体项圈
+When getting captured with many of the same type of restraint, gain a collar that occasionally binds you with that type of restraint.
+当你被相同类型的束缚物多次捕获时，获得一个偶尔会用同种束缚物束缚你的项圈。
+Play the game the way it was intended. Cruel and restrictive. 
+按照游戏的初衷来玩。严厉且充满限制性
+Unconventional Warfare
+非常规作战
+Select a weapon to attach it to your body. You can have one attached weapon at a time. Attaching it takes 5 turns.|An attached weapon can be equipped without hands and maintains 60% accuracy as long as you have arms or legs unbound.
+选择一件武器，将其附在身上。你同时只能拥有一件附加武器。需要 5 个回合来准备。|附加武器可以不用手来装备，只要你的手臂或腿没有被绑住，就能保持 60% 的准确度。
