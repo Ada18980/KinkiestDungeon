@@ -2514,6 +2514,63 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 				}// else if (KinkyDungeonMapGet(X, Y) == "R" || KinkyDungeonMapGet(X, Y) == "r")
 				//shrinelist.push({x:X, y:Y});
 
+
+	// If we STILL dont have enough, we expand the criteria
+	if (shrinelist <= maxcount)
+		for (let X = 1; X < width; X += 1)
+			for (let Y = 1; Y < height; Y += 1)
+				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && Math.max(Math.abs(X - KDMapData.StartPosition.x), Math.abs(Y - KDMapData.StartPosition.y)) > KinkyDungeonJailLeash
+					&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
+					// Check the 3x3 area
+					let wallcount = 0;
+					for (let XX = X-1; XX <= X+1; XX += 1)
+						for (let YY = Y-1; YY <= Y+1; YY += 1) {
+							if (!(XX == X && YY == Y) && !KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(XX, YY))) {
+								wallcount += 1;
+							}
+						}
+
+					if (wallcount == 0 // Open spaces and 1 off spaces
+						|| wallcount == 1) {
+						if (!shrinePoints.get((X+1) + "," + (Y))
+							&& !shrinePoints.get((X-1) + "," + (Y))
+							&& !shrinePoints.get((X+1) + "," + (Y+1))
+							&& !shrinePoints.get((X+1) + "," + (Y-1))
+							&& !shrinePoints.get((X-1) + "," + (Y+1))
+							&& !shrinePoints.get((X-1) + "," + (Y-1))
+							&& !shrinePoints.get((X) + "," + (Y+1))
+							&& !shrinePoints.get((X) + "," + (Y-1))
+							&& !chestPoints.get((X+1) + "," + (Y))
+							&& !chestPoints.get((X-1) + "," + (Y))
+							&& !chestPoints.get((X+1) + "," + (Y+1))
+							&& !chestPoints.get((X+1) + "," + (Y-1))
+							&& !chestPoints.get((X-1) + "," + (Y+1))
+							&& !chestPoints.get((X-1) + "," + (Y-1))
+							&& !chestPoints.get((X) + "," + (Y+1))
+							&& !chestPoints.get((X) + "," + (Y-1))
+							&& !chestPoints.get((X) + "," + (Y))
+							&& !KinkyDungeonEnemyAt(X, Y)
+							&& !(Object.keys(KDGetEffectTiles(X, Y)).length > 0)
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X-1, Y-1))
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X, Y-1))
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X+1, Y-1))
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X-1, Y))
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X+1, Y))
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X-1, Y+1))
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X, Y+1))
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X+1, Y+1))) {
+							shrinelist.push({x:X, y:Y, boringness: KinkyDungeonBoringGet(X, Y)});
+							shrinePoints.set(X + "," + Y, true);
+						}
+					}
+
+
+				}
+
+
+
+
+
 	// Truncate down to max chest count in a location-neutral way
 	let count = 0;
 

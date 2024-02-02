@@ -60,10 +60,46 @@ let bosses = {
 		noQuests: true,
 		escapeMethod: "Boss",
 	},
+	"TheWarden": {
+		boss: "TheWarden",
+		bossroom: true,
+		jailType: "Warden",
+		guardType: "Warden",
+		width: 21,
+		height: 21,
+		setpieces: {
+		},
+		genType: "Warden",
+		spawns: false,
+		chests: false,
+		shrines: false,
+		noWear: true,
+		chargers: false,
+		notorches: true,
+		heart: false,
+		specialtiles: true,
+		shortcut: false,
+		enemies: false,
+		nokeys: true,
+		nojail: true,
+		noClutter: true,
+		nostairs: true,
+		nostartstairs: true,
+		nobrick: true,
+		nolore: true,
+		skin: 'cat',
+		noboring: true, // Skip generating boringness
+		makeMain: true,
+		noQuests: true,
+		escapeMethod: "Boss",
+	},
 };
 
 function KinkyDungeonBossFloor(Floor) {
 	if (Floor == 4) return bosses.Fuuka;
-	if (Floor == 20) return bosses.Dollmaker;
+	if (Floor == 8) return bosses.TheWarden;
+	//if (Floor == 12) return bosses.SilverWitch;
+	if (Floor == 16) return bosses.Dollmaker;
+	//if (Floor == 20) return bosses.Angel;
 	return null;
 }
