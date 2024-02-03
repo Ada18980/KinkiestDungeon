@@ -43,6 +43,12 @@ let KinkyDungeonSpellChoiceOffset = 80;
 
 let KDPlayerHitBy = [];
 
+let KDSchoolColors = {
+	"Elements": "#ff4444",
+	"Conjure": "#77cc99",
+	"Illusion": "#8877ff",
+};
+
 let KinkyDungeonMiscastPityModifier = 0; // Current value
 let KinkyDungeonMiscastPityModifierIncrementPercentage = 0.5; // Percent of the base hit chance to add
 
@@ -1367,13 +1373,7 @@ function KinkyDungeonTestWhite(x,language) {
 }
 
 function KDSchoolColor(school) {
-	switch (school) {
-		case "Elements": return "#ff4444";
-		case "Conjure": return "#77cc99";
-		case "Illusion": return "#8877ff";
-	}
-
-	return KDTextTan;
+	return KDSchoolColors[school] || KDTextTan;
 }
 
 function KinkyDungeonDrawMagic() {

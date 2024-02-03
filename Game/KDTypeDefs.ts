@@ -362,6 +362,8 @@ interface KDRestraintPropsBase {
 	heelpower?: number,
 	/** Blocking feet is for restraints that tie the legs together, forcing the player into SLow Level 2 or higher */
 	blockfeet?: boolean,
+	/** restricvtion bonus */
+	restriction?: number,
 	/** Your total gag level is the sum of the gag values of all your variables. Ball gags have 0.3-0.75 based on size and harness, muzzles are 1.0 */
 	gag?: number,
 	/** Higher value = higher vision loss */
@@ -1454,7 +1456,7 @@ interface KinkyDungeonEvent {
 	distStealth?: number;
 	/** Dialogue key an enemy should send */
 	enemyDialogue?: string;
-	
+
 	escapeMethod?: string;
 	enemy?: string;
 

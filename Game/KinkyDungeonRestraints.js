@@ -1701,6 +1701,10 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 		}
 	}
 
+	if (!KinkyDungeonHasHelp()) {
+		limitChance += 0.05; // Small penalty for not having help
+	}
+
 	if (KinkyDungeonStatsChoice.get("Unchained") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Metal"))
 		escapeChance += KDUnchainedBonus;
 	if (KinkyDungeonStatsChoice.get("Damsel") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Metal")) {
@@ -1896,7 +1900,9 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	* toolMult: number,
 	* buffBonus: number,
 	* buffMult: number,
+	* restriction: number,
 	* struggleTime: number,
+	* speedMult: number,
 	 * }}
 	 */
 	let data = {
@@ -1924,7 +1930,10 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		buffBonus: 0.0,
 		buffMult: 1.0,
 		struggleTime: 1.0,
+		restriction: KDGameData.Restriction || 0,
+		speedMult: KinkyDungeonHasHelp() ? 2.0 : 1.0,
 	};
+
 
 	if (StruggleType == "Cut") data.cost = KinkyDungeonStatStaminaCostTool;
 	else if (StruggleType == "Pick") data.cost = KinkyDungeonStatStaminaCostPick;
@@ -1988,7 +1997,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		data.escapeChance += KinkyDungeonEnchantedKnifeBonus*toolMult;
 		data.origEscapeChance += KinkyDungeonEnchantedKnifeBonus*toolMult;
 	}
-	let escapeSpeed = KDBaseEscapeSpeed;
+	let escapeSpeed = KDBaseEscapeSpeed * data.speedMult;
 
 	// Finger extensions will help if your hands are unbound. Some items cant be removed without them!
 	// Mouth counts as a finger extension on your hands if your arms aren't tied
@@ -2012,6 +2021,42 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	let edgeBonus = 0.12*toolMult;
 	// Easier to struggle if your legs are free, due to leverage
 	if (StruggleType == "Struggle" && data.hasAffinity) data.escapeChance += edgeBonus * (0.5 + 0.5*Math.max(2 - KinkyDungeonSlowLevel, 0));
+
+	// Restriction penalties AFTER bonuses
+	if (data.restriction > 0 && !KinkyDungeonHasHelp()) {
+		let restrictionMult =  1 - 10 / (10 + data.restriction);
+
+		data.limitChance += restrictionMult * 0.1; // Small penalty
+
+		if (data.escapeChance > 0) {
+			let penalty = 0;
+			switch (data.struggleType) {
+				case "Struggle": {
+					penalty = 0.15;
+					break;
+				}
+				case "Cut": {
+					penalty = 0.6;
+					break;
+				}
+				case "Unlock": {
+					penalty = 0.3;
+					break;
+				}
+				case "Pick": {
+					penalty = 0.4;
+					break;
+				}
+				case "Remove": {
+					penalty = 0.3;
+					break;
+				}
+			}
+
+			data.escapeChance *= 1 - penalty * restrictionMult;
+		}
+	}
+
 
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Lockdown")) {
 		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonBuffLockdownTry")
@@ -5316,4 +5361,34 @@ function KDLinkItemEvent(e, item, data) {
 			}
 		}
 	}
+}
+
+/**
+ * @returns {number}
+ */
+function KDGetRestriction() {
+	let data = {
+		restriction: 0
+	}
+	for (let inv of KinkyDungeonAllRestraintDynamic()) {
+		let restraint = KDRestraint(inv.item);
+		if (restraint) {
+			if (restraint.restriction) data.restriction += restraint.restriction;
+			if (restraint.blockfeet
+				|| restraint.bindarms
+				|| restraint.hobble
+				|| restraint.freeze
+			) data.restriction += 2;
+			else if (
+				restraint.bindhands
+				|| restraint.blindfold
+				|| restraint.gag
+				|| restraint.restricthands
+			) data.restriction += 1;
+		}
+	}
+
+	KinkyDungeonSendEvent("restriction", data)
+
+	return data.restriction;
 }

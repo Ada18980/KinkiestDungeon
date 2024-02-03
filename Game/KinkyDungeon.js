@@ -491,6 +491,7 @@ let KDDefaultMaxParty = 3;
 * visionBlind: number,
 * CollectionGuests: number,
 * SelectedEscapeMethod: string,
+* Restriction: number,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
@@ -693,6 +694,7 @@ let KDGameDataBase = {
 	Crouch: false,
 	visionAdjust: 1, // Eyes start out fully light adjusted
 	visionBlind: 0, // Penalty to vision radius based on overbright
+	Restriction: 0,
 };
 /**
  * @type {KDGameDataBase}

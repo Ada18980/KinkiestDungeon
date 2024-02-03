@@ -1247,6 +1247,8 @@ function KinkyDungeonUpdateStats(delta) {
 		});
 	}
 
+	KDGameData.Restriction = KDGetRestriction();
+
 	KinkyDungeonPlayers = [KinkyDungeonPlayerEntity];
 
 	KDBlindnessCap = 7;

@@ -34,6 +34,14 @@ Monk class?
  - Hopefully fixed shrine scarcity on bellows
  - Added mana pressure plate
  - Made allies ignore scenery unless the player is attacking it
+ - Added small escape power penalty for NOT having help
+ - Having help increases escape speed
+ - New variable: Restriction. Each restraint adds 1 restriction. Some add more.
+ - Restriction reduces cutting power by up to 60%
+ - Restriction reduces struggle power by up to 15%
+ - Restriction reduces remove power by up to 30%
+ - Restriction reduces unlock power by up to 30%
+ - Restriction reduces pick power by up to 40%
 
 5.1.15
  - Tweaked future harness lower

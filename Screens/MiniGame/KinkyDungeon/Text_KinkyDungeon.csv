@@ -700,6 +700,7 @@ KinkyDungeonPlayerVibrated3,"Strong vibrations!"
 KinkyDungeonPlayerVibrated4,"Intense vibrations!!"
 KinkyDungeonPlayerVibrated5,"Torturous vibrations!!!"
 
+KDStatRestriction,Your restraints are restrictive! Struggling is less effective without help.
 KDStatStun,"Stunned! You can't move!"
 KDStatBlind,"Your vision is impaired!"
 KDStatArms,"Arms are bound!"
@@ -3027,6 +3028,7 @@ KinkyDungeonStruggleStruggleImpossibleAroused,"You groan in frustration as you r
 KinkyDungeonStruggleStruggleImpossible2,"The TargetRestraint tightens itself as you try to squeeze out!"
 KinkyDungeonStruggleStruggleImpossible3,"You will need someone's help to squeeze out of the TargetRestraint."
 KinkyDungeonStruggleStruggleImpossibleGoddess,"The TargetRestraint flashes magically as the Goddess' curse resists your efforts!"
+KinkyDungeonStruggleStruggleRestricted,"The TargetRestraint holds firm against your attempts, held back by your restrictions."
 KinkyDungeonStruggleStruggleStrict,"You pull and tug but your other restraints keep the TargetRestraint securely in place!"
 KinkyDungeonStruggleStruggleStrictAroused,"You groan and tug but nothing budges on the TargetRestraint. You're bound too tightly by something else."
 KinkyDungeonStruggleStruggleImpossibleBound,"You are too tightly bound to have a chance against the TargetRestraint."
@@ -3038,6 +3040,7 @@ KinkyDungeonStruggleUnlockImpossible3,"You can't reach the keyhole on the Target
 KinkyDungeonStruggleUnlockImpossibleBound,"You can't hold the key to unlock the TargetRestraint with."
 KinkyDungeonStruggleUnlockImpossibleBoundAroused,"Your bound and shaking hands can't even hold the key for the TargetRestraint."
 KinkyDungeonStruggleUnlockImpossibleGoddess,"The goddess punishes you for trying to unlock the TargetRestraint!"
+KinkyDungeonStruggleUnlockRestricted,"You are too restricted to get the key into place!"
 KinkyDungeonStruggleUnlockStrict,"You try, but something is keeping your hands away from the TargetRestraint."
 KinkyDungeonStruggleUnlockStrictAroused,"You flail the key around uselessly but a strap is preventing you from unlocking the TargetRestraint!"
 KinkyDungeonStrugglePickImpossible,"This lock on the TargetRestraint is beyond your skill level!"
@@ -3049,6 +3052,7 @@ KinkyDungeonStrugglePickImpossibleBoundAroused,"You let out a frustrated sigh as
 KinkyDungeonStrugglePickStrict,"You try to start picking, but the lock on the TargetRestraint is secured by something else."
 KinkyDungeonStrugglePickStrictAroused,"You whimper as you realize the lock on the TargetRestraint is shielded by another strap."
 KinkyDungeonStrugglePickImpossibleGoddess,"You are distracted from the TargetRestraint by mental images of yourself remaining in bondage..."
+KinkyDungeonStrugglePickRestricted,"Your restrictions ruin your dexterity. You can't pick the TargetRestraint."
 
 KinkyDungeonStruggleRemoveNeedEdge,"You wiggle uselessly in the TargetRestraint. Maybe you need some kind of tool..."
 KinkyDungeonStruggleRemoveNeedEdgeAroused,"You rub your body against the floor to no avail, and sigh as the TargetRestraint stays secure."
@@ -3090,6 +3094,7 @@ KinkyDungeonStruggleRemoveImpossibleBoundAroused,"Your futile struggles do nothi
 KinkyDungeonStruggleRemoveStrict,"You try to undo the fasteners on the TargetRestraint, but they are blocked by other straps!"
 KinkyDungeonStruggleRemoveStrictAroused,"You rub your body uselessly as you find another strap securing the TargetRestraint."
 KinkyDungeonStruggleRemoveImpossibleGoddess,"You feel the Goddess' hand keeping the TargetRestraint tightly secured!"
+KinkyDungeonStruggleRemoveRestricted,"The TargetRestraint is too well-secured to take off with your level of restriction."
 KinkyDungeonStruggleCutImpossible,"The TargetRestraint is too durable to cut."
 KinkyDungeonStruggleCutImpossibleAroused,"Your hopeless attempts fail to even leave a scratch on the TargetRestraint."
 KinkyDungeonStruggleCutImpossible2,"You fail to leave even a scratch on the TargetRestraint!"
@@ -3099,6 +3104,7 @@ KinkyDungeonStruggleCutImpossibleBoundAroused,"You cry out in your bindings as t
 KinkyDungeonStruggleCutStrict,"Your arms are kept from having leverage on the TargetRestraint due to another item."
 KinkyDungeonStruggleCutStrictAroused,"You fiddle with the tool, but your arms lack leverage on the TargetRestraint due to another item"
 KinkyDungeonStruggleCutImpossibleGoddess,"The TargetRestraint flashes magically as the Goddess' curse resists your efforts!"
+KinkyDungeonStruggleCutRestricted,"Your restrictions limit your cutting power, unable to hurt the TargetRestraint."
 
 KinkyDungeonStruggleRemoveFailShadowHand,"You pry at the TargetRestraint..."
 KinkyDungeonStruggleRemoveFailShadowHandAroused,"You moan as the TargetRestraint squeeze you tightly..."

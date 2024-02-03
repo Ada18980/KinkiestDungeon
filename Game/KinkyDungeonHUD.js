@@ -2303,6 +2303,14 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 	} else if (KDToggleShowAllBuffs) {
 		statsDraw.b_speed = {text: TextGet("KDStatFreeLegs"), category: "status", icon: "status/freeLegs", color: "#55ff55", bgcolor: "#333333", priority: 9};
 	}
+
+	if (KDGameData.Restriction) {
+		statsDraw.b_restriction = {text: TextGet("KDStatRestriction"), category: "status", icon: "restriction", color: "#ff5555", bgcolor: "#333333", priority: 9,
+			count: Math.round(KDGameData.Restriction) + "",
+			countcolor: "#ff5555",
+		};
+	}
+
 	if (KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) < KDShadowThreshold) {
 		statsDraw.shadow = {text: TextGet("KinkyDungeonPlayerShadow"), icon: "shadow", category: "status", color: "#a3a7c2", bgcolor: "#5e52ff", priority: 1};
 		//DrawTextFitKD(TextGet("KinkyDungeonPlayerShadow"), X1, 900 - i * 35, 200, KDTextGray0, "#5e52ff", ); i++;
