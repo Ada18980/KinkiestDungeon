@@ -3563,6 +3563,12 @@ function KinkyDungeonHandleClick() {
 
 				if (KDPatched) {
 					KDSendEvent('optin');
+					// Expanded and simplified Google's oneliner script:
+					window.dataLayer = [{'gtm.start': new Date().getTime(), event: 'gtm.js'}];
+					let googleTagManager = document.createElement('script');
+					googleTagManager.async = true;
+					googleTagManager.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-536L7P8';
+					document.head.appendChild(googleTagManager);
 				} else {
 					KDOptOut = true;
 				}
