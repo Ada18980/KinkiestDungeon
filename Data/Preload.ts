@@ -156,6 +156,7 @@ let DisplacementMaps = [
 'TapeAnklesSquishClosed.png',
 'TapeAnklesSquishKneel.png',
 'TapeAnklesSquishKneelClosed.png',
+'TapeAnklesSquishHogtie.png',
 'TapeArmsBoxtie.png',
 'TapeFullLeft.png',
 'TapeFullLeftBoxtie.png',
