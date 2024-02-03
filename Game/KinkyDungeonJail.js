@@ -3,9 +3,11 @@
 /** Affects security level based on owning faction */
 let KDMainFactionSecurityMod = 35;
 
-
 /** Time spent in cage before guards start getting teleported */
 let KDMaxCageTime = 100;
+
+/** max keys on the map at once **/
+let KDMaxKeys = 2;
 
 /** Only these have jail events */
 let KDJailFilters = ['jail'];
@@ -70,13 +72,11 @@ function KinkyDungeonLoseJailKeys(Taken, boss, enemy) {
 }
 
 function KinkyDungeonUpdateJailKeys() {
+  if (KDMapData.EscapeMethod != "Key") return;
 	if (KDMapData.KeysHeld < 3) {
 		let altRoom = KinkyDungeonAltFloor(KDGameData.RoomType);
 		if ((!altRoom || !altRoom.nokeys) && (!KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel) || !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel).nokeys)) {
-			let keyCount = KDMapData.GroundItems.filter((item) => {return item.name == "Keyring";}).length;
-			for (let i = 0; i < 3 - keyCount; i++) {
-				KinkyDungeonPlaceJailKeys();
-			}
+			KinkyDungeonPlaceJailKeys();
 		}
 	}
 }
@@ -504,37 +504,36 @@ function KinkyDungeonInJail(filter) {
 
 
 function KinkyDungeonPlaceJailKeys() {
-	let jailKeyList = [];
+    let jailKeyList = [];
 
-	// Populate the key
-	for (let X = 1; X < KDMapData.GridWidth; X += 1)
-		for (let Y = 1; Y < KDMapData.GridHeight; Y += 1)
-			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))
-				&& KDMapData.RandomPathablePoints[(X) + ',' + (Y)]
-				&& KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y) > 15
-				&& KDistChebyshev(X - KDMapData.EndPosition.x, Y - KDMapData.EndPosition.y) > 15
-				&& (!KDMapData.ShortcutPosition || KDistChebyshev(X - KDMapData.ShortcutPosition.x, Y - KDMapData.ShortcutPosition.y) > 15)
-				&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits))
-				jailKeyList.push({x:X, y:Y});
+    // Populate the key
+    for (let X = 1; X < KDMapData.GridWidth; X += 1)
+        for (let Y = 1; Y < KDMapData.GridHeight; Y += 1)
+            if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))
+                && KDMapData.RandomPathablePoints[(X) + ',' + (Y)]
+                && KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y) > 15
+                && KDistChebyshev(X - KDMapData.EndPosition.x, Y - KDMapData.EndPosition.y) > 15
+                && (!KDMapData.ShortcutPosition || KDistChebyshev(X - KDMapData.ShortcutPosition.x, Y - KDMapData.ShortcutPosition.y) > 15)
+                && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits))
+                jailKeyList.push({x:X, y:Y});
 
-	let maxKeys = 2; // TODO make variable
-	let keyCount = Math.max(0, maxKeys - KDMapData.GroundItems.filter((item) => {return item.name == "Keyring";}).length);
-	let placed = 0;
-	let i = 0;
+    let keyCount = Math.max(0, KDMaxKeys - KDMapData.GroundItems.filter((item) => {return item.name == "Keyring";}).length);
+    let placed = 0;
+    let i = 0;
 
-	while (jailKeyList.length > 0 && placed < keyCount) {
-		let N = Math.floor(KDRandom()*jailKeyList.length);
-		let slot = jailKeyList[N];
-		if (KDGameData.KeyringLocations && i < KDGameData.KeyringLocations.length) {
-			slot = KDGameData.KeyringLocations[Math.floor(KDRandom() * KDGameData.KeyringLocations.length)];
-			i++;
-		}
-		if (!KDMapData.GroundItems.some((item) => {return item.name == "Keyring" && KDistChebyshev(item.x - slot.x, item.y - slot.y) < KDMapData.GridHeight / 3;})) {
-			KDMapData.GroundItems.push({x:slot.x, y:slot.y, name: "Keyring"});
-			placed += 1;
-		}
-		jailKeyList.splice(N, 1);
-	}
+    while (jailKeyList.length > 0 && placed < keyCount) {
+        let N = Math.floor(KDRandom()*jailKeyList.length);
+        let slot = jailKeyList[N];
+        if (KDGameData.KeyringLocations && i < KDGameData.KeyringLocations.length) {
+            slot = KDGameData.KeyringLocations[Math.floor(KDRandom() * KDGameData.KeyringLocations.length)];
+            i++;
+        }
+        if (!KDMapData.GroundItems.some((item) => {return item.name == "Keyring" && KDistChebyshev(item.x - slot.x, item.y - slot.y) < KDMapData.GridHeight / 3;})) {
+            KDMapData.GroundItems.push({x:slot.x, y:slot.y, name: "Keyring"});
+            placed += 1;
+        }
+        jailKeyList.splice(N, 1);
+    }
 }
 
 function KinkyDungeonHandleJailSpawns(delta) {

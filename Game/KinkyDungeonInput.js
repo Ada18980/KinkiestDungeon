@@ -554,7 +554,7 @@ function KDProcessInput(type, data) {
 					}
 				}
 				if(data.method) {
-					KinkyDungeonSelectedEscapeMethod = data.method;
+					KDGameData.SelectedEscapeMethod = data.method;
 				}
 
 				KinkyDungeonMapSet(data.x, data.y, 'p');

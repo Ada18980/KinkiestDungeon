@@ -2263,6 +2263,7 @@ interface KinkyDungeonSave {
 	dress: string;
 	gold: number;
 	points: number;
+	progression: string;
 	inventoryVariants: Record<string, KDRestraintVariant>;
 	consumableVariants: Record<string, KDConsumableVariant>;
 	weaponVariants: Record<string, KDWeaponVariant>;

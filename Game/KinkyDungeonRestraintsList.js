@@ -164,14 +164,14 @@ const KinkyDungeonRestraints = [
 		remove: ["Cloth", "ClothLower", "Tops"],
 		addTag: ["HandsBehind"],
 		Asset: "DuctTape", Color: "#AA2222", Group: "ItemArms", bindarms: true, power: 2, weight: 0,  escapeChance: {"Struggle": 0.1, "Cut": 0.8, "Remove": 0}, failSuffix: {"Remove": "Tape"},
-		Model: "TapeHeavyArms",
+		Model: "TapeHeavyArmsFull",
 		Filters: {
 			Tape: {"gamma":0.18333333333333335,"saturation":1,"contrast":0.8333333333333333,"brightness":1.2166666666666668,"red":5,"green":1.607843137254902,"blue":2.3333333333333335,"alpha":1},
 		},
 		enemyTags: {"ribbonRestraints":1}, playerTags: {"ItemArmsFull":3}, minLevel: 0, allFloors: true, shrine: ["Charms", "Wrapping", "Will"]},
 	{removePrison: true, name: "DuctTapeLegsMummy", OverridePriority: 25.1, unlimited: true, debris: "Fabric", inaccessible: true, Type: "CompleteLegs", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender],
 		remove: ["ClothLower", "Skirts"], Asset: "DuctTape", Color: "#AA2222", Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 2, weight: 0,  escapeChance: {"Struggle": 0.15, "Cut": 0.8, "Remove": 0}, failSuffix: {"Remove": "Tape"},
-		Model: "TapeHeavyLegs",
+		Model: "TapeHeavyBottomFull",
 		Filters: {
 			Tape: {"gamma":0.18333333333333335,"saturation":1,"contrast":0.8333333333333333,"brightness":1.2166666666666668,"red":5,"green":1.607843137254902,"blue":2.3333333333333335,"alpha":1},
 		},
