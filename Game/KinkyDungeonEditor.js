@@ -217,6 +217,7 @@ let KDTilePalette = {
 	'PressurePlate':  {type: "effect", effectTile: "PressurePlate"},
 	'PressurePlateHold':  {type: "effect", effectTile: "PressurePlateHold"},
 	'PressurePlateOneUse':  {type: "effect", effectTile: "PressurePlateOneUse"},
+	'ManaPlate':  {type: "effect", effectTile: "ManaEmpty"},
 	'----Misc----': {type: "none"},
 	'POI': {type: "POI"},
 	'OffLimits': {type: "offlimits"},

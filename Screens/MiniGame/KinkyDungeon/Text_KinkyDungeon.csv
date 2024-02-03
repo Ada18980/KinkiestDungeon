@@ -19953,4 +19953,7 @@ KDMapMod_,""
 
 KDRoomType_,""
 
-
+KDManaStationDrain1,"You feel energy flow out of you, activating the floor below!"
+KDManaStationDrain2,"You feel energy flow out of you, lighting up a circle on the floor!"
+KDManaStationFail,"The floor beneath you drains your mana, but you don't have enough to satisfy it."
+KDManaStationCharged,"The ground beneath you glows with magical energy!"

@@ -268,6 +268,27 @@ let KDEffectTiles = {
 		priority: 50,
 		tags: ["wire"],
 	},
+
+
+	"ManaEmpty": {
+		name: "ManaEmpty",
+		duration: 9999, infinite: true,
+		priority: 50,
+		tags: [],
+	},
+	"ManaPartial": {
+		name: "ManaEmpty",
+		duration: 9999, infinite: true,
+		priority: 50,
+		tags: ["wire"],
+	},
+	"ManaFull": {
+		name: "PressurePlateActive",
+		duration: 2,
+		priority: 51,
+		tags: ["ppactive"],
+	},
+
 	"Ignition": {
 		name: "Ignition",
 		duration: 1,
