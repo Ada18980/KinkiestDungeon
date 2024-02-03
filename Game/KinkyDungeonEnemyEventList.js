@@ -220,6 +220,8 @@ let KDIntentEvents = {
 				KDPutInJail(KinkyDungeonPlayerEntity, enemy, nj ? nj : KDMapData.StartPosition);
 				KDResetIntent(enemy, AIData);
 				KDBreakTether(KinkyDungeonPlayerEntity);
+				if (!nj)
+					AIData.defeat = true;
 			} else {
 				let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
 				KDPutInJail(KinkyDungeonPlayerEntity, enemy, nj ? nj : KDMapData.StartPosition);
