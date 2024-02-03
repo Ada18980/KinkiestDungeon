@@ -270,6 +270,21 @@ let KDEffectTiles = {
 	},
 
 
+	"MotionLamp": {
+		name: "MotionLamp",
+		duration: 9999, infinite: true,
+		priority: 50,
+		tags: ["floor"],
+	},
+	"MotionLampLight": {
+		name: "MotionLampLight",
+		duration: 9999,
+		priority: 50,
+		brightness: 6.5,
+		lightColor: 0x7799ff,
+		tags: ["light"],
+	},
+
 	"ManaEmpty": {
 		name: "ManaEmpty",
 		duration: 9999, infinite: true,

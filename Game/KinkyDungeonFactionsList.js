@@ -1049,14 +1049,15 @@ function KDInitFactions(Reset) {
 	// Next we create the faction relationships
 	for (let f1 of Object.entries(KinkyDungeonFactionRelations)) {
 		let fmap = KDFactionRelations.get(f1[0]);
-		for (let f2 of Object.entries(f1[1])) {
-			// Set mutual opinions
-			fmap.set(f2[0], f2[1]);
-			if (!KDFactionRelations.get(f2[0])) {
-				console.log("Could not find faction " + f2[0]);
+		if (fmap)
+			for (let f2 of Object.entries(f1[1])) {
+				// Set mutual opinions
+				fmap.set(f2[0], f2[1]);
+				if (!KDFactionRelations.get(f2[0])) {
+					console.log("Could not find faction " + f2[0]);
+				}
+				KDFactionRelations.get(f2[0]).set(f1[0], f2[1]);
 			}
-			KDFactionRelations.get(f2[0]).set(f1[0], f2[1]);
-		}
 	}
 }
 

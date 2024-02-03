@@ -266,6 +266,7 @@ function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI
 				if (KDGetFaction(e) == "Natural") continue;
 				if (enemy.Enemy.noTargetSilenced && e.silence > 0) continue;
 				if ((e.Enemy && !e.Enemy.noAttack && KDHostile(enemy, e))) {
+					if (e.Enemy?.tags?.scenery && KDAllied(enemy) && !KDEnemyHasFlag(e, "targetedForAttack")) continue;
 					let dist = Math.sqrt((e.x - enemy.x)*(e.x - enemy.x)
 						+ (e.y - enemy.y)*(e.y - enemy.y));
 					let pdist_enemy =
@@ -6130,7 +6131,7 @@ function KDGetAwareTooltip(enemy) {
 			color: "#ffffff",
 		};
 	}
-	if (enemy.ignore) return {
+	if (enemy.aware && enemy.ignore) return {
 		suff: "AwareIgnore",
 		color: "#ffff55",
 	};

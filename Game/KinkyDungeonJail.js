@@ -517,21 +517,24 @@ function KinkyDungeonPlaceJailKeys() {
 				&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits))
 				jailKeyList.push({x:X, y:Y});
 
+	let maxKeys = 2; // TODO make variable
+	let keyCount = Math.max(0, maxKeys - KDMapData.GroundItems.filter((item) => {return item.name == "Keyring";}).length);
+	let placed = 0;
 	let i = 0;
 
-	while (jailKeyList.length > 0) {
+	while (jailKeyList.length > 0 && placed < keyCount) {
 		let N = Math.floor(KDRandom()*jailKeyList.length);
 		let slot = jailKeyList[N];
 		if (KDGameData.KeyringLocations && i < KDGameData.KeyringLocations.length) {
 			slot = KDGameData.KeyringLocations[Math.floor(KDRandom() * KDGameData.KeyringLocations.length)];
+			i++;
 		}
-		if (i < 1000 && !KDMapData.GroundItems.some((item) => {return item.name == "Keyring" && KDistChebyshev(item.x - slot.x, item.y - slot.y) < KDMapData.GridHeight / 3;})) {
+		if (!KDMapData.GroundItems.some((item) => {return item.name == "Keyring" && KDistChebyshev(item.x - slot.x, item.y - slot.y) < KDMapData.GridHeight / 3;})) {
 			KDMapData.GroundItems.push({x:slot.x, y:slot.y, name: "Keyring"});
+			placed += 1;
 		}
-		i++;
-		return true;
+		jailKeyList.splice(N, 1);
 	}
-
 }
 
 function KinkyDungeonHandleJailSpawns(delta) {

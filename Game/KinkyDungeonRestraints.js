@@ -4058,8 +4058,7 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 								|| (invrest.alwaysKeep)
 								|| (invrest.armor)
 								|| (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs] && !KinkyDungeonRestraintVariants[inventoryAs].noKeep)
-							)))
-						&& (!Add || UnLink)) {
+							)))) {
 						if (inventoryAs) {
 							let origRestraint = KinkyDungeonGetRestraintByName(inventoryAs);
 							if (origRestraint && invrest.shrine?.includes("Cursed") && !origRestraint.shrine?.includes("Cursed")) {

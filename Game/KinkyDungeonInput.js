@@ -523,6 +523,8 @@ function KDProcessInput(type, data) {
 							}
 						}
 						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonOrbSpell").replace("SPELL", TextGet("KinkyDungeonSpell" + spell.name)), "lightblue", 2);
+					} else {
+						KinkyDungeonSpellPoints += data.Amount;
 					}
 				} else {
 					KinkyDungeonSpellPoints += data.Amount;

@@ -607,7 +607,7 @@ let KDEffectTileFunctionsStandalone = {
 		}
 		return true;
 	},
-	"ManaFull": (delta, entity, tile) => {
+	"ManaFull": (delta, tile) => {
 		KDCreateEffectTile(tile.x, tile.y, {
 			name: "WireSparks",
 			duration: 2,
@@ -655,38 +655,50 @@ let KDEffectTileFunctions = {
 	},
 
 
-	"ManaEmpty": (delta, entity, tile) => {
-		if (KinkyDungeonStatMana + KinkyDungeonStatManaPool >= 5) {
-			KinkyDungeonChangeMana(-5, false, 0, true, true);
-			tile.duration = 0;
-			KDCreateEffectTile(tile.x, tile.y, {
-				name: "ManaPartial",
-				duration: 9999, infinite: true,
-			}, 0);
-			KinkyDungeonSendTextMessage(9, TextGet("KDManaStationDrain1"), "#7799ff");
-			return true;
-		} else {
-			KinkyDungeonSendTextMessage(9, TextGet("KDManaStationFail"), "#7799ff");
-		}
+	"MotionLamp": (delta, entity, tile) => {
+		KDCreateEffectTile(tile.x, tile.y, {
+			name: "MotionLampLight",
+			duration: 12,
+		}, 0);
 		return false;
 	},
 	"ManaFull": (delta, entity, tile) => {
 		KinkyDungeonSendTextMessage(8, TextGet("KDManaStationCharged"), "#7799ff");
 		return false;
 	},
-	"ManaPartial": (delta, entity, tile) => {
-		if (KinkyDungeonStatMana + KinkyDungeonStatManaPool >= 5) {
-			KinkyDungeonChangeMana(-5, false, 0, true, true);
-			tile.duration = 0;
-			KDCreateEffectTile(tile.x, tile.y, {
-				name: "ManaFull",
-				duration: 9999, infinite: true,
-			}, 0);
-			KinkyDungeonSendTextMessage(9, TextGet("KDManaStationDrain2"), "#7799ff");
-			return true;
-		} else {
-			KinkyDungeonSendTextMessage(10, TextGet("KDManaStationFail"), "#7799ff");
+	"ManaEmpty": (delta, entity, tile) => {
+		if (entity.player) {
+			if (KinkyDungeonStatMana + KinkyDungeonStatManaPool >= 5) {
+				KinkyDungeonChangeMana(-5, false, 0, true, true);
+				tile.duration = 0;
+				KDCreateEffectTile(tile.x, tile.y, {
+					name: "ManaPartial",
+					duration: 9999, infinite: true,
+				}, 0);
+				KinkyDungeonSendTextMessage(9, TextGet("KDManaStationDrain1"), "#7799ff");
+				return true;
+			} else {
+				KinkyDungeonSendTextMessage(9, TextGet("KDManaStationFail"), "#7799ff");
+			}
 		}
+		return false;
+	},
+	"ManaPartial": (delta, entity, tile) => {
+		if (entity.player) {
+			if (KinkyDungeonStatMana + KinkyDungeonStatManaPool >= 5) {
+				KinkyDungeonChangeMana(-5, false, 0, true, true);
+				tile.duration = 0;
+				KDCreateEffectTile(tile.x, tile.y, {
+					name: "ManaFull",
+					duration: 9999, infinite: true,
+				}, 0);
+				KinkyDungeonSendTextMessage(9, TextGet("KDManaStationDrain2"), "#7799ff");
+				return true;
+			} else {
+				KinkyDungeonSendTextMessage(10, TextGet("KDManaStationFail"), "#7799ff");
+			}
+		}
+
 		return false;
 	},
 

@@ -1224,7 +1224,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 					}
 					let choice = Math.floor(KDRandom()*choices.length);
 					KDMapData.EscapeMethod = choices[choice];
-				}			
+				}
 				KinkyDungeonSelectedEscapeMethod = "Key";
 				KDEscapeWorldgenStart(KDGetEscapeMethod(Floor));
 			}
@@ -2656,7 +2656,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 					if (orbs < orbcount) {
 						tile = 'O';
 
-						if (KinkyDungeonStatsChoice.get("randomMode")) {
+						if (KinkyDungeonStatsChoice.get("randomMode") && KDGetRandomSpell()) {
 							let spell = KDGetRandomSpell();
 							KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Spell: spell.name, Light: 5, lightColor: 0x28B4FF});
 						} else

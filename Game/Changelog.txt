@@ -33,6 +33,7 @@ Monk class?
  - Added Aqua Slime and related restraints
  - Hopefully fixed shrine scarcity on bellows
  - Added mana pressure plate
+ - Made allies ignore scenery unless the player is attacking it
 
 5.1.15
  - Tweaked future harness lower

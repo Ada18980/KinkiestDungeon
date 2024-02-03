@@ -3765,6 +3765,18 @@ let KDEffectTileTooltips = {
 	'EdgeOrb': {
 		color: "#ff8933",
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'MotionLamp': {
+		color: "#ff8933",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'ManaEmpty': {
+		color: "#ff8933",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'ManaPartial': {
+		color: "#ffffff",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'ManaFull': {
+		color: "#ffffff",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'EdgeOrbDead': {
 		color: "#555555",
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},

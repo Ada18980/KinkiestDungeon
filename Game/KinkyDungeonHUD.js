@@ -395,7 +395,7 @@ function KDDrawSpellChoices() {
 						KDSendInput("upcastcancel", {});
 						return true;
 					}, true,
-					hotBarX + (hotBarIndex)*hotBarSpacing - 82, HotbarStart, 72, 72, "", "",
+					hotBarX + (hotBarIndex)*hotBarSpacing - 82, HotbarStart - 82, 72, 72, "", "",
 					KinkyDungeonRootDirectory + "Spells/" + KDEmpowerSprite + "Cancel" + ".png", undefined, false, true,
 					undefined, undefined, undefined, {
 						hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[1]),

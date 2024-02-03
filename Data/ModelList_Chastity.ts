@@ -193,6 +193,9 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal"],
 	//AddPose: ["CrotchStrap"],
+	AddPoseIf: {
+		ChastityOption2: ["CrotchStrap"],
+	},
 	Layers: ToLayerMap([
 		{ Name: "Belt", Layer: "ChastityBelt", Pri: -40.1,
 			//swaplayerpose: {Kneel: "ChastityBeltLower", KneelClosed: "ChastityBeltLower"},
@@ -246,6 +249,9 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal", "SciFi"],
+	AddPoseIf: {
+		ChastityOption2: ["CrotchStrap"],
+	},
 	Layers: ToLayerMap([
 		{ Name: "Cyber", Layer: "ChastityBelt", Pri: -40,
 			//swaplayerpose: {Kneel: "ChastityBeltLower", KneelClosed: "ChastityBeltLower"},
@@ -302,6 +308,9 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal", "SciFi"],
+	AddPoseIf: {
+		ChastityOption2: ["CrotchStrap"],
+	},
 	//AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
 		{ Name: "Proto", Layer: "ChastityBelt", Pri: 40.1,
@@ -361,6 +370,9 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal", "Divine"],
+	AddPoseIf: {
+		ChastityOption2: ["CrotchStrap"],
+	},
 	Layers: ToLayerMap([
 		{ Name: "BeltLines", Layer: "ChastityBelt", Pri: 45.2,
 			//swaplayerpose: {Kneel: "ChastityBeltLower", KneelClosed: "ChastityBeltLower"},
@@ -455,6 +467,9 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal", "Divine"],
+	AddPoseIf: {
+		ChastityOption2: ["CrotchStrap"],
+	},
 	Layers: ToLayerMap([
 		{ Name: "BeltLines", Layer: "ChastityBelt", Pri: 45.2,
 			//swaplayerpose: {Kneel: "ChastityBeltLower", KneelClosed: "ChastityBeltLower"},
@@ -711,6 +726,9 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal"],
+	AddPoseIf: {
+		ChastityOption2: ["CrotchStrap"],
+	},
 	//AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
 		{ Name: "Belt", Layer: "ChastityBelt", Pri: -40.1,
@@ -737,6 +755,9 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal"],
+	AddPoseIf: {
+		ChastityOption2: ["CrotchStrap"],
+	},
 	//AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
 		{ Name: "Belt", Layer: "ChastityBelt", Pri: -40.1,
@@ -763,6 +784,9 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal"],
+	AddPoseIf: {
+		ChastityOption2: ["CrotchStrap"],
+	},
 	//AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
 		{ Name: "Belt", Layer: "ChastityBelt", Pri: -40.1,
