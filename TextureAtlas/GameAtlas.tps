@@ -737,6 +737,11 @@
             <key type="filename">../Game/EffectTiles/LatexThinBlue.png</key>
             <key type="filename">../Game/EffectTiles/LiquidMetal.png</key>
             <key type="filename">../Game/EffectTiles/Magicflies.png</key>
+            <key type="filename">../Game/EffectTiles/ManaEmpty.png</key>
+            <key type="filename">../Game/EffectTiles/ManaFull.png</key>
+            <key type="filename">../Game/EffectTiles/ManaPartial.png</key>
+            <key type="filename">../Game/EffectTiles/MotionLamp.png</key>
+            <key type="filename">../Game/EffectTiles/MotionLampLight.png</key>
             <key type="filename">../Game/EffectTiles/OrbLantern.png</key>
             <key type="filename">../Game/EffectTiles/Portals/CommercePortal.png</key>
             <key type="filename">../Game/EffectTiles/Portals/CommercePortalReturn.png</key>
@@ -794,6 +799,7 @@
             <key type="filename">../Game/Enemies/Apprentice2.png</key>
             <key type="filename">../Game/Enemies/ApprenticeQuest.png</key>
             <key type="filename">../Game/Enemies/ApprenticeSlime.png</key>
+            <key type="filename">../Game/Enemies/AquaSlime.png</key>
             <key type="filename">../Game/Enemies/ArmorerQuest.png</key>
             <key type="filename">../Game/Enemies/Bandit.png</key>
             <key type="filename">../Game/Enemies/BanditChief.png</key>
@@ -1142,6 +1148,8 @@
             <key type="filename">../Game/Enemies/SummonedZombie.png</key>
             <key type="filename">../Game/Enemies/TalismanZombie.png</key>
             <key type="filename">../Game/Enemies/TapeBot.png</key>
+            <key type="filename">../Game/Enemies/TheWarden1.png</key>
+            <key type="filename">../Game/Enemies/TheWarden2.png</key>
             <key type="filename">../Game/Enemies/TickleHand.png</key>
             <key type="filename">../Game/Enemies/TickleHandSlave.png</key>
             <key type="filename">../Game/Enemies/TickleTerror.png</key>
@@ -1152,6 +1160,9 @@
             <key type="filename">../Game/Enemies/VineSpitter.png</key>
             <key type="filename">../Game/Enemies/Wall.png</key>
             <key type="filename">../Game/Enemies/WallDoor.png</key>
+            <key type="filename">../Game/Enemies/WardenArcher.png</key>
+            <key type="filename">../Game/Enemies/WardenFighter.png</key>
+            <key type="filename">../Game/Enemies/WardenMage.png</key>
             <key type="filename">../Game/Enemies/Water.png</key>
             <key type="filename">../Game/Enemies/WaterMote.png</key>
             <key type="filename">../Game/Enemies/WitchAqua.png</key>
@@ -1346,6 +1357,10 @@
             <key type="filename">../Game/EnemiesBound/SlimeEnthusiast.png</key>
             <key type="filename">../Game/EnemiesBound/TalismanZombie.png</key>
             <key type="filename">../Game/EnemiesBound/TapedDoll.png</key>
+            <key type="filename">../Game/EnemiesBound/TheWarden.png</key>
+            <key type="filename">../Game/EnemiesBound/WardenArcher.png</key>
+            <key type="filename">../Game/EnemiesBound/WardenFighter.png</key>
+            <key type="filename">../Game/EnemiesBound/WardenMage.png</key>
             <key type="filename">../Game/EnemiesBound/Witch.png</key>
             <key type="filename">../Game/EnemiesBound/WitchChain.png</key>
             <key type="filename">../Game/EnemiesBound/WitchEarth.png</key>
@@ -2292,6 +2307,7 @@
             <key type="filename">../Game/UI/Cycle.png</key>
             <key type="filename">../Game/UI/ItemAura.png</key>
             <key type="filename">../Game/UI/ItemAuraBG.png</key>
+            <key type="filename">../Game/UI/NavMap/MapIcon.png</key>
             <key type="filename">../Game/UI/PathDisplay.png</key>
             <key type="filename">../Game/UI/PlayerFacing.png</key>
             <key type="filename">../Game/WarningAlly.png</key>
@@ -2358,6 +2374,7 @@
             <key type="filename">../Game/Aura/WaterBubble.png</key>
             <key type="filename">../Game/UI/DollmakerTarget.png</key>
             <key type="filename">../Game/UI/HighValueTarget.png</key>
+            <key type="filename">../Game/UI/StageTarget.png</key>
             <key type="filename">../Game/Vision.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

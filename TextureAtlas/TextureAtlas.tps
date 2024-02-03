@@ -342,9 +342,13 @@
             <key type="filename">../Models/Body/TorsoSpread.png</key>
             <key type="filename">../Models/Body/TorsoSpreadChastity.png</key>
             <key type="filename">../Models/Bubble/Arms.png</key>
+            <key type="filename">../Models/Bubble/BallSuit.png</key>
+            <key type="filename">../Models/Bubble/BallSuitSeam.png</key>
             <key type="filename">../Models/Bubble/Bubble.png</key>
             <key type="filename">../Models/Bubble/BubbleSquishy.png</key>
             <key type="filename">../Models/Bubble/BubbleSquishyBack.png</key>
+            <key type="filename">../Models/Bubble/Collar.png</key>
+            <key type="filename">../Models/Bubble/CuffsArms.png</key>
             <key type="filename">../Models/Bubble/Head.png</key>
             <key type="filename">../Models/Bubble/LatexSphere.png</key>
             <key type="filename">../Models/Bubble/LatexSphereCutaway.png</key>
@@ -1985,6 +1989,7 @@
             <key type="filename">../Models/TapeHeavy/ChestStrap.png</key>
             <key type="filename">../Models/TapeHeavy/ChestWristtie.png</key>
             <key type="filename">../Models/TapeHeavy/FeetClosed.png</key>
+            <key type="filename">../Models/TapeHeavy/FeetHogtie.png</key>
             <key type="filename">../Models/TapeHeavy/FeetKneel.png</key>
             <key type="filename">../Models/TapeHeavy/HandLeftFree.png</key>
             <key type="filename">../Models/TapeHeavy/HandLeftFront.png</key>
@@ -2379,6 +2384,7 @@
             <key type="filename">../Models/Blindfold/BasicRim.png</key>
             <key type="filename">../Models/Blindfold/Cloth.png</key>
             <key type="filename">../Models/Blindfold/Tape.png</key>
+            <key type="filename">../Models/Bubble/Gag.png</key>
             <key type="filename">../Models/FaceDask/Eyes2Angry.png</key>
             <key type="filename">../Models/FaceDask/Eyes2Closed.png</key>
             <key type="filename">../Models/FaceDask/Eyes2Dazed.png</key>
