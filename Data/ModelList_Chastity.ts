@@ -192,7 +192,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal"],
-	//AddPose: ["CrotchStrap"],
+	AddPose: ["ChastityBelt"],
 	AddPoseIf: {
 		ChastityOption2: ["CrotchStrap"],
 	},
@@ -249,6 +249,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal", "SciFi"],
+	AddPose: ["ChastityBelt"],
 	AddPoseIf: {
 		ChastityOption2: ["CrotchStrap"],
 	},
@@ -308,6 +309,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal", "SciFi"],
+	AddPose: ["ChastityBelt"],
 	AddPoseIf: {
 		ChastityOption2: ["CrotchStrap"],
 	},
@@ -370,6 +372,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal", "Divine"],
+	AddPose: ["ChastityBelt"],
 	AddPoseIf: {
 		ChastityOption2: ["CrotchStrap"],
 	},
@@ -467,6 +470,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal", "Divine"],
+	AddPose: ["ChastityBelt"],
 	AddPoseIf: {
 		ChastityOption2: ["CrotchStrap"],
 	},
@@ -726,6 +730,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal"],
+	AddPose: ["ChastityBelt"],
 	AddPoseIf: {
 		ChastityOption2: ["CrotchStrap"],
 	},
@@ -755,6 +760,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal"],
+	AddPose: ["ChastityBelt"],
 	AddPoseIf: {
 		ChastityOption2: ["CrotchStrap"],
 	},
@@ -784,6 +790,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "ChastityBelt", "Metal"],
+	AddPose: ["ChastityBelt"],
 	AddPoseIf: {
 		ChastityOption2: ["CrotchStrap"],
 	},

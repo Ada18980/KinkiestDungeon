@@ -29,6 +29,7 @@ Monk class?
  - TODO display stand turret
 
 5.1.0
+ - Added crotch rope under panties option
  - Added Loot Recovery challenge mode
  - Added Aqua Slime and related restraints
  - Hopefully fixed shrine scarcity on bellows
