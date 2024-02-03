@@ -852,17 +852,17 @@ function KinkyDungeonDrawPerkOrb() {
 
 	if (!StandalonePatched)
 		MainCanvas.textAlign = "center";
-	DrawTextKD(TextGet("KinkyDungeonPerkIntro"), 1250, 200, "#ffffff", KDTextGray2);
-	DrawTextKD(TextGet("KinkyDungeonPerkIntro2"), 1250, 250, "#ffffff", KDTextGray2);
+	DrawTextKD(TextGet("KinkyDungeonPerkIntro"), 1250, 50, "#ffffff", KDTextGray2);
+	DrawTextKD(TextGet("KinkyDungeonPerkIntro2"), 1250, 100, "#ffffff", KDTextGray2);
 
 	let count = 0;
 	let pspacing = 120;
 	for (let p of KDPerkOrbPerks) {
-		DrawTextFitKD(TextGet("KinkyDungeonStat" + KinkyDungeonStatsPresets[p].id), 1250, 350 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 30);
-		DrawTextFitKD(TextGet("KinkyDungeonStatDesc" + KinkyDungeonStatsPresets[p].id), 1250, 385 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 22);
+		DrawTextFitKD(TextGet("KinkyDungeonStat" + KinkyDungeonStatsPresets[p].id), 1250, 200 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 30);
+		DrawTextFitKD(TextGet("KinkyDungeonStatDesc" + KinkyDungeonStatsPresets[p].id), 1250, 235 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 22);
 		FillRectKD(kdcanvas, kdpixisprites, "bg_" + KinkyDungeonStatsPresets[p].id, {
 			Left: 1250-Twidth/2 - 10,
-			Top: 350 + count * pspacing - 30,
+			Top: 200 + count * pspacing - 30,
 			Width: Twidth + 20,
 			Height: 70 + 20,
 			Color: KDTextGray0,
@@ -879,15 +879,15 @@ function KinkyDungeonDrawPerkOrb() {
 			str = str + TextGet("Restraint" + b);
 		}
 		if (KinkyDungeonStatsChoice.get("partialhideperkbondage")) {
-			DrawTextFitKD(TextGet("KDBondageOptionPerkHidden"), 1250, 360 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 30);
+			DrawTextFitKD(TextGet("KDBondageOptionPerkHidden"), 1250, 210 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 30);
 		} else {
-			DrawTextFitKD(TextGet("KDBondageOptionPerk"), 1250, 350 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 24);
-			DrawTextFitKD(str, 1250, 385 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 22);
+			DrawTextFitKD(TextGet("KDBondageOptionPerk"), 1250, 200 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 24);
+			DrawTextFitKD(str, 1250, 235 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 22);
 		}
 
 		FillRectKD(kdcanvas, kdpixisprites, "bg_bndg", {
 			Left: 1250-Twidth/2 - 10,
-			Top: 350 + count * pspacing - 30,
+			Top: 200 + count * pspacing - 30,
 			Width: Twidth + 20,
 			Height: 70 + 20,
 			Color: KDTextRed1,
@@ -899,12 +899,12 @@ function KinkyDungeonDrawPerkOrb() {
 	}
 
 	if (KinkyDungeonStatsChoice.get("escapeselect")) {
-		DrawTextFitKD(TextGet("KDEscapeMethod_" + KDPerkOrbMethod), 1250, 350 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 30);
-		DrawTextFitKD(TextGet("KDEscapeMethodDesc_" + KDPerkOrbMethod), 1250, 385 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 22);
+		DrawTextFitKD(TextGet("KDEscapeMethod_" + KDPerkOrbMethod), 1250, 200 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 30);
+		DrawTextFitKD(TextGet("KDEscapeMethodDesc_" + KDPerkOrbMethod), 1250, 235 + count * pspacing, Twidth, "#ffffff", KDTextGray2, 22);
 
 		FillRectKD(kdcanvas, kdpixisprites, "bg_method", {
 			Left: 1250-Twidth/2 - 10,
-			Top: 350 + count * pspacing - 30,
+			Top: 200 + count * pspacing - 30,
 			Width: Twidth + 20,
 			Height: 70 + 20,
 			Color: KDTextGreen1,

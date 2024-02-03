@@ -490,6 +490,7 @@ let KDDefaultMaxParty = 3;
 * visionAdjust: number,
 * visionBlind: number,
 * CollectionGuests: number,
+* SelectedEscapeMethod: string,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
@@ -687,6 +688,7 @@ let KDGameDataBase = {
 	CollectionGuests: 0,
 
 	FloorRobotType: {},
+	SelectedEscapeMethod: "Key",
 
 	Crouch: false,
 	visionAdjust: 1, // Eyes start out fully light adjusted
@@ -4243,6 +4245,8 @@ function KinkyDungeonLoadGame(String) {
 			//KinkyDungeonPerksMode = KinkyDungeonStatsChoice.get("perksMode");
 			KinkyDungeonPerksMode = KinkyDungeonStatsChoice.get("hardperksMode") ? 2 : (KinkyDungeonStatsChoice.get("perksMode") ? 1 : 0);
 			KinkyDungeonEasyMode = KinkyDungeonStatsChoice.get("norescueMode") ? 2 : (KinkyDungeonStatsChoice.get("easyMode") ? 1 : 0);
+			KinkyDungeonProgressionMode = KinkyDungeonStatsChoice.get("escapekey") ? "Key" : KinkyDungeonStatsChoice.get("escaperandom") ? "Random" : KinkyDungeonStatsChoice.get("escapeselect") ? "Select" : "Key";
+
 
 			if (saveData.faction != undefined) KinkyDungeonFactionRelations = saveData.faction;
 			KDInitFactions();

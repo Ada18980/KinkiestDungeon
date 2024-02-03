@@ -132,7 +132,6 @@ let KinkyDungeonNextDataLastTimeReceivedTimeout = 15000; // Clear data if more t
 let KinkyDungeonLastMoveDirection = null;
 /** @type {spell} */
 let KinkyDungeonTargetingSpell = null;
-let KinkyDungeonSelectedEscapeMethod = "Key";
 
 /**
  * Item to decrement by 1 when spell is cast
@@ -1213,7 +1212,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			KDQuestWorldgenStart(KDGameData.Quests);
 
 			if (KDGameData.RoomType == "") {
-				KDMapData.EscapeMethod = KinkyDungeonSelectedEscapeMethod;
+				KDMapData.EscapeMethod = KDGameData.SelectedEscapeMethod;
 				if (KinkyDungeonStatsChoice.get("escaperandom")) {
 					KDMapData.EscapeMethod = KDGetRandomEscapeMethod();
 					let choices = [];
@@ -1225,7 +1224,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 					let choice = Math.floor(KDRandom()*choices.length);
 					KDMapData.EscapeMethod = choices[choice];
 				}			
-				KinkyDungeonSelectedEscapeMethod = "Key";
+				KDGameData.SelectedEscapeMethod = "Key";
 				KDEscapeWorldgenStart(KDGetEscapeMethod(Floor));
 			}
 			KinkyDungeonSendEvent("postQuest", {});
