@@ -1223,7 +1223,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 					}
 					let choice = Math.floor(KDRandom()*choices.length);
 					KDMapData.EscapeMethod = choices[choice];
-				}			
+				}
 				KDGameData.SelectedEscapeMethod = "Key";
 				KDEscapeWorldgenStart(KDGetEscapeMethod(Floor));
 			}
@@ -4419,9 +4419,9 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 				let newDelta = 1;
 				KinkyDungeonTargetTile = null;
 				KinkyDungeonTargetTileLocation = "";
+				// We can pick up items inside walls, in case an enemy drops it into bars
+				KinkyDungeonItemCheck(moveX, moveY, MiniGameKinkyDungeonLevel);
 				if (!KinkyDungeonHandleMoveObject(moveX, moveY, moveObject)) {// Move
-					// We can pick up items inside walls, in case an enemy drops it into bars
-					KinkyDungeonItemCheck(moveX, moveY, MiniGameKinkyDungeonLevel);
 					KinkyDungeonNoMoveFlag = false;
 					KinkyDungeonConfirmStairs = false;
 					KinkyDungeonSendEvent("beforeMove", {x:moveX, y:moveY});
