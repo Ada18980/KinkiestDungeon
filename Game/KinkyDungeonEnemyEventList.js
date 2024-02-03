@@ -216,12 +216,15 @@ let KDIntentEvents = {
 				enemy.playWithPlayerCD = 24;
 				return true;
 			} else if (KDGameData.PrisonerState == 'jail') {
-				KDPutInJail(KinkyDungeonPlayerEntity, enemy);
+				let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
+				KDPutInJail(KinkyDungeonPlayerEntity, enemy, nj ? nj : KDMapData.StartPosition);
 				KDResetIntent(enemy, AIData);
 				KDBreakTether(KinkyDungeonPlayerEntity);
+				if (!nj)
+					AIData.defeat = true;
 			} else {
-
-				KDPutInJail(KinkyDungeonPlayerEntity, enemy);
+				let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
+				KDPutInJail(KinkyDungeonPlayerEntity, enemy, nj ? nj : KDMapData.StartPosition);
 				KDResetIntent(enemy, AIData);
 				KDBreakTether(KinkyDungeonPlayerEntity);
 				AIData.defeat = true;
