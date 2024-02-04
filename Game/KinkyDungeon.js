@@ -2069,7 +2069,7 @@ function KinkyDungeonRun() {
 			localStorage.setItem("KinkyDungeonProgressionMode", "Select");
 			return true;
 		}, KinkyDungeonPerkProgressionMode != 0, 1275, 580, 175, 50, TextGet("KinkyDungeonProgressionMode2"), KinkyDungeonPerkProgressionMode == 0 ? "#ff5555" : (KinkyDungeonProgressionMode == "Select" ? "#ffffff" : "#888888"), "", undefined, undefined, true, KDButtonColor);
-		if (MouseInKD("KinkyDungeonProgressionMode2")) {
+		if (MouseIn(1275, 580, 175, 50)) {
 			DrawTextFitKD(TextGet("KinkyDungeonProgressionModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
