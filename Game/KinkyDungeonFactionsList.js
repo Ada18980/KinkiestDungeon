@@ -816,6 +816,7 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"Boss": {
 		Chase: -1,
+		Enemy: 0.6,
 	},
 	"Chase": {
 		// Dummy faction, used for deciding if a faction will make you go On The Run

@@ -466,6 +466,8 @@
             <key type="filename">../Game/Bullets/ObserverBeamHit.png</key>
             <key type="filename">../Game/Bullets/ObsidianBolt.png</key>
             <key type="filename">../Game/Bullets/ObsidianBoltHit.png</key>
+            <key type="filename">../Game/Bullets/OneBarMissile.png</key>
+            <key type="filename">../Game/Bullets/OneBarMissileHit.png</key>
             <key type="filename">../Game/Bullets/OrgasmStrikeHit.png</key>
             <key type="filename">../Game/Bullets/PlayerBola.png</key>
             <key type="filename">../Game/Bullets/PlayerBolaHit.png</key>
@@ -1087,6 +1089,7 @@
             <key type="filename">../Game/Enemies/Observer.png</key>
             <key type="filename">../Game/Enemies/OldDrone.png</key>
             <key type="filename">../Game/Enemies/OldTapeDrone.png</key>
+            <key type="filename">../Game/Enemies/OneBar.png</key>
             <key type="filename">../Game/Enemies/OrbGuardian.png</key>
             <key type="filename">../Game/Enemies/OrbOfLight.png</key>
             <key type="filename">../Game/Enemies/Pet.png</key>

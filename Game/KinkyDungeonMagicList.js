@@ -2585,6 +2585,32 @@ let KinkyDungeonSpellListEnemies = [
 		},
 		level:1, type:"hit", onhit:"instant", noTerrainHit: true, power: 1.5, bind: 7, delay: 1, range: 1.5, size: 3, aoe: 1.5, lifetime: 1, damage: "glue"},
 
+	{enemySpell: true, name: "OneBarMissile", bindType: "Metal", color: "#ffffff", sfx: "MagicSlash", landsfx: "MagicSlash", manacost: 6, components: ["Arms"], specialCD: 25,
+		noTerrainHit: true,
+		pierceEnemies: true,
+		faction: "Enemy",
+		minRange: 0,
+		bulletLifetime: 50,
+		noDirectionOffset: true,
+		trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"cast", trailChance: 1.0, trailOnSelf: true,
+		trailcast: {spell: "SummonOneBar", target: "onhit", directional:true, offset: false},
+		effectTileDurationModTrail: 4, effectTileTrail: {
+			name: "Cracked",
+			duration: 50,
+		},
+		events: [{type: "RubberMissileHoming", trigger: "bulletAfterTick", power: 0.4, dist: 15, count: 0.2, limit: 0},],
+		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 9.2, delay: 0, range: 50, damage: "crush", speed: 0.5, playerEffect: {name: "Bind", damage: "pierce", power: 7.2, tag: "onebar"}},
+	{enemySpell: true, name: "SummonOneBar", noSprite: true, minRange: 0, manacost: 2, specialCD: 12,
+		noCastMsg: true,
+		faction: "Enemy",
+		effectTileDurationModTrail: 12, effectTileTrail: {
+			name: "Chains",
+			duration: 10,
+		},
+		effectTileDensity: 0.15,
+		effectTileAoE: 1.5,
+		components: ["Verbal"], level:4, type:"hit", onhit:"summon", summon: [{name: "OneBar", count: 1, time: 50, bound: true, weakBinding: true}], power: 0, time: 10, delay: 0, range: 40, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},
+
 
 	{enemySpell: true, name: "CelestialBolt",  bindType: "Rope", color: "#ffff44", sfx: "MagicSlash", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "holy", bind: 6, speed: 4, playerEffect: {name: "CelestialBolt", count: 2, time: 3, power: 3, damage: "holy"}},
 	{enemySpell: true, name: "WolfCrackle", color: "#8789fd", tags: ["electric", "offense", "aoe"], prerequisite: "Shock", noise: 6, sfx: "Shock", slowStart: true,

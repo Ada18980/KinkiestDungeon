@@ -1269,7 +1269,7 @@ let KDEventMapInventory = {
 
 			if (frequency < e.frequencyMin)
 				frequency = e.frequencyMin;
-				
+
 			if (!r) {
 				frequency = 100;
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingDormant").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightblue", 2);
@@ -7132,7 +7132,7 @@ let KDEventMapBullet = {
 						}
 						if (b.bullet.targetY > entity.y) {
 							b.bullet.targetY = Math.max(entity.y, b.bullet.targetY - data.delta * e.power);
-						} else if (b.bullet.targetX < entity.y) {
+						} else if (b.bullet.targetY < entity.y) {
 							b.bullet.targetY = Math.min(entity.y, b.bullet.targetY + data.delta * e.power);
 						}
 					}
@@ -7141,8 +7141,8 @@ let KDEventMapBullet = {
 
 				// Missile tracking
 				let direction = Math.atan2(b.bullet.targetY - b.y, b.bullet.targetX - b.x);
-				let vx = Math.cos(direction) * speed;
-				let vy = Math.sin(direction) * speed;
+				let vx = Math.cos(direction) * Math.max(e.power, speed);
+				let vy = Math.sin(direction) * Math.max(e.power, speed);
 				let vxx = b.vx;
 				let vyy = b.vy;
 				if (b.vx > vx) vxx = Math.max(vx, b.vx - data.delta * e.power);
@@ -7157,6 +7157,7 @@ let KDEventMapBullet = {
 
 				// Accelerate the missile
 				if (e.count) {
+					speed = KDistEuclidean(b.vx, b.vy);
 					speed += e.count;
 				}
 				direction = Math.atan2(b.vy, b.vx);
@@ -7541,6 +7542,19 @@ let KDEventMapEnemy = {
 				}
 			}
 		},
+		"breakDownForHumanoid": (e, enemy, data) => {
+			if (data.delta && !KDHelpless(enemy)
+				&& ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+				let nearby = KDNearbyEnemies(enemy.x, enemy.y, e.dist).filter((en) => {
+					return !KDHelpless(en)
+					&& KDIsHumanoid(en);
+				});
+				if (nearby.length > 0) {
+					enemy.hp -= e.power * data.delta;
+				}
+			}
+		},
+
 		"ShopkeeperRescueAI": (e, enemy, data) => {
 			// We heal nearby allies and self
 			if (data.delta && !KDHelpless(enemy) && !KinkyDungeonIsDisabled(enemy) && KDEnemyHasFlag(enemy, "RescuingPlayer")

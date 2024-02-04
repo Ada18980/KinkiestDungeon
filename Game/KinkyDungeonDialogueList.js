@@ -2977,6 +2977,437 @@ let KDDialogue = {
 			}
 		}
 	},
+	"TheWarden": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				enemy.hostile = 9999;
+				enemy.aware = true;
+				enemy.vp = 2;
+				enemy.AI = 'hunt';
+				KinkyDungeonSetFlag("BossDialogueTheWarden", -1, 1);
+			}
+			return false;
+		},
+		options: {
+			"Aggressive": { gag: true,
+				playertext: "Default", response: "Default",
+				options: {
+					"Question": {gagDisabled: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Brat": {
+								playertext: "Default", response: "Default",
+								options: {
+									"Proceed": {
+										playertext: "Default", response: "Default",
+										leadsToStage: "PostIntro",
+									}
+								}
+							},
+							"Proceed": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+						}
+					},
+					"Proceed": {gagDisabled: true,
+						playertext: "Default", response: "Default",
+						leadsToStage: "PostIntro",
+					},
+					"ProceedGag": {gagRequired: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Proceed": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+						}
+					},
+					"Brat": {gagDisabled: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Proceed": {gag: true,
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+							"Proceed2": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+						}
+					},
+				}
+			},
+			"Defensive": { gag: true,
+				playertext: "Default", response: "Default",
+				options: {
+					"Question": {gagDisabled: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Question": {
+								playertext: "Default", response: "Default",
+								options: {
+									"Question": {
+										playertext: "Default", response: "Default",
+										options: {
+											"Question": {
+												playertext: "Default", response: "Default",
+												options: {
+													"Question": {
+														playertext: "Default", response: "Default",
+														options: {
+															"Question": {
+																playertext: "Default", response: "Default",
+																options: {
+																	"Proceed": {
+																		playertext: "TheWardenDefensive_Question_Question_Proceed", response: "Default",
+																		leadsToStage: "PostIntro",
+																	}
+																}
+															},
+															"Question2": {
+																playertext: "Default", response: "Default",
+																options: {
+																	"Proceed": {
+																		playertext: "TheWardenDefensive_Question_Question_Proceed", response: "Default",
+																		leadsToStage: "PostIntro",
+																	}
+																}
+															},
+															"Question3": {
+																playertext: "Default", response: "Default",
+																prerequisiteFunction: (gagged, player) => {
+																	return KDUnlockedPerks.includes("StartCyberDoll");
+																},
+																options: {
+																	"Question": {
+																		playertext: "Default", response: "Default",
+																		options: {
+																			"Proceed": {
+																				playertext: "TheWardenDefensive_Question_Question_Proceed", response: "Default",
+																				leadsToStage: "PostIntro",
+																			}
+																		}
+																	},
+																	"Question2": {
+																		playertext: "Default", response: "Default",
+																		options: {
+																			"Proceed": {
+																				playertext: "TheWardenDefensive_Question_Question_Proceed", response: "Default",
+																				leadsToStage: "PostIntro",
+																			}
+																		}
+																	},
+																	"Question3": {
+																		playertext: "Default", response: "Default",
+																		options: {
+																			"Proceed": {
+																				playertext: "Default", response: "Default",
+																				leadsToStage: "PostIntro",
+																				dontTouchText: true,
+																			}
+																		}
+																	},
+																	"Proceed": {
+																		playertext: "TheWardenDefensive_Question_Question_Proceed", response: "Default",
+																		leadsToStage: "PostIntro",
+																	}
+																}
+															},
+															"Proceed": {
+																playertext: "TheWardenDefensive_Question_Question_Proceed", response: "Default",
+																leadsToStage: "PostIntro",
+															}
+														}
+													},
+													"Question2": {
+														playertext: "Default", response: "Default",
+														leadsToStage: "Defensive_Question_Question_Question_Question_Question",
+														dontTouchText: true,
+													},
+													"Proceed": {
+														playertext: "TheWardenDefensive_Question_Question_Proceed", response: "Default",
+														leadsToStage: "PostIntro",
+													}
+												}
+											},
+											"Question2": {
+												playertext: "Default", response: "Default",
+												leadsToStage: "Defensive_Question_Question_Question_Question",
+												dontTouchText: true,
+											},
+											"Question3": {
+												playertext: "Default", response: "Default",
+												leadsToStage: "Defensive_Question_Question_Question_Question",
+												dontTouchText: true,
+											},
+											"Proceed": {
+												playertext: "TheWardenDefensive_Question_Question_Proceed", response: "Default",
+												leadsToStage: "PostIntro",
+											}
+										}
+									},
+									"Question2": {
+										playertext: "Default", response: "Default",
+										leadsToStage: "Defensive_Question_Question_Question",
+										dontTouchText: true,
+									},
+									"Proceed": {
+										playertext: "TheWardenDefensive_Question_Question_Proceed", response: "Default",
+										leadsToStage: "PostIntro",
+									}
+								}
+							},
+							"Question2": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "Defensive_Question_Question_Question",
+								dontTouchText: true,
+							},
+							"Proceed": {
+								playertext: "TheWardenDefensive_Question_Question_Proceed", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+						}
+					},
+					"Proceed": {gagDisabled: true,
+						playertext: "Default", response: "Default",
+						leadsToStage: "PostIntro",
+					},
+					"ProceedGag": {gagRequired: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Proceed": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+						}
+					},
+					"Brat": {gagDisabled: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Proceed": {gag: true,
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+							"Proceed2": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+						}
+					},
+				}
+			},
+			"Brat": { gag: true,
+				playertext: "Default", response: "Default",
+				options: {
+					"Question": {gagDisabled: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Question": {
+								playertext: "Default", response: "Default",
+								options: {
+									"Proceed": {
+										playertext: "Default", response: "Default",
+										leadsToStage: "PostIntro",
+									}
+								}
+							},
+							"Proceed": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+						}
+					},
+					"Proceed": {gagDisabled: true,
+						playertext: "Default", response: "Default",
+						leadsToStage: "PostIntro",
+					},
+					"ProceedGag": {gagRequired: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Proceed": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+						}
+					},
+					"Brat": {gagDisabled: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Proceed": {gag: true,
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+							"Proceed2": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+						}
+					},
+				}
+			},
+			"Dom": { gag: true,
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					KinkyDungeonChangeRep("Ghost", -2);
+					return false;
+				},
+				options: {
+					"Question": {gagDisabled: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Question": {
+								playertext: "Default", response: "Default",
+								options: {
+									"Proceed": {
+										playertext: "Default", response: "Default",
+										leadsToStage: "PostIntro",
+									}
+								}
+							},
+							"Proceed": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+						}
+					},
+					"Proceed": {gagDisabled: true,
+						playertext: "Default", response: "Default",
+						leadsToStage: "PostIntro",
+					},
+					"ProceedGag": {gagRequired: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Proceed": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+						}
+					},
+					"Brat": {gag: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Proceed": {gag: true,
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+							"Proceed2": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+						}
+					},
+				}
+			},
+			"Sub": { gag: true,
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					KinkyDungeonChangeRep("Ghost", 2);
+					return false;
+				},
+				options: {
+					"Question": {gagDisabled: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Question": {
+								playertext: "Default", response: "Default",
+								options: {
+									"Proceed": {
+										playertext: "Default", response: "Default",
+										leadsToStage: "PostIntro",
+									}
+								}
+							},
+							"Proceed": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+						}
+					},
+					"Proceed": {gagDisabled: true,
+						playertext: "Default", response: "Default",
+						leadsToStage: "PostIntro",
+					},
+					"ProceedGag": {gagRequired: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Proceed": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+						}
+					},
+					"Brat": {gag: true,
+						playertext: "Default", response: "Default",
+						options: {
+							"Proceed": {gag: true,
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+							"Proceed2": {
+								playertext: "Default", response: "Default",
+								leadsToStage: "PostIntro",
+							},
+						}
+					},
+				}
+			},
+			"Attack": {playertext: "Default", exitDialogue: true},
+
+			"PostIntro": {
+				prerequisiteFunction: (gagged, player) => {return false;},
+				playertext: "Default", response: "Default",
+				options: {
+					"Zombie": {
+						gagDisabled: true,
+						playertext: "Default", response: "Default",
+						leadsToStage: "Defensive_Question",
+					},
+					"Brat": {gag: true,
+						playertext: "Default", response: "TheWardenPostIntro_Brat",
+						leadsToStage: "Fight",
+					},
+					"Dom": {gag: true,
+						playertext: "Default", response: "TheWardenPostIntro_Dom",
+						leadsToStage: "Fight",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonChangeRep("Ghost", -2);
+							return false;
+						}
+					},
+					"Sub": {gag: true,
+						playertext: "Default", response: "TheWardenPostIntro_Sub",
+						leadsToStage: "Fight",
+						clickFunction: (gagged, player) => {
+							KinkyDungeonChangeRep("Ghost", 2);
+							return false;
+						}
+					},
+					"Normal": {gag: true,
+						playertext: "Default", response: "TheWardenPostIntro_Normal",
+						leadsToStage: "Fight",
+					},
+				}
+			},
+			"Fight": {
+				prerequisiteFunction: (gagged, player) => {return false;},
+				playertext: "Default", dontTouchText: true,
+				options: {
+					"Fight1": {gag: true,
+						playertext: "Default", exitDialogue: true,
+					},
+					"Fight2": {gag: true,
+						playertext: "Default", exitDialogue: true,
+					},
+					"Fight3": {gag: true,
+						playertext: "Default", exitDialogue: true,
+					},
+				}
+			}
+		}
+	},
 	"Dollmaker": {
 		response: "Default",
 		clickFunction: (gagged, player) => {

@@ -3450,6 +3450,10 @@ RestraintDollStand,Doll Stand
 RestraintDollStandDesc,"A mobile display stand for dolls to keep them in place."
 RestraintDollStandDesc2,"As long as it's... inserted, you won't be going anywhere!"
 
+RestraintOneBar,One Bar Prison
+RestraintOneBarDesc,"A devious way to immobilize people."
+RestraintOneBarDesc2,"As long as it's... inserted, you won't be going anywhere!"
+
 
 RestraintDollStandSFW,Doll Stand
 RestraintDollStandSFWDesc,"A mobile display stand for dolls to keep them in place."
@@ -19974,3 +19978,9 @@ KDEffectTileTooltipManaFullDesc,"It's giving off a strange energy!"
 
 KDEffectTileTooltipMotionLamp,"Glass Plate"
 KDEffectTileTooltipMotionLampDesc,"Looks like it has lighting elements inside."
+
+KinkyDungeonSpellOneBarMissileBind,Many bars come out of the ground and restrain you!
+KinkyDungeonSpellOneBarMissile,One Bar Missile
+
+NameOneBar,Restricting Bars
+KillOneBar,The bars retract into the ground.

@@ -187,6 +187,32 @@ let KinkyDungeonEnemies = [
 	{name: "ChainWall", tags: KDMapInit(["construct", "flying", "poisonmmune", "soulimmune", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile"]),
 		faction: "Witch", immobile: true, spellResist: 0, lowpriority: true, evasion: -100, armor: 3, followRange: 100, AI: "wander", regen: -0.25,
 		visionRadius: 0, maxhp: 5, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
+		cueSfx: {
+			Block: "Clang",
+			Resist: "Clang",
+			Damage: "ArmorHit",
+		},
+		Sound: {
+			baseAmount: 0,
+			moveAmount: 0,
+		},
+		terrainTags: {}, floors:KDMapInit([])},
+
+	{name: "OneBar", tags: KDMapInit(["construct", "poisonmmune", "soulimmune", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile"]),
+		immobile: true, spellResist: 0, lowpriority: true, evasion: -100, armor: 3, followRange: 100, AI: "wander",
+		visionRadius: 0, maxhp: 4, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
+		cueSfx: {
+			Block: "Clang",
+			Resist: "Clang",
+			Damage: "ArmorHit",
+		},
+		Sound: {
+			baseAmount: 0,
+			moveAmount: 0,
+		},
+		events: [
+			{trigger: "afterEnemyTick", type: "breakDownForHumanoid", power: 2, dist: 1.5},
+		],
 		terrainTags: {}, floors:KDMapInit([])},
 
 	{name: "ForceField", tags: KDMapInit(["construct", "flying", "poisonmmune", "soulimmune", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile"]),
@@ -4482,7 +4508,7 @@ let KinkyDungeonEnemies = [
 				//FuukaOrb: 10,
 			},
 		},
-		spells: ["EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.75, noChannel: true,
+		spells: ["OneBarMissile", "EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.75, noChannel: true,
 		visionRadius: 8, maxhp: 90, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 		attackLock: "Purple",
 		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue", dialogue:"TheWardenStage2", click: true}]},
