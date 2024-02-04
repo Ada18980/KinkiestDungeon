@@ -29,6 +29,8 @@ Monk class?
  - TODO display stand turret
 
 5.1.0
+ - Wolfgirl boots and torso now have split color layers
+ - Nevermere punishment suit now has a leotard component
  - Fixed bug where load from code didnt affect the NPC you were dressing
  - Added crotch rope under panties option
  - Added Loot Recovery challenge mode

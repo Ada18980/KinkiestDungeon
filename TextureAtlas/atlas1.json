@@ -144,14 +144,6 @@
 	"spriteSourceSize": {"x":612,"y":252,"w":25,"h":23},
 	"sourceSize": {"w":700,"h":400}
 },
-"Models/FaceDask/Brows2Annoyed.png":
-{
-	"frame": {"x":1972,"y":2024,"w":31,"h":19},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":614,"y":254,"w":31,"h":19},
-	"sourceSize": {"w":700,"h":400}
-},
 "Models/FaceDask/Brows2Neutral.png":
 {
 	"frame": {"x":1802,"y":2024,"w":30,"h":20},
@@ -175,14 +167,6 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":537,"y":243,"w":27,"h":20},
 	"sourceSize": {"w":700,"h":400}
-},
-"Models/FaceKjus/Brows2Annoyed.png":
-{
-	"frame": {"x":2007,"y":2024,"w":38,"h":16},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":609,"y":261,"w":38,"h":16},
-	"sourceSize": {"w":717,"h":405}
 },
 "Models/FaceKjus/BrowsSad.png":
 {
@@ -320,6 +304,14 @@
 	"spriteSourceSize": {"x":723,"y":950,"w":25,"h":43},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/WolfCatsuit/ChestBand.png":
+{
+	"frame": {"x":1972,"y":2024,"w":73,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":592,"y":400,"w":73,"h":15},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/Yoke/SteelBar.png":
 {
 	"frame": {"x":933,"y":2024,"w":517,"h":21},
@@ -336,6 +328,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json", "atlas24.json", "atlas25.json", "atlas26.json", "atlas27.json", "atlas28.json", "atlas29.json", "atlas30.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:03e5a70551d768a011d864aef1f717de:55cbea9dd053a7696162bcb4321da15c:0743c1b47838cee1be7086887f583e25$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f68ee11ece6cbbeb6ddaeb7f76c55e8e:84e6f0497e0a1d15c38106ec2ad6d9b7:0743c1b47838cee1be7086887f583e25$"
 }
 }

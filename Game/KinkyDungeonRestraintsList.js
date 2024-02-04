@@ -2788,6 +2788,27 @@ const KinkyDungeonRestraints = [
 		helpChance: {"Remove": 0.2}, maxwill: 0.15, enemyTags: {"petsuitSpell": 1}, playerTags: {"NoPet": -1000}, minLevel: 0, allFloors: true, shrine: ["Leather", "Petsuits", "Conjure"]},
 	{inventory: true, name: "WolfPetsuit", inaccessible: true, debris: "Belts", Asset: "StrictLeatherPetCrawler", Color: "Default", Group: "ItemArms",
 		DefaultLock: "Blue",
+		remove: ["Bras", "Panties"],
+		alwaysDressModel: [
+			{
+				Model: "WolfTorsoLower",
+				factionFilters: {
+					Band: {color: "Highlight", override: true},
+					Rim: {color: "LightNeutral", override: true},
+					Cloth: {color: "DarkNeutral", override: true},
+				},
+			},
+			{
+				Model: "WolfTorsoUpper",
+				factionFilters: {
+					Band: {color: "Highlight", override: true},
+					Rim: {color: "LightNeutral", override: true},
+					Cups: {color: "LightNeutral", override: true},
+					Cloth: {color: "DarkNeutral", override: true},
+				},
+			},
+		],
+
 		Model: "Petsuit",
 		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"], power: 14, weight: 0,
 		hobble: 2,

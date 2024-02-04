@@ -16,14 +16,6 @@
 	"spriteSourceSize": {"x":482,"y":541,"w":55,"h":41},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Belts/Feet2Kneel.png":
-{
-	"frame": {"x":1542,"y":1709,"w":80,"h":140},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":564,"y":939,"w":80,"h":140},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/Bubble/Bubble.png":
 {
 	"frame": {"x":3,"y":3,"w":1232,"h":1269},
@@ -304,14 +296,6 @@
 	"spriteSourceSize": {"x":574,"y":1151,"w":123,"h":160},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Ninja/SkirtBandOverKneel.png":
-{
-	"frame": {"x":1542,"y":1973,"w":80,"h":66},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":450,"y":848,"w":80,"h":66},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/Ninja/SkirtKneel.png":
 {
 	"frame": {"x":1626,"y":797,"w":415,"h":204},
@@ -338,7 +322,7 @@
 },
 "Models/Ribbon/CrotchStrap.png":
 {
-	"frame": {"x":1542,"y":1853,"w":80,"h":116},
+	"frame": {"x":1542,"y":1928,"w":80,"h":116},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":541,"y":800,"w":80,"h":116},
@@ -479,6 +463,14 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":479,"y":528,"w":69,"h":62},
 	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/WolfCatsuit/TorsoUpperBeltStrap.png":
+{
+	"frame": {"x":1542,"y":1709,"w":80,"h":215},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":550,"y":418,"w":80,"h":215},
+	"sourceSize": {"w":1240,"h":1754}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
@@ -488,6 +480,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json", "atlas24.json", "atlas25.json", "atlas26.json", "atlas27.json", "atlas28.json", "atlas29.json", "atlas30.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:03e5a70551d768a011d864aef1f717de:55cbea9dd053a7696162bcb4321da15c:0743c1b47838cee1be7086887f583e25$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f68ee11ece6cbbeb6ddaeb7f76c55e8e:84e6f0497e0a1d15c38106ec2ad6d9b7:0743c1b47838cee1be7086887f583e25$"
 }
 }

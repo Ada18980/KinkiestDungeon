@@ -306,6 +306,9 @@ AddModel({
 			AddPriWithPose: {
 				ItemArmsRubberOver: 45,
 			},
+			EraseLayers: ToMap(["BustierPoses"]),
+			EraseInvariant: true,
+			EraseSprite: "SlimeCorsetErase",
 		},
 		{ Name: "Chest", Layer: "WrappingChest", Pri: 15,
 			Invariant: true,

@@ -1772,7 +1772,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 6, maxhp: 14, minLevel:6, weight:0, movePoints: 1, attackPoints: 3, attack: "MeleeBind", attackWidth: 1, attackRange: 3, projectileTargeting: true, power: 2, dmgType: "electric", fullBoundBonus: 2,
 		terrainTags: {"metalAnger": 1.5, "metalRage": 8, "metalPleased": 4, "metalFriendly": 4, "nevermere": 1}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Nothing", weight: 10}, {name: "EscortDrone", weight: 0.5, ignoreInInventory: true}, {name: "VibeWand", weight: 100, ignoreInInventory: true},]},
-	{name: "WolfInstructor", style: "Nevermere", outfit: "Wolfgirl", faction: "Nevermere", clusterWith: "nevermere", bound: "Wolfgirl", playLine: "Wolfgirl", color: "#00EFAB", tags: KDMapInit(["leashing", "nevermere", "antiMagic", "imprisonable", "trainer", "controlHarness", "wolfgirl", "jailer", "opendoors", "unflinching", "closedoors", "wolfGear", "handcuffer", "melee", "unflinching", "iceresist", "electricresist", "charmweakness", "stunweakness", "ticklesevereweakness", "jail", "jailer", "hunter"]),
+	{name: "WolfInstructor", style: "Nevermere", outfit: "Wolfgirl", faction: "Nevermere", clusterWith: "nevermere", bound: "Wolfgirl", playLine: "Wolfgirl", color: "#00EFAB", tags: KDMapInit(["leashing", "wolfPetsuit", "nevermere", "antiMagic", "imprisonable", "trainer", "controlHarness", "wolfgirl", "jailer", "opendoors", "unflinching", "closedoors", "wolfGear", "handcuffer", "melee", "unflinching", "iceresist", "electricresist", "charmweakness", "stunweakness", "ticklesevereweakness", "jail", "jailer", "hunter"]),
 		followRange: 3, kite: 2.5,
 		summon: [
 			{enemy: "WolfgirlPet", range: 2, count: 1, chance: 1.0, strict: true},
@@ -1793,7 +1793,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}]
 	},
 	{name: "WolfExecutive", style: "Nevermere", outfit: "Wolfgirl", faction: "Nevermere", clusterWith: "nevermere", bound: "WolfExecutive", color: "#00EFAB", playLine: "Wolfgirl",
-		tags: KDMapInit(["leashing", "nevermere", "trainer", "wolfgirl", "jailer", "opendoors", "unflinching", "closedoors", "antiMagic", "wolfGear", "controlHarness", "wolfRestraints", "wolfRestraintsHeavy", "melee",
+		tags: KDMapInit(["leashing", "wolfPetsuit", "nevermere", "trainer", "wolfgirl", "jailer", "opendoors", "unflinching", "closedoors", "antiMagic", "wolfGear", "controlHarness", "wolfRestraints", "wolfRestraintsHeavy", "melee",
 			"boss", "unstoppable", "iceresist", "electricresist", "charmweakness", "stunweakness", "ticklesevereweakness", "jailer", "hunter"]),
 		followRange: 4.5, kite: 2.5,
 		summon: [
@@ -1817,7 +1817,7 @@ let KinkyDungeonEnemies = [
 	},
 
 	{name: "Wolfgirl", style: "Nevermere", outfit: "Wolfgirl", faction: "Nevermere", clusterWith: "nevermere", bound: "Wolfgirl", color: "#00EFAB", playLine: "Wolfgirl",
-		tags: KDMapInit(["leashing", "nevermere", "imprisonable", "trainer", "wolfgirl", "jailer", "opendoors", "unflinching", "closedoors", "wolfRestraints", "melee", "miniboss", "unflinching", "glueweakness", "ticklesevereweakness", "iceresist", "electricresist", "charmweakness", "stunweakness", "unflinching", "jail", "jailer", "hunter"]), followRange: 1,
+		tags: KDMapInit(["leashing", "wolfPetsuit", "nevermere", "imprisonable", "trainer", "wolfgirl", "jailer", "opendoors", "unflinching", "closedoors", "wolfRestraints", "melee", "miniboss", "unflinching", "glueweakness", "ticklesevereweakness", "iceresist", "electricresist", "charmweakness", "stunweakness", "unflinching", "jail", "jailer", "hunter"]), followRange: 1,
 		summon: [
 			{enemy: "WolfgirlPet", range: 2, count: 1, chance: 0.7, strict: true},],
 		spells: ["RestrainingDevice"], spellCooldownMult: 1, spellCooldownMod: 1, AI: "hunt",  visionRadius: 10, maxhp: 20, minLevel:0, weight:-6, movePoints: 2, disarm: 0.5, armor: 1.5,

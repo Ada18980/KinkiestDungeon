@@ -50,7 +50,7 @@ let KDPerkIcons = {
 
 let KDPerkUpdateStats = {
 	"Rigger": () => {
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+		/*KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "Rigger1",
 			type: "glueDamageBuff",
 			power: KDRiggerDmgBoost,
@@ -61,7 +61,7 @@ let KDPerkUpdateStats = {
 			type: "chainDamageBuff",
 			power: KDRiggerDmgBoost,
 			duration: 2
-		});
+		});*/
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "Rigger3",
 			type: "BindAmp",

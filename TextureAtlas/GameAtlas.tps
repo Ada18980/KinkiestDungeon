@@ -2664,6 +2664,7 @@
             <key type="filename">../Game/Buffs/perk/perkUnstableMagic.png</key>
             <key type="filename">../Game/Buffs/quickness.png</key>
             <key type="filename">../Game/Buffs/restraintblock.png</key>
+            <key type="filename">../Game/Buffs/restriction.png</key>
             <key type="filename">../Game/Buffs/shadow.png</key>
             <key type="filename">../Game/Buffs/shield.png</key>
             <key type="filename">../Game/Buffs/spellarmor.png</key>

@@ -32,6 +32,14 @@
 	"spriteSourceSize": {"x":98,"y":760,"w":987,"h":971},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/Bunny/SockRightKneelClosed.png":
+{
+	"frame": {"x":1046,"y":1594,"w":226,"h":252},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":323,"y":816,"w":226,"h":252},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/Cape/CapeSpread.png":
 {
 	"frame": {"x":1276,"y":978,"w":483,"h":1057},
@@ -56,14 +64,6 @@
 	"spriteSourceSize": {"x":403,"y":390,"w":376,"h":1283},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Hair/Straight_Overstrap.png":
-{
-	"frame": {"x":1046,"y":1290,"w":226,"h":366},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":493,"y":154,"w":226,"h":366},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/Heels/TallLeftClosed.png":
 {
 	"frame": {"x":819,"y":3,"w":223,"h":772},
@@ -78,6 +78,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":449,"y":593,"w":282,"h":330},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Jacket/LatexUpper.png":
+{
+	"frame": {"x":1046,"y":1290,"w":226,"h":300},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":479,"y":394,"w":226,"h":300},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Jacket/StrapsTorsoLowerWristtie.png":
@@ -128,20 +136,12 @@
 	"spriteSourceSize": {"x":731,"y":798,"w":51,"h":124},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Robes/SleeveLeftYoked.png":
+"Models/Rope/LeftFrogtieKneelClosed.png":
 {
-	"frame": {"x":1046,"y":1660,"w":221,"h":385},
+	"frame": {"x":1046,"y":1850,"w":198,"h":195},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":723,"y":380,"w":221,"h":385},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Robes/SleeveLeftYokedTight.png":
-{
-	"frame": {"x":1046,"y":1660,"w":221,"h":385},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":723,"y":380,"w":221,"h":385},
+	"spriteSourceSize": {"x":555,"y":822,"w":198,"h":195},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Slime/LegRightKneel.png":
@@ -160,12 +160,12 @@
 	"spriteSourceSize": {"x":107,"y":706,"w":1039,"h":755},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/TapeLight/FeetKneel.png":
+"Models/Wolf/AnkleLeftKneelClosed.png":
 {
-	"frame": {"x":764,"y":906,"w":51,"h":61},
+	"frame": {"x":764,"y":906,"w":51,"h":68},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":789,"y":922,"w":51,"h":61},
+	"spriteSourceSize": {"x":712,"y":942,"w":51,"h":68},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/WolfCatsuit/GloveLeftUp.png":
@@ -184,6 +184,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas9.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json", "atlas24.json", "atlas25.json", "atlas26.json", "atlas27.json", "atlas28.json", "atlas29.json", "atlas30.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:03e5a70551d768a011d864aef1f717de:55cbea9dd053a7696162bcb4321da15c:0743c1b47838cee1be7086887f583e25$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f68ee11ece6cbbeb6ddaeb7f76c55e8e:84e6f0497e0a1d15c38106ec2ad6d9b7:0743c1b47838cee1be7086887f583e25$"
 }
 }
