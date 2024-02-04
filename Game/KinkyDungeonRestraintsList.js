@@ -2924,7 +2924,7 @@ const KinkyDungeonRestraints = [
 		hideTags: ["Armbinders", "Boxbinders", "Boxties", "Wristies", "BoundArms"],
 		AssetGroup: "ItemArms",
 		sfxGroup: "Handcuffs",
-		linkCategory: "Thumbs", linkSize: 0.51, LinkableBy: [...KDBindable], Group: "ItemHands",
+		linkCategory: "Thumbs", linkSize: 0.51, LinkableBy: [...KDBindable], Group: "ItemArms",
 		Color: "Default", bindarms: true, power: 6, DefaultLock: "White",
 		bindhands: 0.4,
 		events: [
@@ -4057,7 +4057,8 @@ const KinkyDungeonRestraints = [
 	{unlimited: true, changeRenderType: {"ArmBind": "WristElbowHarnessTie"}, inventory: true, name: "RopeSnakeArmsBoxtie", debris: "Ropes", accessible: true, factionColor: [[], [0]],
 		Model: "RopeBoxtie1",
 		linkCategory: "RopeArms", linkSize: 0.51,
-		renderWhenLinked: [...KDArmRopesRender],
+		//renderWhenLinked: [...KDArmRopesRender],
+		alwaysRender: true,
 		Asset: "HempRope", Color: "Default", LinkableBy: ["Boxbinders", "Boxties", "RopeReinforce", "Wrapping", "Encase",], Group: "ItemArms", bindarms: true, power: 1.5, weight: 0, escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		struggleMult: {"Struggle": 0.6, "Remove": 0.3},
 		affinity: {Remove: ["Hook"],},
@@ -4079,7 +4080,8 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "beforeStruggleCalc", type: "ropeDebuff", power: 0.05, inheritLinked: true, requireTags: ["Wristties", "Boxties", "Crossties"]}
 		],
-		renderWhenLinked: [...KDArmRopesRender],
+		//renderWhenLinked: [...KDArmRopesRender],
+		alwaysRender: true,
 		struggleMult: {"Struggle": 0.3, "Remove": 0.25},
 		LinkableBy: ["Boxbinders", "Armbinders", ...KDBindable, "Cuffs", "RopeReinforce"], Group: "ItemArms", bindarms: true, power: 2, weight: 0, escapeChance: {"Struggle": 0.25, "Cut": 0.67, "Remove": 0.2},
 		affinity: {Remove: ["Hook"],}, strictness: 0.05, strictnessZones: ["ItemHands", "HandsFrontAllowed", "HandsCrossedAllowed", "HandsUpAllowed"],
@@ -4090,7 +4092,8 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "beforeStruggleCalc", type: "ropeDebuff", power: 0.05, inheritLinked: true, requireTags: ["Wristties", "Boxties", "Crossties"]}
 		],
-		renderWhenLinked: [...KDArmRopesRender],
+		//renderWhenLinked: [...KDArmRopesRender],
+		alwaysRender: true,
 		playerTagsMissingMult: {"IntricateRopeArms": 0.1},
 		struggleMult: {"Struggle": 0.1, "Remove": 0.1},
 		LinkableBy: ["Boxbinders", "Armbinders", ...KDBindable, "Cuffs", "RopeReinforce"], Group: "ItemArms", bindarms: true, power: 3, weight: 0, escapeChance: {"Struggle": 0.25, "Cut": 0.67, "Remove": 0.2},
@@ -4100,7 +4103,8 @@ const KinkyDungeonRestraints = [
 		Model: "RopeWristtie1",
 		struggleMult: {"Struggle": 0.6, "Remove": 0.3},
 		linkCategory: "RopeArms", linkSize: 0.51,
-		renderWhenLinked: [...KDArmRopesRender],
+		//renderWhenLinked: [...KDArmRopesRender],
+		alwaysRender: true,
 		LinkableBy: ["Armbinders", "Wristties", "RopeReinforce", "Wrapping", "Encase", "Belts"],
 		Color: "Default", Group: "ItemArms", bindarms: true, power: 1.5, weight: 0, escapeChance: {"Struggle": 0.185, "Cut": 0.45, "Remove": 0},
 		affinity: {Remove: ["Hook"],},
@@ -4111,7 +4115,8 @@ const KinkyDungeonRestraints = [
 			{Model: "RopeChestStraps2", inheritFilters: true,}
 		],
 		linkCategory: "Hogtie", linkSize: 0.51,
-		renderWhenLinked: [...KDArmRopesRender],
+		//renderWhenLinked: [...KDArmRopesRender],
+		alwaysRender: true,
 		struggleMult: {"Struggle": 0.4, "Remove": 0.3},
 		escapeChance: {"Struggle": 0.0, "Cut": 0.15, "Remove": 0}, affinity: {Remove: ["Hook"],},
 		maxwill: 0.25, enemyTags: {"ropeRestraintsHogtie":12}, playerTags: {}, minLevel: 2, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "Hogties", "Boxties"],
@@ -4123,7 +4128,8 @@ const KinkyDungeonRestraints = [
 			{Model: "RopeChestStraps2", inheritFilters: true}
 		],
 		linkCategory: "Hogtie", linkSize: 0.51,
-		renderWhenLinked: [...KDArmRopesRender],
+		//renderWhenLinked: [...KDArmRopesRender],
+		alwaysRender: true,
 		struggleMult: {"Struggle": 0.4, "Remove": 0.3},
 		escapeChance: {"Struggle": 0.1, "Cut": 0.15, "Remove": -0.05}, affinity: {Remove: ["Hook"],},
 		maxwill: 0.25, enemyTags: {"ropeRestraintsHogtie":12}, playerTags: {}, minLevel: 2, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "Hogties", "Wristties"],

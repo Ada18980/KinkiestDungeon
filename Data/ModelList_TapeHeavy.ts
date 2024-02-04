@@ -175,7 +175,7 @@ AddModel({
 			HideOverrideLayerMulti: ["ChestBinding"],
 			ForceSingleOverride: true,
 		},
-		{ Name: "ArmLeft", Layer: "WrapArmLeft", Pri: 50, // BindArmLeft
+		{ Name: "ArmLeft", Layer: "WrapArms", Pri: 50, // BindArmLeft
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmLeft", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -190,7 +190,7 @@ AddModel({
 			NoDisplace: true,
 			InheritColor: "Tape",
 		},
-		{ Name: "ArmRight", Layer: "WrapArmRight", Pri: 50, // BindArmRight
+		{ Name: "ArmRight", Layer: "WrapArms", Pri: 50, // BindArmRight
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmRight", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),

@@ -1223,12 +1223,14 @@ function KDDrawWardrobe(screen, Character) {
 	if (!Character || Character == KinkyDungeonPlayer) {
 		DrawButtonKDEx("KDWardrobeSave", (bdata) => {
 			KinkyDungeonState = "Menu";
+			KDPlayerSetPose = false;
 			KinkyDungeonDressSet();
 			return true;
 		}, true, 20, 942, 380, 50, TextGet("KDWardrobeSave"), "#ffffff", "");
 	} else {
 		DrawButtonKDEx("KDBackToGame", (bdata) => {
 			KinkyDungeonState = "Game";
+			KDPlayerSetPose = false;
 			ForceRefreshModelsAsync(C);
 			if (KDWardrobeCallback) KDWardrobeCallback();
 			//KinkyDungeonDressSet(Character);
