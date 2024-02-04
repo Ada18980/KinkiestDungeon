@@ -3586,8 +3586,8 @@ RestraintHighsecBoxbinderDesc2,"Made of a flexible, yet durable material, it's g
 RestraintHighsecStraitjacket,High-Security Straitjacket
 RestraintHighsecStraitjacketDesc,"A straitjacket enclosing your hands and arms completely, making your hands useless."
 RestraintHighsecStraitjacketDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
-RestraintHighsecTransportjacket,High-Security Transport Jacket
-RestraintHighsecTransportjacketDesc,"This jacket goes over a straitjacket to keep you from struggling out of it."
+RestraintHighsecTransportjacket,High-Security Lockdown Jacket
+RestraintHighsecTransportjacketDesc,"This jacket made with extra straps can even be used on top of another jacket for extra security."
 RestraintHighsecTransportjacketDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
 RestraintHighsecLegbinder,High-Security Legbinder
 RestraintHighsecLegbinderDesc,"An mythril legbinder enclosing your legs, making it difficult to move."
@@ -4187,8 +4187,8 @@ RestraintComfyStraitjacketDesc2,It feels tight but is actually made of an ethere
 RestraintLatexStraitjacket,Latex Jacket
 RestraintLatexStraitjacketDesc,A tight jacket that keeps your arms completely useless.
 RestraintLatexStraitjacketDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
-RestraintLatexTransportjacket,Latex Transport Jacket
-RestraintLatexTransportjacketDesc,This jacket goes over a straitjacket to keep you from struggling out of it.
+RestraintLatexTransportjacket,Secure Latex Jacket
+RestraintLatexTransportjacketDesc,This straitjacket has extra straps and buckles to make sure you won't be struggling out of it.
 RestraintLatexTransportjacketDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 RestraintLatexArmbinder,Latex Armbinder
 RestraintLatexArmbinderDesc,A tight armbinder that pins your arms tightly behind your back, enclosed completely.
@@ -4231,6 +4231,9 @@ RestraintDragonArmbinderDesc2,"It is made from durable dragonscale, but secured 
 RestraintDragonStraps,Dragonscale Straps
 RestraintDragonStrapsDesc,"A set of straps buckling tightly around your body and secured at the wrists."
 RestraintDragonStrapsDesc2,"It's made from hard-to-cut dragonscale!!!"
+RestraintDragonStrongStraps,Dragon Queen Straps
+RestraintDragonStrongStrapsDesc,"A sturdy harness completely immobilizes your arms and torso."
+RestraintDragonStrongStrapsDesc2,"It's made from leather from a dragon queen!!!"
 RestraintDragonLegCuffs,Scale Leg Cuffs
 RestraintDragonLegCuffsDesc,"A pair of chained cuffs made of dragonscale. They slow your stride."
 RestraintDragonLegCuffsDesc2,"It's made from hard-to-cut dragonscale!!!"
@@ -4395,9 +4398,9 @@ KinkyDungeonUnLinkScaleAnkleCuffs3,"Your ankle cuff chain loosens!"
 RestraintMaidJacket,Maid Jacket
 RestraintMaidJacketDesc,"A bolero jacket keeping your arms pinned snugly. You can't even move them."
 RestraintMaidJacketDesc2,"There is no hope of struggling out. Better hope you can cut it..."
-RestraintMaidTransportJacket,Maid Transport Jacket
-RestraintMaidTransportJacketDesc,"A bolero transport jacket keeping your arms pinned snugly. You can't even move them."
-RestraintMaidTransportJacketDesc2,"There is no hope of struggling out. Better hope you can cut it..."
+RestraintMaidTransportJacket,Maid Punishment Jacket
+RestraintMaidTransportJacketDesc,"A bolero straitjacket made for unruly maids.  It is extra secure and locked tightly."
+RestraintMaidTransportJacketDesc2,"There is no hope of struggling out. Better get back to work..."
 RestraintMaidDress,Devious Maid Costume
 RestraintMaidDressDesc,"A devious maid outfit that forces the arms into an elbows-touching position."
 RestraintMaidDressDesc2,"Makes sure you focus on your work and not fooling around."
@@ -4434,15 +4437,21 @@ RestraintShadowLatexHeelsDesc2,"The material is stronger than leather, and flexe
 RestraintShadowLatexStraitjacket,Shadow Jacket
 RestraintShadowLatexStraitjacketDesc,"A tight straitjacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
 RestraintShadowLatexStraitjacketDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
-RestraintShadowLatexTransportjacket,Shadow Transport Jacket
-RestraintShadowLatexTransportjacketDesc,"A tight transport jacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
-RestraintShadowLatexTransportjacketDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
+RestraintShadowLatexStrongJacket,Black Hole Jacket
+RestraintShadowLatexStrongJacketDesc,"Like a black hole, anything that is caught in this jacket has no chance to escape its grasp."
+RestraintShadowLatexStrongJacketDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
 RestraintShadowLatexArmbinder,Shadow Armbinder
 RestraintShadowLatexArmbinderDesc,"A tight armbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
 RestraintShadowLatexArmbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
+RestraintShadowLatexStrongArmbinder,Black Hole Armbinder
+RestraintShadowLatexStrongArmbinderDesc,"Like a black hole, anything that is caught in this armbinder has no chance to escape its grasp."
+RestraintShadowLatexStrongArmbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
 RestraintShadowLatexBoxbinder,Shadow Boxbinder
 RestraintShadowLatexBoxbinderDesc,"A tight boxbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
 RestraintShadowLatexBoxbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
+RestraintShadowLatexStrongBoxbinder,Black Hole Boxbinder
+RestraintShadowLatexStrongBoxbinderDesc,"Like a black hole, anything that is caught in this boxbinder has no chance to escape its grasp."
+RestraintShadowLatexStrongBoxbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
 RestraintShadowLatexLegbinder,Shadow Legbinder
 RestraintShadowLatexLegbinderDesc,"A tight legbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
 RestraintShadowLatexLegbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."

@@ -147,6 +147,28 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "JacketHeavyStraps",
+	Folder: "Jacket",
+	TopLevel: false,
+	Parent: "Jacket",
+	Restraint: true,
+	Categories: ["Restraints", "Harness", "Leather"],
+	Layers: ToLayerMap([
+		...GetModelLayers("JacketStraps"),
+		{ Name: "BeltsTorsoLower", Layer: "HarnessMid", Pri: -10,
+			NoOverride: true,
+			MorphPoses: {Crossed: "Crossed", Wristtie: "Wristtie", Boxtie: "Boxtie"},
+			InheritColor: "BeltsLower",
+		},
+		{ Name: "CrotchBelts", Layer: "HarnessMid", Pri: -10,
+			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			InheritColor: "BeltsLower",
+			Invariant: true,
+		},
+	])
+});
+
 
 AddModel({
 	Name: "JacketArmbinderSecure",
