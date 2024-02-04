@@ -1201,6 +1201,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		else console.log("This map failed to generate! Please screenshot and send your save code to Ada on deviantart or discord!");
 
 		if (iterations == 100000) {
+			KDUnPackEnemies(KDMapData);
 			if (!KinkyDungeonMapIndex[KDMapData.MainPath] || !KinkyDungeonMapIndex[KDMapData.ShortcutPath])
 				KDInitializeJourney(KDGameData.Journey);
 
@@ -1240,11 +1241,11 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 				e.visual_y = point.y;
 			}
 
+			KDUnPackEnemies(KDMapData);
 			/*for (let e of KinkyDungeonGetAllies()) {
 
 			}*/
 			KDUpdateEnemyCache = true;
-			KDUnPackEnemies(KDMapData);
 
 			KinkyDungeonAdvanceTime(0);
 		}

@@ -1262,7 +1262,8 @@ function KinkyDungeonRun() {
 				alpha: StandalonePatched ? KDUIAlpha : 0.01,
 			});
 		}
-		DrawCharacter(KinkyDungeonPlayer, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, KDToggles.FlipPlayer);
+		let Char = (KinkyDungeonState == "LoadOutfit" ? KDSpeakerNPC : null) || KinkyDungeonPlayer;
+		DrawCharacter(Char, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
 	}
 
 	if (CommonIsMobile && mouseDown && !KDMouseInPlayableArea()) {
@@ -1579,15 +1580,17 @@ function KinkyDungeonRun() {
 
 		ElementPosition("saveInputField", 1250, 550, 1000, 230);
 	} else if (KinkyDungeonState == "LoadOutfit") {
-		DrawButtonVis(875, 750, 350, 64, TextGet("LoadOutfit"), "#ffffff", "");
 		DrawButtonVis(1275, 750, 350, 64, TextGet("KDWardrobeBackTo" + (StandalonePatched ? "Wardrobe" : "Menu")), "#ffffff", "");
 
+		let Char = KDSpeakerNPC || KinkyDungeonPlayer;
+		if (Char == KinkyDungeonPlayer)
+			DrawButtonVis(875, 750, 350, 64, TextGet("LoadOutfit"), "#ffffff", "");
 		if (StandalonePatched) {
 			DrawButtonKDEx("loadclothes", (b) => {
-				KDSaveCodeOutfit(KinkyDungeonPlayer, true);
+				KDSaveCodeOutfit(Char, true);
 				KinkyDungeonState = "Wardrobe";
-				KDWardrobeCallback = null;
-				KDWardrobeRevertCallback = null;
+				//KDWardrobeCallback = null;
+				//KDWardrobeRevertCallback = null;
 
 				ElementRemove("saveInputField");
 				return true;}, true, 875, 820, 350, 64, TextGet("LoadOutfitClothes"), "#ffffff", "");
@@ -1597,33 +1600,33 @@ function KinkyDungeonRun() {
 		if (newValue != KDOldValue) {
 			let decompressed = DecompressB64(ElementValue("saveInputField"));
 			if (decompressed) {
-				let origAppearance = KinkyDungeonPlayer.Appearance;
+				let origAppearance = Char.Appearance;
 				try {
 					console.log("Trying BC code...");
-					CharacterAppearanceRestore(KinkyDungeonPlayer, decompressed, true);
-					CharacterRefresh(KinkyDungeonPlayer);
+					CharacterAppearanceRestore(Char, decompressed, true);
+					CharacterRefresh(Char);
 					KDOldValue = newValue;
-					KDInitProtectedGroups(KinkyDungeonPlayer);
-					KinkyDungeonDressPlayer(KinkyDungeonPlayer, true);
+					KDInitProtectedGroups(Char);
+					KinkyDungeonDressPlayer(Char, true);
 
-					if (KinkyDungeonPlayer.Appearance.length == 0)
+					if (Char.Appearance.length == 0)
 						throw new DOMException();
 				} catch (e) {
 					console.log("Trying BCX code...");
 					// If we fail, it might be a BCX code. try it!
-					KinkyDungeonPlayer.Appearance = origAppearance;
+					Char.Appearance = origAppearance;
 					try {
 						let parsed = JSON.parse(decompressed);
 						if (parsed.length > 0) {
 							if (!StandalonePatched) {
 								for (let g of parsed) {
-									InventoryWear(KinkyDungeonPlayer, g.Name, g.Group, g.Color);
+									InventoryWear(Char, g.Name, g.Group, g.Color);
 								}
-								CharacterRefresh(KinkyDungeonPlayer);
-								ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
+								CharacterRefresh(Char);
+								ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(Char)));
 							}
 							KDOldValue = newValue;
-							KDInitProtectedGroups(KinkyDungeonPlayer);
+							KDInitProtectedGroups(Char);
 						} else {
 							console.log("Invalid code. Maybe its corrupt?");
 						}
@@ -3503,38 +3506,40 @@ function KinkyDungeonHandleClick() {
 			return true;
 		}
 	} else if (KinkyDungeonState == "LoadOutfit"){
-		if (MouseIn(875, 750, 350, 64)) {
+		let Char = KDSpeakerNPC || KinkyDungeonPlayer;
+		if (MouseIn(875, 750, 350, 64) && Char == KinkyDungeonPlayer) {
 			if (StandalonePatched) {
-				KDSaveCodeOutfit();
-				CharacterReleaseTotal(KinkyDungeonPlayer);
-				KinkyDungeonDressSet();
+				KDSaveCodeOutfit(Char);
+				CharacterReleaseTotal(Char);
+				if (Char == KinkyDungeonPlayer)
+					KinkyDungeonDressSet();
 				KinkyDungeonCheckClothesLoss = true;
-				KinkyDungeonDressPlayer();
+				KinkyDungeonDressPlayer(Char, true);
 				KinkyDungeonState = "Wardrobe";
-				KDWardrobeCallback = null;
-				KDWardrobeRevertCallback = null;
+				//KDWardrobeCallback = null;
+				//KDWardrobeRevertCallback = null;
 
 			} else {
 				let decompressed = DecompressB64(ElementValue("saveInputField"));
 				if (decompressed) {
-					let origAppearance = KinkyDungeonPlayer.Appearance;
+					let origAppearance = Char.Appearance;
 					try {
-						CharacterAppearanceRestore(KinkyDungeonPlayer, decompressed);
-						CharacterRefresh(KinkyDungeonPlayer);
-						KDInitProtectedGroups(KinkyDungeonPlayer);
+						CharacterAppearanceRestore(Char, decompressed);
+						CharacterRefresh(Char);
+						KDInitProtectedGroups(Char);
 					} catch (e) {
 						// If we fail, it might be a BCX code. try it!
-						KinkyDungeonPlayer.Appearance = origAppearance;
+						Char.Appearance = origAppearance;
 						try {
 							let parsed = JSON.parse(decompressed);
 							if (parsed.length > 0) {
 								if (!StandalonePatched) {
 									for (let g of parsed) {
-										InventoryWear(KinkyDungeonPlayer, g.Name, g.Group, g.Color);
+										InventoryWear(Char, g.Name, g.Group, g.Color);
 									}
-									CharacterRefresh(KinkyDungeonPlayer);
+									CharacterRefresh(Char);
 								}
-								KDInitProtectedGroups(KinkyDungeonPlayer);
+								KDInitProtectedGroups(Char);
 							} else {
 								console.log("Invalid code. Maybe its corrupt?");
 							}
@@ -3632,10 +3637,12 @@ function KinkyDungeonHandleClick() {
 			if (MouseIn(690, 930, 150, 64)) {
 				KinkyDungeonState = "LoadOutfit";
 
-				KDOriginalValue = LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
-				CharacterReleaseTotal(KinkyDungeonPlayer);
+				let Char = KDSpeakerNPC || KinkyDungeonPlayer;
+
+				KDOriginalValue = LZString.compressToBase64(CharacterAppearanceStringify(Char));
+				CharacterReleaseTotal(Char);
 				ElementCreateTextArea("saveInputField");
-				ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
+				ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(Char)));
 
 				KinkyDungeonConfigAppearance = true;
 				return true;
