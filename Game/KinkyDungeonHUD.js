@@ -1572,11 +1572,11 @@ function KinkyDungeonHandleHUD() {
 				KDDebug = !KDDebug;
 				return true;
 			} else
-			if (MouseIn(1100, 100, 64, 64)) {
+			if (MouseIn(1100, 90, 64, 64)) {
 				KDDebugPerks = !KDDebugPerks;
 				return true;
 			} else
-			if (MouseIn(1100, 180, 64, 64)) {
+			if (MouseIn(1100, 160, 64, 64)) {
 				if (KDDebugGold) {
 					KDDebugGold = false;
 					KinkyDungeonGold = 0;
@@ -1584,6 +1584,10 @@ function KinkyDungeonHandleHUD() {
 					KDDebugGold = true;
 					KinkyDungeonGold = 100000;
 				}
+				return true;
+			} else
+			if (MouseIn(1100, 230, 64, 64)) {
+				KDDebugLink = !KDDebugLink;
 				return true;
 			} else
 			if (MouseIn(1500, 100, 100, 64)) {
@@ -1640,14 +1644,22 @@ function KinkyDungeonHandleHUD() {
 				ElementValue("saveDataField", saveData);
 				return true;
 			}
-			if (MouseIn(1100, 260, 300, 64)) {
+			if (MouseIn(1100, 300, 300, 64)) {
 
 				KDMovePlayer(KDMapData.EndPosition.x, KDMapData.EndPosition.y, false);
-				KDMapData.KeysHeld++;
+				KDMapData.KeyQuota=0;
+				KDMapData.ChestQuota=0;
+				for (let enemy of KDMapData.Entities) {
+					if (KDEnemyHasFlag(enemy, "killtarget")) {
+						KinkyDungeonSetEnemyFlag(enemy, "killtarget", 0);
+					}
+				}
+				KDMapData.TrapQuota=0;
+				KDMapData.QuestQuota=0;
 				KinkyDungeonUpdateLightGrid = true;
 				return true;
 			} else
-			if (MouseIn(1100, 320, 300, 64)) {
+			if (MouseIn(1100, 370, 300, 64)) {
 				KDGameData.PrisonerState = 'parole';
 				return true;
 			}

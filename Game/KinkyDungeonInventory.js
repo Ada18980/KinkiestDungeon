@@ -1996,18 +1996,26 @@ function KinkyDungeonDrawQuickInv() {
 						let equipped = false;
 						let newItem = null;
 						let currentItem = null;
+						let linkable = null;
 
 						if (item
 							&& item.item) {
 							newItem = KDRestraint(item.item);
 							if (newItem) {
 								currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
-								if (!currentItem
-									|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
-										((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
-										|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((ii) => {return newItem.name == ii.name;}))))) {
-									equipped = false;
-								} else equipped = true;
+								if (!currentItem) equipped = false;
+								else {
+									if (KDDebugLink) {
+										linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
+									} else {
+										linkable = (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
+											((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
+											|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))));
+									}
+									if (linkable) {
+										equipped = false;
+									} else equipped = true;
+								}
 							}
 						}
 						if (!equipped && newItem) {

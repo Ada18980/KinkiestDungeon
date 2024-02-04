@@ -1768,17 +1768,18 @@ function KinkyDungeonDrawGame() {
 				}
 
 				DrawCheckboxVis(1100, 20, 64, 64, "Verbose Console", KDDebug, false, "#ffffff");
-				DrawCheckboxVis(1100, 100, 64, 64, "Changeable Perks", KDDebugPerks, false, "#ffffff");
-				DrawCheckboxVis(1100, 180, 64, 64, "Unlimited Gold", KDDebugGold, false, "#ffffff");
+				DrawCheckboxVis(1100, 90, 64, 64, "Changeable Perks", KDDebugPerks, false, "#ffffff");
+				DrawCheckboxVis(1100, 160, 64, 64, "Unlimited Gold", KDDebugGold, false, "#ffffff");
+				DrawCheckboxVis(1100, 230, 64, 64, "Link Under", KDDebugLink, false, "#ffffff");
 				ElementPosition("DebugEnemy", 1650, 52, 300, 64);
 				DrawButtonVis(1500, 100, 100, 64, "Enemy", "#ffffff", "");
 				DrawButtonVis(1600, 100, 100, 64, "Ally", "#ffffff", "");
 				DrawButtonVis(1700, 100, 100, 64, "Shop", "#ffffff", "");
 				ElementPosition("DebugItem", 1650, 212, 300, 64);
 				DrawButtonVis(1500, 260, 300, 64, "Add to inventory", "#ffffff", "");
-				DrawButtonVis(1100, 260, 300, 64, "Teleport to stairs", "#ffffff", "");
+				DrawButtonVis(1100, 300, 300, 64, "Teleport to stairs", "#ffffff", "");
 				DrawButtonVis(1500, 320, 300, 64, "Get save code", "#ffffff", "");
-				DrawButtonVis(1100, 320, 300, 64, "Enter parole mode", "#ffffff", "");
+				DrawButtonVis(1100, 370, 300, 64, "Enter parole mode", "#ffffff", "");
 
 				DrawButtonKDEx("debugAddKey", (bdata) => {
 					KinkyDungeonRedKeys += 1;

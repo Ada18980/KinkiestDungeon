@@ -130,6 +130,7 @@ function KDGetEscapeMethod(level) {
 			return "None";
 		let data = {altType: alt, escapeMethod: KDMapData.EscapeMethod};
 		KinkyDungeonSendEvent("calcEscapeMethod", data);
+		KDMapData.EscapeMethod = data.escapeMethod;
 		return data.escapeMethod;
 }
 
