@@ -1656,6 +1656,7 @@ function KinkyDungeonHandleHUD() {
 				}
 				KDMapData.TrapQuota=0;
 				KDMapData.QuestQuota=0;
+				KinkyDungeonSetFlag("BossUnlocked", -1);
 				KinkyDungeonUpdateLightGrid = true;
 				return true;
 			} else
