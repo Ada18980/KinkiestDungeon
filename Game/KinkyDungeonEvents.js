@@ -8209,7 +8209,7 @@ let KDEventMapGeneric = {
 			let escapeMethod = KDGetEscapeMethod(MiniGameKinkyDungeonLevel);
 			if (escapeMethod != "Kill" && escapeMethod != "Miniboss") return;
 			for (let enemy of KDMapData.Entities) {
-				if (enemy.Enemy.name == KDMapData.KillTarget) {
+				if (KDEnemyHasFlag(enemy, "killtarget") && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
 					KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_killtarg", KinkyDungeonRootDirectory + "UI/QuestTarget.png",
 						(enemy.visual_x - data.CamX) * KinkyDungeonGridSizeDisplay,
 						(enemy.visual_y - data.CamY) * KinkyDungeonGridSizeDisplay,
@@ -8225,7 +8225,7 @@ let KDEventMapGeneric = {
 
 		"QuestMarker": (e, data) => {
 			for (let enemy of KDMapData.Entities) {
-				if (KDEnemyHasFlag(enemy, "questtarget") && !enemy.aware && enemy.idle
+				if (KDEnemyHasFlag(enemy, "questtarget")
 					&& (enemy.x - data.x + .5) * data.scale > 0 && (enemy.y - data.y + .5) * data.scale > 0
 					&& (enemy.x - data.x + .5) * data.scale < KDMinimapWidth()+21 && (enemy.y - data.y + .5) * data.scale < KDMinimapHeight() + 21) {
 					/*KDDraw(kdminimap, kdminimapsprites, enemy.id + "_questtargmm", KinkyDungeonRootDirectory + "UI/DollmakerTarget.png",
@@ -8249,7 +8249,7 @@ let KDEventMapGeneric = {
 			let escapeMethod = KDGetEscapeMethod(MiniGameKinkyDungeonLevel);
 			if (escapeMethod != "Kill" && escapeMethod != "Miniboss") return;
 			for (let enemy of KDMapData.Entities) {
-				if (enemy.Enemy.name == KDMapData.KillTarget && !enemy.aware && enemy.idle
+				if (KDEnemyHasFlag(enemy, "killtarget")
 					&& (enemy.x - data.x + .5) * data.scale > 0 && (enemy.y - data.y + .5) * data.scale > 0
 					&& (enemy.x - data.x + .5) * data.scale < KDMinimapWidth()+21 && (enemy.y - data.y + .5) * data.scale < KDMinimapHeight() + 21) {
 					kdminimap.lineStyle(3, 0);
