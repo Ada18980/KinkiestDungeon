@@ -1270,7 +1270,7 @@ function KDSaveCodeOutfit(C, clothesOnly = false) {
 	}
 
 	KinkyDungeonCheckClothesLoss = true;
-	KinkyDungeonDressPlayer(C);
+	KinkyDungeonDressPlayer(C, true);
 	/*if (stringified) {
 		localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit, stringified);
 		KDSaveOutfitInfo();
