@@ -130,6 +130,7 @@ let KDBuffSprites = {
 	"DistractionCast": true,
 
 	"BoundByFate": true,
+	"Taunted": true,
 	"GreaterInvisibility": true,
 	"Invisibility": true,
 

@@ -32,8 +32,8 @@ let KinkyDungeonEscapeTypes = {
 			}
 		},
 		check: () => {
-				return KDMapData.KeysHeld >= KDMapData.KeyQuota;
-			
+			return KDMapData.KeysHeld >= KDMapData.KeyQuota;
+
 		},
 		minimaptext: () => {
 			let escape = KinkyDungeonEscapeTypes.Key.check();
@@ -96,7 +96,7 @@ let KinkyDungeonEscapeTypes = {
 			let category = "miniboss";
 			if (KinkyDungeonStatsChoice.get("extremeMode")) category = "boss";
 
-			let enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0',	[category]);
+			let enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0',[category]);
 			if (!enemytype) { //fallback if it cant find a boss
 				category = "miniboss";
 				enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel()+4,KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [category]);
@@ -159,7 +159,7 @@ let KinkyDungeonEscapeTypes = {
 				count = Math.floor(count*.75);
 			}
 			else {
-				count = Math.floor(count*.5);			
+				count = Math.floor(count*.5);
 			}
 
 			if (quota > count) quota = count;
@@ -205,7 +205,7 @@ let KinkyDungeonEscapeTypes = {
 				count = Math.floor(count*.75);
 			}
 			else {
-				count = Math.floor(count*.5);			
+				count = Math.floor(count*.5);
 			}
 			if (quota > count) quota = count;
 			let data = {number: quota};
@@ -270,7 +270,7 @@ let KinkyDungeonEscapeTypes = {
 			return TextGet("KDEscapeDoor_Boss");
 		},
 	},
-}
+};
 
 function KDEscapeWorldgenStart(method) {
 	if (method) {

@@ -8,10 +8,16 @@ let KDLatexBind = 2;
  */
 let KDEffectTiles = {
 	"FateBoundGround": {
-		name: "Ice",
+		name: "FateBoundGround",
 		duration: 2,
 		priority: 10,
 		tags: ["fate"],
+	},
+	"TauntGround": {
+		name: "TauntGround",
+		duration: 2,
+		priority: 10,
+		tags: ["taunt"],
 	},
 	"Ice": {
 		name: "Ice",

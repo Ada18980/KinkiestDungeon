@@ -1389,9 +1389,9 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "WolfStrongArmbinder", debris: "Belts", inaccessible: true, Asset: "SeamlessLatexArmbinder", strictness: 0.2, LinkableBy: [...KDArmbinderLink], Color: "#2E2E2E", Group: "ItemArms", bindarms: true, bindhands: 1.0, power: 9, weight: 0,  escapeChance: {"Struggle": -0.25, "Cut": -0.15, "Remove": -0.07, "Pick": -0.2},
 		Model: "JacketHeavyArmbinder",
 		Filters: {
-			BeltsArms: {"gamma":1.3,"saturation":0,"contrast":2.216666666666667,"brightness":1.2,"red":1.85,"green":3.333333333333333,"blue":1,"alpha":1}
-			BeltsChest: {"gamma":1.3,"saturation":0,"contrast":2.216666666666667,"brightness":1.2,"red":1.85,"green":3.333333333333333,"blue":1,"alpha":1}
-			BeltsLower: {"gamma":1.3,"saturation":0,"contrast":2.216666666666667,"brightness":1.2,"red":1.85,"green":3.333333333333333,"blue":1,"alpha":1}
+			BeltsArms: {"gamma":1.3,"saturation":0,"contrast":2.216666666666667,"brightness":1.2,"red":1.85,"green":3.333333333333333,"blue":1,"alpha":1},
+			BeltsChest: {"gamma":1.3,"saturation":0,"contrast":2.216666666666667,"brightness":1.2,"red":1.85,"green":3.333333333333333,"blue":1,"alpha":1},
+			BeltsLower: {"gamma":1.3,"saturation":0,"contrast":2.216666666666667,"brightness":1.2,"red":1.85,"green":3.333333333333333,"blue":1,"alpha":1},
 		},
 		renderWhenLinked: [...KDArmbinderLink],
 		playerTagsMult: {
@@ -3753,7 +3753,7 @@ const KinkyDungeonRestraints = [
 		},
 		maxwill: 0.35, enemyTags: {"shadowlatexRestraints" : 5, "shadowlatexRestraintsForced" : 15}, playerTags: {"posLatex": -1}, minLevel: 0, allFloors: true,
 		shrine: ["Latex", "ShadowLatex", "Obsidian", "Armbinders", "Block_ItemHands"]},
-		
+
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexStrongArmbinder", inaccessible: true, remove: ["Bra", "Tops"], Asset: "StraitLeotard", Modules: [1, 1, 1, 1], Color: ["#4e2a70", "#4e2a70", "#4e2a70"], Group: "ItemArms",
 
 		LinkableBy: [...KDDressLink],
@@ -3779,7 +3779,7 @@ const KinkyDungeonRestraints = [
 		limitChance: {"Struggle": 0.15, "Cut": 0.05, "Remove": 0.5, "Unlock": 0.05}, // Hard to escape the arms box by struggling
 		maxwill: 0.25, enemyTags: {"shadowlatexRestraintsHeavy" : -5}, playerTags: {"posLatex": -1, "ShadowLatexArmbinderWorn": 10}, minLevel: 12, allFloors: true,
 		shrine: ["Latex", "ShadowLatex", "Obsidian", "Armbinders", "Block_ItemHands", "BindingDress"]},
-		
+
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexBoxbinder", inaccessible: true, Asset: "BoxTieArmbinder",
 		Model: "JacketLeotard",
 		Filters: {
@@ -5073,7 +5073,7 @@ const KinkyDungeonRestraints = [
 			"",
 			"blacksteel",
 			{"blacksteelrestraints": 4, "expRestraints": 7},
-			["Mithril"],
+			["Blacksteel"],
 			[],
 			0,
 			{
@@ -5138,6 +5138,47 @@ const KinkyDungeonRestraints = [
 			{
 			}, {
 				BaseMetal: {"gamma":1.7833333333333334,"saturation":1,"contrast":2.45,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+			}, 6, false,
+			{
+				"ArmCuffs": "FuturisticCuffs",
+				"LegCuffs": "FuturisticLegCuffs",
+				"AnkleCuffs": "FuturisticAnkleCuffs",
+			},
+			{
+				"ArmCuffs": "ShacklesArms",
+				"LegCuffs": "ShacklesThigh",
+				"AnkleCuffs": "ShacklesAnkles",
+			},
+		);
+		KDAddCuffVariants(
+			"Template",
+			"Warden",
+			"",
+			"warden",
+			{},
+			["Warden"],
+			[],
+			0,
+			{
+				Color: "#ffffff",
+			},
+			[],
+			{
+				Struggle: 0.0,
+				Cut: 0.0,
+				Remove: 0.0,
+				Pick: 0.00,
+			},
+			{
+			},{
+				Struggle: -0.1,
+				Cut: 0.0,
+				Remove: 0.0,
+				Pick: 0.00,
+			},
+			{
+			}, {
+				BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
 			}, 6, false,
 			{
 				"ArmCuffs": "FuturisticCuffs",

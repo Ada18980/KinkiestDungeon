@@ -34,6 +34,10 @@ let KDBoundByFate = {id: "BoundByFate", type: "Fate", power: 1, player: true, du
 	{type: "BoundByFate", kind: "mithrilRope", count: 2, trigger: "tick", power: 1, damage: "cold"},
 ]};
 
+let KDTaunted = {id: "Taunted", type: "Taunt", power: 1, player: true, duration: 3, enemies: false, aura: "#dddddd", events: [
+	{type: "Taunted", count: 2, trigger: "tick", power: 4, damage: "psychic"},
+]};
+
 let KDEager = {
 	id: "Eager", type: "MoveSpeed", power: 0.1, duration: 1, events: [
 		{type: "ApplyVuln", duration: 1, trigger: "tick"},

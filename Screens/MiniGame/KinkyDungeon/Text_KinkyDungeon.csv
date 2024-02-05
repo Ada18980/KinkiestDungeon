@@ -5605,6 +5605,10 @@ KinkyDungeonSpellCastSteelRainBurst,You raise your hand and several steel projec
 KinkyDungeonSpellTargetSteelRainPlug,Choose aim direction
 KinkyDungeonSpellTargetSteelRainBurst,Choose target point
 
+
+KinkyDungeonSpellEnemySteelRainBurst,Steel Torrent
+KinkyDungeonSpellEnemySteelRainPlug,Steel Rain
+
 KinkyDungeonSpellBanditBola,Bola
 KinkyDungeonSpellRestrainingDevice,Restraining Device
 KinkyDungeonRestrainingDeviceStun,The thrown restraining device latches onto you as you struggle to get it off!!!
@@ -19617,7 +19621,7 @@ KDPrisoners,Prisoners
 KDPromoteNPC,Promote to Servant
 KDDemoteNPC,Demote to Prisoner
 
-KDTeaseAttackResist_LeashGrab,The EnemyName tries to grab you!
+KDTeaseAttackResist_LeashGrab,The ENMY tries to grab you!
 
 KDTeaseAttack_SquishBreast,The ENMY reaches out and gives your breast a squeeze! (DMGDLT)
 KDTeaseAttack_SquishBreastCast,The ENMY squeezes your breasts as you raise your arms for a spell! (DMGDLT)
@@ -19685,8 +19689,26 @@ KDPetsuitCrawl,"You crouch and move slowly."
 KDChestTooltip,"Owned by: "
 
 RestraintWardenCollar,The Warden's Collar
-RestraintWardenCollarDesc,"A golden collar that marks you as part of someone's collection."
-RestraintWardenCollarDesc2,"You may go on your way, but only as long your freedom is useful to her."
+RestraintWardenCollarDesc,"You may go on your way, but only as long your freedom is useful to her. "
+RestraintWardenCollarDesc2,"A golden collar that marks you as part of someone's collection. Each time you break a spell orb, a collector is spawned to punish you."
+
+NameWardenArcher,"Sharpshooter"
+KillWardenArcher,"You teach the warden's servant a lesson."
+AttackWardenArcherBind,"The sharpshooter pulls your arms behind your back! (+RestraintAdded)"
+AttackWardenArcher,"The sharpshooter takes advantage of your weakness and squeezes your breast! (DamageTaken)"
+AttackWardenArcherLock,"The sharpshooter smiles and clicks a lock on you! (DamageTaken)"
+
+NameWardenFighter,"Gladiator"
+KillWardenFighter,"You teach the warden's servant a lesson."
+AttackWardenFighterBind,"The gladiator puts you in a hold and binds you! (+RestraintAdded)"
+AttackWardenFighter,"The gladiator chuckles as she spanks your butt! (DamageTaken)"
+AttackWardenFighterLock,"The gladiator smiles and clicks a lock on you! (DamageTaken)"
+
+NameWardenMage,"Magician"
+KillWardenMage,"You teach the warden's servant a lesson."
+AttackWardenMageBind,"The magician conjures some restraints on you! (+RestraintAdded)"
+AttackWardenMage,"The magician summons tickling hands to tease you! (DamageTaken)"
+AttackWardenMageLock,"The magician conjures some locks on you! (DamageTaken)"
 
 NameTheWarden1,"The Warden"
 KillTheWarden1,"The Warden disappears into a trapdoor!"
@@ -19993,9 +20015,69 @@ KDEffectTileTooltipMotionLampDesc,"Looks like it has lighting elements inside."
 
 KinkyDungeonSpellOneBarMissileBind,Many bars come out of the ground and restrain you!
 KinkyDungeonSpellOneBarMissile,One Bar Missile
+KinkyDungeonSpellRestrainingBolt,Restraining Bolt
+KinkyDungeonSpellWardenCage,Warden's Cage
 
 NameOneBar,Restricting Bars
 KillOneBar,The bars retract into the ground.
 
 KinkyDungeonStatNoHelp,"Safeword Please"
 KinkyDungeonStatDescNoHelp,"Allies don't help you unless you ask first."
+
+KDWardenCage,The Warden's cage falls atop you and attaches to the floor with a click.
+
+KDRestrainingBoltHit,The restraining bolt emits binding energies!
+KDRestrainingBoltKnockback,The restraining bolt flashes and pushes you backward!
+KDRestrainingBoltBind,The restraining bolt transforms into cuffs on impact!
+KDRestrainingBoltPin,The restraining bolt pins your cuffs to the wall!
+
+
+RestraintWardenArmCuffs,Warden Cuffs
+RestraintWardenArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
+RestraintWardenArmCuffsDesc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonLinkWardenArmCuffs,"The enemy attaches your wrist cuffs together!"
+
+RestraintWardenArmCuffs2,Wrist Chain
+RestraintWardenArmCuffs2Desc,"A pair of cuffs keeping your arms behind your back."
+RestraintWardenArmCuffs2Desc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonUnLinkWardenArmCuffs2,"Your cuffs detatch!"
+KinkyDungeonLinkWardenArmCuffs2,"The enemy attaches your elbow cuffs together!"
+
+RestraintWardenArmCuffs3,Cuffs Chain
+RestraintWardenArmCuffs3Desc,"A full set of cuffs keeping your arms in a strict elbow tie!"
+RestraintWardenArmCuffs3Desc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonUnLinkWardenArmCuffs3,"Your wrists detatch, leaving your elbows still bound!"
+
+RestraintWardenArmCuffs4,Elbow Chain
+RestraintWardenArmCuffs4Desc,"A pair of cuffs keeping your elbows locked together!"
+RestraintWardenArmCuffs4Desc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonUnLinkWardenArmCuffs4,"Your elbows detatch!"
+KinkyDungeonLinkWardenArmCuffs4,"The enemy attaches your wrist cuffs back together!"
+
+RestraintWardenLegCuffs,Warden Leg Cuffs
+RestraintWardenLegCuffsDesc,"A pair of cuffs on your legs."
+RestraintWardenLegCuffsDesc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonLinkWardenLegCuffs,"The enemy attaches your leg cuffs together!"
+RestraintWardenLegCuffs2,Thigh Chain
+RestraintWardenLegCuffs2Desc,"A pair of cuffs chaining your legs together."
+RestraintWardenLegCuffs2Desc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonUnLinkWardenLegCuffs2,"The leg cuff chain detaches!"
+
+RestraintWardenAnkleCuffs,Warden Ankle Cuffs
+RestraintWardenAnkleCuffsDesc,"A pair of cuffs on your ankles."
+RestraintWardenAnkleCuffsDesc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonLinkWardenAnkleCuffs,"The enemy attaches your ankle cuffs together!"
+RestraintWardenAnkleCuffs2,Ankle Chain
+RestraintWardenAnkleCuffs2Desc,"A pair of cuffs chaining your legs together."
+RestraintWardenAnkleCuffs2Desc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonUnLinkWardenAnkleCuffs2,"The ankle cuff chain detaches!"
+KinkyDungeonLinkWardenAnkleCuffs2,"Your ankle cuff chain is tightened and pulls your feet together!"
+RestraintWardenAnkleCuffs3,Short Ankle Chain
+RestraintWardenAnkleCuffs3Desc,"A pair of cuffs chaining your feet tightly together."
+RestraintWardenAnkleCuffs3Desc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonUnLinkWardenAnkleCuffs3,"Your ankle cuff chain loosens!"
+
+
+KinkyDungeonTaunted,"Your buttons have been pushed, and not in a pleasant way!"
+KinkyDungeonBuffTaunted,"Defeat all taunting enemies or stay within the tiles to avoid shame!"
+KinkyDungeonSpellTaunt,Degradating Taunts

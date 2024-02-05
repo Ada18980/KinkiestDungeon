@@ -5369,7 +5369,7 @@ function KDLinkItemEvent(e, item, data) {
 function KDGetRestriction() {
 	let data = {
 		restriction: 0
-	}
+	};
 	for (let inv of KinkyDungeonAllRestraintDynamic()) {
 		let restraint = KDRestraint(inv.item);
 		if (restraint) {
@@ -5388,7 +5388,7 @@ function KDGetRestriction() {
 		}
 	}
 
-	KinkyDungeonSendEvent("restriction", data)
+	KinkyDungeonSendEvent("restriction", data);
 
 	return data.restriction;
 }

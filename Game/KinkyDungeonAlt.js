@@ -1388,11 +1388,11 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 			let bondage = KDGetPerkShrineBondage(newperks);
 			let boss = KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel + 1);
 			let method = "";
-			if (!KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel + 1))
+			if (!boss)
 				method = KDGetRandomEscapeMethod();
-			else 
+			else
 				method = "Boss";
-			
+
 			if (newperks.length > 0) {
 				KinkyDungeonMapSet(p1x + i * 2, py, 'P');
 				KinkyDungeonTilesSet("" + (p1x + i * 2) + "," + (py), {Perks: newperks, Bondage: bondage, Method: method});

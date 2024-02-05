@@ -123,15 +123,15 @@ function KDGetEscapeDoorText(method) {
 }
 
 function KDGetEscapeMethod(level) {
-		let alt = KDGetAltType(MiniGameKinkyDungeonLevel);
-		if (alt?.escapeMethod)
-			return alt.escapeMethod;
-		if (alt?.nokeys)
-			return "None";
-		let data = {altType: alt, escapeMethod: KDMapData.EscapeMethod};
-		KinkyDungeonSendEvent("calcEscapeMethod", data);
-		KDMapData.EscapeMethod = data.escapeMethod;
-		return data.escapeMethod;
+	let alt = KDGetAltType(MiniGameKinkyDungeonLevel);
+	if (alt?.escapeMethod)
+		return alt.escapeMethod;
+	if (alt?.nokeys)
+		return "None";
+	let data = {altType: alt, escapeMethod: KDMapData.EscapeMethod};
+	KinkyDungeonSendEvent("calcEscapeMethod", data);
+	KDMapData.EscapeMethod = data.escapeMethod;
+	return data.escapeMethod;
 }
 
 function KDGetRandomEscapeMethod() {
@@ -171,7 +171,7 @@ function KDEffectTileTags(x, y) {
 
 
 function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
-  if (KinkyDungeonFlags.get("stairslocked")) {
+	if (KinkyDungeonFlags.get("stairslocked")) {
 		KinkyDungeonSendActionMessage(10, TextGet("KDStairsLocked").replace("NMB", "" + KinkyDungeonFlags.get("stairslocked")), "#ffffff", 1);
 	} else
 

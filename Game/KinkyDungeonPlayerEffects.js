@@ -198,6 +198,44 @@ let KDPlayerEffects = {
 		}
 		return {sfx: "Dollify", effect: true};
 	},
+	"RestrainingBolt": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+			if (!dmg.happened) return {sfx: "Shield", effect: false};
+			let restrain = KDPlayerEffectRestrain(spell, playerEffect.count, ["wardenCuffs"], "Warden", false, false, false, false);
+			if (restrain.length > 0) {
+				KinkyDungeonSendTextMessage(7, TextGet("KDRestrainingBoltBind").KDReplaceOrAddDmg( dmg.string), "yellow", 1);
+				return {sfx: "MagicSlash", effect: true};
+			} else if (!KinkyDungeonFlags.get("pinned") && KinkyDungeonPlayerTags.get("Warden")) {
+				let moved = false;
+				let dist = playerEffect.dist;
+				for (let i = 0; i < dist; i++) {
+					let newX = target.x + Math.round(1 * Math.sign(bullet.vx));
+					let newY = target.y + Math.round(1 * Math.sign(bullet.vy));
+					if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY)) && KinkyDungeonNoEnemy(newX, newY, true)
+					&& (dist == 1 || KinkyDungeonCheckProjectileClearance(target.x, target.y, newX, newY))) {
+						KDMovePlayer(newX, newY, false);
+						moved = true;
+					}
+				}
+				if (moved) {
+					KinkyDungeonSendTextMessage(9, TextGet("KDRestrainingBoltKnockback").KDReplaceOrAddDmg( dmg.string), "yellow", 1);
+					return {sfx: "Evil", effect: true};
+				}
+				else {
+					KinkyDungeonSendTextMessage(10, TextGet("KDRestrainingBoltPin").KDReplaceOrAddDmg( dmg.string), "yellow", 4);
+					KDStunTurns(3);
+					KinkyDungeonSetFlag("pinned", 5);
+					return {sfx: "Evil", effect: true};
+				}
+			} else {
+				KinkyDungeonSendTextMessage(2, TextGet("KDRestrainingBoltHit").KDReplaceOrAddDmg( dmg.string), "red", 1);
+				return {sfx: "Shield", effect: true};
+			}
+
+		}
+		return {sfx: "Miss", effect: false};
+	},
 	"EncaseBolt": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
@@ -454,7 +492,32 @@ let KDPlayerEffects = {
 
 		return {sfx: "Evil", effect: true};
 	},
+	"Taunted": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		KDCreateAoEEffectTiles(
+			bullet.x,
+			bullet.y,
+			{
+				name: "TauntGround",
+				duration: playerEffect.time + 1,
+			}, 0, 2.5, undefined, undefined, undefined);
+
+		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonTaunted"), "yellow", playerEffect.time);
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, KDTaunted, {
+			duration: playerEffect.time,
+		});
+
+		return {sfx: "Evil", effect: true};
+	},
 	"StarBondage": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+		if (dmg.happened) {
+			KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Demon");
+			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonStarBondage").KDReplaceOrAddDmg( dmg.string), "#ff5555", 4);
+		} else return {sfx: "Shield", effect: false};
+
+		return {sfx: "Evil", effect: true};
+	},
+	"TauntShame": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (dmg.happened) {
 			KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Demon");
