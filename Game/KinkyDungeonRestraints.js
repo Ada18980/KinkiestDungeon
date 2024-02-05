@@ -1047,13 +1047,13 @@ function KinkyDungeonHasAllyHelp() {
 				&& !KDHelpless(enemy)
 				&& KDBoundEffects(enemy) < 4;
 		})
-		|| KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((enemy) => {
+		|| (!KinkyDungeonStatsChoice.get("NoHelp") && KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((enemy) => {
 			return enemy.Enemy.bound
 				&& !enemy.Enemy.tags.nohelp
 				&& KDAllied(enemy)
 				&& !KDHelpless(enemy)
 				&& KDBoundEffects(enemy) < 4;
-		})
+		}))
 	);
 }
 

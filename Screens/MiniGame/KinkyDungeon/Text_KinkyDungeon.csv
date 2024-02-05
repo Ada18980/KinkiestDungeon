@@ -19984,3 +19984,6 @@ KinkyDungeonSpellOneBarMissile,One Bar Missile
 
 NameOneBar,Restricting Bars
 KillOneBar,The bars retract into the ground.
+
+KinkyDungeonStatNoHelp,"Safeword Please"
+KinkyDungeonStatDescNoHelp,"Allies don't help you unless you ask first."

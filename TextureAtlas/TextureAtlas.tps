@@ -1139,6 +1139,7 @@
             <key type="filename">../Models/Jacket/ChestCrossed.png</key>
             <key type="filename">../Models/Jacket/ChestWristtie.png</key>
             <key type="filename">../Models/Jacket/Crotch.png</key>
+            <key type="filename">../Models/Jacket/CrotchBeltExtra.png</key>
             <key type="filename">../Models/Jacket/CrotchBelts.png</key>
             <key type="filename">../Models/Jacket/CrotchlessBinderTorsoLower.png</key>
             <key type="filename">../Models/Jacket/LatexBand.png</key>
@@ -1150,9 +1151,11 @@
             <key type="filename">../Models/Jacket/StrapsArmsWristtie.png</key>
             <key type="filename">../Models/Jacket/StrapsChestBoxtie.png</key>
             <key type="filename">../Models/Jacket/StrapsChestCrossed.png</key>
+            <key type="filename">../Models/Jacket/StrapsChestExtra.png</key>
             <key type="filename">../Models/Jacket/StrapsChestWristtie.png</key>
             <key type="filename">../Models/Jacket/StrapsTorsoLowerBoxtie.png</key>
             <key type="filename">../Models/Jacket/StrapsTorsoLowerCrossed.png</key>
+            <key type="filename">../Models/Jacket/StrapsTorsoLowerExtra.png</key>
             <key type="filename">../Models/Jacket/StrapsTorsoLowerWristtie.png</key>
             <key type="filename">../Models/Jacket/StrapsUnderbust.png</key>
             <key type="filename">../Models/Jacket/TorsoLower.png</key>

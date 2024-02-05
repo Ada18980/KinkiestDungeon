@@ -383,6 +383,7 @@ let KinkyDungeonStatsPresets = {
 
 	"NoDoll": {category: "Toggles", id: "NoDoll", cost: 0, tags: ["start"], debuff: true},
 	"NoPet": {category: "Toggles", id: "NoPet", cost: 0, tags: ["start"], debuff: true},
+	"NoHelp": {category: "Toggles", id: "NoHelp", cost: 0, tags: ["start"]},
 
 	"Quickness": {category: "Combat", id: "Quickness", cost: 2},
 
