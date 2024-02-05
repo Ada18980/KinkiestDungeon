@@ -79,6 +79,27 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "JacketLowerStraps",
+	Folder: "Jacket",
+	TopLevel: false,
+	Parent: "Jacket",
+	Restraint: true,
+	Categories: ["Restraints", "Harness", "Leather"],
+	Layers: ToLayerMap([
+		{ Name: "BeltsTorsoLower", Layer: "HarnessMid", Pri: -10,
+			NoOverride: true,
+			MorphPoses: {Crossed: "Crossed", Wristtie: "Wristtie", Boxtie: "Boxtie"},
+			InheritColor: "BeltsLower",
+		},
+		{ Name: "CrotchBelts", Layer: "HarnessMid", Pri: -10,
+			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			InheritColor: "BeltsLower",
+			Invariant: true,
+		},
+	])
+});
+
 
 AddModel({
 	Name: "JacketHeavy",
@@ -90,26 +111,17 @@ AddModel({
 	AddPose: ["EncaseTorsoUpper", "EncaseChest"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Jacket"),
+		...GetModelLayers("JacketLowerStraps"),
 
 		{ Name: "BinderTorsoLower", Layer: "Corset", Pri: 30,
 			InheritColor: "Lower",
 			Invariant: true,
-		},
-		{ Name: "BeltsTorsoLower", Layer: "HarnessMid", Pri: -10,
-			NoOverride: true,
-			MorphPoses: {Crossed: "Crossed", Wristtie: "Wristtie", Boxtie: "Boxtie"},
-			InheritColor: "BeltsLower",
 		},
 		{ Name: "Crotch", Layer: "HarnessMid", Pri: -10.1,
 			InheritColor: "Lower",
 			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			NoOverride: true,
 			TieToLayer: "CrotchBelts",
-			Invariant: true,
-		},
-		{ Name: "CrotchBelts", Layer: "HarnessMid", Pri: -10,
-			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
-			InheritColor: "BeltsLower",
 			Invariant: true,
 		},
 	])
@@ -147,6 +159,7 @@ AddModel({
 	])
 });
 
+
 AddModel({
 	Name: "JacketHeavyStraps",
 	Folder: "Jacket",
@@ -156,16 +169,7 @@ AddModel({
 	Categories: ["Restraints", "Harness", "Leather"],
 	Layers: ToLayerMap([
 		...GetModelLayers("JacketStraps"),
-		{ Name: "BeltsTorsoLower", Layer: "HarnessMid", Pri: -10,
-			NoOverride: true,
-			MorphPoses: {Crossed: "Crossed", Wristtie: "Wristtie", Boxtie: "Boxtie"},
-			InheritColor: "BeltsLower",
-		},
-		{ Name: "CrotchBelts", Layer: "HarnessMid", Pri: -10,
-			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
-			InheritColor: "BeltsLower",
-			Invariant: true,
-		},
+		...GetModelLayers("JacketLowerStraps"),
 	])
 });
 
@@ -190,6 +194,20 @@ AddModel({
 		...GetModelLayers("JacketStraps"),
 	])
 });
+
+AddModel({
+	Name: "JacketHeavyArmbinder",
+	Folder: "Jacket",
+	Parent: "Jacket",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Jacket", "Leather"],
+	Layers: ToLayerMap([
+		...GetModelLayers("JacketArmbinderSecure"),
+		...GetModelLayers("JacketLowerStraps"),
+	])
+});
+
 
 AddModel({
 	Name: "JacketBolero",
@@ -230,11 +248,6 @@ AddModel({
 			InheritColor: "Lower",
 			Invariant: true,
 		},
-		{ Name: "BeltsTorsoLower", Layer: "HarnessMid", Pri: -10,
-			NoOverride: true,
-			MorphPoses: {Crossed: "Crossed", Wristtie: "Wristtie", Boxtie: "Boxtie"},
-			InheritColor: "BeltsLower",
-		},
 		{ Name: "Crotch", Layer: "HarnessMid", Pri: -10.1,
 			InheritColor: "Lower",
 			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
@@ -242,11 +255,7 @@ AddModel({
 			TieToLayer: "CrotchBelts",
 			Invariant: true,
 		},
-		{ Name: "CrotchBelts", Layer: "HarnessMid", Pri: -10,
-			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
-			InheritColor: "BeltsLower",
-			Invariant: true,
-		},
+		...GetModelLayers("JacketLowerStraps"),
 		...GetModelLayers("JacketBolero"),
 	])
 });
@@ -282,16 +291,7 @@ AddModel({
 	Categories: ["Restraints", "Jacket", "Leather"],
 	Layers: ToLayerMap([
 		...GetModelLayers("JacketLeotard"),
-		{ Name: "BeltsTorsoLower", Layer: "HarnessMid", Pri: -10,
-			NoOverride: true,
-			MorphPoses: {Crossed: "Crossed", Wristtie: "Wristtie", Boxtie: "Boxtie"},
-			InheritColor: "BeltsLower",
-		},
-		{ Name: "CrotchBelts", Layer: "HarnessMid", Pri: -10,
-			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
-			InheritColor: "BeltsLower",
-			Invariant: true,
-		},
+		...GetModelLayers("JacketLowerStraps"),
 	])
 });
 
