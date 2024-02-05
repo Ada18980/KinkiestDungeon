@@ -1213,6 +1213,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			KDQuestWorldgenStart(KDGameData.Quests);
 
 			if (KDGameData.RoomType == "") {
+				if (!KDGameData.SelectedEscapeMethod) KDGameData.SelectedEscapeMethod = "Key";
 				KDMapData.EscapeMethod = KDGameData.SelectedEscapeMethod;
 				if (KinkyDungeonStatsChoice.get("escaperandom")) {
 					KDMapData.EscapeMethod = KDGetRandomEscapeMethod();

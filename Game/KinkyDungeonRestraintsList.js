@@ -104,7 +104,7 @@ const KinkyDungeonRestraints = [
 		Model: "ElfCollar",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
-		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
+		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Tape"],
 		events: [{trigger: "tick", type: "livingRestraints", tags: ["ribbonRestraints"], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.8, count: 4}]
 	},
 	{inventory: true, name: "DuctTapeHands", unlimited: true, inaccessible: true, Asset: "DuctTape", Color: "Default", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemHands",
@@ -218,7 +218,7 @@ const KinkyDungeonRestraints = [
 		Model: "ElfCollar",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
-		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
+		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Will"],
 		events: [{trigger: "tick", type: "livingRestraints", tags: ["mummyRestraints"], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.8, count: 4}]
 	},
 	{removePrison: true, name: "MysticDuctTapeHead", unlimited: true, debris: "FabricGreen", inaccessible: true, Type: "Wrap", Asset: "DuctTape", Color: "#55AA22", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemHead", blindfold: 4, power: 1, weight: 0, escapeChance: {"Struggle": 0.2, "Cut": 0.6, "Remove": 0}, failSuffix: {"Remove": "Tape"},
@@ -283,7 +283,7 @@ const KinkyDungeonRestraints = [
 		Model: "ElfCollar",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
-		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
+		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Tape"],
 		events: [{trigger: "tick", type: "livingRestraints", tags: ["autoTape"], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.8, count: 4}]
 	},
 	{inventory: true, name: "AutoTapeHands", unlimited: true, inaccessible: true, Asset: "DuctTape", Color: "#6E9FA3", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemHands",
@@ -396,7 +396,7 @@ const KinkyDungeonRestraints = [
 		Model: "ElfCollar",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
-		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
+		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Latex","Slime"],
 		events: [{trigger: "tick", type: "livingRestraints", tags: ["slimeRestraints"], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.8, count: 4}]
 	},
 
@@ -471,7 +471,7 @@ const KinkyDungeonRestraints = [
 		Model: "ElfCollar",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
-		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
+		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Latex","Rubber"],
 		events: [{trigger: "tick", type: "livingRestraints", tags: ["latexEncase"], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.8, count: 4}]
 	},
 	{inventory: true, unlimited: true, removePrison: true, name: "HardSlimeBoots", debris: "Slime", linkCategory: "SlimeBoots", linkSize: 0.6, LinkableBy: [...KDRubberLink], renderWhenLinked: [...KDRubberLink], inaccessible: true, Asset: "ToeTape", Type: "Full", Color: "#9B49BD", Group: "ItemBoots", blockfeet: true, addTag: ["FeetLinked"],power: 5, weight: 0,
@@ -1386,6 +1386,27 @@ const KinkyDungeonRestraints = [
 		},
 		limitChance: {"Cut": 0.1, "Remove": 0.04, "Unlock": 0.2},
 		maxwill: 0.35, enemyTags: {"wolfRestraints" : 5}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Metal", "Armbinders", "Block_ItemHands"]},
+	{inventory: true, name: "WolfStrongArmbinder", debris: "Belts", inaccessible: true, Asset: "SeamlessLatexArmbinder", strictness: 0.2, LinkableBy: [...KDArmbinderLink], Color: "#2E2E2E", Group: "ItemArms", bindarms: true, bindhands: 1.0, power: 9, weight: 0,  escapeChance: {"Struggle": -0.25, "Cut": -0.15, "Remove": -0.07, "Pick": -0.2},
+		Model: "JacketHeavyArmbinder",
+		Filters: {
+			BeltsArms: {"gamma":1.3,"saturation":0,"contrast":2.216666666666667,"brightness":1.2,"red":1.85,"green":3.333333333333333,"blue":1,"alpha":1}
+			BeltsChest: {"gamma":1.3,"saturation":0,"contrast":2.216666666666667,"brightness":1.2,"red":1.85,"green":3.333333333333333,"blue":1,"alpha":1}
+			BeltsLower: {"gamma":1.3,"saturation":0,"contrast":2.216666666666667,"brightness":1.2,"red":1.85,"green":3.333333333333333,"blue":1,"alpha":1}
+		},
+		renderWhenLinked: [...KDArmbinderLink],
+		playerTagsMult: {
+			"ItemArmsEmpty": 0.05,
+			"More_Armbinders": 3.5,
+			"Less_Armbinders": 0.1,
+		},
+		factionFilters: {
+			Arms: {color: "DarkNeutral", override: true},
+			BeltsArms: {color: "Highlight", override: true},
+			BeltsChest: {color: "Highlight", override: true},
+			BeltsLower: {color: "Highlight", override: true},
+		},
+		limitChance: {"Cut": 0.1, "Remove": 0.04, "Unlock": 0.2},
+		maxwill: 0.2, enemyTags: {"wolfRestraintsHeavy" : 1}, playerTags: {}, minLevel: 12, allFloors: true, shrine: ["Latex", "Metal", "Armbinders", "BindingDress", "Block_ItemHands"]},
 	{inventory: true, name: "WolfAnkleCuffs", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", Link: "WolfAnkleCuffs2", LinkableBy: [...KDBindable], Type: "Chained", Color: ['#4F91DE', '#4F91DE', '#3F6945', '#000000'], Group: "ItemFeet", power: 8, weight: 0,
 		Model: "WolfCuffsAnkles",
 		linkCategory: "AnkleCuffs", linkSize: 0.51, noDupe: true,
@@ -4072,7 +4093,7 @@ const KinkyDungeonRestraints = [
 		Model: "ElfCollar",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
-		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
+		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Rope","Ribbons"],
 		events: [{trigger: "tick", type: "livingRestraints", tags: ["magicRibbons","magicRibbonsHarsh"], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.8, count: 4}]
 	},
 	{unlimited: true, inventory: true, removePrison: true, name: "RibbonArms", debris: "Fabric", sfx: "MagicSlash", Asset: "Ribbons", Color: "#a583ff", Group: "ItemArms", bindarms: true, power: 6, weight: 0, magic: true,
@@ -4147,7 +4168,7 @@ const KinkyDungeonRestraints = [
 		Model: "ElfCollar",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
-		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
+		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Rope"],
 		events: [{trigger: "tick", type: "livingRestraints", tags: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsWrist"], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.9, count: 8}]
 	},
 	{unlimited: true, changeRenderType: {"ArmBind": "WristElbowHarnessTie"}, inventory: true, name: "RopeSnakeArmsBoxtie", debris: "Ropes", accessible: true, factionColor: [[], [0]],
