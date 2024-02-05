@@ -7509,9 +7509,9 @@ KinkyDungeonDamageTypeunflinching,"Unflinching"
 
 KinkyDungeonHeartIntro,"You found a magical amulet! Choose one of the following to determine its benefits:"
 KinkyDungeonHeartIntro1,"Focus: +50% max distraction and faster decay. +5% stamina protected from damage (base: 30%)."
-KinkyDungeonHeartIntro2,"Stamina: +50 max stamina, +50% stamina potion effectiveness."
-KinkyDungeonHeartIntro3,"Magic: +50 max mana. +50% mana potion effectiveness."
-KinkyDungeonHeartIntro4,"Willpower: +50 max willpower, +50% willpower potion effectiveness. +1 stamina regen/turn."
+KinkyDungeonHeartIntro2,"Stamina: +50 max stamina."
+KinkyDungeonHeartIntro3,"Magic: +50 max mana."
+KinkyDungeonHeartIntro4,"Willpower: +50 max willpower. +1 stamina regen/turn."
 
 KinkyDungeonHeartDistraction,"+Focus"
 KinkyDungeonHeartStamina,"+Stamina"

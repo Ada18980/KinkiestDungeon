@@ -4498,7 +4498,7 @@ let KDEventMapSpell = {
 		},
 		"ProblemSolving": (e, spell, data) => {
 			if (data.escapeChance != undefined && (!e.StruggleType || e.StruggleType == data.struggleType)) {
-				let boost = e.power + KDCalcRestraintBlock() * 10 * e.mult;
+				let boost = e.power + KDCalcRestraintBlock() * .1 * e.mult;
 				data.toolBonus += boost;
 				data.buffBonus += boost;
 				data.struggleTime *= 3.0;

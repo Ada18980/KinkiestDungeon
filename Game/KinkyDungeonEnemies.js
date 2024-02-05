@@ -3323,6 +3323,10 @@ let AIData = {};
 function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData = {};
 
+	if (!enemy.Enemy.maxhp) {
+		enemy.Enemy = KinkyDungeonGetEnemyByName(enemy.Enemy.name);
+	}
+
 	//let allied = KDAllied(enemy);
 	//let hostile = KDHostile(enemy);
 
