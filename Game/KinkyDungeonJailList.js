@@ -508,7 +508,7 @@ let KDJailOutfits = {
 			{Name: "RopeSnakeHogtie", Level: 80},
 		],
 	},
-	"rest_rope_weakmagic": {
+	"ropeMagicWeak": {
 		overridelowerpriority: false,
 		priority: 1,
 		jail: true,
@@ -807,7 +807,7 @@ let KDJailOutfits = {
 };
 
 KDJailOutfits.alchemist = JSON.parse(JSON.stringify(KDJailOutfits.latexRestraints));
-KDJailOutfits.apprentice = JSON.parse(JSON.stringify(KDJailOutfits.rest_rope_weakmagic));
+KDJailOutfits.apprentice = JSON.parse(JSON.stringify(KDJailOutfits.ropeMagicWeak));
 KDJailOutfits.witch = JSON.parse(JSON.stringify(KDJailOutfits.ropeMagicStrong));
 KDJailOutfits.elf = JSON.parse(JSON.stringify(KDJailOutfits.mithrilRope));
 KDJailOutfits.fuuka = JSON.parse(JSON.stringify(KDJailOutfits.celestialRopes));

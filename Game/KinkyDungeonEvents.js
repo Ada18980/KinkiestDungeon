@@ -1239,15 +1239,7 @@ let KDEventMapInventory = {
 			let r = KinkyDungeonGetRestraint({tags: newtags}, 24, "grv", true, undefined);
 			if (r) {
 				KinkyDungeonAddRestraintIfWeaker(r, 8, true, undefined, false, undefined, undefined, undefined, true);
-				let newitem = r;
-				for (let j = 0; j < 2; j++) {
-					if (newitem && newitem.Link) {
-						let newRestraint = KinkyDungeonGetRestraintByName(newitem.Link);
-						KinkyDungeonAddRestraintIfWeaker(newRestraint, 8, true, undefined, undefined, undefined, undefined, undefined, true);
-						newitem = newRestraint;
-					}
-				}
-				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingSpread").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)).replace("+RestraintAdded", TextGet("Restraint" + newitem.name)), "lightblue", 2);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingSpread").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)).replace("+RestraintAdded", TextGet("Restraint" + r.name)), "lightblue", 2);
 			}
 
 			//Spread accelerates as you get more of that type
@@ -6061,7 +6053,7 @@ let KDEventMapWeapon = {
 			if (data.enemy && !data.miss && !data.disarm) {
 				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
 					if (!KinkyDungeonHasMana(e.cost)) {
-						let restrained = KDPlayerEffectRestrain(undefined, 2, ["rest_rope_weakmagic"], "Player", true, false, false, false, false);
+						let restrained = KDPlayerEffectRestrain(undefined, 2, ["ropeMagicWeak"], "Player", true, false, false, false, false);
 						if (restrained.length > 0) {
 							KinkyDungeonSendTextMessage(8, TextGet("KDMagicRopeBackfire"), "#92e8c0", 2);
 						}
