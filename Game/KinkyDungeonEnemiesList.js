@@ -4510,7 +4510,60 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, shrines: [], floors:KDMapInit([]),
 		dropTable: [{name: "PotionStamina", weight: 100, amount: 3}]},
 
+	{name: "WardenFighter", nameList: "dragonheart", outfit: "AdventurerDom", style: "BlackCatGirl", bound: "WardenFighter", color: "#ff5555",
+		playLine: "Adventurer_Switch_Fighter",
+		armor: 1,
+		Resistance: {
+			block_phys: 1.0,
+		},
+		tags: KDMapInit(["opendoors", "warden", "miniboss", "leashing", "human", "melee", "leatherRestraints",
+			"leatherRestraintsHeavy", "painweakness", "iceweakness", "holyresist", "coldresist", "jail", "jailer", "submissive"]), cohesion: 0.9,
+		faction: "Boss",
+		dontKiteWhenDisabled: true,
+
+		spells: ["Taunt"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, projectileTargeting: true, accuracy: 1.5,
+
+		followLeashedOnly: true, ignorechance: 0, followRange: 2.5, AI: "hunt", guardChance: 0.0,
+		visionRadius: 9.5, maxhp: 50, minLevel:12, weight:1, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeWillBindLock",
+		attackWidth: 3, attackRange: 1, power: 3, dmgType: "pain", fullBoundBonus: 1,
+		stamina: 7,
+		preferDodge: true, maxblock: 0,
+		events: [
+			{trigger: "tick", type: "BossAssignFaction", kind: "Warden"},
+		],
+		attackLock: "Red_Hi",
+		terrainTags: {}, shrines: [], floors:KDMapInit([]),
+		dropTable: [{name: "PotionWill", weight: 100, amount: 3}]},
+
+
+	{name: "WardenMage", nameList: "dragonheart", outfit: "AdventurerSub", style: "BlueHair", bound: "WardenMage", color: "#8888ff",
+		playLine: "Adventurer_Switch_Fighter",
+		armor: -1,
+		Resistance: {
+			block_magic: 2.0,
+		},
+		tags: KDMapInit(["opendoors", "warden", "miniboss", "leashing", "human", "melee", "leatherRestraints",
+			"leatherRestraintsHeavy", "tickleweakness", "iceweakness", "holyresist", "coldresist", "jail", "jailer", "submissive"]), cohesion: 0.9,
+		evasion: -0.2, kite: 4.5,
+		faction: "Boss",
+		dontKiteWhenDisabled: true,
+
+		spells: ["ZombieOrb"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, projectileTargeting: true, accuracy: 1.5,
+
+		followLeashedOnly: true, ignorechance: 0, followRange: 2.5, AI: "hunt", guardChance: 0.0,
+		visionRadius: 9.5, maxhp: 30, minLevel:12, weight:1, movePoints: 2, attackPoints: 3, attack: "SpellMeleeWillBindLockAll",
+		attackWidth: 2.5, attackRange: 1, power: 3, dmgType: "tickle", fullBoundBonus: 1,
+		stamina: 4,
+		preferDodge: true, maxblock: 0,
+		events: [
+			{trigger: "tick", type: "BossAssignFaction", kind: "Warden"},
+		],
+		attackLock: "Purple",
+		terrainTags: {}, shrines: [], floors:KDMapInit([]),
+		dropTable: [{name: "PotionMana", weight: 100, amount: 3}]},
+
 	{name: "TheWarden1", outfit: "Jailer", style: "Jailer", nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
+		color: "#ffaa44",
 		tags: KDMapInit(["nosub", "nocapture", "leashing", "noshop", "warden", "human", "magicresist", "ranged", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss", "nocapture"]),
 		armor: 1, followRange: 3, AI: "guard",
 		events: [
@@ -4538,6 +4591,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue", dialogue:"TheWardenStage2", click: true}]},
 
 	{name: "TheWarden2", outfit: "Jailer", style: "Jailer", nameList: "Fuuka", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
+		color: "#ffaa44",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "warden", "human", "magicresist", "ranged", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss", "nocapture", "unflinching"]),
 		armor: 1, followRange: 3, AI: "guard",
 		events: [

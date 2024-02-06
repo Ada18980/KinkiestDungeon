@@ -532,6 +532,36 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"RedOpen",
 		],
 	},
+
+	BlueHair: {
+		Hairstyle: [
+			"Water1",
+			"BlueMessy",
+			"BlueLong1",
+			"BlueHime",
+			"BlueBangs",
+			"LightBlueLong",
+			"LightBlueMedium",
+			"BlueBraid",
+			"BlueTwintail",
+		],
+		Bodystyle: [
+			"Default",
+			"Mid",
+			"Pale",
+			"MidTan",
+		],
+		Facestyle: [
+			"Amber1",
+			"Amber2",
+			"Amber3",
+			"GreenOpen",
+			"GreenNormal",
+			"CyanCute",
+			"PurpleCute",
+			"Brown3",
+		],
+	},
 	GreenHair: {
 		Hairstyle: [
 			"GreenMessy",

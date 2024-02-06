@@ -1836,6 +1836,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 		let newB = {born: born, time:1, x:b.x, y:b.y, vx:0, vy:0, xx:b.x, yy:b.y, spriteID: KinkyDungeonGetEnemyID() + b.bullet.name+"Hit" + CommonTime(),
 			ox: b.x, oy: b.y,
 			bullet:{
+				source: b.bullet.source,
 				bulletColor: b.bullet.spell?.hitColor, bulletLight: b.bullet.spell?.hitLight,
 				bulletSpin: b.bullet.spell?.hitSpin,
 				hitevents: b.bullet.spell.hitevents,
@@ -1854,6 +1855,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 			let newB = {born: born, time:1, x:b.x, y:b.y, vx:0, vy:0, xx:b.x, yy:b.y, spriteID: KinkyDungeonGetEnemyID() + b.bullet.name+"Hit" + CommonTime(),
 				ox: b.x, oy: b.y,
 				bullet:{
+					source: b.bullet.source,
 					bulletColor: b.bullet.spell?.hitColor, bulletLight: b.bullet.spell?.hitLight,
 					bulletSpin: b.bullet.spell?.hitSpin,
 					faction: b.bullet.faction, lifetime: 1, passthrough:true,
@@ -1890,6 +1892,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 		let newB = {secondary: true, born: born, time:b.bullet.spell.lifetime, x:b.x, y:b.y, vx:0, vy:0, xx:b.x, yy:b.y, spriteID: KinkyDungeonGetEnemyID() + b.bullet.name+"Hit" + CommonTime(),
 			ox: b.x, oy: b.y,
 			bullet:{faction: b.bullet.faction, spell:b.bullet.spell, bulletColor: b.bullet.spell?.hitColor, bulletLight: b.bullet.spell?.hitLight,
+				source: b.bullet.source,
 				hitevents: b.bullet.spell.hitevents,
 				bulletSpin: b.bullet.spell?.hitSpin, damage: {
 					evadeable:false, noblock: (b.bullet.spell.lifetime > 1.9),
@@ -1932,6 +1935,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 		let newB = {born: born, time:1, x:b.x, y:b.y, vx:0, vy:0, xx:b.x, yy:b.y, spriteID: KinkyDungeonGetEnemyID() + b.bullet.name+"Hit" + CommonTime(),
 			ox: b.x, oy: b.y,
 			bullet:{
+				source: b.bullet.source,
 				hitevents: b.bullet.spell.hitevents,
 				bulletColor: b.bullet.spell?.hitColor, bulletLight: b.bullet.spell?.hitLight,
 				bulletSpin: b.bullet.spell?.hitSpin,
@@ -1953,6 +1957,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 					let LifetimeBonus = (b.bullet.spell.lifetimeHitBonus) ? Math.floor(KDRandom() * b.bullet.spell.lifetimeHitBonus) : 0;
 					let newB = {delay: dd, born: born, time:b.bullet.spell.lifetime + LifetimeBonus, x:b.x+X, y:b.y+Y, vx:0, vy:0, xx:b.x+X, yy:b.y+Y,
 						ox: b.x, oy: b.y,
+						source: b.bullet.source,
 						spriteID: KinkyDungeonGetEnemyID() + b.bullet.name+"Hit" + CommonTime(),
 						bullet:{faction: b.bullet.faction, spell:b.bullet.spell, block: (b.bullet.blockhit ? b.bullet.blockhit : 0),
 							bulletColor: b.bullet.spell?.hitColor, bulletLight: b.bullet.spell?.hitLight, hit: b.bullet.spell?.secondaryhit,
@@ -1988,6 +1993,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 			bullet:{faction: b.bullet.faction, spell:b.bullet.spell, bulletColor: b.bullet.spell?.hitColor, bulletLight: b.bullet.spell?.hitLight,
 				bulletSpin: b.bullet.spell?.hitSpin,
 				hitevents: b.bullet.spell.hitevents,
+				source: b.bullet.source,
 				damage: {
 					damage:(b.bullet.spell.aoedamage) ? b.bullet.spell.aoedamage : b.bullet.spell.power, type:b.bullet.spell.damage,
 					ignoreshield: b.bullet.spell?.ignoreshield,
@@ -2064,6 +2070,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 			let newB = {born: born, time:b.bullet.spell.lifetime, x:b.x, y:b.y, vx:0, vy:0, xx:b.x, yy:b.y, spriteID: KinkyDungeonGetEnemyID() + b.bullet.name+"Hit" + CommonTime(),
 				ox: b.x, oy: b.y,
 				bullet:{faction: b.bullet.faction, spell:b.bullet.spell,
+					source: b.bullet.source,
 					bulletColor: b.bullet.spell?.hitColor, bulletLight: b.bullet.spell?.hitLight,
 					bulletSpin: b.bullet.spell?.hitSpin,
 					hitevents: b.bullet.spell.hitevents,
@@ -2253,6 +2260,7 @@ function KinkyDungeonBulletTrail(b) {
 						trail = true;
 						let newB = {born: 0, time:b.bullet.spell.trailLifetime + (b.bullet.spell.trailLifetimeBonus ? Math.floor(KDRandom() * b.bullet.spell.trailLifetimeBonus) : 0), x:b.x + X, y:b.y + Y, vx:0, vy:0, xx:b.x + X, yy:b.y + Y, spriteID: KinkyDungeonGetEnemyID() + b.bullet.name+"Trail" + CommonTime(),
 							bullet:{faction: b.bullet.faction, trail: true, hit: b.bullet.spell.trailHit, spell:b.bullet.spell, playerEffect:b.bullet.spell.trailPlayerEffect,
+								source: b.bullet.source,
 								bulletColor: b.bullet.spell?.trailColor, bulletLight: b.bullet.spell?.trailLight,
 								hitevents: b.bullet.spell.hitevents,
 								bulletSpin: b.bullet.spell?.hitSpin, damage: {

@@ -2429,8 +2429,8 @@ let KinkyDungeonSpellListEnemies = [
 		manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 4, delay: 6, power: 5, range: 7, size: 5, aoe: 2.5, lifetime: 1, damage: "crush", playerEffect: {name: "MoonBondage", count: 2, kind: "mithrilRestraints"}},
 	{enemySpell: true, name: "BoundByFate", color: "#dddddd", minRange: 0, sfx: "MagicSlash", bulletSpin: -0.25,
 		manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4, range: 7, size: 3, aoe: 1.5, lifetime: 1, damage: "soul", playerEffect: {name: "BoundByFate", time: 6}},
-	{enemySpell: true, name: "Taunt", color: "#dddddd", minRange: 0, sfx: "MagicSlash", bulletSpin: -0.25,
-		manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4, range: 7, size: 3, aoe: 1.5, lifetime: 1, damage: "soul", playerEffect: {name: "Taunted", time: 6}},
+	{enemySpell: true, name: "Taunt", color: "#ff5555", minRange: 0, sfx: "MagicSlash", bulletSpin: -0.25,
+		manacost: 6, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4, range: 5.5, size: 3, aoe: 1.5, lifetime: 1, damage: "soul", playerEffect: {name: "Taunted", time: 6}},
 
 
 	{name: "Gunpowder", landsfx: "Bones", tags: ["fire", "aoe", "offense"], noise: 0, sfx: "FireSpell", school: "Elements", manacost: 0,

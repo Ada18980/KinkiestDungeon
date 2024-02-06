@@ -492,22 +492,6 @@ let KDPlayerEffects = {
 
 		return {sfx: "Evil", effect: true};
 	},
-	"Taunted": (target, damage, playerEffect, spell, faction, bullet, entity) => {
-		KDCreateAoEEffectTiles(
-			bullet.x,
-			bullet.y,
-			{
-				name: "TauntGround",
-				duration: playerEffect.time + 1,
-			}, 0, 2.5, undefined, undefined, undefined);
-
-		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonTaunted"), "yellow", playerEffect.time);
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, KDTaunted, {
-			duration: playerEffect.time,
-		});
-
-		return {sfx: "Evil", effect: true};
-	},
 	"StarBondage": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (dmg.happened) {
@@ -517,14 +501,32 @@ let KDPlayerEffects = {
 
 		return {sfx: "Evil", effect: true};
 	},
-	"TauntShame": (target, damage, playerEffect, spell, faction, bullet, entity) => {
-		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
-		if (dmg.happened) {
-			KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Demon");
-			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonStarBondage").KDReplaceOrAddDmg( dmg.string), "#ff5555", 4);
-		} else return {sfx: "Shield", effect: false};
+	"Taunted": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let ent = (bullet?.bullet?.source ? KinkyDungeonFindID(bullet.bullet.source) : null) || bullet;
+		KDCreateAoEEffectTiles(
+			ent.x,
+			ent.y,
+			{
+				name: "TauntGround",
+				duration: playerEffect.time + 1,
+			}, 0, Math.max(2.5, KDistEuclidean(ent.x - KinkyDungeonPlayerEntity.x, ent.y - KinkyDungeonPlayerEntity.y)), undefined, undefined, undefined);
+
+		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonTaunted"), "yellow", playerEffect.time);
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, KDTaunted, {
+			duration: playerEffect.time,
+		});
 
 		return {sfx: "Evil", effect: true};
+	},
+	"TauntShame": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+
+		KinkyDungeonSendTextMessage(7, TextGet("KDTauntPunishment").KDReplaceOrAddDmg( dmg.string), "#ff5555", 1);
+		KDStunTurns(KinkyDungeonFlags.get("sprint") ? 5 : 4);
+		if (!dmg.happened) return{sfx: "Shield", effect: true};
+		//KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Warden");
+
+		return {sfx: "Tickle", effect: true};
 	},
 	"MoonBondage": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		if (KDTestSpellHits(spell, 0.0, 0.2)) {

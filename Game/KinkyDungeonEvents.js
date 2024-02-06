@@ -2670,10 +2670,10 @@ const KDEventMapBuff = {
 		"Taunted": (e, buff, entity, data) => {
 			if (buff.duration > 0) {
 				if (entity.player) {
-					if (!KDEffectTileTags(entity.x, entity.y).fate) {
+					if (!KDEffectTileTags(entity.x, entity.y).taunt) {
 						buff.duration = 0;
-						KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, "psychic", {name: "TauntShame", count: e.count, kind: e.kind, power: e.power, damage: e.damage});
-						KDRemoveAoEEffectTiles(entity.x, entity.y, ["taunt"], 1.5);
+						KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, "soul", {name: "TauntShame", count: e.count, kind: e.kind, power: e.power, damage: e.damage});
+						KDRemoveAoEEffectTiles(entity.x, entity.y, ["taunt"], 10);
 					}
 				}
 			}
@@ -6951,7 +6951,7 @@ let KDEventMapBullet = {
 					}
 				}
 			}
-			if (KDistChebyshev(KinkyDungeonPlayerEntity.x - b.x, KinkyDungeonPlayerEntity.y - b.y) <= e.aoe) {
+			if (KDistEuclidean(KinkyDungeonPlayerEntity.x - b.x, KinkyDungeonPlayerEntity.y - b.y) <= e.aoe) {
 				let restraintAdd = KinkyDungeonGetRestraint({tags: ["magicBeltForced"]}, MiniGameKinkyDungeonLevel + 10, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 				if (restraintAdd) {
 					KinkyDungeonSendActionMessage(3, TextGet("KDZoneOfPuritySelf"), "#88AAFF", 2);
