@@ -159,9 +159,8 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseChest", "FlattenedUnderbust", "WrapArms"],
 	Layers: ToLayerMap([
-		{ Name: "Collar", Layer: "Collar", Pri: 70,
+		{ Name: "Collar", Layer: "Collar", Pri: 0,
 			Invariant: true,
-			HideWhenOverridden: true,
 			InheritColor: "Tape",
 		},
 		{ Name: "Top", Layer: "WrappingTorsoMid", Pri: 50,

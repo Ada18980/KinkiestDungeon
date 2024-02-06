@@ -3083,12 +3083,12 @@ function KDGetRestraintWithVariants(enemy, Level, Index, Bypass, Lock, RequireWi
 
 function KinkyDungeonUpdateRestraints(delta) {
 	let playerTags = new Map();
-	for (let inv of KinkyDungeonAllRestraint()) {
-		let group = KDRestraint(inv).Group;
+	for (let inv of KinkyDungeonAllRestraintDynamic()) {
+		let group = KDRestraint(inv.item).Group;
 		if (group) {
 			if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
 			playerTags.set(group + "Full", true);
-			playerTags.set(inv.name + "Worn", true);
+			playerTags.set(inv.item.name + "Worn", true);
 		}
 	}
 	for (let sg of KinkyDungeonStruggleGroupsBase) {
@@ -4680,7 +4680,7 @@ let KDRopeParts = {
 };
 
 let KDCuffParts = {
-	"LivingCollar": {base: true,noGeneric: true, enemyTagSuffix: "Collar",enemyTagExtra: {"livingCollar":10}},
+	"LivingCollar": {base: true, enemyTagSuffix: "Collar",enemyTagOverride: {"livingCollar":10}},
 	"AnkleCuffs": {base: true, Link: "AnkleCuffs2"},
 	"AnkleCuffs2": {Link: "AnkleCuffs3", UnLink: "AnkleCuffs"}, //, ModelSuffix: "Chained"
 	"AnkleCuffs3": {UnLink: "AnkleCuffs2"},
@@ -4725,19 +4725,20 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 			let enemyTags = {};
 			if (cuffInfo.base) {
 				enemyTags[tagBase + (cuffInfo.enemyTagSuffix || "Cuffs")] = baseWeight;
-				if (!noGeneric && !cuffInfo.noGeneric) {
-					enemyTags[tagBase + ("Restraints")] = baseWeight;
-					enemyTags[tagBase + ("LessCuffs")] = 0.1 - baseWeight;
-					enemyTags[tagBase + ("NoCuffs")] = -1000;
-				}
-				if (cuffInfo.enemyTagExtra) {
-					for (let tag in cuffInfo.enemyTagExtra) {
-						enemyTags[tag] = cuffInfo.enemyTagExtra[tag];
+				if (cuffInfo.enemyTagOverride) {
+					for (let tag in cuffInfo.enemyTagOverride) {
+						enemyTags[tag] = cuffInfo.enemyTagOverride[tag];
 					}
-				}
-				if (extraTags) {
-					for (let t of Object.entries(extraTags)) {
-						enemyTags[t[0]] = t[1];
+				} else {
+					if (!noGeneric) {
+						enemyTags[tagBase + ("Restraints")] = baseWeight;
+						enemyTags[tagBase + ("LessCuffs")] = 0.1 - baseWeight;
+						enemyTags[tagBase + ("NoCuffs")] = -1000;
+					}
+					if (extraTags) {
+						for (let t of Object.entries(extraTags)) {
+							enemyTags[t[0]] = t[1];
+						}
 					}
 				}
 			}

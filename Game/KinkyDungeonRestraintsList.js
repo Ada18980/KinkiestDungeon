@@ -3615,7 +3615,7 @@ const KinkyDungeonRestraints = [
 		},
 		escapeChance: {"Struggle": -0.375, "Cut": -0.25, "Remove": -0.1, "Pick": 0},
 		limitChance: {"Struggle": 0.25, "Cut": 0.14, "Remove": 0.12},
-		maxwill: 0.3, enemyTags: {"dragonRestraints":1}, playerTags: {"ItemArmsFull":2}, minLevel: 12, allFloors: true, shrine: ["Leather", "Belts", "Boxbinders"]},
+		maxwill: 0.3, enemyTags: {"dragonRestraints":1}, playerTags: {"ItemArmsFull":2}, minLevel: 12, allFloors: true, shrine: ["Leather", "Belts", "Boxbinders","BindingDress"]},
 	{inventory: true, name: "DragonBoots", debris: "Belts", Asset: "BalletWedges", Color: "#424242", Group: "ItemBoots", heelpower: 1, power: 7, weight: 0, remove: ["Shoes"],
 		Model: "BalletHeelsRestraint",
 		Filters: {
@@ -4175,7 +4175,7 @@ const KinkyDungeonRestraints = [
 		Model: "ElfCollar",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
-		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Rope"],
+		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Rope", "RopeSnake"],
 		events: [{trigger: "tick", type: "livingRestraints", tags: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsWrist"], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.9, count: 8}]
 	},
 	{unlimited: true, changeRenderType: {"ArmBind": "WristElbowHarnessTie"}, inventory: true, name: "RopeSnakeArmsBoxtie", debris: "Ropes", accessible: true, factionColor: [[], [0]],
@@ -4354,7 +4354,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
 		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
-		events: [{trigger: "tick", type: "livingRestraints", tags: ["ribbonRestraints"], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.9, count: 4}]
+		events: [{trigger: "tick", type: "livingRestraints", tags: [], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.9, count: 4}]
 	},
 	{inventory: true, name: "TemplateLegCuffs", debris: "Chains", accessible: true, Asset: "FuturisticLegCuffs", Link: "TemplateLegCuffs2",
 		LinkAll: true,
