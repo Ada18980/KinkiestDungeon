@@ -1701,9 +1701,9 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 		}
 	}
 
-	if (!KinkyDungeonHasHelp()) {
-		limitChance += 0.05; // Small penalty for not having help
-	}
+	//if (!KinkyDungeonHasHelp()) {
+	//limitChance += 0.05; // Small penalty for not having help
+	//}
 
 	if (KinkyDungeonStatsChoice.get("Unchained") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Metal"))
 		escapeChance += KDUnchainedBonus;
@@ -2026,8 +2026,6 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	if (data.restriction > 0 && !KinkyDungeonHasHelp()) {
 		let restrictionMult =  1 - 10 / (10 + data.restriction);
 
-		data.limitChance += restrictionMult * 0.1; // Small penalty
-
 		if (data.escapeChance > 0) {
 			let penalty = 0;
 			switch (data.struggleType) {
@@ -2053,7 +2051,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 				}
 			}
 
-			data.escapeChance *= 1 - penalty * restrictionMult;
+			data.limitChance += data.escapeChance * penalty * restrictionMult;
 		}
 	}
 
