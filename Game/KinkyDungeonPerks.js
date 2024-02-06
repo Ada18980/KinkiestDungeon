@@ -134,11 +134,11 @@ let KDPerkUpdateStats = {
 	},
 	"StartShadow": () =>{
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
-		{
-			id: "Cursed",	type: "Cursed",	power: 10,duration: 9999, infinite: true,aura: "#4488ff",aurasprite: "Null",
-			events: [
-				{type: "Cursed", trigger: "tick", count: 1},
-			]});
+			{
+				id: "Cursed", type: "Cursed", power: 10, duration: 9999, infinite: true,aura: "#4488ff",aurasprite: "Null",
+				events: [
+					{type: "Cursed", trigger: "tick", count: 1},
+				]});
 	},
 	"UnstableMagic": () => {
 		KDDamageAmpPerksSpell += KDUnstableAmp * Math.min(1, Math.max(KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax, KinkyDungeonMiscastChance));

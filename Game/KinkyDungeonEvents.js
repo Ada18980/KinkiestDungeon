@@ -230,18 +230,18 @@ let KDEventMapInventory = {
 			if ((KinkyDungeonPlayerTags.get("CombineBubble1") || KDRestraint(item)?.shrine?.includes("CombineBubble1"))
 				&& (KinkyDungeonPlayerTags.get("CombineBubble2") || KDRestraint(item)?.shrine?.includes("CombineBubble2"))
 				&& (KinkyDungeonPlayerTags.get("CombineBubble3") || KDRestraint(item)?.shrine?.includes("CombineBubble3"))) {
-					for (let inv of KinkyDungeonAllRestraintDynamic()) {
-						let restraint = KDRestraint(inv.item);
-						if (restraint) {
-							if (restraint.shrine?.includes("CombineBubble1")
+				for (let inv of KinkyDungeonAllRestraintDynamic()) {
+					let restraint = KDRestraint(inv.item);
+					if (restraint) {
+						if (restraint.shrine?.includes("CombineBubble1")
 								|| restraint.shrine?.includes("CombineBubble2")
 								|| restraint.shrine?.includes("CombineBubble3")) {
-									KinkyDungeonRemoveRestraintSpecific(inv.item, true, true, true);
-								}
+							KinkyDungeonRemoveRestraintSpecific(inv.item, true, true, true);
 						}
 					}
-					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("Bubble"), 10, true, "", true);
-					KinkyDungeonSendTextMessage(7, TextGet("KDBubbleCombine"), "#4477ee", 4);
+				}
+				KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("Bubble"), 10, true, "", true);
+				KinkyDungeonSendTextMessage(7, TextGet("KDBubbleCombine"), "#4477ee", 4);
 			}
 		},
 
@@ -2655,6 +2655,17 @@ const KDEventMapBuff = {
 						buff.duration = 0;
 						KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, "soul", {name: "StarBondage", count: e.count, kind: e.kind, power: e.power, damage: e.damage});
 						KDRemoveAoEEffectTiles(entity.x, entity.y, ["fate"], 1.5);
+					}
+				}
+			}
+		},
+		"Taunted": (e, buff, entity, data) => {
+			if (buff.duration > 0) {
+				if (entity.player) {
+					if (!KDEffectTileTags(entity.x, entity.y).taunt) {
+						buff.duration = 0;
+						KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, "soul", {name: "TauntShame", count: e.count, kind: e.kind, power: e.power, damage: e.damage});
+						KDRemoveAoEEffectTiles(entity.x, entity.y, ["taunt"], 10);
 					}
 				}
 			}
@@ -6932,7 +6943,7 @@ let KDEventMapBullet = {
 					}
 				}
 			}
-			if (KDistChebyshev(KinkyDungeonPlayerEntity.x - b.x, KinkyDungeonPlayerEntity.y - b.y) <= e.aoe) {
+			if (KDistEuclidean(KinkyDungeonPlayerEntity.x - b.x, KinkyDungeonPlayerEntity.y - b.y) <= e.aoe) {
 				let restraintAdd = KinkyDungeonGetRestraint({tags: ["magicBeltForced"]}, MiniGameKinkyDungeonLevel + 10, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 				if (restraintAdd) {
 					KinkyDungeonSendActionMessage(3, TextGet("KDZoneOfPuritySelf"), "#88AAFF", 2);
@@ -7278,6 +7289,11 @@ let KDEventMapEnemy = {
 					}
 				}
 				if (!enemy.faction) enemy.faction = "Adventurer";
+			}
+		},
+		"BossAssignFaction": (e, enemy, data) => {
+			if (!enemy.faction) {
+				if (enemy.hostile) enemy.faction = e.kind;
 			}
 		},
 		"DeleteCurse": (e, enemy, data) => {

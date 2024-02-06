@@ -2436,6 +2436,8 @@ let KinkyDungeonSpellListEnemies = [
 		manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 4, delay: 6, power: 5, range: 7, size: 5, aoe: 2.5, lifetime: 1, damage: "crush", playerEffect: {name: "MoonBondage", count: 2, kind: "mithrilRestraints"}},
 	{enemySpell: true, name: "BoundByFate", color: "#dddddd", minRange: 0, sfx: "MagicSlash", bulletSpin: -0.25,
 		manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4, range: 7, size: 3, aoe: 1.5, lifetime: 1, damage: "soul", playerEffect: {name: "BoundByFate", time: 6}},
+	{enemySpell: true, name: "Taunt", color: "#ff5555", minRange: 0, sfx: "MagicSlash", bulletSpin: -0.25,
+		manacost: 6, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4, range: 5.5, size: 3, aoe: 1.5, lifetime: 1, damage: "soul", playerEffect: {name: "Taunted", time: 6}},
 
 
 	{name: "Gunpowder", landsfx: "Bones", tags: ["fire", "aoe", "offense"], noise: 0, sfx: "FireSpell", school: "Elements", manacost: 0,
@@ -2592,10 +2594,34 @@ let KinkyDungeonSpellListEnemies = [
 		},
 		level:1, type:"hit", onhit:"instant", noTerrainHit: true, power: 1.5, bind: 7, delay: 1, range: 1.5, size: 3, aoe: 1.5, lifetime: 1, damage: "glue"},
 
+
+
+	{enemySpell: true, slowStart: true, name: "EnemySteelRainPlug", color: "#ffffff", tags: ["binding", "metal", "bolt", "offense"], prerequisite: "ApprenticeMetal", sfx: "MagicSlash", hitsfx: "HeavySwing", school: "Conjure", manacost: 2, components: ["Arms"], level:1, type:"bolt",
+		projectileTargeting:true, onhit:"", time: 0,  power: 2.0, delay: 0, range: 15, damage: "pierce", speed: 3, bulletLifetime: 5, playerEffect: {name: "Bind", damage: "pierce", power: 2, tag: "plugSpell"},
+		bulletColor: 0xffffff, bulletLight: 1,
+		events: [
+			{type: "PlugEnemy", trigger: "bulletHitEnemy"},
+		]
+	},
+	{enemySpell: true, name: "EnemySteelRainBurst", tags: ["binding", "metal", "bolt", "offense"], prerequisite: "SteelRainPlug", sfx: "MagicSlash", hitsfx: "HeavySwing", school: "Conjure", manacost: 5, components: ["Arms"], level:1,
+		upcastFrom: "SteelRainPlug", upcastLevel: 1,
+		projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, type:"inert", onhit:"aoe",
+		time: 0, delay: 1, power: 5, range: 12, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert",
+		shotgunCount: 4, shotgunDistance: 4, shotgunSpread: 1, shotgunSpeedBonus: 1,
+		spellcast: {spell: "SteelRainPlug", target: "target", directional:true, randomDirectionPartial: true, aimAtTarget: true, noTargetMoveDir: true, offset: false}},
+
+	{enemySpell: true, name: "RestrainingBolt",  bindType: "Magic",
+		color: "#ffaa57", sfx: "Miss",
+		hitsfx: "FireSpell", manacost: 3, components: ["Arms"], level: 1, type:"bolt",
+		projectileTargeting:true, slowStart: true, onhit:"", power: 1.5, bind: 2.5, delay: 0,
+		range: 10.5, damage: "chain",
+		speed: 4, playerEffect: {name: "RestrainingBolt", count: 1, dist: 1, sfx: "MagicSlash"}},
+
+
 	{enemySpell: true, name: "OneBarMissile", bindType: "Metal", color: "#ffffff", sfx: "MagicSlash", landsfx: "MagicSlash", manacost: 6, components: ["Arms"], specialCD: 25,
 		noTerrainHit: true,
 		pierceEnemies: true,
-		faction: "Enemy",
+		faction: "Warden",
 		minRange: 0,
 		bulletLifetime: 50,
 		noDirectionOffset: true,
@@ -2608,15 +2634,15 @@ let KinkyDungeonSpellListEnemies = [
 		events: [{type: "RubberMissileHoming", trigger: "bulletAfterTick", power: 0.4, dist: 15, count: 0.2, limit: 0},],
 		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 9.2, delay: 0, range: 50, damage: "crush", speed: 0.5, playerEffect: {name: "Bind", damage: "pierce", power: 7.2, tag: "onebar"}},
 	{enemySpell: true, name: "SummonOneBar", noSprite: true, minRange: 0, manacost: 2, specialCD: 12,
-		noCastMsg: true,
-		faction: "Enemy",
+		noSumMsg: true,
+		faction: "Warden",
 		effectTileDurationModTrail: 12, effectTileTrail: {
 			name: "Chains",
 			duration: 10,
 		},
 		effectTileDensity: 0.15,
 		effectTileAoE: 1.5,
-		components: ["Verbal"], level:4, type:"hit", onhit:"summon", summon: [{name: "OneBar", count: 1, time: 50, bound: true, weakBinding: true}], power: 0, time: 10, delay: 0, range: 40, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},
+		components: ["Verbal"], level:4, type:"hit", onhit:"summon", summon: [{name: "OneBar", count: 1, time: 0, bound: true}], power: 0, time: 10, delay: 0, range: 40, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},
 
 
 	{enemySpell: true, name: "CelestialBolt",  bindType: "Rope", color: "#ffff44", sfx: "MagicSlash", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "holy", bind: 6, speed: 4, playerEffect: {name: "CelestialBolt", count: 2, time: 3, power: 3, damage: "holy"}},
