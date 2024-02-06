@@ -1238,7 +1238,7 @@ let KDEventMapInventory = {
 
 			let r = KinkyDungeonGetRestraint({tags: newtags}, 24, "grv", true, undefined);
 			if (r) {
-				KinkyDungeonAddRestraintIfWeaker(r, 8, true, undefined, false, undefined, undefined, undefined, true);
+				KinkyDungeonAddRestraintIfWeaker(r, MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint, true, undefined, false, undefined, undefined, undefined, true);
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingSpread").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)).replace("+RestraintAdded", TextGet("Restraint" + r.name)), "lightblue", 2);
 			}
 
