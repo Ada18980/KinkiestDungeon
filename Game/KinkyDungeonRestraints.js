@@ -4678,7 +4678,7 @@ let KDRopeParts = {
 };
 
 let KDCuffParts = {
-	"LivingCollar": {base: true,enemyTagSuffix: "Collar",enemyTagExtra: {"livingCollar":10}},
+	"LivingCollar": {base: true,noGeneric: true, enemyTagSuffix: "Collar",enemyTagExtra: {"livingCollar":10}},
 	"AnkleCuffs": {base: true, Link: "AnkleCuffs2"},
 	"AnkleCuffs2": {Link: "AnkleCuffs3", UnLink: "AnkleCuffs"}, //, ModelSuffix: "Chained"
 	"AnkleCuffs3": {UnLink: "AnkleCuffs2"},
@@ -4722,15 +4722,15 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 			/** @type {Record<string, number>} */
 			let enemyTags = {};
 			if (cuffInfo.base) {
-				enemyTags[tagBase + (part[1].enemyTagSuffix || "Cuffs")] = baseWeight;
-				if (!noGeneric) {
+				enemyTags[tagBase + (cuffInfo.enemyTagSuffix || "Cuffs")] = baseWeight;
+				if (!noGeneric && !cuffInfo.noGeneric) {
 					enemyTags[tagBase + ("Restraints")] = baseWeight;
 					enemyTags[tagBase + ("LessCuffs")] = 0.1 - baseWeight;
 					enemyTags[tagBase + ("NoCuffs")] = -1000;
 				}
 				if (cuffInfo.enemyTagExtra) {
-					for (let tag in part[1].enemyTagExtra) {
-						enemyTags[tag] = part[1].enemyTagExtra[tag];
+					for (let tag in cuffInfo.enemyTagExtra) {
+						enemyTags[tag] = cuffInfo.enemyTagExtra[tag];
 					}
 				}
 				if (extraTags) {
@@ -4743,7 +4743,7 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 			/** @type {Record<string, number>} */
 			let enemyTagsMult = {};
 			if (cuffInfo.base)
-				enemyTagsMult[tagBase + (part[1].enemyTagSuffix || "")] = 1;
+				enemyTagsMult[tagBase + (cuffInfo.enemyTagSuffix || "")] = 1;
 			let shrine = [...allTag, ...KDGetRestraintTags(origRestraint)];
 			for (let t of removeTag) {
 				if (shrine.includes(t)) shrine.splice(shrine.indexOf(t), 1);
