@@ -542,6 +542,10 @@ let KDPlayerEffects = {
 				for (let i = 0; i < 30; i++) {
 					KDAdvanceSlime(false, "");
 				}
+				let newAdd = KinkyDungeonGetRestraintByName("HardSlimeCollar");
+				if (newAdd) {
+					KinkyDungeonAddRestraintIfWeaker(newAdd, spell.power, true, undefined, false, false, undefined, faction, true);
+				}
 
 				let master = null;
 				for (let enemy of kraken) {
@@ -579,23 +583,8 @@ let KDPlayerEffects = {
 			}
 		}
 		if (added.length > 0) {
-			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonRopeEngulf").KDReplaceOrAddDmg( dmg.string), "#ff0000", 2);
+			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSarcoEngulf").KDReplaceOrAddDmg( dmg.string), "#ff0000", 2);
 			effect = true;
-		} else {
-			let RopeDresses = ["Leotard", "Bikini", "Lingerie"];
-			if (!RopeDresses.includes(KinkyDungeonCurrentDress)) {
-				KinkyDungeonSetDress(RopeDresses[Math.floor(Math.random() * RopeDresses.length)], "");
-				KinkyDungeonDressPlayer();
-				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonHexEngulfDress").KDReplaceOrAddDmg( dmg.string), "#ff0000", 3);
-				effect = true;
-			}
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeMagicHogtie"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
-			if (restraintAdd) {
-				KDPlayerEffectRestrain(spell, 1, ["ropeMagicHogtie"], faction);
-				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
-				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSarcoEngulf").KDReplaceOrAddDmg( dmg.string), "#ff0000", 2);
-				effect = true;
-			}
 		}
 
 		return {sfx: "MagicSlash", effect: effect};
@@ -619,6 +608,10 @@ let KDPlayerEffects = {
 				let newAdd = KinkyDungeonGetRestraint({tags: ["sarcophagus"]}, 100, "tmb");
 				if (newAdd) {
 					KinkyDungeonAddRestraintIfWeaker(newAdd, spell.power, false, undefined, false, false, undefined, faction);
+				}
+				newAdd = KinkyDungeonGetRestraintByName("MysticDuctTapeCollar");
+				if (newAdd) {
+					KinkyDungeonAddRestraintIfWeaker(newAdd, spell.power, true, undefined, false, false, undefined, faction, true);
 				}
 			}, "Blindness");
 			return {sfx: "Evil", effect: true};
@@ -941,6 +934,12 @@ let KDPlayerEffects = {
 		if (playerEffect.power > 1 && KinkyDungeonPlayerTags.get("WeakMagicRopes")) {
 			transmuteLevel = 2;
 		}
+		if (playerEffect.power > 2) {
+			transmuteLevel = 3;
+		}
+		if (playerEffect.power > 3) {
+			transmuteLevel = 4;
+		}
 
 		if (transmuteLevel > 0) {
 			if (KDTestSpellHits(spell, 0.0, 1.0)) {
@@ -958,6 +957,24 @@ let KDPlayerEffects = {
 				if (transmuteLevel > 0) {
 					for (let inv of KinkyDungeonAllRestraintDynamic()) {
 						if (KDRestraint(inv.item)?.shrine?.includes("RopeSnake")) {
+							KDChangeItemName(inv.item, Restraint,KDRestraint(inv.item).name.replace("RopeSnake", "WeakMagicRope"));
+							effect = true;
+						}
+					}
+				}
+
+				if (transmuteLevel > 3) {
+					for (let inv of KinkyDungeonAllRestraintDynamic()) {
+						if (KDRestraint(inv.item)?.name == "WeakMagicRopeCollar") {
+							KDChangeItemName(inv.item, Restraint,KDRestraint(inv.item).name.replace("WeakMagicRope", "StrongMagicRope"));
+							effect = true;
+						}
+					}
+				}
+
+				if (transmuteLevel > 2) {
+					for (let inv of KinkyDungeonAllRestraintDynamic()) {
+						if (KDRestraint(inv.item)?.name == "RopeSnakeCollar") {
 							KDChangeItemName(inv.item, Restraint,KDRestraint(inv.item).name.replace("RopeSnake", "WeakMagicRope"));
 							effect = true;
 						}
@@ -1296,9 +1313,9 @@ let KDPlayerEffects = {
 					effect = true;
 				}
 				//KinkyDungeonCallGuard(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
-				let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeMagicHogtie"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+				let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeRestraintsHogtie"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
 				if (restraintAdd) {
-					KDPlayerEffectRestrain(spell, 1, ["ropeMagicHogtie"], faction);
+					KDPlayerEffectRestrain(spell, 1, ["ropeSnakeHogtie"], faction);
 					KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 					KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonRopeEngulf"), "#ff0000", 2);
 					effect = true;
@@ -1307,6 +1324,10 @@ let KDPlayerEffects = {
 					let buff2 = {id: "KrakenEngulf2", type: "Blindness", duration: 8, power: 2.0, player: true, tags: ["passout"]};
 					let buff3 = {id: "KrakenEngulf3", type: "Blindness", duration: 8, power: 4.0, player: true, tags: ["passout"]};
 					if (KinkyDungeonPlayerBuffs[buff3.id]) {
+						let newAdd = KinkyDungeonGetRestraintByName("RopeSnakeCollar");
+						if (newAdd) {
+							KinkyDungeonAddRestraintIfWeaker(newAdd, spell.power, true, undefined, false, false, undefined, faction, true);
+						}
 						KinkyDungeonPassOut();
 					} else if (KinkyDungeonPlayerBuffs[buff2.id]) {
 						KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonRopeEngulfEnd3"), "#ff0000", 5);

@@ -3849,7 +3849,7 @@ let KinkyDungeonEnemies = [
 		maxdodge: 0,
 		evasion: -1.4, armor: 1.5,
 		ignorechance: 0.75, followRange: 1, AI: "hunt",  summon: [{enemy: "RopeMinion", range: 2.5, count: 4, strict: true}],
-		spells: ["RopeEngulf", "EnemyEnchantRope2", "SummonRopeTentacle"], spellCooldownMult: 0.5, spellCooldownMod: 0, ignoreflag: ["kraken"], disarm: 0.25,
+		spells: ["RopeEngulf", "EnemyEnchantRope3", "SummonRopeTentacle"], spellCooldownMult: 0.5, spellCooldownMod: 0, ignoreflag: ["kraken"], disarm: 0.25,
 		visionRadius: 9, maxhp: 40, minLevel: 3, weight:-31, movePoints: 4, attackPoints: 2, attack: "Spell", attackWidth: 1, attackRange: 1, power: 6, dmgType: "chain",
 		terrainTags: {"secondhalf":12, "lastthird":5, "boss": -80, "open": 20, "passage": -60, "ropeAnger": 20, "ropeRage": 40, "increasingWeight":0.5}, allFloors: true, shrines: ["Rope"],
 		events: [
@@ -3929,7 +3929,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "Dollsmith", nameList: "cyborg", outfit: "DollsmithDoll", style: "Fire", faction: "Enemy", clusterWith: "smithdoll", bound: "FactoryDoll", playLine: "Robot", color: "#ff3388",
 		applyFaction: "Dollsmith",
-		tags: KDMapInit(["leashing", "dollsmith", "doll", "opendoors", "closedoors", "jail", "jailer", "melee", "elite", "antiMagic", "glueresist", "crushresist", "electricresist", "handcuffer", "iceweakness", "blacksteelrestraints", "blacksteelCuffs", "teasetoys"]),
+		tags: KDMapInit(["leashing", "dollsmith", "doll", "opendoors", "closedoors", "jail", "jailer", "melee", "elite", "antiMagic", "glueresist", "crushresist", "electricresist", "handcuffer", "iceweakness", "blacksteelRestraints", "blacksteelCuffs", "teasetoys"]),
 		spellResist: 1.0, armor: 1.0,
 		followLeashedOnly: true, followRange: 1,
 		spells: ["RubberBolt"], spellCooldownMult: 2, spellCooldownMod: 0,
@@ -3948,7 +3948,7 @@ let KinkyDungeonEnemies = [
 			requiredItems: ["BlacksteelBelt", "BlacksteelBra"],
 		},
 		summon: [{enemy: "DollsmithDoll", range: 2.5, count: 1, strict: true}, {enemy: "DollsmithDoll", range: 2.5, count: 1, chance: 0.5, strict: true}],
-		specialCD: 6, specialAttack: "WillBind", specialRemove: "Lock", specialExtraTags: ["redLatexBasic"], specialRemoveTags: ["blacksteelrestraints", "blacksteelCuffs", "leashing", "teasetoys"],
+		specialCD: 6, specialAttack: "WillBind", specialRemove: "Lock", specialExtraTags: ["redLatexBasic"], specialRemoveTags: ["blacksteelRestraints", "blacksteelCuffs", "leashing", "teasetoys"],
 		specialAttackPoints: 2, specialWidth: 3, specialMsg: true, specialCondition: "canRestrainWithExtra", specialCDonAttack: true, specialIgnoreStam: true,
 		attackLock: "Red",
 		AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 14, minLevel:3, weight:15, movePoints: 2,

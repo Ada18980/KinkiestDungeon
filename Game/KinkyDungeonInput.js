@@ -493,7 +493,40 @@ function KDProcessInput(type, data) {
 				KDDelayedActionPrune(["Action", "World"]);
 				if (KinkyDungeonGoddessRep[data.shrine] < -45) {
 					KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, "OrbGuardian", 3 + Math.floor(Math.sqrt(1 + MiniGameKinkyDungeonLevel)), 10, false, 30);
+					let tag = "";
+					switch (data.shrine) {
+						case "Latex":
+							tag = "HardSlimeCollar";
+							break;
+						case "Leather":
+							tag = "LeatherLivingCollar";
+							break;
+						case "Metal":
+							tag = "MithrilLivingCollar";
+							break;
+						case "Rope":
+							tag = "WeakMagicRopeCollar";
+							break;
+						case "Will":
+							tag = "MysticDuctTapeCollar";
+							break;
+						case "Elements":
+							tag = "CrystalLivingCollar";							
+							break;
+						case "Conjure":
+							tag = "RibbonCollar";							
+							break;
+						case "Illusion":
+							tag = "ObsidianLivingCollar";
+							break;
+					}
+					let restraintAdd = KinkyDungeonGetRestraintByName(tag);
+					if (restraintAdd) {
+						KinkyDungeonAddRestraintIfWeaker(restraintAdd, 10, true, "Gold", false, false, undefined, undefined, true);
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonGoddessCollar").replace("TYPE", TextGet("KinkyDungeonShrine" + data.shrine)).replace("RESTRAINT", TextGet("Restraint" + tag)), "lightblue", 2);
+					}
 				}
+
 				KinkyDungeonChangeRep(data.shrine, (data.Rep || data.Amount) * -10);
 
 				KDSendStatus('goddess', data.shrine, 'takeOrb');

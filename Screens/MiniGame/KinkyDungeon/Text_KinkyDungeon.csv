@@ -474,10 +474,6 @@ KinkyDungeonSpellDescriptionLockedUp3,"Locked Up is 300% effective. When Locked 
 KinkyDungeonSpellLockedUpX,Recalcitrant
 KinkyDungeonSpellDescriptionLockedUpX,"Relinquish the Locked Up perk. One time only. If you take the perk again, there is no going back."
 
-KinkyDungeonStatLivingCollars,"Living Collars"
-KinkyDungeonStatDescLivingCollars,"When getting captured with many of the same type of restraint, gain a collar that occasionally binds you with that type of restraint."
-
-
 KinkyDungeonStatNovicePet,"Novice Pet"
 KinkyDungeonStatDescNovicePet,"You can now sprint while wearing a petsuit. (Upgrades available in spell tree)"
 KinkyDungeonSpellNovicePet0,Novice Pet Perk
@@ -3378,6 +3374,7 @@ KinkyDungeonPoolDrink1,"You drink again, but you feel as if you are trespassing.
 KinkyDungeonPoolDrink2,"You drink again, knowing the risk this may entail..."
 KinkyDungeonPoolDrinkAnger,"You have angered the goddess of TYPE!!!"
 KinkyDungeonPoolDrinkSlime,"The slime washes off in the fountain!!!"
+KinkyDungeonGoddessCollar,"The goddess of TYPE is enraged and curses you with a divine punishment! (+RESTRAINT)"
 
 KinkyDungeonCommerceBuy,"The goddess offers a ItemTraded for ItemCost (NumCurrent/NumMax)"
 KinkyDungeonCommerceNext,"Next Offer"
@@ -3822,6 +3819,10 @@ RestraintStuffingDesc2,"You could spit it out easily, provided nothing's coverin
 
 
 
+RestraintMithrilLivingCollar,Living Mithril Collar
+RestraintMithrilLivingCollarDesc,"A collar made from an almost-weightless alloy that adjusts itself to your neck."
+RestraintMithrilLivingCollarDesc2,"It will occasionally cause mithril to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of mithril you have on you."
+
 RestraintMithrilCollar,Mithril Collar
 RestraintMithrilCollarDesc,"A collar made from an almost-weightless alloy.."
 RestraintMithrilCollarDesc2,"It feels comfortable but it's also really hard."
@@ -3872,6 +3873,9 @@ RestraintMithrilAnkleCuffs3Desc2,"They feel like they aren't even there, but the
 KinkyDungeonUnLinkMithrilAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 
+RestraintLeatherLivingCollar,Living Leather Collar
+RestraintLeatherLivingCollarDesc,"A collar made of tough leather that adjusts itself to your neck."
+RestraintLeatherLivingCollarDesc2,"It will occasionally cause leather to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of leather you have on you."
 
 RestraintLeatherArmCuffs,Leather Cuffs
 RestraintLeatherArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
@@ -4162,6 +4166,10 @@ RestraintTransportJacket,Transport Jacket
 RestraintTransportJacketDesc,"This jacket goes over a straitjacket to keep the arms trapped."
 RestraintTransportJacketDesc2,"It makes it extraordinarily difficult to escape the jacket it covers."
 
+RestraintAsylumLivingCollar,Living Asylum Collar
+RestraintAsylumLivingCollarDesc,"A collar made of tough cowhide that adjusts itself to your neck."
+RestraintAsylumLivingCollarDesc2,"It will occasionally cause asylum gear to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of asylum gear you have on you."
+
 RestraintAsylumArmCuffs,Asylum Cuffs
 RestraintAsylumArmCuffsDesc,"A pair of leather cuffs that make it easy to restrain you."
 RestraintAsylumArmCuffsDesc2,"They're made of tough cowhide."
@@ -4301,7 +4309,9 @@ KinkyDungeonUnLinkMagneticAnkleCuffs2,"Your ankle cuffs detatch!"
 
 
 
-
+RestraintBlacksteelLivingCollar,Living Blacksteel Collar
+RestraintBlacksteelLivingCollarDesc,"A collar made of a hardened steel alloy, chemically treated as to be stainless that adjusts itself to your neck."
+RestraintBlacksteelLivingCollarDesc2,"It will occasionally cause blacksteel to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of blacksteel you have on you."
 
 RestraintBlacksteelArmCuffs,Blacksteel Cuffs
 RestraintBlacksteelArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
@@ -4353,7 +4363,9 @@ KinkyDungeonUnLinkBlacksteelAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 
 
-
+RestraintScaleLivingCollar,Living Dragonscale Collar
+RestraintScaleLivingCollarDesc,"A collar made from leather cured from the hide of dragons that adjusts itself to your neck."
+RestraintScaleLivingCollarDesc2,"It will occasionally cause dragonscale to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of dragonscale you have on you."
 
 RestraintScaleArmCuffs,Dragonscale Cuffs
 RestraintScaleArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
@@ -4476,6 +4488,9 @@ RestraintObsidianCollarDesc,"A collar made from a warm, shining alloy."
 RestraintObsidianCollarDesc2,"It's made of a dark, glistening volcanic metal."
 
 
+RestraintObsidianLivingCollar,Living Obsidian Collar
+RestraintObsidianLivingCollarDesc,"A collar made of a dark, shiny metal that adjusts itself to your neck. You can't help but hear whispering since it is so tight."
+RestraintObsidianLivingCollarDesc2,"It will occasionally cause obsidian to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of obsidian you have on you."
 
 RestraintObsidianArmCuffs,Obsidian Cuffs
 RestraintObsidianArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
@@ -4523,7 +4538,9 @@ RestraintObsidianAnkleCuffs3Desc2,"It's made of a dark, shiny metal. If you hold
 KinkyDungeonUnLinkObsidianAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 
-
+RestraintCrystalLivingCollar,Living Crystal Collar
+RestraintCrystalLivingCollarDesc,"A collar made of a glowing, brittle material that adjusts itself to your neck. You feel your energy flowing into it..."
+RestraintCrystalLivingCollarDesc2,"It will occasionally cause crystal to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of crystal you have on you."
 
 RestraintCrystalArmCuffs,Crystal Cuffs
 RestraintCrystalArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
@@ -4571,7 +4588,9 @@ RestraintCrystalAnkleCuffs3Desc2,"It's made of a glowing, brittle material. You 
 KinkyDungeonUnLinkCrystalAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 
-
+RestraintIceLivingCollar,Living Ice Collar
+RestraintIceLivingCollarDesc,"A collar made of enchanted ice that adjusts itself to your neck. It won't melt on their own, and the ice chills you to the bone..."
+RestraintIceLivingCollarDesc2,"It will occasionally cause ice to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of ice you have on you."
 
 RestraintIceArmCuffs,Ice Cuffs
 RestraintIceArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
@@ -4619,6 +4638,9 @@ RestraintIceAnkleCuffs3Desc2,"They're made of enchanted ice. They won't melt on 
 KinkyDungeonUnLinkIceAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 
+RestraintBanditLivingCollar,Living Slave Collar
+RestraintBanditLivingCollarDesc,"A collar made of a gold-tinted metal with a magical enchantment that adjusts itself to your neck."
+RestraintBanditLivingCollarDesc2,"It will occasionally cause slave gear to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of slave gear you have on you."
 
 RestraintBanditArmCuffs,Slave Cuffs
 RestraintBanditArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."

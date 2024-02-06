@@ -4680,7 +4680,7 @@ let KDRopeParts = {
 };
 
 let KDCuffParts = {
-	"Collar": {base: true,},
+	"LivingCollar": {base: true,enemyTagSuffix: "Collar",enemyTagExtra: {"livingCollar":10}},
 	"AnkleCuffs": {base: true, Link: "AnkleCuffs2"},
 	"AnkleCuffs2": {Link: "AnkleCuffs3", UnLink: "AnkleCuffs"}, //, ModelSuffix: "Chained"
 	"AnkleCuffs3": {UnLink: "AnkleCuffs2"},
@@ -4730,6 +4730,11 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 					enemyTags[tagBase + ("LessCuffs")] = 0.1 - baseWeight;
 					enemyTags[tagBase + ("NoCuffs")] = -1000;
 				}
+				if (cuffInfo.enemyTagExtra) {
+					for (let tag in part[1].enemyTagExtra) {
+						enemyTags[tag] = part[1].enemyTagExtra[tag];
+					}
+				}
 				if (extraTags) {
 					for (let t of Object.entries(extraTags)) {
 						enemyTags[t[0]] = t[1];
@@ -4756,7 +4761,7 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 				events: cuffInfo.base ? [...extraEvents, ...(origRestraint.events || [])] : [...(origRestraint.events || [])],
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
-				cloneTag: tagBase,
+				cloneTag: tagBase + "Restraints",
 			};
 			if (cuffInfo.Link) props.Link = idSuffix + cuffInfo.Link;
 			if (cuffInfo.UnLink) props.UnLink = idSuffix + cuffInfo.UnLink;

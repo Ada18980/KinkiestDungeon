@@ -1231,8 +1231,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	//MiniGameKinkyDungeonLevel = Math.min(MiniGameKinkyDungeonLevel, Math.max(Math.floor(MiniGameKinkyDungeonLevel/10)*10, MiniGameKinkyDungeonLevel - KinkyDungeonSpawnJailers + KinkyDungeonSpawnJailersMax - 1));
 	KinkyDungeonSendEvent("defeat", {});
 
-	if (KinkyDungeonStatsChoice.get("LivingCollars"))
-		KDApplyLivingCollars();
+	KDApplyLivingCollars();
 
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if ((KDRestraint(inv).removePrison || KDRestraint(inv).forceRemovePrison) && (!KinkyDungeonStatsChoice.get("KinkyPrison") || KDRestraint(inv).forceRemovePrison || KDRestraint(inv).removeOnLeash || KDRestraint(inv).freeze || KDRestraint(inv).immobile)) {
