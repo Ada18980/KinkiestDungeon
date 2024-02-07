@@ -3588,9 +3588,9 @@ RestraintHighsecBoxbinderDesc2,"Made of a flexible, yet durable material, it's g
 RestraintHighsecStraitjacket,High-Security Straitjacket
 RestraintHighsecStraitjacketDesc,"A straitjacket enclosing your hands and arms completely, making your hands useless."
 RestraintHighsecStraitjacketDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
-RestraintHighsecTransportjacket,High-Security Lockdown Jacket
-RestraintHighsecTransportjacketDesc,"This jacket made with extra straps can even be used on top of another jacket for extra security."
-RestraintHighsecTransportjacketDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
+RestraintHighsecTransportJacket,High-Security Lockdown Jacket
+RestraintHighsecTransportJacketDesc,"This jacket made with extra straps can even be used on top of another jacket for extra security."
+RestraintHighsecTransportJacketDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
 RestraintHighsecLegbinder,High-Security Legbinder
 RestraintHighsecLegbinderDesc,"An mythril legbinder enclosing your legs, making it difficult to move."
 RestraintHighsecLegbinderDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
@@ -4203,9 +4203,9 @@ RestraintComfyStraitjacketDesc2,It feels tight but is actually made of an ethere
 RestraintLatexStraitjacket,Latex Jacket
 RestraintLatexStraitjacketDesc,A tight jacket that keeps your arms completely useless.
 RestraintLatexStraitjacketDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
-RestraintLatexTransportjacket,Secure Latex Jacket
-RestraintLatexTransportjacketDesc,This straitjacket has extra straps and buckles to make sure you won't be struggling out of it.
-RestraintLatexTransportjacketDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
+RestraintLatexTransportJacket,Secure Latex Jacket
+RestraintLatexTransportJacketDesc,This straitjacket has extra straps and buckles to make sure you won't be struggling out of it.
+RestraintLatexTransportJacketDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 RestraintLatexArmbinder,Latex Armbinder
 RestraintLatexArmbinderDesc,A tight armbinder that pins your arms tightly behind your back, enclosed completely.
 RestraintLatexArmbinderDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
