@@ -2051,7 +2051,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 				}
 			}
 
-			data.limitChance += data.escapeChance * penalty * restrictionMult;
+			data.escapePenalty += data.escapeChance * penalty * restrictionMult;
 		}
 	}
 
