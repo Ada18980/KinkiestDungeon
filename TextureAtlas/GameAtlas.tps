@@ -309,6 +309,10 @@
             <key type="filename">../Game/Bullets/EnemyLatexRestraintBolt.png</key>
             <key type="filename">../Game/Bullets/EnemyLatexRestraintBoltHit.png</key>
             <key type="filename">../Game/Bullets/EnemyMiscastHit.png</key>
+            <key type="filename">../Game/Bullets/EnemySteelRainBurst.png</key>
+            <key type="filename">../Game/Bullets/EnemySteelRainBurstHit.png</key>
+            <key type="filename">../Game/Bullets/EnemySteelRainPlug.png</key>
+            <key type="filename">../Game/Bullets/EnemySteelRainPlugHit.png</key>
             <key type="filename">../Game/Bullets/EnemySummonLatexArmbinder.png</key>
             <key type="filename">../Game/Bullets/EnemySummonLatexArmbinderHit.png</key>
             <key type="filename">../Game/Bullets/EnemySummonLatexGag.png</key>
@@ -420,6 +424,10 @@
             <key type="filename">../Game/Bullets/MagicBeltHit.png</key>
             <key type="filename">../Game/Bullets/MagicChain.png</key>
             <key type="filename">../Game/Bullets/MagicChainHit.png</key>
+            <key type="filename">../Game/Bullets/MagicMissile.png</key>
+            <key type="filename">../Game/Bullets/MagicMissile2.png</key>
+            <key type="filename">../Game/Bullets/MagicMissile2Hit.png</key>
+            <key type="filename">../Game/Bullets/MagicMissileHit.png</key>
             <key type="filename">../Game/Bullets/MagicRope.png</key>
             <key type="filename">../Game/Bullets/MagicRopeHit.png</key>
             <key type="filename">../Game/Bullets/ManyCables.png</key>
@@ -478,6 +486,8 @@
             <key type="filename">../Game/Bullets/RecoverObjectHit.png</key>
             <key type="filename">../Game/Bullets/RedSlime.png</key>
             <key type="filename">../Game/Bullets/RedSlimeHit.png</key>
+            <key type="filename">../Game/Bullets/RestrainingBolt.png</key>
+            <key type="filename">../Game/Bullets/RestrainingBoltHit.png</key>
             <key type="filename">../Game/Bullets/RestrainingDevice.png</key>
             <key type="filename">../Game/Bullets/RestrainingDeviceHit.png</key>
             <key type="filename">../Game/Bullets/Ribbons.png</key>
@@ -765,6 +775,7 @@
             <key type="filename">../Game/EffectTiles/Sparks.png</key>
             <key type="filename">../Game/EffectTiles/StarryTrail.png</key>
             <key type="filename">../Game/EffectTiles/Steam.png</key>
+            <key type="filename">../Game/EffectTiles/TauntGround.png</key>
             <key type="filename">../Game/EffectTiles/Torch.png</key>
             <key type="filename">../Game/EffectTiles/TorchOrb.png</key>
             <key type="filename">../Game/EffectTiles/TorchOrbNoPanel.png</key>
@@ -2563,6 +2574,7 @@
             <key type="filename">../Game/Buffs/buff/buffTabletMetal.png</key>
             <key type="filename">../Game/Buffs/buff/buffTabletRope.png</key>
             <key type="filename">../Game/Buffs/buff/buffTabletWill.png</key>
+            <key type="filename">../Game/Buffs/buff/buffTaunted.png</key>
             <key type="filename">../Game/Buffs/buff/buffUnsteady.png</key>
             <key type="filename">../Game/Buffs/buff/buffWaterBubble.png</key>
             <key type="filename">../Game/Buffs/buff/buffd_OrgasmResist.png</key>
@@ -2780,6 +2792,8 @@
             <key type="filename">../Game/Bullets/LiquidMetalBurstHit.png</key>
             <key type="filename">../Game/Bullets/LustBomb.png</key>
             <key type="filename">../Game/Bullets/LustBombHit.png</key>
+            <key type="filename">../Game/Bullets/MagicMissileChannel.png</key>
+            <key type="filename">../Game/Bullets/MagicMissileChannelHit.png</key>
             <key type="filename">../Game/Bullets/MinerBomb.png</key>
             <key type="filename">../Game/Bullets/MinerBombHit.png</key>
             <key type="filename">../Game/Bullets/MirrorImage.png</key>
@@ -2859,6 +2873,8 @@
             <key type="filename">../Game/Bullets/SummonSkeleton.png</key>
             <key type="filename">../Game/Bullets/SummonSkeletons.png</key>
             <key type="filename">../Game/Bullets/SummonZombies.png</key>
+            <key type="filename">../Game/Bullets/Taunt.png</key>
+            <key type="filename">../Game/Bullets/TauntHit.png</key>
             <key type="filename">../Game/Bullets/Thunderstorm.png</key>
             <key type="filename">../Game/Bullets/ThunderstormHit.png</key>
             <key type="filename">../Game/Bullets/TidalBall.png</key>
