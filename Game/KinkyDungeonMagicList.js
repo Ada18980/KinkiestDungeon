@@ -2035,8 +2035,8 @@ let KinkyDungeonSpellListEnemies = [
 		}}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
 	{name: "Slippery", sfx: "FireSpell", school: "Elements", manacost: 0, components: ["Verbal"], mustTarget: true, selfTargetOnly: true, level:1, type:"buff", channel: 4,
 		buffs: [
-			{id: "Slippery", aura: "#00ff00", type: "BoostStruggle", duration: 10, power: 0.1, player: true, enemies: false, tags: ["struggle"]},
-		], onhit:"", time:10, power: 0, range: 2, size: 1, damage: ""},
+			{id: "Slippery", aura: "#00ff00", type: "BoostStruggle", duration: 100, power: 0.1, player: true, enemies: false, tags: ["struggle"]},
+		], onhit:"", time:100, power: 0, range: 2, size: 1, damage: ""},
 	{name: "Cutting", sfx: "FireSpell", school: "Elements", manacost: 0, components: ["Verbal"], mustTarget: true, selfTargetOnly: true, level:1, type:"buff", channel: 4,
 		buffs: [
 			{id: "Cutting", aura: "#ffff00", type: "BoostCutting", duration: 10, power: 0.3, player: true, enemies: false, tags: ["struggle"]},
