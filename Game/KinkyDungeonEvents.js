@@ -6455,6 +6455,74 @@ let KDEventMapBullet = {
 		},
 	},
 	"bulletDestroy": {
+		"MagicMissileChannel": (e, b, data) => {
+			// If we manage to do the whole thing
+			if (data.outOfTime && b.bullet?.source) {
+				let enemy = KinkyDungeonFindID(b.bullet.source);
+				if (enemy && KinkyDungeonCanCastSpells(enemy)) {
+					// Spawn many magic missiles!
+
+					let nearby = (e.always || enemy.aware || enemy.vp > 0.5) ? KDNearbyEnemies(enemy.x, enemy.y, e.dist, enemy) : [];
+
+					let player = KinkyDungeonPlayerEntity;
+					let playerdist = KDistChebyshev(enemy.x - player.x, enemy.y - player.y);
+					if (nearby.length > 0) {
+						nearby = nearby.filter((en) => {
+							return KDistChebyshev(enemy.x - en.x, enemy.y - en.y) < playerdist;
+						});
+						if (nearby.length > 0) {
+							player = nearby[Math.floor(KDRandom() * nearby.length)];
+						}
+					}
+
+
+					let origin = enemy;
+					let spell = KinkyDungeonFindSpell(e.spell, true);
+					for (let i = 0; i < (e.count || 1); i++) {
+						let bb = KinkyDungeonLaunchBullet(origin.x, origin.y,
+							player.x,player.y,
+							0.5, {noSprite: spell.noSprite, faction: KDGetFaction(enemy), name:spell.name, block: spell.block, width:spell.size, height:spell.size, summon:spell.summon,
+								targetX: player.x, targetY: player.y, cast: spell.spellcast ? Object.assign({}, spell.spellcast) : undefined,
+								source: enemy.id, dot: spell.dot,
+								bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
+								bulletSpin: spell.bulletSpin,
+								effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
+								effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
+								passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
+								pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
+								lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: spell.range, hit:spell.onhit,
+								damage: {evadeable: spell.evadeable, noblock: spell.noblock,
+									ignoreshield: spell?.ignoreshield,
+									shield_crit: spell?.shield_crit, // Crit thru shield
+									shield_stun: spell?.shield_stun, // stun thru shield
+									shield_freeze: spell?.shield_freeze, // freeze thru shield
+									shield_bind: spell?.shield_bind, // bind thru shield
+									shield_snare: spell?.shield_snare, // snare thru shield
+									shield_slow: spell?.shield_slow, // slow thru shield
+									shield_distract: spell?.shield_distract, // Distract thru shield
+									shield_vuln: spell?.shield_vuln, // Vuln thru shield
+
+									damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, desireMult: spell.desireMult, bindEff: spell.bindEff,
+									bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, false, enemy.x, enemy.y);
+						bb.visual_x = origin.x;
+						bb.visual_y = origin.y;
+						bb.xx += (-1 + KDRandom() * 2);
+						bb.yy += (-1 + KDRandom() * 2);
+						bb.x = Math.round(bb.xx);
+						bb.y = Math.round(bb.yy);
+
+						let dx = bb.xx - enemy.x;
+						let dy = bb.yy - enemy.y;
+						bb.vx = dx * 0.8;
+						bb.vy = dy * 0.8;
+
+					}
+
+
+					KinkyDungeonSetEnemyFlag(enemy, "MagicMissileChannelFinished", e.time);
+				}
+			}
+		},
 		"KineticLance": (e, b, data) => {
 			if (!KinkyDungeonPlayerWeapon) return;
 			let point = {x: b.x, y: b.y};
@@ -6877,6 +6945,29 @@ let KDEventMapBullet = {
 		},
 	},
 	"bulletTick": {
+
+		"MagicMissileChannel": (e, b, data) => {
+			if (b.bullet?.source) {
+				let enemy = KinkyDungeonFindID(b.bullet.source);
+				if (enemy) {
+					if (KinkyDungeonCanCastSpells(enemy)) {
+						KinkyDungeonSetEnemyFlag(enemy, "nocast", 2);
+						KinkyDungeonApplyBuffToEntity(enemy, {id: "ChannelSlow", type: "MoveSpeed", duration: 1, power: -1, tags: ["speed"]});
+						b.x = enemy.x;
+						b.y = enemy.y;
+						b.xx = enemy.x;
+						b.yy = enemy.y;
+						return; // Dont cancel the bullet
+					}
+				}
+			}
+			let ind = KDMapData.Bullets.indexOf(b);
+			if (ind > -1)
+				KDMapData.Bullets.splice(ind, 1);
+			KinkyDungeonBulletsID[b.spriteID] = null;
+			KinkyDungeonUpdateSingleBulletVisual(b, true, 0);
+			KinkyDungeonSendEvent("bulletDestroy", {bullet: b, target: undefined, outOfRange:false, outOfTime: false});
+		},
 		"FlashPortal": (e, b, data) => {
 			let player = KinkyDungeonPlayerEntity;
 			if (player) {
@@ -6984,7 +7075,6 @@ let KDEventMapBullet = {
 			}
 		},
 	},
-
 	"afterBulletHit": {
 		"Phase": (e, b, data) => {
 			let player = KinkyDungeonPlayerEntity;
@@ -7452,6 +7542,16 @@ let KDEventMapEnemy = {
 		},
 	},
 	"afterDamageEnemy": {
+		"FreeWardenPrisoners": (e, enemy, data) => {
+			for (let en of KDMapData.Entities) {
+				if (en.Enemy.tags?.warden && KDGetFaction(en) != "Player") {
+					en.hostile = 300;
+					en.aware = true;
+					KinkyDungeonSetEnemyFlag(en, "imprisoned", 0);
+				}
+
+			}
+		},
 		"bleedEffectTile": (e, enemy, data) => {
 			if (data.dmg > 0 && enemy == data.enemy) {
 				if (!e.chance || KDRandom() < e.chance) {

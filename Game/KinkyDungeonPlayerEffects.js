@@ -236,6 +236,27 @@ let KDPlayerEffects = {
 		}
 		return {sfx: "Miss", effect: false};
 	},
+	"MagicMissile": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+			if (!dmg.happened) return {sfx: "Shield", effect: false};
+			let restrain = KDPlayerEffectRestrain(spell, playerEffect.count, ["wardenCuffs"], "Warden", false, false, false, false);
+			if (restrain.length > 0) {
+				KinkyDungeonSendTextMessage(7, TextGet("KDMagicMissileBind").KDReplaceOrAddDmg( dmg.string), "yellow", 1);
+				return {sfx: "MagicSlash", effect: true};
+			} else if (!KDPlayerIsStunned()) {
+				KinkyDungeonSendTextMessage(10, TextGet("KDMagicMissileStun").KDReplaceOrAddDmg( dmg.string), "yellow", 4);
+				KDStunTurns(3);
+				KinkyDungeonSetFlag("pinned", 5);
+				return {sfx: "MagicSlash", effect: true};
+			} else {
+				KinkyDungeonSendTextMessage(2, TextGet("KDMagicMissileHit").KDReplaceOrAddDmg( dmg.string), "red", 1);
+				return {sfx: "Shield", effect: true};
+			}
+
+		}
+		return {sfx: "Miss", effect: false};
+	},
 	"EncaseBolt": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);

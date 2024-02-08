@@ -2618,6 +2618,35 @@ let KinkyDungeonSpellListEnemies = [
 		speed: 4, playerEffect: {name: "RestrainingBolt", count: 1, dist: 1, sfx: "MagicSlash"}},
 
 
+	{enemySpell: true, name: "MagicMissileChannel", bindType: "Magic", color: "#ffaa77", sfx: "MagicSlash", landsfx: "MagicSlash", manacost: 1, components: ["Arms"],
+		specialCD: 8,
+		hitSpin: 0.5, bulletSpin: 0.5,
+		pierceEnemies: true,
+		hideWarnings: true,
+		selfcast: true,
+		castCondition: "MagicMissileChannel",
+		events: [
+			{type: "MagicMissileChannel", trigger: "bulletTick"},
+			{type: "MagicMissileChannel", trigger: "bulletDestroy", count: 8, spell: "MagicMissile2", dist: 10, time: 21},
+		],
+		level:1, type:"inert", onhit:"aoe", delay: 6, power: 0, range: 10, size: 3, lifetime: 1, damage: "inert"
+	},
+
+
+	{enemySpell: true, name: "MagicMissile", bindType: "Magic", color: "#ffaa77", sfx: "MagicSlash", landsfx: "MagicSlash", manacost: 4, components: ["Arms"],
+		faction: "Warden",
+		hitSpin: 1, bulletSpin: 1,
+		bulletLifetime: 12,
+		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2.4, delay: 0, range: 12, damage: "arcane", speed: 2, playerEffect: {name: "MagicMissile", count: 2, dist: 1, sfx: "MagicSlash"}},
+	{enemySpell: true, name: "MagicMissile2", bindType: "Magic", color: "#ffaa77", sfx: "MagicSlash", landsfx: "MagicSlash", manacost: 4, components: ["Arms"],
+		faction: "Warden",
+		hitSpin: 2, bulletSpin: 1.4,
+		minRange: 0,
+		bulletLifetime: 12,
+		noDirectionOffset: true,
+		events: [{type: "RubberMissileHoming", trigger: "bulletAfterTick", power: 0.9, dist: 15, count: 0.2, limit: 0},],
+		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2.4, delay: 0, range: 12, damage: "arcane", speed: 2, playerEffect: {name: "MagicMissile", count: 1, dist: 1, sfx: "MagicSlash"}},
+
 	{enemySpell: true, name: "OneBarMissile", bindType: "Metal", color: "#ffffff", sfx: "MagicSlash", landsfx: "MagicSlash", manacost: 6, components: ["Arms"], specialCD: 25,
 		noTerrainHit: true,
 		pierceEnemies: true,
@@ -3423,6 +3452,9 @@ let KDCastConditions = {
 		}
 		else if (target?.specialBoundLevel?.Rope > 0) return true;
 		return false;
+	},
+	"MagicMissileChannel": (enemy, target) => {
+		return !KDEnemyHasFlag(enemy, "MagicMissileChannelFinished");
 	},
 };
 

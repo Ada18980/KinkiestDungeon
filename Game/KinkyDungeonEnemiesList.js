@@ -4488,7 +4488,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, shrines: ["Illusion"], floors:KDMapInit([]), dropTable: [{name: "Ectoplasm", chance: 0.6, weight: 10}],},
 
 	{name: "WardenArcher", nameList: "dragonheart", outfit: "Bandit", style: "GreenHair", bound: "WardenArcher", color: "#88ff88",
-		playLine: "Adventurer_Switch_Fighter",
+		playLine: "Adventurer_Sub_Fighter",
 		armor: -0.5,
 		tags: KDMapInit(["opendoors", "warden", "miniboss", "leashing", "human", "melee", "leatherRestraints",
 			"leatherRestraintsHeavy", "gropeweakness", "iceweakness", "holyresist", "coldresist", "jail", "jailer", "submissive"]), cohesion: 0.9,
@@ -4502,9 +4502,10 @@ let KinkyDungeonEnemies = [
 		visionRadius: 9.5, maxhp: 40, minLevel:12, weight:1, movePoints: 2, attackPoints: 3, attack: "SpellMeleeWillBindLock",
 		attackWidth: 2.5, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 1,
 		stamina: 10,
-		preferDodge: true, maxblock: 0,
+		preferDodge: true, maxblock: 0, maxdodge: 2,
 		events: [
 			{trigger: "tick", type: "BossAssignFaction", kind: "Warden"},
+			{trigger: "afterDamageEnemy", type: "FreeWardenPrisoners"},
 		],
 		attackLock: "Red_Hi",
 		terrainTags: {}, shrines: [], floors:KDMapInit([]),
@@ -4527,9 +4528,10 @@ let KinkyDungeonEnemies = [
 		visionRadius: 9.5, maxhp: 50, minLevel:12, weight:1, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeWillBindLock",
 		attackWidth: 3, attackRange: 1, power: 3, dmgType: "pain", fullBoundBonus: 1,
 		stamina: 7,
-		preferDodge: true, maxblock: 0,
+		preferDodge: true, maxblock: 0, maxdodge: 1,
 		events: [
 			{trigger: "tick", type: "BossAssignFaction", kind: "Warden"},
+			{trigger: "afterDamageEnemy", type: "FreeWardenPrisoners"},
 		],
 		attackLock: "Red_Hi",
 		terrainTags: {}, shrines: [], floors:KDMapInit([]),
@@ -4537,7 +4539,7 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "WardenMage", nameList: "dragonheart", outfit: "AdventurerSub", style: "BlueHair", bound: "WardenMage", color: "#8888ff",
-		playLine: "Adventurer_Switch_Fighter",
+		playLine: "Adventurer_Brat_Fighter",
 		armor: -1,
 		Resistance: {
 			block_magic: 2.0,
@@ -4548,15 +4550,16 @@ let KinkyDungeonEnemies = [
 		faction: "Boss",
 		dontKiteWhenDisabled: true,
 
-		spells: ["ZombieOrb"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, projectileTargeting: true, accuracy: 1.5,
+		spells: ["MagicMissile", "MagicMissileChannel", "MagicMissileChannel"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, projectileTargeting: true, accuracy: 1.5,
 
 		followLeashedOnly: true, ignorechance: 0, followRange: 2.5, AI: "hunt", guardChance: 0.0,
-		visionRadius: 9.5, maxhp: 30, minLevel:12, weight:1, movePoints: 2, attackPoints: 3, attack: "SpellMeleeWillBindLockAll",
+		visionRadius: 9.5, maxhp: 30, minLevel:12, weight:1, movePoints: 1.4, attackPoints: 3, attack: "SpellMeleeWillBindLockAll",
 		attackWidth: 2.5, attackRange: 1, power: 3, dmgType: "tickle", fullBoundBonus: 1,
 		stamina: 4,
-		preferDodge: true, maxblock: 0,
+		preferDodge: true, maxblock: 0, maxdodge: 1,
 		events: [
 			{trigger: "tick", type: "BossAssignFaction", kind: "Warden"},
+			{trigger: "afterDamageEnemy", type: "FreeWardenPrisoners"},
 		],
 		attackLock: "Purple",
 		terrainTags: {}, shrines: [], floors:KDMapInit([]),

@@ -20040,6 +20040,8 @@ KDEffectTileTooltipMotionLampDesc,"Looks like it has lighting elements inside."
 KinkyDungeonSpellOneBarMissileBind,Many bars come out of the ground and restrain you!
 KinkyDungeonSpellOneBarMissile,One Bar Missile
 KinkyDungeonSpellRestrainingBolt,Restraining Bolt
+KinkyDungeonSpellMagicMissile,Bondage Blast
+KinkyDungeonSpellMagicMissile2,Magic Missile
 KinkyDungeonSpellWardenCage,Warden's Cage
 
 NameOneBar,Restricting Bars
@@ -20054,6 +20056,12 @@ KDRestrainingBoltHit,The restraining bolt emits binding energies!
 KDRestrainingBoltKnockback,The restraining bolt flashes and pushes you backward!
 KDRestrainingBoltBind,The restraining bolt transforms into cuffs on impact!
 KDRestrainingBoltPin,The restraining bolt pins your cuffs to the wall!
+
+KDMagicMissileHit,The spell explodes into restraining energy!
+KDMagicMissileStun,The spell explodes and stuns you!
+KDMagicMissileBind,The spell congeals into restraints!
+
+KinkyDungeonSpellCastMagicMissileChannel,The mage starts channeling her energy!
 
 
 RestraintWardenArmCuffs,Warden Cuffs
