@@ -1000,11 +1000,6 @@ AddModel({
 			InheritColor: "SockLeft",
 			Invariant: true,
 		},
-		{ Name: "StripeSockLeft", Layer: "StockingRight", Pri: 1.1,
-			NoOverride: true, TieToLayer: "SockLeft",
-			Poses: ToMap([...LEGPOSES]),
-			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
-		},
 	])
 });
 AddModel({
@@ -1021,11 +1016,6 @@ AddModel({
 			Poses: ToMap(["Kneel"]),
 			InheritColor: "SockRight",
 			Invariant: true,
-		},
-		{ Name: "StripeSockRight", Layer: "StockingRight", Pri: 1.1,
-			NoOverride: true, TieToLayer: "SockRight",
-			Poses: ToMap([...LEGPOSES]),
-			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 		},
 	])
 });

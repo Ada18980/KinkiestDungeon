@@ -22,7 +22,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 			HidePoses: ToMap(["WrapArms"]),
 			DisplacementSprite: "Jacket",
-			DisplaceAmount: 60,
+			DisplaceAmount: 70,
 			DisplaceLayers: ToMap(["ArmsAll"]),
 		},
 		{ Name: "BeltsArms", Layer: "BindArmLeft", Pri: 3,
@@ -60,7 +60,7 @@ AddModel({
 			HidePoses: ToMap(["WrapChest"]),
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 			DisplacementSprite: "Jacket",
-			DisplaceAmount: 50,
+			DisplaceAmount: 70,
 			DisplaceLayers: ToMap(["ArmsAll"]),
 		},
 		{ Name: "BeltsChest", Layer: "BindChest", Pri: -10,
@@ -91,7 +91,7 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("Jacket"),
 
-		{ Name: "BinderTorsoLower", Layer: "Corset", Pri: -10,
+		{ Name: "BinderTorsoLower", Layer: "Corset", Pri: 30,
 			InheritColor: "Lower",
 			Invariant: true,
 		},
@@ -162,7 +162,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 			HidePoses: ToMap(["WrapArms"]),
 			DisplacementSprite: "Jacket",
-			DisplaceAmount: 60,
+			DisplaceAmount: 70,
 			DisplaceLayers: ToMap(["ArmsAll"]),
 		},
 		...GetModelLayers("JacketStraps"),
@@ -188,13 +188,48 @@ AddModel({
 			HidePoses: ToMap(["WrapChest"]),
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 			DisplacementSprite: "Jacket",
-			DisplaceAmount: 50,
+			DisplaceAmount: 70,
 			NoOverride: true,
 			DisplaceLayers: ToMap(["ArmsAll"]),
 		},
 		...GetModelLayers("JacketStraps"),
 	])
 });
+
+AddModel({
+	Name: "JacketHeavyBolero",
+	Folder: "Jacket",
+	Parent: "Jacket",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Jacket", "Leather"],
+	Layers: ToLayerMap([
+		{ Name: "BinderTorsoLower", Layer: "Corset", Pri: -10,
+			InheritColor: "Lower",
+			Invariant: true,
+		},
+		{ Name: "BeltsTorsoLower", Layer: "HarnessMid", Pri: -10,
+			NoOverride: true,
+			MorphPoses: {Crossed: "Crossed", Wristtie: "Wristtie", Boxtie: "Boxtie"},
+			InheritColor: "BeltsLower",
+		},
+		{ Name: "Crotch", Layer: "HarnessMid", Pri: -10.1,
+			InheritColor: "Lower",
+			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			NoOverride: true,
+			TieToLayer: "CrotchBelts",
+			Invariant: true,
+		},
+		{ Name: "CrotchBelts", Layer: "HarnessMid", Pri: -10,
+			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			InheritColor: "BeltsLower",
+			Invariant: true,
+		},
+		...GetModelLayers("JacketBolero"),
+	])
+});
+
+
 AddModel({
 	Name: "JacketLeotard",
 	Folder: "Jacket",
@@ -212,6 +247,28 @@ AddModel({
 			InheritColor: "LatexUpper",
 		},
 		{ Name: "LatexUpper", Layer: "Bodysuit", Pri: 14,
+		},
+	])
+});
+
+AddModel({
+	Name: "JacketHeavyLeotard",
+	Folder: "Jacket",
+	Parent: "Jacket",
+	TopLevel: false,
+	Restraint: true,
+	Categories: ["Restraints", "Jacket", "Leather"],
+	Layers: ToLayerMap([
+		...GetModelLayers("JacketLeotard"),
+		{ Name: "BeltsTorsoLower", Layer: "HarnessMid", Pri: -10,
+			NoOverride: true,
+			MorphPoses: {Crossed: "Crossed", Wristtie: "Wristtie", Boxtie: "Boxtie"},
+			InheritColor: "BeltsLower",
+		},
+		{ Name: "CrotchBelts", Layer: "HarnessMid", Pri: -10,
+			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			InheritColor: "BeltsLower",
+			Invariant: true,
 		},
 	])
 });

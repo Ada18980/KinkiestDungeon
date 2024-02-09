@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.1.12"
+KDVersionStr,"5.2.0"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -471,6 +471,10 @@ KinkyDungeonSpellDescriptionLockedUp3,"Locked Up is 300% effective. When Locked 
 KinkyDungeonSpellLockedUpX,Recalcitrant
 KinkyDungeonSpellDescriptionLockedUpX,"Relinquish the Locked Up perk. One time only. If you take the perk again, there is no going back."
 
+KinkyDungeonStatLivingCollars,"Living Collars"
+KinkyDungeonStatDescLivingCollars,"When getting captured with many of the same type of restraint, gain a collar that occasionally binds you with that type of restraint."
+
+
 KinkyDungeonStatNovicePet,"Novice Pet"
 KinkyDungeonStatDescNovicePet,"You can now sprint while wearing a petsuit. (Upgrades available in spell tree)"
 KinkyDungeonSpellNovicePet0,Novice Pet Perk
@@ -504,7 +508,7 @@ KinkyDungeonStatPrisoner,"Prisoner"
 KinkyDungeonStatDescPrisoner,"Start the game as a submissive prisoner wandering the halls."
 
 KinkyDungeonStatRusted,"Rusty Bolts"
-KinkyDungeonStatDescRusted,"Most traps have a 25% misfire chance."
+KinkyDungeonStatDescRusted,"Most traps have a 25% misfire chance each time you step on them."
 
 KinkyDungeonStatNoPet,"Not a Pet"
 KinkyDungeonStatDescNoPet,"Petsuits occur less often."
@@ -555,7 +559,12 @@ KinkyDungeonStatDescRobotVetoTape,"The old civilization used significantly less 
 KinkyDungeonStatSlimePref,"More Encasement"
 KinkyDungeonStatDescSlimePref,"Enemies that encase you (e.g slimes, latex cubes) will appear more frequently."
 KinkyDungeonStatSlimeOptout,"Less Encasement"
-KinkyDungeonStatDescSlimeOptout,"Fewer encasement-related enemies will appear, although this does not remove it entirely."
+KinkyDungeonStatDescSlimeOptout,"Fewer encasement-related enemies will appear, although this does not remove them entirely."
+
+KinkyDungeonStatBubblePref,"More Bubbles"
+KinkyDungeonStatDescBubblePref,"Enemies that use bubbles (e.g. aqua slimes, water witches) will appear more frequently."
+KinkyDungeonStatBubbleOptout,"Less Bubbles"
+KinkyDungeonStatDescBubbleOptout,"Fewer bubble-related enemies will appear, although this does not remove them entirely."
 
 
 
@@ -590,7 +599,7 @@ KinkyDungeonCantUsePotionsKneel,You kneel down so you can reach the potion with 
 KinkyDungeonStatIncantation,"Can't Hear You!"
 KinkyDungeonStatDescIncantation,"Being gagged blocks you from casting verbal spells regardless of gag power."
 KinkyDungeonStatSmoothTalker,"Smooth Talker"
-KinkyDungeonStatDescSmoothTalker,"Being gagged does not increase your miscast chance for verbal spells unless fully gagged."
+KinkyDungeonStatDescSmoothTalker,"Being gagged does not increase your miscast chance for verbal spells unless fully gagged, and reduces gag power by 20%."
 
 KinkyDungeonStatUnmasked,"Unmasked"
 KinkyDungeonStatDescUnmasked,"Hoods and full-face covering masks do not appear, but blindfolds are more powerful."
@@ -1177,6 +1186,10 @@ KinkyDungeonInventoryItemObsidian,Shadow Latex Dress
 KinkyDungeonInventoryItemObsidianDesc,"A minidress made from shadow latex, a favorite of otherwordly patrons."
 KinkyDungeonInventoryItemObsidianDesc2,"Resistant to the elements, but is infused with crystals that amplify psychic damage to yourself."
 
+KinkyDungeonInventoryItemElementalDress,Elemental Slave Dress
+KinkyDungeonInventoryItemElementalDressDesc,"A minidress made to adorn mortal slaves in the elemental planes."
+KinkyDungeonInventoryItemElementalDressDesc2,"Resistant to the elements, but is infused with crystals that amplify psychic damage to yourself."
+
 KinkyDungeonInventoryItemElven,Elven Dress
 KinkyDungeonInventoryItemElvenDesc,A regal minidress worn by visitors to the forest.
 KinkyDungeonInventoryItemElvenDesc2,"Not very good at insulating you from the cold."
@@ -1633,7 +1646,8 @@ KinkyDungeonHearDoorCloseFar,You hear a door being shut in the distance.
 KinkyDungeonSlimeSpread,"The slime is spreading over your body!!!"
 KinkyDungeonSlimeHarden,"The slime starts to harden over your skin..."
 
-
+KinkyDungeonLivingSpread,"The RESTRAINTNAME creates more bindings out of thin air! (+RestraintAdded)"
+KinkyDungeonLivingAppear,"A RESTRAINTNAME has appeared around your neck!  Beware of additional restraints!"
 
 NameAngel,Angel
 KillAngel,"You subdue the angel!"
@@ -2555,6 +2569,13 @@ KillWitchWater,"The water witch vanishes into a pile of ash."
 AttackWitchWaterBind,"The witch restrains you! (+RestraintAdded)"
 AttackWitchWaterLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchWater,"The witch slaps you playfully! (DamageTaken)"
+
+
+NameWitchAqua,Aqua Witch
+KillWitchAqua,"The aqua witch vanishes into a pile of ash."
+AttackWitchAquaBind,"The witch restrains you! (+RestraintAdded)"
+AttackWitchAquaLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
+AttackWitchAqua,"The witch slaps you playfully! (DamageTaken)"
 
 NameWitchIce,Ice Witch
 KillWitchIce,"The ice witch vanishes into a pile of ash."
@@ -3556,6 +3577,9 @@ RestraintHighsecBoxbinderDesc2,"Made of a flexible, yet durable material, it's g
 RestraintHighsecStraitjacket,High-Security Straitjacket
 RestraintHighsecStraitjacketDesc,"A straitjacket enclosing your hands and arms completely, making your hands useless."
 RestraintHighsecStraitjacketDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
+RestraintHighsecTransportjacket,High-Security Transport Jacket
+RestraintHighsecTransportjacketDesc,"This jacket goes over a straitjacket to keep you from struggling out of it."
+RestraintHighsecTransportjacketDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
 RestraintHighsecLegbinder,High-Security Legbinder
 RestraintHighsecLegbinderDesc,"An mythril legbinder enclosing your legs, making it difficult to move."
 RestraintHighsecLegbinderDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
@@ -3684,6 +3708,10 @@ RestraintDuctTapeFeetMummyDesc2,"It clings, almost of its own accord, but seems 
 RestraintDuctTapeLegsMummy,Charm Wrapping (Legs)
 RestraintDuctTapeLegsMummyDesc,"A layer of faintly magic ribbon wrapped tight around your thighs."
 RestraintDuctTapeLegsMummyDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
+RestraintDuctTapeCollar,Living Charm Collar
+RestraintDuctTapeCollarDesc,"This collar is designed to make sure its wearer does not escape their charms."
+RestraintDuctTapeCollarDesc2,"It will occasionally cause charms to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of charms you have on you."
+
 
 RestraintPanelGag,Leather Panel Gag
 RestraintPanelGagDesc,"A gag that seals your lips tightly and stuffs your mouth with a ball."
@@ -3736,6 +3764,9 @@ RestraintMysticDuctTapeBootsDesc2,"It clings, almost of its own accord, but seem
 RestraintMysticDuctTapeLegsMummy,Blessed Wrappings (Legs)
 RestraintMysticDuctTapeLegsMummyDesc,"A layer of magic embalming ribbon wrapped tight around your thighs."
 RestraintMysticDuctTapeLegsMummyDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
+RestraintMysticDuctTapeCollar,Living Blessed Wrappings Collar
+RestraintMysticDuctTapeCollarDesc,"This collar is designed to make sure its wearer does not escape their wrappings."
+RestraintMysticDuctTapeCollarDesc2,"It will occasionally cause blessed wrappings to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of blessed wrappings you have on you."
 
 
 RestraintAutoTapeHands,Autotape (Hands)
@@ -3759,6 +3790,10 @@ RestraintAutoTapeBootsDesc2,"It's very sticky and tough but you could probably g
 RestraintAutoTapeMouth,Autotape (Mouth)
 RestraintAutoTapeMouthDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
 RestraintAutoTapeMouthDesc2,"It's very sticky and tough but you could probably get a knife through it."
+RestraintAutoTapeCollar,Living Auto Tape Collar
+RestraintAutoTapeCollarDesc,"This collar is designed to make sure its wearer does not escape their tape."
+RestraintAutoTapeCollarDesc2,"It will occasionally cause tape to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of tape you have on you."
+
 
 RestraintStuffing,Stuffing
 RestraintStuffingDesc,"A stuffing of cloth."
@@ -4057,6 +4092,9 @@ RestraintWolfAnkleCuffs2Desc2,"Looks like you got yourself in trouble."
 RestraintWolfHarness,Training Harness
 RestraintWolfHarnessDesc,"A harness that keeps a wolfgirl's suit together. It makes escaping more difficult."
 RestraintWolfHarnessDesc2,"While it is weatherproof and rugged, its straps are merely nylon."
+RestraintWolfMittens,Training Mittens
+RestraintWolfMittensDesc,"When wolfgirls won't keep those pesky claws in line, these will make sure she can't cause too much trouble."
+RestraintWolfMittensDesc2,"Made from strong reinforced fabric, your claws won't do anything to these mittens."
 RestraintWolfBallGag,Training Gag
 RestraintWolfBallGagDesc,"A gag used to prevent wolfgirls from biting their owners."
 RestraintWolfBallGagDesc2,"It is reinforced with steel cables, so getting it off will be tricky."
@@ -4134,6 +4172,9 @@ RestraintComfyStraitjacketDesc2,It feels tight but is actually made of an ethere
 RestraintLatexStraitjacket,Latex Jacket
 RestraintLatexStraitjacketDesc,A tight jacket that keeps your arms completely useless.
 RestraintLatexStraitjacketDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
+RestraintLatexTransportjacket,Latex Transport Jacket
+RestraintLatexTransportjacketDesc,This jacket goes over a straitjacket to keep you from struggling out of it.
+RestraintLatexTransportjacketDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 RestraintLatexArmbinder,Latex Armbinder
 RestraintLatexArmbinderDesc,A tight armbinder that pins your arms tightly behind your back, enclosed completely.
 RestraintLatexArmbinderDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
@@ -4152,6 +4193,9 @@ RestraintLatexCorsetDesc2,"It has too much grip to struggle out of, but is made 
 RestraintLatexCatsuit,Latex Catsuit
 RestraintLatexCatsuitDesc,"A skintight suit that's stretched on tight. It adheres to latex restraints making struggling more difficult."
 RestraintLatexCatsuitDesc2,"Blue latex is silky smooth, very stretchy, and very good at adhering to itself."
+RestraintLatexMittens,Latex Mittens
+RestraintLatexMittensDesc,"A pair of mittens keep your hands out of trouble. They adhere to latex restraints making struggling more difficult."
+RestraintLatexMittensDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 
 RestraintLatexCube,Latex Cube
 RestraintLatexCubeDesc,A gelatinous cube that engulfed you at some point in the past.
@@ -4159,6 +4203,9 @@ RestraintLatexCubeDesc2,It seems quite content staying where it is.
 RestraintSlimeBubble,Slime Bubble
 RestraintSlimeBubbleDesc,A squishy and sticky bubble that you can't get out of!
 RestraintSlimeBubbleDesc2,It will slow you down severely but can be popped if you can reach a knife...
+RestraintLatexSphere,Latex Sphere
+RestraintLatexSphereDesc,A giant inflatable sphere that compresses you and leaves you helpless...
+RestraintLatexSphereDesc2,You can't see out of it nor can you control its movement. If only you could puncture it!
 RestraintBubble,Bubble
 RestraintBubbleDesc,A squishy bubble that you can't get out of!
 RestraintBubbleDesc2,It will slow you down severely but can be popped if you can reach a knife...
@@ -4333,6 +4380,9 @@ KinkyDungeonUnLinkScaleAnkleCuffs3,"Your ankle cuff chain loosens!"
 RestraintMaidJacket,Maid Jacket
 RestraintMaidJacketDesc,"A bolero jacket keeping your arms pinned snugly. You can't even move them."
 RestraintMaidJacketDesc2,"There is no hope of struggling out. Better hope you can cut it..."
+RestraintMaidTransportJacket,Maid Transport Jacket
+RestraintMaidTransportJacketDesc,"A bolero transport jacket keeping your arms pinned snugly. You can't even move them."
+RestraintMaidTransportJacketDesc2,"There is no hope of struggling out. Better hope you can cut it..."
 RestraintMaidDress,Devious Maid Costume
 RestraintMaidDressDesc,"A devious maid outfit that forces the arms into an elbows-touching position."
 RestraintMaidDressDesc2,"Makes sure you focus on your work and not fooling around."
@@ -4369,6 +4419,9 @@ RestraintShadowLatexHeelsDesc2,"The material is stronger than leather, and flexe
 RestraintShadowLatexStraitjacket,Shadow Jacket
 RestraintShadowLatexStraitjacketDesc,"A tight straitjacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
 RestraintShadowLatexStraitjacketDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
+RestraintShadowLatexTransportjacket,Shadow Transport Jacket
+RestraintShadowLatexTransportjacketDesc,"A tight transport jacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
+RestraintShadowLatexTransportjacketDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
 RestraintShadowLatexArmbinder,Shadow Armbinder
 RestraintShadowLatexArmbinderDesc,"A tight armbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
 RestraintShadowLatexArmbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
@@ -4619,6 +4672,10 @@ RestraintRibbonHandsDesc2,"They are wrapped tightly around your hands with a bow
 RestraintRibbonMouth,Magic Ribbons (Gag)
 RestraintRibbonMouthDesc,"Those ribbons will hold you tight~"
 RestraintRibbonMouthDesc2,"They are wrapped tightly around your mouth with a bow knot!"
+RestraintRibbonCollar,Living Ribbon Collar
+RestraintRibbonCollarDesc,"This collar is designed to make sure its wearer does not escape the ribbons."
+RestraintRibbonCollarDesc2,"It will occasionally cause ribbons to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of ribbons you have on you."
+
 
 RestraintIceArms,Ice (Arms)
 RestraintIceArmsDesc,"Frigid restraints made out of ice."
@@ -4664,6 +4721,10 @@ RestraintSlimeMouthDesc2,"It is an organic material that reforms around every cu
 RestraintSlimeHead,Slime (Head)
 RestraintSlimeHeadDesc,"Sticky slime that adheres to your body. It reacts negatively to mana..."
 RestraintSlimeHeadDesc2,"It is an organic material that reforms around every cut you make!"
+RestraintSlimeCollar,Living Slime Collar
+RestraintSlimeCollarDesc,"This collar is designed to make sure its wearer does not escape their slime."
+RestraintSlimeCollarDesc2,"It will occasionally cause slime to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of slime you have on you."
+
 
 RestraintHardSlimeBoots,Rubber (Feet)
 RestraintHardSlimeBootsDesc,"Sticky rubber that has fused itself into a skintight layer."
@@ -4686,6 +4747,9 @@ RestraintHardSlimeMouthDesc2,"There's no struggling out now, but since it's soli
 RestraintHardSlimeHead,Rubber (Head)
 RestraintHardSlimeHeadDesc,"Sticky rubber that has fused itself into a skintight layer."
 RestraintHardSlimeHeadDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardSlimeCollar,Living Rubber Collar
+RestraintHardSlimeCollarDesc,"This collar is designed to make sure its wearer does not escape their rubber."
+RestraintHardSlimeCollarDesc2,"It will occasionally cause rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you."
 
 
 
@@ -4711,6 +4775,10 @@ RestraintProtoSlimeMouthDesc2,"It is an organic material that reforms around eve
 RestraintProtoSlimeHead,Proto-Slime (Head)
 RestraintProtoSlimeHeadDesc,"It seems to be a precursor to the slimes everyone is familiar with?"
 RestraintProtoSlimeHeadDesc2,"It is an organic material that reforms around every cut you make!"
+RestraintProtoSlimeCollar,Living Proto-Slime Collar
+RestraintProtoSlimeCollarDesc,"This collar is designed to make sure its wearer does not escape the slime."
+RestraintProtoSlimeCollarDesc2,"It will occasionally cause proto-slime to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of proto-slime you have on you."
+
 
 RestraintHardProtoSlimeBoots,Proto-Rubber (Feet)
 RestraintHardProtoSlimeBootsDesc,"Sticky slime that has fused itself into a skintight layer."
@@ -4733,6 +4801,9 @@ RestraintHardProtoSlimeMouthDesc2,"There's no struggling out now, but since it's
 RestraintHardProtoSlimeHead,Proto-Rubber (Head)
 RestraintHardProtoSlimeHeadDesc,"Sticky slime that has fused itself into a skintight layer."
 RestraintHardProtoSlimeHeadDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardProtoSlimeCollar,Living Proto-Rubber Collar
+RestraintHardProtoSlimeCollarDesc,"This collar is designed to make sure its wearer does not escape the rubber."
+RestraintHardProtoSlimeCollarDesc2,"It will occasionally cause proto-rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of proto-rubber you have on you."
 
 
 
@@ -6601,6 +6672,7 @@ KinkyDungeonGagStruggle2,Hmmmmph~!!
 KinkyDungeonBlindSelf,"You are blinded!"
 KinkyDungeonDamageSelf,"You took DamageTaken damage!"
 KinkyDungeonSlime,"You get caught in sticky slime!"
+KinkyDungeonSlimeBubble,"You get caught in a sticky slime bubble!"
 KinkyDungeonMiniSlime,"The slime ball sticks to you!"
 KinkyDungeonMiniSlime2,"The slime ball sticks to you and slows you!"
 KinkyDungeonShock,"You feel a powerful sensation run through your body!"
@@ -6658,6 +6730,7 @@ KinkyDungeonSpellTrapCrystal,Unstable Crystals
 KinkyDungeonSpellTrapLustCloud,Gas Trap
 KinkyDungeonSpellTrapSCloud,Gas Trap
 KinkyDungeonSpellTrapLatex,Latex Engulfment
+KinkyDungeonSpellTrapLatexBubble,Latex Engulfment
 KinkyDungeonSpellTrapSleepDart,Sleep Dart
 KinkyDungeonSpellSleepDart,Sleep Dart
 
@@ -6676,6 +6749,7 @@ KinkyDungeonSpellCastTrapShadowLatex,"Shadows constrict around you!"
 KinkyDungeonSpellCastTrapObsidian,"An otherworldly sigil appears below you!"
 KinkyDungeonSpellCastTrapCrystal,"Crystals rise up around you!"
 KinkyDungeonSpellCastTrapLatex,"Something shiny seems to be stretched out over the floor!"
+KinkyDungeonSpellCastTrapLatexBubble,"A rubber bubble starts forming around you!"
 KinkyDungeonSpellCastTrapLustCloud,"You hear the sound of glass breaking, and a cloud of pink gas rises around you!"
 KinkyDungeonSpellCastTrapSCloud,"You hear the sound of glass breaking, and a cloud of green gas rises around you!"
 KinkyDungeonTrapBindingsCharmWeak,"The charms stick themselves all over your body!"
@@ -6689,6 +6763,7 @@ KinkyDungeonTrapBindingsLeatherWeak,"The leather restraints attach themselves to
 KinkyDungeonTrapBindingsCableWeak,"The high-tech cables wrap themselves over your body!"
 KinkyDungeonTrapBindingsSlimeWeak,"The slime pours all over you!"
 KinkyDungeonTrapBindingsLatex,"A giant cube of latex engulfs you!"
+KinkyDungeonTrapBindingsLatexBubble,"A giant bubble of latex engulfs you and inflates, sealing you in!"
 KinkyDungeonTrapBindingsObsidian,"A sinister power wraps itself around you and solidifies!"
 KinkyDungeonTrapBindingsShadowLatex,"Dark magics swirl around you and solidify into shiny rubber!"
 KinkyDungeonTrapBindingsCrystal,"Crystals grow and spread across your limbs!"
@@ -7681,61 +7756,61 @@ KinkyDungeonRemindJailChaseDollmakerCommandAssault,""
 KinkyDungeonRemindJailChaseDollmakerCommandBlock,""
 
 
-KinkyDungeonRemindJailPlayHelplessTheWarden0,"Release me at once."
-KinkyDungeonRemindJailPlayHelplessTheWarden1,"This is unacceptable!"
-KinkyDungeonRemindJailPlayHelplessTheWarden2,"Guards! Guards... Guards? Well drat."
-KinkyDungeonRemindJailPlayBratTheWarden0,"Catch me if you can!"
-KinkyDungeonRemindJailPlayBratTheWarden1,"You'll never get away with this!"
-KinkyDungeonRemindJailPlayBratTheWarden2,"I don't want to be your slave!"
-KinkyDungeonRemindJailPlaySubTheWarden0,"I've been naughty, looks like I need to be punished..."
+KinkyDungeonRemindJailPlayHelplessTheWarden0,"This wasn't supposed to happen."
+KinkyDungeonRemindJailPlayHelplessTheWarden1,"The Collector has become the Collected."
+KinkyDungeonRemindJailPlayHelplessTheWarden2,"Fine, you win!"
+KinkyDungeonRemindJailPlayBratTheWarden0,"Cover me you brats!"
+KinkyDungeonRemindJailPlayBratTheWarden1,"They're coming for me!"
+KinkyDungeonRemindJailPlayBratTheWarden2,"Stay away!"
+KinkyDungeonRemindJailPlaySubTheWarden0,"Time for a taste of my own medicine..."
 KinkyDungeonRemindJailPlaySubTheWarden1,"I've been a bad girl, won't you do something about it?"
 KinkyDungeonRemindJailPlaySubTheWarden2,"Mmmph... maybe I talk too much..."
-KinkyDungeonRemindJailPlayTheWarden0,"Look, another one of my dolls~"
-KinkyDungeonRemindJailPlayTheWarden1,"Come to me, my lovely thing~"
-KinkyDungeonRemindJailPlayTheWarden2,"I want to hear you moan~"
-KinkyDungeonRemindJailPlayTheWardenStruggle,"Perhaps we need to make things tighter?"
-KinkyDungeonRemindJailPlayTheWardenLeash,"Come with me, dear~"
-KinkyDungeonRemindJailPlayTheWardenFree,"You've had too much freedom."
-KinkyDungeonRemindJailPlayTheWardenLoot,"Leave that for the cleaning robots."
-KinkyDungeonRemindJailPlayTheWardenKey,"Skulking around, are we?"
-KinkyDungeonRemindJailChaseTheWardenAlert,"I see you."
-KinkyDungeonRemindJailChaseTheWardenAttack0,"There's no point in fighting."
-KinkyDungeonRemindJailChaseTheWardenAttack1,"How ineffectual."
-KinkyDungeonRemindJailChaseTheWardenAttack2,"That's cute."
-KinkyDungeonRemindJailChaseTheWardenSpell0,"Your magical potential is impressive~"
-KinkyDungeonRemindJailChaseTheWardenSpell1,"A magnificent display of magic!"
-KinkyDungeonRemindJailChaseTheWardenSpell2,"You would make a great mana source~"
-KinkyDungeonRemindJailChaseTheWardenSpellItem,"Did you think you could outsmart me?"
-KinkyDungeonRemindJailChaseTheWardenShrine,"I am the only goddess you need."
-KinkyDungeonRemindJailChaseTheWardenChest,"Dolls shouldn't mess with things they don't understand."
-KinkyDungeonRemindJailChaseTheWardenOrb,"Oh, that's not going to help~"
-KinkyDungeonRemindJailChaseTheWardenJailbreak,"Let's take you somewhere safe~"
-KinkyDungeonRemindJailTheWardenGrab,"You won't be getting away."
-KinkyDungeonRemindJailTheWardenDisarm,"Did you think that would work?"
-KinkyDungeonRemindJailTheWardenHit,"Let's put those hands of yours away~"
-KinkyDungeonRemindJailTheWardenHitPlayer,"You are mine."
-KinkyDungeonRemindJailTheWardenMiss,"You're a fast one."
-KinkyDungeonRemindJailTheWardenBlocked,"You're a fast one."
-KinkyDungeonRemindJailTheWardenMissedMe,"Your antics amuse me~"
-KinkyDungeonRemindJailTheWardenBlockedMe,"Your antics amuse me~"
-KinkyDungeonRemindJailTheWardenLeash,"It's time for your makeover!"
-KinkyDungeonRemindJailTheWardenPull,"Come to me."
-KinkyDungeonRemindJailTheWardenStun,"A shame it ends here."
-KinkyDungeonRemindJailTheWardenPickpocket,"You won't be needing that."
-KinkyDungeonRemindJailTheWardenLock,"Tsk Tsk. I'll be keeping the keys."
-KinkyDungeonRemindJailTheWardenIntro,"I used to be an adventurer like you~ My name was PTRN..."
-KinkyDungeonRemindJailChaseTheWardenDefend0,"You don't know who you're messing with."
-KinkyDungeonRemindJailChaseTheWardenDefend1,"You won't be allowed to make that mistake twice."
-KinkyDungeonRemindJailChaseTheWardenDefend2,"I'll punish you myself."
-KinkyDungeonRemindJailChaseTheWardenDefendHonor0,"Hands off my property."
-KinkyDungeonRemindJailChaseTheWardenDefendHonor1,"Know your place, girl!"
-KinkyDungeonRemindJailChaseTheWardenDefendHonor2,"You've had your chance."
-KinkyDungeonRemindJailChaseTheWardenHonor0,"Fine, then."
-KinkyDungeonRemindJailChaseTheWardenHonor1,"Know your place!"
-KinkyDungeonRemindJailChaseTheWardenHonor2,"You've had your chance."
-KinkyDungeonRemindJailChaseTheWardenCommandDefend,""
-KinkyDungeonRemindJailChaseTheWardenCommandAssault,""
-KinkyDungeonRemindJailChaseTheWardenCommandBlock,""
+KinkyDungeonRemindJailPlayTheWarden0,"I wonder how many days we'll get to spend together!"
+KinkyDungeonRemindJailPlayTheWarden1,"You look so pretty as always, and forevermore~"
+KinkyDungeonRemindJailPlayTheWarden2,"Time for an inspection~"
+KinkyDungeonRemindJailPlayTheWardenStruggle,"There's no use in struggling, dear! I've made sure it's extra tight."
+KinkyDungeonRemindJailPlayTheWardenLeash,"Playtime is over, back to your cell~"
+KinkyDungeonRemindJailPlayTheWardenFree,"Why aren't you wearing your restraints?"
+KinkyDungeonRemindJailPlayTheWardenLoot,"I did not order you to clean~"
+KinkyDungeonRemindJailPlayTheWardenKey,"What's that you've got there?"
+KinkyDungeonRemindJailChaseTheWardenAlert,"Found you!"
+KinkyDungeonRemindJailChaseTheWardenAttack0,"I've been waiting for this~"
+KinkyDungeonRemindJailChaseTheWardenAttack1,"Show me your moves."
+KinkyDungeonRemindJailChaseTheWardenAttack2,"You'll make for a fine servant!"
+KinkyDungeonRemindJailChaseTheWardenSpell0,"Very impressive."
+KinkyDungeonRemindJailChaseTheWardenSpell1,"Yes, yes, show me what you've got!"
+KinkyDungeonRemindJailChaseTheWardenSpell2,"I've always wanted another mage."
+KinkyDungeonRemindJailChaseTheWardenSpellItem,"Tsk tsk, no silly tricks~"
+KinkyDungeonRemindJailChaseTheWardenShrine,"Now now, you don't have permission to do that~"
+KinkyDungeonRemindJailChaseTheWardenChest,"What do you think you're doing?"
+KinkyDungeonRemindJailChaseTheWardenOrb,"Typical adventurers~"
+KinkyDungeonRemindJailChaseTheWardenJailbreak,"Oh, you got out?"
+KinkyDungeonRemindJailTheWardenGrab,"Too bad~"
+KinkyDungeonRemindJailTheWardenDisarm,"That thing is dangerous, my dear~"
+KinkyDungeonRemindJailTheWardenHit,"A feisty one, aren't you~"
+KinkyDungeonRemindJailTheWardenHitPlayer,"Playtime's over~"
+KinkyDungeonRemindJailTheWardenMiss,"Very nice."
+KinkyDungeonRemindJailTheWardenBlocked,"Most impressive!"
+KinkyDungeonRemindJailTheWardenMissedMe,"You need more training!"
+KinkyDungeonRemindJailTheWardenBlockedMe,"You need more training!"
+KinkyDungeonRemindJailTheWardenLeash,"Come along now~"
+KinkyDungeonRemindJailTheWardenPull,"Come closer, I want to see your face~"
+KinkyDungeonRemindJailTheWardenStun,"What a shame."
+KinkyDungeonRemindJailTheWardenPickpocket,"What's this?"
+KinkyDungeonRemindJailTheWardenLock,"See if you can get out of that!"
+KinkyDungeonRemindJailTheWardenIntro,"I am the Warden. All things in this dungeon are subject to me."
+KinkyDungeonRemindJailChaseTheWardenDefend0,"Hands off my pet~"
+KinkyDungeonRemindJailChaseTheWardenDefend1,"Careful what you ask for~"
+KinkyDungeonRemindJailChaseTheWardenDefend2,"Be gentle with her~"
+KinkyDungeonRemindJailChaseTheWardenDefendHonor0,"Careful what you ask for~"
+KinkyDungeonRemindJailChaseTheWardenDefendHonor1,"That's my property~"
+KinkyDungeonRemindJailChaseTheWardenDefendHonor2,"Be gentle with her~"
+KinkyDungeonRemindJailChaseTheWardenHonor0,"You've made some enemies, haven't you?"
+KinkyDungeonRemindJailChaseTheWardenHonor1,"I should teach you to be a nice girl."
+KinkyDungeonRemindJailChaseTheWardenHonor2,"You need to learn some manners~"
+KinkyDungeonRemindJailChaseTheWardenCommandDefend,"This will be entertaining."
+KinkyDungeonRemindJailChaseTheWardenCommandAssault,"Show me what you've got~"
+KinkyDungeonRemindJailChaseTheWardenCommandBlock,"I'll watch~"
 
 
 KinkyDungeonRemindJailPlayHelpless0,"This is too tight..."
@@ -11333,6 +11408,7 @@ rNinjaSell,"(The SPEAKER surprises you)|Greetings, traveler.|I am looking for to
 rNinjaSellAttack,"(The SPEAKER doesn't look surprised)|That's how it is, then."
 rNinjaSellSmokeBomb,"(The SPEAKER bows)|Always be prepared."
 rNinjaSellFlashBomb,"(The SPEAKER bows)|Always be prepared."
+rNinjaSellFlashbang,"(The SPEAKER bows)|Always be extra prepared."
 rNinjaSellBomb,"(The SPEAKER bows)|A bit dangerous, but I'll take it."
 rNinjaSellBola,"(The SPEAKER bows)|A tool of the trade."
 rNinjaSellPotionInvisibility,"(The SPEAKER bows)|A most valuable find."
@@ -11350,6 +11426,7 @@ rBombSell,"(The SPEAKER looks somewhat crazed)|I'm looking for some heavy ordnan
 rBombSellAttack,"(The SPEAKER reaches for her backpack)|I'll blow you away!"
 rBombSellSmokeBomb,"(The SPEAKER shrugs)|Cute fireworks, I suppose..."
 rBombSellFlashBomb,"(The SPEAKER shrugs)|Cute fireworks, I suppose..."
+rBombSellFlashbang,"(The SPEAKER giggles)|That's what I'm talking about!"
 rBombSellBomb,"(The SPEAKER rubs her hands together)|Excellent..."
 rBombSellGunpowder,"(The SPEAKER smiles)|Yes! I can make more bombs!"
 
@@ -11361,6 +11438,7 @@ rThiefSellDiscPick,"(The SPEAKER nods)|I could use one of these!"
 rThiefSellBomb,"(The SPEAKER smiles)|For when things go south..."
 rThiefSellSmokeBomb,"(The SPEAKER smiles)|For when things go south..."
 rThiefSellFlashBomb,"(The SPEAKER smiles)|For when things go south..."
+rThiefSellFlashbang,"(The SPEAKER smiles)|You can never be too safe."
 
 rCookieSell,"(A distracted SPEAKER munches on a cookie)"
 rCookieSellAttack,"(The SPEAKER continues eating her snack)"
@@ -12307,6 +12385,10 @@ RestraintCyberMuzzle,Doll Muzzle
 RestraintCyberMuzzleDesc,"A metallic shield preventing you from removing any gags underneath."
 RestraintCyberMuzzleDesc2,"It's made of exquisite Old Civilization metals, resistant to almost all forms of damage."
 
+RestraintCyberMittens,Doll Mittens
+RestraintCyberMittensDesc,"These long mittens force your hands into fists, keeping you from using them to do anything useful."
+RestraintCyberMittensDesc2,"It is made of a strong mesh of ancient metallic fiber, with no seams in sight."
+
 RestraintCyberHeels,Doll Heels
 RestraintCyberHeelsDesc,"A pair of tall heels used to improve the aesthetics and controllability of dolls."
 RestraintCyberHeelsDesc2,"It's made of exquisite Old Civilization metals, resistant to almost all forms of damage."
@@ -12315,7 +12397,7 @@ RestraintCyberBelt,Cyber Doll Belt
 RestraintCyberBeltDesc,"A chastity belt created by the Old Civilization. Truly a marvel of science!"
 RestraintCyberBeltDesc2,"It's made of exquisite Old Civilization metals, resistant to almost all forms of damage, and padded with a advanced form of latex designed for permanent wear."
 RestraintCyberBra,Cyber Doll Bra
-RestraintCyberBraDesc,"A chastity bra created by the Old Civilization. Truly a marvel of science!"
+RestraintCyberBraDesc,"A chastity bra created by the Old Civilization. Truly a marvel of science! The flexible material over the breasts hardens when squeezed, unless allowed for by the program."
 RestraintCyberBraDesc2,"It's made of exquisite Old Civilization metals, resistant to almost all forms of damage, and padded with an advanced form of latex designed for permanent wear."
 
 
@@ -13441,6 +13523,12 @@ m_LeatherMittenRight,LeatherMittenRight
 m_LeatherMittenRight_l_LeatherRight,LeatherRight
 m_LeatherMittenRight_l_BandRight,BandRight
 m_LeatherMittenRight_l_LockRight,LockRight
+m_LatexMittenLeft,LatexMittenLeft
+m_LatexMittenLeft_l_LatexLeft,LatexLeft
+m_LatexMittenLeft_l_ZipperLeft,ZipperLeft
+m_LatexMittenRight,LatexMittenRight
+m_LatexMittenRight_l_LatexRight,LatexRight
+m_LatexMittenRight_l_ZipperRight,ZipperRight
 m_LeatherPawMittenLeft,LeatherPawMittenLeft
 m_LeatherPawMittenLeft_l_LeatherLeft,LeatherLeft
 m_LeatherPawMittenLeft_l_BandLeft,BandLeft
@@ -13467,6 +13555,27 @@ m_LeatherPawMittens_l_LeatherRight,LeatherRight
 m_LeatherPawMittens_l_BandRight,BandRight
 m_LeatherPawMittens_l_LockRight,LockRight
 m_LeatherPawMittens_l_PawRight,PawRight
+m_LatexMittens,LatexMittens
+m_LatexMittens_l_LatexLeft,LatexLeft
+m_LatexMittens_l_ZipperLeft,ZipperLeft
+m_LatexMittens_l_LatexRight,LatexRight
+m_LatexMittens_l_ZipperRight,ZipperRight
+
+m_LongMittenLeft,LongMittenLeft
+m_LongMittenLeft_l_LongLeft,LongLeft
+m_LongMittenLeft_l_BandLeft,BandLeft
+m_LongMittenLeft_l_LockLeft,LockLeft
+m_LongMittenRight,LongMittenRight
+m_LongMittenRight_l_LongRight,LongRight
+m_LongMittenRight_l_BandRight,BandRight
+m_LongMittenRight_l_LockRight,LockRight
+m_LongMittens,LongMittens
+m_LongMittens_l_LongLeft,LongLeft
+m_LongMittens_l_BandLeft,BandLeft
+m_LongMittens_l_LockLeft,LockLeft
+m_LongMittens_l_LongRight,LongRight
+m_LongMittens_l_BandRight,BandRight
+m_LongMittens_l_LockRight,LockRight
 m_ElfPanties,ElfPanties
 m_ElfPanties_l_Panties,Panties
 m_ElfTop,ElfTop
@@ -15703,6 +15812,10 @@ m_LeatherPawMittenRight_l_LeatherRight,LeatherRight
 m_LeatherPawMittenRight_l_BandRight,BandRight
 m_LeatherPawMittenRight_l_LockRight,LockRight
 m_LeatherPawMittenRight_l_PawRight,PawRight
+m_LatexMittenLeft_l_LatexLeft,LatexLeft
+m_LatexMittenLeft_l_ZipperLeft,ZipperLeft
+m_LatexMittenRight_l_LatexRight,LatexRight
+m_LatexMittenRight_l_ZipperRight,ZipperRight
 m_LeatherMittens_l_LeatherLeft,LeatherLeft
 m_LeatherMittens_l_BandLeft,BandLeft
 m_LeatherMittens_l_LockLeft,LockLeft
@@ -15717,6 +15830,25 @@ m_LeatherPawMittens_l_LeatherRight,LeatherRight
 m_LeatherPawMittens_l_BandRight,BandRight
 m_LeatherPawMittens_l_LockRight,LockRight
 m_LeatherPawMittens_l_PawRight,PawRight
+m_LatexMittens_l_LatexLeft,LatexLeft
+m_LatexMittens_l_ZipperLeft,ZipperLeft
+m_LatexMittens_l_LatexRight,LatexRight
+m_LatexMittens_l_ZipperRight,ZipperRight
+m_LongMittenLeft,LongMittenLeft
+m_LongMittenLeft_l_LongLeft,LongLeft
+m_LongMittenLeft_l_BandLeft,BandLeft
+m_LongMittenLeft_l_LockLeft,LockLeft
+m_LongMittenRight,LongMittenRight
+m_LongMittenRight_l_LongRight,LongRight
+m_LongMittenRight_l_BandRight,BandRight
+m_LongMittenRight_l_LockRight,LockRight
+m_LongMittens,LongMittens
+m_LongMittens_l_LongLeft,LongLeft
+m_LongMittens_l_BandLeft,BandLeft
+m_LongMittens_l_LockLeft,LockLeft
+m_LongMittens_l_LongRight,LongRight
+m_LongMittens_l_BandRight,BandRight
+m_LongMittens_l_LockRight,LockRight
 m_ElfPanties_l_Panties,Panties
 m_ElfTop_l_Chest,Chest
 m_ElfTop_l_Bra,Bra
@@ -17213,6 +17345,9 @@ RestraintRopeSnakeFeet3Desc2,"The ropes squeeze you gently."
 RestraintRopeSnakeToes,Toe Rope
 RestraintRopeSnakeToesDesc,"A tie keeping your toes tightly together."
 RestraintRopeSnakeToesDesc2,"The ropes squeeze you gently."
+RestraintRopeSnakeCollar,Living Rope Collar
+RestraintRopeSnakeCollarDesc,"This collar is designed to make sure its wearer does not escape their ropes."
+RestraintRopeSnakeCollarDesc2,"It will occasionally cause ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you."
 
 
 KinkyDungeonInventoryItemLore,"Notebook Page"
@@ -17351,6 +17486,9 @@ RestraintStrongMagicRopeFeet3Desc2,"The knots appear to tie themselves together 
 RestraintStrongMagicRopeToes,Spellbound Toe Rope
 RestraintStrongMagicRopeToesDesc,"A tie keeping your toes secured together."
 RestraintStrongMagicRopeToesDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeCollar,Living Spellbound Rope Collar
+RestraintStrongMagicRopeCollarDesc,"This collar is designed to make sure its wearer does not escape their ropes."
+RestraintStrongMagicRopeCollarDesc2,"It will occasionally cause spellbound ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you."
 
 
 RestraintWeakMagicRopeArmsBoxtie,Magic Boxtie
@@ -17404,6 +17542,9 @@ RestraintWeakMagicRopeFeet3Desc2,"They glow with a trace of magic."
 RestraintWeakMagicRopeToes,Magic Toe Rope
 RestraintWeakMagicRopeToesDesc,"A tie keeping your toes secured together."
 RestraintWeakMagicRopeToesDesc2,"They glow with a trace of magic."
+RestraintWeakMagicRopeCollar,Living Magic Rope Collar
+RestraintWeakMagicRopeCollarDesc,"This collar is designed to make sure its wearer does not escape their ropes."
+RestraintWeakMagicRopeCollarDesc2,"It will occasionally cause magic ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you."
 
 
 RestraintCelestialRopeArmsBoxtie,Holy Boxtie
@@ -17457,6 +17598,9 @@ RestraintCelestialRopeFeet3Desc2,"A set of ropes that emit a calm, soothing aura
 RestraintCelestialRopeToes,Holy Toe Rope
 RestraintCelestialRopeToesDesc,"A tie keeping your toes secured together."
 RestraintCelestialRopeToesDesc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
+RestraintCelestialRopeCollar,Living Holy Rope Collar
+RestraintCelestialRopeCollarDesc,"This collar is designed to make sure its wearer does not escape their ropes."
+RestraintCelestialRopeCollarDesc2,"It will occasionally cause holy ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you."
 
 
 
@@ -17511,6 +17655,10 @@ RestraintMithrilRopeFeet3Desc2,"A lightweight rope made out of woven mithril, sm
 RestraintMithrilRopeToes,Mithril Toe Ropes
 RestraintMithrilRopeToesDesc,"A tie keeping your toes secured together."
 RestraintMithrilRopeToesDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
+RestraintMithrilRopeCollar,Living Mithril Rope Collar
+RestraintMithrilRopeCollarDesc,"This collar is designed to make sure its wearer does not escape their ropes."
+RestraintMithrilRopeCollarDesc2,"It will occasionally cause mithril ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you."
+
 
 KDEffectTileTooltipPortals/DarkPortal,Dark Portal
 KDEffectTileTooltipPortals/DarkPortalDesc,"They are trying to take you somewhere!"
@@ -17555,6 +17703,10 @@ RestraintLiquidMetalMouthDesc2,"Forming a skintight layer, it will be quite diff
 RestraintLiquidMetalHead,Liquid Metal (Head)
 RestraintLiquidMetalHeadDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
 RestraintLiquidMetalHeadDesc2,"Forming a skintight layer, it will be quite difficult to escape this."
+RestraintLiquidMetalCollar,Living Liquid Metal Collar
+RestraintLiquidMetalCollarDesc,"This collar is designed to make sure its wearer does not escape the metal."
+RestraintLiquidMetalCollarDesc2,"It will occasionally cause liquid metal to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of liquid metal you have on you."
+
 
 KDRandomStairTeleportFail,"The stairs dissolve right before you!"
 KDRandomStairTeleport,"The stairs dissolve as you step onto them, pulling you with them to somewhere else."
@@ -18053,6 +18205,7 @@ RestraintResinDesc,"A layer of transparent resin derived from Green Latex. Unlik
 RestraintResinDesc2,"It's like you're an art piece! If only you had some way to blast it off..."
 
 KDWindup,"You hear a motor whirring..."
+KDLatexBubbleEngulf,"A bubble of latex surrounds you and inflates, sealing you in!"
 KDLatexBubble,A bubble of latex envelops you!
 KinkyDungeonBuffLatexBubble,"The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range."
 
@@ -18342,9 +18495,14 @@ KDKeeperFlameDash,"The flame keeper rides forth on a wave of fire!"
 KinkyDungeonSpellFlameTrail,Smoldering Trail
 KinkyDungeonSpellFlameKeeperBlade,Fiery Greatsword
 
+KinkyDungeonSpellBubbleBurst,Enchanted Bubble
+KinkyDungeonSpellBubbleBurstLatex,Latex Bubble
+KinkyDungeonSpellBubbleBurstSlime,Slime Bubble
+
 KinkyDungeonSpellVineexp,Tangling Vines
 KinkyDungeonSpellBubbleexp,Enchanted Bubble
-KDWaterBubble,A bubble of magic water envelops you!
+KDWaterBubble,A bubble of magic water starts forming around you!
+KDWaterBubbleEngulf,"The gap in the bubble closes, and you are fully sealed within the bubble!"
 KinkyDungeonBuffWaterBubble,"Magical water reduces your accuracy and slows you significantly!"
 KinkyDungeonBuffBattleTrance,You attack twice!
 
@@ -19162,7 +19320,7 @@ KinkyDungeonStatDescBurnedOut,"Casting spells reduces willpower based on how lit
 KinkyDungeonStatWinded,"Winded"
 KinkyDungeonStatDescWinded,"While below 10% stamina, evasion is severely reduced and your slow level is increased by 1."
 
-NameTimeGhost,The Lost
+NameTimeGhost,Lost One
 KillTimeGhost,"The being vanishes in front of you."
 AttackTimeGhost,"The being grabs you, causing your body parts to freeze in time!!! (DamageTaken)"
 AttackTimeGhostBind,"The being has already bound you! (+RestraintAdded)"
@@ -19272,6 +19430,8 @@ KinkyDungeonSpellRuneTrap_Latex,Latex Rune
 KinkyDungeonSpellRuneTrap_VacCube,Latex Cube Rune
 KinkyDungeonSpellRuneTrap_SlimeBubble,Slime Bubble Rune
 KinkyDungeonSpellRuneTrap_Bubble,Bubble Rune
+KinkyDungeonSpellRuneTrap_LatexSphere,Spherical Rune
+KinkyDungeonSpellRuneTrap_LatexBallSuit,Ball Rune
 KinkyDungeonSpellRuneTrap_Rubber,Rubber Rune
 KinkyDungeonSpellRuneTrap_Slime,Slime Rune
 
@@ -19330,6 +19490,8 @@ KinkyDungeonSpellMinigun,Minigun
 
 KDPalette,None
 KDPaletteJail,Prisoner
+KDPaletteMiku,Miku
+KDPaletteNevermere,Nevermere
 KDPaletteBountyhunter,Bounty Hunter
 KDPaletteDressmaker,Dressup Co.
 KDPaletteDollsmith,Dollmaker
@@ -19379,19 +19541,23 @@ KDDemoteNPC,Demote to Prisoner
 KDTeaseAttackResist_LeashGrab,The EnemyName tries to grab you!
 
 KDTeaseAttack_SquishBreast,The ENMY reaches out and gives your breast a squeeze! (DMGDLT)
+KDTeaseAttack_SquishBreastCast,The ENMY squeezes your breasts as you raise your arms for a spell! (DMGDLT)
 KDTeaseAttackResist_SquishBreast,"The ENMY reaches for you and fails!"
-KDTeaseAttack_SpankButt,The ENMY gives your butt a light slap! (DMGDLT)
-KDTeaseAttack_SpankButtMove,The ENMY gives your butt a light slap as you move past! (DMGDLT)
+KDTeaseAttack_SpankButt,The ENMY gives your butt a light slap as you cast! (DMGDLT)
+KDTeaseAttack_SpankButtSprint,The ENMY gives your butt a good slap as you sprint past! (DMGDLT)
 KDTeaseAttackResist_SpankButt,"The ENMY tries to spank you but misses!"
 KDTeaseAttack_SqueezeButt,The ENMY gives your butt a squeeze! (DMGDLT)
-KDTeaseAttack_SqueezeButtMove,The ENMY gives your butt a squeeze as you move past! (DMGDLT)
+KDTeaseAttack_SqueezeButtCast,The ENMY gives your butt a squeeze during your cast! (DMGDLT)
+KDTeaseAttack_SqueezeButtBehind,The ENMY gives your butt a squeeze from behind! (DMGDLT)
 KDTeaseAttackResist_SqueezeButt,"The ENMY reaches for you but misses!"
-KDTeaseAttack_TickleArmpits,The ENMY tickles your exposed armpits! (DMGDLT)
+KDTeaseAttack_TickleArmpits,The ENMY tickles your armpits! (DMGDLT)
+KDTeaseAttack_TickleArmpitsRaised,The ENMY tickles under your raised arms! (DMGDLT)
 KDTeaseAttackResist_TickleArmpits,"The ENMY tries to tickle you!"
 KDTeaseAttack_TickleFeet,The ENMY tickles your feet! (DMGDLT)
 KDTeaseAttackResist_TickleFeet,"The ENMY tries to tickle you!"
 KDTeaseAttack_TickleFeetRemove,The ENMY takes off your shoes and tickles your feet! (DMGDLT)
 KDTeaseAttack_Headpat,The ENMY pats you gently on the head. (DMGDLT)
+KDTeaseAttack_HeadpatCast,The ENMY pats you gently on the head as you fail your spell... (DMGDLT)
 KDTeaseAttackResist_Headpat,"The ENMY tries to pat you on the head but decides not to."
 KDTeaseAttack_ShoulderMassage,The ENMY behind you gives your shoulders a nice massage! (DMGDLT)
 KDTeaseAttackResist_ShoulderMassage,"The ENMY reaches for your shoulders but you slip free!"
@@ -19400,6 +19566,7 @@ KDTeaseAttackResist_Praise,"The ENMY blushes at your cuteness!"
 KDTeaseAttack_Insult,The ENMY makes fun of you! (DMGDLT)
 KDTeaseAttackResist_Insult,"The ENMY struggles to find words!"
 KDTeaseAttack_VibeToy,The ENMY buzzes you with her VTY! (DMGDLT)
+KDTeaseAttack_VibeToySlow,The ENMY catches you and teases you with her VTY! (DMGDLT)
 KDTeaseAttackResist_VibeToy,"The ENMY reaches for her VTY!"
 KDTeaseAttack_InsertToy,The ENMY sticks a VTY into you! (DMGDLT)
 KDTeaseAttackResist_InsertToy,"The ENMY reaches for her VTY!"
@@ -19409,6 +19576,7 @@ KDTeaseAttack_AddCarabiner,The ENMY pulls your hands together and sticks a clip 
 KDTeaseAttackResist_AddCarabiner,"The ENMY grabs your wrists but you pull away!"
 KDTeaseAttack_Disarm,The ENMY pulls your weapon away!
 KDTeaseAttackResist_Disarm,The ENMY tries to pull your weapon away but you maintain your grip!
+KDTeaseAttackResist_Pickpocket,The ENMY reaches for your inventory but can't quite reach it!
 
 
 KinkyDungeonStatMore_Armbinders,"More Armbinders"
@@ -19444,11 +19612,15 @@ RestraintWardenCollarDesc2,"You may go on your way, but only as long your freedo
 NameTheWarden1,"The Warden"
 KillTheWarden1,"The Warden disappears into a trapdoor!"
 AttackTheWarden1Bind,"The Warden forces you to kneel, and presents you with a restraint! (+RestraintAdded)"
-AttackTheWarden1,"The Warden's staff emits a flash of blinding light! (DamageTaken)"
-AttackTheWarden1Lock,"The Warden's staff emits a mystical area, which congeals into locks! (DamageTaken)"
+AttackTheWarden1,"The Warden whips you with a belt! (DamageTaken)"
+AttackTheWarden1Lock,"The Warden tosses some enchanted locks at you! (DamageTaken)"
 
 
-
+NameTheWarden2,"The Warden"
+KillTheWarden2,"The Warden falls flat on the ground, exhausted!"
+AttackTheWarden2Bind,"The Warden forces you to kneel, and presents you with a restraint! (+RestraintAdded)"
+AttackTheWarden2,"The Warden strikes you with her whip! (DamageTaken)"
+AttackTheWarden2Lock,"The Warden swings her enchanted whip and conjures locks on your body! (DamageTaken)"
 
 
 
@@ -19642,3 +19814,86 @@ rGenericAllyFlirt_LinkRequestLegsDom,"(The SPEAKER grins)|What a good girl!"
 rGenericAllyFlirt_LinkRequestLegsSub,"(The SPEAKER blushes)|Those look like fun!"
 rGenericAllyFlirt_LinkRequestLegsBrat,"(The SPEAKER smirks)|Sure thing~"
 rGenericAllyFlirt_LinkRequestLegsRobot,"(The SPEAKER beeps)|+10 social credit"
+
+
+RestraintSunglasses,Sunglasses
+RestraintSunglassesDesc,"Cool people wear these indoors."
+RestraintSunglassesDesc2,"+25 holy resist. Reduces blind effects. Prevents blinding from light adjustment."
+KinkyDungeonInventoryItemSunglasses,Sunglasses
+KinkyDungeonInventoryItemSunglassesDesc,"Cool people wear these indoors."
+KinkyDungeonInventoryItemSunglassesDesc2,"+25 holy resist. Reduces blind effects. Prevents blinding from light adjustment."
+LootSunglasses,"You find a pair of stylish shades."
+
+KDBackgroundColor,Player Background Color
+
+KDBubbleBounce,An attack causes you to bounce...
+
+KinkyDungeonMagicBubble,You find yourself enveloped in a bubble!
+KinkyDungeonMagicLatexSphere,"A sphere of latex coalesces around you, trapping you and inflating until tight!"
+KinkyDungeonMagicSlimeBubble,You find yourself enveloped in a slime bubble!
+
+
+KDDamageBubble,"Your RestraintName pops with a loud bang!"
+KDDamageModuleBubble,"Your RestraintName starts leaking air! Very, very slowly..."
+
+KDNoDamage,no damage
+
+NameAquaSlime,Aqua Slime
+KillAquaSlime,"The aqua slime melts into a wet puddle."
+AttackAquaSlime,"The aqua slime splashes against you! (DamageTaken)"
+AttackAquaSlimeBind,"The aqua slime expands into a bubble and throws itself at you! (+RestraintAdded)"
+
+RestraintBubbleHead,Aqua Bubble (Head)
+RestraintBubbleHeadDesc,A squishy bubble made of a gelatinous substance!
+RestraintBubbleHeadDesc2,"You can pop it with a sharp enough edge, if you can get your tool in the position..."
+
+RestraintBubbleArms,Aqua Bubble (Arms)
+RestraintBubbleArmsDesc,A squishy bubble made of a gelatinous substance!
+RestraintBubbleArmsDesc2,"You can pop it with a sharp enough edge, if you can get your tool in the position..."
+
+RestraintBubbleLegs,Aqua Bubble (Legs)
+RestraintBubbleLegsDesc,A squishy bubble made of a gelatinous substance!
+RestraintBubbleLegsDesc2,"You can pop it with a sharp enough edge, if you can get your tool in the position..."
+
+KDBubbleCombine,The bubbles on you combine into one big bubble!
+
+KDStairsLocked,The stairs have been locked down for NMB more turns.
+
+curseInfoLethargy,"Curse of Lethargy: Reduce distraction over time, but miscast chance is increased by AMNT%."
+curseInfoMute,"Curse of Mute: You cannot converse, and verbal spells cost AMNT% more mana."
+curseInfoClumsy,"Curse of Clumsiness: After casting an arm spell, you drop your currently held weapon."
+curseInfoDeflection,"Curse of Deflection: 50% chance for an attack to be redirected against an adjacent hostile target."
+
+KDItemMode,"Loot Recovery:"
+
+KinkyDungeonItemMode0,Enabled
+KinkyDungeonItemMode1,Disabled
+KinkyDungeonItemMode2,Partial
+KinkyDungeonItemModeDesc0,You recover important items when you advance floors.
+KinkyDungeonItemModeDesc1,"Once items are lost, they are gone for good."
+KinkyDungeonItemModeDesc2,"Each item has a 25% chance of appearing in the chest between floors."
+LootCacheLostClothes,You find a familiar adventuring outfit!
+
+KDNavMap,Navigation Map
+KDNavMap_Info,Choose a path to take by clicking on a highlighted room.
+KDNavMap_Info2,Other paths will become inaccessible.
+KDNavMap_Floor,Floor NMB
+KDNavMap_Tileset,"Tileset: "
+KDNavMap_MapMod,"Map Modifier: "
+KDNavMap_RoomType,"Map Layout: "
+KDNavMap_Faction,"Controlling Faction: "
+KDNavMap_EscapeMethod,"Main Objective: "
+KDNavMap_SideRooms,"Side Objectives: "
+
+KDSideRoom_Lair_Witch,"Magical Study"
+KDSideRoom_Lair_Hall,"Maintenance Hall"
+KDSideRoom_GoldChest,"Ancient Chest"
+KDSideRoom_AuctionHall,"Auction Hall"
+KDSideRoom_DemonShrine,"Dark Altar"
+KDSideRoom_DemonTransition,"Dimensional Rift"
+
+KDMapMod_,""
+
+KDRoomType_,""
+
+

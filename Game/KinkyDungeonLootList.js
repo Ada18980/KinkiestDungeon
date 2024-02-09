@@ -405,6 +405,9 @@ let KinkyDungeonLootTable = {
 	"lost_items": [
 		{name: "lost_items", minLevel: 0, weight:999999999999, message:"LootCacheLostItems", messageColor:"lightgreen", messageTime: 3, allFloors: true, prerequisites: ["LostItems"]},
 	],
+	"lost_clothes": [
+		{name: "lost_clothes", minLevel: 0, weight:999999999999, message:"LootCacheLostClothes", messageColor:"lightgreen", messageTime: 3, allFloors: true},
+	],
 	"cache": [
 		//{name: "lost_items", minLevel: 0, weight:999999999999, message:"LootCacheLostItems", messageColor:"lightgreen", messageTime: 3, allFloors: true, prerequisites: ["LostItems"]},
 		{name: "potions_many", minLevel: 0, weight:0.001, message:"LootPotionsMedley", messageColor:"lightblue", messageTime: 3, allFloors: true},

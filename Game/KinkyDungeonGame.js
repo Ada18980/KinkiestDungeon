@@ -374,8 +374,9 @@ function KinkyDungeonInitialize(Level, Load) {
 		KinkyDungeonConfigAppearance = false;
 	}
 	CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayer));
-	KinkyDungeonDressPlayer();
 	KinkyDungeonDrawState = "Game";
+	KinkyDungeonCheckClothesLoss = true;
+	KinkyDungeonDressPlayer();
 
 	KinkyDungeonMapIndex = {};
 	for (let map of KDDefaultJourney) {
@@ -597,7 +598,8 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	};
 	let aware = KDKickEnemies(undefined, ignoreAware); // Shuffle enemy locations
 	if (ignoreAware && aware) {
-		KinkyDungeonLoseJailKeys();
+		//KinkyDungeonLoseJailKeys();
+		KinkyDungeonSetFlag("stairslocked", 10);
 		KinkyDungeonSendActionMessage(10, TextGet("KDClimbUpTrapped"), "#ff0000", 3);
 	}
 
@@ -2512,6 +2514,63 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 				}// else if (KinkyDungeonMapGet(X, Y) == "R" || KinkyDungeonMapGet(X, Y) == "r")
 				//shrinelist.push({x:X, y:Y});
 
+
+	// If we STILL dont have enough, we expand the criteria
+	if (shrinelist <= maxcount)
+		for (let X = 1; X < width; X += 1)
+			for (let Y = 1; Y < height; Y += 1)
+				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && Math.max(Math.abs(X - KDMapData.StartPosition.x), Math.abs(Y - KDMapData.StartPosition.y)) > KinkyDungeonJailLeash
+					&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
+					// Check the 3x3 area
+					let wallcount = 0;
+					for (let XX = X-1; XX <= X+1; XX += 1)
+						for (let YY = Y-1; YY <= Y+1; YY += 1) {
+							if (!(XX == X && YY == Y) && !KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(XX, YY))) {
+								wallcount += 1;
+							}
+						}
+
+					if (wallcount == 0 // Open spaces and 1 off spaces
+						|| wallcount == 1) {
+						if (!shrinePoints.get((X+1) + "," + (Y))
+							&& !shrinePoints.get((X-1) + "," + (Y))
+							&& !shrinePoints.get((X+1) + "," + (Y+1))
+							&& !shrinePoints.get((X+1) + "," + (Y-1))
+							&& !shrinePoints.get((X-1) + "," + (Y+1))
+							&& !shrinePoints.get((X-1) + "," + (Y-1))
+							&& !shrinePoints.get((X) + "," + (Y+1))
+							&& !shrinePoints.get((X) + "," + (Y-1))
+							&& !chestPoints.get((X+1) + "," + (Y))
+							&& !chestPoints.get((X-1) + "," + (Y))
+							&& !chestPoints.get((X+1) + "," + (Y+1))
+							&& !chestPoints.get((X+1) + "," + (Y-1))
+							&& !chestPoints.get((X-1) + "," + (Y+1))
+							&& !chestPoints.get((X-1) + "," + (Y-1))
+							&& !chestPoints.get((X) + "," + (Y+1))
+							&& !chestPoints.get((X) + "," + (Y-1))
+							&& !chestPoints.get((X) + "," + (Y))
+							&& !KinkyDungeonEnemyAt(X, Y)
+							&& !(Object.keys(KDGetEffectTiles(X, Y)).length > 0)
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X-1, Y-1))
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X, Y-1))
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X+1, Y-1))
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X-1, Y))
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X+1, Y))
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X-1, Y+1))
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X, Y+1))
+							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X+1, Y+1))) {
+							shrinelist.push({x:X, y:Y, boringness: KinkyDungeonBoringGet(X, Y)});
+							shrinePoints.set(X + "," + Y, true);
+						}
+					}
+
+
+				}
+
+
+
+
+
 	// Truncate down to max chest count in a location-neutral way
 	let count = 0;
 
@@ -3907,6 +3966,9 @@ function KinkyDungeonGameKeyDown() {
 				KinkyDungeonCurrentPageInventory -= 1;
 			} else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonDrawState = "Game";
+
+				KinkyDungeonCheckClothesLoss = true;
+				KinkyDungeonDressPlayer();
 			}
 		} else if (KinkyDungeonDrawState == "Magic" && (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey)) {
 			if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
@@ -3973,6 +4035,10 @@ function KinkyDungeonGameKeyDown() {
 			}
 			else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonDrawState = "Game";
+
+
+				KinkyDungeonCheckClothesLoss = true;
+				KinkyDungeonDressPlayer();
 			}
 		} else
 		if (KinkyDungeonKeyMenu.includes(KinkyDungeonKeybindingCurrentKey)) {
@@ -4215,8 +4281,8 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				if (data.skipTurn) skip = 1;
 				KinkyDungeonChangeStamina(data.attackCost, false, 1);
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "attack", 1);
-				KinkyDungeonSetFlag("armattack", 2);
-				KinkyDungeonSetEnemyFlag(data.target, "targetedForAttack", 2);
+				KinkyDungeonSetFlag("armattack", 1);
+				KinkyDungeonSetEnemyFlag(data.target, "targetedForAttack", 4);
 			} else {
 				if ((Enemy.lifetime > 9000 || !Enemy.maxlifetime))
 					KinkyDungeonAggro(Enemy, undefined, KinkyDungeonPlayerEntity);
@@ -4578,6 +4644,7 @@ function KinkyDungeonMoveTo(moveX, moveY, willSprint, allowPass) {
 					KinkyDungeonChangeStamina(data.sprintCost, false, 1);
 					KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), "lightgreen", 2);
 					KDChangeBalance(-KDGetBalanceCost() * (0.5 + 1 * KDRandom()) * KDBalanceSprintMult*10*KDFitnessMult(), true);
+					KinkyDungeonSetFlag("sprint", 2);
 					if (KinkyDungeonSlowLevel < 2) {
 						// Move faster
 						KinkyDungeonTrapMoved = true;

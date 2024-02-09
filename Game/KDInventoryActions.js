@@ -357,7 +357,7 @@ let KDInventoryAction = {
 
 	"QuickSlot1": {
 		icon: (player, item) => {
-			return KDGameData.PreviousWeapon[0] ? "Items/" + KDGameData.PreviousWeapon[0] : "InventoryAction/Quickslot";
+			return KDGameData.PreviousWeapon[0] ? "Items/" + (KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[0]]?.template || KDGameData.PreviousWeapon[0]) : "InventoryAction/Quickslot";
 		},
 		valid: (player, item) => {
 			return true;//KDGameData.PreviousWeapon[0] != item.name;
@@ -384,7 +384,7 @@ let KDInventoryAction = {
 	},
 	"QuickSlot2": {
 		icon: (player, item) => {
-			return KDGameData.PreviousWeapon[1] ? "Items/" + KDGameData.PreviousWeapon[1] : "InventoryAction/Quickslot";
+			return KDGameData.PreviousWeapon[1] ? "Items/" + (KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[1]]?.template || KDGameData.PreviousWeapon[1]) : "InventoryAction/Quickslot";
 		},
 		valid: (player, item) => {
 			return true;//KDGameData.PreviousWeapon[0] != item.name;
@@ -411,7 +411,7 @@ let KDInventoryAction = {
 	},
 	"QuickSlot3": {
 		icon: (player, item) => {
-			return KDGameData.PreviousWeapon[2] ? "Items/" + KDGameData.PreviousWeapon[2] : "InventoryAction/Quickslot";
+			return KDGameData.PreviousWeapon[2] ? "Items/" + (KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[2]]?.template || KDGameData.PreviousWeapon[2]) : "InventoryAction/Quickslot";
 		},
 		valid: (player, item) => {
 			return true;//KDGameData.PreviousWeapon[0] != item.name;
@@ -438,7 +438,7 @@ let KDInventoryAction = {
 	},
 	"QuickSlot4": {
 		icon: (player, item) => {
-			return KDGameData.PreviousWeapon[3] ? "Items/" + KDGameData.PreviousWeapon[3] : "InventoryAction/Quickslot";
+			return KDGameData.PreviousWeapon[3] ? "Items/" + (KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[3]]?.template || KDGameData.PreviousWeapon[3]) : "InventoryAction/Quickslot";
 		},
 		valid: (player, item) => {
 			return true;//KDGameData.PreviousWeapon[0] != item.name;
@@ -591,6 +591,8 @@ let KDInventoryAction = {
 			KDGameData.OffhandOld = item.name;
 			KinkyDungeonAdvanceTime(1, true, true);
 			KinkyDungeonDrawState = "Game";
+			KinkyDungeonCheckClothesLoss = true;
+			KinkyDungeonDressPlayer();
 		},
 		/** Return true to cancel it */
 		cancel: (player, delta) => {
@@ -626,6 +628,8 @@ let KDInventoryAction = {
 			KinkyDungeonAdvanceTime(1, true, true);
 			KDStunTurns(4, true);
 			KinkyDungeonDrawState = "Game";
+			KinkyDungeonCheckClothesLoss = true;
+			KinkyDungeonDressPlayer();
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Tape.ogg");
 		},
 		/** Return true to cancel it */

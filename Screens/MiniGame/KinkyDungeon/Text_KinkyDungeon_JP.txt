@@ -1279,6 +1279,14 @@ Ignited: You are dealing fire damage to yourself and nearby enemies!
 着火: 自分と近くの敵に火のダメージを与える
 You are on fire and taking damage!
 体が燃えている。ターン毎にダメージを受ける
+
+Divine Punishment: Deals bonus damage when you hit an enemy.
+神の力：攻撃が命中した際、追加でダメージを与える
+Divine Protection: Automatically blocks the next 3 times an enemy tries to bind you.
+神の加護：3回まで敵から受ける拘束を無効化する
+Divine Cunning: You turn invisible briefly after attacking.
+神の智慧：攻撃を行った際、透明になる
+
 Arcane Power: Deals bonus damage when you hit an enemy.
 アーケインの力：攻撃が命中した際、追加でダメージを与える
 Arcane Protection: Reduces damage taken, and deals retaliation damage.
@@ -1398,6 +1406,8 @@ No, I wish to press on
 See Perks
 パークを確認
 This chest belongs to the FACTION
+このチェストは FACTION のものだ。
+This belongs to the FACTION
 このチェストは FACTION のものだ。
 Devious Dungeon Challenge is enabled.
 デビオスダンジョンチャレンジが有効になりました。
@@ -1934,8 +1944,8 @@ Wolfgirl Suit
 ウルフガールの服
 An advanced suit designed for sport, breathable and also warm.
 スポーツ用に設計された、通気性と保温性に優れた高度なスーツ。
-No bonuses, no penalties.
-ボーナスなし、ペナルティなし
+Made of latex. Resistant to electricity but does not insulate well.
+ゴムでできているため、電気には耐性があるが断熱性は低い。
 Maid Uniform
 メイド服
 An elegant dress meant to denote a maid's status.
@@ -2089,7 +2099,7 @@ Magic Knife
 A magical blade, suitable against ghosts.
 霊体を切るのに適した魔法のナイフ。
 Deals shadow damage. Can cut enchanted ropes. Offhand: Increase base crit of all magic damage by 20%
-影属性のダメージを与える。魔法のロープを切断することができる。オフハンド：魔法の会心ダメージ倍率+20%。
+影属性のダメージを与える。魔法のロープを切断することができる。サブウェポン：魔法の会心ダメージ倍率+20%。
 Bola
 投げ縄
 A pair of weights attached to a rope. Can be thrown.
@@ -2159,7 +2169,7 @@ You drink the willpower potion and feel motivated.
 A sweet potion, brimming with determination.
 気分を向上させる甘いポーション。
 Restores 25% willpower instantly. Can be used while gagged.
-最大気力の25%を瞬時に回復。猿轡かませた状態でも使用可能。
+最大気力の25%を瞬時に回復。猿轡をかまされた状態でも使用可能。
 Frigid Potion
 冷静のポーション
 You chug the concoction and your senses numb, helping you concentrate.
@@ -2167,7 +2177,7 @@ You chug the concoction and your senses numb, helping you concentrate.
 Like bottled snow. Helps to get your mind on track.
 瓶詰めの雪のよう。集中力を高めるのに役立つ。
 Reduces distraction to 0 and grants additional decay for 50 turns. Can be used while gagged.
-興奮値を0にする。50ターンの間、興奮値の上昇を抑制する。猿轡かませた状態でも使用可能。
+興奮値を0にする。50ターンの間、興奮値の上昇を抑制する。猿轡をかまされた状態でも使用可能。
 Smoke Bomb
 煙幕
 You toss the smoke bomb and it explodes in your location!
@@ -2176,6 +2186,37 @@ A type of pyrotechnic often employed by saboteurs. Can be used without hands.
 闇に生きる者がよく使う。手が縛られていても使える。
 Creates a smoke screen lasting 8 turns. You are harder to see while inside the smoke.
 8ターン持続する煙幕を張る。煙の中にいると見えにくくなる。
+
+
+You toss the smoke bomb and it starts emitting a deep haze!
+煙幕を投げると、濃い煙が吹き出てきた。
+You ready a smoke bomb...
+煙幕の準備ができた。
+A type of pyrotechnic often employed by saboteurs. Can be rolled and used without hands.
+闇に生きる者がよく使う。手が縛られていても使える。
+Creates a smoke screen lasting 8 turns. You are harder to see while inside the smoke.
+8ターン持続する煙幕を張る。煙の中にいると見えにくくなる。
+
+You toss the flash bomb and the fuse starts ticking...
+導火線に火の付いた閃光弾を投げた。
+You ready a flash bomb...
+閃光弾の準備ができた。
+A type of explosive used by agents. Blinds nearby targets without causing significant injury.
+諜報員が使用する爆弾の一種。対象を傷つけることなく無力化する。
+Blinds for 20 turns in a 3x3 area.
+3x3マスの対象を20ターンの間盲目状態にする。
+
+You ready a flashbang...
+閃光手榴弾の準備ができた。
+You toss the flashbang and the fuse starts ticking...
+ピンを抜いた閃光手榴弾を投げた。
+A piece of rare special forces equipment. The secrets of its manufacture are strictly kept by the Alchemist's Guild.
+希少な特殊部隊の装備の1つ。製造方法は錬金術師のギルドにより秘匿されている。
+Blinds for 24 turns in a 3x3 area. Also Slows and Silences them for half the duration.
+3x3マスの対象を24ターンの間盲目にし、12ターンの間沈黙と減速状態にする。
+
+Blinds for 24 turns in a 3x3 area. And also Slows and Silences them for half the duration.
+3x3マスの対象を24ターンの間盲目にし、12ターンの間沈黙と減速状態にする。
 
 Flash Bomb x3
 閃光弾 x3
@@ -2289,25 +2330,25 @@ Staff of Incineration
 A magical weapon made for intermediates to use.
 中級者向けに作られた魔法の武器。
 +25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn. Offhand: Applies %fire damage bonus.
-火属性。火属性のダメージが25%増加する。燃えている敵は、ターン経過時に5ポイントのダメージを受ける。オフハンド：火属性ダメージが20%増加する。
+火属性。火属性のダメージが25%増加する。燃えている敵は、ターン経過時に5ポイントのダメージを受ける。サブウェポン：火属性ダメージが20%増加する。
 Staff of Storms
 嵐の杖
 A magical weapon made for intermediates to use.
 中級者向けに作られた魔法の武器。
 +20% electric damage. Deals electric damage. Enemies hit by electric damage echo 15 additional Electric damage in a 5x5 area. Offhand: Applies electric damage bonus.
-電気属性。電気属性のダメージが20%増加する。電気ダメージを受けた敵は5x5エリア内に15の追加電気ダメージを反射する。オフハンド：電気属性ダメージが20%増加する。
+電気属性。電気属性のダメージが20%増加する。電気ダメージを受けた敵は5x5エリア内に15の追加電気ダメージを反射する。サブウェポン：電気属性ダメージが20%増加する。
 Staff of Frostbite
 凍傷の杖
 A magical weapon with a 33% chance to freeze the target for 4 turns.
 33%の確率で対象を4ターン凍結させる魔法の武器。
 +20% ice damage. Deals ice damage. Frozen enemies take 5 ice damage per turn. Offhand: Applies ice damage bonus.
-氷属性。氷属性のダメージが20%増加する。ターン経過時、凍結した敵は5ダメージを受ける。オフハンド：氷属性ダメージが20%増加する。
+氷属性。氷属性のダメージが20%増加する。ターン経過時、凍結した敵は5ダメージを受ける。サブウェポン：氷属性ダメージが20%増加する。
 Staff of Binding
 束縛の杖
 A magical weapon made to use on novices.
 初心者用に作られた魔法の武器
 +20% chain damage. Deals chain damage and roots the target for 4 turns. 150% binding efficiency. Offhand: Applies chain damage bonus.
-チェーン属性のダメージが20%増加し、通常攻撃が命中した時、4ターンの間敵を移動不可状態にする。拘束力が150%増加する。オフハンド：チェーン属性ダメージが20%増加する。
+チェーン属性のダメージが20%増加し、通常攻撃が命中した時、4ターンの間敵を移動不可状態にする。拘束力が150%増加する。サブウェポン：チェーン属性ダメージが20%増加する。
 Arcane Orb
 アルケインオーブ
 Look into my eyes...
@@ -2319,31 +2360,31 @@ Staff of Flame
 A magical weapon made for novices to use.
 初心者向けに作られた魔法の武器
 +15% fire damage. Deals fire damage. Offhand: Applies passive bonus.
-火属性。火属性のダメージが15%増加する。オフハンド：火属性ダメージが15%増加する。
+火属性。火属性のダメージが15%増加する。サブウェポン：火属性ダメージが15%増加する。
 Staff of Slime
 スライムの杖
 A slimy and magical implement..
 ぬるぬるした魔法の道具……
 +10% glue damage. Deals glue damage. Offhand: Applies passive bonus.
-接着剤属性。接着剤属性のダメージが10%増加する。オフハンド：接着剤属性ダメージが10%増加する。
+接着剤属性。接着剤属性のダメージが10%増加する。サブウェポン：接着剤属性ダメージが10%増加する。
 Staff of Shocking
 衝撃の杖
 A magical weapon made for novices to use.
 初心者向けに作られた魔法の武器
 +10% electric damage. Deals electric damage. 10% chance to stun for 3 turns. Offhand: Applies electric damage bonus.
-電気属性。電気属性のダメージが10%増加する。命中時に10%の確率で敵をスタン状態にする。オフハンド：電気属性ダメージが10%増加する。
+電気属性。電気属性のダメージが10%増加する。命中時に10%の確率で敵をスタン状態にする。サブウェポン：電気属性ダメージが10%増加する。
 Staff of Permafrost
 永久凍土の杖
 A magical weapon with a 15% chance to freeze the target for 4 turns.
 15%の確率で対象を4ターン凍結させる魔法の武器。
 +10% ice damage. Deals ice damage. Multiplies the duration of freeze effects on enemies by 1.5x (min +1 duration). Offhand: Applies ice damage bonus.
-氷属性。氷属性のダメージが10%増加する。敵にかかっている凍結効果の持続時間を1.5倍にする (最低+1持続時間)オフハンド：氷属性ダメージが10%増加する。
+氷属性。氷属性のダメージが10%増加する。敵にかかっている凍結効果の持続時間を1.5倍にする (最低+1持続時間)サブウェポン：氷属性ダメージが10%増加する。
 Staff of Chains
 鎖の杖
 A magical weapon made for novices in the art of bondage.
 束縛術の初心者のために作られた魔法の武器。
 +10% chain damage. Deals chain damage. 150% binding efficiency. Offhand: Applies chain damage bonus.
-チェーン属性。チェーン属性のダメージが10%増加する。拘束力が150%増加する。オフハンド：チェーン属性ダメージが10%増加する。
+チェーン属性。チェーン属性のダメージが10%増加する。拘束力が150%増加する。サブウェポン：チェーン属性ダメージが10%増加する。
 You pick up a staff of binding. You remember these from wizard school...
 束縛の杖を手に入れた。魔法学校で何度も使った覚えがある。
 You pick up a staff of the storm. Your hair stands on end.
@@ -2371,7 +2412,7 @@ Crop
 For those unruly subs.
 しつけのための道具
 Deals pain damage. Highly distracting. Offhand: +5 pain damage on attack for 3 stamina.
-痛み属性のダメージを与える。興奮値が溜まりやすい。オフハンド：攻撃時、追加でスタミナを3消費し、5痛み属性ダメージを追加で与える。
+痛み属性のダメージを与える。興奮値が溜まりやすい。サブウェポン：攻撃時、追加でスタミナを3消費し、5痛み属性ダメージを追加で与える。
 You pick up a riding crop.
 馬用のムチを手に入れた。
 Scissors
@@ -2387,7 +2428,7 @@ Dagger
 Designed with subterfuge in mind.
 不意打ち用の武器。
 Deals slash damage. Deals 40 pierce damage instead on unaware targets, before crit modifiers. Offhand: +10% Base Weapon Crit
-斬撃属性。プレイヤーを認識していない敵を攻撃した際、40ポイントの刺突属性ダメージを与える。オフハンド：会心率+10%。
+斬撃属性。プレイヤーを認識していない敵を攻撃した際、40ポイントの刺突属性ダメージを与える。サブウェポン：会心率+10%。
 You pick up a dagger.
 ダガーを手に入れた。
 Katana
@@ -2470,7 +2511,7 @@ Knife
 A go-to for travelers and adventurers.
 旅行者や冒険家の頼りになる護身武器。
 Deals slash damage. Offhand: +10 Block
-斬撃属性。オフハンド：ブロック値+10。
+斬撃属性。サブウェポン：ブロック値+10。
 Torch
 松明
 Second only to the mighty towel in usefulness.
@@ -2494,7 +2535,7 @@ Flamberge
 A blade forged in a magical fire.
 魔法の炎で鍛えられた刃
 Deals 20 bonus slash damage on hit. Offhand: Produces light.
-命中時、20ポイントの斬撃性追加ダメージを与える。オフハンド：武器が光る。
+命中時、20ポイントの斬撃性追加ダメージを与える。サブウェポン：武器が光る。
 Escort Drone
 エスコートドローン
 A semi-autonomous drone with a personal defense beam. Does not require hands to equip.
@@ -2506,20 +2547,20 @@ Magic Wand
 Its powers extend beyond the traditional schools of magic.
 伝統によって受け継がれてきた魔法の杖。
 Deals charm damage. 20% chance to stun the target for 2 turns. Offhand: +5 charm damage on attack for 3 stamina.
-魅了属性。 20%の確率でターゲットを2ターンの間気絶させる。オフハンド：攻撃時に追加でスタミナを3消費し、魅了属性ダメージ+5。
+魅了属性。 20%の確率でターゲットを2ターンの間気絶させる。サブウェポン：攻撃時に追加でスタミナを3消費し、魅了属性ダメージ+5。
 Feather
 羽根
 A feather taken from some large fluffy being.
 くすぐりに便利な羽根
 Deals tickle damage. Greatly distracting. Offhand: +1 tickle damage on attack for 3 stamina. Greatly distracting.
-くすぐり属性。敵の興奮値を増加させる。オフハンド：攻撃時、追加でスタミナを3消費し、1くすぐり属性ダメージを追加で与え、興奮値を増加させる。
+くすぐり属性。敵の興奮値を増加させる。サブウェポン：攻撃時、追加でスタミナを3消費し、1くすぐり属性ダメージを追加で与え、興奮値を増加させる。
 
 Maid's Feather Duster
 メイドの羽箒
 An instrument used extensively by maidforce agents carrying out their duties.
 メイドフォースのエージェントが任務を遂行する際に多用する道具。
 Deals tickle damage. Distracts enemies. Offhand: +15 distraction on attack for 1 stamina.
-くすぐり属性。敵の興奮値を上昇させる。オフハンド：攻撃時、追加でスタミナを1消費し、敵の興奮値+15。
+くすぐり属性。敵の興奮値を上昇させる。サブウェポン：攻撃時、追加でスタミナを1消費し、敵の興奮値+15。
 You pick up a feather duster.
 羽箒を拾った。
 
@@ -2528,7 +2569,7 @@ Ice Cube
 A magical cube of ice that never melts. Convenient!
 溶けない魔法の氷。便利！
 Deals 10 ice damage with a 10% chance to freeze for 1 turn. Slows targets on hit. Offhand: Slows the target.
-10ポイントの氷属性ダメージを与え、10%の確率で1ターン凍結させる。オフハンド：攻撃が命中した相手を減速させる。
+10ポイントの氷属性ダメージを与え、10%の確率で1ターン凍結させる。サブウェポン：攻撃が命中した相手を減速させる。
 Rope
 ロープ
 A kidnapper's most versatile tool.
@@ -2552,13 +2593,13 @@ Metamorphosis
 You can enter slime form for 25 turns, which lets you pass thru bars, +50 Evasion, and deals 25 glue damage when attacked.
 25ターンの間、スライム形態になる。スライム状態では、バーを通り抜けることができ、回避力が50増加し、攻撃されたときに接着剤ダメージを25与える.
 Deals glue damage. Roots targets for 2 turns on a hit. Offhand: Roots targets on hit.
-接着剤属性。命中時、敵は2ターンの間スタンする。オフハンド：敵を地面に拘束する。
+接着剤属性。命中時、敵は2ターンの間スタンする。サブウェポン：敵を地面に拘束する。
 Four Seasons
 四季の杖
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
 発動すると、次の火、水/氷、風/雷、土の呪文のコストを、属性ごとに1回ずつ50減らす。
 Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage. Offhand: Applies passive bonus.
-影属性。火、氷、酸、打撃、電気、圧力のダメージが25%増加する。オフハンド：火、氷、酸、打撃、電気、圧力のダメージが25%増加する。
+影属性。火、氷、酸、打撃、電気、圧力のダメージが25%増加する。サブウェポン：火、氷、酸、打撃、電気、圧力のダメージが25%増加する。
 The Arbiter
 アービター
 I have altered the rules. Pray I do not alter them further.
@@ -3591,6 +3632,27 @@ The alkahestor uses an ornate-looking lock! (DamageTaken)
 大錬金術師にきれいな錠前で拘束具をロックされた！ (DamageTaken)
 The alkahestor shoves you! (DamageTaken)
 大錬金術師がに突き飛ばされた！ (DamageTaken)
+
+...Alkahestor?
+……大錬金術師？
+You rescue the Alkahestor
+大錬金術師を助け出した。
+The alkahestor releases a vial of liquid that wraps around you! (+RestraintAdded)
+大錬金術師？に液体を浴びせられてしまった！ (+RestraintAdded)
+The alkahestor uses an ornate-looking lock! (DamageTaken)
+大錬金術師？に拘束具をロックされた！ (DamageTaken)
+The alkahestor shoves you! (DamageTaken)
+大錬金術師？に突き飛ばされた！ (DamageTaken)
+
+Latex Homonculus
+ラテックスのホムンクルス
+The latex homonculus melts into sticky rubber.
+ラテックスのホムンクルスは溶けてネバネバしたゴムになった。
+The latex homonculus molds itself into restraints! (+RestraintAdded)
+ラテックスのホムンクルスの体の一部が拘束具に変化して襲いかかってきた！ (+RestraintAdded)
+The latex homonculus slaps you with its appendages! (DamageTaken)
+ラテックスのホムンクルスに平手打ちされた！ (DamageTaken)
+
 Latex Elemental
 ラテックスの精霊
 The latex elemental melts into sticky rubber.
@@ -4757,10 +4819,6 @@ You fiddle with the key on the TargetRestraint...
 鍵を使って TargetRestraint の解錠を試みた……
 The lock requires a key.
 鍵がないと解錠できない。
-The lock requires a key.
-鍵がないと解錠できない。
-The lock requires a key.
-鍵がないと解錠できない。
 The green padlock only accepts green keys.
 緑の鍵がないと緑の錠前は開けられない。
 The yellow padlock requires a red and a green key.
@@ -4773,6 +4831,26 @@ This lock requires a command word to unlock. It doesn't have a keyhole.
 どこにも鍵穴が見当たらない。合言葉がないと、この錠前は開かないようだ。
 You don't have a key for this lock.
 錠前に合う鍵を持っていない。
+
+The lock is definitely magical and forces your pick out!
+錠前には魔法がかかっており、ピッキングはできない。
+The lock is divine. A mortal shouldn't even try to pick it.
+神の力でロックされている。常人にはピッキングできそうにない。
+You must perform your quest! Don't even think of unlocking it...
+決して外そうなどとは考えず、クエストをこなすしかない……
+You're not sure a key for this even exists in the mortal realm.
+はたして人間界に鍵はあるのだろうか。
+The lock is made of solid rubber. You can't pick that.
+錠前はゴムで作られており、ピッキングできそうにない。
+You need something sharp to cut the lock.
+錠前を切断する必要がある。
+The lock doesn't even have a keyhole to pick!
+鍵穴が見当たらない！
+You need a special tool to pick this kind of lock.
+特別な道具が必要なようだ。
+The lock is brimming with security features and is nigh impossible to pick!
+とても精巧な錠前で、ピッキングは不可能に近い。
+
 The lock seems to be magical and rejects all picking attempts!
 この鍵穴にはロックピックを通さない魔法がかかっているようだ。
 The lock is definitely magical and forces your pick out!
@@ -5380,6 +5458,16 @@ Goddess Blessing:
 女神の加護：
 Goddess Curse:
 女神の呪い：
+
+Mana Bonus: 
+マナボーナス：
+Lack of Mana Penalty: 
+マナペナルティ：
+Your excess mana helps you suppress the enchantment!
+自身のマナが拘束具の魔法を弱めた！
+Your mana is too weak to fight the magical enchantment...
+拘束具の魔法に打ち勝つにはマナが足りない……
+
 Curses
 呪い
 Willpower
@@ -5390,8 +5478,10 @@ Teachings of SHRINETYPE
 SHRINETYPE の教え
 Decypher
 解読
-You read the runes and they imbue you with power!
+You read the runes and they fill you with power!
 ルーン文字を読むと、力が湧いてきた！
+These runes are meant for someone with less willpower.
+このルーンは意志の弱い人のためにあるようだ。
 You try to read the runes but cannot understand them.
 ルーン文字を読もうとするも、解読できない。
 Allies:
@@ -5444,6 +5534,20 @@ Angels
 天使
 Demons
 悪魔
+
+Computer Virus
+ウィルス
+Extraplanar Entity
+異星からの者
+Dubious Witch
+変態魔女
+Shadow Clan
+影の一族
+Fierce Debater
+言い争っている……
+Very Angry
+怒っている
+
 You sense that the chest contains a trap and a lot of gold.
 宝箱には大量のゴールドが入っているが、罠も仕掛けられているようだ。
 You sense that the chest is safe to open.
@@ -7050,6 +7154,8 @@ Latex Armbinder
 ラテックスのアームバインダー
 A tight armbinder that pins your arms tightly behind your back, enclosed completely.
 指先から肘にかけて覆うゴム製のタイトなアームバインダー。
+A tight armbinder that pins your arms tightly behind your back
+指先から肘にかけて覆うタイトなアームバインダー。
 It has too much grip to struggle out of, but is made of a fragile material.
 もがいて抜け出すのは難しいが、壊れやすい素材でできている。
 Latex Boxbinder
@@ -8245,37 +8351,37 @@ You retrieve a spent ancient power crystal.
 使用済みのパワークリスタルを手に入れた。
 You pick up a magical amulet and use it to boost your stats.
 魔法のアミュレットを手に入れた。能力を上昇させられる。
-You picked up a knife.
+You pick up a knife.
 ナイフを拾った。
-You picked up a torch.
+You pick up a torch.
 松明を拾った。
 You found a bundle of discarded knives!
 捨てられたナイフの束を拾った！
-You picked up an enchanted knife.
+You pick up an enchanted knife.
 エンチャントされたナイフを拾った。
-You picked up a magic knife.
+You pick up a magic knife.
 魔法のナイフを拾った。
-You picked up a lockpick.
+You pick up a lockpick.
 ロックピックを拾った。
-You picked up a normal key.
+You pick up a normal key.
 鍵を拾った。
-You picked up a green key.
+You pick up a green key.
 緑の鍵を拾った。
-You picked up a blue key.
+You pick up a blue key.
 青い鍵を拾った。
-You picked up a willpower potion.
+You pick up a willpower potion.
 気力のポーションを手に入れた。
-You picked up a glowing blue mana potion.
+You pick up a glowing blue mana potion.
 青く輝くマナポーションを手に入れた。
-You picked up a glowing blue orb.
+You pick up a glowing blue orb.
 青白く光るオーブを手に入れた。
-You picked up an invisibility potion.
+You pick up an invisibility potion.
 透明のポーションを手に入れた。
-You picked up a handful of ectoplasm.
+You pick up a handful of ectoplasm.
 一握りのエクトプラズムを手に入れた。
-You picked up a green stamina potion.
+You pick up a green stamina potion.
 緑色のスタミナポーションを拾った。
-You picked up a frigid white potion.
+You pick up a frigid white potion.
 冷たく白いポーションを手に入れた。
 You found a peculiar note on the ground and keep it in your journal.
 奇妙なメモを発見し、日記に写した。
@@ -8321,17 +8427,17 @@ You pick up a powerful axe.
 強力そうな斧を手に入れた。
 You pick up a consumable smoke bomb.
 煙幕弾を手に入れた。
-You picked up a stone trinket with a glowing red sigil.
+You pick up a stone trinket with a glowing red sigil.
 赤く光る印が描かれた石を手に入れた。
-You picked up a wet rock with some kind of symbol on it.
+You pick up a wet rock with some kind of symbol on it.
 何らかのシンボルが描かれている、湿った石を手に入れた。
-You picked up a crystal beautiful as the moon.
+You pick up a crystal beautiful as the moon.
 月のように輝くクリスタルを手に入れた。
-You picked up a strange device with a sharpened razor disc.
+You pick up a strange device with a sharpened razor disc.
 鋭利な円盤のついた奇妙な装置を手に入れた。
 You find a strange ancient device with a sharp cutting blade.
 鋭い刃を持つ古代の奇妙な装置を手に入れた。
-You picked up a stone trinket with a glowing blue sigil.
+You pick up a stone trinket with a glowing blue sigil.
 青く光る印が描かれた石を手に入れた。
 You pick up a bola.
 投げ縄を手に入れた。
@@ -8477,6 +8583,7 @@ Can be controlled using CMD spells
 CMD魔法で操作可能
 Can be controlled using Rubbermancy
 ラバーマンシーで操作可能
+
 Floor
 床
 Wall
@@ -8511,6 +8618,8 @@ Empty Altar
 空の祭壇
 Chest
 宝箱
+Faction Chest
+他人の宝箱
 Empty Chest
 空の宝箱
 Shiny Object
@@ -9972,7 +10081,9 @@ Lesser Flash
 Ring
 フラッシュリング
 Flash Bomb
-フラッシュバン
+閃光弾
+Flashbang
+閃光手榴弾
 Sparkles!
 キラキラ！
 Mirror Image
@@ -10534,6 +10645,8 @@ Mystic Bolt
 ミスティックボルト
 The mystic bolt paralyzes you!
 ミスティックボルトが命中し、身体が痺れてしまった！
+The mummy's curse paralyzes you!
+バスト教団の呪いで身体が痺れた！
 Rubber Bullets
 ゴム弾
 You are hit by a fusilade of rubber bullets!
@@ -17982,6 +18095,8 @@ Never! (PERCENT chance to avoid)
 (SPEAKER は頷いた)|一本持っていると何かと便利だな。
 (The SPEAKER nods)|The best defense is a good offense.
 (SPEAKER は頷いた)|攻撃は最大の防御なり、だ。
+(The SPEAKER nods)|Speak softly and carry a big hammer.
+(SPEAKER は頷いた)|交渉事に便利だ。
 (The SPEAKER nods)|You can never be too careful.
 (SPEAKER は頷いた)|注意するに越したことはない。
 (The SPEAKER smiles)|Can never be too prepared~
@@ -19006,8 +19121,8 @@ Welcome to the dungeon!|Don't panic, this is a turn-based game,|and nothing will
 ダンジョンへようこそ！|このゲームはターン制だよ！|キミが動かなければ、敵も動かない。だからまずは落ち着いて。|画面左に見えるキャラクターがキミだよ。|今はまだ、どこも縛られていないみたいだね。|大丈夫、すぐに見つかるから！
 You might be wondering what all these barrels are for.|Don't worry, they're, uh, totally safe!|When you are inside one you can click on yourself to wait.|Enemies have a hard time seeing you inside a barrel,|so you can wait until they pass by you.
 この樽が気になるかい？|心配しないで、まぁ、ほとんどの樽が安全だよ！|まずは樽の中に移動して、入ってみて。それから自分自身をクリックすると、動かずに次のターンに進められるよ。|何かに隠れて動かなければ、敵もキミを見つけにくくなるんだ。|敵をやり過ごしてみよう！
-On the right you'll see your stats and spells slots.|Your DP, SP, MP, and WP are displayed there, we'll get into what these do.|Below that you'll see your current consumable items,|your gold, and your currently equipped weapon.|Below that, two icons allow you to toggle automatic escape and movement modes.
-右に見えるのが、キミのステータスだ。|DP、SP、MP、そしてWPが確認できるね。|その下には、装備している武器が表示されているね。|更に下には、色々と便利な機能があるよ。|……翻訳中にUIが大幅に変わったからここらへんのセリフも変わるはずだよ！
+On the right you'll see your stats and spells slots.|Your DP, SP, MP, and WP are displayed there, we'll get into what these do.|Below that you'll see your current consumable items,|your gold, and your currently equipped weapon.
+右に見えるのが、キミのステータスだ。|DP、SP、MP、そしてWPが確認できるね。|その下には、装備している武器が表示されているね。
 Your WP, or willpower, is an important resource.|Without it, escaping from restraints is more difficult.|There is a willpower potion on the floor up there. Go get it!
 WPは気力、大事なステータスだ。|気力が低いと、拘束から抜け出しにくくなるよ。|あそこに気力のポーションがあるから、取ってみて！
 Oh no! That trap wiped out all your willpower!|Fortunately you have a potion.|You can drink it by clicking the '+' icon next to your WP bar.|You can also go into your Inventory in the bottom bar.|There is also a quick-inventory icon (backpack).
@@ -19017,7 +19132,7 @@ Another trap!|You'll notice that the trap also drained your stamina considerably
 Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the bottom right.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1.
 MP、つまりマナは呪文の詠唱に必要だよ。|呪文を唱えるには、その呪文を覚える必要があるよ。|画面右にある呪文タブをクリックしてみて。|それから、スペルツリーを選択して表示される火魔術の入門を学べば、ファイアボルトの魔法が覚えられるよ。|覚えられたら、エレメンタル呪文にあるファイアボルトをクリックして、ホットバー１のスロット１に登録してみよう。
 On the right you'll see your stats and spells slots.|You can click on a spell slot or hit 1-4 on your keyboard to cast a spell|then click on the map for where you want to aim it.|The small wrench icon above them will let you|swap them out for another spell from your spellbook.
-画面下にファイアボルトのアイコンが表示されているね。|スペルをクリックするか、対応するキー(デフォルトで１キー)を押せば呪文を唱えられるよ。|撃ち出したいマスを選択すれば、そこに魔法が飛ぶよ。|ファイアボルトの左にある丸いアイコンを選べば、特定の呪文を強化できるよ。|例えば、ファイアブラストの魔法を習得すれば、ファイアボルトを強化して放つことができるんだ。
+画面下にファイアボルトのアイコンが表示されているね。|スペルをクリックするか、対応するキーを押せば呪文を唱えられるよ。|撃ち出したいマスを選択すれば、そこに魔法が飛ぶよ。|ファイアボルトの左にある丸いアイコンを選べば、特定の呪文を強化できるよ。|例えば、ファイアブラストの魔法を習得すれば、ファイアボルトを強化して放つことができるんだ。
 There's a zombie over there!|Fortunately zombies are weak to fire.|Firebolt has a very long range,|so simply cast firebolt and click on the zombie.|Repeat until it is dead.
 ゾンビだ！|幸い、ゾンビは火に弱いんだ。|ファイアボルトは遠くまで届くから、|ゾンビに発射してみよう！|あいつが倒れるまで撃ち続けるんだ！
 Mana potions restore your mana fully.
@@ -19026,6 +19141,8 @@ Your DP, or Distraction, is a measure of...|How much you are enjoying things.|Th
 DPは、つまるところ……|キミがどれだけイきそうになっているか、だね。よくある絶頂ゲージとか快楽ゲージだよ。|蓄積すると集中力がなくなっていって、|呪文を唱えにくくなるんだ。|あのポーションを取ってみて。
 Did you like that?|Anyway, there's a zombie over there. You should drink that potion.|It will clear your mind so you can cast again.|Hurry, or it will get you!
 どんな感じ？|ところで、ゾンビがまた来たみたいだね。|ポーションを飲んでみて。|きっとスッキリして、集中力が戻るはずだよ。|さあ、捕まる前に早くするんだ！
+Mana potions restore mana, allowing you to cast spells.|Youll notice that your mana also regenerates slowly.|This mana comes from your mana pool,|which is a thin line displayed under the mana bar.|When that runs out, you can't cast spells anymore!
+マナポーションを飲むとマナを回復して、再び呪文を唱えられるようになるよ。|マナは時間とともにマナプールからゆっくり補充されるよ。|マナプールはマナゲージの下にある白い線だよ。|これがなくなると完全にマナが枯渇するから注意してね。
 That wasn't so hard, was it?|Now then, there's a treasure chest over here. Why don't you open it?
 ここまでは簡単でしょ？|それじゃああの宝箱を開けてみようか！
 Yikes, looks like you're in a bind!|No worries, though. There's a key to those cuffs over there.|Simply hover over the cuffs item test on the left side.|Then, click the lock icon to remove the lock.|Finally, click the buckle to remove the cuffs.
@@ -19677,7 +19794,6 @@ Strip!
 ストリップ！
 Export Outfit
 服を読み込む
-Export AlwaysDress
 
 
 Gamma
@@ -19688,12 +19804,7 @@ Contrast
 コントラスト
 Brightness
 明るさ
-Red
-Red
-Green
-Green
-Blue
-Blue
+
 Transparency
 透明度
 Reset Layer!
@@ -20136,7 +20247,7 @@ Targe
 Hide behind it while you still can.
 今のうちに隠れろ。
 +60 Block. Deals crush damage and stuns for 4 turns. Offhand: Gives the same block bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
-打撃属性。装備時ブロック値+60。攻撃が命中した時、4ターンの間スタンさせる。オフハンド：メイン装備時と同等のブロック値を得る。この効果はメインに装備している武器のブロック値とスタックしない。
+打撃属性。装備時ブロック値+60。攻撃が命中した時、4ターンの間スタンさせる。サブウェポン：メイン装備時と同等のブロック値を得る。この効果はメインに装備している武器のブロック値とスタックしない。
 You pick up a wooden shield.
 木の盾を拾った。
 Tower Shield
@@ -20144,7 +20255,7 @@ Tower Shield
 Now with more leg room.
 体全体を防御できるようになった盾。
 +120 Block, +30 Physical Armor. Increases slow level by 1. Deals crush damage and stuns for 7 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
-打撃属性。装備時ブロック値＋120、物理アーマー＋30。減速値1を得る。攻撃が命中した時、7ターンの間スタンさせる。オフハンド：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
+打撃属性。装備時ブロック値＋120、物理アーマー＋30。減速値1を得る。攻撃が命中した時、7ターンの間スタンさせる。サブウェポン：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
 You pick up a metal tower shield.
 金属で補強された大きな盾を拾った。
 Reinforced Shield
@@ -20152,7 +20263,7 @@ Reinforced Shield
 New and improved, but also clumsier.
 新たに金属の補強が追加された盾。少し扱いにくくなった。
 +80 Block, +15 Physical Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
-打撃属性。装備時ブロック値＋80、物理アーマー＋15。攻撃が命中した時、5ターンの間スタンさせる。オフハンド：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
+打撃属性。装備時ブロック値＋80、物理アーマー＋15。攻撃が命中した時、5ターンの間スタンさせる。サブウェポン：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
 You pick up a reinforced shield.
 金属で補強された盾を拾った。
 Runic Shield
@@ -20160,7 +20271,7 @@ Runic Shield
 For when you've been tied up one too many times...
 何度も縛られたあなたに……
 +80 Block, +20 Magic Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
-打撃属性。装備時ブロック値＋80、魔法アーマー＋20。攻撃が命中した時、5ターンの間スタンさせる。オフハンド：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
+打撃属性。装備時ブロック値＋80、魔法アーマー＋20。攻撃が命中した時、5ターンの間スタンさせる。サブウェポン：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
 You pick up a runic shield.
 ルーンの刻まれた盾を拾った。
 Vanish
@@ -21012,7 +21123,7 @@ Bag of Goodies
 Someone's secret stash.
 誰かの秘密の遊び道具。
 Deals charm damage. Applies a toy to targets hit for 40 turns. Offhand: Applies a toy to targets you hit.
-魅了属性。攻撃が命中した敵に、40ターンの間オモチャを取り付ける。オフハンド：攻撃が命中した敵にオモチャを取り付ける。
+魅了属性。攻撃が命中した敵に、40ターンの間オモチャを取り付ける。サブウェポン：攻撃が命中した敵にオモチャを取り付ける。
 You find a bag filled with various toys and vibrators...
 色々な気持ちよさそうなオモチャがつまったカバンを見つけた……
 You play with yourself using some of the toys in the bag...
@@ -21022,7 +21133,7 @@ Magic Remote
 The key to absolute power.
 絶対服従の鍵。
 Triggers long-duration edging on basic attack if the target has a toy. Offhand: Applies short-duration teasing to targets you hit.
-対象がオモチャを装備している場合、攻撃時に長時間振動させる。オフハンド：対象がオモチャを装備している場合、攻撃時に短時間振動させる。
+対象がオモチャを装備している場合、攻撃時に長時間振動させる。サブウェポン：対象がオモチャを装備している場合、攻撃時に短時間振動させる。
 You find a bag filled with various toys and vibrators...
 色々な気持ちよさそうなオモチャがつまったカバンを見つけた……
 Vibrator Remote
@@ -21179,6 +21290,46 @@ Sensitivity: AMNT AP from attacks
 欲情：攻撃時対象のDP AMNT 上昇
 KDVariableModifier_,"AMNT Stat
  AMNT 上昇
+ 
+AMNT Evasion
+回避力 AMNT
+AMNT% Accuracy
+命中率 AMNT% 
+AMNT Magic Armor
+マジックアーマー AMNT
+AMNT Physical Armor
+物理アーマー AMNT% 
+AMNT Bondage Resist
+拘束抵抗力 AMNT
+AMNT TYPE Resist
+TYPE 属性への抵抗力 +AMNT
+AMNT% TYPE Damage
+TYPE 属性の威力 +AMNT% 
+AMNT% weapon phys. dmg
+物理ダメージ +AMNT% 
+AMNT% weapon magic dmg
+武器の魔法ダメージ AMNT% 
+Infuse weapon AMNT% TYPE
+武器の TYPE 属性ダメージ AMNT% 
+AMNT TYPE on attack
+攻撃時 AMNT TYPE 追加ダメージ
+AMNT% Mana Costs
+マナコスト AMNT% 
+AMNT% TYPE Mana Costs
+TYPE 属性のマナコスト AMNT% 
+AMNT% regen from mana pool
+マナプールから得られるマナ AMNT% 
+AMNT mana pool on capture
+敵を捕まえたとき AMNT マナプールを回復する
+AMNT% Visibility Reduction
+視認性低下 AMNT% 
+AMNT Distraction Decay
+DP AMNT 低下
+AMNT Distraction Per Turn
+ターン毎にDP AMNT 上昇
+AMNT AP from attacks
+攻撃時にDP AMNT 上昇
+ 
 Drop On Floor
 床に置く
 Remove
@@ -21493,6 +21644,18 @@ A handy key for getting out of common handcuffs and shackles.
 普通の手錠や枷に使用できる鍵。
 It's not sophisticated enough to work on higher-quality locks, but can be used many times.
 複雑な錠前には使えないが、何度も使える。
+
+You pick up a tool for picking disc detainer locks.
+ピッキングの道具を手に入れた。
+Disc Lock Tool
+ディスクロックツール
+You examine the tool. It has a replaceable tip for picking disc detainer locks.
+この工具は先端にロックピックを装着して使用するようだ。
+A handy tool for picking disc detainer locks, popularized by a certain pair of professionals.
+ある二人組が開発した、ディスクロックの解錠に役立つ道具。
+Features a replaceable head in case an unskilled user breaks it. Requires lockpicks to use.
+不慣れなユーザーが壊してしまった場合に備えて、先端が交換可能になっている。使用にはロックピックが必要。
+
 Rep
 関係性
 Magical Weapon
@@ -21569,8 +21732,8 @@ While at 40 Battle Rhythm, you attack twice per turn.
 
 Devious Ingenuity
 悪巧み
-Trap-type spells and consumables take 1 turn to cast instead of several.
-罠タイプの呪文やアイテムの使用にかかるターン数が1ターンになる。
+Trap-type spells and consumables no longer require you to channel them, but still have a delay before arming.
+罠タイプの呪文やアイテムの用意にターンを消費しなくなる。投擲にはターンを消費する。
 
 Inner Power
 秘めたる力
@@ -21759,6 +21922,8 @@ Several enemies on each map will be high value, rewarding more gold and items fo
 +AMNT Bondage!
 TargetEnemy receives AMNT binding!
 TargetEnemy は AMNT の拘束値を受けた！
+TargetEnemy receives AMNT binding!
+AMNT の拘束値を与えた！
 TargetEnemy is disabled and receives an increased AMNT binding!
 TargetEnemy は弱点を付かれ AMNT の拘束値を受けた！
 TargetEnemy resists bondage and receives a reduced AMNT binding!
@@ -21906,9 +22071,9 @@ Light
 Light: Can be used to cut even with bound arms. 50% reduced accuracy penalty from being bound. Can be held in mouth.
 軽い：腕を縛られていても、拘束具をカットできる。縛られていることによる命中率ペナルティを50%軽減できる。口にくわえることができる。
 Offhand
-オフハンド
+サブウェポン
 Offhand: This weapon can be dual-wielded by some classes.
-オフハンド：二刀流可能。
+サブウェポン：二刀流可能。
 2 Handed
 両手持ち
 2 Handed: While wielding this as your primary weapon, you cannot wield an offhand weapon. Also this weapon can't be used while arms are tied.
@@ -21939,7 +22104,7 @@ Designate an Offhand weapon to gain passive effects such as a light source, armo
 空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|(このスキルを使用し、装備する武器を選択する必要がある)
 
 Equip Offhand
-オフハンドに装備する
+サブウェポンに装備する
 
 Make a ranged attack with the spear.
 槍で遠距離を攻撃する。
@@ -22033,18 +22198,18 @@ You toss some gunpowder on the floor!
 Dual Wield (Rogue)
 二刀流(盗賊)
 Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield 2-handed, heavy, or massive weapons in the offhand unless they are multiclass.|(Must equip Dual Wield spell to equip an offhand weapon)
-空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|盗賊はマルチクラスでない限り、両手持ち、重い、大きな武器をオフハンドに装備できない。|(このスキルを使用し、装備する武器を選択する必要がある)
+空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|盗賊はマルチクラスでない限り、両手持ち、重い、大きな武器をサブウェポンに装備できない。|(このスキルを使用し、装備する武器を選択する必要がある)
 Dual Wield (Wizard)
 二刀流(魔術師)
 Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)
-空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|魔術師はマルチクラスでない限り、オフハンドには魔法の武器のみを持つことができ、両手持ち、重い、大きな魔法の武器を装備した際、減速1を得る。|(このスキルを使用し、装備する武器を選択する必要がある)
+空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|魔術師はマルチクラスでない限り、サブウェポンには魔法の武器のみを持つことができ、両手持ち、重い、大きな魔法の武器を装備した際、減速1を得る。|(このスキルを使用し、装備する武器を選択する必要がある)
 
 Arcane Tome
 アーケインの書
 Contains advanced formulas and thrilling tales of thirsty wizards.
 高度な魔法の技術と、知識に飢えた魔法使いのスリリングな物語を収録。
 +5% magic damage. Offhand: Applies passive bonus.
-魔法ダメージ+5%。　オフハンド時：魔法ダメージ+5%。
+魔法ダメージ+5%。　サブウェポン時：魔法ダメージ+5%。
 You find a magical tome.
 魔導書を見つけた。
 Open the book. What can go wrong?
@@ -22055,7 +22220,7 @@ Tome of Bondage
 Contains a malevolent spirit that wishes only to tie up damsels.
 少女を縛るのが大好きな悪鬼が封印されている。
 +10% binding effectiveness. Offhand: Applies passive bonus.
-拘束力+10%。　オフハンド時：拘束力+10%。
+拘束力+10%。　サブウェポン時：拘束力+10%。
 You find a magical tome with a sealed padlock on it.
 錠前が施されている本を見つけた。
 Open the book. What can go wrong?
@@ -22249,7 +22414,7 @@ Barricades set up by enemies do not expire, and enemies set them up even when no
 
 Pass thru helpless allies
 完全拘束された味方を通り過ぎる
-Pass thru helpless allies
+Pass thru helpless enemies
 完全拘束された敵を通り過ぎる
 Pass thru allies
 味方を通り過ぎる
@@ -22854,7 +23019,7 @@ Advanced
 詳細
 
 Exits locked! Find the key!
-出口は塞がっている。鍵を探そう！
+出口には鍵がかかっている。
 Got the key!
 鍵を手に入れた！
 BOSS ROOM
@@ -22865,40 +23030,42 @@ Room bugged. Please Report.
 ！！！バグです、ご報告お願い致します！！！
 
 
-KDVarSuffCursed,(Cursed)
-
-KDVarSuffEvasion,of Agility
-
-KDVarPrefAccuracy,Precise
-
-KDVarPrefSneak,Silent
-
-KDVarPrefAoEDamageFrozen,Blizzard
-
-KDVarSuffSpellWard,of Warding
-
-KDVarSuffBondageResist,of Freedom
-
-KDVarSuffDamageResist,of Resistance
-
-KDVarSuffDamageBuff,of Power
-
-KDVarPrefManaCost,Arcane
-
-KDVarPrefManaCostSpecific,Entuned
-
-KDVarPrefManaRegenOnKill,Draining
-
-KDVarSuffElementalEcho,of Echoes
-
-KDVarPrefElementalDmg,Infused
-
-KDVarPrefManaRegen,Focusing
-
-KDVarSuffBaseDamageBuffMelee,of Empowerment
-
-KDVarSuffBaseDamageBuffMagic,of Destruction
-
+(Cursed)
+(呪われている)
+(Purified)
+(浄化)
+of Agility
+(疾風)
+Precise
+精確の
+Silent
+沈黙の
+Blizzard
+凍てつく
+of Warding
+(呪文)
+of Freedom
+(自由)
+of Resistance
+(抵抗)
+of Power
+(力)
+Arcane
+秘術の
+Entuned
+調律の
+Draining
+吸収の
+of Echoes
+(反響)
+Infused
+属性の
+Focusing
+集中の
+of Empowerment
+(強化)
+of Destruction
+(破壊)
 
 Phase Dance
 フェーズダンス
@@ -23060,7 +23227,7 @@ Your shield absorbed AMNT damage.
 You are currently shielded from damage and some spells.
 盾のおかげでダメージとある程度の魔法を防げる。
 No offhand weapon set. Activate the spell in your hotbar to set one.
-オフハンドに武器を装備していない。二刀流のスキルを使用し、オフハンドに持つ武器を決めよう。
+サブウェポンに武器を装備していない。二刀流のスキルを使用し、サブウェポンに持つ武器を決めよう。
 
 
 
@@ -23161,7 +23328,7 @@ Weapon stamina cost is reduced by a percentage equal to your Battle Rhythm.
 Blade Dance
 ブレードダンス
 Costs 60 stamina to dash to an adjacent spot. If you are holding a physical weapon, deals cleave damage to nearby enemies equal to 50% weapon damage. If you have a Light offhand weapon, deal 75% of its damage as well.
-スタミナを60消費し、指定したポイントまで攻撃しながら走る。物理属性の武器を持っている場合、近くの敵を薙ぎ払い、50%のダメージを与える。オフハンドに軽い武器を持っている場合、威力が75%になる。
+スタミナを60消費し、指定したポイントまで攻撃しながら走る。物理属性の武器を持っている場合、近くの敵を薙ぎ払い、50%のダメージを与える。サブウェポンに軽い武器を持っている場合、威力が75%になる。
 You spin towards a location, slashing at nearby enemies!
 刃を手に舞い踊りながら駆けた！
 Choose target location
@@ -23356,6 +23523,10 @@ Fuuka's Shrine
 フウカの眷属
 Dollmaker
 ドールメイカー
+The Collectors
+コレクター
+
+
 
 Receive the following restraints: 
 次の拘束をされる：
@@ -23490,6 +23661,10 @@ They are made from leather cured from the hide of dragons.
 ドラゴンの革を硬めて作られた拘束具。
 Dragonscale Ankle Cuffs
 竜鱗の足枷
+
+Dragonscale Leg Cuffs
+竜鱗の脚枷
+
 
 Goddess:
 属性：

@@ -64,7 +64,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>0</uint>
+        <uint>2</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -76,7 +76,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-        <uint>0</uint>
+        <uint>2</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -134,7 +134,7 @@
         <key>outputFormat</key>
         <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
         <key>alphaHandling</key>
-        <enum type="SettingsBase::AlphaHandling">ClearTransparentPixels</enum>
+        <enum type="SettingsBase::AlphaHandling">ReduceBorderArtifacts</enum>
         <key>contentProtection</key>
         <struct type="ContentProtection">
             <key>key</key>
@@ -155,7 +155,7 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Fast</enum>
             <key>extrude</key>
-            <uint>0</uint>
+            <uint>1</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>
@@ -1372,6 +1372,10 @@
             <key type="filename">../Models/Mittens/BandRightFree.png</key>
             <key type="filename">../Models/Mittens/BandRightFront.png</key>
             <key type="filename">../Models/Mittens/BandRightYoked.png</key>
+            <key type="filename">../Models/Mittens/ForeLongMittenLeftCrossed.png</key>
+            <key type="filename">../Models/Mittens/ForeLongMittenLeftFront.png</key>
+            <key type="filename">../Models/Mittens/ForeLongMittenRightCrossed.png</key>
+            <key type="filename">../Models/Mittens/ForeLongMittenRightFront.png</key>
             <key type="filename">../Models/Mittens/LatexLeftFree.png</key>
             <key type="filename">../Models/Mittens/LatexLeftFront.png</key>
             <key type="filename">../Models/Mittens/LatexLeftYoked.png</key>
@@ -1394,6 +1398,20 @@
             <key type="filename">../Models/Mittens/LockRightFree.png</key>
             <key type="filename">../Models/Mittens/LockRightFront.png</key>
             <key type="filename">../Models/Mittens/LockRightYoked.png</key>
+            <key type="filename">../Models/Mittens/LongMittenLeftBoxtie.png</key>
+            <key type="filename">../Models/Mittens/LongMittenLeftCrossed.png</key>
+            <key type="filename">../Models/Mittens/LongMittenLeftFree.png</key>
+            <key type="filename">../Models/Mittens/LongMittenLeftFront.png</key>
+            <key type="filename">../Models/Mittens/LongMittenLeftUp.png</key>
+            <key type="filename">../Models/Mittens/LongMittenLeftWristtie.png</key>
+            <key type="filename">../Models/Mittens/LongMittenLeftYoked.png</key>
+            <key type="filename">../Models/Mittens/LongMittenRightBoxtie.png</key>
+            <key type="filename">../Models/Mittens/LongMittenRightCrossed.png</key>
+            <key type="filename">../Models/Mittens/LongMittenRightFree.png</key>
+            <key type="filename">../Models/Mittens/LongMittenRightFront.png</key>
+            <key type="filename">../Models/Mittens/LongMittenRightUp.png</key>
+            <key type="filename">../Models/Mittens/LongMittenRightWristtie.png</key>
+            <key type="filename">../Models/Mittens/LongMittenRightYoked.png</key>
             <key type="filename">../Models/Mittens/PawLeftFree.png</key>
             <key type="filename">../Models/Mittens/PawLeftFront.png</key>
             <key type="filename">../Models/Mittens/PawLeftYoked.png</key>
@@ -1814,6 +1832,8 @@
             <key type="filename">../Models/Sailor/SleeveRightTied.png</key>
             <key type="filename">../Models/Sailor/SleeveRightUp.png</key>
             <key type="filename">../Models/Sailor/SleeveRightYoked.png</key>
+            <key type="filename">../Models/Shades/Frame.png</key>
+            <key type="filename">../Models/Shades/Glass.png</key>
             <key type="filename">../Models/ShadowHands/Arms1.png</key>
             <key type="filename">../Models/ShadowHands/Arms2.png</key>
             <key type="filename">../Models/ShadowHands/Crotch.png</key>

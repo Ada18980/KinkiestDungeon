@@ -904,7 +904,7 @@ function KinkyDungeonDrawPerkOrb() {
 	DrawButtonKDEx("reject", (bdata) => {
 		KinkyDungeonDrawState = "Game";
 		return true;
-	}, true, 1250-1300, 750 + 120 - 1000, 2600, 2000, TextGet("KinkyDungeonPerkReject"), "#ffffff", undefined, undefined, undefined, true, undefined, undefined, undefined,
+	}, true, 1250-1300, 850 + 120 - 1000, 2600, 2000, TextGet("KinkyDungeonPerkReject"), "#ffffff", undefined, undefined, undefined, true, undefined, undefined, undefined,
 	{
 		zIndex: 1,
 		alpha: 0,
@@ -917,7 +917,7 @@ function KinkyDungeonDrawPerkOrb() {
 		}
 		KDPerkConfirm = true;
 		return true;
-	}, true, 1250 - bwidth/2, 750, bwidth, bheight, TextGet("KinkyDungeonPerkAccept" + (KDPerkConfirm ? "Confirm" : "")), "#ffffff",
+	}, true, 1250 - bwidth/2, 850, bwidth, bheight, TextGet("KinkyDungeonPerkAccept" + (KDPerkConfirm ? "Confirm" : "")), "#ffffff",
 	undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
 		zIndex: 70,
 	});

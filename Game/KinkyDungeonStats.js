@@ -1711,13 +1711,14 @@ function KinkyDungeonCalculateSlowLevel(delta) {
  * @param   {boolean} [AllowFlags] - Whether or not flags such as allowPotions and blockPotions should override the final result
  * @return  {number} - The gag level, sum of all gag properties of worn restraints
  */
-function KinkyDungeonGagTotal(AllowFlags) {
+function KinkyDungeonGagTotal(AllowFlags, gagMult = 1) {
+	if (KinkyDungeonStatsChoice.get("SmoothTalker")) gagMult = 0.8;
 	let total = 0;
 	let allow = false;
 	let prevent = false;
 	for (let rest of KinkyDungeonAllRestraintDynamic()) {
 		let inv = rest.item;
-		if (KDRestraint(inv).gag) total += KDRestraint(inv).gag;
+		if (KDRestraint(inv).gag) total += gagMult * KDRestraint(inv).gag;
 		if (KDRestraint(inv).allowPotions) allow = true;
 	}
 	if (AllowFlags) {

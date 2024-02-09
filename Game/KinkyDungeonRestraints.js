@@ -1256,10 +1256,10 @@ function KDGroupBlocked(Group, External) {
 	if (KinkyDungeonPlayerTags.get("ChastityUpper") && ["ItemNipples", "ItemNipplesPiercings"].includes(Group)) return true;
 	if (KinkyDungeonPlayerTags.get("Block_" + Group)) return true;
 
-	if (Group.includes("ItemHands")) {
+	/*if (Group.includes("ItemHands")) {
 		let arms = KinkyDungeonGetRestraintItem("ItemArms");
 		if (arms && !KDIsTreeAccessible(arms)) return true;
-	}
+	}*/
 
 	return false;
 	//let device = null;
@@ -3061,7 +3061,7 @@ function KinkyDungeonUpdateRestraints(delta) {
 		let inv = inv2.item;
 		playerTags.set("Item_"+inv.name, true);
 
-		if ((!inv.faction || KDToggles.ForcePalette) && KDDefaultPalette && KinkyDungeonFactionFilters[KDDefaultPalette]) {
+		if ((!inv.faction || KDToggles.ForcePalette) && (!KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette])) {
 			inv.faction = KDDefaultPalette;
 		}
 
@@ -3214,6 +3214,10 @@ function KDGetLockVisual(item) {
  * @returns {boolean} - Restraint can be added
  */
 function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpower, securityEnemy, useAugmentedPower, curse, augmentedInventory, powerBonus = 0) {
+	if (!restraint) {
+		console.log("Warning: Requested restraint was empty!");
+		return false;
+	}
 	if (!KinkyDungeonIsLockable(restraint)) Lock = "";
 	if (!curse && restraint.curse) curse = restraint.curse;
 	if (restraint.bypass) Bypass = true;
@@ -3480,6 +3484,7 @@ function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, 
 		KDUpdateItemEventCache = true;
 		let lk = linkUnder.dynamicLink;
 		if (!Curse && (Lock)) KinkyDungeonLock(linkUnder.dynamicLink, Lock);
+		else if (restraint.DefaultLock) KinkyDungeonLock(linkUnder.dynamicLink, restraint.DefaultLock);
 		if (inventoryAs) linkUnder.dynamicLink.inventoryVariant = inventoryAs;
 		if (!safeLink) {
 			// Remove the original by iterating down and identifying one we can delete
@@ -4599,6 +4604,7 @@ function KDChooseRestraintFromListGroupPriWithVariants(RestraintList, GroupOrder
 
 
 let KDSlimeParts = {
+	"Collar": {enemyTagSuffix: "Collar",enemyTagExtra: {"livingCollar":10}},
 	"Boots": {},
 	"Feet": {},
 	"Legs": {},
@@ -4609,6 +4615,7 @@ let KDSlimeParts = {
 };
 
 let KDRopeParts = {
+	"Collar": {enemyTagSuffix: "Collar",enemyTagExtra: {"livingCollar":10}},
 	"ArmsBoxtie": {},
 	"ArmsWrist": {},
 	"Cuffs": {},
@@ -4629,6 +4636,7 @@ let KDRopeParts = {
 };
 
 let KDCuffParts = {
+	"Collar": {base: true,},
 	"AnkleCuffs": {base: true, Link: "AnkleCuffs2"},
 	"AnkleCuffs2": {Link: "AnkleCuffs3", UnLink: "AnkleCuffs"}, //, ModelSuffix: "Chained"
 	"AnkleCuffs3": {UnLink: "AnkleCuffs2"},
@@ -4673,10 +4681,11 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 			let enemyTags = {};
 			if (cuffInfo.base) {
 				enemyTags[tagBase + (part[1].enemyTagSuffix || "Cuffs")] = baseWeight;
-				if (!noGeneric)
+				if (!noGeneric) {
 					enemyTags[tagBase + ("Restraints")] = baseWeight;
-				enemyTags[tagBase + ("LessCuffs")] = 0.1 - baseWeight;
-				enemyTags[tagBase + ("NoCuffs")] = -1000;
+					enemyTags[tagBase + ("LessCuffs")] = 0.1 - baseWeight;
+					enemyTags[tagBase + ("NoCuffs")] = -1000;
+				}
 				if (extraTags) {
 					for (let t of Object.entries(extraTags)) {
 						enemyTags[t[0]] = t[1];
@@ -4703,6 +4712,7 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 				events: cuffInfo.base ? [...extraEvents, ...(origRestraint.events || [])] : [...(origRestraint.events || [])],
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
+				cloneTag: tagBase,
 			};
 			if (cuffInfo.Link) props.Link = idSuffix + cuffInfo.Link;
 			if (cuffInfo.UnLink) props.UnLink = idSuffix + cuffInfo.UnLink;
@@ -4775,6 +4785,12 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 			/** @type {Record<string, number>} */
 			let enemyTags = {};
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
+			if (part[1].enemyTagExtra) {
+				for (let tag in part[1].enemyTagExtra) {
+					enemyTags[tag] = part[1].enemyTagExtra[tag];
+				}
+			}
+
 
 
 			/** @type {Record<string, number>} */
@@ -4794,6 +4810,7 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 				events: [...extraEvents, ...(origRestraint.events || [])],
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
+				cloneTag: tagBase,
 			};
 			if (Filters && props.Filters) {
 				for (let layer of Object.keys(Filters)) {
@@ -4845,6 +4862,12 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 			let enemyTags = {};
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "") + "Random"] = baseWeight + 3;
+			if (part[1].enemyTagExtra) {
+				for (let tag in part[1].enemyTagExtra) {
+					enemyTags[tag] = part[1].enemyTagExtra[tag];
+				}
+			}
+
 			let shrine = [ ...allTag,...KDGetRestraintTags(origRestraint)];
 			for (let t of removeTag) {
 				if (shrine.includes(t)) shrine.splice(shrine.indexOf(t), 1);
@@ -4858,6 +4881,7 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 				events: JSON.parse(JSON.stringify([...extraEvents, ...(origRestraint.events || [])])),
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
+				cloneTag: tagBase,
 			};
 			if (Filters && props.Filters) {
 				for (let layer of Object.keys(Filters)) {
@@ -5190,7 +5214,9 @@ function KDDynamicLinkListSurface(item) {
 		let inv = tuple.item;
 		let host = tuple.host;
 		if (!inaccess && KDRestraint(host).inaccessible) inaccess = true;
-		if ( KDRestraint(host).alwaysAccessible || (
+		if (!inaccess && KDRestraint(inv).alwaysInaccessible) inaccess = true;
+
+		if ( KDRestraint(inv).alwaysAccessible || (
 			!inaccess
 			&&
 			(

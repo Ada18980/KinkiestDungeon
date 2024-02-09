@@ -390,6 +390,8 @@
             <key type="filename">../Game/Bullets/LatexBubble.png</key>
             <key type="filename">../Game/Bullets/LatexBubbleHit.png</key>
             <key type="filename">../Game/Bullets/LatexBubbleTrail.png</key>
+            <key type="filename">../Game/Bullets/LatexBubbleexp.png</key>
+            <key type="filename">../Game/Bullets/LatexBubbleexpHit.png</key>
             <key type="filename">../Game/Bullets/LatexGagBolt.png</key>
             <key type="filename">../Game/Bullets/LatexGagBoltHit.png</key>
             <key type="filename">../Game/Bullets/LatexLegbinderBolt.png</key>
@@ -1152,6 +1154,7 @@
             <key type="filename">../Game/Enemies/WallDoor.png</key>
             <key type="filename">../Game/Enemies/Water.png</key>
             <key type="filename">../Game/Enemies/WaterMote.png</key>
+            <key type="filename">../Game/Enemies/WitchAqua.png</key>
             <key type="filename">../Game/Enemies/WitchChain.png</key>
             <key type="filename">../Game/Enemies/WitchEarth.png</key>
             <key type="filename">../Game/Enemies/WitchFlame.png</key>
@@ -2690,6 +2693,12 @@
             <key type="filename">../Game/Bullets/BombHit.png</key>
             <key type="filename">../Game/Bullets/BoundByFate.png</key>
             <key type="filename">../Game/Bullets/BoundByFateHit.png</key>
+            <key type="filename">../Game/Bullets/BubbleBurst.png</key>
+            <key type="filename">../Game/Bullets/BubbleBurstHit.png</key>
+            <key type="filename">../Game/Bullets/BubbleBurstLatex.png</key>
+            <key type="filename">../Game/Bullets/BubbleBurstLatexHit.png</key>
+            <key type="filename">../Game/Bullets/BubbleBurstSlime.png</key>
+            <key type="filename">../Game/Bullets/BubbleBurstSlimeHit.png</key>
             <key type="filename">../Game/Bullets/DarkShroud.png</key>
             <key type="filename">../Game/Bullets/DarkShroudHit.png</key>
             <key type="filename">../Game/Bullets/Earthfield.png</key>
@@ -2778,6 +2787,8 @@
             <key type="filename">../Game/Bullets/RuneTrap_ChainHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Latex.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_LatexHit.png</key>
+            <key type="filename">../Game/Bullets/RuneTrap_LatexSphere.png</key>
+            <key type="filename">../Game/Bullets/RuneTrap_LatexSphereHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Leather.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_LeatherHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Ribbon.png</key>
@@ -2840,6 +2851,8 @@
             <key type="filename">../Game/Bullets/TrapCrystal.png</key>
             <key type="filename">../Game/Bullets/TrapCrystalHit.png</key>
             <key type="filename">../Game/Bullets/TrapLatex.png</key>
+            <key type="filename">../Game/Bullets/TrapLatexBubble.png</key>
+            <key type="filename">../Game/Bullets/TrapLatexBubbleHit.png</key>
             <key type="filename">../Game/Bullets/TrapLatexHit.png</key>
             <key type="filename">../Game/Bullets/TrapLeatherWeak.png</key>
             <key type="filename">../Game/Bullets/TrapLeatherWeakHit.png</key>
@@ -3221,8 +3234,11 @@
             <key type="filename">../Game/Items/Restraint/SteelArmor.png</key>
             <key type="filename">../Game/Items/Restraint/SteelBoots.png</key>
             <key type="filename">../Game/Items/Restraint/SteelSkirt.png</key>
+            <key type="filename">../Game/Items/Restraint/Sunglasses.png</key>
+            <key type="filename">../Game/Items/Restraint/Sunglasses2.png</key>
             <key type="filename">../Game/Items/Restraint/Thumbcuffs.png</key>
             <key type="filename">../Game/Items/Restraint/WolfCuffs.png</key>
+            <key type="filename">../Game/Items/Sunglasses.png</key>
             <key type="filename">../Game/Outfits/BlueSuit.png</key>
             <key type="filename">../Game/Outfits/Default.png</key>
             <key type="filename">../Game/Outfits/Dragon.png</key>

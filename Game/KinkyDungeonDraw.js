@@ -879,6 +879,8 @@ function KinkyDungeonDrawGame() {
 				KDRepSelectionMode = "";
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
+				KinkyDungeonCheckClothesLoss = true;
+				KinkyDungeonDressPlayer();
 			}
 		}
 	}
@@ -1433,9 +1435,21 @@ function KinkyDungeonDrawGame() {
 
 			}
 
-			if (StandalonePatched)
+			if (StandalonePatched) {
+				if (KDBGColor) {
+					FillRectKD(kdcanvas, kdpixisprites, "playerbg", {
+						Left: 0,
+						Top: 0,
+						Width: 500,
+						Height: 1000,
+						Color: KDBGColor,
+						zIndex: -1,
+						alpha: StandalonePatched ? KDUIAlpha : 0.01,
+					});
+				}
 				DrawCharacter(KinkyDungeonPlayer, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, KDToggles.FlipPlayer);
 
+			}
 			if (KinkyDungeonSleepiness) {
 				CharacterSetFacialExpression(KinkyDungeonPlayer, "Emoticon", "Sleep");
 			} else CharacterSetFacialExpression(KinkyDungeonPlayer, "Emoticon", null);
@@ -3163,7 +3177,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 
 						if (KinkyDungeonTilesGet(RX + "," + RY).Label && KinkyDungeonTilesGet(RX + "," + RY).required)
 							DrawTextFitKD(KinkyDungeonTilesGet(RX + "," + RY).required[0], (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/1.5, KinkyDungeonGridSizeDisplay, "#aaaaaA");
-						if (KDMapData.Traffic[RY][RX])
+						if (KDMapData.Traffic[RY][RX] && KinkyDungeonState == "Game")
 							DrawTextFitKD("traffic_" + KDMapData.Traffic[RY][RX], (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/3, KinkyDungeonGridSizeDisplay, "#55ff55");
 
 						if (KinkyDungeonTilesGet(RX + "," + RY).OffLimits)

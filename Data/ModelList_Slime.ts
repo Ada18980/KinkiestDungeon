@@ -354,12 +354,14 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
-		{ Name: "HandLeft", Layer: "BindHandLeft", Pri: 15,
+		{ Name: "HandLeft", Layer: "MittenLeft", Pri: 15,
 			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie", "Yoked"]),
-			SwapLayerPose: {Front: "BindForeHandLeft"},
+			SwapLayerPose: {Front: "ForeMittenLeft"},
 			HidePoses: ToMap(["HideHands"]),
 			GlobalDefaultOverride: ToMap(["Front"]),
 			InheritColor: "Slime",
+			EraseSprite: "Mitts",
+			EraseLayers: ToMap(["Mitts"]),
 			AddPriWithPose: {
 				ItemHandsRubberOver: 45,
 			},
@@ -378,9 +380,9 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
-		{ Name: "HandRight", Layer: "BindHandRight", Pri: 15,
+		{ Name: "HandRight", Layer: "MittenRight", Pri: 15,
 			Poses: ToMap(["Free", "Boxtie", "Front", "Up", "Wristtie", "Yoked"]),
-			SwapLayerPose: {Front: "BindForeHandRight"},
+			SwapLayerPose: {Front: "ForeMittenRight"},
 			HidePoses: ToMap(["HideHands"]),
 			GlobalDefaultOverride: ToMap(["Front"]),
 			InheritColor: "Slime",

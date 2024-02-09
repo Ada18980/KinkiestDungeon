@@ -68,6 +68,35 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		}
 		]
 	},
+	BubbleHogtie: {
+		filter_pose: ["Hogtie"],
+		rotation: -90,
+		pri_rotation: 1.1,
+		offset_x: .5,
+		offset_xFlip: .1,
+		pri_offsetx: 6,
+		offset_y: 0.1,
+		pri_offsety: 3,
+		global_default: "Closed",
+		mods: [
+		{
+			Layer: "Head",
+			rotation: -30,
+			rotation_x_anchor: 1190/MODELWIDTH,
+			rotation_y_anchor: 690/MODELHEIGHT,
+			offset_x: 1190/MODELWIDTH,
+			offset_y: 690/MODELHEIGHT,
+		},
+		{
+			Layer: "BG",
+			rotation: -90,
+			rotation_x_anchor: .5,
+			rotation_y_anchor: .5,
+			offset_x: .5,
+			offset_y: .4,
+		}
+		]
+	},
 	SuspendedHogtie: {
 		filter_pose: ["Hogtie"],
 		rotation: 0,
@@ -100,8 +129,9 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 	Hogtie: {
 		rotation: -90,
 		pri_rotation: 1,
-		offset_x: 0.32,
-		offset_y: 0.1,
+		offset_x: 0.52,
+		offset_xFlip: 0.17,
+		offset_y: 0.2,
 		pri_offsetx: 2,
 		pri_offsety: 2,
 		global_default: "Closed",
@@ -126,6 +156,7 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		}
 		],
 	},
+
 
 	SuspendedKneel: {
 		filter_pose: ["Kneel", "KneelClosed"],
@@ -155,6 +186,7 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 	},
 	ShiftRight: {
 		offset_x: .2,
+		offset_xFlip: -0.2,
 		pri_offsetx: 5,
 	},
 	Kneel: {
@@ -184,6 +216,13 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		global_default: "Kneel",
 		mods: [{
 			Layer: "ShoeLeft",
+			rotation: -5.84,
+			rotation_x_anchor: 915/MODELWIDTH,
+			rotation_y_anchor: 2160/MODELHEIGHT,
+			offset_x: 915/MODELWIDTH,
+			offset_y: 2160/MODELHEIGHT,
+		},{
+			Layer: "StockingLeftKneel",
 			rotation: -5.84,
 			rotation_x_anchor: 915/MODELWIDTH,
 			rotation_y_anchor: 2160/MODELHEIGHT,
@@ -229,10 +268,9 @@ function ModelGetMaxPose(Poses: {[_: string]: boolean}, CheckVar: string, Filter
 	return maxPose;
 }
 
-function ModelGetPoseOffsets(Poses: {[_: string]: boolean}) {
+function ModelGetPoseOffsets(Poses: {[_: string]: boolean}, Flip: boolean) {
 	let pose = ModelGetMaxPose(Poses, "pri_offsetx");
-	let x = 0;
-	if (PoseProperties[pose]?.offset_x) x = PoseProperties[pose]?.offset_x;
+	let x = (Flip ? PoseProperties[pose]?.offset_xFlip : 0) || PoseProperties[pose]?.offset_x || 0;
 	pose = ModelGetMaxPose(Poses, "pri_offsety");
 	let y = 0;
 	if (PoseProperties[pose]?.offset_y) y = PoseProperties[pose]?.offset_y;
@@ -348,9 +386,9 @@ function KDGetAvailablePosesLegs(C: Character): string[] {
 
 	if (Object.keys(poses).length == 0) {
 		if (CheckPoseOrTags(C, "DefaultStand")) {
-			poses = {Hogtie: true};
+			poses = {Closed: true};
 		} else if (CheckPoseOrTags(C, "DefaultKneel")) {
-			poses = {Hogtie: true};
+			poses = {Kneel: true};
 		} else {
 			poses = {Hogtie: true};
 		}
@@ -485,6 +523,10 @@ function KDRefreshPoseOptions(Character: Character) {
 	if (KDToggles.ChastityOption) {
 		KDCurrentModels.get(Character).TempPoses.ChastityOption = true;
 		KDCurrentModels.get(Character).Poses.ChastityOption = true;
+	}
+	if (KinkyDungeonDrawState != "Game" || KinkyDungeonState != "Game") {
+		KDCurrentModels.get(Character).TempPoses.Menu = true;
+		KDCurrentModels.get(Character).Poses.Menu = true;
 	}
 	if (KDToggles.ChastityOption2) {
 		KDCurrentModels.get(Character).TempPoses.ChastityOption2 = true;

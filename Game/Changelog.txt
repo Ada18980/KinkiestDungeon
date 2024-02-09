@@ -28,12 +28,42 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.1.0
+ - Added Loot Recovery challenge mode
+ - Added Aqua Slime and related restraints
+ - Hopefully fixed shrine scarcity on bellows
+
+5.1.15
+ - Tweaked future harness lower
+ - Force restraints to use palette now applies to None palette
+ - New enemy: Aqua Witch
+ - Alkahestor and Slime Witch now have bubble attacks
+
+5.1.14
+ - Fixed Red Binding Dress coloring
+ - Added Living Collars perk by Aelie
+ - Lowered damage of tease attacks
+ - Fixed () in damage reports
+
 5.1.13
  - New auto mod loader, simply place mods in Mods/ folder to load
  - Fiddles, yokes added to prison
  - Prison now mildly respects armbinder/boxbinder preferences (specifically if you do Less_Armbinders it will filter out armbinders from prison)
  - Slime Eruption damage reduced from 50 to 40
  - Slime Blast damage reduced from 40 to 35
+ - Added sunglasses
+ - Enemies fighting you have a harder time using tease attacks
+ - Enemies playing with you have an easier time using tease attacks
+ - Added Miku and Royal palette
+ - RC2: More bug fixes
+ - RC3: Added Nevermere palette
+ - RC3: Fix full defeat when an leash walker takes you back to jail
+ - RC3: Fix some clipping with legs
+ - RC3: Add more restraints to goddess quest punishments
+ - RC3: Fix vibration particles in wrong position when player is flipped by option
+ - RC3: Fix player flipped wrong in hogtie when player is flipped by option
+ - RC4: Add HUD player background
+ - RC4: Add bubble traps
 
 5.1.12
  - Added a global cooldown on tease attacks as well as a per enemy cooldown

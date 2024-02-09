@@ -182,7 +182,9 @@ let KDDialogueTriggers = {
 	"FuukaLose": KDBossLose("FuukaLose", ["Fuuka1", "Fuuka2"], undefined, () => {
 		return KinkyDungeonSlowLevel > 9; // Player immobilized
 	}),
-	"DollmakerLose1": KDBossLose("DollmakerLose", ["DollmakerBoss1"], ["controlharness", "dollmakerrestraints", "leashing"]),
+	"TheWarden": KDBossTrigger("TheWarden", ["TheWarden1", "TheWarden2"]),
+	"TheWardenLose": KDBossLose("TheWardenLose", ["TheWarden1", "TheWarden2"], undefined),
+	"DollmakerLose1": KDBossLose("DollmakerLose", ["DollmakerBoss1"], ["leatherRestraintsHeavy", "leatherRestraints", "highsec", "leashing"]),
 	"DollmakerLose2": KDBossLose("DollmakerLose", ["DollmakerBoss2", "DollmakerBoss3"], ["controlharness", "cyberdollrestraints", "dollmakerrestraints"]),
 	"Dollmaker": KDBossTrigger("Dollmaker", ["DollmakerBoss1", "DollmakerBoss2", "DollmakerBoss3"]),
 };

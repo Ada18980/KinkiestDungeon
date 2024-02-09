@@ -166,9 +166,10 @@ function KDDrawSelectedCollectionMember(value, x, y, index) {
 			ForceRefreshModels(KDSpeakerNPC);
 			KDOriginalValue = "";
 			KDWardrobeCallback = () => {
-				if (KDOriginalValue) {
-					value.customOutfit = LZString.compressToBase64(CharacterAppearanceStringify(KDSpeakerNPC));
-				}
+				let value2 = value;
+				//if (KDOriginalValue) {
+				value2.customOutfit = LZString.compressToBase64(CharacterAppearanceStringify(KDSpeakerNPC));
+				//}
 			};
 			if (value.customOutfit) {
 				let outfit = value.customOutfit;

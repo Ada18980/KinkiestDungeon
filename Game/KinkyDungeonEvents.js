@@ -222,6 +222,29 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		/**
+		 * @param {KDEventData_PostApply} data
+		*/
+		"BubbleCombine": (e, item, data) => {
+			KinkyDungeonUpdateRestraints(0);
+			if ((KinkyDungeonPlayerTags.get("CombineBubble1") || KDRestraint(item)?.shrine?.includes("CombineBubble1"))
+				&& (KinkyDungeonPlayerTags.get("CombineBubble2") || KDRestraint(item)?.shrine?.includes("CombineBubble2"))
+				&& (KinkyDungeonPlayerTags.get("CombineBubble3") || KDRestraint(item)?.shrine?.includes("CombineBubble3"))) {
+					for (let inv of KinkyDungeonAllRestraintDynamic()) {
+						let restraint = KDRestraint(inv.item);
+						if (restraint) {
+							if (restraint.shrine?.includes("CombineBubble1")
+								|| restraint.shrine?.includes("CombineBubble2")
+								|| restraint.shrine?.includes("CombineBubble3")) {
+									KinkyDungeonRemoveRestraintSpecific(inv.item, true, true, true);
+								}
+						}
+					}
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("Bubble"), 10, true, "", true);
+					KinkyDungeonSendTextMessage(7, TextGet("KDBubbleCombine"), "#4477ee", 4);
+			}
+		},
+
 		"NoYoke": (e, item, data) => {
 			if (item == data.item && KinkyDungeonPlayerTags.get("Yoked"))
 				KinkyDungeonRemoveRestraintSpecific(item, true, true);
@@ -618,6 +641,21 @@ let KDEventMapInventory = {
 				} else {
 					KDRemoveThisItem(item);
 					KinkyDungeonSendTextMessage(4, TextGet("KDDamageModule").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+				}
+			}
+		},
+
+		"bubblePop": (e, item, data) => {
+			if (['pierce'].includes(KDDamageEquivalencies[data.type] || data.type) && data.dmg > 0) {
+				let alreadyDone = KDItemDataQuery(item, "popDamage") || 0;
+				if (alreadyDone < e.count) {
+					alreadyDone += e.mult * data.dmg;
+					KDItemDataSet(item, "popDamage", alreadyDone);
+					KinkyDungeonMakeNoise(14, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+					KinkyDungeonSendTextMessage(4, TextGet("KDDamageBubbleProgress").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+				} else {
+					KDRemoveThisItem(item);
+					KinkyDungeonSendTextMessage(4, TextGet("KDDamageBubble").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
 				}
 			}
 		},
@@ -1121,8 +1159,13 @@ let KDEventMapInventory = {
 		},
 		"callGuardFurniture": (e, item, data) => {
 			if (!data.delta) return;
-			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < (e.chance ? e.chance : 0.1)) {
-				KinkyDungeonSetFlag("GuardCalled", 35);
+			if (!KinkyDungeonFlags.get("GuardCallBlock")) {
+				// Wont call a guard in first 45 turns
+				KinkyDungeonSetFlag("GuardCallBlock", 400);
+				KinkyDungeonSetFlag("GuardCalled", 45);
+			}
+			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < (e.chance ? e.chance : 0.05)) {
+				KinkyDungeonSetFlag("GuardCalled", 45);
 				console.log("Attempting to call guard");
 				if (KDMapData.Entities.length < 400 || KDGameData.CagedTime > KDMaxCageTime) {
 					console.log("Called guard");
@@ -1172,7 +1215,63 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		"livingRestraints": (e, item, data) => {
+			if (data.delta <= 0) return;
+			let timer = KDItemDataQuery(item, "livingTimer") || 0;
+			let freq = KDItemDataQuery(item, "livingFreq") || e.frequencyMax;
+			if (timer < freq) {
+				timer = timer + 1;
+				KDItemDataSet(item, "livingTimer", timer);
+				return;
+			}
+			KDItemDataSet(item, "livingTimer", 0);
 
+			let newtags = [];
+			if (!KDRestraint(item).cloneTag) {
+				newtags = e.tags;
+			} else {
+				newtags.push(KDRestraint(item).cloneTag);
+				for (let tag in e.cloneTags) {
+					newtags.push(KDRestraint(item).cloneTag + tag);
+				}
+			}
+
+			let r = KinkyDungeonGetRestraint({tags: newtags}, 24, "grv", true, undefined);
+			if (r) {
+				KinkyDungeonAddRestraintIfWeaker(r, 8, true, undefined, false, undefined, undefined, undefined, true);
+				let newitem = r;
+				for (let j = 0; j < 2; j++) {
+					if (newitem && newitem.Link) {
+						let newRestraint = KinkyDungeonGetRestraintByName(newitem.Link);
+						KinkyDungeonAddRestraintIfWeaker(newRestraint, 8, true, undefined, undefined, undefined, undefined, undefined, true);
+						newitem = newRestraint;
+					}
+				}
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingSpread").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)).replace("+RestraintAdded", TextGet("Restraint" + newitem.name)), "lightblue", 2);
+			}
+
+			//Spread accelerates as you get more of that type
+			let frequency = e.frequencyMax;
+
+			for (let inv of KinkyDungeonAllRestraintDynamic()) {
+				let found = false;
+				for (let tag of newtags) {
+					if (KDRestraint(inv.item).enemyTags[tag] != undefined) {
+						found = true;
+						break;
+					}
+				}
+				if (found) {
+					frequency *= e.frequencyStep;
+				}
+			}
+			frequency = Math.floor(frequency);
+
+			if (frequency < e.frequencyMin)
+				frequency = e.frequencyMin;
+			KDItemDataSet(item, "livingFreq", frequency);
+
+		},
 		"ApplyConduction": (e, item, data) => {
 			let bb = Object.assign({}, KDConduction);
 			if (e.duration) bb.duration = e.duration;
@@ -1443,7 +1542,7 @@ let KDEventMapInventory = {
 			if ((data.attack && data.attack.includes("Bind") && (!data.enemy || data.enemy.Enemy.bound) && !data.attack.includes("Suicide"))) {
 				KDLinkItemEvent(e, item, data);
 			}
-		}
+		},
 	},
 	"beforePlayerDamage": {
 		"RemoveOnDmg": (e, item, data) => {
@@ -1466,6 +1565,23 @@ let KDEventMapInventory = {
 						KinkyDungeonSendTextMessage(5, TextGet("KDRemoveOnDmgType").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
 					} else {
 						KinkyDungeonSendTextMessage(5, TextGet("KDRemoveOnDmgTypePartial").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightgreen", 2);
+					}
+				}
+			}
+		},
+		"bounce": (e, item, data) => {
+			if (data.type && data.type != "pierce" && data.type != "glue" && !KinkyDungeonTeaseDamageTypes.includes(data.type) && data.dmg) {
+				let chance = e.chance ? e.chance * data.dmg : 1.0;
+				if (item && KDRandom() < chance) {
+					let prereq = KDEventPrereq(e.requiredTag);
+					if (prereq) {
+						let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true, true);
+						if (point && !KinkyDungeonEnemyAt(point.x, point.y)) {
+							KDMovePlayer(point.x, point.y, false, false, true, true);
+							KinkyDungeonSendTextMessage(5, TextGet("KDBubbleBounce"), "#ffffff", 2);
+
+						}
+						if (KDToggles.Sound && e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 					}
 				}
 			}
@@ -7881,6 +7997,10 @@ let KDEventMapGeneric = {
 			// This event adds tags to enemy tag determination based on perk prefs
 			if (KinkyDungeonStatsChoice.get("TapePref")) data.tags.push("tapePref");
 			else if (KinkyDungeonStatsChoice.get("TapeOptout")) data.tags.push("tapeOptout");
+			if (KinkyDungeonStatsChoice.get("SlimePref")) data.tags.push("slimePref");
+			else if (KinkyDungeonStatsChoice.get("SlimeOptout")) data.tags.push("slimeOptout");
+			if (KinkyDungeonStatsChoice.get("BubblePref")) data.tags.push("bubblePref");
+			else if (KinkyDungeonStatsChoice.get("BubbleOptout")) data.tags.push("bubbleOptout");
 		}
 	},
 	"postMapgen": {

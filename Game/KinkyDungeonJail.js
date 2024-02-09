@@ -386,19 +386,39 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 	let currentItem = KinkyDungeonGetRestraintItem(Group);
 	// Try first with ones that are linkable
 	if (currentItem) {
+		// Go for priority candidates first
 		for (let r of KDGetJailRestraints()) {
 			let level = 0;
 			if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
 			if (!r.Level || level >= r.Level) {
 				let candidate = KinkyDungeonGetRestraintByName(r.Name);
 				if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
-					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
+					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r)) && KDPriorityCondition(r)) {
 						if (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), candidate)) {
 							cand = candidate;
 							variant = r.Variant;
 							candLevel = candidate.nonbinding ? 0 : r.Level;
 						}
 
+					}
+				}
+			}
+		}
+		if (!cand) {
+			for (let r of KDGetJailRestraints()) {
+				let level = 0;
+				if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
+				if (!r.Level || level >= r.Level) {
+					let candidate = KinkyDungeonGetRestraintByName(r.Name);
+					if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
+						if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
+							if (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), candidate)) {
+								cand = candidate;
+								variant = r.Variant;
+								candLevel = candidate.nonbinding ? 0 : r.Level;
+							}
+
+						}
 					}
 				}
 			}
@@ -412,7 +432,7 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 			if (!r.Level || level >= r.Level) {
 				let candidate = KinkyDungeonGetRestraintByName(r.Name);
 				if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
-					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
+					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r)) && KDPriorityCondition(r)) {
 						cand = candidate;
 						variant = r.Variant;
 						candLevel = candidate.nonbinding ? 0 : r.Level;
@@ -420,6 +440,21 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 				}
 			}
 		}
+		if (!cand)
+			for (let r of KDGetJailRestraints()) {
+				let level = 0;
+				if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
+				if (!r.Level || level >= r.Level) {
+					let candidate = KinkyDungeonGetRestraintByName(r.Name);
+					if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
+						if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
+							cand = candidate;
+							variant = r.Variant;
+							candLevel = candidate.nonbinding ? 0 : r.Level;
+						}
+					}
+				}
+			}
 	}
 	return {restraint: cand, variant: variant};
 }
@@ -435,6 +470,19 @@ function KDJailCondition(r) {
 	}
 	return true;
 }
+
+/**
+ *
+ * @param {KDJailRestraint} r
+ * @returns {boolean}
+ */
+function KDPriorityCondition(r) {
+	if (r.Priority && KDJailConditions[r.Priority]) {
+		return KDJailConditions[r.Priority](r);
+	}
+	return false;
+}
+
 
 function KinkyDungeonGetJailRestraintLevelFor(Name) {
 	for (let r of KDGetJailRestraints()) {
@@ -692,6 +740,29 @@ function KinkyDungeonTooMuchRestraint() {
 
 /**
  *
+ * @param {entity} player
+ * @param {entity} enemy
+ */
+function KDPutInJail(player, enemy) {
+	let entity = enemy ? enemy : player;
+	let nearestJail = KinkyDungeonNearestJailPoint(entity.x, entity.y);
+	let jailRadius = (nearestJail && nearestJail.radius) ? nearestJail.radius : 1.5;
+	let playerInCell = nearestJail ? (Math.abs(player.x - nearestJail.x) < jailRadius - 1 && Math.abs(player.y - nearestJail.y) <= jailRadius)
+		: null;
+	if (!playerInCell) {
+		let point = {x: nearestJail.x, y: nearestJail.y};//KinkyDungeonGetNearbyPoint(nearestJail.x, nearestJail.y, true, undefined, true);
+		if (point) {
+			KDBreakTether(player);
+			if (player.player)
+				KDMovePlayer(point.x, point.y, false);
+			else
+				KDMoveEntity(player, point.x, point.y, false);
+		}
+	}
+}
+
+/**
+ *
  * @param {number} xx
  * @param {number} yy
  * @param {string} type
@@ -707,17 +778,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 			KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
 		}
 		KDGameData.KinkyDungeonPrisonExtraGhostRep += 2;
-		let entity = KinkyDungeonJailGuard() ? KinkyDungeonJailGuard() : KinkyDungeonPlayerEntity;
-		let nearestJail = KinkyDungeonNearestJailPoint(entity.x, entity.y);
-		let jailRadius = (nearestJail && nearestJail.radius) ? nearestJail.radius : 1.5;
-		let playerInCell = nearestJail ? (Math.abs(KinkyDungeonPlayerEntity.x - nearestJail.x) < jailRadius - 1 && Math.abs(KinkyDungeonPlayerEntity.y - nearestJail.y) <= jailRadius)
-			: null;
-		if (!playerInCell) {
-			let point = {x: nearestJail.x, y: nearestJail.y};//KinkyDungeonGetNearbyPoint(nearestJail.x, nearestJail.y, true, undefined, true);
-			if (point) {
-				KDMovePlayer(point.x, point.y, false);
-			}
-		}
+		KDPutInJail(KinkyDungeonPlayerEntity, KinkyDungeonJailGuard());
 
 		if (KinkyDungeonJailGuard()?.KinkyDungeonJailTourInfractions < 1) {
 			let item = "CookieJailer";
@@ -1076,6 +1137,60 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 	KinkyDungeonSaveGame();
 }
 
+function KDApplyLivingCollars() {
+	let options = {ApplyVariants: true, allowLowPower: true};
+	let collars = KDGetRestraintsEligible({tags: ["livingCollar"]}, 24, "grv", true, undefined, undefined, undefined, undefined, undefined, true, undefined, undefined, undefined, undefined, undefined, undefined, undefined, options);
+	let eligible = [];
+	for (let item of collars) {
+		let collar = item.restraint;
+		let events = collar.events;
+		for (let e of events) {
+			if (e.type == "livingRestraints") {
+				let newtags = [];
+				if (!collar.cloneTag) {
+					newtags = e.tags;
+				} else {
+					newtags.push(collar.cloneTag);
+					for (let tag of e.cloneTags) {
+						newtags.push(collar.cloneTag + tag);
+					}
+				}
+				let count = 0;
+				for (let inv of KinkyDungeonAllRestraintDynamic()) {
+					let found = false;
+					for (let tag of newtags) {
+						if (KDRestraint(inv.item).enemyTags[tag] != undefined) {
+							found = true;
+							break;
+						}
+					}
+					if (found) {
+						count++;
+					}
+				}
+				if (count >= e.count) {
+					eligible.push(collar);
+				}
+			}
+		}
+	}
+	if (eligible.length == 0)
+		return;
+
+	if (KinkyDungeonStatsChoice.has("TightRestraints")) {
+		for (let item of eligible) {
+			if (KinkyDungeonAddRestraintIfWeaker(item, 8, true, undefined, false, undefined, undefined, undefined, true)) {
+				KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonLivingAppear").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightblue", 2);
+			}
+		}
+	} else {
+		let item = eligible[Math.floor(KDRandom() * eligible.length)];
+		if (KinkyDungeonAddRestraintIfWeaker(item, 8, true, undefined, false, undefined, undefined, undefined, true)) {
+			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonLivingAppear").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightblue", 2);
+		}
+	}
+}
+
 function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	KinkyDungeonInterruptSleep();
 
@@ -1110,6 +1225,9 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	KDGameData.JailRemoveRestraintsTimer = 0;
 	//MiniGameKinkyDungeonLevel = Math.min(MiniGameKinkyDungeonLevel, Math.max(Math.floor(MiniGameKinkyDungeonLevel/10)*10, MiniGameKinkyDungeonLevel - KinkyDungeonSpawnJailers + KinkyDungeonSpawnJailersMax - 1));
 	KinkyDungeonSendEvent("defeat", {});
+
+	if (KinkyDungeonStatsChoice.get("LivingCollars"))
+		KDApplyLivingCollars();
 
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if ((KDRestraint(inv).removePrison || KDRestraint(inv).forceRemovePrison) && (!KinkyDungeonStatsChoice.get("KinkyPrison") || KDRestraint(inv).forceRemovePrison || KDRestraint(inv).removeOnLeash || KDRestraint(inv).freeze || KDRestraint(inv).immobile)) {
@@ -1241,13 +1359,13 @@ function KDKickEnemies(nearestJail, ignoreAware) {
 	let enemies = [];
 	let already = new Map();
 	for (let e of  KDMapData.Entities) {
-		if (!e.Enemy.tags.temporary && !KDIsImmobile(e) && e.spawnX && e.spawnY) {
+		if (!e.Enemy?.tags.temporary && !KDIsImmobile(e) && e.spawnX && e.spawnY) {
 			if (e.aware && KDHostile(e) && KinkyDungeonCheckLOS(e, KinkyDungeonPlayerEntity, KDistEuclidean(e.x - KinkyDungeonPlayerEntity.x, e.y - KinkyDungeonPlayerEntity.y),
 				10, true, false)) {
 				atLeastOneAware = true;
 			} else e.aware = false;
 			if (!ignoreAware || !e.aware)
-				if (!nearestJail || (e.x == nearestJail.x && e.y == nearestJail.y) || (!e.Enemy.tags.prisoner && !e.Enemy.tags.peaceful && !KDEnemyHasFlag(e, "imprisoned"))) {
+				if (!nearestJail || (e.x == nearestJail.x && e.y == nearestJail.y) || (!e.Enemy.tags?.prisoner && !e.Enemy.tags?.peaceful && !KDEnemyHasFlag(e, "imprisoned"))) {
 					if (!nearestJail || KDistChebyshev(e.x - nearestJail.x, e.y - nearestJail.y) <= 4 || (e.aware || e.vp > 0.01 || e.aggro > 0)) {
 						e.x = e.spawnX;
 						e.y = e.spawnY;
@@ -1523,7 +1641,7 @@ let KDCustomDefeatUniforms = {
 		KinkyDungeonAddRestraintIfWeaker("CyberMuzzle", 5, true, "Red", false, undefined, undefined, "Dollsmith", true);
 		//KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
 
-
+		KinkyDungeonAddRestraintIfWeaker("CyberMittens", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
 
 		KinkyDungeonAddRestraintIfWeaker("CyberArmCuffs", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
 		KinkyDungeonAddRestraintIfWeaker("CyberLegCuffs", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
@@ -1570,10 +1688,10 @@ let KDCustomDefeatUniforms = {
 				}
 			}
 		}
-		let outfit = {name: "Obsidian", id: KinkyDungeonGetItemID(), type: Outfit};
-		if (!KinkyDungeonInventoryGet("Obsidian")) KinkyDungeonInventoryAdd(outfit);
+		let outfit = {name: "ElementalDress", id: KinkyDungeonGetItemID(), type: Outfit};
+		if (!KinkyDungeonInventoryGet("ElementalDress")) KinkyDungeonInventoryAdd(outfit);
 		//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
-		KinkyDungeonSetDress("Obsidian", "Obsidian");
+		KinkyDungeonSetDress("ElementalDress", "ElementalDress");
 	},
 };
 

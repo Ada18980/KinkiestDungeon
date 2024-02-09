@@ -152,6 +152,7 @@ interface KDRestraintPropsBase {
 	weight?: number,
 	minLevel?: number,
 	allFloors?: boolean,
+	cloneTag?: string,
 
 	escapeChance?: any,
 
@@ -227,6 +228,8 @@ interface KDRestraintPropsBase {
 	deepAccessible?: boolean,
 	/** WIP, does nothing yet. Should allow you to access the item under even inaccessible stuff */
 	alwaysAccessible?: boolean,
+	/** Always inaccessible if something is on top of it */
+	alwaysInaccessible?: boolean,
 	/** This item can be rendered when linked */
 	renderWhenLinked?: string[];
 	// Player must have one of these PlayerTags to equip
@@ -1321,6 +1324,14 @@ interface KinkyDungeonEvent {
 	/** This is an integer. if an event has this the game skips it and comes back after executing everything else.
 	 * Best to keep it low for performance reasons, if in a draw loop.
 	 */
+
+
+	cloneTags?: string[],
+	frequencyMax?: number,
+	frequencyMin?: number,
+	frequencyStep?: number,
+	frequencyTag?: string,
+
 	delayedOrder?: number;
 	/** A dynamic event is specified as 'dynamic' and is specified under ItemMap.dynamic
 	 * (replace ItemMap with the event map you need)
@@ -2455,6 +2466,7 @@ interface KDAITriggerData {
  * Persistently stored as AIData variable for use in some
  */
 interface KDAIData extends KDAITriggerData {
+	playerItems?: item[],
 	/** The target of the AI, NOT the KinkyDungeonPlayerEntity but rather a target entity which CAN be the player */
 	player?: entity,
 	/** Whether or not the enemy can talk */
@@ -2524,6 +2536,7 @@ interface KDAIData extends KDAITriggerData {
 	canAggro?: boolean,
 	/** The enemy actually aggros the target and will make attacks */
 	wantsToAttack?: boolean,
+	wantsToTease?: boolean,
 	/** The enemy actually aggros the target and will cast spells */
 	wantsToCast?: boolean,
 	/** The enemy wants to pull the player instead of just attacking */
@@ -2590,7 +2603,7 @@ interface KDAIData extends KDAITriggerData {
 	playEvent?: boolean,
 }
 
-interface KDJailRestraint {Name: string, Level: number, Variant?: string, Condition?: string};
+interface KDJailRestraint {Name: string, Level: number, Variant?: string, Condition?: string, Priority?: string};
 
 type EnemyEvent = {
 	/** Extremely important for leash events */

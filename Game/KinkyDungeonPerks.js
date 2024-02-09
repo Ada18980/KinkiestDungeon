@@ -262,6 +262,7 @@ let KinkyDungeonStatsPresets = {
 	"MagicHands": {category: "Restraints", id: "MagicHands", cost: -1},
 	"KeepOutfit":  {category: "Restraints", id: "KeepOutfit", cost: 0},
 	"CursedLocks": {category: "Restraints", id: "CursedLocks", cost: -1},
+	"LivingCollars": {category: "Restraints", id: "LivingCollars", cost: -1},
 	"FranticStruggle": {category: "Restraints", id: "FranticStruggle", cost: 1},
 	"Unchained": {category: "Kinky", id: 26, cost: 2, block: ["Damsel"]},
 	"Damsel": {category: "Kinky", id: 27, cost: -1, block: ["Unchained"]},
@@ -366,6 +367,11 @@ let KinkyDungeonStatsPresets = {
 	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, tags: ["start"], debuff: true, block: ["NoBrats"]},
 	"TapePref": {category: "Toggles", id: "TapePref", cost: 0, tags: ["start"], block: ["TapeOptout"]},
 	"TapeOptout": {category: "Toggles", id: "TapeOptout", cost: 0, tags: ["start"], debuff: true, block: ["TapePref"]},
+	"SlimePref": {category: "Toggles", id: "SlimePref", cost: 0, tags: ["start"], block: ["SlimeOptout"]},
+	"SlimeOptout": {category: "Toggles", id: "SlimeOptout", cost: 0, tags: ["start"], debuff: true, block: ["SlimePref"]},
+	"BubblePref": {category: "Toggles", id: "BubblePref", cost: 0, tags: ["start"], block: ["BubbleOptout"]},
+	"BubbleOptout": {category: "Toggles", id: "BubbleOptout", cost: 0, tags: ["start"], debuff: true, block: ["BubblePref"]},
+
 	"NoDoll": {category: "Toggles", id: "NoDoll", cost: 0, tags: ["start"], debuff: true},
 	"NoPet": {category: "Toggles", id: "NoPet", cost: 0, tags: ["start"], debuff: true},
 
@@ -664,7 +670,7 @@ let KDPerkStart = {
 		KinkyDungeonChangeRep("Metal", 10);
 
 		KDCustomDefeatUniforms.CyberDoll();
-		KDFixPlayerClothes("AncientRobot");
+		KDFixPlayerClothes((KinkyDungeonStatsChoice.get("DollmakerVisor") || KinkyDungeonStatsChoice.get("DollmakerMask") || KinkyDungeonStatsChoice.get("CommonCyber")) ? "Dollsmith" : "AncientRobot");
 	},
 	StartMaid: () =>{
 		KDAddQuest("MaidSweeper");

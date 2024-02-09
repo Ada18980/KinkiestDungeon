@@ -140,6 +140,10 @@ function KDEffectTileTags(x, y) {
 
 
 function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
+	if (KinkyDungeonFlags.get("stairslocked")) {
+		KinkyDungeonSendActionMessage(10, TextGet("KDStairsLocked").replace("NMB", "" + KinkyDungeonFlags.get("stairslocked")), "#ffffff", 1);
+	} else
+
 	if (!KDCanEscape()) {
 		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonNeedJailKey"), "#ffffff", 1);
 	}
