@@ -3496,6 +3496,10 @@ RestraintMikoCollarDesc,"A collar enchanted with ghastly energy."
 RestraintMikoCollarDesc2,"It seems to react with a pulse of energy whenever a nearby enemy is defeated."
 KDMikoCollarSummmon,"Your collar pulses, and a revenant appears to avenge the enemy you defeated!"
 
+RestraintMikoCollar2,Fuuka's Pet Collar
+RestraintMikoCollar2Desc,"A collar enchanted with beneficial ghastly energy."
+RestraintMikoCollar2Desc2,"It seems to react with a pulse of energy whenever a nearby enemy is defeated."
+KDMikoCollarSummmon2,"Your collar pulses, and a revenant appears to assist you!"
 
 RestraintDressBra,Dress Bustier
 RestraintDressBraDesc,"A deceptively cruel device, making it impossible to reach your nipples."
@@ -11911,7 +11915,7 @@ rFuukaStage2,"(SPEAKER puts up a wall of talismans to regain her strength)|I'm..
 
 rFuukaWin,"(SPEAKER is out of breath)|I... can't... believe... it...|She drops her keys..."
 rFuukaWinAccept,"(SPEAKER looks flabbergasted)|R-really? Okay... I'll give you a reward then..."
-dFuukaWin_Accept,"(Submit to her anyway)"
+dFuukaWin_Accept,"(Submit to her anyway) (Gain a special collar)"
 rFuukaWinGag,"(SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!"
 dFuukaWin_Gag,"(Gag her)"
 
@@ -20040,12 +20044,16 @@ KDEffectTileTooltipMotionLampDesc,"Looks like it has lighting elements inside."
 KinkyDungeonSpellOneBarMissileBind,Many bars come out of the ground and restrain you!
 KinkyDungeonSpellOneBarMissile,One Bar Missile
 KinkyDungeonSpellRestrainingBolt,Restraining Bolt
+KinkyDungeonSpellSealingBolt,Sealing Bolt
 KinkyDungeonSpellMagicMissile,Bondage Blast
 KinkyDungeonSpellMagicMissile2,Magic Missile
 KinkyDungeonSpellWardenCage,Warden's Cage
 
 NameOneBar,Restricting Bars
 KillOneBar,The bars retract into the ground.
+
+NameFuukaPillar,Sealing Pillar
+KillFuukaPillar,"The pillar collapses, causing zombies to rise up!"
 
 KinkyDungeonStatNoHelp,"Safeword Please"
 KinkyDungeonStatDescNoHelp,"Allies don't help you unless you ask first."

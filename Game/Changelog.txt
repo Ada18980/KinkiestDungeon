@@ -28,7 +28,11 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
-5.1.0
+5.2.0
+ - Added Sealing Pillars to Fuuka's fight, giving bound players a means of taking her down
+ - Submitting to fuuka now gives you a beneficial version of her collar instead.
+ - New boss! Lines are fuuka's and currently just gives you fuuka's collar, but the intended fight loop is there
+ - New 'Escape Method' system by Aelie!
  - Wolfgirl boots and torso now have split color layers
  - Nevermere punishment suit now has a leotard component
  - Fixed bug where load from code didnt affect the NPC you were dressing

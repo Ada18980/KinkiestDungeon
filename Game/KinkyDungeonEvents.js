@@ -507,6 +507,14 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		"MikoGhost2": (e, item, data) => {
+			if (!e.chance || KDRandom() < e.chance) {
+				if (data.enemy && data.enemy.lifetime == undefined && data.enemy.playerdmg && !data.enemy.Enemy.tags.ghost && !data.enemy.Enemy.tags.construct) {
+					KinkyDungeonSummonEnemy(data.enemy.x, data.enemy.y, "MikoGhost", 1, 1.5, true, 40, false, false, "Player");
+					KinkyDungeonSendTextMessage(5, TextGet("KDMikoCollarSummmon2"), "purple", 2);
+				}
+			}
+		},
 		"DollmakerMask": (e, item, data) => {
 			// if (item.player == data.player)
 			if (data.enemy?.Enemy.tags.escapeddoll) KinkyDungeonSetFlag("DollmakerGrace", 70);
@@ -7348,6 +7356,55 @@ let KDEventMapEnemy = {
 		},
 	},
 	"tick": {
+		"FuukaManagement": (e, enemy, data) => {
+			if (enemy.hostile && !KDEnemyHasFlag(enemy, "fuukaPillars")) {
+				KinkyDungeonSetEnemyFlag(enemy, "fuukaPillars", -1);
+				for (let i = 0; i < e.count; i++) {
+					let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, undefined, 6, false);
+					if (point) {
+						DialogueCreateEnemy(point.x, point.y, "FuukaPillar");
+					}
+				}
+			}
+		},
+		"WardenManagement": (e, enemy, data) => {
+			if (enemy.hostile && !KDEnemyHasFlag(enemy, "wardenReleasedPrisoners")) {
+				KinkyDungeonSetEnemyFlag(enemy, "wardenReleasedPrisoners", -1);
+				let count = 0;
+				for (let en of KDMapData.Entities) {
+					if (en.Enemy?.tags?.wardenprisoner && !KDEnemyHasFlag(en, "imprisoned")) {
+						count += 1;
+					}
+				}
+				if (count < e.count || (KinkyDungeonNewGame > 0 && count < 3)) {
+					let filter = "";
+					if (e.count == 1 && !(KinkyDungeonNewGame > 0)) {
+						let rand = [];
+						if (KinkyDungeonStatManaMax >= 20) {
+							rand.push("WardenMage");
+						}
+						if (KinkyDungeonStatStaminaMax >= 20) {
+							rand.push("WardenArcher");
+						}
+						if (KinkyDungeonStatWillMax >= 20) {
+							rand.push("WardenFighter");
+						}
+
+						if (rand.length == 0) rand = ["WardenMage", "WardenFighter", "WardenArcher"];
+						filter = CommonRandomItemFromList("", rand);
+					}
+					for (let en of KDMapData.Entities) {
+						if (count < e.count) {
+							if ((!filter || en.Enemy?.name == filter) && en.Enemy?.tags?.wardenprisoner && KDEnemyHasFlag(en, "imprisoned")) {
+								KinkyDungeonSetEnemyFlag(en, "imprisoned", 0);
+								en.aware = true;
+								count += 1;
+							}
+						}
+					}
+				}
+			}
+		},
 		"EpicenterAssignHP": (e, enemy, data) => {
 			if (!KDEnemyHasFlag(enemy, "assignedHP")) {
 				let factor = 0.1 + 0.1*Math.round(19*(KDGameData.EpicenterLevel || 1)**0.75) / (KinkyDungeonMaxLevel - 1);
@@ -7382,8 +7439,8 @@ let KDEventMapEnemy = {
 			}
 		},
 		"BossAssignFaction": (e, enemy, data) => {
-			if (!enemy.faction) {
-				if (enemy.hostile) enemy.faction = e.kind;
+			if (!enemy.faction && !KinkyDungeonIsDisabled(enemy) && KDBoundEffects(enemy) < 4) {
+				if (enemy.hostile || KDMapData.Entities.some((en) => {return en.Enemy.tags?.stageBoss && en.hostile;})) enemy.faction = e.kind;
 			}
 		},
 		"DeleteCurse": (e, enemy, data) => {
@@ -7542,14 +7599,30 @@ let KDEventMapEnemy = {
 		},
 	},
 	"afterDamageEnemy": {
-		"FreeWardenPrisoners": (e, enemy, data) => {
-			for (let en of KDMapData.Entities) {
-				if (en.Enemy.tags?.warden && KDGetFaction(en) != "Player") {
-					en.hostile = 300;
-					en.aware = true;
-					KinkyDungeonSetEnemyFlag(en, "imprisoned", 0);
+		"spellReflect": (e, enemy, data) => {
+			if (data.bullet && enemy == data.enemy && KinkyDungeonCanCastSpells(enemy)) {
+				let attacker = null;
+				if (data.bullet?.bullet?.source) {
+					attacker = KinkyDungeonFindID(data.bullet.bullet.source);
 				}
+				if (attacker && (!e.time || !KDEnemyHasFlag(enemy, "spellReflect" + e.spell))) {
+					KinkyDungeonCastSpell(attacker.x, attacker.y, KinkyDungeonFindSpell(e.spell, true), enemy, undefined, undefined);
+					if (e.time) {
+						KinkyDungeonSetEnemyFlag(enemy, "spellReflect" + e.spell, e.time);
+					}
+				}
+			}
+		},
+		"FreeWardenPrisoners": (e, enemy, data) => {
+			if (enemy == data.enemy && KDEnemyHasFlag(enemy, "imprisoned") && data.faction == "Player") {
+				for (let en of KDMapData.Entities) {
+					if (en.Enemy.tags?.warden && KDGetFaction(en) != "Player") {
+						en.hostile = 300;
+						en.aware = true;
+						KinkyDungeonSetEnemyFlag(en, "imprisoned", 0);
+					}
 
+				}
 			}
 		},
 		"bleedEffectTile": (e, enemy, data) => {
@@ -7608,7 +7681,7 @@ let KDEventMapEnemy = {
 	},
 	"afterPlayerAttack": {
 		"spellReflect": (e, enemy, data) => {
-			if (data.enemy == enemy && KinkyDungeonCanCastSpells(enemy)) {
+			if (data.enemy == enemy && data.attacker && KinkyDungeonCanCastSpells(enemy)) {
 				if (!e.time || !KDEnemyHasFlag(enemy, "spellReflect" + e.spell)) {
 					KinkyDungeonCastSpell(data.attacker.x, data.attacker.y, KinkyDungeonFindSpell(e.spell, true), enemy, undefined, undefined);
 					if (e.time) {
@@ -7626,7 +7699,7 @@ let KDEventMapEnemy = {
 	},
 	"hit": {
 		"spellReflect": (e, enemy, data) => {
-			if (data.target == enemy && KinkyDungeonCanCastSpells(enemy)) {
+			if (data.target == enemy && data.attacker && KinkyDungeonCanCastSpells(enemy)) {
 				if (!e.time || !KDEnemyHasFlag(enemy, "spellReflect" + e.spell)) {
 					KinkyDungeonCastSpell(data.attacker.x, data.attacker.y, KinkyDungeonFindSpell(e.spell, true), enemy, undefined, undefined);
 					if (e.time) {

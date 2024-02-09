@@ -2437,7 +2437,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "BoundByFate", color: "#dddddd", minRange: 0, sfx: "MagicSlash", bulletSpin: -0.25,
 		manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4, range: 7, size: 3, aoe: 1.5, lifetime: 1, damage: "soul", playerEffect: {name: "BoundByFate", time: 6}},
 	{enemySpell: true, name: "Taunt", color: "#ff5555", minRange: 0, sfx: "MagicSlash", bulletSpin: -0.25,
-		manacost: 6, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4, range: 5.5, size: 3, aoe: 1.5, lifetime: 1, damage: "soul", playerEffect: {name: "Taunted", time: 6}},
+		manacost: 6, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 5.5, range: 5.5, size: 3, aoe: 1.5, lifetime: 1, damage: "soul", playerEffect: {name: "Taunted", time: 6}},
 
 
 	{name: "Gunpowder", landsfx: "Bones", tags: ["fire", "aoe", "offense"], noise: 0, sfx: "FireSpell", school: "Elements", manacost: 0,
@@ -2556,8 +2556,11 @@ let KinkyDungeonSpellListEnemies = [
 		power: 2, time: 12, delay: 0, range: 50, damage: "ice", speed: 0.5,
 		playerEffect: {name: "ShadowSeal", type: "Purple", count: 1, time: 30, power: 4, damage: "ice"}},
 
+	{enemySpell: true, name: "SealingBolt", faction: "Natural",  bindType: "Magic", color: "#6a15fa", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt",
+		pierceEnemies: true,
+		projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "ShadowBolt", count: 1, time: 3, power: 3, damage: "cold"}},
 
-	{enemySpell: true, name: "ShadowBolt",  bindType: "Slime", color: "#6a15fa", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "ShadowBolt", count: 1, time: 3, power: 3, damage: "cold"}},
+	{enemySpell: true, name: "ShadowBolt",  bindType: "Magic", color: "#6a15fa", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "ShadowBolt", count: 1, time: 3, power: 3, damage: "cold"}},
 	{enemySpell: true, name: "ObsidianBolt",  bindType: "Metal", color: "#ff5277", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "ObsidianBolt", count: 1, time: 3, power: 3, damage: "cold"}},
 	{enemySpell: true, name: "LockBullet",  bindType: "Magic", color: "#9f96d5", sfx: "LockLight",
 		minRange: 0,
@@ -2613,7 +2616,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "RestrainingBolt",  bindType: "Magic",
 		color: "#ffaa57", sfx: "Miss",
 		hitsfx: "FireSpell", manacost: 3, components: ["Arms"], level: 1, type:"bolt",
-		projectileTargeting:true, slowStart: true, onhit:"", power: 1.5, bind: 2.5, delay: 0,
+		projectileTargeting:true, slowStart: true, onhit:"", power: 3, bind: 2.5, delay: 0,
 		range: 10.5, damage: "chain",
 		speed: 4, playerEffect: {name: "RestrainingBolt", count: 1, dist: 1, sfx: "MagicSlash"}},
 
@@ -2661,17 +2664,17 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 50,
 		},
 		events: [{type: "RubberMissileHoming", trigger: "bulletAfterTick", power: 0.4, dist: 15, count: 0.2, limit: 0},],
-		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 9.2, delay: 0, range: 50, damage: "crush", speed: 0.5, playerEffect: {name: "Bind", damage: "pierce", power: 7.2, tag: "onebar"}},
+		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: .1, delay: 0, range: 50, damage: "crush", speed: 0.5, playerEffect: {name: "Bind", damage: "pierce", power: 7.2, tag: "onebar"}},
 	{enemySpell: true, name: "SummonOneBar", noSprite: true, minRange: 0, manacost: 2, specialCD: 12,
 		noSumMsg: true,
-		faction: "Warden",
+		faction: "Enemy",
 		effectTileDurationModTrail: 12, effectTileTrail: {
 			name: "Chains",
 			duration: 10,
 		},
 		effectTileDensity: 0.15,
 		effectTileAoE: 1.5,
-		components: ["Verbal"], level:4, type:"hit", onhit:"summon", summon: [{name: "OneBar", count: 1, time: 0, bound: true}], power: 0, time: 10, delay: 0, range: 40, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},
+		components: ["Verbal"], level:4, type:"hit", onhit:"summon", summon: [{name: "OneBar", faction: "Enemy", count: 1, time: 0, bound: true}], power: 0, time: 10, delay: 0, range: 40, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},
 
 
 	{enemySpell: true, name: "CelestialBolt",  bindType: "Rope", color: "#ffff44", sfx: "MagicSlash", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "holy", bind: 6, speed: 4, playerEffect: {name: "CelestialBolt", count: 2, time: 3, power: 3, damage: "holy"}},
@@ -2839,7 +2842,7 @@ let KinkyDungeonSpellListEnemies = [
 
 	{enemySpell: true, name: "SummonSkeleton", landsfx: "Bones", minRange: 0, manacost: 8, components: ["Verbal"], level:3, type:"inert", onhit:"summon", summon: [{name: "SummonedSkeleton", count: 1, time: 12, strict: true, bound: true, weakBinding: true}], power: 0, time: 12, delay: 1, range: 4, size: 3, aoe: 2.1, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonSkeletons", landsfx: "Bones", minRange: 0, manacost: 18, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "SummonedSkeleton", count: 4, time: 16, strict: true, bound: true, weakBinding: true}], power: 0, time: 16, delay: 1, range: 4, size: 3, aoe: 2.6, lifetime: 1, damage: "inert"},
-	{enemySpell: true, name: "SummonZombies", landsfx: "Bones", specialCD:16, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "SummonedZombie", count: 4, time: 18, strict: true, minRange: 1.5, bound: true, weakBinding: true}], power: 0, time: 16, delay: 1, range: 4, size: 3, aoe: 4.6, lifetime: 1, damage: "inert"},
+	{enemySpell: true, name: "SummonZombies", landsfx: "Bones", specialCD:16, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "SummonedZombie", count: 4, time: 60, strict: true, minRange: 1.5, bound: true, weakBinding: true}], power: 0, time: 16, delay: 1, range: 4, size: 3, aoe: 4.6, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonDrones", landsfx: "Teleport", specialCD:12, selfcast: true, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon",
 		summon: [{name: "SummonedDrone", count: 2, strict: true, bound: true, time: 16, faction: "Ambush"}], power: 0, time: 15, delay: 3, range: 8, size: 3, aoe: 4.6, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonCaptureDrones", landsfx: "Teleport", specialCD:7, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon",

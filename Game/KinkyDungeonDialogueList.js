@@ -3888,8 +3888,8 @@ let KDDialogue = {
 			"Accept": {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
-					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
-					KinkyDungeonAddGold(1000);
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar2"), 0, true);
+					//KinkyDungeonAddGold(1000);
 					if (KinkyDungeonIsPlayer()) {
 						KDUnlockPerk("FuukaCollar");
 						KDUnlockPerk("CommonFuuka");

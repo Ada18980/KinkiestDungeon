@@ -804,10 +804,11 @@ let KinkyDungeonSpellSpecials = {
 				radius: 1.5,
 				sprite: "Particles/Slash.png",
 			});
+			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+			return "Cast";
 		}
 
-		KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-		return "Cast";
+		return "Fail";
 	},
 
 
