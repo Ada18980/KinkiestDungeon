@@ -28,6 +28,11 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.2.1
+- Various bug fixes
+- Unmasked and Kigu Masks are separate
+- Dressmakers can now apply kigu masks
+
 5.2.0
  - Added Sealing Pillars to Fuuka's fight, giving bound players a means of taking her down
  - Submitting to fuuka now gives you a beneficial version of her collar instead.

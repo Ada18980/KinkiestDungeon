@@ -4241,7 +4241,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 0, weight: 8}]},
 
 
-	{name: "Dressmaker", nameList: "french", outfit: "Dressmaker", style: "Fire", clusterWith: "construct", bound: "Dressmaker", playLine: "Dressmaker", faction: "Dressmaker", color: "#f135a4", tags: KDMapInit(["leashing", "antiMagic", "ribbon", "dressmaker", "imprisonable", "guardCall", "jail", "jailer", "conjurer", "acidweakness", "opendoors", "closedoors", "human", "ranged", "unflinching", "hunter", "dressRestraints"]),
+	{name: "Dressmaker", nameList: "french", outfit: "Dressmaker", style: "Fire", clusterWith: "construct", bound: "Dressmaker", playLine: "Dressmaker", faction: "Dressmaker", color: "#f135a4", tags: KDMapInit(["leashing", "antiMagic", "ribbon", "dressmaker", "imprisonable", "kiguRestraints", "guardCall", "jail", "jailer", "conjurer", "acidweakness", "opendoors", "closedoors", "human", "ranged", "unflinching", "hunter", "dressRestraints"]),
 		RestraintFilter: {
 			requiredItems: ["BindingDress"],
 		},
