@@ -513,6 +513,8 @@
             <key type="filename">../Game/Bullets/RubberSlimeHit.png</key>
             <key type="filename">../Game/Bullets/SagittaBolt.png</key>
             <key type="filename">../Game/Bullets/SagittaBoltHit.png</key>
+            <key type="filename">../Game/Bullets/SealingBolt.png</key>
+            <key type="filename">../Game/Bullets/SealingBoltHit.png</key>
             <key type="filename">../Game/Bullets/ShadowBolt.png</key>
             <key type="filename">../Game/Bullets/ShadowBoltHit.png</key>
             <key type="filename">../Game/Bullets/ShadowDance.png</key>
@@ -1032,6 +1034,7 @@
             <key type="filename">../Game/Enemies/Fungal.png</key>
             <key type="filename">../Game/Enemies/Fuuka1.png</key>
             <key type="filename">../Game/Enemies/Fuuka2.png</key>
+            <key type="filename">../Game/Enemies/FuukaPillar.png</key>
             <key type="filename">../Game/Enemies/Gag.png</key>
             <key type="filename">../Game/Enemies/GagGeist.png</key>
             <key type="filename">../Game/Enemies/GasBarrel.png</key>

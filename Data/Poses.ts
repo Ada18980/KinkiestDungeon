@@ -524,9 +524,9 @@ function KDRefreshPoseOptions(Character: Character) {
 		KDCurrentModels.get(Character).TempPoses.ChastityOption = true;
 		KDCurrentModels.get(Character).Poses.ChastityOption = true;
 	}
-	if (KDToggles.CrotchRopeOption) {
-		KDCurrentModels.get(Character).TempPoses.CrotchRopeOption = true;
-		KDCurrentModels.get(Character).Poses.CrotchRopeOption = true;
+	if (KDToggles.CrotchRopeOption || (Character == KinkyDungeonPlayer && KinkyDungeonPlayerTags.get("ChastityBelts"))) {
+		KDCurrentModels.get(Character).TempPoses.OptionCrotchRope = true;
+		KDCurrentModels.get(Character).Poses.OptionCrotchRope = true;
 	}
 	if (KinkyDungeonDrawState != "Game" || KinkyDungeonState != "Game") {
 		KDCurrentModels.get(Character).TempPoses.Menu = true;
@@ -560,7 +560,7 @@ function KDRefreshPoseOptions(Character: Character) {
 
 function KDRefreshPoseOptionsMC(MC: ModelContainer) {
 	if (KDToggles.CrotchRopeOption) {
-		MC.Poses.CrotchRopeOption = true;
+		MC.Poses.OptionCrotchRope = true;
 	}
 	if (KDToggles.ChastityOption) {
 		MC.Poses.ChastityOption = true;

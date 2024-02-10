@@ -267,12 +267,12 @@ AddModel({
 		OptionCrotchRope: ["CrotchStrap"],
 	},
 	AddPoseIf: {
-		ChastityBelt: ["OptionCrotchRope"],
+		//ChastityBelt: ["OptionCrotchRope"],
 	},
 	Layers: ToLayerMap([
 		{ Name: "Crotch", Layer: "HarnessMid", Pri: -105,
 			//MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
-			SwapLayerPose: {ChastityBelt: "CrotchRope", OptionCrotchRope: "CrotchRope"},
+			SwapLayerPose: {OptionCrotchRope: "CrotchRope"},
 			Invariant: true,
 			InheritColor: "Ribbon",
 			DisplacementInvariant: true,
@@ -281,7 +281,7 @@ AddModel({
 
 		},
 		{ Name: "CrotchStrap", Layer: "HarnessMid", Pri: -105.1,
-			SwapLayerPose: {ChastityBelt: "CrotchRope", OptionCrotchRope: "CrotchRope"},
+			SwapLayerPose: {OptionCrotchRope: "CrotchRope"},
 			Invariant: true,
 			InheritColor: "Ribbon",
 		},

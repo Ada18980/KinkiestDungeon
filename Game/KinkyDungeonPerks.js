@@ -368,8 +368,9 @@ let KinkyDungeonStatsPresets = {
 
 
 	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0, tags: ["start"]},
+	"NoKigu": {category: "Toggles", id: "NoKigu", cost: 0, tags: ["start"], debuff: true},
 	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0, tags: ["start"]},
-	"NoPolice": {category: "Toggles", id: "NoPolice", cost: 0, tags: ["start"]},
+	"NoPolice": {category: "Toggles", id: "NoPolice", cost: 0, tags: ["start"], debuff: true},
 	"MoreKinkyFurniture": {category: "Toggles", id: "MoreKinkyFurniture", cost: 0, tags: ["start"]},
 	"NoBrats": {category: "Toggles", id: "NoBrats", cost: 0, tags: ["start"], debuff: true, block: ["OnlyBrats"]},
 	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, tags: ["start"], debuff: true, block: ["NoBrats"]},

@@ -87,6 +87,8 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 				if (prereqs && loot.hardmode && !KinkyDungeonStatsChoice.get("hardMode")) prereqs = false;
 				if (prereqs && loot.nohardmode && KinkyDungeonStatsChoice.get("hardMode")) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("nopetsuit") && KinkyDungeonPlayerTags.get("NoPet")) prereqs = false;
+				if (prereqs && loot.prerequisites.includes("nokigu") && KinkyDungeonPlayerTags.get("NoKigu")) prereqs = false;
+
 				if (prereqs && loot.prerequisites.includes("vibe") && KinkyDungeonPlayerTags.get("NoVibes")) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("alreadyBelted") && KinkyDungeonChastityMult() < 0.9) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("lowlevel")) maxlevel = 2;

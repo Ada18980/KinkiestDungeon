@@ -93,7 +93,7 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "KiguMask", inaccessible: true, Asset: "KirugumiMask", Color: ["Default", "Default"], AssetGroup: "ItemHood", Group: "ItemHead", LinkableBy: [...KDMaskLink], gag: 0.3, blindfold: 1, power: 7, weight: 0,
 		Model: "KiguMask",
 		escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.33, "Pick": 0.15, "Unlock": 0.6},
-		enemyTags: {"kiguRestraints":1}, playerTags: {"ItemMouth1Full":2, "ItemMouth2Full":1, "Unmasked": -1000}, minLevel: 0, allFloors: true, shrine: ["Latex", "Masks", "Block_ItemMouth"], events: [
+		enemyTags: {"kiguRestraints":1}, playerTags: {"ItemMouth1Full":2, "ItemMouth2Full":1, "NoKigu": -1000}, minLevel: 0, allFloors: true, shrine: ["Latex", "Masks", "Block_ItemMouth"], events: [
 			{trigger: "onWear", type: "setSkinColor"},
 		]},
 	// endregion
