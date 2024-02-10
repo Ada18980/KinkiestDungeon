@@ -1056,9 +1056,15 @@ Being gagged does not increase your miscast chance for verbal spells unless full
 猿轡をかまされても、厳重でない限りは口を使う呪文の詠唱失敗率が上昇せず、猿轡の威力が20%減少する
 
 Unmasked
-マスク嫌い
-Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
-フードとマスクがゲーム内に登場しなくなる。目隠しがより強力になる
+マスクなし
+Hoods and full-face covering masks do not appear, but blindfolds are more powerful. Does not include kigurumi masks.
+怪しいマスクを除く、フードとマスクがゲーム内に登場しなくなる。目隠しがより強力になる。
+
+
+No Kigurumi Masks
+怪しいマスクなし
+Removes face-mimicing masks from the game.
+怪しいマスクがゲーム内に登場しなくなる。
 
 Ball Gag Lover
 ボールギャグ愛好家
@@ -19521,8 +19527,8 @@ Mmmph! (Struggle weakly)
 (SPEAKER は息を切らし、膝を折った)|そんな……信じられない……|(彼女は鍵を落とした)
 (SPEAKER looks flabbergasted)|R-really? Okay... I'll give you a reward then...
 (SPEAKER はあっけにとられている)|え？本当？わ、わかったわ……それじゃあご褒美をあげるわね……
-(Submit to her anyway)
-(彼女に服従する)
+(Submit to her anyway) (Gain a special collar)
+(彼女に服従し、特別な首輪をもらう)
 (SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!
 (SPEAKER は抵抗したが、猿轡をかませることに成功した)|っんぐぅ！！
 (Gag her)
