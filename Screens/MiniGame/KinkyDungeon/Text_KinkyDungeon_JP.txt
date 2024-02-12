@@ -9055,7 +9055,7 @@ Empower to upcast spells
 Cancel empowerment
 強化をキャンセル
 You channel mana through your body! Empowerment level: LEVEL
-体に魔力を流し込んだ！ 強化レベル：ＬＥＶＥＬ
+体に魔力を流し込んだ！ 強化レベル： LEVEL
 You are already at the maximum empowerment level!
 これ以上強化できない！
 You don't have any upcast spells yet.
@@ -9144,7 +9144,7 @@ Unlocks leather spells. Learn Conjure Gag.
 革属性の魔法が習得可能になる。「猿轡召喚」を習得。
 Physics 101
 サイキック入門
-Unlocks teleportation and physical manipulation spells. Learn Wall.
+Unlocks teleportation and spatial manipulation spells. Learn Wall.
 ロック操作やテレポーテーションの魔法が習得可能になる。「壁召喚」を習得。
 Summoning 101
 召喚術入門
@@ -9173,7 +9173,7 @@ Unlocks alteration spells. Learn Confuse.
 Arcane Knowledge
 秘術の知識
 Unlocks knowledge and critical-strike spells. Learn True Steel, and unlocks advanced tooltips for enemies.
-知識とクリティカル ストライク スペルのロックを解除します。True Steel を学び、敵の高度なツールチップのロックを解除します。
+特殊な魔法が習得可能になる。「トゥルースティール」を習得し、マスの詳細な情報が得られるようになる。
 Glue
 接着剤
 The glue attaches to your legs as you try to move through!
@@ -9401,7 +9401,7 @@ Distraction Mode:
 ディストラクションモード:
 
 Progression Mode:
-進行方向
+進行方式：
 Key Hunt
 鍵
 Random
@@ -23268,6 +23268,10 @@ Sell for VLU gp
 VLU ゴールドで売る
 You sell the ITM for VLU gp.
 ITM を VLU ゴールドで売った
+Sell ALL for VLU gp
+VLU gp で全て売る
+Sell all but one for VLU gp
+VLU gp で1つ残して売る
 You sell #x ITM for VLU gp.
  #x 個の ITM を VLU ゴールドで売った
 
