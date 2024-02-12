@@ -16,9 +16,9 @@ Language
 Japanese
 日本語
 
-Mods
 Mods Loaded.
 MODがロードされました。
+
 
 Restart please!
 適応には再起動が必要です。
@@ -2338,7 +2338,7 @@ You feel the restraints become loose on your skin!
 拘束具が滑りやすくなっている。
 The secret to elven cosmetics and blemish-free skin.
 エルフの美容の秘密。
-Makes you slippery for 100 turns, boosting all forms of struggling."
+Makes you slippery for 100 turns, boosting all forms of struggling.
 100ターンの間滑りやすくなり、拘束具を解除するすべてのコマンドにボーナスを得る。
 You feel the restraints become loose on your skin!
 拘束具が滑り落ちやすくなった！
@@ -5356,10 +5356,6 @@ Lock Type:
 ロックの種類:
 Red
 赤
-Red
-赤
-Red
-赤
 Simple
 単純
 Green
@@ -5430,23 +5426,6 @@ Runic Lock
 Purple Lock
 紫の錠前
 
-
-
-
-(G)
-(G)
-(S)
-(S)
-(B)
-(B)
-(G)
-(G)
-(P)
-(P)
-(?)
-(?)
-(Y)
-(Y)
 You can't use that while gagged!
 猿轡をかまされたままでは使えない！
 You can't use that without your fingers!
@@ -8499,10 +8478,6 @@ Head
 頭
 Mouth
 口
-Mouth
-口
-Mouth
-口
 Ears
 耳
 Collar
@@ -8833,10 +8808,7 @@ Closed Door
 閉じているドア
 Open Door
 開いているドア
-Closed Door
-閉じているドア
-Open Door
-開いているドア
+
 Bed
 ベッド
 Bars
@@ -8907,10 +8879,7 @@ Next Page
 次のページ
 Last Page
 最後のページ
->>>
->>>
-<<<
-<<<
+
 Random Page (your hands are tied)
 Random Page (手が縛られている)
 Verbal
@@ -10570,7 +10539,7 @@ Darkblade
 ダークブレード
 Select which creature to buff
 対象を選択
-Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks, whichever is lower.
+Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks
 対象の攻撃力を20増加させるルーンを宿す。 Duration ターンか攻撃5回分続く。
 You call forth dark runes on your weapon and arms!
 闇の力を武器に宿した！
@@ -13351,15 +13320,15 @@ Mmmmph!
 (おそらく笑っている)
 *groans*
 (呻いている)
-*muffled giggle*"
+*muffled giggle*
 (おそらく笑っている)
 Mmmph!!!
 っ～……！？
 Mmmph!!!
 っ～……！？
-*muffled giggle*"
+*muffled giggle*
 (おそらく笑っている)
-*muffled giggle*"
+*muffled giggle*
 (おそらく笑っている)
 Mmmph.
 …………
@@ -14237,7 +14206,7 @@ Seems like you've caught a case of female hysteria...
 ヒステリーは直したほうが良いぞ。
 Those are supposed to keep you still you know...
 その拘束具はキミの身体を守るためのものなんだぞ……
-"You've got an appointment scheduled.
+You've got an appointment scheduled.
 スケジュールに遅れてしまうぞ。
 Lets get you back in your jacket~
 また拘束衣を着てもらうぞ。
@@ -14615,7 +14584,7 @@ No! Be gentle!
 やめて、優しくして！
 Ahhhh!
 あんっ！
-KinkyDungeonRemindJailPlaySubAdventurer_Dom_Fighter0,"Heatpats please...
+Heatpats please...
 頭撫でてもらっていい……？
 *purrs*
 (プルプル)
@@ -14683,7 +14652,7 @@ Come here you~
 こっち来て～。
 Nyah~!
 ニャッ！
-What's this, nya?"
+What's this, nya?
 これは何かな～？
 Let's make it a bit tighter, shall we?
 ちょっときつくするね？
@@ -15443,7 +15412,7 @@ I believe I am feeling an emotion called 'fear.'
 これは……”恐怖”という感情なのだろうか。
 Stay back! I am not your toy.
 下がれ、私達は玩具じゃない。
-"Teach me about 'domination.'
+Teach me about 'domination.'
 ……支配と服従について教えてほしい。
 Allow me to learn by experience.
 経験から学ばせてほしい。
@@ -17111,7 +17080,7 @@ Go away robot! (PERCENT chance to avoid)
 (SPEAKER はスカーフを持ち出した)|試してみたいならいくつかあるから。|RESTRAINT をしてあげるね？
 (The SPEAKER smiles gently at you as she ties)|I love the silky feeling~|(The SPEAKER tightens all her knots)
 (SPEAKER は笑顔で縛りだした)|この滑らかな触り心地が好きなんだ|(SPEAKER はきつく縛った)
-(The SPEAKER looks away and nods)|Well... maybe next time."
+(The SPEAKER looks away and nods)|Well... maybe next time.
 (SPEAKER は視線をそらし頷いた)|わかった……また今度ね。
 (The SPEAKER shuffles awkwardly)|Oh... well...|Come back if you change your mind~
 (SPEAKER はぎこちなく去っていった)|そっか……|気が変わったら言ってね。
@@ -17595,7 +17564,7 @@ No way! (PERCENT chance to avoid)
 (SPEAKER が周囲を回りだした)|(身体に不思議な拘束具の冷たい感触がした)|(SPEAKER は頷き、どこかへ行ってしまった)
 (The SPEAKER stares at you)|(They put away the RESTRAINT and leave)
 (SPEAKER はこちらを凝視した)|(そして RESTRAINT を置き、どこかへ行ってしまった)
-(The SPEAKER leaves you alone)"
+(The SPEAKER leaves you alone)
 (SPEAKER はどこかへ行ってしまった)
 (The SPEAKER seems to frown)|(RESTRAINT appears in their hand)|(They rapidly approach)
 (SPEAKER は不機嫌そうにしている)|(突然 RESTRAINT が彼女の腕に現れる)|(彼女は素早く近づいてきた)
@@ -17733,7 +17702,7 @@ Ah! Cold! (PERCENT chance to avoid)
 (SPEAKER は不意に悪意に満ちた笑みを浮かべ、RESTRAINT を手に取る)|そ……それは残念です……
 (The SPEAKER grins)|I wasn't offering you a choice...|I was asking if you would LIKE it, hehe~
 (SPEAKER の微笑は悪意を湛えている)|つけるかつけないかではなく……|これを気に入るかどうかを訊いていたんですよ、ふふふふ……
-rOfferLatexForce_No,"(The SPEAKER frowns)|...You're fast!
+(The SPEAKER frowns)|...You're fast!
 (SPEAKER は顔をしかめた)|はやすぎます……
 (The SPEAKER smiles)|That's right~
 (SPEAKER は笑顔になった)|よかった～。
@@ -17779,7 +17748,7 @@ Wait, what? (PERCENT chance to avoid)
 (SPEAKER は懇願している)|私のご主人さまは魔法使いなんです！|この貞操帯にはつけているか確かめる魔法がかかっていて……|お願いします、早くしないとバレてしまうんです！
 (The SPEAKER sighs and wears it herself)|(The lock starts glowing brightly...)
 (SPEAKER はため息を付き、再び貞操帯を付ける)|(すると貞操帯の錠前が輝き出した……)
-rOfferChastityForce_Yes,"(The SPEAKER looks relieved)|Thank you so much miss!|I won't forget you!
+(The SPEAKER looks relieved)|Thank you so much miss!|I won't forget you!
 (SPEAKER は)|本当にありがとうございます！|この御恩は絶対に忘れません！
 (As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|Hmmph! Serves you right!|
 (振り返ると SPEAKER が突然驚かせてきた)|(そして一瞬のうちに、腰辺りで鍵のかかる音がした)|ごめんなさい！
@@ -17997,7 +17966,7 @@ Never! (PERCENT chance to avoid)
 (SPEAKER は制服をきつく着せてきた……)|(背中で錠の掛かる音がする……)|よろしい、まずは雑用からやってもらいましょうか。|幸運を祈ります。
 (The SPEAKER tilts her head and shrugs)|We are always prepared...
 (SPEAKER は肩をすくめ、首を傾げる)|いつでも歓迎しますよ……
-rOfferWitchNo,"(The SPEAKER nods)|Fair enough.
+(The SPEAKER nods)|Fair enough.
 (SPEAKER は頷いた)|そうですか。
 (The SPEAKER grins and pulls out a skimpy dress)|Might I remind you that you have made quite a few... enemies?|It would be a shame if you ran into one of them...
 (SPEAKER はニヤリと笑うときつそうな制服を取り出す)|ところで、あなたは周りに敵が多いようですね。|私達まで敵に回しても良いのですか？
@@ -18269,7 +18238,7 @@ I will never bow to you! (PERCENT chance to avoid)
 (SPEAKER は小首をかしげる)|はは、面白い。|アンタは悪人なんかじゃない……そうだろう？
 (The SPEAKER frowns and readies for battle)|My instincts were right.
 (SPEAKER は戦闘態勢を取った)|私の直感は正しかったようだな！
-rOfferBountyhunterForce_Yes,"(The SPEAKER takes out a magic scroll and signs it)|(The scroll vanishes into the aether)|Good luck out there, freelancer.
+(The SPEAKER takes out a magic scroll and signs it)|(The scroll vanishes into the aether)|Good luck out there, freelancer.
 (SPEAKER の取り出したスクロールにサインをする)|(スクロールはエーテルの海に消えていった)|これから宜しく頼むよ、フリーランサー。
 (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as she ties you in a strict rope hogtie...)|(She dusts off her hands)|We'll have a talk when you get out of that, okay?
 (突然 SPEAKER に床に押し倒された)|(素早く手足を縛られ、背中で繋がれてしまった……)|(彼女は手についたホコリを払っている)|解き終わったらもう一度話し合おうか？
@@ -19331,7 +19300,7 @@ Don't mess with me, little girl.
 「邪魔しないで、お嬢ちゃん」
 Mmpphgh? (Pout at her)
 「んん……」(微笑みかける)
-FuukaBrat,"(She smirks)|So you're that kind of visitor, huh?
+(She smirks)|So you're that kind of visitor, huh?
 (彼女は微笑みながら問いかけてきた)|そういうタイプのお客さんなのね。
 That's right. How powerful are you?
 「そうだよ。あなたは強いの？」
@@ -19541,9 +19510,9 @@ Hehe, alright! If that's what you want~
 (ゆっくり頷く)
 (Shake your head and refuse rescue)
 (首を横に振り助けを断る)
-dShopkeeperRescue_Accept,"Yes please!
+Yes please!
 「ええ、お願い」
-dShopkeeperRescue_Refuse,"Actually I was having fun...
+Actually I was having fun...
 「実はこの状況を楽しんでいるから……」
 (The SPEAKER, your longtime friend, smiles)|Well well, if it isn't you again!|I see that you've decided to challenge the dungeon again.|Don't forget to bring some gold back with you,|there's a fee for rescue~
 (長年の友達 SPEAKER が微笑みかけてきた)|あら、あなたでしたか！|またダンジョンに潜るのですね？|だったらお金を持って帰るのを忘れないでくださいね！|あなたを助けるにもお金が必要ですし。
@@ -19671,7 +19640,7 @@ Right! Here's RESCUECOST gp.
 「はい RESCUECOST ゴールド」
 Mmmph. (Nod your head and pay RESCUECOST gp)
 「んんぉ」(RESCUECOST ゴールド渡す)
-rShopkeeperOfferHelpPay,"(The SPEAKER smiles)|Pleasure doing business with ya~
+(The SPEAKER smiles)|Pleasure doing business with ya~
 (SPEAKER は笑顔を返す)|今後ともご贔屓に～！
 Mind adding it to my tab?
 「ツケ払いはだめ？」
@@ -19715,7 +19684,7 @@ Pretty please? I promise I'll pay you back.
 (SPEAKER は RESTRAINTNAME を取り出した)|あなたの身体を宣伝に使わせていただきます。|このスーツには魅了の魔法がかかっているんです。|あなたがこのスーツを着れば、他の方々も寄ってくるでしょう。|そしてスーツに書かれたこの店のロゴを見るわけですね。
 (The SPEAKER folds her arms and nods)|Good girl! I knew you would come clean~
 (SPEAKER は腕を組み満足気に頷いた)|あなたならちゃんと返してくれるって信じてましたよ～。
-dShopkeeperOfferHelpDebt_Yes,"Sure! I accept!
+Sure! I accept!
 「わかった、引き受ける」
 (Nod in approval)
 (引き受ける)
@@ -19973,7 +19942,7 @@ An enemy found you while you were busy!
 (SPEAKER のささやき声で目を覚ました)|ごきげんよう。|あなたを助けるよう言われています。|さあ、行きましょう。
 (A SPEAKER wakes you up by banging loudly)|Hey! Good news!|My friends and I came to rescue you!
 (SPEAKER がうるさく檻を叩く音で目を覚ました)|よう、いいニュースだ！|私達が助けに来てやったぞ！
-rPrisonerRescueElemental,"(A SPEAKER wakes you up by knocking on the bars)|Hey, wake up.|I happen to like you, so we're going to get you out of here.
+(A SPEAKER wakes you up by knocking on the bars)|Hey, wake up.|I happen to like you, so we're going to get you out of here.
 (SPEAKER が檻をノックする音で目を覚ました)|起きて。|あなたのことが好き。だから逃してあげる。
 (A SPEAKER flashes a bright light in your direction)|Prisoner 74121 located. Commence transfer to different location.
 (SPEAKER のライトで照らされ、目が覚めた)|囚人74121確認。別ノ牢屋ニ移送シマス。
@@ -20059,7 +20028,7 @@ Upcast Level LEVEL
 強化レベル LEVEL
 Prerequisite
 前提：
-KDUnlocks,"Unlocks: 
+Unlocks: 
 解放済み：
 You need to learn REQUIREDSPELL before you can learn this one.
 このスキルを学ぶには REQUIREDSPELL を先に習得する必要がある。
@@ -20159,7 +20128,7 @@ So you're the one they talked about.
 (パニック！)
 You must be the Dollmaker.
 「あなたがドールメイカーね」
-rDollmakerAssume,"(The woman chuckles)|Correct.|And you must be the adventurer causing the recent troubles.
+(The woman chuckles)|Correct.|And you must be the adventurer causing the recent troubles.
 (彼女は苦笑いを返す)|いかにも。|そしてあなたは最近問題を起こしている冒険者ですね。
 I'm famous!
 「有名になれた！」
@@ -20537,6 +20506,8 @@ Gloves
 グローブ
 'Cosplay'
 ”コスプレ”
+Toys and Piercings
+オモチャとピアス
 
 Outfit1
 セーブ1
@@ -20622,8 +20593,6 @@ Ahoge
 アホ毛
 ElfCirclet
 エルフのサークレット
-
-
 
 ElfEars
 エルフ耳
@@ -20757,12 +20726,27 @@ TransparentCatsuitLowrise
 TransparentCatsuitLowerLowRise
 半透明キャットスーツ(下半身/ローライズ)
 
+TorsoLower
+上半身
+TorsoUpper
+下半身
+ArmRight
+右手
+ArmLeft
+左手
+ShoulderRight
+右肩
+ShoulderLeft
+左肩
+Butt
+お尻
+
 PlateArmor
 プレートアーマー
 Pauldrons
-肩甲
+肩当て
 Breastplate
-胸甲
+胸当て
 PlateBoots
 足甲
 GauntletLeft
@@ -20801,6 +20785,368 @@ BunnyLeotardHigh
 
 LaceBra
 レース付きブラ
+
+Shoulders
+肩
+Coat
+コート
+Cape
+ケープ
+
+BootLeft
+ブーツ(左)
+BootRight
+ブーツ(右)
+
+Shirt
+シャツ
+ShirtChest
+シャツ(胸)
+
+BanditPouch
+盗賊のポーチ
+Pouch
+ポーチ
+BanditKnee
+盗賊の膝当て
+Knee
+膝当て
+BanditChoker
+盗賊の首輪
+Choker
+首輪
+BanditWrist
+盗賊の腕輪
+WristLeft
+腕輪(左)
+WristRight
+腕輪(右)
+ShoeLeft
+靴(左)
+ShoeRight
+靴(右)
+BanditShorts
+盗賊のズボン
+ShortsLeft
+盗賊のズボン(左)
+Shorts
+ズボン
+ShortsLeft
+ズボン(左)
+BanditBoots
+盗賊のブーツ
+
+
+HairBowFrilly
+フリル付きリボン
+BowFrills
+フリル
+MaidApron
+メイドエプロン
+Striped Skirt
+ストライプスカート
+Skirt
+スカート
+Stripe
+ストライプ
+StripeOver
+ストライプ
+SkirtOver
+スカート
+Apron
+エプロン
+MaidBlouse
+メイドブラウス
+Blouse
+ブラウス
+MaidBow
+メイドのリボン
+MaidCorset
+メイドコルセット
+Corset
+コルセット
+CorsetStraps
+ストラップ
+MaidCorsetFull
+メイドコルセット(フル)
+StockingLeft
+ストッキング(左)
+StripeSockLeft
+ストライプストッキング(左)
+StockingRight
+ストッキング(左)
+StripeSockRight
+ストライプストッキング(右)
+Stockings
+ストッキング
+MaidSocks
+メイドソックス
+MaidShoes
+メイドの靴
+
+WitchBlouse
+魔女のブラウス
+BlouseLiner
+ブラウス(お腹)
+BlouseBust
+ブラウス(胸)
+WitchCorset
+魔女のコルセット
+WitchHat
+魔女の帽子
+WitchHatBack
+魔女の帽子(後)
+ApprenticeHat
+見習いの帽子
+ApprenticeHatPuff
+見習いの帽子(ボンボン)
+WitchShoes
+魔女の靴
+WitchSkirt
+魔女のスカート
+SkirtBelt
+スカートベルト
+SkirtRuffle
+スカートのフリル
+
+WarriorBoots
+戦士のブーツ
+SportsBra
+スポーツブラ
+WarriorBustier
+戦士のビスチェ
+BustierChest
+ビスチェ(胸)
+WarriorBelt
+戦士のベルト
+DragonNecklace
+竜のネックレス
+Necklace
+ネックレス
+DragonArmband
+竜のアームバンド
+Armband
+アームバンド
+WarriorSkirt
+戦士のスカート
+
+ZombieHat
+ゾンビの帽子
+ZombieHatBand
+ゾンビの帽子(下)
+ZombieChestTalisman
+ゾンビの御札(胸)
+ZombieTalisman
+ゾンビの御札(額)
+ZombieTalismanBent
+ゾンビの御札(頭)
+Sandals
+サンダル
+RobeBra
+ローブ(胸)
+RobeSleeves
+ローブのスリーブ
+SleeveLeft
+ローブのスリーブ(左)
+SleeveRight
+ローブのスリーブ(右)
+RobeSleeveDecoLeft
+スリーブの装飾(左)
+SleeveDecoRight
+スリーブの装飾(右)
+RobeSleevesDeco
+スリーブの装飾
+RibbonBelt
+リボン(胴)
+RibbonBack
+リボン(後)
+RobeSkirt
+ローブスカート
+
+Labcoat
+白衣
+DragonCollar
+竜の首輪
+LaceDeco
+ビスチェのリボン
+Catsuit
+キャットスーツ
+LaceBustier
+レースビスチェ
+LatexBra
+ラテックスのブラ
+LatexBraStraps
+ラテックスブラのストラップ
+LatexBraStrapsCross
+ラテックスブラのクロスストラップ
+LatexBustier
+ラテックスビスチェ
+MageBra
+メイジのブラ
+LatexTop
+ラテックスのトップス
+LatexTopZip
+ラテックスのトップ(ジッパー)
+LacePanties
+レースのパンツ
+LaceCrotchPanel
+レースの股引
+ElfPanties
+エルフのパンツ
+ElfTop
+エルフのトップス
+ElfBra
+エルフのブラ
+WolfPanties
+オオカミのパンツ
+WolfTorsoUpper
+オオカミのスーツ(上)
+MaidSockLeft
+メイドのソックス(左)
+MaidSockRight
+メイドのソックス(右)
+SockLeft
+ソックス(左)
+SockRight
+ソックス(右)
+BunnySocks
+バニーのソックス
+BunnySockLeft
+バニーのソックス(左)
+BunnySockRight
+バニーのソックス(右)
+WolfSocks
+オオカミのソックス
+WolfSockLeft
+オオカミのソックス(左)
+WolfSockRight
+オオカミのソックス(右)
+ElfShoes
+エルフのサンダル
+DressShoes
+ハイヒール
+WolfHeels
+オオカミのヒール
+BalletHeels
+バレエヒール
+FlatBalletHeels
+平らなバレエヒール
+LeatherHeels
+革のヒール
+TallHeels
+ロングヒール
+LaceBustier
+レースビスチェ
+LatexBustier
+ラテックスのビスチェ
+DressBlouse
+ブラウス
+BlouseCollar
+ブラウスの襟
+BlouseSkirt
+ブラウス(下)
+DressBlouseBust
+ブラウス
+DressBlouseCropped
+ブラウス(上半身)
+DressBlouseSleeves
+ブラウスの袖
+LeatherGloves
+革のグローブ
+BunnyGloves
+バニーグローブ
+WolfGloves
+オオカミのグローブ
+RobeSleeveLeft
+ローブのスリーブ(左)
+RobeSleeveRight
+ローブのスリーブ(右)
+DressBlouseSleeveLeft
+ブラウスの袖(左)
+DressBlouseSleevesRight
+ブラウスの袖(右)
+LaceCorset
+レースのコルセット
+LaceBraDeco
+レースのブラ(装飾)
+BowCorset
+コルセット
+BowCorsetBow
+コルセットの紐
+BowCorsetBust
+ブラ
+BowCorsetBustBow
+ブラ(紐)
+BowCorsetLong
+ロングコルセット
+BowCorsetOverbust
+コルセットブラ
+BowCorsetLongOverbust
+コルセットブラ(長)
+BowCorsetOverbustBow
+コルセットブラ(紐)
+BowCorsetLongOverbustBow
+ロングコルセットブラ(紐)
+LatexCorset
+ラテックスのコルセット
+LatexBra
+ラテックスのブラ
+LatexBustier
+ラテックスのビスチェ
+LatexCorsetFull
+ラテックスのコルセット(フル)
+LatexCorsetStrap
+ラテックスのコルセット(紐)
+LatexCorsetFullStrap
+ラテックスのコルセット(フル)(紐)
+LatexCorsetCross
+ラテックスのコルセット(クロス紐)
+LatexCorsetFullCross
+ラテックスのコルセット(フル)(クロス紐)
+ClothBelt
+布のベルト
+ClothBeltLines
+布のライン付きベルト
+DressSkirt
+ドレススカート
+ElfCollar
+エルフの首輪
+ElfBands
+エルフのアームバンド
+WolfCollar
+オオカミの首輪
+WolfCollarTag
+オオカミの首輪のタグ
+WolfCollarSmall
+オオカミの首輪(小)
+WolfCollarSmallTag
+オオカミの首輪のタグ(小)
+WolfHarness
+オオカミのハーネス
+FashionLeatherCollar
+革の首輪(ファッション)
+FashionLeatherBelt
+革のベルト(ファッション)
+FashionIronCollar
+鉄の首輪(ファッション)
+FashionIronBelt
+鉄のベルト(ファッション)
+FashionSteelCollar
+鋼鉄の首輪(ファッション)
+ElfSkirt
+エルフのスカート
+ElfSkirtBack
+エルフのスカート(後)
+ClothCollar
+布の首輪
+ClothCollarTag
+布の首輪(タグ付き)
+LatexNeckCorset
+ラテックスの首コルセット
+LatexNeckCorset
+ラテックスの首コルセット(マスク)
+FutureCollar
+近未来の首輪
 
 Items on Ground:
 アイテムが落ちている：
@@ -21355,7 +21701,7 @@ The knots appear to tie themselves together again, making them impossible to und
 解こうとしても、結び目が勝手にきつくなる魔法の縄。
 Spellbound Lower Legs
 呪文の足縄(中)
-RestraintStrongMagicRopeFeet2Desc,"A tie keeping your legs secured together.
+A tie keeping your legs secured together.
 足首同士を括り付ける呪文の縄。
 The knots appear to tie themselves together again, making them impossible to undo!
 解こうとしても、結び目が勝手にきつくなる魔法の縄。
@@ -21698,7 +22044,7 @@ Mithril Lower Knee Ropes
 ミスリルの足縄(重)
 A tie keeping your knees secured together.
 足同士を括り付ける縄。
-"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
+A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
 ミスリルを編んで作られた軽いロープ。滑らかな触り心地だが、切るのは極めて難しい。
 
 Dark Portal
@@ -21975,7 +22321,7 @@ Distracting: AMNT Distraction Per Turn
 扇情：毎ターン興奮値 AMNT 上昇
 Sensitivity: AMNT AP from attacks
 欲情：攻撃時対象のDP AMNT 上昇
-KDVariableModifier_,"AMNT Stat
+AMNT Stat
  AMNT 上昇
  
 AMNT Evasion
@@ -22918,7 +23264,7 @@ Leyline Map
 You know the location of ancient leylines and can draw upon 100 additional mana.
 古代のレイラインの場所を知っており、さらに100マナを引き出すことができる。
 
-KDPrereqFailHasWill,"You don't want to open the book... (need willpower)
+You don't want to open the book... (need willpower)
 本を開くための気力がわかない……(気力が必要)
 Chain Spirit
 チェーンスピリット
@@ -22954,9 +23300,9 @@ Surrender: Your willpower is 0, giving huge penalties to struggling, Block, Evas
 
 Unbound Keybindings! -->
 未設定のキーあり -->
-KDKeysNoBoundEasterEgg,"You've not enough keys!!! -->
+You've not enough keys!!! -->
 未設定のキーが大量にあり -->
-KDKeysUpdate,"Update your Keybindings!!! -->
+Update your Keybindings!!! -->
 キー設定をしてください。 -->
 I have altered the keybindings. Pray I do not alter them further.
 キーバインドを変更しました。これ以上変更しないことを祈っています。
@@ -23983,7 +24329,7 @@ You channel your fighting spirit into your desire for freedom!
 Your struggle power is greatly increased!!!
 もがく力が大幅に上昇している！
 
-KDTeleportNearby,"The teleportation partially succeeds due to an obstruction, placing you near the intended point.
+The teleportation partially succeeds due to an obstruction, placing you near the intended point.
 障害物に阻まれ、指定位置の近くにテレポートした。
 The teleportation fizzles due to obstruction.
 障害物に阻まれ、テレポートは失敗した。
@@ -24336,7 +24682,7 @@ Poltergeist
 ポルターガイスト
 The poltergeist goes silent.
 ポルターガイスト現象は収まった。
-"The poltergeist gropes and teases you playfully!! (DamageTaken)
+The poltergeist gropes and teases you playfully!! (DamageTaken)
 ポルターガイストが見えない手で愛撫してくる！ (DamageTaken)
 The poltergeist binds you with... something? (+RestraintAdded)
 ポルターガイストが……何かで拘束してきた。(+RestraintAdded)
