@@ -2859,8 +2859,8 @@ Wolf Instructor
 Wolf Instructor
 The instructor deploys active camoflague and retreats!
 The instructor deploys active camoflague and retreats!
-The instructor disciplies you! (DamageTaken)
-The instructor disciplies you! (DamageTaken)
+The instructor disciplines you! (DamageTaken)
+The instructor disciplines you! (DamageTaken)
 The instructor applies advanced training gear! (+RestraintAdded)
 The instructor applies advanced training gear! (+RestraintAdded)
 The instructor adds a lock to your restraints.
@@ -9939,8 +9939,8 @@ You are unable to muster the willpower to bypass the seal...
 You are unable to muster the willpower to bypass the seal...
 Feeling determined, you override the seal and release the item!
 Feeling determined, you override the seal and release the item!
-The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it.
-The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it.
+The lock is protected by a revenant seal. You'll need 25 ectoplasm to disenchant it.
+The lock is protected by a revenant seal. You'll need 25 ectoplasm to disenchant it.
 Your fingers pass right through the collar. Pity your neck doesn't pass through it.
 Your fingers pass right through the collar. Pity your neck doesn't pass through it.
 You channel ghastly energy into the lock and break the seal!!!

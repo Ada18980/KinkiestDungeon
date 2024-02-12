@@ -707,6 +707,7 @@ let KDInventoryAction = {
 			return TextGet("KDInventoryActionSell").replace("VLU", value + "");
 		},
 		valid: (player, item) => {
+			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
 			if (KDWeapon(item)?.unarmed) return false;
 			return item?.type == Weapon || item?.type == LooseRestraint || item?.type == Consumable;
 		},
@@ -778,6 +779,7 @@ let KDInventoryAction = {
 			return TextGet("KDInventoryActionSellBulk").replace("VLU", value + "");
 		},
 		valid: (player, item) => {
+			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
 			return item?.type == LooseRestraint || item?.type == Consumable;
 		},
 		show: (player, item) => {
@@ -851,6 +853,7 @@ let KDInventoryAction = {
 			return TextGet("KDInventoryActionSellExcess").replace("VLU", value + "");
 		},
 		valid: (player, item) => {
+			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
 			return item?.type == LooseRestraint || item?.type == Consumable;
 		},
 		show: (player, item) => {

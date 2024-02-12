@@ -2940,7 +2940,7 @@ Wolf Instructor
 Instructor de lobos
 The instructor deploys active camoflague and retreats!
 ¡El instructor despliega camuflaje activo y se retira!
-The instructor disciplies you! (DamageTaken)
+The instructor disciplines you! (DamageTaken)
 ¡El instructor te discipula! (Daño Recibido)
 The instructor applies advanced training gear! (+RestraintAdded)
 ¡El instructor aplica equipo de entrenamiento avanzado! (+ Restricción agregada)
@@ -10170,7 +10170,7 @@ You are unable to muster the willpower to bypass the seal...
 No puedes reunir la fuerza de voluntad para eludir el sello...
 Feeling determined, you override the seal and release the item!
 ¡Sintiéndote determinado, anulas el sello y liberas el objeto!
-The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it.
+The lock is protected by a revenant seal. You'll need 25 ectoplasm to disenchant it.
 La cerradura está protegida por un precinto relevante. Necesitarás 25 ectoplasma para desencantarlo.
 Your fingers pass right through the collar. Pity your neck doesn't pass through it.
 Tus dedos pasan justo a través del collar. Lástima que tu cuello no pase por él.

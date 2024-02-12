@@ -2109,7 +2109,7 @@ AttackWolfExecutiveLock,"The Executive's drones apply high-security locks to you
 
 NameWolfInstructor,Wolf Instructor
 KillWolfInstructor,"The instructor deploys active camoflague and retreats!"
-AttackWolfInstructor,"The instructor disciplies you! (DamageTaken)"
+AttackWolfInstructor,"The instructor disciplines you! (DamageTaken)"
 AttackWolfInstructorBind,"The instructor applies advanced training gear! (+RestraintAdded)"
 AttackWolfInstructorLock,"The instructor adds a lock to your restraints."
 
@@ -2995,6 +2995,7 @@ KinkyDungeonStruggleRemoveSuccess,"You free yourself from the TargetRestraint!"
 KinkyDungeonStruggleCutSuccess,"You damage the TargetRestraint enough to escape!"
 
 KinkyDungeonStruggleCutDestroy,"The TargetRestraint is destroyed by your attempts."
+KinkyDungeonStruggleCutDestroyFail,"The TargetRestraint comes off before taking serious damage."
 
 KinkyDungeonStruggleLimit,"This is as far as you can struggle. You'll have to remove the TargetRestraint some other way."
 KinkyDungeonRemoveLimit,"The item is too tight. You'll need to loosen the TargetRestraint somehow first..."
@@ -7080,7 +7081,7 @@ KinkyDungeonCurseInfoWill,"The item is protected by a seal of Determination. You
 KinkyDungeonCurseStruggleWill,"You are unable to muster the willpower to bypass the seal..."
 KinkyDungeonCurseUnlockWill,"Feeling determined, you override the seal and release the item!"
 
-KinkyDungeonCurseInfoGhostLock,"The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it."
+KinkyDungeonCurseInfoGhostLock,"The lock is protected by a revenant seal. You'll need 25 ectoplasm to disenchant it."
 KinkyDungeonCurseStruggleGhostLock,"Your fingers pass right through the collar. Pity your neck doesn't pass through it."
 KinkyDungeonCurseUnlockGhostLock,"You channel ghastly energy into the lock and break the seal!!!"
 
@@ -7883,6 +7884,62 @@ KinkyDungeonRemindJailChaseTheWardenCommandDefend,"This will be entertaining."
 KinkyDungeonRemindJailChaseTheWardenCommandAssault,"Show me what you've got~"
 KinkyDungeonRemindJailChaseTheWardenCommandBlock,"I'll watch~"
 
+
+KinkyDungeonRemindJailPlayHelplessSilverWitch0,"Fine then! Have it your way."
+KinkyDungeonRemindJailPlayHelplessSilverWitch1,"You'll be sorry you didn't listen to me~"
+KinkyDungeonRemindJailPlayHelplessSilverWitch2,"Why must you be so difficult!"
+KinkyDungeonRemindJailPlayBratSilverWitch0,"Cover me you brats!"
+KinkyDungeonRemindJailPlayBratSilverWitch1,"They're coming for me!"
+KinkyDungeonRemindJailPlayBratSilverWitch2,"Stay away!"
+KinkyDungeonRemindJailPlaySubSilverWitch0,"Time for a taste of my own medicine..."
+KinkyDungeonRemindJailPlaySubSilverWitch1,"I've been a bad girl, won't you do something about it?"
+KinkyDungeonRemindJailPlaySubSilverWitch2,"Mmmph... maybe I talk too much..."
+KinkyDungeonRemindJailPlaySilverWitch0,"I wonder how many days we'll get to spend together!"
+KinkyDungeonRemindJailPlaySilverWitch1,"You look so pretty as always, and forevermore~"
+KinkyDungeonRemindJailPlaySilverWitch2,"Time for an inspection~"
+KinkyDungeonRemindJailPlaySilverWitchStruggle,"There's no use in struggling, dear! I've made sure it's extra tight."
+KinkyDungeonRemindJailPlaySilverWitchLeash,"Playtime is over, back to your cell~"
+KinkyDungeonRemindJailPlaySilverWitchFree,"Why aren't you wearing your restraints?"
+KinkyDungeonRemindJailPlaySilverWitchLoot,"I did not order you to clean~"
+KinkyDungeonRemindJailPlaySilverWitchKey,"What's that you've got there?"
+KinkyDungeonRemindJailChaseSilverWitchAlert,"Found you!"
+KinkyDungeonRemindJailChaseSilverWitchAttack0,"I've been waiting for this~"
+KinkyDungeonRemindJailChaseSilverWitchAttack1,"Show me your moves."
+KinkyDungeonRemindJailChaseSilverWitchAttack2,"You'll make for a fine servant!"
+KinkyDungeonRemindJailChaseSilverWitchSpell0,"Very impressive."
+KinkyDungeonRemindJailChaseSilverWitchSpell1,"Yes, yes, show me what you've got!"
+KinkyDungeonRemindJailChaseSilverWitchSpell2,"I've always wanted another mage."
+KinkyDungeonRemindJailChaseSilverWitchSpellItem,"Tsk tsk, no silly tricks~"
+KinkyDungeonRemindJailChaseSilverWitchShrine,"Now now, you don't have permission to do that~"
+KinkyDungeonRemindJailChaseSilverWitchChest,"What do you think you're doing?"
+KinkyDungeonRemindJailChaseSilverWitchOrb,"Typical adventurers~"
+KinkyDungeonRemindJailChaseSilverWitchJailbreak,"Oh, you got out?"
+KinkyDungeonRemindJailSilverWitchGrab,"Too bad~"
+KinkyDungeonRemindJailSilverWitchDisarm,"That thing is dangerous, my dear~"
+KinkyDungeonRemindJailSilverWitchHit,"A feisty one, aren't you~"
+KinkyDungeonRemindJailSilverWitchHitPlayer,"Playtime's over~"
+KinkyDungeonRemindJailSilverWitchMiss,"Very nice."
+KinkyDungeonRemindJailSilverWitchBlocked,"Most impressive!"
+KinkyDungeonRemindJailSilverWitchMissedMe,"You need more training!"
+KinkyDungeonRemindJailSilverWitchBlockedMe,"You need more training!"
+KinkyDungeonRemindJailSilverWitchLeash,"Come along now~"
+KinkyDungeonRemindJailSilverWitchPull,"Come closer, I want to see your face~"
+KinkyDungeonRemindJailSilverWitchStun,"What a shame."
+KinkyDungeonRemindJailSilverWitchPickpocket,"What's this?"
+KinkyDungeonRemindJailSilverWitchLock,"See if you can get out of that!"
+KinkyDungeonRemindJailSilverWitchIntro,"Do you know of the Dollmaker? I've got a proposal for you and I..."
+KinkyDungeonRemindJailChaseSilverWitchDefend0,"Hands off my pet~"
+KinkyDungeonRemindJailChaseSilverWitchDefend1,"Careful what you ask for~"
+KinkyDungeonRemindJailChaseSilverWitchDefend2,"Be gentle with her~"
+KinkyDungeonRemindJailChaseSilverWitchDefendHonor0,"Careful what you ask for~"
+KinkyDungeonRemindJailChaseSilverWitchDefendHonor1,"That's my property~"
+KinkyDungeonRemindJailChaseSilverWitchDefendHonor2,"Be gentle with her~"
+KinkyDungeonRemindJailChaseSilverWitchHonor0,"You've made some enemies, haven't you?"
+KinkyDungeonRemindJailChaseSilverWitchHonor1,"I should teach you to be a nice girl."
+KinkyDungeonRemindJailChaseSilverWitchHonor2,"You need to learn some manners~"
+KinkyDungeonRemindJailChaseSilverWitchCommandDefend,"This will be entertaining."
+KinkyDungeonRemindJailChaseSilverWitchCommandAssault,"Show me what you've got~"
+KinkyDungeonRemindJailChaseSilverWitchCommandBlock,"I'll watch~"
 
 KinkyDungeonRemindJailPlayHelpless0,"This is too tight..."
 KinkyDungeonRemindJailPlayHelpless1,"You'll never get away with this!"
@@ -19609,6 +19666,7 @@ KDPaletteBountyhunter,Bounty Hunter
 KDPaletteDressmaker,Dressup Co.
 KDPaletteDollsmith,Dollmaker
 KDPaletteLatex,Latex
+KDPaletteRubber,Rubber
 KDPaletteSlime,Slime
 KDPaletteAlchemist,Alchemist
 KDPaletteApprentice,Scholarly
@@ -19758,8 +19816,8 @@ AttackTheWarden2Lock,"The Warden swings her enchanted whip and conjures locks on
 
 
 
-rTheWarden,"(You find a girl wearing an ornate dress)|(She glances at you)|And who might you be?"
-dTheWarden_Aggressive,"I should be asking the same of you."
+rTheWarden,"(The Warden glances at you)|Oh? What do we have here?|An adventurer?|You're not on the books..."
+dTheWarden_Aggressive,"You"
 dTheWarden_AggressiveGag,"(Growl at her)"
 rTheWardenAggressive,"(She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?"
 dTheWardenAggressive_Question,What kind of name is that?

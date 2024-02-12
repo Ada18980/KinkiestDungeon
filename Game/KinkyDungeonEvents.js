@@ -1246,7 +1246,7 @@ let KDEventMapInventory = {
 
 			let r = KinkyDungeonGetRestraint({tags: newtags}, 24, "grv", true, undefined);
 			if (r) {
-				KinkyDungeonAddRestraintIfWeaker(r, MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint, true, undefined, false, undefined, undefined, undefined, true);
+				KinkyDungeonAddRestraintIfWeaker(r, MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint, true, undefined, false, undefined, undefined, item.faction || e.kind, true);
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingSpread").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)).replace("+RestraintAdded", TextGet("Restraint" + r.name)), "lightblue", 2);
 			}
 
@@ -7398,6 +7398,8 @@ let KDEventMapEnemy = {
 							if ((!filter || en.Enemy?.name == filter) && en.Enemy?.tags?.wardenprisoner && KDEnemyHasFlag(en, "imprisoned")) {
 								KinkyDungeonSetEnemyFlag(en, "imprisoned", 0);
 								en.aware = true;
+								en.gx = KinkyDungeonPlayerEntity.x;
+								en.gy = KinkyDungeonPlayerEntity.y;
 								count += 1;
 							}
 						}

@@ -495,12 +495,18 @@ let KDDefaultMaxParty = 3;
 * CollectionGuests: number,
 * SelectedEscapeMethod: string,
 * Restriction: number,
+* JourneyX: number,
+* JourneyY: number,
+* JourneyMap: KDJourneyMap,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	JourneyX: 0,
+	JourneyY: 0,
+	JourneyMap: {},
 	AttachedWep: "",
 	Collection: {},
 	CollectionSorted: [],

@@ -3174,6 +3174,23 @@ interface KDFactionProps {
 	jailOutfit: string,
 }
 
+type KDJourneySlot = {
+	visited: boolean,
+
+	x: number;
+	y: number;
+	color: string;
+	type: string;
+	RoomType: string;
+	MapMod: string;
+	EscapeMethod: string;
+	Checkpoint: string;
+	Connections: {x: number, y: number}[];
+	/** Prevents from getting culled */
+	protected?: boolean;
+};
+type KDJourneyMap = {[_: string]:  KDJourneySlot};
+
 type outfit = {name: string, dress: string, shop: boolean, rarity: number, events?: KinkyDungeonEvent[], costMod?: number};
 
 type KDTile = any;

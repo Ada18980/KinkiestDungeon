@@ -4454,7 +4454,13 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 				+ ".ogg");
 		}
 		if (KDRandom() < destroyChance) {
-			KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonStruggleCutDestroy").replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2);
+			if (KDAlwaysKeep({name: restraint.name, id: 0}, KinkyDungeonPlayerEntity)) {
+				KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonStruggleCutDestroyFail").replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2);
+
+			} else {
+				KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonStruggleCutDestroy").replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2);
+
+			}
 			destroy = true;
 		}
 		let trap = restraint.trap;
@@ -5398,4 +5404,19 @@ function KDGetRestriction() {
 	KinkyDungeonSendEvent("restriction", data);
 
 	return data.restriction;
+}
+
+/**
+ *
+ * @param {item} item
+ * @param {entity} [Remover]
+ * @returns {boolean}
+ */
+function KDAlwaysKeep(item, Remover) {
+	let rest = KDRestraint(item);
+	let inventoryAs = item.inventoryVariant || (Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs);
+	return rest.enchanted
+	|| rest.armor
+	|| rest.alwaysKeep
+	|| (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs] && !KinkyDungeonRestraintVariants[inventoryAs].noKeep);
 }

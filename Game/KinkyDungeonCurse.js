@@ -502,11 +502,7 @@ function KinkyDungeonCurseUnlock(group, index, Curse) {
 	if (unlock) {
 		KDSendStatus('escape', KinkyDungeonGetRestraintItem(group).name, "Curse");
 		KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonCurseUnlock" + Curse), "#99FF99", 2);
-		if (restraint != host) {
-			KinkyDungeonRemoveDynamicRestraint(host, keep, undefined, KinkyDungeonPlayerEntity);
-		} else {
-			KinkyDungeonRemoveRestraint(group, keep, undefined, undefined, undefined, undefined, KinkyDungeonPlayerEntity);
-		}
+		KinkyDungeonRemoveRestraintSpecific(restraint, keep, undefined, false, false, false, KinkyDungeonPlayerEntity);
 	}
 
 

@@ -2949,7 +2949,7 @@ Wolf Instructor
 늑대 교관
 The instructor deploys active camoflague and retreats!
 교관이 능동위장을 하고 퇴각!
-The instructor disciplies you! (DamageTaken)
+The instructor disciplines you! (DamageTaken)
 교관이 당신을 징계합니다! (DamageTaken)
 The instructor applies advanced training gear! (+RestraintAdded)
 교관이 고급 트레이닝 장비를 적용! (+Restraint추가)
@@ -10107,7 +10107,7 @@ You are unable to muster the willpower to bypass the seal...
 Feeling determined, you override the seal and release the item!
 결심한 마음으로 봉인을 해제하고 아이템을 해제하십시오!
 
-The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it.
+The lock is protected by a revenant seal. You'll need 25 ectoplasm to disenchant it.
 그 자물쇠는 원령 봉인으로 보호되어 있습니다. 마력을 추출하려면 25개의 엑토플라즘이 필요합니다.
 Your fingers pass right through the collar. Pity your neck doesn't pass through it.
 당신의 손가락은 목걸이를 통과합니다. 목이 통과하지 않는 것이 유감입니다.

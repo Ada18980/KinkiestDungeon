@@ -511,10 +511,10 @@ function KDProcessInput(type, data) {
 							tag = "MysticDuctTapeCollar";
 							break;
 						case "Elements":
-							tag = "CrystalLivingCollar";							
+							tag = "CrystalLivingCollar";
 							break;
 						case "Conjure":
-							tag = "RibbonCollar";							
+							tag = "RibbonCollar";
 							break;
 						case "Illusion":
 							tag = "ObsidianLivingCollar";

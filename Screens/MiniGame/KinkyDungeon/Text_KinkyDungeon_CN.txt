@@ -3116,7 +3116,7 @@ Wolf Instructor
 狼导师
 The instructor deploys active camoflague and retreats!
 导师部署主动迷彩并撤退！
-The instructor disciplies you! (DamageTaken)
+The instructor disciplines you! (DamageTaken)
 导师管教你！（DamageTaken）
 The instructor applies advanced training gear! (+RestraintAdded)
 导师使用先进的训练装备！（+RestraintAdded）
@@ -9188,7 +9188,7 @@ You are unable to muster the willpower to bypass the seal...
 你无法鼓起意志力绕过封印……
 Feeling determined, you override the seal and release the item!
 下定决心后，你推翻了封印并解开了该物品！
-The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it.
+The lock is protected by a revenant seal. You'll need 25 ectoplasm to disenchant it.
 这把锁由永久性密封件保护。你需要 25 个灵浆来打开它。
 Your fingers pass right through the collar. Pity your neck doesn't pass through it.
 你的手指直接穿过项圈。可惜你的脖子不能穿过它。
@@ -17368,7 +17368,7 @@ Living Collars
 活体项圈
 When getting captured with many of the same type of restraint, gain a collar that occasionally binds you with that type of restraint.
 当你被相同类型的束缚物多次捕获时，获得一个偶尔会用同种束缚物束缚你的项圈。
-Play the game the way it was intended. Cruel and restrictive. 
+Play the game the way it was intended. Cruel and restrictive.
 按照游戏的初衷来玩。严厉且充满限制性
 Unconventional Warfare
 非常规作战

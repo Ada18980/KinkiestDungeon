@@ -107,6 +107,7 @@
         "Game/KinkyDungeonNames.js",
         "Game/KDDelayedActions.js",
         "Game/KDCommander.js",
+        "Game/KDJourney.ts",
         "Scripts/KDMods.ts",
         "Scripts/Main.ts",
         "Data/Filters.ts",

@@ -88,6 +88,12 @@ let KinkyDungeonFactionFilters = {
 		LightNeutral: {"gamma":1,"saturation":0,"contrast":0.9299999999999999,"brightness":1,"red":4.549019607843137,"green":1.0392156862745099,"blue":4.764705882352941,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0.11666666666666667,"contrast":1.3,"brightness":1.1166666666666667,"red":1,"green":1,"blue":1,"alpha":1},
 	},
+	"Rubber": {
+		Catsuit: {"gamma":2.7666666666666666,"saturation":0,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
+		DarkNeutral: {"gamma":1.3566666666666665,"saturation":0,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
+		LightNeutral: {"gamma":2.05,"saturation":0.016666666666666666,"contrast":0.8,"brightness":1.5,"red":0.8999999999999999,"green":1.1833333333333333,"blue":1.75,"alpha":1},
+		Highlight: {"gamma":2.05,"saturation":0.016666666666666666,"contrast":0.8,"brightness":1.5,"red":0.8999999999999999,"green":1.1833333333333333,"blue":1.75,"alpha":1},
+	},
 	"Slime": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.9299999999999999,"brightness":1,"red":4.980392156862745,"green":0.6078431372549019,"blue":5,"alpha":1},
 		DarkNeutral: {"gamma":0.8,"saturation":0.1,"contrast":0.8666666666666667,"brightness":1.4166666666666665,"red":2.05,"green":1,"blue":2.15,"alpha":1},

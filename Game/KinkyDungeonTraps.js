@@ -243,6 +243,7 @@ function KinkyDungeonHandleStepOffTraps(entity, x, y, moveX, moveY) {
 			KinkyDungeonSendEvent("beforeStepOffTrap", {x:x, y:y, tile: tile, flags: flags});
 			let msg = "";
 			let color = "#ff0000";
+			let trap = tile.StepOffTrap;
 
 			if (KDTrapTypesStepOff[tile.StepOffTrap]) {
 				let res = KDTrapTypesStepOff[tile.StepOffTrap](tile, entity, x, y);
@@ -254,7 +255,7 @@ function KinkyDungeonHandleStepOffTraps(entity, x, y, moveX, moveY) {
 				KDTrigPanic();
 
 				if (msg == "Default")
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrap" + tile.StepOffTrap), color, 2);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrap" + (trap) + (tile.extraTag || "")), color, 2);
 				else
 					KinkyDungeonSendTextMessage(10, msg, color, 2);
 			}
@@ -274,6 +275,8 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 			let msg = "";
 			let triggered = false;
 			let color = "#ff0000";
+			let trap = tile.Trap;
+
 			if (KinkyDungeonStatsChoice.has("Rusted") && KDRandom() < 0.25) {
 				msg = TextGet("KDTrapMisfire");
 			} else {
@@ -291,7 +294,7 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 			}
 			if (msg) {
 				if (msg == "Default")
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrap" + tile.Trap + (tile.extraTag || "")), color, 2 + KDGameData.SlowMoveTurns);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrap" + (trap) + (tile.extraTag || "")), color, 2 + KDGameData.SlowMoveTurns);
 				else
 					KinkyDungeonSendTextMessage(10, msg, color, 2 + KDGameData.SlowMoveTurns);
 			}
