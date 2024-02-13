@@ -8,6 +8,15 @@ let KDDefaultPalette = "";
 // Disable interpolation when scaling, will make texture be pixelated
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR;
 
+let KDStandardRenderException = {
+	Consent: [],
+	Logo: [],
+	Game: ["Game"],
+	Stats: [],
+	TileEditor: [],
+	Wardrobe: [],
+
+};
 
 let KDClipboardDisabled = window.location.host.includes('itch.io');
 (async function() {
@@ -1256,7 +1265,7 @@ function KinkyDungeonRun() {
 		kdgamefog.visible = KinkyDungeonState != "TileEditor";
 	}
 	// Draw the characters
-	if (KinkyDungeonState != "Consent" && KinkyDungeonState != "Logo" && (KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "Stats" && KinkyDungeonState != "TileEditor" && KinkyDungeonState != "Wardrobe") {
+	if (!KDStandardRenderException[KinkyDungeonState] || (KDStandardRenderException[KinkyDungeonState].length > 0 && !KDStandardRenderException[KinkyDungeonState][KinkyDungeonDrawState])) {
 		if (KDBGColor) {
 			FillRectKD(kdcanvas, kdpixisprites, "playerbg", {
 				Left: 0,
@@ -1278,6 +1287,9 @@ function KinkyDungeonRun() {
 		});
 	}
 
+	if (KDRender[KinkyDungeonState]) {
+		KDRender[KinkyDungeonState]();
+	} else
 	if (KinkyDungeonState == "Logo") {
 		if (CommonTime() > KDLogoStartTime + KDLogoEndTime) {
 			KinkyDungeonState = "Consent";
@@ -3267,6 +3279,9 @@ function KDInitializeJourney(Journey) {
 	}
 
 	KinkyDungeonMapIndex = newIndex;
+
+
+	KDInitJourneyMap();
 }
 
 
@@ -4365,6 +4380,10 @@ function KinkyDungeonLoadGame(String) {
 
 			if (!KinkyDungeonMapIndex[KDMapData.MainPath] || !KinkyDungeonMapIndex[KDMapData.ShortcutPath])
 				KDInitializeJourney(KDGameData.Journey);
+
+			if (!KDGameData.JourneyMap) {
+				KDInitJourneyMap();
+			}
 
 			if (saveData.KDMapData || saveData.KinkyDungeonGrid) {
 				KDUpdateVision();

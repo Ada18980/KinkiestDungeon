@@ -1,8 +1,13 @@
 "use strict";
 
+let KDJourneyGraphics = new PIXI.Graphics;
+KDJourneyGraphics.zIndex = -0.1;
+let KDGameBoardAddedJourney = false;
+
 let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, y: number) => KDJourneySlot> = {
 	basic: (Predecessor, x, y) => {
 		return {
+			type: 'basic',
 			x: x,
 			y: y,
 			Checkpoint: Predecessor?.Checkpoint || 'grv',
@@ -11,11 +16,40 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			EscapeMethod: "Key", // TODO
 			MapMod: "",
 			RoomType: "",
-			type: 'basic',
 			protected: false,
 			visited: false,
 		};
-	}
+	},
+	shop: (Predecessor, x, y) => {
+		return {
+			type: 'shop',
+			x: x,
+			y: y,
+			Checkpoint: 'shoppe',
+			color: "#ffffff",
+			Connections: [],
+			EscapeMethod: "None",
+			MapMod: "",
+			RoomType: "",
+			protected: false,
+			visited: false,
+		};
+	},
+	boss: (Predecessor, x, y) => {
+		return {
+			type: 'boss',
+			x: x,
+			y: y,
+			Checkpoint: Object.keys(KinkyDungeonMapIndex)[x % KDLevelsPerCheckpoint],
+			color: "#ffffff",
+			Connections: [],
+			EscapeMethod: "Boss",
+			MapMod: "",
+			RoomType: "",
+			protected: false,
+			visited: false,
+		};
+	},
 };
 
 /**
@@ -103,4 +137,89 @@ function KDCullJourneyMap(x: number, y: number) {
 		}
 	}
 	console.log(`Cullec ${deleted} journey slots`);
+}
+
+function KDRenderJourneyMap(X: number, Y: number, Width: number = 7, Height: number = 5, ScaleX: number = 136, ScaleY: number = 100, xOffset: number = 1000, yOffset: number = 350, spriteSize: number = 72) {
+	KDJourneyGraphics.clear();
+	if (!KDGameBoardAddedJourney) {
+		kdcanvas.addChild(KDJourneyGraphics);
+		KDGameBoardAddedJourney = true;
+	}
+
+	let slots: Record<string, KDJourneySlot> = {};
+	let minX = X;
+	let maxX = X + Width;
+	let minY = Y - Height;
+	let maxY = Y + Height;
+
+	// Add all slots to the rendering queue
+	for (let slot of Object.values(KDGameData.JourneyMap)) {
+		if (slot.x >= minX && slot.y >= minY && slot.x <= maxX && slot.y <= maxY) {
+			slots[(slot.x) + ',' + (slot.y)] = slot;
+		}
+	}
+
+	// Draw each slot
+	for (let slot of Object.values(slots)) {
+		let sprite = "UI/NavMap/" + slot.type;
+		if (slot.x == KDGameData.JourneyX && slot.y == KDGameData.JourneyY) {
+
+			KDJourneyGraphics.lineStyle(2, 0xffffff);
+			KDJourneyGraphics.drawCircle(
+				xOffset + ScaleX*(slot.x - X),
+				yOffset + ScaleY*(slot.y - Y),
+				spriteSize * 0.75
+			);
+		}
+		KDDraw(kdcanvas, kdpixisprites, "navmap" + slot.x + ',' + slot.y,
+			KinkyDungeonRootDirectory + sprite + '.png',
+			xOffset + ScaleX*(slot.x - X) - spriteSize/2,
+			yOffset + ScaleY*(slot.y - Y) - spriteSize/2,
+			spriteSize, spriteSize, undefined,
+		);
+		if (slot.x < maxX)
+			for (let c of slot.Connections) {
+				KDDrawJourneyLine(
+					xOffset + ScaleX*(slot.x - X) + spriteSize/4,
+					yOffset + ScaleY*(slot.y - Y),
+					xOffset + ScaleX*(c.x - X) - spriteSize/4,
+					yOffset + ScaleY*(c.y - Y),
+				)
+			}
+	}
+
+}
+
+function KDInitJourneyMap() {
+	let simpleFirst = true;
+
+	KDGameData.JourneyMap = {};
+	KDGameData.JourneyX = 0;
+	KDGameData.JourneyY = 0;
+
+	let start = KDJourneySlotTypes.shop(null, 0, 0);
+	let bosses = [];
+	for (let i = 0; i + KDLevelsPerCheckpoint < KinkyDungeonMaxLevel; i += KDLevelsPerCheckpoint) {
+		let boss = KDJourneySlotTypes[KinkyDungeonBossFloor(i + KDLevelsPerCheckpoint) ? 'boss' : 'basic'](null, i + KDLevelsPerCheckpoint, 0);
+		if (i == 0 && simpleFirst) {
+			let first = KDJourneySlotTypes.basic(start, i + 1, 0);
+			start.Connections.push({x: i + 1, y: 0});
+			KDCommitJourneySlots([start, first, ...KDCreateJourneyArea(KDLevelsPerCheckpoint - 2, first, boss)]);
+		} else {
+			KDCommitJourneySlots([start, ...KDCreateJourneyArea(KDLevelsPerCheckpoint - 1, start, boss)]);
+		}
+		bosses.push(boss);
+		start = boss;
+	}
+
+
+
+
+}
+
+function KDDrawJourneyLine(x1: number, y1: number, x2: number, y2: number) {
+	KDJourneyGraphics.lineStyle(2, 0xffffff, 1);
+	KDJourneyGraphics.moveTo(x1, y1);
+	KDJourneyGraphics.lineTo(x2, y2);
+	return;
 }

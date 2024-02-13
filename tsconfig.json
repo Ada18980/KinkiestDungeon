@@ -40,6 +40,7 @@
         "Game/KinkyDungeonEditorGen.js",
         "Game/KinkyDungeonErrors.js",
         "Game/KinkyDungeon.js",
+        "Game/KDRender.js",
         "Game/KinkyDungeonGame.js",
         "Game/KinkyDungeonVibe.js",
         "Game/KinkyDungeonBuffsList.js",

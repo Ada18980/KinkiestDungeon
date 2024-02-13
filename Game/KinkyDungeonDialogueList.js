@@ -931,7 +931,7 @@ let KDDialogue = {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
 					let amount = KinkyDungeonInventoryGetConsumable("Gunpowder")?.quantity;
-					let amount2 = KinkyDungeonInventoryGetConsumable("Gunpowder")?.quantity;
+					let amount2 = KinkyDungeonInventoryGetConsumable("AncientPowerSource")?.quantity;
 					if (amount >= 1 && amount2 >= 1) {
 						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("Gunpowder"), -1);
 						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("AncientPowerSource"), -1);
@@ -972,7 +972,7 @@ let KDDialogue = {
 			"PotionInvisibility": {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
-					let amount = KinkyDungeonInventoryGetConsumable("Gunpowder")?.quantity;
+					let amount = KinkyDungeonInventoryGetConsumable("Ectoplasm")?.quantity;
 					if (amount >= 3) {
 						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("Ectoplasm"), -3);
 						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("PotionInvisibility"), 1);
