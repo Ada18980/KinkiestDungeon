@@ -57,7 +57,7 @@ let KinkyDungeonFreezeDamageTypes = ["ice"];
 let KinkyDungeonSlowDamageTypes = ["crush", "slash", "pierce", "frost", "cold", "poison"];
 let KinkyDungeonVulnerableDamageTypes = ["tickle", "acid", "magicbind"];
 let KinkyDungeonMeltDamageTypes = ["fire", "holy"];
-let KinkyDungeonShatterDamageTypes = ["crush", "stun"];
+let KinkyDungeonShatterDamageTypes = ["crush", "stun", "fire"];
 let KinkyDungeonIgnoreShieldTypes = ["soul", "holy"];
 let KinkyDungeonIgnoreBlockTypes = ["soul", "charm", "gas"];
 
@@ -2704,7 +2704,7 @@ let KDPrereqs = {
 		if (KinkyDungeonPlayerTags.get("CursedSet")) return false;
 		if (e.tags && !KinkyDungeonGetRestraint({tags: [...e.tags],},
 			MiniGameKinkyDungeonLevel,
-			KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "")) return false;
+			(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "")) return false;
 		for (let inv of KinkyDungeonAllRestraintDynamic()) {
 			let item = inv.item;
 			if (item.events.some((event) => {return event.trigger == "CurseTransform" && event.kind == "transform";})) return true;

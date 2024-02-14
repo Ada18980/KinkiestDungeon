@@ -25,6 +25,7 @@ let bosses = {
 		makeMain: true,
 		noQuests: true,
 		escapeMethod: "Boss",
+		forceCheckpoint: "grv",
 	},
 
 	"Dollmaker": {
@@ -59,6 +60,7 @@ let bosses = {
 		makeMain: true,
 		noQuests: true,
 		escapeMethod: "Boss",
+		forceCheckpoint: "bel",
 	},
 	"TheWarden": {
 		boss: "TheWarden",
@@ -92,6 +94,7 @@ let bosses = {
 		makeMain: true,
 		noQuests: true,
 		escapeMethod: "Boss",
+		forceCheckpoint: "cat",
 	},
 };
 

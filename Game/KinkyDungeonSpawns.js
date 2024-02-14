@@ -297,12 +297,12 @@ function KinkyDungeonCallGuard(x, y, noTransgress, normalDrops, requireTags) {
 
 			let jt = KDMapData.GuardFaction?.length > 0 ? KinkyDungeonFactionTag[KDMapData.GuardFaction[Math.floor(KDRandom() * KDMapData.GuardFaction.length)]] : "guardCall";
 
-			let Enemy =  KinkyDungeonGetEnemy(["Guard", jt], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', requireTags ? requireTags : [jt, "jail"], {requireHostile: "Player"}, undefined, ["gagged"]);
+			let Enemy =  KinkyDungeonGetEnemy(["Guard", jt], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', requireTags ? requireTags : [jt, "jail"], {requireHostile: "Player"}, undefined, ["gagged"]);
 			if (!Enemy) {
-				Enemy = KinkyDungeonGetEnemy(["Guard", jt], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jail"], undefined, undefined, ["gagged"]);
+				Enemy = KinkyDungeonGetEnemy(["Guard", jt], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', [jt, "jail"], undefined, undefined, ["gagged"]);
 				if (!Enemy) {
 					jt = "guardCall";
-					Enemy = KinkyDungeonGetEnemy(["Guard", jt], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jail"], undefined);
+					Enemy = KinkyDungeonGetEnemy(["Guard", jt], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', [jt, "jail"], undefined);
 				}
 			}
 			let guard = {summoned: true, noDrop: !normalDrops, Enemy: Enemy, id: KinkyDungeonGetEnemyID(),
@@ -407,7 +407,7 @@ function KinkyDungeonHandleWanderingSpawns(delta) {
 					KinkyDungeonGetEnemyByName(qq.enemy)
 					: KinkyDungeonGetEnemy(
 						tags, MiniGameKinkyDungeonLevel + KinkyDungeonDifficulty/5 + Math.round(KinkyDungeonTotalSleepTurns / sleepTurnsPerExtraSpawnLevel),
-						KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+						(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 						KinkyDungeonMapGet(spawnLocation.x, spawnLocation.y), requireTags, {requireHostile: "Player"});
 				let EnemiesSummoned = [];
 				// We are going to reroll the ghost decision just to provide some grace for players who are well and truly stuck
@@ -455,7 +455,7 @@ function KinkyDungeonHandleWanderingSpawns(delta) {
 
 					Enemy = qq ?
 						KinkyDungeonGetEnemyByName(qq.enemy)
-						: KinkyDungeonGetEnemy(tags, MiniGameKinkyDungeonLevel + effLevel/KDLevelsPerCheckpoint, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], KinkyDungeonMapGet(spawnLocation.x, spawnLocation.y), requireTags);
+						: KinkyDungeonGetEnemy(tags, MiniGameKinkyDungeonLevel + effLevel/KDLevelsPerCheckpoint, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), KinkyDungeonMapGet(spawnLocation.x, spawnLocation.y), requireTags);
 				}
 				if (EnemiesSummoned.length > 0 && KinkyDungeonFirstSpawn) {
 					KinkyDungeonFirstSpawn = false;

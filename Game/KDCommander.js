@@ -798,7 +798,7 @@ let KDBarricades = {
 	"BarricadeBlastDoor": {
 		filter: (enemy, x, y, checkpoint, type) => {
 			let altRoom = KDGetAltType(MiniGameKinkyDungeonLevel);
-			let params = KinkyDungeonMapParams[altRoom?.useGenParams ? altRoom.useGenParams : KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+			let params = KinkyDungeonMapParams[altRoom?.useGenParams ? altRoom.useGenParams : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 			if (params?.enemyTags?.includes("oldrobot"))
 				return true;
 			return false;

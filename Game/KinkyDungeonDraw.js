@@ -3131,7 +3131,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 
 
 	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
-	let drawFloor = altType?.skin ? altType.skin : KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
+	let drawFloor = altType?.skin ? altType.skin : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
 
 	let noReplace = "";
 	let noReplace_skin = {};

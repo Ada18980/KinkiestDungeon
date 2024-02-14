@@ -4846,7 +4846,7 @@ let KDSpecialConditions = {
 			let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || KDDefaultRestraintThresh;
 			return KDGetRestraintsEligible(
 				{tags: KDGetTags(enemy, true)}, MiniGameKinkyDungeonLevel,
-				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 				enemy.Enemy.bypass,
 					enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 					!(enemy.Enemy.ignoreStaminaForBinds || (true && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),

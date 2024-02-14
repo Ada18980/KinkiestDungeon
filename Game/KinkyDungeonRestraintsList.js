@@ -1594,6 +1594,7 @@ const KinkyDungeonRestraints = [
 					Trim: {override: false, color: "Highlight"},
 					Lace: {override: false, color: "Highlight"},
 					Tie: {override: false, color: "Highlight"},
+					Panties: {override: false, color: "DarkNeutral"},
 				},
 			}
 		],
@@ -1785,6 +1786,7 @@ const KinkyDungeonRestraints = [
 					Trim: {override: false, color: "Highlight"},
 					Lace: {override: false, color: "Highlight"},
 					Tie: {override: false, color: "Highlight"},
+					Panties: {override: false, color: "DarkNeutral"},
 				},
 			}
 		],

@@ -658,7 +658,7 @@ function KDSettlePlayerInFurniture(enemy, AIData, tags, guardDelay = 24) {
 			}
 			let rest = KinkyDungeonGetRestraint(
 				{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
-				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 				true,
 				"",
 				true,

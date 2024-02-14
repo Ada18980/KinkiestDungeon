@@ -68,7 +68,6 @@ let alts = {
 		noShrineTypes: ["Commerce", "Will"],
 		tickFlags: true,
 		noMusic: true,
-		keepMainPath: true,
 		persist: true,
 		prune: true,
 	},
@@ -81,6 +80,7 @@ let alts = {
 		bossroom: false,
 		persist: true,
 		prune: true,
+		skiptunnel: true, // Increments the floor counter
 
 		events: [
 			{trigger: "tick", type: "PerkRoom"},
@@ -987,7 +987,7 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 		let YY = CellY + 1 + Math.round(KDRandom() * (CellHeight-3));
 		let entity = KinkyDungeonEntityAt(XX, YY);
 		if (entity || (XX == width/2 && YY == height/2)) continue;
-		let Enemy = KinkyDungeonGetEnemy(["bellowsDoll"], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["doll", "peaceful"]);
+		let Enemy = KinkyDungeonGetEnemy(["bellowsDoll"], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["doll", "peaceful"]);
 		if (Enemy) {
 			let e = DialogueCreateEnemy(XX, YY, Enemy.name);
 			if (KDRandom() < 0.33) KDTieUpEnemy(e, 15 + Math.floor(45 * KDRandom()), "Tape");
@@ -1046,7 +1046,7 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 		let YY = CellY + 1 + Math.round(KDRandom() * (CellHeight-2));
 		let entity = KinkyDungeonEntityAt(XX, YY);
 		if (entity || (XX == width/2 && YY == height/2)) continue;
-		let Enemy = KinkyDungeonGetEnemy(robotTags, MiniGameKinkyDungeonLevel + 3, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["robot"], undefined, undefined);
+		let Enemy = KinkyDungeonGetEnemy(robotTags, MiniGameKinkyDungeonLevel + 3, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["robot"], undefined, undefined);
 		if (Enemy) {
 			let e = DialogueCreateEnemy(XX, YY, Enemy.name);
 			e.faction = "Enemy";
@@ -1055,7 +1055,7 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 	if (KDGameData.DollRoomCount > 1) { // Spawn a group of AIs
 		for (let i = 0; i < 1 + Math.ceil(robotCount * 0.1); i++) {
 			let point = KinkyDungeonGetNearbyPoint(KDMapData.EndPosition.x, KDMapData.EndPosition.y);
-			let Enemy = KinkyDungeonGetEnemy(eliteTags, MiniGameKinkyDungeonLevel + 4, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["robot"],
+			let Enemy = KinkyDungeonGetEnemy(eliteTags, MiniGameKinkyDungeonLevel + 4, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["robot"],
 				undefined, undefined, ["minor", "miniboss", "noguard"]);
 			if (Enemy) {
 				let e = DialogueCreateEnemy(point.x, point.y, Enemy.name);
@@ -1067,7 +1067,7 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 		}
 	}
 
-	let ExitGuard = KinkyDungeonGetEnemy(exitGuardTags, MiniGameKinkyDungeonLevel + 10, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["robot", "dollRoomBoss"],
+	let ExitGuard = KinkyDungeonGetEnemy(exitGuardTags, MiniGameKinkyDungeonLevel + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["robot", "dollRoomBoss"],
 		undefined, undefined, ["noguard"]);
 	if (ExitGuard) {
 		let e = DialogueCreateEnemy(KDMapData.EndPosition.x, KDMapData.EndPosition.y, ExitGuard.name);
@@ -1172,7 +1172,7 @@ function KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, openness,
 	KinkyDungeonMapSet(KDMapData.EndPosition.x, KDMapData.EndPosition.y, 's');
 	KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y, 'S');
 	KinkyDungeonTilesSet(KDMapData.StartPosition.x + ',' + KDMapData.StartPosition.y, {
-		RoomType: "Tunnel",
+		RoomType: "PerkRoom",
 	}); // Has to be tunnel
 }
 
@@ -1216,7 +1216,7 @@ function KinkyDungeonCreateWarden(POI, VisitedRooms, width, height, openness, de
 	KinkyDungeonMapSet(KDMapData.EndPosition.x, KDMapData.EndPosition.y, 's');
 	KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y, 'S');
 	KinkyDungeonTilesSet(KDMapData.StartPosition.x + ',' + KDMapData.StartPosition.y, {
-		RoomType: "Tunnel",
+		RoomType: "PerkRoom",
 	}); // Has to be tunnel
 }
 
@@ -1420,7 +1420,7 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 		KinkyDungeonMapSet(width*2 - 2, VisitedRooms[0].y*2, 'b');
 	else
 		KinkyDungeonMapSet(width*2 - 2, VisitedRooms[0].y*2, 's');
-	KinkyDungeonTilesSet("" + (width*2 - 2) + "," + (VisitedRooms[0].y*2), {RoomType: "Tunnel"});
+	//KinkyDungeonTilesSet("" + (width*2 - 2) + "," + (VisitedRooms[0].y*2), {RoomType: "Tunnel"});
 
 	KDMapData.EndPosition = {x: width*2 - 2, y: VisitedRooms[0].y*2};
 }

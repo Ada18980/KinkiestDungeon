@@ -108,8 +108,8 @@ let KDInventoryAction = {
 				let toWear = KinkyDungeonGetOutfit(outfit);
 				if (toWear) {
 					let dress = toWear.dress;
-					if (dress == "JailUniform" && KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]])
-						dress = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].defeat_outfit;
+					if (dress == "JailUniform" && KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)])
+						dress = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].defeat_outfit;
 					KDSendInput("dress", {dress: dress, outfit: outfit});
 				}
 			}

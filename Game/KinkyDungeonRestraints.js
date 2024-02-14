@@ -3234,7 +3234,7 @@ function KinkyDungeonLinkableAndStricter(oldRestraint, newRestraint, item, Lock,
 }
 
 function KinkyDungeonGenerateRestraintTrap() {
-	let enemy = KinkyDungeonGetEnemy(["chestTrap"], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["chestTrap"]);
+	let enemy = KinkyDungeonGetEnemy(["chestTrap"], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["chestTrap"]);
 	if (enemy) return enemy.name;
 	return "GreedyGhast";
 }

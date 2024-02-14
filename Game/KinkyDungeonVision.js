@@ -110,7 +110,7 @@ function KinkyDungeonMakeBrightnessMap(width, height, mapBrightness, Lights, del
 	KinkyDungeonSendEvent("brightness",{update: delta, flags: flags});
 
 	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
-	let params = altType?.lightParams ? KinkyDungeonMapParams[altType.lightParams] : KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+	let params = altType?.lightParams ? KinkyDungeonMapParams[altType.lightParams] : KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 
 	let ShadowColor = params.shadowColor != undefined ? params.shadowColor : 0x00001f;
 	let LightColor = params.lightColor != undefined ? params.lightColor : 0x000000;

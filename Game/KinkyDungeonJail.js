@@ -1110,7 +1110,7 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 	//KDGameData.RoomType = "DollRoom"; // We do a tunnel every other room
 	//KDGameData.MapMod = ""; // Reset the map mod
 	if (cancelDialogue) KDGameData.CurrentDialog = "";
-	let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+	let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 	KDGameData.DollRoomCount = 0;
 	KinkyDungeonCreateMap(params, "DollRoom", "", MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, undefined, "");
 
@@ -1254,7 +1254,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 		KinkyDungeonJailedOnce = true;
 		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonLeashed2"), "#ff0000", 3);
 	}
-	let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+	let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 	KDGameData.KinkyDungeonSpawnJailers = KDGameData.KinkyDungeonSpawnJailersMax;
 	let defeat_outfit = params.defeat_outfit;
 	// Handle special cases
@@ -1315,7 +1315,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(nearestJail.restraint), KDGetEffLevel(),false, undefined);
 	}
 	if (nearestJail.restrainttags) {
-		let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], false, undefined);
+		let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, undefined);
 		if (restraint)
 			KinkyDungeonAddRestraintIfWeaker(restraint, KDGetEffLevel(),false, undefined);
 	}

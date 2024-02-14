@@ -178,9 +178,6 @@ function KDDefaultMapData(RoomType = "", MapMod = "") {
 		TilesMemory: {},
 		TilesSkin: {},
 
-		MainPath: 'grv',
-		ShortcutPath: 'grv',
-
 		Bullets: [],
 
 		ConstantX: false,
@@ -1023,7 +1020,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			console.log(`${performance.now() - startTime} ms for doodad creation`);
 			startTime = performance.now();
 		}
-		KinkyDungeonPlaceStairs(KinkyDungeonGetMainPath(Floor, altType), KDMapData.StartPosition.y, width, height, altType && altType.nostairs, altType && altType.nostartstairs,
+		KinkyDungeonPlaceStairs(KDMapData.StartPosition.y, width, height, altType && altType.nostairs, altType && altType.nostartstairs,
 			origMapType); // Place the start and end locations
 
 		KDPlacePlayerBasedOnDirection(direction);
@@ -1060,8 +1057,8 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		KDCreateBoringness(noBoring);
 
 		if (!testPlacement) {
-			if (!altType || altType.shortcut)
-				KinkyDungeonPlaceShortcut(KinkyDungeonGetShortcut(Floor, altType), width, height);
+			//if (!altType || altType.shortcut)
+			//KinkyDungeonPlaceShortcut(KinkyDungeonGetShortcut(Floor, altType), width, height);
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for shortcut creation`);
 				startTime = performance.now();
@@ -1202,7 +1199,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 		if (iterations == 100000) {
 			KDUnPackEnemies(KDMapData);
-			if (!KinkyDungeonMapIndex[KDMapData.MainPath] || !KinkyDungeonMapIndex[KDMapData.ShortcutPath])
+			if (!KinkyDungeonMapIndex.grv)
 				KDInitializeJourney(KDGameData.Journey);
 
 			KinkyDungeonSendEvent("postMapgen", {});
@@ -1422,7 +1419,7 @@ function KDCanBringAlly(e) {
 function KDChooseFactions(factionList, Floor, Tags, BonusTags, Set) {
 	// Determine factions to spawn
 	let factions = factionList || Object.keys(KinkyDungeonFactionTag);
-	let primaryFaction = KDGetByWeight(KDGetFactionProps(factions, Floor, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], Tags, BonusTags));
+	let primaryFaction = KDGetByWeight(KDGetFactionProps(factions, Floor, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), Tags, BonusTags));
 	let randomFactions = [
 		primaryFaction
 	];
@@ -1437,8 +1434,8 @@ function KDChooseFactions(factionList, Floor, Tags, BonusTags, Set) {
 		if (KDFactionRelation(primaryFaction, f) < -0.2) enemyCandidates.push(f);
 	}
 
-	let factionAllied = allyCandidates.length > 0 ? KDGetByWeight(KDGetFactionProps(allyCandidates, Floor, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], Tags, BonusTags)) : "";
-	let factionEnemy = enemyCandidates.length > 0 ? KDGetByWeight(KDGetFactionProps(enemyCandidates, Floor, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], Tags, BonusTags)) : "";
+	let factionAllied = allyCandidates.length > 0 ? KDGetByWeight(KDGetFactionProps(allyCandidates, Floor, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), Tags, BonusTags)) : "";
+	let factionEnemy = enemyCandidates.length > 0 ? KDGetByWeight(KDGetFactionProps(enemyCandidates, Floor, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), Tags, BonusTags)) : "";
 
 	if (factionAllied && KDRandom() < 0.33) randomFactions.push(factionAllied);
 	if (factionEnemy && KDRandom() < 0.6) randomFactions.push(factionEnemy);
@@ -1717,7 +1714,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 			let Enemy = KinkyDungeonGetEnemy(
 				tags,
 				KDGetEffLevel() + levelBoost,
-				forceIndex || KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+				forceIndex || (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 				KinkyDungeonMapGet(X, Y),
 				required,
 				{
@@ -1731,7 +1728,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				Enemy = KinkyDungeonGetEnemy(
 					tags,
 					KDGetEffLevel() + levelBoost,
-					forceIndex || KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+					forceIndex || (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 					KinkyDungeonMapGet(X, Y),
 					required,
 					{
@@ -1929,7 +1926,7 @@ function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Pad
 	}
 }
 
-function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs, nostartstairs, origMapType) {
+function KinkyDungeonPlaceStairs(startpos, width, height, noStairs, nostartstairs, origMapType) {
 	// Starting stairs are predetermined and guaranteed to be open
 	if (!nostartstairs) {
 		KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y, 'S');
@@ -1992,8 +1989,8 @@ function KinkyDungeonPlaceStairs(checkpoint, startpos, width, height, noStairs, 
 
 	}
 
-	KDMapData.MainPath = checkpoint;
-	if (KDMapData.MainPath != MiniGameKinkyDungeonCheckpoint && !nostartstairs) KinkyDungeonSkinArea({skin: KDMapData.MainPath}, KDMapData.EndPosition.x, KDMapData.EndPosition.y, 4.99);
+	//KDMapData.MainPath = checkpoint;
+	//if (KDMapData.MainPath != MiniGameKinkyDungeonCheckpoint && !nostartstairs) KinkyDungeonSkinArea({skin: KDMapData.MainPath}, KDMapData.EndPosition.x, KDMapData.EndPosition.y, 4.99);
 	KinkyDungeonSpecialAreas.push({x: KDMapData.EndPosition.x, y: KDMapData.EndPosition.y, radius: 2});
 }
 
@@ -2014,51 +2011,6 @@ function KinkyDungeonSkinArea(skin, X, Y, Radius, NoStairs) {
 }
 
 
-function KinkyDungeonGetMainPath(level, altType) {
-	if (altType && altType.keepMainPath) return MiniGameKinkyDungeonCheckpoint;
-	let params = KinkyDungeonMapParams[MiniGameKinkyDungeonCheckpoint];
-	let paths = params ? params.mainpath : null;
-	let path = null;
-	let chanceRoll = KDRandom(); // This is always rolled, in order to not break saves
-	if (paths) {
-		for (let p of paths) {
-			if (p.Level == MiniGameKinkyDungeonLevel) {
-				path = p;
-				break;
-			}
-		}
-	}
-	if (path) {
-		if (chanceRoll < path.chance || !path.chance) {
-			return path.checkpoint;
-		}
-	}
-	if ((MiniGameKinkyDungeonLevel) % KDLevelsPerCheckpoint == 0) {
-		return KDDefaultJourney[Math.min(KDDefaultJourney.length - 1, Math.floor((MiniGameKinkyDungeonLevel + 1) / KDLevelsPerCheckpoint))];
-	}
-	return MiniGameKinkyDungeonCheckpoint;
-}
-
-function KinkyDungeonGetShortcut(level, altType) {
-	let params = KinkyDungeonMapParams[MiniGameKinkyDungeonCheckpoint];
-	let paths = params ? params.shortcuts : null;
-	let path = null;
-	let chanceRoll = KDRandom(); // This is always rolled, in order to not break saves
-	if (paths) {
-		for (let p of paths) {
-			if (p.Level == MiniGameKinkyDungeonLevel) {
-				path = p;
-				break;
-			}
-		}
-	}
-	if (path) {
-		if (chanceRoll < path.chance || !path.chance) {
-			return path.checkpoint;
-		}
-	}
-	return "grv";
-}
 
 function KinkyDungeonPlaceShortcut(checkpoint, width, height) {
 
@@ -2112,8 +2064,8 @@ function KinkyDungeonPlaceShortcut(checkpoint, width, height) {
 		}
 
 		if (placed) {
-			KDMapData.ShortcutPath = checkpoint;
-			if (KDMapData.ShortcutPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDMapData.ShortcutPath}, KDMapData.ShortcutPosition.x, KDMapData.ShortcutPosition.y, 2.99, true);
+			//KDMapData.ShortcutPath = checkpoint;
+			//if (KDMapData.ShortcutPath != MiniGameKinkyDungeonCheckpoint) KinkyDungeonSkinArea({skin: KDMapData.ShortcutPath}, KDMapData.ShortcutPosition.x, KDMapData.ShortcutPosition.y, 2.99, true);
 		}
 	}
 }
@@ -2356,7 +2308,7 @@ function KinkyDungeonPlaceChests(params, chestlist, spawnPoints, shrinelist, tre
 				if (spawned < maxspawn) {
 					let Enemy = KinkyDungeonGetEnemy(
 						tags, KDGetEffLevel(),
-						KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+						(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 						'0', requireTags, {requireHostile: "Player"});
 					if (Enemy) {
 						let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, undefined, true, (xx, yy) => {
@@ -2816,7 +2768,7 @@ let KinkyDungeonCommercePlaced = 0;
  * @returns
  */
 function KinkyDungeonGenerateShrine(Floor, filterTypes, manaChance) {
-	let Params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+	let Params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 	let drunk = !(KDRandom() < manaChance);
 
 	if (Params.shrines) {
@@ -2849,21 +2801,24 @@ function KinkyDungeonGenerateShrine(Floor, filterTypes, manaChance) {
 
 
 function KinkyDungeonPlaceSpecialTiles(gaschance, gasType, Floor, width, height) {
-	for (let X = 1; X < width; X += 1)
-		for (let Y = 1; Y < height; Y += 1)
-			// Happy Gas
-			if (KinkyDungeonMapGet(X, Y) == '0') {
-				let chance = 0;
-				// Check the 3x3 area
-				for (let XX = X-1; XX <= X+1; XX += 1)
-					for (let YY = Y-1; YY <= Y+1; YY += 1) {
-						if (!(XX == X && YY == Y) && !KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(XX, YY)))
-							chance += gaschance;
-					}
+	if (gaschance > 0) {
+		for (let X = 1; X < width; X += 1)
+			for (let Y = 1; Y < height; Y += 1)
+				// Happy Gas
+				if (KinkyDungeonMapGet(X, Y) == '0') {
+					let chance = 0;
+					// Check the 3x3 area
+					for (let XX = X-1; XX <= X+1; XX += 1)
+						for (let YY = Y-1; YY <= Y+1; YY += 1) {
+							if (!(XX == X && YY == Y) && !KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(XX, YY)))
+								chance += gaschance;
+						}
 
-				if (KDRandom() < chance)
-					KinkyDungeonMapSet(X, Y, gasType);
-			}
+					if (KDRandom() < chance)
+						KinkyDungeonMapSet(X, Y, gasType);
+				}
+	}
+
 }
 
 function KinkyDungeonPlaceBrickwork( brickchance, Floor, width, height) {
@@ -3041,7 +2996,7 @@ function KDGetLockList(Guaranteed, Floor, AllowGold, Type, Data) {
  */
 function KinkyDungeonGenerateLock(Guaranteed, Floor, AllowGold, Type, Data) {
 	let level = (Floor) ? Floor : KDGetEffLevel();
-	//let Params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+	//let Params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 
 	let chance = (level == 0) ? 0 : KinkyDungeonBaseLockChance;
 	chance += KinkyDungeonScalingLockChance * level / KDLevelsPerCheckpoint;

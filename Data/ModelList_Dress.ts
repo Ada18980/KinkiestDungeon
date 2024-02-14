@@ -1234,7 +1234,7 @@ AddModel({
 	Layers: ToLayerMap([
 		//...GetModelLayers("LaceCorset"),
 		...GetModelLayers("DressSkirtSplit"),
-		...GetModelLayers("LaceCrotchPanel"),
+		...GetModelLayers("LacePanties"),
 		...GetModelLayers("MageTop"),
 		...GetModelLayers("MageCollar2"),
 

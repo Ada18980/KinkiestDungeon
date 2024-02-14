@@ -248,7 +248,7 @@ function KinkyDungeonDrawInterface(showControls) {
 		DrawTextKD(TextGet("TurnCounter") + KinkyDungeonCurrentTick, 1995, 995, "#ffffff", "#333333", 12, "right");
 
 	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
-	let dungeonName = altType?.Title ? altType.Title : KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
+	let dungeonName = altType?.Title ? altType.Title : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
 	DrawTextFitKD(
 		TextGet("CurrentLevel").replace("FLOORNUMBER", "" + MiniGameKinkyDungeonLevel).replace("DUNGEONNAME", TextGet("DungeonName" + dungeonName))
 		+ (KinkyDungeonNewGame ? TextGet("KDNGPlus").replace("XXX", "" + KinkyDungeonNewGame) : ""),

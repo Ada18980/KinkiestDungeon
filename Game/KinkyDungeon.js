@@ -1162,6 +1162,7 @@ function KDCloseFullscreen() {
 }
 
 function KinkyDungeonRun() {
+	KDJourneyGraphics.clear();
 
 	if (StandalonePatched) {
 		if (KDFullscreen && !KDToggles.Fullscreen) {
@@ -3389,7 +3390,7 @@ function KinkyDungeonStartNewGame(Load) {
 		KDGameData.PlayerName = localStorage.getItem("PlayerName") || "Ada";
 	}
 	if (!KDMapData.Grid)
-		KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]], "JourneyFloor", "", MiniGameKinkyDungeonLevel, false, Load);
+		KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)], "JourneyFloor", "", MiniGameKinkyDungeonLevel, false, Load);
 	KinkyDungeonState = "Game";
 
 	if (KinkyDungeonKeybindings) {
@@ -3512,7 +3513,7 @@ function KinkyDungeonHandleClick() {
 			if (KinkyDungeonLoadGame(ElementValue("saveInputField"))) {
 				KDSendEvent('loadGame');
 				//KDInitializeJourney(KDJourney);
-				if (KDMapData.Grid == "") KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]], KDMapData.RoomType || "", KDMapData.MapMod || "", MiniGameKinkyDungeonLevel, false, true);
+				if (KDMapData.Grid == "") KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)], KDMapData.RoomType || "", KDMapData.MapMod || "", MiniGameKinkyDungeonLevel, false, true);
 				ElementRemove("saveInputField");
 				KinkyDungeonState = "Game";
 
@@ -4378,7 +4379,7 @@ function KinkyDungeonLoadGame(String) {
 
 			if (saveData.KDGameData && saveData.KDGameData.LastMapSeed) KDsetSeed(saveData.KDGameData.LastMapSeed);
 
-			if (!KinkyDungeonMapIndex[KDMapData.MainPath] || !KinkyDungeonMapIndex[KDMapData.ShortcutPath])
+			if (!KinkyDungeonMapIndex.grv)
 				KDInitializeJourney(KDGameData.Journey);
 
 			if (!KDGameData.JourneyMap) {

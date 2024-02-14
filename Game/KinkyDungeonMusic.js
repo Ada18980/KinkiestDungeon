@@ -27,13 +27,13 @@ let KDCurrentMusicSoundUpdate = null;
 
 function KDGetCurrentCheckpoint() {
 	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
-	return altType?.skin ? altType.skin : KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
+	return altType?.skin ? altType.skin : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
 }
 function KDGetCheckpoint() {
 	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
 	if (altType?.musicParams) return altType.musicParams;
 	if (altType?.skin && !altType.useDefaultMusic) return altType.skin;
-	return KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || 'menu';
+	return (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint) || 'menu';
 }
 
 let lastKDMusicTick = 0;

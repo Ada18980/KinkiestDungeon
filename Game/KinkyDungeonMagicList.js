@@ -811,6 +811,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			level:2, type:"hit", onhit:"instant", evadeable: false, noblock: true, power: 2.0, range: 2.99, size: 3, lifetime: 1, aoe: 1.5, damage: "ice",
 			events: [{type: "ElementalOnDrench", trigger: "bulletHitEnemy", damage: "ice", time: 8, power: 0.0},]},
 		{name: "Sleet", color: "#92e8c0", tags: ["ice", "aoe", "dot", "offense", "denial"], prerequisite: "ApprenticeIce", effectTileDurationMod: 10,
+			playerEffect: {name: "DamageIfChill", damage: "ice", power: 0.5},
 			effectTile: {
 				name: "Ice",
 				duration: 20,

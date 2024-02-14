@@ -18107,6 +18107,7 @@ DungeonNameJourneyFloor,"Journey Selection"
 DungeonNamePerkRoom,"Shrine"
 DungeonNameJail,"High-Security Prison"
 DungeonNameDollRoom,"Doll Sorting Station"
+DungeonNameshoppe,"The Shoppe"
 
 KDCursedChestEquipCursed,"A cursed NEWITM flies out of the chest and latches tightly to you!"
 KDCursedChestEquip,"With a puff of magic, a NEWITM appears on your body!"
@@ -20182,3 +20183,5 @@ KinkyDungeonTaunted,"Your buttons have been pushed, and not in a pleasant way!"
 KinkyDungeonBuffTaunted,"Defeat all taunting enemies or stay within the tiles to avoid shame!"
 KinkyDungeonSpellTaunt,Degradating Taunts
 KDTauntPunishment,You failed to come up with a proper comeback!
+
+KDSleetDmg,The field of frost damages you as you are chilled!

@@ -202,7 +202,7 @@ let KDTrapTypesStepOff = {
 				if (spawned < maxspawn) {
 					let Enemy = KinkyDungeonGetEnemy(
 						tags, MiniGameKinkyDungeonLevel,
-						KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+						(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 						'0', requireTags, {requireHostile: "Player"}, undefined, undefined, undefined, undefined, undefined, true);
 					if (Enemy) {
 						if (KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, false, Enemy.tags.construct ? 23 : undefined, true, true, "Ambush", true, 1.5, true, undefined, true).length == 0) {

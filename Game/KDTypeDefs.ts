@@ -517,6 +517,14 @@ type outfitKey = string
 type mapKey = string
 
 interface floorParams {
+	/** Weighted list of successor tileset, positive X */
+	successorPositive: Record<string, number>;
+	/** Weighted list of successor tileset, negative X */
+	successorNegative: Record<string, number>;
+	/** Weighted list of successor tileset, same X */
+	successorSame: Record<string, number>;
+
+	color: string,
 	/** List of factions allowed to be primary or secondary here */
 	factionList?: string[];
 	/** This code is run after a worldgen */
@@ -595,8 +603,8 @@ interface floorParams {
 
 	setpieces?: {Type: string, Weight: number}[],
 
-	shortcuts: {Level: number, checkpoint: string, chance:number}[	],
-	mainpath: {Level: number, checkpoint: string, chance?: number}[],
+	//shortcuts: {Level: number, checkpoint: string, chance:number}[	],
+	//mainpath: {Level: number, checkpoint: string, chance?: number}[],
 
 	traps: {Name: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, Weight: number, strict?: true, teleportTime?: number, filterTag?: string, filterBackup?: string, arousalMode?: boolean}[],
 
@@ -2344,8 +2352,8 @@ interface KDMapDataType {
 	FogGrid: any[];
 
 
-	MainPath: string,
-	ShortcutPath: string,
+	//MainPath: string,
+	//ShortcutPath: string,
 
 	Tiles: Record<string, any>;
 	TilesSkin: Record<string, any>;

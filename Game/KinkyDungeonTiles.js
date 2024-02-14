@@ -201,6 +201,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 				AdvanceAmount: AdvanceAmount,
 				Xdelta: toTile != 'H' ? (tile?.Xdelta || 0) : (tile?.Xdelta || 0), // TODO allow maneuvering around the world map
 				toTile: toTile,
+				JourneyX: 0,
 				overrideRoomType: false,
 				overrideProgression: false,
 				overrideJourney: false,
@@ -249,7 +250,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 
 					if (MiniGameKinkyDungeonLevel >= KinkyDungeonMaxLevel) {
 						MiniGameKinkyDungeonLevel = 1;
-						KDMapData.MainPath = "grv";
+						//KDMapData.MainPath = "grv";
 						KinkyDungeonState = "End";
 						MiniGameVictory = true;
 						suppressCheckPoint = true;
@@ -307,17 +308,17 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 
 			KinkyDungeonSendActionMessage(10, TextGet("ClimbDown" + toTile), "#ffffff", 1);
 			if (toTile == 's') {
-				KinkyDungeonSetCheckPoint(KDMapData.MainPath, true, suppressCheckPoint);
-			} else if (toTile == 'H') {
+				KinkyDungeonSetCheckPoint((KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY]?.Checkpoint || 'grv'), true, suppressCheckPoint);
+			}/* else if (toTile == 'H') {
 				KinkyDungeonSetCheckPoint(KDMapData.ShortcutPath, true, suppressCheckPoint);
-			}
+			}*/
 
 			if (KinkyDungeonState != "End") {
 				KinkyDungeonSendEvent("afterHandleStairs", {
 					toTile: toTile,
 				});
 				KDGameData.HeartTaken = false;
-				KinkyDungeonCreateMap(KinkyDungeonMapParams[altRoom?.useGenParams ? altRoom.useGenParams : KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]], KDGameData.RoomType, KDGameData.MapMod, MiniGameKinkyDungeonLevel, undefined, undefined,
+				KinkyDungeonCreateMap(KinkyDungeonMapParams[altRoomTarget?.useGenParams ? altRoomTarget.useGenParams : (KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY]?.Checkpoint || 'grv')], KDGameData.RoomType, KDGameData.MapMod, MiniGameKinkyDungeonLevel, undefined, undefined,
 					undefined, newLocation, !altRoomTarget || !altRoomTarget.alwaysRegen, altRoom?.persist ? originalRoom : (KDGetWorldMapLocation(newLocation)?.main || ""),
 					AdvanceAmount > 0
 						? (toTile == 'H' ? 2 : 0)
@@ -842,6 +843,8 @@ function KDConveyor(delta, X, Y) {
 
 function KDAdvanceLevel(data) {
 	MiniGameKinkyDungeonLevel += data.AdvanceAmount;
+	KDGameData.JourneyX = data.JourneyX;
+	KDGameData.JourneyY = MiniGameKinkyDungeonLevel;
 	return {
 		x: KDCurrentWorldSlot.x + data.Xdelta,
 		y: KDCurrentWorldSlot.y + data.AdvanceAmount,

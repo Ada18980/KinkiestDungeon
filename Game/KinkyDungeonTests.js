@@ -21,7 +21,7 @@ function KDTestMapGen(count, Ranges, Checkpoints) {
 				for (let i = 0; i < count; i++) {
 					if (i % (count/KDLevelsPerCheckpoint) == 0)
 						console.log(`Testing iteration ${i} on floor ${MiniGameKinkyDungeonLevel}`);
-					KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]], "", "", f, true);
+					KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)], "", "", f, true);
 					let accessible = KinkyDungeonIsAccessible(KDMapData.StartPosition.x, KDMapData.StartPosition.y);
 					if (!accessible) {
 						console.log(`Error, stairs are inaccessible on iteration ${i}`);

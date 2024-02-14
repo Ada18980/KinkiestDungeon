@@ -361,10 +361,10 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		let forceequip = Loot.forceEquip || (hexed && (Loot.forceEquipCursed || KinkyDungeonStatsChoice.get("CurseSeeker"))) || (!hexed && (Loot.forceEquipUncursed));
 		if (Loot.noForceEquip) forceequip = false;
 		if (Loot.armortags) {
-			let newarmor = KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "",
+			let newarmor = KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "",
 				undefined, undefined, undefined, undefined, true, undefined, undefined, undefined, forceequip);
 			if (!newarmor && forceequip) {
-				KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], true, "",
+				KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "",
 					undefined, undefined, undefined, undefined, true, undefined, undefined, undefined, false);
 			}
 			if (newarmor) armor = newarmor.name;
@@ -953,7 +953,7 @@ function KDSpawnLootTrap(x, y, trap, mult, duration) {
 		if (spawned < maxspawn) {
 			let Enemy = KinkyDungeonGetEnemy(
 				tags, MiniGameKinkyDungeonLevel + KinkyDungeonDifficulty/5,
-				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 				'0', requireTags, true);
 			if (Enemy) {
 				let pass = false; //KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, true, (duration || Enemy.tags.construct) ? (duration || 40) : undefined, undefined, false, "Ambush", true, 1.5, true, undefined, true, true);
@@ -1048,19 +1048,19 @@ let KDChestTrapWeights = {
 		mult: 1,
 	},
 	skeletonTrap: {
-		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("skeleton") ? 300 : 0;},
+		weight: () => {return KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)]?.enemyTags?.includes("skeleton") ? 300 : 0;},
 		mult: 1.4,
 	},
 	zombieTrap: {
-		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("zombie") ? 300 : 0;},
+		weight: () => {return KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)]?.enemyTags?.includes("zombie") ? 300 : 0;},
 		mult: 1.5,
 	},
 	mummyTrap: {
-		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("mummy") ? 300 : 0;},
+		weight: () => {return KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)]?.enemyTags?.includes("mummy") ? 300 : 0;},
 		mult: 1,
 	},
 	mushroomTrap: {
-		weight: () => {return KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]]?.enemyTags?.includes("mushroom") ? 300 : 0;},
+		weight: () => {return KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)]?.enemyTags?.includes("mushroom") ? 300 : 0;},
 		mult: 1,
 	},
 };
@@ -1117,7 +1117,7 @@ function KDCanCurse(tags) {
  * @param {number} y
  */
 function KDSummonCurseTrap(x, y) {
-	let enemy = KinkyDungeonGetEnemy(["curseTrap"], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', ["epicenter"]);
+	let enemy = KinkyDungeonGetEnemy(["curseTrap"], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["epicenter"]);
 	if (enemy) {
 		let point = {x: x, y: y};//KinkyDungeonGetNearbyPoint(x, y, true);
 		if (point) {

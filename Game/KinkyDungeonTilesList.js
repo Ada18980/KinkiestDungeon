@@ -480,7 +480,7 @@ let KDMoveObjectFunctions = {
 					tile: KinkyDungeonTilesGet(moveX + "," +moveY),
 					noTrap: noTrap,
 					level: MiniGameKinkyDungeonLevel,
-					index: KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+					index: (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 					lootTrap: lootTrap,
 					aggro: true,
 				};
@@ -512,8 +512,8 @@ let KDMoveObjectFunctions = {
 	'Y': (moveX, moveY) => { // Open the chest
 		let allowManip = KDAllowUseItems(true);
 		if (allowManip) {
-			let chestType = KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] == "lib" ? "shelf" : "rubble";
-			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], chestType);
+			let chestType = (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint) == "lib" ? "shelf" : "rubble";
+			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), chestType);
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 			KinkyDungeonMapSet(moveX, moveY, 'X');
 			KDGameData.AlreadyOpened.push({x: moveX, y: moveY});

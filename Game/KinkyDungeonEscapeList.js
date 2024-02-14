@@ -49,7 +49,7 @@ let KinkyDungeonEscapeTypes = {
 	"Kill": {
 		selectValid: true,
 		worldgenstart: () => {
-			let enemytype = KinkyDungeonGetEnemy([], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0');
+			let enemytype = KinkyDungeonGetEnemy([], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0');
 			let enemynumber = 3;
 			if (KinkyDungeonStatsChoice.get("extremeMode")) enemynumber = 5;
 			else if (KinkyDungeonStatsChoice.get("hardMode")) enemynumber = 4;
@@ -96,14 +96,14 @@ let KinkyDungeonEscapeTypes = {
 			let category = "miniboss";
 			if (KinkyDungeonStatsChoice.get("extremeMode")) category = "boss";
 
-			let enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0',[category]);
+			let enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0',[category]);
 			if (!enemytype) { //fallback if it cant find a boss
 				category = "miniboss";
-				enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel()+4,KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [category]);
+				enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel()+4,(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', [category]);
 			}
 			if (!enemytype) { //fallback if it cant find a miniboss
 				category = "witch";
-				enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel()+4,KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [category]);
+				enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel()+4,(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', [category]);
 			}
 			let data = {enemy: enemytype.name};
 			KinkyDungeonSendEvent("calcEscapeMinibossTarget", data);
