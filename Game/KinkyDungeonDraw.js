@@ -1815,6 +1815,7 @@ function KinkyDungeonDrawGame() {
 				}, true, 600, 560, 300, 64, "Add all restraints", "#ffffff", "");
 				DrawButtonKDEx("debugIncFloor", (bdata) => {
 					MiniGameKinkyDungeonLevel += 1;
+					KDGameData.JourneyY += 1;
 					return true;
 				}, true, 600, 640, 300, 64, "Increment Floor", "#ffffff", "");
 				DrawButtonKDEx("debugHeart", (bdata) => {

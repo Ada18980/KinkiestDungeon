@@ -110,7 +110,7 @@ const KinkyDungeonMapParams = {
 
 	},
 	"grv":{//DungeonName0,-Graveyard-
-		color: "#81ab6c",
+		color: "#8cba75",
 		successorNegative: {
 			tmb: 1.0,
 		},
@@ -334,7 +334,7 @@ const KinkyDungeonMapParams = {
 			jng: 0.7,
 			cry: 0.3,
 		},
-		color: "#4f8f4d",
+		color: "#4d8f5e",
 		"background" : "DeepForest",
 		noReplace: "b",
 		"openness" : 1,

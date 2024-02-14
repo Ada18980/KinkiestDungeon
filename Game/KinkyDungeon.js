@@ -1163,6 +1163,8 @@ function KDCloseFullscreen() {
 
 function KinkyDungeonRun() {
 	KDJourneyGraphics.clear();
+	KDJourneyGraphicsLower.clear();
+	KDJourneyGraphicsUpper.clear();
 
 	if (StandalonePatched) {
 		if (KDFullscreen && !KDToggles.Fullscreen) {

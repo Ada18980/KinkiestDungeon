@@ -225,7 +225,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 			}
 
 
-			let newLocation = KDAdvanceLevel(data); // Advance anyway
+			let newLocation = KDAdvanceLevel(data, MiniGameKinkyDungeonLevel + data.AdvanceAmount > KDGameData.HighestLevelCurrent); // Advance anyway
 			// We increment the save, etc, after the tunnel
 			if (MiniGameKinkyDungeonLevel > KDGameData.HighestLevelCurrent) {
 				if (!data.overrideProgression) {
@@ -841,10 +841,21 @@ function KDConveyor(delta, X, Y) {
 	}
 }
 
-function KDAdvanceLevel(data) {
+function KDAdvanceLevel(data, closeConnections = true) {
 	MiniGameKinkyDungeonLevel += data.AdvanceAmount;
+	let currentSlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
+
 	KDGameData.JourneyX = data.JourneyX;
 	KDGameData.JourneyY = MiniGameKinkyDungeonLevel;
+	if (currentSlot && closeConnections) {
+		for (let c of (currentSlot.Connections)) {
+			if (c.x == KDGameData.JourneyX && c.y == KDGameData.JourneyY) {
+				currentSlot.Connections = [c];
+				break;
+			}
+		}
+		KDCullJourneyMap();
+	}
 	return {
 		x: KDCurrentWorldSlot.x + data.Xdelta,
 		y: KDCurrentWorldSlot.y + data.AdvanceAmount,

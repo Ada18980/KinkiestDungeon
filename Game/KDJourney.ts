@@ -2,6 +2,10 @@
 
 let KDJourneyGraphics = new PIXI.Graphics;
 KDJourneyGraphics.zIndex = -0.1;
+let KDJourneyGraphicsLower = new PIXI.Graphics;
+KDJourneyGraphicsLower.zIndex = -10;
+let KDJourneyGraphicsUpper = new PIXI.Graphics;
+KDJourneyGraphicsUpper.zIndex = 0;
 let KDGameBoardAddedJourney = false;
 
 let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, y: number, forceCheckpoint?: string) => KDJourneySlot> = {
@@ -52,7 +56,7 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			EscapeMethod: "None",
 			MapMod: "",
 			RoomType: "",
-			protected: false,
+			protected: true,
 			visited: false,
 		};
 	},
@@ -72,7 +76,7 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			EscapeMethod: "Boss",
 			MapMod: "",
 			RoomType: "",
-			protected: false,
+			protected: true,
 			visited: false,
 		};
 	},
@@ -151,7 +155,7 @@ function KDJourneySlotSuccessor(Slot: KDJourneySlot, xOffset: number, yOffset: n
  * Max of 100 to prevent infinite loops
  * Does not affect protected slots
  */
-function KDCullJourneyMap(x: number, y: number) {
+function KDCullJourneyMap() {
 	let deleted = 0;
 	for (let i = 0; i < 100; i++) {
 		let connected: Record<string, boolean> = {};
@@ -172,13 +176,17 @@ function KDCullJourneyMap(x: number, y: number) {
 			deleted++;
 		}
 	}
-	console.log(`Cullec ${deleted} journey slots`);
+	console.log(`Culled ${deleted} journey slots`);
 }
 
-function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: number = 7, ScaleX: number = 100, ScaleY: number = 136, xOffset: number = 1500, yOffset: number = 212, spriteSize: number = 72, TextOffset: number = 1875) {
+function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: number = 7, ScaleX: number = 100, ScaleY: number = 136, xOffset: number = 1500, yOffset: number = 212, spriteSize: number = 72, TextOffset: number = 1925) {
 
 	if (!KDGameBoardAddedJourney) {
 		kdcanvas.addChild(KDJourneyGraphics);
+		kdcanvas.addChild(KDJourneyGraphicsLower);
+		kdcanvas.addChild(KDJourneyGraphicsUpper);
+
+
 		KDGameBoardAddedJourney = true;
 	}
 
@@ -237,14 +245,20 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 			heights["" + slot.y] = true;
 			DrawTextFitKD(TextGet("KDNavMap_Floor").replace("NMB", "" + slot.y), TextOffset, yOffset + ScaleY*(slot.y - Y),
 				200, "#ffffff", KDTextGray0, 24);
+			KDJourneyGraphicsLower.lineStyle(spriteSize*0.75, 0x000000, 0.2);
+			KDJourneyGraphicsLower.moveTo(xOffset - ScaleX*Width + 150, yOffset + ScaleY*(slot.y - Y));
+			KDJourneyGraphicsLower.lineTo(xOffset + ScaleX*Width - 150, yOffset + ScaleY*(slot.y - Y));
 		}
 		if (slot.x < maxX && slot.y < maxY)
 			for (let c of slot.Connections) {
+				let highlight = (slot.y <= KDGameData.JourneyY) || (slot == selectedJourney);
 				KDDrawJourneyLine(
 					xOffset + ScaleX*(slot.x - X),
 					yOffset + ScaleY*(slot.y - Y) + spriteSize/4,
 					xOffset + ScaleX*(c.x - X),
 					yOffset + ScaleY*(c.y - Y) - spriteSize/4,
+					(highlight) ? 0xffffff : 0x888888,
+					highlight ? KDJourneyGraphicsUpper : undefined
 				)
 			}
 	}
@@ -255,8 +269,8 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 
 	if (selectedJourney) {
 
-		let x = xOffset - (Width) * ScaleX - 440;
-		let y = yOffset - ScaleY/2;
+		let x = xOffset - (Width) * ScaleX - 440 + 50;
+		let y = yOffset - ScaleY/2 - spriteSize/4;
 		FillRectKD(kdcanvas, kdpixisprites, "collectionselectionbg", {
 			Left: x,
 			Top: y,
@@ -318,10 +332,10 @@ function KDInitJourneyMap() {
 
 }
 
-function KDDrawJourneyLine(x1: number, y1: number, x2: number, y2: number) {
-	KDJourneyGraphics.lineStyle(2, 0xffffff, 1);
-	KDJourneyGraphics.moveTo(x1, y1);
-	KDJourneyGraphics.lineTo(x2, y2);
+function KDDrawJourneyLine(x1: number, y1: number, x2: number, y2: number, color: number, Canvas = KDJourneyGraphics) {
+	Canvas.lineStyle(2, color, 1);
+	Canvas.moveTo(x1, y1);
+	Canvas.lineTo(x2, y2);
 	return;
 }
 
@@ -336,3 +350,4 @@ function KDGetJourneySuccessorCheckpoint(previousCheckpoint, x) {
 	}
 	return 'grv';
 }
+
