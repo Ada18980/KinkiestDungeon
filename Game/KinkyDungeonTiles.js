@@ -9,7 +9,10 @@ let KDCancelEvents = {
 let KDCancelFilters = {
 	JourneyChoice: (x, y, tile, data) => {
 		// This one is set by event
-		if (!KDGameData.JourneyTarget) return "JourneyChoice";
+		if (!KDGameData.JourneyTarget && data.AdvanceAmount > 0) {
+			if (KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY]?.Connections.length > 0)
+				return "JourneyChoice";
+		}
 		return "";
 	},
 };
