@@ -75,6 +75,7 @@ let KinkyDungeonContextPlayer = null;
 
 let KinkyDungeonPOI = [];
 
+let KinkyDungeonStairTiles = 'sSH';
 let KDDefaultAvoidTiles = "gtVN@";
 let KinkyDungeonGroundTiles = "023w][?/";
 let KinkyDungeonWallTiles = "14,";
@@ -701,12 +702,13 @@ function KDInitTempValues(seed) {
  * @param {boolean} [testPlacement]
  * @param {boolean} [seed]
  * @param {string} [forceFaction]
+ * @param {string} [forceEscape]
  * @param {{x: number, y: number}} [worldLocation]
  * @param {boolean} [useExisting]
  * @param {string} [origMapType]
  * @param {number} [direction]
  */
-function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement, seed, forceFaction, worldLocation, useExisting, origMapType = "", direction = 0) {
+function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement, seed, forceFaction, worldLocation, useExisting, origMapType = "", direction = 0, forceEscape) {
 	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeNewMap"]);
 	// Create enemies first so we can spawn them in the set pieces if needed
 	let allies = KinkyDungeonGetAllies();
@@ -1209,20 +1211,25 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 			KDQuestWorldgenStart(KDGameData.Quests);
 
-			if (KDGameData.RoomType == "") {
+			if (KDGameData.RoomType == "" || forceEscape) {
 				if (!KDGameData.SelectedEscapeMethod) KDGameData.SelectedEscapeMethod = "Key";
 				KDMapData.EscapeMethod = KDGameData.SelectedEscapeMethod;
-				if (KinkyDungeonStatsChoice.get("escaperandom")) {
-					KDMapData.EscapeMethod = KDGetRandomEscapeMethod();
-					let choices = [];
-					for (let method in KinkyDungeonEscapeTypes) {
-						if (KinkyDungeonEscapeTypes[method].selectValid) {
-							choices.push(method);
+				if (forceEscape) {
+					KDMapData.EscapeMethod = forceEscape;
+				} else {
+					if (KinkyDungeonStatsChoice.get("escaperandom")) {
+						KDMapData.EscapeMethod = KDGetRandomEscapeMethod();
+						let choices = [];
+						for (let method in KinkyDungeonEscapeTypes) {
+							if (KinkyDungeonEscapeTypes[method].selectValid) {
+								choices.push(method);
+							}
 						}
+						let choice = Math.floor(KDRandom()*choices.length);
+						KDMapData.EscapeMethod = choices[choice];
 					}
-					let choice = Math.floor(KDRandom()*choices.length);
-					KDMapData.EscapeMethod = choices[choice];
 				}
+
 				KDGameData.SelectedEscapeMethod = "Key";
 				KDEscapeWorldgenStart(KDGetEscapeMethod(Floor));
 			}

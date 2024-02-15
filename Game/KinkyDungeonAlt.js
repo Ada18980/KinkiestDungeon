@@ -82,6 +82,8 @@ let alts = {
 		prune: true,
 		skiptunnel: true, // Increments the floor counter
 
+		requireJourneyTarget: true, // Requires a journey target to exit
+
 		events: [
 			{trigger: "tick", type: "PerkRoom"},
 		],
@@ -1391,9 +1393,9 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 			let bondage = KDGetPerkShrineBondage(newperks);
 			let boss = KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel + 1);
 			let method = "";
-			if (!boss)
-				method = KDGetRandomEscapeMethod();
-			else
+			if (boss)
+			//method = //KDGetRandomEscapeMethod();
+			//else
 				method = "Boss";
 
 			if (newperks.length > 0) {

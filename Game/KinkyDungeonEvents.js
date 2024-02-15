@@ -8260,6 +8260,11 @@ let KDEventMapGeneric = {
 			}
 		}
 	},
+	"beforeStairCancelFilter": {
+		"PerkRoom": (e, data) => {
+			if (!data.cancelfilter && data.altRoom?.requireJourneyTarget) data.cancelfilter = "JourneyChoice";
+		},
+	},
 	"beforeHandleStairs": {
 		"resetDollRoom": (e, data) => {
 			if (KDGameData.RoomType && alts[KDGameData.RoomType].data?.dollroom) {

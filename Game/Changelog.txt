@@ -28,6 +28,9 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.2.2
+- Added a new system for tileset and mapmod selection at the end of the perk room
+
 5.2.1
 - Various bug fixes
 - Unmasked and Kigu Masks are separate

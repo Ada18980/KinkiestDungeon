@@ -69,6 +69,7 @@ const KinkyDungeonMapParams = {
 		color: "#ffffff",
 		music: {
 			"GENERIC-DOLLRACK.ogg": 4,
+			//"Shopping.ogg": 10,
 		},
 
 		"background" : "RainyForstPathNight",

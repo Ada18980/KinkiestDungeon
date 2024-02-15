@@ -2414,6 +2414,7 @@ type MapMod = {
 	spawnBoxes?: any[],
 	bonussetpieces?: {Type: string, Weight: number}[],
 	altRoom: string,
+	escapeMethod?: string,
 }
 
 type AIType = {
@@ -3192,6 +3193,7 @@ type KDJourneySlot = {
 	RoomType: string;
 	MapMod: string;
 	EscapeMethod: string;
+	Faction: string;
 	Checkpoint: string;
 	Connections: {x: number, y: number}[];
 	/** Prevents from getting culled */

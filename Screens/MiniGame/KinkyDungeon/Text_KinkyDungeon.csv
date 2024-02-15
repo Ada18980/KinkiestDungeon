@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.1"
+KDVersionStr,"5.2.2"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -3316,6 +3316,7 @@ KDAlliedWith,"Allies: "
 KDHostileWith,"Enemies: "
 KDFriendsWith,"Favorable: "
 
+KinkyDungeonFaction,None
 KinkyDungeonFactionNevermere,Nevermere Trainers
 KinkyDungeonFactionDressmaker,DressUp Co.
 KinkyDungeonFactionBountyhunter,Bounty Hunters Guild
@@ -18923,47 +18924,47 @@ KDColorPickerAdvanced,Advanced
 
 KDEscapeMinimap_Fail_Key,Exits locked!|Find NUMBER keys!
 KDEscapeMinimap_Pass_Key,Got the keys!
-KDEscapeMethod_Key,Escape Method: Key Hunt
+KDEscapeMethod_Key,Key Hunt
 KDEscapeMethodDesc_Key,Find the keys hidden in the level. Enemies can steal the keys if you aren't careful.
 KDEscapeDoor_Key,There seems to be a locked high-security door. Looks like you need keys to open it.
 KDEscapeMinimap_Fail_Lever,Exits locked!|Find a lever!
 KDEscapeMinimap_Pass_Lever,Exits unlocked!
-KDEscapeMethod_Lever,Escape Method: Lever Hunt
-KDEscapeMethodDesc_Lever,Escape Method: Find the lever hidden in the level to unlock the door.
+KDEscapeMethod_Lever,Lever Hunt
+KDEscapeMethodDesc_Lever,Find the lever hidden in the level to unlock the door.
 KDEscapeDoor_Lever,There seems to be a locked high-security door. Looks like you need to pull a lever to open it.
 KDEscapeMinimap_Fail_Panel,Exits locked!|Find control panel!
 KDEscapeMinimap_Pass_Panel,Exits unlocked!
-KDEscapeMethod_Panel,Escape Method: Panel Hunt
-KDEscapeMethodDesc_Panel,Escape Method: Find the control panel hidden in the level to unlock the door.
+KDEscapeMethod_Panel,Panel Hunt
+KDEscapeMethodDesc_Panel,Find the control panel hidden in the level to unlock the door.
 KDEscapeDoor_Panel,There seems to be a locked high-security door. Looks like you need find a control panel to open it.
 KDEscapeMinimap_Fail_Boss,BOSS ROOM
 KDEscapeMinimap_Pass_Boss,BOSS ROOM CLEARED!
-KDEscapeMethod_Boss,Escape Method: Boss
+KDEscapeMethod_Boss,Boss
 KDEscapeMethodDesc_Boss,Defeat the boss to unlock the door.  You can also unlock it by losing to the boss and being penalized.
 KDEscapeDoor_Boss,There seems to be a locked high-security door. Looks like you need to defeat the boss to open it.
 KDEscapeMinimap_Fail_Kill,Exits locked!|Defeat NUMBER TYPE!
 KDEscapeMinimap_Pass_Kill,Quota Reached!
-KDEscapeMethod_Kill,Escape Method: Bounty
+KDEscapeMethod_Kill,Bounty
 KDEscapeMethodDesc_Kill,Defeat the specified targets to unlock the door.
 KDEscapeDoor_Kill,There seems to be a locked high-security door. Looks like you need to defeat the targetted enemies to open it.
 KDEscapeMinimap_Fail_Miniboss,Exits locked!|Defeat TYPE!
 KDEscapeMinimap_Pass_Miniboss,Miniboss defeated!
-KDEscapeMethod_Miniboss,Escape Method: Dangerous Bounty
+KDEscapeMethod_Miniboss,Dangerous Bounty
 KDEscapeMethodDesc_Miniboss,Defeat the specified strong enemy to unlock the door.
 KDEscapeDoor_Miniboss,There seems to be a locked high-security door. Looks like you need to defeat the miniboss to open it.
 KDEscapeMinimap_Fail_Chest,Exits locked!|Open NUMBER Chests!
 KDEscapeMinimap_Pass_Chest,Quota Reached!
-KDEscapeMethod_Chest,Escape Method: Chest Hunt
+KDEscapeMethod_Chest,Chest Hunt
 KDEscapeMethodDesc_Chest,Unlock the specified number of chests to unlock the door.
 KDEscapeDoor_Chest,There seems to be a locked high-security door. Looks like you need to open more chests to open it.
 KDEscapeMinimap_Fail_Quest,Exits locked!|Accept NUMBER Quests!
 KDEscapeMinimap_Pass_Quest,Quota Reached!
-KDEscapeMethod_Quest,Escape Method: Quest Hunt
+KDEscapeMethod_Quest,Quest Hunt
 KDEscapeMethodDesc_Quest,Accept the specified number of goddess quests to unlock the door.
 KDEscapeDoor_Quest,There seems to be a locked high-security door. Looks like you need to accept more quests to open it.
 KDEscapeMinimap_Fail_Trap,Exits locked!|Trigger NUMBER Traps!
 KDEscapeMinimap_Pass_Trap,Quota Reached!
-KDEscapeMethod_Trap,Escape Method: Trap Hunt
+KDEscapeMethod_Trap,Trap Hunt
 KDEscapeMethodDesc_Trap,Trigger the specified number of traps to unlock the door.
 KDEscapeDoor_Trap,There seems to be a locked high-security door. Looks like you need to trigger more traps to open it.
 KDEscapeMinimap_Fail_None,Room bugged. Please Report.
@@ -20065,27 +20066,6 @@ KinkyDungeonItemModeDesc1,"Once items are lost, they are gone for good."
 KinkyDungeonItemModeDesc2,"Each item has a 25% chance of appearing in the chest between floors."
 LootCacheLostClothes,You find a familiar adventuring outfit!
 
-KDNavMap,Navigation Map
-KDNavMap_Info,Choose a path to take by clicking on a highlighted room.
-KDNavMap_Info2,Other paths will become inaccessible.
-KDNavMap_Floor,Floor NMB
-KDNavMap_Tileset,"Tileset: "
-KDNavMap_MapMod,"Map Modifier: "
-KDNavMap_RoomType,"Map Layout: "
-KDNavMap_Faction,"Controlling Faction: "
-KDNavMap_EscapeMethod,"Main Objective: "
-KDNavMap_SideRooms,"Side Objectives: "
-
-KDSideRoom_Lair_Witch,"Magical Study"
-KDSideRoom_Lair_Hall,"Maintenance Hall"
-KDSideRoom_GoldChest,"Ancient Chest"
-KDSideRoom_AuctionHall,"Auction Hall"
-KDSideRoom_DemonShrine,"Dark Altar"
-KDSideRoom_DemonTransition,"Dimensional Rift"
-
-KDMapMod_,""
-
-KDRoomType_,""
 
 KDManaStationDrain1,"You feel energy flow out of you, activating the floor below!"
 KDManaStationDrain2,"You feel energy flow out of you, lighting up a circle on the floor!"
@@ -20185,3 +20165,39 @@ KinkyDungeonSpellTaunt,Degradating Taunts
 KDTauntPunishment,You failed to come up with a proper comeback!
 
 KDSleetDmg,The field of frost damages you as you are chilled!
+KDNavMapConfirm,Confirm Path
+
+
+KDNavMap,Navigation Map
+KDNavMap_Info,Choose a path to take by clicking on a highlighted room.
+KDNavMap_Info2,Other paths will become inaccessible.
+KDNavMap_Floor,Floor NMB
+KDNavMap_Tileset,"Tileset:"
+KDNavMap_MapMod,"Map Modifier:"
+KDNavMap_RoomType,"Layout:"
+KDNavMap_Faction,"Controlling Faction:"
+KDNavMap_EscapeMethod,"Main Objective:"
+KDNavMap_SideRooms,"Side Objectives:"
+
+KDSideRoom_Lair_Witch,"Magical Study"
+KDSideRoom_Lair_Hall,"Maintenance Hall"
+KDSideRoom_GoldChest,"Ancient Chest"
+KDSideRoom_AuctionHall,"Auction Hall"
+KDSideRoom_DemonShrine,"Dark Altar"
+KDSideRoom_DemonTransition,"Dimensional Rift"
+
+KDMapMod_,"None"
+KDMapMod_None,"None"
+KDMapMod_Witch,"Witch's Lair"
+KDMapMod_Mold,"Mold Infestation"
+KDMapMod_Bandit,"Bandit Raid"
+KDMapMod_Dragon,"Elemental Energy"
+KDMapMod_Plant,"Overgrown"
+KDMapMod_Slime,"Slime Infestation"
+KDMapMod_Wolf,"Wolfgirl Training"
+KDMapMod_Robot,"Robot Patrol"
+
+KDRoomType_,"Normal"
+KDRoomType_Chamber,"Chamber"
+KDRoomType_Warden,"Prison"
+KDRoomType_Dollmaker,"Sorting Room"

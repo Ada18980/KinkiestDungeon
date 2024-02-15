@@ -4,13 +4,14 @@
 let KDMusicLoopTracksChance = {
 	"AREA1-GRAVEYARD.ogg": 0.5,
 	"AREA2-ANCIENTTOMBS.ogg": 0.5,
-	"GENERIC-DOLLRACK.ogg": 0.15,
+	"GENERIC-DOLLRACK.ogg": 0.5,
 	"AREA4-MAGICLIBRARY.ogg": 0.5,
 	"AREA5-UNDERGROUNDJUNGLE.ogg": 0.5,
 	"AREA6-CRYSTALCAVE.ogg": 0.5,
 	"AREA7-LOSTTEMPLE.ogg": 0.5,
 	"AREA8-ORRERY.ogg": 0.7,
 	"AREA9-BELLOWS.ogg": 0.5,
+	"Shopping.ogg": 0.15,
 };
 
 let KDCurrentSong = "";

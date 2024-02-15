@@ -507,12 +507,14 @@ let KDDefaultMaxParty = 3;
 * JourneyX: number,
 * JourneyY: number,
 * JourneyMap: KDJourneyMap,
+* JourneyTarget: {x: number, y: number},
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	JourneyTarget: null,
 	JourneyX: 0,
 	JourneyY: 0,
 	JourneyMap: {},
