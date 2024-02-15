@@ -289,9 +289,7 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 			KDJourneyGraphicsLower.moveTo(xOffset - ScaleX*Width + 150, yOffset + ScaleY*(slot.y - Y));
 			KDJourneyGraphicsLower.lineTo(xOffset + ScaleX*Width - 150, yOffset + ScaleY*(slot.y - Y));
 		}
-		if ((slot.x < maxX && slot.y < maxY) || (
-			KDGameData.JourneyTarget && KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y] == slot
-		))
+		if ((slot.x < maxX && slot.x > minX && slot.y < maxY))
 			for (let c of slot.Connections) {
 				let mod = 0;
 				if (

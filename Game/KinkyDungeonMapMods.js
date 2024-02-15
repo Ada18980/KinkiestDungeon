@@ -7,7 +7,7 @@ let KDMapMods = {
 	"None": {
 		name: "None",
 		roomType: "",
-		weight: 100,
+		weight: 300,
 		tags: [],
 		bonusTags: {},
 		bonussetpieces: [
@@ -18,9 +18,9 @@ let KDMapMods = {
 	"Mold": {
 		name: "Mold",
 		roomType: "",
-		weight: 100,
+		weight: 50,
 		tags: ["maid", "mold"],
-		faction: "Slime",
+		faction: "Maidforce",
 		tagsOverride: ["maid", "mold"],
 		jailType: "Maidforce",
 		guardType: "Maidforce",
@@ -116,6 +116,8 @@ let KDMapMods = {
 		weight: 35,
 		tags: ["robot"],
 		faction: "AncientRobot",
+		jailType: "AncientRobot",
+		guardType: "AncientRobot",
 		bonusTags: {
 			"robot": {bonus: 10, mult: 4},
 		},
@@ -131,7 +133,7 @@ let KDMapMods = {
 		tags: ["plant", "elf"],
 		jailType: "Elf",
 		guardType: "Elf",
-		faction: "Beast",
+		faction: "Elf",
 		bonusTags: {
 			"plant": {bonus: 5, mult: 2},
 			"maid": {bonus: 4.5, mult: 1},
@@ -146,7 +148,7 @@ let KDMapMods = {
 		roomType: "",
 		weight: 50,
 		tags: ["slime", "alchemist"],
-		faction: "Slime",
+		faction: "Alchemist",
 		jailType: "Alchemist",
 		guardType: "Alchemist",
 		bonusTags: {

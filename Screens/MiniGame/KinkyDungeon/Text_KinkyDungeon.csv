@@ -3331,6 +3331,8 @@ KinkyDungeonFactionElemental,Elementals
 KinkyDungeonFactionDragon,Dragonheart Order
 KinkyDungeonFactionMaidforce,MaidForce
 KinkyDungeonFactionMushy,Fungal Kingdom
+KinkyDungeonFactionSlime,Slime
+KinkyDungeonFactionPlant,Nature
 
 KinkyDungeonFactionWitch,Witches' Coven
 KinkyDungeonFactionLoveCrafters,Love Crafters
@@ -20195,7 +20197,7 @@ KDMapMod_Dragon,"Elemental Energy"
 KDMapMod_Plant,"Overgrown"
 KDMapMod_Slime,"Slime Infestation"
 KDMapMod_Wolf,"Wolfgirl Training"
-KDMapMod_Robot,"Robot Patrol"
+KDMapMod_Robot,"Drone Patrol"
 
 KDRoomType_,"Normal"
 KDRoomType_Chamber,"Chamber"

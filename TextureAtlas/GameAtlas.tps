@@ -2324,7 +2324,9 @@
             <key type="filename">../Game/UI/Cycle.png</key>
             <key type="filename">../Game/UI/ItemAura.png</key>
             <key type="filename">../Game/UI/ItemAuraBG.png</key>
-            <key type="filename">../Game/UI/NavMap/MapIcon.png</key>
+            <key type="filename">../Game/UI/NavMap/basic.png</key>
+            <key type="filename">../Game/UI/NavMap/boss.png</key>
+            <key type="filename">../Game/UI/NavMap/shop.png</key>
             <key type="filename">../Game/UI/PathDisplay.png</key>
             <key type="filename">../Game/UI/PlayerFacing.png</key>
             <key type="filename">../Game/WarningAlly.png</key>
