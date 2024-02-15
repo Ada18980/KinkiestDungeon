@@ -1269,8 +1269,8 @@ Conductive: When you or an enemy takes electric damage, the other takes half of 
 電導：自分か敵が電撃ダメージを受けた際、半分のダメージを相手に与える
 Lightning Rod: Gain significantly boosted electric resist.
 避雷針：電気属性への抵抗が大幅に増加する
-Drenched: Grants fire resist, ice weakness, and makes you conductive.
-びしょぬれ：火耐性、氷弱化を付与し、電導体質になる
+Drenched: Grants fire resist, ice/electric weakness, and makes you conductive.
+びしょぬれ：火耐性、氷弱化、電気弱体化を付与し、電導体質になる
 Chilled: The cold makes it hard to move! You are slowed.
 凍えている: 寒さで動きが鈍くなっている
 Slimed: It's sticky and dense! You are slowed and 30% more vulnerable to glue damage.
@@ -1762,14 +1762,16 @@ You climb down and find yourself in a strange new place.
 プラスXXX
 Graveyard
 墓地
+Overgrown Ruins
+苔むした遺跡
 Catacombs
-地下墓地
+地下遺跡
 Underground Jungle
 地下のジャングル
 Lost Temple
-秘密の寺院
+秘匿された寺院
 The Bellows
-工場
+"ふいご"
 Rundown Laboratory
 ランダウン研究所
 Forgotten Garden
@@ -1796,6 +1798,14 @@ Marble Halls
 マーブルホール
 Doll Storage
 ドール収納庫
+
+Doll Processing
+ドール工場
+The Edge of Reality
+最果て
+Dark Dimension
+闇の次元
+
 You search through the debris but find nothing of note
 瓦礫をかき分けて役に立ちそうなものを探したが、何も見つからなかった。
 You find some gold coins in a corner (+XXX gold)
@@ -2711,7 +2721,7 @@ Seeks and pierces hearts with ease.
 心臓をいともたやすく穿つ
 Deals pierce damage to the target and two squares behind it. Can be used to make a ranged attack.
 ターゲットとその後ろの2マスに刺突属性ダメージを与える。遠距離攻撃可能。
-Magic hammer
+Magic Hammer
 魔法のハンマー
 Made of a magical, resonant material.
 魔法の共鳴する素材で作られている。
@@ -2906,6 +2916,8 @@ Angel: MMMMMPHH!!!
 （天使は困惑しながら聖なる拘束具から解放してくれた）
 Your ArmorName blocks the EnemyName's attack, falling off in the process.
 ArmorName は EnemyName の攻撃で弾かれ、地面に落ちた。
+The EnemyName pulls away your ArmorName!!!
+EnemyName に ArmorName を引き剥がされた！
 The EnemyName bypasses your security to add the RestraintName!
 EnemyName は隙を見つけて RestraintName を追加した！
 The EnemyName attacks you, but you block the attack!
@@ -3545,7 +3557,7 @@ Wolf Instructor
 ウルフガールの教官
 The instructor deploys active camoflague and retreats!
 ウルフガールの教官はアクティブカモフラージュを展開して退却した！
-The instructor disciplies you! (DamageTaken)
+The instructor disciplines you! (DamageTaken)
 ウルフガールの教官に訓練された！（DamageTaken）
 The instructor applies advanced training gear! (+RestraintAdded)
 ウルフガールの教官に高度なペット用拘束具で拘束されてしまった!  (+RestraintAdded)
@@ -3920,8 +3932,8 @@ The revenant pouts as it vanishes.
 悪霊は不満そうな表情を浮かべながらたち消えた。
 The revenant restrains you! (+RestraintAdded)
 悪霊に拘束された！(+RestraintAdded)
-The revenant squeezes your breasts! (DamageTaken)
-悪霊が胸を力任せに揉んできた！(DamageTaken)
+The revenant squeezes your breasts and slows you! (DamageTaken)
+悪霊に胸を力任せに揉まれ、動きが鈍くなった！(DamageTaken)
 The revenant grabs you and caresses your tummy! (DamageTaken)
 悪霊にお腹を優しく撫でられた！(DamageTaken)
 Skeleton Warrior
@@ -3943,13 +3955,25 @@ The skeleton grabs you and slips a black cuff on! (+RestraintAdded)
 Vine Plant
 蠢く蔦
 The plant leaks purple juices everywhere as it wilts.
-蠢く蔦は、紫色の汁を撒き散らしながらしおれた。
+蠢く蔦は紫色の汁を撒き散らしながら枯れていった。
 The vine plant whips you with its tendrils! (DamageTaken)
 蠢く蔦はつるで打ち据えてきた！ (DamageTaken)
 The vine plant wraps its tendrils around you! (+RestraintAdded)
 蠢く蔦がつるで縛り上げてきた！(+RestraintAdded)
 The vine plant grips you tightly! (DamageTaken)
 蠢く蔦が締め付けてきた！ (DamageTaken)
+
+Vine Spitter
+吐き掛けの蔦
+The vine spitter leaks purple juices everywhere as it wilts.
+吐き掛けの蔦は紫色の汁を撒き散らしながら枯れていった。
+The vine spitter slaps you with its tendrils! (DamageTaken)
+吐き掛けの蔦はつるで打ち据えてきた！ (DamageTaken)
+The vine spitter wraps its tendrils around you! (+RestraintAdded)
+吐き掛けの蔦がつるで縛り上げてきた！(+RestraintAdded)
+The vine spitter grips you tightly! (DamageTaken)
+吐き掛けの蔦が締め付けてきた！ (DamageTaken)
+
 Bramble
 いばら
 The brambles are hacked away.
@@ -4708,6 +4732,8 @@ The demon giggles as it locks your restraints! (DamageTaken)
 悪魔はくすくす笑いながら拘束具をロックしてきた！ (DamageTaken)
 The demon whacks you with its mace! (DamageTaken)
 悪魔がメイスで叩いてきた！ (DamageTaken)
+The demon stuns you with her heavy mace! (+STUN)
+悪魔にメイスで殴られ、スタンしてしまった！(+スタン)
 Tickle Hand
 くすぐる手
 The hand vanishes!
@@ -4747,31 +4773,35 @@ The hand tickles you! (DamageTaken)
 Tome of Chains
 鎖の書
 The floating tome burns into ashes!
-鎖の書は燃え尽きた！
+本は燃え尽きた！
+Tome of Belts
+ベルトの書
+Tome of Ropes
+縄の書
 Tome of Light
 光の書
 The floating tome burns into ashes!
-光の書は燃え尽きた！
+本は燃え尽きた！
 Tome of Magic
 魔法の書
 The floating tome burns into ashes!
-魔法の書は燃え尽きた！
+本は燃え尽きた！
 Tome of Ice
 氷の書
 The floating tome burns into ashes!
-氷の書は燃え尽きた！
+本は燃え尽きた！
 Tome of the Abyss
 深淵の書
 The floating tome burns into ashes!
-深淵の書は燃え尽きた！
+本は燃え尽きた！
 Tome of Nature
 自然の書
 The floating tome burns into ashes!
-自然の書は燃え尽きた！
+本は燃え尽きた！
 Tome of Thunder
 雷の書
 The floating tome burns into ashes!
-雷の書は燃え尽きた！
+本は燃え尽きた！
 Tome of Latex
 ラテックスの書
 The floating tome burns into ashes!
@@ -4779,7 +4809,7 @@ The floating tome burns into ashes!
 Tome of Laughs
 笑いの書
 The floating tome burns into ashes!
-笑いの書は燃え尽きた！
+本は燃え尽きた！
 You are grabbed and led to a prison...
 捕らえられて牢屋に連行された……
 Perhaps they may release you if you behave...
@@ -4854,6 +4884,8 @@ You miss the TargetEnemy!
 TargetEnemy への攻撃は空振った
 Your attack is too feeble to hurt the TargetEnemy!
 TargetEnemy を傷つけられない
+Your attack was absorbed by the TargetEnemy's shield!
+TargetEnemy のシールドに攻撃を吸収された！
 You try to pull the TargetRestraint off...
 TargetRestraint を外そうとする……
 You try to squirm and moan out of the TargetRestraint...
@@ -4970,6 +5002,10 @@ You damage the TargetRestraint enough to escape!
 TargetRestraint から抜け出せる程度に傷をつけた！
 The TargetRestraint is destroyed by your attempts.
 TargetRestraint を力ずくで破壊した。
+
+The TargetRestraint comes off before taking serious damage.
+TargetRestraint は壊れる前に外れた。
+
 This is as far as you can struggle. You'll have to remove the TargetRestraint some other way.
 いくらもがいても、これ以上緩む気配がない。別の方法で TargetRestraint を解く必要がある。
 The item is too tight. You'll need to loosen the TargetRestraint somehow first...
@@ -5600,6 +5636,7 @@ Enemies:
 敵:
 Favorable:
 良好：
+
 Nevermere Trainers
 ネバーミアトレーナーズ
 DressUp Co.
@@ -7484,6 +7521,8 @@ A pair of chained cuffs made of leather. They make it trickier to run away.
 
 A pair of cuffs on your ankles.
 足首に取り付けられた枷。
+Your ankle cuff chain is tightened and pulls your feet together!
+足首の枷の鎖が締まり、足が引き寄せられた！
 
 Made of tough leather.
 丈夫な革でできている。
@@ -8923,6 +8962,8 @@ Excl. Upgrades
 強化呪文を除外
 Passive
 パッシブ
+Active
+アクティブ
 Upcast
 強化呪文
 Buffs
@@ -8983,6 +9024,8 @@ Shadow
 影
 Knowledge
 知識
+Archery
+弓術
 Utility
 その他
 Upgrades
@@ -8999,6 +9042,7 @@ Damage
 ダメージ
 Distraction
 興奮
+
 Empower to upcast spells
 呪文を強化
 Cancel empowerment
@@ -10891,6 +10935,8 @@ Magic Ribbons
 魔法のリボン
 Magic Belts
 マジックベルト
+Magic Belt
+マジックベルト
 Slime
 スライム
 Slime
@@ -11242,6 +11288,8 @@ The spell hits you and slows you down!
 呪文が当たり、動きが鈍くなってしまった！
 Rope
 ロープ
+Witch's Rope
+魔女の縄
 Rope Tendrils
 ロープテンドリル
 Blessed Wrappings
@@ -11274,10 +11322,10 @@ Wrappings appear and wrap you head to toe!
 リボンに全身を包まれる！
 Ropes wrap themselves around your body from all sides!
 ロープが四方八方から身体を包み込む！
+Vines sprout around you and grab hold of your limbs!
+周囲に蔦が生え、手足を掴まれた！
 Nature magic causes vines to sprout around you!
 自然の魔法により周囲の蔦が急成長した！
-Your clothes are stripped and replaced!
-無理やり着替えさせられた！
 Your clothes are stripped and replaced!
 無理やり着替えさせられた！
 Vines tear off your clothes!
@@ -11815,7 +11863,7 @@ You are unable to muster the willpower to bypass the seal...
 気力が足りない……
 Feeling determined, you override the seal and release the item!
 意志の力を集中し、封印を解いて拘束具を外した！
-The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it.
+The lock is protected by a revenant seal. You'll need 25 ectoplasm to disenchant it.
 錠前は不死の封印で守られている。解除するにはエクトプラズムが25個必要だ。
 Your fingers pass right through the collar. Pity your neck doesn't pass through it.
 首輪に指を触れようとしたらすり抜けた。首もすり抜けてくれればよかったのに。
@@ -13069,6 +13117,114 @@ Know your place!
 立場をわきまえなさい。
 You've had your chance.
 最後のチャンスですよ。
+
+This wasn't supposed to happen.
+そんな、あり得ない……
+The Collector has become the Collected.
+コレクターがコレクションになるなんて。
+Fine, you win!
+わかった、あなたの勝ちよ！
+Cover me you brats!
+援護して！
+They're coming for me!
+奴らが来る！
+Stay away!
+近寄らないで！
+Time for a taste of my own medicine...
+自業自得ね……
+I wonder how many days we'll get to spend together!
+どのくらい一緒に？
+You look so pretty as always, and forevermore~
+相変わらず可愛いわね。
+Time for an inspection~
+検査の時間よ。
+There's no use in struggling, dear! I've made sure it's extra tight.
+いくらもがいても無駄よ、きつ～く縛っておいたから。
+Playtime is over, back to your cell~
+はい、遊びは終わり。牢屋に戻ってね。
+Why aren't you wearing your restraints?
+拘束具はどうしたのかしら？
+I did not order you to clean~
+掃除しろとは言っていないわよね？
+What's that you've got there?
+それは何？
+Found you!
+見つけたわ！
+I've been waiting for this~
+この瞬間を待っていたわよ。
+Show me your moves.
+さあ、あなたの技を見せてみなさい。
+You'll make for a fine servant!
+良い下僕になりそうね！
+Very impressive.
+印象的ね。
+Yes, yes, show me what you've got!
+そう、そうよ！もっと見せて！
+I've always wanted another mage.
+もう一人魔法使いが欲しかったの。
+Tsk tsk, no silly tricks~
+うふふ、馬鹿な真似はしないでね？
+Now now, you don't have permission to do that~
+そんなことをして許されるとでも？
+What do you think you're doing?
+何のつもり？
+Typical adventurers~
+典型的な冒険者ね。
+Oh, you got out?
+あら、出ちゃったのね？
+Too bad~
+残念ね～。
+That thing is dangerous, my dear~
+こんな危ないものを持ってちゃだめよ？
+A feisty one, aren't you~
+気の強い子ね～。
+Playtime's over~
+お遊びはおしまいよ。
+Very nice.
+素晴らしいわ。
+Most impressive!
+すごく印象的ね！
+You need more training!
+もっと調教が必要みたいね！
+Come along now~
+こっちへおいで。
+Come closer, I want to see your face~
+もっと近くに来て、顔を見せて。
+See if you can get out of that!
+抜け出せるかしら？じっくり見てあげるわ。
+I am the Warden. All things in this dungeon are subject to me.
+私は看守長、このダンジョンの全てを統べる者よ。
+Hands off my pet~
+私のペットに手を出しちゃだめよ？
+Careful what you ask for~
+気をつけてね。
+That's my property~
+私のよ。
+Be gentle with her~
+優しくしてあげてね。
+You've made some enemies, haven't you?
+敵がいるみたいね？
+I should teach you to be a nice girl.
+いい子になるよう躾けてあげないとね？
+You need to learn some manners~
+少しマナーを身に着けたらどう？
+This will be entertaining.
+面白くなりそうね。
+Show me what you've got~
+何ができるか見せてみなさい。
+I'll watch~
+見てるわ。
+
+
+Fine then! Have it your way.
+いいわ、好きにしなさい！
+You'll be sorry you didn't listen to me~
+忠告に耳を傾けなかったこと、後悔することになるわよ。
+Why must you be so difficult!
+気難しいんだから！
+
+Do you know of the Dollmaker? I've got a proposal for you and I...
+ドールメイカーって知ってる？ちょっと提案があるんだけど……
 
 This is too tight...
 きつすぎ……
@@ -16861,7 +17017,7 @@ Wait! That's too much! (PERCENT chance to avoid)
 「待って！ちょっときつすぎるわ！」(PERCENT の確率で拒否)
 (Shake your head and moan) (PERCENT chance to avoid)
 (首を横に振って呻く)(PERCENT の確率で拒否)
-(The SPEAKER looks at with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?
+(The SPEAKER looks at you with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?
 (SPEAKER はじっとこちらを見つめている)|キミ、こう思ったことはないかい？|別人になりたいと。
 (The SPEAKER takes a strange mask from her satchel)|Well, I have the answer right here...
 (SPEAKER はカバンから不思議なマスクを取り出した)|よし、こういうものがあるのだけど……
@@ -16903,6 +17059,55 @@ Fine, you've convinced me.
 (笑う)
 I don't have time for this. (PERCENT chance to avoid)
 「悪いけどそんなことしている時間はない」(PERCENT の確率で拒否)
+
+(The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!
+(SPEAKER は厭らしい笑みを浮かべながらこちらを見ている)|ごきげんよう、"お仕事"の時間ですよ！
+(The SPEAKER takes a duster gag from her satchel)|Such a good girl!|So here's what I have for you~|It's a special tool to help keep the place clean.
+(SPEAKER はカバンから小さな箒の付いたパネルギャグを取り出す)|いい子ですね！|では、私からのプレゼントです。|これはダンジョンを綺麗にする特別な掃除用具なんです。
+(The SPEAKER grins)|I'm glad we could come to an understanding~|(She takes out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
+(SPEAKER はニヤニヤと笑っている)|理解していただきありがとうございます～。|(彼女に猿轡を手渡された)|さて、ここは少しばかり埃っぽいので、|それをつけて綺麗にしてくださいね？
+(The SPEAKER frowns)|Fair enough.|Perhaps you should reconsider your life choices~
+(SPEAKER は眉をひそめている)|そうですか。|本当にそんなこと言っていいんですか？
+(The SPEAKER shrugs)|I'll find someone else...
+(SPEAKER は肩を落としている)|別の方を探すとしましょう……
+(The SPEAKER reaches out to grab you)|Now now,|You shouldn't skip out on your duties~|(She pulls out a duster gag from her satchel and grins)
+(SPEAKER に突然肩を掴まれた)|いやいや、|お仕事をサボってはいけませんよ～？|(彼女は粘着く笑みを浮かべながら、カバンから小さな箒の付いたパネルギャグを取り出した。)
+(The SPEAKER smiles)|Don't be afraid!|(She turns the gag with the round mouth ball clearly visible)|Now open up...
+(SPEAKER は笑みを浮かべている)|そう固くならないで。|(彼女は猿轡を回し、裏についた丸いボールを見せてくる)|さあ、口を開けて……
+(The SPEAKER shrugs)|Fine, I'll get someone else to clean up.
+(SPEAKER は不機嫌そうだ)|別の方を探すとしましょうか……
+(The SPEAKER places the gag in your mouth)|(She then buckles up the straps.)|(You feel a locking mechanism pull the straps in tight...)|Good maid!
+(SPEAKER に猿轡を噛まされた)|(首の裏でベルトを締められる)|(猿轡がきつくしまっていくのを感じる……)|良いメイドですね！
+(The SPEAKER catches you and forces the gag on you)|(You feel it tighten as it locks on securely...)|I don't want to hear it!|Now go and do your job~
+(SPEAKER に掴まれ、無理やり猿轡を噛まされてしまった)|(猿轡はきつくかたく締まっている……)|怠惰の言い訳なんて聞きたくありませんからね。|それじゃあお仕事がんばってくださいね～。
+
+I'll do it!
+「やるわ」
+(Nod seriously)
+(真剣に頷く)
+I don't like the sound of this.
+「やりたくないかな」
+(Shake your head)
+(首を横に振る)
+
+Yes miss!
+「わかりました」
+(Nod again)
+(頷く)
+Actually, maybe not...
+「やっぱりやめておく……」
+Shake your head)
+(首を横に振る)
+
+Okay okay... I'll do it.
+「わかった……やる」
+(Giggle and nod)
+(頷く)
+That gag is far too big! (PERCENT chance to avoid)
+「ちょっと大きすぎるわ！」(PERCENT の確率で拒否)
+(Shake your head and moan) (PERCENT chance to avoid)
+(呻きながら首を横に振る)(PERCENT の確率で拒否)
+
 (Shake your head and moan) (PERCENT chance to avoid)
 (必死に首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER swings an imaginary sword around)|En guar- Oh, you're unarmored!|Do you want to borrow some of mine?
@@ -24082,8 +24287,8 @@ BOSS ROOM CLEARED!
 Room bugged. Please Report.
 ！！！バグです、ご報告お願い致します！！！
 
-Escape Method: Key Hunt
-脱出方法：鍵を探す
+Key Hunt
+鍵を探す
 Find the keys hidden in the level. Enemies can steal the keys if you aren't careful.
 鍵を見つけよう。気をつけないと、敵に鍵を盗まれてしまう。
 There seems to be a locked high-security door. Looks like you need keys to open it.
@@ -24091,24 +24296,24 @@ There seems to be a locked high-security door. Looks like you need keys to open 
 
 Exits locked!|Find a lever!
 出口には鍵がかかっている！|レバーを見つける
-Escape Method: Lever Hunt
+Lever Hunt
 脱出方法：レバーを見つける
-Escape Method: Find the lever hidden in the level to unlock the door.
-脱出方法：レバーを見つけて鍵を開ける
+Find the lever hidden in the level to unlock the door.
+レバーを見つけて鍵を開ける
 There seems to be a locked high-security door. Looks like you need to pull a lever to open it.
 階段には高度な鍵がかかっている。レバーを引いて鍵を開けよう。
 
 Exits locked!|Find control panel!
 出口には鍵がかかっている！|コントロールパネルを見つける
-Escape Method: Panel Hunt
-脱出方法：パネルを見つける
-Escape Method: Find the control panel hidden in the level to unlock the door.
-脱出方法：コントロールパネルを見つけて鍵を開ける
+Panel Hunt
+パネルを見つける
+Find the control panel hidden in the level to unlock the door.
+コントロールパネルを見つけて鍵を開ける
 There seems to be a locked high-security door. Looks like you need find a control panel to open it.
 階段には高度な鍵がかかっている。コントロールパネルを操作して鍵を開けよう。
 
-Escape Method: Boss
-脱出方法：ボスを倒す
+Boss
+ボスを倒す
 Defeat the boss to unlock the door.  You can also unlock it by losing to the boss and being penalized.
 ボスを倒して鍵を開ける。ボスに負けた場合もペナルティを受けて鍵を開けられる。
 There seems to be a locked high-security door. Looks like you need to defeat the boss to open it.
@@ -24118,8 +24323,8 @@ Exits locked!|Defeat NUMBER TYPE!
 出口には鍵がかかっている！|NUMBER の TYPE を倒す
 Quota Reached!
 規定数に到達
-Escape Method: Bounty
-脱出方法：ターゲットを倒す
+Bounty
+ターゲットを倒す
 Defeat the specified targets to unlock the door.
 ターゲットを倒して鍵を開ける
 There seems to be a locked high-security door. Looks like you need to defeat the targetted enemies to open it.
@@ -24129,8 +24334,8 @@ Exits locked!|Defeat TYPE!
 出口には鍵がかかっている！|TYPE を倒そう
 Miniboss defeated!
 小ボス撃破！
-Escape Method: Dangerous Bounty
-脱出方法：強敵を倒す
+Dangerous Bounty
+強敵を倒す
 Defeat the specified strong enemy to unlock the door.
 指定された強力な敵を倒して鍵を開ける
 There seems to be a locked high-security door. Looks like you need to defeat the miniboss to open it.
@@ -24138,8 +24343,8 @@ There seems to be a locked high-security door. Looks like you need to defeat the
 
 Exits locked!|Open NUMBER Chests!
 出口には鍵がかかっている！|宝箱を NUMBER 個開けよう。
-Escape Method: Chest Hunt
-脱出方法：宝箱を開ける
+Chest Hunt
+宝箱を開ける
 Unlock the specified number of chests to unlock the door.
 指定された数の宝箱を開けてドアを開ける
 There seems to be a locked high-security door. Looks like you need to open more chests to open it.
@@ -24147,8 +24352,8 @@ There seems to be a locked high-security door. Looks like you need to open more 
 
 Exits locked!|Accept NUMBER Quests!
 出口には鍵がかかっている！|クエストを NUMBER 個こなそう。
-Escape Method: Quest Hunt
-脱出方法：クエストをこなす
+Quest Hunt
+クエストをこなす
 Accept the specified number of goddess quests to unlock the door.
 指定された数のクエストを女神から受けて完了させる。
 There seems to be a locked high-security door. Looks like you need to accept more quests to open it.
@@ -24156,8 +24361,8 @@ There seems to be a locked high-security door. Looks like you need to accept mor
 
 Exits locked!|Trigger NUMBER Traps!
 出口には鍵がかかっている！|NUMBER 個のトラップを起動させよう！
-Escape Method: Trap Hunt
-脱出方法：罠にかかる
+Trap Hunt
+罠にかかる
 Trigger the specified number of traps to unlock the door.
 指定された数の罠を起動させる。
 There seems to be a locked high-security door. Looks like you need to trigger more traps to open it.
@@ -25431,6 +25636,8 @@ Dollmaker
 ドールメイカー
 Latex
 ラテックス
+Rubber
+ラバー
 Slime
 スライム
 Alchemist
@@ -25528,6 +25735,8 @@ The ENMY reaches for you and fails!
 ENMY の伸ばした手を振り払った！
 The ENMY gives your butt a light slap as you cast! (DMGDLT)
 魔法を唱えようとしたら ENMY にお尻を軽く叩かれた！ (DMGDLT)
+The ENMY gives your butt a good slap as you sprint past! (DMGDLT)
+すれ違いざまに ENMY に軽くお尻を叩かれた！ (DMGDLT)
 The ENMY gives your butt a light slap as you move past! (DMGDLT)
 すれ違いざまに ENMY に軽くお尻を叩かれた！ (DMGDLT)
 The ENMY tries to spank you but misses!
@@ -25708,6 +25917,23 @@ The Warden forces you to kneel, and presents you with a restraint! (+RestraintAd
 看守長に跪かされ、拘束具を取り付けられた！ (+RestraintAdded)
 The Warden strikes you with her whip! (DamageTaken)
 看守長に鞭で叩かれた！ (DamageTaken)
+The Warden swings her enchanted whip and conjures locks on your body! (DamageTaken)
+看守長が魔法の鞭を振ると、拘束具に錠前が召喚された！ (DamageTaken)
+
+(The Warden glances at you)|Oh? What do we have here?|An adventurer?|You're not on the books...
+(看守長はこちらをにらみつけている)|あら、何事かしら？|冒険者？|あなたは……本には載っていないわね。
+Cut to the chase. Do I have to fight you or not?
+「戦うの？戦わないの？」
+What is this place?
+「ここは？」
+(She smiles)|Why, this is my private prison.|I bring only my prettiest toys to hang out here.|You can see them up there.|(She motions to the north)
+(彼女は笑顔で答える)|ここは私の牢獄。|選りすぐりの可愛い子ちゃんを集めているの。|ほら、そこに見えるでしょ？|(彼女は北の方を指す)
+That's a shame about your records, I'll be going now.
+「記録については残念だったね、じゃあね。」
+This is a nice place you got here.
+「悪くない場所ね。」
+There must be a mistake. Sign me up!
+「何かの間違いでしょ、サインして！」
 
 The ENMY weakens your grip on your weapon! Enemies may disarm you if you stand too close...
 ENMY に武器を持つ握力を弱められた！敵に近寄りすぎると武器を外される可能性がある……
@@ -25991,40 +26217,6 @@ Each item has a 25% chance of appearing in the chest between floors.
 You find a familiar adventuring outfit!
 お気に入りの服を取り戻した！
 
-Navigation Map
-ナビゲーションマップ
-Choose a path to take by clicking on a highlighted room.
-ハイライトされた部屋をクリックして、進むべき道を選ぶ。
-Other paths will become inaccessible.
-他の道には進めなくなる。
-Floor NMB
-フロア NMB
-Tileset: 
-タイルセット：
-Map Modifier: 
-マップ修正：
-Map Layout: 
-レイアウト：
-Controlling Faction: 
-主な派閥：
-Main Objective: 
-メイン：
-Side Objectives: 
-サブ：
-
-Magical Study
-魔法の書斎
-Maintenance Hall
-メンテナンスホール
-Ancient Chest
-古代の宝箱
-Auction Hall
-オークションホール
-Dark Altar
-闇の祭壇
-Dimensional Rift
-次元の裂け目
-
 You feel energy flow out of you, activating the floor below!
 エネルギーが体から抜け出し、床が活性化した！
 You feel energy flow out of you, lighting up a circle on the floor!
@@ -26122,3 +26314,66 @@ Degradating Taunts
 へたな挑発
 You failed to come up with a proper comeback!
 適切な切り返しを思いつかなかった！
+
+The field of frost damages you as you are chilled!
+霜により体が冷えてしまう！
+Confirm Path
+経路を選択
+
+Navigation Map
+ナビゲーションマップ
+Choose a path to take by clicking on a highlighted room.
+ハイライトされた部屋をクリックして、進むべき道を選ぶ。
+Other paths will become inaccessible.
+他の道には進めなくなる。
+Floor NMB
+フロア NMB
+Tileset: 
+タイルセット：
+Map Modifier: 
+できごと：
+Layout: 
+レイアウト：
+Controlling Faction: 
+出現する主な派閥：
+Main Objective: 
+メイン目標：
+Side Objectives: 
+サブ目標：
+
+Witch's Lair
+魔女のお茶会
+Mold Infestation
+粘菌の繁殖
+Bandit Raid
+盗賊の襲撃
+Elemental Energy
+精霊の力
+Overgrown
+異常繁殖
+Slime Infestation
+スライムの増殖
+Wolfgirl Training
+ウルフガールの訓練
+Drone Patrol
+ドローンの巡回
+
+Normal
+通常
+Chamber
+チャンバー
+Prison
+監獄
+Sorting Room
+選別所
+
+Maintenance Hall
+メンテナンスホール
+Ancient Chest
+古代の宝箱
+Auction Hall
+オークションホール
+Dark Altar
+闇の祭壇
+Dimensional Rift
+次元の裂け目
