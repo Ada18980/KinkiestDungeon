@@ -130,7 +130,7 @@ function KDCreateJourneyArea(Width: number, PreviousSlot: KDJourneySlot, FinalCo
 							succ = KDGameData.JourneyMap[(slot.x + f.x) + ',' + (slot.y + f.y - 2)].Checkpoint;
 							succ = KDGetJourneySuccessorCheckpoint(succ, slot.x + f.x);
 						} else {
-							succ = Object.values(KinkyDungeonMapIndex)[Math.floor(Math.max(0, slot.y)/KDLevelsPerCheckpoint)];
+							succ = KDGameData.JourneyProgression[Math.floor(Math.max(0, slot.y)/KDLevelsPerCheckpoint)];
 						}
 
 					}
@@ -384,7 +384,7 @@ function KDInitJourneyMap() {
 	for (let i = 0; i + KDLevelsPerCheckpoint < KinkyDungeonMaxLevel; i += KDLevelsPerCheckpoint) {
 		let boss = KDJourneySlotTypes[KinkyDungeonBossFloor(i + KDLevelsPerCheckpoint) ? 'boss' : 'basic'](null, 0, i + KDLevelsPerCheckpoint);
 		if (i == 0 && simpleFirst) {
-			let first = KDJourneySlotTypes.basic(start, 0, i + 1, KinkyDungeonMapIndex.grv);
+			let first = KDJourneySlotTypes.basic(start, 0, i + 1, KDGameData.JourneyProgression[0]);
 			start.Connections.push({x: 0, y: i + 1});
 			KDCommitJourneySlots([start, first, ...KDCreateJourneyArea(KDLevelsPerCheckpoint - 2, first, boss)]);
 		} else {
@@ -410,7 +410,7 @@ function KDDrawJourneyLine(x1: number, y1: number, x2: number, y2: number, color
 }
 
 function KDGetJourneySuccessorCheckpoint(previousCheckpoint, x) {
-	let param: floorParams = KinkyDungeonMapParams[previousCheckpoint];
+	let param: floorParams = KinkyDungeonMapParams[KDGameData.Journey == "Random" ? CommonRandomItemFromList(undefined, [...KDDefaultAlt, ...KDDefaultJourney]) : previousCheckpoint];
 	if (param) {
 		let list = param.successorSame;
 		if (x > 0) list = param.successorPositive;

@@ -344,8 +344,13 @@ let KDOptOut = false;
 
 let KDDefaultMaxParty = 3;
 
+
+let KDDefaultJourney = ["grv", "cat", "jng", "tmp", "bel"];
+let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
+
 /**
 *  @typedef {{
+* JourneyProgression: string[],
 * AttachedWep: string,
 * InventoryAction: string,
 * InventoryActionManaCost: number,
@@ -514,6 +519,7 @@ let KDDefaultMaxParty = 3;
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	JourneyProgression: [...KDDefaultJourney],
 	JourneyTarget: null,
 	JourneyX: 0,
 	JourneyY: 0,
@@ -3205,30 +3211,93 @@ function KinkyDungeonLoadStats() {
 
 let KinkyDungeonGameFlag = false;
 
-let KDDefaultJourney = ["grv", "cat", "jng", "tmp", "bel"];
-let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 
 function KDInitializeJourney(Journey) {
 	KDCurrentWorldSlot = {x: 0, y: 0};
 	KDWorldMap = {};
-
 	/**
-	 * @type {Record<string, string>}
+	 * @type {string[]}
 	 */
-	let newIndex = {};
-
-	for (let map of KDDefaultJourney) {
-		newIndex[map] = map;
-	}
-	for (let map of KDDefaultAlt) {
-		newIndex[map] = map;
-	}
+	let newIndex = [];
 
 	if (Journey)
 		KDGameData.Journey = Journey;
-	// Option to shuffle the dungeon types besides the initial one (graveyard)
+
 	if (KDGameData.Journey == "Random") {
-		/* Randomize array in-place using Durstenfeld shuffle algorithm */
+
+		// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+		let randList = [...KDDefaultJourney, ...KDDefaultAlt];
+		for (let i = randList.length - 1; i >= 0; i--) {
+			let j = Math.floor(KDRandom() * (i + 1));
+			let temp = randList[i];
+			randList[i] = randList[j];
+			randList[j] = temp;
+		}
+		for (let i = 0; i < KDDefaultJourney.length; i++) {
+			newIndex.push(randList[i]);
+		}
+	} else if (KDGameData.Journey == "Harder") {
+		for (let i = 0; i < KDDefaultJourney.length; i++) {
+			//newIndex[KDDefaultAlt[i]] = KDDefaultJourney[i];
+			newIndex = [...KDDefaultAlt];
+		}
+	} else if (KDGameData.Journey == "Explorer") {
+		newIndex = [...KDDefaultJourney];
+		newIndex[0] = 'jng';
+		newIndex[1] = 'grv';
+		newIndex[2] = 'tmp';
+		newIndex[3] = 'ore';
+		newIndex[4] = 'bel';
+	} else if (KDGameData.Journey == "Doll") {
+		newIndex = [...KDDefaultJourney];
+		newIndex[0] = 'bel';
+		newIndex[1] = 'bel';
+		newIndex[2] = 'bel';
+		newIndex[3] = 'cry';
+		newIndex[4] = 'cat';
+	} else if (KDGameData.Journey == "Temple") {
+		newIndex = [...KDDefaultJourney];
+		newIndex[0] = 'tmp';
+		newIndex[1] = 'lib';
+		newIndex[2] = 'tmb';
+		newIndex[3] = 'cat';
+		newIndex[4] = 'jng';
+	} else if (KDGameData.Journey == "Test") {
+		newIndex = [...KDDefaultJourney];
+		newIndex[0] = 'bel';
+	} else {
+		newIndex = [...KDDefaultJourney];
+	}
+
+	KDGameData.JourneyProgression = newIndex;
+
+	KinkyDungeonMapIndex = {};
+
+	for (let map of KDDefaultJourney) {
+		KinkyDungeonMapIndex[map] = map;
+	}
+	for (let map of KDDefaultAlt) {
+		KinkyDungeonMapIndex[map] = map;
+	}
+
+
+	// Option to shuffle the dungeon types besides the initial one (graveyard)
+	/*
+
+		let newIndex = {};
+
+		for (let map of KDDefaultJourney) {
+			newIndex[map] = map;
+		}
+		for (let map of KDDefaultAlt) {
+			newIndex[map] = map;
+		}
+
+		if (Journey)
+			KDGameData.Journey = Journey;
+
+	if (KDGameData.Journey == "Random") {
+
 		// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 		let randList = Array.from(Object.keys(newIndex));
 		for (let i = randList.length - 1; i >= 0; i--) {
@@ -3284,6 +3353,8 @@ function KDInitializeJourney(Journey) {
 	}
 
 	KinkyDungeonMapIndex = newIndex;
+	*/
+
 
 
 	KDInitJourneyMap();
@@ -4121,7 +4192,8 @@ function KinkyDungeonGenerateSaveData() {
 	save.aid = KinkyDungeonAid;
 	save.seed = KinkyDungeonSeed;
 	save.statchoice = Array.from(KinkyDungeonStatsChoice);
-	save.mapIndex = KinkyDungeonMapIndex;
+	//save.mapIndex = KinkyDungeonMapIndex;
+
 	save.flags = Array.from(KinkyDungeonFlags);
 	save.KDCommanderRoles = Array.from(KDCommanderRoles);
 	save.faction = KinkyDungeonFactionRelations;
@@ -4376,7 +4448,9 @@ function KinkyDungeonLoadGame(String) {
 			KDUpdateEnemyCache = true;
 			if (KDGameData.Journey)
 				KDJourney = KDGameData.Journey;
-			if (saveData.mapIndex && !saveData.mapIndex.length) KinkyDungeonMapIndex = saveData.mapIndex;
+			if (!KDGameData.JourneyProgression) KDInitializeJourney(KDJourney);
+			//if (saveData.mapIndex && !saveData.mapIndex.length) KinkyDungeonMapIndex = saveData.mapIndex;
+
 			if (!KDGameData.SlowMoveTurns) KDGameData.SlowMoveTurns = 0;
 			if (String)
 				localStorage.setItem('KinkyDungeonSave', String);
