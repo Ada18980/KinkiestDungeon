@@ -302,31 +302,32 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 				if (!data.overrideRoomType) {
 					KDGameData.RoomType = roomType;
 				}
-				if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)) {
-					let MapMod = data.mapMod;
-					if (MapMod) {
-						KDGameData.MapMod = MapMod;
-						KDMapData.MapFaction = KDMapMods[KDGameData.MapMod].faction;
-					} else {
-						KDGameData.MapMod = "";
-						KDMapData.MapFaction = "";
-					}
+				//if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)) {
+				let MapMod = data.mapMod;
+				if (MapMod) {
+					KDGameData.MapMod = MapMod;
+					KDMapData.MapFaction = KDMapMods[KDGameData.MapMod].faction || "";
+				} else {
+					KDGameData.MapMod = "";
+					KDMapData.MapFaction = "";
+				}
 
-					if (!data.overrideJourney) {
-						let Journey = KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Journey;
-						if (Journey) {
-							KDGameData.Journey = Journey;
-							KDInitializeJourney(KDGameData.Journey);
-						}
-					}
-
-					if (!data.overrideRoomType) {
-						let RoomType = KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).RoomType;
-						if (RoomType) {
-							KDGameData.RoomType = RoomType;
-						}
+				if (!data.overrideJourney) {
+					let Journey = KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.Journey;
+					if (Journey) {
+						KDGameData.Journey = Journey;
+						KDInitializeJourney(KDGameData.Journey);
 					}
 				}
+
+				if (!data.overrideRoomType) {
+					let RoomType = KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.RoomType
+						|| data.JourneyTile?.RoomType;
+					if (RoomType) {
+						KDGameData.RoomType = RoomType;
+					}
+				}
+				//}
 
 
 				KinkyDungeonSendActionMessage(10, TextGet("ClimbDown" + toTile), "#ffffff", 1);

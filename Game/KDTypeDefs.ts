@@ -2407,6 +2407,7 @@ type MapMod = {
 	jailType?: string,
 	guardType?: string,
 	weight: number,
+	filter: (slot: KDJourneySlot) => number,
 	tags: string[],
 	faction?: string,
 	tagsOverride?: string[],

@@ -72,6 +72,7 @@ let alts = {
 		prune: true,
 	},
 	"PerkRoom": {
+		tickFlags: true,
 		name: "PerkRoom",
 		Title: "PerkRoom",
 		skin: "shrine", useDefaultMusic: true,
@@ -1295,7 +1296,7 @@ function KinkyDungeonCreateTunnel(POI, VisitedRooms, width, height, openness, de
 
 	// Place the exit stairs
 
-	let boss = KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel + 1);
+	/*let boss = KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel + 1);
 	let mods = !boss ? KDGetMapGenList(3, KDMapMods) : ["None", "None", "None"];
 	if (!boss) {
 		let exit1 = mods[0].name;
@@ -1317,7 +1318,7 @@ function KinkyDungeonCreateTunnel(POI, VisitedRooms, width, height, openness, de
 	if (!boss)
 		KinkyDungeonTilesSet("" + (width*2 - 2) + "," + (VisitedRooms[0].y*2), {MapMod: exit3});
 	KinkyDungeonTilesSet("" + (width*2 - 2) + "," + (VisitedRooms[0].y*2 + 1), {Type: "Ghost", Msg: "MapMod" + exit3});
-
+	*/
 	KDMapData.EndPosition = {x: width*2 - 2, y: VisitedRooms[0].y*2};
 
 	// Place quest NPCs
@@ -1506,7 +1507,7 @@ function KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openne
 		if (KDJourneyList[i]) {
 			KinkyDungeonMapSet(x, VisitedRooms[0].y*2 - 6, 's');
 			KinkyDungeonMapSet(x, VisitedRooms[0].y*2 - 5, 'G');
-			KinkyDungeonTilesSet("" + (x) + "," + (VisitedRooms[0].y*2 - 6), {RoomType: "ShopStart", Skin: "TabletSpent", Journey: KDJourneyList[i], MapMod: KDJourneyMapMod[KDJourneyList[i]] ? KDGetMapGenList(1, KDMapMods)[0].name : undefined});
+			KinkyDungeonTilesSet("" + (x) + "," + (VisitedRooms[0].y*2 - 6), {RoomType: "ShopStart", Skin: "TabletSpent", Journey: KDJourneyList[i]});
 			KinkyDungeonTilesSet("" + (x) + "," + (VisitedRooms[0].y*2 - 5), {Type: "Ghost", Msg: "Journey" + KDJourneyList[i]});
 			KDCreateEffectTile(x, (VisitedRooms[0].y*2 - 6), {
 				name: "Portals/Portal",

@@ -33,29 +33,38 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			}
 		}*/
 
-		// We make it so basically map mods cant repeat for the same 3 generated tiles in a row
-		// Helps shake things up randomly
-		if (KDMapModRefreshList.length == 0) {
-			KDMapModRefreshList = KDGetMapGenList(3, KDMapMods);
-		}
-		let index = Math.floor(KDRandom() * KDMapModRefreshList.length);
-		let MapMod = KDMapModRefreshList[index]?.name;
-		KDMapModRefreshList.splice(index, 1);
-
-		return {
+		let slot = {
 			type: 'basic',
 			x: x,
 			y: y,
 			Checkpoint: checkpoint,
 			color: KinkyDungeonMapParams[checkpoint]?.color || "#ffffff",
 			Connections: [], // Temporarily empty
-			EscapeMethod: KDMapMods[MapMod]?.escapeMethod || KDGetRandomEscapeMethod(),
-			MapMod: MapMod,
-			RoomType: KDMapMods[MapMod]?.roomType || "",
-			Faction: KDMapMods[MapMod]?.faction || "",
 			protected: false,
 			visited: false,
+			EscapeMethod: KDGetRandomEscapeMethod(),
+			MapMod: "",
+			RoomType: "",
+			Faction: "",
 		};
+
+		// We make it so basically map mods cant repeat for the same 3 generated tiles in a row
+		// Helps shake things up randomly
+		if (KDMapModRefreshList.length == 0) {
+			KDMapModRefreshList = KDGetMapGenList(3, KDMapMods, slot);
+		}
+		let index = Math.floor(KDRandom() * KDMapModRefreshList.length);
+		let MapMod = KDMapModRefreshList[index]?.name;
+		KDMapModRefreshList.splice(index, 1);
+
+
+		if (KDMapMods[MapMod]?.escapeMethod)
+			slot.EscapeMethod = KDMapMods[MapMod]?.escapeMethod;
+		slot.MapMod = MapMod;
+		slot.RoomType = KDMapMods[MapMod]?.roomType || "";
+		slot.Faction = KDMapMods[MapMod]?.faction || "";
+
+		return slot;
 	},
 	shop: (Predecessor, x, y, forceCheckpoint) => {
 		//let checkpoint : string = forceCheckpoint || 'grv';

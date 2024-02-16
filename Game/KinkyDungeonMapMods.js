@@ -8,6 +8,9 @@ let KDMapMods = {
 		name: "None",
 		roomType: "",
 		weight: 300,
+		filter: (slot) => {
+			return 1.0;
+		},
 		tags: [],
 		bonusTags: {},
 		bonussetpieces: [
@@ -19,6 +22,10 @@ let KDMapMods = {
 		name: "Mold",
 		roomType: "",
 		weight: 50,
+		filter: (slot) => {
+			if (slot?.y < 2) return 0;
+			return 1.0;
+		},
 		tags: ["maid", "mold"],
 		faction: "Maidforce",
 		tagsOverride: ["maid", "mold"],
@@ -43,6 +50,10 @@ let KDMapMods = {
 		faction: "Bandit",
 		jailType: "Bandit",
 		guardType: "Bandit",
+		filter: (slot) => {
+			if (slot?.y < 2) return 0;
+			return 1.0;
+		},
 		bonusTags: {
 			"bandit": {bonus: 4, mult: 2.5},
 			"bountyhunter": {bonus: 1, mult: 2.5},
@@ -62,6 +73,10 @@ let KDMapMods = {
 		faction: "Dragon",
 		jailType: "Dragon",
 		guardType: "Dragon",
+		filter: (slot) => {
+			if (slot?.y < 2) return 0;
+			return 1.0;
+		},
 		bonusTags: {
 			"dragon": {bonus: 7, mult: 2},
 			"elemental": {bonus: 3, mult: 1.5},
@@ -83,6 +98,10 @@ let KDMapMods = {
 		faction: "Witch",
 		jailType: "Witch",
 		guardType: "Apprentice",
+		filter: (slot) => {
+			if (slot?.y < 2) return 0;
+			return 1.0;
+		},
 		bonusTags: {
 			"witch": {bonus: 3, mult: 1.5},
 			"apprentice": {bonus: 3, mult: 1.4},
@@ -101,6 +120,10 @@ let KDMapMods = {
 		faction: "Nevermere",
 		jailType: "Nevermere",
 		guardType: "Nevermere",
+		filter: (slot) => {
+			if (slot?.y < 3) return 0;
+			return 1.0;
+		},
 		bonusTags: {
 			"nevermere": {bonus: 11, mult: 1.5},
 			"trainer": {bonus: 11, mult: 0.75},
@@ -118,6 +141,10 @@ let KDMapMods = {
 		faction: "AncientRobot",
 		jailType: "AncientRobot",
 		guardType: "AncientRobot",
+		filter: (slot) => {
+			if (slot?.y < 3) return 0;
+			return 1.0;
+		},
 		bonusTags: {
 			"robot": {bonus: 10, mult: 4},
 		},
@@ -134,6 +161,10 @@ let KDMapMods = {
 		jailType: "Elf",
 		guardType: "Elf",
 		faction: "Elf",
+		filter: (slot) => {
+			if (slot?.y < 2) return 0;
+			return 1.0;
+		},
 		bonusTags: {
 			"plant": {bonus: 5, mult: 2},
 			"maid": {bonus: 4.5, mult: 1},
@@ -151,6 +182,10 @@ let KDMapMods = {
 		faction: "Alchemist",
 		jailType: "Alchemist",
 		guardType: "Alchemist",
+		filter: (slot) => {
+			if (slot?.y < 2) return 0;
+			return 1.0;
+		},
 		bonusTags: {
 			"slime": {bonus: 1.5, mult: 2},
 			"maid": {bonus: 4.5, mult: 1.5},
@@ -164,16 +199,27 @@ let KDMapMods = {
 };
 
 // KDGetMapGenList(3, KDMapMods);
-function KDGetMapGenList(count, mods) {
+/**
+ *
+ * @param {number} count
+ * @param {Record<string, MapMod>} mods
+ * @param {KDJourneySlot} slot
+ * @returns {MapMod[]}
+ */
+function KDGetMapGenList(count, mods, slot) {
 	let ret = [];
 	for (let i = 0; i < count; i++) {
 		let genWeightTotal = 0;
 		let genWeights = [];
+		let mult = 1.0;
 
 		for (let mod of Object.values(mods)) {
 			if (!ret.includes(mod)) {
-				genWeights.push({mod: mod, weight: genWeightTotal});
-				genWeightTotal += mod.weight;
+				mult = mod.filter(slot);
+				if (mult > 0) {
+					genWeights.push({mod: mod, weight: genWeightTotal});
+					genWeightTotal += mod.weight * mult;
+				}
 			}
 		}
 
