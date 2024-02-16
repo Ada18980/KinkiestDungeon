@@ -18974,6 +18974,9 @@ KDEscapeMinimap_Pass_None,""
 KDEscapeMethod_None,Something went wrong.
 KDEscapeMethod_None,Please report this bug to Ada with a save code.
 KDEscapeDoor_None,This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
+KDEscapeMethod_,None
+KDEscapeMethod_,Please report this bug to Ada with a save code.
+KDEscapeDoor_,This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
 
 KDVarSuffCursed,(Cursed)
 KDVarSuffPurified,(Purified)

@@ -8,7 +8,7 @@ let KDJourneyGraphicsUpper = new PIXI.Graphics;
 KDJourneyGraphicsUpper.zIndex = 0;
 let KDGameBoardAddedJourney = false;
 
-let KDMapModRefreshList: MapMod[] = [KDMapMods.Key];
+let KDMapModRefreshList: MapMod[] = [KDMapMods.None];
 
 let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, y: number, forceCheckpoint?: string) => KDJourneySlot> = {
 	basic: (Predecessor, x, y, forceCheckpoint) => {
@@ -98,7 +98,7 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			Connections: [],
 			EscapeMethod: "Boss",
 			MapMod: "",
-			RoomType: KinkyDungeonBossFloor(y)?.genType || "",
+			RoomType: "",
 			Faction: "",
 			protected: true,
 			visited: false,
