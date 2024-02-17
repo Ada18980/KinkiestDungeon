@@ -942,13 +942,13 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"Elf": {
 		"Mushy": 1.0,
-		"Beast": 1.0,
-		"Plant": 1.0,
+		"Beast": 0.2,
+		"Plant": 0.2,
 	},
 	"Bast": {
 		"Elf": -1.0,
 		"Witch": -0.4,
-		"Beast": 0.55,
+		"Beast": 0.2,
 	},
 	"Bandit": {
 		"Mushy": -0.6,

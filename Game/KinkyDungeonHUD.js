@@ -599,7 +599,7 @@ function KDDrawSpellChoices() {
 			if (spellPaged) {
 				// Draw the main spell icon
 				let buttonDimSmall = {
-					x: buttonDim.x-1 + buttonDim.wsmall * (page - 1),
+					x: buttonDim.x-1 + (buttonDim.wsmall - 6) * (page - 1),
 					y: buttonDim.y-1 - buttonDim.hsmall,
 				};
 				if (spellPaged.type == "passive" && KinkyDungeonSpellChoicesToggle[indexPaged]) {
@@ -649,7 +649,7 @@ function KDDrawSpellChoices() {
 			} else if (item) {
 
 				let buttonDimSmall = {
-					x: buttonDim.x-1 + buttonDim.wsmall * (page - 1),
+					x: buttonDim.x-1 + (buttonDim.wsmall - 6) * (page - 1),
 					y: buttonDim.y-1 - buttonDim.hsmall,
 				};
 				icon += 1;

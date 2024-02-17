@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.2"
+KDVersionStr,"5.2.2b"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -4989,6 +4989,9 @@ RestraintAnkleShacklesDesc2,"Tough to walk in."
 RestraintThumbCuffs,Thumbcuffs
 RestraintThumbCuffsDesc,"Interferes with the use of your hands."
 RestraintThumbCuffsDesc2,"Another layer of restriction."
+RestraintThumbCuffsNew,Thumbcuffs
+RestraintThumbCuffsNewDesc,"Interferes with the use of your hands."
+RestraintThumbCuffsNewDesc2,"Another layer of restriction."
 RestraintHingedCuffs,Hinged Handcuffs
 RestraintHingedCuffsDesc,"Hinged cuffs with a rudimentary lock."
 RestraintHingedCuffsDesc2,"Difficult to unlock, let alone pick by yourself."

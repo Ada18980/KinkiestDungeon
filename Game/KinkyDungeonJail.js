@@ -154,6 +154,7 @@ function KinkyDungeonCanPlay(enemy) {
 }
 
 function KinkyDungeonCheckRelease() {
+	if (KDMapData.JailFaction && KDFactionRelation("Jail", KDMapData.JailFaction) < -0.15) return -1;
 	if (KDGameData.RoomType) {
 		let altRoom = KinkyDungeonAltFloor(KDGameData.RoomType);
 		if (altRoom && altRoom.noRelease) return altRoom.releaseOnLowSec ? (KDGetEffSecurityLevel() >= KDSecurityLevelHiSec ? -1 : 1) : -1;
