@@ -316,7 +316,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 					let Journey = KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.Journey;
 					if (Journey) {
 						KDGameData.Journey = Journey;
-						KDInitializeJourney(KDGameData.Journey);
+						KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
 					}
 				}
 

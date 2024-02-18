@@ -4448,7 +4448,6 @@ function KinkyDungeonLoadGame(String) {
 			KDUpdateEnemyCache = true;
 			if (KDGameData.Journey)
 				KDJourney = KDGameData.Journey;
-			if (!KDGameData.JourneyProgression) KDInitializeJourney(KDJourney);
 			//if (saveData.mapIndex && !saveData.mapIndex.length) KinkyDungeonMapIndex = saveData.mapIndex;
 
 			if (!KDGameData.SlowMoveTurns) KDGameData.SlowMoveTurns = 0;
@@ -4457,7 +4456,7 @@ function KinkyDungeonLoadGame(String) {
 
 			if (saveData.KDGameData && saveData.KDGameData.LastMapSeed) KDsetSeed(saveData.KDGameData.LastMapSeed);
 
-			if (!KinkyDungeonMapIndex.grv)
+			if (!KinkyDungeonMapIndex.grv || !KDGameData.JourneyProgression)
 				KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
 
 			if (!KDGameData.JourneyMap) {

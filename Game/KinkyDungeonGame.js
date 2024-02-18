@@ -319,9 +319,10 @@ function KinkyDungeonSetCheckPoint(Checkpoint, AutoSave, suppressCheckPoint) {
 }
 
 function KinkyDungeonNewGamePlus() {
-	KDInitializeJourney(KDGameData.Journey);
-
 	MiniGameKinkyDungeonLevel = 0;
+
+	KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
+
 	KinkyDungeonSetCheckPoint("grv", true);
 	KDGameData.HighestLevelCurrent = 1;
 	KinkyDungeonCreateMap(KinkyDungeonMapParams.grv, "ShopStart", "", 1);
@@ -1202,7 +1203,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		if (iterations == 100000) {
 			KDUnPackEnemies(KDMapData);
 			if (!KinkyDungeonMapIndex.grv)
-				KDInitializeJourney(KDGameData.Journey);
+				KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
 
 			KinkyDungeonSendEvent("postMapgen", {});
 

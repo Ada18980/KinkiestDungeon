@@ -2260,7 +2260,7 @@ function KDModFavor(Faction, Amount) {
 
 function KinkyDungeonCheckLOS(enemy, player, distance, maxdistance, allowBlind, allowBars, maxFails) {
 	let bs = (enemy && enemy.Enemy && enemy.Enemy.blindSight) ? enemy.Enemy.blindSight : 0;
-	if (KinkyDungeonStatsChoice.get("KillSquad")) bs += 20;
+	if (KinkyDungeonStatsChoice.get("KillSquad")) bs += 3.5;
 	if (player.player && enemy.Enemy && (enemy.Enemy.playerBlindSight || KDAllied(enemy.Enemy))) bs = enemy.Enemy.playerBlindSight;
 	return distance <= maxdistance && ((allowBlind && bs >= distance) || KinkyDungeonCheckPath(enemy.x, enemy.y, player.x, player.y, allowBars, false, maxFails));
 }
@@ -3346,9 +3346,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		: 10 + 1.5*(Math.max(AIData.followRange, 0)) + 1.5*Math.max(AIData.visionRadius ? AIData.visionRadius : 0, enemy.Enemy.blindSight ? enemy.Enemy.blindSight : 0);
 	AIData.blindSight = (enemy && enemy.Enemy && enemy.Enemy.blindSight) ? enemy.Enemy.blindSight : 0;
 	if (KinkyDungeonStatsChoice.get("KillSquad")) {
-		AIData.visionRadius *= 2;
-		AIData.chaseRadius *= 2;
-		AIData.blindSight += 20;
+		AIData.visionRadius *= 1.2;
+		AIData.chaseRadius *= 1.2;
+		AIData.blindSight += 3.5;
 		if (AIData.blindSight > AIData.visionRadius) {
 			AIData.visionRadius = AIData.blindSight;
 		}

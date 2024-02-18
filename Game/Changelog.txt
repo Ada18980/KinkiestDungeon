@@ -28,6 +28,10 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.2.3
+- 'dimensional rifts' to the edge of reality can be found
+- killsquad distance nerfed considerably
+
 5.2.2
 - Added a new system for tileset and mapmod selection at the end of the perk room
 
