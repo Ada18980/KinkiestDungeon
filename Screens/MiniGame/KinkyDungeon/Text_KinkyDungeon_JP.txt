@@ -24551,7 +24551,7 @@ Cool people wear these indoors.
 屋外で着用するオシャレアイテム。
 +25 holy resist. Reduces blind effects. Prevents blinding from light adjustment.
 聖属性耐性+25。目潰し効果を軽減する。光量の変化による目潰し効果を防ぐ。
-Sunglasses
+Sunglasses2
 サングラス
 Cool people wear these indoors.
 屋外で着用するオシャレアイテム。

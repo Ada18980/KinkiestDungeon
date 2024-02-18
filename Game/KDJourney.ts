@@ -46,6 +46,7 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			MapMod: "",
 			RoomType: "",
 			Faction: "",
+			SideRooms: [],
 		};
 
 		// We make it so basically map mods cant repeat for the same 3 generated tiles in a row
@@ -64,6 +65,15 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 		slot.RoomType = KDMapMods[MapMod]?.roomType || "";
 		slot.Faction = KDMapMods[MapMod]?.faction || "";
 
+		let sideTop = KDGetSideRoom(slot, true, slot.SideRooms);
+		if (sideTop) {
+			slot.SideRooms.push(sideTop.name);
+		}
+		let sideBot = KDGetSideRoom(slot, false, slot.SideRooms);
+		if (sideBot) {
+			slot.SideRooms.push(sideBot.name);
+		}
+
 		return slot;
 	},
 	shop: (Predecessor, x, y, forceCheckpoint) => {
@@ -81,6 +91,7 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			Faction: "",
 			protected: true,
 			visited: false,
+			SideRooms: [],
 		};
 	},
 	boss: (Predecessor, x, y, forceCheckpoint) => {
@@ -102,6 +113,7 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			Faction: "",
 			protected: true,
 			visited: false,
+			SideRooms: [],
 		};
 	},
 };
@@ -375,18 +387,24 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 		DrawTextFitKD(TextGet("KDNavMap_EscapeMethod"), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize);
 		DrawTextFitKD(TextGet("KDEscapeMethod_" + (selectedJourney.EscapeMethod || "")), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize2);
 		II+= subspacePercent;
+		if (selectedJourney.SideRooms && selectedJourney.SideRooms.length > 0) {
+			DrawTextFitKD(TextGet("KDNavMap_SideRooms"), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize);
+			for (let sr of selectedJourney.SideRooms)
+				DrawTextFitKD(TextGet("KDSideRoom_" + (sr || "")), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize2);
+			II+= subspacePercent;
+		}
 
 	}
 
 }
 
-function KDInitJourneyMap() {
+function KDInitJourneyMap(Level = 0) {
 	let simpleFirst = true;
 	let continueCheckpoints = true;
 
 	KDGameData.JourneyMap = {};
 	KDGameData.JourneyX = 0;
-	KDGameData.JourneyY = 0;
+	KDGameData.JourneyY = Level;
 
 	let start = KDJourneySlotTypes.shop(null, 0, 0);
 	let bosses = [];

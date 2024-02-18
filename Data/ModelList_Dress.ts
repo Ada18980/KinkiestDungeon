@@ -864,6 +864,27 @@ AddModel({
 });
 
 AddModel({
+	Name: "Sunglasses",
+	Folder: "Shades",
+	Parent: "Suit",
+	TopLevel: true,
+	Categories: ["Accessories", "Face"],
+	Layers: ToLayerMap([
+		{ Name: "Glasses", Layer: "Glasses", Pri: 15,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "GlassesLens", Layer: "Glasses", Pri: 15.1,
+			InheritColor: "Lens",
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "Glasses",
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+AddModel({
 	Name: "MonocleLeft",
 	Folder: "Dress",
 	Parent: "Glasses",

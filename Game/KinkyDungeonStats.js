@@ -892,7 +892,7 @@ function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0
 		if (!(KDGameData.StaminaPause > Pause))
 			KDGameData.StaminaPause = Pause;
 		if (!(KDGameData.StaminaSlow > 5) && !NoSlow)
-			KDGameData.StaminaSlow = 5;
+			KDGameData.StaminaSlow = Math.min(5, (KDGameData.StaminaSlow || 0) + 1.5);
 	}
 
 	if (isNaN(KinkyDungeonStatStamina)) {

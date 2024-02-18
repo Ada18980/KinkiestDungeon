@@ -18974,11 +18974,9 @@ KDEscapeMethodDesc_Trap,Trigger the specified number of traps to unlock the door
 KDEscapeDoor_Trap,There seems to be a locked high-security door. Looks like you need to trigger more traps to open it.
 KDEscapeMinimap_Fail_None,Room bugged. Please Report.
 KDEscapeMinimap_Pass_None,""
-KDEscapeMethod_None,Something went wrong.
-KDEscapeMethod_None,Please report this bug to Ada with a save code.
+KDEscapeMethod_None,None
 KDEscapeDoor_None,This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
 KDEscapeMethod_,None
-KDEscapeMethod_,Please report this bug to Ada with a save code.
 KDEscapeDoor_,This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
 
 KDVarSuffCursed,(Cursed)
@@ -20023,6 +20021,15 @@ KinkyDungeonInventoryItemSunglassesDesc,"Cool people wear these indoors."
 KinkyDungeonInventoryItemSunglassesDesc2,"+25 holy resist. Reduces blind effects. Prevents blinding from light adjustment."
 LootSunglasses,"You find a pair of stylish shades."
 
+
+RestraintSunglasses2,Shades
+RestraintSunglasses2Desc,"Cool people wear these indoors."
+RestraintSunglasses2Desc2,"+25 holy resist. Reduces blind effects. Prevents blinding from light adjustment."
+KinkyDungeonInventoryItemSunglasses2,Sunglasses
+KinkyDungeonInventoryItemSunglasses2Desc,"Cool people wear these indoors."
+KinkyDungeonInventoryItemSunglasses2Desc2,"+25 holy resist. Reduces blind effects. Prevents blinding from light adjustment."
+LootSunglasses2,"You find a pair of stylish shades."
+
 KDBackgroundColor,Player Background Color
 
 KDBubbleBounce,An attack causes you to bounce...
@@ -20185,11 +20192,12 @@ KDNavMap_MapMod,"Map Modifier:"
 KDNavMap_RoomType,"Layout:"
 KDNavMap_Faction,"Controlling Faction:"
 KDNavMap_EscapeMethod,"Main Objective:"
-KDNavMap_SideRooms,"Side Objectives:"
+KDNavMap_SideRooms,"Side Rooms:"
 
 KDSideRoom_Lair_Witch,"Magical Study"
 KDSideRoom_Lair_Hall,"Maintenance Hall"
 KDSideRoom_GoldChest,"Ancient Chest"
+KDSideRoom_Elevator,"Mysterious Elevator"
 KDSideRoom_AuctionHall,"Auction Hall"
 KDSideRoom_DemonShrine,"Dark Altar"
 KDSideRoom_DemonTransition,"Dimensional Rift"
@@ -20206,6 +20214,7 @@ KDMapMod_Wolf,"Wolfgirl Training"
 KDMapMod_Robot,"Drone Patrol"
 
 KDRoomType_,"Normal"
+KDRoomType_ShopStart,"Shop"
 KDRoomType_Chamber,"Chamber"
 KDRoomType_Warden,"Prison"
 KDRoomType_Dollmaker,"Sorting Room"

@@ -47,6 +47,7 @@
         "Game/KinkyDungeonAlt.js",
         "Game/KinkyDungeonBones.js",
         "Game/KinkyDungeonMapMods.js",
+        "Game/KDSideRooms.js",
         "Game/KinkyDungeonBoss.js",
         "Game/KinkyDungeonPerks.js",
         "Game/KinkyDungeonParams.js",

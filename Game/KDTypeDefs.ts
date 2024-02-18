@@ -2401,12 +2401,39 @@ interface KDMapDataType {
 }
 
 
+
+type KDSideRoom = {
+	name: string,
+	roomType: string,
+	jailType?: string,
+	guardType?: string,
+	weight: number,
+	/** Rolled once each time it gets a map mod */
+	chance: number,
+	/**
+	 *
+	 * @param slot Journey slot of the tile to be generated for
+	 * @param side true = top side, false = bot side
+	 * @returns {number} - Multiplier to chance
+	 */
+	filter: (slot: KDJourneySlot, side: boolean) => number,
+	mapMod: string,
+	altRoom: string,
+	escapeMethod?: string,
+}
+
+
 type MapMod = {
 	name: string,
 	roomType: string,
 	jailType?: string,
 	guardType?: string,
 	weight: number,
+	/**
+	 *
+	 * @param slot Journey slot of the tile to be generated for
+	 * @returns {number} - multiplier to WEIGHT
+	 */
 	filter: (slot: KDJourneySlot) => number,
 	tags: string[],
 	faction?: string,
@@ -3030,6 +3057,7 @@ interface KDSeal {
 }
 
 interface KDBoobyTrap {
+	minlevel: number,
 	filter: (enemy: entity, x: number, y: number, checkpoint: boolean, type: string[]) => boolean;
 	weight: (enemy: entity, x: number, y: number, checkpoint: boolean, type: string[]) => number;
 	lifetime?: number;
@@ -3195,6 +3223,7 @@ type KDJourneySlot = {
 	MapMod: string;
 	EscapeMethod: string;
 	Faction: string;
+	SideRooms: string[];
 	Checkpoint: string;
 	Connections: {x: number, y: number}[];
 	/** Prevents from getting culled */

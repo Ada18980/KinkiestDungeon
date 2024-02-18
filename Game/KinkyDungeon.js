@@ -3212,7 +3212,7 @@ function KinkyDungeonLoadStats() {
 let KinkyDungeonGameFlag = false;
 
 
-function KDInitializeJourney(Journey) {
+function KDInitializeJourney(Journey, Level) {
 	KDCurrentWorldSlot = {x: 0, y: 0};
 	KDWorldMap = {};
 	/**
@@ -3357,7 +3357,7 @@ function KDInitializeJourney(Journey) {
 
 
 
-	KDInitJourneyMap();
+	KDInitJourneyMap(Level);
 }
 
 
@@ -4458,10 +4458,10 @@ function KinkyDungeonLoadGame(String) {
 			if (saveData.KDGameData && saveData.KDGameData.LastMapSeed) KDsetSeed(saveData.KDGameData.LastMapSeed);
 
 			if (!KinkyDungeonMapIndex.grv)
-				KDInitializeJourney(KDGameData.Journey);
+				KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
 
 			if (!KDGameData.JourneyMap) {
-				KDInitJourneyMap();
+				KDInitJourneyMap(MiniGameKinkyDungeonLevel);
 			}
 
 			if (saveData.KDMapData || saveData.KinkyDungeonGrid) {

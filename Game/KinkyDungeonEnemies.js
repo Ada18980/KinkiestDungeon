@@ -6984,13 +6984,13 @@ function KDMakeHighValue(enemy) {
 
 	// Items
 	if (!enemy.items) enemy.items = [];
-	for (let i = Math.round(KDRandom()*3) ; i < 2; i++) {
+	for (let i = Math.round(KDRandom()*3) ; i < 1; i++) {
 		enemy.items.unshift("AncientPowerSource");
 	}
-	for (let i = Math.round(KDRandom()*2) ; i < 2; i++) {
+	for (let i = Math.round(KDRandom()*2) ; i < 1; i++) {
 		enemy.items.unshift("PotionMana");
 	}
-	for (let i = Math.round(KDRandom()*3) ; i < 2; i++) {
+	for (let i = Math.round(KDRandom()*3) ; i < 0; i++) {
 		enemy.items.unshift("PotionWill");
 	}
 

@@ -499,7 +499,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":5, "zombieTrap": 20, "lastthird":5}, shrines: ["Will"], floors:KDMapInit(["grv", "tmb"]), dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "Sword", weight: 3.5, ignoreInInventory: true},]},
 	{name: "NawashiZombie", bound: "NawashiZombie", style: "Zombie", outfit: "Zombie", playLine: "Zombie", clusterWith: "zombie", tags: KDMapInit(["leashing", "zombie", "zombieTrap", "melee", "elite", "fireweakness", "unflinching", "ropeRestraints", "ropeRestraints2", "meleeweakness", "hunter"]),
 		evasion: -1, armor: 0, followRange: 1, AI: "hunt",
-		visionRadius: 8, maxhp: 11, minLevel:0, weight:2, movePoints: 2, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2, difficulty: 1.4,
+		visionRadius: 8, maxhp: 11, minLevel:2, weight:2, movePoints: 2, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2, difficulty: 1.4,
 		terrainTags: {"secondhalf":1, "lastthird":2}, shrines: [], floors:KDMapInit(["grv", "tmb"]), dropTable: [{name: "Gold", amountMin: 5, amountMax: 15, weight: 10}, {name: "Rope", weight: 3.5, ignoreInInventory: true}, {name: "Scissors", weight: 0.5, ignoreInInventory: true},]},
 
 	{name: "Ninja", nameList: "japanese", playLine: "Hunter", outfit: "Ninja", style: "Fire", faction: "Bountyhunter", bound: "Ninja", clusterWith: "human", color: "#814BB7", tags: KDMapInit(["leashing", "shadowclan", "antiMagic", "opendoors", "human", "guardCall", "imprisonable", "bountyhunter", "ninja", "melee", "ropeRestraints", "ropeRestraints2", "jailer", "unarmedresist", "pierceresist", "slashresist", "glueweakness", "chainweakness", "search"]), followLeashedOnly: true, blindSight: 5, followRange: 1, AI: "hunt", projectileAttack: true,
@@ -2003,7 +2003,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "tick", type: "secretToy"},
 		],
 		stamina: 6,
-		visionRadius: 6, maxhp: 6, minLevel:0, weight:13, movePoints: 1.25, attackPoints: 3, attack: "MeleeBindLockWill", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2,
+		visionRadius: 6, maxhp: 6, minLevel:0, weight:13, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindLockWill", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"thirdhalf":-1, "increasingWeight":-1}, shrines: ["Leather"], floors:KDMapInit(["jng", "cry"]),
 		dropTable: [{name: "Gold", amountMin: 1, amountMax: 5, weight: 10}, {name: "Feather", weight: 50, ignoreInInventory: true}]},
 	{name: "BanditHunter", nameList: "japanese", style: "Earth", outfit: "BanditHunter", faction: "Bandit", bound: "BanditHunter", playLine: "Bandit", tags: KDMapInit(["opendoors", "closedoors", "leashing", "bandit", "imprisonable", "melee", "elite", "leatherRestraints", "leatherRestraintsHeavy", "clothRestraints", "chainweakness", "glueweakness", "jail", "jailer", "hunter"]),
@@ -2251,7 +2251,7 @@ let KinkyDungeonEnemies = [
 		maxdodge: 0,
 		difficulty: 0.4,
 		squeeze: true, evasion: -0.5, followRange: 1, AI: "ambush", sneakThreshold: 3, ambushRadius: 1.5,
-		visionRadius: 7.0, blindSight: 2.5, maxhp: 8, armor: 1.5, minLevel: 0, weight:0.1, movePoints: 2.4, attackPoints: 3, attack: "MeleeBindSuicide", attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 1, disarm: 0.35,
+		visionRadius: 7.0, blindSight: 2.5, maxhp: 8, armor: 1.5, minLevel: 2, weight:0.1, movePoints: 2.4, attackPoints: 3, attack: "MeleeBindSuicide", attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 1, disarm: 0.35,
 		suicideOnAdd: true, focusPlayer: true, multiBind: 3,
 		terrainTags: {"metal": 3.5, "demon": 3, "magic": 3, "passage": 10, "open": -50, "slimeOptOut": -3, "slimePref": 0.1}, allFloors: true, shrines: ["Latex"],
 		events: [
@@ -3830,7 +3830,7 @@ let KinkyDungeonEnemies = [
 		maxblock: 1,
 		maxdodge: 1,
 		projectileAttack: true,
-		visionRadius: 6, maxhp: 10, minLevel:0, weight:-2, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindLock", attackWidth: 1, attackRange: 2.5, tilesMinRange: 1, power: 2.5, dmgType: "pain", fullBoundBonus: 2.5, projectileTargeting: true,
+		visionRadius: 6, maxhp: 10, minLevel:2, weight:-2, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindLock", attackWidth: 1, attackRange: 2.5, tilesMinRange: 1, power: 2.5, dmgType: "pain", fullBoundBonus: 2.5, projectileTargeting: true,
 		terrainTags: {"secondhalf":2, "thirdhalf":1, "leatherAnger": 4, "leatherRage": 4, "temple": 8, "doortrap": 5, revenge: 5, "elemental": 3, "witch": 5, "leather": 4}, allFloors: true, shrines: ["Leather", "Elements"],
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "RopeRune", weight: 2, noSummon: true}],
 		events: [
