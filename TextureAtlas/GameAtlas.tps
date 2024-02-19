@@ -1427,6 +1427,7 @@
             <key type="filename">../Game/FloorGeneric/Chests/KittyOpen.png</key>
             <key type="filename">../Game/FloorGeneric/Chests/Robot.png</key>
             <key type="filename">../Game/FloorGeneric/Chests/RobotOpen.png</key>
+            <key type="filename">../Game/FloorGeneric/CollapsedStairs.png</key>
             <key type="filename">../Game/FloorGeneric/CommercePortal.png</key>
             <key type="filename">../Game/FloorGeneric/CommercePortalReturn.png</key>
             <key type="filename">../Game/FloorGeneric/Conveyor/Conveyor.png</key>
@@ -1464,6 +1465,7 @@
             <key type="filename">../Game/FloorGeneric/CrackNone.png</key>
             <key type="filename">../Game/FloorGeneric/CrackRight.png</key>
             <key type="filename">../Game/FloorGeneric/CrackVert.png</key>
+            <key type="filename">../Game/FloorGeneric/DimensionRift.png</key>
             <key type="filename">../Game/FloorGeneric/DisplayEgyptian.png</key>
             <key type="filename">../Game/FloorGeneric/DisplayStand.png</key>
             <key type="filename">../Game/FloorGeneric/DollDropoff.png</key>

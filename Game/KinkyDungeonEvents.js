@@ -8274,8 +8274,14 @@ let KDEventMapGeneric = {
 					if (KinkyDungeonFlags.get("NoDollRoomBypass")) {
 						data.overrideProgression = true;
 						data.overrideRoomType = true;
-						data.mapMod = "";
-						KDGameData.RoomType = "";
+						let journeySlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyX];
+						if (journeySlot) {
+							KDGameData.RoomType = journeySlot.RoomType;
+							data.mapMod = journeySlot.MapMod;
+						} else {
+							KDGameData.RoomType = "";
+							data.mapMod = "";
+						}
 					}
 				} else {
 					data.overrideRoomType = true;
@@ -8290,7 +8296,12 @@ let KDEventMapGeneric = {
 			// The player can never backtrack to a tunnel
 			if (data.toTile == 'S' && data.tile?.RoomType == "PerkRoom") {
 				data.overrideRoomType = true;
-				KDGameData.RoomType = "";
+				let journeySlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyX];
+				if (journeySlot) {
+					KDGameData.RoomType = journeySlot.RoomType;
+				} else {
+					KDGameData.RoomType = "";
+				}
 			}
 		},
 		"Shop": (e, data) => {

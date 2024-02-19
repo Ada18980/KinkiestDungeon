@@ -2162,6 +2162,16 @@ function KDDrawHotbar(xLoc, yLoc, name, fn) {
 		spell == name ? "White" : KDTextGray3, "", "");
 	}*/
 
+	let strs = TextGet("KDHotbarTutorial").split("|");
+	let II = 0;
+
+	let yy = 350;
+	let x = 1475;
+
+	for (let s of strs) {
+		DrawTextFitKD(s, x, yy + II++*32, 675, "#ffffff", KDTextGray0, 24);
+	}
+
 	DrawButtonKDEx("KDSpellsClear", (bdata) => {
 		if (!KDConfirmClearSpells) {
 			KDConfirmClearSpells = true;

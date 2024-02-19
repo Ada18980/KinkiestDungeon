@@ -65,14 +65,17 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 		slot.RoomType = KDMapMods[MapMod]?.roomType || "";
 		slot.Faction = KDMapMods[MapMod]?.faction || "";
 
-		let sideTop = KDGetSideRoom(slot, true, slot.SideRooms);
-		if (sideTop) {
-			slot.SideRooms.push(sideTop.name);
+		if (y > 1) {
+			let sideTop = KDGetSideRoom(slot, true, slot.SideRooms);
+			if (sideTop) {
+				slot.SideRooms.push(sideTop.name);
+			}
+			let sideBot = KDGetSideRoom(slot, false, slot.SideRooms);
+			if (sideBot) {
+				slot.SideRooms.push(sideBot.name);
+			}
 		}
-		let sideBot = KDGetSideRoom(slot, false, slot.SideRooms);
-		if (sideBot) {
-			slot.SideRooms.push(sideBot.name);
-		}
+
 
 		return slot;
 	},

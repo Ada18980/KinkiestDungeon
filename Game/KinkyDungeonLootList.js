@@ -210,7 +210,7 @@ let KDShadowRestraints = [...JSON.parse(JSON.stringify(KDEnchantedRestraints)),
 	{name: "Moon", minLevel: 0, weight: KDEnchantedRestraintsWeight*1,
 		armortags: ["shadowLatexRestraints", "shadowLatexRestraintsHeavy", "obsidianRestraints"], armor: "SteelPlugF",
 		arousalMode: true,
-		amtMult: 2,
+		amtMult: 1.5,
 		maxEnchants: 3,
 		forceEquip: true,
 		cursesuffix: "",
@@ -222,7 +222,7 @@ let KDShadowRestraints = [...JSON.parse(JSON.stringify(KDEnchantedRestraints)),
 	{name: "Star", minLevel: 0, weight: KDEnchantedRestraintsWeight*1,
 		armortags: ["liquidMetalRestraintsRandom", "shadowLatexRestraintsHeavy", "mithrilRestraints"], armor: "SteelPlugF",
 		arousalMode: true,
-		amtMult: 2,
+		amtMult: 1.5,
 		maxEnchants: 3,
 		forceEquip: true,
 		cursesuffix: "",
@@ -234,7 +234,7 @@ let KDShadowRestraints = [...JSON.parse(JSON.stringify(KDEnchantedRestraints)),
 
 ];
 for (let armor of KDShadowRestraints) {
-	armor.amtMult = (armor.amtMult || 1) * 1.5;
+	armor.amtMult = (armor.amtMult || 1) * 2.25;
 	armor.maxEnchants = (armor.maxEnchants || 1) + 1;
 	armor.forceEquip = true;
 }

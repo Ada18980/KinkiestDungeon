@@ -2663,23 +2663,23 @@ function KDDrawHotbarBottom(selected, spells, selectSpell) {
 	});
 	KDCullSpellChoices();
 
-	if (!KDToggles.TransparentUI) {
-		DrawRectKD(
-			kdcanvas, kdpixisprites, "Ahotbarborder", {
-				Left: hotBarX - 5, Top: HotbarStart - 5, Width: 72 * 11,
-				Height: 82,
-				Color: KDUIColorHighlight, alpha: KDUIAlphaHighlight, zIndex: -20,
-				LineWidth: 2,
-			}
-		);
-		FillRectKD(
-			kdcanvas, kdpixisprites, "Ahotbarbg", {
-				Left: hotBarX - 5, Top: HotbarStart - 5, Width: 72 * 11,
-				Height: 82,
-				Color: KDUIColor, alpha: 1, zIndex: -10
-			}
-		);
-	}
+	//if (!KDToggles.TransparentUI) {
+	DrawRectKD(
+		kdcanvas, kdpixisprites, "Ahotbarborder", {
+			Left: hotBarX - 5, Top: HotbarStart - 5, Width: 72 * 11,
+			Height: 82,
+			Color: KDUIColorHighlight, alpha: KDUIAlphaHighlight, zIndex: -20,
+			LineWidth: 2,
+		}
+	);
+	FillRectKD(
+		kdcanvas, kdpixisprites, "Ahotbarbg", {
+			Left: hotBarX - 5, Top: HotbarStart - 5, Width: 72 * 11,
+			Height: 82,
+			Color: KDUIColor, alpha: 1, zIndex: -10
+		}
+	);
+	//}
 
 
 
