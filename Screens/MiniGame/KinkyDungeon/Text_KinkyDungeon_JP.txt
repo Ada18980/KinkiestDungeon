@@ -467,8 +467,8 @@ Your damage and evasion increases based on the number of restraints worn, up to 
 装備している拘束具の数に応じてダメージと回避率が上昇する。最大+40％まで
 Kill Squad
 キル・スクワッド
-Enemies see you through walls and at greater distance.
-敵の感知範囲が拡大し、壁越しに発見されるようになる
+Enemies gain increased blindsight and vision radius.
+敵の視力と視野が強化される
 
 Supermarket
 スーパーマーケット
@@ -1801,6 +1801,28 @@ Doll Storage
 
 Doll Processing
 ドール工場
+
+Bandit Hideout
+盗賊の隠れ家
+Ancient Vault
+古代の宝物庫
+Slave Market
+奴隷市場
+Mysterious Elevator
+奇妙なエレベーター
+Temple of Air
+風の神殿
+Temple of Fire
+火の神殿
+Temple of Water
+水の神殿
+Temple of Ice
+氷の神殿
+Temple of Storms
+嵐の神殿
+Temple of Earth
+大地の神殿
+
 The Edge of Reality
 最果て
 Dark Dimension
@@ -2177,7 +2199,7 @@ You sip the mana potion and feel empowered.
 A rare essence used by mages to recover their strength.
 貴重な成分でできた、魔術師の生命線。
 Restores 50% max MP instantly. Excess mana goes into the mana pool.
-最大MPの50%を瞬時に回復し、余剰回復分はマナプールを回復させる。
+最大MPの50%を瞬時に回復する。更に余剰回復分でマナプールを回復する。
 Mana Orb
 マナオーブ
 You clutch the mana orb and feel its energy.
@@ -2193,7 +2215,7 @@ You drink the stamina potion and feel invigorated.
 A potion brimming with heat and energy.
 熱とエネルギーに満ちたポーション。
 Restores 50% stamina and 250% more over 25 turns. Effect does not stack.
-最大スタミナの50%を瞬時に回復し、25ターンにわたってさらに250%回復する。効果は重複しない。
+最大スタミナの50%を瞬時に回復する。その後25ターンかけ、最大スタミナの250%を徐々に回復する。効果は重複しない。
 Willpower Potion
 気力のポーション
 You drink the willpower potion and feel motivated.
@@ -2201,7 +2223,7 @@ You drink the willpower potion and feel motivated.
 A sweet potion, brimming with determination.
 気分を向上させる甘いポーション。
 Restores 25% willpower instantly. Can be used while gagged.
-最大気力の25%を瞬時に回復。猿轡をかまされた状態でも使用可能。
+最大気力の25%を瞬時に回復する。猿轡をかまされた状態でも使用可能。
 Frigid Potion
 冷静のポーション
 You chug the concoction and your senses numb, helping you concentrate.
@@ -8455,6 +8477,8 @@ Interferes with the use of your hands.
 手の仕様を妨害する枷。
 Another layer of restriction.
 珍しい箇所の拘束。
+
+
 Hinged Handcuffs
 ヒンジ付き手錠
 Hinged cuffs with a rudimentary lock.
@@ -25168,13 +25192,13 @@ A handy device for putting out torches and lanterns.
 But why would you want to do that? You hidin' something?
 しかしどうしてそんなことを？何か隠し事でも？
 
-You find a bag... full of bags.
-袋の詰め込まれた袋を見つけた……
+You find a bag full of sacks. Or is it a sack full of bags?
+袋を詰め込んだ袋を見つけた。もしくは袋に詰め込まれた袋を見つけた。
 Sack of Sacks
 袋入りの袋
 You cover the light source.
 明かりを袋で覆った。
-Bags inside a bag of bags inside a bag of bags...
+Bags inside a bag of bags inside a bag of bags
 袋の中の袋の中の袋の中の袋の中の……
 Can be placed over light sources to cover them.
 光源を覆うことができる。
@@ -25982,6 +26006,8 @@ Cool people wear these indoors.
 聖属性耐性+25。目潰し効果を軽減する。光量の変化による目潰し効果を防ぐ。
 You find a pair of stylish shades.
 イカしたサングラスを見つけた。
+Shades
+黒眼鏡
 
 Player Background Color
 背景の色
@@ -26338,8 +26364,23 @@ Controlling Faction:
 出現する主な派閥：
 Main Objective: 
 メイン目標：
-Side Objectives: 
-サブ目標：
+Points of Interest:
+特徴：
+
+Maintenance Hall
+メンテナンスホール
+Ancient Chest
+古代の宝箱
+Mysterious Elevator
+奇妙なエレベーター
+Auction Hall
+オークションホール
+Dark Altar
+闇の祭壇
+Bandit Hideout
+盗賊の隠れ家
+Dimensional Rift
+次元の裂け目
 
 Witch's Lair
 魔女のお茶会
@@ -26360,6 +26401,8 @@ Drone Patrol
 
 Normal
 通常
+Shop
+お店
 Chamber
 チャンバー
 Prison
@@ -26367,13 +26410,5 @@ Prison
 Sorting Room
 選別所
 
-Maintenance Hall
-メンテナンスホール
-Ancient Chest
-古代の宝箱
-Auction Hall
-オークションホール
-Dark Altar
-闇の祭壇
-Dimensional Rift
-次元の裂け目
+Click a hotbar position to assign the item to that slot.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
+画面下のホットバーをクリックしてアイテムを登録可能|ホットバーをセーブ、ロードで|登録した内容を保存及び呼び出しが可能||別のセーブデータ間でも登録した内容を呼び出すことができる
