@@ -447,7 +447,8 @@ function KDCreateBoringness(noBoring) {
 
 	if (noBoring) return;
 	// First we find shortest path to exit
-	let path = KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, KDMapData.EndPosition.x, KDMapData.EndPosition.y,
+	let path = KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y,
+		KDMapData.EndPosition?.x || KDMapData.StartPosition.x, KDMapData.EndPosition?.y || KDMapData.StartPosition.y,
 		false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
 		undefined, false, undefined, false, true);
 
@@ -458,11 +459,12 @@ function KDCreateBoringness(noBoring) {
 	for (let X = 0; X < KDMapData.GridWidth; X++) {
 		for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
 			if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))) {
-				let startLength = KinkyDungeonFindPath(X, Y, KDMapData.StartPosition.x, KDMapData.StartPosition.y,
+				let startLength = KinkyDungeonFindPath(X, Y,
+					KDMapData.StartPosition.x, KDMapData.StartPosition.y,
 					false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
 					undefined, false, undefined, false, true);
 				if (startLength) {
-					let endLength = KinkyDungeonFindPath(X, Y, KDMapData.EndPosition.x, KDMapData.EndPosition.y,
+					let endLength = KinkyDungeonFindPath(X, Y, KDMapData.EndPosition?.x || KDMapData.StartPosition.x, KDMapData.EndPosition?.y || KDMapData.StartPosition.y,
 						false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
 						undefined, false, undefined, false, true);
 					if (endLength) {
@@ -600,7 +602,7 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	if (!KDMapData.Traffic || KDMapData.Traffic.length == 0) KDGenerateBaseTraffic();
 	KinkyDungeonGenNavMap();
 
-	KDPlacePlayerBasedOnDirection(direction);
+	KDPlacePlayerBasedOnDirection(direction, KDGameData.ShortcutIndex);
 
 	KDCurrentWorldSlot = {
 		x: origx,
@@ -634,9 +636,9 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
  * @param {number} sideRoomIndex
  */
 function KDPlacePlayerBasedOnDirection(direction = 0, sideRoomIndex = -1) {
-	if (sideRoomIndex >= 0) {
+	if (sideRoomIndex >= 0 && KDMapData.ShortcutPositions && KDMapData.ShortcutPositions[sideRoomIndex]) {
 		KinkyDungeonPlayerEntity = {MemberNumber:Player.MemberNumber, x: KDMapData.ShortcutPositions[sideRoomIndex].x, y:KDMapData.ShortcutPositions[sideRoomIndex].y, player:true};
-	} else if (direction == 1) {
+	} else if (direction == 1 && KDMapData.EndPosition) {
 		KinkyDungeonPlayerEntity = {MemberNumber:Player.MemberNumber, x: KDMapData.EndPosition.x, y:KDMapData.EndPosition.y, player:true};
 	} else {
 		KinkyDungeonPlayerEntity = {MemberNumber:Player.MemberNumber, x: KDMapData.StartPosition.x, y:KDMapData.StartPosition.y, player:true};
@@ -1280,7 +1282,7 @@ let KDStageBossGenerated = false;
  * Creates a list of all tiles accessible and not hidden by doors
  */
 function KinkyDungeonGenNavMap(fromPoint) {
-	if (!fromPoint) fromPoint = KDMapData.EndPosition;
+	if (!fromPoint) fromPoint = KDMapData.EndPosition || KDMapData.StartPosition;
 	KDMapData.RandomPathablePoints = {};
 	let accessible = KinkyDungeonGetAccessible(fromPoint.x, fromPoint.y);
 	for (let a of Object.entries(accessible)) {
@@ -1945,6 +1947,7 @@ function KinkyDungeonPlaceStairs(startpos, width, height, noStairs, nostartstair
 		KinkyDungeonTilesSet(KDMapData.StartPosition.x + ',' + KDMapData.StartPosition.y, {
 			RoomType: origMapType == "JourneyFloor" ? "ShopStart" : origMapType,
 		});
+		KinkyDungeonSpecialAreas.push({x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.y, radius: 2});
 	}
 	/*if (startpos > 1) KinkyDungeonMapSet(2, startpos - 1, '0');
 	KinkyDungeonMapSet(2, startpos, '0');
@@ -2031,11 +2034,12 @@ function KinkyDungeonPlaceStairs(startpos, width, height, noStairs, nostartstair
 				}
 			}
 		}
+		KinkyDungeonSpecialAreas.push({x: KDMapData.EndPosition.x, y: KDMapData.EndPosition.y, radius: 2});
 	}
 
+	if (!KDMapData.EndPosition) KDMapData.EndPosition = JSON.parse(JSON.stringify(KDMapData.StartPosition));
 	//KDMapData.MainPath = checkpoint;
 	//if (KDMapData.MainPath != MiniGameKinkyDungeonCheckpoint && !nostartstairs) KinkyDungeonSkinArea({skin: KDMapData.MainPath}, KDMapData.EndPosition.x, KDMapData.EndPosition.y, 4.99);
-	KinkyDungeonSpecialAreas.push({x: KDMapData.EndPosition.x, y: KDMapData.EndPosition.y, radius: 2});
 }
 
 function KinkyDungeonSkinArea(skin, X, Y, Radius, NoStairs) {

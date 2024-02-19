@@ -205,7 +205,7 @@ let alts = {
 		onExit: (data) => {
 			// Return to the normal map
 			data.overrideRoomType = true;
-			let journeySlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyX];
+			let journeySlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
 			if (journeySlot) {
 				KDGameData.RoomType = journeySlot.RoomType;
 			} else {
@@ -267,33 +267,6 @@ let alts = {
 		width: 14,
 		height: 14,
 		nopatrols: false,
-		onExit: (data) => {
-			// Return to the normal map
-			let journeySlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyX];
-			if (journeySlot) {
-				KDGameData.RoomType = journeySlot.RoomType;
-			} else {
-				KDGameData.RoomType = "";
-			}
-			data.overrideRoomType = true;
-			data.AdvanceAmount = 0;
-		},
-		afterExit: (data) => {
-			// Dump the player in a random place on top of a demon portal
-			let point = KinkyDungeonGetRandomEnemyPoint(false, false);
-			if (point) {
-				/** Create the portal */
-				KDCreateEffectTile(point.x, point.y, {
-					name: "Portals/DarkPortal",
-					duration: 5,
-				}, 0);
-
-				KinkyDungeonPlayerEntity.x = point.x;
-				KinkyDungeonPlayerEntity.y = point.y;
-				KinkyDungeonPlayerEntity.visual_x = point.x;
-				KinkyDungeonPlayerEntity.visual_y = point.y;
-			}
-		},
 		setpieces: {
 		},
 		data: {

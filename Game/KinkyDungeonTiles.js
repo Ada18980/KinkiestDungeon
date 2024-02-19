@@ -322,11 +322,6 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 					}
 				}
 
-				if (data.ShortcutIndex) {
-					KDGameData.ShortcutIndex = data.ShortcutIndex;
-				} else {
-					KDGameData.ShortcutIndex = -1;
-				}
 
 				if (!data.overrideRoomType) {
 					let RoomType = KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.RoomType
@@ -357,6 +352,11 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 							: (toTile == 'S' ? 1 : 0),
 						data.escapeMethod);
 
+					if (data.ShortcutIndex >= 0) {
+						KDGameData.ShortcutIndex = data.ShortcutIndex;
+					} else {
+						KDGameData.ShortcutIndex = -1;
+					}
 					if (altRoom?.afterExit) altRoom.afterExit(data); // Handle any special contitions
 					KinkyDungeonSendEvent("AfterAdvance", data);
 					let saveData = KinkyDungeonSaveGame(true);
