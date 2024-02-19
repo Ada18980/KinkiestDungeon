@@ -3208,6 +3208,8 @@ interface KDFactionProps {
 	customDefeat?: string,
 	/** Custom jail allied faction to use */
 	jailAlliedFaction?: string,
+	/** Backup incase cant find strictly using jailAlliedFaction */
+	jailBackupFaction?: string,
 	/** Custom jail outfit to use */
 	jailOutfit: string,
 }

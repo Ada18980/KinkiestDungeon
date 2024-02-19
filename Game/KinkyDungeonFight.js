@@ -256,7 +256,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 		KinkyDungeonPlayerDamage.dmg += KDBrawlerAmount;
 	} else {
 		if (data.armBondage && (flags.KDDamageArms || weapon?.unarmed) && (!weapon?.noHands)) {
-			KinkyDungeonPlayerDamage.chance *= 0.5;
+			KinkyDungeonPlayerDamage.chance *= KDIsHogtied(KinkyDungeonPlayer) ? 0.1 : 0.5;
 			if (!KDWeaponIsMagic(KinkyDungeonPlayerDamage)) KinkyDungeonPlayerDamage.dmg /= 2;
 		} else if (data.handBondage && (flags.KDDamageHands || weapon?.unarmed) && (!weapon || !weapon.noHands || weapon?.unarmed)) {
 			KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, data.handBondage));

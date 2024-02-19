@@ -1791,6 +1791,7 @@
             <key type="filename">../Game/Floors/Floor_shoppe/Tile.png</key>
             <key type="filename">../Game/Floors/Floor_shoppe/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_shoppe/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/WallOld.png</key>
             <key type="filename">../Game/Floors/Floor_shoppe/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_shrine/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_shrine/Bars.png</key>

@@ -2997,7 +2997,7 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 
 				KinkyDungeonHandleTilesEnemy(enemy, delta);
 
-				if (enemy.Enemy.triggersTraps) {
+				if (enemy.Enemy.triggersTraps || KinkyDungeonIsStunned(enemy)) {
 					KinkyDungeonHandleTraps(enemy, enemy.x, enemy.y, true);
 				}
 

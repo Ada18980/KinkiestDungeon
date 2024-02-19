@@ -545,7 +545,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				break;
 			}
 			case "BanditPrison": {
-				if (KinkyDungeonBoringGet(cornerX + 1, cornerY + 1) < 3) skip = true;
+				if (KinkyDungeonBoringGet(cornerX + 1, cornerY + 1) < 3 || !(KDGetMainFaction() && KDFactionRelation("Bandit", KDGetMainFaction()) < 0.2)) skip = true;
 				else {
 					// Hollow out a 2x2 area for the chest
 					KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, false, false, 0, false);

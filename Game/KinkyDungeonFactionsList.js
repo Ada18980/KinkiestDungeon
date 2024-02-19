@@ -165,6 +165,7 @@ let KinkyDungeonFactionFilters = {
 let KDFactionProperties = {
 	Dressmaker: {
 		honor: -1,
+		jailBackupFaction: "Apprentice",
 		honor_specific: {
 			Witch: 1,
 		},
@@ -181,6 +182,7 @@ let KDFactionProperties = {
 	},
 	Bountyhunter: {
 		nameList: ["bountyhunter"],
+		jailBackupFaction: "Maidforce",
 		honor: 1,
 		honor_specific: {
 		},
@@ -243,6 +245,7 @@ let KDFactionProperties = {
 	},
 	Maidforce: {
 		honor: 1,
+		jailBackupFaction: "Bountyhunter",
 		honor_specific: {
 		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
@@ -258,6 +261,7 @@ let KDFactionProperties = {
 	},
 	Dragon: {
 		honor: 1,
+		jailBackupFaction: "Bountyhunter",
 		honor_specific: {
 		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
@@ -273,6 +277,7 @@ let KDFactionProperties = {
 	},
 	Elemental: {
 		honor: -1,
+		jailBackupFaction: "Witch",
 		honor_specific: {
 		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
@@ -290,6 +295,7 @@ let KDFactionProperties = {
 	},
 	Apprentice: {
 		honor: 1,
+		jailBackupFaction: "Dragon",
 		honor_specific: {
 			Witch: 0,
 			Wizard: -1,
@@ -307,6 +313,7 @@ let KDFactionProperties = {
 	},
 	Nevermere: {
 		honor: -1,
+		jailBackupFaction: "Dressmaker",
 		honor_specific: {
 		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
@@ -322,6 +329,7 @@ let KDFactionProperties = {
 	},
 	Alchemist: {
 		honor: 0,
+		jailBackupFaction: "Apprentice",
 		honor_specific: {
 		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
@@ -354,6 +362,7 @@ let KDFactionProperties = {
 	Owners: {
 		customDefeat: "ElementalSlave",
 		jailAlliedFaction: "Elemental",
+		jailBackupFaction: "Witch",
 		honor: 1,
 		honor_specific: {
 		},
@@ -365,6 +374,7 @@ let KDFactionProperties = {
 	WolfgirlHunters: {
 		customDefeat: "WolfgirlHunters",
 		jailAlliedFaction: "Nevermere",
+		jailBackupFaction: "Bandit",
 		honor: 1,
 		honor_specific: {
 		},
@@ -376,6 +386,7 @@ let KDFactionProperties = {
 	Delinquent: {
 		customDefeat: "MaidSweeper",
 		jailAlliedFaction: "Maidforce",
+		jailBackupFaction: "Bountyhunter",
 		honor: 1,
 		honor_specific: {
 		},
@@ -387,6 +398,7 @@ let KDFactionProperties = {
 	RopeDojo: {
 		customDefeat: "RopeDojo",
 		jailAlliedFaction: "Apprentice",
+		jailBackupFaction: "Bountyhunter",
 		honor: 1,
 		honor_specific: {
 		},
@@ -398,6 +410,7 @@ let KDFactionProperties = {
 	DollShoppe: {
 		customDefeat: "DollShoppe",
 		jailAlliedFaction: "Dressmaker",
+		jailBackupFaction: "Apprentice",
 		honor: -1,
 		honor_specific: {
 		},

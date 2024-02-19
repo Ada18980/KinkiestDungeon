@@ -1733,7 +1733,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				required,
 				{
 					requireHostile: ((!altRoom || altRoom.reduceNeutrals) && ncount > neutralCount && (!box || !box.ignoreAllyCount)) ? "Player" : "",
-					requireAllied: altRoom?.factionSpawnsRequired ? KDGetMainFaction() : "",
+					requireAllied: altRoom?.factionSpawnsRequired ? (KDGetMainFaction() || KDFactionProperties[KDGetMainFaction()]?.jailAlliedFaction) : "",
 					requireNonHostile: altRoom?.neutralSpawnsRequired ? KDGetMainFaction() : "",
 				},
 				BonusTags,
@@ -1747,11 +1747,14 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 					required,
 					{
 						requireHostile: ((!altRoom || altRoom.reduceNeutrals) && ncount > neutralCount && (!box || !box.ignoreAllyCount)) ? "Player" : "",
-						requireAllied: altRoom?.factionSpawnsRequired ? KDFactionProperties[KDGetMainFaction()]?.jailAlliedFaction : "",
+						requireAllied: altRoom?.factionSpawnsRequired ? (KDFactionProperties[KDGetMainFaction()]?.jailBackupFaction || KDFactionProperties[KDGetMainFaction()]?.jailAlliedFaction || KDGetMainFaction()) : "",
 						requireNonHostile: altRoom?.neutralSpawnsRequired ? KDGetMainFaction() : "",
 					},
 					BonusTags,
 					currentCluster ? filterTagsCluster : filterTags);
+			}
+			if (!Enemy) {
+				tries += 50; // to prevent long load times
 			}
 			if (box && !Enemy) {
 				box.currentCount += 0.05;
@@ -2496,7 +2499,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 					let wallcount = 0;
 					for (let XX = X-1; XX <= X+1; XX += 1)
 						for (let YY = Y-1; YY <= Y+1; YY += 1) {
-							if (!(XX == X && YY == Y) && !KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(XX, YY))) {
+							if (!(XX == X && YY == Y) && !KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(XX, YY))) {
 								wallcount += 1;
 							}
 						}
@@ -3063,12 +3066,12 @@ function KinkyDungeonPlaceDoors(doorchance, doortrapchance, nodoorchance, doorlo
 				for (let XX = X-1; XX <= X+1; XX += 1)
 					for (let YY = Y-1; YY <= Y+1; YY += 1) {
 						let get = KinkyDungeonMapGet(XX, YY);
-						if (!(XX == X && YY == Y) && (!KinkyDungeonGroundTiles.includes(get))) {
+						if (!(XX == X && YY == Y) && (!KinkyDungeonMovableTilesEnemy.includes(get))) {
 							wallcount += 1; // Get number of adjacent walls
-							if (XX == X+1 && YY == Y && !KinkyDungeonGroundTiles.includes(get)) right = true;
-							else if (XX == X-1 && YY == Y && !KinkyDungeonGroundTiles.includes(get)) left = true;
-							else if (XX == X && YY == Y+1 && !KinkyDungeonGroundTiles.includes(get)) down = true;
-							else if (XX == X && YY == Y-1 && !KinkyDungeonGroundTiles.includes(get)) up = true;
+							if (XX == X+1 && YY == Y && !KinkyDungeonMovableTilesEnemy.includes(get)) right = true;
+							else if (XX == X-1 && YY == Y && !KinkyDungeonMovableTilesEnemy.includes(get)) left = true;
+							else if (XX == X && YY == Y+1 && !KinkyDungeonMovableTilesEnemy.includes(get)) down = true;
+							else if (XX == X && YY == Y-1 && !KinkyDungeonMovableTilesEnemy.includes(get)) up = true;
 						} else if (get == 'D') // No adjacent doors
 							wallcount = 100;
 					}

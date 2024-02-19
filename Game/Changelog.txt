@@ -28,6 +28,9 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.2.4
+- Added Bandit Hideout + new track
+
 5.2.3
 - 'dimensional rifts' to the edge of reality can be found
 - killsquad distance nerfed considerably

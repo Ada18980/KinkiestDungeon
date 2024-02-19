@@ -4240,14 +4240,6 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Floors/Floor_shoppe/Doodad.png":
-{
-	"frame": {"x":1952,"y":1494,"w":72,"h":72},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Floors/Floor_shoppe/Floor.png":
 {
 	"frame": {"x":1971,"y":1760,"w":72,"h":72},
@@ -4784,6 +4776,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game2.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:438085b99a5ca2ce893c6a52853295a5:ae8f21a287c2a7a9bda716e907cb2fcb:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e88098d25b9185d396cd88e833bc7174:e9f9248e98bfa2610d5252ab70c1d8be:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

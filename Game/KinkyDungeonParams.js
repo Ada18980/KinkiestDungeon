@@ -110,6 +110,78 @@ const KinkyDungeonMapParams = {
 
 
 	},
+	"bandit":{
+		successorNegative: {
+			bandit: 1.0,
+		},
+		successorPositive: {
+			bandit: 1.0,
+		},
+		successorSame: {
+			bandit: 1.0,
+		},
+		color: "#ffffff",
+		music: {
+			"Ada18980_SmokingIsBadForYou.ogg": 4,
+		},
+
+		"background" : "RainyForstPathNight",
+		"openness" : 6, // Openness of rooms
+		"density" : 5, // Density of tunnels (inverse of room spawn chance)
+		"crackchance" : 0.07,
+		"barchance" : 0.2,
+		"brightness" : 7,
+		"chestcount" : 5,
+		"shrinecount" : 16,
+		"shrinechance" : 0.75,
+		"ghostchance" : 1,
+		"doorchance" : 0.67,
+		"nodoorchance" : 0.1,
+		"doorlockchance" : -0.1,
+		"trapchance" : 0.5,
+		"grateChance" : 0.4,
+		"rubblechance" : 0.4,
+		"brickchance" : 0.1,
+		"cacheInterval" : 1,
+		"forbiddenChance" : 0.7, // If a forbidden gold chance is generated. Otherwise a silver chest will appear
+		"forbiddenGreaterChance" : 0.33, // Chance after a forbidden area is generated with a restraint, otherwise its a lesser gold chest
+		"torchchance": 0.35,
+		"torchchanceboring": 1.0,
+
+		tagModifiers: {},
+		enemyTags: ["bandit", "explosiveBarrel"],
+
+		"min_width" : 5,
+		"max_width" : 7,
+		"min_height" : 5,
+		"max_height" : 6,
+		"defeat_outfit": "Prisoner",
+
+		"setpieces": [],
+
+		"shrines": [
+			//{Type: "Charms", Weight: 5},
+			{Type: "Latex", Weight: 3},
+			{Type: "Commerce", Weight: 4},
+			{Type: "Elements", Weight: 5},
+			{Type: "Conjure", Weight: 5},
+			{Type: "Illusion", Weight: 5},
+			{Type: "Leather", Weight: 11},
+			{Type: "Metal", Weight: 3},
+			{Type: "Rope", Weight: 8},
+			{Type: "Will", Weight: 2},
+		],
+
+
+		"traps": [
+			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapShackleWeak", Level: 0, Power: 1, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapRopeWeak", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapLeatherWeak", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 2, Weight: 10},
+		],
+
+	},
 	"grv":{//DungeonName0,-Graveyard-
 		color: "#8cba75",
 		successorNegative: {
@@ -129,7 +201,7 @@ const KinkyDungeonMapParams = {
 		"crackchance" : 0.07,
 		"barchance" : 0.2,
 		"brightness" : 7,
-		"chestcount" : 5,
+		"chestcount" : 3,
 		"shrinecount" : 16,
 		"shrinechance" : 0.75,
 		"ghostchance" : 1,
