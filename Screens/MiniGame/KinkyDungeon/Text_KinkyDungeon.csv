@@ -19434,10 +19434,10 @@ KinkyDungeonInventoryItemSnufferUse,"You put out the torch."
 KinkyDungeonInventoryItemSnufferDesc,"A handy device for putting out torches and lanterns."
 KinkyDungeonInventoryItemSnufferDesc2,"But why would you want to do that? You hidin' something?"
 
-ItemPickupSackOfSacks,"You find a bag... full of bags."
+ItemPickupSackOfSacks,"You find a bag full of sacks. Or is it a sack full of bags?"
 KinkyDungeonInventoryItemSackOfSacks,Sack of Sacks
 KinkyDungeonInventoryItemSackOfSacksUse,"You cover the light source."
-KinkyDungeonInventoryItemSackOfSacksDesc,"Bags inside a bag of bags inside a bag of bags..."
+KinkyDungeonInventoryItemSackOfSacksDesc,"Bags inside a bag of bags inside a bag of bags"
 KinkyDungeonInventoryItemSackOfSacksDesc2,"Can be placed over light sources to cover them."
 
 KDNotSnuffable,The snuffer doesn't work on that light source.
@@ -20192,7 +20192,7 @@ KDNavMap_MapMod,"Map Modifier:"
 KDNavMap_RoomType,"Layout:"
 KDNavMap_Faction,"Controlling Faction:"
 KDNavMap_EscapeMethod,"Main Objective:"
-KDNavMap_SideRooms,"Side Zones:"
+KDNavMap_SideRooms,"Points of Interest:"
 
 KDSideRoom_Lair_Witch,"Magical Study"
 KDSideRoom_Lair_Hall,"Maintenance Hall"

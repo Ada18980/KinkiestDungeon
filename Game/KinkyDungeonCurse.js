@@ -363,6 +363,19 @@ let KDCurses = {
 			{type: "IncrementRemovalVar", power: -25, count: 50, trigger: "orgasm", kind: "OrgasmResist", msg: "KDRemoveOnEdgeFail"},
 		],
 	},
+	"HaveOrgasm" : {
+		powerMult: 2.5,
+		activatecurse: true,
+		level: 5,
+		weight: (item) => {
+			return KinkyDungeonStatsChoice.get("arousalMode") ? 9 : 0;
+		},
+		condition: (item) => {return false;},
+		remove: (item, host) => {},
+		events: [
+			{type: "IncrementRemovalVar", power: 25, count: 50, trigger: "orgasm", kind: "HaveOrgasm", msg: "KDRemoveOnOrgasmFail"},
+		],
+	},
 };
 
 

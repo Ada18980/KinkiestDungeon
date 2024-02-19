@@ -6,17 +6,28 @@
 let KDSideRooms = {
 	"DemonTransition": {
 		name: "DemonTransition",
-		roomType: undefined,
 		weight: 150,
-		chance: 0.5,
+		chance: 1.0,
 		filter: (slot, top) => {
 			// Top reserved for lairs
 			if (top) return 0;
-			return slot.Checkpoint == 'ore' ? 1 : 0;
+			if (slot.Checkpoint == 'ore') return 1;
+			if (slot.Checkpoint == 'tmp') return 0.25;
+			return 0;
 		},
 		altRoom: "DemonTransition",
 		mapMod: "None",
 		escapeMethod: "None",
+		faction: "Observer",
+		stairCreation: (tile, x, y) => {
+			KinkyDungeonSkinArea({skin: "DemonTransition"}, x, y, 1.5);
+			tile.Skin = "DimensionRift";
+			KDCreateEffectTile(x, y, {
+				name: "Portals/DarkPortal",
+				duration: 9999, infinite: true,
+			}, 0);
+			return true;
+		},
 	},
 
 };

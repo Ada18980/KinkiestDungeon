@@ -1,6 +1,6 @@
 "use strict";
 
-let KDNoCaptureTypes = ["skeleton", "robot", "construct", "nobrain", "nocapture"];
+let KDNoCaptureTypes = ["skeleton", "construct", "nobrain", "nocapture"];
 
 /**
  * @type {enemy[]}

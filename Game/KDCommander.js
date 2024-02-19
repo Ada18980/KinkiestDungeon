@@ -919,6 +919,15 @@ let KDBarricades = {
 			return 25;
 		},
 	},
+	"BarricadeVine": {
+		minlevel: 1,
+		filter: (enemy, x, y, checkpoint, type) => {
+			return enemy.Enemy.tags?.nature;
+		},
+		weight: (enemy, x, y, checkpoint, type) => {
+			return 25;
+		},
+	},
 	"BarricadeShadowMetal": {
 		minlevel: 3,
 		filter: (enemy, x, y, checkpoint, type) => {
@@ -953,7 +962,7 @@ function KDGetTrapSpell(enemy, x, y, checkpoint = false, type = []) {
 	let traps = {};
 	let lvl = KDGetEffLevel();
 	for (let obj of Object.keys(KDBoobyTraps)) {
-		if (lvl >= KDBarricades[obj].minlevel && KDBoobyTraps[obj].filter(enemy, x, y, checkpoint, type))
+		if (lvl >= KDBoobyTraps[obj].minlevel && KDBoobyTraps[obj].filter(enemy, x, y, checkpoint, type))
 			traps[obj] = KDBoobyTraps[obj].weight(enemy, x, y, checkpoint, type);
 	}
 	return KDGetByWeight(traps);

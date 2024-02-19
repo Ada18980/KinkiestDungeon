@@ -218,6 +218,8 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 				escapeMethod: KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.EscapeMethod || journeyTile?.EscapeMethod,
 				cancelevent: "",
 				cancelfilter: tile?.CancelFilter,
+				SideRoom: tile?.SideRoom,
+				ShortcutIndex: tile?.ShortcutIndex,
 			};
 			KinkyDungeonSendEvent("beforeStairCancelFilter", data);
 			if (data.cancelfilter) {
@@ -320,6 +322,12 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 					}
 				}
 
+				if (data.ShortcutIndex) {
+					KDGameData.ShortcutIndex = data.ShortcutIndex;
+				} else {
+					KDGameData.ShortcutIndex = -1;
+				}
+
 				if (!data.overrideRoomType) {
 					let RoomType = KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.RoomType
 						|| data.JourneyTile?.RoomType;
@@ -345,7 +353,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 					KinkyDungeonCreateMap(KinkyDungeonMapParams[altRoomTarget?.useGenParams ? altRoomTarget.useGenParams : (KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY]?.Checkpoint || 'grv')], KDGameData.RoomType, KDGameData.MapMod, MiniGameKinkyDungeonLevel, undefined, undefined,
 						data.faction, newLocation, !altRoomTarget || !altRoomTarget.alwaysRegen, altRoom?.persist ? originalRoom : (KDGetWorldMapLocation(newLocation)?.main || ""),
 						AdvanceAmount > 0
-							? (toTile == 'H' ? 2 : 0)
+							? (0)
 							: (toTile == 'S' ? 1 : 0),
 						data.escapeMethod);
 

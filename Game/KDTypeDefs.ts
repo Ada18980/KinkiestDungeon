@@ -2364,7 +2364,7 @@ interface KDMapDataType {
 	Bullets: any[];
 	StartPosition: {x: number, y: number};
 	EndPosition: {x: number, y: number};
-	ShortcutPosition: {x: number, y: number};
+	ShortcutPositions: {x: number, y: number}[];
 
 	PatrolPoints: {x: number, y: number}[];
 
@@ -2404,9 +2404,7 @@ interface KDMapDataType {
 
 type KDSideRoom = {
 	name: string,
-	roomType: string,
-	jailType?: string,
-	guardType?: string,
+	faction?: string,
 	weight: number,
 	/** Rolled once each time it gets a map mod */
 	chance: number,
@@ -2420,6 +2418,8 @@ type KDSideRoom = {
 	mapMod: string,
 	altRoom: string,
 	escapeMethod?: string,
+	/** Returns whether it succeeded */
+	stairCreation: (tile: any, x: number, y: number) => boolean,
 }
 
 

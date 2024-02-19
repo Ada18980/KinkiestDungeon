@@ -390,6 +390,13 @@ let alts = {
 };
 
 let KDJourneyList = ["Random", "Harder", "Temple", "Explorer", "Doll"];
+let KDJourneyListSkin = {
+	Random: 'DemonTransition',
+	Harder: 'tmb',
+	Temple: 'tmp',
+	Explorer: 'jng',
+	Doll: 'bel',
+};
 if (param_test) KDJourneyList.push("Test");
 
 function KinkyDungeonAltFloor(Type) {
@@ -832,10 +839,17 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 
 	KDMapData.StartPosition = {x: 1 + (startx) * KDTE_Scale, y: 4 + (starty) * KDTE_Scale};
 	KDMapData.EndPosition = {x: 7 + (endx) * KDTE_Scale, y: 4 + (endy) * KDTE_Scale};
-	if (KDRandom() < 0.5)
-		KDMapData.ShortcutPosition = {x: 4 + (botx) * KDTE_Scale, y: 7 + (boty) * KDTE_Scale};
-	else
-		KDMapData.ShortcutPosition = {x: 4 + (topx) * KDTE_Scale, y: 1 + (topy) * KDTE_Scale};
+	KDMapData.ShortcutPositions = [];
+
+	// Reverse the order 50% of the time
+	if (KDRandom() < 0.5) {
+		KDMapData.ShortcutPositions.push({x: 4 + (botx) * KDTE_Scale, y: 7 + (boty) * KDTE_Scale});
+		KDMapData.ShortcutPositions.push({x: 4 + (topx) * KDTE_Scale, y: 1 + (topy) * KDTE_Scale});
+	} else {
+		KDMapData.ShortcutPositions.push({x: 4 + (topx) * KDTE_Scale, y: 1 + (topy) * KDTE_Scale});
+		KDMapData.ShortcutPositions.push({x: 4 + (botx) * KDTE_Scale, y: 7 + (boty) * KDTE_Scale});
+	}
+
 
 	KDMapData.Grid = "";
 
@@ -1509,6 +1523,14 @@ function KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openne
 			KinkyDungeonMapSet(x, VisitedRooms[0].y*2 - 5, 'G');
 			KinkyDungeonTilesSet("" + (x) + "," + (VisitedRooms[0].y*2 - 6), {RoomType: "ShopStart", Skin: "TabletSpent", Journey: KDJourneyList[i]});
 			KinkyDungeonTilesSet("" + (x) + "," + (VisitedRooms[0].y*2 - 5), {Type: "Ghost", Msg: "Journey" + KDJourneyList[i]});
+			if (KDJourneyListSkin[KDJourneyList[i]]) {
+				KinkyDungeonSkinArea({skin: KDJourneyListSkin[KDJourneyList[i]]}, x, (VisitedRooms[0].y*2 - 6), 0.5);
+				KinkyDungeonSkinArea({skin: KDJourneyListSkin[KDJourneyList[i]]}, x + 1, (VisitedRooms[0].y*2 - 6), 0.5);
+				KinkyDungeonSkinArea({skin: KDJourneyListSkin[KDJourneyList[i]]}, x, (VisitedRooms[0].y*2 - 7), 0.5);
+				KinkyDungeonSkinArea({skin: KDJourneyListSkin[KDJourneyList[i]]}, x + 1, (VisitedRooms[0].y*2 - 7), 0.5);
+				KinkyDungeonSkinArea({skin: KDJourneyListSkin[KDJourneyList[i]]}, x, (VisitedRooms[0].y*2 - 5), 0.5);
+				KinkyDungeonSkinArea({skin: KDJourneyListSkin[KDJourneyList[i]]}, x + 1, (VisitedRooms[0].y*2 - 5), 0.5);
+			}
 			KDCreateEffectTile(x, (VisitedRooms[0].y*2 - 6), {
 				name: "Portals/Portal",
 				duration: 9999, infinite: true,

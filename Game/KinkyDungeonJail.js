@@ -514,7 +514,6 @@ function KinkyDungeonPlaceJailKeys() {
                 && KDMapData.RandomPathablePoints[(X) + ',' + (Y)]
                 && KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y) > 15
                 && KDistChebyshev(X - KDMapData.EndPosition.x, Y - KDMapData.EndPosition.y) > 15
-                && (!KDMapData.ShortcutPosition || KDistChebyshev(X - KDMapData.ShortcutPosition.x, Y - KDMapData.ShortcutPosition.y) > 15)
                 && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits))
 				jailKeyList.push({x:X, y:Y});
 

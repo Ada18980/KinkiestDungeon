@@ -511,6 +511,7 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 * Restriction: number,
 * JourneyX: number,
 * JourneyY: number,
+* ShortcutIndex: number,
 * JourneyMap: KDJourneyMap,
 * JourneyTarget: {x: number, y: number},
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
@@ -519,6 +520,7 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	ShortcutIndex: -1,
 	JourneyProgression: [...KDDefaultJourney],
 	JourneyTarget: null,
 	JourneyX: 0,
