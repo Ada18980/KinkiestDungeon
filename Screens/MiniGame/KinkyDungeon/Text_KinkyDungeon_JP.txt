@@ -1333,7 +1333,7 @@ Sleepy: You are sluggish and have a hard time keeping your eyes open.
 眠気：動きが鈍くなり、目を開けていられなくなる
 Afterimage: Evasion greatly increased.
 残像：回避力が大幅に上昇する
-We did it! We made outselves invisible--mmmmph!!!
+We did it! We made ourselves invisible--mmmmph!!!
 やった！透明になれ--むぐぅ！
 Your restraints are disenchanted, treating them as nonmagical for purposes of cutting.
 拘束具のエンチャントを無効化した。「切断」選択時に魔法で抵抗されない
@@ -4481,6 +4481,11 @@ Thug
 ごろつき
 You murder the thug!
 ごろつきを刑務所送りにしてしまった！
+
+Antique Merchant
+古物商
+You smash the antique merchant!
+古物商を壊してしまった！
 Blacksmith
 鍛冶屋
 You murder the blacksmith!
@@ -7282,6 +7287,14 @@ They can be thrown from long distances.
 遠くからでも投げられる。
 The enemy attaches your ankle cuffs together!
 脚に枷を取り付けられた！
+
+Thigh Chain
+脚枷の鎖
+They are made of a steel alloy.
+鋼鉄の合金でできている。
+The leg cuff chain detaches!
+脚枷の鎖が外れた！
+
 Transport Jacket
 輸送用拘束衣
 This jacket goes over a straitjacket to keep the arms trapped.
@@ -18768,8 +18781,8 @@ Never! (PERCENT chance to avoid)
 (Shake your head and frown) (PERCENT chance to avoid)
 (顔をしかめて首を横に振る)(PERCENT の確率で拒否)
 
-(The SPEAKER waves)|Greetings,|I manufacture all sorts of armor.|Would you like to buy some?
-(SPEAKER は手を振っている)|やぁ。|私はいろんな防具を取り扱っているんだ。|何か買っていくかい？
+(The SPEAKER waves)|Hi.|I make armor. Only the finest.|I don't sell it cheap, unlike my twin.
+(SPEAKER は手を振っている)|やぁ。|最高の防具を買っていかないかい？|姉と違って安売りはしないけどね！
 (The SPEAKER drops her hammer and cracks her knuckles)|Put em up!
 (SPEAKER はハンマーを置き、指を鳴らしだした)|やる気か！？
 (The SPEAKER looks at you.)|But you already have one?
@@ -18821,6 +18834,23 @@ Never! (PERCENT chance to avoid)
 (SPEAKER は頷いている)|マナのようなものですが、持ち運びできるエネルギー源です。|エネルギーがある限り矢を複製できるので、弓を扱うなら必須ですね。
 (The SPEAKER giggles)|I like to include these as a gift with every purchase~
 (SPEAKER は薄ら笑みを浮かべている)|商品を購入されたお客様にこれをプレゼントするのが好きなんです。
+
+(The SPEAKER rattles as she waves)|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
+(SPEAKER )|ねえ！|お宝に興味はないかい？|アタシは骨董品を扱っているんだけど、いいものが揃っているよ！
+(The SPEAKER cracks her exposed knuckles)|So you've seen through my disguise...
+(SPEAKER は指を鳴らしている)|変装を見破るなんて、やるじゃないか……
+(The SPEAKER looks at you.)|Yours is just fine, dear.
+(SPEAKER は訝しげにこちらを見つめてくる)|既にいいものを持っているじゃないか。
+(The SPEAKER chuckles)|You don't have enough gold for that, dear.|Try coming back after a good round of looting!
+(SPEAKER は苦笑いしている)|お金が足らないぜ、お嬢さん。|もっとお宝探しに励みなよ！
+(The SPEAKER nods)|My great grandmother used to wear these.
+(SPEAKER は頷いている)|私の曾祖母の愛用品でね。
+(The SPEAKER nods)|Adventurers used to love a good burlap sack.|Nowadays they've got that newfangled magic instead...
+(SPEAKER は頷いている)|かつては冒険者のお供だったんだけどね。|今では魔法に取って代わられちまった……
+(The SPEAKER nods)|Back in my day, they used candles for light!|These let you put them out to save wax.
+(SPEAKER は頷いている)|かつては明かりに蝋燭を使っていたんだよ。魔法じゃなくてね。|必要が無いときはこれで消して、蝋を節約するんだ。
+(The SPEAKER giggles)|I had all sorts of use for this back on the farm.
+(SPEAKER はニタニタと笑っている)|農場で仕事し始めてから、ずっと愛用していたんだ。
 
 (Select an item to buy from the SPEAKER)
 (SPEAKER から購入するアイテムを選ぶ)
@@ -23085,8 +23115,8 @@ You avoid the attack in a flurry of impressive maneuvers!
 華麗な機動で攻撃を回避した！
 Arcane Barrier
 アーケインバリア
-When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 40 + 10% Max Mana.
-この呪文以外の呪文を唱えてマナを消費すると、その40%をアーケインエネルギーとして蓄積するようになる。マナの最大値まで蓄積。発動時、徐々にアーケインエネルギー2を1シールドに変換し続ける。シールドの最大値は40+最大マナ10%分まで。
+When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 10% Max Mana.
+この呪文以外の呪文を唱えてマナを消費すると、その40%をアーケインエネルギーとして蓄積するようになる。マナの最大値まで蓄積。発動時、徐々にアーケインエネルギー2を1シールドに変換し続ける。シールドの最大値は最大マナ10%分まで。
 You sense that a high value target is near.
 近くに価値のあるターゲットがいる。
 You push yourself beyond physical limits!
@@ -24959,8 +24989,8 @@ A floating blindfold appears and starts flying toward you!
 浮遊する目隠しがこちらに向かってきた！
 A floating yoke appears and starts flying toward you!
 浮遊するヨークがこちらに向かってきた！
-A floating armbinder appears and starts flying toward you!
-浮遊するアームバインダーがこちらに向かってきた！
+A floating chastity item appears and starts flying toward you!
+浮遊する貞操帯がこちらに向かってきた！
 A floating straitjacket appears and starts flying toward you!
 浮遊する拘束衣がこちらに向かってきた！
 A floating harness appears and starts flying toward you!
@@ -25194,7 +25224,7 @@ But why would you want to do that? You hidin' something?
 
 You find a bag full of sacks. Or is it a sack full of bags?
 袋を詰め込んだ袋を見つけた。もしくは袋に詰め込まれた袋を見つけた。
-Sack of Sacks
+Recursive Bag
 袋入りの袋
 You cover the light source.
 明かりを袋で覆った。
@@ -25306,10 +25336,9 @@ The Timekeeper enacts judgement for disrupting time! (+RestraintAdded)
 タイムキーパーに時空を見出した罰を受けた！ (+RestraintAdded)
 
 
-
-Rock-solid and form-fitting
-岩のように硬いが、体によく馴染む。
-Provides minor protection against enemy attacks. Decreases stealth.
+Rock-solid and form-fitting.
+岩のように硬く、体によく馴染む。
+Provides minor protection against enemy attacks.Decreases stealth.
 敵の攻撃から身を守る。隠密性が低下する。
 
 Protects your organs and your sence of style.
@@ -25317,7 +25346,7 @@ Protects your organs and your sence of style.
 Provides minor protection against enemy attacks at the cost of flexibility.
 敵の攻撃から身を守るが、やや柔軟性は落ちる。
 
-Cumbersome,but effective!
+Cumbersome, but effective!
 着るのが面倒だが、とても効果的。
 Provides +10 armor and protection against enemy attacks. Decreases stealth/evasion and makes struggling harder.
 アーマー値+10。敵の攻撃から身を守る。隠密性と回避力が低下し、もがく力が弱くなる。
