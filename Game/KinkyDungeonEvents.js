@@ -3830,7 +3830,7 @@ let KDEventMapSpell = {
 							});
 						}
 
-						if (buff && buff.power >= .1 * e.mult && shieldBuff.power < (4+0.1*KinkyDungeonStatManaMax) * (1 + KDEntityBuffedStat(player, "ArcaneBarrierShield")) && KDGameData.ShieldDamage < 1) {
+						if (buff && buff.power >= .1 * e.mult && shieldBuff.power < (0+0.1*KinkyDungeonStatManaMax) * (1 + KDEntityBuffedStat(player, "ArcaneBarrierShield")) && KDGameData.ShieldDamage < 1) {
 							buff.power = Math.max(0, buff.power - data.delta * .1 * e.mult);
 							shieldBuff.power = Math.min(KinkyDungeonStatManaMax * (0.5 + 0.5*KDEntityBuffedStat(player, "ArcaneBarrierShield")), shieldBuff.power + data.delta*shieldRate);
 							if (buff.power <= 0) buff.duration = 0;
@@ -7360,7 +7360,9 @@ let KDEventMapEnemy = {
 			if (enemy.hostile && !KDEnemyHasFlag(enemy, "fuukaPillars")) {
 				KinkyDungeonSetEnemyFlag(enemy, "fuukaPillars", -1);
 				for (let i = 0; i < e.count; i++) {
-					let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, undefined, 6, false);
+					let point = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
+						return KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(x, y));
+					}, true, false, undefined, undefined, 6, false);
 					if (point) {
 						DialogueCreateEnemy(point.x, point.y, "FuukaPillar");
 					}
@@ -8307,13 +8309,7 @@ let KDEventMapGeneric = {
 		"endfloorfix": (e, data) => {
 			// Bugfix for a case that can happen 5.1 -> 5.2
 			if (data.toTile == 'S' && data.tile?.RoomType == "Tunnel") {
-				data.overrideRoomType = true;
-				let journeySlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + (KDGameData.JourneyY + 1)];
-				if (journeySlot) {
-					KDGameData.RoomType = journeySlot.RoomType;
-				} else {
-					KDGameData.RoomType = "";
-				}
+				data.tile.RoomType = "";
 			}
 		},
 		"Shop": (e, data) => {

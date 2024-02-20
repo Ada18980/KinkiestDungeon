@@ -505,6 +505,7 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 * CollectionSorted: KDCollectionEntry[],
 * HeelPower: number,
 * visionAdjust: number,
+* visionAdjustBlind: number,
 * visionBlind: number,
 * CollectionGuests: number,
 * SelectedEscapeMethod: string,
@@ -721,6 +722,7 @@ let KDGameDataBase = {
 
 	Crouch: false,
 	visionAdjust: 1, // Eyes start out fully light adjusted
+	visionAdjustBlind: 1, // Slowly follows actual visionadjust, used to determine if blindness occurs
 	visionBlind: 0, // Penalty to vision radius based on overbright
 	Restriction: 0,
 };
@@ -1812,8 +1814,6 @@ function KinkyDungeonRun() {
 
 		DrawButtonKDEx("KinkyDungeonPerkProgressionMode0", (bdata) => {
 			KinkyDungeonPerkProgressionMode = 0;
-			if (KinkyDungeonProgressionMode == "Key")
-				KinkyDungeonProgressionMode = "Key";
 			localStorage.setItem("KinkyDungeonPerkProgressionMode", KinkyDungeonPerkProgressionMode + "");
 			return true;
 		}, true, 875, 190 + II*spacing, 175, 50, TextGet("KinkyDungeonPerkProgressionMode0"), KinkyDungeonPerkProgressionMode == 0 ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
@@ -2073,7 +2073,8 @@ function KinkyDungeonRun() {
 				return true;
 			}, true, 1500, 430, 64, 64, TextGet("KinkyDungeonSexyPiercings"), KinkyDungeonSexyPiercing, false, "#ffffff");*/
 		}
-
+		// Sorry Aelie-- removed this b/c now its all handled in the logic for the roguelike map selector
+		/*
 		DrawTextFitKD(TextGet("KDProgressionMode"), 875 - 50, 580 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
 
@@ -2104,7 +2105,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonProgressionModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
-
+	*/
 
 
 	} if (KinkyDungeonState == "Name") {
@@ -3504,7 +3505,7 @@ function KDUpdatePlugSettings(evalHardMode) {
 
 	KinkyDungeonStatsChoice.set("escapekey", KinkyDungeonProgressionMode == "Key" ? true : undefined);
 	KinkyDungeonStatsChoice.set("escaperandom", KinkyDungeonProgressionMode == "Random" ? true : undefined);
-	KinkyDungeonStatsChoice.set("escapeselect", KinkyDungeonProgressionMode == "Select" ? true : undefined);
+	//KinkyDungeonStatsChoice.set("escapeselect", KinkyDungeonProgressionMode == "Select" ? true : undefined);
 
 
 

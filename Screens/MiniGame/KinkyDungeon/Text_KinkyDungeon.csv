@@ -771,7 +771,7 @@ KinkyDungeonBuffSlippery,"Graceful: Struggling power increased."
 KinkyDungeonBuffIronBlood,"Iron Blood: Reduced melee cost, increased mana costs."
 KinkyDungeonBuffSleepy,"Sleepy: You are sluggish and have a hard time keeping your eyes open."
 KinkyDungeonBuffEvasion,"Afterimage: Evasion greatly increased."
-KinkyDungeonBuffSlimeMimic,"We did it! We made outselves invisible--mmmmph!!!"
+KinkyDungeonBuffSlimeMimic,"We did it! We made ourselves invisible--mmmmph!!!"
 KinkyDungeonBuffd_SlimeMimic,"You are not currently attempting to disguise yourself. Click to reenable."
 KinkyDungeonBuffDisenchantSelf,"Your restraints are disenchanted, treating them as nonmagical for purposes of cutting."
 KinkyDungeonBuffLeatherBurst,"You can launch another leather restraint instantly!"
@@ -2680,6 +2680,8 @@ KillMaidforceQuest,You murder the informant!
 NameBanditQuest,Thug
 KillBanditQuest,You murder the thug!
 
+NameAntiqueQuest,Antique Merchant
+KillAntiqueQuest,You smash the antique merchant!
 NameBlacksmithQuest,Blacksmith
 KillBlacksmithQuest,You murder the blacksmith!
 NameArmorerQuest,Armorer
@@ -4180,6 +4182,11 @@ RestraintAsylumLegCuffs,Asylum Leg Cuffs
 RestraintAsylumLegCuffsDesc,"A pair of chained cuffs made of reinforced leather. They make patients easier to catch."
 RestraintAsylumLegCuffsDesc2,"They can be thrown from long distances."
 KinkyDungeonLinkAsylumLegCuffs,"The enemy attaches your ankle cuffs together!"
+
+RestraintAsylumLegCuffs2,Thigh Chain
+RestraintAsylumLegCuffs2Desc,"A pair of cuffs chaining your legs together."
+RestraintAsylumLegCuffs2Desc2,"They are made of a steel alloy."
+KinkyDungeonUnLinkAsylumLegCuffs2,"The leg cuff chain detaches!"
 
 
 RestraintTransportJacket,Transport Jacket
@@ -11446,7 +11453,7 @@ rBlacksmithShopAxe,"(The SPEAKER nods)|The best defense is a good offense."
 rBlacksmithShopHammer,"(The SPEAKER nods)|Speak softly and carry a big hammer."
 rBlacksmithShopTrapCuffs,"(The SPEAKER smiles)|Can never be too prepared~"
 
-rArmorerShop,"(The SPEAKER waves)|Greetings,|I manufacture all sorts of armor.|Would you like to buy some?"
+rArmorerShop,"(The SPEAKER waves)|Hi.|I make armor. Only the finest.|I don't sell it cheap, unlike my twin."
 rArmorerShopAttack,"(The SPEAKER drops her hammer and cracks her knuckles)|Put em up!"
 rArmorerShop_AlreadyHave,"(The SPEAKER looks at you.)|But you already have one?"
 rArmorerShop_NoMoney,"(The SPEAKER folds her arms)|I don't do charity, girl."
@@ -11473,6 +11480,16 @@ rBowyerShopCrossbow,"(The SPEAKER shrugs)|It's big and bulky, but I guess it has
 rBowyerShopCrossbowPistol,"(The SPEAKER giggles)|Smile for the camera!"
 rBowyerShopAncientPowerSource,"(The SPEAKER nods)|It's like mana, but much more portable!|It powers duplication runes so you don't run out of arrows."
 rBowyerShopTrapBlindfold,"(The SPEAKER giggles)|I like to include these as a gift with every purchase~"
+
+
+rAntiqueShop,"(The SPEAKER rattles as she waves)|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!"
+rAntiqueShopAttack,"(The SPEAKER cracks her exposed knuckles)|So you've seen through my disguise..."
+rAntiqueShop_AlreadyHave,"(The SPEAKER looks at you.)|Yours is just fine, dear."
+rAntiqueShop_NoMoney,"(The SPEAKER chuckles)|You don't have enough gold for that, dear.|Try coming back after a good round of looting!"
+rAntiqueShopSunglasses,"(The SPEAKER nods)|My great grandmother used to wear these."
+rAntiqueShopSackOfSacks,"(The SPEAKER nods)|Adventurers used to love a good burlap sack.|Nowadays they've got that newfangled magic instead..."
+rAntiqueShopSnuffer,"(The SPEAKER nods)|Back in my day, they used candles for light!|These let you put them out to save wax."
+rAntiqueShopRope,"(The SPEAKER giggles)|I had all sorts of use for this back on the farm."
 
 rShopBuy,"(Select an item to buy from the SPEAKER)"
 rShopBuyAttack,"(Attack the SPEAKER?)"
@@ -18226,7 +18243,7 @@ KDBattleRhythm,Rhythm
 KDBattleRhythmDodge,You avoid the attack in a flurry of impressive maneuvers!
 
 KinkyDungeonSpellArcaneBarrier,Arcane Barrier
-KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 40 + 10% Max Mana."
+KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 10% Max Mana."
 
 KinkyDungeonBuffHighValueFound,You sense that a high value target is near.
 
@@ -19321,7 +19338,7 @@ KinkyDungeonTrapSpawnSummonedZombie,Strangely dressed zombies start approaching 
 KinkyDungeonTrapSpawnGag,A floating gag appears and starts flying toward you!
 KinkyDungeonTrapSpawnAnimBlindfold,A floating blindfold appears and starts flying toward you!
 KinkyDungeonTrapSpawnAnimYoke,A floating yoke appears and starts flying toward you!
-KinkyDungeonTrapSpawnAnimChastity,A floating armbinder appears and starts flying toward you!
+KinkyDungeonTrapSpawnAnimChastity,A floating chastity item appears and starts flying toward you!
 KinkyDungeonTrapSpawnAnimStraitjacket,A floating straitjacket appears and starts flying toward you!
 KinkyDungeonTrapSpawnAnimHarness,A floating harness appears and starts flying toward you!
 KinkyDungeonTrapSpawnAnimArmbinder,A floating harness appears and starts flying toward you!
@@ -19445,7 +19462,7 @@ KinkyDungeonInventoryItemSnufferDesc,"A handy device for putting out torches and
 KinkyDungeonInventoryItemSnufferDesc2,"But why would you want to do that? You hidin' something?"
 
 ItemPickupSackOfSacks,"You find a bag full of sacks. Or is it a sack full of bags?"
-KinkyDungeonInventoryItemSackOfSacks,Sack of Sacks
+KinkyDungeonInventoryItemSackOfSacks,Recursive Bag
 KinkyDungeonInventoryItemSackOfSacksUse,"You cover the light source."
 KinkyDungeonInventoryItemSackOfSacksDesc,"Bags inside a bag of bags inside a bag of bags"
 KinkyDungeonInventoryItemSackOfSacksDesc2,"Can be placed over light sources to cover them."

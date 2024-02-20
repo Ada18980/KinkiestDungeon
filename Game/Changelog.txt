@@ -28,6 +28,10 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.2.5
+- Arcane Barrier nerfed to 0 + 10% max mana
+-
+
 5.2.4
 - Added Bandit Hideout + new track
 

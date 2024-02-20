@@ -777,6 +777,12 @@ AddModel({
 			DisplacementInvariant: true,
 			InheritColor: "Lock",
 		},
+		{ Name: "BeltPadlockPin", Layer: "ChastityBelt", Pri: -39.8,
+			PrependLayerPrefix: {ChastityOption2: "Option2_", ChastityOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			InheritColor: "LockPin",
+		},
 	])
 });
 AddModel({
@@ -865,6 +871,12 @@ AddModel({
 			Invariant: true,
 			DisplacementInvariant: true,
 			InheritColor: "Lock",
+		},
+		{ Name: "BraPadlockPin", Layer: "BindChestLower", Pri: -29.8,
+			PrependLayerPrefix: {ChastityBraOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			InheritColor: "LockPin",
 		},
 	])
 });

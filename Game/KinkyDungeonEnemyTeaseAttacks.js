@@ -554,7 +554,7 @@ let KDTeaseAttacks = {
 				} else if (KDGameData.KinkyDungeonLeashedPlayer < 1 && item && AIData.playerItems.length > 0
 					&& KinkyDungeonIsArmsBound() && ((!KinkyDungeonPlayerDamage || item.name != KinkyDungeonPlayerDamage.name) || KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.05) && KDRandom() < 0.5) {
 					if (item.type == Weapon) {
-						if (item.name == KinkyDungeonPlayerDamage?.name)
+						if (KDWeapon(item)?.name == KinkyDungeonPlayerDamage?.name)
 							KinkyDungeonDisarm(enemy, "Leash");
 						else
 							KinkyDungeonInventoryRemove(item);

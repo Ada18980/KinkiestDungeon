@@ -391,11 +391,18 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 				if (KDGameData.visionBlind == 0) {
 					KinkyDungeonUpdateLightGrid = true;
 				}
-				KDGameData.visionBlind = 0.5*Math.max(0, (avg - KDGameData.visionAdjust) * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "blindResist")));
-				if (avg - KDGameData.visionAdjust > 0.5)
-					KinkyDungeonSendTextMessage(4, TextGet("KDVisionBlind"), "#ffffff", 1, false, true);
+				if (avg - KDGameData.visionAdjustBlind > 0.5) {
+					KDGameData.visionBlind = 0.5*Math.max(0, (avg - KDGameData.visionAdjust) * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "blindResist")));
+					if (KDGameData.visionBlind > 0.1)
+						KinkyDungeonSendTextMessage(4, TextGet("KDVisionBlind"), "#ffffff", 1, false, true);
+				}
+
 
 			}
+		}
+
+		if (delta == 1) {
+			KDGameData.visionAdjustBlind = ((KDGameData.visionAdjustBlind || 0) + KDGameData.visionAdjust * 9)/10;
 		}
 		if (Math.abs(KDGameData.visionAdjust - avg) < delta * flags.visionAdjustMult * 1.1) KDGameData.visionAdjust = avg;
 		if (KDGameData.visionAdjust > 1) KDGameData.visionAdjust = 1;

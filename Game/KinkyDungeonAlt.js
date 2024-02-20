@@ -1356,7 +1356,8 @@ function KinkyDungeonCreateTunnel(POI, VisitedRooms, width, height, openness, de
 		KDChest(VisitedRooms[0].x*2 + 0, VisitedRooms[0].y*2 - 2, "lost_items");*/
 
 	// Place the exit stairs
-
+	KinkyDungeonMapSet(b1*2, VisitedRooms[0].y > 4 ? 2 : height*2 - 3, 's');
+	KinkyDungeonMapSet(b1*2 + 1, VisitedRooms[0].y > 4 ? 2 : height*2 - 3, 'G');
 	/*let boss = KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel + 1);
 	let mods = !boss ? KDGetMapGenList(3, KDMapMods) : ["None", "None", "None"];
 	if (!boss) {
@@ -1453,12 +1454,12 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 		for (let i = 0; i < perkCount; i++) {
 			let newperks = KinkyDungeonStatsChoice.get("perksdebuff") ? KDGetRandomPerks(perks, true) : KDGetRandomPerks(perks);
 			let bondage = KDGetPerkShrineBondage(newperks);
-			let boss = KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel + 1);
+			//let boss = KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel + 1);
 			let method = "";
-			if (boss)
+			//if (boss)
 			//method = //KDGetRandomEscapeMethod();
 			//else
-				method = "Boss";
+			//method = "Boss";
 
 			if (newperks.length > 0) {
 				KinkyDungeonMapSet(p1x + i * 2, py, 'P');
@@ -1634,9 +1635,15 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 2) + ',' + (KDMapData.StartPosition.y - 3), {OffLimits: true});
 
 
+
 	DialogueCreateEnemy(KDMapData.StartPosition.x + 3, KDMapData.StartPosition.y - 3, "BowyerQuest").AI = "guard";
 	KinkyDungeonMapSet(KDMapData.StartPosition.x + 3, KDMapData.StartPosition.y - 3, '2');
 	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 3) + ',' + (KDMapData.StartPosition.y - 3), {OffLimits: true});
+
+
+	DialogueCreateEnemy(KDMapData.StartPosition.x + 4, KDMapData.StartPosition.y - 3, "AntiqueQuest").AI = "guard";
+	KinkyDungeonMapSet(KDMapData.StartPosition.x + 4, KDMapData.StartPosition.y - 3, '2');
+	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 4) + ',' + (KDMapData.StartPosition.y - 3), {OffLimits: true});
 
 	// Normal end stairs
 	KinkyDungeonMapSet(b1*2 - 1, VisitedRooms[0].y*2 - 4, 's');

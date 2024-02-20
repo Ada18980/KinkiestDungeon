@@ -754,7 +754,7 @@ let KDJailOutfits = {
 			{Name: "ShadowLatexLegbinder", Level: 100},
 			{Name: "ShadowLatexStrongArmbinder", Level: 120, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
 			{Name: "ShadowLatexStrongBoxbinder", Level: 120, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
-			{Name: "ShadowLatexStrongStraitjacket", Level: 120, Condition: "LessJackets", Priority: "MoreJackets"},
+			{Name: "ShadowLatexStrongJacket", Level: 120, Condition: "LessJackets", Priority: "MoreJackets"},
 
 		],
 	},

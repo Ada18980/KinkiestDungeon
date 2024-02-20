@@ -185,7 +185,37 @@ function KDProcessInput(type, data) {
 			}
 			break;
 		}
-		case "equip":
+		case "equip": {
+
+			let equipped = false;
+			let newItem = null;
+			let currentItem = null;
+			let linkable = null;
+			let name = data.name;
+
+			if (name) {
+				newItem = KDRestraint({name: name});
+				if (newItem) {
+					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
+					if (!currentItem) equipped = false;
+					else {
+						if (KDDebugLink) {
+							linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
+						} else {
+							linkable = (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
+								((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
+								|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))));
+						}
+						if (linkable) {
+							equipped = false;
+						} else equipped = true;
+					}
+				}
+			}
+
+			if (equipped) return "";
+
+
 			KDDelayedActionPrune(["Action", "Equip"]);
 			KinkyDungeonSetFlag("SelfBondage", 1);
 			success = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(data.name), 0, true, "", KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonGetRestraintByName(data.currentItem), KinkyDungeonGetRestraintByName(data.name)), false, data.events, data.faction, false, data.curse, undefined, undefined, data.inventoryVariant);
@@ -220,6 +250,7 @@ function KDProcessInput(type, data) {
 
 				return msg;
 			} else return "KDCantEquip";
+		}
 		case "tryOrgasm":
 			KDDelayedActionPrune(["Action", "Sexy"]);
 			KinkyDungeonDoTryOrgasm(data.bonus, 0);

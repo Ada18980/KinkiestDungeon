@@ -449,7 +449,7 @@ function KDCreateBoringness(noBoring) {
 	// First we find shortest path to exit
 	let path = KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y,
 		KDMapData.EndPosition?.x || KDMapData.StartPosition.x, KDMapData.EndPosition?.y || KDMapData.StartPosition.y,
-		false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
+		false, false, false, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
 		undefined, false, undefined, false, true);
 
 	let pathLength = path ? path.length : 100;
@@ -461,17 +461,17 @@ function KDCreateBoringness(noBoring) {
 			if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))) {
 				let startLength = KinkyDungeonFindPath(X, Y,
 					KDMapData.StartPosition.x, KDMapData.StartPosition.y,
-					false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
+					false, false, false, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
 					undefined, false, undefined, false, true);
 				if (startLength) {
 					let endLength = KinkyDungeonFindPath(X, Y, KDMapData.EndPosition?.x || KDMapData.StartPosition.x, KDMapData.EndPosition?.y || KDMapData.StartPosition.y,
-						false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
+						false, false, false, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
 						undefined, false, undefined, false, true);
 					if (endLength) {
 						let delta = Math.abs((startLength.length + endLength.length) - pathLength);
 						KinkyDungeonBoringSet(X, Y, delta);
-					}
-				}
+					} else KinkyDungeonBoringSet(X, Y, pathLength);
+				} else KinkyDungeonBoringSet(X, Y, pathLength);
 			}
 		}
 	}
@@ -1201,7 +1201,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 		if (KDTileToTest || ((KinkyDungeonNearestJailPoint(1, 1) || (altType && altType.nojail)) && (!altType || KDStageBossGenerated || !bossRules)
 			&& KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, KDMapData.EndPosition.x, KDMapData.EndPosition.y,
-				false, false, true, KinkyDungeonMovableTilesSmartEnemy,
+				false, false, false, KinkyDungeonMovableTilesSmartEnemy,
 				false, false, false, undefined, false,
 				undefined, false, true).length > 0)) iterations = 100000;
 		else console.log("This map failed to generate! Please screenshot and send your save code to Ada on deviantart or discord!");
@@ -1474,7 +1474,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 	KinkyDungeonFirstSpawn = true;
 	KinkyDungeonSearchTimer = 0;
 
-	let enemyCount = 8 + Math.floor(Math.sqrt(Floor) + width/16 + height/16 + KinkyDungeonDifficulty/7);
+	let enemyCount = 4 + Math.floor(Math.sqrt(Floor) + width/10 + height/10 + Math.sqrt(KinkyDungeonDifficulty));
 	if (KinkyDungeonStatsChoice.get("Stealthy")) enemyCount = Math.round(enemyCount * KDStealthyEnemyCountMult);
 	let neutralCount = 0.4 * enemyCount;
 	if (KDTileToTest) {
@@ -2126,8 +2126,10 @@ function KinkyDungeonPlaceChests(params, chestlist, spawnPoints, shrinelist, tre
 						|| (wallcount >= 4 && (wallcount - adjcount - diagadj == 0 || (wallcount == 5 && adjcount == 2 && diagadj == 1) || (wallcount > 4 && adjcount == 3 && diagadj == 7 - wallcount))
 							&& (KinkyDungeonMapGet(X+1, Y) == '1' || KinkyDungeonMapGet(X-1, Y) == '1')
 							&& (KinkyDungeonMapGet(X, Y+1) == '1' || KinkyDungeonMapGet(X, Y-1) == '1')
-							&& (!(KinkyDungeonMapGet(X+1, Y) == '1' && KinkyDungeonMapGet(X-1, Y) == '1') || (wallcount > 4 && adjcount == 3 && diagadj == 7 - wallcount))
-							&& (!(KinkyDungeonMapGet(X, Y+1) == '1' && KinkyDungeonMapGet(X, Y-1) == '1') || (wallcount > 4 && adjcount == 3 && diagadj == 7 - wallcount)))) {
+							&& (!(!KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X+1, Y)) && !KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X-1, Y)))
+								|| (wallcount > 4 && adjcount == 3 && diagadj == 7 - wallcount))
+							&& (!(!KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y+1)) && !KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y-1)))
+								|| (wallcount > 4 && adjcount == 3 && diagadj == 7 - wallcount)))) {
 						if (!chestPoints.get((X+1) + "," + (Y))
 							&& !chestPoints.get((X-1) + "," + (Y))
 							&& !chestPoints.get((X+1) + "," + (Y+1))

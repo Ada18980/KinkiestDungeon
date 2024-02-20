@@ -327,8 +327,7 @@ const KinkyDungeonMapParams = {
 		},
 
 		music: {
-			"GENERIC-DOLLRACK.ogg": 10,
-			"AREA2-ANCIENTTOMBS.ogg": 2,
+			"Ada18980_PlayingWithFire.ogg": 10,
 		},
 
 		tagModifiers: {

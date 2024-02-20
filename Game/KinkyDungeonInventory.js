@@ -2236,13 +2236,14 @@ function KDLoadQuickLoadout(num, clearFirst) {
 					let currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
 					KDSendInput("equip", {
 						name: restraintItem.name,
-						inventoryVariant: restraintItem.name != newItem.name ?
-							restraintItem.name : undefined,
+						inventoryVariant: item != newItem.name ?
+							item : undefined,
 						group: newItem.Group,
 						curse: restraintItem.curse,
 						faction: restraintItem.faction,
 						currentItem: currentItem ? currentItem.name : undefined,
-						events: Object.assign([], restraintItem.events)});
+						events: Object.assign([], KinkyDungeonInventoryGetLoose(item).events)});
+					//events: Object.assign([], restraintItem.events)
 				}
 			}
 		}
