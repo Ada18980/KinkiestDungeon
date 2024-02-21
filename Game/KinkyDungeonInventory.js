@@ -1154,7 +1154,7 @@ function KinkyDungeonDrawInventory() {
 		let xx = -1;
 
 		if (selected) {
-			KDDrawHotbarBottom(selected);
+			KDDrawHotbarBottom(selected, undefined, undefined, -400);
 		}
 
 		if (selected && KDConfigHotbar) {
@@ -2648,19 +2648,21 @@ function KDGiveItem(name, quantity = 1) {
 	return false;
 }
 
-function KDDrawHotbarBottom(selected, spells, selectSpell) {
+function KDDrawHotbarBottom(selected, spells, selectSpell, xshift = 0) {
 	let i = 0;
 	let HotbarStart = 995 - 70;
 	let hotBarSpacing = 72;
-	let hotBarX = 790 + hotBarSpacing;
+	let hotBarX = 790 + hotBarSpacing + xshift;
 
 	DrawButtonKDEx("CycleSpellButton", () => {
-		KDCycleSpellPage(true, false);
+		KDCycleSpellPage(false, false, true);
 		return true;
-	}, true, hotBarX + 713, HotbarStart, 72, 72, ``, "#ffffff",
-	KinkyDungeonRootDirectory + "UI/Cycle.png", undefined, undefined, true, undefined, undefined, undefined, {
+	}, true, hotBarX + 713, HotbarStart, 72, 72, `${KDSpellPage + 1}`, "#ffffff",
+	KinkyDungeonRootDirectory + "UI/Cycle.png", undefined, undefined, true, undefined, 28, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeySpellPage[0]),
 		scaleImage: true,
+		centered: true,
+		centerText: true,
 	});
 	KDCullSpellChoices();
 

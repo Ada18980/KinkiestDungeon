@@ -2822,6 +2822,7 @@ function FillRectKD(Container, Map, id, Params) {
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {boolean} [options.centered] - centered
+ * @param {boolean} [options.centerText] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
@@ -2857,6 +2858,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
  * @param {boolean} [options.unique] - This button is not differentiated by position
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {boolean} [options.centered] - centered
+ * @param {boolean} [options.centerText] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
@@ -2915,7 +2917,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 		DrawTextFitKDTo(Container || kdcanvas, HoveringText, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04), "#ffffff", undefined, undefined, undefined, zIndex + 1);
 		//DrawHoverElements.push(() => DrawButtonHover(Left, Top, Width, Height, HoveringText));
 	} else if (Label)
-		DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
+		DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), (options?.centerText) ? Width : (Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04)),
 			Color,
 			(options && options.noTextBG) ? "none" : undefined,
 			FontSize, undefined, zIndex + 0.001, undefined, undefined, options?.unique);

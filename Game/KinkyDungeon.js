@@ -2733,6 +2733,7 @@ function DrawButtonKD(name, enabled, Left, Top, Width, Height, Label, Color, Ima
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {boolean} [options.centered] - centered
+ * @param {boolean} [options.centerText] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
@@ -2779,6 +2780,7 @@ function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Co
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {boolean} [options.centered] - centered
+ * @param {boolean} [options.centerText] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey

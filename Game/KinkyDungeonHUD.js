@@ -342,12 +342,14 @@ function KDDrawSpellChoices() {
 
 	if (KinkyDungeonSpellChoices.length > KinkyDungeonSpellChoiceCountPerPage) {
 		DrawButtonKDEx("CycleSpellButton", () => {
-			KDCycleSpellPage(true, false);
+			KDCycleSpellPage(false, false);
 			return true;
-		}, true, hotBarX + 713, HotbarStart, 72, 72, ``, "#ffffff",
-		KinkyDungeonRootDirectory + "UI/Cycle.png", undefined, undefined, true, undefined, undefined, undefined, {
+		}, true, hotBarX + 713, HotbarStart, 72, 72, `${KDSpellPage + 1}`, "#ffffff",
+		KinkyDungeonRootDirectory + "UI/Cycle.png", undefined, undefined, true, undefined, 28, undefined, {
 			hotkey: KDHotkeyToText(KinkyDungeonKeySpellPage[0]),
 			scaleImage: true,
+			centered: true,
+			centerText: true,
 		});
 	}
 	KDCullSpellChoices();
@@ -690,21 +692,21 @@ function KDDrawSpellChoices() {
 	}
 }
 
-function KDCycleSpellPage(reverse, noWrap) {
+function KDCycleSpellPage(reverse, noWrap, force) {
 	if (reverse) {
 		KDSpellPage -= 1;
 	} else KDSpellPage += 1;
 
 	if (KDSpellPage < 0) {
 		if (!noWrap)
-			KDSpellPage = Math.floor((Math.max(0, KinkyDungeonSpellChoices.length - 1))/KinkyDungeonSpellChoiceCountPerPage);
+			KDSpellPage = Math.floor((Math.max(0, (force ? KinkyDungeonSpellChoiceCount : KinkyDungeonSpellChoices.length) - 1))/KinkyDungeonSpellChoiceCountPerPage);
 		else KDSpellPage = 0;
 	}
-	if (KDSpellPage * KinkyDungeonSpellChoiceCountPerPage >= KinkyDungeonSpellChoices.length) {
+	if (KDSpellPage * KinkyDungeonSpellChoiceCountPerPage >= (force ? KinkyDungeonSpellChoiceCount : KinkyDungeonSpellChoices.length)) {
 		if (!noWrap)
 			KDSpellPage = 0;
 		else {
-			KDSpellPage = Math.floor((Math.max(0, KinkyDungeonSpellChoices.length - 1))/KinkyDungeonSpellChoiceCountPerPage);
+			KDSpellPage = Math.floor((Math.max(0, (force ? KinkyDungeonSpellChoiceCount : KinkyDungeonSpellChoices.length) - 1))/KinkyDungeonSpellChoiceCountPerPage);
 		}
 	}
 }

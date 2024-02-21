@@ -96,6 +96,14 @@
 	"spriteSourceSize": {"x":532,"y":1444,"w":57,"h":34},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/DivineCuffs/ElbowLeftLockBandBoxtie.png":
+{
+	"frame": {"x":1801,"y":502,"w":26,"h":34},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":759,"y":606,"w":26,"h":34},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/DivineCuffs/WristRightLockPlateCrossed.png":
 {
 	"frame": {"x":2004,"y":1047,"w":40,"h":32},
@@ -648,6 +656,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json", "atlas24.json", "atlas25.json", "atlas26.json", "atlas27.json", "atlas28.json", "atlas29.json", "atlas30.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:8613276846d62bc565a5697daf45bb41:804969f80984980f1ebf1e45a04f7e4e:0743c1b47838cee1be7086887f583e25$"
+	"smartupdate": "$TexturePacker:SmartUpdate:01f742767e9cd133555ee17d6f8df97f:b9fb27342a5cf25c4d2799726b48a73e:0743c1b47838cee1be7086887f583e25$"
 }
 }

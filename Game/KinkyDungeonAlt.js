@@ -199,6 +199,7 @@ let alts = {
 		Title: "DemonTransition",
 		noWear: false, // Disables doodad wear
 		bossroom: false,
+		alwaysRegen: true,
 		width: 14,
 		height: 14,
 		nopatrols: false,
@@ -238,6 +239,7 @@ let alts = {
 		skin: "DemonTransition",
 		musicParams: "DemonTransition",
 		lightParams: "DemonTransition",
+		useGenParams: "DemonTransition",
 		spawns: false,
 		chests: true,
 		shrines: true,
@@ -272,7 +274,7 @@ let alts = {
 			"Storage": 12,
 		},
 		data: {
-			DemonTransition: true,
+			BanditFort: true,
 		},
 		genType: "Maze",
 		skin: "shoppe",

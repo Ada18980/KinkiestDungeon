@@ -2620,7 +2620,7 @@ function KDBoundEffects(enemy) {
 	let boundLevel = enemy.boundLevel ? enemy.boundLevel : 0;
 	let bindAmp = 1;//KDGetBindAmp(enemy); //KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp"));
 	boundLevel *= bindAmp;
-	if (boundLevel >= enemy.Enemy.maxhp || (enemy.hp <= 0.1*enemy.Enemy.maxhp && boundLevel > enemy.hp)) return 4; // Totally tied
+	if (boundLevel >= enemy.Enemy.maxhp || (enemy.hp <= 0.1*enemy.Enemy.maxhp && Math.max(boundLevel, 0.1) > enemy.hp)) return 4; // Totally tied
 	if (boundLevel > enemy.Enemy.maxhp*0.75) return 3;
 	if (boundLevel > enemy.Enemy.maxhp*0.5) return 2;
 	if (boundLevel > enemy.Enemy.maxhp*0.25) return 1;

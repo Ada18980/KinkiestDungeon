@@ -160,6 +160,14 @@
 	"spriteSourceSize": {"x":871,"y":386,"w":64,"h":49},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/DivineCuffs/ElbowLeftLockPlateWristtie.png":
+{
+	"frame": {"x":2017,"y":881,"w":26,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":721,"y":612,"w":26,"h":50},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/Dress/BlouseSkirtOverKneel.png":
 {
 	"frame": {"x":844,"y":363,"w":341,"h":189},
@@ -312,6 +320,14 @@
 	"spriteSourceSize": {"x":462,"y":640,"w":249,"h":133},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/Ribbon/Calf3Hogtie.png":
+{
+	"frame": {"x":1701,"y":829,"w":26,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":677,"y":1107,"w":26,"h":48},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/Robes/Skirt.png":
 {
 	"frame": {"x":1653,"y":1624,"w":345,"h":252},
@@ -342,6 +358,22 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":449,"y":491,"w":55,"h":276},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Rope/Calf3Hogtie.png":
+{
+	"frame": {"x":1701,"y":829,"w":26,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":677,"y":1107,"w":26,"h":48},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Rope/Calf3HogtieOver.png":
+{
+	"frame": {"x":1701,"y":829,"w":26,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":677,"y":1107,"w":26,"h":48},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Rope/Thigh2KneelClosedOver.png":
@@ -472,6 +504,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json", "atlas24.json", "atlas25.json", "atlas26.json", "atlas27.json", "atlas28.json", "atlas29.json", "atlas30.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:8613276846d62bc565a5697daf45bb41:804969f80984980f1ebf1e45a04f7e4e:0743c1b47838cee1be7086887f583e25$"
+	"smartupdate": "$TexturePacker:SmartUpdate:01f742767e9cd133555ee17d6f8df97f:b9fb27342a5cf25c4d2799726b48a73e:0743c1b47838cee1be7086887f583e25$"
 }
 }

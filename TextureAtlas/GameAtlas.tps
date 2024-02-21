@@ -810,6 +810,7 @@
             <key type="filename">../Game/Enemies/AnimStraitjacket.png</key>
             <key type="filename">../Game/Enemies/AnimYoke.png</key>
             <key type="filename">../Game/Enemies/AnimatedArmor.png</key>
+            <key type="filename">../Game/Enemies/AntiqueQuest.png</key>
             <key type="filename">../Game/Enemies/Apprentice.png</key>
             <key type="filename">../Game/Enemies/Apprentice2.png</key>
             <key type="filename">../Game/Enemies/ApprenticeQuest.png</key>
@@ -2009,6 +2010,7 @@
             <key type="filename">../Game/Items/Restraint/Armbinders.png</key>
             <key type="filename">../Game/Items/Restraint/Armbinders_2.png</key>
             <key type="filename">../Game/Items/Restraint/BallGags.png</key>
+            <key type="filename">../Game/Items/Restraint/Belts.png</key>
             <key type="filename">../Game/Items/Restraint/Blindfolds.png</key>
             <key type="filename">../Game/Items/Restraint/Chastity.png</key>
             <key type="filename">../Game/Items/Restraint/ChastityBelts.png</key>
@@ -2019,6 +2021,7 @@
             <key type="filename">../Game/Items/Restraint/Latex.png</key>
             <key type="filename">../Game/Items/Restraint/LeatherCuffs.png</key>
             <key type="filename">../Game/Items/Restraint/Legbinders.png</key>
+            <key type="filename">../Game/Items/Restraint/MagicBelt.png</key>
             <key type="filename">../Game/Items/Restraint/Obsidian.png</key>
             <key type="filename">../Game/Items/Restraint/PanelGags.png</key>
             <key type="filename">../Game/Items/Restraint/PlugGags.png</key>

@@ -1839,8 +1839,8 @@
             <key type="filename">../Models/Sailor/SleeveRightTied.png</key>
             <key type="filename">../Models/Sailor/SleeveRightUp.png</key>
             <key type="filename">../Models/Sailor/SleeveRightYoked.png</key>
-            <key type="filename">../Models/Shades/Frame.png</key>
-            <key type="filename">../Models/Shades/Glass.png</key>
+            <key type="filename">../Models/Shades/Glasses.png</key>
+            <key type="filename">../Models/Shades/GlassesLens.png</key>
             <key type="filename">../Models/ShadowHands/Arms1.png</key>
             <key type="filename">../Models/ShadowHands/Arms2.png</key>
             <key type="filename">../Models/ShadowHands/Crotch.png</key>
@@ -1904,10 +1904,12 @@
             <key type="filename">../Models/Slime/TorsoUpper.png</key>
             <key type="filename">../Models/SteelChastity/Belt.png</key>
             <key type="filename">../Models/SteelChastity/BeltPadlock.png</key>
+            <key type="filename">../Models/SteelChastity/BeltPadlockPin.png</key>
             <key type="filename">../Models/SteelChastity/BeltRadial.png</key>
             <key type="filename">../Models/SteelChastity/BeltSegu.png</key>
             <key type="filename">../Models/SteelChastity/Bra.png</key>
             <key type="filename">../Models/SteelChastity/BraPadlock.png</key>
+            <key type="filename">../Models/SteelChastity/BraPadlockPin.png</key>
             <key type="filename">../Models/SteelChastity/BraRadial.png</key>
             <key type="filename">../Models/SteelChastity/BraSegu.png</key>
             <key type="filename">../Models/Succubus/FootSockLeftHogtie.png</key>

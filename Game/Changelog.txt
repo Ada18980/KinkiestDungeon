@@ -30,7 +30,19 @@ Monk class?
 
 5.2.5
 - Arcane Barrier nerfed to 0 + 10% max mana
--
+- Fix: Enemy with 0 hp won't be defeated from damage
+- Fix: Softlocked in the edge of reality
+- Fix: Game crash in high sec
+- Fix: Random mystery tile trap activation
+- Fix: Sealing pillars can enter same space as entrance and exit at Fuuka's
+- Fix: Simple text mismatch report
+- Fix: Dead-end / Crash in 5.2.3
+- Fix: Bug in fashion chastity belt masking
+- Fix: Sunglasses don't prevent blindness from changing light levels (5.1.15)
+- Fix: "Crash" when dogpiled by Shadow Hands
+- Fix: Problem when Loading Pre-5.2.2 Save
+- Fix: Enchanted gear that is unworn sometimes disappears
+- Attempted to fix item duplication glitch. Keep an eye out for whether it swings the other way and enchanted items start disappearing
 
 5.2.4
 - Added Bandit Hideout + new track
