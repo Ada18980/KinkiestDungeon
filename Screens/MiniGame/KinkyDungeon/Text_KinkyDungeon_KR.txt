@@ -6392,7 +6392,7 @@ You a padded metal blindfold, glowing magnificently, along with a strange crysta
 당신은 그 옆에 이상한 수정과 함께 화려하게 빛나는 덧대진 금속 눈가리개입니다.
 A well-fitted mask, covering your entire head neatly and locking in place.
 머리 전체를 깔끔하게 덮고 제자리에 고정되는 잘 맞는 마스크.
-It has eyeholes for you to see out of, but blocks access to the face.
+It has eyeholes for you to somewhat see out of, but blocks access to the face.
 밖을 볼 수 있는 눈구멍이 있지만 얼굴에 대한 접근은 차단합니다.
 
 Obsidian Muzzle

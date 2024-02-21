@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.5"
+KDVersionStr,"5.2.6"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -4476,7 +4476,7 @@ RestraintMaidMuzzleDesc2,"Reinforced and secured with a disc lock to ensure unru
 RestraintKiguMask,Suspicious Mask
 LootChestKiguMask,"You a padded metal blindfold, glowing magnificently, along with a strange crystal next to it."
 RestraintKiguMaskDesc2,"A well-fitted mask, covering your entire head neatly and locking in place."
-RestraintKiguMaskDesc,"It has eyeholes for you to see out of, but blocks access to the face."
+RestraintKiguMaskDesc,"It has eyeholes for you to somewhat see out of, but blocks access to the face."
 
 RestraintShadowLatexHeels,Shadow Heels
 RestraintShadowLatexHeelsDesc,"A set of impractical heels that clasp around your ankles. They make it hard to walk."
@@ -6030,7 +6030,7 @@ KinkyDungeonSpellDescriptionTemperaturePlay,"Fire and Ice damage do 30% more dam
 KinkyDungeonSpellBurning,Fire Hazard
 KinkyDungeonSpellDescriptionBurning,"Fire damage ignites enemies for 5 damage per turn for 6 turns."
 KinkyDungeonSpellIcePrison,Frozen Prison
-KinkyDungeonSpellDescriptionIcePrison,"Freezing an enemy applies 10% of the enemy's max hp in binding, plus 10 per turn of freeze."
+KinkyDungeonSpellDescriptionIcePrison,"Freezing an enemy applies 10 binding per turn of freeze added, plus brings the enemy to a minimum of 20% binding."
 KinkyDungeonSpellLightningRod,Lightning Rod
 KinkyDungeonSpellDescriptionLightningRod,"After casting an Air or Storm spell that costs mana, become Conductive and gain 300% electric resist for 3 turns."
 KinkyDungeonSpellFrustration,Frustration
@@ -7855,7 +7855,7 @@ KinkyDungeonRemindJailPlayHelplessTheWarden0,"This wasn't supposed to happen."
 KinkyDungeonRemindJailPlayHelplessTheWarden1,"The Collector has become the Collected."
 KinkyDungeonRemindJailPlayHelplessTheWarden2,"Fine, you win!"
 KinkyDungeonRemindJailPlayBratTheWarden0,"Cover me you brats!"
-KinkyDungeonRemindJailPlayBratTheWarden1,"They're coming for me!"
+KinkyDungeonRemindJailPlayBratTheWarden1,"She's coming for me!"
 KinkyDungeonRemindJailPlayBratTheWarden2,"Stay away!"
 KinkyDungeonRemindJailPlaySubTheWarden0,"Time for a taste of my own medicine..."
 KinkyDungeonRemindJailPlaySubTheWarden1,"I've been a bad girl, won't you do something about it?"

@@ -6056,7 +6056,7 @@ You a padded metal blindfold, glowing magnificently, along with a strange crysta
 你是一个带衬垫的金属眼罩，闪闪发光，旁边还有一个奇怪的水晶。
 A well-fitted mask, covering your entire head neatly and locking in place.
 一款合身的面罩，整齐地覆盖你的整个头部并锁定到位。
-It has eyeholes for you to see out of, but blocks access to the face.
+It has eyeholes for you to somewhat see out of, but blocks access to the face.
 它有眼孔供你向外看，但挡住了接触脸部的通道。
 Shadow Heels
 暗影高跟鞋

@@ -4117,7 +4117,7 @@ let KDEventMapSpell = {
 						type: "ice",
 						damage: 0,
 						time: 0,
-						bind: data.froze + data.enemy.Enemy.maxhp * 0.1,
+						bind: data.froze + Math.max(0, (data.enemy.Enemy.maxhp* 0.2 - (data.enemy.boundLevel || 0))),
 						bindType: "Ice",
 					}, false, true, undefined, undefined, KinkyDungeonPlayerEntity);
 					if (KDHelpless(data.enemy) && !(data.enemy.freeze > 300)) data.enemy.freeze = 300;

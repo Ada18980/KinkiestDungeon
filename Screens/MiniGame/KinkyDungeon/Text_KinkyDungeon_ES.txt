@@ -6510,7 +6510,7 @@ You a padded metal blindfold, glowing magnificently, along with a strange crysta
 Tienes una venda de metal acolchada que brilla magníficamente, junto con un extraño cristal a su lado.
 A well-fitted mask, covering your entire head neatly and locking in place.
 Una máscara bien ajustada, que cubra toda la cabeza de manera ordenada y que se bloquee en su lugar.
-It has eyeholes for you to see out of, but blocks access to the face.
+It has eyeholes for you to somewhat see out of, but blocks access to the face.
 Tiene orificios para los ojos para que puedas ver, pero bloquea el acceso a la cara.
 Obsidian Muzzle
 Bozal de obsidiana

@@ -6345,8 +6345,8 @@ You a padded metal blindfold, glowing magnificently, along with a strange crysta
 You a padded metal blindfold, glowing magnificently, along with a strange crystal next to it.
 A well-fitted mask, covering your entire head neatly and locking in place.
 A well-fitted mask, covering your entire head neatly and locking in place.
-It has eyeholes for you to see out of, but blocks access to the face.
-It has eyeholes for you to see out of, but blocks access to the face.
+It has eyeholes for you to somewhat see out of, but blocks access to the face.
+It has eyeholes for you to somewhat see out of, but blocks access to the face.
 Obsidian Muzzle
 Obsidian Muzzle
 A muzzle made from segmented metal pieces, fitting securely over your face.

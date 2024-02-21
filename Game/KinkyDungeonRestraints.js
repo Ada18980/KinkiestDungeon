@@ -4060,7 +4060,7 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 									if (KinkyDungeonRestraintVariants[inventoryAs]) loose.showInQuickInv = true;
 									KinkyDungeonInventoryAdd(loose);
 									KDUpdateItemEventCache = true;
-								} else if (!Add && !UnLink) {
+								} else {
 									if (!KinkyDungeonInventoryGetLoose(inventoryAs).quantity) KinkyDungeonInventoryGetLoose(inventoryAs).quantity = 0;
 									KinkyDungeonInventoryGetLoose(inventoryAs).quantity += 1;
 								}
@@ -4068,7 +4068,7 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 								if (!KinkyDungeonInventoryGetLoose(invrest.name)) {
 									KinkyDungeonInventoryAdd({name: invrest.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:invrest.events, quantity: 1});
 									KDUpdateItemEventCache = true;
-								} else if (!Add && !UnLink) {
+								} else {
 									if (!KinkyDungeonInventoryGetLoose(invrest.name).quantity) KinkyDungeonInventoryGetLoose(invrest.name).quantity = 0;
 									KinkyDungeonInventoryGetLoose(invrest.name).quantity += 1;
 								}

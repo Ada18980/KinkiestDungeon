@@ -7721,7 +7721,7 @@ You a padded metal blindfold, glowing magnificently, along with a strange crysta
 黄金に光る金属製の目隠しと、奇妙なクリスタルを見つけた。
 A well-fitted mask, covering your entire head neatly and locking in place.
 顔全体を包み込み、しっかりとフィットするマスク。
-It has eyeholes for you to see out of, but blocks access to the face.
+It has eyeholes for you to somewhat see out of, but blocks access to the face.
 外を見るための穴はあるが、顔の拘束具に触れることはできなくなる。
 
 Shadow Heels

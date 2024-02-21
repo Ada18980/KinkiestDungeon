@@ -7335,7 +7335,7 @@ You a padded metal blindfold, glowing magnificently, along with a strange crysta
 Вы находите величественно сияющую металлическую повязку с подкладкой, а рядом с ней странный кристалл.
 A well-fitted mask, covering your entire head neatly and locking in place.
 Хорошо подогнанная маска, аккуратно закрывающая всю голову и надёжно на ней фиксирующаяся.
-It has eyeholes for you to see out of, but blocks access to the face.
+It has eyeholes for you to somewhat see out of, but blocks access to the face.
 В ней есть прорези для глаз, через которые вы можете видеть, но она блокирует доступ к лицу.
 Shadow Heels
 Теневые каблуки

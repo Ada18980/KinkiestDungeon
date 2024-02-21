@@ -28,6 +28,9 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.2.6
+- Frozen Prison now brings an enemy up to 20% binding, then applies 10 binding per turn of freeze applied.
+
 5.2.5
 - Arcane Barrier nerfed to 0 + 10% max mana
 - Fix: Enemy with 0 hp won't be defeated from damage
