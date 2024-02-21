@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.6"
+KDVersionStr,"5.2.7"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -3076,7 +3076,7 @@ KinkyDungeonStruggleRemoveNeedEdgeWrongAroused,"You squirm helplessly against th
 KinkyDungeonStruggleStruggleNeedEdgeWrong,"You twist your body trying to use the furniture, but it doesn't seem to work. The TargetRestraint remains tight."
 KinkyDungeonStruggleStruggleNeedEdgeWrongAroused,"You wiggle and squirm, trying to use the furniture to no avail. The TargetRestraint remains tight."
 
-KinkyDungeonStruggleRemoveNeedEdgeWrongSharp,"You need something sharp to loosen the fasteners on the TargetRestraint."
+KinkyDungeonStruggleRemoveNeedEdgeWrongSharp,"You need something sharper to get at the TargetRestraint."
 KinkyDungeonStruggleRemoveNeedEdgeWrongSharpAroused,"This is not a job for your trembling fingers right now."
 KinkyDungeonStruggleStruggleNeedEdgeWrongSharp,"Tugging on the TargetRestraint is useless. Maybe if you had something sharp..."
 KinkyDungeonStruggleStruggleNeedEdgeWrongSharpAroused,"You sigh as the TargetRestraint resists all your attempts at breaking through."

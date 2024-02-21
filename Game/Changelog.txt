@@ -30,6 +30,9 @@ Monk class?
 
 5.2.6
 - Frozen Prison now brings an enemy up to 20% binding, then applies 10 binding per turn of freeze applied.
+- Cutting while bound should now be a little easier
+- Tweaked struggle parameters on leashes and bubbles
+- Added custom lines for bubble struggling
 
 5.2.5
 - Arcane Barrier nerfed to 0 + 10% max mana

@@ -390,6 +390,7 @@ let alts = {
 			brightness: 6,
 		},
 
+		noSetpiece: true,
 		setpieces: {
 		},
 		alwaysRegen: true,
@@ -1646,6 +1647,9 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 	DialogueCreateEnemy(KDMapData.StartPosition.x + 4, KDMapData.StartPosition.y - 3, "AntiqueQuest").AI = "guard";
 	KinkyDungeonMapSet(KDMapData.StartPosition.x + 4, KDMapData.StartPosition.y - 3, '2');
 	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 4) + ',' + (KDMapData.StartPosition.y - 3), {OffLimits: true});
+
+	if (KDRandom() < 0.1 * KDGameData.HighestLevel)
+		SetpieceSpawnPrisoner(KDMapData.StartPosition.x + 9, KDMapData.StartPosition.y);
 
 	// Normal end stairs
 	KinkyDungeonMapSet(b1*2 - 1, VisitedRooms[0].y*2 - 4, 's');

@@ -1919,6 +1919,10 @@ const KinkyDungeonRestraints = [
 			Struggle: 0.4,
 			Remove: 0.8,
 		},
+		affinity: {
+			Struggle: ["Sharp"],
+			Remove: ["Sharp"],
+		},
 		escapeChance: {"Struggle": 0, "Cut": 0.8, "Remove": 0.3},
 		helpChance: {"Struggle": 0.2, "Pick": 1.0, "Remove": .2},
 		events: [
@@ -1933,6 +1937,10 @@ const KinkyDungeonRestraints = [
 		heelpower: 10,
 		addTag: ["ForceKneel", "NoHogtie"],
 		failSuffix: {Remove: "Bubble", Struggle: "Bubble", Cut: "Bubble"},
+		affinity: {
+			Struggle: ["Sharp"],
+			Remove: ["Sharp"],
+		},
 		limitChance: {
 			Cut: 0.3,
 			Struggle: 0.4,
@@ -1954,6 +1962,10 @@ const KinkyDungeonRestraints = [
 		failSuffix: {Remove: "Bubble", Struggle: "Bubble", Cut: "Bubble"},
 		escapeChance: {"Struggle": -0.3, "Cut": 0.5, "Remove": -.5},
 		helpChance: {"Struggle": -0.3, "Pick": 1.0, "Remove": -.5},
+		affinity: {
+			Struggle: ["Sharp"],
+			Remove: ["Sharp"],
+		},
 		events: [
 			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
 			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
