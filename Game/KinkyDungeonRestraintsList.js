@@ -1553,6 +1553,10 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, removePrison: true, name: "WolfLeash", debris: "Belts", tether: 2.9, Asset: "CollarLeash", Color: "#44fF76", Group: "ItemNeckRestraints", leash: true, power: 1, weight: -99, harness: true,
 		Model: "Leash",
+		affinity: {
+			Cut: ["SharpHookOrFoot"],
+			Struggle: ["HookOrFoot"],
+		},
 		Filters: {
 			Leash: {"gamma":1,"saturation":1,"contrast":1.6,"brightness":0.6666666666666666,"red":1,"green":2.0833333333333335,"blue":1,"alpha":1},
 		},
@@ -1560,6 +1564,7 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "postRemoval", type: "RequireCollar"},
 		],
+		limitChance: {Struggle: 0.2},
 		escapeChance: {"Struggle": -0.3, "Cut": -0.2, "Remove": 0.4, "Pick": 0.35}, enemyTags: {"wolfRestraints":9, "wolfLeash": 10}, playerTags: {"ItemNeckRestraintsFull":-2, "ItemNeckFull":999}, minLevel: 0, allFloors: true, shrine: []},
 
 	//endregion
@@ -1908,7 +1913,13 @@ const KinkyDungeonRestraints = [
 		addTag: ["ForceKneel", "NoHogtie"],
 		hobble: 3,
 		heelpower: 10,
-		escapeChance: {"Struggle": -0.4, "Cut": 0.4, "Remove": -0.5},
+		failSuffix: {Remove: "Bubble", Struggle: "Bubble", Cut: "Bubble"},
+		limitChance: {
+			Cut: 0,
+			Struggle: 0.4,
+			Remove: 0.8,
+		},
+		escapeChance: {"Struggle": 0, "Cut": 0.8, "Remove": 0.3},
 		helpChance: {"Struggle": 0.2, "Pick": 1.0, "Remove": .2},
 		events: [
 			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
@@ -1921,8 +1932,13 @@ const KinkyDungeonRestraints = [
 		hobble: 3,
 		heelpower: 10,
 		addTag: ["ForceKneel", "NoHogtie"],
-		escapeChance: {"Struggle": -0.4, "Cut": 0.4, "Remove": -.2},
-		limitChance: {"Cut": 0.3,},
+		failSuffix: {Remove: "Bubble", Struggle: "Bubble", Cut: "Bubble"},
+		limitChance: {
+			Cut: 0.3,
+			Struggle: 0.4,
+			Remove: 0.8,
+		},
+		escapeChance: {"Struggle": 0, "Cut": 0.4, "Remove": .3},
 		helpChance: {"Struggle": 0.2, "Pick": 1.0, "Remove": .2},
 		events: [
 			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
@@ -1935,6 +1951,7 @@ const KinkyDungeonRestraints = [
 		bindarms: true,
 		restriction: 30,
 		addTag: ["ForceKneel", "NoHogtie"],
+		failSuffix: {Remove: "Bubble", Struggle: "Bubble", Cut: "Bubble"},
 		escapeChance: {"Struggle": -0.3, "Cut": 0.5, "Remove": -.5},
 		helpChance: {"Struggle": -0.3, "Pick": 1.0, "Remove": -.5},
 		events: [
@@ -4640,6 +4657,7 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, arousalMode: true, name: "DivineBelt", Asset: "OrnateChastityBelt", OverridePriority: 26, Color: ["#272727", "#D3B24B"], Group: "ItemPelvis", chastity: true,
 		power: 49, weight: 0,
+		special: true,
 		alwaysKeep: true,
 		Security: {
 			level_key: 4,
@@ -4664,6 +4682,7 @@ const KinkyDungeonRestraints = [
 		shrine: ["Chastity", "Metal", "Latex", "Rope", "Leather", "ChastityBelts", "SupremeBelt"]},
 	{inventory: true, arousalMode: true, name: "DivineBelt2", Asset: "OrnateChastityBelt", OverridePriority: 26, Color: ["#272727", "#D3B24B"], Group: "ItemPelvis", chastity: true,
 		power: 49, weight: 0,
+		special: true,
 		Security: {
 			level_key: 4,
 			level_magic: 4,
@@ -4693,6 +4712,7 @@ const KinkyDungeonRestraints = [
 			level_magic: 4,
 			level_tech: 4,
 		},
+		special: true,
 		alwaysKeep: true,
 		chastitybra: true,
 		power: 49,
@@ -4710,6 +4730,7 @@ const KinkyDungeonRestraints = [
 			level_magic: 4,
 			level_tech: 4,
 		},
+		special: true,
 		alwaysKeep: true,
 		chastitybra: true,
 		power: 49,
@@ -4845,9 +4866,17 @@ const KinkyDungeonRestraints = [
 	{inventory: true, removePrison: true, name: "BasicLeash", tether: 2.9, Asset: "CollarLeash", Color: "Default", Group: "ItemNeckRestraints", leash: true, power: 1, weight: -99, harness: true,
 		Model: "Leash",
 		unlimited: true,
+		affinity: {
+			Cut: ["SharpHookOrFoot"],
+			Struggle: ["HookOrFoot"],
+		},
 		events: [
 			{trigger: "postRemoval", type: "RequireCollar"}
 		],
+		struggleMinSpeed: {
+			Cut: 0.05,
+		},
+		limitChance: {Struggle: 0.2},
 		escapeChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": 0.5, "Pick": 1.25}, enemyTags: {"leashing":1}, playerTags: {"ItemNeckRestraintsFull":-2, "ItemNeckFull":99}, minLevel: 0, allFloors: true, shrine: []},
 
 	//region Cursed Set - Flames of Desire

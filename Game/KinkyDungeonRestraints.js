@@ -45,7 +45,26 @@ let KDCustomAffinity = {
 		// Intentionally only a + shape
 		if (KDNearbyMapTiles(data.entity.x, data.entity.y, 1.1)?.some((tile) => {return KinkyDungeonBlockTiles.includes(tile.tile);})) return true;
 		return KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
-	}
+	},
+	HookOrFoot: (data) => {
+		if (KinkyDungeonCanUseFeetLoose()) {
+			if (data.Message) {
+				KinkyDungeonSendTextMessage(7, TextGet("KDUseFootAffinity"), "lightgreen", 2);
+			}
+			return true;
+		}
+		return KinkyDungeonGetAffinity(data.Message, "Hook", data.group);
+	},
+	SharpHookOrFoot: (data) => {
+		if (!KinkyDungeonGetAffinity(data.Message, "Sharp", data.group)) return false;
+		if (KinkyDungeonCanUseFeetLoose()) {
+			if (data.Message) {
+				KinkyDungeonSendTextMessage(7, TextGet("KDUseFootAffinity"), "lightgreen", 2);
+			}
+			return true;
+		}
+		return KinkyDungeonGetAffinity(data.Message, "Hook", data.group);
+	},
 };
 
 /**
@@ -1383,6 +1402,15 @@ function KDHandBondageTotal(Other = false) {
 function KinkyDungeonCanUseFeet() {
 	return KinkyDungeonStatsChoice.get("Flexible") && KinkyDungeonSlowLevel < 1;
 }
+/**
+ *
+ * @returns {boolean}
+ */
+function KinkyDungeonCanUseFeetLoose() {
+	return KinkyDungeonCanUseFeet() || (
+		!KDForcedToGround()
+	);
+}
 
 /**
  *
@@ -2017,7 +2045,9 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 	let edgeBonus = 0.12*toolMult;
 	// Easier to struggle if your legs are free, due to leverage
-	if (StruggleType == "Struggle" && data.hasAffinity) data.escapeChance += edgeBonus * (0.5 + 0.5*Math.max(2 - KinkyDungeonSlowLevel, 0));
+	// Slight boost to remove as well, but not as much due to the smaller movements required
+	if ((StruggleType == "Struggle" || StruggleType == "Cut") && data.hasAffinity) data.escapeChance += edgeBonus * (0.5 + 0.5*Math.max(2 - KinkyDungeonSlowLevel, 0));
+	else if ((StruggleType == "Remove") && data.hasAffinity) data.escapeChance += edgeBonus * (0.1 + 0.1*Math.max(2 - KinkyDungeonSlowLevel, 0));
 
 	// Restriction penalties AFTER bonuses
 	if (data.restriction > 0 && !KinkyDungeonHasHelp()) {
@@ -2198,17 +2228,18 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			} else if (!KinkyDungeonIsArmsBound(true)) {
 				data.escapeChance *= 0.7;
 			} else if (KinkyDungeonStatsChoice.get("Psychic")) {
-				data.escapeChance *= 0.55;
+				data.escapeChance *= 0.6;
 			} else if (data.hasAffinity) {
-				data.escapeChance *= 0.4;
+				data.escapeChance *= 0.5;
 			} else {
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedGrip"), "#ff0000", 2, true);
 				data.escapeChance *= 0.0;
 			}
-		} else if (data.hasAffinity) data.escapeChance *= 0.4;
+		} else if (data.hasAffinity) data.escapeChance *= 0.5;
 		else data.escapeChance = 0;
 
-		data.escapeChance = Math.max(0, data.escapeChance - 0.05);
+		// 5.2.6 - removed because limitchance already accounts for this
+		//data.escapeChance = Math.max(0, data.escapeChance - 0.05);
 
 	}
 
@@ -2243,6 +2274,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	if (struggleGroup == "ItemNipples" || struggleGroup == "ItemNipplesPiercings") bra = KinkyDungeonGetRestraintItem("ItemBreast");
 	if (bra && KDRestraint(bra) && KDRestraint(bra).chastitybra) data.escapeChance = 0.0;
 
+
+	KinkyDungeonSetFlag("escaping", 1);
 
 	if (data.escapeChance <= 0 && (!KDRestraint(restraint).alwaysEscapable || !KDRestraint(restraint).alwaysEscapable.includes(StruggleType))) {
 		if (!restraint.attempts) restraint.attempts = 0;

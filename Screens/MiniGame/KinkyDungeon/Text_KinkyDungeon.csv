@@ -3205,6 +3205,30 @@ KinkyDungeonStruggleStruggleImpossibleClampsAroused,"You realize that would real
 KinkyDungeonStruggleStruggleImpossibleBoundClamps,"The TargetRestraint tug on your nipples as you squirm!"
 KinkyDungeonStruggleStruggleImpossibleBoundClampsAroused,"The TargetRestraint tug on your nipples as you squirm!"
 
+
+
+
+KinkyDungeonStruggleRemoveFailBubble,"You paw at the TargetRestraint from inside, hoping to find an opening..."
+KinkyDungeonStruggleRemoveFailBubbleAroused,"You flail around inside the TargetRestraint..."
+KinkyDungeonStruggleRemoveImpossibleBubble,"The TargetRestraint is completely seamless!"
+KinkyDungeonStruggleRemoveImpossibleBubbleAroused,"The TargetRestraint is completely seamless! This is hopeless."
+KinkyDungeonStruggleRemoveImpossibleBoundBubble,"You are too weak to poke your hand through the TargetRestraint..."
+KinkyDungeonStruggleRemoveImpossibleBoundBubbleAroused,"You are too weak to poke your hand through the TargetRestraint..."
+
+KinkyDungeonStruggleStruggleFailBubble,"You stretch yourself out inside the TargetRestraint!"
+KinkyDungeonStruggleStruggleFailBubbleAroused,"You bounce around inside the TargetRestraint!"
+KinkyDungeonStruggleStruggleImpossibleBubble,"The TargetRestraint stretches to accomodate your movements..."
+KinkyDungeonStruggleStruggleImpossibleBubbleAroused,"The TargetRestraint tips slightly as you squirm around..."
+KinkyDungeonStruggleStruggleImpossibleBoundBubble,"You are too weak to make even a small dent in the TargetRestraint..."
+KinkyDungeonStruggleStruggleImpossibleBoundBubbleAroused,"The TargetRestraint is unyielding despite your attempts..."
+
+KinkyDungeonStruggleCutFailBubble,"You try to puncture the TargetRestraint..."
+KinkyDungeonStruggleCutFailBubbleAroused,"You poke around at the TargetRestraint..."
+KinkyDungeonStruggleCutImpossibleBubble,"The TargetRestraint is too durable to pop..."
+KinkyDungeonStruggleCutImpossibleBubbleAroused,"The TargetRestraint is too strong despite your best efforts..."
+KinkyDungeonStruggleCutImpossibleBoundBubble,"You can't quite get enough force to pop the TargetRestraint..."
+KinkyDungeonStruggleCutImpossibleBoundBubbleAroused,"Your attempts to pop the TargetRestraint are futile due to your restraints..."
+
 KinkyDungeonNeedOpenChest,"The chest is too smooth to help. Maybe if you opened it?"
 
 KinkyLockable,Lockable
@@ -20248,3 +20272,5 @@ KDRoomType_Warden,"Prison"
 KDRoomType_Dollmaker,"Sorting Room"
 
 KDHotbarTutorial,"Click a hotbar position to assign the item to that slot.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs."
+
+KDUseFootAffinity,You step on the item and tug to pull it taut...
