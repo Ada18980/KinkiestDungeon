@@ -53,6 +53,7 @@ let KDObjectDraw = {
 
 function KinkyDungeonDrawDoor() {
 	if (KinkyDungeonTargetTile.Lock) {
+		KDModalArea_height = 200;
 		let action = false;
 		if ((KDLocks[KinkyDungeonTargetTile.Lock].pickable)) {
 			DrawButtonVis(KDModalArea_x + 313, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonPickDoor"),
@@ -94,6 +95,7 @@ function KinkyDungeonDrawDoor() {
 /** Chest lock */
 function KinkyDungeonDrawLock() {
 	if (KinkyDungeonTargetTile.Lock) {
+		KDModalArea_height = 200;
 		let action = false;
 		if ((KDLocks[KinkyDungeonTargetTile.Lock].pickable)) {
 			DrawButtonVis(KDModalArea_x + 313, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonPickDoor"),

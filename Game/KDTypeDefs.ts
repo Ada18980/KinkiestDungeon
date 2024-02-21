@@ -362,6 +362,8 @@ interface KDRestraintPropsBase {
 	heelpower?: number,
 	/** Blocking feet is for restraints that tie the legs together, forcing the player into SLow Level 2 or higher */
 	blockfeet?: boolean,
+	/** restricvtion bonus */
+	restriction?: number,
 	/** Your total gag level is the sum of the gag values of all your variables. Ball gags have 0.3-0.75 based on size and harness, muzzles are 1.0 */
 	gag?: number,
 	/** Higher value = higher vision loss */
@@ -515,6 +517,14 @@ type outfitKey = string
 type mapKey = string
 
 interface floorParams {
+	/** Weighted list of successor tileset, positive X */
+	successorPositive: Record<string, number>;
+	/** Weighted list of successor tileset, negative X */
+	successorNegative: Record<string, number>;
+	/** Weighted list of successor tileset, same X */
+	successorSame: Record<string, number>;
+
+	color: string,
 	/** List of factions allowed to be primary or secondary here */
 	factionList?: string[];
 	/** This code is run after a worldgen */
@@ -593,8 +603,8 @@ interface floorParams {
 
 	setpieces?: {Type: string, Weight: number}[],
 
-	shortcuts: {Level: number, checkpoint: string, chance:number}[	],
-	mainpath: {Level: number, checkpoint: string, chance?: number}[],
+	//shortcuts: {Level: number, checkpoint: string, chance:number}[	],
+	//mainpath: {Level: number, checkpoint: string, chance?: number}[],
 
 	traps: {Name: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, Weight: number, strict?: true, teleportTime?: number, filterTag?: string, filterBackup?: string, arousalMode?: boolean}[],
 
@@ -1455,6 +1465,9 @@ interface KinkyDungeonEvent {
 	/** Dialogue key an enemy should send */
 	enemyDialogue?: string;
 
+	escapeMethod?: string;
+	enemy?: string;
+
 	// MUTABLE QUANTITIES
 	prevSlowLevel?: number;
 }
@@ -2260,6 +2273,7 @@ interface KinkyDungeonSave {
 	dress: string;
 	gold: number;
 	points: number;
+	progression: string;
 	inventoryVariants: Record<string, KDRestraintVariant>;
 	consumableVariants: Record<string, KDConsumableVariant>;
 	weaponVariants: Record<string, KDWeaponVariant>;
@@ -2338,8 +2352,8 @@ interface KDMapDataType {
 	FogGrid: any[];
 
 
-	MainPath: string,
-	ShortcutPath: string,
+	//MainPath: string,
+	//ShortcutPath: string,
 
 	Tiles: Record<string, any>;
 	TilesSkin: Record<string, any>;
@@ -2350,7 +2364,7 @@ interface KDMapDataType {
 	Bullets: any[];
 	StartPosition: {x: number, y: number};
 	EndPosition: {x: number, y: number};
-	ShortcutPosition: {x: number, y: number};
+	ShortcutPositions: {x: number, y: number}[];
 
 	PatrolPoints: {x: number, y: number}[];
 
@@ -2361,6 +2375,17 @@ interface KDMapDataType {
 	RoomType: string,
 	MapMod: string,
 
+	EscapeMethod: string,
+	KillTarget: string,
+	KillQuota: number,
+	TrapQuota: number,
+	TrapsTriggered: number,
+	ChestQuota: number,
+	ChestsOpened: number,
+	QuestQuota: number,
+	QuestsAccepted: number,
+	KeyQuota: number,
+	KeysHeld: number,
 
 	JailPoints: KDJailPoint[],
 
@@ -2376,12 +2401,40 @@ interface KDMapDataType {
 }
 
 
+
+type KDSideRoom = {
+	name: string,
+	faction?: string,
+	weight: number,
+	/** Rolled once each time it gets a map mod */
+	chance: number,
+	/**
+	 *
+	 * @param slot Journey slot of the tile to be generated for
+	 * @param side true = top side, false = bot side
+	 * @returns {number} - Multiplier to chance
+	 */
+	filter: (slot: KDJourneySlot, side: boolean) => number,
+	mapMod: string,
+	altRoom: string,
+	escapeMethod?: string,
+	/** Returns whether it succeeded */
+	stairCreation: (tile: any, x: number, y: number) => boolean,
+}
+
+
 type MapMod = {
 	name: string,
 	roomType: string,
 	jailType?: string,
 	guardType?: string,
 	weight: number,
+	/**
+	 *
+	 * @param slot Journey slot of the tile to be generated for
+	 * @returns {number} - multiplier to WEIGHT
+	 */
+	filter: (slot: KDJourneySlot) => number,
 	tags: string[],
 	faction?: string,
 	tagsOverride?: string[],
@@ -2389,6 +2442,7 @@ type MapMod = {
 	spawnBoxes?: any[],
 	bonussetpieces?: {Type: string, Weight: number}[],
 	altRoom: string,
+	escapeMethod?: string,
 }
 
 type AIType = {
@@ -3003,6 +3057,7 @@ interface KDSeal {
 }
 
 interface KDBoobyTrap {
+	minlevel: number,
 	filter: (enemy: entity, x: number, y: number, checkpoint: boolean, type: string[]) => boolean;
 	weight: (enemy: entity, x: number, y: number, checkpoint: boolean, type: string[]) => number;
 	lifetime?: number;
@@ -3153,9 +3208,30 @@ interface KDFactionProps {
 	customDefeat?: string,
 	/** Custom jail allied faction to use */
 	jailAlliedFaction?: string,
+	/** Backup incase cant find strictly using jailAlliedFaction */
+	jailBackupFaction?: string,
 	/** Custom jail outfit to use */
 	jailOutfit: string,
 }
+
+type KDJourneySlot = {
+	visited: boolean,
+
+	x: number;
+	y: number;
+	color: string;
+	type: string;
+	RoomType: string;
+	MapMod: string;
+	EscapeMethod: string;
+	Faction: string;
+	SideRooms: string[];
+	Checkpoint: string;
+	Connections: {x: number, y: number}[];
+	/** Prevents from getting culled */
+	protected?: boolean;
+};
+type KDJourneyMap = {[_: string]:  KDJourneySlot};
 
 type outfit = {name: string, dress: string, shop: boolean, rarity: number, events?: KinkyDungeonEvent[], costMod?: number};
 

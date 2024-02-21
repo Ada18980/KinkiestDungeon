@@ -1069,10 +1069,11 @@ function KDDrawWardrobe(screen, Character) {
 	DrawButtonKDEx("LoadFromCode", (bdata) => {
 		KinkyDungeonState = "LoadOutfit";
 
+
 		//LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
-		CharacterReleaseTotal(KinkyDungeonPlayer);
+		CharacterReleaseTotal(C || KinkyDungeonPlayer);
 		ElementCreateTextArea("saveInputField");
-		ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
+		ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(C || KinkyDungeonPlayer)));
 		return true;
 	}, true,475, 930, 220, 60, TextGet("KinkyDungeonDressPlayerImport"),
 	"#ffffff", "");
@@ -1223,12 +1224,14 @@ function KDDrawWardrobe(screen, Character) {
 	if (!Character || Character == KinkyDungeonPlayer) {
 		DrawButtonKDEx("KDWardrobeSave", (bdata) => {
 			KinkyDungeonState = "Menu";
+			KDPlayerSetPose = false;
 			KinkyDungeonDressSet();
 			return true;
 		}, true, 20, 942, 380, 50, TextGet("KDWardrobeSave"), "#ffffff", "");
 	} else {
 		DrawButtonKDEx("KDBackToGame", (bdata) => {
 			KinkyDungeonState = "Game";
+			KDPlayerSetPose = false;
 			ForceRefreshModelsAsync(C);
 			if (KDWardrobeCallback) KDWardrobeCallback();
 			//KinkyDungeonDressSet(Character);
@@ -1254,10 +1257,7 @@ function KDSaveCodeOutfit(C, clothesOnly = false) {
 		CharacterReleaseTotal(C);
 		CharacterNaked(C);
 		KinkyDungeonCheckClothesLoss = true;
-		if (KinkyDungeonCurrentDress == "Bikini")
-			KinkyDungeonSetDress("Bikini", "Bikini", C, true);
-		else
-			KinkyDungeonSetDress("None", "None", C, true);
+		KinkyDungeonSetDress("None", "None", C, true);
 		KinkyDungeonDressPlayer(C, true);
 		KDInitProtectedGroups(C);
 		KinkyDungeonConfigAppearance = true;
@@ -1270,7 +1270,7 @@ function KDSaveCodeOutfit(C, clothesOnly = false) {
 	}
 
 	KinkyDungeonCheckClothesLoss = true;
-	KinkyDungeonDressPlayer();
+	KinkyDungeonDressPlayer(C, true);
 	/*if (stringified) {
 		localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit, stringified);
 		KDSaveOutfitInfo();

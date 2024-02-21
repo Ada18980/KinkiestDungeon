@@ -480,7 +480,7 @@ let KDMoveObjectFunctions = {
 					tile: KinkyDungeonTilesGet(moveX + "," +moveY),
 					noTrap: noTrap,
 					level: MiniGameKinkyDungeonLevel,
-					index: KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+					index: (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 					lootTrap: lootTrap,
 					aggro: true,
 				};
@@ -491,8 +491,10 @@ let KDMoveObjectFunctions = {
 				roll = data.roll;
 				noTrap = data.noTrap;
 				lootTrap = data.lootTrap;
+				KDMapData.ChestsOpened++;
 				KinkyDungeonLoot(data.level, data.index, chestType, roll, data.tile, undefined, noTrap);
 				if (lootTrap) {
+					KDMapData.TrapsTriggered++;
 					KDTrigPanic(true);
 					KDSpawnLootTrap(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, lootTrap.trap, lootTrap.mult, lootTrap.duration);
 				}
@@ -510,8 +512,8 @@ let KDMoveObjectFunctions = {
 	'Y': (moveX, moveY) => { // Open the chest
 		let allowManip = KDAllowUseItems(true);
 		if (allowManip) {
-			let chestType = KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] == "lib" ? "shelf" : "rubble";
-			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], chestType);
+			let chestType = (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint) == "lib" ? "shelf" : "rubble";
+			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), chestType);
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 			KinkyDungeonMapSet(moveX, moveY, 'X');
 			KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
@@ -605,6 +607,13 @@ let KDEffectTileFunctionsStandalone = {
 		}
 		return true;
 	},
+	"ManaFull": (delta, tile) => {
+		KDCreateEffectTile(tile.x, tile.y, {
+			name: "WireSparks",
+			duration: 2,
+		}, 0);
+		return false;
+	},
 };
 
 function KDSlimeImmuneEntity(entity) {
@@ -642,6 +651,54 @@ let KDEffectTileFunctions = {
 			name: "WireSparks",
 			duration: 2,
 		}, 0);
+		return false;
+	},
+
+
+	"MotionLamp": (delta, entity, tile) => {
+		KDCreateEffectTile(tile.x, tile.y, {
+			name: "MotionLampLight",
+			duration: 12,
+		}, 0);
+		return false;
+	},
+	"ManaFull": (delta, entity, tile) => {
+		KinkyDungeonSendTextMessage(8, TextGet("KDManaStationCharged"), "#7799ff");
+		return false;
+	},
+	"ManaEmpty": (delta, entity, tile) => {
+		if (entity.player) {
+			if (KinkyDungeonStatMana + KinkyDungeonStatManaPool >= 5) {
+				KinkyDungeonChangeMana(-5, false, 0, true, true);
+				tile.duration = 0;
+				KDCreateEffectTile(tile.x, tile.y, {
+					name: "ManaPartial",
+					duration: 9999, infinite: true,
+				}, 0);
+				KinkyDungeonSendTextMessage(9, TextGet("KDManaStationDrain1"), "#7799ff");
+				return true;
+			} else {
+				KinkyDungeonSendTextMessage(9, TextGet("KDManaStationFail"), "#7799ff");
+			}
+		}
+		return false;
+	},
+	"ManaPartial": (delta, entity, tile) => {
+		if (entity.player) {
+			if (KinkyDungeonStatMana + KinkyDungeonStatManaPool >= 5) {
+				KinkyDungeonChangeMana(-5, false, 0, true, true);
+				tile.duration = 0;
+				KDCreateEffectTile(tile.x, tile.y, {
+					name: "ManaFull",
+					duration: 9999, infinite: true,
+				}, 0);
+				KinkyDungeonSendTextMessage(9, TextGet("KDManaStationDrain2"), "#7799ff");
+				return true;
+			} else {
+				KinkyDungeonSendTextMessage(10, TextGet("KDManaStationFail"), "#7799ff");
+			}
+		}
+
 		return false;
 	},
 

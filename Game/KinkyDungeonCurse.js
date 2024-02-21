@@ -363,6 +363,19 @@ let KDCurses = {
 			{type: "IncrementRemovalVar", power: -25, count: 50, trigger: "orgasm", kind: "OrgasmResist", msg: "KDRemoveOnEdgeFail"},
 		],
 	},
+	"HaveOrgasm" : {
+		powerMult: 2.5,
+		activatecurse: true,
+		level: 5,
+		weight: (item) => {
+			return KinkyDungeonStatsChoice.get("arousalMode") ? 9 : 0;
+		},
+		condition: (item) => {return false;},
+		remove: (item, host) => {},
+		events: [
+			{type: "IncrementRemovalVar", power: 25, count: 50, trigger: "orgasm", kind: "HaveOrgasm", msg: "KDRemoveOnOrgasmFail"},
+		],
+	},
 };
 
 
@@ -502,11 +515,7 @@ function KinkyDungeonCurseUnlock(group, index, Curse) {
 	if (unlock) {
 		KDSendStatus('escape', KinkyDungeonGetRestraintItem(group).name, "Curse");
 		KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonCurseUnlock" + Curse), "#99FF99", 2);
-		if (restraint != host) {
-			KinkyDungeonRemoveDynamicRestraint(host, keep, undefined, KinkyDungeonPlayerEntity);
-		} else {
-			KinkyDungeonRemoveRestraint(group, keep, undefined, undefined, undefined, undefined, KinkyDungeonPlayerEntity);
-		}
+		KinkyDungeonRemoveRestraintSpecific(restraint, keep, undefined, false, false, false, KinkyDungeonPlayerEntity);
 	}
 
 

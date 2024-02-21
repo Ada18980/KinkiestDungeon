@@ -1320,7 +1320,7 @@ let KDExpressions = {
 				BrowsPose: "BrowsNeutral",
 				Brows2Pose: "Brows2Neutral",
 				BlushPose: (KinkyDungeonVibeLevel > 2 || KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.5) ? "BlushMedium" : "BlushHigh",
-				MouthPose: "MouthEmbarrassed",
+				MouthPose: "MouthDazed",
 			};
 		},
 	},
@@ -1513,7 +1513,7 @@ let KDExpressions = {
 				BrowsPose: "",
 				Brows2Pose: "",
 				BlushPose: "",
-				MouthPose: "MouthEmbarrassed",
+				MouthPose: "MouthFrown",
 			};
 		},
 	},
@@ -1536,7 +1536,7 @@ let KDExpressions = {
 	},
 	"PassionateBlush1": {
 		stackable: true,
-		priority: 2.2,
+		priority: 2.3,
 		criteria: (C) => {
 			return C == KinkyDungeonPlayer && KinkyDungeonGoddessRep.Passion > -40 && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.25;
 		},
@@ -1581,7 +1581,7 @@ let KDExpressions = {
 				BrowsPose: "",
 				Brows2Pose: "",
 				BlushPose: "BlushHigh",
-				MouthPose: "",
+				MouthPose: "MouthDistracted",
 			};
 		},
 	},
@@ -1598,7 +1598,7 @@ let KDExpressions = {
 				BrowsPose: "",
 				Brows2Pose: "",
 				BlushPose: "BlushExtreme",
-				MouthPose: "",
+				MouthPose: "MouthDistracted",
 			};
 		},
 	},

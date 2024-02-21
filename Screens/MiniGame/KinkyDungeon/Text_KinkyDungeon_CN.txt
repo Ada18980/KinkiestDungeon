@@ -3128,7 +3128,7 @@ Wolf Instructor
 狼导师
 The instructor deploys active camoflague and retreats!
 导师部署主动迷彩并撤退！
-The instructor disciplies you! (DamageTaken)
+The instructor disciplines you! (DamageTaken)
 导师管教你！（DamageTaken）
 The instructor applies advanced training gear! (+RestraintAdded)
 导师使用先进的训练装备！（+RestraintAdded）
@@ -6056,7 +6056,7 @@ You a padded metal blindfold, glowing magnificently, along with a strange crysta
 你是一个带衬垫的金属眼罩，闪闪发光，旁边还有一个奇怪的水晶。
 A well-fitted mask, covering your entire head neatly and locking in place.
 一款合身的面罩，整齐地覆盖你的整个头部并锁定到位。
-It has eyeholes for you to see out of, but blocks access to the face.
+It has eyeholes for you to somewhat see out of, but blocks access to the face.
 它有眼孔供你向外看，但挡住了接触脸部的通道。
 Shadow Heels
 暗影高跟鞋
@@ -9220,7 +9220,7 @@ You are unable to muster the willpower to bypass the seal...
 你无法鼓起意志力绕过封印……
 Feeling determined, you override the seal and release the item!
 下定决心后，你推翻了封印并解开了该物品！
-The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it.
+The lock is protected by a revenant seal. You'll need 25 ectoplasm to disenchant it.
 这把锁由永久性密封件保护。你需要 25 个灵浆来打开它。
 Your fingers pass right through the collar. Pity your neck doesn't pass through it.
 你的手指直接穿过项圈。可惜你的脖子不能穿过它。
@@ -17636,7 +17636,7 @@ Living Collars
 活体项圈
 When getting captured with many of the same type of restraint, gain a collar that occasionally binds you with that type of restraint.
 当你被相同类型的束缚物多次捕获时，获得一个偶尔会用同种束缚物束缚你的项圈。
-Play the game the way it was intended. Cruel and restrictive. 
+Play the game the way it was intended. Cruel and restrictive.
 按照游戏的初衷来玩。严厉且充满限制性
 Unconventional Warfare
 非常规作战

@@ -185,7 +185,37 @@ function KDProcessInput(type, data) {
 			}
 			break;
 		}
-		case "equip":
+		case "equip": {
+
+			let equipped = false;
+			let newItem = null;
+			let currentItem = null;
+			let linkable = null;
+			let name = data.name;
+
+			if (name) {
+				newItem = KDRestraint({name: name});
+				if (newItem) {
+					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
+					if (!currentItem) equipped = false;
+					else {
+						if (KDDebugLink) {
+							linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
+						} else {
+							linkable = (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
+								((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
+								|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))));
+						}
+						if (linkable) {
+							equipped = false;
+						} else equipped = true;
+					}
+				}
+			}
+
+			if (equipped) return "";
+
+
 			KDDelayedActionPrune(["Action", "Equip"]);
 			KinkyDungeonSetFlag("SelfBondage", 1);
 			success = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(data.name), 0, true, "", KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonGetRestraintByName(data.currentItem), KinkyDungeonGetRestraintByName(data.name)), false, data.events, data.faction, false, data.curse, undefined, undefined, data.inventoryVariant);
@@ -220,6 +250,7 @@ function KDProcessInput(type, data) {
 
 				return msg;
 			} else return "KDCantEquip";
+		}
 		case "tryOrgasm":
 			KDDelayedActionPrune(["Action", "Sexy"]);
 			KinkyDungeonDoTryOrgasm(data.bonus, 0);
@@ -493,7 +524,40 @@ function KDProcessInput(type, data) {
 				KDDelayedActionPrune(["Action", "World"]);
 				if (KinkyDungeonGoddessRep[data.shrine] < -45) {
 					KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, "OrbGuardian", 3 + Math.floor(Math.sqrt(1 + MiniGameKinkyDungeonLevel)), 10, false, 30);
+					let tag = "";
+					switch (data.shrine) {
+						case "Latex":
+							tag = "HardSlimeCollar";
+							break;
+						case "Leather":
+							tag = "LeatherLivingCollar";
+							break;
+						case "Metal":
+							tag = "MithrilLivingCollar";
+							break;
+						case "Rope":
+							tag = "WeakMagicRopeCollar";
+							break;
+						case "Will":
+							tag = "MysticDuctTapeCollar";
+							break;
+						case "Elements":
+							tag = "CrystalLivingCollar";
+							break;
+						case "Conjure":
+							tag = "RibbonCollar";
+							break;
+						case "Illusion":
+							tag = "ObsidianLivingCollar";
+							break;
+					}
+					let restraintAdd = KinkyDungeonGetRestraintByName(tag);
+					if (restraintAdd) {
+						KinkyDungeonAddRestraintIfWeaker(restraintAdd, 10, true, "Gold", false, false, undefined, undefined, true);
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonGoddessCollar").replace("TYPE", TextGet("KinkyDungeonShrine" + data.shrine)).replace("RESTRAINT", TextGet("Restraint" + tag)), "lightblue", 2);
+					}
 				}
+
 				KinkyDungeonChangeRep(data.shrine, (data.Rep || data.Amount) * -10);
 
 				KDSendStatus('goddess', data.shrine, 'takeOrb');
@@ -523,6 +587,8 @@ function KDProcessInput(type, data) {
 							}
 						}
 						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonOrbSpell").replace("SPELL", TextGet("KinkyDungeonSpell" + spell.name)), "lightblue", 2);
+					} else {
+						KinkyDungeonSpellPoints += data.Amount;
 					}
 				} else {
 					KinkyDungeonSpellPoints += data.Amount;
@@ -550,6 +616,9 @@ function KDProcessInput(type, data) {
 							KinkyDungeonGetRestraintByName(b), 20, true, "Gold", true
 						);
 					}
+				}
+				if(data.method) {
+					KDGameData.SelectedEscapeMethod = data.method;
 				}
 
 				KinkyDungeonMapSet(data.x, data.y, 'p');

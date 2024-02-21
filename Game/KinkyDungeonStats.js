@@ -892,7 +892,7 @@ function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0
 		if (!(KDGameData.StaminaPause > Pause))
 			KDGameData.StaminaPause = Pause;
 		if (!(KDGameData.StaminaSlow > 5) && !NoSlow)
-			KDGameData.StaminaSlow = 5;
+			KDGameData.StaminaSlow = Math.min(5, (KDGameData.StaminaSlow || 0) + 1.5);
 	}
 
 	if (isNaN(KinkyDungeonStatStamina)) {
@@ -1229,8 +1229,8 @@ function KinkyDungeonUpdateStats(delta) {
 	KDBoundPowerLevel = 0;
 	KDBoundPowerLevel += 0.1 * Math.max(0, Math.min(1, KinkyDungeonBlindLevel / 3));
 	if (KinkyDungeonIsArmsBound(false, false)) KDBoundPowerLevel += 0.2;
-	if (KinkyDungeonIsHandsBound(false, false, 0.65)) KDBoundPowerLevel += 0.75;
-	if (KinkyDungeonIsHandsBound(false, false, 0.99)) KDBoundPowerLevel += 0.75;
+	if (KinkyDungeonIsHandsBound(false, false, 0.65)) KDBoundPowerLevel += 0.075;
+	if (KinkyDungeonIsHandsBound(false, false, 0.99)) KDBoundPowerLevel += 0.075;
 	KDBoundPowerLevel += 0.1 * KinkyDungeonChastityMult();
 	KDBoundPowerLevel += 0.2 * KinkyDungeonGagTotal();
 	if (KDGameData.KneelTurns > 0) {
@@ -1246,6 +1246,8 @@ function KinkyDungeonUpdateStats(delta) {
 			power: KDBoundPowerLevel * KDBoundPowerMult,
 		});
 	}
+
+	KDGameData.Restriction = KDGetRestriction();
 
 	KinkyDungeonPlayers = [KinkyDungeonPlayerEntity];
 

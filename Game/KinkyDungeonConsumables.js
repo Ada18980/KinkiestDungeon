@@ -52,7 +52,7 @@ function KinkyDungeonItemCount(Name) {
 
 function KinkyDungeonGetShopItem(Level, Rarity, Shop, ShopItems) {
 	let Table = [];
-	let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+	let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 	if (params.ShopExclusives) {
 		for (let exc of params.ShopExclusives) {
 			Table.push(exc);

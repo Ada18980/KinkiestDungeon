@@ -414,7 +414,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 		},
 		{ Name: "Torso", Layer: "Torso", Pri: 0,
-			AppendPose: {CrotchStrap: "Chastity"},
+			//AppendPose: {CrotchStrap: "Chastity"},
 			InheritColor: "Torso",
 			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Closed"},
 			EraseLayers: {BustierPoses: true},

@@ -378,7 +378,18 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		for (let m of MC.Models.values()) {
 			if (m.AddPoseConditional) {
 				for (let entry of Object.entries(m.AddPoseConditional)) {
-					if (!MC.Poses[entry[0]] && !MC.Poses[entry[0]]) {
+					if (!MC.Poses[entry[0]] && !MC.TempPoses[entry[0]]) {
+						for (let pose of entry[1]) {
+							MC.Poses[pose] = true;
+						}
+					}
+				}
+			}
+		}
+		for (let m of MC.Models.values()) {
+			if (m.AddPoseIf) {
+				for (let entry of Object.entries(m.AddPoseIf)) {
+					if (MC.Poses[entry[0]] || MC.TempPoses[entry[0]]) {
 						for (let pose of entry[1]) {
 							MC.Poses[pose] = true;
 						}
@@ -1101,6 +1112,17 @@ function GetTrimmedAppearance(C: Character) {
 			}
 		}
 	}
+	for (let A of appearance) {
+		if (A.Model && A.Model.AddPoseIf) {
+			for (let entry of Object.entries(A.Model.AddPoseIf)) {
+				if (poses[entry[0]]) {
+					for (let pose of entry[1]) {
+						poses[pose] = true;
+					}
+				}
+			}
+		}
+	}
 
 
 	for (let A of appearance) {
@@ -1157,6 +1179,18 @@ function UpdateModels(C: Character, Xray?: string[]) {
 		if (A.Model && A.Model.AddPoseConditional) {
 			for (let entry of Object.entries(A.Model.AddPoseConditional)) {
 				if (!poses[entry[0]]) {
+					for (let pose of entry[1]) {
+						poses[pose] = true;
+					}
+				}
+			}
+		}
+	}
+
+	for (let A of appearance) {
+		if (A.Model && A.Model.AddPoseIf) {
+			for (let entry of Object.entries(A.Model.AddPoseIf)) {
+				if (poses[entry[0]]) {
 					for (let pose of entry[1]) {
 						poses[pose] = true;
 					}

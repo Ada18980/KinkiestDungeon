@@ -2773,9 +2773,9 @@ Unarmed
 素手
 Accuracy:
 命中率：
-Crit Multiplier: 
+Crit Multiplier:
 会心ダメージ率：
-Bind Crit Multiplier: 
+Bind Crit Multiplier:
 拘束会心ダメージ率：
 Find the keys..
 鍵を見つける……
@@ -2836,9 +2836,9 @@ Edged!
 Satisfied. Miscast chance is reduced.
 満足した……。詠唱失敗率が減少する。
 
-Crit: 
+Crit:
 クリティカル：
-Bind: 
+Bind:
 拘束：
 Damage:
 ダメージ：
@@ -5454,7 +5454,7 @@ Cursed
 呪い
 Unlocked
 解錠済み
-Lock Type: 
+Lock Type:
 鍵の種類：
 Simple
 簡単
@@ -5632,9 +5632,9 @@ Goddess Blessing:
 Goddess Curse:
 女神の呪い：
 
-Mana Bonus: 
+Mana Bonus:
 マナボーナス：
-Lack of Mana Penalty: 
+Lack of Mana Penalty:
 マナペナルティ：
 Your excess mana helps you suppress the enchantment!
 自身のマナが拘束具の魔法を弱めた！
@@ -7721,7 +7721,7 @@ You a padded metal blindfold, glowing magnificently, along with a strange crysta
 黄金に光る金属製の目隠しと、奇妙なクリスタルを見つけた。
 A well-fitted mask, covering your entire head neatly and locking in place.
 顔全体を包み込み、しっかりとフィットするマスク。
-It has eyeholes for you to see out of, but blocks access to the face.
+It has eyeholes for you to somewhat see out of, but blocks access to the face.
 外を見るための穴はあるが、顔の拘束具に触れることはできなくなる。
 
 Shadow Heels
@@ -9294,7 +9294,7 @@ Choose target location (2 tile range)
 移動先を選択(2マス先)
 Blink III
 ブリンク III
-Instantly teleport up to 3 tiles away. Must have vision of the target point. 
+Instantly teleport up to 3 tiles away. Must have vision of the target point.
 視界範囲内の、3マス先まで瞬時に移動する。
 You teleport!
 瞬間移動した！
@@ -12230,7 +12230,7 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 関係性3を捧げることによって、拘束から抜け出しやすくなる。
 For 3 rep the goddess will grant you a key.
 関係性3を捧げることによって、鍵を授かる。
-For 3 rep the goddess will grant you 
+For 3 rep the goddess will grant you
 関係性3を捧げることによって、
 For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
@@ -12240,7 +12240,7 @@ For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
 For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
-For 3 rep the goddess 
+For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
 The goddess will fully restore your mana in exchange for AMOUNT rep
 AMOUNT の関係性と引き換えに、神にマナを補充してもらった。
@@ -12865,7 +12865,7 @@ Extreme
 エクストリーム
 A supposedly reasonable difficulty curve.
 普通の難易度。サクサクプレイ用
-Play the game the way it was intended. Cruel and restrictive. 
+Play the game the way it was intended. Cruel and restrictive.
 本来意図された難易度。積極的に捕まりたい人用
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 自己責任。ハードモードをダブルクリックで解除。
@@ -18565,7 +18565,7 @@ What? (PERCENT chance to avoid)
 (SPEAKER は軽く咳払いをする)|ああ、私達は新人を募集しているんだ。|正義のために戦う意志があるなら、いつでも大歓迎だ！
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER と固い握手を交わした)|ようこそドラゴンハーツへ！
-(The SPEAKER tilts her head and shrugs)|Ah well. 
+(The SPEAKER tilts her head and shrugs)|Ah well.
 (SPEAKER は首をかしげて肩をすくめる)|ああ、そうか。
 (The SPEAKER nods)|Fair enough.
 (SPEAKER は素直に頷いた)|残念だ。
@@ -18609,7 +18609,7 @@ What are you going to do about it? (PERCENT chance to avoid)
 (SPEAKER は咳払いをする)|アンタは今私達の縄張りに侵入しているわけだけど。|条件さえ飲んでくれれば私達も見逃してやろうと思う。|私達に危害を加えないと約束してほしいんだ。
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER と固い握手をかわした)|これからよろしく頼むよ！
-(The SPEAKER tilts her head and shrugs)|Ah well. 
+(The SPEAKER tilts her head and shrugs)|Ah well.
 (SPEAKER は首をかしげて肩をすくめる)|ああ、そうかい。
 (The SPEAKER nods)|Fair enough.
 (SPEAKER は素直に頷いた)|そうかい。
@@ -20330,7 +20330,7 @@ Initiating prisoner lockdown protocol
 収監プロトコル開始
 Your RestraintName suddenly snap together as the EnemyName activates them
 EnemyName が RestraintName をアクティブにしたようだ。
-Turn Count: 
+Turn Count:
 ターン数：
 The Shopkeeper leashes you!
 店主にリードを掴まれた。
@@ -20722,7 +20722,7 @@ Copy
 コピー
 Paste
 ペースト
-Preloading Character Assets: 
+Preloading Character Assets:
 キャラクターアセットをロード中：
 
 
@@ -21516,7 +21516,7 @@ Deals glue damage. Adds 25 slime binding.
 接着剤属性。25のスライム属性拘束値を与える。
 You pick up slime-covered sword.
 スライムに覆われた剣を拾った
-Preloading Character Assets: 
+Preloading Character Assets:
 キャラクターアセット：
 Frost Blade
 フロストブレード
@@ -22461,7 +22461,7 @@ Rubber Stick
 ラバースティック
 A rubber cylinder without any lewd intentions whatsoever.
 ゴムの棒。卑猥が一切ない。
-Deals grope damage. 
+Deals grope damage.
 愛撫属性。
 You pick up a flexible rubber stick.
 ぐにゃぐにゃしたゴムの棒を拾った。
@@ -22589,15 +22589,15 @@ Sensitivity: AMNT AP from attacks
 欲情：攻撃時対象のDP AMNT 上昇
 AMNT Stat
  AMNT 上昇
- 
+
 AMNT Evasion
 回避力 AMNT
 AMNT% Accuracy
-命中率 AMNT% 
+命中率 AMNT%
 AMNT Magic Armor
 マジックアーマー AMNT
 AMNT Physical Armor
-物理アーマー AMNT% 
+物理アーマー AMNT%
 AMNT Bondage Resist
 拘束抵抗力 AMNT
 AMNT TYPE Resist
@@ -22607,28 +22607,28 @@ TYPE 属性の威力 AMNT%
 AMNT% weapon phys. dmg
 物理ダメージ AMNT% 
 AMNT% weapon magic dmg
-武器の魔法ダメージ AMNT% 
+武器の魔法ダメージ AMNT%
 Infuse weapon AMNT% TYPE
-武器の TYPE 属性ダメージ AMNT% 
+武器の TYPE 属性ダメージ AMNT%
 AMNT TYPE on attack
 攻撃時 AMNT TYPE 追加ダメージ
 AMNT% Mana Costs
-マナコスト AMNT% 
+マナコスト AMNT%
 AMNT% TYPE Mana Costs
-TYPE 属性のマナコスト AMNT% 
+TYPE 属性のマナコスト AMNT%
 AMNT% regen from mana pool
-マナプールから得られるマナ AMNT% 
+マナプールから得られるマナ AMNT%
 AMNT mana pool on capture
 敵を捕まえたとき AMNT マナプールを回復する
 AMNT% Visibility Reduction
-視認性低下 AMNT% 
+視認性低下 AMNT%
 AMNT Distraction Decay
 DP AMNT 低下
 AMNT Distraction Per Turn
 ターン毎にDP AMNT 上昇
 AMNT AP from attacks
 攻撃時にDP AMNT 上昇
- 
+
 Drop On Floor
 床に置く
 Remove
@@ -23310,7 +23310,7 @@ The assistant applies a lock! (DamageTaken)
 研究員に拘束具をロックされた！ (DamageTaken)
 The assistant splashes a solvent in your face, blinding you! (DamageTaken)
 研究員に奇妙な液体をかけられ、目潰しされた！ (DamageTaken)
- 
+
 ...Glue Technician?
 接着剤の技術士……？
 You rescue the glue technician.
@@ -23546,9 +23546,9 @@ RestraintName に亀裂が入り始めた！
 Your RestraintName shatters and falls off!
 RestraintName は粉々に砕け落ちた！
 
-Load Hotbar 
+Load Hotbar
 ホットバーをロード
-Save Hotbar 
+Save Hotbar
 ホットバーをセーブ
 Clear Hotbar
 ホットバーをクリア
@@ -24927,7 +24927,7 @@ The Collectors
 
 
 
-Receive the following restraints: 
+Receive the following restraints:
 次の拘束をされる：
 You will be bound with some form of restraint.
 何らかの拘束具で縛られることになる。
@@ -24944,7 +24944,7 @@ The gag geist teases you playfully!! (DamageTaken)
 The gag geist gags the girl with a ghastly grimace! (+RestraintAdded)
 ギャグガイストがぞっとするような笑みで猿轡を噛ませてきた！ (+RestraintAdded)
 
-Poltergeist 
+Poltergeist
 ポルターガイスト
 The poltergeist goes silent.
 ポルターガイスト現象は収まった。
@@ -25671,7 +25671,7 @@ Prisoner #NUMR/TTL
 
 Select a character to examine
 詳細を見るキャラクターを選択
-Former Faction: 
+Former Faction:
 派閥：
 
 Minigun
@@ -25907,8 +25907,8 @@ You crouch and move slowly.
 ゆっくりと這いつくばる。
 
 
-Owned by: 
-所有者： 
+Owned by:
+所有者：
 
 The Warden's Collar
 看守長の首輪
@@ -26027,7 +26027,7 @@ Cool people wear these indoors.
 屋外で着用するオシャレアイテム。
 +25 holy resist. Reduces blind effects. Prevents blinding from light adjustment.
 聖属性耐性+25。目潰し効果を軽減する。光量の変化による目潰し効果を防ぐ。
-Sunglasses
+Sunglasses2
 サングラス
 Cool people wear these indoors.
 屋外で着用するオシャレアイテム。

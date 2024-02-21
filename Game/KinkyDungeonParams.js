@@ -4,6 +4,16 @@
  */
 const KinkyDungeonMapParams = {
 	"menu":{
+		successorNegative: {
+			menu: 1.0,
+		},
+		successorPositive: {
+			menu: 1.0,
+		},
+		successorSame: {
+			menu: 1.0,
+		},
+		color: "#ffffff",
 		music: {
 			"GENERIC-DOLLRACK.ogg": 4,
 		},
@@ -44,11 +54,24 @@ const KinkyDungeonMapParams = {
 
 		"setpieces": [],
 
-		"shortcuts": [],
-		"mainpath": [],
 
 	},
-	"grv":{//DungeonName0,-Graveyard-
+	"shoppe":{
+		successorNegative: {
+			menu: 1.0,
+		},
+		successorPositive: {
+			menu: 1.0,
+		},
+		successorSame: {
+			menu: 1.0,
+		},
+		color: "#ffffff",
+		music: {
+			"GENERIC-DOLLRACK.ogg": 4,
+			//"Shopping.ogg": 10,
+		},
+
 		"background" : "RainyForstPathNight",
 		"openness" : 3, // Openness of rooms
 		"density" : 3, // Density of tunnels (inverse of room spawn chance)
@@ -56,6 +79,129 @@ const KinkyDungeonMapParams = {
 		"barchance" : 0.2,
 		"brightness" : 7,
 		"chestcount" : 5,
+		"shrinecount" : 16,
+		"shrinechance" : 0.75,
+		"ghostchance" : 1,
+		"doorchance" : 0.67,
+		"nodoorchance" : 0.1,
+		"doorlockchance" : -0.1,
+		"trapchance" : 0.5,
+		"grateChance" : 0.4,
+		"rubblechance" : 0.4,
+		"brickchance" : 0.1,
+		"cacheInterval" : 1,
+		"forbiddenChance" : 0.7, // If a forbidden gold chance is generated. Otherwise a silver chest will appear
+		"forbiddenGreaterChance" : 0.33, // Chance after a forbidden area is generated with a restraint, otherwise its a lesser gold chest
+		"torchchance": 0.35,
+		"torchchanceboring": 1.0,
+
+		tagModifiers: {},
+		enemyTags: [],
+
+		"traps": [],
+		"min_width" : 5,
+		"max_width" : 7,
+		"min_height" : 5,
+		"max_height" : 6,
+		"defeat_outfit": "Prisoner",
+		"shrines": [],
+
+		"setpieces": [],
+
+
+	},
+	"bandit":{
+		successorNegative: {
+			bandit: 1.0,
+		},
+		successorPositive: {
+			bandit: 1.0,
+		},
+		successorSame: {
+			bandit: 1.0,
+		},
+		color: "#ffffff",
+		music: {
+			"Ada18980_SmokingIsBadForYou.ogg": 4,
+		},
+
+		"background" : "RainyForstPathNight",
+		"openness" : 6, // Openness of rooms
+		"density" : 5, // Density of tunnels (inverse of room spawn chance)
+		"crackchance" : 0.07,
+		"barchance" : 0.2,
+		"brightness" : 7,
+		"chestcount" : 5,
+		"shrinecount" : 16,
+		"shrinechance" : 0.75,
+		"ghostchance" : 1,
+		"doorchance" : 0.67,
+		"nodoorchance" : 0.1,
+		"doorlockchance" : -0.1,
+		"trapchance" : 0.5,
+		"grateChance" : 0.4,
+		"rubblechance" : 0.4,
+		"brickchance" : 0.1,
+		"cacheInterval" : 1,
+		"forbiddenChance" : 0.7, // If a forbidden gold chance is generated. Otherwise a silver chest will appear
+		"forbiddenGreaterChance" : 0.33, // Chance after a forbidden area is generated with a restraint, otherwise its a lesser gold chest
+		"torchchance": 0.35,
+		"torchchanceboring": 1.0,
+
+		tagModifiers: {},
+		enemyTags: ["bandit", "explosiveBarrel"],
+
+		"min_width" : 5,
+		"max_width" : 7,
+		"min_height" : 5,
+		"max_height" : 6,
+		"defeat_outfit": "Prisoner",
+
+		"setpieces": [],
+
+		"shrines": [
+			//{Type: "Charms", Weight: 5},
+			{Type: "Latex", Weight: 3},
+			{Type: "Commerce", Weight: 4},
+			{Type: "Elements", Weight: 5},
+			{Type: "Conjure", Weight: 5},
+			{Type: "Illusion", Weight: 5},
+			{Type: "Leather", Weight: 11},
+			{Type: "Metal", Weight: 3},
+			{Type: "Rope", Weight: 8},
+			{Type: "Will", Weight: 2},
+		],
+
+
+		"traps": [
+			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapShackleWeak", Level: 0, Power: 1, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapRopeWeak", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapLeatherWeak", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 2, Weight: 10},
+		],
+
+	},
+	"grv":{//DungeonName0,-Graveyard-
+		color: "#8cba75",
+		successorNegative: {
+			tmb: 1.0,
+		},
+		successorPositive: {
+			jng: 0.7,
+			lib: 0.3,
+		},
+		successorSame: {
+			grv: 0.8,
+			cat: 0.2,
+		},
+		"background" : "RainyForstPathNight",
+		"openness" : 3, // Openness of rooms
+		"density" : 3, // Density of tunnels (inverse of room spawn chance)
+		"crackchance" : 0.07,
+		"barchance" : 0.2,
+		"brightness" : 7,
+		"chestcount" : 3,
 		"shrinecount" : 16,
 		"shrinechance" : 0.75,
 		"ghostchance" : 1,
@@ -96,15 +242,6 @@ const KinkyDungeonMapParams = {
 			{Type: "QuadCell", Weight: 3},
 			{Type: "Storage", Weight: 5},
 		],
-
-		"shortcuts": [
-			{Level: 1, checkpoint: "tmb", chance: 1.0},
-			{Level: 3, checkpoint: "tmb", chance: 1.0},
-		],
-		"mainpath": [
-			{Level: 4, checkpoint: "cat"},
-		],
-
 		"traps": [
 			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapCharmWeak", Level: 0, Power: 1, Weight: 30},
@@ -146,6 +283,18 @@ const KinkyDungeonMapParams = {
 
 	},
 	"cat":{// DungeonName1,-Catacombs-
+		successorNegative: {
+			tmb: 0.7,
+			cry: 0.3,
+		},
+		successorPositive: {
+			lib: 1.0,
+		},
+		successorSame: {
+			cat: 0.8,
+			lib: 0.2,
+		},
+		color: "#a3a7c2",
 		"background" : "Dungeon",
 		"openness" : 0,
 		"density" : 2,
@@ -178,8 +327,7 @@ const KinkyDungeonMapParams = {
 		},
 
 		music: {
-			"GENERIC-DOLLRACK.ogg": 10,
-			"AREA2-ANCIENTTOMBS.ogg": 2,
+			"Ada18980_PlayingWithFire.ogg": 10,
 		},
 
 		tagModifiers: {
@@ -200,16 +348,6 @@ const KinkyDungeonMapParams = {
 			{Type: "GuardedChest", Weight: 30},
 			{Type: "LargeGuardedChest", Weight: 20},
 			{Type: "ExtraCell", Weight: 10},
-		],
-
-		"shortcuts": [
-			{Level: 5, checkpoint: "lib", chance: 0.5},
-			{Level: 6, checkpoint: "lib", chance: 1.0},
-			{Level: 7, checkpoint: "lib", chance: 0.25},
-			{Level: 8, checkpoint: "lib", chance: 0.25},
-		],
-		"mainpath": [
-			{Level: 8, checkpoint: "jng"},
 		],
 
 		"traps": [
@@ -254,6 +392,21 @@ const KinkyDungeonMapParams = {
 
 	},
 	"jng":{//DungeonName2,-Underground Jungle-
+		successorNegative: {
+			cry: 0.8,
+			jng: 0.2,
+		},
+		successorPositive: {
+			lib: 0.1,
+			cat: 0.1,
+			jng: 0.5,
+			tmp: 0.1,
+		},
+		successorSame: {
+			jng: 0.7,
+			cry: 0.3,
+		},
+		color: "#4d8f5e",
 		"background" : "DeepForest",
 		noReplace: "b",
 		"openness" : 1,
@@ -375,14 +528,6 @@ const KinkyDungeonMapParams = {
 			{Type: "Fireflies", Weight: 40},
 		],
 
-		"shortcuts": [
-			{Level: 9, checkpoint: "cry", chance: 1.0},
-			{Level: 10, checkpoint: "cry", chance: 1.0},
-		],
-		"mainpath": [
-			{Level: 12, checkpoint: "tmp"},
-		],
-
 		"traps": [
 			{Name: "CustomVine", Level: 0, Power: 1, Weight: 30},
 			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 10},
@@ -423,6 +568,19 @@ const KinkyDungeonMapParams = {
 			{Type: "Will", Weight: 13},]
 	},
 	"tmp":{//DungeonName3,-Lost Temple-
+		successorNegative: {
+			ore: 1.0,
+		},
+		successorPositive: {
+			lib: 0.6,
+			cry: 0.3,
+			bel: 0.1,
+		},
+		successorSame: {
+			tmp: 0.9,
+			ore: 0.1,
+		},
+		color: "#757575",
 		"background" : "SpookyForest",
 		"openness" : 2,
 		"density" : 2,
@@ -489,12 +647,6 @@ const KinkyDungeonMapParams = {
 			{Type: "Magicflies", Weight: 12},
 		],
 
-		"shortcuts": [
-			{Level: 13, checkpoint: "ore", chance: 1.0},
-		],
-		"mainpath": [
-			{Level: 17, checkpoint: "bel"},
-		],
 
 		"traps": [
 			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
@@ -538,6 +690,19 @@ const KinkyDungeonMapParams = {
 		"lockmult" : 1.5,
 	},
 	"tmb":{//DungeonName11,-Ancient Tombs-
+		successorNegative: {
+			tmp: 0.4,
+			lib: 0.6,
+		},
+		successorPositive: {
+			cat: 0.4,
+			jng: 0.6,
+		},
+		successorSame: {
+			tmb: 0.8,
+			grv: 0.2,
+		},
+		color: "#d16722",
 		"background" : "EgyptianTomb",
 		"openness" : 1,
 		"density" : 3,
@@ -604,14 +769,6 @@ const KinkyDungeonMapParams = {
 		globalTags: {
 			"egyptian": true,
 		},
-
-		"shortcuts": [
-			{Level: 3, checkpoint: "cry", chance: 1.0},
-		],
-		"mainpath": [
-			{Level: 4, checkpoint: "cat"},
-		],
-
 		"traps": [
 			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
 			{Name: "SpecificSpell", Spell: "TrapMummyWeak", Level: 0, Power: 1, Weight: 30},
@@ -652,6 +809,19 @@ const KinkyDungeonMapParams = {
 			{Type: "Will", Weight: 13},]
 	},
 	"lib":{//DungeonName12,-Magic Library-
+		successorNegative: {
+			bel: 0.4,
+			ore: 0.6,
+		},
+		successorPositive: {
+			tmp: 0.4,
+			ore: 0.6,
+		},
+		successorSame: {
+			lib: 0.8,
+			cat: 0.2,
+		},
+		color: "#be52ff",
 		"background" : "MagicSchoolLaboratory",
 		noReplace: "Ddb",
 		"openness" : 5,
@@ -704,12 +874,6 @@ const KinkyDungeonMapParams = {
 			"temple": 0.5,
 		},
 
-		"shortcuts": [
-			{Level: 7, checkpoint: "cat", chance: 1.0},
-		],
-		"mainpath": [
-			{Level: 8, checkpoint: "ore"},
-		],
 
 		"traps": [
 			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
@@ -752,6 +916,19 @@ const KinkyDungeonMapParams = {
 			{Type: "Will", Weight: 13},]
 	},
 	"cry":{//DungeonName13,-Crystal Cave-
+		successorNegative: {
+			jng: 0.6,
+			tmp: 0.4,
+		},
+		successorPositive: {
+			tmp: 0.4,
+			cat: 0.6,
+		},
+		successorSame: {
+			cry: 0.8,
+			jng: 0.2,
+		},
+		color: "#4fa4b8",
 		"background" : "MagicSchoolEscape",
 		"openness" : 6,
 		"density" : 2,
@@ -810,17 +987,6 @@ const KinkyDungeonMapParams = {
 			{Type: "Magicflies", Weight: 40},
 		],
 
-		"shortcuts": [
-			{Level: 9, checkpoint: "jng", chance: 0.33},
-			{Level: 10, checkpoint: "jng", chance: 0.4},
-			{Level: 11, checkpoint: "jng", chance: 1.0},
-		],
-		"mainpath": [
-			{Level: 4, checkpoint: "cry"},
-			{Level: 6, checkpoint: "cat"},
-			{Level: 12, checkpoint: "ore"},
-		],
-
 		"traps": [
 			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
 			{Name: "SpecificSpell", Spell: "TrapRopeStrong", Level: 0, Power: 3, Weight: 30},
@@ -861,6 +1027,20 @@ const KinkyDungeonMapParams = {
 	},
 
 	"ore":{//DungeonName8,-Orrery-
+		successorNegative: {
+			jng: 0.6,
+			lib: 0.4,
+		},
+		successorPositive: {
+			lib: 0.5,
+			tmp: 0.9,
+			bel: 0.1,
+		},
+		successorSame: {
+			ore: 0.8,
+			tmp: 0.2,
+		},
+		color: "#524fb8",
 		"background" : "SpookyForest",
 		"openness" : 2,
 		"density" : 2,
@@ -922,13 +1102,6 @@ const KinkyDungeonMapParams = {
 			{Type: "LargeGuardedChest", Weight: 20},
 		],
 
-		"shortcuts": [
-			{Level: 14, checkpoint: "tmp", chance: 1.0},
-		],
-		"mainpath": [
-			{Level: 17, checkpoint: "bel"},
-		],
-
 		"traps": [
 			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
 			{Name: "SpecificSpell", Spell: "TrapRopeHoly", Level: 0, Power: 3, Weight: 30},
@@ -969,6 +1142,17 @@ const KinkyDungeonMapParams = {
 	},
 
 	"bel":{//DungeonName8,-Orrery-
+		successorNegative: {
+			cry: 1.0,
+		},
+		successorPositive: {
+			bel: 0.5,
+			tmp: 0.5,
+		},
+		successorSame: {
+			bel: 1.0,
+		},
+		color: "#c52f45",
 		"background" : "SpookyForest",
 		"openness" : 1,
 		"density" : 9,
@@ -1029,11 +1213,6 @@ const KinkyDungeonMapParams = {
 			{Type: "LargeGuardedChest", Weight: 20},
 		],
 
-		"shortcuts": [
-		],
-		"mainpath": [
-			{Level: 21, checkpoint: "grv"},
-		],
 
 		"traps": [
 			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
@@ -1087,6 +1266,16 @@ const KinkyDungeonMapParams = {
 
 	// Extra
 	"DemonTransition":{// DungeonName1,-Catacombs-
+		successorNegative: {
+			DemonTransition: 1.0,
+		},
+		successorPositive: {
+			DemonTransition: 1.0,
+		},
+		successorSame: {
+			DemonTransition: 1.0,
+		},
+		color: "#222222",
 		shadowColor: 0x000000,
 		"background" : "Dungeon",
 		"openness" : 0,
@@ -1139,11 +1328,6 @@ const KinkyDungeonMapParams = {
 		},
 
 		"setpieces": [
-		],
-
-		"shortcuts": [
-		],
-		"mainpath": [
 		],
 
 		"traps": [

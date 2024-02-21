@@ -41,7 +41,7 @@ function KinkyDungeonNewLore() {
 	let exploredLore = localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : [];
 	let newLore = localStorage.getItem("kinkydungeonnewlore") ? JSON.parse(localStorage.getItem("kinkydungeonnewlore")) : [];
 
-	let checkpoint = KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
+	let checkpoint = (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
 
 	if (!exploredLore || exploredLore.length == 0) {
 		availableLore = [0];

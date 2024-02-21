@@ -228,7 +228,7 @@ AddModel({
 	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseArmLeft"],
 	Layers: ToLayerMap([
-		{ Name: "ArmLeft", Layer: "WrapArmLeft", Pri: 25,
+		{ Name: "ArmLeft", Layer: "WrapArms", Pri: 25,
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "WrapForeArms", Crossed: "WrapCrossArms"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -249,7 +249,7 @@ AddModel({
 	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseArmRight"],
 	Layers: ToLayerMap([
-		{ Name: "ArmRight", Layer: "WrapArmRight", Pri: 25,
+		{ Name: "ArmRight", Layer: "WrapArms", Pri: 25,
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "WrapForeArms", Crossed: "WrapCrossArms"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -279,6 +279,9 @@ AddModel({
 			AddPriWithPose: {
 				ItemArmsRubberOver: 45,
 			},
+			EraseLayers: ToMap(["BustierPoses"]),
+			EraseInvariant: true,
+			EraseSprite: "SlimeCorsetErase",
 		},
 		{ Name: "Chest", Layer: "WrappingChest", Pri: 25,
 			Invariant: true,

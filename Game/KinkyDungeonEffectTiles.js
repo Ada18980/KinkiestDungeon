@@ -8,10 +8,16 @@ let KDLatexBind = 2;
  */
 let KDEffectTiles = {
 	"FateBoundGround": {
-		name: "Ice",
+		name: "FateBoundGround",
 		duration: 2,
 		priority: 10,
 		tags: ["fate"],
+	},
+	"TauntGround": {
+		name: "TauntGround",
+		duration: 2,
+		priority: 10,
+		tags: ["taunt"],
 	},
 	"Ice": {
 		name: "Ice",
@@ -109,13 +115,13 @@ let KDEffectTiles = {
 		brightness: 8,
 		lightColor: 0x8b53e9,
 		fade: "sine3000",
-		spin: -0.25,
+		spin: -0.01,
 		xoffset: 0.5,
-		yoffset: 0.5,
+		yoffset: 0.25,
 		tags: ["portal", "demonportal"],
 	},
 	"Portals/Portal": {
-		name: "Portals/DarkPortal",
+		name: "Portals/Portal",
 		duration: 40,
 		priority: 100,
 		brightness: 8,
@@ -268,6 +274,42 @@ let KDEffectTiles = {
 		priority: 50,
 		tags: ["wire"],
 	},
+
+
+	"MotionLamp": {
+		name: "MotionLamp",
+		duration: 9999, infinite: true,
+		priority: 50,
+		tags: ["floor"],
+	},
+	"MotionLampLight": {
+		name: "MotionLampLight",
+		duration: 9999,
+		priority: 50,
+		brightness: 6.5,
+		lightColor: 0x7799ff,
+		tags: ["light"],
+	},
+
+	"ManaEmpty": {
+		name: "ManaEmpty",
+		duration: 9999, infinite: true,
+		priority: 50,
+		tags: [],
+	},
+	"ManaPartial": {
+		name: "ManaEmpty",
+		duration: 9999, infinite: true,
+		priority: 50,
+		tags: ["wire"],
+	},
+	"ManaFull": {
+		name: "PressurePlateActive",
+		duration: 2,
+		priority: 51,
+		tags: ["ppactive"],
+	},
+
 	"Ignition": {
 		name: "Ignition",
 		duration: 1,

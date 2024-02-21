@@ -107,14 +107,15 @@ let LAYERS_BASE = [
 	"WrapArms",
 
 	"Jacket",
-	"ChestDeco",
-	"ChestStraps",
 	"Chestplate",
 
 	// Bondage
+	"WrapArms",
 	"BindArms",
 
 
+	"ChestDeco",
+	"ChestStraps",
 
 
 	// Chest is breasts, should only intersect on bottom and side edges, top is indeterminate
@@ -797,6 +798,7 @@ let LayerGroups = {
 		"BindWristLeft",
 		"BindWristRight",
 		"WrapArmLeft",
+		"WrapArms",
 		"WrapArmRight",
 		"BindArmLeft",
 		"BindArmRight",
@@ -873,6 +875,7 @@ let LayerGroups = {
 		"BindWristLeft",
 		"BindWristRight",
 		"WrapArmLeft",
+		"WrapArms",
 		"WrapArmRight",
 		"BindArmLeft",
 		"BindArmRight",
@@ -1513,6 +1516,7 @@ let LayerGroups = {
 	"CrossSleeveDecoLeft",
 	"CrossSleeveLeft",
 	"WrapArmLeft",
+	"WrapArms",
 	"WrapArmRight",
 
 	// Certain pieces of armor go over the shirt

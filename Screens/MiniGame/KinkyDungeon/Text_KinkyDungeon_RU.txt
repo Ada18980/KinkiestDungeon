@@ -3495,7 +3495,7 @@ Wolf Instructor
 Волчий инструктор
 The instructor deploys active camoflague and retreats!
 Инструктор разворачивает активную маскировку и отступает!
-The instructor disciplies you! (DamageTaken)
+The instructor disciplines you! (DamageTaken)
 Инструктор дисциплинирует вас! (DamageTaken)
 The instructor applies advanced training gear! (+RestraintAdded)
 Инструктор облачает вас в новейшее тренировочное снаряжение! (+RestraintAdded)
@@ -7335,7 +7335,7 @@ You a padded metal blindfold, glowing magnificently, along with a strange crysta
 Вы находите величественно сияющую металлическую повязку с подкладкой, а рядом с ней странный кристалл.
 A well-fitted mask, covering your entire head neatly and locking in place.
 Хорошо подогнанная маска, аккуратно закрывающая всю голову и надёжно на ней фиксирующаяся.
-It has eyeholes for you to see out of, but blocks access to the face.
+It has eyeholes for you to somewhat see out of, but blocks access to the face.
 В ней есть прорези для глаз, через которые вы можете видеть, но она блокирует доступ к лицу.
 Shadow Heels
 Теневые каблуки
@@ -11723,7 +11723,7 @@ You are unable to muster the willpower to bypass the seal...
 Вы не в состоянии собрать силу воли, чтобы обойти печать...
 Feeling determined, you override the seal and release the item!
 Преисполнившись решимости, вы снимаете печать и освобождаетесь от предмета!
-The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it.
+The lock is protected by a revenant seal. You'll need 25 ectoplasm to disenchant it.
 Замок защищен призрачной печатью. Вам понадобится 25 единиц эктоплазмы, чтобы расколдовать его.
 Your fingers pass right through the collar. Pity your neck doesn't pass through it.
 Ваши пальцы проходят прямо сквозь ошейник. Жаль, что твоя шея не может так же.

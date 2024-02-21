@@ -30,7 +30,7 @@ function KinkyDungeonPlaceSetPieces(POI, trapLocations, chestlist, shrinelist, c
 	KDCountSetpiece = new Map();
 	let pieces = new Map();
 
-	let Params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+	let Params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 	let setpieces = [];
 	let alt = !KDGameData.RoomType ? KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel) : KinkyDungeonAltFloor(KDGameData.RoomType);
 	let forcePOI = !alt || !alt.genType;//Params.forcePOI ? true : false;
@@ -517,7 +517,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				break;
 			}
 			case "GuardedChest": {
-				let chests = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].chestcount ? KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].chestcount : 6;
+				let chests = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].chestcount ? KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].chestcount : 6;
 				if ((!favoringPOI && KDRandom() < 0.7) || KinkyDungeonBoringGet(cornerX + 1, cornerY + 1) < 3 || chestlist.length >= chests) skip = true;
 				else {
 					// Hollow out a 3x3 area for the chest
@@ -529,7 +529,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				break;
 			}
 			case "LargeGuardedChest": {
-				let chests = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].chestcount ? KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].chestcount : 6;
+				let chests = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].chestcount ? KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].chestcount : 6;
 				if ((!favoringPOI && KDRandom() < 0.7) || KinkyDungeonBoringGet(cornerX + 1, cornerY + 1) < 3 || chestlist.length >= chests) skip = true;
 				else {
 					// Hollow out a big area
@@ -545,7 +545,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				break;
 			}
 			case "BanditPrison": {
-				if (KinkyDungeonBoringGet(cornerX + 1, cornerY + 1) < 3) skip = true;
+				if (KinkyDungeonBoringGet(cornerX + 1, cornerY + 1) < 3 || !(KDGetMainFaction() && KDFactionRelation("Bandit", KDGetMainFaction()) < 0.2)) skip = true;
 				else {
 					// Hollow out a 2x2 area for the chest
 					KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, false, false, 0, false);
@@ -843,7 +843,7 @@ function SetpieceSpawnPrisoner(x, y) {
 			"elementsAnger", "elementsRage",
 			"illusionAnger", "illusionRage",
 			"leatherAnger", "leatherRage",
-			"willAnger", "willRage"], MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], KinkyDungeonMapGet(x, y), ["imprisonable"]);
+			"willAnger", "willRage"], MiniGameKinkyDungeonLevel * 2, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), KinkyDungeonMapGet(x, y), ["imprisonable"]);
 		if (Enemy) {
 			let e = DialogueCreateEnemy(x, y, Enemy.name);
 			e.faction = "Prisoner";
@@ -979,7 +979,7 @@ function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToC
 	});
 	if (factions.length > 0) {
 		let fl = factions;
-		let checkpoint = KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
+		let checkpoint = (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
 		let chosenFaction = KDGetByWeight(KDGetFactionProps(fl, MiniGameKinkyDungeonLevel, checkpoint,
 			KinkyDungeonMapParams[checkpoint].enemyTags || [], {}));
 		factionList = factionList.filter((entry) => {

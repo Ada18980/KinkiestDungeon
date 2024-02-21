@@ -33,7 +33,7 @@ let KinkyDungeonConsumables = {
 	"ScrollLegs" : {name: "ScrollLegs", sub: 0.25, noHands: true, rarity: 2, costMod: 1, shop: true, type: "buff", buff: "NoLegsComp", duration: 12, power: 1, aura: "#ffaaaa", sfx: "FireSpell"},
 	"ScrollPurity" : {name: "ScrollPurity", sub: 0.20, noHands: true, rarity: 4, shop: true, type: "shrineRemove", shrine: "Vibes", sfx: "FireSpell"},
 
-	"DollID" : {name: "DollID", rarity: 0, shop: false, type: "dollID", noHands: true, sfx: "FutureLock"},
+	"DollID" : {name: "DollID", rarity: 0, shop: false, type: "dollID", noHands: true, sfx: "FutureLock", noConsumeOnUse: true},
 	"CuffKeys" : {name: "CuffKeys", rarity: 1, sub: 0.25, shop: false, type: "CuffKeys", noConsumeOnUse: true},
 	"Snuffer" : {name: "Snuffer", rarity: 3, costMod: -1, shop: true, type: "Snuffer", noConsumeOnUse: true},
 	"SackOfSacks" : {name: "SackOfSacks", rarity: 3, costMod: -2, shop: true, type: "SackOfSacks", noConsumeOnUse: true},
@@ -87,6 +87,7 @@ let KinkyDungneonShopRestraints = {
 	"GasMask" : {name: "GasMask", rarity: 2, shop: true},
 	"PotionCollar" : {name: "PotionCollar", rarity: 3, shop: true},
 	"Sunglasses" : {name: "Sunglasses", rarity: 2, shop: true},
+	"Sunglasses2" : {name: "Sunglasses2", rarity: 2, shop: true},
 };
 
 /** @type {Record<string, (consumable) => void>} */
@@ -141,9 +142,6 @@ let KDConsumableEffects = {
 	"subAdd": (Consumable) => {
 		let amount = Consumable.data?.subAdd || 5;
 		KinkyDungeonChangeRep("Ghost", amount);
-	},
-	"dollID": (Consumable) => {
-		KinkyDungeonSetFlag("DollmakerGrace", 300);
 	},
 	"restore": (Consumable) => {
 		let multi = 1.0;

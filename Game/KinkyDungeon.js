@@ -8,6 +8,15 @@ let KDDefaultPalette = "";
 // Disable interpolation when scaling, will make texture be pixelated
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR;
 
+let KDStandardRenderException = {
+	Consent: [],
+	Logo: [],
+	Game: ["Game"],
+	Stats: [],
+	TileEditor: [],
+	Wardrobe: [],
+
+};
 
 let KDClipboardDisabled = window.location.host.includes('itch.io');
 (async function() {
@@ -48,10 +57,11 @@ let param_test = pp.has('test') ? pp.get('test') : "";
 let param_localhost = pp.has('localhost') ? pp.get('localhost') : "";
 let TestMode = param_test || param_branch || param_localhost || ServerURL == 'https://bc-server-test.herokuapp.com/';
 
-let KDDebugMode = false;
+let KDDebugMode = TestMode != null;
 let KDDebug = false;
 let KDDebugPerks = false;
 let KDDebugGold = false;
+let KDDebugLink = false;
 
 let KDAllModFiles = [];
 let KDModFiles = {};
@@ -147,6 +157,7 @@ let KDToggles = {
 	LightmapFilter: true,
 	EnemyAnimations: true,
 	DrawArmor: true,
+	CrotchRopeOption: false,
 	ChastityOption: false,
 	ChastityOption2: false,
 	ChastityBraOption: false,
@@ -197,6 +208,7 @@ let KDToggleCategories = {
 	LightmapFilter: "GFX",
 	EnemyAnimations: "GFX",
 	DrawArmor: "Clothes",
+	CrotchRopeOption: "Clothes",
 	ChastityOption: "Clothes",
 	ChastityOption2: "Clothes",
 	ChastityBraOption: "Clothes",
@@ -332,8 +344,13 @@ let KDOptOut = false;
 
 let KDDefaultMaxParty = 3;
 
+
+let KDDefaultJourney = ["grv", "cat", "jng", "tmp", "bel"];
+let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
+
 /**
 *  @typedef {{
+* JourneyProgression: string[],
 * AttachedWep: string,
 * InventoryAction: string,
 * InventoryActionManaCost: number,
@@ -488,14 +505,28 @@ let KDDefaultMaxParty = 3;
 * CollectionSorted: KDCollectionEntry[],
 * HeelPower: number,
 * visionAdjust: number,
+* visionAdjustBlind: number,
 * visionBlind: number,
 * CollectionGuests: number,
+* SelectedEscapeMethod: string,
+* Restriction: number,
+* JourneyX: number,
+* JourneyY: number,
+* ShortcutIndex: number,
+* JourneyMap: KDJourneyMap,
+* JourneyTarget: {x: number, y: number},
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	ShortcutIndex: -1,
+	JourneyProgression: [...KDDefaultJourney],
+	JourneyTarget: null,
+	JourneyX: 0,
+	JourneyY: 0,
+	JourneyMap: {},
 	AttachedWep: "",
 	Collection: {},
 	CollectionSorted: [],
@@ -687,10 +718,13 @@ let KDGameDataBase = {
 	CollectionGuests: 0,
 
 	FloorRobotType: {},
+	SelectedEscapeMethod: "Key",
 
 	Crouch: false,
 	visionAdjust: 1, // Eyes start out fully light adjusted
+	visionAdjustBlind: 1, // Slowly follows actual visionadjust, used to determine if blindness occurs
 	visionBlind: 0, // Penalty to vision radius based on overbright
+	Restriction: 0,
 };
 /**
  * @type {KDGameDataBase}
@@ -956,7 +990,7 @@ function KinkyDungeonLoad() {
 			KinkyDungeonClassMode = localStorage.getItem("KinkyDungeonClassMode") != undefined ? localStorage.getItem("KinkyDungeonClassMode") : "Mage";
 			KinkyDungeonSexyPiercing = localStorage.getItem("KinkyDungeonSexyPiercing") != undefined ? localStorage.getItem("KinkyDungeonSexyPiercing") == "True" : false;
 			KinkyDungeonSexyPlug = localStorage.getItem("KinkyDungeonSexyPlug") != undefined ? localStorage.getItem("KinkyDungeonSexyPlug") == "True" : false;
-
+			KinkyDungeonProgressionMode = localStorage.getItem("KinkyDungeonProgressionMode") != undefined ? localStorage.getItem("KinkyDungeonProgressionMode") : "Key";
 			KinkyDungeonSaveMode = localStorage.getItem("KinkyDungeonSaveMode") != undefined ? localStorage.getItem("KinkyDungeonSaveMode") == "True" : false;
 			KinkyDungeonHardMode = localStorage.getItem("KinkyDungeonHardMode") != undefined ? localStorage.getItem("KinkyDungeonHardMode") == "True" : false;
 			KinkyDungeonExtremeMode = localStorage.getItem("KinkyDungeonExtremeMode") != undefined ? localStorage.getItem("KinkyDungeonExtremeMode") == "True" : false;
@@ -1083,6 +1117,7 @@ let KinkyDungeonTempWait = false;
 let KinkyDungeonSexyMode = false;
 let KinkyDungeonClassMode = "Mage";
 let KinkyDungeonRandomMode = false;
+let KinkyDungeonProgressionMode = "Key";
 let KinkyDungeonItemMode = 0;
 let KinkyDungeonEasyMode = 0;
 let KinkyDungeonSaveMode = false;
@@ -1139,6 +1174,9 @@ function KDCloseFullscreen() {
 }
 
 function KinkyDungeonRun() {
+	KDJourneyGraphics.clear();
+	KDJourneyGraphicsLower.clear();
+	KDJourneyGraphicsUpper.clear();
 
 	if (StandalonePatched) {
 		if (KDFullscreen && !KDToggles.Fullscreen) {
@@ -1242,7 +1280,7 @@ function KinkyDungeonRun() {
 		kdgamefog.visible = KinkyDungeonState != "TileEditor";
 	}
 	// Draw the characters
-	if (KinkyDungeonState != "Consent" && KinkyDungeonState != "Logo" && (KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "Stats" && KinkyDungeonState != "TileEditor" && KinkyDungeonState != "Wardrobe") {
+	if (!KDStandardRenderException[KinkyDungeonState] || (KDStandardRenderException[KinkyDungeonState].length > 0 && !KDStandardRenderException[KinkyDungeonState][KinkyDungeonDrawState])) {
 		if (KDBGColor) {
 			FillRectKD(kdcanvas, kdpixisprites, "playerbg", {
 				Left: 0,
@@ -1254,7 +1292,8 @@ function KinkyDungeonRun() {
 				alpha: StandalonePatched ? KDUIAlpha : 0.01,
 			});
 		}
-		DrawCharacter(KinkyDungeonPlayer, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, KDToggles.FlipPlayer);
+		let Char = (KinkyDungeonState == "LoadOutfit" ? KDSpeakerNPC : null) || KinkyDungeonPlayer;
+		DrawCharacter(Char, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
 	}
 
 	if (CommonIsMobile && mouseDown && !KDMouseInPlayableArea()) {
@@ -1263,6 +1302,9 @@ function KinkyDungeonRun() {
 		});
 	}
 
+	if (KDRender[KinkyDungeonState]) {
+		KDRender[KinkyDungeonState]();
+	} else
 	if (KinkyDungeonState == "Logo") {
 		if (CommonTime() > KDLogoStartTime + KDLogoEndTime) {
 			KinkyDungeonState = "Consent";
@@ -1571,15 +1613,17 @@ function KinkyDungeonRun() {
 
 		ElementPosition("saveInputField", 1250, 550, 1000, 230);
 	} else if (KinkyDungeonState == "LoadOutfit") {
-		DrawButtonVis(875, 750, 350, 64, TextGet("LoadOutfit"), "#ffffff", "");
 		DrawButtonVis(1275, 750, 350, 64, TextGet("KDWardrobeBackTo" + (StandalonePatched ? "Wardrobe" : "Menu")), "#ffffff", "");
 
+		let Char = KDSpeakerNPC || KinkyDungeonPlayer;
+		if (Char == KinkyDungeonPlayer)
+			DrawButtonVis(875, 750, 350, 64, TextGet("LoadOutfit"), "#ffffff", "");
 		if (StandalonePatched) {
 			DrawButtonKDEx("loadclothes", (b) => {
-				KDSaveCodeOutfit(KinkyDungeonPlayer, true);
+				KDSaveCodeOutfit(Char, true);
 				KinkyDungeonState = "Wardrobe";
-				KDWardrobeCallback = null;
-				KDWardrobeRevertCallback = null;
+				//KDWardrobeCallback = null;
+				//KDWardrobeRevertCallback = null;
 
 				ElementRemove("saveInputField");
 				return true;}, true, 875, 820, 350, 64, TextGet("LoadOutfitClothes"), "#ffffff", "");
@@ -1589,33 +1633,33 @@ function KinkyDungeonRun() {
 		if (newValue != KDOldValue) {
 			let decompressed = DecompressB64(ElementValue("saveInputField"));
 			if (decompressed) {
-				let origAppearance = KinkyDungeonPlayer.Appearance;
+				let origAppearance = Char.Appearance;
 				try {
 					console.log("Trying BC code...");
-					CharacterAppearanceRestore(KinkyDungeonPlayer, decompressed, true);
-					CharacterRefresh(KinkyDungeonPlayer);
+					CharacterAppearanceRestore(Char, decompressed, true);
+					CharacterRefresh(Char);
 					KDOldValue = newValue;
-					KDInitProtectedGroups(KinkyDungeonPlayer);
-					KinkyDungeonDressPlayer(KinkyDungeonPlayer, true);
+					KDInitProtectedGroups(Char);
+					KinkyDungeonDressPlayer(Char, true);
 
-					if (KinkyDungeonPlayer.Appearance.length == 0)
+					if (Char.Appearance.length == 0)
 						throw new DOMException();
 				} catch (e) {
 					console.log("Trying BCX code...");
 					// If we fail, it might be a BCX code. try it!
-					KinkyDungeonPlayer.Appearance = origAppearance;
+					Char.Appearance = origAppearance;
 					try {
 						let parsed = JSON.parse(decompressed);
 						if (parsed.length > 0) {
 							if (!StandalonePatched) {
 								for (let g of parsed) {
-									InventoryWear(KinkyDungeonPlayer, g.Name, g.Group, g.Color);
+									InventoryWear(Char, g.Name, g.Group, g.Color);
 								}
-								CharacterRefresh(KinkyDungeonPlayer);
-								ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
+								CharacterRefresh(Char);
+								ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(Char)));
 							}
 							KDOldValue = newValue;
-							KDInitProtectedGroups(KinkyDungeonPlayer);
+							KDInitProtectedGroups(Char);
 						} else {
 							console.log("Invalid code. Maybe its corrupt?");
 						}
@@ -2029,10 +2073,39 @@ function KinkyDungeonRun() {
 				return true;
 			}, true, 1500, 430, 64, 64, TextGet("KinkyDungeonSexyPiercings"), KinkyDungeonSexyPiercing, false, "#ffffff");*/
 		}
+		// Sorry Aelie-- removed this b/c now its all handled in the logic for the roguelike map selector
+		/*
+		DrawTextFitKD(TextGet("KDProgressionMode"), 875 - 50, 580 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
 
+		DrawButtonKDEx("KinkyDungeonProgressionMode0", (bdata) => {
+			KinkyDungeonProgressionMode = "Key";
+			localStorage.setItem("KinkyDungeonProgressionMode", "Key");
+			return true;
+		}, true, 875, 580, 175, 50, TextGet("KinkyDungeonProgressionMode0"), KinkyDungeonProgressionMode == "Key" ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
+		if (MouseInKD("KinkyDungeonProgressionMode0")) {
+			DrawTextFitKD(TextGet("KinkyDungeonProgressionModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+		}
 
+		DrawButtonKDEx("KinkyDungeonProgressionMode1", (bdata) => {
+			KinkyDungeonProgressionMode = "Random";
+			localStorage.setItem("KinkyDungeonProgressionMode", "Random");
+			return true;
+		}, true, 1075, 580, 175, 50, TextGet("KinkyDungeonProgressionMode1"), KinkyDungeonProgressionMode == "Random" ? "#ffffff" : "#888888", "", undefined, undefined, true, KDButtonColor);
+		if (MouseInKD("KinkyDungeonProgressionMode1")) {
+			DrawTextFitKD(TextGet("KinkyDungeonProgressionModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+		}
 
+		DrawButtonKDEx("KinkyDungeonProgressionMode2", (bdata) => {
+			KinkyDungeonProgressionMode = "Select";
+			localStorage.setItem("KinkyDungeonProgressionMode", "Select");
+			return true;
+		}, KinkyDungeonPerkProgressionMode != 0, 1275, 580, 175, 50, TextGet("KinkyDungeonProgressionMode2"), KinkyDungeonPerkProgressionMode == 0 ? "#ff5555" : (KinkyDungeonProgressionMode == "Select" ? "#ffffff" : "#888888"), "", undefined, undefined, true, KDButtonColor);
+		if (MouseIn(1275, 580, 175, 50)) {
+			DrawTextFitKD(TextGet("KinkyDungeonProgressionModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+		}
+
+	*/
 
 
 	} if (KinkyDungeonState == "Name") {
@@ -2660,6 +2733,7 @@ function DrawButtonKD(name, enabled, Left, Top, Width, Height, Label, Color, Ima
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {boolean} [options.centered] - centered
+ * @param {boolean} [options.centerText] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
@@ -2706,6 +2780,7 @@ function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Co
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {boolean} [options.centered] - centered
+ * @param {boolean} [options.centerText] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
@@ -3141,30 +3216,93 @@ function KinkyDungeonLoadStats() {
 
 let KinkyDungeonGameFlag = false;
 
-let KDDefaultJourney = ["grv", "cat", "jng", "tmp", "bel"];
-let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 
-function KDInitializeJourney(Journey) {
+function KDInitializeJourney(Journey, Level) {
 	KDCurrentWorldSlot = {x: 0, y: 0};
 	KDWorldMap = {};
-
 	/**
-	 * @type {Record<string, string>}
+	 * @type {string[]}
 	 */
-	let newIndex = {};
-
-	for (let map of KDDefaultJourney) {
-		newIndex[map] = map;
-	}
-	for (let map of KDDefaultAlt) {
-		newIndex[map] = map;
-	}
+	let newIndex = [];
 
 	if (Journey)
 		KDGameData.Journey = Journey;
-	// Option to shuffle the dungeon types besides the initial one (graveyard)
+
 	if (KDGameData.Journey == "Random") {
-		/* Randomize array in-place using Durstenfeld shuffle algorithm */
+
+		// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+		let randList = [...KDDefaultJourney, ...KDDefaultAlt];
+		for (let i = randList.length - 1; i >= 0; i--) {
+			let j = Math.floor(KDRandom() * (i + 1));
+			let temp = randList[i];
+			randList[i] = randList[j];
+			randList[j] = temp;
+		}
+		for (let i = 0; i < KDDefaultJourney.length; i++) {
+			newIndex.push(randList[i]);
+		}
+	} else if (KDGameData.Journey == "Harder") {
+		for (let i = 0; i < KDDefaultJourney.length; i++) {
+			//newIndex[KDDefaultAlt[i]] = KDDefaultJourney[i];
+			newIndex = [...KDDefaultAlt];
+		}
+	} else if (KDGameData.Journey == "Explorer") {
+		newIndex = [...KDDefaultJourney];
+		newIndex[0] = 'jng';
+		newIndex[1] = 'grv';
+		newIndex[2] = 'tmp';
+		newIndex[3] = 'ore';
+		newIndex[4] = 'bel';
+	} else if (KDGameData.Journey == "Doll") {
+		newIndex = [...KDDefaultJourney];
+		newIndex[0] = 'bel';
+		newIndex[1] = 'bel';
+		newIndex[2] = 'bel';
+		newIndex[3] = 'cry';
+		newIndex[4] = 'cat';
+	} else if (KDGameData.Journey == "Temple") {
+		newIndex = [...KDDefaultJourney];
+		newIndex[0] = 'tmp';
+		newIndex[1] = 'lib';
+		newIndex[2] = 'tmb';
+		newIndex[3] = 'cat';
+		newIndex[4] = 'jng';
+	} else if (KDGameData.Journey == "Test") {
+		newIndex = [...KDDefaultJourney];
+		newIndex[0] = 'bel';
+	} else {
+		newIndex = [...KDDefaultJourney];
+	}
+
+	KDGameData.JourneyProgression = newIndex;
+
+	KinkyDungeonMapIndex = {};
+
+	for (let map of KDDefaultJourney) {
+		KinkyDungeonMapIndex[map] = map;
+	}
+	for (let map of KDDefaultAlt) {
+		KinkyDungeonMapIndex[map] = map;
+	}
+
+
+	// Option to shuffle the dungeon types besides the initial one (graveyard)
+	/*
+
+		let newIndex = {};
+
+		for (let map of KDDefaultJourney) {
+			newIndex[map] = map;
+		}
+		for (let map of KDDefaultAlt) {
+			newIndex[map] = map;
+		}
+
+		if (Journey)
+			KDGameData.Journey = Journey;
+
+	if (KDGameData.Journey == "Random") {
+
 		// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 		let randList = Array.from(Object.keys(newIndex));
 		for (let i = randList.length - 1; i >= 0; i--) {
@@ -3220,6 +3358,11 @@ function KDInitializeJourney(Journey) {
 	}
 
 	KinkyDungeonMapIndex = newIndex;
+	*/
+
+
+
+	KDInitJourneyMap(Level);
 }
 
 
@@ -3327,7 +3470,7 @@ function KinkyDungeonStartNewGame(Load) {
 		KDGameData.PlayerName = localStorage.getItem("PlayerName") || "Ada";
 	}
 	if (!KDMapData.Grid)
-		KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]], "JourneyFloor", "", MiniGameKinkyDungeonLevel, false, Load);
+		KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)], "JourneyFloor", "", MiniGameKinkyDungeonLevel, false, Load);
 	KinkyDungeonState = "Game";
 
 	if (KinkyDungeonKeybindings) {
@@ -3362,6 +3505,9 @@ function KDUpdatePlugSettings(evalHardMode) {
 	KinkyDungeonStatsChoice.set("hideperkbondage", KinkyDungeonPerkBondageVisMode == 0 ? true : undefined);
 	KinkyDungeonStatsChoice.set("partialhideperkbondage", KinkyDungeonPerkBondageVisMode == 1 ? true : undefined);
 
+	KinkyDungeonStatsChoice.set("escapekey", KinkyDungeonProgressionMode == "Key" ? true : undefined);
+	KinkyDungeonStatsChoice.set("escaperandom", KinkyDungeonProgressionMode == "Random" ? true : undefined);
+	//KinkyDungeonStatsChoice.set("escapeselect", KinkyDungeonProgressionMode == "Select" ? true : undefined);
 
 
 
@@ -3447,7 +3593,7 @@ function KinkyDungeonHandleClick() {
 			if (KinkyDungeonLoadGame(ElementValue("saveInputField"))) {
 				KDSendEvent('loadGame');
 				//KDInitializeJourney(KDJourney);
-				if (KDMapData.Grid == "") KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]], KDMapData.RoomType || "", KDMapData.MapMod || "", MiniGameKinkyDungeonLevel, false, true);
+				if (KDMapData.Grid == "") KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)], KDMapData.RoomType || "", KDMapData.MapMod || "", MiniGameKinkyDungeonLevel, false, true);
 				ElementRemove("saveInputField");
 				KinkyDungeonState = "Game";
 
@@ -3462,38 +3608,40 @@ function KinkyDungeonHandleClick() {
 			return true;
 		}
 	} else if (KinkyDungeonState == "LoadOutfit"){
-		if (MouseIn(875, 750, 350, 64)) {
+		let Char = KDSpeakerNPC || KinkyDungeonPlayer;
+		if (MouseIn(875, 750, 350, 64) && Char == KinkyDungeonPlayer) {
 			if (StandalonePatched) {
-				KDSaveCodeOutfit();
-				CharacterReleaseTotal(KinkyDungeonPlayer);
-				KinkyDungeonDressSet();
+				KDSaveCodeOutfit(Char);
+				CharacterReleaseTotal(Char);
+				if (Char == KinkyDungeonPlayer)
+					KinkyDungeonDressSet();
 				KinkyDungeonCheckClothesLoss = true;
-				KinkyDungeonDressPlayer();
+				KinkyDungeonDressPlayer(Char, true);
 				KinkyDungeonState = "Wardrobe";
-				KDWardrobeCallback = null;
-				KDWardrobeRevertCallback = null;
+				//KDWardrobeCallback = null;
+				//KDWardrobeRevertCallback = null;
 
 			} else {
 				let decompressed = DecompressB64(ElementValue("saveInputField"));
 				if (decompressed) {
-					let origAppearance = KinkyDungeonPlayer.Appearance;
+					let origAppearance = Char.Appearance;
 					try {
-						CharacterAppearanceRestore(KinkyDungeonPlayer, decompressed);
-						CharacterRefresh(KinkyDungeonPlayer);
-						KDInitProtectedGroups(KinkyDungeonPlayer);
+						CharacterAppearanceRestore(Char, decompressed);
+						CharacterRefresh(Char);
+						KDInitProtectedGroups(Char);
 					} catch (e) {
 						// If we fail, it might be a BCX code. try it!
-						KinkyDungeonPlayer.Appearance = origAppearance;
+						Char.Appearance = origAppearance;
 						try {
 							let parsed = JSON.parse(decompressed);
 							if (parsed.length > 0) {
 								if (!StandalonePatched) {
 									for (let g of parsed) {
-										InventoryWear(KinkyDungeonPlayer, g.Name, g.Group, g.Color);
+										InventoryWear(Char, g.Name, g.Group, g.Color);
 									}
-									CharacterRefresh(KinkyDungeonPlayer);
+									CharacterRefresh(Char);
 								}
-								KDInitProtectedGroups(KinkyDungeonPlayer);
+								KDInitProtectedGroups(Char);
 							} else {
 								console.log("Invalid code. Maybe its corrupt?");
 							}
@@ -3529,6 +3677,12 @@ function KinkyDungeonHandleClick() {
 
 				if (KDPatched) {
 					KDSendEvent('optin');
+					// Expanded and simplified Google's oneliner script:
+					window.dataLayer = [{'gtm.start': new Date().getTime(), event: 'gtm.js'}];
+					let googleTagManager = document.createElement('script');
+					googleTagManager.async = true;
+					googleTagManager.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-536L7P8';
+					document.head.appendChild(googleTagManager);
 				} else {
 					KDOptOut = true;
 				}
@@ -3585,10 +3739,12 @@ function KinkyDungeonHandleClick() {
 			if (MouseIn(690, 930, 150, 64)) {
 				KinkyDungeonState = "LoadOutfit";
 
-				KDOriginalValue = LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
-				CharacterReleaseTotal(KinkyDungeonPlayer);
+				let Char = KDSpeakerNPC || KinkyDungeonPlayer;
+
+				KDOriginalValue = LZString.compressToBase64(CharacterAppearanceStringify(Char));
+				CharacterReleaseTotal(Char);
 				ElementCreateTextArea("saveInputField");
-				ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
+				ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(Char)));
 
 				KinkyDungeonConfigAppearance = true;
 				return true;
@@ -4041,7 +4197,8 @@ function KinkyDungeonGenerateSaveData() {
 	save.aid = KinkyDungeonAid;
 	save.seed = KinkyDungeonSeed;
 	save.statchoice = Array.from(KinkyDungeonStatsChoice);
-	save.mapIndex = KinkyDungeonMapIndex;
+	//save.mapIndex = KinkyDungeonMapIndex;
+
 	save.flags = Array.from(KinkyDungeonFlags);
 	save.KDCommanderRoles = Array.from(KDCommanderRoles);
 	save.faction = KinkyDungeonFactionRelations;
@@ -4203,6 +4360,8 @@ function KinkyDungeonLoadGame(String) {
 			//KinkyDungeonPerksMode = KinkyDungeonStatsChoice.get("perksMode");
 			KinkyDungeonPerksMode = KinkyDungeonStatsChoice.get("hardperksMode") ? 2 : (KinkyDungeonStatsChoice.get("perksMode") ? 1 : 0);
 			KinkyDungeonEasyMode = KinkyDungeonStatsChoice.get("norescueMode") ? 2 : (KinkyDungeonStatsChoice.get("easyMode") ? 1 : 0);
+			KinkyDungeonProgressionMode = KinkyDungeonStatsChoice.get("escapekey") ? "Key" : KinkyDungeonStatsChoice.get("escaperandom") ? "Random" : KinkyDungeonStatsChoice.get("escapeselect") ? "Select" : "Key";
+
 
 			if (saveData.faction != undefined) KinkyDungeonFactionRelations = saveData.faction;
 			KDInitFactions();
@@ -4294,15 +4453,20 @@ function KinkyDungeonLoadGame(String) {
 			KDUpdateEnemyCache = true;
 			if (KDGameData.Journey)
 				KDJourney = KDGameData.Journey;
-			if (saveData.mapIndex && !saveData.mapIndex.length) KinkyDungeonMapIndex = saveData.mapIndex;
+			//if (saveData.mapIndex && !saveData.mapIndex.length) KinkyDungeonMapIndex = saveData.mapIndex;
+
 			if (!KDGameData.SlowMoveTurns) KDGameData.SlowMoveTurns = 0;
 			if (String)
 				localStorage.setItem('KinkyDungeonSave', String);
 
 			if (saveData.KDGameData && saveData.KDGameData.LastMapSeed) KDsetSeed(saveData.KDGameData.LastMapSeed);
 
-			if (!KinkyDungeonMapIndex[KDMapData.MainPath] || !KinkyDungeonMapIndex[KDMapData.ShortcutPath])
-				KDInitializeJourney(KDGameData.Journey);
+			if (!KinkyDungeonMapIndex.grv || !KDGameData.JourneyProgression)
+				KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
+
+			if (!KDGameData.JourneyMap) {
+				KDInitJourneyMap(MiniGameKinkyDungeonLevel);
+			}
 
 			if (saveData.KDMapData || saveData.KinkyDungeonGrid) {
 				KDUpdateVision();
