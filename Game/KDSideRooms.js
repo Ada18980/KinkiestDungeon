@@ -51,6 +51,24 @@ let KDSideRooms = {
 			return true;
 		},
 	},
+	"Caldera": {
+		name: "Caldera",
+		weight: 250,
+		chance: 0.15,
+		filter: (slot, top) => {
+			if (top) return 0.5;
+			if (slot.Checkpoint == 'cst') return 0;
+			return 1;
+		},
+		altRoom: "Caldera",
+		mapMod: "None",
+		escapeMethod: "None",
+		faction: "Elf",
+		stairCreation: (tile, x, y) => {
+			KinkyDungeonSkinArea({skin: "cst"}, x, y, 1.5);
+			return true;
+		},
+	},
 	"ElevatorRoom": {
 		name: "ElevatorRoom",
 		weight: 400,

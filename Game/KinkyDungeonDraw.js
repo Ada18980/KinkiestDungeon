@@ -509,6 +509,9 @@ const KDSprites = {
 	"w": (x, y, Fog, noReplace) => {
 		return "Floor";
 	},
+	"W": (x, y, Fog, noReplace) => {
+		return "Floor";
+	},
 	"]": (x, y, Fog, noReplace) => {
 		return "Floor";
 	},
@@ -606,7 +609,10 @@ const KDOverlays = {
 		return "HappyGas";
 	},
 	"w": (x, y, Fog, noReplace) => {
-		return Fog ? "" : "Water";
+		return "Water";
+	},
+	"W": (x, y, Fog, noReplace) => {
+		return "Water";
 	},
 	"O": (x, y, Fog, noReplace) => {
 		return "Orb";
@@ -769,6 +775,9 @@ const KDOverlays2 = {
 			return "Conveyor/" + sprite;
 		}
 		return "";
+	},
+	"W": (x, y, Fog, noReplace) => {
+		return "WaterFoam";
 	},
 };
 

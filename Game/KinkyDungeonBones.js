@@ -235,6 +235,7 @@ let KDPatronsSpecial = {
 	"The-Fisher-King": 2,
 	"Churro": 2,
 	"Laioken ": 2,
+	"Wyatt Wintersoul": 1,
 	"Dex♪ ": 1,
 	"Anthony Royle": 1,
 	"Shogo ": 1,
@@ -360,6 +361,7 @@ let KDPatronsSpecial = {
 };
 
 let KDPatrons = [
+	"Wyatt Wintersoul",
 	"Anonymous",
 	"cyberjoel",
 	"朱文清",
@@ -494,7 +496,7 @@ let KDPatrons = [
 	"花以寒 ",
 	"BoneDaddyReaper",
 	"Benedito Wang",
-	"Paul .",
+	"Books",
 	"Yuichiro Szabo",
 	"usndee ",
 	"Mark ICT",

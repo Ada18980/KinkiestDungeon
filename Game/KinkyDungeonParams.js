@@ -400,7 +400,7 @@ const KinkyDungeonMapParams = {
 			lib: 0.1,
 			cat: 0.1,
 			jng: 0.5,
-			tmp: 0.1,
+			cst: 0.1,
 		},
 		successorSame: {
 			jng: 0.7,
@@ -918,11 +918,13 @@ const KinkyDungeonMapParams = {
 	"cry":{//DungeonName13,-Crystal Cave-
 		successorNegative: {
 			jng: 0.6,
-			tmp: 0.4,
+			tmp: 0.1,
+			cst: 0.3,
 		},
 		successorPositive: {
 			tmp: 0.4,
-			cat: 0.6,
+			cat: 0.4,
+			cst: 0.2,
 		},
 		successorSame: {
 			cry: 0.8,
@@ -1365,6 +1367,120 @@ const KinkyDungeonMapParams = {
 			{Type: "Rope", Weight: 2},
 			{Type: "Will", Weight: 13},]
 
+	},
+
+	"cst":{// Coast
+		worldGenCode: () => {
+			for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
+				for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
+					if (KinkyDungeonMapGet(X, Y) == 'X'
+						&& (KDRandom() < 0.15 + 0.45 * Math.min(1, KinkyDungeonDifficulty/30)
+							|| KDNearbyTiles(X, Y, 1.5).some((tile) => {return tile.tile == 'C';}))) {
+						KinkyDungeonMapSet(X, Y, '3');
+						//DialogueCreateEnemy(X, Y, "MummyCursed");
+					}
+					if (KinkyDungeonMapGet(X, Y) == 'B') {
+						let tile = KinkyDungeonTilesGet(`${X},${Y}`);
+						if (!tile) tile = KinkyDungeonTilesSet(`${X},${Y}`, {});
+						tile.Skin = "ClamBed";
+					}
+				}
+			}
+		},
+		ceilinghookchance: 0,
+		successorNegative: {
+			cry: 0.5,
+			jng: 0.5,
+		},
+		successorPositive: {
+			cst: 0.6,
+			cry: 0.2,
+			jng: 0.2,
+		},
+		successorSame: {
+			cst: 1.0,
+		},
+		color: "#f0b541",
+		"background" : "MagicSchoolLaboratory",
+		noReplace: "b",
+		"openness" : 10,
+		"density" : 1,
+		"crackchance" : 0.14,
+		"barchance" : 0.1,
+
+		lightColor: 0xaaaaaa,
+		"brightness" : 40,
+
+		"floodchance" : 0.5,
+		"chestcount" : 10,
+		"chargerchance": 0.8,
+		"litchargerchance": 0.25,
+		"chargercount": 6,
+		"shrinecount" : 11,
+		"shrinechance" : 0.5,
+		"ghostchance" : 0.5,
+		"doorchance" : 0.2,
+		"nodoorchance" : 0.6,
+		"doorlockchance" : -0.05,
+		"trapchance" : 0.3,
+		"grateChance" : 0.7,
+		"rubblechance" : 0.3,
+		"brickchance" : 0.01,
+		"cacheInterval" : 1,
+		// Side routes have more high-value loot
+		"forbiddenChance" : 1.0,
+		"forbiddenGreaterChance" : 0.45,
+		torchchance: 0.6,
+		torchchanceboring: -0.4,
+
+		music: {
+			"Shopping.ogg": 10,
+		},
+
+		"setpieces": [
+			{Type: "SmallAltar", Weight: 20},
+			{Type: "GuardedChest", Weight: 30},
+			{Type: "LargeGuardedChest", Weight: 20},
+			{Type: "Magicflies", Weight: 40},
+		],
+
+		tagModifiers: {
+			"urban": 0.1,
+			"jungle": 2,
+			"cavern": 2,
+			"library": 0,
+			"temple": 0.25,
+		},
+
+
+		"traps": [
+			{Name: "SpecificSpell", Spell: "TrapRopeWeak", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapRopeStrong", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapLeatherWeak", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 30},
+
+			{Name: "SpecificSpell", Spell: "TrapLatexBubble", Level: 0, Power: 3, Weight: 200},
+		],
+
+		"min_width" : 5,
+		"max_width" : 5,
+		"min_height" : 5,
+		"max_height" : 5,
+
+		factionList: ["Elf", "Bast", "Dragon"],
+
+		enemyTags: ["nature", "elf", "bast", "bubble", "water", "aqua"],
+		"defeat_outfit": "Prisoner",
+		"shrines": [
+			{Type: "Latex", Weight: 6},
+			{Type: "Commerce", Weight: 0},
+			{Type: "Elements", Weight: 6},
+			{Type: "Conjure", Weight: 4},
+			{Type: "Illusion", Weight: 4},
+			{Type: "Metal", Weight: 3},
+			{Type: "Rope", Weight: 4},
+			{Type: "Leather", Weight: 6},
+			{Type: "Will", Weight: 11},]
 	},
 };
 

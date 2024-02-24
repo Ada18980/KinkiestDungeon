@@ -38,8 +38,7 @@ function KDConducting(entity) {
 function KinkyDungeonHandleTilesEnemy(enemy, delta) {
 	let tile = KinkyDungeonMapGet(enemy.x, enemy.y);
 	if (tile == 'w') {
-		/*
-		if (KDWettable(enemy)) {
+		if (KDWettable(enemy) && !KDIsFlying(enemy)) {
 			if (!enemy.buffs) enemy.buffs = {};
 			let b1 = Object.assign({}, KDDrenched);
 			b1.duration = 6;
@@ -51,8 +50,10 @@ function KinkyDungeonHandleTilesEnemy(enemy, delta) {
 			KinkyDungeonApplyBuffToEntity(enemy, b1);
 			KinkyDungeonApplyBuffToEntity(enemy, b2);
 			KinkyDungeonApplyBuffToEntity(enemy, b3);
+			KinkyDungeonApplyBuffToEntity(enemy, KDSlowedSlightly);
+
+
 		}
-		*/
 	}
 }
 

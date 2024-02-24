@@ -69,6 +69,12 @@ let KDTileUpdateFunctionsLocal = {
 			duration: 2,
 		}, 0);
 	},
+	"W": (delta, X, Y) => {
+		KDCreateEffectTile(X, Y, {
+			name: "Water",
+			duration: 2,
+		}, 0);
+	},
 	"V": (delta, X, Y) => {
 		KDConveyor(delta, X, Y);
 	},
@@ -318,6 +324,11 @@ function KDBasicRestraintsMachine_Player(tags, count, msg) {
  * @type {Record<string, (delta: number) => boolean>}
  */
 let KDTileUpdateFunctions = {
+	"W": (delta) => { // Happy Gas!
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, KDWaterSlow);
+		KinkyDungeonSendTextMessage(5, TextGet("KDWaterIsWet"), "#4fa4b8", 1);
+		return true;
+	},
 	"]": (delta) => { // Happy Gas!
 		KinkyDungeonChangeDistraction(1 * delta * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2), false, 0.1);
 		KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonHappyGas"), "pink", 1);

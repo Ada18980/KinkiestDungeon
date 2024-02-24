@@ -123,10 +123,17 @@ function KDGetFavoringSetpieces(Name, tags, POI, POIBlacklist) {
 		if (p.used) continue;
 		if (p.favor.includes(Name)) {
 			pois.push(p);
-		} else if (p.requireTags.length == 0 || p.requireTags.some((tag) => {return tags.includes(tag);})) {
-			pois.push(p);
 		}
 	}
+	// Always favor by name first
+	if (pois.length == 0)
+		for (let p of POI) {
+			if (POIBlacklist && POIBlacklist.get(p)) continue;
+			if (p.used) continue;
+			if (p.requireTags.length == 0 || p.requireTags.some((tag) => {return tags.includes(tag);})) {
+				pois.push(p);
+			}
+		}
 
 	return pois[Math.floor(KDRandom() * pois.length)];
 }

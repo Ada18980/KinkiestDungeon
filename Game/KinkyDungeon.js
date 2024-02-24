@@ -3218,7 +3218,7 @@ let KinkyDungeonGameFlag = false;
 
 
 function KDInitializeJourney(Journey, Level) {
-	KDCurrentWorldSlot = {x: 0, y: Level};
+	KDCurrentWorldSlot = {x: 0, y: Level || 0};
 	KDWorldMap = {};
 	/**
 	 * @type {string[]}

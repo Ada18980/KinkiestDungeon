@@ -169,6 +169,9 @@ let KDDollDebuff2 = {
 let KDSlowed = {
 	id: "Slowed", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 1
 };
+let KDSlowedSlightly = {
+	id: "Slowed", type: "MoveSpeed", power: -.5, player: true, enemies: true, duration: 1
+};
 let KDKnockbackable = {
 	id: "Knockbackable", type: "Knockback", power: 2.0, player: true, enemies: true, duration: 1
 };
@@ -178,6 +181,8 @@ let KDAttackSlow = {
 let KDUnsteady = {id: "Unsteady", aura: "#aa8888", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 1,};
 let KDUnsteady2 = {id: "Unsteady2", aura: "#aa8888", type: "HeelPower", power: 2.5, player: true, enemies: false, duration: 3,};
 let KDUnsteady3 = {id: "Unsteady3", type: "Evasion", power: -0.5, player: true, enemies: false, duration: 3,};
+
+let KDWaterSlow = {id: "WaterSlow", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 1,};
 
 let KDNoChill = {id: "ChillWalk", aura: "#73efe8", type: "ChillWalk", power: -1.0, player: true, enemies: true, duration: 2,};
 let KDNoChillNoAura = {id: "ChillWalk2", type: "ChillWalk", power: -1.0, player: true, enemies: true, duration: 2,};

@@ -77,7 +77,7 @@ let KinkyDungeonPOI = [];
 
 let KinkyDungeonStairTiles = 'sSH';
 let KDDefaultAvoidTiles = "gtVN@";
-let KinkyDungeonGroundTiles = "023w][?/";
+let KinkyDungeonGroundTiles = "023wW][?/";
 let KinkyDungeonWallTiles = "14,";
 let KinkyDungeonBlockTiles = "14,bgX";
 let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HB@l;SsRrdzTgLcNVt5"; // Objects which can be moved into: floors, debris, open doors, staircases
@@ -248,6 +248,7 @@ function KinkyDungeonEffectTilesGet(location) {
  */
 function KinkyDungeonTilesSet(location, value) {
 	KDMapData.Tiles[location] = value;
+	return value;
 }
 /**
  *
@@ -3071,10 +3072,12 @@ function KinkyDungeonPlaceDoors(doorchance, doortrapchance, nodoorchance, doorlo
 						let get = KinkyDungeonMapGet(XX, YY);
 						if (!(XX == X && YY == Y) && (!KinkyDungeonMovableTilesEnemy.includes(get))) {
 							wallcount += 1; // Get number of adjacent walls
-							if (XX == X+1 && YY == Y && !KinkyDungeonMovableTilesEnemy.includes(get)) right = true;
-							else if (XX == X-1 && YY == Y && !KinkyDungeonMovableTilesEnemy.includes(get)) left = true;
-							else if (XX == X && YY == Y+1 && !KinkyDungeonMovableTilesEnemy.includes(get)) down = true;
-							else if (XX == X && YY == Y-1 && !KinkyDungeonMovableTilesEnemy.includes(get)) up = true;
+							if ("14,b".includes(get)) {
+								if (XX == X+1 && YY == Y && !KinkyDungeonMovableTilesEnemy.includes(get)) right = true;
+								else if (XX == X-1 && YY == Y && !KinkyDungeonMovableTilesEnemy.includes(get)) left = true;
+								else if (XX == X && YY == Y+1 && !KinkyDungeonMovableTilesEnemy.includes(get)) down = true;
+								else if (XX == X && YY == Y-1 && !KinkyDungeonMovableTilesEnemy.includes(get)) up = true;
+							}
 						} else if (get == 'D') // No adjacent doors
 							wallcount = 100;
 					}
@@ -3251,7 +3254,7 @@ function KinkyDungeonPlaceFurniture(barrelChance, cageChance, width, height, alt
 		for (let X = 1; X < width-1; X += 1)
 			for (let Y = 1; Y < height-1; Y += 1) {
 				if (KinkyDungeonMapGet(X, Y) == '0' && !(KinkyDungeonTilesGet(X + "," + Y) && (KinkyDungeonTilesGet(X + "," + Y).OffLimits || KinkyDungeonTilesGet(X + "," + Y).Skin))
-					&& !(Object.values(KinkyDungeonEffectTilesGet(X + ',' + Y))?.length > 0)
+					&& !(Object.values(KinkyDungeonEffectTilesGet(X + ',' + Y) || {})?.length > 0)
 					&& (KinkyDungeonMapGet(X+1, Y) != 'd' && KinkyDungeonMapGet(X+1, Y) != 'D'
 						&& KinkyDungeonMapGet(X-1, Y) != 'd' && KinkyDungeonMapGet(X-1, Y) != 'D'
 						&& KinkyDungeonMapGet(X, Y+1) != 'd' && KinkyDungeonMapGet(X, Y+1) != 'D'
@@ -4429,7 +4432,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 									if (quick) {
 										KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Miss.ogg");
 									} else {
-										if (moveObject == 'w')
+										if (moveObject == 'w' || moveObject == 'W')
 											KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/FootstepWater.ogg");
 										else KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Footstep.ogg");
 									}

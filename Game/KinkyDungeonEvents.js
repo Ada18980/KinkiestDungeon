@@ -185,6 +185,17 @@ let KDEventMapInventory = {
 			}
 		}
 	},
+	"beforeCast": {
+		"ReduceMiscastVerbal": (e, item, data) => {
+			if (data.spell) {
+				/** @type {spell} */
+				let spell = data.spell;
+				if (spell.components?.includes("Verbal")) {
+					data.flags.miscastChance -= e.power;
+				}
+			}
+		}
+	},
 	"postApply": {
 		/**
 		 * @param {KDEventData_PostApply} data

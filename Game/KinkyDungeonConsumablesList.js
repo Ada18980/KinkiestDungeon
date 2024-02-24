@@ -79,6 +79,7 @@ let KinkyDungneonBasic = {
 
 let KinkyDungneonShopRestraints = {
 	"SlimeWalkers" : {name: "SlimeWalkers", rarity: 2, shop: true},
+	"SarielPanties" : {name: "SarielPanties", rarity: 5, shop: true},
 	"DivineBelt" : {name: "DivineBelt", rarity: 5, shop: true},
 	"DivineBelt2" : {name: "DivineBelt2", rarity: 5, shop: true},
 	"DivineBra" : {name: "DivineBra", rarity: 5, shop: true},

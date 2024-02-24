@@ -500,6 +500,7 @@ let KinkyDungeonLootTable = {
 		{name: "trap_plug2_torment", notag: ["SupremeBelt"], arousalMode: true, trap: true, lock: "Gold", minLevel: 11, weight:1, message:"LootChestTrapMagicPlug", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 5},
 		{name: "trap_nipple2", notag: ["SupremeBra"], arousalMode: true, trap: true, minLevel: 7, weight:4, message:"LootChestTrapMagicNipple", messageColor:"#ff0000", messageTime: 3, allFloors: true, prerequisites: ["Group_ItemNipples", "vibe"], power: 3},
 		{name: "PotionCollar", minLevel: 1, weight:1.5, message:"LootPotionCollar", messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["PotionCollar"]},
+		{name: "SarielPanties", armor: "SarielPanties", minLevel: 1, weight:1.2, message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true, norestraint: ["SarielPanties"]},
 	],
 	"silver": [
 		{name: "manaorb", minLevel: 0, weight:4, message:"LootManaOrb", messageColor:"lightblue", messageTime: 3, allFloors: true},

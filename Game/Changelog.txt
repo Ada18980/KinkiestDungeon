@@ -28,6 +28,13 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.2.9
+- Added Sariel Vinlaga's Panties to gold chests
+
+5.2.8
+- Fixed a crash
+- Added new tileset by Wyatt Wintersoul
+
 5.2.7
 - Made items more universally 'stretchy' so that having more progress in struggling makes further struggling weaker, however, having struggle progress makes removal and cutting easier
 - Bound penalties to items have been reduced to compensate, this will make most items somewhat harder to escape with a single escape method. If you can leverage struggle in addition to cut or remove, it will make things much easier.
