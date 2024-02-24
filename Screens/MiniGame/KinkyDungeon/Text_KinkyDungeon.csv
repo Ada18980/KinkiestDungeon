@@ -17621,6 +17621,21 @@ KDFilterFiltersGags,Gags
 KDFilterFiltersBoots,Boots
 KDFilterFiltersToys,Toys
 
+KDFilterFiltersHead,Head
+
+KDFilterFiltersNeck,Neck
+KDFilterFiltersArms,Arms
+
+KDFilterFiltersGloves,Gloves
+KDFilterFiltersChest,Chest
+
+KDFilterFiltersTorso,Torso
+KDFilterFiltersPanties,Panties
+
+KDFilterFiltersLegs,Lower
+KDFilterFiltersAnkles,Ankles
+KDFilterFiltersBoots,Boots
+
 RestraintStrongMagicRopeArmsBoxtie,Spellbound Boxtie
 RestraintStrongMagicRopeArmsBoxtieDesc,"A box tie keeping your arms secured behind your back."
 RestraintStrongMagicRopeArmsBoxtieDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
@@ -20290,3 +20305,12 @@ KinkyDungeonInventoryItemSarielPanties,Sariel Vinlaga's Panties
 KinkyDungeonInventoryItemSarielPantiesDesc,"Legend has it that these were worn by the legendary archmagus herself."
 KinkyDungeonInventoryItemSarielPantiesDesc2,"If you keep them in your mouth, your verbal spells have -50% miscast chance. +10% spell damage."
 LootSarielPanties,"You find a pair of black panties with pink trim, scrunched up in a ball."
+
+
+RestraintElvenPanties,Elven Panties
+RestraintElvenPantiesDesc,"In faraway lands, they often say that less is more..."
+RestraintElvenPantiesDesc2,"+11% sprint efficiency"
+KinkyDungeonInventoryItemElvenPanties,Elven Panties
+KinkyDungeonInventoryItemElvenPantiesDesc,"In faraway lands, they often say that less is more..."
+KinkyDungeonInventoryItemElvenPantiesDesc2,"+11% sprint efficiency"
+LootElvenPanties,"You find a pair of elven panties."

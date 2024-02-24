@@ -175,6 +175,18 @@ KDFilterFilters[Armor] = {
 	Heavy: false,
 	Mage: false,
 	Accessory: false,
+
+	Head: false,
+	Chest: false,
+
+	Arms: false,
+	Gloves: false,
+
+	Torso: false,
+	Panties: false,
+
+	Legs: false,
+	Boots: false,
 };
 KDFilterFilters[Restraint] = {
 	Special: false,
@@ -227,6 +239,37 @@ let KDSpecialFilters = {
 		Mundane: (item, handle) => {
 			if (handle) KDFilterFilters[Armor].Enchanted = false;
 			return !KinkyDungeonRestraintVariants[item.inventoryVariant || item.name];
+		},
+
+		Head: (item, handle) => {
+			return KDRestraint(item)?.Group == "ItemHead" || KDRestraint(item)?.Group == "ItemMouth" || KDRestraint(item)?.Group == "ItemNeck";
+		},
+		Neck: (item, handle) => {
+			return KDRestraint(item)?.Group == "ItemNeck";
+		},
+		Chest: (item, handle) => {
+			return KDRestraint(item)?.Group == "ItemBreast";
+		},
+		Arms: (item, handle) => {
+			return KDRestraint(item)?.Group == "ItemArms";
+		},
+		Gloves: (item, handle) => {
+			return KDRestraint(item)?.Group == "ItemHands";
+		},
+		Torso: (item, handle) => {
+			return KDRestraint(item)?.Group == "ItemTorso";
+		},
+		Panties: (item, handle) => {
+			return KDRestraint(item)?.Group == "ItemPelvis";
+		},
+		Legs: (item, handle) => {
+			return KDRestraint(item)?.Group == "ItemLegs";
+		},
+		Ankles: (item, handle) => {
+			return KDRestraint(item)?.Group == "ItemFeet";
+		},
+		Boots: (item, handle) => {
+			return KDRestraint(item)?.Group == "ItemBoots";
 		},
 	},
 	weapon: {
