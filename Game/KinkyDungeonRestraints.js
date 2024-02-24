@@ -55,6 +55,15 @@ let KDCustomAffinity = {
 		}
 		return KinkyDungeonGetAffinity(data.Message, "Hook", data.group);
 	},
+	Tug: (data) => {
+		if (KinkyDungeonFlags.get("leashtug")) {
+			if (data.Message) {
+				KinkyDungeonSendTextMessage(7, TextGet("KDUseTugAffinity"), "lightgreen", 2);
+			}
+			return true;
+		}
+		return false;
+	},
 	SharpHookOrFoot: (data) => {
 		if (!KinkyDungeonGetAffinity(data.Message, "Sharp", data.group)) return false;
 		if (KinkyDungeonCanUseFeetLoose()) {
@@ -64,6 +73,16 @@ let KDCustomAffinity = {
 			return true;
 		}
 		return KinkyDungeonGetAffinity(data.Message, "Hook", data.group);
+	},
+	SharpTug: (data) => {
+		if (!KinkyDungeonGetAffinity(data.Message, "Sharp", data.group)) return false;
+		if (KinkyDungeonFlags.get("leashtug")) {
+			if (data.Message) {
+				KinkyDungeonSendTextMessage(7, TextGet("KDUseTugAffinity"), "lightgreen", 2);
+			}
+			return true;
+		}
+		return false;
 	},
 };
 
@@ -595,6 +614,8 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 						KinkyDungeonChangeWill(-KDLeashPullCost, false);
 					}
 					//return true;
+					if (Entity.player) KinkyDungeonSetFlag("leashtug", 3);
+					else KinkyDungeonSetEnemyFlag(Entity, "leashtug", 3);
 					exceeded = true;
 				}
 			}
@@ -659,7 +680,9 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
 							KDMoveEntity(Entity, slot.x, slot.y, false, undefined, undefined, true);
 						}
 						if (Entity.player) KinkyDungeonSetFlag("pulled", 1);
-						else KinkyDungeonSetEnemyFlag(Entity, "pulled");
+						else KinkyDungeonSetEnemyFlag(Entity, "pulled", 1);
+						if (Entity.player) KinkyDungeonSetFlag("leashtug", 3);
+						else KinkyDungeonSetEnemyFlag(Entity, "leashtug", 3);
 						if (Entity.player) {
 							KinkyDungeonInterruptSleep();
 							KinkyDungeonSendEvent("leashTug", {Entity: Entity, slot: slot, item: inv});
@@ -1711,7 +1734,7 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 	}
 
 	let limitChance = limitChancePre != undefined ? limitChancePre : (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
-		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : 0.05);
+		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : 0.12);
 
 	if ((!ApplyGhost || !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())) && !ApplyPlayerBonus) {
 		if (StruggleType == "Pick") {
@@ -2167,12 +2190,12 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	if (!(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && StruggleType != "Struggle" && (struggleGroup != "ItemArms" && struggleGroup != "ItemHands" ) && armsBound) data.escapeChance *= 0.6;
 
 	// Bound arms make escaping more difficult, and impossible if the chance is already slim
-	if (StruggleType != "Struggle" && struggleGroup != "ItemArms" && armsBound) data.escapeChance = Math.max(minAmount, data.escapeChance - 0.25);
+	if (StruggleType != "Struggle" && struggleGroup != "ItemArms" && armsBound) data.escapeChance = Math.max(minAmount, data.escapeChance - 0.18);
 
 	// Covered hands makes it harder to unlock. If you have the right removal type it makes it harder but wont make it go to 0
 	if (((StruggleType == "Pick" && !KinkyDungeonStatsChoice.get("Psychic")) || StruggleType == "Unlock" || StruggleType == "Remove") && struggleGroup != "ItemHands" && handsBound)
 		data.escapeChance = Math.max((StruggleType == "Remove" && data.hasAffinity) ?
-		Math.max(0, data.escapeChance / 2) : 0, data.escapeChance - 0.1 - 0.4 * handBondage);
+		Math.max(0, data.escapeChance / 2) : 0, data.escapeChance - 0.14 - 0.22 * handBondage);
 
 	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.2);
 
@@ -2198,7 +2221,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	let possible = data.escapeChance > 0;
 	// Strict bindings make it harder to escape unless you have help or are cutting with affinity
 	if (data.strict && StruggleType == "Struggle")
-		data.escapeChance = Math.max(0, data.escapeChance - data.strict);
+		data.escapeChance = Math.max(0, data.escapeChance - data.strict * 0.9);
 
 	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.2);
 
@@ -4395,6 +4418,7 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 		progress += restraint.struggleProgress;
 		destroyChance = restraint.cutProgress / progress;
 	}
+	if (KDRestraint(restraint)?.struggleBreak && StruggleType == "Struggle") destroyChance = 1.0;
 	let destroy = false;
 
 	KinkyDungeonFastStruggleType = "";

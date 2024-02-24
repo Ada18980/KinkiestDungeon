@@ -3218,7 +3218,7 @@ let KinkyDungeonGameFlag = false;
 
 
 function KDInitializeJourney(Journey, Level) {
-	KDCurrentWorldSlot = {x: 0, y: 0};
+	KDCurrentWorldSlot = {x: 0, y: Level};
 	KDWorldMap = {};
 	/**
 	 * @type {string[]}
@@ -4231,7 +4231,6 @@ function KinkyDungeonGenerateSaveData() {
 	save.KDWorldMap = KDWorldMap;
 	save.KDCurrentWorldSlot = KDCurrentWorldSlot;
 	save.KinkyDungeonPlayerEntity = KinkyDungeonPlayerEntity;
-	save.KDCurrentWorldSlot = KDCurrentWorldSlot;
 
 
 

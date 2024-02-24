@@ -641,6 +641,9 @@ function KinkyDungeonUpdateSingleEffectTile(delta, entity, tile,) {
  * @param {effectTile} tile
  */
 function KinkyDungeonUpdateSingleEffectTileStandalone(delta, tile,) {
+	if (tile.noWalls && !KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(tile.x, tile.y))) {
+		tile.duration = 0;
+	}
 	if (tile.duration > 0 && KDEffectTileFunctionsStandalone[tile.functionName || tile.name]) {
 		KDEffectTileFunctionsStandalone[tile.functionName || tile.name](delta, tile);
 	}

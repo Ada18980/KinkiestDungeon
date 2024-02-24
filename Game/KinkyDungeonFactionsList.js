@@ -946,15 +946,15 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"Bountyhunter": {
 		"Jail": 0.8,
-		"Dragon": 0.4,
+		"Dragon": 0.5,
 		"Bandit": -0.55,
 		"Maidforce": -0.15,
 		"Witch": -0.4,
-		"Dressmaker": 0.5,
-		"Nevermere": 0.75,
+		"Dressmaker": 0.4,
+		"Nevermere": 0.4,
 	},
 	"Elf": {
-		"Mushy": 1.0,
+		"Mushy": 0.4,
 		"Beast": 0.2,
 		"Plant": 0.2,
 	},
@@ -1002,7 +1002,7 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"Dressmaker": {
 		"Witch": 0.15,
-		"Nevermere": 0.8,
+		"Nevermere": 0.55,
 		"Bandit": -0.5,
 		"Dragon": -0.5,
 	},

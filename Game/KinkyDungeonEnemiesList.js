@@ -4539,7 +4539,7 @@ let KinkyDungeonEnemies = [
 		spells: ["RestrainingBolt"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, projectileTargeting: true, accuracy: 1.5,
 
 		followLeashedOnly: true, ignorechance: 0, followRange: 2.5, AI: "hunt", guardChance: 0.0,
-		visionRadius: 9.5, maxhp: 40, minLevel:12, weight:1, movePoints: 2, attackPoints: 3, attack: "SpellMeleeWillBindLock",
+		visionRadius: 14.5, blindSight: 8, maxhp: 40, minLevel:12, weight:1, movePoints: 2, attackPoints: 3, attack: "SpellMeleeWillBindLock",
 		attackWidth: 2.5, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 1,
 		stamina: 10,
 		preferDodge: true, maxblock: 0, maxdodge: 2,
@@ -4565,7 +4565,7 @@ let KinkyDungeonEnemies = [
 		spells: ["Taunt"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, projectileTargeting: true, accuracy: 1.5,
 
 		followLeashedOnly: true, ignorechance: 0, followRange: 2.5, AI: "hunt", guardChance: 0.0,
-		visionRadius: 9.5, maxhp: 50, minLevel:12, weight:1, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeWillBindLock",
+		visionRadius: 13.5, blindSight: 8, maxhp: 50, minLevel:12, weight:1, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeWillBindLock",
 		attackWidth: 3, attackRange: 1, power: 3, dmgType: "pain", fullBoundBonus: 1,
 		stamina: 7,
 		preferDodge: true, maxblock: 0, maxdodge: 1,
@@ -4593,7 +4593,7 @@ let KinkyDungeonEnemies = [
 		spells: ["MagicMissile", "MagicMissileChannel", "MagicMissileChannel"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, projectileTargeting: true, accuracy: 1.5,
 
 		followLeashedOnly: true, ignorechance: 0, followRange: 2.5, AI: "hunt", guardChance: 0.0,
-		visionRadius: 9.5, maxhp: 30, minLevel:12, weight:1, movePoints: 1.4, attackPoints: 3, attack: "SpellMeleeWillBindLockAll",
+		visionRadius: 14.5, blindSight: 8, maxhp: 30, minLevel:12, weight:1, movePoints: 1.4, attackPoints: 3, attack: "SpellMeleeWillBindLockAll",
 		attackWidth: 2.5, attackRange: 1, power: 3, dmgType: "tickle", fullBoundBonus: 1,
 		stamina: 4,
 		preferDodge: true, maxblock: 0, maxdodge: 1,

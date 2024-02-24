@@ -4770,6 +4770,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 											if (AIData.leashing && !KDPlayerIsImmobilized() && !KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity)) {
 												KinkyDungeonAttachTetherToEntity(2.5, enemy);
 												KinkyDungeonSetFlag("grabbed", 4);
+												KinkyDungeonSetFlag("leashtug", 3);
 											}
 											KDMovePlayer(enemy.x, enemy.y, false);
 											KinkyDungeonTargetTile = null;

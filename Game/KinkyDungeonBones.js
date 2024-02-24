@@ -14,7 +14,9 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Alexandra", color: "#6241e1", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Nekora", color: "#42a459", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Emeia", color: "#00A7FF", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Goldie", color: "#f8c53a", prisoner: true, free: true, customPlayLine: "", customIntro: "Hey cutie, I'm Goldie. Why don't we play a little?", customSprite: ""},
 		{name: "Dana", color: "#4444ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Loral", color: "#ab1d1d", prisoner: true, free: true, customPlayLine: "", customIntro: "Are you a good girl?", customSprite: ""},
 		{name: "Yami", color: "#88ff88", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Animi", color: "#ff9999", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Ladica", color: "#44ff44", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
@@ -28,6 +30,7 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["WolfInstructor", [
 		{name: "Ladica, the Stoneclaw", color: "#4CBB17", prisoner: false, free: true, customPlayLine: "", customIntro: "Ready for yer spanking?", customSprite: ""},
+		{name: "Acapelle", color: "#ad2f45", prisoner: false, free: true, customPlayLine: "", customIntro: "Hi! I'm Acapelle. To what do I owe the pleasure?", customSprite: ""},
 	],
 	],
 	["WolfgirlPet", [
@@ -41,6 +44,14 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Rena", color: "#a452ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Str Nurse", color: "#ffffff", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Fableite", color: "#999999", prisoner: false, free: true, customPlayLine: "", customIntro: "Care for an Examination?", customSprite: ""},
+	],
+	],
+	["RopeKraken", [
+		{name: "Yandere Harem", color: "#ffffff", prisoner: true, free: true, customPlayLine: "", customIntro: "It's krakening time", customSprite: ""},
+	],
+	],
+	["ShadowGhast", [
+		{name: "Erma", color: "#23ddee", prisoner: false, free: true, customPlayLine: "", customIntro: "You haven't come across my pet Raven, have you?", customSprite: ""},
 	],
 	],
 	["ElementalLatex", [
@@ -180,6 +191,7 @@ let KDPatronCustomEnemies = new Map([
 	["WitchSlime", [
 		{name: "Kathy Narlato", color: "#4e3da9", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Claire", color: "#55ff55", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Luna", color: "#872eff", prisoner: true, free: true, customPlayLine: "", customIntro: "Hi I'm Luna.", customSprite: ""},
 	],
 	],
 	["WitchWater", [

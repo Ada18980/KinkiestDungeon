@@ -304,12 +304,52 @@ let alts = {
 		nolore: true,
 		noboring: false,
 	},
+	"ElevatorRoom": {
+		name: "ElevatorRoom",
+		Title: "ElevatorRoom",
+		noWear: false, // Disables doodad wear
+		bossroom: false,
+		width: 14,
+		height: 16,
+		nopatrols: false,
+		setpieces: {
+		},
+		data: {
+			ElevatorRoom: true,
+		},
+		genType: "ElevatorRoom",
+		skin: "bel",
+		musicParams: "bel",
+		lightParams: "bel",
+		useGenParams: "bel",
+		spawns: false,
+		chests: false,
+		shrines: false,
+		persist: true,
+		orbs: 0,
+		chargers: false,
+		notorches: false,
+		heart: false,
+		specialtiles: false,
+		shortcut: false,
+		enemies: false,
+		nojail: true,
+		nokeys: true,
+		nostairs: true,
+		placeDoors: false,
+		notraps: true,
+		noClutter: false,
+		nobrick: false,
+		nolore: true,
+		noboring: false,
+		noSetpiece: true,
+	},
 	"TestTile": {
 		name: "TestTile",
 		noWear: true, // Disables doodad wear
 		bossroom: false,
-		width: 15,
-		height: 10,
+		width: 20,
+		height: 20,
 		alwaysRegen: true, // Always regenerate this room
 		//nopatrols: true,
 		setpieces: {
@@ -463,6 +503,9 @@ let KinkyDungeonCreateMapGenType = {
 	},
 	"ShopStart": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
+	},
+	"ElevatorRoom": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateElevatorRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
 	},
 	"TestTile": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateTestTile(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
@@ -1403,15 +1446,6 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 	KinkyDungeonCreateRectangle(VisitedRooms[0].x, VisitedRooms[0].y - 1, 2, 2, false, false, false, false);
 	KinkyDungeonCreateRectangle(VisitedRooms[0].x, VisitedRooms[0].y, width - 2, 1, false, false, false, false);
 
-	// Create the two branching hallways
-	let b1 = 3 + Math.floor(KDRandom() * (width-7));
-	let b2 = 4 + Math.floor(KDRandom() * (width-6));
-
-	if (Math.abs(b1 - b2) < 2) {
-		if (b1 < width - 4) b2 = b1 + 2;
-		else b2 = b1 - 2;
-	}
-
 	// Now we STRETCH the map
 	let KinkyDungeonOldGrid = KDMapData.Grid;
 	let w = KDMapData.GridWidth;
@@ -1661,6 +1695,35 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 
 }
 
+
+
+function KinkyDungeonCreateElevatorRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	// Variable setup
+
+	KDMapData.StartPosition = {x: 15, y: 2 + 7 * 4};
+	KDMapData.EndPosition = {x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.y};
+	VisitedRooms[0].x = 1;
+	VisitedRooms[0].y = Math.floor(height/2);
+
+	// Now we STRETCH the map
+	let KinkyDungeonOldGrid = KDMapData.Grid;
+	let w = KDMapData.GridWidth;
+	let h = KDMapData.GridHeight;
+	KDMapData.GridWidth = Math.floor(KDMapData.GridWidth*2);
+	KDMapData.GridHeight = Math.floor(KDMapData.GridHeight*2);
+	KDMapData.Grid = "";
+
+	// Generate the grid
+	for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
+		for (let X = 0; X < KDMapData.GridWidth; X++)
+			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
+		KDMapData.Grid = KDMapData.Grid + '\n';
+	}
+
+	KD_PasteTile(KDMapTilesList.ElevatorRoom, KDMapData.StartPosition.x - 7 - 3, KDMapData.StartPosition.y - 7 * 4, data);
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
+
+}
 
 function KinkyDungeonCreateTestTile(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
 	// Variable setup

@@ -51,6 +51,23 @@ let KDSideRooms = {
 			return true;
 		},
 	},
+	"ElevatorRoom": {
+		name: "ElevatorRoom",
+		weight: 400,
+		chance: 0.4,
+		filter: (slot, top) => {
+			if (!top) return 0;
+			return 1;
+		},
+		altRoom: "ElevatorRoom",
+		mapMod: "None",
+		escapeMethod: "None",
+		faction: "AncientRobot",
+		stairCreation: (tile, x, y) => {
+			KinkyDungeonSkinArea({skin: "bel"}, x, y, 1.5);
+			return true;
+		},
+	},
 };
 
 // KDGetMapGenList(3, KDMapMods);

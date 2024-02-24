@@ -104,6 +104,7 @@ const KinkyDungeonRestraints = [
 	// Not super punishing but would be hard to apply IRL
 	{inventory: true, name: "DuctTapeCollar", debris: "Fabric", Asset: "LatexCollar2", factionColor: [[], [0]], Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4, DefaultLock: "Blue",
 		Model: "ElfCollar",
+		struggleBreak: true,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
 		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Tape"],
@@ -224,6 +225,7 @@ const KinkyDungeonRestraints = [
 	//region BlessedWrappings
 	{inventory: true, name: "MysticDuctTapeCollar", debris: "FabricGreen", Asset: "LatexCollar2", factionColor: [[], [0]], Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4, DefaultLock: "Blue",
 		Model: "ElfCollar",
+		struggleBreak: true,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
 		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Will"],
@@ -292,6 +294,7 @@ const KinkyDungeonRestraints = [
 	//region AutoTape
 	{inventory: true, name: "AutoTapeCollar", Asset: "LatexCollar2", factionColor: [[], [0]], Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4, DefaultLock: "Blue",
 		Model: "ElfCollar",
+		struggleBreak: true,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
 		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Tape"],
@@ -405,6 +408,7 @@ const KinkyDungeonRestraints = [
 	//region Slime
 	{inventory: true, name: "SlimeCollar", debris: "Slime", Asset: "LatexCollar2", factionColor: [[], [0]], Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4, DefaultLock: "Blue",
 		Model: "ElfCollar",
+		struggleBreak: true,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
 		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Latex","Slime"],
@@ -480,6 +484,7 @@ const KinkyDungeonRestraints = [
 	//region HardSlime
 	{inventory: true, name: "HardSlimeCollar", debris: "Slime", Asset: "LatexCollar2", factionColor: [[], [0]], Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4, DefaultLock: "Blue",
 		Model: "ElfCollar",
+		struggleBreak: true,
 		Filters: {
 			Collar: {"gamma":1.05,"saturation":0.016666666666666666,"contrast":0.8,"brightness":1.5,"red":0.8999999999999999,"green":1.1833333333333333,"blue":1.75,"alpha":1},
 		},
@@ -983,6 +988,7 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, sfx: "FutureLock", name: "CyberAnkleCuffs", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", Link: "CyberAnkleCuffs2", LinkableBy: [...KDBindable, ...KDDevices],
 		Model: "ShacklesAnkles", alwaysRender: true,
+		struggleBreak: true,
 		linkCategory: "AnkleCuffs", linkSize: 0.4, noDupe: true,
 		Color: ["#499ed6", "#499ed6", "#b927a8", "#000000"],
 		factionColor: [[], [2], [0,1]],
@@ -995,6 +1001,7 @@ const KinkyDungeonRestraints = [
 		]},
 	{name: "CyberAnkleCuffs2", sfx: "FutureLock", accessible: true, Asset: "FuturisticAnkleCuffs", debris: "Chains", DefaultLock: "Red", Link: "CyberAnkleCuffs3", UnLink: "CyberAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices], Type: "Chained",
 		Model: "AnkleLink", alwaysRender: true,
+		struggleBreak: true,
 		Color: ["#499ed6", "#499ed6", "#b927a8", "#000000"],
 		factionColor: [[], [2], [0,1]],
 		linkSize: 0.6, linkCategory: "AnkleLink",
@@ -1008,6 +1015,7 @@ const KinkyDungeonRestraints = [
 		]},
 	{name: "CyberAnkleCuffs3", sfx: "FutureLock", accessible: true, Asset: "FuturisticAnkleCuffs", debris: "Chains", DefaultLock: "Red", UnLink: "CyberAnkleCuffs2", LinkableBy: [...KDBindable, ...KDDevices], Type: "Closed",
 		Color: ["#499ed6", "#499ed6", "#b927a8", "#000000"],
+		struggleBreak: true,
 		factionColor: [[], [2], [0,1]],
 		linkSize: 0.6, linkCategory: "AnkleLink2",
 		Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 12, weight: 0,
@@ -1020,6 +1028,7 @@ const KinkyDungeonRestraints = [
 	{inventory: true, sfx: "FutureLock", name: "CyberLegCuffs", debris: "Chains", accessible: true, Asset: "FuturisticLegCuffs", Link: "CyberLegCuffs2", LinkableBy: [...KDBindable, ...KDDevices],
 
 		Color: ["#499ed6", "#499ed6", "#b927a8", "#000000"],
+		struggleBreak: true,
 		factionColor: [[], [2], [0,1]],
 		Group: "ItemLegs", power: 12, weight: 0,
 		escapeChance: {"Struggle": -0.8, "Cut": -0.65, "Remove": 0.25, "Pick": -0.15},
@@ -1030,6 +1039,7 @@ const KinkyDungeonRestraints = [
 	{name: "CyberLegCuffs2", sfx: "FutureLock", accessible: true, Asset: "FuturisticLegCuffs", debris: "Chains", DefaultLock: "Red", UnLink: "CyberLegCuffs", LinkableBy: [...KDBindable, ...KDDevices], Type: "Closed",
 		Model: "ThighLink", alwaysRender: true,
 		Color: ["#499ed6", "#499ed6", "#b927a8", "#000000"],
+		struggleBreak: true,
 		linkSize: 0.6, linkCategory: "LegLink",
 		factionColor: [[], [2], [0,1]],
 		Group: "ItemLegs", hobble: 1, power: 12, weight: 0,
@@ -1042,6 +1052,7 @@ const KinkyDungeonRestraints = [
 		]},
 	{renderWhenLinked: ["Ties"], sfx: "FutureLock", nonbinding: true, inventory: true, name: "CyberArmCuffs", debris: "Chains", DefaultLock: "Red", accessible: true,
 		Model: "ShacklesArms", alwaysRender: true,
+		struggleBreak: true,
 		Asset: "FuturisticCuffs", linkCategory: "Cuffs", linkSize: 0.55, LinkableBy: [...KDDevices, ...KDBindable], Link: "CyberArmCuffs2",
 		Color: ["#499ed6", "#b927a8", "#000000"],
 		factionColor: [[], [1], [0]],
@@ -1057,6 +1068,7 @@ const KinkyDungeonRestraints = [
 		]},
 	{name: "CyberArmCuffs2", sfx: "FutureLock", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", Type: "Wrist", LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Link: "CyberArmCuffs3", UnLink: "CyberArmCuffs",
 		Color: ["#499ed6", "#b927a8", "#000000"],
+		struggleBreak: true,
 		factionColor: [[], [1], [0]],
 		linkSize: 0.6, linkCategory: "ArmLink",
 		Group: "ItemArms", bindarms: true, power: 12, weight: 0,
@@ -1072,6 +1084,7 @@ const KinkyDungeonRestraints = [
 		]},
 	{name: "CyberArmCuffs3", sfx: "FutureLock", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", Type: "Both", LinkableBy: [...KDElbowBind, ...KDBindable], UnLink: "CyberArmCuffs4",
 		Color: ["#499ed6", "#b927a8", "#000000"],
+		struggleBreak: true,
 		factionColor: [[], [1], [0]],
 		addPose: ["HandsBehind"],
 		linkSize: 0.6, linkCategory: "ArmLink2",
@@ -1088,6 +1101,7 @@ const KinkyDungeonRestraints = [
 		]},
 	{name: "CyberArmCuffs4", sfx: "FutureLock", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", Type: "Elbow", LinkableBy: [...KDElbowBind, ...KDBindable], Link: "CyberArmCuffs3", UnLink: "CyberArmCuffs",
 		Color: ["#499ed6", "#b927a8", "#000000"],
+		struggleBreak: true,
 		factionColor: [[], [1], [0]],
 		addPose: ["HandsBehind"],
 		linkSize: 0.6, linkCategory: "ArmLink",
@@ -1215,7 +1229,7 @@ const KinkyDungeonRestraints = [
 		factionFilters: {
 			Binder: {color: "DarkNeutral", override: true},
 		},
-		maxwill: 0.6, enemyTags: {"latexRestraintsHeavy" : 6, "latexlegbinderSpell": 10, "jailRestraints": 1, "latexStart": 10}, playerTags: {"posLatex": -1, "latexAnger": 1, "latexRage": 2}, minLevel: 0, allFloors: true, shrine: ["Latex", "Legbinders"]},
+		maxwill: 0.25, enemyTags: {"latexRestraintsHeavy" : 6, "latexlegbinderSpell": 10, "jailRestraints": 1, "latexStart": 10}, playerTags: {"posLatex": -1, "latexAnger": 1, "latexRage": 2}, minLevel: 0, allFloors: true, shrine: ["Latex", "Legbinders"]},
 	{inventory: true, name: "LatexBoots", inaccessible: true, factionColor: [[0]], Asset: "HighThighBoots", Color: ["#3873C3"], Group: "ItemBoots", power: 6, weight: 0, escapeChance: {"Struggle": -0.15, "Cut": 0.12, "Remove": 0.07, "Pick": 0.25},
 		Model: "TallHeelsRestraint",
 		Filters: {
@@ -1511,6 +1525,7 @@ const KinkyDungeonRestraints = [
 			Band: {color: "Highlight", override: true},
 			Hardware: {color: "LightNeutral", override: true},
 		},
+		struggleBreak: true,
 		maxwill: 0.5, enemyTags: {"wolfRestraints":3, "wolfGear":3, "wolfLeash": 1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "HighCollars", "Collars"],
 	},
 	{inventory: true, name: "ShockModule", debris: "Belts", accessible: true, Asset: "AutoShockCollar", Color: ['#6EAF81', '#6EAF81'],
@@ -1521,6 +1536,7 @@ const KinkyDungeonRestraints = [
 			ModuleDisplay: {color: "Highlight", override: true},
 		},
 		DefaultLock: "Red_Hi",
+		struggleBreak: true,
 		maxwill: 0.35, enemyTags: {"wolfRestraints":3, "wolfGear":3, "wolfLeash": 1, "shockmodule": 10},
 		playerTags: {}, playerTagsMissing: {Collars: -1000}, minLevel: 2, allFloors: true, shrine: ["Modules", "Metal"],
 		requireSingleTagToEquip: ["Collars"],
@@ -1541,6 +1557,7 @@ const KinkyDungeonRestraints = [
 			Module: {color: "LightNeutral", override: true},
 			ModuleDisplay: {color: "Highlight", override: true},
 		},
+		struggleBreak: true,
 		maxwill: 0.35, enemyTags: {"controlHarness":5, "roboPrisoner" : 100, "cyberdollrestraints" : 10, "trackingmodule": 10},
 		playerTags: {}, playerTagsMissing: {Collars: -1000}, minLevel: 2, allFloors: true, shrine: ["Modules", "Metal"],
 		linkCategory: "ModuleUtility", linkSize: 0.6,
@@ -1553,6 +1570,7 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, removePrison: true, name: "WolfLeash", debris: "Belts", tether: 2.9, Asset: "CollarLeash", Color: "#44fF76", Group: "ItemNeckRestraints", leash: true, power: 1, weight: -99, harness: true,
 		Model: "Leash",
+		struggleBreak: true,
 		affinity: {
 			Cut: ["SharpHookOrFoot"],
 			Struggle: ["HookOrFoot"],
@@ -1565,7 +1583,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "postRemoval", type: "RequireCollar"},
 		],
 		limitChance: {Struggle: 0.2},
-		escapeChance: {"Struggle": -0.3, "Cut": -0.2, "Remove": 0.4, "Pick": 0.35}, enemyTags: {"wolfRestraints":9, "wolfLeash": 10}, playerTags: {"ItemNeckRestraintsFull":-2, "ItemNeckFull":999}, minLevel: 0, allFloors: true, shrine: []},
+		escapeChance: {"Struggle": -0.14, "Cut": -0.2, "Remove": 0.4, "Pick": 0.35}, enemyTags: {"wolfRestraints":9, "wolfLeash": 10}, playerTags: {"ItemNeckRestraintsFull":-2, "ItemNeckFull":999}, minLevel: 0, allFloors: true, shrine: []},
 
 	//endregion
 
@@ -1722,6 +1740,7 @@ const KinkyDungeonRestraints = [
 			Laces: {color: "DarkNeutral", override: true},
 		},
 		hobble: 1,
+		maxwill: 0.1,
 		power: 6, weight: 2, escapeChance: {"Struggle": -0.2, "Cut": 0.1, "Remove": 0.3, "Pick": 0.25}, enemyTags: {"nurseRestraints": 1}, playerTags: {"ItemArmsFull":3},
 		struggleMaxSpeed: {"Remove": 0.1}, // Easy to remove but takes a while
 		minLevel: 0, allFloors: true, shrine: ["Leather", "Legbinders"]},
@@ -1739,12 +1758,14 @@ const KinkyDungeonRestraints = [
 	//region Fuuka's stuff
 	{inventory: true, curse: "GhostLock", name: "MikoCollar", Asset: "HighCollar", Color: ["#ffffff", "#AA2222"],Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],magic: true, power: 40, weight: 0, difficultyBonus: 10,
 		Model: "MikoCollar",
+		struggleBreak: true,
 		escapeChance: {"Struggle": -100, "Cut": -0.8, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["HighCollars", "Collars"],
 		unlimited: true,
 		events: [{trigger: "kill", type: "MikoGhost", inheritLinked: true}],
 	},
 	{inventory: true, curse: "GhostLock", name: "MikoCollar2", Asset: "HighCollar", Color: ["#ffffff", "#AA2222"],Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],magic: true, power: 40, weight: 0, difficultyBonus: 10,
 		Model: "MikoCollar",
+		struggleBreak: true,
 		linkCategory: "SpecialCollar",
 		linkSize: 0.99,
 		escapeChance: {"Struggle": -100, "Cut": -0.8, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["HighCollars", "Collars"],
@@ -1866,6 +1887,7 @@ const KinkyDungeonRestraints = [
 		Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],factionColor: [[0]], power: 8, weight: -2,
 		strictness: 0.05, escapeChance: {"Struggle": -0.05, "Cut": 0.05, "Remove": 0.2, "Pick": 0.2},
 		Model: "LatexNeckCorsetGagRestraint",
+		struggleBreak: true,
 		factionFilters: {
 			Neck: {color: "LightNeutral", override: true},
 			Latex: {color: "LightNeutral", override: true},
@@ -1897,6 +1919,7 @@ const KinkyDungeonRestraints = [
 		Filters: {
 			Collar: {"gamma":1,"saturation":0,"contrast":1,"brightness":1.5,"red":1,"green":1,"blue":1,"alpha":1},
 		},
+		struggleBreak: true,
 		unlimited: true, escapeChance: {"Struggle": -0.1, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
 		maxwill: 0.25, enemyTags: {"mithrilRestraints":4, 'shopCollar': 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Collars"]},
 	//endregion
@@ -2177,6 +2200,7 @@ const KinkyDungeonRestraints = [
 			Binder: {color: "DarkNeutral", override: true},
 			Laces: {color: "Highlight", override: true},
 		},
+		maxwill: 0.1,
 		power: 8, weight: 2, escapeChance: {"Struggle": -0.1, "Cut": 0.1, "Remove": 0.35, "Pick": 0.25}, enemyTags: {"highsecRestraints": 10, "legbinderSpell": 1, "leatherRestraintsHeavy" : 1}, playerTags: {}, minLevel: 0, allFloors: true,
 		shrine: ["Leather", "Legbinders"]},
 
@@ -2245,6 +2269,7 @@ const KinkyDungeonRestraints = [
 			Binder: {color: "DarkNeutral", override: true},
 			Laces: {color: "Highlight", override: true},
 		},
+		maxwill: 0.1,
 		struggleMaxSpeed: {Cut: 0.5, Remove: 0.1},
 		power: 6, weight: 2, escapeChance: {"Struggle": .11, "Cut": 0.35, "Remove": 0.25, "Pick": 0.5}, enemyTags: {"trap":100, "leatherRestraintsHeavy":6, "legbinderSpell": 10}, playerTags: {}, minLevel: 6, allFloors: true,
 		shrine: ["Leather", "Legbinders"]},
@@ -2364,6 +2389,7 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, trappable: true, name: "TrapLegirons", debris: "Chains", Asset: "Irish8Cuffs", LinkableBy: ["Wrapping", "Encase", "Belts"], Color: "Default", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],
 		power: 4, weight: 2,
+		struggleBreak: true,
 		Model: "Legirons",
 		linkCategory: "AnkleCuffs", linkSize: 0.51, noDupe: true, playerTagsMissingMult: {"ItemLegsFull":0.05},
 		sfxGroup: "Handcuffs",
@@ -2973,6 +2999,7 @@ const KinkyDungeonRestraints = [
 	//region These restraints are easy, so they dont have maxwill
 	{inventory: true, name: "WristShackles", debris: "Chains", Asset: "WristShackles", linkCategory: "Cuffs", linkSize: 0.33, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable],
 		sfxGroup: "Handcuffs",
+		struggleBreak: true,
 		Model: "ShacklesWrists",
 		noDupe: true,
 		Group: "ItemArms", Color: "Default", bindarms: true, Type: "Behind", power: 1, escapeChance: {"Struggle": -0.05, "Cut": -0.25, "Remove": 10, "Pick": 5},
@@ -2987,6 +3014,7 @@ const KinkyDungeonRestraints = [
 		enemyTags: {"shackleRestraints":7, "handcuffer": 2, "Unchained": -8}, enemyTagsMult: {handcuffer: 0.2, Unchained: 0.1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"]},
 	{inventory: true, trappable: true, name: "TrapCuffs", debris: "Chains", Asset: "MetalCuffs", accessible: true, linkCategory: "Cuffs", linkSize: 0.33, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Group: "ItemArms",
 		sfxGroup: "Handcuffs",
+		struggleBreak: true,
 		Model: "HandCuffs",
 		noDupe: true,
 		Color: "Default", bindarms: true, power: 2, DefaultLock: "White",
@@ -3001,6 +3029,7 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, trappable: true, name: "HingedCuffs", debris: "Chains", Asset: "MetalCuffs", accessible: true,
 		sfxGroup: "Handcuffs",
+		struggleBreak: true,
 		Model: "HingedCuffs",
 		noDupe: true,
 		linkCategory: "Cuffs", linkSize: 0.4, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Group: "ItemArms",
@@ -3017,6 +3046,7 @@ const KinkyDungeonRestraints = [
 		enemyTags: {"trap":100, "handcuffer": 6, "cuffsSpell": 10}, enemyTagsMult: {handcuffer: 0.2, Unchained: 0.1}, minLevel: 5, allFloors: true, shrine: ["Handcuffs", "HandsFrontAllowed", "Metal", "Cuffs"]},
 	{inventory: true, trappable: true, name: "Irish8Cuffs", debris: "Chains", Asset: "MetalCuffs", accessible: true,
 		sfxGroup: "Handcuffs",
+		struggleBreak: true,
 		Model: "Irish8Cuffs",
 		linkCategory: "Cuffs", linkSize: 0.51, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Group: "ItemArms",
 		Color: "Default", bindarms: true, power: 6, DefaultLock: "White",
@@ -3035,6 +3065,7 @@ const KinkyDungeonRestraints = [
 	{inventory: true, trappable: true, name: "AnkleIrish8Cuffs", debris: "Chains", Asset: "Irish8Cuffs", LinkableBy: ["Wrapping", "Encase", "Belts"], Color: "Default", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],
 		power: 6,
 		Model: "Irish8Ankle",
+		struggleBreak: true,
 		linkCategory: "AnkleCuffs", linkSize: 0.51, noDupe: true,
 		maxwill: 0.5,
 		sfxGroup: "Handcuffs",
@@ -3050,6 +3081,7 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, trappable: true, name: "ThumbCuffs", debris: "Chains", Asset: "MetalCuffs", accessible: true,
 		Model: "Thumbcuffs",
+		struggleBreak: true,
 		hideTags: ["Armbinders", "Boxbinders", "Boxties", "Wristies", "BoundArms"],
 		AssetGroup: "ItemArms",
 		sfxGroup: "Handcuffs",
@@ -3074,6 +3106,7 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, trappable: true, name: "ThumbCuffsNew", debris: "Chains", Asset: "MetalCuffs", accessible: true,
 		Model: "Thumbcuffs",
+		struggleBreak: true,
 		hideTags: ["Armbinders", "Boxbinders", "Boxties", "Wristies", "BoundArms"],
 		AssetGroup: "ItemArms",
 		sfxGroup: "Handcuffs",
@@ -3099,6 +3132,7 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, name: "WolfCuffs", debris: "Chains", Asset: "MetalCuffs", accessible: true, linkCategory: "SmartCuffs", linkSize: 0.55, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable],
 		sfxGroup: "Handcuffs",
+		struggleBreak: true,
 		Model: "WolfCuffs",
 		Color: "Default", Group: "ItemArms", bindarms: true, power: 5, DefaultLock: "Red",
 		// Cuffs playertags
@@ -3116,6 +3150,7 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, name: "LegShackles", debris: "Chains", Asset: "LeatherLegCuffs", LinkableBy: [...KDBindable, ...KDDevices], Link: "LegShackles2",
 		sfxGroup: "Handcuffs",
+		struggleBreak: true,
 		Model: "ShacklesThigh",
 		alwaysDressModel: [
 			{Model: "ThighLink", inheritFilters: true}
@@ -3133,6 +3168,7 @@ const KinkyDungeonRestraints = [
 		minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"]},
 	{name: "LegShackles2", debris: "Chains", Asset: "LeatherLegCuffs", LinkableBy: [...KDBindable, ...KDDevices], UnLink: "LegShackles", Group: "ItemLegs",
 		sfxGroup: "Handcuffs",
+		struggleBreak: true,
 		linkSize: 0.6, linkCategory: "LegLink",
 		blockfeet: true, addTag: ["FeetLinked"],Type: "Closed", Color: ["Default", "Default"], power: 5, weight: -100, escapeChance: {"Struggle": -0.05, "Cut": -0.3, "Remove": 10, "Pick": 5},
 		enemyTags: {"shackleRestraints":2}, playerTags: {"ItemLegsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
@@ -3141,6 +3177,7 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, name: "FeetShackles", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices], Link: "FeetShackles2",
 		Model: "ShacklesAnkles",
+		struggleBreak: true,
 		alwaysDressModel: [
 			{Model: "AnkleLink", inheritFilters: true}
 		],
@@ -3163,6 +3200,7 @@ const KinkyDungeonRestraints = [
 		events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, tags: ["lowwill"], noLeash: true}]},
 	{name: "FeetShackles2", debris: "Chains", Asset: "SteelAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices], UnLink: "FeetShackles", Group: "ItemFeet",
 		sfxGroup: "Handcuffs",
+		struggleBreak: true,
 		linkSize: 0.6, linkCategory: "AnkleLink2",
 		blockfeet: true, addTag: ["FeetLinked"],Type: "Closed", Color: ["Default", "Default"], power: 5, escapeChance: {"Struggle": -0.05, "Cut": -0.3, "Remove": 10, "Pick": 5},
 		enemyTags: {"shackleRestraints":2},
@@ -3174,6 +3212,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}]},
 	{inventory: true, name: "SteelMuzzleGag", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], gag: 0.3, Asset: "MuzzleGag", Group: "ItemMouth", AssetGroup: "ItemMouth3", Color: "#999999",
 		Model: "GagMetalRiveted",
+		struggleBreak: true,
 		power: 3, weight: 2, escapeChance: {"Struggle": -0.3, "Cut": -0.25, "Remove": 10, "Pick": 5}, enemyTags: {"shackleGag":1}, playerTags: {"ItemMouthFull":1}, minLevel: 0, allFloors: true, shrine: ["Metal", "FlatGags", "Gags"]},
 	//endregion
 
@@ -3218,7 +3257,7 @@ const KinkyDungeonRestraints = [
 			Laces: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.01},
 		},
 		struggleMaxSpeed: {Cut: 0.5, Remove: 0.1},
-		maxwill: 0.25,
+		maxwill: 0.1,
 		power: 6, weight: 2, escapeChance: {"Struggle": .06, "Cut": 0.35, "Remove": 0.25, "Pick": 0.35}, enemyTags: {"invisRestraints":3, }, playerTags: {}, minLevel: 7, allFloors: true,
 		shrine: ["Illusion", "Legbinders"]},
 
@@ -3334,6 +3373,7 @@ const KinkyDungeonRestraints = [
 	// Magnetic cuffs
 	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "MagneticArmCuffs", debris: "Chains", accessible: true, Asset: "SteelCuffs", linkCategory: "Cuffs", linkSize: 0.55,
 		Model: "ShacklesWrists",
+		struggleBreak: true,
 		Filters: {
 			BaseMetal: {"gamma":1,"saturation":1,"contrast":1.4833333333333334,"brightness":2.0166666666666666,"red":1,"green":1,"blue":1,"alpha":1},
 		},
@@ -3348,6 +3388,7 @@ const KinkyDungeonRestraints = [
 		]},
 	{name: "MagneticArmCuffs2", debris: "Chains", accessible: true, Asset: "SteelCuffs", Type: "Wrist", LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], UnLink: "MagneticArmCuffs", Color: ['#444444', '#444444'],
 		Model: "ShacklesWrists",
+		struggleBreak: true,
 		Filters: {
 			BaseMetal: {"gamma":1.4166666666666665,"saturation":1,"contrast":1.4833333333333334,"brightness":2.0166666666666666,"red":1,"green":1.8833333333333333,"blue":1.9166666666666667,"alpha":1},
 		},
@@ -3617,6 +3658,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
 	{inventory: true, name: "MaidCollar", debris: "Belts", Asset: "HighCollar", Color: ["#C9C9C9", "#FFFFFF"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],power: 11, weight: 0,
 		Model: "LeatherCollarBow",
+		struggleBreak: true,
 		Filters: {
 			Cuff: {"gamma":2.2333333333333334,"saturation":1,"contrast":1.0833333333333335,"brightness":2.283333333333333,"red":1,"green":1,"blue":1,"alpha":1},
 			Band: {"gamma":1,"saturation":0.05,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
@@ -3909,7 +3951,7 @@ const KinkyDungeonRestraints = [
 		},
 		hobble: 1, addTag: ["FeetLinked"], power: 9, weight: 0, blockfeet: true,
 		escapeChance: {"Struggle": -0.25, "Cut": -0.05, "Remove": 0.1, "Pick": 0.25},
-		maxwill: 0.6,
+		maxwill: 0.2,
 		enemyTags: {"shadowlatexRestraintsHeavy" : 6}, playerTags: {"posLatex": -1, "ItemFeetEmpty": -4, "ItemLegsEmpty": -4},
 		minLevel: 4, allFloors: true, shrine: ["Latex", "ShadowLatex", "Obsidian", "Legbinders"]},
 
@@ -3957,6 +3999,7 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "ObsidianCollar", debris: "Chains", Asset: "OrnateCollar", Color: ["#171222", "#9B63C5"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],power: 9, weight: -2, escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
 		maxwill: 0.25, enemyTags: {"obsidianRestraints":4, "obsidianNoCuffs": -1000, "obsidianLessCuffs": -3.9, "obsidianCuffs":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Collars", "Obsidian", "Elements", "HighCollars"],
 		Model: "SteelCollarRunes",
+		struggleBreak: true,
 		Filters: {
 			Runes: {"gamma":1,"saturation":1,"contrast":0.3833333333333333,"brightness":0.48333333333333334,"red":1,"green":2.8499999999999996,"blue":3.3000000000000003,"alpha":3.7666666666666666},
 			BaseMetal: {"gamma":0.95,"saturation":1,"contrast":1.6166666666666665,"brightness":1.7999999999999998,"red":1.0166666666666666,"green":0.9833333333333333,"blue":2.5333333333333337,"alpha":1},
@@ -4013,11 +4056,13 @@ const KinkyDungeonRestraints = [
 		Model: "ElfCollar",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
+		struggleBreak: true,
 		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars", "Metal"],
 		events: [{trigger: "tick", type: "livingRestraints", tags: ["banditMagicRestraints"], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.8, count: 4}]
 	},
 	{inventory: true, name: "BanditLegCuffs", debris: "Chains", accessible: true, Asset: "OrnateLegCuffs", LinkableBy: ["Legbinders", "Hobbleskirts", "Belts", "Ties"], Type: "Chained", Color: ["#aaaaaa", "#f0b541", "#ff5277"], Group: "ItemLegs", hobble: 1, power: 7, weight: 0,
 		Model: "ShacklesThigh",
+		struggleBreak: true,
 		Filters: {
 			BaseMetal: {"gamma":1.4166666666666665,"saturation":1,"contrast":1.4833333333333334,"brightness":1.1833333333333333,"red":2.3499999999999996,"green":1.9666666666666666,"blue":1.1333333333333333,"alpha":1},
 		},
@@ -4033,6 +4078,7 @@ const KinkyDungeonRestraints = [
 		]},
 	{inventory: true, name: "BanditAnkleCuffs", debris: "Chains", accessible: true, Asset: "OrnateAnkleCuffs", LinkableBy: [...KDBindable], Link: "BanditAnkleCuffs2", Type: "Chained", Color: ["#675F50", "#f0b541", "#ff5277"], Group: "ItemFeet", hobble: 1, power: 7, weight: 0,
 		Model: "ShacklesAnkles",
+		struggleBreak: true,
 		Filters: {
 			BaseMetal: {"gamma":1.4166666666666665,"saturation":1,"contrast":1.4833333333333334,"brightness":1.1833333333333333,"red":2.3499999999999996,"green":1.9666666666666666,"blue":1.1333333333333333,"alpha":1},
 		},
@@ -4046,6 +4092,7 @@ const KinkyDungeonRestraints = [
 		]},
 	{name: "BanditAnkleCuffs2", debris: "Chains", accessible: true, Asset: "OrnateAnkleCuffs", LinkableBy: [...KDBindable], UnLink: "BanditAnkleCuffs", Type: "Closed", Color: ["#675F50", "#f0b541", "#ff5277"], Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 8, weight: 0,
 		Model: "AnkleLink", alwaysRender: true,
+		struggleBreak: true,
 		linkSize: 0.6, linkCategory: "AnkleLink2",
 		escapeChance: {"Struggle": -0.2, "Cut": 0.1, "Remove": 0.2, "Pick": 0.35}, enemyTags: {}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
 		events: [
@@ -4055,6 +4102,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
 	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "BanditArmCuffs", debris: "Chains", accessible: true, Asset: "OrnateCuffs", linkCategory: "Cuffs", linkSize: 0.55, LinkableBy: [...KDDevices, ...KDBindable], Link: "BanditArmCuffs2", Color: ["#f0b541", "#ff5277"], Group: "ItemArms", bindarms: false, power: 7, weight: 0,
 		Model: "ShacklesArms",
+		struggleBreak: true,
 		Filters: {
 			BaseMetal: {"gamma":1.4166666666666665,"saturation":1,"contrast":1.4833333333333334,"brightness":1.1833333333333333,"red":2.3499999999999996,"green":1.9666666666666666,"blue":1.1333333333333333,"alpha":1},
 		},
@@ -4069,6 +4117,7 @@ const KinkyDungeonRestraints = [
 	{name: "BanditArmCuffs2", debris: "Chains", accessible: true, Asset: "OrnateCuffs", Type: "Wrist", LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Link: "BanditArmCuffs3", UnLink: "BanditArmCuffs", Color: ["#f0b541", "#ff5277"], Group: "ItemArms", bindarms: true, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.15, "Cut": -0.15, "Remove": 0.2, "Pick": 0.35}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Metal", "Cuffs"],
 		linkSize: 0.6, linkCategory: "ArmLink",
+		struggleBreak: true,
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "remove", type: "unlinkItem"},
@@ -4080,6 +4129,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.2, "Cut": -0.15, "Remove": -0.1, "Pick": 0.35}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Metal", "Cuffs"],
 		addPose: ["HandsBehind"],
 		linkSize: 0.6, linkCategory: "ArmLink2",
+		struggleBreak: true,
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "remove", type: "unlinkItem"},
@@ -4090,6 +4140,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.15, "Cut": -0.15, "Remove": -0.15, "Pick": 0.35}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Metal", "Cuffs"],
 		addPose: ["HandsBehind"],
 		linkSize: 0.6, linkCategory: "ArmLink",
+		struggleBreak: true,
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "remove", type: "unlinkItem"},
@@ -4201,6 +4252,7 @@ const KinkyDungeonRestraints = [
 		Model: "ElfCollar",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
+		struggleBreak: true,
 		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Rope","Ribbons"],
 		events: [{trigger: "tick", type: "livingRestraints", tags: ["magicRibbons","magicRibbonsHarsh"], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.8, count: 4}]
 	},
@@ -4276,6 +4328,7 @@ const KinkyDungeonRestraints = [
 		Model: "ElfCollar",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
+		struggleBreak: true,
 		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Rope", "RopeSnake"],
 		events: [{trigger: "tick", type: "livingRestraints", tags: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsWrist"], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.9, count: 8}]
 	},
@@ -4454,11 +4507,13 @@ const KinkyDungeonRestraints = [
 		Model: "ElfCollar",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
+		struggleBreak: true,
 		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars"],
 		events: [{trigger: "tick", type: "livingRestraints", tags: [], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.9, count: 4}]
 	},
 	{inventory: true, name: "TemplateLegCuffs", debris: "Chains", accessible: true, Asset: "FuturisticLegCuffs", Link: "TemplateLegCuffs2",
 		LinkAll: true,
+		struggleBreak: true,
 		linkCategory: "LegCuffs", linkSize: 0.4, noDupe: true,
 		Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'], Group: "ItemLegs", power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
@@ -4476,12 +4531,14 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, name: "TemplateAnkleCuffs", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", Link: "TemplateAnkleCuffs2", Type: "Chained", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'], Group: "ItemFeet", power: 9, weight: 0,
 		LinkAll: true,
+		struggleBreak: true,
 		linkCategory: "AnkleCuffs", linkSize: 0.4, noDupe: true,
 		renderWhenLinked: [...KDBindable],
 		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25}, enemyTags: {}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Cuffs", "Metal",  "AnkleCuffsBase"],
 		maxwill: 0.5, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.2, subMult: 0.5, tags: ["lowwill"], inheritLinked: true, noLeash: true}]},
 	{name: "TemplateAnkleCuffs2", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindable], UnLink: "TemplateAnkleCuffs", Link: "TemplateAnkleCuffs3",
 		Model: "AnkleLink", alwaysRender: true,
+		struggleBreak: true,
 		linkSize: 0.6, linkCategory: "AnkleLink",
 		Type: "Chained", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'], Group: "ItemFeet", hobble: 1, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25}, enemyTags: {}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
@@ -4490,29 +4547,34 @@ const KinkyDungeonRestraints = [
 	{name: "TemplateAnkleCuffs3", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindable], UnLink: "TemplateAnkleCuffs2", Type: "Closed", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'], Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25}, enemyTags: {}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Cuffs"],
 		linkSize: 0.6, linkCategory: "AnkleLink2",
+		struggleBreak: true,
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
 	{nonbinding: true, inventory: true, name: "TemplateArmCuffs", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", linkCategory: "Cuffs", linkSize: 0.55,
 		unlimited: true,
 		renderWhenLinked: [...KDBindable],
+		struggleBreak: true,
 		LinkAll: true, Link: "TemplateArmCuffs2", Color: ['#FFFFFF', '#CFBE88', '#000000'], Group: "ItemArms", bindarms: false, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.25, "Pick": 0.35}, enemyTags: {}, playerTags: {"ItemArmsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Cuffs", "Metal",  "ArmCuffsBase"],
 		maxwill: 0.4, events: [{trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33, tags: ["lowwill"], inheritLinked: true}, {trigger: "defeat", type: "linkItem", chance: 1.0}]},
 	{name: "TemplateArmCuffs2", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", Type: "Wrist", LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Link: "TemplateArmCuffs3", UnLink: "TemplateArmCuffs", Color: ['#FFFFFF', '#CFBE88', '#000000'], Group: "ItemArms", bindarms: true, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": -0.3, "Remove": 0.2, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Metal", "Cuffs"],
 		linkSize: 0.6, linkCategory: "ArmLink",
+		struggleBreak: true,
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.33, tags: ["lowwill"], inheritLinked: true}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}, {trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.08, inheritLinked: true}]},
 	{name: "TemplateArmCuffs3", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", Type: "Both", LinkableBy: [...KDElbowBind, ...KDBindable], UnLink: "TemplateArmCuffs4", Color: ['#FFFFFF', '#CFBE88', '#000000'], Group: "ItemArms", bindarms: true, power: 9, weight: 0, strictness: 0.1,
 		addPose: ["HandsBehind"],
 		alwaysRender: true,
 		linkSize: 0.6, linkCategory: "ArmLink2",
+		struggleBreak: true,
 		escapeChance: {"Struggle": -0.175, "Cut": -0.3, "Remove": -0.1, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Cuffs", "Metal",  "ElbowTied"],
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}, {trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.12, inheritLinked: true}]},
 	{name: "TemplateArmCuffs4", debris: "Chains", accessible: true, Asset: "FuturisticCuffs", Type: "Elbow", LinkableBy: [...KDElbowBind, ...KDBindable], Link: "TemplateArmCuffs3", UnLink: "TemplateArmCuffs", Color: ['#FFFFFF', '#CFBE88', '#000000'], Group: "ItemArms", bindarms: true, power: 9, weight: 0,
 		addPose: ["HandsBehind"],
 		linkSize: 0.6, linkCategory: "ArmLink",
+		struggleBreak: true,
 		escapeChance: {"Struggle": -0.1, "Cut": -0.3, "Remove": -0.15, "Pick": 0.25}, helpChance: {"Remove": 0.4}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Metal", "Cuffs"],
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},{trigger: "remove", type: "unlinkItem"}, {trigger: "hit", type: "linkItem", sfx: "LightJingle", chance: 0.5, tags: ["lowwill"], inheritLinked: true}, {trigger: "beforeStruggleCalc", type: "elbowCuffsBlock", inheritLinked: true}, {trigger: "postRemoval", type: "RequireBaseArmCuffs"}]},
@@ -4522,12 +4584,14 @@ const KinkyDungeonRestraints = [
 	{unlimited: true, removePrison: true, name: "VinePlantArms", accessible: true, Asset: "NylonRope", Color: ["#006722", "#006722"], Group: "ItemArms", debris: "Vines",
 		affinity: {Remove: ["Hook"],},
 		Model: "RopeBoxtie3",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":1,"saturation":1,"contrast":1.85,"brightness":1,"red":1,"green":2.8833333333333333,"blue":1.6833333333333333,"alpha":1},
 		},
 		bindarms: true, power: 0.1, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.8, "Remove": 0.2}, enemyTags: {"vineRestraints":4}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Vines", "Will"]},
 	{unlimited: true, removePrison: true, name: "VinePlantFeet", accessible: true, Asset: "NylonRope", Color: ["#006722", "#006722"], Group: "ItemFeet", debris: "Vines",
 		Model: "RopeAnkles3",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":1,"saturation":1,"contrast":1.85,"brightness":1,"red":1,"green":2.8833333333333333,"blue":1.6833333333333333,"alpha":1},
 		},
@@ -4535,6 +4599,7 @@ const KinkyDungeonRestraints = [
 		blockfeet: true, addTag: ["FeetLinked"],power: 0.1, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.8, "Remove": 0.2}, enemyTags: {"vineRestraints":4}, playerTags: {"ItemLegsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Vines", "Will"]},
 	{unlimited: true, removePrison: true, name: "VinePlantLegs", accessible: true, Asset: "NylonRope", Color: ["#006722", "#006722"], Group: "ItemLegs", debris: "Vines",
 		Model: "RopeLegs3",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":1,"saturation":1,"contrast":1.85,"brightness":1,"red":1,"green":2.8833333333333333,"blue":1.6833333333333333,"alpha":1},
 		},
@@ -4542,6 +4607,7 @@ const KinkyDungeonRestraints = [
 		hobble: 1, addTag: ["FeetLinked"], power: 0.1, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.8, "Remove": 0.2}, enemyTags: {"vineRestraints":4}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Vines", "Will"]},
 	{unlimited: true, removePrison: true, name: "VinePlantTorso", accessible: true, Asset: "NylonRopeHarness", Type: "Diamond", OverridePriority: 26, Color: ["#006722", "#006722"], Group: "ItemTorso", debris: "Vines",
 		Model: "RopeHarness",
+		struggleBreak: true,
 		restriction: 4,
 		Filters: {
 			Rope: {"gamma":1,"saturation":1,"contrast":1.85,"brightness":1,"red":1,"green":2.8833333333333333,"blue":1.6833333333333333,"alpha":1},
@@ -4553,24 +4619,28 @@ const KinkyDungeonRestraints = [
 	//region Chain
 	{inventory: true, name: "ChainArms", debris: "Chains", accessible: true, sfx: "Chain", Asset: "Chains", Type: "WristElbowHarnessTie", LinkableBy: ["Armbinders", "Wrapping", "Encase",], Color: "Default", Group: "ItemArms", bindarms: true, power: 5, weight: 0, escapeChance: {"Struggle": 0.1, "Cut": -0.1, "Remove": 0.3, "Pick": 1.5},
 		Model: "RopeBoxtie2",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":1,"saturation":0,"contrast":2.033333333333333,"brightness":2.1333333333333333,"red":1,"green":1,"blue":1,"alpha":1},
 		},
 		maxwill: 0.8, enemyTags: {"chainRestraints":2}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Chains", "Ties","Metal", "Wristties"]},
 	{inventory: true, name: "ChainLegs", debris: "Chains", accessible: true, sfx: "Chain", Asset: "Chains", Type: "Strict", Color: "Default", LinkableBy: ["Legbinders", "Hobbleskirts"],
 		Model: "RopeLegs2",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":1,"saturation":0,"contrast":2.033333333333333,"brightness":2.1333333333333333,"red":1,"green":1,"blue":1,"alpha":1},
 		},
 		Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 5, weight: 0, escapeChance: {"Struggle": 0.15, "Cut": -0.1, "Remove": 0.3, "Pick": 1.5}, enemyTags: {"chainRestraints":2}, playerTags: {"ItemLegsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Chains", "Ties","Metal"]},
 	{inventory: true, name: "ChainFeet", debris: "Chains", accessible: true, sfx: "Chain", Asset: "Chains", Color: "Default", LinkableBy: ["Wrapping", "Encase", "Belts"],
 		Model: "RopeAnkles2",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":1,"saturation":0,"contrast":2.033333333333333,"brightness":2.1333333333333333,"red":1,"green":1,"blue":1,"alpha":1},
 		},
 		Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 5, weight: 0, escapeChance: {"Struggle": 0.03, "Cut": -0.1, "Remove": 0.3, "Pick": 1.5}, enemyTags: {"chainRestraints":2}, playerTags: {"ItemFeetFull":-1}, playerTagsMissingMult: {"ItemLegsFull":0.05}, minLevel: 0, allFloors: true, shrine: ["Chains", "Ties","Metal"]},
 	{inventory: true, name: "ChainCrotch", debris: "Chains", accessible: true, sfx: "Chain", Asset: "CrotchChain", crotchrope: true, strictness: 0.15,
 		Model: "RopeCrotch",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":1,"saturation":0,"contrast":2.033333333333333,"brightness":2.1333333333333333,"red":1,"green":1,"blue":1,"alpha":1},
 		},
@@ -4580,12 +4650,14 @@ const KinkyDungeonRestraints = [
 	//region MagicChain
 	{unlimited: true, inventory: true, removePrison: true, sfx: "Chain", name: "MagicChainArms", debris: "Chains", accessible: true, Asset: "Chains", LinkableBy: ["Armbinders", "Wrapping", "Encase",], Type: "WristElbowHarnessTie", Color: "#aa00aa", Group: "ItemArms", bindarms: true, power: 4, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": -0.1, "Remove": -0.05},
 		Model: "RopeBoxtie2",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":0.7333333333333334,"saturation":0,"contrast":1.4166666666666665,"brightness":2.1333333333333333,"red":1.3333333333333333,"green":1,"blue":3.416666666666667,"alpha":1},
 		},
 		failSuffix: {"Remove": "MagicChain"}, maxwill: 0.9, enemyTags: {"chainRestraintsMagic":2}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Chains", "Ties","Metal", "Conjure", "Wristties"]},
 	{unlimited: true, inventory: true, removePrison: true, sfx: "Chain", name: "MagicChainLegs", debris: "Chains", accessible: true, Asset: "Chains", LinkableBy: ["Legbinders", "Hobbleskirts"],
 		Model: "RopeLegs2",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":0.7333333333333334,"saturation":0,"contrast":1.4166666666666665,"brightness":2.1333333333333333,"red":1.3333333333333333,"green":1,"blue":3.416666666666667,"alpha":1},
 		},
@@ -4593,6 +4665,7 @@ const KinkyDungeonRestraints = [
 		failSuffix: {"Remove": "MagicChain"}, escapeChance: {"Struggle": 0.3, "Cut": -0.1, "Remove": -0.05}, enemyTags: {"chainRestraintsMagic":2}, playerTags: {"ItemLegsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Chains", "Ties","Metal", "Conjure"]},
 	{unlimited: true, inventory: true, removePrison: true, sfx: "Chain", name: "MagicChainFeet", debris: "Chains", accessible: true, Asset: "Chains", LinkableBy: ["Wrapping", "Encase",], Color: "#aa00aa",
 		Model: "RopeAnkles2",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":0.7333333333333334,"saturation":0,"contrast":1.4166666666666665,"brightness":2.1333333333333333,"red":1.3333333333333333,"green":1,"blue":3.416666666666667,"alpha":1},
 		},
@@ -4600,6 +4673,7 @@ const KinkyDungeonRestraints = [
 		failSuffix: {"Remove": "MagicChain"}, escapeChance: {"Struggle": 0.2, "Cut": -0.1, "Remove": -0.05}, enemyTags: {"chainRestraintsMagic":2}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Chains", "Ties","Metal", "Conjure"]},
 	{unlimited: true, inventory: true, removePrison: true, sfx: "Chain", name: "MagicChainCrotch", debris: "Chains", accessible: true, crotchrope: true, strictness: 0.15, strictnessZones: ["ItemVulva", "ItemVulvaPiercings", "ItemButt"], Asset: "CrotchChain", OverridePriority: 26, Color: "#aa00aa", Group: "ItemTorso", power: 2, weight: 0,
 		Model: "RopeCrotch",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":0.7333333333333334,"saturation":0,"contrast":1.4166666666666665,"brightness":2.1333333333333333,"red":1.3333333333333333,"green":1,"blue":3.416666666666667,"alpha":1},
 		},
@@ -4610,24 +4684,28 @@ const KinkyDungeonRestraints = [
 	//region ShadowChain
 	{unlimited: true, removePrison: true, sfx: "Chain", name: "ShadowChainArms", debris: "Chains", accessible: true, Asset: "Chains", LinkableBy: ["Boxbinders", "Wrapping", "Encase",], Type: "BoxTie", Color: "#000000", Group: "ItemArms", bindarms: true, power: 4, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": -0.1, "Remove": -0.1},
 		Model: "RopeBoxtie2",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":0.7333333333333334,"saturation":0,"contrast":1.4166666666666665,"brightness":2.1333333333333333,"red":0.6333333333333334,"green":0.15,"blue":3.0833333333333335,"alpha":1},
 		},
 		maxwill: 0.9, enemyTags: {"shadowRestraints":2}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Chains", "Ties","Metal", "Illusion"]},
 	{unlimited: true, removePrison: true, sfx: "Chain", name: "ShadowChainLegs", debris: "Chains", accessible: true, Asset: "Chains", LinkableBy: ["Legbinders", "Hobbleskirts"],
 		Model: "RopeLegs2",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":0.7333333333333334,"saturation":0,"contrast":1.4166666666666665,"brightness":2.1333333333333333,"red":0.6333333333333334,"green":0.15,"blue":3.0833333333333335,"alpha":1},
 		},
 		Type: "Strict", Color: "#000000", Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 4, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": -0.1, "Remove": -0.1}, enemyTags: {"shadowRestraints":2}, playerTags: {"ItemLegsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Chains", "Ties","Metal", "Illusion"]},
 	{unlimited: true, removePrison: true, sfx: "Chain", name: "ShadowChainFeet", debris: "Chains", accessible: true, Asset: "Chains", LinkableBy: ["Wrapping", "Encase",], Color: "#000000",
 		Model: "RopeAnkles2",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":0.7333333333333334,"saturation":0,"contrast":1.4166666666666665,"brightness":2.1333333333333333,"red":0.6333333333333334,"green":0.15,"blue":3.0833333333333335,"alpha":1},
 		},
 		Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 4, weight: 0, escapeChance: {"Struggle": 0.2, "Cut": -0.1, "Remove": -0.1}, enemyTags: {"shadowRestraints":2}, playerTags: {"ItemFeetFull":-1}, playerTagsMissingMult: {"ItemLegsFull":0.05}, minLevel: 0, allFloors: true, shrine: ["Chains", "Ties","Metal", "Illusion"]},
 	{unlimited: true, removePrison: true, sfx: "Chain", name: "ShadowChainCrotch", debris: "Chains", accessible: true, crotchrope: true, strictness: 0.15,
 		Model: "RopeCrotch",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":0.7333333333333334,"saturation":0,"contrast":1.4166666666666665,"brightness":2.1333333333333333,"red":0.6333333333333334,"green":0.15,"blue":3.0833333333333335,"alpha":1},
 		},
@@ -4638,24 +4716,28 @@ const KinkyDungeonRestraints = [
 	//region GhostChain
 	{unlimited: true, removePrison: true, sfx: "Chain", name: "GhostChainArms", accessible: true, Asset: "Chains", LinkableBy: ["Boxbinders", "Wrapping", "Encase",], Type: "BoxTie", Color: "#cccccc", Group: "ItemArms", bindarms: true, power: 4, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.2, "Remove": 0.1},
 		Model: "RopeBoxtie2",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":1.6500000000000001,"saturation":0,"contrast":2.033333333333333,"brightness":2.1333333333333333,"red":1,"green":1,"blue":1,"alpha":1},
 		},
 		maxwill: 0.9, enemyTags: {"ghostRestraints":2}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Chains", "Ties","Metal", "Illusion"]},
 	{unlimited: true, removePrison: true, sfx: "Chain", name: "GhostChainLegs", accessible: true, Asset: "Chains", LinkableBy: ["Legbinders", "Hobbleskirts"], Type: "Strict", Color: "#cccccc",
 		Model: "RopeLegs2",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":1.6500000000000001,"saturation":0,"contrast":2.033333333333333,"brightness":2.1333333333333333,"red":1,"green":1,"blue":1,"alpha":1},
 		},
 		Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 4, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.2, "Remove": 0.1}, enemyTags: {"ghostRestraints":2}, playerTags: {"ItemLegsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Chains", "Ties","Metal", "Illusion"]},
 	{unlimited: true, removePrison: true, sfx: "Chain", name: "GhostChainFeet", accessible: true, Asset: "Chains", LinkableBy: ["Wrapping", "Encase",], Color: "#cccccc",
 		Model: "RopeAnkles2",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":1.6500000000000001,"saturation":0,"contrast":2.033333333333333,"brightness":2.1333333333333333,"red":1,"green":1,"blue":1,"alpha":1},
 		},
 		Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 4, weight: 0, playerTagsMissingMult: {"ItemLegsFull":0.05}, escapeChance: {"Struggle": 0.3, "Cut": 0.2, "Remove": 0.1}, enemyTags: {"ghostRestraints":2}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Chains", "Ties","Metal", "Illusion"]},
 	{unlimited: true, removePrison: true, sfx: "Chain", name: "GhostChainCrotch", accessible: true, crotchrope: true, strictness: 0.15,
 		Model: "RopeCrotch",
+		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":1.6500000000000001,"saturation":0,"contrast":2.033333333333333,"brightness":2.1333333333333333,"red":1,"green":1,"blue":1,"alpha":1},
 		},
@@ -4769,6 +4851,7 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "BasicCollar", debris: "Belts", linkCategory: "BasicCollar", accessible: true, Asset: "LeatherCollar", Color: ["#000000", "Default"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 1, weight: 0, escapeChance: {"Struggle": -0.2, "Cut": 0.15, "Remove": 0.5, "Pick": 0.1},
 		Model: "LeatherCollar",
 		maxwill: 0.25,
+		struggleBreak: true,
 		factionFilters: {
 			Band: {color: "LightNeutral", override: true},
 			Cuff: {color: "DarkNeutral", override: true},
@@ -4776,6 +4859,7 @@ const KinkyDungeonRestraints = [
 		unlimited: true, enemyTags: {"leashing":0.001, "maidCollar":-1, "dragonRestraints":-1, "mithrilRestraints": -1}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, maxLevel: 3, allFloors: true, shrine: ["Collars", "Leather"]},
 	{inventory: true, name: "SteelCollar", linkCategory: "BasicCollar", accessible: true, Asset: "SlenderSteelCollar", Color: ["Default"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 3, weight: 0, escapeChance: {"Struggle": -0.5, "Cut": -0.4, "Remove": 0.5, "Pick": 0.05},
 		Model: "WolfCollarRestraint",
+		struggleBreak: true,
 		Filters: {
 			Band: {"gamma":1,"saturation":0.05,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			Lining: {"gamma":1,"saturation":1,"contrast":1,"brightness":0.48333333333333334,"red":1,"green":1,"blue":1,"alpha":1},
@@ -4784,6 +4868,7 @@ const KinkyDungeonRestraints = [
 		unlimited: true, enemyTags: {"leashing":0.001, "maidCollar":-1, "dragonRestraints":-1, "mithrilRestraints": -1, 'shopCollar': 10}, playerTags: {"ItemNeckFull":-2, "Unchained": -1, "Damsel": 1}, minLevel: 2, allFloors: true, shrine: ["Collars", "Metal"]},
 	{inventory: true, name: "MagicCollar", debris: "Belts", linkCategory: "BasicCollar", accessible: true, Asset: "LeatherCollar", Color: ["#000000", "#6E5B38"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 2, weight: 0, magic: true, escapeChance: {"Struggle": -0.5, "Cut": -0.1, "Remove": 0.25, "Pick": 0.05},
 		Model: "SteelCollarRunes",
+		struggleBreak: true,
 		Filters: {
 			Runes: {"gamma":1,"saturation":1,"contrast":0.3833333333333333,"brightness":0.48333333333333334,"red":1,"green":2.8499999999999996,"blue":3.3000000000000003,"alpha":3.7666666666666666},
 			BaseMetal: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":2.5333333333333337,"alpha":1},
@@ -4797,6 +4882,7 @@ const KinkyDungeonRestraints = [
 		unlimited: true, enemyTags: {"leashing":0.001, "maidCollar":-1, "dragonRestraints":-1, "mithrilRestraints": -1, 'shopCollar': 10}, playerTags: {"ItemNeckFull":-2, "Damsel": -1}, minLevel: 2, allFloors: true, shrine: ["Collars", "Conjure"]},
 	{inventory: true, name: "KittyCollar", debris: "Belts", linkCategory: "BasicCollar", accessible: true, Asset: "LeatherCollarBell", Color: ["Default"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 5, weight: 0, magic: true, escapeChance: {"Struggle": -0.5, "Cut": -0.25, "Remove": 0.25, "Pick": 0.05},
 		Model: "LeatherCollarBell",
+		struggleBreak: true,
 		Filters: {
 			Cuff: {"gamma":2.2333333333333334,"saturation":1,"contrast":1.0833333333333335,"brightness":2.283333333333333,"red":1,"green":1,"blue":1,"alpha":1},
 			Band: {"gamma":1,"saturation":0.05,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
@@ -4811,6 +4897,7 @@ const KinkyDungeonRestraints = [
 	},
 	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, good: true, name: "PotionCollar", accessible: true, Asset: "SlenderSteelCollar", Color: ["#6E5B38"], Group: "ItemNeck", power: 1, weight: 0, escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.5, "Pick": 0.15}, potionCollar: true, allowPotions: true,
 		Model: "MageCollar",
+		struggleBreak: true,
 		value: 500,
 		factionFilters: {
 			Band: {color: "Highlight", override: true},
@@ -4878,9 +4965,10 @@ const KinkyDungeonRestraints = [
 	{inventory: true, removePrison: true, name: "BasicLeash", tether: 2.9, Asset: "CollarLeash", Color: "Default", Group: "ItemNeckRestraints", leash: true, power: 1, weight: -99, harness: true,
 		Model: "Leash",
 		unlimited: true,
+		struggleBreak: true,
 		affinity: {
-			Cut: ["SharpHookOrFoot"],
-			Struggle: ["HookOrFoot"],
+			Cut: ["SharpTug", "SharpHookOrFoot"],
+			Struggle: ["Tug", "HookOrFoot"],
 		},
 		events: [
 			{trigger: "postRemoval", type: "RequireCollar"}
@@ -4906,6 +4994,7 @@ const KinkyDungeonRestraints = [
 	//region Cursed Set - Stardust Curse
 	{inventory: true, name: "CursedCollar", alwaysKeep: true, debris: "Chains", Asset: "SlenderSteelCollar", Color: ["#7842ad"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],
 		special: true,
+		struggleBreak: true,
 		Model: "StardustCollar",
 		Filters: {
 			"Collar": {"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":0.3,"red":1.4,"green":1,"blue":3.95,"alpha":1},
@@ -4922,6 +5011,7 @@ const KinkyDungeonRestraints = [
 		]},
 	{inventory: true, name: "CursedCollar2", alwaysKeep: true, debris: "Chains", Asset: "SlenderSteelCollar", Color: ["#8E72AA"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],
 		special: true,
+		struggleBreak: true,
 		Model: "StardustCollar",
 		Filters: {
 			"Collar": {"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1.0,"red":1.4,"green":1,"blue":1.9, "alpha":1},

@@ -1043,7 +1043,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		// Now we create the boringness matrix
 		KDCreateBoringness(noBoring);
 
-		if (altType && !altType.noSetpiece)
+		if (!altType?.noSetpiece)
 			KinkyDungeonPlaceSetPieces(POI, traps, chestlist, shrinelist, chargerlist, spawnPoints, false, width, height);
 
 		if (!((KinkyDungeonNearestJailPoint(1, 1) || (altType && altType.nojail)) && (!altType || KDStageBossGenerated || !bossRules))) {
@@ -3250,7 +3250,8 @@ function KinkyDungeonPlaceFurniture(barrelChance, cageChance, width, height, alt
 	if (!altType || !altType.noClutter)
 		for (let X = 1; X < width-1; X += 1)
 			for (let Y = 1; Y < height-1; Y += 1) {
-				if (KinkyDungeonMapGet(X, Y) == '0' && !(KinkyDungeonTilesGet(X + "," + Y) && KinkyDungeonTilesGet(X + "," + Y).OffLimits)
+				if (KinkyDungeonMapGet(X, Y) == '0' && !(KinkyDungeonTilesGet(X + "," + Y) && (KinkyDungeonTilesGet(X + "," + Y).OffLimits || KinkyDungeonTilesGet(X + "," + Y).Skin))
+					&& !(Object.values(KinkyDungeonEffectTilesGet(X + ',' + Y))?.length > 0)
 					&& (KinkyDungeonMapGet(X+1, Y) != 'd' && KinkyDungeonMapGet(X+1, Y) != 'D'
 						&& KinkyDungeonMapGet(X-1, Y) != 'd' && KinkyDungeonMapGet(X-1, Y) != 'D'
 						&& KinkyDungeonMapGet(X, Y+1) != 'd' && KinkyDungeonMapGet(X, Y+1) != 'D'

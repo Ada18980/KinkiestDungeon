@@ -14,7 +14,7 @@ let KDMapMods = {
 		tags: [],
 		bonusTags: {},
 		bonussetpieces: [
-			{Type: "BanditPrison", Weight: 12},
+			//{Type: "BanditPrison", Weight: 12},
 		],
 		altRoom: "",
 	},

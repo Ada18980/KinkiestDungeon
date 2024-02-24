@@ -177,6 +177,8 @@ interface KDRestraintPropsBase {
 	limited?: boolean,
 	/** Forced to allow these, mainly leashes and collars */
 	unlimited?: boolean,
+	/** Struggling out of this item breaks it permanently. You can avoid this by using Remove to get the last bit if possible */
+	struggleBreak?: boolean,
 
 	/** Security levels for chastity. Non-tech belts should have a Tech security of undefined. Magic belts should have undefined for key and tech.
 	 * KEY can be circumvented by having a key. Normally you cant remove a plug but you can spend a key to unlock a plug slot for 30 turns or until you are hit or a restraint is removed in that slot.
@@ -1709,6 +1711,8 @@ interface effectTile {
 	pauseDuration?: number,
 	pauseSprite?: string,
 	brightness?: number,
+	/** Deletes the effect tile if it's not on a movable tile */
+	noWalls?: boolean,
 	/** Radius within which the tile does NOT block vision */
 	visionBlockRadius?: number,
 	skin?: string,

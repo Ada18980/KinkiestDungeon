@@ -1048,7 +1048,7 @@ DungeonNameDollRoom,Doll Processing
 DungeonNameBanditFort,Bandit Hideout
 DungeonNameAncientVault,Ancient Vault
 DungeonNameSlaveMarket,Slave Market
-DungeonNameMysteriousElevator,Mysterious Elevator
+DungeonNameElevatorRoom,Elevator Hall
 DungeonNameTempleAir,Temple of Air
 DungeonNameTempleFire,Temple of Fire
 DungeonNameTempleWater,Temple of Water
@@ -6367,7 +6367,7 @@ KinkyDungeonSpellCastCommandBind,"You say a command word, and the bindings on th
 
 KinkyDungeonSpellCommandWord,CMD: Unlock
 KinkyDungeonSpellTargetCommandWord,Select which creature to unlock
-KinkyDungeonSpellDescriptionCommandWord,"On yourself: Removes one magical lock. On a creature: Reduces the target's binding by 20 points."
+KinkyDungeonSpellDescriptionCommandWord,"On yourself: Removes one purple (magical) lock. On a creature: Reduces the target's binding by 20 points."
 KinkyDungeonSpellCastCommandWord,You speak a command word!
 KDCommandWordFail_NoLocks,None of the locks you are wearing respond to your magic.
 KDCommandWordFail_NoEnemy,You can't help her with this.
@@ -6376,7 +6376,7 @@ KDCommandWordFail_Miscast,"The command is intricate and you are unable to enunci
 
 KinkyDungeonSpellCommandWordGreater,CMD: Greater Unlock
 KinkyDungeonSpellTargetCommandWordGreater,Select which creature to unlock
-KinkyDungeonSpellDescriptionCommandWordGreater,"On yourself: Removes all magical locks. On a creature: Reduces the target's binding by 100 points."
+KinkyDungeonSpellDescriptionCommandWordGreater,"On yourself: Removes all purple (magical) locks. On a creature: Reduces the target's binding by 100 points."
 KinkyDungeonSpellCastCommandWordGreater,You speak a powerful command word!
 
 KinkyDungeonSpellLesserInvisibility,Lesser Invisibility
@@ -20248,7 +20248,7 @@ KDNavMap_SideRooms,"Points of Interest:"
 KDSideRoom_Lair_Witch,"Magical Study"
 KDSideRoom_Lair_Hall,"Maintenance Hall"
 KDSideRoom_GoldChest,"Ancient Chest"
-KDSideRoom_Elevator,"Mysterious Elevator"
+KDSideRoom_ElevatorRoom,"Elevator Hall"
 KDSideRoom_AuctionHall,"Auction Hall"
 KDSideRoom_DemonShrine,"Dark Altar"
 KDSideRoom_BanditFort,"Bandit Hideout"
@@ -20274,3 +20274,6 @@ KDRoomType_Dollmaker,"Sorting Room"
 KDHotbarTutorial,"Click a hotbar position to assign the item to that slot.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs."
 
 KDUseFootAffinity,You step on the item and tug to pull it taut...
+KDUseTugAffinity,"You tug furiously against the leash, pulling it taut!"
+
+DungeonNamesilenthill,Silenced Hall
