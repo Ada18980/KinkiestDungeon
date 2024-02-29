@@ -42,8 +42,8 @@ function KinkyDungeonPlaceSetPieces(POI, trapLocations, chestlist, shrinelist, c
 			console.log(i);
 		}
 
-		if (!KDGameData.ChestsGenerated.includes("cache"))
-			setpieces.push({Type: "Cache", Weight: 100000});
+		//if (!KDGameData.ChestsGenerated.includes("cache"))
+		//setpieces.push({Type: "Cache", Weight: 100000});
 		//setpieces.push({Type: "PearlChest", Weight: 100});
 		let forbiddenChance = Params.forbiddenChance != undefined ? Params.forbiddenChance : 1;
 		let greaterChance = Params.forbiddenGreaterChance != undefined ? Params.forbiddenGreaterChance : 0.5;

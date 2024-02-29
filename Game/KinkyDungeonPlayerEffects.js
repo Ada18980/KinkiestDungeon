@@ -944,13 +944,16 @@ let KDPlayerEffects = {
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["crystalRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
-			if (restraintAdd) {
-				KDPlayerEffectRestrain(spell, 1, ["crystalRestraints"], faction, false, false, false, false);
-				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
-			}//else if (KDGameData.PrisonerState != 'jail' && KDGameData.PrisonerState != 'parole') {
-			//KinkyDungeonCallGuard(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
-			//}
+			for (let i = 0; i < (playerEffect.count || 1); i++) {
+				let restraintAdd = KinkyDungeonGetRestraint({tags: ["crystalRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+				if (restraintAdd) {
+					KDPlayerEffectRestrain(spell, 1, ["crystalRestraints"], faction, false, false, false, false);
+					KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
+				}//else if (KDGameData.PrisonerState != 'jail' && KDGameData.PrisonerState != 'parole') {
+				//KinkyDungeonCallGuard(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+				//}
+			}
+
 			KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonCrystalBind").KDReplaceOrAddDmg( dmg.string), "#ff0000", 3);
 			effect = true;

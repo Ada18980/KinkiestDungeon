@@ -1428,6 +1428,7 @@
             <key type="filename">../Game/FloorGeneric/Chests/KittyOpen.png</key>
             <key type="filename">../Game/FloorGeneric/Chests/Robot.png</key>
             <key type="filename">../Game/FloorGeneric/Chests/RobotOpen.png</key>
+            <key type="filename">../Game/FloorGeneric/ClamBed.png</key>
             <key type="filename">../Game/FloorGeneric/CollapsedStairs.png</key>
             <key type="filename">../Game/FloorGeneric/CommercePortal.png</key>
             <key type="filename">../Game/FloorGeneric/CommercePortalReturn.png</key>
@@ -1515,6 +1516,7 @@
             <key type="filename">../Game/FloorGeneric/Torch.png</key>
             <key type="filename">../Game/FloorGeneric/TorchOrb.png</key>
             <key type="filename">../Game/FloorGeneric/Water.png</key>
+            <key type="filename">../Game/FloorGeneric/WaterFoam.png</key>
             <key type="filename">../Game/Floors/Floor_DemonTransition/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_DemonTransition/Bars.png</key>
             <key type="filename">../Game/Floors/Floor_DemonTransition/BarsVert.png</key>
@@ -1628,6 +1630,26 @@
             <key type="filename">../Game/Floors/Floor_cry/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_cry/Wall.png</key>
             <key type="filename">../Game/Floors/Floor_cry/WallVert.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/Barrel.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/Bars.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/BarsVert.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/BarsVertCont.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/Brickwork.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/Doodad.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/Door.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/DoorOpen.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/DoorVert.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/DoorVertCont.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/DoorVertOpen.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/DoorVertOpenCont.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/Floor.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/Giant Bubble.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/Grate.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/MimicBlock.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/RubbleLooted.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/Trap.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_grv/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_grv/Bars.png</key>
             <key type="filename">../Game/Floors/Floor_grv/BarsVert.png</key>
@@ -2021,7 +2043,7 @@
             <key type="filename">../Game/Items/Restraint/Latex.png</key>
             <key type="filename">../Game/Items/Restraint/LeatherCuffs.png</key>
             <key type="filename">../Game/Items/Restraint/Legbinders.png</key>
-            <key type="filename">../Game/Items/Restraint/MagicBelt.png</key>
+            <key type="filename">../Game/Items/Restraint/MagicBelts.png</key>
             <key type="filename">../Game/Items/Restraint/Obsidian.png</key>
             <key type="filename">../Game/Items/Restraint/PanelGags.png</key>
             <key type="filename">../Game/Items/Restraint/PlugGags.png</key>
@@ -3278,10 +3300,12 @@
             <key type="filename">../Game/Items/Restraint/Legirons.png</key>
             <key type="filename">../Game/Items/Restraint/MagicArmbands.png</key>
             <key type="filename">../Game/Items/Restraint/RedLatexOTNGag.png</key>
+            <key type="filename">../Game/Items/Restraint/SarielPanties.png</key>
             <key type="filename">../Game/Items/Restraint/ScarfGag.png</key>
             <key type="filename">../Game/Items/Restraint/SteelArmor.png</key>
             <key type="filename">../Game/Items/Restraint/SteelBoots.png</key>
             <key type="filename">../Game/Items/Restraint/SteelSkirt.png</key>
+            <key type="filename">../Game/Items/Restraint/Stuffing.png</key>
             <key type="filename">../Game/Items/Restraint/Sunglasses.png</key>
             <key type="filename">../Game/Items/Restraint/Sunglasses2.png</key>
             <key type="filename">../Game/Items/Restraint/Thumbcuffs.png</key>
@@ -3358,6 +3382,21 @@
                 <rect>78,78,155,155</rect>
                 <key>scale9Paddings</key>
                 <rect>78,78,155,155</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/Items/Restraint/ElvenPanties.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>174,174,349,349</rect>
+                <key>scale9Paddings</key>
+                <rect>174,174,349,349</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

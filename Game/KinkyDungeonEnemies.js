@@ -3475,13 +3475,13 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		}
 
 	}
-	let specialCondition = enemy.Enemy.specialAttack != undefined && (!enemy.specialCD || enemy.specialCD <= 0) && (!enemy.Enemy.specialMinrange || AIData.playerDist > enemy.Enemy.specialMinrange);
+	let specialCondition = enemy.Enemy.specialAttack != undefined && (!enemy.specialCD || enemy.specialCD <= 0) && (!enemy.Enemy.specialMinRange || AIData.playerDist > enemy.Enemy.specialMinRange);
 	let specialConditionSpecial = (enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialCondition) ? KDSpecialConditions[enemy.Enemy.specialCondition].criteria(enemy, AIData) : true;
 
 	let updateSpecial = () => {
-		specialCondition = enemy.Enemy.specialAttack != undefined && (!enemy.specialCD || enemy.specialCD <= 0) && (!enemy.Enemy.specialMinrange || AIData.playerDist > enemy.Enemy.specialMinrange)
+		specialCondition = enemy.Enemy.specialAttack != undefined && (!enemy.specialCD || enemy.specialCD <= 0) && (!enemy.Enemy.specialMinRange || AIData.playerDist > enemy.Enemy.specialMinRange)
 			&& (!enemy.Enemy.specialCharges || enemy.specialCharges > 0);
-		specialConditionSpecial = (enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialCondition) ? KDSpecialConditions[enemy.Enemy.specialCondition].criteria(enemy, AIData) : true;
+		specialConditionSpecial = (enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialCondition) ? KDSpecialConditions[enemy.Enemy.specialCondition].criteria(enemy, AIData) : specialCondition;
 
 		AIData.hitsfx = (enemy.Enemy && enemy.Enemy.hitsfx) ? enemy.Enemy.hitsfx : "";
 		AIData.attack = enemy.Enemy.attack;
@@ -3515,7 +3515,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		}
 		if (enemy.usingSpecial && !specialConditionSpecial) {
 			enemy.usingSpecial = false;
-			if (KDSpecialConditions[enemy.Enemy.specialCondition].resetCD) enemy.specialCD = enemy.Enemy.specialCD;
+			if (KDSpecialConditions[enemy.Enemy.specialCondition]?.resetCD) enemy.specialCD = enemy.Enemy.specialCD;
 		}
 	};
 	updateSpecial();

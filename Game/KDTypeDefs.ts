@@ -1033,8 +1033,6 @@ interface enemy extends KDHasTags {
 	/** */
 	specialAttackPoints?: number,
 	/** */
-	specialMinrange?: number,
-	/** */
 	stealth?: number,
 	/** After being seen the enemy can go back into stealth if the player moves away*/
 	noReveal?: boolean,
@@ -1903,6 +1901,8 @@ interface spell {
 	aoedamage?: number;
 	/** Damage type */
 	damage?: string;
+	/** Is the damage teasing */
+	tease?: boolean;
 	/** size of sprite */
 	size?: number;
 	/** Prevents multiple instances of the spell from doing damage on the same turn from the same bullet to the same enemy */

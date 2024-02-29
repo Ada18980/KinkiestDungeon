@@ -3001,6 +3001,24 @@ let KDDialogue = {
 							"Brat": {
 								playertext: "Default", response: "Default",
 								options: {
+									"Question": {gagDisabled: true,
+										playertext: "Default", response: "Default",
+										options: {
+											"Proceed": {
+												playertext: "Default", response: "Default",
+												leadsToStage: "PostIntro",
+											},
+										}
+									},
+									"Question2": {gagDisabled: true,
+										playertext: "Default", response: "Default",
+										options: {
+											"Proceed": {
+												playertext: "Default", response: "Default",
+												leadsToStage: "PostIntro",
+											},
+										}
+									},
 									"Proceed": {
 										playertext: "Default", response: "Default",
 										leadsToStage: "PostIntro",
@@ -3841,6 +3859,29 @@ let KDDialogue = {
 					},
 				}
 			}
+		}
+	},
+	"DragonQueenCrystal": { // Player defeats fuuka's first form
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			let point = KinkyDungeonGetNearbyPoint(player.x, player.y, true, undefined, true);
+			if (!point) {
+				point = KinkyDungeonGetRandomEnemyPoint(false, false, null);
+			}
+			let e = DialogueCreateEnemy(point.x, point.y, "DragonGirlCrystal");
+			e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
+			if (KinkyDungeonStatsChoice.get("extremeMode")) e.Enemy.maxhp *= 4;
+			else if (KinkyDungeonStatsChoice.get("hardMode")) e.Enemy.maxhp *= 2;
+			e.hp = e.Enemy.maxhp;
+			//e.hostile = 300;
+			e.modified = true;
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
 		}
 	},
 	"FuukaStage2": { // Player defeats fuuka's first form

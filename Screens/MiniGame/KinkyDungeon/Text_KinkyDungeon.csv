@@ -1028,6 +1028,7 @@ DungeonNametmp,Lost Temple
 DungeonNamebel,The Bellows
 DungeonNamelab,Rundown Laboratory
 DungeonNamefor,Forgotten Garden
+DungeonNamecst,Coastal Grotto
 DungeonNameice,Kingdom of Ice
 DungeonName8,
 DungeonName9,
@@ -11760,6 +11761,7 @@ rGenericAllyFlirtSub,"(The SPEAKER blushes)|Mmm~ Let's do this!"
 rGenericAllyFlirtBrat,"(The SPEAKER backs up)|I'm not in trouble, am I?"
 rGenericAllyFlirtRobot,"(The SPEAKER beeps)|This unit does not know how to respond..."
 rGenericAllyFlirtGagged,"(The SPEAKER moans)|Mmmmmph~"
+rGenericAllyFlirtNoBrain,"(The SPEAKER appears too busy to discuss with you)"
 
 
 
@@ -12015,8 +12017,8 @@ dFuukaFight_Fight3,"I suppose..."
 dFuukaFight_Fight3Gag,"Mmmmph..."
 
 rFuukaLose,"(SPEAKER smiles as she stands over you)|Well well. Look who won."
-rFuukaLoseAccept,"(SPEAKER nods)|Absolutely. Now allow me to make my conditions clear.|You will wear my collar from now on.|Then you will be allowed to go."
-rFuukaLoseDeny,"(SPEAKER giggles)|You're not in a position to resist.|Now then, let me make myself clear.|I will let you go... but only wearing my collar."
+rFuukaLoseAccept,"(SPEAKER nods and giggles)|Absolutely.|Allow me to present to you, my prized pet collar!|I save it only for my favorite pets.|That's right! You're my favorite pet now~"
+rFuukaLoseDeny,"(SPEAKER giggles)|You're not in a position to resist.|Now then, where did I put that collar..."
 rFuukaLoseMagic,"(SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(She brandishes a collar) Now including you!"
 dFuukaLose_Magic,"What's this weird magic?"
 dFuukaLose_Accept,"You beat me fair and square."
@@ -19894,25 +19896,32 @@ AttackTheWarden2Lock,"The Warden swings her enchanted whip and conjures locks on
 rTheWarden,"(The Warden glances at you)|Oh? What do we have here?|An adventurer?|You're not on the books..."
 dTheWarden_Aggressive,"Cut to the chase. Do I have to fight you or not?"
 dTheWarden_AggressiveGag,"(Growl at her)"
-rTheWardenAggressive,"(She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?"
-dTheWardenAggressive_Question,What kind of name is that?
-rTheWardenAggressive_Question,"(SPEAKER frowns)|It means Windsong!|I bet yours isn't anywhere nearly as cool."
-rTheWardenAggressive_Question_Brat,"(SPEAKER looks enraged)|Because names and meanings are different things!|My name uses the script from the Old Civilization!|You're just a poser!"
-dTheWardenAggressive_Question_Brat,"Why not just call yourself Windsong?"
+rTheWardenAggressive,"(She chuckles)|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~"
+dTheWardenAggressive_Question,Quite a boast for someone who's about to lose.
+rTheWardenAggressive_Question,"(SPEAKER grins)|I look forward to testing those claims~"
+dTheWardenAggressive_Question_Brat,I defeated Fuuka. Now you're next!
+rTheWardenAggressive_Question_Brat,"(SPEAKER shrugs)|You beat that zombie girl?|She's the weakest of the paladins.|She loves to boast about how she's special,|But she's really just a spoiled brat."
+dTheWardenAggressive_Question_Brat_Question,"...Zombie girl?"
+rTheWardenAggressive_Question_Brat_Question,"(SPEAKER tilts her head)|Yes, she was around before Vinlaga.|Her magic was gifted to her by the Goddess,|it is only natural that it works on her too."
+dTheWardenAggressive_Question_Brat_Question2,"...Paladins?"
+rTheWardenAggressive_Question_Brat_Question2,"(SPEAKER nods happily)|Divinely-appointed judges, presiding over mortals.|Unlike you, our immortality is earned.|Myself, I captured many defilers long ago.|Is it not fitting that I get to keep them for myself?"
 dTheWardenAggressive_Question_Brat_Proceed,"(...)"
+dTheWardenAggressive_Question_Brat_Question_Proceed,"(...)"
+dTheWardenAggressive_Question_Brat_Question2_Proceed,"(...)"
 dTheWardenAggressive_Question_Proceed,"(...)"
-dTheWardenAggressive_Proceed,I am an adventurer.
+dTheWardenAggressive_Proceed,It is an honor to fight a worthy opponent.
 dTheWardenAggressive_ProceedGag,Mmmmph.
-rTheWardenAggressive_ProceedGag,"(SPEAKER blushes)|Ah, right then..."
+rTheWardenAggressive_ProceedGag,"(SPEAKER giggles)|That gag suits you nicely~"
 dTheWardenAggressive_ProceedGag_Proceed,"(...)"
-rTheWardenAggressive_Brat,"(SPEAKER giggles)|Very well. I don't really care who you are."
-dTheWardenAggressive_Brat,I do not need to introduce myself.
-dTheWardenAggressive_Brat_Proceed,"Neither do I."
+rTheWardenAggressive_Brat,"(SPEAKER grins)|I look forward to it!"
+dTheWardenAggressive_Brat,You will see soon enough.
+dTheWardenAggressive_Brat_Proceed,"Indeed!"
 dTheWardenAggressive_Brat_ProceedGag,"(...)"
 dTheWardenAggressive_Brat_Proceed2,"(...)"
 dTheWarden_Defensive,"What is this place?"
 dTheWarden_DefensiveGag,"Mmmmm... (Blush)"
 rTheWardenDefensive,"(She smiles)|Why, this is my private prison.|I bring only my prettiest toys to hang out here.|You can see them up there.|(She motions to the north)"
+
 dTheWardenDefensive_Question,Reincarnated ones?
 rTheWardenDefensive_Question,"(SPEAKER tilts her head)|I believe the term is 'Zombie' in the common tongue."
 rTheWardenDefensive_Question_Question,"(SPEAKER enjoys the discussion)|When most people die, their spirits pass on to the next life.|But some stay in this world, and with the right blessings,|one can grant them a second chance!|I plan to give them all proper bodies...|Eventually."
@@ -19949,18 +19958,19 @@ dTheWardenDefensive_Question_Question_Question_Question_Question_Question3_Quest
 rTheWardenDefensive_Question_Question_Question_Question_Question_Question3_Question3_Proceed,"(SPEAKER pouts)|Hmmph. Suit yourself."
 dTheWardenDefensive_Question_Question_Question_Question_Question_Question3_Question3_Proceed,"Pledge my soul? That changes things..."
 dTheWardenDefensive_Question_Proceed,"(...)"
-dTheWardenDefensive_Proceed,I am an adventurer.
+
+dTheWardenDefensive_Proceed,I am indeed an adventurer.
 dTheWardenDefensive_ProceedGag,Mmmmph.
-rTheWardenDefensive_ProceedGag,"(SPEAKER giggles)|Hehe... you sound interested."
+rTheWardenDefensive_ProceedGag,"(SPEAKER smiles)|Fascinating. Do keep explaining."
 dTheWardenDefensive_ProceedGag_Proceed,"(...)"
-rTheWardenDefensive_Brat,"(SPEAKER frowns)|Never ask a woman about her age!"
-dTheWardenDefensive_Brat,I take it you're the hag in charge?
-dTheWardenDefensive_Brat_Proceed,"You are in charge, right?"
-dTheWardenDefensive_Brat_ProceedGag,"(Giggle)"
+rTheWardenDefensive_Brat,"(SPEAKER frowns)|That is not the attitude I appreciate from my guests."
+dTheWardenDefensive_Brat,I forge my own path.
+dTheWardenDefensive_Brat_Proceed,"Why should I listen to you?"
+dTheWardenDefensive_Brat_ProceedGag,"(Pout)"
 dTheWardenDefensive_Brat_Proceed2,"(...)"
 dTheWarden_Brat,"That's a shame about your records, I'll be going now."
-dTheWarden_BratGag,"Mmpphgh? (Pout at her)"
-rTheWardenBrat,"(She smirks)|So you're that kind of visitor, huh?"
+dTheWarden_BratGag,"Mmpphgh? (Go to pass her)"
+rTheWardenBrat,"(She smirks)|No so fast, dear~"
 dTheWardenBrat_Question,That's right. How powerful are you?
 rTheWardenBrat_Question,"(She cracks her knuckles)|I have been practicing the resurrection arts for a thousand years."
 rTheWardenBrat_Question_Question,"(She smiles)|All the zombies you seee in the Graveyard?|They are my pets, and I care for each and every one of them."
@@ -19977,14 +19987,15 @@ dTheWardenBrat_Brat_Proceed,"I bet I could do better."
 dTheWardenBrat_Brat_ProceedGag,"(Giggle)"
 dTheWardenBrat_Brat_Proceed2,"(...)"
 dTheWarden_Dom,"This is a nice place you got here."
-dTheWarden_DomGag,"(Stare at her silently, maintaining your posture)"
-rTheWardenDom,"(She grins)|I am in charge of this place.|Everything that goes through here goes through me.|You may address me as Fuuka Windsong."
-dTheWardenDom_Question,By what authority?
-rTheWardenDom_Question,"(SPEAKER tilts her head)|Ummmm.... uh...|The Old Civilization! Of course!|I've been keeping their traditions for centuries."
-rTheWardenDom_Question_Question,"(SPEAKER blushes)|Umm... That's because...|Oh shut up!"
-dTheWardenDom_Question_Question,"You don't sound too confident."
-dTheWardenDom_Question_Question_Proceed,"Who are you anyway?"
-dTheWardenDom_Question_Proceed,"Who are you anyway?"
+dTheWarden_DomGag,"(Admire the locale)"
+rTheWardenDom,"(SPEAKER smiles and nods)|It has existed for a thousand years,|and it shall exist for another thousand.|No thanks, of course, to the adventurers who storm through here,|breaking the orbs as if it all belongs to them..."
+dTheWardenDom_Question,What are these orbs for anyway?
+rTheWardenDom_Question,"(SPEAKER looks puzzled)|You don't know? Surely you must be joking?"
+rTheWardenDom_Question_Question,"(SPEAKER shrugs)|They are important because...|Wait, you're stalling for time, aren't you?"
+dTheWardenDom_Question_Question,"I do not know."
+dTheWardenDom_Question_Question_Proceed,"(Sigh)"
+dTheWardenDom_Question_Proceed,"Of course I know..."
+
 dTheWardenDom_Proceed,Fair enough. I am an adventurer.
 dTheWardenDom_ProceedGag,Hmmph.
 rTheWardenDom_ProceedGag,"(SPEAKER giggles)|Is that a challenge?"
@@ -20016,7 +20027,7 @@ dTheWardenSub_Brat_ProceedGag,"(Shake your head)"
 dTheWardenSub_Brat_Proceed2,"(Sigh and shrug)"
 dTheWarden_Attack,(Attack her without saying anything)
 
-rTheWardenPostIntro,"(SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?"
+rTheWardenPostIntro,"(SPEAKER readies her whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special collar.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~"
 dTheWardenPostIntro_Brat,"I do what I want."
 dTheWardenPostIntro_BratGag,"(Glare at her and scoff)"
 rTheWardenPostIntro_Brat,"(SPEAKER makes a big grin)|I take that you wish to challenge me?|Very well!|Come at me!"
@@ -20265,7 +20276,7 @@ KDSideRoom_Lair_Witch,"Magical Study"
 KDSideRoom_Lair_Hall,"Maintenance Hall"
 KDSideRoom_GoldChest,"Ancient Chest"
 KDSideRoom_ElevatorRoom,"Elevator Hall"
-KDSideRoom_Caldera,"Coastal Grotto"
+KDSideRoom_Caldera,"Caldera Passage"
 KDSideRoom_AuctionHall,"Auction Hall"
 KDSideRoom_DemonShrine,"Dark Altar"
 KDSideRoom_BanditFort,"Bandit Hideout"
@@ -20314,3 +20325,35 @@ KinkyDungeonInventoryItemElvenPanties,Elven Panties
 KinkyDungeonInventoryItemElvenPantiesDesc,"In faraway lands, they often say that less is more..."
 KinkyDungeonInventoryItemElvenPantiesDesc2,"+11% sprint efficiency"
 LootElvenPanties,"You find a pair of elven panties."
+
+
+
+RestraintFluffothHood,Hood of Fluffoth
+RestraintFluffothHoodDesc,"Worn by devotees to Fluffoth, demonic ruler of the plush abyss."
+RestraintFluffothHoodDesc2,"When distraction reaches 90%, emit a wave of soft energies that envelops targets a 5x5 area. Deals 40 plush damage and snares for 3 turns. Recharges when your distraction goes below 50%. 5 turn internal cooldown."
+KinkyDungeonInventoryItemFluffothHood,Ceremonial Leotard
+KinkyDungeonInventoryItemFluffothHoodDesc,"Worn by devotees to Fluffoth, demonic ruler of the plush abyss."
+KinkyDungeonInventoryItemFluffothHoodDesc2,"When distraction is over 90%, emit a wave of soft energies that envelops targets a 5x5 area. Deals 30 plush damage and snares for 3 turns. Recharges when your distraction goes below 50%. 5 turn internal cooldown."
+LootFluffothHood,"You find a sinister hood made of soft plush."
+
+
+RestraintFlapehLeotard,Ceremonial Leotard
+RestraintFlapehLeotardDesc,"Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock."
+RestraintFlapehLeotardDesc2,"Its soul crystals dampen willpower changes, reducing all willpower changes by 25%."
+KinkyDungeonInventoryItemFlapehLeotard,Ceremonial Leotard
+KinkyDungeonInventoryItemFlapehLeotardDesc,"Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock."
+KinkyDungeonInventoryItemFlapehLeotardDesc2,"Its soul crystals dampen willpower changes, reducing all willpower changes by 25%."
+LootFlapehLeotard,"You find a ceremonial leotard."
+
+
+rDragonQueenCrystal,"(As you slay the dragon, it begins shapeshifting into human form!)"
+
+NameDragonQueenCrystal,Crystal Dragon Queen
+KillDragonQueenCrystal,You slay the crystal dragon!
+AttackDragonQueenCrystal,The crystal dragon strikes you with its claws! (DamageTaken)
+AttackDragonQueenCrystalBind,"The crystal dragon breaths a sparking dust, which hardens into crystal! (+RestraintAdded)"
+AttackDragonQueenCrystalDash,"The crystal dragon takes flight and swoops toward you!"
+AttackDragonQueenCrystalStun,"The crystal dragon takes flight and slams into you! (Stunned!)"
+
+
+NameDragonGirlCrystal,Crystal Dragon Girl

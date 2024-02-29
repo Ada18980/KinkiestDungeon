@@ -157,7 +157,13 @@ const KinkyDungeonMapParams = {
 		"max_height" : 6,
 		"defeat_outfit": "Prisoner",
 
-		"setpieces": [],
+		"setpieces": [
+			{Type: "Bedroom", Weight: 3},
+			{Type: "Cache", Weight: 10},
+			{Type: "GuardedChest", Weight: 30},
+			{Type: "LargeGuardedChest", Weight: 20},
+			{Type: "Storage", Weight: 14},
+		],
 
 		"shrines": [
 			//{Type: "Charms", Weight: 5},
@@ -1409,7 +1415,7 @@ const KinkyDungeonMapParams = {
 		"barchance" : 0.1,
 
 		lightColor: 0xaaaaaa,
-		"brightness" : 40,
+		"brightness" : 8,
 
 		"floodchance" : 0.5,
 		"chestcount" : 10,
@@ -1434,7 +1440,7 @@ const KinkyDungeonMapParams = {
 		torchchanceboring: -0.4,
 
 		music: {
-			"Shopping.ogg": 10,
+			"AREA10-WEEPINGGARDEN.ogg": 10,
 		},
 
 		"setpieces": [
@@ -1442,6 +1448,7 @@ const KinkyDungeonMapParams = {
 			{Type: "GuardedChest", Weight: 30},
 			{Type: "LargeGuardedChest", Weight: 20},
 			{Type: "Magicflies", Weight: 40},
+			{Type: "JungleLight", Weight: 100},
 		],
 
 		tagModifiers: {

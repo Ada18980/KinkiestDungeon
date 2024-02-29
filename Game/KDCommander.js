@@ -388,7 +388,7 @@ let KDCommanderOrders = {
 		// Also produces barricades
 		// Role assignment
 		filter: (enemy, data) => {
-			let fort = KinkyDungeonStatsChoice.get("Fortify_Barricade");
+			let fort = KinkyDungeonStatsChoice.get("Fortify_Barricade") && KDGetMainFaction() && KDFactionRelation(KDGetFaction(enemy), KDGetMainFaction()) > 0.15;
 			if (!fort && data.globalIgnore) return false;
 			let aware = enemy.aware || enemy.vp > 0 || KDGameData.tickAlertTimer || fort;
 			if (enemy.ignore || (!enemy.aware && KDFactionRelation(KDGetFaction(enemy), KDGetMainFaction())) < -0.09) return false;
@@ -431,7 +431,7 @@ let KDCommanderOrders = {
 		// Role maintenance
 		maintain: (enemy, data) => {
 			if (enemy.ignore) return false;
-			let fort = KinkyDungeonStatsChoice.get("Fortify_Barricade");
+			let fort = KinkyDungeonStatsChoice.get("Fortify_Barricade") && KDGetMainFaction() && KDFactionRelation(KDGetFaction(enemy), KDGetMainFaction()) > 0.15;
 			if (!enemy.IntentAction && !(KDEnemyHasFlag(enemy, "noGuard") || KDEnemyHasFlag(enemy, "targ_ally") || KDEnemyHasFlag(enemy, "targ_npc"))
 				&& (KDGameData.tickAlertTimer || fort || KDEnemyHasFlag(enemy, "CMDR_stationed") || KDEnemyHasFlag(enemy, "CMDR_moveToChoke"))
 				&& (!enemy.aware || !KDEnemyIsTemporary(enemy))) {
@@ -553,7 +553,7 @@ let KDCommanderOrders = {
 			if (enemy.Enemy.bound && KDBoundEffects(enemy) < 4 && (!enemy.Enemy.tags?.minor || KDRandom() < 0.25)) {
 				//let placed = false;
 				let cpOverride = KinkyDungeonStatsChoice.get("Fortify_Trap");
-				let ltOverride = KinkyDungeonStatsChoice.get("Fortify_Barricade");
+				let ltOverride = KinkyDungeonStatsChoice.get("Fortify_Barricade") && KDGetMainFaction() && KDFactionRelation(KDGetFaction(enemy), KDGetMainFaction()) > 0.15;
 				for (let xxx = enemy.x - 1; xxx <= enemy.x + 1; xxx++) {
 					for (let yyy = enemy.y - 1; yyy <= enemy.y + 1; yyy++) {
 						if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(xxx, yyy))

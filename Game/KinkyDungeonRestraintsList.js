@@ -423,6 +423,7 @@ const KinkyDungeonRestraints = [
 		failSuffix: {"Remove": "Slime"},
 		affinity: {Struggle: ["Edge"], Remove: ["Edge"],},
 		factionColor: [[], [0]],
+		maxwill: 0.1,
 		enemyTags: {"slimeRestraints":100, "slimeRestraintsRandom": 2, "slimeRestraintsRandomLight": 2}, playerTags: {},
 		minLevel: 0, allFloors: true, shrine: ["Latex", "Encase", "Slime"], addTag: ["slime", "FeetLinked"]},
 	{removePrison: true, name: "SlimeFeet", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeFeet", linkSize: 0.6, Asset: "DuctTape", Type: "CompleteFeet", OverridePriority: 24, Color: "#9B49BD", Group: "ItemFeet", blockfeet: true,power: 4, weight: -100,  escapeChance: {"Struggle": 0.3, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", power: 0.05}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 1,
@@ -432,6 +433,7 @@ const KinkyDungeonRestraints = [
 		failSuffix: {"Remove": "Slime"},
 		affinity: {Struggle: ["Edge"], Remove: ["Edge"],},
 		factionColor: [[], [0]],
+		maxwill: 0.4,
 		enemyTags: {"slimeRestraints":100, "slimeRestraintsRandom": 101, "slimeRestraintsRandomLight": 101}, playerTags: {"ItemBootsFull":15},
 		minLevel: 0, allFloors: true, shrine: ["Latex", "Encase", "Slime"], addTag: ["slime", "FeetLinked"]},
 	{removePrison: true, name: "SlimeLegs", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeLegs", linkSize: 0.6, remove: ["ClothLower", "Skirts", "Pants"],  Asset: "SeamlessHobbleSkirt", Color: "#9B49BD", Group: "ItemLegs", hobble: 1, power: 4, weight: -102,  escapeChance: {"Struggle": 0.22, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", power: 0.07}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 1,
@@ -441,6 +443,7 @@ const KinkyDungeonRestraints = [
 		failSuffix: {"Remove": "Slime"},
 		affinity: {Struggle: ["Edge"], Remove: ["Edge"],},
 		factionColor: [[], [0]],
+		maxwill: 0.7,
 		enemyTags: {"slimeRestraints":100, "slimeRestraintsRandom": 103, "slimeRestraintsRandomLight": 103}, playerTags: {"ItemFeetFull":2, "ItemBootsFull":2},
 		minLevel: 0, allFloors: true, shrine: ["Slime", "Latex", "Encase", "Hobbleskirts", ], addTag: ["slime", "FeetLinked"]},
 	{removePrison: true, name: "SlimeArms", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeArms", linkSize: 0.6, remove: ["Bra", "Cloth", "Bras", "Tops"], Asset: "StraitLeotard", Modules: [0, 0, 0, 0], Color: ["#9B49BD", "#9B49BD", "#9B49BD"], Group: "ItemArms", bindarms: true, bindhands: 0.25, power: 6, weight: -102,  escapeChance: {"Struggle": 0.2, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", power: 0.1}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 1,
@@ -500,6 +503,7 @@ const KinkyDungeonRestraints = [
 		factionFilters: {
 			Rubber: {color: "DarkNeutral", override: true},
 		},
+		maxwill: 0.1,
 		Model: "RubberBoots",
 		addPoseIfTopLevel: ["ItemBootsRubberOver"],
 		enemyTags: {"latexEncase":100, "latexEncaseRandom":103}, playerTags: {},
@@ -512,6 +516,7 @@ const KinkyDungeonRestraints = [
 		factionFilters: {
 			Rubber: {color: "DarkNeutral", override: true},
 		},
+		maxwill: 0.4,
 		addPoseIfTopLevel: ["ItemFeetRubberOver"],
 		enemyTags: {"latexEncase":100, "latexEncaseRandom":103}, playerTags: {"ItemBootsFull":15},
 		minLevel: 0, allFloors: true, shrine: ["Latex", "Encase", "SlimeHard", "Rubber"]},
@@ -524,6 +529,7 @@ const KinkyDungeonRestraints = [
 		factionFilters: {
 			Rubber: {color: "DarkNeutral", override: true},
 		},
+		maxwill: 0.7,
 		addPoseIfTopLevel: ["ItemLegsRubberOver"],
 		enemyTags: {"latexEncase":100, "latexEncaseRandom":103}, playerTags: {"ItemFeetFull":2, "ItemBootsFull":2},
 		minLevel: 0, allFloors: true, shrine: ["Latex", "Hobbleskirts", "Encase", "SlimeHard", "Rubber"]},

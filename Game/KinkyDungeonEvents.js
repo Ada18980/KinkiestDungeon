@@ -7095,6 +7095,87 @@ let KDEventMapBullet = {
 		},
 	},
 	"afterBulletHit": {
+		"CrystalBolt": (e, b, data) => {
+			let point = {x: b.x, y: b.y};
+			if (!KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(point.x, point.y))) {
+				if (b.vx || b.vy) {
+					let speed = KDistEuclidean(b.vx, b.vy);
+					if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(Math.round(b.x - b.vx / speed), Math.round(b.y - b.vy / speed)))) {
+						point = {x: Math.round(b.x - b.vx / speed), y: Math.round(b.y - b.vy / speed)};
+					}
+					else if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(Math.floor(b.x - b.vx / speed), Math.floor(b.y - b.vy / speed)))) {
+						point = {x: Math.floor(b.x - b.vx / speed), y: Math.floor(b.y - b.vy / speed)};
+					}
+					else {
+						point = {x: Math.ceil(b.x - b.vx / speed), y: Math.ceil(b.y - b.vy / speed)};
+					}
+				}
+			}
+			if (point) {
+				let en = KinkyDungeonSummonEnemy(point.x, point.y, "ChaoticCrystal", 1, 0.5);
+				if (en.length > 0) {
+					en[0].lifetime = 12;
+					en[0].maxlifetime = 12;
+				}
+			}
+
+		},
+		"CrystalShockBolt": (e, b, data) => {
+			// Create the shockwave
+			let rad = e.dist;
+			let conductionPoints = {};
+
+			let bb = {x: b.x, y: b.y};
+			if (!KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(bb.x, bb.y))) {
+				if (b.vx || b.vy) {
+					let speed = KDistEuclidean(b.vx, b.vy);
+					if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(Math.round(b.x - b.vx / speed), Math.round(b.y - b.vy / speed)))) {
+						bb = {x: Math.round(b.x - b.vx / speed), y: Math.round(b.y - b.vy / speed)};
+					}
+					else if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(Math.floor(b.x - b.vx / speed), Math.floor(b.y - b.vy / speed)))) {
+						bb = {x: Math.floor(b.x - b.vx / speed), y: Math.floor(b.y - b.vy / speed)};
+					}
+					else {
+						bb = {x: Math.ceil(b.x - b.vx / speed), y: Math.ceil(b.y - b.vy / speed)};
+					}
+				}
+			}
+
+
+			conductionPoints[bb.x + ',' + bb.y] = true;
+
+
+			for (let i = 0; i < rad; i++) {
+				for (let x = -Math.ceil(i); x < Math.ceil(i); x++) {
+					for (let y = -Math.ceil(i); y < Math.ceil(i); y++) {
+						let dist = KDistEuclidean(x, y);
+						if (dist >= i-0.99 && dist <= i+0.99) { // A ring
+							let point = {x: bb.x + x, y: bb.y + y};
+							if (
+								!conductionPoints[(point.x) + ',' + (point.y)]
+								&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(point.x, point.y))
+								&& (conductionPoints[(point.x + 1) + ',' + (point.y)]
+								|| conductionPoints[(point.x - 1) + ',' + (point.y)]
+								|| conductionPoints[(point.x) + ',' + (point.y + 1)]
+								|| conductionPoints[(point.x) + ',' + (point.y - 1)]
+								|| conductionPoints[(point.x + 1) + ',' + (point.y + 1)]
+								|| conductionPoints[(point.x - 1) + ',' + (point.y + 1)]
+								|| conductionPoints[(point.x + 1) + ',' + (point.y - 1)]
+								|| conductionPoints[(point.x - 1) + ',' + (point.y - 1)])
+							) {
+								// Create it and set the delay!
+								conductionPoints[point.x + ',' + point.y] = true;
+								let ddata = KinkyDungeonCastSpell(point.x, point.y, KinkyDungeonFindSpell("CrystalShock", true), undefined, undefined, b, b.faction || b.bullet?.faction)?.data;
+								if (ddata.bulletfired) {
+									ddata.bulletfired.bullet.lifetime = i;
+									ddata.bulletfired.time = i;
+								}
+							}
+						}
+					}
+				}
+			}
+		},
 		"Phase": (e, b, data) => {
 			let player = KinkyDungeonPlayerEntity;
 			if (player) {
@@ -7750,6 +7831,19 @@ let KDEventMapEnemy = {
 				}
 			}
 		},
+		"breakDownForDragonQueen": (e, enemy, data) => {
+			if (data.delta && !KDHelpless(enemy)
+				&& ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+				let nearby = KDNearbyEnemies(enemy.x, enemy.y, e.dist).filter((en) => {
+					return !KDHelpless(en)
+					&& en.Enemy.tags?.dragonqueen;
+				});
+				if (nearby.length > 0) {
+					enemy.hp -= e.power * data.delta;
+				}
+			}
+		},
+
 
 		"ShopkeeperRescueAI": (e, enemy, data) => {
 			// We heal nearby allies and self

@@ -2006,7 +2006,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 	if (data.escapePenalty < 0) data.escapePenalty *= buffMult;
 
-	if (StruggleType == "Pick") data.escapeChance += KinkyDungeonGetPickBonus()*toolMult;
+	if (StruggleType == "Pick" || StruggleType == "Unlock") data.escapeChance += KinkyDungeonGetPickBonus()*toolMult;
 	data.origEscapeChance = data.escapeChance;
 
 
@@ -2608,6 +2608,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 						let mult = 0.2 + 1.8 * (progress);
 						if (KinkyDungeonStatsChoice.get("Flexible")) mult *= KDFlexibleSpeedBonus;
 						if (KinkyDungeonStatsChoice.get("Inflexible")) mult *= KDInflexibleSpeedBonus;
+						if (KinkyDungeonStatsChoice.get("Locksmith")) mult *= KDLocksmithSpeedBonus;
 						mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 						KDAddDelayedStruggle(
 							escapeSpeed * mult * Math.max(data.escapeChance > 0 ? KDMinEscapeRate : 0, data.escapeChance) * (0.8 + 0.4 * KDRandom() - 0.4 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),

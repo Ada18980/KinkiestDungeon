@@ -30,6 +30,8 @@ Monk class?
 
 5.2.9
 - Added Sariel Vinlaga's Panties to gold chests
+- Added Elven Panties as armor
+- Steel Rain now does teasing damage
 
 5.2.8
 - Fixed a crash

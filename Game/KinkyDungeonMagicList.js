@@ -1499,6 +1499,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "SteelRainPlug", color: "#ffffff", tags: ["binding", "metal", "bolt", "offense"], prerequisite: "ApprenticeMetal", sfx: "MagicSlash", hitsfx: "HeavySwing", school: "Conjure", manacost: 2, components: ["Arms"], level:1, type:"bolt",
 			projectileTargeting:true, onhit:"", time: 0,  power: 2.0, delay: 0, range: 15, damage: "pierce", speed: 3, bulletLifetime: 5, playerEffect: {name: "Bind", damage: "pierce", power: 2, tag: "plugSpell"},
 			bulletColor: 0xffffff, bulletLight: 1,
+			tease: true,
 			events: [
 				{type: "PlugEnemy", trigger: "bulletHitEnemy"},
 			]
@@ -2735,6 +2736,37 @@ let KinkyDungeonSpellListEnemies = [
 
 	{enemySpell: true, name: "HeatBolt", color: "#ffff00", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "fire",
 		speed: 2, playerEffect: {name: "HeatBlast", time: 1, damage: "fire", power: 5}},
+	{enemySpell: true, name: "CrystalBolt", color: "#ff5277", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 2.5, delay: 0, range: 8, damage: "soul",
+		shotgunCount: 5, shotgunDistance: 6, shotgunSpread: 1, shotgunSpeedBonus: 0, shotgunFan: true,
+		meleeOrigin: true,
+		events: [
+			{trigger: "afterBulletHit", type: "CrystalBolt"},
+		],
+		speed: 2.5, playerEffect: {name: "CrystalBind", time: 1}},
+	{enemySpell: true, name: "CrystalBoltSingle", color: "#ff5277", sfx: "FireSpell", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 2.5, delay: 0, range: 8, damage: "soul",
+		meleeOrigin: true,
+		events: [
+			{trigger: "afterBulletHit", type: "CrystalBolt"},
+		],
+		speed: 2.5, playerEffect: {name: "CrystalBind", time: 1}},
+
+	{name: "CrystalSlash", tags: ["aoe", "offense", "crystal"], sfx: "MagicSlash", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt",
+		minRange: 0,
+		color: "#92e8c0",
+		projectileTargeting:true, piercing: true, noTerrainHit: true, noEnemyCollision: true, onhit:"aoe", power: 4, delay: 0, range: 1.5, aoe: 1.5, size: 3, lifetime:1, damage: "soul", speed: 1, time: 2,
+		playerEffect: {name: "CrystalBind", time: 1, count: 2},
+
+	},
+
+	{enemySpell: true, name: "CrystalShock", hideWarnings: true, color: "#ff5277", minRange: 0, bulletSpin: 0.25, landsfx: "MagicSlash", manacost: 4, components: ["Arms"], level:1, type:"inert", onhit:"aoe", power: 3.5, time: 1, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "souldrain", playerEffect: {name: "CrystalBind", time: 1}},
+
+	{enemySpell: true, name: "CrystalShockBolt", color: "#ff5277", sfx: "FireSpell", manacost: 3, specialCD: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 8, damage: "soul",
+		size: 3,
+		shotgunCount: 1, shotgunDistance: 6, shotgunSpread: 1, shotgunSpeedBonus: 0, meleeOrigin: true,
+		events: [
+			{trigger: "afterBulletHit", type: "CrystalShockBolt", dist: 5},
+		],
+		speed: 1.25, playerEffect: {name: "CrystalBind", time: 1, count: 3}},
 	{enemySpell: true, noFirstChoice: true, name: "Hairpin", color: "#ffffff", minRange: 2.9, sfx: "Miss", manacost: 2, castRange: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "pain", speed: 2, playerEffect: {name: "Hairpin", power: 2, damage: "pain", time: 1}},
 	{enemySpell: true, name: "PoisonDragonBlast",  bindType: "Vine", color: "#88ff88", sfx: "FireSpell", hitsfx: "Bones", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "grope", speed: 3, effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
 		name: "Vines",
@@ -2796,8 +2828,9 @@ let KinkyDungeonSpellListEnemies = [
 		type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "poison", playerEffect: {name: "PoisonDagger", power: 4, type: "poison", time: 8},},
 	{enemySpell: true, name: "LustBomb", color: "#ff5277", minRange: 0, sfx: "Miss", school: "Illusion", manacost: 2, specialCD: 12, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 2.5, range: 4, size: 3, aoe: 1.5, lifetime: 1, damage: "charm", playerEffect: {name: "LustBomb", damage: "charm", power: 3.5 }},
 
+
 	// Fungal spells
-	{enemySpell: true, name: "CrystalPuff", color: "#b37bdc", minRange: 0, landsfx: "MagicSlash", manacost: 4, components: ["Arms"], level:1, type:"inert", onhit:"aoe", power: 3.5, time: 1, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "souldrain", playerEffect: {name: "CrystalBind", time: 1}},
+	{enemySpell: true, name: "CrystalPuff", color: "#b37bdc", minRange: 0, landsfx: "MagicSlash", manacost: 4, components: ["Arms"], level:1, type:"inert", onhit:"aoe", power: 3.5, time: 1, delay: 1, range: 4, size: 3, aoe: 0.75, lifetime: 1, damage: "souldrain", playerEffect: {name: "CrystalBind", time: 1}},
 	{enemySpell: true, name: "HighBolt", color: "#8888ff", sfx: "MagicSlash", manacost: 3, specialCD: 7, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
 		power: 6, delay: 0, range: 50, damage: "arcane", speed: 1, playerEffect: {name: "Flummox", time: 1, damage: "arcane", power: 6}},
 

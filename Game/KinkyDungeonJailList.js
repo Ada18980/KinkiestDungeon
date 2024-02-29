@@ -693,7 +693,7 @@ let KDJailOutfits = {
 			{Name: "DragonMuzzleGag", Level: 60},
 			{Name: "ScaleLegCuffs", Level: 60},
 			{Name: "DragonBoots", Level: 90},
-			{Name: "DragonStrongArmbinder", Level: 100, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
+			{Name: "DragonStrongStraps", Level: 100, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
 		],
 	},
 	"dollsmith": {

@@ -1194,7 +1194,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		let lightingParams = null;
 		if (altType?.lightParams) lightingParams = KinkyDungeonMapParams[altType.lightParams];
 		else if (altType?.skin) lightingParams = KinkyDungeonMapParams[altType.skin];
-		KDMapData.MapBrightness = lightingParams ? lightingParams.brightness : MapParams.brightness;
+		KDMapData.MapBrightness = altType?.brightness || lightingParams?.brightness || MapParams.brightness;
 		KinkyDungeonMakeGhostDecision();
 
 		// Place the jail keys AFTER making the map!

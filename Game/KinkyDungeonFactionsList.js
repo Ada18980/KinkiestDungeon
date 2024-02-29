@@ -431,6 +431,7 @@ let KinkyDungeonHiddenFactions = [
 	"Jail",
 	"Prisoner",
 	"Beast",
+	"DragonQueen",
 	"Slime",
 	"Latex",
 	"Mold",
@@ -591,6 +592,7 @@ let KinkyDungeonFactionRelationsBase = {
 		Latex: -1.0,
 		Mold: -1.0,
 		Beast: -0.6,
+		DragonQueen: -1,
 
 		// Mainline factions
 		Bountyhunter: -0.3,
@@ -794,6 +796,7 @@ let KinkyDungeonFactionRelationsBase = {
 		Slime: -1,
 		Mold: -1,
 		Beast: -1,
+		DragonQueen: -1,
 
 		Bountyhunter: -1,
 		Bandit: -1,
@@ -913,6 +916,23 @@ let KinkyDungeonFactionRelationsBase = {
 		Dressmaker: -0.4,
 		Witch: -0.1,
 		Elemental: -0.4,
+		Dragon: -1.0,
+		Maidforce: -0.4,
+		Mushy: -0.4,
+		AncientRobot: -1.0,
+	},
+	"DragonQueen": {
+		Jail: -1,
+		Chase: -1,
+
+		Bountyhunter: -0.4,
+		Bandit: -0.4,
+		Alchemist: -0.4,
+		Nevermere: -0.4,
+		Apprentice: -0.4,
+		Dressmaker: -0.4,
+		Witch: -0.1,
+		Elemental: -1,
 		Dragon: -1.0,
 		Maidforce: -0.4,
 		Mushy: -0.4,

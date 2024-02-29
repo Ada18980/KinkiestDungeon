@@ -270,6 +270,7 @@ let alts = {
 		height: 14,
 		nopatrols: false,
 		setpieces: {
+			"Cache": 10000,
 			"Bedroom": 1,
 			"Storage": 12,
 		},
@@ -318,11 +319,13 @@ let alts = {
 		data: {
 			Caldera: true,
 		},
+
 		genType: "Caldera",
 		skin: "cst",
 		musicParams: "cst",
 		lightParams: "cst",
 		useGenParams: "cst",
+		brightness: 40,
 		spawns: true,
 		chests: true,
 		shrines: true,
@@ -1982,6 +1985,11 @@ function KinkyDungeonCreateElevatorRoom(POI, VisitedRooms, width, height, openne
 
 	KD_PasteTile(KDMapTilesList.ElevatorRoom, KDMapData.StartPosition.x - 7 - 3, KDMapData.StartPosition.y - 7 * 4, data);
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
+
+	let enemy = CommonRandomItemFromList(undefined, ["DragonQueenCrystal"]);
+	if (enemy) {
+		DialogueCreateEnemy(15,2 + 7 + 2,enemy);
+	}
 
 }
 
