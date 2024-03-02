@@ -183,7 +183,9 @@ let KDDialogueTriggers = {
 		return KinkyDungeonSlowLevel > 9; // Player immobilized
 	}),
 	"TheWarden": KDBossTrigger("TheWarden", ["TheWarden1", "TheWarden2"]),
-	"TheWardenLose": KDBossLose("TheWardenLose", ["TheWarden1", "TheWarden2"], undefined),
+	"TheWardenLose": KDBossLose("TheWardenLose", ["TheWarden1", "TheWarden2"], undefined, () => {
+		return KinkyDungeonPlayerTags.get("Furniture"); // Player in cage
+	}),
 	"DollmakerLose1": KDBossLose("DollmakerLose", ["DollmakerBoss1"], ["leatherRestraintsHeavy", "leatherRestraints", "highsec", "leashing"]),
 	"DollmakerLose2": KDBossLose("DollmakerLose", ["DollmakerBoss2", "DollmakerBoss3"], ["controlharness", "cyberdollrestraints", "dollmakerrestraints"]),
 	"Dollmaker": KDBossTrigger("Dollmaker", ["DollmakerBoss1", "DollmakerBoss2", "DollmakerBoss3"]),

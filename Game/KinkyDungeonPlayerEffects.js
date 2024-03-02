@@ -939,6 +939,16 @@ let KDPlayerEffects = {
 		}
 		return {sfx: "Shield", effect: effect};
 	},
+	CageDrop: (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let restraintAdd = KinkyDungeonGetRestraint({tags: ["cage"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+		if (restraintAdd) {
+			KDPlayerEffectRestrain(spell, 1, ["cage"], faction, false, true, false, false);
+			KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
+		}
+		KinkyDungeonSendTextMessage(5, TextGet("KDCageDrop"), "#ff0000", 3);
+
+		return {sfx: "MetalHit", effect: true};
+	},
 	"CrystalBind": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
@@ -960,6 +970,23 @@ let KDPlayerEffects = {
 			return {sfx: "MagicSlash", effect: effect};
 		}
 		return {sfx: "MetalHit", effect: effect};
+	},
+	"CrystalEncase": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let effect = false;
+		let restraintAdd = KinkyDungeonGetRestraint({tags: ["crystalRestraints"]}, MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+		if (!restraintAdd) {
+			restraintAdd = KinkyDungeonGetRestraint({tags: ["crystalEncase"]}, MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+
+			if (restraintAdd) {
+				KDPlayerEffectRestrain(spell, 1, ["crystalEncase"], faction, false, false, false, false);
+				KDSendStatus('bound', restraintAdd.name, "spell_crystal");
+				KinkyDungeonSendTextMessage(5, TextGet("KDCrystalEncase"), "#ff0000", 3);
+				effect = true;
+			}
+
+		}
+
+		return {sfx: "Freeze", effect: effect};
 	},
 	"CoronaShock": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;

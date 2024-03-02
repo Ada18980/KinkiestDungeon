@@ -205,7 +205,7 @@ let KinkyDungeonEnemies = [
 	{name: "OneBar", tags: KDMapInit(["construct", "poisonmmune", "soulimmune", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile"]),
 		immobile: true, spellResist: 0, lowpriority: true, evasion: -100, armor: 3, followRange: 100, AI: "wander",
 		visionRadius: 0, maxhp: 4, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
-		faction: "Enemy",
+		faction: "Warden",
 		cueSfx: {
 			Block: "Clang",
 			Resist: "Clang",
@@ -2823,8 +2823,12 @@ let KinkyDungeonEnemies = [
 		Resistance: {
 			block_magic: 3.0,
 		},
+		effect: {
+			effect: {name: "CrystalEncase"},
+		},
+		ignoreflag: ["CrystalEncase"],
 		spells: ["CrystalBolt", "CrystalSlash"],  spellCooldownMult: 1, spellCooldownMod: -1,
-		visionRadius: 7, blindSight: 2.5, maxhp: 40, armor: 3, minLevel:12, weight:2.5, movePoints: 3, attackPoints: 2, attack: "SpellMeleeWill",
+		visionRadius: 7, blindSight: 2.5, maxhp: 40, armor: 3, minLevel:12, weight:2.5, movePoints: 3, attackPoints: 2, attack: "SpellMeleeWillEffect",
 		attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 5, dmgType: "slash",
 		events: [
 			//{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Nevermere", "Bountyhunter", "Elf"]},
@@ -2842,10 +2846,14 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff44aa"},
 		],
+		effect: {
+			effect: {name: "CrystalEncase"},
+		},
+		ignoreflag: ["CrystalEncase"],
 		noKiteWhenHarmless: true,
 		dontKiteWhenDisabled: true,
 		kite: 2.5,
-		visionRadius: 9, maxhp: 30, minLevel:0, weight:-1000, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeBindLockWill",
+		visionRadius: 9, maxhp: 30, minLevel:0, weight:-1000, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeBindLockWillEffect",
 		stunTime: 1, attackWidth: 1, attackRange: 1, power: 4.5, dmgType: "crush", fullBoundBonus: 2,
 		terrainTags: {}, shrines: ["Leather", "Conjure"], floors: {},
 		attackLock: "Purple", maxdodge: 0,
@@ -4618,7 +4626,7 @@ let KinkyDungeonEnemies = [
 		stamina: 10,
 		preferDodge: true, maxblock: 0, maxdodge: 2,
 		events: [
-			{trigger: "tick", type: "BossAssignFaction", kind: "Enemy"},
+			{trigger: "tick", type: "BossAssignFaction", kind: "Warden"},
 			{trigger: "afterDamageEnemy", type: "FreeWardenPrisoners"},
 		],
 		attackLock: "Red_Hi",
@@ -4644,7 +4652,7 @@ let KinkyDungeonEnemies = [
 		stamina: 7,
 		preferDodge: true, maxblock: 0, maxdodge: 1,
 		events: [
-			{trigger: "tick", type: "BossAssignFaction", kind: "Enemy"},
+			{trigger: "tick", type: "BossAssignFaction", kind: "Warden"},
 			{trigger: "afterDamageEnemy", type: "FreeWardenPrisoners"},
 		],
 		attackLock: "Red_Hi",
@@ -4672,7 +4680,7 @@ let KinkyDungeonEnemies = [
 		stamina: 4,
 		preferDodge: true, maxblock: 0, maxdodge: 1,
 		events: [
-			{trigger: "tick", type: "BossAssignFaction", kind: "Enemy"},
+			{trigger: "tick", type: "BossAssignFaction", kind: "Warden"},
 			{trigger: "afterDamageEnemy", type: "FreeWardenPrisoners"},
 		],
 		attackLock: "Purple",
@@ -4695,14 +4703,6 @@ let KinkyDungeonEnemies = [
 		maxblock: 1,
 		maxdodge: 0,
 		unlockCommandLevel: 3, unlockCommandCD: 7,
-		Magic: {
-			castCooldownUnique: {
-				//FuukaOrb: 12,
-			},
-			priority: {
-				//FuukaOrb: 10,
-			},
-		},
 		spells: ["OneBarMissile", "EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.75, noChannel: true,
 		visionRadius: 8, maxhp: 30, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 2.5, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 		attackLock: "Purple",
@@ -4724,14 +4724,6 @@ let KinkyDungeonEnemies = [
 		maxblock: 1,
 		maxdodge: 1,
 		unlockCommandLevel: 3, unlockCommandCD: 7,
-		Magic: {
-			castCooldownUnique: {
-				//FuukaOrb: 12,
-			},
-			priority: {
-				//FuukaOrb: 10,
-			},
-		},
 		spells: ["OneBarMissile", "EnemySteelRainBurst", "EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.75, noChannel: true,
 		visionRadius: 9, maxhp: 80, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 2.5, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 		attackLock: "HiSec",

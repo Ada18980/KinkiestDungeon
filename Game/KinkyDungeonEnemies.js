@@ -2714,7 +2714,7 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 			}
 			if (master.master && master.master.aware) {
 
-				if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
+				if (!enemy.aware && !enemy.ignore) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
 
 				enemy.aware = true;
 			}
@@ -2953,7 +2953,7 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 					enemy.blockedordodged -= delta;
 					if (enemy.blockedordodged <= 0) delete enemy.blockedordodged;
 				}
-			} else if (!enemy.aware) {
+			} else if (!enemy.aware || enemy.ignore) {
 				delete enemy.blockedordodged;
 				delete enemy.dodges;
 				delete enemy.blocks;
@@ -3398,7 +3398,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		}
 		if (enemy.Enemy.ignoreflag) {
 			for (let f of enemy.Enemy.ignoreflag) {
-				if (KinkyDungeonFlags.get(f)) AIData.ignore = true;
+				if (KinkyDungeonFlags.get(f) || KinkyDungeonPlayerTags.get(f)) AIData.ignore = true;
 			}
 		}
 		// Instead of leashing we ignore
@@ -3838,7 +3838,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
 			enemy.aware = true;
 			// Share aggro
-			if (player.player && KDHostile(enemy) && AIData.aggressive && !enemy.rage && KDEnemyCanSignalOthers(enemy) && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
+			if (!AIData.ignore && player.player && KDHostile(enemy) && AIData.aggressive && !enemy.rage && KDEnemyCanSignalOthers(enemy) && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
 				let ent = KDNearbyEnemies(enemy.x, enemy.y, KinkyDungeonEnemyAlertRadius);
 				for (let e of ent) {
 					if (KDHostile(e) && KinkyDungeonAggressive(e) && !enemy.rage && e != enemy) {
@@ -4033,7 +4033,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 			// Also if the enemy is supposed to go to the player (goal x and y are same as players) and the enemy can see, it just does it
 			// Party members get a free pass too on sight
-			if (player && ((KDEnemyReallyAware(enemy, player) && AIData.canSensePlayer) || KDIsInParty(enemy)) && enemy.gx == player.x && enemy.gy == player.y) {
+			if (player && !AIData.ignore && ((KDEnemyReallyAware(enemy, player) && AIData.canSensePlayer) || KDIsInParty(enemy)) && enemy.gx == player.x && enemy.gy == player.y) {
 				AIData.moveTowardPlayer = true;
 			}
 
@@ -4221,7 +4221,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				}
 				let wanderfar = AIType.wander_far(enemy, player, AIData);
 				let wandernear = AIType.wander_near(enemy, player, AIData);
-				if ((wanderfar || wandernear) && !AIData.allyFollowPlayer && (!enemy.Enemy.allied && !KDEnemyHasFlag(enemy, "StayHere")) && !KDEnemyHasFlag(enemy, "StayHere") && enemy.movePoints < 1 && (!enemy.aware || !AIData.aggressive)) {
+				if ((wanderfar || wandernear) && !AIData.allyFollowPlayer && (!enemy.Enemy.allied && !KDEnemyHasFlag(enemy, "StayHere")) && !KDEnemyHasFlag(enemy, "StayHere") && enemy.movePoints < 1 && (!enemy.aware || !AIData.aggressive || enemy.ignore)) {
 					if ((Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 2.5 || (KDRandom() < 0.02 && KDEnemyHasFlag(enemy, "failpath"))) || (!(enemy.vp > 0.05) && (!enemy.path || KDRandom() < 0.1))) {
 						AIData.master = KinkyDungeonFindMaster(enemy).master;
 						if (!KDEnemyHasFlag(enemy, "wander")) {
@@ -5625,7 +5625,7 @@ function KinkyDungeonEnemyCanMove(enemy, dir, MovableTiles, AvoidTiles, ignoreLo
 	let master = enemy.master || enemy.Enemy.master;
 	let xx = enemy.x + dir.x;
 	let yy = enemy.y + dir.y;
-	if (master && (!master.aggressive || !enemy.aware)) {
+	if (master && (!master.aggressive || !enemy.aware || enemy.ignore)) {
 		let fm = KinkyDungeonFindMaster(enemy);
 		let findMaster = fm.master;
 		let masterDist = fm.dist;

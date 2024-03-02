@@ -84,6 +84,31 @@ AddModel({
 	])
 });
 
+
+
+AddModel({
+	Name: "CrystalEncase",
+	Folder: "Crystal",
+	TopLevel: true,
+	Group: "Devices",
+	Restraint: true,
+	Categories: ["Restraints","Furniture", "Crystal"],
+	AddPose: ["SuspendedHogtie"],
+	Layers: ToLayerMap([
+		{ Name: "EncaseOver", Layer: "FurnitureFront", Pri: -40,
+			Invariant: true,
+			EraseSprite: "CrystalErase",
+			EraseLayers: ToMap(["All"]),
+			EraseAmount: 100,
+			EraseInvariant: true,
+
+		},
+		{ Name: "EncaseUnder", Layer: "FurnitureBack", Pri: 40,
+			Invariant: true,
+		},
+	])
+});
+
 AddModel({
 	Name: "Barrel",
 	Folder: "Furniture",

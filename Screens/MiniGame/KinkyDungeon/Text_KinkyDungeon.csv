@@ -20051,7 +20051,7 @@ dTheWardenFight_Fight3Gag,"Mmmmph..."
 
 rTheWardenLose,"(SPEAKER smiles as she stands over you)|Well well. Look who won."
 rTheWardenLoseAccept,"(SPEAKER nods)|Absolutely. Now allow me to make my conditions clear.|You will wear my collar from now on.|Then you will be allowed to go."
-rTheWardenLoseDeny,"(SPEAKER giggles)|You're not in a position to resist.|Now then, let me make myself clear.|I will let you go... but only wearing my collar."
+rTheWardenLoseDeny,"(SPEAKER giggles)|You're not in a position to resist.|Now then, let me make myself clear.|I will let you go forward in the dungeon, but only wearing my collar."
 rTheWardenLoseMagic,"(SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(She brandishes a collar) Now including you!"
 dTheWardenLose_Magic,"What's this weird magic?"
 dTheWardenLose_Accept,"You beat me fair and square."
@@ -20061,7 +20061,7 @@ dTheWardenLose_DenyGag,"Mmmph! (Struggle weakly)"
 dTheWardenLose_Continue1,"(Sigh and accept your fate)"
 dTheWardenLose_Continue2,"(Accept the collar eagerly)"
 dTheWardenLose_Continue3,"(Accept the collar begrudgingly)"
-rTheWardenLoseFinish,"(SPEAKER presents you with your collar...)|(She locks it around your neck)|You are free to go now, dear!"
+rTheWardenLoseFinish,"(SPEAKER presents you with your collar...)|(She locks it around your neck)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained."
 
 rTheWardenStage2,"(SPEAKER puts up a wall of talismans to regain her strength)|I'm... I'm not finished yet!"
 
@@ -20357,3 +20357,10 @@ AttackDragonQueenCrystalStun,"The crystal dragon takes flight and slams into you
 
 
 NameDragonGirlCrystal,Crystal Dragon Girl
+
+KDCageDrop,A cage falls from the ceiling on top of you!
+KDCrystalEncase,Crystals grow across your body and encase you!
+
+RestraintCrystal,Crystal Encasement
+RestraintCrystalDesc,"An overgrowth of magical crystals. Their chaotic energies flood into your mind and displace your thoughts!"
+RestraintCrystalDesc2,"Being brittle, it will eventually crack and fail. Just keep wiggling..."

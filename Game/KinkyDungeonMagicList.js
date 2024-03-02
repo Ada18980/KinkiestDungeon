@@ -2652,6 +2652,11 @@ let KinkyDungeonSpellListEnemies = [
 		events: [{type: "RubberMissileHoming", trigger: "bulletAfterTick", power: 0.9, dist: 15, count: 0.2, limit: 0},],
 		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2.4, delay: 0, range: 12, damage: "arcane", speed: 2, playerEffect: {name: "MagicMissile", count: 1, dist: 1, sfx: "MagicSlash"}},
 
+	{enemySpell: true, name: "WardenCageDrop", color: "#ffffff", minRange: 0, landsfx: "MagicSlash", manacost: 2, components: [], level:1, type:"inert", onhit:"aoe",
+		castCondition: "WardenCageDrop",
+		power: 2.5, time: 1, delay: 5, range: 8, size: 3, aoe: 1.5, lifetime: 1, damage: "chain", playerEffect: {name: "CageDrop", time: 1}},
+
+
 	{enemySpell: true, name: "OneBarMissile", bindType: "Metal", color: "#ffffff", sfx: "MagicSlash", landsfx: "MagicSlash", manacost: 6, components: ["Arms"], specialCD: 25,
 		noTerrainHit: true,
 		pierceEnemies: true,
@@ -2669,7 +2674,7 @@ let KinkyDungeonSpellListEnemies = [
 		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: .1, delay: 0, range: 50, damage: "crush", speed: 0.5, playerEffect: {name: "Bind", damage: "pierce", power: 7.2, tag: "onebar"}},
 	{enemySpell: true, name: "SummonOneBar", noSprite: true, minRange: 0, manacost: 2, specialCD: 12,
 		noSumMsg: true,
-		faction: "Enemy",
+		faction: "Warden",
 		effectTileDurationModTrail: 12, effectTileTrail: {
 			name: "Chains",
 			duration: 10,
@@ -3492,6 +3497,12 @@ let KDCastConditions = {
 	},
 	"MagicMissileChannel": (enemy, target) => {
 		return !KDEnemyHasFlag(enemy, "MagicMissileChannelFinished");
+	},
+	"WardenCageDrop": (enemy, target) => {
+		if (target.player && KinkyDungeonPlayerTags.get("OneBar")) {
+			return true;
+		}
+		return false;
 	},
 };
 

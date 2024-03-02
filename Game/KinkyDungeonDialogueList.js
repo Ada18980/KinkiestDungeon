@@ -3987,6 +3987,7 @@ let KDDialogue = {
 						leadsToStage: "Finish",
 						clickFunction: (gagged, player) => {
 							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							KinkyDungeonChangeRep("Prisoner", -100);
 							return false;
 						},
 					},
@@ -3995,6 +3996,7 @@ let KDDialogue = {
 						leadsToStage: "Finish",
 						clickFunction: (gagged, player) => {
 							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							KinkyDungeonChangeRep("Prisoner", -100);
 							return false;
 						},
 					},
@@ -4003,6 +4005,7 @@ let KDDialogue = {
 						leadsToStage: "Finish",
 						clickFunction: (gagged, player) => {
 							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							KinkyDungeonChangeRep("Prisoner", -100);
 							return false;
 						},
 					},
@@ -4016,6 +4019,7 @@ let KDDialogue = {
 						leadsToStage: "Finish",
 						clickFunction: (gagged, player) => {
 							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							KinkyDungeonChangeRep("Prisoner", -100);
 							return false;
 						},
 					},
@@ -4024,6 +4028,7 @@ let KDDialogue = {
 						leadsToStage: "Finish",
 						clickFunction: (gagged, player) => {
 							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							KinkyDungeonChangeRep("Prisoner", -100);
 							return false;
 						},
 					},
@@ -4032,6 +4037,7 @@ let KDDialogue = {
 						leadsToStage: "Finish",
 						clickFunction: (gagged, player) => {
 							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							KinkyDungeonChangeRep("Prisoner", -100);
 							return false;
 						},
 					},
@@ -4045,6 +4051,7 @@ let KDDialogue = {
 						leadsToStage: "Finish",
 						clickFunction: (gagged, player) => {
 							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							KinkyDungeonChangeRep("Prisoner", -100);
 							return false;
 						},
 					},
@@ -4053,6 +4060,7 @@ let KDDialogue = {
 						leadsToStage: "Finish",
 						clickFunction: (gagged, player) => {
 							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							KinkyDungeonChangeRep("Prisoner", -100);
 							return false;
 						},
 					},
@@ -4061,6 +4069,7 @@ let KDDialogue = {
 						leadsToStage: "Finish",
 						clickFunction: (gagged, player) => {
 							//KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoCollar"), 0, true);
+							KinkyDungeonChangeRep("Prisoner", -100);
 							return false;
 						},
 					},

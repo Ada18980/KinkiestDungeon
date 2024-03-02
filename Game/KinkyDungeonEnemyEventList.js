@@ -244,6 +244,7 @@ let KDIntentEvents = {
 			if (!["", "Dom", "Sub", "Brat"].includes(KDJailPersonality(enemy))) return 0;
 			if (KinkyDungeonLeashingEnemy() || KDGameData.PrisonerState == 'chase') return 0;
 			if (KDBoundPowerLevel < 0.5) return 0;
+			if (!KDEnemyCanTalk(enemy) || !enemy.Enemy?.bound) return 0;
 			if (KinkyDungeonFlags.get("PlayerCombat") || KinkyDungeonFlags.get("ToyedWith")) return 0;
 			return (hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && !KDEnemyHasFlag(enemy, "dontChase")) ?
 				KDBoundPowerLevel * 10 + (KinkyDungeonFlags.get("CallForHelp") ? 40 : 0)
@@ -263,7 +264,10 @@ let KDIntentEvents = {
 
 		},
 		maintain: (enemy, delta, AIData) => {
-			if (KinkyDungeonFlags.get("PlayerCombat") || !KDEnemyHasFlag(enemy, "toyWithPlayer") || KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) > 5.5) {
+			if (KinkyDungeonFlags.get("PlayerCombat")
+				|| !KDEnemyHasFlag(enemy, "toyWithPlayer")
+				|| KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) > 5.5) {
+				KDResetIntent(enemy);
 				KinkyDungeonAggroAction('attack', {enemy: enemy});
 				return false;
 			}
