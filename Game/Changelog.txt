@@ -28,6 +28,11 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.2.10
+- Added elevators (TODO)
+- Reworked the way cuffs, links, and hogties work (TODO)
+- Added Dragon Queens
+
 5.2.9
 - Added Sariel Vinlaga's Panties to gold chests
 - Added Elven Panties as armor

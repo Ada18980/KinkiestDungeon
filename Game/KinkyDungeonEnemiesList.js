@@ -4710,7 +4710,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "TheWarden2", outfit: "Jailer", style: "Jailer", nameList: "Fuuka", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
 		color: "#ffaa44",
-		tags: KDMapInit(["nosub", "leashing", "noshop", "warden", "human", "magicresist", "ranged", "soulweakness", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss", "nocapture", "unflinching"]),
+		tags: KDMapInit(["nosub", "leashing", "noshop", "warden", "human", "soulweakness", "magicresist", "ranged", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss", "nocapture", "unflinching"]),
 		armor: 1, followRange: 3, AI: "guard",
 		events: [
 			{trigger: "tick", type: "BossAssignFaction", kind: "Warden"},

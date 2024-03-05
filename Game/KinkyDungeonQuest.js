@@ -1141,6 +1141,7 @@ function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountM
 					Keep: true,
 				});
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + "Evil" + ".ogg");
+				KinkyDungeonSendEvent("afterFailGoddessQuest", {quest: Name, goddess: Goddess});
 			}
 			if (!(KDGetQuestData(Name).QuestRoom == KDMapData.RoomType)
 				|| !(KDGetQuestData(Name).QuestLocation?.x == KDCurrentWorldSlot.x)

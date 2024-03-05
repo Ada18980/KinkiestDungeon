@@ -4689,16 +4689,16 @@ let KDRopeParts = {
 };
 
 let KDCuffParts = {
-	"LivingCollar": {base: true, enemyTagSuffix: "Collar",enemyTagOverride: {"livingCollar":10}},
-	"AnkleCuffs": {base: true, Link: "AnkleCuffs2"},
-	"AnkleCuffs2": {Link: "AnkleCuffs3", UnLink: "AnkleCuffs"}, //, ModelSuffix: "Chained"
-	"AnkleCuffs3": {UnLink: "AnkleCuffs2"},
-	"LegCuffs": {base: true, Link: "LegCuffs2"},
-	"LegCuffs2": {UnLink: "LegCuffs"}, //, ModelSuffix: "Chained"
-	"ArmCuffs": {base: true, Link: "ArmCuffs2"},
-	"ArmCuffs2": {Link: "ArmCuffs3", UnLink: "ArmCuffs"}, //, ModelSuffix: "Chained"
-	"ArmCuffs3": {UnLink: "ArmCuffs4"},
-	"ArmCuffs4": {UnLink: "ArmCuffs", Link: "ArmCuffs3"},
+	"LivingCollar": {base: true, enemyTagSuffix: "Collar", enemyTagOverride: {"livingCollar":10}},
+	"AnkleCuffs": {base: true,},// Link: "AnkleCuffs2"},
+	//"AnkleCuffs2": {Link: "AnkleCuffs3", UnLink: "AnkleCuffs"}, //, ModelSuffix: "Chained"
+	//"AnkleCuffs3": {UnLink: "AnkleCuffs2"},
+	"LegCuffs": {base: true,},// Link: "LegCuffs2"},
+	//"LegCuffs2": {UnLink: "LegCuffs"}, //, ModelSuffix: "Chained"
+	"ArmCuffs": {base: true,},// Link: "ArmCuffs2"},
+	//"ArmCuffs2": {Link: "ArmCuffs3", UnLink: "ArmCuffs"}, //, ModelSuffix: "Chained"
+	//"ArmCuffs3": {UnLink: "ArmCuffs4"},
+	//"ArmCuffs4": {UnLink: "ArmCuffs", Link: "ArmCuffs3"},
 };
 
 /**

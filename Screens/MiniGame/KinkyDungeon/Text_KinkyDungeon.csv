@@ -20364,3 +20364,23 @@ KDCrystalEncase,Crystals grow across your body and encase you!
 RestraintCrystal,Crystal Encasement
 RestraintCrystalDesc,"An overgrowth of magical crystals. Their chaotic energies flood into your mind and displace your thoughts!"
 RestraintCrystalDesc2,"Being brittle, it will eventually crack and fail. Just keep wiggling..."
+
+KDWardenMelt,The Warden's restraints release you... for now.
+
+RestraintThighLink,Thigh Chain
+RestraintThighLinkDesc,"A chain connecting your thigh cuffs together. You can still walk, albeit slower than usual."
+RestraintThighLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+
+RestraintAnkleLink,Ankle Chain
+RestraintAnkleLinkDesc,"A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual."
+RestraintAnkleLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+RestraintAnkleLinkShort,Ankle Chain (Short)
+RestraintAnkleLinkShortDesc,"A short chain connecting your ankle cuffs together. You can barely separate your legs with this on."
+RestraintAnkleLinkShortDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+
+RestraintElbowLink,Elbow Chain
+RestraintElbowLinkDesc,A very short chain connecting your elbow cuffs together. It is quite awkward to remove by yourself.
+RestraintElbowLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+RestraintWristLink,Wrist Chain
+RestraintWristLinkDesc,A very short chain connecting your wrist cuffs together.
+RestraintWristLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.

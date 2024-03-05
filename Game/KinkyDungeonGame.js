@@ -4915,6 +4915,7 @@ function KDGetItemEventCache() {
 		let set = false;
 		for (let inv of KinkyDungeonAllRestraintDynamic()) {
 			//set = false;
+			if (!KDRestraint(inv.item)) continue;
 			if (!set && KDRestraint(inv.item)?.events) {
 				for (let e of KDRestraint(inv.item)?.events) {
 					if (!KDItemEventCache.get(e.trigger)) KDItemEventCache.set(e.trigger, new Map());

@@ -20,7 +20,7 @@ let KDPlayerEffects = {
 	},
 	"Disrobe": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let RopeDresses = ["Leotard", "Bikini", "Lingerie"];
-		if (!RopeDresses.includes(KinkyDungeonCurrentDress)) {
+		if (!RopeDresses.includes(KinkyDungeonCurrentDress) && !KinkyDungeonStatsChoice.get("KeepOutfit")) {
 			KinkyDungeonSetDress(RopeDresses[Math.floor(Math.random() * RopeDresses.length)], "");
 			KinkyDungeonDressPlayer();
 			KinkyDungeonSendTextMessage(1, TextGet("KDWitchShibariDisrobe").replace("ENMY", TextGet("Name" + entity?.name)), "#ffff00", 3);
@@ -742,7 +742,7 @@ let KDPlayerEffects = {
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSpellShatterBind" + spell.name).KDReplaceOrAddDmg( dmg.string), "#ff0000", 1);
 				effect = true;
 			} else {
-				if (KinkyDungeonCurrentDress != "BlueSuit") {
+				if (KinkyDungeonCurrentDress != "BlueSuit" && !KinkyDungeonStatsChoice.get("KeepOutfit")) {
 					KinkyDungeonSetDress("BlueSuit", "Latex");
 					KinkyDungeonDressPlayer();
 					KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSpellShatterDress" + spell.name).KDReplaceOrAddDmg( dmg.string), "#ff0000", 1);
@@ -1408,7 +1408,7 @@ let KDPlayerEffects = {
 				effect = true;
 			} else {
 				let RopeDresses = ["Leotard", "Bikini", "Lingerie"];
-				if (!RopeDresses.includes(KinkyDungeonCurrentDress)) {
+				if (!RopeDresses.includes(KinkyDungeonCurrentDress) && !KinkyDungeonStatsChoice.get("KeepOutfit")) {
 					KinkyDungeonSetDress(RopeDresses[Math.floor(Math.random() * RopeDresses.length)], "");
 					KinkyDungeonDressPlayer();
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonRopeEngulfDress"), "#ff0000", 3);
@@ -1473,7 +1473,7 @@ let KDPlayerEffects = {
 				effect = true;
 			} else {
 				let RopeDresses = ["Leotard", "Bikini", "Lingerie"];
-				if (!RopeDresses.includes(KinkyDungeonCurrentDress)) {
+				if (!RopeDresses.includes(KinkyDungeonCurrentDress) && !KinkyDungeonStatsChoice.get("KeepOutfit")) {
 					KinkyDungeonSetDress(RopeDresses[Math.floor(Math.random() * RopeDresses.length)], "");
 					KinkyDungeonDressPlayer();
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonRopeEngulfDress"), "#ff0000", 3);
@@ -1509,7 +1509,7 @@ let KDPlayerEffects = {
 				effect = true;
 			} else {
 				let RopeDresses = ["GreenLeotard", "Lingerie"];
-				if (!RopeDresses.includes(KinkyDungeonCurrentDress) && KinkyDungeonCurrentDress != "Elven") {
+				if (!RopeDresses.includes(KinkyDungeonCurrentDress) && KinkyDungeonCurrentDress != "Elven" && !KinkyDungeonStatsChoice.get("KeepOutfit")) {
 					KinkyDungeonSetDress(RopeDresses[Math.floor(Math.random() * RopeDresses.length)], "");
 					KinkyDungeonDressPlayer();
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonVineEngulfDress"), "#ff0000", 3);
@@ -1573,7 +1573,7 @@ let KDPlayerEffects = {
 				effect = true;
 			} else {
 				let CharmDresses = ["Leotard", "Bikini", "Lingerie"];
-				if (!CharmDresses.includes(KinkyDungeonCurrentDress) && KinkyDungeonCurrentDress != "Prisoner") {
+				if (!CharmDresses.includes(KinkyDungeonCurrentDress) && KinkyDungeonCurrentDress != "Prisoner" && !KinkyDungeonStatsChoice.get("KeepOutfit")) {
 					KinkyDungeonSetDress(CharmDresses[Math.floor(Math.random() * CharmDresses.length)], "");
 					KinkyDungeonDressPlayer();
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCharmWrapsDress"), "#ff0000", 3);
@@ -1646,7 +1646,7 @@ let KDPlayerEffects = {
 				effect = true;
 			} else {
 				let PossibleDresses = ["Leotard", "Bikini", "Lingerie"];
-				if (!PossibleDresses.includes(KinkyDungeonCurrentDress)) {
+				if (!PossibleDresses.includes(KinkyDungeonCurrentDress) && !KinkyDungeonStatsChoice.get("KeepOutfit")) {
 					KinkyDungeonSetDress(PossibleDresses[Math.floor(Math.random() * PossibleDresses.length)], "");
 					KinkyDungeonDressPlayer();
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonTrapBindingsDress").KDReplaceOrAddDmg( dmg.string), "#ff0000", 3);

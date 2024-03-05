@@ -485,6 +485,11 @@ let KDJailOutfits = {
 			{Name: "TrapPlug4", Level: 75},
 			{Name: "HighsecLegbinder", Level: 95},
 			{Name: "TrapPlug5", Level: 100},
+
+			{Name: "WristLink", Level: 0},
+			{Name: "AnkleLink", Level: 35},
+			{Name: "ThighLink", Level: 10},
+			{Name: "ElbowLink", Level: 60},
 		],
 	},
 	"ropeRestraints": {

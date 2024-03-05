@@ -4384,6 +4384,21 @@ function KinkyDungeonLoadGame(String) {
 						let createdrestraint = KinkyDungeonGetRestraintItem(restraint.Group);
 						if (createdrestraint) createdrestraint.lock = item.lock; // Lock if applicable
 						if (createdrestraint) createdrestraint.events = item.events; // events if applicable
+						if (item.dynamicLink) {
+							let host = item;
+							let link = item.dynamicLink;
+							while (link) {
+								if (!KinkyDungeonGetRestraintByName(link.name)) {
+									//host = link; do not chjange the host
+									link = link.dynamicLink;
+									host.dynamicLink = link;
+								} else {
+									host = link;
+									link = link.dynamicLink;
+								}
+
+							}
+						}
 						KinkyDungeonInventoryAdd(item);
 					}
 				} else {

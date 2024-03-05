@@ -482,6 +482,8 @@ function KDProcessInput(type, data) {
 				KDSummonRevengeMobs(parseInt(x), parseInt(y), tile.type, slimed ? 1.5 : 1);
 
 			KDMapData.PoolUses += 1;
+
+			KinkyDungeonSendEvent("afterShrineDrink", {x: data.x, y: data.y, tile: data.tile});
 			break;
 		}
 		case "shrineBottle": {
@@ -507,6 +509,7 @@ function KDProcessInput(type, data) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/PotionDrink.ogg");
 
 			KDMapData.PoolUses += 1;
+			KinkyDungeonSendEvent("afterShrineBottle", {x: data.x, y: data.y, tile: data.tile});
 			break;
 		}
 		case "defeat":
@@ -522,7 +525,17 @@ function KDProcessInput(type, data) {
 		case "orb":
 			if (KinkyDungeonMapGet(data.x, data.y) == 'O') {
 				KDDelayedActionPrune(["Action", "World"]);
-				if (KinkyDungeonGoddessRep[data.shrine] < -45) {
+				let edata = {
+					x: data.x,
+					y: data.y,
+					shrine: data.shrine,
+					punish: KinkyDungeonGoddessRep[data.shrine] < -45,
+					inputdata: data,
+					rep: (data.Rep || data.Amount) * -10,
+				};
+
+				KinkyDungeonSendEvent("spellOrb", edata);
+				if (edata.punish) {
 					KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, "OrbGuardian", 3 + Math.floor(Math.sqrt(1 + MiniGameKinkyDungeonLevel)), 10, false, 30);
 					let tag = "";
 					switch (data.shrine) {
@@ -558,7 +571,7 @@ function KDProcessInput(type, data) {
 					}
 				}
 
-				KinkyDungeonChangeRep(data.shrine, (data.Rep || data.Amount) * -10);
+				KinkyDungeonChangeRep(data.shrine, edata.rep);
 
 				KDSendStatus('goddess', data.shrine, 'takeOrb');
 				if (KinkyDungeonStatsChoice.get("randomMode")) {
@@ -598,6 +611,7 @@ function KDProcessInput(type, data) {
 				}
 				KinkyDungeonMapSet(data.x, data.y, 'o');
 				KinkyDungeonAggroAction('orb', {});
+				KinkyDungeonSendEvent("afterSpellOrb", edata);
 			}
 			break;
 		case "perkorb":

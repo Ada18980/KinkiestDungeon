@@ -2298,7 +2298,7 @@ function KinkyDungeonBulletTrail(b) {
 						let cast = b.bullet.spell.trailcast;
 						let spell = KinkyDungeonFindSpell(cast.spell, true);
 						if (spell) {
-							KinkyDungeonCastSpell(b.x + X, b.y + Y, spell, undefined, undefined, undefined);
+							KinkyDungeonCastSpell(b.x + X, b.y + Y, spell, undefined, undefined, b);
 						}
 					}
 				}

@@ -1007,6 +1007,7 @@ let LayerGroups = {
 		"StockingRight",
 
 		"Bodysuit",
+		"BodysuitLower",
 		"Panties",
 		"Torso",
 		"TorsoUpper",

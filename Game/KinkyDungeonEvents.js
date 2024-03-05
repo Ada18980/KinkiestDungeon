@@ -141,6 +141,10 @@ function KinkyDungeonHandleInventorySelectedEvent(Event, kinkyDungeonEvent, item
 	}
 }
 
+// Brief explanation of dynamic events: Normally, events need to be declared for every case.
+// However sometimes you want multiple events to do something generic without respect to the action.
+// In this case, you can mark the event as dynamic.
+// Dynamic events only have to be declared under the .dynamic object of the event map
 
 /**
  * Function mapping
@@ -149,6 +153,15 @@ function KinkyDungeonHandleInventorySelectedEvent(Event, kinkyDungeonEvent, item
  */
 let KDEventMapInventory = {
 	"dynamic": {
+		"wardenPunish": (e, item, data) => {
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["wardenLink"]}, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				true, "Purple", undefined, undefined, undefined, undefined, undefined, {
+					allowedGroups: [KDRestraint(item)?.Group],
+				});
+			if (restraintAdd) {
+				KDPlayerEffectRestrain(undefined, 1, ["wardenLink"], item.faction, false, true, false, false);
+			}
+		},
 		"BuffSelf": (e, item, data) => {
 			if (KDCheckPrereq(null, e.prereq, e, data)) {
 				let b = {
@@ -175,6 +188,10 @@ let KDEventMapInventory = {
 			}
 		},
 	},
+	"afterShrineBottle": {},
+	"afterShrineDrink": {},
+	"spellOrb": {},
+	"afterFailGoddessQuest": {},
 	"curseCount": {
 		/**
 		 * @param {KDEventData_CurseCount} data
@@ -899,6 +916,17 @@ let KDEventMapInventory = {
 				KinkyDungeonSendEvent("CurseTransform", {curseditem: item, newRestraintTags: e.tags, trimTrigger: e.trim, msg: e.msg, ...data});
 			}
 		},
+
+		"wardenMelt": (e, item, data) => {
+			let alreadyDone = KDItemDataQuery(item, "wardenMelt") || 0;
+			if (alreadyDone < e.count) {
+				alreadyDone += e.power;
+				KDItemDataSet(item, "wardenMelt", alreadyDone);
+			} else {
+				KDRemoveThisItem(item);
+				KinkyDungeonSendTextMessage(4, TextGet("KDWardenMelt").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+			}
+		},
 		"iceMelt": (e, item, data) => {
 			let alreadyDone = KDItemDataQuery(item, "iceMelt") || 0;
 			if (alreadyDone < e.count) {
@@ -1181,7 +1209,7 @@ let KDEventMapInventory = {
 			if (!KinkyDungeonFlags.get("GuardCallBlock")) {
 				// Wont call a guard in first 45 turns
 				KinkyDungeonSetFlag("GuardCallBlock", 400);
-				KinkyDungeonSetFlag("GuardCalled", 45);
+				KinkyDungeonSetFlag("GuardCalled", e.time || 45);
 			}
 			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < (e.chance ? e.chance : 0.05)) {
 				KinkyDungeonSetFlag("GuardCalled", 45);
@@ -1606,10 +1634,10 @@ let KDEventMapInventory = {
 			if (data.type && data.type == e.damage && data.dmg) {
 				let subMult = 1;
 				let chance = e.chance ? e.chance : 1.0;
-				if (item && KDRestraint(item).Link && KDRandom() < chance * subMult) {
+				if (item && (e.restraint || KDRestraint(item).Link) && KDRandom() < chance * subMult) {
 					let prereq = KDEventPrereq(e.requiredTag);
 					if (prereq) {
-						let newRestraint = KinkyDungeonGetRestraintByName(KDRestraint(item).Link);
+						let newRestraint = KinkyDungeonGetRestraintByName(e.restraint || KDRestraint(item).Link);
 						//KinkyDungeonLinkItem(newRestraint, item, item.tightness, "");
 						if (
 							KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true)) {
@@ -1740,8 +1768,8 @@ let KDEventMapInventory = {
 	},
 	"defeat": {
 		"linkItem": (e, item, data) => {
-			if (item && KDRestraint(item).Link && (KDRandom() < e.chance)) {
-				let newRestraint = KinkyDungeonGetRestraintByName(KDRestraint(item).Link);
+			if (item && (e.restraint || KDRestraint(item).Link) && (KDRandom() < e.chance)) {
+				let newRestraint = KinkyDungeonGetRestraintByName(e.restraint || KDRestraint(item).Link);
 				KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true);
 				//KinkyDungeonLinkItem(newRestraint, item, item.tightness, "");
 			}
@@ -2122,7 +2150,7 @@ let KDEventMapInventory = {
 				return;
 			}
 
-			const newRestraint = KinkyDungeonGetRestraintByName(KDRestraint(item).Link);
+			const newRestraint = KinkyDungeonGetRestraintByName(e.restraint || KDRestraint(item).Link);
 			if (e.sfx) KinkyDungeonPlaySound(`${KinkyDungeonRootDirectory}/Audio/${e.sfx}.ogg`);
 
 			KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true, undefined, undefined, undefined);

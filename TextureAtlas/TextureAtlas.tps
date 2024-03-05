@@ -546,6 +546,8 @@
             <key type="filename">../Models/Corsets/HeavyCorset.png</key>
             <key type="filename">../Models/Corsets/HeavyCorsetKneel.png</key>
             <key type="filename">../Models/Corsets/StrapsHeavyCorset.png</key>
+            <key type="filename">../Models/Crystal/EncaseOver.png</key>
+            <key type="filename">../Models/Crystal/EncaseUnder.png</key>
             <key type="filename">../Models/Cuffs/AnkleLeftClosed.png</key>
             <key type="filename">../Models/Cuffs/AnkleLeftKneel.png</key>
             <key type="filename">../Models/Cuffs/AnkleLeftKneelClosed.png</key>
