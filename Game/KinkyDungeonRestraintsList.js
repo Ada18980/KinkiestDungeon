@@ -1291,11 +1291,6 @@ const KinkyDungeonRestraints = [
 			Torso: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1.9666666666666666,"blue":1,"alpha":0.48333333333333334},
 			TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1.9666666666666666,"blue":1,"alpha":0.48333333333333334},
 		},
-		alwaysDress: [
-			{Item: "SeethroughSuit", Group: "Suit", Color: ['#63ab3f'], override: true, factionColor: [[0]]},
-			{Item: "SeethroughSuit", Group: "SuitLower", Color: ['#63ab3f'], override: true, factionColor: [[0]]},
-			{Item: "SeethroughSuit", Group: "Gloves", Color: ['#63ab3f'], override: true, factionColor: [[0]]}],
-
 		events: [
 			//{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
 			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true},
@@ -3712,6 +3707,26 @@ const KinkyDungeonRestraints = [
 
 	//region ShadowLatex
 
+	{removePrison: true, name: "ShadowBallSuit", Asset: "VacCube", Color: ["#88aaff"], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true,
+		Model: "BallSuit",
+		bindarms: true,
+		restriction: 30,
+		addTag: ["ForceKneel", "NoHogtie"],
+		failSuffix: {Remove: "Bubble", Struggle: "Bubble", Cut: "Bubble"},
+		escapeChance: {"Struggle": -0.3, "Cut": 0.5, "Remove": -.5},
+		helpChance: {"Struggle": -0.3, "Pick": 1.0, "Remove": -.5},
+		affinity: {
+			Struggle: ["Sharp"],
+			Remove: ["Sharp"],
+		},
+		Filters: {"BallSuit":{"gamma":0.5,"saturation":1.2166666666666668,"contrast":0.7166666666666667,"brightness":1.0833333333333335,"red":0.6333333333333334,"green":0.16666666666666666,"blue":0.65,"alpha":0.9333333333333333}},
+		events: [
+			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
+			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.2, sfx: "RubberBolt", inheritLinked: true},
+		],
+		enemyTags: {"shadowBall":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "ShadowLatex", "BallSuit"], removeOnLeash: true,
+	},
+
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexHeels", inaccessible: true, Asset: "FuturisticHeels2", remove: ["Shoes"],
 		Model: "BalletHeelsRestraint",
 		Filters: {
@@ -3970,6 +3985,34 @@ const KinkyDungeonRestraints = [
 		]},
 
 	//endregion
+
+	{renderWhenLinked: ["Corsets", "Harnesses", ...KDBindable, "Latex", "Leather", "Metal", "Rope"], name: "IceCrystal",
+		inaccessible: true, factionColor: [[0]], Asset: "TransparentCatsuit", AssetGroup: "Suit", Color: ["#3873C3"],
+		Group: "ItemDevices", power: 10, weight: 0, escapeChance: {"Struggle": -0.4, "Cut": -0.8, "Remove": -100},
+		enemyTags: {iceEncase: 100},
+		bindhands: 1.0,
+		bindarms: true,
+		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "IceEncase", "BlockKneel", "FeetLinked", "HandsBehind"], ignoreSpells: true, removeOnLeash: true, immobile: true,
+		alwaysEscapable: ["Struggle"],
+		struggleMinSpeed: {
+			Struggle: 0.01,
+		},
+		struggleMaxSpeed: {
+			Struggle: 0.2,
+		},
+		limitChance: {
+			Struggle: -0.01,
+		},
+		Model: "LatexCube",
+		Filters:{"LatexCube":{"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":2.4333333333333336,"alpha":1},"LatexCubeBack":{"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":0.41666666666666663,"green":3.25,"blue":2.2333333333333334,"alpha":1}},
+		events: [
+			//{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
+			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true},
+			{trigger: "tick", type: "iceDrain", power: -0.025, inheritLinked: true},
+			{trigger: "tick", type: "iceMelt", power: 0.1, count: 13, inheritLinked: true},
+			{trigger: "afterPlayerDamage", type: "iceMelt", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
+		]
+	},
 
 	{unlimited: true, removePrison: true, name: "IceArms", debris: "Ice", sfx: "Freeze", Asset: "Ribbons", LinkableBy: ["Armbinders", "Wrapping", "Encase",], Type: "Heavy", Color: "#5DA9E5", Group: "ItemArms", bindarms: true, power: 4, weight: 0, magic: true, escapeChance: {"Struggle": 0.15, "Cut": 0.05, "Remove": 0}, enemyTags: {"iceRestraints":4}, playerTags: {"ItemArmsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Ties", "Ice", "Elements"],
 		Model: "RibbonBoxtie2",
@@ -4458,6 +4501,33 @@ const KinkyDungeonRestraints = [
 	//endregion
 
 	//region VinePlant
+
+
+	{renderWhenLinked: ["Corsets", "Harnesses", ...KDBindable, "Latex", "Leather", "Metal", "Rope"], name: "VineSuspension",
+		inaccessible: true,
+		factionColor: [[0]], Asset: "TransparentCatsuit", AssetGroup: "Suit", Color: ["#3873C3"],
+		Group: "ItemDevices", power: 10, weight: 0, escapeChance: {"Struggle": -0.1, "Cut": 1.0, "Remove": -0.3},
+		enemyTags: {vineSuspend: 100},
+		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "VineSuspend", "BlockKneel"], ignoreSpells: true, removeOnLeash: true, immobile: true,
+		alwaysEscapable: ["Struggle"],
+		struggleMinSpeed: {
+			Struggle: 0.01,
+		},
+		struggleMaxSpeed: {
+			Struggle: 0.4,
+		},
+		limitChance: {
+			Struggle: -0.01,
+		},
+		Model: "RopeSuspension",
+		Filters: {
+			Rope: {"gamma":1,"saturation":1,"contrast":1.85,"brightness":1,"red":1,"green":2.8833333333333333,"blue":1.6833333333333333,"alpha":1},
+		},
+		events: [
+			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true},
+		]
+	},
+
 	{unlimited: true, removePrison: true, name: "VinePlantArms", accessible: true, Asset: "NylonRope", Color: ["#006722", "#006722"], Group: "ItemArms", debris: "Vines",
 		affinity: {Remove: ["Hook"],},
 		Model: "RopeBoxtie3",

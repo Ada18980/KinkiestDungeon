@@ -988,6 +988,57 @@ let KDPlayerEffects = {
 
 		return {sfx: "Freeze", effect: effect};
 	},
+	"IceEncase": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let effect = false;
+		let restraintAdd = KinkyDungeonGetRestraint({tags: ["iceRestraints"]}, MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+		if (!restraintAdd) {
+			restraintAdd = KinkyDungeonGetRestraint({tags: ["iceEncase"]}, MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+
+			if (restraintAdd) {
+				KDPlayerEffectRestrain(spell, 1, ["iceEncase"], faction, false, false, false, false);
+				KDSendStatus('bound', restraintAdd.name, "spell_ice");
+				KinkyDungeonSendTextMessage(5, TextGet("KDIceEncase"), "#ff0000", 3);
+				effect = true;
+			}
+
+		}
+
+		return {sfx: "Freeze", effect: effect};
+	},
+	"ShadowEncase": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let effect = false;
+		let restraintAdd = KinkyDungeonGetRestraint({tags: ["shadowlatexRestraints"]}, MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+		if (!restraintAdd) {
+			restraintAdd = KinkyDungeonGetRestraint({tags: ["shadowBall"]}, MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+
+			if (restraintAdd) {
+				KDPlayerEffectRestrain(spell, 1, ["shadowBall"], faction, false, false, false, false);
+				KDSendStatus('bound', restraintAdd.name, "spell_shadowBall");
+				KinkyDungeonSendTextMessage(5, TextGet("KDShadowEncase"), "#ff0000", 3);
+				effect = true;
+			}
+
+		}
+
+		return {sfx: "Freeze", effect: effect};
+	},
+	"VineSuspend": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let effect = false;
+		let restraintAdd = KinkyDungeonGetRestraint({tags: ["vineRestraints"]}, MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+		if (!restraintAdd) {
+			restraintAdd = KinkyDungeonGetRestraint({tags: ["vineSuspend"]}, MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+
+			if (restraintAdd) {
+				KDPlayerEffectRestrain(spell, 1, ["vineSuspend"], faction, false, false, false, false);
+				KDSendStatus('bound', restraintAdd.name, "spell_vine");
+				KinkyDungeonSendTextMessage(5, TextGet("KDVineSuspend"), "#ff0000", 3);
+				effect = true;
+			}
+
+		}
+
+		return {sfx: "Freeze", effect: effect};
+	},
 	"CoronaShock": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
 		if (KDTestSpellHits(spell, 0.0, 0.5)) {
@@ -1232,11 +1283,51 @@ let KDPlayerEffects = {
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
-		KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness, 6
+		KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness, (playerEffect.amount || 6)
 			* KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2));
 		KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSpores").KDReplaceOrAddDmg( dmg.string), "#a583ff", 2);
 		return {sfx: "Damage", effect: effect};
 	},
+
+	"PoisonBreath": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let effect = false;
+		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+		if (!dmg.happened) return{sfx: "Shield", effect: false};
+		KinkyDungeonSendTextMessage(6, TextGet("KDPoisonBreath").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+		// TODO make this get more intense over time
+		let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "PoisonBreath", aura: "#22ff44", type: "SleepinessPoison", power: currentPoison + playerEffect.amount,
+			duration: playerEffect.time, player: true, enemies: false, tags: ["sleep", "poison"], range: 1.5});
+
+		return {sfx: "Damage", effect: effect};
+	},
+
+	"DragonFlowerSpores": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let effect = false;
+		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+		if (!dmg.happened) return{sfx: "Shield", effect: false};
+		KinkyDungeonSendTextMessage(6, TextGet("KDDragonFlowerSpores").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+		// TODO make this get more intense over time
+		let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "PoisonBreath", aura: "#22ff44", type: "SleepinessPoison", power: currentPoison + playerEffect.amount,
+			duration: playerEffect.time, player: true, enemies: false, tags: ["sleep", "poison"], range: 1.5});
+
+		return {sfx: "Damage", effect: effect};
+	},
+
+	"PoisonSlash": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let effect = false;
+		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+		if (!dmg.happened) return{sfx: "Shield", effect: false};
+		KinkyDungeonSendTextMessage(6, TextGet("KDPoisonSlash").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+		// TODO make this get more intense over time
+		let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "PoisonBreath", aura: "#22ff44", type: "SleepinessPoison", power: currentPoison + playerEffect.amount,
+			duration: playerEffect.time, player: true, enemies: false, tags: ["sleep", "poison"], range: 1.5});
+
+		return {sfx: "Damage", effect: effect};
+	},
+
 
 	"SlimeTrap": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;

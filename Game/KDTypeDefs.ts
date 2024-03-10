@@ -2080,6 +2080,8 @@ interface spell {
 	noSumMsg?: boolean;
 	/** Targeted like a bolt, showing the aim line */
 	projectileTargeting?: boolean;
+	/** Adds additional distance on the cast when targeted by an enemy */
+	extraDist?: number
 	/** CastInWalls */
 	CastInWalls?: boolean;
 	/** Allows casting into fog of war */

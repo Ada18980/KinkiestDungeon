@@ -24,6 +24,7 @@ let DisplacementMaps = [
 'ThighCuffsRightSpread.png',
 'CrystalErase.png',
 'Xray.png',
+'BallSuit.png',
 'Bubble.png',
 'Bubble2.png',
 'BustHuge.png',

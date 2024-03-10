@@ -202,6 +202,20 @@ let KinkyDungeonEnemies = [
 		},
 		terrainTags: {}, floors:KDMapInit([])},
 
+	{name: "IceWall", tags: KDMapInit(["construct", "poisonmmune", "soulimmune", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile", "fireweakness", "iceimmune"]),
+		faction: "Natural", immobile: true, spellResist: 0, lowpriority: true, evasion: -100, armor: 1, followRange: 100, AI: "wander", regen: -0.5,
+		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
+		cueSfx: {
+			Block: "Clang",
+			Resist: "Clang",
+			Damage: "ArmorHit",
+		},
+		Sound: {
+			baseAmount: 0,
+			moveAmount: 0,
+		},
+		terrainTags: {}, floors:KDMapInit([])},
+
 	{name: "OneBar", tags: KDMapInit(["construct", "poisonmmune", "soulimmune", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile"]),
 		immobile: true, spellResist: 0, lowpriority: true, evasion: -100, armor: 3, followRange: 100, AI: "wander",
 		visionRadius: 0, maxhp: 4, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
@@ -1237,8 +1251,36 @@ let KinkyDungeonEnemies = [
 		stamina: 3,
 		visionRadius: 5, ambushRadius: 2.5, blindSight: 5, maxhp: 10, minLevel:0, weight:25, movePoints: 1.8, attackPoints: 2, attack: "SpellMeleeBind", attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 3,
 		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
+	{name: "DragonVinePlant", faction: "Plant", clusterWith: "plant", color: "#00FF00", blockVisionWhileStationary: true,
+		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "elite", "melee", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
+		ignorechance: 1.0, armor: 0, followRange: 4, AI: "ambush", guardChance: 0,
+		ondeath: [{type: "spellOnSelf", spell: "Entangle"}],
+		evasion: -0.5,
+		GFX: {
+			lighting: true,
+			AmbushSprite: "VinePlant",
+		},
+		spells: ["DragonVine"], castWhileMoving: true, spellRdy: false, spellCooldownMult: 1, spellCooldownMod: 3, projectileAttack: true,
+		maxblock: 0,
+		maxdodge: 0,
+		stamina: 2,
+		visionRadius: 5, ambushRadius: 2.5, blindSight: 5, maxhp: 13, minLevel: 5, weight:25, movePoints: 2.3, attackPoints: 3, attack: "SpellMeleeBind", multiBind: 2,
+		attackWidth: 3, attackRange: 1, power: 3, dmgType: "crush", fullBoundBonus: 3,
+		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
+	{name: "DragonFlower", faction: "Plant", clusterWith: "plant", color: "#00FF00",
+		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "melee", "minor", "scenery", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
+		ignorechance: 1.0, armor: 0, followRange: 1.5, AI: "guard", guardChance: 1,
+		ondeath: [{type: "spellOnSelf", spell: "DragonFlowerSpores"}],
+		evasion: -2,
+		spells: ["DragonFlowerSpores"], castWhileMoving: true, spellRdy: false, spellCooldownMult: 1, spellCooldownMod: 3, projectileAttack: true,
+		maxblock: 0,
+		maxdodge: 0,
+		stamina: 2,
+		visionRadius: 5, ambushRadius: 2.5, blindSight: 5, maxhp: 1, minLevel: 5, weight:25, movePoints: 4, attackPoints: 3, attack: "Spell", multiBind: 2,
+		attackWidth: 3, attackRange: 1, power: 3, dmgType: "crush", fullBoundBonus: 3,
+		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
 
-	{name: "VinePlant", faction: "Plant", clusterWith: "plant", color: "#00FF00", blockVisionWhileStationary: true, tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "minor", "melee", "glueresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
+	{name: "VinePlant", faction: "Plant", clusterWith: "plant", color: "#00FF00", blockVisionWhileStationary: true, tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "minor", "melee", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
 		ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", specialCD: 99, specialAttack: "Stun", specialAttackPoints: 1, specialRemove: "Bind", difficulty: 0.05, guardChance: 0,
 		evasion: -0.5,
 		GFX: {
@@ -2782,9 +2824,88 @@ let KinkyDungeonEnemies = [
 			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#00ff00"},
 		],},
 
+
+	{name: "DragonQueenPoison", color: "#c8d45d",
+		faction: "DragonQueen",
+		tags: KDMapInit(["opendoors", "boss", "vineRestraints", "dragonqueen", "slashweakness", "meleeresist", "fireresist", "poisonresist", "melee", "beast", "search", "nature"]), cohesion: 0.1,
+		GFX: {
+			spriteHeight: 144,
+			spriteWidth: 144,
+		},
+		projectileTargeting: true, projectileAttack: true,
+		castWhileMoving: true,
+
+		dontKiteWhenDisabled: true,
+
+		evasion: -1, disarm: 0.2,
+		stamina: 12, sprintspeed: 2.0,
+		preferBlock: true, maxdodge: 0,
+		maxblock: 1,
+		followLeashedOnly: true, ignorechance: 0, followRange: 1, AI: "hunt", guardChance: 0.0, kite: 1.5,
+		kiteChance: 0.5, // doesnt always kite-- usually turns around to use Breath
+		Sound: {
+			moveAmount: 12,
+			attackAmount: 20,
+		},
+		Awareness: {
+			chaseradius: 25,
+			hearingMult: 1.5,
+			vision: 1.5,
+			senseSpeed: 1.1,
+			hearingRadius: 12,
+		},
+		startBuffs: [
+			{
+				id: "DragonQueenCritArmor",
+				power: 1,
+				type: "ToughArmor",
+				duration: 9999, infinite: true,
+				aura: "#ffffff",
+				currentCount: 0, maxCount: 3, tags: ["defense", "crit"],
+			}
+		],
+		Resistance: {
+			block_magic: 3.0,
+		},
+		effect: {
+			effect: {name: "VineSuspend"},
+		},
+		ignoreflag: ["VineSuspend"],
+		spells: ["SummonDragonVinePlant", "PoisonBreath"],  spellCooldownMult: 1, spellCooldownMod: -1,
+		visionRadius: 7, blindSight: 2.5, maxhp: 40, armor: 3, minLevel:12, weight:2.5, movePoints: 3, attackPoints: 2, attack: "SpellMeleeWillBindEffect",
+		attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 5, dmgType: "slash",
+		events: [
+			//{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Nevermere", "Bountyhunter", "Elf"]},
+		],
+		terrainTags: {"nature": 4, "lair": -100, "dragonqueen": 50}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
+		ondeath: [{type: "summon", enemy: "DragonGirlPoison", range: 0.5, count: 1, strict: false}],
+		dropTable: [{name: "Gold", amountMin: 200, amountMax: 300, weight: 15}]},
+
+	{name: "DragonGirlPoison", nameList: "dragonheart", outfit: "DragonPoison", style: "Water", faction: "DragonQueen", clusterWith: "beast",
+		bound: "DragonPoison", color: "#8d3fab",
+		tags: KDMapInit(["opendoors", "poison", "nature", "dragonqueen", "human", "melee", "boss", "vineRestraints",
+			"poisonresist", "fireresist", "chainweakness"]), cohesion: 0.75,
+		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenPoison", range: 4, loose: true, aggressive: true},
+		spells: ["SummonDragonFlower", "DragonSlash"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, spellRdy: true,
+
+		effect: {
+			effect: {name: "VineSuspend"},
+		},
+		ignoreflag: ["VineSuspend"],
+		noKiteWhenHarmless: true,
+		dontKiteWhenDisabled: true,
+		kite: 2.5,
+		visionRadius: 9, maxhp: 30, minLevel:0, weight:-1000, movePoints: 1.4, attackPoints: 3, attack: "SpellMeleeBindLockWillEffect", multiBind: 2,
+		stunTime: 1, attackWidth: 2.5, attackRange: 1, power: 4.5, dmgType: "slash", fullBoundBonus: 2,
+		terrainTags: {}, shrines: ["Leather", "Will"], floors: {},
+		attackLock: "Purple", maxdodge: 0,
+		stamina: 7,
+		preferBlock: true,
+		dropTable: [{name: "WaterRune", weight: 3}]},
+
 	{name: "DragonQueenCrystal", color: "#92e8c0",
 		faction: "DragonQueen",
-		tags: KDMapInit(["opendoors", "boss", "leashing", "dragonqueen",  "melee", "beast", "search", "crystalline"]), cohesion: 0.1,
+		tags: KDMapInit(["opendoors", "boss", "dragonqueen", "pierceweakness", "meleeresist", "electricresist", "fireresist", "melee", "beast", "search", "crystalline"]), cohesion: 0.1,
 		GFX: {
 			spriteHeight: 144,
 			spriteWidth: 144,
@@ -2826,21 +2947,22 @@ let KinkyDungeonEnemies = [
 		effect: {
 			effect: {name: "CrystalEncase"},
 		},
+		events: [
+			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff44aa"},
+		],
 		ignoreflag: ["CrystalEncase"],
 		spells: ["CrystalBolt", "CrystalSlash"],  spellCooldownMult: 1, spellCooldownMod: -1,
 		visionRadius: 7, blindSight: 2.5, maxhp: 40, armor: 3, minLevel:12, weight:2.5, movePoints: 3, attackPoints: 2, attack: "SpellMeleeWillEffect",
 		attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 5, dmgType: "slash",
-		events: [
-			//{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Nevermere", "Bountyhunter", "Elf"]},
-		],
+
 		terrainTags: {"crystalline": 4, "lair": -100, "dragonqueen": 50}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
 		ondeath: [{type: "summon", enemy: "DragonGirlCrystal", range: 0.5, count: 1, strict: false}],
 		dropTable: [{name: "Gold", amountMin: 200, amountMax: 300, weight: 15}]},
 
 	{name: "DragonGirlCrystal", nameList: "dragonheart", outfit: "DragonCrystal", style: "Water", faction: "DragonQueen", clusterWith: "beast",
 		bound: "DragonCrystal", color: "#ff5277",
-		tags: KDMapInit(["opendoors", "chaos", "crystal", "leashing", "dragonqueen", "human", "melee", "boss", "crystalRestraints",
-			"pierceweakness", "electricresist", "crushweakness", "fireresist"]), cohesion: 0.75,
+		tags: KDMapInit(["opendoors", "chaos", "crystal", "dragonqueen", "human", "melee", "boss", "crystalRestraints",
+			"electricresist", "fireresist", "chainweakness"]), cohesion: 0.75,
 		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenCrystal", range: 4, loose: true, aggressive: true},
 		spells: ["CrystalShockBolt", "CrystalSlash", "CrystalBoltSingle"], spellCooldownMult: 1, spellCooldownMod: 2, castWhileMoving: true, spellRdy: true,
 		events: [
@@ -2860,6 +2982,99 @@ let KinkyDungeonEnemies = [
 		stamina: 7,
 		preferBlock: true,
 		dropTable: [{name: "EarthRune", weight: 3}]},
+
+
+	{name: "DragonQueenIce", color: "#92e8c0",
+		faction: "DragonQueen",
+		tags: KDMapInit(["opendoors", "ice", "boss", "iceRestraints", "dragonqueen", "crushweakness", "meleeresist", "acidresist", "fireresist", "iceresist", "melee", "beast", "search", "nature"]), cohesion: 0.1,
+		GFX: {
+			spriteHeight: 144,
+			spriteWidth: 144,
+		},
+		projectileAttack: true,
+		castWhileMoving: true,
+
+		dontKiteWhenDisabled: true,
+
+		evasion: -1, disarm: 0.2,
+		stamina: 12, sprintspeed: 2.0,
+		preferBlock: true, maxdodge: 0,
+		maxblock: 1,
+		followLeashedOnly: true, ignorechance: 0, followRange: 1, AI: "hunt", guardChance: 0.0, kite: 1.5,
+		kiteChance: 0.5, // doesnt always kite-- usually turns around to use Breath
+		Sound: {
+			moveAmount: 12,
+			attackAmount: 20,
+		},
+		Awareness: {
+			chaseradius: 25,
+			hearingMult: 1.5,
+			vision: 1.5,
+			senseSpeed: 1.1,
+			hearingRadius: 12,
+		},
+		startBuffs: [
+			{
+				id: "DragonQueenCritArmor",
+				power: 1,
+				type: "ToughArmor",
+				duration: 9999, infinite: true,
+				aura: "#ffffff",
+				currentCount: 0, maxCount: 3, tags: ["defense", "crit"],
+			}
+		],
+		Resistance: {
+			block_magic: 3.0,
+		},
+		effect: {
+			effect: {name: "IceEncase"},
+		},
+		ignoreflag: ["IceEncase"],
+
+		Magic: {
+			priority: {
+				SummonIceWall: 9,
+				SummonIceWall2: 10,
+			},
+		},
+		spells: ["SummonIceWall", "SummonIceWall2", "IceBreathChannel", "DragonIceBolt"],  spellCooldownMult: 1, spellCooldownMod: 0,
+		visionRadius: 7, blindSight: 2.5, maxhp: 40, armor: 3, minLevel:12, weight:2.5, movePoints: 4, attackPoints: 2, attack: "SpellMeleeWillBindEffect",
+		attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 5, dmgType: "crush",
+		events: [
+			//{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Nevermere", "Bountyhunter", "Elf"]},
+		],
+		terrainTags: {"ice": 4, "lair": -100, "dragonqueen": 50}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
+		ondeath: [{type: "summon", enemy: "DragonGirlIce", range: 0.5, count: 1, strict: false}],
+		dropTable: [{name: "Gold", amountMin: 200, amountMax: 300, weight: 15}]},
+
+
+	{name: "DragonGirlIce", nameList: "dragonheart", outfit: "DragonIce", style: "Water", faction: "DragonQueen", clusterWith: "beast",
+		bound: "DragonIce", color: "#92e8c0",
+		tags: KDMapInit(["opendoors", "water", "ice", "dragonqueen", "human", "melee", "boss", "iceRestraints",
+			"acidresist", "fireresist", "chainweakness"]), cohesion: 0.75,
+		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenCrystal", range: 4, loose: true, aggressive: true},
+		spells: [ "IceBreathChannel", "DragonIceBolt", "EnemyWinterblast"], spellCooldownMult: 1, spellCooldownMod: 2, castWhileMoving: true, spellRdy: true,
+
+		effect: {
+			effect: {name: "IceEncase"},
+		},
+		Magic: {
+			priority: {
+				EnemyWinterblast: 10,
+			},
+		},
+		ignoreflag: ["IceEncase"],
+		noKiteWhenHarmless: true,
+		dontKiteWhenDisabled: true,
+		kite: 2.5,
+		visionRadius: 9, maxhp: 30, minLevel:0, weight:-1000, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeBindLockWillEffect",
+		stunTime: 1, attackWidth: 1, attackRange: 1, power: 4.5, dmgType: "crush", fullBoundBonus: 2,
+		terrainTags: {}, shrines: ["Leather", "Elements"], floors: {},
+		attackLock: "Purple", maxdodge: 0,
+		stamina: 7,
+		preferBlock: true,
+		dropTable: [{name: "IceRune", weight: 3}]},
+
 
 
 
@@ -2904,7 +3119,8 @@ let KinkyDungeonEnemies = [
 		stamina: 5,
 		terrainTags: {"secondhalf":2, "thirdhalf":2, "dragon": 16, "ice": 4}, shrines: ["Leather", "Elements"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 12}, {name: "IceRune", weight: 3}, {name: "IceBreaker", weight: 0.1, ignoreInInventory: true}]},
-	{name: "DragonPoison", nameList: "dragonheart", outfit: "DragonPoison", style: "GreenHair", faction: "Dragon", clusterWith: "dragon", bound: "DragonPoison", color: "#44ff77", tags: KDMapInit(["opendoors", "nature", "leashing", "imprisonable", "dragon", "melee", "elite", "dragonRestraints", "handcuffer", "leatherRestraints", "unflinching", "fireresist", "jail", "jailer", "hunter"]), cohesion: 0.75,
+	{name: "DragonPoison", nameList: "dragonheart", outfit: "DragonPoison", style: "GreenHair", faction: "Dragon", clusterWith: "dragon", bound: "DragonPoison", color: "#44ff77",
+		tags: KDMapInit(["opendoors", "nature", "leashing", "imprisonable", "dragon", "melee", "elite", "dragonRestraints", "handcuffer", "leatherRestraints", "unflinching", "fireresist", "jail", "jailer", "hunter"]), cohesion: 0.75,
 		followLeashedOnly: true, ignorechance: 0, armor: 0.5, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonLeader", range: 4, loose: true, aggressive: true},
 		spells: ["PoisonDragonBlast", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 90, spellCooldownMult: 1, spellCooldownMod: -1, tilesMinRange: 2, stopToCast: true, spellRdy: true,
 		visionRadius: 7, maxhp: 11, minLevel:6, weight:-2, movePoints: 3, attackPoints: 4, attack: "SpellMeleeStunWillLock", stunTime: 1, attackWidth: 3, attackRange: 2, power: 3, dmgType: "grope", fullBoundBonus: 2,
@@ -2913,7 +3129,9 @@ let KinkyDungeonEnemies = [
 		stamina: 5,
 		preferBlock: true, maxdodge: 0,
 		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 12}, {name: "Pick", weight: 4}, {name: "PotionStamina", weight: 3}]},
-	{name: "DragonCrystal", nameList: "dragonheart", outfit: "DragonCrystal", style: "Water", faction: "Dragon", clusterWith: "dragon", bound: "DragonCrystal", color: "#ff00aa", tags: KDMapInit(["opendoors", "chaos", "crystal", "leashing", "dragon", "melee", "elite", "dragonRestraints", "handcuffer", "leatherRestraints", "leatherRestraintsHeavy", "pierceweakness", "electricresist", "crushweakness", "fireresist", "jail", "jailer", "hunter"]), cohesion: 0.75,
+	{name: "DragonCrystal", nameList: "dragonheart", outfit: "DragonCrystal", style: "Water", faction: "Dragon", clusterWith: "dragon", bound: "DragonCrystal", color: "#ff00aa",
+		tags: KDMapInit(["opendoors", "chaos", "crystal", "leashing", "dragon", "melee", "elite", "dragonRestraints", "handcuffer", "leatherRestraints", "leatherRestraintsHeavy",
+			"pierceweakness", "electricresist", "crushweakness", "fireresist", "jail", "jailer", "hunter"]), cohesion: 0.75,
 		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonLeader", range: 4, loose: true, aggressive: true},
 		spells: ["SummonCrystals"], spellCooldownMult: 1, spellCooldownMod: 2, castWhileMoving: true, spellRdy: true,
 		events: [

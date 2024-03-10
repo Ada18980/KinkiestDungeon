@@ -95,6 +95,8 @@ interface ModelLayer extends Namable {
     Name: string,
     /** Layer for priority sorting */
     Layer: string,
+    /** Custom override for folder */
+    Folder?: string,
     /** Priority offset, -499 to 500 */
     Pri?: number,
     /** Name of the sprite PNG, same as the name by default*/

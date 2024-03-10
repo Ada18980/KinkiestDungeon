@@ -12,7 +12,46 @@ let KDMusicLoopTracksChance = {
 	"AREA8-ORRERY.ogg": 0.7,
 	"AREA9-BELLOWS.ogg": 0.5,
 	"Shopping.ogg": 0.15,
+	"slimy_science_1.ogg": 0.15,
 };
+
+let KDMusicUpdateTime = 0;
+let KDMusicUpdateDuration = 5000;
+let KDMusicY = 0;
+let KDMusicYMax = 50;
+let KDMusicYSpeed = 0.15;
+let KDMusicToast = "";
+
+function KDSendMusicToast(song) {
+	KDMusicToast = song;
+	KDMusicUpdateTime = CommonTime();
+}
+
+function KDDrawMusic(delta) {
+	if (CommonTime() - KDMusicUpdateTime < KDMusicUpdateDuration) {
+		if (KDMusicY < KDMusicYMax) {
+			KDMusicY = Math.max(0, Math.min(KDMusicY + delta*KDMusicYSpeed, KDMusicYMax));
+		}
+	} else {
+		if (KDMusicY > 0) {
+			KDMusicY = Math.max(0, Math.min(KDMusicY - delta*KDMusicYSpeed, KDMusicYMax));
+		}
+	}
+	if (KDMusicY > 0) {
+		FillRectKD(
+			kdcanvas, kdpixisprites, "musictoast", {
+				Left: 500,
+				Top: KDMusicY - KDMusicYMax,
+				Width: 1000,
+				Height: KDMusicYMax,
+				Color: "#000000",
+				alpha: 0.5,
+				zIndex: 55,
+			}
+		);
+		DrawTextFitKD(TextGet(KDMusicToast), 1000, KDMusicY - KDMusicYMax/2, 1000, "#ffffff", "#000000", 32);
+	}
+}
 
 let KDCurrentSong = "";
 let KDNewSong = "GENERIC-DOLLRACK.ogg";
@@ -30,7 +69,7 @@ function KDGetCurrentCheckpoint() {
 	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
 	return altType?.skin ? altType.skin : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
 }
-function KDGetCheckpoint() {
+function KDGetMusicCheckpoint() {
 	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
 	if (altType?.musicParams) return altType.musicParams;
 	if (altType?.skin && !altType.useDefaultMusic) return altType.skin;
@@ -43,7 +82,7 @@ function KDUpdateMusic() {
 
 	if (KDPatched) {
 		KDCurrentMusicSoundUpdate = false;
-		let KDMusic = KinkyDungeonMapParams[KDGetCheckpoint()].music;
+		let KDMusic = KinkyDungeonMapParams[KDGetMusicCheckpoint()].music;
 
 		if (!KDNewSong) {
 			let iter = 0;
@@ -122,6 +161,7 @@ function KDPlayMusic(Sound, Volume) {
 
 	KDLastSong = Sound;
 	KDCurrentSong = Sound;
+	KDSendMusicToast(Sound);
 	KDNewSong = "";
 }
 

@@ -67,6 +67,7 @@ AddModel({
 		},
 	])
 });
+
 AddModel({
 	Name: "LatexSphere",
 	Folder: "Bubble",
@@ -92,6 +93,24 @@ AddModel({
 			OffsetY: 350,
 			NoErase: true,
 			EraseSprite: "Bubble2",
+			EraseLayers: ToMap(["Bubble"]),
+		},
+	])
+});
+
+AddModel({
+	Name: "BallSuit",
+	Folder: "Bubble",
+	TopLevel: true,
+	Group: "Devices",
+	Restraint: true,
+	Categories: ["Restraints","Furniture", "Latex"],
+	AddPose: ["UprightHogtie", "ForceHogtie"],
+	Layers: ToLayerMap([
+		{ Name: "BallSuit", Layer: "FurnitureFront", Pri: 20.5,
+			Invariant: true,
+			OffsetY: 350,
+			EraseSprite: "BallSuit",
 			EraseLayers: ToMap(["Bubble"]),
 		},
 	])

@@ -2084,6 +2084,8 @@ let KinkyDungeonSpellListEnemies = [
 		trailHit: "", trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1, playerEffect: {name: "MysticShock", time: 3}},
 
 
+
+
 	{name: "ArrowNormal", tags: ["arrowreplace"], color: "#88ff88", sfx: "Arrow", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
 		faction: "Player",
 		staminacost: 2,
@@ -2455,9 +2457,12 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "NurseSyringe", color: "#ff00ff", minRange: 1.5, sfx: "Miss", manacost: 2, castRange: 6, components: ["Arms"], level:1, speed: 1,
 		type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "pain", playerEffect: {name: "NurseSyringe", power: 4, type: "poison", time: 8},},
 	{enemySpell: true, name: "RibbonBurst", color: "#ff00ff", sfx: "MagicSlash", manacost: 5, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 4, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "chain", playerEffect: {name: "TrapBindings", text: "KinkyDungeonTrapBindingsRibbons", tags: ["magicRibbons"], power: 3, damage: "chain", count: 2, noGuard: true}},
-	{enemySpell: true, name: "Spores", color: "#6733aa", sfx: "MagicSlash", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 3, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "poison", playerEffect: {name: "Spores", power: 2, damage: "poison"}},
-	{enemySpell: true, name: "SporesHappy", color: "#ff00ff", sfx: "FireSpell", noCastMsg: true, selfcast: true, manacost: 3, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 2.5, range: 3, size: 3, aoe: 1.5, lifetime: 1, damage: "happygas", playerEffect: {name: "SporesHappy", power: 2.5, damage: "happygas"}},
-	{enemySpell: true, name: "SporesSick", color: "#55ff55", noCastMsg: true, hitsfx: "DamageWeak", selfcast: true, manacost: 0, components: ["Verbal"], level:1, type:"hit", onhit:"aoe", time: 5, delay: 0, power: 0.5, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "poison", playerEffect: {name: "SporesSick", power: 0.5, damage: "poison"}},
+	{enemySpell: true, name: "Spores", bulletSpin: 0.1, color: "#6733aa", sfx: "MagicSlash", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 3, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "poison", playerEffect: {name: "Spores", power: 2, damage: "poison"}},
+	{enemySpell: true, name: "DragonFlowerSpores", bulletSpin: 0.1, hideWarnings: true, selfcast: true, color: "#6733aa", sfx: "MagicSlash", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 1.5, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "poison", playerEffect: {name: "DragonFlowerSpores", power: 1.5, amount: 0.75, damage: "poison"}},
+
+
+	{enemySpell: true, name: "SporesHappy", bulletSpin: 0.1, color: "#ff00ff", sfx: "FireSpell", noCastMsg: true, selfcast: true, manacost: 3, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 2.5, range: 3, size: 3, aoe: 1.5, lifetime: 1, damage: "happygas", playerEffect: {name: "SporesHappy", power: 2.5, damage: "happygas"}},
+	{enemySpell: true, name: "SporesSick", bulletSpin: 0.1, color: "#55ff55", noCastMsg: true, hitsfx: "DamageWeak", selfcast: true, manacost: 0, components: ["Verbal"], level:1, type:"hit", onhit:"aoe", time: 5, delay: 0, power: 0.5, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "poison", playerEffect: {name: "SporesSick", power: 0.5, damage: "poison"}},
 	{enemySpell: true, name: "SoulCrystalBind", color: "#ff5277", minRange: 0, sfx: "Evil", manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 6, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "drain", playerEffect: {name: "ObsidianEngulf", count: 1, power: 6, damage: "drain"}},
 
 	{enemySpell: true, name: "MinerBomb", color: "#ff2200", selfcast: true, noise: 5, sfx: "FireSpell", hitsfx: "FireSpell", school: "Conjure", manacost: 5, components: ["Verbal"], level:1, hideWarnings: true,
@@ -2622,6 +2627,42 @@ let KinkyDungeonSpellListEnemies = [
 		range: 10.5, damage: "chain",
 		speed: 4, playerEffect: {name: "RestrainingBolt", count: 1, dist: 1, sfx: "MagicSlash"}},
 
+	{name: "EnemyWinterblast", enemySpell: true, color: "#92e8c0", tags: ["ice", "bolt", "offense", "utility", "aoe"], prerequisite: "Snowball", sfx: "LesserFreeze", hitsfx: "LesserFreeze", school: "Elements",
+		noise: 2,
+		specialCD: 9,
+		manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, pierceEnemies: true, delay: 0, range: 50, damage: "frost", speed: 2,
+		bulletColor: 0x92e4e8, bulletLight: 5,
+		effectTileDurationModTrail: 4, effectTileTrailAoE: 1.5, effectTileTrail: {
+			name: "Ice",
+			duration: 10,
+		},
+		playerEffect: {name: "Chill", damage: "ice", power: 1, time: 3},
+		events: [{type: "ElementalOnSlowOrBindOrDrench", trigger: "bulletHitEnemy", damage: "ice", time: 4, power: 0},],
+
+	},
+	{enemySpell: true, name: "DragonIceBolt", color: "#92e8c0", tags: ["ice", "bolt", "offense"], sfx: "MagicSlash", hitsfx: "Freeze", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt",
+		effectTileDurationMod: 10, effectTile: {
+			name: "Ice",
+			duration: 20,
+		},
+		minRange: 0,
+		shotgunCount: 3, shotgunDistance: 6, shotgunSpread: 1, shotgunSpeedBonus: 0, shotgunFan: true,
+		castCondition: "DragonChanneled", noTerrainHit: true,
+		onhit:"", time: 4,  power: 1, delay: 0, range: 50, damage: "ice", speed: 2, playerEffect: {name: "Chill", damage: "ice", power: 1, time: 3},
+		events: [{type: "ElementalOnSlowOrBindOrDrench", trigger: "bulletHitEnemy", damage: "ice", time: 4, power: 0},]},
+
+	{enemySpell: true, name: "IceBreathChannel", bindType: "Magic", color: "#92e8c0", sfx: "MagicSlash", landsfx: "MagicSlash", manacost: 1, components: ["Arms"],
+		hitSpin: 0.5, bulletSpin: 0.5,
+		pierceEnemies: true,
+		hideWarnings: true,
+		selfcast: true,
+		castCondition: "NotDragonChanneled",
+		events: [
+			{type: "MagicMissileChannel", trigger: "bulletTick"},
+			{type: "IceBreathChannel", trigger: "bulletDestroy", time: 10},
+		],
+		level:1, type:"inert", onhit:"aoe", delay: 3, power: 0, range: 10, size: 3, lifetime: 1, damage: "inert"
+	},
 
 	{enemySpell: true, name: "MagicMissileChannel", bindType: "Magic", color: "#ffaa77", sfx: "MagicSlash", landsfx: "MagicSlash", manacost: 1, components: ["Arms"],
 		specialCD: 8,
@@ -2631,7 +2672,7 @@ let KinkyDungeonSpellListEnemies = [
 		selfcast: true,
 		castCondition: "MagicMissileChannel",
 		events: [
-			{type: "MagicMissileChannel", trigger: "bulletTick"},
+			{type: "v", trigger: "bulletTick"},
 			{type: "MagicMissileChannel", trigger: "bulletDestroy", count: 8, spell: "MagicMissile2", dist: 10, time: 21},
 		],
 		level:1, type:"inert", onhit:"aoe", delay: 6, power: 0, range: 10, size: 3, lifetime: 1, damage: "inert"
@@ -2773,6 +2814,21 @@ let KinkyDungeonSpellListEnemies = [
 		],
 		speed: 1.25, playerEffect: {name: "CrystalBind", time: 1, count: 3}},
 	{enemySpell: true, noFirstChoice: true, name: "Hairpin", color: "#ffffff", minRange: 2.9, sfx: "Miss", manacost: 2, castRange: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "pain", speed: 2, playerEffect: {name: "Hairpin", power: 2, damage: "pain", time: 1}},
+
+	{enemySpell: true, name: "PoisonBreath", color: "#4fa460", sfx: "FireSpell", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe",
+		time: 5, delay: 2, power: 1.5, range: 2.6, size: 3, aoe: 1.5,
+		lifetime: 3, damage: "poison", playerEffect: {name: "PoisonBreath", power: 2, amount: 0.1, time: 12, damage: "poison"}},
+
+	{enemySpell: true, name: "DragonVine", bindType: "Vine", color: "#88ff88", sfx: "Miss", effectTileDurationMod: 10, effectTile: {
+		name: "Vines",
+		duration: 20,
+	}, manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "chain", speed: 2.5, playerEffect: {name: "VineEngulf", power: 2}},
+
+	{enemySpell: true, name: "DragonSlash", bindType: "Vine", color: "#88ff88", sfx: "Miss", effectTileDurationMod: 10, effectTile: {
+		name: "Vines",
+		duration: 20,
+	}, manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "chain", speed: 2.5, playerEffect: {name: "PoisonSlash", power: 2, count: 0.25, time: 12}},
+
 	{enemySpell: true, name: "PoisonDragonBlast",  bindType: "Vine", color: "#88ff88", sfx: "FireSpell", hitsfx: "Bones", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "grope", speed: 3, effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
 		name: "Vines",
 		duration: 20,
@@ -2875,6 +2931,7 @@ let KinkyDungeonSpellListEnemies = [
 		},
 		projectileTargeting:true, onhit:"", time: 4,  power: 3.5, delay: 0, range: 50, damage: "frost", speed: 2, playerEffect: {name: "Chill", damage: "ice", power: 3, time: 3},
 		events: [{type: "ElementalOnSlowOrBindOrDrench", trigger: "bulletHitEnemy", damage: "ice", time: 4, power: 0},]},
+
 	{enemySpell: true, name: "WitchBoulder", sfx: "Bones", hitsfx: "HeavySwing", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", block: 8, time: 4,  power: 4, delay: 0, range: 50, damage: "crush", speed: 2, playerEffect: {name: "WitchBoulder", time: 2}},
 
 	{enemySpell: true, name: "SummonSlimeMold", noSprite: true, minRange: 0, sfx: "Bones", manacost: 8, components: ["Verbal"], level:4, projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "SlimeMold", count: 1, strict: true}], power: 0, damage: "inert", time: 12, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {}},
@@ -2931,6 +2988,25 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "SummonTapeDrone", noSprite: true, sfx: "MagicSlash", castCondition: "wolfTapeDrone", manacost: 3, specialCD: 10, components: ["Verbal"], level:1, projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "WolfDrone", count: 1, time: 40, weakBinding: true, bound: true}], power: 0, damage: "inert", time: 34, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, speed: 1, playerEffect: {}},
 	{enemySpell: true, name: "MirrorImage", noSprite: true, minRange: 0, selfcast: true, sfx: "FireSpell", manacost: 12, components: ["Verbal"], level:4, castRange: 50, type:"inert", onhit:"summon", summon: [{name: "MaidforceStalkerImage", count: 1, time: 12}], power: 0, time: 12, delay: 1, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "inert",
 		spellcast: {spell: "DarkShroud", target: "origin", directional:false, offset: false}},
+
+	{enemySpell: true, name: "SummonDragonVinePlant", noSprite: true, minRange: 0, sfx: "Bones", manacost: 4, components: ["Verbal"], level:4, specialCD: 8,
+		projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "DragonVinePlant", teleportTime: 1, aware: true,bound: true, count: 1, time: 40, strict: true, weakBinding: true,}], power: 0, time: 12, delay: 1, range: 0.5, size: 3, aoe: 1.5, lifetime: 1, speed: 1},
+
+	{enemySpell: true, name: "SummonDragonFlower", noSprite: true, minRange: 0, sfx: "Bones", manacost: 4, components: ["Verbal"], level:4, specialCD: 16,
+		projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "DragonFlower", teleportTime: 1, aware: true,bound: true, count: 3, time: 20, strict: true, weakBinding: true,}],
+		power: 0, time: 12, delay: 1, range: 0.5, size: 3, aoe: 2.5, lifetime: 1, speed: 1},
+
+	{enemySpell: true, name: "SummonIceWall", noSprite: true, minRange: 0, sfx: "Bones", manacost: 1, components: ["Verbal"], level:1, specialCD: 12,
+		castCondition: "iceWallMelee",
+		aoetype: 'arc',
+		projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "IceWall", aware: true,bound: true, count: 3, time: 20, strict: true, weakBinding: true,}],
+		power: 0, time: 12, delay: 1, range: 0.5, size: 3, aoe: 2.5, lifetime: 1, speed: 1},
+
+	{enemySpell: true, name: "SummonIceWall2", noSprite: true, minRange: 0, sfx: "Bones", manacost: 1, components: ["Verbal"], level:1, specialCD: 12,
+		//castCondition: "iceWallMelee",
+		aoetype: 'arc', extraDist: 1,
+		projectileTargeting:true, castRange: 50, type:"hit", onhit:"summon", summon: [{name: "IceWall", aware: true,bound: true, count: 7, time: 20, strict: true, weakBinding: true,}],
+		power: 0, time: 12, delay: 1, range: 7, size: 3, aoe: 3.5, lifetime: 1, speed: 1},
 
 	{enemySpell: true, name: "SummonBookChain", noSprite: true, minRange: 0, sfx: "MagicSlash", manacost: 12, components: ["Verbal"], level:4, projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "BookChain", teleportTime: 1, aware: true,bound: true, count: 3, time: 13, strict: true, weakBinding: true}], power: 0, time: 12, delay: 1, range: 0.5, size: 3, aoe: 3, lifetime: 1, speed: 1},
 	{enemySpell: true, name: "SummonBookBelt", noSprite: true, minRange: 0, sfx: "MagicSlash", manacost: 12, components: ["Verbal"], level:4, projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "BookBelt", teleportTime: 1, aware: true,bound: true, count: 3, time: 13, strict: true, weakBinding: true}], power: 0, time: 12, delay: 1, range: 0.5, size: 3, aoe: 3, lifetime: 1, speed: 1},
@@ -3383,6 +3459,9 @@ let KDCastConditions = {
 		}
 		return true;
 	},
+	"iceWallMelee": (enemy, target) => {
+		return enemy.hp < enemy.Enemy.maxhp/2 && KDistEuclidean(enemy.x-target.x, enemy.y - target.y) < 3;
+	},
 	"latexGagSpell": (enemy, target) => {
 		if (target.player) {
 			let restraint = KinkyDungeonGetRestraint({tags: ["latexgagSpell"]}, 100, "tmb");
@@ -3498,6 +3577,13 @@ let KDCastConditions = {
 	"MagicMissileChannel": (enemy, target) => {
 		return !KDEnemyHasFlag(enemy, "MagicMissileChannelFinished");
 	},
+	"NotDragonChanneled": (enemy, target) => {
+		return !KDEnemyHasFlag(enemy, "dragonChannel");
+	},
+	"DragonChanneled": (enemy, target) => {
+		return KDEnemyHasFlag(enemy, "dragonChannel");
+	},
+
 	"WardenCageDrop": (enemy, target) => {
 		if (target.player && KinkyDungeonPlayerTags.get("OneBar")) {
 			return true;

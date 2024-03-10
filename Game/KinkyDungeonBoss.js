@@ -38,6 +38,7 @@ let bosses = {
 		setpieces: {
 		},
 		genType: "Dollmaker",
+		musicParams: "Dollmaker",
 		spawns: false,
 		chests: false,
 		shrines: false,

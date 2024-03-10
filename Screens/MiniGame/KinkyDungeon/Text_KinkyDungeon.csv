@@ -7,7 +7,7 @@ KinkyDungeonPatreon,Support @ Patreon
 KinkyDungeonPatronsList,"Thank you to the following awesome people for supporting me at patreon.com/ada18980"
 KinkyDungeonBack,Back
 KinkyDungeonNext,Next
-KinkyDungeonCreditsList0,"Music: kocaeli|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Plasmadragon, GoldieKitsune, SMoonlightM, PureWind, Wyatt Wintersoul|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
+KinkyDungeonCreditsList0,"Music: kocaeli, Darkstar Studios|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Plasmadragon, GoldieKitsune, SMoonlightM, PureWind, Wyatt Wintersoul|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi"
 KinkyDungeonCreditsList1,"Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators"
 
 Language,Language
@@ -20347,23 +20347,68 @@ LootFlapehLeotard,"You find a ceremonial leotard."
 
 
 rDragonQueenCrystal,"(As you slay the dragon, it begins shapeshifting into human form!)"
+rDragonQueenPoison,"(As you slay the dragon, it begins shapeshifting into human form!)"
+rDragonQueenIce,"(As you slay the dragon, it begins shapeshifting into human form!)"
+rDragonQueenShadow,"(As you slay the dragon, it begins shapeshifting into human form!)"
 
 NameDragonQueenCrystal,Crystal Dragon Queen
 KillDragonQueenCrystal,You slay the crystal dragon!
 AttackDragonQueenCrystal,The crystal dragon strikes you with its claws! (DamageTaken)
-AttackDragonQueenCrystalBind,"The crystal dragon breaths a sparking dust, which hardens into crystal! (+RestraintAdded)"
+AttackDragonQueenCrystalBind,"The crystal dragon breaths a sparkling dust, which hardens into crystal! (+RestraintAdded)"
 AttackDragonQueenCrystalDash,"The crystal dragon takes flight and swoops toward you!"
 AttackDragonQueenCrystalStun,"The crystal dragon takes flight and slams into you! (Stunned!)"
-
-
 NameDragonGirlCrystal,Crystal Dragon Girl
+KillDragonGirlCrystal,The dragon girl submits to you!
+AttackDragonGirlCrystal,The dragon girl slams you with several hurled crystals! (DamageTaken)
+AttackDragonGirlCrystalBind,"The dragon girl conjures a cloud of crystals that solidify! (+RestraintAdded)"
+
+
+NameDragonQueenPoison,Poison Dragon Queen
+KillDragonQueenPoison,You slay the poison dragon!
+AttackDragonQueenPoison,The poison dragon strikes you with its claws! (DamageTaken)
+AttackDragonQueenPoisonBind,"The poison dragon extends many vines from its wings! (+RestraintAdded)"
+AttackDragonQueenPoisonDash,"The poison dragon takes flight and swoops toward you!"
+AttackDragonQueenPoisonStun,"The poison dragon takes flight and slams into you! (Stunned!)"
+NameDragonGirlPoison,Poison Dragon Girl
+KillDragonGirlPoison,The dragon girl submits to you!
+AttackDragonGirlPoison,The dragon girl slashes you with her venomous nails! (DamageTaken)
+AttackDragonGirlPoisonBind,"The dragon girl raises vines out of the ground to bind you! (+RestraintAdded)"
+
+
+
+NameDragonQueenIce,Ice Dragon Queen
+KillDragonQueenIce,You slay the ice dragon!
+AttackDragonQueenIce,The ice dragon strikes you with its claws! (DamageTaken)
+AttackDragonQueenIceBind,"The ice dragon catches you in its icy breath! (+RestraintAdded)"
+NameDragonGirlIce,Ice Dragon Girl
+KillDragonGirlIce,The dragon girl submits to you!
+AttackDragonGirlIce,The dragon girl slams you with several chunks of ice! (DamageTaken)
+AttackDragonGirlIceBind,"The dragon girl splashes you with instantly freezing ice! (+RestraintAdded)"
+
+
+
+NameDragonQueenShadow,Shadow Dragon Queen
+KillDragonQueenShadow,You slay the shadow dragon!
+AttackDragonQueenShadow,The shadow dragon slashes directly at your mind! (DamageTaken)
+AttackDragonQueenShadowBind,"The shadow dragon wraps itself around you many times! (+RestraintAdded)"
+NameDragonGirlShadow,Shadow Dragon Girl
+KillDragonGirlShadow,The dragon girl submits to you!
+AttackDragonGirlShadow,The dragon girl stares into your eyes! (DamageTaken)
+AttackDragonGirlShadowBind,"The dragon girl reaches out with a shadowy grip! (+RestraintAdded)"
+
+
 
 KDCageDrop,A cage falls from the ceiling on top of you!
 KDCrystalEncase,Crystals grow across your body and encase you!
+KDIceEncase,You are encased in a solid block of ice!
+KDShadowBall,Shadows coalesce themselves around you in spherical form!
 
 RestraintCrystal,Crystal Encasement
 RestraintCrystalDesc,"An overgrowth of magical crystals. Their chaotic energies flood into your mind and displace your thoughts!"
 RestraintCrystalDesc2,"Being brittle, it will eventually crack and fail. Just keep wiggling..."
+RestraintIceCrystal,Ice Encasement
+RestraintIceCrystalDesc,"A huge ice cube. It's quite cold in there."
+RestraintIceCrystalDesc2,"It will eventually melt! Eventually..."
 
 KDWardenMelt,The Warden's restraints release you... for now.
 
@@ -20384,3 +20429,50 @@ RestraintElbowLinkDesc2,It's made of steel and secured with a lock. Unlocking th
 RestraintWristLink,Wrist Chain
 RestraintWristLinkDesc,A very short chain connecting your wrist cuffs together.
 RestraintWristLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+
+
+NameDragonVinePlant,Vine Pod
+KillDragonVinePlant,"The vine pod explodes into dust!"
+AttackDragonVinePlant,"The vine pod wraps you in vines and squeezes! (DamageTaken)"
+AttackDragonVinePlantBind,"The vine pod launches several vines at you in quick succession! (+RestraintAdded)"
+
+
+KinkyDungeonSummonMultiDragonVinePlant,Several vine pods sprout out of the ground!
+KinkyDungeonSummonSingleDragonVinePlant,A vine pod sprouts out of the ground!
+KinkyDungeonSummonSingleIceWall,A wall of ice rises from the ground!
+KinkyDungeonSummonMultiIceWall,A wall of ice rises from the ground!
+KDPoisonBreath,The dragon's breath poisons you!
+KDPoisonSlash,The dragon girl strikes you with poisonous razor leaves!
+KDDragonFlowerSpores,The flower releases soporific spores!
+KinkyDungeonSpellPoisonBreath,Poison Breath
+
+KDVineSuspend,Vines reach from the ceiling and lift you into the air!
+
+RestraintVineSuspension,Vine Suspension
+RestraintVineSuspensionDesc,"Vines linked to your bindings that keep you suspended!"
+RestraintVineSuspensionDesc2,"You are left dangling! Maybe if you swing hard enough you can tear the vines..."
+
+slimy_science_1.ogg,Darkstar Studios - Slimy Science
+GENERIC-DOLLRACK.ogg,Kocaeli - Doll Storage
+AAA.ogg,Kocaeli - AAA
+DD.ogg,Kocaeli - DD
+Ada18980_PlayingWithFire.ogg,Ada18980 - Playing with fire
+Ada18980_SmokingIsBadForYou.ogg,Ada18980 - Smoking is bad for you
+AREA1-GRAVEYARD.ogg,Kocaeli - Graveyard
+AREA2-ANCIENTTOMBS.ogg,Kocaeli - Ancient Tombs
+AREA4-MAGICLIBRARY.ogg,Kocaeli - Magic Library
+AREA5-UNDERGROUNDJUNGLE.ogg,Kocaeli - Underground Jungle
+AREA7-LOSTTEMPLE.ogg,Kocaeli - Lost Temple
+AREA8-ORRERY.ogg,Kocaeli - Orrery
+AREA9-BELLOWS.ogg,Kocaeli - Bellows
+AREA10-WEEPINGGARDEN.ogg,Kocaeli - Orrery
+AREA12-DOLLSTORAGE.ogg,Kocaeli - Rubber Facility
+EDGEOFREALITY.ogg,Kocaeli - Edge of Reality
+Shopping.ogg,Kocaeli - 1
+
+NameIceWall,Icy Barrier
+KilliceWall,The wall of ice shatters!
+
+KinkyDungeonSpellDragonIceBolt,Icy Breath
+KinkyDungeonSpellEnemyWinterblast,Ice Orb
+KinkyDungeonSpellCastIceBreathChannel,"The EnemyName breaths in deeply, causing the air around you to chill..."

@@ -8,6 +8,31 @@
 
 
 AddModel({
+	Name: "RopeSuspension",
+	Folder: "Rope",
+	Parent: "RopeHarness",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Rope", "Suspension"],
+	AddPose: ["SuspendedHogtie"],
+	Layers: ToLayerMap([
+		{ Name: "Suspension", Layer: "FurnitureBack", Pri: 10,
+			Invariant: true,
+			InheritColor: "Rope",
+			NoOverride: true,
+		},
+		{ Name: "Belt", Layer: "BeltBondage", Pri: 0,
+			Invariant: true,
+			DisplacementSprite: "BeltSquish",
+			DisplaceLayers: ToMap(["RopeCalf"]),
+			InheritColor: "Rope",
+			NoOverride: true,
+		},
+
+	])
+});
+
+AddModel({
 	Name: "RopeCrosstie1",
 	Folder: "Rope",
 	Parent: "RopeHarness",

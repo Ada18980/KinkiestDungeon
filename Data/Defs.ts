@@ -1692,6 +1692,22 @@ let LayerGroups = {
 			"HairOver",
 			"Head",
 			"Hood", // For Kigu
+
+			"Skirt",
+			"SkirtOver",
+
+
+			"WrappingLegsUnder",
+			"WrappingLegs",
+
+			"OverSocks",
+			"StockingRightKneel", "StockingRight",
+			"FootRight",
+			"LegRight",
+			"StockingLeftKneel", "StockingLeft",
+			"FootLeft",
+			"LegLeft",
+
 		]
 	),
 

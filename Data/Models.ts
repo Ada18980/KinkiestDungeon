@@ -131,7 +131,7 @@ function ToLayerMap(Layers: ModelLayer[]): {[_: string]: ModelLayer} {
 	return ToNamedMap(Layers);
 }
 
-function GetModelLayers(ModelName: string, PrependString?: string, AppendString?: string, InheritColor?: string, PriBonus?: number, layerSwap?: string,): ModelLayer[] {
+function GetModelLayers(ModelName: string, PrependString?: string, AppendString?: string, InheritColor?: string, PriBonus?: number, layerSwap?: string, Folder?: string): ModelLayer[] {
 	if (ModelDefs[ModelName]) {
 		let ret : ModelLayer[] = JSON.parse(JSON.stringify(Object.values(ModelDefs[ModelName].Layers)));
 		for (let layer of ret) {
@@ -139,18 +139,21 @@ function GetModelLayers(ModelName: string, PrependString?: string, AppendString?
 			if (InheritColor) layer.InheritColor = InheritColor;
 			if (PriBonus) layer.Pri += PriBonus;
 			if (layerSwap) layer.Layer = layerSwap;
+			if (Folder) layer.Folder = Folder;
 		}
 		return ret;
 	}
 	return [];
 }
-function GetModelLayersNoOverride(ModelName: string, PrependString?: string, AppendString?: string, InheritColor?: string, PriBonus?: number): ModelLayer[] {
+function GetModelLayersNoOverride(ModelName: string, PrependString?: string, AppendString?: string, InheritColor?: string, PriBonus?: number, layerSwap?: string, Folder?: string): ModelLayer[] {
 	if (ModelDefs[ModelName]) {
 		let ret : ModelLayer[] = JSON.parse(JSON.stringify(Object.values(ModelDefs[ModelName].Layers)));
 		for (let layer of ret) {
 			layer.Name = (PrependString || "") + layer.Name + (AppendString || "");
 			if (InheritColor) layer.InheritColor = InheritColor;
 			if (PriBonus) layer.Pri += PriBonus;
+			if (layerSwap) layer.Layer = layerSwap;
+			if (Folder) layer.Folder = Folder;
 			layer.NoOverride = true;
 		}
 		return ret;
@@ -1002,11 +1005,11 @@ function ModelLayerHidden(drawLayers: {[_: string]: boolean}, MC: ModelContainer
 }
 
 function ModelLayerString(Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}): string {
-	return `Models/${Model.Folder}/${LayerSprite(Layer, Poses)}.png`;
+	return `Models/${Layer.Folder || Model.Folder}/${LayerSprite(Layer, Poses)}.png`;
 }
 function ModelLayerStringCustom(Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}, Sprite: string, Path: string = "Models", useModelFolder: boolean = true, forceInvariant: boolean = false, forceMorph?: Record<string, string>, noAppend: boolean = false): string {
 	if (useModelFolder)
-		return `${Path}/${Model.Folder}/${LayerSpriteCustom(Layer, Poses, Sprite, forceInvariant, forceMorph, noAppend)}.png`;
+		return `${Path}/${Layer.Folder || Model.Folder}/${LayerSpriteCustom(Layer, Poses, Sprite, forceInvariant, forceMorph, noAppend)}.png`;
 	else
 		return `${Path}/${LayerSpriteCustom(Layer, Poses, Sprite, forceInvariant, forceMorph, noAppend)}.png`;
 }

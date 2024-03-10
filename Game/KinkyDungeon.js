@@ -2602,6 +2602,8 @@ function KinkyDungeonRun() {
 	lastfps = performance.now();
 	KDUpdateParticles(KDDrawDelta);
 
+	KDDrawMusic(KDDrawDelta);
+
 	if (StandalonePatched) {
 		/*if (KinkyDungeonState == "Game") {
 			if (!kdTrackGameParticles) {

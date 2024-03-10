@@ -1194,7 +1194,8 @@ const KinkyDungeonMapParams = {
 		},
 
 		music: {
-			"AREA9-BELLOWS.ogg": 30,
+			"AREA9-BELLOWS.ogg": 20,
+			"slimy_science_1.ogg": 20,
 		},
 
 		tagModifiers: {
@@ -1270,6 +1271,112 @@ const KinkyDungeonMapParams = {
 	},
 
 
+	"Dollmaker":{//DungeonName8,-Orrery-
+		successorNegative: {
+			cry: 1.0,
+		},
+		successorPositive: {
+			bel: 0.5,
+			tmp: 0.5,
+		},
+		successorSame: {
+			bel: 1.0,
+		},
+		color: "#c52f45",
+		"background" : "SpookyForest",
+		"openness" : 1,
+		"density" : 9,
+		"crackchance" : 0.12,
+		"barchance" : 0.1,
+		"brightness" : 1,
+		"chestcount" : 7,
+		"chargerchance": 0.8,
+		"litchargerchance": 0.2,
+		"chargercount": 0,
+		"shrinecount" : 10,
+		"shrinechance" : 0.5,
+		"ghostchance" : 0.7,
+		"doorchance" : 0.9,
+		"nodoorchance" : 0.25,
+		"doorlockchance" : -0.05,
+		"trapchance" : 0.2,
+		"grateChance" : 0.8,
+		"rubblechance" : 0.35,
+		"brickchance" : 0.0,
+		"cacheInterval" : 1,
+		"forbiddenChance" : 1.0,
+		"forbiddenGreaterChance" : 0.45,
+		torchlitchance: 0.45,
+		torchchance: 1.0,
+		torchchanceboring: -0.7,
+		torchreplace: {
+			sprite: "Lantern",
+			unlitsprite: "LanternUnlit",
+			brightness: 5,
+		},
+
+		music: {
+			"slimy_science_1.ogg": 20,
+		},
+
+		tagModifiers: {
+			"jungle": 0,
+			"cavern": 0,
+			"temple": 0.0,
+			"urban": 0,
+			"industrial": 2.0,
+			"dungeon": 0,
+			"factory": 2.0,
+			"bellows": 3.0,
+			"library": 0.1,
+		},
+		globalTags: {
+			"factory": true,
+			"bellows": true,
+			"industrial": true,
+		},
+
+		shadowColor: 0x000703,
+
+		"setpieces": [
+			{Type: "Bedroom", Weight: 1},
+			{Type: "LargeGuardedChest", Weight: 20},
+		],
+
+
+		"traps": [
+			{Name: "SpecificSpell", Spell: "TrapSlimeWeak", Level: 0, Power: 3, Weight: 10},
+			{Name: "SpecificSpell", Spell: "TrapLatex", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapLatexBubble", Level: 0, Power: 3, Weight: 30},
+
+		],
+
+		"min_width" : 6,
+		"max_width" : 8,
+		"min_height" : 4,
+		"max_height" : 4,
+
+		worldGenCode: () => {
+			KDAddPipes(0.2, 0.35, 0.7, 0.2);
+		},
+
+		factionList: ["Nevermere", "AncientRobot", "Bandit", "Dressmaker", "Bountyhunter", "Maidforce", "Alchemist"],
+
+		enemyTags: ["dollsmith", "dollrare", "oldrobot", "oldrobotturret", "tech", "metal", "electric", "fire", "explosiveBarrel"],
+		"defeat_outfit": "DollSuit",
+		"shrines": [
+			{Type: "Latex", Weight: 5},
+			{Type: "Elements", Weight: 5},
+			{Type: "Conjure", Weight: 5},
+			{Type: "Illusion", Weight: 5},
+			{Type: "Leather", Weight: 7},
+			{Type: "Metal", Weight: 10},
+			{Type: "Rope", Weight: 3},
+			{Type: "Will", Weight: 13},
+		],
+
+		"lockmult" : 2.0,
+	},
 
 
 	// Extra

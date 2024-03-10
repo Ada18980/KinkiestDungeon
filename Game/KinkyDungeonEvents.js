@@ -6570,6 +6570,16 @@ let KDEventMapBullet = {
 				}
 			}
 		},
+		"IceBreathChannel": (e, b, data) => {
+			// If we manage to do the whole thing
+			if (data.outOfTime && b.bullet?.source) {
+				let enemy = KinkyDungeonFindID(b.bullet.source);
+				if (enemy && KinkyDungeonCanCastSpells(enemy)) {
+					// Spawn many magic missiles!
+					KinkyDungeonSetEnemyFlag(enemy, "dragonChannel", e.time);
+				}
+			}
+		},
 		"KineticLance": (e, b, data) => {
 			if (!KinkyDungeonPlayerWeapon) return;
 			let point = {x: b.x, y: b.y};

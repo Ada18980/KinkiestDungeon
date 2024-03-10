@@ -5195,12 +5195,17 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					xx = spelltarget.x;
 					yy = spelltarget.y;
 				}
+				if (spell.extraDist) {
+					xx += spell.extraDist * (xx - enemy.x) / AIData.playerDist;
+					yy += spell.extraDist * (yy - enemy.y) / AIData.playerDist;
+				}
 				if (spell && (spell.selfcast || (enemy.Enemy.selfCast && enemy.Enemy.selfCast[spell.name]))) {
 					xx = enemy.x;
 					yy = enemy.y;
 					if (!spell.noCastMsg)
 						KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonSpellCast" + spell.name).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff8844", 4, undefined, undefined, enemy);
 				} else if (spell && spell.msg) {
+
 					if (!spell.noCastMsg)
 						KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonSpellCast" + spell.name).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff8844", 4, undefined, undefined, enemy);
 				}
