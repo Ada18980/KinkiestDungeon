@@ -929,6 +929,10 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					yy += moveDirection.y;
 				}
 			}
+			if (data.xx || data.yy) {
+				xx = data.xx;
+				yy = data.yy;
+			}
 
 			if (spell.effectTilePre) {
 				KDCreateAoEEffectTiles(tX-entity.x,tY - entity.y, spell.effectTilePre, spell.effectTileDurationModPre, (spell.aoe) ? spell.aoe : 0.5);

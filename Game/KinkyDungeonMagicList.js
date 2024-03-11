@@ -2698,6 +2698,18 @@ let KinkyDungeonSpellListEnemies = [
 		power: 2.5, time: 1, delay: 5, range: 8, size: 3, aoe: 1.5, lifetime: 1, damage: "chain", playerEffect: {name: "CageDrop", time: 1}},
 
 
+
+	{enemySpell: true, name: "ShadowBubble", bindType: "Magic", color: "#9574ff", sfx: "FireSpell", landsfx: "Teleport", manacost: 1, components: ["Arms"],
+		minRange: 0,
+		bulletLifetime: 12,
+		noDirectionOffset: true,
+		events: [
+			{type: "RubberMissileHoming", trigger: "bulletAfterTick", power: 0.4, dist: 15, count: 0.2, limit: 0}
+		],
+		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "cold", speed: 0.5,
+		playerEffect: {name: "Bind", damage: "cold", power: 2, tag: "shadowlatexRestraints"}},
+
+
 	{enemySpell: true, name: "OneBarMissile", bindType: "Metal", color: "#ffffff", sfx: "MagicSlash", landsfx: "MagicSlash", manacost: 6, components: ["Arms"], specialCD: 25,
 		noTerrainHit: true,
 		pierceEnemies: true,

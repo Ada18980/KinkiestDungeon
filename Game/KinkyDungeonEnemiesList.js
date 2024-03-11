@@ -2837,7 +2837,7 @@ let KinkyDungeonEnemies = [
 
 		dontKiteWhenDisabled: true,
 
-		evasion: -1, disarm: 0.2,
+		evasion: -1, disarm: 0.4,
 		stamina: 12, sprintspeed: 2.0,
 		preferBlock: true, maxdodge: 0,
 		maxblock: 1,
@@ -2870,7 +2870,7 @@ let KinkyDungeonEnemies = [
 		effect: {
 			effect: {name: "VineSuspend"},
 		},
-		ignoreflag: ["VineSuspend"],
+		ignoreflag: ["Furniture"],
 		spells: ["SummonDragonVinePlant", "PoisonBreath"],  spellCooldownMult: 1, spellCooldownMod: -1,
 		visionRadius: 7, blindSight: 2.5, maxhp: 40, armor: 3, minLevel:12, weight:2.5, movePoints: 3, attackPoints: 2, attack: "SpellMeleeWillBindEffect",
 		attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 5, dmgType: "slash",
@@ -2891,7 +2891,7 @@ let KinkyDungeonEnemies = [
 		effect: {
 			effect: {name: "VineSuspend"},
 		},
-		ignoreflag: ["VineSuspend"],
+		ignoreflag: ["Furniture"],
 		noKiteWhenHarmless: true,
 		dontKiteWhenDisabled: true,
 		kite: 2.5,
@@ -2915,7 +2915,7 @@ let KinkyDungeonEnemies = [
 		castWhileMoving: true,
 
 
-		evasion: -1, disarm: 0.2,
+		evasion: -1, disarm: 0.4,
 		stamina: 12, sprintspeed: 2.0,
 		preferBlock: true, maxdodge: 0,
 		maxblock: 1,
@@ -2950,7 +2950,7 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff44aa"},
 		],
-		ignoreflag: ["CrystalEncase"],
+		ignoreflag: ["Furniture"],
 		spells: ["CrystalBolt", "CrystalSlash"],  spellCooldownMult: 1, spellCooldownMod: -1,
 		visionRadius: 7, blindSight: 2.5, maxhp: 40, armor: 3, minLevel:12, weight:2.5, movePoints: 3, attackPoints: 2, attack: "SpellMeleeWillEffect",
 		attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 5, dmgType: "slash",
@@ -2971,7 +2971,7 @@ let KinkyDungeonEnemies = [
 		effect: {
 			effect: {name: "CrystalEncase"},
 		},
-		ignoreflag: ["CrystalEncase"],
+		ignoreflag: ["Furniture"],
 		noKiteWhenHarmless: true,
 		dontKiteWhenDisabled: true,
 		kite: 2.5,
@@ -2982,6 +2982,87 @@ let KinkyDungeonEnemies = [
 		stamina: 7,
 		preferBlock: true,
 		dropTable: [{name: "EarthRune", weight: 3}]},
+
+
+	{name: "DragonQueenShadow", color: "#92e8c0",
+		faction: "DragonQueen",
+		tags: KDMapInit(["opendoors", "boss", "dragonqueen", "chainweakness", "meleeresist", "coldresist", "fireresist", "melee", "beast", "search", "shadow", "shadowlatexRestraints"]), cohesion: 0.1,
+		GFX: {
+			spriteHeight: 144,
+			spriteWidth: 144,
+		},
+		specialCD: 20, specialAttack: "DashStun", specialRemove: "WillEffect", specialPower: 1, specialDamage: "soul", dashThrough: true, stunTime: 4, specialAttackPoints: 3,
+		specialRange: 12, projectileTargeting: true, projectileAttack: true, specialMinRange: 4, specialCDonAttack: true, specialWidth: 1.25,
+		castWhileMoving: true,
+
+
+		evasion: -0.5, disarm: 0.4,
+		stamina: 12, sprintspeed: 1.8,
+		maxdodge: 1,
+		followLeashedOnly: true, ignorechance: 0, followRange: 1, AI: "hunt", guardChance: 0.0,
+		Sound: {
+			moveAmount: 12,
+			attackAmount: 20,
+		},
+		Awareness: {
+			chaseradius: 25,
+			hearingMult: 1.5,
+			vision: 1.5,
+			senseSpeed: 1.1,
+			hearingRadius: 12,
+		},
+		startBuffs: [
+			{
+				id: "DragonQueenCritArmor",
+				power: 1,
+				type: "ToughArmor",
+				duration: 9999, infinite: true,
+				aura: "#ffffff",
+				currentCount: 0, maxCount: 3, tags: ["defense", "crit"],
+			}
+		],
+		Resistance: {
+			block_magic: 3.0,
+		},
+		effect: {
+			effect: {name: "ShadowEncase"},
+		},
+		events: [
+			{trigger: "afterEnemyTick", type: "ShadowBubbles", spell: "ShadowBubble", power: 1, count: 1, dist: 10, aoe: 6.5, time: 2},
+		],
+		ignoreflag: ["Furniture"],
+		spells: [],  spellCooldownMult: 1, spellCooldownMod: -1,
+		visionRadius: 7, blindSight: 2.5, maxhp: 40, armor: 3, minLevel:12, weight:2.5, movePoints: 2, attackPoints: 2, attack: "MeleeWillEffect",
+		attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 5, dmgType: "slash",
+
+		terrainTags: {"shadow": 4, "lair": -100, "dragonqueen": 50}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
+		ondeath: [{type: "summon", enemy: "DragonGirlShadow", range: 0.5, count: 1, strict: false}],
+		dropTable: [{name: "Gold", amountMin: 200, amountMax: 300, weight: 15}]},
+
+	{name: "DragonGirlShadow", nameList: "dragonheart", outfit: "DragonShadow", style: "Water", faction: "DragonQueen", clusterWith: "beast",
+		bound: "DragonShadow", color: "#ff5277",
+		tags: KDMapInit(["opendoors", "shadow", "dragongirl", "human", "melee", "miniboss", "shadowlatexRestraints",
+			"coldresist", "fireresist", "chainweakness"]), cohesion: 0.75,
+		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenShadow", range: 4, loose: true, aggressive: true},
+		spells: ["CrystalShockBolt", "CrystalSlash", "CrystalBoltSingle"], spellCooldownMult: 1, spellCooldownMod: 2, castWhileMoving: true, spellRdy: true,
+		events: [
+			//{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff44aa"},
+		],
+		effect: {
+			effect: {name: "ShadowEncase"},
+		},
+		ignoreflag: ["Furniture"],
+		noKiteWhenHarmless: true,
+		dontKiteWhenDisabled: true,
+		kite: 2.5,
+		visionRadius: 9, maxhp: 30, minLevel:0, weight:0, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeBindLockWillEffect",
+		stunTime: 1, attackWidth: 1, attackRange: 1, power: 4.5, dmgType: "crush", fullBoundBonus: 2,
+		terrainTags: {"shadow": 7, "dragongirl": 50}, shrines: ["Leather", "Illusion"], floors: {},
+		attackLock: "Purple", maxdodge: 0,
+		stamina: 7,
+		preferBlock: true,
+		dropTable: [{name: "PotionInvisibility", weight: 3}]},
+
 
 
 	{name: "DragonQueenIce", color: "#92e8c0",
@@ -2996,7 +3077,7 @@ let KinkyDungeonEnemies = [
 
 		dontKiteWhenDisabled: true,
 
-		evasion: -1, disarm: 0.2,
+		evasion: -1, disarm: 0.4,
 		stamina: 12, sprintspeed: 2.0,
 		preferBlock: true, maxdodge: 0,
 		maxblock: 1,
@@ -3029,7 +3110,7 @@ let KinkyDungeonEnemies = [
 		effect: {
 			effect: {name: "IceEncase"},
 		},
-		ignoreflag: ["IceEncase"],
+		ignoreflag: ["Furniture"],
 
 		Magic: {
 			priority: {
@@ -3063,7 +3144,7 @@ let KinkyDungeonEnemies = [
 				EnemyWinterblast: 10,
 			},
 		},
-		ignoreflag: ["IceEncase"],
+		ignoreflag: ["Furniture"],
 		noKiteWhenHarmless: true,
 		dontKiteWhenDisabled: true,
 		kite: 2.5,

@@ -7154,6 +7154,7 @@ let KDEventMapBullet = {
 				if (en.length > 0) {
 					en[0].lifetime = 12;
 					en[0].maxlifetime = 12;
+					en[0].faction = b.bullet?.faction;
 				}
 			}
 
@@ -8156,6 +8157,59 @@ let KDEventMapEnemy = {
 						}
 
 					}
+				}
+			}
+		},
+		"ShadowBubbles": (e, enemy, data) => {
+			if (e.time && KDEnemyHasFlag(enemy, e.type)) return;
+			if (data.delta
+				&& (enemy.aware || enemy.vp > 0.5)
+				&& (KDNearbyEnemies(enemy.x, enemy.y, e.dist, enemy).length > 0 || KinkyDungeonAggressive(enemy))
+				//&& KinkyDungeonCanCastSpells(enemy)
+				&& ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+				if (!e.chance || KDRandom() < e.chance) {
+					let count = e.power ? e.power : 1;
+					let rad = e.aoe ? e.aoe : 1.5;
+					let minrad = 0.5;
+					let enemies = [...KDNearbyEnemies(enemy.x, enemy.y, e.dist, enemy)];
+					if (KinkyDungeonAggressive(enemy) && KDistEuclidean(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) <= e.aoe) {
+						enemies.unshift(KinkyDungeonPlayerEntity);
+					}
+					let currentCount = 0;
+					for (let en of enemies) {
+						for (let i = 0; i < count; i++) {
+							let slots = [];
+							for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
+								for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
+									if (Math.sqrt(X*X+Y*Y) <= rad && (!minrad || Math.sqrt(X*X+Y*Y) >= minrad)) {
+										if ((en.x + X > 0 && en.y + Y > 0 && en.x + X < KDMapData.GridWidth && en.y + Y < KDMapData.GridHeight)
+											&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(en.x + X, en.y + Y))
+											&& KinkyDungeonBrightnessGet(en.x + X, en.y + Y) < KDShadowThreshold * 2
+											&& KinkyDungeonCheckPath(en.x + X, en.y + Y, en.x, en.y, true, false, 1)
+										)
+											slots.push({x:X, y:Y});
+									}
+								}
+
+							if (slots.length > 0) {
+								let slot = slots[Math.floor(KDRandom() * slots.length)];
+								if (slot) {
+									if (e.time)
+										KinkyDungeonSetEnemyFlag(enemy, e.type, e.time);
+									KinkyDungeonCastSpell(en.x, en.y, KinkyDungeonFindSpell(e.spell, true), undefined, undefined, undefined,
+										KDGetFaction(enemy), {
+											xx: en.x + slot.x,
+											yy: en.y + slot.y,
+										}
+									);
+									currentCount += 1;
+									if (currentCount >= count) return;
+								}
+							}
+
+						}
+					}
+
 				}
 			}
 		},

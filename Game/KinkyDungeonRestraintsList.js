@@ -3724,7 +3724,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
 			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.2, sfx: "RubberBolt", inheritLinked: true},
 		],
-		enemyTags: {"shadowBall":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "ShadowLatex", "BallSuit"], removeOnLeash: true,
+		enemyTags: {"shadowBall":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "ShadowLatex", "BallSuit", "ShadowEncase"], removeOnLeash: true,
 	},
 
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexHeels", inaccessible: true, Asset: "FuturisticHeels2", remove: ["Shoes"],

@@ -20476,3 +20476,6 @@ KilliceWall,The wall of ice shatters!
 KinkyDungeonSpellDragonIceBolt,Icy Breath
 KinkyDungeonSpellEnemyWinterblast,Ice Orb
 KinkyDungeonSpellCastIceBreathChannel,"The EnemyName breaths in deeply, causing the air around you to chill..."
+
+KinkyDungeonSpellShadowBubble,Shadow Bubble
+KinkyDungeonSpellShadowBubbleBind,"The projectile explodes into tight shadow latex, stretching all across your body!"
