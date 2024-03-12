@@ -16,7 +16,7 @@ let KinkyDungeonSpellSpecials = {
 			let tile = KinkyDungeonTilesGet(targetX + "," + targetY);
 			if (tile) {
 				if (tile.Loot && tile.Roll) {
-					let event = KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], tile.Loot, tile.Roll, tile, true);
+					let event = KinkyDungeonLoot(MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), tile.Loot, tile.Roll, tile, true);
 					if (event.trap || tile.lootTrap) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonShrineTooltipTrap"), "#ff0000", 2);
 					else KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonShrineTooltipNoTrap"), "lightgreen", 2);
 
@@ -367,7 +367,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else {
 			if (KinkyDungeonPlayerEntity.x == tX && KinkyDungeonPlayerEntity.y == tY) {
-				let restraintAdd = KinkyDungeonGetRestraint({tags: ["magicBeltForced"]}, MiniGameKinkyDungeonLevel + 10, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+				let restraintAdd = KinkyDungeonGetRestraint({tags: ["magicBeltForced"]}, MiniGameKinkyDungeonLevel + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 				if (restraintAdd) {
 					KinkyDungeonSendActionMessage(3, TextGet("KDZoneOfPuritySelf"), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 					KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, false, undefined, false, false, undefined, faction);
@@ -381,7 +381,7 @@ let KinkyDungeonSpellSpecials = {
 	"DisplayStand": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en && en.player) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["displaySpell"]}, KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["displaySpell"]}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 			if (restraintAdd) {
 				KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastSelf"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, false, undefined, false, false, undefined, faction);
@@ -427,7 +427,7 @@ let KinkyDungeonSpellSpecials = {
 	"Petsuit": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en && en.player) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["petsuitSpell"]}, KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["petsuitSpell"]}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 			if (restraintAdd) {
 				KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastSelf"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, false, undefined, false, false, undefined, faction);
@@ -804,10 +804,11 @@ let KinkyDungeonSpellSpecials = {
 				radius: 1.5,
 				sprite: "Particles/Slash.png",
 			});
+			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+			return "Cast";
 		}
 
-		KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-		return "Cast";
+		return "Fail";
 	},
 
 
@@ -1100,13 +1101,13 @@ let KinkyDungeonSpellSpecials = {
 
 	"CommandVibrate": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, spell.aoetype || "")
-			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull") || KinkyDungeonPlayerTags.get("ItemNipplesPiercings"))) {
+			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull") || KinkyDungeonPlayerTags.get("ItemNipples"))) {
 
 			let vibes = [];
 			if (KinkyDungeonPlayerTags.get("ItemVulvaFull")) vibes.push("ItemVulva");
 			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
 			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
-			if (KinkyDungeonPlayerTags.get("ItemNipplesPiercingsFull")) vibes.push("ItemNipplesPiercings");
+			if (KinkyDungeonPlayerTags.get("ItemNipplesFull")) vibes.push("ItemNipples");
 
 			if (!KDGameData.CurrentVibration) {
 				KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 0.5, 30, undefined, undefined, undefined, undefined, true);
@@ -1129,13 +1130,13 @@ let KinkyDungeonSpellSpecials = {
 	},
 	"CommandVibrateLV2": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, spell.aoetype || "")
-			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull") || KinkyDungeonPlayerTags.get("ItemNipplesPiercings"))) {
+			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull") || KinkyDungeonPlayerTags.get("ItemNipplesP"))) {
 
 			let vibes = [];
 			if (KinkyDungeonPlayerTags.get("ItemVulvaFull")) vibes.push("ItemVulva");
 			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
 			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
-			if (KinkyDungeonPlayerTags.get("ItemNipplesPiercingsFull")) vibes.push("ItemNipplesPiercings");
+			if (KinkyDungeonPlayerTags.get("ItemNipplesPFull")) vibes.push("ItemNipplesP");
 			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 2.0, 15, undefined, undefined, undefined, undefined, false);
 
 			cast = true;
@@ -1154,13 +1155,13 @@ let KinkyDungeonSpellSpecials = {
 	},
 	"CommandVibrateLV3": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, spell.aoetype || "")
-			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull") || KinkyDungeonPlayerTags.get("ItemNipplesPiercings"))) {
+			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull") || KinkyDungeonPlayerTags.get("ItemNipplesP"))) {
 
 			let vibes = [];
 			if (KinkyDungeonPlayerTags.get("ItemVulvaFull")) vibes.push("ItemVulva");
 			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
 			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
-			if (KinkyDungeonPlayerTags.get("ItemNipplesPiercingsFull")) vibes.push("ItemNipplesPiercings");
+			if (KinkyDungeonPlayerTags.get("ItemNipplesPFull")) vibes.push("ItemNipplesP");
 			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 3.0, 10, undefined, undefined, undefined, undefined, false);
 
 			cast = true;
@@ -1399,7 +1400,7 @@ let KDCommandCaptureBindings = {
 	"vine": (spell, entity, faction, bullet, miscast, attacker, counter) => {
 		// Vines slow the target down
 		if (entity.player) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["vineRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["vineRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 			if (restraintAdd) {
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
@@ -1416,7 +1417,7 @@ let KDCommandCaptureBindings = {
 	"rope": (spell, entity, faction, bullet, miscast, attacker, counter) => {
 		// Ropes slow the target down
 		if (entity.player) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 			if (restraintAdd) {
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
@@ -1440,7 +1441,7 @@ let KDCommandCaptureBindings = {
 	"fabric": (spell, entity, faction, bullet, miscast, attacker, counter) => {
 		// Ropes slow the target down
 		if (entity.player) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["ribbonRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["ribbonRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 			if (restraintAdd) {
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
@@ -1464,7 +1465,7 @@ let KDCommandCaptureBindings = {
 	"belt": (spell, entity, faction, bullet, miscast, attacker, counter) => {
 		// Belts apply extra binding (10 per spell level)
 		if (entity.player) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["leatherRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["leatherRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 			if (restraintAdd) {
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
@@ -1486,7 +1487,7 @@ let KDCommandCaptureBindings = {
 	"chain": (spell, entity, faction, bullet, miscast, attacker, counter) => {
 		// Chains deal crush damage
 		if (entity.player) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["chainRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]);
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["chainRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 			if (restraintAdd) {
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);

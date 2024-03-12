@@ -249,7 +249,7 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
-		{ Name: "ArmLeft", Layer: "WrapArmLeft", Pri: 15,
+		{ Name: "ArmLeft", Layer: "WrapArms", Pri: 15,
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmLeft", Crossed: "BindCrossArmLeft"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -273,7 +273,7 @@ AddModel({
 		"Slime": slimefilter,
 	},
 	Layers: ToLayerMap([
-		{ Name: "ArmRight", Layer: "WrapArmRight", Pri: 15,
+		{ Name: "ArmRight", Layer: "WrapArms", Pri: 15,
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "WrapForeArms", Crossed: "WrapCrossArms"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -306,6 +306,9 @@ AddModel({
 			AddPriWithPose: {
 				ItemArmsRubberOver: 45,
 			},
+			EraseLayers: ToMap(["BustierPoses"]),
+			EraseInvariant: true,
+			EraseSprite: "SlimeCorsetErase",
 		},
 		{ Name: "Chest", Layer: "WrappingChest", Pri: 15,
 			Invariant: true,

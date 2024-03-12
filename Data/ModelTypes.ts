@@ -74,6 +74,8 @@ interface Model extends Namable {
     AddPose?: string[],
 	/** Conditional add pose. They are only added if the specified pose is NOT present */
 	AddPoseConditional?: Record<string, string[]>,
+	/** Conditional add pose. They are only added if the specified pose is present */
+	AddPoseIf?: Record<string, string[]>,
 	/** This model hides all items on these layers. Use sparingly */
 	HideLayers?: string[],
 	/** This model hides all items on these layergroups. Use sparingly */

@@ -14,14 +14,20 @@ let KDInventoryAction = {
 			if (item.type == LooseRestraint) {
 				let newItem = null;
 				let currentItem = null;
+				let linkable = null;
 
 				newItem = KDRestraint(item);
 				if (newItem) {
 					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
-					if (!currentItem
-						|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
+					if (!currentItem) return "InventoryAction/Equip";
+					if (KDDebugLink) {
+						linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
+					} else {
+						linkable = (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
 							((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
-							|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))))) {
+							|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))));
+					}
+					if (linkable) {
 						return "InventoryAction/Equip";
 					} else return "InventoryAction/Unequip";
 				}
@@ -33,14 +39,20 @@ let KDInventoryAction = {
 			if (item.type == LooseRestraint) {
 				let newItem = null;
 				let currentItem = null;
+				let linkable = null;
 
 				newItem = KDRestraint(item);
 				if (newItem) {
 					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
-					if (!currentItem
-						|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
+					if (!currentItem) return true;
+					if (KDDebugLink) {
+						linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
+					} else {
+						linkable = (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
 							((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
-							|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))))) {
+							|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))));
+					}
+					if (linkable) {
 						return true;
 					} else return false;
 				}
@@ -53,16 +65,24 @@ let KDInventoryAction = {
 				let equipped = false;
 				let newItem = null;
 				let currentItem = null;
+				let linkable = null;
 
 				newItem = KDRestraint(item);
 				if (newItem) {
 					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
-					if (!currentItem
-						|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
-							((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
-							|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))))) {
-						equipped = false;
-					} else equipped = true;
+					if (!currentItem) equipped = false;
+					else {
+						if (KDDebugLink) {
+							linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
+						} else {
+							linkable = (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
+								((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
+								|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))));
+						}
+						if (!currentItem || linkable) {
+							equipped = false;
+						} else equipped = true;
+					}
 				}
 				if (!equipped && newItem) {
 					if (KDGameData.InventoryAction && !KDConfirmOverInventoryAction) {
@@ -88,8 +108,8 @@ let KDInventoryAction = {
 				let toWear = KinkyDungeonGetOutfit(outfit);
 				if (toWear) {
 					let dress = toWear.dress;
-					if (dress == "JailUniform" && KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]])
-						dress = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]].defeat_outfit;
+					if (dress == "JailUniform" && KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)])
+						dress = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].defeat_outfit;
 					KDSendInput("dress", {dress: dress, outfit: outfit});
 				}
 			}
@@ -687,6 +707,7 @@ let KDInventoryAction = {
 			return TextGet("KDInventoryActionSell").replace("VLU", value + "");
 		},
 		valid: (player, item) => {
+			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
 			if (KDWeapon(item)?.unarmed) return false;
 			return item?.type == Weapon || item?.type == LooseRestraint || item?.type == Consumable;
 		},
@@ -758,6 +779,7 @@ let KDInventoryAction = {
 			return TextGet("KDInventoryActionSellBulk").replace("VLU", value + "");
 		},
 		valid: (player, item) => {
+			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
 			return item?.type == LooseRestraint || item?.type == Consumable;
 		},
 		show: (player, item) => {
@@ -831,6 +853,7 @@ let KDInventoryAction = {
 			return TextGet("KDInventoryActionSellExcess").replace("VLU", value + "");
 		},
 		valid: (player, item) => {
+			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
 			return item?.type == LooseRestraint || item?.type == Consumable;
 		},
 		show: (player, item) => {

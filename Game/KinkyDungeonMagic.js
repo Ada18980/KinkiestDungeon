@@ -43,6 +43,12 @@ let KinkyDungeonSpellChoiceOffset = 80;
 
 let KDPlayerHitBy = [];
 
+let KDSchoolColors = {
+	"Elements": "#ff4444",
+	"Conjure": "#77cc99",
+	"Illusion": "#8877ff",
+};
+
 let KinkyDungeonMiscastPityModifier = 0; // Current value
 let KinkyDungeonMiscastPityModifierIncrementPercentage = 0.5; // Percent of the base hit chance to add
 
@@ -755,6 +761,11 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		}
 		flags.miscastChance = 0;
 	}
+	if (enemy && !player && !bullet) {
+		entity = enemy;
+		moveDirection = KinkyDungeonGetDirection(targetX - entity.x, targetY - entity.y);
+		flags.miscastChance = 0;
+	}
 	if (!spell.noMiscast && !enemy && !bullet && player && Math.min(1, KDRandom() + KinkyDungeonMiscastPityModifier) < flags.miscastChance) {
 		// Increment the pity timer
 		KinkyDungeonMiscastPityModifier += KinkyDungeonMiscastPityModifierIncrementPercentage * Math.max(1 - flags.miscastChance, 0);
@@ -926,7 +937,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 				tX-entity.x,tY - entity.y,
 				speed, {noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, width:size, height:size, summon:spell.summon,
 					targetX: tX, targetY: tY,
-					source: entity?.player ? -1 : entity?.id, cast: cast, dot: spell.dot,
+					source: (entity?.player ? -1 : entity?.id) || bullet?.bullet?.source, cast: cast, dot: spell.dot,
 					bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
 					bulletSpin: spell.bulletSpin,
 					followPlayer: (!enemy && player && spell.followCaster) ? true : undefined,
@@ -967,7 +978,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 				0, {
 					noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, width:sz, height:sz, summon:spell.summon,
 					targetX: tX, targetY: tY,
-					source: entity?.player ? -1 : entity?.id, lifetime:spell.delay +
+					source: (entity?.player ? -1 : entity?.id) || bullet?.bullet?.source, lifetime:spell.delay +
 						(spell.delayRandom ? Math.floor(KDRandom() * spell.delayRandom) : 0), cast: cast, dot: spell.dot, events: spell.events, alwaysCollideTags: spell.alwaysCollideTags,
 					bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
 					bulletSpin: spell.bulletSpin,
@@ -1007,7 +1018,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					targetX: tX, targetY: tY,
 					followPlayer: (!enemy && player && spell.followCaster) ? true : undefined,
 					followCaster: (enemy && spell.followCaster) ? enemy.id : undefined,
-					source: entity?.player ? -1 : entity?.id, lifetime:spell.lifetime, cast: cast, dot: spell.dot, events: spell.events, aoe: spell.aoe,
+					source: (entity?.player ? -1 : entity?.id) || bullet?.bullet?.source, lifetime:spell.lifetime, cast: cast, dot: spell.dot, events: spell.events, aoe: spell.aoe,
 					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit, noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
 					damage: {evadeable: spell.evadeable, noblock: spell.noblock,  damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, desireMult: spell.desireMult, bindEff: spell.bindEff,
 						shield_crit: spell?.shield_crit, // Crit thru shield
@@ -1186,7 +1197,7 @@ function KinkyDungeonHandleMagic() {
 
 	if (KinkyDungeonSpells[KinkyDungeonCurrentPage] && !KinkyDungeonPreviewSpell) {
 
-		if (MouseIn(canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale * 0.5 - 200, canvasOffsetY_ui - 70 + 483*KinkyDungeonBookScale, 400, 60)) {
+		if (MouseIn(canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale * 0.5 - 175, canvasOffsetY_ui - 70 + 483*KinkyDungeonBookScale, 375, 60)) {
 			KDSendInput("spellCastFromBook", {CurrentSpell: KinkyDungeonCurrentPage});
 			KinkyDungeonTargetingSpell = KinkyDungeonHandleSpellCast(KinkyDungeonSpells[KinkyDungeonCurrentPage]);
 			KDModalArea = false;
@@ -1367,13 +1378,7 @@ function KinkyDungeonTestWhite(x,language) {
 }
 
 function KDSchoolColor(school) {
-	switch (school) {
-		case "Elements": return "#ff4444";
-		case "Conjure": return "#77cc99";
-		case "Illusion": return "#8877ff";
-	}
-
-	return KDTextTan;
+	return KDSchoolColors[school] || KDTextTan;
 }
 
 function KinkyDungeonDrawMagic() {
@@ -1453,7 +1458,9 @@ function KinkyDungeonDrawMagic() {
 		if (!KinkyDungeonPreviewSpell) {
 
 			if (!spell.passive && !spell.upcastFrom) {
-				KDDrawHotbar(canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 40, canvasOffsetY_ui + 50, spell.name, (I) => {
+				KDDrawHotbarBottom(undefined, true, spell);
+
+				KDDrawHotbar(canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 15, canvasOffsetY_ui + 50, spell.name, (I) => {
 					if (KinkyDungeonSpells[KinkyDungeonSpellChoices[I]] == spell) {
 						KDSendInput("spellRemove", {I:I});
 					} else {
@@ -1467,7 +1474,7 @@ function KinkyDungeonDrawMagic() {
 
 
 			if (!spell.passive && !(spell.type == "passive") && !spell.upcastFrom)
-				DrawButtonVis(canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale * 0.5 - 200, canvasOffsetY_ui - 70 + 483*KinkyDungeonBookScale, 400, 60, TextGet("KinkyDungeonSpellCastFromBook")
+				DrawButtonVis(canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale * 0.5 - 175, canvasOffsetY_ui - 70 + 483*KinkyDungeonBookScale, 375, 60, TextGet("KinkyDungeonSpellCastFromBook")
 					.replace("XXX", KinkyDungeonStatsChoice.has("Disorganized") ? "3" : (KinkyDungeonStatsChoice.has("QuickDraw") ? "No" : "1")), "White", "", "", false, true, KDButtonColor);
 		} else {
 			let cost = KinkyDungeonGetCost(spell);
@@ -1488,7 +1495,7 @@ function KinkyDungeonDrawMagic() {
 				return true;
 			}
 			return true;
-		}, true, canvasOffsetX_ui + xOffset + 100, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 60, TextGet("KinkyDungeonBookLastPage"), "White", "", "", false, true, KDButtonColor);
+		}, true, canvasOffsetX_ui + xOffset + 100 + 50, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 60, TextGet("KinkyDungeonBookLastPage"), "White", "", "", false, true, KDButtonColor);
 	}
 	if (KinkyDungeonCurrentPage < KinkyDungeonSpells.length-1) {
 		DrawButtonKDEx("magicnextpage", (bdata) => {
@@ -1503,13 +1510,13 @@ function KinkyDungeonDrawMagic() {
 			}
 
 			return true;
-		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 325, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 60, TextGet("KinkyDungeonBookNextPage"), "White", "", "", false, true, KDButtonColor);
+		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 375, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 60, TextGet("KinkyDungeonBookNextPage"), "White", "", "", false, true, KDButtonColor);
 	}
 	if (KDSwapSpell != -1) {
 		DrawTextKD(TextGet("KinkyDungeonMagicSpellsQuick").replace("SPELLNAME", TextGet("KinkyDungeonSpell" + KinkyDungeonSpells[KinkyDungeonSpellChoices[KDSwapSpell]].name)), canvasOffsetX_ui + xOffset + 600, 900, "white", KDTextGray0);
 	} else {
 		DrawTextKD(TextGet("KinkyDungeonSpellsLevels")
-			.replace("SPELLPOINTS", "" + KinkyDungeonSpellPoints), canvasOffsetX_ui + xOffset + 600, 890, "white", KDTextGray0);
+			.replace("SPELLPOINTS", "" + KinkyDungeonSpellPoints), canvasOffsetX_ui + xOffset + 300, 890, "white", KDTextGray0);
 	}
 
 }
@@ -2118,7 +2125,7 @@ function KinkyDungeonSaveSpellsConfig() {
 function KDDrawHotbar(xLoc, yLoc, name, fn) {
 	let w = 225;
 	let h = 50;
-	let x_start = xLoc;
+	/*let x_start = xLoc;
 	let y_start = yLoc;
 	for (let I = 0; I < KinkyDungeonSpellChoiceCount; I++) {
 		let x = x_start + w * Math.floor(I / KinkyDungeonSpellChoiceCountPerPage);
@@ -2153,6 +2160,16 @@ function KDDrawHotbar(xLoc, yLoc, name, fn) {
 			return true;
 		}, true, x, y, w - 25 - h, h - 5, label,
 		spell == name ? "White" : KDTextGray3, "", "");
+	}*/
+
+	let strs = TextGet("KDHotbarTutorial").split("|");
+	let II = 0;
+
+	let yy = 350;
+	let x = 1475;
+
+	for (let s of strs) {
+		DrawTextFitKD(s, x, yy + II++*32, 675, "#ffffff", KDTextGray0, 24);
 	}
 
 	DrawButtonKDEx("KDSpellsClear", (bdata) => {
@@ -2169,40 +2186,40 @@ function KDDrawHotbar(xLoc, yLoc, name, fn) {
 		KinkyDungeonSpellsConfig = "1";
 		KinkyDungeonLoadSpellsConfig();
 		return true;
-	}, true, xLoc, 800, 150, 54,
+	}, true, xLoc, 740, 150, 54,
 	localStorage.getItem('KinkyDungeonSpellsChoice' + 1) ? TextGet("KinkyDungeonLoadConfig") + "1" : "x", KinkyDungeonSpellsConfig == "1" ? "#ffffff" : "#888888", "");
 
 	DrawButtonKDEx("KDSpellsConfig2", (bdata) => {
 		KinkyDungeonSpellsConfig = "2";
 		KinkyDungeonLoadSpellsConfig();
 		return true;
-	}, true, xLoc + 225, 800, w - 25 - h, 54,
+	}, true, xLoc + 225, 740, w - 25 - h, 54,
 	localStorage.getItem('KinkyDungeonSpellsChoice' + 2) ? TextGet("KinkyDungeonLoadConfig") + "2" : "x", KinkyDungeonSpellsConfig == "2" ? "#ffffff" : "#888888", "");
 
 	DrawButtonKDEx("KDSpellsConfig3", (bdata) => {
 		KinkyDungeonSpellsConfig = "3";
 		KinkyDungeonLoadSpellsConfig();
 		return true;
-	}, true, xLoc + 450, 800, w - 25 - h, 54,
+	}, true, xLoc + 450, 740, w - 25 - h, 54,
 	localStorage.getItem('KinkyDungeonSpellsChoice' + 2) ? TextGet("KinkyDungeonLoadConfig") + "3" : "x", KinkyDungeonSpellsConfig == "3" ? "#ffffff" : "#888888", "");
 
 	DrawButtonKDEx("KDSaveSpellsConfig1", (bdata) => {
 		KinkyDungeonSpellsConfig = "1";
 		KinkyDungeonSaveSpellsConfig();
 		return true;
-	}, true, xLoc, 860, w - 25 - h, 54, TextGet("KinkyDungeonSaveConfig") + "1", KinkyDungeonSpellsConfig == "1" ? "#ffffff" : "#888888", "");
+	}, true, xLoc, 800, w - 25 - h, 54, TextGet("KinkyDungeonSaveConfig") + "1", KinkyDungeonSpellsConfig == "1" ? "#ffffff" : "#888888", "");
 
 	DrawButtonKDEx("KDSaveSpellsConfig2", (bdata) => {
 		KinkyDungeonSpellsConfig = "2";
 		KinkyDungeonSaveSpellsConfig();
 		return true;
-	}, true, xLoc + 225, 860, w - 25 - h, 54, TextGet("KinkyDungeonSaveConfig") + "2", KinkyDungeonSpellsConfig == "2" ? "#ffffff" : "#888888", "");
+	}, true, xLoc + 225, 800, w - 25 - h, 54, TextGet("KinkyDungeonSaveConfig") + "2", KinkyDungeonSpellsConfig == "2" ? "#ffffff" : "#888888", "");
 
 	DrawButtonKDEx("KDSaveSpellsConfig3", (bdata) => {
 		KinkyDungeonSpellsConfig = "3";
 		KinkyDungeonSaveSpellsConfig();
 		return true;
-	}, true, xLoc + 450, 860, w - 25 - h, 54, TextGet("KinkyDungeonSaveConfig") + "3", KinkyDungeonSpellsConfig == "3" ? "#ffffff" : "#888888", "");
+	}, true, xLoc + 450, 800, w - 25 - h, 54, TextGet("KinkyDungeonSaveConfig") + "3", KinkyDungeonSpellsConfig == "3" ? "#ffffff" : "#888888", "");
 
 }
 

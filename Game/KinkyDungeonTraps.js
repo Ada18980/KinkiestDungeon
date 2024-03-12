@@ -27,7 +27,7 @@ let KDTrapTypes = {
 				// We fire the dart
 				let player = KinkyDungeonEnemyAt(x, y) ? KinkyDungeonEnemyAt(x, y) : KinkyDungeonPlayerEntity;
 				KinkyDungeonCastSpell(x, y, spell, { x: startX, y: startY }, player, undefined);
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+				if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 				delete KinkyDungeonTilesGet(x + "," + y).Trap;
 				return {
 					triggered: true,
@@ -38,7 +38,7 @@ let KDTrapTypes = {
 				spell = KinkyDungeonFindSpell("SleepGas", true);
 				if (spell) {
 					KinkyDungeonCastSpell(x, y, spell, undefined, undefined, undefined);
-					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+					if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 					delete KinkyDungeonTilesGet(x + "," + y).Trap;
 					return {
 						triggered: true,
@@ -55,7 +55,7 @@ let KDTrapTypes = {
 	BedTrap: (tile, entity, x, y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BedTrap"), 0, true);
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		tile.Trap = undefined;
 		tile.Type = undefined;
 		KinkyDungeonMakeNoise(10, x, y);
@@ -67,7 +67,7 @@ let KDTrapTypes = {
 	CageTrap: (tile, entity, x, y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("CageTrap"), 0, true);
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		tile.Trap = undefined;
 		tile.Type = undefined;
 		return {
@@ -78,7 +78,7 @@ let KDTrapTypes = {
 	DisplayTrap: (tile, entity, x, y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DisplayTrap"), 0, true);
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		tile.Trap = undefined;
 		tile.Type = undefined;
 		return {
@@ -89,7 +89,7 @@ let KDTrapTypes = {
 	DisplayStandTrap: (tile, entity, x, y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DisplayTrap"), 0, true);
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		tile.Trap = undefined;
 		tile.Type = undefined;
 		return {
@@ -100,7 +100,7 @@ let KDTrapTypes = {
 	BarrelTrap: (tile, entity, x, y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BarrelTrap"), 0, true);
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		tile.Trap = undefined;
 		tile.Type = undefined;
 		return {
@@ -121,7 +121,7 @@ let KDTrapTypes = {
 			en.stun = 1;
 		}
 		if (created.length > 0) {
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+			if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 			delete KinkyDungeonTilesGet(x + "," + y).Trap;
 		}
 		return {
@@ -130,6 +130,12 @@ let KDTrapTypes = {
 		};
 	},
 	SpawnEnemies: (tile, entity, x, y) => {
+		if (!entity.player) {
+			return {
+				triggered: false,
+				msg: "",
+			};
+		}
 		let radius = tile.Power > 4 ? 4 : 2;
 		let Enemy = (tile.FilterBackup && tile.FilterTag && KinkyDungeonPlayerTags.get(tile.FilterTag)) ? tile.FilterBackup : tile.Enemy;
 		let created = KinkyDungeonSummonEnemy(
@@ -143,7 +149,7 @@ let KDTrapTypes = {
 			}
 		}
 		if (created.length > 0) {
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+			if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 			delete KinkyDungeonTilesGet(x + "," + y).Trap;
 		}
 		return {
@@ -164,7 +170,7 @@ let KDTrapTypes = {
 				}
 			}
 			KinkyDungeonCastSpell(x + xx, y + yy, spell, undefined, undefined, undefined, "Trap");
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+			if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 			delete KinkyDungeonTilesGet(x + "," + y).Trap;
 			let etiles = Object.values(KDGetEffectTiles(x, y)).filter((etile) => {
 				return etile.tags && etile.tags.includes("runetrap");
@@ -202,7 +208,7 @@ let KDTrapTypesStepOff = {
 				if (spawned < maxspawn) {
 					let Enemy = KinkyDungeonGetEnemy(
 						tags, MiniGameKinkyDungeonLevel,
-						KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+						(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 						'0', requireTags, {requireHostile: "Player"}, undefined, undefined, undefined, undefined, undefined, true);
 					if (Enemy) {
 						if (KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, false, Enemy.tags.construct ? 23 : undefined, true, true, "Ambush", true, 1.5, true, undefined, true).length == 0) {
@@ -217,7 +223,7 @@ let KDTrapTypesStepOff = {
 				KinkyDungeonMapSet(x, y, 'd');
 				created = KinkyDungeonSummonEnemy(x, y, "DoorLock", 1, 0, false, lifetime).length;
 				if (created > 0) {
-					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
+					if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
 					KinkyDungeonMakeNoise(12, x, y);
 					delete KinkyDungeonTilesGet(x + "," + y).StepOffTrap;
 					KinkyDungeonMapSet(x, y, 'D');
@@ -243,6 +249,7 @@ function KinkyDungeonHandleStepOffTraps(entity, x, y, moveX, moveY) {
 			KinkyDungeonSendEvent("beforeStepOffTrap", {x:x, y:y, tile: tile, flags: flags});
 			let msg = "";
 			let color = "#ff0000";
+			let trap = tile.StepOffTrap;
 
 			if (KDTrapTypesStepOff[tile.StepOffTrap]) {
 				let res = KDTrapTypesStepOff[tile.StepOffTrap](tile, entity, x, y);
@@ -250,10 +257,11 @@ function KinkyDungeonHandleStepOffTraps(entity, x, y, moveX, moveY) {
 			}
 
 			if (msg) {
+				KDMapData.TrapsTriggered++;
 				KDTrigPanic();
 
 				if (msg == "Default")
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrap" + tile.StepOffTrap), color, 2);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrap" + (trap) + (tile.extraTag || "")), color, 2);
 				else
 					KinkyDungeonSendTextMessage(10, msg, color, 2);
 			}
@@ -273,6 +281,8 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 			let msg = "";
 			let triggered = false;
 			let color = "#ff0000";
+			let trap = tile.Trap;
+
 			if (KinkyDungeonStatsChoice.has("Rusted") && KDRandom() < 0.25) {
 				msg = TextGet("KDTrapMisfire");
 			} else {
@@ -282,12 +292,15 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 					triggered = res.triggered;
 				}
 			}
-			if (entity.player && (msg || triggered)) {
+			if (entity == KinkyDungeonPlayerEntity && triggered) {
+				KDMapData.TrapsTriggered++;
+			}
+			if (entity == KinkyDungeonPlayerEntity && (msg || triggered)) {
 				KDTrigPanic();
 			}
-			if (msg) {
+			if (msg && entity == KinkyDungeonPlayerEntity) {
 				if (msg == "Default")
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrap" + tile.Trap + (tile.extraTag || "")), color, 2 + KDGameData.SlowMoveTurns);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrap" + (trap) + (tile.extraTag || "")), color, 2 + KDGameData.SlowMoveTurns);
 				else
 					KinkyDungeonSendTextMessage(10, msg, color, 2 + KDGameData.SlowMoveTurns);
 			}

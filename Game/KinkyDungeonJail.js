@@ -3,9 +3,11 @@
 /** Affects security level based on owning faction */
 let KDMainFactionSecurityMod = 35;
 
-
 /** Time spent in cage before guards start getting teleported */
 let KDMaxCageTime = 100;
+
+/** max keys on the map at once **/
+let KDMaxKeys = 2;
 
 /** Only these have jail events */
 let KDJailFilters = ['jail'];
@@ -52,7 +54,7 @@ function KDGetJailEvent(guard, xx, yy) {
 function KinkyDungeonLoseJailKeys(Taken, boss, enemy) {
 	// KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail' || KDGameData.PrisonerState == 'chase'
 	if (KinkyDungeonFlags.has("BossUnlocked")) return;
-	if (KDGameData.JailKey) {
+	if (KDMapData.KeysHeld > 0) {
 		if (Taken) {
 			KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonRemoveJailKey"), "#ff0000", 3);
 			if (enemy) {
@@ -61,22 +63,20 @@ function KinkyDungeonLoseJailKeys(Taken, boss, enemy) {
 					enemy.items.push("Keyring");
 			}
 		}
-		KDGameData.JailKey = false;
+		KDMapData.KeysHeld--;
 	}
 	if (boss) {
-		KDGameData.JailKey = false;
+		KDMapData.KeysHeld--;
 		KDMapData.GroundItems = KDMapData.GroundItems.filter((item) => {return item.name != "Keyring";});
 	}
 }
 
 function KinkyDungeonUpdateJailKeys() {
-	if (!KDGameData.JailKey) {
+	if (KDMapData.EscapeMethod != "Key") return;
+	if (KDMapData.KeysHeld < 3) {
 		let altRoom = KinkyDungeonAltFloor(KDGameData.RoomType);
 		if ((!altRoom || !altRoom.nokeys) && (!KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel) || !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel).nokeys)) {
-			let keyCount = KDMapData.GroundItems.filter((item) => {return item.name == "Keyring";}).length;
-			for (let i = 0; i < 2 - keyCount; i++) {
-				KinkyDungeonPlaceJailKeys();
-			}
+			KinkyDungeonPlaceJailKeys();
 		}
 	}
 }
@@ -154,6 +154,7 @@ function KinkyDungeonCanPlay(enemy) {
 }
 
 function KinkyDungeonCheckRelease() {
+	if (KDMapData.JailFaction && KDFactionRelation("Jail", KDMapData.JailFaction) < -0.15) return -1;
 	if (KDGameData.RoomType) {
 		let altRoom = KinkyDungeonAltFloor(KDGameData.RoomType);
 		if (altRoom && altRoom.noRelease) return altRoom.releaseOnLowSec ? (KDGetEffSecurityLevel() >= KDSecurityLevelHiSec ? -1 : 1) : -1;
@@ -510,28 +511,30 @@ function KinkyDungeonPlaceJailKeys() {
 	for (let X = 1; X < KDMapData.GridWidth; X += 1)
 		for (let Y = 1; Y < KDMapData.GridHeight; Y += 1)
 			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))
-				&& KDMapData.RandomPathablePoints[(X) + ',' + (Y)]
-				&& KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y) > 15
-				&& KDistChebyshev(X - KDMapData.EndPosition.x, Y - KDMapData.EndPosition.y) > 15
-				&& (!KDMapData.ShortcutPosition || KDistChebyshev(X - KDMapData.ShortcutPosition.x, Y - KDMapData.ShortcutPosition.y) > 15)
-				&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits))
+                && KDMapData.RandomPathablePoints[(X) + ',' + (Y)]
+                && KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y) > 15
+                && KDistChebyshev(X - KDMapData.EndPosition.x, Y - KDMapData.EndPosition.y) > 15
+                && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits))
 				jailKeyList.push({x:X, y:Y});
 
+	let keyCount = Math.max(0, KDMaxKeys - KDMapData.GroundItems.filter((item) => {return item.name == "Keyring";}).length);
+	let placed = 0;
 	let i = 0;
 
-	while (jailKeyList.length > 0) {
+	while (jailKeyList.length > 0 && placed < keyCount) {
 		let N = Math.floor(KDRandom()*jailKeyList.length);
 		let slot = jailKeyList[N];
 		if (KDGameData.KeyringLocations && i < KDGameData.KeyringLocations.length) {
 			slot = KDGameData.KeyringLocations[Math.floor(KDRandom() * KDGameData.KeyringLocations.length)];
+			i++;
 		}
-		if (i < 1000 && !KDMapData.GroundItems.some((item) => {return item.name == "Keyring" && KDistChebyshev(item.x - slot.x, item.y - slot.y) < KDMapData.GridHeight / 3;})) {
+		if (
+			!KDMapData.GroundItems.some((item) => {return item.name == "Keyring" && KDistChebyshev(item.x - slot.x, item.y - slot.y) < KDMapData.GridHeight / 3;})) {
 			KDMapData.GroundItems.push({x:slot.x, y:slot.y, name: "Keyring"});
+			placed += 1;
 		}
-		i++;
-		return true;
+		jailKeyList.splice(N, 1);
 	}
-
 }
 
 function KinkyDungeonHandleJailSpawns(delta) {
@@ -742,15 +745,17 @@ function KinkyDungeonTooMuchRestraint() {
  *
  * @param {entity} player
  * @param {entity} enemy
+ * @param {{x: number, y: number}} point
  */
-function KDPutInJail(player, enemy) {
+function KDPutInJail(player, enemy, point) {
 	let entity = enemy ? enemy : player;
 	let nearestJail = KinkyDungeonNearestJailPoint(entity.x, entity.y);
 	let jailRadius = (nearestJail && nearestJail.radius) ? nearestJail.radius : 1.5;
 	let playerInCell = nearestJail ? (Math.abs(player.x - nearestJail.x) < jailRadius - 1 && Math.abs(player.y - nearestJail.y) <= jailRadius)
 		: null;
 	if (!playerInCell) {
-		let point = {x: nearestJail.x, y: nearestJail.y};//KinkyDungeonGetNearbyPoint(nearestJail.x, nearestJail.y, true, undefined, true);
+		//let point = {x: nearestJail.x, y: nearestJail.y};//KinkyDungeonGetNearbyPoint(nearestJail.x, nearestJail.y, true, undefined, true);
+		if (!point) point = KinkyDungeonNearestJailPoint((enemy || player).x, (enemy || player).y, ["jail"]);
 		if (point) {
 			KDBreakTether(player);
 			if (player.player)
@@ -778,7 +783,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 			KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
 		}
 		KDGameData.KinkyDungeonPrisonExtraGhostRep += 2;
-		KDPutInJail(KinkyDungeonPlayerEntity, KinkyDungeonJailGuard());
+		KDPutInJail(KinkyDungeonPlayerEntity, KinkyDungeonJailGuard(), null);
 
 		if (KinkyDungeonJailGuard()?.KinkyDungeonJailTourInfractions < 1) {
 			let item = "CookieJailer";
@@ -1027,7 +1032,7 @@ function KinkyDungeonPassOut(noteleport) {
 
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
 
-	KDGameData.JailKey = false;
+	KDMapData.KeysHeld = 0;
 	KDResetAllAggro();
 	KinkyDungeonSaveGame();
 
@@ -1089,7 +1094,7 @@ function KDEnterDemonTransition() {
 	KinkyDungeonDressPlayer();
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Evil.ogg");
 
-	KDGameData.JailKey = false;
+	KDMapData.KeysHeld = 0;
 
 	KDMovePlayer(KDMapData.StartPosition.x, KDMapData.StartPosition.y, false);
 
@@ -1105,7 +1110,7 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 	//KDGameData.RoomType = "DollRoom"; // We do a tunnel every other room
 	//KDGameData.MapMod = ""; // Reset the map mod
 	if (cancelDialogue) KDGameData.CurrentDialog = "";
-	let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+	let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 	KDGameData.DollRoomCount = 0;
 	KinkyDungeonCreateMap(params, "DollRoom", "", MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, undefined, "");
 
@@ -1127,7 +1132,7 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 	KinkyDungeonDressPlayer();
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
 
-	KDGameData.JailKey = false;
+	KDMapData.KeysHeld = 0;
 
 	KDMovePlayer(Math.floor(KDMapData.GridWidth/2), Math.floor(KDMapData.GridHeight/2), false);
 
@@ -1226,8 +1231,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	//MiniGameKinkyDungeonLevel = Math.min(MiniGameKinkyDungeonLevel, Math.max(Math.floor(MiniGameKinkyDungeonLevel/10)*10, MiniGameKinkyDungeonLevel - KinkyDungeonSpawnJailers + KinkyDungeonSpawnJailersMax - 1));
 	KinkyDungeonSendEvent("defeat", {});
 
-	if (KinkyDungeonStatsChoice.get("LivingCollars"))
-		KDApplyLivingCollars();
+	KDApplyLivingCollars();
 
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if ((KDRestraint(inv).removePrison || KDRestraint(inv).forceRemovePrison) && (!KinkyDungeonStatsChoice.get("KinkyPrison") || KDRestraint(inv).forceRemovePrison || KDRestraint(inv).removeOnLeash || KDRestraint(inv).freeze || KDRestraint(inv).immobile)) {
@@ -1250,7 +1254,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 		KinkyDungeonJailedOnce = true;
 		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonLeashed2"), "#ff0000", 3);
 	}
-	let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+	let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 	KDGameData.KinkyDungeonSpawnJailers = KDGameData.KinkyDungeonSpawnJailersMax;
 	let defeat_outfit = params.defeat_outfit;
 	// Handle special cases
@@ -1279,7 +1283,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	KinkyDungeonDressPlayer();
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
 
-	KDGameData.JailKey = false;
+	KDMapData.KeysHeld = 0;
 	KinkyDungeonSaveGame();
 
 	if (PutInJail) {
@@ -1311,7 +1315,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(nearestJail.restraint), KDGetEffLevel(),false, undefined);
 	}
 	if (nearestJail.restrainttags) {
-		let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], false, undefined);
+		let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, undefined);
 		if (restraint)
 			KinkyDungeonAddRestraintIfWeaker(restraint, KDGetEffLevel(),false, undefined);
 	}
@@ -1623,7 +1627,8 @@ let KDCustomDefeatUniforms = {
 			if (r)
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, "Jail", true);
 		}
-		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("KiguMask"), 0, true, "Purple");
+		if (!KinkyDungeonStatsChoice.get("NoKigu"))
+			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("KiguMask"), 0, true, "Purple");
 	},
 
 	CyberDoll: () => {

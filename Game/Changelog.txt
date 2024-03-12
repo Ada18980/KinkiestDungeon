@@ -28,10 +28,62 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
-5.1.0
+5.2.6
+- Frozen Prison now brings an enemy up to 20% binding, then applies 10 binding per turn of freeze applied.
+
+5.2.5
+- Arcane Barrier nerfed to 0 + 10% max mana
+- Fix: Enemy with 0 hp won't be defeated from damage
+- Fix: Softlocked in the edge of reality
+- Fix: Game crash in high sec
+- Fix: Random mystery tile trap activation
+- Fix: Sealing pillars can enter same space as entrance and exit at Fuuka's
+- Fix: Simple text mismatch report
+- Fix: Dead-end / Crash in 5.2.3
+- Fix: Bug in fashion chastity belt masking
+- Fix: Sunglasses don't prevent blindness from changing light levels (5.1.15)
+- Fix: "Crash" when dogpiled by Shadow Hands
+- Fix: Problem when Loading Pre-5.2.2 Save
+- Fix: Enchanted gear that is unworn sometimes disappears
+- Attempted to fix item duplication glitch. Keep an eye out for whether it swings the other way and enchanted items start disappearing
+
+5.2.4
+- Added Bandit Hideout + new track
+
+5.2.3
+- 'dimensional rifts' to the edge of reality can be found
+- killsquad distance nerfed considerably
+
+5.2.2
+- Added a new system for tileset and mapmod selection at the end of the perk room
+
+5.2.1
+- Various bug fixes
+- Unmasked and Kigu Masks are separate
+- Dressmakers can now apply kigu masks
+
+5.2.0
+ - Added Sealing Pillars to Fuuka's fight, giving bound players a means of taking her down
+ - Submitting to fuuka now gives you a beneficial version of her collar instead.
+ - New boss! Lines are fuuka's and currently just gives you fuuka's collar, but the intended fight loop is there
+ - New 'Escape Method' system by Aelie!
+ - Wolfgirl boots and torso now have split color layers
+ - Nevermere punishment suit now has a leotard component
+ - Fixed bug where load from code didnt affect the NPC you were dressing
+ - Added crotch rope under panties option
  - Added Loot Recovery challenge mode
  - Added Aqua Slime and related restraints
  - Hopefully fixed shrine scarcity on bellows
+ - Added mana pressure plate
+ - Made allies ignore scenery unless the player is attacking it
+ - Added small escape power penalty for NOT having help
+ - Having help increases escape speed
+ - New variable: Restriction. Each restraint adds 1 restriction. Some add more.
+ - Restriction reduces cutting power by up to 60%
+ - Restriction reduces struggle power by up to 15%
+ - Restriction reduces remove power by up to 30%
+ - Restriction reduces unlock power by up to 30%
+ - Restriction reduces pick power by up to 40%
 
 5.1.15
  - Tweaked future harness lower

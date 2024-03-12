@@ -765,9 +765,10 @@ function KDGetBarricade(enemy, x, y, checkpoint = false, type = []) {
 	/** @type {Record<string, number>} */
 	let traps = {};
 	let max = 0;
+	let lvl = KDGetEffLevel();
 	if (!checkpoint) return ""; // TODO allow optional
 	for (let obj of Object.keys(KDBarricades)) {
-		if (KDBarricades[obj].filter(enemy, x, y, checkpoint, type)) {
+		if (lvl >= KDBarricades[obj].minlevel && KDBarricades[obj].filter(enemy, x, y, checkpoint, type)) {
 			traps[obj] = KDBarricades[obj].weight(enemy, x, y, checkpoint, type);
 			if (traps[obj] > max) max = traps[obj];
 		}
@@ -788,6 +789,7 @@ function KDGetBarricade(enemy, x, y, checkpoint = false, type = []) {
  */
 let KDBarricades = {
 	"Barricade": {
+		minlevel: 2,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return !enemy.Enemy.tags.leather && !enemy.Enemy.tags.rope && !enemy.Enemy.tags.slime && !enemy.Enemy.tags.robot && !enemy.Enemy.tags.dollsmith && !enemy.Enemy.tags.cyborg;
 		},
@@ -796,9 +798,10 @@ let KDBarricades = {
 		},
 	},
 	"BarricadeBlastDoor": {
+		minlevel: 4,
 		filter: (enemy, x, y, checkpoint, type) => {
 			let altRoom = KDGetAltType(MiniGameKinkyDungeonLevel);
-			let params = KinkyDungeonMapParams[altRoom?.useGenParams ? altRoom.useGenParams : KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+			let params = KinkyDungeonMapParams[altRoom?.useGenParams ? altRoom.useGenParams : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 			if (params?.enemyTags?.includes("oldrobot"))
 				return true;
 			return false;
@@ -809,6 +812,7 @@ let KDBarricades = {
 		lifetime: 9999,
 	},
 	"BarricadeRobot": {
+		minlevel: 4,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return (enemy.Enemy.tags.robot || enemy.Enemy.tags.cyborg) && !enemy.Enemy.tags.oldrobot;
 		},
@@ -817,6 +821,7 @@ let KDBarricades = {
 		},
 	},
 	"BarricadeMagic": {
+		minlevel: 3,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.mage;
 		},
@@ -825,6 +830,7 @@ let KDBarricades = {
 		},
 	},
 	"BarricadeConcrete": {
+		minlevel: 7,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.Security?.level_tech > 0 || (MiniGameKinkyDungeonLevel > 3 && KDRandom() < 0.1 * KDEnemyRank(enemy));
 		},
@@ -833,6 +839,7 @@ let KDBarricades = {
 		},
 	},
 	"BarricadeMetal": {
+		minlevel: 3,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.metal;
 		},
@@ -841,6 +848,7 @@ let KDBarricades = {
 		},
 	},
 	"ChaoticCrystal": {
+		minlevel: 2,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.chaos;
 		},
@@ -849,6 +857,7 @@ let KDBarricades = {
 		},
 	},
 	"GiantMushroom": {
+		minlevel: 1,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.mushroom;
 		},
@@ -857,6 +866,7 @@ let KDBarricades = {
 		},
 	},
 	"BarricadeFire": {
+		minlevel: 4,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.fire;
 		},
@@ -865,6 +875,7 @@ let KDBarricades = {
 		},
 	},
 	"BarricadeWater": {
+		minlevel: 1,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.water;
 		},
@@ -873,6 +884,7 @@ let KDBarricades = {
 		},
 	},
 	"BarricadeIce": {
+		minlevel: 3,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.ice;
 		},
@@ -881,6 +893,7 @@ let KDBarricades = {
 		},
 	},
 	"BarricadeEarth": {
+		minlevel: 5,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.earth;
 		},
@@ -889,6 +902,7 @@ let KDBarricades = {
 		},
 	},
 	"BarricadeElectric": {
+		minlevel: 4,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.electric;
 		},
@@ -897,6 +911,7 @@ let KDBarricades = {
 		},
 	},
 	"BarricadeAir": {
+		minlevel: 1,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.air;
 		},
@@ -904,7 +919,17 @@ let KDBarricades = {
 			return 25;
 		},
 	},
+	"BarricadeVine": {
+		minlevel: 1,
+		filter: (enemy, x, y, checkpoint, type) => {
+			return enemy.Enemy.tags?.nature;
+		},
+		weight: (enemy, x, y, checkpoint, type) => {
+			return 25;
+		},
+	},
 	"BarricadeShadowMetal": {
+		minlevel: 3,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.shadow || enemy.Enemy.tags?.demon;
 		},
@@ -913,6 +938,7 @@ let KDBarricades = {
 		},
 	},
 	"BarricadeShadow": {
+		minlevel: 2,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.shadow;
 		},
@@ -934,8 +960,9 @@ let KDBarricades = {
 function KDGetTrapSpell(enemy, x, y, checkpoint = false, type = []) {
 	/** @type {Record<string, number>} */
 	let traps = {};
+	let lvl = KDGetEffLevel();
 	for (let obj of Object.keys(KDBoobyTraps)) {
-		if (KDBoobyTraps[obj].filter(enemy, x, y, checkpoint, type))
+		if (lvl >= KDBoobyTraps[obj].minlevel && KDBoobyTraps[obj].filter(enemy, x, y, checkpoint, type))
 			traps[obj] = KDBoobyTraps[obj].weight(enemy, x, y, checkpoint, type);
 	}
 	return KDGetByWeight(traps);
@@ -947,6 +974,7 @@ function KDGetTrapSpell(enemy, x, y, checkpoint = false, type = []) {
  */
 let KDBoobyTraps = {
 	"RuneTrap_Rope": {
+		minlevel: 1,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.rope || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.ropeRestraints);
 		},
@@ -955,6 +983,7 @@ let KDBoobyTraps = {
 		},
 	},
 	"RuneTrap_Belt": {
+		minlevel: 2,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.leather || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.leatherRestraints);
 		},
@@ -963,6 +992,7 @@ let KDBoobyTraps = {
 		},
 	},
 	"RuneTrap_Chain": {
+		minlevel: 2,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.metal || enemy.Enemy.tags?.conjurer || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.chainRestraints) || enemy.Enemy.tags?.magicchain;
 		},
@@ -971,6 +1001,7 @@ let KDBoobyTraps = {
 		},
 	},
 	"RuneTrap_Ribbon": {
+		minlevel: 3,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.ribbon || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.ribbonRestraints || enemy.Enemy.tags?.ribbonRestraintsHarsh));
 		},
@@ -979,6 +1010,7 @@ let KDBoobyTraps = {
 		},
 	},
 	"RuneTrap_Leather": {
+		minlevel: 1,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.leather || enemy.Enemy.tags?.conjurer || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.leatherRestraints && enemy.Enemy.tags?.antiMagic);
 		},
@@ -987,6 +1019,7 @@ let KDBoobyTraps = {
 		},
 	},
 	"RuneTrap_Latex": {
+		minlevel: 1,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.latex || enemy.Enemy.tags?.conjurer || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.latexRestraints);
 		},
@@ -995,6 +1028,7 @@ let KDBoobyTraps = {
 		},
 	},
 	"RuneTrap_Rubber": {
+		minlevel: 1,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.latex || enemy.Enemy.tags?.slime || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.latexEncase || enemy.Enemy.tags?.latexEncaseRandom));
 		},
@@ -1003,6 +1037,7 @@ let KDBoobyTraps = {
 		},
 	},
 	"RuneTrap_VacCube": {
+		minlevel: 5,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.latex || (enemy.Enemy.tags?.latexEncase || enemy.Enemy.tags?.latexEncaseRandom);
 		},
@@ -1011,6 +1046,7 @@ let KDBoobyTraps = {
 		},
 	},
 	"RuneTrap_Slime": {
+		minlevel: 4,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.alchemist || enemy.Enemy.tags?.slime || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.slimeRestraints || enemy.Enemy.tags?.slimeRestraintsRandom));
 		},
@@ -1019,6 +1055,7 @@ let KDBoobyTraps = {
 		},
 	},
 	"RuneTrap_Vine": {
+		minlevel: 1,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.elf || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.nature || enemy.Enemy.tags?.vineRestraints));
 		},
@@ -1027,6 +1064,7 @@ let KDBoobyTraps = {
 		},
 	},
 	"RuneTrap_Bubble": {
+		minlevel: 1,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.water;
 		},
@@ -1035,6 +1073,7 @@ let KDBoobyTraps = {
 		},
 	},
 	"RuneTrap_SlimeBubble": {
+		minlevel: 4,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.slime;
 		},
@@ -1043,6 +1082,7 @@ let KDBoobyTraps = {
 		},
 	},
 	"RuneTrap_LatexSphere": {
+		minlevel: 5,
 		filter: (enemy, x, y, checkpoint, type) => {
 			return enemy.Enemy.tags?.latex;
 		},

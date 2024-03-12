@@ -110,7 +110,7 @@ function KinkyDungeonMakeBrightnessMap(width, height, mapBrightness, Lights, del
 	KinkyDungeonSendEvent("brightness",{update: delta, flags: flags});
 
 	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
-	let params = altType?.lightParams ? KinkyDungeonMapParams[altType.lightParams] : KinkyDungeonMapParams[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]];
+	let params = altType?.lightParams ? KinkyDungeonMapParams[altType.lightParams] : KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 
 	let ShadowColor = params.shadowColor != undefined ? params.shadowColor : 0x00001f;
 	let LightColor = params.lightColor != undefined ? params.lightColor : 0x000000;
@@ -391,11 +391,18 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 				if (KDGameData.visionBlind == 0) {
 					KinkyDungeonUpdateLightGrid = true;
 				}
-				KDGameData.visionBlind = 0.6*Math.max(0, (avg - KDGameData.visionAdjust) * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "blindResist")));
-				if (avg - KDGameData.visionAdjust > 0.5)
-					KinkyDungeonSendTextMessage(4, TextGet("KDVisionBlind"), "#ffffff", 1, false, true);
+				if (avg - KDGameData.visionAdjustBlind > 0.5) {
+					KDGameData.visionBlind = 0.5*Math.max(0, (avg - KDGameData.visionAdjust) * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "blindResist")));
+					if (KDGameData.visionBlind > 0.1)
+						KinkyDungeonSendTextMessage(4, TextGet("KDVisionBlind"), "#ffffff", 1, false, true);
+				}
+
 
 			}
+		}
+
+		if (delta == 1) {
+			KDGameData.visionAdjustBlind = ((KDGameData.visionAdjustBlind || 0) + KDGameData.visionAdjust * 9)/10;
 		}
 		if (Math.abs(KDGameData.visionAdjust - avg) < delta * flags.visionAdjustMult * 1.1) KDGameData.visionAdjust = avg;
 		if (KDGameData.visionAdjust > 1) KDGameData.visionAdjust = 1;

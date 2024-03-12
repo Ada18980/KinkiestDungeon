@@ -165,7 +165,7 @@ let KDDialogueTriggers = {
 				&& !KinkyDungeonFlags.get("ChastityOffer")
 				&& !KinkyDungeonFlags.get("NoTalk")
 				&& KDRandom() < 0.05
-				&& KinkyDungeonGetRestraint({tags: ["genericChastity"]}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]) != undefined);
+				&& KinkyDungeonGetRestraint({tags: ["genericChastity"]}, MiniGameKinkyDungeonLevel * 2, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)) != undefined);
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.8 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Elements)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
@@ -211,7 +211,7 @@ function KDDefaultPrereqs(enemy, AIData, dist, maxdist, chance, restraintTags, f
 			&& (!restraintTags || KinkyDungeonGetRestraint(
 				{tags: restraintTags},
 				KDGetEffLevel() * 1.5 + KDGetOfferLevelMod(),
-				KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint],
+				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 				undefined,
 				Lock) != undefined)
 			&& (KinkyDungeonStatsChoice.get("Undeniable") || !KDIsBrat(enemy) || force);
@@ -310,7 +310,7 @@ function KDBossLose(name, enemyName, tags, condition) {
 				&& enemyName.includes(enemy.Enemy.name)
 				&& !KinkyDungeonFlags.has("BossUnlocked")
 				&& ((!condition && !KinkyDungeonHasWill(0.1)) || (condition && condition()))
-				&& (!tags || !KinkyDungeonGetRestraint({tags: tags}, MiniGameKinkyDungeonLevel * 2, KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint])));
+				&& (!tags || !KinkyDungeonGetRestraint({tags: tags}, MiniGameKinkyDungeonLevel * 2, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint))));
 		},
 		weight: (enemy, dist) => {
 			return 100;

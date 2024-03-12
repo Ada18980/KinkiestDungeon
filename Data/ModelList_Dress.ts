@@ -16,7 +16,7 @@ AddModel({
 		{ Name: "LaceCorset", Layer: "Bustier", Pri: 20.1,
 			Invariant: true,
 			InheritColor: "Base",
-			DisplaceAmount: 100,
+			DisplaceAmount: 150,
 			DisplaceLayers: ToMap(["CorsetTorso"]),
 			DisplacementSprite: "CorsetSquish",
 			DisplacementInvariant: true,
@@ -201,7 +201,7 @@ AddModel({
 		{ Name: "BowCorset", Layer: "Bustier", Pri: 40.1,
 			Invariant: true,
 			InheritColor: "Corset",
-			DisplaceAmount: 100,
+			DisplaceAmount: 150,
 			DisplaceLayers: ToMap(["CorsetTorso"]),
 			DisplacementSprite: "CorsetSquish",
 			DisplacementInvariant: true,
@@ -226,7 +226,7 @@ AddModel({
 			Invariant: true,
 			//SwapLayerPose: {Pants: "CorsetUnder", Kneel: "CorsetUnder", KneelClosed: "CorsetUnder"},
 			InheritColor: "Corset",
-			DisplaceAmount: 100,
+			DisplaceAmount: 150,
 			DisplaceLayers: ToMap(["CorsetTorso"]),
 			DisplacementSprite: "CorsetSquish",
 			DisplacementInvariant: true,
@@ -312,7 +312,7 @@ AddModel({
 		{ Name: "HeavyCorset", Layer: "Bustier", Pri: 30.1,
 			Invariant: true,
 			InheritColor: "Corset",
-			DisplaceAmount: 100,
+			DisplaceAmount: 150,
 			DisplaceLayers: ToMap(["CorsetTorso"]),
 			DisplacementSprite: "CorsetSquish",
 			DisplacementInvariant: true,
@@ -864,6 +864,27 @@ AddModel({
 });
 
 AddModel({
+	Name: "Sunglasses",
+	Folder: "Shades",
+	Parent: "Suit",
+	TopLevel: true,
+	Categories: ["Accessories", "Face"],
+	Layers: ToLayerMap([
+		{ Name: "Glasses", Layer: "Glasses", Pri: 15,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "GlassesLens", Layer: "Glasses", Pri: 15.1,
+			InheritColor: "Lens",
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "Glasses",
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+AddModel({
 	Name: "MonocleLeft",
 	Folder: "Dress",
 	Parent: "Glasses",
@@ -985,7 +1006,7 @@ AddModel({
 		{ Name: "MageCorset", Layer: "Bustier", Pri: 2.1,
 			Invariant: true,
 			InheritColor: "Base",
-			DisplaceAmount: 100,
+			DisplaceAmount: 150,
 			DisplaceLayers: ToMap(["CorsetTorso"]),
 			DisplacementSprite: "CorsetSquish",
 			DisplacementInvariant: true,
@@ -1040,7 +1061,7 @@ AddModel({
 		{ Name: "MageCorset", Layer: "Corset", Pri: -10,
 			Invariant: true,
 			InheritColor: "Base",
-			DisplaceAmount: 100,
+			DisplaceAmount: 150,
 			DisplaceLayers: ToMap(["CorsetTorso"]),
 			DisplacementSprite: "CorsetSquish",
 			DisplacementInvariant: true,
@@ -1234,7 +1255,7 @@ AddModel({
 	Layers: ToLayerMap([
 		//...GetModelLayers("LaceCorset"),
 		...GetModelLayers("DressSkirtSplit"),
-		...GetModelLayers("LaceCrotchPanel"),
+		...GetModelLayers("LacePanties"),
 		...GetModelLayers("MageTop"),
 		...GetModelLayers("MageCollar2"),
 

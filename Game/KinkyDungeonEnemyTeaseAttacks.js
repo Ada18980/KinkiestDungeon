@@ -523,7 +523,7 @@ let KDTeaseAttacks = {
 				&& !KinkyDungeonIsSlowed(enemy)
 				&& (
 					player.player && AIData.attack.includes("Bind") && KDCanPickpocketPlayer(player) && !KDEnemyHasFlag(enemy, "nosteal")
-					&& !enemy.Enemy.nopickpocket && !KDGameData.JailKey && KDCanPickpocket(enemy)
+					&& !enemy.Enemy.nopickpocket && KDMapData.KeysHeld==0 && KDCanPickpocket(enemy)
 				) && KDPlayerIsStunned() &&
 				(
 					((KDIsPlayerTethered(KinkyDungeonPlayerEntity) || KinkyDungeonSlowLevel > 9) && KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.unarmed
@@ -554,7 +554,7 @@ let KDTeaseAttacks = {
 				} else if (KDGameData.KinkyDungeonLeashedPlayer < 1 && item && AIData.playerItems.length > 0
 					&& KinkyDungeonIsArmsBound() && ((!KinkyDungeonPlayerDamage || item.name != KinkyDungeonPlayerDamage.name) || KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.05) && KDRandom() < 0.5) {
 					if (item.type == Weapon) {
-						if (item.name == KinkyDungeonPlayerDamage?.name)
+						if (KDWeapon(item)?.name == KinkyDungeonPlayerDamage?.name)
 							KinkyDungeonDisarm(enemy, "Leash");
 						else
 							KinkyDungeonInventoryRemove(item);

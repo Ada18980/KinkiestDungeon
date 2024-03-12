@@ -44,7 +44,7 @@ AddModel({
 			//SwapLayerPose: {Pants: "CorsetUnder"},
 			HideWhenOverridden: true,
 			Invariant: true,
-			DisplaceAmount: 100,
+			DisplaceAmount: 150,
 			DisplaceLayers: ToMap(["CorsetTorso"]),
 			DisplacementSprite: "CorsetSquish",
 			DisplacementInvariant: true,

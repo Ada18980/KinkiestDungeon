@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.0"
+KDVersionStr,"5.2.6"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -76,6 +76,7 @@ KDToggleGraphicsQuality,High Quality Animations
 KDToggleEnemyAnimations,Enemy Animations
 KDToggleLazyWalk,One-Click Move
 KDToggleShiftLatch,Latch Shift Key
+KDToggleCrotchRopeOption,Crotch Rope under panties
 KDToggleChastityOption,Chastity over Panties
 KDToggleChastityOption2,Chastity over Harness
 KDToggleChastityBraOption,Chastity Bra over Bras
@@ -278,7 +279,7 @@ KinkyDungeonStatDesc39,"Enemies detect you more easily."
 KinkyDungeonStat40,"Bound Power"
 KinkyDungeonStatDesc40,"Your damage and evasion increases based on the number of restraints worn, up to +40% when thoroughly bound."
 KinkyDungeonStat41,"Kill Squad"
-KinkyDungeonStatDesc41,"Enemies see you through walls and at greater distance."
+KinkyDungeonStatDesc41,"Enemies gain increased blindsight and vision radius."
 
 KinkyDungeonStat42,"Supermarket"
 KinkyDungeonStatDesc42,"Commerce shrines can appear in levels and have slightly more items."
@@ -343,6 +344,8 @@ KinkyDungeonStatDollmakerVisor,"Doll Hunter V"
 KinkyDungeonStatDescDollmakerVisor,"You start with the Dollmaker's Visor."
 KinkyDungeonStatDollmakerMask,"Doll Hunter M"
 KinkyDungeonStatDescDollmakerMask,"You start with the Dollmaker's Mask."
+KinkyDungeonStatStartShadow,"Persisting Desires"
+KinkyDungeonStatDescStartShadow,"Your dark desires are endless."
 
 KinkyDungeonStatVengeance,"Vengeance"
 KinkyDungeonStatDescVengeance,"Defeating an enemy greatly distracts you."
@@ -382,7 +385,7 @@ KinkyDungeonStatMapGigantic,"Labyrinthine Halls"
 KinkyDungeonStatDescMapGigantic,"Increases the size of maps by 3 in each direction."
 
 KinkyDungeonStat24,"Rigger"
-KinkyDungeonStatDesc24,"Chain and glue damage increased by 20%. Binding on enemies is 30% stronger."
+KinkyDungeonStatDesc24,"Binding on enemies is 30% stronger."
 KinkyDungeonStat25,"Pacifist"
 KinkyDungeonStatDesc25,"All damage dealt to humanoid enemies is reduced by 90% except pain, grope, tickle, charm, psychic, chain, or glue."
 KinkyDungeonStatCurseSeeker,"Curse Seeker"
@@ -471,10 +474,6 @@ KinkyDungeonSpellDescriptionLockedUp3,"Locked Up is 300% effective. When Locked 
 KinkyDungeonSpellLockedUpX,Recalcitrant
 KinkyDungeonSpellDescriptionLockedUpX,"Relinquish the Locked Up perk. One time only. If you take the perk again, there is no going back."
 
-KinkyDungeonStatLivingCollars,"Living Collars"
-KinkyDungeonStatDescLivingCollars,"When getting captured with many of the same type of restraint, gain a collar that occasionally binds you with that type of restraint."
-
-
 KinkyDungeonStatNovicePet,"Novice Pet"
 KinkyDungeonStatDescNovicePet,"You can now sprint while wearing a petsuit. (Upgrades available in spell tree)"
 KinkyDungeonSpellNovicePet0,Novice Pet Perk
@@ -513,7 +512,9 @@ KinkyDungeonStatDescRusted,"Most traps have a 25% misfire chance each time you s
 KinkyDungeonStatNoPet,"Not a Pet"
 KinkyDungeonStatDescNoPet,"Petsuits occur less often."
 KinkyDungeonStatUnmasked,"Unmasked"
-KinkyDungeonStatDescUnmasked,"Hoods and full-face covering masks do not appear, but blindfolds are more powerful."
+KinkyDungeonStatDescUnmasked,"Hoods and full-face covering masks do not appear, but blindfolds are more powerful. Does not include kigurumi masks."
+KinkyDungeonStatNoKigu,"No Kigurumi Masks"
+KinkyDungeonStatDescNoKigu,"Removes face-mimicing masks from the game."
 KinkyDungeonStatBlackout,"Blackout"
 KinkyDungeonStatDescBlackout,"Blindfolds are stronger. While blindfolded you can only see enemies next to you."
 
@@ -698,6 +699,7 @@ KinkyDungeonPlayerVibrated3,"Strong vibrations!"
 KinkyDungeonPlayerVibrated4,"Intense vibrations!!"
 KinkyDungeonPlayerVibrated5,"Torturous vibrations!!!"
 
+KDStatRestriction,Your restraints are restrictive! Struggling is less effective without help.
 KDStatStun,"Stunned! You can't move!"
 KDStatBlind,"Your vision is impaired!"
 KDStatArms,"Arms are bound!"
@@ -769,7 +771,7 @@ KinkyDungeonBuffSlippery,"Graceful: Struggling power increased."
 KinkyDungeonBuffIronBlood,"Iron Blood: Reduced melee cost, increased mana costs."
 KinkyDungeonBuffSleepy,"Sleepy: You are sluggish and have a hard time keeping your eyes open."
 KinkyDungeonBuffEvasion,"Afterimage: Evasion greatly increased."
-KinkyDungeonBuffSlimeMimic,"We did it! We made outselves invisible--mmmmph!!!"
+KinkyDungeonBuffSlimeMimic,"We did it! We made ourselves invisible--mmmmph!!!"
 KinkyDungeonBuffd_SlimeMimic,"You are not currently attempting to disguise yourself. Click to reenable."
 KinkyDungeonBuffDisenchantSelf,"Your restraints are disenchanted, treating them as nonmagical for purposes of cutting."
 KinkyDungeonBuffLeatherBurst,"You can launch another leather restraint instantly!"
@@ -1043,6 +1045,16 @@ DungeonNamemrb,Marble Halls
 DungeonNamedll,Doll Storage
 DungeonName20,
 DungeonNameDollRoom,Doll Processing
+DungeonNameBanditFort,Bandit Hideout
+DungeonNameAncientVault,Ancient Vault
+DungeonNameSlaveMarket,Slave Market
+DungeonNameMysteriousElevator,Mysterious Elevator
+DungeonNameTempleAir,Temple of Air
+DungeonNameTempleFire,Temple of Fire
+DungeonNameTempleWater,Temple of Water
+DungeonNameTempleIce,Temple of Ice
+DungeonNameTempleElectric,Temple of Storms
+DungeonNameTempleEarth,Temple of Earth
 DungeonNameDemonTransition,The Edge of Reality
 DungeonNameDemonEscape,The Edge of Reality
 DungeonNameDemonPrison,Dark Dimension
@@ -1342,7 +1354,7 @@ ItemPickupDollID,"You steal the doll's identification card."
 KinkyDungeonInventoryItemDollID,Doll ID
 KinkyDungeonInventoryItemDollIDUse,"You apply a clever trick to reset your visor cooldown."
 KinkyDungeonInventoryItemDollIDDesc,"A chip used to identify dolls. She must have dropped it. Either way it contains valuable tech..."
-KinkyDungeonInventoryItemDollIDDesc2,"It could be used to trick your visor into thinking you've performed your tasks for a while."
+KinkyDungeonInventoryItemDollIDDesc2,"With enough, it can be used to remove Dollmaker's headwear."
 
 
 KinkyDungeonInventoryItemHeart,Heart Amulet
@@ -1370,7 +1382,7 @@ KinkyDungeonConsumableLessEffective,The potion was less effective due to your ga
 KinkyDungeonInventoryItemElfCrystal,Elven Soap
 KinkyDungeonInventoryItemElfCrystalUse,"You feel the restraints become loose on your skin!"
 KinkyDungeonInventoryItemElfCrystalDesc,"The secret to elven cosmetics and blemish-free skin."
-KinkyDungeonInventoryItemElfCrystalDesc2,"Makes you slippery for 10 turns, boosting all forms of struggling."
+KinkyDungeonInventoryItemElfCrystalDesc2,"Makes you slippery for 100 turns, boosting all forms of struggling."
 KinkyDungeonSpellCastSlippery,You feel the restraints become loose on your skin!
 
 
@@ -1648,6 +1660,7 @@ KinkyDungeonSlimeHarden,"The slime starts to harden over your skin..."
 
 KinkyDungeonLivingSpread,"The RESTRAINTNAME creates more bindings out of thin air! (+RestraintAdded)"
 KinkyDungeonLivingAppear,"A RESTRAINTNAME has appeared around your neck!  Beware of additional restraints!"
+KinkyDungeonLivingDormant,"The RESTRAINTNAME has run out of bindings to add and has gone dormant for a period of time."
 
 NameAngel,Angel
 KillAngel,"You subdue the angel!"
@@ -2106,7 +2119,7 @@ AttackWolfExecutiveLock,"The Executive's drones apply high-security locks to you
 
 NameWolfInstructor,Wolf Instructor
 KillWolfInstructor,"The instructor deploys active camoflague and retreats!"
-AttackWolfInstructor,"The instructor disciplies you! (DamageTaken)"
+AttackWolfInstructor,"The instructor disciplines you! (DamageTaken)"
 AttackWolfInstructorBind,"The instructor applies advanced training gear! (+RestraintAdded)"
 AttackWolfInstructorLock,"The instructor adds a lock to your restraints."
 
@@ -2667,6 +2680,8 @@ KillMaidforceQuest,You murder the informant!
 NameBanditQuest,Thug
 KillBanditQuest,You murder the thug!
 
+NameAntiqueQuest,Antique Merchant
+KillAntiqueQuest,You smash the antique merchant!
 NameBlacksmithQuest,Blacksmith
 KillBlacksmithQuest,You murder the blacksmith!
 NameArmorerQuest,Armorer
@@ -2992,6 +3007,7 @@ KinkyDungeonStruggleRemoveSuccess,"You free yourself from the TargetRestraint!"
 KinkyDungeonStruggleCutSuccess,"You damage the TargetRestraint enough to escape!"
 
 KinkyDungeonStruggleCutDestroy,"The TargetRestraint is destroyed by your attempts."
+KinkyDungeonStruggleCutDestroyFail,"The TargetRestraint comes off before taking serious damage."
 
 KinkyDungeonStruggleLimit,"This is as far as you can struggle. You'll have to remove the TargetRestraint some other way."
 KinkyDungeonRemoveLimit,"The item is too tight. You'll need to loosen the TargetRestraint somehow first..."
@@ -3024,6 +3040,7 @@ KinkyDungeonStruggleStruggleImpossibleAroused,"You groan in frustration as you r
 KinkyDungeonStruggleStruggleImpossible2,"The TargetRestraint tightens itself as you try to squeeze out!"
 KinkyDungeonStruggleStruggleImpossible3,"You will need someone's help to squeeze out of the TargetRestraint."
 KinkyDungeonStruggleStruggleImpossibleGoddess,"The TargetRestraint flashes magically as the Goddess' curse resists your efforts!"
+KinkyDungeonStruggleStruggleRestricted,"The TargetRestraint holds firm against your attempts, held back by your restrictions."
 KinkyDungeonStruggleStruggleStrict,"You pull and tug but your other restraints keep the TargetRestraint securely in place!"
 KinkyDungeonStruggleStruggleStrictAroused,"You groan and tug but nothing budges on the TargetRestraint. You're bound too tightly by something else."
 KinkyDungeonStruggleStruggleImpossibleBound,"You are too tightly bound to have a chance against the TargetRestraint."
@@ -3035,6 +3052,7 @@ KinkyDungeonStruggleUnlockImpossible3,"You can't reach the keyhole on the Target
 KinkyDungeonStruggleUnlockImpossibleBound,"You can't hold the key to unlock the TargetRestraint with."
 KinkyDungeonStruggleUnlockImpossibleBoundAroused,"Your bound and shaking hands can't even hold the key for the TargetRestraint."
 KinkyDungeonStruggleUnlockImpossibleGoddess,"The goddess punishes you for trying to unlock the TargetRestraint!"
+KinkyDungeonStruggleUnlockRestricted,"You are too restricted to get the key into place!"
 KinkyDungeonStruggleUnlockStrict,"You try, but something is keeping your hands away from the TargetRestraint."
 KinkyDungeonStruggleUnlockStrictAroused,"You flail the key around uselessly but a strap is preventing you from unlocking the TargetRestraint!"
 KinkyDungeonStrugglePickImpossible,"This lock on the TargetRestraint is beyond your skill level!"
@@ -3046,6 +3064,7 @@ KinkyDungeonStrugglePickImpossibleBoundAroused,"You let out a frustrated sigh as
 KinkyDungeonStrugglePickStrict,"You try to start picking, but the lock on the TargetRestraint is secured by something else."
 KinkyDungeonStrugglePickStrictAroused,"You whimper as you realize the lock on the TargetRestraint is shielded by another strap."
 KinkyDungeonStrugglePickImpossibleGoddess,"You are distracted from the TargetRestraint by mental images of yourself remaining in bondage..."
+KinkyDungeonStrugglePickRestricted,"Your restrictions ruin your dexterity. You can't pick the TargetRestraint."
 
 KinkyDungeonStruggleRemoveNeedEdge,"You wiggle uselessly in the TargetRestraint. Maybe you need some kind of tool..."
 KinkyDungeonStruggleRemoveNeedEdgeAroused,"You rub your body against the floor to no avail, and sigh as the TargetRestraint stays secure."
@@ -3087,6 +3106,7 @@ KinkyDungeonStruggleRemoveImpossibleBoundAroused,"Your futile struggles do nothi
 KinkyDungeonStruggleRemoveStrict,"You try to undo the fasteners on the TargetRestraint, but they are blocked by other straps!"
 KinkyDungeonStruggleRemoveStrictAroused,"You rub your body uselessly as you find another strap securing the TargetRestraint."
 KinkyDungeonStruggleRemoveImpossibleGoddess,"You feel the Goddess' hand keeping the TargetRestraint tightly secured!"
+KinkyDungeonStruggleRemoveRestricted,"The TargetRestraint is too well-secured to take off with your level of restriction."
 KinkyDungeonStruggleCutImpossible,"The TargetRestraint is too durable to cut."
 KinkyDungeonStruggleCutImpossibleAroused,"Your hopeless attempts fail to even leave a scratch on the TargetRestraint."
 KinkyDungeonStruggleCutImpossible2,"You fail to leave even a scratch on the TargetRestraint!"
@@ -3096,6 +3116,7 @@ KinkyDungeonStruggleCutImpossibleBoundAroused,"You cry out in your bindings as t
 KinkyDungeonStruggleCutStrict,"Your arms are kept from having leverage on the TargetRestraint due to another item."
 KinkyDungeonStruggleCutStrictAroused,"You fiddle with the tool, but your arms lack leverage on the TargetRestraint due to another item"
 KinkyDungeonStruggleCutImpossibleGoddess,"The TargetRestraint flashes magically as the Goddess' curse resists your efforts!"
+KinkyDungeonStruggleCutRestricted,"Your restrictions limit your cutting power, unable to hurt the TargetRestraint."
 
 KinkyDungeonStruggleRemoveFailShadowHand,"You pry at the TargetRestraint..."
 KinkyDungeonStruggleRemoveFailShadowHandAroused,"You moan as the TargetRestraint squeeze you tightly..."
@@ -3307,6 +3328,7 @@ KDAlliedWith,"Allies: "
 KDHostileWith,"Enemies: "
 KDFriendsWith,"Favorable: "
 
+KinkyDungeonFaction,None
 KinkyDungeonFactionNevermere,Nevermere Trainers
 KinkyDungeonFactionDressmaker,DressUp Co.
 KinkyDungeonFactionBountyhunter,Bounty Hunters Guild
@@ -3321,6 +3343,8 @@ KinkyDungeonFactionElemental,Elementals
 KinkyDungeonFactionDragon,Dragonheart Order
 KinkyDungeonFactionMaidforce,MaidForce
 KinkyDungeonFactionMushy,Fungal Kingdom
+KinkyDungeonFactionSlime,Slime
+KinkyDungeonFactionPlant,Nature
 
 KinkyDungeonFactionWitch,Witches' Coven
 KinkyDungeonFactionLoveCrafters,Love Crafters
@@ -3368,6 +3392,7 @@ KinkyDungeonPoolDrink1,"You drink again, but you feel as if you are trespassing.
 KinkyDungeonPoolDrink2,"You drink again, knowing the risk this may entail..."
 KinkyDungeonPoolDrinkAnger,"You have angered the goddess of TYPE!!!"
 KinkyDungeonPoolDrinkSlime,"The slime washes off in the fountain!!!"
+KinkyDungeonGoddessCollar,"The goddess of TYPE is enraged and curses you with a divine punishment! (+RESTRAINT)"
 
 KinkyDungeonCommerceBuy,"The goddess offers a ItemTraded for ItemCost (NumCurrent/NumMax)"
 KinkyDungeonCommerceNext,"Next Offer"
@@ -3440,6 +3465,10 @@ RestraintDollStand,Doll Stand
 RestraintDollStandDesc,"A mobile display stand for dolls to keep them in place."
 RestraintDollStandDesc2,"As long as it's... inserted, you won't be going anywhere!"
 
+RestraintOneBar,One Bar Prison
+RestraintOneBarDesc,"A devious way to immobilize people."
+RestraintOneBarDesc2,"As long as it's... inserted, you won't be going anywhere!"
+
 
 RestraintDollStandSFW,Doll Stand
 RestraintDollStandSFWDesc,"A mobile display stand for dolls to keep them in place."
@@ -3485,6 +3514,10 @@ RestraintMikoCollarDesc,"A collar enchanted with ghastly energy."
 RestraintMikoCollarDesc2,"It seems to react with a pulse of energy whenever a nearby enemy is defeated."
 KDMikoCollarSummmon,"Your collar pulses, and a revenant appears to avenge the enemy you defeated!"
 
+RestraintMikoCollar2,Fuuka's Pet Collar
+RestraintMikoCollar2Desc,"A collar enchanted with beneficial ghastly energy."
+RestraintMikoCollar2Desc2,"It seems to react with a pulse of energy whenever a nearby enemy is defeated."
+KDMikoCollarSummmon2,"Your collar pulses, and a revenant appears to assist you!"
 
 RestraintDressBra,Dress Bustier
 RestraintDressBraDesc,"A deceptively cruel device, making it impossible to reach your nipples."
@@ -3577,9 +3610,9 @@ RestraintHighsecBoxbinderDesc2,"Made of a flexible, yet durable material, it's g
 RestraintHighsecStraitjacket,High-Security Straitjacket
 RestraintHighsecStraitjacketDesc,"A straitjacket enclosing your hands and arms completely, making your hands useless."
 RestraintHighsecStraitjacketDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
-RestraintHighsecTransportjacket,High-Security Transport Jacket
-RestraintHighsecTransportjacketDesc,"This jacket goes over a straitjacket to keep you from struggling out of it."
-RestraintHighsecTransportjacketDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
+RestraintHighsecTransportJacket,High-Security Lockdown Jacket
+RestraintHighsecTransportJacketDesc,"This jacket made with extra straps can even be used on top of another jacket for extra security."
+RestraintHighsecTransportJacketDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
 RestraintHighsecLegbinder,High-Security Legbinder
 RestraintHighsecLegbinderDesc,"An mythril legbinder enclosing your legs, making it difficult to move."
 RestraintHighsecLegbinderDesc2,"Made of a flexible, yet durable material, it's going to be really tough to escape."
@@ -3747,8 +3780,11 @@ RestraintMagicPetsuitDesc,"A set of straps and buckles enchanted with a powerful
 RestraintMagicPetsuitDesc2,"It's warded against cutting by nonmagic blades."
 
 RestraintMysticDuctTapeHead,Blessed Wrappings (Head)
-RestraintMysticDuctTapeHeadDesc,"A band of magic embalming ribbon wrapped tight around your eyes."
+RestraintMysticDuctTapeHeadDesc,"A band of magic embalming ribbon wrapped tight around your face."
 RestraintMysticDuctTapeHeadDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
+RestraintMysticDuctTapeEyes,Blessed Wrappings (Eyes)
+RestraintMysticDuctTapeEyesDesc,"A band of magic embalming ribbon wrapped tight around your eyes."
+RestraintMysticDuctTapeEyesDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintMysticDuctTapeMouth,Blessed Wrappings (Gag)
 RestraintMysticDuctTapeMouthDesc,"A band of magic embalming ribbon wrapped tight around your mouth."
 RestraintMysticDuctTapeMouthDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
@@ -3761,6 +3797,9 @@ RestraintMysticDuctTapeFeetMummyDesc2,"It clings, almost of its own accord, but 
 RestraintMysticDuctTapeBoots,Blessed Wrappings (Toes)
 RestraintMysticDuctTapeBootsDesc,"A layer of magic embalming ribbon wrapped tight around your feet."
 RestraintMysticDuctTapeBootsDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
+RestraintMysticDuctTapeHands,Blessed Wrappings (Hands)
+RestraintMysticDuctTapeHandsDesc,"A layer of magic embalming ribbon wrapped tight around your hands."
+RestraintMysticDuctTapeHandsDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintMysticDuctTapeLegsMummy,Blessed Wrappings (Legs)
 RestraintMysticDuctTapeLegsMummyDesc,"A layer of magic embalming ribbon wrapped tight around your thighs."
 RestraintMysticDuctTapeLegsMummyDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
@@ -3801,6 +3840,10 @@ RestraintStuffingDesc2,"You could spit it out easily, provided nothing's coverin
 
 
 
+
+RestraintMithrilLivingCollar,Living Mithril Collar
+RestraintMithrilLivingCollarDesc,"A collar made from an almost-weightless alloy that adjusts itself to your neck."
+RestraintMithrilLivingCollarDesc2,"It will occasionally cause mithril to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of mithril you have on you."
 
 RestraintMithrilCollar,Mithril Collar
 RestraintMithrilCollarDesc,"A collar made from an almost-weightless alloy.."
@@ -3852,6 +3895,9 @@ RestraintMithrilAnkleCuffs3Desc2,"They feel like they aren't even there, but the
 KinkyDungeonUnLinkMithrilAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 
+RestraintLeatherLivingCollar,Living Leather Collar
+RestraintLeatherLivingCollarDesc,"A collar made of tough leather that adjusts itself to your neck."
+RestraintLeatherLivingCollarDesc2,"It will occasionally cause leather to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of leather you have on you."
 
 RestraintLeatherArmCuffs,Leather Cuffs
 RestraintLeatherArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
@@ -4083,6 +4129,9 @@ RestraintWolfCuffsDesc2,"It uses a standard lock rather than a simple one."
 RestraintWolfArmbinder,Wolfbinder
 RestraintWolfArmbinderDesc,"A sophisticated training system used to keep wolfgirls from scratching their owners."
 RestraintWolfArmbinderDesc2,"Despite the harsh position, it is padded, breathable, and suitable for long term wear."
+RestraintWolfStrongArmbinder,Wolf Queenbinder
+RestraintWolfStrongArmbinderDesc,"This was made to be used during a coup attempt.  Unfortunately, its creator ended up wearing it instead, after the coup's failure."
+RestraintWolfStrongArmbinderDesc2,"Designed to hold the queen of wolves helpless for an indefinite period of time."
 RestraintWolfAnkleCuffs,Smart Training Cuffs
 RestraintWolfAnkleCuffsDesc,"Cuffs with a feature to punish the wearer if they act aggressively."
 RestraintWolfAnkleCuffsDesc2,"They are solid metal and will be hard to remove without the key."
@@ -4134,10 +4183,19 @@ RestraintAsylumLegCuffsDesc,"A pair of chained cuffs made of reinforced leather.
 RestraintAsylumLegCuffsDesc2,"They can be thrown from long distances."
 KinkyDungeonLinkAsylumLegCuffs,"The enemy attaches your ankle cuffs together!"
 
+RestraintAsylumLegCuffs2,Thigh Chain
+RestraintAsylumLegCuffs2Desc,"A pair of cuffs chaining your legs together."
+RestraintAsylumLegCuffs2Desc2,"They are made of a steel alloy."
+KinkyDungeonUnLinkAsylumLegCuffs2,"The leg cuff chain detaches!"
+
 
 RestraintTransportJacket,Transport Jacket
 RestraintTransportJacketDesc,"This jacket goes over a straitjacket to keep the arms trapped."
 RestraintTransportJacketDesc2,"It makes it extraordinarily difficult to escape the jacket it covers."
+
+RestraintAsylumLivingCollar,Living Asylum Collar
+RestraintAsylumLivingCollarDesc,"A collar made of tough cowhide that adjusts itself to your neck."
+RestraintAsylumLivingCollarDesc2,"It will occasionally cause asylum gear to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of asylum gear you have on you."
 
 RestraintAsylumArmCuffs,Asylum Cuffs
 RestraintAsylumArmCuffsDesc,"A pair of leather cuffs that make it easy to restrain you."
@@ -4172,9 +4230,9 @@ RestraintComfyStraitjacketDesc2,It feels tight but is actually made of an ethere
 RestraintLatexStraitjacket,Latex Jacket
 RestraintLatexStraitjacketDesc,A tight jacket that keeps your arms completely useless.
 RestraintLatexStraitjacketDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
-RestraintLatexTransportjacket,Latex Transport Jacket
-RestraintLatexTransportjacketDesc,This jacket goes over a straitjacket to keep you from struggling out of it.
-RestraintLatexTransportjacketDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
+RestraintLatexTransportJacket,Secure Latex Jacket
+RestraintLatexTransportJacketDesc,This straitjacket has extra straps and buckles to make sure you won't be struggling out of it.
+RestraintLatexTransportJacketDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 RestraintLatexArmbinder,Latex Armbinder
 RestraintLatexArmbinderDesc,A tight armbinder that pins your arms tightly behind your back, enclosed completely.
 RestraintLatexArmbinderDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
@@ -4216,6 +4274,9 @@ RestraintDragonArmbinderDesc2,"It is made from durable dragonscale, but secured 
 RestraintDragonStraps,Dragonscale Straps
 RestraintDragonStrapsDesc,"A set of straps buckling tightly around your body and secured at the wrists."
 RestraintDragonStrapsDesc2,"It's made from hard-to-cut dragonscale!!!"
+RestraintDragonStrongStraps,Dragon Queen Straps
+RestraintDragonStrongStrapsDesc,"A sturdy harness completely immobilizes your arms and torso. Made to be used on a queen of dragons."
+RestraintDragonStrongStrapsDesc2,"It's made from reinforced dragonscale!!!"
 RestraintDragonLegCuffs,Scale Leg Cuffs
 RestraintDragonLegCuffsDesc,"A pair of chained cuffs made of dragonscale. They slow your stride."
 RestraintDragonLegCuffsDesc2,"It's made from hard-to-cut dragonscale!!!"
@@ -4275,7 +4336,9 @@ KinkyDungeonUnLinkMagneticAnkleCuffs2,"Your ankle cuffs detatch!"
 
 
 
-
+RestraintBlacksteelLivingCollar,Living Blacksteel Collar
+RestraintBlacksteelLivingCollarDesc,"A collar made of a hardened steel alloy, chemically treated as to be stainless that adjusts itself to your neck."
+RestraintBlacksteelLivingCollarDesc2,"It will occasionally cause blacksteel to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of blacksteel you have on you."
 
 RestraintBlacksteelArmCuffs,Blacksteel Cuffs
 RestraintBlacksteelArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
@@ -4327,7 +4390,9 @@ KinkyDungeonUnLinkBlacksteelAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 
 
-
+RestraintScaleLivingCollar,Living Dragonscale Collar
+RestraintScaleLivingCollarDesc,"A collar made from leather cured from the hide of dragons that adjusts itself to your neck."
+RestraintScaleLivingCollarDesc2,"It will occasionally cause dragonscale to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of dragonscale you have on you."
 
 RestraintScaleArmCuffs,Dragonscale Cuffs
 RestraintScaleArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
@@ -4380,9 +4445,9 @@ KinkyDungeonUnLinkScaleAnkleCuffs3,"Your ankle cuff chain loosens!"
 RestraintMaidJacket,Maid Jacket
 RestraintMaidJacketDesc,"A bolero jacket keeping your arms pinned snugly. You can't even move them."
 RestraintMaidJacketDesc2,"There is no hope of struggling out. Better hope you can cut it..."
-RestraintMaidTransportJacket,Maid Transport Jacket
-RestraintMaidTransportJacketDesc,"A bolero transport jacket keeping your arms pinned snugly. You can't even move them."
-RestraintMaidTransportJacketDesc2,"There is no hope of struggling out. Better hope you can cut it..."
+RestraintMaidTransportJacket,Maid Punishment Jacket
+RestraintMaidTransportJacketDesc,"A bolero straitjacket made for unruly maids.  It is extra secure and locked tightly."
+RestraintMaidTransportJacketDesc2,"There is no hope of struggling out. Better get back to work..."
 RestraintMaidDress,Devious Maid Costume
 RestraintMaidDressDesc,"A devious maid outfit that forces the arms into an elbows-touching position."
 RestraintMaidDressDesc2,"Makes sure you focus on your work and not fooling around."
@@ -4411,7 +4476,7 @@ RestraintMaidMuzzleDesc2,"Reinforced and secured with a disc lock to ensure unru
 RestraintKiguMask,Suspicious Mask
 LootChestKiguMask,"You a padded metal blindfold, glowing magnificently, along with a strange crystal next to it."
 RestraintKiguMaskDesc2,"A well-fitted mask, covering your entire head neatly and locking in place."
-RestraintKiguMaskDesc,"It has eyeholes for you to see out of, but blocks access to the face."
+RestraintKiguMaskDesc,"It has eyeholes for you to somewhat see out of, but blocks access to the face."
 
 RestraintShadowLatexHeels,Shadow Heels
 RestraintShadowLatexHeelsDesc,"A set of impractical heels that clasp around your ankles. They make it hard to walk."
@@ -4419,15 +4484,21 @@ RestraintShadowLatexHeelsDesc2,"The material is stronger than leather, and flexe
 RestraintShadowLatexStraitjacket,Shadow Jacket
 RestraintShadowLatexStraitjacketDesc,"A tight straitjacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
 RestraintShadowLatexStraitjacketDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
-RestraintShadowLatexTransportjacket,Shadow Transport Jacket
-RestraintShadowLatexTransportjacketDesc,"A tight transport jacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
-RestraintShadowLatexTransportjacketDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
+RestraintShadowLatexStrongJacket,Black Hole Jacket
+RestraintShadowLatexStrongJacketDesc,"Like a black hole, anything that is caught in this jacket has no chance to escape its grasp."
+RestraintShadowLatexStrongJacketDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
 RestraintShadowLatexArmbinder,Shadow Armbinder
 RestraintShadowLatexArmbinderDesc,"A tight armbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
 RestraintShadowLatexArmbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
+RestraintShadowLatexStrongArmbinder,Black Hole Armbinder
+RestraintShadowLatexStrongArmbinderDesc,"Like a black hole, anything that is caught in this armbinder has no chance to escape its grasp."
+RestraintShadowLatexStrongArmbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
 RestraintShadowLatexBoxbinder,Shadow Boxbinder
 RestraintShadowLatexBoxbinderDesc,"A tight boxbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
 RestraintShadowLatexBoxbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
+RestraintShadowLatexStrongBoxbinder,Black Hole Boxbinder
+RestraintShadowLatexStrongBoxbinderDesc,"Like a black hole, anything that is caught in this boxbinder has no chance to escape its grasp."
+RestraintShadowLatexStrongBoxbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
 RestraintShadowLatexLegbinder,Shadow Legbinder
 RestraintShadowLatexLegbinderDesc,"A tight legbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
 RestraintShadowLatexLegbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
@@ -4444,6 +4515,9 @@ RestraintObsidianCollarDesc,"A collar made from a warm, shining alloy."
 RestraintObsidianCollarDesc2,"It's made of a dark, glistening volcanic metal."
 
 
+RestraintObsidianLivingCollar,Living Obsidian Collar
+RestraintObsidianLivingCollarDesc,"A collar made of a dark, shiny metal that adjusts itself to your neck. You can't help but hear whispering since it is so tight."
+RestraintObsidianLivingCollarDesc2,"It will occasionally cause obsidian to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of obsidian you have on you."
 
 RestraintObsidianArmCuffs,Obsidian Cuffs
 RestraintObsidianArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
@@ -4491,7 +4565,9 @@ RestraintObsidianAnkleCuffs3Desc2,"It's made of a dark, shiny metal. If you hold
 KinkyDungeonUnLinkObsidianAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 
-
+RestraintCrystalLivingCollar,Living Crystal Collar
+RestraintCrystalLivingCollarDesc,"A collar made of a glowing, brittle material that adjusts itself to your neck. You feel your energy flowing into it..."
+RestraintCrystalLivingCollarDesc2,"It will occasionally cause crystal to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of crystal you have on you."
 
 RestraintCrystalArmCuffs,Crystal Cuffs
 RestraintCrystalArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
@@ -4539,7 +4615,9 @@ RestraintCrystalAnkleCuffs3Desc2,"It's made of a glowing, brittle material. You 
 KinkyDungeonUnLinkCrystalAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 
-
+RestraintIceLivingCollar,Living Ice Collar
+RestraintIceLivingCollarDesc,"A collar made of enchanted ice that adjusts itself to your neck. It won't melt on their own, and the ice chills you to the bone..."
+RestraintIceLivingCollarDesc2,"It will occasionally cause ice to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of ice you have on you."
 
 RestraintIceArmCuffs,Ice Cuffs
 RestraintIceArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
@@ -4587,6 +4665,9 @@ RestraintIceAnkleCuffs3Desc2,"They're made of enchanted ice. They won't melt on 
 KinkyDungeonUnLinkIceAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 
+RestraintBanditLivingCollar,Living Slave Collar
+RestraintBanditLivingCollarDesc,"A collar made of a gold-tinted metal with a magical enchantment that adjusts itself to your neck."
+RestraintBanditLivingCollarDesc2,"It will occasionally cause slave gear to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of slave gear you have on you."
 
 RestraintBanditArmCuffs,Slave Cuffs
 RestraintBanditArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
@@ -4925,6 +5006,9 @@ RestraintAnkleShacklesDesc2,"Tough to walk in."
 RestraintThumbCuffs,Thumbcuffs
 RestraintThumbCuffsDesc,"Interferes with the use of your hands."
 RestraintThumbCuffsDesc2,"Another layer of restriction."
+RestraintThumbCuffsNew,Thumbcuffs
+RestraintThumbCuffsNewDesc,"Interferes with the use of your hands."
+RestraintThumbCuffsNewDesc2,"Another layer of restriction."
 RestraintHingedCuffs,Hinged Handcuffs
 RestraintHingedCuffsDesc,"Hinged cuffs with a rudimentary lock."
 RestraintHingedCuffsDesc2,"Difficult to unlock, let alone pick by yourself."
@@ -5573,6 +5657,10 @@ KinkyDungeonSpellCastSteelRainBurst,You raise your hand and several steel projec
 KinkyDungeonSpellTargetSteelRainPlug,Choose aim direction
 KinkyDungeonSpellTargetSteelRainBurst,Choose target point
 
+
+KinkyDungeonSpellEnemySteelRainBurst,Steel Torrent
+KinkyDungeonSpellEnemySteelRainPlug,Steel Rain
+
 KinkyDungeonSpellBanditBola,Bola
 KinkyDungeonSpellRestrainingDevice,Restraining Device
 KinkyDungeonRestrainingDeviceStun,The thrown restraining device latches onto you as you struggle to get it off!!!
@@ -5942,7 +6030,7 @@ KinkyDungeonSpellDescriptionTemperaturePlay,"Fire and Ice damage do 30% more dam
 KinkyDungeonSpellBurning,Fire Hazard
 KinkyDungeonSpellDescriptionBurning,"Fire damage ignites enemies for 5 damage per turn for 6 turns."
 KinkyDungeonSpellIcePrison,Frozen Prison
-KinkyDungeonSpellDescriptionIcePrison,"Freezing an enemy applies 10% of the enemy's max hp in binding, plus 10 per turn of freeze."
+KinkyDungeonSpellDescriptionIcePrison,"Freezing an enemy applies 10 binding per turn of freeze added, plus brings the enemy to a minimum of 20% binding."
 KinkyDungeonSpellLightningRod,Lightning Rod
 KinkyDungeonSpellDescriptionLightningRod,"After casting an Air or Storm spell that costs mana, become Conductive and gain 300% electric resist for 3 turns."
 KinkyDungeonSpellFrustration,Frustration
@@ -7016,7 +7104,7 @@ KinkyDungeonCurseInfoWill,"The item is protected by a seal of Determination. You
 KinkyDungeonCurseStruggleWill,"You are unable to muster the willpower to bypass the seal..."
 KinkyDungeonCurseUnlockWill,"Feeling determined, you override the seal and release the item!"
 
-KinkyDungeonCurseInfoGhostLock,"The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it."
+KinkyDungeonCurseInfoGhostLock,"The lock is protected by a revenant seal. You'll need 25 ectoplasm to disenchant it."
 KinkyDungeonCurseStruggleGhostLock,"Your fingers pass right through the collar. Pity your neck doesn't pass through it."
 KinkyDungeonCurseUnlockGhostLock,"You channel ghastly energy into the lock and break the seal!!!"
 
@@ -7489,9 +7577,9 @@ KinkyDungeonDamageTypeunflinching,"Unflinching"
 
 KinkyDungeonHeartIntro,"You found a magical amulet! Choose one of the following to determine its benefits:"
 KinkyDungeonHeartIntro1,"Focus: +50% max distraction and faster decay. +5% stamina protected from damage (base: 30%)."
-KinkyDungeonHeartIntro2,"Stamina: +50 max stamina, +50% stamina potion effectiveness."
-KinkyDungeonHeartIntro3,"Magic: +50 max mana. +50% mana potion effectiveness."
-KinkyDungeonHeartIntro4,"Willpower: +50 max willpower, +50% willpower potion effectiveness. +1 stamina regen/turn."
+KinkyDungeonHeartIntro2,"Stamina: +50 max stamina."
+KinkyDungeonHeartIntro3,"Magic: +50 max mana."
+KinkyDungeonHeartIntro4,"Willpower: +50 max willpower. +1 stamina regen/turn."
 
 KinkyDungeonHeartDistraction,"+Focus"
 KinkyDungeonHeartStamina,"+Stamina"
@@ -7538,6 +7626,14 @@ KinkyDungeonRemoveLowLevelRope,"Many ropes emerge around you, removing weaker ro
 KDClasses,"Choose Class:"
 
 KDSexyMode,"Distraction Mode:"
+
+KDProgressionMode,"Progression Mode:"
+KinkyDungeonProgressionMode0,Key Hunt
+KinkyDungeonProgressionMode1,Random
+KinkyDungeonProgressionMode2,Selected
+KinkyDungeonProgressionModeDesc0,"You will need to find the key to proceed to the next floor."
+KinkyDungeonProgressionModeDesc1,"Each floor will have a random task to unlock the stairs."
+KinkyDungeonProgressionModeDesc2,"You will select your task for each floor before you enter. Requires Perk Progression."
 
 KDPerksMode,"Perks Mode:"
 KinkyDungeonPerksMode0,Standard
@@ -7640,7 +7736,6 @@ KDStartGame,"Proceed"
 
 KinkyDungeonRemoveJailKey,"Your key to the stairs is taken away!"
 ItemPickupKeyring,"You found a keyring to the stairs! Now you just need to get there."
-KinkyDungeonNeedJailKey,"There seems to be a locked high-security door. Looks like you need a key."
 
 KinkyDungeonRemindJailPlayHelplessFuuka0,"Oh noes..."
 KinkyDungeonRemindJailPlayHelplessFuuka1,"Ueeee!"
@@ -7676,7 +7771,7 @@ KinkyDungeonRemindJailFuukaDisarm,"Oh ho~"
 KinkyDungeonRemindJailFuukaHit,"'Tis but a scratch!"
 KinkyDungeonRemindJailFuukaHitPlayer,"You'll be my pet soon~"
 KinkyDungeonRemindJailFuukaMiss,"Cute~"
-KinkyDungeonRemindJailFuukaBlocked,"Cute~"
+KinkyDungeonRemindJailFuukaBlock,"Cute~"
 KinkyDungeonRemindJailFuukaMissedMe,"Don't even try~"
 KinkyDungeonRemindJailFuukaBlockedMe,"Don't even try~"
 KinkyDungeonRemindJailFuukaLeash,"It's over~"
@@ -7733,7 +7828,7 @@ KinkyDungeonRemindJailDollmakerDisarm,"Did you think that would work?"
 KinkyDungeonRemindJailDollmakerHit,"Let's put those hands of yours away~"
 KinkyDungeonRemindJailDollmakerHitPlayer,"You are mine."
 KinkyDungeonRemindJailDollmakerMiss,"You're a fast one."
-KinkyDungeonRemindJailDollmakerBlocked,"You're a fast one."
+KinkyDungeonRemindJailDollmakerBlock,"You're a fast one."
 KinkyDungeonRemindJailDollmakerMissedMe,"Your antics amuse me~"
 KinkyDungeonRemindJailDollmakerBlockedMe,"Your antics amuse me~"
 KinkyDungeonRemindJailDollmakerLeash,"It's time for your makeover!"
@@ -7760,7 +7855,7 @@ KinkyDungeonRemindJailPlayHelplessTheWarden0,"This wasn't supposed to happen."
 KinkyDungeonRemindJailPlayHelplessTheWarden1,"The Collector has become the Collected."
 KinkyDungeonRemindJailPlayHelplessTheWarden2,"Fine, you win!"
 KinkyDungeonRemindJailPlayBratTheWarden0,"Cover me you brats!"
-KinkyDungeonRemindJailPlayBratTheWarden1,"They're coming for me!"
+KinkyDungeonRemindJailPlayBratTheWarden1,"She's coming for me!"
 KinkyDungeonRemindJailPlayBratTheWarden2,"Stay away!"
 KinkyDungeonRemindJailPlaySubTheWarden0,"Time for a taste of my own medicine..."
 KinkyDungeonRemindJailPlaySubTheWarden1,"I've been a bad girl, won't you do something about it?"
@@ -7790,7 +7885,7 @@ KinkyDungeonRemindJailTheWardenDisarm,"That thing is dangerous, my dear~"
 KinkyDungeonRemindJailTheWardenHit,"A feisty one, aren't you~"
 KinkyDungeonRemindJailTheWardenHitPlayer,"Playtime's over~"
 KinkyDungeonRemindJailTheWardenMiss,"Very nice."
-KinkyDungeonRemindJailTheWardenBlocked,"Most impressive!"
+KinkyDungeonRemindJailTheWardenBlock,"Most impressive!"
 KinkyDungeonRemindJailTheWardenMissedMe,"You need more training!"
 KinkyDungeonRemindJailTheWardenBlockedMe,"You need more training!"
 KinkyDungeonRemindJailTheWardenLeash,"Come along now~"
@@ -7812,6 +7907,62 @@ KinkyDungeonRemindJailChaseTheWardenCommandDefend,"This will be entertaining."
 KinkyDungeonRemindJailChaseTheWardenCommandAssault,"Show me what you've got~"
 KinkyDungeonRemindJailChaseTheWardenCommandBlock,"I'll watch~"
 
+
+KinkyDungeonRemindJailPlayHelplessSilverWitch0,"Fine then! Have it your way."
+KinkyDungeonRemindJailPlayHelplessSilverWitch1,"You'll be sorry you didn't listen to me~"
+KinkyDungeonRemindJailPlayHelplessSilverWitch2,"Why must you be so difficult!"
+KinkyDungeonRemindJailPlayBratSilverWitch0,"Cover me you brats!"
+KinkyDungeonRemindJailPlayBratSilverWitch1,"They're coming for me!"
+KinkyDungeonRemindJailPlayBratSilverWitch2,"Stay away!"
+KinkyDungeonRemindJailPlaySubSilverWitch0,"Time for a taste of my own medicine..."
+KinkyDungeonRemindJailPlaySubSilverWitch1,"I've been a bad girl, won't you do something about it?"
+KinkyDungeonRemindJailPlaySubSilverWitch2,"Mmmph... maybe I talk too much..."
+KinkyDungeonRemindJailPlaySilverWitch0,"I wonder how many days we'll get to spend together!"
+KinkyDungeonRemindJailPlaySilverWitch1,"You look so pretty as always, and forevermore~"
+KinkyDungeonRemindJailPlaySilverWitch2,"Time for an inspection~"
+KinkyDungeonRemindJailPlaySilverWitchStruggle,"There's no use in struggling, dear! I've made sure it's extra tight."
+KinkyDungeonRemindJailPlaySilverWitchLeash,"Playtime is over, back to your cell~"
+KinkyDungeonRemindJailPlaySilverWitchFree,"Why aren't you wearing your restraints?"
+KinkyDungeonRemindJailPlaySilverWitchLoot,"I did not order you to clean~"
+KinkyDungeonRemindJailPlaySilverWitchKey,"What's that you've got there?"
+KinkyDungeonRemindJailChaseSilverWitchAlert,"Found you!"
+KinkyDungeonRemindJailChaseSilverWitchAttack0,"I've been waiting for this~"
+KinkyDungeonRemindJailChaseSilverWitchAttack1,"Show me your moves."
+KinkyDungeonRemindJailChaseSilverWitchAttack2,"You'll make for a fine servant!"
+KinkyDungeonRemindJailChaseSilverWitchSpell0,"Very impressive."
+KinkyDungeonRemindJailChaseSilverWitchSpell1,"Yes, yes, show me what you've got!"
+KinkyDungeonRemindJailChaseSilverWitchSpell2,"I've always wanted another mage."
+KinkyDungeonRemindJailChaseSilverWitchSpellItem,"Tsk tsk, no silly tricks~"
+KinkyDungeonRemindJailChaseSilverWitchShrine,"Now now, you don't have permission to do that~"
+KinkyDungeonRemindJailChaseSilverWitchChest,"What do you think you're doing?"
+KinkyDungeonRemindJailChaseSilverWitchOrb,"Typical adventurers~"
+KinkyDungeonRemindJailChaseSilverWitchJailbreak,"Oh, you got out?"
+KinkyDungeonRemindJailSilverWitchGrab,"Too bad~"
+KinkyDungeonRemindJailSilverWitchDisarm,"That thing is dangerous, my dear~"
+KinkyDungeonRemindJailSilverWitchHit,"A feisty one, aren't you~"
+KinkyDungeonRemindJailSilverWitchHitPlayer,"Playtime's over~"
+KinkyDungeonRemindJailSilverWitchMiss,"Very nice."
+KinkyDungeonRemindJailSilverWitchBlock,"Most impressive!"
+KinkyDungeonRemindJailSilverWitchMissedMe,"You need more training!"
+KinkyDungeonRemindJailSilverWitchBlockedMe,"You need more training!"
+KinkyDungeonRemindJailSilverWitchLeash,"Come along now~"
+KinkyDungeonRemindJailSilverWitchPull,"Come closer, I want to see your face~"
+KinkyDungeonRemindJailSilverWitchStun,"What a shame."
+KinkyDungeonRemindJailSilverWitchPickpocket,"What's this?"
+KinkyDungeonRemindJailSilverWitchLock,"See if you can get out of that!"
+KinkyDungeonRemindJailSilverWitchIntro,"Do you know of the Dollmaker? I've got a proposal for you and I..."
+KinkyDungeonRemindJailChaseSilverWitchDefend0,"Hands off my pet~"
+KinkyDungeonRemindJailChaseSilverWitchDefend1,"Careful what you ask for~"
+KinkyDungeonRemindJailChaseSilverWitchDefend2,"Be gentle with her~"
+KinkyDungeonRemindJailChaseSilverWitchDefendHonor0,"Careful what you ask for~"
+KinkyDungeonRemindJailChaseSilverWitchDefendHonor1,"That's my property~"
+KinkyDungeonRemindJailChaseSilverWitchDefendHonor2,"Be gentle with her~"
+KinkyDungeonRemindJailChaseSilverWitchHonor0,"You've made some enemies, haven't you?"
+KinkyDungeonRemindJailChaseSilverWitchHonor1,"I should teach you to be a nice girl."
+KinkyDungeonRemindJailChaseSilverWitchHonor2,"You need to learn some manners~"
+KinkyDungeonRemindJailChaseSilverWitchCommandDefend,"This will be entertaining."
+KinkyDungeonRemindJailChaseSilverWitchCommandAssault,"Show me what you've got~"
+KinkyDungeonRemindJailChaseSilverWitchCommandBlock,"I'll watch~"
 
 KinkyDungeonRemindJailPlayHelpless0,"This is too tight..."
 KinkyDungeonRemindJailPlayHelpless1,"You'll never get away with this!"
@@ -11302,7 +11453,7 @@ rBlacksmithShopAxe,"(The SPEAKER nods)|The best defense is a good offense."
 rBlacksmithShopHammer,"(The SPEAKER nods)|Speak softly and carry a big hammer."
 rBlacksmithShopTrapCuffs,"(The SPEAKER smiles)|Can never be too prepared~"
 
-rArmorerShop,"(The SPEAKER waves)|Greetings,|I manufacture all sorts of armor.|Would you like to buy some?"
+rArmorerShop,"(The SPEAKER waves)|Hi.|I make armor. Only the finest.|I don't sell it cheap, unlike my twin."
 rArmorerShopAttack,"(The SPEAKER drops her hammer and cracks her knuckles)|Put em up!"
 rArmorerShop_AlreadyHave,"(The SPEAKER looks at you.)|But you already have one?"
 rArmorerShop_NoMoney,"(The SPEAKER folds her arms)|I don't do charity, girl."
@@ -11329,6 +11480,16 @@ rBowyerShopCrossbow,"(The SPEAKER shrugs)|It's big and bulky, but I guess it has
 rBowyerShopCrossbowPistol,"(The SPEAKER giggles)|Smile for the camera!"
 rBowyerShopAncientPowerSource,"(The SPEAKER nods)|It's like mana, but much more portable!|It powers duplication runes so you don't run out of arrows."
 rBowyerShopTrapBlindfold,"(The SPEAKER giggles)|I like to include these as a gift with every purchase~"
+
+
+rAntiqueShop,"(The SPEAKER rattles as she waves)|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!"
+rAntiqueShopAttack,"(The SPEAKER cracks her exposed knuckles)|So you've seen through my disguise..."
+rAntiqueShop_AlreadyHave,"(The SPEAKER looks at you.)|Yours is just fine, dear."
+rAntiqueShop_NoMoney,"(The SPEAKER chuckles)|You don't have enough gold for that, dear.|Try coming back after a good round of looting!"
+rAntiqueShopSunglasses,"(The SPEAKER nods)|My great grandmother used to wear these."
+rAntiqueShopSackOfSacks,"(The SPEAKER nods)|Adventurers used to love a good burlap sack.|Nowadays they've got that newfangled magic instead..."
+rAntiqueShopSnuffer,"(The SPEAKER nods)|Back in my day, they used candles for light!|These let you put them out to save wax."
+rAntiqueShopRope,"(The SPEAKER giggles)|I had all sorts of use for this back on the farm."
 
 rShopBuy,"(Select an item to buy from the SPEAKER)"
 rShopBuyAttack,"(Attack the SPEAKER?)"
@@ -11846,7 +12007,7 @@ rFuukaStage2,"(SPEAKER puts up a wall of talismans to regain her strength)|I'm..
 
 rFuukaWin,"(SPEAKER is out of breath)|I... can't... believe... it...|She drops her keys..."
 rFuukaWinAccept,"(SPEAKER looks flabbergasted)|R-really? Okay... I'll give you a reward then..."
-dFuukaWin_Accept,"(Submit to her anyway)"
+dFuukaWin_Accept,"(Submit to her anyway) (Gain a special collar)"
 rFuukaWinGag,"(SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!"
 dFuukaWin_Gag,"(Gag her)"
 
@@ -12407,10 +12568,10 @@ RestraintCyberDollJacketDesc2,"The material is somehow both stretchy yet hard en
 
 
 RestraintDollmakerVisor,Dollmaker's Visor
-RestraintDollmakerVisorDesc,"A visor used by the Dollmaker for assigning arbitrary tasks to her dolls. Dims vision unless you perform your duties capturing dolls."
+RestraintDollmakerVisorDesc,"A visor used by the Dollmaker for assigning arbitrary tasks to her dolls. The door to the next level won't open unless you perform your duties capturing dolls."
 RestraintDollmakerVisorDesc2,"It's made of metallic glass, almost indestructible. Fortunately, it's still possible to see through."
 RestraintDollmakerMask,Dollmaker's Mask
-RestraintDollmakerMaskDesc,"A mask used by the Dollmaker for assigning arbitrary tasks to her dolls. Dims vision unless you perform your duties capturing dolls."
+RestraintDollmakerMaskDesc,"A mask used by the Dollmaker for assigning arbitrary tasks to her dolls. The door to the next level won't open unless you perform your duties capturing dolls."
 RestraintDollmakerMaskDesc2,"It's made of metallic glass, almost indestructible. Fortunately, it's still possible to see through."
 
 KDControlHarnessTest,"Detected new hardware."
@@ -17979,6 +18140,7 @@ DungeonNameJourneyFloor,"Journey Selection"
 DungeonNamePerkRoom,"Shrine"
 DungeonNameJail,"High-Security Prison"
 DungeonNameDollRoom,"Doll Sorting Station"
+DungeonNameshoppe,"The Shoppe"
 
 KDCursedChestEquipCursed,"A cursed NEWITM flies out of the chest and latches tightly to you!"
 KDCursedChestEquip,"With a puff of magic, a NEWITM appears on your body!"
@@ -18081,7 +18243,7 @@ KDBattleRhythm,Rhythm
 KDBattleRhythmDodge,You avoid the attack in a flurry of impressive maneuvers!
 
 KinkyDungeonSpellArcaneBarrier,Arcane Barrier
-KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 40 + 10% Max Mana."
+KinkyDungeonSpellDescriptionArcaneBarrier,"When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 10% Max Mana."
 
 KinkyDungeonBuffHighValueFound,You sense that a high value target is near.
 
@@ -18792,16 +18954,57 @@ KinkyDungeonChallenge,Challenge Settings:
 KDColorPickerSimple,Simple
 KDColorPickerAdvanced,Advanced
 
-KDEscapeKey_Fail_Default,Exits locked! Find the key!
-KDEscapeKey_Pass_Default,Got the key!
-KDEscapeKey_Fail_Lever,Exits locked! Find a lever!
-KDEscapeKey_Pass_Lever,Exits unlocked!
-KDEscapeKey_Fail_Panel,Exits locked! Find control panel!
-KDEscapeKey_Pass_Panel,Exits unlocked!
-KDEscapeKey_Fail_Boss,BOSS ROOM
-KDEscapeKey_Pass_Boss,BOSS ROOM CLEARED!
-KDEscapeKey_Fail_None,Room bugged. Please Report.
-KDEscapeKey_Pass_None,""
+KDEscapeMinimap_Fail_Key,Exits locked!|Find NUMBER keys!
+KDEscapeMinimap_Pass_Key,Got the keys!
+KDEscapeMethod_Key,Key Hunt
+KDEscapeMethodDesc_Key,Find the keys hidden in the level. Enemies can steal the keys if you aren't careful.
+KDEscapeDoor_Key,There seems to be a locked high-security door. Looks like you need keys to open it.
+KDEscapeMinimap_Fail_Lever,Exits locked!|Find a lever!
+KDEscapeMinimap_Pass_Lever,Exits unlocked!
+KDEscapeMethod_Lever,Lever Hunt
+KDEscapeMethodDesc_Lever,Find the lever hidden in the level to unlock the door.
+KDEscapeDoor_Lever,There seems to be a locked high-security door. Looks like you need to pull a lever to open it.
+KDEscapeMinimap_Fail_Panel,Exits locked!|Find control panel!
+KDEscapeMinimap_Pass_Panel,Exits unlocked!
+KDEscapeMethod_Panel,Panel Hunt
+KDEscapeMethodDesc_Panel,Find the control panel hidden in the level to unlock the door.
+KDEscapeDoor_Panel,There seems to be a locked high-security door. Looks like you need find a control panel to open it.
+KDEscapeMinimap_Fail_Boss,BOSS ROOM
+KDEscapeMinimap_Pass_Boss,BOSS ROOM CLEARED!
+KDEscapeMethod_Boss,Boss
+KDEscapeMethodDesc_Boss,Defeat the boss to unlock the door.  You can also unlock it by losing to the boss and being penalized.
+KDEscapeDoor_Boss,There seems to be a locked high-security door. Looks like you need to defeat the boss to open it.
+KDEscapeMinimap_Fail_Kill,Exits locked!|Defeat NUMBER TYPE!
+KDEscapeMinimap_Pass_Kill,Quota Reached!
+KDEscapeMethod_Kill,Bounty
+KDEscapeMethodDesc_Kill,Defeat the specified targets to unlock the door.
+KDEscapeDoor_Kill,There seems to be a locked high-security door. Looks like you need to defeat the targetted enemies to open it.
+KDEscapeMinimap_Fail_Miniboss,Exits locked!|Defeat TYPE!
+KDEscapeMinimap_Pass_Miniboss,Miniboss defeated!
+KDEscapeMethod_Miniboss,Dangerous Bounty
+KDEscapeMethodDesc_Miniboss,Defeat the specified strong enemy to unlock the door.
+KDEscapeDoor_Miniboss,There seems to be a locked high-security door. Looks like you need to defeat the miniboss to open it.
+KDEscapeMinimap_Fail_Chest,Exits locked!|Open NUMBER Chests!
+KDEscapeMinimap_Pass_Chest,Quota Reached!
+KDEscapeMethod_Chest,Chest Hunt
+KDEscapeMethodDesc_Chest,Unlock the specified number of chests to unlock the door.
+KDEscapeDoor_Chest,There seems to be a locked high-security door. Looks like you need to open more chests to open it.
+KDEscapeMinimap_Fail_Quest,Exits locked!|Accept NUMBER Quests!
+KDEscapeMinimap_Pass_Quest,Quota Reached!
+KDEscapeMethod_Quest,Quest Hunt
+KDEscapeMethodDesc_Quest,Accept the specified number of goddess quests to unlock the door.
+KDEscapeDoor_Quest,There seems to be a locked high-security door. Looks like you need to accept more quests to open it.
+KDEscapeMinimap_Fail_Trap,Exits locked!|Trigger NUMBER Traps!
+KDEscapeMinimap_Pass_Trap,Quota Reached!
+KDEscapeMethod_Trap,Trap Hunt
+KDEscapeMethodDesc_Trap,Trigger the specified number of traps to unlock the door.
+KDEscapeDoor_Trap,There seems to be a locked high-security door. Looks like you need to trigger more traps to open it.
+KDEscapeMinimap_Fail_None,Room bugged. Please Report.
+KDEscapeMinimap_Pass_None,""
+KDEscapeMethod_None,None
+KDEscapeDoor_None,This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
+KDEscapeMethod_,None
+KDEscapeDoor_,This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
 
 KDVarSuffCursed,(Cursed)
 KDVarSuffPurified,(Purified)
@@ -19135,7 +19338,7 @@ KinkyDungeonTrapSpawnSummonedZombie,Strangely dressed zombies start approaching 
 KinkyDungeonTrapSpawnGag,A floating gag appears and starts flying toward you!
 KinkyDungeonTrapSpawnAnimBlindfold,A floating blindfold appears and starts flying toward you!
 KinkyDungeonTrapSpawnAnimYoke,A floating yoke appears and starts flying toward you!
-KinkyDungeonTrapSpawnAnimChastity,A floating armbinder appears and starts flying toward you!
+KinkyDungeonTrapSpawnAnimChastity,A floating chastity item appears and starts flying toward you!
 KinkyDungeonTrapSpawnAnimStraitjacket,A floating straitjacket appears and starts flying toward you!
 KinkyDungeonTrapSpawnAnimHarness,A floating harness appears and starts flying toward you!
 KinkyDungeonTrapSpawnAnimArmbinder,A floating harness appears and starts flying toward you!
@@ -19258,10 +19461,10 @@ KinkyDungeonInventoryItemSnufferUse,"You put out the torch."
 KinkyDungeonInventoryItemSnufferDesc,"A handy device for putting out torches and lanterns."
 KinkyDungeonInventoryItemSnufferDesc2,"But why would you want to do that? You hidin' something?"
 
-ItemPickupSackOfSacks,"You find a bag... full of bags."
-KinkyDungeonInventoryItemSackOfSacks,Sack of Sacks
+ItemPickupSackOfSacks,"You find a bag full of sacks. Or is it a sack full of bags?"
+KinkyDungeonInventoryItemSackOfSacks,Recursive Bag
 KinkyDungeonInventoryItemSackOfSacksUse,"You cover the light source."
-KinkyDungeonInventoryItemSackOfSacksDesc,"Bags inside a bag of bags inside a bag of bags..."
+KinkyDungeonInventoryItemSackOfSacksDesc,"Bags inside a bag of bags inside a bag of bags"
 KinkyDungeonInventoryItemSackOfSacksDesc2,"Can be placed over light sources to cover them."
 
 KDNotSnuffable,The snuffer doesn't work on that light source.
@@ -19292,6 +19495,8 @@ AttackElementalRubberLock,"The rubber elemental forms rubber locks around all yo
 
 KDEnchantRope1,Your ropes are enchanted with a lesser spell!
 KDEnchantRope2,Your ropes are enchanted with a magic spell!
+KDEnchantRope3,Your ropes are enchanted with a powerful spell!
+KDEnchantRope4,Your ropes are enchanted with a peerless spell!
 
 
 NameWitchShibari,Shibari Witch
@@ -19496,6 +19701,7 @@ KDPaletteBountyhunter,Bounty Hunter
 KDPaletteDressmaker,Dressup Co.
 KDPaletteDollsmith,Dollmaker
 KDPaletteLatex,Latex
+KDPaletteRubber,Rubber
 KDPaletteSlime,Slime
 KDPaletteAlchemist,Alchemist
 KDPaletteApprentice,Scholarly
@@ -19538,7 +19744,7 @@ KDPrisoners,Prisoners
 KDPromoteNPC,Promote to Servant
 KDDemoteNPC,Demote to Prisoner
 
-KDTeaseAttackResist_LeashGrab,The EnemyName tries to grab you!
+KDTeaseAttackResist_LeashGrab,The ENMY tries to grab you!
 
 KDTeaseAttack_SquishBreast,The ENMY reaches out and gives your breast a squeeze! (DMGDLT)
 KDTeaseAttack_SquishBreastCast,The ENMY squeezes your breasts as you raise your arms for a spell! (DMGDLT)
@@ -19606,8 +19812,26 @@ KDPetsuitCrawl,"You crouch and move slowly."
 KDChestTooltip,"Owned by: "
 
 RestraintWardenCollar,The Warden's Collar
-RestraintWardenCollarDesc,"A golden collar that marks you as part of someone's collection."
-RestraintWardenCollarDesc2,"You may go on your way, but only as long your freedom is useful to her."
+RestraintWardenCollarDesc,"You may go on your way, but only as long your freedom is useful to her. "
+RestraintWardenCollarDesc2,"A golden collar that marks you as part of someone's collection. Each time you break a spell orb, a collector is spawned to punish you."
+
+NameWardenArcher,"Sharpshooter"
+KillWardenArcher,"You teach the warden's servant a lesson."
+AttackWardenArcherBind,"The sharpshooter pulls your arms behind your back! (+RestraintAdded)"
+AttackWardenArcher,"The sharpshooter takes advantage of your weakness and squeezes your breast! (DamageTaken)"
+AttackWardenArcherLock,"The sharpshooter smiles and clicks a lock on you! (DamageTaken)"
+
+NameWardenFighter,"Gladiator"
+KillWardenFighter,"You teach the warden's servant a lesson."
+AttackWardenFighterBind,"The gladiator puts you in a hold and binds you! (+RestraintAdded)"
+AttackWardenFighter,"The gladiator chuckles as she spanks your butt! (DamageTaken)"
+AttackWardenFighterLock,"The gladiator smiles and clicks a lock on you! (DamageTaken)"
+
+NameWardenMage,"Magician"
+KillWardenMage,"You teach the warden's servant a lesson."
+AttackWardenMageBind,"The magician conjures some restraints on you! (+RestraintAdded)"
+AttackWardenMage,"The magician summons tickling hands to tease you! (DamageTaken)"
+AttackWardenMageLock,"The magician conjures some locks on you! (DamageTaken)"
 
 NameTheWarden1,"The Warden"
 KillTheWarden1,"The Warden disappears into a trapdoor!"
@@ -19627,8 +19851,8 @@ AttackTheWarden2Lock,"The Warden swings her enchanted whip and conjures locks on
 
 
 
-rTheWarden,"(You find a girl wearing an ornate dress)|(She glances at you)|And who might you be?"
-dTheWarden_Aggressive,"I should be asking the same of you."
+rTheWarden,"(The Warden glances at you)|Oh? What do we have here?|An adventurer?|You're not on the books..."
+dTheWarden_Aggressive,"Cut to the chase. Do I have to fight you or not?"
 dTheWarden_AggressiveGag,"(Growl at her)"
 rTheWardenAggressive,"(She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?"
 dTheWardenAggressive_Question,What kind of name is that?
@@ -19646,9 +19870,9 @@ dTheWardenAggressive_Brat,I do not need to introduce myself.
 dTheWardenAggressive_Brat_Proceed,"Neither do I."
 dTheWardenAggressive_Brat_ProceedGag,"(...)"
 dTheWardenAggressive_Brat_Proceed2,"(...)"
-dTheWarden_Defensive,"I'm an adventurer. And who are you?"
+dTheWarden_Defensive,"What is this place?"
 dTheWarden_DefensiveGag,"Mmmmm... (Blush)"
-rTheWardenDefensive,"(She grins)|My name is Fuuka, with the letters for Wind and Song.|The reincarnated ones call me Windsong,|they aren't very bright though."
+rTheWardenDefensive,"(She smiles)|Why, this is my private prison.|I bring only my prettiest toys to hang out here.|You can see them up there.|(She motions to the north)"
 dTheWardenDefensive_Question,Reincarnated ones?
 rTheWardenDefensive_Question,"(SPEAKER tilts her head)|I believe the term is 'Zombie' in the common tongue."
 rTheWardenDefensive_Question_Question,"(SPEAKER enjoys the discussion)|When most people die, their spirits pass on to the next life.|But some stay in this world, and with the right blessings,|one can grant them a second chance!|I plan to give them all proper bodies...|Eventually."
@@ -19694,7 +19918,7 @@ dTheWardenDefensive_Brat,I take it you're the hag in charge?
 dTheWardenDefensive_Brat_Proceed,"You are in charge, right?"
 dTheWardenDefensive_Brat_ProceedGag,"(Giggle)"
 dTheWardenDefensive_Brat_Proceed2,"(...)"
-dTheWarden_Brat,"Don't mess with me, little girl."
+dTheWarden_Brat,"That's a shame about your records, I'll be going now."
 dTheWarden_BratGag,"Mmpphgh? (Pout at her)"
 rTheWardenBrat,"(She smirks)|So you're that kind of visitor, huh?"
 dTheWardenBrat_Question,That's right. How powerful are you?
@@ -19712,7 +19936,7 @@ dTheWardenBrat_Brat,Pfff. Never heard of it.
 dTheWardenBrat_Brat_Proceed,"I bet I could do better."
 dTheWardenBrat_Brat_ProceedGag,"(Giggle)"
 dTheWardenBrat_Brat_Proceed2,"(...)"
-dTheWarden_Dom,"Why does that matter to you?"
+dTheWarden_Dom,"This is a nice place you got here."
 dTheWarden_DomGag,"(Stare at her silently, maintaining your posture)"
 rTheWardenDom,"(She grins)|I am in charge of this place.|Everything that goes through here goes through me.|You may address me as Fuuka Windsong."
 dTheWardenDom_Question,By what authority?
@@ -19731,7 +19955,7 @@ dTheWardenDom_BratGag,Hmmph. (Scoff into your gag)
 dTheWardenDom_Brat_Proceed,"It is indeed!"
 dTheWardenDom_Brat_ProceedGag,"(Giggle)"
 dTheWardenDom_Brat_Proceed2,"(...)"
-dTheWarden_Sub,"I'm an adventurer, miss."
+dTheWarden_Sub,"There must be a mistake. Sign me up!"
 dTheWarden_SubGag,"Mmmpphh~ (Moan and wiggle seductively)"
 rTheWardenSub,"(She grins)|Oh look at you!|I'm going to dress you up and make you my pet!|You can have all the scritches and snuggles you want!|My name's Fuuka!"
 dTheWardenSub_Question,A pet? What kind?
@@ -19824,6 +20048,15 @@ KinkyDungeonInventoryItemSunglassesDesc,"Cool people wear these indoors."
 KinkyDungeonInventoryItemSunglassesDesc2,"+25 holy resist. Reduces blind effects. Prevents blinding from light adjustment."
 LootSunglasses,"You find a pair of stylish shades."
 
+
+RestraintSunglasses2,Shades
+RestraintSunglasses2Desc,"Cool people wear these indoors."
+RestraintSunglasses2Desc2,"+25 holy resist. Reduces blind effects. Prevents blinding from light adjustment."
+KinkyDungeonInventoryItemSunglasses2,Sunglasses
+KinkyDungeonInventoryItemSunglasses2Desc,"Cool people wear these indoors."
+KinkyDungeonInventoryItemSunglasses2Desc2,"+25 holy resist. Reduces blind effects. Prevents blinding from light adjustment."
+LootSunglasses2,"You find a pair of stylish shades."
+
 KDBackgroundColor,Player Background Color
 
 KDBubbleBounce,An attack causes you to bounce...
@@ -19859,6 +20092,7 @@ KDBubbleCombine,The bubbles on you combine into one big bubble!
 
 KDStairsLocked,The stairs have been locked down for NMB more turns.
 
+curseInfoTightness,"Curse of Increasing Tightness: Your restraints get tighter over time."
 curseInfoLethargy,"Curse of Lethargy: Reduce distraction over time, but miscast chance is increased by AMNT%."
 curseInfoMute,"Curse of Mute: You cannot converse, and verbal spells cost AMNT% more mana."
 curseInfoClumsy,"Curse of Clumsiness: After casting an arm spell, you drop your currently held weapon."
@@ -19874,26 +20108,143 @@ KinkyDungeonItemModeDesc1,"Once items are lost, they are gone for good."
 KinkyDungeonItemModeDesc2,"Each item has a 25% chance of appearing in the chest between floors."
 LootCacheLostClothes,You find a familiar adventuring outfit!
 
+
+KDManaStationDrain1,"You feel energy flow out of you, activating the floor below!"
+KDManaStationDrain2,"You feel energy flow out of you, lighting up a circle on the floor!"
+KDManaStationFail,"The floor beneath you drains your mana, but you don't have enough to satisfy it."
+KDManaStationCharged,"The ground beneath you glows with magical energy!"
+
+KDEffectTileTooltipManaEmpty,"Mysterious Plate"
+KDEffectTileTooltipManaEmptyDesc,"What could it be?"
+KDEffectTileTooltipManaPartial,"Mana-Charged Plate"
+KDEffectTileTooltipManaPartialDesc,"It seems like it needs more power..."
+KDEffectTileTooltipManaFull,"Mana-Charged Plate"
+KDEffectTileTooltipManaFullDesc,"It's giving off a strange energy!"
+
+KDEffectTileTooltipMotionLamp,"Glass Plate"
+KDEffectTileTooltipMotionLampDesc,"Looks like it has lighting elements inside."
+
+KinkyDungeonSpellOneBarMissileBind,Many bars come out of the ground and restrain you!
+KinkyDungeonSpellOneBarMissile,One Bar Missile
+KinkyDungeonSpellRestrainingBolt,Restraining Bolt
+KinkyDungeonSpellSealingBolt,Sealing Bolt
+KinkyDungeonSpellMagicMissile,Bondage Blast
+KinkyDungeonSpellMagicMissile2,Magic Missile
+KinkyDungeonSpellWardenCage,Warden's Cage
+
+NameOneBar,Restricting Bars
+KillOneBar,The bars retract into the ground.
+
+NameFuukaPillar,Sealing Pillar
+KillFuukaPillar,"The pillar collapses, causing zombies to rise up!"
+
+KinkyDungeonStatNoHelp,"Safeword Please"
+KinkyDungeonStatDescNoHelp,"Allies don't help you unless you ask first."
+
+KDWardenCage,The Warden's cage falls atop you and attaches to the floor with a click.
+
+KDRestrainingBoltHit,The restraining bolt emits binding energies!
+KDRestrainingBoltKnockback,The restraining bolt flashes and pushes you backward!
+KDRestrainingBoltBind,The restraining bolt transforms into cuffs on impact!
+KDRestrainingBoltPin,The restraining bolt pins your cuffs to the wall!
+
+KDMagicMissileHit,The spell explodes into restraining energy!
+KDMagicMissileStun,The spell explodes and stuns you!
+KDMagicMissileBind,The spell congeals into restraints!
+
+KinkyDungeonSpellCastMagicMissileChannel,The mage starts channeling her energy!
+
+
+RestraintWardenArmCuffs,Warden Cuffs
+RestraintWardenArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
+RestraintWardenArmCuffsDesc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonLinkWardenArmCuffs,"The enemy attaches your wrist cuffs together!"
+
+RestraintWardenArmCuffs2,Wrist Chain
+RestraintWardenArmCuffs2Desc,"A pair of cuffs keeping your arms behind your back."
+RestraintWardenArmCuffs2Desc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonUnLinkWardenArmCuffs2,"Your cuffs detatch!"
+KinkyDungeonLinkWardenArmCuffs2,"The enemy attaches your elbow cuffs together!"
+
+RestraintWardenArmCuffs3,Cuffs Chain
+RestraintWardenArmCuffs3Desc,"A full set of cuffs keeping your arms in a strict elbow tie!"
+RestraintWardenArmCuffs3Desc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonUnLinkWardenArmCuffs3,"Your wrists detatch, leaving your elbows still bound!"
+
+RestraintWardenArmCuffs4,Elbow Chain
+RestraintWardenArmCuffs4Desc,"A pair of cuffs keeping your elbows locked together!"
+RestraintWardenArmCuffs4Desc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonUnLinkWardenArmCuffs4,"Your elbows detatch!"
+KinkyDungeonLinkWardenArmCuffs4,"The enemy attaches your wrist cuffs back together!"
+
+RestraintWardenLegCuffs,Warden Leg Cuffs
+RestraintWardenLegCuffsDesc,"A pair of cuffs on your legs."
+RestraintWardenLegCuffsDesc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonLinkWardenLegCuffs,"The enemy attaches your leg cuffs together!"
+RestraintWardenLegCuffs2,Thigh Chain
+RestraintWardenLegCuffs2Desc,"A pair of cuffs chaining your legs together."
+RestraintWardenLegCuffs2Desc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonUnLinkWardenLegCuffs2,"The leg cuff chain detaches!"
+
+RestraintWardenAnkleCuffs,Warden Ankle Cuffs
+RestraintWardenAnkleCuffsDesc,"A pair of cuffs on your ankles."
+RestraintWardenAnkleCuffsDesc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonLinkWardenAnkleCuffs,"The enemy attaches your ankle cuffs together!"
+RestraintWardenAnkleCuffs2,Ankle Chain
+RestraintWardenAnkleCuffs2Desc,"A pair of cuffs chaining your legs together."
+RestraintWardenAnkleCuffs2Desc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonUnLinkWardenAnkleCuffs2,"The ankle cuff chain detaches!"
+KinkyDungeonLinkWardenAnkleCuffs2,"Your ankle cuff chain is tightened and pulls your feet together!"
+RestraintWardenAnkleCuffs3,Short Ankle Chain
+RestraintWardenAnkleCuffs3Desc,"A pair of cuffs chaining your feet tightly together."
+RestraintWardenAnkleCuffs3Desc2,"They feel like they aren't even there, but the material is rigid and unyielding."
+KinkyDungeonUnLinkWardenAnkleCuffs3,"Your ankle cuff chain loosens!"
+
+
+KinkyDungeonTaunted,"Your buttons have been pushed, and not in a pleasant way!"
+KinkyDungeonBuffTaunted,"Defeat all taunting enemies or stay within the tiles to avoid shame!"
+KinkyDungeonSpellTaunt,Degradating Taunts
+KDTauntPunishment,You failed to come up with a proper comeback!
+
+KDSleetDmg,The field of frost damages you as you are chilled!
+KDNavMapConfirm,Confirm Path
+
+
 KDNavMap,Navigation Map
 KDNavMap_Info,Choose a path to take by clicking on a highlighted room.
 KDNavMap_Info2,Other paths will become inaccessible.
 KDNavMap_Floor,Floor NMB
-KDNavMap_Tileset,"Tileset: "
-KDNavMap_MapMod,"Map Modifier: "
-KDNavMap_RoomType,"Map Layout: "
-KDNavMap_Faction,"Controlling Faction: "
-KDNavMap_EscapeMethod,"Main Objective: "
-KDNavMap_SideRooms,"Side Objectives: "
+KDNavMap_Tileset,"Tileset:"
+KDNavMap_MapMod,"Map Modifier:"
+KDNavMap_RoomType,"Layout:"
+KDNavMap_Faction,"Controlling Faction:"
+KDNavMap_EscapeMethod,"Main Objective:"
+KDNavMap_SideRooms,"Points of Interest:"
 
 KDSideRoom_Lair_Witch,"Magical Study"
 KDSideRoom_Lair_Hall,"Maintenance Hall"
 KDSideRoom_GoldChest,"Ancient Chest"
+KDSideRoom_Elevator,"Mysterious Elevator"
 KDSideRoom_AuctionHall,"Auction Hall"
 KDSideRoom_DemonShrine,"Dark Altar"
+KDSideRoom_BanditFort,"Bandit Hideout"
 KDSideRoom_DemonTransition,"Dimensional Rift"
 
-KDMapMod_,""
+KDMapMod_,"None"
+KDMapMod_None,"None"
+KDMapMod_Witch,"Witch's Lair"
+KDMapMod_Mold,"Mold Infestation"
+KDMapMod_Bandit,"Bandit Raid"
+KDMapMod_Dragon,"Elemental Energy"
+KDMapMod_Plant,"Overgrown"
+KDMapMod_Slime,"Slime Infestation"
+KDMapMod_Wolf,"Wolfgirl Training"
+KDMapMod_Robot,"Drone Patrol"
 
-KDRoomType_,""
+KDRoomType_,"Normal"
+KDRoomType_ShopStart,"Shop"
+KDRoomType_Chamber,"Chamber"
+KDRoomType_Warden,"Prison"
+KDRoomType_Dollmaker,"Sorting Room"
 
-
+KDHotbarTutorial,"Click a hotbar position to assign the item to that slot.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs."

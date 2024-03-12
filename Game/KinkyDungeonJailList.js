@@ -19,12 +19,12 @@ let KDJailEvents = {
 			let mainFaction = KDGetMainFaction();
 			// Jail tag
 			let jt = KDMapData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[[KDMapData.JailFaction[Math.floor(KDRandom() * KDMapData.JailFaction.length)]]] : "jailer";
-			let Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"], undefined, undefined, ["gagged"]);
+			let Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', [jt, "jailer"], undefined, undefined, ["gagged"]);
 			if (!Enemy) {
-				Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"], undefined, undefined, ["gagged"]);
+				Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', [jt, "jailer"], undefined, undefined, ["gagged"]);
 				if (!Enemy) {
 					jt = "genericJailer";
-					Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint], '0', [jt, "jailer"]);
+					Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', [jt, "jailer"]);
 				}
 			}
 			let guard = {summoned: true, Enemy: Enemy, id: KinkyDungeonGetEnemyID(),
@@ -459,32 +459,32 @@ let KDJailOutfits = {
 		jail: true,
 		parole: false,
 		restraints: [
-			{Name: "Stuffing", Level: 25},
+			{Name: "WristShackles", Level: 0},
 			{Name: "TrapGag", Level: 15},
-			{Name: "HighsecBallGag", Level: 50, Variant: "AntiMagic", Condition: "Mage"},
-			{Name: "HighsecBallGag", Level: 40},
-			{Name: "HighsecMuzzle", Level: 70},
+			{Name: "Stuffing", Level: 25},
 			{Name: "FeetShackles", Level: 25},
-			{Name: "HighsecShackles", Level: 40},
+			{Name: "PrisonBelt", Level: 30},
+			{Name: "TrapPlug", Level: 30},
 			{Name: "LegShackles", Level: 35},
 			{Name: "HighsecLegbinder", Level: 35},
-			{Name: "WristShackles", Level: 0},
+			{Name: "TrapBlindfold", Level: 35},
+			{Name: "HighsecBallGag", Level: 40},
+			{Name: "HighsecShackles", Level: 40},
 			{Name: "TrapArmbinder", Level: 40, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
 			{Name: "TrapBoxbinder", Level: 40, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
+			{Name: "TrapPlug2", Level: 45},
 			{Name: "TrapYoke", Level: 50, Condition: "LessYokes", Priority: "MoreYokes"},
+			{Name: "HighsecBallGag", Level: 50, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "TrapFiddle", Level: 60, Condition: "LessYokes", Priority: "MoreYokes"},
+			{Name: "TrapPlug3", Level: 60},
+			{Name: "TrapBoots", Level: 60},
+			{Name: "HighsecMuzzle", Level: 70},
 			{Name: "HighsecArmbinder", Level: 70, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
 			{Name: "HighsecBoxbinder", Level: 70, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
 			{Name: "HighsecStraitjacket", Level: 70, Condition: "LessJackets", Priority: "MoreJackets"},
-			{Name: "PrisonBelt", Level: 30},
-			{Name: "TrapPlug", Level: 30},
-			{Name: "TrapPlug2", Level: 45},
-			{Name: "TrapPlug3", Level: 60},
 			{Name: "TrapPlug4", Level: 75},
-			{Name: "TrapPlug5", Level: 100},
-			{Name: "TrapBlindfold", Level: 35},
 			{Name: "HighsecLegbinder", Level: 95},
-			{Name: "TrapBoots", Level: 60},
+			{Name: "TrapPlug5", Level: 100},
 		],
 	},
 	"ropeRestraints": {
@@ -495,20 +495,20 @@ let KDJailOutfits = {
 		restraints: [
 			{Name: "RopeSnakeCuffs", Level: 0},
 			{Name: "RopeSnakeCuffsAdv", Level: 5},
+			{Name: "RopeSnakeCrotch", Level: 10},
 			{Name: "RopeSnakeArmsWrist", Level: 20},
 			{Name: "RopeSnakeArmsBoxtie", Level: 20},
-			{Name: "RopeSnakeCuffsAdv2", Level: 35},
 			{Name: "RopeSnakeFeet", Level: 20},
-			{Name: "RopeSnakeFeet2", Level: 40},
-			{Name: "RopeSnakeFeet3", Level: 60},
-			{Name: "RopeSnakeCrotch", Level: 10},
 			{Name: "RopeSnakeLegs", Level: 30},
+			{Name: "RopeSnakeCuffsAdv2", Level: 35},
+			{Name: "RopeSnakeFeet2", Level: 40},
 			{Name: "RopeSnakeLegs2", Level: 50},
+			{Name: "RopeSnakeFeet3", Level: 60},
 			{Name: "RopeSnakeLegs3", Level: 70},
 			{Name: "RopeSnakeHogtie", Level: 80},
 		],
 	},
-	"rest_rope_weakmagic": {
+	"ropeMagicWeak": {
 		overridelowerpriority: false,
 		priority: 1,
 		jail: true,
@@ -516,15 +516,15 @@ let KDJailOutfits = {
 		restraints: [
 			{Name: "WeakMagicRopeCuffs", Level: 0},
 			{Name: "WeakMagicRopeCuffsAdv", Level: 5},
+			{Name: "WeakMagicRopeCrotch", Level: 10},
 			{Name: "WeakMagicRopeArmsWrist", Level: 20},
 			{Name: "WeakMagicRopeArmsBoxtie", Level: 20},
-			{Name: "WeakMagicRopeCuffsAdv2", Level: 35},
 			{Name: "WeakMagicRopeFeet", Level: 20},
-			{Name: "WeakMagicRopeFeet2", Level: 40},
-			{Name: "WeakMagicRopeFeet3", Level: 60},
-			{Name: "WeakMagicRopeCrotch", Level: 10},
 			{Name: "WeakMagicRopeLegs", Level: 30},
+			{Name: "WeakMagicRopeCuffsAdv2", Level: 35},
+			{Name: "WeakMagicRopeFeet2", Level: 40},
 			{Name: "WeakMagicRopeLegs2", Level: 50},
+			{Name: "WeakMagicRopeFeet3", Level: 60},
 			{Name: "WeakMagicRopeLegs3", Level: 70},
 			{Name: "WeakMagicRopeHogtie", Level: 90},
 		],
@@ -537,15 +537,15 @@ let KDJailOutfits = {
 		restraints: [
 			{Name: "StrongMagicRopeCuffs", Level: 0},
 			{Name: "StrongMagicRopeCuffsAdv", Level: 5},
+			{Name: "StrongMagicRopeCrotch", Level: 10},
+			{Name: "StrongMagicRopeFeet", Level: 20},
 			{Name: "StrongMagicRopeArmsWrist", Level: 20},
 			{Name: "StrongMagicRopeArmsBoxtie", Level: 20},
-			{Name: "StrongMagicRopeCuffsAdv2", Level: 35},
-			{Name: "StrongMagicRopeFeet", Level: 20},
-			{Name: "StrongMagicRopeFeet2", Level: 40},
-			{Name: "StrongMagicRopeFeet3", Level: 60},
-			{Name: "StrongMagicRopeCrotch", Level: 10},
 			{Name: "StrongMagicRopeLegs", Level: 30},
+			{Name: "StrongMagicRopeCuffsAdv2", Level: 35},
+			{Name: "StrongMagicRopeFeet2", Level: 40},
 			{Name: "StrongMagicRopeLegs2", Level: 50},
+			{Name: "StrongMagicRopeFeet3", Level: 60},
 			{Name: "StrongMagicRopeLegs3", Level: 70},
 			{Name: "StrongMagicRopeHogtie", Level: 100},
 		],
@@ -558,15 +558,15 @@ let KDJailOutfits = {
 		restraints: [
 			{Name: "MithrilRopeCuffs", Level: 0},
 			{Name: "MithrilRopeCuffsAdv", Level: 5},
+			{Name: "MithrilRopeCrotch", Level: 10},
 			{Name: "MithrilRopeArmsWrist", Level: 20},
 			{Name: "MithrilRopeArmsBoxtie", Level: 20},
-			{Name: "MithrilRopeCuffsAdv2", Level: 35},
 			{Name: "MithrilRopeFeet", Level: 20},
-			{Name: "MithrilRopeFeet2", Level: 40},
-			{Name: "MithrilRopeFeet3", Level: 60},
-			{Name: "MithrilRopeCrotch", Level: 10},
 			{Name: "MithrilRopeLegs", Level: 30},
+			{Name: "MithrilRopeCuffsAdv2", Level: 35},
+			{Name: "MithrilRopeFeet2", Level: 40},
 			{Name: "MithrilRopeLegs2", Level: 50},
+			{Name: "MithrilRopeFeet3", Level: 60},
 			{Name: "MithrilRopeLegs3", Level: 70},
 			{Name: "MithrilRopeHogtie", Level: 100},
 		],
@@ -579,15 +579,15 @@ let KDJailOutfits = {
 		restraints: [
 			{Name: "CelestialRopeCuffs", Level: 0},
 			{Name: "CelestialRopeCuffsAdv", Level: 5},
+			{Name: "CelestialRopeCrotch", Level: 10},
+			{Name: "CelestialRopeFeet", Level: 20},
 			{Name: "CelestialRopeArmsWrist", Level: 20},
 			{Name: "CelestialRopeArmsBoxtie", Level: 20},
-			{Name: "CelestialRopeCuffsAdv2", Level: 35},
-			{Name: "CelestialRopeFeet", Level: 20},
-			{Name: "CelestialRopeFeet2", Level: 40},
-			{Name: "CelestialRopeFeet3", Level: 60},
-			{Name: "CelestialRopeCrotch", Level: 10},
 			{Name: "CelestialRopeLegs", Level: 30},
+			{Name: "CelestialRopeCuffsAdv2", Level: 35},
+			{Name: "CelestialRopeFeet2", Level: 40},
 			{Name: "CelestialRopeLegs2", Level: 50},
+			{Name: "CelestialRopeFeet3", Level: 60},
 			{Name: "CelestialRopeLegs3", Level: 70},
 			{Name: "CelestialRopeHogtie", Level: 100},
 		],
@@ -600,32 +600,22 @@ let KDJailOutfits = {
 		jail: true,
 		parole: false,
 		restraints: [
-
-
 			{Name: "TrapMittens", Level: 0},
-			{Name: "Stuffing", Level: 20},
-			{Name: "TrapGag", Level: 15},
 			{Name: "MaidCBelt", Level: 0},
+			{Name: "TrapGag", Level: 15},
+			{Name: "Stuffing", Level: 20},
 			{Name: "MaidGag", Level: 30},
-			{Name: "MaidMuzzle", Level: 40},
-
-			{Name: "TrapYoke", Level: 35, Condition: "LessYokes", Priority: "MoreYokes"},
-			{Name: "TrapFiddle", Level: 35, Condition: "LessYokes", Priority: "MoreYokes"},
 			{Name: "TrapArmbinder", Level: 30, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
 			{Name: "TrapBoxbinder", Level: 30, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
-
+			{Name: "TrapYoke", Level: 35, Condition: "LessYokes", Priority: "MoreYokes"},
+			{Name: "TrapFiddle", Level: 35, Condition: "LessYokes", Priority: "MoreYokes"},
+			{Name: "MaidMuzzle", Level: 40},
 			{Name: "MaidAnkleCuffs", Level: 40},
-
 			{Name: "MaidJacket", Level: 60, Condition: "LessJackets", Priority: "MoreJackets"},
-
-
 			{Name: "HeavyYoke", Level: 75, Condition: "LessYokes", Priority: "MoreYokes"},
-
-
 			{Name: "MaidDress", Level: 100},
+			{Name: "MaidTransportJacket", Level: 120, Condition: "LessJackets", Priority: "MoreJackets"},
 			{Name: "MaidBelt", Level: 120},
-
-
 		],
 	},
 
@@ -635,18 +625,20 @@ let KDJailOutfits = {
 		jail: true,
 		parole: false,
 		restraints: [
-			{Name: "LatexBoots", Level: 40},
-			{Name: "LatexBallGag", Level: 10, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "LatexBallGag", Level: 0},
+			{Name: "LatexBallGag", Level: 10, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "PVCHarness", Level: 30},
-			{Name: "LatexCorset", Level: 65},
-			{Name: "LatexLegbinder", Level: 80},
 			{Name: "LatexArmbinder", Level: 30, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
 			{Name: "LatexBoxbinder", Level: 30, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
-			{Name: "LatexStraitjacket", Level: 60, Condition: "LessJackets", Priority: "MoreJackets"},
+			{Name: "LatexBoots", Level: 40},
 			{Name: "LatexCatsuit", Level: 40},
-			{Name: "KiguMask", Level: 100, Condition: "NoUnmasked"},
+			{Name: "LatexStraitjacket", Level: 60, Condition: "LessJackets", Priority: "MoreJackets"},
+			{Name: "LatexOTNGagHeavy", Level: 60},
+			{Name: "LatexCorset", Level: 65},
+			{Name: "LatexLegbinder", Level: 80},
+			{Name: "KiguMask", Level: 100, Condition: "NoKigu"},
 			{Name: "ExpCollar", Level: 120},
+			{Name: "LatexTransportJacket", Level: 120, Condition: "LessJackets", Priority: "MoreJackets"},
 		],
 	},
 	"wolfRestraints": {
@@ -656,14 +648,16 @@ let KDJailOutfits = {
 		parole: false,
 		restraints: [
 			{Name: "WolfCuffs", Level: 0},
-			{Name: "WolfArmbinder", Level: 30, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
+			{Name: "WolfCollar", Level: 0},
 			{Name: "WolfAnkleCuffs", Level: 10},
 			{Name: "WolfHarness", Level: 20},
-			{Name: "ControlHarness", Level: 80},
-			{Name: "WolfBallGag", Level: 45, Variant: "AntiMagic", Condition: "Mage"},
+			{Name: "WolfMittens", Level: 20},
+			{Name: "WolfArmbinder", Level: 30, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
 			{Name: "WolfBallGag", Level: 30},
-			{Name: "WolfCollar", Level: 0},
+			{Name: "WolfBallGag", Level: 45, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "WolfPanties", Level: 60},
+			{Name: "ControlHarness", Level: 80},
+			{Name: "WolfStrongArmbinder", Level: 90, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
 			{Name: "WolfPetsuit", Level: 120, Condition: "NoPetsuit"},
 		],
 	},
@@ -674,12 +668,13 @@ let KDJailOutfits = {
 		parole: false,
 		restraints: [
 			{Name: "ExpArmbinder", Level: 0, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
-			{Name: "ExpArmbinderHarness", Level: 60},
-			{Name: "BlacksteelAnkleCuffs", Level: 30},
-			{Name: "LatexBallGag", Level: 25, Variant: "AntiMagic", Condition: "Mage"},
+			{Name: "LatexCatsuit", Level: 0},
 			{Name: "LatexBallGag", Level: 5},
-			{Name: "ExpCollar", Level: 80},
+			{Name: "LatexBallGag", Level: 25, Variant: "AntiMagic", Condition: "Mage"},
+			{Name: "BlacksteelAnkleCuffs", Level: 30},
 			{Name: "ExpBoots", Level: 50},
+			{Name: "ExpArmbinderHarness", Level: 60},
+			{Name: "ExpCollar", Level: 80},
 		],
 	},
 	"dragonRestraints": {
@@ -688,16 +683,17 @@ let KDJailOutfits = {
 		jail: true,
 		parole: false,
 		restraints: [
-			{Name: "ScaleArmCuffs", Level: 0},
-			{Name: "DragonStraps", Level: 20},
-			{Name: "ScaleLegCuffs", Level: 60},
-			{Name: "ScaleAnkleCuffs", Level: 10},
-			{Name: "DragonBoots", Level: 90},
-			{Name: "DragonBallGag", Level: 45, Variant: "AntiMagic", Condition: "Mage"},
-			{Name: "DragonBallGag", Level: 30},
-			{Name: "DragonMuzzleGag", Level: 60},
 			{Name: "DragonCollar", Level: 0},
+			{Name: "ScaleArmCuffs", Level: 0},
+			{Name: "ScaleAnkleCuffs", Level: 10},
+			{Name: "DragonStraps", Level: 20},
+			{Name: "DragonBallGag", Level: 30},
+			{Name: "DragonBallGag", Level: 45, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "DragonArmbinder", Level: 50, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
+			{Name: "DragonMuzzleGag", Level: 60},
+			{Name: "ScaleLegCuffs", Level: 60},
+			{Name: "DragonBoots", Level: 90},
+			{Name: "DragonStrongArmbinder", Level: 100, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
 		],
 	},
 	"dollsmith": {
@@ -707,19 +703,20 @@ let KDJailOutfits = {
 		parole: true,
 		restraints: [
 			{Name: "ControlHarness", Level: 0},
-			{Name: "TrackingCollar", Level: 20},
 			{Name: "CyberBelt", Level: 0},
 			{Name: "CyberBra", Level: 0},
-			{Name: "CyberBallGag", Level: 45, Variant: "AntiMagic", Condition: "Mage"},
-			{Name: "CyberBallGag", Level: 20},
-			{Name: "CyberPlugGag", Level: 40},
-			{Name: "CyberMuzzle", Level: 75},
-			{Name: "CyberDollJacket", Level: 60, Condition: "LessJackets", Priority: "MoreJackets"},
 			{Name: "CyberArmCuffs", Level: 0},
-			{Name: "CyberAnkleCuffs", Level: 40},
-			{Name: "CyberLegCuffs", Level: 30},
-			{Name: "CyberHeels", Level: 49},
+			{Name: "CyberMittens", Level: 0},
 			{Name: "LatexCatsuit", Level: 0},
+			{Name: "TrackingCollar", Level: 20},
+			{Name: "CyberBallGag", Level: 20},
+			{Name: "CyberLegCuffs", Level: 30},
+			{Name: "CyberPlugGag", Level: 40},
+			{Name: "CyberAnkleCuffs", Level: 40},
+			{Name: "CyberBallGag", Level: 45, Variant: "AntiMagic", Condition: "Mage"},
+			{Name: "CyberHeels", Level: 49},
+			{Name: "CyberDollJacket", Level: 60, Condition: "LessJackets", Priority: "MoreJackets"},
+			{Name: "CyberMuzzle", Level: 75},
 		],
 	},
 	"kittyRestraints": {
@@ -729,8 +726,8 @@ let KDJailOutfits = {
 		parole: true,
 		restraints: [
 			{Name: "KittyPaws", Level: 0},
-			{Name: "KittyGag", Level: 25, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "KittyGag", Level: 10},
+			{Name: "KittyGag", Level: 25, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "KittyMuzzle", Level: 45},
 			{Name: "KittyBlindfold", Level: 60},
 			{Name: "KittySuit", Level: 80},
@@ -744,17 +741,20 @@ let KDJailOutfits = {
 		jail: true,
 		parole: true,
 		restraints: [
-			{Name: "ObsidianArmCuffs", Level: 0},
-			{Name: "ObsidianLegCuffs", Level: 60},
-			{Name: "ObsidianAnkleCuffs", Level: 10},
-			{Name: "ObsidianGag", Level: 55, Variant: "AntiMagic", Condition: "Mage"},
-			{Name: "ObsidianGag", Level: 30},
 			{Name: "ObsidianCollar", Level: 0},
+			{Name: "ObsidianArmCuffs", Level: 0},
+			{Name: "ObsidianAnkleCuffs", Level: 10},
+			{Name: "ObsidianGag", Level: 30},
+			{Name: "ObsidianGag", Level: 55, Variant: "AntiMagic", Condition: "Mage"},
+			{Name: "ObsidianLegCuffs", Level: 60},
 			{Name: "ShadowLatexArmbinder", Level: 70, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
 			{Name: "ShadowLatexBoxbinder", Level: 70, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
 			{Name: "ShadowLatexStraitjacket", Level: 75, Condition: "LessJackets", Priority: "MoreJackets"},
 			{Name: "ShadowLatexHeels", Level: 85},
 			{Name: "ShadowLatexLegbinder", Level: 100},
+			{Name: "ShadowLatexStrongArmbinder", Level: 120, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
+			{Name: "ShadowLatexStrongBoxbinder", Level: 120, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
+			{Name: "ShadowLatexStrongJacket", Level: 120, Condition: "LessJackets", Priority: "MoreJackets"},
 
 		],
 	},
@@ -765,10 +765,9 @@ let KDJailOutfits = {
 		parole: true,
 		restraints: [
 			{Name: "MithrilArmCuffs", Level: 0},
-			{Name: "MithrilLegCuffs", Level: 60},
-			{Name: "MithrilAnkleCuffs", Level: 10},
 			{Name: "MithrilCollar", Level: 0},
-
+			{Name: "MithrilAnkleCuffs", Level: 10},
+			{Name: "MithrilLegCuffs", Level: 60},
 		],
 	},
 	"leatherRestraints": {
@@ -778,17 +777,17 @@ let KDJailOutfits = {
 		parole: true,
 		restraints: [
 			{Name: "LeatherArmCuffs", Level: 5},
+			{Name: "TrapGag", Level: 10},
+			{Name: "TrapMittens", Level: 20},
+			{Name: "PanelGag", Level: 20},
+			{Name: "PanelGag", Level: 35, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "SturdyLeatherBeltsArms", Level: 40},
-			{Name: "SturdyLeatherBeltsLegs", Level: 80},
-			{Name: "SturdyLeatherBeltsFeet", Level: 70},
+			{Name: "TrapHarness", Level: 45},
 			{Name: "TrapArmbinder", Level: 50, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
 			{Name: "TrapBoxbinder", Level: 50, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
 			{Name: "TrapLegbinder", Level: 60},
-			{Name: "TrapMittens", Level: 20},
-			{Name: "PanelGag", Level: 35, Variant: "AntiMagic", Condition: "Mage"},
-			{Name: "TrapGag", Level: 10},
-			{Name: "PanelGag", Level: 30},
-			{Name: "TrapHarness", Level: 45},
+			{Name: "SturdyLeatherBeltsFeet", Level: 70},
+			{Name: "SturdyLeatherBeltsLegs", Level: 80},
 		],
 	},
 	"dressRestraints": {
@@ -798,16 +797,19 @@ let KDJailOutfits = {
 		parole: true,
 		restraints: [
 			{Name: "BindingDress", Level: 0},
-			{Name: "NippleClamps", Level: 60},
+			{Name: "DressGag", Level: 40},
+			{Name: "NippleClamps", Level: 40},
 			{Name: "DressBra", Level: 60},
+			{Name: "DressCorset", Level: 60},
+			{Name: "DressMuzzle", Level: 60},
 			{Name: "MagicBelt", Level: 80},
-			{Name: "KiguMask", Level: 100, Condition: "NoUnmasked"},
+			{Name: "KiguMask", Level: 100, Condition: "NoKigu"},
 		],
 	},
 };
 
 KDJailOutfits.alchemist = JSON.parse(JSON.stringify(KDJailOutfits.latexRestraints));
-KDJailOutfits.apprentice = JSON.parse(JSON.stringify(KDJailOutfits.rest_rope_weakmagic));
+KDJailOutfits.apprentice = JSON.parse(JSON.stringify(KDJailOutfits.ropeMagicWeak));
 KDJailOutfits.witch = JSON.parse(JSON.stringify(KDJailOutfits.ropeMagicStrong));
 KDJailOutfits.elf = JSON.parse(JSON.stringify(KDJailOutfits.mithrilRope));
 KDJailOutfits.fuuka = JSON.parse(JSON.stringify(KDJailOutfits.celestialRopes));
@@ -836,6 +838,9 @@ let KDJailConditions = {
 	},
 	NoPetsuit: (r) => {
 		return !KinkyDungeonStatsChoice.get("NoPet");
+	},
+	NoKigu: (r) => {
+		return !KinkyDungeonStatsChoice.get("NoKigu");
 	},
 	LessArmbinders: (r) => {
 		return !KinkyDungeonStatsChoice.get("Less_Armbinders")

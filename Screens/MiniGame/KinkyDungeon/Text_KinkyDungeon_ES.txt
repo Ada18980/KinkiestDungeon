@@ -2940,7 +2940,7 @@ Wolf Instructor
 Instructor de lobos
 The instructor deploys active camoflague and retreats!
 ¡El instructor despliega camuflaje activo y se retira!
-The instructor disciplies you! (DamageTaken)
+The instructor disciplines you! (DamageTaken)
 ¡El instructor te discipula! (Daño Recibido)
 The instructor applies advanced training gear! (+RestraintAdded)
 ¡El instructor aplica equipo de entrenamiento avanzado! (+ Restricción agregada)
@@ -6510,7 +6510,7 @@ You a padded metal blindfold, glowing magnificently, along with a strange crysta
 Tienes una venda de metal acolchada que brilla magníficamente, junto con un extraño cristal a su lado.
 A well-fitted mask, covering your entire head neatly and locking in place.
 Una máscara bien ajustada, que cubra toda la cabeza de manera ordenada y que se bloquee en su lugar.
-It has eyeholes for you to see out of, but blocks access to the face.
+It has eyeholes for you to somewhat see out of, but blocks access to the face.
 Tiene orificios para los ojos para que puedas ver, pero bloquea el acceso a la cara.
 Obsidian Muzzle
 Bozal de obsidiana
@@ -10170,7 +10170,7 @@ You are unable to muster the willpower to bypass the seal...
 No puedes reunir la fuerza de voluntad para eludir el sello...
 Feeling determined, you override the seal and release the item!
 ¡Sintiéndote determinado, anulas el sello y liberas el objeto!
-The lock is protected by a revanent seal. You'll need 25 ectoplasm to disenchant it.
+The lock is protected by a revenant seal. You'll need 25 ectoplasm to disenchant it.
 La cerradura está protegida por un precinto relevante. Necesitarás 25 ectoplasma para desencantarlo.
 Your fingers pass right through the collar. Pity your neck doesn't pass through it.
 Tus dedos pasan justo a través del collar. Lástima que tu cuello no pase por él.

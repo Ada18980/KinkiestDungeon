@@ -211,6 +211,9 @@ let KDTextGray2 = "#333333";
 let KDTextGray1 = "#111111";
 let KDTextGray05 = "#030303";
 let KDTextGray0 = "#000000";
+let KDTextGreen1 = "#001100";
+let KDTextBlue1 = "#000011";
+let KDTextRed1 = "#110000";
 let KDCurseColor = "#ff55aa";
 let KDGoodColor = "#77ff99";
 
@@ -1765,17 +1768,18 @@ function KinkyDungeonDrawGame() {
 				}
 
 				DrawCheckboxVis(1100, 20, 64, 64, "Verbose Console", KDDebug, false, "#ffffff");
-				DrawCheckboxVis(1100, 100, 64, 64, "Changeable Perks", KDDebugPerks, false, "#ffffff");
-				DrawCheckboxVis(1100, 180, 64, 64, "Unlimited Gold", KDDebugGold, false, "#ffffff");
+				DrawCheckboxVis(1100, 90, 64, 64, "Changeable Perks", KDDebugPerks, false, "#ffffff");
+				DrawCheckboxVis(1100, 160, 64, 64, "Unlimited Gold", KDDebugGold, false, "#ffffff");
+				DrawCheckboxVis(1100, 230, 64, 64, "Link Under", KDDebugLink, false, "#ffffff");
 				ElementPosition("DebugEnemy", 1650, 52, 300, 64);
 				DrawButtonVis(1500, 100, 100, 64, "Enemy", "#ffffff", "");
 				DrawButtonVis(1600, 100, 100, 64, "Ally", "#ffffff", "");
 				DrawButtonVis(1700, 100, 100, 64, "Shop", "#ffffff", "");
 				ElementPosition("DebugItem", 1650, 212, 300, 64);
 				DrawButtonVis(1500, 260, 300, 64, "Add to inventory", "#ffffff", "");
-				DrawButtonVis(1100, 260, 300, 64, "Teleport to stairs", "#ffffff", "");
+				DrawButtonVis(1100, 300, 300, 64, "Teleport to stairs", "#ffffff", "");
 				DrawButtonVis(1500, 320, 300, 64, "Get save code", "#ffffff", "");
-				DrawButtonVis(1100, 320, 300, 64, "Enter parole mode", "#ffffff", "");
+				DrawButtonVis(1100, 370, 300, 64, "Enter parole mode", "#ffffff", "");
 
 				DrawButtonKDEx("debugAddKey", (bdata) => {
 					KinkyDungeonRedKeys += 1;
@@ -1811,6 +1815,7 @@ function KinkyDungeonDrawGame() {
 				}, true, 600, 560, 300, 64, "Add all restraints", "#ffffff", "");
 				DrawButtonKDEx("debugIncFloor", (bdata) => {
 					MiniGameKinkyDungeonLevel += 1;
+					KDGameData.JourneyY += 1;
 					return true;
 				}, true, 600, 640, 300, 64, "Increment Floor", "#ffffff", "");
 				DrawButtonKDEx("debugHeart", (bdata) => {
@@ -2817,6 +2822,7 @@ function FillRectKD(Container, Map, id, Params) {
  * @param {number} [options.zIndex] - zIndex
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {boolean} [options.centered] - centered
+ * @param {boolean} [options.centerText] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
@@ -2852,6 +2858,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
  * @param {boolean} [options.unique] - This button is not differentiated by position
  * @param {boolean} [options.scaleImage] - zIndex
  * @param {boolean} [options.centered] - centered
+ * @param {boolean} [options.centerText] - centered
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
@@ -2910,7 +2917,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 		DrawTextFitKDTo(Container || kdcanvas, HoveringText, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04), "#ffffff", undefined, undefined, undefined, zIndex + 1);
 		//DrawHoverElements.push(() => DrawButtonHover(Left, Top, Width, Height, HoveringText));
 	} else if (Label)
-		DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
+		DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), (options?.centerText) ? Width : (Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04)),
 			Color,
 			(options && options.noTextBG) ? "none" : undefined,
 			FontSize, undefined, zIndex + 0.001, undefined, undefined, options?.unique);
@@ -3127,7 +3134,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 
 
 	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
-	let drawFloor = altType?.skin ? altType.skin : KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint];
+	let drawFloor = altType?.skin ? altType.skin : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
 
 	let noReplace = "";
 	let noReplace_skin = {};
@@ -3761,6 +3768,18 @@ let KDEffectTileTooltips = {
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'EdgeOrb': {
 		color: "#ff8933",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'MotionLamp': {
+		color: "#ff8933",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'ManaEmpty': {
+		color: "#ff8933",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'ManaPartial': {
+		color: "#ffffff",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'ManaFull': {
+		color: "#ffffff",
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'EdgeOrbDead': {
 		color: "#555555",
