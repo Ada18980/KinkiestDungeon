@@ -1099,10 +1099,20 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			KDCreateBoringness(noBoring);
 			let orbcount = Math.min(2, Math.max(2 * (MiniGameKinkyDungeonLevel + KinkyDungeonNewGame*KinkyDungeonMaxLevel) - KDGameData.CollectedOrbs, 0));
 			if (altType && altType.orbs != undefined) orbcount = altType.orbs;
-			if (!altType || altType.shrines)
-				KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTypes, shrinecount,
+			if (!altType || altType.shrines) {
+				let quests = KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTypes, shrinecount,
 					shrinefilter, ghostchance, manaChance, orbcount, (altType && altType.noShrineTypes) ? altType.noShrineTypes : [],
 					Floor, width, height, !altType || (altType.makeMain && !altType.noQuests));
+				if (
+					(
+						(KDGameData.SelectedEscapeMethod && KinkyDungeonEscapeTypes[KDGameData.SelectedEscapeMethod]?.requireMaxQuests)
+						|| (forceEscape && KinkyDungeonEscapeTypes[forceEscape]?.requireMaxQuests)
+					)
+					&& quests < KDMAXGODDESSQUESTS) {
+					console.log("This map failed to generate due to shrine count! Please screenshot and send your save code to Ada on deviantart or discord!");
+					continue;
+				}
+			}
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for shrine creation`);
 				startTime = performance.now();
@@ -2274,6 +2284,13 @@ function KinkyDungeonPlaceChests(params, chestlist, spawnPoints, shrinelist, tre
 		} else {
 
 			let chest = list[N];
+			if (KinkyDungeonTilesGet(chest.x + ',' + chest.y)) {
+				delete KinkyDungeonTilesGet(chest.x + ',' + chest.y).Faction;
+				delete KinkyDungeonTilesGet(chest.x + ',' + chest.y).Type;
+				delete KinkyDungeonTilesGet(chest.x + ',' + chest.y).Lock;
+				delete KinkyDungeonTilesGet(chest.x + ',' + chest.y).lootTrap;
+
+			}
 			if (KDRandom() < rubblechance) {
 				KinkyDungeonMapSet(chest.x, chest.y, 'R');
 			} else if (KDRandom() * KDRandom() < rubblechance - 0.01) KinkyDungeonMapSet(chest.x, chest.y, '/');
@@ -2654,6 +2671,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 
 		list.splice(N, 1);
 	}
+	return quests;
 }
 
 

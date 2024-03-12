@@ -1,5 +1,6 @@
 let LAYERS_BASE = [
 	"Weapon",
+	"FurnitureLinked",
 	"FurnitureFront",
 
 	// These are in front b/c the collar acc goes over the leash for visibility
@@ -1454,6 +1455,7 @@ let LayerGroups = {
 	Xray: ToMap(
 		[
 			"FurnitureFront",
+			"FurnitureLinked",
 
 			"InflatableHead",
 			"InflatableArms",

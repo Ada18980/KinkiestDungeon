@@ -105,11 +105,17 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Latex"],
-	AddPose: ["UprightHogtie", "ForceHogtie"],
+	AddPose: ["ForceHogtie"],
+	AddPoseConditional: {
+		BallsuitTip: ["UprightHogtie"],
+	},
+	AddPoseIf: {
+		BallsuitTip: ["TippedHogtie"],
+	},
 	Layers: ToLayerMap([
-		{ Name: "BallSuit", Layer: "FurnitureFront", Pri: 20.5,
+		{ Name: "BallSuit", Layer: "FurnitureLinked", Pri: 20.5,
 			Invariant: true,
-			OffsetY: 350,
+			//OffsetY: 350,
 			EraseSprite: "BallSuit",
 			EraseLayers: ToMap(["Bubble"]),
 		},

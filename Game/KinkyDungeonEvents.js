@@ -1174,6 +1174,14 @@ let KDEventMapInventory = {
 				KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrystalDrain"), "lightblue", 2, true);
 			}
 		},
+		"shadowDrain": (e, item, data) => {
+			if (!data.delta) return;
+			if (e.power) {
+				KinkyDungeonChangeMana(e.power);
+				//KinkyDungeonChangeDistraction(-e.power * 3 * KDBuffResist(KinkyDungeonPlayerBuffs, "soul"), false, 0.1);
+				KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonShadowDrain"), "lightblue", 2, true);
+			}
+		},
 		"tickleDrain": (e, item, data) => {
 			if (!data.delta) return;
 			if (KinkyDungeonFlags.get("tickleDrain")) return;
@@ -2177,6 +2185,20 @@ let KDEventMapInventory = {
 				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 			}
 		},
+		"tipBallsuit": (e, item, data) => {
+			if (!e.chance || KDRandom() < e.chance) {
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					id: "tipBallsuit",
+					duration: 6,
+					type: "SlowLevel",
+					power: KinkyDungeonStatStamina > 1 ? 4 : 15,
+					pose: "BallsuitTip",
+				});
+				KinkyDungeonSendActionMessage(10, TextGet("KDBallsuitTip"), "#ffff00", 1);
+				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+			}
+		},
+
 	},
 	"punish": {
 		/** If this item is the one to do it it will vibe */
@@ -7002,7 +7024,12 @@ let KDEventMapBullet = {
 		},
 	},
 	"bulletTick": {
-
+		"CreateSmoke": (e, b, data) => {
+			KDCreateAoEEffectTiles(b.x, b.y,  {
+				name: e.kind || "Smoke",
+				duration: e.time || 10,
+			}, 3, e.aoe || 1.5, undefined, e.chance || 0.5);
+		},
 		"MagicMissileChannel": (e, b, data) => {
 			if (b.bullet?.source) {
 				let enemy = KinkyDungeonFindID(b.bullet.source);
@@ -7133,6 +7160,122 @@ let KDEventMapBullet = {
 		},
 	},
 	"afterBulletHit": {
+		"ShadowShroudTele": (e, b, data) => {
+			let enemy = b.bullet?.source > 0 ? KinkyDungeonFindID(b.bullet.source) : null;
+			if (!enemy) return;
+			let target = null;
+			if (b.bullet.faction) {
+				let minDist = 1000;
+				let entity = null;
+				let playerDist = 1000;
+				if (KDFactionHostile(b.bullet.faction, "Player")) {
+					playerDist = KDistEuclidean(KinkyDungeonPlayerEntity.x - b.bullet.targetX, KinkyDungeonPlayerEntity.y - b.bullet.targetY);
+					if (playerDist <= e.aoe) {
+						entity = KinkyDungeonPlayerEntity;
+						minDist = playerDist;
+					}
+				}
+
+				let enemies = KDNearbyEnemies(b.bullet.targetX, b.bullet.targetY, e.aoe);
+				for (let en of enemies) {
+					if (!KDHelpless(en) && KDFactionHostile(b.bullet.faction, en)) {
+						playerDist = KDistEuclidean(en.x - b.bullet.targetX, en.y - b.bullet.targetY);
+						if (playerDist < minDist) {
+							entity = en;
+							minDist = playerDist;
+						}
+					}
+				}
+				if (entity) {
+					target = entity;
+				}
+			}
+
+			if (!target) return;
+
+			let bullets = KDMapData.Bullets.filter((bb) => {return bb.bullet?.spell?.name == "ShadowShroud";});
+			let nearest = null;
+			let nearestDist = 100;
+			for (let bb of bullets) {
+				if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(bb.x, bb.y))) {
+					let dist = KDistEuclidean(b.x - bb.x, b.y - bb.y);
+					let distplayer = KDistEuclidean(target.x - bb.x, target.y - bb.y);
+					if (dist <= e.aoe && distplayer < nearestDist
+						&& distplayer < KDistEuclidean(target.x - enemy.x, target.y - enemy.y)) {
+						nearestDist = distplayer;
+						nearest = bb;
+					}
+				}
+			}
+
+			if (nearest) {
+				KDMoveEntity(enemy, nearest.x, nearest.y, true);
+				KinkyDungeonSendTextMessage(5, TextGet("KDDragonTeleport"), "#814fb8", 1);
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Teleport.ogg", enemy);
+			}
+
+		},
+
+		"DarkTele": (e, b, data) => {
+			let enemy = b.bullet?.source > 0 ? KinkyDungeonFindID(b.bullet.source) : null;
+			if (!enemy) return;
+			let target = null;
+			if (b.bullet.faction) {
+				let minDist = 1000;
+				let entity = null;
+				let playerDist = 1000;
+				if (KDFactionHostile(b.bullet.faction, "Player")) {
+					playerDist = KDistEuclidean(KinkyDungeonPlayerEntity.x - b.bullet.targetX, KinkyDungeonPlayerEntity.y - b.bullet.targetY);
+					if (playerDist <= e.aoe) {
+						entity = KinkyDungeonPlayerEntity;
+						minDist = playerDist;
+					}
+				}
+
+				let enemies = KDNearbyEnemies(b.bullet.targetX, b.bullet.targetY, e.aoe);
+				for (let en of enemies) {
+					if (!KDHelpless(en) && KDFactionHostile(b.bullet.faction, en)) {
+						playerDist = KDistEuclidean(en.x - b.bullet.targetX, en.y - b.bullet.targetY);
+						if (playerDist < minDist) {
+							entity = en;
+							minDist = playerDist;
+						}
+					}
+				}
+				if (entity) {
+					target = entity;
+				}
+			}
+
+			if (!target) return;
+
+			let point = {
+				x: b.x + (target.player ? -target.facing_x : (target.x - target.fx)),
+				y: b.y + (target.player ? -target.facing_y : (target.y - target.fy)),
+			};
+			if (KDistChebyshev(enemy.x - point.x, enemy.y - point.y) > 1.5
+				&& KinkyDungeonBrightnessGet(point.x, point.y) <= KDShadowThreshold*2
+				&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(point.x, point.y))
+				&& !KinkyDungeonEntityAt(point.x, point.y)) {
+				KDMoveEntity(enemy, point.x, point.y, true);
+				//KinkyDungeonSendTextMessage(5, TextGet("KDDragonTeleport"), "#814fb8", 1);
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Teleport.ogg", enemy);
+				if (KDRandom() < 0.4)
+					KinkyDungeonSendDialogue(
+						enemy,
+						TextGet("KDTeleportsBehindYou" + Math.floor(KDRandom() * 3)),
+						KDGetColor(enemy),
+						4,
+						10,
+					);
+				let spell = KinkyDungeonFindSpell("Summon", true);
+				if (spell) {
+					KinkyDungeonCastSpell(point.x, point.y, spell, undefined, undefined, undefined);
+				}
+			}
+
+		},
+
 		"CrystalBolt": (e, b, data) => {
 			let point = {x: b.x, y: b.y};
 			if (!KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(point.x, point.y))) {

@@ -515,6 +515,7 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 * ShortcutIndex: number,
 * JourneyMap: KDJourneyMap,
 * JourneyTarget: {x: number, y: number},
+* LastDragon: string,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
@@ -725,6 +726,7 @@ let KDGameDataBase = {
 	visionAdjustBlind: 1, // Slowly follows actual visionadjust, used to determine if blindness occurs
 	visionBlind: 0, // Penalty to vision radius based on overbright
 	Restriction: 0,
+	LastDragon: "",
 };
 /**
  * @type {KDGameDataBase}

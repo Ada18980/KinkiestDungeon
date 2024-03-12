@@ -2883,6 +2883,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DragonGirlPoison", nameList: "dragonheart", outfit: "DragonPoison", style: "Water", faction: "DragonQueen", clusterWith: "beast",
 		bound: "DragonPoison", color: "#8d3fab",
+		playLine: "DragonGirl",
 		tags: KDMapInit(["opendoors", "poison", "nature", "dragongirl", "human", "melee", "miniboss", "vineRestraints",
 			"poisonresist", "fireresist", "chainweakness"]), cohesion: 0.75,
 		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenPoison", range: 4, loose: true, aggressive: true},
@@ -2961,6 +2962,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DragonGirlCrystal", nameList: "dragonheart", outfit: "DragonCrystal", style: "Water", faction: "DragonQueen", clusterWith: "beast",
 		bound: "DragonCrystal", color: "#ff5277",
+		playLine: "DragonGirl",
 		tags: KDMapInit(["opendoors", "chaos", "crystal", "dragongirl", "human", "melee", "miniboss", "crystalRestraints",
 			"electricresist", "fireresist", "chainweakness"]), cohesion: 0.75,
 		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenCrystal", range: 4, loose: true, aggressive: true},
@@ -2991,8 +2993,6 @@ let KinkyDungeonEnemies = [
 			spriteHeight: 144,
 			spriteWidth: 144,
 		},
-		specialCD: 20, specialAttack: "DashStun", specialRemove: "WillEffect", specialPower: 1, specialDamage: "soul", dashThrough: true, stunTime: 4, specialAttackPoints: 3,
-		specialRange: 12, projectileTargeting: true, projectileAttack: true, specialMinRange: 4, specialCDonAttack: true, specialWidth: 1.25,
 		castWhileMoving: true,
 
 
@@ -3031,8 +3031,8 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterEnemyTick", type: "ShadowBubbles", spell: "ShadowBubble", power: 1, count: 1, dist: 10, aoe: 6.5, time: 2},
 		],
 		ignoreflag: ["Furniture"],
-		spells: [],  spellCooldownMult: 1, spellCooldownMod: -1,
-		visionRadius: 7, blindSight: 2.5, maxhp: 40, armor: 3, minLevel:12, weight:2.5, movePoints: 2, attackPoints: 2, attack: "MeleeWillEffect",
+		spells: ["ShadowShroud", "ShadowShroudTele"],  spellCooldownMult: 1, spellCooldownMod: 0,
+		visionRadius: 7, blindSight: 7.5, maxhp: 40, armor: 3, minLevel:12, weight:2.5, movePoints: 2, attackPoints: 2, attack: "MeleeWillEffectSpell",
 		attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 5, dmgType: "slash",
 
 		terrainTags: {"shadow": 4, "lair": -100, "dragonqueen": 50}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
@@ -3040,26 +3040,30 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 200, amountMax: 300, weight: 15}]},
 
 	{name: "DragonGirlShadow", nameList: "dragonheart", outfit: "DragonShadow", style: "Water", faction: "DragonQueen", clusterWith: "beast",
-		bound: "DragonShadow", color: "#ff5277",
+		bound: "DragonShadow", color: "#999999",
+		playLine: "DragonGirl",
 		tags: KDMapInit(["opendoors", "shadow", "dragongirl", "human", "melee", "miniboss", "shadowlatexRestraints",
 			"coldresist", "fireresist", "chainweakness"]), cohesion: 0.75,
-		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenShadow", range: 4, loose: true, aggressive: true},
-		spells: ["CrystalShockBolt", "CrystalSlash", "CrystalBoltSingle"], spellCooldownMult: 1, spellCooldownMod: 2, castWhileMoving: true, spellRdy: true,
+		followLeashedOnly: true, ignorechance: 0, armor: 0, spellResist: 2, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenShadow", range: 4, loose: true, aggressive: true},
+		spells: ["DarkTele", "ShadowShroudGirl",], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, spellRdy: true,
 		events: [
 			//{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff44aa"},
 		],
 		effect: {
 			effect: {name: "ShadowEncase"},
 		},
+		Resistance: {
+			block_phys: 1,
+		},
 		ignoreflag: ["Furniture"],
 		noKiteWhenHarmless: true,
 		dontKiteWhenDisabled: true,
-		kite: 2.5,
-		visionRadius: 9, maxhp: 30, minLevel:0, weight:0, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeBindLockWillEffect",
-		stunTime: 1, attackWidth: 1, attackRange: 1, power: 4.5, dmgType: "crush", fullBoundBonus: 2,
+		kite: 3.5, kiteChance: 0.25,
+		visionRadius: 9, blindSight: 6.5, maxhp: 30, minLevel:0, weight:0, movePoints: 1.3, attackPoints: 2, attack: "SpellMeleeBindLockWillEffect",
+		stunTime: 1, attackWidth: 3, attackRange: 1, power: 4.5, dmgType: "soul", fullBoundBonus: 2,
 		terrainTags: {"shadow": 7, "dragongirl": 50}, shrines: ["Leather", "Illusion"], floors: {},
 		attackLock: "Purple", maxdodge: 0,
-		stamina: 7,
+		stamina: 6,
 		preferBlock: true,
 		dropTable: [{name: "PotionInvisibility", weight: 3}]},
 
@@ -3131,6 +3135,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DragonGirlIce", nameList: "dragonheart", outfit: "DragonIce", style: "Water", faction: "DragonQueen", clusterWith: "beast",
 		bound: "DragonIce", color: "#92e8c0",
+		playLine: "DragonGirl",
 		tags: KDMapInit(["opendoors", "water", "ice", "dragongirl", "human", "melee", "miniboss", "iceRestraints",
 			"acidresist", "fireresist", "chainweakness"]), cohesion: 0.75,
 		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenCrystal", range: 4, loose: true, aggressive: true},

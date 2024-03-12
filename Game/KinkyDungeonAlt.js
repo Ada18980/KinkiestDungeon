@@ -4,6 +4,8 @@ let KDJourneyMapMod = {
 	"Random": true,
 };
 
+let KDDragonList = ["DragonQueenCrystal", "DragonQueenPoison", "DragonQueenIce", "DragonQueenShadow"];
+
 let KDDefaultMaxFlags = {
 	goldchest: 1,
 	lessergold: 1,
@@ -1986,8 +1988,9 @@ function KinkyDungeonCreateElevatorRoom(POI, VisitedRooms, width, height, openne
 	KD_PasteTile(KDMapTilesList.ElevatorRoom, KDMapData.StartPosition.x - 7 - 3, KDMapData.StartPosition.y - 7 * 4, data);
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
-	let enemy = CommonRandomItemFromList(undefined, ["DragonQueenCrystal"]);
+	let enemy = CommonRandomItemFromList(KDGameData.LastDragon, KDDragonList);
 	if (enemy) {
+		KDGameData.LastDragon = enemy;
 		DialogueCreateEnemy(15,2 + 7 + 2,enemy);
 	}
 

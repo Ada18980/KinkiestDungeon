@@ -367,7 +367,45 @@ let KDPlayerEffects = {
 		}
 		return {sfx: "Fwosh", effect: true};
 	},
+	"LatexBall": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		if (KDTestSpellHits(spell, 0.5, 0.0)) {
+			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+			if (!dmg.happened) return{sfx: "Shield", effect: false};
 
+			if (KinkyDungeonPlayerBuffs.LatexBubble|| KinkyDungeonPlayerBuffs.LatexBubble2 || playerEffect.power > 5) {
+				// Add the sarcophagus
+				let newAdd = KinkyDungeonGetRestraint({tags: ["ballsuit"]}, 100, "grv");
+				if (newAdd) {
+					KinkyDungeonAddRestraintIfWeaker(newAdd, spell.power, false, undefined, false, false, undefined, faction);
+					KinkyDungeonSendTextMessage(4, TextGet("KDLatexBallEngulf").KDReplaceOrAddDmg( dmg.string), "#2789cd", 1);
+				}
+			} else {
+
+				KinkyDungeonSendTextMessage(4, TextGet("KDLatexBall").KDReplaceOrAddDmg( dmg.string), "#2789cd", 1);
+			}
+
+
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "LatexBubble",
+				aura: "#2789cd",
+				aurasprite: "LatexBubble",
+				noAuraColor: true,
+				buffSprite: true,
+				type: "meleeDamageBuff",
+				power: -0.3,
+				duration: playerEffect.time,
+				tags: ["debuff"],
+			});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "LatexBubble2",
+				type: "Blindness",
+				power: 4,
+				duration: playerEffect.time,
+				tags: ["debuff"],
+			});
+		}
+		return {sfx: "Fwosh", effect: true};
+	},
 	"WaterBubble": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		if (KDTestSpellHits(spell, 0.5, 0.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);

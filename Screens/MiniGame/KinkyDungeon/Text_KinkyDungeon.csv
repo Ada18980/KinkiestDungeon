@@ -4290,6 +4290,9 @@ RestraintSlimeBubbleDesc2,It will slow you down severely but can be popped if yo
 RestraintLatexSphere,Latex Sphere
 RestraintLatexSphereDesc,A giant inflatable sphere that compresses you and leaves you helpless...
 RestraintLatexSphereDesc2,You can't see out of it nor can you control its movement. If only you could puncture it!
+RestraintBallSuit,Latex Ball Suit
+RestraintBallSuitDesc,A giant inflatable sphere that leaves you rolling around...
+RestraintBallSuitDesc2,"Your movement is severely hampered, limited to feeble wiggling..."
 RestraintBubble,Bubble
 RestraintBubbleDesc,A squishy bubble that you can't get out of!
 RestraintBubbleDesc2,It will slow you down severely but can be popped if you can reach a knife...
@@ -6845,6 +6848,7 @@ KinkyDungeonSpellTrapLustCloud,Gas Trap
 KinkyDungeonSpellTrapSCloud,Gas Trap
 KinkyDungeonSpellTrapLatex,Latex Engulfment
 KinkyDungeonSpellTrapLatexBubble,Latex Engulfment
+KinkyDungeonSpellTrapLatexBall,Latex Spherification
 KinkyDungeonSpellTrapSleepDart,Sleep Dart
 KinkyDungeonSpellSleepDart,Sleep Dart
 
@@ -6864,6 +6868,7 @@ KinkyDungeonSpellCastTrapObsidian,"An otherworldly sigil appears below you!"
 KinkyDungeonSpellCastTrapCrystal,"Crystals rise up around you!"
 KinkyDungeonSpellCastTrapLatex,"Something shiny seems to be stretched out over the floor!"
 KinkyDungeonSpellCastTrapLatexBubble,"A rubber bubble starts forming around you!"
+KinkyDungeonSpellCastTrapLatexBall,"A rubber ball starts forming around you!"
 KinkyDungeonSpellCastTrapLustCloud,"You hear the sound of glass breaking, and a cloud of pink gas rises around you!"
 KinkyDungeonSpellCastTrapSCloud,"You hear the sound of glass breaking, and a cloud of green gas rises around you!"
 KinkyDungeonTrapBindingsCharmWeak,"The charms stick themselves all over your body!"
@@ -6878,6 +6883,7 @@ KinkyDungeonTrapBindingsCableWeak,"The high-tech cables wrap themselves over you
 KinkyDungeonTrapBindingsSlimeWeak,"The slime pours all over you!"
 KinkyDungeonTrapBindingsLatex,"A giant cube of latex engulfs you!"
 KinkyDungeonTrapBindingsLatexBubble,"A giant bubble of latex engulfs you and inflates, sealing you in!"
+KinkyDungeonTrapBindingsLatexBall,"A giant latex ball swallows you and inflates, sealing around your neck!"
 KinkyDungeonTrapBindingsObsidian,"A sinister power wraps itself around you and solidifies!"
 KinkyDungeonTrapBindingsShadowLatex,"Dark magics swirl around you and solidify into shiny rubber!"
 KinkyDungeonTrapBindingsCrystal,"Crystals grow and spread across your limbs!"
@@ -9579,6 +9585,63 @@ KinkyDungeonRemindJailChaseElementalCommandDefend,"Do not mess with us!"
 KinkyDungeonRemindJailChaseElementalCommandAssault,"I shall take you myself~"
 KinkyDungeonRemindJailChaseElementalCommandBlock,"Where do you think you're going?"
 
+
+
+KinkyDungeonRemindJailPlayHelplessDragonGirl0,"I will be free... even if it takes me a thousand years!"
+KinkyDungeonRemindJailPlayHelplessDragonGirl1,"Release me you pathetic creature!"
+KinkyDungeonRemindJailPlayHelplessDragonGirl2,"I will not be contained!"
+KinkyDungeonRemindJailPlayBratDragonGirl0,"Oh no, whatever shall I do!"
+KinkyDungeonRemindJailPlayBratDragonGirl1,"I will be back, mortal!"
+KinkyDungeonRemindJailPlayBratDragonGirl2,"You will never trap me!"
+KinkyDungeonRemindJailPlaySubDragonGirl0,"I yearn for a challenging puzzle!"
+KinkyDungeonRemindJailPlaySubDragonGirl1,"Show me your strongest restraints!"
+KinkyDungeonRemindJailPlaySubDragonGirl2,"I could probably escape anything."
+KinkyDungeonRemindJailPlayDragonGirl0,"Come here my plaything~"
+KinkyDungeonRemindJailPlayDragonGirl1,"Mortals are my favorite toy."
+KinkyDungeonRemindJailPlayDragonGirl2,"It's more fun when you resist!"
+KinkyDungeonRemindJailPlayDragonGirlStruggle,"Know your place, mortal~"
+KinkyDungeonRemindJailPlayDragonGirlLeash,"I will bring you to my lair~"
+KinkyDungeonRemindJailPlayDragonGirlFree,"Mortals shouldn't have too much freedom~"
+KinkyDungeonRemindJailPlayDragonGirlLoot,"Mortals should keep their hands to themselves~"
+KinkyDungeonRemindJailPlayDragonGirlKey,"You won't escape."
+KinkyDungeonRemindJailChaseDragonGirlAlert,"Yes, yes, run away!"
+KinkyDungeonRemindJailChaseDragonGirlAttack0,"I like your fighting spirit!"
+KinkyDungeonRemindJailChaseDragonGirlAttack1,"You may be weak, but this is quite entertaining~"
+KinkyDungeonRemindJailChaseDragonGirlAttack2,"Face my wrath!"
+KinkyDungeonRemindJailChaseDragonGirlSpell0,"Dragons are the true heirs of magic."
+KinkyDungeonRemindJailChaseDragonGirlSpell1,"Your magic was stolen from us!"
+KinkyDungeonRemindJailChaseDragonGirlSpell2,"This world is ours! OURS!"
+KinkyDungeonRemindJailChaseDragonGirlSpellItem,"Look what you need to match only a fraction of my power!"
+KinkyDungeonRemindJailChaseDragonGirlShrine,"My treasure!"
+KinkyDungeonRemindJailChaseDragonGirlChest,"My treasure!"
+KinkyDungeonRemindJailChaseDragonGirlOrb,"My treasure!"
+KinkyDungeonRemindJailChaseDragonGirlJailbreak,"Now is my opportunity! I will have you for myself~"
+KinkyDungeonRemindJailDragonGirlGrab,"You're staying right here..."
+KinkyDungeonRemindJailDragonGirlDisarm,"Hah!"
+KinkyDungeonRemindJailDragonGirlHit,"Get your hands off me!"
+KinkyDungeonRemindJailDragonGirlHitPlayer,"Pathetic."
+KinkyDungeonRemindJailDragonGirlMiss,"You're a fast one."
+KinkyDungeonRemindJailDragonGirlBlock,"You're a fast one."
+KinkyDungeonRemindJailDragonGirlMissedMe,"So weak!"
+KinkyDungeonRemindJailDragonGirlBlockedMe,"So weak!"
+KinkyDungeonRemindJailDragonGirlLeash,"I have you now~"
+KinkyDungeonRemindJailDragonGirlPull,"Not so fast~"
+KinkyDungeonRemindJailDragonGirlStun,"Can't handle it?"
+KinkyDungeonRemindJailDragonGirlPickpocket,"Ooh shiny!"
+KinkyDungeonRemindJailDragonGirlLock,"Now you're mine!"
+KinkyDungeonRemindJailDragonGirlIntro,"Bow before me, for I am PTRN!"
+KinkyDungeonRemindJailChaseDragonGirlDefend0,"A mortal can't stop us!"
+KinkyDungeonRemindJailChaseDragonGirlDefend1,"No one will save you, mortal."
+KinkyDungeonRemindJailChaseDragonGirlDefend2,"I will stop her!"
+KinkyDungeonRemindJailChaseDragonGirlDefendHonor0,"Bow down before our might!"
+KinkyDungeonRemindJailChaseDragonGirlDefendHonor1,"Dragons are the true rulers of this world!"
+KinkyDungeonRemindJailChaseDragonGirlDefendHonor2,"We were destined for greatness until you came along!"
+KinkyDungeonRemindJailChaseDragonGirlHonor0,"Why don't we turn the tables?"
+KinkyDungeonRemindJailChaseDragonGirlHonor1,"It'll be fun seeing you squirm~"
+KinkyDungeonRemindJailChaseDragonGirlHonor2,"We are the the true heirs of magic!"
+KinkyDungeonRemindJailChaseDragonGirlCommandDefend,"Hehe~"
+KinkyDungeonRemindJailChaseDragonGirlCommandAssault,"Rawr!"
+KinkyDungeonRemindJailChaseDragonGirlCommandBlock,"*chuckles*"
 
 
 KinkyDungeonRemindJailPlayHelplessAngel0,"This... this can't be..."
@@ -18411,9 +18474,13 @@ RestraintResinDesc2,"It's like you're an art piece! If only you had some way to 
 KDWindup,"You hear a motor whirring..."
 KDLatexBubbleEngulf,"A bubble of latex surrounds you and inflates, sealing you in!"
 KDLatexBubble,A bubble of latex envelops you!
+KDLatexBallEngulf,"A ball of latex surrounds you and inflates, sealing around your neck!"
+KDLatexBall,A ball of latex envelops you!
 KinkyDungeonBuffLatexBubble,"The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range."
+KinkyDungeonBuffLatexBall,"The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range."
 
-KinkyDungeonSpellLatexBubble,Latex Bubble
+KinkyDungeonSpellLatexBubble,Latex Bubbl
+KinkyDungeonSpellLatexBall,Latex Ball
 
 NamePinkLabAssistant,...Lab Assistant?
 KillPinkLabAssistant,You rescue the lab assistant.
@@ -19678,7 +19745,7 @@ KinkyDungeonSpellRuneTrap_VacCube,Latex Cube Rune
 KinkyDungeonSpellRuneTrap_SlimeBubble,Slime Bubble Rune
 KinkyDungeonSpellRuneTrap_Bubble,Bubble Rune
 KinkyDungeonSpellRuneTrap_LatexSphere,Spherical Rune
-KinkyDungeonSpellRuneTrap_LatexBallSuit,Ball Rune
+KinkyDungeonSpellRuneTrap_LatexBall,Ball Rune
 KinkyDungeonSpellRuneTrap_Rubber,Rubber Rune
 KinkyDungeonSpellRuneTrap_Slime,Slime Rune
 
@@ -20114,6 +20181,7 @@ KDBubbleBounce,An attack causes you to bounce...
 
 KinkyDungeonMagicBubble,You find yourself enveloped in a bubble!
 KinkyDungeonMagicLatexSphere,"A sphere of latex coalesces around you, trapping you and inflating until tight!"
+KinkyDungeonMagicLatexBall,"A sphere of latex coalesces around you, trapping you and sealing around your neck!"
 KinkyDungeonMagicSlimeBubble,You find yourself enveloped in a slime bubble!
 
 
@@ -20352,7 +20420,7 @@ rDragonQueenIce,"(As you slay the dragon, it begins shapeshifting into human for
 rDragonQueenShadow,"(As you slay the dragon, it begins shapeshifting into human form!)"
 
 NameDragonQueenCrystal,Crystal Dragon Queen
-KillDragonQueenCrystal,You slay the crystal dragon!
+KillDragonQueenCrystal,The crystal dragon shapeshifts back to human form!
 AttackDragonQueenCrystal,The crystal dragon strikes you with its claws! (DamageTaken)
 AttackDragonQueenCrystalBind,"The crystal dragon breaths a sparkling dust, which hardens into crystal! (+RestraintAdded)"
 AttackDragonQueenCrystalDash,"The crystal dragon takes flight and swoops toward you!"
@@ -20364,7 +20432,7 @@ AttackDragonGirlCrystalBind,"The dragon girl conjures a cloud of crystals that s
 
 
 NameDragonQueenPoison,Poison Dragon Queen
-KillDragonQueenPoison,You slay the poison dragon!
+KillDragonQueenPoison,The poison dragon shapeshifts back to human form!
 AttackDragonQueenPoison,The poison dragon strikes you with its claws! (DamageTaken)
 AttackDragonQueenPoisonBind,"The poison dragon extends many vines from its wings! (+RestraintAdded)"
 AttackDragonQueenPoisonDash,"The poison dragon takes flight and swoops toward you!"
@@ -20377,7 +20445,7 @@ AttackDragonGirlPoisonBind,"The dragon girl raises vines out of the ground to bi
 
 
 NameDragonQueenIce,Ice Dragon Queen
-KillDragonQueenIce,You slay the ice dragon!
+KillDragonQueenIce,The ice dragon shapeshifts back to human form!
 AttackDragonQueenIce,The ice dragon strikes you with its claws! (DamageTaken)
 AttackDragonQueenIceBind,"The ice dragon catches you in its icy breath! (+RestraintAdded)"
 NameDragonGirlIce,Ice Dragon Girl
@@ -20388,7 +20456,7 @@ AttackDragonGirlIceBind,"The dragon girl splashes you with instantly freezing ic
 
 
 NameDragonQueenShadow,Shadow Dragon Queen
-KillDragonQueenShadow,You slay the shadow dragon!
+KillDragonQueenShadow,The shadow dragon shapeshifts back to human form!
 AttackDragonQueenShadow,The shadow dragon slashes directly at your mind! (DamageTaken)
 AttackDragonQueenShadowBind,"The shadow dragon wraps itself around you many times! (+RestraintAdded)"
 NameDragonGirlShadow,Shadow Dragon Girl
@@ -20479,3 +20547,23 @@ KinkyDungeonSpellCastIceBreathChannel,"The EnemyName breaths in deeply, causing 
 
 KinkyDungeonSpellShadowBubble,Shadow Bubble
 KinkyDungeonSpellShadowBubbleBind,"The projectile explodes into tight shadow latex, stretching all across your body!"
+KDDragonTeleport,The dragon dances through the shadows!
+
+KDBallsuitTip,"You tip over as you try to roll yourself! (oof!)"
+
+KinkyDungeonShadowDrain,"The shadowy energies surrounding you drain away your mana..."
+
+RestraintShadowBallSuit,Shadow Sphere
+RestraintShadowBallSuitDesc,A giant shadow latex sphere that leaves you rolling around...
+RestraintShadowBallSuitDesc2,"Your movement is severely hampered, limited to feeble wiggling..."
+
+KinkyDungeonSpellCastShadowShroud,Dark magics fill the air!
+KinkyDungeonSpellCastShadowShroudGirl,Dark magics fill the air!
+
+RestraintShadowLatexGagCollar,Shadow Posture Collar
+RestraintShadowLatexGagCollarDesc,"A strict collar that seals your mouth tightly."
+RestraintShadowLatexGagCollarDesc2,"It is made of shadow latex, tougher to cut than normal latex."
+
+KDTeleportsBehindYou0,*scoffs* Amateur.
+KDTeleportsBehindYou1,Nothing personal.
+KDTeleportsBehindYou2,Not bad... you made me use 10% of my power.

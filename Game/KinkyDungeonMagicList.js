@@ -2697,7 +2697,32 @@ let KinkyDungeonSpellListEnemies = [
 		castCondition: "WardenCageDrop",
 		power: 2.5, time: 1, delay: 5, range: 8, size: 3, aoe: 1.5, lifetime: 1, damage: "chain", playerEffect: {name: "CageDrop", time: 1}},
 
+	{enemySpell: true, name: "ShadowShroud",  tags: ["aoe", "buff", "utility", "stealth", "defense"], sfx: "Fwoosh", school: "Illusion", manacost: 2, components: ["Verbal"], level:1, type:"inert",
+		specialCD: 8,
+		onhit:"", time:13, aoe: 1.5, power: 0, delay: 18, range: 9.5, size: 3, damage: "",
+		events: [{type: "CreateSmoke", trigger: "bulletTick", kind: "Smoke", aoe: 2.5, chance: 0.25},]},
 
+	{enemySpell: true, name: "ShadowShroudGirl",  tags: ["aoe", "buff", "utility", "stealth", "defense"], sfx: "Fwoosh", school: "Illusion", manacost: 0, components: ["Verbal"], level:1, type:"inert",
+		specialCD: 14,
+		minRange: 0,
+		selfcast: true,
+		onhit:"", time:13, aoe: 1.5, power: 0, delay: 9, range: 9.5, size: 1, damage: "",
+		events: [{type: "CreateSmoke", trigger: "bulletTick", kind: "Smoke", aoe: 3.5, chance: 0.5},]},
+
+	{enemySpell: true, name: "ShadowShroudTele",  tags: ["aoe", "buff", "utility", "stealth", "defense"], school: "Illusion", manacost: 1, components: ["Verbal"], level:1, type:"hit",
+		onhit:"", time:8, aoe: 6.5, power: 0, delay: 8, range: 12, size: 3, damage: "", noSprite: true,
+		events: [
+			{trigger: "afterBulletHit", type: "ShadowShroudTele", aoe: 6.5},
+		]
+	},
+
+	{enemySpell: true, name: "DarkTele",  tags: ["aoe", "buff", "utility", "stealth", "defense"], school: "Illusion", manacost: 0, components: ["Verbal"], level:1, type:"hit",
+		onhit:"", time:8, aoe: 6.5, power: 0, delay: 8, range: 12, size: 3, damage: "", noSprite: true,
+		minRange: 0,
+		events: [
+			{trigger: "afterBulletHit", type: "DarkTele", aoe: 6.5},
+		]
+	},
 
 	{enemySpell: true, name: "ShadowBubble", bindType: "Magic", color: "#9574ff", sfx: "FireSpell", landsfx: "Teleport", manacost: 1, components: ["Arms"],
 		minRange: 0,
@@ -3285,6 +3310,24 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["latexSphere"], msg: "LatexSphere"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
 
+	{enemySpell: true, name: "RuneTrap_LatexBall", bulletColor: 0xff00ff, tags: ["latex", "trap"],
+		hideWarnings: true,
+		effectTileDurationMod: 10, effectTile: {
+			name: "LatexThinBlue",
+			duration: 20,
+		},
+		effectTileDoT: {
+			name: "LatexThinBlue",
+			duration: 2,
+		}, effectTileDistDoT: 0.5,
+		effectTileDoT2: {
+			name: "BoobyTrapMagic",
+			duration: 2,
+		},
+		hitColor: 0x4fa4b8, hitLight: 6, hitsfx: "RubberBolt", manacost: 2, components: ["Legs"], level:1, type:"dot",
+		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["ballsuit"], msg: "BallSuit"},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
+
 	{enemySpell: true, name: "RuneTrap_Rubber", bulletColor: 0xff5277, tags: ["rope", "trap"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
@@ -3337,6 +3380,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, faction: "Trap", distract: 10, name: "TrapCrystal", sfx: "Freeze", manacost: 4, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 1, power: 3, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "arcane", playerEffect: {name: "TrapBindings", text: "KinkyDungeonTrapBindingsCrystal", tags: ["crystalRestraints"], power: 9, count: 3}},
 	{nonmagical: true, faction: "Trap", enemySpell: true, name: "TrapLatex", sfx: "MagicSlash", manacost: 4, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 1, power: 3, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "arcane", playerEffect: {name: "TrapBindings", text: "KinkyDungeonTrapBindingsLatex", tags: ["latexRestraints", "latexRestraintsHeavy", "redLatexBasic"], power: 7, count: 3}},
 	{faction: "Trap", enemySpell: true, name: "TrapLatexBubble", sfx: "Grope", manacost: 6, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 2, power: 4, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "glue", playerEffect: {name: "TrapBindings", text: "KinkyDungeonTrapBindingsLatexBubble", tags: ["latexSphere"], power: 6, count: 1}},
+	{faction: "Trap", enemySpell: true, name: "TrapLatexBall", sfx: "Grope", manacost: 6, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 2, power: 4, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "glue", playerEffect: {name: "TrapBindings", text: "KinkyDungeonTrapBindingsLatexBall", tags: ["ballSuit"], power: 6, count: 1}},
 	{nonmagical: true, enemySpell: true, name: "TrapSleepDart", hideWarnings: true, sfx: "Gunfire", manacost: 1, components: [], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "poison", speed: 2, playerEffect: {name: "TrapSleepDart", power: 5}},
 	{enemySpell: true, faction: "Trap", distract: 20, name: "TrapLustCloud", sfx: "Freeze", manacost: 1, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 1, power: 3, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "happygas", playerEffect: {name: "TrapLustCloud", damage: "happygas", power: 8 }},
 	{enemySpell: true, faction: "Trap", name: "TrapSCloud", sfx: "Freeze", manacost: 1, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 1, power: 3, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "poison", playerEffect: {name: "TrapSPCloud", damage: "poison", power: 5.0 }},

@@ -68,6 +68,24 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		}
 		]
 	},
+	TippedHogtie: {
+		filter_pose: ["Hogtie"],
+		rotation: -125,
+		pri_rotation: 2,
+		offset_y: 0.1,
+		pri_offsety: 3,
+		global_default: "Closed",
+		mods: [
+		{
+			Layer: "BG",
+			rotation: 125,
+			rotation_x_anchor: .5,
+			rotation_y_anchor: .5,
+			offset_x: 0.641,
+			offset_y: 0.273,
+		}
+		]
+	},
 	BubbleHogtie: {
 		filter_pose: ["Hogtie"],
 		rotation: -90,
@@ -485,7 +503,7 @@ function KDGetAvailablePosesArms(C: Character): string[] {
 	return Object.keys(poses);
 }
 
-function RefreshTempPoses(Character: Character, Restraints: boolean) {
+function RefreshTempPoses(Character: Character, Restraints: boolean, Buffs: boolean = true) {
 	KDRefreshPoseOptions(Character);
 
 	for (let pose of Object.keys(KDCurrentModels.get(Character).TempPoses))
@@ -499,6 +517,14 @@ function RefreshTempPoses(Character: Character, Restraints: boolean) {
 			}
 		}
 	}*/
+
+	if (Buffs && Character == KinkyDungeonPlayer) {
+		for (let buff of Object.values(KinkyDungeonPlayerBuffs)) {
+			if (buff.pose && buff.duration >= 0) {
+				KDCurrentModels.get(Character).TempPoses[buff.pose] = true;
+			}
+		}
+	}
 
 	if (Restraints && Character == KinkyDungeonPlayer)
 		for (let rest of KinkyDungeonAllRestraintDynamic()) {

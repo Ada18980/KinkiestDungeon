@@ -1842,10 +1842,9 @@ const KinkyDungeonRestraints = [
 		Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],factionColor: [[0]], power: 8, weight: -2,
 		strictness: 0.05, escapeChance: {"Struggle": -0.05, "Cut": 0.05, "Remove": 0.2, "Pick": 0.2},
 		Model: "LatexNeckCorsetGagRestraint",
-		struggleBreak: true,
 		factionFilters: {
-			Neck: {color: "LightNeutral", override: true},
-			Latex: {color: "LightNeutral", override: true},
+			Neck: {color: "LightNeutral", override: false},
+			Latex: {color: "LightNeutral", override: false},
 			Rim: {color: "Highlight", override: true},
 		},
 		maxwill: 0.25, enemyTags: {"expRestraints" : 3, "latexCollar": 7}, playerTags: {"ItemMouthFull": 2, "ItemMouth2Full": 2, "ItemMouth3Full": 2},
@@ -1932,6 +1931,31 @@ const KinkyDungeonRestraints = [
 		],
 		enemyTags: {"slimebubble":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Latex"], removeOnLeash: true,
 	},
+
+
+	{removePrison: true, name: "BallSuit", Asset: "VacCube", Color: ["#88aaff"], Group: "ItemDevices", power: 4, weight: 1, alwaysStruggleable: true,
+		Model: "BallSuit",
+		bindarms: true,
+		restriction: 15,
+		addTag: ["ForceKneel", "NoHogtie"],
+		failSuffix: {Remove: "Bubble", Struggle: "Bubble", Cut: "Bubble"},
+		escapeChance: {"Struggle": -0.3, "Cut": 0.5, "Remove": -.5},
+		helpChance: {"Struggle": -0.3, "Pick": 1.0, "Remove": -.5},
+		affinity: {
+			Struggle: ["Sharp"],
+			Remove: ["Sharp"],
+		},
+		factionFilters: {
+			BallSuit: {color: "Highlight", override: false},
+		},
+		events: [
+			//{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
+			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.4, sfx: "RubberBolt", inheritLinked: true},
+			{trigger: "playerMove", type: "tipBallsuit", inheritLinked: true},
+		],
+		enemyTags: {"ballSuit":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Latex", "BallSuit"], removeOnLeash: true,
+	},
+
 	{removePrison: true, name: "LatexSphere", Asset: "VacCube", Color: ["#88aaff"], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true, blindfold: 6, enclose: true,
 		Model: "LatexSphere",
 		bindarms: true,
@@ -1943,6 +1967,11 @@ const KinkyDungeonRestraints = [
 		affinity: {
 			Struggle: ["Sharp"],
 			Remove: ["Sharp"],
+		},
+		factionFilters: {
+			LatexSphere: {color: "Highlight", override: false},
+			LatexSphereCutaway: {color: "Highlight", override: false},
+			LatexSphereCutawayBack: {color: "Highlight", override: false},
 		},
 		events: [
 			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
@@ -3707,25 +3736,42 @@ const KinkyDungeonRestraints = [
 
 	//region ShadowLatex
 
-	{removePrison: true, name: "ShadowBallSuit", Asset: "VacCube", Color: ["#88aaff"], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true,
+	{removePrison: true, name: "ShadowBallSuit", Asset: "VacCube", Color: ["#88aaff"], Group: "ItemDevices", power: 8, weight: 1, alwaysStruggleable: true,
 		Model: "BallSuit",
 		bindarms: true,
 		restriction: 30,
 		addTag: ["ForceKneel", "NoHogtie"],
 		failSuffix: {Remove: "Bubble", Struggle: "Bubble", Cut: "Bubble"},
-		escapeChance: {"Struggle": -0.3, "Cut": 0.5, "Remove": -.5},
-		helpChance: {"Struggle": -0.3, "Pick": 1.0, "Remove": -.5},
+		escapeChance: {"Struggle": -0.4, "Cut": -0.5, "Remove": -10},
+		helpChance: {"Struggle": -0.3, "Cut": -0.1, "Remove": -10},
 		affinity: {
 			Struggle: ["Sharp"],
 			Remove: ["Sharp"],
 		},
 		Filters: {"BallSuit":{"gamma":0.5,"saturation":1.2166666666666668,"contrast":0.7166666666666667,"brightness":1.0833333333333335,"red":0.6333333333333334,"green":0.16666666666666666,"blue":0.65,"alpha":0.9333333333333333}},
 		events: [
-			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
-			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.2, sfx: "RubberBolt", inheritLinked: true},
+			//{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
+			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.4, sfx: "RubberBolt", inheritLinked: true},
+			{trigger: "playerMove", type: "tipBallsuit", inheritLinked: true},
+			{trigger: "tick", type: "shadowDrain", power: -0.1, inheritLinked: true},
 		],
-		enemyTags: {"shadowBall":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "ShadowLatex", "BallSuit", "ShadowEncase"], removeOnLeash: true,
+		enemyTags: {"shadowBall":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "ShadowLatex", "Latex", "BallSuit", "ShadowEncase"], removeOnLeash: true,
 	},
+
+	{inventory: true, name: "ShadowLatexGagCollar", debris: "Belts", inaccessible: true, Asset: "LatexPostureCollar", gag: 0.4, Color: "#4E7DFF",
+		Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],factionColor: [[0]], power: 9, weight: -2,
+		strictness: 0.05, escapeChance: {"Struggle": -0.15, "Cut": -0.05, "Remove": 0.1, "Pick": 0.2},
+		Model: "LatexNeckCorsetGagRestraint",
+		factionFilters: {
+			Rim: {color: "Highlight", override: true},
+		},
+		Filters: {
+			Neck: {"gamma":1,"saturation":0,"contrast":1.0666666666666667,"brightness":0.9166666666666666,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
+			Latex: {"gamma":1,"saturation":0,"contrast":1.0666666666666667,"brightness":0.9166666666666666,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
+			Rim: {"gamma":1,"saturation":0,"contrast":1.0666666666666667,"brightness":0.9166666666666666,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
+		},
+		maxwill: 0.25, enemyTags: {"shadowlatexGag" : 3, "shadowlatexRestraints": 7}, playerTags: {"ItemMouthFull": 2, "ItemMouth2Full": 2, "ItemMouth3Full": 2},
+		minLevel: 3, allFloors: true, shrine: ["ShadowLatex", "Latex", "Posture", "HighCollars", "Collars"]},
 
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexHeels", inaccessible: true, Asset: "FuturisticHeels2", remove: ["Shoes"],
 		Model: "BalletHeelsRestraint",
@@ -3748,7 +3794,7 @@ const KinkyDungeonRestraints = [
 		Filters: {
 			BeltsChest: {"gamma":1,"saturation":0,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			BeltsArms: {"gamma":1,"saturation":0,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
-			Chest: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
+			ChestBolero: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
 			Arms: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
 			LatexLower: {"gamma":1,"saturation":1,"contrast":0.8666666666666667,"brightness":2.0833333333333335,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
 			LatexUpper: {"gamma":1,"saturation":1,"contrast":0.8666666666666667,"brightness":2.0833333333333335,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
@@ -3765,7 +3811,9 @@ const KinkyDungeonRestraints = [
 		shrine: ["Latex", "ShadowLatex", "Obsidian", "Straitjackets", "Block_ItemHands"]},
 
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexStrongJacket", inaccessible: true, remove: ["Bra", "Tops"], Asset: "StraitLeotard", Modules: [1, 1, 1, 1], Color: ["#4e2a70", "#4e2a70", "#4e2a70"], Group: "ItemArms",
-
+		events: [
+			{trigger: "tick", type: "shadowDrain", power: -0.1, inheritLinked: true},
+		],
 		LinkableBy: [...KDJacketLink],
 		renderWhenLinked: [...KDJacketRender],
 		Model: "JacketExtraLeotard",
@@ -3773,8 +3821,8 @@ const KinkyDungeonRestraints = [
 			BeltsChest: {"gamma":1,"saturation":0,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			BeltsArms: {"gamma":1,"saturation":0,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			BeltsLower: {"gamma":1,"saturation":0,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
-			Chest: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
-			//Arms: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
+			ChestBolero: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
+			Arms: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
 			Lower: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
 			LatexLower: {"gamma":1,"saturation":1,"contrast":0.8666666666666667,"brightness":2.0833333333333335,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
 			LatexUpper: {"gamma":1,"saturation":1,"contrast":0.8666666666666667,"brightness":2.0833333333333335,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
@@ -3791,11 +3839,12 @@ const KinkyDungeonRestraints = [
 		shrine: ["Latex", "ShadowLatex", "Obsidian", "Straitjackets", "Block_ItemHands", "TransportJackets"]},
 
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexArmbinder", inaccessible: true, Asset: "SeamlessLatexArmbinder",
+
 		Model: "JacketLeotard",
 		Filters: {
 			BeltsChest: {"gamma":1,"saturation":0,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			BeltsArms: {"gamma":1,"saturation":0,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
-			Chest: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
+			ChestBolero: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
 			Arms: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
 			LatexLower: {"gamma":1,"saturation":1,"contrast":0.8666666666666667,"brightness":2.0833333333333335,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
 			LatexUpper: {"gamma":1,"saturation":1,"contrast":0.8666666666666667,"brightness":2.0833333333333335,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
@@ -3815,7 +3864,9 @@ const KinkyDungeonRestraints = [
 		shrine: ["Latex", "ShadowLatex", "Obsidian", "Armbinders", "Block_ItemHands"]},
 
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexStrongArmbinder", inaccessible: true, remove: ["Bra", "Tops"], Asset: "StraitLeotard", Modules: [1, 1, 1, 1], Color: ["#4e2a70", "#4e2a70", "#4e2a70"], Group: "ItemArms",
-
+		events: [
+			{trigger: "tick", type: "shadowDrain", power: -0.1, inheritLinked: true},
+		],
 		LinkableBy: [...KDDressLink],
 		renderWhenLinked: [...KDArmbinderLink],
 		Model: "JacketExtraLeotard",
@@ -3823,8 +3874,8 @@ const KinkyDungeonRestraints = [
 			BeltsChest: {"gamma":1,"saturation":0,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			BeltsArms: {"gamma":1,"saturation":0,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			BeltsLower: {"gamma":1,"saturation":0,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
-			Chest: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
-			//Arms: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
+			ChestBolero: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
+			Arms: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
 			Lower: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
 			LatexLower: {"gamma":1,"saturation":1,"contrast":0.8666666666666667,"brightness":2.0833333333333335,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
 			LatexUpper: {"gamma":1,"saturation":1,"contrast":0.8666666666666667,"brightness":2.0833333333333335,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
@@ -3845,7 +3896,7 @@ const KinkyDungeonRestraints = [
 		Filters: {
 			BeltsChest: {"gamma":1,"saturation":0,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			BeltsArms: {"gamma":1,"saturation":0,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
-			Chest: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
+			ChestBolero: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
 			Arms: {"gamma":1,"saturation":1,"contrast":1.1333333333333333,"brightness":1.3666666666666667,"red":1,"green":1,"blue":1.9,"alpha":0.8333333333333333},
 			LatexLower: {"gamma":1,"saturation":1,"contrast":0.8666666666666667,"brightness":2.0833333333333335,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
 			LatexUpper: {"gamma":1,"saturation":1,"contrast":0.8666666666666667,"brightness":2.0833333333333335,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
@@ -3873,7 +3924,9 @@ const KinkyDungeonRestraints = [
 		minLevel: 4, allFloors: true, shrine: ["Latex", "ShadowLatex", "Obsidian", "Legbinders"]},
 
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexStrongBoxbinder", inaccessible: true, remove: ["Bra", "Tops"], Asset: "StraitLeotard", Modules: [1, 1, 1, 1], Color: ["#4e2a70", "#4e2a70", "#4e2a70"], Group: "ItemArms",
-
+		events: [
+			{trigger: "tick", type: "shadowDrain", power: -0.1, inheritLinked: true},
+		],
 		LinkableBy: [...KDJacketLink],
 		renderWhenLinked: [...KDJacketRender],
 		Model: "JacketExtraLeotard",

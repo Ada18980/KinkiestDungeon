@@ -230,6 +230,7 @@ let KinkyDungeonEscapeTypes = {
 	},
 	"Quest": {
 		selectValid: true,
+		requireMaxQuests: true,
 		worldgenstart: () => {
 			let quota = 1;
 			if (KinkyDungeonStatsChoice.get("extremeMode")) quota = 3;
@@ -257,7 +258,7 @@ let KinkyDungeonEscapeTypes = {
 	"Boss": {
 		selectValid: false,
 		check: () => {
-			return KinkyDungeonFlags.has("BossUnlocked");
+			return KinkyDungeonFlags.has("BossUnlocked") || (KDMapData.Entities.length == 0 || KDMapData.Entities.filter((en) => {return en.Enemy?.tags?.stageBoss;}).length == 0);
 		},
 		minimaptext: () => {
 			let escape = KinkyDungeonEscapeTypes.Boss.check();

@@ -1736,6 +1736,7 @@
             <key type="filename">../Models/Rope/RightThigh2KneelClosedOver.png</key>
             <key type="filename">../Models/Rope/RightThigh3KneelClosed.png</key>
             <key type="filename">../Models/Rope/RightThigh3KneelClosedOver.png</key>
+            <key type="filename">../Models/Rope/Suspension.png</key>
             <key type="filename">../Models/Rope/Thigh1Closed.png</key>
             <key type="filename">../Models/Rope/Thigh1ClosedOver.png</key>
             <key type="filename">../Models/Rope/Thigh1KneelClosed.png</key>
