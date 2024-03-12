@@ -2273,7 +2273,7 @@ function KinkyDungeonTrackSneak(enemy, delta, player, darkmult) {
 		sneakThreshold: enemy.Enemy.sneakThreshold ? enemy.Enemy.sneakThreshold : 2,
 		deltaMult: 0.7/Math.max(1, (1 + KinkyDungeonSubmissiveMult))*(enemy.Enemy.Awareness?.senseSpeed || 1),
 		visibility: 1.0,
-		darkmult: darkmult,
+		darkmult: darkmult * (KinkyDungeonStatsChoice.get("Stalker") ? 2.5: 1.25),
 		enemy: enemy,
 		delta: delta,
 		player: player,

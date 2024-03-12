@@ -2012,7 +2012,7 @@ function KinkyDungeonRun() {
 				((!KDClassReqs[Object.keys(KDClassStart)[i]]) || KDClassReqs[Object.keys(KDClassStart)[i]]()) ?
 				(KinkyDungeonClassMode == Object.keys(KDClassStart)[i] ? "#ffffff" : "#888888")
 				: "#ff5555", "", undefined, undefined, true, KDButtonColor);
-			if (MouseIn(buttonsstart + (buttonspad + buttonswidth) * X, 210 + Y*(buttonsheight + buttonsypad), buttonswidth, buttonsheight)) {
+			if (MouseIn(buttonsstart + (buttonspad + buttonswidth) * X, 190 + Y*(buttonsheight + buttonsypad), buttonswidth, buttonsheight)) {
 				DrawTextFitKD(TextGet("KinkyDungeonClassModeDesc" + i), 1250, 120, 1000, "#ffffff", KDTextGray0);
 			}
 		}

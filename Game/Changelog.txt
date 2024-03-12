@@ -28,6 +28,9 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.2.11
+- new perk: Stalker
+
 5.2.10
 - Added elevators which you can fast travel between once you unlock them
 - Reworked the way cuffs and links work

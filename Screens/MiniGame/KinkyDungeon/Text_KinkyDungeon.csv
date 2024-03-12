@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.9"
+KDVersionStr,"5.2.11"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -530,6 +530,11 @@ KinkyDungeonStatNightOwl,"Night Owl"
 KinkyDungeonStatDescNightOwl,"Your vision in dark areas is improved."
 KinkyDungeonStatNightBlindness,"Fear of the Dark"
 KinkyDungeonStatDescNightBlindness,"Your vision in dark areas is reduced."
+
+KinkyDungeonStatMutualDarkness,"Mutually Assured Darkness"
+KinkyDungeonStatDescMutualDarkness,"Darkness is twice as effective in hiding from enemies, but your night vision is also reduced."
+KinkyDungeonStatStalker,"Stalker"
+KinkyDungeonStatDescStalker,"Darkness is twice as effective in hiding from enemies."
 
 KinkyDungeonStatNoDoll,"Not a Doll"
 KinkyDungeonStatDescNoDoll,"You may still enter Doll Terminals, but enemies will not force you onto doll stands."
@@ -18990,7 +18995,7 @@ KDShrineActionDescChampionRemove,"Removes your devotion from this goddess."
 KDShrineActionDescChampionRemoveFail,You are not devoted to this goddess.
 KDShrineActionDescChampion,"Guarantees a quest from this goddess on every floor."
 KDShrineActionDescChampionFail,You are already a devotee of this goddess.
-KDShrineActionDescOffer,Offer gold to the Goddess in exchange for help. Destroys the shrine.
+KDShrineActionDescOffer,Offer gold in exchange for help. Destroys the shrine.
 KDShrineActionDescPray,Ask for help without offering gold.
 KDShrineActionDescPrayFail,You have already prayed at this shrine.
 KDShrineActionDescQuest,Listen to what the Goddess asks of you.

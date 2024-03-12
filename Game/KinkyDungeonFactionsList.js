@@ -1074,7 +1074,8 @@ function KDInitFactions(Reset) {
 	}
 
 	for (let f of Object.keys(KinkyDungeonFactionRelationsBase)) {
-		KinkyDungeonFactionRelations[f] = Object.assign(KinkyDungeonFactionRelationsBase[f]);
+		if (!KinkyDungeonFactionRelations[f])
+			KinkyDungeonFactionRelations[f] = Object.assign(KinkyDungeonFactionRelationsBase[f]);
 	}
 
 	KDFactionRelations = new Map();
