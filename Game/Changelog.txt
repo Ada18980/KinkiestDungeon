@@ -29,9 +29,14 @@ Monk class?
  - TODO display stand turret
 
 5.2.10
-- Added elevators (TODO)
-- Reworked the way cuffs, links, and hogties work (TODO)
+- Added elevators which you can fast travel between once you unlock them
+- Reworked the way cuffs and links work
+- Added Warden collar
 - Added Dragon Queens
+- Added Dragon Girls
+- Numerous bug, graphical fixes
+- Added latex ball suit trap
+- New music by Synthc4t! Used in bellows/dollmaker fight
 
 5.2.9
 - Added Sariel Vinlaga's Panties to gold chests

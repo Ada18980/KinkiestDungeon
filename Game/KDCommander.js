@@ -1084,10 +1084,19 @@ let KDBoobyTraps = {
 	"RuneTrap_LatexSphere": {
 		minlevel: 5,
 		filter: (enemy, x, y, checkpoint, type) => {
-			return enemy.Enemy.tags?.latex;
+			return enemy.Enemy.tags?.latex && !KinkyDungeonStatsChoice.get("bubbleOptout");
 		},
 		weight: (enemy, x, y, checkpoint, type) => {
-			return 20;
+			return KinkyDungeonStatsChoice.get("bubblePref") ? 50 : 5;
+		},
+	},
+	"RuneTrap_LatexBall": {
+		minlevel: 5,
+		filter: (enemy, x, y, checkpoint, type) => {
+			return enemy.Enemy.tags?.latex && !KinkyDungeonStatsChoice.get("bubbleOptout");
+		},
+		weight: (enemy, x, y, checkpoint, type) => {
+			return KinkyDungeonStatsChoice.get("bubblePref") ? 50 : 5;
 		},
 	},
 

@@ -267,8 +267,14 @@
             <key type="filename">../Game/Bullets/CrackleHit.png</key>
             <key type="filename">../Game/Bullets/CrackleTrail.png</key>
             <key type="filename">../Game/Bullets/CrackleTrailHit.png</key>
+            <key type="filename">../Game/Bullets/CrystalBolt.png</key>
+            <key type="filename">../Game/Bullets/CrystalBoltHit.png</key>
+            <key type="filename">../Game/Bullets/CrystalBoltSingle.png</key>
+            <key type="filename">../Game/Bullets/CrystalBoltSingleHit.png</key>
             <key type="filename">../Game/Bullets/CrystalPuff.png</key>
             <key type="filename">../Game/Bullets/CrystalPuffHit.png</key>
+            <key type="filename">../Game/Bullets/CrystalShock.png</key>
+            <key type="filename">../Game/Bullets/CrystalShockHit.png</key>
             <key type="filename">../Game/Bullets/CuffsBolt.png</key>
             <key type="filename">../Game/Bullets/CuffsBoltHit.png</key>
             <key type="filename">../Game/Bullets/CursedArrow.png</key>
@@ -276,6 +282,12 @@
             <key type="filename">../Game/Bullets/Dagger.png</key>
             <key type="filename">../Game/Bullets/DaggerHit.png</key>
             <key type="filename">../Game/Bullets/DistractionBurstBullet.png</key>
+            <key type="filename">../Game/Bullets/DragonIceBolt.png</key>
+            <key type="filename">../Game/Bullets/DragonIceBoltHit.png</key>
+            <key type="filename">../Game/Bullets/DragonSlash.png</key>
+            <key type="filename">../Game/Bullets/DragonSlashHit.png</key>
+            <key type="filename">../Game/Bullets/DragonVine.png</key>
+            <key type="filename">../Game/Bullets/DragonVineHit.png</key>
             <key type="filename">../Game/Bullets/DryadBlast.png</key>
             <key type="filename">../Game/Bullets/DryadBlastHit.png</key>
             <key type="filename">../Game/Bullets/EarthformLine.png</key>
@@ -323,6 +335,8 @@
             <key type="filename">../Game/Bullets/EnemySummonLatexRestraintHit.png</key>
             <key type="filename">../Game/Bullets/EnemyWindBlast.png</key>
             <key type="filename">../Game/Bullets/EnemyWindBlastHit.png</key>
+            <key type="filename">../Game/Bullets/EnemyWinterblast.png</key>
+            <key type="filename">../Game/Bullets/EnemyWinterblastHit.png</key>
             <key type="filename">../Game/Bullets/Firebolt.png</key>
             <key type="filename">../Game/Bullets/FireboltHit.png</key>
             <key type="filename">../Game/Bullets/Fireexp.png</key>
@@ -517,12 +531,16 @@
             <key type="filename">../Game/Bullets/SealingBoltHit.png</key>
             <key type="filename">../Game/Bullets/ShadowBolt.png</key>
             <key type="filename">../Game/Bullets/ShadowBoltHit.png</key>
+            <key type="filename">../Game/Bullets/ShadowBubble.png</key>
+            <key type="filename">../Game/Bullets/ShadowBubbleHit.png</key>
             <key type="filename">../Game/Bullets/ShadowDance.png</key>
             <key type="filename">../Game/Bullets/ShadowDanceHit.png</key>
             <key type="filename">../Game/Bullets/ShadowGraspMulti.png</key>
             <key type="filename">../Game/Bullets/ShadowGraspMultiHit.png</key>
             <key type="filename">../Game/Bullets/ShadowOrb.png</key>
             <key type="filename">../Game/Bullets/ShadowOrbHit.png</key>
+            <key type="filename">../Game/Bullets/ShadowShroudGirl.png</key>
+            <key type="filename">../Game/Bullets/ShadowShroudGirlHit.png</key>
             <key type="filename">../Game/Bullets/ShadowSlashTrail.png</key>
             <key type="filename">../Game/Bullets/ShadowSlashTrailHit.png</key>
             <key type="filename">../Game/Bullets/ShadowStrike.png</key>
@@ -991,12 +1009,19 @@
             <key type="filename">../Game/Enemies/DoorLock.png</key>
             <key type="filename">../Game/Enemies/Dragon.png</key>
             <key type="filename">../Game/Enemies/DragonCrystal.png</key>
+            <key type="filename">../Game/Enemies/DragonFlower.png</key>
+            <key type="filename">../Game/Enemies/DragonGirlCrystal.png</key>
+            <key type="filename">../Game/Enemies/DragonGirlIce.png</key>
+            <key type="filename">../Game/Enemies/DragonGirlPoison.png</key>
+            <key type="filename">../Game/Enemies/DragonGirlShadow.png</key>
             <key type="filename">../Game/Enemies/DragonIce.png</key>
             <key type="filename">../Game/Enemies/DragonLeader.png</key>
             <key type="filename">../Game/Enemies/DragonLeaderDuelist.png</key>
             <key type="filename">../Game/Enemies/DragonPoison.png</key>
             <key type="filename">../Game/Enemies/DragonShadow.png</key>
             <key type="filename">../Game/Enemies/DragonShield.png</key>
+            <key type="filename">../Game/Enemies/DragonVineFlower.png</key>
+            <key type="filename">../Game/Enemies/DragonVinePlant.png</key>
             <key type="filename">../Game/Enemies/DragonheartQuest.png</key>
             <key type="filename">../Game/Enemies/Dressmaker.png</key>
             <key type="filename">../Game/Enemies/DressmakerQuest.png</key>
@@ -1054,6 +1079,7 @@
             <key type="filename">../Game/Enemies/HolyConstruct.png</key>
             <key type="filename">../Game/Enemies/HolyOrb.png</key>
             <key type="filename">../Game/Enemies/HugHorror.png</key>
+            <key type="filename">../Game/Enemies/IceWall.png</key>
             <key type="filename">../Game/Enemies/Jailer.png</key>
             <key type="filename">../Game/Enemies/JungleDryad.png</key>
             <key type="filename">../Game/Enemies/KeeperEarth.png</key>
@@ -1480,6 +1506,8 @@
             <key type="filename">../Game/FloorGeneric/Dummy0.png</key>
             <key type="filename">../Game/FloorGeneric/Dummy1.png</key>
             <key type="filename">../Game/FloorGeneric/Dummy2.png</key>
+            <key type="filename">../Game/FloorGeneric/Elevator.png</key>
+            <key type="filename">../Game/FloorGeneric/ElevatorDisabled.png</key>
             <key type="filename">../Game/FloorGeneric/EmptyPipe.png</key>
             <key type="filename">../Game/FloorGeneric/Fireflies.png</key>
             <key type="filename">../Game/FloorGeneric/Ghost.png</key>
@@ -1515,6 +1543,7 @@
             <key type="filename">../Game/FloorGeneric/TabletSpent.png</key>
             <key type="filename">../Game/FloorGeneric/Torch.png</key>
             <key type="filename">../Game/FloorGeneric/TorchOrb.png</key>
+            <key type="filename">../Game/FloorGeneric/Viewscreen.png</key>
             <key type="filename">../Game/FloorGeneric/Water.png</key>
             <key type="filename">../Game/FloorGeneric/WaterFoam.png</key>
             <key type="filename">../Game/Floors/Floor_DemonTransition/Barrel.png</key>
@@ -1646,7 +1675,12 @@
             <key type="filename">../Game/Floors/Floor_cst/Giant Bubble.png</key>
             <key type="filename">../Game/Floors/Floor_cst/Grate.png</key>
             <key type="filename">../Game/Floors/Floor_cst/MimicBlock.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/OrbEmpty.png</key>
             <key type="filename">../Game/Floors/Floor_cst/RubbleLooted.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/Shrine.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/ShrineBroken.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/ShrineC.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/ShrineEmpty.png</key>
             <key type="filename">../Game/Floors/Floor_cst/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_cst/Wall.png</key>
             <key type="filename">../Game/Floors/Floor_cst/WallVert.png</key>
@@ -2419,6 +2453,10 @@
             <key type="filename">../Game/Aura/Slimed.png</key>
             <key type="filename">../Game/Aura/Toy.png</key>
             <key type="filename">../Game/Aura/WaterBubble.png</key>
+            <key type="filename">../Game/Enemies/DragonQueenCrystal.png</key>
+            <key type="filename">../Game/Enemies/DragonQueenIce.png</key>
+            <key type="filename">../Game/Enemies/DragonQueenPoison.png</key>
+            <key type="filename">../Game/Enemies/DragonQueenShadow.png</key>
             <key type="filename">../Game/UI/DollmakerTarget.png</key>
             <key type="filename">../Game/UI/HighValueTarget.png</key>
             <key type="filename">../Game/UI/StageTarget.png</key>
@@ -2765,8 +2803,12 @@
             <key type="filename">../Game/Bullets/BubbleBurstLatexHit.png</key>
             <key type="filename">../Game/Bullets/BubbleBurstSlime.png</key>
             <key type="filename">../Game/Bullets/BubbleBurstSlimeHit.png</key>
+            <key type="filename">../Game/Bullets/CrystalSlash.png</key>
+            <key type="filename">../Game/Bullets/CrystalSlashHit.png</key>
             <key type="filename">../Game/Bullets/DarkShroud.png</key>
             <key type="filename">../Game/Bullets/DarkShroudHit.png</key>
+            <key type="filename">../Game/Bullets/DragonFlowerSpores.png</key>
+            <key type="filename">../Game/Bullets/DragonFlowerSporesHit.png</key>
             <key type="filename">../Game/Bullets/Earthfield.png</key>
             <key type="filename">../Game/Bullets/EarthfieldHit.png</key>
             <key type="filename">../Game/Bullets/Earthrune.png</key>
@@ -2816,6 +2858,8 @@
             <key type="filename">../Game/Bullets/GreaterFlash.png</key>
             <key type="filename">../Game/Bullets/GreaterFlashHit.png</key>
             <key type="filename">../Game/Bullets/IceBreath.png</key>
+            <key type="filename">../Game/Bullets/IceBreathChannel.png</key>
+            <key type="filename">../Game/Bullets/IceBreathChannelHit.png</key>
             <key type="filename">../Game/Bullets/Icerune.png</key>
             <key type="filename">../Game/Bullets/IgnitionHit.png</key>
             <key type="filename">../Game/Bullets/Incinerate.png</key>
@@ -2831,6 +2875,8 @@
             <key type="filename">../Game/Bullets/MinerBombHit.png</key>
             <key type="filename">../Game/Bullets/MirrorImage.png</key>
             <key type="filename">../Game/Bullets/OrbHealHit.png</key>
+            <key type="filename">../Game/Bullets/PoisonBreath.png</key>
+            <key type="filename">../Game/Bullets/PoisonBreathHit.png</key>
             <key type="filename">../Game/Bullets/Raincloud.png</key>
             <key type="filename">../Game/Bullets/RaincloudHit.png</key>
             <key type="filename">../Game/Bullets/RibbonBurst.png</key>
@@ -2854,6 +2900,8 @@
             <key type="filename">../Game/Bullets/RuneTrap_Chain.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_ChainHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_Latex.png</key>
+            <key type="filename">../Game/Bullets/RuneTrap_LatexBall.png</key>
+            <key type="filename">../Game/Bullets/RuneTrap_LatexBallHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_LatexHit.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_LatexSphere.png</key>
             <key type="filename">../Game/Bullets/RuneTrap_LatexSphereHit.png</key>
@@ -2882,6 +2930,8 @@
             <key type="filename">../Game/Bullets/ShadowGraspHit.png</key>
             <key type="filename">../Game/Bullets/ShadowScythe.png</key>
             <key type="filename">../Game/Bullets/ShadowScytheHit.png</key>
+            <key type="filename">../Game/Bullets/ShadowShroud.png</key>
+            <key type="filename">../Game/Bullets/ShadowShroudHit.png</key>
             <key type="filename">../Game/Bullets/ShadowSlash.png</key>
             <key type="filename">../Game/Bullets/ShadowSlashHit.png</key>
             <key type="filename">../Game/Bullets/Shatter.png</key>
@@ -2921,6 +2971,8 @@
             <key type="filename">../Game/Bullets/TrapCrystal.png</key>
             <key type="filename">../Game/Bullets/TrapCrystalHit.png</key>
             <key type="filename">../Game/Bullets/TrapLatex.png</key>
+            <key type="filename">../Game/Bullets/TrapLatexBall.png</key>
+            <key type="filename">../Game/Bullets/TrapLatexBallHit.png</key>
             <key type="filename">../Game/Bullets/TrapLatexBubble.png</key>
             <key type="filename">../Game/Bullets/TrapLatexBubbleHit.png</key>
             <key type="filename">../Game/Bullets/TrapLatexHit.png</key>
@@ -2949,6 +3001,8 @@
             <key type="filename">../Game/Bullets/TrapSlimeWeak.png</key>
             <key type="filename">../Game/Bullets/TrapSlimeWeakHit.png</key>
             <key type="filename">../Game/Bullets/TremorHit.png</key>
+            <key type="filename">../Game/Bullets/WardenCageDrop.png</key>
+            <key type="filename">../Game/Bullets/WardenCageDropHit.png</key>
             <key type="filename">../Game/Bullets/WaterRune.png</key>
             <key type="filename">../Game/Bullets/WaterRuneHit.png</key>
             <key type="filename">../Game/Bullets/WitchElectricBurst.png</key>
@@ -3009,6 +3063,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/Bullets/CrystalShockBolt.png</key>
+            <key type="filename">../Game/Bullets/CrystalShockBoltHit.png</key>
             <key type="filename">../Game/Bullets/EnchantRope.png</key>
             <key type="filename">../Game/Bullets/EnemyEnchantRope.png</key>
             <key type="filename">../Game/Bullets/EnemyEnchantRope2.png</key>

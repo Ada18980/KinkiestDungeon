@@ -888,6 +888,7 @@ const KinkyDungeonMapParams = {
 			{Name: "SpecificSpell", Spell: "TrapLeatherWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapLatexBubble", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapLatexBall", Level: 0, Power: 3, Weight: 7},
 			{Name: "SpawnEnemies", Enemy: "Dressmaker", strict: true, Level: 0, Power: 2, Weight: 10},
 			{Name: "SpawnEnemies", Enemy: "Librarian", strict: true, Level: 4, Power: 1, Weight: 5},
 
@@ -1230,7 +1231,8 @@ const KinkyDungeonMapParams = {
 			{Name: "SpawnEnemies", strict: true, Enemy: "CaptureBot", Level: 0, Power: 2, Weight: 100},
 			{Name: "SpecificSpell", Spell: "TrapSlimeWeak", Level: 0, Power: 3, Weight: 10},
 			{Name: "SpecificSpell", Spell: "TrapLatex", Level: 0, Power: 3, Weight: 30},
-			{Name: "SpecificSpell", Spell: "TrapLatexBubble", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapLatexBubble", Level: 0, Power: 3, Weight: 25},
+			{Name: "SpecificSpell", Spell: "TrapLatexBall", Level: 0, Power: 3, Weight: 15},
 
 			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "OldDrone"},
 			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "OldDrone"},
@@ -1574,6 +1576,7 @@ const KinkyDungeonMapParams = {
 			{Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 30},
 
 			{Name: "SpecificSpell", Spell: "TrapLatexBubble", Level: 0, Power: 3, Weight: 200},
+			{Name: "SpecificSpell", Spell: "TrapLatexBall", Level: 0, Power: 3, Weight: 50},
 		],
 
 		"min_width" : 5,
