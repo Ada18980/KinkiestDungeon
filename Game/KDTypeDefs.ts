@@ -2161,6 +2161,8 @@ interface KinkyDialogue {
 	 * The string name will be "r" + response with a couple of enemy-specific variations
 	 */
 	response?: string;
+	/** Whether or not the response is different if you are gagged */
+	responseGag?: boolean;
 	/** The option for you to select for this dialogue. "" means pregenerated, OK to put "" for top-level KinkyDialogues
 	 * The string name will be "d" + response
 	 */

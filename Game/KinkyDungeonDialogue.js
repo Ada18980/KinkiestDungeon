@@ -76,11 +76,13 @@ function KDDrawDialogue(delta) {
 		KinkyDungeonDressPlayer();
 		// Get the current dialogue and traverse down the tree
 		let dialogue = KDGetDialogue();
+		let gagged = KDDialogueGagged();
 		// Now that we have the dialogue, we check if we have a message
 		if (dialogue.response && !KDGameData.CurrentDialogMsg) KDGameData.CurrentDialogMsg = dialogue.response;
 		if (KDGameData.CurrentDialogMsg == "Default") KDGameData.CurrentDialogMsg = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage;
+		if (gagged && dialogue.responseGag) KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gag";
 
-		let gagged = KDDialogueGagged();
+		gagged = KDDialogueGagged();
 
 		if (!dialogue.drawFunction || !dialogue.drawFunction(gagged, KinkyDungeonPlayerEntity, delta)) {
 			// Type the message
@@ -350,12 +352,14 @@ function KDDoDialogue(data) {
 		KDGameData.CurrentDialogStage = "";
 		return;
 	}
+	let ggagged = KDDialogueGagged();
 	if (dialogue.data) KDGameData.CurrentDialogMsgData = dialogue.data;
 	if (dialogue.response) KDGameData.CurrentDialogMsg = dialogue.response;
 	if (dialogue.response == "Default") KDGameData.CurrentDialogMsg = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage;
 	if (dialogue.personalities) {
 		KDDialogueApplyPersonality(dialogue.personalities);
 	}
+	if (ggagged && dialogue.responseGag) KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gag";
 	let abort = false;
 	if (data.click) {
 		let gagged = KDDialogueGagged();
@@ -366,6 +370,7 @@ function KDDoDialogue(data) {
 		}
 	}
 	if (!abort) {
+		let gagged = KDDialogueGagged();
 		if (dialogue.exitDialogue) {
 			KDGameData.CurrentDialog = "";
 			KDGameData.CurrentDialogStage = "";
@@ -384,6 +389,7 @@ function KDDoDialogue(data) {
 				dialogue = KDGetDialogue();
 				if (dialogue.response) KDGameData.CurrentDialogMsg = dialogue.response;
 				if (dialogue.response == "Default") KDGameData.CurrentDialogMsg = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage;
+				if (gagged && dialogue.responseGag) KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gag";
 			}
 		}
 	}

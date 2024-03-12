@@ -9,7 +9,7 @@ let KDRecentRepIndex = 0;
 
 let ShowBoringness = false;
 
-let KDWallReplacers = "14,dDzZbgS";
+let KDWallReplacers = "146,dDzZbgS";
 
 let KinkyDungeonSuppressSprint = true;
 
@@ -366,6 +366,11 @@ const KDSprites = {
 		if (tile?.Sprite) return tile.Sprite;
 		return "Floor";
 	},
+	"6": (x, y, Fog, noReplace) => {
+		let tile = KinkyDungeonTilesGet(x + "," + y);
+		if (tile?.Sprite) return tile.Sprite;
+		return "Wall";
+	},
 	"1": (x, y, Fog, noReplace) => {
 		if (KDWallVert(x, y, noReplace))
 			return "WallVert";
@@ -550,6 +555,11 @@ const KDSprites = {
 /** @type KDSprites */
 const KDOverlays = {
 	"5": (x, y, Fog, noReplace) => {
+		let tile = KinkyDungeonTilesGet(x + "," + y);
+		if (tile?.Overlay) return tile.Overlay;
+		return "";
+	},
+	"6": (x, y, Fog, noReplace) => {
 		let tile = KinkyDungeonTilesGet(x + "," + y);
 		if (tile?.Overlay) return tile.Overlay;
 		return "";
@@ -3506,6 +3516,8 @@ function KDUpdateVision(CamX, CamY, CamX_offset, CamY_offset) {
  */
 let KDTileTooltips = {
 	'1': () => {return {color: "#aaaaaa", text: "1"};},
+	'5': () => {return {color: "#aaaaaa", text: "5"};},
+	'6': () => {return {color: "#aaaaaa", text: "6"};},
 	'0': () => {return {color: "#444444", text: "0"};},
 	'2': () => {return {color: "#444444", text: "2"};},
 	'R': () => {return {color: "#ffffff", noInspect: true, text: "R"};},

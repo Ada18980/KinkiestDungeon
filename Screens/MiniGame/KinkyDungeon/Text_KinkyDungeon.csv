@@ -5278,6 +5278,8 @@ KDEffectTileTooltipCMDSlime,"Can be controlled using Rubbermancy"
 
 KDTileTooltip0,Floor
 KDTileTooltip1,Wall
+KDTileTooltip5,Object
+KDTileTooltip6,Object
 KDTileTooltip2,Brickwork
 KDTileTooltipX,Doodad
 KDTileTooltipL,Furniture
@@ -20567,3 +20569,60 @@ RestraintShadowLatexGagCollarDesc2,"It is made of shadow latex, tougher to cut t
 KDTeleportsBehindYou0,*scoffs* Amateur.
 KDTeleportsBehindYou1,Nothing personal.
 KDTeleportsBehindYou2,Not bad... you made me use 10% of my power.
+
+KDElevatorBroken,"It's a defunct elevator, likely from the Old Civilization."
+
+rElevator,"(The elevator beeps and roars to life)|(Its control panel displays a list of options)"
+dElevator_0,(Go to floor 0)
+dElevator_1,(Go to floor 1)
+dElevator_2,(Go to floor 2)
+dElevator_3,(Go to floor 3)
+dElevator_4,(Go to floor 4)
+dElevator_5,(Go to floor 5)
+dElevator_6,(Go to floor 6)
+dElevator_7,(Go to floor 7)
+dElevator_8,(Go to floor 8)
+dElevator_9,(Go to floor 9)
+dElevator_10,(Go to floor 10)
+dElevator_11,(Go to floor 11)
+dElevator_12,(Go to floor 12)
+dElevator_13,(Go to floor 13)
+dElevator_14,(Go to floor 14)
+dElevator_15,(Go to floor 15)
+dElevator_16,(Go to floor 16)
+dElevator_17,(Go to floor 17)
+dElevator_18,(Go to floor 18)
+dElevator_19,(Go to floor 19)
+dElevator_20,(Go to floor 20)
+
+rOriel,"(The viewscreen depicts a face)|Why hello there adventurer! What brings you?"
+
+dOriel_WhoAreYouGag,"Hmmmphgm?"
+rOrielWhoAreYouGag,"(The face giggles)|Sadly my language processing systems aren't that good.|Try removing your gag first?"
+dOriel_WhoAreYou,"Who are you?"
+rOrielWhoAreYou,"(The face smiles)|I am the Facility's vessel, of course!|Sariel called me Oriel, but I don't see her much these days..."
+
+dOriel_GoddessGag,"Gffmmphmm?"
+rOrielGoddessGag,"(Oriel smiles)|Ah, it's you again!|It seems like you've found a new toy as well?|I can't understand you, silly~"
+dOriel_Goddess,"Oriel? As in the goddess of technology?"
+rOrielGoddess,"'Goddess'? That seems like an outdated term.|Regardless, I am only a vessel, not the facility itself."
+
+dOriel_ControlGag,"Mmmph?"
+rOrielControlGag,"(Oriel giggles)|Sweetie, I can't understand you."
+dOriel_Control,"Can you control the facility?"
+rOrielControl,"(Oriel frowns)|Adventurers seem to keep asking me that.|In my current state I don't have control over much at all.|But I'm always here to talk!"
+
+dOriel_ElevatorGag,"Mmmph!"
+rOrielElevatorGag,"(Oriel giggles)|Sweetie, I can't understand you."
+dOriel_Elevator,"Can you turn on the elevator?"
+rOrielElevator,"I'm sorry, adventurer. I can't do that.|But maybe if you can get rid of all the nearby threats...|They've been under lockdown for a long time."
+
+dOriel_HelpGag,"Mmmph mmm! (Help me!)"
+rOrielHelpGag,"(Oriel chuckles)|What was that again?|Sorry~"
+dOriel_Help,"Can you help me out?"
+rOrielHelp,"(Oriel giggles)|I can't do anything for you right now~"
+
+dOriel_HelloGag,"Mmmmm..."
+rOrielHelloGag,"(Oriel smiles)|It's always fun to see you like that~"
+dOriel_Hello,"How are you doing?"
+rOrielHello,"(Oriel smiles)|Good!|I miss Sariel, though..."

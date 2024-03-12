@@ -1994,6 +1994,32 @@ function KinkyDungeonCreateElevatorRoom(POI, VisitedRooms, width, height, openne
 		DialogueCreateEnemy(15,2 + 7 + 2,enemy);
 	}
 
+	let faceSlots = [];
+	for (let xx = 1; xx < KDMapData.GridWidth - 1; xx++) {
+		for (let yy = 1; yy < KDMapData.GridHeight - 2; yy++) {
+			if (KinkyDungeonMapGet(xx, yy) == '1' && KinkyDungeonMapGet(xx, yy + 1) == '0') {
+				faceSlots.push({x: xx, y:yy});
+			}
+		}
+	}
+	for (let i = 0; i < 3 && faceSlots.length > 0; i++) {
+		let index = Math.floor(KDRandom() * faceSlots.length);
+		let slot = faceSlots[index];
+		faceSlots.splice(index, 1);
+		KinkyDungeonMapSet(slot.x, slot.y, '6');
+		KinkyDungeonTilesSet((slot.x) + ',' + (slot.y), {
+			Type: "Oriel",
+			Skin: "Viewscreen",
+			Light: 4,
+			lightColor: 0x99ff99,
+		});
+	}
+
+	KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y - 3, '6');
+	KinkyDungeonTilesSet((KDMapData.StartPosition.x) + ',' + (KDMapData.StartPosition.y - 3), {
+		Type: "Elevator",
+		Skin: "ElevatorDisabled",
+	});
 }
 
 function KinkyDungeonCreateTestTile(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {

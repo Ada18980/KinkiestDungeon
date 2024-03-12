@@ -8,6 +8,7 @@ let KDObjectMessages = {
 	"Ghost": () => KinkyDungeonGhostMessage(),
 	"Angel": () => KinkyDungeonAngelMessage(),
 	"Food": () => KinkyDungeonFoodMessage(),
+	"Elevator": () => KinkyDungeonElevatorMessage(),
 };
 /**
  * Script happens when you move to an object
@@ -24,6 +25,25 @@ let KDObjectClick = {
 			KDStartDialog("TableFood", "", true, "");
 		} else
 			KinkyDungeonFoodMessage(tile);
+	},
+	"Elevator": (x, y) => {
+		if (!KDGameData.ElevatorsUnlocked) KDGameData.ElevatorsUnlocked = {};
+		if (!KDGameData.ElevatorsUnlocked[MiniGameKinkyDungeonLevel]) {
+			if (!KDMapData.Entities.some((enemy) => {return KDHostile(enemy) || KinkyDungeonAggressive(enemy);})) {
+				KDGameData.ElevatorsUnlocked[MiniGameKinkyDungeonLevel] = true; // Unlock!
+				let tile = KinkyDungeonTilesGet(x + ',' + y);
+				if (tile) {
+					tile.Sprite = "Elevator";
+				}
+			}
+		}
+		if (KDGameData.ElevatorsUnlocked[MiniGameKinkyDungeonLevel]) {
+			KDStartDialog("Elevator", "", true, "");
+		} else
+			KinkyDungeonElevatorMessage();
+	},
+	"Oriel": (x, y) => {
+		KDStartDialog("Oriel", "", true, "");
 	},
 };
 /**
@@ -137,6 +157,10 @@ function KinkyDungeonDrawGhost() {
 }
 function KinkyDungeonDrawAngel() {
 	DrawTextKD(TextGet("KinkyDungeonDrawAngelHelpful"), KDModalArea_x + 200, KDModalArea_y + 50, "white", KDTextGray2);
+}
+
+function KinkyDungeonElevatorMessage() {
+	KinkyDungeonSendActionMessage(10, TextGet("KDElevatorBroken"), "white", 3);
 }
 
 function KinkyDungeonGhostMessage() {
@@ -322,4 +346,33 @@ function KDHandleModalArea() {
 		}
 	}
 	return false;
+}
+
+/**
+ *
+ * @param {number} floor
+ */
+function KDElevatorToFloor(floor) {
+	// Only works if the map has been generated
+	let slot = KDWorldMap['0,' + floor];
+	if (slot) {
+		let subslot = slot.data.ElevatorRoom;
+		if (subslot) {
+			let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[subslot.Checkpoint] || subslot.Checkpoint)];
+			MiniGameKinkyDungeonLevel = floor;
+			KinkyDungeonCreateMap(params,
+				subslot.RoomType,
+				subslot.MapMod,
+				floor,
+				undefined,
+				undefined,
+				subslot.MapFaction,
+				{x: 0, y: floor},
+				true,
+				undefined,
+				undefined,
+				subslot.EscapeMethod);
+			KDMovePlayer(KDMapData.StartPosition.x, KDMapData.StartPosition.y - 2, true);
+		}
+	}
 }

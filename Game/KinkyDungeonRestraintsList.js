@@ -4427,6 +4427,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
 		enemyTags: {jailer: 0.1, linkRegular: 40, handcuffer: 40, shackleRestraints: 40, chainRestraints: 40}, playerTags: {},
 		DefaultLock: "White",
+		requireSingleTagToEquip: ["LegCuffsBase"],
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireBaseLegCuffs"}

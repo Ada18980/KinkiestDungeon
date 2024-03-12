@@ -78,15 +78,18 @@ let KinkyDungeonPOI = [];
 let KinkyDungeonStairTiles = 'sSH';
 let KDDefaultAvoidTiles = "gtVN@";
 let KinkyDungeonGroundTiles = "023wW][?/";
-let KinkyDungeonWallTiles = "14,";
-let KinkyDungeonBlockTiles = "14,bgX";
+let KinkyDungeonWallTiles = "14,6";
+let KinkyDungeonBlockTiles = "14,6bgX7";
 let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HB@l;SsRrdzTgLcNVt5"; // Objects which can be moved into: floors, debris, open doors, staircases
 // 5 is skinned floor, you can give it whatever sprite you want
 // 6 is skinned wall, you can give it whatever sprite you want
 let KinkyDungeonMovableTilesSmartEnemy = "D" + KinkyDungeonMovableTilesEnemy; //Smart enemies can open doors as well
-let KinkyDungeonMovableTiles = "OPCAMG$Y+=-F" + KinkyDungeonMovableTilesSmartEnemy; // Player can open chests, orbs, shrines, chargers
+let KinkyDungeonMovableTiles = "OPCAMG$Y+=-F67" + KinkyDungeonMovableTilesSmartEnemy; // Player can open chests, orbs, shrines, chargers
+// 5 = floor object, passable
+// 6 = wall object, block passage
+// 7 = transparent wall object
 
-let KDRandomDisallowedNeighbors = ",?/RAasSHcCHDdOoPp+FZzgtuVN"; // tiles that can't be neighboring a randomly selected point
+let KDRandomDisallowedNeighbors = ",?/RAasSHcCHDdOoPp+FZzgtuVN567"; // tiles that can't be neighboring a randomly selected point
 let KDTrappableNeighbors = "DA+-F@"; // tiles that might have traps bordering them with a small chance
 let KDTrappableNeighborsLikely = "COP="; // tiles that might have traps bordering them with a big chance
 
@@ -94,7 +97,7 @@ let KinkyDungeonTransparentObjects = KinkyDungeonMovableTiles
 	.replace("D", "")
 	.replace("g", "") // grate
 	.replace("Y", "") // wall rubble
-	+ "OoAaMmCcB@lb+=-FXu";
+	+ "OoAaMmCcB@lb+=-FXu7";
 let KinkyDungeonTransparentMovableObjects = KinkyDungeonMovableTiles
 	.replace("Z", "") // AutoDoor
 	.replace("D", "") // Door
@@ -329,6 +332,8 @@ function KinkyDungeonNewGamePlus() {
 	KinkyDungeonCreateMap(KinkyDungeonMapParams.grv, "ShopStart", "", 1);
 	KinkyDungeonNewGame += 1;
 
+
+	KDGameData.ElevatorsUnlocked = {};
 
 	for (let t of KDResertNGTags) {
 		if (KinkyDungeonFlags.has(t))

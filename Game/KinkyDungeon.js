@@ -516,6 +516,7 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 * JourneyMap: KDJourneyMap,
 * JourneyTarget: {x: number, y: number},
 * LastDragon: string,
+* ElevatorsUnlocked: Record<number, boolean>,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * QuickLoadouts: Record<string, string[]>}},
 
@@ -575,6 +576,8 @@ let KDGameDataBase = {
 	DollRoomCount: 0,
 	ChestsGenerated: [],
 	DollCount: 0,
+
+	ElevatorsUnlocked: {},
 
 	CagedTime: 0,
 	HiddenItems: {},

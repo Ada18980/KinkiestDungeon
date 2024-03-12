@@ -896,6 +896,116 @@ let KDDialogue = {
 			},
 		}
 	},
+	"Elevator": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+			...Object.fromEntries([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(
+				(num) => {
+					/**
+					 * @type {KinkyDialogue}
+					 */
+					let d = {
+						playertext: "Default", response: "Default",
+						prerequisiteFunction: (gagged, player) => {
+							return num != MiniGameKinkyDungeonLevel && KDGameData.ElevatorsUnlocked[num];
+						},
+						clickFunction: (gagged, player) => {
+							KDElevatorToFloor(num);
+							return false;
+						},
+						exitDialogue: true,
+					};
+					return [num, d];
+				}
+			))
+		}
+	},
+	"Oriel": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			return false;
+		},
+		options: {
+			"WhoAreYou": {
+				playertext: "Default", response: "Default",
+				gag: true, responseGag: true,
+				prerequisiteFunction: (gagged, player) => {
+					return !KinkyDungeonFlags.get("dOriel_WhoAreYou");
+				},
+				clickFunction: (gagged, player) => {
+					if (!gagged)
+						KinkyDungeonSetFlag("dOriel_WhoAreYou", -1);
+					return false;
+				},
+				leadsToStage: "", dontTouchText: true,
+			},
+			"Goddess": {
+				playertext: "Default", response: "Default",
+				gag: true, responseGag: true,
+				prerequisiteFunction: (gagged, player) => {
+					return KinkyDungeonFlags.get("dOriel_WhoAreYou") && !KinkyDungeonFlags.get("dOriel_Goddess");
+				},
+				clickFunction: (gagged, player) => {
+					if (!gagged)
+						KinkyDungeonSetFlag("dOriel_Goddess", -1);
+					return false;
+				},
+				leadsToStage: "", dontTouchText: true,
+			},
+			"Control": {
+				playertext: "Default", response: "Default",
+				gag: true, responseGag: true,
+				prerequisiteFunction: (gagged, player) => {
+					return KinkyDungeonFlags.get("dOriel_WhoAreYou") && !KinkyDungeonFlags.get("dOriel_Control");
+				},
+				clickFunction: (gagged, player) => {
+					if (!gagged)
+						KinkyDungeonSetFlag("dOriel_Control", -1);
+					return false;
+				},
+				leadsToStage: "", dontTouchText: true,
+			},
+			"Elevator": {
+				playertext: "Default", response: "Default",
+				gag: true, responseGag: true,
+				prerequisiteFunction: (gagged, player) => {
+					return (KinkyDungeonFlags.get("dOriel_WhoAreYou") && KDMapData.RoomType == "ElevatorRoom");
+				},
+				leadsToStage: "", dontTouchText: true,
+			},
+			"Help": {
+				playertext: "Default", response: "Default",
+				gag: true, responseGag: true,
+				prerequisiteFunction: (gagged, player) => {
+					if (KinkyDungeonFlags.get("dOriel_WhoAreYou") || gagged)
+						return KinkyDungeonAllRestraintDynamic().some((element) => {
+							return !KDRestraint(element.item)?.armor && !KDRestraint(element.item)?.good;
+						});
+					return false;
+				},
+				leadsToStage: "", dontTouchText: true,
+			},
+			"Hello": {
+				playertext: "Default", response: "Default",
+				gag: true, responseGag: true,
+				prerequisiteFunction: (gagged, player) => {
+					return (KinkyDungeonFlags.get("dOriel_WhoAreYou") == -1) || gagged;
+				},
+				leadsToStage: "", dontTouchText: true,
+			},
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
 	"ToolsOfTheTrade": {
 		response: "Default",
 		inventory: true,
@@ -2251,7 +2361,7 @@ let KDDialogue = {
 				playertext: "Default", response: "Default", gag: true,
 				prerequisiteFunction: (gagged, player) => {
 					return KinkyDungeonAllRestraintDynamic().some((element) => {
-						return !KDRestraint(element.item)?.armor;
+						return !KDRestraint(element.item)?.armor && !KDRestraint(element.item)?.good;
 					});
 				},
 				clickFunction: (gagged, player) => {

@@ -2849,10 +2849,10 @@ let KinkyDungeonEnemies = [
 		},
 		Awareness: {
 			chaseradius: 25,
-			hearingMult: 1.5,
+			hearingMult: 2,
 			vision: 1.5,
 			senseSpeed: 1.1,
-			hearingRadius: 12,
+			hearingRadius: 20,
 		},
 		startBuffs: [
 			{
@@ -2870,13 +2870,13 @@ let KinkyDungeonEnemies = [
 		effect: {
 			effect: {name: "VineSuspend"},
 		},
+		events: [
+			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Vines", time: 45, power: 2, chance: 0.5, aoe: 1.5},
+		],
 		ignoreflag: ["Furniture"],
 		spells: ["SummonDragonVinePlant", "PoisonBreath"],  spellCooldownMult: 1, spellCooldownMod: -1,
 		visionRadius: 7, blindSight: 2.5, maxhp: 40, armor: 3, minLevel:12, weight:2.5, movePoints: 3, attackPoints: 2, attack: "SpellMeleeWillBindEffect",
 		attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 5, dmgType: "slash",
-		events: [
-			//{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Nevermere", "Bountyhunter", "Elf"]},
-		],
 		terrainTags: {"nature": 4, "lair": -100, "dragonqueen": 50}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
 		ondeath: [{type: "summon", enemy: "DragonGirlPoison", range: 0.5, count: 1, strict: false}],
 		dropTable: [{name: "Gold", amountMin: 200, amountMax: 300, weight: 15}]},
@@ -2896,6 +2896,11 @@ let KinkyDungeonEnemies = [
 		noKiteWhenHarmless: true,
 		dontKiteWhenDisabled: true,
 		kite: 2.5,
+
+		events: [
+			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Vines", time: 45, power: 2, chance: 0.2, aoe: 1.5},
+			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Cracked", time: 1400, power: 2, chance: 0.02, aoe: 0.5},
+		],
 		visionRadius: 9, maxhp: 30, minLevel:0, weight:0, movePoints: 1.4, attackPoints: 3, attack: "SpellMeleeBindLockWillEffect", multiBind: 2,
 		stunTime: 1, attackWidth: 2.5, attackRange: 1, power: 4.5, dmgType: "slash", fullBoundBonus: 2,
 		terrainTags: {"nature": 7, "dragongirl": 50}, shrines: ["Leather", "Will"], floors: {},
@@ -2927,10 +2932,10 @@ let KinkyDungeonEnemies = [
 		},
 		Awareness: {
 			chaseradius: 25,
-			hearingMult: 1.5,
+			hearingMult: 2,
 			vision: 1.5,
 			senseSpeed: 1.1,
-			hearingRadius: 12,
+			hearingRadius: 20,
 		},
 		startBuffs: [
 			{
@@ -2950,6 +2955,7 @@ let KinkyDungeonEnemies = [
 		},
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff44aa"},
+			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Cracked", time: 1400, power: 2, chance: 0.02, aoe: 0.5},
 		],
 		ignoreflag: ["Furniture"],
 		spells: ["CrystalBolt", "CrystalSlash"],  spellCooldownMult: 1, spellCooldownMod: -1,
@@ -3006,10 +3012,10 @@ let KinkyDungeonEnemies = [
 		},
 		Awareness: {
 			chaseradius: 25,
-			hearingMult: 1.5,
+			hearingMult: 2,
 			vision: 1.5,
 			senseSpeed: 1.1,
-			hearingRadius: 12,
+			hearingRadius: 20,
 		},
 		startBuffs: [
 			{
@@ -3029,6 +3035,7 @@ let KinkyDungeonEnemies = [
 		},
 		events: [
 			{trigger: "afterEnemyTick", type: "ShadowBubbles", spell: "ShadowBubble", power: 1, count: 1, dist: 10, aoe: 6.5, time: 2},
+			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Cracked", time: 1400, power: 2, chance: 0.02, aoe: 0.5},
 		],
 		ignoreflag: ["Furniture"],
 		spells: ["ShadowShroud", "ShadowShroudTele"],  spellCooldownMult: 1, spellCooldownMod: 0,
@@ -3093,10 +3100,10 @@ let KinkyDungeonEnemies = [
 		},
 		Awareness: {
 			chaseradius: 25,
-			hearingMult: 1.5,
+			hearingMult: 2,
 			vision: 1.5,
 			senseSpeed: 1.1,
-			hearingRadius: 12,
+			hearingRadius: 20,
 		},
 		startBuffs: [
 			{
@@ -3126,7 +3133,8 @@ let KinkyDungeonEnemies = [
 		visionRadius: 7, blindSight: 2.5, maxhp: 40, armor: 3, minLevel:12, weight:2.5, movePoints: 4, attackPoints: 2, attack: "SpellMeleeWillBindEffect",
 		attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 5, dmgType: "crush",
 		events: [
-			//{trigger: "tick", type: "AdventurerAssignFaction", dist: 4.0, tags: ["Adventurer", "Bandit", "Nevermere", "Bountyhunter", "Elf"]},
+			{trigger: "afterEnemyTick", type: "createIce", power: 1, chance: 1.0, aoe: 1.0},
+			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Cracked", time: 1400, power: 2, chance: 0.02, aoe: 0.5},
 		],
 		terrainTags: {"ice": 4, "lair": -100, "dragonqueen": 50}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
 		ondeath: [{type: "summon", enemy: "DragonGirlIce", range: 0.5, count: 1, strict: false}],
@@ -3149,6 +3157,9 @@ let KinkyDungeonEnemies = [
 				EnemyWinterblast: 10,
 			},
 		},
+		events: [
+			{trigger: "afterEnemyTick", type: "createIce", power: 1, chance: 0.5, aoe: 1.0},
+		],
 		ignoreflag: ["Furniture"],
 		noKiteWhenHarmless: true,
 		dontKiteWhenDisabled: true,
