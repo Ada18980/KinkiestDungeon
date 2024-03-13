@@ -1092,6 +1092,17 @@ Fear of the Dark
 Your vision in dark areas is reduced.
 暗闇にいる時、視界範囲が狭くなる
 
+
+Mutually Assured Darkness
+晦冥
+Darkness is twice as effective in hiding from enemies, but your night vision is also reduced.
+暗闇にいる時の隠密効果が2倍になるが、視力も低下する
+Stalker
+ストーカー
+Darkness is twice as effective in hiding from enemies.
+暗闇にいる時の隠密効果が2倍になる
+
+
 Copy (clipboard)
 クリップボードにコピー
 Paste (clipboard)
@@ -24488,7 +24499,7 @@ You accept the goddess' quest.
 You cannot accept that quest right now.
 今はクエストを受けられない。
 
-Offer gold to the Goddess in exchange for help. Destroys the shrine.
+Offer gold in exchange for help. Destroys the shrine.
 お金を寄進し、助力を乞う。祭壇は破壊される。
 Ask for help without offering gold.
 寄進なしに助力を乞う。
