@@ -6599,6 +6599,7 @@ let KDEventMapBullet = {
 				if (enemy && KinkyDungeonCanCastSpells(enemy)) {
 					// Spawn many magic missiles!
 					KinkyDungeonSetEnemyFlag(enemy, "dragonChannel", e.time);
+					KinkyDungeonSetEnemyFlag(enemy, "dragonChannelCD", e.time + 5);
 				}
 			}
 		},
@@ -8162,6 +8163,14 @@ let KDEventMapEnemy = {
 					for (let en of nearby) {
 						if (en.hp > 0.52) en.hp = Math.min(en.hp + e.power, en.Enemy.maxhp);
 					}
+				}
+			}
+		},
+		"DragonRegen": (e, enemy, data) => {
+			// We heal nearby allies and self
+			if (data.delta && !KDHelpless(enemy) && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+				if (KinkyDungeonPlayerTags.get("Furniture")) {
+					enemy.hp = Math.min(enemy.hp + e.power, enemy.Enemy.maxhp);
 				}
 			}
 		},

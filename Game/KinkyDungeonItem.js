@@ -234,7 +234,7 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 			replace = TextGet("Restraint" + KinkyDungeonRestraintVariants[Item.name].template);
 		} else {
 			if (!KinkyDungeonInventoryGetLoose(Item.name)) {
-				KinkyDungeonInventoryAdd({name: Item.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:Item.events, quantity: 1});
+				KinkyDungeonInventoryAdd({name: Item.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:Item.events || KDGetEventsForRestraint(Item.name), quantity: 1});
 			} else {
 				if (!KinkyDungeonInventoryGetLoose(Item.name).quantity) KinkyDungeonInventoryGetLoose(Item.name).quantity = 0;
 				KinkyDungeonInventoryGetLoose(Item.name).quantity += 1;

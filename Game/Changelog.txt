@@ -28,6 +28,13 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.2.12
+- Ice dragon queen fires more concentrated ice bolts
+- Ice dragon queen has a longer CD between channels
+- Ice dragon queen ice bolt no longer goes thru walls
+- Ice dragon queen channel time increased by 1
+- All dragons now regen slowly when the player is inside furniture
+
 5.2.11
 - new perk: Stalker
 

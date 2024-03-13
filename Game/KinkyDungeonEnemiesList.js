@@ -2871,6 +2871,7 @@ let KinkyDungeonEnemies = [
 			effect: {name: "VineSuspend"},
 		},
 		events: [
+			{trigger: "afterEnemyTick", type: "DragonRegen", power: 0.2},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Vines", time: 45, power: 2, chance: 0.5, aoe: 1.5},
 		],
 		ignoreflag: ["Furniture"],
@@ -2898,6 +2899,7 @@ let KinkyDungeonEnemies = [
 		kite: 2.5,
 
 		events: [
+			{trigger: "afterEnemyTick", type: "DragonRegen", power: 0.2},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Vines", time: 45, power: 2, chance: 0.2, aoe: 1.5},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Cracked", time: 1400, power: 2, chance: 0.02, aoe: 0.5},
 		],
@@ -2954,6 +2956,7 @@ let KinkyDungeonEnemies = [
 			effect: {name: "CrystalEncase"},
 		},
 		events: [
+			{trigger: "afterEnemyTick", type: "DragonRegen", power: 0.2},
 			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff44aa"},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Cracked", time: 1400, power: 2, chance: 0.02, aoe: 0.5},
 		],
@@ -2974,6 +2977,7 @@ let KinkyDungeonEnemies = [
 		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenCrystal", range: 4, loose: true, aggressive: true},
 		spells: ["CrystalShockBolt", "CrystalSlash", "CrystalBoltSingle"], spellCooldownMult: 1, spellCooldownMod: 2, castWhileMoving: true, spellRdy: true,
 		events: [
+			{trigger: "afterEnemyTick", type: "DragonRegen", power: 0.2},
 			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff44aa"},
 		],
 		effect: {
@@ -3034,6 +3038,7 @@ let KinkyDungeonEnemies = [
 			effect: {name: "ShadowEncase"},
 		},
 		events: [
+			{trigger: "afterEnemyTick", type: "DragonRegen", power: 0.2},
 			{trigger: "afterEnemyTick", type: "ShadowBubbles", spell: "ShadowBubble", power: 1, count: 1, dist: 10, aoe: 6.5, time: 2},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Cracked", time: 1400, power: 2, chance: 0.02, aoe: 0.5},
 		],
@@ -3054,6 +3059,7 @@ let KinkyDungeonEnemies = [
 		followLeashedOnly: true, ignorechance: 0, armor: 0, spellResist: 2, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenShadow", range: 4, loose: true, aggressive: true},
 		spells: ["DarkTele", "ShadowShroudGirl",], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, spellRdy: true,
 		events: [
+			{trigger: "afterEnemyTick", type: "DragonRegen", power: 0.2},
 			//{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff44aa"},
 		],
 		effect: {
@@ -4670,6 +4676,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":2, "lastthird":1, "jailGuard": 50, "Guard": 50, "willAnger": 49, "willRage": 4, "ropeAnger": 3, "ropeRage": 2, "dressmaker": 50, "NoNurse": -10000}, allFloors: true, shrines: ["Will", "Rope"],
 		events: [
 			{trigger: "afterEnemyTick", type: "nurseAura", power: 0.1, dist: 2.59},
+
 		],
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 15, weight: 14, noSummon: true}]},
 

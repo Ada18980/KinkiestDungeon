@@ -180,6 +180,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 			updateRestraints: false,
 			updateDress: false,
 			updateExpression: false,
+			Character: Character,
 		};
 
 		KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: true};
@@ -384,6 +385,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 				}
 			if (KinkyDungeonCheckClothesLoss)
 				KinkyDungeonWearForcedClothes(Character, restraints);
+			KinkyDungeonSendEvent("dressRestraints", data);
 		}
 
 		// Apply poses from restraints

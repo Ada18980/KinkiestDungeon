@@ -2646,8 +2646,8 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 20,
 		},
 		minRange: 0,
-		shotgunCount: 3, shotgunDistance: 6, shotgunSpread: 1, shotgunSpeedBonus: 0, shotgunFan: true,
-		castCondition: "DragonChanneled", noTerrainHit: true,
+		shotgunCount: 3, shotgunDistance: 6, shotgunSpread: 0.6, shotgunSpeedBonus: 0, shotgunFan: true,
+		castCondition: "DragonChanneled",
 		onhit:"", time: 4,  power: 1, delay: 0, range: 50, damage: "ice", speed: 2, playerEffect: {name: "Chill", damage: "ice", power: 1, time: 3},
 		events: [{type: "ElementalOnSlowOrBindOrDrench", trigger: "bulletHitEnemy", damage: "ice", time: 4, power: 0},]},
 
@@ -2659,9 +2659,9 @@ let KinkyDungeonSpellListEnemies = [
 		castCondition: "NotDragonChanneled",
 		events: [
 			{type: "MagicMissileChannel", trigger: "bulletTick"},
-			{type: "IceBreathChannel", trigger: "bulletDestroy", time: 10},
+			{type: "IceBreathChannel", trigger: "bulletDestroy", time: 9},
 		],
-		level:1, type:"inert", onhit:"aoe", delay: 3, power: 0, range: 10, size: 3, lifetime: 1, damage: "inert"
+		level:1, type:"inert", onhit:"aoe", delay: 5, power: 0, range: 10, size: 3, lifetime: 1, damage: "inert"
 	},
 
 	{enemySpell: true, name: "MagicMissileChannel", bindType: "Magic", color: "#ffaa77", sfx: "MagicSlash", landsfx: "MagicSlash", manacost: 1, components: ["Arms"],
@@ -3634,7 +3634,7 @@ let KDCastConditions = {
 		return !KDEnemyHasFlag(enemy, "MagicMissileChannelFinished");
 	},
 	"NotDragonChanneled": (enemy, target) => {
-		return !KDEnemyHasFlag(enemy, "dragonChannel");
+		return !KDEnemyHasFlag(enemy, "dragonChannel") && !KDEnemyHasFlag(enemy, "dragonChannelCD");
 	},
 	"DragonChanneled": (enemy, target) => {
 		return KDEnemyHasFlag(enemy, "dragonChannel");

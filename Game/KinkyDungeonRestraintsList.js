@@ -4430,7 +4430,7 @@ const KinkyDungeonRestraints = [
 		requireSingleTagToEquip: ["LegCuffsBase"],
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
-			{trigger: "postRemoval", type: "RequireBaseLegCuffs"}
+			{trigger: "postRemoval", type: "RequireBaseLegCuffs", inheritLinked: true}
 		]},
 
 	{name: "AnkleLink", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindableMinusCuffs],
@@ -4445,7 +4445,9 @@ const KinkyDungeonRestraints = [
 		minLevel: 0, allFloors: true, shrine: ["AnkleLink", "Link", "Metal"],
 		DefaultLock: "White",
 		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireBaseAnkleCuffs", inheritLinked: true}
+		]},
 	{name: "AnkleLinkShort", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindableMinusCuffs],
 		Type: "Closed", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'],
 		Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 9, weight: 0,
@@ -4458,7 +4460,9 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.2,
 		DefaultLock: "White",
 		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}]},
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}
+		]},
 
 	{name: "WristLink", debris: "Chains", accessible: true, Asset: "FuturisticCuffs",
 		Type: "Wrist", LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindableMinusCuffs],
@@ -4475,7 +4479,8 @@ const KinkyDungeonRestraints = [
 		DefaultLock: "White",
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
-			{trigger: "postRemoval", type: "RequireBaseArmCuffs"}, {trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.08, inheritLinked: true}
+			{trigger: "postRemoval", type: "RequireBaseArmCuffs", inheritLinked: true},
+			{trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.08, inheritLinked: true}
 		]},
 	{name: "ElbowLink", debris: "Chains", accessible: true, Asset: "FuturisticCuffs",
 		Type: "Both", LinkableBy: [...KDElbowBind, ...KDBindableMinusCuffs],
@@ -4494,7 +4499,7 @@ const KinkyDungeonRestraints = [
 		DefaultLock: "White",
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
-			{trigger: "postRemoval", type: "RequireBaseArmCuffs"},
+			{trigger: "postRemoval", type: "RequireBaseArmCuffs", inheritLinked: true},
 			{trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.12, inheritLinked: true}
 		]},
 
@@ -4517,7 +4522,7 @@ const KinkyDungeonRestraints = [
 		},
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
-			{trigger: "postRemoval", type: "RequireBaseLegCuffs"},
+			{trigger: "postRemoval", type: "RequireBaseLegCuffs", inheritLinked: true},
 			{trigger: "tick", type: "wardenMelt", power: 0.1, count: 8, inheritLinked: true},
 		]},
 
@@ -4536,7 +4541,8 @@ const KinkyDungeonRestraints = [
 			ThighLink: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
 		},
 		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"},
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireBaseAnkleCuffs", inheritLinked: true},
 			{trigger: "tick", type: "wardenMelt", power: 0.1, count: 8, inheritLinked: true},
 		]},
 	{name: "WardenAnkleLinkShort", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindableMinusCuffs],
@@ -4554,7 +4560,8 @@ const KinkyDungeonRestraints = [
 			ThighLink: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
 		},
 		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true}, {trigger: "postRemoval", type: "RequireBaseAnkleCuffs"},
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireBaseAnkleCuffs", inheritLinked: true},
 			{trigger: "tick", type: "wardenMelt", power: 0.1, count: 8, inheritLinked: true},
 		]},
 
@@ -4576,7 +4583,8 @@ const KinkyDungeonRestraints = [
 		},
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
-			{trigger: "postRemoval", type: "RequireBaseArmCuffs"}, {trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.08, inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireBaseArmCuffs", inheritLinked: true},
+			{trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.08, inheritLinked: true},
 			{trigger: "tick", type: "wardenMelt", power: 0.1, count: 8, inheritLinked: true},
 		]},
 	{name: "WardenElbowLink", debris: "Chains", accessible: true, Asset: "FuturisticCuffs",
@@ -4599,7 +4607,7 @@ const KinkyDungeonRestraints = [
 		},
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
-			{trigger: "postRemoval", type: "RequireBaseArmCuffs"},
+			{trigger: "postRemoval", type: "RequireBaseArmCuffs", inheritLinked: true},
 			{trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.12, inheritLinked: true},
 			{trigger: "tick", type: "wardenMelt", power: 0.1, count: 8, inheritLinked: true},
 		]},

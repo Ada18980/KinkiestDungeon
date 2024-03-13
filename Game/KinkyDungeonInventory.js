@@ -435,7 +435,8 @@ function KinkyDungeonInventoryAddWeapon(Name) {
 
 function KinkyDungeonInventoryAddLoose(Name, UnlockCurse, faction) {
 	if (!KinkyDungeonInventoryGetLoose(Name) || UnlockCurse)
-		KinkyDungeonInventoryAdd({faction: faction, name: Name, type: LooseRestraint, curse: UnlockCurse, events:KDRestraint(KinkyDungeonGetRestraintByName(Name)).events, quantity: 1, id: KinkyDungeonGetItemID()});
+		KinkyDungeonInventoryAdd({faction: faction, name: Name, type: LooseRestraint, curse: UnlockCurse,
+			events:KDRestraint(KinkyDungeonGetRestraintByName(Name)).events, quantity: 1, id: KinkyDungeonGetItemID()});
 	else {
 		KinkyDungeonInventoryGetLoose(Name).quantity += 1;
 	}
