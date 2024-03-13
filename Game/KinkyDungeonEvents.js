@@ -1477,7 +1477,7 @@ let KDEventMapInventory = {
 					}
 				}
 				if (!cuffsbase) {
-					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, false, false, false);
+					KinkyDungeonRemoveRestraintSpecific(item, false, false, false);
 					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRemoveCuffs"), "lightgreen", 2);
 				}
 			}
@@ -1503,7 +1503,7 @@ let KDEventMapInventory = {
 					}
 				}
 				if (!cuffsbase) {
-					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, false, false, false);
+					KinkyDungeonRemoveRestraintSpecific(item, false, false, false);
 					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRemoveCuffs"), "lightgreen", 2);
 				}
 			}
