@@ -4318,7 +4318,7 @@ const KinkyDungeonRestraints = [
 		noDupe: true,
 		addPose: ["HandsBehind"],
 		struggleBreak: true,
-		requireSingleTagToEquip: ["HogtieLower", "HogtieUpper"],
+		requireAllTagsToEquip: ["HogtieLower", "HogtieUpper"],
 		enemyTags: {"ropeRestraintsHogtie":4}, playerTags: {},
 		maxwill: 0.2,
 		DefaultLock: "White",

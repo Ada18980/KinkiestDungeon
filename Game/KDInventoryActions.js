@@ -43,6 +43,10 @@ let KDInventoryAction = {
 
 				newItem = KDRestraint(item);
 				if (newItem) {
+
+					if (newItem.requireSingleTagToEquip && !newItem.requireSingleTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
+					if (newItem.requireAllTagsToEquip && newItem.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
+
 					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
 					if (!currentItem) return true;
 					if (KDDebugLink) {
