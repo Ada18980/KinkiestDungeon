@@ -56,7 +56,7 @@ let KDDelayedActionCommit = {
 			let lockType = restraint.lock && KDLocks[restraint.lock] ? KDLocks[restraint.lock] : null;
 			let struggleType = action.data.escapeData.struggleType;
 			if (struggleType == "Struggle" || struggleType == "Remove" || struggleType == "Cut") {
-				if (struggleType == "Cut")
+				if (struggleType == "Cut" || (struggleType == "Struggle" && KDRestraint(restraint)?.struggleBreak))
 					restraint.cutProgress += action.data.amount;
 				else restraint.struggleProgress += action.data.amount;
 				let progress = (restraint.struggleProgress || 0) + (restraint.cutProgress || 0);

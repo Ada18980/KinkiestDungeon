@@ -2342,7 +2342,11 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		data.escapeChance *= KDRestraint(restraint).struggleMult[StruggleType];
 
 	let minSpeed = KDMinEscapeRate;
-	if (data.escapeChance > 0 || (KDRestraint(restraint).alwaysEscapable && KDRestraint(restraint).alwaysEscapable.includes(StruggleType))) {
+	let extraLim = (StruggleType == "Pick" && lockType.pick_lim) ? Math.max(0, lockType.pick_lim) : 0;
+	let extraLimPenalty = (StruggleType == "Pick") ? extraLim * restraint.pickProgress : 0;
+	let extraLimThreshold = Math.min(1, (data.escapeChance / extraLim));
+
+	if (data.escapeChance > Math.max(0, data.limitChance, extraLim) || (KDRestraint(restraint).alwaysEscapable && KDRestraint(restraint).alwaysEscapable.includes(StruggleType))) {
 		// Min struggle speed is always 0.05 = 20 struggle attempts
 		minSpeed = (KDRestraint(restraint).struggleMinSpeed && KDRestraint(restraint).struggleMinSpeed[StruggleType]) ? KDRestraint(restraint).struggleMinSpeed[StruggleType] : minSpeed;
 		data.escapeChance = Math.max(data.escapeChance, minSpeed);
@@ -2388,18 +2392,17 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 			KinkyDungeonWaitMessage(true, 0);
 		} else if (data.escapeChance > 0) {
 
-			let extraLim = (StruggleType == "Pick" && lockType.pick_lim) ? Math.max(0, lockType.pick_lim) : 0;
-			let extraLimPenalty = (StruggleType == "Pick") ? extraLim * restraint.pickProgress : 0;
-			let extraLimThreshold = Math.min(1, (data.escapeChance / extraLim));
+
 			// One last check: check limits
 			if ((data.limitChance > 0 || extraLim > 0) && data.escapeChance > 0) {
 				let threshold = 0.75;
 				if (data.limitChance > data.escapeChance) {
 					threshold = Math.min(threshold, 0.9*(data.escapeChance / data.limitChance));
 				}
-				let limitProgress = restraint.struggleProgress ? (StruggleType == "Struggle" ?
-					(restraint.struggleProgress < threshold ? threshold * restraint.struggleProgress : 1.0) :
-					Math.min(1, 1.15 - 1.15 * restraint.struggleProgress))
+				let cutStruggleProgress = (restraint.struggleProgress || 0) + (restraint.cutProgress || 0);
+				let limitProgress = cutStruggleProgress ? (StruggleType == "Struggle" ?
+					(cutStruggleProgress < threshold ? threshold * cutStruggleProgress : 1.0) :
+					Math.min(1, 1.15 - 1.15 * cutStruggleProgress))
 					: (StruggleType == "Struggle" ? 0 : 1);
 				let limitPenalty = Math.max(0, Math.min(1, limitProgress) * data.limitChance, extraLimPenalty);
 				let maxPossible = 1;
@@ -2641,7 +2644,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					KDAddDelayedStruggle(
 						escapeSpeed * mult * Math.max(data.escapeChance > 0 ? minSpeed : 0, data.escapeChance) * (0.5 + 0.4 * KDRandom() + 0.3 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax)),
 						data.struggleTime, StruggleType, struggleGroup, index, data,
-						restraint.struggleProgress, maxLimit
+						KDRestraint(restraint)?.struggleBreak ? restraint.cutProgress : restraint.struggleProgress, maxLimit
 					);
 				}
 			}
@@ -4415,12 +4418,12 @@ function KDCreateDebris(x, y, options) {
  */
 function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 	let progress = restraint.cutProgress ? restraint.cutProgress : 0;
-	let destroyChance = (StruggleType == "Cut" || restraint.cutProgress) ? 1.0 : 0;
+	data.destroyChance = (StruggleType == "Cut" || restraint.cutProgress) ? 1.0 : 0;
+	if (KDRestraint(restraint)?.struggleBreak && StruggleType == "Struggle") data.destroyChance = 1.0;
 	if (restraint.struggleProgress && restraint.struggleProgress > 0) {
 		progress += restraint.struggleProgress;
-		destroyChance = restraint.cutProgress / progress;
+		data.destroyChance = restraint.cutProgress / progress;
 	}
-	if (KDRestraint(restraint)?.struggleBreak && StruggleType == "Struggle") destroyChance = 1.0;
 	let destroy = false;
 
 	KinkyDungeonFastStruggleType = "";
@@ -4455,7 +4458,7 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 				+ ((KDGetFinishEscapeSFX(restraint) && KDGetFinishEscapeSFX(restraint).Struggle) ? KDGetFinishEscapeSFX(restraint).Struggle : "Struggle")
 				+ ".ogg");
 		}
-		if (KDRandom() < destroyChance) {
+		if (KDRandom() < data.destroyChance) {
 			if (KDAlwaysKeep({name: restraint.name, id: 0}, KinkyDungeonPlayerEntity)) {
 				KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonStruggleCutDestroyFail").replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2);
 
@@ -4476,9 +4479,9 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 		}
 		if (index) {
 			//if (KDStruggleGroupLinkIndex[KDRestraint(restraint).Group]) KDStruggleGroupLinkIndex[KDRestraint(restraint).Group] = 0;
-			KinkyDungeonRemoveDynamicRestraint(host, (StruggleType != "Cut") || !destroy, false, KinkyDungeonPlayerEntity);
+			KinkyDungeonRemoveDynamicRestraint(host, !destroy, false, KinkyDungeonPlayerEntity);
 		} else {
-			KinkyDungeonRemoveRestraint(KDRestraint(restraint).Group, (StruggleType != "Cut") || !destroy, undefined, undefined, undefined, undefined, KinkyDungeonPlayerEntity);
+			KinkyDungeonRemoveRestraint(KDRestraint(restraint).Group, !destroy, undefined, undefined, undefined, undefined, KinkyDungeonPlayerEntity);
 		}
 		if (KinkyDungeonStatsChoice.get("FutileStruggles") && data.escapeChance < 0.25) KinkyDungeonChangeWill(KinkyDungeonStatWillCostEscape);
 		if (trap) {

@@ -1449,7 +1449,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			onhit:"aoe", time: 4, delay: 3, lifetime: 1, evadeable: true, range: 6.99, size: 3, aoe: 1.5, power: 9, bindType: "Metal", bind: 80, damage: "crush", playerEffect: {name: "LiquidMetalEngulf", damage: "crush", power: 9}},
 
 		{name: "Engulf", tags: ["latex", "slime", "buff", "offense"], prerequisite: "ApprenticeLatex", sfx: "MagicSlash", school: "Conjure", manacost: 1.6, components: [], level:1, type:"passive", events: [
-			{type: "ElementalEffect", power: 2, damage: "glue", trigger: "playerAttack"},
+			{type: "ElementalEffect", power: 2, damage: "glue", bindType: "Slime", bindEff: 1.0, trigger: "playerAttack"},
 			{type: "EffectTile", kind: "Slime", duration: 7, trigger: "playerAttack", cost: 0},
 		]},
 		{name: "ChainStrike", tags: ["chain", "metal", "buff", "offense"], prerequisite: "ApprenticeMetal", sfx: "MagicSlash", school: "Conjure", manacost: 1.4, components: [], level:1, type:"passive", events: [
@@ -1457,11 +1457,11 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			{type: "EffectTile", kind: "Chains", duration: 16, trigger: "playerAttack", cost: 0},
 		]},
 		{name: "LeatherWhip", tags: ["latex", "slime", "buff", "offense"], prerequisite: "ApprenticeLeather", sfx: "MagicSlash", school: "Conjure", manacost: 1.2, components: [], level:1, type:"passive", events: [
-			{type: "ElementalEffect", power: 2, damage: "pain", trigger: "playerAttack"},
+			{type: "ElementalEffect", power: 2, damage: "pain", bindType: "Leather", bindEff: 1.5, trigger: "playerAttack"},
 			{type: "EffectTile", kind: "Belts", duration: 12, trigger: "playerAttack", cost: 0},
 		]},
-		{name: "Ropework", tags: ["rope", "buff", "offense"], prerequisite: "ApprenticeRope", sfx: "MagicSlash", school: "Conjure", manacost: 1.5, components: [], level:1, type:"passive", events: [
-			{type: "ElementalEffect", power: 2, damage: "chain", bindType: "Rope", bindEff: 1.8, trigger: "playerAttack"},
+		{name: "Ropework", tags: ["rope", "buff", "offense"], bindEff: 3, prerequisite: "ApprenticeRope", sfx: "MagicSlash", school: "Conjure", manacost: 1.5, components: [], level:1, type:"passive", events: [
+			{type: "ElementalEffect", power: 2, damage: "chain", bindType: "Rope", bindEff: 3, trigger: "playerAttack"},
 			{type: "EffectTile", kind: "Ropes", duration: 12, trigger: "playerAttack", cost: 0},
 		]},
 
@@ -3450,9 +3450,9 @@ let KDSpecialBondage = {
 	"Metal": {
 		priority: 10,
 		color: "#aaaaaa",
-		struggleRate: 0.5,
+		struggleRate: 0.4,
 		powerStruggleBoost: 0.25,
-		healthStruggleBoost: 1.5,
+		healthStruggleBoost: 1.0,
 		enemyBondageMult: 0.6,
 	},
 	"Slime": {

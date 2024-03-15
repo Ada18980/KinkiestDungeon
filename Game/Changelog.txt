@@ -28,12 +28,23 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.2.14
+- Leather Whip now binds using Leather at 150% efficiency
+- Ropework now binds at 300% efficiency instead of 200%
+- Chain bondage is harder to escape for enemies
+
+5.2.13
+- Fixed bug where items didnt get destroyed properly if you struggle out of them
+- Fixed a bug where a lot of items were much easier to struggle out of inadvertently
+
 5.2.12
 - Ice dragon queen fires more concentrated ice bolts
 - Ice dragon queen has a longer CD between channels
 - Ice dragon queen ice bolt no longer goes thru walls
 - Ice dragon queen channel time increased by 1
 - All dragons now regen slowly when the player is inside furniture
+- Added 'dressRestraints' event for modders
+- Fixed a bug where items bought off an NPC would have no events or special effects
 
 5.2.11
 - new perk: Stalker
