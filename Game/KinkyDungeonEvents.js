@@ -1421,6 +1421,51 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		"RequireHogtie": (e, item, data) => {
+			if (data.item !== item && KDRestraint(item).Group) {
+				let upper = false;
+				let lower = false;
+				for (let inv of KinkyDungeonAllRestraint()) {
+					if (KDRestraint(inv).shrine && (KDRestraint(inv).shrine.includes("HogtieUpper"))) {
+						upper = true;
+						break;
+					} else if (inv.dynamicLink) {
+						let link = inv.dynamicLink;
+						// Recursion thru to make sure we have an armbinder buried in there... somewhere
+						for (let i = 0; i < 20; i++) {
+							if (link && KDRestraint(link).shrine && (KDRestraint(link).shrine.includes("HogtieUpper"))) {
+								upper = true;
+								break;
+							}
+							if (link.dynamicLink) link = link.dynamicLink;
+							else i = 200;
+						}
+					}
+				}
+
+				for (let inv of KinkyDungeonAllRestraint()) {
+					if (KDRestraint(inv).shrine && (KDRestraint(inv).shrine.includes("HogtieLower"))) {
+						lower = true;
+						break;
+					} else if (inv.dynamicLink) {
+						let link = inv.dynamicLink;
+						// Recursion thru to make sure we have an armbinder buried in there... somewhere
+						for (let i = 0; i < 20; i++) {
+							if (link && KDRestraint(link).shrine && (KDRestraint(link).shrine.includes("HogtieLower"))) {
+								lower = true;
+								break;
+							}
+							if (link.dynamicLink) link = link.dynamicLink;
+							else i = 200;
+						}
+					}
+				}
+				if (!upper || !lower) {
+					KinkyDungeonRemoveRestraintSpecific(item, false, false, false);
+					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRemoveHogtie"), "lightgreen", 2);
+				}
+			}
+		},
 		"RequireBaseArmCuffs": (e, item, data) => {
 			if (data.item !== item && KDRestraint(item).Group) {
 				let cuffsbase = false;

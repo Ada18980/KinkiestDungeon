@@ -236,6 +236,8 @@ interface KDRestraintPropsBase {
 	renderWhenLinked?: string[];
 	// Player must have one of these PlayerTags to equip
 	requireSingleTagToEquip?: string[];
+	// Player must have all of these PlayerTags to equip
+	requireAllTagsToEquip?: string[];
 	/** This item always renders when linked */
 	alwaysRender?: boolean,
 	/** When the mentioned items are rendered, changes the type */

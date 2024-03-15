@@ -3330,6 +3330,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 	if (restraint.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) return false;
 	if (restraint.Group == "ItemButt" && !KinkyDungeonStatsChoice.get("arousalModePlug")) return false;
 	if (restraint.requireSingleTagToEquip && !restraint.requireSingleTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
+	if (restraint.requireAllTagsToEquip && restraint.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
 	//if (restraint.AssetGroup == "ItemNipplesPiercings" && !KinkyDungeonStatsChoice.get("arousalModePiercing")) return false;
 
 	function bypasses() {
@@ -4677,8 +4678,9 @@ let KDRopeParts = {
 	"Cuffs": {},
 	"CuffsAdv": {},
 	"CuffsAdv2": {},
-	"Hogtie": {enemyTagSuffix: "Hogtie"},
-	"HogtieWrist": {enemyTagSuffix: "Hogtie"},
+	//"Hogtie": {enemyTagSuffix: "Hogtie"},
+	//"HogtieWrist": {enemyTagSuffix: "Hogtie"},
+	"HogtieLink": {enemyTagSuffix: "Hogtie"},
 	"Feet": {},
 	"Feet2": {},
 	"Feet3": {},

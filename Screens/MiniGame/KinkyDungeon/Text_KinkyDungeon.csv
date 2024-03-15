@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.11"
+KDVersionStr,"5.2.14"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -3995,6 +3995,7 @@ RestraintTrapArmbinderHarnessDesc,"Leather belts securing your armbinder tightly
 RestraintTrapArmbinderHarnessDesc2,"It's quite tight and secured by lockable buckles on your sides."
 KinkyDungeonRemoveArmbinderHarness,The armbinder harness comes off with the armbinder.
 KinkyDungeonRemoveCuffs,The cuff chains come off with the cuffs.
+KinkyDungeonRemoveHogtie,The hogtie link comes off.
 RestraintTrapCuffs,Handcuffs
 RestraintTrapCuffsDesc,"A pair of steel cuffs locked securely around your wrists."
 RestraintTrapCuffsDesc2,"The lock doesn't seem very complicated."
@@ -6416,16 +6417,16 @@ KinkyDungeonSpellDescriptionFlameBlade,When enabled: Melee weapon attacks cost m
 KinkyDungeonSpellFlameStrike,Flame Blade
 
 KinkyDungeonSpellEngulf,Tentacle Slap
-KinkyDungeonSpellDescriptionEngulf,You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +20 glue damage and create slime.
+KinkyDungeonSpellDescriptionEngulf,You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +20 glue damage and create slime. 100% bind efficiency.
 
 KinkyDungeonSpellChainStrike,Chain Strike
-KinkyDungeonSpellDescriptionChainStrike,You have the power to summon chains when you attack. When enabled: Your attacks deal +20 chain damage and create chains.
+KinkyDungeonSpellDescriptionChainStrike,You have the power to summon chains when you attack. When enabled: Your attacks deal +20 chain damage and create chains. 90% bind efficiency.
 
 KinkyDungeonSpellRopework,Ropework
-KinkyDungeonSpellDescriptionRopework,You have the power to weave ropes between your attacks. When enabled: Your attacks deal +20 chain damage and create ropes.
+KinkyDungeonSpellDescriptionRopework,You have the power to weave ropes between your attacks. When enabled: Your attacks deal +20 chain damage and create ropes. 300% bind efficiency.
 
 KinkyDungeonSpellLeatherWhip,Leather Whip
-KinkyDungeonSpellDescriptionLeatherWhip,You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +20 pain damage and create belts.
+KinkyDungeonSpellDescriptionLeatherWhip,You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +20 pain damage and create belts. 150% bind efficiency.
 
 KinkyDungeonSpellStrength,Super Strength
 KinkyDungeonSpellDescriptionStrength,"When enabled: Struggling is more powerful, and your melee attack damage is increased by +20 if your weapon deals physical damage."
@@ -17567,9 +17568,9 @@ RestraintRopeSnakeCuffsAdv2Desc2,"It's not very secure."
 RestraintRopeSnakeHogtie,Rope Hogtie
 RestraintRopeSnakeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
 RestraintRopeSnakeHogtieDesc2,"It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle."
-RestraintRopeSnakeHogtieWrist,Rope Hogtie
-RestraintRopeSnakeHogtieWristDesc,"A very strict and tight hogtie, good for subduing unruly captives."
-RestraintRopeSnakeHogtieWristDesc2,"It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle."
+RestraintRopeSnakeHogtieLink,Rope Hogtie
+RestraintRopeSnakeHogtieLinkDesc,"A very strict and tight hogtie, good for subduing unruly captives."
+RestraintRopeSnakeHogtieLinkDesc2,"It holds you strictly with your back arched. You tug on the rope connecting your feet and struggle."
 RestraintRopeSnakeBelt,Rope Belt
 RestraintRopeSnakeBeltDesc,"A harness acting as a handle to pull you around"
 RestraintRopeSnakeBeltDesc2,"The ropes squeeze you gently."
@@ -17723,9 +17724,9 @@ RestraintStrongMagicRopeCuffsAdv2Desc2,"The knots appear to tie themselves toget
 RestraintStrongMagicRopeHogtie,Spellbound Hogtie
 RestraintStrongMagicRopeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
 RestraintStrongMagicRopeHogtieDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
-RestraintStrongMagicRopeHogtieWrist,Spellbound Hogtie
-RestraintStrongMagicRopeHogtieWristDesc,"A very strict and tight hogtie, good for subduing unruly captives."
-RestraintStrongMagicRopeHogtieWristDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
+RestraintStrongMagicRopeHogtieLink,Spellbound Hogtie
+RestraintStrongMagicRopeHogtieLinkDesc,"A very strict and tight hogtie, good for subduing unruly captives."
+RestraintStrongMagicRopeHogtieLinkDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
 RestraintStrongMagicRopeBelt,Spellbound Rope Belt
 RestraintStrongMagicRopeBeltDesc,"A harness acting as a handle to pull you around"
 RestraintStrongMagicRopeBeltDesc2,"The knots appear to tie themselves together again, making them impossible to undo!"
@@ -17779,9 +17780,9 @@ RestraintWeakMagicRopeCuffsAdv2Desc2,"It's not very secure."
 RestraintWeakMagicRopeHogtie,Magic Hogtie
 RestraintWeakMagicRopeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
 RestraintWeakMagicRopeHogtieDesc2,"It's very secure. You tug on the rope connecting your feet and struggle."
-RestraintWeakMagicRopeHogtieWrist,Magic Hogtie
-RestraintWeakMagicRopeHogtieWristDesc,"A very strict and tight hogtie, good for subduing unruly captives."
-RestraintWeakMagicRopeHogtieWristDesc2,"It's very secure. You tug on the rope connecting your feet and struggle."
+RestraintWeakMagicRopeHogtieLink,Magic Hogtie
+RestraintWeakMagicRopeHogtieLinkDesc,"A very strict and tight hogtie, good for subduing unruly captives."
+RestraintWeakMagicRopeHogtieLinkDesc2,"It's very secure. You tug on the rope connecting your feet and struggle."
 RestraintWeakMagicRopeBelt,Magic Rope Belt
 RestraintWeakMagicRopeBeltDesc,"A harness acting as a handle to pull you around"
 RestraintWeakMagicRopeBeltDesc2,"They glow with a trace of magic."
@@ -17835,9 +17836,9 @@ RestraintCelestialRopeCuffsAdv2Desc2,"A set of ropes that emit a calm, soothing 
 RestraintCelestialRopeHogtie,Holy Hogtie
 RestraintCelestialRopeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
 RestraintCelestialRopeHogtieDesc2,"It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle."
-RestraintCelestialRopeHogtieWrist,Holy Hogtie
-RestraintCelestialRopeHogtieWristDesc,"A very strict and tight hogtie, good for subduing unruly captives."
-RestraintCelestialRopeHogtieWristDesc2,"It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle."
+RestraintCelestialRopeHogtieLink,Holy Hogtie
+RestraintCelestialRopeHogtieLinkDesc,"A very strict and tight hogtie, good for subduing unruly captives."
+RestraintCelestialRopeHogtieLinkDesc2,"It holds you strictly with your back arched. You tug on the rope connecting your feet and struggle."
 RestraintCelestialRopeBelt,Holy Rope Belt
 RestraintCelestialRopeBeltDesc,"A harness acting as a handle to pull you around"
 RestraintCelestialRopeBeltDesc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
@@ -17892,9 +17893,9 @@ RestraintMithrilRopeCuffsAdv2Desc2,"A lightweight rope made out of woven mithril
 RestraintMithrilRopeHogtie,Mithril Hogtie
 RestraintMithrilRopeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
 RestraintMithrilRopeHogtieDesc2,"It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle."
-RestraintMithrilRopeHogtieWrist,Mithril Hogtie
-RestraintMithrilRopeHogtieWristDesc,"A very strict and tight hogtie, good for subduing unruly captives."
-RestraintMithrilRopeHogtieWristDesc2,"It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle."
+RestraintMithrilRopeHogtieLink,Mithril Hogtie
+RestraintMithrilRopeHogtieLinkDesc,"A very strict and tight hogtie, good for subduing unruly captives."
+RestraintMithrilRopeHogtieLinkDesc2,"It holds you strictly with your back arched. You tug on the rope connecting your feet and struggle."
 RestraintMithrilRopeBelt,Mithril Rope Belt
 RestraintMithrilRopeBeltDesc,"A harness acting as a handle to pull you around"
 RestraintMithrilRopeBeltDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
