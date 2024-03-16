@@ -1848,7 +1848,7 @@ function KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openne
 	// Tutorial end stairs
 	KinkyDungeonMapSet(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 2, 's');
 	KinkyDungeonMapSet(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 1, 'G');
-	KinkyDungeonTilesSet("" + (VisitedRooms[0].x*2 + 3) + "," + (VisitedRooms[0].y*2 - 2), {RoomType: "Tutorial", Skin: "TabletSpent"});
+	KinkyDungeonTilesSet("" + (VisitedRooms[0].x*2 + 3) + "," + (VisitedRooms[0].y*2 - 2), {RoomType: "Tutorial", Journey: undefined, Skin: "TabletSpent"});
 	KDCreateEffectTile(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 2, {
 		name: "Portals/Portal",
 		duration: 9999, infinite: true,

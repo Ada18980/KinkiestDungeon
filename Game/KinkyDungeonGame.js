@@ -354,6 +354,8 @@ function KDResetEventData(Data) {
 }
 
 function KinkyDungeonInitialize(Level, Load) {
+	KDWorldMap = {};
+	KDMapData = KDDefaultMapData();
 	KDCurrentWorldSlot = {x: 0, y: 0};
 	KDUpdateChokes = true;
 	KDUpdateItemEventCache = true;

@@ -28,6 +28,10 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
 
+5.2.15
+- Fixed a bug where the tutorial became the Void
+- and a bunch of other rare, intermittent bugs resulting from the same root cause
+
 5.2.14
 - Leather Whip now binds using Leather at 150% efficiency
 - Ropework now binds at 300% efficiency instead of 200%
