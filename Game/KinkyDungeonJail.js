@@ -433,7 +433,8 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 			if (!r.Level || level >= r.Level) {
 				let candidate = KinkyDungeonGetRestraintByName(r.Name);
 				if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
-					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r)) && KDPriorityCondition(r)) {
+
+					if ((candLevel == 0 || r.Level > candLevel) && KDIsEligible(KDRestraint({name: r.Name})) && (KDJailCondition(r)) && KDPriorityCondition(r)) {
 						cand = candidate;
 						variant = r.Variant;
 						candLevel = candidate.nonbinding ? 0 : r.Level;
@@ -448,7 +449,7 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 				if (!r.Level || level >= r.Level) {
 					let candidate = KinkyDungeonGetRestraintByName(r.Name);
 					if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
-						if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
+						if ((candLevel == 0 || r.Level > candLevel) && KDIsEligible(KDRestraint({name: r.Name})) && (KDJailCondition(r))) {
 							cand = candidate;
 							variant = r.Variant;
 							candLevel = candidate.nonbinding ? 0 : r.Level;

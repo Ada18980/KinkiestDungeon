@@ -656,37 +656,25 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 				prerequisiteFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-						return KinkyDungeonAllRestraintDynamic().some((inv) => {
-							let item = inv.item;
-							if (KDRestraint(item)?.Group == "ItemArms" && KDRestraint(item)?.Link && KDRestraint(item)?.events?.some((e) => {
-								return e.trigger == "hit" && e.type == "linkItem";
-							})) {
-								if (KDCanAddRestraint(KinkyDungeonGetRestraintByName(KDRestraint(item)?.Link), true, undefined, false, undefined, true, true)) {
-									return true;
-								}
-							}
+						let r = KinkyDungeonGetRestraint({tags: ["armLink"]}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(),
+							(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+
+						if (r && KDCanAddRestraint(r, true, undefined, false, undefined, true, true)) {
+							return true;
 						}
-						);
 					}
 					return false;
 				},
 				clickFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-						KinkyDungeonAllRestraintDynamic().some((inv) => {
-							let item = inv.item;
-							if (KDRestraint(item)?.Group == "ItemArms" && KDRestraint(item)?.Link && KDRestraint(item)?.events?.some((e) => {
-								return e.trigger == "hit" && e.type == "linkItem";
-							})) {
-								if (KDCanAddRestraint(KinkyDungeonGetRestraintByName(KDRestraint(item)?.Link), true, undefined, false, undefined, true, true)) {
-									KDLinkItemEvent({
-										type: "linkItem",
-										trigger: "link",
-									}, item, {});
-									return true;
-								}
-							}
-						});
+						let r = KinkyDungeonGetRestraint({tags: ["armLink"]}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(),
+							(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+						if (r && KDCanAddRestraint(r, true, undefined, false, undefined, true, true)) {
+							KinkyDungeonAddRestraintIfWeaker(r, 0, true, undefined, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
+
+						}
+
 						KinkyDungeonChangeRep("Ghost", 3);
 
 						// Make the enemy see you
@@ -703,37 +691,24 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 				prerequisiteFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-						return KinkyDungeonAllRestraintDynamic().some((inv) => {
-							let item = inv.item;
-							if ((KDRestraint(item)?.Group == "ItemLegs" || KDRestraint(item)?.Group == "ItemFeet") && KDRestraint(item)?.Link && KDRestraint(item)?.events?.some((e) => {
-								return e.trigger == "hit" && e.type == "linkItem";
-							})) {
-								if (KDCanAddRestraint(KinkyDungeonGetRestraintByName(KDRestraint(item)?.Link), true, undefined, false, undefined, true)) {
-									return true;
-								}
-							}
+						let r = KinkyDungeonGetRestraint({tags: ["legLink", "feetLink"]}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(),
+							(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+
+						if (r && KDCanAddRestraint(r, true, undefined, false, undefined, true, true)) {
+							return true;
 						}
-						);
 					}
 					return false;
 				},
 				clickFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-						KinkyDungeonAllRestraintDynamic().some((inv) => {
-							let item = inv.item;
-							if ((KDRestraint(item)?.Group == "ItemLegs" || KDRestraint(item)?.Group == "ItemFeet") && KDRestraint(item)?.Link && KDRestraint(item)?.events?.some((e) => {
-								return e.trigger == "hit" && e.type == "linkItem";
-							})) {
-								if (KDCanAddRestraint(KinkyDungeonGetRestraintByName(KDRestraint(item)?.Link), true, undefined, false, undefined, true)) {
-									KDLinkItemEvent({
-										type: "linkItem",
-										trigger: "link",
-									}, item, {});
-									return true;
-								}
-							}
-						});
+						let r = KinkyDungeonGetRestraint({tags: ["legLink", "feetLink"]}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(),
+							(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+						if (r && KDCanAddRestraint(r, true, undefined, false, undefined, true, true)) {
+							KinkyDungeonAddRestraintIfWeaker(r, 0, true, undefined, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
+
+						}
 						KinkyDungeonChangeRep("Ghost", 3);
 
 						// Make the enemy see you

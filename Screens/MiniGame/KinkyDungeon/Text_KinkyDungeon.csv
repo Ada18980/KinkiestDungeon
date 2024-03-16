@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.14"
+KDVersionStr,"5.2.15"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -20491,6 +20491,10 @@ KDWardenMelt,The Warden's restraints release you... for now.
 RestraintThighLink,Thigh Chain
 RestraintThighLinkDesc,"A chain connecting your thigh cuffs together. You can still walk, albeit slower than usual."
 RestraintThighLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+
+RestraintChainHogtieLink,Chain Hogtie
+RestraintChainHogtieLinkDesc,"A very strict and tight hogtie, good for subduing unruly captives."
+RestraintChainHogtieLinkDesc2,"A metal chain holds your back in an arched position."
 
 RestraintAnkleLink,Ankle Chain
 RestraintAnkleLinkDesc,"A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual."

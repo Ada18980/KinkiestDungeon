@@ -1109,10 +1109,13 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 					shrinefilter, ghostchance, manaChance, orbcount, (altType && altType.noShrineTypes) ? altType.noShrineTypes : [],
 					Floor, width, height, !altType || (altType.makeMain && !altType.noQuests));
 				if (
-					(
-						(KDGameData.SelectedEscapeMethod && KinkyDungeonEscapeTypes[KDGameData.SelectedEscapeMethod]?.requireMaxQuests)
-						|| (forceEscape && KinkyDungeonEscapeTypes[forceEscape]?.requireMaxQuests)
-					)
+				//(
+				//(KDGameData.SelectedEscapeMethod && KinkyDungeonEscapeTypes[KDGameData.SelectedEscapeMethod]?.requireMaxQuests)
+				//|| (forceEscape && KinkyDungeonEscapeTypes[forceEscape]?.requireMaxQuests)
+				//)
+
+					// Force max goddess quests
+					(!altType || (altType.makeMain && !altType.noQuests))
 					&& quests < KDMAXGODDESSQUESTS) {
 					console.log("This map failed to generate due to shrine count! Please screenshot and send your save code to Ada on deviantart or discord!");
 					continue;

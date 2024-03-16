@@ -32,6 +32,9 @@ Monk class?
 - Leather Whip now binds using Leather at 150% efficiency
 - Ropework now binds at 300% efficiency instead of 200%
 - Chain bondage is harder to escape for enemies
+- Added hogtie chain
+- Reworked the way hogtie items work
+- Fixed a bug where wrist and elbow chains would never be added outside of jail
 
 5.2.13
 - Fixed bug where items didnt get destroyed properly if you struggle out of them

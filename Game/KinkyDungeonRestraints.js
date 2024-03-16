@@ -2278,14 +2278,6 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	if (StruggleType == "Cut" && struggleGroup != "ItemHands" && handsBound)
 		data.escapeChance = data.escapeChance / 2;
 
-	// Struggling is affected by tightness
-	if (data.escapeChance > 0 && StruggleType == "Struggle") {
-		for (let T = 0; T < restraint.tightness; T++) {
-			data.escapeChance *= 0.8; // Tougher for each tightness, however struggling will reduce the tightness
-		}
-	}
-
-
 	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.15);
 
 	let belt = null;
@@ -2493,6 +2485,14 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					result: "Barely",
 				});
 				return "Barely";
+			}
+
+
+			// Struggling is affected by tightness
+			if (data.escapeChance > 0) {// && StruggleType == "Struggle") {
+				for (let T = 0; T < restraint.tightness; T++) {
+					data.escapeChance *= 0.8; // Tougher for each tightness, however struggling will reduce the tightness
+				}
 			}
 
 			// Pass block
@@ -3284,10 +3284,21 @@ function KinkyDungeonRestraintPower(item, NoLink, toLink, newLock, newCurse) {
  */
 function KinkyDungeonLinkableAndStricter(oldRestraint, newRestraint, item, Lock, Curse) {
 	if (oldRestraint && newRestraint) {
+		if (!KDIsEligible(newRestraint)) return false;
 		return KinkyDungeonIsLinkable({oldRestraint: oldRestraint, newRestraint: newRestraint, item: item, props: {newLock: Lock, newCurse: Curse}});
 		//}
 	}
 	return false;
+}
+
+/**
+ * Blanket function for stuff needed to select a restraint
+ * @param {restraint} restraint
+ */
+function KDIsEligible(restraint) {
+	if (restraint.requireSingleTagToEquip && !restraint.requireSingleTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
+	if (restraint.requireAllTagsToEquip && restraint.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
+	return true;
 }
 
 function KinkyDungeonGenerateRestraintTrap() {
