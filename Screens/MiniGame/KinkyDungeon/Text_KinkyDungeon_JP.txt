@@ -2799,7 +2799,7 @@ Find the keys..
 Find the exit!
 出口を探せ！
 You are receiving help from a friendly ally.
-味方に助けてもらっている。
+味方の助力を得られる
 You found a hook you can use to pull on straps and loops.
 ストラップや結び目を引っ張るためのフックを見つけた。
 You have access to something sharp and can attempt to cut restraints.
@@ -4925,29 +4925,29 @@ A light restores the will of its allies!
 You do not have enough resources to cast the spell!
 マナが足りない！
 You AttackName TargetEnemy for DamageDealt DamageType damage!
-TargetEnemy に攻撃し、DamageDealt DamageType のダメージを与えた！
+TargetEnemy に攻撃し、DamageDealt の DamageType 属性ダメージを与えた！
 You AttackName TargetEnemy for a decreased DamageDealt DamageType damage!
-TargetEnemy に攻撃したが、耐性があるようだ。 DamageDealt DamageType のダメージを与えた。
+TargetEnemy に攻撃したが、耐性があるようだ。 DamageDealt の DamageType 属性ダメージを与えた。
 You AttackName TargetEnemy for an increased DamageDealt DamageType damage!
-TargetEnemy に攻撃した。弱点を付き、 DamageDealt DamageType のダメージを与えた！
+TargetEnemy に攻撃した。弱点を付き、 DamageDealt の DamageType 属性ダメージを与えた！
 You AttackName TargetEnemy for a devastating DamageDealt DamageType damage!
-TargetEnemy に攻撃した。弱点を付き、 DamageDealt DamageType の大ダメージを与えた！！
+TargetEnemy に攻撃した。弱点を付き、 DamageDealt の DamageType 属性ダメージを与えた！！
 You AttackName TargetEnemy, but your DamageType weapon has no effect!
 TargetEnemy に攻撃したが、 DamageType は効果がないようだ。
 You AttackName TargetEnemy for DamageDealt DamageType damage!, reduced by an anti-magic ward!
-TargetEnemy に攻撃したが、魔力障壁によって阻まれた。 DamageDealt DamageType ダメージを与えた。
+TargetEnemy に攻撃したが、魔力障壁によって阻まれた。 DamageDealt の DamageType 属性ダメージを与えた。
 AttackName hits TargetEnemy for DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中し、DamageDealt DamageType のダメージを与えた！
+AttackName は TargetEnemy に命中し、DamageDealt の DamageType 属性ダメージを与えた！
 AttackName hits TargetEnemy for a reduced DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中したが、耐性があるようだ。 DamageDealt DamageType のダメージを与えた。
+AttackName は TargetEnemy に命中したが、耐性があるようだ。 DamageDealt の DamageType 属性ダメージを与えた。
 AttackName hits TargetEnemy but DamageType damage doesn't have any effect!
 AttackName は TargetEnemy に命中したが、DamageType は効果がないようだ。
 AttackName hits TargetEnemy for an increased DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中した。弱点を付き、DamageDealt DamageType のダメージを与えた！
+AttackName は TargetEnemy に命中した。弱点を付き、DamageDealt の DamageType 属性ダメージを与えた！
 AttackName hits TargetEnemy for DamageDealt DamageType damage, reduced by an anti-magic ward!
-AttackName は TargetEnemy に命中したが、魔力障壁によって阻まれた。 DamageDealt DamageType のダメージを与えた。
+AttackName は TargetEnemy に命中したが、魔力障壁によって阻まれた。 DamageDealt の DamageType 属性ダメージを与えた。
 AttackName hits TargetEnemy for a devastating DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中した。弱点を付き、 DamageDealt DamageType の大ダメージを与えた！
+AttackName は TargetEnemy に命中した。弱点を付き、 DamageDealt の DamageType 属性ダメージを与えた！
 attack
 攻撃
 damage
@@ -7655,7 +7655,7 @@ A pair of chained cuffs made of leather. They make it trickier to run away.
 革でできた足枷。逃げるのが難しくなる。
 
 A pair of cuffs on your ankles.
-足首に取り付けられた枷。
+足首に取り付く枷。
 Your ankle cuff chain is tightened and pulls your feet together!
 足首の枷の鎖が締まり、足が引き寄せられた！
 
@@ -17113,7 +17113,7 @@ The Head Maid asked me to retrieve it.
 My mistress needs it for a special spell.
 ご主人様が特別な魔法のために使うものなのです
 It is an offering to the goddess of Elements.
-エレメントの女神への捧げ物なんです
+精霊の女神への捧げ物なんです
 It's just a prop for a costume.
 ただの衣装の小道具なんです
 Are you questioning me? I'm a dragonslayer.
@@ -22064,7 +22064,7 @@ The cyber warden's touch applies a series of quick electrical shocks!
 Back to Menu
 メニューに戻る
 Item Stack:
-所持数：
+スタック数：
 Ancient
 古代
 Cursed
@@ -26780,6 +26780,8 @@ Bandit Hideout
 盗賊の隠れ家
 Dimensional Rift
 次元の裂け目
+Hoard
+宝物庫
 
 Witch's Lair
 魔女のお茶会
@@ -27020,7 +27022,7 @@ A very strict and tight hogtie, good for subduing unruly captives.
 A metal chain holds your back in an arched position.
 手と足を繋ぐ鎖の拘束。
 
-Ankle Chain
+Ankle Chains
 足枷の鎖
 A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
 足枷同士をつなぐ鎖。歩く程度なら支障はない程度の長さ。
@@ -27211,8 +27213,8 @@ Can you control the facility?
 
 Can you turn on the elevator?
 エレベーターを動かせる？
-I'm sorry, adventurer. I can't do that.|But maybe if you can get rid of all the nearby threats...|They've been under lockdown for a long time.
-ごめんなさい。|しかし、近くの脅威を全て排除できれば……|奴らによって長いことエレベーターを動かせずにいるのです。
+I'm sorry, adventurer. I can't do that.|But maybe if you can get rid of all the nearby threats...|They've been under lockdown for a long time.|Just push the button again if it hasn't updated yet.
+ごめんなさい。|しかし、近くの脅威を全て排除できれば……|奴らによって長いことエレベーターを動かせずにいるのです。|既に倒しているなら、ボタンを押すだけでいいです。
 
 Mmmph mmm! (Help me!)
 はふへふぇ！(助けて！)
@@ -27231,3 +27233,22 @@ How are you doing?
 最近どう？
 (Oriel smiles)|Good!|I miss Sariel, though...
 (オーリエルは笑みを浮かべている)|悪くないですよ！|サリエルに会えないのは寂しいですが……
+
+
+RMNME of CHTRNME the ENMYNME
+ENMYNME の CHTRNME の RMNME
+
+The item is TTT, and will get looser as you progress.
+TTT 抜け出す過程で緩くなるだろう。
+somewhat tight
+ややきつく締まっている。
+rather tight
+きつく締まっている。
+especially tight
+とてもきつく締まっている。
+well-secured
+しっかりと固定されている。
+expertly secured
+まるで専門家に取り付けられたかのよう。
+You must first accept the quest before offering at the shrine.
+祈る前にクエストを受けなければならない。
