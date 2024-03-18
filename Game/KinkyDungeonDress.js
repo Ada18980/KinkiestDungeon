@@ -205,9 +205,9 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 			let newAppearance = {};
 			for (let A = 0; A < Character.Appearance.length; A++) {
 				if (StandalonePatched) {
-					let model = Character.Appearance[A].Model;
-					if ((!model.Restraint && !model.Group?.startsWith("Item") && !clothGroups[model.Group || model.Name])
-						|| model.Protected || model.SuperProtected) {
+					let model = Character.Appearance[A]?.Model;
+					if (model && ((!model.Restraint && !model.Group?.startsWith("Item") && !clothGroups[model.Group || model.Name])
+						|| model.Protected || model.SuperProtected)) {
 						//Character.Appearance.splice(A, 1);
 						//A -= 1;
 						newAppearance[model.Group || model.Name] = Character.Appearance[A];
@@ -914,7 +914,7 @@ function KDCharacterAppearanceNaked(C) {
 		if (StandalonePatched) {
 			if (!C.Appearance[A].Model.Restraint){
 				// conditional filter
-				let f = !(C.Appearance[A].Model
+				let f = !(C.Appearance[A]?.Model
 					&& ((C == KinkyDungeonPlayer &&
 						KDProtectedCosplay.includes(C.Appearance[A].Model.Group))
 						|| C.Appearance[A].Model.Protected
@@ -926,7 +926,7 @@ function KDCharacterAppearanceNaked(C) {
 			if (C.Appearance[A].Asset.Group.AllowNone &&
 				(C.Appearance[A].Asset.Group.Category === "Appearance")){
 				// conditional filter
-				let f = !(C.Appearance[A].Asset.Group.BodyCosplay
+				let f = !(C.Appearance[A]?.Asset.Group.BodyCosplay
 					&& C == KinkyDungeonPlayer && (KDProtectedCosplay.includes(C.Appearance[A].Asset.Group.Name)));
 				if (!f){continue;}
 				C.Appearance.splice(A, 1);

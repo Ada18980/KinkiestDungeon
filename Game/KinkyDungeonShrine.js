@@ -251,9 +251,9 @@ function KDAddBasic(item) {
 	}
 }
 
-function KinkyDungeonPayShrine(type) {
+function KinkyDungeonPayShrine(type, mult = 1) {
 	let cost = KinkyDungeonShrineCost(type);
-	KinkyDungeonGold -= cost;
+	KinkyDungeonGold -= cost * mult;
 	let ShrineMsg = "";
 	let rep = 0;
 
@@ -315,7 +315,7 @@ function KinkyDungeonPayShrine(type) {
 			KDMapData.ShopItems.splice(KinkyDungeonShopIndex, 1);
 			if (KinkyDungeonShopIndex > 0) KinkyDungeonShopIndex -= 1;
 
-			KDGameData.ShopRewardProgram += cost;
+			KDGameData.ShopRewardProgram += cost*mult;
 			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true);
 			if (!KDGameData.ShopRewardProgramThreshold) KDGameData.ShopRewardProgramThreshold = KDRewardProgramBase;
 			if (!KDGameData.ShopRewardProgram) KDGameData.ShopRewardProgram = 0;
@@ -368,6 +368,8 @@ function KinkyDungeonDrawShrine() {
 	let cost = 0;
 	let type = KinkyDungeonTargetTile.Name;
 	KDModalArea = true;
+	let discount = 1;
+	if (KinkyDungeonTargetTile.mult != undefined) discount = KinkyDungeonTargetTile.mult;
 
 	if (KinkyDungeonShrineAvailable(type)) cost = KinkyDungeonShrineCost(type);
 
@@ -407,7 +409,7 @@ function KinkyDungeonDrawShrine() {
 			DrawButtonKDEx("shrinebuy", (bdata) => {
 				KDSendInput("shrineBuy", {type: type, shopIndex: KinkyDungeonShopIndex});
 				return true;
-			}, cost <= KinkyDungeonGold, KDModalArea_x + 550, KDModalArea_y + 25, 200, 60, TextGet("KinkyDungeonCommercePurchase").replace("ItemCost", "" + cost), (cost <= KinkyDungeonGold) ? "#ffffff" : "#ff5555", "", "");
+			}, cost <= KinkyDungeonGold, KDModalArea_x + 550, KDModalArea_y + 25, 200, 60, TextGet("KinkyDungeonCommercePurchase").replace("ItemCost", "" + cost*discount), (cost*discount <= KinkyDungeonGold) ? "#ffffff" : "#ff5555", "", "");
 
 			if (KDShopBuyConfirm) {
 				DrawTextFitKD(TextGet("KDShopConfirm"),
@@ -495,12 +497,12 @@ function KinkyDungeonDrawShrine() {
 		let II = 0;
 		let shrineActionSpacing = 80;
 		if (DrawButtonKDEx("shrineUse", (bdata) => {
-			KDSendInput("shrineUse", {type: type, cost: cost, targetTile: KinkyDungeonTargetTileLocation});
+			KDSendInput("shrineUse", {type: type, cost: cost*discount, targetTile: KinkyDungeonTargetTileLocation});
 			KinkyDungeonTargetTileLocation = "";
 			KinkyDungeonTargetTile = null;
 			return true;
 		}, cost > 0, KDModalArea_x, KDModalArea_y + 25 - II*shrineActionSpacing, 325, 60,
-		TextGet(cost > 0 ? "KinkyDungeonPayShrine" : "KinkyDungeonPayShrineCant").replace("XXX", "" + cost), cost > 0 ? "#ffffff" : KDTextGray2, "", ""))
+		TextGet(cost > 0 ? "KinkyDungeonPayShrine" : "KinkyDungeonPayShrineCant").replace("XXX", "" + cost*discount), cost > 0 ? "#ffffff" : KDTextGray2, "", ""))
 			DrawTextFitKD(TextGet("KDShrineActionDescOffer"),
 				KDModalArea_x+400, KDModalArea_y + 55 - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 20, "left", 70);
 		II++;

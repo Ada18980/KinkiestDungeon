@@ -356,7 +356,7 @@ function KDProcessInput(type, data) {
 			KinkyDungeonAggroAction('shrine', {});
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 			break;
-		case "shrineUse":
+		case "shrineUse": {
 			KDDelayedActionPrune(["Action", "World"]);
 			if (KinkyDungeonGoddessRep[data.type] <= -45) {
 				//Cursed
@@ -367,33 +367,42 @@ function KDProcessInput(type, data) {
 			//KinkyDungeonTargetTile = tile;
 			//KinkyDungeonTargetTileLocation = data.targetTile;
 			//KinkyDungeonTargetTile = null;
-			if (KinkyDungeonGold >= data.cost) {
-				KinkyDungeonPayShrine(data.type);
-				KinkyDungeonTilesDelete(KinkyDungeonTargetTileLocation);
-				let x =  data.targetTile.split(',')[0];
-				let y =  data.targetTile.split(',')[1];
-				KinkyDungeonMapSet(parseInt(x), parseInt(y), "a");
-				//KinkyDungeonTargetTileLocation = "";
-				KinkyDungeonAggroAction('shrine', {x: parseInt(x), y:parseInt(y)});
-				KDGameData.AlreadyOpened.push({x: parseInt(x), y: parseInt(y)});
-				KinkyDungeonUpdateStats(0);
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+			let mult = 1;
+			if (tile.mult != undefined) mult = tile.mult;
+			if (tile.Quest) {
+				KinkyDungeonSendActionMessage(9, TextGet("KDNeedQuestFirst"), "#ff5555", 1);
+
 			} else {
-				if (KinkyDungeonShrineTypeRemove.includes(type))
-					KinkyDungeonSendActionMessage(9, TextGet("KDNoRestraints"), "#ff5555", 1, true);
-				else
-					KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonPayShrineFail"), "#ff5555", 1, true);
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Damage.ogg");
+				if (KinkyDungeonGold >= data.cost * mult) {
+					KinkyDungeonPayShrine(data.type, mult);
+					KinkyDungeonTilesDelete(KinkyDungeonTargetTileLocation);
+					let x =  data.targetTile.split(',')[0];
+					let y =  data.targetTile.split(',')[1];
+					KinkyDungeonMapSet(parseInt(x), parseInt(y), "a");
+					//KinkyDungeonTargetTileLocation = "";
+					KinkyDungeonAggroAction('shrine', {x: parseInt(x), y:parseInt(y)});
+					KDGameData.AlreadyOpened.push({x: parseInt(x), y: parseInt(y)});
+					KinkyDungeonUpdateStats(0);
+					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+				} else {
+					if (KinkyDungeonShrineTypeRemove.includes(type))
+						KinkyDungeonSendActionMessage(9, TextGet("KDNoRestraints"), "#ff5555", 1, true);
+					else
+						KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonPayShrineFail"), "#ff5555", 1, true);
+					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Damage.ogg");
+				}
+				KinkyDungeonAdvanceTime(1, true);
+				KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			}
-			KinkyDungeonAdvanceTime(1, true);
-			KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			break;
+		}
 		case "shrineQuest": {
 			KDDelayedActionPrune(["Action", "World"]);
 			tile = KinkyDungeonTilesGet(data.targetTile);
 			if (tile && !KDHasQuest(tile.Quest)) {
 				KDAddQuest(tile.Quest);
 				delete tile.Quest;
+				tile.mult = 0;
 				KinkyDungeonSendActionMessage(9, TextGet("KDShrineQuestAccepted"), "#ffffff", 1);
 				return "Accept";
 			}

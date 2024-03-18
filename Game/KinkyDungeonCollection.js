@@ -35,7 +35,7 @@ function KDAddCollection(enemy, type, status, servantclass) {
 		/** @type {KDCollectionEntry} */
 		let entry = {
 			id: enemy.id,
-			name: enemy.CustomName || KDGetEnemyName(enemy),
+			name: KDGetPersistentNPC(enemy).Name,
 			sprite: (enemy.CustomSprite) || enemy.Enemy.name,
 			// @ts-ignore
 			customSprite: (enemy.CustomSprite),

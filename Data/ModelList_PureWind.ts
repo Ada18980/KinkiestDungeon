@@ -78,6 +78,7 @@ AddModel({
 	Folder: "KittyLatex",
 	Parent: "KittyLatex",
 	TopLevel: false,
+	Protected: true,
 	Categories: ["Ears", "Kitty", "Face", "Cosplay"],
 	AddPose: ["AnimalEars", "Kitty", "Cosplay"],
 	Layers: ToLayerMap([{
@@ -122,6 +123,7 @@ AddModel({
 	Folder: "KittyLatex",
 	Parent: "KittyLatex",
 	TopLevel: false,
+	Protected: true,
 	Categories: ["Tails", "Kitty", "Cosplay"],
 	AddPose: ["Tails", "Kitty"],
 	Layers: ToLayerMap([{
@@ -144,7 +146,7 @@ AddModel({
 	Folder: "KittyLatex",
 	Parent: "KittyLatex",
 	TopLevel: false,
-	Protected: false,
+	Protected: true,
 	Categories: ["Tails", "Kitty", "Cosplay"],
 	AddPose: ["Tails", "Kitty"],
 	Layers: ToLayerMap([{
@@ -177,6 +179,7 @@ AddModel({
 	Name: "KittyLatex",
 	Folder: "KittyLatex",
 	TopLevel: true,
+	Protected: true,
 	Categories: ["Cosplay"],
 	Layers: ToLayerMap([
 			...GetModelLayers("KittyLatexEar"),
@@ -190,6 +193,7 @@ AddModel({
 	Folder: "Succubus",
 	Parent: "Succubus",
 	TopLevel: false,
+	Protected: true,
 	Categories: ["Cosplay"],
 	AddPose: ["Wings", "Demon", "Cosplay"],
 	Layers: ToLayerMap([{
@@ -220,7 +224,7 @@ AddModel({
 	Folder: "Succubus",
 	Parent: "Succubus",
 	TopLevel: false,
-	Protected: false,
+	Protected: true,
 	Categories: ["Ears", "Face", "Cosplay"],
 	AddPose: ["AnimalEars", "Demon", "Cosplay"],
 	Layers: ToLayerMap([{
@@ -249,7 +253,7 @@ AddModel({
 	Folder: "Succubus",
 	Parent: "Succubus",
 	TopLevel: false,
-	Protected: false,
+	Protected: true,
 	Categories: ["Tails", "Face", "Cosplay"],
 	AddPose: ["Tails", "Demon", "Cosplay"],
 	Layers: ToLayerMap([{
@@ -322,6 +326,7 @@ AddModel({
 	Name: "Succubus",
 	Folder: "Succubus",
 	TopLevel: true,
+	Protected: true,
 	Categories: ["Cosplay"],
 	AddPose: ["AnimalEars", "Demon", "Tails", "Wings", "Cosplay"],
 	Layers: ToLayerMap([

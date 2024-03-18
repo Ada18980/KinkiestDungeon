@@ -27,10 +27,16 @@ Monk class?
  - TODO add lairs
  - TODO add chains
  - TODO display stand turret
+ - TODO added personalized dragon caves
 
 5.2.15
+- Added names and outfits for dragon girls
+- Items have a tightness value and can get less tight over time
+- You cant offer to quest shrines until the quest is accepted
 - Fixed a bug where the tutorial became the Void
 - and a bunch of other rare, intermittent bugs resulting from the same root cause
+- Added new cyber heels
+
 
 5.2.14
 - Leather Whip now binds using Leather at 150% efficiency

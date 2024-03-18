@@ -975,14 +975,11 @@ const KinkyDungeonRestraints = [
 		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Cyber", "Latex", "Straitjackets", "Block_ItemHands"]},
 
 	{inventory: true, sfx: "FutureLock", name: "CyberHeels", inaccessible: true, Asset: "FuturisticHeels2", remove: ["Shoes"],
-		Model: "FlatBalletHeelsRestraint",
+		Model: "CyberBalletHeels",
 		factionFilters: {
-			Sole: {color: "DarkNeutral", override: true},
+			Glow: {color: "Highlight", override: true},
 			Shoe: {color: "LightNeutral", override: true},
 		},
-		Filters: {
-			"Sole":{"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":2.0666666666666664,"green":1,"blue":2.033333333333333,"alpha":1},
-			"Shoe":{"gamma":1,"saturation":1,"contrast":1.1833333333333333,"brightness":1.4166666666666665,"red":1,"green":1,"blue":1,"alpha":1}},
 		factionColor: [[0], [4], [1]],
 		Color: ["#222222", "#499ed6", "#ffffff", "Default", "#b927a8", "#222222", "#000000"],
 		Group: "ItemBoots", heelpower: 2, power: 10, weight: 0,
@@ -3604,6 +3601,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.18, "Cut": 0.05, "Remove": 0.33, "Pick": 0.15},
 		maxwill: 0.75, enemyTags: {"maidRestraints":7, "maidRestraintsNonChastity": 10, }, playerTags: {}, minLevel: 4, allFloors: true, shrine: ["Leather", "FlatGags", "Gags", "Illusion"]},
 	{inventory: true, name: "MaidMuzzle", debris: "Belts", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], gag: 0.75,
+		inaccessible: true,
 		Model: "PlugMuzzleGag",
 		Asset: "MuzzleGag", Color: "Default", Group: "ItemMouth", AssetGroup: "ItemMouth2", power: 9, weight: 0,
 		limitChance: {"Struggle": 0.18},
@@ -6970,13 +6968,14 @@ let KDLocks = {
 		},
 
 		doLock: (data) => {
-			if (data.item) {
-				data.item.lockTimer = MiniGameKinkyDungeonLevel + 2;
+			if (data.item && !data.link) {
+				if (!data.item.data) data.item.data = {};
+				data.item.data.lockTimer = MiniGameKinkyDungeonLevel + 2;
 			}
 		},
 		// Start of level -- for gold locks and others
 		levelStart: (item) => {
-			if ((MiniGameKinkyDungeonLevel >= item.lockTimer || !item.lockTimer || item.lockTimer >= KinkyDungeonMaxLevel)) {
+			if ((MiniGameKinkyDungeonLevel >= item.data?.lockTimer || !item.data?.lockTimer || item.data?.lockTimer >= KinkyDungeonMaxLevel)) {
 				KinkyDungeonLock(item, "Blue");
 				KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonGoldLockRemove"), "yellow", 2);
 			}

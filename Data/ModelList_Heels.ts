@@ -49,6 +49,10 @@ AddModel({
 			Poses: ToMap([...CALFLEFTPOSES]),
 			NoOverride: true,
 			TieToLayer: "BalletLeft",
+
+			DisplacementSprite: "BalletCuffs",
+			DisplaceAmount: 70,
+			DisplaceLayers: ToMap(["BalletHeelsCuffs"]),
 		},
 		{ Name: "BalletSoleRight", Layer: "ShoeRightOver", Pri: 50.1,
 			HideWhenOverridden: true,
@@ -138,7 +142,7 @@ AddModel({
 	Folder: "Heels",
 	TopLevel: false,
 	Parent: "BalletHeels",
-	Restraint: true,
+	Restraint: false,
 	Categories: ["Shoes", "Heels"],
 	AddPose: ["Ballet"],
 	Layers: ToLayerMap([

@@ -690,6 +690,10 @@ let LayerGroups = {
 		"WrappingLegsUnder",
 		"WrappingLegsRight",
 	]),
+	"BalletHeelsCuffs": ToMap([
+		"AnkleLeft",
+		"AnkleRight",
+	]),
 	"HeelRight": ToMap([
 		"FootLeft",
 		"StockingLeftKneel", "StockingLeft",

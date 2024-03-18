@@ -362,7 +362,7 @@ let KDQuests = {
 		tick: (delta) => {
 			if (delta > 0 && KinkyDungeonFlags.get("ElementalSlaveTeleport")) {
 				let altType = KDGetAltType(MiniGameKinkyDungeonLevel, KDGameData.MapMod, KDGameData.RoomType);
-				if (!altType) {
+				if (!altType || altType.makeMain) {
 					let tiles = KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 3.5).filter(
 						(tile) => {
 							return KinkyDungeonMapGet(tile.x, tile.y) == 'A' && tile.tile?.Name == "Elements";

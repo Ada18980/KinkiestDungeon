@@ -57,6 +57,12 @@ let DisplacementMaps = [
 'BalletRightErase.png',
 'BalletRightEraseClosed.png',
 'BalletSpread.png',
+
+'BalletCuffsClosed.png',
+'BalletCuffsHogtie.png',
+'BalletCuffsKneel.png',
+'BalletCuffsKneelClosed.png',
+'BalletCuffsSpread.png',
 'Belt.png',
 'BeltFeet1SquishClosed.png',
 'BeltFeet1SquishKneelClosed.png',

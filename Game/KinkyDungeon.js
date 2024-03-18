@@ -4368,6 +4368,8 @@ function KinkyDungeonLoadGame(String) {
 			KinkyDungeonEasyMode = KinkyDungeonStatsChoice.get("norescueMode") ? 2 : (KinkyDungeonStatsChoice.get("easyMode") ? 1 : 0);
 			KinkyDungeonProgressionMode = KinkyDungeonStatsChoice.get("escapekey") ? "Key" : KinkyDungeonStatsChoice.get("escaperandom") ? "Random" : KinkyDungeonStatsChoice.get("escapeselect") ? "Select" : "Key";
 
+			saveData.KDPersonalAlt = JSON.stringify(KDPersonalAlt);
+			saveData.KDPersistentNPCs = JSON.stringify(KDPersistentNPCs);
 
 			if (saveData.faction != undefined) KinkyDungeonFactionRelations = saveData.faction;
 			KDInitFactions();
@@ -4423,6 +4425,8 @@ function KinkyDungeonLoadGame(String) {
 			}
 
 			if (saveData.KDWorldMap) KDWorldMap = JSON.parse(JSON.stringify(saveData.KDWorldMap));
+			if (saveData.KDPersistentNPCs) KDPersistentNPCs = JSON.parse(saveData.KDPersistentNPCs);
+			if (saveData.KDPersonalAlt) KDPersonalAlt = JSON.parse(saveData.KDPersonalAlt);
 
 			if (saveData.KinkyDungeonPlayerEntity) KinkyDungeonPlayerEntity = saveData.KinkyDungeonPlayerEntity;
 			if (saveData.KDMapData) {

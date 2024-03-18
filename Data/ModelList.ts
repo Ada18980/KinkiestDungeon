@@ -555,6 +555,10 @@ AddModel({
 			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel", "KneelClosed"]),
 			HideWhenOverridden: true,
 			NoDisplace: true,
+
+			DisplacementSprite: "BalletCuffs",
+			DisplaceAmount: 20,
+			DisplaceLayers: ToMap(["BalletHeelsCuffs"]),
 		},
 		{ Name: "BootRightKneel", Layer: "ShoeRightKneel", Pri: 25,
 			Poses: ToMap(["Kneel"]),

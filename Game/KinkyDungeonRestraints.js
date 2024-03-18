@@ -779,11 +779,11 @@ function KinkyDungeonIsLockable(restraint) {
  * @param {string} lock
  * @param {boolean} NoEvent
  */
-function KinkyDungeonLock(item, lock, NoEvent = false) {
+function KinkyDungeonLock(item, lock, NoEvent = false, Link = false) {
 	KDUpdateItemEventCache = true;
 	if (lock != "") {
 		if (KinkyDungeonIsLockable(KDRestraint(item))) {
-			if (KDLocks[lock] && KDLocks[lock].doLock) KDLocks[lock].doLock({item: item});
+			if (KDLocks[lock] && KDLocks[lock].doLock) KDLocks[lock].doLock({item: item, link: Link});
 			item.lock = lock;
 
 			if (!StandalonePatched)
@@ -791,7 +791,7 @@ function KinkyDungeonLock(item, lock, NoEvent = false) {
 			item.pickProgress = 0;
 		}
 	} else {
-		if (KDLocks[lock] && KDLocks[lock].doUnlock) KDLocks[lock].doUnlock({item: item});
+		if (KDLocks[lock] && KDLocks[lock].doUnlock) KDLocks[lock].doUnlock({item: item, link: Link});
 		item.lock = lock;
 		if (!NoEvent) {
 			if (item.events) {
@@ -2347,6 +2347,15 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	if (KDRestraint(restraint) && KDRestraint(restraint).struggleMaxSpeed && KDRestraint(restraint).struggleMaxSpeed[StruggleType] != undefined)
 		data.escapeChance = Math.min(data.escapeChance, KDRestraint(restraint).struggleMaxSpeed[StruggleType]);
 
+
+	// Struggling is affected by tightness
+	if (data.escapeChance > 0) {// && StruggleType == "Struggle") {
+		for (let T = 0; T < restraint.tightness; T++) {
+			data.escapeChance *= 0.8; // Tougher for each tightness, however struggling will reduce the tightness
+		}
+	}
+
+
 	// Handle cases where you can't even attempt to unlock or pick
 	if (lockType && (StruggleType == "Unlock" && !lockType.canUnlock(data))
 		|| (StruggleType == "Pick" && lockType && !lockType.canPick(data))) {
@@ -2487,13 +2496,6 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 				return "Barely";
 			}
 
-
-			// Struggling is affected by tightness
-			if (data.escapeChance > 0) {// && StruggleType == "Struggle") {
-				for (let T = 0; T < restraint.tightness; T++) {
-					data.escapeChance *= 0.8; // Tougher for each tightness, however struggling will reduce the tightness
-				}
-			}
 
 			// Pass block
 			let progress = restraint.cutProgress ? restraint.cutProgress : 0;
@@ -2682,17 +2684,6 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 					restraint.unlockProgress = Math.max(0, restraint.unlockProgress * 0.5 - 0.01);
 				}
 
-				// reduces the tightness of the restraint slightly
-				if (StruggleType == "Struggle") {
-					let tightness_reduction = 1;
-
-					// eslint-disable-next-line no-unused-vars
-					for (let _item of KinkyDungeonAllRestraint()) {
-						tightness_reduction *= 0.8; // Reduced tightness reduction for each restraint currently worn
-					}
-
-					restraint.tightness = Math.max(0, restraint.tightness - tightness_reduction);
-				}
 			} else if (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())
 				KinkyDungeonChangeRep("Ghost", 1);
 
@@ -3969,7 +3960,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 					KDCurses[Curse].onApply(item, undefined);
 				}
 
-				if (Lock) KinkyDungeonLock(item, Lock);
+				if (Lock) KinkyDungeonLock(item, Lock, false, Unlink);
 				else if (restraint.DefaultLock && !Unlink) KinkyDungeonLock(item, KDProcessLock(restraint.DefaultLock));
 
 				KDUpdateLinkCaches(item);

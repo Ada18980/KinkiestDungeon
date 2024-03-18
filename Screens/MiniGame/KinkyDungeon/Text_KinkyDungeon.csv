@@ -20357,6 +20357,7 @@ KDSideRoom_AuctionHall,"Auction Hall"
 KDSideRoom_DemonShrine,"Dark Altar"
 KDSideRoom_BanditFort,"Bandit Hideout"
 KDSideRoom_DemonTransition,"Dimensional Rift"
+KDSideRoom_DragonCave,"Hoard"
 
 KDMapMod_,"None"
 KDMapMod_None,"None"
@@ -20625,7 +20626,7 @@ rOrielControl,"(Oriel frowns)|Adventurers seem to keep asking me that.|In my cur
 dOriel_ElevatorGag,"Mmmph!"
 rOrielElevatorGag,"(Oriel giggles)|Sweetie, I can't understand you."
 dOriel_Elevator,"Can you turn on the elevator?"
-rOrielElevator,"I'm sorry, adventurer. I can't do that.|But maybe if you can get rid of all the nearby threats...|They've been under lockdown for a long time."
+rOrielElevator,"I'm sorry, adventurer. I can't do that.|But maybe if you can get rid of all the nearby threats...|They've been under lockdown for a long time.|Just push the button again if it hasn't updated yet."
 
 dOriel_HelpGag,"Mmmph mmm! (Help me!)"
 rOrielHelpGag,"(Oriel chuckles)|What was that again?|Sorry~"
@@ -20636,3 +20637,15 @@ dOriel_HelloGag,"Mmmmm..."
 rOrielHelloGag,"(Oriel smiles)|It's always fun to see you like that~"
 dOriel_Hello,"How are you doing?"
 rOrielHello,"(Oriel smiles)|Good!|I miss Sariel, though..."
+
+KDPersonalizedRoom,RMNME of CHTRNME the ENMYNME
+
+KDItemsTightness,"The item is TTT, and will get looser as you progress."
+
+KDTightnessLow,somewhat tight
+KDTightnessMed,rather tight
+KDTightnessHigh,especially tight
+KDTightnessExtreme,well-secured
+KDTightnessExtreme2,expertly secured
+
+KDNeedQuestFirst,You must first accept the quest before offering at the shrine.

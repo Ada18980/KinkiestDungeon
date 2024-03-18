@@ -773,6 +773,119 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 		],
 	},
 
+	DragonPoison: {
+		Hairstyle: [
+			"GreenMessy",
+			"GreenPonytail",
+			"GreenShiny",
+			"PurpleBraid",
+			"LavenderTwintails",
+			"DarkPurpleSideBangs",
+		],
+		Bodystyle: [
+			"Default",
+			"Mid",
+			"Pale",
+			"Tan",
+			"DarkTan",
+		],
+		Facestyle: [
+			"GreenOpen",
+			"GreenAngry",
+			"GreenNormal",
+			"PurpleCute",
+			"TealCute",
+			"PurpleAngry",
+			"LightBlueCute",
+		],
+		Cosplay: [
+			"DragonPoison"
+		],
+	},
+
+
+	DragonCrystal: {
+		Hairstyle: [
+			"CrystalHair",
+			"CrystalHair",
+			"CrystalHair",
+			"PinkMessy",
+			"PinkNeat",
+			"PinkNeat",
+			"PinkNeat",
+
+		],
+		Bodystyle: [
+			"Default",
+			"Mid",
+			"Pale",
+			"Tan",
+			"DarkTan",
+		],
+		Facestyle: [
+			"CrystalFace",
+			"CrystalFace",
+			"PinkCute",
+			"PinkAngry",
+		],
+		Cosplay: [
+			"DragonCrystal",
+		],
+	},
+
+	DragonIce: {
+		Hairstyle: [
+			"Wolfgirl1",
+			"Wolfgirl2",
+			"Wolfgirl3",
+			"LavenderPonytail",
+			"LightBlueLong",
+			"LightBlueMedium",
+			"LightBlueShort",
+			"BlueTwintail",
+		],
+		Bodystyle: [
+			"Default",
+			"Mid",
+			"Pale",
+		],
+		Facestyle: [
+			"TealCute",
+			"BlueCute",
+			"CyanAngry",
+			"CyanCute",
+			"CyanCute2",
+		],
+		Cosplay: [
+			"DragonIce"
+		],
+	},
+	DragonShadow: {
+		Hairstyle: [
+			"SlateShortPonytail",
+			"SlateTwintails",
+			"BlackTwintails",
+			"PurpleTwintails",
+			"DarkPurpleSideBangs",
+			"PurpleBraid",
+			"LavenderTwintails",
+			"BlueMessy",
+			"BlueLong1",
+		],
+		Bodystyle: [
+			"Demon",
+			"ElementalCorrupted",
+		],
+		Facestyle: [
+			"YellowOpen",
+			"YellowRound",
+			"YellowKjus",
+		],
+		Cosplay: [
+			"DragonIce"
+		],
+	},
+
 	RedHair: {
 		Hairstyle: [
 			"Fire1",

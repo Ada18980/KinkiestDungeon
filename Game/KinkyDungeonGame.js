@@ -593,6 +593,8 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	KDCommanderRoles = new Map();
 	KDUpdateEnemyCache = true;
 
+	KDKickEnemies(undefined, ignoreAware); // Shuffle enemy locations
+
 	KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
 
 	// Load the room
@@ -783,16 +785,15 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
 
 	for (let iterations = 0; iterations < 100; iterations++) {
-
-		/** @type {KDMapData} */
-		KDMapData = KDDefaultMapData(KDGameData.RoomType, KDGameData.MapMod);
-		KDCurrentWorldSlot = worldLocation;
 		if (iterations > 0) {
 			// Clear so party prisoners are reused
 			for (let en of [...KDMapData.Entities]) {
 				KDRemoveEntity(en, false, true, true);
 			}
 		}
+		/** @type {KDMapData} */
+		KDMapData = KDDefaultMapData(KDGameData.RoomType, KDGameData.MapMod);
+		KDCurrentWorldSlot = worldLocation;
 
 		KDInitTempValues(seed);
 		KDMapData.Grid = "";

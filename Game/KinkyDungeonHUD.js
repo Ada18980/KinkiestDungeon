@@ -2850,13 +2850,21 @@ function KDDrawStruggleGroups() {
 						DrawTextKD(msg, 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left");
 						O++;
 					}
+					let lastlastO = O;
 					O = lastO;
 					if (drawn) {
 						DrawTextKD(TextGet("KinkyDungeonItemsStrictness"), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150); O++;
 					}
 
+					O = lastlastO + 1;
 					lastO = O;
 
+				}
+				if (item.tightness > 0 && (KDRestraint(item).escapeChance?.Struggle < 1 || KDRestraint(item).escapeChance?.Remove < 1)) {
+					let O = lastO;
+					DrawTextKD(TextGet("KDItemsTightness").replace("TTT",
+						TextGet("KDTightness" + KDTightnessRank(item.tightness))
+					), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150); O++;
 				}
 				FillRectKD(kdcanvas, kdpixisprites, "selectedBG", {
 					Left: 510, Top: MY - 20, Width: 740,
@@ -2987,4 +2995,17 @@ function KDDrawStruggleGroups() {
 			}
 		}
 
+}
+
+/**
+ *
+ * @param {number} tightness
+ * @returns {string}
+ */
+function KDTightnessRank(tightness) {
+	if (tightness > 7) return "Extreme2";
+	if (tightness > 5) return "Extreme";
+	if (tightness > 3) return "High";
+	if (tightness > 1) return "Med";
+	return "Low";
 }

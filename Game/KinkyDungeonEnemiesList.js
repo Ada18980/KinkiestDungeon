@@ -2882,7 +2882,7 @@ let KinkyDungeonEnemies = [
 		ondeath: [{type: "summon", enemy: "DragonGirlPoison", range: 0.5, count: 1, strict: false}],
 		dropTable: [{name: "Gold", amountMin: 200, amountMax: 300, weight: 15}]},
 
-	{name: "DragonGirlPoison", nameList: "dragonheart", outfit: "DragonPoison", style: "Water", faction: "DragonQueen", clusterWith: "beast",
+	{name: "DragonGirlPoison", nameList: "DragonGirl", outfit: "DragonGirlPoison", style: "DragonPoison", faction: "DragonQueen", clusterWith: "beast",
 		bound: "DragonPoison", color: "#8d3fab",
 		playLine: "DragonGirl",
 		tags: KDMapInit(["opendoors", "poison", "nature", "dragongirl", "human", "melee", "miniboss", "vineRestraints",
@@ -2969,7 +2969,7 @@ let KinkyDungeonEnemies = [
 		ondeath: [{type: "summon", enemy: "DragonGirlCrystal", range: 0.5, count: 1, strict: false}],
 		dropTable: [{name: "Gold", amountMin: 200, amountMax: 300, weight: 15}]},
 
-	{name: "DragonGirlCrystal", nameList: "dragonheart", outfit: "DragonCrystal", style: "Water", faction: "DragonQueen", clusterWith: "beast",
+	{name: "DragonGirlCrystal", nameList: "DragonGirl", outfit: "DragonGirlCrystal", style: "DragonCrystal", faction: "DragonQueen", clusterWith: "beast",
 		bound: "DragonCrystal", color: "#ff5277",
 		playLine: "DragonGirl",
 		tags: KDMapInit(["opendoors", "chaos", "crystal", "dragongirl", "human", "melee", "miniboss", "crystalRestraints",
@@ -3051,7 +3051,7 @@ let KinkyDungeonEnemies = [
 		ondeath: [{type: "summon", enemy: "DragonGirlShadow", range: 0.5, count: 1, strict: false}],
 		dropTable: [{name: "Gold", amountMin: 200, amountMax: 300, weight: 15}]},
 
-	{name: "DragonGirlShadow", nameList: "dragonheart", outfit: "DragonShadow", style: "Water", faction: "DragonQueen", clusterWith: "beast",
+	{name: "DragonGirlShadow", nameList: "DragonGirl", outfit: "DragonGirlShadow", style: "DragonShadow", faction: "DragonQueen", clusterWith: "beast",
 		bound: "DragonShadow", color: "#999999",
 		playLine: "DragonGirl",
 		tags: KDMapInit(["opendoors", "shadow", "dragongirl", "human", "melee", "miniboss", "shadowlatexRestraints",
@@ -3147,7 +3147,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 200, amountMax: 300, weight: 15}]},
 
 
-	{name: "DragonGirlIce", nameList: "dragonheart", outfit: "DragonIce", style: "Water", faction: "DragonQueen", clusterWith: "beast",
+	{name: "DragonGirlIce", nameList: "DragonGirl", outfit: "DragonGirlIce", style: "DragonIce", faction: "DragonQueen", clusterWith: "beast",
 		bound: "DragonIce", color: "#92e8c0",
 		playLine: "DragonGirl",
 		tags: KDMapInit(["opendoors", "water", "ice", "dragongirl", "human", "melee", "miniboss", "iceRestraints",

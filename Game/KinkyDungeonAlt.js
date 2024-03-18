@@ -536,6 +536,8 @@ let KDJourneyListSkin = {
 if (param_test) KDJourneyList.push("Test");
 
 function KinkyDungeonAltFloor(Type) {
+	if (KDPersonalAlt[Type])
+		return alts[KDPersonalAlt[Type].RoomType];
 	return alts[Type];
 }
 

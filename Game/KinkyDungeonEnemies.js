@@ -6532,7 +6532,7 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 			for (let r of restraintsToAdd) {
 				let bb = 0;
 				if (count >= protection) {
-					bb = KinkyDungeonAddRestraintIfWeaker(r.r, (enemy?.Enemy.power || spell?.power || 0),
+					bb = KinkyDungeonAddRestraintIfWeaker(r.r, ((enemy ? enemy.Enemy.power + KDEnemyRank(enemy) : 0) || spell?.power || 0),
 						KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy?.Enemy.bypass, (enemy?.Enemy.useLock ? enemy.Enemy.useLock : (r.r.DefaultLock || Lock)),
 						Keep, undefined, undefined, enemy?.Enemy.applyFaction || faction || enemy?.Enemy.defaultFaction, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
 						undefined, enemy, true, undefined, undefined, undefined, r.v) * 2;

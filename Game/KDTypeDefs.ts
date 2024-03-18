@@ -46,8 +46,6 @@ interface item extends NamedAndTyped {
 	ty?: number,
 	/** Length of the tether*/
 	tetherLength?: number,
-	/** Used for Gold locks only, determines which floor the lock will release*/
-	lockTimer?: number,
 	/** Stores the previously linked item*/
 	dynamicLink?: item,
 	/** Generic item data, able to be manipulated thru events*/
@@ -2317,6 +2315,8 @@ interface KinkyDungeonSave {
 	KDWorldMap: Record<string, KDWorldSlot>;
 	KDEventData: Object;
 	KDCurrentWorldSlot: {x: number, y: number};
+	KDPersistentNPCs: string,
+	KDPersonalAlt: string,
 	flags: [string, number][];
 	uniqueHits: [string, boolean][];
 	KDCommanderRoles: [number, string][];

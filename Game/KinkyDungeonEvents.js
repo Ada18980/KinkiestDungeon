@@ -8645,7 +8645,7 @@ let KDEventMapGeneric = {
 	"defeat": {
 		"dollRoomRemove": (e, enemy, data) => {
 			// Removes the excess dollsmiths that are spawned when you escape the dollroom
-			if (KDGameData.RoomType && alts[KDGameData.RoomType].data?.dollroom) {
+			if (KDGameData.RoomType && KinkyDungeonAltFloor(KDGameData.RoomType).data?.dollroom) {
 				for (let en of KDMapData.Entities) {
 					if (en.Enemy.tags.dollsmith) {
 						en.noDrop = true;
@@ -8663,7 +8663,7 @@ let KDEventMapGeneric = {
 	},
 	"beforeHandleStairs": {
 		"resetDollRoom": (e, data) => {
-			if (KDGameData.RoomType && alts[KDGameData.RoomType].data?.dollroom) {
+			if (KDGameData.RoomType && KinkyDungeonAltFloor(KDGameData.RoomType).data?.dollroom) {
 				KDGameData.DollRoomCount += 1;
 				if (KDGameData.DollRoomCount >= 3) {
 					// Allow player to pass unless returning to previous
@@ -8893,6 +8893,15 @@ let KDEventMapGeneric = {
 				let inv = tuple.item;
 				if (inv.lock && KDLocks[inv.lock] && KDLocks[inv.lock].levelStart) {
 					KDLocks[inv.lock].levelStart(inv);
+				}
+			}
+		},
+		/** Reduce tightness by 1 per floor */
+		"reduceTightness": (e, data) => {
+			for (let tuple of KinkyDungeonAllRestraintDynamic()) {
+				let inv = tuple.item;
+				if (inv.tightness > 0) {
+					inv.tightness = Math.max(0, inv.tightness - 1);
 				}
 			}
 		},
@@ -9154,7 +9163,7 @@ let KDEventMapGeneric = {
 			}
 		},
 		"DollRoomUpdate": (e, data) => {
-			if (KDGameData.RoomType && alts[KDGameData.RoomType].data?.dollroom) {
+			if (KDGameData.RoomType && KinkyDungeonAltFloor(KDGameData.RoomType).data?.dollroom) {
 				// Spawn shopkeeper
 
 				if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.OffLimits

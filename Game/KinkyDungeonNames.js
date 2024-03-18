@@ -3271,6 +3271,21 @@ let KDNameList = {
 		"Zola",
 		"Zuberi"
 	],
-
+	DragonGirl: [
+		"Aeliana", "Althaea", "Amaranya", "Amara", "Anais",
+		"Angelina", "Astridra", "Aureliax", "Azuraitha", "Brynhildr",
+		"Caelia", "Camilla", "Chiaraflame",
+		"Draconia", "Drakaina", "Elysia", "Emmeline",
+		"Fenra", "Fiora", "Galladria", "Gwyndolin",
+		"Helios", "Ilyana", "Ignisia", "Isolde", "Jasmina",
+		"Kaida", "Kaelith", "Lysandra", "Lorelei", "Luciana",
+		"Myrrh", "Maelis", "Nimue", "Norberta", "Ophira",
+		"Pyralis", "Pandora", "Quelara", "Ravana", "Ramoth",
+		"Siveth", "Sylvara", "Tiamara", "Ursula", "Vaeloria",
+		"Vermithrax", "Wyverna", "Xanthe", "Ysolt", "Zephyra",
+		"Belladonna", "Dahlia",
+		"Umbra", "Vespera", "Wisteria", "Xylia", "Ygraine",
+		"Zephyrine", "Zara", "Zephyr",
+	],
 
 };

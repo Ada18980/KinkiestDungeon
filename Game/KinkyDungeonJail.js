@@ -1413,7 +1413,16 @@ function KDKickEnemies(nearestJail, ignoreAware) {
 			}
 			KDExpireFlags(e);
 			KDResetIntent(e, {});
-			enemies.push(e);
+			if (e.boundLevel) {
+				if (KDHelpless(e)) {
+					KDRemoveEntity(e, false, true, true);
+				} else {
+					enemies.push(e);
+				}
+				e.boundLevel = 0;
+			} else {
+				enemies.push(e);
+			}
 		}
 	}
 	KDMapData.Entities = enemies;
@@ -1455,7 +1464,7 @@ function KDKickEnemy(e, minDist = 10) {
 			}
 
 
-			if (e.boundLevel && e.boundLevel < 9000) e.boundLevel = 0;
+			if (e.boundLevel) e.boundLevel = 0;
 		}
 		if (e.hostile < 9000) e.hostile = 0;
 		KDExpireFlags(e);
@@ -1596,7 +1605,7 @@ let KDCustomDefeats = {
 let KDCustomDefeatUniforms = {
 	WolfgirlHunters: () => {
 		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: (i < (KinkyDungeonStatsChoice.has("NoWayOut") ? 3 : 1) ? ["wolfCuffs"] : ["wolfGear", "wolfRestraints"])}, 12, "grv", true, "Red");
+			let r = KinkyDungeonGetRestraint({tags: (i < (KinkyDungeonStatsChoice.has("NoWayOut") ? 3 : 1) ? ["wolfCuffs"] : ["wolfGear", "wolfRestraints", "linkRegular"])}, 12, "grv", true, "Red");
 			if (r) {
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Red", undefined, undefined, undefined, undefined, true);
 				if (r.Link) {
@@ -1612,7 +1621,7 @@ let KDCustomDefeatUniforms = {
 	},
 	MaidSweeper: () => {
 		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["maidRestraints", "maidVibeRestraints", "noMaidJacket", "handcuffer"]}, 12, "grv", true, "Purple");
+			let r = KinkyDungeonGetRestraint({tags: ["maidRestraints", "maidVibeRestraints", "noMaidJacket", "handcuffer", "linkRegular"]}, 12, "grv", true, "Purple");
 			if (r)
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, undefined, true);
 		}
@@ -1681,7 +1690,7 @@ let KDCustomDefeatUniforms = {
 
 	ElementalSlave: () => {
 		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["obsidianRestraints", "ornateChastity", "genericToys"]}, 12, "grv", true, "Red");
+			let r = KinkyDungeonGetRestraint({tags: ["obsidianRestraints", "ornateChastity", "genericToys", "linkRegular"]}, 12, "grv", true, "Red");
 			if (r) {
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", false, undefined, undefined, undefined, true);
 				let item = r;
