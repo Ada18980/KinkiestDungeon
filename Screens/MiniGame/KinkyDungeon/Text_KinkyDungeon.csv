@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.16"
+KDVersionStr,"5.2.17"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -20517,6 +20517,10 @@ KillDragonVinePlant,"The vine pod explodes into dust!"
 AttackDragonVinePlant,"The vine pod wraps you in vines and squeezes! (DamageTaken)"
 AttackDragonVinePlantBind,"The vine pod launches several vines at you in quick succession! (+RestraintAdded)"
 
+NameDragonPlant,Sleep Flower
+KillDragonPlant,"The sleep flower explodes into dust!"
+AttackDragonPlant,"The sleep flower sprays pollen into your face! Achoo! (DamageTaken)"
+AttackDragonPlantBind,"The sleep flower launches several vines at you in quick succession! (+RestraintAdded)"
 
 KinkyDungeonSummonMultiDragonVinePlant,Several vine pods sprout out of the ground!
 KinkyDungeonSummonSingleDragonVinePlant,A vine pod sprouts out of the ground!
@@ -20642,11 +20646,26 @@ KDPersonalizedRoom,RMNME of CHTRNME the ENMYNME
 
 KDItemsTightness,"The item is TTT, and will get looser as you progress."
 
-KDTightnessLow,somewhat tight
-KDTightnessMed,rather tight
-KDTightnessHigh,especially tight
-KDTightnessExtreme,well-secured
-KDTightnessExtreme2,expertly secured
+KDTightness0,somewhat tight
+KDTightness2,rather tight
+KDTightness4,quite tight
+KDTightness6,especially tight
+KDTightness8,extremely tight
+KDTightness10,incredibly tight
+
+KDTightnessSecure0,somewhat secure
+KDTightnessSecure2,secure
+KDTightnessSecure4,quite secure
+KDTightnessSecure6,highly secure
+KDTightnessSecure8,extremely secure
+KDTightnessSecure10,incredibly secure
+
+KDTightnessThick0,somewhat thick
+KDTightnessThick2,rather thick
+KDTightnessThick4,quite thick
+KDTightnessThick6,highly thick
+KDTightnessThick8,extremely thick
+KDTightnessThick10,incredibly thick
 
 KDNeedQuestFirst,You must first accept the quest before offering at the shrine.
 

@@ -2170,6 +2170,7 @@ function KinkyDungeonPlaceChests(params, chestlist, spawnPoints, shrinelist, tre
 							&& !shrinePoints.get((X-1) + "," + (Y-1))
 							&& !shrinePoints.get((X) + "," + (Y+1))
 							&& !shrinePoints.get((X) + "," + (Y-1))
+							&& wallcount != 8
 							&& !KinkyDungeonEnemyAt(X, Y)
 							&& !(Object.keys(KDGetEffectTiles(X, Y)).length > 0)
 							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X-1, Y-1))
@@ -2501,6 +2502,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 							&& !chestPoints.get((X) + "," + (Y+1))
 							&& !chestPoints.get((X) + "," + (Y-1))
 							&& !chestPoints.get((X) + "," + (Y))
+							&& wallcount != 8
 							&& !KinkyDungeonEnemyAt(X, Y)
 							&& !(Object.keys(KDGetEffectTiles(X, Y)).length > 0)
 							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X-1, Y-1))

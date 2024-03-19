@@ -60,6 +60,7 @@ AddModel({
 		},
 	])
 });
+
 AddModel({
 	Name: "ElfCollar",
 	Folder: "Elf",
@@ -73,7 +74,28 @@ AddModel({
 		},
 	])
 });
-AddModel(GetModelRestraintVersion("ElfCollar", true));
+
+AddModel({
+	Name: "ElfCollarRestraint",
+	Folder: "Elf",
+	Parent: "Elf",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Collar", Layer: "Collar", Pri: -10,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "CollarHardware", Layer: "CollarAcc", Pri: -5,
+			Invariant: true,
+			InheritColor: "Hardware",
+			TieToLayer: "Collar",
+			NoOverride: true,
+			HidePoses: {HideModuleMiddle: true},
+		},
+	])
+});
 
 
 AddModel({

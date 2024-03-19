@@ -32,6 +32,8 @@ Monk class?
 
 5.2.16
 - Added 'Zero Resistance' to the unique spell tree
+- Tightness is less punishing
+- Different restraints have different tightness descriptions
 
 5.2.15
 - Added names and outfits for dragon girls

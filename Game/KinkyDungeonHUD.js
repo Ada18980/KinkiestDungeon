@@ -2863,7 +2863,7 @@ function KDDrawStruggleGroups() {
 				if (item.tightness > 0 && (KDRestraint(item).escapeChance?.Struggle < 1 || KDRestraint(item).escapeChance?.Remove < 1)) {
 					let O = lastO;
 					DrawTextKD(TextGet("KDItemsTightness").replace("TTT",
-						TextGet("KDTightness" + KDTightnessRank(item.tightness))
+						TextGet("KDTightness" + (KDRestraint(item)?.tightType || "") + KDTightnessRank(item.tightness))
 					), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150); O++;
 				}
 				FillRectKD(kdcanvas, kdpixisprites, "selectedBG", {

@@ -485,6 +485,9 @@ interface restraint extends KDRestraintProps {
 
 	Color: string[] | string,
 
+	/** Descriptor for tightness, e.g. Secure, Thick */
+	tightType?: string,
+
 	escapeChance: any,
 
 	enemyTags: Record<string, number>,
