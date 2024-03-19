@@ -3921,7 +3921,7 @@ let KDEventMapSpell = {
 	},
 	"tick": {
 		"ZeroResistance": (e, spell, data) => {
-			KinkyDungeonSetFlag("ZeroResistance", 1);
+			KinkyDungeonSetFlag("ZeroResistance", 2);
 		},
 		"ArcaneBarrier": (e, spell, data) => {
 			if (data.delta > 0) {

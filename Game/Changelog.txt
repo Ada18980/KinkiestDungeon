@@ -28,8 +28,10 @@ Monk class?
  - TODO add chains
  - TODO display stand turret
  - TODO added personalized dragon caves
+ - TODO dragon arena floor 20
 
 5.2.16
+- Added 'Zero Resistance' to the unique spell tree
 
 5.2.15
 - Added names and outfits for dragon girls

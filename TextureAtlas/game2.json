@@ -3240,6 +3240,14 @@
 	"spriteSourceSize": {"x":3,"y":1,"w":65,"h":50},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Spells/ZeroResistance.png":
+{
+	"frame": {"x":1134,"y":936,"w":23,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":16,"w":23,"h":40},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/UI/CheckSmall.png":
 {
 	"frame": {"x":25,"y":2031,"w":19,"h":16},
@@ -3352,6 +3360,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:3f20b48a69b5b4b4170b79b66a77f57d:0ee65e021f6d07059b2e055ddea17157:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:daef4f74dd61656ec2508021914a1901:d60de1d40fa7dd6045d605d61a282268:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

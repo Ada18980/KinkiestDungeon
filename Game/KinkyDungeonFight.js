@@ -419,7 +419,7 @@ function KDPlayerEvasionPenalty() {
 
 	evasionPenalty += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "EvasionPenalty");
 
-	if (KinkyDungeonFlags.get("ZeroResistance")) return 1;
+	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
 
 	return evasionPenalty;
 }
@@ -429,7 +429,7 @@ function KDPlayerBlockPenalty() {
 
 	blockPenalty += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BlockPenalty");
 
-	if (KinkyDungeonFlags.get("ZeroResistance")) return 1;
+	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
 
 	return Math.min(1, blockPenalty);
 }
@@ -439,7 +439,7 @@ function KDRestraintBlockPenalty() {
 
 	RestraintBlockPenalty += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlockPenalty");
 
-	if (KinkyDungeonFlags.get("ZeroResistance")) return 1;
+	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
 
 	return RestraintBlockPenalty;
 }

@@ -219,7 +219,7 @@ function KinkyDungeonResetMagic() {
 
 let KDRefreshSpellCache = true;
 function KDPushSpell(spell) {
-	KinkyDungeonSpells.push(spell);
+	KinkyDungeonSpells.push(JSON.parse(JSON.stringify(spell)));
 	KDRefreshSpellCache = true;
 }
 

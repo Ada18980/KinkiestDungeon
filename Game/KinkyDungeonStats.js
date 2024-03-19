@@ -370,7 +370,7 @@ function KDDisableAutoWait() {
 function KinkyDungeonInterruptSleep() {
 	KDGameData.SleepTurns = 0;
 	KDGameData.PlaySelfTurns = 0;
-	if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer && !KinkyDungeonGetRestraintItem("ItemDevices"))
+	if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer && !KinkyDungeonGetRestraintItem("ItemDevices") && !KinkyDungeonFlags.get("ZeroResistance"))
 		KinkyDungeonAutoWait = false;
 	if (KinkyDungeonInDanger()) KinkyDungeonAutoWaitStruggle = false;
 }

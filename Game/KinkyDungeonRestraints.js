@@ -86,6 +86,10 @@ let KDCustomAffinity = {
 	},
 };
 
+function KDGetTightnessEffect() {
+	return 0.95;
+}
+
 /**
  * Returns the multiplier of a restraint based on the player's current restraint counts
  * @param {entity} player
@@ -2351,7 +2355,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	// Struggling is affected by tightness
 	if (data.escapeChance > 0) {// && StruggleType == "Struggle") {
 		for (let T = 0; T < restraint.tightness; T++) {
-			data.escapeChance *= 0.8; // Tougher for each tightness, however struggling will reduce the tightness
+			data.escapeChance *= KDGetTightnessEffect(); // Tougher for each tightness, however struggling will reduce the tightness
 		}
 	}
 

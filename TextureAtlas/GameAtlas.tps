@@ -2372,6 +2372,7 @@
             <key type="filename">../Game/Spells/WaterBall.png</key>
             <key type="filename">../Game/Spells/WaterMote.png</key>
             <key type="filename">../Game/Spells/WindBlast.png</key>
+            <key type="filename">../Game/Spells/ZeroResistance.png</key>
             <key type="filename">../Game/Spells/ZoneOfExcitement.png</key>
             <key type="filename">../Game/Spells/ZoneOfPurity.png</key>
             <key type="filename">../Game/Sprint.png</key>

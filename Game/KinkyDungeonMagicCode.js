@@ -1101,7 +1101,10 @@ let KinkyDungeonSpellSpecials = {
 
 	"CommandVibrate": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, spell.aoetype || "")
-			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull") || KinkyDungeonPlayerTags.get("ItemNipples"))) {
+			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull")
+			|| KinkyDungeonPlayerTags.get("ItemButtFull")
+			|| KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")
+			|| KinkyDungeonPlayerTags.get("ItemNipplesFull"))) {
 
 			let vibes = [];
 			if (KinkyDungeonPlayerTags.get("ItemVulvaFull")) vibes.push("ItemVulva");
@@ -1130,13 +1133,16 @@ let KinkyDungeonSpellSpecials = {
 	},
 	"CommandVibrateLV2": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, spell.aoetype || "")
-			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull") || KinkyDungeonPlayerTags.get("ItemNipplesP"))) {
+			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull")
+			|| KinkyDungeonPlayerTags.get("ItemButtFull")
+			|| KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")
+			|| KinkyDungeonPlayerTags.get("ItemNipplesFull"))) {
 
 			let vibes = [];
 			if (KinkyDungeonPlayerTags.get("ItemVulvaFull")) vibes.push("ItemVulva");
 			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
 			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
-			if (KinkyDungeonPlayerTags.get("ItemNipplesPFull")) vibes.push("ItemNipplesP");
+			if (KinkyDungeonPlayerTags.get("ItemNipplesFull")) vibes.push("ItemNipplesP");
 			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 2.0, 15, undefined, undefined, undefined, undefined, false);
 
 			cast = true;
@@ -1155,13 +1161,16 @@ let KinkyDungeonSpellSpecials = {
 	},
 	"CommandVibrateLV3": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, spell.aoetype || "")
-			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull") || KinkyDungeonPlayerTags.get("ItemNipplesP"))) {
+			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull")
+			|| KinkyDungeonPlayerTags.get("ItemButtFull")
+			|| KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")
+			|| KinkyDungeonPlayerTags.get("ItemNipplesFull"))) {
 
 			let vibes = [];
 			if (KinkyDungeonPlayerTags.get("ItemVulvaFull")) vibes.push("ItemVulva");
 			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
 			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
-			if (KinkyDungeonPlayerTags.get("ItemNipplesPFull")) vibes.push("ItemNipplesP");
+			if (KinkyDungeonPlayerTags.get("ItemNipplesFull")) vibes.push("ItemNipplesP");
 			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 3.0, 10, undefined, undefined, undefined, undefined, false);
 
 			cast = true;
