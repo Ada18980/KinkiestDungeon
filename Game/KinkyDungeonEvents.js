@@ -3896,6 +3896,11 @@ let KDEventMapSpell = {
 		},
 	},
 	"calcEvasion": {
+		"AccuracyBuff": (e, outfit, data) => {
+			if (data.enemy && data.enemy.Enemy) {
+				data.hitmult *= e.power;
+			}
+		},
 		"HandsFree": (e, spell, data) => {
 			if (!data.IsSpell && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && data.flags.KDEvasionHands) {
 				data.flags.KDEvasionHands = false;
@@ -3915,7 +3920,9 @@ let KDEventMapSpell = {
 		},
 	},
 	"tick": {
-
+		"ZeroResistance": (e, spell, data) => {
+			KinkyDungeonSetFlag("ZeroResistance", 1);
+		},
 		"ArcaneBarrier": (e, spell, data) => {
 			if (data.delta > 0) {
 				let player = KinkyDungeonPlayerEntity;

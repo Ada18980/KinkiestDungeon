@@ -17,6 +17,11 @@ let KDCommandWord = {name: "CommandWord", tags: ["command", "binding", "utility"
 	onhit:"", time:25, power: 2, range: 2.8, size: 1, damage: ""};
 let KDBondageSpell = {name: "Bondage", tags: ["binding", "utility", "offense"], quick: true, school: "Any", manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"special", special: "Bondage", noMiscast: true,
 	onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""};
+let KDZeroResistanceSpell = {name: "ZeroResistance", tags: ["utility", "defense"], quick: true, school: "Any", manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"passive", noMiscast: true,
+	events: [
+		{type: "ZeroResistance", trigger: "tick", },
+	],
+	onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""};
 
 /**
  * These are starting spells
@@ -103,7 +108,7 @@ let KinkyDungeonLearnableSpells = [
 	// Class specific
 	[
 		[
-			"Bondage",
+			"Bondage", "ZeroResistance",
 			"BattleRhythm", "ManaRegen", "Peasant", "RogueTargets", "DistractionCast",
 			"Offhand", "RogueOffhand", "WizardOffhand", "UnconventionalWarfare", "GuerillaFighting",
 
@@ -199,6 +204,7 @@ function KDDefineSpellPage(page, list) {
 let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. When you plan to use a mystic seal, you get 3 spells to choose from.
 	"Any": [
 		KDBondageSpell,
+		KDZeroResistanceSpell,
 
 		{name: "AllyCommand", tags: ["utility"], school: "Any", spellPointCost: 1, learnPage: ["Command"],
 			hideLearned: true,

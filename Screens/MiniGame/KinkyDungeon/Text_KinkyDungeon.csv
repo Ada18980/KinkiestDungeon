@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.15"
+KDVersionStr,"5.2.16"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -20649,3 +20649,6 @@ KDTightnessExtreme,well-secured
 KDTightnessExtreme2,expertly secured
 
 KDNeedQuestFirst,You must first accept the quest before offering at the shrine.
+
+KinkyDungeonSpellZeroResistance,"Zero Resistance"
+KinkyDungeonSpellDescriptionZeroResistance,"Toggle this to set bondage resist, evasion, and block to 0. While enabled, using the 'wait until interrupted' button will not be interrupted when hit or bound."

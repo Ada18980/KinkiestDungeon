@@ -29,6 +29,8 @@ Monk class?
  - TODO display stand turret
  - TODO added personalized dragon caves
 
+5.2.16
+
 5.2.15
 - Added names and outfits for dragon girls
 - Items have a tightness value and can get less tight over time
