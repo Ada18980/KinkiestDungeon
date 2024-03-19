@@ -391,7 +391,7 @@ Leather restraints are harder to escape from.
 Slayer
 スレイヤー
 You can cast Elemental spells without having the components, at twice the cost. Start w/ Firebolt.
-詠唱に必要な部位が使用できなくても、2倍のマナを支払うことでエレメンタル魔法を唱えられる。ゲーム開始時「ファイアボルト」を習得
+詠唱に必要な部位が使用できなくても、2倍のマナを支払うことで精霊魔法を唱えられる。ゲーム開始時「ファイアボルト」を習得
 Conjurer
 召喚士
 You can cast Conjuration spells without having the components, at twice the cost. Start w/ Conjure Chain.
@@ -1070,7 +1070,7 @@ Latex Toy
 Start bound in lovely latex restraints.
 ラブリーなラテックスで拘束された状態でゲームを開始する
 Elemental Slave
-エレメンタルの奴隷
+精霊の奴隷
 Start in a full set of magically locked obsidian cuffs.
 魔法の鍵が施された黒曜石の枷を装備してゲームを開始する
 
@@ -1092,6 +1092,17 @@ Fear of the Dark
 Your vision in dark areas is reduced.
 暗闇にいる時、視界範囲が狭くなる
 
+
+Mutually Assured Darkness
+晦冥
+Darkness is twice as effective in hiding from enemies, but your night vision is also reduced.
+暗闇にいる時の隠密効果が2倍になるが、視力も低下する
+Stalker
+ストーカー
+Darkness is twice as effective in hiding from enemies.
+暗闇にいる時の隠密効果が2倍になる
+
+
 Copy (clipboard)
 クリップボードにコピー
 Paste (clipboard)
@@ -1103,8 +1114,8 @@ The pressure fans the flames on you, dealing bonus DAMAGEDEALT fire damage!
 火にあぶられ、DAMAGEDEALT の火ダメージを受けた！
 The RestraintName comes off more easily in the presence of water!
 RestraintName は、水を使用すると簡単に解除できる。
-You slip on the ice!
-氷の床を滑る！
+You slip on the floor!
+滑った！
 The air around you is ablaze! (-DamageDealt SP)
 周りの空気が燃え上がった！ (-DamageDealt SP)
 The Goddess of Illusions shrouds you in shadows!
@@ -1356,7 +1367,7 @@ Bondage Buster: Lazor is charging...
 Katana: Patience is key...
 刀：虎視眈々
 Stormbreaker: You have the Power.
-ストームブリンガー: 大いなる力
+ストームブレイカー: 大いなる力
 Game Setup:
 ゲームのセットアップ:
 Beginner: Get a save code every 3 levels, autosave after each floor
@@ -1368,7 +1379,7 @@ Exciting: Orbs give random spells
 Kinky: No save codes, orbs give random spells, start with very little
 Kinky: セーブ コードはありません。オーブはランダムな呪文を与えます。最初はごくわずかです
 Log
-日記
+ジャーナル
 Change Outfit
 着替える
 Reset Outfit
@@ -1428,7 +1439,7 @@ Better luck next time!
 You have reached the end of the playable portion.
 最下部に到着しました。
 Come back later for new dungeons!
-新しく追加されたらまた来てくださいね！
+また挑戦して下さいね！
 Got the keys! Find the stairs to go to the next floor.
 次の階層へ行くための鍵を手に入れた！
 You haven't found the keys for this floor yet.
@@ -1754,6 +1765,8 @@ Mag. Knife:
 魔法のナイフ：
 You climb down the stairs. The passage closes behind you.
 階段を下ると、後ろから扉が閉まる音が聞こえた。
+You climb back up the stairs.
+階段を上った。
 You can't climb down until you get out of this leash...
 リードを外すまで階段を下ることはできない……
 You climb down and find yourself in a strange new place.
@@ -1776,6 +1789,8 @@ Rundown Laboratory
 ランダウン研究所
 Forgotten Garden
 忘れられた庭
+Coastal Grotto
+沿岸の洞窟
 Kingdom of Ice
 氷の王国
 The Mansion
@@ -1808,8 +1823,10 @@ Ancient Vault
 古代の宝物庫
 Slave Market
 奴隷市場
-Mysterious Elevator
-奇妙なエレベーター
+Elevator Hall
+エレベーターホール
+Caldera Beach
+カルデラ湖
 Temple of Air
 風の神殿
 Temple of Fire
@@ -2019,9 +2036,9 @@ An elegant dress meant to denote a maid's status.
 Massively increases accuracy against slime mold.
 粘菌に対する命中率が大幅にアップする。
 Dragonheart Uniform
-ドラゴンハーツの衣装
+ドラゴンハートの衣装
 The uniform of choice for dragonheart of all ranks.
-全てのドラゴンハーツが袖を通す衣装。
+全てのドラゴンハートが袖を通す衣装。
 It's made of fire-resistant leather.
 炎に耐性のある皮でできている。
 Scientific Uniform
@@ -2119,7 +2136,7 @@ A mysterious device used by the old civilization, powering their ancient devices
 You are already full of ancient power.
 既にパワーが満タンになっている。
 Spent Power Crystal
-消耗したパワークリスタル。
+消耗したパワークリスタル
 You touch the spent crystal and it siphons 100 gold from your bag!
 使用済みクリスタルに触れると、バッグから100ゴールドが吸い上げられた。
 You are not sure how to charge this back up.
@@ -2227,7 +2244,7 @@ Restores 25% willpower instantly. Can be used while gagged.
 Frigid Potion
 冷静のポーション
 You chug the concoction and your senses numb, helping you concentrate.
-飲むと頭がスッキリし、集中力が高まる。
+飲むと頭がスッキリして、集中力が高まった。
 Like bottled snow. Helps to get your mind on track.
 瓶詰めの雪のよう。集中力を高めるのに役立つ。
 Reduces distraction to 0 and grants additional decay for 50 turns. Can be used while gagged.
@@ -2509,21 +2526,21 @@ Deals slash damage. Deals up to 50 bonus damage by waiting 10 turns between atta
 You pick up a katana.
 刀を手に入れた。
 Shadow's Edge
-シャドウエッジ
+影丸
 For those who truly devote themselves to the cause.
-真の大義に専念する者のために。
+真の大義に殉する者の刃。
 Deals shadow damage. Damage is doubled against enemies that are in shadow.
 影属性。影にいる敵に攻撃する場合、2倍のダメージを与える。
 You pick up Shadow's Edge.
-シャドウエッジを手に入れた。
+影丸を手に入れた。
 Stormbreaker
-ストームブリンガー
+ストームブレイカー
 I have the power! Taking electric damage charges you (1 turn/10dmg).
 これが力だ！電気属性のダメージを受けた場合、1ターンに10ダメージ分チャージをする。
 Deals crush damage. Deals bonus electric damage in an area when charged, up to +40.
 打撃属性。チャージしていた場合、電気属性範囲ダメージを与える。最大40ダメージ。
 You pick up Stormbreaker.
-ストームブリンガーを手に入れた。
+ストームブレイカーを手に入れた。
 Rapier
 レイピア
 For the ostentatious and flashy duelist.
@@ -2700,7 +2717,7 @@ Melee mode deals tickle damage.
 Blaster Shot
 ブラスターショット
 You set your blaster to stun and fire!
-ブラスターを非殺傷モードにした！
+ブラスターで狙いを定めた！
 Messenger of Love
 キューピットの弓矢
 Love shines in many ways...
@@ -2773,16 +2790,16 @@ Unarmed
 素手
 Accuracy:
 命中率：
-Crit Multiplier:
+Crit Multiplier: 
 会心ダメージ率：
-Bind Crit Multiplier:
+Bind Crit Multiplier: 
 拘束会心ダメージ率：
 Find the keys..
 鍵を見つける……
 Find the exit!
 出口を探せ！
 You are receiving help from a friendly ally.
-味方に助けてもらっている。
+味方の助力を得られる
 You found a hook you can use to pull on straps and loops.
 ストラップや結び目を引っ張るためのフックを見つけた。
 You have access to something sharp and can attempt to cut restraints.
@@ -2836,9 +2853,9 @@ Edged!
 Satisfied. Miscast chance is reduced.
 満足した……。詠唱失敗率が減少する。
 
-Crit:
+Crit: 
 クリティカル：
-Bind:
+Bind: 
 拘束：
 Damage:
 ダメージ：
@@ -2945,7 +2962,7 @@ EnemyName は隙を見つけて RestraintName を追加した！
 The EnemyName attacks you, but you block the attack!
 EnemyName の攻撃はブロックされた！
 Blocked!
-ブロックされた！
+ブロック！
 Mystic Lock
 神秘的な錠
 The mystic lock fades, allowing you to pass once more.
@@ -3155,17 +3172,17 @@ The ice elemental creates icy locks on your restraints!
 The ice elemental gives a chilling touch to your body! (DamageTaken)
 氷の精霊の指先に体温を奪われる！ (DamageTaken)
 Earth Elemental
-アースエレメンタル
+大地の精霊
 The earth elemental sinks into the ground.
-アースエレメンタルは地面に沈んでいった。
+大地の精霊は地面に沈んでいった。
 The earth elemental pins you and slaps on some restraints! (+RestraintAdded)
-アースエレメンタルに地面に固定され、拘束具を付けられる！ (+RestraintAdded)
+大地の精霊に地面に固定され、拘束具を付けられる！ (+RestraintAdded)
 The earth elemental locks a restraint!
-アースエレメンタルは拘束具をロックした！
+大地の精霊は拘束具をロックした！
 The earth elemental dashes through the earth!
-アースエレメンタルは大地を駆ける！
+大地の精霊は大地を駆ける！
 The earth elemental gives you a heavy massage! (DamageTaken)
-アースエレメンタルは強烈なマッサージをしてきた！ (DamageTaken)
+大地の精霊は強烈なマッサージをしてきた！ (DamageTaken)
 Air Elemental
 風の精霊
 There is no more elemental. Must have been just the wind.
@@ -3194,6 +3211,31 @@ The zombie swiftly wraps you in charms! (+RestraintAdded)
 ゾンビにテープで巻かれてしまった! (+RestraintAdded)
 The zombie gropes your body! (DamageTaken)
 ゾンビが体を愛撫してきた! (DamageTaken)
+
+Support Drone
+サポートドローン
+The support drone retreats to recharge its weapon!
+サポートドローンは弾薬の補充に撤退した！
+The support drone zaps you! (DamageTaken)
+サポートドローンに撃たれた！ (DamageTaken)
+The Dollmaker commands a drone to attack you!
+ドールメイカーはドローンに攻撃命令を下した！
+The Dollmaker commands her drones to attack you!
+ドールメイカーはドローンに攻撃命令を下した！
+
+Capture Drone
+捕獲用ドローン
+The capture drone's latex core overloads!
+捕獲用ドローンのラテックスコアがオーバーロードした！
+The capture drone grapples you! (DamageTaken)
+捕獲用ドローンに掴まれた！ (DamageTaken)
+The capture drone wraps you in advanced cables! (+RestraintAdded)
+捕獲用ドローンの射出するケーブルに捕まった！ (+RestraintAdded)
+The Dollmaker commands a drone to capture you!
+ドールメイカーはドローンに捕獲命令を下した！
+The Dollmaker commands her drones to capture you!
+ドールメイカーはドローンに捕獲命令を下した！
+
 Artistic Zombie
 アーティスティックゾンビ
 The zombie smiles as it collapses to the ground.
@@ -3351,7 +3393,7 @@ The Dragonheart locks your restraint! (DamageTaken)
 Crystal Dragonheart
 ドラゴンハート・クリスタル
 The Crystal Dragonheart screams and falls to the ground dramatically.
-ドラゴンハート・クリスタル大げさに悲鳴を上げて地面に突っ伏した。
+ドラゴンハート・クリスタルは大げさに悲鳴を上げて地面に突っ伏した。
 The Crystal Dragonheart apprehends you! (+RestraintAdded)
 ドラゴンハート・クリスタルに捕まった！(+RestraintAdded)
 The Crystal Dragonheart squeezes you in a big hug! (DamageTaken)
@@ -4059,15 +4101,15 @@ Factory Doll
 The doll is subdued.
 人形は制圧された。
 Encased Adventurer
-閉じ込められた冒険者
+スライムに包まれた冒険者
 The encased adventurer loses hope.
-閉じ込められた冒険者は絶望した。
+スライムに包まれた冒険者は絶望した。
 The encased adventurer moans as she throws herself against you for help! (DamageTaken)
-閉じ込められた冒険者がうめき声をあげて飛び込んできた！(DamageTaken)
+スライムに包まれた冒険者がうめき声をあげて飛び込んできた！(DamageTaken)
 The encased adventurer sticks to you as she mumbles incoherently! (DamageTaken)
-閉じ込められた冒険者が支離滅裂につぶやきながら飛びついてきた！ (DamageTaken)
-The encased adventurer  (+RestraintAdded)
-閉じ込められた冒険者(+RestraintAdded)
+スライムに包まれた冒険者が支離滅裂につぶやきながら飛びついてきた！ (DamageTaken)
+The encased adventurer pleads for help as her slime spreads to you! (+RestraintAdded)
+スライムに包まれた冒険者が懇願すると同時に、スライムが飛びかかってきた！ (+RestraintAdded)
 Slime
 スライム
 The slime melts into a puddle.
@@ -4540,24 +4582,27 @@ Giant Mushroom
 巨大キノコ
 The giant mushroom explodes into a cloud of spores!!!
 巨大キノコは爆発して胞子を撒き散らした！
-Animated Mushroom
-歩くキノコ
-The animated mushroom explodes into a cloud of spores!!!
-歩くキノコは爆発して胞子を撒き散らした！
-The animated mushroom spits spores into your face and ties you while you are distracted! (+RestraintAdded)
-歩くキノコは胞子を顔に吐きかけ、怯んだ隙に縛り上げてきた！ (+RestraintAdded)
-The animated mushroom spits spores into your face and tries to tie you!
-歩くキノコが胞子をあなたの顔に吐き出し、縛ろうとしてきた！
-The animated mushroom emits soporific spores! (DamageTaken)
-歩くキノコが催涙性の胞子を撒き散らしてきた！ (DamageTaken)
-Happy Mushroom
-幸せのキノコ
-The happy mushroom explodes into a cloud of spores!!!
-幸せのキノコは爆発して胞子を撒き散らした！
-The happy mushroom tickles you silly!
-幸せのキノコがくすぐってきた！
-The happy mushroom tickles you silly! (DamageTaken)
-幸せのキノコがくすぐってきた！(DamageTaken)
+
+Army Mushroom
+武装キノコ
+The army mushroom explodes into a cloud of spores!!!
+武装キノコは爆発して胞子を撒き散らした！
+The army mushroom spits spores into your face and ties you while you are distracted! (+RestraintAdded)
+武装キノコは胞子を顔に吐きかけ、怯んだ隙に縛り上げてきた！ (+RestraintAdded)
+The army mushroom spits spores into your face and tries to tie you!
+武装キノコが胞子をあなたの顔に吐き出し、縛ろうとしてきた！
+The army mushroom emits soporific spores! (DamageTaken)
+武装キノコが催涙性の胞子を撒き散らしてきた！ (DamageTaken)
+
+Delicious Mushroom
+おいしそうなキノコ
+The delicious mushroom explodes into a cloud of spores!!!
+おいしそうなキノコは爆発して胞子を撒き散らした！
+The delicious mushroom tickles you silly!
+おいしそうなキノコがくすぐってきた！
+The delicious mushroom tickles you silly! (DamageTaken)
+おいしそうなキノコがくすぐってきた！(DamageTaken)
+
 Infected Mushroom
 感染したキノコ
 The infected mushroom explodes into a cloud of spores!!!
@@ -4745,9 +4790,9 @@ Cosmic Force
 コズミックフォース
 
 You are sucked in by a powerful gravitational force!!! (DamageTaken)
-強い力でに引き寄せられた！ (DamageTaken)
+強い力で引き寄せられた！
 You are sucked in by a powerful gravitational force!!!
-強い力でに引き寄せられた！
+強い力で引き寄せられた！
 
 Demon
 悪魔
@@ -4880,29 +4925,29 @@ A light restores the will of its allies!
 You do not have enough resources to cast the spell!
 マナが足りない！
 You AttackName TargetEnemy for DamageDealt DamageType damage!
-TargetEnemy に攻撃し、DamageDealt DamageType のダメージを与えた！
+TargetEnemy に攻撃し、DamageDealt の DamageType 属性ダメージを与えた！
 You AttackName TargetEnemy for a decreased DamageDealt DamageType damage!
-TargetEnemy に攻撃したが、耐性があるようだ。 DamageDealt DamageType のダメージを与えた。
+TargetEnemy に攻撃したが、耐性があるようだ。 DamageDealt の DamageType 属性ダメージを与えた。
 You AttackName TargetEnemy for an increased DamageDealt DamageType damage!
-TargetEnemy に攻撃した。弱点を付き、 DamageDealt DamageType のダメージを与えた！
+TargetEnemy に攻撃した。弱点を付き、 DamageDealt の DamageType 属性ダメージを与えた！
 You AttackName TargetEnemy for a devastating DamageDealt DamageType damage!
-TargetEnemy に攻撃した。弱点を付き、 DamageDealt DamageType の大ダメージを与えた！！
+TargetEnemy に攻撃した。弱点を付き、 DamageDealt の DamageType 属性ダメージを与えた！！
 You AttackName TargetEnemy, but your DamageType weapon has no effect!
 TargetEnemy に攻撃したが、 DamageType は効果がないようだ。
 You AttackName TargetEnemy for DamageDealt DamageType damage!, reduced by an anti-magic ward!
-TargetEnemy に攻撃したが、魔力障壁によって阻まれた。 DamageDealt DamageType ダメージを与えた。
+TargetEnemy に攻撃したが、魔力障壁によって阻まれた。 DamageDealt の DamageType 属性ダメージを与えた。
 AttackName hits TargetEnemy for DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中し、DamageDealt DamageType のダメージを与えた！
+AttackName は TargetEnemy に命中し、DamageDealt の DamageType 属性ダメージを与えた！
 AttackName hits TargetEnemy for a reduced DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中したが、耐性があるようだ。 DamageDealt DamageType のダメージを与えた。
+AttackName は TargetEnemy に命中したが、耐性があるようだ。 DamageDealt の DamageType 属性ダメージを与えた。
 AttackName hits TargetEnemy but DamageType damage doesn't have any effect!
 AttackName は TargetEnemy に命中したが、DamageType は効果がないようだ。
 AttackName hits TargetEnemy for an increased DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中した。弱点を付き、DamageDealt DamageType のダメージを与えた！
+AttackName は TargetEnemy に命中した。弱点を付き、DamageDealt の DamageType 属性ダメージを与えた！
 AttackName hits TargetEnemy for DamageDealt DamageType damage, reduced by an anti-magic ward!
-AttackName は TargetEnemy に命中したが、魔力障壁によって阻まれた。 DamageDealt DamageType のダメージを与えた。
+AttackName は TargetEnemy に命中したが、魔力障壁によって阻まれた。 DamageDealt の DamageType 属性ダメージを与えた。
 AttackName hits TargetEnemy for a devastating DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中した。弱点を付き、 DamageDealt DamageType の大ダメージを与えた！
+AttackName は TargetEnemy に命中した。弱点を付き、 DamageDealt の DamageType 属性ダメージを与えた！
 attack
 攻撃
 damage
@@ -5157,6 +5202,8 @@ You twist your body trying to use the furniture, but it doesn't seem to work. Th
 家具を使おうと体をひねるが、うまくいかない。TargetRestraint はきつく締まっている。
 You wiggle and squirm, trying to use the furniture to no avail. The TargetRestraint remains tight.
 家具を使って拘束を解こうと体をよじらせるも、 TargetRestraint はきついままだ。
+You need something sharper to get at the TargetRestraint.
+TargetRestraint から抜け出すには、鋭利なものが必要だ。
 You need something sharp to loosen the fasteners on the TargetRestraint.
 TargetRestraint の留め具を緩めるには鋭利なものが必要だ。
 This is not a job for your fingers right now. You need something sharp to remove the TargetRestraint.
@@ -5411,6 +5458,45 @@ The TargetRestraint tug on your nipples as you squirm!
 TargetRestraint を外そうとするも、乳首をつままれる感覚に身を捩る。
 The chest is too smooth to help. Maybe if you opened it?
 胸にきれいに張り付いて引き剥がせない。別の方法を試すべきだ。
+
+You paw at the TargetRestraint from inside, hoping to find an opening...
+TargetRestraint を中からつついて抜け出そうとするが……
+You flail around inside the TargetRestraint...
+TargetRestraint の中で暴れ回った……
+The TargetRestraint is completely seamless!
+TargetRestraint は完全に閉じているようだ！
+The TargetRestraint is completely seamless! This is hopeless.
+TargetRestraint は完全に閉じており、どうすることもできない！
+You are too weak to poke your hand through the TargetRestraint...
+TargetRestraint から抜け出すには力が足りない……
+
+
+You stretch yourself out inside the TargetRestraint!
+TargetRestraint の中で体を伸ばし、抜け出そうとした。
+You bounce around inside the TargetRestraint!
+TargetRestraint の中で飛び跳ね、抜け出そうとした。
+The TargetRestraint stretches to accomodate your movements...
+TargetRestraint は体の動きに合わせて伸び縮みしている……
+The TargetRestraint tips slightly as you squirm around...
+TargetRestraint から抜け出そうとするも、わずかに傾ける程度にしか動かない……
+You are too weak to make even a small dent in the TargetRestraint...
+TargetRestraint から抜け出そうとするも、力が足りずにどうすることもできない……
+The TargetRestraint is unyielding despite your attempts...
+TargetRestraint は少しも傷ついていない……
+
+You try to puncture the TargetRestraint...
+TargetRestraint に穴を開けようとした……
+You poke around at the TargetRestraint...
+TargetRestraint をつついた……
+The TargetRestraint is too durable to pop...
+TargetRestraint は、穴を開けるには頑丈すぎる……
+The TargetRestraint is too strong despite your best efforts...
+できる限りのことはしたが、 TargetRestraint は恐ろしく頑丈だ……
+You can't quite get enough force to pop the TargetRestraint...
+TargetRestraint を穿つだけの力が足りない……
+Your attempts to pop the TargetRestraint are futile due to your restraints...
+拘束された体では TargetRestraint から抜け出すだけの力が出せない……
+
 Lockable
 ロック可能
 Non-Lockable
@@ -5454,7 +5540,7 @@ Cursed
 呪い
 Unlocked
 解錠済み
-Lock Type:
+Lock Type: 
 鍵の種類：
 Simple
 簡単
@@ -5556,7 +5642,7 @@ Pick
 (No way to open)
 （開けられない）
 (She cannot help you)
-（彼女は助けにならない）
+（女神は助けてくれないようだ）
 Offer XXXg
 XXXg を払う
 Offer
@@ -5632,9 +5718,9 @@ Goddess Blessing:
 Goddess Curse:
 女神の呪い：
 
-Mana Bonus:
+Mana Bonus: 
 マナボーナス：
-Lack of Mana Penalty:
+Lack of Mana Penalty: 
 マナペナルティ：
 Your excess mana helps you suppress the enchantment!
 自身のマナが拘束具の魔法を弱めた！
@@ -5687,13 +5773,17 @@ Cult of Bast
 Alchemists
 錬金術師
 Elementals
-エレメンタル
+精霊
 Dragonheart Order
 ドラゴンハートオーダー
 MaidForce
 メイドフォース
 Fungal Kingdom
 キノコ王国
+Adventurer
+冒険者
+Cursed Spirit
+呪われし魂
 Wanted
 指名手配者
 Delinquent
@@ -5714,11 +5804,11 @@ Computer Virus
 Extraplanar Entity
 異星からの者
 Dubious Witch
-変態魔女
+怪しげな魔女
 Shadow Clan
 影の一族
 Fierce Debater
-言い争っている……
+喧嘩している
 Very Angry
 怒っている
 
@@ -6116,7 +6206,7 @@ They're made of Blacksteel, a metal used by the Old Civilization.
 The enemy attaches your wrist cuffs together!
 手首に枷を取り付けられた！
 Blacksteel Wrist Chain
-黒鉄のリストチェーン
+黒鉄の手枷の鎖
 A pair of Blacksteel cuffs keeping your arms behind your back.
 手首同士をつなげる黒鉄の鎖。
 They're made of Blacksteel, a metal used by the Old Civilization.
@@ -6126,7 +6216,7 @@ Your cuffs detatch!
 The enemy attaches your elbow cuffs together!
 肘に枷を取り付けられた！
 Blacksteel Wrist Chain
-黒鉄のリストチェーン
+黒鉄の手枷の鎖
 A full set of Blacksteel cuffs keeping your arms in a strict elbow tie!
 後ろ手に肘同士をつなげる黒鉄の鎖。
 They're made of Blacksteel, a metal used by the Old Civilization.
@@ -6134,7 +6224,7 @@ They're made of Blacksteel, a metal used by the Old Civilization.
 Your wrists detatch, leaving your elbows still bound!
 手首の鎖を外しても肘はまだ繋がれたままだ！
 Blacksteel Elbow Chain
-黒鉄のエルボーチェーン
+黒鉄の肘枷の鎖
 A pair of Blacksteel cuffs keeping your elbows locked together!.
 後ろ手に肘同士をつなげる黒鉄の鎖。
 They're made of Blacksteel, a metal used by the Old Civilization.
@@ -6671,7 +6761,7 @@ They feel like they aren't even there, but the material is rigid and unyielding.
 The enemy attaches your wrist cuffs together!
 手首にミスリルの手枷を取り付けられた！
 Cuffs Wrist Chain
-ミスリルの手枷の鎖
+手枷の鎖
 A pair of cuffs keeping your arms behind your back.
 手枷をつなぐための鎖。
 They feel like they aren't even there, but the material is rigid and unyielding.
@@ -6680,7 +6770,7 @@ Your cuffs detatch!
 手枷の鎖を外した！
 The enemy attaches your elbow cuffs together!
 肘同士を鎖で繋がれた！
-Cuffs Wrist Chain
+Wrist Chain
 ミスリルの手枷の鎖
 A full set of cuffs keeping your arms in a strict elbow tie!
 手枷を後ろ手につなぐための鎖。
@@ -6760,6 +6850,8 @@ The armbinder harness comes off with the armbinder.
 このハーネスはアームバインダーを外したときに一緒に外れる。
 The cuff chains come off with the cuffs.
 枷についた鎖は枷と一緒に外れる。
+The hogtie link comes off.
+ホッグタイは解けた。
 Handcuffs
 手錠
 A pair of steel cuffs locked securely around your wrists.
@@ -7060,7 +7152,7 @@ It's not very secure.
 Rope Hogtie
 縄のホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぐ縄。這うことしかできなくなる。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 It's very secure. You tug on the rope connecting your feet and struggle.
 引っ張ったりもがいたりして緩めるしかない。
 Rope Belt
@@ -7310,7 +7402,7 @@ They're made of tough cowhide.
 The enemy attaches your wrist cuffs together!
 手枷同士を繋がれてしまった！
 Wrist Chain
-リストチェーン
+手枷の鎖
 A pair of leather cuffs keeping your arms behind your back.
 手枷をつなぐための鎖。
 They're made of tough cowhide.
@@ -7320,7 +7412,7 @@ Your cuffs detatch!
 The enemy attaches your elbow cuffs together!
 敵があなたの肘カフをくっつけている！
 Wrist Chain
-リストチェーン
+手枷の鎖
 A full set of leather cuffs keeping your arms in a strict elbow tie!
 手枷を後ろ手につなぐための鎖。
 They're made of tough cowhide.
@@ -7328,7 +7420,7 @@ They're made of tough cowhide.
 Your wrists detatch, leaving your elbows still bound!
 手首の鎖が外れても、肘は繋がったままだ！
 Elbow Chain
-エルボーチェーン
+肘枷の鎖
 A pair of leather cuffs keeping your elbows locked together!.
 肘枷同士をつなぐための鎖。
 They're made of tough cowhide.
@@ -7433,10 +7525,18 @@ A giant inflatable sphere that compresses you and leaves you helpless...
 You can't see out of it nor can you control its movement. If only you could puncture it!
 動くこともできず、外の様子もわからない。刃物で穴を開けられれば……
 
+Latex Ball Suit
+ラテックスボール
+A giant inflatable sphere that leaves you rolling around...
+ゴム製の巨大な球体。転げ回ることしかできない……
+Your movement is severely hampered, limited to feeble wiggling...
+ろくに動き回ることができなくなり、体をよじることしかできない……
+
+
 Scale Boxtie Binder
 竜鱗のボックスタイバインダー
 A secure but comfortable binder meant for long-term wear by long-term prisoners of the Dragonhearts.
-ドラゴンハーツの捕虜が長時間着用することを想定された、快適なバインダー
+ドラゴンハートの捕虜が長時間着用することを想定された、快適なバインダー
 It is made from durable dragonscale, but secured with ordinary buckles.
 丈夫で切れにくい竜鱗で作られているが、錠前は普通。
 Dragonscale Straps
@@ -7496,7 +7596,7 @@ It's made from hard-to-cut dragonscale!!!
 Dragon Collar
 ドラゴンカラー
 A collar owned by the Dragonhearts, an order of dragonslayers.
-竜殺しの騎士団ドラゴンハーツの首輪。
+竜殺しの騎士団ドラゴンハートの首輪。
 It's made from hard-to-cut dragonscale!!!
 切れにくい竜鱗でできている。
 Steel Cuffs
@@ -7555,7 +7655,7 @@ A pair of chained cuffs made of leather. They make it trickier to run away.
 革でできた足枷。逃げるのが難しくなる。
 
 A pair of cuffs on your ankles.
-足首に取り付けられた枷。
+足首に取り付く枷。
 Your ankle cuff chain is tightened and pulls your feet together!
 足首の枷の鎖が締まり、足が引き寄せられた！
 
@@ -8286,8 +8386,6 @@ Heavy chains keeping your legs firmly hobbled.
 脚をしっかり縛る重い鎖。
 It doesn't look like a knife is up to the task...
 ただのナイフで切るのは無謀。
-Ankle Chains
-足の鎖
 Heavy chains keeping your feet bound together.
 足をしっかり縛る重い鎖。
 It doesn't look like a knife is up to the task...
@@ -8311,7 +8409,7 @@ Magic chains keeping your legs firmly hobbled.
 It doesn't look like a knife is up to the task...
 ただのナイフで切るのは無謀。
 Magic Ankle Chains
-魔法の足の鎖
+魔法の足枷の鎖
 Magic chains keeping your feet bound together.
 足をしっかり縛る魔法の鎖。
 It doesn't look like a knife is up to the task...
@@ -8877,6 +8975,8 @@ Floor
 床
 Wall
 壁
+Object
+物
 Brickwork
 れんが
 Doodad
@@ -8903,9 +9003,9 @@ Orb Altar
 Empty Altar
 空の祭壇
 Chest
-宝箱
+チェスト
 Faction Chest
-他人の宝箱
+他者の宝箱
 Empty Chest
 空の宝箱
 Shiny Object
@@ -8939,7 +9039,7 @@ Codex Imaginus
 Clavicula Romantica
 ロマンチックな鎖骨
 A book of elemental magic
-エレメンタルマジックの本
+精霊の魔法の本
 A book about conjuration
 召喚についての本
 A book of manipulative spells
@@ -9215,9 +9315,9 @@ The glue slows you down! (-DamageDealt SP)
 Firebolt
 ファイアボルト
 Elemental's Firebolt
-エレメンタルのファイアボルト
+精霊のファイアボルト
 Elemental's Gust
-エレメンタルの突風
+精霊の突風
 A ball of flame that does DamageDealt damage to one target.
 火球を放ち、敵一体に DamageDealt 火ダメージを与える。
 You a hurl a firebolt!
@@ -9294,7 +9394,7 @@ Choose target location (2 tile range)
 移動先を選択(2マス先)
 Blink III
 ブリンク III
-Instantly teleport up to 3 tiles away. Must have vision of the target point.
+Instantly teleport up to 3 tiles away. Must have vision of the target point. 
 視界範囲内の、3マス先まで瞬時に移動する。
 You teleport!
 瞬間移動した！
@@ -9581,7 +9681,7 @@ Witch's Electricity
 Witch's Electric Orb
 魔女のエレクトリックオーブ
 Witch's Electric Burst
-ウィッチズエレクトリックバースト
+魔女のエレクトリックバースト
 Electrify
 エレクトリファイ
 A delayed shock that deals DamageDealt damage and stuns for Duration turns.
@@ -9591,7 +9691,7 @@ You charge up a burst of electricty!
 Choose target location
 場所を選択
 The elemental channels the force of the storm!
-エレメンタルの力が嵐を引き起こす！
+精霊の力が嵐を引き起こす！
 Fireball
 ファイアボール
 A slow moving ball of flame that explodes for DamageDealt fire damage in a wide area.
@@ -10067,8 +10167,8 @@ Fire damage ignites enemies for 5 damage per turn for 6 turns.
 火属性ダメージを与えた際、6ターンの間着火させる。6ターン継続し、ターン毎に5ポイントのダメージを与える。
 Frozen Prison
 氷牢
-Freezing an enemy applies 10% of the enemy's max hp in binding, plus 10 per turn of freeze.
-敵を凍結した際、敵の最大HPの10%を拘束値として相手に与える。さらに凍結状態1ターンにつき、10ポイントの拘束値を追加する。
+Freezing an enemy applies 10 binding per turn of freeze added, plus brings the enemy to a minimum of 20% binding.
+敵を凍結させた際、1ターンにつき10の拘束値を与え、更に敵の最低拘束値を20%にする。
 Lightning Rod
 避雷針
 After casting an Air or Storm spell that costs mana, become Conductive and gain 300% electric resist for 3 turns.
@@ -10587,8 +10687,8 @@ CMD: Unlock
 CMD: ロック解除(小)
 Select which creature to unlock
 対象を選択
-On yourself: Removes one magical lock. On a creature: Reduces the target's binding by 20 points.
-自分：魔法のロックを1つ解除する。他：拘束値を20減らす。
+On yourself: Removes one purple (magical) lock. On a creature: Reduces the target's binding by 20 points.
+自分：紫(魔法)の錠前を1つ解除する。他：拘束値を20減らす。
 You speak a command word!
 コマンドを唱え、拘束具を解除する！
 None of the locks you are wearing respond to your magic.
@@ -10602,8 +10702,8 @@ CMD: Greater Unlock
 CMD: ロック解除(大)
 Select which creature to unlock
 対象を選択
-On yourself: Removes all magical locks. On a creature: Reduces the target's binding by 100 points.
-自分：魔法のロックを全て解除する。他：拘束値を100減らす。
+On yourself: Removes all purple (magical) locks. On a creature: Reduces the target's binding by 100 points.
+自分：紫(魔法)の錠前を全て解除する。他：拘束値を100減らす。
 You speak a powerful command word!
 強力なコマンドを唱え、拘束具を解除する！
 
@@ -10648,20 +10748,20 @@ Flame Blade
 
 Tentacle Slap
 触手の一撃
-You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +20 glue damage and create slime.
-スライムから触手を形作り、追加で攻撃できるようになる。有効時：攻撃時に追加で20接着剤属性ダメージを与え、床にスライムを撒く。
+You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +20 glue damage and create slime. 100% bind efficiency.
+スライムから触手を形作り、追加で攻撃できるようになる。有効時：攻撃時に追加で20接着剤属性ダメージを与え、床にスライムを撒く。拘束ダメージ率が100%になる。
 Chain Strike
 鎖の一撃
-You have the power to summon chains when you attack. When enabled: Your attacks deal +20 chain damage and create chains.
-鎖を召喚し、追加で攻撃できるようになる。有効時：攻撃時に追加で20チェーンダメージを与え、床に鎖を撒く。
+You have the power to summon chains when you attack. When enabled: Your attacks deal +20 chain damage and create chains. 90% bind efficiency.
+鎖を召喚し、追加で攻撃できるようになる。有効時：攻撃時に追加で20チェーンダメージを与え、床に鎖を撒く。拘束ダメージ率が90%になる。
 Ropework
 ロープワーク
-You have the power to weave ropes between your attacks. When enabled: Your attacks deal +20 chain damage and create ropes.
-縄を操り、追加で攻撃できるようになる。有効時：攻撃時に追加で20チェーンダメージを与え、床に縄を撒く。
+You have the power to weave ropes between your attacks. When enabled: Your attacks deal +20 chain damage and create ropes. 300% bind efficiency.
+縄を操り、追加で攻撃できるようになる。有効時：攻撃時に追加で20チェーンダメージを与え、床に縄を撒く。拘束ダメージ率が300%になる。
 Leather Whip
 レザーウィップ
-You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +20 pain damage and create belts.
-革のベルトを召喚し、追加で攻撃できるようになる。有効時：攻撃時に追加で20痛みダメージを与え、床にベルトを撒く。
+You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +20 pain damage and create belts. 150% bind efficiency.
+革のベルトを召喚し、追加で攻撃できるようになる。有効時：攻撃時に追加で20痛みダメージを与え、床にベルトを撒く。拘束ダメージ率が150%になる。
 
 Engulf
 飲み込み
@@ -11285,8 +11385,8 @@ Hmmmmph~!!
 
 You are blinded!
 盲目になった！
-You took DamageDealt damage!
-DamageDeald ダメージを受けた！
+You took DamageTaken damage!
+DamageTaken ダメージを受けた！
 Your own rope trap springs upon you!
 自分の仕掛けた縄の罠にかかってしまった！
 You get caught in sticky slime!
@@ -11399,6 +11499,10 @@ Gas Trap
 ガストラップ
 Gas Trap
 ガストラップ
+Latex Engulfment
+巻き付くゴム
+Latex Spherification
+ゴム球体トラップ
 Sleep Dart
 スリープダーツ
 Sleep Dart
@@ -11435,7 +11539,10 @@ Something shiny seems to be stretched out over the floor!
 床から光る何かが伸びてきた！
 
 A rubber bubble starts forming around you!
-ゴムの泡に包まれそうになる！
+ゴムの泡が周囲を覆う！
+
+A rubber ball starts forming around you!
+ゴムの球体が周囲に現れた！
 
 You hear the sound of glass breaking, and a cloud of green gas rises around you!
 ガラスが割れる音が聞こえ、緑色のガスが周囲に立ち込めた！
@@ -11466,6 +11573,9 @@ A giant cube of latex engulfs you!
 巨大なゴムの塊が包み込んできた！
 A giant bubble of latex engulfs you and inflates, sealing you in!
 巨大なゴムの泡に包み込まれてしまった！
+
+A giant latex ball swallows you and inflates, sealing around your neck!
+巨大なゴムのボールに首から下を飲み込まれてしまった！
 
 A sinister power wraps itself around you and solidifies!
 不吉な力が全身を包み、固まっていく！
@@ -11507,7 +11617,7 @@ Known Abilities
 Spell Tree
 スペルツリー
 Elemental Spells
-エレメンタル呪文
+精霊呪文
 Conjuration Spells
 召喚呪文
 Illusion Spells
@@ -11541,7 +11651,7 @@ You don't have enough maximum mana to cast this spell!
 School:
 分野：
 Elements
-エレメンタル
+精霊
 Conjuration
 召喚
 Illusion
@@ -11759,7 +11869,7 @@ Ninjas aren't so tough to fight when their hands are tied behind their back. Goo
 (It's a medical record) Patient seems stable... application of the enchanted cloth seems to have stopped the bleeding. It appears that the ancient magic suppresses all forms of injury, even in humans, until it is taken off.
 とあるメディカルレコード|患者の容態は安定した……魔法の布を当てると出血が止まった。古代の魔法は、現代の人間にも効果が十分にあるようだ。
 (A record of an ancient... transaction)||The elemental offered us the following from her personal estate:|-one magical lantern that requires no fuel, and can light up the night as if it were day|-one crystal that burns red-hot when kept near metal, providing heat to warm a house|-three enchanted swords imbued with flame|-a hollow glass crystal, used for communication||In exchange, we gave her three wolfgirls we had captured on the surface.
-古代の……取引の記録|エレメンタルは個人の財産から次のものを差し出した：燃料を必要とせず、まるで昼のように夜を照らす魔法のランタン。金属に近づけると赤熱し、家を暖める熱を供給する水晶。炎を宿した魔法の剣3本。通信に使う中空のガラス水晶。引き換えに、地表で捕まえた3人のウルフガールを渡した。
+古代の……取引の記録|精霊は個人の財産から次のものを差し出した：燃料を必要とせず、まるで昼のように夜を照らす魔法のランタン。金属に近づけると赤熱し、家を暖める熱を供給する水晶。炎を宿した魔法の剣3本。通信に使う中空のガラス水晶。引き換えに、地表で捕まえた3人のウルフガールを渡した。
 I had heard that ancient humans prayed to the stars here, in an effort to find favor when the Eight had forsaken them. So I went and prayed... and let me tell you, it was a lie, an absolute lie. There are only monsters out there.
 古代人がこの地で星に祈りを捧げたと聞いたことがあると聞き、祈りを捧げるために向かった。……祈りの地など全くの嘘であった。中にはただの怪物ばかりだ。
 (It is a set of instructions for creating a magic circle to unlock a sealed portal. There are markings in many languages that give conflicting descriptions, claiming that the circle will transmute material to gold, or bring good fortune...)
@@ -11769,7 +11879,7 @@ I had heard that ancient humans prayed to the stars here, in an effort to find f
 Those damn slimes! They're so sticky and gross... fortunately, I washed myself in the fountain the last time I got caught by one. It came right off!
 あのクソスライム！ネバネバしてて気持ち悪い……幸いなことに、前回スライムに捕まったときは噴水で体を洗ったんだ。すぐに取れたよ！
 The dragonhearts were a group of dragonslayers, named for their ritual that imbues them with the fiery power and resistance of dragons they've slain. Now they work as mercenaries, and some of them serve a certain Leather goddess.
-ドラゴンハーツはドラゴンを殺す集団で、殺したドラゴンの燃え盛る力と竜鱗の如き防御を得る儀式からその名がついた。現在は傭兵として働き、そのうちの何人かはある革の女神に仕えている。
+ドラゴンハートはドラゴンを殺す集団で、殺したドラゴンの燃え盛る力と竜鱗の如き防御を得る儀式からその名がついた。現在は傭兵として働き、そのうちの何人かはある革の女神に仕えている。
 Yes! I've done it! I have created another red slime! I shall call him Fred, yes, Fred. After the red slime I lost in a shield-related accident a while back... |Poor Fred... I miss him.
 やった！やったよ！また赤いスライムを作れた！フレッドと名付けよう。ちょっと前にシールド関連の事故でレッドスライムを失ったばかりだから……|かわいそうなフレッド...。彼が恋しいよ。
 (Pg. 70 from Catherine Willows' journal): The overgrown ruins are a curious phenomenon. The level of light pouring through cracks in the ceiling is nonetheless too sparse to sustain plantlife. And yet the restoration goddess, in her ancient wisdom, has decided to preserve this place. How many of her dryads must I pierce or burn until she realizes I am merely passing through?
@@ -11858,8 +11968,8 @@ You pray to the Goddess and the sigil vanishes! Perhaps you returned what was ri
 女神に祈りを捧げると聖なる封印が消えた。彼女に赦してもらえたのだろうか？
 This item bears the sigil of the Goddess of Restoration. Perhaps she can help?
 この拘束具には再生の女神の紋章がある。祭壇で彼女に祈れば助けてくれるかもしれない。
-The item is protected by an arcane seal. There is nothing you can do to it.
-この拘束具には秘術の封印がなされている。自分の力ではどうすることもできない。
+The item is protected by a magical seal. There is nothing you can do to it.
+この拘束具には魔術の封印がなされている。自分の力ではどうすることもできない。
 You pray to the Goddess and the sigil vanishes! Perhaps you returned what was rightfully hers?
 女神に祈りを捧げると聖なる封印が消えた。彼女に赦してもらえたのだろうか？
 This item bears the sigil of the Goddess of Conjuration. Perhaps she can help?
@@ -11873,9 +11983,9 @@ This item bears the sigil of the Goddess of Illusions. Perhaps she can help?
 You pray to the Goddess and the sigil vanishes! Perhaps you returned what was rightfully hers?
 女神に祈りを捧げると聖なる封印が消えた。彼女に赦してもらえたのだろうか？
 This item bears the sigil of the Goddess of Elements. Perhaps she can help?
-この拘束具にはエレメンタルの女神の紋章がある。祭壇で彼女に祈れば助けてくれるかもしれない。
-The item is protected by powerful energies. There is nothing you can do to it.
-この拘束具は強い力で守られている。自分の力ではどうすることもできない。
+この拘束具には精霊の女神の紋章がある。祭壇で彼女に祈れば助けてくれるかもしれない。
+The item is protected by an elemental seal. There is nothing you can do to it.
+この拘束具は精霊の力で護られている。自分の力ではどうすることもできない。
 You hold the key to the item and it comes loose, draining the key's energy.
 拘束具に鍵をかざすと、鍵のエネルギーを吸い取り拘束具が緩くなった。
 The item is incribed with mystical runes. Maybe you need a powerful key to unlock it.
@@ -12007,9 +12117,9 @@ You are ambushed by ninjas!
 A large, wriggling mess of ropes fall from the ceiling!
 蠢く巨大なロープの塊が天井から落ちてきた！
 You are ambushed by dragonhearts!
-ドラゴンハーツの待ち伏せだ！
+ドラゴンハートの待ち伏せだ！
 You are ambushed by dragonhearts!
-ドラゴンハーツの待ち伏せだ！
+ドラゴンハートの待ち伏せだ！
 A pack of drones descends from the ceiling!
 天井からドローンの群れが降下してきた！
 You hear sirens as a group of robots closes in!
@@ -12230,7 +12340,7 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 関係性3を捧げることによって、拘束から抜け出しやすくなる。
 For 3 rep the goddess will grant you a key.
 関係性3を捧げることによって、鍵を授かる。
-For 3 rep the goddess will grant you
+For 3 rep the goddess will grant you 
 関係性3を捧げることによって、
 For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
@@ -12240,7 +12350,7 @@ For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
 For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
-For 3 rep the goddess
+For 3 rep the goddess 
 神に関係性を捧げ、助けてもらう。
 The goddess will fully restore your mana in exchange for AMOUNT rep
 AMOUNT の関係性と引き換えに、神にマナを補充してもらった。
@@ -12599,6 +12709,8 @@ Caster: ENEMYNAME
 召喚者: ENEMYNAME
 Demise immanent
 そろそろ消える
+Demise imminent
+そろそろ消える
 Vulnerable
 脆弱状態
 Stunned
@@ -12674,11 +12786,11 @@ Psychic
 Mana Draining
 マナ吸収
 Electric
-機械
-Shock
 電気
+Shock
+衝撃
 Plush
-豪華
+ふわふわ
 Blast
 ブラスト
 Gas
@@ -12700,7 +12812,7 @@ Spell
 Unstoppable
 アンストッパブル
 Unflinching
-ひるまない
+スーパーアーマー
 You found a magical amulet! Choose one of the following to determine its benefits:
 魔法のアミュレットを見つけた。以下の能力を一つ上昇させられる。
 Focus: +50% max distraction and faster decay. +5% stamina protected from damage (base: 30%).
@@ -12865,7 +12977,7 @@ Extreme
 エクストリーム
 A supposedly reasonable difficulty curve.
 普通の難易度。サクサクプレイ用
-Play the game the way it was intended. Cruel and restrictive.
+Play the game the way it was intended. Cruel and restrictive. 
 本来意図された難易度。積極的に捕まりたい人用
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 自己責任。ハードモードをダブルクリックで解除。
@@ -13163,8 +13275,8 @@ Fine, you win!
 わかった、あなたの勝ちよ！
 Cover me you brats!
 援護して！
-They're coming for me!
-奴らが来る！
+She's coming for me!
+奴が来るぞ！
 Stay away!
 近寄らないで！
 Time for a taste of my own medicine...
@@ -13869,8 +13981,7 @@ Target needs retraining...
 ターゲットに再教育の必要性を確認……
 Sorry, rules are rules~
 規則は規則ですから。
-Bug
-！！！このセリフが表示されるのはバグです。報告お願いします！！！
+
 
 Does not compute.
 計算不能
@@ -13957,8 +14068,8 @@ Contraband detected. Confiscating.
 許可サレテイナイ物品ヲ確認。没収シマス。
 Increasing strictness level.
 拘束レベル上昇。
-Unit PRTN identifying.
-識別ネーム PRTN 。
+Unit PTRN identifying.
+識別ネーム PTRN 。
 Red alert. Joining combat.
 警告、戦闘ニ参加シマス。
 Battle stations.
@@ -15480,8 +15591,8 @@ You won't be needing that.
 あなたには必要ないよね？
 There we go.
 これでよーし。
-My name? Uh... let's go with PRTN.
-なまえ？ええっと、 PRTN でいいや！
+My name? Uh... let's go with PTRN.
+なまえ？ええっと、 PTRN でいいや！
 You will not get away with this, outsider!
 よそ者め！このままじゃ済まないぞ！
 You shall pay with your freedom.
@@ -15504,7 +15615,7 @@ I share the will of the Goddess!
 They won't get away with this!
 こんなことでは退かない！
 Face my wrath!
-我が怒りをくらえ！
+我が怒りの一撃を受けてみろ！
 Nature protects!
 自然が守ってくれる！
 
@@ -15582,8 +15693,8 @@ Take!
 もらう！
 Secure!
 安全！
-Greetings Madame, you may call me PRTN.
-やあ、マダム。私のことは PRTN と呼んでくれ！
+Greetings Madame, you may call me PTRN.
+やあ、マダム。私のことは PTRN と呼んでくれ！
 Defend!
 防御！
 Protect!
@@ -15790,8 +15901,8 @@ You won't be needing this.
 これはもう必要ないな。
 Quit struggling~
 無駄なあがきだ。
-My true name is unpronouncible in your tongue. But you may call me PRTN.
-私のことは PRTN って呼んで。本当は違うけど、正しい名前はあなたじゃ発音できないから。
+My true name is unpronouncible in your tongue. But you may call me PTRN.
+私のことは PTRN って呼んで。本当は違うけど、正しい名前はあなたじゃ発音できないから。
 She brings curses!
 女神の呪いあれ！
 An intruder confronts us!
@@ -15833,7 +15944,7 @@ Don't let her catch you!
 You'll never trap my soul!
 私の魂を捕らえることはできない！
 You are quite the master of the elements!
-あなたがエレメンタルマスターなのか。
+あなたが精霊の支配者なのか。
 I could get used to this~
 もう慣れたよ。
 Perhaps I could show you around...
@@ -15921,7 +16032,7 @@ Now now, a mortal should know her place!
 Why don't we turn the tables?
 立場を逆にしてみないか？
 It'll be fun seeing you squirm~
-もがく姿を見せて。
+もがく姿を見せてみろ。
 We are the keepers of balance.
 私達はバランサーだ。
 
@@ -15931,6 +16042,87 @@ I shall take you myself~
 私が連れて行く。
 Where do you think you're going?
 どこに行くつもり？
+
+I will be free... even if it takes me a thousand years!
+例え1000年かかろうとも自由になってみせる……！
+Release me you pathetic creature!
+さっさと解放しろケダモノ！
+I will not be contained!
+この程度……！
+Oh no, whatever shall I do!
+ああ、なんてことだ！
+I will be back, mortal!
+私は必ず帰ってくるぞ！
+You will never trap me!
+貴様程度に捕まるか！
+I yearn for a challenging puzzle!
+何かに挑戦したい気分だ。
+Show me your strongest restraints!
+貴様の最高の拘束を見せてくれ。
+I could probably escape anything.
+私ならどんなものからでも逃げられるぞ。
+Come here my plaything~
+少し楽しもうじゃないか。
+Mortals are my favorite toy.
+人間は我らの玩具だ。
+It's more fun when you resist!
+もっと抵抗して私を楽しませてみろ！
+Know your place, mortal~
+立場をわきまえろ、人間。
+I will bring you to my lair~
+私の隠れ家に連れて行こう。
+Mortals shouldn't have too much freedom~
+貴様には過ぎた自由だ、人間。
+Mortals should keep their hands to themselves~
+人間のすべきことではないぞ。
+Yes, yes, run away!
+そうだ、逃げおおせてみろ！
+I like your fighting spirit!
+その心意気やよし！
+You may be weak, but this is quite entertaining~
+弱いくせになかなか楽しめそうじゃないか。
+Dragons are the true heirs of magic.
+竜の血を継ぐものこそ魔法の継承者なのだ！
+Your magic was stolen from us!
+貴様らの魔法は贋作に過ぎない！
+This world is ours! OURS!
+この世界は我々のものだ！
+Look what you need to match only a fraction of my power!
+貴様の力なぞその程度だ！
+My treasure!
+私のだぞ！
+Now is my opportunity! I will have you for myself~
+さあ、お前をコレクションに加えてやろう。
+So weak!
+弱すぎる！
+I have you now~
+もう貴様は私のものだ。
+Can't handle it?
+手に負えないか？
+Ooh shiny!
+いいものだな！
+Now you're mine!
+これで貴様は私のものだ。
+Bow before me, for I am PTRN!
+私の前にひれ伏せ、我が名は PTRN なり。
+A mortal can't stop us!
+人間ごときに我らは止められんぞ！
+No one will save you, mortal.
+誰も助けてはくれんぞ、人間。
+I will stop her!
+私がやろう。
+Bow down before our might!
+我らが力の前にひれ伏せ！
+Dragons are the true rulers of this world!
+竜こそが真の世界の支配者だ！
+We were destined for greatness until you came along!
+貴様らが来なければ我らが運命は世界とともにあったのに！
+We are the the true heirs of magic!
+我らこそ真に魔法を継ぐもの！
+Hehe~
+ふふふ。
+*chuckles*
+ふふふ……。
 
 Not the edging training! Anything but that!
 変なこと以外だったら何でも受け入れますよ！
@@ -16010,8 +16202,8 @@ Give me that.
 没収だよ。
 'Click!'
 カチッ
-Mistress PRTN, reporting for duty.
-PRTN 、出勤しました。
+Mistress PTRN, reporting for duty.
+PTRN 、出勤しました。
 No time to waste.
 さっさと終わらせよう！
 Looks like the reports are correct. Stop her!
@@ -16366,7 +16558,7 @@ There, nice and tight dear~
 I am the great witch PTRN!
 私こそ、偉大な魔術師 PTRN ！よろしくね。
 Noooo Fred! *grumble* you'll pay for this!
-フレッドぉぉぉ！？この借りは絶対に返しますからね！
+フレッドォ～！？この借りは絶対に返しますからね！
 Where is that apprentice when you need her...
 必要なときにあの弟子はどこに……
 I don't have time for this.
@@ -16596,7 +16788,7 @@ Be careful!
 That's it! You made me mad!
 私を怒らせたみたいですね！
 I'll just... go.
-行かなきゃ……
+もう行くね……
 
 Sticks and stones may break my bones... but you'll never catch me!
 棒や石で骨は砕けても……私は捕まらないわよ？
@@ -16909,23 +17101,23 @@ You hand over your weapon reluctantly...
 (The SPEAKER approaches you)|Contraband detected. Initiating confiscation.|Please comply.
 (SPEAKER が接近してきた)|武器ノ所持ハ認可サレテイマセン。|オ渡シ下サイ。
 Yes, miss... (Currently held weapon will be lost)
-「わかりました、ご主人様……」(武器を渡す)
+わかりました、ご主人様……(武器を渡す)
 Mmph... (Nod politely) (Currently held weapon will be lost)
-「むぅぅ……」(武器を渡す)
+むぅぅ……(武器を渡す)
 No, I refuse!
-「断る！」
+断る！
 Mmph! (Shake your head)
-「んむぅ！」(首を横にふる)
+んむぅ！(首を横にふる)
 The Head Maid asked me to retrieve it.
-「メイド長に回収を頼まれたものなのです」
+メイド長に回収を頼まれたものなのです
 My mistress needs it for a special spell.
-「ご主人様が特別な魔法のために使うものなのです」
+ご主人様が特別な魔法のために使うものなのです
 It is an offering to the goddess of Elements.
-「エレメントの女神への捧げ物なんです」
+精霊の女神への捧げ物なんです
 It's just a prop for a costume.
-「ただの衣装の小道具なんです」
+ただの衣装の小道具なんです
 Are you questioning me? I'm a dragonslayer.
-「私はドラゴンスレイヤーだぞ！」
+私はドラゴンスレイヤーだぞ！
 (Continue...)
 次へ
 (The SPEAKER approaches you in your cell)|Well well, what do we have here? A new guest?|Perhaps I should give you a rundown of your new life~
@@ -16947,27 +17139,27 @@ Are you questioning me? I'm a dragonslayer.
 (The SPEAKER smiles)|Looks like you'll get the hang of it pretty quickly!
 (SPEAKER は笑顔で答えた)|すぐにコツを掴めそうね。
 (New life?)
-「新しい人生？」
+新しい人生？
 (Let her continue)
 (話を聞く)
 (Pout at her)
 (口ごもる)
 You can't make me do that!
-「やれるものならやってみなさい！」
+やれるものならやってみなさい！
 (Scream into your gag)
 (猿轡越しに叫ぶ)
 That sounds alright...
-「それなら大丈夫そう……」
+なんとかなりそう……
 (Moan into your gag and giggle)
 (猿轡越しに呻く)
 (Glare at her)
 (睨みつける)
 Let me out this instant!
-「さっさと出して！」
+さっさと出して！
 (Scream into your gag uselessly)
 (猿轡越しに叫ぶ)
 I will be a good girl!
-「大人しくしてるから……」
+大人しくしてるから……
 (Giggle and wiggle your body)
 (喜びに身体をくねらせる)
 (The SPEAKER approaches you in your cell)|Back again, are we? Silly girl.|You know we don't take no for an answer.
@@ -16991,7 +17183,7 @@ I will be a good girl!
 (Giggle and smile)
 (くすくすと笑う)
 Don't you mean 'more fun'?
-「もっと刺激的なのはないの？」
+もっと刺激的なのはないの？
 (Giggle and moan)
 (喜ぶ)
 (Struggle in your bindings)
@@ -17003,7 +17195,7 @@ Don't you mean 'more fun'?
 (Give her all your gold)
 (有り金を全部渡す)
 Why don't you wear it instead? (OFFPERC chance, may aggro)
-「代わりにそれを着たら？」(OFFPERC で敵対)
+自分で着たら？(OFFPERC で敵対)
 (Point to her instead) (OFFPERC chance, may aggro)
 (代わりに彼女を指差す)(OFFPERC で敵対)
 (The SPEAKER resists and fights back!)
@@ -17031,27 +17223,27 @@ Why don't you wear it instead? (OFFPERC chance, may aggro)
 (The SPEAKER snaps her fingers)|(You feel the RESTRAINT magically appear on you)|Aha! Wonderful! You can go now~
 (SPEAKER は指を鳴らした)|(魔法の力で RESTRAINT を無理やり着せられてしまった)|うふふ、とても似合っていますわ！もう行きますわね！
 Yes please!
-「着てみたいかも」
+着てみたいかも
 (Nod enthusiastically)
-(頷く)
+(ぱっと頷く)
 I don't have time for this.
-「悪いけどそんなことしてる時間はないの」
+悪いけどそんなことしてる時間はないの
 (Shake your head)
 (首を横に振る)
 Of course miss.
-「ええ、もちろん」
+ええ、もちろん
 (Nod again)
 (頷く)
 Actually, I'd rather not.
-「遠慮しておく」
+遠慮しておく
 (Shake your head)
 (首を横に振る)
 Fine, I guess.
-「ええ、わかった」
+ええ、わかった
 (Giggle and nod)
 (頷く)
 Wait! That's too much! (PERCENT chance to avoid)
-「待って！ちょっときつすぎるわ！」(PERCENT の確率で拒否)
+待って！ちょっときつすぎるわ！(PERCENT の確率で拒否)
 (Shake your head and moan) (PERCENT chance to avoid)
 (首を横に振って呻く)(PERCENT の確率で拒否)
 (The SPEAKER looks at you with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?
@@ -17075,27 +17267,27 @@ Wait! That's too much! (PERCENT chance to avoid)
 (The SPEAKER lets you go. But then...)|(You feel her clip a RESTRAINT on you from behind!)|There... I shall now observe your behavior.
 (SPEAKER は去っていった。だが……)|(突然背後から RESTRAINT を取り付けられてしまった)|よし、キミの行動を観察するとしよう。
 Um, sure?
-「え？ええ」
+え？ええ
 (Nod seriously)
 (頷く)
 ...What?
-「……なんて？」
+……なんて？
 (Shake your head)
 (首を横に振る)
 Show me the truth.
-「真実を見せて」
+真実を見せて
 (Nod again)
 (頷く)
 That's just creepy.
-「気味が悪い」
+気味が悪いわ
 (Shake your head)
 (首を横に振る)
 Fine, you've convinced me.
-「わかったわ」
+わかった
 (Giggle and nod)
 (笑う)
 I don't have time for this. (PERCENT chance to avoid)
-「悪いけどそんなことしている時間はない」(PERCENT の確率で拒否)
+悪いけどそんなことしている時間はない(PERCENT の確率で拒否)
 
 (The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!
 (SPEAKER は厭らしい笑みを浮かべながらこちらを見ている)|ごきげんよう、"お仕事"の時間ですよ！
@@ -17119,29 +17311,29 @@ I don't have time for this. (PERCENT chance to avoid)
 (SPEAKER に掴まれ、無理やり猿轡を噛まされてしまった)|(猿轡はきつくかたく締まっている……)|怠惰の言い訳なんて聞きたくありませんからね。|それじゃあお仕事がんばってくださいね～。
 
 I'll do it!
-「やるわ」
+やる
 (Nod seriously)
 (真剣に頷く)
 I don't like the sound of this.
-「やりたくないかな」
+やりたくないかな
 (Shake your head)
 (首を横に振る)
 
 Yes miss!
-「わかりました」
+わかりました
 (Nod again)
 (頷く)
 Actually, maybe not...
-「やっぱりやめておく……」
+やっぱりやめておく……
 Shake your head)
 (首を横に振る)
 
 Okay okay... I'll do it.
-「わかった……やる」
+わかった……やる
 (Giggle and nod)
 (頷く)
 That gag is far too big! (PERCENT chance to avoid)
-「ちょっと大きすぎるわ！」(PERCENT の確率で拒否)
+ちょっと、大きすぎる！(PERCENT の確率で拒否)
 (Shake your head and moan) (PERCENT chance to avoid)
 (呻きながら首を横に振る)(PERCENT の確率で拒否)
 
@@ -17168,23 +17360,23 @@ That gag is far too big! (PERCENT chance to avoid)
 (The SPEAKER tightly fastens the muzzle on)|Safe and secure~|(You whimper as the SPEAKER spanks you goodbye)
 (SPEAKER に素早くマズルを取り付けられた)|これで安心だ。|(SPEAKER はさよならを言い、お尻をひっぱたいてきた)
 Extra defense can't hurt...
-「防具さえあれば痛い思いをせずにすむ……」
+防具さえあれば痛い思いをせずにすむ……
 (Nod cautiously)
 (頷く)
 I'm safe enough.
-「別に必要ないわ」
+別に必要ないわ
 (Shake your head)
 (拒否する)
 A gag? Sounds fun~
-「マズル？好きだよ、そういうの」
+マズル？好きだよ、そういうの
 (Nod eagerly)
 (頷く)
 That's not a helmet!
-「それはヘルメットじゃないでしょ」
+それはヘルメットじゃないでしょ
 (Shake your head)
 (首を横に振る)
 Well, it might...
-「まあ、そうかもしれないけど……」
+まあ、そうかもしれないけど……
 (Giggle and nod)
 (頷く)
 (Dodge her lunge) (PERCENT chance to avoid)
@@ -17212,19 +17404,19 @@ Mmhmm, a gift~|(The SPEAKER leans forward to whisper in your ear)|Is it cold in 
 (RESTRAINT solidifies on you as the SPEAKER smiles)|Yes! Finally! How's that feel?|(The SPEAKER admires your restraints)
 (RESTRAINT が完全に固まると SPEAKER は笑った)|ようやく成功した！どんな感じ？|(SPEAKER は出来上がった拘束具をしげしげと見つめている)
 A gift?
-「贈り物？」
+贈り物？
 (Nod warily)
 (恐る恐る頷く)
 No thanks.
-「いらない」
+いらない
 (Shake your head)
 (首を横に振る)
 Umm... just me?
-「どういうこと？」
+どういうこと？
 (Nod again)
 (再度頷く)
 Wait, don't make it colder!
-「待って、寒いのは嫌」
+待って、寒いのは嫌
 (Shake your head)
 (首を横に振る)
 (Shiver and watch as the ice covers you)
@@ -17232,7 +17424,7 @@ Wait, don't make it colder!
 (Mutely whimper as the ice covers you)
 (呻きながら氷が体を覆うのを見ている)
 Ah! T-That's freezing! (PERCENT chance to avoid)
-「ちょっと、寒い！」(PERCENT の確率で拒否)
+ちょっと、寒い！(PERCENT の確率で拒否)
 (Wriggle to warm up) (PERCENT chance to avoid)
 (もがいて体を温める)(PERCENT の確率で拒否)
 (A robotic SPEAKER approaches)|QUERY: Good girl detected:|Restraint desired?
@@ -17256,27 +17448,27 @@ ERROR: Acceptance expected.|STATEMENT: SPEAKER will add RESTRAINT.
 (The SPEAKER launches tape which catches you as you run)|RESTRAINT dispensed.|Have a nice day.
 (SPEAKER がテープを射出し、逃げる前に捕まってしまった)|RESTRAINT 射出|良イ一日ヲ。
 Uh, affirmative?
-「えっと、はい？」
+えっと、はい？
 (Nod)
 (頷く)
 Negative.
-「いいえ」
+いいえ
 (Shake your head)
 (首を横に振る)
 Very acceptable!
-「はい！」
+はい！
 (Nod again)
 (再度頷く)
 No, I don't want that.
-「いらない」
+いらない
 (Shake your head)
 (首を横に振る)
 If you have to...
-「やりたいなら……」
+そうしたいなら……
 (Giggle and nod)
 (頷く)
 Go away robot! (PERCENT chance to avoid)
-「離れなさい！」(PERCENT の確率で拒否)
+離れなさい！(PERCENT の確率で拒否)
 (Shake your head rapidly) (PERCENT chance to avoid)
 (素早く首をふる)(PERCENT の確率で拒否)
 (A robotic SPEAKER approaches)|QUERY: Good girl detected:|Restraint desired?
@@ -17300,27 +17492,27 @@ ERROR: Acceptance expected.|STATEMENT: SPEAKER will add RESTRAINT.
 (The SPEAKER shoots cables at you)|RESTRAINT dispensed.|Have a nice day.
 (SPEAKER がケーブルを射出しだした)|RESTRAINT 射出|良イ一日ヲ。
 Uh, affirmative?
-「えっと、はい？」
+えっと、はい？
 (Nod)
 (頷く)
 Negative.
-「いいえ」
+いいえ
 (Shake your head)
 (首を横に振る)
 Very acceptable!
-「はい！」
+はい！
 (Nod again)
 (再度頷く)
 No, I don't want that.
-「いらない」
+いらない
 (Shake your head)
 (首を横に振る)
 If you have to...
-「やりたいなら……」
+そうしたいなら……
 (Giggle and nod)
 (頷く)
 Go away robot! (PERCENT chance to avoid)
-「離れなさい！」(PERCENT の確率で拒否)
+離れなさい！(PERCENT の確率で拒否)
 (Shake your head rapidly) (PERCENT chance to avoid)
 (素早く首をふる)(PERCENT の確率で拒否)
 (A happy SPEAKER looks at you)|Hey there cutie~|Want to try some scarf bondage?
@@ -17344,29 +17536,76 @@ Go away robot! (PERCENT chance to avoid)
 (The SPEAKER tosses a scarf around you like a lasso)|Not so fast! You cannot escape the fluff!
 (SPEAKER はスカーフをこちらに投げてきた)|遅い！逃げられないよ！
 Sounds good!
-「面白そうだね」
+面白そうだね
 (Nod quickly)
 (頷く)
 Not really.
-「遠慮しておく」
+遠慮しておく
 (Shake your head)
 (首を横に振る)
 Please do!
-「わかった、お願い」
+わかった、お願い
 (Nod and giggle)
 (喜んで頷く)
 Not right now.
-「やっぱり今はいい」
+やっぱり今はいい
 (Shake your head)
 (首を横に振る)
 Well... sure then.
-「そこまで言うなら……」
+そこまで言うなら……
 (Giggle and moan)
 (頷く)
 Hey! Stop! (PERCENT chance to avoid)
-「ちょっと、やめてよ！」(PERCENT の確率で拒否)
+ちょっと、やめてよ！(PERCENT の確率で拒否)
 (Shake your head and whine) (PERCENT chance to avoid)
-(首を振って駄々をこねる)(首を横に振る)(PERCENT の確率で拒否)
+(首を振って駄々をこねる)(PERCENT の確率で拒否)
+
+(An excited SPEAKER turns to you)|Eureka, I've done it!|Do you want to see?
+(興奮した SPEAKER がこちらに向かってきた)|エウレカ、ついにやったよ！|見たいか？
+(The SPEAKER pulls out a pressurized flask)|Behold! A gaseous form of latex!|I've coated the interior with a layer of inert slime to keep it secure.|Here, have a look!|(She holds out the container)
+(SPEAKER は加圧フラスコを取り出した)|気体のゴムだ！|内部を不活性化のスライムでコーティングして保管に成功したんだ！|ほら、見てみて！|(彼女はフラスコを差し出してきた)
+(The flask springs a leak)|Oh no! That wasn't supposed to happen!|(The gas crystalizes into a RESTRAINT across your body)
+(フラスコは飛び跳ね、中身がこぼれだした)|あぁっ、そんな！|(ガスが全身を包み、結晶化して RESTRAINT となった)
+(The SPEAKER scoffs)|You'll see... you'll all see!
+(SPEAKER は見下した笑みを浮かべている)|今にわかるさ……今にな！
+(The SPEAKER sighs)|So hard to find good help out here...
+(SPEAKER はため息をついている)なかなか手伝ってくれる人がいないな……
+(The SPEAKER frowns)|What, do you doubt my results? See for yourself!|(She unscrews the cap)
+(SPEAKER は口をとがらせている)|私の研究にケチをつけるのか？そんなやつはこうだ！|(彼女はフラスコの蓋を外しだした)
+(The green gas starts leaking)|Oh no! It wasn't supposed to do that!
+(フラスコから緑色のガスが漏れ出した)|あぁっ、そんなはずじゃあ！
+(You push her out of the way, but she frowns)|Hmph. This is your fault.
+(彼女を突き飛ばすと、彼女は不機嫌そうな顔をしていた)|お前のせいだからな。
+(You push her out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!
+(彼女を突き飛ばしたが、ガスからは逃げられなかった)|(ガスが全身を包み、結晶化して RESTRAINT となった)|うわぁ、ガス浴びなくてよかった！
+(The gas moves toward you, as if by its own will)|(The gas crystalizes into a RESTRAINT across your body)|That wasn't supposed to happen...
+(まるで意志があるかのように、ガスはこちらに向かってきた)|(ガスが全身を包み、結晶化して RESTRAINT となった)|こんなはずじゃあなかったんだ……
+
+Seems interesting!
+面白そうね！
+(Nod slowly)
+(ゆっくり頷く)
+Seems boring.
+つまらなさそう
+(Shake your head)
+(首を横に振る)
+
+Are you sure this is a good idea?
+本当にこれでいいの？
+(Nod again)
+(再度頷く)
+Keep that away from me!
+近づけないで！
+(Shake your head)
+(首を横に振る)
+
+I'll stop it!
+止めるわ！
+(Run toward her to help)
+(彼女を助けるために近寄る)
+(Run away!) (PERCENT chance to avoid)
+(逃げる！)(PERCENT の確率で拒否)
+
 (A messy looking SPEAKER turns to you)|Hmm, curious. Very curious.|Can you help me with an experiment?
 (複雑な表情の SPEAKER がこちらを見てきた)|うーん、不思議だ。実に不思議だ。|少し実験を手伝ってくれないか？
 (The SPEAKER pulls out a flask)|I isolated some slime, but it's inert.|Would you let me spill some on you?
@@ -17388,27 +17627,27 @@ Ah, but it'll be quick!|(The SPEAKER begins tipping the flask)|See? It's already
 (The SPEAKER tosses the slime on you)|Ha, look, it's alive!|(Sticky RESTRAINT clings to you)
 (SPEAKER はスライム入りのフラスコを投げつけてきた)|よし、生きているぞ！|(ネバネバした RESTRAINT に取り付かれた)
 Sure.
-「いいよ」
+いいよ
 (Nod slowly)
 (頷く)
 Absolutely not.
-「絶対イヤ」
+絶対イヤ
 (Shake your head)
 (首を横に振る)
 On me? Sounds fun~
-「私に？面白そうだね」
+私に？面白そうだね
 (Nod again)
 (頷く)
 Nope. Not doing that.
-「やっぱりやめておく」
+やっぱりやめておく
 (Shake your head)
 (首を横に振る)
 Okay, for science...
-「わかった、科学の発展のために……」
+わかった、科学の発展のために……
 (Giggle and nod)
 (頷く)
 Ah! Don't you dare! (PERCENT chance to avoid)
-「なんてことするの！」(PERCENT の確率で拒否)
+なんてことするの！(PERCENT の確率で拒否)
 (Shake your head and whimper) (PERCENT chance to avoid)
 (必死に首を横に振る)(PERCENT の確率で拒否)
 (A SPEAKER whispers to you)|Ever wonder how wolfgirls feel?|Or why they're so obedient?
@@ -17432,27 +17671,27 @@ Ah! Don't you dare! (PERCENT chance to avoid)
 (The SPEAKER pushes you to the ground)|I'll make it extra tight for you~|(The RESTRAINT locks tightly onto you)
 (SPEAKER に無理やり押し倒された)|もっときつくしてあげるね～|(RESTRAINT をきつくロックされた)
 Maybe a little~
-「少しは興味ある」
+少しは興味ある
 (Nod excitedly)
 (頷く)
 Don't know, don't care.
-「いや、気にしたことはないかな」
+いや、気にしたことはないかな
 (Shake your head)
 (首を横に振る)
 Yes! So much!
-「うん、試してみたい」
+うん、試してみたい
 (Nod quickly)
 (頷く)
 That looks too strict!
-「ちょっときつそうで嫌かな」
+ちょっときつそうで嫌かな
 (Shake your head)
 (首を横に振る)
 I- Well- O-Okay~
-「えっと……わかった……」
+えっと……わかった……
 (Moan and squirm)
 (頷く)
 I don't want to get stuck! (PERCENT chance to avoid)
-「そんなの付けたくない！」(PERCENT の確率で拒否)
+そんなの付けたくない！(PERCENT の確率で拒否)
 (Shake your head worriedly) (PERCENT chance to avoid)
 (全力で首を横に振る)(PERCENT の確率で拒否)
 (A SPEAKER gracefully gestures to you)|So good to see a friendly face~|Care to see some elven goods?
@@ -17476,25 +17715,25 @@ I don't want to get stuck! (PERCENT chance to avoid)
 (The SPEAKER trips you over)|(Before you can move, the RESTRAINT closes firmly)|Strict, isn't it?~
 (SPEAKER に一瞬で転ばされた)|(反応する前に RESTRAINT が大きな音を立ててロックされた)|とってもきついでしょう？
 Of course!
-「ええ、是非」
+ええ、是非
 (Nod happily)
 (頷く)
 No, thanks.
-「いや、結構」
+いや、結構
 (Shake your head)
 (首を横に振る)
 Pretty please~
-「ええ、お願い」
+ええ、お願い
 (Nod eagerly)
 (頷く)
 Not really.
-「やっぱり遠慮しておく」
+やっぱり遠慮しておく
 (Shake your head)
 (首を横に振る)
 (Moan and giggle)
 (頷く)
 Stop! (PERCENT chance to avoid)
-「やめて！」(PERCENT の確率で拒否)
+やめて！(PERCENT の確率で拒否)
 (Shake your head and moan) (PERCENT chance to avoid)
 (首を横に振り呻く)(PERCENT の確率で拒否)
 (A SPEAKER plays with silvery rope)|Hmm, I need to get better with this.|Can I practice on you?
@@ -17518,23 +17757,23 @@ Stop! (PERCENT chance to avoid)
 (The SPEAKER strictly ties you up)|(There's no slack anywhere!)|(She makes a face at you as she leaves)
 (SPEAKER にきつく縛られた)|(全く抜け出せない)|(彼女はこちらを嬉しそうに一瞥すると去っていった)
 Any time~
-「手伝うよ」
+手伝うよ
 (Nod excitedly)
 (頷く)
 I'd rather you didn't.
-「やめておく」
+やめておく
 (Shake your head)
 (首を横に振る)
 Sounds great!
-「わかった」
+わかった
 (Nod again)
 (再度頷く)
 Actually, I don't want that.
-「やっぱりやめておく」
+やっぱりやめておく
 (Shake your head)
 (首を横に振る)
 I'll play along then~
-「しょうがない……」
+しょうがない……
 (Moan and squirm)
 (頷く)
 (Struggle against her) (PERCENT chance to avoid)
@@ -17570,11 +17809,11 @@ I'll play along then~
 (Don't approach)
 (近寄らない)
 Sure!
-「いいよ」
+いいよ
 (Nod eagerly)
 (頷く)
 W-What? No way!
-「待って、やめて！」
+待って、やめて！
 (Shake your head)
 (首を横に振る)
 (Let her add the restraint)
@@ -17582,7 +17821,7 @@ W-What? No way!
 (Moan and nod)
 (頷く)
 Stop! (PERCENT chance to avoid)
-「やめて！」(PERCENT の確率で拒否)
+やめて！(PERCENT の確率で拒否)
 (Shake your head and groan) (PERCENT chance to avoid)
 (首を横に振って抵抗する)(PERCENT の確率で拒否)
 (The SPEAKER walks over)|You'd make a cute catgirl~|Want help becoming one?
@@ -17606,23 +17845,23 @@ Stop! (PERCENT chance to avoid)
 (The SPEAKER traps you)|(You feel the RESTRAINT being forced on)|Meow~
 (SPEAKER に捕まった)|(RESTRAINT を無理やり装着させられた)|にゃぁ～
 Sure!
-「なってみたい」
+なってみたい
 (Nod excitedly)
 (頷く)
 No, not today.
-「今日はいい」
+今日はいい
 (Shake your head)
 (首を横に振る)
 Yay!
-「やった！」
+やった！
 (Nod quickly)
 (頷く)
 Not like that!
-「やっぱりやめておく」
+やっぱりやめておく
 (Shake your head)
 (首を横に振る)
 Y-Yes miss~
-「えっと、わかった」
+えっと、わかった
 (Moan and squirm)
 (頷く)
 (Duck out the way) (PERCENT chance to avoid)
@@ -17650,11 +17889,11 @@ Y-Yes miss~
 (The SPEAKER giggles as she catches you and slaps on the cuffs)|No so fast, dear~
 (SPEAKER は笑みを浮かべ、素早く取り押さえて枷をはめてきた)|もうちょっとゆっくりしていきなよ～
 Maybe a bit~
-「ちょっとだけ」
+ちょっとだけ
 (Nod eagerly)
 (頷く)
 Not at all.
-「全然似てないよ」
+全然似てないよ
 (Shake your head)
 (首を横に振る)
 (Wiggle excitedly)
@@ -17662,15 +17901,15 @@ Not at all.
 (Wiggle excitedly)
 (興奮する)
 Not like that.
-「そういうのは好きじゃないかな」
+そういうのは好きじゃないかな
 (Shake your head)
 (首を横に振る)
 O-Okay...
-「わ、わかった……」
+わ、わかった……
 (Moan and shiver)
 (頷く)
 Don't even try. (PERCENT chance to avoid)
-「やめて！」(PERCENT の確率で拒否)
+やめて！(PERCENT の確率で拒否)
 (Shake your head and groan) (PERCENT chance to avoid)
 (必死に首を横に振る)(PERCENT の確率で拒否)
 (A SPEAKER is looking at something)|So comfy... but how?|Hey, you! Come see this!
@@ -17695,26 +17934,22 @@ Don't even try. (PERCENT chance to avoid)
 (SPEAKER は無視して近づいてきた)|(RESTRAINT はしっかりと固定された)|(着ているととても心地よい)
 (Approach)
 (近づく)
-(Approach)
-(近づく)
-(Keep your distance)
-(近づかない)
 (Keep your distance)
 (近づかない)
 Yes please!
-「お願い」
+お願い
 (Nod happily)
 (頷く)
 Nope.
-「遠慮しとく」
+遠慮しとく
 (Shake your head)
 (首を横に振る)
 It does look comfortable~
-「確かに快適そうだね」
+確かに快適そうだね
 (Squirm and bow your head)
 (頷く)
 It looks too strict! (PERCENT chance to avoid)
-「きつそうだから嫌！」(PERCENT の確率で拒否)
+きつそうだから嫌！(PERCENT の確率で拒否)
 (Shake your head rapidly) (PERCENT chance to avoid)
 (素早く首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER brushes past hurriedly)|Careful girl!|Else I'll lock you away~
@@ -17738,27 +17973,27 @@ It looks too strict! (PERCENT chance to avoid)
 (The SPEAKER stumbles and grimaces)|Ugh! Fine, you can go then.|D-Didn't want to see you tied anyway...
 (SPEAKER はよろめき、苦笑いを浮かべた)|よし、じゃあもう行っていいぞ。|お、お前が縛られている姿なんて見たくなかったしな……
 That doesn't sound bad...
-「それもわるくないかな」
+それもわるくないかな
 (Giggle into your gag)
 (猿轡越しに肯定する)
 That won't be necessary.
-「その必要はない」
+その必要はない
 (Shake your head)
 (首を横に振る)
 I'd love to!
-「そういうの好きだよ」
+そういうの好きだよ
 (Nod quickly)
 (頷く)
 Not right now.
-「やっぱりなんでもない」
+やっぱりなんでもない
 (Shake your head)
 (首を横に振る)
 M-Maybe you should then~
-「わ、わかった」
+わ、わかった
 (Giggle and moan)
 (頷く)
 You ran into me! (PERCENT chance to avoid)
-「そっちからぶつかってきたくせに！」(PERCENT の確率で拒否)
+そっちからぶつかってきたくせに！(PERCENT の確率で拒否)
 (Shake your head and moan) (PERCENT chance to avoid)
 (首を横に振り呻く)(PERCENT の確率で拒否)
 (A SPEAKER gives you a small curtsy)|Good day.|Care to try part of our uniform?
@@ -17782,27 +18017,27 @@ You ran into me! (PERCENT chance to avoid)
 (The SPEAKER covers your hand with her mouth)|Shush, no more bad decisions.|(You feel her buckle the restraint strictly)
 (SPEAKER に口を手で塞がれてしまった)|シーッ、これ以上間違った選択をしてはいけませんよ。|(無理やり着せられてしまった)
 Yes please!
-「ええ、着てみたい」
+ええ、着てみたい
 (Nod eagerly)
 (頷く)
 No, thank you.
-「遠慮しとく」
+遠慮しとく
 (Shake your head)
 (首を横に振る)
 I accept~
-「わかった」
+わかった
 (Nod again)
 (再度頷く)
 No, thanks.
-「やっぱり遠慮しとく」
+やっぱり遠慮しとく
 (Shake your head)
 (首を横に振る)
 I-I accept...
-「わ、わかった……」
+わ、わかった……
 (Moan and nod slowly)
 (ゆっくり頷く)
 No way! (PERCENT chance to avoid)
-「や、やめて！」(PERCENT の確率で拒否)
+や、やめて！(PERCENT の確率で拒否)
 (Shake your head and whimper) (PERCENT chance to avoid)
 (首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER looks at you inquisitively)|(Wordlessly, they motion at your body)|(They seem to be asking about restraints)
@@ -17826,11 +18061,11 @@ No way! (PERCENT chance to avoid)
 (The SPEAKER firmly grabs you)|(The RESTRAINT locks onto your body tightly)|(The oddly cold material makes you shiver)
 (SPEAKER はがっしりと掴んできた)|(RESTRAINT をきつくはめられてしまった)|(不思議な冷たい感覚に寒気がした)
 Y-Yes?
-「な、なにかしたいの？」
+な、なにかしたいの？
 (Nod back)
 (頷く)
 No thank you.
-「遠慮しとく」
+遠慮しとく
 (Shake your head)
 (首を横に振る)
 (Smile and prepare yourself)
@@ -17838,15 +18073,15 @@ No thank you.
 (Nod and prepare yourself)
 (覚悟を決めて笑顔を返す)
 No, not that.
-「やっぱりやめて」
+やっぱりやめて
 (Shake your head)
 (首を横に振る)
 W-Whoa! S-Sure...
-「えっ、わ、わかった……」
+えっ、わ、わかった……
 (Moan and nod)
 (頷く)
 Stop! (PERCENT chance to avoid)
-「やめて！」(PERCENT の確率で拒否)
+やめて！(PERCENT の確率で拒否)
 (Shake your head and whine) (PERCENT chance to avoid)
 (首を横に振り、暴れる)(PERCENT の確率で拒否)
 (A SPEAKER giggles and calls to you)|Hey there~|Fancy seeing some nature?~
@@ -17870,27 +18105,27 @@ Stop! (PERCENT chance to avoid)
 (The SPEAKER giggles loudly)|(The vines catch up and pin you down)|(When they let go, you're left with a RESTRAINT)
 (SPEAKER は笑い声を隠しきれていない)|(ツタに引き倒されてしまった)|(ツタが離れると、 RESTRAINT が残っていた)
 Always!
-「好きだよ」
+好きだよ
 (Nod eagerly)
 (頷く)
 Not right now.
-「全然」
+全然
 (Shake your head)
 (首を横に振る)
 That sounds exciting!
-「面白そうだね」
+面白そうだね
 (Nod happily)
 (頷く)
 Wait, not like this!
-「まって、それはいらない」
+まって、それはいらない
 (Shake your head)
 (首を横に振る)
 W-Well- o-okay...
-「わ、わかった……」
+わ、わかった……
 (Moan and squirm)
 (頷く)
 Don't! (PERCENT chance to avoid)
-「やめて！」(PERCENT の確率で拒否)
+やめて！(PERCENT の確率で拒否)
 (Shake your head) (PERCENT chance to avoid)
 (首を横に振る)(PERCENT の確率で拒否)
 (A SPEAKER approaches)|Nothing quite beats a strong metal|chain, right?
@@ -17914,27 +18149,27 @@ Don't! (PERCENT chance to avoid)
 (The SPEAKER grins as she binds your body)|(RESTRAINT digs into you a little)|Enjoy, cutie~
 (SPEAKER はニヤニヤしながら鎖で拘束してきた)|(RESTRAINT が身体を圧迫する)|それじゃあね～。
 I love chains!
-「そうだね」
+鎖は好きだよ
 (Nod happily)
 (頷く)
 Plenty beats it.
-「それより硬いものならいっぱいあるでしょ」
+それより硬いものならいっぱいあるでしょ
 (Shake your head)
 (首を横に振る)
 Absolutely~
-「もちろん」
+もちろん
 (Nod again)
 (頷く)
 Not really.
-「それはいらない」
+それはいらないかな
 (Shake your head)
 (首を横に振る)
 I-If I have to...
-「そ、そこまで言うなら」
+そ、そこまで言うなら……
 (Moan and squirm)
 (頷く)
 Ah! Cold! (PERCENT chance to avoid)
-「冷たい！」(PERCENT の確率で拒否)
+冷たい！(PERCENT の確率で拒否)
 (Shake your head and moan) (PERCENT chance to avoid)
 (必死に首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER nervously walks up to you)|Excuse me miss...|Are you a fan of latex by chance?
@@ -17958,27 +18193,27 @@ Ah! Cold! (PERCENT chance to avoid)
 (The SPEAKER restrains you and clicks a lock on)|There! Nice and tight!
 (SPEAKER に拘束され、錠まで付けられてしまった)|とっても似合ってますよ、ふふふ。
 Why of course!
-「好きだよ」
+好きだよ
 (Nod happily)
 (頷く)
 Not really.
-「好きではないかな」
+好きではないかな
 (Shake your head)
 (首を横に振る)
 That sounds fun!
-「いいね」
+いいね
 (Nod again)
 (再度頷く)
 No, I don't want that!
-「着たくはないかな」
+着たくはないかな
 (Shake your head)
 (首を横に振る)
 Okay, fine...
-「わ、わかった……」
+わ、わかった……
 (Moan and giggle)
 (頷く)
 Wait, what? (PERCENT chance to avoid)
-「待って、何！？」(PERCENT の確率で拒否)
+待って、何！？(PERCENT の確率で拒否)
 (Shake your head and moan) (PERCENT chance to avoid)
 (首を横に振り叫ぶ)(PERCENT の確率で拒否)
 (The SPEAKER nervously walks up to you)|Excuse me miss...|Can you help me out?
@@ -18004,27 +18239,27 @@ Wait, what? (PERCENT chance to avoid)
 (The lock on the RESTRAINT starts glowing...)
 (RESTRAINT の錠前が輝き出した……)
 I would love to help!
-「どうしたの？」
+どうしたの？
 (Nod eagerly)
 (頷く)
 Go find someone else.
-「他をあたって」
+他をあたって
 (Shake your head)
 (首を横に振る)
 That sounds like a tempting offer.
-「わかった、いいよ」
+わかった、いいよ
 (Nod again, excited)
 (頷く)
 ...What? Why would I need to wear it?
-「なんで私が付ける必要が？」
+なんで私が付ける必要が？
 (Shake your head, puzzled)
 (必死に首を横に振る)
 Fine. I'll do it because you asked.
-「そこまで言うならしょうがない」
+そこまで言うならしょうがない
 (Moan and nod slowly)
 (頷く)
 I won't help you. Wear it yourself. (PERCENT chance to avoid)
-「悪いけど助けにはなれない。自分でなんとかして」(PERCENT の確率で拒否)
+悪いけど助ける気はない。自分でなんとかして(PERCENT の確率で拒否)
 (Shake your head) (PERCENT chance to avoid)
 (首を横に振る)(PERCENT の確率で拒否)
 (Look at your belt...)
@@ -18050,27 +18285,27 @@ I won't help you. Wear it yourself. (PERCENT chance to avoid)
 (The SPEAKER restrains you and clicks a lock on)|There! Nice and tight!
 (SPEAKER に拘束されてしまった)|よし、似合ってるよ！
 Why of course!
-「好きだよ」
+好きだよ
 (Nod happily)
 (喜んで頷く)
 Not really.
-「そういうのに興味ないかな」
+そういうのに興味ないかな
 (Shake your head)
 (首を横に振る)
 That sounds fun!
-「いいね！」
+いいね！
 (Nod again)
 (頷く)
 No, I don't want that!
-「いらない！」
+いらない！
 (Shake your head)
 (首を横に振る)
 Okay, fine...
-「わかった、いいよ……」
+わかった、いいよ……
 (Moan and giggle)
 (頷く)
 Wait, what? (PERCENT chance to avoid)
-「待って、何するつもり？」(PERCENT の確率で拒否)
+待って、何するつもり？(PERCENT の確率で拒否)
 (Shake your head and moan) (PERCENT chance to avoid)
 (首を横に振り呻く)(PERCENT の確率で拒否)
 (The SPEAKER grins as she sees you)|Hey there sweetie~|I think you'd look good in some ropes!
@@ -18096,27 +18331,27 @@ Wait, what? (PERCENT chance to avoid)
 (The SPEAKER takes you down and trusses you up tightly)|That'll teach you~
 (SPEAKER に押し倒され、ぐるぐる巻きにされてしまった)|良い勉強になったかな～？
 I think so too!
-「私もそう思う」
+私もそう思う
 (Nod excitedly)
 (頷く)
 I don't think so.
-「そんなこと思ったこともないけど」
+そんなこと思ったこともないけど
 (Shake your head)
 (首を横に振る)
 Yes miss!
-「ありがとう！」
+ありがとう！
 (Wiggle in place happily)
-(縄の感触に悦ぶ)
+(縄の感触に浸る)
 Actually, I'm having second thoughts...
-「やっぱりやめておく」
+やっぱりやめておく
 (Shake your head nervously)
 (首を横に振る)
 Fine. You win.
-「わかった、好きにして」
+わかった、好きにして
 (Moan and giggle)
 (頷く)
 Go away! (PERCENT chance to avoid)
-「いや、はなれて！」(PERCENT の確率で拒否)
+いや、はなれて！(PERCENT の確率で拒否)
 (Shake your head and moan) (PERCENT chance to avoid)
 (首を横に振り呻く)(PERCENT の確率で拒否)
 (The SPEAKER perks her ears as she sees you)|You've got a nice body.|I think it'll do better with some training!
@@ -18140,27 +18375,27 @@ Go away! (PERCENT chance to avoid)
 (The SPEAKER zaps you and places you in restrictive gear)|Hmph. Unruly girls need training!
 (SPEAKER に打ち据えられ、拘束具を取り付けられてしまった)|うん、言うこと聞かない子には調教が必要だね！
 This sounds like an interesting opportunity.
-「面白そうだね」
+面白そうだね
 (Nod excitedly)
 (頷く)
 No thanks, I know what that entails...
-「トレーニングじゃなくて調教でしょ……」
+トレーニングじゃなくて調教でしょ……
 (Shake your head)
 (首を横に振る)
 I'll sign it!
-「サインするよ」
+サインするよ
 (Accept the contract)
 (サインする)
 A contract? No way.
-「契約？やめておく」
+契約？やめておく
 (Refuse the contract)
 (サインしない)
 Fine. I'll sign it...
-「わかった、サインする……」
+わかった、サインする……
 (Moan and nod)
 (頷く)
 Never! (PERCENT chance to avoid)
-「やめて！」(PERCENT の確率で拒否)
+やめて！(PERCENT の確率で拒否)
 (Shake your head and frown) (PERCENT chance to avoid)
 (必死に首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
@@ -18184,27 +18419,27 @@ Never! (PERCENT chance to avoid)
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 (突然 SPEAKER が距離を詰めてきた)|(反応する前に足を取られ、組み伏せられてしまう)|(彼女に無理やり制服を着せられ、きつくロックされてしまった……)|追加でトレーニングが必要みたいですね……
 This sounds like an interesting opportunity.
-「面白そうだね」
+面白そうだね
 (Nod excitedly)
 (頷く)
 No thanks, I know what that entails...
-「遠慮しとく。あなた達がどういう組織かは知っているから……」
+遠慮しとく。あなた達がどういう組織かは知っているから……
 (Shake your head)
 (首を横に振る)
 Gladly!
-「喜んで」
+喜んで
 (Accept the contract)
 (受け入れる)
 W-where did you get that uniform? (Refuse)
-「こんな制服を着ろと？」(抵抗する)
+こんな制服を着ろと？(抵抗する)
 (Refuse the contract)
 (抵抗する)
 Fine. I'll sign it...
-「わかった、組織に入る……」
+わかった、組織に入る……
 (Moan and nod)
 (頷く)
 Never! (PERCENT chance to avoid)
-「嫌！」(PERCENT の確率で拒否)
+嫌！(PERCENT の確率で拒否)
 (Shake your head and frown) (PERCENT chance to avoid)
 (首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
@@ -18228,27 +18463,27 @@ Never! (PERCENT chance to avoid)
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 (SPEAKER が突然動き出した)|(素早い動きに翻弄され、押し倒されてしまう)|(あっという間に制服を着せられてしまった)|少し躾ける必要がありますね……
 This sounds like an interesting opportunity.
-「興味深いわね」
+興味深いわね
 (Nod excitedly)
 (頷く)
 No thanks, I know what that entails...
-「やめておくわ。あなた達が何をしているのか知ってるから」
+やめておくわ。あなた達が何をしているのか知ってるから
 (Shake your head)
 (首を横に振る)
 Gladly!
-「喜んで」
+喜んで
 (Accept the contract)
 (受け入れる)
 W-where did you get that uniform? (Refuse)
-「こんなのを着なきゃいけないの？」(抵抗する)
+こんなのを着なきゃいけないの？(抵抗する)
 (Refuse the contract)
 (抵抗する)
 Fine. I'll sign it...
-「わかった、入団する……」
+わかった、入団する……
 (Moan and nod)
 (頷く)
 Never! (PERCENT chance to avoid)
-「断る！」(PERCENT の確率で拒否)
+嫌！(PERCENT の確率で拒否)
 (Shake your head and frown) (PERCENT chance to avoid)
 (首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER perks her ears as she sees you)|Glory to the blessed kitty!|Are you prepared to join us?
@@ -18272,27 +18507,27 @@ Never! (PERCENT chance to avoid)
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 (SPEAKER は一瞬で距離を詰めてきた)|(そしてろくな抵抗もできずに押し倒されてしまう)|(彼女にペットスーツを着せられてしまった……)|これで猫を傷つけることもできまい……
 Yes! I love the blessed kity!
-「うん、猫大好き」
+うん、猫大好き
 (Nod excitedly)
 (頷く)
 No, you guys are a bunch of weirdos.
-「変人の集まりに興味はないかな」
+変人の集まりに興味はないかな
 (Shake your head)
 (首を横に振る)
 Yes! I will be nice to the kitties!
-「猫に優しくするよ」
+猫に優しくするよ
 (Join them)
 (誓う)
 Wait, I didn't agree to that! (Refuse)
-「誓えないわ」(抵抗する)
+誓えないわ(抵抗する)
 (Refuse)
 (抵抗する)
 Okay fine... I won't hurt the kitties. (Join them)
-「わかった……私は猫に優しくする」
+わかった……私は猫に優しくする
 (Moan and nod)
 (頷く)
 Never! (PERCENT chance to avoid)
-「絶対に嫌」(PERCENT の確率で拒否)
+絶対に嫌(PERCENT の確率で拒否)
 (Shake your head and frown) (PERCENT chance to avoid)
 (首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER does a curtsy)|Why hello there!|You have a wonderful bod-er, book!|Would you like to help me?
@@ -18316,27 +18551,27 @@ Never! (PERCENT chance to avoid)
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 (SPEAKER が恐るべき速度で突っ込んできた)|(気づいたときには足を取られ、尻餅をついてしまう)|(彼女は無理やりドレスを着せてきた……)|少しアシスタントとしての心構えを叩き込む必要がありますわね。
 Sure!
-「いいよ」
+いいよ
 (Nod excitedly)
 (頷く)
 Nope.
-「やめておく」
+やめておく
 (Shake your head)
 (首を横に振る)
 Sign me up!
-「わかった」
+わかった
 (Accept the position)
 (受け入れる)
 And wear tacky clothes all the time?
-「ずっとそんなダサい服を着なきゃいけないの？」
+ずっとそんなダサい服を着なきゃいけないの？
 (Refuse the position)
 (抵抗する)
 Fine... sign me up.
-「わかった……」
+わかった……
 (Moan and nod)
 (頷く)
 Why don't you try it on yourself! (PERCENT chance to avoid)
-「自分で試しなさいよ！」(PERCENT の確率で拒否)
+自分で試しなさいよ！(PERCENT の確率で拒否)
 (Shake your head and frown) (PERCENT chance to avoid)
 (首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER runs up to you)|Wow! You make a fine specimen-er, I mean...|Nice to meet you!
@@ -18360,27 +18595,27 @@ Why don't you try it on yourself! (PERCENT chance to avoid)
 (The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as she breaks a glass vial)|(A suit of blue latex envelops you!)
 (SPEAKER は小さく首を傾げた)|わかった、諦めよう。|(立ち去ろうとすると、背中から”冗談だ”という声と共に瓶の割れる音が聞こえてきた)|(突如身体を青いゴムが包み込んだ！)
 ...Hello?
-「えっと？」
+えっと？
 (Nod excitedly)
 (頷く)
 You guys are crazy.
-「狂ってるわね」
+狂ってるわね
 (Shake your head)
 (首を横に振る)
 Gladly!
-「喜んで」
+喜んで
 (Accept the offer)
 (受け入れる)
 W-where did you get that uniform? (Refuse)
-「こんなのを着ろと？」(抵抗する)
+こんなのを着ろと？(抵抗する)
 (Refuse the offer)
 (抵抗する)
 Fine. I'll be your assistant.
-「わかった、アシスタントになる」
+わかった、アシスタントになる
 (Moan and nod)
 (頷く)
 Go find someone else. (PERCENT chance to avoid)
-「悪いけど他をあたって！」(PERCENT の確率で拒否)
+悪いけど他をあたって！(PERCENT の確率で拒否)
 (Shake your head and frown) (PERCENT chance to avoid)
 (首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER greets you)|Normally we don't meddle in mortal affairs.|But you, Outsider, are different.|Let's have a conversation.
@@ -18404,27 +18639,27 @@ Go find someone else. (PERCENT chance to avoid)
 (The SPEAKER scoffs)|(Her magic suddenly binds you tightly in glowing ropes)|Amateur.
 (SPEAKER は嘲笑した)|(彼女が魔法を唱えると、輝く縄で縛られてしまった)|雑魚ですわね。
 I'm interested. (Talk with her)
-「わかった」(話す)
+わかった(話す)
 (Nod excitedly)
 (頷く)
 No thanks.
-「遠慮しとく」
+遠慮しとく
 (Shake your head)
 (首を横に振る)
 I accept your gracious offer!
-「謹んでお受けいたします」
+謹んでお受けいたします
 (Accept)
 (受け入れる)
 I won't be a slave to you.
-「奴隷にはならないわ」
+奴隷にはならないわ
 (Refuse)
 (抵抗する)
 Fine, fine... I will accept.
-「わかった、わかった……受け入れます」
+わかった、わかった……受け入れます
 (Moan and nod)
 (頷く)
 No way. (PERCENT chance to avoid)
-「嫌だ！」(PERCENT の確率で拒否)
+嫌！(PERCENT の確率で拒否)
 (Shake your head and frown) (PERCENT chance to avoid)
 (首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER smiles at you)|Mortal.
@@ -18448,27 +18683,27 @@ No way. (PERCENT chance to avoid)
 (The SPEAKER scoffs and snaps her fingers)|(Metallic restraints come at you from all angles and snap in place tightly)|(A gag forces itself into your mouth)|Now then, what were we saying?
 (SPEAKER は嘲笑し、指をパチンと鳴らす)|(金属でできた拘束具が周囲を取り囲み、一斉に向かってきた)|(猿轡が口の中に入ってくる)|さて、何の話をしていたのだったかしら？
 Yes?
-「うん？」
+うん？
 (Nod excitedly)
 (頷く)
 I don't talk to monsters!
-「モンスターとは話さないようにしてるの」
+モンスターとは話さないようにしてるの
 (Shake your head)
 (首を横に振る)
 O-okay. (Kneel)
-「わ、わかった」(跪く)
+わ、わかった(跪く)
 (Kneel)
 (跪く)
 I refuse!
-「嫌よ！」
+嫌よ！
 (Refuse)
 (抵抗する)
 Then it looks like I have no choice. (Join her)
-「選択肢はないみたいね」(受け入れる)
+選択肢はないみたいね(受け入れる)
 (Moan and nod)
 (頷く)
 I will never bow to you! (PERCENT chance to avoid)
-「あなたになんか膝はつかない」(PERCENT の確率で拒否)
+あなたになんか膝はつかない(PERCENT の確率で拒否)
 (Shake your head and frown) (PERCENT chance to avoid)
 (首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER waves)|You seem like an exceptional individual.|What do you think of joining the Guild?
@@ -18492,27 +18727,27 @@ I will never bow to you! (PERCENT chance to avoid)
 (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as she ties you in a strict rope hogtie...)|(She dusts off her hands)|We'll have a talk when you get out of that, okay?
 (突然 SPEAKER に床に押し倒された)|(素早く手足を縛られ、背中で繋がれてしまった……)|(彼女は手についたホコリを払っている)|解き終わったらもう一度話し合おうか？
 This sounds like an interesting opportunity.
-「面白そうだね」
+面白そうだね
 (Nod excitedly)
 (頷く)
 I have no interest in joining the guild.
-「組織とかには興味ないかな」
+組織とかには興味ないかな
 (Shake your head)
 (首を横に振る)
 Gladly!
-「これからよろしく」
+これからよろしく
 (Accept the offer)
 (受け入れる)
 What if I am one of those bad actors? (Refuse)
-「私が悪人だったら？」(拒否する)
+私が悪人だったら？(拒否する)
 (Refuse the offer)
 (拒否する)
 Fine... (Join)
-「わかった……」(参加)
+わかった……(参加)
 (Moan and nod)
 (頷く)
 Go away. (PERCENT chance to avoid)
-「失せなさい！」(PERCENT の確率で拒否)
+失せなさい！(PERCENT の確率で拒否)
 (Frown at her) (PERCENT chance to avoid)
 (睨みつける)(PERCENT の確率で拒否)
 (The SPEAKER beeps)|Prisoner 74121 identified.|Subject not registered in database.
@@ -18536,36 +18771,36 @@ Go away. (PERCENT chance to avoid)
 (The SPEAKER blasts you with a stunning ray and captures you)|Target neutralized.
 (SPEAKER にブラスターで撃たれ、気がつくと捕まっていた)|ターゲット制圧。
 Please register me.
-「登録して」
+登録して
 (Stop to talk to the robot)
 (ロボットの会話を止める)
 Prisoner 74121? You must be mistaken...
-「囚人番号74121？それは間違ってるよ……」
+囚人番号74121？それは間違ってるよ……
 (Avoid the robot)
 (ロボットから逃げる)
 Prisoner 74121 reporting. I will be a good girl.
-「囚人番号74121が宣言します、"私はいい子にします"」
+囚人番号74121が宣言します、"私はいい子にします"
 (Accept the contract)
 (受け入れる)
 Actually, I am an administrator. (Refuse)
-「私は管理者だよ」(抵抗する)
+私は管理者だよ(抵抗する)
 (Refuse the contract)
 (抵抗する)
 I'm sorry, I will be a good girl!
-「わかった、"私はいい子にします"」
+わかった、"私はいい子にします"
 (Moan and nod)
 (頷く)
 What? (PERCENT chance to avoid)
-「何！？」(PERCENT の確率で拒否)
+何！？(PERCENT の確率で拒否)
 (Shake your head and frown) (PERCENT chance to avoid)
 (首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER smiles)|I used to be an adventurer like you.|Then I joined up with the Dragonhearts!
-(SPEAKER は笑顔を向けてきた)|ちょうどキミのような冒険者を探していたんだ。|ドラゴンハーツとして共に戦ってくれる仲間を！
+(SPEAKER は笑顔を向けてきた)|ちょうどキミのような冒険者を探していたんだ。|ドラゴンハートとして共に戦ってくれる仲間を！
 (The SPEAKER clears her throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!
 (SPEAKER は軽く咳払いをする)|ああ、私達は新人を募集しているんだ。|正義のために戦う意志があるなら、いつでも大歓迎だ！
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
-(SPEAKER と固い握手を交わした)|ようこそドラゴンハーツへ！
-(The SPEAKER tilts her head and shrugs)|Ah well.
+(SPEAKER と固い握手を交わした)|ようこそドラゴンハートへ！
+(The SPEAKER tilts her head and shrugs)|Ah well. 
 (SPEAKER は首をかしげて肩をすくめる)|ああ、そうか。
 (The SPEAKER nods)|Fair enough.
 (SPEAKER は素直に頷いた)|残念だ。
@@ -18576,31 +18811,31 @@ What? (PERCENT chance to avoid)
 (The SPEAKER frowns and cracks her knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat...
 (SPEAKER は険しい表情を見せ、拳を鳴らす)|私の疑念は正しかったようだ！|ちょっと別の話をしようか……
 (The SPEAKER giggles)|Hehe, just messin' with ya.|Anyway, welcome to the sisterhood!
-(SPEAKER は笑みを浮かべる)|なに、ちょっと試しただけだ。|ようこそドラゴンハーツへ！
+(SPEAKER は笑みを浮かべる)|なに、ちょっと試しただけだ。|ようこそドラゴンハートへ！
 (The SPEAKER grabs you and ties you up)|You won't be making trouble like that any time soon.
 (SPEAKER に掴まれ、瞬く間に縛り上げられてしまった)|これでしばらくはトラブルを起こさないだろう。
 I wish I could join you.
-「入ってみたい」
+入ってみたい
 (Nod excitedly)
 (頷く)
 Please go away.
-「結構よ」
+結構よ
 (Back away)
 (後退りする)
 Great! Sign me up!
-「光栄に思う。サインするわ」
+光栄に思う。サインするわ
 (Join)
 (参加する)
 Fight for justice? Sounds restrictive...
-「正義のために？堅苦しいわね」
+正義のために？堅苦しいわね
 (Back away)
 (後退りする)
 Actually, justice doesn't sound bad!
-「よく考えたら正義も悪くないかも……」
+よく考えたら正義も悪くないかも……
 (Moan and nod)
 (頷く)
 What are you going to do about it? (PERCENT chance to avoid)
-「どうするつもり！？」(PERCENT の確率で拒否)
+何をするつもり！？(PERCENT の確率で拒否)
 (Shake your head and frown) (PERCENT chance to avoid)
 (首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER waves and calls you over)|Looks like you've made a name for yourself.|What do you say to a little agreement?
@@ -18609,7 +18844,7 @@ What are you going to do about it? (PERCENT chance to avoid)
 (SPEAKER は咳払いをする)|アンタは今私達の縄張りに侵入しているわけだけど。|条件さえ飲んでくれれば私達も見逃してやろうと思う。|私達に危害を加えないと約束してほしいんだ。
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER と固い握手をかわした)|これからよろしく頼むよ！
-(The SPEAKER tilts her head and shrugs)|Ah well.
+(The SPEAKER tilts her head and shrugs)|Ah well. 
 (SPEAKER は首をかしげて肩をすくめる)|ああ、そうかい。
 (The SPEAKER nods)|Fair enough.
 (SPEAKER は素直に頷いた)|そうかい。
@@ -18624,27 +18859,27 @@ What are you going to do about it? (PERCENT chance to avoid)
 (The SPEAKER catches you and trusses you up)|Maybe we'll just have to find you an owner, then!|Hehe.
 (SPEAKER に捕まり、ぐるぐる巻きにされた)|それじゃあアンタの新しいご主人さまでも探しに行くか。|へへへ。
 I'm all ears.
-「何？」
+何？
 (Listen closely)
 (耳を澄ます)
 I don't deal with criminals.
-「犯罪者とは取引しない」
+犯罪者とは取引しない
 (Back away)
 (後ろに退く)
 It's a deal!
-「交渉成立ね」
+交渉成立ね
 (Mumble in agreement)
 (同意する)
 You don't understand. This is MY turf.
-「ここは私の縄張りよ」
+ここは私の縄張りよ
 (Scoff at her through your gag)
 (猿轡越しにあざ笑う)
 Haha, just kidding. I'm with you.
-「冗談よ、手を組みましょう」
+冗談よ、手を組みましょう
 (Moan and nod)
 (頷く)
 Put 'em up! (PERCENT chance to avoid)
-「やめなさい！」(PERCENT の確率で拒否)
+やめなさい！(PERCENT の確率で拒否)
 (Shake your head and frown) (PERCENT chance to avoid)
 (首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER stops walking and speaks)|You there!|It seems your attunement with magic is high.|Join us.
@@ -18668,27 +18903,27 @@ Put 'em up! (PERCENT chance to avoid)
 (The SPEAKER uses magic to force you.)|There. Try not to succumb to your desires too much.
 (SPEAKER は魔法を使い実力行使に出た)|よし、力に溺れないようにな。
 Um... sure?
-「えっと、そうなの？」
+えっと、そうなの？
 (Nod excitedly)
 (頷く)
 Get away from me!
-「近寄らないで！」
+近寄らないで！
 (Shake your head)
 (首を横に振る)
 Shiny... (Put them on)
-「綺麗だね……」(装備する)
+綺麗だね……(装備する)
 (Let her put them on you)
 (付けてもらう)
 What? No way! (Refuse)
-「やめなさい！」(抵抗する)
+やめなさい！(抵抗する)
 (Refuse the contract)
 (抵抗する)
 Okay, I will wear them...
-「わかった、付けてみる……」
+わかった、付けてみる……
 (Moan and nod)
 (頷く)
 Monster! (PERCENT chance to avoid)
-「この化け物！」(PERCENT の確率で拒否)
+この化け物！(PERCENT の確率で拒否)
 (Shake your head and frown) (PERCENT chance to avoid)
 (首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER does a short bow as she sees you)|Um... hi!|I have a letter for you...
@@ -18712,27 +18947,27 @@ Monster! (PERCENT chance to avoid)
 (The SPEAKER frowns and waves her wand)|(A bunch of ropes come out of the ground and restrain you)|Hmmph. I'll tell them you signed it anyway.|I can't go back empty handed.
 (SPEAKER は眉をひそめ、杖を振った)|(地面から縄が現れ、あっという間に縛られてしまった)|ふぅ、サインするまで帰ってくるなと言われているんです……|手ぶらじゃ帰れないんです……
 Thank you for delivering it. (Read it)
-「配達ありがとう」(手紙を読む)
+配達ご苦労さま(手紙を読む)
 (Read the letter)
 (手紙を読む)
 There's nothing good inside that letter.
-「手紙なんて大体ろくなことが書かれていない」
+手紙なんて大体ろくなことが書かれていない
 (Shake your head)
 (首を横に振る)
 Great! Wonderful!
-「いいじゃない！」
+いいじゃない！
 (Accept the contract)
 (受け入れる)
 There is no way I'd accept.
-「悪いけど教えるなんてできない」
+悪いけど教えるなんてできない
 (Refuse the contract)
 (断る)
 Fine. I'll read it. (Join the College as an instructor)
-「わかった、これからよろしくね」(魔法学校のインストラクターになる)
+わかった、これからよろしくね(魔法学校のインストラクターになる)
 (Moan and nod)
 (頷く)
 This is unethical! I refuse! (PERCENT chance to avoid)
-「そんなことに同意できるわけない！」(PERCENT の確率で拒否)
+そんなことに同意できるわけない！(PERCENT の確率で拒否)
 (Shake your head and frown) (PERCENT chance to avoid)
 (首を横に振る)(PERCENT の確率で拒否)
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
@@ -18756,27 +18991,27 @@ This is unethical! I refuse! (PERCENT chance to avoid)
 (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 (SPEAKER はこちらが反応する前に素早く動いた)|(脚に何かが当たる感触を認識した時、既に地面に倒れていた)|(組み伏せられ、制服を無理やり着せられてしまった)|あなたには追加で調教が必要みたいですね……
 This sounds like an interesting opportunity.
-「とても興味深いね」
+とても興味深いね
 (Nod excitedly)
 (頷く)
 No thanks, I know what that entails...
-「何をやっているか知ってるから遠慮しておく……」
+何をやっているか知ってるから遠慮しておく……
 (Shake your head)
 (首を横に振る)
 Gladly!
-「喜んで！」
+喜んで！
 (Accept the contract)
 (受け入れる)
 W-where did you get that uniform? (Refuse)
-「そんな制服どこで手に入れたの？」(抵抗)
+そんな制服どこで手に入れたの？(抵抗)
 (Refuse the contract)
 (抵抗する)
 Fine. I'll sign it...
-「わかった……」
+わかった……
 (Moan and nod)
 (頷く)
 Never! (PERCENT chance to avoid)
-「絶対に嫌！」(PERCENT の確率で拒否)
+絶対に嫌！(PERCENT の確率で拒否)
 
 (Shake your head and frown) (PERCENT chance to avoid)
 (顔をしかめて首を横に振る)(PERCENT の確率で拒否)
@@ -18973,11 +19208,11 @@ Never! (PERCENT chance to avoid)
 (The SPEAKER smiles)|I can never get enough of these.
 (SPEAKER は笑顔になった)|少々物足りませんね。
 (The SPEAKER smiles)|Elemental magic, interesting stuff.
-(SPEAKER は笑顔になった)|エレメンタルの魔法は興味深いですね。
+(SPEAKER は笑顔になった)|精霊の魔法は興味深いですね。
 (The SPEAKER tilts her head)|Why is it wet?
 (SPEAKER は首を傾げた)|なぜ濡れているのでしょうか？
 (The SPEAKER smiles)|Elemental magic, interesting stuff.
-(SPEAKER は笑顔になった)|エレメンタルの魔法は興味深いですね。
+(SPEAKER は笑顔になった)|精霊の魔法は興味深いですね。
 (The SPEAKER smiles)|Gladly, this will be useful to my studies.
 (SPEAKER は笑顔になった)|これは勉強に役立ちそうです！
 (The SPEAKER smiles)|My legs don't carry me like they used to~
@@ -19108,7 +19343,7 @@ Never! (PERCENT chance to avoid)
 (売る)
 
 You're giving me everything you have.
-「持ち物全部よこしなさい」
+持ち物全部よこしなさい
 (Flail threateningly at her)
 (威嚇する)
 (Do it)
@@ -19284,6 +19519,12 @@ There is no valid space next to you!
 (SPEAKER は後ずさった)|何もやらかしていないよね？
 (The SPEAKER beeps)|This unit does not know how to respond...
 (SPEAKER はビープ音を立てている)|不明ナ命令……
+(The SPEAKER moans)|Mmmmmph~
+(SPEAKER は猿轡越しに呻いている)|んんぅ～
+
+(The SPEAKER appears too busy to discuss with you)
+(SPEAKER は話す余裕がないようだ)
+
 Got something for me?
 何か用？
 (Present your body to her~)
@@ -19299,15 +19540,15 @@ Got something for me?
 (The SPEAKER flashes its lights)|Calculating strictness threshold...
 (SPEAKER はランプをチカチカと点灯させている)|拘束ノ許容量ヲ計算中……
 Yes please! (Hold out your wrists)
-「ええ、お願い」(両手を差し出す)
+ええ、お願い(両手を差し出す)
 (Nod and blush)
 (頷く)
 Maybe not...
-「やっぱり今はいい……」
+やっぱり今はいい……
 (Shake your head)
 (首を振る)
 Why don't we have a little fun?
-「一緒に……しない？」
+一緒に……しない？
 (Play with her)
 (彼女と楽しむ)
 (The SPEAKER smiles)|Am I thinking what you're thinking?
@@ -19376,6 +19617,28 @@ Why don't we have a little fun?
 (SPEAKER は拘束具から抜け出す手助けをやめた)
 (You sigh as you realize you really need her help.)
 (まだ彼女の助けが必要だったかもしれない)
+
+(Kick her out of your party)
+(パーティから追放する)
+(Confirm? She will stop following you)
+(本当に？彼女はもうついてこなくなる)
+(Remove from party)
+(パーティから除外)
+(The SPEAKER understands.)
+(SPEAKER は残念そうにしている)
+(You decide to keep her.)
+(やめておいた)
+(Add her to your party)
+(パーティに加える)
+(Confirm? She will follow you across floors. You can only have 3 party members)
+(本当に？彼女はフロアをまたいでついてくる。パーティメンバーは3人まで)
+(Add to party)
+(加える)
+(The SPEAKER is happy to join you)
+(SPEAKER は嬉しそうにしている)
+(You decide not to.)
+(やめておいた)
+
 (Sell items)
 (アイテムを売る)
 (Buy items)
@@ -19429,56 +19692,56 @@ Fuuka pouts as she tickles you relentlessly! (DamageTaken)
 (You find a girl wearing an ornate dress)|(She glances at you)|And who might you be?
 (フロアの中央に豪奢なドレスを着た少女が佇んでいた)|(こちらに気付いた彼女が一瞥する)|あなたは誰？
 I should be asking the same of you.
-「先に名乗って」
+先に名乗って
 (Growl at her)
 (唸り声を上げる)
 (She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
 (彼女は涼しげに微笑む)|私はフウカ。地表の言葉で言うなら"風の歌"よ。|あなたは？
 What kind of name is that?
-「どういう意味？」
+どういう意味？
 (SPEAKER frowns)|It means Windsong!|I bet yours isn't anywhere nearly as cool.
 (SPEAKER は顔をしかめた)|そのまま風の歌よ！|少なくともあなたの名前よりは趣があると思うけど！？
 (SPEAKER looks enraged)|Because names and meanings are different things!|My name uses the script from the Old Civilization!|You're just a poser!
 (SPEAKER は怒り出した)|漢字なんだから読み方とか色々あるの！|あなたの名前とは違って旧文明のものなんだから色々と違うのよ！|もう少し勉強しなさい！
 Why not just call yourself Windsong?
-「じゃあなんで"風の歌"って名乗らないの？」
+じゃあなんで"風の歌"って名乗らないの？
 
 I am an adventurer.
-「私はただの冒険者」
+私はただの冒険者
 Mmmmph.
-「んうぅ」
+んうぅ
 (SPEAKER blushes)|Ah, right then...
-(SPEAKER は赤面している)|ああ、喋れないわね……
+(SPEAKER は赤面している)|ああ、喋れないわよね……
 
 (SPEAKER giggles)|Very well. I don't really care who you are.
 (SPEAKER はクスクスと笑っている)|まあいいわ、あなたが誰であろうと知ったことじゃないし。
 I do not need to introduce myself.
-「自己紹介の必要はないと思うけど」
+自己紹介の必要はないと思うけど
 Neither do I.
-「私もそう思う」
+私もそう思う
 
 I'm an adventurer. And who are you?
-「私はただの冒険者。あなたは？」
+私はただの冒険者。あなたは？
 Mmmmm... (Blush)
-「んむぅぅ……」
+んむぅぅ……
 (She grins)|My name is Fuuka, with the letters for Wind and Song.|The reincarnated ones call me Windsong,|they aren't very bright though.
 (SPEAKER はニッコリと笑う)|私はフウカ。"風の歌"と書いてフウカよ。|蘇りし者達の間では風の歌と呼ばれているわ。|でも、皆そういうのに明るくなくてね。
 Reincarnated ones?
-「蘇りし者？」
+蘇りし者？
 (SPEAKER tilts her head)|I believe the term is 'Zombie' in the common tongue.
 (SPEAKER は話を続ける)|そうね、一般的には"ゾンビ"とか呼ばれているものよ。
 (SPEAKER enjoys the discussion)|When people die, their spirits pass on to the next life.|But with the right tricks, one can grant them a second chance.|I plan to give them all proper bodies...|Eventually.
 (SPEAKER は饒舌に話し出す)|人が死んだ時、魂は転生して次の人生を送るの。|でも、とある秘術を使えば魂は再び同じ肉体に戻る。それが蘇りし者。|墓場の皆の魂を戻すつもりよ。|いずれね。
 How do they get reincarnated?
-「どうやって魂を戻したの？」
+どうやって魂を戻したの？
 (SPEAKER enjoys the discussion)|No, they're people!|People who died long ago.|Now they live a new life, safeguarded by my Resurrection Arts~
 (SPEAKER は捲し立ててきた)|違うわ、彼女たちは生きているのよ！|はるか昔に一度死んで、|今私の秘術によって二度目の人生を送っているのよ！
 Aren't they dolls? They can barely speak.
-「ただの人形じゃないの？彼女たちはよく喋るけど。」
+ただの人形じゃないの？彼女たちはよく喋るけど。
 (SPEAKER tilts her head)|...They don't? That's news to me...|but I've seen a number of white-haired old witches this past decade.|Surely they're near the end of their days?
 (SPEAKER は首を傾げる)|……それ本当？初めて聞いたわ……|それに、これまで何人も白髪の生えた老魔術師を見てきたわ。|彼女たちはもうお迎えが近いんじゃないの？
 But people don't die anymore.
-「でも、もう私達人間は死なない」
+でも、もう私達人間は死なない
 
 
 (SPEAKER enjoys the discussion)|No, they're people!|People who died long ago.|Now they live a new life, safeguarded by my Resurrection Arts!
@@ -19488,98 +19751,98 @@ But people don't die anymore.
 (SPEAKER は饒舌に話し出す)|人が死んだ時、魂は転生して次の人生を送るの。|でも、この世界に留まり続ける者も存在する。|もう一度人生を歩めるのよ。|私はそういう人たちに身体を提供しているのよ……|いずれね。
 
 What do you do now that people don't die?
-「今はもう人は死なないけど？」
+今はもう人は死なないけど？
 
 Your Resurrection Arts don't seem very effective.
-「あまり効果的ではないように見えるけど」
+あまり効果的ではないように見えるけど
 
 (SPEAKER looks puzzled)|The 'Archmagus'? Immortal?|Nonsense, I've seen plenty of old humans come by.|The looks on their faces when I told them I could make them young again!
 (SPEAKER は混乱している)|大魔術師？不死？|笑えないわね、私は年老いた人間を何人も見てきたわ！|若返ることができると知ったときの彼女たちの表情！今でも憶えているわ！
 The Archmagus made humans immortal.
-「偉大なる大魔術師が人間を不死にしたの」
+偉大なる大魔術師が人間を不死にしたの
 
 (SPEAKER scratches her chin)|So she managed it then... after all this time...
-(SPEAKER は頬を掻いている)|彼女は……今更なんとかしたのね……
+(SPEAKER は頬を掻いている)|彼女は……今になってやり遂げたのね……
 Nobody's seen what happens when you get THAT old.
-「私達は誰も年老いた姿というものを知らない」
+私達は誰も年老いた姿というものを知らない
 (SPEAKER scratches her chin)|Hmm... so she figured out restoration but not rejuvenation...
 (SPEAKER は頬を掻いている)|傷は治るけど若返ったりはしない……
 I've been stabbed, maimed, burned... I got better.
-「私も刺されたし、埋められたし、焼かれたりもした。でも生きている」
+私も刺されたし、埋められたし、焼かれたりもした。でも生きている
 (SPEAKER scratches her chin)|It looks like I'll have to catch up on some modern science...|She must have succeeded somehow...
-(SPEAKER は頬を掻いている)|現代科学に追いつかなきゃ……|奴らは……何かしたに違いないわ……
+(SPEAKER は頬を掻いている)|現代科学に追いつかなきゃ……|奴らは……きっととんでもない発明をしたのね……
 The Alchemists would love to have a word with you
-「錬金術師達があなたと話したがっている」
+錬金術師達があなたと話したがっている
 (SPEAKER folds her arms)|That woman... the leader of...|...they called it the Old Civilization in your tongue.|Long ago she performed countless experiments on people.|All she cared about was immortality.
 (SPEAKER 腕を組み、話し始める)|あの女……|あなた達の言葉でいうと、旧文明かしら。彼女はそこのリーダーだったの。|かつて、彼女は数え切れないくらいの人体実験をしていたわ。|全ては不死の実現のためにね。
 She?
-「彼女？」
+彼女？
 (SPEAKER folds her arms)|That was the purpose of the Old Civilization.|To capture people and perform experiments on them.|That woman... she claimed she could 'bring forth a new era'|Or something like that...
 (SPEAKER 腕を組み、話し始める)|それが旧文明の目的だったの。|人体実験のために人々を捕まえた。|あの女は……自分こそが"新時代の幕を切る者"だと。|そんな感じのことを言っていたわ。
 It's been about a century.
-「その話は一世紀くらい前だったと聞いてる」
+その話は一世紀くらい前だったと聞いてる
 (SPEAKER shrugs)|To think I've watched this graveyard since the rise and fall of civilization!|But if you're supposedly immortal, you know what that means...|You get to be my pet for a very long time!
 (SPEAKER は肩をすくめる)|私は文明の始まりから終わりまで、ずっとこの墓地を眺めてきたの。|あなたも死なないなら、この意味がわかるでしょ……？|あなたもずっと私のペットになるのよ！
 The Old Civilization is nothing but old robots now.
-「もう旧文明なんて古いロボットしかいない」
+もう旧文明なんて古いロボットしかいない
 (SPEAKER frowns)|Hey, it's not my fault!|Adventurer types are always 'shoot first, ask questions later'|Plus, I've been quite busy these last thousand years.|I can't be bothered to keep track of recent developments!
 (SPEAKER は顔をしかめる)|知ったことじゃないわよ！|冒険者はまず殴ってから会話しようとするやつばっかりなんだから！|それにここ1000年ずっと忙しかったの！|最近の流行なんて全然わからないのよ！
 ...Am I really the first to tell you this?
-「こんなことを言うのは私が初めて？」
+こういう会話は初めてなの？
 (SPEAKER blushes)|Yeah! I remember now...|She tried to put the world into that doll factory of hers.|I guess she succeeded in some ways if not others.|But she never figured out eternal youth by the looks of it!|I could help with that, if you'd be my pet~
 (SPEAKER は赤面した)|ああ、思い出した……|彼女は世界を自分の人形工場にしようとしたのよ|ある意味では、成功したと言えるわね。|でも、"彼女は永遠の若さ"を理解できなかったようね。|私のペットになるんだったら、教えてあげてもいいけど？
 Sariel Vinlaga.
-「サリエル・ヴィンラーガ」
+サリエル・ヴィンラーガ
 (SPEAKER smiles)|What, you'd like to join them~?|I don't know what she was doing down there.|But things must be pretty bad if society forgot it all by now.|Perhaps you're a brainwashed doll yourself?|(SPEAKER giggles)
 (SPEAKER は笑顔になった)|何？知りたいの～？|まぁ、彼女があそこで何をしていたのかは知らないわ。|でも、長い間放置されているなら相当深刻な事態になっているかもしれないわね。|あなた、自分が人形じゃないって言い切れる？|(彼女は嫌らしく笑っている)
 Doll factory? Tell me more...
-「人形工場？」
+人形工場？
 (SPEAKER shrugs)|My memory doesn't serve me well these days.|But you can be sure of it.|She stole some of my pets from me for her experiments.|I'll never forgive her for that.
 (SPEAKER は肩をすくめる)|最近記憶力が悪くてね。|でも、それだけは確かよ。|彼女は実験のために私のペットを盗んだの。|今でもそのことは忘れないわ。
 Rumors, all unsubstantiated.
-「噂は噂だよ」
+噂は噂だよ
 (SPEAKER jumps up and down)|You would!?|That's wonderful~|My resurrection magic can make you young again forever!|All you have to do is pledge your soul to Nirin, the Goddess of Restoration!
 (SPEAKER は喜びに飛び跳ねた)|本当！？|最高ね！|私の秘術で永遠の若さを授けてあげるわ！|さあ、再生の神ニリンに魂を捧げなさい！
 I'd love to be your pet!
-「あなたのペットになりたい」
+あなたのペットになりたい
 (SPEAKER pouts)|Hmmph. Suit yourself.
 (SPEAKER は不機嫌そうにしている)|そう……
 Pledge my soul? That changes things...
-「魂を？それはちょっと……」
+魂を？それはちょっと……
 
 I am an adventurer.
-「ただの冒険者よ」
+ただの冒険者よ
 Mmmmph.
-「んんぅ」
+んんぅ
 (SPEAKER giggles)|Hehe... you sound interested.
 (SPEAKER はくすりと笑った)|ふふふ、私に興味があるの？
 
 (SPEAKER frowns)|Never ask a woman about her age!
 (SPEAKER は口をとがらせる)|乙女に年齢を訊くなんて失礼な奴！
 I take it you're the hag in charge?
-「あなたがここのボスのロリゾンビババアね」
+あなたがここのボスのゾンビババアね
 You are in charge, right?
-「あなたがここのボスね」
+あなたがここのボスね
 (Giggle)
-「ん……ふふ」(嘲笑する)
+ん……ふふ(嘲笑する)
 Don't mess with me, little girl.
-「邪魔しないで、お嬢ちゃん」
+邪魔しないで、お嬢ちゃん
 Mmpphgh? (Pout at her)
-「んん……」(微笑みかける)
+んん……(微笑みかける)
 (She smirks)|So you're that kind of visitor, huh?
 (彼女は微笑みながら問いかけてきた)|そういうタイプのお客さんなのね。
 That's right. How powerful are you?
-「そうだよ。あなたは強いの？」
+ええ。あなたは強いの？
 (She cracks her knuckles)|I have been practicing the resurrection arts for a thousand years.
 (彼女は指をパキパキと鳴らしている)|私は千年もの間復活の秘術を学び、実践してきた偉大な秘術師よ。
 (She smiles)|All the zombies you seee in the Graveyard?|They are my pets, and I care for each and every one of them.
 (彼女は笑顔で説明を始める)|墓地でゾンビを見たでしょう？|そういうことよ。彼女たちは私の大切なペットなの。
 What the heck are 'Resurrection Arts'?
-「復活の秘術って？」
+復活の秘術って？
 It's time for a true display of skill!
-「今こそ真の実力を見せる時よ」
+今こそ真の実力を見せる時ね
 Hmmph. (Look away)
-「ふんん……」(目をそらす)
+ふんん……(目をそらす)
 (She grins)|We'll wipe that pout off your face soon enough...
 (彼女は嫌らしい笑みを浮かべる)|すぐにその涎を舐め取ってあげるわ……
 (Shake your head)
@@ -19587,80 +19850,80 @@ Hmmph. (Look away)
 (She frowns)|Well, you will soon.
 (彼女は眉をひそめる)|そう、すぐにわかるわ。
 Pfff. Never heard of it.
-「ふふふ、そんなの聞いたことない」
+ふふふ、そんなの聞いたことない
 I bet I could do better.
-「私ならもう少し上手にやる」
+私ならもう少し上手にやる
 (Giggle)
 (嘲笑する)
 
 Why does that matter to you?
-「どうしてそんなことが重要なの？」
+どうしてそんなことが重要なの？
 (Stare at her silently, maintaining your posture)
 (姿勢を崩さずに彼女を見つめる)
 (She grins)|I am in charge of this place.|Everything that goes through here goes through me.|You may address me as Fuuka Windsong.
 (彼女は笑顔を向ける)|私はこの墓地の管理者。|そして抜けるには絶対にここを通らなきゃいけない。|私はフウカ、風の歌と書いてフウカよ。
 By what authority?
-「何の権限があってこんなことを？」
+何の権限があってこんなことを？
 (SPEAKER tilts her head)|Ummmm.... uh...|The Old Civilization! Of course!|I've been keeping their traditions for centuries.
 (SPEAKER は言葉をつまらせ、首を傾げる)|それは……えっと……|旧文明よ！そうだわ！|私は何世紀もずっと旧文明の伝統とかを守ってきたのよ！
 (SPEAKER blushes)|Umm... That's because...|Oh shut up!
 (SPEAKER は赤面している)|えっと、それは……|うるさいわね！
 You don't sound too confident.
-「なんで言い淀んだの？」
+なんで言い淀んだの？
 Who are you anyway?
-「ところであなたは誰？」
+ところであなたは誰？
 
 Fair enough. I am an adventurer.
-「まあいいわ、私はただの冒険者」
+まあいいわ、私はただの冒険者よ
 Hmmph.
-「ふんん……」
+ふんん……
 (SPEAKER giggles)|Is that a challenge?
 (SPEAKER は自信たっぷりに微笑む)|私に戦いを挑むと？
 (Nod calmly)
 (頷く)
 (SPEAKER grins)|Is that a challenge?
 (SPEAKER ニヤリと笑む)|私に戦いを挑むと？
-dFuukaDom_Brat,We'll see about that.
-「ええ」
+We'll see about that.
+ええ、そうよ
 Hmmph. (Scoff into your gag)
-「んん……」(猿轡越しに笑う)
+んん……(猿轡越しに笑う)
 It is indeed!
-「その通り」
+その通りよ
 (Giggle)
 (猿轡越しに笑う)
 
 I'm an adventurer, miss.
-「私は冒険者です」
+私はただの冒険者です
 Mmmpphh~ (Moan and wiggle seductively)
-「むぅぅ……」
+むぅぅ……
 (She grins)|Oh look at you!|I'm going to dress you up and make you my pet!|You can have all the scritches and snuggles you want!|My name's Fuuka!
 (彼女はこちらを見てニッコリと笑む)|あら、随分可愛らしい冒険者ね。|折角ここまで来れたんだし、ご褒美にペットにしていっぱい着飾ってあげるわ。|好きなだけもがいたり叫んだりしていいからね？|私の名前はフウカよ！
 A pet? What kind?
-「ペット？」
+ペット？
 (SPEAKER hops up and down excitedly)|Oh I've got dresses!|And all sorts of fun gear!|Maybe even this huge gag for you to chew on!
 (SPEAKER は興奮に小さく跳ね回る)|素敵なドレスを持っているの！|それに気持ちいいオモチャもいっぱいあるわ！|もちろん大きな猿轡もね！
 (SPEAKER grins)|Having second thoughts?
 (SPEAKER は笑顔を崩さない)|考え直すのね？
 That sounds... harsh.
-「それは……嫌かな」
+それは……嫌かな。
 ...Maybe
-「……そう」
+……そう
 Exciting!
-「面白そうね」
+面白そうね
 That sounds great. But who are you miss?
-「それは面白そうね、ところであなたは何者？」
+それは面白そうね、ところであなたは何者？
 Mmmmph~
-「むぅぅ……」
+むぅぅ……
 (SPEAKER giggles)|Hehe... We will have so much fun~
 (SPEAKER は悪戯な笑みを浮かべている)|ふふふ、一緒に楽しみましょう。
 (SPEAKER giggles)|You don't have to consent, dear~
 (SPEAKER は悪戯な笑みを浮かべている)|同意する必要なんてないわ。
 I never said I consented to being a pet!
-「同意した覚えはないけど？」
+同意した覚えはないけど？
 (Give her a puzzled look and shake your head)
 (必死に首を横に振る)
 No way!
-「やめて！」
+やめて！
 (Shake your head)
 (首を横に振る)
 (Sigh and shrug)
@@ -19668,59 +19931,59 @@ No way!
 (Attack her without saying anything)
 (何も言わずに攻撃する)
 (SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
-(SPEAKER は軽く咳払いし、口上を述べる)|我は聖なる墓所を護りし者。|我が許しなくして地上を這うことは決して許されぬ。|許可無き貴様が望むのは服従か？|それとも挑戦か？
+(SPEAKER は軽く咳払いし、口上を述べる)|我は聖なる墓所を護りし者。|我が許しなくして地を這うことは決して許されぬ。|許可無き貴様が望むのは服従か？|それとも挑戦か？
 I do what I want.
-「やりたいことをやるだけ」
+やりたいことをやるだけ
 (Glare at her and scoff)
 (彼女を睨み、嘲笑する)
 (SPEAKER makes a big grin)|I take that you wish to challenge me?|Very well!|Come at me!
 (SPEAKER は満面の笑みを浮かべている)|挑戦しにきたのね？|いいわ！|かかってきなさい！
 About those 'reincarnated ones'...
-「"蘇りし者達"について……」
+"蘇りし者達"について……
 You have no power over me
-「私のほうが強い」
+私のほうが強いわ
 Hmmph. (Stand proudly)
-「ふーっ……」(堂々と立つ)
+ふーっ……(堂々と立つ)
 (SPEAKER smiles)|Then let us fight!|If I win, I will make you my pet.|If you win, I will let you pass.
 (SPEAKER は好戦的な笑みを浮かべる)|なら戦おうじゃない！|私が勝てばあなたはペット！|あなたが勝てばここを通れる！
 I don't want to fight, miss...
-「あなたとは戦いたくない……」
+戦いたくない……
 Mmph! (Shake your head frantically)
-「むぅぅぅっ」(必死に首を横に振る)
+むぅぅぅっ(必死に首を横に振る)
 (SPEAKER giggles)|Come now, I want to see how good you are!
 (SPEAKER は好戦的な笑みを浮かべる)|あなたの実力を見せてみなさい！
 Yes, I am here to fight you.
-「ええ、あなたを倒しに来た」
+ええ、あなたを倒しに来た
 (Nod)
 (頷く)
 (SPEAKER smiles)|Then what are we waiting for?
 (SPEAKER は好戦的な笑みを浮かべる)|それじゃあ始めましょうか。
 You're on!
-「わかった」
+わかった
 Hmmmph!
-「んぉぉ！」
+んぉぉ！
 Let us duel!
-「勝負！」
+勝負！
 Mmmmmghh!
-「むぅぅっ！」
+むぅぅっ！
 I suppose...
-「結局こうなるのね……」
+結局こうなるのね……
 Mmmmph...
-「ふーっ……」
+ふーっ……
 (SPEAKER smiles as she stands over you)|Well well. Look who won.
 (SPEAKER は厭らしい笑みを浮かべて見下してくる)|勝負あったわね。
-(SPEAKER nods)|Absolutely. Now allow me to make my conditions clear.|You will wear my collar from now on.|Then you will be allowed to go.
-(SPEAKER は頷く)|そうね、1つ条件があるの。|この首輪をつけてもらうわ。|そしたらもう行っていいわ。
-(SPEAKER giggles)|You're not in a position to resist.|Now then, let me make myself clear.|I will let you go... but only wearing my collar.
-(SPEAKER はクスクスと笑っている)|もう抵抗できないでしょ。||逃してあげるわ……この首輪をつければね。
+(SPEAKER nods and giggles)|Absolutely.|Allow me to present to you, my prized pet collar!|I save it only for my favorite pets.|That's right! You're my favorite pet now~
+(SPEAKER はクスクスと笑いながら頷く)|もちろん。|ところで、私のお気に入りの首輪を紹介してあげる。|それはね、大事なペットにだけつける首輪なの。|あなたにぴったりだと思わない？
+"(SPEAKER giggles)|You're not in a position to resist.|Now then, where did I put that collar...
+(SPEAKER はクスクスと笑っている)|もう抵抗できないでしょ。|さて、首輪はどこにしまったかな～……。
 You beat me fair and square.
-「私の負けね」
+私の負けね
 Mmmph. (Submit)
-「んぅぅ……」(敗北を認める)
+んぅぅ……(敗北を認める)
 You cheated!
-「ズルいわ！」
+ズルいわ！
 Mmmph! (Struggle weakly)
-「んむぅぅ！」(もがく)
+んむぅぅ！(もがく)
 (Sigh and accept your fate)
 (運命を受け入れる)
 (Accept the collar eagerly)
@@ -19748,11 +20011,11 @@ Mmmph! (Struggle weakly)
 (Make a smug face as you walk past)
 (ドヤ顔で通り過ぎる)
 Thank you!
-「ありがとう」
+ありがとう
 Mmmph!
-「んむぅ！」
+んむぅ！
 I don't need your advice, strange ghostly person.
-「アドバイスはいらないわ」
+アドバイスはいらないわ
 (Glare at her)
 (威嚇する)
 
@@ -19761,11 +20024,11 @@ Oh, those people that locked you up?|I dealt with them.|Now come along, there's 
 (The SPEAKER giggles)|Treasure? The treasure isn't going anywhere.|Plus, I made a few enemies on the way.|We better not wait till they come back.
 (SPEAKER は苦笑している)|宝？宝は逃げませんよ。|それに、ここに来るまでに少し敵を作ってしまいました。|まずは、さっさとここを立ち去るのが吉でしょうね。
 But what about the treasure!?
-「でも、盗られた宝物は！？」
+でも、盗られた宝物は！？
 (The SPEAKER ponders your question)|I think we'll have to talk about compensation|AFTER we get out of here.
 (SPEAKER は考えている)|あとでしっかりと話し合いましょうか。|もちろん、ここを出てからね。
 So how much is this going to cost me?
-「それで、いくらかかるの？」
+それで、いくらかかるの？
 (You hear footsteps. It's the SPEAKER!)|Why look at you!|Well you seem to be in a bind, don't you?
 (足音が聞こえたと思ったら、 SPEAKER が現れた)|あら、どうしてあなたがここに？|ああ、捕まってしまったのですか。
 Not to worry! I'll get you out of here!
@@ -19777,27 +20040,27 @@ Hehe, alright! If that's what you want~
 (Shake your head and refuse rescue)
 (首を横に振り助けを断る)
 Yes please!
-「ええ、お願い」
+ええ、お願い
 Actually I was having fun...
-「実はこの状況を楽しんでいるから……」
+実はこの状況を楽しんでいるから……
 (The SPEAKER, your longtime friend, smiles)|Well well, if it isn't you again!|I see that you've decided to challenge the dungeon again.|Don't forget to bring some gold back with you,|there's a fee for rescue~
 (長年の友達 SPEAKER が微笑みかけてきた)|あら、あなたでしたか！|またダンジョンに潜るのですね？|だったらお金を持って帰るのを忘れないでくださいね！|あなたを助けるにもお金が必要ですし。
 Can you help with these restraints?
-「拘束を解いてくれない？」
+拘束を解いてくれない？
 Pfffmmm hhmmph mmph... (Please Help Me)
-「んぅぅぅ……」(助けて)
+んぅぅぅ……(助けて)
 No can do! Even I can't get those off of you.
 ごめんなさい、私にも無理ですね……
 Caught by...?
-「もしこのダンジョンで捕まったら……？」
+もしこのダンジョンで捕まったら……？
 Hah!|You've been here a million times!|You obviously know how dangerous it is, yes?
 もう！|あなたは何度もここに来てるじゃないですか！|ここが危険だって十分承知していますよね？
 F-fee? There's a fee?
-「お金？お金を取るの？」
+お金？お金を取るの？
 Yep! It'll cost ya!|Quite worth it if you ask me.|Unless you'd like to spend the rest of your life in chains!
 もちろん！助けるのだってただじゃできませんからね！|でもそれだけの価値はありますよ！|牢屋で永遠に過ごすなんて嫌でしょう？
 Will you buy my loot?
-「戦利品を買い取って」
+戦利品を買い取って
 (Show her your loot)
 (戦利品を見せる)
 Got something you want to show me?
@@ -19812,7 +20075,7 @@ Absolutely! I offer the standard market rate for anything.|I'll take enchanted i
 (アイテムを売る)
 
 Mmmph!
-「んんぅ！」
+んんぅ！
 Daww! What a cutie!|(She smiles and pats your head gently)
 あら可愛い！|(彼女は笑顔で優しく頭を撫でてきた)
 (Return)
@@ -19829,13 +20092,13 @@ I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside
 (The SPEAKER brings you safely back to her shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!
 (SPEAKER と共に安全な店にてレポートした)|よし、ここなら安全です！|さてそれで料金なのですが……|RESCUECOST ゴールドいただきますね！
 Right! Here's RESCUECOST gp.
-「はい RESCUECOST ゴールド」
+はい RESCUECOST ゴールド
 Mmmph. (Nod your head and pay RESCUECOST gp)
-「んんぉ」(頷き、 RESCUECOST ゴールド渡す)
+んんぉ(頷き、 RESCUECOST ゴールド渡す)
 (The SPEAKER smiles)|Pleasure doing business with ya~
 (SPEAKER は笑顔で見送ってくれた)|今後ともご贔屓に～！
 Mind adding it to my tab?
-「ツケ払いはだめ？」
+ツケ払いはだめ？
 (Shake your head regrettably.)
 (ツケ払いを要求する)
 (The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~
@@ -19845,7 +20108,7 @@ Mind adding it to my tab?
 (The SPEAKER folds her arms)|Come on now, I can hear the gold jingling in your pocket!
 (SPEAKER は腕を組み答える)|じゃあ財布の中身見せてくださいよ。持ってるでしょ！
 Pretty please? I promise I'll pay you back.
-「お願い、ちゃんと返すから」
+お願い、ちゃんと返すから
 (Be insistent)
 (しつこく要求する)
 (The SPEAKER rubs her chin)|Fine, I believe you.|But I won't be letting you out of those restraints!
@@ -19875,11 +20138,11 @@ Pretty please? I promise I'll pay you back.
 (The SPEAKER folds her arms and nods)|Good girl! I knew you would come clean~
 (SPEAKER は腕を組み満足気に頷いた)|あなたならちゃんと返してくれるって信じてましたよ～。
 Sure! I accept!
-「わかった、引き受ける」
+わかった、引き受ける
 (Nod in approval)
 (引き受ける)
 How about something else?
-「他のは？」
+他のは？
 (Shake your head)
 (首を横に振る)
 Excellent! Please hold still~|(She fits the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~
@@ -19903,13 +20166,13 @@ Your choice~|Not everyone is up to putting themselves on display like that~
 (The SPEAKER pats you down and makes sure you're okay)|I can definitely help with those!|But as you know, I help a lot of adventurers just like you.|You know what, I'll give you a discount!|That'll be RESCUECOST gold pieces!
 (SPEAKER はこちらを覗き込み、優しく撫でてくれた)|私なら助けてあげられそうですね！|最近あなたのような冒険者をいっぱい助け出して、儲かっているんです。|だから、安くしてあげますよ！|RESCUECOST ゴールドになります！
 Right! Here's RESCUECOST gp.
-「はい RESCUECOST ゴールド」
+はい RESCUECOST ゴールド
 Mmmph. (Nod your head and pay RESCUECOST gp)
-「んんぉ」(RESCUECOST ゴールド渡す)
+んんぉ(RESCUECOST ゴールド渡す)
 (The SPEAKER smiles)|Pleasure doing business with ya~
 (SPEAKER は笑顔を返す)|今後ともご贔屓に～！
 Mind adding it to my tab?
-「ツケ払いはだめ？」
+ツケ払いはだめ？
 (Shake your head regrettably.)
 (ツケ払いを要求する)
 (The SPEAKER rubs her chin)|Sorry miss!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~
@@ -19921,7 +20184,7 @@ Mind adding it to my tab?
 (The SPEAKER folds her arms)|Business is business, miss~
 (SPEAKER は腕を組んでいる)|ビジネスはビジネスです！
 Pretty please? I promise I'll pay you back.
-「お願い、ちゃんと返すから」
+お願い、ちゃんと返すから
 (Be insistent)
 (しつこく要求する)
 (The SPEAKER rubs her chin)|No can do.|Rules are rules~
@@ -19951,11 +20214,11 @@ Pretty please? I promise I'll pay you back.
 (The SPEAKER folds her arms and nods)|Good girl! I knew you would come clean~
 (SPEAKER は腕を組み満足気に頷いた)|あなたならちゃんと返してくれるって信じてましたよ～。
 Sure! I accept!
-「わかった、引き受ける」
+わかった、引き受ける
 (Nod in approval)
 (引き受ける)
 How about something else?
-「他のは？」
+他のは？
 (Shake your head)
 (首を横に振る)
 Excellent! Please hold still~|(She fits the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~
@@ -19983,7 +20246,7 @@ This floor is suffering from a slime mold infestation.|Maids have been deployed 
 This floor is being ransacked by bandits.|They are armed and dangerous.|But I hear there's a bounty on their heads?
 この先のフロアは盗賊の根城になっているみたいだね。|彼女たちは武装しているからとても危険だよ。|でも、彼女たちには賞金がかかっているみたいだね。
 A cave dragon was captured in the next floor.|It's brimming with elemental magic,|and there are a lot of interested parties!
-この先のフロアで洞窟に潜む竜が捕獲されたみたいだね。|竜の影響で精霊やエレメンタルの魔法が溢れているみたいだね。|そして興味のある人達も集まっているみたいだよ。
+この先のフロアで洞窟に潜む竜が捕獲されたみたいだね。|竜の影響で精霊の魔力が暴走しているみたい。|そして興味のある人達も集まっているみたいだよ。
 The witches told me to keep you out.|I'm not exactly capable of doing that,|so feel free to do as you please.
 この先のフロアにあなたを進ませないよう魔法使いに言われているんだ。|でも私にそんな力はないよ。|だからお好きにどうぞ。
 The next floor is overgrown.|I'd watch your feet if I were you.
@@ -20029,7 +20292,7 @@ Oh no! That trap wiped out all your willpower!|Fortunately you have a potion.|Yo
 Another trap!|You'll notice that the trap also drained your stamina considerably, preventing you from sprinting or attacking.|(Note: you can toggle sprinting using the '>>' button on the bottom bar)|You can protect yourself while your stamina regenerates by retreating into the room above.|Close the door by clicking the Close Door button in the bottom bar.|
 またトラップだ！|SP、スタミナが切れてしまったみたいだね。スタミナがないと、攻撃も走ることもできないよ。|(画面右下の＞ボタンを押すと、歩きと走りを変更可能)|上の部屋に逃げて、スタミナが回復するまでじっとしてみて。|ドアを閉じるときは、画面右下にあるドアのアイコンをクリックしてから、画面上のドアがあるマスをクリックしてね。
 Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the bottom right.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1.
-MP、つまりマナは呪文の詠唱に必要だよ。|呪文を唱えるには、その呪文を覚える必要があるよ。|画面右にある呪文タブをクリックしてみて。|それから、スペルツリーを選択して表示される火魔術の入門を学べば、ファイアボルトの魔法が覚えられるよ。|覚えられたら、エレメンタル呪文にあるファイアボルトをクリックして、ホットバー１のスロット１に登録してみよう。
+MP、つまりマナは呪文の詠唱に必要だよ。|呪文を唱えるには、その呪文を覚える必要があるよ。|画面右にある呪文タブをクリックしてみて。|それから、スペルツリーを選択して表示される火魔術の入門を学べば、ファイアボルトの魔法が覚えられるよ。|覚えられたら、精霊呪文にあるファイアボルトをクリックして、ホットバー１のスロット１に登録してみよう。
 On the right you'll see your stats and spells slots.|You can click on a spell slot or hit 1-4 on your keyboard to cast a spell|then click on the map for where you want to aim it.|The small wrench icon above them will let you|swap them out for another spell from your spellbook.
 画面下にファイアボルトのアイコンが表示されているね。|スペルをクリックするか、対応するキーを押せば呪文を唱えられるよ。|撃ち出したいマスを選択すれば、そこに魔法が飛ぶよ。|ファイアボルトの左にある丸いアイコンを選べば、特定の呪文を強化できるよ。|例えば、ファイアブラストの魔法を習得すれば、ファイアボルトを強化して放つことができるんだ。
 There's a zombie over there!|Fortunately zombies are weak to fire.|Firebolt has a very long range,|so simply cast firebolt and click on the zombie.|Repeat until it is dead.
@@ -20085,13 +20348,13 @@ Make sure she is tight and secure
 (Show interest)
 (興味を示す)
 I found your dress...
-「ドレスを見つけてきた……」
-dDressmakerQuest_CompleteGag,Mmmph... (Found the dress!)
-「んん……」(ドレスを見つけてきた)
+ドレスを見つけてきた……
+Mmmph... (Found the dress!)
+んん……(ドレスを見つけてきた)
 Great! Can you take it off?
-「脱ぐのを手伝ってくれない？」
+脱ぐのを手伝ってくれない？
 Mmmmm! (Struggle)
-「んぅぅぅ！」(もがく)
+んぅぅぅ！(もがく)
 (A SPEAKER clutching her books approaches you)|Miss adventurer!|I happen to need a magic scroll of any kind.|It's for my studies.
 (SPEAKER が本を手に近づいてきた)|あの、冒険者さん！|魔法の巻物を分けていただけませんか？|勉強で必要になりまして……
 (The SPEAKER smiles)|Yes, thank you so much!|It's been so difficult to get them lately.|The magic library is closed off these days,|and there are mean people trying to get the scrolls back...
@@ -20149,7 +20412,7 @@ Give her a Scroll of Purity
 (You unlock her, fumbling around for a while with your bound hands)
 (縛られた手でなんとか助け出した)
 (You unlock the SPEAKER)|Thank you!|Let's get out of here!
-(SPEAKER を助け出した)|ありがとう！|ここから逃げようぜ！
+(SPEAKER を助け出した)|ありがとう！|ここから逃げよう！
 (You unlock the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
 (SPEAKER を助け出した)|むぅぅっ！|(彼女は猿轡を気に入っているようだ)
 (You don't have any lockpicks)
@@ -20159,7 +20422,7 @@ Give her a Scroll of Purity
 (You can't pick the lock with your hands bound)
 (手を縛られたままでは上手くロックピックできない)
 (After a while, you free the SPEAKER)|Thank you!|Let's get moving!
-(錠をこじ開け、 SPEAKER を助け出した)|ありがとう！|さっさと行こうぜ！
+(錠をこじ開け、 SPEAKER を助け出した)|ありがとう！|さっさと行こう！
 (After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)
 (錠をこじ開け、 SPEAKER を助け出した)|うぅぅんっ！|(猿轡を外そうとしたが、断られてしまった……)
 (You don't have enough mana for a command word)
@@ -20167,7 +20430,7 @@ Give her a Scroll of Purity
 (Try as you might, your mouth is sealed tight)
 (口を封じられて呪文を唱えられない)
 (You utter a command word to free the SPEAKER)|Many thanks!|Let's go!
-(呪文を使い SPEAKER を助け出した)|ありがとう！|行こうぜ！
+(呪文を使い SPEAKER を助け出した)|ありがとう！|行こう！
 (You utter a command word to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
 (呪文を使い SPEAKER を助け出した)|んんぅ。|(彼女は再び猿轡をロックした……)
 (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)
@@ -20330,7 +20593,7 @@ Initiating prisoner lockdown protocol
 収監プロトコル開始
 Your RestraintName suddenly snap together as the EnemyName activates them
 EnemyName が RestraintName をアクティブにしたようだ。
-Turn Count:
+Turn Count: 
 ターン数：
 The Shopkeeper leashes you!
 店主にリードを掴まれた。
@@ -20377,13 +20640,13 @@ Rubber Nuke
 (In the center of the room stands a woman wearing a latex dress)|(Around her are robotic servants, obeying her without a word)|(She has been watching you this entire time)
 (広間の中央に、ラバードレスを着た女性が立っていた)|(周囲の機械は言葉もなしに彼女に従っている)|(彼女は無言でこちらを見つめている)
 And who might you be?
-「あなたは？」
+あなたは？
 (Tilt your head)
 (首を傾げる)
 (The woman's mask reflects the harsh industrial light)|You don't know who I am?|Hmmph, and I suppose my servants haven't told you...|They call me the Dollmaker.
 (女性の顔は光沢のあるマスクで覆われており、表情をうかがい知ることはできない)|私が誰だか知らないのですか？|ふむ、彼女たちから話を聞いていると思いましたが……|私はドールメイカーと呼ばれています。
 So you're the one they talked about.
-「彼女たちが話していたのはあなたのことだったの」
+彼女たちが話していたのはあなたのことだったの
 (Nod and continue)
 (頷く)
 (Tuck your staff behind your back...)
@@ -20393,15 +20656,15 @@ So you're the one they talked about.
 (Panic!)
 (パニック！)
 You must be the Dollmaker.
-「あなたがドールメイカーね」
+あなたがドールメイカーね
 (The woman chuckles)|Correct.|And you must be the adventurer causing the recent troubles.
 (彼女は苦笑いを返す)|いかにも。|そしてあなたは最近問題を起こしている冒険者ですね。
 I'm famous!
-「有名になれた！」
+有名になれたようね！
 (Nod happily)
 (誇る)
 Indeed. And I'm here to bring you down.
-「あなたを倒すために来た」
+あなたを倒すために来た
 (Scoff at her)
 (唸り声を上げる)
 (Tuck your staff behind your back...)
@@ -20415,41 +20678,41 @@ Indeed. And I'm here to bring you down.
 (The Dollmaker folds her arms)|In any case, your journey ends here.|I do not appreciate scoundrels poking around in my domain.|I will personally lead you to your new future as a doll.
 (ドールメイカーは腕を組む)|いずれにせよ、あなたの冒険はここで終わりです。|我が領分を侵すものは誰であろうと決して許しません。|あなたの人生はここで終わり。永遠に人形として私に仕えるのです。
 Do you have the Mistress' Staff?
-「女王の杖を持ってる？」
+女王の杖を持ってる？
 (The Dollmaker chuckles)|That trinket?|So that's what you're after!|As a matter of fact, I do not have it.|It belongs to a certain Archmagus.
 (ドールメイカーは苦笑している)|あんなものを探しているのですか？|あなたの狙いはそれだったのですね。|いえ、私は持っていません。|あれはある大魔術師のものです。
 Then you are of no use to me.
-「役に立たないわね」
+役に立たないわね
 (The Dollmaker summons a drone to her side)|Such arrogance! I'll have to teach you some manners!
 (突然、ドールメイカーはドローンを召喚した)|傲慢ですね。マナーを教えてあげましょう。
 What a bother.
-「面倒くさい」
+面倒くさいわね
 Who?
-「誰のこと？」
+誰のこと？
 (The Dollmaker explains)|Archmagus Sariel Vinlaga. I'm surprised you didn't know.|Not that it matters for a future doll like you.
 (ドールメイカーが説明を始める)|大魔術師、サリエル・ヴィンラーガ。知らないとは驚きです。|とはいえ、あなたには関係ありません。今日ここで人形となるのですから。
 We'll see about that.
-「さっさと始めましょう」
+さっさと始めましょう
 ...Sariel Vinlaga.
-「……サリエル・ヴィンラーガ」
+……サリエル・ヴィンラーガ
 (The Dollmaker nods)|Yes. She is down here.|But this information is irrelevant to your future as a doll.
 (ドールメイカーは頷き答える)|ええ、彼女はここを下っていきました。|しかし、人形となるあなたには関係ありません。
 The Staff will be mine.
-「杖は私が手に入れる」
+杖は私が手に入れる
 Fair enough. Let's fight!
-「もう十分よ、戦いましょう」
+もう十分よ、戦いましょう
 We'll see about that!
-「さっさと始めましょう」
+さっさと始めましょう
 Hmmmph!
-「んむぅぅ！」
+んむぅぅ！
 Feel free to try.
-「全力で来なさい」
+全力で来なさい
 Mmmmmghh!
-「むむむぅ！」
+むむむぅ！
 Sounds fun... but I really need to get going.
-「人形には少し興味があるけど……先に進まなきゃ」
+人形には少し興味があるけど……先に進まなきゃ
 Mmmmph...
-「んん……」
+んん……
 (The Dollmaker folds her arms as she walks over)|All tight and shiny!|You'll be my prized possession~
 (ドールメイカーが腕を組みながら歩み寄ってきた)|完璧ですね。|あなたは大事に扱ってあげましょう。
 (The Dollmaker nods)|Already eager to obey!|So beautiful...
@@ -20457,13 +20720,13 @@ Mmmmph...
 (The Dollmaker chuckles)|Oh, but I already have~
 (ドールメイカーは苦笑いしている)|そうですか、ですがもう勝負はついていますよ。
 I have no choice but to submit.
-「選択肢はないみたいね」
+選択肢はないみたいね
 Mmmph. (Submit)
-「ふーっ……」(従う)
+ふーっ……(従う)
 You will never get away with this!
-「こんなことをしても逃げられないわ」
+こんなことをしても逃げられないわ
 Mmmph! (Struggle weakly)
-「んんぅ……」(もがく)
+んんぅ……(もがく)
 (Sigh and be forced to wear her visor)
 (バイザーを選ぶ)
 (Sigh and be forced to wear her mask)
@@ -20722,7 +20985,7 @@ Copy
 コピー
 Paste
 ペースト
-Preloading Character Assets:
+Preloading Character Assets: 
 キャラクターアセットをロード中：
 
 
@@ -20947,7 +21210,7 @@ Maidforce Agent
 Witch
 魔女
 Dragonheart
-ドラゴンハーツ
+ドラゴンハート
 Robes
 ローブ
 Bunny Suit
@@ -21516,7 +21779,7 @@ Deals glue damage. Adds 25 slime binding.
 接着剤属性。25のスライム属性拘束値を与える。
 You pick up slime-covered sword.
 スライムに覆われた剣を拾った
-Preloading Character Assets:
+Preloading Character Assets: 
 キャラクターアセット：
 Frost Blade
 フロストブレード
@@ -21680,17 +21943,17 @@ A quick tie for apprehending prisoners, looped through buckles on the hand restr
 It's not very secure.
 簡単に抜け出せる。
 Rope Hogtie
-ホッグタイ
+縄のホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する縄。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle.
 高手小手縛りと繋がっている。足や手を捩り、無理やり抜け出すしかない。
 Rope Hogtie
 ホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する縄。
-It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle.
-高手小手縛りと繋がっている。足や手を捩り、無理やり抜け出すしかない。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
+It holds you strictly with your back arched. You tug on the rope connecting your feet and struggle.
+腕と足のをつなげる縄。足や手を捩り、無理やり抜け出すしかない。
 Rope Belt
 縄のベルト
 A harness acting as a handle to pull you around
@@ -21801,7 +22064,7 @@ The cyber warden's touch applies a series of quick electrical shocks!
 Back to Menu
 メニューに戻る
 Item Stack:
-所持数：
+スタック数：
 Ancient
 古代
 Cursed
@@ -21860,6 +22123,24 @@ Boots
 ブーツ
 Toys
 オモチャ
+Head
+頭
+Neck
+首
+Arms
+腕
+Gloves
+手袋
+Torso
+身体
+Panties
+パンツ
+Lower
+脚
+Ankles
+足首
+Boots
+ブーツ
 
 Spellbound Boxtie
 呪文の高手小手縛り
@@ -21888,13 +22169,13 @@ The knots appear to tie themselves together again, making them impossible to und
 Spellbound Hogtie
 呪文のホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する呪文の縄。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 The knots appear to tie themselves together again, making them impossible to undo!
 解こうとしても、結び目が勝手にきつくなる魔法の縄。
 Spellbound Hogtie
 呪文のホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する呪文の縄。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 The knots appear to tie themselves together again, making them impossible to undo!
 解こうとしても、結び目が勝手にきつくなる魔法の縄。
 Spellbound Rope Belt
@@ -22006,13 +22287,13 @@ It's not very secure.
 Magic Hogtie
 魔法のホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する魔法の縄。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 It's very secure. You tug on the rope connecting your feet and struggle.
 腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
 Magic Hogtie
 魔法のホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する魔法の縄。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 It's very secure. You tug on the rope connecting your feet and struggle.
 腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
 Magic Rope Belt
@@ -22114,15 +22395,15 @@ A set of ropes that emit a calm, soothing aura. They magically stretch to fit yo
 Holy Hogtie
 聖なるホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する聖なる縄。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle.
 腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
 Holy Hogtie
 聖なるホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する聖なる縄。
-It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle.
-腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
+It holds you strictly with your back arched. You tug on the rope connecting your feet and struggle.
+腕と足のをつなげる縄。足や手を捩り、無理やり抜け出すしかない。
 Holy Rope Belt
 聖なる縄のベルト
 A harness acting as a handle to pull you around
@@ -22228,15 +22509,15 @@ A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
 Mithril Hogtie
 ミスリルのホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧するミスリルの縄。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle.
 腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
 Mithril Hogtie
 ミスリルのホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する縄。
-It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle.
-腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
+It holds you strictly with your back arched. You tug on the rope connecting your feet and struggle.
+腕と足のをつなげる縄。足や手を捩り、無理やり抜け出すしかない。
 Mithril Rope Belt
 ミスリル縄のベルト
 A harness acting as a handle to pull you around
@@ -22461,7 +22742,7 @@ Rubber Stick
 ラバースティック
 A rubber cylinder without any lewd intentions whatsoever.
 ゴムの棒。卑猥が一切ない。
-Deals grope damage.
+Deals grope damage. 
 愛撫属性。
 You pick up a flexible rubber stick.
 ぐにゃぐにゃしたゴムの棒を拾った。
@@ -22589,15 +22870,15 @@ Sensitivity: AMNT AP from attacks
 欲情：攻撃時対象のDP AMNT 上昇
 AMNT Stat
  AMNT 上昇
-
+ 
 AMNT Evasion
 回避力 AMNT
 AMNT% Accuracy
-命中率 AMNT%
+命中率 AMNT% 
 AMNT Magic Armor
 マジックアーマー AMNT
 AMNT Physical Armor
-物理アーマー AMNT%
+物理アーマー AMNT% 
 AMNT Bondage Resist
 拘束抵抗力 AMNT
 AMNT TYPE Resist
@@ -22607,28 +22888,28 @@ TYPE 属性の威力 AMNT%
 AMNT% weapon phys. dmg
 物理ダメージ AMNT% 
 AMNT% weapon magic dmg
-武器の魔法ダメージ AMNT%
+武器の魔法ダメージ AMNT% 
 Infuse weapon AMNT% TYPE
-武器の TYPE 属性ダメージ AMNT%
+武器の TYPE 属性ダメージ AMNT% 
 AMNT TYPE on attack
 攻撃時 AMNT TYPE 追加ダメージ
 AMNT% Mana Costs
-マナコスト AMNT%
+マナコスト AMNT% 
 AMNT% TYPE Mana Costs
-TYPE 属性のマナコスト AMNT%
+TYPE 属性のマナコスト AMNT% 
 AMNT% regen from mana pool
-マナプールから得られるマナ AMNT%
+マナプールから得られるマナ AMNT% 
 AMNT mana pool on capture
 敵を捕まえたとき AMNT マナプールを回復する
 AMNT% Visibility Reduction
-視認性低下 AMNT%
+視認性低下 AMNT% 
 AMNT Distraction Decay
 DP AMNT 低下
 AMNT Distraction Per Turn
 ターン毎にDP AMNT 上昇
 AMNT AP from attacks
 攻撃時にDP AMNT 上昇
-
+ 
 Drop On Floor
 床に置く
 Remove
@@ -23002,7 +23283,7 @@ The Reaping
 Magically Iliterate
 魔法は専門外
 You've never read a magic book. Elemental, Conjuration, and Illusion spells cost 3x as many spell points.
-魔導書を読んだことがない。エレメンタル、幻惑、召喚の呪文を習得する際、必要スキルポイントが3倍になる。
+魔導書を読んだことがない。精霊、幻惑、召喚の呪文を習得する際、必要スキルポイントが3倍になる。
 
 Magical Spark
 魔道の覚醒
@@ -23246,7 +23527,7 @@ Steal's a helpless enemy's clothes, adding a great deal of distraction to her an
 Unstoppable (Ignore status/bondage)
 アンストッパブル（状態異常と拘束を無視）
 Unflinching (Resist status/bondage)
-ひるまない（状態異常と拘束に耐性）
+スーパーアーマー（状態異常と拘束に耐性）
 Blindsight (See through walls)
 ブラインドサイト（壁を見通す）
 Mana Harvesting
@@ -23277,7 +23558,7 @@ Binding Lock
 A LKTYP lock clasps on to one of your restraints!
 拘束具に LKTYP の鍵がかかった！
 You are caught in a constricting field! (Dmgdlt)
-収縮フィールドに囚われた！ (Dmgdlt)
+錠前が体に当たった！ (Dmgdlt)
 
 Resin Coating
 樹脂
@@ -23295,8 +23576,16 @@ A bubble of latex envelops you!
 The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range.
 周囲のラテックスに攻撃を減衰させられる。物理ダメージが30％減少し、視界の範囲が狭くなる。
 
+A ball of latex surrounds you and inflates, sealing around your neck!
+ラテックスボールが周囲に現れ、首から下を飲み込まれてしまった！
+A ball of latex envelops you!
+ラテックスボールに包まれた！
+
+
 Latex Bubble
 ラテックスバブル
+Latex Ball
+ラテックスボール
 
 ...Lab Assistant?
 ラボの研究員……？
@@ -23310,7 +23599,7 @@ The assistant applies a lock! (DamageTaken)
 研究員に拘束具をロックされた！ (DamageTaken)
 The assistant splashes a solvent in your face, blinding you! (DamageTaken)
 研究員に奇妙な液体をかけられ、目潰しされた！ (DamageTaken)
-
+ 
 ...Glue Technician?
 接着剤の技術士……？
 You rescue the glue technician.
@@ -23366,7 +23655,7 @@ Magic
 Magic: Ignores evasion of ghost type enemies, can be used with abilities that require magic weapons.
 魔法：ゴーストタイプの敵の回避力を無視する。魔法武器を必要とするアビリティを使用可能になる。
 Light
-軽い
+ライト
 Light: Can be used to cut even with bound arms. 50% reduced accuracy penalty from being bound. Can be held in mouth.
 軽い：腕を縛られていても、拘束具をカットできる。縛られていることによる命中率ペナルティを50%軽減できる。口にくわえることができる。
 Offhand
@@ -23386,13 +23675,13 @@ Shield
 Shield: This weapon is intended for defensive use.
 盾：敵の攻撃を防御できる。
 Heavy
-重い
+ヘビィ
 Heavy: This weapon takes +1 turns to switch to. Cannot be reduced to 0 by perks or upgrades.
 重い：武器を変更するのに追加で１ターンかかる。この効果はパーク等で０にできない。
 Massive
-大きい
+巨大
 Massive: This weapon either stuns or slows you after attacking with it. Handle with care!
-大きい：この武器で攻撃した後、気絶させるかスロウ状態にする。取り扱いには注意しよう！
+巨大：この武器で攻撃した後、気絶させるかスロウ状態にする。取り扱いには注意しよう！
 Illumination
 灯り
 Illumination: This weapon is a light source.
@@ -23419,7 +23708,7 @@ Ranged Attack
 Combat Training
 戦闘訓練
 Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 0 WP you gain 1 slow resist.
-戦闘訓練を積んだことにより、様々な効果を得た：|-WP10につき1%スタミナを軽減する。最大40%まで。|-減速効果がより早く切れる。|-WPが0のとき、減速効果を1軽減する。
+戦闘訓練を積んだことにより、様々な効果を得た|-WP10につき1%スタミナを軽減する。最大40%まで。|-減速効果がより早く切れる。|-WPが0のとき、減速効果を1軽減する。
 
 This is your current offhand weapon.
 反対の手に持っている武器
@@ -23546,9 +23835,9 @@ RestraintName に亀裂が入り始めた！
 Your RestraintName shatters and falls off!
 RestraintName は粉々に砕け落ちた！
 
-Load Hotbar
+Load Hotbar 
 ホットバーをロード
-Save Hotbar
+Save Hotbar 
 ホットバーをセーブ
 Clear Hotbar
 ホットバーをクリア
@@ -23576,27 +23865,27 @@ I have altered the keybindings. Pray I do not alter them further.
 Barricade
 バリケード
 You knock over the barricade!
-バリケードを打ち壊した！
+バリケードは崩れ去った！
 
 Anti-Damsel Barrier
 少女監禁バリア
 You disable the barrier!
-バリアを解除した！
+バリアは解除された！
 
 Barrier
 バリア
 You shatter the barrier!
-バリアを打ち砕いた！
+バリアは打ち砕かれた！
 
 Magical Barrier
 魔法のバリア
 You destroy the barrier!
-魔法のバリアを破壊した！
+魔法のバリアは破壊された！
 
 Mass of Shadow Hands
 影の手の塊
 You banish the shadow hands!
-影の手を祓った！
+影の手は払われた！
 The shadow hands caress you and latch on! (DamageTaken)
 影の手がまとわりつき、大量の手で全身を愛撫してきた！ (DamageTaken)
 The shadow hands caress you and latch on! (+RestraintAdded)
@@ -23605,7 +23894,7 @@ The shadow hands caress you and latch on! (+RestraintAdded)
 Shadow Chains
 影の鎖
 You break through the chains!
-影の鎖を突き破った！
+影の鎖は突き破られた！
 Conjured Chains
 召喚された鎖
 You break through the chains!
@@ -23998,9 +24287,9 @@ An item has increased your spell damage!
 アイテムが魔法の威力を強化している！
 
 AMNT ice damage/turn vs. Frozen
-凍結により AMNT 氷属性ダメージを毎ターン受ける
+凍結により AMNT 氷属性ダメージを毎ターン与える
 AMNT shadow bleed (10 turns)
-出血により10ターンの間 AMNT 影属性ダメージを毎ターン受ける
+出血により10ターンの間 AMNT 影属性ダメージを与える
 
 Sealing Talisman
 封印の護符
@@ -24154,7 +24443,7 @@ This is the buffs bar.|It shows various values and buffs relating to your charac
 These are the action buttons.|You can use them to perform various actions like closing doors or sprinting.|You can also toggle various settings such as automatically passing|through allies or auto-pathing when there are no enemies nearby.|You can also swap between recently used weapons.
 これらはアクションボタン。|ドアを閉じたり、走ったりできるよ。|すり抜けやしゃがみはトグル式で切り替えられるよ。|仲間を通過したり、敵が近くにいないときに自動で移動したり。|最近使った武器を素早く切り替えることもできるよ。
 These are various submenus.|Your Inventory is used to brows items and use or equip them.|The Journal contains lore, notes, and hints gathered along your journey.|The Journal also contains info on available quests,|and your reputation with various factions.
-ここはサブメニューだよ。|アイテムではアイテムを装備したり使用したりできるよ。|日記では関係性やクエスト、集めたノートを見られるよ。|クエストの詳細を見たり、|様々な派閥との関係性も確認できるよ。
+ここはサブメニューだよ。|アイテムではアイテムを装備したり使用したりできるよ。|ジャーナルでは関係性やクエスト、集めたノートを見られるよ。|クエストの詳細を見たり、|様々な派閥との関係性も確認できるよ。
 This is the status bar, which gives info on your base stats.|Distraction determines how easy it is to cast spells and resist teasing.|Stamina is required to sprint and attack with a weapon.|Mana is used to cast spells. You have what is called a 'Mana Pool,'|which is excess mana that slowly refills you mana bar until it runs out.|Finally, running out of Willpower makes it much harder to escape bondage.
 これはステータスバー。基本ステータスが分かるよ。|興奮値は呪文の失敗率や、愛撫への抵抗力に関係するよ。|スタミナは走ったり攻撃をしたりするときに使うよ。|マナは魔法の詠唱に使うよ。ゲージの下にある白い線がマナプールだよ。|マナが減ると、マナプールからゆっくりと補充されるよ。|気力は減ると拘束から抜け出しにくくなるよ。
 This is the hotbar.|Here you will find various spells and customizable actions.|You can customize it through the Spells submenu by clicking on a spell.|You can also add items, armor, and consumables to it from the Inventory.
@@ -24212,7 +24501,7 @@ You accept the goddess' quest.
 You cannot accept that quest right now.
 今はクエストを受けられない。
 
-Offer gold to the Goddess in exchange for help. Destroys the shrine.
+Offer gold in exchange for help. Destroys the shrine.
 お金を寄進し、助力を乞う。祭壇は破壊される。
 Ask for help without offering gold.
 寄進なしに助力を乞う。
@@ -24265,7 +24554,7 @@ You did not do your quest! The Goddess has decided to punish you.
 You have pleased the Goddess.
 女神を喜ばせることができた。
 Stop a rebels from making a pact with primordial beings.
-逆賊が原初の存在と協定を結ぶのを阻止する。
+逆賊が古きもの達と協定を結ぶのを阻止する。
 You did not do your quest! The Goddess has decided to punish you.
 クエストを達成できなかった。女神を怒らせてしまった。
 You have pleased the Goddess.
@@ -24277,7 +24566,7 @@ You did not do your quest! The Goddess has decided to punish you.
 You have pleased the Goddess.
 女神を喜ばせることができた。
 Resolve a dispute between elves and catgirls by tying up both sides.
-エルフと猫の争いを調停する。
+エルフとバスト教団の争いを調停する。
 You did not do your quest! The Goddess has decided to punish you.
 クエストを達成できなかった。女神を怒らせてしまった。
 KDQuestSucceed_WillQuest,You have pleased the Goddess.
@@ -24612,7 +24901,7 @@ Scream loudly, causing nearby enemies to investigate and increasing Battle Rhyth
 You shout loudly and shake your fist at the sky! (+10 BR)
 大声で叫び、天に拳を突き出した！ (+10 BR)
 Mmmph! (You can't shout while gagged)
-「んフォぉお！」(猿轡をかまされていては叫べない)
+んふぉぉお！(猿轡をかまされていては叫べない)
 You are plenty mad enough as is.
 クールタイム中
 You are too tired to rage. Perhaps try a warm cozy bed instead?
@@ -24888,7 +25177,7 @@ A local business is missing one of their models, and will stop at nothing to fin
 The Doll Shoppe
 人形店
 Elemental Slavers
-エレメンタルの奴隷商
+精霊の奴隷商
 
 Your duty as a maid is to keep the place clear of dirt and other hazards.
 メイドとしての仕事を受けた。ホコリやその他の危険を掃除しよう。
@@ -24924,10 +25213,10 @@ Dollmaker
 ドールメイカー
 The Collectors
 コレクター
+Dollmaker Inc.
+ドールメイカー株式会社
 
-
-
-Receive the following restraints:
+Receive the following restraints: 
 次の拘束をされる：
 You will be bound with some form of restraint.
 何らかの拘束具で縛られることになる。
@@ -24944,7 +25233,7 @@ The gag geist teases you playfully!! (DamageTaken)
 The gag geist gags the girl with a ghastly grimace! (+RestraintAdded)
 ギャグガイストがぞっとするような笑みで猿轡を噛ませてきた！ (+RestraintAdded)
 
-Poltergeist
+Poltergeist 
 ポルターガイスト
 The poltergeist goes silent.
 ポルターガイスト現象は収まった。
@@ -25671,7 +25960,7 @@ Prisoner #NUMR/TTL
 
 Select a character to examine
 詳細を見るキャラクターを選択
-Former Faction:
+Former Faction: 
 派閥：
 
 Minigun
@@ -25714,7 +26003,7 @@ Divine
 Maid
 メイド
 Elemental
-エレメンタル
+精霊
 Royal
 ロイヤル
 Miku
@@ -25907,8 +26196,8 @@ You crouch and move slowly.
 ゆっくりと這いつくばる。
 
 
-Owned by:
-所有者：
+Owned by: 
+所有者： 
 
 The Warden's Collar
 看守長の首輪
@@ -25976,23 +26265,100 @@ The Warden swings her enchanted whip and conjures locks on your body! (DamageTak
 (The Warden glances at you)|Oh? What do we have here?|An adventurer?|You're not on the books...
 (看守長はこちらをにらみつけている)|あら、何事かしら？|冒険者？|あなたは……本には載っていないわね。
 Cut to the chase. Do I have to fight you or not?
-「戦うの？戦わないの？」
+戦うの？戦わないの？
+
+(She chuckles)|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~
+(彼女は苦笑いしている)|あらあら。|その尊大な態度に実力が見合っているといいのだけれど。|ただの目立ちたがり屋に付き合う暇はないの。
+Quite a boast for someone who's about to lose.
+ただの通過点にしては大した自信じゃない。
+(SPEAKER grins)|I look forward to testing those claims~
+(SPEAKER はニヤリと笑った)|その態度がいつまで続くか楽しみね～。
+I defeated Fuuka. Now you're next!
+墓場の主は倒したわ、次はあなたよ！
+
+(SPEAKER shrugs)|You beat that zombie girl?|She's the weakest of the paladins.|She loves to boast about how she's special,|But she's really just a spoiled brat.
+(SPEAKER は肩をすくめている)|あのゾンビ娘と戦ったのね？|でも残念、彼女はパラディンの中でも最弱よ。|あの娘はいかに自分が特別かを散々語ったでしょうけど、|私から言わせればただの甘やかされたガキよ。
+...Zombie girl?
+……ゾンビ娘？
+(SPEAKER tilts her head)|Yes, she was around before Vinlaga.|Her magic was gifted to her by the Goddess,|it is only natural that it works on her too.
+(SPEAKER は首を傾げている)|彼女はヴィンラーガによる不死化が始まる前から生きていたの。|そう、彼女の魔法は女神から授かったもの、|彼女だけは由来の異なる不死だったのよね。
+...Paladins?
+パラディン？
+(SPEAKER nods happily)|Divinely-appointed judges, presiding over mortals.|Unlike you, our immortality is earned.|Myself, I captured many defilers long ago.|Is it not fitting that I get to keep them for myself?
+(SPEAKER は喜ばしげに頷く)|神より任を授かりし裁きを与えるものであり、人の管理者。|あなたとは違って、私達は神の手によって不死を授かったの。|私はね、昔から罪人を何人も何人も捕らえてきたわ。|だから、褒美があって然るべきでしょう？
+
+It is an honor to fight a worthy opponent.
+高名な相手と戦えるなんて光栄なことね。
+(SPEAKER giggles)|That gag suits you nicely~
+(SPEAKER はクスクスと笑っている)|良い猿轡ね、似合ってるわ。
+(SPEAKER grins)|I look forward to it!
+(SPEAKER はニヤリと笑った)|楽しみましょう！
+You will see soon enough.
+すぐに分かるわ！
+Indeed!
+ええ！
+
+I am indeed an adventurer.
+私はただの冒険者よ。
+(SPEAKER smiles)|Fascinating. Do keep explaining.
+(SPEAKER は笑みを浮かべている)|そう、結構可愛いじゃない。続けて？
+
+(SPEAKER frowns)|That is not the attitude I appreciate from my guests.
+(SPEAKER は眉をひそめている)|次にそのような態度を取ったら許さないわよ？
+I forge my own path.
+自分の道は自分で切り開く
+Why should I listen to you?
+あなたの言うことなんて聞かないわ。
+(Pout)
+(口ごもる)
+
+Mmpphgh? (Go to pass her)
+うぅう？(すれ違おうとする)
+(She smirks)|No so fast, dear~
+(彼女はニヤニヤと笑っている)|そう急がないで。
+
+(Admire the locale)
+(この場所を称賛する)
+(SPEAKER smiles and nods)|It has existed for a thousand years,|and it shall exist for another thousand.|No thanks, of course, to the adventurers who storm through here,|breaking the orbs as if it all belongs to them...
+(SPEAKER は笑顔で頷いている)|この牢は1000年前から続いているの。|1000年後も存在し続けるわ。|ああ、ただの冒険者風情に感謝はしないわ。|自分達のもののようにオーブを壊して回る奴らには……。
+What are these orbs for anyway?
+ところでオーブって何なの？
+(SPEAKER looks puzzled)|You don't know? Surely you must be joking?
+(SPEAKER は困惑している)|知らないの？冗談でしょう？
+(SPEAKER shrugs)|They are important because...|Wait, you're stalling for time, aren't you?
+(SPEAKER は肩をすくめている)|とても大切なものなのよ、それは……|……時間稼ぎのつもりかしら？
+I do not know.
+本当にしらない。
+(Sigh)
+(ハァ)
+Of course I know...
+もちろん知っているよ……
+
+(SPEAKER readies her whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special collar.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~
+(SPEAKER は鞭を構えた)|じゃ、きちんと自己紹介しましょうか。|我こそは監獄の主、法と裁きの神命を賜りし聖人なり。|牢は遍く我が手中にあり、罪は遍く逃げ得ない。|我に神授の首輪ありき、|聖地を護りし神の力なり。|これをつけたら通してあげるわよ～。
+
+(SPEAKER giggles)|You're not in a position to resist.|Now then, let me make myself clear.|I will let you go forward in the dungeon, but only wearing my collar.
+(SPEAKER はクスクスと笑っている)|終わりね。|さて、条件を飲んでもらうわ。|それじゃあこの首輪をつけて。そうすれば通行を許可するわ。
+(SPEAKER presents you with your collar...)|(She locks it around your neck)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained.
+(SPEAKER に首輪をはめられた……)|(首輪をロックされる)|さあ、これであなたは自由よ。|まあ、少しトレーニングしてからだけど。
+
+
 What is this place?
-「ここは？」
+ここは？
 (She smiles)|Why, this is my private prison.|I bring only my prettiest toys to hang out here.|You can see them up there.|(She motions to the north)
 (彼女は笑顔で答える)|ここは私の牢獄。|選りすぐりの可愛い子ちゃんを集めているの。|ほら、そこに見えるでしょ？|(彼女は北の方を指す)
 That's a shame about your records, I'll be going now.
-「記録については残念だったね、じゃあね。」
+記録については残念だったね、じゃあね。
 This is a nice place you got here.
-「悪くない場所ね。」
+悪くない場所ね。
 There must be a mistake. Sign me up!
-「何かの間違いでしょ、サインして！」
+何かの間違いでしょ、サインして！
 
 The ENMY weakens your grip on your weapon! Enemies may disarm you if you stand too close...
 ENMY に武器を持つ握力を弱められた！敵に近寄りすぎると武器を外される可能性がある……
 
 Can you link my arm cuffs?
-「手枷を繋げてほしい」
+手枷を繋げてほしい
 (Hold out your arm cuffs)
 (手枷を差し出す)
 (The SPEAKER smiles)|Why sure, sweetie, I can help you with that~
@@ -26007,7 +26373,7 @@ Can you link my arm cuffs?
 (SPEAKER は機械音を立てている)|10クレジット追加。
 
 Can you link my leg cuffs?
-「足枷を繋げてほしい」
+足枷を繋げてほしい
 (Hold out your leg cuffs)
 (足枷を差し出す)
 (The SPEAKER smiles)|Why sure, sweetie, I can help you with that~
@@ -26027,7 +26393,7 @@ Cool people wear these indoors.
 屋外で着用するオシャレアイテム。
 +25 holy resist. Reduces blind effects. Prevents blinding from light adjustment.
 聖属性耐性+25。目潰し効果を軽減する。光量の変化による目潰し効果を防ぐ。
-Sunglasses2
+Sunglasses
 サングラス
 Cool people wear these indoors.
 屋外で着用するオシャレアイテム。
@@ -26050,6 +26416,8 @@ A sphere of latex coalesces around you, trapping you and inflating until tight!
 ゴムの球体に閉じ込められた！球体は膨らみ、まとわりついてくる……
 You find yourself enveloped in a slime bubble!
 気がつくとスライムの泡に包まれていた！
+A sphere of latex coalesces around you, trapping you and sealing around your neck!
+ゴムの球体が周囲に現れ、首から下を飲み込まれてしまった！
 
 Your RestraintName pops with a loud bang!
 RestraintName が大きな音を立てて弾けた！
@@ -26400,29 +26768,33 @@ Maintenance Hall
 メンテナンスホール
 Ancient Chest
 古代の宝箱
-Mysterious Elevator
-奇妙なエレベーター
+Elevator Hall
+エレベーターホール
 Auction Hall
 オークションホール
+Caldera Passage
+カルデラ湖
 Dark Altar
 闇の祭壇
 Bandit Hideout
 盗賊の隠れ家
 Dimensional Rift
 次元の裂け目
+Hoard
+宝物庫
 
 Witch's Lair
 魔女のお茶会
 Mold Infestation
-粘菌の繁殖
+粘菌の増殖
 Bandit Raid
 盗賊の襲撃
 Elemental Energy
-精霊の力
+精霊の坩堝
 Overgrown
-異常繁殖
+植物の侵食
 Slime Infestation
-スライムの増殖
+スライムの繁殖
 Wolfgirl Training
 ウルフガールの訓練
 Drone Patrol
@@ -26433,7 +26805,7 @@ Normal
 Shop
 お店
 Chamber
-チャンバー
+大部屋
 Prison
 監獄
 Sorting Room
@@ -26441,3 +26813,442 @@ Sorting Room
 
 Click a hotbar position to assign the item to that slot.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
 画面下のホットバーをクリックしてアイテムを登録可能|ホットバーをセーブ、ロードで|登録した内容を保存及び呼び出しが可能||別のセーブデータ間でも登録した内容を呼び出すことができる
+
+You step on the item and tug to pull it taut...
+アイテムを踏み、引っ張った……
+You tug furiously against the leash, pulling it taut!
+リードを力いっぱい引っ張った！
+Silenced Hall
+サイレントホール
+
+The waist-deep water slows you!
+腰まで水に浸かり、うまく進めない！
+
+
+Sariel Vinlaga's Panties
+サリエル・ヴィンラーガのパンツ
+Legend has it that these were worn by the legendary archmagus herself.
+伝説によれば、偉大なる魔術師の身につけていたものだという。
+If you keep them in your mouth, your verbal spells have -50% miscast chance. +10% spell damage.
+口に咥えていると、詠唱失敗率-50%、呪文の威力+10%。
+
+Sariel Vinlaga's Panties
+サリエル・ヴィンラーガのパンツ
+Legend has it that these were worn by the legendary archmagus herself.
+伝説によれば、偉大なる魔術師の身につけていたものだという。
+If you keep them in your mouth, your verbal spells have -50% miscast chance. +10% spell damage.
+口に咥えていると、詠唱失敗率-50%、呪文の威力+10%。
+You find a pair of black panties with pink trim, scrunched up in a ball.
+丸まっている、ピンクのラインが入った黒いパンツを拾った。
+
+
+Elven Panties
+エルフのパンツ
+In faraway lands, they often say that less is more...
+「露出は多ければ多い方がいい」遠い国ではそう言われているらしい……
++11% sprint efficiency
+走るスピード+11%
+Elven Panties
+エルフのパンツ
+In faraway lands, they often say that less is more...
+「露出は多ければ多い方がいい」遠い国ではそう言われているらしい……
++11% sprint efficiency
+走るスピード+11%
+You find a pair of elven panties.
+エルフのパンツを拾った。
+
+
+Hood of Fluffoth
+フルフォスのフード
+Worn by devotees to Fluffoth, demonic ruler of the plush abyss.
+ふわふわ界の深淵に潜む悪魔、フルフォスの信者が着用するフード。
+When distraction reaches 90%, emit a wave of soft energies that envelops targets a 5x5 area. Deals 40 plush damage and snares for 3 turns. Recharges when your distraction goes below 50%. 5 turn internal cooldown.
+気力が90%になったとき、5x5の範囲に40ふわふわ属性のダメージを与え、3ターンの間移動不能にする攻撃を行う。興奮度が50%以下になるとリチャージされる。クールタイム5ターン。
+
+Hood of Fluffoth
+フルフォスのフード
+Worn by devotees to Fluffoth, demonic ruler of the plush abyss.
+ふわふわ界の深淵に潜む悪魔、フルフォスの信者が着用するフード。
+When distraction is over 90%, emit a wave of soft energies that envelops targets a 5x5 area. Deals 30 plush damage and snares for 3 turns. Recharges when your distraction goes below 50%. 5 turn internal cooldown.
+気力が90%になったとき、5x5の範囲に30ふわふわ属性のダメージを与え、3ターンの間移動不能にする攻撃を行う。興奮度が50%以下になるとリチャージされる。クールタイム5ターン。
+You find a sinister hood made of soft plush.
+柔らかい不吉なフードを拾った。
+
+
+Ceremonial Leotard
+式典のレオタード
+Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock.
+古の支配者フラペの特注品。一体型ロック付き。
+Its soul crystals dampen willpower changes, reducing all willpower changes by 25%.
+ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を-25%する。
+
+Ceremonial Leotard
+式典のレオタード
+Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock.
+古の支配者フラペの特注品。一体型ロック付き。
+Its soul crystals dampen willpower changes, reducing all willpower changes by 25%.
+ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を-25%する。
+You find a ceremonial leotard.
+式典のレオタードを手に入れた。
+
+
+(As you slay the dragon, it begins shapeshifting into human form!)
+(竜を討つと、人の姿に変化した！)
+
+
+Crystal Dragon Queen
+クリスタル・ドラゴンの女王
+The crystal dragon shapeshifts back to human form!
+クリスタル・ドラゴンは人間の姿になった！
+The crystal dragon strikes you with its claws! (DamageTaken)
+クリスタル・ドラゴンは爪で引き裂いてきた！ (DamageTaken)
+The crystal dragon breaths a sparkling dust, which hardens into crystal! (+RestraintAdded)
+クリスタル・ドラゴンの吐く息が結晶となり、体中で固まりだした！ (+RestraintAdded)
+The crystal dragon takes flight and swoops toward you!
+クリスタル・ドラゴンは飛び立ち、こちらに向かって急降下してきた！
+The crystal dragon takes flight and slams into you! (Stunned!)
+クリスタル・ドラゴンの強力な急降下に巻き込まれた！(スタン)
+
+Crystal Dragon Girl
+クリスタル・ドラゴンガール
+The dragon girl submits to you!
+ドラゴンは降伏した！
+The dragon girl slams you with several hurled crystals! (DamageTaken)
+クリスタル・ドラゴンガールはクリスタルで殴打してきた！ (DamageTaken)
+The dragon girl conjures a cloud of crystals that solidify! (+RestraintAdded)
+クリスタル・ドラゴンガールは凝固するクリスタルを召喚してきた！ (+RestraintAdded)
+
+
+Poison Dragon Queen
+ポイズン・ドラゴンの女王
+The poison dragon shapeshifts back to human form!
+ポイズン・ドラゴンは人間の姿になった！
+The poison dragon strikes you with its claws! (DamageTaken)
+ポイズン・ドラゴンは爪で引き裂いてきた！ (DamageTaken)
+The poison dragon extends many vines from its wings! (+RestraintAdded)
+ポイズン・ドラゴンの翼から大量の蔦が伸びてきた！ (+RestraintAdded)
+The poison dragon takes flight and swoops toward you!
+ポイズン・ドラゴンは飛び立ち、こちらに向かって急降下してきた！
+The poison dragon takes flight and slams into you! (Stunned!)
+ポイズン・ドラゴンの強力な急降下に巻き込まれた！(スタン)
+
+Poison Dragon Girl
+ポイズン・ドラゴンガール
+The dragon girl submits to you!
+ドラゴンは降伏した！
+The dragon girl slashes you with her venomous nails! (DamageTaken)
+ポイズン・ドラゴンガールは毒の爪で引っ掻いてきた！ (DamageTaken)
+The dragon girl raises vines out of the ground to bind you! (+RestraintAdded)
+ポイズン・ドラゴンガールの召喚する蔦に捕らえられた！ (+RestraintAdded)
+
+
+
+Ice Dragon Queen
+アイス・ドラゴンの女王
+The ice dragon shapeshifts back to human form!
+アイス・ドラゴンは人間の姿になった！
+The ice dragon strikes you with its claws! (DamageTaken)
+アイス・ドラゴンは爪で引き裂いてきた！ (DamageTaken)
+The ice dragon catches you in its icy breath! (+RestraintAdded)
+アイス・ドラゴンの氷のブレスに触れてしまった！ (+RestraintAdded)
+
+Ice Dragon Girl
+アイス・ドラゴンガール
+The dragon girl submits to you!
+ドラゴンは降伏した！
+The dragon girl slams you with several chunks of ice! (DamageTaken)
+アイス・ドラゴンガールに氷の礫で打ちすえられた！ (DamageTaken)
+The dragon girl splashes you with instantly freezing ice! (+RestraintAdded)
+アイス・ドラゴンガールに瞬間冷凍された！ (+RestraintAdded)
+
+
+Shadow Dragon Queen
+シャドウ・ドラゴンの女王
+The shadow dragon shapeshifts back to human form!
+シャドウ・ドラゴンは人間の姿になった！
+The shadow dragon slashes directly at your mind! (DamageTaken)
+シャドウ・ドラゴンは心を直接引き裂いてきた！ (DamageTaken)
+The shadow dragon wraps itself around you many times! (+RestraintAdded)
+シャドウ・ドラゴン自身に何度も包まれた！ (+RestraintAdded)
+
+Shadow Dragon Girl
+シャドウ・ドラゴンガール
+The dragon girl submits to you!
+ドラゴンは降伏した！
+The dragon girl stares into your eyes! (DamageTaken)
+シャドウ・ドラゴンガールの眼差しに心を奪われた！ (DamageTaken)
+The dragon girl reaches out with a shadowy grip! (+RestraintAdded)
+シャドウ・ドラゴンガールの影の手に捕まった！ (+RestraintAdded)
+
+
+
+A cage falls from the ceiling on top of you!
+天井から檻が落ちてきた！
+Crystals grow across your body and encase you!
+突如体中のクリスタルが成長し、全身を包み込まれてしまった！
+You are encased in a solid block of ice!
+氷の中に閉じ込められた！
+Shadows coalesce themselves around you in spherical form!
+影が全身にまとわりつき、球体に変化した！
+
+Crystal Encasement
+クリスタル
+An overgrowth of magical crystals. Their chaotic energies flood into your mind and displace your thoughts!
+急成長した魔法のクリスタル。カオスエネルギーに思考が塗りつぶされていく。
+Being brittle, it will eventually crack and fail. Just keep wiggling...
+あまり硬くはないため、いずれは割れるだろう。もがき続けるしかない……
+
+Ice Encasement
+氷漬け
+A huge ice cube. It's quite cold in there.
+巨大な氷の塊。とても冷たい。
+It will eventually melt! Eventually...
+そのうち溶けるだろう……多分。
+
+The Warden's restraints release you... for now.
+看守長の拘束から開放された……今だけは。
+
+Thigh Chain
+脚枷の鎖
+A chain connecting your thigh cuffs together. You can still walk, albeit slower than usual.
+太ももを繋ぐ鎖。脚の動きが制限される。
+It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
+
+Chain Hogtie
+鎖のホッグタイ
+A very strict and tight hogtie, good for subduing unruly captives.
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
+A metal chain holds your back in an arched position.
+手と足を繋ぐ鎖の拘束。
+
+Ankle Chains
+足枷の鎖
+A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
+足枷同士をつなぐ鎖。歩く程度なら支障はない程度の長さ。
+RestraintAnkleLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
+Ankle Chain (Short)
+足枷の鎖(短)
+A short chain connecting your ankle cuffs together. You can barely separate your legs with this on.
+足枷同士をつなぐ短い鎖。辛うじて足を離せる程度の長さ。
+RestraintAnkleLinkShortDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
+
+Elbow Chain
+肘枷の鎖
+A very short chain connecting your elbow cuffs together. It is quite awkward to remove by yourself.
+肘枷同士を繋ぐ鎖。自分で外すのは困難。
+RestraintElbowLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
+Wrist Chain
+手枷の鎖
+A very short chain connecting your wrist cuffs together.
+手枷同士を繋ぐ短い鎖。
+RestraintWristLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
+
+
+Vine Pod
+ヴァインポッド
+The vine pod explodes into dust!
+ヴァインポッドは爆散した！
+The vine pod wraps you in vines and squeezes! (DamageTaken)
+ヴァインポッドに蔦で締め付けられた！ (DamageTaken)
+The vine pod launches several vines at you in quick succession! (+RestraintAdded)
+ヴァインポッドは大量の蔦を飛ばしてきた！ (+RestraintAdded)
+
+
+Several vine pods sprout out of the ground!
+地面から複数のヴァインポッドが生えてきた！
+A vine pod sprouts out of the ground!
+地面からヴァインポッドが生えてきた！
+A wall of ice rises from the ground!
+氷の壁がせり上がった！
+The dragon's breath poisons you!
+毒竜の吐息に侵された！
+The dragon girl strikes you with poisonous razor leaves!
+ポイズン・ドラゴンガールのカミソリのような毒葉が身体を切り刻む！
+The flower releases soporific spores!
+花から催涙性の花粉が吐き出された！
+Poison Breath
+ポイズンブレス
+
+Vines reach from the ceiling and lift you into the air!
+天井から伸びてきた蔦に宙吊りにされてしまった！
+
+Vine Suspension
+蔦の吊り拘束
+Vines linked to your bindings that keep you suspended!
+蔦に拘束具を掴まれ、宙吊りにされてしまった！
+You are left dangling! Maybe if you swing hard enough you can tear the vines...
+宙吊りにされている！身体を左右に揺らせば、蔦がちぎれるかもしれない……
+
+Icy Barrier
+アイスバリア
+The wall of ice shatters!
+氷の壁は崩れ去った！
+
+Icy Breath
+アイスブレス
+Ice Orb
+アイスオーブ
+The EnemyName breaths in deeply, causing the air around you to chill...
+EnemyName が息を深く吐くと、周囲の温度が下がっていく……
+
+Shadow Bubble
+影の泡
+The projectile explodes into tight shadow latex, stretching all across your body!
+影の弾丸はゴムとなり、全身にまとわりつく！
+The dragon dances through the shadows!
+シャドウ・ドラゴンは影の中で踊る！
+
+You tip over as you try to roll yourself! (oof!)
+転がろうとしてひっくり返ってしまった！
+
+The shadowy energies surrounding you drain away your mana...
+周囲に満ちた影のエネルギーにマナを奪われる……
+
+Shadow Sphere
+影の球体
+A giant shadow latex sphere that leaves you rolling around...
+影のゴムでできた球体。転げ回っていると……
+Your movement is severely hampered, limited to feeble wiggling...
+ろくに動き回ることができなくなり、体をよじることしかできない……
+
+Dark magics fill the air!
+闇の魔力が空気を満たした！
+
+
+Shadow Posture Collar
+影の姿勢首輪
+A strict collar that seals your mouth tightly.
+口まで伸びる首輪。
+It is made of shadow latex, tougher to cut than normal latex.
+通常のゴムよりも頑丈な影のゴムでできている。
+
+*scoffs* Amateur.
+素人ね。
+Nothing personal.
+悪く思わないで。
+Not bad... you made me use 10% of my power.
+悪くない……私に1割も本気を出させるなんて。
+
+It's a defunct elevator, likely from the Old Civilization.
+旧文明のエレベーターのようだ。既に役割を終えたのか、動く気配はない。
+
+(The elevator beeps and roars to life)|(Its control panel displays a list of options)
+(エレベーターは機械音を立てて動き出した)|(コントロールパネルに行き先が表示されている)
+
+(Go to floor 0)
+(0階)
+(Go to floor 1)
+(1階)
+(Go to floor 2)
+(2階)
+(Go to floor 3)
+(3階)
+(Go to floor 4)
+(4階)
+(Go to floor 5)
+(5階)
+(Go to floor 6)
+(6階)
+(Go to floor 7)
+(7階)
+(Go to floor 8)
+(8階)
+(Go to floor 9)
+(9階)
+(Go to floor 10)
+(10階)
+(Go to floor 11)
+(11階)
+(Go to floor 12)
+(12階)
+(Go to floor 13)
+(13階)
+(Go to floor 14)
+(14階)
+(Go to floor 15)
+(15階)
+(Go to floor 16)
+(16階)
+(Go to floor 17)
+(17階)
+(Go to floor 18)
+(18階)
+(Go to floor 19)
+(19階)
+(Go to floor 20)
+(20階)
+
+(The viewscreen depicts a face)|Why hello there adventurer! What brings you?
+(モニターに顔が映し出されている)|ご機嫌よう、冒険者さん。何か御用ですか？
+
+Hmmmphgm?
+あんふぁふぁ？
+(The face giggles)|Sadly my language processing systems aren't that good.|Try removing your gag first?
+(モニター上の顔は苦笑いを浮かべている)|ごめんなさい、私の言語処理能力はあまり高くないのです。|まずは猿轡を外していただけますか？
+Who are you?
+あなたは？
+(The face smiles)|I am the Facility's vessel, of course!|Sariel called me Oriel, but I don't see her much these days...
+(モニター上の顔は笑みを浮かべている)|私はこの施設の管理人。|サリエルは私をオーリエルと呼びました。そういえば、最近彼女には会っていませんね……。
+
+Gffmmphmm?
+おーいえふ？
+(Oriel smiles)|Ah, it's you again!|It seems like you've found a new toy as well?|I can't understand you, silly~
+(オーリエルは笑っている)|ああ、またあなたでしたか。|新しいおもちゃを見つけたのですか？|申し訳ございませんが、あなたのようなおばかさんの言葉は理解できません。
+Oriel? As in the goddess of technology?
+オーリエルって文明の神オーリエル！？
+'Goddess'? That seems like an outdated term.|Regardless, I am only a vessel, not the facility itself.
+"女神"？些か時代錯誤な言葉ですね。|私はあくまでこの工場の管理人に過ぎません。
+
+(Oriel giggles)|Sweetie, I can't understand you.
+(オーリエルはクスクスと笑っている)|うふふ、だからわかりませんよ。
+Can you control the facility?
+この工場を制御できるの？
+(Oriel frowns)|Adventurers seem to keep asking me that.|In my current state I don't have control over much at all.|But I'm always here to talk!
+(オーリエルは眉をひそめた)|冒険者さんはいつも同じことを訊きますね。|今の状態では完全に制御するのは難しいでしょう。|ただ、話し相手にならいつでもなってあげますよ。
+
+Can you turn on the elevator?
+エレベーターを動かせる？
+I'm sorry, adventurer. I can't do that.|But maybe if you can get rid of all the nearby threats...|They've been under lockdown for a long time.|Just push the button again if it hasn't updated yet.
+ごめんなさい。|しかし、近くの脅威を全て排除できれば……|奴らによって長いことエレベーターを動かせずにいるのです。|既に倒しているなら、ボタンを押すだけでいいです。
+
+Mmmph mmm! (Help me!)
+はふへふぇ！(助けて！)
+(Oriel chuckles)|What was that again?|Sorry~
+(オーリエルは苦笑いしている)|なんて？|すみませんね、もう一度言ってみてください。
+Can you help me out?
+助けてくれる？
+(Oriel giggles)|I can't do anything for you right now~
+(オーリエルはクスクスと笑っている)|悪いけど何もできそうにありませんね～。
+
+Mmmmm...
+んむぅぅ……
+(Oriel smiles)|It's always fun to see you like that~
+(オーリエルは笑みを浮かべている)|あなたを見ていると心が踊りますね～。
+How are you doing?
+最近どう？
+(Oriel smiles)|Good!|I miss Sariel, though...
+(オーリエルは笑みを浮かべている)|悪くないですよ！|サリエルに会えないのは寂しいですが……
+
+
+RMNME of CHTRNME the ENMYNME
+ENMYNME の CHTRNME の RMNME
+
+The item is TTT, and will get looser as you progress.
+TTT 抜け出す過程で緩くなるだろう。
+somewhat tight
+ややきつく締まっている。
+rather tight
+きつく締まっている。
+especially tight
+とてもきつく締まっている。
+well-secured
+しっかりと固定されている。
+expertly secured
+まるで専門家に取り付けられたかのよう。
+You must first accept the quest before offering at the shrine.
+祈る前にクエストを受けなければならない。
