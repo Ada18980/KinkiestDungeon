@@ -3003,9 +3003,6 @@ function KDDrawStruggleGroups() {
  * @returns {string}
  */
 function KDTightnessRank(tightness) {
-	if (tightness > 7) return "Extreme2";
-	if (tightness > 5) return "Extreme";
-	if (tightness > 3) return "High";
-	if (tightness > 1) return "Med";
-	return "Low";
+	let factor = Math.min(10, Math.max(0, Math.floor(tightness/2) * 2));
+	return factor + "";
 }

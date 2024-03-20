@@ -30,6 +30,9 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.2.17
+- Easier to Remove restraints if hands and arms are unbound and player is not distracted
+
 5.2.16
 - Added 'Zero Resistance' to the unique spell tree
 - Tightness is less punishing

@@ -273,6 +273,24 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "IronCollarClip",
+	Folder: "Cuffs",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Collar", Layer: "Collar", Pri: 20,
+			Invariant: true,
+			InheritColor: "BaseMetal",
+		},
+		{ Name: "CollarHardware", Layer: "Collar", Pri: 20,
+			Invariant: true,
+			InheritColor: "Hardware",
+		},
+	])
+});
+
 
 AddModel({
 	Name: "SteelCollar",
@@ -328,6 +346,7 @@ AddModel({
 
 
 AddModel(GetModelFashionVersion("IronCollar", true));
+AddModel(GetModelFashionVersion("IronCollarClip", true));
 AddModel(GetModelFashionVersion("IronBelt", true));
 AddModel(GetModelFashionVersion("SteelCollarRunes", true));
 AddModel(GetModelFashionVersion("SteelCollar", true));
