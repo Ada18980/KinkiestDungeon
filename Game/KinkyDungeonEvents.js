@@ -8908,6 +8908,9 @@ let KDEventMapGeneric = {
 			for (let tuple of KinkyDungeonAllRestraintDynamic()) {
 				let inv = tuple.item;
 				if (inv.tightness > 0) {
+					KinkyDungeonSendTextMessage(1, TextGet("KDTightnessFade")
+						.replace("RSTRT", KDGetItemName(inv))
+					, "#ffffff", 1);
 					inv.tightness = Math.max(0, inv.tightness - 1);
 				}
 			}

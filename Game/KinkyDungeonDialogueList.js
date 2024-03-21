@@ -2771,28 +2771,28 @@ let KDDialogue = {
 																			}
 																		}
 																	},
-																	"Question2": {
-																		playertext: "Default", response: "Default",
-																		options: {
-																			"Proceed": {
-																				playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
-																				leadsToStage: "PostIntro",
-																			}
-																		}
-																	},
-																	"Question3": {
-																		playertext: "Default", response: "Default",
-																		options: {
-																			"Proceed": {
-																				playertext: "Default", response: "Default",
-																				leadsToStage: "PostIntro",
-																				dontTouchText: true,
-																			}
-																		}
-																	},
 																	"Proceed": {
 																		playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
 																		leadsToStage: "PostIntro",
+																	}
+																}
+															},
+															"Question4": {
+																playertext: "Default", response: "Default",
+																options: {
+																	"Proceed": {
+																		playertext: "FuukaDefensive_Question_Question_Proceed", response: "Default",
+																		leadsToStage: "PostIntro",
+																	}
+																}
+															},
+															"Question5": {
+																playertext: "Default", response: "Default",
+																options: {
+																	"Proceed": {
+																		playertext: "Default", response: "Default",
+																		leadsToStage: "PostIntro",
+																		dontTouchText: true,
 																	}
 																}
 															},
@@ -3333,16 +3333,13 @@ let KDDialogue = {
 				options: {
 					"Question": {gagDisabled: true,
 						playertext: "Default", response: "Default",
+						clickFunction: (gagged, player) => {
+							if (KinkyDungeonPlayerTags.get("Collars")) {
+								KDGameData.CurrentDialogMsg = "TheWardenBrat_Question_Collar";
+							}
+							return false;
+						},
 						options: {
-							"Question": {
-								playertext: "Default", response: "Default",
-								options: {
-									"Proceed": {
-										playertext: "Default", response: "Default",
-										leadsToStage: "PostIntro",
-									}
-								}
-							},
 							"Proceed": {
 								playertext: "Default", response: "Default",
 								leadsToStage: "PostIntro",

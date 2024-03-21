@@ -103,7 +103,7 @@ function KinkyDungeonBossFloor(Floor) {
 	if (Floor == 4) return bosses.Fuuka;
 	if (Floor == 8) return bosses.TheWarden;
 	//if (Floor == 12) return bosses.SilverWitch;
-	if (Floor == 16) return bosses.Dollmaker;
-	//if (Floor == 20) return bosses.Angel;
+	if (Floor == 20) return bosses.Dollmaker;
+	//if (Floor == 20) return bosses.Rana;
 	return null;
 }
