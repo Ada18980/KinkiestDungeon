@@ -593,7 +593,7 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	KDCommanderRoles = new Map();
 	KDUpdateEnemyCache = true;
 
-	KDKickEnemies(undefined, ignoreAware); // Shuffle enemy locations
+	KDKickEnemies(undefined, ignoreAware, y); // Shuffle enemy locations
 
 	KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
 
@@ -618,7 +618,7 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 		x: origx,
 		y: y,
 	};
-	let aware = KDKickEnemies(undefined, ignoreAware); // Shuffle enemy locations
+	let aware = KDKickEnemies(undefined, ignoreAware, y); // Shuffle enemy locations
 	if (ignoreAware && aware) {
 		//KinkyDungeonLoseJailKeys();
 		KinkyDungeonSetFlag("stairslocked", 10);

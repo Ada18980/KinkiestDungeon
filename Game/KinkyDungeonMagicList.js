@@ -1454,21 +1454,21 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			},
 			onhit:"aoe", time: 4, delay: 3, lifetime: 1, evadeable: true, range: 6.99, size: 3, aoe: 1.5, power: 9, bindType: "Metal", bind: 80, damage: "crush", playerEffect: {name: "LiquidMetalEngulf", damage: "crush", power: 9}},
 
-		{name: "Engulf", tags: ["latex", "slime", "buff", "offense"], prerequisite: "ApprenticeLatex", sfx: "MagicSlash", school: "Conjure", manacost: 1.6, components: [], level:1, type:"passive", events: [
-			{type: "ElementalEffect", power: 2, damage: "glue", bindType: "Slime", bindEff: 1.0, trigger: "playerAttack"},
-			{type: "EffectTile", kind: "Slime", duration: 7, trigger: "playerAttack", cost: 0},
+		{name: "Engulf", tags: ["latex", "slime", "buff", "offense"], prerequisite: "ApprenticeLatex", sfx: "MagicSlash", school: "Conjure", manacost: 0.8, components: [], level:1, type:"passive", events: [
+			{type: "ElementalEffect", power: 1, damage: "glue", bindType: "Slime", bindEff: 1.5, trigger: "playerAttack"},
+			{type: "EffectTileAoE", aoe: 1.1, kind: "Slime", duration: 7, trigger: "playerAttack", cost: 0},
 		]},
-		{name: "ChainStrike", tags: ["chain", "metal", "buff", "offense"], prerequisite: "ApprenticeMetal", sfx: "MagicSlash", school: "Conjure", manacost: 1.4, components: [], level:1, type:"passive", events: [
-			{type: "ElementalEffect", power: 2, damage: "chain", bindType: "Metal", bindEff: 0.9, trigger: "playerAttack"},
-			{type: "EffectTile", kind: "Chains", duration: 16, trigger: "playerAttack", cost: 0},
+		{name: "ChainStrike", tags: ["chain", "metal", "buff", "offense"], prerequisite: "ApprenticeMetal", sfx: "MagicSlash", school: "Conjure", manacost: 0.7, components: [], level:1, type:"passive", events: [
+			{type: "ElementalEffect", power: 1, damage: "chain", bindType: "Metal", bindEff: 1.25, trigger: "playerAttack"},
+			{type: "EffectTileAoE", aoe: 1.1, kind: "Chains", duration: 16, trigger: "playerAttack", cost: 0},
 		]},
-		{name: "LeatherWhip", tags: ["latex", "slime", "buff", "offense"], prerequisite: "ApprenticeLeather", sfx: "MagicSlash", school: "Conjure", manacost: 1.2, components: [], level:1, type:"passive", events: [
-			{type: "ElementalEffect", power: 2, damage: "pain", bindType: "Leather", bindEff: 1.5, trigger: "playerAttack"},
-			{type: "EffectTile", kind: "Belts", duration: 12, trigger: "playerAttack", cost: 0},
+		{name: "LeatherWhip", tags: ["latex", "slime", "buff", "offense"], prerequisite: "ApprenticeLeather", sfx: "MagicSlash", school: "Conjure", manacost: 0.6, components: [], level:1, type:"passive", events: [
+			{type: "ElementalEffect", power: 1, damage: "pain", bindType: "Leather", bindEff: 2.5, trigger: "playerAttack"},
+			{type: "EffectTileAoE", aoe: 1.1, kind: "Belts", duration: 12, trigger: "playerAttack", cost: 0},
 		]},
-		{name: "Ropework", tags: ["rope", "buff", "offense"], bindEff: 3, prerequisite: "ApprenticeRope", sfx: "MagicSlash", school: "Conjure", manacost: 1.5, components: [], level:1, type:"passive", events: [
-			{type: "ElementalEffect", power: 2, damage: "chain", bindType: "Rope", bindEff: 3, trigger: "playerAttack"},
-			{type: "EffectTile", kind: "Ropes", duration: 12, trigger: "playerAttack", cost: 0},
+		{name: "Ropework", tags: ["rope", "buff", "offense"], bindEff: 3, prerequisite: "ApprenticeRope", sfx: "MagicSlash", school: "Conjure", manacost: 0.7, components: [], level:1, type:"passive", events: [
+			{type: "ElementalEffect", power: 1, damage: "chain", bindType: "Rope", bindEff: 4, trigger: "playerAttack"},
+			{type: "EffectTileAoE", aoe: 1.1, kind: "Ropes", duration: 12, trigger: "playerAttack", cost: 0},
 		]},
 
 		{name: "Awaken", prerequisite: "Spread", tags: ["slime", "latex", "binding", "offense", "aoe"], sfx: "MagicSlash", school: "Conjure", manacost: 2.0, components: ["Verbal"], level:1,
@@ -2464,7 +2464,11 @@ let KinkyDungeonSpellListEnemies = [
 		type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "pain", playerEffect: {name: "NurseSyringe", power: 4, type: "poison", time: 8},},
 	{enemySpell: true, name: "RibbonBurst", color: "#ff00ff", sfx: "MagicSlash", manacost: 5, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 4, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "chain", playerEffect: {name: "TrapBindings", text: "KinkyDungeonTrapBindingsRibbons", tags: ["magicRibbons"], power: 3, damage: "chain", count: 2, noGuard: true}},
 	{enemySpell: true, name: "Spores", bulletSpin: 0.1, color: "#6733aa", sfx: "MagicSlash", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 3, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "poison", playerEffect: {name: "Spores", power: 2, damage: "poison"}},
-	{enemySpell: true, name: "DragonFlowerSpores", bulletSpin: 0.1, hideWarnings: true, selfcast: true, color: "#6733aa", sfx: "MagicSlash", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 1.5, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "poison", playerEffect: {name: "DragonFlowerSpores", power: 1.5, amount: 0.75, damage: "poison"}},
+	{enemySpell: true, name: "DragonFlowerSpores", bulletSpin: 0.1, hideWarnings: true, selfcast: true, color: "#6733aa", sfx: "MagicSlash", manacost: 4, components: ["Verbal"], level:1, type:"inert",
+		onhit:"aoe", time: 5, delay: 2, power: 1.5, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "poison", playerEffect: {
+			name: "DragonFlowerSpores",
+			power: 1.5, amount: 0.75, damage: "poison"
+		}},
 
 
 	{enemySpell: true, name: "SporesHappy", bulletSpin: 0.1, color: "#ff00ff", sfx: "FireSpell", noCastMsg: true, selfcast: true, manacost: 3, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 2.5, range: 3, size: 3, aoe: 1.5, lifetime: 1, damage: "happygas", playerEffect: {name: "SporesHappy", power: 2.5, damage: "happygas"}},
@@ -2870,7 +2874,8 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "DragonSlash", bindType: "Vine", color: "#88ff88", sfx: "Miss", effectTileDurationMod: 10, effectTile: {
 		name: "Vines",
 		duration: 20,
-	}, manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "chain", speed: 2.5, playerEffect: {name: "PoisonSlash", power: 2, count: 0.25, time: 12}},
+	}, manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "chain", speed: 2.5, playerEffect:
+		{name: "PoisonSlash", power: 2, amount: 0.25, time: 12}},
 
 	{enemySpell: true, name: "PoisonDragonBlast",  bindType: "Vine", color: "#88ff88", sfx: "FireSpell", hitsfx: "Bones", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "grope", speed: 3, effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
 		name: "Vines",

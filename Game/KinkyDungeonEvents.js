@@ -4581,6 +4581,16 @@ let KDEventMapSpell = {
 				}, e.variance);
 			}
 		},
+		"EffectTileAoE": (e, spell, data) => {
+			if (KinkyDungeonHasMana(e.cost != undefined ? e.cost : KinkyDungeonGetManaCost(spell, false, true)) && !data.miss && !data.disarm && data.targetX && data.targetY && data.enemy && KDHostile(data.enemy)) {
+				KinkyDungeonChangeMana(-(e.cost != undefined ? e.cost : KinkyDungeonGetManaCost(spell, false, true)));
+				KDTriggerSpell(spell, data, false, true);
+				KDCreateAoEEffectTiles(data.targetX, data.targetY, {
+					name: e.kind,
+					duration: e.duration,
+				}, e.variance, e.aoe);
+			}
+		},
 		"FloatingWeapon": (e, spell, data) => {
 			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, false, true)) && data.targetX && data.targetY && !(data.enemy && data.enemy.Enemy && KDAllied(data.enemy))) {
 				let chanceWith = KinkyDungeonPlayerDamage.chance;

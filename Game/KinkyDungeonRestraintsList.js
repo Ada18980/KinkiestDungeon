@@ -4046,7 +4046,7 @@ const KinkyDungeonRestraints = [
 			BaseMetal: {"gamma":1.4166666666666665,"saturation":1,"contrast":1.4833333333333334,"brightness":1.1833333333333333,"red":2.3499999999999996,"green":1.9666666666666666,"blue":1.1333333333333333,"alpha":1},
 		},
 		alwaysDressModel: [
-			{Model: "AnkleLink", inheritFilters: true}
+			{Model: "ThighLink", inheritFilters: true}
 		],
 		escapeChance: {"Struggle": -0.2, "Cut": 0.1, "Remove": 0.2, "Pick": 0.35},
 		maxwill: 0.8, enemyTags: {"banditMagicRestraints":6}, playerTags: {"ItemLegsFull":-2}, minLevel: 7,

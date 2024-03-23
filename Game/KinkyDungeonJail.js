@@ -1344,7 +1344,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 			}
 		}
 
-	KDKickEnemies(nearestJail);
+	KDKickEnemies(nearestJail, false, MiniGameKinkyDungeonLevel);
 	KDResetAllAggro();
 
 }
@@ -1358,8 +1358,21 @@ function KDEnemyIsTemporary(enemy) {
 	return enemy.Enemy.tags.temporary || (enemy.lifetime > 0);
 }
 
-/** Kicks enemies away, and also out of offlimits zones if they are aware */
-function KDKickEnemies(nearestJail, ignoreAware) {
+/**
+ * Kicks enemies away, and also out of offlimits zones if they are aware
+ * @param {any} nearestJail
+ * @param {boolean} ignoreAware
+ * @param {number} Level
+ * @param {boolean} [noCull]
+ * @returns
+ */
+function KDKickEnemies(nearestJail, ignoreAware, Level, noCull) {
+
+	let altRoom = KDMapData.RoomType;
+	let mapMod = KDMapData.MapMod ? KDMapMods[KDMapData.MapMod] : null;
+	let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Level);
+
+	let canCull = !noCull && (altType?.alwaysRegen || (altType && !(altType?.makeMain || altType?.persist)));
 	let atLeastOneAware = false;
 	let enemies = [];
 	let already = new Map();
@@ -1414,7 +1427,7 @@ function KDKickEnemies(nearestJail, ignoreAware) {
 			KDExpireFlags(e);
 			KDResetIntent(e, {});
 			if (e.boundLevel) {
-				if (KDHelpless(e)) {
+				if (canCull && KDHelpless(e)) {
 					KDRemoveEntity(e, false, true, true);
 				} else {
 					enemies.push(e);

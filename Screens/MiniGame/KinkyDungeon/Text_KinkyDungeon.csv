@@ -6095,9 +6095,9 @@ KinkyDungeonSpellSpellChoiceUp3,Legendary Wizard
 KinkyDungeonSpellDescriptionSpellChoiceUp3,Gives you an additional spell choice slot
 
 KinkyDungeonSpellSummonUp1,More Summons
-KinkyDungeonSpellDescriptionSummonUp1,Increases the permanent summon cap by +1 (from 2 to 3)
+KinkyDungeonSpellDescriptionSummonUp1,Increases the permanent summon cap by +2 (from 2 to 4)
 KinkyDungeonSpellSummonUp2,Many Summons
-KinkyDungeonSpellDescriptionSummonUp2,Increases the permanent summon cap by +1 (from 3 to 4)
+KinkyDungeonSpellDescriptionSummonUp2,Increases the permanent summon cap by +2 (from 4 to 6)
 
 KinkyDungeonSpellBomb,Bomb
 KinkyDungeonSpellDescriptionBomb,Channel for 1 turn for a bomb that does DamageDealt blast damage in an area after DelayTime turns.
@@ -6417,16 +6417,16 @@ KinkyDungeonSpellDescriptionFlameBlade,When enabled: Melee weapon attacks cost m
 KinkyDungeonSpellFlameStrike,Flame Blade
 
 KinkyDungeonSpellEngulf,Tentacle Slap
-KinkyDungeonSpellDescriptionEngulf,You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +20 glue damage and create slime. 100% bind efficiency.
+KinkyDungeonSpellDescriptionEngulf,You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +10 glue damage and create slime. 150% bind efficiency.
 
 KinkyDungeonSpellChainStrike,Chain Strike
-KinkyDungeonSpellDescriptionChainStrike,You have the power to summon chains when you attack. When enabled: Your attacks deal +20 chain damage and create chains. 90% bind efficiency.
+KinkyDungeonSpellDescriptionChainStrike,You have the power to summon chains when you attack. When enabled: Your attacks deal +10 chain damage and create chains. 125% bind efficiency.
 
 KinkyDungeonSpellRopework,Ropework
-KinkyDungeonSpellDescriptionRopework,You have the power to weave ropes between your attacks. When enabled: Your attacks deal +20 chain damage and create ropes. 300% bind efficiency.
+KinkyDungeonSpellDescriptionRopework,You have the power to weave ropes between your attacks. When enabled: Your attacks deal +10 chain damage and create ropes. 400% bind efficiency.
 
 KinkyDungeonSpellLeatherWhip,Leather Whip
-KinkyDungeonSpellDescriptionLeatherWhip,You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +20 pain damage and create belts. 150% bind efficiency.
+KinkyDungeonSpellDescriptionLeatherWhip,You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +10 pain damage and create belts. 250% bind efficiency.
 
 KinkyDungeonSpellStrength,Super Strength
 KinkyDungeonSpellDescriptionStrength,"When enabled: Struggling is more powerful, and your melee attack damage is increased by +20 if your weapon deals physical damage."

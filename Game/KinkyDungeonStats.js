@@ -1654,7 +1654,7 @@ function KinkyDungeonCalculateHeelLevel(delta, overrideKneel) {
 	KDGameData.HeelPower = Math.max(0,
 		Math.pow(heelpower, 0.75)
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "HeelPower")
-		+ Math.max(KinkyDungeonSleepiness));
+		+ Math.max(0, KinkyDungeonSleepiness));
 }
 
 function KinkyDungeonCalculateSlowLevel(delta) {

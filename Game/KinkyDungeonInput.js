@@ -29,7 +29,7 @@ function KDProcessInput(type, data) {
 			break;
 		case "tick":
 			if (data.sleep == 10 && (KDGameData.PrisonerState == 'jail' || KDGameData.PrisonerState == 'parole') && KinkyDungeonPlayerInCell()) {
-				KDKickEnemies(KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y));
+				KDKickEnemies(KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y), false, MiniGameKinkyDungeonLevel, true);
 			}
 			if (data.sleep && KinkyDungeonStatWill < KinkyDungeonStatWillMax * KDGetSleepWillFraction()) KinkyDungeonChangeWill(KinkyDungeonStatWillMax/KDMaxStatStart * KDSleepRegenWill, false);
 			KinkyDungeonAdvanceTime(data.delta, data.NoUpdate, data.NoMsgTick);
