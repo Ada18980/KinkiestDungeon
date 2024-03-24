@@ -1,7 +1,7 @@
 let LAYERS_BASE = [
 	"Weapon",
-	"FurnitureLinked",
 	"FurnitureFront",
+	"FurnitureLinked",
 
 	// These are in front b/c the collar acc goes over the leash for visibility
 	// and the leash shouldnt go thru the head when hogtied
