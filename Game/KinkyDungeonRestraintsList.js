@@ -14,8 +14,8 @@ let KDDevices = ["Armbinders", "Straitjackets", "Legbinders", "BindingDress", "B
 let KDElbowBind = ["Armbinders", "BindingDress", "Hogties"]; // More complex devices
 let KDBoxBind = ["Boxbinders", "Hogties"]; // More complex devices
 let KDWrappable = ["Wrapping", "Encase", "Belts", "Tape"]; // Things that can be wrapped in various restraints but not tied due to covering
-let KDArmbinderLink = ["Wrapping", "Encase", "Belts", "BindingDress", "Hogties"]; // Standard link for an armbinder
-let KDBoxbinderLink = ["Wrapping", "Encase", "Belts", "BindingDress", "Hogties"]; // Standard link for a boxbinder
+let KDArmbinderLink = ["Armbinders", "Wrapping", "Encase", "Belts", "BindingDress", "Hogties"]; // Standard link for an armbinder
+let KDBoxbinderLink = ["Boxbinders", "Wrapping", "Encase", "Belts", "BindingDress", "Hogties"]; // Standard link for a boxbinder
 let KDDressLink = ["Armbinders", "Ties", "Link", "Wrapping", "Encase", "Belts", "BindingDress", "Hogties", "Straitjackets"];
 let KDJacketLink = ["Wrapping", "Encase", "Belts", "Hogties", "TransportJackets"]; // Standard link for an armbinder
 let KDJacketRender = ["Wrapping", "Encase", "Belts", "BindingDress"]; // Standard link for an armbinder
@@ -1301,7 +1301,7 @@ const KinkyDungeonRestraints = [
 		enemyTags: {crystalEncase: 100},
 		bindhands: 1.0,
 		bindarms: true,
-		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "CrystalEncase", "BlockKneel", "FeetLinked", "HandsBehind"], ignoreSpells: true, removeOnLeash: true, immobile: true,
+		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "CrystalEncase", "BlockKneel", "FeetLinked", "HandsBehind"], ignoreSpells: true, removeOnLeash: true, immobile: true,
 		alwaysEscapable: ["Struggle"],
 		struggleMinSpeed: {
 			Struggle: 0.01,
@@ -1334,7 +1334,7 @@ const KinkyDungeonRestraints = [
 		enemyTags: {"resinRestraints" : 10, 'resin': 10,},
 		bindhands: 1.0,
 		bindarms: true,
-		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture"], ignoreSpells: true, removeOnLeash: true, immobile: true,
+		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container"], ignoreSpells: true, removeOnLeash: true, immobile: true,
 
 		Model: "TransparentCatsuit",
 		Filters:{
@@ -1911,10 +1911,10 @@ const KinkyDungeonRestraints = [
 		tightType: "Thick",
 		escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": -.2},
 		helpChance: {"Remove": 0.5, "Pick": 0.5, "Unlock": 1.0},
-		enemyTags: {"latexcube":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Latex"], ignoreSpells: true, removeOnLeash: true,
+		enemyTags: {"latexcube":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Latex"], ignoreSpells: true, removeOnLeash: true,
 		events: [{trigger: "tick", type: "cageDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
 	{removePrison: true, name: "Bubble", Asset: "VacCube", Color: ["#ff77ff"], Group: "ItemDevices", power: 3, weight: 1, alwaysStruggleable: true,
-		Model: "Bubble",
+		Model: "Bubble", LinkableBy: ["Container"],renderWhenLinked: ["Container"],
 		addTag: ["ForceKneel", "NoHogtie"],
 		hobble: 3,
 		heelpower: 10,
@@ -1935,10 +1935,10 @@ const KinkyDungeonRestraints = [
 			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
 			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.2, sfx: "RubberBolt", inheritLinked: true},
 		],
-		enemyTags: {"bubble":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Elements"], removeOnLeash: true,
+		enemyTags: {"bubble":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Elements"], removeOnLeash: true,
 	},
 	{removePrison: true, name: "SlimeBubble", Asset: "VacCube", Color: ["#ff77ff"], Group: "ItemDevices", power: 5, weight: 1, alwaysStruggleable: true,
-		Model: "SlimeBubble",
+		Model: "SlimeBubble", LinkableBy: ["Container"],renderWhenLinked: ["Container"],
 		hobble: 3,
 		heelpower: 10,
 		tightType: "Thick",
@@ -1959,12 +1959,12 @@ const KinkyDungeonRestraints = [
 			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
 			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.2, sfx: "RubberBolt", inheritLinked: true},
 		],
-		enemyTags: {"slimebubble":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Latex"], removeOnLeash: true,
+		enemyTags: {"slimebubble":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Latex"], removeOnLeash: true,
 	},
 
 
 	{removePrison: true, name: "BallSuit", Asset: "VacCube", Color: ["#88aaff"], Group: "ItemDevices", power: 4, weight: 1, alwaysStruggleable: true,
-		Model: "BallSuit",
+		Model: "BallSuit", LinkableBy: ["Container"],renderWhenLinked: ["Container"],
 		bindarms: true,
 		restriction: 15,
 		tightType: "Thick",
@@ -1984,7 +1984,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.4, sfx: "RubberBolt", inheritLinked: true},
 			{trigger: "playerMove", type: "tipBallsuit", inheritLinked: true},
 		],
-		enemyTags: {"ballSuit":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Latex", "BallSuit"], removeOnLeash: true,
+		enemyTags: {"ballSuit":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Latex", "BallSuit"], removeOnLeash: true,
 	},
 
 	{removePrison: true, name: "LatexSphere", Asset: "VacCube", Color: ["#88aaff"], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true, blindfold: 6, enclose: true,
@@ -2010,7 +2010,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
 			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.2, sfx: "RubberBolt", inheritLinked: true},
 		],
-		enemyTags: {"latexSphere":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Latex"], removeOnLeash: true,
+		enemyTags: {"latexSphere":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Latex"], removeOnLeash: true,
 	},
 	// Barrel trap, always possible to struggle out but takes time
 	{removePrison: true, name: "BarrelTrap", Asset: "SmallWoodenBox", Color: "Default", Group: "ItemDevices", power: 2, weight: 1, immobile: true, alwaysStruggleable: true, blindfold: 6, enclose: true,
@@ -2022,7 +2022,7 @@ const KinkyDungeonRestraints = [
 		addTag: ["ForceKneel", "NoHogtie"],
 		helpChance: {"Remove": 0.4, "Pick": 0.2, "Unlock": 1.0},
 		limitChance: {"Struggle": 0.01, "Cut": 0, "Remove": 0.01, "Pick": 0, "Unlock": 0},
-		enemyTags: {"barrel":100}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Furniture"], ignoreSpells: true, removeOnLeash: true, ignoreIfNotLeash: true,
+		enemyTags: {"barrel":100}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Furniture", "Container"], ignoreSpells: true, removeOnLeash: true, ignoreIfNotLeash: true,
 		events: [{trigger: "tick", type: "barrelDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
 	// Cage trap
 	{removePrison: true, name: "CageTrap", Asset: "Cage", Color: ['Default', 'Default', '#000000'], Group: "ItemDevices", power: 3, weight: 1, alwaysStruggleable: true,
@@ -2032,7 +2032,7 @@ const KinkyDungeonRestraints = [
 		tightType: "Secure",
 		escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.35, "Pick": 0.33, "Unlock": 0.7},
 		helpChance: {"Remove": 0.5, "Pick": 0.5, "Unlock": 1.0},
-		enemyTags: {"cage":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Cages"], ignoreSpells: true, removeOnLeash: true, immobile: true,
+		enemyTags: {"cage":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Cages"], ignoreSpells: true, removeOnLeash: true, immobile: true,
 		events: [{trigger: "tick", type: "cageDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
 	// Sarcophagus
 	{removePrison: true, name: "Sarcophagus", Asset: "DisplayCase", Color: ['Default'], Group: "ItemDevices", power: 10, weight: 1, immobile: true, alwaysStruggleable: true,
@@ -2045,7 +2045,7 @@ const KinkyDungeonRestraints = [
 		tightType: "Secure",
 		escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.35, "Pick": -0.5, "Unlock": 0.7},
 		helpChance: {"Remove": 0.5, "Pick": 0.5, "Unlock": 1.0},
-		enemyTags: {"sarcophagus":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Sarcophagus"], ignoreSpells: true, removeOnLeash: true,
+		enemyTags: {"sarcophagus":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Sarcophagus"], ignoreSpells: true, removeOnLeash: true,
 		events: [{trigger: "tick", type: "cageDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true, chance: 0.04}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
 	// Display trap
 	{removePrison: true, name: "DisplayTrap", Asset: "TheDisplayFrame", Color: ['Default'], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true,
@@ -3110,7 +3110,7 @@ const KinkyDungeonRestraints = [
 		hideTags: ["Armbinders", "Boxbinders", "Boxties", "Wristies", "BoundArms"],
 		AssetGroup: "ItemArms",
 		sfxGroup: "Handcuffs",
-		linkCategory: "Thumbs", linkSize: 0.51, LinkableBy: [...KDBindable], Group: "ItemHands",
+		linkCategory: "Thumbs", linkSize: 0.51, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Group: "ItemHands",
 		Color: "Default", bindarms: true, power: 6, DefaultLock: "White",
 		bindhands: 0.4,
 		events: [
@@ -3135,7 +3135,7 @@ const KinkyDungeonRestraints = [
 		hideTags: ["Armbinders", "Boxbinders", "Boxties", "Wristies", "BoundArms"],
 		AssetGroup: "ItemArms",
 		sfxGroup: "Handcuffs",
-		linkCategory: "Thumbs", linkSize: 0.51, LinkableBy: [...KDBindable], Group: "ItemArms",
+		linkCategory: "Thumbs", linkSize: 0.51, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Group: "ItemArms",
 		Color: "Default", bindarms: true, power: 6, DefaultLock: "White",
 		bindhands: 0.4,
 		events: [
@@ -3779,7 +3779,7 @@ const KinkyDungeonRestraints = [
 	//region ShadowLatex
 
 	{removePrison: true, name: "ShadowBallSuit", Asset: "VacCube", Color: ["#88aaff"], Group: "ItemDevices", power: 8, weight: 1, alwaysStruggleable: true,
-		Model: "BallSuit",
+		Model: "BallSuit", LinkableBy: ["Container"],renderWhenLinked: ["Container"],
 		bindarms: true,
 		restriction: 30,
 		tightType: "Thick",
@@ -4090,7 +4090,7 @@ const KinkyDungeonRestraints = [
 		enemyTags: {iceEncase: 100},
 		bindhands: 1.0,
 		bindarms: true,
-		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "IceEncase", "BlockKneel", "FeetLinked", "HandsBehind"], ignoreSpells: true, removeOnLeash: true, immobile: true,
+		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "IceEncase", "BlockKneel", "FeetLinked", "HandsBehind"], ignoreSpells: true, removeOnLeash: true, immobile: true,
 		alwaysEscapable: ["Struggle"],
 		struggleMinSpeed: {
 			Struggle: 0.01,
@@ -4301,7 +4301,7 @@ const KinkyDungeonRestraints = [
 		linkCategory: "RopeArms", linkSize: 0.51,
 		//renderWhenLinked: [...KDArmRopesRender],
 		alwaysRender: true,
-		Asset: "HempRope", Color: "Default", LinkableBy: ["Boxbinders", "Boxties", "RopeReinforce", "Wrapping", "Encase",], Group: "ItemArms", bindarms: true, power: 1.5, weight: 0, escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
+		Asset: "HempRope", Color: "Default", LinkableBy: ["Boxbinders", "Boxties", "RopeReinforce", "Wrapping", "Encase",...KDBindable], Group: "ItemArms", bindarms: true, power: 1.5, weight: 0, escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		struggleMult: {"Struggle": 0.6, "Remove": 0.3},
 		affinity: {Remove: ["Hook"],},
 		maxwill: 0.7, enemyTags: {"ropeRestraints":4}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "Boxties", "HogtieUpper"]},
