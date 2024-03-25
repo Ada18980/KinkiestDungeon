@@ -470,6 +470,10 @@ interface KDRestraintPropsBase {
 	armor?: boolean,
 	/** The item can be linked by anything */
 	LinkAll?: boolean,
+	/** The item can be linked over anything */
+	AlwaysLinkable?: boolean,
+	/** The item always renders items below*/
+	UnderlinkedAlwaysRender?: boolean,
 	/** The item cannot be linked over anything */
 	NoLinkOver?: boolean,
 	/** Power to display, not actual power */

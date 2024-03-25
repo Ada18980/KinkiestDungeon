@@ -3734,8 +3734,9 @@ function KinkyDungeonIsLinkable(data) {
 		if (data.newRestraint.name == data.oldRestraint.Link) return true;
 	}
 	if (data.item && !KDCheckLinkTotal(data.item, data.newRestraint, data.linkUnderItem, data.props?.newLock, data.props?.newCurse, data.useAugmentedPower, data.augmentedInventory)) return false;
-	if (data.oldRestraint && data.newRestraint && data.oldRestraint && (data.oldRestraint.LinkableBy || data.oldRestraint.LinkAll) && data.newRestraint.shrine) {
+	if (data.oldRestraint && data.newRestraint && data.oldRestraint && (data.newRestraint.AlwaysLinkable || data.oldRestraint.LinkableBy || data.oldRestraint.LinkAll) && data.newRestraint.shrine) {
 		if (data.oldRestraint.LinkAll) return true;
+		if (data.newRestraint.AlwaysLinkable) return true;
 		for (let l of data.oldRestraint.LinkableBy) {
 			for (let s of data.newRestraint.shrine) {
 				if (l == s) {
@@ -3776,6 +3777,8 @@ function KDCheckLinkTotal(oldRestraint, newRestraint, ignoreItem, lock = "", cur
 			//|| KinkyDungeonRestraintPower(link, true, newRestraint, link.lock, KDGetCurse(link))
 			//< -0.01 + (curse ? (KDCursePower(curse)) : 0) + newRestraint.power * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, newRestraint, augmentedInventory) : 1) * KinkyDungeonGetLockMult(lock, undefined, curse)
 			) {
+				pass = true;
+			} else if (newRestraint.AlwaysLinkable) {
 				pass = true;
 			} else if (r.LinkableBy && newRestraint.shrine) {
 				for (let l of r.LinkableBy) {
@@ -5291,7 +5294,7 @@ function KDDynamicLinkListSurface(item) {
 			!inaccess
 			&&
 			(
-				KDRestraint(host).accessible || KDRestraint(inv).alwaysRender || (KDRestraint(inv).renderWhenLinked && KDRestraint(host).shrine && KDRestraint(inv).renderWhenLinked.some((link) => {return KDRestraint(host).shrine.includes(link);}))
+				KDRestraint(host).UnderlinkedAlwaysRender || KDRestraint(host).accessible || KDRestraint(inv).alwaysRender || (KDRestraint(inv).renderWhenLinked && KDRestraint(host).shrine && KDRestraint(inv).renderWhenLinked.some((link) => {return KDRestraint(host).shrine.includes(link);}))
 			)
 		)
 		) {

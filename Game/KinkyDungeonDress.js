@@ -245,7 +245,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 					}
 					restraints.push(inv);
 					if (inv.dynamicLink) {
-						let accessible = KDRestraint(inv)?.accessible;
+						let accessible = KDRestraint(inv)?.accessible || KDRestraint(inv)?.UnderlinkedAlwaysRender;
 						let link = inv.dynamicLink;
 						for (let I = 0; I < 30; I++) {
 							if (accessible || KDRestraint(link).alwaysRender || (KDRestraint(link).renderWhenLinked && KDRestraint(link).renderWhenLinked.some((element) => {return renderTypes.includes(element);}))) {

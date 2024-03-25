@@ -3360,7 +3360,8 @@ const KinkyDungeonRestraints = [
 		Filters: {
 			BaseMetal: {"gamma":1,"saturation":1,"contrast":1.4833333333333334,"brightness":2.0166666666666666,"red":1,"green":1,"blue":1,"alpha":1},
 		},
-		Asset: "SteelCuffs", linkCategory: "Cuffs", linkSize: 0.55, LinkableBy: [...KDDevices,...KDBindable], Color: ['Default', 'Default'], Group: "ItemArms", bindarms: false, power: 4, weight: 0,
+		LinkAll: true,
+		Asset: "SteelCuffs", linkCategory: "Cuffs", linkSize: 0.55, Color: ['Default', 'Default'], Group: "ItemArms", bindarms: false, power: 4, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": -0.5, "Remove": 0.15, "Pick": 0.25}, enemyTags: {"steelCuffs":4, "handcuffer": 1}, playerTags: {"ItemArmsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Cuffs", "Metal",  "ArmCuffsBase"],
 		maxwill: 0.9
 	},
@@ -3373,7 +3374,7 @@ const KinkyDungeonRestraints = [
 		Filters: {
 			BaseMetal: {"gamma":1,"saturation":1,"contrast":1.4833333333333334,"brightness":2.0166666666666666,"red":1,"green":1,"blue":1,"alpha":1},
 		},
-		LinkableBy: [...KDDevices,...KDBindable], Color: ['#444444', '#444444'], Group: "ItemArms", bindarms: false, power: 5, weight: 0,
+		LinkAll: true, Color: ['#444444', '#444444'], Group: "ItemArms", bindarms: false, power: 5, weight: 0,
 		escapeChance: {"Struggle": -0.2, "Cut": -0.5, "Remove": 0.15, "Pick": 0.15}, enemyTags: {"magnetCuffs":10}, playerTags: {"ItemArmsFull":-4},
 		minLevel: 0, allFloors: true, shrine: ["Cuffs", "Metal",  "ArmCuffsBase", "Elements"],
 		maxwill: 0.9, events: [
@@ -3382,7 +3383,8 @@ const KinkyDungeonRestraints = [
 			{trigger: "beforePlayerDamage", type: "lockItemOnDamageType", restraint: "WristLink", sfx: "LightJingle", damage: "electric", chance: 1.0, lock: "Blue"},
 		]},
 
-	{inventory: true, nonbinding: true, name: "MagneticAnkleCuffs", Asset: "SteelAnkleCuffs", debris: "Chains", LinkableBy: [...KDBindable, ...KDDevices], Color: "#444444",
+	{inventory: true, nonbinding: true, name: "MagneticAnkleCuffs", Asset: "SteelAnkleCuffs", debris: "Chains",
+		LinkAll: true, Color: "#444444",
 		Model: "ShacklesAnkles",
 		Filters: {
 			BaseMetal: {"gamma":1.4166666666666665,"saturation":1,"contrast":1.4833333333333334,"brightness":2.0166666666666666,"red":1,"green":1.8833333333333333,"blue":1.9166666666666667,"alpha":1},
@@ -4069,7 +4071,8 @@ const KinkyDungeonRestraints = [
 			{trigger: "playerAttack", type: "PunishPlayer", chance: 0.33, stun: 2, warningchance: 1.0, damage: "crush", power: 3, sfx: "SoftShield", msg: "KinkyDungeonPunishPlayerBandit", inheritLinked: true},
 		]},
 
-	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "BanditArmCuffs", debris: "Chains", accessible: true, Asset: "OrnateCuffs", linkCategory: "Cuffs", linkSize: 0.55, LinkableBy: [...KDDevices, ...KDBindable], Color: ["#f0b541", "#ff5277"], Group: "ItemArms", bindarms: false, power: 7, weight: 0,
+	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "BanditArmCuffs", debris: "Chains", accessible: true, Asset: "OrnateCuffs", linkCategory: "Cuffs", linkSize: 0.55,
+		LinkAll: true, Color: ["#f0b541", "#ff5277"], Group: "ItemArms", bindarms: false, power: 7, weight: 0,
 		Model: "ShacklesArms",
 		struggleBreak: true,
 		Filters: {
