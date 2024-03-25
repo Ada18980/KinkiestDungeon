@@ -557,6 +557,7 @@
             <key type="filename">../Models/Cuffs/AnkleRightSpread.png</key>
             <key type="filename">../Models/Cuffs/Belt.png</key>
             <key type="filename">../Models/Cuffs/Collar.png</key>
+            <key type="filename">../Models/Cuffs/CollarHardware.png</key>
             <key type="filename">../Models/Cuffs/ElbowLeftBoxtie.png</key>
             <key type="filename">../Models/Cuffs/ElbowLeftFree.png</key>
             <key type="filename">../Models/Cuffs/ElbowLeftFront.png</key>
@@ -938,6 +939,7 @@
             <key type="filename">../Models/Elf/Circlet.png</key>
             <key type="filename">../Models/Elf/CircletGem.png</key>
             <key type="filename">../Models/Elf/Collar.png</key>
+            <key type="filename">../Models/Elf/CollarHardware.png</key>
             <key type="filename">../Models/Elf/CrystalShoeLeftClosed.png</key>
             <key type="filename">../Models/Elf/CrystalShoeLeftSpread.png</key>
             <key type="filename">../Models/Elf/CrystalShoeRightClosed.png</key>

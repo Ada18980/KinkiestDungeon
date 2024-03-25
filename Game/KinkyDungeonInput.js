@@ -474,7 +474,7 @@ function KDProcessInput(type, data) {
 				KinkyDungeonChangeRep(data.type, -slimed * 2);
 			}
 			else KinkyDungeonSendActionMessage(9, TextGet(KinkyDungeonGagTotal() > 0 ? "KinkyDungeonPoolDrinkFace" : "KinkyDungeonPoolDrink"), "#AAFFFF", 2);
-			KinkyDungeonChangeMana(5, false, 0, false, true);
+			KinkyDungeonChangeMana(KinkyDungeonStatManaMax * 0.5, false, 0, false, true);
 			KDSendStatus('goddess', data.type, 'shrineDrink');
 			KinkyDungeonAggroAction('shrine', {});
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
