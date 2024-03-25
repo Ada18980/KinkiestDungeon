@@ -173,7 +173,7 @@
         "Game/KDWardrobe.js",
     ],
     "compilerOptions": {
-        "target": "es2017",
+        "target": "es2019",
         "sourceMap": true,
         "inlineSources": true,
         "outFile": "./out/main.js",
@@ -186,6 +186,6 @@
         ],
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
-        "lib": ["DOM", "ES2017"]
+        "lib": ["DOM", "ES2019"]
     }
 }
