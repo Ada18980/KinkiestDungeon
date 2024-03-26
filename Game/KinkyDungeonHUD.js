@@ -2712,6 +2712,8 @@ function KDDrawBuffIcons(minXX, minYY, statsDraw, side) {
 				if (KDToggleShowAllBuffs) {
 					resetY(stat);
 					XX += XXspacing;
+				} else {
+					break;
 				}
 			}
 		} else {
@@ -2720,6 +2722,8 @@ function KDDrawBuffIcons(minXX, minYY, statsDraw, side) {
 				if (KDToggleShowAllBuffs) {
 					resetX(stat);
 					YY -= YYspacing;
+				} else {
+					break;
 				}
 			}
 		}
@@ -2860,11 +2864,14 @@ function KDDrawStruggleGroups() {
 					lastO = O;
 
 				}
-				if (item.tightness > 0 && (KDRestraint(item).escapeChance?.Struggle < 1 || KDRestraint(item).escapeChance?.Remove < 1)) {
-					let O = lastO;
-					DrawTextKD(TextGet("KDItemsTightness").replace("TTT",
-						TextGet("KDTightness" + (KDRestraint(item)?.tightType || "") + KDTightnessRank(item.tightness))
-					), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150); O++;
+				if (item.tightness > 0 && !KDGetCurse(item) && (KDRestraint(item).escapeChance?.Struggle < 1 || KDRestraint(item).escapeChance?.Remove < 1)) {
+					if (!sg.blocked) {
+						let O = lastO;
+						DrawTextKD(TextGet("KDItemsTightness").replace("TTT",
+							TextGet("KDTightness" + (KDRestraint(item)?.tightType || "") + KDTightnessRank(item.tightness))
+						), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150); O++;
+					}
+
 				}
 				FillRectKD(kdcanvas, kdpixisprites, "selectedBG", {
 					Left: 510, Top: MY - 20, Width: 740,

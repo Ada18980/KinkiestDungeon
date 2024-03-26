@@ -7,7 +7,7 @@ let KDKeyedLocks = ["Red", "White", "Blue"];
 let KDFeetRopeLink = ["Ties", "Hogties", "Wrapping", "Encase", "Belts"];
 let KDFormFitting = ["Socks", "Gloves"];
 let KDHarnessLink = ["Wrapping", "Encase", "HeavyCorsets", "Corsets", "ArmbinderHarness", "Ties", "Hogties", "Link", "Belts", "Harnesses"];
-let KDCorsetLink = ["Wrapping", "Encase", "Harnesses", "ArmbinderHarness", "Ties", "Link", "Belts"];
+let KDCorsetLink = ["Wrapping", "Encase", "Harnesses", "ArmbinderHarness", "Ties", "Link", "Belts", "Belt"];
 let KDBindable = ["Wrapping", "Encase", "Belts", "Tape", "Ties", "Hogties", "Link", "Cuffs", "Boxties", "Wristties", "Crossties"]; // Things that can be wrapped in various restraints
 let KDBindableMinusCuffs = KDBindable.filter((b) => {return b != "Cuffs";});
 let KDDevices = ["Armbinders", "Straitjackets", "Legbinders", "BindingDress", "Boxbinders", "Petsuits"]; // More complex devices
@@ -44,6 +44,7 @@ let KDHighCollarRender = ["Collars", "Modules"];
 let KDCollarModuleLink = ["Modules"];
 let KDGlovesLink = [...KDBindable, ...KDDevices, "Mittens"];
 let KDSocksLink = [...KDBindable, ...KDDevices, "Boots"];
+let KDBeltLink = [...KDBindable, ...KDDevices, "Corsets"]; // For ACTUAL belt, not chastity
 //let KDCorsetRender = ["Harnesses", "ArmbinderHarness", "Ties", "Belts"];
 
 
@@ -425,7 +426,7 @@ const KinkyDungeonRestraints = [
 
 	{removePrison: true, name: "SlimeBoots", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeBoots", linkSize: 0.6, Asset: "ToeTape", Type: "Full", Color: "#9B49BD", Group: "ItemBoots", blockfeet: true,power: 4, weight: 0,  escapeChance: {"Struggle": 0.3, "Cut": 0, "Remove": 0},
 		LinkableBy: [...KDRubberLink, ], renderWhenLinked: [...KDRubberLink],
-		events: [{trigger: "tick", type: "slimeSpread", power: 0.04}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 1,
+		events: [{trigger: "tick", type: "slimeSpread", power: 0.04, inheritLinked: true}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1, inheritLinked: true}], slimeLevel: 1,
 		Model: "SlimeBoots",
 		tightType: "Thick",
 		addPoseIfTopLevel: ["ItemBootsRubberOver"],
@@ -435,7 +436,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.1,
 		enemyTags: {"slimeRestraints":100, "slimeRestraintsRandom": 2, "slimeRestraintsRandomLight": 2}, playerTags: {},
 		minLevel: 0, allFloors: true, shrine: ["Latex", "Encase", "Slime"], addTag: ["slime", "FeetLinked"]},
-	{removePrison: true, name: "SlimeFeet", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeFeet", linkSize: 0.6, Asset: "DuctTape", Type: "CompleteFeet", OverridePriority: 24, Color: "#9B49BD", Group: "ItemFeet", blockfeet: true,power: 4, weight: -100,  escapeChance: {"Struggle": 0.3, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", power: 0.05}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 1,
+	{removePrison: true, name: "SlimeFeet", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeFeet", linkSize: 0.6, Asset: "DuctTape", Type: "CompleteFeet", OverridePriority: 24, Color: "#9B49BD", Group: "ItemFeet", blockfeet: true,power: 4, weight: -100,  escapeChance: {"Struggle": 0.3, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", power: 0.05, inheritLinked: true}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1, inheritLinked: true}], slimeLevel: 1,
 		LinkableBy: [...KDRubberLink, ], renderWhenLinked: [...KDRubberLink],
 		Model: "SlimeFeet",
 		tightType: "Thick",
@@ -446,7 +447,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.4,
 		enemyTags: {"slimeRestraints":100, "slimeRestraintsRandom": 101, "slimeRestraintsRandomLight": 101}, playerTags: {"ItemBootsFull":15},
 		minLevel: 0, allFloors: true, shrine: ["Latex", "Encase", "Slime"], addTag: ["slime", "FeetLinked"]},
-	{removePrison: true, name: "SlimeLegs", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeLegs", linkSize: 0.6, remove: ["ClothLower", "Skirts", "Pants"],  Asset: "SeamlessHobbleSkirt", Color: "#9B49BD", Group: "ItemLegs", hobble: 1, power: 4, weight: -102,  escapeChance: {"Struggle": 0.22, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", power: 0.07}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 1,
+	{removePrison: true, name: "SlimeLegs", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeLegs", linkSize: 0.6, remove: ["ClothLower", "Skirts", "Pants"],  Asset: "SeamlessHobbleSkirt", Color: "#9B49BD", Group: "ItemLegs", hobble: 1, power: 4, weight: -102,  escapeChance: {"Struggle": 0.22, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", power: 0.07, inheritLinked: true}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1, inheritLinked: true}], slimeLevel: 1,
 		LinkableBy: [...KDRubberLink, ], renderWhenLinked: [...KDRubberLink],
 		Model: "SlimeLegs",
 		tightType: "Thick",
@@ -457,7 +458,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.7,
 		enemyTags: {"slimeRestraints":100, "slimeRestraintsRandom": 103, "slimeRestraintsRandomLight": 103}, playerTags: {"ItemFeetFull":2, "ItemBootsFull":2},
 		minLevel: 0, allFloors: true, shrine: ["Slime", "Latex", "Encase", "Hobbleskirts", ], addTag: ["slime", "FeetLinked"]},
-	{removePrison: true, name: "SlimeArms", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeArms", linkSize: 0.6, remove: ["Bra", "Cloth", "Bras", "Tops"], Asset: "StraitLeotard", Modules: [0, 0, 0, 0], Color: ["#9B49BD", "#9B49BD", "#9B49BD"], Group: "ItemArms", bindarms: true, bindhands: 0.25, power: 6, weight: -102,  escapeChance: {"Struggle": 0.2, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", power: 0.1}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 1,
+	{removePrison: true, name: "SlimeArms", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeArms", linkSize: 0.6, remove: ["Bra", "Cloth", "Bras", "Tops"], Asset: "StraitLeotard", Modules: [0, 0, 0, 0], Color: ["#9B49BD", "#9B49BD", "#9B49BD"], Group: "ItemArms", bindarms: true, bindhands: 0.25, power: 6, weight: -102,  escapeChance: {"Struggle": 0.2, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", power: 0.1, inheritLinked: true}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 1,
 		LinkableBy: [...KDRubberLink, ], renderWhenLinked: [...KDRubberLink],
 		Model: "SlimeArms",
 		tightType: "Thick",
@@ -467,7 +468,7 @@ const KinkyDungeonRestraints = [
 		factionColor: [[], [0, 1, 2]],
 		enemyTags: {"slimeRestraints":100, "slimeRestraintsRandom": 103}, playerTags: {"ItemFeetFull":2, "ItemBootsFull":2, "ItemLegsFull":2},
 		minLevel: 0, allFloors: true, shrine: ["Slime", "Latex", "Encase", "HandsBehind"], addTag: ["slime"]},
-	{removePrison: true, name: "SlimeHands", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeHands", linkSize: 0.6, Asset: "DuctTape", Color: "#9B49BD", Group: "ItemHands", bindhands: 0.5, power: 1, weight: -102,  escapeChance: {"Struggle": 0.4, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", power: 0.05}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 1,
+	{removePrison: true, name: "SlimeHands", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeHands", linkSize: 0.6, Asset: "DuctTape", Color: "#9B49BD", Group: "ItemHands", bindhands: 0.5, power: 1, weight: -102,  escapeChance: {"Struggle": 0.4, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", power: 0.05, inheritLinked: true}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1, inheritLinked: true}], slimeLevel: 1,
 		LinkableBy: [...KDRubberLink, ], renderWhenLinked: [...KDRubberLink],
 		Model: "SlimeHands",
 		tightType: "Thick",
@@ -477,7 +478,7 @@ const KinkyDungeonRestraints = [
 		factionColor: [[], [0]],
 		enemyTags: {"slimeRestraints":100, "slimeRestraintsRandom": 103, "slimeRestraintsRandomLight": 103}, playerTags: {"ItemFeetFull":1, "ItemBootsFull":1, "ItemLegsFull":1, "ItemHeadFull":1},
 		minLevel: 0, allFloors: true, shrine: ["Slime", "Latex", "Encase",], addTag: ["slime"]},
-	{removePrison: true, name: "SlimeMouth", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeMouth", linkSize: 0.6, Asset: "LatexBallMuzzleGag", Color: "#9B49BD", Group: "ItemMouth", AssetGroup: "ItemMouth3", gag: 0.75, power: 4, weight: -102,  escapeChance: {"Struggle": 0.22, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", power: 0.05}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 1,
+	{removePrison: true, name: "SlimeMouth", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeMouth", linkSize: 0.6, Asset: "LatexBallMuzzleGag", Color: "#9B49BD", Group: "ItemMouth", AssetGroup: "ItemMouth3", gag: 0.75, power: 4, weight: -102,  escapeChance: {"Struggle": 0.22, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", power: 0.05, inheritLinked: true}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1, inheritLinked: true}], slimeLevel: 1,
 		LinkableBy: [...KDRubberLink, ], renderWhenLinked: [...KDRubberLink],
 		Model: "SlimeMouth",
 		tightType: "Thick",
@@ -487,7 +488,7 @@ const KinkyDungeonRestraints = [
 		factionColor: [[], [0, 1, 2]],
 		enemyTags: {"slimeRestraints":100, "slimeRestraintsRandom": 103}, playerTags: {"ItemFeetFull":1, "ItemBootsFull":1, "ItemLegsFull":1, "ItemHandsFull":1, "ItemArmsFull":1},
 		minLevel: 0, allFloors: true, shrine: ["Slime", "Latex", "Encase", "Gags", "FlatGag"], addTag: ["slime"]},
-	{removePrison: true, name: "SlimeHead", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeHead", linkSize: 0.6, Asset: "LeatherSlimMask", Color: "#9B49BD", Group: "ItemHead", gag: 0.5, blindfold: 4, power: 4, weight: -103,  escapeChance: {"Struggle": 0.22, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", power: 0.05}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 1,
+	{removePrison: true, name: "SlimeHead", unlimited: true, debris: "Slime", inaccessible: true, linkCategory: "SlimeHead", linkSize: 0.6, Asset: "LeatherSlimMask", Color: "#9B49BD", Group: "ItemHead", gag: 0.5, blindfold: 4, power: 4, weight: -103,  escapeChance: {"Struggle": 0.22, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", power: 0.05, inheritLinked: true}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1, inheritLinked: true}], slimeLevel: 1,
 		LinkableBy: [...KDRubberLink, ], renderWhenLinked: [...KDRubberLink],
 		Model: "SlimeHead",
 		tightType: "Thick",
@@ -604,118 +605,6 @@ const KinkyDungeonRestraints = [
 
 
 
-	//region ProtoSlime
-	/*
-	{removePrison: true, name: "ProtoSlimeBoots", unlimited: true, debris: "Slime",
-		LinkableBy: [...KDRubberLink, ], renderWhenLinked: [...KDRubberLink],
-		Filters: {
-			Slime: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
-		},
-		Model: "SlimeBoots",  inaccessible: true, linkCategory: "SlimeBoots", linkSize: 0.6, Asset: "ToeTape", Type: "Full", Color: "#404973", Group: "ItemBoots", blockfeet: true,power: 4, weight: 0,  escapeChance: {"Struggle": 0.4, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", restraint: "Proto", power: 0.02}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 0.5,
-		affinity: {Struggle: ["Edge"], Remove: ["Edge"],}, failSuffix: {"Remove": "Slime"}, enemyTags: {"moldRestraints":100, "moldRestraintsRandom": 2}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Slime", "Latex", "Encase",], addTag: ["slime", "FeetLinked"]},
-	{removePrison: true, name: "ProtoSlimeFeet", unlimited: true, debris: "Slime",
-		LinkableBy: [...KDRubberLink, ], renderWhenLinked: [...KDRubberLink],
-		Filters: {
-			Slime: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
-		},
-		Model: "SlimeFeet",  inaccessible: true, linkCategory: "SlimeFeet", linkSize: 0.6, Asset: "DuctTape", Type: "CompleteFeet", OverridePriority: 24, Color: "#404973", Group: "ItemFeet", blockfeet: true,power: 4, weight: -100,  escapeChance: {"Struggle": 0.4, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", restraint: "Proto", power: 0.03}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 0.5,
-		affinity: {Struggle: ["Edge"], Remove: ["Edge"],},failSuffix: {"Remove": "Slime"}, enemyTags: {"moldRestraints":100, "moldRestraintsRandom": 101}, playerTags: {"ItemBootsFull":15}, minLevel: 0, allFloors: true, shrine: ["Slime", "Latex", "Encase",], addTag: ["slime", "FeetLinked"]},
-	{removePrison: true, name: "ProtoSlimeLegs", unlimited: true, debris: "Slime",
-		LinkableBy: [...KDRubberLink, ], renderWhenLinked: [...KDRubberLink],
-		Filters: {
-			Slime: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
-		},
-		Model: "SlimeLegs",  inaccessible: true, linkCategory: "SlimeLegs", linkSize: 0.6, remove: ["ClothLower"],  Asset: "SeamlessHobbleSkirt", Color: "#404973", Group: "ItemLegs", hobble: 1, power: 4, weight: -102,  escapeChance: {"Struggle": 0.3, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", restraint: "Proto", power: 0.02}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 0.5,
-		affinity: {Struggle: ["Edge"], Remove: ["Edge"],},failSuffix: {"Remove": "Slime"}, enemyTags: {"moldRestraints":100, "moldRestraintsRandom": 103}, playerTags: {"ItemFeetFull":2, "ItemBootsFull":2}, minLevel: 0, allFloors: true, shrine: ["Slime", "Latex", "Hobbleskirts", "Encase",], addTag: ["slime", "FeetLinked"]},
-	{removePrison: true, name: "ProtoSlimeArms", unlimited: true, debris: "Slime",
-		LinkableBy: [...KDRubberLink, ], renderWhenLinked: [...KDRubberLink],
-		Filters: {
-			Slime: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
-		},
-		Model: "SlimeArms",  inaccessible: true, linkCategory: "SlimeArms", linkSize: 0.6, remove: ["Bra"], Asset: "StraitLeotard", Modules: [0, 0, 0, 0], Color: ["#404973", "#404973", "#404973"], Group: "ItemArms", bindarms: true, bindhands: 0.2, power: 6, weight: -102,  escapeChance: {"Struggle": 0.3, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", restraint: "Proto", power: 0.05}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 0.5,
-		affinity: {Struggle: ["Edge"], Remove: ["Edge"],},failSuffix: {"Remove": "Slime"}, enemyTags: {"moldRestraints":100, "moldRestraintsRandom": 103}, playerTags: {"ItemFeetFull":2, "ItemBootsFull":2, "ItemLegsFull":2}, minLevel: 0, allFloors: true, shrine: ["Slime", "Latex", "Encase",], addTag: ["slime"]},
-	{removePrison: true, name: "ProtoSlimeHands", unlimited: true, debris: "Slime",
-		LinkableBy: [...KDRubberLink, ], renderWhenLinked: [...KDRubberLink],
-		Filters: {
-			Slime: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
-		},
-		Model: "SlimeHands",  inaccessible: true, linkCategory: "SlimeHands", linkSize: 0.6, Asset: "DuctTape", Color: "#404973", Group: "ItemHands", bindhands: 0.4, power: 1, weight: -102,  escapeChance: {"Struggle": 0.45, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", restraint: "Proto", power: 0.02}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 0.5,
-		affinity: {Struggle: ["Edge"], Remove: ["Edge"],},failSuffix: {"Remove": "Slime"}, enemyTags: {"moldRestraints":100, "moldRestraintsRandom": 103}, playerTags: {"ItemFeetFull":1, "ItemBootsFull":1, "ItemLegsFull":1, "ItemHeadFull":1}, minLevel: 0, allFloors: true, shrine: ["Slime", "Latex", "Encase",], addTag: ["slime"]},
-	{removePrison: true, name: "ProtoSlimeMouth", unlimited: true, debris: "Slime",
-		LinkableBy: [...KDRubberLink, ], renderWhenLinked: [...KDRubberLink],
-		Filters: {
-			Slime: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
-		},
-		Model: "SlimeMouth",  inaccessible: true, linkCategory: "SlimeMouth", linkSize: 0.6, Asset: "LatexBallMuzzleGag", Color: "#404973", Group: "ItemMouth", AssetGroup: "ItemMouth3", gag: 0.6, power: 4, weight: -102,  escapeChance: {"Struggle": 0.3, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", restraint: "Proto", power: 0.02}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 0.5,
-		affinity: {Struggle: ["Edge"], Remove: ["Edge"],},failSuffix: {"Remove": "Slime"}, enemyTags: {"moldRestraints":100, "moldRestraintsRandom": 103}, playerTags: {"ItemFeetFull":1, "ItemBootsFull":1, "ItemLegsFull":1, "ItemHandsFull":1, "ItemArmsFull":1}, minLevel: 0, allFloors: true, shrine: ["Slime", "Latex", "Encase", "Gags"], addTag: ["slime"]},
-	{removePrison: true, name: "ProtoSlimeHead", unlimited: true, debris: "Slime",
-		LinkableBy: [...KDRubberLink, ], renderWhenLinked: [...KDRubberLink],
-		Filters: {
-			Slime: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
-		},
-		Model: "SlimeHead", inaccessible: true, linkCategory: "SlimeHead", linkSize: 0.6, Asset: "LeatherSlimMask", Color: "#404973", Group: "ItemHead", gag: 0.3, blindfold: 4, power: 4, weight: -103,  escapeChance: {"Struggle": 0.3, "Cut": 0, "Remove": 0}, events: [{trigger: "tick", type: "slimeSpread", restraint: "Proto", power: 0.02}, {trigger: "remove", type: "slimeStop"}, {trigger: "beforeStruggleCalc", type: "boostWater", power: 0.1}], slimeLevel: 0.5,
-		affinity: {Struggle: ["Edge"], Remove: ["Edge"],},failSuffix: {"Remove": "Slime"}, enemyTags: {"moldRestraints":100, "moldRestraintsRandom": 100}, playerTags: {"ItemFeetFull":1, "ItemBootsFull":1, "ItemLegsFull":1, "ItemHandsFull":1, "ItemArmsFull":1, "ItemMouth3Full":1, "Unmasked": -1000}, minLevel: 0, allFloors: true, shrine: ["Slime", "Latex", "Encase", "Block_ItemMouth"], addTag: ["slime"]},
-	//endregion
-
-	//region HardSlimeProto
-	{inventory: true, removePrison: true, name: "HardProtoSlimeBoots", debris: "Slime", linkCategory: "SlimeBoots", linkSize: 0.6, LinkableBy: [...KDRubberLink], renderWhenLinked: [...KDRubberLink], inaccessible: true, Asset: "ToeTape", Type: "Full", Color: "#404973", Group: "ItemBoots", blockfeet: true, addTag: ["FeetLinked"],power: 5, weight: 0,
-		escapeChance: {"Struggle": 0, "Cut": 0.1, "Remove": 0}, failSuffix: {"Remove": "SlimeHard"},
-		Filters: {
-			Rubber: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
-		},
-		affinity: {Struggle: ["Sharp",], Remove: ["Hook"],},
-		Model: "RubberBoots",
-		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Encase", "SlimeHard"]},
-	{inventory: true, removePrison: true, name: "HardProtoSlimeFeet", debris: "Slime", linkCategory: "SlimeFeet", linkSize: 0.6, LinkableBy: [...KDRubberLink], renderWhenLinked: [...KDRubberLink], inaccessible: true, Asset: "DuctTape", Type: "CompleteFeet", OverridePriority: 24, Color: "#404973", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 6, weight: -100,
-		escapeChance: {"Struggle": 0.0, "Cut": 0.1, "Remove": 0}, failSuffix: {"Remove": "SlimeHard"},
-		Filters: {
-			Rubber: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
-		},
-		affinity: {Struggle: ["Sharp",], Remove: ["Hook"],},
-		Model: "RubberFeet",
-		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Encase", "SlimeHard"]},
-	{inventory: true, removePrison: true, name: "HardProtoSlimeLegs", debris: "Slime", linkCategory: "SlimeLegs", linkSize: 0.6, LinkableBy: [...KDRubberLink], renderWhenLinked: [...KDRubberLink], inaccessible: true, remove: ["ClothLower"], Asset: "SeamlessHobbleSkirt", Color: "#404973", Group: "ItemLegs", hobble: 1, addTag: ["FeetLinked"], power: 6, weight: -102,
-		escapeChance: {"Struggle": 0.0, "Cut": 0.1, "Remove": 0}, failSuffix: {"Remove": "SlimeHard"},
-		Filters: {
-			Rubber: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
-		},
-		affinity: {Struggle: ["Sharp",], Remove: ["Hook"],},
-		Model: "RubberLegs",
-		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Encase", "Hobbleskirts", "Encase", "SlimeHard"]},
-	{inventory: true, removePrison: true, name: "HardProtoSlimeArms", debris: "Slime", linkCategory: "SlimeArms", linkSize: 0.6, LinkableBy: [...KDRubberLink], renderWhenLinked: [...KDRubberLink], inaccessible: true, remove: ["Bra"], Asset: "StraitLeotard", Modules: [0, 0, 0, 0], Color: ["#404973", "#404973", "#404973"], Group: "ItemArms", bindarms: true, bindhands: 0.25, power: 8, weight: -102,
-		escapeChance: {"Struggle": 0.0, "Cut": 0.1, "Remove": 0}, failSuffix: {"Remove": "SlimeHard"},
-		Filters: {
-			Rubber: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
-		},
-		affinity: {Struggle: ["Sharp",], Remove: ["Hook"],},
-		Model: "RubberArms",
-		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Encase", "SlimeHard"]},
-	{inventory: true, removePrison: true, name: "HardProtoSlimeHands", debris: "Slime", linkCategory: "SlimeHands", linkSize: 0.6, LinkableBy: [...KDRubberLink], renderWhenLinked: [...KDRubberLink], inaccessible: true, Asset: "DuctTape", Color: "#404973", Group: "ItemHands", bindhands: 0.5, power: 5, weight: -102,
-		escapeChance: {"Struggle": 0.0, "Cut": 0.1, "Remove": 0}, failSuffix: {"Remove": "SlimeHard"},
-		Filters: {
-			Rubber: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
-		},
-		affinity: {Struggle: ["Sharp",], Remove: ["Hook"],},
-		Model: "RubberHands",
-		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Encase", "SlimeHard"]},
-	{inventory: true, removePrison: true, name: "HardProtoSlimeMouth", debris: "Slime", linkCategory: "SlimeMouth", linkSize: 0.6, LinkableBy: [...KDRubberLink], renderWhenLinked: [...KDRubberLink], inaccessible: true, Asset: "KittyGag", Color: ["#404973", "#404973", "#404973"], Group: "ItemMouth", AssetGroup: "ItemMouth3", gag: 0.6, power: 6, weight: -102,
-		escapeChance: {"Struggle": 0.0, "Cut": 0.1, "Remove": 0}, failSuffix: {"Remove": "SlimeHard"},
-		Filters: {
-			Rubber: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
-		},
-		affinity: {Struggle: ["Sharp",], Remove: ["Hook"],},
-		Model: "RubberMouth",
-		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Encase", "SlimeHard", "Gags"]},
-	{inventory: true, removePrison: true, name: "HardProtoSlimeHead", debris: "Slime", linkCategory: "SlimeHead", linkSize: 0.6, LinkableBy: [...KDRubberLink], renderWhenLinked: [...KDRubberLink], inaccessible: true, Asset: "LeatherSlimMask", Color: "#404973", Group: "ItemHead", gag: 0.3, blindfold: 4, power: 6, weight: -102,
-		escapeChance: {"Struggle": 0.0, "Cut": 0.1, "Remove": 0}, failSuffix: {"Remove": "SlimeHard"},
-		Filters: {
-			Rubber: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.2166666666666668,"red":0.41666666666666663,"green":0.4,"blue":0.8666666666666667,"alpha":1},
-		},
-		affinity: {Struggle: ["Sharp",], Remove: ["Hook"],},
-		Model: "RubberHead",
-		enemyTags: {}, playerTags: {"Unmasked": -1000}, minLevel: 0, allFloors: true, shrine: ["Latex", "Encase", "Block_ItemMouth", "Encase", "SlimeHard"]},
-	//endregion
-	*/
 
 	//region Glue
 	{removePrison: true, name: "GlueBoots", unlimited: true, debris: "Slime", linkCategory: "SlimeBoots", linkSize: 0.3, inaccessible: true, Asset: "ToeTape", Type: "Full", Color: "#f0b541", Group: "ItemBoots", blockfeet: true, addTag: ["FeetLinked"],power: 1, weight: 0,  escapeChance: {"Struggle": 0.3, "Cut": 0.0, "Remove": 0.05},
@@ -4613,6 +4502,57 @@ const KinkyDungeonRestraints = [
 
 
 
+	//endregion
+
+	//region Warden
+
+	{inventory: true, name: "WardenBelt", Asset: "Default", Color: "Default",
+		Model: "IronBelt",
+		Filters: {
+			BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+		},
+
+		cloneTag: "wardenCuffs",
+
+		debris: "Chains",
+		Group: "ItemTorso",
+		LinkableBy: [...KDBeltLink], renderWhenLinked: [...KDBeltLink],
+
+		curse: "SpellLock8",
+		power: 26, weight: 100, DefaultLock: "Gold",
+		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
+		unlimited: true,
+		struggleBreak: true,
+		tightType: "Secure",
+
+		maxwill: 0.6, enemyTags: {"wardenBelt":10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Belt", "Warden"],
+		events: [{trigger: "tick", type: "livingRestraints", tags: [], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.9, count: 4}]
+	},
+	{inventory: true, name: "WardenBelt2", Asset: "Default", Color: "Default",
+		Model: "IronBelt",
+		Filters: {
+			BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+		},
+
+		cloneTag: "wardenCuffs",
+
+		debris: "Chains",
+		Group: "ItemTorso",
+		LinkableBy: [...KDBeltLink], renderWhenLinked: [...KDBeltLink],
+
+		curse: "SpellLock8",
+		power: 26, weight: 100, DefaultLock: "Gold",
+		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
+		unlimited: true,
+		struggleBreak: true,
+		tightType: "Secure",
+
+		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Belt", "Warden"],
+		events: [
+			{type: "Buff", trigger: "tick", power: 3, buffType: "DivinePrivilege"},
+		],
+	},
+
 
 
 	{name: "WardenThighLink", accessible: true, Asset: "FuturisticLegCuffs", debris: "Chains", LinkableBy: [...KDBindable, ...KDDevices],
@@ -4623,6 +4563,9 @@ const KinkyDungeonRestraints = [
 		minLevel: 0, allFloors: true, shrine: ["ThighLink", "Link", "Metal", "Cuffs"],
 		escapeChance: {"Struggle": -0.5, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
 		enemyTags: {wardenLink: 10}, playerTags: {},
+
+
+		curse: "SpellLock1",
 		DefaultLock: "White",
 		requireSingleTagToEquip: ["LegCuffsBase"],
 		Filters: {
@@ -4645,13 +4588,13 @@ const KinkyDungeonRestraints = [
 		enemyTags: {wardenLink: 10}, playerTags: {},
 		minLevel: 0, allFloors: true, shrine: ["AnkleLink", "Link", "Metal"],
 		DefaultLock: "White",
+		curse: "SpellLock1",
 		Filters: {
 			ThighLink: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
 		},
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireBaseAnkleCuffs", inheritLinked: true},
-			{trigger: "tick", type: "wardenMelt", power: 0.1, count: 8, inheritLinked: true},
 		]},
 	{name: "WardenAnkleLinkShort", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindableMinusCuffs],
 		Type: "Closed", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'],
@@ -4690,6 +4633,7 @@ const KinkyDungeonRestraints = [
 		Filters: {
 			ThighLink: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
 		},
+		curse: "SpellLock1",
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireBaseArmCuffs", inheritLinked: true},
@@ -4719,7 +4663,6 @@ const KinkyDungeonRestraints = [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireBaseArmCuffs", inheritLinked: true},
 			{trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.12, inheritLinked: true},
-			{trigger: "tick", type: "wardenMelt", power: 0.1, count: 8, inheritLinked: true},
 		]},
 
 
@@ -5976,6 +5919,9 @@ const KinkyDungeonRestraints = [
 					Rubber:  {"gamma":0.8666666666666667,"saturation":0,"contrast":0.8,"brightness":1,"red":1.5098039215686274,"green":1.5098039215686274,"blue":1.5098039215686274,"alpha":1},
 				},
 				factionColor: [],
+				factionFilters: {
+					Rubber: {color: "Catsuit", override: true},
+				},
 			},
 			[
 				{trigger: "tick", type: "ApplyConduction", duration: 2},
@@ -6001,9 +5947,12 @@ const KinkyDungeonRestraints = [
 			{
 				Color: ["#404973", "#404973", "#404973"],
 				Filters: {
-					Slime: {"gamma":1.2833333333333332,"saturation":0.016666666666666666,"contrast":2.96,"brightness":1,"red":0.47058823529411764,"green":0.47058823529411764,"blue":0.47058823529411764,"alpha":1},
+					Slime: {"gamma":1.2833333333333332,"saturation":0.016666666666666666,"contrast":2.96,"brightness":0.5,"red":0.97058823529411764,"green":0.97058823529411764,"blue":0.97058823529411764,"alpha":1},
 				},
 				factionColor: [],
+				factionFilters: {
+					Slime: {color: "DarkNeutral", override: false},
+				},
 			},
 			[
 			],
@@ -6026,9 +5975,12 @@ const KinkyDungeonRestraints = [
 			{
 				Color: ["#404973", "#404973", "#404973"],
 				Filters: {
-					Rubber: {"gamma":1.2833333333333332,"saturation":0.016666666666666666,"contrast":2.96,"brightness":1,"red":0.47058823529411764,"green":0.47058823529411764,"blue":0.47058823529411764,"alpha":1},
+					Rubber: {"gamma":1.2833333333333332,"saturation":0.016666666666666666,"contrast":2.96,"brightness":0.5,"red":0.97058823529411764,"green":0.97058823529411764,"blue":0.97058823529411764,"alpha":1},
 				},
 				factionColor: [],
+				factionFilters: {
+					Rubber: {color: "DarkNeutral", override: false},
+				},
 			},
 			[
 			],

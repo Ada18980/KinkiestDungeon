@@ -50,6 +50,10 @@ AddModel({
 			Poses: ToMap([...CALFLEFTPOSES]),
 			NoOverride: true,
 			TieToLayer: "ShinyBalletLeft",
+
+			DisplacementSprite: "BalletCuffs",
+			DisplaceAmount: 70,
+			DisplaceLayers: ToMap(["BalletHeelsCuffs"]),
 		},
 		{ Name: "GlowBalletRight", Layer: "ShoeRightOver", Pri: 52.1,
 			HideWhenOverridden: true,

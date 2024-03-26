@@ -21,6 +21,7 @@ AddModel({
 			DisplaceAmount: 50,
 			DisplaceLayers: ToMap(["RopeCalf"]),
 			InheritColor: "Tape",
+			NoOverride: true,
 		},
 	])
 });
@@ -37,6 +38,8 @@ AddModel({
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Tape",
+			HideWhenOverridden: true,
+			NoOverride: true,
 		},
 	])
 });
@@ -51,18 +54,20 @@ AddModel({
 	Categories: ["Restraints", "Tape"],
 	AddPose: ["FeetLinked", "EncaseLegs"],
 	Layers: ToLayerMap([
-		{ Name: "Legs", Layer: "WrappingLegsOver", Pri: 45,
+		{ Name: "Legs", Layer: "WrappingLegsOver2", Pri: 45,
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Tape",
 			HideWhenOverridden: true,
+			NoOverride: true,
 		},
-		{ Name: "RightLegs", Layer: "WrappingLegsOver", Pri: 45,
+		{ Name: "RightLegs", Layer: "WrappingLegsOver2", Pri: 45,
 			//SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
 			Poses: ToMap(["Closed", "KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Tape",
 			HideWhenOverridden: true,
+			NoOverride: true,
 		},
 		{ Name: "StrapCover", Layer: "OverCrotchStrapMid", Pri: 5,
 			TieToLayer: "Legs",

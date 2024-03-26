@@ -797,7 +797,7 @@ function KinkyDungeonDrawOrb() {
 				else color = "#88ff00";
 			}
 			DrawButtonKDEx("orbspell" + shrine, (b) => {
-				KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 1, x: KDOrbX, y: KDOrbY});
+				KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 1 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "DivinePrivilege")), x: KDOrbX, y: KDOrbY});
 				KinkyDungeonDrawState = "Game";
 				return true;
 			}, true, canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonShrine" + shrine), "white");
@@ -812,7 +812,7 @@ function KinkyDungeonDrawOrb() {
 
 	DrawButtonKDEx("orbspellrandom", (b) => {
 		let shrine = Object.keys(KinkyDungeonShrineBaseCosts)[Math.floor(KDRandom() * Object.keys(KinkyDungeonShrineBaseCosts).length)];
-		KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 0.9, x: KDOrbX, y: KDOrbY});
+		KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 0.9 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "DivinePrivilege")), x: KDOrbX, y: KDOrbY});
 		KinkyDungeonDrawState = "Game";
 		return true;
 	}, true, canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonSurpriseMe"), "white");

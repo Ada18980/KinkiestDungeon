@@ -108,7 +108,7 @@ AddModel({
 	Categories: ["Restraints", "Rubber"],
 	AddPose: ["EncaseTorsoLower"],
 	Layers: ToLayerMap([
-		{ Name: "TorsoLower", Layer: "WrappingTorsoMid", Pri: 55,
+		{ Name: "TorsoLower", Layer: "WrappingTorsoLower", Pri: 54,
 			//swaplayerpose: {Kneel: "WrappingTorso", KneelClosed: "WrappingTorso"},
 			Invariant: true,
 			InheritColor: "Rubber",

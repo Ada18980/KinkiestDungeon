@@ -1026,7 +1026,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				}
 		if (!predata.blocked)
 			if (!Enemy.shield || predata.ignoreshield || predata.shield_bind)
-				if ((predata.dmg || predata.bind) && Enemy.Enemy.bound && (resistDamage < 2) && (predata.bind || KinkyDungeonBindingDamageTypes.includes(predata.type))) {
+				if ((predata.dmg || predata.bind) && Enemy.Enemy.bound && (resistDamage < 2) && (predata.bind || predata.bindType || KinkyDungeonBindingDamageTypes.includes(predata.type))) {
 					effect = true;
 					if (!Enemy.boundLevel) Enemy.boundLevel = 0;
 

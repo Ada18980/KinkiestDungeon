@@ -73,6 +73,34 @@ let KDCurses = {
 			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.DollID, -8);
 		}
 	},
+	"SpellLock1" : {
+		powerMult: 2.8,
+		lock: true,
+		level: 4,
+		weight: (item) => {
+			return 1;
+		},
+		condition: (item) => {
+			return KinkyDungeonSpellPoints > 0;
+		},
+		remove: (item, host) => {
+			KinkyDungeonSpellPoints -= 1;
+		}
+	},
+	"SpellLock8" : {
+		powerMult: 4,
+		lock: true,
+		level: 12,
+		weight: (item) => {
+			return 1;
+		},
+		condition: (item) => {
+			return KinkyDungeonSpellPoints > 7;
+		},
+		remove: (item, host) => {
+			KinkyDungeonSpellPoints -= 8;
+		}
+	},
 	"CursedCollar": {
 		powerMult: 10,
 		lock: true,

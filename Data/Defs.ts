@@ -7,6 +7,8 @@ let LAYERS_BASE = [
 	// and the leash shouldnt go thru the head when hogtied
 	"CollarAcc",
 	"Leash",
+	// Collar ring is meant to go under the leash
+	"CollarRing",
 
 	"AnimalEarsFront",
 	"HatDeco",
@@ -187,6 +189,8 @@ let LAYERS_BASE = [
 	"WrappingTorsoMid", // For stuff that goes over a shirt and clothes but under restraints, e.g. tape
 
 	"StrapsUnderbust",
+
+	"WrappingTorsoLower",
 
 	"OverCrotchStrapMid",
 	"Option2_ChastityBelt",
@@ -507,6 +511,7 @@ let LayerGroups = {
 		"CrotchPanelMid",
 		"Bodysuit",
 		"WrappingTorsoMid",
+		"WrappingTorsoLower",
 	]),
 	BustSize: ToMap([
 		"WrapChest",
@@ -1545,6 +1550,7 @@ let LayerGroups = {
 	"Greaves",
 
 	"WrappingTorsoMid", // For stuff that covers a shirt
+	"WrappingTorsoLower",
 
 	// For form-fitting stuff that nonetheless goes over a shirt
 	"Bustier",
@@ -1705,6 +1711,18 @@ let LayerGroups = {
 
 			"WrappingLegsUnder",
 			"WrappingLegs",
+
+
+			"LegbinderLegsOver2",
+			"LegbinderLegsOver",
+			"LegbinderAnklesOver",
+			"WrappingAnklesOver",
+
+			"WrappingLegsOver2",
+			"WrappingLegsOver",
+			"WrappingLegs",
+			"WrappingLegs2",
+			"WrappingLegsUnder",
 
 			"OverSocks",
 			"StockingRightKneel", "StockingRight",

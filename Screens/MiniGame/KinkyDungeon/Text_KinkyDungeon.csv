@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.17"
+KDVersionStr,"5.2.17 hotfix 1"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -4425,9 +4425,6 @@ KinkyDungeonUnLinkBlacksteelAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 
 
-RestraintScaleLivingCollar,Living Dragonscale Collar
-RestraintScaleLivingCollarDesc,"A collar made from leather cured from the hide of dragons that adjusts itself to your neck."
-RestraintScaleLivingCollarDesc2,"It will occasionally cause dragonscale to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of dragonscale you have on you."
 
 RestraintScaleArmCuffs,Dragonscale Cuffs
 RestraintScaleArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
@@ -19929,9 +19926,13 @@ KDPetsuitCrawl,"You crouch and move slowly."
 
 KDChestTooltip,"Owned by: "
 
-RestraintWardenCollar,The Warden's Collar
-RestraintWardenCollarDesc,"You may go on your way, but only as long your freedom is useful to her. "
-RestraintWardenCollarDesc2,"A golden collar that marks you as part of someone's collection. Each time you break a spell orb, a collector is spawned to punish you."
+RestraintWardenBelt,Warden's Belt
+RestraintWardenBeltDesc,"You may go on your way, but only as long your freedom is useful to her."
+RestraintWardenBeltDesc2,"A golden belt that marks you as part of someone's collection. Each time you break a spell orb, a collector is spawned to punish you."
+
+RestraintWardenBelt2,Belt of Privilege
+RestraintWardenBelt2Desc,"You've defeated the Warden, proving that you are worthy to take what you want."
+RestraintWardenBelt2Desc2,"A golden belt that marks you as a person of great import. -75% rep penalty for breaking orbs."
 
 NameWardenArcher,"Sharpshooter"
 KillWardenArcher,"You teach the warden's servant a lesson."
@@ -19999,9 +20000,9 @@ dTheWarden_DefensiveGag,"Mmmmm... (Blush)"
 rTheWardenDefensive,"(She smiles)|Why, this is my private prison.|I bring only my prettiest toys to stay here with me.|You can see them up there.|(She motions to the north)"
 dTheWardenDefensive_Question,Tell me about your collection
 rTheWardenDefensive_Question,"(SPEAKER smiles pleasantly)|Its a fitting reward, isn't it?|Long ago, this mountain was home to a vicious empire.|Machines went out to sea, bringing back countless prisoners.|As commander of the invasion, I earned this title!"
-rTheWardenDefensive_Question_Question,"(SPEAKER grins)|When we stormed the prisons, we encountered many fierce defenders.|Many of them now reside in these halls, earning their rightful punisment."
+rTheWardenDefensive_Question_Question,"(SPEAKER grins)|When we stormed the prisons, we encountered many fierce defenders.|Many of them now reside in these halls, earning their rightful punishment."
 dTheWardenDefensive_Question_Question,"Who are the prisoners, anyway?"
-rTheWardenDefensive_Question_Question2,"(SPEAKER folds her arms)|Is it not holy and just to bring down tyrants?|"
+rTheWardenDefensive_Question_Question2,"(SPEAKER folds her arms)|Is it not holy and just to bring down tyrants?"
 dTheWardenDefensive_Question_Question2,"Why did the Goddesses intervene?"
 rTheWardenDefensive_Question_Question_Question,"(SPEAKER shrugs)|Most of them had already been... conditioned.|It will take centuries to undo centuries of training.|After all, we have plenty of time."
 dTheWardenDefensive_Question_Question_Question,"What about the former prisoners?"
@@ -20012,7 +20013,7 @@ rTheWardenDefensive_Question_Question_Question_Question,"(SPEAKER smirks)|What's
 dTheWardenDefensive_Question_Question_Question_Question,"So you stopped at the upper floors?"
 rTheWardenDefensive_Question_Question_Question_Question2,"(SPEAKER frowns)|Absolutely not.|They are under my strict supervision."
 dTheWardenDefensive_Question_Question_Question_Question2,"Can I talk to the former prisoners?"
-rTheWardenDefensive_Question_Question_Question_Question3,"(SPEAKER grins)|What makes you think you can do that?|This "
+rTheWardenDefensive_Question_Question_Question_Question3,"(SPEAKER grins)|Very funny.|I heard rumors of an up-and-coming adventurer stirring up trouble.|It seems my intuitions were correct."
 dTheWardenDefensive_Question_Question_Question_Question3,"I hope you don't mind me looting the lower levels~"
 rTheWardenDefensive_Question_Question_Question_Question_Question,"(SPEAKER grins)|Oh please.|Only this era's finest warriors can be part of my collection~|My subordinates take care of the rest."
 dTheWardenDefensive_Question_Question_Question_Question_Question,"Sounds like you have an impressive collection"
@@ -20485,13 +20486,15 @@ RestraintIceCrystalDesc2,"It will eventually melt! Eventually..."
 
 KDWardenMelt,The Warden's restraints release you... for now.
 
+RestraintChainHogtieLink,Chain Hogtie
+RestraintChainHogtieLinkDesc,"A very strict and tight hogtie, good for subduing unruly captives."
+RestraintChainHogtieLinkDesc2,"A metal chain holds your back in an arched position."
+
+
 RestraintThighLink,Thigh Chain
 RestraintThighLinkDesc,"A chain connecting your thigh cuffs together. You can still walk, albeit slower than usual."
 RestraintThighLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
 
-RestraintChainHogtieLink,Chain Hogtie
-RestraintChainHogtieLinkDesc,"A very strict and tight hogtie, good for subduing unruly captives."
-RestraintChainHogtieLinkDesc2,"A metal chain holds your back in an arched position."
 
 RestraintAnkleLink,Ankle Chain
 RestraintAnkleLinkDesc,"A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual."
@@ -20669,3 +20672,35 @@ KinkyDungeonSpellZeroResistance,"Zero Resistance"
 KinkyDungeonSpellDescriptionZeroResistance,"Toggle this to set bondage resist, evasion, and block to 0. While enabled, using the 'wait until interrupted' button will not be interrupted when hit or bound."
 
 KDTightnessFade,The RSTRT feels a little looser!
+
+RestraintCrystalArmbinder,Crystal Armbinder
+RestraintCrystalArmbinderDesc,"A growth of crystals fusing your arms together. Chaotic energies radiate in all directions, causing you to slowly lose control over your desires."
+RestraintCrystalArmbinderDesc2,"Crystals are tough but not unbreakable."
+
+KinkyDungeonCurseInfoSpellLock1,"The lock is protected by a seal of repentance. To unlock it you must pay 1 spell point."
+KinkyDungeonCurseStruggleSpellLock1,"The restraint won't budge."
+KinkyDungeonCurseUnlockSpellLock1,"You perform a ritual to unlock the item!"
+
+
+KinkyDungeonCurseInfoSpellLock8,"The lock is protected by a seal of repentance. To unlock it you must pay 8 spell points!"
+KinkyDungeonCurseStruggleSpellLock8,"The restraint won't budge."
+KinkyDungeonCurseUnlockSpellLock8,"You perform a grand ritual to unlock the item!"
+
+
+RestraintWardenThighLink,Warden's Thigh Chain
+RestraintWardenThighLinkDesc,"A chain connecting your thigh cuffs together. You can still walk, albeit slower than usual."
+RestraintWardenThighLinkDesc2,You've stolen something of great value. Now you must give it back.
+
+RestraintWardenAnkleLink,Warden's Ankle Chain
+RestraintWardenAnkleLinkDesc,"A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual."
+RestraintWardenAnkleLinkDesc2,You've stolen something of great value. Now you must give it back.
+RestraintWardenAnkleLinkShort,Warden's Ankle Link
+RestraintWardenAnkleLinkShortDesc,"A short chain connecting your ankle cuffs together. You can barely separate your legs with this on."
+RestraintWardenAnkleLinkShortDesc2,"An intense, albeit temporary punishment for breaking the rules."
+
+RestraintWardenElbowLink,Warden's Elbow Chain
+RestraintWardenElbowLinkDesc,A very short chain connecting your elbow cuffs together. It is quite awkward to remove by yourself.
+RestraintWardenElbowLinkDesc2,You've stolen something of great value. Now you must give it back.
+RestraintWardenWristLink,Warden's Wrist Chain
+RestraintWardenWristLinkDesc,A very short chain connecting your wrist cuffs together.
+RestraintWardenWristLinkDesc2,"An intense, albeit temporary punishment for breaking the rules."

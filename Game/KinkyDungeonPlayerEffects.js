@@ -1043,11 +1043,48 @@ let KDPlayerEffects = {
 
 		return {sfx: "Freeze", effect: effect};
 	},
-	"ShadowEncase": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+	"ShadowEncase": (target, damage, playerEffect, spell, faction, bullet, enemy) => {
 		let effect = false;
-		let restraintAdd = KinkyDungeonGetRestraint({tags: ["shadowlatexRestraints"]}, MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
-		if (!restraintAdd) {
-			restraintAdd = KinkyDungeonGetRestraint({tags: ["shadowBall"]}, MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+		let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || (KDDefaultRestraintThresh + (Math.max(0, enemy.Enemy.power - 1) || 0));
+		let rest = KDGetRestraintWithVariants(
+			{tags: KDGetTags(enemy, enemy.usingSpecial)}, KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
+			(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+			enemy.Enemy.bypass,
+			enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
+			!(KDPlayerIsStunned() || enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
+			!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
+			!KinkyDungeonStatsChoice.has("TightRestraints"),
+			KDGetExtraTags(enemy, enemy.usingSpecial),
+			false,
+			{
+				//minPower: rThresh,
+				//onlyLimited: !enemy.Enemy.RestraintFilter?.limitedRestraintsOnly,
+				looseLimit: true,
+				require: enemy.Enemy.RestraintFilter?.unlimitedRestraints ? undefined : enemy.items,
+			}, enemy, undefined, true);
+
+		if (!rest) {
+			rest = KDGetRestraintWithVariants(
+				{tags: KDGetTags(enemy, enemy.usingSpecial)}, KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
+				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				enemy.Enemy.bypass,
+				enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
+				!(KDPlayerIsStunned() || enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
+				!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
+				!KinkyDungeonStatsChoice.has("TightRestraints"),
+				KDGetExtraTags(enemy, enemy.usingSpecial),
+				false,
+				{
+					maxPower: rThresh + 0.01,
+					looseLimit: true,
+					onlyUnlimited: true,
+					ignore: enemy.items,
+				}, enemy, undefined, true);
+		}
+
+
+		if (!rest) {
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["shadowBall"]}, MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 
 			if (restraintAdd) {
 				KDPlayerEffectRestrain(spell, 1, ["shadowBall"], faction, false, false, false, false);
@@ -2161,7 +2198,8 @@ function KDTripleBuffKill(Name, Target, time, FinalEffect = (target) => KinkyDun
 function KDAdvanceSlime(resetSlimeLevel, restraint = "") {
 	let slimedParts = [];
 	let potentialSlimeParts = [];
-	for (let inv of KinkyDungeonAllRestraint()) {
+	for (let item of KinkyDungeonAllRestraintDynamic()) {
+		let inv = item.item;
 		if (KDRestraint(inv).slimeLevel > 0) {
 			slimedParts.push({
 				name: KDRestraint(inv).name,

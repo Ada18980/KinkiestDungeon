@@ -51,6 +51,7 @@ AddModel({
 		{ Name: "LaceChest", Layer: "BraChest", Pri: 10.1,
 			Invariant: true,
 			InheritColor: "BraBase",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 		},
 		{ Name: "LaceChestCups", Layer: "BraChest", Pri: 10,
 			Invariant: true,
@@ -79,6 +80,7 @@ AddModel({
 			EraseAmount: 100,
 			EraseSprite: "LaceChest",
 			EraseLayers: ToMap(["CorsetBra"]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 		},
 		{ Name: "LaceChestCups", Layer: "BustierChest", Pri: 10,
 			Invariant: true,
@@ -149,6 +151,7 @@ AddModel({
 			Invariant: true,
 			InheritColor: "Bow",
 			NoOverride: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 		},
 	])
 });
@@ -167,6 +170,7 @@ AddModel({
 			EraseAmount: 100,
 			EraseSprite: "LaceChest",
 			EraseLayers: ToMap(["CorsetBra"]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 		},
 		{ Name: "BowCorsetBustRuffle", Layer: "BustierChest", Pri: 40.1,
 			Invariant: true,

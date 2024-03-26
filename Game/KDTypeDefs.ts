@@ -468,9 +468,9 @@ interface KDRestraintPropsBase {
 
 	/** Determines if it gets hidden by the 'Hide Armor' option */
 	armor?: boolean,
-	/** The item can be linked by anything */
+	/** The item can be linked by anything on top*/
 	LinkAll?: boolean,
-	/** The item can be linked over anything */
+	/** The item can be linked over anything below*/
 	AlwaysLinkable?: boolean,
 	/** The item always renders items below*/
 	UnderlinkedAlwaysRender?: boolean,

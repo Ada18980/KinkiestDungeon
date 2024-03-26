@@ -2770,9 +2770,11 @@ function KinkyDungeonGetRestraintByName(Name) {
  * @param {string} Lock
  * @param {item} [item] - Factoring in curse
  * @param {string} [curse] - Curse to add
+ * @param {restraint} [restraint] - restraint to add, checks to make sure its lockable
  * @returns {number}
  */
-function KinkyDungeonGetLockMult(Lock, item, curse) {
+function KinkyDungeonGetLockMult(Lock, item, curse, restraint) {
+	if (restraint && !KinkyDungeonIsLockable(restraint)) return 1;
 	let mult = 1;
 	if (Lock && KDLocks[Lock]) mult = KDLocks[Lock].lockmult;
 	if (item && KDGetCurse(item)) mult = KDCurseMult(KDGetCurse(item));
@@ -3390,7 +3392,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 		|| linkableCurrent
 		// We are weak enough to override
 		|| (!KDRestraint(r).enchanted
-			&& (!noOverpower && power < -0.01 + (curse ? (KDCursePower(curse)) : 0) + restraint.power * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory) : 1) * KinkyDungeonGetLockMult(newLock, undefined, curse)))
+			&& (!noOverpower && power < -0.01 + (curse ? (KDCursePower(curse)) : 0) + restraint.power * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory) : 1) * KinkyDungeonGetLockMult(newLock, undefined, curse, restraint)))
 	) {
 		if (bypasses())
 			return true; // Recursion!!
