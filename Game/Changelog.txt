@@ -35,6 +35,7 @@ Monk class?
 - Some graphical fixes
 - New perk: No Blindfolds
 
+
 5.2.17
 - Easier to Remove restraints if hands and arms are unbound and player is not distracted
 - New mod features: AlwaysLinkable and event 'dressRestraints'
