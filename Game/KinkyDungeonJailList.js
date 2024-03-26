@@ -467,7 +467,7 @@ let KDJailOutfits = {
 			{Name: "TrapPlug", Level: 30},
 			{Name: "LegShackles", Level: 35},
 			{Name: "HighsecLegbinder", Level: 35},
-			{Name: "TrapBlindfold", Level: 35},
+			{Name: "TrapBlindfold", Level: 35, Condition: "NoBlindfolds"},
 			{Name: "HighsecBallGag", Level: 40},
 			{Name: "HighsecShackles", Level: 40},
 			{Name: "TrapArmbinder", Level: 40, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
@@ -510,7 +510,7 @@ let KDJailOutfits = {
 			{Name: "RopeSnakeLegs2", Level: 50},
 			{Name: "RopeSnakeFeet3", Level: 60},
 			{Name: "RopeSnakeLegs3", Level: 70},
-			{Name: "RopeSnakeHogtie", Level: 80},
+			{Name: "RopeSnakeHogtieLink", Level: 80},
 		],
 	},
 	"ropeMagicWeak": {
@@ -531,7 +531,7 @@ let KDJailOutfits = {
 			{Name: "WeakMagicRopeLegs2", Level: 50},
 			{Name: "WeakMagicRopeFeet3", Level: 60},
 			{Name: "WeakMagicRopeLegs3", Level: 70},
-			{Name: "WeakMagicRopeHogtie", Level: 90},
+			{Name: "WeakMagicRopeHogtieLink", Level: 90},
 		],
 	},
 	"ropeMagicStrong": {
@@ -552,7 +552,7 @@ let KDJailOutfits = {
 			{Name: "StrongMagicRopeLegs2", Level: 50},
 			{Name: "StrongMagicRopeFeet3", Level: 60},
 			{Name: "StrongMagicRopeLegs3", Level: 70},
-			{Name: "StrongMagicRopeHogtie", Level: 100},
+			{Name: "StrongMagicRopeHogtieLink", Level: 100},
 		],
 	},
 	"mithrilRope": {
@@ -573,7 +573,7 @@ let KDJailOutfits = {
 			{Name: "MithrilRopeLegs2", Level: 50},
 			{Name: "MithrilRopeFeet3", Level: 60},
 			{Name: "MithrilRopeLegs3", Level: 70},
-			{Name: "MithrilRopeHogtie", Level: 100},
+			{Name: "MithrilRopeHogtieLink", Level: 100},
 		],
 	},
 	"celestialRopes": {
@@ -594,7 +594,7 @@ let KDJailOutfits = {
 			{Name: "CelestialRopeLegs2", Level: 50},
 			{Name: "CelestialRopeFeet3", Level: 60},
 			{Name: "CelestialRopeLegs3", Level: 70},
-			{Name: "CelestialRopeHogtie", Level: 100},
+			{Name: "CelestialRopeHogtieLink", Level: 100},
 		],
 	},
 
@@ -734,7 +734,7 @@ let KDJailOutfits = {
 			{Name: "KittyGag", Level: 10},
 			{Name: "KittyGag", Level: 25, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "KittyMuzzle", Level: 45},
-			{Name: "KittyBlindfold", Level: 60},
+			{Name: "KittyBlindfold", Level: 60, Condition: "NoBlindfolds"},
 			{Name: "KittySuit", Level: 80},
 			{Name: "KittySuit", Level: 100},
 			{Name: "KittyPetSuit", Level: 120, Condition: "NoPetsuit"},
@@ -846,6 +846,9 @@ let KDJailConditions = {
 	},
 	NoKigu: (r) => {
 		return !KinkyDungeonStatsChoice.get("NoKigu");
+	},
+	NoBlindfolds: (r) => {
+		return !KinkyDungeonStatsChoice.get("NoBlindfolds");
 	},
 	LessArmbinders: (r) => {
 		return !KinkyDungeonStatsChoice.get("Less_Armbinders")

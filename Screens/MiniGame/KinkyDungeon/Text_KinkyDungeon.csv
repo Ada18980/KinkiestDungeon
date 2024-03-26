@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.17 hotfix 1"
+KDVersionStr,"5.2.18"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -517,6 +517,8 @@ KinkyDungeonStatNoKigu,"No Kigurumi Masks"
 KinkyDungeonStatDescNoKigu,"Removes face-mimicing masks from the game."
 KinkyDungeonStatBlackout,"Blackout"
 KinkyDungeonStatDescBlackout,"Blindfolds are stronger. While blindfolded you can only see enemies next to you."
+KinkyDungeonStatNoBlindfolds,"No Blindfolds"
+KinkyDungeonStatDescNoBlindfolds,"In most cases you will not get blindfolded, except for cloth blindfolds which can be escaped easily."
 
 KinkyDungeonStatTotalBlackout,"Total Blackout"
 KinkyDungeonStatDescTotalBlackout,"Blindfolds are extremely punishing and you can't see explored areas while blindfolded."
@@ -19932,7 +19934,7 @@ RestraintWardenBeltDesc2,"A golden belt that marks you as part of someone's coll
 
 RestraintWardenBelt2,Belt of Privilege
 RestraintWardenBelt2Desc,"You've defeated the Warden, proving that you are worthy to take what you want."
-RestraintWardenBelt2Desc2,"A golden belt that marks you as a person of great import. -75% rep penalty for breaking orbs."
+RestraintWardenBelt2Desc2,"A golden belt that marks you as a person of great import. -50% rep penalty for breaking orbs."
 
 NameWardenArcher,"Sharpshooter"
 KillWardenArcher,"You teach the warden's servant a lesson."

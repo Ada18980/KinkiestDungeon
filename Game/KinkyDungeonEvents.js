@@ -8915,15 +8915,16 @@ let KDEventMapGeneric = {
 		},
 		/** Reduce tightness by 1 per floor */
 		"reduceTightness": (e, data) => {
-			for (let tuple of KinkyDungeonAllRestraintDynamic()) {
-				let inv = tuple.item;
-				if (inv.tightness > 0) {
-					KinkyDungeonSendTextMessage(1, TextGet("KDTightnessFade")
-						.replace("RSTRT", KDGetItemName(inv))
-					, "#ffffff", 1);
-					inv.tightness = Math.max(0, inv.tightness - 1);
+			if (MiniGameKinkyDungeonLevel > 0 && data?.altType?.tickFlags)
+				for (let tuple of KinkyDungeonAllRestraintDynamic()) {
+					let inv = tuple.item;
+					if (inv.tightness > 0) {
+						KinkyDungeonSendTextMessage(1, TextGet("KDTightnessFade")
+							.replace("RSTRT", KDGetItemName(inv))
+						, "#ffffff", 1);
+						inv.tightness = Math.max(0, inv.tightness - 1);
+					}
 				}
-			}
 		},
 		/** High Profile perk */
 		"HighProfile": (e, data) => {

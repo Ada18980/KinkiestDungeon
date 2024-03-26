@@ -153,7 +153,7 @@ const KinkyDungeonRestraints = [
 		Filters: {
 			Tape: {"gamma":0.18333333333333335,"saturation":1,"contrast":0.8333333333333333,"brightness":1.2166666666666668,"red":5,"green":1.607843137254902,"blue":2.3333333333333335,"alpha":1},
 		},
-		enemyTags: {"ribbonRestraints":5, "ribbonRestraintsLight":5}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Charms", "Tape", "Will"]},
+		enemyTags: {"ribbonRestraints":5, "ribbonRestraintsLight":5}, playerTags: {NoBlindfolds: -1000}, minLevel: 0, allFloors: true, shrine: ["Charms", "Tape", "Will"]},
 	{removePrison: true, name: "DuctTapeMouth", unlimited: true, debris: "Fabric", Asset: "DuctTape", Color: "#AA2222", Group: "ItemMouth", AssetGroup: "ItemMouth2", gag: 0.5, power: -2, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.9, "Remove": 0}, failSuffix: {"Remove": "Tape"},
 		Model: "TapeWrapOver",
 		Filters: {
@@ -243,13 +243,13 @@ const KinkyDungeonRestraints = [
 		Filters: {
 			Tape: {"gamma":1,"saturation":1,"contrast":1.2666666666666668,"brightness":0.6666666666666666,"red":1,"green":1.6833333333333333,"blue":0.6666666666666666,"alpha":1},
 		},
-		enemyTags: {"mummyRestraints":-499}, playerTags: {"ItemHeadFull":99, "ItemMouthFull":99, "ItemArmsFull":99, "ItemLegsFull":99, "ItemFeetFull":99, "ItemBootsFull":99}, minLevel: 0, allFloors: true, shrine: ["Charms", "Wrapping", "Block_ItemMouth", "Will"]},
+		enemyTags: {"mummyRestraints":-499}, playerTags: {"ItemHeadFull":99, "ItemMouthFull":99, "ItemArmsFull":99, "ItemLegsFull":99, "ItemFeetFull":99, "ItemBootsFull":99, NoBlindfolds: 99, Unmasked: -1000}, minLevel: 0, allFloors: true, shrine: ["Charms", "Wrapping", "Block_ItemMouth", "Will"]},
 	{removePrison: true, name: "MysticDuctTapeEyes", unlimited: true, debris: "FabricGreen", inaccessible: true, Type: "Wrap", Asset: "DuctTape", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Color: "#AA2222", Group: "ItemHead", power: 3, blindfold: 3, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.9, "Remove": 0}, failSuffix: {"Remove": "Tape"},
 		Model: "BlindfoldTape",
 		Filters: {
 			Tape: {"gamma":1,"saturation":1,"contrast":1.2666666666666668,"brightness":0.6666666666666666,"red":1,"green":1.6833333333333333,"blue":0.6666666666666666,"alpha":1},
 		},
-		enemyTags: {"mummyRestraints":-399}, playerTags: {"ItemMouthFull":99, "ItemArmsFull":99, "ItemLegsFull":99, "ItemFeetFull":99, "ItemBootsFull":99}, minLevel: 0, allFloors: true, shrine: ["Charms", "Tape", "Will"]},
+		enemyTags: {"mummyRestraints":-399}, playerTags: {"ItemMouthFull":99, "ItemArmsFull":99, "ItemLegsFull":99, "ItemFeetFull":99, "ItemBootsFull":99, NoBlindfolds: -1000}, minLevel: 0, allFloors: true, shrine: ["Charms", "Tape", "Will"]},
 	{removePrison: true, name: "MysticDuctTapeMouth", unlimited: true, debris: "FabricGreen", inaccessible: true, Asset: "DuctTape", Color: "#55AA22", Group: "ItemMouth", AssetGroup: "ItemMouth2", gag: 0.5, power: 1, weight: 0, escapeChance: {"Struggle": 0.2, "Cut": 0.6, "Remove": 0}, failSuffix: {"Remove": "Tape"},
 		Model: "TapeFull",
 		LinkableBy: [...KDTapeLink],
@@ -347,7 +347,7 @@ const KinkyDungeonRestraints = [
 		Filters: {
 			Tape: {"gamma":0.8333333333333333,"saturation":0.9833333333333333,"contrast":1.4166666666666665,"brightness":0.7833333333333334,"red":1,"green":1.4333333333333333,"blue":3.216666666666667,"alpha":1},
 		},
-		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Tape"]},
+		enemyTags: {}, playerTags: {NoBlindfolds: -1000}, minLevel: 0, allFloors: true, shrine: ["Tape"]},
 	{removePrison: true, name: "AutoTapeMouth", unlimited: true, accessible: true, Asset: "DuctTape", Type: "Double", Color: "#6E9FA3", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemMouth", AssetGroup: "ItemMouth2", gag: 0.5, power: 5, weight: 0, escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0}, failSuffix: {"Remove": "Tape"},
 		Model: "TapeWrapOver",
 		Filters: {
@@ -366,7 +366,7 @@ const KinkyDungeonRestraints = [
 	{forceRemovePrison: true, name: "ShadowHandEyes", unlimited: true, alwaysAccessible: true, tether: 1.5, Asset: "DuctTape", Color: ["#3c115c"], Group: "ItemHead", blindfold: 3,
 		Model: "ShadowHandsEyes",
 		power: 4, weight: 0, escapeChance: {"Struggle": 0.5, "Remove": -100}, failSuffix: {"Struggle": "ShadowHand", "Remove": "ShadowHand"},
-		enemyTags: {"shadowHands":10, "shadowBolt": 10}, playerTags: {"ItemEyesFull":-9}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Wrapping", "Shadow", "Illusion"],
+		enemyTags: {"shadowHands":10, "shadowBolt": 10}, playerTags: {"ItemEyesFull":-9, NoBlindfolds: -1000}, minLevel: 0, allFloors: true, shrine: ["Latex", "Rope", "Leather", "Metal", "Wrapping", "Shadow", "Illusion"],
 		events: [{trigger: "tick", type: "ShadowHandTether", requiredTag: "shadowHandEnemy", chance: 1.0, dist: 1.5},{trigger: "beforeStruggleCalc", type: "shadowBuff", inheritLinked: true}]},
 
 	{forceRemovePrison: true, name: "ShadowHandArms", alwaysAccessible: true, unlimited: true, LinkableBy: ["Shadow"], accessible: true, tether: 1.5, Asset: "DuctTape", Color: ["#3c115c"], Group: "ItemArms", bindarms: true,
@@ -2289,7 +2289,7 @@ const KinkyDungeonRestraints = [
 		},
 		maxwill: 0.5, blindfold: 3, escapeChance: {"Struggle": 0.4, "Cut": 0.6, "Remove": 0.3, "Pick": 0.4},
 		enemyTags: {"trap":100, "leatherRestraints":6, "blindfoldSpell": 10},
-		playerTags: {}, minLevel: 4, allFloors: true, shrine: ["Leather", "Blindfolds"]},
+		playerTags: {NoBlindfolds: -1000}, minLevel: 4, allFloors: true, shrine: ["Leather", "Blindfolds"]},
 	{inventory: true, trappable: true, name: "TrapBoots", debris: "Belts", Asset: "BalletHeels", Color: "Default", Group: "ItemBoots", heelpower: 1, power: 3, weight: 2,
 		remove: ["Shoes"],
 		Model: "BalletHeelsRestraint",
@@ -2787,7 +2787,7 @@ const KinkyDungeonRestraints = [
 		Model: "KittyBlindfold",
 		LinkableBy: [...KDBlindfoldLink], renderWhenLinked: [...KDBlindfoldLink], Color: ["#FFFFFF","#000000","#E48FE9"], Group: "ItemHead",
 		power: 5, weight: 2, escapeChance: {"Struggle": 0.1, "Cut": 0.3, "Remove": 0.25, "Pick": 0.2},
-		enemyTags: {"kittyRestraints":8}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Leather", "Blindfolds", "Will"]},
+		enemyTags: {"kittyRestraints":8}, playerTags: {NoBlindfolds: -1000}, minLevel: 0, allFloors: true, shrine: ["Leather", "Blindfolds", "Will"]},
 	{inventory: true, name: "KittyPaws", debris: "Belts", Asset: "PawMittens", Color: ["#FFFFFF","#FFFFFF","#FFFFFF","#B38295"], Group: "ItemHands", LinkableBy: [...KDGlovesLink], bindhands: 1.0, power: 5, weight: 2, escapeChance: {"Struggle": 0.1, "Cut": 0.3, "Remove": 0.3, "Pick": 0.2},
 		Model: "LeatherPawMittens",
 		maxwill: 0.9, enemyTags: {"kittyRestraints":8}, playerTags: {}, minLevel: 4, allFloors: true, shrine: ["Leather", "Mittens", "Will"]},
@@ -4549,7 +4549,7 @@ const KinkyDungeonRestraints = [
 
 		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Belt", "Warden"],
 		events: [
-			{type: "Buff", trigger: "tick", power: 3, buffType: "DivinePrivilege"},
+			{type: "Buff", trigger: "tick", power: 1, buffType: "DivinePrivilege"},
 		],
 	},
 
@@ -6983,7 +6983,7 @@ let KDLocks = {
 			}
 		},
 		// Start of level -- for gold locks and others
-		levelStart: (item) => {
+		levelStart: (item, data) => {
 			if ((MiniGameKinkyDungeonLevel >= item.data?.lockTimer || !item.data?.lockTimer || item.data?.lockTimer >= KinkyDungeonMaxLevel)) {
 				KinkyDungeonLock(item, "Blue");
 				KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonGoldLockRemove"), "yellow", 2);

@@ -1263,7 +1263,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 				KDGameData.SelectedEscapeMethod = "Key";
 				KDEscapeWorldgenStart(KDGetEscapeMethod(Floor));
 			}
-			KinkyDungeonSendEvent("postQuest", {});
+			KinkyDungeonSendEvent("postQuest", {altType: altType});
 
 
 			for (let e of allies) {

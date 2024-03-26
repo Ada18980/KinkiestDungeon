@@ -367,6 +367,7 @@ let KinkyDungeonStatsPresets = {
 	"Rusted": {category: "Map", id: "Rusted", cost: 1},
 
 
+	"NoBlindfolds": {category: "Toggles", id: "NoBlindfolds", cost: 1, tags: ["start"], block: ["Blackout", "TotalBlackout"]},
 	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0, tags: ["start"]},
 	"NoKigu": {category: "Toggles", id: "NoKigu", cost: 0, tags: ["start"], debuff: true},
 	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0, tags: ["start"]},
@@ -396,8 +397,8 @@ let KinkyDungeonStatsPresets = {
 	"WeakGrip":  {category: "Restriction", id: "WeakGrip", cost: -1},
 
 
-	"Blackout":  {category: "Senses", id: "Blackout", cost: -1, block: ["TotalBlackout"]},
-	"TotalBlackout":  {category: "Senses", id: "TotalBlackout", cost: -2, block: ["Blackout", "Forgetful"]},
+	"Blackout":  {category: "Senses", id: "Blackout", cost: -1, block: ["TotalBlackout", "NoBlindfolds"]},
+	"TotalBlackout":  {category: "Senses", id: "TotalBlackout", cost: -2, block: ["Blackout", "Forgetful", "NoBlindfolds"]},
 	"Forgetful": {category: "Senses", id: "Forgetful", cost: -1, block: ["TotalBlackout"]},
 	"NightOwl": {category: "Senses", id: "NightOwl", cost: 2, block: ["NightBlindness", "MutualDarkness"]},
 	//"MutualDarkness": {category: "Senses", id: "NightOwl", cost: 2, block: ["NightBlindness", "NightOwl"]},
