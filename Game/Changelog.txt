@@ -30,6 +30,11 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.2.19
+- Restriction now affects get up time
+- Added perks for Warden belt
+- Tightness mechanic tweaked
+
 5.2.18
 - Added Warden's Belt and Belt of Privilege
 - Some graphical fixes

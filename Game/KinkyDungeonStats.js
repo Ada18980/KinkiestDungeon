@@ -850,7 +850,7 @@ function KinkyDungeonChangeDesire(Amount, NoFloater) {
 	return amountChanged;
 }
 
-function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0, slowFloor = 5) {
+function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0, slowFloor = 5, Regen = false) {
 
 	if (isNaN(Amount)) {
 		console.trace();
@@ -864,6 +864,8 @@ function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0
 		minimum: minimum,
 		Pause: Pause,
 		slowFloor: slowFloor,
+		regen: Regen,
+		Cap: KinkyDungeonStatStaminaMax,
 		mult: Math.max(0,
 			Amount > 0 ? Math.max(0, 1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatGainStamina"))
 			: Math.max(0, 1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatLossStamina"))
@@ -872,6 +874,8 @@ function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0
 	KinkyDungeonSendEvent("changeStamina", data);
 	NoFloater = data.NoFloater;
 	Amount = data.Amount*data.mult;
+
+
 	NoSlow = data.NoSlow;
 	minimum = data.minimum;
 	slowFloor = data.slowFloor;
@@ -882,8 +886,11 @@ function KinkyDungeonChangeStamina(Amount, NoFloater, Pause, NoSlow, minimum = 0
 		Amount = 0;
 	}
 	let minLevel = Math.min(KinkyDungeonStatStaminaMax * minimum, KinkyDungeonStatStamina); // Cannot go below this or current
+	let stamPre = KinkyDungeonStatStamina;
 	KinkyDungeonStatStamina += Amount;
-	KinkyDungeonStatStamina = Math.min(Math.max(minLevel, KinkyDungeonStatStamina), KinkyDungeonStatStaminaMax);
+	KinkyDungeonStatStamina = Math.min(
+		Math.max(minLevel, KinkyDungeonStatStamina),
+		Amount > 0 ? Math.max(stamPre, data.Cap) : KinkyDungeonStatStamina);
 	if (!NoFloater && Math.abs(KDOrigStamina - Math.floor(KinkyDungeonStatStamina * 10)) >= 0.99) {
 		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KinkyDungeonStatStamina * 10) - KDOrigStamina, "#44ff66", undefined, undefined, " sp");
 		KDOrigStamina = Math.floor(KinkyDungeonStatStamina * 10);
@@ -1319,8 +1326,12 @@ function KinkyDungeonUpdateStats(delta) {
 	if (delta > 0 && KDGameData.StaminaSlow > 0) KDGameData.StaminaSlow -= delta;
 
 	let baseRate = KinkyDungeonStatsChoice.get("PoorBalance") ? 0.5 : 1;
-	let kneelRate = baseRate * (KinkyDungeonIsArmsBound() ? 0.8 : 1);
-	if (KinkyDungeonSlowLevel > 2) kneelRate *= 0.6;
+	let kneelRate = baseRate * (KinkyDungeonIsArmsBound() ? 0.85 : 1);
+	if (KinkyDungeonSlowLevel > 2) kneelRate *= 0.85;
+	let restriction = KDGameData.Restriction || 0;
+	if (restriction) {
+		kneelRate *= 10 / (10 + restriction);
+	}
 
 	let minKneel = 0;
 	if (KinkyDungeonStatsChoice.get("Grounded") && (KinkyDungeonIsArmsBound() && KinkyDungeonLegsBlocked())) {
@@ -1341,7 +1352,7 @@ function KinkyDungeonUpdateStats(delta) {
 			KinkyDungeonSendTextMessage(4, TextGet("KDGetUpCorner"), "#ffffff",1, !(KDGameData.KneelTurns <= delta*kneelRate));
 		} else if (KinkyDungeonStatsChoice.get("Grounded") && KinkyDungeonGetAffinity(false, "Wall", undefined, undefined)) {
 			minKneel = 0;
-			kneelRate *= 0.5;
+			kneelRate *= 0.65;
 			//if (KDGameData.KneelTurns <= kneelRate) {
 			KinkyDungeonSendTextMessage(4, TextGet("KDGetUpWall"), "#ffffff",1, !(KDGameData.KneelTurns <= delta*kneelRate));
 			//}
@@ -1438,7 +1449,7 @@ function KinkyDungeonUpdateStats(delta) {
 		//KinkyDungeonStatDistractionLower += distractionRate*delta * arousalPercent;
 	}
 
-	KinkyDungeonChangeStamina(KinkyDungeonStaminaRate*delta, true, undefined, true);
+	KinkyDungeonChangeStamina(KinkyDungeonStaminaRate*delta, true, undefined, true, undefined, undefined, true);
 	KDGameData.Wait = Math.max(0, KDGameData.Wait);
 
 	KinkyDungeonStatMana += KinkyDungeonStatManaRate;

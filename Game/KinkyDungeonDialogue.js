@@ -1476,7 +1476,8 @@ function KDShopDialogue(name, items, requireTags, requireSingleTag, chance, item
 		let item = items[i];
 		shop.options["Item" + i] = {playertext: "ItemShop" + i, response: name + item,
 			prerequisiteFunction: (gagged, player) => {
-				return KinkyDungeonInventoryGetSafe(item) != undefined;
+				let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+				return KinkyDungeonInventoryGetSafe(item) != undefined && enemy && !KDHelpless(enemy);
 			},
 			greyoutFunction: (gagged, player) => {
 				let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);

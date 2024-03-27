@@ -4229,8 +4229,8 @@ let KDDialogue = {
 				playertext: "Leave", response: "Default",
 				clickFunction: (gagged, player) => {
 					if (KinkyDungeonIsPlayer()) {
-						//KDUnlockPerk("FuukaCollar");
-						//KDUnlockPerk("CommonFuuka");
+						KDUnlockPerk("WardenBelt");
+						KDUnlockPerk("CommonWarden");
 					}
 					return false;
 				},
@@ -4242,8 +4242,8 @@ let KDDialogue = {
 					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("WardenBelt2"), 0, true);
 					KinkyDungeonAddGold(1000);
 					if (KinkyDungeonIsPlayer()) {
-						//KDUnlockPerk("FuukaCollar");
-						//KDUnlockPerk("CommonFuuka");
+						KDUnlockPerk("WardenBelt");
+						KDUnlockPerk("CommonWarden");
 					}
 					return false;
 				},
@@ -4259,8 +4259,8 @@ let KDDialogue = {
 				clickFunction: (gagged, player) => {
 					KinkyDungeonChangeRep("Ghost", -5);
 					if (KinkyDungeonIsPlayer()) {
-						//KDUnlockPerk("FuukaCollar");
-						//KDUnlockPerk("CommonFuuka");
+						KDUnlockPerk("WardenBelt");
+						KDUnlockPerk("CommonWarden");
 					}
 					return false;
 				},

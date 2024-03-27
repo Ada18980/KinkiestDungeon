@@ -445,8 +445,8 @@ let KDEventMapInventory = {
 	},
 	"changeStamina": {
 		"multStaminaPos": (e, item, data) => {
-			if (data.Amount > 0)
-				data.Amount *= e.power;
+			if (data.Cap > 0 && data.regen)
+				data.Cap *= e.power;
 		},
 	},
 	"getLights": {

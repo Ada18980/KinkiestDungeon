@@ -122,7 +122,7 @@ let KDEventHexModular = {
 		events: (data) => [
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Breathlessness"},
-			{type: "multStaminaPos", trigger: "changeStamina", power: 0.6, inheritLinked: true, curse: true, original: "Breathlessness"},
+			{type: "multStaminaPos", trigger: "changeStamina", power: 0.75, inheritLinked: true, curse: true, original: "Breathlessness"},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Breathlessness", color: "#ff5555", inheritLinked: true, original: "Breathlessness"},
 			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Breathlessness", color: "#ff5555", inheritLinked: true, original: "Breathlessness"},
 			{trigger: "postApply", inheritLinked: true, type: "cursePrefix"},

@@ -167,6 +167,9 @@ let KDPerkUpdateStats = {
 	"CommonFuuka": () => {
 		KDExtraEnemyTags.mikoRestraints = 0;
 	},
+	"CommonWarden": () => {
+		KDExtraEnemyTags.wardenCuffs = 0;
+	},
 	"CommonCyber": () => {
 		KDExtraEnemyTags.cyberdollrestraints = 0;
 		KDExtraEnemyTags.cyberdollchastity = 5;
@@ -349,10 +352,12 @@ let KinkyDungeonStatsPresets = {
 	"DollmakerVisor": {startPriority: 31, category: "Boss", id: "DollmakerVisor", cost: -1, block: ["DollmakerMask"], locked: true, tags: ["start"]},
 	"DollmakerMask": {startPriority: 31, category: "Boss", id: "DollmakerMask", cost: -1, block: ["DollmakerVisor"], locked: true, tags: ["start"]},
 	"FuukaCollar": {startPriority: 40, category: "Boss", buff: true, id: "FuukaCollar", cost: -2, locked: true, tags: ["start"]},
+	"WardenBelt": {startPriority: 42, category: "Boss", buff: true, id: "WardenBelt", cost: -2, locked: true, tags: ["start"]},
 
 
 	"CommonCyber": {category: "Boss", id: "CommonCyber", cost: -1, locked: true},
 	"CommonFuuka": {category: "Boss", id: "CommonFuuka", buff: true, cost: -1, locked: true},
+	"CommonWarden": {category: "Boss", id: "CommonWarden", buff: true, cost: -1, locked: true},
 
 	"BulletHell": {category: "Enemies", id: "BulletHell", cost: -2, block: ["BulletHell2"]},
 	"BulletHell2": {category: "Enemies", id: "BulletHell2", cost: -3, block: ["BulletHell"]},
@@ -367,14 +372,11 @@ let KinkyDungeonStatsPresets = {
 	"Rusted": {category: "Map", id: "Rusted", cost: 1},
 
 
-	"NoBlindfolds": {category: "Toggles", id: "NoBlindfolds", cost: 1, tags: ["start"], block: ["Blackout", "TotalBlackout"]},
-	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0, tags: ["start"]},
-	"NoKigu": {category: "Toggles", id: "NoKigu", cost: 0, tags: ["start"], debuff: true},
-	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0, tags: ["start"]},
+	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, tags: ["start"], block: ["NoBrats"]},
 	"NoPolice": {category: "Toggles", id: "NoPolice", cost: 0, tags: ["start"], debuff: true},
 	"MoreKinkyFurniture": {category: "Toggles", id: "MoreKinkyFurniture", cost: 0, tags: ["start"]},
 	"NoBrats": {category: "Toggles", id: "NoBrats", cost: 0, tags: ["start"], debuff: true, block: ["OnlyBrats"]},
-	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, tags: ["start"], debuff: true, block: ["NoBrats"]},
+	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0, tags: ["start"], debuff: true},
 	"TapePref": {category: "Toggles", id: "TapePref", cost: 0, tags: ["start"], block: ["TapeOptout"]},
 	"TapeOptout": {category: "Toggles", id: "TapeOptout", cost: 0, tags: ["start"], debuff: true, block: ["TapePref"]},
 	"SlimePref": {category: "Toggles", id: "SlimePref", cost: 0, tags: ["start"], block: ["SlimeOptout"]},
@@ -382,9 +384,15 @@ let KinkyDungeonStatsPresets = {
 	"BubblePref": {category: "Toggles", id: "BubblePref", cost: 0, tags: ["start"], block: ["BubbleOptout"]},
 	"BubbleOptout": {category: "Toggles", id: "BubbleOptout", cost: 0, tags: ["start"], debuff: true, block: ["BubblePref"]},
 
+	"NoBlindfolds": {category: "Toggles", id: "NoBlindfolds", cost: 1, tags: ["start"], block: ["Blackout", "TotalBlackout"]},
+	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0, tags: ["start"]},
+	"NoKigu": {category: "Toggles", id: "NoKigu", cost: 0, tags: ["start"], debuff: true},
+
 	"NoDoll": {category: "Toggles", id: "NoDoll", cost: 0, tags: ["start"], debuff: true},
 	"NoPet": {category: "Toggles", id: "NoPet", cost: 0, tags: ["start"], debuff: true},
 	"NoHelp": {category: "Toggles", id: "NoHelp", cost: 0, tags: ["start"]},
+
+
 
 	"Quickness": {category: "Combat", id: "Quickness", cost: 2},
 
@@ -597,6 +605,9 @@ let KDPerkStart = {
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoGag"), 0, true, undefined, false, undefined, undefined, undefined, true);
 
 		KDFixPlayerClothes("Fuuka");
+	},
+	WardenBelt: () =>{
+		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("WardenBelt"), 0, true, undefined, false, undefined, undefined, undefined, true);
 	},
 	Prisoner: () =>{
 		KDGameData.PrisonerState = 'parole';
