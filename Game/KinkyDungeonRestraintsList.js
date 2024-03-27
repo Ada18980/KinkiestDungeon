@@ -8,7 +8,7 @@ let KDFeetRopeLink = ["Ties", "Hogties", "Wrapping", "Encase", "Belts"];
 let KDFormFitting = ["Socks", "Gloves"];
 let KDHarnessLink = ["Wrapping", "Encase", "HeavyCorsets", "Corsets", "ArmbinderHarness", "Ties", "Hogties", "Link", "Belts", "Harnesses"];
 let KDCorsetLink = ["Wrapping", "Encase", "Harnesses", "ArmbinderHarness", "Ties", "Link", "Belts", "Belt"];
-let KDBindable = ["Wrapping", "Encase", "Belts", "Tape", "Ties", "Hogties", "Link", "Cuffs", "Boxties", "Wristties", "Crossties"]; // Things that can be wrapped in various restraints
+let KDBindable = ["Wrapping", "Encase", "Belts", "Belt", "Tape", "Ties", "Hogties", "Link", "Cuffs", "Boxties", "Wristties", "Crossties"]; // Things that can be wrapped in various restraints
 let KDBindableMinusCuffs = KDBindable.filter((b) => {return b != "Cuffs";});
 let KDDevices = ["Armbinders", "Straitjackets", "Legbinders", "BindingDress", "Boxbinders", "Petsuits"]; // More complex devices
 let KDElbowBind = ["Armbinders", "BindingDress", "Hogties"]; // More complex devices
@@ -1142,7 +1142,7 @@ const KinkyDungeonRestraints = [
 			TorsoLower: {color: "Catsuit", override: true},
 			TorsoUpper: {color: "Catsuit", override: true},
 		},
-		LinkableBy: ["Corsets", "Harnesses", ...KDBindable, "Ribbon"],
+		LinkableBy: ["Corsets", "Harnesses", ...KDBindable, "Ribbon", "Belt"],
 		restriction: 1,
 		Group: "ItemTorso", power: 7, weight: 0, escapeChance: {"Struggle": -1.0, "Cut": 0.1, "Remove": 0.05},
 		enemyTags: {"latexRestraintsHeavy" : 6, "latexCatsuits": 12, "latexUniform": 12, "latexStart": 10, 'shopCatsuit': 10, "latexcatsuitSpell": 10}, playerTags: {"posLatex": -1, "latexAnger": 2, "latexRage": 2}, minLevel: 0, allFloors: true, shrine: ["Latex", "Suits"],
