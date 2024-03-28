@@ -566,6 +566,16 @@ Fuuka Fan Club
 フウカちゃんファンクラブ
 All humanoids that can bind you also apply Fuuka's special restraints.
 全ての人型生物がフウカ特製の拘束具を使用するようになる
+
+Collected
+コレクションの一部
+Start with The Warden's special belt which punishes you for defiling spell orbs.
+看守長の特殊なベルトを装備した状態でゲームを開始する。このベルトを装備している間、オーブを破壊すると罰を受ける
+Enforcers
+執行人
+All humanoids that can bind you also apply The Warden's cuffs.
+全ての人型生物が看守長特製の拘束具を使用するようになる
+
 Dollmaker's Minions
 ドールメイカーの手先
 All humanoids that can bind you also apply Cyber Doll restraints.
@@ -850,11 +860,11 @@ They're trapped here with you. Ghosts are more helpful, and you can bind enemies
 Stranger
 風来坊
 Randomizes your relationship to most factions.
-ゲーム開始時、ほとんどの派閥との関係をランダムに設定する
+ゲーム開始時、ほとんどの勢力との関係をランダムに設定する
 Wrong Neighborhood
 ここに来るべきじゃなかった
 All factions are hostile and united against you.
-ゲーム開始時、ほとんどの派閥との関係が0になり、派閥が互いに協力し合う
+ゲーム開始時、ほとんどの勢力との関係が0になり、勢力が互いに協力し合う
 Bandit
 盗賊
 Start friendly to bandits, and hostile to most other factions.
@@ -1038,6 +1048,11 @@ No Kigurumi Masks
 怪しいマスクなし
 Removes face-mimicing masks from the game.
 怪しいマスクがゲーム内に登場しなくなる。
+
+No Blindfolds
+目隠しなし
+In most cases you will not get blindfolded, except for cloth blindfolds which can be escaped easily.
+目隠しを取り付けられることがほぼ無くなる。布の目隠しから抜け出しやすくなる。
 
 Ball Gag Lover
 ボールギャグ愛好家
@@ -1379,7 +1394,7 @@ Exciting: Orbs give random spells
 Kinky: No save codes, orbs give random spells, start with very little
 Kinky: セーブ コードはありません。オーブはランダムな呪文を与えます。最初はごくわずかです
 Log
-ジャーナル
+ノート
 Change Outfit
 着替える
 Reset Outfit
@@ -1514,7 +1529,7 @@ Go to sleep
 Make noise!
 騒ぎ立てる
 Wait until interrupted
-何かが起きるまで自動で待機する
+自動待機
 Auto-struggle
 自動でもがく
 Auto-path
@@ -5109,7 +5124,7 @@ TargetRestraint のピッキングに成功すると、安堵のため息を付�
 You pick the lock on the TargetRestraint with a sigh of relief!
 TargetRestraint のピッキングに成功すると、安堵のため息を付いた。
 Trembling, you free yourself from the TargetRestraint!
-TargetRestraint から解放され、身震いした。
+TargetRestraint から解放された。
 You damage the TargetRestraint enough to wiggle out!
 TargetRestraint を傷つけ、多少の身動きができるようになった。
 You stick the knife into a crack in the wall!
@@ -5582,7 +5597,9 @@ You can't use that while gagged!
 You can't use that without your fingers!
 指が不自由では使えない！
 You struggle against your bindings but it's too strict!.
-拘束がきつすぎてもがいても意味がない！
+拘束がきつすぎて、もがいても意味がない！
+You struggle against your bindings but it's too strict!
+拘束がきつすぎて、もがいても意味がない！
 You drop the pick due to your bound hands!
 縛られた手で持とうとしたら、ロックピックを落としてしまった！
 You drop your knife due to your bound hands!
@@ -6215,17 +6232,13 @@ Your cuffs detatch!
 枷を外した！
 The enemy attaches your elbow cuffs together!
 肘に枷を取り付けられた！
-Blacksteel Wrist Chain
-黒鉄の手枷の鎖
-A full set of Blacksteel cuffs keeping your arms in a strict elbow tie!
-後ろ手に肘同士をつなげる黒鉄の鎖。
-They're made of Blacksteel, a metal used by the Old Civilization.
-旧文明で使用されていた黒い鉄でできている。
 Your wrists detatch, leaving your elbows still bound!
 手首の鎖を外しても肘はまだ繋がれたままだ！
 Blacksteel Elbow Chain
 黒鉄の肘枷の鎖
 A pair of Blacksteel cuffs keeping your elbows locked together!.
+後ろ手に肘同士をつなげる黒鉄の鎖。
+A pair of Blacksteel cuffs keeping your elbows locked together!
 後ろ手に肘同士をつなげる黒鉄の鎖。
 They're made of Blacksteel, a metal used by the Old Civilization.
 旧文明で使用されていた黒い鉄でできている。
@@ -6771,7 +6784,7 @@ Your cuffs detatch!
 The enemy attaches your elbow cuffs together!
 肘同士を鎖で繋がれた！
 Wrist Chain
-ミスリルの手枷の鎖
+手枷の鎖
 A full set of cuffs keeping your arms in a strict elbow tie!
 手枷を後ろ手につなぐための鎖。
 They feel like they aren't even there, but the material is rigid and unyielding.
@@ -7687,34 +7700,6 @@ Made of tough leather.
 丈夫な革でできている。
 The enemy attaches your wrist cuffs together!
 手に枷をはめられた！
-Lthr Wrist Chain
-革の手枷の鎖
-A pair of leather cuffs keeping your arms behind your back.
-手枷をつなぐための鎖。
-Made of tough leather.
-丈夫な革でできている。
-Your cuffs detatch!
-手枷の鎖を外した！
-The enemy attaches your elbow cuffs together!
-肘の枷を繋がれた！
-Lthr Wrist Chain
-革の手枷の鎖
-A full set of leather cuffs keeping your arms in a strict elbow tie!
-後ろ手に手枷をつなぐための鎖。
-Made of tough leather.
-丈夫な革でできている。
-Your wrists detatch, leaving your elbows still bound!
-手首の鎖が外れても、肘は繋がったままだ！
-Lthr Elbow Chain
-革の肘枷の鎖
-A pair of leather cuffs keeping your elbows locked together!.
-肘枷同士をつなぐための鎖。
-Made of tough leather.
-丈夫な革でできている。
-Your elbows detatch!
-肘枷の鎖を外した！
-The enemy attaches your wrist cuffs back together!
-後ろ手に手枷同士を繋がれた！
 Dragonscale Cuffs
 竜鱗の手枷
 A pair of cuffs that make it easy to restrain you.
@@ -7902,34 +7887,6 @@ It's made of a dark, shiny metal. If you hold it close you hear whispering.
 黒く輝く黒曜石でできている。耳に近づけると、かすかにささやき声が聞こえる。
 The enemy attaches your wrist cuffs together!
 手枷を取り付けられた！
-Obs. Wrist Chain
-黒曜石の手枷の鎖
-A pair of cuffs keeping your arms behind your back.
-手枷をつなぐための鎖。
-It's made of a dark, shiny metal. If you hold it close you hear whispering.
-黒く輝く黒曜石でできている。耳に近づけると、かすかにささやき声が聞こえる。
-Your cuffs detatch!
-手枷の鎖を外した！
-The enemy attaches your elbow cuffs together!
-肘枷に鎖を取り付けられた！
-Obs. Wrist Chain
-黒曜石の手枷の鎖
-A full set of cuffs keeping your arms in a strict elbow tie!
-手枷を後ろ手につなぐための鎖。
-It's made of a dark, shiny metal. If you hold it close you hear whispering.
-黒く輝く黒曜石でできている。耳に近づけると、かすかにささやき声が聞こえる。
-Your wrists detatch, leaving your elbows still bound!
-手首の鎖が外れても、肘は繋がったままだ！
-Obs. Elbow Chain
-黒曜石の肘枷の鎖
-A pair of cuffs keeping your elbows locked together!.
-肘枷同士をつなぐための鎖。
-It's made of a dark, shiny metal. If you hold it close you hear whispering.
-黒く輝く黒曜石でできている。耳に近づけると、かすかにささやき声が聞こえる。
-Your elbows detatch!
-肘の鎖を外した！
-The enemy attaches your wrist cuffs back together!
-後ろ手に手枷を繋がれた！
 Obsidian Leg Cuffs
 黒曜石の脚枷
 A pair of cuffs chaining your legs together.
@@ -7978,14 +7935,6 @@ It's made of a glowing, brittle material.
 光る脆い鉱石でできている。
 Your wrists detatch, leaving your elbows still bound!
 手首の鎖が外れても、肘は繋がったままだ！
-Crystal Elbow Chain
-クリスタルの肘枷の鎖
-A pair of cuffs keeping your elbows locked together!.
-肘枷同士をつなぐための鎖。
-It's made of a glowing, brittle material.
-光る脆い鉱石でできている。
-Your elbows detatch!
-肘の鎖を外した！
 The enemy attaches your wrist cuffs back together!
 後ろ手に手枷を繋がれた！
 Crystal Leg Cuffs
@@ -9374,7 +9323,7 @@ Teleport to a nearby location (including into darkness) with twice the range.
 You call upon a misty portal to transport you!
 ポータルを召喚する！
 Choose target location
-ターゲットの場所を選択
+位置を選択
 
 Blink
 ブリンク I
@@ -9408,7 +9357,7 @@ Instantly teleport to a location you can see.
 You teleport!
 瞬間移動した！
 Choose target location
-転移先を選択
+位置を選択
 Ice Shard
 アイスシャード
 A shard of ice that does DamageDealt damage and slows for Duration turns. Freezes if already slowed or drenched.
@@ -9689,7 +9638,7 @@ A delayed shock that deals DamageDealt damage and stuns for Duration turns.
 You charge up a burst of electricty!
 電気の塊を召喚する！
 Choose target location
-場所を選択
+位置を選択
 The elemental channels the force of the storm!
 精霊の力が嵐を引き起こす！
 Fireball
@@ -10215,12 +10164,12 @@ Gives you an additional spell choice slot
 追加の呪文スロットを得る
 More Summons
 熟練召喚士
-Increases the permanent summon cap by +1 (from 2 to 3)
-追加の永続召喚スロットを1得る(3体まで)
+Increases the permanent summon cap by +2 (from 2 to 4)
+追加の永続召喚スロットを2得る(4体まで)
 Many Summons
 達人召喚士
-Increases the permanent summon cap by +1 (from 3 to 4)
-追加の永続召喚スロットを1得る(4体まで)
+Increases the permanent summon cap by +2 (from 4 to 6)
+追加の永続召喚スロットをさらに2得る(6体まで)
 Bomb
 爆弾
 Channel for 1 turn for a bomb that does DamageDealt blast damage in an area after DelayTime turns.
@@ -10748,20 +10697,20 @@ Flame Blade
 
 Tentacle Slap
 触手の一撃
-You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +20 glue damage and create slime. 100% bind efficiency.
-スライムから触手を形作り、追加で攻撃できるようになる。有効時：攻撃時に追加で20接着剤属性ダメージを与え、床にスライムを撒く。拘束ダメージ率が100%になる。
+You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +10 glue damage and create slime. 150% bind efficiency.
+スライムから触手を形作り、追加で攻撃できるようになる。有効時：攻撃時に追加で10接着剤属性ダメージを与え、床にスライムを撒く。拘束ダメージ率が150%になる。
 Chain Strike
 鎖の一撃
-You have the power to summon chains when you attack. When enabled: Your attacks deal +20 chain damage and create chains. 90% bind efficiency.
-鎖を召喚し、追加で攻撃できるようになる。有効時：攻撃時に追加で20チェーンダメージを与え、床に鎖を撒く。拘束ダメージ率が90%になる。
+You have the power to summon chains when you attack. When enabled: Your attacks deal +10 chain damage and create chains. 125% bind efficiency.
+鎖を召喚し、追加で攻撃できるようになる。有効時：攻撃時に追加で10チェーンダメージを与え、床に鎖を撒く。拘束ダメージ率が125%になる。
 Ropework
 ロープワーク
-You have the power to weave ropes between your attacks. When enabled: Your attacks deal +20 chain damage and create ropes. 300% bind efficiency.
-縄を操り、追加で攻撃できるようになる。有効時：攻撃時に追加で20チェーンダメージを与え、床に縄を撒く。拘束ダメージ率が300%になる。
+You have the power to weave ropes between your attacks. When enabled: Your attacks deal +10 chain damage and create ropes. 400% bind efficiency.
+縄を操り、追加で攻撃できるようになる。有効時：攻撃時に追加で10チェーンダメージを与え、床に縄を撒く。拘束ダメージ率が400%になる。
 Leather Whip
 レザーウィップ
-You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +20 pain damage and create belts. 150% bind efficiency.
-革のベルトを召喚し、追加で攻撃できるようになる。有効時：攻撃時に追加で20痛みダメージを与え、床にベルトを撒く。拘束ダメージ率が150%になる。
+You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +10 pain damage and create belts. 250% bind efficiency.
+革のベルトを召喚し、追加で攻撃できるようになる。有効時：攻撃時に追加で10痛みダメージを与え、床にベルトを撒く。拘束ダメージ率が250%になる。
 
 Engulf
 飲み込み
@@ -10870,7 +10819,7 @@ Choose a target.
 A melee strike that deals DamageDealt slash damage, x2.5 against unaware humanoid enemies.
 DamageDealt 斬撃ダメージを与える。敵が人型かつプレイヤーを認識していない場合、ダメージが2.5倍になる。
 You slash with an ethereal blade!
-幽玄の刃で切り裂いた！
+異界の刃で切り裂いた！
 Summon Familiar
 使い魔召喚
 Select where to put the familiar (cannot place on occupied squares)
@@ -11326,7 +11275,7 @@ You wriggle uselessly, tormented by the massive plugs inside of you!
 
 
 You climb into the grate
-通気口の中に入った。
+小さな隙間に入り込んだ。
 
 Mmmph...
 むぅ……
@@ -11630,16 +11579,7 @@ Perks II
 パーク２
 Perks III
 パーク３
-pg. NUM/TOTAL
-pg.NUM/TOTAL
->
->
-<
-<
->>>
->>>
-<<<
-<<<
+
 Spell Points: SPELLPOINTS
 スキルポイント：SPELLPOINTS
 You need a higher level in SCHOOL magic to learn this spell.
@@ -11723,7 +11663,7 @@ History
 Bondage Witchery
 ボンデージウィッチャリー
 Enemy Notes
-エネミーノート
+エネミー図鑑
 Graveyard
 墓地
 Catacombs
@@ -11745,7 +11685,7 @@ Bellows
 (A page from the Book of Aeons)|The 'Graveyard' is a peculiar place. Long ago, human beings lived and died just like the animals. When the Old Civilization existed, they would come to bury their dead in the Graveyard. It remains a mystery why so many of the former dead seem to be alive. Some say that when the Old Civilization cast the spell that spell which overcame Death, even those buried in their graves would rise again. Others simply say that there is a powerful necromancer who lives here, toying with the dead as if they were pets...
 アイオーンの書の1ページ|墓地は不思議な場所だ。現代と同じように旧文明の死者もここに埋葬されていたのであろうが、今では死者が闊歩している。ある人は、旧文明が死を克服する呪文を唱えた時、墓地に眠る者たちも蘇ったのだという。またある人は、恐るべきネクロマンサーが死者を玩具のように扱ってるとも……
 (A page from the Book of Aeons)|Beneath the Graveyard lies a relic of a former age, a network of tombs inhabited by the immortal followers of Bast. Very few were graced with this gift of immortality before the great archmagus, Sariel Vinlaga, stole this power from the gods and granted all humans with the power of immortality. The Bast followers are still set in their ways, hoping for a time when their Goddess will return and rebuild their glorious civilization.
-アイオーンの書の1ページ|墓地の下には、バスト教の不死の信者が巣食う巨大な遺跡がある。偉大な大魔術師サリエル・ヴィンラーガに不死の秘術を盗まれ、世界中に広まるまで、彼女たちが唯一の不死者であった。バスト教団は未だに女神の復活と文明の再建を諦めておらず、遺跡に侵入する愚かな犠牲者を探し求めている。
+アイオーンの書の1ページ|墓地の下には、バスト教の不死の信者が巣食う巨大な遺跡がある。偉大な大魔術師、サリエル・ヴィンラーガに不死の秘術を盗まれ、世界中に広まるまで、彼女たちが唯一の不死者であった。バスト教団は未だに女神の復活と文明の再建を諦めておらず、遺跡に侵入する愚かな犠牲者を探し求めている。
 (A page from the Book of Aeons)|Some say the 'Catacombs' are older than time itself. When the Old Civilization began to study immortality, no one knew if it would be possible to bring back those who already died. The Catacombs therefore were used to store all of the remains of former humans, so that they too could be revived when the archmagus would finally make her breakthrough.
 アイオーンの書の1ページ|このカタコンベは時間の概念がないと言われている。旧文明が不死の研究を始めたとき、すでに死んだ人々を生き返らせられるかどうかは分からなかった。この場所は、不死の魔術が完成したときに備えて遺体を保存するために作られたと言われている。
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
@@ -11753,7 +11693,7 @@ Bellows
 (A page from the Book of Aeons)|The Underground Jungle remains a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the jungle teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
 アイオーンの書の1ページ|地下のジャングルには謎が多い。光が差し込むことなどないのに、ジャングルが枯れることはない。人はマナが枯渇すれば死ぬが、マナのない植物や動物はどうすれば死ぬのだろうか？ 一部の敬虔な信者は、ジャングルは再生の女神の力で保たれていると主張している。もしかしたら、旧文明は地下で生命を維持する手段を開発していたのかもしれない。
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
-アイオーンの書の1ページ|エネルギー問題は何千年にもわたって人類を悩ませてきた。レイラインが発見される前、人類は自然の力に頼って暮らしてきた。結晶の洞窟が発見された時、革命が起こった。無尽蔵に湧く地下のエネルギー源を利用して、見たこともない機械を動かせるようになった。
+アイオーンの書の1ページ|エネルギー問題は何千年にもわたって人類を悩ませてきた。レイラインが発見される前、人類は自然の力に頼って暮らしてきた。クリスタルの洞窟が発見された時、革命が起こった。無尽蔵に湧く地下のエネルギー源を利用して、見たこともない機械を動かせるようになった。
 (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
 アイオーンの書の1ページ|「失われた神殿」という名称は、そこに住まう者たちから借りた仮名にすぎない。神殿の作成者は、8 人の女神ではなく、4 人の女神のみを崇拝していたようだ。 100年前の大洪水の時、大魔術師によって人類が不滅になる前に作られたと見られ、内部には多くの遺体が未だ残っている。
 (A page from the Book of Aeons)|The Stars have been a mystery to scholars since the beginning of time. At one point, humans believed that every star was a god, and they made offerings by throwing sugar into the night, thinking that as the stars were innumerable, so were the grains of sugar that pleased humans so much. Religion has moved past that, but the Orrery remains a relic from a time when humanity worshipped the stars rather than the Eight.
@@ -11847,7 +11787,7 @@ They say a ninja can catch a sword in her hands, but can she stop a spear? Ha, t
 (Pg. 54 from Catherine Willows' journal): The post-collapse civilization sought immortality, but they knew that the technologies of the old civilization were a danger to them. So they turned to another school of thought: Magic.
 キャサリン・ウィローズの日記　54ページ|崩壊後の文明は不死を求めましたが、旧文明の技術が危険であることは十分承知していました。そこで彼女たちは魔法に目をつけたのです。
 (Pg. 55 from Catherine Willows' journal): Silk wrappings, enchanted with ten-thousand microscopic runes per cubit, were suffucient to protect their bodies from ageing for millenia. What they didn't realize was that the magic didn't protect their souls.
-キャサリン・ウィローズのジャーナルからの55ページ|絹の包みは、1立方当たり1万個の微細なルーン文字でエンチャントされており、何千年もの間、不死を保つのには十分でした。しかし、魂を守ることはできませんでした。
+キャサリン・ウィローズの日記からの55ページ|絹の包みは、1立方当たり1万個の微細なルーン文字でエンチャントされており、何千年もの間、不死を保つのには十分でした。しかし、魂を守ることはできませんでした。
 (Pg. 56 from Catherine Willows' journal): They have no clue what they are doing anymore. To them, this is just another one of their ten-thousand dreams across the aeons. They can no longer tell reality from imagination.
 キャサリン・ウィローズの日記　56ページ|彼女たちはもう自分が何をしているのか全く理解しておりません。きっと彼女たちにとって、これは長い年月をかけて見てきた何万個もの夢の一つに過ぎないのでしょう。もはや現実と妄想の区別がついていないのです。
 Ninjas aren't so tough to fight when their hands are tied behind their back. Good thing I had my pet slime with me~
@@ -11928,8 +11868,8 @@ Curse of Sensitivity: Makes it easier to lose control of yourself.
 発情の呪い：性欲により自分をコントロールできなくなる。
 Curse of Distraction: Multiplies DP gain by 1.5x.
 感度の呪い：興奮値の上昇率が1.5倍になる。
-Curse of Exhaustion: Multiplies SP gain by 0.6x.
-消耗の呪い：スタミナの回復速度が0.6倍になる。
+Curse of Exhaustion: -25% Stamina regen cap.
+消耗の呪い：スタミナ回復量の上限-25％。
 Curse of Futility: Multiplies WP gain by 0.5x.
 摩耗の呪い：意志力の回復が0.5倍になる。
 Curse of Submission: Gain submissiveness when you lose control of yourself...
@@ -12517,8 +12457,8 @@ Ancient Chastity Bra
 古代の貞操ブラ
 You find a chastity bra, glowing magnificently, along with a strange crystal next to it.
 脇に奇妙なクリスタルの添えられた、輝く貞操ブラを見つけた。
-A chastity bra of sleek, ancient design. While powered, it reduces incoming damage by 1.
-洗練された古風なデザインの貞操ブラ。エネルギーがある間は、被ダメージを1にする。
+A chastity bra of sleek, ancient design. While powered, it reduces incoming damage by 10.
+洗練された古風なデザインの貞操ブラ。エネルギーがある間は、被ダメージを10にする。
 'Shield of the chaste'
 純潔の盾
 You rub your hands along your breasts but feel only hard, unbreakable metal.
@@ -12617,8 +12557,8 @@ Ancient Ankle Cuffs
 古代の足枷
 You find a pair of glowing cuffs, glowing magnificently, along with a strange crystal next to it.
 脇に奇妙なクリスタルの添えられた、輝く足枷を見つけた。
-A pair of cuffs designed for summoners. Heals nearby summons by 15 per turn, and also boosts your evasion by +50% (to 2/3rds). Closes without power.
-洗練された古風なデザインの足枷。近くにいる自身の召喚した召喚物を毎ターン15回復し、回避力が50%増加する。エネルギーが切れると足枷同士が繋がってしまう。
+A pair of cuffs designed for summoners. Heals nearby allies by 15 per turn, and also boosts your evasion by +50% (to 2/3rds). Closes without power.
+洗練された古風なデザインの足枷。近くにいる仲間を毎ターン15回復し、回避力が50%増加する。エネルギーが切れると足枷同士が繋がってしまう。
 'Anklets of the Faithful Friend'
 友誼のアンクレット
 You jingle the chains around and realize that these unbreakable restraints won't be coming off.
@@ -15467,8 +15407,6 @@ You will regret that, outsider.
 後悔しますよ。
 You get what you deserve.
 報いです。
-You didn't see that.
-ただの偶然です。
 You didn't see that.
 ただの偶然です。
 It looks like my skills are superior.
@@ -18709,7 +18647,7 @@ I will never bow to you! (PERCENT chance to avoid)
 (The SPEAKER waves)|You seem like an exceptional individual.|What do you think of joining the Guild?
 (SPEAKER が手を振ってきた)|アンタ、中々やるようだね。|私達のギルドに入らないかい？
 (The SPEAKER smiles)|Excellent! I'll put in a word with the Guild.|Do note: this will affect your reputation with certain bad actors.
-(SPEAKER は笑顔を返してきた)|素晴らしい！早速報告しよう！|(注意：いくつかの派閥との関係性が悪化する)
+(SPEAKER は笑顔を返してきた)|素晴らしい！早速報告しよう！|(注意：いくつかの勢力との関係性が悪化する)
 (The SPEAKER takes out a magic scroll and signs it)|(The scroll vanishes into the aether)|Good luck out there, freelancer.
 (SPEAKER の取り出したスクロールにサインをする)|(スクロールはエーテルの海に消えていった)|これから宜しく頼むよ、フリーランサー。
 (The SPEAKER nods)|Fair enough. Guild work is not for everyone.
@@ -19673,6 +19611,7 @@ The Dollmaker orders you to KNEEL! (DamageTaken)
 ドールメイカーは跪くよう命令してきた！(DamageTaken)
 The Dollmaker snaps her fingers as you find yourself locked! (DamageTaken)
 ドールメイカーが指を鳴らすと、拘束具がロックされた！(DamageTaken)
+
 Fuuka
 フウカ
 Fuuka surrounds herself in defensive talismans!
@@ -19681,6 +19620,7 @@ Fuuka wraps you tightly in restraints! (+RestraintAdded)
 フウカが拘束具を巻き付けてきた！(+RestraintAdded)
 Fuuka squeezes your breasts and smiles! (DamageTaken)
 フウカが笑顔で胸を揉みしだいてきた！(DamageTaken)
+
 Angry Fuuka
 怒ったフウカ
 Fuuka surrounds herself in defensive talismans one more time!
@@ -19689,20 +19629,21 @@ Fuuka wraps you furiously in restraints! (+RestraintAdded)
 フウカが怒りを込めて拘束具を巻き付けてきた！(+RestraintAdded)
 Fuuka pouts as she tickles you relentlessly! (DamageTaken)
 フウカが執拗にくすぐってきた！(DamageTaken)
+
 (You find a girl wearing an ornate dress)|(She glances at you)|And who might you be?
-(フロアの中央に豪奢なドレスを着た少女が佇んでいた)|(こちらに気付いた彼女が一瞥する)|あなたは誰？
+(豪奢なドレスを着て、佇んでいる少女を見つけた)|(こちらに気付いた彼女が一瞥する)|あなたは？
 I should be asking the same of you.
 先に名乗って
 (Growl at her)
 (唸り声を上げる)
 (She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
-(彼女は涼しげに微笑む)|私はフウカ。地表の言葉で言うなら"風の歌"よ。|あなたは？
+(彼女は涼しげに微笑む)|私はフウカ。風と歌でフウカよ。|あなたは？
 What kind of name is that?
 どういう意味？
 (SPEAKER frowns)|It means Windsong!|I bet yours isn't anywhere nearly as cool.
-(SPEAKER は顔をしかめた)|そのまま風の歌よ！|少なくともあなたの名前よりは趣があると思うけど！？
+(SPEAKER はむっとしている)|そのまま"風"の"歌"よ！|少なくともあなたの名前よりは趣がんじゃないかしら！？
 (SPEAKER looks enraged)|Because names and meanings are different things!|My name uses the script from the Old Civilization!|You're just a poser!
-(SPEAKER は怒り出した)|漢字なんだから読み方とか色々あるの！|あなたの名前とは違って旧文明のものなんだから色々と違うのよ！|もう少し勉強しなさい！
+(SPEAKER はイライラしている)|もー、文法から説明しないとだめなの？|あなたの名前とは違って旧文明のものなんだから色々と違うのよ！|もう少し勉強しなさい！
 Why not just call yourself Windsong?
 じゃあなんで"風の歌"って名乗らないの？
 
@@ -19714,11 +19655,11 @@ Mmmmph.
 (SPEAKER は赤面している)|ああ、喋れないわよね……
 
 (SPEAKER giggles)|Very well. I don't really care who you are.
-(SPEAKER はクスクスと笑っている)|まあいいわ、あなたが誰であろうと知ったことじゃないし。
+(SPEAKER は厭らしい笑みを浮かべている)|まあいいわ、あなたが誰であろうと知ったことじゃないし。
 I do not need to introduce myself.
 自己紹介の必要はないと思うけど
 Neither do I.
-私もそう思う
+そうね
 
 I'm an adventurer. And who are you?
 私はただの冒険者。あなたは？
@@ -19730,83 +19671,82 @@ Reincarnated ones?
 蘇りし者？
 (SPEAKER tilts her head)|I believe the term is 'Zombie' in the common tongue.
 (SPEAKER は話を続ける)|そうね、一般的には"ゾンビ"とか呼ばれているものよ。
-(SPEAKER enjoys the discussion)|When people die, their spirits pass on to the next life.|But with the right tricks, one can grant them a second chance.|I plan to give them all proper bodies...|Eventually.
-(SPEAKER は饒舌に話し出す)|人が死んだ時、魂は転生して次の人生を送るの。|でも、とある秘術を使えば魂は再び同じ肉体に戻る。それが蘇りし者。|墓場の皆の魂を戻すつもりよ。|いずれね。
+(SPEAKER enjoys the discussion)|When most people die, their spirits pass on to the next life.|But some stay in this world, and with the right blessings,|one can grant them a second chance!|I plan to give them all proper bodies...|Eventually.
+(SPEAKER は饒舌に話し出す)|人が死んだ時、魂は転生して次の人生を送るでしょう。|でもね、私はとある秘術を得たの。|転生するはずだった魂を再び肉体に入れる再生の技。|いずれ墓場の皆の魂を戻すつもりよ。|いずれね。
 How do they get reincarnated?
 どうやって魂を戻したの？
-(SPEAKER enjoys the discussion)|No, they're people!|People who died long ago.|Now they live a new life, safeguarded by my Resurrection Arts~
+(SPEAKER enjoys the discussion)|No, they're people!|People who died long ago.|Now they live a new life, safeguarded by my Resurrection Arts!
 (SPEAKER は捲し立ててきた)|違うわ、彼女たちは生きているのよ！|はるか昔に一度死んで、|今私の秘術によって二度目の人生を送っているのよ！
 Aren't they dolls? They can barely speak.
-ただの人形じゃないの？彼女たちはよく喋るけど。
-(SPEAKER tilts her head)|...They don't? That's news to me...|but I've seen a number of white-haired old witches this past decade.|Surely they're near the end of their days?
-(SPEAKER は首を傾げる)|……それ本当？初めて聞いたわ……|それに、これまで何人も白髪の生えた老魔術師を見てきたわ。|彼女たちはもうお迎えが近いんじゃないの？
-But people don't die anymore.
-でも、もう私達人間は死なない
+ただのよく喋る操り人形でしょ？
 
-
-(SPEAKER enjoys the discussion)|No, they're people!|People who died long ago.|Now they live a new life, safeguarded by my Resurrection Arts!
-(SPEAKER は饒舌に話し出す)|違うわ、彼女たちは人なのよ！|もうかなり昔に一度死んだのだけどね。|今は私の秘術で新しい人生を送っているわ。
-
-(SPEAKER enjoys the discussion)|When most people die, their spirits pass on to the next life.|But some stay in this world, and with the right blessings,|one can grant them a second chance!|I plan to give them all proper bodies...|Eventually.
-(SPEAKER は饒舌に話し出す)|人が死んだ時、魂は転生して次の人生を送るの。|でも、この世界に留まり続ける者も存在する。|もう一度人生を歩めるのよ。|私はそういう人たちに身体を提供しているのよ……|いずれね。
-
-What do you do now that people don't die?
-今はもう人は死なないけど？
-
+(SPEAKER pouts)|Why you...|Long ago, I made a contract with Ninril to guide lost souls back to her.|Do you doubt her blessing?!
+(SPEAKER は口をとがらせている)|あなたね……|ニンリルとの契約で授かった、いわば神の御業の一部なのよ！|それを大したことないですって！？
 Your Resurrection Arts don't seem very effective.
-あまり効果的ではないように見えるけど
+大したことないんじゃない？
 
-(SPEAKER looks puzzled)|The 'Archmagus'? Immortal?|Nonsense, I've seen plenty of old humans come by.|The looks on their faces when I told them I could make them young again!
-(SPEAKER は混乱している)|大魔術師？不死？|笑えないわね、私は年老いた人間を何人も見てきたわ！|若返ることができると知ったときの彼女たちの表情！今でも憶えているわ！
-The Archmagus made humans immortal.
-偉大なる大魔術師が人間を不死にしたの
+(SPEAKER looks puzzled)|People don't die anymore, but there are still lots of souls out there.|Whenever they stumble into the dungeon, searching for answers,|I'm still here, waiting!
+(SPEAKER は動揺している)|不死になっても、未だ漂う魂は無数にあるわ！|彼女たちを導くために、|そのために私はここにいるのよ！
+What do you do now that people don't die?
+私達はもう皆不死になったけど？
 
-(SPEAKER scratches her chin)|So she managed it then... after all this time...
-(SPEAKER は頬を掻いている)|彼女は……今になってやり遂げたのね……
-Nobody's seen what happens when you get THAT old.
-私達は誰も年老いた姿というものを知らない
-(SPEAKER scratches her chin)|Hmm... so she figured out restoration but not rejuvenation...
-(SPEAKER は頬を掻いている)|傷は治るけど若返ったりはしない……
-I've been stabbed, maimed, burned... I got better.
-私も刺されたし、埋められたし、焼かれたりもした。でも生きている
-(SPEAKER scratches her chin)|It looks like I'll have to catch up on some modern science...|She must have succeeded somehow...
-(SPEAKER は頬を掻いている)|現代科学に追いつかなきゃ……|奴らは……きっととんでもない発明をしたのね……
-The Alchemists would love to have a word with you
-錬金術師達があなたと話したがっている
-(SPEAKER folds her arms)|That woman... the leader of...|...they called it the Old Civilization in your tongue.|Long ago she performed countless experiments on people.|All she cared about was immortality.
-(SPEAKER 腕を組み、話し始める)|あの女……|あなた達の言葉でいうと、旧文明かしら。彼女はそこのリーダーだったの。|かつて、彼女は数え切れないくらいの人体実験をしていたわ。|全ては不死の実現のためにね。
-She?
-彼女？
-(SPEAKER folds her arms)|That was the purpose of the Old Civilization.|To capture people and perform experiments on them.|That woman... she claimed she could 'bring forth a new era'|Or something like that...
-(SPEAKER 腕を組み、話し始める)|それが旧文明の目的だったの。|人体実験のために人々を捕まえた。|あの女は……自分こそが"新時代の幕を切る者"だと。|そんな感じのことを言っていたわ。
-It's been about a century.
-その話は一世紀くらい前だったと聞いてる
-(SPEAKER shrugs)|To think I've watched this graveyard since the rise and fall of civilization!|But if you're supposedly immortal, you know what that means...|You get to be my pet for a very long time!
-(SPEAKER は肩をすくめる)|私は文明の始まりから終わりまで、ずっとこの墓地を眺めてきたの。|あなたも死なないなら、この意味がわかるでしょ……？|あなたもずっと私のペットになるのよ！
-The Old Civilization is nothing but old robots now.
-もう旧文明なんて古いロボットしかいない
-(SPEAKER frowns)|Hey, it's not my fault!|Adventurer types are always 'shoot first, ask questions later'|Plus, I've been quite busy these last thousand years.|I can't be bothered to keep track of recent developments!
-(SPEAKER は顔をしかめる)|知ったことじゃないわよ！|冒険者はまず殴ってから会話しようとするやつばっかりなんだから！|それにここ1000年ずっと忙しかったの！|最近の流行なんて全然わからないのよ！
-...Am I really the first to tell you this?
-こういう会話は初めてなの？
-(SPEAKER blushes)|Yeah! I remember now...|She tried to put the world into that doll factory of hers.|I guess she succeeded in some ways if not others.|But she never figured out eternal youth by the looks of it!|I could help with that, if you'd be my pet~
-(SPEAKER は赤面した)|ああ、思い出した……|彼女は世界を自分の人形工場にしようとしたのよ|ある意味では、成功したと言えるわね。|でも、"彼女は永遠の若さ"を理解できなかったようね。|私のペットになるんだったら、教えてあげてもいいけど？
-Sariel Vinlaga.
-サリエル・ヴィンラーガ
-(SPEAKER smiles)|What, you'd like to join them~?|I don't know what she was doing down there.|But things must be pretty bad if society forgot it all by now.|Perhaps you're a brainwashed doll yourself?|(SPEAKER giggles)
-(SPEAKER は笑顔になった)|何？知りたいの～？|まぁ、彼女があそこで何をしていたのかは知らないわ。|でも、長い間放置されているなら相当深刻な事態になっているかもしれないわね。|あなた、自分が人形じゃないって言い切れる？|(彼女は嫌らしく笑っている)
-Doll factory? Tell me more...
-人形工場？
-(SPEAKER shrugs)|My memory doesn't serve me well these days.|But you can be sure of it.|She stole some of my pets from me for her experiments.|I'll never forgive her for that.
-(SPEAKER は肩をすくめる)|最近記憶力が悪くてね。|でも、それだけは確かよ。|彼女は実験のために私のペットを盗んだの。|今でもそのことは忘れないわ。
-Rumors, all unsubstantiated.
-噂は噂だよ
+(SPEAKER chortles)|So you've noticed!|As you can see, Ninril is very powerful~
+(SPEAKERはくすくすと笑っている)|あら、見た目で判断するの？|これも神の力よ。
+You don't look very old yourself.
+とても年老いているようには見えないけど。
+
+(SPEAKER frowns)|Divine blessings shouldn't be used for such silly things!
+(SPEAKER は呆れ返っている)|そんなおバカな理由で神の力を使うわけないでしょ！
+Can you resurrect my back? It kind of hurts right now...
+じゃあ背中を治してくれない？今ちょっと痛くて……
+
+(SPEAKER smiles)|Those latex-clad idiots don't understand a thing.|Science can only get you so far!|Worship is where it's at!
+(SPEAKER はニッコリと笑う)|あのラテックス狂いのバカ共には無理よ。|科学の限界よ。|そしてその先には神の導きによってのみ到れるのよ。
+The Alchemists are always looking for a youth potion.
+錬金術師達はいつも若返りの方法を探していたわ。
+
+(SPEAKER folds her arms)|Oh ho ho~|That's none of your business, for it is also part of my contract|to keep outsiders from interfering with the catacombs below!
+(SPEAKER は腕を組み笑っている)|うふふふ、|そんな事知ってどうするつもり？|この先には進ませないわよ！
+Do you know what's on the next floor?
+この先には何があるの？
+
+(SPEAKER blushes)|Nope, nothing at all!|In fact, whatever it is, you won't find it down here!|Now, would you like to become my pet?
+(SPEAKER は赤面している)|えっと、知らないわ！|知らないし、ここにはそんなものないわ！|さて、私のペットになる準備はできた！？
+Do you know anything about the Old Civilization?
+旧文明についてなにか知ってる？
+
+(SPEAKER shrugs)|Oh really...|Must be the fey playing tricks, hehe...
+(SPEAKER は驚いている)|えっ、本当……？|ああ、あいつのいたずらか……
+I've seen a few robots running around!
+ロボットが動き回っているのを何度か見たの。
+
+(SPEAKER looks nervous)|Oh yeah? Where'd you hear that?|The 'adventurer's guild,' huh?|Why don't you just leave the dead to rest~
+(SPEAKER は陰険な表情を浮かべている)|そう、どこで聞いたの？|冒険者ギルドでホラ吹きにでも唆された？|それで今は墓荒らしの真っ最中ってわけね、いい加減死者を静かに眠らせてあげたら？
+I heard there was an ancient facility on this island.
+この島に古代文明の工場があるって聞いたんだけど。
+
+(SPEAKER sighs)|Look, the Goddess doesn't tell me everything.|Now then, I have a job to do and some pets to manage.|Please stop asking questions!
+(SPEAKER はわざとらしく大きなため息を付いた)|はぁ～……自分で調べなさいよ。|ペットの世話もしなきゃいけないし、仕事もあるし。|もう質問はいいでしょ！
+Is Sariel Vinlaga down here?
+サリエル・ヴィンラーガもここを通ったの？
+
+(SPEAKER frowns)|What's with all the questions!|There totally isn't some kind of doll processing facility here!|Perhaps you're a brainwashed doll yourself?
+(SPEAKER は明らかに動揺している)|な、何言ってるの！？|ここには人形加工工場とかそんなものはないわ！|あなたもしかして……
+Does DressUp Co. get their 'cyber doll' products from here?
+ドレスアップ社のサイバードール商品はここから来てるの？
+
+(SPEAKER chuckles)|I smell a hint of jealousy~
+(SPEAKER は苦笑いを浮かべている)|自分に素直になりなさいよ～。
+I don't want to be a pet, so you'll have to force me.
+ペットになんてなりたくない、やるなら力ずくで来なさい。
+
 (SPEAKER jumps up and down)|You would!?|That's wonderful~|My resurrection magic can make you young again forever!|All you have to do is pledge your soul to Nirin, the Goddess of Restoration!
-(SPEAKER は喜びに飛び跳ねた)|本当！？|最高ね！|私の秘術で永遠の若さを授けてあげるわ！|さあ、再生の神ニリンに魂を捧げなさい！
+(SPEAKER は喜びに飛び跳ねている)|えっ！？|やったわ！|それじゃああなたに永遠の若さを授けてあげる！|再生の女神ニンリルに魂を捧げなさい！
 I'd love to be your pet!
-あなたのペットになりたい
+ペットにしてください！
+
 (SPEAKER pouts)|Hmmph. Suit yourself.
-(SPEAKER は不機嫌そうにしている)|そう……
+(SPEAKER は残念そうにしている)|そう……
 Pledge my soul? That changes things...
 魂を？それはちょっと……
 
@@ -19818,25 +19758,28 @@ Mmmmph.
 (SPEAKER はくすりと笑った)|ふふふ、私に興味があるの？
 
 (SPEAKER frowns)|Never ask a woman about her age!
-(SPEAKER は口をとがらせる)|乙女に年齢を訊くなんて失礼な奴！
+(SPEAKER は口をとがらせる)|なんて失礼な奴！
 I take it you're the hag in charge?
-あなたがここのボスのゾンビババアね
+あなたがここのボスのゾンビババアね？
 You are in charge, right?
 あなたがここのボスね
+
 (Giggle)
 ん……ふふ(嘲笑する)
 Don't mess with me, little girl.
 邪魔しないで、お嬢ちゃん
 Mmpphgh? (Pout at her)
 んん……(微笑みかける)
+
 (She smirks)|So you're that kind of visitor, huh?
 (彼女は微笑みながら問いかけてきた)|そういうタイプのお客さんなのね。
 That's right. How powerful are you?
 ええ。あなたは強いの？
+
 (She cracks her knuckles)|I have been practicing the resurrection arts for a thousand years.
-(彼女は指をパキパキと鳴らしている)|私は千年もの間復活の秘術を学び、実践してきた偉大な秘術師よ。
+(彼女は指をパキパキと鳴らしている)|私は千年もの間、復活の秘術を行使してきた魔法使いよ。
 (She smiles)|All the zombies you seee in the Graveyard?|They are my pets, and I care for each and every one of them.
-(彼女は笑顔で説明を始める)|墓地でゾンビを見たでしょう？|そういうことよ。彼女たちは私の大切なペットなの。
+(彼女は笑顔で説明を始める)|墓地でゾンビを見たでしょう？|彼女たちは大事なペットよ、全員ね。
 What the heck are 'Resurrection Arts'?
 復活の秘術って？
 It's time for a true display of skill!
@@ -19850,7 +19793,7 @@ Hmmph. (Look away)
 (She frowns)|Well, you will soon.
 (彼女は眉をひそめる)|そう、すぐにわかるわ。
 Pfff. Never heard of it.
-ふふふ、そんなの聞いたことない
+うーん、そんなの聞いたこともない
 I bet I could do better.
 私ならもう少し上手にやる
 (Giggle)
@@ -19878,11 +19821,11 @@ Fair enough. I am an adventurer.
 Hmmph.
 ふんん……
 (SPEAKER giggles)|Is that a challenge?
-(SPEAKER は自信たっぷりに微笑む)|私に戦いを挑むと？
+(SPEAKER は自信たっぷりに微笑む)|私に戦いを挑むつもり？
 (Nod calmly)
 (頷く)
 (SPEAKER grins)|Is that a challenge?
-(SPEAKER ニヤリと笑む)|私に戦いを挑むと？
+(SPEAKER ニヤリと笑む)|私に戦いを挑むつもり？
 We'll see about that.
 ええ、そうよ
 Hmmph. (Scoff into your gag)
@@ -19931,7 +19874,7 @@ No way!
 (Attack her without saying anything)
 (何も言わずに攻撃する)
 (SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
-(SPEAKER は軽く咳払いし、口上を述べる)|我は聖なる墓所を護りし者。|我が許しなくして地を這うことは決して許されぬ。|許可無き貴様が望むのは服従か？|それとも挑戦か？
+(SPEAKER は軽く咳払いし、口上を述べる)|我は聖なる墓所を護りし者。|この地を這うもの須く我が従僕たれ、さもなくば神に代わり神罰を下さん。|悍ましき生者よ、貴様が望むのは隷属か！|それとも挑戦か！
 I do what I want.
 やりたいことをやるだけ
 (Glare at her and scoff)
@@ -20004,6 +19947,7 @@ Mmmph! (Struggle weakly)
 (SPEAKER は抵抗したが、猿轡をかませることに成功した)|っんぐぅ！！
 (Gag her)
 (猿轡をかませる)
+
 (This ghost had something to say,|but it appears you've run into a bug instead)|Please report this to Ada18980 on deviantart!
 (幽霊は何かを言おうとした。|しかし代わりにバグに遭遇したようだ)|このセリフが表示されたら Ada18980 にご報告ください！
 (Continue)
@@ -23135,11 +23079,11 @@ A cursed NEWITM flies out of the chest and latches tightly to you!
 With a puff of magic, a NEWITM appears on your body!
 魔法の閃光と共に、 NEWITM が身体に取り付いた！
 You draw upon chaotic energies, restoring mana!
-カオスエネルギーを引き出し、マナを回復した！
+混沌の力を引き出し、マナを回復した！
 You draw upon chaotic energies, but your mind is unable to hold back the arcane forces!
-カオスエネルギーを引き出そうとするが、不安定な力を制御できない！
+混沌の力を引き出そうとするが、不安定な力を制御できない！
 Your attempt to call upon chaotic energies fails.
-カオスエネルギーを引き出そうとするも失敗した。
+混沌の力を引き出そうとするも失敗した。
 You are already at max mana.
 マナが最大値だ。
 The vibrator holds at full power to drive you over the edge!
@@ -23333,7 +23277,7 @@ Inner Power is no longer paused after casting spells.
 Arcane Recharge
 アーケインリチャージ
 Calling upon chaotic energies, your willpower is assaulted in exchange for power. Deals 80 psychic damage to self and drains 10% of your max Willpower to fully restore mana. Does not refill the mana pool.
-自身の被害を顧みず、混沌のエネルギーを体に宿す。80精神ダメージを受け、気力を最大値の10%消費し、マナを完全回復する。マナプールは補充されない。
+自身の被害を顧みず、混沌の力を体に宿す。80精神ダメージを受け、気力を最大値の10%消費し、マナを完全回復する。マナプールは補充されない。
 
 Way of Pleasure
 快楽の道
@@ -23437,17 +23381,17 @@ Chaotic Overflow
 Draw upon 25% of your max Willpower to ignore spell components for Duration turns and fully restore your mana. The energy is uncontrollable, so there will be consequences...
 気力の25%を使用し、持続ターンの間必要部位を無視し、マナを完全に回復させる。しかし、このエネルギーは制御不能だ……
 Chaotic energy flows through you!!!
-混沌のエネルギーが身体を貫いた！
+混沌の力が身体を貫いた！
 You try to call forth the chaotic energy, but it isn't interested in you anymore...
-混沌のエネルギーを呼び出そうとするも、呼びかけに応じる気配がない。
+混沌の力を呼び出そうとするも、呼びかけに応じる気配がない。
 You don't have enough Willpower. You need at least 25%.
 気力が足りない。最低でも25%必要。
 You are already full of chaotic energy!
-既に混沌のエネルギーは最大だ。
+既に混沌の力は最大だ。
 Chaotic energy overtakes you, crystallizing into physical form...
-混沌のエネルギーが体を覆い、クリスタルになった……
+混沌の力が体を覆い、クリスタルになった……
 Chaotic energy flows through you! You have a bad feeling about this...
-嫌な予感と共に混沌のエネルギーが身体中を巡った。
+嫌な予感と共に混沌の力が身体中を巡った。
 You find a shimmering macaron.
 きらめくマカロンを見つけた。
 Heavenly Crunch Macaron
@@ -23523,7 +23467,7 @@ Choose target to steal from
 You steal the target's disguise!
 ターゲットの衣装を盗んだ！
 Steal's a helpless enemy's clothes, adding a great deal of distraction to her and stealing her disguise for yourself. Until you recast this on yourself, you gain a stealth bonus against members of the same faction.
-完全拘束した敵の服を盗み、彼女の興奮値を大幅に上昇させる。再使用するまで、同じ派閥のメンバーに対して敵対されにくくなる。
+完全拘束した敵の服を盗み、彼女の興奮値を大幅に上昇させる。再使用するまで、同じ勢力のメンバーに対して敵対されにくくなる。
 Unstoppable (Ignore status/bondage)
 アンストッパブル（状態異常と拘束を無視）
 Unflinching (Resist status/bondage)
@@ -24443,7 +24387,7 @@ This is the buffs bar.|It shows various values and buffs relating to your charac
 These are the action buttons.|You can use them to perform various actions like closing doors or sprinting.|You can also toggle various settings such as automatically passing|through allies or auto-pathing when there are no enemies nearby.|You can also swap between recently used weapons.
 これらはアクションボタン。|ドアを閉じたり、走ったりできるよ。|すり抜けやしゃがみはトグル式で切り替えられるよ。|仲間を通過したり、敵が近くにいないときに自動で移動したり。|最近使った武器を素早く切り替えることもできるよ。
 These are various submenus.|Your Inventory is used to brows items and use or equip them.|The Journal contains lore, notes, and hints gathered along your journey.|The Journal also contains info on available quests,|and your reputation with various factions.
-ここはサブメニューだよ。|アイテムではアイテムを装備したり使用したりできるよ。|ジャーナルでは関係性やクエスト、集めたノートを見られるよ。|クエストの詳細を見たり、|様々な派閥との関係性も確認できるよ。
+ここはサブメニューだよ。|アイテムではアイテムを装備したり使用したりできるよ。|ノートでは関係性やクエスト、集めたノートを見られるよ。|クエストの詳細を見たり、|様々な勢力との関係性も確認できるよ。
 This is the status bar, which gives info on your base stats.|Distraction determines how easy it is to cast spells and resist teasing.|Stamina is required to sprint and attack with a weapon.|Mana is used to cast spells. You have what is called a 'Mana Pool,'|which is excess mana that slowly refills you mana bar until it runs out.|Finally, running out of Willpower makes it much harder to escape bondage.
 これはステータスバー。基本ステータスが分かるよ。|興奮値は呪文の失敗率や、愛撫への抵抗力に関係するよ。|スタミナは走ったり攻撃をしたりするときに使うよ。|マナは魔法の詠唱に使うよ。ゲージの下にある白い線がマナプールだよ。|マナが減ると、マナプールからゆっくりと補充されるよ。|気力は減ると拘束から抜け出しにくくなるよ。
 This is the hotbar.|Here you will find various spells and customizable actions.|You can customize it through the Spells submenu by clicking on a spell.|You can also add items, armor, and consumables to it from the Inventory.
@@ -24608,8 +24552,6 @@ Game Setup
 基本
 Challenge Settings
 チャレンジ
-
-
 
 Challenge Settings:
 チャレンジ：
@@ -24894,7 +24836,7 @@ What is your name?
 名前を決めてください
 
 Enrage
-憤怒
+猿叫
 Scream loudly, causing nearby enemies to investigate and increasing Battle Rhythm by 10. Has a 100 turn cooldown.
 大声で叫び、戦闘のリズムを10増加させる。音を発するため、近くの敵を呼び寄せる。クールタイム100ターン。
 
@@ -25038,7 +24980,7 @@ Create a stationary holy orb that lasts indefinitely and heals allies. It also f
 A holy orb descends, blessing you with its roundness.
 ホーリーオーブが降臨し、祝福の光が降り注ぐ！
 You call upon the root of all enlightenment!
-悟りの根源に呼びかけた！
+真実を照らす光に呼びかけた！
 
 Holy Orb
 ホーリーオーブ
@@ -25170,7 +25112,7 @@ Because your hands are unavailable, you kick the target instead.
 
 
 Your former owners are looking for you across the seven planes.
-前のご主人さまが、7つの平面を超えて探しに来た。
+前のご主人さまが、7つの世界を超えて探しに来た。
 
 A local business is missing one of their models, and will stop at nothing to find her.
 ある会社に所属しているモデルが行方不明になった。どんな手段を使っても、彼女を見つけ出そう。
@@ -25398,7 +25340,7 @@ The Goddess hates you. That won't work.
 機能しない。女神に見放されたようだ。
 
 Harvest
-
+ハーベスト
 Requires a slashing weapon equipped. Activate to harvest all adjacent vine tiles, with a 25% chance per tile to obtain a seed.|Seeds can be planted to form gardens, which will grow in 100 turns to become vegetables, which can be eaten to restore WP or sold to the shopkeeper.
 斬撃属性の武器が必要。隣接する植物を刈り取り、１マスにつき25%の確率で種を入手できる。種を植えると100ターン後で成長して野菜になり、食べた際にはWPを回復し、販売も可能。
 You twirl your weapon, harvesting AMNT seeds!
@@ -25588,23 +25530,23 @@ The Shibari Witch takes your clothes off!
 
 A Hard Place
 立ち往生
-While your willpower is 0, your mana pool slowly drains and your stamina regen is reduced by 30%.
-気力が0の間、マナプールが徐々に減少し、スタミナ回復量-30%。
+While your willpower is 0, your mana pool slowly drains and your max stamina regen point is reduced by 30%.
+気力が0の間、マナプールが徐々に減少し、最大スタミナ回復量-30%
 
 The Spark of Magic
 線香花火
 When your mana pool is exhausted, your attacks deal 50% reduced base damage.
-マナプールが枯渇している間、自身の基礎攻撃力-50%。
+マナプールが枯渇している間、自身の基礎攻撃力-50%
 
 Burned Out
 バーンアウト
 Casting spells reduces willpower based on how little distraction you have, also you cannot play with yourself.
-呪文を唱えた際、興奮値に応じて気力が下がる。また、自慰ができなくなる。
+呪文を唱えた際、興奮値に応じて気力が下がる。また、自慰ができなくなる
 
 Winded
 風に吹かれて
 While below 10% stamina, evasion is severely reduced and your slow level is increased by 1.
-スタミナが10%以下の間、回避が極端に低下し、減速値1を得る。
+スタミナが10%以下の間、回避が極端に低下し、減速値1を得る
 
 Lost One
 失われし者
@@ -25652,7 +25594,7 @@ I have the power!
 
 Gloves with an iron grip.
 鉄の小手。
-Provides +5 armor and minor protection aganist enemy attacks.Makes noise when attacking.
+Provides +5 armor and minor protection against enemy attacks.Makes noise when attacking.
 アーマー値+5。敵の攻撃から身を守る。敵を攻撃した時、音が出るようになる。
 
 Protecting you in style.
@@ -25675,7 +25617,7 @@ Armbands made of a slightly magical material.
 
 Noisy,but fashionable!
 動くとうるさいが、割とオシャレ。
-Provides +5 armor and minor protection aganist enemy attacks.Decreases stealth.
+Provides +5 armor and minor protection against enemy attacks.Decreases stealth.
 アーマー値+5。敵の攻撃から身を守る。隠密性が低下する。
 
 For stepping into all kinds of trouble!
@@ -25961,7 +25903,7 @@ Prisoner #NUMR/TTL
 Select a character to examine
 詳細を見るキャラクターを選択
 Former Faction: 
-派閥：
+勢力：
 
 Minigun
 ミニガン
@@ -26014,16 +25956,12 @@ Nevermere
 Choose restraint palette:
 拘束具の色：
 
-
-
-
 Main
 オプション
 GFX
 画面設定
 Character
 キャラクター
-
 
 Auto Load Mods
 MODを自動で読むこむ
@@ -26034,7 +25972,7 @@ The bright light hurts your dark-adjusted eyes!
 明るさに目がくらんだ！
 
 Unconventional Warfare
-不正規戦闘
+アタッチメント
 Select a weapon to attach it to your body. You can have one attached weapon at a time. Attaching it takes 5 turns.|An attached weapon can be equipped without hands and maintains 60% accuracy as long as you have arms or legs unbound.
 5ターンかけて、選択した武器1つを体に取り付ける。|取り付けた武器は手を使わずに使用でき、腕や脚が拘束されていない限り60%の命中率を持つ。
 
@@ -26087,6 +26025,8 @@ The ENMY gives your butt a squeeze during your cast! (DMGDLT)
 魔法を唱えようとしたら ENMY にお尻を揉まれた！ (DMGDLT)
 The ENMY gives your butt a squeeze as you move past! (DMGDLT)
 すれ違いざまに ENMY にお尻を揉まれた！ (DMGDLT)
+The ENMY gives your butt a squeeze as you pass by! (DMGDLT)
+移動しようとしたら ENMY にお尻を揉まれた！ (DMGDLT)
 The ENMY reaches for you but misses!
 ENMY の手を振り払った！
 The ENMY tickles your armpits! (DMGDLT)
@@ -26199,12 +26139,19 @@ You crouch and move slowly.
 Owned by: 
 所有者： 
 
-The Warden's Collar
-看守長の首輪
-You may go on your way, but only as long your freedom is useful to her. 
+Warden's Belt
+看守長のベルト
+You may go on your way, but only as long your freedom is useful to her.
 彼女の役に立つ限りは自由でいられる。
-A golden collar that marks you as part of someone's collection. Each time you break a spell orb, a collector is spawned to punish you.
-誰かの所有物であることを示す黄金の首輪。オーブを破壊する度にコレクターが発生し、罰を与えてくる。
+A golden belt that marks you as part of someone's collection. Each time you break a spell orb, a collector is spawned to punish you.
+誰かの所有物であることを示す黄金のベルト。オーブを破壊する度にコレクターが発生し、罰を与えてくる。
+
+Belt of Privilege
+特権のベルト
+You've defeated the Warden, proving that you are worthy to take what you want.
+看守長を倒した褒美。欲したものを手にする力があることを証明した。
+A golden belt that marks you as a person of great import. -50% rep penalty for breaking orbs.
+力の証明となるベルト。オーブを破壊した際、関係性の低下が半分になる。
 
 Sharpshooter
 射手
@@ -26262,30 +26209,37 @@ The Warden strikes you with her whip! (DamageTaken)
 The Warden swings her enchanted whip and conjures locks on your body! (DamageTaken)
 看守長が魔法の鞭を振ると、拘束具に錠前が召喚された！ (DamageTaken)
 
-(The Warden glances at you)|Oh? What do we have here?|An adventurer?|You're not on the books...
-(看守長はこちらをにらみつけている)|あら、何事かしら？|冒険者？|あなたは……本には載っていないわね。
-Cut to the chase. Do I have to fight you or not?
-戦うの？戦わないの？
 
+(The Warden glances at you)|Oh? What do we have here?|An adventurer?|You're not in my records...
+(看守長はこちらをにらみつけてきた)|あら、何事かしら？|冒険者……？|あなたは……記録にはないわね。
+
+Cut to the chase. Do I have to fight you or not?
+戦う？戦わない？どっち？
 (She chuckles)|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~
-(彼女は苦笑いしている)|あらあら。|その尊大な態度に実力が見合っているといいのだけれど。|ただの目立ちたがり屋に付き合う暇はないの。
+(彼女は苦笑いしている)|あらあら。|随分と尊大な態度ね。実力に見合っているといいのだけれど。|私の時間を無駄にしたらただじゃ済まないわよ。
+
+
 Quite a boast for someone who's about to lose.
 ただの通過点にしては大した自信じゃない。
 (SPEAKER grins)|I look forward to testing those claims~
 (SPEAKER はニヤリと笑った)|その態度がいつまで続くか楽しみね～。
+
+
 I defeated Fuuka. Now you're next!
 墓場の主は倒したわ、次はあなたよ！
-
 (SPEAKER shrugs)|You beat that zombie girl?|She's the weakest of the paladins.|She loves to boast about how she's special,|But she's really just a spoiled brat.
-(SPEAKER は肩をすくめている)|あのゾンビ娘と戦ったのね？|でも残念、彼女はパラディンの中でも最弱よ。|あの娘はいかに自分が特別かを散々語ったでしょうけど、|私から言わせればただの甘やかされたガキよ。
+(SPEAKER は肩をすくめている)|あのゾンビ娘を倒したのね。|でも残念、彼女はパラディンの中でも最弱よ。|あの娘はいかに自分が特別かを散々語り散らかしていたでしょうけど、|私から言わせればただの甘やかされたガキよ。
+
 ...Zombie girl?
 ……ゾンビ娘？
 (SPEAKER tilts her head)|Yes, she was around before Vinlaga.|Her magic was gifted to her by the Goddess,|it is only natural that it works on her too.
-(SPEAKER は首を傾げている)|彼女はヴィンラーガによる不死化が始まる前から生きていたの。|そう、彼女の魔法は女神から授かったもの、|彼女だけは由来の異なる不死だったのよね。
+(SPEAKER は呆れた表情を見せている)|彼女はヴィンラーガの魔法による不死化が始まる前から生きていたの。|そう、彼女の魔法は女神から授かったもの、|一応は、私と同じね。
+
 ...Paladins?
 パラディン？
 (SPEAKER nods happily)|Divinely-appointed judges, presiding over mortals.|Unlike you, our immortality is earned.|Myself, I captured many defilers long ago.|Is it not fitting that I get to keep them for myself?
-(SPEAKER は喜ばしげに頷く)|神より任を授かりし裁きを与えるものであり、人の管理者。|あなたとは違って、私達は神の手によって不死を授かったの。|私はね、昔から罪人を何人も何人も捕らえてきたわ。|だから、褒美があって然るべきでしょう？
+(SPEAKER は誇らしげに頷く)|神より任を授かりし、人を裁き、管理する者。|あなたとは違って、私達は神の手によって不死を授かったの。|私はね、昔から罪人を何人も何人も何人も何人も捕らえてきたわ。|そして、ついに神に認められたの。
+
 
 It is an honor to fight a worthy opponent.
 高名な相手と戦えるなんて光栄なことね。
@@ -26298,35 +26252,40 @@ You will see soon enough.
 Indeed!
 ええ！
 
+
 I am indeed an adventurer.
 私はただの冒険者よ。
 (SPEAKER smiles)|Fascinating. Do keep explaining.
 (SPEAKER は笑みを浮かべている)|そう、結構可愛いじゃない。続けて？
 
+
 (SPEAKER frowns)|That is not the attitude I appreciate from my guests.
-(SPEAKER は眉をひそめている)|次にそのような態度を取ったら許さないわよ？
+(SPEAKER は目に暗い怒りを宿している)|次にそのような態度を取ったら許さないわよ？
+
 I forge my own path.
-自分の道は自分で切り開く
+どいてくれる？
 Why should I listen to you?
 あなたの言うことなんて聞かないわ。
 (Pout)
 (口ごもる)
 
+
 Mmpphgh? (Go to pass her)
-うぅう？(すれ違おうとする)
+うぅう？(すれ違う)
 (She smirks)|No so fast, dear~
 (彼女はニヤニヤと笑っている)|そう急がないで。
 
 (Admire the locale)
 (この場所を称賛する)
 (SPEAKER smiles and nods)|It has existed for a thousand years,|and it shall exist for another thousand.|No thanks, of course, to the adventurers who storm through here,|breaking the orbs as if it all belongs to them...
-(SPEAKER は笑顔で頷いている)|この牢は1000年前から続いているの。|1000年後も存在し続けるわ。|ああ、ただの冒険者風情に感謝はしないわ。|自分達のもののようにオーブを壊して回る奴らには……。
+(SPEAKER は笑顔で頷いている)|素晴らしいでしょう、この牢は1000年も前からここにあるの。|そして1000年後もあり続けるわ。|ああ……ただの冒険者の世辞になんて感謝はしないわ。|あなただって、何個もオーブを壊してきたでしょうから……。
+
 What are these orbs for anyway?
-ところでオーブって何なの？
+オーブって何なの？
 (SPEAKER looks puzzled)|You don't know? Surely you must be joking?
 (SPEAKER は困惑している)|知らないの？冗談でしょう？
 (SPEAKER shrugs)|They are important because...|Wait, you're stalling for time, aren't you?
-(SPEAKER は肩をすくめている)|とても大切なものなのよ、それは……|……時間稼ぎのつもりかしら？
+(SPEAKER は肩をすくめている)|とても大切なものなのよ。それはね……|……時間稼ぎのつもりかしら？これは。
 I do not know.
 本当にしらない。
 (Sigh)
@@ -26335,24 +26294,226 @@ Of course I know...
 もちろん知っているよ……
 
 (SPEAKER readies her whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special collar.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~
-(SPEAKER は鞭を構えた)|じゃ、きちんと自己紹介しましょうか。|我こそは監獄の主、法と裁きの神命を賜りし聖人なり。|牢は遍く我が手中にあり、罪は遍く逃げ得ない。|我に神授の首輪ありき、|聖地を護りし神の力なり。|これをつけたら通してあげるわよ～。
-
-(SPEAKER giggles)|You're not in a position to resist.|Now then, let me make myself clear.|I will let you go forward in the dungeon, but only wearing my collar.
-(SPEAKER はクスクスと笑っている)|終わりね。|さて、条件を飲んでもらうわ。|それじゃあこの首輪をつけて。そうすれば通行を許可するわ。
-(SPEAKER presents you with your collar...)|(She locks it around your neck)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained.
-(SPEAKER に首輪をはめられた……)|(首輪をロックされる)|さあ、これであなたは自由よ。|まあ、少しトレーニングしてからだけど。
-
+(SPEAKER は鞭を構えた)|じゃ、きちんと自己紹介しましょうか。|我こそは監獄の主、法と裁きの神命を賜りし聖人なり。|遍く牢は我が膝下に、遍く罪は逃げ得ない。|我に神授の首輪ありき、|聖地を護りし神の力よ。|……これをつけたら通してあげるわよ～。
 
 What is this place?
 ここは？
-(She smiles)|Why, this is my private prison.|I bring only my prettiest toys to hang out here.|You can see them up there.|(She motions to the north)
-(彼女は笑顔で答える)|ここは私の牢獄。|選りすぐりの可愛い子ちゃんを集めているの。|ほら、そこに見えるでしょ？|(彼女は北の方を指す)
+(She smiles)|Why, this is my private prison.|I bring only my prettiest toys to stay here with me.|You can see them up there.|(She motions to the north)
+(彼女は笑顔で答える)|ここは私の牢獄。|選りすぐりの可愛い子ちゃんを集めているの。|ほら、そこに見えるでしょ？|(彼女は北の方を指さした)
+
+Tell me about your collection
+コレクション？
+(SPEAKER smiles pleasantly)|Its a fitting reward, isn't it?|Long ago, this mountain was home to a vicious empire.|Machines went out to sea, bringing back countless prisoners.|As commander of the invasion, I earned this title!
+(SPEAKER はニコニコしている)|報酬として賜ったの。|かつて、この山には凶悪な帝国があってね。|帝国の機械が海を超えて侵略を繰り返し、人々を捕らえて回っていたの。|そして私は指揮官だったの。看守長というのも、そのときについた渾名よ。
+
+(SPEAKER grins)|When we stormed the prisons, we encountered many fierce defenders.|Many of them now reside in these halls, earning their rightful punishment.
+(SPEAKER はニヤリと笑う)|昔襲った牢獄の守衛達よ。|すごく反抗的でね、今はここで調教しているの。
+Who are the prisoners, anyway?
+囚人は誰なの？
+
+(SPEAKER folds her arms)|Is it not holy and just to bring down tyrants?
+(SPEAKER は腕を組み語る)|人の世を揺るがす暴君を倒すために聖戦を起こしたのよ。
+Why did the Goddesses intervene?
+どうして女神の介入があったの？
+
+(SPEAKER shrugs)|Most of them had already been... conditioned.|It will take centuries to undo centuries of training.|After all, we have plenty of time.
+(SPEAKER は肩をすくめている)|もうほとんど調教が終わっているけど……|そうね、何世紀もしてきたんだし、普通の生活に戻るには時間がかかるんじゃないかしら？|まぁ、時間はたっぷりとあるしいいじゃない。
+What about the former prisoners?
+釈放された人たちはどうなるの？
+
+(SPEAKER looks to the side)|The leader was nowhere to be found.|The coward fled deeper underground.|Her robot guardians protect her, to this day.
+(SPEAKER はふと視線をそらす)|彼女は見つからなかったわ。|地下深くに尻尾を巻いて逃げたの。|彼女は今でも機械の兵隊に囲まれて怯えているでしょうね。
+Can I see the leader of this old civilization?
+旧文明の主には会える？
+
+(SPEAKER smirks)|What's the point of going deeper?|The tyrant lost control of her petty empire.|Now the world is safe from her.
+(SPEAKER はニヤリと笑った)|降りる意味がないもの。|裸の女王に何ができると？|もう彼女にできることは何もない、だから狩る意味なんて無いのよ。
+So you stopped at the upper floors?
+どうして下に降りて彼女を捕まえないの？
+
+(SPEAKER frowns)|Absolutely not.|They are under my strict supervision.
+(SPEAKER はむっとしている)|だめよ。|私の監視下にあるのだから、余計な介入はさせないわ。
+Can I talk to the former prisoners?
+釈放された人たちと話しても？
+
+(SPEAKER grins)|Very funny.|I heard rumors of an up-and-coming adventurer stirring up trouble.|It seems my intuitions were correct.
+(SPEAKER はニッコリと笑っている)|最近のあなたの行動は耳にしているわ。|許すとでも思う？
+I hope you don't mind me looting the lower levels~
+大したことしてないんだし、見逃してくれない？
+
+(SPEAKER grins)|Oh please.|Only this era's finest warriors can be part of my collection~|My subordinates take care of the rest.
+(SPEAKER はニッコリと笑っている)|私のコレクションになれるのはごく一部。|他は部下に任せているのよ。
+Sounds like you have an impressive collection
+とても良いコレクションみたいね
+
+(SPEAKER frowns)|It's easy to take for granted the peace you didn't work for.
+(SPEAKER は不機嫌そうにしている)|大した苦労も知らずに言ってくれるじゃない。
+Must be comfy living up here then
+ここは快適そうね。
+
+(SPEAKER scoffs at you)|Adventurers are always like this.|Ever since your kind started prying,|I've had no choice but to enact my own kind of discipline~
+(SPEAKER は嘲笑混じりに返す)|冒険者はいつもそう。|あなた達が無意味な好奇心を振りかざすから、|私達はただ自衛せざるを得なくなっているだけなの。
+What makes you any better than the old rulers?
+自分たちが旧文明に取って代わるに足る存在だと？
+
+(SPEAKER smirks at you)|If that were so, then perhaps it would be best not to pry...|Forbidden knowledge has its price, after all.
+(SPEAKER は笑いかけてくる)|そうだと思うなら、余計な詮索はやめなさい。|禁断の知識を得るためにはそれなりの対価が必要なんだから……
+It sounds like the gods are trying to hide something
+女神は何かを隠しているんじゃ？
+
+(SPEAKER folds her arms)|And what makes you think an old myth would be relevant here?|Would the Archmagus herself lead a rebellion against the divine?
+(SPEAKER は腕を組んでいる)|神話の人物が関係あると思ったの？|大魔術師が神々に反旗を翻すと？
+Was Sariel Vinlaga the leader of the old civilization?
+サリエル・ヴィンラーガは旧文明の主だったの？
+
+(SPEAKER frowns)|You don't trust me? That's too bad...
+(SPEAKER はむっとしている)|あら、信じてくれないのね……
+It's the way you keep dodging questions.
+はぐらかすつもりね。
+
+(SPEAKER scoffs)|I'd love to have a word with your sources~
+(SPEAKER は嘲笑で返す)|あら、随分な情報源ね。会ってみたいわ。
+I have it good authority that Vinlaga is here.
+ヴィンラーガはこのダンジョンにいる、確かな情報よ。
+
+(SPEAKER smirks)|Don't believe everything you hear~
+(SPEAKER はニヤニヤと笑っている)|なんでも鵜呑みにしたらだめよ？
+Maybe you're right.
+そうかもね。
+
+(SPEAKER pouts)|Old?|Grrr...
+(SPEAKER は口をとがらせている)|老婆……？|あなた……
+Says an old woman under the mountain...
+「山の下の老婆は語る……」
+
+
 That's a shame about your records, I'll be going now.
 記録については残念だったね、じゃあね。
 This is a nice place you got here.
 悪くない場所ね。
 There must be a mistake. Sign me up!
-何かの間違いでしょ、サインして！
+何かの間違いでしょ、通して！
+
+(She smirks)|Not so fast, dear~|You'll have to wear a special collar to pass.
+(彼女はニヤニヤと笑っている)|まぁ、そんなに急がないで。|この首輪をつけたら通ってもいいわよ。
+I won't wear anyone's collar!
+誰かのモノになんてならないわ！
+(She smirks)|Tsk tsk. Then you won't pass.
+(彼女はニヤニヤと笑っている)|うふふ、それじゃあ通せないわね。
+(She giggles)|How cute!|You're so used to yours that you forgot about it~
+(彼女は笑っている)|あら、|今つけている首輪が気に入ってるの？
+
+Why don't you wear it yourself?
+自分につけたらどう？
+Hmmph. (Scoff at her)
+んふふぅ(彼女を嘲笑う)
+(She frowns)|Watch your tongue~
+(彼女は不機嫌そうにしている)|随分な態度ね。
+
+(She frowns)|I do not wear collars.
+(彼女は不機嫌そうにしている)|生意気ね。
+You'd be better off wearing mine instead.
+代わりに、あなたに首輪をはめてあげるわ。
+You're missing out~
+見逃してあげようか？
+
+You can trust me.
+悪いことはしないわ。
+
+Mmmph! (Nod eagerly)
+んん……(頷く)
+(SPEAKER laughs)|Do you think I will trust you just like that?
+(SPEAKER は笑っている)|あら、信じるとでも？
+(SPEAKER frowns)|You do not know who you're dealing with.|I'll make sure to teach you a lesson.
+(SPEAKER はむっとしている)|誰に口を利いているのかわかっていないようね。|いいわ、わからせてあげる。
+Why don't I make you wear it?
+力ずくでやってみなさいよ。
+
+You can try~
+できるものならね。
+(She smiles)|Eager are we?|I don't just record anyone though.|I only care about the strongest adventurers~
+(彼女は不敵な笑顔で応える)|本当かしらね？|私は強者にしか興味がないの。|せいぜい頑張りなさい。
+I am the strongest.
+私のほうが強いわ。
+(SPEAKER chuckles)|Then why don't I test your skills?
+(SPEAKER はクスクスと笑っている)|それじゃあテストしてあげる。
+(SPEAKER grins)|How about trial by combat?
+(SPEAKER はニヤリと笑った)|ええ、どれだけ戦えるかね。
+A test? What kind?
+テストですって？
+...You're on!
+……わかった！
+Let's do it!
+いくわよ！
+You will see how strong I am!
+私の力を見せてあげる！
+(SPEAKER giggles)|We'll see about that!
+(SPEAKER は笑みを浮かべている)|すぐに分かるわ……
+
+(SPEAKER giggles)|Not so confident, are we?
+(SPEAKER は笑みを浮かべている)|自信がないのかしら？
+On second thought, maybe not...
+やっぱりやめようかな……
+I didn't think it would involve a test...
+テストがあるなんて……
+
+I will never be collared by you!
+あなたのコレクションになんかならないわ！
+(Shake your head and scoff)
+(首を振り小馬鹿にする)
+(SPEAKER folds her arms)|So be it.
+(SPEAKER は腕を組んでいる)|ふふふ。いいわよ、その態度。
+
+Tell me about your collection.
+コレクションについて教えてくれる？
+I'm in charge of my own path.
+自分の運命は自分で決めるわ。
+(SPEAKER grins)|Let's see how long you can keep up that attitude~
+(SPEAKER は悍ましい笑みを浮かべている)|その態度がいつまで続くか見せてちょうだい。
+That won't be necessary, miss.
+そんなことをしなくてもいいじゃない。
+(SPEAKER smiles)|Oh, it's quite necessary~|Why don't I show you?
+(SPEAKER は笑みを浮かべている)|いいえ、必要なの。
+I would rather fight you.
+戦いましょう。
+(Fight her)
+(戦う)
+(SPEAKER shrugs)|Straight and to the point, eh?
+(SPEAKER は肩をすくめている)|いい子ね。
+Ready yourself!
+勝負！
+Let's go!
+いくわよ！
+I guess I have no choice...
+やるしかないみたいね……
+(SPEAKER grins)|Very impressive.|You may have lost the battle, but you performed admirably~
+(SPEAKER は勝ち誇った笑みを浮かべている)|すごくよかったわ。|あなたは負けたけど、十分楽しませてもらったわ。
+(SPEAKER smiles)|I will let you pass so long as you wear my collar.|(She snaps her fingers and conjures a glowing ring)
+(SPEAKER は残酷な笑みを浮かべている)|この首輪をつけたらここを通っていいわよ。|(彼女が指を鳴らすと、輝く首輪が現れた。)
+(SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your collar~|(She snaps her fingers and conjures a glowing ring)
+(SPEAKER は)|なら、あなたの旅路もここで終い……|……というのは嫌でしょう？|さて、この首輪をつけてもらうわ。|(彼女が指を鳴らすと、輝く首輪が現れた。)
+(SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(She snaps her fingers and conjures a glowing ring)
+(SPEAKER は満足げな笑みを浮かべている)|ええ、素晴らしい魔法でしょう？|ただの管理職だから勝てるとでも思ったのかしら？|(彼女が指を鳴らすと、輝く首輪が現れた。)
+Was that magic?
+なんて魔法なの……
+I've lost. Now what?
+私の負けみたいね。
+I won't submit to you!
+あなたなんかに屈したりはしない！
+
+(SPEAKER presents you with your collar...)|(It closes around your neck seamlessly)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained.
+(SPEAKER に首輪をはめられた)|(不可思議な力が働いているのか、首に吸い付くように取り付いている)|さて……これで最後ね。|調教が済んだらもう行っていいわよ。
+(SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really think it would be that easy?
+(SPEAKER は大量の杭を召喚し、追撃を阻んできた)|面白いわね！|でも、そう簡単にはいかなくてよ！？
+(SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~
+(SPEAKER は膝をついた)|そんな……|たかが冒険者風情に……|覚えてなさい……
+(SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing collar)|This is a special one, reserved for those with divine privilege.|You've earned it.
+(SPEAKER は驚いている)|あら……素直に言うことを聞いてくれるなんて。|(彼女が指を鳴らすと輝く首輪が現れた)|これは特別仕様、神の権能の具現と言ってもいいわ。|おめでとう、あなたは勝ち取ったのよ。
+(Wear her collar anyway)
+(首輪を受け取り自身に装着する)
+(SPEAKER shakes her head as you force a gag into her mouth)|MMMMMPH!
+(頭を振って抵抗する SPEAKER に無理矢理猿轡を噛ませた)|んぁおぉぉ！
+
 
 The ENMY weakens your grip on your weapon! Enemies may disarm you if you stand too close...
 ENMY に武器を持つ握力を弱められた！敵に近寄りすぎると武器を外される可能性がある……
@@ -26758,7 +26919,7 @@ Map Modifier:
 Layout: 
 レイアウト：
 Controlling Faction: 
-出現する主な派閥：
+出現する主な勢力：
 Main Objective: 
 メイン目標：
 Points of Interest:
@@ -26994,7 +27155,7 @@ Shadows coalesce themselves around you in spherical form!
 Crystal Encasement
 クリスタル
 An overgrowth of magical crystals. Their chaotic energies flood into your mind and displace your thoughts!
-急成長した魔法のクリスタル。カオスエネルギーに思考が塗りつぶされていく。
+急成長した魔法のクリスタル。混沌の力に思考が塗りつぶされていく。
 Being brittle, it will eventually crack and fail. Just keep wiggling...
 あまり硬くはないため、いずれは割れるだろう。もがき続けるしかない……
 
@@ -27057,6 +27218,16 @@ The vine pod wraps you in vines and squeezes! (DamageTaken)
 ヴァインポッドに蔦で締め付けられた！ (DamageTaken)
 The vine pod launches several vines at you in quick succession! (+RestraintAdded)
 ヴァインポッドは大量の蔦を飛ばしてきた！ (+RestraintAdded)
+
+Sleep Flower
+ネムリバナ
+The sleep flower explodes into dust!
+ネムリバナは爆散した！
+The sleep flower sprays pollen into your face! Achoo! (DamageTaken)
+ネムリバナに大量の花粉を吹きかけられて……ﾊｸｼｮﾝ！ (DamageTaken)
+The sleep flower launches several vines at you in quick succession! (+RestraintAdded)
+ネムリバナは大量の蔦を飛ばしてきた！ (+RestraintAdded)
+
 
 
 Several vine pods sprout out of the ground!
@@ -27239,16 +27410,109 @@ RMNME of CHTRNME the ENMYNME
 ENMYNME の CHTRNME の RMNME
 
 The item is TTT, and will get looser as you progress.
-TTT 抜け出す過程で緩くなるだろう。
+この拘束具は TTT 抜け出す過程で緩くなるだろう。
+
 somewhat tight
-ややきつく締まっている。
+ゆるんでいる。
 rather tight
-きつく締まっている。
+少しゆるんでいる。
+quite tight
+少しきつい。
 especially tight
-とてもきつく締まっている。
-well-secured
-しっかりと固定されている。
-expertly secured
-まるで専門家に取り付けられたかのよう。
+きつい。
+extremely tight
+とてもきつい。
+incredibly tight
+ものすごくきつい。
+
+somewhat secure
+外れそうだ。
+secure
+少し外れそうだ。
+quite secure
+少し頑丈だ。
+highly secure
+頑丈だ。
+extremely secure
+とても頑丈だ。
+incredibly secure
+ものすごく頑丈だ。
+
+somewhat thick
+薄い。
+rather thick
+少し薄い。
+quite thick
+少し厚い。
+highly thick
+厚い。
+extremely thick
+とても厚い。
+incredibly thick
+ものすごく厚い。
+
 You must first accept the quest before offering at the shrine.
 祈る前にクエストを受けなければならない。
+
+
+Zero Resistance
+無抵抗
+Toggle this to set bondage resist, evasion, and block to 0. While enabled, using the 'wait until interrupted' button will not be interrupted when hit or bound.
+使用すると、拘束抵抗値、回避値、ブロック値が0になり、「自動待機」使用時に攻撃や拘束をされても待機し続けるようになる。
+
+The RSTRT feels a little looser!
+RSTRT が少し緩んだ！
+
+Crystal Armbinder
+クリスタルのアームバインダー
+A growth of crystals fusing your arms together. Chaotic energies radiate in all directions, causing you to slowly lose control over your desires.
+輝くクリスタルでできたアームバインダー。滲み出る混沌の力により、徐々に性欲をコントロールできなくなる。
+Crystals are tough but not unbreakable.
+クリスタルは硬いが、壊せないほどではない。
+
+The lock is protected by a seal of repentance. To unlock it you must pay 1 spell point.
+錠には悔恨の封印がなされている。解錠するにはスキルポイントを1使用する必要がある。
+The restraint won't budge.
+この拘束は破壊できない。
+You perform a ritual to unlock the item!
+拘束具を解錠するため、儀式を行った！
+
+The lock is protected by a seal of repentance. To unlock it you must pay 8 spell points!
+錠には悔恨の封印がなされている。解錠するにはスキルポイントを8使用する必要がある。
+You perform a grand ritual to unlock the item!
+拘束具を解錠するため、儀式を行った！
+
+Warden's Thigh Chain
+看守長の脚枷の鎖
+A chain connecting your thigh cuffs together. You can still walk, albeit slower than usual.
+太ももを繋ぐ鎖。脚の動きが制限される。
+You've stolen something of great value. Now you must give it back.
+盗掘の代償。罪は償わなければならない。
+
+Warden's Ankle Chain
+看守長の足枷の鎖
+A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
+足枷同士をつなぐ鎖。歩く程度なら支障はない程度の長さ。
+You've stolen something of great value. Now you must give it back.
+盗掘の代償。罪は償わなければならない。
+
+Warden's Ankle Link
+看守長の
+A short chain connecting your ankle cuffs together. You can barely separate your legs with this on.
+足枷同士をつなぐ短い鎖。辛うじて足を離せる程度の長さ。
+An intense, albeit temporary punishment for breaking the rules.
+規則違反に対する重い戒め。
+
+Warden's Elbow Chain
+看守長の肘枷の鎖
+A very short chain connecting your elbow cuffs together. It is quite awkward to remove by yourself.
+肘枷同士を繋ぐ鎖。自分で外すのは困難。
+You've stolen something of great value. Now you must give it back.
+盗掘の代償。罪は償わなければならない。
+
+Warden's Wrist Chain
+看守長の手枷の鎖
+A very short chain connecting your wrist cuffs together.
+手枷同士を繋ぐ短い鎖。
+An intense, albeit temporary punishment for breaking the rules.
+規則違反に対する重い戒め。
