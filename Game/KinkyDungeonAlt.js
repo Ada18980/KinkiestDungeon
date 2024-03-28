@@ -4,7 +4,41 @@ let KDJourneyMapMod = {
 	"Random": true,
 };
 
-let KDDragonList = ["DragonQueenCrystal", "DragonQueenPoison", "DragonQueenIce", "DragonQueenShadow"];
+let KDDragonList = [
+	{
+		enemy: "DragonQueenCrystal",
+		obstacles: {
+			ChaoticCrystal: 1.0,
+			ChaoticCrystalActive: 0.25,
+			SoulCrystal: 0.05,
+			SoulCrystalActive: 0.01,
+		},
+	},
+	{
+		enemy: "DragonQueenPoison",
+		obstacles: {
+			BarricadeVine: 1.0,
+			GiantMushroom: 0.25,
+			VinePlant: 0.1,
+		},
+	},
+	{
+		enemy: "DragonQueenIce",
+		obstacles: {
+			BarricadeIce: 1.0,
+		},
+	},
+	{
+		enemy: "DragonQueenShadow",
+		obstacles: {
+			ShadowHand: 0.1,
+			BarricadeShadow: 1.0,
+			BarricadeShadowMetal: 0.25,
+		},
+	},
+
+
+];
 
 let KDDefaultMaxFlags = {
 	goldchest: 1,
@@ -1990,10 +2024,62 @@ function KinkyDungeonCreateElevatorRoom(POI, VisitedRooms, width, height, openne
 	KD_PasteTile(KDMapTilesList.ElevatorRoom, KDMapData.StartPosition.x - 7 - 3, KDMapData.StartPosition.y - 7 * 4, data);
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
-	let enemy = CommonRandomItemFromList(KDGameData.LastDragon, KDDragonList);
-	if (enemy) {
-		KDGameData.LastDragon = enemy;
-		DialogueCreateEnemy(15,2 + 7 + 2,enemy);
+	let def = KDDragonList[Math.floor(KDRandom() * KDDragonList.length)];
+	/**
+	 * @type {Record<string, number>}
+	 */
+	let obstacles = {};
+	if (def) {
+		DialogueCreateEnemy(15,2 + 7 + 2,def.enemy);
+		obstacles = def.obstacles;
+	}
+
+
+	let obsSlots = [];
+	for (let xx = 1; xx < KDMapData.GridWidth - 1; xx++) {
+		for (let yy = 1; yy < KDMapData.GridHeight - 2; yy++) {
+			if (KinkyDungeonMapGet(xx, yy) == '0'
+				//&& ((xx % 2 == 0 && yy % 2 == 1) || (xx % 2 == 1 && yy % 2 == 0)) // Enforce checkerboard pattern
+				&& (
+					(KinkyDungeonMapGet(xx-1, yy ) == '0' && KinkyDungeonMapGet(xx, yy-1 ) == '0'
+					&& KinkyDungeonMapGet(xx+1, yy ) == '1' && KinkyDungeonMapGet(xx, yy+1 ) == '1')
+					||
+					(KinkyDungeonMapGet(xx+1, yy ) == '0' && KinkyDungeonMapGet(xx, yy+1 ) == '0'
+					&& KinkyDungeonMapGet(xx-1, yy ) == '1' && KinkyDungeonMapGet(xx, yy-1 ) == '1')
+					||
+					(KinkyDungeonMapGet(xx+1, yy ) == '0' && KinkyDungeonMapGet(xx, yy-1 ) == '0'
+					&& KinkyDungeonMapGet(xx-1, yy ) == '1' && KinkyDungeonMapGet(xx, yy+1 ) == '1')
+					||
+					(KinkyDungeonMapGet(xx+1, yy ) == '0' && KinkyDungeonMapGet(xx, yy-1 ) == '0'
+					&& KinkyDungeonMapGet(xx-1, yy ) == '1' && KinkyDungeonMapGet(xx, yy+1 ) == '1')
+					||
+					(KinkyDungeonMapGet(xx-1, yy ) == '0' && KinkyDungeonMapGet(xx, yy-1 ) == '0'
+					&& KinkyDungeonMapGet(xx+1, yy ) == '0' && KinkyDungeonMapGet(xx, yy+1 ) == '1')
+					||
+					(KinkyDungeonMapGet(xx+1, yy ) == '0' && KinkyDungeonMapGet(xx, yy+1 ) == '0'
+					&& KinkyDungeonMapGet(xx-1, yy ) == '1' && KinkyDungeonMapGet(xx, yy-1 ) == '0')
+					||
+					(KinkyDungeonMapGet(xx+1, yy ) == '1' && KinkyDungeonMapGet(xx, yy-1 ) == '0'
+					&& KinkyDungeonMapGet(xx-1, yy ) == '0' && KinkyDungeonMapGet(xx, yy+1 ) == '0')
+					||
+					(KinkyDungeonMapGet(xx+1, yy ) == '0' && KinkyDungeonMapGet(xx, yy-1 ) == '1'
+					&& KinkyDungeonMapGet(xx-1, yy ) == '0' && KinkyDungeonMapGet(xx, yy+1 ) == '0')
+					||
+					(KinkyDungeonMapGet(xx+1, yy ) == '0' && KinkyDungeonMapGet(xx, yy-1 ) == '0'
+					&& KinkyDungeonMapGet(xx-1, yy ) == '0' && KinkyDungeonMapGet(xx, yy+1 ) == '0')
+				)) {
+				obsSlots.push({x: xx, y:yy});
+			}
+		}
+	}
+	for (let i = 0; i < obsSlots.length / 8 && obsSlots.length > 0; i++) {
+		let index = Math.floor(KDRandom() * obsSlots.length);
+		let slot = obsSlots[index];
+		obsSlots.splice(index, 1);
+		if (!KinkyDungeonEnemyAt(slot.x, slot.y)) {
+			let en = DialogueCreateEnemy(slot.x, slot.y, KDGetByWeight(obstacles));
+			en.faction = "DragonQueen";
+		}
 	}
 
 	let faceSlots = [];

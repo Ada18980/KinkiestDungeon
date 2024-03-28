@@ -30,6 +30,15 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.2.20
+RC1
+- Added obstacles to dragon elevator halls
+- Fixed a few visual bugs
+- Surrender debuff (being at 0WP) now reduces struggle bonus strength by 25%
+RC2
+- Fixed latex catsuit stacking bug
+- Added heavy latex catsuit
+
 5.2.19
 - Restriction now affects get up time
 - Added perks for Warden belt

@@ -1983,7 +1983,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		toolBonus: 0.0,
 		toolMult: 1.0,
 		buffBonus: 0.0,
-		buffMult: 1.0,
+		buffMult: KinkyDungeonHasWill(0.01, false) ? 1.0 : 0.75,
 		struggleTime: 1.0,
 		restriction: KDGameData.Restriction || 0,
 		speedMult: KinkyDungeonHasHelp() ? 2.0 : 1.0,
@@ -2011,7 +2011,8 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	let toolMult = Math.max(0, 1 + data.toolBonus) * data.toolMult;
 	let buffMult = Math.max(0, 1 + data.buffBonus) * data.buffMult;
 
-	if (data.escapePenalty < 0) data.escapePenalty *= buffMult;
+
+
 
 	if (StruggleType == "Pick" || StruggleType == "Unlock") data.escapeChance += KinkyDungeonGetPickBonus()*toolMult;
 	data.origEscapeChance = data.escapeChance;
@@ -2026,9 +2027,9 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	//let cancut = false;
 
 	// Bonuses go here. Buffs dont get added to orig escape chance, but
-	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle")) data.escapeChance += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle");
+	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle")) data.escapePenalty -= KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle");
 	if (StruggleType == "Cut") {
-		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCutting")) data.escapeChance += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCutting");
+		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCutting")) data.escapePenalty -= KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCutting");
 		if (data.hasAffinity) {
 			if (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp() || !KinkyDungeonPlayerDamage) {
 				let maxBonus = 0;
@@ -2119,6 +2120,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		data.escapeChance -= KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Lockdown") * 0.1;
 	}
 
+	if (data.escapePenalty < 0) data.escapePenalty *= buffMult;
 	if (data.escapePenalty) {
 		data.escapeChance -= data.escapePenalty;
 	}
@@ -3370,7 +3372,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 	}*/
 	if (!r) r = KinkyDungeonGetRestraintItem(restraint.Group);
 	// NoLink here because we do it later with augment
-	let power = powerBonus + (KinkyDungeonRestraintPower(r, true, restraint, Lock, curse) * (r && useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, KDRestraint(r), augmentedInventory) : 1));
+	let power = powerBonus + (KinkyDungeonRestraintPower(r, true, restraint, Lock, curse) * (r && useAugmentedPower ? Math.max(0.9, KDRestraintPowerMult(KinkyDungeonPlayerEntity, KDRestraint(r), augmentedInventory)) : 1));
 	let linkUnder = KDGetLinkUnder(r, restraint, Bypass, NoStack, Deep, securityEnemy, Lock, curse);
 
 	let linkableCurrent = r && KDRestraint(r) && KinkyDungeonLinkableAndStricter(KDRestraint(r), restraint, r);
@@ -3382,7 +3384,9 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 	while (link && !linkableCurrent) {
 		let linkableUnder = KinkyDungeonLinkableAndStricter(KDRestraint(link), restraint, link, Lock, curse);
 		if (!linkableUnder) {
-			power = Math.max(power, KinkyDungeonRestraintPower(link, true, restraint, Lock, curse) * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, KDRestraint(link), augmentedInventory) : 1));
+			power = Math.max(power,
+				KinkyDungeonRestraintPower(link, true, restraint, Lock, curse)
+					* (useAugmentedPower ? Math.max(0.9, KDRestraintPowerMult(KinkyDungeonPlayerEntity, KDRestraint(link), augmentedInventory)) : 1));
 			link = link.dynamicLink;
 		} else {
 			link = null;
@@ -3390,17 +3394,32 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 	}
 
 	let newLock = (Lock && KinkyDungeonIsLockable(restraint)) ? Lock : restraint.DefaultLock;
+	let allowOverpower = r && !linkableCurrent && !noOverpower && !KDRestraint(r).enchanted;
 	if (
 		// Nothing to overwrite so we good
 		!r
 		// We can link
 		|| linkableCurrent
 		// We are weak enough to override
-		|| (!KDRestraint(r).enchanted
-			&& (!noOverpower && power < -0.01 + (curse ? (KDCursePower(curse)) : 0) + restraint.power * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory) : 1) * KinkyDungeonGetLockMult(newLock, undefined, curse, restraint)))
+		|| allowOverpower
 	) {
-		if (bypasses())
-			return true; // Recursion!!
+		let augMult = allowOverpower ?
+			(useAugmentedPower ?
+				KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory)
+				: 1)
+			: 1;
+		let compPower =
+			allowOverpower ? (
+			-0.01
+			+ (curse ? (KDCursePower(curse)) : 0)
+			+ restraint.power
+				* augMult
+				* KinkyDungeonGetLockMult(newLock, undefined, curse, restraint)
+			) : 0;
+		if (!allowOverpower || (power * 1.1 < compPower)) {
+			if (bypasses())
+				return true; // Recursion!!
+		}
 	}
 	return false;
 }

@@ -2918,6 +2918,7 @@ function KDDrawStruggleGroups() {
 				return true;
 			}, drawLayers == 2, x + (sg.left ? 0 : 12), y, mini ? 48 : 250, 48, "", drawLayers == 2 ? "#ffffff" : "#888888", "", "", undefined, !(drawLayers == 2), KDTextGray05, 24, undefined, {
 				zIndex: 40,
+				alpha: 0.1,
 			});
 
 			i = 0;

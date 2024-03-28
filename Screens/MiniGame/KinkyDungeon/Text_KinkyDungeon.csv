@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.18"
+KDVersionStr,"5.2.20 RC2"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -4285,6 +4285,9 @@ RestraintLatexCorsetDesc2,"It has too much grip to struggle out of, but is made 
 RestraintLatexCatsuit,Latex Catsuit
 RestraintLatexCatsuitDesc,"A skintight suit that's stretched on tight. It adheres to latex restraints making struggling more difficult."
 RestraintLatexCatsuitDesc2,"Blue latex is silky smooth, very stretchy, and very good at adhering to itself."
+RestraintHeavyLatexCatsuit,Heavy Latex Catsuit
+RestraintHeavyLatexCatsuitDesc,"A skintight suit that's stretched on tight and made of thick latex. It adheres to latex restraints making struggling more difficult."
+RestraintHeavyLatexCatsuitDesc2,"Blue latex is silky smooth, very stretchy, and very good at adhering to itself. Its thickness makes it particularly resistant to cutting."
 RestraintLatexMittens,Latex Mittens
 RestraintLatexMittensDesc,"A pair of mittens keep your hands out of trouble. They adhere to latex restraints making struggling more difficult."
 RestraintLatexMittensDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
