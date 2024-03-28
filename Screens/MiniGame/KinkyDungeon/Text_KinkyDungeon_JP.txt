@@ -1092,6 +1092,17 @@ Fear of the Dark
 Your vision in dark areas is reduced.
 暗闇にいる時、視界範囲が狭くなる
 
+
+Mutually Assured Darkness
+晦冥
+Darkness is twice as effective in hiding from enemies, but your night vision is also reduced.
+暗闇にいる時の隠密効果が2倍になるが、視力も低下する
+Stalker
+ストーカー
+Darkness is twice as effective in hiding from enemies.
+暗闇にいる時の隠密効果が2倍になる
+
+
 Copy (clipboard)
 クリップボードにコピー
 Paste (clipboard)
@@ -2788,7 +2799,7 @@ Find the keys..
 Find the exit!
 出口を探せ！
 You are receiving help from a friendly ally.
-味方に助けてもらっている。
+味方の助力を得られる
 You found a hook you can use to pull on straps and loops.
 ストラップや結び目を引っ張るためのフックを見つけた。
 You have access to something sharp and can attempt to cut restraints.
@@ -4914,29 +4925,29 @@ A light restores the will of its allies!
 You do not have enough resources to cast the spell!
 マナが足りない！
 You AttackName TargetEnemy for DamageDealt DamageType damage!
-TargetEnemy に攻撃し、DamageDealt DamageType のダメージを与えた！
+TargetEnemy に攻撃し、DamageDealt の DamageType 属性ダメージを与えた！
 You AttackName TargetEnemy for a decreased DamageDealt DamageType damage!
-TargetEnemy に攻撃したが、耐性があるようだ。 DamageDealt DamageType のダメージを与えた。
+TargetEnemy に攻撃したが、耐性があるようだ。 DamageDealt の DamageType 属性ダメージを与えた。
 You AttackName TargetEnemy for an increased DamageDealt DamageType damage!
-TargetEnemy に攻撃した。弱点を付き、 DamageDealt DamageType のダメージを与えた！
+TargetEnemy に攻撃した。弱点を付き、 DamageDealt の DamageType 属性ダメージを与えた！
 You AttackName TargetEnemy for a devastating DamageDealt DamageType damage!
-TargetEnemy に攻撃した。弱点を付き、 DamageDealt DamageType の大ダメージを与えた！！
+TargetEnemy に攻撃した。弱点を付き、 DamageDealt の DamageType 属性ダメージを与えた！！
 You AttackName TargetEnemy, but your DamageType weapon has no effect!
 TargetEnemy に攻撃したが、 DamageType は効果がないようだ。
 You AttackName TargetEnemy for DamageDealt DamageType damage!, reduced by an anti-magic ward!
-TargetEnemy に攻撃したが、魔力障壁によって阻まれた。 DamageDealt DamageType ダメージを与えた。
+TargetEnemy に攻撃したが、魔力障壁によって阻まれた。 DamageDealt の DamageType 属性ダメージを与えた。
 AttackName hits TargetEnemy for DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中し、DamageDealt DamageType のダメージを与えた！
+AttackName は TargetEnemy に命中し、DamageDealt の DamageType 属性ダメージを与えた！
 AttackName hits TargetEnemy for a reduced DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中したが、耐性があるようだ。 DamageDealt DamageType のダメージを与えた。
+AttackName は TargetEnemy に命中したが、耐性があるようだ。 DamageDealt の DamageType 属性ダメージを与えた。
 AttackName hits TargetEnemy but DamageType damage doesn't have any effect!
 AttackName は TargetEnemy に命中したが、DamageType は効果がないようだ。
 AttackName hits TargetEnemy for an increased DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中した。弱点を付き、DamageDealt DamageType のダメージを与えた！
+AttackName は TargetEnemy に命中した。弱点を付き、DamageDealt の DamageType 属性ダメージを与えた！
 AttackName hits TargetEnemy for DamageDealt DamageType damage, reduced by an anti-magic ward!
-AttackName は TargetEnemy に命中したが、魔力障壁によって阻まれた。 DamageDealt DamageType のダメージを与えた。
+AttackName は TargetEnemy に命中したが、魔力障壁によって阻まれた。 DamageDealt の DamageType 属性ダメージを与えた。
 AttackName hits TargetEnemy for a devastating DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中した。弱点を付き、 DamageDealt DamageType の大ダメージを与えた！
+AttackName は TargetEnemy に命中した。弱点を付き、 DamageDealt の DamageType 属性ダメージを与えた！
 attack
 攻撃
 damage
@@ -6839,6 +6850,8 @@ The armbinder harness comes off with the armbinder.
 このハーネスはアームバインダーを外したときに一緒に外れる。
 The cuff chains come off with the cuffs.
 枷についた鎖は枷と一緒に外れる。
+The hogtie link comes off.
+ホッグタイは解けた。
 Handcuffs
 手錠
 A pair of steel cuffs locked securely around your wrists.
@@ -7139,7 +7152,7 @@ It's not very secure.
 Rope Hogtie
 縄のホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぐ縄。這うことしかできなくなる。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 It's very secure. You tug on the rope connecting your feet and struggle.
 引っ張ったりもがいたりして緩めるしかない。
 Rope Belt
@@ -7642,7 +7655,7 @@ A pair of chained cuffs made of leather. They make it trickier to run away.
 革でできた足枷。逃げるのが難しくなる。
 
 A pair of cuffs on your ankles.
-足首に取り付けられた枷。
+足首に取り付く枷。
 Your ankle cuff chain is tightened and pulls your feet together!
 足首の枷の鎖が締まり、足が引き寄せられた！
 
@@ -10735,20 +10748,20 @@ Flame Blade
 
 Tentacle Slap
 触手の一撃
-You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +20 glue damage and create slime.
-スライムから触手を形作り、追加で攻撃できるようになる。有効時：攻撃時に追加で20接着剤属性ダメージを与え、床にスライムを撒く。
+You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +20 glue damage and create slime. 100% bind efficiency.
+スライムから触手を形作り、追加で攻撃できるようになる。有効時：攻撃時に追加で20接着剤属性ダメージを与え、床にスライムを撒く。拘束ダメージ率が100%になる。
 Chain Strike
 鎖の一撃
-You have the power to summon chains when you attack. When enabled: Your attacks deal +20 chain damage and create chains.
-鎖を召喚し、追加で攻撃できるようになる。有効時：攻撃時に追加で20チェーンダメージを与え、床に鎖を撒く。
+You have the power to summon chains when you attack. When enabled: Your attacks deal +20 chain damage and create chains. 90% bind efficiency.
+鎖を召喚し、追加で攻撃できるようになる。有効時：攻撃時に追加で20チェーンダメージを与え、床に鎖を撒く。拘束ダメージ率が90%になる。
 Ropework
 ロープワーク
-You have the power to weave ropes between your attacks. When enabled: Your attacks deal +20 chain damage and create ropes.
-縄を操り、追加で攻撃できるようになる。有効時：攻撃時に追加で20チェーンダメージを与え、床に縄を撒く。
+You have the power to weave ropes between your attacks. When enabled: Your attacks deal +20 chain damage and create ropes. 300% bind efficiency.
+縄を操り、追加で攻撃できるようになる。有効時：攻撃時に追加で20チェーンダメージを与え、床に縄を撒く。拘束ダメージ率が300%になる。
 Leather Whip
 レザーウィップ
-You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +20 pain damage and create belts.
-革のベルトを召喚し、追加で攻撃できるようになる。有効時：攻撃時に追加で20痛みダメージを与え、床にベルトを撒く。
+You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +20 pain damage and create belts. 150% bind efficiency.
+革のベルトを召喚し、追加で攻撃できるようになる。有効時：攻撃時に追加で20痛みダメージを与え、床にベルトを撒く。拘束ダメージ率が150%になる。
 
 Engulf
 飲み込み
@@ -17100,7 +17113,7 @@ The Head Maid asked me to retrieve it.
 My mistress needs it for a special spell.
 ご主人様が特別な魔法のために使うものなのです
 It is an offering to the goddess of Elements.
-エレメントの女神への捧げ物なんです
+精霊の女神への捧げ物なんです
 It's just a prop for a costume.
 ただの衣装の小道具なんです
 Are you questioning me? I'm a dragonslayer.
@@ -21930,17 +21943,17 @@ A quick tie for apprehending prisoners, looped through buckles on the hand restr
 It's not very secure.
 簡単に抜け出せる。
 Rope Hogtie
-ホッグタイ
+縄のホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する縄。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle.
 高手小手縛りと繋がっている。足や手を捩り、無理やり抜け出すしかない。
 Rope Hogtie
 ホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する縄。
-It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle.
-高手小手縛りと繋がっている。足や手を捩り、無理やり抜け出すしかない。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
+It holds you strictly with your back arched. You tug on the rope connecting your feet and struggle.
+腕と足のをつなげる縄。足や手を捩り、無理やり抜け出すしかない。
 Rope Belt
 縄のベルト
 A harness acting as a handle to pull you around
@@ -22051,7 +22064,7 @@ The cyber warden's touch applies a series of quick electrical shocks!
 Back to Menu
 メニューに戻る
 Item Stack:
-所持数：
+スタック数：
 Ancient
 古代
 Cursed
@@ -22156,13 +22169,13 @@ The knots appear to tie themselves together again, making them impossible to und
 Spellbound Hogtie
 呪文のホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する呪文の縄。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 The knots appear to tie themselves together again, making them impossible to undo!
 解こうとしても、結び目が勝手にきつくなる魔法の縄。
 Spellbound Hogtie
 呪文のホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する呪文の縄。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 The knots appear to tie themselves together again, making them impossible to undo!
 解こうとしても、結び目が勝手にきつくなる魔法の縄。
 Spellbound Rope Belt
@@ -22274,13 +22287,13 @@ It's not very secure.
 Magic Hogtie
 魔法のホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する魔法の縄。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 It's very secure. You tug on the rope connecting your feet and struggle.
 腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
 Magic Hogtie
 魔法のホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する魔法の縄。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 It's very secure. You tug on the rope connecting your feet and struggle.
 腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
 Magic Rope Belt
@@ -22382,15 +22395,15 @@ A set of ropes that emit a calm, soothing aura. They magically stretch to fit yo
 Holy Hogtie
 聖なるホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する聖なる縄。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle.
 腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
 Holy Hogtie
 聖なるホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する聖なる縄。
-It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle.
-腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
+It holds you strictly with your back arched. You tug on the rope connecting your feet and struggle.
+腕と足のをつなげる縄。足や手を捩り、無理やり抜け出すしかない。
 Holy Rope Belt
 聖なる縄のベルト
 A harness acting as a handle to pull you around
@@ -22496,15 +22509,15 @@ A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
 Mithril Hogtie
 ミスリルのホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧するミスリルの縄。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
 It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle.
 腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
 Mithril Hogtie
 ミスリルのホッグタイ
 A very strict and tight hogtie, good for subduing unruly captives.
-手首と足首をつなぎ、暴れる捕虜を鎮圧する縄。
-It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle.
-腕と足の縄をつなげる縄。足や手を捩り、無理やり抜け出すしかない。
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
+It holds you strictly with your back arched. You tug on the rope connecting your feet and struggle.
+腕と足のをつなげる縄。足や手を捩り、無理やり抜け出すしかない。
 Mithril Rope Belt
 ミスリル縄のベルト
 A harness acting as a handle to pull you around
@@ -24488,7 +24501,7 @@ You accept the goddess' quest.
 You cannot accept that quest right now.
 今はクエストを受けられない。
 
-Offer gold to the Goddess in exchange for help. Destroys the shrine.
+Offer gold in exchange for help. Destroys the shrine.
 お金を寄進し、助力を乞う。祭壇は破壊される。
 Ask for help without offering gold.
 寄進なしに助力を乞う。
@@ -26767,6 +26780,8 @@ Bandit Hideout
 盗賊の隠れ家
 Dimensional Rift
 次元の裂け目
+Hoard
+宝物庫
 
 Witch's Lair
 魔女のお茶会
@@ -27000,7 +27015,14 @@ A chain connecting your thigh cuffs together. You can still walk, albeit slower 
 It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
 鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
 
-Ankle Chain
+Chain Hogtie
+鎖のホッグタイ
+A very strict and tight hogtie, good for subduing unruly captives.
+手首と足首をつなぐ拘束。暴れる捕虜を鎮圧するのに最適。
+A metal chain holds your back in an arched position.
+手と足を繋ぐ鎖の拘束。
+
+Ankle Chains
 足枷の鎖
 A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
 足枷同士をつなぐ鎖。歩く程度なら支障はない程度の長さ。
@@ -27191,8 +27213,8 @@ Can you control the facility?
 
 Can you turn on the elevator?
 エレベーターを動かせる？
-I'm sorry, adventurer. I can't do that.|But maybe if you can get rid of all the nearby threats...|They've been under lockdown for a long time.
-ごめんなさい。|しかし、近くの脅威を全て排除できれば……|奴らによって長いことエレベーターを動かせずにいるのです。
+I'm sorry, adventurer. I can't do that.|But maybe if you can get rid of all the nearby threats...|They've been under lockdown for a long time.|Just push the button again if it hasn't updated yet.
+ごめんなさい。|しかし、近くの脅威を全て排除できれば……|奴らによって長いことエレベーターを動かせずにいるのです。|既に倒しているなら、ボタンを押すだけでいいです。
 
 Mmmph mmm! (Help me!)
 はふへふぇ！(助けて！)
@@ -27211,3 +27233,22 @@ How are you doing?
 最近どう？
 (Oriel smiles)|Good!|I miss Sariel, though...
 (オーリエルは笑みを浮かべている)|悪くないですよ！|サリエルに会えないのは寂しいですが……
+
+
+RMNME of CHTRNME the ENMYNME
+ENMYNME の CHTRNME の RMNME
+
+The item is TTT, and will get looser as you progress.
+TTT 抜け出す過程で緩くなるだろう。
+somewhat tight
+ややきつく締まっている。
+rather tight
+きつく締まっている。
+especially tight
+とてもきつく締まっている。
+well-secured
+しっかりと固定されている。
+expertly secured
+まるで専門家に取り付けられたかのよう。
+You must first accept the quest before offering at the shrine.
+祈る前にクエストを受けなければならない。
