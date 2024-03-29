@@ -18162,6 +18162,53 @@ Wait, what? (PERCENT chance to avoid)
 待って、何！？(PERCENT の確率で拒否)
 (Shake your head and moan) (PERCENT chance to avoid)
 (首を横に振り叫ぶ)(PERCENT の確率で拒否)
+
+(The SPEAKER steps up to you)|Hey girl~|You happen to be a fan of latex?
+(SPEAKER が近寄ってきた)|ねえ、そこのキミ！|ラテックスは好き？
+(The SPEAKER smiles)|Then would you like to try on this RESTRAINT?
+(SPEAKER は笑みを浮かべている)|RESTRAINT を着てみない？
+(The SPEAKER chuckles)|Tight and shiny!
+(The SPEAKER はクスクスと笑っている)|似合ってるよ！
+(The SPEAKER frowns)|Aww...
+(The SPEAKER は残念そうにしている)|えぇ……
+The SPEAKER shrugs)|Alright. Sorry I asked.
+(The SPEAKER は不機嫌そうにしている)|そっか、ごめんね。
+(The SPEAKER grins and reaches for a RESTRAINT)|Well, too bad--
+(The SPEAKER は残酷な笑みを浮かべると、 RESTRAINT を取り出した)|そっか～……
+(The SPEAKER grins)|I wasn't offering you a choice...|I was asking if you would LIKE it, hehe~
+(The SPEAKER は厭らしい笑みを浮かべている)|まあ、あなたに選択肢はないんだけどね。|これを気に入ってくれるかどうか訊いただけだし。
+(The SPEAKER frowns)|...You're fast!
+(The SPEAKER は口をとがらせている)|は、速すぎ……
+(The SPEAKER smiles)|That's right~
+(The SPEAKER は笑みを浮かべている)|いいね～。
+(The SPEAKER restrains you and clicks a lock on)|There! Nice and tight!
+(The SPEAKER に素早く拘束され、錠を取り付けられた)|よし！いい感じだね！
+
+Why of course!
+うん、好き。
+(Nod happily)
+(頷く)
+Not really.
+別に。
+
+That sounds fun!
+いいわね。
+(Nod again)
+(再度頷く)
+No, I don't want that!
+いや、それはやめておく
+(Shake your head)
+(首を横に振る)
+
+Okay, fine...
+わかった……
+
+Wait, what? (PERCENT chance to avoid)
+待って、何！？(PERCENT の確率で拒否)
+(Shake your head and moan) (PERCENT chance to avoid)
+(首を横に振り叫ぶ)(PERCENT の確率で拒否)
+
+
 (The SPEAKER nervously walks up to you)|Excuse me miss...|Can you help me out?
 (SPEAKER はおずおずと歩み寄ってきた)|あの……ちょっとよろしいでしょうか？|ちょっと手助けをしてほしいのですが……
 (The SPEAKER blushes deeply)|I managed to unlock my RESTRAINT,|but my mistress expects me to wear it!|Do you mind wearing it instead?
