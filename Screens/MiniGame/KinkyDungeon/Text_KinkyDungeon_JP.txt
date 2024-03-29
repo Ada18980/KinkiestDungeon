@@ -7506,6 +7506,14 @@ A skintight suit that's stretched on tight. It adheres to latex restraints makin
 首から下を覆う青いゴム製のキャットスーツ。他のゴム製の拘束具にくっつくため、抜け出すのが困難になる。
 Blue latex is silky smooth, very stretchy, and very good at adhering to itself.
 ブルーラテックスはシルクのように滑らかで、非常に伸縮性があり、接着力が非常に優れている。
+
+Heavy Latex Catsuit
+
+A skintight suit that's stretched on tight and made of thick latex. It adheres to latex restraints making struggling more difficult.
+首から下を覆う青いゴム製の厚いキャットスーツ。他のゴム製の拘束具にくっつくため、抜け出すのが困難になる。
+Blue latex is silky smooth, very stretchy, and very good at adhering to itself. Its thickness makes it particularly resistant to cutting.
+ブルーラテックスはシルクのように滑らかで、非常に伸縮性があり、接着力が非常に優れている。生地が分厚く、切断に強い。
+
 Latex Mittens
 ラテックスのミトン
 A pair of mittens keep your hands out of trouble. They adhere to latex restraints making struggling more difficult.
