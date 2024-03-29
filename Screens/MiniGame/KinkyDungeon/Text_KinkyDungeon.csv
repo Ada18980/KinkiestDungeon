@@ -10994,6 +10994,31 @@ dOfferLatexForce_No,"Wait, what? (PERCENT chance to avoid)"
 dOfferLatexForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
 
 
+rOfferLatex2,"(The SPEAKER nervously walks up to you)|Excuse me miss...|Are you a fan of latex by chance?"
+rOfferLatex2Yes,"(The SPEAKER blushes deeply)|Then would you like to try on this RESTRAINT?"
+rOfferLatex2Yes_Yes,"(The SPEAKER smiles)|You look so good in that!"
+rOfferLatex2Yes_No,"(The SPEAKER frowns)|Aww..."
+rOfferLatex2No,"(The SPEAKER blushes)|Okay... sorry I asked."
+rOfferLatex2Force,"(The SPEAKER grins and reaches for a RESTRAINT)|Well, too bad--"
+rOfferLatex2ForceYes,"(The SPEAKER grins)|I wasn't offering you a choice...|I was asking if you would LIKE it, hehe~"
+rOfferLatex2Force_No,"(The SPEAKER frowns)|...You're fast!"
+rOfferLatex2Force_Yes,"(The SPEAKER smiles)|That's right~"
+rOfferLatex2Force_Failure,"(The SPEAKER restrains you and clicks a lock on)|There! Nice and tight!"
+
+dOfferLatex2_Yes,"Why of course!"
+dOfferLatex2_YesGag,"(Nod happily)"
+dOfferLatex2_No,"Not really."
+dOfferLatex2_NoGag,"(Shake your head)"
+
+dOfferLatex2Yes_Yes,"That sounds fun!"
+dOfferLatex2Yes_YesGag,"(Nod again)"
+dOfferLatex2Yes_No,"No, I don't want that!"
+dOfferLatex2Yes_NoGag,"(Shake your head)"
+
+dOfferLatex2Force_Yes,"Okay, fine..."
+dOfferLatex2Force_YesGag,"(Moan and giggle)"
+dOfferLatex2Force_No,"Wait, what? (PERCENT chance to avoid)"
+dOfferLatex2Force_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
 
 rOfferChastity,"(The SPEAKER nervously walks up to you)|Excuse me miss...|Can you help me out?"
 rOfferChastityYes,"(The SPEAKER blushes deeply)|I managed to unlock my RESTRAINT,|but my mistress expects me to wear it!|Do you mind wearing it instead?"

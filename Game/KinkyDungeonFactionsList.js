@@ -870,7 +870,6 @@ let KinkyDungeonFactionRelationsBase = {
 		Nevermere: -0.55,
 		Apprentice: -0.55,
 		Dressmaker: -0.4,
-		Witch: 0.4,
 		Elemental: -0.4,
 		Dragon: -1.0,
 		Maidforce: -1.0,
@@ -943,8 +942,6 @@ let KinkyDungeonFactionRelationsBase = {
 		Chase: -1,
 
 		Apprentice: -0.55,
-		Witch: 0.4,
-		Dressmaker: 0.4,
 		Dragon: -1.0,
 	},
 	"Plant": {

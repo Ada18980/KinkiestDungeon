@@ -3178,6 +3178,10 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 							&& KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 7))) {
 					for (let f of KDGameData.HostileFactions) {
 						let f2 = KDGetFaction(enemy);
+						if ((KDGameData.PrisonerState == 'jail' || KDGameData.PrisonerState == 'parole')
+							&& KDFactionRelation(f2, "Jail") > -0.05 && KDFactionRelation(f, "Jail") < 0) {
+							continue;
+						}
 						if ((f2 != "Player") && (
 							// Either the player has aggroed second faction for some reason or this faction is dishonorable
 							KDGetHonor(f, f2) < 0
@@ -3418,6 +3422,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	}
 
 	if (KDOverrideIgnore(enemy, player)) AIData.ignore = false;
+	if (player?.player && KinkyDungeonFlags.get("forceIgnore")) AIData.ignore = true;
 
 	AIData.MovableTiles = KinkyDungeonMovableTilesEnemy;
 	AIData.AvoidTiles = "" + KDDefaultAvoidTiles;
@@ -4568,7 +4573,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					if (player.player && !KDEnemyHasFlag(enemy, "noleash")) {
 						if (player.player
 							&& AIData.playerDist <= AIData.range
-							&& (AIData.aggressive || AIData.attack.includes("Pull") || enemy.IntentLeashPoint)
+							&& ((AIData.aggressive || AIData.attack.includes("Pull") && !enemy.playWithPlayer) || enemy.IntentLeashPoint)
 							&& ( // If we are already leashing or pulling or we are a leashing type that is able to leash
 								((!enemy.Enemy.noLeashUnlessExhausted || !KinkyDungeonHasWill(0.1))
 								&& enemy.Enemy.tags
@@ -4810,7 +4815,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 											KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonLeashGrab").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff8800", 1);
 										}
 									}
-								} else {
+								} else if (!(player?.player && KinkyDungeonFlags.get("forceMoved"))) {
 									// Simple pull
 									let path = KinkyDungeonFindPath(player.x, player.y, leashPos.x, leashPos.y, true, false, false, KinkyDungeonMovableTilesEnemy, undefined, undefined, undefined, enemy);
 									let pullDist = enemy.Enemy.pullDist ? enemy.Enemy.pullDist : 1;
@@ -4824,8 +4829,11 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 											}
 											KDGameData.KinkyDungeonLeashedPlayer = 2;
 											KDGameData.KinkyDungeonLeashingEnemy = enemy.id;
-											player.x = leashPoint.x;
-											player.y = leashPoint.y;
+
+											if (player.player)
+												KDMovePlayer(leashPoint.x, leashPoint.y, false);
+											else
+												KDMoveEntity(player, leashPoint.x, leashPoint.y, false);
 											let msg = "KinkyDungeonLeashGrab";
 											if (enemy.Enemy.pullMsg) msg = "Attack" + enemy.Enemy.name + "Pull";
 

@@ -47,6 +47,7 @@ let KDIntentEvents = {
 			enemy.playWithPlayer = 12 + Math.floor(KDRandom() * 12);
 			enemy.playWithPlayerCD = 30;
 			KinkyDungeonSetEnemyFlag(enemy, "playstart", 7);
+			KDResetAllIntents(true);
 			return KDSettlePlayerInFurniture(enemy, AIData);
 		},
 		maintain: (enemy, delta) => {
@@ -229,6 +230,8 @@ let KDIntentEvents = {
 				KDBreakTether(KinkyDungeonPlayerEntity);
 				AIData.defeat = true;
 			}
+			KDResetAllAggro();
+			KDResetAllIntents();
 			return false;
 		},
 	},
@@ -602,6 +605,8 @@ let KDIntentEvents = {
 			enemy.IntentLeashPoint = null;
 			let res = KDSettlePlayerInFurniture(enemy, AIData, ["callGuardJailerOnly"]);
 			if (res) {
+				KDResetAllAggro();
+				KDResetAllIntents();
 				for (let e of KDMapData.Entities) {
 					if (e.hostile < 9000) e.hostile = 0;
 					if (e.attackPoints > 0) e.attackPoints = 0;
