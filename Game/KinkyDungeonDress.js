@@ -796,7 +796,7 @@ function KinkyDungeonWearForcedClothes(C, restraints) {
 
 					if (!canReplace) {return;}
 					if (C == KinkyDungeonPlayer && KDProtectedCosplay.includes(dress.Group)){return;}
-					let filters = Object.assign({}, dress.Filters || {});
+					let filters = dress.Filters ? JSON.parse(JSON.stringify(dress.Filters)) : {};
 					/** @type string|string[] */
 					let color = (typeof dress.Color === "string") ? [dress.Color] : dress.Color;
 					let faction = inv.faction;
@@ -823,7 +823,7 @@ function KinkyDungeonWearForcedClothes(C, restraints) {
 					let item = KDInventoryWear(C, dress.Item, dress.Group, inv.name, color, filters);
 
 					if (dress.Property) {
-						item.Property = Object.assign(item.Property || {}, dress.Property);
+						item.Property = Object.assign(item.Property ? JSON.parse(JSON.stringify(item.Property)) : {}, JSON.parse(JSON.stringify(dress.Property)));
 					}
 					if (dress.OverridePriority) {
 						if (item) {
@@ -842,7 +842,7 @@ function KinkyDungeonWearForcedClothes(C, restraints) {
 
 				if (dress.Group && !canReplace) {return;}
 				if (dress.Group && C == KinkyDungeonPlayer && KDProtectedCosplay.includes(dress.Group)){return;}
-				let filters = Object.assign({}, dress.Filters || {});
+				let filters =  dress.Filters ? JSON.parse(JSON.stringify(dress.Filters)) : {};
 				let faction = inv.faction;
 				if (inv.faction) {
 					if (StandalonePatched) {
@@ -962,7 +962,9 @@ function KDApplyItem(C, inv, tags) {
 
 		// faction color system
 		let color = (typeof restraint.Color === "string") ? [restraint.Color] : restraint.Color;
-		let filters = Object.assign({}, restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters || {});
+		let filters =  (restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters) ?
+			JSON.parse(JSON.stringify(restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters))
+			: {};
 
 		if (restraint.factionFilters && faction && KDGetFactionFilters(faction)) {
 			for (let f of Object.entries(restraint.factionFilters)) {

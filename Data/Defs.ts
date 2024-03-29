@@ -1059,6 +1059,9 @@ let LayerGroups = {
 
 		"GloveLeft",
 		"GloveRight",
+
+		"MittenRight",
+		"MittenLeft",
 	]),
 
 	"RopeFore": ToMap([

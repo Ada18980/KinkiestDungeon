@@ -38,6 +38,11 @@ RC1
 RC2
 - Fixed latex catsuit stacking bug
 - Added heavy latex catsuit
+RC3
+- Fixed bug involving restraint looping when applied by enemies
+- Latex catsuit should appear in latex bondage machines
+- Latex catsuit should be applied by more enemy types
+- Protoslime level reduced (was not supposed to be higher than regular slime!)
 
 5.2.19
 - Restriction now affects get up time

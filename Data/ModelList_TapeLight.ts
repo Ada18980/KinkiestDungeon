@@ -88,7 +88,7 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Tape", "FlattenedUnderbust"],
 	Layers: ToLayerMap([
-		{ Name: "Top", Layer: "WrappingTorsoMid", Pri: -4,
+		{ Name: "Top", Layer: "WrappingTorsoMid", Pri: 29,
 			Poses: ToMap(["Boxtie", "Crossed", "Wristtie"]),
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 			InheritColor: "Tape",
@@ -104,7 +104,7 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
 	Layers: ToLayerMap([
-		{ Name: "ArmLeft", Layer: "WrapArmLeft", Pri: 30, // BindArmLeft
+		{ Name: "ArmLeft", Layer: "WrapArms", Pri: 30, // BindArmLeft
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmLeft", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -114,6 +114,8 @@ AddModel({
 			DisplacementMorph: {Crossed: "Crossed", Boxtie: "Boxtie", Wristtie: "Wristtie"},
 			DisplacementInvariant: true,
 			DisplaceAmount: 100,
+
+			NoOverride: true,
 
 			NoDisplace: true,
 			InheritColor: "Tape",
@@ -128,7 +130,7 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
 	Layers: ToLayerMap([
-		{ Name: "ArmRight", Layer: "WrapArmRight", Pri: 30, // BindArmRight
+		{ Name: "ArmRight", Layer: "WrapArms", Pri: 30, // BindArmRight
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmRight", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -140,6 +142,7 @@ AddModel({
 			DisplaceAmount: 100,
 
 			NoDisplace: true,
+			NoOverride: true,
 			InheritColor: "Tape",
 		},
 	])
@@ -167,23 +170,28 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Tape", "FlattenedUnderbust"],
 	Layers: ToLayerMap([
-		{ Name: "TopStrap", Layer: "WrappingTorsoMid", Pri: -4,
+		{ Name: "TopStrap", Layer: "WrappingChest", Pri: 32,
 			Poses: ToMap(["Boxtie", "Crossed", "Wristtie"]),
 			GlobalDefaultOverride: ToMap(["Crossed"]),
 			InheritColor: "Tape",
+			NoOverride: true,
 		},
 		{ Name: "ChestStrap", Layer: "WrappingChest", Pri: 35,
 			Invariant: true,
 			InheritColor: "Tape",
+			NoOverride: true,
+			TieToLayer: "TopStrap",
 
 			//CrossHideOverride: true,
 			//HideOverrideLayerMulti: ["ChestBinding"],
 			//ForceSingleOverride: true,
 		},
-		{ Name: "ArmStrapLeft", Layer: "WrappingTorsoOver", Pri: 35, // BindArmLeft
+		{ Name: "ArmStrapLeft", Layer: "WrappingChest", Pri: 35, // BindArmLeft
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmLeft", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			NoOverride: true,
+			TieToLayer: "TopStrap",
 
 			DisplacementSprite: "TapeTopLeft",
 			DisplaceLayers: ToMap(["ArmsAllAndHarness"]),
@@ -194,10 +202,12 @@ AddModel({
 			NoDisplace: true,
 			InheritColor: "Tape",
 		},
-		{ Name: "ArmStrapRight", Layer: "WrappingTorsoOver", Pri: 35, // BindArmRight
+		{ Name: "ArmStrapRight", Layer: "WrappingChest", Pri: 35, // BindArmRight
 			Poses: ToMap(["Boxtie", "Front", "Crossed", "Up", "Wristtie"]),
 			SwapLayerPose: {Front: "BindForeArmRight", Crossed: "BindCrossArmRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			NoOverride: true,
+			TieToLayer: "TopStrap",
 
 			DisplacementSprite: "TapeTopRight",
 			DisplaceLayers: ToMap(["ArmsAllAndHarness"]),

@@ -185,19 +185,19 @@ let KDTileUpdateFunctionsLocal = {
 let KDBondageMachineFunctions = {
 	"Latex": {
 		eligible_player: (tile, x, y, entity) => {
-			return KDGetRestraintsEligible({tags: ['latexEncase']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+			return KDGetRestraintsEligible({tags: ['latexEncase', 'latexCatsuits']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
 		},
 		function_player: (tile, delta, x, y, entity) => {
-			KDBasicRestraintsMachine_Player(['latexEncase'], 2, "KDEncasement");
+			KDBasicRestraintsMachine_Player(['latexEncase', 'latexCatsuits'], 2, "KDEncasement");
 			return false;
 		},
 		eligible_enemy: (tile, x, y, entity) => {
 			return true;
 		},
 		function_enemy: (tile, delta, x, y, entity) => {
-			KDTieUpEnemy(entity, 4.0, "Slime", "glue");
+			KDTieUpEnemy(entity, 4.0, "Latex", "glue");
 			if (KDBoundEffects(entity) > 2 ) {
-				KDTieUpEnemy(entity, 4.0, "Slime", "glue");
+				KDTieUpEnemy(entity, 4.0, "Latex", "glue");
 				KinkyDungeonApplyBuffToEntity(entity, KDEncasedDoll);
 			}
 			if (KDBoundEffects(entity) < 1 ) {
