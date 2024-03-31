@@ -3416,7 +3416,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 				* augMult
 				* KinkyDungeonGetLockMult(newLock, undefined, curse, restraint)
 			) : 0;
-		if (!allowOverpower || (power * 1.1 < compPower)) {
+		if (!allowOverpower || (Math.max(0.99, power * 1.1) < compPower)) {
 			if (bypasses())
 				return true; // Recursion!!
 		}

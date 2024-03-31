@@ -2070,7 +2070,6 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 		let noRepHit = false;
 		KinkyDungeonSendEvent("death", {enemy: enemy});
 		KDRemoveEntity(enemy, true, true, false, E);
-		KinkyDungeonSendEvent("kill", {enemy: enemy, capture: KDBoundEffects(enemy) > 3 && enemy.boundLevel > 0 && KDHostile(enemy) && !enemy.Enemy.tags.nocapture});
 		if (KDBoundEffects(enemy) > 3 && enemy.boundLevel > 0 && KDHostile(enemy) && !enemy.Enemy.tags.nocapture && enemy.playerdmg) {
 			KDDropStolenItems(enemy);
 			if (!KinkyDungeonCapture(enemy)) noRepHit = true;
@@ -2183,6 +2182,9 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 				KDOndeath[o.type](enemy, o);
 			}
 		}
+
+		KinkyDungeonSendEvent("kill", {enemy: enemy, capture: KDBoundEffects(enemy) > 3 && enemy.boundLevel > 0 && KDHostile(enemy) && !enemy.Enemy.tags.nocapture});
+
 		KDDropItems(enemy);
 
 		return true;
@@ -5311,8 +5313,8 @@ function KinkyDungeonNoEnemy(x, y, Player) {
  * @param {entity} enemy
  * @returns {boolean}
  */
-function KDIsImmobile(enemy) {
-	return enemy && (enemy.Enemy.immobile || enemy.Enemy.tags?.immobile || KDEnemyHasFlag(enemy, "imprisoned"));
+function KDIsImmobile(enemy, strict) {
+	return enemy && (enemy.Enemy.immobile || (!strict && enemy.Enemy.tags?.immobile) || KDEnemyHasFlag(enemy, "imprisoned"));
 }
 
 // e = potential sub

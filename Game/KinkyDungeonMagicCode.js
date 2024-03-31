@@ -168,7 +168,7 @@ let KinkyDungeonSpellSpecials = {
 					let failPush = true;
 					if (result == "confirm" || result == "dialogue") return "Fail";
 					if (result == "hit" || result == "capture") {
-						if (powerful && KinkyDungeonNoEnemy(push_x, push_y) && KDIsMovable(push_x, push_y)) {
+						if (!KDIsImmobile(en, true) && powerful && KinkyDungeonNoEnemy(push_x, push_y) && KDIsMovable(push_x, push_y)) {
 							let xx = en.x;
 							let yy = en.y;
 							KDMoveEntity(en, push_x, push_y, false);

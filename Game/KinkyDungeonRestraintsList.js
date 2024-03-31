@@ -6,7 +6,7 @@ let KDKeyedLocks = ["Red", "White", "Blue"];
 // LinkableBy array templates
 let KDFeetRopeLink = ["Ties", "Hogties", "Wrapping", "Encase", "Belts"];
 let KDFormFitting = ["Socks", "Gloves"];
-let KDHarnessLink = ["Wrapping", "Encase", "HeavyCorsets", "Corsets", "ArmbinderHarness", "Ties", "Hogties", "Link", "Belts", "Harnesses"];
+let KDHarnessLink = ["Wrapping", "Encase", "HeavyCorsets", "Corsets", "ArmbinderHarness", "Ties", "Hogties", "Link", "Belts", "Belt", "Harnesses"];
 let KDCorsetLink = ["Wrapping", "Encase", "Harnesses", "ArmbinderHarness", "Ties", "Link", "Belts", "Belt"];
 let KDBindable = ["Wrapping", "Encase", "Harnesses", "Belts", "Belt", "Tape", "Ties", "Hogties", "Link", "Cuffs", "Boxties", "Wristties", "Crossties"]; // Things that can be wrapped in various restraints
 let KDBindableMinusCuffs = KDBindable.filter((b) => {return b != "Cuffs";});
@@ -4592,6 +4592,7 @@ const KinkyDungeonRestraints = [
 			BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
 		},
 
+		accessible: true,
 		cloneTag: "wardenCuffs",
 
 		debris: "Chains",

@@ -95,11 +95,20 @@ let KDCurses = {
 			return 1;
 		},
 		condition: (item) => {
-			return KinkyDungeonSpellPoints > 7;
+			let amount = KinkyDungeonStatsChoice.get("randomMode") ? 3 : 8;
+			return KinkyDungeonSpellPoints >= amount;
 		},
 		remove: (item, host) => {
-			KinkyDungeonSpellPoints -= 8;
-		}
+			let amount = KinkyDungeonStatsChoice.get("randomMode") ? 3 : 8;
+			KinkyDungeonSpellPoints -= amount;
+		},
+		customInfo: (item, Curse) => {
+			let amount = KinkyDungeonStatsChoice.get("randomMode") ? 3 : 8;
+			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfo" + Curse)
+				.replace("RestraintName", KDGetItemName(item))//TextGet("Restraint" + KDRestraint(item).name))
+				.replace("AMNT", "" + (amount)),
+			"#ffffff", 2);
+		},
 	},
 	"CursedCollar": {
 		powerMult: 10,
