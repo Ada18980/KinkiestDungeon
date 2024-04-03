@@ -2977,21 +2977,38 @@ function KDDrawStruggleGroups() {
 					let struggleData = {};
 					KinkyDungeonStruggle(KDRestraint(item).Group, StruggleType, data.struggleIndex, true, struggleData);
 
+					if (struggleData.lockType && (StruggleType == "Unlock" && !struggleData.lockType.canUnlock(struggleData))
+						|| (StruggleType == "Pick" && struggleData.lockType && !struggleData.lockType.canPick(struggleData))) {
+						// Nope
+					} else {
+						let O = lastO + 1;
+						DrawTextKD(TextGet("KDItemDifficulty").replace("AMNT",
+							Math.max(0, Math.round(100 * (1 - struggleData.origEscapeChance + struggleData.escapePenalty + Math.max(0, struggleData.extraLim, struggleData.limitChance)))) + ""
+						).replace("ESCP", TextGet("KDEscape" + StruggleType)),
+						530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150); O++;
+						let a = Math.min(1, Math.max(-1, struggleData.escapeChance - Math.max(0, struggleData.extraLim, struggleData.limitChance)));
+						let b = Math.min(1, Math.max(-1, struggleData.escapeChance));
+						let amnt = Math.round(100 * a)
+							+ "-"
+							+ Math.round(100 * b);
+						if (a < 0 && b < 0)
+							amnt = Math.round(100 * Math.max(a, b)) + "";
+						else if (a == b)
+							amnt = Math.round(100 * a) + "";
+						else if (a < 0 && b >= 0) {
+							a = Math.max(0, a);
+							amnt = Math.round(100 * a)
+								+ "-"
+								+ Math.round(100 * b);
+						}
+						DrawTextKD(TextGet("KDItemStruggle").replace("AMNT",
+							amnt
+						).replace("ESCP", TextGet("KDEscape" + StruggleType)),
+						530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150); O++;
 
 
-					let O = lastO;
-					DrawTextKD(TextGet("KDItemDifficulty").replace("AMNT",
-						Math.round(100 * (1 - struggleData.origEscapeChance + struggleData.escapePenalty + Math.max(0, struggleData.extraLim, struggleData.limitChance))) + ""
-					), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150); O++;
-					let amnt = Math.round(100 * Math.max(0, struggleData.escapeChance - Math.max(0, struggleData.extraLim, struggleData.limitChance))) + "-" + Math.round(100 * Math.max(0, struggleData.escapeChance));
-					if (Math.max(0, struggleData.escapeChance - Math.max(0, struggleData.extraLim, struggleData.limitChance)) == Math.max(0, struggleData.escapeChance))
-						amnt = Math.round(100 * Math.max(0, struggleData.escapeChance)) + "";
-					DrawTextKD(TextGet("KDItemStruggle").replace("AMNT",
-						amnt
-					), 530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150); O++;
-
-
-					lastO = O - 1;
+						lastO = O - 1;
+					}
 				}
 
 

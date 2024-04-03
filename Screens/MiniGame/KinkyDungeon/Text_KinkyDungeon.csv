@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.20"
+KDVersionStr,"5.2.21"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -20736,5 +20736,11 @@ RestraintWardenWristLinkDesc,A very short chain connecting your wrist cuffs toge
 RestraintWardenWristLinkDesc2,"An intense, albeit temporary punishment for breaking the rules."
 
 
-KDItemDifficulty,Item Difficulty: AMNT%
-KDItemStruggle,Effective Power: AMNT%
+KDItemDifficulty,ESCP Difficulty: AMNT
+KDItemStruggle,ESCP Power: AMNT%
+
+KDEscapeStruggle,Struggle
+KDEscapeRemove,Remove
+KDEscapeUnlock,Unlock
+KDEscapePick,Pick
+KDEscapeCut,Cut

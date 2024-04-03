@@ -1625,13 +1625,26 @@ let KDEventMapInventory = {
 			KinkyDungeonSendTextMessage(6, TextGet("KDDivineBelt2Deny"), "#ffff88", 4);
 		},
 		"ForcedOrgasmPower": (e, item, data) => {
-			data.eventBonus += e.power;
+			if (KDGameData.CurrentVibration) {
+				let locations = KDSumVibeLocations();
+				if (KDGetVibeLocation(item)?.some((str) => {
+					return locations.includes(str);
+				}))
+					data.eventBonus += e.power;
+			}
 		},
 		"ForcedOrgasmMin": (e, item, data) => {
-			if (data.amount < e.power) {
-				data.amount = e.power;
-				KinkyDungeonSendTextMessage(6, TextGet("KDForcedOrgasmMin"), "#ffaaaa", 5);
+			if (KDGameData.CurrentVibration) {
+				let locations = KDSumVibeLocations();
+				if (KDGetVibeLocation(item)?.some((str) => {
+					return locations.includes(str);
+				}))
+					if (data.amount < e.power) {
+						data.amount = e.power;
+						KinkyDungeonSendTextMessage(6, TextGet("KDForcedOrgasmMin"), "#ffaaaa", 5);
+					}
 			}
+
 		},
 	},
 	"hit": {
