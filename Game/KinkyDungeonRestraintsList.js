@@ -5568,7 +5568,7 @@ const KinkyDungeonRestraints = [
 			},
 			[],
 			{
-				Struggle: 0.15,
+				Struggle: -0.15,
 				Cut: -0.45,
 				Remove: -0.05,
 			},

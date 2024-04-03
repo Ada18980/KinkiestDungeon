@@ -2262,6 +2262,49 @@ interface VibeMod {
 	denyChanceLikelyMod?: number,
 }
 
+interface KDStruggleData {
+	minSpeed: number;
+	handBondage: number;
+	armsBound: boolean;
+	handsBound: boolean;
+	failSuffix: string;
+	restraint: item,
+	struggleType: string,
+	struggleGroup: string,
+	escapeChance: number,
+	origEscapeChance: number,
+	helpChance: number,
+	limitChance: number,
+	strict: number,
+	cutSpeed: number,
+	affinity: string,
+	hasAffinity: boolean,
+	restraintEscapeChance: number,
+	cost: number,
+	noise: number,
+	wcost: number,
+	escapePenalty: number,
+	willEscapePenalty: number,
+	canCut: boolean,
+	canCutMagic: boolean,
+	toolBonus: number,
+	toolMult: number,
+	buffBonus: number,
+	buffMult: number,
+	restriction: number,
+	struggleTime: number,
+	speedMult: number,
+	escapeSpeed: number,
+	query: boolean,
+	maxLimit: number,
+	result: string,
+	lockType: KDLockType,
+
+	extraLim: number,
+	extraLimPenalty: number,
+	extraLimThreshold: number,
+}
+
 interface KDInventoryActionDef {
 	text?: (player: entity, item: item) => string;
 	label?: (player: entity, item: item) => string;

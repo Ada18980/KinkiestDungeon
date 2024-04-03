@@ -19958,7 +19958,7 @@ KDChestTooltip,"Owned by: "
 
 RestraintWardenBelt,Warden's Belt
 RestraintWardenBeltDesc,"You may go on your way, but only as long your freedom is useful to her."
-RestraintWardenBeltDesc2,"A golden belt that marks you as part of someone's collection. Each time you break a spell orb, a collector is spawned to punish you."
+RestraintWardenBeltDesc2,"A golden belt that enforces respect for the Goddesses. Breaking spell orbs results in a punishment."
 
 RestraintWardenBelt2,Belt of Privilege
 RestraintWardenBelt2Desc,"You've defeated the Warden, proving that you are worthy to take what you want."
@@ -20734,3 +20734,7 @@ RestraintWardenElbowLinkDesc2,You've stolen something of great value. Now you mu
 RestraintWardenWristLink,Warden's Wrist Chain
 RestraintWardenWristLinkDesc,A very short chain connecting your wrist cuffs together.
 RestraintWardenWristLinkDesc2,"An intense, albeit temporary punishment for breaking the rules."
+
+
+KDItemDifficulty,Item Difficulty: AMNT%
+KDItemStruggle,Effective Power: AMNT%

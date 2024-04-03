@@ -189,7 +189,7 @@ let KDDialogueTriggers = {
 	}),
 	"TheWarden": KDBossTrigger("TheWarden", ["TheWarden1", "TheWarden2"]),
 	"TheWardenLose": KDBossLose("TheWardenLose", ["TheWarden1", "TheWarden2"], undefined, () => {
-		return KinkyDungeonPlayerTags.get("Furniture"); // Player in cage
+		return KinkyDungeonPlayerTags.get("Furniture") && !KinkyDungeonHasWill(0.1); // Player in cage
 	}),
 	"DollmakerLose1": KDBossLose("DollmakerLose", ["DollmakerBoss1"], ["leatherRestraintsHeavy", "leatherRestraints", "highsec", "leashing"]),
 	"DollmakerLose2": KDBossLose("DollmakerLose", ["DollmakerBoss2", "DollmakerBoss3"], ["controlharness", "cyberdollrestraints", "dollmakerrestraints"]),
