@@ -30,6 +30,11 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.2.21
+- Various bug fixes
+- Fixed Strong, Flexible, Locksmith, Clueless, Weak, and Inflexible. Now they actually work on struggling >.<
+- Added difficulty and effective struggle power display to restraint hover over
+
 5.2.20
 RC1
 - Added obstacles to dragon elevator halls
