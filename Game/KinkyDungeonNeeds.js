@@ -55,7 +55,7 @@ function KDNeedsPlaySelf(data, mult = 1) {
  */
 function KDNeedsOrgasm(data, mult = 1) {
 	KinkyDungeonChangeRep("Passion", (KDNeedsParams.PassionPerOrgasm + 0.01*(1 + 2 * KDRandom())*KDNeedsParams.PassionPerOrgasm*(50 - KinkyDungeonGoddessRep.Passion)));
-	KinkyDungeonChangeRep("Frustration", -(KDNeedsParams.FrustrationPerOrgasm + 0.01*(1 + 2 * KDRandom())*KDNeedsParams.FrustrationPerOrgasm*(KinkyDungeonGoddessRep.Frustration + 50)));
+	KinkyDungeonChangeRep("Frustration", (KDNeedsParams.FrustrationPerOrgasm + 0.01*(1 + 2 * KDRandom())*KDNeedsParams.FrustrationPerOrgasm*(KinkyDungeonGoddessRep.Frustration + 50)));
 }
 
 /**

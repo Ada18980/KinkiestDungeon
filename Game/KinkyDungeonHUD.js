@@ -2755,94 +2755,99 @@ function KDDrawStruggleGroups() {
 
 			let StruggleType = "";
 
-			if (item && (MouseIn(((!sg.left) ? (260) : 0), y, 500, (ButtonWidth))
-				|| KinkyDungeonDrawStruggle == KDDrawStruggleEnum.NONE
-				|| KinkyDungeonDrawStruggle == KDDrawStruggleEnum.STRUGGLE)) {
-				//let r = KDRestraint(item);
+			let renderedButtons = false;
+			let renderButtons = () => {
+				if (item && (MouseIn(((!sg.left) ? (260) : 0), y, 500, (ButtonWidth))
+					|| KinkyDungeonDrawStruggle == KDDrawStruggleEnum.NONE
+					|| KinkyDungeonDrawStruggle == KDDrawStruggleEnum.STRUGGLE)) {
 
-				if (!KinkyDungeonDrawStruggleHover) {
-					KinkyDungeonDrawStruggleHover = true;
-				}
+					renderedButtons = true;
+					//let r = KDRestraint(item);
 
-
-				let buttons = ["Struggle", "CurseInfo", "CurseUnlock", "Cut", "Remove", "Pick"];
-
-				if (KinkyDungeonControlsEnabled())
-					for (let button_index = 0; button_index < buttons.length; button_index++) {
-						let btn = buttons[sg.left ? button_index : (buttons.length - 1 - button_index)];
-
-						if (btn == "Struggle") {
-							if (DrawButtonKDEx("sgStruggle" + button_index + sg.group, (b) => {
-								if ((KDGetCurse(item))) KDSendInput("struggleCurse", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});
-								else {
-									if (KinkyDungeonFastStruggle) {
-										KinkyDungeonFastStruggleGroup = sg.group;
-										KinkyDungeonFastStruggleType = "Struggle";
-									} else
-										KDSendInput("struggle", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], type: "Struggle"});
-										//KinkyDungeonStruggle(sg, "Struggle");
-								}
-								return true;
-							}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth,
-							"", "#ffffff", KinkyDungeonRootDirectory + "Struggle.png", "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true}))
-								StruggleType = btn;
-							i++;
-						} else if ((KDGetCurse(item)) && btn == "CurseInfo") {
-							DrawButtonKDEx("sgCurseInfo" + button_index + sg.group, (b) => {
-								KinkyDungeonCurseInfo(item, (KDGetCurse(item)));
-								return true;
-							}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "", "#ffffff", KinkyDungeonRootDirectory + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].customIcon_RemoveFailure) ? KDCurses[KDGetCurse(item)].customIcon_RemoveFailure : "CurseInfo") + ".png", "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true}); i++;
-						} else if ((KDGetCurse(item)) && btn == "CurseUnlock" && KinkyDungeonCurseAvailable(item, (KDGetCurse(item)))) {
-							DrawButtonKDEx("sgCurseUnlock" + button_index + sg.group, (b) => {
-								KDSendInput("curseUnlock", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});
-								return true;
-							}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "", "#ffffff", KinkyDungeonRootDirectory + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess) ? KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess : "CurseUnlock") + ".png", "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true}); i++;
-						} else if (!(KDGetCurse(item)) && !sg.blocked && btn == "Remove") {
-
-							let toolSprite = (item.lock) ? KDGetLockVisual(item) : "Buckle.png";
-							if (DrawButtonKDEx("sgRemove" + button_index + sg.group, (b) => {
-								if (KinkyDungeonFastStruggle) {
-									KinkyDungeonFastStruggleGroup = sg.group;
-									KinkyDungeonFastStruggleType = (item.lock) ? "Unlock" : "Remove";
-								} else
-									KDSendInput("struggle", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], type: (item.lock) ? "Unlock" : "Remove"});
-								return true;
-							}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "", "#ffffff", KinkyDungeonRootDirectory + toolSprite, "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true}))
-								StruggleType = (item.lock) ? "Unlock" : "Remove";
-							i++;
-						} else if (!(KDGetCurse(item)) && !sg.blocked && btn == "Cut"
-							&& (KinkyDungeonAllWeapon().some((inv) => {return KDWeapon(inv).light && KDWeapon(inv).cutBonus != undefined;}) || KinkyDungeonGetAffinity(false, "Sharp"))
-							&& !sg.noCut) {
-							let name = ((KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name && !KinkyDungeonPlayerDamage.unarmed) ? "Items/" + KinkyDungeonPlayerDamage.name + ".png" : "Cut.png");
-							if (
-								DrawButtonKDEx("sgCut" + button_index + sg.group, (b) => {
-									if (KinkyDungeonFastStruggle) {
-										KinkyDungeonFastStruggleGroup = sg.group;
-										KinkyDungeonFastStruggleType = "Cut";
-									} else
-										KDSendInput("struggle", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], type: "Cut"});
-										//KinkyDungeonStruggle(sg, "Cut");
-									return true;
-								}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "",
-										(sg.magic) ? "#8394ff" : "#ffffff", KinkyDungeonRootDirectory + name, "", undefined, true, (sg.magic) ? "#8394ff" : KDButtonColorIntense, undefined, undefined, {scaleImage: true}))
-								StruggleType = btn;
-							i++;
-						} else if (!(KDGetCurse(item)) && !sg.blocked && btn == "Pick" && KinkyDungeonLockpicks > 0 && item.lock) {
-							if (
-								DrawButtonKDEx("sgPick" + button_index + sg.group, (b) => {
-									if (KinkyDungeonFastStruggle) {
-										KinkyDungeonFastStruggleGroup = sg.group;
-										KinkyDungeonFastStruggleType = "Pick";
-									} else
-										KDSendInput("struggle", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], type: "Pick"});
-										//KinkyDungeonStruggle(sg, "Pick");
-									return true;
-								}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "", "#ffffff", KinkyDungeonRootDirectory + "UseTool.png", "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true}))
-								StruggleType = btn;
-							i++;
-						}
+					if (!KinkyDungeonDrawStruggleHover) {
+						KinkyDungeonDrawStruggleHover = true;
 					}
-			}
+
+
+					let buttons = ["Struggle", "CurseInfo", "CurseUnlock", "Cut", "Remove", "Pick"];
+
+					if (KinkyDungeonControlsEnabled())
+						for (let button_index = 0; button_index < buttons.length; button_index++) {
+							let btn = buttons[sg.left ? button_index : (buttons.length - 1 - button_index)];
+
+							if (btn == "Struggle") {
+								if (DrawButtonKDEx("sgStruggle" + button_index + sg.group, (b) => {
+									if ((KDGetCurse(item))) KDSendInput("struggleCurse", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});
+									else {
+										if (KinkyDungeonFastStruggle) {
+											KinkyDungeonFastStruggleGroup = sg.group;
+											KinkyDungeonFastStruggleType = "Struggle";
+										} else
+											KDSendInput("struggle", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], type: "Struggle"});
+											//KinkyDungeonStruggle(sg, "Struggle");
+									}
+									return true;
+								}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth,
+								"", "#ffffff", KinkyDungeonRootDirectory + "Struggle.png", "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true}))
+									StruggleType = btn;
+								i++;
+							} else if ((KDGetCurse(item)) && btn == "CurseInfo") {
+								DrawButtonKDEx("sgCurseInfo" + button_index + sg.group, (b) => {
+									KinkyDungeonCurseInfo(item, (KDGetCurse(item)));
+									return true;
+								}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "", "#ffffff", KinkyDungeonRootDirectory + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].customIcon_RemoveFailure) ? KDCurses[KDGetCurse(item)].customIcon_RemoveFailure : "CurseInfo") + ".png", "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true}); i++;
+							} else if ((KDGetCurse(item)) && btn == "CurseUnlock" && KinkyDungeonCurseAvailable(item, (KDGetCurse(item)))) {
+								DrawButtonKDEx("sgCurseUnlock" + button_index + sg.group, (b) => {
+									KDSendInput("curseUnlock", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});
+									return true;
+								}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "", "#ffffff", KinkyDungeonRootDirectory + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess) ? KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess : "CurseUnlock") + ".png", "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true}); i++;
+							} else if (!(KDGetCurse(item)) && !sg.blocked && btn == "Remove") {
+
+								let toolSprite = (item.lock) ? KDGetLockVisual(item) : "Buckle.png";
+								if (DrawButtonKDEx("sgRemove" + button_index + sg.group, (b) => {
+									if (KinkyDungeonFastStruggle) {
+										KinkyDungeonFastStruggleGroup = sg.group;
+										KinkyDungeonFastStruggleType = (item.lock) ? "Unlock" : "Remove";
+									} else
+										KDSendInput("struggle", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], type: (item.lock) ? "Unlock" : "Remove"});
+									return true;
+								}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "", "#ffffff", KinkyDungeonRootDirectory + toolSprite, "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true}))
+									StruggleType = (item.lock) ? "Unlock" : "Remove";
+								i++;
+							} else if (!(KDGetCurse(item)) && !sg.blocked && btn == "Cut"
+								&& (KinkyDungeonAllWeapon().some((inv) => {return KDWeapon(inv).light && KDWeapon(inv).cutBonus != undefined;}) || KinkyDungeonGetAffinity(false, "Sharp"))
+								&& !sg.noCut) {
+								let name = ((KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name && !KinkyDungeonPlayerDamage.unarmed) ? "Items/" + KinkyDungeonPlayerDamage.name + ".png" : "Cut.png");
+								if (
+									DrawButtonKDEx("sgCut" + button_index + sg.group, (b) => {
+										if (KinkyDungeonFastStruggle) {
+											KinkyDungeonFastStruggleGroup = sg.group;
+											KinkyDungeonFastStruggleType = "Cut";
+										} else
+											KDSendInput("struggle", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], type: "Cut"});
+											//KinkyDungeonStruggle(sg, "Cut");
+										return true;
+									}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "",
+											(sg.magic) ? "#8394ff" : "#ffffff", KinkyDungeonRootDirectory + name, "", undefined, true, (sg.magic) ? "#8394ff" : KDButtonColorIntense, undefined, undefined, {scaleImage: true}))
+									StruggleType = btn;
+								i++;
+							} else if (!(KDGetCurse(item)) && !sg.blocked && btn == "Pick" && KinkyDungeonLockpicks > 0 && item.lock) {
+								if (
+									DrawButtonKDEx("sgPick" + button_index + sg.group, (b) => {
+										if (KinkyDungeonFastStruggle) {
+											KinkyDungeonFastStruggleGroup = sg.group;
+											KinkyDungeonFastStruggleType = "Pick";
+										} else
+											KDSendInput("struggle", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], type: "Pick"});
+											//KinkyDungeonStruggle(sg, "Pick");
+										return true;
+									}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "", "#ffffff", KinkyDungeonRootDirectory + "UseTool.png", "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true}))
+									StruggleType = btn;
+								i++;
+							}
+						}
+				}
+			};
 
 			if (KDStruggleGroupLinkIndex[sg.group] && item && item.dynamicLink) {
 				surfaceItems = KDDynamicLinkListSurface(item);
@@ -2969,6 +2974,10 @@ function KDDrawStruggleGroups() {
 
 				}
 
+				if (!renderedButtons) {
+					renderButtons();
+				}
+
 				if (StruggleType && !sg.blocked) {
 					/**
 					 * @type {KDStruggleData}
@@ -3061,6 +3070,12 @@ function KDDrawStruggleGroups() {
 				alpha: 0.1,
 			});
 
+
+
+
+			if (!renderedButtons) {
+				renderButtons();
+			}
 		}
 
 }

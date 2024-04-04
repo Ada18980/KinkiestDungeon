@@ -34,6 +34,8 @@ Monk class?
 - Various bug fixes
 - Fixed Strong, Flexible, Locksmith, Clueless, Weak, and Inflexible. Now they actually work on struggling >.<
 - Added difficulty and effective struggle power display to restraint hover over
+- Buffed kitty paws (harder to escape)
+- Added chain skirt
 
 5.2.20
 RC1

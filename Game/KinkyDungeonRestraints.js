@@ -1743,7 +1743,7 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 	let limitChance = limitChancePre != undefined ? limitChancePre : (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
 		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : 0.12);
 
-	if ((!ApplyGhost || !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())) && ApplyPlayerBonus) {
+	if (ApplyPlayerBonus) {
 		if (StruggleType == "Pick") {
 			if (KinkyDungeonStatsChoice.get("Locksmith")) escapeChance += KDLocksmithBonus;
 			if (KinkyDungeonStatsChoice.get("Clueless")) escapeChance += KDCluelessBonus;

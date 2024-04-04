@@ -20168,8 +20168,8 @@ rTheWardenLoseFinish,"(SPEAKER presents you with your collar...)|(It closes arou
 rTheWardenStage2,"(SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really think it would be that easy?"
 
 rTheWardenWin,"(SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~"
-rTheWardenWinAccept,"(SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing collar)|This is a special one, reserved for those with divine privilege.|You've earned it."
-dTheWardenWin_Accept,"(Wear her collar anyway)"
+rTheWardenWinAccept,"(SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it."
+dTheWardenWin_Accept,"(Wear her belt anyway)"
 rTheWardenWinGag,"(SPEAKER shakes her head as you force a gag into her mouth)|MMMMMPH!"
 dTheWardenWin_Gag,"(Gag her)"
 

@@ -70,6 +70,13 @@ let KDBasicArmor = [
 		hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
 		nouncursed: ["LeatherBoots"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+	{name: "SteelSkirt2", minLevel: 0, weight: KDBasicArmorWeight,
+		armor: "SteelSkirt2",
+		hexlist: "Common",
+		hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
+		enchantlist: "Common", hexchance: KD_hexchance_Default, enchantchance: KD_enchantchance_Default, alwaysenchanthex: true,
+		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
+		nouncursed: ["SteelSkirt2"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 ];
 let KDAdvancedArmor = [
 	{name: "SteelArmor", minLevel: 0, weight: KDAdvancedArmorWeight,
