@@ -174,7 +174,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, floors:KDMapInit([])},
 
 	{name: "ExplosiveBarrel", tags: KDMapInit(["poisonmmune", "soulimmune", "noknockback", "melee", "minor", "scenery", "explosiveBarrel", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile", "fireweakness", "stunweakness"]),
-		faction: "Door", immobile: true, lowpriority: true, evasion: -100, armor: 1, followRange: 100, AI: "wander",
+		faction: "Barrel", immobile: true, lowpriority: true, evasion: -100, armor: 1, followRange: 100, AI: "wander",
 		difficulty: 0.01,
 		visionRadius: 0, maxhp: 6, minLevel:0, weight:-10, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
 		dropTable: [{name: "Gunpowder", amount: 3, weight: 10, noSummon: true}],
@@ -5315,7 +5315,7 @@ let KDSpecialBuffs = {
 				aurasprite: "Muscle",
 				noAuraColor: true,
 				duration: 9999, infinite: true,
-				power: enemy.Enemy.power*2,
+				power: Math.min(5, enemy.Enemy.power*2),
 				type: "AttackPower",
 			});
 			KinkyDungeonApplyBuffToEntity(enemy, {

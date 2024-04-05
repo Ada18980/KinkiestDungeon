@@ -30,12 +30,17 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.2.22
+- Buffed kitty paws (harder to escape)
+- Added chain skirt
+- Fixed an issue where Light would sometimes ignore Inner Power
+- Fixed human eye having one cat eye
+- Capped amount of extra power an enemy can get from the muscle buff
+
 5.2.21
 - Various bug fixes
 - Fixed Strong, Flexible, Locksmith, Clueless, Weak, and Inflexible. Now they actually work on struggling >.<
 - Added difficulty and effective struggle power display to restraint hover over
-- Buffed kitty paws (harder to escape)
-- Added chain skirt
 
 5.2.20
 RC1

@@ -425,6 +425,7 @@ let KDFactionProperties = {
 let KinkyDungeonHiddenFactions = [
 	"Plant",
 	"Natural",
+	"Barrel",
 	"Door",
 	"Player",
 	"Enemy",
@@ -625,6 +626,10 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"Natural": {
 		Player: -1,
+		Jail: -1,
+		Chase: -1,
+	},
+	"Barrel": {
 		Jail: -1,
 		Chase: -1,
 	},

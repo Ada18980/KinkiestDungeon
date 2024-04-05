@@ -5584,19 +5584,23 @@ let KDEventMapSpell = {
 
 		"Light": (e, spell, data) => {
 			if (data.spell?.name == spell?.name) {
+
 				KinkyDungeonUpdateLightGrid = true;
-				if (KinkyDungeonSpellChoicesToggle[data.index]) {
-					let cost = KinkyDungeonGetManaCost(spell, false, true);
-					if (KinkyDungeonHasMana(cost)) {
-						if (cost > 0)
-							KinkyDungeonChangeMana(-cost, false, 0, false, true);
-						KDTriggerSpell(spell, data, false, true);
-						if (KinkyDungeonPlayerBuffs.Light && KinkyDungeonPlayerBuffs.Light.duration > 1) {
-							KinkyDungeonExpireBuff(KinkyDungeonPlayerEntity, "Light");
+
+				if (KinkyDungeonPlayerBuffs.Analyze && KinkyDungeonPlayerBuffs.Light.duration > 1) {
+					KinkyDungeonExpireBuff(KinkyDungeonPlayerEntity, "Light");
+				} else {
+
+					if (KinkyDungeonSpellChoicesToggle[data.index]) {
+						let cost = KinkyDungeonGetManaCost(spell, false, true);
+						if (KinkyDungeonHasMana(cost)) {
+							if (cost > 0)
+								KinkyDungeonChangeMana(-cost, false, 0, false, true);
+							KDTriggerSpell(spell, data, false, true);
+							KinkyDungeonAdvanceTime(0, true, true);
 						}
 					}
 				}
-
 			}
 		},
 		"Analyze": (e, spell, data) => {
@@ -9575,7 +9579,7 @@ let KDEventMapGeneric = {
 	"calcVision": {
 		"ArchersEye": (e, data) => {
 			if (KinkyDungeonStatsChoice.get("ArchersEye")) {
-				data.max += 2;
+				data.max += Math.max(0, 2 - Math.max(0, KinkyDungeonBlindLevel || 0));
 			}
 		},
 		"Nearsighted": (e, data) => {

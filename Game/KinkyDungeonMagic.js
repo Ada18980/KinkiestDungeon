@@ -2263,3 +2263,25 @@ function KDGetRandomSpell(maxSpellLevel = 4) {
 
 	return spell;
 }
+
+
+function KinkyDungeonGetUnlearnedSpells(minlevel, maxlevel, SpellList) {
+	let SpellsUnlearned = [];
+
+	for (let spell of SpellList) {
+		if (spell.level >= minlevel && spell.level <= maxlevel && !spell.passive && !spell.secret && KinkyDungeonCheckSpellPrerequisite(spell)) {
+			SpellsUnlearned.push(spell);
+		}
+	}
+
+	for (let spell of KinkyDungeonSpells) {
+		for (let S = 0; S < SpellsUnlearned.length; S++) {
+			if (spell.name == SpellsUnlearned[S].name) {
+				SpellsUnlearned.splice(S, 1);
+				S--;
+			}
+		}
+	}
+
+	return SpellsUnlearned;
+}
