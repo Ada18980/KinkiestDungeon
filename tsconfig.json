@@ -139,6 +139,8 @@
         "Data/ModelList_LeatherCuffs.ts",
         "Data/ModelList_DivineCuffs.ts",
         "Data/ModelList_DivineCuffsClean.ts",
+        "Data/ModelList_SteelCuffs.ts",
+        "Data/ModelList_CyberCuffs.ts",
         "Data/ModelList_Slime.ts",
         "Data/ModelList_Rubber.ts",
         "Data/ModelList_TapeMed.ts",

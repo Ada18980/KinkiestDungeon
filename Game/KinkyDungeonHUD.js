@@ -2992,7 +2992,7 @@ function KDDrawStruggleGroups() {
 					} else {
 						let O = lastO + 1;
 						DrawTextKD(TextGet("KDItemDifficulty").replace("AMNT",
-							Math.max(0, Math.round(100 * (1 - struggleData.origEscapeChance + struggleData.escapePenalty + Math.max(0, struggleData.extraLim, struggleData.limitChance)))) + ""
+							Math.max(0, Math.round(100 * (0.01 * (item.tightness || 0) + 1 - struggleData.origEscapeChance + struggleData.escapePenalty + Math.max(0, struggleData.extraLim, struggleData.limitChance)))) + ""
 						).replace("ESCP", TextGet("KDEscape" + StruggleType)),
 						530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150); O++;
 						let a = Math.min(1, Math.max(-1, struggleData.escapeChance - Math.max(0, struggleData.extraLim, struggleData.limitChance)));

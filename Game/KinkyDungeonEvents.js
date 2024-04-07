@@ -3668,7 +3668,7 @@ let KDEventMapSpell = {
 	},
 	"calcMana": {
 		"HeavyKinetic": (e, spell, data) => {
-			if (data.spell == spell && KinkyDungeonPlayerDamage?.heavy) {
+			if (data.spell?.name == spell?.name && KinkyDungeonPlayerDamage?.heavy) {
 				data.cost += e.power;
 			}
 		},
@@ -4291,7 +4291,7 @@ let KDEventMapSpell = {
 	"beforeDamageEnemy": {
 
 		"MultiplyDamageStealth": (e, spell, data) => {
-			if (data.dmg > 0 && data.enemy && KDHostile(data.enemy) && !data.enemy.aware && data.spell == spell) {
+			if (data.dmg > 0 && data.enemy && KDHostile(data.enemy) && !data.enemy.aware && data.spell?.name == spell?.name) {
 				if ((!e.humanOnly || data.enemy.Enemy.bound) && (!e.chance || KDRandom() < e.chance)) {
 					data.dmg = Math.max(data.dmg * e.power, 0);
 				}
@@ -4303,7 +4303,7 @@ let KDEventMapSpell = {
 			}
 		},
 		"MakeVulnerable": (e, spell, data) => {
-			if (data.enemy && data.spell == spell) {
+			if (data.enemy && data.spell?.name == spell?.name) {
 				if ((!e.humanOnly || data.enemy.Enemy.bound) && (!e.chance || KDRandom() < e.chance) && !data.enemy.Enemy.tags.nonvulnerable) {
 					if (!data.enemy.vulnerable) data.enemy.vulnerable = 0;
 					data.enemy.vulnerable = Math.max(0, e.time);
@@ -8643,6 +8643,15 @@ function KinkyDungeonHandleEnemyEvent(Event, e, enemy, data) {
  * @type {Object.<string, Object.<string, function(string, *): void>>}
  */
 let KDEventMapGeneric = {
+	"perkOrb": {
+		"Cursed": (e, data) => {
+			if (data?.perks?.includes("Cursed")) {
+				for (let rep of Object.keys(KinkyDungeonShrineBaseCosts)) {
+					KinkyDungeonChangeRep(rep, 0);
+				}
+			}
+		},
+	},
 	"beforePlayerLaunchAttack": {
 		"ReplacePerks": (e, data) => {
 			if (KinkyDungeonPlayerDamage.unarmed && KDIsHumanoid(data.target)) {

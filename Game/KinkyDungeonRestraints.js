@@ -86,11 +86,13 @@ let KDCustomAffinity = {
 	},
 };
 
-function KDGetTightnessEffect(escapeChance, struggleType) {
-	let mult = struggleType == "Cut" ? 0.5 : 1.0;
+function KDGetTightnessEffect(escapeChance, struggleType, T = 0) {
+	let mult = (struggleType == "Cut" || struggleType == "Remove") ? 0.5 : 1.0;
 	let x1 = 1 - 0.1 * mult;
 	let x2 = escapeChance > 0 ? (escapeChance - 0.03 * mult) / escapeChance : 0;
-	return Math.max(x1, Math.min(x2, 1 - 0.05 * mult));
+	let val = Math.max(x1, Math.min(x2, 1 - 0.05 * mult));
+	val = 1 - (1 - val) * (100/(100 + T));
+	return val;
 }
 
 /**
@@ -2253,7 +2255,7 @@ function KDGetStruggleData(data) {
 	// Struggling is affected by tightness
 	if (data.escapeChance > 0) {// && StruggleType == "Struggle") {
 		for (let T = 0; T < data.restraint.tightness; T++) {
-			data.escapeChance *= KDGetTightnessEffect(data.escapeChance, data.struggleType); // Tougher for each tightness, however struggling will reduce the tightness
+			data.escapeChance *= KDGetTightnessEffect(data.escapeChance, data.struggleType, T); // Tougher for each tightness, however struggling will reduce the tightness
 		}
 	}
 
@@ -4565,9 +4567,9 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 }
 
 function KDAddDelayedStruggle(amount, time, StruggleType, struggleGroup, index, data, progress = 0, limit = 100) {
-	let cur = progress;
+	let cur = progress || 0;
 	for (let t = 1; t <= time; t++) {
-		let plus = amount/time * Math.max(0, 1 - (limit > 0 ? (cur / limit) : 1));
+		let plus = Math.min(amount/time, Math.max(0, (limit > 0 ? (limit - cur) : 1)));
 		if (plus > 0 && plus < 0.04) plus = 0.04;
 		cur += plus;
 		KDAddDelayedAction({
