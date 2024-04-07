@@ -65,7 +65,7 @@ let KDOptionOffset = 0;
 
 
 function KDDrawDialogue(delta) {
-	KDDraw(kdcanvas, kdpixisprites, "dialogbg", KinkyDungeonRootDirectory + "DialogBackground.png", 500, 0, 1000, 1000, undefined, {
+	KDDraw(kdcanvas, kdpixisprites, "dialogbg", KinkyDungeonRootDirectory + "DialogBackground.webp", 500, 0, 1000, 1000, undefined, {
 		zIndex: 111,
 	});
 
@@ -147,7 +147,7 @@ function KDDrawDialogue(delta) {
 								//KDDialogueData.CurrentDialogueIndex -= 1;
 							}
 							return true;
-						}, KDOptionOffset > 0, 1350, 450, 90, 40, "", KDOptionOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png",
+						}, KDOptionOffset > 0, 1350, 450, 90, 40, "", KDOptionOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.webp",
 						undefined, undefined, undefined, undefined, undefined, undefined, {
 							zIndex: 122,
 						});
@@ -158,7 +158,7 @@ function KDDrawDialogue(delta) {
 								//KDDialogueData.CurrentDialogueIndex += 1;
 							}
 							return true;
-						}, II >= KDMaxDialogue, 1350, 450 + (KDMaxDialogue - 1) * 60 + 10, 90, 40, "", II >= KDMaxDialogue ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png",
+						}, II >= KDMaxDialogue, 1350, 450 + (KDMaxDialogue - 1) * 60 + 10, 90, 40, "", II >= KDMaxDialogue ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.webp",
 						undefined, undefined, undefined, undefined, undefined, undefined, {
 							zIndex: 122,
 						});

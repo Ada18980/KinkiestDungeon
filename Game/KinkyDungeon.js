@@ -1244,7 +1244,7 @@ function KinkyDungeonRun() {
 	KDUpdateMusic();
 
 	if (!KDPatched)
-		DrawButtonVis(1885, 25, 90, 90, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Exit.png");
+		DrawButtonVis(1885, 25, 90, 90, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Exit.webp");
 
 	// eslint-disable-next-line no-constant-condition
 	if (true || KDToggles.Fullscreen) {
@@ -1270,7 +1270,7 @@ function KinkyDungeonRun() {
 	if ((KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "TileEditor") {
 		let BG = (KinkyDungeonState == "Consent" || KinkyDungeonState == "Intro" || KinkyDungeonState == "Logo") ? "Logo" : "BrickWall";
 		if (StandalonePatched) {
-			KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/" + BG + (StandalonePatched ? ".png" : ".jpg"), 0, 0, CanvasWidth, CanvasHeight, undefined, {
+			KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/" + BG + (StandalonePatched ? ".webp" : ".jpg"), 0, 0, CanvasWidth, CanvasHeight, undefined, {
 				zIndex: -115,
 			});
 		} else {
@@ -1302,7 +1302,7 @@ function KinkyDungeonRun() {
 	}
 
 	if (CommonIsMobile && mouseDown && !KDMouseInPlayableArea()) {
-		KDDraw(kdcanvas, kdpixisprites, "cursor", KinkyDungeonRootDirectory + "Cursor.png", MouseX, MouseY, 72, 72, undefined, {
+		KDDraw(kdcanvas, kdpixisprites, "cursor", KinkyDungeonRootDirectory + "Cursor.webp", MouseX, MouseY, 72, 72, undefined, {
 			zIndex: 300,
 		});
 	}
@@ -1316,7 +1316,7 @@ function KinkyDungeonRun() {
 			KDLogoStartTime = CommonTime();
 		} else {
 			// Draw the strait-laced logo
-			KDDraw(kdcanvas, kdpixisprites, "logo", KinkyDungeonRootDirectory + "Logo.png", 500, 0, 1000, 1000, undefined, {
+			KDDraw(kdcanvas, kdpixisprites, "logo", KinkyDungeonRootDirectory + "Logo.webp", 500, 0, 1000, 1000, undefined, {
 				zIndex: 0,
 				alpha: 0.5 - 0.5*Math.cos(Math.PI * 2 * (CommonTime() - KDLogoStartTime) / KDLogoEndTime),
 			});
@@ -1396,7 +1396,7 @@ function KinkyDungeonRun() {
 		//let str = TextGet("KinkyDungeon") + " v" + TextGet("KDVersionStr");
 		//DrawTextKD(str.substring(0, Math.min(str.length, Math.round((CommonTime()-KDStartTime)/100))), 1000, 80, "#ffffff", KDTextGray2, 84);
 
-		KDDraw(kdcanvas, kdpixisprites, "logo", KinkyDungeonRootDirectory + "SimpleLogo.png", 1000 - 350, 0, 350 * 2, 150 * 2);
+		KDDraw(kdcanvas, kdpixisprites, "logo", KinkyDungeonRootDirectory + "SimpleLogo.webp", 1000 - 350, 0, 350 * 2, 150 * 2);
 		DrawTextKD(KDPatched ? (TextGet("KDVersion") + " " + TextGet("KDVersionStr")) : TextGet("KDLogo2"), 1000, 300, "#fff6bc", KDTextGray2, 24);
 		//DrawTextKD(TextGet("KinkyDungeon") + " v" + TextGet("KDVersionStr"), 1000, 200, "#ffffff", KDTextGray2);
 

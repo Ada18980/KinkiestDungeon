@@ -268,7 +268,7 @@ function KDDrawTileEditor() {
 
 		if (KinkyDungeonTargetX >= 0 && KinkyDungeonTargetX < KDMapData.GridWidth
 			&& KinkyDungeonTargetY >= 0 && KinkyDungeonTargetY < KDMapData.GridHeight) {
-			KDDraw(kdgameboard, kdpixisprites, "ui_movereticule", KinkyDungeonRootDirectory + "TargetMove.png",
+			KDDraw(kdgameboard, kdpixisprites, "ui_movereticule", KinkyDungeonRootDirectory + "TargetMove.webp",
 				(KinkyDungeonTargetX - KinkyDungeonCamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - KinkyDungeonCamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 					zIndex: 100,
 				});
@@ -399,7 +399,7 @@ function KDDrawEditorUI() {
 			KDEditorTileFlexStore[KDEditorTileIndexQuery] = KDEditorTileFlex;
 		}
 		return true;
-	}, true, 150 , 160, 140, 45, 'Flex', "#ffffff", KDEditorTileFlex ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
+	}, true, 150 , 160, 140, 45, 'Flex', "#ffffff", KDEditorTileFlex ? (KinkyDungeonRootDirectory + "UI/CheckSmall.webp") : undefined);
 
 	DrawButtonKDEx("flexsupertoggle", (bdata) => {
 		KDEditorTileFlexSuper = KDEditorTileFlexSuper ? "" : "y";
@@ -409,7 +409,7 @@ function KDDrawEditorUI() {
 			KDEditorTileFlexSuperStore[KDEditorTileIndexQuery] = KDEditorTileFlexSuper;
 		}
 		return true;
-	}, true, 150 , 210, 140, 45, 'OpenBorder', "#ffffff", KDEditorTileFlexSuper ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
+	}, true, 150 , 210, 140, 45, 'OpenBorder', "#ffffff", KDEditorTileFlexSuper ? (KinkyDungeonRootDirectory + "UI/CheckSmall.webp") : undefined);
 
 	// For later
 	let tileKeys = Object.keys(KDMapTilesListEditor);

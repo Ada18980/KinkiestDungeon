@@ -335,10 +335,10 @@ function KinkyDungeonDrawItems(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 		if (item.x >= CamX && item.y >= CamY && item.x < CamX + KinkyDungeonGridWidthDisplay && item.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(item.x, item.y) > 0) {
 			let scale = 0.5;
 			if (KDRestraint({name: item.name}) && !KDRestraint({name: item.name}).armor) {
-				sprite = KinkyDungeonRootDirectory + "Items/Restraint.png";
+				sprite = KinkyDungeonRootDirectory + "Items/Restraint.webp";
 				scale = 1;
 			}
-			else sprite = KDGetItemPreview({name: item.name, type: KDGetItemType(item)})?.preview || (KinkyDungeonRootDirectory + "Items/" + item.name + ".png");
+			else sprite = KDGetItemPreview({name: item.name, type: KDGetItemType(item)})?.preview || (KinkyDungeonRootDirectory + "Items/" + item.name + ".webp");
 			if (KDCanSeeDroppedItem(item)) {
 				KDDraw(kditemsboard, kdpixisprites, item.x + "," + item.y + "_" + item.name, sprite,
 					(item.x - CamX + ((0.25/max) * (counts[item.x + ',' + item.y] || 0)))*KinkyDungeonGridSizeDisplay, (item.y - CamY + (1 - scale))*KinkyDungeonGridSizeDisplay,

@@ -3,27 +3,27 @@
 // -Ada
 
 let KDMinimapIcons = {
-	'G': (x, y) => {return "UI/MiniMap/Ghost.png";},
-	'O': (x, y) => {return "UI/MiniMap/Orb.png";},
-	'S': (x, y) => {return "UI/MiniMap/Stairs.png";},
-	's': (x, y) => {return "UI/MiniMap/StairsDown.png";},
-	'H': (x, y) => {return "UI/MiniMap/StairsDown.png";},
+	'G': (x, y) => {return "UI/MiniMap/Ghost.webp";},
+	'O': (x, y) => {return "UI/MiniMap/Orb.webp";},
+	'S': (x, y) => {return "UI/MiniMap/Stairs.webp";},
+	's': (x, y) => {return "UI/MiniMap/StairsDown.webp";},
+	'H': (x, y) => {return "UI/MiniMap/StairsDown.webp";},
 	'A': (x, y) => {
 		if (KinkyDungeonTilesGet(x + "," + y)?.drunk) {
 			if (KinkyDungeonTilesGet(x + "," + y)?.Quest)
-				return "UI/MiniMap/ShrineQuest.png";
-			return "UI/MiniMap/ShrineMana.png";
+				return "UI/MiniMap/ShrineQuest.webp";
+			return "UI/MiniMap/ShrineMana.webp";
 		}
 		if (KinkyDungeonTilesGet(x + "," + y)?.Quest)
-			return "UI/MiniMap/ShrineManaQuest.png";
-		return "UI/MiniMap/ShrineMana.png";},
-	'=': (x, y) => {return "UI/MiniMap/ChargerEmpty.png";},
-	'+': (x, y) => {return "UI/MiniMap/ChargerCrystal.png";},
-	'D': (x, y) => {return "UI/MiniMap/DoorClosed.png";},
-	'd': (x, y) => {return "UI/MiniMap/DoorOpen.png";},
-	'B': (x, y) => {return "UI/MiniMap/Bed.png";},
-	'b': (x, y) => {return "UI/MiniMap/Bars.png";},
-	'g': (x, y) => {return "UI/MiniMap/Grate.png";},
+			return "UI/MiniMap/ShrineManaQuest.webp";
+		return "UI/MiniMap/ShrineMana.webp";},
+	'=': (x, y) => {return "UI/MiniMap/ChargerEmpty.webp";},
+	'+': (x, y) => {return "UI/MiniMap/ChargerCrystal.webp";},
+	'D': (x, y) => {return "UI/MiniMap/DoorClosed.webp";},
+	'd': (x, y) => {return "UI/MiniMap/DoorOpen.webp";},
+	'B': (x, y) => {return "UI/MiniMap/Bed.webp";},
+	'b': (x, y) => {return "UI/MiniMap/Bars.webp";},
+	'g': (x, y) => {return "UI/MiniMap/Grate.webp";},
 };
 
 
@@ -595,7 +595,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 						if (KDToggles.FancyShadows) {
 							pad = 36;
 							KDDraw(kdgamefogsmooth, kdpixifogsprites, `${RX},${RY},_@@`,
-								KinkyDungeonRootDirectory + "Vision.png",
+								KinkyDungeonRootDirectory + "Vision.webp",
 								(-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad, (-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad,
 								KinkyDungeonGridSizeDisplay + pad*2, KinkyDungeonGridSizeDisplay + pad*2,
 								undefined, {
@@ -617,7 +617,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 						|| (KinkyDungeonVisionGet(RX, RY+1) > 0 || (allowFog && KinkyDungeonFogGet(RX, RY+1) > 0)))) {
 						pad = 72;
 						KDDraw(kdgamefogsmoothDark, kdpixifogsprites, `${RX},${RY},_@@0`,
-							KinkyDungeonRootDirectory + "VisionNeg.png",
+							KinkyDungeonRootDirectory + "VisionNeg.webp",
 							(-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad, (-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad,
 							KinkyDungeonGridSizeDisplay + pad*2, KinkyDungeonGridSizeDisplay + pad*2,
 							undefined,{
@@ -781,7 +781,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 						kdbrightnessmapGFX.endFill();*/
 						pad = 126;
 						KDDraw(kdbrightnessmapGFX, kdpixibrisprites, `${RX},${RY},_LI`,
-							KinkyDungeonRootDirectory + "Lighting.png",
+							KinkyDungeonRootDirectory + "Lighting.webp",
 							(-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad, (-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad,
 							KinkyDungeonGridSizeDisplay + pad*2, KinkyDungeonGridSizeDisplay + pad*2,
 							undefined, {

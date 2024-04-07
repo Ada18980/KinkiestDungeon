@@ -198,7 +198,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index) {
 			ForceRefreshModelsAsync(KDSpeakerNPC);
 			//KinkyDungeonDressPlayer(KDSpeakerNPC, true, true);
 			return true;
-		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Dress.png")) {
+		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Dress.webp")) {
 			DrawTextFitKD(TextGet("KDDressNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 		}
 
@@ -208,19 +208,19 @@ function KDDrawSelectedCollectionMember(value, x, y, index) {
 				KDSortCollection();
 			}
 			return true;
-		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Promote.png",
+		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Promote.webp",
 		undefined, undefined, false, KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns ? "#ff5555" : "")) {
 			DrawTextFitKD(TextGet("KDPromoteNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 		} else if (value.status == "Servant" && DrawButtonKDEx("demoteNPC", (b) => {
 			value.status = "";
 			KDSortCollection();
 			return true;
-		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Demote.png",
+		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Demote.webp",
 		undefined, undefined, false)) {
 			DrawTextFitKD(TextGet("KDDemoteNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 		}
 	} else {
-		KDDraw(kdcanvas, kdpixisprites, value.name + "_coll," + value.id, KinkyDungeonRootDirectory + dir + sp + ".png",
+		KDDraw(kdcanvas, kdpixisprites, value.name + "_coll," + value.id, KinkyDungeonRootDirectory + dir + sp + ".webp",
 			x + 20,
 			y + 80,
 			400, 400, undefined);
@@ -262,7 +262,7 @@ function KDDrawCollectionInventory(x, y) {
 		},true,
 		x + KDCollectionColumns * KDCollectionSpacing/2 - 1.5*KDCollectionSpacing,
 		y + (KDCollectionRows + 1 + KDCollectionGuestRows) * KDCollectionSpacing,
-		KDCollectionSpacing * 3, 36, "", "#ffffff", KinkyDungeonRootDirectory + "Down.png",
+		KDCollectionSpacing * 3, 36, "", "#ffffff", KinkyDungeonRootDirectory + "Down.webp",
 		"", false, false, KDButtonColor, undefined, undefined, {centered: true}
 		);
 	}
@@ -277,7 +277,7 @@ function KDDrawCollectionInventory(x, y) {
 		},true,
 		x + KDCollectionColumns * KDCollectionSpacing/2 - 1.5*KDCollectionSpacing,
 		y - KDCollectionSpacing + 36 + (1+ KDCollectionGuestRows)*KDCollectionSpacing,
-		KDCollectionSpacing * 3, 36, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png",
+		KDCollectionSpacing * 3, 36, "", "#ffffff", KinkyDungeonRootDirectory + "Up.webp",
 		"", false, false, KDButtonColor, undefined, undefined, {centered: true}
 		);
 	}
@@ -314,12 +314,12 @@ function KDDrawCollectionInventory(x, y) {
 		}, true,
 		XX,
 		YY,
-		79, 79, "", "#ffffff", KinkyDungeonRootDirectory + dir + sp + ".png",
+		79, 79, "", "#ffffff", KinkyDungeonRootDirectory + dir + sp + ".webp",
 		"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}
 		)) {
 			DrawTextFitKD(value.name, MouseX, MouseY - 50, 800, "#ffffff", (value.color && value.color != "#ffffff") ? value.color : KDTextGray05, 24);
 		}
-		/*KDDraw(kdcanvas, kdpixisprites, value.name + "_coll," + value.id, KinkyDungeonRootDirectory + dir + sp + ".png",
+		/*KDDraw(kdcanvas, kdpixisprites, value.name + "_coll," + value.id, KinkyDungeonRootDirectory + dir + sp + ".webp",
 			XX,
 			YY,
 			72, 72, undefined);*/
@@ -360,7 +360,7 @@ function KDDrawCollectionInventory(x, y) {
 			}, true,
 			XX,
 			YY,
-			79, 79, "", "#ffffff", KinkyDungeonRootDirectory + dir + sp + ".png",
+			79, 79, "", "#ffffff", KinkyDungeonRootDirectory + dir + sp + ".webp",
 			"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}
 			)) {
 				DrawTextFitKD(value.name, MouseX, MouseY - 50, 800, "#ffffff", (value.color && value.color != "#ffffff") ? value.color : KDTextGray05, 24);

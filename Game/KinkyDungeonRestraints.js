@@ -3342,8 +3342,8 @@ function KinkyDungeonGenerateRestraintTrap() {
 }
 
 function KDGetLockVisual(item) {
-	//if (KinkyDungeonBlindLevel > 0) return `Locks/Blind.png`;
-	return `Locks/${item.lock}.png`;
+	//if (KinkyDungeonBlindLevel > 0) return `Locks/Blind.webp`;
+	return `Locks/${item.lock}.webp`;
 }
 
 /**

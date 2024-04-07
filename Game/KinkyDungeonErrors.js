@@ -274,7 +274,7 @@ function KinkyDungeonShowCrashReportModal(report) {
 
 function KinkyDungeonErrorImage(src) {
 	const img = document.createElement("img");
-	img.src = `${KinkyDungeonRootDirectory}Enemies/${src}.png`;
+	img.src = `${KinkyDungeonRootDirectory}Enemies/${src}.webp`;
 	Object.assign(img.style, {
 		maxWidth: "10vw",
 	});

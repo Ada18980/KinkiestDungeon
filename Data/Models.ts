@@ -290,7 +290,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 				// y
 				buffer.data[i+1] = matrix[i+1] + MODELWIDTH*0.001*Math.sin(Math.PI+Math.max(0,Math.PI*(0.6*height-y)/(0.6*height))) * Math.cos((CommonTime() % timt)/timt * 4*Math.PI)*Zoom;
 				if (SHOWMESHPOINTS && Zoom == 1 && x < width*.5 && y > height*.25 && y < height*.75) {
-					KDDraw(kdcanvas, kdpixisprites, "buffer" + i, KinkyDungeonRootDirectory + "ShrineAura.png",
+					KDDraw(kdcanvas, kdpixisprites, "buffer" + i, KinkyDungeonRootDirectory + "ShrineAura.webp",
 					-4+(buffer.data[i])-MODELWIDTH*MODEL_SCALE*0.25, -4+(buffer.data[i+1])-MODELHEIGHT*MODEL_SCALE*(0.25)-MODELWIDTH/10, 8, 8,
 					undefined, {
 						zIndex: 100,
@@ -768,7 +768,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 								ContainerContainer.Container,
 								ContainerContainer.SpriteList,
 								"xrayfilter_" + x,
-								"DisplacementMaps/" + x + ".png",
+								"DisplacementMaps/" + x + ".webp",
 								0, 0, undefined, undefined,
 								0, {
 									zIndex: 1000000,
@@ -1005,13 +1005,13 @@ function ModelLayerHidden(drawLayers: {[_: string]: boolean}, MC: ModelContainer
 }
 
 function ModelLayerString(Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}): string {
-	return `Models/${Layer.Folder || Model.Folder}/${LayerSprite(Layer, Poses)}.png`;
+	return `Models/${Layer.Folder || Model.Folder}/${LayerSprite(Layer, Poses)}.webp`;
 }
 function ModelLayerStringCustom(Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}, Sprite: string, Path: string = "Models", useModelFolder: boolean = true, forceInvariant: boolean = false, forceMorph?: Record<string, string>, noAppend: boolean = false): string {
 	if (useModelFolder)
-		return `${Path}/${Layer.Folder || Model.Folder}/${LayerSpriteCustom(Layer, Poses, Sprite, forceInvariant, forceMorph, noAppend)}.png`;
+		return `${Path}/${Layer.Folder || Model.Folder}/${LayerSpriteCustom(Layer, Poses, Sprite, forceInvariant, forceMorph, noAppend)}.webp`;
 	else
-		return `${Path}/${LayerSpriteCustom(Layer, Poses, Sprite, forceInvariant, forceMorph, noAppend)}.png`;
+		return `${Path}/${LayerSpriteCustom(Layer, Poses, Sprite, forceInvariant, forceMorph, noAppend)}.webp`;
 }
 
 
