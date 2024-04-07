@@ -146,7 +146,7 @@ function KDDrawVibeParticles(density) {
 	}
 }
 
-function KDAddShockwave(x, y, size, spr = `Particles/Shockwave.png`, attachToCamera = true) {
+function KDAddShockwave(x, y, size, spr = `Particles/Shockwave.webp`, attachToCamera = true) {
 	let lifetime = 700 + size;
 	let data = {
 		time: 0,
@@ -221,7 +221,7 @@ function KDCreateVibeParticle() {
 	KDAddParticle(
 		x,
 		y,
-		KinkyDungeonRootDirectory + `Particles/VibeHeart.png`,
+		KinkyDungeonRootDirectory + `Particles/VibeHeart.webp`,
 		undefined, {
 			time: 0,
 			lifetime: lifetime,
@@ -254,7 +254,7 @@ function KDCreateArousalParticle(pinkChance, purpleChance) {
 		KinkyDungeonRootDirectory + `Particles/${
 			Math.random() < purpleChance ? "HeartPurple" :
 			(Math.random() < pinkChance ? "HeartPink" : "Heart")
-		}.png`,
+		}.webp`,
 		undefined, {
 			time: 0,
 			lifetime: lifetime,

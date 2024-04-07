@@ -1031,7 +1031,7 @@ function KinkyDungeonDrawQuest() {
 					});
 
 					DrawTextFitKD(TextGet("KDQuest_" + q), xStart + xOffset + 200, yStart + (II-KDQuestsIndex)*spacing, 850, "#ffffff", KDTextGray0, 28, "left");
-					KDDraw(kdcanvas, kdpixisprites, "kdquest" + q, KinkyDungeonRootDirectory + "Enemies/" + KDQuests[q]?.npc + ".png",
+					KDDraw(kdcanvas, kdpixisprites, "kdquest" + q, KinkyDungeonRootDirectory + "Enemies/" + KDQuests[q]?.npc + ".webp",
 						xStart + xOffset + 100, yStart + (II-KDQuestsIndex)*spacing - 36, 72, 72);
 					if (DrawButtonKDEx("kdquestquit" + q, (b) => {
 						if (!KDQuests[q]?.nocancel)
@@ -1039,7 +1039,7 @@ function KinkyDungeonDrawQuest() {
 						return true;
 					}, true, xStart + xOffset + 1200, yStart + (II-KDQuestsIndex)*spacing - 36, 220, 72,
 					TextGet("KDQuestListCancel"), KDQuests[q]?.nocancel ? KDTextGray3 : "#ffffff",
-					KinkyDungeonRootDirectory + "UI/X.png", "", false, true, KDButtonColor, undefined, true))
+					KinkyDungeonRootDirectory + "UI/X.webp", "", false, true, KDButtonColor, undefined, true))
 						DrawTextFitKD(TextGet(KDQuests[q]?.nocancel ? "KDQuestListDescCancelFail" : "KDQuestListDescCancel"),
 							xStart + xOffset + 625, ytt, 1000, "#ffffff", KDTextGray0, 20, "center", 70);
 				}
@@ -1060,11 +1060,11 @@ function KinkyDungeonDrawQuest() {
 		DrawButtonKDEx("questUp", (b) => {
 			KDQuestsIndex -= 2;
 			return true;
-		}, true, xStart, yStart - spacing, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png");
+		}, true, xStart, yStart - spacing, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Up.webp");
 		DrawButtonKDEx("questDown", (b) => {
 			KDQuestsIndex += 2;
 			return true;
-		}, true, xStart, yStart + KDMaxQuests*spacing, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Down.png");
+		}, true, xStart, yStart + KDMaxQuests*spacing, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Down.webp");
 
 
 		KDQuestsIndex = Math.max(0, Math.min(KDQuestsIndex, KDQuestsVisible - Math.round(KDMaxQuests/2)));

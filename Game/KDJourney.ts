@@ -274,7 +274,7 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 			);
 		}
 		KDDraw(kdcanvas, kdpixisprites, "navmap" + slot.x + ',' + slot.y,
-			KinkyDungeonRootDirectory + sprite + '.png',
+			KinkyDungeonRootDirectory + sprite + '.webp',
 			xOffset + ScaleX*(slot.x - X) - spriteSize/2,
 			yOffset + ScaleY*(slot.y - Y) - spriteSize/2,
 			spriteSize, spriteSize, undefined, {

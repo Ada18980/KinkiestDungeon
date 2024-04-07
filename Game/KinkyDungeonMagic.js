@@ -1412,7 +1412,7 @@ function KinkyDungeonDrawMagic() {
 		zIndex: -19,
 		alpha: 0.9
 	});
-	KDDraw(kdcanvas, kdpixisprites, "magicbook", KinkyDungeonRootDirectory + "MagicBook.png", canvasOffsetX_ui + xOffset, canvasOffsetY_ui, 640*KinkyDungeonBookScale, 483*KinkyDungeonBookScale);
+	KDDraw(kdcanvas, kdpixisprites, "magicbook", KinkyDungeonRootDirectory + "MagicBook.webp", canvasOffsetX_ui + xOffset, canvasOffsetY_ui, 640*KinkyDungeonBookScale, 483*KinkyDungeonBookScale);
 
 	if (KinkyDungeonSpells[KinkyDungeonCurrentPage] || KinkyDungeonPreviewSpell) {
 		let spell = KinkyDungeonPreviewSpell ? KinkyDungeonPreviewSpell : KinkyDungeonSpells[KinkyDungeonCurrentPage];
@@ -1421,7 +1421,7 @@ function KinkyDungeonDrawMagic() {
 		if (spell.school) SchoolColor = KDSchoolColor(spell.school);
 
 		if (!spell.passive)
-			KDDraw(kdcanvas, kdpixisprites, "kdspellPreview", KinkyDungeonRootDirectory + "Spells/" + spell.name + ".png",
+			KDDraw(kdcanvas, kdpixisprites, "kdspellPreview", KinkyDungeonRootDirectory + "Spells/" + spell.name + ".webp",
 				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale/3.35 - 100, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 45, 200, 200, undefined, {
 					zIndex: 129,
 				}, undefined, undefined, undefined, true);
@@ -1688,7 +1688,7 @@ function KinkyDungeonListSpells(Mode) {
 				else
 					selectedFilters.push(f);
 				return true;
-			}, true, canvasOffsetX_ui + xOffset + x + 30, y, filterWidth, 32, TextGet("KinkyDungeonFilter" + f), selectedFilters.includes(f) ? "#ffffff" : "#999999", ticked ? (KinkyDungeonRootDirectory + "UI/Tick.png") : "", "", false, true, KDButtonColor, 22);
+			}, true, canvasOffsetX_ui + xOffset + x + 30, y, filterWidth, 32, TextGet("KinkyDungeonFilter" + f), selectedFilters.includes(f) ? "#ffffff" : "#999999", ticked ? (KinkyDungeonRootDirectory + "UI/Tick.webp") : "", "", false, true, KDButtonColor, 22);
 			y += 38;
 		}
 	}
@@ -1771,7 +1771,7 @@ function KinkyDungeonListSpells(Mode) {
 						//suff = "";
 					}
 					if (!spell.passive)
-						KDDraw(kdcanvas, kdpixisprites, "spIcon" + spell.name, KinkyDungeonRootDirectory + "Spells/" + spell.name + ".png",
+						KDDraw(kdcanvas, kdpixisprites, "spIcon" + spell.name, KinkyDungeonRootDirectory + "Spells/" + spell.name + ".webp",
 							xx,
 							yy,
 							h,
@@ -1783,7 +1783,7 @@ function KinkyDungeonListSpells(Mode) {
 							},
 						);
 					if (index >= 0)
-						KDDraw(kdcanvas, kdpixisprites, "spIconTick" + spell.name, KinkyDungeonRootDirectory + "UI/" + "CheckSmall" + ".png",
+						KDDraw(kdcanvas, kdpixisprites, "spIconTick" + spell.name, KinkyDungeonRootDirectory + "UI/" + "CheckSmall" + ".webp",
 							xx + w - 30,
 							yy + h/2-15,
 							30,
@@ -1819,7 +1819,7 @@ function KinkyDungeonListSpells(Mode) {
 						h,
 						"", color,
 						"", "", false, true, (index >= 0) ? "#070707" : "#040404",
-						// Image: KinkyDungeonSpellChoices.includes(index) ? (KinkyDungeonRootDirectory + "UI/Tick.png") : ""
+						// Image: KinkyDungeonSpellChoices.includes(index) ? (KinkyDungeonRootDirectory + "UI/Tick.webp") : ""
 						(spell.upcastFrom ? 20 : 24),
 						false,
 						{
@@ -1851,12 +1851,12 @@ function KinkyDungeonListSpells(Mode) {
 		DrawButtonKDEx("spellsUp", (bdata) => {
 			KDSpellListIndex = Math.max(0, KDSpellListIndex - 3);
 			return true;
-		}, KDSpellListIndex > 0, 910, 800, 90, 40, "", KDSpellListIndex > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png");
+		}, KDSpellListIndex > 0, 910, 800, 90, 40, "", KDSpellListIndex > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.webp");
 	if (cutoff)
 		DrawButtonKDEx("spellsDown", (bdata) => {
 			KDSpellListIndex = Math.max(0, Math.min(longestList - KDMaxSpellPerColumn + 1, KDSpellListIndex + 3));
 			return true;
-		}, KDSpellListIndex < longestList - KDMaxSpellPerColumn + 1, 1160, 800, 90, 40, "", KDSpellListIndex < longestList - KDMaxSpellPerColumn + 1 ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png");
+		}, KDSpellListIndex < longestList - KDMaxSpellPerColumn + 1, 1160, 800, 90, 40, "", KDSpellListIndex < longestList - KDMaxSpellPerColumn + 1 ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.webp");
 
 
 	let procList = pageNames;
@@ -2146,7 +2146,7 @@ function KDDrawHotbar(xLoc, yLoc, name, fn) {
 		if (KinkyDungeonSpells[KinkyDungeonSpellChoices[I]]) {
 			spell = KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].name;
 			label = TextGet("KinkyDungeonSpell" + spell);
-			KDDraw(kdcanvas, kdpixisprites, "kdspellPreview" + spell, KinkyDungeonRootDirectory + "Spells/" + spell + ".png", x - h, y, h, h);
+			KDDraw(kdcanvas, kdpixisprites, "kdspellPreview" + spell, KinkyDungeonRootDirectory + "Spells/" + spell + ".webp", x - h, y, h, h);
 		} else {
 			spell = KinkyDungeonConsumableChoices[I] || KinkyDungeonWeaponChoices[I] || KinkyDungeonArmorChoices[I];
 			armor = KinkyDungeonArmorChoices[I];

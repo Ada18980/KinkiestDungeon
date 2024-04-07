@@ -618,7 +618,7 @@ let KDEventMapInventory = {
 			for (let enemy of KDMapData.Entities) {
 				if (enemy.Enemy.tags.escapeddoll
 					&& KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y) < 12) {
-					KDDraw(kdcanvas, kdpixisprites, enemy.id + "_dolltarg", KinkyDungeonRootDirectory + "UI/DollmakerTarget.png",
+					KDDraw(kdcanvas, kdpixisprites, enemy.id + "_dolltarg", KinkyDungeonRootDirectory + "UI/DollmakerTarget.webp",
 						(enemy.visual_x - data.CamX - data.CamX_offset - 0.5) * KinkyDungeonGridSizeDisplay,
 						(enemy.visual_y - data.CamY - data.CamY_offset - 0.5) * KinkyDungeonGridSizeDisplay,
 						KinkyDungeonSpriteSize * 2, KinkyDungeonSpriteSize * 2, undefined, {
@@ -4708,7 +4708,7 @@ let KDEventMapSpell = {
 		"Offhand": (e, spell, data) => {
 			if (KDGameData.Offhand || KDGameData.OffhandOld) {
 				// Draw the offhand weapon
-				/*KDDraw(kdcanvas, kdpixisprites, "kdoffhand", KinkyDungeonRootDirectory + `Items/${KDGameData.Offhand}.png`,
+				/*KDDraw(kdcanvas, kdpixisprites, "kdoffhand", KinkyDungeonRootDirectory + `Items/${KDGameData.Offhand}.webp`,
 					1400,
 					200,
 					100, 100, undefined, {
@@ -4734,7 +4734,7 @@ let KDEventMapSpell = {
 				1750,
 				600,
 				100, 100,
-				"", "#ffffff", KinkyDungeonRootDirectory + `Items/${KDWeapon({name: KDGameData.Offhand || KDGameData.OffhandOld})?.name}.png`, "", false, true,
+				"", "#ffffff", KinkyDungeonRootDirectory + `Items/${KDWeapon({name: KDGameData.Offhand || KDGameData.OffhandOld})?.name}.webp`, "", false, true,
 				undefined, undefined, undefined, {tint: KDGameData.Offhand ? "#ffffff" : "#444444", scaleImage: true, zIndex: 5,
 					//hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[1]),
 				}
@@ -4752,7 +4752,7 @@ let KDEventMapSpell = {
 					1400,
 					300,
 					100, 100,
-					"", "#ffffff", KinkyDungeonRootDirectory + `Items/${KDGameData.OffhandReturn}.png`, TextGet("KDoffhand2Tooltip"), false, true,
+					"", "#ffffff", KinkyDungeonRootDirectory + `Items/${KDGameData.OffhandReturn}.webp`, TextGet("KDoffhand2Tooltip"), false, true,
 					undefined, undefined, undefined, {scaleImage: true, zIndex: 5,
 						//hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[2]),
 					}
@@ -4766,7 +4766,7 @@ let KDEventMapSpell = {
 				1750,
 				600,
 				100, 100,
-				"", "#ffffff", KinkyDungeonRootDirectory + `Spells/Offhand.png`, "", false, true,
+				"", "#ffffff", KinkyDungeonRootDirectory + `Spells/Offhand.webp`, "", false, true,
 				undefined, undefined, undefined, {scaleImage: true, zIndex: 5,
 					//hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[1]),
 				}
@@ -4780,7 +4780,7 @@ let KDEventMapSpell = {
 			if (KinkyDungeonPlayerWeapon //  && !KinkyDungeonCanUseWeapon(true, undefined, KDWeapon({name: KinkyDungeonPlayerWeapon})
 				&& (!KDWeapon({name: KinkyDungeonPlayerWeapon})?.noHands || KDWeapon({name: KinkyDungeonPlayerWeapon}).telekinetic)
 				&& !KDWeapon({name: KinkyDungeonPlayerWeapon})?.unarmed) {
-				KDDraw(kdcanvas, kdpixisprites, "kdfloatingwep", KinkyDungeonRootDirectory + `Items/${KDWeapon({name: KinkyDungeonPlayerWeapon})?.name}.png`,
+				KDDraw(kdcanvas, kdpixisprites, "kdfloatingwep", KinkyDungeonRootDirectory + `Items/${KDWeapon({name: KinkyDungeonPlayerWeapon})?.name}.webp`,
 					400, 300 + 50 * Math.sin(2 * Math.PI * (CommonTime() % 3000)/3000),//50,
 					//400 + 50 * Math.sin(2 * Math.PI * (CommonTime() % 3000)/3000),
 					200, 200, KDWeapon({name: KinkyDungeonPlayerWeapon})?.angle != undefined ? KDWeapon({name: KinkyDungeonPlayerWeapon}).angle : Math.PI/2, {
@@ -4802,7 +4802,7 @@ let KDEventMapSpell = {
 						let color = "#882222";
 						if (enemy.Enemy.stealth > 0 || KDAmbushAI(enemy)) color = "#441111";
 						if (color == "#882222" || Math.sqrt((KinkyDungeonPlayerEntity.x - enemy.x) * (KinkyDungeonPlayerEntity.x - enemy.x) + (KinkyDungeonPlayerEntity.y - enemy.y) * (KinkyDungeonPlayerEntity.y - enemy.y)) < e.distStealth)
-							KDDraw(kdcanvas, kdpixisprites, enemy.id + "_sense", KinkyDungeonRootDirectory + "Aura.png",
+							KDDraw(kdcanvas, kdpixisprites, enemy.id + "_sense", KinkyDungeonRootDirectory + "Aura.webp",
 								(enemy.visual_x - data.CamX - data.CamX_offset) * KinkyDungeonGridSizeDisplay,
 								(enemy.visual_y - data.CamY - data.CamY_offset) * KinkyDungeonGridSizeDisplay,
 								KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
@@ -4934,7 +4934,7 @@ let KDEventMapSpell = {
 							x: player.x,
 							y: player.y,
 							radius: 3,
-							sprite: "Particles/ShockwaveDesire.png",
+							sprite: "Particles/ShockwaveDesire.webp",
 						});
 
 						if (cost > 0)
@@ -4992,7 +4992,7 @@ let KDEventMapSpell = {
 								x: player.x,
 								y: player.y,
 								radius: 2,
-								sprite: "Particles/ShockwaveShield.png",
+								sprite: "Particles/ShockwaveShield.webp",
 							});
 
 						}
@@ -5695,7 +5695,7 @@ let KDEventMapWeapon = {
 	"draw": {
 		"Float": (e, weapon, data) => {
 			if (KinkyDungeonCanUseWeapon(true, undefined, KDWeapon({name: KinkyDungeonPlayerWeapon}))) {
-				KDDraw(kdcanvas, kdpixisprites, "kdfloatingwep", KinkyDungeonRootDirectory + `Items/${KDWeapon({name: KinkyDungeonPlayerWeapon})?.name}.png`,
+				KDDraw(kdcanvas, kdpixisprites, "kdfloatingwep", KinkyDungeonRootDirectory + `Items/${KDWeapon({name: KinkyDungeonPlayerWeapon})?.name}.webp`,
 					400, 300 + 50 * Math.sin(2 * Math.PI * (CommonTime() % 3000)/3000),//50,
 					//400 + 50 * Math.sin(2 * Math.PI * (CommonTime() % 3000)/3000),
 					200, 200, KDWeapon({name: KinkyDungeonPlayerWeapon})?.angle != undefined ? KDWeapon({name: KinkyDungeonPlayerWeapon}).angle : Math.PI/2, {
@@ -8862,7 +8862,7 @@ let KDEventMapGeneric = {
 					&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0
 					//&& KDCanSeeEnemy(enemy)
 				) {
-					KDDraw(kdcanvas, kdpixisprites, enemy.id + "_hvtarg", KinkyDungeonRootDirectory + "UI/HighValueTarget.png",
+					KDDraw(kdcanvas, kdpixisprites, enemy.id + "_hvtarg", KinkyDungeonRootDirectory + "UI/HighValueTarget.webp",
 						(enemy.visual_x - data.CamX - data.CamX_offset) * KinkyDungeonGridSizeDisplay,
 						(enemy.visual_y - data.CamY - data.CamY_offset) * KinkyDungeonGridSizeDisplay,
 						KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
@@ -8875,7 +8875,7 @@ let KDEventMapGeneric = {
 		"QuestMarker": (e, data) => {
 			for (let enemy of KDMapData.Entities) {
 				if (KDEnemyHasFlag(enemy, "questtarget") && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
-					KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_questtarg", KinkyDungeonRootDirectory + "UI/DollmakerTarget.png",
+					KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_questtarg", KinkyDungeonRootDirectory + "UI/DollmakerTarget.webp",
 						(enemy.visual_x - data.CamX) * KinkyDungeonGridSizeDisplay,
 						(enemy.visual_y - data.CamY) * KinkyDungeonGridSizeDisplay,
 						KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
@@ -8890,7 +8890,7 @@ let KDEventMapGeneric = {
 			if (escapeMethod != "Kill" && escapeMethod != "Miniboss") return;
 			for (let enemy of KDMapData.Entities) {
 				if (KDEnemyHasFlag(enemy, "killtarget") && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
-					KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_killtarg", KinkyDungeonRootDirectory + "UI/QuestTarget.png",
+					KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_killtarg", KinkyDungeonRootDirectory + "UI/QuestTarget.webp",
 						(enemy.visual_x - data.CamX) * KinkyDungeonGridSizeDisplay,
 						(enemy.visual_y - data.CamY) * KinkyDungeonGridSizeDisplay,
 						KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
@@ -8908,7 +8908,7 @@ let KDEventMapGeneric = {
 				if (KDEnemyHasFlag(enemy, "questtarget")
 					&& (enemy.x - data.x + .5) * data.scale > 0 && (enemy.y - data.y + .5) * data.scale > 0
 					&& (enemy.x - data.x + .5) * data.scale < KDMinimapWidth()+21 && (enemy.y - data.y + .5) * data.scale < KDMinimapHeight() + 21) {
-					/*KDDraw(kdminimap, kdminimapsprites, enemy.id + "_questtargmm", KinkyDungeonRootDirectory + "UI/DollmakerTarget.png",
+					/*KDDraw(kdminimap, kdminimapsprites, enemy.id + "_questtargmm", KinkyDungeonRootDirectory + "UI/DollmakerTarget.webp",
 						(enemy.x - data.x - 1) * data.scale,
 						(enemy.y - data.y - 1) * data.scale,
 						data.scale * 2, data.scale * 2, undefined, {
