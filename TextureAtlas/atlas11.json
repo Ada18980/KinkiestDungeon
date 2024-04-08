@@ -128,21 +128,21 @@
 	"spriteSourceSize": {"x":501,"y":407,"w":188,"h":129},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/DivineCuffs/WristLeftDecoCleanYoked.png":
+"Models/EyesK2/EyesClosed.png":
 {
-	"frame": {"x":1984,"y":1847,"w":61,"h":33},
+	"frame": {"x":1984,"y":1771,"w":61,"h":37},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":873,"y":403,"w":61,"h":33},
-	"sourceSize": {"w":1240,"h":1754}
+	"spriteSourceSize": {"x":518,"y":269,"w":61,"h":37},
+	"sourceSize": {"w":781,"h":560}
 },
-"Models/DivineCuffs/WristLeftDecoYoked.png":
+"Models/EyesK2/WhitesEyesClosed.png":
 {
-	"frame": {"x":1984,"y":1884,"w":61,"h":33},
+	"frame": {"x":1984,"y":1771,"w":61,"h":37},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":873,"y":403,"w":61,"h":33},
-	"sourceSize": {"w":1240,"h":1754}
+	"spriteSourceSize": {"x":518,"y":269,"w":61,"h":37},
+	"sourceSize": {"w":781,"h":560}
 },
 "Models/FaceKjus/BrowsSurprised.png":
 {
@@ -154,19 +154,19 @@
 },
 "Models/FaceKjus/EyesAngry.png":
 {
-	"frame": {"x":1984,"y":1771,"w":61,"h":34},
+	"frame": {"x":1984,"y":1812,"w":61,"h":34},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":523,"y":280,"w":61,"h":34},
 	"sourceSize": {"w":725,"h":425}
 },
-"Models/FaceKjus/WhitesEyesAngry.png":
+"Models/Heels/BalletLaceRightClosed.png":
 {
-	"frame": {"x":1984,"y":1809,"w":61,"h":34},
+	"frame": {"x":1984,"y":1850,"w":48,"h":195},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":523,"y":280,"w":61,"h":34},
-	"sourceSize": {"w":725,"h":425}
+	"spriteSourceSize": {"x":527,"y":1387,"w":48,"h":195},
+	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Heels/BalletSoleLeftKneel.png":
 {
@@ -190,14 +190,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":664,"y":167,"w":168,"h":267},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Robes/ShoeLeftHogtie.png":
-{
-	"frame": {"x":1984,"y":1921,"w":51,"h":124},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":731,"y":798,"w":51,"h":124},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Rope/Calf2KneelClosed.png":
@@ -272,6 +264,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json", "atlas24.json", "atlas25.json", "atlas26.json", "atlas27.json", "atlas28.json", "atlas29.json", "atlas30.json", "atlas31.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:3aa6a9f9f8bb9b6fe2ea556d94e8544d:f109b1ddf573851ae1eff71b105fcee9:922d7fa59cb0468d1fe9d4c846f79a8b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e5b017df778f57c4bb644965772b90d3:db38c81e9eccb561bec8d41b59277e9b:922d7fa59cb0468d1fe9d4c846f79a8b$"
 }
 }

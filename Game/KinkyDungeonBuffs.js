@@ -319,8 +319,8 @@ function KinkyDungeonGetbuff(list, Buff) {
 	else return null;
 }
 
-function KinkyDungeonHasBuff(list, Buff) {
-	if (list && list[Buff]) return true;
+function KinkyDungeonHasBuff(list, Buff, excludeNoDuration) {
+	if (list && list[Buff] && (!excludeNoDuration || list[Buff].duration > 0)) return true;
 	else return false;
 }
 
@@ -328,12 +328,13 @@ function KinkyDungeonHasBuff(list, Buff) {
  *
  * @param {entity} entity
  * @param {string} buff
+ * @param {boolean} excludeNoDuration
  * @returns {boolean}
  */
-function KDEntityHasBuff(entity, buff) {
+function KDEntityHasBuff(entity, buff, excludeNoDuration = false) {
 	if (entity.player) {
-		return KinkyDungeonHasBuff(KinkyDungeonPlayerBuffs, buff);
-	} else return KinkyDungeonHasBuff(entity.buffs, buff);
+		return KinkyDungeonHasBuff(KinkyDungeonPlayerBuffs, buff, excludeNoDuration);
+	} else return KinkyDungeonHasBuff(entity.buffs, buff, excludeNoDuration);
 }
 /**
  *

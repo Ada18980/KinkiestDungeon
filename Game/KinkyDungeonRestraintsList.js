@@ -5641,9 +5641,9 @@ const KinkyDungeonRestraints = [
 				"AnkleCuffs": "FuturisticAnkleCuffs",
 			},
 			{
-				"ArmCuffs": "ShacklesArms",
-				"LegCuffs": "ShacklesThigh",
-				"AnkleCuffs": "ShacklesAnkles",
+				"ArmCuffs": "SteelCuffsArms",
+				"LegCuffs": "SteelCuffsThigh",
+				"AnkleCuffs": "SteelCuffsAnkles",
 			},
 		);
 
@@ -5676,6 +5676,7 @@ const KinkyDungeonRestraints = [
 			{
 			}, {
 				BaseMetal: {"gamma":1.7833333333333334,"saturation":1,"contrast":2.45,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+				Rim: {"gamma":1.2833333333333334,"saturation":1,"contrast":2.45,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			}, 6, false,
 			{
 				"ArmCuffs": "FuturisticCuffs",
@@ -5683,9 +5684,9 @@ const KinkyDungeonRestraints = [
 				"AnkleCuffs": "FuturisticAnkleCuffs",
 			},
 			{
-				"ArmCuffs": "ShacklesArms",
-				"LegCuffs": "ShacklesThigh",
-				"AnkleCuffs": "ShacklesAnkles",
+				"ArmCuffs": "SteelCuffsArms",
+				"LegCuffs": "SteelCuffsThigh",
+				"AnkleCuffs": "SteelCuffsAnkles",
 			},
 		);
 		KDAddCuffVariants(
@@ -5913,7 +5914,7 @@ const KinkyDungeonRestraints = [
 			},
 			{
 			}, {
-				BaseMetal: {"gamma":0.95,"saturation":1,"contrast":1.6166666666666665,"brightness":2.29999999999998,"red":2.0166666666666666,"green":0.9833333333333333,"blue":2.5333333333333337,"alpha":0.6666666666666666},
+				//BaseMetal: {"gamma":0.95,"saturation":1,"contrast":1.6166666666666665,"brightness":2.29999999999998,"red":2.0166666666666666,"green":0.9833333333333333,"blue":2.5333333333333337,"alpha":0.6666666666666666},
 			}, 6, false,
 			{
 				"ArmCuffs": "OrnateCuffs",
@@ -5921,9 +5922,9 @@ const KinkyDungeonRestraints = [
 				"AnkleCuffs": "OrnateAnkleCuffs",
 			},
 			{
-				"ArmCuffs": "ShacklesArms",
-				"LegCuffs": "ShacklesThigh",
-				"AnkleCuffs": "ShacklesAnkles",
+				"ArmCuffs": "CrystalCuffsArms",
+				"LegCuffs": "CrystalCuffsThigh",
+				"AnkleCuffs": "CrystalCuffsAnkles",
 			},
 
 		);
@@ -5960,18 +5961,16 @@ const KinkyDungeonRestraints = [
 				Remove: 0.0,
 			},
 			{
-			}, {
-				BaseMetal: {"gamma":0.733333333333333,"saturation":0.05,"contrast":1.0166666666666666,"brightness":1.1833333333333333,"red":1,"green":2.2333333333333334,"blue":3.3833333333333333,"alpha":1},
-			}, 6, false,
+			}, {"BaseMetal":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.9333333333333333,"red":1,"green":1,"blue":1,"alpha":1},"Rim":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.65,"red":1,"green":1,"blue":1,"alpha":1}}, 6, false,
 			{
 				"ArmCuffs": "OrnateCuffs",
 				"LegCuffs": "OrnateLegCuffs",
 				"AnkleCuffs": "OrnateAnkleCuffs",
 			},
 			{
-				"ArmCuffs": "ShacklesArms",
-				"LegCuffs": "ShacklesThigh",
-				"AnkleCuffs": "ShacklesAnkles",
+				"ArmCuffs": "CrystalCuffsArms",
+				"LegCuffs": "CrystalCuffsThigh",
+				"AnkleCuffs": "CrystalCuffsAnkles",
 			},
 			true, false
 		);
@@ -6005,7 +6004,7 @@ const KinkyDungeonRestraints = [
 			},
 			{
 			}, {
-				BaseMetal: {"gamma":0.95,"saturation":1,"contrast":1.6166666666666665,"brightness":1.7999999999999998,"red":1.0166666666666666,"green":0.9833333333333333,"blue":2.5333333333333337,"alpha":1},
+				BaseMetal: {"gamma":1.2166666666666668,"saturation":0,"contrast":4.5,"brightness":0.3333333333333333,"red":1.0166666666666666,"green":0.9833333333333333,"blue":2.5333333333333337,"alpha":1},
 			}, 6, false,
 			{
 				"ArmCuffs": "OrnateCuffs",
@@ -6013,9 +6012,9 @@ const KinkyDungeonRestraints = [
 				"AnkleCuffs": "OrnateAnkleCuffs",
 			},
 			{
-				"ArmCuffs": "ShacklesArms",
-				"LegCuffs": "ShacklesThigh",
-				"AnkleCuffs": "ShacklesAnkles",
+				"ArmCuffs": "CrystalCuffsArms",
+				"LegCuffs": "CrystalCuffsThigh",
+				"AnkleCuffs": "CrystalCuffsAnkles",
 			},
 		);
 

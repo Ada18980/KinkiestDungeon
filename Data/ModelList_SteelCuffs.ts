@@ -170,7 +170,7 @@ AddModel({
 	Folder: "SteelCuffs",
 	TopLevel: true,
 	Categories: ["Restraints","Cuffs"],
-	AddPose: ["ThighRight", "ThighLeft"],
+	AddPose: ["ThighRight", "ThighLeft", "LowCuffs"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SteelCuffsThighRight"),
 		...GetModelLayers("SteelCuffsThighLeft"),
