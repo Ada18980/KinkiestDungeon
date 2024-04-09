@@ -444,8 +444,8 @@ Your damage and evasion increases based on the number of restraints worn, up to 
 你的伤害和闪避会根据佩戴的束缚数量增加，完全束缚时最多 +40%。
 Kill Squad
 杀戮小队
-Enemies see you through walls and at greater distance.
-敌人透过墙壁和更远的距离看到你。
+Enemies gain increased blindsight and vision radius.
+敌人的盲视能力和视野半径增加。
 Supermarket
 超市
 Commerce shrines can appear in levels and have slightly more items.
@@ -608,8 +608,8 @@ Increases the size of maps by 3 in each direction.
 将每个方向的地图大小增加 3。
 Rigger
 索具装配工
-Chain and glue damage increased by 20%. Binding on enemies is 30% stronger.
-提高 20% 锁链/胶水伤害，并提高对敌人的拘束强度 30%。
+Binding on enemies is 30% stronger.
+对敌人的拘束力提高 30%。
 Pacifist
 和平主义者
 All damage dealt to humanoid enemies is reduced by 90% except pain, grope, tickle, charm, psychic, chain, or glue.
@@ -859,7 +859,7 @@ More Tape
 Tape-wielding enemies (such as Tape Bots) occur more frequently.
 胶带系敌人（例如胶带机器人）会更频繁地出现。
 Less Tape
-更少胶带
+减少胶带
 Fewer tape-related enemies will appear, although this does not remove tape entirely.
 与胶带有关的敌人将较少出现，但胶带系的拘束不会完全消失。
 No Tape Bots
@@ -884,8 +884,8 @@ Enemies that encase you (e.g slimes, latex cubes) will appear more frequently.
 包裹系的敌人（例如史莱姆、乳胶块）会更频繁地出现。
 Less Encasement
 减少包裹
-Fewer encasement-related enemies will appear, although this does not remove it entirely.
-包裹系的敌人（例如史莱姆、乳胶块）出现频率会降低，但不会完全消失。
+Fewer encasement-related enemies will appear, although this does not remove them entirely.
+包裹系的敌人会减少出现，但这不会使它们完全消失。
 Trainee
 练习生
 Your training has given you access to the powers of the Trainee class. (Aroused mode only)
@@ -2251,7 +2251,7 @@ You pick up Shadow's Edge.
 Stormbreaker
 风暴之锤
 I have the power! Taking electric damage charges you (1 turn/10dmg).
-我拥有了力量！受到电击伤害会充能（每10点伤害充能1回合）。
+我拥有了力量！受到电击伤害会充能（每1回合/10点伤害）。
 Deals crush damage. Deals bonus electric damage in an area when charged, up to +40.
 造成碾压伤害。充能后，在范围内造成额外最高 40 点电击伤害。
 You pick up Stormbreaker.
@@ -7689,11 +7689,11 @@ Dodge I
 Dodge II
 闪避 II
 +15 Evasion (25 total)
-+15 闪避（总计 25 次）
++15 闪避（总计 25）
 Dodge III
 闪避 III
 +25 Evasion (50 total)
-+25 闪避（总计 50 次）
++25 闪避（总计 50）
 Strength Up
 力量提升
 +20% Physical Damage
@@ -7709,11 +7709,11 @@ Accuracy I
 Accuracy II
 精准 II
 +15 Accuracy (25 total)
-+15 精准度（总计 25 次）
++15 精准度（总计 25）
 Accuracy III
 精准 III
 +25 Accuracy (50 total)
-+25 精准度（总计 50 次）
++25 精准度（总计 50）
 Martial Arts I
 武术 I
 Unarmed strikes gain 15% accuracy and -10% stamina cost.
@@ -7806,12 +7806,8 @@ Legendary Wizard
 传奇法师
 More Summons
 专家召唤师
-Increases the permanent summon cap by +1 (from 2 to 3)
-召唤上限永久增加 +1（从 2 增加到 3）
-Many Summons
-召唤师大师
-Increases the permanent summon cap by +1 (from 3 to 4)
-召唤上限永久增加 +1（从 3 增加到 4）
+Increases the permanent summon cap by +2 (from 2 to 4)
+召唤上限永久增加 +2（从 2 增加到 4）
 Channel for 1 turn for a bomb that does DamageDealt blast damage in an area after DelayTime turns.
 消耗1回合，放置一个 DelayTime 回合后在一个区域内造成 DamageDealt 点爆炸伤害的炸弹。
 Fire in the hole!
@@ -8154,8 +8150,8 @@ CMD: Unlock
 指令：解锁
 Select which creature to unlock
 选择要解锁的生物
-On yourself: Removes one magical lock. On a creature: Reduces the target's binding by 20 points.
-对你自己：移除一个魔法锁。对生物：减少目标束缚 20 点。
+On yourself: Removes one purple (magical) lock. On a creature: Reduces the target's binding by 20 points.
+对你自己：移除一个紫色魔法锁。对生物：减少目标束缚 20 点。
 You speak a command word!
 你念出指令！
 None of the locks you are wearing respond to your magic.
@@ -11663,17 +11659,17 @@ The weapon requires power from an Ancient Crystal to function.
 Target an enemy: Attack with Dragonslaver. Target a tile: Spend 8 charge to launch binding belts
 瞄准敌人：用驯龙者攻击。瞄准一个方块：花费 8 点能量来发射捆绑带
 25 charge to enter Slime Form for 25 turns, and create slime around yourself.
-25 次充能进入粘液形态 25 回合，并在自己周围制造出粘液。
+25 点充能进入粘液形态 25 回合，并在自己周围制造出粘液。
 50 charge to reduce mana cost of next fire, earth, air, and water spell by 50 (once for each element)
-50 点费用可将下一个火、土、空气和水法术的法力消耗减少 50（每个元素一次）
+50 点充能可将下一个火、土、空气和水法术的法力消耗减少 50（每个元素一次）
 25 charge to disarm a target for 8 turns, rendering them unable to attack.
-25 次冲锋可以解除目标的武装，持续8回合，使其无法攻击。
+25 次充能可以解除目标的武装，持续8回合，使其无法攻击。
 5 charge (+2.5 per charge) to channel and fire a beam that deals 30 + 3/charge electric damage, or 90 at max charge.
-5 次充能（每次充能 +2.5）可引导并发射光束，造成 30 + 3/充能电伤害，或最大充能时造成 90 点伤害。
+5 点充能（每次充能 +2.5）可引导并发射光束，造成 30 + 3/充能 电击伤害，最大充能时造成 90 点伤害。
 10 charge to fire a blast that deals 25 electric damage.
-10 次充能可发射爆炸，造成 25 点电击伤害。
+10 点充能可发射爆炸，造成 25 点电击伤害。
 50 charge to fire an arrow that enrages a target.
-50 冲锋发射一支箭，激怒目标。
+50 点充能发射一支箭，激怒目标。
 50 charge: Free nearby allies and disrobe enemies, increasing charm damage by 100% and removing 100 armor.
 50 点充能：释放附近的盟友并脱去敌人的衣服，增加100%的魅力伤害并去除100点护甲。
 Create a '+' shaped pool of slime that deals 35 glue damage per hit
@@ -12885,7 +12881,7 @@ You're giving me everything you have.
 (Back off)
 （退后）
 (The SPEAKER approaches you with an offer)|Greetings! I am the potion seller.|I buy and sell only the strongest potions!|
-（SPEAKER 向你提出要约）|你好！我是魔药商。|我只买卖最强的药水！|
+（SPEAKER 向你提出邀约）|你好！我是魔药商。|我只买卖最强的药水！|
 (The SPEAKER doesn't look surprised)|Okay, just let me set these down real quick...
 （SPEAKER 看起来并不惊讶）|好吧，让我快速地把这些写下来......
 (The SPEAKER smiles)|A spellcaster will have great use for this!
@@ -12951,7 +12947,7 @@ You're giving me everything you have.
 (The SPEAKER giggles)|Living dangerously, I see~
 （SPEAKER 咯咯笑）|生活很危险，我明白了~
 (The SPEAKER approaches you with an offer)|Hey girl~|You seem like the explorer type.|Happen to have any good finds?
-（SPEAKER 向你提出要约）|嘿姑娘~|你看起来像探险家。|碰巧有什么好发现吗？
+（SPEAKER 向你提出邀约）|嘿姑娘~|你看起来像探险家。|碰巧有什么好发现吗？
 (The SPEAKER frowns)|Well then.
 （SPEAKER 皱眉）|那么好吧。
 (The SPEAKER grins)|Are you willing to part with this?
@@ -15077,9 +15073,9 @@ Vibrator Remote
 You click the remote and hear a buzzing noise!
 你按下遥控器并听到嗡嗡声！
 15 charge to powerfully activate vibrators in an area for 15 turns.
-15 次充能可强力激活某个区域内的振动器，持续 15 回合。
+15 点充能可强力激活某个区域内的振动器，持续 15 回合。
 10 charge to activate vibrators in an area for 15 turns.
-10 次充能可激活区域内的振动器 15 回合。
+10 点充能可激活区域内的振动器 15 回合。
 You find a golden crystal. It glows faintly.
 你发现一颗金色的水晶。它发出微弱的光芒。
 You find a dull, gold-tinted crystal.
@@ -15129,7 +15125,7 @@ Reload time: None. Deals crush damage on melee. Draws 10 charge and 20 stamina t
 You find a wooden bow.
 你找到一把木弓。
 10 charge to fire an arrow. Deals 30 pierce damage.
-10 次充能即可发射箭。造成 30 点穿刺伤害。
+10 点充能即可发射箭。造成 30 点穿刺伤害。
 Choose projectile path
 选择弹丸路径
 Arrow
@@ -15139,7 +15135,7 @@ You loose an arrow!
 Fire Arrows
 火焰箭
 Converts arrows to fire arrows for 30 extra charge, which deal the arrow damage plus 20 as fire damage in a 3x3 area and stuns briefly.
-将箭转换为火焰箭，需要 30 次额外充能，在 3x3 区域内造成箭伤害加上 20 点火焰伤害，并短暂眩晕。
+将箭转换为火焰箭，需要 30 点额外充能，在 3x3 区域内造成箭伤害加上 20 点火焰伤害，并短暂眩晕。
 You switch to using fire arrows.
 你切换到使用火焰箭。
 Fire Arrow
@@ -15147,7 +15143,7 @@ Fire Arrow
 Vine Arrows
 藤蔓箭
 Converts arrows to all-natural organic versions for 20 extra charge, which apply 80 binding to the target and deal chain damage instead.
-将箭转换为纯天然有机版本，需要 20 次额外充能，这会对目标施加 80 点束缚并造成锁链伤害。
+将箭转换为纯天然有机版本，需要 20 点额外充能，这会对目标施加 80 点束缚并造成锁链伤害。
 You switch to using vine arrows.
 你切换到使用藤蔓箭。
 Vine Arrow
@@ -15161,11 +15157,11 @@ Crossbow
 Watch where you're pointing that thing!
 注意你把那个东西指向哪里！
 Reload time: 3 stationary turns. Deals crush damage on melee. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 65 pierce damage.
-装弹时间：3 静止回合。近战造成挤压伤害。需要 15 次充能且没有体力来发射普通箭，造成 65 点穿透伤害。
+装弹时间：3 静止回合。近战造成挤压伤害。需要 15 点充能且没有体力来发射普通箭，造成 65 点穿透伤害。
 You find a crossbow.
 你找到一把弩。
 20 charge to fire a bolt. Deals 65 pierce damage.
-20 次充能可发射箭矢。造成 65 点穿刺伤害。
+20 点充能可发射箭矢。造成 65 点穿刺伤害。
 Bolt
 箭矢
 You pull the trigger!
@@ -15427,11 +15423,11 @@ Recurve Bow
 Curvy, just like its user.
 曲线优美，就像它的使用者一样。
 Reload time: 1 turn. Deals crush damage on melee. Draws 14 charge and 35 stamina to fire an ordinary arrow, dealing 40 pierce damage.
-装弹时间：1 回合。近战造成挤压伤害。需要 14 次充能和 35 点体力来发射普通箭，造成 40 点穿透伤害。
+装弹时间：1 回合。近战造成挤压伤害。需要 14 点充能和 35 点体力来发射普通箭，造成 40 点穿透伤害。
 You find a recurve bow.
 你找到一把反曲弓。
 14 charge to fire an arrow. Deals 40 pierce damage.
-14 次充能即可发射射箭。造成 40 点穿刺伤害。
+14 点充能即可发射射箭。造成 40 点穿刺伤害。
 Recurve Bow Arrow
 反曲弓箭
 You loose a strong arrow!
@@ -15441,11 +15437,11 @@ Longbow
 Great for building both empires and muscle.
 非常适合建立帝国和肌肉。
 Reload time: 2 turns. Deals crush damage on melee. Draws 18 charge and 60 stamina to fire an ordinary arrow, dealing 60 pierce damage.
-装弹时间：2 回合。近战造成挤压伤害。需要 18 次充能和 60 点体力来发射普通箭，造成 60 点穿透伤害。
+装弹时间：2 回合。近战造成挤压伤害。需要 18 点充能和 60 点体力来发射普通箭，造成 60 点穿透伤害。
 You find a huge longbow.
 你发现一把巨大的长弓。
 18 charge to fire an arrow. Deals 60 pierce damage.
-18 次充能即可发射箭。造成 60 点穿刺伤害。
+18 点充能即可发射箭。造成 60 点穿刺伤害。
 Longbow Arrow
 长弓箭
 You loose a mighty arrow!
@@ -15455,11 +15451,11 @@ Pistol Crossbow
 Lethal. Sustainable. Portable.
 致命。可持续。便携。
 Reload time: 3 turns. Deals crush damage on melee. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 45 pierce damage.
-装弹时间：3 回合。近战造成挤压伤害。需要 15 次充能且无需体力即可发射普通箭，造成 45 点穿刺伤害。
+装弹时间：3 回合。近战造成挤压伤害。需要 15 点充能且无需体力即可发射普通箭，造成 45 点穿刺伤害。
 You find a pistol crossbow.
 你找到一把手枪弩。
 20 charge to fire a bolt. Deals 45 pierce damage.
-20 次充能即可发射箭矢。造成 45 点穿刺伤害。
+20 点充能即可发射箭矢。造成 45 点穿刺伤害。
 Pistol Bolt
 手枪弩箭
 Arbalest
@@ -15542,8 +15538,8 @@ You avoid the attack in a flurry of impressive maneuvers!
 你在一系列令人印象深刻的动作中避开了攻击！
 Arcane Barrier
 奥术屏障
-When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 40 + 10% Max Mana.
-当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 1:2 的比例缓慢将奥术能量转化为护盾。最大护盾等于 40 + 10% 的最大魔法值。
+When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 10% Max Mana.
+当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 1:2 的比例缓慢将奥术能量转化为护盾。最大护盾等于 10% 的最大魔法值。
 You sense that a high value target is near.
 你感觉到一个高价值目标正在靠近。
 You push yourself beyond physical limits!
@@ -16391,7 +16387,7 @@ Show Buffs and Stats
 Remove Devotion
 停止奉献
 Devote Yourself
-奉献自己
+全心投入
 Pray for Assistance
 祈求帮助
 This shrine bears a request carved in stone:
@@ -17642,3 +17638,55 @@ Unconventional Warfare
 非常规作战
 Select a weapon to attach it to your body. You can have one attached weapon at a time. Attaching it takes 5 turns.|An attached weapon can be equipped without hands and maintains 60% accuracy as long as you have arms or legs unbound.
 选择一件武器，将其附在身上。你同时只能拥有一件附加武器。需要 5 个回合来准备。|附加武器可以不用手来装备，只要你的手臂或腿没有被绑住，就能保持 60% 的准确度。
+More Bubbles
+更多气泡
+Enemies that use bubbles (e.g. aqua slimes, water witches) will appear more frequently.
+使用气泡的敌人（如水生史莱姆、水巫师）会更频繁地出现。
+Less Bubbles
+减少气泡
+Fewer bubble-related enemies will appear, although this does not remove them entirely.
+与气泡有关的敌人将会减少，但这并不能完全移除他们。
+No Blindfolds
+不愿蒙眼
+In most cases you will not get blindfolded, except for cloth blindfolds which can be escaped easily.
+在大多数情况下，你不会被蒙上眼睛，但布眼罩除外，因为布眼罩很容易逃脱。
+No Kigurumi Masks
+没有Kig头壳
+Removes face-mimicing masks from the game.
+取消游戏中的仿脸面具。
+Safeword Please
+请说安全词
+Allies don't help you unless you ask first.
+除非你先开口，否则盟友是不会帮你的。
+Stalker
+潜行者
+Darkness is twice as effective in hiding from enemies.
+躲避敌人时，在黑暗中会给予你双倍的隐蔽效果
+Antique Merchant
+古董商人
+You smash the antique merchant!
+你砸了古董商！
+(The SPEAKER rattles as she waves)|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
+( SPEAKER 挥手时，身体发出嘎吱声)|嗨！|想买一些古代珍宝吗？|我的古董店有你需要的东西！
+(The SPEAKER cracks her exposed knuckles)|So you've seen through my disguise...
+( SPEAKER 敲击着她的指节)|那么你已经看穿了我的伪装...
+(The SPEAKER looks at you.)|Yours is just fine, dear.
+( SPEAKER 看着你)|你的就很好，亲爱的。
+(The SPEAKER chuckles)|You don't have enough gold for that, dear.|Try coming back after a good round of looting!
+ ( SPEAKER 笑着说)|你没有足够的金币，亲爱的。|等你洗劫一空再回来吧！
+(The SPEAKER nods)|My great grandmother used to wear these."
+( SPEAKER 点点头)|我的曾祖母曾经戴过这个。
+(The SPEAKER nods)|Adventurers used to love a good burlap sack.|Nowadays they've got that newfangled magic instead...
+( SPEAKER 点点头)|冒险家们过去喜欢麻布袋，|如今他们用新式魔术袋代替了麻布袋...
+(The SPEAKER nods)|Back in my day, they used candles for light!|These let you put them out to save wax.
+( SPEAKER 点点头)|在我那个年代，人们用蜡烛来照明！|这些可以让你把它们熄灭，以节省蜡。
+(The SPEAKER giggles)|I had all sorts of use for this back on the farm.
+( SPEAKER 咯咯地笑着)|我在农场的时候，这个东西有各种用途。
+Click a hotbar position to assign the item to that slot.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
+点击热键栏位置，即可将项目分配到该槽。|您可以点击右侧的交换按钮，在三个热栏之间进行切换。||您还可以为您的热键栏保存和加载预设。|这些预设在运行时共享。
+Zero Resistance
+放弃反抗
+Toggle this to set bondage resist, evasion, and block to 0. While enabled, using the 'wait until interrupted' button will not be interrupted when hit or bound.
+切换此选项可将束缚抵抗、闪避和格挡设置为 0。启用后，使用 "等待至被打断 "按钮将不会被击中或捆绑中断。
+I'll turn you into a newt! If you don't stop me...
+我要把你变成蝾螈 如果你不阻止我...
