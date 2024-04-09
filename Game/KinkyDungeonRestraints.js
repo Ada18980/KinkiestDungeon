@@ -1891,7 +1891,7 @@ function KDGetStruggleData(data) {
 	if (!data.restraint.struggleProgress) data.restraint.struggleProgress = 0;
 	if (!data.restraint.unlockProgress) data.restraint.unlockProgress = 0;
 	if (!data.restraint.cutProgress) data.restraint.cutProgress = 0;
-	let EC = KDGetEscapeChance(data.restraint, data.struggleType, data.escapeChance, data.limitChance, true, true, true);
+	let EC = KDGetEscapeChance(data.restraint, data.struggleType, data.escapeChance, data.limitChance, true, true, !data.query);
 	data.escapeChance = EC.escapeChance;
 	data.limitChance = EC.limitChance;
 

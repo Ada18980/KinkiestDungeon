@@ -649,7 +649,7 @@ const KinkyDungeonRestraints = [
 		factionFilters: {
 			Lining: {color: "LightNeutral", override: true},
 			Metal: {color: "DarkNeutral", override: true},
-			Display: {color: "Highlight", override: true},
+			Display: {color: "Highlight", override: false},
 			Plug: {color: "Highlight", override: true},
 		},
 		maxwill: 0.4,
@@ -665,7 +665,7 @@ const KinkyDungeonRestraints = [
 		chastitybra: true, power: 15, weight: 0, DefaultLock: "Gold",
 		Model: "BraCyber",
 		factionFilters: {
-			Display: {color: "Highlight", override: true},
+			Display: {color: "Highlight", override: false},
 			Lining: {color: "LightNeutral", override: true},
 			Metal: {color: "DarkNeutral", override: true},
 		},
@@ -687,7 +687,7 @@ const KinkyDungeonRestraints = [
 		tightType: "Secure",
 		harness: true,
 		factionFilters: {
-			Display: {color: "Highlight", override: true},
+			Display: {color: "Highlight", override: false},
 			Straps: {color: "LightNeutral", override: true},
 			Metal: {color: "DarkNeutral", override: true},
 		},
@@ -724,7 +724,7 @@ const KinkyDungeonRestraints = [
 		Model: "FutureCollar",
 		tightType: "Secure",
 		factionFilters: {
-			Display: {color: "Highlight", override: true},
+			Display: {color: "Highlight", override: false},
 			Base: {color: "DarkNeutral", override: true},
 			Rim: {color: "LightNeutral", override: true},
 			Band: {color: "LightNeutral", override: true},
@@ -784,13 +784,13 @@ const KinkyDungeonRestraints = [
 	{inventory: true, sfx: "FutureLock", name: "CyberBallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink],
 
 		factionFilters: {
-			Display: {color: "Highlight", override: true},
+			Display: {color: "Highlight", override: false},
 			Harness: {color: "DarkNeutral", override: true},
 			Strap: {color: "LightNeutral", override: true},
 			SideStrap: {color: "LightNeutral", override: true},
 			HarnessMask: {color: "DarkNeutral", override: true},
 			Mask: {color: "DarkNeutral", override: true},
-			HarnessDisplay: {color: "Highlight", override: true},
+			HarnessDisplay: {color: "Highlight", override: false},
 			HarnessRim: {color: "LightNeutral", override: true},
 			Muzzle: {color: "LightNeutral", override: true},
 		},
@@ -817,13 +817,13 @@ const KinkyDungeonRestraints = [
 	{inventory: true, sfx: "FutureLock", name: "CyberPlugGag", debris: "Belts", LinkableBy: [...KDPlugGagLink], renderWhenLinked: [...KDPlugGagLink],
 		Model: "AdvancedSciFiPlugGag",
 		factionFilters: {
-			Display: {color: "Highlight", override: true},
+			Display: {color: "Highlight", override: false},
 			Harness: {color: "DarkNeutral", override: true},
 			Strap: {color: "LightNeutral", override: true},
 			SideStrap: {color: "LightNeutral", override: true},
 			HarnessMask: {color: "DarkNeutral", override: true},
 			Mask: {color: "DarkNeutral", override: true},
-			HarnessDisplay: {color: "Highlight", override: true},
+			HarnessDisplay: {color: "Highlight", override: false},
 			HarnessRim: {color: "LightNeutral", override: true},
 			Muzzle: {color: "LightNeutral", override: true},
 		},
@@ -842,13 +842,13 @@ const KinkyDungeonRestraints = [
 	{inventory: true, sfx: "FutureLock", name: "CyberMuzzle", debris: "Belts", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink],
 		Model: "AdvancedSciFiMuzzle2",
 		factionFilters: {
-			Display: {color: "Highlight", override: true},
+			Display: {color: "Highlight", override: false},
 			Harness: {color: "DarkNeutral", override: true},
 			Strap: {color: "LightNeutral", override: true},
 			SideStrap: {color: "LightNeutral", override: true},
 			HarnessMask: {color: "DarkNeutral", override: true},
 			Mask: {color: "DarkNeutral", override: true},
-			HarnessDisplay: {color: "Highlight", override: true},
+			HarnessDisplay: {color: "Highlight", override: false},
 			HarnessRim: {color: "LightNeutral", override: true},
 			Muzzle: {color: "LightNeutral", override: true},
 		},
@@ -912,7 +912,7 @@ const KinkyDungeonRestraints = [
 	{inventory: true, sfx: "FutureLock", name: "CyberAnkleCuffs", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindable, ...KDDevices],
 		Model: "CyberCuffsAnkles",
 		factionFilters: {
-			Display: {color: "Highlight", override: true},
+			Display: {color: "Highlight", override: false},
 			Screen: {color: "LightNeutral", override: true},
 			BaseMetal: {color: "DarkNeutral", override: true},
 			Lock: {color: "DarkNeutral", override: true},
@@ -929,7 +929,7 @@ const KinkyDungeonRestraints = [
 	{inventory: true, sfx: "FutureLock", name: "CyberLegCuffs", debris: "Chains", accessible: true, Asset: "FuturisticLegCuffs", LinkableBy: [...KDBindable, ...KDDevices],
 		Model: "CyberCuffsThigh",
 		factionFilters: {
-			Display: {color: "Highlight", override: true},
+			Display: {color: "Highlight", override: false},
 			Screen: {color: "LightNeutral", override: true},
 			BaseMetal: {color: "DarkNeutral", override: true},
 			Lock: {color: "DarkNeutral", override: true},
@@ -945,7 +945,7 @@ const KinkyDungeonRestraints = [
 	{renderWhenLinked: ["Ties"], sfx: "FutureLock", nonbinding: true, inventory: true, name: "CyberArmCuffs", debris: "Chains", DefaultLock: "Red", accessible: true,
 		Model: "CyberCuffsArms",
 		factionFilters: {
-			Display: {color: "Highlight", override: true},
+			Display: {color: "Highlight", override: false},
 			Screen: {color: "LightNeutral", override: true},
 			BaseMetal: {color: "DarkNeutral", override: true},
 			Lock: {color: "DarkNeutral", override: true},
@@ -1455,7 +1455,7 @@ const KinkyDungeonRestraints = [
 		Model: "ShockModule",
 		factionFilters: {
 			Module: {color: "LightNeutral", override: true},
-			ModuleDisplay: {color: "Highlight", override: true},
+			ModuleDisplay: {color: "Highlight", override: false},
 		},
 		DefaultLock: "Red_Hi",
 		struggleBreak: true,
@@ -1477,7 +1477,7 @@ const KinkyDungeonRestraints = [
 		DefaultLock: "Red_Hi",
 		factionFilters: {
 			Module: {color: "LightNeutral", override: true},
-			ModuleDisplay: {color: "Highlight", override: true},
+			ModuleDisplay: {color: "Highlight", override: false},
 		},
 		struggleBreak: true,
 		maxwill: 0.35, enemyTags: {"controlHarness":5, "roboPrisoner" : 100, "cyberdollrestraints" : 10, "trackingmodule": 10},
@@ -2445,7 +2445,7 @@ const KinkyDungeonRestraints = [
 		factionFilters: {
 			Lining: {color: "DarkNeutral", override: true},
 			Metal: {color: "LightNeutral", override: true},
-			Display: {color: "Highlight", override: true},
+			Display: {color: "Highlight", override: false},
 			Plug: {color: "Highlight", override: true},
 		},
 		LinkableBy: ["Wrapping", "Ornate"],
@@ -2505,7 +2505,7 @@ const KinkyDungeonRestraints = [
 		},
 		Model: "SteelChastityBra_Radial",
 		factionFilters: {
-			Display: {color: "Highlight", override: true},
+			Display: {color: "Highlight", override: false},
 			Lining: {color: "Highlight", override: true},
 			Metal: {color: "LightNeutral", override: true},
 			Cups: {color: "DarkNeutral", override: true},

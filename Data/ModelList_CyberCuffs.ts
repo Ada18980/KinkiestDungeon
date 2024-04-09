@@ -30,7 +30,7 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesWristRight", "", "", "BaseMetal", 0.4),
 		...GetModelLayers("ShacklesWristRight", "Screen", "", "Screen", 0.65),
-		...GetModelLayers("ShacklesWristRights", "Display", "", "Display", 0.67),
+		...GetModelLayers("ShacklesWristRight", "Display", "", "Display", 0.67),
 		...GetModelLayers("ShacklesWristRight", "Lock", "", "Lock", 0.7),
 	])
 });

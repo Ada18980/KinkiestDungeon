@@ -639,7 +639,8 @@ function KinkyDungeonMakeNoise(radius, noiseX, noiseY, hideShockwave) {
 	for (let e of KDMapData.Entities) {
 		if ((!e.aware || e.idle) && (!e.action || e.action == "investigatesound")
 			&& !KDAllied(e)
-			&& !e.Enemy.tags.peaceful
+			&& (KDHostile(e) || KDRandom() < 0.33)
+			&& (!e.Enemy.tags.peaceful || KDRandom() < 0.15)
 			&& !e.Enemy.tags.deaf
 			&& !KDAmbushAI(e)
 			&& KDistEuclidean(e.x - data.x, e.y - data.y) <= data.radius) {
