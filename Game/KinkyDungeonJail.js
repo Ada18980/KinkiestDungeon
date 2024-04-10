@@ -582,7 +582,7 @@ function KinkyDungeonHandleJailSpawns(delta) {
 
 		KinkyDungeonJailGuard().gxx = KDGameData.PrisonerState == 'jail' && KDGameData.GuardTimer > 0 ? KinkyDungeonJailGuard().gx : xx;
 		KinkyDungeonJailGuard().gyy = KDGameData.PrisonerState == 'jail' && KDGameData.GuardTimer > 0 ? KinkyDungeonJailGuard().gy : yy;
-		if (KDGameData.GuardTimer > 0) {
+		if (KDGameData.GuardTimer > 0 && KinkyDungeonJailGuard()) {
 			// Decrease timer when not on a tour
 			if (!KinkyDungeonFlags.has("notickguardtimer") && !KinkyDungeonAngel()) {
 				KDGameData.GuardTimer -= 1;
@@ -1305,7 +1305,8 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 
 	}
 
-	KDFixPlayerClothes(KDGetMainFaction() || "Jail");
+	let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
+	KDFixPlayerClothes(outfit?.palette || KDGetMainFaction() || "Jail");
 	KinkyDungeonDressPlayer();
 
 	KDMovePlayer(nearestJail.x + (nearestJail.direction?.x || 0), nearestJail.y + (nearestJail.direction?.y || 0), false);
@@ -1444,13 +1445,15 @@ function KDKickEnemies(nearestJail, ignoreAware, Level, noCull) {
 	return atLeastOneAware;
 }
 
-function KDResetAllIntents() {
+function KDResetAllIntents(nonHostileOnly) {
 	for (let e of  KDMapData.Entities) {
-		if (e.IntentAction && !KDIntentEvents[e.IntentAction].noMassReset)
-			KDResetIntent(e);
+		if (!nonHostileOnly || !KinkyDungeonAggressive(e))
+			if (e.IntentAction && !KDIntentEvents[e.IntentAction].noMassReset)
+				KDResetIntent(e);
 	}
 }
 function KDResetAllAggro() {
+	KDGameData.HostileFactions = [];
 	for (let e of KDMapData.Entities) {
 		if (e.hostile && !KDIntentEvents[e.IntentAction]?.noMassReset)
 			e.hostile = 0;

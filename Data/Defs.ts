@@ -58,7 +58,6 @@ let LAYERS_BASE = [
 	// Bondage
 	"WrapForeArms",
 	"BindForeArms",
-	"BindForeElbowLeft",
 	"BindForeWristLeft",
 	"BindForeWristRight",
 	"BindForeHandLeft",
@@ -99,7 +98,6 @@ let LAYERS_BASE = [
 
 	// Collar and collar accessories
 	"Collar",
-	"NeckCorset",
 
 
 
@@ -136,6 +134,7 @@ let LAYERS_BASE = [
 	"ShirtChest",
 	"Option_BindChestLower",
 	"NippleToysOption",
+	"NeckCorset",
 	"SuitChestOver",
 	"BraChest",
 	"BindChestLower",
@@ -152,7 +151,6 @@ let LAYERS_BASE = [
 	// Crossed arms bondage -- left arm is mostly hidden, no hands
 	"WrapCrossArms",
 	"BindCrossArms",
-	"BindCrossElbowLeft",
 	"BindCrossWristRight",
 	"BindCrossArmLeft",
 	"BindCrossArmRight",
@@ -347,6 +345,8 @@ let LAYERS_BASE = [
 	"BindWristLeft",
 	"WrapArmLeft",
 	"BindArmLeft",
+	"BindCrossElbowLeft",
+	"BindForeElbowLeft",
 	"BindElbowLeft",
 	"BindHandLeft",
 

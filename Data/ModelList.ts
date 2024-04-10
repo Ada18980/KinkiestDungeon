@@ -672,20 +672,85 @@ AddModel({
 	])
 });
 
+
+AddModel({
+	Name: "ChainSkirt2",
+	Folder: "ArmorChain",
+	Parent: "ChainArmor",
+	Categories: ["Armor"],
+	Layers: ToLayerMap([
+		{ Name: "SkirtBelt", Layer: "OverSkirt", Pri: 15.1,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Hogtie: "", Kneel: "Kneel", KneelClosed: "Kneel"},
+			Invariant: true,
+			TieToLayer: "Skirt2",
+			InheritColor: "Belt",
+		},
+		{ Name: "SkirtBeltDeco", Layer: "OverSkirt", Pri: 15.2,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Hogtie: "", Kneel: "Kneel", KneelClosed: "Kneel"},
+			Invariant: true,
+			TieToLayer: "Skirt2",
+			InheritColor: "Insignia",
+		},
+		{ Name: "SkirtBeltRivets", Layer: "OverSkirt", Pri: 15.2,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Hogtie: "", Kneel: "Kneel", KneelClosed: "Kneel"},
+			Invariant: true,
+			TieToLayer: "Skirt2",
+			InheritColor: "Rivets",
+		},
+		{ Name: "Skirt2", Layer: "OverSkirt", Pri: 15,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Hogtie: "Hogtie", Kneel: "Kneel", KneelClosed: "Kneel"},
+			Invariant: true,
+			InheritColor: "Skirt",
+		},
+	])
+});
+
+
 AddModel({
 	Name: "ChainSkirt",
 	Folder: "ArmorChain",
 	Parent: "ChainArmor",
 	Categories: ["Armor"],
 	Layers: ToLayerMap([
-		{ Name: "Skirt", Layer: "OverSkirt", Pri: 15,
+		{ Name: "Skirt", Layer: "OverSkirt", Pri: 15.3,
 			Poses: ToMap([...LEGPOSES]),
 			MorphPoses: {Hogtie: "Hogtie", Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
+			InheritColor: "Plate",
+		},
+		{ Name: "SkirtBelt", Layer: "OverSkirt", Pri: 15.1,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Hogtie: "", Kneel: "Kneel", KneelClosed: "Kneel"},
+			Invariant: true,
+			TieToLayer: "Skirt2",
+			InheritColor: "Belt",
+		},
+		{ Name: "SkirtBeltDeco", Layer: "OverSkirt", Pri: 15.2,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Hogtie: "", Kneel: "Kneel", KneelClosed: "Kneel"},
+			Invariant: true,
+			TieToLayer: "Skirt2",
+			InheritColor: "Insignia",
+		},
+		{ Name: "SkirtBeltRivets", Layer: "OverSkirt", Pri: 15.2,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Hogtie: "", Kneel: "Kneel", KneelClosed: "Kneel"},
+			Invariant: true,
+			TieToLayer: "Skirt2",
+			InheritColor: "Rivets",
+		},
+		{ Name: "Skirt2", Layer: "OverSkirt", Pri: 15,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Hogtie: "Hogtie", Kneel: "Kneel", KneelClosed: "Kneel"},
+			Invariant: true,
+			InheritColor: "Skirt",
 		},
 	])
 });
-
 
 AddModel({
 	Name: "ChainArmor",

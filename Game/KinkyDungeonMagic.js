@@ -637,7 +637,13 @@ function KinkyDungeonMakeNoise(radius, noiseX, noiseY, hideShockwave) {
 	};
 	KinkyDungeonSendEvent("beforeNoise", data);
 	for (let e of KDMapData.Entities) {
-		if ((!e.aware || e.idle) && (!e.action || e.action == "investigatesound") && !KDAllied(e) && !e.Enemy.tags.deaf && !KDAmbushAI(e) && KDistEuclidean(e.x - data.x, e.y - data.y) <= data.radius) {
+		if ((!e.aware || e.idle) && (!e.action || e.action == "investigatesound")
+			&& !KDAllied(e)
+			&& (KDHostile(e) || KDRandom() < 0.33)
+			&& (!e.Enemy.tags.peaceful || KDRandom() < 0.15)
+			&& !e.Enemy.tags.deaf
+			&& !KDAmbushAI(e)
+			&& KDistEuclidean(e.x - data.x, e.y - data.y) <= data.radius) {
 			e.gx = data.x;
 			e.gy = data.y;
 			e.action = "investigatesound";
@@ -2262,4 +2268,26 @@ function KDGetRandomSpell(maxSpellLevel = 4) {
 	spell = spellList[Math.floor(KDRandom() * spellList.length)];
 
 	return spell;
+}
+
+
+function KinkyDungeonGetUnlearnedSpells(minlevel, maxlevel, SpellList) {
+	let SpellsUnlearned = [];
+
+	for (let spell of SpellList) {
+		if (spell.level >= minlevel && spell.level <= maxlevel && !spell.passive && !spell.secret && KinkyDungeonCheckSpellPrerequisite(spell)) {
+			SpellsUnlearned.push(spell);
+		}
+	}
+
+	for (let spell of KinkyDungeonSpells) {
+		for (let S = 0; S < SpellsUnlearned.length; S++) {
+			if (spell.name == SpellsUnlearned[S].name) {
+				SpellsUnlearned.splice(S, 1);
+				S--;
+			}
+		}
+	}
+
+	return SpellsUnlearned;
 }

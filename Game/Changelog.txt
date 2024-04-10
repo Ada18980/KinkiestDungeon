@@ -30,6 +30,31 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.2.25
+- Added yukata
+
+5.2.24
+- Made a linking change -- please lmk if there are any item duplication errors!!
+- Fixed even more random bugs
+- Added new model for crystal/obsidian cuffs
+- Used steel cuffs model for mithril
+
+5.2.23
+- Some bug fixes
+- New Steel Cuffs and Cyber Cuffs models
+
+5.2.22
+- Buffed kitty paws (harder to escape)
+- Added chain skirt
+- Fixed an issue where Light would sometimes ignore Inner Power
+- Fixed human eye having one cat eye
+- Capped amount of extra power an enemy can get from the muscle buff
+
+5.2.21
+- Various bug fixes
+- Fixed Strong, Flexible, Locksmith, Clueless, Weak, and Inflexible. Now they actually work on struggling >.<
+- Added difficulty and effective struggle power display to restraint hover over
+
 5.2.20
 RC1
 - Added obstacles to dragon elevator halls
@@ -43,6 +68,9 @@ RC3
 - Latex catsuit should appear in latex bondage machines
 - Latex catsuit should be applied by more enemy types
 - Protoslime level reduced (was not supposed to be higher than regular slime!)
+RC4
+- Added latex bondage offer for dominant enemies (e.g. latex elementals)
+- Fixed longstanding bug resulting in chain loops of enemies aggroing on you in prison
 
 5.2.19
 - Restriction now affects get up time

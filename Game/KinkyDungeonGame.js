@@ -1903,7 +1903,7 @@ function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Pad
 						setTo = borderType;
 					} else setTo = fillType;
 				}
-				if (setTo != "" && KinkyDungeonMapGet(Left + X, Top + Y) != "s") {
+				if (setTo != "" && KinkyDungeonMapGet(Left + X, Top + Y) != "s" && KinkyDungeonMapGet(Left + X, Top + Y) != "H") {
 					KinkyDungeonMapSet(Left + X, Top + Y, setTo);
 					delete KDMapData.EffectTiles[(Left + X) + "," + (Top + Y)];
 					if (offlimit && (OffLimits || Jail || NoWander)) {

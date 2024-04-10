@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.20 RC3"
+KDVersionStr,"5.2.25"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -98,7 +98,7 @@ KDToggleNipples,Enable Nipples
 KDToggleNippleToysOption,Show Nipple Toys Over Bras
 KDToggleNippleToysHide,Hide Nipple Clamps
 KDToggleNipplePiercingsHide,Hide Nipple Piercings
-KDToggleForcePalette,Force restraints to use palette
+KDToggleForcePalette,Force restraints to use outfit palette
 KDToggleFlipPlayer,Flip Player Display
 KDToggleGreyscaleBlindness,Grayscale when Blind
 
@@ -10994,6 +10994,31 @@ dOfferLatexForce_No,"Wait, what? (PERCENT chance to avoid)"
 dOfferLatexForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
 
 
+rOfferLatex2,"(The SPEAKER steps up to you)|Hey girl~|You happen to be a fan of latex?"
+rOfferLatex2Yes,"(The SPEAKER smiles)|Then would you like to try on this RESTRAINT?"
+rOfferLatex2Yes_Yes,"(The SPEAKER chuckles)|Tight and shiny!"
+rOfferLatex2Yes_No,"(The SPEAKER frowns)|Aww..."
+rOfferLatex2No,"(The SPEAKER shrugs)|Alright. Sorry I asked."
+rOfferLatex2Force,"(The SPEAKER grins and reaches for a RESTRAINT)|Well, too bad--"
+rOfferLatex2ForceYes,"(The SPEAKER grins)|I wasn't offering you a choice...|I was asking if you would LIKE it, hehe~"
+rOfferLatex2Force_No,"(The SPEAKER frowns)|...You're fast!"
+rOfferLatex2Force_Yes,"(The SPEAKER smiles)|That's right~"
+rOfferLatex2Force_Failure,"(The SPEAKER restrains you and clicks a lock on)|There! Nice and tight!"
+
+dOfferLatex2_Yes,"Why of course!"
+dOfferLatex2_YesGag,"(Nod happily)"
+dOfferLatex2_No,"Not really."
+dOfferLatex2_NoGag,"(Shake your head)"
+
+dOfferLatex2Yes_Yes,"That sounds fun!"
+dOfferLatex2Yes_YesGag,"(Nod again)"
+dOfferLatex2Yes_No,"No, I don't want that!"
+dOfferLatex2Yes_NoGag,"(Shake your head)"
+
+dOfferLatex2Force_Yes,"Okay, fine..."
+dOfferLatex2Force_YesGag,"(Moan and giggle)"
+dOfferLatex2Force_No,"Wait, what? (PERCENT chance to avoid)"
+dOfferLatex2Force_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
 
 rOfferChastity,"(The SPEAKER nervously walks up to you)|Excuse me miss...|Can you help me out?"
 rOfferChastityYes,"(The SPEAKER blushes deeply)|I managed to unlock my RESTRAINT,|but my mistress expects me to wear it!|Do you mind wearing it instead?"
@@ -19835,7 +19860,7 @@ KDPaletteMaidforce,Maid
 KDPaletteElemental,Elemental
 KDPaletteElemental2,Royal
 
-KDSelectPalette,Choose restraint palette:
+KDSelectPalette,Choose default restraint palette:
 
 KDAutoLoadMods,Auto Load Mods
 KDModVirus,SUSPICIOUS MOD DETECTED
@@ -19933,7 +19958,7 @@ KDChestTooltip,"Owned by: "
 
 RestraintWardenBelt,Warden's Belt
 RestraintWardenBeltDesc,"You may go on your way, but only as long your freedom is useful to her."
-RestraintWardenBeltDesc2,"A golden belt that marks you as part of someone's collection. Each time you break a spell orb, a collector is spawned to punish you."
+RestraintWardenBeltDesc2,"A golden belt that enforces respect for the Goddesses. Breaking spell orbs results in a punishment."
 
 RestraintWardenBelt2,Belt of Privilege
 RestraintWardenBelt2Desc,"You've defeated the Warden, proving that you are worthy to take what you want."
@@ -20143,8 +20168,8 @@ rTheWardenLoseFinish,"(SPEAKER presents you with your collar...)|(It closes arou
 rTheWardenStage2,"(SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really think it would be that easy?"
 
 rTheWardenWin,"(SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~"
-rTheWardenWinAccept,"(SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing collar)|This is a special one, reserved for those with divine privilege.|You've earned it."
-dTheWardenWin_Accept,"(Wear her collar anyway)"
+rTheWardenWinAccept,"(SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it."
+dTheWardenWin_Accept,"(Wear her belt anyway)"
 rTheWardenWinGag,"(SPEAKER shakes her head as you force a gag into her mouth)|MMMMMPH!"
 dTheWardenWin_Gag,"(Gag her)"
 
@@ -20687,7 +20712,7 @@ KinkyDungeonCurseStruggleSpellLock1,"The restraint won't budge."
 KinkyDungeonCurseUnlockSpellLock1,"You perform a ritual to unlock the item!"
 
 
-KinkyDungeonCurseInfoSpellLock8,"The lock is protected by a seal of repentance. To unlock it you must pay 8 spell points!"
+KinkyDungeonCurseInfoSpellLock8,"The lock is protected by a seal of repentance. To unlock it you must pay AMNT spell points!"
 KinkyDungeonCurseStruggleSpellLock8,"The restraint won't budge."
 KinkyDungeonCurseUnlockSpellLock8,"You perform a grand ritual to unlock the item!"
 
@@ -20709,3 +20734,13 @@ RestraintWardenElbowLinkDesc2,You've stolen something of great value. Now you mu
 RestraintWardenWristLink,Warden's Wrist Chain
 RestraintWardenWristLinkDesc,A very short chain connecting your wrist cuffs together.
 RestraintWardenWristLinkDesc2,"An intense, albeit temporary punishment for breaking the rules."
+
+
+KDItemDifficulty,ESCP Difficulty: AMNT
+KDItemStruggle,ESCP Power: AMNT%
+
+KDEscapeStruggle,Struggle
+KDEscapeRemove,Remove
+KDEscapeUnlock,Unlock
+KDEscapePick,Pick
+KDEscapeCut,Cut

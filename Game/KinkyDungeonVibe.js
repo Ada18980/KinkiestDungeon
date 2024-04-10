@@ -197,7 +197,9 @@ function KDSumVibeLocations() {
 	return [];
 }
 
-/** Gets a list of the groups that should be vibrating here. It is the item's group, plus any 'linked' vibrators */
+/**
+ * @param {item} item
+ * Gets a list of the groups that should be vibrating here. It is the item's group, plus any 'linked' vibrators */
 function KDGetVibeLocation(item) {
 	let restraint = KDRestraint(item);
 	let groups = [restraint.vibeLocation ? restraint.vibeLocation : restraint.Group];

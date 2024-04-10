@@ -754,6 +754,9 @@ let KDPerkStart = {
 	},
 	Cursed: () => {
 		KinkyDungeonChangeFactionRep("Angel", -100);
+		for (let rep of Object.keys(KinkyDungeonShrineBaseCosts)) {
+			KinkyDungeonChangeRep(rep, 0);
+		}
 	},
 	MC_Trainee: () => {
 		KDPushSpell(KinkyDungeonFindSpell("DistractionCast"));
