@@ -30,6 +30,9 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.2.25
+- Added yukata
+
 5.2.24
 - Made a linking change -- please lmk if there are any item duplication errors!!
 - Fixed even more random bugs

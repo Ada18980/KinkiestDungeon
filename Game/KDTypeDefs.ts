@@ -3293,7 +3293,7 @@ type KDJourneySlot = {
 };
 type KDJourneyMap = {[_: string]:  KDJourneySlot};
 
-type outfit = {name: string, dress: string, shop: boolean, rarity: number, events?: KinkyDungeonEvent[], costMod?: number};
+type outfit = {name: string, dress: string, shop: boolean, rarity: number, events?: KinkyDungeonEvent[], costMod?: number, palette?: string};
 
 type KDTile = any;
 

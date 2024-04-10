@@ -2661,6 +2661,36 @@
             <key type="filename">../Models/Yoke/HeavySteelPins.png</key>
             <key type="filename">../Models/Yoke/Steel.png</key>
             <key type="filename">../Models/Yoke/SteelBar.png</key>
+            <key type="filename">../Models/Yukata/Shirt.png</key>
+            <key type="filename">../Models/Yukata/ShirtChest.png</key>
+            <key type="filename">../Models/Yukata/ShirtChestTied.png</key>
+            <key type="filename">../Models/Yukata/ShirtChestUp.png</key>
+            <key type="filename">../Models/Yukata/ShirtChestYoked.png</key>
+            <key type="filename">../Models/Yukata/Skirt.png</key>
+            <key type="filename">../Models/Yukata/SkirtClosed.png</key>
+            <key type="filename">../Models/Yukata/SkirtClosedCrotchStrap.png</key>
+            <key type="filename">../Models/Yukata/SkirtCrotchStrap.png</key>
+            <key type="filename">../Models/Yukata/SkirtHogtie.png</key>
+            <key type="filename">../Models/Yukata/SkirtHogtieCrotchStrap.png</key>
+            <key type="filename">../Models/Yukata/SkirtKneel.png</key>
+            <key type="filename">../Models/Yukata/SkirtKneelCrotchStrap.png</key>
+            <key type="filename">../Models/Yukata/SkirtOverKneel.png</key>
+            <key type="filename">../Models/Yukata/SkirtOverKneelCrotchStrap.png</key>
+            <key type="filename">../Models/Yukata/SleeveLeftBoxtie.png</key>
+            <key type="filename">../Models/Yukata/SleeveLeftFree.png</key>
+            <key type="filename">../Models/Yukata/SleeveLeftFront.png</key>
+            <key type="filename">../Models/Yukata/SleeveLeftUp.png</key>
+            <key type="filename">../Models/Yukata/SleeveLeftWristtie.png</key>
+            <key type="filename">../Models/Yukata/SleeveLeftYoked.png</key>
+            <key type="filename">../Models/Yukata/SleeveRightBoxtie.png</key>
+            <key type="filename">../Models/Yukata/SleeveRightFree.png</key>
+            <key type="filename">../Models/Yukata/SleeveRightFront.png</key>
+            <key type="filename">../Models/Yukata/SleeveRightUp.png</key>
+            <key type="filename">../Models/Yukata/SleeveRightWristtie.png</key>
+            <key type="filename">../Models/Yukata/SleeveRightYoked.png</key>
+            <key type="filename">../Models/Yukata/Waist.png</key>
+            <key type="filename">../Models/Yukata/WaistBand.png</key>
+            <key type="filename">../Models/Yukata/WaistPattern.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>

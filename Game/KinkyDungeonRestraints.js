@@ -383,8 +383,13 @@ const KinkyDungeonStrictnessTable = new Map([
 	["ItemFeet", ["ItemBoots"]],
 ]);
 
+let KDProgressiveOrder = {
+
+};
+
+
 /** Enforces a sort of progression of restraining loosely based on strictness, useful for progressive stuff like applying curses to zones */
-let KDRestraintGroupProgressiveOrderStrict = [
+KDProgressiveOrder.Strict = [
 	"ItemTorso", // Usually just makes other restraints harder
 	"ItemBreast", // Goes well with belts
 	"ItemPelvis", // Chastity is for good girls!
@@ -399,7 +404,23 @@ let KDRestraintGroupProgressiveOrderStrict = [
 ];
 
 /** A funner restraining order, starting with non-impactful then locking down spells and finally sealing in helplessness */
-let KDRestraintGroupProgressiveOrderFun = [
+KDProgressiveOrder.Fun = [
+	"ItemTorso", // Usually just makes other restraints harder
+	"ItemPelvis", // Chastity is for good girls!
+	"ItemMouth", // Blocks spells and potions
+	"ItemHands", // Blocks weapons but no spells
+	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
+	"ItemBreast", // Goes well with belts
+	"ItemHead", // Blind, but does not stop from wielding anything
+	"ItemEars", //  Sensory
+	"ItemBoots", // Typically doesnt hobble completely
+	"ItemArms", // Blocks spells and escaping
+	"ItemFeet", // Makes you very slow
+];
+
+
+/** A funner restraining order, starting with non-impactful then locking down spells and finally sealing in helplessness */
+KDProgressiveOrder.Fun2 = [
 	"ItemTorso", // Usually just makes other restraints harder
 	"ItemPelvis", // Chastity is for good girls!
 	"ItemMouth", // Blocks spells and potions
@@ -412,6 +433,25 @@ let KDRestraintGroupProgressiveOrderFun = [
 	"ItemFeet", // Makes you very slow
 	"ItemEars", //  Sensory
 ];
+
+/** A funner restraining order, starting with non-impactful then locking down spells and finally sealing in helplessness */
+KDProgressiveOrder.Fun3 = [
+	"ItemPelvis", // Chastity is for good girls!
+	"ItemBreast", // Goes well with belts
+	"ItemMouth", // Blocks spells and potions
+	"ItemHands", // Blocks weapons but no spells
+	"ItemArms", // Blocks spells and escaping
+	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
+	"ItemBoots", // Typically doesnt hobble completely
+	"ItemHead", // Blind, but does not stop from wielding anything
+	"ItemFeet", // Makes you very slow
+	"ItemTorso", // Usually just makes other restraints harder
+	"ItemEars", //  Sensory
+];
+
+function KDGetProgressiveOrderFun() {
+	return KDProgressiveOrder["Fun" + Math.floor(3 * KDRandom() + 1)];
+}
 
 /**
  * @type {Map<string, {r: restraint, w:number}[]>}
@@ -3192,12 +3232,13 @@ function KinkyDungeonUpdateRestraints(delta) {
 			if (!KinkyDungeonGetRestraintItem("ItemHead")) playerTags.set("ItemHead" + "Empty", true);
 		} else if (!KinkyDungeonGetRestraintItem(group)) playerTags.set(group + "Empty", true);
 	}
+	let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
 	for (let inv2 of KinkyDungeonAllRestraintDynamic()) {
 		let inv = inv2.item;
 		playerTags.set("Item_"+inv.name, true);
 
-		if ((!inv.faction || KDToggles.ForcePalette) && (!KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette])) {
-			inv.faction = KDDefaultPalette;
+		if ((!inv.faction || KDToggles.ForcePalette || outfit?.palette) && (!KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette])) {
+			inv.faction = outfit?.palette || KDDefaultPalette;
 		}
 
 		if (KDRestraint(inv).Link)

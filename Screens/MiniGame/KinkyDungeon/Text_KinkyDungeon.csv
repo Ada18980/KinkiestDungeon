@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.24"
+KDVersionStr,"5.2.25"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -98,7 +98,7 @@ KDToggleNipples,Enable Nipples
 KDToggleNippleToysOption,Show Nipple Toys Over Bras
 KDToggleNippleToysHide,Hide Nipple Clamps
 KDToggleNipplePiercingsHide,Hide Nipple Piercings
-KDToggleForcePalette,Force restraints to use palette
+KDToggleForcePalette,Force restraints to use outfit palette
 KDToggleFlipPlayer,Flip Player Display
 KDToggleGreyscaleBlindness,Grayscale when Blind
 
@@ -19860,7 +19860,7 @@ KDPaletteMaidforce,Maid
 KDPaletteElemental,Elemental
 KDPaletteElemental2,Royal
 
-KDSelectPalette,Choose restraint palette:
+KDSelectPalette,Choose default restraint palette:
 
 KDAutoLoadMods,Auto Load Mods
 KDModVirus,SUSPICIOUS MOD DETECTED

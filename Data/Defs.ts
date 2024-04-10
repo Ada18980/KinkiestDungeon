@@ -98,7 +98,6 @@ let LAYERS_BASE = [
 
 	// Collar and collar accessories
 	"Collar",
-	"NeckCorset",
 
 
 
@@ -135,6 +134,7 @@ let LAYERS_BASE = [
 	"ShirtChest",
 	"Option_BindChestLower",
 	"NippleToysOption",
+	"NeckCorset",
 	"SuitChestOver",
 	"BraChest",
 	"BindChestLower",
