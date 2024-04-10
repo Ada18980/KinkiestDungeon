@@ -32,6 +32,10 @@ Monk class?
 
 5.2.25
 - Added yukata
+- Added buckle corset
+- Added striped skirt, apron skirt
+- Outfits now determine restraint palette (defaulting to player setting otherwise)
+- Added a bit more variance in cursed restraint selection
 
 5.2.24
 - Made a linking change -- please lmk if there are any item duplication errors!!
