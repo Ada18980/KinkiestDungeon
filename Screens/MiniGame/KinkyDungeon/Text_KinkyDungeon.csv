@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.25"
+KDVersionStr,"5.2.26"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -4989,8 +4989,11 @@ RestraintDivineAnkleCuffs,Divine Cuffs
 RestraintDivineAnkleCuffsDesc,"It is said that even heaven has its hierarchies..."
 RestraintDivineAnkleCuffsDesc2,"Shining cuffs made of holy metal. Nothing can touch it."
 RestraintDivineMuzzle,Divine Muzzle
-RestraintDivineMuzzleDesc,"It is said that even heaven has its hierarchies..."
+RestraintDivineMuzzleDesc,"Keep those lips sealed."
 RestraintDivineMuzzleDesc2,"A shining muzzle made of holy metal. Nothing can touch it."
+RestraintDivineGag,Divine Gag
+RestraintDivineGagDesc,"It is said that even heaven has its hierarchies..."
+RestraintDivineGagDesc2,"A shining gag made of holy metal. Nothing can touch it."
 
 RestraintClothBlindfold,Blindfold
 RestraintClothBlindfoldDesc,"A piece of cloth secured onto your face and blocking vision."

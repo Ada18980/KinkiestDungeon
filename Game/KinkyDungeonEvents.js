@@ -9438,7 +9438,7 @@ let KDEventMapGeneric = {
 			if (KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.01 && KinkyDungeonStatsChoice.has("LeastResistance")) {
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: "LeastResistance",
-					type: "Evasion",
+					type: "EvasionProtected",
 					power: 0.35,
 					duration: 2
 				});

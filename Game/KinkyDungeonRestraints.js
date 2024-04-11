@@ -404,7 +404,7 @@ KDProgressiveOrder.Strict = [
 ];
 
 /** A funner restraining order, starting with non-impactful then locking down spells and finally sealing in helplessness */
-KDProgressiveOrder.Fun = [
+KDProgressiveOrder.Fun1 = [
 	"ItemTorso", // Usually just makes other restraints harder
 	"ItemPelvis", // Chastity is for good girls!
 	"ItemMouth", // Blocks spells and potions
