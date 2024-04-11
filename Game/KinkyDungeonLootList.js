@@ -477,6 +477,7 @@ let KinkyDungeonLootTable = {
 		{name: "EnchantedArmbinder", minLevel: 5, weight:4, message:"LootChestEnchantedArmbinder", messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["EnchantedArmbinder"]},
 		{name: "EnchantedBallGag", minLevel: 0, weight:4, message:"LootChestEnchantedBallGag", messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["EnchantedBallGag"]},
 		{name: "PotionCollar", minLevel: 1, weight:10, message:"LootPotionCollar", messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["PotionCollar"]},
+		{name: "QuakeCollar", minLevel: 5, weight:1, armor: "QuakeCollar", message:"LootChestArmor", messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["QuakeCollar"]},
 		...KDEnchantedRestraints,
 	],
 	"lessergold": [

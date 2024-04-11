@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.26"
+KDVersionStr,"5.2.27"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -361,6 +361,14 @@ KinkyDungeonStatDescBoundCrusader,"Goddesses will equip restraints upon acceptan
 
 KinkyDungeonStatNowhere,"Nowhere is Safe"
 KinkyDungeonStatDescNowhere,"Beds and furniture are often trapped."
+
+
+KinkyDungeonStatQuakeCollar,"Quakehoof Associate"
+KinkyDungeonStatDescQuakeCollar,"Start with the Epsilon Collar, which regenerates mana when you play with yourself."
+RestraintQuakeCollar,Epsilon Collar
+RestraintQuakeCollarDesc,A collar reserved for the most prestigious of submissives.
+RestraintQuakeCollarDesc2,"Restores mana when you play with yourself, but increases the distraction given."
+
 
 KinkyDungeonStatBulletHell,"Bullet Hell"
 KinkyDungeonStatDescBulletHell,"Hides warning lines for non-AoE bullets and projectiles."
@@ -2168,12 +2176,6 @@ NameRubberSilo,Rubber Launcher
 KillRubberSilo,"The turret enters an unstable state, about to spread rubber all over!"
 AttackRubberSilo,"The turret defends itself with a close-range electric attack! (DamageTaken)"
 
-NameDrone,Drone
-KillDrone,"The drone fizzles and falls to the ground!"
-AttackDroneStun,"The drone zaps you with a restraining energy ray! (DamageTaken)"
-AttackDrone,"The drone uses a short-ranged electric attack! (DamageTaken)"
-AttackDroneBind,"The drone attaches to you! (+RestraintAdded)"
-
 NameCaptureBot,Auto Capture Unit
 KillCaptureBot,"The capture unit releases magic smoke and explodes."
 AttackCaptureBot,"The capture unit grabs you securely! (DamageTaken)"
@@ -2196,6 +2198,18 @@ NameForceField,Force Field Projector
 KillForceField,"The forcefield erupts into a shower of blue sparks!"
 KinkyDungeonSummonSingleForceField,"The robot deploys a forcefield!"
 KinkyDungeonSummonMultiForceField,"The robot deploys a set of forcefields!"
+NameDrone,Drone
+KillDrone,"The drone fizzles and falls to the ground!"
+AttackDroneStun,"The drone zaps you with a restraining energy ray! (DamageTaken)"
+AttackDrone,"The drone uses a short-ranged electric attack! (DamageTaken)"
+AttackDroneBind,"The drone attaches to you! (+RestraintAdded)"
+
+NameCyborg,Cyber Warden
+KillCyborg,"The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!"
+AttackCyborgLock,"The cyber warden applies an advanced locking technology!"
+AttackCyborgBind,"The cyber warden grabs you and applies a self-tightening restraint! (+RestraintAdded)"
+AttackCyborg,"The cyber warden's touch applies a series of quick electrical shocks! (DamageTaken)"
+AttackCyborgStun,"The cyber warden's touch applies a series of quick electrical shocks!"
 
 NameEnforcerBot,Auto Enforcer Unit
 KillEnforcerBot,"The enforcer unit releases magic smoke and explodes."
@@ -3617,7 +3631,7 @@ RestraintWolfPanties,Wolf Panties
 RestraintWolfPantiesDesc,"A set of vibrating panties designed to help subdue unruly wolfgirls."
 RestraintWolfPantiesDesc2,"It's incredibly tight and difficult to remove once it's clipped on, but the material is rubber."
 
-KDCantEquip,"You don't meet the conditions to equip that."
+KDCantEquip,"You can't equip that."
 
 RestraintExpArmbinder,Experimental Boxtie Binder
 RestraintExpArmbinderDesc,"A secure but comfortable binder meant for long-term wear by the alchemists' pets."
@@ -17683,12 +17697,6 @@ AttackMimicLatexBind,"The latex mimic spits out a glob of rubber at you! (+Restr
 AttackMimicLatexPull,"The latex mimic stretches out an appendage and pulls you toward it! (DamageTaken)"
 AttackMimicLatex,"The latex mimic engulfs you in sticky rubber! (DamageTaken)"
 
-NameCyborg,Cyber Warden
-KillCyborg,"The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!"
-AttackCyborgLock,"The cyber warden applies an advanced locking technology!"
-AttackCyborgBind,"The cyber warden grabs you and applies a self-tightening restraint! (+RestraintAdded)"
-AttackCyborg,"The cyber warden's touch applies a series of quick electrical shocks! (DamageTaken)"
-AttackCyborgStun,"The cyber warden's touch applies a series of quick electrical shocks!"
 
 KDWardrobeBackToMenu,Back to Menu
 
@@ -20747,3 +20755,30 @@ KDEscapeRemove,Remove
 KDEscapeUnlock,Unlock
 KDEscapePick,Pick
 KDEscapeCut,Cut
+
+KDQuakeCollar,"Your collar channels the vigor of excitement into magical energy!"
+
+
+NameForceFieldGuardian,Force Field Projector
+KillForceFieldGuardian,"The forcefield erupts into a shower of blue sparks!"
+KinkyDungeonSummonSingleForceFieldGuardian,"The guardian deploys a forcefield!"
+KinkyDungeonSummonMultiForceFieldGuardian,"The guardian deploys a set of forcefields!"
+
+NameDroneGuardian,Guardian Drone
+KillDroneGuardian,"The drone fizzles and falls to the ground!"
+AttackDroneGuardianStun,"The drone zaps you with a restraining energy ray! (DamageTaken)"
+AttackDroneGuardian,"The drone uses a short-ranged electric attack! (DamageTaken)"
+AttackDroneGuardianBind,"The drone attaches to you! (+RestraintAdded)"
+
+NameCyborgGuardian,Cyber Guardian
+KillCyborgGuardian,"The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!"
+AttackCyborgGuardianLock,"The cyber warden applies an advanced locking technology!"
+AttackCyborgGuardianBind,"The cyber warden grabs you and applies a self-tightening restraint! (+RestraintAdded)"
+AttackCyborgGuardian,"The cyber warden's touch applies a series of quick electrical shocks! (DamageTaken)"
+AttackCyborgGuardianStun,"The cyber warden's touch applies a series of quick electrical shocks!"
+
+NameEnforcerBotGuardian,Auto Enforcer Guardian
+KillEnforcerBotGuardian,"The enforcer unit releases magic smoke and explodes."
+AttackEnforcerBotGuardian,"The enforcer unit fires many cables that squeeze you! (DamageTaken)"
+AttackEnforcerBotGuardianBind,"The enforcer fires off restraints that wrap around your body and apprehend you! (+RestraintAdded)"
+AttackEnforcerBotGuardianLock,"The enforcer releases small drones which lock onto your restraints! (DamageTaken)"

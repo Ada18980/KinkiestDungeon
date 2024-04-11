@@ -219,7 +219,7 @@ function KDProcessInput(type, data) {
 			KDDelayedActionPrune(["Action", "Equip"]);
 			KinkyDungeonSetFlag("SelfBondage", 1);
 			success = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(data.name), 0, true, "", KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonGetRestraintByName(data.currentItem), KinkyDungeonGetRestraintByName(data.name)), false, data.events, data.faction, false, data.curse, undefined, undefined, data.inventoryVariant);
-			if (success != undefined) {
+			if (success) {
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Unlock.ogg");
 				KDSendStatus('bound', data.name, "self");
 				loose = KinkyDungeonInventoryGetLoose(data.name);
@@ -249,7 +249,11 @@ function KDProcessInput(type, data) {
 				KinkyDungeonSendTextMessage(10, TextGet(msg).replace("RestraintName", TextGet("Restraint" + KDRestraint(loose).name)), "yellow", 1);
 
 				return msg;
-			} else return "KDCantEquip";
+			} else {
+				KinkyDungeonSendTextMessage(10, TextGet("KDCantEquip").replace("RestraintName", TextGet("Restraint" + KDRestraint(loose).name)), "yellow", 1);
+
+				return "KDCantEquip";
+			}
 		}
 		case "tryOrgasm":
 			KDDelayedActionPrune(["Action", "Sexy"]);

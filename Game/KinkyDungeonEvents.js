@@ -2326,6 +2326,19 @@ let KDEventMapInventory = {
 				KinkyDungeonSendTextMessage(6, TextGet("KDDivineBra2Deny"), "#ffff88", 4);
 			}
 		},
+		"QuakeCollar": (e, item, data) => {
+			let amnt = -1 + data.amount * 2;
+			if (amnt > 0) {
+				if (!e.chance || KDRandom() < e.chance) {
+					KinkyDungeonChangeMana(amnt * 0.1, false);
+					KinkyDungeonChangeDistraction(1, 0.1);
+					KinkyDungeonSendTextMessage(6, TextGet("KDQuakeCollar"), "#8888ff", 4);
+					if (!KinkyDungeonFlags.get("QuakeUnlocked")) {
+						KDUnlockPerk("QuakeCollar");
+					}
+				}
+			}
+		},
 	},
 	"playerCast": {
 		"NippleWeights": (e, item, data) => {

@@ -16,7 +16,7 @@ let KDSetPieces = [
 	{Name: "ShadowChest", tags: ["loot", "endpoint", "temple", "urban", "jungle", "cavern", "shadow"], Radius: 5, Max: 2},
 	{Name: "GuaranteedCell", tags: ["jail", "urban", "endpoint", "industrial", "temple", "factory", "cavern", "jungle"], Radius: 5, Max: 1, xPad: 2},
 	{Name: "ForbiddenChest", tags: ["loot", "temple", "urban", "endpoint"], Radius: 3, Max: 1, xPad: 1},
-	{Name: "ForbiddenHall", tags: ["loot", "temple", "open"], Radius: 7, Max: 1, xPad: 1},
+	//{Name: "ForbiddenHall", tags: ["loot", "temple", "open"], Radius: 7, Max: 1, xPad: 1},
 	{Name: "Cache", tags: ["loot", "urban", "endpoint"], Radius: 7, Max: 1, xPad: 2},
 	{Name: "ExtraCell", tags: ["jail", "urban", "endpoint"], Radius: 4, xPad: 2, yPad: 1, xPadEnd: 2, yPadEnd: 1},
 	{Name: "JungleLight", tags: ["natural", "light"], noPOI: true, Radius: 1, xPad: 1, yPad: 1, xPadEnd: 1, yPadEnd: 1},
@@ -46,20 +46,15 @@ function KinkyDungeonPlaceSetPieces(POI, trapLocations, chestlist, shrinelist, c
 		//setpieces.push({Type: "Cache", Weight: 100000});
 		//setpieces.push({Type: "PearlChest", Weight: 100});
 		let forbiddenChance = Params.forbiddenChance != undefined ? Params.forbiddenChance : 1;
-		let greaterChance = Params.forbiddenGreaterChance != undefined ? Params.forbiddenGreaterChance : 0.5;
+		//let greaterChance = Params.forbiddenGreaterChance != undefined ? Params.forbiddenGreaterChance : 0.5;
 		if (KinkyDungeonStatsChoice.get("hardMode")) {
 			setpieces.push({Type: "ShadowChest", Weight: 10000});
 			forbiddenChance = 1;
-			greaterChance = Math.max(greaterChance, 1.0);
+			//greaterChance = Math.max(greaterChance, 1.0);
 		}
 		if (KDRandom() < forbiddenChance) {
-			if (KDRandom() < greaterChance) {
-				if (!KDGameData.ChestsGenerated.includes("gold"))
-					setpieces.push({Type: "ForbiddenHall", Weight: 100000});
-			} else {
-				if (!KDGameData.ChestsGenerated.includes("lessergold"))
-					setpieces.push({Type: "ForbiddenChest", Weight: 100000});
-			}
+			if (!KDGameData.ChestsGenerated.includes("lessergold"))
+				setpieces.push({Type: "ForbiddenChest", Weight: 100000});
 		}
 	} else {
 		for (let s of Object.entries(alt.setpieces)) {

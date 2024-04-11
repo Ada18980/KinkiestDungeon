@@ -5204,6 +5204,22 @@ const KinkyDungeonRestraints = [
 		unlimited: true, enemyTags: {"kittyRestraints":0.001, "kittyCollar": 10, "maidCollar":-1, "dragonRestraints":-1, "mithrilRestraints": -1, 'shopCollar': 10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars", "Will"],
 
 	},
+
+	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, good: true, name: "QuakeCollar", accessible: true, Asset: "SlenderSteelCollar", Color: ["#6E5B38"],
+		Group: "ItemNeck", power: 55, weight: 0, escapeChance: {"Struggle": -10, "Cut": -10, "Remove": 0.5, "Pick": 0.1},
+		Model: "QuakeCollar",
+		struggleBreak: true,
+		curse: "MistressKey",
+		enchanted: true,
+		value: 1000,
+		tightType: "Secure",
+		LinkableBy: [...KDCollarLink],
+		alwaysRender: true,
+		alwaysStruggleable: true,
+		events: [
+			{trigger:"playSelf",  type: "QuakeCollar"},
+		],
+		enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Collars", "HighCollars"]},
 	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, good: true, name: "PotionCollar", accessible: true, Asset: "SlenderSteelCollar", Color: ["#6E5B38"], Group: "ItemNeck", power: 1, weight: 0, escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.5, "Pick": 0.15}, potionCollar: true, allowPotions: true,
 		Model: "MageCollar",
 		struggleBreak: true,

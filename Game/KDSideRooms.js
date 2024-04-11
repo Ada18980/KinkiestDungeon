@@ -86,6 +86,23 @@ let KDSideRooms = {
 			return true;
 		},
 	},
+	"GoldVault": {
+		name: "GoldVault",
+		weight: 100,
+		chance: 0.4,
+		filter: (slot, top) => {
+			if (top) return 0;
+			return 1;
+		},
+		altRoom: "GoldVault",
+		mapMod: "None",
+		escapeMethod: "None",
+		faction: "AncientRobot",
+		stairCreation: (tile, x, y) => {
+			KinkyDungeonSkinArea({skin: "shrine"}, x, y, 1.5);
+			return true;
+		},
+	},
 };
 
 // KDGetMapGenList(3, KDMapMods);

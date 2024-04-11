@@ -1623,6 +1623,41 @@ let KinkyDungeonEnemies = [
 		minLevel:0, weight:-4, terrainTags: {"secondhalf":0.5, "thirdhalf":0.5, "increasingWeight":0.25, "metalAnger": 4, "metalRage": 2, "metalPleased": 4, "metalFriendly": 4, "robot": 40}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Nothing", weight: 19}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
 
+	{name: "DroneGuardian", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true, color: "#ff7755",
+		tags: KDMapInit(["ignoreharmless", "disarmimmune", "doortrap", "robot", "flying", "acidweakness", "soulresist", "guardian", "minor", "melee", "electricsevereweakness", "coldresist", "iceresist",
+			"slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "jail", "search"]),
+		AI: "patrol", difficulty: 0.3,
+		events: [
+			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ffff00"},
+		],
+		maxblock: 0,
+		maxdodge: 3,
+		stamina: 8,
+		sprintspeed: 1.8,
+		cueSfx: {
+			Block: "Clang",
+			Resist: "SoftShield",
+			Damage: "RobotHit",
+		},
+		Sound: {
+			baseAmount: 4,
+			moveAmount: 4,
+			alertAmount: 12,
+		},
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
+		//summon: [
+		//{enemy: "Drone", range: 2, count: 2, chance: 0.7, strict: true},],
+		armor: 2, maxhp: 8, movePoints: 1.5,
+		visionRadius: 6, followRange: 1, projectileAttack: true, useLock: "Red",
+		bindOnDisable: true, suicideOnAdd: true,
+		evasion: 0.15,
+		specialCD: 30, specialAttack: "Stun", specialRemove: "Bind", specialCDonAttack: true, specialAttackPoints: 3, specialRange: 7, specialWidth: 1.5, specialMinRange: 3, specialsfx: "Laser", stunTime: 5,
+		attack: "MeleeBindSuicideWill", attackPoints: 2, attackWidth: 1, attackRange: 1, power: 3, dmgType: "electric", multiBind: 2, fullBoundBonus: 6,
+		minLevel:0, weight:-40, terrainTags: {guardian: 40, "secondhalf":0.5, "thirdhalf":0.5, "increasingWeight":0.25, "metalAnger": 4, "metalRage": 2, "metalPleased": 4, "metalFriendly": 4, "robot": 40}, shrines: ["Metal"], allFloors: true,
+		dropTable: [{name: "Nothing", weight: 19}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
+
 
 	{name: "Cyborg", faction: "AncientRobot",
 		playLine: "Cyborg",
@@ -1630,15 +1665,15 @@ let KinkyDungeonEnemies = [
 		style: "GreenHair",
 		bound: "Cyborg", color: "#5a71bc",
 		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "elite", "robot", "cyborg", "cyberdollrestraints", "cyberdollheavy", "controlharness", "handcuffer",
-			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist"]),
+			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist", "guardian"]),
 		noDisplace: true, disarm: 0.5,
 		armor: 2,
-		keys: true, followRange: 1, AI: "guard", visionRadius: 7, maxhp: 10, minLevel: 0, weight:-100, movePoints: 1, attackPoints: 2, evasion: -0.2, focusPlayer: true,
+		keys: true, followRange: 1, AI: "guard", visionRadius: 7, maxhp: 10, minLevel: 0, weight:-100, movePoints: 1.5, attackPoints: 2, evasion: -0.2, focusPlayer: true,
 		attack: "MeleeBindLockWillStun", attackWidth: 3, attackRange: 1, power: 4, dmgType: "electric", stunTime: 1, attackLock: "Red",
-		stamina: 3,
-		maxblock: 2,
+		stamina: 4,
+		maxblock: 1,
 		maxdodge: 2,
-		sprintspeed: 2.0,
+		sprintspeed: 2.4,
 		RemoteControl: {
 			punishRemote: 4,
 			punishRemoteChance: 0.2,
@@ -1654,7 +1689,43 @@ let KinkyDungeonEnemies = [
 			{trigger: "defeat", type: "delete", chance: 1.0},
 			{trigger: "tick", type: "secretToy"},
 		],
-		terrainTags: {"jailGuard": 100, "robot": 50,}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
+		terrainTags: {"jailGuard": 100, "robot": 50, guardian: 51}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
+
+
+	{name: "CyborgGuardian", faction: "AncientRobot",
+		playLine: "Cyborg",
+		outfit: "Cyborg",
+		style: "Bandit",
+		bound: "Cyborg", color: "#f0b541",
+		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "miniboss", "robot", "cyborg", "guardian", "cyberdollrestraints", "cyberdollheavy", "controlharness", "handcuffer",
+			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist"]),
+		noDisplace: true, disarm: 0.5,
+		spells: ["SummonForceFields", "RobotBolt"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true,
+		projectileTargeting: true,
+		armor: 2,
+		keys: true, followRange: 1, AI: "guard", visionRadius: 7.5, maxhp: 16, minLevel: 0, weight:-100, movePoints: 1.8, attackPoints: 2, evasion: -0.3, focusPlayer: true,
+		attack: "SpellMeleeBindLockWillStun", attackWidth: 3, attackRange: 1, power: 4, dmgType: "electric", stunTime: 1, attackLock: "Red",
+		stamina: 3,
+		maxblock: 2,
+		maxdodge: 1,
+		sprintspeed: 2.4,
+		RemoteControl: {
+			punishRemote: 4,
+			punishRemoteChance: 0.2,
+		},
+		Sound: {
+			baseAmount: 3.5,
+			alertAmount: 8,
+		},
+		RestraintFilter: {
+			requiredItems: ["CyberDollJacket"],
+		},
+		events: [
+			{trigger: "defeat", type: "delete", chance: 1.0},
+			{trigger: "tick", type: "secretToy"},
+		],
+		terrainTags: {"jailGuard": 100, "robot": 50, guardian: 110}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
+
 
 
 	{name: "CaptureBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#2a319c",
@@ -1797,6 +1868,38 @@ let KinkyDungeonEnemies = [
 		},
 		summon: [
 			{enemy: "Drone", range: 2, count: 2, chance: 0.25, strict: true},],
+		armor: 5, maxhp: 28, movePoints: 4,
+		evasion: -0.5,
+		visionRadius: 9, followRange: 3.5, projectileAttack: true, useLock: "Red",
+		RemoteControl: {
+			punishRemote: 6,
+			punishRemoteChance: 0.5,
+		},
+		attack: "SpellMeleeBind", attackPoints: 2, attackWidth: 1, attackRange: 3.5, power: 1, dmgType: "crush", multiBind: 1, fullBoundBonus: 3,
+		minLevel:9, weight:-106, terrainTags: {"thirdhalf":1, "increasingWeight":0.5, guardian: 100, "robot": 7}, shrines: ["Metal"], allFloors: true,
+		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 5, noSummon: true}, {name: "AncientPowerSource", weight: 1, noSummon: true}]},
+
+	{name: "EnforcerBotGuardian", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#2a319c",
+		tags: KDMapInit(["leashing", "disarmresist", "robot", "ranged", "miniboss", "acidweakness", "electricsevereweakness", "guardian", "unstoppable", "coldresist", "soulresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "search"]),
+		AI: "guard", spellRdy: true, bypass: true,
+		events: [
+			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#ffff00"},
+		],
+		maxblock: 0,
+		maxdodge: 0,
+		spells: ["RobotBolt"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, followLeashedOnly: true,
+		cueSfx: {
+			Block: "Clang",
+			Resist: "SoftShield",
+			Damage: "RobotHit",
+		},
+		Sound: {
+			baseAmount: 5,
+			moveAmount: 10,
+			alertAmount: 12,
+		},
+		summon: [
+			{enemy: "DroneGuardian", range: 2, count: 2, chance: 0.25, strict: true},],
 		armor: 5, maxhp: 24, movePoints: 4,
 		evasion: -0.5,
 		visionRadius: 9, followRange: 3.5, projectileAttack: true, useLock: "Red",

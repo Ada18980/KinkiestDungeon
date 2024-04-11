@@ -136,6 +136,7 @@
         "Data/ModelList_Rope.ts",
         "Data/ModelList_Ribbon.ts",
         "Data/ModelList_Cuffs.ts",
+        "Data/ModelList_Pony.ts",
         "Data/ModelList_Corset.ts",
         "Data/ModelList_Skirt.ts",
         "Data/ModelList_Wolf.ts",

@@ -424,6 +424,46 @@ let alts = {
 		noboring: false,
 		noSetpiece: true,
 	},
+	"GoldVault": {
+		name: "GoldVault",
+		Title: "GoldVault",
+		noWear: false, // Disables doodad wear
+		bossroom: false,
+		width: 14,
+		height: 16,
+		nopatrols: false,
+		setpieces: {
+		},
+		data: {
+			GoldVault: true,
+		},
+		genType: "GoldVault",
+		skin: "shrine",
+		musicParams: "bel",
+		lightParams: "bel",
+		useGenParams: "bel",
+		spawns: false,
+		chests: false,
+		shrines: false,
+		persist: true,
+		orbs: 0,
+		chargers: false,
+		notorches: false,
+		heart: false,
+		specialtiles: false,
+		shortcut: false,
+		enemies: false,
+		nojail: true,
+		nokeys: true,
+		nostairs: true,
+		placeDoors: false,
+		notraps: true,
+		noClutter: false,
+		nobrick: false,
+		nolore: true,
+		noboring: false,
+		noSetpiece: true,
+	},
 	"TestTile": {
 		name: "TestTile",
 		noWear: true, // Disables doodad wear
@@ -588,6 +628,9 @@ let KinkyDungeonCreateMapGenType = {
 	},
 	"ElevatorRoom": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateElevatorRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
+	},
+	"GoldVault": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateGoldVault(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
 	},
 	"TestTile": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateTestTile(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
@@ -1996,6 +2039,34 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 
 }
 
+function KinkyDungeonCreateGoldVault(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	// Variable setup
+
+	KDMapData.StartPosition = {x: 15, y: 2 + 7 * 4};
+	KDMapData.EndPosition = {x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.y};
+	VisitedRooms[0].x = 1;
+	VisitedRooms[0].y = Math.floor(height/2);
+
+	// Now we STRETCH the map
+	let KinkyDungeonOldGrid = KDMapData.Grid;
+	let w = KDMapData.GridWidth;
+	let h = KDMapData.GridHeight;
+	KDMapData.GridWidth = Math.floor(KDMapData.GridWidth*2);
+	KDMapData.GridHeight = Math.floor(KDMapData.GridHeight*2);
+	KDMapData.Grid = "";
+
+	// Generate the grid
+	for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
+		for (let X = 0; X < KDMapData.GridWidth; X++)
+			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
+		KDMapData.Grid = KDMapData.Grid + '\n';
+	}
+
+	KD_PasteTile(KDMapTilesList.GoldVault, KDMapData.StartPosition.x - 7 - 3, KDMapData.StartPosition.y - 7 * 3, data);
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
+
+	//KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y - 3, '6');
+}
 
 
 function KinkyDungeonCreateElevatorRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
