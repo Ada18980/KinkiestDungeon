@@ -2855,19 +2855,19 @@ const KinkyDungeonRestraints = [
 		Model: "LeatherPawMittens",
 		maxwill: 0.9, enemyTags: {"kittyRestraints":8}, playerTags: {}, minLevel: 4, allFloors: true, shrine: ["Leather", "Mittens", "Will"]},
 	{inventory: true, name: "KittySuit", debris: "Belts", Asset: "BitchSuit", Color: "Default", Group: "ItemArms", DefaultLock: "Red",
-		Model: "Petsuit",
+		Model: "ElitePetsuit",
 		factionFilters: {
-			Arms: {
-				color: "DarkNeutral", override: true,
-			},
-			ArmsBelts: {
+			Suit: {
 				color: "LightNeutral", override: true,
 			},
-			Legs: {
+			Straps: {
 				color: "DarkNeutral", override: true,
 			},
-			LegsBelts: {
-				color: "LightNeutral", override: true,
+			Hardware: {
+				color: "Highlight", override: true,
+			},
+			Laces: {
+				color: "Highlight", override: true,
 			},
 		},
 		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"],
@@ -2920,20 +2920,17 @@ const KinkyDungeonRestraints = [
 			},
 		],
 
-		Model: "Petsuit",
 		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"], power: 14, weight: 0,
 		hobble: 2,
+		Model: "CyberPetsuit",
 		factionFilters: {
-			Arms: {
+			Suit: {
+				color: "LightNeutral", override: true,
+			},
+			Straps: {
 				color: "DarkNeutral", override: true,
 			},
-			ArmsBelts: {
-				color: "Highlight", override: true,
-			},
-			Legs: {
-				color: "DarkNeutral", override: true,
-			},
-			LegsBelts: {
+			Display: {
 				color: "Highlight", override: true,
 			},
 		},
@@ -2945,18 +2942,55 @@ const KinkyDungeonRestraints = [
 	// Only apply if already wearing KittySuit
 	{inventory: true, name: "KittyPetSuit", inaccessible: true, debris: "Belts", Asset: "BitchSuit", Color: "Default", Group: "ItemArms",
 		DefaultLock: "Blue",
-		Model: "Petsuit",
-		factionFilters: {
-			Arms: {
-				color: "DarkNeutral", override: true,
+		Model: "ElitePetsuit",
+		remove: ["Bras", "Panties"],
+		alwaysDressModel: [
+			{
+				Model: "LeatherLeotard",
+				factionFilters: {
+					Leather: {
+						color: "LightNeutral", override: true,
+					},
+					Corset: {
+						color: "DarkNeutral", override: true,
+					},
+					Laces: {
+						color: "Highlight", override: true,
+					},
+				},
 			},
-			ArmsBelts: {
+			{
+				Model: "LeatherLeotardStrapsLower",
+				factionFilters: {
+					Straps: {
+						color: "Highlight", override: true,
+					},
+					Hardware: {
+						color: "Highlight", override: true,
+					},
+				},
+			},
+			{
+				Model: "LeatherLeotardStrapsUpper",
+				factionFilters: {
+					Straps: {
+						color: "Highlight", override: true,
+					},
+				},
+			},
+		],
+
+		factionFilters: {
+			Suit: {
+				color: "LightNeutral", override: true,
+			},
+			Straps: {
 				color: "Highlight", override: true,
 			},
-			Legs: {
-				color: "DarkNeutral", override: true,
+			Hardware: {
+				color: "LightNeutral", override: true,
 			},
-			LegsBelts: {
+			Laces: {
 				color: "Highlight", override: true,
 			},
 		},
@@ -5113,13 +5147,13 @@ const KinkyDungeonRestraints = [
 	{removePrison: true, divine: true, name: "DivineAnkleCuffs", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindable], DefaultLock: "Gold", Color: ['#AE915C', '#71D2EE', '#AE915C', '#000000'], Group: "ItemFeet", Type: "Closed", blockfeet: true, addTag: ["FeetLinked"],power: 49, weight: 0,
 		Model: "DivineCuffsAnkles",
 		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": -99}, enemyTags: {"divineRestraints":2}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Metal", "Latex", "Leather"]},
-	{removePrison: true, divine: true, name: "DivineMuzzle", accessible: true, gag: 1.0, Asset: "FuturisticMuzzle", Modules: [0, 1, 1], LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Color: ['#AE915C', '#AE915C', '#CAA562', '#5FBEE8'], DefaultLock: "Gold", Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 30, weight: 0,
-		Model: "GagMetalRiveted",
-		Filters: {
-			Metal: {"gamma":0.55,"saturation":1,"contrast":1.6500000000000001,"brightness":0.9833333333333333,"red":2.183333333333333,"green":1.6666666666666665,"blue":0.8333333333333333,"alpha":1},
-			Rivets: {"gamma":0.2833333333333333,"saturation":0.48333333333333334,"contrast":1.9500000000000002,"brightness":1.2,"red":0.16666666666666666,"green":0.6666666666666666,"blue":2.5333333333333337,"alpha":1},
-		},
+	{removePrison: true, divine: true, name: "DivineGag", accessible: true, gag: 0.9, Asset: "FuturisticMuzzle", Modules: [0, 1, 1], LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Color: ['#AE915C', '#AE915C', '#CAA562', '#5FBEE8'], DefaultLock: "Gold", Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 30, weight: 0,
+		Model: "DivineGag", Link: "DivineMuzzle",
 		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": -99}, enemyTags: {"divineRestraints":2}, playerTags: {"ItemPelvisFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Metal", "Latex", "Leather"]},
+	{removePrison: true, divine: true, name: "DivineMuzzle", accessible: true, gag: 0.6, Asset: "FuturisticMuzzle", Modules: [0, 1, 1], LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Color: ['#AE915C', '#AE915C', '#CAA562', '#5FBEE8'], DefaultLock: "Gold", Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 30, weight: 0,
+		Model: "DivineMuzzle",
+		Filters: {"Muzzle":{"gamma":1,"saturation":1,"contrast":0.8999999999999999,"brightness":0.7333333333333334,"red":2.283333333333333,"green":1.7333333333333334,"blue":1,"alpha":2.8000000000000003},"Harness":{"gamma":1,"saturation":1,"contrast":0.8999999999999999,"brightness":3.233333333333333,"red":1,"green":1,"blue":1,"alpha":1},"Collar":{"gamma":1,"saturation":1,"contrast":0.8166666666666667,"brightness":2.8666666666666667,"red":1,"green":1,"blue":1,"alpha":1},"Rim":{"gamma":1.8666666666666667,"saturation":1,"contrast":1,"brightness":3.1666666666666665,"red":1,"green":1,"blue":1,"alpha":1}},
+		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": -99}, enemyTags: {"divineRestraints":2}, playerTags: {"ItemPelvisFull":-1}, minLevel: 12, allFloors: true, shrine: ["Rope", "Metal", "Latex", "Leather"]},
 
 	{inventory: true, name: "BasicCollar", debris: "Belts", linkCategory: "BasicCollar", accessible: true, Asset: "LeatherCollar", Color: ["#000000", "Default"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 1, weight: 0, escapeChance: {"Struggle": -0.2, "Cut": 0.15, "Remove": 0.5, "Pick": 0.1},
 		Model: "LeatherCollar",

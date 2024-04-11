@@ -30,12 +30,19 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.2.26
+- Added cyber petsuit, leather petsuit
+- Added leather leotard
+
 5.2.25
 - Added yukata
 - Added buckle corset
 - Added striped skirt, apron skirt
+- Fixed crash when accepting goddess quest
 - Outfits now determine restraint palette (defaulting to player setting otherwise)
 - Added a bit more variance in cursed restraint selection
+- Added divine gag
+- New graphic for divine muzzle
 
 5.2.24
 - Made a linking change -- please lmk if there are any item duplication errors!!

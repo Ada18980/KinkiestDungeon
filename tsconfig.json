@@ -160,6 +160,7 @@
         "Data/ModelList_Harness.ts",
         "Data/ModelList_Ninja.ts",
         "Data/ModelList_Gags.ts",
+        "Data/ModelList_DivineGag.ts",
         "Data/ModelList_Belts.ts",
         "Data/ModelList_Shadow.ts",
         "Data/ModelList_Furniture.ts",

@@ -36,6 +36,7 @@ let LAYERS_BASE = [
 	// Hair mid
 	"Hair",
 	"AnimalEars",
+	"GagStrapsUnder",
 	"MaskOver",
 	"CircletUnder",
 	"Mask",

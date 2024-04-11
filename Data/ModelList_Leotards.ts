@@ -317,3 +317,124 @@ AddModel({
 		...GetModelLayers("BunnySocks"),
 	])
 });
+
+
+
+AddModel({
+	Name: "LeatherLeotardTop",
+	Folder: "LeatherLeotard",
+	Parent: "LeatherLeotard",
+	TopLevel: false,
+	Categories: ["Bodysuits"],
+	Layers: ToLayerMap([
+		{ Name: "LeotardChest", Layer: "SuitChestOver", Pri: 45,
+			Invariant: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			InheritColor: "Leather",
+		},
+	])
+});
+AddModel({
+	Name: "LeatherLeotardBottom",
+	Folder: "LeatherLeotard",
+	Parent: "LeatherLeotard",
+	TopLevel: false,
+	Categories: ["Bodysuits"],
+	Layers: ToLayerMap([
+		{ Name: "Leotard", Layer: "BodysuitOver", Pri: 30,
+			InheritColor: "Leather",
+			MorphPoses: {Closed: "Closed"}
+		},
+	])
+});
+AddModel({
+	Name: "LeatherLeotardCorset",
+	Folder: "LeatherLeotard",
+	Parent: "LeatherLeotard",
+	TopLevel: true,
+	Categories: ["Corsets"],
+	Layers: ToLayerMap([
+		{ Name: "LeotardCorset", Layer: "Bustier", Pri: -20,
+			InheritColor: "Corset",
+			DisplaceAmount: 150,
+			DisplaceLayers: ToMap(["CorsetTorso"]),
+			DisplacementSprite: "CorsetSquish",
+			DisplacementInvariant: true,
+			NoOverride: true,
+		},
+		{ Name: "Laces", Layer: "BodysuitOver", Pri: 30.1,
+			InheritColor: "Laces",
+			TieToLayer: "Leotard",
+			NoOverride: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "LeatherLeotard",
+	Folder: "LeatherLeotard",
+	Parent: "LeatherLeotard",
+	TopLevel: true,
+	Categories: ["Bodysuits"],
+	Layers: ToLayerMap([
+		...GetModelLayers("LeatherLeotardTop"),
+		...GetModelLayers("LeatherLeotardBottom"),
+		...GetModelLayers("LeatherLeotardCorset"),
+	])
+});
+
+
+AddModel({
+	Name: "LeatherLeotardStrapsUpper",
+	Folder: "LeatherLeotard",
+	Parent: "LeatherLeotard",
+	TopLevel: false,
+	Categories: ["Bodysuits"],
+	Layers: ToLayerMap([
+		{ Name: "StrapsChest", Layer: "SuitChestOver", Pri: 45.1,
+			Invariant: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			InheritColor: "Straps",
+			NoOverride: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "LeatherLeotardStrapsLower",
+	Folder: "LeatherLeotard",
+	Parent: "LeatherLeotard",
+	TopLevel: false,
+	Categories: ["Bodysuits"],
+	Layers: ToLayerMap([
+		{ Name: "StrapsLower", Layer: "BodysuitOver", Pri: 30.1,
+			InheritColor: "Straps",
+			NoOverride: true,
+			MorphPoses: {Closed: "Closed"}
+		},
+		{ Name: "StrapsHardware", Layer: "BodysuitOver", Pri: 30.2,
+			InheritColor: "Hardware",
+			NoOverride: true,
+		},
+	])
+});
+AddModel({
+	Name: "LeatherLeotardStrapsLowerClean",
+	Folder: "LeatherLeotard",
+	Parent: "LeatherLeotard",
+	TopLevel: false,
+	Categories: ["Bodysuits"],
+	Layers: ToLayerMap([
+		{ Name: "StrapsLowerClean", Layer: "BodysuitOver", Pri: 30.1,
+			InheritColor: "Straps",
+			NoOverride: true,
+			MorphPoses: {Closed: "Closed"}
+		},
+		{ Name: "StrapsHardware", Layer: "BodysuitOver", Pri: 30.2,
+			InheritColor: "Hardware",
+			NoOverride: true,
+		},
+	])
+});
+
