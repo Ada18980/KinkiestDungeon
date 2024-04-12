@@ -817,7 +817,10 @@ function KDUnblock(x, y) {
 function SetpieceSpawnPrisoner(x, y) {
 	let Enemy = null;
 	let noJam = false;
-	if (KDGameData.CapturedParty?.length > 0) {
+	let noPersistent = false;
+	let altRoom = KDGetAltType(MiniGameKinkyDungeonLevel);
+	if (altRoom?.noPersistentPrisoners) noPersistent = true;
+	if (!noPersistent && KDGameData.CapturedParty?.length > 0) {
 		let index = Math.floor(KDRandom() * KDGameData.CapturedParty.length);
 		let e = KDGameData.CapturedParty[index];
 		Enemy = e.Enemy;

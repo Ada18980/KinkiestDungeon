@@ -8,14 +8,6 @@
 	"spriteSourceSize": {"x":463,"y":518,"w":24,"h":166},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Belts/Feet1Kneel.png":
-{
-	"frame": {"x":1822,"y":1960,"w":59,"h":75},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":707,"y":949,"w":59,"h":75},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/Belts/LeftArm2Wristtie.png":
 {
 	"frame": {"x":997,"y":1457,"w":57,"h":52},
@@ -176,6 +168,14 @@
 	"spriteSourceSize": {"x":684,"y":1423,"w":67,"h":48},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/Cuffs/ElbowRightFront.png":
+{
+	"frame": {"x":1583,"y":1863,"w":24,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":429,"y":599,"w":24,"h":48},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/CyberCuffs/LockAnkleLeftClosed.png":
 {
 	"frame": {"x":2020,"y":1671,"w":25,"h":36},
@@ -198,6 +198,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":435,"y":406,"w":285,"h":236},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/DivineCuffs/ElbowLeftLockPlateFree.png":
+{
+	"frame": {"x":1583,"y":1809,"w":24,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":768,"y":590,"w":24,"h":50},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/DivineCuffs/WristRightLockBandCrossed.png":
@@ -326,6 +334,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":556,"y":505,"w":55,"h":111},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/LeatherCuffs/AnkleLeftKneel.png":
+{
+	"frame": {"x":1822,"y":1960,"w":59,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":705,"y":947,"w":59,"h":81},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/LeatherCuffs/AnkleRightSpread.png":
@@ -458,10 +474,10 @@
 },
 "Models/Ninja/TopChest.png":
 {
-	"frame": {"x":1304,"y":1809,"w":299,"h":236},
+	"frame": {"x":1304,"y":1809,"w":275,"h":236},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":442,"y":394,"w":299,"h":236},
+	"spriteSourceSize": {"x":442,"y":394,"w":275,"h":236},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Robes/RibbonBackHogtie.png":
@@ -502,6 +518,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":447,"y":930,"w":295,"h":48},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Sailor/HemRightTied.png":
+{
+	"frame": {"x":1583,"y":1915,"w":24,"h":38},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":428,"y":548,"w":24,"h":38},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Sailor/ShirtChest.png":
@@ -584,6 +608,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json", "atlas24.json", "atlas25.json", "atlas26.json", "atlas27.json", "atlas28.json", "atlas29.json", "atlas30.json", "atlas31.json", "atlas32.json", "atlas33.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:92b31e16f4612a1872ad9a30ae7b83e6:5337c8af56ef674423f3c9e379d6fbe2:97203da7538a62f044b369e8ef619557$"
+	"smartupdate": "$TexturePacker:SmartUpdate:2f8a60c919c161611e436b868b6c18dd:9e1c2e8d6292268530beff884838b221:97203da7538a62f044b369e8ef619557$"
 }
 }

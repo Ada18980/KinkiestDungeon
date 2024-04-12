@@ -2335,6 +2335,7 @@ let KDEventMapInventory = {
 					KinkyDungeonSendTextMessage(6, TextGet("KDQuakeCollar"), "#8888ff", 4);
 					if (!KinkyDungeonFlags.get("QuakeUnlocked")) {
 						KDUnlockPerk("QuakeCollar");
+						KinkyDungeonSetFlag("QuakeUnlocked", -1);
 					}
 				}
 			}
@@ -9528,7 +9529,7 @@ let KDEventMapGeneric = {
 			}
 		},
 		"lessergoldChest": (e, data) => {
-			if ((data.chestType == "lessergold" || data.chestType == "gold") && KDCanCurse(["ChestCollar"])) {
+			if ((data.chestType == "lessergold") && KDCanCurse(["ChestCollar"])) {
 				// Shadow chests spawn cursed epicenter
 				KDSummonCurseTrap(data.x, data.y);
 			}

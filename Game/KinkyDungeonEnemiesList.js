@@ -1658,7 +1658,7 @@ let KinkyDungeonEnemies = [
 		minLevel:0, weight:-40, terrainTags: {guardian: 40, "secondhalf":0.5, "thirdhalf":0.5, "increasingWeight":0.25, "metalAnger": 4, "metalRage": 2, "metalPleased": 4, "metalFriendly": 4, "robot": 40}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Nothing", weight: 19}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
 
-
+	// Miku
 	{name: "Cyborg", faction: "AncientRobot",
 		playLine: "Cyborg",
 		outfit: "Cyborg",
@@ -1691,7 +1691,7 @@ let KinkyDungeonEnemies = [
 		],
 		terrainTags: {"jailGuard": 100, "robot": 50, guardian: 51}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
 
-
+	// Rin
 	{name: "CyborgGuardian", faction: "AncientRobot",
 		playLine: "Cyborg",
 		outfit: "Cyborg",
@@ -1724,7 +1724,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "defeat", type: "delete", chance: 1.0},
 			{trigger: "tick", type: "secretToy"},
 		],
-		terrainTags: {"jailGuard": 100, "robot": 50, guardian: 110}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
+		terrainTags: {"jailGuard": 100, "robot": 4, guardian: 110}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
 
 
 

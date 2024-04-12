@@ -1769,6 +1769,9 @@
             <key type="filename">../Models/Ninja/TopChest.png</key>
             <key type="filename">../Models/Ninja/TopChestTied.png</key>
             <key type="filename">../Models/Ninja/TopChestUp.png</key>
+            <key type="filename">../Models/Ninja/TopShoulders.png</key>
+            <key type="filename">../Models/Ninja/TopShouldersTied.png</key>
+            <key type="filename">../Models/Ninja/TopShouldersUp.png</key>
             <key type="filename">../Models/Nipples/Clamps.png</key>
             <key type="filename">../Models/Nipples/ClampsBullet.png</key>
             <key type="filename">../Models/Nipples/Rings.png</key>
@@ -1808,6 +1811,9 @@
             <key type="filename">../Models/Petsuit/LegsKneelClosed.png</key>
             <key type="filename">../Models/Petsuit/Petsuit.png</key>
             <key type="filename">../Models/Petsuit/Petsuit.psd</key>
+            <key type="filename">../Models/Pony/Collar.png</key>
+            <key type="filename">../Models/Pony/CollarTag.png</key>
+            <key type="filename">../Models/Pony/CollarTagHogtie.png</key>
             <key type="filename">../Models/Ribbon/Arm1Boxtie.png</key>
             <key type="filename">../Models/Ribbon/Arm1Up.png</key>
             <key type="filename">../Models/Ribbon/Arm1Wristtie.png</key>

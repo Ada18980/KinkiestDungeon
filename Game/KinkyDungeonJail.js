@@ -178,7 +178,7 @@ let KDMaxAlertTimerAggro = 300;
 /**
  *
  * @param {string} action
- * @param {{enemy?: entity, x?: number, y?: number, faction?: string}} data
+ * @param {{enemy?: entity, x?: number, y?: number, faction?: string, force?: boolean}} data
  */
 function KinkyDungeonAggroAction(action, data) {
 	let e = null;
@@ -256,7 +256,7 @@ function KinkyDungeonAggroAction(action, data) {
 
 		// Roaming free only makes them angry if you are a prisoner
 		case 'jailbreak':
-			if (KDGameData.PrisonerState == "jail"){
+			if (KDGameData.PrisonerState == "jail" || data.force){
 				KinkyDungeonStartChase(data.enemy, "Jailbreak");
 			}
 			break;
@@ -1744,6 +1744,12 @@ let KDChestRank = {
 	"silver": 2,
 	"storage": 0,
 };
+let KDChestPenalty = {
+	"gold": 0,
+	"lessergold": 3,
+	"silver": 2,
+	"storage": 0,
+};
 
 /**
  *
@@ -1754,7 +1760,7 @@ function KDChestSecurity(data) {
 	if (data.x) {
 		let tile = KinkyDungeonTilesGet(data.x + "," + data.y);
 		if (tile) {
-			if (KDChestRank[tile.Loot] != undefined) return KDChestRank[tile.Loot];
+			if (KDChestPenalty[tile.Loot] != undefined) return KDChestPenalty[tile.Loot];
 			return 1;
 		}
 	}

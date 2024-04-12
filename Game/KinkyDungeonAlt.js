@@ -463,6 +463,8 @@ let alts = {
 		nolore: true,
 		noboring: false,
 		noSetpiece: true,
+		restricted: true, // You cant be here, even if submissive
+		noPersistentPrisoners: true,
 	},
 	"TestTile": {
 		name: "TestTile",
