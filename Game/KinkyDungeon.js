@@ -4644,7 +4644,7 @@ function CJKcheck(text,p = 0,o = "search"){
 		//Find all English characters and space
 		if (p == 1){ return text.match(/[a-zA-Z0-9\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+/g);}
 		//Find all characters except English characters
-		if (p == 2){ return text.match(/^[a-zA-Z\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+$/g);}
+		if (p == 2){ return text.match(/^[a-zA-Z\s\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F]+(<3)?$/g);}
 		//Find all CJK Symbols and Punctuation
 		if (p == 3){ return text.match(/[\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\uff1f\uff01\uffe5\u3000-\u303f]+/g);}
 		//Find all CJK characters

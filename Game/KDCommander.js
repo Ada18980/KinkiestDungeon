@@ -629,11 +629,18 @@ let KDCommanderOrders = {
 			return data.combat ? 100 : 15;
 		},
 		apply: (enemy, data) => {
-			if (enemy.aware || enemy.vp > 0.1)
+			if (enemy.aware || enemy.vp > 0.1) {
 				KinkyDungeonSendDialogue(enemy,
 					TextGet((KDHelpless(enemy) ? "KinkyDungeonRemindJailPlayHelpless" : "KinkyDungeonRemindJailPlayBrat") + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + Math.floor(KDRandom() * 3))
 						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
 					6, 8, false, true);
+				if (KDEnemyCanTalk(enemy) && (KDHelpless(enemy) || KDBoundEffects(enemy) > 3)) {
+					if (!KDEnemyHasFlag(enemy, "shoutforhelp")) {
+						KinkyDungeonMakeNoise(5 + KDEnemyRank(enemy), enemy.x, enemy.y);
+						KinkyDungeonSetEnemyFlag(enemy, "shoutforhelp", Math.floor((10 - KDEnemyRank(enemy)) * (1 + KDRandom())));
+					}
+				}
+			}
 		},
 
 		// Role maintenance

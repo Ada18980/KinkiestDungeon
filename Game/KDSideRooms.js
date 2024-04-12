@@ -99,7 +99,7 @@ let KDSideRooms = {
 		escapeMethod: "None",
 		faction: "AncientRobot",
 		stairCreation: (tile, x, y) => {
-			KinkyDungeonSkinArea({skin: "shrine"}, x, y, 1.5);
+			KinkyDungeonSkinArea({skin: "vault"}, x, y, 1.5);
 			return true;
 		},
 	},

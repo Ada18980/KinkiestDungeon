@@ -1584,11 +1584,11 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 					}
 					KDDialogueSlots[yboost + canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5 - dialogueOffset] = true;
 
-					let dialougelenth = 10;
+					let dialougelenth = 30;
 					if (CJKcheck(enemy.dialogue,2)){
 						DrawTextFitKDTo(kdenemydialoguecanvas, enemy.dialogue,
 							canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2,
-							yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - dialogueOffset, 10 + enemy.dialogue.length * 8, enemy.dialogueColor, "#000000", 18, undefined, 30);
+							yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - dialogueOffset, 120 + enemy.dialogue.length * 8, enemy.dialogueColor, "#000000", 18, undefined, 30);
 					} else {
 						let dialougeCJKcheck1 = CJKcheck(enemy.dialogue,1);
 						let dialougeCJKcheck2 = CJKcheck(enemy.dialogue);

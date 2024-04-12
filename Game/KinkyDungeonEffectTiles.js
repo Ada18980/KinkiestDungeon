@@ -371,6 +371,16 @@ let KDEffectTiles = {
 		yoffset: -1,
 		tags: ["sackable"],
 	},
+	"OrbLantern": {
+		name: "OrbLantern",
+		duration: 9999, infinite: true,
+		priority: 5,
+		brightness: 6,
+		lightColor: 0x99aaff,
+		affinitiesStanding: ["Hook", "Edge", "SmallMagic"],
+		yoffset: -1,
+		tags: ["sackable"],
+	},
 	"IllusOrb": {
 		name: "IllusOrb",
 		duration: 9999, infinite: true,

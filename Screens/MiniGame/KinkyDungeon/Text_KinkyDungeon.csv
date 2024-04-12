@@ -1062,7 +1062,8 @@ DungeonNamedll,Doll Storage
 DungeonName20,
 DungeonNameDollRoom,Doll Processing
 DungeonNameBanditFort,Bandit Hideout
-DungeonNameAncientVault,Ancient Vault
+DungeonNameGoldVault,Ancient Vault
+DungeonNamevault,Ancient Halls
 DungeonNameSlaveMarket,Slave Market
 DungeonNameElevatorRoom,Elevator Hall
 DungeonNameCaldera,Caldera Beach
@@ -5238,6 +5239,8 @@ KDEffectTileTooltipTorch,Torch
 KDEffectTileTooltipTorchDesc,"Provides light"
 KDEffectTileTooltipLantern,Lantern
 KDEffectTileTooltipLanternDesc,"Provides light"
+KDEffectTileTooltipOrbLantern,Magic Lantern
+KDEffectTileTooltipOrbLanternDesc,"Provides light"
 KDEffectTileTooltipTorchOrb,Magic Lantern
 KDEffectTileTooltipTorchOrbDesc,"Provides light"
 KDEffectTileTooltipLanternUnlit,Unlit Lantern
@@ -20391,6 +20394,7 @@ KDSideRoom_Lair_Hall,"Maintenance Hall"
 KDSideRoom_GoldChest,"Ancient Chest"
 KDSideRoom_ElevatorRoom,"Elevator Hall"
 KDSideRoom_Caldera,"Caldera Passage"
+KDSideRoom_GoldVault,"Ancient Vault"
 KDSideRoom_AuctionHall,"Auction Hall"
 KDSideRoom_DemonShrine,"Dark Altar"
 KDSideRoom_BanditFort,"Bandit Hideout"

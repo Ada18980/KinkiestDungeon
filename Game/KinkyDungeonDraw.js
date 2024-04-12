@@ -3808,6 +3808,9 @@ let KDEffectTileTooltips = {
 	'TorchOrb': {
 		color: "#ff8933",
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+	'OrbLantern': {
+		color: "#ff8933",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'Cracked': {
 		color: "#ff8844",
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff8844");}},

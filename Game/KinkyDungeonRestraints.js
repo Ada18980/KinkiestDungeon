@@ -2775,7 +2775,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index, query = false,
 				}
 			}
 
-			KinkyDungeonAdvanceTime(1);
+			KinkyDungeonAdvanceTime(data.struggleTime > 1 ? 1 : 0);
 			if (Pass == "Success") KinkyDungeonCurrentEscapingItem = null;
 			return Pass;
 		}
