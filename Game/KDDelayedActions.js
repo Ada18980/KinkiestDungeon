@@ -63,8 +63,8 @@ let KDDelayedActionCommit = {
 				if (progress > 1) {
 					KinkyDungeonSetFlag("escaped", 2);
 					KDSuccessRemove(struggleType, restraint, lockType, action.data.index, action.data.escapeData, host);
-				} else {
-					KDStunTurns(1, true);
+				} else if (action.data?.delta > 0) {
+					KDStunTurns(action.data?.delta, true);
 				}
 
 			} else if (struggleType == "Unlock") {
@@ -73,8 +73,8 @@ let KDDelayedActionCommit = {
 				if (restraint.unlockProgress > 1) {
 					KinkyDungeonSetFlag("escaped", 2);
 					KDSuccessRemove(struggleType, restraint, lockType, action.data.index, action.data.escapeData, host);
-				} else {
-					KDStunTurns(1, true);
+				} else if (action.data?.delta > 0) {
+					KDStunTurns(action.data?.delta, true);
 				}
 			} else if (struggleType == "Pick") {
 				KinkyDungeonSetFlag("picking", 2);
@@ -82,8 +82,8 @@ let KDDelayedActionCommit = {
 				if (restraint.pickProgress > 1) {
 					KinkyDungeonSetFlag("escaped", 2);
 					KDSuccessRemove(struggleType, restraint, lockType, action.data.index, action.data.escapeData, host);
-				} else {
-					KDStunTurns(1, true);
+				} else if (action.data?.delta > 0) {
+					KDStunTurns(action.data?.delta, true);
 				}
 			}
 		}

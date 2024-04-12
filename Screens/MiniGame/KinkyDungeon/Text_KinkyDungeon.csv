@@ -367,7 +367,7 @@ KinkyDungeonStatQuakeCollar,"Quakehoof Associate"
 KinkyDungeonStatDescQuakeCollar,"Start with the Epsilon Collar, which regenerates mana when you play with yourself."
 RestraintQuakeCollar,Epsilon Collar
 RestraintQuakeCollarDesc,A collar reserved for the most prestigious of submissives.
-RestraintQuakeCollarDesc2,"Restores mana when you play with yourself, but increases the distraction given."
+RestraintQuakeCollarDesc2,"Restores mana when you play with yourself, but increases the distraction given. Only works when Desire is below the limit."
 
 
 KinkyDungeonStatBulletHell,"Bullet Hell"
@@ -19536,7 +19536,7 @@ KinkyDungeonBuffDistractionShield,"You have formed a mental barrier..."
 
 
 KinkyDungeonSpellDistractionBurst,Desire Burst
-KinkyDungeonSpellDescriptionDistractionBurst,"Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have 50% Desire, the damage is reduced based on the amount. (Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)"
+KinkyDungeonSpellDescriptionDistractionBurst,"Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have at least 50% Desire, the damage is reduced based on the amount. (Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)"
 KDDistractionBurst_Yes,"You channel your distraction into a powerful explosion!"
 KDDistractionBurst_No,"You don't have enough of a desire to do that."
 KDDistractionBurst_NoMana,"You have the desire but not the mana!"
@@ -20761,7 +20761,7 @@ KDEscapePick,Pick
 KDEscapeCut,Cut
 
 KDQuakeCollar,"Your collar channels the vigor of excitement into magical energy!"
-
+KDQuakeCollarFail,"The collar has already squeezed what it can out of you. Clear your mind first!"
 
 NameForceFieldGuardian,Force Field Projector
 KillForceFieldGuardian,"The forcefield erupts into a shower of blue sparks!"
@@ -20786,3 +20786,5 @@ KillEnforcerBotGuardian,"The enforcer unit releases magic smoke and explodes."
 AttackEnforcerBotGuardian,"The enforcer unit fires many cables that squeeze you! (DamageTaken)"
 AttackEnforcerBotGuardianBind,"The enforcer fires off restraints that wrap around your body and apprehend you! (+RestraintAdded)"
 AttackEnforcerBotGuardianLock,"The enforcer releases small drones which lock onto your restraints! (DamageTaken)"
+
+

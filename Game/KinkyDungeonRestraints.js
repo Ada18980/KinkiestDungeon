@@ -2459,7 +2459,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index, query = false,
 			else
 				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggleCantPick" + restraint.lock + "Lock")
 					.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "orange", 2, true);
-		} else {
+		} else if (result != "Impossible") {
 
 			// Limit of what you can struggle to given current limit chance
 			let maxLimit = 100;
@@ -2775,7 +2775,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index, query = false,
 				}
 			}
 
-			KinkyDungeonAdvanceTime(data.struggleTime > 1 ? 1 : 0);
+			KinkyDungeonAdvanceTime(1);
 			if (Pass == "Success") KinkyDungeonCurrentEscapingItem = null;
 			return Pass;
 		}
@@ -4618,6 +4618,7 @@ function KDAddDelayedStruggle(amount, time, StruggleType, struggleGroup, index, 
 				index: index,
 				amount: plus,
 				escapeData: data,
+				delta: time == 1 ? 0 : 1,
 			},
 			time: t,
 			tags: ["Action", "Remove", "Restrain", "Hit"],

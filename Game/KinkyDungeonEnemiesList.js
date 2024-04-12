@@ -1724,7 +1724,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "defeat", type: "delete", chance: 1.0},
 			{trigger: "tick", type: "secretToy"},
 		],
-		terrainTags: {"jailGuard": 100, "robot": 4, guardian: 110}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
+		terrainTags: {"jailGuard": 100, "robot": 8, guardian: 110}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
 
 
 

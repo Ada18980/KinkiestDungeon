@@ -353,7 +353,7 @@ let KinkyDungeonStatsPresets = {
 	"DollmakerMask": {startPriority: 31, category: "Boss", id: "DollmakerMask", cost: -1, block: ["DollmakerVisor"], locked: true, tags: ["start"]},
 	"FuukaCollar": {startPriority: 40, category: "Boss", buff: true, id: "FuukaCollar", cost: -2, locked: true, tags: ["start"]},
 	"WardenBelt": {startPriority: 42, category: "Boss", buff: true, id: "WardenBelt", cost: -2, locked: true, tags: ["start"]},
-	"QuakeCollar": {startPriority: -100, category: "Boss", buff: true, id: "QuakeCollar", cost: -2, locked: true, tags: ["start"]},
+	"QuakeCollar": {startPriority: -100, category: "Boss", buff: true, id: "QuakeCollar", cost: 2, locked: true, tags: ["start"]},
 
 
 	"CommonCyber": {category: "Boss", id: "CommonCyber", cost: -1, locked: true},

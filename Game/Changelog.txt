@@ -30,6 +30,9 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.2.28
+- Desire burst is now locked to the Path of Pleasure
+
 5.2.27
 - Added ancient vaults, replacing the existing locations of special gold chests.
 - Added guardian versions of the cyber warden, enforcer unit, and drone

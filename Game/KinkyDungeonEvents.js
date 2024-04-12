@@ -2330,9 +2330,14 @@ let KDEventMapInventory = {
 			let amnt = -1 + data.amount * 2;
 			if (amnt > 0) {
 				if (!e.chance || KDRandom() < e.chance) {
-					KinkyDungeonChangeMana(amnt * 0.1, false);
+					let distractionStart = KinkyDungeonStatDistraction;
 					KinkyDungeonChangeDistraction(1, 0.1);
-					KinkyDungeonSendTextMessage(6, TextGet("KDQuakeCollar"), "#8888ff", 4);
+					if (distractionStart < KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerCap && KinkyDungeonStatDistraction > distractionStart) {
+						KinkyDungeonChangeMana(amnt * 0.1, false);
+						KinkyDungeonSendTextMessage(6, TextGet("KDQuakeCollar"), "#8888ff", 4);
+					} else {
+						KinkyDungeonSendTextMessage(6, TextGet("KDQuakeCollarFail"), "#8888ff", 4);
+					}
 					if (!KinkyDungeonFlags.get("QuakeUnlocked")) {
 						KDUnlockPerk("QuakeCollar");
 						KinkyDungeonSetFlag("QuakeUnlocked", -1);

@@ -4763,7 +4763,7 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	}
 
 	// Updates the character's stats
-	KinkyDungeonCurrentTick += 1;
+	KinkyDungeonCurrentTick += delta;
 	if (KinkyDungeonCurrentTick > 100000) KinkyDungeonCurrentTick = 0;
 	KinkyDungeonItemCheck(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, MiniGameKinkyDungeonLevel); //console.log("Item Check " + (performance.now() - now));
 	if (pauseTime && delta > 0) {
