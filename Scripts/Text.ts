@@ -204,8 +204,15 @@ class TextCache {
 		this.language = TranslationLanguage;
 		const lang = (TranslationLanguage || "").trim().toUpperCase();
 		let [translationsStringLineCache, translationsLineStringCache] = TranslationStringCachePreBuild(translations, "");
+
+
 		if (lang === "RU") {
 			lines.forEach((line, numberl) => (this.cache[line[0]] = this.buildTranslationsRU(line[1], lines, translations, numberl, translationsStringLineCache)));
+
+			for (let entry of translationsStringLineCache.entries()) {
+				if (!this.cache[entry[0]] && entry[1] % 2 == 0) // even only
+					this.translationcache[entry[0]] = translationsLineStringCache.get(entry[1] + 1);
+			}
 			return [];
 		}
 

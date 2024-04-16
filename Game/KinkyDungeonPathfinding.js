@@ -189,19 +189,20 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 						}
 						// Give up and add to the test array
 						else if (TilesTemp.includes(tile) && (!RequireLight || KinkyDungeonVisionGet(xx, yy) > 0)
-							&& (ignoreLocks || !MapTile || !MapTile.Lock)
+							&& (ignoreLocks || !MapTile || !MapTile.Lock || (Enemy && !KDLocks[MapTile.Lock]?.canNPCPass(xx, yy, MapTile, Enemy)))
 							&& (!blockEnemy || KinkyDungeonNoEnemyExceptSub(xx, yy, false, Enemy))
 							&& (!blockPlayer || KinkyDungeonPlayerEntity.x != xx || KinkyDungeonPlayerEntity.y != yy)
 							&& (!needDoorMemory || tile != "d" || KDOpenDoorTiles.includes(KDMapData.TilesMemory[xx + "," + yy]))) {
 							costBonus = 0;
 							if (!ignoreTrafficLaws) {
-								if (KinkyDungeonMapGet(xx, yy) == "D") costBonus = 2;
+								if (KinkyDungeonMapGet(xx, yy) == "V") costBonus = 7;
+								else if (KinkyDungeonMapGet(xx, yy) == "D") costBonus = 2;
 								else if (KinkyDungeonMapGet(xx, yy) == "d") costBonus = -2;
 								else if (KinkyDungeonMapGet(xx, yy) == "g") costBonus = 2;
 								else if (KinkyDungeonMapGet(xx, yy) == "L") costBonus = 4;
 								else if (KinkyDungeonMapGet(xx, yy) == "T") costBonus = 2;
 								costBonus = (MapTile && MapTile.Lock) ? costBonus + 2 : costBonus;
-								costBonus = (MapTile && MapTile.OffLimits) ? costBonus + 8 : costBonus;
+								costBonus = (MapTile && MapTile.OL) ? costBonus + 8 : costBonus;
 								costBonus = (KDMapData.Traffic?.length > 0) ? costBonus + KDMapData.Traffic[yy][xx] : costBonus;
 								costBonus = Math.max(0, costBonus);
 							}

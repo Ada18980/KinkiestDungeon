@@ -80,7 +80,7 @@ let KDDefaultAvoidTiles = "gtVN@";
 let KinkyDungeonGroundTiles = "023wW][?/";
 let KinkyDungeonWallTiles = "14,6";
 let KinkyDungeonBlockTiles = "14,6bgX7";
-let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HB@l;SsRrdzTgLcNVt5"; // Objects which can be moved into: floors, debris, open doors, staircases
+let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HB@l;SsRrdzTgLcNVvt5"; // Objects which can be moved into: floors, debris, open doors, staircases
 // 5 is skinned floor, you can give it whatever sprite you want
 // 6 is skinned wall, you can give it whatever sprite you want
 let KinkyDungeonMovableTilesSmartEnemy = "D" + KinkyDungeonMovableTilesEnemy; //Smart enemies can open doors as well
@@ -89,7 +89,7 @@ let KinkyDungeonMovableTiles = "OPCAMG$Y+=-F67" + KinkyDungeonMovableTilesSmartE
 // 6 = wall object, block passage
 // 7 = transparent wall object
 
-let KDRandomDisallowedNeighbors = ",?/RAasSHcCHDdOoPp+FZzgtuVN567"; // tiles that can't be neighboring a randomly selected point
+let KDRandomDisallowedNeighbors = ",?/RAasSHcCHDdOoPp+FZzgtuVvN567"; // tiles that can't be neighboring a randomly selected point
 let KDTrappableNeighbors = "DA+-F@"; // tiles that might have traps bordering them with a small chance
 let KDTrappableNeighborsLikely = "COP="; // tiles that might have traps bordering them with a big chance
 
@@ -163,6 +163,7 @@ let KinkyDungeonSaveInterval = 10;
 
 let KinkyDungeonSFX = [];
 
+
 /**
  *
  * @param {string} RoomType
@@ -173,6 +174,11 @@ function KDDefaultMapData(RoomType = "", MapMod = "") {
 	return {
 		Checkpoint: MiniGameKinkyDungeonCheckpoint,
 		Title: "",
+
+		Labels: {},
+		PrisonState: "",
+		PrisonType: "",
+		data: {},
 
 		RoomType: RoomType,
 		MapMod: MapMod,
@@ -352,6 +358,8 @@ function KDResetEventData(Data) {
 	if (!Data) Data = KDEventDataBase;
 	KDEventData = JSON.parse(JSON.stringify( Data));
 }
+
+
 
 function KinkyDungeonInitialize(Level, Load) {
 	KDWorldMap = {};
@@ -990,6 +998,9 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 		KinkyDungeonPOI = [];
 		let POI = KinkyDungeonPOI;
+		KDMapData.Labels = {};
+		KDMapData.data = {};
+		KDMapData.PrisonState = "";
 
 
 		// Place the player!
@@ -1265,6 +1276,18 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			}
 			KinkyDungeonSendEvent("postQuest", {altType: altType});
 
+			if (altType?.prisonType) {
+				let prisonType = KDPrisonTypes[altType.prisonType];
+				KDMapData.PrisonState = prisonType.starting_state;
+				KDMapData.PrisonType = prisonType.name;
+				for (let state of Object.values(prisonType.states)) {
+					if (state.init) {
+						state.init(MapParams);
+					}
+				}
+				KinkyDungeonSendEvent("postPrisonIntro", {altType: altType});
+			}
+
 
 			for (let e of allies) {
 				KDAddEntity(e);
@@ -1312,7 +1335,7 @@ function KinkyDungeonGenNavMap(fromPoint) {
 		let X = a[1].x;
 		let Y = a[1].y;
 		let tags = [];
-		if (!KinkyDungeonTilesGet(a[0]) || !KinkyDungeonTilesGet(a[0]).OffLimits)
+		if (!KinkyDungeonTilesGet(a[0]) || !KinkyDungeonTilesGet(a[0]).OL)
 			KDMapData.RandomPathablePoints[a[0]] = {x: X, y:Y, tags:tags};
 	}
 	KDUpdateChokes = true;
@@ -1712,9 +1735,9 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 
 		if ((spawnPoint && KinkyDungeonNoEnemy(X, Y, true)) || (
 			KDMapData.RandomPathablePoints["" + X + "," + Y] && !culledSpawns
-			//(!KinkyDungeonTilesGet("" + X + "," + Y) || !KinkyDungeonTilesGet("" + X + "," + Y).OffLimits)
+			//(!KinkyDungeonTilesGet("" + X + "," + Y) || !KinkyDungeonTilesGet("" + X + "," + Y).OL)
 			&& Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) > playerDist && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))
-			&& KinkyDungeonNoEnemy(X, Y, true) && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits))) {
+			&& KinkyDungeonNoEnemy(X, Y, true) && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OL))) {
 
 			if (KDGameData.KinkyDungeonSpawnJailers > 0 && jailerCount < KDGameData.KinkyDungeonSpawnJailersMax) tags.push("jailer");
 			if (KinkyDungeonMapGet(X, Y) == 'R' || KinkyDungeonMapGet(X, Y) == 'r') tags.push("rubble");
@@ -1886,7 +1909,7 @@ function KinkyDungeonGetClosestSpecialAreaDist(x ,y) {
 // Type 1: hollow, no empty border
 // Type 2: only empty space
 // Type 3: completely filled
-function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Padding, OffLimits, NoWander, flexCorner, Jail) {
+function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Padding, OL, NoWander, flexCorner, Jail) {
 	let pad = Padding ? Padding : 0;
 	let borderType = (Border) ? '1' : '0';
 	let fillType = (Fill) ? '1' : '0';
@@ -1906,8 +1929,8 @@ function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Pad
 				if (setTo != "" && KinkyDungeonMapGet(Left + X, Top + Y) != "s" && KinkyDungeonMapGet(Left + X, Top + Y) != "H") {
 					KinkyDungeonMapSet(Left + X, Top + Y, setTo);
 					delete KDMapData.EffectTiles[(Left + X) + "," + (Top + Y)];
-					if (offlimit && (OffLimits || Jail || NoWander)) {
-						KinkyDungeonTilesSet((Left + X) + "," + (Top + Y), {OffLimits: OffLimits, Jail: Jail, NoWander: NoWander});
+					if (offlimit && (OL || Jail || NoWander)) {
+						KinkyDungeonTilesSet((Left + X) + "," + (Top + Y), {OL: OL, Jail: Jail, NoWander: NoWander});
 					}
 				}
 			}
@@ -2124,7 +2147,7 @@ function KinkyDungeonPlaceChests(params, chestlist, spawnPoints, shrinelist, tre
 		for (let X = 1; X < width; X += 1)
 			for (let Y = 1; Y < height; Y += 1) {
 				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && KDistChebyshev(X - KDMapData.StartPosition.x, Y - KDMapData.StartPosition.y) > 10 &&
-				(!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
+				(!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OL)) {
 					// Check the 3x3 area
 					let wallcount = 0;
 					let adjcount = 0;
@@ -2379,7 +2402,7 @@ function KinkyDungeonPlaceLore(width, height) {
 	// Populate the lore
 	for (let X = 1; X < width; X += 1)
 		for (let Y = 1; Y < height; Y += 1)
-			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits) && KDRandom() < 0.6) loreList.push({x:X, y:Y});
+			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OL) && KDRandom() < 0.6) loreList.push({x:X, y:Y});
 
 	let count = 0;
 	let maxcount = 2;
@@ -2402,7 +2425,7 @@ function KinkyDungeonPlaceHeart(width, height, Floor) {
 			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))
 				&& KDMapData.RandomPathablePoints[(X) + ',' + (Y)]
 				&& !KinkyDungeonEnemyAt(X, Y)
-				&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)
+				&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OL)
 				&& KDistChebyshev(X - KDMapData.StartPosition.x, Y - KDMapData.StartPosition.y) > 8
 			) heartList.push({x:X, y:Y});
 
@@ -2458,7 +2481,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 		for (let X = 1; X < width; X += 1)
 			for (let Y = 1; Y < height; Y += 1)
 				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && Math.max(Math.abs(X - KDMapData.StartPosition.x), Math.abs(Y - KDMapData.StartPosition.y)) > KinkyDungeonJailLeash
-					&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
+					&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OL)) {
 					// Check the 3x3 area
 					let wallcount = 0;
 					let adjcount = 0;
@@ -2528,7 +2551,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 		for (let X = 1; X < width; X += 1)
 			for (let Y = 1; Y < height; Y += 1)
 				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && Math.max(Math.abs(X - KDMapData.StartPosition.x), Math.abs(Y - KDMapData.StartPosition.y)) > KinkyDungeonJailLeash
-					&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
+					&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OL)) {
 					// Check the 3x3 area
 					let wallcount = 0;
 					for (let XX = X-1; XX <= X+1; XX += 1)
@@ -2702,7 +2725,7 @@ function KinkyDungeonPlaceChargers(chargerlist, chargerchance, litchargerchance,
 		for (let X = 1; X < width; X += 1)
 			for (let Y = 1; Y < height; Y += 1)
 				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && Math.max(Math.abs(X - KDMapData.StartPosition.x), Math.abs(Y - KDMapData.StartPosition.y)) > KinkyDungeonJailLeash
-					&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
+					&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OL)) {
 					// Check the 3x3 area
 					let wallcount = 0;
 					let adjcount = 0;
@@ -2921,7 +2944,7 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 						Spell: t.Spell,
 						extraTag: t.extraTag,
 						Power: t.Power,
-						OffLimits: tile?.OffLimits,
+						OL: tile?.OL,
 					});
 				} else {
 					KinkyDungeonTilesSet(trap.x + "," + trap.y, {
@@ -2934,7 +2957,7 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 						Spell: t.Spell,
 						extraTag: t.extraTag,
 						Power: t.Power,
-						OffLimits: tile?.OffLimits,
+						OL: tile?.OL,
 					});
 				}
 
@@ -2964,7 +2987,7 @@ function KinkyDungeonPlacePatrols(Count, width, height) {
 				let Y = Math.floor(KDRandom()*height);
 				if (!KinkyDungeonPointInCell(X, Y, 6)
 					&& KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))
-					&& (!KinkyDungeonTilesGet(X + "," + Y) || (!KinkyDungeonTilesGet(X + "," + Y).OffLimits && !KinkyDungeonTilesGet(X + "," + Y).NoWander))) {
+					&& (!KinkyDungeonTilesGet(X + "," + Y) || (!KinkyDungeonTilesGet(X + "," + Y).OL && !KinkyDungeonTilesGet(X + "," + Y).NoWander))) {
 					KDMapData.PatrolPoints.push({x: X, y: Y});
 					break;
 				}
@@ -3091,7 +3114,7 @@ function KinkyDungeonPlaceDoors(doorchance, doortrapchance, nodoorchance, doorlo
 					|| (placeMode == KDPlaceMode.MODE_MODIFYPOTENTIALANDEXISTING && (KinkyDungeonTilesGet(X + "," + Y)?.PotentialDoor))
 			)
 				&& (!KinkyDungeonTilesGet(X + "," + Y)
-					|| (!KinkyDungeonTilesGet(X + "," + Y).OffLimits && !KinkyDungeonTilesGet(X + "," + Y).Lock && !KinkyDungeonTilesGet(X + "," + Y).RequiredDoor))) {
+					|| (!KinkyDungeonTilesGet(X + "," + Y).OL && !KinkyDungeonTilesGet(X + "," + Y).Lock && !KinkyDungeonTilesGet(X + "," + Y).RequiredDoor))) {
 				// Check the 3x3 area
 				let wallcount = 0;
 				let up = false;
@@ -3153,7 +3176,7 @@ function KinkyDungeonPlaceDoors(doorchance, doortrapchance, nodoorchance, doorlo
 		let trap = KDRandom() < trapChance;
 		let grate = KDRandom() < grateChance;
 
-		if ((trap || grate) && KinkyDungeonTilesGet(X + "," + Y) && !KinkyDungeonTilesGet(X + "," + Y).NoTrap && !KinkyDungeonTilesGet(X + "," + Y).OffLimits) {
+		if ((trap || grate) && KinkyDungeonTilesGet(X + "," + Y) && !KinkyDungeonTilesGet(X + "," + Y).NoTrap && !KinkyDungeonTilesGet(X + "," + Y).OL) {
 			let accessible = KinkyDungeonGetAccessibleRoom(X, Y);
 
 			if (accessible.length > minLockedRoomSize) {
@@ -3284,7 +3307,7 @@ function KinkyDungeonPlaceFurniture(barrelChance, cageChance, width, height, alt
 	if (!altType || !altType.noClutter)
 		for (let X = 1; X < width-1; X += 1)
 			for (let Y = 1; Y < height-1; Y += 1) {
-				if (KinkyDungeonMapGet(X, Y) == '0' && !(KinkyDungeonTilesGet(X + "," + Y) && (KinkyDungeonTilesGet(X + "," + Y).OffLimits || KinkyDungeonTilesGet(X + "," + Y).Skin))
+				if (KinkyDungeonMapGet(X, Y) == '0' && !(KinkyDungeonTilesGet(X + "," + Y) && (KinkyDungeonTilesGet(X + "," + Y).OL || KinkyDungeonTilesGet(X + "," + Y).Skin))
 					&& !(Object.values(KinkyDungeonEffectTilesGet(X + ',' + Y) || {})?.length > 0)
 					&& (KinkyDungeonMapGet(X+1, Y) != 'd' && KinkyDungeonMapGet(X+1, Y) != 'D'
 						&& KinkyDungeonMapGet(X-1, Y) != 'd' && KinkyDungeonMapGet(X-1, Y) != 'D'
@@ -3339,7 +3362,7 @@ function KinkyDungeonPlaceFood(foodChance, width, height, altType) {
 	for (let X = 1; X < width; X += 1)
 		for (let Y = 1; Y < height; Y += 1)
 			if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && Math.max(Math.abs(X - KDMapData.StartPosition.x), Math.abs(Y - KDMapData.StartPosition.y)) > KinkyDungeonJailLeash
-				&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits)) {
+				&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OL)) {
 				// Check the 3x3 area
 				let wallcount = 0;
 				let adjcount = 0;

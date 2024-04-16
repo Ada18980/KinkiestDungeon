@@ -328,8 +328,10 @@ KinkyDungeonStatDescSavourTheTaste,"Drinking a potion takes 2 turns"
 KinkyDungeonStatMagicHands,"Magic Hands"
 KinkyDungeonStatDescMagicHands,"Enemies can add restraints underneath existing restraints."
 
+KinkyDungeonStatStartCyberDollStorage,"Doll Processing"
+KinkyDungeonStatDescStartCyberDollStorage,"Start atop a conveyor on your way to be sealed away inside the Facility."
 KinkyDungeonStatStartCyberDoll,"Cyber Doll"
-KinkyDungeonStatDescStartCyberDoll,"Start in Cyber restraints."
+KinkyDungeonStatDescStartCyberDoll,"Start in full Cyber restraints."
 KinkyDungeonStatFuukaCollar,"Fuuka's Pet"
 KinkyDungeonStatDescFuukaCollar,"Start with Fuuka's collar and a few restraints."
 KinkyDungeonStatCommonFuuka,"Fuuka Fan Club"
@@ -1061,6 +1063,7 @@ DungeonNamemrb,Marble Halls
 DungeonNamedll,Doll Storage
 DungeonName20,
 DungeonNameDollRoom,Doll Processing
+DungeonNameDollStorage,Doll Processing
 DungeonNameBanditFort,Bandit Hideout
 DungeonNameGoldVault,Ancient Vault
 DungeonNamevault,Ancient Halls
@@ -3315,6 +3318,18 @@ KinkyDungeonUnlockDoorPurpleUse,You utter a command word and release the lock!
 KinkyDungeonPurpleLockRemoveFail,You mutter an unintelligible command word and your locks do not open.
 KinkyDungeonUnlockDoorPurpleUseGagged,You mumble a command word but the lock opens!
 KinkyDungeonUnlockDoorPurpleUseGaggedFail,"You mess up saying the command word. The lock stays put!"
+KinkyDungeonSwipeDoor,"Swipe Keycard"
+KinkyDungeonSwipeDoorUse,"You swipe your keycard and the lock releases with a hiss!"
+KinkyDungeonSwipeDoorFail,"You swipe your keycard and the lock beeps 'Access Denied'!"
+KinkyDungeonSwipeDoorNone,"You don't have any card to scan in the slot."
+KinkyDungeonScanDoor,"Use Retinal Scanner"
+KinkyDungeonScanDoorUse,"You scan your eye pattern and the lock releases with a hiss!"
+KinkyDungeonScanDoorFail,"The lock rejects you, citing your lack of authority."
+KinkyDungeonScanDoorNone,"You are blindfolded, so the scanner can't even see your eye!"
+KinkyDungeonHackDoor,"Hack"
+KinkyDungeonHackDoorUse,"You bypass the lock's cyber defenses and release it with a hiss!"
+KinkyDungeonHackDoorFail,"The lock beeps as its security blocks your attempts at release."
+KinkyDungeonHackDoorNone,"You have no way to hack the locking system."
 KinkyDungeonPickDoor,"Pick"
 KinkyDungeonLockedDoor,"(No way to open)"
 KinkyDungeonLockedShrine,"(She cannot help you)"
@@ -5336,6 +5351,7 @@ KDTileTooltipH,Mysterious Stairs
 KDTileTooltipG,Ghostly Adventurer
 KDTileTooltip@,Button
 KDTileTooltipV,Conveyor
+KDTileTooltipv,Safety Conveyor
 KDTileTooltipt,Doll Terminal
 KDTileTooltipu,Doll Supply
 KDTileTooltipN,Bondage Machine
@@ -12541,6 +12557,7 @@ KDPlugMachine,Metallic arms insert something into you!
 KDChastityMachine,Metallic arms attach a chastity belt over your waist!
 KDTapeMachine,Metallic arms wrap you in tape!
 KDMetalMachine,Metallic arms wrap you in strict restraints!
+KDDollMachine,Metallic arms install various cybernetic restraints!
 
 KDBearTrapHit,"You've sprung a trap! You've been stunned."
 KinkyDungeonSpellCastBearTrap,"The bandit leaves behind a sneaky trap..."

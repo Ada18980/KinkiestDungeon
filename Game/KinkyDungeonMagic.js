@@ -613,7 +613,7 @@ function KinkyDungeonGetChargeCost(Spell, Passive, Toggle) {
  */
 function KinkyDungeonGetCost(Spell) {
 	let cost = Spell.level;
-	if (Spell.spellPointCost) cost = Spell.spellPointCost;
+	if (Spell.spellPointCost != undefined) cost = Spell.spellPointCost;
 	//if (Spell.level > 1 && !Spell.passive && KinkyDungeonStatsChoice.get("Novice")) cost *= 2;
 	if (Spell.classSpecific && KDGameData.Class != Spell.classSpecific) cost *= 2;
 	let bonus = 0;

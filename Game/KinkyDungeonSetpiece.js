@@ -214,19 +214,19 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				if (KDRandom() < 0.25) {
 					KinkyDungeonMapSet(cornerX + 2, cornerY + 3, 'D');
 					KinkyDungeonMapSet(cornerX + 2, cornerY + 1, 'c');
-					KinkyDungeonTilesSet("" + (cornerX + 2) + "," + (cornerY + 3), {Type: "Door", NoTrap: true, OffLimits: true});
+					KinkyDungeonTilesSet("" + (cornerX + 2) + "," + (cornerY + 3), {Type: "Door", NoTrap: true, OL: true});
 				} else if (KDRandom() < 0.33) {
 					KinkyDungeonMapSet(cornerX + 2, cornerY, 'D');
 					KinkyDungeonMapSet(cornerX + 1, cornerY + 2, 'c');
-					KinkyDungeonTilesSet("" + (cornerX + 2) + "," + (cornerY), {Type: "Door", NoTrap: true, OffLimits: true});
+					KinkyDungeonTilesSet("" + (cornerX + 2) + "," + (cornerY), {Type: "Door", NoTrap: true, OL: true});
 				} else if (KDRandom() < 0.5) {
 					KinkyDungeonMapSet(cornerX + 3, cornerY + 2, 'D');
 					KinkyDungeonMapSet(cornerX + 2, cornerY + 1, 'c');
-					KinkyDungeonTilesSet("" + (cornerX + 3) + "," + (cornerY + 2), {Type: "Door", NoTrap: true, OffLimits: true});
+					KinkyDungeonTilesSet("" + (cornerX + 3) + "," + (cornerY + 2), {Type: "Door", NoTrap: true, OL: true});
 				} else {
 					KinkyDungeonMapSet(cornerX, cornerY + 2, 'D');
 					KinkyDungeonMapSet(cornerX + 2, cornerY + 1, 'c');
-					KinkyDungeonTilesSet("" + (cornerX) + "," + (cornerY + 2), {Type: "Door", NoTrap: true, OffLimits: true});
+					KinkyDungeonTilesSet("" + (cornerX) + "," + (cornerY + 2), {Type: "Door", NoTrap: true, OL: true});
 				}
 				KinkyDungeonMapSet(cornerX + 1, cornerY + 1, 'B');
 				if (KinkyDungeonStatsChoice.has("Nowhere")) {
@@ -384,7 +384,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 			case "GuaranteedCell": {
 				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, true, false, 1, true, true, true);
 				KinkyDungeonMapSet(cornerX+4, cornerY+2, 'D');
-				KinkyDungeonTilesSet("" + (cornerX+4) + "," + (cornerY+2), {Type: "Door", Lock: "Red", NoTrap: true, Jail: true, ReLock: true, OffLimits: true});
+				KinkyDungeonTilesSet("" + (cornerX+4) + "," + (cornerY+2), {Type: "Door", Lock: "Red", NoTrap: true, Jail: true, ReLock: true, OL: true});
 				KDMapData.PatrolPoints.push({x: cornerX + 5, y: cornerY + 2});
 
 				let sidestyle = Math.floor(KDRandom() * 3);
@@ -428,7 +428,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 			case "ExtraCell": {
 				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, true, false, 1, true, true);
 				KinkyDungeonMapSet(cornerX+3, cornerY+1, 'D');
-				KinkyDungeonTilesSet("" + (cornerX+3) + "," + (cornerY+1), {Type: "Door", NoTrap: true, Jail: true, ReLock: true, OffLimits: true});
+				KinkyDungeonTilesSet("" + (cornerX+3) + "," + (cornerY+1), {Type: "Door", NoTrap: true, Jail: true, ReLock: true, OL: true});
 
 
 				let t = [];
@@ -611,7 +611,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				}
 
 				let l = KinkyDungeonMapGet(cornerX+1, cornerY+2) == 'D' ? "Red" : undefined;
-				KinkyDungeonMapSet(cornerX+1, cornerY+2, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+1) + "," + (cornerY + 2), {Type: "Door", NoTrap: true, OffLimits: true, Lock: l});
+				KinkyDungeonMapSet(cornerX+1, cornerY+2, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+1) + "," + (cornerY + 2), {Type: "Door", NoTrap: true, OL: true, Lock: l});
 				if (l && KDRandom() < 0.5)
 					spawnPoints.push({x:cornerX + 2, y:cornerY + 1, required: ["human"], AI: "guard"});
 				else if (l && KDRandom() < 0.6 + (KDGameData.RoomType == "Jail" ? 0.35 : 0)) {
@@ -619,7 +619,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				}
 
 				l = KinkyDungeonMapGet(cornerX+5, cornerY+2) == 'D' ? "Red" : undefined;
-				KinkyDungeonMapSet(cornerX+5, cornerY+2, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+5) + "," + (cornerY + 2), {Type: "Door", NoTrap: true, OffLimits: true, Lock: l});
+				KinkyDungeonMapSet(cornerX+5, cornerY+2, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+5) + "," + (cornerY + 2), {Type: "Door", NoTrap: true, OL: true, Lock: l});
 				if (l && KDRandom() < 0.5)
 					spawnPoints.push({x:cornerX + 4, y:cornerY + 1, required: ["human"], AI: "guard"});
 				else if (l && KDRandom() < 0.6 + (KDGameData.RoomType == "Jail" ? 0.35 : 0)) {
@@ -627,7 +627,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				}
 
 				l = KinkyDungeonMapGet(cornerX+1, cornerY+4) == 'D' ? "Red" : undefined;
-				KinkyDungeonMapSet(cornerX+1, cornerY+4, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+1) + "," + (cornerY + 4), {Type: "Door", NoTrap: true, OffLimits: true, Lock: l});
+				KinkyDungeonMapSet(cornerX+1, cornerY+4, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+1) + "," + (cornerY + 4), {Type: "Door", NoTrap: true, OL: true, Lock: l});
 				if (l && KDRandom() < 0.5)
 					spawnPoints.push({x:cornerX + 2, y:cornerY + 5, required: ["human"], AI: "guard"});
 				else if (l && KDRandom() < 0.6 + (KDGameData.RoomType == "Jail" ? 0.35 : 0)) {
@@ -635,7 +635,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				}
 
 				l = KinkyDungeonMapGet(cornerX+5, cornerY+4) == 'D' ? "Red" : undefined;
-				KinkyDungeonMapSet(cornerX+5, cornerY+4, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+5) + "," + (cornerY + 4), {Type: "Door", NoTrap: true, OffLimits: true, Lock: l});
+				KinkyDungeonMapSet(cornerX+5, cornerY+4, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+5) + "," + (cornerY + 4), {Type: "Door", NoTrap: true, OL: true, Lock: l});
 				if (l && KDRandom() < 0.5)
 					spawnPoints.push({x:cornerX + 4, y:cornerY + 5, required: ["human"], AI: "guard"});
 				else if (l && KDRandom() < 0.6 + (KDGameData.RoomType == "Jail" ? 0.35 : 0)) {
@@ -656,7 +656,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 				KinkyDungeonMapSet(cornerX + 1, cornerY + 1 + Math.floor(rad/2), 'D');
 				spawnPoints.push({x:cornerX, y:cornerY + 1 + Math.floor(rad/2)-1, required: ["cacheguard"], tags: ["bandit"], AI: "guard", force: true});
 				spawnPoints.push({x:cornerX, y:cornerY + 1 + Math.floor(rad/2)+1, required: ["cacheguard"], tags: ["bandit"], AI: "guard", force: true});
-				KinkyDungeonTilesSet((cornerX + 1) + "," + (cornerY + 1 + Math.floor(rad/2)), {Type: "Door", Lock: "Red", OffLimits: true, ReLock: true});
+				KinkyDungeonTilesSet((cornerX + 1) + "," + (cornerY + 1 + Math.floor(rad/2)), {Type: "Door", Lock: "Red", OL: true, ReLock: true});
 				break;
 			}
 			case "ForbiddenHall": {

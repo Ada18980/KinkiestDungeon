@@ -1541,6 +1541,7 @@ let KDDialogue = {
 					let door = doorTile;
 					if (door) {
 						if (doorTile.tile) {
+							doorTile.OGLock = doorTile.Lock;
 							doorTile.tile.Lock = undefined;
 							KDUpdateDoorNavMap();
 						}
@@ -3546,6 +3547,7 @@ let KDDialogue = {
 				enemy.AI = 'hunt';
 				KinkyDungeonSetFlag("BossDialogueDollmaker", -1, 1);
 			}
+			KDUnlockPerk("StartCyberDollStorage");
 			return false;
 		},
 		options: {

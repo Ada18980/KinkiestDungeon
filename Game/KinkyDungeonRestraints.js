@@ -2088,6 +2088,7 @@ function KDGetStruggleData(data) {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
 				+ ((KDGetEscapeSFX(data.restraint) && KDGetEscapeSFX(data.restraint)[data.struggleType]) ? KDGetEscapeSFX(data.restraint)[data.struggleType] : "Struggle")
 				+ ".ogg");
+			return "Fail";
 		} else {
 			if (!data.query) {
 				let typesuff = "";
@@ -2245,6 +2246,7 @@ function KDGetStruggleData(data) {
 				data.restraint.attempts += 0.5;
 				if (data.escapeChance <= -0.5) data.restraint.attempts += 0.5;
 			}
+			return "Fail";
 		} else {
 			if (!data.query) {
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
@@ -3607,6 +3609,7 @@ function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityE
 				if (restraint.name == item.name && (!ignoreItem || ignoreItem?.id != item.id)) {
 					// Note: return false means succeed
 					// true means interupt
+					//if (restraint.noDupe) return true;
 					if (!props) return true;
 
 					if ((!KDGetCurse(item) && props.newCurse)

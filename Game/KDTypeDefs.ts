@@ -215,9 +215,13 @@ interface KDRestraintPropsBase {
 	 */
 	protection?: number;
 	/**
-	 * This item only provides protection if its group is being targeted
+	 * This item is cursed but still provides protection
 	 */
 	protectionCursed?: boolean;
+	/**
+	 * This item provides protection even if its group is NOT being targeted
+	 */
+	protectionTotal?: boolean;
 	/** Determines if the item appears in aroused mode only */
 	arousalMode?: boolean,
 	/** This item lets you access linked items under it */
@@ -2396,11 +2400,34 @@ interface KDWorldSlot {
 	main: string;
 }
 
+/**
+ * A helper class for storing 'points of interest' that can be interacted with thru scripts, or just for notation
+ */
+interface KDLabel {
+	name: string,
+	type: string,
+	faction?: string,
+	x: number,
+	y: number,
+	/** Whether guard type enemies will switch to guarding this if nearby */
+	guard?: boolean,
+	/** Whether enemies will preferentially pick the point if its free */
+	interesting?: boolean,
+
+	/** NPC currently assigned to this point (-1 if none) */
+	assigned: number,
+}
+
 interface KDMapDataType {
 	Checkpoint: string,
 	Title: string,
+	PrisonState: string,
+	PrisonType: string,
+
+	Labels: Record<string, KDLabel[]>,
 
 	flags?: string[],
+	data: any,
 
 
 	GroundItems: {x: number, y: number, name: string, amount?: number} [];
@@ -2750,6 +2777,9 @@ type EnemyEvent = {
 }
 
 type KDLockType = {
+	specialActions?: (tile: any, entity: entity) => void;
+	canNPCPass?: (xx: number, yy: number, MapTile: object, Enemy: entity) => boolean;
+
 	filter: (Guaranteed: boolean, Floor: number, AllowGold: boolean, Type: string, data: any) => boolean;
 	weight: (Guaranteed: boolean, Floor: number, AllowGold: boolean, Type: string, data: any) => number;
 
@@ -2780,6 +2810,7 @@ type KDLockType = {
 	shrineImmune: boolean;
 
 	commandlevel: number;
+	commandable: boolean;
 	command_lesser: () => number;
 	command_greater: () => number;
 	command_supreme: () => number;
@@ -2800,6 +2831,7 @@ type KDBondageStatus = {
 }
 
 type KDMapTile = {
+	Labels?: Record<string, KDLabel[]>,
     name: string;
     w: number;
     h: number;
@@ -3026,6 +3058,21 @@ type KDExpression = {
 		BlushPose: string,
 		MouthPose: string,
 	};
+}
+
+interface KDPrisonState {
+	name: string,
+	/** Returns a state. Runs as soon as the map is created */
+	init: (MapParams: floorParams) => string,
+	/** Each turn this function runs and returns a state */
+	update: (delta) => string,
+
+}
+interface KDPrisonType {
+	name: string,
+	states: Record<string, KDPrisonState>,
+	starting_state: string,
+	default_state: string,
 }
 
 interface KDPresetLoadout {

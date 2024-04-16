@@ -419,6 +419,10 @@ const KDSprites = {
 		return "Wall";
 	},
 	"D": (x, y, Fog, noReplace) => {
+		if (KinkyDungeonTilesGet(x + "," + y)?.DoorSkin) {
+			if (KDWallVertBoth(x, y, noReplace)) return "Floor";
+			return "Wall";
+		}
 		if (Fog) {
 			if (KDMapData.TilesMemory[x + "," + y]) return KDMapData.TilesMemory[x + "," + y];
 		}
@@ -428,6 +432,10 @@ const KDSprites = {
 		return KDMapData.TilesMemory[x + "," + y];
 	},
 	"d": (x, y, Fog, noReplace) => {
+		if (KinkyDungeonTilesGet(x + "," + y)?.DoorSkin) {
+			if (KDWallVertBoth(x, y, noReplace)) return "Floor";
+			return "Wall";
+		}
 		if (Fog) {
 			if (KDMapData.TilesMemory[x + "," + y]) return KDMapData.TilesMemory[x + "," + y];
 		}
@@ -539,6 +547,9 @@ const KDSprites = {
 		return "Floor";
 	},
 	"V": (x, y, Fog, noReplace) => {
+		return "Floor";
+	},
+	"v": (x, y, Fog, noReplace) => {
 		return "Floor";
 	},
 	"t": (x, y, Fog, noReplace) => {
@@ -744,6 +755,45 @@ const KDOverlays = {
 		}
 		return "Conveyor/Conveyor";
 	},
+	"v": (x, y, Fog, noReplace) => {
+		let tile = KinkyDungeonTilesGet(x + "," + y);
+		if (tile) {
+			let tU = KinkyDungeonTilesGet(x + "," + (y - 1));
+			let tD = KinkyDungeonTilesGet(x + "," + (y + 1));
+			let tR = KinkyDungeonTilesGet((x + 1) + "," + y);
+			let tL = KinkyDungeonTilesGet((x - 1) + "," + y);
+
+			let sprite = "";
+
+			if (tile.DY == -1) {
+				if (tD?.DY == -1) return "Conveyor/SafetyUp";
+				if (tL?.DX == 1 && tR?.DX == -1) sprite = sprite + "LeftRight";
+				else if (tL?.DX == 1) sprite = sprite + "Right";
+				else if (tR?.DX == -1) sprite = sprite + "Left";
+				sprite = sprite + "Up";
+			} else if (tile.DY == 1) {
+				if (tU?.DY == 1) return "Conveyor/SafetyDown";
+				if (tL?.DX == 1 && tR?.DX == -1) sprite = sprite + "LeftRight";
+				else if (tL?.DX == 1 && !(tR?.DX == -1)) sprite = sprite + "Right";
+				else if (tR?.DX == -1 && !(tL?.DX == 1)) sprite = sprite + "Left";
+				sprite = sprite + "Down";
+			} else if (tile.DX == 1) {
+				if (tU?.DY == 1 && tD?.DY == -1) sprite = sprite + "UpDown";
+				else if (tU?.DY == 1) sprite = sprite + "Down";
+				else if (tD?.DY == -1) sprite = sprite + "Up";
+				sprite = sprite + "Right";
+			} else if (tile.DX == -1) {
+				if (tU?.DY == 1 && tD?.DY == -1) sprite = sprite + "UpDown";
+				else if (tU?.DY == 1) sprite = sprite + "Down";
+				else if (tD?.DY == -1) sprite = sprite + "Up";
+				sprite = sprite + "Left";
+			}
+
+
+			return "Conveyor/Safety" + sprite;
+		}
+		return "Conveyor/Conveyor";
+	},
 	"t": (x, y, Fog, noReplace) => {
 		return "DollTerminal";
 	},
@@ -754,14 +804,41 @@ const KDOverlays = {
 		let tile = KinkyDungeonTilesGet(x + ',' + y);
 		let tileAbove = KinkyDungeonMapGet(x, y - 1);
 		let tileBelow = KinkyDungeonMapGet(x, y + 1);
-		if (tileAbove == 'V' && KinkyDungeonTilesGet(x + "," + (y-1))?.DY == 1) {
+		if ((tileAbove == 'V' || tileAbove == 'v') && KinkyDungeonTilesGet(x + "," + (y-1))?.DY == 1) {
 			return `BondageMachine/${tile.Binding || "Latex"}Vert`;
-		} else if (tileBelow == 'V' && KinkyDungeonTilesGet(x + "," + (y+1))?.DY == -1) {
+		} else if ((tileBelow == 'V' || tileBelow == 'v') && KinkyDungeonTilesGet(x + "," + (y+1))?.DY == -1) {
 			return `BondageMachine/${tile.Binding || "Latex"}Vert`;
 		}
 
 
 		return `BondageMachine/${tile.Binding || "Latex"}Horiz`;
+	},
+
+	"D": (x, y, Fog, noReplace) => {
+		let ds = KinkyDungeonTilesGet(x + "," + y)?.DoorSkin;
+		if (ds) {
+			if (Fog) {
+				if (KDMapData.TilesMemory[x + "," + y]) return KDMapData.TilesMemory[x + "," + y];
+			}
+			if (KDWallVertBoth(x, y, noReplace))
+				KDMapData.TilesMemory[x + "," + y] = ds + (KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertCont" : "DoorVert");
+			else KDMapData.TilesMemory[x + "," + y] = ds + "Door";
+			return KDMapData.TilesMemory[x + "," + y];
+		}
+		return "";
+	},
+	"d": (x, y, Fog, noReplace) => {
+		let ds = KinkyDungeonTilesGet(x + "," + y)?.DoorSkin;
+		if (ds) {
+			if (Fog) {
+				if (KDMapData.TilesMemory[x + "," + y]) return KDMapData.TilesMemory[x + "," + y];
+			}
+			if (KDWallVertBoth(x, y, noReplace))
+				KDMapData.TilesMemory[x + "," + y] = ds + (KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "DoorVertOpenCont" : "DoorVertOpen");
+			else KDMapData.TilesMemory[x + "," + y] = ds + "DoorOpen";
+			return KDMapData.TilesMemory[x + "," + y];
+		}
+		return "";
 	},
 };
 
@@ -783,6 +860,25 @@ const KDOverlays2 = {
 			}
 			if (tile.SwitchMode) sprite = sprite + tile.SwitchMode;
 			return "Conveyor/" + sprite;
+		}
+		return "";
+	},
+	"v": (x, y, Fog, noReplace) => {
+		let tile = KinkyDungeonTilesGet(x + "," + y);
+		if (tile && tile.SwitchMode != undefined) {
+			let sprite = "";
+
+			if (tile.DY == -1) {
+				sprite = sprite + "Up";
+			} else if (tile.DY == 1) {
+				sprite = sprite + "Down";
+			} else if (tile.DX == 1) {
+				sprite = sprite + "Right";
+			} else if (tile.DX == -1) {
+				sprite = sprite + "Left";
+			}
+			if (tile.SwitchMode) sprite = sprite + tile.SwitchMode;
+			return "Conveyor/Safety" + sprite;
 		}
 		return "";
 	},
@@ -3206,8 +3302,10 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 						if (KDMapData.Traffic[RY][RX] && KinkyDungeonState == "Game")
 							DrawTextFitKD("traffic_" + KDMapData.Traffic[RY][RX], (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/3, KinkyDungeonGridSizeDisplay, "#55ff55");
 
-						if (KinkyDungeonTilesGet(RX + "," + RY).OffLimits)
-							DrawTextFitKD("OffLimits", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/3, KinkyDungeonGridSizeDisplay, "#ff5555");
+						if (KinkyDungeonTilesGet(RX + "," + RY).OL)
+							DrawTextFitKD("OL", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/3, KinkyDungeonGridSizeDisplay, "#ff5555");
+						if (KinkyDungeonTilesGet(RX + "," + RY).Jail)
+							DrawTextFitKD("Jail", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/5, KinkyDungeonGridSizeDisplay, "#ff5555");
 						if (KinkyDungeonTilesGet(RX + "," + RY).Priority)
 							DrawTextFitKD("Priority", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay*0.67, KinkyDungeonGridSizeDisplay, "#55ff55");
 					}
@@ -3219,6 +3317,15 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 							DrawTextFitKD((p.chance || 1.0) * 100 + "%", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/3, KinkyDungeonGridSizeDisplay, "#999999");
 						}
 					}
+					if (KDMapData.Labels)
+						for (let k of Object.values(KDMapData.Labels)) {
+							for ( let p of k) {
+								if (p.x == RX && p.y == RY) {
+									DrawTextFitKD(p.name, (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3, KinkyDungeonGridSizeDisplay, "#999999");
+									DrawTextFitKD(p.type, (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, "#999999");
+								}
+							}
+						}
 					for (let p of KDGameData.KeyringLocations) {
 						if (p.x == RX && p.y == RY) {
 							DrawTextFitKD("Keyring", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/3, KinkyDungeonGridSizeDisplay, "#999999");
@@ -3553,6 +3660,7 @@ let KDTileTooltips = {
 	't': () => {return {color: "#aa55ff", noInspect: true, text: "t"};},
 	'u': () => {return {color: "#ffffff", noInspect: true, text: "u"};},
 	'V': () => {return {color: "#ffffff", noInspect: true, text: "V"};},
+	'v': () => {return {color: "#ffffff", noInspect: true, text: "v"};},
 	'N': () => {return {color: "#4c6885", noInspect: true, text: "N"};},
 };
 

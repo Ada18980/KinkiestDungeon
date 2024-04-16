@@ -80,7 +80,7 @@ let KDAIType = {
 						if (e == enemy) continue;
 						if (['guard', 'ambush'].includes(KDGetAI(enemy))) continue;
 						if (enemy.Enemy.clusterWith && !e.Enemy.tags[enemy.Enemy.clusterWith]) continue;
-						if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OffLimits) continue;
+						if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OL) continue;
 						let dist = KDistEuclidean(e.x - enemy.x, e.y - enemy.y);
 						if (dist < minDist) {
 							minDist = dist;

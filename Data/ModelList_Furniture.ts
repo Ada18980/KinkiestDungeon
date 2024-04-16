@@ -152,9 +152,11 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "OneBarFront", Layer: "Torso", Pri: -50,
 			Poses: ToMap(["Closed", "Spread"]),
+			AppendPose: {Ballet: "Heels"},
 		},
 		{ Name: "OneBarBack", Layer: "FurnitureBack", Pri: 50,
 			Poses: ToMap(["Closed", "Spread"]),
+			AppendPose: {Ballet: "Heels"},
 		},
 	])
 });

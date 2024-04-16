@@ -3476,8 +3476,10 @@ function KinkyDungeonStartNewGame(Load) {
 
 		KDGameData.PlayerName = localStorage.getItem("PlayerName") || "Ada";
 	}
-	if (!KDMapData.Grid)
+	if (!KDMapData.Grid) {
 		KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)], "JourneyFloor", "", MiniGameKinkyDungeonLevel, false, Load);
+		KDInitPerks();
+	}
 	KinkyDungeonState = "Game";
 
 	if (KinkyDungeonKeybindings) {

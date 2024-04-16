@@ -1668,7 +1668,7 @@ let KinkyDungeonEnemies = [
 			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist", "guardian"]),
 		noDisplace: true, disarm: 0.5,
 		armor: 2,
-		keys: true, followRange: 1, AI: "guard", visionRadius: 7, maxhp: 10, minLevel: 0, weight:-100, movePoints: 1.5, attackPoints: 2, evasion: -0.2, focusPlayer: true,
+		keys: true, followRange: 1, AI: "guard", visionRadius: 7, maxhp: 10, minLevel: 0, weight:-20, movePoints: 1.5, attackPoints: 2, evasion: -0.2, focusPlayer: true,
 		attack: "MeleeBindLockWillStun", attackWidth: 3, attackRange: 1, power: 4, dmgType: "electric", stunTime: 1, attackLock: "Red",
 		stamina: 4,
 		maxblock: 1,
@@ -1689,7 +1689,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "defeat", type: "delete", chance: 1.0},
 			{trigger: "tick", type: "secretToy"},
 		],
-		terrainTags: {"jailGuard": 100, "robot": 50, guardian: 51}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
+		terrainTags: {"jailGuard": 50, "robot": 25, guardian: 26, "cyborg": 25}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
 
 	// Rin
 	{name: "CyborgGuardian", faction: "AncientRobot",
@@ -1703,7 +1703,7 @@ let KinkyDungeonEnemies = [
 		spells: ["SummonForceFields", "RobotBolt"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true,
 		projectileTargeting: true,
 		armor: 2,
-		keys: true, followRange: 1, AI: "guard", visionRadius: 7.5, maxhp: 16, minLevel: 0, weight:-100, movePoints: 1.8, attackPoints: 2, evasion: -0.3, focusPlayer: true,
+		keys: true, followRange: 1, AI: "guard", visionRadius: 7.5, maxhp: 16, minLevel: 0, weight:-30, movePoints: 1.8, attackPoints: 2, evasion: -0.3, focusPlayer: true,
 		attack: "SpellMeleeBindLockWillStun", attackWidth: 3, attackRange: 1, power: 4, dmgType: "electric", stunTime: 1, attackLock: "Red",
 		stamina: 3,
 		maxblock: 2,
@@ -1724,7 +1724,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "defeat", type: "delete", chance: 1.0},
 			{trigger: "tick", type: "secretToy"},
 		],
-		terrainTags: {"jailGuard": 100, "robot": 8, guardian: 110}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
+		terrainTags: {"robot": 5, "cyborg": 25, guardian: 50}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
 
 
 
@@ -2930,7 +2930,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DragonQueenPoison", color: "#c8d45d",
 		faction: "DragonQueen",
-		tags: KDMapInit(["opendoors", "boss", "vineRestraints", "dragonqueen", "slashweakness", "meleeresist", "fireresist", "poisonresist", "melee", "beast", "search", "nature"]), cohesion: 0.1,
+		tags: KDMapInit(["opendoors", "boss", "vineRestraints", "dragonqueen", "unstoppable", "slashweakness", "meleeresist", "fireresist", "poisonresist", "melee", "beast", "search", "nature"]), cohesion: 0.1,
 		GFX: {
 			spriteHeight: 144,
 			spriteWidth: 144,
@@ -3016,7 +3016,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DragonQueenCrystal", color: "#92e8c0",
 		faction: "DragonQueen",
-		tags: KDMapInit(["opendoors", "boss", "dragonqueen", "pierceweakness", "meleeresist", "electricresist", "fireresist", "melee", "beast", "search", "crystalline"]), cohesion: 0.1,
+		tags: KDMapInit(["opendoors", "boss", "dragonqueen", "pierceweakness", "unstoppable", "meleeresist", "electricresist", "fireresist", "melee", "beast", "search", "crystalline"]), cohesion: 0.1,
 		GFX: {
 			spriteHeight: 144,
 			spriteWidth: 144,
@@ -3101,7 +3101,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DragonQueenShadow", color: "#92e8c0",
 		faction: "DragonQueen",
-		tags: KDMapInit(["opendoors", "boss", "dragonqueen", "chainweakness", "meleeresist", "coldresist", "fireresist", "melee", "beast", "search", "shadow", "shadowlatexRestraints"]), cohesion: 0.1,
+		tags: KDMapInit(["opendoors", "boss", "dragonqueen", "chainweakness", "unstoppable", "meleeresist", "coldresist", "fireresist", "melee", "beast", "search", "shadow", "shadowlatexRestraints"]), cohesion: 0.1,
 		GFX: {
 			spriteHeight: 144,
 			spriteWidth: 144,
@@ -3187,7 +3187,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DragonQueenIce", color: "#92e8c0",
 		faction: "DragonQueen",
-		tags: KDMapInit(["opendoors", "ice", "boss", "iceRestraints", "dragonqueen", "crushweakness", "meleeresist", "acidresist", "fireresist", "iceresist", "melee", "beast", "search", "nature"]), cohesion: 0.1,
+		tags: KDMapInit(["opendoors", "ice", "boss", "iceRestraints", "dragonqueen", "unstoppable", "crushweakness", "meleeresist", "acidresist", "fireresist", "iceresist", "melee", "beast", "search"]), cohesion: 0.1,
 		GFX: {
 			spriteHeight: 144,
 			spriteWidth: 144,

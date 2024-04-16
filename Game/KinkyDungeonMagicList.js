@@ -3436,6 +3436,14 @@ let KDSpecialBondage = {
 		healthStruggleBoost: 1.0,
 		enemyBondageMult: 1.0,
 	},
+	"Null": {
+		priority: 100,
+		color: "#ff5555",
+		struggleRate: 1,
+		powerStruggleBoost: 0.5,
+		healthStruggleBoost: 0.8,
+		enemyBondageMult: 1.0,
+	},
 	"Latex": {
 		priority: -8,
 		color: "#87b5c4",

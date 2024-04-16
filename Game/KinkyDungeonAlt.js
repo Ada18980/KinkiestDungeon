@@ -230,6 +230,46 @@ let alts = {
 		nolore: true,
 		noboring: true, // Skip generating boringness
 	},
+	"DollStorage": {
+		name: "DollStorage",
+		Title: "DollStorage",
+		noWear: true, // Disables doodad wear
+		bossroom: false,
+		width: 30,
+		height: 15,
+		nopatrols: true,
+		alwaysRegen: true, // Always regenerate this room
+		prisonType: "DollStorage",
+		setpieces: {
+		},
+		data: {
+			dollstorage: true,
+		},
+		skin: "vault",
+		musicParams: "DollStorage",
+		lightParams: "DollStorage",
+		useGenParams: "DollStorage",
+		genType: "DollStorage",
+		spawns: false,
+		chests: false,
+		shrines: false,
+		orbs: 0,
+		chargers: false,
+		notorches: true,
+		heart: false,
+		specialtiles: false,
+		shortcut: false,
+		enemies: false,
+		nojail: true,
+		nokeys: true,
+		nostairs: true,
+		nostartstairs: true,
+		notraps: false,
+		noClutter: true,
+		nobrick: true,
+		nolore: true,
+		noboring: true, // Skip generating boringness
+	},
 	"DemonTransition": {
 		name: "DemonTransition",
 		Title: "DemonTransition",
@@ -470,8 +510,8 @@ let alts = {
 		name: "TestTile",
 		noWear: true, // Disables doodad wear
 		bossroom: false,
-		width: 20,
-		height: 20,
+		width: 40,
+		height: 40,
 		alwaysRegen: true, // Always regenerate this room
 		//nopatrols: true,
 		setpieces: {
@@ -663,6 +703,9 @@ let KinkyDungeonCreateMapGenType = {
 	},
 	"DollRoom": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, 0, 10, 0, data);
+	},
+	"DollStorage": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateDollStorage(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
 	"DemonTransition": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, 0, 10, 0, data);
@@ -1351,6 +1394,32 @@ function KinkyDungeonCreateRoom(POI, VisitedRooms, width, height, openness, dens
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 }
 
+function KinkyDungeonCreateDollStorage(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	KDMapData.StartPosition = {x: 7 * 4-1, y: 7 * 1+2};
+	KDMapData.EndPosition = {x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.y};
+	VisitedRooms[0].x = 1;
+	VisitedRooms[0].y = Math.floor(height/2);
+
+	// Now we STRETCH the map
+	let KinkyDungeonOldGrid = KDMapData.Grid;
+	let w = KDMapData.GridWidth;
+	let h = KDMapData.GridHeight;
+	KDMapData.GridWidth = Math.floor(KDMapData.GridWidth*2);
+	KDMapData.GridHeight = Math.floor(KDMapData.GridHeight*2);
+	KDMapData.Grid = "";
+
+	// Generate the grid
+	for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
+		for (let X = 0; X < KDMapData.GridWidth; X++)
+			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
+		KDMapData.Grid = KDMapData.Grid + '\n';
+	}
+
+	KD_PasteTile(KDMapTilesList.DollRoom, 1, 1, data);
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
+
+}
+
 function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
 	// Variable setup
 
@@ -2011,22 +2080,22 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 	DialogueCreateEnemy(KDMapData.StartPosition.x + 5, KDMapData.StartPosition.y, "ShopkeeperStart");
 	DialogueCreateEnemy(KDMapData.StartPosition.x + 1, KDMapData.StartPosition.y - 3, "BlacksmithQuest").AI = "guard";
 	KinkyDungeonMapSet(KDMapData.StartPosition.x + 1, KDMapData.StartPosition.y - 3, '2');
-	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 1) + ',' + (KDMapData.StartPosition.y - 3), {OffLimits: true});
+	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 1) + ',' + (KDMapData.StartPosition.y - 3), {OL: true});
 
 	DialogueCreateEnemy(KDMapData.StartPosition.x + 2, KDMapData.StartPosition.y - 3, "ArmorerQuest").AI = "guard";
 	KinkyDungeonMapSet(KDMapData.StartPosition.x + 2, KDMapData.StartPosition.y - 3, '2');
-	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 2) + ',' + (KDMapData.StartPosition.y - 3), {OffLimits: true});
+	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 2) + ',' + (KDMapData.StartPosition.y - 3), {OL: true});
 
 
 
 	DialogueCreateEnemy(KDMapData.StartPosition.x + 3, KDMapData.StartPosition.y - 3, "BowyerQuest").AI = "guard";
 	KinkyDungeonMapSet(KDMapData.StartPosition.x + 3, KDMapData.StartPosition.y - 3, '2');
-	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 3) + ',' + (KDMapData.StartPosition.y - 3), {OffLimits: true});
+	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 3) + ',' + (KDMapData.StartPosition.y - 3), {OL: true});
 
 
 	DialogueCreateEnemy(KDMapData.StartPosition.x + 4, KDMapData.StartPosition.y - 3, "AntiqueQuest").AI = "guard";
 	KinkyDungeonMapSet(KDMapData.StartPosition.x + 4, KDMapData.StartPosition.y - 3, '2');
-	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 4) + ',' + (KDMapData.StartPosition.y - 3), {OffLimits: true});
+	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 4) + ',' + (KDMapData.StartPosition.y - 3), {OL: true});
 
 	if (KDRandom() < 0.1 * KDGameData.HighestLevel)
 		SetpieceSpawnPrisoner(KDMapData.StartPosition.x + 9, KDMapData.StartPosition.y);

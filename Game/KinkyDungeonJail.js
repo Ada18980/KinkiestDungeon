@@ -515,7 +515,7 @@ function KinkyDungeonPlaceJailKeys() {
                 && KDMapData.RandomPathablePoints[(X) + ',' + (Y)]
                 && KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y) > 15
                 && KDistChebyshev(X - KDMapData.EndPosition.x, Y - KDMapData.EndPosition.y) > 15
-                && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OffLimits))
+                && (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OL))
 				jailKeyList.push({x:X, y:Y});
 
 	let keyCount = Math.max(0, KDMaxKeys - KDMapData.GroundItems.filter((item) => {return item.name == "Keyring";}).length);
@@ -631,7 +631,10 @@ function KinkyDungeonHandleJailSpawns(delta) {
 	// Unlock all jail doors when chasing
 	if (!KDGameData.PrisonerState || KDGameData.PrisonerState == 'chase') {
 		for (let T of Object.values(KDMapData.Tiles)) {
-			if (T.Lock && T.Type == "Door" && T.Jail) T.Lock = undefined;
+			if (T.Lock && T.Type == "Door" && T.Jail) {
+				T.OGLock = T.Lock;
+				T.Lock = undefined;
+			}
 		}
 	}
 
@@ -1106,14 +1109,15 @@ function KDEnterDemonTransition() {
 }
 
 function KDEnterDollTerminal(willing, cancelDialogue = true) {
+	let dollStand = KinkyDungeonPlayerTags.get("Dollstand");
+
 	KDDefeatedPlayerTick(!willing);
 	KDGameData.PrisonerState = 'jail';
-	//KDGameData.RoomType = "DollRoom"; // We do a tunnel every other room
-	//KDGameData.MapMod = ""; // Reset the map mod
 	if (cancelDialogue) KDGameData.CurrentDialog = "";
-	let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
+	let faction = KDGetMainFaction() == "Dollsmith" ? "Dollsmith" : "AncientRobot";
+	let params = KinkyDungeonMapParams[alts.DollStorage?.genType || (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 	KDGameData.DollRoomCount = 0;
-	KinkyDungeonCreateMap(params, "DollRoom", "", MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, undefined, "");
+	KinkyDungeonCreateMap(params, "DollStorage", "", MiniGameKinkyDungeonLevel, undefined, undefined, faction, undefined, undefined, "");
 
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if ((KDRestraint(inv).removePrison || KDRestraint(inv).forceRemovePrison) && (!KinkyDungeonStatsChoice.get("KinkyPrison") || KDRestraint(inv).forceRemovePrison || KDRestraint(inv).removeOnLeash || KDRestraint(inv).freeze || KDRestraint(inv).immobile)) {
@@ -1135,10 +1139,14 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 
 	KDMapData.KeysHeld = 0;
 
-	KDMovePlayer(Math.floor(KDMapData.GridWidth/2), Math.floor(KDMapData.GridHeight/2), false);
+	//KDMovePlayer(Math.floor(KDMapData.GridWidth/2), Math.floor(KDMapData.GridHeight/2), false);
 
 	KinkyDungeonLoseJailKeys();
 	KDResetAllAggro();
+
+	if (dollStand && !KinkyDungeonPlayerTags.get("dollStand")) {
+		KDPlayerEffectRestrain(undefined, 1, ["dollstand"], KDGetMainFaction(), false, true, false, false, false);
+	}
 
 	KinkyDungeonSaveGame();
 }
@@ -1335,10 +1343,10 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	for (let X = 1; X < KDMapData.GridWidth - 1; X++)
 		for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
 			let tile = KinkyDungeonTilesGet(X + "," + Y);
-			if (tile && tile.Jail && tile.ReLock && (KinkyDungeonMapGet(X, Y) == 'd' || KinkyDungeonMapGet(X, Y) == 'D')) {
+			if (tile && ((tile.Jail && tile.ReLock) || tile.OGLock) && (KinkyDungeonMapGet(X, Y) == 'd' || KinkyDungeonMapGet(X, Y) == 'D')) {
 				KinkyDungeonMapSet(X, Y, 'D');
 				if (tile && !tile.Lock) {
-					tile.Lock = "Red";
+					tile.Lock = tile.OGLock || "Red";
 					tile.Type = "Door";
 					KDUpdateDoorNavMap();
 				}

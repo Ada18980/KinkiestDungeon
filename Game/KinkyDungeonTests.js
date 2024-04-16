@@ -41,6 +41,7 @@ function KDTestFullRunthrough(GameLoops, Init, NGP) {
 		MiniGameKinkyDungeonLevel = 1;
 		MiniGameKinkyDungeonCheckpoint = "grv";
 		KinkyDungeonInitialize(1);
+		KDInitPerks();
 	}
 	for (let i = 0; i < KinkyDungeonMaxLevel * GameLoops; i++) {
 		// Run through the stairs

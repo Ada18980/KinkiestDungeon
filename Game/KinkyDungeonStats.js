@@ -254,25 +254,6 @@ function KinkyDungeonDefaultStats(Load) {
 		KinkyDungeonSpellPoints = 9001;
 	}
 
-	if (!Load) {
-		let magicHands = KinkyDungeonStatsChoice.has("MagicHands");
-		if (!magicHands) {
-			// We use magichands for the start scenarios
-			KinkyDungeonStatsChoice.set("MagicHands", true);
-		}
-		KinkyDungeonPlayerTags = KinkyDungeonUpdateRestraints(0.0);
-		for (let perk of [...KinkyDungeonStatsChoice.keys()].filter((e) => {return KDPerkStart[e] != undefined;})
-			.sort((a, b) => {
-				return ((KinkyDungeonStatsPresets[a] && KinkyDungeonStatsPresets[a].startPriority) || -1) - ((KinkyDungeonStatsPresets[b] && KinkyDungeonStatsPresets[b].startPriority) || -1);
-			})) {
-			if (KinkyDungeonStatsChoice.get(perk) && KDPerkStart[perk]) {
-				KDPerkStart[perk](Load);
-				console.log("started with perk " + perk);
-			}
-		}
-		if (!magicHands)
-			KinkyDungeonStatsChoice.delete("MagicHands");
-	}
 
 	KinkyDungeonDressPlayer();
 	CharacterRefresh(KinkyDungeonPlayer);
@@ -2135,4 +2116,35 @@ function KDBalanceDmgMult() {
 function KDFitnessMult() {
 	let mult = 0.5/KinkyDungeonStatWillMax + 0.5/KinkyDungeonStatStaminaMax;
 	return mult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "FitnessMult"));
+}
+function KDMentalMult() {
+	let mult = 0.5/KinkyDungeonStatDistractionMax + 0.5/KinkyDungeonStatManaMax;
+	return mult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "MentalMult"));
+}
+function KDEnduranceMult() {
+	let mult = 0.5/KinkyDungeonStatStaminaMax + 0.5/KinkyDungeonStatDistractionMax;
+	return mult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "EnduranceMult"));
+}
+function KDPowerMult() {
+	let mult = 0.5/KinkyDungeonStatWillMax + 0.5/KinkyDungeonStatManaMax;
+	return mult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "PowerMult"));
+}
+
+/**
+ *
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDIsBlindfolded(player) {
+	return (!KinkyDungeonPlayerTags.get("Blindfolds") && !KinkyDungeonPlayerTags.get("Masks") && !KinkyDungeonPlayerTags.get("Hoods") && !KinkyDungeonPlayerTags.get("BlockEyes"));
+}
+
+
+/**
+ *
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDCanHack(player) {
+	return (KinkyDungeonPlayerTags.get("Cyberjack"));
 }

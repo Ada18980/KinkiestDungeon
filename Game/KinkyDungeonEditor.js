@@ -131,6 +131,7 @@ let KDTilePalette = {
 	'----Doors----': {type: "none"},
 	'Door': {type: "tile", tile: 'd', special: {Type: "Door"}},
 	'DoorAlways': {type: "tile", tile: 'D', special: {Type: "Door", Priority: true, AlwaysClose: true}},
+	'CyberDoor': {type: "tile", tile: 'D', special: {Type: "Door", Priority: true, AlwaysClose: true, Lock: "Cyber", DoorSkin: "Doors/Cyber"}},
 	'Door_RedLock': {type: "tile", tile: 'D', special: {Type: "Door", Priority: true, AlwaysClose: true, Lock: "Red"}},
 	'Door_PurpleLock': {type: "tile", tile: 'D', special: {Type: "Door", Priority: true, AlwaysClose: true, Lock: "Purple"}},
 	'Door_BlueLock': {type: "tile", tile: 'D', special: {Type: "Door", Priority: true, AlwaysClose: true, Lock: "Blue"}},
@@ -180,6 +181,10 @@ let KDTilePalette = {
 	'ConveyorDown': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "Conveyor/Down", DX: 0, DY: 1,}},
 	'ConveyorLeft': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "Conveyor/Left", DX: -1, DY: 0,}},
 	'ConveyorRight': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "Conveyor/Right", DX: 1, DY: 0,}},
+	'SafetyConveyorUp': {type: "tile", tile: 'v', special: {Type: "SafetyConveyor", Sprite: "Conveyor/SafetyUp", DX: 0, DY: -1,}},
+	'SafetyConveyorDown': {type: "tile", tile: 'v', special: {Type: "SafetyConveyor", Sprite: "Conveyor/SafetyDown", DX: 0, DY: 1,}},
+	'SafetyConveyorLeft': {type: "tile", tile: 'v', special: {Type: "SafetyConveyor", Sprite: "Conveyor/SafetyLeft", DX: -1, DY: 0,}},
+	'SafetyConveyorRight': {type: "tile", tile: 'v', special: {Type: "SafetyConveyor", Sprite: "Conveyor/SafetyRight", DX: 1, DY: 0,}},
 	'ConveyorUpOn': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "Conveyor/Up", DX: 0, DY: -1, wireType: "Conveyor_Toggle", SwitchMode: "On"}},
 	'ConveyorDownOn': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "Conveyor/Down", DX: 0, DY: 1, wireType: "Conveyor_Toggle", SwitchMode: "On"}},
 	'ConveyorLeftOn': {type: "tile", tile: 'V', special: {Type: "Conveyor", Sprite: "Conveyor/Left", DX: -1, DY: 0, wireType: "Conveyor_Toggle", SwitchMode: "On"}},
@@ -201,6 +206,7 @@ let KDTilePalette = {
 	'BondageMachineChastity': {type: "tile", tile: 'N', special: {Type: "BondageMachine", Binding: "Chastity"}},
 	'BondageMachineTape': {type: "tile", tile: 'N', special: {Type: "BondageMachine", Binding: "Tape"}},
 	'BondageMachineMetal': {type: "tile", tile: 'N', special: {Type: "BondageMachine", Binding: "Metal"}},
+	'BondageMachineDoll': {type: "tile", tile: 'N', special: {Type: "BondageMachine", Binding: "Doll"}},
 	'DollDropoffU': {type: "tile", tile: '5', special: {Type: "DollDropoff", Sprite: "Floor", Overlay: "DollDropoff", direction: {x: 0, y:-1}}},
 	'DollDropoffD': {type: "tile", tile: '5', special: {Type: "DollDropoff", Sprite: "Floor", Overlay: "DollDropoffD", direction: {x: 0, y:1}}},
 	'DollDropoffR': {type: "tile", tile: '5', special: {Type: "DollDropoff", Sprite: "Floor", Overlay: "DollDropoffR", direction: {x: 1, y:0}}},
@@ -221,7 +227,7 @@ let KDTilePalette = {
 	'MotionLamp':  {type: "effect", effectTile: "MotionLamp"},
 	'----Misc----': {type: "none"},
 	'POI': {type: "POI"},
-	'OffLimits': {type: "offlimits"},
+	'OL': {type: "offlimits"},
 	'Jail': {type: "jail"},
 	'Keyring': {type: "Keyring"},
 	'MazeSeed': {type: "MazeSeed",
@@ -237,6 +243,15 @@ let KDTilePalette = {
 		}
 	},
 	'MazeBlock': {type: "MazeBlock"},
+	'Label': {type: "Label",
+		customfields: {
+			name: {type: "string"},
+			type: {type: "string"},
+			faction: {type: "string"},
+			guard: {type: "boolean"},
+			interesting: {type: "boolean"},
+		}
+	},
 };
 
 function KDGetTileIndexImg(index) {
@@ -575,9 +590,23 @@ function KDDrawEditorUI() {
 		let x = parseInt(ElementValue("MapTileX"));
 		let y = parseInt(ElementValue("MapTileY"));
 		if (x && y && x > 0 && y > 0 && x <= KDTE_MAXDIM && y <= KDTE_MAXDIM)
-			KDTE_Create(x, y);
+			KDTE_Create(x, y, undefined, false, false);
 		return true;
-	}, true, 1600, 130, 350, 64, "Resize (Clears all)", "#ffffff", "");
+	}, true, 1600, 130, 110, 64, "New (Open)", "#ffffff", "");
+	DrawButtonKDEx("TileEditorNewFloor", () => {
+		let x = parseInt(ElementValue("MapTileX"));
+		let y = parseInt(ElementValue("MapTileY"));
+		if (x && y && x > 0 && y > 0 && x <= KDTE_MAXDIM && y <= KDTE_MAXDIM)
+			KDTE_Create(x, y, undefined, false, true);
+		return true;
+	}, true, 1720, 130, 110, 64, "New (Empty)", "#ffffff", "");
+	DrawButtonKDEx("TileEditorNewClosed", () => {
+		let x = parseInt(ElementValue("MapTileX"));
+		let y = parseInt(ElementValue("MapTileY"));
+		if (x && y && x > 0 && y > 0 && x <= KDTE_MAXDIM && y <= KDTE_MAXDIM)
+			KDTE_Create(x, y, undefined, true);
+		return true;
+	}, true, 1840, 130, 110, 64, "New (Closed)", "#ffffff", "");
 
 	DrawButtonKDEx("TileTest", () => {
 		KDTE_CloseUI();
@@ -758,7 +787,7 @@ let KDTEHoldDelay = 200;
 let KDTEmode = 0;
 
 let KDTE_Scale = 7;
-let KDTE_MAXDIM = 5;
+let KDTE_MAXDIM = 20;
 
 let KDTELoadConfirm = false;
 
@@ -771,6 +800,12 @@ function KDTE_Clear(x, y, force = false) {
 			if (jail.x == x && jail.y == y)
 				KDMapData.JailPoints.splice(KDMapData.JailPoints.indexOf(jail), 1);
 		}
+		if (KDMapData.Labels)
+			for (let k of Object.values(KDMapData.Labels)) {
+				for (let l of k)
+					if (l.x == x && l.y == y)
+						k.splice(k.indexOf(l), 1);
+			}
 		//KDMapData.EffectTiles.delete(x + "," + y);
 	}
 }
@@ -787,14 +822,14 @@ let KDTE_Brush = {
 		delete KDMapData.EffectTiles[KinkyDungeonTargetX + "," + KinkyDungeonTargetY];
 	},
 	"tile": (brush, curr, noSwap) => {
-		let OL = KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY) ? KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits : undefined;
+		let OL = KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY) ? KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OL : undefined;
 		let Jail = KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY) ? KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).Jail : undefined;
 		let tile = (curr == brush.tile && !noSwap) ? '0' : brush.tile;
 		if (tile == '0') {
 			if (!noSwap) {
 				KDTE_Clear(KinkyDungeonTargetX, KinkyDungeonTargetY, true);
 				if (OL || Jail)
-					KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: OL, Jail: Jail});
+					KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OL: OL, Jail: Jail});
 			}
 		} else if (curr != tile) {
 			KinkyDungeonMapSetForce(KinkyDungeonTargetX, KinkyDungeonTargetY, tile);
@@ -805,7 +840,7 @@ let KDTE_Brush = {
 			if (brush.special) {
 				KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, Object.assign({}, brush.special));
 				if (OL)
-					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits = true;
+					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OL = true;
 				if (Jail)
 					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).Jail = true;
 				if (brush.customfields) {
@@ -816,7 +851,7 @@ let KDTE_Brush = {
 				}
 			} else {
 				if (OL)
-					KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: true});
+					KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OL: true});
 				else
 					KinkyDungeonTilesDelete(KinkyDungeonTargetX + "," + KinkyDungeonTargetY);
 			}
@@ -824,13 +859,13 @@ let KDTE_Brush = {
 	},
 	'offlimits': (brush, curr, noSwap) => {
 		if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)) {
-			if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits) {
+			if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OL) {
 				if (!noSwap)
-					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits = false;
+					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OL = false;
 			} else
-				KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OffLimits = true;
+				KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OL = true;
 		} else {
-			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OffLimits: true});
+			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OL: true});
 		}
 	},
 	'MazeBlock': (brush, curr, noSwap) => {
@@ -843,6 +878,36 @@ let KDTE_Brush = {
 		} else {
 			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {MazeBlock: true});
 		}
+	},
+	'Label': (brush, curr, noSwap) => {
+		if (!KDMapData.Labels) KDMapData.Labels = {};
+
+		/** @type {KDLabel} */
+		let label = {
+			name: "null",
+			type: "null",
+			assigned: -1,
+			x: KinkyDungeonTargetX,
+			y: KinkyDungeonTargetY,
+		};
+
+		if (brush.customfields) {
+			for (let field of Object.entries(brush.customfields)) {
+				if (KDTE_GetField(field) != undefined)
+					label[field[0]] = KDTE_GetField(field);
+			}
+		}
+
+		if (!KDMapData.Labels[label.type]) KDMapData.Labels[label.type] = [];
+
+		if (KDMapData.Labels[label.type].filter((ll) => {return ll.x == label.x && ll.y == label.y;}).length == 0) {
+			// Set
+			KDMapData.Labels[label.type].push(label);
+		} else {
+			// Remove
+			KDMapData.Labels[label.type] = KDMapData.Labels[label.type].filter((ll) => {return ll.x != label.x || ll.y != label.y;});
+		}
+
 	},
 	'MazeSeed': (brush, curr, noSwap) => {
 		if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)) {
@@ -940,6 +1005,9 @@ let KDTE_confirmreset = false;
 let KDTE_confirmcommit = false;
 
 function KDHandleTileEditor(noSwap) {
+
+	// @ts-ignore
+	if (document.activeElement && (document.activeElement?.type == "text" || document.activeElement?.type == "textarea" || KDFocusableTextFields.includes(document.activeElement.id))) return;
 	if (!noSwap && KDTE_lastMouse && CommonTime() > KDTE_lastMouse + KDTEHoldDelay) return;
 
 	KDTE_confirmreset = false;
@@ -1127,8 +1195,10 @@ function KDTE_CloseUI() {
  * @param {number} w
  * @param {number} h
  * @param {string} chkpoint
- */
-function KDTE_Create(w, h, chkpoint = 'grv') {
+ * @param {boolean} closed - The edges will be closed index
+ * @param {boolean} empty - All floor
+ *  */
+function KDTE_Create(w, h, chkpoint = 'grv', closed = false, empty = false) {
 	MiniGameKinkyDungeonCheckpoint = 'grv';
 	KinkyDungeonMapIndex = {
 		'grv' : chkpoint,
@@ -1138,12 +1208,13 @@ function KDTE_Create(w, h, chkpoint = 'grv') {
 	KinkyDungeonSeeAll = true;
 
 
+	KDMapData.Labels = {};
 	KDMapData.Grid = "";
 	KDMapData.GridWidth = KDTE_Scale * w;
 	KDMapData.GridHeight = KDTE_Scale * h;
 	for (let y = 0; y < KDMapData.GridHeight; y++) {
 		for (let x = 0; x < KDMapData.GridWidth; x++) {
-			KDMapData.Grid = KDMapData.Grid + "1";
+			KDMapData.Grid = KDMapData.Grid + (empty ? "0" : "1");
 		}
 		KDMapData.Grid = KDMapData.Grid + "\n";
 	}
@@ -1161,7 +1232,26 @@ function KDTE_Create(w, h, chkpoint = 'grv') {
 	KDEditorTileIndexStore = {};
 	for (let ww = 1; ww <= w; ww++) {
 		for (let hh = 1; hh <= h; hh++) {
-			KDEditorTileIndexStore[ww + "," + hh] = 'udlr';
+			// Closed maps dont have to worry about edge indices
+			if (closed) {
+				let index = 'udlr';
+				if (ww == 1) {
+					index = index.replace("l", "");
+				}
+				if (hh == 1) {
+					index = index.replace("u", "");
+				}
+				if (ww == w) {
+					index = index.replace("r", "");
+				}
+				if (hh == h) {
+					index = index.replace("d", "");
+				}
+				KDEditorTileIndexStore[ww + "," + hh] = index;
+			} else {
+				KDEditorTileIndexStore[ww + "," + hh] = 'udlr';
+			}
+
 		}
 	}
 	KDEditorTileFlexStore = {};
@@ -1206,7 +1296,8 @@ function KDTE_LoadTile(name, loadedTile) {
 			KDGameData.KeyringLocations.push({x:k.x, y:k.y});
 		}
 	}
-
+	if (nt.Labels)
+		KDMapData.Labels = JSON.parse(JSON.stringify(nt.Labels));
 	KDMapData.Tiles = KDObjFromMapArray(nt.Tiles);
 	KDMapData.TilesSkin = KDObjFromMapArray(nt.Skin);
 	KDMapData.JailPoints = [];
@@ -1249,11 +1340,12 @@ function KDTE_LoadTile(name, loadedTile) {
  * @returns {KDMapTile}
  */
 function KDTE_ExportTile() {
-/**
+	/**
 	 * @type {KDMapTile}
 	 */
 	let saveTile = {
 		name: KDEditorCurrentMapTileName,
+		Labels: JSON.parse(JSON.stringify(KDMapData.Labels)),
 		w: KDMapData.GridWidth / KDTE_Scale,
 		h: KDMapData.GridHeight / KDTE_Scale,
 		primInd: KDEditorTileIndexStore["1,1"],
@@ -1409,5 +1501,6 @@ function KDTE_GetField(field) {
 	if (ElementValue("KDTECustomField" + field[0]) == "") return undefined;
 	if (field[1].type == 'array') return ElementValue("KDTECustomField" + field[0])?.split(',');
 	if (field[1].type == 'number') return parseFloat(ElementValue("KDTECustomField" + field[0])) || 0;
+	if (field[1].type == 'boolean') return (ElementValue("KDTECustomField" + field[0]) && ElementValue("KDTECustomField" + field[0]) != "false") ? true : false;
 	return ElementValue("KDTECustomField" + field[0]);
 }

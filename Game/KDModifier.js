@@ -40,9 +40,9 @@ let KDModifierEffects = {
 				},
 				events: (item, positive) => {
 					return [
-						{trigger: "CONDITION", type: "BuffSelf", buffType: "spellDamageBuff", time: 20, power: 0.2, desc: "SpellDamageBuff", buffSprite: "SpellDamageUp", },
-						{original: "SpellDamageBuff", trigger: "inventoryTooltip", type: "effectModifier", msg: "SpellDamageBuff", power: 20, duration: 20, color: "#000000", bgcolor: "#8888ff"},
-						{original: "SpellDamageBuff", trigger: "icon", type: "tintIcon", power: 4, color: "#ff8800"},
+						{trigger: "CONDITION", inheritLinked: true, type: "BuffSelf", buffType: "spellDamageBuff", time: 20, power: 0.2, desc: "SpellDamageBuff", buffSprite: "SpellDamageUp", },
+						{original: "SpellDamageBuff", inheritLinked: true, trigger: "inventoryTooltip", type: "effectModifier", msg: "SpellDamageBuff", power: 20, duration: 20, color: "#000000", bgcolor: "#8888ff"},
+						{original: "SpellDamageBuff", inheritLinked: true, trigger: "icon", type: "tintIcon", power: 4, color: "#ff8800"},
 					];
 				},
 			},
@@ -80,7 +80,7 @@ let KDModifierConditions = {
 						}
 					}
 					return [
-						{original: "OnTease", trigger: "inventoryTooltip", type: "conditionModifier", msg: "OnTease", color: "#000000", bgcolor: "#ffffff"},
+						{original: "OnTease", inheritLinked: true, trigger: "inventoryTooltip", type: "conditionModifier", msg: "OnTease", color: "#000000", bgcolor: "#ffffff"},
 						...effects];
 				},
 			},

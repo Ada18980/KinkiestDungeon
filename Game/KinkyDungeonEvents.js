@@ -1203,6 +1203,7 @@ let KDEventMapInventory = {
 		},
 		"callGuard": (e, item, data) => {
 			if (!data.delta) return;
+			if (KinkyDungeonFlags.get("SuppressGuardCall")) return;
 			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < 0.25) {
 				KinkyDungeonSetFlag("GuardCalled", 35);
 				console.log("Attempting to call guard");
@@ -1214,6 +1215,7 @@ let KDEventMapInventory = {
 		},
 		"callGuardFurniture": (e, item, data) => {
 			if (!data.delta) return;
+			if (KinkyDungeonFlags.get("SuppressGuardCall")) return;
 			if (!KinkyDungeonFlags.get("GuardCallBlock")) {
 				// Wont call a guard in first 45 turns
 				KinkyDungeonSetFlag("GuardCallBlock", 400);
@@ -8821,8 +8823,8 @@ let KDEventMapGeneric = {
 	"playerMove": {
 		"Conveyor": (e, data) => {
 			for (let player of [KinkyDungeonPlayerEntity]) {
-				if (KinkyDungeonMapGet(player.x, player.y) == 'V')
-					KDConveyor(1, player.x, player.y);
+				if (KinkyDungeonMapGet(player.x, player.y) == 'V' || (!data.willing && KinkyDungeonMapGet(player.x, player.y) == 'v'))
+					KDConveyor(1, player.x, player.y, true);
 			}
 
 		},
@@ -9254,7 +9256,7 @@ let KDEventMapGeneric = {
 			if (KDGameData.RoomType && KinkyDungeonAltFloor(KDGameData.RoomType).data?.dollroom) {
 				// Spawn shopkeeper
 
-				if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.OffLimits
+				if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.OL
 					&& KDCanSpawnShopkeeper(true)
 					&& KDRandom() < 0.1) KDStartDialog("ShopkeeperRescue", "ShopkeeperRescue", true, "", undefined);
 
@@ -9264,7 +9266,7 @@ let KDEventMapGeneric = {
 					if (spawn && KDistEuclidean(player.x - KDMapData.StartPosition.x, player.y - KDMapData.StartPosition.y) < 10) {
 						spawn = false;
 					}
-					if (spawn && !eligible && !KinkyDungeonTilesGet(player.x + "," + player.y)?.OffLimits) {
+					if (spawn && !eligible && !KinkyDungeonTilesGet(player.x + "," + player.y)?.OL) {
 						eligible = true;
 					}
 				}
@@ -9280,6 +9282,16 @@ let KDEventMapGeneric = {
 						en.noDrop = true;
 					}
 				}
+			}
+		},
+		"DollStorageUpdate": (e, data) => {
+			if (KDGameData.RoomType && KinkyDungeonAltFloor(KDGameData.RoomType).data?.dollstorage) {
+				// Spawn shopkeeper
+
+				if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.OL
+					&& KDCanSpawnShopkeeper(true)
+					&& KDRandom() < 0.1) KDStartDialog("ShopkeeperRescue", "ShopkeeperRescue", true, "", undefined);
+
 			}
 		},
 		"SecondWind": (e, data) => {

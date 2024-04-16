@@ -347,6 +347,8 @@ let KinkyDungeonStatsPresets = {
 	"StartLatex": {startPriority: 15, category: "Start", id: "StartLatex", cost: -2, tags: ["start"]},
 	"StartShadow": {startPriority: 1, category: "Start", id: "StartShadow", cost: -1, tags: ["start"]},
 
+
+	"StartCyberDollStorage": {startPriority: 1000, category: "Boss", id: "StartCyberDollStorage", cost: -1, locked: true, tags: ["start"]},
 	"StartCyberDoll": {startPriority: 7, category: "Boss", id: "StartCyberDoll", cost: -2, locked: true, tags: ["start"]},
 
 	"DollmakerVisor": {startPriority: 31, category: "Boss", id: "DollmakerVisor", cost: -1, block: ["DollmakerMask"], locked: true, tags: ["start"]},
@@ -580,6 +582,26 @@ function KinkyDungeonCanUnPickStat(Stat) {
 }
 
 
+function KDInitPerks() {
+	let magicHands = KinkyDungeonStatsChoice.has("MagicHands");
+	if (!magicHands) {
+		// We use magichands for the start scenarios
+		KinkyDungeonStatsChoice.set("MagicHands", true);
+	}
+	KinkyDungeonPlayerTags = KinkyDungeonUpdateRestraints(0.0);
+	for (let perk of [...KinkyDungeonStatsChoice.keys()].filter((e) => {return KDPerkStart[e] != undefined;})
+		.sort((a, b) => {
+			return ((KinkyDungeonStatsPresets[a] && KinkyDungeonStatsPresets[a].startPriority) || -1) - ((KinkyDungeonStatsPresets[b] && KinkyDungeonStatsPresets[b].startPriority) || -1);
+		})) {
+		if (KinkyDungeonStatsChoice.get(perk) && KDPerkStart[perk]) {
+			KDPerkStart[perk]();
+			console.log("started with perk " + perk);
+		}
+	}
+	if (!magicHands)
+		KinkyDungeonStatsChoice.delete("MagicHands");
+}
+
 let KDPerkStart = {
 	Studious: () => {
 		KinkyDungeonSpellPoints += 1;
@@ -693,6 +715,12 @@ let KDPerkStart = {
 	DollmakerMask: () =>{
 		KinkyDungeonAddRestraintIfWeaker("DollmakerMask", 5, true, "Gold", false, undefined, undefined, undefined, true);
 		KDFixPlayerClothes("Dollsmith");
+	},
+	StartCyberDollStorage: () =>{
+		KinkyDungeonChangeRep("Metal", -25);
+
+		KDFixPlayerClothes("AncientRobot");
+		KDEnterDollTerminal(false);
 	},
 	StartCyberDoll: () =>{
 		KDAddQuest("EscapedDoll");

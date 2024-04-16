@@ -3,6 +3,13 @@
 /** If a tile's weight is higher than this, then any time without this much weight will get culled from the list */
 let KD_GENWEIGHTCUTOFF = 100000;
 
+
+function KDAddLabel(label) {
+	if (!KDMapData.Labels) KDMapData.Labels = {};
+	if (!KDMapData.Labels[label.type]) KDMapData.Labels[label.type] = [];
+	KDMapData.Labels[label.type].push(label);
+}
+
 /**
  *
  * @param {number} w
@@ -428,6 +435,15 @@ function KD_PasteTile(tile, x, y, data) {
 		}
 	}
 
+	if (tile.Labels) {
+		for (let k of Object.values(tile.Labels)) {
+			for (let l of k) {
+				l.x += x;
+				l.y += y;
+				KDAddLabel(l);
+			}
+		}
+	}
 
 	if (tile.POI)
 		for (let origPoi of tile.POI) {
@@ -450,9 +466,9 @@ function KD_PasteTile(tile, x, y, data) {
 			let gennedTile = KDCreateTile(xx+x, yy+y, Object.assign({}, tileLoc[1]), data);
 			if (gennedTile)
 				KinkyDungeonTilesSet((xx + x) + "," + (yy + y), gennedTile);
-			if (tileLoc[1] && tileLoc[1].OffLimits) {
-				if (!KinkyDungeonTilesGet((xx + x) + "," + (yy + y))) KinkyDungeonTilesSet((xx + x) + "," + (yy + y), {OffLimits: true});
-				else KinkyDungeonTilesGet((xx + x) + "," + (yy + y)).OffLimits = true;
+			if (tileLoc[1] && tileLoc[1].OL) {
+				if (!KinkyDungeonTilesGet((xx + x) + "," + (yy + y))) KinkyDungeonTilesSet((xx + x) + "," + (yy + y), {OL: true});
+				else KinkyDungeonTilesGet((xx + x) + "," + (yy + y)).OL = true;
 			}
 		}
 	}
@@ -823,11 +839,11 @@ let KDTileGen = {
 			} else {
 				KinkyDungeonMapSet(x, y, 'd');
 			}
-			return {Type: "Door", Lock: tileGenerator.Lock == "Red" ? KDRandomizeRedLock() : tileGenerator.Lock, OffLimits: tileGenerator.OffLimits, RequiredDoor: tileGenerator.Priority};
+			return {Type: "Door", Lock: tileGenerator.Lock == "Red" ? KDRandomizeRedLock() : tileGenerator.Lock, OL: tileGenerator.OL, RequiredDoor: tileGenerator.Priority, DoorSkin: tileGenerator.DoorSkin};
 		} else {
 			KinkyDungeonMapSet(x, y, '2');
 			if (nodoorchance <= 0.99) {
-				return {PotentialDoor: true, OffLimits: tileGenerator.OffLimits};
+				return {PotentialDoor: true, OL: tileGenerator.OL};
 			}
 		}
 		return null;
@@ -864,7 +880,7 @@ let KDTileGen = {
 	"JailBed": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'B');
 		KDMapData.JailPoints.push({x: x, y: y, type: "jail", radius: 1});
-		return {Jail: true, OffLimits: true};
+		return {Jail: true, OL: true};
 	},
 	"Furniture": (x, y, tile, tileGenerator, data) => {
 		//KinkyDungeonMapSet(x, y, tileGenerator.tile);
@@ -912,7 +928,11 @@ let KDTileGen = {
 	},
 	"Conveyor": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'V');
-		return {Type: "Conveyor", DX: tileGenerator.DX, DY: tileGenerator.DY, OffLimits: true, wireType: tileGenerator.wireType, SwitchMode: tileGenerator.SwitchMode};
+		return {Type: "Conveyor", DX: tileGenerator.DX, DY: tileGenerator.DY, OL: true, wireType: tileGenerator.wireType, SwitchMode: tileGenerator.SwitchMode};
+	},
+	"SafetyConveyor": (x, y, tile, tileGenerator, data) => {
+		KinkyDungeonMapSet(x, y, 'v');
+		return {Type: "Conveyor", DX: tileGenerator.DX, DY: tileGenerator.DY, OL: true, wireType: tileGenerator.wireType, SwitchMode: tileGenerator.SwitchMode, Sfty: true};
 	},
 	"DollSupply": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'u');
@@ -920,7 +940,7 @@ let KDTileGen = {
 	},
 	"DollTerminal": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 't');
-		return {Type: "DollTerminal", OffLimits: true};
+		return {Type: "DollTerminal", OL: true};
 	},
 	"Skin": (x, y, tile, tileGenerator, data) => {
 		return {Skin: tileGenerator.Skin, Skin2: tileGenerator.Skin};
@@ -930,7 +950,7 @@ let KDTileGen = {
 	},
 	"BondageMachine": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'N');
-		return {Type: "BondageMachine", OffLimits: true, Binding: tileGenerator.Binding};
+		return {Type: "BondageMachine", OL: true, Binding: tileGenerator.Binding};
 	},
 	"EffectTile": (x, y, tile, tileGenerator, data) => {
 		KDCreateEffectTile(x, y, {

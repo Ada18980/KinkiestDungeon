@@ -1153,6 +1153,120 @@ const KinkyDungeonMapParams = {
 
 
 
+	"DollStorage":{//DungeonName8,-Orrery-
+		successorNegative: {
+			cry: 1.0,
+		},
+		successorPositive: {
+			bel: 0.5,
+			tmp: 0.5,
+		},
+		successorSame: {
+			bel: 1.0,
+		},
+		color: "#ffee83",
+		"background" : "SpookyForest",
+		"openness" : 1,
+		"density" : 9,
+		"crackchance" : 0.12,
+		"barchance" : 0.1,
+		"brightness" : 1,
+		"chestcount" : 7,
+		"chargerchance": 0.8,
+		"litchargerchance": 0.2,
+		"chargercount": 0,
+		"shrinecount" : 10,
+		"shrinechance" : 0.5,
+		"ghostchance" : 0.7,
+		"doorchance" : 0.9,
+		"nodoorchance" : 0.25,
+		"doorlockchance" : -0.05,
+		"trapchance" : 0.2,
+		"grateChance" : 0.8,
+		"rubblechance" : 0.35,
+		"brickchance" : 0.0,
+		"cacheInterval" : 1,
+		"forbiddenChance" : 1.0,
+		"forbiddenGreaterChance" : 0.45,
+		torchlitchance: 0.45,
+		torchchance: 1.0,
+		torchchanceboring: -0.7,
+		torchreplace: {
+			sprite: "OrbLantern",
+			brightness: 3,
+		},
+
+		music: {
+			"Doll_Sorting_Room.ogg": 20,
+		},
+
+		tagModifiers: {
+			"jungle": 0,
+			"cavern": 0,
+			"temple": 0.0,
+			"urban": 0,
+			"industrial": 2.0,
+			"dungeon": 0,
+			"factory": 0.25,
+			"bellows": 0.0,
+			"library": 0.1,
+		},
+		globalTags: {
+			"factory": true,
+			"industrial": true,
+		},
+
+		shadowColor: 0x000707,
+
+		"setpieces": [
+		],
+
+
+		"traps": [
+			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
+			{Name: "SpecificSpell", Spell: "TrapRopeHoly", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpawnEnemies", strict: true, Enemy: "Drone", Level: 0, Power: 3, Weight: 100},
+			{Name: "SpawnEnemies", strict: true, Enemy: "CaptureBot", Level: 0, Power: 2, Weight: 100},
+
+			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "OldDrone"},
+			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "OldDrone"},
+			{Name: "SpawnEnemies", Enemy: "AnimBlindfold", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemHeadFull", filterBackup: "OldDrone"},
+			{Name: "SpawnEnemies", Enemy: "AnimYoke", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "OldDrone"},
+			{Name: "SpawnEnemies", Enemy: "AnimArmbinder", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "OldDrone"},
+			{Name: "SpawnEnemies", Enemy: "AnimHarness", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemTorsoFull", filterBackup: "OldDrone"},
+			{Name: "SpawnEnemies", Enemy: "AnimChastity", strict: true, Level: 0, Power: 2, Weight: 10, arousalMode: true, filterTag: "ItemPelvisFull", filterBackup: "OldDrone"},
+			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "OldDrone"},
+
+		],
+
+		"min_width" : 6,
+		"max_width" : 8,
+		"min_height" : 4,
+		"max_height" : 4,
+
+		worldGenCode: () => {
+			//KDAddPipes(0.2, 0.35, 0.7, 0.2);
+		},
+
+		factionList: ["AncientRobot", "Dollsmith"],
+
+		enemyTags: ["robot", "guardian", "tech", "metal", "electric", "earth", "explosiveBarrel"],
+		"defeat_outfit": "DollSuit",
+		"shrines": [
+			{Type: "Latex", Weight: 5},
+			{Type: "Commerce", Weight: 0},
+			{Type: "Elements", Weight: 5},
+			{Type: "Conjure", Weight: 5},
+			{Type: "Illusion", Weight: 5},
+			{Type: "Leather", Weight: 7},
+			{Type: "Metal", Weight: 10},
+			{Type: "Rope", Weight: 3},
+			{Type: "Will", Weight: 13},],
+
+		"lockmult" : 2.0,
+	},
+
+
 	"vault":{//DungeonName8,-Orrery-
 		successorNegative: {
 			cry: 1.0,

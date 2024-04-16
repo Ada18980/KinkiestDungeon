@@ -40,6 +40,7 @@ let KDJailEvents = {
 			}
 
 			if (KinkyDungeonTilesGet((xx-1) + "," + yy) && KinkyDungeonTilesGet((xx-1) + "," + yy).Type == "Door") {
+				KinkyDungeonTilesGet((xx-1) + "," + yy).OGLock = KinkyDungeonTilesGet((xx-1) + "," + yy).Lock;
 				KinkyDungeonTilesGet((xx-1) + "," + yy).Lock = undefined;
 			}
 			KDGameData.JailGuard = guard.id;
@@ -131,6 +132,7 @@ let KDGuardActions = {
 				for (let T of Object.values(KDMapData.Tiles)) {
 					if (T.Type == "Door") {
 						if (T.Lock && T.Jail) {
+							T.OGLock = T.Lock;
 							T.Lock = undefined;
 							T.Type = undefined;
 						}

@@ -978,7 +978,9 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			if (predata.dmgDealt > 0) {
 				Enemy.hp -= predata.dmgDealt;
 			}
-			if (Enemy.hp > 0 && Enemy.hp <= 0.51 && predata.dmgDealt > 0.51 && !forceKill && KDBoundEffects(Enemy) < 4) Enemy.hp = 0;
+			if (Enemy.hp > 0 && Enemy.hp <= 0.51 && predata.dmgDealt > 0.51 && !forceKill && KDBoundEffects(Enemy) < 4) {
+				Enemy.hp = 0;
+			}
 			if (predata.dmgDealt > 0) Enemy.revealed = true;
 		}
 
@@ -1141,7 +1143,10 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 					}
 				}
 
-		if (!forceKill && KDBoundEffects(Enemy) > 3 && (Enemy.hp < 0 || (Enemy.hp <= Enemy.Enemy.maxhp * 0.1))) {
+		if (!forceKill && (KDBoundEffects(Enemy) > 3 || KDIsInParty(Enemy)) && (Enemy.hp <= 0 || (KDBoundEffects(Enemy) > 3 && Enemy.hp <= Enemy.Enemy.maxhp * 0.1))) {
+			if (!(Enemy.boundLevel > 0) && KDIsInParty(Enemy)) {
+				KDTieUpEnemy(Enemy, 2*Enemy.Enemy.maxhp, "Null");
+			}
 			if ((predata.faction == "Player" || KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0) && Enemy.hp > 0.001) {
 				let Thought = "GiveUp";
 				if (KDStrictPersonalities.includes(Enemy.personality)) Thought = "Fire";

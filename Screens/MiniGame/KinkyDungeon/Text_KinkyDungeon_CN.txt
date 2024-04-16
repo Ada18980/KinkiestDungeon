@@ -16940,7 +16940,7 @@ Fuuka's Shrine
 Fuuka的神龛
 The Collectors
 收藏家
-Receive the following restraints: 
+Receive the following restraints:
 受到以下拘束：
 You will be bound with some form of restraint.
 你将受到某种形式的束缚。
@@ -17610,7 +17610,7 @@ Yokes are less favored over other heavy bondage.
 （躲开！）
 You crouch and move slowly.
 你蹲下并缓慢移动。
-Owned by: 
+Owned by:
 拥有者：
 The Warden's Collar
 典狱长的项圈

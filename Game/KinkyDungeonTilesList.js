@@ -78,6 +78,9 @@ let KDTileUpdateFunctionsLocal = {
 	"V": (delta, X, Y) => {
 		KDConveyor(delta, X, Y);
 	},
+	"v": (delta, X, Y) => {
+		KDConveyor(delta, X, Y);
+	},
 	"N": (delta, X, Y) => {
 		let tile = KinkyDungeonTilesGet(X + "," + Y);
 		let tU = KinkyDungeonTilesGet(X + "," + (Y - 1));
@@ -137,7 +140,7 @@ let KDTileUpdateFunctionsLocal = {
 					let entity = KinkyDungeonEntityAt(X + tx, Y + ty);
 					let tiletype = KinkyDungeonMapGet(X + tx, Y + ty);
 					let tiledest = KinkyDungeonTilesGet((X + tx) + ',' + (Y + ty));
-					if (tiletype == 'V' && tiledest?.SwitchMode != "Off" && !entity) {
+					if ((tiletype == 'V' || tiletype == 'v') && tiledest?.SwitchMode != "Off" && !entity) {
 						tile.cd = tile.rate;
 						let e = DialogueCreateEnemy(X + tx, Y + ty, tile.dollType || "FactoryDoll");
 						KinkyDungeonSetEnemyFlag(e, "conveyed", 1);
@@ -229,6 +232,27 @@ let KDBondageMachineFunctions = {
 			return false;
 		},
 	},
+	"Doll": {
+		eligible_player: (tile, x, y, entity) => {
+			return KDGetRestraintsEligible({tags: ["cyberdollrestraints"]}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+		},
+		function_player: (tile, delta, x, y, entity) => {
+			KDBasicRestraintsMachine_Player(["cyberdollrestraints"], 2, "KDDollMachine");
+			return false;
+		},
+		eligible_enemy: (tile, x, y, entity) => {
+			return true;
+		},
+		function_enemy: (tile, delta, x, y, entity) => {
+			KDTieUpEnemy(entity, 4.0, "Metal", "chain");
+			if (KDBoundEffects(entity) < 1 ) {
+				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				KinkyDungeonSetEnemyFlag(entity, "processed", 1);
+				return true;
+			}
+			return false;
+		},
+	},
 	"Tape": {
 		eligible_player: (tile, x, y, entity) => {
 			return KDGetRestraintsEligible({tags: ["autoTape"]}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
@@ -274,10 +298,10 @@ let KDBondageMachineFunctions = {
 	},
 	"Chastity": {
 		eligible_player: (tile, x, y, entity) => {
-			return KDGetRestraintsEligible({tags: ['machineChastity']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
+			return KDGetRestraintsEligible({tags: ['machineChastity', 'cyberdollchastity']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
 		},
 		function_player: (tile, delta, x, y, entity) => {
-			return KDBasicRestraintsMachine_Player(['machineChastity'], 1, "KDChastityMachine") != 0;
+			return KDBasicRestraintsMachine_Player(['machineChastity', 'cyberdollchastity'], 1, "KDChastityMachine") != 0;
 		},
 		eligible_enemy: (tile, x, y, entity) => {
 			return entity.boundLevel > 0 && !KDEntityGetBuff(entity, "Chastity");

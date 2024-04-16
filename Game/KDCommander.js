@@ -564,7 +564,7 @@ let KDCommanderOrders = {
 								//placed = true;
 								KinkyDungeonCastSpell(xxx, yyy, KinkyDungeonFindSpell(trap, true), enemy, undefined);
 							} else if (KinkyDungeonNoEnemy(xxx, yyy, true) && !(
-								KinkyDungeonTilesGet(xxx+','+yyy)?.OffLimits ||
+								KinkyDungeonTilesGet(xxx+','+yyy)?.OL ||
 								KinkyDungeonTilesGet(xxx+','+yyy)?.Jail
 							)) {
 								let barricade = KDGetBarricade(enemy, xxx, yyy, checkpoint);

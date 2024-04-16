@@ -18,7 +18,7 @@ let KDEnchantVariantList = {
 		"ManaCostSpecific",
 		"ManaRegen",
 		"BaseDamageBuffMelee",
-		//"CommonPair",
+		"CommonPair",
 		//"DPDecay",
 		//"DPGain",
 		//"DPGainWhenAttacked",

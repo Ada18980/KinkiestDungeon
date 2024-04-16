@@ -287,6 +287,7 @@ function KDProcessInput(type, data) {
 			KinkyDungeonTargetTileLocation = data.targetTile;
 			if (KinkyDungeonTargetTile?.Lock) {
 				if (KinkyDungeonPickAttempt()) {
+					KinkyDungeonTargetTile.OGLock = KinkyDungeonTargetTile.Lock;
 					KinkyDungeonTargetTile.Lock = undefined;
 					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 					KinkyDungeonTargetTile = null;
@@ -296,6 +297,29 @@ function KDProcessInput(type, data) {
 				KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
 			}
 			break;
+		case "swipe":
+			KDDelayedActionPrune(["Action", "Struggle"]);
+			tile = KinkyDungeonTilesGet(data.targetTile);
+			KinkyDungeonTargetTile = tile;
+			KinkyDungeonTargetTileLocation = data.targetTile;
+			if (KinkyDungeonInventoryGet("KeyCard") != undefined) {
+				if (KinkyDungeonTargetTile?.Lock) {
+					KinkyDungeonTargetTile.OGLock = KinkyDungeonTargetTile.Lock;
+					KinkyDungeonTargetTile.Lock = undefined;
+					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
+					KinkyDungeonTargetTile = null;
+					KinkyDungeonTargetTileLocation = "";
+					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSwipeDoorUse"), "lightgreen", 2);
+					KinkyDungeonAdvanceTime(1, true);
+					KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
+				}
+			} else {
+				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSwipeDoorNone"), "lightgreen", 1);
+			}
+
+			break;
+
+
 		case "unlock":
 			KDDelayedActionPrune(["Action", "Struggle"]);
 			tile = KinkyDungeonTilesGet(data.targetTile);
@@ -305,6 +329,7 @@ function KDProcessInput(type, data) {
 			if (KinkyDungeonTargetTile?.Lock) {
 				KDUpdateDoorNavMap();
 				if (KinkyDungeonUnlockAttempt(KinkyDungeonTargetTile.Lock)) {
+					KinkyDungeonTargetTile.OGLock = KinkyDungeonTargetTile.Lock;
 					KinkyDungeonTargetTile.Lock = undefined;
 					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 					KinkyDungeonTargetTile = null;
@@ -329,6 +354,7 @@ function KDProcessInput(type, data) {
 					miscast = miscast + Math.max(0, 1 - miscast) * Math.min(1, !KDSpellIgnoreComp(spell) ? gagTotal : 0);
 				}
 				if (KDRandom() > miscast) {
+					KinkyDungeonTargetTile.OGLock = KinkyDungeonTargetTile.Lock;
 					KinkyDungeonTargetTile.Lock = undefined;
 					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 					KDUpdateDoorNavMap();

@@ -1223,6 +1223,7 @@ function KDPrisonerRescue(name, faction, enemytypes) {
 			let door = KDGetJailDoor(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 			if (door) {
 				if (door.tile) {
+					door.tile.OGLock = door.tile.Lock;
 					door.tile.Lock = undefined;
 					KDUpdateDoorNavMap();
 				}

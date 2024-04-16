@@ -1095,18 +1095,18 @@ Feet
 Ступни
 Everywhere!
 Везде!
-Physical Armor: 
-Физическая защита: 
-Magic Armor: 
-Магическая защита: 
+Physical Armor:
+Физическая защита:
+Magic Armor:
+Магическая защита:
 In the Shadows: You are harder to see.
 В тенях: Вас труднее увидеть.
 Invisible: You are very difficult to see.
 Невидимость: Вас очень трудно увидеть.
 Quickness: Your next movement is so fast it doesn't advance a turn.
 Ускорение: Ваше следующее движение будет очень быстрым и не потратит ход.
-All Damage Reduction: 
-Уменьшение всего урона: 
+All Damage Reduction:
+Уменьшение всего урона:
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 Вы получаете PERCENT1 DAMAGETYPE урона, основываясь на PERCENT2 DAMAGETYPE сопротивлении и PERCENT3 DAMAGECATEGORY модификаторе.
 You deal PERCENT more DAMAGETYPE damage.
@@ -1351,8 +1351,8 @@ Missing key
 Отсутствует ключ
 You are protected from damage and can't be bound until the shield is broken!
 Вы защищены от урона и не можете быть связаны до тех пор, пока щит не будет сломан!
-Chance for a spell to fizzle: 
-Шанс провала заклинания: 
+Chance for a spell to fizzle:
+Шанс провала заклинания:
 Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 Шанс уклонения: Percent%, основываясь на EVASIONSUM Уклонения и EVASIONPENALTY% штрафа.
 Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
@@ -1529,8 +1529,8 @@ Delete Mod
 Удалить модификацию
 Clear Perks
 Очистить перки
-Config 
-Пресет 
+Config
+Пресет
 Cancel
 Отмена
 Filter
@@ -1655,15 +1655,15 @@ Press a key, then press a button to set that key
 Нажмите клавишу, а потом выберите функцию, которую хотите на неё назначить
 Floor FLOORNUMBER: DUNGEONNAME
 Этаж FLOORNUMBER: DUNGEONNAME
-Lockpicks: 
-Отмычки: 
-Keys: 
-Ключи: 
-Magic Keys: 
-Магические ключи: 
-Knife: 
-Ножи: 
-Mag. Knife: 
+Lockpicks:
+Отмычки:
+Keys:
+Ключи:
+Magic Keys:
+Магические ключи:
+Knife:
+Ножи:
+Mag. Knife:
 Маг. ножи:
 You climb down the stairs. The passage closes behind you.
 Вы спускаетесь по лестнице, а проход закрывается за вами.
@@ -1821,8 +1821,8 @@ You find a snow-like potion that's cold to the touch.
 Вы находите белое как снег зелье, которое очень холодное на ощупь.
 You find a medley of potions.
 Вы находите смесь зелий.
-Rarity: 
-Редкость: 
+Rarity:
+Редкость:
 Lesser
 Мусор
 Common
@@ -2520,7 +2520,7 @@ Ice Cube
 A magical cube of ice that never melts. Convenient!
 Волшебный кубик льда, который никогда не тает. Удобно!
 Deals 10 ice damage with a 10% chance to freeze for 1 turn. Slows targets on hit. Offhand: Slows the target.
-Наносит 10 единиц урона от льда. С вероятностью 10% заморозит врага на 1 ход. В левой руке: Замедляет цель. 
+Наносит 10 единиц урона от льда. С вероятностью 10% заморозит врага на 1 ход. В левой руке: Замедляет цель.
 Rope
 Веревки
 A kidnapper's most versatile tool.
@@ -2635,7 +2635,7 @@ Dreamcatcher
 Ловец снов
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 Выкованный в кошмарах, сотканный из стали. Призывает Теневого воина на не подозревающие цели за 2% древней энергии.
-Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
+Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
 Наносит урон тьмой. Наносит до 30 дополнительного психического урона не подозревающим (100%) или уязвимым (50%) целям.
 Axe
 Топор
@@ -2647,12 +2647,12 @@ Knife
 Нож
 Unarmed
 Без оружия
-Accuracy: 
-Точность: 
-Crit Multiplier: 
-Множитель Крит. урона: 
-Bind Crit Multiplier: 
-Множитель Крит. Сковывания: 
+Accuracy:
+Точность:
+Crit Multiplier:
+Множитель Крит. урона:
+Bind Crit Multiplier:
+Множитель Крит. Сковывания:
 Find the keys..
 Нужно найти ключи...
 Find the exit!
@@ -2669,10 +2669,10 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 Вы нашли трещину и, возможно, могли бы воткнуть в нее нож или другой инструмент, чтобы неподвижно его закрепить.
 You found something sticky and might be able to pull off fabrics.
 Вы нашли что-то липкое и, возможно, сможете стянуть ткань.
-Evasion: 
-Уклонение: 
-Visibility: 
-Видимость: 
+Evasion:
+Уклонение:
+Visibility:
+Видимость:
 Submissive: Enemies won't attack you, but they will try to play with you.
 Покорная: Враги не атакуют вас, но они попытаются поиграть с вами.
 On the Run! Enemies are hostile.
@@ -2709,18 +2709,18 @@ Edged!
 На грани!
 Satisfied. Miscast chance is reduced.
 Удовлетворение. Шанс осечки в заклинаниях снижен.
-Damage: 
-Урон: 
-Bind: 
-Сковывание: 
-Crit: 
-Крит: 
-Crit: 
-Крит: 
-Accuracy: 
-Точность: 
-SP Cost: 
-Затраты SP: 
+Damage:
+Урон:
+Bind:
+Сковывание:
+Crit:
+Крит:
+Crit:
+Крит:
+Accuracy:
+Точность:
+SP Cost:
+Затраты SP:
 Cut PWR: AMNT%
 Разрез PWR: AMNT%
 It appears to be a receptacle
@@ -5275,8 +5275,8 @@ Cursed
 Проклятый
 Unlocked
 Не заперто
-Lock Type: 
-Тип замка: 
+Lock Type:
+Тип замка:
 Simple
 Простой
 Standard
@@ -5453,18 +5453,18 @@ Commerce
 Коммерция
 Shrine of SHRINETYPE
 Святилище: SHRINETYPE
-Tablet of 
-Скрижаль: 
-Goddess: 
-Богиня: 
-Goddess Blessing: 
-Благословение Богини: 
-Goddess Curse: 
-Проклятие Богини: 
-Mana Bonus: 
-Бонус к мане: 
-Lack of Mana Penalty: 
-Штраф за недостаток маны: 
+Tablet of
+Скрижаль:
+Goddess:
+Богиня:
+Goddess Blessing:
+Благословение Богини:
+Goddess Curse:
+Проклятие Богини:
+Mana Bonus:
+Бонус к мане:
+Lack of Mana Penalty:
+Штраф за недостаток маны:
 Your excess mana helps you suppress the enchantment!
 Избыток маны помогает вам подавить магические чары!
 Your mana is too weak to fight the magical enchantment...
@@ -5485,12 +5485,12 @@ These runes are meant for someone with less willpower.
 Эти руны предназначены для тех, у кого меньше силы воли.
 You try to read the runes but cannot understand them.
 Вы пытаетесь прочитать руины, но не можете их понять.
-Allies: 
-Союзники: 
-Enemies: 
-Враги: 
-Favorable: 
-Партнеры: 
+Allies:
+Союзники:
+Enemies:
+Враги:
+Favorable:
+Партнеры:
 Nevermere Trainers
 Тренеры Невермера
 DressUp Co.
@@ -6003,12 +6003,12 @@ The curse on the RestraintName is lifted!
 Проклятие с RestraintName снято!
 Press RIGHT to confirm buy!
 Нажмите СПРАВА для подтверждения покупки!
-You find 
-Вы находите 
-You find 
-Вы находите 
-You find 
-Вы находите 
+You find
+Вы находите
+You find
+Вы находите
+You find
+Вы находите
 Collar
 Ошейник
 A classy leather collar.
@@ -8412,7 +8412,7 @@ Maid's Feather Duster
 An instrument used extensively by maidforce agents carrying out their duties.
 Инструмент, широко используемый горничными, выполняющими свои обязанности.
 Deals tickle damage. Distracts enemies. Offhand: +15 distraction on attack for 1 stamina.
-Наносит урон щекоткой. Возбуждает врагов. В левой руке: +15 урона щекоткой при атаке (Потребляет дополнительно 1 выносливости). 
+Наносит урон щекоткой. Возбуждает врагов. В левой руке: +15 урона щекоткой при атаке (Потребляет дополнительно 1 выносливости).
 You pick up a feather duster.
 Вы подбираете метелку с перьями.
 Rope Rune
@@ -8725,8 +8725,8 @@ Arms
 Руки
 Legs
 Ноги
-Components: 
-Активация: 
+Components:
+Активация:
 Verbal
 Слова
 Arm Movements
@@ -11357,8 +11357,8 @@ You need more spell points.
 Вам нужно больше очков способностей.
 You don't have enough maximum mana to cast this spell!
 У вас недостаточно максимальной маны, чтобы произнести это заклинание!
-School: 
-Школа: 
+School:
+Школа:
 Elements
 Стихии
 Conjuration
@@ -11373,14 +11373,14 @@ Special
 Особое
 Learn Spell
 Выучить заклинание
-Spell Points: 
-Очки способностей: 
-Level: 
-Уровень: 
-Spell Point Cost: 
-Стоимость в очках способностей: 
-Mana Cost: 
-Затраты маны: 
+Spell Points:
+Очки способностей:
+Level:
+Уровень:
+Spell Point Cost:
+Стоимость в очках способностей:
+Mana Cost:
+Затраты маны:
 Remove Spell 1
 Удалить закл. 1
 Remove Spell 2
@@ -11409,20 +11409,20 @@ Replace Spell 6
 Заменить закл. 6
 Replace Spell 7
 Заменить закл. 7
-Current Spell 1: 
-Текущее закл. 1: 
-Current Spell 2: 
-Текущее закл. 2: 
-Current Spell 3: 
-Текущее закл. 3: 
-Current Spell 4: 
-Текущее закл. 4: 
-Current Spell 5: 
-Текущее закл. 5: 
-Current Spell 6: 
-Текущее закл. 6: 
-Current Spell 7: 
-Текущее закл. 7: 
+Current Spell 1:
+Текущее закл. 1:
+Current Spell 2:
+Текущее закл. 2:
+Current Spell 3:
+Текущее закл. 3:
+Current Spell 4:
+Текущее закл. 4:
+Current Spell 5:
+Текущее закл. 5:
+Current Spell 6:
+Текущее закл. 6:
+Current Spell 7:
+Текущее закл. 7:
 ???
 
 Unfiled
@@ -11461,8 +11461,8 @@ Bellows
 (Страница из Книги Вечности)|Некоторые говорят, что 'Катакомбы' старше самого времени. Когда Древняя цивилизация начала изучать бессмертие, никто не знал, возможно ли будет вернуть тех, кто уже умер. Таким образом, катакомбы использовались для хранения всех останков бывших людей, чтобы их тоже можно было оживить, когда архимаг, наконец, совершит свой прорыв.
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 (Страница из Книги Вечности)|Говорят, что архимаг Сариэль Винлага училась в этой самой библиотеке. Собрав воедино все человеческие знания, магические, духовные, технологические, она поручила своим двенадцати младшим магам работу по сортировке и сопоставлению богатства приобретенных ею знаний. Никто не знает, почему она вдруг отказалась от библиотеки и почему сегодня она находится в таком плачевном состоянии.
-(A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
-(Страница из Книги Вечности)|Заросшие руины остаются загадкой для ученых. Сквозь щели в потолке почти не проникает свет, и все же джунгли кишат жизнью. Известно, что регенеративные способности, которые удерживают людей от смерти, зависят от собственного запаса маны индивидуума. Так как же растения и звери выживают без маны? Верующие говорят, что джунгли охраняет Богиня Восстановления, но может ли быть так, что это Древняя цивилизация разработала средства поддержания жизни под землей? 
+(A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
+(Страница из Книги Вечности)|Заросшие руины остаются загадкой для ученых. Сквозь щели в потолке почти не проникает свет, и все же джунгли кишат жизнью. Известно, что регенеративные способности, которые удерживают людей от смерти, зависят от собственного запаса маны индивидуума. Так как же растения и звери выживают без маны? Верующие говорят, что джунгли охраняет Богиня Восстановления, но может ли быть так, что это Древняя цивилизация разработала средства поддержания жизни под землей?
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 (Страница из Книги Вечности)|Проблема Энергии преследовала цивилизацию на протяжении тысячелетий. До того, как были открыты лейлинии, человечество полагалось на естественные источники энергии, такие как реки и дрова. Когда были обнаружены Хрустальные пещеры, произошла великая революция. Больше не полагаясь на природные источники, цивилизации могли использовать подземные источники хаотической энергии для приведения в действие невиданных ранее механизмов.
 (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
@@ -12045,8 +12045,8 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 За 3 репутации богиня дарует вам 'скользкость', усиливая вашу борьбу.
 For 3 rep the goddess will grant you a key.
 За 3 репутации богиня дарует вам ключ.
-For 3 rep the goddess will grant you 
-За 3 репутации богиня дарует вам 
+For 3 rep the goddess will grant you
+За 3 репутации богиня дарует вам
 For 3 rep the goddess
 За 3 репутации богиня
 For 3 rep the goddess
@@ -12055,8 +12055,8 @@ For 3 rep the goddess
 За 3 репутации богиня
 For 3 rep the goddess
 За 3 репутации богиня
-For 3 rep the goddess 
-За 3 репутации богиня 
+For 3 rep the goddess
+За 3 репутации богиня
 The goddess will fully restore your mana in exchange for AMOUNT rep
 Богиня полностью восстановит вашу ману в обмен на AMOUNT репутации
 The goddess will enjoy seeing you struggle in her bonds (raises submissiveness)
@@ -12363,10 +12363,10 @@ Can disarm (chance: DISARMCHANCE%)
 Может разоружить (шанс: DISARMCHANCE%)
 Resistances:
 Сопротивления:
-HP: 
+HP:
 
-Binding: 
-Ограничители: 
+Binding:
+Ограничители:
 Ambivalent
 Двойственное
 Likes you
@@ -12677,8 +12677,8 @@ Extreme
 Экстрим
 A supposedly reasonable difficulty curve.
 Предположительно разумная кривая сложности.
-Play the game the way it was intended. Cruel and restrictive. 
-Играйте в игру так, как она была задумана. Жестокость и строгость. 
+Play the game the way it was intended. Cruel and restrictive.
+Играйте в игру так, как она была задумана. Жестокость и строгость.
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 Играйте на свой страх и риск. Разблокируется двойным щелчком по кнопке 'Сложного' режима.
 Distracted
@@ -18857,8 +18857,8 @@ What? (PERCENT chance to avoid)
 (SPEAKER прочищает горло)|Что ж, мы сейчас вновь набираем персонал!|Ты можешь присоединиться к нам, если согласишься бороться за справедливость!
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER крепко пожимает вам руку)|Добро пожаловать в сестричество, искательница приключений!
-(The SPEAKER tilts her head and shrugs)|Ah well. 
-(SPEAKER наклоняет голову и пожимает плечами)|Ну что ж. 
+(The SPEAKER tilts her head and shrugs)|Ah well.
+(SPEAKER наклоняет голову и пожимает плечами)|Ну что ж.
 (The SPEAKER nods)|Fair enough.
 (SPEAKER кивает)|Хорошо.
 (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
@@ -18901,8 +18901,8 @@ What are you going to do about it? (PERCENT chance to avoid)
 (SPEAKER прочищает горло)|Что ж, в данный момент ты находишься на нашей территории.|Но мы готовы дать тебе некоторую поблажку.|Ты просто должна согласиться не нападать ни на кого из нас.
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER крепко пожимает вам руку)|Добро пожаловать в сестричество, искательница приключений!
-(The SPEAKER tilts her head and shrugs)|Ah well. 
-(SPEAKER наклоняет голову и пожимает плечами)|Ну что ж. 
+(The SPEAKER tilts her head and shrugs)|Ah well.
+(SPEAKER наклоняет голову и пожимает плечами)|Ну что ж.
 (The SPEAKER nods)|Fair enough.
 (SPEAKER кивает)|Хорошо.
 (The SPEAKER frowns)|Criminals? Girl, we ARE the law around these parts~
@@ -20613,8 +20613,8 @@ Upcast Level LEVEL
 Уровень усиления LEVEL
 Prerequisite
 Предусловие
-Unlocks: 
-Разблокирует: 
+Unlocks:
+Разблокирует:
 You need to learn REQUIREDSPELL before you can learn this one.
 Вам нужно выучить REQUIREDSPELL, прежде чем вы сможете выучить это заклинание.
 You no longer have the will to struggle.
@@ -20649,8 +20649,8 @@ Initiating prisoner lockdown protocol
 Инициирование протокола блокировки заключенных
 Your RestraintName suddenly snap together as the EnemyName activates them
 Ваши RestraintName внезапно соединяются вместе, когда EnemyName активирует их
-Turn Count: 
-Счетчик ходов: 
+Turn Count:
+Счетчик ходов:
 The Shopkeeper leashes you!
 Владелица магазина вешает на вас поводок!
 You are brought into the Shopkeeper's establishment...
@@ -21053,8 +21053,8 @@ Paste
 Вставить
 Items on Ground:
 Предметы на земле:
-Preloading Character Assets: 
-Предзагрузка ассетов персонажа: 
+Preloading Character Assets:
+Предзагрузка ассетов персонажа:
 Uniforms
 Униформа
 Suits
@@ -31457,8 +31457,8 @@ Rubber Stick
 Резиновая палка
 A rubber cylinder without any lewd intentions whatsoever.
 Резиновый цилиндр без какого-либо непристойного предназначения.
-Deals grope damage. 
-Наносит урон ощупыванием. 
+Deals grope damage.
+Наносит урон ощупыванием.
 You pick up a flexible rubber stick.
 Вы находите гибкую резиновую палку.
 Blade of Fla'peh
@@ -32375,9 +32375,9 @@ Cracks begin to form in your RestraintName!
 Yf вашем RestraintName начинают образовываться трещины!
 Your RestraintName shatters and falls off!
 Ваше RestraintName раскалывается на части, которые падают на землю!
-Load Hotbar 
+Load Hotbar
 Загрузить быструю панель
-Save Hotbar 
+Save Hotbar
 Сохранить быструю панель
 Clear Hotbar
 Очистить быструю панель
@@ -33527,14 +33527,14 @@ Hogtied!
 Кабанчик!
 Experience a comprehensive rope bondage experience.
 Испытайте всесторонний опыт веревочного бондажа.
-Receive the following restraints: 
-Вы получите следующие ограничители: 
+Receive the following restraints:
+Вы получите следующие ограничители:
 You will be bound with some form of restraint.
 Вы будете скованы с помощью неизвестных ограничителей.
 Shadow
 Тень
 Gag Geist
-Дух-кляп 
+Дух-кляп
 The gag geist goes silent.
 Дух-кляп замолкает.
 The gag geist teases you playfully!! (DamageTaken)
@@ -33896,7 +33896,7 @@ Start locked in a corset with no corset training.
 Sensory Training
 Тренировка: Сенсорика
 Start locked in a blindfold and headphones with no Sensory training.
-Начните с запертой на ваших глазах повязкой и наушниках, совершенно не умея им противостоять. 
+Начните с запертой на ваших глазах повязкой и наушниках, совершенно не умея им противостоять.
 Hard to Master: Heels
 Трудное освоение: Каблуки
 Heel training is significantly slower.
@@ -34101,8 +34101,8 @@ Prisoner #NUMR/TTL
 Заключенная #NUMR/TTL
 Select a character to examine
 Выберите персонажа для осмотра
-Former Faction: 
-Бывшая фракция: 
+Former Faction:
+Бывшая фракция:
 Minigun
 Миниган
 None
@@ -34268,7 +34268,7 @@ Armbinders are less favored over other heavy bondage.
 More Boxbinders
 Больше сумок для рук
 Boxbinders are favored over other heavy bondage.
-Сумки для рук 
+Сумки для рук
 Less Boxbinders
 Меньше сумок для рук предпочтительнее других видов тяжелого бондажа.
 Boxbinders are less favored over other heavy bondage.
@@ -34295,8 +34295,8 @@ Yokes are less favored over other heavy bondage.
  (уклонение!)
 You crouch and move slowly.
 Вы приседаете и двигаетесь медленнее.
-Owned by: 
-Принадлежит: 
+Owned by:
+Принадлежит:
 The Warden's Collar
 Ошейник надзирателя
 A golden collar that marks you as part of someone's collection.
