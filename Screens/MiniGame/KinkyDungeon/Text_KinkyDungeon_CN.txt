@@ -17655,19 +17655,19 @@ Unconventional Warfare
 Select a weapon to attach it to your body. You can have one attached weapon at a time. Attaching it takes 5 turns.|An attached weapon can be equipped without hands and maintains 60% accuracy as long as you have arms or legs unbound.
 选择一件武器，将其附在身上。你同时只能拥有一件附加武器。需要 5 个回合来准备。|附加武器可以不用手来装备，只要你的手臂或腿没有被绑住，就能保持 60% 的准确度。
 More Bubbles
-更多气泡
+更多泡泡
 Enemies that use bubbles (e.g. aqua slimes, water witches) will appear more frequently.
-使用气泡的敌人（如水生史莱姆、水巫师）会更频繁地出现。
+使用泡泡的敌人（如水生史莱姆、水巫师）会更频繁地出现。
 Less Bubbles
-减少气泡
+减少泡泡
 Fewer bubble-related enemies will appear, although this does not remove them entirely.
-与气泡有关的敌人将会减少，但这并不能完全移除他们。
+与泡泡有关的敌人将会减少，但这并不能完全移除他们。
 No Blindfolds
 不愿蒙眼
 In most cases you will not get blindfolded, except for cloth blindfolds which can be escaped easily.
 在大多数情况下，你不会被蒙上眼睛，但布眼罩除外，因为布眼罩很容易逃脱。
 No Kigurumi Masks
-没有Kig头壳
+没有KIG面具
 Removes face-mimicing masks from the game.
 取消游戏中的仿脸面具。
 Safeword Please
