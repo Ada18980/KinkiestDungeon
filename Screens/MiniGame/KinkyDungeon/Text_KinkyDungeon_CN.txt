@@ -14304,6 +14304,12 @@ A metallic shield preventing you from removing any gags underneath.
 金属罩可防止你移除下面的任何口塞。
 It's made of exquisite Old Civilization metals, resistant to almost all forms of damage.
 它由精致的旧文明金属制成，可以抵抗几乎所有形式的损坏。
+Doll Mittens
+玩偶手套
+These long mittens force your hands into fists, keeping you from using them to do anything useful.
+这些长手套会把你的手固定成拳头，防止你用它们做任何对逃脱有用的事情。
+It is made of a strong mesh of ancient metallic fiber, with no seams in sight.
+它是由古老的金属纤维制成的坚固网状织物，根本看不到接缝。
 Doll Heels
 玩偶高跟鞋
 A pair of tall heels used to improve the aesthetics and controllability of dolls.
