@@ -17720,3 +17720,49 @@ Toggle this to set bondage resist, evasion, and block to 0. While enabled, using
 切换此选项可将束缚抵抗、闪避和格挡设置为 0。启用后，使用 "等待至被打断 "按钮将不会被击中或捆绑中断。
 I'll turn you into a newt! If you don't stop me...
 我要把你变成蝾螈 如果你不阻止我...
+The item is TTT, and will get looser as you progress.
+此物品TTT，随着你的进度会变得更宽松。
+somewhat tight
+有点紧
+rather tight
+相当紧
+quite tight
+很紧
+especially tight
+特别紧
+extremely tight
+非常紧
+incredibly tight
+极其紧
+somewhat secure
+有点安全
+secure
+安全
+quite secure
+很安全
+highly secure
+高度安全
+extremely secure
+非常安全
+incredibly secure
+极其安全
+somewhat thick
+有点厚
+rather thick
+相当厚
+quite thick
+很厚
+highly thick
+非常厚
+extremely thick
+极厚
+incredibly thick
+难以置信的厚
+You must first accept the quest before offering at the shrine.
+你必须先接受任务，然后才能到神泉献祭。
+Zero Resistance
+零限制
+Toggle this to set bondage resist, evasion, and block to 0. While enabled, using the 'wait until interrupted' button will not be interrupted when hit or bound.
+切换此选项可将束缚抵抗、躲避和阻挡设置为0。启用后，当点击或绑定时，使用“等待中断”按钮将不会中断。
+The RSTRT feels a little looser!
+RSTRT感觉有点松！
