@@ -17582,6 +17582,12 @@ The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
 ENMY 将你们的双手拉到一起，并在你们的双手之间夹上一个绑带！(DMGDLT)
 The ENMY grabs your wrists but you pull away!
 ENMY 抓住你的手腕，但你却挣脱了！
+The ENMY pulls your weapon away!
+ENMY 拿走了你的武器！
+The ENMY tries to pull your weapon away but you maintain your grip!
+ENMY 试图拿走你的武器，但是被你紧紧抓住了！
+The ENMY reaches for your inventory but can't quite reach it!
+ENMY 伸手去拿你的物品，但无法完全够到！
 More Armbinders
 更多束手套
 Armbinders are favored over other heavy bondage.
