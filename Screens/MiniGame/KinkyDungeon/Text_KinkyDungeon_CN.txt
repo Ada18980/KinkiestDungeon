@@ -118,8 +118,12 @@ One-Click Move
 单击移动
 Latch Shift Key
 闩锁移位键
+Crotch Rope under panties
+股绳显示在内裤之下
 Chastity over Panties
 贞操带显示在内裤之上
+Chastity over Harness
+贞操带显示在束衣之上
 Chastity Bra over Bras
 贞操文胸显示在胸罩之上
 Simple Color Picker
@@ -158,8 +162,12 @@ Hide Nipple Clamps
 隐藏乳头夹
 Hide Nipple Piercings
 隐藏乳头穿孔
-Force restraints to use palette
-强制束缚具使用主色调
+Force restraints to use outfit palette
+强制束缚具使用衣物主色调
+Player Background Color
+玩家背景颜色
+Choose default restraint palette:
+选择默认束缚主色调:
 Flip Player Display
 翻转玩家显示
 Helpless!
