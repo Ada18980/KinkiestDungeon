@@ -3245,15 +3245,15 @@ The robot deploys a forcefield!
 The robot deploys a set of forcefields!
 机器人部署了一组力场！
 Auto Enforcer Unit
-自动执法者
+自动执法器单元
 The enforcer unit releases magic smoke and explodes.
-执法者释放魔法烟雾并爆炸。
+执法器释放魔法烟雾并爆炸。
 The enforcer unit fires many cables that squeeze you! (DamageTaken)
-执法者发射了许多压迫你的电缆！ (DamageTaken)
+执法器发射了许多压迫你的电缆！ (DamageTaken)
 The enforcer fires off restraints that wrap around your body and apprehend you! (+RestraintAdded)
-执法者发射出束缚包裹在你身上并逮捕了你！（+RestraintAdded）
+执法器发射出束缚包裹在你身上并逮捕了你！（+RestraintAdded）
 The enforcer releases small drones which lock onto your restraints! (DamageTaken)
-执法者释放小型无人机锁定你的束缚具！（DamageTaken）
+执法器释放小型无人机锁定你的束缚具！（DamageTaken）
 Artillery Unit
 炮兵部队
 The artillery unit releases magic smoke and explodes.
@@ -5145,7 +5145,7 @@ An advanced harness for controlling high-security prisoners.
 It seems to be made of flexible steel plates.
 它似乎是由高延展性钢板制成的。
 Cyber Collar
-网络项圈
+赛博项圈
 An advanced collar for registering prisoners into the facility network.
 用于将囚犯登记到设施网络中的高级项圈。
 It seems to be made of flexible steel plates, and it has a high-security lock.
@@ -13777,7 +13777,7 @@ Slimes, slimes EVERYWHERE!|Fortunately there's a slime-harvesting|operation goin
 The trainers are taking their wolfgirls out for a walk.|I'd steer clear.|Unless you want to become one of their pets~
 训练师们带着她们的狼女出去散步|我会避开的|除非你想成为她们的宠物~
 Rumor has it that one of the cyber-dolls escaped.|Their handlers are looking for her.|They're catching every young girl they can find!
-有传言说其中一个网络娃娃逃走了|她们的处理人员正在寻找她|她们抓住了所有能找到的年轻女孩！
+有传言说其中一个赛博娃娃逃走了|她们的处理人员正在寻找她|她们抓住了所有能找到的年轻女孩！
 This is totally a normal floor.|No doubt about it.
 这完全是正常的楼层|毫无疑问。
 This is the normal entrance to the dungeon.|The tutorial is at the beginning of the hall.
@@ -14229,7 +14229,7 @@ The Dollmaker releases many drones with robotic arms to capture you!
 Zombies emerge from the ground!
 僵尸从地底冒了出来！
 Cyber Ankle Cuffs
-网络脚铐
+赛博脚铐
 Ankle cuffs of exquisite quality, bearing all the marks of Old Civilization technology.
 脚铐品质精美，带有旧文明技术的所有痕迹。
 Though made of ultra-tough metal, they feel light on your ankles...
@@ -14249,7 +14249,7 @@ The energy link disappears, freeing your ankles!
 Your ankles snap together as the cuffs activate!
 当铐子激活时，你的脚踝会扣在一起！
 Cyber Cuffs Chain
-链式网络手铐
+链式赛博手铐
 A magnetic link keeping your ankles tightly connected.
 磁力链接使你的脚踝保持紧密连接。
 The cuffs are closely attached, so you can't cut the link apart.
@@ -14257,7 +14257,7 @@ The cuffs are closely attached, so you can't cut the link apart.
 The ankle cuffs detach with a beep!
 脚铐随着 '嘟' 的一声解开了！
 Cyber Leg Cuffs
-网络腿铐
+赛博腿铐
 Thigh cuffs of exquisite quality, bearing all the marks of Old Civilization technology.
 腿铐品质精美，带有旧文明技术的所有痕迹。
 Though made of ultra-tough metal, they feel light on your legs...
@@ -14267,7 +14267,7 @@ An energy link appears, linking your thighs close together!
 The energy link disappears, freeing your legs!
 能量链条消失，你的腿自由了！
 Cyber Cuffs
-网络手铐
+赛博手铐
 Wrist and elbow cuffs of exquisite quality, bearing all the marks of Old Civilization technology.
 手腕和肘部手铐品质精美，带有旧文明技术的所有痕迹。
 Though made of ultra-tough metal, they feel light on your wrists...
@@ -14275,7 +14275,7 @@ Though made of ultra-tough metal, they feel light on your wrists...
 Your wrists are pulled together as the cuffs activate!
 当铐子启动时，你的手腕被拉到一起！
 Cyber Wrist Link
-网络腕链
+赛博腕链
 A magnetic link keeping your wrists secured together.
 磁力链条将你的手腕固定在一起。
 Your cuffs detatch with a beep!
@@ -14283,7 +14283,7 @@ Your cuffs detatch with a beep!
 Your elbows snap together as the cuffs engage fully!
 当铐子完全链接时，你的肘部会被锁在一起！
 Cyber Connection
-网络链接
+赛博链接
 A magnetic link keeping your wrists and elbows inescapably secured.
 磁力链条使你的手腕和肘部牢牢固定。
 Your wrists detatch with a beep, leaving your elbows still bound!
@@ -14291,7 +14291,7 @@ Your wrists detatch with a beep, leaving your elbows still bound!
 Your arms snap fully together as the cuffs activate!
 当铐子激活时，你的手臂会完全合拢！
 Cyber Elbow Link
-网络肘链
+赛博肘链
 A magnetic link keeping your elbows pressed tightly together!
 磁力链条将你的肘部紧紧地压在一起！
 Your elbows detatch with a beep!
@@ -14323,7 +14323,7 @@ Doll Heels
 A pair of tall heels used to improve the aesthetics and controllability of dolls.
 一双高跟鞋用来提高玩偶的美观度和操控性。
 Cyber Doll Belt
-网络玩偶贞操带
+赛博玩偶贞操带
 A chastity belt created by the Old Civilization. Truly a marvel of science!
 旧文明制造的贞操带。真是科学奇迹！
 It's made of exquisite Old Civilization metals, resistant to almost all forms of damage, and padded with a advanced form of latex designed for permanent wear.
@@ -14331,7 +14331,7 @@ It's made of exquisite Old Civilization metals, resistant to almost all forms of
 It's made of exquisite Old Civilization metals, resistant to almost all forms of damage, and padded with an advanced form of latex designed for permanent wear.
 它由精致的旧文明金属制成，可以抵抗几乎所有形式的损坏，并填充有专为永久磨损而设计的高级乳胶。
 Cyber Doll Bra
-网络玩偶贞操文胸
+赛博玩偶贞操文胸
 A chastity bra created by the Old Civilization. Truly a marvel of science!
 旧文明制造的贞操文胸。真是科学奇迹！
 Doll Jacket
@@ -14817,17 +14817,17 @@ The latex mimic stretches out an appendage and pulls you toward it! (DamageTaken
 The latex mimic engulfs you in sticky rubber! (DamageTaken)
 乳胶模仿者将你包裹在粘稠的橡胶中！（DamageTaken）
 Cyber Warden
-网络管理员
+赛博管理员
 The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!
-网络管理员的西装被锁住了，让她无助地扭动着身体！
+赛博管理员的西装被锁住了，让她无助地扭动着身体！
 The cyber warden applies an advanced locking technology!
-网络管理员采用了先进的锁定技术！
+赛博管理员采用了先进的锁定技术！
 The cyber warden grabs you and applies a self-tightening restraint! (+RestraintAdded)
-网络管理员抓住你并施加自紧束缚！（+RestraintAdded）
+赛博管理员抓住你并施加自紧束缚！（+RestraintAdded）
 The cyber warden's touch applies a series of quick electrical shocks! (DamageTaken)
-网络管理员的触摸会产生一系列快速的电击！（DamageTaken）
+赛博管理员的触摸会产生一系列快速的电击！（DamageTaken）
 The cyber warden's touch applies a series of quick electrical shocks!
-网络管理员的触摸会产生一系列快速的电击！
+赛博管理员的触摸会产生一系列快速的电击！
 Item Stack:
 物品堆栈：
 Heavy
@@ -17766,3 +17766,29 @@ Toggle this to set bondage resist, evasion, and block to 0. While enabled, using
 切换此选项可将束缚抵抗、躲避和阻挡设置为0。启用后，当点击或绑定时，使用“等待中断”按钮将不会中断。
 The RSTRT feels a little looser!
 RSTRT感觉有点松！
+Your collar channels the vigor of excitement into magical energy!
+你的项圈将兴奋的活力转化为神奇的能量！
+The collar has already squeezed what it can out of you. Clear your mind first!
+项圈已经把你挤得喘不过气来了。集中精神！
+Force Field Projector
+强制力场投影仪
+The forcefield erupts into a shower of blue sparks!
+力场爆发出一阵蓝色的火花！
+The guardian deploys a forcefield!
+守护者部署了一个力场！
+The guardian deploys a set of forcefields!
+守护者部署了一组力场！
+Guardian Drone
+守护者无人机
+The drone fizzles and falls to the ground!
+无人机嘶嘶作响，掉在地上！
+The drone zaps you with a restraining energy ray! (DamageTaken)
+无人机用抑制性能量射线击中你！(DamageTaken)
+The drone uses a short-ranged electric attack! (DamageTaken)
+这架无人机使用的是短程电攻击！(DamageTaken)
+The drone attaches to you! (+RestraintAdded)
+无人机附在你身上！(+RestraintAdded)
+Cyber Guardian
+赛博守护者
+Auto Enforcer Guardian
+自动执法器守护者
