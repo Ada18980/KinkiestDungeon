@@ -1370,6 +1370,8 @@ Quick-Swap Weapon
 快速切换武器
 Inspect
 检查
+Hide Bullets
+隐藏子弹
 Pass NPCs
 绕过 NPC
 Close a Door
