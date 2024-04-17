@@ -5536,6 +5536,14 @@ The ankle cuff chain detaches!
 脚铐链脱落！
 Your ankle cuff chain is tightened and pulls your feet together!
 你的脚踝铐链已收紧，并将你的双脚拉在一起！
+A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
+将你的踝铐连接在一起的链条。它给了你足够的空间四处走动，尽管速度比平时慢。
+It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+它是钢制的，且用锁固定。解锁后会丢失。
+Ankle Chain (Short)
+踝链（短）
+A short chain connecting your ankle cuffs together. You can barely separate your legs with this on.
+将踝铐连接在一起的短链条。戴上后这个你的腿几乎不能分开。
 Short Ankle Chain
 短踝链
 A pair of cuffs chaining your feet tightly together.
