@@ -2422,6 +2422,7 @@ interface KDMapDataType {
 	Checkpoint: string,
 	Title: string,
 	PrisonState: string,
+	PrisonStateStack: string[],
 	PrisonType: string,
 
 	Labels: Record<string, KDLabel[]>,
@@ -2744,7 +2745,7 @@ interface KDAIData extends KDAITriggerData {
 	playEvent?: boolean,
 }
 
-interface KDJailRestraint {Name: string, Level: number, Variant?: string, Condition?: string, Priority?: string};
+interface KDJailRestraint {Name: string, Level: number, Variant?: string, Condition?: string, Priority?: string, Lock?: string};
 
 type EnemyEvent = {
 	/** Extremely important for leash events */
@@ -3062,6 +3063,11 @@ type KDExpression = {
 
 interface KDPrisonState {
 	name: string,
+	/** Doesnt do anything, but marks this as a substate which goes to the last state */
+	substate?: boolean,
+	/** If CurrentTick > TimeSinceLastStateChange + substateTimeout it goes to a refresh state */
+	substateTimeout?: number,
+	refreshState?: string,
 	/** Returns a state. Runs as soon as the map is created */
 	init: (MapParams: floorParams) => string,
 	/** Each turn this function runs and returns a state */
@@ -3320,6 +3326,11 @@ interface KDFactionProps {
 	/** Custom jail outfit to use */
 	jailOutfit: string,
 }
+
+type KDJailGetGroupsReturn = {
+	groupsToStrip: string[],
+	itemsToApply: {item: string, variant: string}[],
+};
 
 type KDJourneySlot = {
 	visited: boolean,

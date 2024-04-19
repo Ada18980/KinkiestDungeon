@@ -686,7 +686,7 @@ function KinkyDungeonSendDialogue(entity, dialogue, color, duration, priority, f
 		entity.dialogueDuration = duration;
 		entity.dialoguePriority = priority;
 		if (!entity.player) {
-			KDEnemyAddSound(entity, 10);
+			KDEnemyAddSound(entity, 12);
 			KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${dialogue}`, color, 0, true, false, entity);
 			KDAllowDialogue = false;
 		}

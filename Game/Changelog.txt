@@ -30,6 +30,11 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.2.3
+- Reworked the Doll Room in the Bellows. it is now the Doll Processing!
+- Living collars now only apply when you pass out, not when you are jailed
+- Added perk that adds back living collars when jailed functionality
+
 5.2.28
 - Desire burst is now locked to the Path of Pleasure
 

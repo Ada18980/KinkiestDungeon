@@ -74,6 +74,9 @@ AddModel({
 	Parent: "CyberDoll",
 	TopLevel: true,
 	Categories: ["Accessories"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		{ Name: "Future", Layer: "Collar", Pri: 30,
 			Invariant: true,
@@ -118,6 +121,9 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		{ Name: "Module", Layer: "CollarAcc", Pri: 40,
 			Invariant: true,
@@ -142,6 +148,9 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		{ Name: "TrackingModule", Layer: "CollarAcc", Pri: 40.1,
 			Invariant: true,

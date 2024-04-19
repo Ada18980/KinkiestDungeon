@@ -3338,7 +3338,7 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 			if (!KDMapData.PrisonState) KDMapData.PrisonState = prisonType.default_state;
 			let prisonState = KDMapData.PrisonState;
 			if (prisonState) {
-				prisonState = prisonType.states[prisonState].update(timeDelta);
+				KDMapData.PrisonState = prisonType.states[prisonState].update(timeDelta);
 				KinkyDungeonSendEvent("postPrisonUpdate", {delta: timeDelta});
 			}
 		} else {
@@ -5019,6 +5019,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							enemy.specialCD = enemy.Enemy.specialCD;
 						}
 					}
+					let dmgString = "";
 					if (player.player) {
 						KinkyDungeonTickBuffTag(enemy, "hit", 1);
 						if (restraintAdd && restraintAdd.length > 0) {
@@ -5104,7 +5105,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						if (!enemy.playWithPlayer)
 							KinkyDungeonSetFlag("NPCCombat",  3);
 						happened = data.happened;
-						replace.push({keyword:"DamageTaken", value: dmg.string || TextGet("KDNoDamage")});
+						dmgString = dmg.string || TextGet("KDNoDamage");
+						replace.push({keyword:"DamageTaken", value: dmgString});
 					} else { // if (KDRandom() <= playerEvasion)
 						if (AIData.attack.includes("Slow")) {
 							if (player.movePoints)
@@ -5200,7 +5202,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						if (enemy.usingSpecial && enemy.Enemy.specialsfx) sfx = enemy.Enemy.specialsfx;
 						KinkyDungeonSendEvent("hit", data);
 						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg", enemy);
-						let text = TextGet("Attack"+enemy.Enemy.name + suffix);
+						let text = TextGet("Attack"+enemy.Enemy.name + suffix).KDReplaceOrAddDmg(dmgString);
 						if (replace)
 							for (let R = 0; R < replace.length; R++)
 								text = text.replace(replace[R].keyword, "" + replace[R].value);
@@ -5542,8 +5544,8 @@ function KinkyDungeonEnemyAt(x, y) {
 	return null;
 }
 
-function KinkyDungeonEntityAt(x, y, requireVision, vx, vy) {
-	if (KinkyDungeonPlayerEntity.x == x && KinkyDungeonPlayerEntity.y == y) return KinkyDungeonPlayerEntity;
+function KinkyDungeonEntityAt(x, y, requireVision, vx, vy, player = true) {
+	if (player && KinkyDungeonPlayerEntity.x == x && KinkyDungeonPlayerEntity.y == y) return KinkyDungeonPlayerEntity;
 	let cache = KDGetEnemyCache();
 	if (!requireVision && cache) return cache.get(x + "," + y);
 	else if (cache) {

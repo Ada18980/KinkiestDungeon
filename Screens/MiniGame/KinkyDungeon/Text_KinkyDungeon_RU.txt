@@ -30509,7 +30509,7 @@ Tower Shield
 Башенный щит
 Now with more leg room.
 Теперь больше места для ног.
-+120 Block, +30 Physical Armor. Increases slow level by 1. Deals crush damage and stuns for 7 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
+Slows you down by 1 level. +120 Block, +30 Physical Armor. Deals crush damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
 +120 Блока, +30 Физической защиты. Увеличивает уровень замедления на 1. Наносит дробящий урон и оглушает на 7 ходов. В левой руке: Дает тот же бонус к блоку и броне. Бонусы от щита в левой руке не суммируется с бонусом от щита в правой руке.
 You pick up a metal tower shield.
 Вы находите металлический башенный щит.

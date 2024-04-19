@@ -67,8 +67,8 @@ let KDModelDresses: {[_: string]: KinkyDungeonDress} = {
 	],
 	"CyberDoll" : [
 		{Item: "Catsuit", Group: "Catsuit", Color: "#7F3C9B", Lost: false, Filters: {
-			TorsoUpper: {"gamma":1,"saturation":0,"contrast":0.8300000000000001,"brightness":1,"red":1.2549019607843137,"green":1,"blue":4,"alpha":1},
-			TorsoLower: {"gamma":1,"saturation":0,"contrast":0.8300000000000001,"brightness":1,"red":1.2549019607843137,"green":1,"blue":4,"alpha":1},
+			TorsoUpper: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":0.7666666666666666,"green":1,"blue":4.833333333333333,"alpha":1},
+			TorsoLower: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":0.7666666666666666,"green":1,"blue":4.833333333333333,"alpha":1},
 		}},
 	],
 	"ProtoSlimeSuit" : [

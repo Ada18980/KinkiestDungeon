@@ -96,6 +96,7 @@
         "Game/KinkyDungeonSpawns.js",
         "Game/KinkyDungeonJail.js",
         "Game/KDPrison.js",
+        "Game/KDPrisonList.js",
         "Game/KinkyDungeonSetpiece.js",
         "Game/KinkyDungeonDialogue.js",
         "Game/KinkyDungeonDialogueTriggers.js",

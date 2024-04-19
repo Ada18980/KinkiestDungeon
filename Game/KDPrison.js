@@ -1,66 +1,6 @@
 'use strict';
 
 /**
- * @type {Record<string, KDPrisonType>}
- */
-let KDPrisonTypes = {
-	DollStorage: {
-		name: "DollStorage",
-		default_state: "Storage",
-		starting_state: "Intro",
-		states: {
-			Intro: {name: "Intro",
-				init: (params) => {
-					if (KDGameData.PrisonerState == "parole")
-						KDGameData.PrisonerState = "jail";
-					if (KDMapData.Labels && KDMapData.Labels.Deploy) {
-						for (let l of KDMapData.Labels.Deploy) {
-							let tag = KDGetMainFaction() == "Dollsmith" ? "dollsmith" : "cyborg";
-							let Enemy = KinkyDungeonGetEnemy([tag, "robot"], MiniGameKinkyDungeonLevel + 4, 'bel', '0', [tag], undefined, {[tag]: {mult: 4, bonus: 10}}, ["boss"]);
-							if (Enemy && !KinkyDungeonEnemyAt(l.x, l.y)) {
-								let en = DialogueCreateEnemy(l.x, l.y, Enemy.name);
-								KDProcessCustomPatron(Enemy, en, 0.5);
-								en.AI = "verylooseguard";
-								en.faction = "Enemy";
-								en.keys = true;
-								KinkyDungeonSetEnemyFlag(en, "mapguard", -1);
-								KinkyDungeonSetEnemyFlag(en, "cyberaccess", -1);
-							}
-
-						}
-					}
-					if (KDMapData.Labels && KDMapData.Labels.Patrol) {
-						for (let l of KDMapData.Labels.Deploy) {
-							let tag = "robot";
-							let Enemy = KinkyDungeonGetEnemy([tag], MiniGameKinkyDungeonLevel + 4, 'bel', '0', [tag], undefined, {[tag]: {mult: 4, bonus: 10}}, ["boss", "oldrobot", "miniboss", "elite"]);
-							if (Enemy && !KinkyDungeonEnemyAt(l.x, l.y)) {
-								let en = DialogueCreateEnemy(l.x, l.y, Enemy.name);
-								KDProcessCustomPatron(Enemy, en, 0.1);
-								en.AI = "hunt";
-								en.faction = "Enemy";
-								en.keys = true;
-								KinkyDungeonSetEnemyFlag(en, "mapguard", -1);
-								KinkyDungeonSetEnemyFlag(en, "cyberaccess", -1);
-							}
-
-						}
-					}
-					return "Intro";
-				},
-				update: (delta) => {
-					let player = KinkyDungeonPlayerEntity;
-					// Suppress standard guard call behavior
-					KinkyDungeonSetFlag("SuppressGuardCall", 10);
-					let guard = KDGetNearestFactionGuard(player.x, player.y);
-					KDGameData.JailGuard = guard.id;
-					return "Intro";
-				},
-			},
-		},
-	},
-};
-
-/**
  * @param {number} x
  * @param {number} y
  * @returns {entity}
@@ -91,4 +31,130 @@ function KDGetNearestFactionGuard(x, y) {
 		}
 	}
 	return cand;
+}
+
+/**
+ *
+ * @param {entity} player
+ * @returns {entity}
+ */
+function KDPrisonCommonGuard(player) {
+	// Suppress standard guard call behavior
+	KinkyDungeonSetFlag("SuppressGuardCall", 10);
+	let guard = KDGetNearestFactionGuard(player.x, player.y);
+	KDGameData.JailGuard = guard.id;
+
+	return KinkyDungeonJailGuard();
+}
+
+
+/**
+ * Gets the groups and restraints to add based on a set of jail tags
+ * @param {entity} player
+ * @param {string[]} jailLists
+ * @returns {KDJailGetGroupsReturn}
+ */
+function KDPrisonGetGroups(player, jailLists) {
+	/**
+	 * @type {string[]}
+	 */
+	let groupsToStrip = [];
+	/**
+	 * @type {{item: string; variant: string}[]}
+	 */
+	let itemsToApply = [];
+	let itemsApplied = {};
+
+	// First populate the items
+	let jailList = KDGetJailRestraints(jailLists);
+
+	// Next we go over the prison groups and figure out if there is anything in that group
+	for (let prisonGroup of KDPRISONGROUPS) {
+		let strip = false;
+		for (let g of prisonGroup) {
+			let restraints = KinkyDungeonGetJailRestraintsForGroup(g, jailList);
+			if (restraints.length > 0) {
+				restraints.sort(
+					(a, b) => {
+						return b.def.Level - a.def.Level;
+					}
+				);
+				for (let r of restraints) {
+					if (!itemsApplied[r.restraint.name + "--" + r.variant]) {
+						itemsApplied[r.restraint.name + "--" + r.variant] = true;
+						itemsToApply.push({item: r.restraint.name, variant: r.variant});
+						strip = true;
+					}
+				}
+			}
+		}
+		// Add the whole prison group if there is one item to apply
+		if (strip) {
+			groupsToStrip.push(...prisonGroup);
+		}
+	}
+
+	return {
+		groupsToStrip: groupsToStrip,
+		itemsToApply: itemsToApply,
+	};
+}
+
+/**
+ * Throttles prison checks
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDPrisonTick(player) {
+	if (!KinkyDungeonFlags.get("prisonCheck")) {
+		KinkyDungeonSetFlag("prisonCheck", 3 + Math.floor(KDRandom() * 3));
+		return true;
+	}
+	return false;
+}
+
+/**
+ *
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDPrisonIsInFurniture(player) {
+	if (KinkyDungeonPlayerTags.get("Furniture")) {
+		let tile = KinkyDungeonTilesGet(player.x + "," + player.y);
+		if (tile?.Furniture) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ *
+ * @param {entity} player
+ * @param {string} state
+ * @returns {string}
+ */
+function KDGoToSubState(player, state) {
+	KDMapData.PrisonStateStack.unshift(KDMapData.PrisonState);
+	return state;
+}
+
+/**
+ *
+ * @param {entity} player
+ * @returns {string}
+ */
+function KDPopSubstate(player) {
+	let state = KDMapData.PrisonStateStack[0];
+	KDMapData.PrisonStateStack.splice(0, 1);
+	return state;
+}
+
+/**
+ *
+ * @param {entity} player
+ * @returns {string}
+ */
+function KDCurrentPrisonState(player) {
+	return KDMapData.PrisonState;
 }

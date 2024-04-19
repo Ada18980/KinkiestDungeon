@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.2.28"
+KDVersionStr,"5.2.3"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -5561,7 +5561,7 @@ KinkyDungeonSpellDescriptionDenyMana,"Harnessing your mental discipline, you reg
 KinkyDungeonSpellApprenticeFire,Flame Novice
 KinkyDungeonSpellDescriptionApprenticeFire,Unlocks fire spells. Learn Firebolt.
 KinkyDungeonSpellApprenticeLightning,Lightning Novice
-KinkyDungeonSpellDescriptionApprenticeLightning,Unlocks electrice spells. Learn Electrify.
+KinkyDungeonSpellDescriptionApprenticeLightning,Unlocks electrice spells. Learn Electrify. Gain increased resistance to blinding from bright lights.
 KinkyDungeonSpellApprenticeWater,Water Novice
 KinkyDungeonSpellDescriptionApprenticeWater,Unlocks water spells. Learn Water Ball.
 KinkyDungeonSpellApprenticeIce,Ice Novice
@@ -5587,7 +5587,7 @@ KinkyDungeonSpellDescriptionApprenticeSummon,Unlocks summoning spells. Learn Sum
 KinkyDungeonSpellApprenticeShadow,Blessing of Shadow
 KinkyDungeonSpellDescriptionApprenticeShadow,Unlocks shadow spells. Learn Shadow Dagger.
 KinkyDungeonSpellApprenticeLight,Blessing of Light
-KinkyDungeonSpellDescriptionApprenticeLight,Unlocks light spells. Learn Flash.
+KinkyDungeonSpellDescriptionApprenticeLight,Unlocks light spells. Learn Flash. Gain significantly increased resistance to blinding from bright lights.
 KinkyDungeonSpellApprenticeMystery,Blessing of Obscurity
 KinkyDungeonSpellDescriptionApprenticeMystery,Unlocks invisibility spells. Learn Camouflage.
 KinkyDungeonSpellApprenticeProjection,Projection Magic
@@ -17543,7 +17543,7 @@ ItemPickupShield,"You pick up a wooden shield."
 
 KinkyDungeonInventoryItemShieldTower,Tower Shield
 KinkyDungeonInventoryItemShieldTowerDesc,"Now with more leg room."
-KinkyDungeonInventoryItemShieldTowerDesc2,"+120 Block, +30 Physical Armor. Increases slow level by 1. Deals crush damage and stuns for 7 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
+KinkyDungeonInventoryItemShieldTowerDesc2,"Slows you down by 1 level. +120 Block, +30 Physical Armor. Deals crush damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
 ItemPickupShieldTower,"You pick up a metal tower shield."
 
 KinkyDungeonInventoryItemShieldReinforced,Reinforced Shield
@@ -20325,6 +20325,10 @@ KillFuukaPillar,"The pillar collapses, causing zombies to rise up!"
 
 KinkyDungeonStatNoHelp,"Safeword Please"
 KinkyDungeonStatDescNoHelp,"Allies don't help you unless you ask first."
+KinkyDungeonStatLivingCollars,"Living Collars"
+KinkyDungeonStatDescLivingCollars,"When you get jailed, you may get a living collar that applies further restraints on you."
+
+
 
 KDWardenCage,The Warden's cage falls atop you and attaches to the floor with a click.
 
@@ -20805,3 +20809,9 @@ AttackEnforcerBotGuardianBind,"The enforcer fires off restraints that wrap aroun
 AttackEnforcerBotGuardianLock,"The enforcer releases small drones which lock onto your restraints! (DamageTaken)"
 
 
+
+
+
+KDDollStorageDial_UniformAdd,"Time to get you into your uniform~"
+KDDollStorageDial_UniformRemove,"You won't be needing any of this."
+KDDollStorageDial_UniformDone,"There we go, all ready for training!"

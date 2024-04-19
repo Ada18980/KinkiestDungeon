@@ -13,6 +13,9 @@ AddModel({
 	Parent: "CuffsArms",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["WristLeft"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesWristLeft", "", "", "BaseMetal", 0.4),
 		...GetModelLayers("ShacklesWristLeft", "Screen", "", "Screen", 0.65),
@@ -27,6 +30,9 @@ AddModel({
 	Parent: "CuffsArms",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["WristRight"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesWristRight", "", "", "BaseMetal", 0.4),
 		...GetModelLayers("ShacklesWristRight", "Screen", "", "Screen", 0.65),
@@ -42,6 +48,9 @@ AddModel({
 	Parent: "CuffsArms",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["WristLeft", "WristRight"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("CyberCuffsWristLeft"),
 		...GetModelLayers("CyberCuffsWristRight"),
@@ -57,6 +66,9 @@ AddModel({
 	Parent: "CuffsArms",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ElbowLeft"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesElbowLeft", "", "", "BaseMetal", 0.4),
 		...GetModelLayers("ShacklesElbowLeft", "Screen", "", "Screen", 0.65),
@@ -71,6 +83,9 @@ AddModel({
 	Parent: "CuffsArms",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ElbowRight"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesElbowRight", "", "", "BaseMetal", 0.4),
 		...GetModelLayers("ShacklesElbowRight", "Screen", "", "Screen", 0.65),
@@ -86,6 +101,9 @@ AddModel({
 	Parent: "CuffsArms",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ElbowLeft", "ElbowRight"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("CyberCuffsElbowLeft"),
 		...GetModelLayers("CyberCuffsElbowRight"),
@@ -99,6 +117,9 @@ AddModel({
 	Parent: "Cuffs",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ElbowLeft", "ElbowRight", "WristLeft", "WristRight"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("CyberCuffsWrists"),
 		...GetModelLayers("CyberCuffsElbows"),
@@ -112,6 +133,9 @@ AddModel({
 	Parent: "CuffsAnkles",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["AnkleLeft"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesAnklesLeft", "", "", "BaseMetal", 0.4),
 		...GetModelLayers("ShacklesAnklesLeft", "Screen", "", "Screen", 0.65),
@@ -127,6 +151,9 @@ AddModel({
 	Parent: "CuffsAnkles",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["AnkleRight"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesAnklesRight", "", "", "BaseMetal", 0.4),
 		...GetModelLayers("ShacklesAnklesRight", "Screen", "", "Screen", 0.65),
@@ -142,6 +169,9 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["AnkleRight", "AnkleLeft"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("CyberCuffsAnklesRight"),
 		...GetModelLayers("CyberCuffsAnklesLeft"),
@@ -157,6 +187,9 @@ AddModel({
 	Parent: "CuffsThigh",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ThighLeft"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesThighLeft", "", "", "BaseMetal", 0.4),
 		...GetModelLayers("ShacklesThighLeft", "Screen", "", "Screen", 0.65),
@@ -172,6 +205,9 @@ AddModel({
 	Parent: "CuffsThigh",
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ThighRight"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesThighRight", "", "", "BaseMetal", 0.4),
 		...GetModelLayers("ShacklesThighRight", "Screen", "", "Screen", 0.65),
@@ -187,6 +223,9 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ThighRight", "ThighLeft", "HighCuffs"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("CyberCuffsThighRight"),
 		...GetModelLayers("CyberCuffsThighLeft"),
@@ -200,6 +239,9 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Accessories"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("IronCollar", "", "", "BaseMetal", 0.4),
 		...GetModelLayers("IronCollar", "Screen", "", "Screen", 0.65),
@@ -214,6 +256,9 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Accessories"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		...GetModelLayers("IronBelt", "", "", "BaseMetal", 0.4),
 		...GetModelLayers("IronBelt", "Screen", "", "Screen", 0.65),

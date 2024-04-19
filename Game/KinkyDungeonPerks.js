@@ -366,6 +366,7 @@ let KinkyDungeonStatsPresets = {
 	"BulletHell2": {category: "Enemies", id: "BulletHell2", cost: -3, block: ["BulletHell"]},
 
 	"Nowhere": {category: "Enemies", id: "Nowhere", cost: -1},
+	"LivingCollars": {category: "Enemies", id: "LivingCollars", cost: -2},
 	"StunBondage": {category: "Enemies", id: "StunBondage", cost: -2},
 	"Prisoner": {category: "Start", id: "Prisoner", cost: 0},
 

@@ -288,6 +288,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 		// Only track these for player
 		if (Character == KinkyDungeonPlayer) {
 			for (let clothes of DressList) {
+				if (!clothes) continue;
 				if (StandalonePatched && !clothes.Lost && KinkyDungeonCheckClothesLoss) {
 					if (clothes.Item && (restraintModels[clothes.Item] || restraintModels[clothes.Item + "Restraint"])) {
 						clothes.Lost = true;
@@ -340,18 +341,20 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 					if (KinkyDungeonCheckClothesLoss) {
 						let item = KDInventoryWear(Character, clothes.Item, clothes.Group, undefined, clothes.Color, clothes.Filters);
 						alreadyClothed[clothes.Group || clothes.Item] = true;
-						if (clothes.OverridePriority) {
-							if (item) {
-								if (!item.Property) item.Property = {OverridePriority: clothes.OverridePriority};
-								else item.Property.OverridePriority = clothes.OverridePriority;
+						if (item) {
+							if (clothes.OverridePriority) {
+								if (item) {
+									if (!item.Property) item.Property = {OverridePriority: clothes.OverridePriority};
+									else item.Property.OverridePriority = clothes.OverridePriority;
+								}
+							} else if (KDClothOverrides[clothes.Group || clothes.Item] && KDClothOverrides[clothes.Group || clothes.Item][clothes.Item] != undefined) {
+								if (!item.Property) item.Property = {OverridePriority: KDClothOverrides[clothes.Group || clothes.Item][clothes.Item]};
+								else item.Property.OverridePriority = KDClothOverrides[clothes.Group || clothes.Item][clothes.Item];
 							}
-						} else if (KDClothOverrides[clothes.Group || clothes.Item] && KDClothOverrides[clothes.Group || clothes.Item][clothes.Item] != undefined) {
-							if (!item.Property) item.Property = {OverridePriority: KDClothOverrides[clothes.Group || clothes.Item][clothes.Item]};
-							else item.Property.OverridePriority = KDClothOverrides[clothes.Group || clothes.Item][clothes.Item];
+							if (clothes.Property) item.Property = clothes.Property;
+							// Ignored because BC uses string[] as a type!
+							//KDCharacterAppearanceSetColorForGroup(Character, clothes.Color, clothes.Group);
 						}
-						if (clothes.Property) item.Property = clothes.Property;
-						// Ignored because BC uses string[] as a type!
-						//KDCharacterAppearanceSetColorForGroup(Character, clothes.Color, clothes.Group);
 					}
 				}
 

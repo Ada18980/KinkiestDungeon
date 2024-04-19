@@ -14554,7 +14554,7 @@ Tower Shield
 塔盾
 Now with more leg room.
 在腿部空间更大。
-+120 Block, +30 Physical Armor. Increases slow level by 1. Deals crush damage and stuns for 7 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
+Slows you down by 1 level. +120 Block, +30 Physical Armor. Deals crush damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
 +120 阻挡，+30 物理防御。缓慢等级提高 1 级。造成挤压伤害并眩晕 7 回合。副手：提供相同的阻挡和防御加值。盾牌的副手奖励不会与当前装备的盾牌叠加。
 You pick up a metal tower shield.
 你拿起一个金属塔盾。

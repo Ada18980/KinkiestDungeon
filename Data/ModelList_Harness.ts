@@ -130,6 +130,9 @@ AddModel({
 	Parent: "FutureHarness",
 	Restraint: true,
 	Categories: ["Restraints", "Harness", "Leather"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		{ Name: "StrapsChest", Layer: "BindChest", Pri: 60,
 			Invariant: true,
@@ -164,6 +167,9 @@ AddModel({
 	Folder: "FutureHarness",
 	Restraint: true,
 	Categories: ["Restraints", "Harness", "Metal"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		{ Name: "StrapsMid", Layer: "HarnessMid", Pri: 60,
 			Invariant: true,
@@ -198,6 +204,9 @@ AddModel({
 	Folder: "FutureHarness",
 	Restraint: true,
 	Categories: ["Restraints", "Harness", "Metal"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		{ Name: "StrapsLower", Layer: "HarnessMid", Pri: 59,
 		//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},

@@ -5832,17 +5832,18 @@ let KDEventMapWeapon = {
 		},
 	},
 	"getLights": {
-		"WeaponLight": (e, spell, data) => {
+		"WeaponLight": (e, weapon, data) => {
 			data.lights.push({brightness: e.power, x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y,
 				color: string2hex(e.color || "#ffffff")});
 		},
-		"WeaponLightDirectional": (e, spell, data) => {
+		"WeaponLightDirectional": (e, weapon, data) => {
 			let x = KinkyDungeonPlayerEntity.x;
 			let y = KinkyDungeonPlayerEntity.y;
 			let size = e.power - e.dist/2;
 			for (let i = 0; i < e.dist; i++) {
-				let x2 = x + KinkyDungeonPlayerEntity.facing_x;
-				let y2 = y + KinkyDungeonPlayerEntity.facing_y;
+
+				let x2 = x + KinkyDungeonPlayerEntity.facing_x_last || KinkyDungeonPlayerEntity.facing_x;
+				let y2 = y + KinkyDungeonPlayerEntity.facing_y_last || KinkyDungeonPlayerEntity.facing_y;
 				if (KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(x2, y2))) {
 					x = x2;
 					y = y2;

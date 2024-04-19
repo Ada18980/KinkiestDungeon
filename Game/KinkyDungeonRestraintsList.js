@@ -782,7 +782,6 @@ const KinkyDungeonRestraints = [
 	},
 
 	{inventory: true, sfx: "FutureLock", name: "CyberBallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink],
-
 		factionFilters: {
 			Display: {color: "Highlight", override: false},
 			Harness: {color: "DarkNeutral", override: true},
@@ -791,6 +790,7 @@ const KinkyDungeonRestraints = [
 			HarnessMask: {color: "DarkNeutral", override: true},
 			Mask: {color: "DarkNeutral", override: true},
 			HarnessDisplay: {color: "Highlight", override: false},
+			Ball: {color: "Highlight", override: false},
 			HarnessRim: {color: "LightNeutral", override: true},
 			Muzzle: {color: "LightNeutral", override: true},
 		},
@@ -875,6 +875,15 @@ const KinkyDungeonRestraints = [
 			"Chest":{"gamma":1,"saturation":1,"contrast":1.3666666666666667,"brightness":0.8500000000000001,"red":1,"green":1,"blue":1,"alpha":1},
 			"Lower":{"gamma":1,"saturation":1,"contrast":1.3666666666666667,"brightness":0.8500000000000001,"red":1,"green":1,"blue":1,"alpha":1}
 		},
+
+		factionFilters: {
+			BeltsLower: {color: "Highlight", override: false},
+			BeltsArms: {color: "Highlight", override: false},
+			BeltsChest: {color: "Highlight", override: false},
+			Arms: {color: "DarkNeutral", override: false},
+			Chest: {color: "DarkNeutral", override: false},
+			Lower: {color: "DarkNeutral", override: false},
+		},
 		Modules: [1, 1, 1, 1],
 		factionColor: [[0], [1], [3]],
 		Color: ["#222222", "#b927a8", "#000000", "#499ed6", "#222222", "#000000"],
@@ -890,7 +899,7 @@ const KinkyDungeonRestraints = [
 			"More_Jackets": 3.5,
 			"Less_Jackets": 0.1,
 		},
-		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Cyber", "Latex", "Straitjackets", "Block_ItemHands"]},
+		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Cyber", "Metal", "Latex", "Straitjackets", "Block_ItemHands"]},
 
 	{inventory: true, sfx: "FutureLock", name: "CyberHeels", inaccessible: true, Asset: "FuturisticHeels2", remove: ["Shoes"],
 		Model: "CyberBalletHeels",
@@ -6183,6 +6192,7 @@ const KinkyDungeonRestraints = [
 			protection: 1,
 			displayPower: 4,
 			noRecover: true,
+			removePrison: true,
 			events: [
 				{trigger: "tick", type: "ApplyConduction", duration: 2},
 				{trigger: "tick", type: "RestraintBlock", power: 2.5, inheritLinked: true},
@@ -6216,6 +6226,7 @@ const KinkyDungeonRestraints = [
 			restriction: 1,
 			protectionCursed: true,
 			noRecover: true,
+			removePrison: true,
 			events: [
 				{trigger: "tick", type: "RestraintBlock", power: 1, inheritLinked: true},
 			],
@@ -6247,6 +6258,7 @@ const KinkyDungeonRestraints = [
 			armor: true,
 			LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 			noRecover: true,
+			removePrison: true,
 			events: [
 				{trigger: "tick", type: "ApplyConduction", duration: 2},
 				{trigger: "tick", type: "armorBuff", power: 1.0, inheritLinked: true},
@@ -6282,6 +6294,7 @@ const KinkyDungeonRestraints = [
 			armor: true,
 			noRecover: true,
 			LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
+			removePrison: true,
 			events: [
 				{trigger: "tick", type: "ApplyConduction", duration: 2},
 				{trigger: "tick", type: "RestraintBlock", power: 2.0, inheritLinked: true},
@@ -6313,6 +6326,7 @@ const KinkyDungeonRestraints = [
 			protectionCursed: true,
 			strictness: 0.15,
 			displayPower: 10,
+			removePrison: true,
 			events: [
 				{trigger: "tick", type: "ApplyConduction", duration: 2},
 				{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
@@ -6342,6 +6356,7 @@ const KinkyDungeonRestraints = [
 			debris: "Belts",
 			protection: 1,
 			displayPower: 10,
+			removePrison: true,
 			events: [
 				{trigger: "perksBonus", type: "spellDamage", power: 0.3, inheritLinked: true},
 				{trigger: "tick", type: "spellWardBuff", power: 1, inheritLinked: true},
@@ -6371,6 +6386,7 @@ const KinkyDungeonRestraints = [
 			debris: "Belts",
 			protectionCursed: true,
 			displayPower: 5,
+			removePrison: true,
 			events: [
 				{trigger: "tick", type: "ApplyConduction", duration: 2},
 				{trigger: "tick", type: "RestraintBlock", power: 3.5, inheritLinked: true},
@@ -6400,6 +6416,7 @@ const KinkyDungeonRestraints = [
 			debris: "Belts",
 			protectionCursed: true,
 			displayPower: 8,
+			removePrison: true,
 			events: [
 				{trigger: "tick", type: "ApplyConduction", duration: 2},
 				{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
@@ -6429,6 +6446,7 @@ const KinkyDungeonRestraints = [
 			protection: 1,
 			displayPower: 5,
 			noRecover: true,
+			removePrison: true,
 			events: [
 				{trigger: "tick", type: "ApplyConduction", duration: 2},
 				{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
@@ -6459,6 +6477,7 @@ const KinkyDungeonRestraints = [
 			LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 			debris: "Belts",
 			protection: 1,
+			removePrison: true,
 			events: [
 				{trigger: "tick", type: "RestraintBlock", power: 1, inheritLinked: true},
 			],
@@ -6486,6 +6505,7 @@ const KinkyDungeonRestraints = [
 			LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 			debris: "Belts",
 			protection: 1,
+			removePrison: true,
 			events: [
 				{trigger: "tick", type: "RestraintBlock", power: 1, inheritLinked: true},
 			],
@@ -6517,6 +6537,7 @@ const KinkyDungeonRestraints = [
 			debris: "Belts",
 			protection: 1,
 			displayPower: 6,
+			removePrison: true,
 			events: [
 				{trigger: "tick", type: "evasionBuff", power: .25, inheritLinked: true},
 				{trigger: "tick", type: "sneakBuff", power: .15, inheritLinked: true},
@@ -6544,6 +6565,7 @@ const KinkyDungeonRestraints = [
 			debris: "Chains",
 			protection: 1,
 			displayPower: 5,
+			removePrison: true,
 			events: [
 				{trigger: "perksBonus", type: "spellDamage", power: 0.05, inheritLinked: true},
 				{trigger: "tick", type: "spellWardBuff", power: 0.5, inheritLinked: true},
@@ -6573,6 +6595,7 @@ const KinkyDungeonRestraints = [
 			displayPower: 4,
 			debris: "Belts",
 			noRecover: true,
+			removePrison: true,
 			events: [
 				{trigger: "tick", type: "ApplyConduction", duration: 2},
 				{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
@@ -6603,6 +6626,7 @@ const KinkyDungeonRestraints = [
 			debris: "Belts",
 			displayPower: 2,
 			protection: 1,
+			removePrison: true,
 			events: [
 				{trigger: "tick", type: "RestraintBlock", power: 1.0, inheritLinked: true},
 			],

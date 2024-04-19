@@ -375,9 +375,14 @@ function KDSetPlayCD(enemy, mult, base = 10) {
 /**
  *
  * @param {string} Group
+ * @param {KDJailRestraint[]} [jailRestraintList]
  * @returns {{restraint: restraint, variant: string}}
  */
-function KinkyDungeonGetJailRestraintForGroup(Group) {
+function KinkyDungeonGetJailRestraintForGroup(Group, jailRestraintList) {
+	if (!jailRestraintList) {
+		jailRestraintList = KDGetJailRestraints();
+	}
+
 	/**
 	 * @type {restraint}
 	 */
@@ -388,7 +393,7 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 	// Try first with ones that are linkable
 	if (currentItem) {
 		// Go for priority candidates first
-		for (let r of KDGetJailRestraints()) {
+		for (let r of jailRestraintList) {
 			let level = 0;
 			if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
 			if (!r.Level || level >= r.Level) {
@@ -406,7 +411,7 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 			}
 		}
 		if (!cand) {
-			for (let r of KDGetJailRestraints()) {
+			for (let r of jailRestraintList) {
 				let level = 0;
 				if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
 				if (!r.Level || level >= r.Level) {
@@ -427,7 +432,7 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 	}
 	// Otherwise go for the regular candidate
 	if (!cand) {
-		for (let r of KDGetJailRestraints()) {
+		for (let r of jailRestraintList) {
 			let level = 0;
 			if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
 			if (!r.Level || level >= r.Level) {
@@ -443,7 +448,7 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 			}
 		}
 		if (!cand)
-			for (let r of KDGetJailRestraints()) {
+			for (let r of jailRestraintList) {
 				let level = 0;
 				if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
 				if (!r.Level || level >= r.Level) {
@@ -459,6 +464,37 @@ function KinkyDungeonGetJailRestraintForGroup(Group) {
 			}
 	}
 	return {restraint: cand, variant: variant};
+}
+
+
+/**
+ *
+ * @param {string} Group
+ * @param {KDJailRestraint[]} [jailRestraintList]
+ * @returns {{restraint: restraint, variant: string, def: KDJailRestraint}[]}
+ */
+function KinkyDungeonGetJailRestraintsForGroup(Group, jailRestraintList) {
+	if (!jailRestraintList) {
+		jailRestraintList = KDGetJailRestraints();
+	}
+
+	/**
+	 * @type {{restraint: restraint, variant: string, def: KDJailRestraint}[]}
+	 */
+	let cands = [];
+	for (let r of jailRestraintList) {
+		let level = 0;
+		if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
+		if (!r.Level || level >= r.Level) {
+			let candidate = KinkyDungeonGetRestraintByName(r.Name);
+			if (candidate.Group == Group) {
+				if ((KDJailCondition(r))) {
+					cands.push({restraint: candidate, variant: r.Variant, def: r});
+				}
+			}
+		}
+	}
+	return cands;
 }
 
 /**
@@ -1020,6 +1056,8 @@ function KinkyDungeonPassOut(noteleport) {
 	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["passout"]);
 	KinkyDungeonSendEvent("passout", {});
 
+	KDApplyLivingCollars();
+
 	KinkyDungeonStripInventory(false);
 
 	if (KinkyDungeonCurrentDress == "Default")
@@ -1126,8 +1164,8 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 	}
 
 	if (!willing) {
-		let defeat_outfit = "DollSuit";
-		if (KinkyDungeonPlayerTags.has("Cyber")) defeat_outfit = "CyberDoll";
+		let defeat_outfit = "CyberDoll";
+		if (KDGetMainFaction() == "Dollsmith") defeat_outfit = "DollSuit";
 		if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
 
 		KinkyDungeonSetDress(defeat_outfit, defeat_outfit);
@@ -1240,7 +1278,8 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	//MiniGameKinkyDungeonLevel = Math.min(MiniGameKinkyDungeonLevel, Math.max(Math.floor(MiniGameKinkyDungeonLevel/10)*10, MiniGameKinkyDungeonLevel - KinkyDungeonSpawnJailers + KinkyDungeonSpawnJailersMax - 1));
 	KinkyDungeonSendEvent("defeat", {});
 
-	KDApplyLivingCollars();
+	if (KinkyDungeonStatsChoice.get("LivingCollars"))
+		KDApplyLivingCollars();
 
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if ((KDRestraint(inv).removePrison || KDRestraint(inv).forceRemovePrison) && (!KinkyDungeonStatsChoice.get("KinkyPrison") || KDRestraint(inv).forceRemovePrison || KDRestraint(inv).removeOnLeash || KDRestraint(inv).freeze || KDRestraint(inv).immobile)) {
@@ -1566,7 +1605,7 @@ function KDGetJailRestraints(overrideTags, requireJail, requireParole) {
 
 	for (let t of tags) {
 		let tag = KDJailOutfits[t];
-		if (tag.overridelowerpriority) {
+		if (tag?.overridelowerpriority) {
 			// Go over all tags and remove those with lower priority
 			let pri = tag.priority;
 			for (let tt of newtags) {
