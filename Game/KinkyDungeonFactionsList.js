@@ -37,19 +37,19 @@ let KinkyDungeonFactionFilters = {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
 		LightNeutral: {"gamma":1,"saturation":0.0,"contrast":1.0,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
-		Highlight: {"gamma":0.7333333333333334,"saturation":0.1,"contrast":2.3499999999999996,"brightness":0.8166666666666667,"red":1.7833333333333334,"green":0.9666666666666667,"blue":0.6,"alpha":1},
+		Highlight: {"gamma":0.7333333333333334,"saturation":0,"contrast":2.3499999999999996,"brightness":0.8166666666666667,"red":1.7833333333333334,"green":0.9666666666666667,"blue":0.6,"alpha":1},
 	},
 	"Warden": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
 		LightNeutral: {"gamma":1,"saturation":0.0,"contrast":1.0,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
-		Highlight: {"gamma":0.7333333333333334,"saturation":0.1,"contrast":2.3499999999999996,"brightness":0.8166666666666667,"red":1.7833333333333334,"green":0.9666666666666667,"blue":0.6,"alpha":1},
+		Highlight: {"gamma":0.7333333333333334,"saturation":0,"contrast":2.3499999999999996,"brightness":0.8166666666666667,"red":1.7833333333333334,"green":0.9666666666666667,"blue":0.6,"alpha":1},
 	},
 	"Elemental2": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		DarkNeutral: {"gamma":0.6,"saturation":0,"contrast":1.2666666666666668,"brightness":0.44999999999999996,"red":1.5833333333333333,"green":0.43333333333333335,"blue":0.7000000000000001,"alpha":1},
 		LightNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":1.0333333333333332,"red":1.2,"green":0.9333333333333333,"blue":0.4666666666666667,"alpha":1},
-		Highlight: {"gamma":1,"saturation":0.016666666666666666,"contrast":1,"brightness":1.6666666666666665,"red":1,"green":1,"blue":1,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0,"contrast":1,"brightness":1.6666666666666665,"red":1,"green":1,"blue":1,"alpha":1},
 	},
 	"Elemental": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
@@ -73,7 +73,7 @@ let KinkyDungeonFactionFilters = {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.91,"brightness":1,"red":2.1372549019607843,"green":1.1764705882352942,"blue":3.1176470588235294,"alpha":1},
 		DarkNeutral: {"gamma":0.8333333333333333,"saturation":0.1,"contrast":1.03,"brightness":1,"red":2.372549019607843,"green":1.7058823529411764,"blue":3.2941176470588234,"alpha":1},
 		LightNeutral: {"gamma":1,"saturation":0,"contrast":1.83,"brightness":1,"red":5,"green":0.5686274509803921,"blue":1.8823529411764706,"alpha":1},
-		Highlight: {"gamma":0.5333333333333333,"saturation":0.11666666666666667,"contrast":2.05,"brightness":1.2833333333333332,"red":1,"green":1,"blue":1,"alpha":1},
+		Highlight: {"gamma":0.5333333333333333,"saturation":0,"contrast":2.05,"brightness":1.2833333333333332,"red":1,"green":1,"blue":1,"alpha":1},
 	},
 	"Dollsmith": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.8300000000000001,"brightness":1,"red":1.2549019607843137,"green":1,"blue":4,"alpha":1},
@@ -425,6 +425,7 @@ let KDFactionProperties = {
 let KinkyDungeonHiddenFactions = [
 	"Plant",
 	"Natural",
+	"Barrel",
 	"Door",
 	"Player",
 	"Enemy",
@@ -625,6 +626,10 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"Natural": {
 		Player: -1,
+		Jail: -1,
+		Chase: -1,
+	},
+	"Barrel": {
 		Jail: -1,
 		Chase: -1,
 	},
@@ -870,7 +875,6 @@ let KinkyDungeonFactionRelationsBase = {
 		Nevermere: -0.55,
 		Apprentice: -0.55,
 		Dressmaker: -0.4,
-		Witch: 0.4,
 		Elemental: -0.4,
 		Dragon: -1.0,
 		Maidforce: -1.0,
@@ -943,8 +947,6 @@ let KinkyDungeonFactionRelationsBase = {
 		Chase: -1,
 
 		Apprentice: -0.55,
-		Witch: 0.4,
-		Dressmaker: 0.4,
 		Dragon: -1.0,
 	},
 	"Plant": {

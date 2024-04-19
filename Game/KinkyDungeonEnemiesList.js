@@ -174,7 +174,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, floors:KDMapInit([])},
 
 	{name: "ExplosiveBarrel", tags: KDMapInit(["poisonmmune", "soulimmune", "noknockback", "melee", "minor", "scenery", "explosiveBarrel", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile", "fireweakness", "stunweakness"]),
-		faction: "Door", immobile: true, lowpriority: true, evasion: -100, armor: 1, followRange: 100, AI: "wander",
+		faction: "Barrel", immobile: true, lowpriority: true, evasion: -100, armor: 1, followRange: 100, AI: "wander",
 		difficulty: 0.01,
 		visionRadius: 0, maxhp: 6, minLevel:0, weight:-10, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
 		dropTable: [{name: "Gunpowder", amount: 3, weight: 10, noSummon: true}],
@@ -5026,13 +5026,13 @@ let KinkyDungeonEnemies = [
 		maxdodge: 0,
 		unlockCommandLevel: 3, unlockCommandCD: 7,
 		spells: ["OneBarMissile", "EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.75, noChannel: true,
-		visionRadius: 8, maxhp: 30, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 2.5, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
+		visionRadius: 8, maxhp: 30, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAllWill", attackWidth: 2.5, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 		attackLock: "Purple",
 		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue", dialogue:"TheWardenStage2", click: true}]},
 
-	{name: "TheWarden2", outfit: "Jailer", style: "Jailer", nameList: "Fuuka", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
+	{name: "TheWarden2", outfit: "Jailer", style: "Jailer", nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
 		color: "#ffaa44",
-		tags: KDMapInit(["nosub", "leashing", "noshop", "warden", "human", "soulweakness", "magicresist", "ranged", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss", "nocapture", "unflinching"]),
+		tags: KDMapInit(["nosub", "leashing", "noshop", "warden", "human", "soulweakness", "magicresist", "ranged", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss", "unflinching"]),
 		armor: 1, followRange: 3, AI: "guard",
 		events: [
 			{trigger: "tick", type: "BossAssignFaction", kind: "Warden"},
@@ -5047,7 +5047,7 @@ let KinkyDungeonEnemies = [
 		maxdodge: 1,
 		unlockCommandLevel: 3, unlockCommandCD: 7,
 		spells: ["OneBarMissile", "EnemySteelRainBurst", "EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.75, noChannel: true,
-		visionRadius: 9, maxhp: 80, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 2.5, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
+		visionRadius: 9, maxhp: 80, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAllWill", attackWidth: 2.5, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 		attackLock: "HiSec",
 		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue", dialogue:"TheWardenWin", click: true}]},
 
@@ -5315,7 +5315,7 @@ let KDSpecialBuffs = {
 				aurasprite: "Muscle",
 				noAuraColor: true,
 				duration: 9999, infinite: true,
-				power: enemy.Enemy.power*2,
+				power: Math.min(5, enemy.Enemy.power*2),
 				type: "AttackPower",
 			});
 			KinkyDungeonApplyBuffToEntity(enemy, {

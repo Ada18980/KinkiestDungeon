@@ -86,11 +86,13 @@ let KDCustomAffinity = {
 	},
 };
 
-function KDGetTightnessEffect(escapeChance, struggleType) {
-	let mult = struggleType == "Cut" ? 0.5 : 1.0;
+function KDGetTightnessEffect(escapeChance, struggleType, T = 0) {
+	let mult = (struggleType == "Cut" || struggleType == "Remove") ? 0.5 : 1.0;
 	let x1 = 1 - 0.1 * mult;
 	let x2 = escapeChance > 0 ? (escapeChance - 0.03 * mult) / escapeChance : 0;
-	return Math.max(x1, Math.min(x2, 1 - 0.05 * mult));
+	let val = Math.max(x1, Math.min(x2, 1 - 0.05 * mult));
+	val = 1 - (1 - val) * (100/(100 + T));
+	return val;
 }
 
 /**
@@ -211,8 +213,8 @@ let KDDollBonus = -0.2;
 let KDEscapeeBonus = 0.12;
 let KDDragonBonus = -0.2;
 
-let KDStrongBonus = 0.15;
-let KDWeakBonus = -0.15;
+let KDStrongBonus = 0.075;
+let KDWeakBonus = -0.1;
 
 let KDBondageLoverAmount = 1;
 
@@ -381,8 +383,13 @@ const KinkyDungeonStrictnessTable = new Map([
 	["ItemFeet", ["ItemBoots"]],
 ]);
 
+let KDProgressiveOrder = {
+
+};
+
+
 /** Enforces a sort of progression of restraining loosely based on strictness, useful for progressive stuff like applying curses to zones */
-let KDRestraintGroupProgressiveOrderStrict = [
+KDProgressiveOrder.Strict = [
 	"ItemTorso", // Usually just makes other restraints harder
 	"ItemBreast", // Goes well with belts
 	"ItemPelvis", // Chastity is for good girls!
@@ -397,7 +404,23 @@ let KDRestraintGroupProgressiveOrderStrict = [
 ];
 
 /** A funner restraining order, starting with non-impactful then locking down spells and finally sealing in helplessness */
-let KDRestraintGroupProgressiveOrderFun = [
+KDProgressiveOrder.Fun1 = [
+	"ItemTorso", // Usually just makes other restraints harder
+	"ItemPelvis", // Chastity is for good girls!
+	"ItemMouth", // Blocks spells and potions
+	"ItemHands", // Blocks weapons but no spells
+	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
+	"ItemBreast", // Goes well with belts
+	"ItemHead", // Blind, but does not stop from wielding anything
+	"ItemEars", //  Sensory
+	"ItemBoots", // Typically doesnt hobble completely
+	"ItemArms", // Blocks spells and escaping
+	"ItemFeet", // Makes you very slow
+];
+
+
+/** A funner restraining order, starting with non-impactful then locking down spells and finally sealing in helplessness */
+KDProgressiveOrder.Fun2 = [
 	"ItemTorso", // Usually just makes other restraints harder
 	"ItemPelvis", // Chastity is for good girls!
 	"ItemMouth", // Blocks spells and potions
@@ -410,6 +433,25 @@ let KDRestraintGroupProgressiveOrderFun = [
 	"ItemFeet", // Makes you very slow
 	"ItemEars", //  Sensory
 ];
+
+/** A funner restraining order, starting with non-impactful then locking down spells and finally sealing in helplessness */
+KDProgressiveOrder.Fun3 = [
+	"ItemPelvis", // Chastity is for good girls!
+	"ItemBreast", // Goes well with belts
+	"ItemMouth", // Blocks spells and potions
+	"ItemHands", // Blocks weapons but no spells
+	"ItemArms", // Blocks spells and escaping
+	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
+	"ItemBoots", // Typically doesnt hobble completely
+	"ItemHead", // Blind, but does not stop from wielding anything
+	"ItemFeet", // Makes you very slow
+	"ItemTorso", // Usually just makes other restraints harder
+	"ItemEars", //  Sensory
+];
+
+function KDGetProgressiveOrderFun() {
+	return KDProgressiveOrder["Fun" + Math.floor(3 * KDRandom() + 1)];
+}
 
 /**
  * @type {Map<string, {r: restraint, w:number}[]>}
@@ -1743,7 +1785,7 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 	let limitChance = limitChancePre != undefined ? limitChancePre : (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
 		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : 0.12);
 
-	if ((!ApplyGhost || !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())) && !ApplyPlayerBonus) {
+	if (ApplyPlayerBonus) {
 		if (StruggleType == "Pick") {
 			if (KinkyDungeonStatsChoice.get("Locksmith")) escapeChance += KDLocksmithBonus;
 			if (KinkyDungeonStatsChoice.get("Clueless")) escapeChance += KDCluelessBonus;
@@ -1868,145 +1910,34 @@ function KDGetDynamicItem(group, index) {
 	return {restraint: restraint, host: host};
 }
 
-// Lockpick = use tool or cut
-// Otherwise, just a normal struggle
+
 /**
- *
- * @param {string} struggleGroup
- * @param {string} StruggleType
+ * Mutates the GetStruggleData array
+ * @param {KDStruggleData} data
  * @returns {string}
- */
-function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
-
-	if (KinkyDungeonPlayerEntity && !KinkyDungeonCanTalk() && KDRandom() < KinkyDungeonGagMumbleChanceRestraint) {
-		let msg = "KinkyDungeonGagStruggle" + (StruggleType != "Struggle" ? "Quiet" : "");
-		let gagMsg = Math.floor(KDRandom() * 3);
-
-		msg = msg + gagMsg;
-
-		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), "#ffffff", 5, 3);
-	}
-
-	KinkyDungeonSetFlag("tryescaping", 3);
-	let restraint = KinkyDungeonGetRestraintItem(struggleGroup);
-	let host = restraint;
-	if (index) {
-		let surfaceItems = KDDynamicLinkListSurface(restraint);
-		let dynamicItems = KDDynamicLinkList(restraint, true);
-		if (surfaceItems[index]) {
-			restraint = surfaceItems[index];
-			for (let h_item of dynamicItems) {
-				if (h_item.dynamicLink == restraint) {
-					host = h_item;
-					break;
-				}
-			}
-			//host = surfaceItems[index - 1];
-		}
-		else console.log("Error! Please report the item combination and screenshot to Ada!");
-	}
-	let failSuffix = "";
-	if (restraint && KDRestraint(restraint).failSuffix && KDRestraint(restraint).failSuffix[StruggleType]) {
-		failSuffix = KDRestraint(restraint).failSuffix[StruggleType];
-	}
-	if (!restraint) return "Fail";
-	KinkyDungeonCurrentEscapingItem = restraint;
-	KinkyDungeonCurrentEscapingMethod = StruggleType;
-	KinkyDungeonStruggleTime = CommonTime() + 750;
-	let Pass = "Fail";
-	let restraintEscapeChancePre = KDRestraint(restraint).escapeChance[StruggleType] != undefined ? KDRestraint(restraint).escapeChance[StruggleType] : 1.0;
-	let helpChance = (KDRestraint(restraint).helpChance != undefined && KDRestraint(restraint).helpChance[StruggleType] != undefined) ? KDRestraint(restraint).helpChance[StruggleType] : 0.0;
-	let limitChance = (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
-		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : 0.05);
-	if (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) {
-		KinkyDungeonSetFlag("HelpMeFlag", 8);
-		if (helpChance)
-			restraintEscapeChancePre = helpChance;
-		limitChance = 0;
-	}
-	if (KinkyDungeonHasAngelHelp()) {
-		restraintEscapeChancePre += 0.1;
-	}
-
-	let affinity = KDGetRestraintAffinity(restraint, {StruggleType: StruggleType});
-
-	/**
-	 * @type {{
-	 * restraint: item,
-	 * struggleType: string,
-	 * struggleGroup: string,
-	 * escapeChance: number,
-	 * origEscapeChance: number,
-	 * helpChance: number,
-	 * limitChance: number,
-	 * strict: number,
-	 * cutSpeed: number,
-	 * affinity: string,
-	 * hasAffinity: boolean,
-	 * restraintEscapeChance: number,
-	 * cost: number,
-	 * noise: number,
-	 * wcost: number,
-	 * escapePenalty: number,
-	 * willEscapePenalty: number,
-	 * canCut: boolean,
-	 * canCutMagic: boolean,
-	* toolBonus: number,
-	* toolMult: number,
-	* buffBonus: number,
-	* buffMult: number,
-	* restriction: number,
-	* struggleTime: number,
-	* speedMult: number,
-	 * }}
-	 */
-	let data = {
-		restraint: restraint,
-		struggleType: StruggleType,
-		struggleGroup: struggleGroup,
-		escapeChance: restraintEscapeChancePre,
-		origEscapeChance: restraintEscapeChancePre,
-		limitChance: limitChance,
-		helpChance: helpChance,
-		cutSpeed: 0.25,
-		affinity: affinity,
-		noise: StruggleType == "Struggle" ? 4 : 0,
-		strict: KinkyDungeonStrictness(true, struggleGroup, restraint),
-		hasAffinity: KinkyDungeonGetAffinity(true, affinity, struggleGroup),
-		restraintEscapeChance: KDRestraint(restraint).escapeChance[StruggleType],
-		cost: KinkyDungeonStatStaminaCostStruggle,
-		wcost: KinkyDungeonStatWillCostStruggle,
-		escapePenalty: -KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StrugglePower"),
-		willEscapePenalty: KDGetWillPenalty(),
-		canCut: KinkyDungeonWeaponCanCut(false, false),
-		canCutMagic: KinkyDungeonWeaponCanCut(false, true),
-		toolBonus: 0.0,
-		toolMult: 1.0,
-		buffBonus: 0.0,
-		buffMult: KinkyDungeonHasWill(0.01, false) ? 1.0 : 0.75,
-		struggleTime: 1.0,
-		restriction: KDGameData.Restriction || 0,
-		speedMult: KinkyDungeonHasHelp() ? 2.0 : 1.0,
-	};
-
-
-	if (StruggleType == "Cut") data.cost = KinkyDungeonStatStaminaCostTool;
-	else if (StruggleType == "Pick") data.cost = KinkyDungeonStatStaminaCostPick;
-	else if (StruggleType == "Remove") data.cost = KinkyDungeonStatStaminaCostRemove;
-	else if (StruggleType == "Unlock") data.cost = KinkyDungeonStatStaminaCostPick;
-	if (StruggleType == "Cut") data.wcost = KinkyDungeonStatWillCostTool;
-	else if (StruggleType == "Pick") data.wcost = KinkyDungeonStatWillCostPick;
-	else if (StruggleType == "Remove") data.wcost = KinkyDungeonStatWillCostRemove;
-	else if (StruggleType == "Unlock") data.wcost = KinkyDungeonStatWillCostUnlock;
-	if (StruggleType == "Unlock") data.cost = 0;
+ *  */
+function KDGetStruggleData(data) {
+	if (data.struggleType == "Cut") data.cost = KinkyDungeonStatStaminaCostTool;
+	else if (data.struggleType == "Pick") data.cost = KinkyDungeonStatStaminaCostPick;
+	else if (data.struggleType == "Remove") data.cost = KinkyDungeonStatStaminaCostRemove;
+	else if (data.struggleType == "Unlock") data.cost = KinkyDungeonStatStaminaCostPick;
+	if (data.struggleType == "Cut") data.wcost = KinkyDungeonStatWillCostTool;
+	else if (data.struggleType == "Pick") data.wcost = KinkyDungeonStatWillCostPick;
+	else if (data.struggleType == "Remove") data.wcost = KinkyDungeonStatWillCostRemove;
+	else if (data.struggleType == "Unlock") data.wcost = KinkyDungeonStatWillCostUnlock;
+	if (data.struggleType == "Unlock") data.cost = 0;
 	KinkyDungeonSendEvent("beforeStruggleCalc", data);
-	if (!restraint.pickProgress) restraint.pickProgress = 0;
-	if (!restraint.struggleProgress) restraint.struggleProgress = 0;
-	if (!restraint.unlockProgress) restraint.unlockProgress = 0;
-	if (!restraint.cutProgress) restraint.cutProgress = 0;
-	let EC = KDGetEscapeChance(restraint, StruggleType, data.escapeChance, data.limitChance, true, true, true);
+	if (!data.restraint.pickProgress) data.restraint.pickProgress = 0;
+	if (!data.restraint.struggleProgress) data.restraint.struggleProgress = 0;
+	if (!data.restraint.unlockProgress) data.restraint.unlockProgress = 0;
+	if (!data.restraint.cutProgress) data.restraint.cutProgress = 0;
+	let EC = KDGetEscapeChance(data.restraint, data.struggleType, data.escapeChance, data.limitChance, true, true, !data.query);
 	data.escapeChance = EC.escapeChance;
 	data.limitChance = EC.limitChance;
+
+	// Experimental ==> all escape chance increased by 1-progress%, all limit chance increased by the same amount
+
+
 
 	let toolMult = Math.max(0, 1 + data.toolBonus) * data.toolMult;
 	let buffMult = Math.max(0, 1 + data.buffBonus) * data.buffMult;
@@ -2014,21 +1945,20 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 
 
-	if (StruggleType == "Pick" || StruggleType == "Unlock") data.escapeChance += KinkyDungeonGetPickBonus()*toolMult;
+	if (data.struggleType == "Pick" || data.struggleType == "Unlock") data.escapeChance += KinkyDungeonGetPickBonus()*toolMult;
 	data.origEscapeChance = data.escapeChance;
 
 
-	KinkyDungeonInterruptSleep();
 
 	let increasedAttempts = false;
 
-	let handsBound = KinkyDungeonIsHandsBound(true, false, StruggleTypeHandThresh[StruggleType]) && !KinkyDungeonCanUseFeet();
-	let handBondage = handsBound ? 1.0 : Math.min(1, Math.max(0, KDHandBondageTotal(false)));
+	data.handsBound = KinkyDungeonIsHandsBound(true, false, StruggleTypeHandThresh[data.struggleType]) && !KinkyDungeonCanUseFeet();
+	data.handBondage = data.handsBound ? 1.0 : Math.min(1, Math.max(0, KDHandBondageTotal(false)));
 	//let cancut = false;
 
 	// Bonuses go here. Buffs dont get added to orig escape chance, but
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle")) data.escapePenalty -= KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle");
-	if (StruggleType == "Cut") {
+	if (data.struggleType == "Cut") {
 		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCutting")) data.escapePenalty -= KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCutting");
 		if (data.hasAffinity) {
 			if (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp() || !KinkyDungeonPlayerDamage) {
@@ -2049,11 +1979,10 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		}
 		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum")) data.escapeChance = Math.max(data.escapeChance, KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum"));
 	}
-	if (StruggleType == "Cut" && !KDRestraint(restraint).magic && KinkyDungeonWeaponCanCut(false, true)) {
+	if (data.struggleType == "Cut" && !KDRestraint(data.restraint).magic && KinkyDungeonWeaponCanCut(false, true)) {
 		data.escapeChance += KinkyDungeonEnchantedKnifeBonus*toolMult;
 		data.origEscapeChance += KinkyDungeonEnchantedKnifeBonus*toolMult;
 	}
-	let escapeSpeed = KDBaseEscapeSpeed * data.speedMult;
 
 	// Finger extensions will help if your hands are unbound. Some items cant be removed without them!
 	// Mouth counts as a finger extension on your hands if your arms aren't tied
@@ -2061,24 +1990,24 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 	let armsBoundOverride = false;
 	let handsBoundOverride = false;
 
-	if (KDUnboundAffinityOverride[affinity] && (!handsBound || handsBoundOverride) && (!armsBound || armsBoundOverride)) data.hasAffinity = true;
+	if (KDUnboundAffinityOverride[data.affinity] && (!data.handsBound || handsBoundOverride) && (!armsBound || armsBoundOverride)) data.hasAffinity = true;
 
 	// Bonus for using lockpick or knife
-	if (StruggleType == "Remove" &&
-		(!handsBound && (KinkyDungeonWeaponCanCut(true) || KinkyDungeonLockpicks > 0)
-		|| (struggleGroup == "ItemHands" && KinkyDungeonCanTalk() && !armsBound))) {
+	if (data.struggleType == "Remove" &&
+		(!data.handsBound && (KinkyDungeonWeaponCanCut(true) || KinkyDungeonLockpicks > 0)
+		|| (data.struggleGroup == "ItemHands" && KinkyDungeonCanTalk() && !armsBound))) {
 		data.escapeChance = Math.max(data.escapeChance, Math.min(1, data.escapeChance + 0.15*toolMult));
 		data.origEscapeChance = Math.max(data.origEscapeChance, Math.min(1, data.origEscapeChance + 0.15*toolMult));
 	}
 
 	// Psychic doesnt modify original chance, so that you understand its the perk helping you
-	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.25);
+	if (data.struggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.25);
 
 	let edgeBonus = 0.12*toolMult;
 	// Easier to struggle if your legs are free, due to leverage
 	// Slight boost to remove as well, but not as much due to the smaller movements required
-	if ((StruggleType == "Struggle" || StruggleType == "Cut") && data.hasAffinity) data.escapeChance += edgeBonus * (0.5 + 0.5*Math.max(2 - KinkyDungeonSlowLevel, 0));
-	else if ((StruggleType == "Remove") && data.hasAffinity) data.escapeChance += edgeBonus * (0.1 + 0.1*Math.max(2 - KinkyDungeonSlowLevel, 0));
+	if ((data.struggleType == "Struggle" || data.struggleType == "Cut") && data.hasAffinity) data.escapeChance += edgeBonus * (0.5 + 0.5*Math.max(2 - KinkyDungeonSlowLevel, 0));
+	else if ((data.struggleType == "Remove") && data.hasAffinity) data.escapeChance += edgeBonus * (0.1 + 0.1*Math.max(2 - KinkyDungeonSlowLevel, 0));
 
 	// Restriction penalties AFTER bonuses
 	if (data.restriction > 0 && !KinkyDungeonHasHelp()) {
@@ -2116,7 +2045,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Lockdown")) {
 		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonBuffLockdownTry")
-			.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 1);
+			.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff0000", 1);
 		data.escapeChance -= KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Lockdown") * 0.1;
 	}
 
@@ -2125,136 +2054,144 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 		data.escapeChance -= data.escapePenalty;
 	}
 
-	if ((StruggleType == "Struggle") && !data.hasAffinity && data.escapeChance <= 0 && data.escapeChance >= -edgeBonus && (!KDRestraint(restraint).alwaysEscapable || !KDRestraint(restraint).alwaysEscapable.includes(StruggleType))) {
+	if ((data.struggleType == "Struggle") && !data.hasAffinity && data.escapeChance <= 0 && data.escapeChance >= -edgeBonus && (!KDRestraint(data.restraint).alwaysEscapable || !KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
 		let typesuff = "";
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-				+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Struggle) ? KDGetEscapeSFX(restraint).Struggle : "Struggle")
-				+ ".ogg");
-		if (affinity && !KinkyDungeonGetAffinity(false, affinity, struggleGroup)) typesuff = "Wrong" + affinity;
-		if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
-		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "NeedEdge" + typesuff)
-			.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
-		KinkyDungeonLastAction = "Struggle";
-		KinkyDungeonSendEvent("struggle", {
-			restraint: restraint,
-			group: struggleGroup,
-			struggleType: StruggleType,
-			result: "NeedEdge",
-		});
+		if (!data.query) {
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+					+ ((KDGetEscapeSFX(data.restraint) && KDGetEscapeSFX(data.restraint).Struggle) ? KDGetEscapeSFX(data.restraint).Struggle : "Struggle")
+					+ ".ogg");
+			if (data.affinity && !KinkyDungeonGetAffinity(false, data.affinity, data.struggleGroup)) typesuff = "Wrong" + data.affinity;
+			if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + data.struggleType + "NeedEdge" + typesuff)
+				.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff0000", 2, true);
+			KinkyDungeonLastAction = "Struggle";
+			KinkyDungeonSendEvent("struggle", {
+				restraint: data.restraint,
+				group: data.struggleGroup,
+				struggleType: data.struggleType,
+				result: "NeedEdge",
+			});
+		}
 		return "NeedEdge";
 	}
 
-	let removeFail = ((data.struggleType == "Unlock" && !KinkyDungeonStatsChoice.get("Psychic")) || data.struggleType == "Pick") && !(KinkyDungeonHasHelp()) && KDGetEscapeChance(restraint, "Remove", undefined, undefined, false, false).escapeChance <= 0;
+	let removeFail = ((data.struggleType == "Unlock" && !KinkyDungeonStatsChoice.get("Psychic")) || data.struggleType == "Pick") && !(KinkyDungeonHasHelp()) && KDGetEscapeChance(data.restraint, "Remove", undefined, undefined, false, false).escapeChance <= 0;
 
 	if (removeFail) data.escapeChance = 0;
 
-	if (data.escapeChance <= 0 && (!KDRestraint(restraint).alwaysEscapable || !KDRestraint(restraint).alwaysEscapable.includes(StruggleType))) {
-		if (!restraint.attempts) restraint.attempts = 0;
-		if (restraint.attempts < KinkyDungeonMaxImpossibleAttempts) {
+	if (data.escapeChance <= 0 && (!KDRestraint(data.restraint).alwaysEscapable || !KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
+		if (!data.restraint.attempts) data.restraint.attempts = 0;
+		if (!data.query && data.restraint.attempts < KinkyDungeonMaxImpossibleAttempts) {
 			increasedAttempts = true;
-			restraint.attempts += 1;
-			if (data.escapeChance <= -0.5) restraint.attempts += 1;
+			data.restraint.attempts += 1;
+			if (data.escapeChance <= -0.5) data.restraint.attempts += 1;
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-				+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
+				+ ((KDGetEscapeSFX(data.restraint) && KDGetEscapeSFX(data.restraint)[data.struggleType]) ? KDGetEscapeSFX(data.restraint)[data.struggleType] : "Struggle")
 				+ ".ogg");
 		} else {
-			let typesuff = "";
-			if (removeFail || (data.origEscapeChance <= 0 && data.helpChance)) typesuff = "3";
-			else if (KDRestraint(restraint).specStruggleTypes && KDRestraint(restraint).specStruggleTypes.includes(StruggleType)) typesuff = "2";
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-				+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
-				+ ".ogg");
-			if (typesuff == "" && failSuffix) typesuff = failSuffix;
-			if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "Impossible" + typesuff)
-				.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
-			if (EC.escapeChanceData.GoddessBonus < 0 && EC.escapeChanceData.escapeChance < 0 && EC.escapeChance - EC.escapeChanceData.GoddessBonus > 0) {
-				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonStruggle" + StruggleType + "ImpossibleGoddess")
-					.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
-			}
+			if (!data.query) {
+				let typesuff = "";
+				if (removeFail || (data.origEscapeChance <= 0 && data.helpChance)) typesuff = "3";
+				else if (KDRestraint(data.restraint).specStruggleTypes && KDRestraint(data.restraint).specStruggleTypes.includes(data.struggleType)) typesuff = "2";
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+					+ ((KDGetEscapeSFX(data.restraint) && KDGetEscapeSFX(data.restraint)[data.struggleType]) ? KDGetEscapeSFX(data.restraint)[data.struggleType] : "Struggle")
+					+ ".ogg");
+				if (typesuff == "" && data.failSuffix) typesuff = data.failSuffix;
+				if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
+				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + data.struggleType + "Impossible" + typesuff)
+					.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff0000", 2, true);
+				if (EC.escapeChanceData.GoddessBonus < 0 && EC.escapeChanceData.escapeChance < 0 && EC.escapeChance - EC.escapeChanceData.GoddessBonus > 0) {
+					KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonStruggle" + data.struggleType + "ImpossibleGoddess")
+						.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff0000", 2, true);
+				}
 
-			if (KinkyDungeonHasStamina(-data.cost)) {
-				KinkyDungeonLastAction = "Struggle";
-				KinkyDungeonSendEvent("struggle", {
-					restraint: restraint,
-					group: struggleGroup,
-					struggleType: StruggleType,
-					result: "Impossible",
-				});
+				if (KinkyDungeonHasStamina(-data.cost)) {
+					KinkyDungeonLastAction = "Struggle";
+					KinkyDungeonSendEvent("struggle", {
+						restraint: data.restraint,
+						group: data.struggleGroup,
+						struggleType: data.struggleType,
+						result: "Impossible",
+					});
 
-				KinkyDungeonChangeStamina(data.cost, true, 1);
-				KinkyDungeonChangeWill(data.wcost);
-				if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
+					KinkyDungeonChangeStamina(data.cost, true, 1);
+					KinkyDungeonChangeWill(data.wcost);
+					if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
+				}
+				KinkyDungeonAdvanceTime(1);
+				KinkyDungeonSetFlag("escapeimpossible", 2);
 			}
-			KinkyDungeonAdvanceTime(1);
-			KinkyDungeonSetFlag("escapeimpossible", 2);
 			return "Impossible";
 		}
 	}
 
 	// Struggling is unaffected by having arms bound
-	let minAmount = 0.1 - Math.max(0, 0.01*KDRestraint(restraint).power);
-	if (StruggleType == "Remove" && !data.hasAffinity) minAmount = 0;
+	let minAmount = 0.1 - Math.max(0, 0.01*KDRestraint(data.restraint).power);
+	if (data.struggleType == "Remove" && !data.hasAffinity) minAmount = 0;
 	// Bound arms make fine motor skill escaping more difficult in general
-	if (!(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && StruggleType != "Struggle" && (struggleGroup != "ItemArms" && struggleGroup != "ItemHands" ) && armsBound) data.escapeChance *= 0.6;
+	if (!(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && data.struggleType != "Struggle" && (data.struggleGroup != "ItemArms" && data.struggleGroup != "ItemHands" ) && armsBound) data.escapeChance *= 0.6;
 
 	// Bound arms make escaping more difficult, and impossible if the chance is already slim
-	if (StruggleType != "Struggle" && struggleGroup != "ItemArms" && armsBound) data.escapeChance = Math.max(minAmount, data.escapeChance - 0.18);
-	else if (StruggleType == "Remove" && !armsBound && !handsBound) data.escapeChance = Math.max(minAmount, data.escapeChance + 0.07 * (1 - KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax));
+	if (data.struggleType != "Struggle" && data.struggleGroup != "ItemArms" && armsBound) data.escapeChance = Math.max(minAmount, data.escapeChance - 0.18);
+	else if (data.struggleType == "Remove" && !armsBound && !data.handsBound) data.escapeChance = Math.max(minAmount, data.escapeChance + 0.07 * (1 - KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax));
 
 	// Covered hands makes it harder to unlock. If you have the right removal type it makes it harder but wont make it go to 0
-	if (((StruggleType == "Pick" && !KinkyDungeonStatsChoice.get("Psychic")) || StruggleType == "Unlock" || StruggleType == "Remove") && struggleGroup != "ItemHands" && handsBound)
-		data.escapeChance = Math.max((StruggleType == "Remove" && data.hasAffinity) ?
-		Math.max(0, data.escapeChance / 2) : 0, data.escapeChance - 0.14 - 0.22 * handBondage);
+	if (((data.struggleType == "Pick" && !KinkyDungeonStatsChoice.get("Psychic")) || data.struggleType == "Unlock" || data.struggleType == "Remove") && data.struggleGroup != "ItemHands" && data.handsBound)
+		data.escapeChance = Math.max((data.struggleType == "Remove" && data.hasAffinity) ?
+		Math.max(0, data.escapeChance / 2) : 0, data.escapeChance - 0.14 - 0.22 * data.handBondage);
 
-	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.2);
+	if (data.struggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.2);
 
-	if ((StruggleType == "Remove") && !data.hasAffinity && data.escapeChance == 0 && (!KDRestraint(restraint).alwaysEscapable || !KDRestraint(restraint).alwaysEscapable.includes(StruggleType))) {
+	if ((data.struggleType == "Remove") && !data.hasAffinity && data.escapeChance == 0 && (!KDRestraint(data.restraint).alwaysEscapable || !KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
 		let typesuff = "";
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-			+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
-			+ ".ogg");
-		if (affinity && !KinkyDungeonGetAffinity(false, affinity, struggleGroup)) typesuff = "Wrong" + affinity;
-		if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
-		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "NeedEdge" + typesuff)
-			.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
-		KinkyDungeonLastAction = "Struggle";
-		KinkyDungeonSendEvent("struggle", {
-			restraint: restraint,
-			group: struggleGroup,
-			struggleType: StruggleType,
-			result: "NeedEdge",
-		});
+		if (!data.query) {
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+				+ ((KDGetEscapeSFX(data.restraint) && KDGetEscapeSFX(data.restraint)[data.struggleType]) ? KDGetEscapeSFX(data.restraint)[data.struggleType] : "Struggle")
+				+ ".ogg");
+			if (data.affinity && !KinkyDungeonGetAffinity(false, data.affinity, data.struggleGroup)) typesuff = "Wrong" + data.affinity;
+			if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + data.struggleType + "NeedEdge" + typesuff)
+				.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff0000", 2, true);
+			KinkyDungeonLastAction = "Struggle";
+			KinkyDungeonSendEvent("struggle", {
+				restraint: data.restraint,
+				group: data.struggleGroup,
+				struggleType: data.struggleType,
+				result: "NeedEdge",
+			});
+		}
 		return "NeedEdge";
 	}
 
 	let possible = data.escapeChance > 0;
 	// Strict bindings make it harder to escape unless you have help or are cutting with affinity
-	if (data.strict && StruggleType == "Struggle")
+	if (data.strict && data.struggleType == "Struggle")
 		data.escapeChance = Math.max(0, data.escapeChance - data.strict * 0.9);
 
-	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.2);
+	if (data.struggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.2);
 
-	if (possible && data.escapeChance == 0 && (!KDRestraint(restraint).alwaysEscapable || !KDRestraint(restraint).alwaysEscapable.includes(StruggleType))) {
+	if (possible && data.escapeChance == 0 && (!KDRestraint(data.restraint).alwaysEscapable || !KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
 		let typesuff = "";
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-			+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
-			+ ".ogg");
-		if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
-		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "Strict" + typesuff)
-			.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
-		KinkyDungeonLastAction = "Struggle";
-		KinkyDungeonSendEvent("struggle", {
-			restraint: restraint,
-			group: struggleGroup,
-			struggleType: StruggleType,
-			result: "Strict",
-		});
+		if (!data.query) {
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+				+ ((KDGetEscapeSFX(data.restraint) && KDGetEscapeSFX(data.restraint)[data.struggleType]) ? KDGetEscapeSFX(data.restraint)[data.struggleType] : "Struggle")
+				+ ".ogg");
+			if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + data.struggleType + "Strict" + typesuff)
+				.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff0000", 2, true);
+			KinkyDungeonLastAction = "Struggle";
+			KinkyDungeonSendEvent("struggle", {
+				restraint: data.restraint,
+				group: data.struggleGroup,
+				struggleType: data.struggleType,
+				result: "Strict",
+			});
+		}
 		return "Strict";
 	}
 
 	// Reduce cutting power if you dont have hands
-	if (StruggleType == "Cut" && KinkyDungeonIsHandsBound(true)) {
+	if (data.struggleType == "Cut" && KinkyDungeonIsHandsBound(true)) {
 		if (KinkyDungeonAllWeapon().some((inv) => {return KDWeapon(inv).light && KDWeapon(inv).cutBonus != undefined;})) {
 			if (KinkyDungeonWallCrackAndKnife(true)) {
 				data.escapeChance *= 0.92;
@@ -2276,446 +2213,578 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index) {
 
 	}
 
-	if (!(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && (StruggleType == "Pick" || StruggleType == "Unlock" || StruggleType == "Remove")) data.escapeChance /= 1.0 + KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax*KinkyDungeonDistractionUnlockSuccessMod;
+	if (!(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && (data.struggleType == "Pick" || data.struggleType == "Unlock" || data.struggleType == "Remove")) data.escapeChance /= 1.0 + KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax*KinkyDungeonDistractionUnlockSuccessMod;
 
-	if (KDGroupBlocked(struggleGroup) && !KDRestraint(restraint).alwaysStruggleable) data.escapeChance = 0;
+	if (KDGroupBlocked(data.struggleGroup) && !KDRestraint(data.restraint).alwaysStruggleable) data.escapeChance = 0;
 
 	// Blue locks make it harder to escape an item
-	let lockType = restraint.lock && KDLocks[restraint.lock] ? KDLocks[restraint.lock] : null;
 
-	if (lockType && lockType.penalty && lockType.penalty[StruggleType]) data.escapeChance = Math.max(0, data.escapeChance - lockType.penalty[StruggleType]);
+	if (data.lockType && data.lockType.penalty && data.lockType.penalty[data.struggleType]) data.escapeChance = Math.max(0, data.escapeChance - data.lockType.penalty[data.struggleType]);
 
-	if (StruggleType == "Cut" && struggleGroup != "ItemHands" && handsBound)
+	if (data.struggleType == "Cut" && data.struggleGroup != "ItemHands" && data.handsBound)
 		data.escapeChance = data.escapeChance / 2;
 
-	if (StruggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.15);
+	if (data.struggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.15);
 
 	let belt = null;
 	let bra = null;
 
-	if (struggleGroup == "ItemVulva" || struggleGroup == "ItemVulvaPiercings" || struggleGroup == "ItemButt") belt = KinkyDungeonGetRestraintItem("ItemPelvis");
+	if (data.struggleGroup == "ItemVulva" || data.struggleGroup == "ItemVulvaPiercings" || data.struggleGroup == "ItemButt") belt = KinkyDungeonGetRestraintItem("ItemPelvis");
 	if (belt && KDRestraint(belt) && KDRestraint(belt).chastity) data.escapeChance = 0.0;
 
-	if (struggleGroup == "ItemNipples" || struggleGroup == "ItemNipplesPiercings") bra = KinkyDungeonGetRestraintItem("ItemBreast");
+	if (data.struggleGroup == "ItemNipples" || data.struggleGroup == "ItemNipplesPiercings") bra = KinkyDungeonGetRestraintItem("ItemBreast");
 	if (bra && KDRestraint(bra) && KDRestraint(bra).chastitybra) data.escapeChance = 0.0;
 
+	if (!data.query)
+		KinkyDungeonSetFlag("escaping", 1);
 
-	KinkyDungeonSetFlag("escaping", 1);
-
-	if (data.escapeChance <= 0 && (!KDRestraint(restraint).alwaysEscapable || !KDRestraint(restraint).alwaysEscapable.includes(StruggleType))) {
-		if (!restraint.attempts) restraint.attempts = 0;
-		if (restraint.attempts < KinkyDungeonMaxImpossibleAttempts || increasedAttempts) {
+	if (data.escapeChance <= 0 && (!KDRestraint(data.restraint).alwaysEscapable || !KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
+		if (!data.restraint.attempts) data.restraint.attempts = 0;
+		if (data.restraint.attempts < KinkyDungeonMaxImpossibleAttempts || increasedAttempts) {
 			if (!increasedAttempts) {
-				restraint.attempts += 0.5;
-				if (data.escapeChance <= -0.5) restraint.attempts += 0.5;
+				data.restraint.attempts += 0.5;
+				if (data.escapeChance <= -0.5) data.restraint.attempts += 0.5;
 			}
 		} else {
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-				+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
-				+ ".ogg");
-			let suff = "";
-			if (suff == "" && failSuffix) suff = failSuffix;
-			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = suff + "Aroused";
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + StruggleType + "ImpossibleBound" + suff)
-				.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
+			if (!data.query) {
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+					+ ((KDGetEscapeSFX(data.restraint) && KDGetEscapeSFX(data.restraint)[data.struggleType]) ? KDGetEscapeSFX(data.restraint)[data.struggleType] : "Struggle")
+					+ ".ogg");
+				let suff = "";
+				if (suff == "" && data.failSuffix) suff = data.failSuffix;
+				if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = suff + "Aroused";
+				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + data.struggleType + "ImpossibleBound" + suff)
+					.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff0000", 2, true);
 
 
-			if (KinkyDungeonHasStamina(-data.cost)) {
-				KinkyDungeonLastAction = "Struggle";
-				KinkyDungeonSendEvent("struggle", {
-					restraint: restraint,
-					group: struggleGroup,
-					struggleType: StruggleType,
-					result: "Impossible",
-				});
-				KinkyDungeonChangeStamina(data.cost, true, 1);
-				KinkyDungeonChangeWill(data.wcost);
-				if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
+				if (KinkyDungeonHasStamina(-data.cost)) {
+					KinkyDungeonLastAction = "Struggle";
+					KinkyDungeonSendEvent("struggle", {
+						restraint: data.restraint,
+						group: data.struggleGroup,
+						struggleType: data.struggleType,
+						result: "Impossible",
+					});
+					KinkyDungeonChangeStamina(data.cost, true, 1);
+					KinkyDungeonChangeWill(data.wcost);
+					if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
+				}
+				KinkyDungeonAdvanceTime(1);
+				KinkyDungeonSetFlag("escapeimpossible", 2);
 			}
-			KinkyDungeonAdvanceTime(1);
-			KinkyDungeonSetFlag("escapeimpossible", 2);
 			return "Impossible";
 		}
 	}
 
-	if (KDRestraint(restraint) && KDRestraint(restraint).escapeMult != undefined) data.escapeChance *= KDRestraint(restraint).escapeMult;
+	if (KDRestraint(data.restraint) && KDRestraint(data.restraint).escapeMult != undefined) data.escapeChance *= KDRestraint(data.restraint).escapeMult;
 
-	if (KDRestraint(restraint) && KDRestraint(restraint).struggleMult && KDRestraint(restraint).struggleMult[StruggleType] != undefined)
-		data.escapeChance *= KDRestraint(restraint).struggleMult[StruggleType];
+	if (KDRestraint(data.restraint) && KDRestraint(data.restraint).struggleMult && KDRestraint(data.restraint).struggleMult[data.struggleType] != undefined)
+		data.escapeChance *= KDRestraint(data.restraint).struggleMult[data.struggleType];
 
-	let minSpeed = KDMinEscapeRate;
-	let extraLim = (StruggleType == "Pick" && lockType.pick_lim) ? Math.max(0, lockType.pick_lim) : 0;
-	let extraLimPenalty = (StruggleType == "Pick") ? extraLim * restraint.pickProgress : 0;
-	let extraLimThreshold = Math.min(1, (data.escapeChance / extraLim));
 
-	if (data.escapeChance > Math.max(0, data.limitChance, extraLim) || (KDRestraint(restraint).alwaysEscapable && KDRestraint(restraint).alwaysEscapable.includes(StruggleType))) {
+	if (data.escapeChance > Math.max(0, data.limitChance, data.extraLim) || (KDRestraint(data.restraint).alwaysEscapable && KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
 		// Min struggle speed is always 0.05 = 20 struggle attempts
-		minSpeed = (KDRestraint(restraint).struggleMinSpeed && KDRestraint(restraint).struggleMinSpeed[StruggleType]) ? KDRestraint(restraint).struggleMinSpeed[StruggleType] : minSpeed;
-		data.escapeChance = Math.max(data.escapeChance, minSpeed);
+		data.minSpeed = (KDRestraint(data.restraint).struggleMinSpeed && KDRestraint(data.restraint).struggleMinSpeed[data.struggleType]) ? KDRestraint(data.restraint).struggleMinSpeed[data.struggleType] : data.minSpeed;
+		data.escapeChance = Math.max(data.escapeChance, data.minSpeed);
 	}
 
-	if (KDRestraint(restraint) && KDRestraint(restraint).struggleMaxSpeed && KDRestraint(restraint).struggleMaxSpeed[StruggleType] != undefined)
-		data.escapeChance = Math.min(data.escapeChance, KDRestraint(restraint).struggleMaxSpeed[StruggleType]);
+	if (KDRestraint(data.restraint) && KDRestraint(data.restraint).struggleMaxSpeed && KDRestraint(data.restraint).struggleMaxSpeed[data.struggleType] != undefined)
+		data.escapeChance = Math.min(data.escapeChance, KDRestraint(data.restraint).struggleMaxSpeed[data.struggleType]);
 
 
 	// Struggling is affected by tightness
 	if (data.escapeChance > 0) {// && StruggleType == "Struggle") {
-		for (let T = 0; T < restraint.tightness; T++) {
-			data.escapeChance *= KDGetTightnessEffect(data.escapeChance, data.struggleType); // Tougher for each tightness, however struggling will reduce the tightness
+		for (let T = 0; T < data.restraint.tightness; T++) {
+			data.escapeChance *= KDGetTightnessEffect(data.escapeChance, data.struggleType, T); // Tougher for each tightness, however struggling will reduce the tightness
 		}
 	}
 
-
-	// Handle cases where you can't even attempt to unlock or pick
-	if (lockType && (StruggleType == "Unlock" && !lockType.canUnlock(data))
-		|| (StruggleType == "Pick" && lockType && !lockType.canPick(data))) {
-		if (StruggleType == "Unlock")
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggleUnlockNo" + restraint.lock + "Key")
-				.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "orange", 2, true);
-		else
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggleCantPick" + restraint.lock + "Lock")
-				.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "orange", 2, true);
-	} else {
-
-		// Limit of what you can struggle to given current limit chance
-		let maxLimit = 100;
-
-
-		// Main struggling block
-		if ((data.wcost > 0 && !KinkyDungeonHasWill(-data.wcost, false)) && (data.escapeChance*0.5 <= data.willEscapePenalty && !KinkyDungeonHasWill(0.01, false))) {
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-				+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).NoWill) ? KDGetEscapeSFX(restraint).NoWill : "Struggle")
-				+ ".ogg");
-			KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
-				.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
-			KinkyDungeonLastAction = "Struggle";
-			KinkyDungeonSendEvent("struggle", {
-				restraint: restraint,
-				group: struggleGroup,
-				struggleType: StruggleType,
-				result: "Will",
-			});
-			return "Will";
-		} else if (!KinkyDungeonHasStamina(-data.cost, true)) {
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-				+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).NoStamina) ? KDGetEscapeSFX(restraint).NoStamina : "Struggle")
-				+ ".ogg");
-			KinkyDungeonWaitMessage(true, 0);
-		} else if (data.escapeChance > 0) {
-
-
-			// One last check: check limits
-			if ((data.limitChance > 0 || extraLim > 0) && data.escapeChance > 0) {
-				let threshold = 0.75;
-				if (data.limitChance > data.escapeChance) {
-					threshold = Math.min(threshold, 0.9*(data.escapeChance / data.limitChance));
-				}
-				let cutStruggleProgress = (restraint.struggleProgress || 0) + (restraint.cutProgress || 0);
-				let limitProgress = cutStruggleProgress ? (StruggleType == "Struggle" ?
-					(cutStruggleProgress < threshold ? threshold * cutStruggleProgress : 1.0) :
-					Math.min(1, 1.15 - 1.15 * cutStruggleProgress))
-					: (StruggleType == "Struggle" ? 0 : 1);
-				let limitPenalty = Math.max(0, Math.min(1, limitProgress) * data.limitChance, extraLimPenalty);
-				let maxPossible = 1;
-				if ((data.limitChance > 0 && data.limitChance > data.escapeChance && StruggleType == "Struggle")) {
-					// Find the intercept
-					maxPossible = threshold;
-				}
-				if (extraLim > data.escapeChance) {
-					// Find the intercept
-					maxPossible = Math.min(extraLimThreshold, maxPossible);
-				}
-
-
-				// Prevent struggling past this
-				if (maxPossible < 1) maxLimit = maxPossible;
-
-				if (extraLimPenalty > 0 && extraLimPenalty > limitPenalty) {
-					data.escapeChance -= extraLimPenalty;
-					if (data.escapeChance <= 0) {
-						// Replace with frustrated moan later~
-						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
-							+ ".ogg");
-						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Limit")
-							.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
-						KinkyDungeonLastAction = "Struggle";
-						KinkyDungeonSendEvent("struggle", {
-							restraint: restraint,
-							group: struggleGroup,
-							struggleType: StruggleType,
-							result: "LimitExtra",
-						});
-						return "LimitExtra";
-					}
-				} else if (limitPenalty > 0) {
-					data.escapeChance -= limitPenalty;
-					if (data.escapeChance <= 0) {
-						// Replace with frustrated moan later~
-						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
-							+ ".ogg");
-						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Limit")
-							.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
-						KinkyDungeonLastAction = "Struggle";
-						KinkyDungeonSendEvent("struggle", {
-							restraint: restraint,
-							group: struggleGroup,
-							struggleType: StruggleType,
-							result: "Limit",
-						});
-						return "Limit";
-					}
-				}
-			}
-
-			if (data.escapeChance > 0 && KinkyDungeonHasWill(0.01, false)) {
-				data.escapeChance -= data.willEscapePenalty;
-				if (data.escapeChance <= 0) {
-					// Replace with frustrated moan later~
-					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-						+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).NoWill) ? KDGetEscapeSFX(restraint).NoWill : "Struggle")
-						+ ".ogg");
-					KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
-						.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
-					KinkyDungeonLastAction = "Struggle";
-					KinkyDungeonSendEvent("struggle", {
-						restraint: restraint,
-						group: struggleGroup,
-						struggleType: StruggleType,
-						result: "Will",
-					});
-					return "Will";
-				}
-			}
-
-			if (data.escapeChance <= 0) {
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-					+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
-					+ ".ogg");
+	if (data.escapeChance > 0 && KinkyDungeonHasWill(0.01, false)) {
+		data.escapeChance -= data.willEscapePenalty;
+		if (data.escapeChance <= 0) {
+			if (!data.query) {
 				// Replace with frustrated moan later~
-				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Barely")
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+					+ ((KDGetEscapeSFX(data.restraint) && KDGetEscapeSFX(data.restraint).NoWill) ? KDGetEscapeSFX(data.restraint).NoWill : "Struggle")
+					+ ".ogg");
+				KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
+					.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff0000", 2, true);
+				KinkyDungeonLastAction = "Struggle";
+				KinkyDungeonSendEvent("struggle", {
+					restraint: data.restraint,
+					group: data.struggleGroup,
+					struggleType: data.struggleType,
+					result: "Will",
+				});
+			}
+			return "Will";
+		}
+	}
+
+	return "";
+}
+
+// Lockpick = use tool or cut
+// Otherwise, just a normal struggle
+/**
+ *
+ * @param {string} struggleGroup
+ * @param {string} StruggleType
+ * @param {boolean} [query]
+ * @param {KDStruggleData} [retData]
+ * @returns {string}
+ */
+function KinkyDungeonStruggle(struggleGroup, StruggleType, index, query = false, retData) {
+
+	if (!query && KinkyDungeonPlayerEntity && !KinkyDungeonCanTalk() && KDRandom() < KinkyDungeonGagMumbleChanceRestraint) {
+		let msg = "KinkyDungeonGagStruggle" + (StruggleType != "Struggle" ? "Quiet" : "");
+		let gagMsg = Math.floor(KDRandom() * 3);
+
+		msg = msg + gagMsg;
+
+		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), "#ffffff", 5, 3);
+	}
+
+	if (!query)
+		KinkyDungeonSetFlag("tryescaping", 3);
+	let restraint = KinkyDungeonGetRestraintItem(struggleGroup);
+	let host = restraint;
+	if (index) {
+		let surfaceItems = KDDynamicLinkListSurface(restraint);
+		let dynamicItems = KDDynamicLinkList(restraint, true);
+		if (surfaceItems[index]) {
+			restraint = surfaceItems[index];
+			for (let h_item of dynamicItems) {
+				if (h_item.dynamicLink == restraint) {
+					host = h_item;
+					break;
+				}
+			}
+			//host = surfaceItems[index - 1];
+		}
+		else console.log("Error! Please report the item combination and screenshot to Ada!");
+	}
+	let failSuffix = "";
+	if (restraint && KDRestraint(restraint).failSuffix && KDRestraint(restraint).failSuffix[StruggleType]) {
+		failSuffix = KDRestraint(restraint).failSuffix[StruggleType];
+	}
+	if (!restraint) return "Fail";
+	KinkyDungeonCurrentEscapingItem = restraint;
+	KinkyDungeonCurrentEscapingMethod = StruggleType;
+	KinkyDungeonStruggleTime = CommonTime() + 750;
+	let Pass = "Fail";
+	let restraintEscapeChancePre = KDRestraint(restraint).escapeChance[StruggleType] != undefined ? KDRestraint(restraint).escapeChance[StruggleType] : 1.0;
+	let helpChance = (KDRestraint(restraint).helpChance != undefined && KDRestraint(restraint).helpChance[StruggleType] != undefined) ? KDRestraint(restraint).helpChance[StruggleType] : 0.0;
+	let limitChance = (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
+		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : 0.05);
+	if (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) {
+		if (!query)
+			KinkyDungeonSetFlag("HelpMeFlag", 8);
+		if (helpChance)
+			restraintEscapeChancePre = helpChance;
+		limitChance = 0;
+	}
+	if (KinkyDungeonHasAngelHelp()) {
+		restraintEscapeChancePre += 0.1;
+	}
+
+	KinkyDungeonInterruptSleep();
+
+	let affinity = KDGetRestraintAffinity(restraint, {StruggleType: StruggleType});
+
+	/**
+	 * @type {KDStruggleData}
+	 */
+	let data = {
+		minSpeed: KDMinEscapeRate,
+		handBondage: 0,
+		handsBound: false,
+		armsBound: false,
+		query: query,
+		restraint: restraint,
+		struggleType: StruggleType,
+		struggleGroup: struggleGroup,
+		escapeChance: restraintEscapeChancePre,
+		origEscapeChance: restraintEscapeChancePre,
+		limitChance: limitChance,
+		helpChance: helpChance,
+		cutSpeed: 0.25,
+		affinity: affinity,
+		noise: StruggleType == "Struggle" ? 4 : 0,
+		strict: KinkyDungeonStrictness(true, struggleGroup, restraint),
+		hasAffinity: KinkyDungeonGetAffinity(!query, affinity, struggleGroup),
+		restraintEscapeChance: KDRestraint(restraint).escapeChance[StruggleType],
+		cost: KinkyDungeonStatStaminaCostStruggle,
+		wcost: KinkyDungeonStatWillCostStruggle,
+		escapePenalty: -KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StrugglePower"),
+		willEscapePenalty: KDGetWillPenalty(),
+		canCut: KinkyDungeonWeaponCanCut(false, false),
+		canCutMagic: KinkyDungeonWeaponCanCut(false, true),
+		toolBonus: 0.0,
+		toolMult: 1.0,
+		buffBonus: 0.0,
+		failSuffix: "",
+		buffMult: KinkyDungeonHasWill(0.01, false) ? 1.0 : 0.75,
+		struggleTime: 1.0,
+		restriction: KDGameData.Restriction || 0,
+		speedMult: KinkyDungeonHasHelp() ? 2.0 : 1.0,
+		escapeSpeed: 0,
+		maxLimit: 1,
+		result: "",
+		lockType: (restraint.lock && KDLocks[restraint.lock]) ? KDLocks[restraint.lock] : null,
+
+		extraLim: 0,
+		extraLimPenalty: 0,
+		extraLimThreshold: 0,
+	};
+
+	data.escapeSpeed = KDBaseEscapeSpeed * data.speedMult;
+	data.extraLim = (data.struggleType == "Pick" && data.lockType.pick_lim) ? Math.max(0, data.lockType.pick_lim) : 0;
+	data.extraLimPenalty = (data.struggleType == "Pick") ? data.extraLim * data.restraint.pickProgress : 0;
+	data.extraLimThreshold = Math.min(1, (data.escapeChance / data.extraLim));
+
+	let result = KDGetStruggleData(data);
+
+	if (retData)
+		Object.assign(retData, data);
+
+	if (!query) {
+
+		// Handle cases where you can't even attempt to unlock or pick
+		if (data.lockType && (StruggleType == "Unlock" && !data.lockType.canUnlock(data))
+			|| (StruggleType == "Pick" && data.lockType && !data.lockType.canPick(data))) {
+			if (StruggleType == "Unlock")
+				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggleUnlockNo" + restraint.lock + "Key")
+					.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "orange", 2, true);
+			else
+				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggleCantPick" + restraint.lock + "Lock")
+					.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "orange", 2, true);
+		} else {
+
+			// Limit of what you can struggle to given current limit chance
+			let maxLimit = 100;
+
+
+			// Main struggling block
+			if ((data.wcost > 0 && !KinkyDungeonHasWill(-data.wcost, false)) && (data.escapeChance*0.5 <= data.willEscapePenalty && !KinkyDungeonHasWill(0.01, false))) {
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+					+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).NoWill) ? KDGetEscapeSFX(restraint).NoWill : "Struggle")
+					+ ".ogg");
+				KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
 					.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
 				KinkyDungeonLastAction = "Struggle";
 				KinkyDungeonSendEvent("struggle", {
 					restraint: restraint,
 					group: struggleGroup,
 					struggleType: StruggleType,
-					result: "Barely",
+					result: "Will",
 				});
-				return "Barely";
-			}
+				return "Will";
+			} else if (!KinkyDungeonHasStamina(-data.cost, true)) {
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+					+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).NoStamina) ? KDGetEscapeSFX(restraint).NoStamina : "Struggle")
+					+ ".ogg");
+				KinkyDungeonWaitMessage(true, 0);
+			} else if (data.escapeChance > 0) {
+
+				let cutStruggleProgress = Math.min(1, (data.restraint.struggleProgress || 0) + (data.restraint.cutProgress || 0));
+
+				// One last check: check limits
+				if ((data.limitChance > 0 || data.extraLim > 0) && data.escapeChance > 0) {
+					let threshold = 0.75;
+					if (data.limitChance > data.escapeChance) {
+						threshold = Math.min(threshold, 0.9*(data.escapeChance / data.limitChance));
+					}
+					let limitProgress = cutStruggleProgress ? (StruggleType == "Struggle" ?
+						(cutStruggleProgress < threshold ? threshold * cutStruggleProgress : 1.0) :
+						Math.min(1, 1.15 - 1.15 * cutStruggleProgress))
+						: (StruggleType == "Struggle" ? 0 : 1);
+					let limitPenalty = Math.max(0, Math.min(1, limitProgress) * data.limitChance, data.extraLimPenalty);
+					let maxPossible = 1;
+					if ((data.limitChance > 0 && data.limitChance > data.escapeChance && StruggleType == "Struggle")) {
+						// Find the intercept
+						maxPossible = threshold;
+					}
+					if (data.extraLim > data.escapeChance) {
+						// Find the intercept
+						maxPossible = Math.min(data.extraLimThreshold, maxPossible);
+					}
 
 
-			// Pass block
-			let progress = restraint.cutProgress ? restraint.cutProgress : 0;
-			data.struggleTime *= KinkyDungeonStatsChoice.get("FranticStruggle") ? 1 : Math.max(1, KDStruggleTime - KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "FastStruggle"));
-			if (KinkyDungeonStatsChoice.get("FranticStruggle")) data.cost *= 1.5;
+					// Prevent struggling past this
+					if (maxPossible < 1) maxLimit = maxPossible;
 
-			if (((StruggleType == "Cut" && progress >= 1 - data.escapeChance)
-					|| (StruggleType == "Pick" && restraint.pickProgress >= 1 - data.escapeChance)
-					|| (StruggleType == "Unlock" && restraint.unlockProgress >= 1 - data.escapeChance)
-					|| (StruggleType == "Remove" && progress >= 1 - data.escapeChance)
-					|| (progress >= 1 - data.escapeChance))
-				&& !(StruggleType == "Pick" && lockType && !lockType.canPick(data))) {
-				Pass = "Success";
-				KDSuccessRemove(StruggleType, restraint, lockType, index, data, host);
-			} else {
-				// Failure block for the different failure types
-				if (StruggleType == "Cut") {
-					if (((handsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound) || (armsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound)) && KinkyDungeonWeaponCanCut(false) && KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name) {
-						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).KnifeDrop) ? KDGetEscapeSFX(restraint).KnifeDrop : "Miss")
-							+ ".ogg");
-						Pass = "Drop";
-						KinkyDungeonDisarm(KinkyDungeonPlayerEntity, "Cut");
-					} else {
-						if (KDItemIsMagic(restraint) && !data.canCutMagic) {
+					if (data.extraLimPenalty > 0 && data.extraLimPenalty > limitPenalty) {
+						data.escapeChance -= data.extraLimPenalty;
+						if (data.escapeChance <= 0) {
+							// Replace with frustrated moan later~
 							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-								+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).NoMagic) ? KDGetEscapeSFX(restraint).NoMagic : "SoftShield")
+								+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
 								+ ".ogg");
-							Pass = "Fail";
+							KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Limit")
+								.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
+							KinkyDungeonLastAction = "Struggle";
+							KinkyDungeonSendEvent("struggle", {
+								restraint: restraint,
+								group: struggleGroup,
+								struggleType: StruggleType,
+								result: "LimitExtra",
+							});
+							return "LimitExtra";
+						}
+					} else if (limitPenalty > 0) {
+						data.escapeChance -= limitPenalty;
+						if (data.escapeChance <= 0) {
+							// Replace with frustrated moan later~
+							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+								+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
+								+ ".ogg");
+							KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Limit")
+								.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
+							KinkyDungeonLastAction = "Struggle";
+							KinkyDungeonSendEvent("struggle", {
+								restraint: restraint,
+								group: struggleGroup,
+								struggleType: StruggleType,
+								result: "Limit",
+							});
+							return "Limit";
+						}
+					}
+				}
+
+
+				if (data.escapeChance <= 0) {
+					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+						+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
+						+ ".ogg");
+					// Replace with frustrated moan later~
+					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Barely")
+						.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2, true);
+					KinkyDungeonLastAction = "Struggle";
+					KinkyDungeonSendEvent("struggle", {
+						restraint: restraint,
+						group: struggleGroup,
+						struggleType: StruggleType,
+						result: "Barely",
+					});
+					return "Barely";
+				}
+
+
+				// Pass block
+				let progress = restraint.cutProgress ? restraint.cutProgress : 0;
+				data.struggleTime *= KinkyDungeonStatsChoice.get("FranticStruggle") ? 1 : Math.max(1, KDStruggleTime - KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "FastStruggle"));
+				if (KinkyDungeonStatsChoice.get("FranticStruggle")) data.cost *= 1.5;
+
+				if (((StruggleType == "Cut" && progress >= 1 - data.escapeChance)
+						|| (StruggleType == "Pick" && restraint.pickProgress >= 1 - data.escapeChance)
+						|| (StruggleType == "Unlock" && restraint.unlockProgress >= 1 - data.escapeChance)
+						|| (StruggleType == "Remove" && progress >= 1 - data.escapeChance)
+						|| (progress >= 1 - data.escapeChance))
+					&& !(StruggleType == "Pick" && data.lockType && !data.lockType.canPick(data))) {
+					Pass = "Success";
+					KDSuccessRemove(StruggleType, restraint, data.lockType, index, data, host);
+				} else {
+					// Failure block for the different failure types
+					if (StruggleType == "Cut") {
+						if (((data.handsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound) || (data.armsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound)) && KinkyDungeonWeaponCanCut(false) && KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name) {
+							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+								+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).KnifeDrop) ? KDGetEscapeSFX(restraint).KnifeDrop : "Miss")
+								+ ".ogg");
+							Pass = "Drop";
+							KinkyDungeonDisarm(KinkyDungeonPlayerEntity, "Cut");
 						} else {
-							if (KDToggles.Sound) {
-								if (KDItemIsMagic(restraint))
-									AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-									+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).MagicCut) ? KDGetEscapeSFX(restraint).MagicCut : "Cut")
+							if (KDItemIsMagic(restraint) && !data.canCutMagic) {
+								if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+									+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).NoMagic) ? KDGetEscapeSFX(restraint).NoMagic : "SoftShield")
 									+ ".ogg");
-								else AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-									+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Cut) ? KDGetEscapeSFX(restraint).Cut : "Cut")
-									+ ".ogg");
+								Pass = "Fail";
+							} else {
+								if (KDToggles.Sound) {
+									if (KDItemIsMagic(restraint))
+										AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+										+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).MagicCut) ? KDGetEscapeSFX(restraint).MagicCut : "Cut")
+										+ ".ogg");
+									else AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+										+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Cut) ? KDGetEscapeSFX(restraint).Cut : "Cut")
+										+ ".ogg");
+								}
+								let mult = 1.0 - 0.9 * Math.min(1.0, progress);
+								if (KinkyDungeonStatsChoice.get("Flexible")) mult *= KDFlexibleSpeedBonus;
+								if (KinkyDungeonStatsChoice.get("Inflexible")) mult *= KDInflexibleSpeedBonus;
+								// Speed = minimum for cutting
+								let speed = data.cutSpeed * mult + Math.max(0, data.escapeChance) * 0.5;
+								mult *= 0.75 + 0.25 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
+								KDAddDelayedStruggle(
+									data.escapeSpeed * speed * (0.3 + 0.2 * KDRandom() + 0.6 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax)),
+									data.struggleTime, StruggleType, struggleGroup, index, data,
+									restraint.cutProgress, maxLimit
+								);
+								if (speed > 0) {
+									let debris = "";
+									let debrisFlag = KDRestraint(restraint).Group + "deb";
+									if (!KinkyDungeonFlags.get(debrisFlag)) {
+										if (KDRestraint(restraint)?.debris && KDRandom() < KDRestraint(restraint)?.debrisChance ? KDRestraint(restraint)?.debrisChance : 1.0) debris = KDRestraint(restraint)?.debris;
+									}
+
+									if (debris) {
+										KinkyDungeonSetFlag(debrisFlag, 4);
+										KDCreateDebris(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, {
+											aoe: 1.5,
+											dist: 0.5,
+											kind: debris,
+											number: 1,
+										});
+									}
+								}
 							}
-							let mult = 1.0 - 0.9 * Math.min(1.0, progress);
+						}
+					} else if (StruggleType == "Pick") {
+						if (data.lockType && data.lockType.breakChance(data)) { // Chance to break pick
+							Pass = "Break";
+							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+								+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).PickBreak) ? KDGetEscapeSFX(restraint).PickBreak : "PickBreak")
+								+ ".ogg");
+							KinkyDungeonLockpicks -= 1;
+							KinkyDungeonPickBreakProgress = 0;
+						} else if (!KinkyDungeonStatsChoice.get("Psychic") && (data.handsBound || (data.armsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound))) {
+							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+								+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).PickDrop) ? KDGetEscapeSFX(restraint).PickDrop : "Miss")
+								+ ".ogg");
+							Pass = "Drop";
+							KinkyDungeonDropItem({name: "Pick"}, KinkyDungeonPlayerEntity, true);
+							KinkyDungeonLockpicks -= 1;
+						} else {
+							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+								+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Pick) ? KDGetEscapeSFX(restraint).Pick : "Pick")
+								+ ".ogg");
+							if (!restraint.pickProgress) restraint.pickProgress = 0;
+							let mult = 0.5 + 0.6 * (progress);
+							if (data.lockType?.pick_speed) mult /= data.lockType.pick_speed;
+							if (KinkyDungeonStatsChoice.get("Locksmith")) mult *= KDLocksmithSpeedBonus;
+							if (KinkyDungeonStatsChoice.get("Clueless")) mult *= KDCluelessSpeedBonus;
+							mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
+							KDAddDelayedStruggle(
+								data.escapeSpeed * mult * (data.escapeChance > 0 ? (KDMinPickRate * (data.escapeChance > 0.5 ? 2 : 1)) : 0) * (0.8 + 0.4 * KDRandom() - 0.4 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
+								data.struggleTime, StruggleType, struggleGroup, index, data,
+								restraint.pickProgress, maxLimit
+							);
+						}
+					} else if (StruggleType == "Unlock") {
+						if (!KinkyDungeonStatsChoice.get("Psychic") && (data.handsBound || (data.armsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound))) {
+							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+								+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).KeyDrop) ? KDGetEscapeSFX(restraint).KeyDrop : "Miss")
+								+ ".ogg");
+							Pass = "Drop";
+							let keytype = KinkyDungeonGetKey(restraint.lock);
+							if (keytype) {
+								//KinkyDungeonDropItem({name: keytype+"Key"}, KinkyDungeonPlayerEntity, true);
+								KinkyDungeonRemoveKeysDropped(restraint.lock, keytype);
+							}
+						} else {
+							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+								+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Pick) ? KDGetEscapeSFX(restraint).Pick : "Pick")
+								+ ".ogg");
+							let mult = 0.2 + 1.8 * (progress);
 							if (KinkyDungeonStatsChoice.get("Flexible")) mult *= KDFlexibleSpeedBonus;
 							if (KinkyDungeonStatsChoice.get("Inflexible")) mult *= KDInflexibleSpeedBonus;
-							// Speed = minimum for cutting
-							let speed = data.cutSpeed * mult + Math.max(0, data.escapeChance) * 0.5;
-							mult *= 0.75 + 0.25 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
+							if (KinkyDungeonStatsChoice.get("Locksmith")) mult *= KDLocksmithSpeedBonus;
+							mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 							KDAddDelayedStruggle(
-								escapeSpeed * speed * (0.3 + 0.2 * KDRandom() + 0.6 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax)),
+								data.escapeSpeed * mult * Math.max(data.escapeChance > 0 ? data.minSpeed : 0, data.escapeChance) * (0.8 + 0.4 * KDRandom() - 0.4 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
 								data.struggleTime, StruggleType, struggleGroup, index, data,
-								restraint.cutProgress, maxLimit
+								restraint.unlockProgress, maxLimit
 							);
-							if (speed > 0) {
-								let debris = "";
-								let debrisFlag = KDRestraint(restraint).Group + "deb";
-								if (!KinkyDungeonFlags.get(debrisFlag)) {
-									if (KDRestraint(restraint)?.debris && KDRandom() < KDRestraint(restraint)?.debrisChance ? KDRestraint(restraint)?.debrisChance : 1.0) debris = KDRestraint(restraint)?.debris;
-								}
-
-								if (debris) {
-									KinkyDungeonSetFlag(debrisFlag, 4);
-									KDCreateDebris(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, {
-										aoe: 1.5,
-										dist: 0.5,
-										kind: debris,
-										number: 1,
-									});
-								}
-							}
 						}
-					}
-				} else if (StruggleType == "Pick") {
-					if (lockType && lockType.breakChance(data)) { // Chance to break pick
-						Pass = "Break";
+					} else if (StruggleType == "Remove") {
 						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).PickBreak) ? KDGetEscapeSFX(restraint).PickBreak : "PickBreak")
+							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Remove) ? KDGetEscapeSFX(restraint).Remove : "Struggle")
 							+ ".ogg");
-						KinkyDungeonLockpicks -= 1;
-						KinkyDungeonPickBreakProgress = 0;
-					} else if (!KinkyDungeonStatsChoice.get("Psychic") && (handsBound || (armsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound))) {
-						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).PickDrop) ? KDGetEscapeSFX(restraint).PickDrop : "Miss")
-							+ ".ogg");
-						Pass = "Drop";
-						KinkyDungeonDropItem({name: "Pick"}, KinkyDungeonPlayerEntity, true);
-						KinkyDungeonLockpicks -= 1;
-					} else {
-						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Pick) ? KDGetEscapeSFX(restraint).Pick : "Pick")
-							+ ".ogg");
-						if (!restraint.pickProgress) restraint.pickProgress = 0;
-						let mult = 0.5 + 0.6 * (progress);
-						if (lockType?.pick_speed) mult /= lockType.pick_speed;
-						if (KinkyDungeonStatsChoice.get("Locksmith")) mult *= KDLocksmithSpeedBonus;
-						if (KinkyDungeonStatsChoice.get("Clueless")) mult *= KDCluelessSpeedBonus;
-						mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
-						KDAddDelayedStruggle(
-							escapeSpeed * mult * (data.escapeChance > 0 ? (KDMinPickRate * (data.escapeChance > 0.5 ? 2 : 1)) : 0) * (0.8 + 0.4 * KDRandom() - 0.4 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
-							data.struggleTime, StruggleType, struggleGroup, index, data,
-							restraint.pickProgress, maxLimit
-						);
-					}
-				} else if (StruggleType == "Unlock") {
-					if (!KinkyDungeonStatsChoice.get("Psychic") && (handsBound || (armsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound))) {
-						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).KeyDrop) ? KDGetEscapeSFX(restraint).KeyDrop : "Miss")
-							+ ".ogg");
-						Pass = "Drop";
-						let keytype = KinkyDungeonGetKey(restraint.lock);
-						if (keytype) {
-							//KinkyDungeonDropItem({name: keytype+"Key"}, KinkyDungeonPlayerEntity, true);
-							KinkyDungeonRemoveKeysDropped(restraint.lock, keytype);
-						}
-					} else {
-						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Pick) ? KDGetEscapeSFX(restraint).Pick : "Pick")
-							+ ".ogg");
-						let mult = 0.2 + 1.8 * (progress);
+						let mult = 0.3 + 1.7 * (progress * progress);
 						if (KinkyDungeonStatsChoice.get("Flexible")) mult *= KDFlexibleSpeedBonus;
 						if (KinkyDungeonStatsChoice.get("Inflexible")) mult *= KDInflexibleSpeedBonus;
-						if (KinkyDungeonStatsChoice.get("Locksmith")) mult *= KDLocksmithSpeedBonus;
+						mult *= 0.75 + 0.25 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
+						KDAddDelayedStruggle(
+							data.escapeSpeed * mult * Math.max(data.escapeChance > 0 ? data.minSpeed : 0, data.escapeChance) * (0.8 + 0.4 * KDRandom() - 0.3 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
+							data.struggleTime, StruggleType, struggleGroup, index, data,
+							restraint.struggleProgress, maxLimit
+						);
+					} else if (StruggleType == "Struggle") {
+						if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+							+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Struggle) ? KDGetEscapeSFX(restraint).Struggle : "Struggle")
+							+ ".ogg");
+						let mult = 1.25 - 0.75 * (progress);
+						if (KinkyDungeonStatsChoice.get("Flexible")) mult *= KDFlexibleSpeedBonus;
+						if (KinkyDungeonStatsChoice.get("Inflexible")) mult *= KDInflexibleSpeedBonus;
 						mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
 						KDAddDelayedStruggle(
-							escapeSpeed * mult * Math.max(data.escapeChance > 0 ? minSpeed : 0, data.escapeChance) * (0.8 + 0.4 * KDRandom() - 0.4 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
+							data.escapeSpeed * mult * Math.max(data.escapeChance > 0 ? data.minSpeed : 0, data.escapeChance) * (0.5 + 0.4 * KDRandom() + 0.3 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax)),
 							data.struggleTime, StruggleType, struggleGroup, index, data,
-							restraint.unlockProgress, maxLimit
+							KDRestraint(restraint)?.struggleBreak ? restraint.cutProgress : restraint.struggleProgress, maxLimit
 						);
 					}
-				} else if (StruggleType == "Remove") {
-					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-						+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Remove) ? KDGetEscapeSFX(restraint).Remove : "Struggle")
-						+ ".ogg");
-					let mult = 0.3 + 1.7 * (progress * progress);
-					if (KinkyDungeonStatsChoice.get("Flexible")) mult *= KDFlexibleSpeedBonus;
-					if (KinkyDungeonStatsChoice.get("Inflexible")) mult *= KDInflexibleSpeedBonus;
-					mult *= 0.75 + 0.25 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
-					KDAddDelayedStruggle(
-						escapeSpeed * mult * Math.max(data.escapeChance > 0 ? minSpeed : 0, data.escapeChance) * (0.8 + 0.4 * KDRandom() - 0.3 * Math.max(0, (KinkyDungeonStatDistraction)/KinkyDungeonStatDistractionMax)),
-						data.struggleTime, StruggleType, struggleGroup, index, data,
-						restraint.struggleProgress, maxLimit
-					);
-				} else if (StruggleType == "Struggle") {
-					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-						+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Struggle) ? KDGetEscapeSFX(restraint).Struggle : "Struggle")
-						+ ".ogg");
-					let mult = 1.25 - 0.75 * (progress);
-					if (KinkyDungeonStatsChoice.get("Flexible")) mult *= KDFlexibleSpeedBonus;
-					if (KinkyDungeonStatsChoice.get("Inflexible")) mult *= KDInflexibleSpeedBonus;
-					mult *= 0.5 + 0.5 * (KinkyDungeonStatWill / KinkyDungeonStatWillMax);
-					KDAddDelayedStruggle(
-						escapeSpeed * mult * Math.max(data.escapeChance > 0 ? minSpeed : 0, data.escapeChance) * (0.5 + 0.4 * KDRandom() + 0.3 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax)),
-						data.struggleTime, StruggleType, struggleGroup, index, data,
-						KDRestraint(restraint)?.struggleBreak ? restraint.cutProgress : restraint.struggleProgress, maxLimit
-					);
 				}
 			}
-		}
 
-		// Aftermath
-		let suff = "";
-		if (Pass == "Fail" && data.escapeChance > 0 && data.origEscapeChance <= 0) {
-			if ((KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && data.helpChance) suff = "3";
-			else suff = "2";
-		} else if (Pass == "Fail") {
-			if (suff == "" && failSuffix) suff = failSuffix;
-		}
-		if ((suff == "" || (Pass == "Fail" && suff == failSuffix)) && (Pass == "Fail" || Pass == "Success") && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = suff + "Aroused";
-
-		if (Pass != "Success")
-			KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonStruggle" + StruggleType + Pass + suff).replace("TargetRestraint", TextGet("Restraint" + KDRestraint(restraint).name)), (Pass == "Success") ? "lightgreen" : "#ff0000", 2);
-
-		if (KinkyDungeonHasStamina(-data.cost)) {
-			KinkyDungeonChangeStamina(data.cost, true, 1);
-			KinkyDungeonChangeWill(data.wcost);
-			if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
-
-			if (Pass != "Success") {
-				// Reduce the progress
-				if (StruggleType == "Struggle") {
-					restraint.pickProgress = Math.max(0, restraint.pickProgress * 0.5 - 0.01);
-					restraint.unlockProgress = Math.max(0, restraint.unlockProgress * 0.5 - 0.01);
-				} else if (StruggleType == "Pick") {
-					restraint.unlockProgress = Math.max(0, restraint.unlockProgress * 0.5 - 0.01);
-				} else if (StruggleType == "Unlock") {
-					restraint.pickProgress = Math.max(0, restraint.pickProgress* 0.5 - 0.01);
-				} if (StruggleType == "Remove") {
-					restraint.pickProgress = Math.max(0, restraint.pickProgress* 0.5 - 0.01);
-					restraint.unlockProgress = Math.max(0, restraint.unlockProgress * 0.5 - 0.01);
-				}
-
-			} else if (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())
-				KinkyDungeonChangeRep("Ghost", 1);
-
-
-			KinkyDungeonSendEvent("struggle", {
-				restraint: restraint,
-				group: struggleGroup,
-				struggleType: StruggleType,
-				result: Pass,
-			});
-			KinkyDungeonLastAction = "Struggle";
-			if (data.noise) {
-				KinkyDungeonMakeNoise(data.noise, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+			// Aftermath
+			let suff = "";
+			if (Pass == "Fail" && data.escapeChance > 0 && data.origEscapeChance <= 0) {
+				if ((KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && data.helpChance) suff = "3";
+				else suff = "2";
+			} else if (Pass == "Fail") {
+				if (suff == "" && failSuffix) suff = failSuffix;
 			}
-		}
+			if ((suff == "" || (Pass == "Fail" && suff == failSuffix)) && (Pass == "Fail" || Pass == "Success") && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = suff + "Aroused";
 
-		KinkyDungeonAdvanceTime(1);
-		if (Pass == "Success") KinkyDungeonCurrentEscapingItem = null;
-		return Pass;
+			if (Pass != "Success")
+				KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonStruggle" + StruggleType + Pass + suff).replace("TargetRestraint", TextGet("Restraint" + KDRestraint(restraint).name)), (Pass == "Success") ? "lightgreen" : "#ff0000", 2);
+
+			if (KinkyDungeonHasStamina(-data.cost)) {
+				KinkyDungeonChangeStamina(data.cost, true, 1);
+				KinkyDungeonChangeWill(data.wcost);
+				if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
+
+				if (Pass != "Success") {
+					// Reduce the progress
+					if (StruggleType == "Struggle") {
+						restraint.pickProgress = Math.max(0, restraint.pickProgress * 0.5 - 0.01);
+						restraint.unlockProgress = Math.max(0, restraint.unlockProgress * 0.5 - 0.01);
+					} else if (StruggleType == "Pick") {
+						restraint.unlockProgress = Math.max(0, restraint.unlockProgress * 0.5 - 0.01);
+					} else if (StruggleType == "Unlock") {
+						restraint.pickProgress = Math.max(0, restraint.pickProgress* 0.5 - 0.01);
+					} if (StruggleType == "Remove") {
+						restraint.pickProgress = Math.max(0, restraint.pickProgress* 0.5 - 0.01);
+						restraint.unlockProgress = Math.max(0, restraint.unlockProgress * 0.5 - 0.01);
+					}
+
+				} else if (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())
+					KinkyDungeonChangeRep("Ghost", 1);
+
+
+				KinkyDungeonSendEvent("struggle", {
+					restraint: restraint,
+					group: struggleGroup,
+					struggleType: StruggleType,
+					result: Pass,
+				});
+				KinkyDungeonLastAction = "Struggle";
+				if (data.noise) {
+					KinkyDungeonMakeNoise(data.noise, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+				}
+			}
+
+			KinkyDungeonAdvanceTime(1);
+			if (Pass == "Success") KinkyDungeonCurrentEscapingItem = null;
+			return Pass;
+		}
+		KinkyDungeonSetFlag("escapeimpossible", 2);
+		return "Impossible";
+	} else {
+		return result || ((data.escapeChance - Math.max(0, data.limitChance, data.extraLim) > 0) ? "Success" : "Impossible");
 	}
-	KinkyDungeonSetFlag("escapeimpossible", 2);
-	return "Impossible";
+
 }
 
 /**
@@ -3163,12 +3232,13 @@ function KinkyDungeonUpdateRestraints(delta) {
 			if (!KinkyDungeonGetRestraintItem("ItemHead")) playerTags.set("ItemHead" + "Empty", true);
 		} else if (!KinkyDungeonGetRestraintItem(group)) playerTags.set(group + "Empty", true);
 	}
+	let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
 	for (let inv2 of KinkyDungeonAllRestraintDynamic()) {
 		let inv = inv2.item;
 		playerTags.set("Item_"+inv.name, true);
 
-		if ((!inv.faction || KDToggles.ForcePalette) && (!KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette])) {
-			inv.faction = KDDefaultPalette;
+		if ((!inv.faction || KDToggles.ForcePalette || outfit?.palette) && (!KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette])) {
+			inv.faction = outfit?.palette || KDDefaultPalette;
 		}
 
 		if (KDRestraint(inv).Link)
@@ -3416,7 +3486,7 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 				* augMult
 				* KinkyDungeonGetLockMult(newLock, undefined, curse, restraint)
 			) : 0;
-		if (!allowOverpower || (power * 1.1 < compPower)) {
+		if (!allowOverpower || (Math.max(0.99, power * 1.1) < compPower)) {
 			if (bypasses())
 				return true; // Recursion!!
 		}
@@ -3918,7 +3988,7 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 			// Some confusing stuff here to prevent recursion. If Link = true this means we are in the middle of linking, we dont want to do that
 			if (!KinkyDungeonCancelFlag) {
 				// We block events because there may be linking happening...
-				KinkyDungeonRemoveRestraint(restraint.Group, Keep && !Link, Link || Unlink, undefined, undefined, r && r.dynamicLink && restraint.name == r.dynamicLink.name);
+				KinkyDungeonRemoveRestraint(restraint.Group, Keep && !Link, Link || Unlink, undefined, undefined, Unlink); // r && r.dynamicLink && restraint.name == r.dynamicLink.name
 
 				let newR = KinkyDungeonGetRestraintItem(restraint.Group);
 				// Run events AFTER
@@ -4498,10 +4568,8 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 		if (KDRandom() < data.destroyChance) {
 			if (KDAlwaysKeep({name: restraint.name, id: 0}, KinkyDungeonPlayerEntity)) {
 				KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonStruggleCutDestroyFail").replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2);
-
 			} else {
 				KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonStruggleCutDestroy").replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff0000", 2);
-
 			}
 			destroy = true;
 		}
@@ -4538,9 +4606,9 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 }
 
 function KDAddDelayedStruggle(amount, time, StruggleType, struggleGroup, index, data, progress = 0, limit = 100) {
-	let cur = progress;
+	let cur = progress || 0;
 	for (let t = 1; t <= time; t++) {
-		let plus = amount/time * Math.max(0, 1 - (limit > 0 ? (cur / limit) : 1));
+		let plus = Math.min(amount/time, Math.max(0, (limit > 0 ? (limit - cur) : 1)));
 		if (plus > 0 && plus < 0.04) plus = 0.04;
 		cur += plus;
 		KDAddDelayedAction({

@@ -224,7 +224,7 @@ AddModel({
 	Folder: "Cuffs",
 	TopLevel: true,
 	Categories: ["Restraints","Cuffs"],
-	AddPose: ["ThighRight", "ThighLeft"],
+	AddPose: ["ThighRight", "ThighLeft", "LowCuffs"],
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesThighRight"),
 		...GetModelLayers("ShacklesThighLeft"),
@@ -241,6 +241,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "ThighLink", Layer: "BindChainLinksUnder", Pri: 0,
 			Poses: ToMap(["Spread"]),
+			AppendPose: {"HighCuffs": "High"}, // "LowCuffs": "",
 		},
 	])
 });

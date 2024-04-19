@@ -29,7 +29,7 @@ let KDObjectClick = {
 	"Elevator": (x, y) => {
 		if (!KDGameData.ElevatorsUnlocked) KDGameData.ElevatorsUnlocked = {};
 		if (!KDGameData.ElevatorsUnlocked[MiniGameKinkyDungeonLevel]) {
-			if (!KDMapData.Entities.some((enemy) => {return KDHostile(enemy) || KinkyDungeonAggressive(enemy);})) {
+			if (!KDMapData.Entities.some((enemy) => {return KDEnemyRank(enemy) > 2 && (KDHostile(enemy) || KinkyDungeonAggressive(enemy));})) {
 				KDGameData.ElevatorsUnlocked[MiniGameKinkyDungeonLevel] = true; // Unlock!
 				let tile = KinkyDungeonTilesGet(x + ',' + y);
 				if (tile) {

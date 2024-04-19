@@ -136,6 +136,11 @@ let KDDialogueTriggers = {
 		["latexRestraints", "latexRestraintsHeavy", "alchemist"], undefined, undefined, ["zombie", "skeleton", "robot"],
 		undefined, undefined),
 
+	"OfferLatex2": KDDialogueTriggerOffer("OfferLatex", ["Latex", "Conjure"], ["latexRestraints", "latexRestraintsHeavy"],
+		["parole", "", "chase", "jail"],  ["Dom", ""],
+		["latexRestraints", "latexRestraintsHeavy", "alchemist"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
 	"OfferRopes": KDDialogueTriggerOffer("OfferRopes", ["Rope"], ["ropeRestraints", "ropeRestraints", "ropeRestraintsWrist", "ropeRestraintsHogtie"],
 		["parole", "", "chase", "jail"],  ["Dom", ""],
 		["ropeRestraints", "ropeRestraints", "ropeRestraintsWrist", "ropeRestraintsHogtie", "rope"], undefined, undefined, ["zombie", "skeleton", "robot"],
@@ -184,7 +189,7 @@ let KDDialogueTriggers = {
 	}),
 	"TheWarden": KDBossTrigger("TheWarden", ["TheWarden1", "TheWarden2"]),
 	"TheWardenLose": KDBossLose("TheWardenLose", ["TheWarden1", "TheWarden2"], undefined, () => {
-		return KinkyDungeonPlayerTags.get("Furniture"); // Player in cage
+		return KinkyDungeonPlayerTags.get("Furniture") && !KinkyDungeonHasWill(0.1); // Player in cage
 	}),
 	"DollmakerLose1": KDBossLose("DollmakerLose", ["DollmakerBoss1"], ["leatherRestraintsHeavy", "leatherRestraints", "highsec", "leashing"]),
 	"DollmakerLose2": KDBossLose("DollmakerLose", ["DollmakerBoss2", "DollmakerBoss3"], ["controlharness", "cyberdollrestraints", "dollmakerrestraints"]),

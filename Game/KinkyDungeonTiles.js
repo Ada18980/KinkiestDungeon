@@ -735,6 +735,8 @@ function KDMovePlayer(moveX, moveY, willing, sprint, forceHitBullets, suppressNo
 			} else if (moveX < KinkyDungeonPlayerEntity.x) {
 				KDFlipPlayer = false;
 			}
+		} else {
+			KinkyDungeonSetFlag("forceMoved", 1);
 		}
 		KinkyDungeonPlayerEntity.x = moveX;
 		KinkyDungeonPlayerEntity.y = moveY;
