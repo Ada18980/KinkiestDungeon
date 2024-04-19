@@ -131,8 +131,8 @@ Hide Nipple Clamps
 乳首のオモチャを隠す
 Hide Nipple Piercings
 乳首ピアスを隠す
-Force restraints to use palette
-拘束具に設定した色を使う
+Force restraints to use outfit palette
+拘束具と衣装に設定した色を使う
 Flip Status Bars
 ステータスバーを反転
 Auto-Crouch when Tripped
@@ -621,6 +621,17 @@ Nowhere is Safe
 どこも安全ではない
 Beds and furniture are often trapped.
 ベッドや樽等の家具に罠が混じるようになる
+
+Quakehoof Associate
+
+Start with the Epsilon Collar, which regenerates mana when you play with yourself.
+イプシロンの首輪を装備してゲームを開始する。この首輪を装備して自慰をすると、マナが回復する。
+Epsilon Collar
+イプシロンの首輪
+A collar reserved for the most prestigious of submissives.
+最高級のマゾにのみ支給される首輪。
+Restores mana when you play with yourself, but increases the distraction given. Only works when Desire is below the limit.
+自慰をするとマナが回復するが、興奮値が追加で上昇する。欲望が99%以下のときのみ効果を発揮する。
 
 Bullet Hell
 シューティング
@@ -3700,16 +3711,7 @@ The turret enters an unstable state, about to spread rubber all over!
 ラバーランチャーは動作不良を起こした！
 The turret defends itself with a close-range electrocution attack! (DamageTaken)
 ラバーランチャーは近距離用スタンガンを放った！（DamageTaken）
-Drone
-ドローン
-The drone fizzles and falls to the ground!
-ドローンはふわふわと地面に落ちていった！
-The drone zaps you with a restraining energy ray! (DamageTaken)
-ドローンは鎮圧用レーザーを放ってきた！ (DamageTaken)
-The drone uses a short-ranged electric attack! (DamageTaken)
-ドローンは近距離用スタンガンを放った！ (DamageTaken)
-The drone attaches to you! (+RestraintAdded)
-ドローンが張り付いてきた！ (+RestraintAdded)
+
 Auto Capture Unit
 キャプチャーユニット
 The capture unit releases magic smoke and explodes.
@@ -6157,7 +6159,7 @@ A set of vibrating panties designed to help subdue unruly wolfgirls.
 手に負えないウルフガールを黙らせるために、クロッチ部分が振動するパンツ。
 It's incredibly tight and difficult to remove once it's clipped on, but the material is rubber.
 とてもタイトな作りで脱ぐのに苦労しそうだが、ゴムでできているため簡単に切れそう。
-You don't meet the conditions to equip that.
+You can't equip that.
 装備できない。
 Experimental Boxtie Binder
 実験用ボックスバインダー
@@ -8439,10 +8441,18 @@ Shining cuffs made of holy metal. Nothing can touch it.
 聖なる金属で作られた輝く枷。どういうわけか触れることができない。
 Divine Muzzle
 神のマズル
-It is said that even heaven has its hierarchies...
-天国にもヒエラルキーがあるとは……
+Keep those lips sealed.
+唇を封印する猿轡。
 A shining muzzle made of holy metal. Nothing can touch it.
 聖なる金属でできた輝くマズル。どういうわけか触れることができない。
+
+Divine Gag
+神の猿轡
+It is said that even heaven has its hierarchies...
+天国にもヒエラルキーがあるとは……
+A shining gag made of holy metal. Nothing can touch it.
+聖なる金属でできた輝く猿轡。どういうわけか触れることができない。
+
 
 Cleave Gag
 噛ませ猿轡
@@ -22048,18 +22058,7 @@ The latex mimic stretches out an appendage and pulls you toward it! (DamageTaken
 ラテックスミミックが体の一部を伸ばし、引っ張ってきた！ (DamageTaken)
 The latex mimic engulfs you in sticky rubber! (DamageTaken)
 ラテックスミミックがネバネバのゴムの身体に引きずり込んできた！ (DamageTaken)
-Cyber Warden
-サイバーワーデン
-The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!
-サイバーワーデンのスーツがロックダウンを起こし、彼女は拘束されてしまった！
-The cyber warden applies an advanced locking technology!
-サイバーワーデンが未知の技術で拘束具に高度な錠を施してきた！
-The cyber warden grabs you and applies a self-tightening restraint! (+RestraintAdded)
-サイバーワーデンに自動で締まる拘束具を取り付けられた！ (+RestraintAdded)
-The cyber warden's touch applies a series of quick electrical shocks! (DamageTaken)
-サイバーワーデンに触れられると、電気ショックが起こる！ (DamageTaken)
-The cyber warden's touch applies a series of quick electrical shocks!
-サイバーワーデンに触れられると、電気ショックが起こる！ (DamageTaken)
+
 Back to Menu
 メニューに戻る
 Item Stack:
@@ -26008,8 +26007,8 @@ Miku
 Nevermere
 ネバーミア
 
-Choose restraint palette:
-拘束具の色：
+Choose default restraint palette:
+デフォルトの拘束具の色：
 
 Main
 オプション
@@ -26198,8 +26197,8 @@ Warden's Belt
 看守長のベルト
 You may go on your way, but only as long your freedom is useful to her.
 彼女の役に立つ限りは自由でいられる。
-A golden belt that marks you as part of someone's collection. Each time you break a spell orb, a collector is spawned to punish you.
-誰かの所有物であることを示す黄金のベルト。オーブを破壊する度にコレクターが発生し、罰を与えてくる。
+A golden belt that enforces respect for the Goddesses. Breaking spell orbs results in a punishment.
+女神の崇拝を表すベルト。オーブを破壊した際に、神罰が下る。
 
 Belt of Privilege
 特権のベルト
@@ -26564,8 +26563,8 @@ I won't submit to you!
 (SPEAKER は膝をついた)|そんな……|たかが冒険者風情に……|覚えてなさい……
 (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing collar)|This is a special one, reserved for those with divine privilege.|You've earned it.
 (SPEAKER は驚いている)|あら……素直に言うことを聞いてくれるなんて。|(彼女が指を鳴らすと輝く首輪が現れた)|これは特別仕様、神の権能の具現と言ってもいいわ。|おめでとう、あなたは勝ち取ったのよ。
-(Wear her collar anyway)
-(首輪を受け取り自身に装着する)
+(Wear her belt anyway)
+(ベルトを受け取り自身に装着する)
 (SPEAKER shakes her head as you force a gag into her mouth)|MMMMMPH!
 (頭を振って抵抗する SPEAKER に無理矢理猿轡を噛ませた)|んぁおぉぉ！
 
@@ -27526,14 +27525,14 @@ Crystals are tough but not unbreakable.
 クリスタルは硬いが、壊せないほどではない。
 
 The lock is protected by a seal of repentance. To unlock it you must pay 1 spell point.
-錠には悔恨の封印がなされている。解錠するにはスキルポイントを1使用する必要がある。
+錠には悔恨の封印がなされている。1のスキルポイントを捧げなければ封印は解けない。
 The restraint won't budge.
 この拘束は破壊できない。
 You perform a ritual to unlock the item!
 拘束具を解錠するため、儀式を行った！
 
-The lock is protected by a seal of repentance. To unlock it you must pay 8 spell points!
-錠には悔恨の封印がなされている。解錠するにはスキルポイントを8使用する必要がある。
+The lock is protected by a seal of repentance. To unlock it you must pay AMNT spell points!
+錠には悔恨の封印がなされている。 AMNT のスキルポイントを捧げなければ封印は解けない。
 You perform a grand ritual to unlock the item!
 拘束具を解錠するため、儀式を行った！
 
@@ -27571,3 +27570,66 @@ A very short chain connecting your wrist cuffs together.
 手枷同士を繋ぐ短い鎖。
 An intense, albeit temporary punishment for breaking the rules.
 規則違反に対する重い戒め。
+
+
+ESCP Difficulty: AMNT
+ESCP 難易度： AMNT
+ESCP Power: AMNT%
+ESCP 力： AMNT%
+
+Struggle
+もがく
+Remove
+抜け出す
+Unlock
+鍵を使う
+Pick
+ピッキング
+Cut
+切る
+
+
+Your collar channels the vigor of excitement into magical energy!
+首輪が興奮を魔力に変換した！
+The collar has already squeezed what it can out of you. Clear your mind first!
+搾り取れるものが残っていない。一旦落ち着こう。
+
+Force Field Projector
+フォースフィールドプロジェクター
+The forcefield erupts into a shower of blue sparks!
+フォースフィールドは青い火花と化して散った！
+The guardian deploys a forcefield!
+機械がフォースフィールドを展開した！
+The guardian deploys a set of forcefields!
+機械が複数のフォースフィールドを展開した！
+
+Guardian Drone
+ガーディアンドローン
+Drone
+ドローン
+The drone fizzles and falls to the ground!
+ドローンは煙を上げながら墜落した！
+The drone zaps you with a restraining energy ray! (DamageTaken)
+ドローンは鎮圧用レーザーを放ってきた！ (DamageTaken)
+The drone uses a short-ranged electric attack! (DamageTaken)
+ドローンは近距離用スタンガンを放った！ (DamageTaken)
+The drone attaches to you! (+RestraintAdded)
+ドローンが張り付いてきた！ (+RestraintAdded)
+
+Cyber Warden
+サイバーワーデン
+Cyber Guardian
+サイバーガーディアン
+The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!
+サイバーガーディアンのスーツがロックダウンを起こし、彼女は拘束されてしまった！
+The cyber warden applies an advanced locking technology!
+サイバーガーディアンが未知の技術で拘束具に高度な錠を施してきた！
+The cyber warden grabs you and applies a self-tightening restraint! (+RestraintAdded)
+サイバーガーディアンに自動で締まる拘束具を取り付けられた！ (+RestraintAdded)
+The cyber warden's touch applies a series of quick electrical shocks! (DamageTaken)
+サイバーガーディアンに触れられると、電気ショックが起こる！ (DamageTaken)
+The cyber warden's touch applies a series of quick electrical shocks!
+サイバーガーディアンに触れられると、電気ショックが起こる！ (DamageTaken)
+
+Auto Enforcer Guardian
+オートエンフォーサーガーディアン
