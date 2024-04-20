@@ -189,7 +189,7 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 						}
 						// Give up and add to the test array
 						else if (TilesTemp.includes(tile) && (!RequireLight || KinkyDungeonVisionGet(xx, yy) > 0)
-							&& (ignoreLocks || !MapTile || !MapTile.Lock || (Enemy && !KDLocks[MapTile.Lock]?.canNPCPass(xx, yy, MapTile, Enemy)))
+							&& (ignoreLocks || !MapTile || !MapTile.Lock || (Enemy && KDLocks[MapTile.Lock]?.canNPCPass && KDLocks[MapTile.Lock].canNPCPass(xx, yy, MapTile, Enemy)))
 							&& (!blockEnemy || KinkyDungeonNoEnemyExceptSub(xx, yy, false, Enemy))
 							&& (!blockPlayer || KinkyDungeonPlayerEntity.x != xx || KinkyDungeonPlayerEntity.y != yy)
 							&& (!needDoorMemory || tile != "d" || KDOpenDoorTiles.includes(KDMapData.TilesMemory[xx + "," + yy]))) {

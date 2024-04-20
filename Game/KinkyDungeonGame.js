@@ -3803,6 +3803,9 @@ function KinkyDungeonClickGame(Level) {
 							KDSetFocusControl("");
 							KinkyDungeonFastMovePath = path;
 							KinkyDungeonSleepTime = 100;
+						} else if (KDistChebyshev(KinkyDungeonPlayerEntity.x - KinkyDungeonTargetX, KinkyDungeonPlayerEntity.y - KinkyDungeonTargetY) < 1.5) {
+							KDSetFocusControl("");
+							KDSendInput("move", {dir: KinkyDungeonMoveDirection, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
 						}
 					} else if (!fastMove || Math.max(Math.abs(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x), Math.abs(KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y)) <= 1) {
 						KDSetFocusControl("");
@@ -4599,12 +4602,19 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 			KinkyDungeonInterruptSleep();
 			KinkyDungeonAdvanceTime(1);
 		} else { // If we are blind we can bump into walls!
-			if (KinkyDungeonGetVisionRadius() <= 1) {
+			if (KinkyDungeonVisionGet(moveX, moveY) <= 1) {
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Footstep.ogg");
 				KinkyDungeonSendActionMessage(2, TextGet("KDWallBump"), "white", 2);
 				KinkyDungeonInterruptSleep();
+				// Due to rendering system
+				if (moveDirection.y <= 0)
+					KDRevealTile(moveX, moveY + 1, 2);
+				if (moveDirection.y >= 0)
+					KDRevealTile(moveX, moveY - 1, 2);
+				KDRevealTile(moveX, moveY, 2);
 				KinkyDungeonAdvanceTime(1);
 			}
+
 		}
 	}
 

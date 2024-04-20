@@ -518,6 +518,9 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 * LastDragon: string,
 * ElevatorsUnlocked: Record<number, boolean>,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
+* MaxVisionDist: number,
+* MinVisionDist: number,
+* NightVision: number,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
@@ -730,6 +733,10 @@ let KDGameDataBase = {
 	visionBlind: 0, // Penalty to vision radius based on overbright
 	Restriction: 0,
 	LastDragon: "",
+
+	MaxVisionDist: 8,
+	MinVisionDist: 2.9,
+	NightVision: 2.9,
 };
 /**
  * @type {KDGameDataBase}

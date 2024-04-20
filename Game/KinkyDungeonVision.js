@@ -270,7 +270,7 @@ function KDAvgColor(color1, color2, w1, w2) {
 function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapBrightness) {
 	let flags = {
 		SeeThroughWalls: 0,
-		nightVision: KDNightVision,
+		nightVision: KDGameData.NightVision,
 		visionAdjust: KDGameData.visionAdjust || 0,
 		visionAdjustMult: 0.1 + (0.3 * KDGameData.visionBlind || 0),
 	};
@@ -483,7 +483,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 			let dd = KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y);
 			if (dd > rad)
 				KinkyDungeonVisionSet(X, Y, 0);
-			else if (rad < KDMaxVisionDist && dd > 1.5) {
+			else if (rad < KDGameData.MaxVisionDist && dd > 1.5) {
 				KinkyDungeonVisionSet(X, Y, KinkyDungeonVisionGet(X, Y) * Math.min(1, Math.max(0, rad - dd)/3));
 			}
 		}
@@ -504,7 +504,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 
 
 		// Generate the grid
-		let minDist = KDMinVisionDist;
+		let minDist = KDGameData.MinVisionDist;
 		let dist = 0;
 		let fog = true;//KDAllowFog();
 		for (let X = 0; X < KDMapData.GridWidth; X++) {
@@ -966,4 +966,17 @@ function KDRenderMinimap(x, y, w, h, scale, alpha, gridborders, blackMap) {
  */
 function KDAllowFog() {
 	return !(KinkyDungeonStatsChoice.get("Forgetful") || (KinkyDungeonBlindLevel > 0 && KinkyDungeonStatsChoice.get("TotalBlackout")));
+}
+
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {number} amount
+ */
+function KDRevealTile(x, y, amount) {
+	KinkyDungeonUpdateLightGrid = true;
+	if (!KDGameData.RevealedTiles) KDGameData.RevealedTiles = {};
+	if (!KDGameData.RevealedFog) KDGameData.RevealedFog = {};
+	KDGameData.RevealedTiles[x + ',' + y] = Math.max(amount, KDGameData.RevealedTiles[x + ',' + y] || 0);
 }

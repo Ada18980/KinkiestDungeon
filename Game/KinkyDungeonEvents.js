@@ -5249,7 +5249,7 @@ let KDEventMapSpell = {
 							for (let value of Object.values(toAdd)) {
 								if (!value.added) {
 									// We charge value added tax
-									KDGameData.RevealedTiles[value.x + ',' + value.y] = Math.max(e.dist - i + e.time, KDGameData.RevealedTiles[value.x + ',' + value.y] || 0);
+									KDRevealTile(value.x, value.y, e.dist - i + e.time);
 									//if (i < e.dist/2)
 									//KDGameData.RevealedFog[value.x + ',' + value.y] = Math.max(1, KDGameData.RevealedFog[value.x + ',' + value.y] || 0);
 									for (let x = value.x - 1; x <= value.x + 1; x++)
@@ -9235,8 +9235,14 @@ let KDEventMapGeneric = {
 		"trainHeels": (e, data) => {
 			if (KinkyDungeonLastAction == "Move") {
 				let danger = KinkyDungeonInDanger();
+				let amt = 0.01;
+				let mult = (
+					(KinkyDungeonLeashingEnemy() && KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, KinkyDungeonLeashingEnemy().x, KinkyDungeonLeashingEnemy().y, KinkyDungeonLeashingEnemy()))
+					||
+					(KinkyDungeonJailGuard() && KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, KinkyDungeonJailGuard()))
+					) ? 1.2 : 0;
 				KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0) && danger,
-					KDGameData.HeelPower <= 0 && !danger, 0.01);
+					KDGameData.HeelPower <= 0 && !danger, amt, amt * mult);
 			}
 		},
 		"HighProfile": (e, data) => {

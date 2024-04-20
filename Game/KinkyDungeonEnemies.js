@@ -323,7 +323,7 @@ function KinkyDungeonInDanger() {
 			return true;
 		}
 	}
-	let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDMaxVisionDist + 1, undefined, true);
+	let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDGameData.MaxVisionDist + 1, undefined, true);
 	for (let enemy of nearby) {
 		let playerDist = KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y);
 		if (KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
@@ -407,7 +407,7 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 			KDInDanger = true;
 		}
 	}
-	let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDMaxVisionDist + 1, undefined, true);
+	let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDGameData.MaxVisionDist + 1, undefined, true);
 	for (let enemy of nearby) {
 		let sprite = enemy.Enemy.name;
 		KinkyDungeonUpdateVisualPosition(enemy, KinkyDungeonDrawDelta);
@@ -734,7 +734,7 @@ function KDEnemyHasFlag(enemy, flag) {
 
 function KinkyDungeonDrawEnemiesStatus(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 
-	let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDMaxVisionDist + 1, undefined, true);
+	let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDGameData.MaxVisionDist + 1, undefined, true);
 	for (let enemy of nearby) {
 		if (KDAmbushAI(enemy) && !enemy.ambushtrigger) continue;
 		let tx = enemy.visual_x;
@@ -895,7 +895,7 @@ function KinkyDungeonDrawEnemiesWarning(canvasOffsetX, canvasOffsetY, CamX, CamY
 	let delta = CommonTime() - KDLastEnemyWarningDelta;
 	KDLastEnemyWarningDelta = CommonTime();
 	if (KDToggles.ForceWarnings || KDMouseInPlayableArea()) {
-		let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDMaxVisionDist + 1, undefined, true);
+		let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDGameData.MaxVisionDist + 1, undefined, true);
 		for (let enemy of nearby) {
 			if (enemy.warningTiles) {
 				for (let t of enemy.warningTiles) {
@@ -1100,9 +1100,9 @@ function KDMaxEnemyViewDist(enemy) {
 		blindMult: (KinkyDungeonStatsChoice.get("Blackout") || KinkyDungeonStatsChoice.get("TotalBlackout")) ? 100 : 2,
 	};
 	//KinkyDungeonSendEvent("calcEnemyRad", data);
-	if (enemy.hp < enemy.Enemy.maxhp || enemy.attackPoints > 0) return KDMaxVisionDist;
-	if (KinkyDungeonBlindLevel < 2) return KDMaxVisionDist;
-	else return Math.max(KinkyDungeonStatsChoice.get("TotalBlackout") ? 0.5 : 1.5, KDMaxVisionDist - KinkyDungeonBlindLevel * data.blindMult);
+	if (enemy.hp < enemy.Enemy.maxhp || enemy.attackPoints > 0) return KDGameData.MaxVisionDist;
+	if (KinkyDungeonBlindLevel < 2) return KDGameData.MaxVisionDist;
+	else return Math.max(KinkyDungeonStatsChoice.get("TotalBlackout") ? 0.5 : 1.5, KDGameData.MaxVisionDist - KinkyDungeonBlindLevel * data.blindMult);
 }
 
 /**
@@ -1236,7 +1236,7 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 	KDDialogueSlots = {};
 	let tooltip = false;
 	//let bindAmpModBase = KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp"));
-	let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDMaxVisionDist + 1, undefined, true);
+	let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDGameData.MaxVisionDist + 1, undefined, true);
 	for (let enemy of nearby) {
 		let xx = enemy.visual_x ? enemy.visual_x : enemy.x;
 		let yy = enemy.visual_y ? enemy.visual_y : enemy.y;
