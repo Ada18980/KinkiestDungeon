@@ -884,7 +884,7 @@ let KDTileGen = {
 	},
 	"Furniture": (x, y, tile, tileGenerator, data) => {
 		//KinkyDungeonMapSet(x, y, tileGenerator.tile);
-		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		KDMapData.JailPoints.push({x: x, y: y, type: (tileGenerator.jail?.type) || "furniture", radius: (tileGenerator.jail?.radius) || 1});
 		return {Furniture: tileGenerator.Furniture};
 	},
 	"Table": (x, y, tile, tileGenerator, data) => {

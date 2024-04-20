@@ -77,6 +77,7 @@ AddModel({
 			DisplaceLayers: ToMap(["Cuffs"]),
 			DisplaceAmount: 50,
 			InheritColor: "BaseMetal",
+			HidePoses: ToMap(["EncaseArmLeft"]),
 		},
 	])
 });
@@ -97,6 +98,7 @@ AddModel({
 			DisplaceLayers: ToMap(["Cuffs"]),
 			DisplaceAmount: 100,
 			InheritColor: "BaseMetal",
+			HidePoses: ToMap(["EncaseArmRight"]),
 		},
 	])
 });

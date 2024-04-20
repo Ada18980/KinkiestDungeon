@@ -7287,6 +7287,7 @@ let KDEventMapBullet = {
 		"ShadowShroudTele": (e, b, data) => {
 			let enemy = b.bullet?.source > 0 ? KinkyDungeonFindID(b.bullet.source) : null;
 			if (!enemy) return;
+			if (enemy.attackPoints > 0) return;
 			let target = null;
 			if (b.bullet.faction) {
 				let minDist = 1000;
@@ -7343,6 +7344,7 @@ let KDEventMapBullet = {
 		"DarkTele": (e, b, data) => {
 			let enemy = b.bullet?.source > 0 ? KinkyDungeonFindID(b.bullet.source) : null;
 			if (!enemy) return;
+			if (enemy.attackPoints > 0) return;
 			let target = null;
 			if (b.bullet.faction) {
 				let minDist = 1000;

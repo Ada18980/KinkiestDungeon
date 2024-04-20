@@ -14,7 +14,7 @@ AddModel({
 	Parent: "Jacket",
 	TopLevel: false,
 	Restraint: true,
-	AddPose: ["HideHands"],
+	AddPose: ["HideHands", "EncaseArmLeft", "EncaseArmRight"],
 	Categories: ["Restraints", "Jacket", "Leather"],
 	Layers: ToLayerMap([
 		{ Name: "Arms", Layer: "SleeveLeft", Pri: 90,
@@ -77,12 +77,12 @@ AddModel({
 	Categories: ["Restraints", "Harness", "Leather"],
 	AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
-		{ Name: "BeltsTorsoLower", Layer: "HarnessMid", Pri: -10,
+		{ Name: "BeltsTorsoLower", Layer: "HarnessMid", Pri: 70,
 			NoOverride: true,
 			MorphPoses: {Crossed: "Crossed", Wristtie: "Wristtie", Boxtie: "Boxtie"},
 			InheritColor: "BeltsLower",
 		},
-		{ Name: "CrotchBelts", Layer: "HarnessMid", Pri: -10,
+		{ Name: "CrotchBelts", Layer: "HarnessMid", Pri: 70,
 			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			InheritColor: "BeltsLower",
 			Invariant: true,
@@ -100,12 +100,12 @@ AddModel({
 	Categories: ["Restraints", "Harness", "Leather"],
 	AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
-		{ Name: "StrapsTorsoLowerExtra", Layer: "HarnessMid", Pri: -9.9,
+		{ Name: "StrapsTorsoLowerExtra", Layer: "HarnessMid", Pri: 70.1,
 			NoOverride: true,
 			Invariant: true,
 			InheritColor: "BeltsLower",
 		},
-		{ Name: "CrotchBeltExtra", Layer: "HarnessMid", Pri: -10.1,
+		{ Name: "CrotchBeltExtra", Layer: "HarnessMid", Pri: 69.91,
 			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			InheritColor: "BeltsLower",
 			Invariant: true,
@@ -141,7 +141,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Jacket", "Leather"],
-	AddPose: ["EncaseTorsoUpper", "EncaseChest", "HideHands"],
+	AddPose: ["EncaseTorsoUpper", "EncaseChest", "HideHands", "EncaseArmLeft", "EncaseArmRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("JacketStraps"),
 		{ Name: "Arms", Layer: "SleeveLeft", Pri: 90,
@@ -167,7 +167,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Jacket", "Leather"],
-	AddPose: ["EncaseTorsoUpper", "EncaseChest", "CrotchStrap"],
+	AddPose: ["EncaseTorsoUpper", "EncaseChest", "CrotchStrap", "EncaseArmLeft", "EncaseArmRight"],
 	Layers: ToLayerMap([
 		{ Name: "BinderTorsoLower", Layer: "Corset", Pri: 30,
 			InheritColor: "Lower",
@@ -191,7 +191,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Jacket", "Leather"],
-	AddPose: ["EncaseTorsoUpper", "EncaseChest", "HideHands", "CrotchStrap"],
+	AddPose: ["EncaseTorsoUpper", "EncaseChest", "HideHands", "CrotchStrap", "EncaseArmLeft", "EncaseArmRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Jacket"),
 		...GetModelLayers("JacketLower"),
@@ -206,7 +206,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Jacket", "Leather"],
-	AddPose: ["EncaseTorsoUpper", "EncaseChest", "HideHands", "CrotchStrap"],
+	AddPose: ["EncaseTorsoUpper", "EncaseChest", "HideHands", "CrotchStrap", "EncaseArmLeft", "EncaseArmRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("JacketHeavy"),
 		...GetModelLayers("JacketExtraStraps"),
@@ -220,7 +220,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Jacket", "Leather"],
-	AddPose: ["HideHands"],
+	AddPose: ["HideHands", "EncaseArmLeft", "EncaseArmRight"],
 	Layers: ToLayerMap([
 		{ Name: "Arms", Layer: "SleeveLeft", Pri: 90,
 			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
@@ -242,7 +242,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Jacket", "Leather"],
-	AddPose: ["HideHands", "CrotchStrap"],
+	AddPose: ["HideHands", "CrotchStrap", "EncaseArmLeft", "EncaseArmRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("JacketArmbinderSecure"),
 		...GetModelLayers("JacketLowerStraps"),
@@ -257,7 +257,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Jacket", "Leather"],
-	AddPose: ["HideHands", "CrotchStrap"],
+	AddPose: ["HideHands", "CrotchStrap", "EncaseArmLeft", "EncaseArmRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("JacketHeavyArmbinder"),
 		...GetModelLayers("JacketExtraStraps"),
@@ -273,7 +273,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Jacket", "Leather"],
-	AddPose: ["HideHands"],
+	AddPose: ["HideHands", "EncaseArmLeft", "EncaseArmRight"],
 	Layers: ToLayerMap([
 		{ Name: "Arms", Layer: "SleeveLeft", Pri: 90,
 			Poses: ToMap(["Wristtie", "Boxtie", "Crossed"]),
@@ -289,6 +289,7 @@ AddModel({
 			DisplaceAmount: 70,
 			NoOverride: true,
 			DisplaceLayers: ToMap(["ArmsAll"]),
+			InheritColor: "Chest",
 		},
 		...GetModelLayers("JacketStraps"),
 	])
@@ -301,7 +302,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Jacket", "Leather"],
-	AddPose: ["HideHands", "CrotchStrap"],
+	AddPose: ["HideHands", "CrotchStrap", "EncaseArmLeft", "EncaseArmRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("JacketBolero"),
 		...GetModelLayers("JacketLower"),
@@ -316,7 +317,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Jacket", "Leather"],
-	AddPose: ["HideHands", "CrotchStrap"],
+	AddPose: ["HideHands", "CrotchStrap", "EncaseArmLeft", "EncaseArmRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("JacketHeavyBolero"),
 		...GetModelLayers("JacketExtraStraps"),
@@ -331,7 +332,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Jacket", "Leather"],
-	AddPose: ["HideHands"],
+	AddPose: ["HideHands", "EncaseArmLeft", "EncaseArmRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("JacketBolero"),
 
@@ -353,7 +354,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	AddPose: ["HideHands"],
-	Categories: ["Restraints", "Jacket", "Leather", "CrotchStrap"],
+	Categories: ["Restraints", "Jacket", "Leather", "CrotchStrap", "EncaseArmLeft", "EncaseArmRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("JacketLeotard"),
 		...GetModelLayers("JacketLowerStraps"),
@@ -367,7 +368,7 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	AddPose: ["HideHands"],
-	Categories: ["Restraints", "Jacket", "Leather", "CrotchStrap"],
+	Categories: ["Restraints", "Jacket", "Leather", "CrotchStrap", "EncaseArmLeft", "EncaseArmRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("JacketHeavyLeotard"),
 		...GetModelLayers("JacketExtraStraps"),

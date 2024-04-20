@@ -20815,3 +20815,7 @@ AttackEnforcerBotGuardianLock,"The enforcer releases small drones which lock ont
 KDDollStorageDial_UniformAdd,"Time to get you into your uniform~"
 KDDollStorageDial_UniformRemove,"You won't be needing any of this."
 KDDollStorageDial_UniformDone,"There we go, all ready for training!"
+
+RestraintFutureBox,Cyber Storage
+RestraintFutureBoxDesc,"An all-purpose metal crate equipped with a polycarbonate blast door and steel reinforcement."
+RestraintFutureBoxDesc2,"Used throughout the reign of the Old Civilization to store slaves and prisoners."

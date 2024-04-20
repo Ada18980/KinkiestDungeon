@@ -38,7 +38,7 @@ function KDGetNearestFactionGuard(x, y) {
  * @param {entity} player
  * @returns {entity}
  */
-function KDPrisonCommonGuard(player) {
+function KDPrisonCommonGuard(player, call) {
 	// Suppress standard guard call behavior
 	KinkyDungeonSetFlag("SuppressGuardCall", 10);
 	let guard = KDGetNearestFactionGuard(player.x, player.y);
@@ -52,9 +52,10 @@ function KDPrisonCommonGuard(player) {
  * Gets the groups and restraints to add based on a set of jail tags
  * @param {entity} player
  * @param {string[]} jailLists
+ * @param {string} lock
  * @returns {KDJailGetGroupsReturn}
  */
-function KDPrisonGetGroups(player, jailLists) {
+function KDPrisonGetGroups(player, jailLists, lock) {
 	/**
 	 * @type {string[]}
 	 */
@@ -66,13 +67,13 @@ function KDPrisonGetGroups(player, jailLists) {
 	let itemsApplied = {};
 
 	// First populate the items
-	let jailList = KDGetJailRestraints(jailLists);
+	let jailList = KDGetJailRestraints(jailLists, false, false);
 
 	// Next we go over the prison groups and figure out if there is anything in that group
 	for (let prisonGroup of KDPRISONGROUPS) {
 		let strip = false;
 		for (let g of prisonGroup) {
-			let restraints = KinkyDungeonGetJailRestraintsForGroup(g, jailList);
+			let restraints = KinkyDungeonGetJailRestraintsForGroup(g, jailList, false, lock);
 			if (restraints.length > 0) {
 				restraints.sort(
 					(a, b) => {
@@ -146,7 +147,22 @@ function KDGoToSubState(player, state) {
  */
 function KDPopSubstate(player) {
 	let state = KDMapData.PrisonStateStack[0];
-	KDMapData.PrisonStateStack.splice(0, 1);
+	if (state) {
+		KDMapData.PrisonStateStack.splice(0, 1);
+		return state;
+	}
+	return KDPrisonTypes[KDMapData.PrisonType]?.default_state || "";
+}
+
+
+/**
+ * Resets the prison state stack
+ * @param {entity} player
+ * @param {string} state
+ * @returns {string}
+ */
+function KDSetPrisonState(player, state) {
+	KDMapData.PrisonStateStack = [];
 	return state;
 }
 

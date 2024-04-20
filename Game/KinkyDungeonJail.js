@@ -376,9 +376,10 @@ function KDSetPlayCD(enemy, mult, base = 10) {
  *
  * @param {string} Group
  * @param {KDJailRestraint[]} [jailRestraintList]
+ * @param {string} [lock]
  * @returns {{restraint: restraint, variant: string}}
  */
-function KinkyDungeonGetJailRestraintForGroup(Group, jailRestraintList) {
+function KinkyDungeonGetJailRestraintForGroup(Group, jailRestraintList, lock) {
 	if (!jailRestraintList) {
 		jailRestraintList = KDGetJailRestraints();
 	}
@@ -400,7 +401,7 @@ function KinkyDungeonGetJailRestraintForGroup(Group, jailRestraintList) {
 				let candidate = KinkyDungeonGetRestraintByName(r.Name);
 				if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
 					if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r)) && KDPriorityCondition(r)) {
-						if (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), candidate)) {
+						if (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), candidate, undefined, lock)) {
 							cand = candidate;
 							variant = r.Variant;
 							candLevel = candidate.nonbinding ? 0 : r.Level;
@@ -418,7 +419,7 @@ function KinkyDungeonGetJailRestraintForGroup(Group, jailRestraintList) {
 					let candidate = KinkyDungeonGetRestraintByName(r.Name);
 					if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
 						if ((candLevel == 0 || r.Level > candLevel) && (KDJailCondition(r))) {
-							if (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), candidate)) {
+							if (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), candidate, undefined, lock)) {
 								cand = candidate;
 								variant = r.Variant;
 								candLevel = candidate.nonbinding ? 0 : r.Level;
@@ -470,10 +471,12 @@ function KinkyDungeonGetJailRestraintForGroup(Group, jailRestraintList) {
 /**
  *
  * @param {string} Group
+ * @param {boolean} agnostic - Dont care about whether it can be put on or not
  * @param {KDJailRestraint[]} [jailRestraintList]
+ * @param {string} [lock]
  * @returns {{restraint: restraint, variant: string, def: KDJailRestraint}[]}
  */
-function KinkyDungeonGetJailRestraintsForGroup(Group, jailRestraintList) {
+function KinkyDungeonGetJailRestraintsForGroup(Group, jailRestraintList, agnostic = false, lock) {
 	if (!jailRestraintList) {
 		jailRestraintList = KDGetJailRestraints();
 	}
@@ -482,18 +485,33 @@ function KinkyDungeonGetJailRestraintsForGroup(Group, jailRestraintList) {
 	 * @type {{restraint: restraint, variant: string, def: KDJailRestraint}[]}
 	 */
 	let cands = [];
-	for (let r of jailRestraintList) {
-		let level = 0;
-		if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
-		if (!r.Level || level >= r.Level) {
-			let candidate = KinkyDungeonGetRestraintByName(r.Name);
-			if (candidate.Group == Group) {
-				if ((KDJailCondition(r))) {
-					cands.push({restraint: candidate, variant: r.Variant, def: r});
+	for (let pri of [true, false]) {
+		for (let r of jailRestraintList) {
+			let level = 0;
+			if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
+			if (!r.Level || level >= r.Level) {
+				let candidate = KinkyDungeonGetRestraintByName(r.Name);
+				if (candidate.Group == Group) {
+					if (
+						(KDJailCondition(r) && (!pri || KDPriorityCondition(r)))
+						&& (agnostic ||
+							KDCanAddRestraint(KinkyDungeonGetRestraintByName(r.Name),
+								KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
+								lock,
+								!KinkyDungeonStatsChoice.has("TightRestraints") ? true : undefined,
+								undefined,
+								KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined,
+								KinkyDungeonJailGuard(), undefined, undefined, undefined,
+								(r.Variant && KDApplyVariants[r.Variant]?.powerBonus) ? KDApplyVariants[r.Variant].powerBonus : 0)
+						)
+					) {
+						cands.push({restraint: candidate, variant: r.Variant, def: r});
+					}
 				}
 			}
 		}
 	}
+
 	return cands;
 }
 

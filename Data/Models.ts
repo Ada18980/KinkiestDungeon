@@ -240,7 +240,7 @@ function DisposeCharacter(C: Character): void {
  * @param StartMods - Mods applied
  * @param flip - Mods applied
  */
-function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeightResizeAllowed: boolean = true, DrawCanvas: any = null, Blend: any = PIXI.SCALE_MODES.LINEAR, StartMods: PoseMod[] = [], zIndex: number = 0, flip: boolean = false): void {
+function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeightResizeAllowed: boolean = true, DrawCanvas: any = null, Blend: any = PIXI.SCALE_MODES.LINEAR, StartMods: PoseMod[] = [], zIndex: number = 0, flip: boolean = false, extraPoses: string[] = undefined): void {
 	// Update the RenderCharacterQueue
 	let renderqueue = RenderCharacterQueue.get(C);
 	if (renderqueue && !RenderCharacterLock.get(C)) {
@@ -364,6 +364,15 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 	// Actual loop for drawing the models on the character
 
 	if (!MC.Update.has(containerID)) {
+		let flippedPoses = [];
+		if (extraPoses) {
+			for (let p of extraPoses) {
+				if (!MC.Poses[p]) {
+					flippedPoses.push(p);
+					MC.Poses[p] = true;
+				}
+			}
+		}
 		for (let m of MC.Models.values()) {
 			if (m.AddPose) {
 				for (let pose of m.AddPose) {
@@ -477,7 +486,9 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		}
 		Container.SpritesDrawn.clear();
 
-
+		for (let p of flippedPoses) {
+			delete MC.Poses[p];
+		}
 	}
 
 	// Update the updated array

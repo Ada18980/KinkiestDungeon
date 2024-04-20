@@ -1598,7 +1598,7 @@ function KinkyDungeonDrawGame() {
 					DrawCharacter(KinkyDungeonPlayer,
 						canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offsetVis)*KinkyDungeonGridSizeDisplay + (KinkyDungeonGridSizeDisplay/4),
 						canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offsetVis)*KinkyDungeonGridSizeDisplay + (KinkyDungeonGridSizeDisplay/6),
-						zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, mods, undefined, KDFlipPlayer);
+						zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, mods, undefined, KDFlipPlayer, ["Sprite"]);
 			}
 
 			if (KDToggles.ShowFacing && (KinkyDungeonPlayerEntity.facing_y || KinkyDungeonPlayerEntity.facing_x)) {

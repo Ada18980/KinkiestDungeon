@@ -1,6 +1,7 @@
 PIXI.Assets.init();
 
 let DisplacementMaps = [
+'FutureBox.png',
 'TapeTopRight.png',
 'TapeTopRightBoxtie.png',
 'TapeTopRightCrossed.png',

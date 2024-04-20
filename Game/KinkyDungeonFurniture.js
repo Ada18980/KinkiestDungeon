@@ -40,6 +40,14 @@ let KDFurniture = {
 			}
 		}
 	},
+	"FutureBox": {
+		floor: "Floor",
+		sprite: "FutureBox",
+		restraintTag: "futurebox",
+		tickFunction: (delta) => {
+			// Nothing yet TODO add special features like dressing the player
+		}
+	},
 	"DisplayEgyptian": {
 		floor: "Floor",
 		sprite: "DisplayEgyptian",
