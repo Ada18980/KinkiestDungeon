@@ -873,9 +873,9 @@ function KDGetCurse(item) {
  * Whether a single item shall be matched by a shrine
  * @param {item} item
  * @param {string} shrine
- * @param {string} ignoreGold Gold locks doesn't prevent shrine matching
+ * @param {string} ignoreGold Gold locks don't prevent shrine matching
  *   even if they are shrineImmune
- * @param {string} ignoreShrine curses and noShrine flag on items don't
+ * @param {string} ignoreShrine Curses and noShrine flag on items don't
  *   prevent shrine matching.
  * @returns {boolean}
  */
@@ -885,9 +885,9 @@ function KinkyDungeonSingleRestraintMatchesShrine(
 	ignoreGold,
 	ignoreShrine
 ) {
-	return KDRestraint(item).shrine &&
-		KDRestraint(item).shrine.includes(shrine) &&
-		KinkyDungeonAllowTagMatch(item, ignoreGold, ignoreShrine);
+	return KinkyDungeonAllowTagMatch(item, ignoreGold, ignoreShrine) &&
+		KDRestraint(item).shrine &&
+		KDRestraint(item).shrine.includes(shrine);
 }
 
 function KinkyDungeonAllowTagMatch(item, ignoreGold, ignoreShrine) {
@@ -1704,7 +1704,6 @@ function KinkyDungeonPickAttempt() {
 	if (handsBound && strict < 0.5) escapeChance = Math.max(0, escapeChance - 0.5);
 	else if (strict) escapeChance = Math.max(0, escapeChance - strict);
 
-	if (KinkyDungeonStatsChoice.get("Psychic")) escapeChance = Math.max(escapeChance, 0.33);
 	escapeChance /= 1.0 + KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax*KinkyDungeonDistractionUnlockSuccessMod;
 
 	let chargecosts = true;
