@@ -7,6 +7,9 @@
  */
 let KDLocks = {
 	"Rubber": {
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return Enemy?.Enemy?.tags.rubber || Enemy?.Enemy?.tags.slime || Enemy?.Enemy?.tags.latex;
+		},
 		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
 			return false;
 		},
@@ -150,6 +153,9 @@ let KDLocks = {
 		loot_locked: false,
 	},
 	"White": {
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return KDEnemyRank(Enemy) > 0;
+		},
 		filter: (Guaranteed, Floor, AllowGold, Type) => {
 			return Floor < 11;
 		},
@@ -221,6 +227,9 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"Red": {
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return KDEnemyRank(Enemy) > 1;
+		},
 		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
 			return true;
 		},
@@ -284,6 +293,9 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"Red_Med": {
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return KDEnemyRank(Enemy) > 1;
+		},
 		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
 			return true;
 		},
@@ -348,6 +360,9 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"Red_Hi": {
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return KDEnemyRank(Enemy) > 1;
+		},
 		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
 			return true;
 		},
@@ -412,6 +427,9 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"HiSec": {
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return KDEnemyRank(Enemy) > 2;
+		},
 		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
 			return Floor > 2;
 		},
@@ -476,6 +494,9 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"Disc": {
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return KDEnemyRank(Enemy) > 2;
+		},
 		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
 			return Floor > 1;
 		},
@@ -542,6 +563,9 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"Blue": {
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return KDEnemyRank(Enemy) > 3 || (Enemy?.Enemy?.unlockCommandLevel > 1 && KDEnemyCanTalk(Enemy));
+		},
 		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
 			return Type != "Door" && Floor > 4;
 		},
@@ -609,6 +633,9 @@ let KDLocks = {
 		loot_locked: false,
 	},
 	"Gold": {
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return KDEnemyRank(Enemy) > 3 || Enemy?.Enemy?.tags.robot || Enemy?.Enemy?.tags.cyborg || (Enemy?.Enemy?.unlockCommandLevel > 2 && KDEnemyCanTalk(Enemy));
+		},
 		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
 			return AllowGold && Floor > 10;
 		},
@@ -686,6 +713,9 @@ let KDLocks = {
 		loot_locked: false,
 	},
 	"Divine": {
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return KDEnemyRank(Enemy) > 4 || Enemy?.Enemy?.tags.angel || Enemy?.Enemy?.tags.holy;
+		},
 		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
 			return false;
 		},
@@ -751,6 +781,9 @@ let KDLocks = {
 		loot_locked: false,
 	},
 	"Divine2": {
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return KDEnemyRank(Enemy) > 4 || Enemy?.Enemy?.tags.angel || Enemy?.Enemy?.tags.holy;
+		},
 		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
 			return false;
 		},
@@ -815,6 +848,9 @@ let KDLocks = {
 		loot_locked: false,
 	},
 	"Purple": {
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return KDEnemyRank(Enemy) > 3 || (Enemy?.Enemy?.unlockCommandLevel > 0 &&KDEnemyCanTalk(Enemy));
+		},
 		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
 			return true;
 		},

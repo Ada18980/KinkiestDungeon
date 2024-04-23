@@ -11615,7 +11615,7 @@ rBlacksmithShopTrapCuffs,"(The SPEAKER smiles)|Can never be too prepared~"
 
 rArmorerShop,"(The SPEAKER waves)|Hi.|I make armor. Only the finest.|I don't sell it cheap, unlike my twin."
 rArmorerShopAttack,"(The SPEAKER drops her hammer and cracks her knuckles)|Put em up!"
-rArmorerShop_AlreadyHave,"(The SPEAKER looks at you.)|But you already have one?"
+rArmorerShop_AlreadyHave,"(The SPEAKER looks at you.)|Do you have a dealer's license?"
 rArmorerShop_NoMoney,"(The SPEAKER folds her arms)|I don't do charity, girl."
 rArmorerShopBreastplate,"(The SPEAKER nods)|The most high-impact of sports bras."
 rArmorerShopSteelBoots,"(The SPEAKER nods)|These aren't for hiking, just so you know."
@@ -11629,7 +11629,7 @@ rArmorerShopTrapBra,"(The SPEAKER chuckles)|I hear female adventurers like to we
 
 rBowyerShop,"(The SPEAKER waves)|Hello miss!|What brings you here today?"
 rBowyerShopAttack,"(The SPEAKER folds her arms)|That's not very nice!"
-rBowyerShop_AlreadyHave,"(The SPEAKER looks at you.)|But you already have one?"
+rBowyerShop_AlreadyHave,"(The SPEAKER looks at you and smiles.)|Don't you already have one?"
 rBowyerShop_NoMoney,"(The SPEAKER folds her arms)|I don't do charity, miss."
 rBowyerShopLeatherBoots,"(The SPEAKER nods)|Could use a higher heel..."
 rBowyerShopLeatherGloves,"(The SPEAKER nods)|Back to the basics."
