@@ -2779,7 +2779,7 @@ type EnemyEvent = {
 
 type KDLockType = {
 	specialActions?: (tile: any, entity: entity) => void;
-	canNPCPass?: (xx: number, yy: number, MapTile: object, Enemy: entity) => boolean;
+	canNPCPass: (xx: number, yy: number, MapTile: object, Enemy: entity) => boolean;
 
 	filter: (Guaranteed: boolean, Floor: number, AllowGold: boolean, Type: string, data: any) => boolean;
 	weight: (Guaranteed: boolean, Floor: number, AllowGold: boolean, Type: string, data: any) => number;

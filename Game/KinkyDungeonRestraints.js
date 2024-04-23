@@ -2904,6 +2904,7 @@ let KDNoOverrideTags = [
  * @param {boolean} [options.ApplyVariants]
  * @param {boolean} [options.dontPreferVariant]
  * @param {boolean} [options.allowLowPower]
+ * @param {boolean} [options.ForceDeep]
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]}} [filter] - Filters for items
  * @returns {{restraint: restraint, variant?: ApplyVariant, weight: number}[]}
  */
@@ -3005,7 +3006,7 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 
 			add = false;
 			addedVar = false;
-			if (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, securityEnemy, useAugmented, curse, augmentedInventory)) {
+			if (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, options?.ForceDeep || KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, securityEnemy, useAugmented, curse, augmentedInventory)) {
 
 				if (restraint.playerTags)
 					for (let tag in restraint.playerTags)
@@ -3139,6 +3140,8 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
  * @param {boolean} [options.dontAugmentWeight]
  * @param {boolean} [options.ApplyVariants]
  * @param {boolean} [options.dontPreferVariant]
+ * @param {boolean} [options.allowLowPower]
+ * @param {boolean} [options.ForceDeep]
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]}} [filter] - Filters for items
  * @returns
  */
@@ -3185,6 +3188,8 @@ function KinkyDungeonGetRestraint(enemy, Level, Index, Bypass, Lock, RequireWill
  * @param {boolean} [options.dontAugmentWeight]
  * @param {boolean} [options.ApplyVariants]
  * @param {boolean} [options.dontPreferVariant]
+ * @param {boolean} [options.allowLowPower]
+ * @param {boolean} [options.ForceDeep]
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]}} [filter] - Filters for items
  * @returns {{r: restraint, v: ApplyVariant}}
  */

@@ -218,7 +218,11 @@ function KDProcessInput(type, data) {
 
 			KDDelayedActionPrune(["Action", "Equip"]);
 			KinkyDungeonSetFlag("SelfBondage", 1);
-			success = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(data.name), 0, true, "", KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonGetRestraintByName(data.currentItem), KinkyDungeonGetRestraintByName(data.name)), false, data.events, data.faction, false, data.curse, undefined, undefined, data.inventoryVariant);
+			success = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(data.name), 0,
+				true, "",
+				KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonGetRestraintByName(data.currentItem),
+					KinkyDungeonGetRestraintByName(data.name)), false, data.events, data.faction, KDDebugLink,
+				data.curse, undefined, undefined, data.inventoryVariant);
 			if (success) {
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Unlock.ogg");
 				KDSendStatus('bound', data.name, "self");
@@ -250,7 +254,7 @@ function KDProcessInput(type, data) {
 
 				return msg;
 			} else {
-				KinkyDungeonSendTextMessage(10, TextGet("KDCantEquip").replace("RestraintName", TextGet("Restraint" + KDRestraint(loose).name)), "yellow", 1);
+				KinkyDungeonSendTextMessage(10, TextGet("KDCantEquip").replace("RestraintName", KDGetItemNameString(data.name)), "yellow", 1);
 
 				return "KDCantEquip";
 			}

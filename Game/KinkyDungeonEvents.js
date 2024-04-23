@@ -2789,18 +2789,21 @@ const KDEventMapBuff = {
 			if (buff.power > 0 && entity.player) {
 				if (KinkyDungeonStatDistraction > 0.99 * KinkyDungeonStatDistractionMax) {
 					let tags = ["obsidianRestraints", "shadowlatexRestraints", "shadowlatexRestraintsHeavy"];
-					let restraintAdd = KinkyDungeonGetRestraint({tags: [...tags]}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "Purple");
+					let restraintAdd = KinkyDungeonGetRestraint({tags: [...tags]}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+					true, "Purple", undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
+						ForceDeep: true,
+					});
 					if (restraintAdd) {
 						if (KDRandom() < 0.2) {
 							if (!KinkyDungeonStatsChoice.get("Haunted")) {
 								buff.power -= 1;
 							}
-							KinkyDungeonAddRestraintIfWeaker(restraintAdd, KDGetEffLevel(),true, "Purple", true);
+							KinkyDungeonAddRestraintIfWeaker(restraintAdd, KDGetEffLevel(),true, "Purple", true, undefined, undefined, "Curse", true);
 							KinkyDungeonSendTextMessage(5, TextGet("KDObserverCursed").replace("RestraintAdded", TextGet("Restraint" + restraintAdd.name)), "#ff5555", 1);
 							if (e.count > 1) {
 								for (let i = 1; i < e.count; i++) {
 									restraintAdd = KinkyDungeonGetRestraint({tags: [...tags]}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "Purple");
-									KinkyDungeonAddRestraintIfWeaker(restraintAdd, KDGetEffLevel(),true, "Purple", true);
+									KinkyDungeonAddRestraintIfWeaker(restraintAdd, KDGetEffLevel(),true, "Purple", true, undefined, undefined, "Curse", true);
 									KinkyDungeonSendTextMessage(5, TextGet("KDObserverCursed").replace("RestraintAdded", TextGet("Restraint" + restraintAdd.name)), "#ff5555", 1);
 								}
 							}
