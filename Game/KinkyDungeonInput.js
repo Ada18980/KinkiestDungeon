@@ -224,7 +224,7 @@ function KDProcessInput(type, data) {
 				KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonGetRestraintByName(data.currentItem),
 					KinkyDungeonGetRestraintByName(data.name)), false, data.events, data.faction, KDDebugLink,
 				data.curse, undefined, undefined, data.inventoryVariant);
-      loose = KinkyDungeonInventoryGetLoose(data.name);
+			loose = KinkyDungeonInventoryGetLoose(data.name);
 			if (success) {
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Unlock.ogg");
 				KDSendStatus('bound', data.name, "self");
