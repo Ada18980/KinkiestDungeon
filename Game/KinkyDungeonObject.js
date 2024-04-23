@@ -139,25 +139,40 @@ function KinkyDungeonDrawLock() {
 		KDModalArea_height = 200;
 		let action = false;
 		if ((KDLocks[KinkyDungeonTargetTile.Lock].pickable)) {
-			DrawButtonVis(KDModalArea_x + 313, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonPickDoor"),
+			DrawButtonKDEx("ModelLockPick", () => {
+				if (KinkyDungeonLockpicks > 0 && (KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}))) {
+					// Done, converted to input
+					KDSendInput("pick", {targetTile: KinkyDungeonTargetTileLocation});
+					return true;
+				}
+				return true;
+			}, true, KDModalArea_x + 313, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonPickDoor"),
 			(KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation})) ? "#ffffff" : "#ff0000", "", "");
-			action = true;
-			KDModalArea = true;
 		}
 
 		if ((KDLocks[KinkyDungeonTargetTile.Lock].unlockable)) {
-			DrawButtonVis(KDModalArea_x + 175, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonUnlockDoor"),
+			DrawButtonKDEx("ModalLockUnlock", () => {
+				if ((KDLocks[KinkyDungeonTargetTile.Lock].canUnlock({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}))) {
+					// Done, converted to input
+					KDSendInput("unlock", {targetTile: KinkyDungeonTargetTileLocation});
+					return true;
+				}
+				return true;
+			}, true, KDModalArea_x + 175, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonUnlockDoor"),
 			(KDLocks[KinkyDungeonTargetTile.Lock].canUnlock({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation})) ? "#ffffff" : "#ff0000", "", "");
-			action = true;
-			KDModalArea = true;
 		}
 		if ((KinkyDungeonTargetTile.Lock.includes("Purple"))) {
 			let spell = KinkyDungeonFindSpell("CommandWord", true);
-			DrawButtonVis(KDModalArea_x + 175, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonUnlockDoorPurple"),
+			DrawButtonKDEx("ModalLockCmd", () => {
+				if (((KinkyDungeonTargetTile.Lock.includes("Purple") && KinkyDungeonStatMana > KinkyDungeonGetManaCost(KinkyDungeonFindSpell("CommandWord", true))))) {
+					// Done, converted to input
+					KDSendInput("commandunlock", {targetTile: KinkyDungeonTargetTileLocation});
+					return true;
+				}
+				return true;
+			}, true, KDModalArea_x + 175, KDModalArea_y + 25, 112, 60, TextGet("KinkyDungeonUnlockDoorPurple"),
 			(KinkyDungeonStatMana >= KinkyDungeonGetManaCost(spell)) ? "#ffffff" : "#ff0000",
 			"", "");
-			action = true;
-			KDModalArea = true;
 		}
 
 		if (!action) DrawTextKD(TextGet("KinkyDungeonLockedDoor"), KDModalArea_x + 300, KDModalArea_y + 50, "#ffffff", "#333333");
