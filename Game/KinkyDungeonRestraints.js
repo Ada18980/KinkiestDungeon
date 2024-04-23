@@ -2173,7 +2173,7 @@ function KDGetStruggleData(data) {
 	else if (data.struggleType == "Remove" && !armsBound && !data.handsBound) data.escapeChance = Math.max(minAmount, data.escapeChance + 0.07 * (1 - KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax));
 
 	// Covered hands makes it harder to unlock. If you have the right removal type it makes it harder but wont make it go to 0
-	if (((data.struggleType == "Pick" && !KinkyDungeonStatsChoice.get("Psychic")) || data.struggleType == "Unlock" || data.struggleType == "Remove") && data.struggleGroup != "ItemHands" && data.handsBound)
+	if (((data.struggleType == "Unlock" && !KinkyDungeonStatsChoice.get("Psychic")) || data.struggleType == "Pick" || data.struggleType == "Remove") && data.struggleGroup != "ItemHands" && data.handsBound)
 		data.escapeChance = Math.max((data.struggleType == "Remove" && data.hasAffinity) ?
 		Math.max(0, data.escapeChance / 2) : 0, data.escapeChance - 0.14 - 0.22 * data.handBondage);
 
