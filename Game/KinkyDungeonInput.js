@@ -218,16 +218,15 @@ function KDProcessInput(type, data) {
 
 			KDDelayedActionPrune(["Action", "Equip"]);
 			KinkyDungeonSetFlag("SelfBondage", 1);
-
 			success = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(data.name), 0,
 				true, "",
 				KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonGetRestraintByName(data.currentItem),
 					KinkyDungeonGetRestraintByName(data.name)), false, data.events, data.faction, KDDebugLink,
 				data.curse, undefined, undefined, data.inventoryVariant);
-			loose = KinkyDungeonInventoryGetLoose(data.name);
 			if (success) {
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Unlock.ogg");
 				KDSendStatus('bound', data.name, "self");
+				loose = KinkyDungeonInventoryGetLoose(data.name);
 				if (loose) {
 					if (!(loose.quantity > 1)) {
 						KinkyDungeonInventoryRemove(loose);
