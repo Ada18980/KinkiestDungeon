@@ -19,10 +19,10 @@ let KDInventoryAction = {
 				newItem = KDRestraint(item);
 				if (newItem) {
 					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
-					if (!currentItem) return "InventoryAction/Equip";
 					if (KDDebugLink) {
 						linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
 					} else {
+						if (!currentItem) return "InventoryAction/Equip";
 						linkable = (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
 							((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
 							|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))));
@@ -48,10 +48,10 @@ let KDInventoryAction = {
 					if (newItem.requireAllTagsToEquip && newItem.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
 
 					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
-					if (!currentItem) return true;
 					if (KDDebugLink) {
 						linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
 					} else {
+						if (!currentItem) return true;
 						linkable = (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
 							((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
 							|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))));
