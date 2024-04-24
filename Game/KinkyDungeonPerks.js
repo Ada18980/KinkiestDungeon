@@ -365,6 +365,8 @@ let KinkyDungeonStatsPresets = {
 	"BulletHell": {category: "Enemies", id: "BulletHell", cost: -2, block: ["BulletHell2"]},
 	"BulletHell2": {category: "Enemies", id: "BulletHell2", cost: -3, block: ["BulletHell"]},
 
+
+
 	"Nowhere": {category: "Enemies", id: "Nowhere", cost: -1},
 	"LivingCollars": {category: "Enemies", id: "LivingCollars", cost: -2},
 	"StunBondage": {category: "Enemies", id: "StunBondage", cost: -2},
@@ -428,6 +430,7 @@ let KinkyDungeonStatsPresets = {
 	"PainTolerance":  {category: "Damage", id: "PainTolerance", cost: 1},
 
 	"Rigger": {category: "Damage", id: 24, cost: 2},
+	"ExclusionsApply": {category: "Major", id: "ExclusionsApply", cost: -3, buff: true,},
 	"Pacifist": {category: "Major", buff: true, id: 25, cost: -2},
 	"EnemyResist": {category: "Enemies", id: "EnemyResist", cost: 0},
 	"EnemyArmor": {category: "Enemies", id: "EnemyArmor", cost: -1},

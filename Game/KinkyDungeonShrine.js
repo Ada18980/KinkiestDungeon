@@ -79,7 +79,8 @@ function KinkyDungeonShrineAvailable(type) {
 		if (KDMapData.ShopItems.length > 0) return true;
 		else return false;
 	}
-	if (KinkyDungeonShrineTypeRemove.includes(type) && KinkyDungeonGetRestraintsWithShrine(type).length > 0) return true;
+	if (KinkyDungeonShrineTypeRemove.includes(type) && KinkyDungeonGetRestraintsWithShrine(type, undefined, undefined, undefined,
+		KinkyDungeonStatsChoice.get("ExclusionsApply")).length > 0) return true;
 	else if ((type == "Elements" || type == "Illusion" || type == "Conjure")) return true;
 	else if (type == "Will" && (KinkyDungeonStatMana < KinkyDungeonStatManaMax || KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax || KinkyDungeonStatWill < KinkyDungeonStatWillMax)) return true;
 
@@ -208,7 +209,8 @@ function KinkyDungeonShrineCost(type) {
 		let item = KDMapData.ShopItems[KinkyDungeonShopIndex];
 		return Math.round(KinkyDungeonItemCost(item));
 	} else if (KinkyDungeonShrineTypeRemove.includes(type)) {
-		let rest = KinkyDungeonGetRestraintsWithShrine(type);
+		let rest = KinkyDungeonGetRestraintsWithShrine(type, undefined, undefined, undefined,
+			KinkyDungeonStatsChoice.get("ExclusionsApply"));
 		let maxPower = 1;
 		for (let r of rest) {
 			if (KDRestraint(r).power > maxPower) maxPower = KDRestraint(r).power;
@@ -259,7 +261,8 @@ function KinkyDungeonPayShrine(type, mult = 1) {
 
 	// TODO shrine effects
 	if (KinkyDungeonShrineTypeRemove.includes(type)) {
-		rep = Math.min(2, KinkyDungeonRemoveRestraintsWithShrine(type, KDShrineRemoveCount, true) * 0.5);
+		rep = Math.min(2, KinkyDungeonRemoveRestraintsWithShrine(type, KDShrineRemoveCount, true, undefined, undefined, undefined, undefined,
+			KinkyDungeonStatsChoice.get("ExclusionsApply")) * 0.5);
 		KinkyDungeonChangeRep("Ghost", -rep);
 
 		ShrineMsg = TextGet("KinkyDungeonPayShrineRemoveRestraints");

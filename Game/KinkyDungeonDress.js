@@ -386,9 +386,12 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 							KDInventoryWear(Character, KDRestraint(inv).Asset, KDRestraint(inv).AssetGroup, undefined, KDRestraint(inv).Color, KDRestraint(inv).Filters);
 						}
 				}
-			if (KinkyDungeonCheckClothesLoss)
-				KinkyDungeonWearForcedClothes(Character, restraints);
-			KinkyDungeonSendEvent("dressRestraints", data);
+			if (KinkyDungeonCheckClothesLoss) {
+				data.extraForceDress = [];
+				KinkyDungeonSendEvent("beforeDressRestraints", data);
+				KinkyDungeonWearForcedClothes(Character, restraints, data.extraForceDress);
+				KinkyDungeonSendEvent("dressRestraints", data);
+			}
 		}
 
 		// Apply poses from restraints
@@ -785,10 +788,33 @@ function KDInitProtectedGroups(C) {
 /**
  *
  * @param {item[]} [restraints]
+ * @param {alwaysDressModel[]} [extraForceDress]
  * @param {Character} C
  */
-function KinkyDungeonWearForcedClothes(C, restraints) {
+function KinkyDungeonWearForcedClothes(C, restraints, extraForceDress) {
 	if (!C) C = KinkyDungeonPlayer;
+
+	for (let dress of extraForceDress) {
+		let canReplace = (dress.override!==null && dress.override===true) ? true : !InventoryGet(C,dress.Group);
+
+		if (dress.Group && !canReplace) {return;}
+		if (dress.Group && C == KinkyDungeonPlayer && KDProtectedCosplay.includes(dress.Group)){return;}
+		let filters =  dress.Filters ? JSON.parse(JSON.stringify(dress.Filters)) : {};
+		let faction = dress.faction;
+		if (dress.faction) {
+			if (StandalonePatched) {
+				if (dress.factionFilters && faction && KDGetFactionFilters(faction)) {
+					for (let f of Object.entries(dress.factionFilters)) {
+						if (KDGetFactionFilters(faction)[f[1].color])
+							filters[f[0]] = KDGetFactionFilters(faction)[f[1].color]; // 0 is the primary color
+					}
+				}
+			}
+		}
+		KDInventoryWear(C, dress.Model, undefined, undefined, undefined, filters);
+	}
+
+
 	if (!restraints) restraints = C == KinkyDungeonPlayer ? KinkyDungeonAllRestraint() : [];
 	for (let i = restraints.length - 1; i >= 0; i--) {
 		let inv = restraints[i];
@@ -846,8 +872,8 @@ function KinkyDungeonWearForcedClothes(C, restraints) {
 				if (dress.Group && !canReplace) {return;}
 				if (dress.Group && C == KinkyDungeonPlayer && KDProtectedCosplay.includes(dress.Group)){return;}
 				let filters =  dress.Filters ? JSON.parse(JSON.stringify(dress.Filters)) : {};
-				let faction = inv.faction;
-				if (inv.faction) {
+				let faction = inv.faction || dress.faction;
+				if (faction) {
 					if (StandalonePatched) {
 						if (dress.factionFilters && faction && KDGetFactionFilters(faction)) {
 							for (let f of Object.entries(dress.factionFilters)) {

@@ -137,7 +137,7 @@ let KDMapMods = {
 		name: "Robot",
 		roomType: "",
 		weight: 35,
-		tags: ["robot"],
+		tags: ["robot", "robotturret"],
 		faction: "AncientRobot",
 		jailType: "AncientRobot",
 		guardType: "AncientRobot",

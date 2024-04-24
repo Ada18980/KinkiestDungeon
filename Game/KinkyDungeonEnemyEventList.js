@@ -63,6 +63,76 @@ let KDIntentEvents = {
 			return false;
 		},
 	},
+	leashToPoint: {
+		play: true,
+		nonaggressive: true,
+		// This will make the enemy want to leash you
+		weight: (enemy, AIData, allied, hostile, aggressive) => {
+			return 0;
+		},
+		trigger: (enemy, AIData) => {
+			KDResetIntent(enemy, AIData);
+			enemy.IntentAction = 'leashToPoint';
+			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 140);
+			enemy.IntentLeashPoint = {
+				radius: AIData.radius || 1,
+				x: AIData.point?.x || 1,
+				y: AIData.point?.y || 1,
+				type: "point",
+			};
+			enemy.playWithPlayer = 22;
+			KDSetPlayCD(enemy, 3);
+
+			KinkyDungeonSetEnemyFlag(enemy, "playstart", 3);
+			KinkyDungeonSetEnemyFlag(enemy, "motivated", 50);
+
+			KDAddThought(enemy.id, "Jail", 5, enemy.playWithPlayer);
+
+			let suff = (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "");
+			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + "Leash").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 3);
+		},
+		arrive: (enemy, AIData) => {
+			// When the enemy arrives at the leash point we move the player to it
+			enemy.IntentAction = '';
+			enemy.IntentLeashPoint = null;
+			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", -1);
+			enemy.playWithPlayer = 0;
+			enemy.playWithPlayerCD = 80;
+			KinkyDungeonSetEnemyFlag(enemy, "playstart", 0);
+			KDResetAllAggro();
+			KDResetAllIntents();
+			KDBreakTether(KinkyDungeonPlayerEntity);
+			return true;
+		},
+		maintain: (enemy, delta) => {
+			let tethered = KDIsPlayerTethered(KinkyDungeonPlayerEntity);
+			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5 && !tethered && KDPlayerLeashed(KinkyDungeonPlayerEntity)) {
+				KinkyDungeonAttachTetherToEntity(2.5, enemy);
+				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
+				return true;
+			}
+			else if (KDPlayerLeashed(KinkyDungeonPlayerEntity) && !tethered) {
+				enemy.gx = KinkyDungeonPlayerEntity.x;
+				enemy.gy = KinkyDungeonPlayerEntity.y;
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
+				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
+			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
+				enemy.aware = true;
+
+				if (!enemy.IntentLeashPoint) {
+					enemy.IntentAction = '';
+					enemy.IntentLeashPoint = null;
+					enemy.gx = enemy.IntentLeashPoint?.x;
+					enemy.gy = enemy.IntentLeashPoint?.y;
+					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
+				}
+			}
+			if (enemy.playWithPlayer < 10) {
+				enemy.playWithPlayer = 10;
+			}
+			return false;
+		},
+	},
 	"leashStorage": {
 		play: true,
 		nonaggressive: true,

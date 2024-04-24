@@ -361,7 +361,7 @@ let KDPrisonTypes = {
 					return KDCurrentPrisonState(player);
 				},
 			},
-			TrainingObedience: {name: "TrainingObedience",
+			TrainingLatex: {name: "TrainingLatex",
 				substate: true,
 				substateTimeout: 80,
 				refreshState: "Jail",
@@ -371,16 +371,15 @@ let KDPrisonTypes = {
 				update: (delta) => {
 					let player = KinkyDungeonPlayerEntity;
 
-
-					let jailPoint = KinkyDungeonNearestJailPoint(player.x, player.y, ["storage"]);
-					if (!jailPoint || jailPoint.x != player.x || jailPoint.y != player.y) {
+					let label = KDMapData.Labels?.Training ? KDMapData.Labels.Training[0] : null;
+					if (label && (label.x != player.x || label.y != player.y)) {
 						// We are not in a furniture, so we conscript the guard
 						let guard = KDPrisonCommonGuard(player);
 						if (guard) {
 							// Assign the guard to a furniture intentaction
 							let action = "leashToPoint";
 							if (guard.IntentAction != action)
-								KDIntentEvents[action].trigger(guard, {});
+								KDIntentEvents[action].trigger(guard, {point: label, radius: 2.5});
 						} else {
 							// forbidden state
 							return KDPopSubstate(player);
@@ -390,12 +389,8 @@ let KDPrisonTypes = {
 						return KDCurrentPrisonState(player);
 					}
 
-					// End when the player is settled
-					if (KDPrisonIsInFurniture(player)) {
-						return KDPopSubstate(player);
-					}
-					// Stay in the current state
-					return KDCurrentPrisonState(player);
+					// End
+					return KDPopSubstate(player);
 				},
 			},
 		},

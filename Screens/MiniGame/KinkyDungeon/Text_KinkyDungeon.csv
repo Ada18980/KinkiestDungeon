@@ -20819,3 +20819,37 @@ KDDollStorageDial_UniformDone,"There we go, all ready for training!"
 RestraintFutureBox,Cyber Storage
 RestraintFutureBoxDesc,"An all-purpose metal crate equipped with a polycarbonate blast door and steel reinforcement."
 RestraintFutureBoxDesc2,"Used throughout the reign of the Old Civilization to store slaves and prisoners."
+
+
+KDLatexIntegration0,"The liquid latex sticks to your skin, forcing an airtight layer!"
+KDLatexIntegration1,"The latex starts to build up layers, forcing a protective coating..."
+KDLatexIntegration2,"The latex starts adhering to your skin, becoming extremely difficult to remove..."
+KDLatexIntegration3,"The latex seals you in, rendering escape impossible without alchemical methods."
+KDLatexIntegration4,"The liquid latex spray slows you down!"
+
+NameLatexSprayer,Latex Sprayer
+KillLatexSprayer,"The turret deactivates after taking too much damage!"
+AttackLatexSprayer,"The turret defends itself with a spray of sticky liquid latex! (DamageTaken)"
+
+KDLatexIntegrationDebuff0,"Your latex layer adheres to latex, making struggling more difficult!"
+KDLatexIntegrationDebuff1,"The item sticks to your rubber layer, making it harder to pull off..."
+KDLatexIntegrationDebuff2,"The item hugs your layer tightly, adhering firmly!"
+KinkyDungeonBuffLatexIntegration,"Your skin is covered in a layer of latex, making escape from cyber restraints harder!"
+
+KinkyDungeonStatExclusionsApply,"Some Exclusions Apply"
+KinkyDungeonStatDescExclusionsApply,"Goddess shrines do not remove non-binding restraints such as harnesses and cuffs."
+
+KinkyDungeonStatMeleeSpec,"Melee Specialization"
+KinkyDungeonStatDescMeleeSpec,"Gain 25% base physical damage, but your spells do 50% less damage."
+KinkyDungeonStatWeaponExpert,"Melee Expert"
+KinkyDungeonStatDescWeaponExpert,"Gain +20 Accuracy and +10% base physical damage."
+
+KinkyDungeonStatMagicSpec,"Magic Specialization"
+KinkyDungeonStatDescMagicSpec,"Gain 25% spell damage, but your attacks are delayed by 1 turn when attacking."
+KinkyDungeonStatMagicExpert,"Spell Expert"
+KinkyDungeonStatDescMagicExpert,"Gain -10% miscast chance and +10% spell damage."
+
+KinkyDungeonStatRangedSpec,"Ranged Specialization"
+KinkyDungeonStatDescRangedSpec,"You deal 20% more damage to enemies further than 2 tiles away, but enemies adjacent to you take 60% reduced damage."
+KinkyDungeonStatRangedExpert,"Ranged Weapon Expert"
+KinkyDungeonStatDescRangedExpert,"Bows, guns, and other projectile weapons do 10% more damage and consume 10% less charge."

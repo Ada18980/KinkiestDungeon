@@ -2593,6 +2593,10 @@ let KinkyDungeonSpellListEnemies = [
 		power: 1, pierceEnemies: true, delay: 0, range: 50, damage: "chain", speed: 2,
 		playerEffect: {name: "LockBullet", type: "Purple", count: 1, time: 9, power: 2, damage: "chain"}},
 
+	{enemySpell: true, name: "LatexSpray",  bindType: "Latex", color: "#2789cd", sfx: "RubberBolt",
+		manacost: 2.5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 3.5, pierceEnemies: true, delay: 0, range: 5.5, damage: "glue", speed: 1.5,
+		playerEffect: {name: "LatexSpray", count: 1, time: 4, power: 2.5, mult: 3, damage: "glue"}},
+
 
 	{enemySpell: true, name: "MithrilBolt",  bindType: "Rope", color: "#999999", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "MithrilBolt", count: 1, time: 3, power: 3, damage: "cold"}},
 	{enemySpell: true, name: "RubberBolt",  bindType: "Slime", color: "#ff3388", sfx: "RubberBolt", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 4, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "RubberBolt", count: 1, time: 4, power: 4, damage: "glue"}},

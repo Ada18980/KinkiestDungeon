@@ -1993,6 +1993,8 @@ let KDEventMapInventory = {
 					KinkyDungeonSendTextMessage(5, TextGet("KDLatexDebuff" + Math.floor(KDRandom() * 3)), "#38a2c3", 2, true);
 			}
 		},
+
+
 		"ropeDebuff": (e, item, data) => {
 			if (data.restraint && data.struggleType === "Struggle" && item != data.restraint && e.requireTags?.some((tag) => {return KDRestraint(data.restraint).shrine.includes(tag);})) {
 				data.escapePenalty += e.power ? e.power : 0.075;
@@ -2470,12 +2472,27 @@ const KDEventMapBuff = {
 				});
 		},
 	},
-
+	"postQuest": {
+		"latexIntegration": (e, buff, entity, data) => {
+			buff.duration -= 100;
+			if (buff.duration < 100) {
+				delete buff.infinite;
+				buff.duration = 1;
+			}
+		},
+	},
 	"beforeStruggleCalc": {
 		"BreakFree": (e, buff, entity, data) => {
 			if (data.struggleType == "struggle")
 				data.escapePenalty -= e.power;
-		}
+		},
+		"latexIntegrationDebuff": (e, buff, entity, data) => {
+			if (data.restraint && (data.struggleType === "Struggle" || data.struggleType === "Remove") && KDRestraint(data.restraint).shrine.includes("Cyber")) {
+				data.escapePenalty += (e.power || 1) * -buff.power;
+				if (!data.query)
+					KinkyDungeonSendTextMessage(5, TextGet("KDLatexIntegration" + Math.floor(KDRandom() * 3)), "#38a2c3", 2, true);
+			}
+		},
 	},
 	"expireBuff": {
 		"ChaoticOverflow": (e, buff, entity, data) => {
@@ -2731,8 +2748,29 @@ const KDEventMapBuff = {
 			}
 		},
 	},
+	"beforeDressRestraints": {
+		"LatexIntegration": (e, buff, entity, data) => {
+			if (entity.player) {
+				if (buff.power < -0.99) {
+					/** @type {alwaysDressModel} */
+					let efd = {
+						Model: "Catsuit",
+						faction: "AncientRobot",
+						Filters: {
+							TorsoLower: {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
+							TorsoUpper: {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
+						},
+						factionFilters: {
+							TorsoLower: {color: "Catsuit", override: true},
+							TorsoUpper: {color: "Catsuit", override: true},
+						},
+					};
+					data.extraForceDress.push(efd);
+				}
+			}
+		},
+	},
 	"tick": {
-
 		"Corrupted": (e, buff, entity, data) => {
 			if (entity.player) {
 				if (KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) > KDShadowThreshold) {
@@ -2790,9 +2828,9 @@ const KDEventMapBuff = {
 				if (KinkyDungeonStatDistraction > 0.99 * KinkyDungeonStatDistractionMax) {
 					let tags = ["obsidianRestraints", "shadowlatexRestraints", "shadowlatexRestraintsHeavy"];
 					let restraintAdd = KinkyDungeonGetRestraint({tags: [...tags]}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
-					true, "Purple", undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
-						ForceDeep: true,
-					});
+						true, "Purple", undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
+							ForceDeep: true,
+						});
 					if (restraintAdd) {
 						if (KDRandom() < 0.2) {
 							if (!KinkyDungeonStatsChoice.get("Haunted")) {

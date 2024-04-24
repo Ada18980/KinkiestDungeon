@@ -187,6 +187,59 @@ let KDPlayerEffects = {
 
 		return {sfx: "Clang", effect: true};
 	},
+	"LatexSpray": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		if (KDTestSpellHits(spell, 0.5, 0.0)) {
+			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+			if (!dmg.happened) return{sfx: "Shield", effect: false};
+			let textIndex = "0";
+			let buff = KinkyDungeonPlayerBuffs.LatexIntegration;
+			let mult = playerEffect?.mult || 3;
+
+			if (!buff) {
+				buff = KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					id: "LatexIntegration",
+					aura: "#9074ab",
+					type: "LatexIntegration",
+					aurasprite: "Null",
+					power: -0.01,
+					duration: 50,
+					text: "-1%",
+					events: [
+						{trigger: "beforeStruggleCalc", type: "latexIntegrationDebuff", power: 1},
+						{trigger: "beforeDressRestraints", type: "LatexIntegration"},
+						{trigger: "postQuest", type: "LatexIntegration"},
+					],
+				});
+			} else {
+				buff.power = Math.max(-1, buff.power - 0.01 * mult * (playerEffect?.power || spell?.power || 1));
+				buff.text = Math.round(-buff.power * 100) + "%";
+				if (buff.power <= -0.75) {
+					buff.duration = Math.min(1000, buff.duration + 100);
+					buff.infinite = true;
+				} else {
+					buff.duration = 50 + Math.floor(-buff.power * 100);
+				}
+			}
+
+			if (buff?.power <= -1) {
+				textIndex = "4";
+			} else if (buff?.power <= -0.75) {
+				textIndex = "3";
+			} else if (buff?.power <= -0.5) {
+				textIndex = "2";
+			} else if (buff?.power <= -0.25) {
+				textIndex = "1";
+			} else {
+				textIndex = "0";
+			}
+
+			KinkyDungeonSendTextMessage(4, TextGet("KDLatexIntegration" + textIndex).KDReplaceOrAddDmg( dmg.string), "#2789cd", 1);
+
+
+			return {sfx: "Dollify", effect: true};
+		}
+		return {sfx: "Fwoosh", effect: true};
+	},
 	"RubberBolt": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);

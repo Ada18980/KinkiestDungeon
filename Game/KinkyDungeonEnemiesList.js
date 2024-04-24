@@ -33,7 +33,7 @@ let KinkyDungeonEnemies = [
 	{name: "ShopkeeperRescue", tags: KDMapInit(["human", "peaceful", "alwayshelp", "noshop", "opendoors"]), faction: "Prisoner", lowpriority: true, armor: 2, followRange: 100, AI: "guard",
 		visionRadius: 0, maxhp: 120, regen: 10, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "ShopkeeperRescueChatter",
 		Behavior: {noPlay: true},
-		noDisplace: true, keys: true,
+		noDisplace: false, keys: true,
 		events: [
 			{type: "ShopkeeperRescueAI", trigger: "afterEnemyTick"},
 		],
@@ -43,7 +43,7 @@ let KinkyDungeonEnemies = [
 	{name: "ShopkeeperStart", tags: KDMapInit(["human", "peaceful", "alwayshelp", "noshop", "opendoors"]), faction: "Prisoner", lowpriority: true, armor: 2, followRange: 100, AI: "guard",
 		visionRadius: 0, maxhp: 120, regen: 10, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "ShopkeeperStart",
 		Behavior: {noPlay: true},
-		noDisplace: true, keys: true,
+		noDisplace: false, keys: true,
 		terrainTags: {}, floors:KDMapInit([])},
 
 	// Quest NPC
@@ -1588,6 +1588,44 @@ let KinkyDungeonEnemies = [
 		ondeath: [{type: "spellOnSelf", spell: "RubberSlime"}],
 		dropTable: [{name: "Gunpowder", weight: 8, noSummon: true}, {name: "AncientPowerSource", weight: 2, noSummon: true}]},
 
+
+	{name: "LatexSprayer", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true,
+		nonDirectional: true,
+		color: "#2789cd",
+		tags: KDMapInit(["disarmimmune", "turret", "basicturret", "immobile", "ignoreharmless", "mimicBlock", "doortrap", "robot", "acidweakness", "soulresist", "minor", "ranged",
+			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness"]),
+		AI: "hunt", difficulty: 0.25,
+		events: [
+			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff5555"},
+		],
+		effect: {
+			effect: {name: "LatexSpray", count: 1, time: 4, power: 2, mult: 5, damage: "glue"},
+		},
+		spells: ["LatexSpray"], spellCooldownMult: 1, spellCooldownMod: 0, projectileTargeting: true,
+		cueSfx: {
+			Block: "Clang",
+			Resist: "SoftShield",
+			Damage: "RobotHit",
+		},
+		maxblock: 0,
+		maxdodge: 0,
+		Sound: {
+			baseAmount: 0,
+			moveAmount: 0,
+			alertAmount: 12,
+		},
+		RestraintFilter: {
+			unlimitedRestraints: true,
+		},
+		armor: 2.0, maxhp: 20, movePoints: 9999, immobile: true,
+		visionRadius: 7.5, followRange: 999,
+		sneakThreshold: 1,
+		evasion: -9,
+		attack: "SpellMeleeEffect", attackPoints: 2, attackWidth: 2.5, attackRange: 1, power: 1, dmgType: "glue",
+		minLevel:0, weight:-50, terrainTags: {"robot": 7, "oldrobot": -3, "oldrobotturret": -50, "oldrobotturretspawn": -150, "robotturret": 50, "robotturretspawn": 150, open: 50, "latexOptout": -50},
+		shrines: ["Latex"], floors:KDMapInit(["bel"]),
+		dropTable: [{name: "AncientPowerSource", weight: 9}, {name: "EnchantedGrinder", weight: 1, noSummon: true}]},
+
 	{name: "Drone", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true, color: "#ff7755",
 		tags: KDMapInit(["ignoreharmless", "disarmimmune", "doortrap", "robot", "flying", "acidweakness", "soulresist", "minor", "melee", "electricsevereweakness", "coldresist", "iceresist",
 			"slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "jail", "search"]),
@@ -1666,7 +1704,7 @@ let KinkyDungeonEnemies = [
 		bound: "Cyborg", color: "#5a71bc",
 		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "elite", "robot", "cyborg", "cyberdollrestraints", "cyberdollheavy", "controlharness", "handcuffer",
 			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist", "guardian"]),
-		noDisplace: true, disarm: 0.5,
+		noDisplace: false, disarm: 0.5,
 		armor: 2,
 		keys: true, followRange: 1, AI: "guard", visionRadius: 7, maxhp: 10, minLevel: 0, weight:-20, movePoints: 1.5, attackPoints: 2, evasion: -0.2, focusPlayer: true,
 		attack: "MeleeBindLockWillStun", attackWidth: 3, attackRange: 1, power: 4, dmgType: "electric", stunTime: 1, attackLock: "Red",
@@ -1699,7 +1737,7 @@ let KinkyDungeonEnemies = [
 		bound: "Cyborg", color: "#f0b541",
 		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "miniboss", "robot", "cyborg", "guardian", "cyberdollrestraints", "cyberdollheavy", "controlharness", "handcuffer",
 			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist"]),
-		noDisplace: true, disarm: 0.5,
+		noDisplace: false, disarm: 0.5,
 		spells: ["SummonForceFields", "RobotBolt"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true,
 		projectileTargeting: true,
 		armor: 2,
@@ -4886,7 +4924,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, allFloors: true, disarm: 0.33, evasion: -0.5, focusPlayer: true,
 		useLock: "Blue",
 		dropTable: [{name: "Brownies", weight: 15}]},
-	{name: "Guard", outfit: "Jailer", style: "Ice", bound: "Guard", tags: KDMapInit(["leashing", "opendoors", "closedoors", "antiMagic", "miniboss", "jail", "jailer", "melee", "shackleRestraints", "jailRestraints", "guardCall"]), noDisplace: true, keys: true, followRange: 1, AI: "guard", visionRadius: 6, disarm: 0.5,
+	{name: "Guard", outfit: "Jailer", style: "Ice", bound: "Guard", tags: KDMapInit(["leashing", "opendoors", "closedoors", "antiMagic", "miniboss", "jail", "jailer", "melee", "shackleRestraints", "jailRestraints", "guardCall"]), noDisplace: false, keys: true, followRange: 1, AI: "guard", visionRadius: 6, disarm: 0.5,
 		maxhp: 12, minLevel: -1, weight:-1000, movePoints: 1, attackPoints: 3, attack: "MeleeBindLockWill", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope",
 		fullBoundBonus: 2, evasion: -0.5, focusPlayer: true, attackLock: "White",
 		stamina: 2,
@@ -4900,7 +4938,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "defeat", type: "delete", chance: 1.0},
 		],
 		terrainTags: {"Guard": 1010}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
-	{name: "GuardHeavy", nameList: "russian", outfit: "Jailer", style: "Air", bound: "GuardHeavy", tags: KDMapInit(["leashing", "opendoors", "closedoors", "antiMagic", "jail", "jailer", "melee", "unflinching", "hunter", "guardCall", "miniboss", "shackleRestraints", "handcuffer", "jailRestraints"]), noDisplace: true, disarm: 0.5,
+	{name: "GuardHeavy", nameList: "russian", outfit: "Jailer", style: "Air", bound: "GuardHeavy", tags: KDMapInit(["leashing", "opendoors", "closedoors", "antiMagic", "jail", "jailer", "melee", "unflinching", "hunter", "guardCall", "miniboss", "shackleRestraints", "handcuffer", "jailRestraints"]), noDisplace: false, disarm: 0.5,
 		keys: true, followRange: 1, AI: "guard", visionRadius: 7, armor: 1.5, maxhp: 12, minLevel: 4, weight:-20, movePoints: 1, attackPoints: 2, evasion: -0.5, focusPlayer: true,
 		attack: "MeleeBindLockWillStun", attackWidth: 3, attackRange: 1, power: 5, dmgType: "electric", stunTime: 1, attackLock: "Red",
 		RemoteControl: {

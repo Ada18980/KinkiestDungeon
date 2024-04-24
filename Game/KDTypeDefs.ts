@@ -443,6 +443,8 @@ interface KDRestraintPropsBase {
 	magic?: boolean,
 	/** The item is regarded as a non-binding item, so the game knows how to handle it. Used for stuff like cuffs which are not binding by default */
 	nonbinding?: boolean,
+	/** The item is regarded as a binding item, so the game knows how to handle it. Used for stuff that should be considered binding but aren't due to KDIsBinding() not recognizing it */
+	binding?: boolean,
 	/** Instantly forces a high slow level, for stuff like slime */
 	freeze?: boolean,
 	/** Immobilizes the player */
@@ -664,6 +666,8 @@ interface overrideDisplayItem {
 	OverridePriority?: number[]|number,
 }
 interface alwaysDressModel {
+	/** Force faction if restraint doesnt have it */
+	faction?: string,
 	/** Standalone 5.0+ asset */
 	Model: string,
 	/** Group */

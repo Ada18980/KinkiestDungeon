@@ -870,37 +870,86 @@ function KDGetCurse(item) {
 }
 
 /**
+ * Returns whether or not an item is 'binding,' e.g. binds arms, blindfold, etc
+ * @param {item} item
+ * @returns {boolean}
+ */
+function KDIsBinding(item) {
+	let r = KDRestraint(item);
+	if (r) {
+		return (!r.nonbinding && (
+			r.bindarms
+			|| r.bindhands
+			|| r.blindfold > 1
+			|| r.gag > 0.25
+			|| r.blockfeet
+			|| r.freeze
+			|| r.immobile
+			|| r.hobble > 1
+			|| r.enclose
+			|| r.binding
+		)) == true;
+	}
+	return false;
+}
+
+/**
  * Whether a single item shall be matched by a shrine
  * @param {item} item
  * @param {string} shrine
- * @param {string} ignoreGold Gold locks don't prevent shrine matching
+ * @param {boolean} ignoreGold Gold locks don't prevent shrine matching
  *   even if they are shrineImmune
- * @param {string} ignoreShrine Curses and noShrine flag on items don't
+ * @param {boolean} ignoreShrine Curses and noShrine flag on items don't
  *   prevent shrine matching.
+ * @param {boolean} forceIgnoreNonBinding - for "Exclusions Apply" perk
  * @returns {boolean}
  */
 function KinkyDungeonSingleRestraintMatchesShrine(
 	item,
 	shrine,
 	ignoreGold,
-	ignoreShrine
+	ignoreShrine,
+	forceIgnoreNonBinding,
 ) {
-	return KinkyDungeonAllowTagMatch(item, ignoreGold, ignoreShrine) &&
+	return KinkyDungeonAllowTagMatch(item, ignoreGold, ignoreShrine, forceIgnoreNonBinding) &&
 		KDRestraint(item).shrine &&
 		KDRestraint(item).shrine.includes(shrine);
 }
 
-function KinkyDungeonAllowTagMatch(item, ignoreGold, ignoreShrine) {
-	return KinkyDungeonCurseOrItemAllowMatch(item, ignoreShrine) &&
-		KinkyDungeonLockAllowMatch(item, ignoreGold);
+/**
+ *
+ * @param {item} item
+ * @param {boolean} ignoreGold
+ * @param {boolean} ignoreShrine
+ * @param {boolean} forceIgnoreNonBinding
+ * @returns {boolean}
+ */
+function KinkyDungeonAllowTagMatch(item, ignoreGold, ignoreShrine, forceIgnoreNonBinding) {
+	return (
+		(!forceIgnoreNonBinding || KDIsBinding(item))
+		&& KinkyDungeonCurseOrItemAllowMatch(item, ignoreShrine)
+		&& KinkyDungeonLockAllowMatch(item, ignoreGold)
+	);
 }
 
+/**
+ *
+ * @param {item} item
+ * @param {boolean} ignoreShrine
+ * @returns {boolean}
+ */
 function KinkyDungeonCurseOrItemAllowMatch(item, ignoreShrine) {
 	return (!KDRestraint(item).noShrine &&
 		(!KDGetCurse(item) || !KDCurses[KDGetCurse(item)].noShrine)) ||
 		ignoreShrine;
 }
 
+/**
+ *
+ * @param {item} item
+ * @param {boolean} ignoreGold
+ * @returns {boolean}
+ */
 function KinkyDungeonLockAllowMatch(item, ignoreGold) {
 	return ignoreGold || !KDLocks[item.lock]?.shrineImmune;
 }
@@ -908,22 +957,23 @@ function KinkyDungeonLockAllowMatch(item, ignoreGold) {
 /**
  *
  * @param {string} shrine
+ * @param {boolean} [forceIgnoreNonBinding] - for "Exclusions Apply" perk
  * @returns {item[]}
  */
-function KinkyDungeonGetRestraintsWithShrine(shrine, ignoreGold, recursive, ignoreShrine) {
+function KinkyDungeonGetRestraintsWithShrine(shrine, ignoreGold, recursive, ignoreShrine, forceIgnoreNonBinding) {
 	/**
 	 * @type {item[]}
 	 */
 	let ret = [];
 
 	for (let item of KinkyDungeonAllRestraint()) {
-		if (KinkyDungeonSingleRestraintMatchesShrine(item, shrine, ignoreGold, ignoreShrine)) {
+		if (KinkyDungeonSingleRestraintMatchesShrine(item, shrine, ignoreGold, ignoreShrine, forceIgnoreNonBinding)) {
 			ret.push(item);
 		}
 		if (recursive) {
 			let link = item.dynamicLink;
 			while (link) {
-				if (KinkyDungeonSingleRestraintMatchesShrine(link, shrine, ignoreGold, ignoreShrine)) {
+				if (KinkyDungeonSingleRestraintMatchesShrine(link, shrine, ignoreGold, ignoreShrine, forceIgnoreNonBinding)) {
 					ret.push(link);
 				}
 				link = link.dynamicLink;
@@ -937,16 +987,17 @@ function KinkyDungeonGetRestraintsWithShrine(shrine, ignoreGold, recursive, igno
 /**
  *
  * @param {string} shrine
+ * @param {boolean} [forceIgnoreNonBinding] - for "Exclusions Apply" perk
  * @returns {number}
  */
-function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noPlayer, ignoreGold, ignoreShrine, Keep) {
+function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noPlayer, ignoreGold, ignoreShrine, Keep, forceIgnoreNonBinding) {
 	let count = 0;
 
 	for (let i = 0; i < (maxCount ? maxCount : 100); i++) {
 		/**
 		 * @type {item[]}
 		 */
-		let items = KinkyDungeonAllRestraint().filter((r) => KinkyDungeonSingleRestraintMatchesShrine(r, shrine, ignoreGold, ignoreShrine));
+		let items = KinkyDungeonAllRestraint().filter((r) => KinkyDungeonSingleRestraintMatchesShrine(r, shrine, ignoreGold, ignoreShrine, forceIgnoreNonBinding));
 		// Get the most powerful item
 		let item = items.length > 0 ? items.reduce((prev, current) => (KinkyDungeonRestraintPower(prev, true) > KinkyDungeonRestraintPower(current, true)) ? prev : current) : null;
 		if (item) {
@@ -965,7 +1016,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noP
 
 		if (recursive) {
 			// Get all items, including dynamically linked ones
-			items = KinkyDungeonGetRestraintsWithShrine(shrine, ignoreGold, true);
+			items = KinkyDungeonGetRestraintsWithShrine(shrine, ignoreGold, true, ignoreShrine, forceIgnoreNonBinding);
 
 			// Get the most powerful item
 			item = items.length > 0 ? items.reduce((prev, current) => (KinkyDungeonRestraintPower(prev, true) > KinkyDungeonRestraintPower(current, true)) ? prev : current) : null;
@@ -5200,8 +5251,9 @@ function KDCurseCount(activatedOnly) {
  * @param {string[]} requireAllTags
  * @param {boolean} ignoregold
  * @param {boolean} ignoreShrine
+ * @param {boolean} [forceIgnoreNonBinding]
  */
-function KDGetTotalRestraintPower(player, requireSingleTag, requireAllTags, ignoregold, ignoreShrine) {
+function KDGetTotalRestraintPower(player, requireSingleTag, requireAllTags, ignoregold, ignoreShrine, forceIgnoreNonBinding) {
 	let power = 0;
 	for (let inv of KinkyDungeonAllRestraintDynamic()) {
 		let item = inv.item;
@@ -5216,7 +5268,7 @@ function KDGetTotalRestraintPower(player, requireSingleTag, requireAllTags, igno
 				continue;
 			}
 		}
-		if (!KinkyDungeonAllowTagMatch(item, ignoregold, ignoreShrine)) {
+		if (!KinkyDungeonAllowTagMatch(item, ignoregold, ignoreShrine, forceIgnoreNonBinding)) {
 			continue;
 		}
 		power += KinkyDungeonRestraintPower(item);
