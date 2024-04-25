@@ -1510,19 +1510,46 @@ function KDKickEnemies(nearestJail, ignoreAware, Level, noCull) {
 	return atLeastOneAware;
 }
 
-function KDResetAllIntents(nonHostileOnly) {
+function KDResetAllIntents(nonHostileOnly, endPlay = 30, player) {
 	for (let e of  KDMapData.Entities) {
-		if (!nonHostileOnly || !KinkyDungeonAggressive(e))
+		if (!nonHostileOnly || !KinkyDungeonAggressive(e)) {
+			if (endPlay) {
+				KDSetPlayCD(e, 2, 10);
+				e.playWithPlayer = 0;
+				e.dialogue = "";
+			}
 			if (e.IntentAction && !KDIntentEvents[e.IntentAction].noMassReset)
 				KDResetIntent(e);
+		}
+
 	}
 }
-function KDResetAllAggro() {
+function KDResetAllAggro(player) {
 	KDGameData.HostileFactions = [];
 	for (let e of KDMapData.Entities) {
 		if (e.hostile && !KDIntentEvents[e.IntentAction]?.noMassReset)
 			e.hostile = 0;
 	}
+}
+function KDForceWanderFar(player, radius = 10) {
+	let enemies = KDNearbyEnemies(player.x, player.y, radius);
+	for (let en of enemies) {
+		if (en.gx == player.x && en.gy == player.y) {
+			KDWanderEnemy(en);
+		}
+	}
+
+}
+
+/**
+ *
+ * @param {entity} en
+ */
+function KDWanderEnemy(en) {
+	en.gx = en.x;
+	en.gy = en.y;
+	KinkyDungeonSetEnemyFlag(en, "forceWFar", 5);
+	KinkyDungeonSetEnemyFlag(en, "wander", 0);
 }
 
 /**

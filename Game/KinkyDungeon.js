@@ -1326,7 +1326,7 @@ function KinkyDungeonRun() {
 	if (KinkyDungeonState == "Logo") {
 		if (CommonTime() > KDLogoStartTime + KDLogoEndTime) {
 			KinkyDungeonState = "Consent";
-			KDLogoStartTime = CommonTime();
+			KDLogoStartTime = CommonTime() + 400;
 		} else {
 			// Draw the strait-laced logo
 			KDDraw(kdcanvas, kdpixisprites, "logo", KinkyDungeonRootDirectory + "Logo.png", 500, 0, 1000, 1000, undefined, {
@@ -1603,7 +1603,7 @@ function KinkyDungeonRun() {
 			// Draw the PC for one
 			let Char = (KinkyDungeonState == "LoadOutfit" ? KDSpeakerNPC : null) || KinkyDungeonPlayer;
 			DrawCharacter(Char, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
-			KDLogoStartTime = CommonTime();
+			KDLogoStartTime = CommonTime() + 400;
 			/*
 
 				DrawButtonVis(1000-450/2, 720, 450, 64, TextGet("KDOptIn"), KDLoadingFinished ? "#ffffff" : "#888888", "");
@@ -3740,6 +3740,10 @@ function KinkyDungeonHandleClick() {
 				KinkyDungeonDressPlayer();
 				KDInitProtectedGroups(KinkyDungeonPlayer);
 				CharacterRefresh(KinkyDungeonPlayer);
+
+				let Char = (KinkyDungeonState == "LoadOutfit" ? KDSpeakerNPC : null) || KinkyDungeonPlayer;
+				DrawCharacter(Char, 0, 0, .01, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
+
 
 				return true;
 			} else if (MouseIn(1000-450/2, 820, 450, 64)) {

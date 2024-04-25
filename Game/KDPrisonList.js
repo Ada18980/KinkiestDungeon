@@ -108,9 +108,6 @@ let KDPrisonTypes = {
 				},
 			},
 			FurnitureTravel: {name: "FurnitureTravel",
-				substate: true,
-				substateTimeout: 80,
-				refreshState: "Intro",
 				init: (params) => {
 					return "";
 				},
@@ -323,10 +320,93 @@ let KDPrisonTypes = {
 					return KDSetPrisonState(player, "Jail");
 				},
 			},
+			/**
+			 * Training state, assigns the player to one of various trainings
+			 */
+			Training: {name: "Training",
+				init: (params) => {
+					return "";
+				},
+				update: (delta) => {
+					let player = KinkyDungeonPlayerEntity;
+
+					let label = KDMapData.Labels?.Training ? KDMapData.Labels.Training[0] : null;
+					let rad = 3;
+					if (label && (KDistEuclidean(label.x - player.x, label.y - player.y) > rad)) {
+						return KDGoToSubState(player, "TrainingTravel");
+					}
+
+					if (!KinkyDungeonFlags.get("trainingCD")) {
+						KinkyDungeonSetFlag("trainingCD", 300);
+
+						return KDGoToSubState(player, "LatexTraining");
+					}
+
+					// Go to jail state for further processing
+					return KDSetPrisonState(player, "Jail");
+				},
+			},
+
+			LatexTraining: {name: "LatexTraining",
+				init: (params) => {
+					return "";
+				},
+				update: (delta) => {
+					let player = KinkyDungeonPlayerEntity;
+
+					// End when training ends
+					if (!KinkyDungeonFlags.get("trainingStart")) {
+						// End the latex training flags too
+						KinkyDungeonSetFlag("latexTrainingStart", 0);
+						return KDPopSubstate(player);
+					}
+
+					// Only progress the training if player is inside
+					let guard = KDPrisonCommonGuard(player);
+
+					let label = KDMapData.Labels?.Training ? KDMapData.Labels.Training[0] : null;
+					let rad = 5;
+					if (label && (KDistChebyshev(label.x - player.x, label.y - player.y) < rad)) {
+						// Start the training and initialize the field
+						if (!KinkyDungeonFlags.get("latexTraining")) {
+							KinkyDungeonSetFlag("latexTraining", KinkyDungeonFlags.get("trainingStart"));
+							if (guard) {
+								guard.path = undefined;
+								KinkyDungeonSetEnemyFlag(guard, "wander", 0);
+							}
+
+							KDBreakTether(player);
+							KDForceWanderFar(player, 13);
+							KDResetAllAggro(player);
+							KDResetAllIntents(false, 30, player);
+							KDGameData.PrisonerState = 'jail';
+
+
+							for (let xx of [label.x + 3, label.x - 3]) {
+								let e = DialogueCreateEnemy(xx, label.y, "LatexSprayer");
+								e.faction = "Ambush";
+								e.hostile = KinkyDungeonFlags.get("latexTraining");
+								e.summoned = false; // They can drop loot
+							}
+						}
+
+						// TODO progress training
+						let enemiesNear = KDNearbyEnemies(label.x, label.y, rad+2);
+						for (let en of enemiesNear) {
+							if (en.faction != "Ambush" && KDGetFaction(en) != "Player") {
+								if (!KDEnemyHasFlag(en, "trainingLeave")) {
+									KDWanderEnemy(en);
+									KinkyDungeonSetEnemyFlag(en, "trainingLeave", 10);
+								}
+							}
+						}
+					}
+
+					// Stay in training state
+					return KDCurrentPrisonState(player);
+				},
+			},
 			StorageTravel: {name: "StorageTravel",
-				substate: true,
-				substateTimeout: 80,
-				refreshState: "Intro",
 				init: (params) => {
 					return "";
 				},
@@ -361,10 +441,7 @@ let KDPrisonTypes = {
 					return KDCurrentPrisonState(player);
 				},
 			},
-			TravelTraining: {name: "TravelTraining",
-				substate: true,
-				substateTimeout: 80,
-				refreshState: "Training",
+			TrainingTravel: {name: "TrainingTravel",
 				init: (params) => {
 					return "";
 				},
@@ -372,14 +449,15 @@ let KDPrisonTypes = {
 					let player = KinkyDungeonPlayerEntity;
 
 					let label = KDMapData.Labels?.Training ? KDMapData.Labels.Training[0] : null;
-					if (label && (label.x != player.x || label.y != player.y)) {
+					let rad = 3;
+					if (label && (KDistEuclidean(label.x - player.x, label.y - player.y) > rad)) {
 						// We are not in a furniture, so we conscript the guard
 						let guard = KDPrisonCommonGuard(player);
 						if (guard) {
 							// Assign the guard to a furniture intentaction
 							let action = "leashToPoint";
 							if (guard.IntentAction != action)
-								KDIntentEvents[action].trigger(guard, {point: label, radius: 2.5});
+								KDIntentEvents[action].trigger(guard, {point: label, radius: 1, target: player});
 						} else {
 							// forbidden state
 							return KDPopSubstate(player);
@@ -390,6 +468,7 @@ let KDPrisonTypes = {
 					}
 
 					// End
+					KinkyDungeonSetFlag("trainingStart", 300);
 					return KDPopSubstate(player);
 				},
 			},

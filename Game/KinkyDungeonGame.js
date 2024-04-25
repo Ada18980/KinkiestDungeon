@@ -1912,7 +1912,7 @@ function KinkyDungeonGetClosestSpecialAreaDist(x ,y) {
 // Type 1: hollow, no empty border
 // Type 2: only empty space
 // Type 3: completely filled
-function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Padding, OL, NoWander, flexCorner, Jail) {
+function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Padding, OL, NW, flexCorner, Jail) {
 	let pad = Padding ? Padding : 0;
 	let borderType = (Border) ? '1' : '0';
 	let fillType = (Fill) ? '1' : '0';
@@ -1932,8 +1932,8 @@ function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Pad
 				if (setTo != "" && KinkyDungeonMapGet(Left + X, Top + Y) != "s" && KinkyDungeonMapGet(Left + X, Top + Y) != "H") {
 					KinkyDungeonMapSet(Left + X, Top + Y, setTo);
 					delete KDMapData.EffectTiles[(Left + X) + "," + (Top + Y)];
-					if (offlimit && (OL || Jail || NoWander)) {
-						KinkyDungeonTilesSet((Left + X) + "," + (Top + Y), {OL: OL, Jail: Jail, NoWander: NoWander});
+					if (offlimit && (OL || Jail || NW)) {
+						KinkyDungeonTilesSet((Left + X) + "," + (Top + Y), {OL: OL, Jail: Jail, NW: NW});
 					}
 				}
 			}
@@ -2990,7 +2990,7 @@ function KinkyDungeonPlacePatrols(Count, width, height) {
 				let Y = Math.floor(KDRandom()*height);
 				if (!KinkyDungeonPointInCell(X, Y, 6)
 					&& KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))
-					&& (!KinkyDungeonTilesGet(X + "," + Y) || (!KinkyDungeonTilesGet(X + "," + Y).OL && !KinkyDungeonTilesGet(X + "," + Y).NoWander))) {
+					&& (!KinkyDungeonTilesGet(X + "," + Y) || (!KinkyDungeonTilesGet(X + "," + Y).OL && !KinkyDungeonTilesGet(X + "," + Y).NW))) {
 					KDMapData.PatrolPoints.push({x: X, y: Y});
 					break;
 				}

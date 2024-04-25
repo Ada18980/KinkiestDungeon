@@ -230,6 +230,7 @@ let KDTilePalette = {
 	'----Misc----': {type: "none"},
 	'POI': {type: "POI"},
 	'OL': {type: "offlimits"},
+	'NW': {type: "NW"},
 	'Jail': {type: "jail"},
 	'Keyring': {type: "Keyring"},
 	'MazeSeed': {type: "MazeSeed",
@@ -868,6 +869,17 @@ let KDTE_Brush = {
 				KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OL = true;
 		} else {
 			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OL: true});
+		}
+	},
+	'NW': (brush, curr, noSwap) => {
+		if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)) {
+			if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).NW) {
+				if (!noSwap)
+					KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).NW = false;
+			} else
+				KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).NW = true;
+		} else {
+			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {NW: true});
 		}
 	},
 	'MazeBlock': (brush, curr, noSwap) => {

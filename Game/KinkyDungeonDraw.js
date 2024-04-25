@@ -3304,7 +3304,9 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 							DrawTextFitKD("traffic_" + KDMapData.Traffic[RY][RX], (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/3, KinkyDungeonGridSizeDisplay, "#55ff55");
 
 						if (KinkyDungeonTilesGet(RX + "," + RY).OL)
-							DrawTextFitKD("OL", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/3, KinkyDungeonGridSizeDisplay, "#ff5555");
+							DrawTextFitKD("Offlimits", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/3, KinkyDungeonGridSizeDisplay, "#ff5555");
+						if (KinkyDungeonTilesGet(RX + "," + RY).NW)
+							DrawTextFitKD("NoWander", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/4, KinkyDungeonGridSizeDisplay, "#ff5555");
 						if (KinkyDungeonTilesGet(RX + "," + RY).Jail)
 							DrawTextFitKD("Jail", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/5, KinkyDungeonGridSizeDisplay, "#ff5555");
 						if (KinkyDungeonTilesGet(RX + "," + RY).Priority)
