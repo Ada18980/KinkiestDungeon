@@ -1447,11 +1447,11 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			type:"special", special: "SlimeToLatex",
 			onhit:"", time:0, power: 2, range: 3.0, size: 1, aoe: 1.5, damage: "glue"},
 
-		{name: "LiquidMetal", prerequisite: "ApprenticeMetal", tags: ["metal", "aoe", "utility", "denial"], sfx: "MagicSlash", school: "Conjure", manacost: 5, components: ["Legs"], level:1,
+		{name: "LiquidMetal", prerequisite: "ApprenticeMetal", tags: ["latex", "metal", "aoe", "utility", "denial"], sfx: "MagicSlash", school: "Conjure", manacost: 5, components: ["Legs"], level:1,
 			type:"special", special: "LiquidMetal",
 			onhit:"", time:0, power: 2, range: 3.0, size: 1, aoe: 1.5, damage: "glue"},
 
-		{name: "LiquidMetalBurst", color: "#aaaaaa", prerequisite: "ApprenticeMetal", tags: ["latex", "slime", "aoe", "offense"], landsfx: "FireSpell", school: "Conjure", manacost: 7, components: ["Legs"], level:1, type:"inert",
+		{name: "LiquidMetalBurst", color: "#aaaaaa", prerequisite: "ApprenticeMetal", tags: ["latex", "metal", "aoe", "offense"], landsfx: "FireSpell", school: "Conjure", manacost: 7, components: ["Legs"], level:1, type:"inert",
 			castCondition: "LiquidMetalBurst",
 			requireLOS: true,
 			effectTileDurationMod: 12, effectTile: {
@@ -1468,7 +1468,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			{type: "ElementalEffect", power: 1, damage: "chain", bindType: "Metal", bindEff: 1.25, trigger: "playerAttack"},
 			{type: "EffectTileAoE", aoe: 1.1, kind: "Chains", duration: 16, trigger: "playerAttack", cost: 0},
 		]},
-		{name: "LeatherWhip", tags: ["latex", "slime", "buff", "offense"], prerequisite: "ApprenticeLeather", sfx: "MagicSlash", school: "Conjure", manacost: 0.6, components: [], level:1, type:"passive", events: [
+		{name: "LeatherWhip", tags: ["leather", "buff", "offense"], prerequisite: "ApprenticeLeather", sfx: "MagicSlash", school: "Conjure", manacost: 0.6, components: [], level:1, type:"passive", events: [
 			{type: "ElementalEffect", power: 1, damage: "pain", bindType: "Leather", bindEff: 2.5, trigger: "playerAttack"},
 			{type: "EffectTileAoE", aoe: 1.1, kind: "Belts", duration: 12, trigger: "playerAttack", cost: 0},
 		]},

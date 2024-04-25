@@ -3068,9 +3068,12 @@ type KDExpression = {
 interface KDPrisonState {
 	name: string,
 	/** Doesnt do anything, but marks this as a substate which goes to the last state */
+	/** Unused */
 	substate?: boolean,
 	/** If CurrentTick > TimeSinceLastStateChange + substateTimeout it goes to a refresh state */
+	/** Unused */
 	substateTimeout?: number,
+	/** Unused */
 	refreshState?: string,
 	/** Returns a state. Runs as soon as the map is created */
 	init: (MapParams: floorParams) => string,

@@ -796,6 +796,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 	}
 
 
+	let f = null;
 
 	// Now that we have the final list of models we do a KDDraw
 	for (let m of Models.values()) {
@@ -850,7 +851,9 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						if (refreshfilters) {
 							KDAdjustmentFilterCache.delete(FilterHash(ef));
 						}
-						let efilter = (KDAdjustmentFilterCache.get(efh) || [new PIXI.filters.AdjustmentFilter(ef)]);
+						f = new PIXI.filters.AdjustmentFilter(ef);
+						f.multisample = 0;
+						let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
 						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
 							KDAdjustmentFilterCache.set(FilterHash(ef), efilter);
 						}
@@ -866,9 +869,11 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 							KDAdjustmentFilterCache.delete(efh);
 						}
 						KDTex(dsprite.name, false); // try to preload it
-						let efilter = (KDAdjustmentFilterCache.get(efh) || [new EraseFilter(
+						f = new EraseFilter(
 							dsprite,
-						)]);
+						);
+						f.multisample = 0;
+						let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
 						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
 							KDAdjustmentFilterCache.set(efh, efilter);
 						}
@@ -884,10 +889,12 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 							KDAdjustmentFilterCache.delete(efh);
 						}
 						KDTex(dsprite.name, false); // try to preload it
-						let efilter = (KDAdjustmentFilterCache.get(efh) || [new PIXI.DisplacementFilter(
+						f = new PIXI.DisplacementFilter(
 							dsprite,
 							ef.amount,
-						)]);
+						);
+						f.multisample = 0;
+						let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
 						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
 							KDAdjustmentFilterCache.set(efh, efilter);
 						}

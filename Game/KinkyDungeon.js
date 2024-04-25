@@ -10,6 +10,7 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR;
 
 let KDStandardRenderException = {
 	Consent: [],
+	Intro: [],
 	Logo: [],
 	Game: ["Game"],
 	Stats: [],
@@ -874,6 +875,7 @@ function KDSaveToggles() {
  * @returns {void} - Nothing
  */
 function KinkyDungeonLoad() {
+
 	try {
 		//@ts-ignore
 		let API = window.kdAPI;
@@ -885,6 +887,10 @@ function KinkyDungeonLoad() {
 		if (!window.location.host?.includes("127.0.0.1"))
 			KDClipboardDisabled = true;
 	}
+	// Preload
+	KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/BrickWall.png", 0, 0, CanvasWidth, CanvasHeight, undefined, {
+		zIndex: -115,
+	});
 
 	KinkyDungeonSetupCrashHandler();
 
@@ -1163,7 +1169,7 @@ let KDGlobalFilterCacheRefresh = true;
 
 let KDLogoStartTime = 0;
 let KDLogoEndTime = 2500;
-let KDLogoEndTime2 = 500;
+let KDLogoEndTime2 = 800;
 
 function KDOpenFullscreen() {
 	try {
@@ -1386,6 +1392,14 @@ function KinkyDungeonRun() {
 		}, true, 1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
 		//DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
 	} else if (KinkyDungeonState == "Menu") {
+		if (CommonTime() < KDLogoStartTime + KDLogoEndTime2) {
+			CommonTime(); // ...
+			FillRectKD(kdcanvas, kdpixisprites, "greyfade", {
+				Left: 0, Top: 0, Width: 2000,
+				Height: 1000,
+				Color: "#383F4F", alpha: Math.max(0, 1 - (CommonTime() - KDLogoStartTime) / KDLogoEndTime2), zIndex: 200
+			});
+		}
 		KinkyDungeonGameFlag = false;
 		DrawCheckboxVis(1700, 25, 64, 64, TextGet("KDToggleSound"), KDToggles.Sound, false, "#ffffff");
 		// Draw temp start screen
@@ -1559,34 +1573,46 @@ function KinkyDungeonRun() {
 		if (KDRestart)
 			DrawTextKD(TextGet("RestartNeeded" + (localStorage.getItem("BondageClubLanguage") || "EN")), 1840, 600, "#ffffff", KDTextGray2);
 	} else if (KinkyDungeonState == "Consent") {
-		if (CommonTime() < KDLogoStartTime + KDLogoEndTime2) {
+		/*if (CommonTime() < KDLogoStartTime + KDLogoEndTime2) {
 			CommonTime(); // ...
 			FillRectKD(kdcanvas, kdpixisprites, "greyfade", {
 				Left: 0, Top: 0, Width: 2000,
 				Height: 1000,
 				Color: "#383F4F", alpha: Math.max(0, 1 - (CommonTime() - KDLogoStartTime) / KDLogoEndTime2), zIndex: 200
 			});
-		}
-		let str = TextGet("KinkyDungeon") + " v" + TextGet("KDVersionStr");
-		DrawTextKD(str.substring(0, Math.min(str.length, Math.round((CommonTime()-KDStartTime)/100))), 1000, 80, "#ffffff", KDTextGray2, 84);
-		DrawTextKD(TextGet("KDLogo2"), 1000, 180, "#ffffff", KDTextGray2);
+		}*/
+		//let str = TextGet("KinkyDungeon") + " v" + TextGet("KDVersionStr");
+		//DrawTextKD(str.substring(0, Math.min(str.length, Math.round((CommonTime()-KDStartTime)/100))), 1000, 80, "#ffffff", KDTextGray2, 84);
+		//DrawTextKD(TextGet("KDLogo2"), 1000, 180, "#ffffff", KDTextGray2);
 
 		if (!KDLoadingFinished) {
-			if (StandalonePatched)
-				DrawTextKD(CurrentLoading, 1000, 900, "#ffffff", KDTextGray2);
+			DrawTextKD(CurrentLoading, 1000, 900, "#ffffff", KDTextGray2);
 			DrawTextKD(TextGet("KDLoading") + Math.round(100 * KDLoadingDone / KDLoadingMax) + "%", 1000, 950, "#ffffff", KDTextGray2);
 		} else {
+			KDOptOut = true;
+			if (KDToggles.SkipIntro) KinkyDungeonState = "Menu"; else KinkyDungeonState = "Intro";
 
-			if (KDPatched) {
+			CharacterReleaseTotal(KinkyDungeonPlayer);
+			KinkyDungeonDressSet();
+			CharacterNaked(KinkyDungeonPlayer);
+			KinkyDungeonInitializeDresses();
+			KinkyDungeonCheckClothesLoss = true;
+			KinkyDungeonDressPlayer();
+			KDInitProtectedGroups(KinkyDungeonPlayer);
+			CharacterRefresh(KinkyDungeonPlayer);
+			// Draw the PC for one
+			let Char = (KinkyDungeonState == "LoadOutfit" ? KDSpeakerNPC : null) || KinkyDungeonPlayer;
+			DrawCharacter(Char, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
+			KDLogoStartTime = CommonTime();
+			/*
+
 				DrawButtonVis(1000-450/2, 720, 450, 64, TextGet("KDOptIn"), KDLoadingFinished ? "#ffffff" : "#888888", "");
 				DrawButtonVis(1000-450/2, 820, 450, 64, TextGet("KDOptOut"), KDLoadingFinished ? "#ffffff" : "#888888", "");
 
 				DrawTextKD(TextGet("KinkyDungeonConsent"), 1000, 450, "#ffffff", KDTextGray2);
 				DrawTextKD(TextGet("KinkyDungeonConsent2"), 1000, 500, "#ffffff", KDTextGray2);
 				DrawTextKD(TextGet("KinkyDungeonConsent3"), 1000, 550, "#ffffff", KDTextGray2);
-			} else {
-				DrawButtonVis(1000-450/2, 820, 450, 64, TextGet("KDStartGame"), KDLoadingFinished ? "#ffffff" : "#888888", "");
-			}
+				*/
 
 		}
 		if (KDLoadingDone >= KDLoadingMax) {
@@ -1600,7 +1626,10 @@ function KinkyDungeonRun() {
 	} else if (KinkyDungeonState == "Intro") {
 		if (KDIntroStage < 0) KDIntroStage = 0;// Placeholder
 		let currentProgress = KDIntroStage < KDIntroProgress.length ? KDIntroProgress[KDIntroStage] : 1.5;
-		if (currentProgress < 3) KDIntroProgress[KDIntroStage] += KDDrawDelta*0.001;
+		if (currentProgress < 3) {
+			if (KDIntroStage < KDIntroProgress.length)
+				KDIntroProgress[KDIntroStage] += KDDrawDelta*0.001;
+		}
 		else KDIntroStage += 1;
 
 		for (let i = 0; i < KDIntroProgress.length; i++) {
@@ -3717,23 +3746,14 @@ function KinkyDungeonHandleClick() {
 				if (KDPatched) {
 					KDSendEvent('optout');
 				}
-				KDOptOut = true;
-				if (KDToggles.SkipIntro) KinkyDungeonState = "Menu"; else KinkyDungeonState = "Intro";
 
-				CharacterReleaseTotal(KinkyDungeonPlayer);
-				KinkyDungeonDressSet();
-				CharacterNaked(KinkyDungeonPlayer);
-				KinkyDungeonInitializeDresses();
-				KinkyDungeonCheckClothesLoss = true;
-				KinkyDungeonDressPlayer();
-				KDInitProtectedGroups(KinkyDungeonPlayer);
-				CharacterRefresh(KinkyDungeonPlayer);
 
 				return true;
 			}
 		}
 
 	} else if (KinkyDungeonState == "Menu" || KinkyDungeonState == "Lose") {
+
 
 		if (MouseIn(1700, 25, 64, 64)) {
 			KDToggles.Sound = !KDToggles.Sound;
@@ -3888,9 +3908,20 @@ function KinkyDungeonClick() {
 function KDClick() {
 	//let origState = KinkyDungeonState;
 	//let origDrawState = KinkyDungeonDrawState;
-	if (KinkyDungeonState == "Logo") KinkyDungeonState = "Consent";
+	if (KinkyDungeonState == "Logo") {
+		KinkyDungeonState = "Consent";
+		KDLogoStartTime = CommonTime();
+	}
 	else
 	if (KinkyDungeonState == "Intro") {
+		if (CommonTime() < KDLogoStartTime + KDLogoEndTime2) {
+			CommonTime(); // ...
+			FillRectKD(kdcanvas, kdpixisprites, "greyfade", {
+				Left: 0, Top: 0, Width: 2000,
+				Height: 1000,
+				Color: "#383F4F", alpha: Math.max(0, 1 - (CommonTime() - KDLogoStartTime) / KDLogoEndTime2), zIndex: 200
+			});
+		}
 		let currentProgress = KDIntroStage < KDIntroProgress.length ? KDIntroProgress[KDIntroStage] : 1;
 		if (currentProgress < 3) {
 			for (let i = 0; i <= KDIntroStage && i < KDIntroProgress.length; i++) {
@@ -3899,8 +3930,13 @@ function KDClick() {
 
 		}
 		KDIntroStage += 1;
-		if (KDIntroStage > KDIntroProgress.length)
+		if (KDIntroStage > KDIntroProgress.length) {
 			KinkyDungeonState = "Menu";
+			// Draw the PC for one
+			let Char = (KinkyDungeonState == "LoadOutfit" ? KDSpeakerNPC : null) || KinkyDungeonPlayer;
+			DrawCharacter(Char, 0, 0, .01, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
+			KDLogoStartTime = CommonTime();
+		}
 		else if (KDIntroStage < KDIntroProgress.length) {
 			KDIntroProgress[KDIntroStage] = -0.33; // UI delay
 		}

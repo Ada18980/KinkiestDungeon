@@ -220,7 +220,7 @@ let DisplacementMaps = [
 ];
 
 // Scale factor for displacement and erase maps
-let DisplacementScale = 0.5;
+let DisplacementScale = 0.25;
 
 let displacementList = [
 	...DisplacementMaps.map((e) => {return "DisplacementMaps/" + e;}),
@@ -320,12 +320,12 @@ async function PreloadDisplacement(list) {
 }
 
 KDLoadToggles();
-if (!KDToggles.HighResDisplacement) DisplacementScale = 0.25
+if (!KDToggles.HighResDisplacement) DisplacementScale = 1/16
 
 async function load() {
 
 	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
-	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
+	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR, true);
 	await PreloadDisplacement(displacementList);
 	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 	PIXI.BaseTexture.defaultOptions.anisotropicLevel = 4;

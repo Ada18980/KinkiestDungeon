@@ -361,10 +361,10 @@ let KDPrisonTypes = {
 					return KDCurrentPrisonState(player);
 				},
 			},
-			TrainingLatex: {name: "TrainingLatex",
+			TravelTraining: {name: "TravelTraining",
 				substate: true,
 				substateTimeout: 80,
-				refreshState: "Jail",
+				refreshState: "Training",
 				init: (params) => {
 					return "";
 				},

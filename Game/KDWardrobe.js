@@ -5,7 +5,7 @@ let KDConfirmType = "";
 let KinkyDungeonReplaceConfirm = 0;
 
 let KDCurrentOutfit = 0;
-let KDMaxOutfits = 40;
+let KDMaxOutfits = 99;
 let KDMaxOutfitsDisplay = 10;
 let KDMaxOutfitsIndex = 0;
 let KDOutfitInfo = [];

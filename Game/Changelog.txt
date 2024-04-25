@@ -32,9 +32,10 @@ Monk class?
 
 5.2.3
 - Reworked the Doll Room in the Bellows. it is now the Doll Processing!
-- Living collars now only apply when you pass out, not when you are jailed
+- Living collars now only apply when you pass out, not when you are jailed. Typically this is caused by shadow hands, gigantic slimes, sarcophagus, rope kraken, etc.
 - Added perk that adds back living collars when jailed functionality
 - Added 'Some Exclusions Apply' perk
+- Increased max outfit count to 99
 
 5.2.28
 - Desire burst is now locked to the Path of Pleasure
