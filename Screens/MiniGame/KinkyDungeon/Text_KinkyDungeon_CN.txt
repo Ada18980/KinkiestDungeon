@@ -10986,6 +10986,42 @@ You are mine.
 你是我的。
 You're a fast one.
 你的速度很快。
+So weak!
+好弱啊！
+I have you now~
+我现在拥有你了~
+Can't handle it?
+受不了？
+Ooh shiny!
+噢，闪亮！
+Now you're mine!
+现在你是我的了！
+Bow before me, for I am PTRN!
+在我面前鞠躬，因为我是 PTRN！
+A mortal can't stop us!
+凡人是阻止不了我们的！
+No one will save you, mortal.
+没有人会救你，凡人。
+I will stop her!
+我会阻止她！
+Bow down before our might!
+在我们的力量面前屈服吧！
+Dragons are the true rulers of this world!
+龙是这个世界的真正统治者！
+We were destined for greatness until you came along!
+在你出现之前，我们注定会成就伟大！
+Why don't we turn the tables?
+我们为何不扭转局势呢？
+It'll be fun seeing you squirm~
+看你扭动的样子一定很有趣~
+We are the the true heirs of magic!
+我们才是魔法真正的继承者！
+Hehe~
+呵呵~
+Rawr!
+吼！
+*chuckles*
+*咯咯笑*
 Your antics amuse me~
 你滑稽的动作让我很开心~
 It's time for your makeover!
@@ -11940,6 +11976,34 @@ That won't help you.
 这对你没用。
 You won't escape.
 你逃不掉的。
+Yes, yes, run away!
+对对对，快逃！
+I like your fighting spirit!
+我喜欢你的斗志！
+You may be weak, but this is quite entertaining~
+虽然你很弱，但这很有趣~
+Face my wrath!
+面对我的愤怒！
+Dragons are the true heirs of magic.
+龙是魔法的真正继承者。
+Your magic was stolen from us!
+你的魔法被我们偷走了！
+This world is ours! OURS!
+这个世界是我们的！我们的！
+Look what you need to match only a fraction of my power!
+看看你需要什么才能匹敌我力量的一小部分！
+My treasure!
+我的宝藏！
+Now is my opportunity! I will have you for myself~
+现在是我的机会！我要拥有你~
+You're staying right here...
+你就住在这里...
+Hah!
+哈！
+Get your hands off me!
+把你的手从我身上拿开！
+Pathetic.
+真可怜。
 Such feeble attempts.
 没用的。
 Humans are fun to play with.
