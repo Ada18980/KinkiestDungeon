@@ -14558,14 +14558,14 @@ The material is somehow both stretchy yet hard enough to chip a knife on. The pi
 这种材料既有弹性又坚硬，足以用刀划破。旧文明材料科学的顶峰。
 Dollmaker's Visor
 玩偶师的面罩
-A visor used by the Dollmaker for assigning arbitrary tasks to her dolls. Dims vision unless you perform your duties capturing dolls.
-玩偶师用来给她的玩偶分配任意任务的面罩。除非你履行捕捉玩偶的职责，否则视线会变暗。
+A visor used by the Dollmaker for assigning arbitrary tasks to her dolls. The door to the next level won't open unless you perform your duties capturing dolls.
+玩偶师用来给她的玩偶分配任意任务的面罩。除非你履行捕捉玩偶的职责，否则下一关的大门不会打开。
 It's made of metallic glass, almost indestructible. Fortunately, it's still possible to see through.
 它由金属玻璃制成，几乎坚不可摧。幸好，还是可以看穿的。
 Dollmaker's Mask
 玩偶师的面具
-A mask used by the Dollmaker for assigning arbitrary tasks to her dolls. Dims vision unless you perform your duties capturing dolls.
-玩偶师用来给她的玩偶分配任意任务的面具。除非你履行捕捉玩偶的职责，否则视线会变暗。
+A mask used by the Dollmaker for assigning arbitrary tasks to her dolls. The door to the next level won't open unless you perform your duties capturing dolls.
+玩偶师用来给她的玩偶分配任意任务的面具。除非你履行捕捉玩偶的职责，否则下一关的大门不会打开。
 Detected new hardware.
 检测到新硬件。
 [Restriction Protocol] Detected new hardware: RESTRAINTNAME. Install progress: PERCENT%
