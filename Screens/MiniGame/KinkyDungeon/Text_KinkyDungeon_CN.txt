@@ -2442,6 +2442,14 @@ Spear
 矛
 Speak softly and carry a pointy stick.
 说话要轻声细语，并拿起一根尖锐的棍子。
+Deals pierce damage to the target and one square behind it. Can be used to make a ranged attack 2 tiles away.
+对目标和目标后方一个方格造成刺破伤害。可以在2格外进行远程攻击。
+Pike
+长矛
+An 11 foot pole, for things you wouldn't want to touch with a 10 foot pole.
+一根11英尺长的杆子，用于你不想用10英尺长的棍子碰的东西。
+Deals pierce damage to the target and one square behind it. Can be used to make a ranged attack 3 tiles away.
+对目标和目标后方一个方格造成刺破伤害。可以在3格外进行远程攻击。
 Bolt Cutters
 断线钳
 The universal key.
