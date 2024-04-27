@@ -110,6 +110,8 @@ Enable Fullscreen
 启用全屏
 Hi-Res Distortion (Needs Restart)
 高分辨率失真（需重启）
+Hi-Res Model (no restart needed)
+高分辨率模型（无需重启）
 High Quality Animations
 高品质动画
 Enemy Animations
@@ -286,6 +288,8 @@ Choose default restraint palette:
 选择默认束缚主色调:
 Flip Player Display
 翻转玩家显示
+Grayscale when Blind
+失明时视野变成黑白
 Helpless!
 无助！
 Evaded!
