@@ -3231,7 +3231,7 @@ Dollmaker's Apprentice
 The dollmaker apprentice's suit becomes rigid and locks her limbs in place.
 玩偶师的学徒的套装变得坚硬，将她的四肢锁定在适当的位置。
 The dollmaker's apprentice squeezes your body with her gloved hands! (DamageTaken)
-玩偶师的学徒用戴着手套的双手挤压你的身体！（DamageTaken）
+玩偶师的学徒用戴着手套的双手揉捏你的身体！（DamageTaken）
 The dollmaker's apprentice uses her staff to encase you in doll restraints! (+RestraintAdded)
 玩偶师的学徒用她的手杖将你束缚在玩偶束缚中！（+RestraintAdded）
 The dollmaker's apprentice slips a lock onto your restraints! (DamageTaken)
@@ -4061,7 +4061,7 @@ The witch touches her with her sticky grasp! (+RestraintAdded)
 The witch creates a magical lock made of hardened latex! (DamageTaken)
 女巫创造了一把由硬化乳胶制成的神奇锁！（DamageTaken）
 The witch squeezes your body playfully! (DamageTaken)
-女巫顽皮地挤压你的身体！（DamageTaken）
+女巫顽皮地揉捏你的身体！（DamageTaken）
 'High' Wizard
 “高阶”法师
 The wizard falls asleep.
@@ -17965,7 +17965,7 @@ The rubber elemental's restraints snap onto her and she falls over hogtied.
 The rubber elemental molds itself into restraints! (+RestraintAdded)
 橡胶精灵将自身塑造成束缚具！（+RestraintAdded）
 The rubber elemental squeezes you with its appendages! (DamageTaken)
-橡胶精灵用它的附肢挤压你！（DamageTaken）
+橡胶精灵用它的附肢揉捏你！（DamageTaken）
 The rubber elemental forms rubber locks around all your restraints! (DamageTaken)
 橡胶精灵在你的所有束缚具周围形成橡胶锁！（DamageTaken）
 Your ropes are enchanted with a lesser spell!
@@ -18302,22 +18302,28 @@ Demote to Prisoner
 降级为囚犯
 The ENMY reaches out and gives your breast a squeeze! (DMGDLT)
 ENMY 伸出手来揉捏你的乳房！(DMGDLT)
+The ENMY squeezes your breasts as you raise your arms for a spell! (DMGDLT)
+当你举起手臂施展咒语时，敌人会揉捏你的乳房！(DMGDLT)
 The ENMY reaches for you and fails!
 ENMY 向你伸出手，但失败了！
-The ENMY gives your butt a light slap! (DMGDLT)
-ENMY 轻轻地朝你的屁股打了一巴掌！(DMGDLT)
-The ENMY gives your butt a light slap as you move past! (DMGDLT)
-当你走过时，ENMY 会轻轻地拍打你的屁股！(DMGDLT)
+The ENMY gives your butt a light slap as you cast! (DMGDLT)
+当你施法时，ENMY 会轻轻拍打你的屁股！(DMGDLT)
+The ENMY gives your butt a good slap as you sprint past! (DMGDLT)
+当你冲过的时候，ENMY 狠狠地对着你的屁股打了一巴掌！(DMGDLT)
 The ENMY tries to spank you but misses!
 ENMY 试图打你的屁股，但没有打中！
 The ENMY gives your butt a squeeze! (DMGDLT)
 ENMY 揉捏你的屁股！(DMGDLT)
-The ENMY gives your butt a squeeze as you move past! (DMGDLT)
-当你经过时，ENMY 揉捏你的屁股！(DMGDLT)
+The ENMY gives your butt a squeeze during your cast! (DMGDLT)
+ENMY 会在你施法时揉捏你的屁股！(DMGDLT)
+The ENMY gives your butt a squeeze from behind! (DMGDLT)
+ENMY 从后面揉捏你的屁股！(DMGDLT)
+The ENMY gives your butt a squeeze as you pass by! (DMGDLT)
+当你经过时，ENMY 会揉捏你的屁股！(DMGDLT)
 The ENMY reaches for you but misses!
 ENMY 向你伸手，但没有摸中！
-The ENMY tickles your exposed armpits! (DMGDLT)
-ENMY 会挠你暴露的腋窝！(DMGDLT)
+The ENMY tickles your armpits! (DMGDLT)
+ENMY 挠你的腋窝！(DMGDLT)
 The ENMY tickles under your raised arms! (DMGDLT)
 ENMY 在你举起的手臂时挠你的痒痒！(DMGDLT)
 The ENMY tries to tickle you!
@@ -18328,6 +18334,8 @@ The ENMY takes off your shoes and tickles your feet! (DMGDLT)
 ENMY 脱掉你的鞋子并挠你的脚！(DMGDLT)
 The ENMY pats you gently on the head. (DMGDLT)
 ENMY 轻轻地拍了拍你的头。(DMGDLT)
+The ENMY pats you gently on the head as you fail your spell... (DMGDLT)
+当你的咒语失败时，敌人轻轻地拍了拍你的头... (DMGDLT)
 The ENMY tries to pat you on the head but decides not to.
 ENMY 试图拍拍你的头，但想了想还是算了。
 The ENMY behind you gives your shoulders a nice massage! (DMGDLT)
