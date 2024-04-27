@@ -17008,8 +17008,8 @@ Guarantees a quest from this goddess on every floor.
 保证每层都有这位女神的任务。
 You are already a devotee of this goddess.
 你已经忠诚于这位女神了。
-Offer gold to the Goddess in exchange for help. Destroys the shrine.
-向女神提供金币以换取帮助。破坏神泉。
+Offer gold in exchange for help. Destroys the shrine.
+提供金币以换取帮助。会破坏神泉。
 Ask for help without offering gold.
 寻求帮助而不提供金币。
 You have already prayed at this shrine.
