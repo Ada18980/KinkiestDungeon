@@ -9518,6 +9518,10 @@ The slime pours all over you!
 粘液洒在你身上！
 A giant cube of latex engulfs you!
 一个巨大的乳胶立方体吞没了你！
+A giant bubble of latex engulfs you and inflates, sealing you in!
+一个巨大的乳胶泡泡吞噬你并膨胀，把你封闭在里面！
+A giant latex ball swallows you and inflates, sealing around your neck!
+一个巨大的乳胶球吞噬你并膨胀，密封在你的脖子上！
 A sinister power wraps itself around you and solidifies!
 一股邪恶的力量将你包裹并凝固！
 Dark magics swirl around you and solidify into shiny rubber!
