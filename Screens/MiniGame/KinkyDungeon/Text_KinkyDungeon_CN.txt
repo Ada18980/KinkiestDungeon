@@ -9488,6 +9488,10 @@ Crystals rise up around you!
 水晶在你周围升起！
 Something shiny seems to be stretched out over the floor!
 地板上似乎有一些闪亮的东西伸展开来！
+A rubber bubble starts forming around you!
+一个橡胶泡泡开始在你周围形成！
+A rubber ball starts forming around you!
+一个橡胶球开始在你周围形成！
 You hear the sound of glass breaking, and a cloud of pink gas rises around you!
 你听到玻璃破碎的声音，一团粉红色的气体在你周围升起！
 You hear the sound of glass breaking, and a cloud of green gas rises around you!
