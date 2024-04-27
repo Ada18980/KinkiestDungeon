@@ -18025,7 +18025,51 @@ Zero Resistance
 Toggle this to set bondage resist, evasion, and block to 0. While enabled, using the 'wait until interrupted' button will not be interrupted when hit or bound.
 切换此选项可将束缚抵抗、躲避和阻挡设置为0。启用后，当点击或绑定时，使用“等待中断”按钮将不会中断。
 The RSTRT feels a little looser!
-RSTRT感觉有点松！
+你感到 RSTRT 有点松！
+Crystal Armbinder
+水晶束手套
+A growth of crystals fusing your arms together. Chaotic energies radiate in all directions, causing you to slowly lose control over your desires.
+生长的水晶将你的手臂融合在一起。混乱的能量向各个方向辐射，导致你慢慢失去对欲望的控制。
+Crystals are tough but not unbreakable.
+水晶很坚硬，但并非牢不可破。
+The lock is protected by a seal of repentance. To unlock it you must pay 1 spell point.
+这把锁被忏悔封印保护着。若要解锁它，你必须支付 1 法术点。
+The restraint won't budge.
+束缚不会动摇。
+You perform a ritual to unlock the item!
+你执行了一个仪式来解锁该物品！
+The lock is protected by a seal of repentance. To unlock it you must pay AMNT spell points!
+这把锁被忏悔封印保护着。若要解锁它，你必须支付 AMNT 法术点！
+You perform a grand ritual to unlock the item!
+你执行一个盛大的仪式来解锁该物品！
+Warden's Thigh Chain
+典狱长的大腿链
+A chain connecting your thigh cuffs together. You can still walk, albeit slower than usual.
+一条将大腿铐连接在一起的链条。你仍然可以行走，但是速度比平时慢。
+You've stolen something of great value. Now you must give it back.
+你偷了一些很有价值的东西。现在你必须把它还回去。
+Warden's Ankle Chain
+典狱长的踝链
+A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
+一条将脚踝铐连接在一起的链条。它为你提供了足够的走动空间，但是速度比平时慢。
+Warden's Ankle Link
+典狱长的踝短链
+A short chain connecting your ankle cuffs together. You can barely separate your legs with this on.
+一条短链将你的脚踝铐连接在一起。戴上它，你的双腿几乎无法分开。
+An intense, albeit temporary punishment for breaking the rules.
+对违反规则的行为给予严厉的惩罚，不过是暂时的。
+Warden's Elbow Chain
+典狱长的肘链
+A very short chain connecting your elbow cuffs together. It is quite awkward to remove by yourself.
+一条很短的链条，将你的肘铐连接在一起。自己取下来很不方便。
+Warden's Wrist Chain
+典狱长腕链
+A very short chain connecting your wrist cuffs together.
+一条非常短的链条，将你的手腕铐连接在一起。
+ESCP Difficulty: AMNT
+ESCP 难度：AMNT
+ESCP Power: AMNT%
+ESCP 功率：AMNT%
 Your collar channels the vigor of excitement into magical energy!
 你的项圈将兴奋的活力转化为神奇的能量！
 The collar has already squeezed what it can out of you. Clear your mind first!
