@@ -7411,7 +7411,7 @@ Binding
 Stealth
 隐形
 Light
-光
+轻
 Shadow
 阴影
 Knowledge
