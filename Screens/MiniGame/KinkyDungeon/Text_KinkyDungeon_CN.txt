@@ -688,6 +688,16 @@ Nowhere is Safe
 草木皆兵
 Beds and furniture are often trapped.
 床和场景家具通常会是陷阱。
+Quakehoof Associate
+震蹄助手
+Start with the Epsilon Collar, which regenerates mana when you play with yourself.
+开局穿戴能量子项圈，当你自慰时会恢复法力。
+Epsilon Collar
+能量子项圈
+A collar reserved for the most prestigious of submissives.
+这是专为最尊贵的顺从者准备的项圈。
+Restores mana when you play with yourself, but increases the distraction given. Only works when Desire is below the limit.
+自慰时可恢复法力，但会提高增加性奋值的程度。仅当欲望低于上限时有效。
 Bullet Hell
 子弹地狱
 Hides warning lines for non-AoE bullets and projectiles.
@@ -5164,6 +5174,8 @@ As long as it's... inserted, you won't be going anywhere!
 只要它……插入，你就哪儿也去不了！
 As long as it's attached, you won't be going anywhere!
 只要它附在身上，你就哪儿也去不了！
+A devious way to immobilize people.
+一种使人动弹不得的狡猾方法。
 You're not fooling anyone...
 你骗不到任何人...
 You might be able to fool someone like this...
@@ -5228,6 +5240,12 @@ It seems to react with a pulse of energy whenever a nearby enemy is defeated.
 每当附近的敌人被击败时，它似乎都会以能量脉冲作出反应。
 Your collar pulses, and a revenant appears to avenge the enemy you defeated!
 你的项圈跳动，一个亡魂出现，为你击败的敌人报仇！
+Fuuka's Pet Collar
+Fuuka的宠物项圈
+A collar enchanted with beneficial ghastly energy.
+被赋予了有益的可怕能量的项圈。
+Your collar pulses, and a revenant appears to assist you!
+你的项圈跳动，一个亡魂出现来帮助你！
 Dress Bustier
 连衣裙紧身胸衣
 A deceptively cruel device, making it impossible to reach your nipples.
@@ -5288,6 +5306,8 @@ A slick layer of blue latex stretched over the mouth. It has a lockable strap wh
 一层光滑的蓝色乳胶覆盖在嘴巴上。它有一条可锁定的带子，可防止其被移除。
 Rubberized Gloves
 橡胶手套
+A mass of alchemical latex stretched over your arms, then hardened to the point that you can barely move your fingers!
+一团炼金乳胶在你的手臂上生长，然后硬化到你几乎无法移动手指的程度！
 Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!
 与典型的橡胶不同，这种材料耐用、柔韧，而且有点粘！
 Rubberized Socks
@@ -5352,6 +5372,10 @@ High-Security Straitjacket
 高安全性拘束衣
 A straitjacket enclosing your hands and arms completely, making your hands useless.
 紧身衣将你的手和手臂完全包住，使你的手变得毫无用处。
+High-Security Lockdown Jacket
+高安全性锁定拘束衣
+This jacket made with extra straps can even be used on top of another jacket for extra security.
+这件带有额外带子的拘束衣甚至可以套在另一件拘束衣上面，以增加安全性。
 High-Security Legbinder
 高安全性束腿套
 An mythril legbinder enclosing your legs, making it difficult to move.
@@ -5528,6 +5552,8 @@ They make it hard to manipulate anything at all, but aren't the toughest materia
 它们使操作任何东西都变得困难，但不是最坚硬的材料。
 Bast Suit
 Bast 套装
+A skintight suit used on unruly initiates of the Bast cult.
+Bast 教派不守规矩的新信徒穿的紧身衣。
 It's nearly impossible to escape without help once locked inside.
 一旦被锁在里面，几乎不可能在没有帮助的情况下逃脱。
 Bast Petsuit
@@ -5786,8 +5812,18 @@ Steel Yoke
 钢枷锁
 A steel bar clamped firmly around your wrists and neck, leaving you in a helpless position.
 钢枷锁牢牢地夹在你的手腕和脖子上，使你处于无助的位置。
-This is not something you can pick by yourself...
-这不是你自己可以选择的东西...
+The awkward position makes it difficult to get out of alone.
+尴尬的处境让人很难独自走出来。
+Heavy Yoke
+重型枷锁
+A series of armor-grade plates cut with precision machining, sandwiched into an unbreakable layer that clasps firmly in place around your neck and wrists.
+一系列经过精密加工切割的装甲级板材，夹在牢不可破的层中，可以牢牢地固定在你的颈部和手腕上。
+Steel Fiddle
+钢提琴
+A steel fixture keeping your hands in an awkward and submissive position.
+钢制固定装置使你的手处于尴尬且顺从的姿势。
+The awkward position prevents you from easily reaching the lock.
+这种尴尬的位置使得你无法轻易够到锁。
 Leather Harness
 皮革束衣
 A leather harness of tight straps buckled around your torso.
@@ -6014,6 +6050,12 @@ A sophisticated training system used to keep wolfgirls from scratching their own
 一个复杂的训练系统，用来防止狼女抓挠他们的主人。
 Despite the harsh position, it is padded, breathable, and suitable for long term wear.
 尽管十分严苛，但它具有衬垫、透气性，适合长期佩戴。
+Wolf Queenbinder
+狼女王束手套
+This was made to be used during a coup attempt.  Unfortunately, its creator ended up wearing it instead, after the coup's failure.
+这枚戒指原本是为政变准备的。不幸的是，政变失败后，它的创造者反而戴上了它。
+Designed to hold the queen of wolves helpless for an indefinite period of time.
+目的是让狼女王无限期地陷入无助状态。
 Smart Training Cuffs
 智能训练手铐
 Cuffs with a feature to punish the wearer if they act aggressively.
@@ -6030,6 +6072,12 @@ A harness that keeps a wolfgirl's suit together. It makes escaping more difficul
 将狼女的装备固定在一起的束带。这让逃跑变得更加困难。
 While it is weatherproof and rugged, its straps are merely nylon.
 虽然它防风雨且坚固耐用，但它的表带只是尼龙材质。
+Training Mittens
+训练手套
+When wolfgirls won't keep those pesky claws in line, these will make sure she can't cause too much trouble.
+当狼女不肯控制住那些讨厌的爪子时，这些会确保她不会造成太多麻烦。
+Made from strong reinforced fabric, your claws won't do anything to these mittens.
+这款手套采用坚固的加固织物制成，你的爪子不会对这些手套造成任何伤害。
 Training Gag
 训练口球
 A gag used to prevent wolfgirls from biting their owners.
@@ -6084,6 +6132,8 @@ Transport Jacket
 运输拘束衣
 This jacket goes over a straitjacket to keep the arms trapped.
 这件拘束衣套在拘束衣外面，可以锁住胳膊。
+It makes it extraordinarily difficult to escape the jacket it covers.
+这使得摆脱它所覆盖的外壳变得极其困难。
 Living Asylum Collar
 活体安全项圈
 A collar made of tough cowhide that adjusts itself to your neck.
@@ -6622,10 +6672,14 @@ Shining cuffs made of holy metal. Nothing can touch it.
 由圣洁金属制成的闪亮手铐。什么都不能碰它。
 Divine Muzzle
 神圣口套
-A shining muzzle made of holy metal. Nothing can touch it.
-由圣金属制成的闪亮口套。什么都不能碰它。
+Keep those lips sealed.
+保持沉默。
 A piece of cloth secured onto your face and blocking vision.
 一块布固定在你的脸上并挡住视线。
+Divine Gag
+神圣口塞
+A shining gag made of holy metal. Nothing can touch it.
+由神圣的金属制成的闪亮口塞。什么都不能碰它。
 Cleave Gag
 顺切堵嘴
 A piece of cloth forced between your lips.
@@ -14764,6 +14818,18 @@ A squishy and sticky bubble that you can't get out of!
 一个又软又粘的泡泡，你无法挣脱！
 It will slow you down severely but can be popped if you can reach a knife...
 它会严重减慢你的速度，但如果你能拿到刀，它就会从你身体弹出......
+Latex Sphere
+乳胶球
+A giant inflatable sphere that compresses you and leaves you helpless...
+一个巨大的充气球体压缩你并让你无助......
+You can't see out of it nor can you control its movement. If only you could puncture it!
+你既看不到它，也无法控制它的运动。要是你能刺穿它就好了！
+Latex Ball Suit
+乳胶球服
+A giant inflatable sphere that leaves you rolling around...
+一个巨大的充气球，让你滚来滚去......
+Your movement is severely hampered, limited to feeble wiggling...
+你的行动受到严重阻碍，只能进行微弱的扭动......
 Bubble
 泡泡
 A squishy bubble that you can't get out of!
@@ -17984,22 +18050,132 @@ Antique Merchant
 古董商人
 You smash the antique merchant!
 你砸了古董商！
+You step on the item and tug to pull it taut...
+你踩在物品上并用力拉紧它......
+You tug furiously against the leash, pulling it taut!
+你猛力拉扯皮带，把它拉紧！
+Silenced Hall
+寂静大厅
+The waist-deep water slows you!
+齐腰深的水让你行动缓慢！
+Sariel Vinlaga's Panties
+萨里尔·文拉加(Sariel Vinlaga) 的内裤
+Legend has it that these were worn by the legendary archmagus herself.
+据传说，这是传奇大法师本人所佩戴的。
+If you keep them in your mouth, your verbal spells have -50% miscast chance. +10% spell damage.
+如果你将它塞在嘴里，你的口头咒语的错误施法概率将 -50%。法术伤害将 +10%。
+You find a pair of black panties with pink trim, scrunched up in a ball.
+你发现了一条带有粉色镶边的黑色内裤，蜷缩成一团。
+Elven Panties
+精灵内裤
+In faraway lands, they often say that less is more...
+在遥远的国度，人们常说少即是多……
++11% sprint efficiency
++11% 冲刺效率
+You find a pair of elven panties.
+你找到了一条精灵内裤。
+Hood of Fluffoth
+弗拉弗斯(Fluffoth) 的兜帽
+Worn by devotees to Fluffoth, demonic ruler of the plush abyss.
+毛绒深渊的恶魔统治者 弗拉弗斯(Fluffoth) 的信徒们佩戴的。
+When distraction reaches 90%, emit a wave of soft energies that envelops targets a 5x5 area. Deals 40 plush damage and snares for 3 turns. Recharges when your distraction goes below 50%. 5 turn internal cooldown.
+当性奋值达到 90% 时，发射一波软能量，将目标包围在 5x5 范围内。造成 40 点伤害并持续 3 回合。干扰低于 50% 时重新充能。 5 回合体内冷却。
+Ceremonial Leotard
+礼仪紧身衣
+When distraction reaches 90%, emit a wave of soft energies that envelops targets a 5x5 area. Deals 30 plush damage and snares for 3 turns. Recharges when your distraction goes below 50%. 5 turn internal cooldown.
+当干扰超过 90% 时，发射一波软能量，将目标包围在 5x5 范围内。造成 30 点伤害，并持续 3 回合。干扰低于 50% 时重新充能。 5 回合内部冷却。
+You find a sinister hood made of soft plush.
+你发现了一个由柔软的毛绒制成的阴险兜帽。
+Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock
+由强大的古代统治阶层 Fla'peh 委托。配有集成锁
+Its soul crystals dampen willpower changes, reducing all willpower changes by 25%.
+它的灵魂晶体会抑制意志力的变化，使所有意志力的变化减少25%。
+You find a ceremonial leotard.
+你找到了一件礼仪紧身衣。
+(As you slay the dragon, it begins shapeshifting into human form!)
+（当你杀死龙时，它开始变身为人形！）
+Crystal Dragon Queen
+水晶龙女王
+The crystal dragon shapeshifts back to human form!
+水晶龙变回人形！
+The crystal dragon strikes you with its claws! (DamageTaken)
+水晶龙用爪子攻击你！（DamageTaken）
+The crystal dragon breaths a sparkling dust, which hardens into crystal! (+RestraintAdded)
+水晶龙喷出闪闪发光的粉末，粉末凝固后便变成了水晶！（+RestraintAdded）
+The crystal dragon takes flight and swoops toward you!
+水晶龙飞起来并向你俯冲过来！
+The crystal dragon takes flight and slams into you! (Stunned!)
+水晶龙飞起来撞向你！（眩晕！）
+Crystal Dragon Girl
+水晶龙女
+The dragon girl submits to you!
+龙女臣服于你！
+The dragon girl slams you with several hurled crystals! (DamageTaken)
+龙女向你投掷数颗水晶！（DamageTaken）
+The dragon girl conjures a cloud of crystals that solidify! (+RestraintAdded)
+龙女孩召唤出一团凝固的水晶云！（+RestraintAdded）
+Poison Dragon Queen
+毒龙女王
+The poison dragon shapeshifts back to human form!
+毒龙变回人形！
+The poison dragon strikes you with its claws! (DamageTaken)
+毒龙用爪子攻击你！（DamageTaken）
+The poison dragon extends many vines from its wings! (+RestraintAdded)
+毒龙的翅膀上长出了许多藤蔓！（+RestraintAdded）
+The poison dragon takes flight and swoops toward you!
+毒龙飞起并向你扑来！
+The poison dragon takes flight and slams into you! (Stunned!)
+毒龙飞起来撞向你！（眩晕！）
+Poison Dragon Girl
+毒龙女
+The dragon girl slashes you with her venomous nails! (DamageTaken)
+龙女用她有毒的指甲砍你！（DamageTaken）
+The dragon girl raises vines out of the ground to bind you! (+RestraintAdded)
+龙女从地面伸出藤蔓来束缚你！（+RestraintAdded）
+Ice Dragon Queen
+冰龙女王
+The ice dragon shapeshifts back to human form!
+冰龙变回人形！
+The ice dragon strikes you with its claws! (DamageTaken)
+冰龙用爪子攻击你！（DamageTaken）
+The ice dragon catches you in its icy breath! (+RestraintAdded)
+冰龙用它冰冷的气息抓住了你！（+RestraintAdded）
+Ice Dragon Girl
+冰龙女
+The dragon girl slams you with several chunks of ice! (DamageTaken)
+龙女用几块冰砸向你！（DamageTaken）
+The dragon girl splashes you with instantly freezing ice! (+RestraintAdded)
+龙女瞬间将冰冷的冰泼向你！（+RestraintAdded）
+Shadow Dragon Queen
+暗影龙女王
+The shadow dragon shapeshifts back to human form!
+暗影龙变回人形！
+The shadow dragon slashes directly at your mind! (DamageTaken)
+暗影龙直击你的心灵！（DamageTaken）
+The shadow dragon wraps itself around you many times! (+RestraintAdded)
+暗影龙多次缠绕你！（+RestraintAdded）
+Shadow Dragon Girl
+暗影龙女
+The dragon girl stares into your eyes! (DamageTaken)
+龙女凝视着你的眼睛！（DamageTaken）
+The dragon girl reaches out with a shadowy grip! (+RestraintAdded)
+龙女伸出阴影般的手！（+RestraintAdded）
 (The SPEAKER rattles as she waves)|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
-( SPEAKER 挥手时，身体发出嘎吱声)|嗨！|想买一些古代珍宝吗？|我的古董店有你需要的东西！
+(SPEAKER 挥手时，身体发出嘎吱声)|嗨！|想买一些古代珍宝吗？|我的古董店有你需要的东西！
 (The SPEAKER cracks her exposed knuckles)|So you've seen through my disguise...
-( SPEAKER 敲击着她的指节)|那么你已经看穿了我的伪装...
+(SPEAKER 敲击着她的指节)|那么你已经看穿了我的伪装...
 (The SPEAKER looks at you.)|Yours is just fine, dear.
-( SPEAKER 看着你)|你的就很好，亲爱的。
+(SPEAKER 看着你)|你的就很好，亲爱的。
 (The SPEAKER chuckles)|You don't have enough gold for that, dear.|Try coming back after a good round of looting!
- ( SPEAKER 笑着说)|你没有足够的金币，亲爱的。|等你洗劫一空再回来吧！
+(SPEAKER 笑着说)|你没有足够的金币，亲爱的。|等你洗劫一空再回来吧！
 (The SPEAKER nods)|My great grandmother used to wear these."
-( SPEAKER 点点头)|我的曾祖母曾经戴过这个。
+(SPEAKER 点点头)|我的曾祖母曾经戴过这个。
 (The SPEAKER nods)|Adventurers used to love a good burlap sack.|Nowadays they've got that newfangled magic instead...
-( SPEAKER 点点头)|冒险家们过去喜欢麻布袋，|如今他们用新式魔术袋代替了麻布袋...
+(SPEAKER 点点头)|冒险家们过去喜欢麻布袋，|如今他们用新式魔术袋代替了麻布袋...
 (The SPEAKER nods)|Back in my day, they used candles for light!|These let you put them out to save wax.
-( SPEAKER 点点头)|在我那个年代，人们用蜡烛来照明！|这些可以让你把它们熄灭，以节省蜡。
+(SPEAKER 点点头)|在我那个年代，人们用蜡烛来照明！|这些可以让你把它们熄灭，以节省蜡。
 (The SPEAKER giggles)|I had all sorts of use for this back on the farm.
-( SPEAKER 咯咯地笑着)|我在农场的时候，这个东西有各种用途。
+(SPEAKER 咯咯地笑着)|我在农场的时候，这个东西有各种用途。
 Click a hotbar position to assign the item to that slot.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
 点击热键栏位置，即可将项目分配到该槽。|您可以点击右侧的交换按钮，在三个热栏之间进行切换。||您还可以为您的热键栏保存和加载预设。|这些预设在运行时共享。
 Zero Resistance
