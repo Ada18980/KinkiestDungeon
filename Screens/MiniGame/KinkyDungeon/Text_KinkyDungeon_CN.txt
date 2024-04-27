@@ -2578,6 +2578,8 @@ Magic Flail
 魔法流星锤
 A blessed censer that distributes pain equally.
 一个用于平等地分配伤害的受祝福的香炉。
+Deals crush damage. Deals 20 bonus shadow damage to the target and enemies near the target.
+造成挤压伤害。对目标和目标附近的敌人造成20点额外的暗影伤害。
 Magic Spear
 附魔长矛
 Seeks and pierces hearts with ease.
