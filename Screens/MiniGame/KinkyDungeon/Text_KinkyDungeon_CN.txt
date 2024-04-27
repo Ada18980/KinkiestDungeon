@@ -18310,3 +18310,7 @@ Cyber Guardian
 赛博守护者
 Auto Enforcer Guardian
 自动执法器守护者
+Some Exclusions Apply
+部分除外条款适用
+Goddess shrines do not remove non-binding restraints such as harnesses and cuffs.
+女神神殿不会移除非拘束性束缚，如安全带和铐。
