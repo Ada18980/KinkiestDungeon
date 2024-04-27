@@ -17422,8 +17422,8 @@ BOSS ROOM CLEARED!
 BOSS 房已清空！
 Defeat the boss to unlock the door.  You can also unlock it by losing to the boss and being penalized.
 击败Boss即可打开门。你也可以通过输给Boss并受到惩罚来解锁它。
-There seems to be a locked high-security door. Looks like you need to kill the boss to open it.
-似乎有一扇被锁住的高安全门。看来需要杀掉boss才能打开。
+There seems to be a locked high-security door. Looks like you need to defeat the boss to open it.
+似乎有一扇被锁住的高安全门。看来你需要击败Boss才能打开。
 Exits locked!|Defeat NUMBER TYPE!
 出口已锁定！|需击败 NUMBER 名 TYPE!
 Quota Reached!
@@ -17432,8 +17432,8 @@ Bounty
 赏金
 Defeat the specified targets to unlock the door.
 击败指定目标即可解锁下一层的门。
-There seems to be a locked high-security door. Looks like you need to kill the targetted enemies to open it.
-似乎有一扇被锁住的高安全门。看来你需要杀死目标敌人才能打开它。
+There seems to be a locked high-security door. Looks like you need to defeat the targetted enemies to open it.
+似乎有一扇被锁住的高安全门。看来你需要击败目标敌人才能打开它。
 Exits locked!|Defeat TYPE!
 出口已锁定！|需击败 TYPE!
 Miniboss defeated!
@@ -17442,8 +17442,8 @@ Dangerous Bounty
 危险的赏金
 Defeat the specified strong enemy to unlock the door.
 击败指定强敌即可解锁下一层的门。
-There seems to be a locked high-security door. Looks like you need to kill the miniboss to open it.
-似乎有一扇被锁住的高安全门。看来你需要杀死小型Boss才能打开它。
+There seems to be a locked high-security door. Looks like you need to defeat the miniboss to open it.
+似乎有一扇被锁住的高安全门。看来你需要击败小型Boss才能打开它。
 Exits locked!|Open NUMBER Chests!
 出口已锁定！|需要打开 NUMBER 个宝箱！
 Chest Hunt
