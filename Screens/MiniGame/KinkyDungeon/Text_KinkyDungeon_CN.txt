@@ -5161,7 +5161,7 @@ The goddess offers a ItemTraded for ItemCost (NumCurrent/NumMax)
 Next Offer
 下一个交易
 Buy (press right)
-购买 (press right)
+购买 (获取想要的东西)
 Cost: ItemCostgp
 花费：ItemCostgp
 You climb down to the next level
