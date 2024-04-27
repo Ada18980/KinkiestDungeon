@@ -17924,8 +17924,8 @@ Recursive Bag
 递归包
 You cover the light source.
 你遮住光源。
-Bags inside a bag of bags inside a bag of bags...
-袋子里面有个袋子里面有个袋子里面有个袋子......
+Bags inside a bag of bags inside a bag of bags
+袋子里面有个袋子里面有个袋子里面有个袋子
 Can be placed over light sources to cover them.
 可以放置在光源上方以遮住它们。
 The snuffer doesn't work on that light source.
