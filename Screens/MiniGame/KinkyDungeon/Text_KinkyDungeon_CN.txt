@@ -5678,6 +5678,164 @@ Your cuffs detatch!
 你的手铐松了！
 The enemy attaches your elbow cuffs together!
 敌人将你的肘部用手铐绑在一起！
+Vine Pod
+藤荚
+The vine pod explodes into dust!
+藤荚爆炸成灰尘！
+The vine pod wraps you in vines and squeezes! (DamageTaken)
+藤荚将你包裹在藤蔓中并挤压！（DamageTaken）
+The vine pod launches several vines at you in quick succession! (+RestraintAdded)
+藤蔓荚会快速连续地向你发射几根藤蔓！（+RestraintAdded）
+Sleep Flower
+睡眠花
+The sleep flower explodes into dust!
+睡眠花爆炸成灰尘！
+The sleep flower sprays pollen into your face! Achoo! (DamageTaken)
+睡眠花将花粉喷到你脸上！阿嚏！（DamageTaken）
+The sleep flower launches several vines at you in quick succession! (+RestraintAdded)
+睡眠花快速连续向你发射几根藤蔓！（+RestraintAdded）
+Several vine pods sprout out of the ground!
+数颗藤蔓破土而出！
+A vine pod sprouts out of the ground!
+一颗藤蔓破土而出！
+A wall of ice rises from the ground!
+一道冰墙从地底升起！
+The dragon's breath poisons you!
+龙息让你中毒！
+The dragon girl strikes you with poisonous razor leaves!
+龙女用有毒的剃须叶攻击你！
+The flower releases soporific spores!
+花释放催眠孢子！
+Poison Breath
+毒息
+Vines reach from the ceiling and lift you into the air!
+藤蔓从天花板伸出，将你带到空中！
+Vine Suspension
+藤蔓悬挂
+Vines linked to your bindings that keep you suspended!
+藤蔓与你的束缚相连，让你悬浮！
+You are left dangling! Maybe if you swing hard enough you can tear the vines...
+你悬空了！也许你挥动得足够用力，你就能震破藤蔓......
+Icy Barrier
+冰冷屏障
+The wall of ice shatters!
+冰墙破碎！
+Icy Breath
+冰冷呼吸
+Ice Orb
+冰珠
+The EnemyName breaths in deeply, causing the air around you to chill...
+EnemyName 深呼吸，让你周围的空气变得寒冷...
+Shadow Bubble
+暗影泡泡
+The projectile explodes into tight shadow latex, stretching all across your body!
+射弹爆炸成紧密的暗影乳胶，伸展到你的全身！
+The dragon dances through the shadows!
+龙在阴影中舞动！
+You tip over as you try to roll yourself! (oof!)
+当你试图翻身时你会被磕到！（哎哟！）
+The shadowy energies surrounding you drain away your mana...
+你周围的阴暗能量会耗尽你的法力......
+Shadow Sphere
+暗影球体
+A giant shadow latex sphere that leaves you rolling around...
+一个巨大的阴影乳胶球，让你滚来滚去......
+Dark magics fill the air!
+空气中弥漫着黑暗魔法！
+Shadow Posture Collar
+影姿项圈
+A strict collar that seals your mouth tightly.
+严格的项圈可以紧紧地封住你的嘴。
+It is made of shadow latex, tougher to cut than normal latex
+它由阴影乳胶制成，比普通乳胶更难切割
+*scoffs* Amateur.
+*嘲笑* 业余。
+Nothing personal.
+无关个人。
+Not bad... you made me use 10% of my power.
+还不赖…… 你让我用了百分之十的力量。
+It's a defunct elevator, likely from the Old Civilization.
+这是一部废弃的电梯，可能来自旧文明。
+(The elevator beeps and roars to life)|(Its control panel displays a list of options)
+（电梯发出嘟嘟声和轰鸣声）|（其控制面板显示选项列表）
+(Go to floor 0)
+（前往第 0 层）
+(Go to floor 1)
+（前往第 1 层）
+(Go to floor 2)
+（前往第 2 层）
+(Go to floor 3)
+（前往第 3 层）
+(Go to floor 4)
+（前往第 4 层）
+(Go to floor 5)
+（前往第 5 层）
+(Go to floor 6)
+（前往第 6 层）
+(Go to floor 7)
+（前往第 7 层）
+(Go to floor 8)
+（前往第 8 层）
+(Go to floor 9)
+（前往第 9 层）
+(Go to floor 10)
+（前往第 10 层）
+(Go to floor 11)
+（前往第 11 层）
+(Go to floor 12)
+（前往第 12 层）
+(Go to floor 13)
+（前往第 13 层）
+(Go to floor 14)
+（前往第 14 层）
+(Go to floor 15)
+（前往第 15 层）
+(Go to floor 6)
+（前往第 16 层）
+(Go to floor 7)
+（前往第 17 层）
+(Go to floor 8)
+（前往第 18 层）
+(Go to floor 9)
+（前往第 19 层）
+(Go to floor 20)
+（前往第 20 层）
+(The viewscreen depicts a face)|Why hello there adventurer! What brings you?
+（屏幕上描绘了一张脸）|你好，冒险家！什么风把你吹过来啦？
+(The face giggles)|Sadly my language processing systems aren't that good.|Try removing your gag first?
+（脸上咯咯地笑）|可悲的是我的语言处理系统不太好。|先试着去掉你的口塞？
+(The face smiles)|I am the Facility's vessel, of course!|Sariel called me Oriel, but I don't see her much these days...
+（脸上微笑）|当然，我是设施的容器！|萨里尔(Sariel)叫我奥丽尔(Oriel)，但这些天我很少见到她......
+(Oriel smiles)|Ah, it's you again!|It seems like you've found a new toy as well?|I can't understand you, silly~
+（奥丽尔(Oriel)笑）|啊，又是你！|你好像找到了新玩具？|我听不懂你在说什么，笨蛋~
+Oriel? As in the goddess of technology?
+奥丽尔(Oriel)？就像科技女神里的那样？
+'Goddess'? That seems like an outdated term.|Regardless, I am only a vessel, not the facility itself.
+'女神'？这似乎是一个过时的术语。|无论如何，我只是个容器，而不是设施本身。
+(Oriel giggles)|Sweetie, I can't understand you.
+（奥丽尔(Oriel)咯咯笑）|亲爱的，我听不懂你在说什么。
+Can you control the facility?
+你能控制设施吗？
+(Oriel frowns)|Adventurers seem to keep asking me that.|In my current state I don't have control over much at all.|But I'm always here to talk!
+（奥丽尔(Oriel)皱眉）|冒险家们似乎一直在问我这个问题。|在我目前的状态下，我根本无法控制太多。|但我总是在这里说话！
+Can you turn on the elevator?
+你能打开电梯吗？
+I'm sorry, adventurer. I can't do that.|But maybe if you can get rid of all the nearby threats...|They've been under lockdown for a long time.|Just push the button again if it hasn't updated yet.
+对不起，冒险家。我做不到。|但也许如果你能摆脱所有附近的威胁...|它们已经被锁定很长时间了。|如果尚未更新，请再次按下按钮。
+(Oriel chuckles)|What was that again?|Sorry~
+（奥丽尔(Oriel)轻笑）|那又是什么？|抱歉~
+Can you help me out?
+你能帮我吗？
+(Oriel giggles)|I can't do anything for you right now~
+（奥丽尔(Oriel)咯咯笑）|我现在帮不了你什么~
+(Oriel smiles)|It's always fun to see you like that~
+（奥丽尔(Oriel)微笑）|看到你这样总是很开心~
+How are you doing?
+你还好吗？
+(Oriel smiles)|Good!|I miss Sariel, though...
+（奥丽尔(Oriel)微笑）|好！|我想念萨里尔(Sariel)，不过……
+RMNME of CHTRNME the ENMYNME
+ENMYNME CHTRNME 的 RMNME
 Cuffs Chain
 链式手铐
 A full set of cuffs keeping your arms in a strict elbow tie!
