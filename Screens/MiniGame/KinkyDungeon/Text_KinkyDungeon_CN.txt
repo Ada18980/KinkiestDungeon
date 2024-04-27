@@ -15398,8 +15398,12 @@ Secure Defense
 +15-30 格挡，基于你的意志力百分比。
 You block the EnemyName attack!
 你挡住了 EnemyName 的攻击！
+You block EnemyName!
+你挡住了 EnemyName！
 You block the EnemyName!
 你挡住了 EnemyName！
+You dodge EnemyName!
+你躲开了 EnemyName！
 You dodge the EnemyName!
 你躲开了 EnemyName！
 You resist being bound!
