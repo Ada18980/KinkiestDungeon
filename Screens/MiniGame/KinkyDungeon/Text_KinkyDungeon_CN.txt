@@ -166,6 +166,112 @@ Force restraints to use outfit palette
 强制束缚具使用衣物主色调
 Player Background Color
 玩家背景颜色
+An attack causes you to bounce...
+一次攻击会让你反弹......
+You find yourself enveloped in a bubble!
+你发现自己被泡泡包裹着！
+A sphere of latex coalesces around you, trapping you and inflating until tight!
+一个乳胶球在你的周围凝聚，将你困住并充气直至绷紧！
+A sphere of latex coalesces around you, trapping you and sealing around your neck!
+一个乳胶球在你的周围凝聚，将你困住并封住你的脖子！
+You find yourself enveloped in a slime bubble!
+你发现自己被一个粘液泡泡包裹了！
+Your RestraintName pops with a loud bang!
+你的 RestraintName 会发出巨响！
+Your RestraintName starts leaking air! Very, very slowly...
+你的 RestraintName 开始漏气！非常非常慢……
+Aqua Slime
+水生粘液
+The aqua slime melts into a wet puddle.
+水生粘液融化成一滩湿水。
+The aqua slime splashes against you! (DamageTaken)
+水生粘液溅到你身上！（DamageTaken）
+The aqua slime expands into a bubble and throws itself at you! (+RestraintAdded)
+水生粘液膨胀成泡泡并朝你扑来！（+RestraintAdded）
+Aqua Bubble (Head)
+水生泡泡（头部）
+A squishy bubble made of a gelatinous substance!
+由胶状物质构成的柔软泡泡！
+You can pop it with a sharp enough edge, if you can get your tool in the position...
+如果你能将工具放到正确的位置，你就可以用足够锋利的物品戳破它...
+Aqua Bubble (Arms)
+水生泡泡（手臂）
+Aqua Bubble (Legs)
+水生泡泡（腿）
+The bubbles on you combine into one big bubble!
+你身上的泡泡合并成一个大泡泡！
+The stairs have been locked down for NMB more turns.
+楼梯已被锁定 NMB 个回合。
+Curse of Increasing Tightness: Your restraints get tighter over time.
+愈发紧密的诅咒：随着时间的推移，你的束缚会变得越来越紧。
+Curse of Lethargy: Reduce distraction over time, but miscast chance is increased by AMNT%.
+嗜睡诅咒：随着时间推移减少性奋值，但施法错误的可能性增加 AMNT%。
+Curse of Mute: You cannot converse, and verbal spells cost AMNT% more mana.
+哑巴诅咒：你无法交谈，并且言语类咒语会消耗 AMNT% 以上的法力。
+Curse of Clumsiness: After casting an arm spell, you drop your currently held weapon.
+笨拙诅咒：施展手臂法术后，你会当前持有的武器会掉落。
+Curse of Deflection: 50% chance for an attack to be redirected against an adjacent hostile target.
+偏转诅咒：有 50% 的几率将攻击转移到相邻的敌对目标。
+Loot Recovery:
+战利品恢复：
+Enabled
+开启
+Disabled
+关闭
+Partial
+部分
+You recover important items when you advance floors.
+当你前进楼层时，你重要的物品会恢复。
+Once items are lost, they are gone for good.
+物品一旦丢失，就再也没有了。
+Each item has a 25% chance of appearing in the chest between floors.
+每件物品都有 25% 的概率出现在楼层之间的箱子里。
+You find a familiar adventuring outfit!
+你找到了熟悉的冒险服装！
+You feel energy flow out of you, activating the floor below!
+你感觉到能量从你身上流出，激活了下面的地板！
+You feel energy flow out of you, lighting up a circle on the floor!
+你感觉到能量从你身上流出，照亮了地板上的一个圆圈！
+The floor beneath you drains your mana, but you don't have enough to satisfy it.
+你脚下的地板会消耗你的魔法，但你没有足够的魔法来满足它。
+The ground beneath you glows with magical energy!
+你脚下的大地闪耀着神奇的能量！
+Mysterious Plate
+神秘板块
+What could it be?
+可能是什么？
+Mana-Charged Plate
+法术充能板
+It seems like it needs more power...
+它似乎需要更多的动力...
+It's giving off a strange energy!
+它释放出一种奇怪的能量！
+Glass Plate
+玻璃板
+Looks like it has lighting elements inside.
+看起来里面有照明元素。
+Many bars come out of the ground and restrain you!
+许多笼子从地上冒出来束缚你！
+One Bar Missile
+单杠投射物
+Restraining Bolt
+束缚闪电
+Sealing Bolt
+密封闪电
+Bondage Blast
+捆绑冲击波
+Magic Missile
+魔法投射物
+Warden's Cage
+典狱长的笼子
+Restricting Bars
+束缚笼
+The bars retract into the ground.
+笼子缩回地面。
+Sealing Pillar
+密封柱子
+The pillar collapses, causing zombies to rise up!
+柱子倒塌了，使僵尸站了起来！
 Choose default restraint palette:
 选择默认束缚主色调:
 Flip Player Display
@@ -5368,6 +5474,12 @@ Charm Wrapping (Legs)
 丝带包裹（腿）
 A layer of faintly magic ribbon wrapped tight around your thighs.
 一条被赋予微弱魔法的丝带紧紧的缠绕在你的大腿上。
+Living Charm Collar
+活体丝带项圈
+This collar is designed to make sure its wearer does not escape their charms.
+这枚项圈的设计是为了确保佩戴者不会从丝带中逃脱。
+It will occasionally cause charms to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of charms you have on you.
+它偶尔会突然出现符咒，并束缚佩戴者。效果的速度增加取决于你身上的符咒数量。
 Leather Panel Gag
 皮革面板堵嘴
 A gag that seals your lips tightly and stuffs your mouth with a ball.
@@ -5442,6 +5554,12 @@ Blessed Wrappings (Legs)
 祝福丝带包裹（腿）
 A layer of magic embalming ribbon wrapped tight around your thighs.
 一层神奇的防腐丝带紧紧地缠绕在你的大腿上。
+Living Blessed Wrappings Collar
+活体祝福丝带项圈
+This collar is designed to make sure its wearer does not escape their wrappings.
+这款项圈的设计是为了确保佩戴者不会逃脱活体祝福丝带。
+It will occasionally cause blessed wrappings to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of blessed wrappings you have on you.
+它偶尔会使幸祝福丝带突然出现，并束缚佩戴者。根据你身上祝福丝带的数量，速度的效果会增加。
 Autotape (Hands)
 自动胶带（手）
 Sticky tape made from a metallic material. Used to great effect in police situations.
@@ -5462,16 +5580,28 @@ Autotape (Feet)
 自动胶带（足）
 Autotape (Mouth)
 自动胶带（嘴）
+Living Auto Tape Collar
+活体自动胶带项圈
+This collar is designed to make sure its wearer does not escape their tape.
+这款项圈的设计是为了确保佩戴者不会逃脱胶带的束缚。
+It will occasionally cause tape to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of tape you have on you.
+它偶尔会使胶带突然出现并束缚佩戴者。速度的提高效果取决于你身上的胶带数量。
 Stuffing
 布团口塞
 A stuffing of cloth.
 一块布团。
 You could spit it out easily, provided nothing's covering it.
 你可以很容易地把它吐出来，只要没有东西覆盖它。
+Living Mithril Collar
+活体秘银项圈
+A collar made from an almost-weightless alloy that adjusts itself to your neck.
+由几乎没有重量的合金制成的项圈，可以自行调整以贴合你的颈部。
+It will occasionally cause mithril to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of mithril you have on you.
+它偶尔会使秘银突然出现并束缚佩戴者。速度的效果增加基于你身上的秘银数量。
 Mithril Collar
 秘银项圈
 A collar made from an almost-weightless alloy..
-由几乎失重的合金制成的项圈。
+由几乎没有重量的合金制成的项圈。
 It feels comfortable but it's also really hard.
 感觉很舒服，但也真的很硬。
 Mithril Cuffs
@@ -5550,6 +5680,12 @@ A pair of cuffs chaining your feet tightly together.
 一对手铐将你的双脚紧紧地拴在一起。
 Your ankle cuff chain loosens!
 你的脚踝铐链松了！
+Living Leather Collar
+活体皮革项圈
+A collar made of tough leather that adjusts itself to your neck.
+由坚韧的皮革制成的项圈，可以自行调整以贴合你的颈部。
+It will occasionally cause leather to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of leather you have on you.
+它偶尔会导致使突然出现并束缚佩戴者。速度的增加效果取决于你身上的皮革数量
 Leather Cuffs
 皮革铐
 Made of tough leather.
@@ -5902,6 +6038,12 @@ Transport Jacket
 运输拘束衣
 This jacket goes over a straitjacket to keep the arms trapped.
 这件拘束衣套在拘束衣外面，可以锁住胳膊。
+Living Asylum Collar
+活体安全项圈
+A collar made of tough cowhide that adjusts itself to your neck.
+由坚韧的牛皮制成的项圈，可以自行调整以贴合你的颈部。
+It will occasionally cause asylum gear to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of asylum gear you have on you.
+它偶尔会使得安全装备突然出现并束缚佩戴者。效果的速度增加取决于你身上的安全装备数量。
 Asylum Cuffs
 安全铐
 A pair of leather cuffs that make it easy to restrain you.
@@ -6010,6 +6152,12 @@ A pair of bulky leg irons with coils visible on the inside.
 一对笨重的脚镣，内部可见线圈。
 The electric damage causes your ankle cuffs to snap together!
 受到电损伤会导致你的踝铐绑在一起！
+Living Blacksteel Collar
+活体黑钢项圈
+A collar made of a hardened steel alloy, chemically treated as to be stainless that adjusts itself to your neck.
+一种由硬化钢合金制成的项圈，经过化学处理，可以适应你的颈部。
+It will occasionally cause blacksteel to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of blacksteel you have on you.
+它偶尔会使得黑钢突然出现，并束缚佩戴者。效果增加的速度基于你身上的黑钢数量。
 Blacksteel Cuffs
 黑钢铐
 They are made of a hardened steel alloy, chemically treated as to be stainless.
@@ -6032,6 +6180,12 @@ A bolero jacket keeping your arms pinned snugly. You can't even move them.
 一件波莱罗拘束衣，让你的手臂紧紧地固定在一起。你甚至不能移动它们。
 There is no hope of struggling out. Better hope you can cut it...
 没有挣扎的希望。最好希望你能切开它...
+Maid Punishment Jacket
+女仆惩罚拘束衣
+A bolero straitjacket made for unruly maids.  It is extra secure and locked tightly.
+为不守规矩的女仆做的一件紧身拘束衣。它特别安全，且锁得很紧。
+There is no hope of struggling out. Better get back to work...
+没有挣扎的希望。最好回去工作。。。
 Devious Maid Costume
 狡猾的女仆服装
 A devious maid outfit that forces the arms into an elbows-touching position.
@@ -6114,6 +6268,12 @@ Obsidian Collar
 黑曜石项圈
 A collar made from a warm, shining alloy.
 由温暖、闪亮的合金制成的项圈。
+Living Obsidian Collar
+活体黑曜石项圈
+A collar made of a dark, shiny metal that adjusts itself to your neck. You can't help but hear whispering since it is so tight.
+一种由深色、有光泽的金属制成的项圈，可以根据你的脖子进行调整。由于太紧，你不禁会听到窃窃私语。
+It will occasionally cause obsidian to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of obsidian you have on you.
+它偶尔使得黑曜石突然出现并束缚佩戴者。效果的速度增加基于你身上的黑曜石数量。
 Obsidian Cuffs
 黑曜石手铐
 It's made of a dark, shiny metal. If you hold it close you hear whispering.
@@ -6122,6 +6282,12 @@ Obsidian Leg Cuffs
 黑曜石腿铐
 Obsidian Ankle Cuffs
 黑曜石脚铐
+Living Crystal Collar
+活体水晶项圈
+A collar made of a glowing, brittle material that adjusts itself to your neck. You feel your energy flowing into it...
+一种由发光的脆性材料制成的项圈，可以根据你的脖子进行调整。你感觉到你的能量流入其中...
+It will occasionally cause crystal to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of crystal you have on you.
+它偶尔会使得水晶突然出现并束缚佩戴者。效果的速度增加取决于你身上的水晶数量。
 Crystal Cuffs
 水晶手铐
 It's made of a glowing, brittle material. You feel your energy flowing into it...
@@ -6130,6 +6296,12 @@ Crystal Leg Cuffs
 水晶腿铐
 Crystal Ankle Cuffs
 水晶脚铐
+Living Ice Collar
+活体冰项圈
+A collar made of enchanted ice that adjusts itself to your neck. It won't melt on their own, and the ice chills you to the bone...
+一个由魔法冰制成的项圈，可以根据你的脖子进行调整。它不会自己融化，冰会让你彻骨发冷...
+It will occasionally cause ice to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of ice you have on you.
+它偶尔会使得冰突然出现并束缚佩戴者。速度的增加效果取决于你身上的冰束缚具的数量。
 Ice Cuffs
 冰铐
 They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone...
@@ -6138,6 +6310,12 @@ Ice Leg Cuffs
 冰腿铐
 Ice Ankle Cuffs
 冰脚铐
+Living Slave Collar
+活体奴隶项圈
+A collar made of a gold-tinted metal with a magical enchantment that adjusts itself to your neck.
+一个由金色金属制成的项圈，带有一种神奇的魅力，可以根据你的脖子进行调整。
+It will occasionally cause slave gear to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of slave gear you have on you.
+它偶尔会使得奴隶装备突然出现并束缚佩戴者。速度的增加效果取决于你身上的奴隶装备数量。
 Slave Cuffs
 奴隶铐
 It's made of a gold-tinted metal with a magical enchantment.
@@ -6204,6 +6382,12 @@ Magic Ribbons (Gag)
 魔法丝带（堵嘴）
 They are wrapped tightly around your mouth with a bow knot!
 它们用蝴蝶结紧紧地包裹在你的嘴上！
+Living Ribbon Collar
+活体缎带项圈
+This collar is designed to make sure its wearer does not escape the ribbons.
+这个项圈的设计是为了确保佩戴者不会脱离缎带。
+It will occasionally cause ribbons to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of ribbons you have on you.
+它偶尔会使得缎带突然出现并束缚佩戴者。速度的效果增加取决于你身上的缎带数量。
 Ice (Arms)
 冰（手臂）
 Frigid restraints made out of ice.
@@ -6244,6 +6428,12 @@ Slime (Mouth)
 粘液（嘴）
 Slime (Head)
 粘液（头）
+Living Slime Collar
+活体粘液项圈
+This collar is designed to make sure its wearer does not escape their slime.
+这个项圈的设计是为了确保佩戴者不会逃离粘液。
+It will occasionally cause slime to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of slime you have on you.
+它偶尔会使得黏液突然出现并束缚佩戴者。效果增加的速度取决于你身上的黏液量。
 Rubber (Feet)
 橡胶（脚）
 Sticky rubber that has fused itself into a skintight layer.
@@ -6262,6 +6452,12 @@ Rubber (Mouth)
 橡胶（嘴）
 Rubber (Head)
 橡胶（头）
+Living Rubber Collar
+活体橡胶项圈
+This collar is designed to make sure its wearer does not escape their rubber.
+这个项圈的设计是为了确保佩戴者不会脱离橡胶。
+It will occasionally cause rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you.
+它偶尔会使得橡胶突然出现并束缚佩戴者。速度的效果增加取决于你身上的橡胶量。
 Proto-Slime (Feet)
 黏菌（脚）
 It seems to be a precursor to the slimes everyone is familiar with?
@@ -6278,6 +6474,12 @@ Proto-Slime (Mouth)
 黏菌（嘴）
 Proto-Slime (Head)
 黏菌（头）
+Living Proto-Slime Collar
+活体黏菌项圈
+This collar is designed to make sure its wearer does not escape the slime.
+这个项圈的设计是为了确保佩戴者不会逃离黏菌。
+It will occasionally cause proto-slime to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of proto-slime you have on you.
+它偶尔会使得黏菌突然出现并束缚佩戴者。效果增加的速度取决于你身上的黏菌量。
 Proto-Rubber (Feet)
 黏菌橡胶（脚）
 Sticky slime that has fused itself into a skintight layer.
@@ -6294,6 +6496,12 @@ Proto-Rubber (Mouth)
 黏菌橡胶（嘴）
 Proto-Rubber (Head)
 黏菌橡胶（头）
+Living Proto-Rubber Collar
+活体黏菌橡胶项圈
+This collar is designed to make sure its wearer does not escape the rubber.
+这个项圈的设计是为了确保佩戴者不会脱离黏菌橡胶。
+It will occasionally cause proto-rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of proto-rubber you have on you.
+它偶尔会使得黏菌橡胶突然出现并束缚佩戴者。速度的增加效果取决于你身上的黏菌橡胶数量。
 Tape Mittens
 胶带手套
 Sticky tape that holds your hands into a fist!
@@ -14746,6 +14954,12 @@ Toe Rope
 趾绳
 A tie keeping your toes tightly together.
 一条将脚趾头固定在一起的捆绑
+Living Rope Collar
+活体绳项圈
+This collar is designed to make sure its wearer does not escape their ropes.
+这个项圈的设计是为了确保佩戴者不会逃脱绳索。
+It will occasionally cause ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you.
+它偶尔会使得绳索突然出现并束缚佩戴者。速度的效果增加取决于你身上的绳索数量。
 Notebook Page
 笔记本页
 You're going to stay with me for a while~
@@ -14904,6 +15118,10 @@ Spellbound Toe Rope
 脚趾绳缚（符咒）
 A tie keeping your toes secured together.
 束带将双脚固定在一起。
+Living Spellbound Rope Collar
+活体符咒绳项圈
+It will occasionally cause spellbound ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you.
+它偶尔会使得符咒绳索突然出现并将佩戴者捆绑起来。速度的效果增加取决于你身上的符咒绳索数量。
 Magic Boxtie
 后手缚（附魔）
 They glow with a trace of magic.
@@ -14940,6 +15158,10 @@ Magic Lower Knee Tie
 下膝缚带（附魔）
 Magic Toe Rope
 脚趾绳缚（附魔）
+Living Magic Rope Collar
+活体附魔绳项圈
+It will occasionally cause magic ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you.
+它偶尔会使得附魔绳索突然出现并将佩戴者捆绑起来。速度的效果增加取决于你身上的附魔绳索数量。
 Holy Boxtie
 神圣后手缚捆扎带
 A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
@@ -14974,6 +15196,10 @@ Holy Lower Knee Ropes
 神圣下膝绳缚
 Holy Toe Rope
 神圣脚趾绳缚
+Living Holy Rope Collar
+活体神圣绳项圈
+It will occasionally cause holy ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you.
+它偶尔会使得神圣绳索突然出现并束缚佩戴者。速度的效果增加取决于你身上的神圣绳索数量。
 Mithril Boxtie
 秘银后手缚捆扎带
 A lightweight rope made out of woven mithril, smooth yet nearly unbreakable.
@@ -15006,6 +15232,10 @@ Mithril Lower Leg Ropes
 小腿绳缚（秘银）
 Mithril Toe Ropes
 脚趾绳缚（秘银）
+Living Mithril Rope Collar
+活体秘银绳项圈
+It will occasionally cause mithril ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you.
+它偶尔会使得秘银绳突然出现并将佩戴者捆绑起来。速度的效果增加取决于你身上的秘银绳索数量。
 Dark Portal
 黑暗之门
 They are trying to take you somewhere!
@@ -15058,6 +15288,12 @@ Liquid Metal (Mouth)
 液态金属（嘴）
 Liquid Metal (Head)
 液态金属（头）
+Living Liquid Metal Collar
+活体液态金属项圈
+This collar is designed to make sure its wearer does not escape the metal.
+这个项圈的设计是为了确保佩戴者不会脱离金属。
+It will occasionally cause liquid metal to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of liquid metal you have on you.
+它偶尔会使得液态金属突然出现并束缚佩戴者。速度的效果增加取决于你身上的液态金属量。
 The stairs dissolve right before you!
 楼梯就在你面前消失了！
 The stairs dissolve as you step onto them, pulling you with them to somewhere else.
@@ -17660,8 +17896,10 @@ The Warden's staff emits a mystical area, which congeals into locks! (DamageTake
 典狱长的法杖释放出一个神秘区域，凝结成锁！（DamageTaken）
 Living Collars
 活体项圈
-When getting captured with many of the same type of restraint, gain a collar that occasionally binds you with that type of restraint.
-当你被相同类型的束缚物多次捕获时，获得一个偶尔会用同种束缚物束缚你的项圈。
+When you get jailed, you may get a living collar that applies further restraints on you.
+当你入狱时，你可能会被佩戴一个活体项圈，对你施加进一步的束缚。
+The Warden's cage falls atop you and attaches to the floor with a click.
+典狱长的笼子落在你上方，并发出 '咔' 的一声固定在地板上。
 Play the game the way it was intended. Cruel and restrictive.
 按照游戏的初衷来玩。严厉且充满限制性
 Unconventional Warfare
