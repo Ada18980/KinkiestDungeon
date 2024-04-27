@@ -164,6 +164,16 @@ Hide Nipple Piercings
 隐藏乳头穿孔
 Force restraints to use outfit palette
 强制束缚具使用衣物主色调
+Sunglasses
+太阳镜
+Cool people wear these indoors.
+很酷的人即使在室内也戴着这个。
++25 holy resist. Reduces blind effects. Prevents blinding from light adjustment.
++25 神圣抗性。减少致盲效果。防止光线调整导致的致盲。
+You find a pair of stylish shades.
+你找到了一副时尚的墨镜。
+Shades
+墨镜
 Player Background Color
 玩家背景颜色
 An attack causes you to bounce...
@@ -10105,9 +10115,9 @@ You try to wiggle your arms, but they can barely move in this position and are c
 Ancient Ankle Cuffs
 远古脚铐
 You find a pair of glowing cuffs, glowing magnificently, along with a strange crystal next to it.
-你会发现一对发光的脚铐，闪闪发光，旁边还有一个奇怪的水晶。
-A pair of cuffs designed for summoners. Heals nearby summons by 15 per turn, and also boosts your evasion by +50% (to 2/3rds). Closes without power.
-一对为召唤师设计的脚铐。每回合为附近的召唤物治疗 15 点，并使你的闪避提高 50%（至 2/3 次）。充能时会变成脚镣，无充能时则会连起来。
+你发现一对发光的脚铐，闪闪发光，旁边还有一个奇怪的水晶。
+A pair of cuffs designed for summoners. Heals nearby allies by 15 per turn, and also boosts your evasion by +50% (to 2/3rds). Closes without power.
+一对为召唤师设计的脚铐。每回合为附近的盟友治疗 15 点，并使你的闪避提高 50%（至 2/3 次）。充能时会变成脚镣，无充能时则会连起来。
 'Anklets of the Faithful Friend'
 '忠实朋友的脚链'
 You jingle the chains around and realize that these unbreakable restraints won't be coming off.
@@ -15032,8 +15042,8 @@ A very strict and tight hogtie, good for subduing unruly captives.
 一种非常严苛和牢固的捆绑，适合制服不守规矩的俘虏。
 It holds you strictly in a boxtie. You tug on the rope connecting your feet and struggle.
 它把你严格地束缚在后手缚捆扎带里。你需要首先挣扎开连接腿部的绳子。
-It holds you strictly with your elbows nearly touching. You tug on the rope connecting your feet and struggle.
-它会严格地固定住您，让您的肘部几乎与身体完全接触。你拉动连接双脚的绳子并挣扎。
+It holds you strictly with your back arched. You tug on the rope connecting your feet and struggle.
+它牢牢地把你绑住，让你弓起后背。你拉动连接双脚的绳子并挣扎。
 Rope Belt
 绳衣
 Rope Harness
