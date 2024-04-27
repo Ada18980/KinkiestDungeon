@@ -13436,12 +13436,50 @@ A contract? No way.
 契约？没门。
 (Refuse the contract)
 （拒绝契约）
+Okay, I will wear them...
+好的，我会穿上它们……
+Monster! (PERCENT chance to avoid)
+怪物！（PERCENT 的概率避开）
 Fine. I'll sign it...
 好吧。我会签...
 Never! (PERCENT chance to avoid)
-绝不！ （PERCENT 的概率避开）
+绝不！（PERCENT 的概率避开）
 (Shake your head and frown) (PERCENT chance to avoid)
 （摇头皱眉）（PERCENT 的概率避开）
+(The SPEAKER does a short bow as she sees you)|Um... hi!|I have a letter for you...
+（SPEAKER 看到你时鞠了一躬）|嗯...你好！|我有一封信给你...
+(The letter is a contract from the College)|(They want you to sign up as an instructor for apprentices)|(The SPEAKER looks at you nervously.)
+（这封信是学院的一份合同）|（他们想让你报名当一名学徒教员）|（SPEAKER 紧张地看着你。）
+(The SPEAKER sighs in relief)|That's good...|(You sign the contract and it vanishes into the aether)
+（SPEAKER 松了一口气）|那太好了……|（在你签署了合同后他就消失在了以太中）
+(The SPEAKER whimpers)|What will I tell them...
+（SPEAKER 呜咽道）|我该怎么告诉他们呢……
+(The SPEAKER glares at you)|It's an important message concerning your standing!|With the College!
+（SPEAKER 怒视着你）|这是有关你的地位的重要信息！|与学院一起！
+(The SPEAKER blushes)|Well...|I was told we would make changes to your academic record,|should you refuse...
+（SPEAKER 脸红了）|嗯……|我被告知我们会更改你的学业记录，|如果你拒绝……
+(The SPEAKER frowns)|They told me to make sure you sign...|by any means necessary!
+（SPEAKER 皱起眉头）|他们告诉我要确保你签字……|不惜一切代价！
+(The SPEAKER nods and smiles)|Thank you so much!|I don't know what I would have done if you said no...
+（SPEAKER 点头微笑）|非常感谢！|如果您说不，我真的就不知道我该怎么办了……
+(The SPEAKER frowns and waves her wand)|(A bunch of ropes come out of the ground and restrain you)|Hmmph. I'll tell them you signed it anyway.|I can't go back empty handed.
+（SPEAKER 皱起眉头，挥动魔杖）|（一堆绳子从地上冒出来，束缚住了你）|哼。不管怎样，我都会告诉他们你签了字。|我不能空手而归。
+Thank you for delivering it. (Read it)
+谢谢你送来。（读一下）
+(Read the letter)
+（阅读信件）
+There's nothing good inside that letter.
+那封信里没有什么好东西。
+Great! Wonderful!
+当然！太棒了！
+(Accept the contract)
+（接受合同）
+There is no way I'd accept.
+我绝对不会接受。
+Fine. I'll read it. (Join the College as an instructor)
+好的。我会读的。（以讲师身份加入学院）
+This is unethical! I refuse! (PERCENT chance to avoid)
+这是不道德的！我拒绝！（PERCENT 的概率避开）
 (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
 （SPEAKER 看到你，做了一个简短的鞠躬）|你好。|你似乎拥有我们想要的品质。|我很乐意为你提供一个职位……
 (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
