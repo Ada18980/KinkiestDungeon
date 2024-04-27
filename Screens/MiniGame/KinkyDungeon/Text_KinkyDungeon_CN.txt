@@ -1934,6 +1934,16 @@ Latex Catsuit
 乳胶紧身衣
 An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
 由经过高度加工的粘液制成的服装。天然丝滑，触感顺滑。
+Heavy Latex Catsuit
+厚重乳胶紧身衣
+A skintight suit that's stretched on tight and made of thick latex. It adheres to latex restraints making struggling more difficult.
+紧身衣，紧绷绷的，由厚厚的乳胶制成。它紧贴乳胶束缚带，使挣扎更加困难。
+Blue latex is silky smooth, very stretchy, and very good at adhering to itself. Its thickness makes it particularly resistant to cutting.
+蓝色乳胶光滑如丝，弹性十足，粘性极佳。其厚度使其特别耐切割。
+Latex Mittens
+乳胶手套
+A pair of mittens keep your hands out of trouble. They adhere to latex restraints making struggling more difficult.
+一副手套可以保护你的手不惹麻烦。它们紧贴乳胶束缚带，使挣扎更加困难。
 Doll Catsuit
 玩偶紧身衣
 Cyber Doll Suit
@@ -6074,6 +6084,10 @@ A tight jacket that keeps your arms completely useless.
 一件拘束衣，让你的手臂完全无法移动。
 It has too much grip to struggle out of, but is made of a fragile material.
 它的抓力太大，难以挣脱，但它是由易碎材料制成的。
+Secure Latex Jacket
+安全乳胶拘束衣
+This straitjacket has extra straps and buckles to make sure you won't be struggling out of it.
+这件拘束衣有额外的带子和扣子，确保你不会通过挣扎而脱下它。
 Latex Armbinder
 乳胶束手套
 Latex Boxbinder
