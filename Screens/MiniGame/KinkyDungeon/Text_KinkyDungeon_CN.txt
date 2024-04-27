@@ -14328,10 +14328,10 @@ I suppose...
 大概吧...
 (SPEAKER smiles as she stands over you)|Well well. Look who won.
 （SPEAKER站在你面前微笑）|好吧好吧。看看谁赢了。
-(SPEAKER nods)|Absolutely. Now allow me to make my conditions clear.|You will wear my collar from now on.|Then you will be allowed to go.
-（SPEAKER点头）|当然。现在请允许我把我的条件说清楚。|从现在开始你就戴上我的项圈。|然后你就可以走了。
-(SPEAKER giggles)|You're not in a position to resist.|Now then, let me make myself clear.|I will let you go... but only wearing my collar.
-（SPEAKER咯咯笑）|你没有能力反抗。|现在，让我说清楚。|我会让你走……但只戴上我的项圈。
+(SPEAKER nods and giggles)|Absolutely.|Allow me to present to you, my prized pet collar!|I save it only for my favorite pets.|That's right! You're my favorite pet now~
+（SPEAKER 点头并咯咯笑）|当然。|请允许我向您介绍我最珍贵的宠物项圈！|我只把它留给我最喜欢的宠物。|没错！你现在是我最喜欢的宠物~
+(SPEAKER giggles)|You're not in a position to resist.|Now then, where did I put that collar...
+（SPEAKER 咯咯笑）|你没有资格反抗。|那么，我把那个项圈放在哪里了……
 (SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(She brandishes a collar) Now including you!
 （SPEAKER 微笑）|这是一个神奇的诅咒，可以暂时封印你的力量~|我会在当我宠物不守规矩的时候使用它......|（她挥舞着项圈）现在包括你！
 What's this weird magic?
