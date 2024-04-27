@@ -2718,6 +2718,22 @@ Angel
 天使
 You subdue the angel!
 你捕获了天使！
+The angel decides to toy with you while you are trussed up. (DamageTaken)
+当你被捆绑时，天使决定玩弄你。（DamageTaken）
+The angel snaps her fingers and divine restraints appear on your body! (+RestraintAdded)
+天使弹指一挥，神圣束缚就出现在了你的身上！（+RestraintAdded）
+The angel snaps her fingers and glowing locks appear on your body!
+天使弹指一挥，闪亮的锁就锁在你的身上！
+Holy Construct
+神圣结构体
+You banish the holy construct!
+你放逐了神圣结构体！
+The holy construct emits a searing light! (DamageTaken)
+神圣结构体发出灼热的光芒！（DamageTaken）
+The holy construct emits a blinding light! (DamageTaken)
+神圣构造体发出耀眼的光芒！（DamageTaken）
+The holy construct emits a Binding light! (+RestraintAdded)
+神圣构造体发出束缚之光！（+RestraintAdded）
 Be not afraid! I am the courier of a local shrine, and I have come to take your offering.
 不要害怕！我是当地神社的信使，来接你的供品。
 Hold still and I will take the offering...
