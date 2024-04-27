@@ -17704,10 +17704,10 @@ A handy device for putting out torches and lanterns.
 一种用于熄灭火把和灯笼的简易装置。
 But why would you want to do that? You hidin' something?
 但你为什么要这么做呢？你想隐藏什么吗？
-You find a bag... full of bags.
-你发现一个包……满满当当的包。
-Sack of Sacks
-一袋麻袋
+You find a bag full of sacks. Or is it a sack full of bags?
+你发现一个装满麻袋的袋子。或者说，这是一个装满包的袋子？
+Recursive Bag
+递归包
 You cover the light source.
 你遮住光源。
 Bags inside a bag of bags inside a bag of bags...
