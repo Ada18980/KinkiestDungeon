@@ -18332,6 +18332,8 @@ Promote to Servant
 晋升为仆人
 Demote to Prisoner
 降级为囚犯
+The ENMY tries to grab you!
+ENMY 试图抓住你！
 The ENMY reaches out and gives your breast a squeeze! (DMGDLT)
 ENMY 伸出手来揉捏你的乳房！(DMGDLT)
 The ENMY squeezes your breasts as you raise your arms for a spell! (DMGDLT)
