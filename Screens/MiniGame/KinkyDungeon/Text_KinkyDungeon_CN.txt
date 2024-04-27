@@ -2226,8 +2226,8 @@ You apply a clever trick to reset your visor cooldown.
 你使用一个巧妙的技巧重置了你的面罩的冷却时间。
 A chip used to identify dolls. She must have dropped it. Either way it contains valuable tech...
 这是一个用于识别娃娃的芯片。有人可能遗失了它，无论如何，里面蕴含着有价值的技术……
-It could be used to trick your visor into thinking you've performed your tasks for a while.
-它可以用来欺骗你的面罩，让它认为你已经完成了一段时间的任务。
+With enough, it can be used to remove Dollmaker's headwear.
+如果有足够的量，它可以用来摘掉玩偶制造者的头饰。
 Heart Amulet
 心形护身符
 You find a donut with sprinkles!
