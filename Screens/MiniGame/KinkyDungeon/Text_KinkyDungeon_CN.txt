@@ -5668,6 +5668,34 @@ The enemy attaches your leg cuffs together!
 敌人将你的腿铐绑在一起！
 A pair of cuffs chaining your legs together.
 一对手铐将你的双腿拴在一起。
+A cage falls from the ceiling on top of you!
+一个笼子从天花板上掉下来砸中了你！
+Crystals grow across your body and encase you!
+水晶在你的身体上生长并包裹住你！
+You are encased in a solid block of ice!
+你被包裹在一块坚固的冰块里！
+Shadows coalesce themselves around you in spherical form!
+阴影以球的形式在你周围聚结！
+Crystal Encasement
+水晶封
+An overgrowth of magical crystals. Their chaotic energies flood into your mind and displace your thoughts!
+魔法水晶过度生长。它们的混乱能量涌入你的脑海，扰乱你的思维！
+Being brittle, it will eventually crack and fail. Just keep wiggling...
+由于易碎，它最终会破裂并失效。只需继续扭动即可……
+Ice Encasement
+冰封
+A huge ice cube. It's quite cold in there.
+好大一块冰块，里面挺冷的。
+It will eventually melt! Eventually...
+它最终会融化！最终……
+The Warden's restraints release you... for now.
+典狱长的束缚暂时释放了你……
+Chain Hogtie
+链式驷马
+A very strict and tight hogtie, good for subduing unruly captives.
+非常严格且紧密的捆绑，适合制服不守规矩的俘虏。
+A metal chain holds your back in an arched position.
+金属链将你的背部固定于拱起的位置。
 Thigh Chain
 大腿链
 The leg cuff chain detaches!
