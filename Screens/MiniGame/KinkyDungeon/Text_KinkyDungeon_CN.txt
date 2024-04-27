@@ -6178,6 +6178,8 @@ This straitjacket has extra straps and buckles to make sure you won't be struggl
 这件拘束衣有额外的带子和扣子，确保你不会通过挣扎而脱下它。
 Latex Armbinder
 乳胶束手套
+A tight armbinder that pins your arms tightly behind your back, enclosed completely.
+一种紧密的臂夹，将你的手臂紧紧地固定在背后，完全封闭。
 Latex Boxbinder
 乳胶盒束包扎带
 Latex Legbinder
