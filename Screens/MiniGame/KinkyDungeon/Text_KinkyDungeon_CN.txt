@@ -14750,8 +14750,8 @@ FOODMSG|（它邀请你分享它的美食）
 （被塞住嘴的时候无法享受食物）
 (You steal the food, hoping nobody will notice...)
 （你偷食物，希望没人会注意到......）
-(Eat it to restore AMOUNT WP)
-(吃掉它可以恢复 AMOUNT WP)
+(Eat it to restore AMOUNT% WP)
+(吃掉它可以恢复 AMOUNT% WP)
 (Take it!)
 （拿走！）
 (Someone left their cookies unattended)
