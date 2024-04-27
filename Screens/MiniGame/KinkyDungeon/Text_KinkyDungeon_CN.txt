@@ -1734,6 +1734,8 @@ Rundown Laboratory
 破败的实验室
 Forgotten Garden
 被遗忘的花园
+Coastal Grotto
+海岸石窟
 Kingdom of Ice
 冰之王国
 The Mansion
