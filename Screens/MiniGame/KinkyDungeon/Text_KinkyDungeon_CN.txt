@@ -17380,8 +17380,8 @@ Exits locked! Find NUMBER keys!
 出口被锁住了！寻找 NUMBER 把钥匙！
 Got the keys!
 拿到钥匙了！
-Escape Method: Key Hunt
-逃脱方法：寻找钥匙
+Key Hunt
+寻找钥匙
 Find the keys hidden in the level. Enemies can steal the keys if you aren't careful.
 找到隐藏在关卡中的钥匙。敌人可能会在你不注意的时候偷走钥匙。
 There seems to be a locked high-security door. Looks like you need keys to open it.
@@ -17390,17 +17390,17 @@ Exits locked! Find a lever!
 出口被锁住了！寻找拉杆！
 Exits unlocked!
 出口已解锁！
-Escape Method: Lever Hunt
-逃脱方法：寻找拉杆
-Escape Method: Find the lever hidden in the level to unlock the door.
-逃生方法：找到隐藏在关卡中的拉杆来解锁下一层的门。
+Lever Hunt
+寻找拉杆
+Find the lever hidden in the level to unlock the door.
+找到隐藏在关卡中的拉杆来解锁下一层的门。
 There seems to be a locked high-security door. Looks like you need to pull a lever to open it.
 似乎有一扇被锁住的高安全门。看起来你需要拉动拉杆才能打开它。
 Exits locked! Find control panel!
 出口已锁定！寻找控制面板！
-Escape Method: Panel Hunt
+Panel Hunt
 逃生方法：寻找面板
-Escape Method: Find the control panel hidden in the level to unlock the door.
+Find the control panel hidden in the level to unlock the door.
 逃生方法：找到隐藏在关卡中的控制面板来解锁下一层的门。
 There seems to be a locked high-security door. Looks like you need find a control panel to open it.
 似乎有一扇被锁住的高安全门。看来你需要找到一个控制面板才能打开它。
@@ -17442,7 +17442,7 @@ There seems to be a locked high-security door. Looks like you need to open more 
 似乎有一扇被锁住的高安全门。看来你需要打开更多的箱子才能打开它。
 Exits locked!|Accept NUMBER Quests!
 出口已锁定！|需要接受 NUMBER 个任务！
-Escape Method: Quest Hunt
+Quest Hunt
 寻找任务
 Accept the specified number of goddess quests to unlock the door.
 接受指定数量的女神任务即可解锁下一层的门。
