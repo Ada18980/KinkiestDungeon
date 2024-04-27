@@ -18222,6 +18222,8 @@ The ENMY reaches for you but misses!
 ENMY 向你伸手，但没有摸中！
 The ENMY tickles your exposed armpits! (DMGDLT)
 ENMY 会挠你暴露的腋窝！(DMGDLT)
+The ENMY tickles under your raised arms! (DMGDLT)
+ENMY 在你举起的手臂时挠你的痒痒！(DMGDLT)
 The ENMY tries to tickle you!
 ENMY 试图挠你痒痒！
 The ENMY tickles your feet! (DMGDLT)
