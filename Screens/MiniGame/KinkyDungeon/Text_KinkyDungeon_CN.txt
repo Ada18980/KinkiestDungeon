@@ -10282,12 +10282,12 @@ You found a magical amulet! Choose one of the following to determine its benefit
 你发现了一个神奇的护身符！ 选择以下选项之一来确定其优点：
 Focus: +50% max distraction and faster decay. +5% stamina protected from damage (base: 30%).
 专注：+50% 最大分心和更快的衰减。 +5% 体力伤害保护（基础：30%）。
-Stamina: +50 max stamina, +50% stamina potion effectiveness.
-体力：+50 最大体力，+50% 体力药水效果。
-Magic: +50 max mana. +50% mana potion effectiveness.
-魔法：+50 最大魔法，+50% 魔法药水效果。
-Willpower: +50 max willpower, +50% willpower potion effectiveness. +1 stamina regen/turn.
-意志：+50最大意志，+50%意志药剂效果。 每回合 +1 体力恢复。
+Stamina: +50 max stamina.
+体力：+50 最大体力。
+Magic: +50 max mana.
+魔法：+50 最大魔法。
+Willpower: +50 max willpower. +1 stamina regen/turn.
+意志：+50最大意志。 每回合 +1 体力恢复。
 +Focus
 +专注
 +Stamina
