@@ -2708,6 +2708,12 @@ The slime is spreading over your body!!!
 粘液在你的身体上蔓延！！！
 The slime starts to harden over your skin...
 粘液开始在你的皮肤上变硬......
+The RESTRAINTNAME creates more bindings out of thin air! (+RestraintAdded)
+RESTRAINTNAME 凭空创建了更多束缚！（+RestraintAdded）
+A RESTRAINTNAME has appeared around your neck!  Beware of additional restraints!
+一个 RESTRAINTNAME 出现在你的脖子上！当心额外的束缚！
+The RESTRAINTNAME has run out of bindings to add and has gone dormant for a period of time.
+RESTRAINTNAME 已用尽可添加的束缚，并且已闲置了一段时间。
 Angel
 天使
 You subdue the angel!
