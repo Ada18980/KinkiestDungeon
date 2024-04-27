@@ -14358,8 +14358,8 @@ Mmmph! (Struggle weakly)
 （SPEAKER气喘吁吁）|我……不敢……相信……它……|她的钥匙掉了……
 (SPEAKER looks flabbergasted)|R-really? Okay... I'll give you a reward then...
 （SPEAKER 看起来大吃一惊）|真-真的吗？好吧……那我给你奖励……
-(Submit to her anyway)
-（服从于她）
+(Submit to her anyway) (Gain a special collar)
+（服从于她）（获得特殊项圈）
 (SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!
 （SPEAKER 反抗，但最终你把堵嘴塞进她的嘴里）|MMMMPH！
 (Gag her)
