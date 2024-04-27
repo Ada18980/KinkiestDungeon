@@ -1976,6 +1976,10 @@ A minidress made from shadow latex, a favorite of otherwordly patrons.
 由暗影乳胶制成的迷你裙，是其他顾客的最爱。
 Resistant to the elements, but is infused with crystals that amplify psychic damage to yourself.
 能够抵御各种元素，但注入的水晶会放大对自己的精神伤害。
+Elemental Slave Dress
+精灵奴隶连衣裙
+A minidress made to adorn mortal slaves in the elemental planes.
+一种迷你裙，用来装饰精灵的凡人奴隶。
 Elven Dress
 精灵连衣裙
 A regal minidress worn by visitors to the forest.
