@@ -2502,6 +2502,8 @@ A kidnapper's most versatile tool.
 绑匪最通用的工具。
 Deals chain damage and applies 50 points of binding.
 造成锁链伤害并增加 50 点束缚。
+Magic Sword
+魔法之剑
 Slices through ghosts with ease!
 轻松穿过幽灵！
 A sword that guides itself toward its target, making it easy to hit with.
