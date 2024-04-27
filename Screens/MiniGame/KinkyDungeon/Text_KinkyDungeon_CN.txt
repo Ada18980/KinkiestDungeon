@@ -5532,28 +5532,36 @@ It's warded against cutting by nonmagic blades.
 它可以防止非魔法刀片的切割。
 Blessed Wrappings (Head)
 祝福丝带包裹（头）
+A band of magic embalming ribbon wrapped tight around your face.
+一条神奇的祝福丝带紧紧地缠绕在你的脸上。
+Blessed Wrappings (Eyes)
+祝福丝带包裹（眼睛）
 A band of magic embalming ribbon wrapped tight around your eyes.
-一条神奇的防腐丝带紧紧地缠绕在你的眼睛上。
+一条神奇的祝福丝带紧紧地缠绕在你的眼睛上。
 Blessed Wrappings (Gag)
 祝福丝带包裹（堵嘴）
 A band of magic embalming ribbon wrapped tight around your mouth.
-一条神奇的防腐丝带紧紧地缠在你的嘴上。
+一条神奇的祝福丝带紧紧地缠在你的嘴上。
 Blessed Wrappings (Arms)
 祝福丝带包裹（手臂）
 A layer of magic embalming ribbon wrapped tight around your body.
-一层神奇的防腐丝带紧紧地缠绕在你的身上。
+一层神奇的祝福丝带紧紧地缠绕在你的身上。
 Blessed Wrappings (Feet)
 祝福丝带包裹（脚）
 A layer of magic embalming ribbon wrapped tight around your shins.
-一层神奇的防腐丝带紧紧地缠绕在你的小腿上。
+一层神奇的祝福丝带紧紧地缠绕在你的小腿上。
 Blessed Wrappings (Toes)
 祝福丝带包裹（脚趾）
 A layer of magic embalming ribbon wrapped tight around your feet.
-一层神奇的防腐丝带紧紧地缠绕在你的脚上。
+一层神奇的祝福丝带紧紧地缠绕在你的脚上。
+Blessed Wrappings (Hands)
+祝福丝带包裹（手）
+A layer of magic embalming ribbon wrapped tight around your hands.
+一层神奇的祝福丝带紧紧地缠绕在你的手上。
 Blessed Wrappings (Legs)
 祝福丝带包裹（腿）
 A layer of magic embalming ribbon wrapped tight around your thighs.
-一层神奇的防腐丝带紧紧地缠绕在你的大腿上。
+一层神奇的祝福丝带紧紧地缠绕在你的大腿上。
 Living Blessed Wrappings Collar
 活体祝福丝带项圈
 This collar is designed to make sure its wearer does not escape their wrappings.
