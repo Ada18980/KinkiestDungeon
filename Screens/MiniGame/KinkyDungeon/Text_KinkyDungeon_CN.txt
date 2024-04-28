@@ -8482,6 +8482,10 @@ More Summons
 专家召唤师
 Increases the permanent summon cap by +2 (from 2 to 4)
 召唤上限永久增加 +2（从 2 增加到 4）
+Many Summons
+传奇召唤师
+Increases the permanent summon cap by +2 (from 4 to 6)
+召唤上限永久增加 +2（从 4 增加到 5）
 Channel for 1 turn for a bomb that does DamageDealt blast damage in an area after DelayTime turns.
 消耗1回合，放置一个 DelayTime 回合后在一个区域内造成 DamageDealt 点爆炸伤害的炸弹。
 Fire in the hole!
