@@ -28,6 +28,7 @@ Monk class?
 - Added perk that adds back living collars when jailed functionality
 - Added 'Some Exclusions Apply' perk
 - Increased max outfit count to 99
+- Stormbreaker now gains additional duration (up to 30 turns) for each damage instance
 
 5.2.28
 - Desire burst is now locked to the Path of Pleasure

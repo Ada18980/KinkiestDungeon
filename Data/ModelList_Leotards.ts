@@ -81,6 +81,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "StrappyLower", Layer: "Panties", Pri: 40,
 			Invariant: true,
+			MorphPoses: {Closed: "Closed"},
 			//swaplayerpose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
 		},
 	])

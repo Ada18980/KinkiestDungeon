@@ -1595,7 +1595,7 @@ function KDFilterSpell(spell) {
 	let upcast = spell ? spell.upcastFrom : false;
 	return (!spell.hideLearned || !learned)
 	&& (!spell.hide)
-	&& (!spell.hideUnlearnable || prereq || learned)
+	&& (!spell.hideUnlearnable || prereq || learned || prereqHost)
 	&& (learned || !spell.hideWithout || KDHasSpell(spell.hideWithout))
 	&& (!spell.hideWith || !KDHasSpell(spell.hideWith))
 	&& (!spell.arousalMode || KinkyDungeonStatsChoice.has("arousalMode"))

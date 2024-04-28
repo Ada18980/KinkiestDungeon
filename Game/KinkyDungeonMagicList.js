@@ -494,7 +494,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				{type: "Sowing", trigger: "kill"},
 			]},
 
-		{name: "ArcaneBlast", tags: ["arcane", "offense", "aoe"], prerequisite: "ManaRegen", classSpecific: "Mage", noise: 4.5, sfx: "Shock", castCondition: "hasArcaneEnergy",
+		{name: "ArcaneBlast", tags: ["arcane", "offense", "aoe"], prerequisite: "ManaRegen", classSpecific: "Mage", hideWithout: "ManaRegen", noise: 4.5, sfx: "Shock", castCondition: "hasArcaneEnergy",
 			customCost: "arcane_blast",
 			effectTileDurationModTrail: 2, effectTileTrail: {
 				name: "Sparks",
@@ -535,14 +535,14 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 			]},
 
-		{name: "BattleTrance", tags: ["fight", "will", "stamina"], prerequisite: "Enrage", classSpecific: "Fighter", hideWithout: "BattleRhythm", hideUnlearnable: true, school: "Special", manacost: 0, components: [], level:1,
+		{name: "BattleTrance", tags: ["fight", "will", "stamina"], prerequisite: "Enrage", classSpecific: "Fighter", hideWithout: "BattleRhythm", school: "Special", manacost: 0, components: [], level:1,
 			type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
 				{type: "BattleTrance", trigger: "afterPlayerAttack",},
 				{type: "BattleTrance", trigger: "tick",},
 			]},
 
-		{name: "Gunslinger", tags: ["fight", "will", "ranged", "offense"], prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", hideUnlearnable: true, school: "Special", manacost: 0, components: [], level:1,
+		{name: "Gunslinger", tags: ["fight", "will", "ranged", "offense"], prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", school: "Special", manacost: 0, components: [], level:1,
 			type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", passive: true,
 			events: [
 				{type: "Gunslinger", trigger: "afterChangeCharge", mult: 0.2},

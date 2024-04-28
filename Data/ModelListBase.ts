@@ -437,7 +437,7 @@ AddModel({
 		{ Name: "FootRightKneel", Sprite: "FootRight", Layer: "FootRightKneel", Pri: 0,
 			HideWhenOverridden: true,
 			InheritColor: "Torso",
-			HidePoses: ToMap(["FeetLinked"]),
+			HidePoses: ToMap(["FeetLinked", "FeetCovered"]),
 			Poses: ToMap(["Kneel"]),
 		},
 		/*{ Name: "FootLeft", Layer: "FootLeft", Pri: 0,

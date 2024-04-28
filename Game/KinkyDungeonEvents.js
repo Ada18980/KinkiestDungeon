@@ -3511,7 +3511,7 @@ let KDEventMapSpell = {
 				buff = KDEntityGetBuff(data.player, "RogueEscape2");
 				if (buff)
 					buff.duration = 0;
-			} else {
+			} else if (!data.Link) {
 				KinkyDungeonApplyBuffToEntity(data.player, {
 					id: "RogueEscape",
 					type: "FastStruggle",
@@ -5784,6 +5784,9 @@ let KDEventMapWeapon = {
 		"StormBreakerCharge": (e, weapon, data) => {
 			if (data.dmg > 0 && (!e.damageTrigger || e.damageTrigger == data.type)) {
 				let turns = data.dmg * e.power;
+				if (KinkyDungeonPlayerBuffs.StormCharge) {
+					turns += KinkyDungeonPlayerBuffs.StormCharge.duration;
+				}
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: "StormCharge",
 					type: "StormCharge",
@@ -8347,7 +8350,8 @@ let KDEventMapEnemy = {
 				if (!e.chance || KDRandom() < e.chance) {
 					let nearby = KDNearbyEnemies(enemy.x, enemy.y, e.dist);
 					for (let en of nearby) {
-						if (((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy))) && en.hp > 0.52) en.hp = Math.min(en.hp + e.power, en.Enemy.maxhp);
+						if (KDFactionRelation(KDGetFaction(en), KDGetFaction(enemy)) > 0.05)
+							if (((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy))) && en.hp > 0.52) en.hp = Math.min(en.hp + e.power, en.Enemy.maxhp);
 					}
 				}
 				let player = KinkyDungeonPlayerEntity;
