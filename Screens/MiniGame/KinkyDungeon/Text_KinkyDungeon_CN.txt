@@ -7762,8 +7762,8 @@ Unlocks shadow spells. Learn Shadow Dagger.
 允许学习暗影幻术 并习得幻术 “暗影匕首”
 Blessing of Light
 光之祝福
-Unlocks light spells. Learn Flash.
-允许学习光芒幻术 并习得幻术 “小闪电”
+Unlocks light spells. Learn Flash. Gain significantly increased resistance to blinding from bright lights.
+允许学习光芒幻术 并习得幻术 “小闪电”。显著提高对强光致盲的抵抗力。
 Blessing of Obscurity
 隐身祝福
 Unlocks invisibility spells. Learn Camouflage.
