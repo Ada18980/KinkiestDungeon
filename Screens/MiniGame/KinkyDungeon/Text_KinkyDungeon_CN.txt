@@ -8876,6 +8876,18 @@ Flame Blade
 火焰之刃
 When enabled: Melee weapon attacks cost mana and create a flame strike that deals 30 fire damage to adjacent targets.
 启用后近战武器攻击消耗法力值并造成火焰伤害，对相邻目标造成 30 点火焰伤害。
+Tentacle Slap
+触手拍击
+You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +10 glue damage and create slime. 150% bind efficiency.
+你有能力在攻击时将黏液变成触手。启用后：你的攻击造成 +10 胶水伤害并产生黏液。150% 绑定效率。
+Chain Strike
+锁链攻击
+You have the power to summon chains when you attack. When enabled: Your attacks deal +10 chain damage and create chains. 125% bind efficiency.
+你拥有在攻击时召唤锁链的力量。启用后：你的攻击造成 +10 锁链伤害并制造锁链。125% 束缚效率。
+Leather Whip
+皮鞭
+You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +10 pain damage and create belts. 250% bind efficiency.
+你有能力在攻击时使用魔法腰带进行攻击。启用后：你的攻击造成 +10 痛苦伤害并制造腰带。250% 束缚效率。
 Engulf
 吞噬
 When enabled: Your melee attacks deal +20 glue damage and create slime.
