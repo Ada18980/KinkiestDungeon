@@ -16374,6 +16374,10 @@ At this point why not just use a gun?
 这个时候为什么不直接用枪呢？
 Reload time: 5 stationary turns. Deals crush damage on melee. Draws 25 charge and no stamina to fire an ordinary arrow, dealing 70 pierce damage, passing through units.
 装弹时间：静止 5 回合。近战造成挤压伤害。消耗 25 点冲力且无需体力来发射普通箭，造成 70 点穿透伤害，穿过小队。
+You find an arbalest.
+你找到了一把强弩。
+25 charge to fire a bolt. Deals 100 pierce damage.
+25 回合充能即可发射弩箭。造成 100 点穿刺伤害。
 The RSTNME is removed as the lock comes off.
 RSTNME 在被锁打开后移除。
 You save the key in your inventory for future use.
