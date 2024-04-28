@@ -18782,6 +18782,10 @@ The mage starts channeling her energy!
 法师开始引导她的能量！
 Warden Cuffs
 典狱长铐
+Warden Leg Cuffs
+典狱长腿铐
+Warden Ankle Cuffs
+典狱长踝铐
 Play the game the way it was intended. Cruel and restrictive.
 按照游戏的初衷来玩。严厉且充满限制性
 Unconventional Warfare
