@@ -18528,6 +18528,44 @@ You crouch and move slowly.
 你蹲下并缓慢移动。
 Owned by:
 拥有者：
+Warden's Belt
+典狱长的贞操带
+You may go on your way, but only as long your freedom is useful to her.
+你可以继续走你的路，但前提是你的自由对她有用。
+A golden belt that enforces respect for the Goddesses. Breaking spell orbs results in a punishment.
+一条金色腰带，用来表达对女神的敬意。破坏法术球会受到惩罚。
+Belt of Privilege
+特权贞操带
+You've defeated the Warden, proving that you are worthy to take what you want.
+你已经打败了典狱长，证明你有资格得到你想要的东西。
+A golden belt that marks you as a person of great import. -50% rep penalty for breaking orbs.
+一条金腰带，标志着您是一位重要人物。打破球体的声誉惩罚 -50%。
+Sharpshooter
+神射手
+You teach the warden's servant a lesson.
+你给监狱长的仆人一个教训。
+The sharpshooter pulls your arms behind your back! (+RestraintAdded)
+神射手将你的手臂拉到身后！（+RestraintAdded）
+The sharpshooter takes advantage of your weakness and squeezes your breast! (DamageTaken)
+神射手利用你的弱点，揉捏你的胸部！（DamageTaken）
+The sharpshooter smiles and clicks a lock on you! (DamageTaken)
+神射手微笑着将你锁定！（DamageTaken）
+Gladiator
+角斗士
+The gladiator puts you in a hold and binds you! (+RestraintAdded)
+角斗士抓住了你并把你绑住了！（+RestraintAdded）
+The gladiator chuckles as she spanks your butt! (DamageTaken)
+角斗士拍打你的屁股时咯咯笑！（DamageTaken）
+The gladiator smiles and clicks a lock on you! (DamageTaken)
+角斗士微笑着，将你锁定！（DamageTaken）
+Magician
+魔术师
+The magician conjures some restraints on you! (+RestraintAdded)
+魔术师对你施展了一些束缚！（+RestraintAdded）
+The magician summons tickling hands to tease you! (DamageTaken)
+魔术师召唤出挠痒痒的手来戏弄你！（DamageTaken）
+The magician conjures some locks on you! (DamageTaken)
+魔术师在你身上变出了一些锁！（DamageTaken）
 The Warden's Collar
 典狱长的项圈
 A golden collar that marks you as part of someone's collection.
@@ -18754,6 +18792,14 @@ The Warden disappears into a trapdoor!
 典狱长消失在活板门中！
 The Warden forces you to kneel, and presents you with a restraint! (+RestraintAdded)
 典狱长强迫你跪下，并对你进行束缚！（+RestraintAdded）
+The Warden whips you with a belt! (DamageTaken)
+典狱长用皮带抽打你！（DamageTaken）
+The Warden strikes you with her whip! (DamageTaken)
+典狱长用鞭子抽打你！（DamageTaken）
+The Warden tosses some enchanted locks at you! (DamageTaken)
+典狱长向你扔了一些魔法锁！（DamageTaken）
+The Warden swings her enchanted whip and conjures locks on your body! (DamageTaken)
+典狱长挥动着她那施了魔法的鞭子，把锁锁在你的身上！（DamageTaken）
 The Warden's staff emits a flash of blinding light! (DamageTaken)
 典狱长的法杖发出耀眼的光芒！（DamageTaken）
 The Warden's staff emits a mystical area, which congeals into locks! (DamageTaken)
