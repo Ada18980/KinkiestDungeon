@@ -2544,6 +2544,8 @@ The Arbiter
 仲裁者之杖
 I have altered the rules. Pray I do not alter them further.
 我已改变规则，祈祷我不会再进一步改变它们。
+Deals chain damage with 125% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Weapon Ability: Disarm
+以 125% 束缚效率造成连锁伤害，对召唤物造成 +40 暗影伤害。+25% 胶水和链条损坏。武器能力：缴械
 Bondage Buster
 束缚破坏者
 Can fire a beam (1 turn channel) that deals 30 electric damage and applies an equal amount of energy bondage. Charges when not fired, dealing 90 total damage at 10 turns of charge.
