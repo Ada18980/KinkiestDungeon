@@ -778,8 +778,8 @@ While above 90% willpower, you gain +150 Bondage Resist and Earth buff spells co
 当意志力超过 90% 时， 束缚抗性 +150，并且岩属性增益法术的魔力消耗减半。
 Path of Least Resistance
 腐蚀之盾
-While at 0 WP, you gain +35 Evasion and deal 20% of your max WP as acid damage when enemies restrain you.
-当意志力为 0 时，闪避 +35，并在被束缚时对敌人造成最大意志力 20% 的酸蚀伤害。
+While at 0 WP, you gain +35 Evasion and deal 20% of your max WP as soap damage when enemies restrain you.
+当意志力为 0 时，闪避 +35，并在被束缚时对敌人造成最大意志力 20% 的皂化伤害。
 Sticky Situation
 粘滞窘境
 You take 40% more glue damage.
@@ -10593,6 +10593,8 @@ Vibed!
 Flying
 飞行中
 Acid
+皂化
+Acid
 酸性
 Holy
 神圣
@@ -19182,3 +19184,13 @@ I won't submit to you!
 （无论如何都要戴上她的贞操带）
 (SPEAKER shakes her head as you force a gag into her mouth)|MMMMMPH!
 （当你强行想要堵住她的嘴巴时，SPEAKER 摇了摇头）|MMMMMPH!
+After casting a DMG spell:
+施展 DMG 法术后:
+Gain AMNT% DMG Damage for DRTN turns
+DRTN 回合获得 AMNT% DMG 伤害
+Gain AMNT DMG Resist for DRTN turns
+DRTN 回合获得 AMNT DMG 抗性
+Your elemental damage is increased!
+你的元素伤害增加了！
+Your elemental resistance is increased!
+你的元素抵抗增加了！
