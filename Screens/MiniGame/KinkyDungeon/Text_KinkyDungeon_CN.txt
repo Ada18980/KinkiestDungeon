@@ -2574,6 +2574,8 @@ Moirai's Scissors
 Moirai的剪刀
 Cutting the threads of fate.
 隔断命运的丝线。
+Deals slash damage. Ignores up to 100 Magic and Physical armor. Active ability: Spend 50 charge to free all nearby allies and disrobe enemies, increasing charm damage on them by 100% and applying the armor shred.
+造成斩击伤害。忽略最多 100 点魔法和物理护甲。主动能力：花费 50 点能量来释放附近所有盟友并脱去敌人的衣服，使他们的妩媚伤害提高 100% 并施加护甲碎片。
 Latex Projector
 乳胶投射器
 Deals crush damage. Can be used to spray a '+' shaped pool of slime.
