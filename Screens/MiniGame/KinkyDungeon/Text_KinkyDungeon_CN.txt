@@ -2546,6 +2546,8 @@ I have altered the rules. Pray I do not alter them further.
 我已改变规则，祈祷我不会再进一步改变它们。
 Bondage Buster
 束缚破坏者
+Can fire a beam (1 turn channel) that deals 30 electric damage and applies an equal amount of energy bondage. Charges when not fired, dealing 90 total damage at 10 turns of charge.
+可以发射一道光束（1 回合回合），造成 30 点电击伤害，并施加等量的能量束缚。未发射时会充能，充能 10 回合可造成 90 点总伤害。
 Blaster
 爆破者
 Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns.
