@@ -19124,3 +19124,29 @@ Goddess shrines do not remove non-binding restraints such as harnesses and cuffs
 女神神殿不会移除非拘束性束缚，如安全带和铐。
 The ENMY weakens your grip on your weapon! Enemies may disarm you if you stand too close...
 ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会使你缴械……
+(SPEAKER grins)|Very impressive.|You may have lost the battle, but you performed admirably~
+（SPEAKER 笑了）|非常令人印象深刻。|虽然你输掉了这场战斗，但你的表现令人钦佩~
+(SPEAKER smiles)|I will let you pass so long as you wear my collar.|(She snaps her fingers and conjures a glowing ring)
+（SPEAKER 微笑）|只要你戴上我的项圈，我就会让你过去。|（她打了个响指，变出一枚发光的戒指）
+(SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your collar~|(She snaps her fingers and conjures a glowing ring)
+（SPEAKER 咯咯笑）|然后你的旅程就结束了。|我想你不想要那样。|现在，至于你的项圈~|（她打了个响指，变出了一枚发光的戒指）
+(SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(She snaps her fingers and conjures a glowing ring)
+（SPEAKER 笑了）|当然是魔法~|谁说指挥官就必须毫无防御能力？|（她打了个响指，变出了一枚发光的戒指）
+Was that magic?
+那是魔法吗？
+I've lost. Now what?
+我输了。现在该怎么办？
+I won't submit to you!
+我不会向你屈服的！
+(SPEAKER presents you with your collar...)|(It closes around your neck seamlessly)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained.
+（SPEAKER 向你展示你的项圈……）|（它无缝地围绕着你的脖子）|现在……你将被允许自由行动，|但前提是你接受了足够的训练。
+(SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really think it would be that easy?
+（SPEAKER 用金属栅栏网挡住你）|非常令人印象深刻！|但你真的认为会那么容易吗？
+(SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~
+（SPEAKER 蹲下）|最令人印象深刻...|我很少输给冒险者...|我很想最终得到你~
+(SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
+（SPEAKER 看起来很惊讶）|我没想到你会如此……顺从。|（她打了个响指，扔给你一条发光的贞操带）|这是一条特殊的贞操带，专为那些拥有神圣特权的人保留。|你赢得了它。
+(Wear her belt anyway)
+（无论如何都要戴上她的贞操带）
+(SPEAKER shakes her head as you force a gag into her mouth)|MMMMMPH!
+（当你强行想要堵住她的嘴巴时，SPEAKER 摇了摇头）|MMMMMPH!
