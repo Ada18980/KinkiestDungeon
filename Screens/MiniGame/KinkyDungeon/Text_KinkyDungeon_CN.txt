@@ -18150,8 +18150,8 @@ Winded
 气喘吁吁
 While below 10% stamina, evasion is severely reduced and your slow level is increased by 1
 当体力低于 10% 时，闪避率会大幅降低，并且你的缓慢程度会增加 1 点
-The Lost
-失落者
+Lost One
+迷失者
 The being vanishes in front of you.
 生物在你面前消失了。
 The being grabs you, causing your body parts to freeze in time!!! (DamageTaken)
