@@ -18537,7 +18537,7 @@ You may go on your way, but only as long your freedom is useful to her.
 A golden belt that enforces respect for the Goddesses. Breaking spell orbs results in a punishment.
 一条金色腰带，用来表达对女神的敬意。破坏法术球会受到惩罚。
 Belt of Privilege
-特权贞操带
+特权腰带
 You've defeated the Warden, proving that you are worthy to take what you want.
 你已经打败了典狱长，证明你有资格得到你想要的东西。
 A golden belt that marks you as a person of great import. -50% rep penalty for breaking orbs.
