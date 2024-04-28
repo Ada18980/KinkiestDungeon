@@ -7714,8 +7714,8 @@ Unlocks fire spells. Learn Firebolt.
 允许学习火法术 并习得元素法术 “火焰弹”
 Lightning Novice
 基础电法术
-Unlocks electrice spells. Learn Electrify.
-允许学习电法术 并习得元素法术 “落雷”
+Unlocks electrice spells. Learn Electrify. Gain increased resistance to blinding from bright lights.
+允许学习电法术 并习得元素法术 “落雷”。增强对强光致盲的抵抗力。
 Water Novice
 基础水法术
 Unlocks water spells. Learn Water Ball.
