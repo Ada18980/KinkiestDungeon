@@ -2466,6 +2466,14 @@ A go-to for travelers and adventurers.
 旅行者和冒险家的首选。
 Deals slash damage. Offhand: +10 Block
 造成斩击伤害。副手: +10 阻挡
+Flashlight
+手电筒
+A weapon of mass illumination.
+大规模照明的武器。
+Provides a highly directional light source.
+提供高度定向的光源。
+You pick up a flashlight.
+你拿起手电筒。
 Torch
 火把
 Second only to the mighty towel in usefulness.
