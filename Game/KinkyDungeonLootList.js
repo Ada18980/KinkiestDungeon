@@ -355,6 +355,20 @@ let KinkyDungeonLootTable = {
 		{name: "CommonWeapon", weaponlist: "CommonWeapon", enchantlist: "CommonWeapon", enchantchance: 1.0, minLevel: 0, weight:1, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "CommonToy", weaponlist: "CommonToy", enchantlist: "CommonWeapon", enchantchance: 1.0, minLevel: 0, weight:1, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	],
+	"pair": [
+		{name: "BindingDress", minLevel: 0, weight: 10,
+			armor: "BindingDress",
+			amtMult: 2.5,
+			maxEnchants: 4,
+			minEnchants: 2,
+			noForceEquip: true,
+			unlockcurse: ["Divine"],
+			cursechance: 0, cursescale: 0,
+			cursesuffix: "",
+			enchantlist: "Pair", enchantchance: 1,
+			enchantlevelmin: 0, enchantlevelmax: 20,
+			message:"KDGoddessQuestReward_Armor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+	],
 	// TODO make it so that it wont try to give you a non enchanted weapon you already have
 	/*"weapon": [
 		{name: "CommonWeapon", weaponlist: "CommonWeapon", enchantlist: "CommonWeapon", enchantchance: KD_enchantchance_Default, enchantscale: KD_enchantscale_Default,

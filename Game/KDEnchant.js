@@ -23,6 +23,9 @@ let KDEnchantVariantList = {
 		//"DPGain",
 		//"DPGainWhenAttacked",
 	],
+	"Pair": [
+		"CommonPair",
+	],
 	"Gold": [
 		"ElementalEcho",
 		"ElementalDmg",
@@ -92,9 +95,15 @@ let KDEventEnchantmentModular = {
 					if (allEnchant.includes("condition")) return 0;
 					return 5;
 				},
-				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+				events: (item, Loot, curse, primaryEnchantment, enchantments) => {
+					let data = {
+						Loot: Loot,
+						curse: curse,
+						primaryEnchantment: primaryEnchantment,
+						enchantments: enchantments,
+					};
 					return [
-						...KDGenerateEffectConditionPair("Common", "Common", KDModifierEnum.restraint, item, 0, 10, 1)
+						...KDGenerateEffectConditionPair("Common", "Common", KDModifierEnum.restraint, item, 0, 10, 1, data)
 					];}},
 		}},
 
@@ -681,9 +690,9 @@ function KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantme
 				if (types.includes('metal')) return 'leather';
 				if (types.includes('rope')) return 'leather';
 			}
-			else if (event.kind == "water" && types.includes('acid') && KDRandom() < 0.8) {
-				return 'acid';
-			} else if (event.kind == "acid" && types.includes('water') && KDRandom() < 0.8) {
+			else if (event.kind == "water" && types.includes('soap') && KDRandom() < 0.8) {
+				return 'soap';
+			} else if (event.kind == "soap" && types.includes('water') && KDRandom() < 0.8) {
 				return 'water';
 			}
 			else if (event.kind == "earth" && types.includes('crush') && KDRandom() < 0.8) {

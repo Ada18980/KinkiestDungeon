@@ -164,18 +164,19 @@ function KinkyDungeonGetVariantEffectByList(List, Type, minLevel, maxLevel) {
  * @param {string | string[]} List
  * @param {string} item
  * @param {ModifierEnum} Type
+ * @param {KDModifierConditionData} data - data
  * @param {number} [minLevel] - for gating curse severity
  * @param {number} [maxLevel] - for gating curse severity
  * @param {PosNeutNeg} [positive] - for gating severity
  * @returns {Record<string, number>}
  */
-function KinkyDungeonGetVariantEffectByListWeighted(List, Type, item, minLevel, maxLevel, positive) {
+function KinkyDungeonGetVariantEffectByListWeighted(List, Type, item, data, minLevel, maxLevel, positive) {
 	let list = KinkyDungeonGetVariantEffectByList(List, Type, minLevel, maxLevel);
 	/** @type {Record<string, number>} */
 	let ret = {};
 	for (let obj of list) {
-		if (KDModifierEffects[obj].types[Type]?.filter(item, positive))
-			ret[obj] = KDModifierEffects[obj].types[Type].weight(item, positive);
+		if (KDModifierEffects[obj].types[Type]?.filter(item, positive, data))
+			ret[obj] = KDModifierEffects[obj].types[Type].weight(item, positive, data);
 	}
 	return ret;
 }
@@ -211,6 +212,7 @@ function KinkyDungeonGetVariantConditionByList(List, Type, minLevel, maxLevel) {
  * @param {string | string[]} List
  * @param {string} item
  * @param {ModifierEnum} Type
+ * @param {KDModifierConditionData} data - data
  * @param {number} [minLevel] - for gating curse severity
  * @param {number} [maxLevel] - for gating curse severity
  * @param {KDModifierEffect[]} [effect_positive] - for gating severity
@@ -218,13 +220,13 @@ function KinkyDungeonGetVariantConditionByList(List, Type, minLevel, maxLevel) {
  * @param {KDModifierEffect[]} [effect_negative] - for gating severity
  * @returns {Record<string, number>}
  */
-function KinkyDungeonGetVariantConditionByListWeighted(List, Type, item, minLevel, maxLevel, effect_positive, effect_neutral, effect_negative) {
+function KinkyDungeonGetVariantConditionByListWeighted(List, Type, item, data, minLevel, maxLevel, effect_positive, effect_neutral, effect_negative) {
 	let list = KinkyDungeonGetVariantConditionByList(List, Type, minLevel, maxLevel);
 	/** @type {Record<string, number>} */
 	let ret = {};
 	for (let obj of list) {
-		if (KDModifierConditions[obj].types[Type]?.filter(item, effect_positive, effect_neutral, effect_negative))
-			ret[obj] = KDModifierConditions[obj].types[Type].weight(item, effect_positive, effect_neutral, effect_negative);
+		if (KDModifierConditions[obj].types[Type]?.filter(item, effect_positive, effect_neutral, effect_negative, data))
+			ret[obj] = KDModifierConditions[obj].types[Type].weight(item, effect_positive, effect_neutral, effect_negative, data);
 	}
 	return ret;
 }
@@ -238,9 +240,10 @@ function KinkyDungeonGetVariantConditionByListWeighted(List, Type, item, minLeve
  * @param {number} minLevel
  * @param {number} maxLevel
  * @param {PosNeutNeg} pos
+ * @param {KDModifierConditionData} data - data
  */
-function KDGenerateEffectConditionPair(ListEffect, ListCondition, Type, item, minLevel, maxLevel, pos) {
-	let effect = KDGetByWeight(KinkyDungeonGetVariantEffectByListWeighted(ListEffect, Type, item, minLevel, maxLevel, pos));
+function KDGenerateEffectConditionPair(ListEffect, ListCondition, Type, item, minLevel, maxLevel, pos, data) {
+	let effect = KDGetByWeight(KinkyDungeonGetVariantEffectByListWeighted(ListEffect, Type, item, data, minLevel, maxLevel, pos));
 	let epo = [];
 	let enu = [];
 	let eng = [];
@@ -249,11 +252,14 @@ function KDGenerateEffectConditionPair(ListEffect, ListCondition, Type, item, mi
 		if (pos == KDPosNeutNeg.neutral) enu.push(KDModifierEffects[effect]);
 		if (pos == KDPosNeutNeg.negative) eng.push(KDModifierEffects[effect]);
 	} else return null;
-	let condition = KDGetByWeight(KinkyDungeonGetVariantConditionByListWeighted(ListCondition, Type, item, minLevel, maxLevel, epo, enu, eng));
+	if (KDModifierEffects[effect].types[Type]?.onSelect) KDModifierEffects[effect].types[Type].onSelect(item, data);
+	let condition = KDGetByWeight(KinkyDungeonGetVariantConditionByListWeighted(ListCondition, Type, item, data, minLevel, maxLevel, epo, enu, eng));
 	if (condition)
-		return KDModifierConditions[condition].types[Type].events(item, epo, enu, eng);
+		return KDModifierConditions[condition].types[Type].events(item, epo, enu, eng, data);
 	return null;
 }
+
+
 
 
 /**

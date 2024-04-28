@@ -54,9 +54,9 @@ let KinkyDungeonPacifistDamageTypes = ["tickle", "charm", "grope", "pain", "chai
 let KinkyDungeonStunDamageTypes = ["fire", "electric", "stun"];
 let KinkyDungeonBindDamageTypes = ["chain", "glue", "holy"];
 let KinkyDungeonFreezeDamageTypes = ["ice"];
-let KinkyDungeonSlowDamageTypes = ["crush", "slash", "pierce", "frost", "cold", "poison"];
+let KinkyDungeonSlowDamageTypes = ["crush", "slash", "pierce", "soap", "frost", "cold", "poison"];
 let KinkyDungeonVulnerableDamageTypes = ["tickle", "acid", "magicbind"];
-let KinkyDungeonMeltDamageTypes = ["fire", "holy"];
+let KinkyDungeonMeltDamageTypes = ["fire", "holy", "acid"];
 let KinkyDungeonShatterDamageTypes = ["crush", "stun", "fire"];
 let KinkyDungeonIgnoreShieldTypes = ["soul", "holy"];
 let KinkyDungeonIgnoreBlockTypes = ["soul", "charm", "gas"];
@@ -120,6 +120,7 @@ let KinkyDungeonDamageTypes = {
 	heal: {name: "heal", color: "#88ff88", bg: "black", harmless: true},
 	holy: {name: "holy", color: "#ffff88", bg: "black"},
 	acid: {name: "acid", color: "#c8d45d", bg: "black"},
+	soap: {name: "soap", color: "#44aaff", bg: "black"},
 	cold: {name: "cold", color: "#554bd4", bg: "black"},
 	arcane: {name: "arcane", color: "#ff5277", bg: "black"},
 	ice: {name: "ice", color: "#00D8FF", bg: "black"},
@@ -2694,9 +2695,15 @@ function KDDisarmEnemy(enemy, time) {
 	}
 }
 
+/**
+ * @type {Record<string, (e: KinkyDungeonEvent, data) => boolean>}
+ */
 let KDConditions = {
 	"DamageTypeTeasing": (e, data) => {
 		return data.damage && KDIsTeasing(data.damage);
+	},
+	"DamageType": (e, data) => {
+		return data.damage && data.damage.type == e.damage;
 	},
 	"spellType": (e, data) => {
 		return data.spell?.tags?.includes(e.kind);

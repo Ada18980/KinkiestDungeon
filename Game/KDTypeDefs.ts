@@ -3230,12 +3230,20 @@ interface KDEnchantment {
 	types: Record<ModifierEnum, KDEnchantmentType>,
 }
 
+interface KDModifierConditionData {
+	element?: string,
+	Loot: string,
+	curse: string,
+	primaryEnchantment: string,
+	enchantments: string[],
+}
 
 interface KDModifierEffectType {
 	level: number,
-	filter: (item: string, positive: PosNeutNeg) => boolean;
-	weight: (item: string, positive: PosNeutNeg) => number;
-	events: (item: string, positive: PosNeutNeg) => KinkyDungeonEvent[];
+	onSelect?: (item: string, data: KDModifierConditionData) => void;
+	filter: (item: string, positive: PosNeutNeg, data: KDModifierConditionData) => boolean;
+	weight: (item: string, positive: PosNeutNeg, data: KDModifierConditionData) => number;
+	events: (item: string, positive: PosNeutNeg, data: KDModifierConditionData) => KinkyDungeonEvent[];
 }
 
 interface KDModifierEffect {
@@ -3245,9 +3253,9 @@ interface KDModifierEffect {
 
 interface KDModifierConditionType {
 	level: number,
-	filter: (item: string, effect_positive: KDModifierEffect[], effect_neutral: KDModifierEffect[], effect_negative: KDModifierEffect[]) => boolean;
-	weight: (item: string, effect_positive: KDModifierEffect[], effect_neutral: KDModifierEffect[], effect_negative: KDModifierEffect[]) => number;
-	events: (item: string, effect_positive: KDModifierEffect[], effect_neutral: KDModifierEffect[], effect_negative: KDModifierEffect[]) => KinkyDungeonEvent[];
+	filter: (item: string, effect_positive: KDModifierEffect[], effect_neutral: KDModifierEffect[], effect_negative: KDModifierEffect[], data: KDModifierConditionData) => boolean;
+	weight: (item: string, effect_positive: KDModifierEffect[], effect_neutral: KDModifierEffect[], effect_negative: KDModifierEffect[], data: KDModifierConditionData) => number;
+	events: (item: string, effect_positive: KDModifierEffect[], effect_neutral: KDModifierEffect[], effect_negative: KDModifierEffect[], data: KDModifierConditionData) => KinkyDungeonEvent[];
 }
 
 interface KDModifierCondition {

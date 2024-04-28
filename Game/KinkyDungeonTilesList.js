@@ -1352,8 +1352,8 @@ let KDEffectTileMoveOnFunctions = {
 	},
 };
 
-let KDTorchExtinguishTypes = ["ice", "frost", "cold", "acid", "water", "stun", "glue"];
-let KDSlimeExtinguishTypes = ["ice", "frost", "cold", "acid", "water"];
+let KDTorchExtinguishTypes = ["ice", "frost", "cold", "soap", "water", "stun", "glue"];
+let KDSlimeExtinguishTypes = ["ice", "frost", "cold", "acid", "soap", "water"];
 let KDIgnitionSources = ["fire", "electric"];
 
 /**
@@ -1409,7 +1409,7 @@ let KDEffectTileBulletFunctions = {
 				}, 5); // Create blaze
 				if (newT)
 					tile.pauseDuration = newT.duration;
-			} else if ((type == "ice" || type == "frost" || type == "acid")) {
+			} else if ((type == "ice" || type == "frost" || type == "soap")) {
 				tile.duration = 0;
 				KDSmokePuff(tile.x, tile.y, 1.5, 0.1, true);
 			}
@@ -1419,7 +1419,7 @@ let KDEffectTileBulletFunctions = {
 	"Glue": (b, tile, d) => {
 		if (b.bullet.damage) {
 			let type = b.bullet.damage.type;
-			if (type == "acid") {
+			if (type == "soap" || type == "acid") {
 				tile.duration = 0;
 				KDSmokePuff(tile.x, tile.y, 1.5, 0.1, true);
 			}

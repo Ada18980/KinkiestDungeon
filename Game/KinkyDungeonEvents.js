@@ -102,7 +102,8 @@ let KDEventMapInventorySelected = {
 			if (item == data.item) {
 				data.extraLines.push(TextGet("KDVariableModifier_" + e.msg)
 					.replace("AMNT", `${e.power >= 0 ? "+" : ""}${Math.round(e.power)}`)
-					.replace("TYPE", `${e.kind}`));
+					.replace("DMG", TextGet("KinkyDungeonDamageType" + e.damage))
+					.replace("TPE", `${e.kind}`));
 				data.extraLineColor.push(e.color || "#ffffff");
 				data.extraLineColorBG.push(e.bgcolor || "#000000");
 			}
@@ -111,7 +112,8 @@ let KDEventMapInventorySelected = {
 			if (item == data.item) {
 				data.extraLines.push(TextGet("KDModifierCondition_" + e.msg)
 					.replace("AMNT", `${e.power >= 0 ? "+" : ""}${Math.round(e.power)}`)
-					.replace("TYPE", `${e.kind}`));
+					.replace("DMG", TextGet("KinkyDungeonDamageType" + e.damage))
+					.replace("TPE", `${e.kind}`));
 				data.extraLineColor.push(e.color || "#ffffff");
 				data.extraLineColorBG.push(e.bgcolor || "#000000");
 			}
@@ -121,7 +123,8 @@ let KDEventMapInventorySelected = {
 				data.extraLines.push(TextGet("KDModifierEffect_" + e.msg)
 					.replace("AMNT", `${e.power >= 0 ? "+" : ""}${Math.round(e.power)}`)
 					.replace("DRTN", `${Math.round(e.duration)}`)
-					.replace("TYPE", `${e.kind}`));
+					.replace("DMG", TextGet("KinkyDungeonDamageType" + e.damage))
+					.replace("TPE", `${e.kind}`));
 				data.extraLineColor.push(e.color || "#ffffff");
 				data.extraLineColorBG.push(e.bgcolor || "#000000");
 			}
@@ -9573,9 +9576,9 @@ let KDEventMapGeneric = {
 			if (KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.01 && KinkyDungeonStatsChoice.has("LeastResistance")) {
 				if (data.attacker && data.target.player && data.bound && data.eventable && (data.attacker.player || !data.target.player || KinkyDungeonAggressive(data.attacker))) {
 					if (data.attacker.player) {
-						KinkyDungeonDealDamage({damage: KinkyDungeonStatWillMax*0.1, type: "acid"});
+						KinkyDungeonDealDamage({damage: KinkyDungeonStatWillMax*0.1, type: "soap"});
 					} else {
-						KinkyDungeonDamageEnemy(data.attacker, {damage: KinkyDungeonStatWillMax*0.20, type: "acid"}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
+						KinkyDungeonDamageEnemy(data.attacker, {damage: KinkyDungeonStatWillMax*0.20, type: "soap"}, false, false, undefined, undefined, KinkyDungeonPlayerEntity);
 					}
 				}
 			}

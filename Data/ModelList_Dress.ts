@@ -578,10 +578,10 @@ AddModel({
 
 
 AddModel({
-	Name: "DressSkirtSplit",
+	Name: "DressSkirtSplitNoBelt",
 	Folder: "Dress",
-	Parent: "Dress",
-	TopLevel: true,
+	Parent: "DressSkirtSplit",
+	TopLevel: false,
 	Categories: ["Skirts"],
 	AddPoseConditional: {
 		EncaseTorsoLower: ["Skirt"]
@@ -616,6 +616,26 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "DressSkirtSplit",
+	Folder: "Dress",
+	Parent: "Dress",
+	TopLevel: true,
+	Categories: ["Skirts"],
+	AddPoseConditional: {
+		EncaseTorsoLower: ["Skirt"]
+	},
+	Layers: ToLayerMap([
+		...GetModelLayers("DressSkirtSplitNoBelt"),
+		{ Name: "SkirtSplitBelt", Layer: "Skirt", Pri: 13.9,
+			Poses: ToMap([...LEGPOSES]), NoOverride: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			InheritColor: "Skirt",
+			TieToLayer: "SkirtSplit",
+			Invariant: true,
+		},
+	])
+});
 
 AddModel({
 	Name: "BlouseCollar",

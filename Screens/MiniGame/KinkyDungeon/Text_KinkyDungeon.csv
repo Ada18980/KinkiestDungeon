@@ -414,7 +414,7 @@ KinkyDungeonStatDescLikeTheWind,"While above 95% stamina, you gain +30 Evasion a
 KinkyDungeonStatImmovableObject,"Immovable Object"
 KinkyDungeonStatDescImmovableObject,"While above 90% willpower, you gain +150 Bondage Resist and Earth buff spells cost half mana."
 KinkyDungeonStatLeastResistance,"Path of Least Resistance"
-KinkyDungeonStatDescLeastResistance,"While at 0 WP, you gain +35 Evasion and deal 20% of your max WP as acid damage when enemies restrain you."
+KinkyDungeonStatDescLeastResistance,"While at 0 WP, you gain +35 Evasion and deal 20% of your max WP as soap damage when enemies restrain you."
 
 KinkyDungeonStatSticky,"Sticky Situation"
 KinkyDungeonStatDescSticky,"You take 40% more glue damage."
@@ -7619,6 +7619,7 @@ KDStatusTooltipEnemyPlug,Wearing a toy
 KDStatusTooltipEnemyVibed,Vibed!
 KDStatusTooltipEnemyFlying,Flying
 
+KinkyDungeonDamageTypesoap,"Soap"
 KinkyDungeonDamageTypeacid,"Acid"
 KinkyDungeonDamageTypecold,"Shadow"
 KinkyDungeonDamageTypeholy,"Holy"
@@ -20853,3 +20854,11 @@ KinkyDungeonStatRangedSpec,"Ranged Specialization"
 KinkyDungeonStatDescRangedSpec,"You deal 20% more damage to enemies further than 2 tiles away, but enemies adjacent to you take 60% reduced damage."
 KinkyDungeonStatRangedExpert,"Ranged Weapon Expert"
 KinkyDungeonStatDescRangedExpert,"Bows, guns, and other projectile weapons do 10% more damage and consume 10% less charge."
+
+
+
+KDModifierCondition_OnElementalCast,"After casting a DMG spell:"
+KDModifierEffect_ElementalBuff,"Gain AMNT% DMG Damage for DRTN turns"
+KDModifierEffect_ElementalResist,"Gain AMNT DMG Resist for DRTN turns"
+KinkyDungeonBuffElementalBuff,Your elemental damage is increased!
+KinkyDungeonBuffElementalResist,Your elemental resistance is increased!

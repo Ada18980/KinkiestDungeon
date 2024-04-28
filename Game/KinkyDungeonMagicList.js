@@ -808,8 +808,8 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				duration: -6,
 			}
 		},
-		{name: "Rainstorm", prerequisite: "ApprenticeWater", tags: ["water", "aoe", "dot", "offense", "utility", "denial"], noUniqueHits: true, noise: 3, sfx: "FireSpell", school: "Elements", manacost: 4.5,
-			components: ["Verbal"], level:1, type:"inert", onhit:"aoe", delay: 3, power: 3.5, time: 2, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "acid",
+		{name: "Rainstorm", prerequisite: "ApprenticeWater", tags: ["water", "soap", "aoe", "dot", "offense", "utility", "denial"], noUniqueHits: true, noise: 3, sfx: "FireSpell", school: "Elements", manacost: 4.5,
+			components: ["Verbal"], level:1, type:"inert", onhit:"aoe", delay: 3, power: 3.5, time: 2, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "soap",
 			pierceEnemies: true,
 			effectTileDurationMod: 8, effectTile: {
 				name: "Water",
@@ -1020,8 +1020,8 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			onhit:"aoe", time: 30, delay: 3, power: 3, range: 2.99, size: 1, lifetime: 1, damage: "inert",
 			spellcast: {spell: "FreezeRuneStrike", target: "onhit", directional:false, offset: false}, channel: 5},
 
-		{name: "WaterBall", color: "#4f7db8", tags: ["water", "bolt", "offense", "utility"], prerequisite: "ApprenticeWater", sfx: "FireSpell", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"buff",
-			power: 3.5, delay: 0, range: 50, damage: "acid", speed: 3, playerEffect: {name: "Drench"},
+		{name: "WaterBall", color: "#4f7db8", tags: ["water", "soap", "bolt", "offense", "utility"], prerequisite: "ApprenticeWater", sfx: "FireSpell", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"buff",
+			power: 3.5, delay: 0, range: 50, damage: "soap", speed: 3, playerEffect: {name: "Drench"},
 			buffs: [
 				Object.assign({}, KDDrenched),
 				Object.assign({}, KDDrenched2),
@@ -1032,7 +1032,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 				duration: 40,
 			},
 		},
-		{name: "TidalBall", color: "#4f7db8", tags: ["water", "bolt", "offense", "utility"], prerequisite: "WaterBall", sfx: "FireSpell", school: "Elements", manacost: 6, components: ["Arms"], level:1, type:"bolt", size: 3, aoe: 1.5, projectileTargeting:true, onhit:"",  power: 3.5, pierceEnemies: true, delay: 0, range: 50, damage: "acid", speed: 1,
+		{name: "TidalBall", color: "#4f7db8", tags: ["water", "soap", "bolt", "offense", "utility"], prerequisite: "WaterBall", sfx: "FireSpell", school: "Elements", manacost: 6, components: ["Arms"], level:1, type:"bolt", size: 3, aoe: 1.5, projectileTargeting:true, onhit:"",  power: 3.5, pierceEnemies: true, delay: 0, range: 50, damage: "soap", speed: 1,
 			upcastFrom: "WaterBall", upcastLevel: 1,
 			effectTileDurationModTrail: 100, effectTileTrailAoE: 1.5, noTrailOnPlayer: true, effectTileTrail: {
 				name: "Water",
@@ -1333,7 +1333,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			]},
 		{name: "Ally", prerequisite: "ApprenticeSummon", tags: ["summon", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 8, components: ["Legs"], noTargetEnemies: true, noTargetPlayer: true, piercing: true, level:1, type:"hit", onhit:"summon", noSprite: true, summon: [{name: "Ally", count: 1, time: 9999, bound: true}], power: 0, time: 9999, delay: -1, range: 2.9, size: 1, aoe: 0.5, lifetime: 1, damage: "fire"},
 		{name: "FireElemental", prerequisite: "ApprenticeSummon", tags: ["fire", "summon", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 12, components: ["Verbal"], noTargetEnemies: true, noTargetPlayer: true, piercing: true, level:1, type:"hit", noSprite: true, onhit:"summon", summon: [{name: "FireElemental", count: 1, time: 9999, bound: true}], power: 0, time: 9999, delay: -1, range: 3.5, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},
-		{name: "WaterMote", prerequisite: "ApprenticeSummon", tags: ["water", "summon", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 12, components: ["Arms"], noTargetEnemies: true, noTargetPlayer: true, piercing: true, level:1, type:"hit", noSprite: true, onhit:"summon", summon: [{name: "WaterMote", count: 1, time: 9999, bound: true}], power: 0, time: 9999, delay: -1, range: 3.5, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},
+		{name: "WaterMote", prerequisite: "ApprenticeSummon", tags: ["water", "soap", "summon", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 12, components: ["Arms"], noTargetEnemies: true, noTargetPlayer: true, piercing: true, level:1, type:"hit", noSprite: true, onhit:"summon", summon: [{name: "WaterMote", count: 1, time: 9999, bound: true}], power: 0, time: 9999, delay: -1, range: 3.5, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},
 		{name: "AirMote", prerequisite: "ApprenticeSummon", tags: ["air", "summon", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 12, components: ["Verbal"], noTargetEnemies: true, noTargetPlayer: true, piercing: true, level:1, type:"hit", noSprite: true, onhit:"summon", summon: [{name: "AirMote", count: 1, time: 9999, bound: true}], power: 0, time: 9999, delay: -1, range: 3.5, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},
 		{name: "EarthMote", prerequisite: "ApprenticeSummon", tags: ["earth", "summon", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 12, components: ["Legs"], noTargetEnemies: true, noTargetPlayer: true, piercing: true, level:1, type:"hit", noSprite: true, onhit:"summon", summon: [{name: "EarthMote", count: 1, time: 9999, bound: true}], power: 0, time: 9999, delay: -1, range: 3.5, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},
 		{name: "NatureSpirit", prerequisite: "Ally", tags: ["nature", "summon", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 18, components: ["Legs"], noTargetEnemies: true, noTargetPlayer: true, piercing: true, level:1, type:"hit", noSprite: true, onhit:"summon", summon: [{name: "NatureSpirit", count: 1, time: 9999, bound: true}], power: 0, time: 9999, delay: -1, range: 3.5, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},
@@ -2419,7 +2419,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "BubbleBurst", color: "#88ffff", minRange: 0, sfx: "Grope", landsfx: "RubberBolt", effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
 		name: "Water",
 		duration: 20,
-	}, manacost: 4, specialCD: 12, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 5, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "acid", channel: 2,
+	}, manacost: 4, specialCD: 12, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 5, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "soap", channel: 2,
 	playerEffect: {name: "WaterBubble", power: 5}},
 
 	{enemySpell: true, name: "BubbleBurstLatex", color: "#88aaff", minRange: 0, sfx: "Grope", landsfx: "RubberBolt", effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
@@ -2818,7 +2818,7 @@ let KinkyDungeonSpellListEnemies = [
 			name: "Water",
 			duration: 20,
 		},
-		components: ["Arms"], level:1, type:"inert", onhit:"aoe", power: 2.0, bind: 1, time: 1, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "acid", playerEffect: {name: "WaterBubble", time: 8, power: 2, damage: "acid"}},
+		components: ["Arms"], level:1, type:"inert", onhit:"aoe", power: 2.0, bind: 1, time: 1, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "soap", playerEffect: {name: "WaterBubble", time: 8, power: 2, damage: "soap"}},
 	{enemySpell: true, name: "Fireexp", color: "#ffff00", minRange: 0, landsfx: "FireSpell", manacost: 5,
 		effectTileDurationMod: 2, effectTile: {
 			name: "Ember",
@@ -2971,8 +2971,8 @@ let KinkyDungeonSpellListEnemies = [
 		noTerrainHit: true, onhit:"aoe", time: 5, delay: 1, power: 4, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "electric", playerEffect: {name: "Shock", time: 1}},
 
 	// Elemental witch spells
-	{enemySpell: true, name: "WitchWaterBall", color: "#4f7db8", tags: ["water", "bolt", "offense", "utility"], sfx: "FireSpell", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"buff",
-		power: 3.0, delay: 0, range: 50, damage: "acid", speed: 3, playerEffect: {name: "Drench"},
+	{enemySpell: true, name: "WitchWaterBall", color: "#4f7db8", tags: ["water", "soap", "bolt", "offense", "utility"], sfx: "FireSpell", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"buff",
+		power: 3.0, delay: 0, range: 50, damage: "soap", speed: 3, playerEffect: {name: "Drench"},
 		buffs: [
 			Object.assign({}, KDDrenched),
 			Object.assign({}, KDDrenched2),
@@ -3279,7 +3279,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["latexcube"], msg: "VacCube"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
 
-	{enemySpell: true, name: "RuneTrap_Bubble", bulletColor: 0x8888ff, tags: ["water", "trap"],
+	{enemySpell: true, name: "RuneTrap_Bubble", bulletColor: 0x8888ff, tags: ["water", "soap", "trap"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Water",
@@ -3295,7 +3295,7 @@ let KinkyDungeonSpellListEnemies = [
 		},
 		hitColor: 0x4fa4b8, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["bubble"], msg: "Bubble"},
-		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "acid"},
+		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "soap"},
 
 	{enemySpell: true, name: "RuneTrap_SlimeBubble", bulletColor: 0xff00ff, tags: ["latex", "trap"],
 		hideWarnings: true,
