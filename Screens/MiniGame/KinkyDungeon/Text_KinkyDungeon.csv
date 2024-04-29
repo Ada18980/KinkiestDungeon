@@ -1197,15 +1197,15 @@ KinkyDungeonInventoryItemMaidUniformDesc2,"Massively increases accuracy against 
 
 KinkyDungeonInventoryItemDragon,Dragonheart Uniform
 KinkyDungeonInventoryItemDragonDesc,The uniform of choice for dragonheart of all ranks.
-KinkyDungeonInventoryItemDragonDesc2,"It's made of fire-resistant leather."
+KinkyDungeonInventoryItemDragonDesc2,"It's made of fire-resistant leather, and provides +5 armor."
 
 KinkyDungeonInventoryItemBlueSuitPrison,Scientific Uniform
 KinkyDungeonInventoryItemBlueSuitPrisonDesc,An outfit designed to leave little to the imagination.
-KinkyDungeonInventoryItemBlueSuitPrisonDesc2,"Resistant to electricity but does not insulate well."
+KinkyDungeonInventoryItemBlueSuitPrisonDesc2,"Resistant to electricity but does not insulate well. Provides significant acid and glue protection for scientific purposes."
 
 KinkyDungeonInventoryItemBlueSuit,Latex Catsuit
 KinkyDungeonInventoryItemBlueSuitDesc,An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
-KinkyDungeonInventoryItemBlueSuitDesc2,"Resistant to electricity but does not insulate well."
+KinkyDungeonInventoryItemBlueSuitDesc2,"Resistant to electricity but does not insulate well. Provides significant acid and glue protection for scientific purposes."
 
 KinkyDungeonInventoryItemDollSuit,Doll Catsuit
 KinkyDungeonInventoryItemDollSuitDesc,An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
@@ -1225,7 +1225,7 @@ KinkyDungeonInventoryItemElementalDressDesc2,"Resistant to the elements, but is 
 
 KinkyDungeonInventoryItemElven,Elven Dress
 KinkyDungeonInventoryItemElvenDesc,A regal minidress worn by visitors to the forest.
-KinkyDungeonInventoryItemElvenDesc2,"Not very good at insulating you from the cold."
+KinkyDungeonInventoryItemElvenDesc2,"Not very good at insulating you from the cold or from touchy fingers. Its elven aura improves accuracy and evasion by +10."
 
 KinkyDungeonInventoryItemScrollArms,Scroll of Sleight
 KinkyDungeonInventoryItemScrollArmsUse,The scroll makes your memories of arm movements clear as day!

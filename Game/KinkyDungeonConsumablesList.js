@@ -37,7 +37,7 @@ let KinkyDungeonConsumables = {
 	"CuffKeys" : {name: "CuffKeys", rarity: 1, sub: 0.25, shop: false, type: "CuffKeys", noConsumeOnUse: true},
 	"Snuffer" : {name: "Snuffer", rarity: 3, costMod: -1, shop: true, type: "Snuffer", noConsumeOnUse: true},
 	"SackOfSacks" : {name: "SackOfSacks", rarity: 3, costMod: -2, shop: true, type: "SackOfSacks", noConsumeOnUse: true},
-	"DiscPick" : {name: "DiscPick", rarity: 4, costMod: -1, sub: 0.2, shop: true, type: "DiscPick", noConsumeOnUse: true},
+	"DiscPick" : {name: "DiscPick", rarity: 4, costMod: -1, sub: 0.2, shop: true, type: "DiscPick", noConsumeOnUse: true, uniqueTags: ["pick"]},
 
 	"DivineTear" : {name: "DivineTear", rarity: 6, sub: 0.05, shop: true, delay: 3, power: 10, noHands: true, duration: 0, sfx: "Cookie", type: "RemoveCurseOrHex", noConsumeOnUse: true},
 };
@@ -73,7 +73,13 @@ let KinkyDungneonBasic = {
 	"3Flash" : {name: "3Flash", consumable: "FlashBomb", quantity: 3, rarity: 2, shop: true},
 	"3Flashbang" : {name: "3Flashbang", consumable: "Flashbang", quantity: 3, rarity: 3, shop: true},
 	"3Smoke" : {name: "3Smoke", consumable: "SmokeBomb", quantity: 3, rarity: 1, shop: true},
-	"MaidUniform" : {name: "MaidUniform", rarity: 2, shop: true, ignoreInventory: "Maid"},
+	"MaidUniform" : {name: "MaidUniform", rarity: 2, shop: true, ignoreInventory: "Maid", uniqueTags: ["outfit"]},
+	"Bast" : {name: "Bast", rarity: 2, shop: true, ignoreInventory: "Bast", uniqueTags: ["outfit"]},
+	"Bountyhunter" : {name: "Bountyhunter", rarity: 2, shop: true, ignoreInventory: "Bountyhunter", uniqueTags: ["outfit"]},
+	"Dragon" : {name: "Dragon", rarity: 2, shop: true, ignoreInventory: "Dragon", uniqueTags: ["outfit"]},
+	"BlueSuit" : {name: "MaidUniform", rarity: 2, shop: true, ignoreInventory: "Maid", uniqueTags: ["outfit"]},
+	"Elven" : {name: "Elven", rarity: 2, shop: true, ignoreInventory: "Elven", uniqueTags: ["outfit"]},
+	"ElementalDress" : {name: "ElementalDress", rarity: 2, shop: true, ignoreInventory: "ElementalDress", uniqueTags: ["outfit"]},
 	//"PotionCollar" : {name: "PotionCollar", rarity: 2, shop: true},
 };
 
@@ -81,15 +87,15 @@ let KinkyDungneonShopRestraints = {
 	"SlimeWalkers" : {name: "SlimeWalkers", rarity: 2, shop: true},
 	"SarielPanties" : {name: "SarielPanties", rarity: 5, shop: true},
 	"ElvenPanties" : {name: "ElvenPanties", rarity: 3, shop: true},
-	"DivineBelt" : {name: "DivineBelt", rarity: 5, shop: true},
-	"DivineBelt2" : {name: "DivineBelt2", rarity: 5, shop: true},
-	"DivineBra" : {name: "DivineBra", rarity: 5, shop: true},
-	"DivineBra2" : {name: "DivineBra2", rarity: 5, shop: true},
+	"DivineBelt" : {name: "DivineBelt", rarity: 5, shop: true, uniqueTags: ["divine"]},
+	"DivineBelt2" : {name: "DivineBelt2", rarity: 5, shop: true, uniqueTags: ["divine"]},
+	"DivineBra" : {name: "DivineBra", rarity: 5, shop: true, uniqueTags: ["divine"]},
+	"DivineBra2" : {name: "DivineBra2", rarity: 5, shop: true, uniqueTags: ["divine"]},
 	"DusterGag" : {name: "DusterGag", rarity: 2, shop: true},
 	"GasMask" : {name: "GasMask", rarity: 2, shop: true},
 	"PotionCollar" : {name: "PotionCollar", rarity: 3, shop: true},
-	"Sunglasses" : {name: "Sunglasses", rarity: 2, shop: true},
-	"Sunglasses2" : {name: "Sunglasses2", rarity: 2, shop: true},
+	"Sunglasses" : {name: "Sunglasses", rarity: 2, shop: true, uniqueTags: ["shades"]},
+	"Sunglasses2" : {name: "Sunglasses2", rarity: 2, shop: true, uniqueTags: ["shades"]},
 };
 
 /** @type {Record<string, (consumable) => void>} */

@@ -474,24 +474,7 @@ let KDPlayerEffects = {
 
 				KinkyDungeonSendTextMessage(4, TextGet("KDWaterBubble").KDReplaceOrAddDmg( dmg.string), "#2789cd", 1);
 			}
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-				id: "WaterBubble",
-				aura: "#2789cd",
-				aurasprite: "WaterBubble",
-				noAuraColor: true,
-				buffSprite: true,
-				type: "Accuracy",
-				power: -0.5,
-				duration: playerEffect.time,
-				tags: ["debuff"],
-			});
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-				id: "WaterBubble2",
-				type: "SlowLevel",
-				power: 3,
-				duration: playerEffect.time,
-				tags: ["debuff", "slow"],
-			});
+			KDApplyBubble(KinkyDungeonPlayerEntity, playerEffect.time);
 		}
 		return {sfx: "Fwosh", effect: true};
 	},
@@ -2342,4 +2325,41 @@ if (!String.prototype.KDReplaceOrAddDmg) {
 		if (this.includes(replaceString2)) return this.replace(replaceString2, dmg);
 		return this + ` (${dmg})`;
 	};
+}
+
+/**
+ *
+ * @param {entity} entity
+ * @param {number} time
+ * @param {number} damage
+ */
+function KDApplyBubble(entity, time, damage = 0) {
+	KinkyDungeonApplyBuffToEntity(entity, {
+		id: "WaterBubble",
+		aura: "#2789cd",
+		aurasprite: "WaterBubble",
+		noAuraColor: true,
+		buffSprite: true,
+		type: "Accuracy",
+		power: -0.5,
+		duration: time,
+		tags: ["debuff"],
+	});
+	KinkyDungeonApplyBuffToEntity(entity, {
+		id: "WaterBubble2",
+		type: "SlowLevel",
+		power: 3,
+		duration: time,
+		tags: ["debuff", "slow"],
+	});
+	if (damage) {
+		let bubbleData = {
+			cancelDamage: false,
+			dmg: damage,
+			type: "soap",
+		};
+		KinkyDungeonSendEvent("applyBubble", bubbleData);
+		if (!bubbleData.cancelDamage)
+			KinkyDungeonDealDamage({damage: damage, type: bubbleData.type});
+	}
 }

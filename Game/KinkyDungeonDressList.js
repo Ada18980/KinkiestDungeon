@@ -54,6 +54,8 @@ let KinkyDungeonOutfitsBase = [
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Dragon"},
 			{type: "damageResist", trigger: 'tick', damage: "fire", power: 0.2},
+			{type: "armorBuff", trigger: 'tick', power: 0.5},
+
 		],},
 	{name: "Elven", dress: "Elven", shop: false, rarity: 2,
 		palette: "Elf",
@@ -61,6 +63,8 @@ let KinkyDungeonOutfitsBase = [
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Elf"},
 			{type: "damageResist", trigger: 'tick', damage: "tickle", power: -0.2},
 			{type: "damageResist", trigger: 'tick', damage: "grope", power: -0.2},
+			{type: "buff", kind: "Accuracy", trigger: 'tick', power: 0.1},
+			{type: "buff", kind: "Evasion", trigger: 'tick', power: 0.1},
 		],},
 	{name: "Wolfgirl", dress: "Wolfgirl", shop: false, rarity: 2,
 		palette: "Nevermere",
@@ -91,6 +95,8 @@ let KinkyDungeonOutfitsBase = [
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', mult: 0.9, kind: "Alchemist"},
 			{type: "damageResist", trigger: 'tick', damage: "electric", power: 0.2},
+			{type: "damageResist", trigger: 'tick', damage: "glue", power: 0.5},
+			{type: "damageResist", trigger: 'tick', damage: "acid", power: 0.8},
 		],},
 	{name: "Obsidian", dress: "Obsidian", shop: false, rarity: 2,
 		palette: "Curse",

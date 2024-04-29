@@ -74,6 +74,8 @@ interface consumable {
 	sub?: number,
 	rarity: number,
 	type: string,
+	/** used solely for shop */
+	uniqueTags?: string[],
 	shop?: boolean,
 	spell?: string,
 	potion?: boolean,
@@ -463,6 +465,10 @@ interface KDRestraintPropsBase {
 	allowPotions?: boolean,
 	/** Allows the user to walk across slime */
 	slimeWalk?: boolean,
+	/** Allows the user to walk across soap */
+	soapWalk?: boolean,
+	/** Allows the user to walk across ice (unused) */
+	iceWalk?: boolean,
 	/** Amount of ancient energy it draws per turn */
 	enchantedDrain?: number,
 	/** Whether or not this is an Ancient item, prison respects it */
@@ -1924,6 +1930,8 @@ interface spell {
 	noUniqueHits?: boolean;
 	/** AoE */
 	aoe?: number;
+	/** AoE of bullet itself (only for bolts) */
+	bulletAoE?: number;
 	/** bind */
 	bind?: number;
 	/** bind crit mult*/

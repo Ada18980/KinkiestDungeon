@@ -11,7 +11,7 @@ let KDLoadouts = {
 		singletag: ["human", "elf", "alchemist", "dragon", "witch", "apprentice", "mummy", "jailer"],
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.5,
-		items: ["RedKey"],
+		items: ["RedKey", "BasicLeash"],
 	},
 	"thief": {
 		name: "thief",
@@ -19,7 +19,7 @@ let KDLoadouts = {
 		singletag: ["bandit", "bountyhunter"],
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.15,
-		items: ["Pick", "Knife", "DiscPick",],
+		items: ["Pick", "Knife", "DiscPick"],
 	},
 	"thief2": {
 		name: "thief2",
@@ -118,7 +118,7 @@ let KDLoadouts = {
 		singletag: ["human", "bountyhunter"],
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.2,
-		items: ["RedKey", "WristShackles"],
+		items: ["RedKey", "WristShackles", "BasicLeash"],
 	},
 	"ninja": {
 		name: "ninja",
@@ -134,7 +134,7 @@ let KDLoadouts = {
 		singletag: ["bandit"],
 		forbidtags: [],
 		chance: 0.3,
-		items: ["Bomb"],
+		items: ["Bomb", "BasicLeash"],
 	},
 	"bandit_II": {
 		name: "bandit_II",
@@ -142,7 +142,7 @@ let KDLoadouts = {
 		singletag: ["bandit"],
 		forbidtags: [],
 		chance: 0.7,
-		items: ["Bola"],
+		items: ["Bola", "BasicLeash"],
 	},
 	"bandit_III": {
 		name: "bandit_III",
@@ -150,7 +150,7 @@ let KDLoadouts = {
 		singletag: ["miniboss", "boss", "elite"],
 		forbidtags: [],
 		chance: 0.5,
-		items: ["PotionStamina", "Bola", "Knife", "DiscPick"],
+		items: ["PotionStamina", "Bola", "Knife", "DiscPick", "BasicLeash"],
 	},
 	"bandit_IV": {
 		name: "bandit_IV",
@@ -159,7 +159,7 @@ let KDLoadouts = {
 		forbidtags: [],
 		chance: 0.5,
 		multiplier: 5,
-		items: ["PotionWill", "Bomb", "Rope"],
+		items: ["PotionWill", "Bomb", "Rope", "BasicLeash"],
 	},
 	"bandit_V": {
 		name: "bandit_V",
@@ -168,7 +168,7 @@ let KDLoadouts = {
 		forbidtags: [],
 		chance: 0.1,
 		multiplier: 10,
-		items: ["PotionStamina", "RedKey", "RedKey", "DiscPick"],
+		items: ["PotionStamina", "RedKey", "RedKey", "DiscPick", "BasicLeash"],
 	},
 	"miner": {
 		name: "miner",
@@ -184,7 +184,7 @@ let KDLoadouts = {
 		singletag: ["trainer"],
 		forbidtags: [],
 		chance: 0.4,
-		items: ["AncientPowerSource", "RedKey"],
+		items: ["AncientPowerSource", "RedKey", "BasicLeash"],
 	},
 	"nevermere": {
 		name: "nevermere",
@@ -297,7 +297,7 @@ let KDLoadouts = {
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.2,
 		multiplier: 4,
-		items: ["ScrollPurity", "PotionMana", "BlueKey"],
+		items: ["ScrollPurity", "PotionMana", "BlueKey", "BasicLeash"],
 	},
 	"religiousMiniboss": {
 		name: "religiousMiniboss",
@@ -306,7 +306,7 @@ let KDLoadouts = {
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.5,
 		multiplier: 10,
-		items: ["ScrollPurity", "PotionMana", "BlueKey"],
+		items: ["ScrollPurity", "PotionMana", "BlueKey", "BasicLeash"],
 	},
 	"religiousBoss": {
 		name: "religiousBoss",
@@ -315,7 +315,7 @@ let KDLoadouts = {
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.8,
 		multiplier: 10,
-		items: ["ScrollPurity", "PotionMana", "BlueKey"],
+		items: ["ScrollPurity", "PotionMana", "BlueKey", "BasicLeash"],
 	},
 	"keyholder": {
 		name: "keyholder",
@@ -324,7 +324,7 @@ let KDLoadouts = {
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.22,
 		multiplier: 2,
-		items: ["Keyring"],
+		items: ["Keyring", "BasicLeash"],
 	},
 	"potMana_minor": {
 		name: "potMana_minor",
@@ -388,6 +388,6 @@ let KDLoadouts = {
 		singletag: ["human", "elf", "alchemist", "dragon", "witch", "apprentice", "mummy"],
 		forbidtags: ["submissive", "gagged"],
 		chance: 1.0,
-		items: ["RedKey", "Keyring"],
+		items: ["RedKey", "Keyring", "BasicLeash"],
 	},
 };

@@ -2,6 +2,7 @@
 
 let KDLatexDmg = 1;
 let KDLatexBind = 2;
+let KDBubbleDmg = 3;
 
 /**
  * @type {Record<string, effectTile>}
@@ -29,7 +30,7 @@ let KDEffectTiles = {
 		name: "Water",
 		duration: 40,
 		priority: 1,
-		tags: ["water", "freezeover", "conductive", "slippery", "terrain"],
+		tags: ["water", "wet", "freezeover", "conductive", "slippery", "terrain"],
 	},
 	"Cracked": {
 		name: "Cracked",
@@ -193,7 +194,19 @@ let KDEffectTiles = {
 		name: "Smoke",
 		duration: 2,
 		priority: 4,
-		tags: ["smoke", "visionblock", "brightnessblock", "darkarea"],
+		tags: ["smoke", "visionblock", "brightnessblock", "darkarea", "wet"],
+	},
+	"Bubble": {
+		name: "Bubble",
+		duration: 2,
+		priority: 99,
+		tags: ["wet"],
+	},
+	"Soap": {
+		name: "Soap",
+		duration: 14,
+		priority: 15,
+		tags: ["slippery"],
 	},
 	"Inferno": {
 		name: "Inferno",

@@ -161,7 +161,7 @@ let KinkyDungeonEnemies = [
 
 	// End Quest NPC
 
-	{name: "DirtPile", tags: KDMapInit(["poisonmmune", "soulimmune", "dirt", "noknockback", "melee", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile"]),
+	{name: "DirtPile", tags: KDMapInit(["poisonmmune", "soulimmune", "dirt", "noknockback", "melee", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile", "acidweakness", "soapsevereweakness"]),
 		faction: "Door", immobile: true, spellResist: -3, lowpriority: true, evasion: -100, armor: -1, followRange: 100, AI: "wander",
 		visionRadius: 0, maxhp: 4, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
 		ondeath: [
@@ -2751,7 +2751,7 @@ let KinkyDungeonEnemies = [
 			profile: ["construct"],
 		},
 		tags: KDMapInit(["scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "fire", "temporary",
-			"poisonimmune", "soulimmune", "fireimmune", "pierceresist", "acidsevereweakness", "iceweakness", "glueweakness", "tickleresist", "groperesist", "painresist", "charmimmune",
+			"poisonimmune", "soulimmune", "fireimmune", "pierceresist", "soapsevereweakness", "iceweakness", "glueweakness", "tickleresist", "groperesist", "painresist", "charmimmune",
 		]),
 		spellResist: 1, armor: 2,
 		sneakthreshold: 0.6,
@@ -5046,7 +5046,7 @@ let KinkyDungeonEnemies = [
 			profile: ["construct"],
 		},
 		tags: KDMapInit(["scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "fire", "temporary", "coldimmune",
-			"poisonimmune", "soulimmune", "fireimmune", "pierceresist", "acidsevereweakness", "iceweakness", "glueweakness", "tickleresist", "groperesist", "painresist", "charmimmune",
+			"poisonimmune", "soulimmune", "fireimmune", "pierceresist", "coldweakness", "holyweakness", "tickleresist", "groperesist", "painresist", "charmimmune",
 		]),
 		spellResist: 1, armor: 2,
 		sneakthreshold: 0.6,

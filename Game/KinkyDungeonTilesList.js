@@ -597,6 +597,12 @@ let KDEffectTileFunctionsStandalone = {
 		KDGrow(tile, "Vines");
 		return false;
 	},
+	"Soap": (delta, tile) => {
+		if (!KDEffectTileTags(tile.x, tile.y).wet) {
+			tile.duration = 0;
+		}
+		return false;
+	},
 	"SlimeBurning": (delta, tile) => {
 		if (tile.duration > 0 && !(tile.pauseDuration > 0)) {
 			KDCreateEffectTile(tile.x, tile.y, {
@@ -662,18 +668,52 @@ function KDSlimeImmuneEntity(entity) {
 	} else return KDSlimeImmune(entity);
 }
 
+function KDSoapImmuneEntity(entity) {
+	if (entity.player) {
+		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "soapDamageResist") >= 0.45) return true;
+		for (let inv of KinkyDungeonAllRestraint()) {
+			if (KDRestraint(inv).soapWalk) {
+				return true;
+			}
+		}
+	} else return KDSoapImmune(entity);
+}
+
 function KDSlimeWalker(entity) {
 	if (KDSlimeImmuneEntity(entity)) return true;
 	else if (!entity.player && KDIsFlying(entity)) return true;
 	return false;
 }
 
+function KDSoapWalker(entity) {
+	if (KDSoapImmuneEntity(entity)) return true;
+	else if (!entity.player && KDIsFlying(entity)) return true;
+	return false;
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
 function KDSlimeImmune(enemy) {
 	return enemy.Enemy?.tags.slime
 		//|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "glue", "resist")
 		|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "glue", "immune")
 		|| enemy.Enemy?.tags.slimewalk
 		|| KDEntityBuffedStat(enemy, "glueDamageResist") >= 0.45;
+}
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDSoapImmune(enemy) {
+	return enemy.Enemy?.tags.slime
+		//|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "glue", "resist")
+		|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "soap", "immune")
+		|| enemy.Enemy?.tags.soapwalk
+		|| KDEntityBuffedStat(enemy, "soapDamageResist") >= 0.45;
 }
 /**
  * These happen when stepped on
@@ -845,6 +885,21 @@ let KDEffectTileFunctions = {
 		}
 		return false;
 	},
+	"Bubble": (delta, entity, tile) => {
+		if (tile.pauseDuration > 0) {
+			// Meep
+		} else {
+			// Latex slimes entities that are on it
+			let slimeWalker = KDSoapImmuneEntity(entity);
+			if (!slimeWalker) {
+				if (!KDEntityHasBuff(entity, "WaterBubble")) {
+					KDApplyBubble(entity, 4, KDGetEnvironmentalDmg() * KDBubbleDmg);
+					return true;
+				}
+			}
+		}
+		return false;
+	},
 	"LiquidMetal": (delta, entity, tile) => {
 		if (tile.pauseDuration > 0) {
 			// Meep
@@ -903,6 +958,13 @@ let KDEffectTileFunctions = {
 	"Ice": (delta, entity, tile) => {
 		if ((!entity.player && !entity.Enemy.tags.ice && !entity.Enemy.tags.nofreeze) || (entity.player && !KDChillWalk(entity)))
 			KinkyDungeonApplyBuffToEntity(entity, KDChilled);
+		if (entity.player && KinkyDungeonPlayerBuffs.Slipping && !KinkyDungeonFlags.get("slipped")) {
+			KDSlip({x: KinkyDungeonPlayerEntity.x - KinkyDungeonPlayerEntity.lastx, y: KinkyDungeonPlayerEntity.y - KinkyDungeonPlayerEntity.lasty});
+			KinkyDungeonSetFlag("slipped", 1);
+		}
+		return true;
+	},
+	"Soap": (delta, entity, tile) => {
 		if (entity.player && KinkyDungeonPlayerBuffs.Slipping && !KinkyDungeonFlags.get("slipped")) {
 			KDSlip({x: KinkyDungeonPlayerEntity.x - KinkyDungeonPlayerEntity.lastx, y: KinkyDungeonPlayerEntity.y - KinkyDungeonPlayerEntity.lasty});
 			KinkyDungeonSetFlag("slipped", 1);
@@ -1340,6 +1402,14 @@ let KDEffectTileMoveOnFunctions = {
 		}
 		return {cancelmove: false, returnvalue: false};
 	},
+	"Soap": (entity, tile, willing, dir, sprint) => {
+		if (sprint && entity.player && willing && (dir.x || dir.y) && !KinkyDungeonFlags.get("slipped")) {
+			KDSlip(dir);
+			KinkyDungeonSetFlag("slipped", 1);
+			return {cancelmove: true, returnvalue: true};
+		}
+		return {cancelmove: false, returnvalue: false};
+	},
 	"Water": (entity, tile, willing, dir, sprint) => {
 		if (tile.pauseSprite == tile.name + "Frozen") {
 			if (sprint && entity.player && willing && (dir.x || dir.y) && !KinkyDungeonFlags.get("slipped")) {
@@ -1376,6 +1446,13 @@ let KDEffectTileBulletFunctions = {
 	"SlimeBurning": (b, tile, d) => {
 		if (b.bullet.damage) {
 			let type = b.bullet.damage.type;
+			if (type == "soap") {
+				tile.duration = 0;
+				KDCreateEffectTile(tile.x, tile.y, {
+					name: "Bubble",
+					duration: 2,
+				}, 3);
+			} else
 			if (KDSlimeExtinguishTypes.includes(type)) {
 				KDCreateEffectTile(tile.x, tile.y, {
 					name: "Slime",
@@ -1389,6 +1466,13 @@ let KDEffectTileBulletFunctions = {
 	"Slime": (b, tile, d) => {
 		if (b.bullet.damage) {
 			let type = b.bullet.damage.type;
+			if (type == "soap") {
+				tile.duration = 0;
+				KDCreateEffectTile(tile.x, tile.y, {
+					name: "Bubble",
+					duration: 2,
+				}, 3);
+			} else
 			if ((KDIgnitionSources.includes(type)) && b.bullet.damage.damage > 0) {
 				KDCreateEffectTile(tile.x, tile.y, {
 					name: "SlimeBurning",
@@ -1421,7 +1505,7 @@ let KDEffectTileBulletFunctions = {
 			let type = b.bullet.damage.type;
 			if (type == "soap" || type == "acid") {
 				tile.duration = 0;
-				KDSmokePuff(tile.x, tile.y, 1.5, 0.1, true);
+				//KDSmokePuff(tile.x, tile.y, 1.5, 0.1, true);
 			}
 		}
 		return true;

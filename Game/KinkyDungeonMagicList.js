@@ -1033,7 +1033,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			},
 		},
 		{name: "TidalBall", color: "#4f7db8", tags: ["water", "soap", "bolt", "offense", "utility"], prerequisite: "WaterBall", sfx: "FireSpell", school: "Elements", manacost: 6, components: ["Arms"], level:1, type:"bolt", size: 3, aoe: 1.5, projectileTargeting:true, onhit:"",  power: 3.5, pierceEnemies: true, delay: 0, range: 50, damage: "soap", speed: 1,
-			upcastFrom: "WaterBall", upcastLevel: 1,
+			upcastFrom: "WaterBall", upcastLevel: 1, bulletAoE: 1.5,
 			effectTileDurationModTrail: 100, effectTileTrailAoE: 1.5, noTrailOnPlayer: true, effectTileTrail: {
 				name: "Water",
 				duration: 40,

@@ -103,6 +103,7 @@ function KinkyDungeonGenerateShop(Level) {
 		items_high = -1;
 		itemCount += 2;
 	}
+	let uniqueTags = {};
 	for (let I = itemCount; I > 0; I--) {
 		let Rarity = Math.floor(KDRandom() * 0.4 * KDMaxRarity/KinkyDungeonMaxLevel*Level);
 		if (items_high < 3) {
@@ -112,9 +113,16 @@ function KinkyDungeonGenerateShop(Level) {
 			Rarity = Math.floor(KDRandom() + (0.4+KDRandom() * 0.35) * KDMaxRarity/KinkyDungeonMaxLevel*Level);
 			items_mid += 1;}
 
-		let item = KinkyDungeonGetShopItem(Level, Rarity, true, ShopItems);
-		if (item)
+		let item = KinkyDungeonGetShopItem(Level, Rarity, true, ShopItems, uniqueTags);
+		if (item) {
+			if (item.uniqueTags) {
+				for (let t of item.uniqueTags) {
+					uniqueTags[t] = true;
+				}
+			}
 			ShopItems.push({name: item.name, shoptype: item.shoptype, consumable: item.consumable, quantity: item.quantity, rarity: item.rarity, cost: item.cost});
+		}
+
 	}
 	ShopItems.sort(function(a, b){return a.rarity-b.rarity;});
 	return ShopItems;

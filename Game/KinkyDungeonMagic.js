@@ -952,7 +952,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 					bulletSpin: spell.bulletSpin,
 					followPlayer: (!enemy && player && spell.followCaster) ? true : undefined,
 					followCaster: (enemy && spell.followCaster) ? enemy.id : undefined,
-					effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
+					effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod, aoe: spell.bulletAoE,
 					effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
 					passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
 					pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,

@@ -3392,6 +3392,12 @@ let KDEventMapOutfit = {
 		"sneakBuff": (e, outfit, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: outfit.name + "Sneak", type: "SlowDetection", power: e.power, duration: 2,});
 		},
+		"armorBuff": (e, outfit, data) => {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: outfit.name + "Armor", type: "Armor", power: e.power, duration: 2,});
+		},
+		"buff": (e, outfit, data) => {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: outfit.name + e.kind, type: e.kind, power: e.power, duration: 2,});
+		},
 		"damageResist": (e, outfit, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: outfit.name + e.damage + "damageResist", type: e.damage + "DamageResist", power: e.power, duration: 2,});
 		},

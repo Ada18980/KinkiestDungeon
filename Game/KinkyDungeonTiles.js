@@ -819,7 +819,7 @@ function KDInferno(existingTile, newTile, duration) {
  * @returns {boolean}
  */
 function KDGrow( tile, type, duration = 20, chance = 0.1, refreshDuration = 20) {
-	if (KDEffectTileTags(tile.x, tile.y).water && KDRandom() < chance) {
+	if (KDEffectTileTags(tile.x, tile.y).wet && KDRandom() < chance) {
 		tile.duration = Math.max(tile.duration, refreshDuration);
 		let xx = Math.floor(KDRandom() * 3) - 1;
 		let yy = Math.floor(KDRandom() * 3) - 1;
