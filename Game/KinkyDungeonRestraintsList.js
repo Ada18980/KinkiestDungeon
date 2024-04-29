@@ -3855,7 +3855,7 @@ const KinkyDungeonRestraints = [
 			Latex: {"gamma":1,"saturation":0,"contrast":1.0666666666666667,"brightness":0.9166666666666666,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
 			Rim: {"gamma":1,"saturation":0,"contrast":1.0666666666666667,"brightness":0.9166666666666666,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
 		},
-		maxwill: 0.25, enemyTags: {"shadowlatexGag" : 3, "shadowLatexRestraints": 7}, playerTags: {"ItemMouthFull": 2, "ItemMouth2Full": 2, "ItemMouth3Full": 2},
+		maxwill: 0.25, enemyTags: {"shadowLatexGag" : 3, "shadowLatexRestraints": 7}, playerTags: {"ItemMouthFull": 2, "ItemMouth2Full": 2, "ItemMouth3Full": 2},
 		minLevel: 3, allFloors: true, shrine: ["ShadowLatex", "Latex", "Posture", "HighCollars", "Collars"]},
 
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexHeels", inaccessible: true, Asset: "FuturisticHeels2", remove: ["Shoes"],
