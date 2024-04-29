@@ -3276,6 +3276,7 @@ KinkyDivine2LockType,"Divine"
 KinkyWhiteLockType,"Simple"
 KinkyBlueLockType,"Runic"
 KinkyPurpleLockType,"Magic"
+KinkyCyberLockType,"Cyber"
 KinkyGoldLockType,"Ancient"
 KinkyWhiteLock,"Simple Lock"
 KinkyRedLock,"Standard Lock"
@@ -3289,6 +3290,7 @@ KinkyDivine2Lock,"Divine Lock"
 KinkyWhiteLock,"Simple Lock"
 KinkyBlueLock,"Runic Lock"
 KinkyPurpleLock,"Purple Lock"
+KinkyCyberLock,"Cyber Lock"
 
 KinkyDungeonPotionGagged,"You can't use that while gagged!"
 KinkyDungeonCantUsePotions,"You can't use that without your fingers!"
@@ -3560,7 +3562,7 @@ RestraintDressMuzzle,Fancy Muzzle
 RestraintDressMuzzleDesc,A muzzle to keep you from spitting out what's underneath.
 RestraintDressMuzzleDesc2,"Sorry dear, there's a mystic seal on there to keep it on nice and tight."
 
-RestraintMikoDress,Red Binding Dress
+RestraintMikoDress,Ornamental Dress
 RestraintMikoDressDesc,"A devious dress that forces the arms into an elbows-touching position."
 RestraintMikoDressDesc2,"It is extremely strict but it is only fabric. The lacing is intricate and will take a long time to remove."
 

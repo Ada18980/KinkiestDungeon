@@ -1590,7 +1590,13 @@ function KinkyDungeonRun() {
 			DrawTextKD(TextGet("KDLoading") + Math.round(100 * KDLoadingDone / KDLoadingMax) + "%", 1000, 950, "#ffffff", KDTextGray2);
 		} else {
 			KDOptOut = true;
-			if (KDToggles.SkipIntro) KinkyDungeonState = "Menu"; else KinkyDungeonState = "Intro";
+			let cb = () => {
+				let Char = KinkyDungeonPlayer;
+				DrawCharacter(Char, 0, 0, 0.01, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
+
+				if (KDToggles.SkipIntro) KinkyDungeonState = "Menu"; else KinkyDungeonState = "Intro";
+			};
+			setTimeout(cb, 100);
 
 			CharacterReleaseTotal(KinkyDungeonPlayer);
 			KinkyDungeonDressSet();
@@ -1601,8 +1607,6 @@ function KinkyDungeonRun() {
 			KDInitProtectedGroups(KinkyDungeonPlayer);
 			CharacterRefresh(KinkyDungeonPlayer);
 			// Draw the PC for one
-			let Char = (KinkyDungeonState == "LoadOutfit" ? KDSpeakerNPC : null) || KinkyDungeonPlayer;
-			DrawCharacter(Char, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
 			KDLogoStartTime = CommonTime() + 400;
 			/*
 

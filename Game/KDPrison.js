@@ -53,9 +53,10 @@ function KDPrisonCommonGuard(player, call) {
  * @param {entity} player
  * @param {string[]} jailLists
  * @param {string} lock
+ * @param {number} maxPower
  * @returns {KDJailGetGroupsReturn}
  */
-function KDPrisonGetGroups(player, jailLists, lock) {
+function KDPrisonGetGroups(player, jailLists, lock, maxPower) {
 	/**
 	 * @type {string[]}
 	 */
@@ -74,6 +75,18 @@ function KDPrisonGetGroups(player, jailLists, lock) {
 		let strip = false;
 		for (let g of prisonGroup) {
 			let restraints = KinkyDungeonGetJailRestraintsForGroup(g, jailList, false, lock);
+			let restraints2 = KinkyDungeonGetJailRestraintsForGroup(g, jailList, true, lock);
+			if (restraints2.length > 0) {
+				let restraintStack = KDDynamicLinkList(KinkyDungeonGetRestraintItem(g));
+				if (restraintStack.length > 0) {
+					for (let r of restraintStack) {
+						if (KinkyDungeonRestraintPower(r, false) < maxPower) {
+							strip = true;
+							break;
+						}
+					}
+				}
+			}
 			if (restraints.length > 0) {
 				restraints.sort(
 					(a, b) => {
@@ -84,7 +97,6 @@ function KDPrisonGetGroups(player, jailLists, lock) {
 					if (!itemsApplied[r.restraint.name + "--" + r.variant]) {
 						itemsApplied[r.restraint.name + "--" + r.variant] = true;
 						itemsToApply.push({item: r.restraint.name, variant: r.variant});
-						strip = true;
 					}
 				}
 			}

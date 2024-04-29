@@ -152,7 +152,7 @@ let KDEventEnchantmentModular = {
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemRarity(item), 1);
-					let amt = 15 + Math.round((0.4 + 0.6*KDRandom()) * 10 * Math.pow(power, 0.75));
+					let amt = 7 + Math.round((0.4 + 0.6*KDRandom()) * 8 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "Accuracy", trigger: "calcEvasion", type: "IsMagic"},
@@ -201,7 +201,7 @@ let KDEventEnchantmentModular = {
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 2);
-					let amt = 5 + Math.round((0.4 + 0.6*KDRandom()) * 5 * Math.pow(power, 0.5));
+					let amt = 5 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.5));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					amt = Math.pow(amt, 0.9);
 					return [

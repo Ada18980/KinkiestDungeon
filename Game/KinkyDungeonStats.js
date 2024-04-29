@@ -1587,7 +1587,7 @@ function KinkyDungeonGetBlindLevel() {
 	}
 	let data = {
 		player: KinkyDungeonPlayerEntity,
-		blindness: blindness ? blindness : 0,
+		blindness: blindness ? blindness*1.5 : 0,
 	};
 	KinkyDungeonSendEvent("calcBlind", data);
 	return data.blindness;

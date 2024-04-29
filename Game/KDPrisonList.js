@@ -1,6 +1,6 @@
 'use strict';
 
-let KDCYBERPOWER = 15;
+let KDCYBERPOWER = 19;
 let KDPRISONGROUPS = [
 	[
 		"ItemHead",
@@ -99,7 +99,7 @@ let KDPrisonTypes = {
 					KDPrisonCommonGuard(player);
 
 					if (KDPrisonTick(player)) {
-						let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber");
+						let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber", KDCYBERPOWER);
 						if (uniformCheck.groupsToStrip.length > 0 || uniformCheck.itemsToApply.length > 0) {
 							return "Uniform";
 						}
@@ -143,7 +143,7 @@ let KDPrisonTypes = {
 					KDPrisonCommonGuard(player);
 
 					if (KDPrisonIsInFurniture(player)) {
-						let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber");
+						let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber", KDCYBERPOWER);
 						if (uniformCheck.groupsToStrip.length > 0 && !KinkyDungeonFlags.get("failStrip")) {
 							// Create a queue
 							KDGoToSubState(player, "UniformApply");
@@ -174,7 +174,7 @@ let KDPrisonTypes = {
 						if (KDistChebyshev(guard.x - player.x, guard.y - player.y) < 1.5) {
 							if (KDPrisonIsInFurniture(player)) {
 								// Remove one per turn
-								let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber");
+								let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber", KDCYBERPOWER);
 								if (uniformCheck.groupsToStrip.length == 0) {
 									return KDPopSubstate(player);
 								}
@@ -186,12 +186,12 @@ let KDPrisonTypes = {
 									for (let grp of uniformCheck.groupsToStrip) {
 										let rr = KinkyDungeonGetRestraintItem(grp);
 										if (rr) {
-											let restraintStack = KDDynamicLinkListSurface(rr);
+											let restraintStack = KDDynamicLinkList(rr);
 											if (restraintStack.length > 0) {
 												let succeed = false;
 												for (let r of restraintStack) {
 													if (KinkyDungeonRestraintPower(r, false) < KDCYBERPOWER) {
-														KinkyDungeonRemoveRestraint(KDRestraint(r).Group, false, false, false);
+														KinkyDungeonRemoveRestraintSpecific(r, false, false, false);
 														let msg = TextGet("KinkyDungeonRemoveRestraints")
 															.replace("EnemyName", TextGet("Name" + guard.Enemy.name));
 														//let msg = TextGet("Attack" + guard.Enemy.name + "RemoveRestraints");
@@ -246,7 +246,7 @@ let KDPrisonTypes = {
 							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 2);
 							if (KDistChebyshev(guard.x - player.x, guard.y - player.y) < 1.5) {
 								// Add one per turn
-								let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber");
+								let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber", KDCYBERPOWER);
 								if (uniformCheck.itemsToApply.length == 0) {
 									return KDPopSubstate(player);
 								}
@@ -262,7 +262,7 @@ let KDPrisonTypes = {
 											"Cyber", false, false, undefined, KDGetMainFaction(),
 											KinkyDungeonStatsChoice.has("TightRestraints") ? true : undefined,
 											undefined, KinkyDungeonJailGuard(),
-											undefined, undefined, undefined, undefined,
+											false, undefined, undefined, undefined,
 											restraint.variant ? KDApplyVariants[restraint.variant] : undefined,
 										)) {
 											let msg = TextGet("KinkyDungeonAddRestraints")
@@ -300,7 +300,7 @@ let KDPrisonTypes = {
 					}
 
 					if (KDPrisonIsInFurniture(player)) {
-						let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber");
+						let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber", KDCYBERPOWER);
 						if (uniformCheck.itemsToApply.length > 0) {
 							return KDGoToSubState(player, "Uniform");
 						}

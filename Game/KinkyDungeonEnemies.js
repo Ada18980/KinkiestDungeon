@@ -3158,6 +3158,14 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 					}
 
 					if (idle && enemy.hp > 0) {
+						if (KDCanIdleFidget(enemy)) {
+							let checkX = enemy.flip ? enemy.x + 3 : enemy.x - 3;
+							if (KinkyDungeonCheckPath(enemy.x, enemy.y, checkX, enemy.y, true, true, 1)) {
+								enemy.flip = !enemy.flip;
+								KinkyDungeonSetEnemyFlag(enemy, "fidget", 10);
+							}
+						}
+
 						// Removed for non guards because its fun to find tied up girls around
 						if (enemy == KinkyDungeonJailGuard())
 							KDCaptureNearby(enemy);
@@ -5613,14 +5621,17 @@ function KinkyDungeonEnemyTryMove(enemy, Direction, delta, x, y, canSprint) {
 
 		if (ee && KinkyDungeonCanSwapWith(ee, enemy)) {
 			KDMoveEntity(ee, enemy.x, enemy.y, false,undefined, undefined, true);
+			KinkyDungeonSetEnemyFlag(enemy, "fidget", 0);
 			ee.warningTiles = [];
 			ee.movePoints = 0;
 			ee.stun = 1;
 		} else if (KinkyDungeonEntityAt(enemy.x + Direction.x, enemy.y + Direction.y)?.player) {
 			KDMovePlayer(enemy.x, enemy.y, false, false, false, true);
 		}
-		if (!ee || !KinkyDungeonEnemyAt(enemy.x + Direction.x, enemy.y + Direction.y))
+		if (!ee || !KinkyDungeonEnemyAt(enemy.x + Direction.x, enemy.y + Direction.y)) {
 			KDMoveEntity(enemy, enemy.x + Direction.x, enemy.y + Direction.y, true,undefined, undefined, true);
+			KinkyDungeonSetEnemyFlag(enemy, "nofidget", 3);
+		}
 
 		if (KinkyDungeonMapGet(x, y) == 'D' && enemy.Enemy && enemy.Enemy.tags.opendoors) {
 			KinkyDungeonMapSet(x, y, 'd');
@@ -7702,4 +7713,13 @@ function KDGetUnassignedGuardTiles(type = "Patrol", ignoreNegative = false) {
 		}
 	}
 	return ret;
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDCanIdleFidget(enemy) {
+	return enemy?.idle && !enemy.Enemy?.nonDirectional && !KDEnemyHasFlag(enemy, "fidget") && !KDEnemyHasFlag(enemy, "nofidget");
 }

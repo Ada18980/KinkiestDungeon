@@ -254,6 +254,52 @@ AddModel({
 });
 
 
+AddModel({
+	Name: "SmoothHeels",
+	Folder: "SmoothHeels",
+	TopLevel: true,
+	Restraint: false,
+	Categories: ["Shoes"],
+	AddPose: ["Heels"],
+	Layers: ToLayerMap([
+		{ Name: "Left", Layer: "ShoeLeft", Pri: 29,
+			InheritColor: "Shoe",
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			Poses: ToMap([...LEGPOSES]),
+			SwapLayerPose: {Hogtie: "ShoeLeftHogtie"},
+			DisplacementSprite: "Heels",
+			DisplaceAmount: 50,
+			DisplaceLayers: ToMap(["Heels"]),
+			EraseInvariant: true,
+			EraseMorph: {Spread: "Spread"},
+			EraseSprite: "HeelsErase",
+			EraseAmount: 100,
+			EraseLayers: ToMap(["Heels"]),
+		},
+		{ Name: "Right", Layer: "ShoeRight", Pri: 29,
+			InheritColor: "Shoe",
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "KneelClosed"]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			SwapLayerPose: {Kneel: "ShoeRightKneel"},
+			EraseInvariant: true,
+			EraseMorph: {Closed: "Closed"},
+			EraseSprite: "HeelsRightErase",
+			EraseAmount: 100,
+			EraseLayers: ToMap(["HeelRight"]),
+		},
+		{ Name: "LegLeft", Layer: "OverShoes", Pri: 29.5,
+			InheritColor: "Shoe",
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			Poses: ToMap(["Hogtie"]),
+		},
+		{ Name: "LegRight", Layer: "ShoeRight", Pri: 29.5,
+			InheritColor: "Shoe",
+			Poses: ToMap(["Kneel", "KneelClosed", "Hogtie"]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+		},
+	])
+});
+
 
 
 AddModel({
