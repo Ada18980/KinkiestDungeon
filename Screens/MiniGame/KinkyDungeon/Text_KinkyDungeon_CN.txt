@@ -1952,14 +1952,14 @@ Dragonheart Uniform
 龙之心制服
 The uniform of choice for dragonheart of all ranks.
 各级龙之心的首选制服。
-It's made of fire-resistant leather.
-它由防火皮革制成。
+It's made of fire-resistant leather, and provides +5 armor.
+它由防火皮革制成，并提供 +5 护甲值。
 Scientific Uniform
 科幻制服
 An outfit designed to leave little to the imagination.
 一套设计成几乎没有想象空间的服装。
-Resistant to electricity but does not insulate well.
-耐电但绝缘性能不佳。
+Resistant to electricity but does not insulate well. Provides significant acid and glue protection for scientific purposes.
+耐电但绝缘性能不佳。但因科学目的所以拥有重要的酸和胶水保护。
 Latex Catsuit
 乳胶紧身衣
 An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
@@ -1994,8 +1994,8 @@ Elven Dress
 精灵连衣裙
 A regal minidress worn by visitors to the forest.
 给来客穿的豪华迷你裙。
-Not very good at insulating you from the cold.
-对于抵御寒冷效果较差。
+Not very good at insulating you from the cold or from touchy fingers. Its elven aura improves accuracy and evasion by +10.
+对于抵御寒冷效果较差。它的精灵光环提高了 +10 的精准度和闪避。
 Scroll of Sleight
 诡计卷轴
 The scroll makes your memories of arm movements clear as day!
