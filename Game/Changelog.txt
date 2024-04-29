@@ -24,6 +24,7 @@ Monk class?
 
 5.2.3
 TODO add soft limit on rune count, add spell to remove runes
+- MODDERS: Added LinkCategories to allow multiple link categories per item
 - Reworked the Doll Room in the Bellows. it is now the Doll Processing!
 - Living collars now only apply when you pass out, not when you are jailed. Typically this is caused by shadow hands, gigantic slimes, sarcophagus, rope kraken, etc.
 - Added perk that adds back living collars when jailed functionality
@@ -33,6 +34,7 @@ TODO add soft limit on rune count, add spell to remove runes
 - Split acid from soap damage
 - Added various combination effect and condition type enchantments
 - Added more outfits to the shop
+- Added smooth heels by SMoonlightM
 
 5.2.28
 - Desire burst is now locked to the Path of Pleasure

@@ -2056,9 +2056,7 @@ function KinkyDungeonDrawQuickInv() {
 									if (KDDebugLink) {
 										linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
 									} else {
-										linkable = (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
-											((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
-											|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))));
+										linkable = KDCurrentItemLinkable(currentItem, newItem);
 									}
 									if (linkable) {
 										equipped = false;

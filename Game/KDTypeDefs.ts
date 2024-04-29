@@ -246,10 +246,16 @@ interface KDRestraintPropsBase {
 	alwaysRender?: boolean,
 	/** When the mentioned items are rendered, changes the type */
 	changeRenderType?: Record<string, string>;
+	/** AFTER a link, the items will get sorted based on if the order makes sense and there are no inaccessible things blocking. */
+	linkPriority?: number;
 	/** Stacking category, used to determine if you can have multiple of these items in a stack */
 	linkCategory?: string;
 	/** Stacking size, can't exceed 1 */
 	linkSize?: number;
+	/** Stacking category, used to determine if you can have multiple of these items in a stack */
+	linkCategories?: string[];
+	/** Stacking size, can't exceed 1 */
+	linkSizes?: number[];
 	/** Even with the link size, this one can't be duplicated */
 	noDupe?: boolean;
 	/** Enemies ignore you while you are wearing it */

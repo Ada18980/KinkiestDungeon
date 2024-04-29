@@ -23,9 +23,7 @@ let KDInventoryAction = {
 						linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
 					} else {
 						if (!currentItem) return "InventoryAction/Equip";
-						linkable = (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
-							((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
-							|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))));
+						linkable = KDCurrentItemLinkable(currentItem, newItem);
 					}
 					if (linkable) {
 						return "InventoryAction/Equip";
@@ -52,9 +50,7 @@ let KDInventoryAction = {
 						linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
 					} else {
 						if (!currentItem) return true;
-						linkable = (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
-							((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
-							|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))));
+						linkable = KDCurrentItemLinkable(currentItem, newItem);
 					}
 					if (linkable) {
 						return true;
@@ -79,9 +75,7 @@ let KDInventoryAction = {
 						if (KDDebugLink) {
 							linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
 						} else {
-							linkable = (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
-								((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
-								|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;}))));
+							linkable = KDCurrentItemLinkable(currentItem, newItem);
 						}
 						if (!currentItem || linkable) {
 							equipped = false;

@@ -466,10 +466,9 @@ function KinkyDungeonClickSpell(i) {
 			newItem = KDRestraint(item);
 			if (newItem) {
 				currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
+
 				if (!currentItem
-					|| (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
-						((newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
-						|| (!newItem.linkCategory && !KDDynamicLinkList(currentItem, true).some((ii) => {return newItem.name == ii.name;}))))) {
+					|| KDCurrentItemLinkable(currentItem, newItem)) {
 					equipped = false;
 				} else equipped = true;
 			}

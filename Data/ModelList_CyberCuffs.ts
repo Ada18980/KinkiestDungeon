@@ -250,6 +250,24 @@ AddModel({
 	])
 });
 
+
+AddModel({
+	Name: "CyberLinkCollar",
+	Folder: "CyberCuffs",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Accessories"],
+	Filters: {
+		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},
+	},
+	Layers: ToLayerMap([
+		...GetModelLayers("IronCollar", "Link", "", "BaseMetal", 0.4),
+		...GetModelLayers("IronCollar", "ScreenLink", "", "Screen", 0.65),
+		...GetModelLayers("IronCollar", "DisplayLink", "", "Display", 0.67),
+		...GetModelLayers("IronCollar", "LockLink", "", "Lock", 0.7),
+	])
+});
+
 AddModel({
 	Name: "NeoCyberBelt",
 	Folder: "CyberCuffs",
@@ -271,6 +289,7 @@ AddModel({
 
 
 AddModel(GetModelFashionVersion("NeoCyberCollar", true));
+AddModel(GetModelFashionVersion("CyberLinkCollar", true));
 AddModel(GetModelFashionVersion("NeoCyberBelt", true));
 AddModel(GetModelFashionVersion("CyberCuffsWristLeft", true));
 AddModel(GetModelFashionVersion("CyberCuffsWristRight", true));

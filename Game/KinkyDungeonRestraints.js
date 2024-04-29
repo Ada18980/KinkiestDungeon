@@ -3672,6 +3672,22 @@ function KDCanLinkUnder(currentRestraint, restraint, bypass, NoStack, securityEn
 
 /**
  *
+ * @param {item} currentItem
+ * @param {restraint} newItem
+ * @returns {boolean}
+ */
+function KDCurrentItemLinkable(currentItem, newItem) {
+	return (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
+		(
+			(newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
+			|| (newItem.linkCategories && newItem.linkCategories.every((lc, index) =>
+			{return KDLinkCategorySize(currentItem, lc) + KDLinkSize(newItem, index) <= 1.0;}))
+			|| (!newItem.linkCategory && !newItem.linkCategories && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;})))
+	);
+}
+
+/**
+ *
  * @param {item} currentRestraint
  * @param {item} [ignoreItem] - Item to ignore
  * @param {restraint} restraint
@@ -3686,10 +3702,11 @@ function KDCanLinkUnder(currentRestraint, restraint, bypass, NoStack, securityEn
 function KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityEnemy, ignoreItem, props) {
 
 	if (restraint.bypass) bypass = true;
-	return (!restraint.linkCategory || (KDLinkCategorySize(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group),
-		restraint.linkCategory, ignoreItem) + KDLinkSize(restraint) <= (NoStack ? 0.01 : 1.0))
+	let linkCategories = restraint.linkCategories || (restraint.linkCategory ? [restraint.linkCategory] : []);
+	return (linkCategories.length == 0 || linkCategories.every((lc, index) => {return KDLinkCategorySize(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group),
+		lc, ignoreItem) + KDLinkSize(restraint, index) <= (NoStack ? 0.01 : 1.0);})
 	)
-		&& ((restraint.linkCategory && !restraint.noDupe)
+		&& ((linkCategories.length > 0 && !restraint.noDupe)
 			|| !KDDynamicLinkList(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group), true).some((item) => {
 				if (restraint.name == item.name && (!ignoreItem || ignoreItem?.id != item.id)) {
 					// Note: return false means succeed
@@ -5440,7 +5457,7 @@ function KDGetEventsForRestraint(name) {
 /**
  *
  * @param {item} item
- * @param {boolean} [includeItem]
+ * @param {boolean} [includeItem] - Include 'item'
  * @returns {item[]}
  */
 function KDDynamicLinkList(item, includeItem) {
@@ -5500,9 +5517,13 @@ function KDDynamicLinkListSurface(item) {
 /**
  *
  * @param {restraint} restraint
+ * @param {number} [index]
  * @returns {number}
  */
-function KDLinkSize(restraint) {
+function KDLinkSize(restraint, index) {
+	if (index != undefined && restraint.linkSizes) {
+		return restraint.linkSizes[index];
+	}
 	return restraint.linkSize ? restraint.linkSize : 1;
 }
 
@@ -5526,9 +5547,14 @@ function KDLinkCategorySize(item, linkCategory, ignoreItem) {
 	}
 	// Now that we have the stack we sum things up
 	for (let inv of stack) {
-		if (KDRestraint(inv).linkCategory == linkCategory && ignoreItem?.id != inv.id) {
-			total += KDLinkSize(KDRestraint(inv));
+		if (ignoreItem?.id != inv.id) {
+			if (KDRestraint(inv).linkCategory == linkCategory) {
+				total += KDLinkSize(KDRestraint(inv));
+			} else if (KDRestraint(inv).linkCategories && KDRestraint(inv).linkCategories.includes(linkCategory)) {
+				total += KDLinkSize(KDRestraint(inv), KDRestraint(inv).linkCategories.indexOf(linkCategory));
+			}
 		}
+
 	}
 	return total;
 }
@@ -5631,3 +5657,44 @@ function KDAlwaysKeep(item, Remover) {
 	|| (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs] && !KinkyDungeonRestraintVariants[inventoryAs].noKeep);
 }
 
+
+/**
+ * Re-sorts the restraint stack so that items are in LinkPriority order
+ * @param {string} Group
+ * @param {item} [addedItem]
+ * @param {boolean} [bypass]
+ */
+function KDResortRestraints(Group, addedItem, bypass) {
+	let item = KinkyDungeonGetRestraintItem(Group);
+	if (item) {
+		let pri = (inv) => {
+			return ((KDRestraint(inv).linkPriority*1000) || KinkyDungeonRestraintPower(inv) || 0);
+		};
+		if (bypass && !addedItem) {
+			// Simplest case, just sort the tree
+			let tree = KDDynamicLinkList(item, true);
+			tree.sort((a, b) => {
+				return pri(b) - pri(a);
+			}
+			);
+			let host = tree[0];
+			for (let i = 0; i < tree.length; i++) {
+				if (i + 1 < tree.length)
+					tree[i].dynamicLink = tree[i + 1];
+				else tree[i].dynamicLink = undefined;
+			}
+			KinkyDungeonInventoryRemove(item);
+			KinkyDungeonInventoryAdd(host);
+		} else if (addedItem) {
+			// Next simplest case, we move the added item in the position that makes the most sense
+			if (bypass) {
+				// Case where the security enemy had access
+			} else {
+				// Case where the security enemy did not have ability to do it
+			}
+		} else {
+			// Complex case, do a 'bubble sort' logic which is slow, but takes into account accessibility
+		}
+	}
+	// No item, no sort
+}
