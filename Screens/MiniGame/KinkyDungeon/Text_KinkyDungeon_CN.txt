@@ -4916,6 +4916,8 @@ Runic
 符文
 Magic
 魔法
+Cyber
+赛博
 Ancient
 古代
 Simple Lock
@@ -4934,6 +4936,8 @@ Runic Lock
 符文锁
 Purple Lock
 紫锁
+Cyber Lock
+赛博锁
 You can't use that while gagged!
 你不能在嘴被堵住的时候使用它！
 You can't use that without your fingers!
@@ -5322,8 +5326,8 @@ A muzzle to keep you from spitting out what's underneath.
 口套可防止你吐出下面的东西。
 Sorry dear, there's a mystic seal on there to keep it on nice and tight.
 对不起，亲爱的，那里有一个神秘的封印，可以使其保持良好且紧密。
-Red Binding Dress
-红色捆绑连衣裙
+Ornamental Dress
+装饰连衣裙
 A devious dress that forces the arms into an elbows-touching position.
 一种连衣裙，迫使手臂在背后保持胳膊接触的位置。
 It is extremely strict but it is only fabric. The lacing is intricate and will take a long time to remove.
