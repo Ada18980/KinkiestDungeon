@@ -3855,7 +3855,7 @@ const KinkyDungeonRestraints = [
 			Latex: {"gamma":1,"saturation":0,"contrast":1.0666666666666667,"brightness":0.9166666666666666,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
 			Rim: {"gamma":1,"saturation":0,"contrast":1.0666666666666667,"brightness":0.9166666666666666,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
 		},
-		maxwill: 0.25, enemyTags: {"shadowlatexGag" : 3, "shadowlatexRestraints": 7}, playerTags: {"ItemMouthFull": 2, "ItemMouth2Full": 2, "ItemMouth3Full": 2},
+		maxwill: 0.25, enemyTags: {"shadowlatexGag" : 3, "shadowLatexRestraints": 7}, playerTags: {"ItemMouthFull": 2, "ItemMouth2Full": 2, "ItemMouth3Full": 2},
 		minLevel: 3, allFloors: true, shrine: ["ShadowLatex", "Latex", "Posture", "HighCollars", "Collars"]},
 
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexHeels", inaccessible: true, Asset: "FuturisticHeels2", remove: ["Shoes"],
@@ -3869,7 +3869,7 @@ const KinkyDungeonRestraints = [
 		Group: "ItemBoots", heelpower: 1, power: 8, weight: 0,
 		escapeChance: {"Struggle": -0.3, "Cut": -0.05, "Remove": 0.15, "Pick": 0.24},
 		limitChance: {"Struggle": 0.25, "Cut": 0.14, "Remove": 0.12}, // Hard to escape the arms box by struggling
-		maxwill: 0.8, enemyTags: {"shadowlatexRestraints" : 10},
+		maxwill: 0.8, enemyTags: {"shadowLatexRestraints" : 10},
 		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Boots", "ShadowLatex", "Obsidian", ]},
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexStraitjacket", inaccessible: true, remove: ["Bra", "Tops"], Asset: "StraitLeotard", Modules: [1, 1, 1, 1], Color: ["#4e2a70", "#4e2a70", "#4e2a70"], Group: "ItemArms",
 
@@ -3892,7 +3892,7 @@ const KinkyDungeonRestraints = [
 			"More_Jackets": 3.5,
 			"Less_Jackets": 0.1,
 		},
-		maxwill: 0.25, enemyTags: {"shadowlatexRestraintsHeavy" : 3}, playerTags: {"posLatex": -1}, minLevel: 7, allFloors: true,
+		maxwill: 0.25, enemyTags: {"shadowLatexRestraintsHeavy" : 3}, playerTags: {"posLatex": -1}, minLevel: 7, allFloors: true,
 		shrine: ["Latex", "ShadowLatex", "Obsidian", "Straitjackets", "Block_ItemHands"]},
 
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexStrongJacket", inaccessible: true, remove: ["Bra", "Tops"], Asset: "StraitLeotard", Modules: [1, 1, 1, 1], Color: ["#4e2a70", "#4e2a70", "#4e2a70"], Group: "ItemArms",
@@ -3920,7 +3920,7 @@ const KinkyDungeonRestraints = [
 		bindarms: true, bindhands: 1.33, power: 11, weight: 0, strictness: 0.4, DefaultLock: "Purple",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.25, "Remove": -0.1, "Pick": -0.1},
 		limitChance: {"Struggle": 0.15, "Cut": 0.05, "Remove": 0.04, "Unlock": 0.5}, // Hard to escape the arms box by struggling
-		maxwill: 0.25, enemyTags: {"shadowlatexRestraintsHeavy" : -5}, playerTags: {"posLatex": -1, "ShadowLatexStraitjacketWorn": 10}, minLevel: 12, allFloors: true,
+		maxwill: 0.25, enemyTags: {"shadowLatexRestraintsHeavy" : -5}, playerTags: {"posLatex": -1, "ShadowLatexStraitjacketWorn": 10}, minLevel: 12, allFloors: true,
 		shrine: ["Latex", "ShadowLatex", "Obsidian", "Straitjackets", "Block_ItemHands", "TransportJackets"]},
 
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexArmbinder", inaccessible: true, Asset: "SeamlessLatexArmbinder",
@@ -3945,7 +3945,7 @@ const KinkyDungeonRestraints = [
 			"More_Armbinders": 3.5,
 			"Less_Armbinders": 0.1,
 		},
-		maxwill: 0.35, enemyTags: {"shadowlatexRestraints" : 5, "shadowlatexRestraintsForced" : 15}, playerTags: {"posLatex": -1}, minLevel: 0, allFloors: true,
+		maxwill: 0.35, enemyTags: {"shadowLatexRestraints" : 5, "shadowLatexRestraintsForced" : 15}, playerTags: {"posLatex": -1}, minLevel: 0, allFloors: true,
 		shrine: ["Latex", "ShadowLatex", "Obsidian", "Armbinders", "Block_ItemHands"]},
 
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexStrongArmbinder", inaccessible: true, remove: ["Bra", "Tops"], Asset: "StraitLeotard", Modules: [1, 1, 1, 1], Color: ["#4e2a70", "#4e2a70", "#4e2a70"], Group: "ItemArms",
@@ -3973,7 +3973,7 @@ const KinkyDungeonRestraints = [
 		bindarms: true, bindhands: 1.33, power: 11, weight: 0, strictness: 0.4, DefaultLock: "Purple",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.25, "Remove": -0.1, "Pick": -0.1},
 		limitChance: {"Struggle": 0.15, "Cut": 0.05, "Remove": 0.5, "Unlock": 0.05}, // Hard to escape the arms box by struggling
-		maxwill: 0.25, enemyTags: {"shadowlatexRestraintsHeavy" : -5}, playerTags: {"posLatex": -1, "ShadowLatexArmbinderWorn": 10}, minLevel: 12, allFloors: true,
+		maxwill: 0.25, enemyTags: {"shadowLatexRestraintsHeavy" : -5}, playerTags: {"posLatex": -1, "ShadowLatexArmbinderWorn": 10}, minLevel: 12, allFloors: true,
 		shrine: ["Latex", "ShadowLatex", "Obsidian", "Armbinders", "Block_ItemHands", "BindingDress"]},
 
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexBoxbinder", inaccessible: true, Asset: "BoxTieArmbinder",
@@ -3995,7 +3995,7 @@ const KinkyDungeonRestraints = [
 		bindarms: true, bindhands: 1.0, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.3, "Cut": -0.05, "Remove": 0.1, "Pick": 0.2},
 		limitChance: {"Struggle": 0.2, "Cut": 0.1, "Remove": 0.85, "Unlock": 0.2},
-		maxwill: 0.35, enemyTags: {"shadowlatexRestraints" : 5, "shadowlatexRestraintsForced" : 15}, playerTags: {"posLatex": -1}, minLevel: 0, allFloors: true,
+		maxwill: 0.35, enemyTags: {"shadowLatexRestraints" : 5, "shadowLatexRestraintsForced" : 15}, playerTags: {"posLatex": -1}, minLevel: 0, allFloors: true,
 		shrine: ["Latex", "ShadowLatex", "Obsidian", "Boxbinders", "Block_ItemHands"]},
 	{renderWhenLinked: [...KDLegbinderRender], inventory: true, sfx: "Fwoosh", name: "ShadowLatexLegbinder", inaccessible: true, Asset: "SeamlessLegBinder", LinkableBy: [...KDLegbinderLink], Color: ["#4e2a70"], Group: "ItemLegs",
 		Model: "Hobbleskirt",
@@ -4005,7 +4005,7 @@ const KinkyDungeonRestraints = [
 		hobble: 1, addTag: ["FeetLinked"], power: 9, weight: 0, blockfeet: true,
 		escapeChance: {"Struggle": -0.25, "Cut": -0.05, "Remove": 0.1, "Pick": 0.25},
 		maxwill: 0.2,
-		enemyTags: {"shadowlatexRestraintsHeavy" : 6}, playerTags: {"posLatex": -1, "ItemFeetEmpty": -4, "ItemLegsEmpty": -4},
+		enemyTags: {"shadowLatexRestraintsHeavy" : 6}, playerTags: {"posLatex": -1, "ItemFeetEmpty": -4, "ItemLegsEmpty": -4},
 		minLevel: 4, allFloors: true, shrine: ["Latex", "ShadowLatex", "Obsidian", "Legbinders"]},
 
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexStrongBoxbinder", inaccessible: true, remove: ["Bra", "Tops"], Asset: "StraitLeotard", Modules: [1, 1, 1, 1], Color: ["#4e2a70", "#4e2a70", "#4e2a70"], Group: "ItemArms",
@@ -4033,7 +4033,7 @@ const KinkyDungeonRestraints = [
 		bindarms: true, bindhands: 1.33, power: 11, weight: 0, strictness: 0.4, DefaultLock: "Purple",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.25, "Remove": -0.1, "Pick": -0.1},
 		limitChance: {"Struggle": 0.15, "Cut": 0.05, "Remove": 0.5, "Unlock": 0.05}, // Hard to escape the arms box by struggling
-		maxwill: 0.25, enemyTags: {"shadowlatexRestraintsHeavy" : -5}, playerTags: {"posLatex": -1, "ShadowLatexBoxbinderWorn": 10}, minLevel: 12, allFloors: true,
+		maxwill: 0.25, enemyTags: {"shadowLatexRestraintsHeavy" : -5}, playerTags: {"posLatex": -1, "ShadowLatexBoxbinderWorn": 10}, minLevel: 12, allFloors: true,
 		shrine: ["Latex", "ShadowLatex", "Obsidian", "Boxbinders", "Block_ItemHands", "BindingDress"]},
 
 	//endregion
@@ -5415,8 +5415,8 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "CursedTransformation", color: "#9074ab", inheritLinked: true},
 			{trigger: "postApply", type: "EngageCurse", inheritLinked: true},
-			{trigger: "EngageCurse", type: "CursedCollar", inheritLinked: true, trim: true, curse: true, tags: ["obsidianRestraints", "shadowlatexRestraints", "shadowlatexRestraintsHeavy", "shadowlatexRestraintsForced",], msg: "KDCursedTransformation"},
-			{trigger: "tick", type: "TriggerCurseTransform", chance: 0.25, inheritLinked: true, trim: true, curse: true, tags: ["obsidianRestraints", "shadowlatexRestraints", "shadowlatexRestraintsHeavy",], msg: "KDCursedTransformation"},
+			{trigger: "EngageCurse", type: "CursedCollar", inheritLinked: true, trim: true, curse: true, tags: ["obsidianRestraints", "shadowLatexRestraints", "shadowLatexRestraintsHeavy", "shadowLatexRestraintsForced",], msg: "KDCursedTransformation"},
+			{trigger: "tick", type: "TriggerCurseTransform", chance: 0.25, inheritLinked: true, trim: true, curse: true, tags: ["obsidianRestraints", "shadowLatexRestraints", "shadowLatexRestraintsHeavy",], msg: "KDCursedTransformation"},
 		]},
 	{inventory: true, name: "CursedCollar2", alwaysKeep: true, debris: "Chains", Asset: "SlenderSteelCollar", Color: ["#8E72AA"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],
 		special: true,

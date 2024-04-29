@@ -88,7 +88,7 @@ let KDPlayerEffects = {
 		for (let i = 0; i < playerEffect.count; i++) {
 			let curse = KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 100));
 			let restraint = KDChooseRestraintFromListGroupPri(
-				KDGetRestraintsEligible({tags: ['leatherRestraints', 'leatherRestraintsHeavy', "obsidianRestraints", "shadowlatexRestraints"]}, 10, 'grv', true, undefined, undefined, undefined, false, undefined, undefined, undefined, undefined, curse),
+				KDGetRestraintsEligible({tags: ['leatherRestraints', 'leatherRestraintsHeavy', "obsidianRestraints", "shadowLatexRestraints"]}, 10, 'grv', true, undefined, undefined, undefined, false, undefined, undefined, undefined, undefined, curse),
 				KDGetProgressiveOrderFun(), true)?.name;
 
 			if (restraint && KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(restraint), 0, true, "", true, false, undefined, "Observer", true, curse)) {

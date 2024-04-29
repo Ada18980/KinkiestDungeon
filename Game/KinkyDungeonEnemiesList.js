@@ -3139,7 +3139,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DragonQueenShadow", color: "#92e8c0",
 		faction: "DragonQueen",
-		tags: KDMapInit(["opendoors", "boss", "dragonqueen", "chainweakness", "unstoppable", "meleeresist", "coldresist", "fireresist", "melee", "beast", "search", "shadow", "shadowlatexRestraints"]), cohesion: 0.1,
+		tags: KDMapInit(["opendoors", "boss", "dragonqueen", "chainweakness", "unstoppable", "meleeresist", "coldresist", "fireresist", "melee", "beast", "search", "shadow", "shadowLatexRestraints"]), cohesion: 0.1,
 		GFX: {
 			spriteHeight: 144,
 			spriteWidth: 144,
@@ -3195,7 +3195,7 @@ let KinkyDungeonEnemies = [
 	{name: "DragonGirlShadow", nameList: "DragonGirl", outfit: "DragonGirlShadow", style: "DragonShadow", faction: "DragonQueen", clusterWith: "beast",
 		bound: "DragonShadow", color: "#999999",
 		playLine: "DragonGirl",
-		tags: KDMapInit(["opendoors", "shadow", "dragongirl", "human", "melee", "miniboss", "shadowlatexRestraints",
+		tags: KDMapInit(["opendoors", "shadow", "dragongirl", "human", "melee", "miniboss", "shadowLatexRestraints",
 			"coldresist", "fireresist", "chainweakness"]), cohesion: 0.75,
 		followLeashedOnly: true, ignorechance: 0, armor: 0, spellResist: 2, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenShadow", range: 4, loose: true, aggressive: true},
 		spells: ["DarkTele", "ShadowShroudGirl",], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, spellRdy: true,
