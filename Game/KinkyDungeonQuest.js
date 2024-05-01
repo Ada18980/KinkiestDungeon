@@ -921,7 +921,7 @@ let KDQuests = {
 			}
 
 		}
-	}, 1, ["shadowlatexRestraints", "shadowlatexRestraintsHeavy", "obsidianRestraints"])
+	}, 1, ["shadowLatexRestraints", "shadowLatexRestraintsHeavy", "obsidianRestraints"])
 };
 
 
