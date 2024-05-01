@@ -1746,7 +1746,7 @@ const KinkyDungeonMapParams = {
 		successorSame: {
 			cst: 1.0,
 		},
-		color: "#f0b541",
+		color: "#e7cf1a",
 		"background" : "MagicSchoolLaboratory",
 		noReplace: "b",
 		"openness" : 10,

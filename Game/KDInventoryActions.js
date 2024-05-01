@@ -576,7 +576,7 @@ let KDInventoryAction = {
 			if (KDMagicLocks.includes(item.lock)) {
 				KinkyDungeonLock(item, "");
 
-				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPurpleLockRemove"), "#ffff00", 2);
+				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPurpleLockRemove"), "#e7cf1a", 2);
 				KinkyDungeonChangeMana(-KDGameData.InventoryActionManaCost || 0);
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 

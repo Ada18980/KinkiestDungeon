@@ -119,7 +119,7 @@ let KinkyDungeonPlayerDamage = KinkyDungeonPlayerDamageDefault;
 let KinkyDungeonDamageTypes = {
 	heal: {name: "heal", color: "#88ff88", bg: "black", harmless: true},
 	holy: {name: "holy", color: "#ffff88", bg: "black"},
-	acid: {name: "acid", color: "#c8d45d", bg: "black"},
+	acid: {name: "acid", color: "#9bd45d", bg: "black"},
 	soap: {name: "soap", color: "#44aaff", bg: "black"},
 	cold: {name: "cold", color: "#554bd4", bg: "black"},
 	arcane: {name: "arcane", color: "#ff5277", bg: "black"},
@@ -958,7 +958,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 
 			if (Damage && Damage.damage) {
 				if (predata.faction == "Player" || KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0) {
-					if (predata.critical && !predata.customCrit) KDDamageQueue.push({floater: TextGet("KDCritical"), Entity: Enemy, Color: "#ffff00", Delay: Delay});
+					if (predata.critical && !predata.customCrit) KDDamageQueue.push({floater: TextGet("KDCritical"), Entity: Enemy, Color: "#e7cf1a", Delay: Delay});
 					KDDamageQueue.push({floater: Math.round(predata.dmgDealt*10) + ` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[predata.type]?.name)} ${TextGet("KDdmg")}`,
 						Entity: Enemy, Color: "#ff4444", Delay: Delay, });
 				}
@@ -1135,7 +1135,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 								KinkyDungeonSendTextMessage(1, TextGet("KDEnemyLetGo")
 									.replace("ENMY", TextGet("Name" + Enemy.Enemy.name))
 									.replace("AMNT", "" + Math.round(10*damageData.damage)),
-								"#ffff00", 2);
+								"#e7cf1a", 2);
 							}
 							Enemy.distraction = 0;
 							Enemy.desire = 0;
@@ -1220,7 +1220,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	if (!NoMsg && (!predata.blocked) && (predata.dmgDealt > 0 || !Spell || effect) && (!Damage || Damage.damage > 0)) {KinkyDungeonSendActionMessage(4 + predata.dmgDealt * 0.01, (Damage && predata.dmgDealt > 0) ?
 		TextGet((Ranged) ? "PlayerRanged" + mod : "PlayerAttack" + mod).replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)).replace("AttackName", atkname).replace("DamageDealt", "" + Math.round(predata.dmgDealt * 10)).replace("DamageType", ("" + damageName).toLowerCase())
 		: TextGet("PlayerMiss" + ((Damage && !miss) ? (predata.shieldBlocked ? "Shield" : "Armor") : "")).replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)),
-			(Damage && (predata.dmg > 0 || effect)) ? "orange" : "#ff0000", 2, undefined, undefined, Enemy);
+			(Damage && (predata.dmg > 0 || effect)) ? "orange" : "#ff5277", 2, undefined, undefined, Enemy);
 	}
 
 	if (Enemy && Enemy.Enemy && KDAmbushAI(Enemy) && Spell) {
@@ -1329,7 +1329,7 @@ function KinkyDungeonDisarm(Enemy, suff) {
 			KinkyDungeonInventoryRemove(KinkyDungeonInventoryGetWeapon(weapon));
 
 			KDMapData.GroundItems.push(dropped);
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonDisarm" + (suff ? suff : "")), "#ff0000", 2);
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonDisarm" + (suff ? suff : "")), "#ff5277", 2);
 
 			return true;
 		}
@@ -1699,7 +1699,7 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 							for (let yy = by - Math.floor(rad); yy <= by + Math.ceil(rad); yy++) {
 								if (AOECondition(bx, by, xx, yy, rad, KDBulletAoEMod(b))) {
 									if (show && !KDBulletWarnings.some((w) => {return w.x == xx && w.y == yy;}))
-										KDBulletWarnings.push({x: xx, y: yy, x_orig: b.xx, y_orig: b.yy, scale: 0, color:b.bullet.spell ? (b.bullet.spell.color ? b.bullet.spell.color : "#ff0000") : "#ff0000"});
+										KDBulletWarnings.push({x: xx, y: yy, x_orig: b.xx, y_orig: b.yy, scale: 0, color:b.bullet.spell ? (b.bullet.spell.color ? b.bullet.spell.color : "#ff5277") : "#ff5277"});
 									if (!b.warnings.includes(xx + "," + yy)) {
 										b.warnings.push(xx + "," + yy);
 									}
@@ -2116,9 +2116,9 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 				if (point) {
 					KinkyDungeonSetFlag("teleported", 1);
 					KDMovePlayer(point.x, point.y, false);
-					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportNearby"), "#ffff00", 2);
+					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportNearby"), "#e7cf1a", 2);
 				} else {
-					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportFail"), "#ffff00", 2);
+					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportFail"), "#e7cf1a", 2);
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/SoftShield.ogg");
 				}
 			} else {

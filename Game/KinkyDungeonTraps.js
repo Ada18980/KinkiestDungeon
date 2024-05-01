@@ -248,7 +248,7 @@ function KinkyDungeonHandleStepOffTraps(entity, x, y, moveX, moveY) {
 		if (!tile.StepOffTiles || tile.StepOffTiles.includes(moveX + "," + moveY)) {
 			KinkyDungeonSendEvent("beforeStepOffTrap", {x:x, y:y, tile: tile, flags: flags});
 			let msg = "";
-			let color = "#ff0000";
+			let color = "#ff5277";
 			let trap = tile.StepOffTrap;
 
 			if (KDTrapTypesStepOff[tile.StepOffTrap]) {
@@ -280,7 +280,7 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 		if (flags.AllowTraps && Moved) {
 			let msg = "";
 			let triggered = false;
-			let color = "#ff0000";
+			let color = "#ff5277";
 			let trap = tile.Trap;
 
 			if (KinkyDungeonStatsChoice.has("Rusted") && KDRandom() < 0.25) {
@@ -312,7 +312,7 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 
 function KDTrigPanic(chest) {
 	if ((!chest && KinkyDungeonStatsChoice.has("Panic2")) || (chest && KinkyDungeonStatsChoice.has("Panic"))) {
-		KinkyDungeonSendActionMessage(10, TextGet("KDPanic"), "#ff0000", 4);
+		KinkyDungeonSendActionMessage(10, TextGet("KDPanic"), "#ff5277", 4);
 		KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, 2);
 	}
 }

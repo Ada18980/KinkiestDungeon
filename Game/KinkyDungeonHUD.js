@@ -762,8 +762,8 @@ function KDDrawStatusBars(x, y, width = 125) {
 
 	// Draw Stamina
 	KinkyDungeonBar(x - 5, y + 5 - 2.5*heightPerBar, flip * width * (barBaseScale + barAmountScale*KinkyDungeonStatStaminaMax/KDMaxStatStart), heightPerBar, 100*KinkyDungeonStatStamina/KinkyDungeonStatStaminaMax,
-		"#63ab3f", "#283540", KDGameData.LastSP/KinkyDungeonStatStaminaMax * 100, "#ffee83",
-		KDSteps(KinkyDungeonStatStamina/KinkyDungeonStatStaminaMax, attackCost/KinkyDungeonStatStaminaMax), "#283540", "#63ab3f");
+		"#4fd658", "#283540", KDGameData.LastSP/KinkyDungeonStatStaminaMax * 100, "#ffee83",
+		KDSteps(KinkyDungeonStatStamina/KinkyDungeonStatStaminaMax, attackCost/KinkyDungeonStatStaminaMax), "#283540", "#4fd658");
 	DrawTextFitKD(
 		TextGet("StatStamina").replace("MAX", KinkyDungeonStatStaminaMax*10 + "")
 			.replace("CURRENT", Math.floor(KinkyDungeonStatStamina*10) + ""),
@@ -998,8 +998,8 @@ function KinkyDungeonDrawActionBar(x, y) {
 		DrawTextFitKDTo(kdstatusboard, TextGet(KDBalanceSprint() ? "KDBalance" : "KDBalanceNoSprint").replace("AMNT", "" + Math.round(KDGameData.Balance * 100)), 1000, BalanceOffset, 300, "#ffffff", KDTextGray2,
 			24, "left", 110, 0.9);
 		KinkyDungeonBarTo(kdstatusboard, 1000, BalanceOffset + 8, 500, 12, 100*KDGameData.Balance,
-			"#63ab3f", "#283540", KDGameData.Balance * 100, "#ffee83",
-			KDSteps(KDGameData.Balance, -KDGetBalanceCost()*1.5), "#283540", "#63ab3f");
+			"#4fd658", "#283540", KDGameData.Balance * 100, "#ffee83",
+			KDSteps(KDGameData.Balance, -KDGetBalanceCost()*1.5), "#283540", "#4fd658");
 
 		if (!KDGameData.Training) KDGameData.Training = {};
 		DrawTextFitKDTo(kdstatusboard, TextGet("KDBalanceTraining").replace("AMNT", "" + (KDGameData.Training.Heels?.training_stage || 0)), 1500, BalanceOffset, 200, "#ffffff", KDTextGray2,
@@ -1321,7 +1321,7 @@ function KinkyDungeonDrawActionBar(x, y) {
 	// Door button
 	if (DrawButtonKDEx("toggleDoor", (bdata) => {
 		if (KinkyDungeonStatsChoice.get("Doorknobs") && KinkyDungeonIsArmsBound(true) && KinkyDungeonIsHandsBound(true, true, 0.5))
-			KinkyDungeonSendTextMessage(8, TextGet("KDCantCloseDoor"), "#ff8800", 2);
+			KinkyDungeonSendTextMessage(8, TextGet("KDCantCloseDoor"), "#ff8933", 2);
 		else KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor;
 		return true;
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, actionbarHeight,
@@ -1349,7 +1349,7 @@ function KinkyDungeonDrawActionBar(x, y) {
 			// Done, converted to input
 			KDSendInput("tryPlay", {});
 		} else {
-			KinkyDungeonSendActionMessage(10, TextGet("KDNotFeeling"), "#ff0000", 1, false, true);
+			KinkyDungeonSendActionMessage(10, TextGet("KDNotFeeling"), "#ff5277", 1, false, true);
 		}
 		return true;
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, actionbarHeight, "", playColor,
@@ -1452,7 +1452,7 @@ function KinkyDungeonActivateWeaponSpell(instant) {
 
 		let energyCost = KinkyDungeonPlayerDamage.special.energyCost;
 		if (KDGameData.AncientEnergyLevel < energyCost) {
-			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonInsufficientEnergy"), "#ff0000", 1);
+			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonInsufficientEnergy"), "#ff5277", 1);
 			return true;
 		}
 		if (KinkyDungeonPlayerDamage.special.prereq && KDPrereqs[KinkyDungeonPlayerDamage.special.prereq] && !KDPrereqs[KinkyDungeonPlayerDamage.special.prereq](KinkyDungeonPlayerEntity, undefined, {})) {
@@ -2326,7 +2326,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 	} else if (KinkyDungeonSlowLevel == 2) {
 		statsDraw.b_speed = {text: TextGet("KDStatSpeedSlow"), category: "status", icon: "boundSlow2", color: "#ff5555", bgcolor: "#333333", priority: 9};
 	} else if (KinkyDungeonSlowLevel > 0) {
-		statsDraw.b_speed = {text: TextGet("KDStatSpeedSlightlySlow"), category: "status", icon: "boundSlow1", color: "#ffff00", bgcolor: "#333333", priority: 9};
+		statsDraw.b_speed = {text: TextGet("KDStatSpeedSlightlySlow"), category: "status", icon: "boundSlow1", color: "#e7cf1a", bgcolor: "#333333", priority: 9};
 	} else if (KDToggleShowAllBuffs) {
 		statsDraw.b_speed = {text: TextGet("KDStatFreeLegs"), category: "status", icon: "status/freeLegs", color: "#55ff55", bgcolor: "#333333", priority: 9};
 	}
@@ -2395,8 +2395,8 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 	}
 
 	if (KinkyDungeonFlags.has("Quickness")) {
-		statsDraw.quickness = {text: TextGet("KinkyDungeonPlayerQuickness"), icon: "quickness", category: "buffs", color: "#ffff00", bgcolor: "#333333", priority: 100};
-		//DrawTextFitKD(TextGet("KinkyDungeonPlayerQuickness"), X1, 900 - i * 35, 200, "#ffff00", "#333333"); i++;
+		statsDraw.quickness = {text: TextGet("KinkyDungeonPlayerQuickness"), icon: "quickness", category: "buffs", color: "#e7cf1a", bgcolor: "#333333", priority: 100};
+		//DrawTextFitKD(TextGet("KinkyDungeonPlayerQuickness"), X1, 900 - i * 35, 200, "#e7cf1a", "#333333"); i++;
 	}
 	if (KDToggleShowAllBuffs) {
 		let armor = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Armor");
@@ -2556,15 +2556,15 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 		statsDraw.sex = {
 			text: TextGet("KinkyDungeonPlayerEdged"),
 			icon: "Edged",
-			category: "kinky", color: "#ff0000", bgcolor: "#333333", priority: 7,
+			category: "kinky", color: "#ff5277", bgcolor: "#333333", priority: 7,
 		};
-		//DrawTextFitKD(TextGet("KinkyDungeonPlayerEdged"), X3, 900 - i * 35, 260, "#ff0000", "#333333"); i++;
+		//DrawTextFitKD(TextGet("KinkyDungeonPlayerEdged"), X3, 900 - i * 35, 260, "#ff5277", "#333333"); i++;
 	}
 	if (KDGameData.CurrentVibration  && KDGameData.CurrentVibration.denyTimeLeft > 0) {
 		statsDraw.deny = {
 			text: TextGet("KinkyDungeonPlayerDenied"),
 			icon: "Denied",
-			category: "kinky", color: "#ff0000", bgcolor: "#333333", priority: 12,
+			category: "kinky", color: "#ff5277", bgcolor: "#333333", priority: 12,
 		};
 		//DrawTextFitKD(TextGet("KinkyDungeonPlayerDenied"), X3, 900 - i * 35, 260, "#ff8888", "#333333"); i++;
 	}

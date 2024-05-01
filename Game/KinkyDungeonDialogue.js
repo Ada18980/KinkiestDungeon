@@ -2125,7 +2125,7 @@ function DialogueBringNearbyEnemy(x, y, radius, unaware) {
 			&& (!unaware || !e.aware)) {
 			let point = KinkyDungeonNoEnemy(x, y, true) ? {x:x, y:y} : KinkyDungeonGetNearbyPoint(x, y, true);
 			if (point) {
-				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonDiscovered"), "#ff0000", 1);
+				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonDiscovered"), "#ff5277", 1);
 				KDMoveEntity(e, point.x, point.y, true);
 				return e;
 			}
@@ -2209,7 +2209,7 @@ function KDRunChefChance(player) {
 				KinkyDungeonSetFlag("SpawnedChef", -1, 1);
 				let e = DialogueCreateEnemy(point.x, point.y, "Chef");
 				if (e) {
-					KinkyDungeonSendTextMessage(10, TextGet("KDSpawnChef"), "#ff0000", 1);
+					KinkyDungeonSendTextMessage(10, TextGet("KDSpawnChef"), "#ff5277", 1);
 					e.aware = true;
 					e.faction = "Ambush";
 				}

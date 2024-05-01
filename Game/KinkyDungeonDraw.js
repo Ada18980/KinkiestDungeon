@@ -1481,7 +1481,7 @@ function KinkyDungeonDrawGame() {
 
 				let cursorX = Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamX;
 				let cursorY = Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamY;
-				if (KinkyDungeonVisionGet(cursorX, cursorY) > 0 || tooltips.length > 0) {
+				if (KDMouseInPlayableArea() && (KinkyDungeonVisionGet(cursorX, cursorY) > 0 || tooltips.length > 0)) {
 
 					let ambushTile = "";
 					let enemy = KinkyDungeonEnemyAt(cursorX, cursorY);
@@ -1699,7 +1699,7 @@ function KinkyDungeonDrawGame() {
 					let value = 0;
 					let value2 = 0;
 					let color = "#ecebe7";
-					let color2 = "#ff0000";
+					let color2 = "#ff5277";
 					if (KinkyDungeonCurrentEscapingMethod == "Struggle") {
 						if (item.struggleProgress)
 							value = item.struggleProgress;
@@ -1739,7 +1739,7 @@ function KinkyDungeonDrawGame() {
 
 				KinkyDungeonDrawTethers(KinkyDungeonPlayerEntity, CamX+CamX_offset, CamY+CamY_offset);
 
-				if (tooltip) {
+				if (tooltip && KDMouseInPlayableArea()) {
 					DrawTextFitKD(tooltip, MouseX, MouseY - KinkyDungeonGridSizeDisplay/2, 200, "#ffffff", KDTextGray2);
 				}
 			}
@@ -1864,7 +1864,7 @@ function KinkyDungeonDrawGame() {
 				i = 0;
 				for (let r of KinkyDungeonEnemies) {
 					if (i * dd < 1200 && r.name.includes(ElementValue("DebugEnemy"))) {
-						DrawTextFitKD(r.name, 400, 15 + i * dd, 200, "#ff0000", KDTextGray0);
+						DrawTextFitKD(r.name, 400, 15 + i * dd, 200, "#ff5277", KDTextGray0);
 						i++;
 					}
 				}
@@ -1934,10 +1934,7 @@ function KinkyDungeonDrawGame() {
 					KDGameData.JourneyY += 1;
 					return true;
 				}, true, 600, 640, 300, 64, "Increment Floor", "#ffffff", "");
-				DrawButtonKDEx("debugHeart", (bdata) => {
-					KDMapData.GroundItems.push({x:KinkyDungeonPlayerEntity.x, y:KinkyDungeonPlayerEntity.y, name: "Heart"});
-					return true;
-				}, true, 600, 720, 300, 64, "Spawn amulet", "#ffffff", "");
+
 
 
 			}
@@ -3860,14 +3857,14 @@ let KDEffectTileTooltips = {
 		color: "#ff5277",
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff5277", "KDEffectTileTooltipCMDBindings");}},
 	'FabricGreen': {
-		color: "#63ab3f",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#63ab3f", "KDEffectTileTooltipCMDBindings");}},
+		color: "#4fd658",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#4fd658", "KDEffectTileTooltipCMDBindings");}},
 	'Slime': {
 		color: "#d952ff",
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff", "KDEffectTileTooltipCMDSlime");}},
 	'Glue': {
-		color: "#ffff00",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffff00", "KDEffectTileTooltipCMDGlue");}},
+		color: "#e7cf1a",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#e7cf1a", "KDEffectTileTooltipCMDGlue");}},
 	'Latex': {
 		color: "#d952ff",
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");}},

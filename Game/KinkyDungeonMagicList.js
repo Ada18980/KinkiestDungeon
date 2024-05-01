@@ -982,7 +982,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "StoneSkin", tags: ["earth", "buff", "defense"], prerequisite: "ApprenticeEarth", sfx: "Bones", school: "Elements", manacost: 5.5, components: ["Arms"], mustTarget: true, level:1, type:"buff", buffs: [{id: "StoneSkin", aura: "#FF6A00", type: "Armor", duration: 50, power: 2.0, player: true, enemies: true, tags: ["defense", "armor"]}], onhit:"", time:50, power: 0, range: 2, size: 1, damage: ""},
 		{name: "IronBlood", tags: ["earth", "buff", "offense"], prerequisite: "ApprenticeEarth", sfx: "FireSpell", school: "Elements", manacost: 0, components: ["Verbal"], mustTarget: true, selfTargetOnly: true, level:1, type:"buff", channel: 4,
 			buffs: [
-				{id: "IronBlood", aura: "#ff0000", type: "AttackStamina", duration: 99999, cancelOnReapply: true, endSleep: true, power: 1, player: true, enemies: false, tags: ["attack", "stamina"]},
+				{id: "IronBlood", aura: "#ff5277", type: "AttackStamina", duration: 99999, cancelOnReapply: true, endSleep: true, power: 1, player: true, enemies: false, tags: ["attack", "stamina"]},
 				{id: "IronBlood2", type: "ManaCostMult", duration: 99999, cancelOnReapply: true, endSleep: true, power: 0.25, player: true, enemies: false, tags: ["manacost"]},
 			], onhit:"", time:30, power: 0, range: 2, size: 1, damage: ""},
 		{name: "FlameBlade", tags: ["fire", "aoe", "offense", "buff"], prerequisite: "ApprenticeFire", sfx: "FireSpell", school: "Elements", manacost: 3, components: [], level:1, type:"passive", events: [{type: "FlameBlade", trigger: "playerAttack"}]},
@@ -1120,7 +1120,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			prerequisite: "CommandWord",
 			onhit:"", time:100, power: 10, aoe: 0.5, range: 4.5, size: 1, damage: ""},
 
-		{name: "Bomb", color: "#ff0000", prerequisite: "ApprenticeSummon", tags: ["aoe", "offense"], noise: 5, sfx: "FireSpell", school: "Conjure", manacost: 5, components: ["Verbal"], level:1,
+		{name: "Bomb", color: "#ff5277", prerequisite: "ApprenticeSummon", tags: ["aoe", "offense"], noise: 5, sfx: "FireSpell", school: "Conjure", manacost: 5, components: ["Verbal"], level:1,
 			effectTileDurationMod: 7, hitSpin: 0.2, effectTile: {
 				name: "Smoke",
 				duration: -1,
@@ -1364,7 +1364,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "Chastity", prerequisite: "Lockdown", tags: ["metal", "binding", "utility"], sfx: "MagicSlash", school: "Conjure", manacost: 3.5, components: ["Verbal"], mustTarget: true, level:1,
 			type:"special", special: "Chastity",
 			onhit:"", time:8, power: 3.5, range: 1.5, size: 1, damage: ""},
-		{name: "ZoneOfPurity", color: "#ffff00", prerequisite: "Chastity", tags: ["metal", "binding", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 7, components: ["Verbal"], level:1, type:"inert",
+		{name: "ZoneOfPurity", color: "#e7cf1a", prerequisite: "Chastity", tags: ["metal", "binding", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 7, components: ["Verbal"], level:1, type:"inert",
 			onhit:"aoe", power: 0, delay: 40, range: 4.5, size: 3, lifetime: 1, aoe: 2.5, damage: "charm",
 			events: [{trigger: "bulletTick", type: "ZoneOfPurity", aoe: 2.5, power: 0.01}]
 		},
@@ -1797,7 +1797,7 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 20,
 		},
 	},
-	{enemySpell: true, name: "EnemyEnchantRope", castCondition: "EnemyEnchantRope", color: "#e64539", tags: ["rope", "utility", "binding", "offense"], prerequisite: "ApprenticeRope", sfx: "Freeze", school: "Conjure", manacost: 5.5, components: ["Verbal"],
+	{enemySpell: true, name: "EnemyEnchantRope", castCondition: "EnemyEnchantRope", color: "#ff5277", tags: ["rope", "utility", "binding", "offense"], prerequisite: "ApprenticeRope", sfx: "Freeze", school: "Conjure", manacost: 5.5, components: ["Verbal"],
 		level:1, type:"inert", onhit:"aoe", evadeable: false, noblock: true, power: 1.0, range: 2.99, size: 3, lifetime: 1, aoe: 1.5, damage: "arcane", delay: 1,
 		playerEffect: {name: "EnchantRope", power: 1},
 		events: [
@@ -2050,11 +2050,11 @@ let KinkyDungeonSpellListEnemies = [
 		}}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
 	{name: "Slippery", sfx: "FireSpell", school: "Elements", manacost: 0, components: ["Verbal"], mustTarget: true, selfTargetOnly: true, level:1, type:"buff", channel: 4,
 		buffs: [
-			{id: "Slippery", aura: "#00ff00", type: "BoostStruggle", duration: 100, power: 0.1, player: true, enemies: false, tags: ["struggle"]},
+			{id: "Slippery", aura: "#4fd658", type: "BoostStruggle", duration: 100, power: 0.1, player: true, enemies: false, tags: ["struggle"]},
 		], onhit:"", time:100, power: 0, range: 2, size: 1, damage: ""},
 	{name: "Cutting", sfx: "FireSpell", school: "Elements", manacost: 0, components: ["Verbal"], mustTarget: true, selfTargetOnly: true, level:1, type:"buff", channel: 4,
 		buffs: [
-			{id: "Cutting", aura: "#ffff00", type: "BoostCutting", duration: 10, power: 0.3, player: true, enemies: false, tags: ["struggle"]},
+			{id: "Cutting", aura: "#e7cf1a", type: "BoostCutting", duration: 10, power: 0.3, player: true, enemies: false, tags: ["struggle"]},
 			{id: "Cutting2", type: "BoostCuttingMinimum", duration: 10, power: 0.8, player: true, enemies: false, tags: ["struggle", "allowCut"]},
 		], onhit:"", time:10, power: 0, range: 2, size: 1, damage: ""},
 	{enemySpell: true, name: "EnemyCorona",
@@ -2145,7 +2145,7 @@ let KinkyDungeonSpellListEnemies = [
 		],
 		projectileTargeting:true, onhit:"", power: 7, delay: 0, range: 14, damage: "pierce", speed: 4},
 
-	{name: "ArrowFire", tags: ["arrowspecial"], color: "#ffff00", sfx: "FireSpell", landsfx: "Lightning", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt", projectileTargeting:true,
+	{name: "ArrowFire", tags: ["arrowspecial"], color: "#e7cf1a", sfx: "FireSpell", landsfx: "Lightning", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt", projectileTargeting:true,
 		crit: 1.5,
 		faction: "Player",
 		effectTileDurationMod: 12, effectTile: {
@@ -2245,7 +2245,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "ShadowStrike", sfx: "MagicSlash", school: "Illusion", manacost: 3, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", power: 6, time: 2, delay: 1, range: 1.5, size: 1, aoe: 0.75, lifetime: 1, damage: "cold", playerEffect: {name: "ShadowStrike", damage: "cold", power: 4, count: 1}},
 
 
-	{name: "RopeBolt", color: "#ffff00", sfx: "Miss", school: "Conjure", manacost: 1, tags: ["rope"], components: ["Verbal"], level:1, type:"bolt",
+	{name: "RopeBolt", color: "#e7cf1a", sfx: "Miss", school: "Conjure", manacost: 1, tags: ["rope"], components: ["Verbal"], level:1, type:"bolt",
 		projectileTargeting:true, onhit:"",  power: 1.0, bind: 3.2, delay: 0, range: 50, damage: "chain", bindType: "Rope", speed: 3, playerEffect: {name: "SingleRope"},
 		evadeable: true,
 		effectTileDurationMod: 10, effectTileAoE: 0.5, effectTile: {
@@ -2348,11 +2348,11 @@ let KinkyDungeonSpellListEnemies = [
 		],
 		type:"inert", onhit:"aoe", time: 3, delay: 1, power: 1, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 4}},
 
-	{enemySpell: true, name: "SleepGas", color: "#00ff00", sfx: "Miss", school: "Illusion", manacost: 4, specialCD: 24, components: ["Verbal"], level:1, type:"inert", passthrough: true, noTerrainHit: true, buffs: [
+	{enemySpell: true, name: "SleepGas", color: "#4fd658", sfx: "Miss", school: "Illusion", manacost: 4, specialCD: 24, components: ["Verbal"], level:1, type:"inert", passthrough: true, noTerrainHit: true, buffs: [
 		{id: "SleepGas", type: "SleepinessGas", power: 1, player: true, enemies: false, tags: ["sleep", "gas"], range: 1.5}], onhit:"", time:6, aoe: 1.5, power: 1, delay: 8, range: 4, size: 3, damage: "poison", playerEffect: {name: "DamageNoMsg", damage: "poison", power: 1}}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
 
 
-	{enemySpell: true, name: "GlueBomb", color: "#ffff00", minRange: 2.5, sfx: "Miss", school: "Conjure",
+	{enemySpell: true, name: "GlueBomb", color: "#e7cf1a", minRange: 2.5, sfx: "Miss", school: "Conjure",
 		manacost: 2, specialCD: 12, components: ["Arms"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3.5, range: 4.5, size: 3, aoe: 1.5, lifetime: 1,
 		effectTileDurationMod: 10, effectTileAoE: 1.5, effectTile: {
 			name: "Glue",
@@ -2360,7 +2360,7 @@ let KinkyDungeonSpellListEnemies = [
 		},
 		damage: "glue", playerEffect: {name: "Glue", count: 3, damage: "glue", power: 4, time: 1}},
 
-	{enemySpell: true, name: "Glue", color: "#ffff00", landsfx: "Freeze", school: "Conjure",
+	{enemySpell: true, name: "Glue", color: "#e7cf1a", landsfx: "Freeze", school: "Conjure",
 		manacost: 9, components: ["Arms"], level:1, type:"inert", onhit:"lingering", time: 4, delay: 1, range: 4, size: 3, aoe: 1.5, lifetime: 24, power: 4, lifetimeHitBonus: 76, damage: "glue",
 		playerEffect: {name: "Glue", count: 1, damage: "glue", power: 4, time: 1}}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
 
@@ -2795,9 +2795,9 @@ let KinkyDungeonSpellListEnemies = [
 
 	{enemySpell: true, name: "MummyBolt", color: "#88ff88", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "soul", speed: 3, playerEffect: {name: "MysticShock", time: 3}},
 	{enemySpell: true, name: "RobotBolt", color: "#ff5277", sfx: "Laser", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "electric", speed: 2, playerEffect: {name: "RobotShock", time: 2}},
-	{enemySpell: true, name: "RubberBullets",  bindType: "Slime", color: "#ffff00", minRange: 2.9, sfx: "Gunfire", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "glue", speed: 3, playerEffect: {name: "RubberBullets", power: 4, count: 1, damage: "glue"}},
+	{enemySpell: true, name: "RubberBullets",  bindType: "Slime", color: "#e7cf1a", minRange: 2.9, sfx: "Gunfire", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "glue", speed: 3, playerEffect: {name: "RubberBullets", power: 4, count: 1, damage: "glue"}},
 
-	{enemySpell: true, name: "Minigun", castCondition: "Windup_Ready", bindType: "Slime", color: "#ffff00", minRange: 1.5, sfx: "MiniFire", manacost: 0, components: ["Arms"],
+	{enemySpell: true, name: "Minigun", castCondition: "Windup_Ready", bindType: "Slime", color: "#e7cf1a", minRange: 1.5, sfx: "MiniFire", manacost: 0, components: ["Arms"],
 		fastStart: true,
 		shotgunCount: 3, shotgunDistance: 6, shotgunSpread: 1.5, shotgunSpeedBonus: 1.5,
 		level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 1, time: 0, delay: 0, range: 50, damage: "glue", speed: 1.5, playerEffect: {name: "RubberBullets", power: 1, count: 1, damage: "glue"}},
@@ -2819,7 +2819,7 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 20,
 		},
 		components: ["Arms"], level:1, type:"inert", onhit:"aoe", power: 2.0, bind: 1, time: 1, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "soap", playerEffect: {name: "WaterBubble", time: 8, power: 2, damage: "soap"}},
-	{enemySpell: true, name: "Fireexp", color: "#ffff00", minRange: 0, landsfx: "FireSpell", manacost: 5,
+	{enemySpell: true, name: "Fireexp", color: "#e7cf1a", minRange: 0, landsfx: "FireSpell", manacost: 5,
 		effectTileDurationMod: 2, effectTile: {
 			name: "Ember",
 			duration: 3,
@@ -2838,7 +2838,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "TomeBondage", school: "Element", manacost: 0, components: [], level:1, type:"hit", onhit:"instant",
 		noTerrainHit: true, power: 2.0, bind: 10, bindType: "Magic", delay: 1, range: 1.5, size: 3, aoe: 1.5, lifetime: 1, damage: "chain", playerEffect: {name: "TrapBindings", text: "KinkyDungeonTrapBindingsMagicChainsWeak", tags: ["chainRestraintsMagic"], count: 3, power: 5.0, damage: "chain"}},
 
-	{enemySpell: true, name: "HeatBolt", color: "#ffff00", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "fire",
+	{enemySpell: true, name: "HeatBolt", color: "#e7cf1a", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "fire",
 		speed: 2, playerEffect: {name: "HeatBlast", time: 1, damage: "fire", power: 5}},
 	{enemySpell: true, name: "CrystalBolt", color: "#ff5277", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 2.5, delay: 0, range: 8, damage: "soul",
 		shotgunCount: 5, shotgunDistance: 6, shotgunSpread: 1, shotgunSpeedBonus: 0, shotgunFan: true,
@@ -3422,7 +3422,7 @@ KDDefineSpellPage("Command", [
 let KDSpecialBondage = {
 	"Energy": {
 		priority: 25,
-		color: "#ffff00",
+		color: "#e7cf1a",
 		struggleRate: 0.7,
 		powerStruggleBoost: 0.3,
 		healthStruggleBoost: 1.5,
@@ -3504,7 +3504,7 @@ let KDSpecialBondage = {
 	},
 	"Vine": {
 		priority: -7,
-		color: "#00ff00",
+		color: "#4fd658",
 		struggleRate: 1.25,
 		powerStruggleBoost: 2.0,
 		healthStruggleBoost: 1.0,
@@ -3728,7 +3728,7 @@ let KDCustomCost = {
 	},
 	"arcane_akashic": (data) => {
 		data.cost = "100E";
-		data.color = "#ffff00";
+		data.color = "#e7cf1a";
 	},
 	"rhythm": (data) => {
 		data.cost = "";

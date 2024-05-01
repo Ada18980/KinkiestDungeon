@@ -409,7 +409,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 20, playerBlindSight: 100, maxhp: 14, minLevel:0, weight:-1000, movePoints: 1, attackPoints: 2, attack: "MeleeWill", attackRange: 1, attackWidth: 1, power: 2, stunTime: 2, dmgType: "soap",
 		terrainTags: {}, floors:KDMapInit([]),
 		events: [{trigger: "afterEnemyTick", type: "createWater", power: 1, chance: 0.5, aoe: 0.5}],},
-	{name: "EarthMote", color: "#e64539", tags: KDMapInit(["elemental", "flying", "silenceimmune", "blindimmune", "earth", "player", "melee", "charmimmune", "fireresist", "electricresist", "tickleresist", "nohelp"]), keepLevel: true, allied: true, followRange: 1, playerFollowRange: 1, AI: "hunt",
+	{name: "EarthMote", color: "#ff5277", tags: KDMapInit(["elemental", "flying", "silenceimmune", "blindimmune", "earth", "player", "melee", "charmimmune", "fireresist", "electricresist", "tickleresist", "nohelp"]), keepLevel: true, allied: true, followRange: 1, playerFollowRange: 1, AI: "hunt",
 		evasion: -0.4, armor: 2.0, spellResist: 0.5, CountLimit: true,
 		stamina: 4,
 		maxblock: 2,
@@ -1178,7 +1178,7 @@ let KinkyDungeonEnemies = [
 		spellResist: 2.0,
 		visionRadius: 6, maxhp: 5, minLevel:0, weight:15, movePoints: 5, attackPoints: 2, attack: "Spell", attackRange: 1, attackWidth: 1, power: 6,
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 1, color: "#00ff00"},
+			{trigger: "getLights", type: "enemyTorch", power: 1, color: "#4fd658"},
 		],
 		Sound: {
 			baseAmount: 0,
@@ -1237,7 +1237,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"rubble": 100, "adjChest": 15, "passage": 14, "illusionRage": 2, "illusionAnger": 2}, allFloors: true, shrines: ["Illusion"],
 		dropTable: [{name: "RedKey", weight: 1}, {name: "Gold", amountMin: 10, amountMax: 40, weight: 6}, {name: "ScrollArms", weight: 1}, {name: "ScrollVerbal", weight: 1}, {name: "ScrollLegs", weight: 1}]},
 
-	{name: "VineSpitter", faction: "Plant", clusterWith: "plant", color: "#00FF00", blockVisionWhileStationary: true, tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "melee", "glueresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
+	{name: "VineSpitter", faction: "Plant", clusterWith: "plant", color: "#4fd658", blockVisionWhileStationary: true, tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "melee", "glueresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
 		ignorechance: 1.0, armor: 0, followRange: 4, AI: "ambush", guardChance: 0,
 		evasion: -0.5,
 		GFX: {
@@ -1251,7 +1251,7 @@ let KinkyDungeonEnemies = [
 		stamina: 3,
 		visionRadius: 5, ambushRadius: 2.5, blindSight: 5, maxhp: 10, minLevel:0, weight:25, movePoints: 1.8, attackPoints: 2, attack: "SpellMeleeBind", attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 3,
 		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
-	{name: "DragonVinePlant", faction: "Plant", clusterWith: "plant", color: "#00FF00", blockVisionWhileStationary: true,
+	{name: "DragonVinePlant", faction: "Plant", clusterWith: "plant", color: "#4fd658", blockVisionWhileStationary: true,
 		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "elite", "melee", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
 		ignorechance: 1.0, armor: 0, followRange: 4, AI: "ambush", guardChance: 0,
 		ondeath: [{type: "spellOnSelf", spell: "Entangle"}],
@@ -1267,7 +1267,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 5, ambushRadius: 2.5, blindSight: 5, maxhp: 13, minLevel: 5, weight:25, movePoints: 2.3, attackPoints: 3, attack: "SpellMeleeBind", multiBind: 2,
 		attackWidth: 3, attackRange: 1, power: 3, dmgType: "crush", fullBoundBonus: 3,
 		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
-	{name: "DragonFlower", faction: "Plant", clusterWith: "plant", color: "#00FF00",
+	{name: "DragonFlower", faction: "Plant", clusterWith: "plant", color: "#4fd658",
 		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "melee", "minor", "scenery", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
 		ignorechance: 1.0, armor: 0, followRange: 1.5, AI: "guard", guardChance: 1,
 		ondeath: [{type: "spellOnSelf", spell: "DragonFlowerSpores"}],
@@ -1280,7 +1280,7 @@ let KinkyDungeonEnemies = [
 		attackWidth: 3, attackRange: 1, power: 3, dmgType: "crush", fullBoundBonus: 3,
 		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
 
-	{name: "VinePlant", faction: "Plant", clusterWith: "plant", color: "#00FF00", blockVisionWhileStationary: true, tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "minor", "melee", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
+	{name: "VinePlant", faction: "Plant", clusterWith: "plant", color: "#4fd658", blockVisionWhileStationary: true, tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "minor", "melee", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
 		ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", specialCD: 99, specialAttack: "Stun", specialAttackPoints: 1, specialRemove: "Bind", difficulty: 0.05, guardChance: 0,
 		evasion: -0.5,
 		GFX: {
@@ -1297,7 +1297,7 @@ let KinkyDungeonEnemies = [
 		nonDirectional: true,
 		visionRadius: 3, ambushRadius: 1.9, blindSight: 5, maxhp: 10, minLevel:0, weight:25, movePoints: 1.5, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 3,
 		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
-	{name: "Bramble", faction: "Plant", clusterWith: "plant", color: "#00FF00", hitsfx: "DealDamage",
+	{name: "Bramble", faction: "Plant", clusterWith: "plant", color: "#4fd658", hitsfx: "DealDamage",
 		sneakthreshold: 0.6,
 		nonDirectional: true,
 		GFX: {
@@ -1386,7 +1386,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 6, maxhp: 12, minLevel:2, weight:0, movePoints: 3, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 2.5, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"secondhalf":0.5, "thirdhalf":1, "latexAnger": 5, "latexRage": 5, "latexPleased": 2, "latexFriendly": 2, "alchemist": 10}, shrines: ["Latex"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 15, weight: 10}, {name: "Gunpowder", amount: 2, weight: 10}]},
-	{name: "RedSlime", faction: "Alchemist", clusterWith: "alchemist", color: "#FF0000", hidetimerbar: true, tags: KDMapInit(["ignoretiedup", "disarmimmune", "blindresist", "ignoregagged", "experiment", "slime", "melee", "minor", "ballGagRestraints", "meleeresist", "chainimmune", "electricresist", "iceweakness"]),
+	{name: "RedSlime", faction: "Alchemist", clusterWith: "alchemist", color: "#ff5277", hidetimerbar: true, tags: KDMapInit(["ignoretiedup", "disarmimmune", "blindresist", "ignoregagged", "experiment", "slime", "melee", "minor", "ballGagRestraints", "meleeresist", "chainimmune", "electricresist", "iceweakness"]),
 		squeeze: true, followRange: 1, AI: "hunt",  sneakThreshold: 1, hitsfx: "", armor: 0,
 		spells: ["RedSlime"], spellCooldownMult: 1, spellCooldownMod: 1, evasion: 1,
 		regen: 0.3,
@@ -1419,7 +1419,7 @@ let KinkyDungeonEnemies = [
 		evasion: 0.2, armor: 1.5, followRange: 3.5, AI: "hunt",
 		spells: ["EncaseBoltDrone"], spellCooldownMult: 2, spellCooldownMod: 0, projectileTargeting: true,
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ffff00"},
+			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#e7cf1a"},
 		],
 		maxblock: 0,
 		maxdodge: 0,
@@ -1441,7 +1441,7 @@ let KinkyDungeonEnemies = [
 			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "temporary"]),
 		evasion: 0.15, armor: 2.0, followRange: 1, AI: "hunt",
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ffff00"},
+			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#e7cf1a"},
 		],
 		maxblock: 0,
 		maxdodge: 0,
@@ -1465,7 +1465,7 @@ let KinkyDungeonEnemies = [
 			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "jail", "search"]),
 		AI: "hunt", difficulty: 0.05,
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ffff00"},
+			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#e7cf1a"},
 		],
 		maxblock: 0,
 		maxdodge: 1,
@@ -1495,7 +1495,7 @@ let KinkyDungeonEnemies = [
 			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushweakness", "autoTape", "jail", "search"]),
 		AI: "patrol",
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ffff00"},
+			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#e7cf1a"},
 		],
 		stamina: 2,
 		cueSfx: {
@@ -1631,7 +1631,7 @@ let KinkyDungeonEnemies = [
 			"slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "jail", "search"]),
 		AI: "patrol", difficulty: 0.3,
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ff0000"},
+			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ff5277"},
 		],
 		maxblock: 0,
 		maxdodge: 3,
@@ -1666,7 +1666,7 @@ let KinkyDungeonEnemies = [
 			"slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "jail", "search"]),
 		AI: "patrol", difficulty: 0.3,
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ffff00"},
+			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#e7cf1a"},
 		],
 		maxblock: 0,
 		maxdodge: 3,
@@ -1734,7 +1734,7 @@ let KinkyDungeonEnemies = [
 		playLine: "Cyborg",
 		outfit: "Cyborg",
 		style: "Bandit",
-		bound: "Cyborg", color: "#f0b541",
+		bound: "Cyborg", color: "#e7cf1a",
 		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "miniboss", "robot", "cyborg", "guardian", "cyberdollrestraints", "cyberdollheavy", "controlharness", "handcuffer",
 			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist"]),
 		noDisplace: false, disarm: 0.5,
@@ -1770,7 +1770,7 @@ let KinkyDungeonEnemies = [
 		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "soapweakness", "melee", "electricsevereweakness", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "opendoors", "closedoors", "search"]),
 		AI: "patrol",
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff0000"},
+			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff5277"},
 		],
 		maxblock: 2,
 		maxdodge: 0,
@@ -1800,7 +1800,7 @@ let KinkyDungeonEnemies = [
 		AI: "patrol",
 		spells: ["SummonForceFields"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true,
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff0000"},
+			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff5277"},
 		],
 		maxblock: 3,
 		maxdodge: 0,
@@ -1860,7 +1860,7 @@ let KinkyDungeonEnemies = [
 			"unflinching", "coldresist", "soulresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "search", "dollRoomBoss"]),
 		AI: "guard", spellRdy: true, bypass: true,
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#ff0000"},
+			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#ff5277"},
 		],
 		maxblock: 0,
 		maxdodge: 0,
@@ -1889,7 +1889,7 @@ let KinkyDungeonEnemies = [
 		tags: KDMapInit(["leashing", "disarmresist", "robot", "ranged", "miniboss", "acidweakness", "soapweakness", "electricsevereweakness", "unstoppable", "coldresist", "soulresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "search"]),
 		AI: "guard", spellRdy: true, bypass: true,
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#ff0000"},
+			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#ff5277"},
 		],
 		maxblock: 0,
 		maxdodge: 0,
@@ -1921,7 +1921,7 @@ let KinkyDungeonEnemies = [
 		tags: KDMapInit(["leashing", "disarmresist", "robot", "ranged", "miniboss", "acidweakness", "soapweakness", "electricsevereweakness", "guardian", "unstoppable", "coldresist", "soulresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "search"]),
 		AI: "guard", spellRdy: true, bypass: true,
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#ffff00"},
+			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#e7cf1a"},
 		],
 		maxblock: 0,
 		maxdodge: 0,
@@ -2713,7 +2713,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterEnemyTick", type: "requireNearbyEnemyTag", power: 1.25, dist: 4.5, tags: ["air"]},
 		],
 	},
-	{name: "BarricadeElectric", faction: "Elemental", color: "#ffff00",
+	{name: "BarricadeElectric", faction: "Elemental", color: "#e7cf1a",
 		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		effect: {
@@ -2740,7 +2740,7 @@ let KinkyDungeonEnemies = [
 	},
 
 
-	{name: "BarricadeFire", faction: "Elemental", color: "#ffff00",
+	{name: "BarricadeFire", faction: "Elemental", color: "#e7cf1a",
 		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		Sound: {
@@ -2962,11 +2962,11 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0},
-			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#00ff00"},
+			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#4fd658"},
 		],},
 
 
-	{name: "DragonQueenPoison", color: "#c8d45d",
+	{name: "DragonQueenPoison", color: "#9bd45d",
 		faction: "DragonQueen",
 		tags: KDMapInit(["opendoors", "boss", "vineRestraints", "dragonqueen", "unstoppable", "slashweakness", "meleeresist", "fireresist", "poisonresist", "melee", "beast", "search", "nature"]), cohesion: 0.1,
 		GFX: {
@@ -3669,7 +3669,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 
-	{name: "OrbOfLight", clusterWith: "nature", color: "#ffff00", tags: KDMapInit(["opendoors", "ignorenoSP", "nosignal", "nature", "ghost", "ranged", "soulimmune", "unstoppable", "coldsevereweakness", "flying"]), cohesion: 1.0, cohesionRange: 10,
+	{name: "OrbOfLight", clusterWith: "nature", color: "#e7cf1a", tags: KDMapInit(["opendoors", "ignorenoSP", "nosignal", "nature", "ghost", "ranged", "soulimmune", "unstoppable", "coldsevereweakness", "flying"]), cohesion: 1.0, cohesionRange: 10,
 		followLeashedOnly: true, ignorechance: 0, armor: 0, followRange: 3, AI: "hunt",  buffallies: true, spellRdy: true, sneakthreshold: 0.95,
 		spellResist: 2.0,
 		evasion: -0.5,
@@ -3763,7 +3763,7 @@ let KinkyDungeonEnemies = [
 	{name: "SoulCrystal", clusterWith: "chaos", color: "#880000", immobile: true, hitsfx: "Evil", tags: KDMapInit(["crystal", "soul", "minor", "unstoppable", "ranged", "crushweakness", "soulimmune", "flying"]), spellResist: 0.33, sneakthreshold: 0.6,
 		evasion: -9, ignorechance: 1.0, armor: 1.5, followRange: 1, AI: "wander",
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ff0000"}
+			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ff5277"}
 		],
 		nopickpocket: true,
 		nonDirectional: true,
@@ -3773,7 +3773,7 @@ let KinkyDungeonEnemies = [
 	{name: "SoulCrystalActive", clusterWith: "chaos", color: "#880000", immobile: true, hitsfx: "Evil", tags: KDMapInit(["crystal", "soul", "active", "unstoppable", "miniboss", "ranged", "crushweakness", "soulimmune", "flying"]), spellResist: 0.33,
 		evasion: -9, ignorechance: 1.0, armor: 1.5, followRange: 1, AI: "wander",
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#ff0000"}
+			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#ff5277"}
 		],
 		nopickpocket: true,
 		nonDirectional: true,
@@ -4866,7 +4866,7 @@ let KinkyDungeonEnemies = [
 	{name: "Mummy", nameList: "bast", outfit: "Mummy", style: "Mummy", clusterWith: "mummy", bound: "Mummy", faction: "Bast", color: "#55ff55", tags: KDMapInit(["leashing", "religious", "antiMagic", "darkvision", "opendoors", "closedoors", "jail", "jailer", "mummy", "melee", "elite", "mummyRestraints", "fireweakness", "soapweakness", "hunter"]), followLeashedOnly: true, followRange: 1,
 		spells: ["MummyBolt", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 90, specialCD: 3, specialAttack: "BindLock", playLine: "Mummy", spellCooldownMult: 1, spellCooldownMod: 5, specialAttackPoints: 2, specialWidth: 3, spellRdy: true,
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#00ff00"},
+			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#4fd658"},
 		],
 		maxblock: 1,
 		maxdodge: 1,
@@ -4877,10 +4877,10 @@ let KinkyDungeonEnemies = [
 		attackLock: "Purple",
 		AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 8, minLevel:3, weight:18, movePoints: 2, attackPoints: 1, attack: "SpellMeleeWill", attackWidth: 1, attackRange: 1, power: 2, fullBoundBonus: 1, dmgType: "crush",
 		terrainTags: {"secondhalf":2, "lastthird":4, "open": 2, "increasingWeight":1, "mummy": 4}, floors:KDMapInit(["tmb"]), shrines: ["Will"], dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}]},
-	{name: "Cleric", nameList: "bast", outfit: "Cleric", style: "Mummy", clusterWith: "mummy", bound: "Cleric", faction: "Bast", playLine: "Mummy", color: "#00FF00", tags: KDMapInit(["leashing", "religious", "opendoors", "closedoors", "mummy", "ranged", "search", "fireweakness", "soapweakness"]),
+	{name: "Cleric", nameList: "bast", outfit: "Cleric", style: "Mummy", clusterWith: "mummy", bound: "Cleric", faction: "Bast", playLine: "Mummy", color: "#4fd658", tags: KDMapInit(["leashing", "religious", "opendoors", "closedoors", "mummy", "ranged", "search", "fireweakness", "soapweakness"]),
 		followLeashedOnly: true, followRange: 4, attackThruBars: true,
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#00ff00"},
+			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#4fd658"},
 		],
 		maxblock: 0,
 		maxdodge: 1,
@@ -5338,7 +5338,7 @@ let KDOndeath = {
 			]);
 			KinkyDungeonSummonEnemy(enemy.x, enemy.y, type, 1, 0.5, false, undefined, false, undefined, "Ambush", true, 0, true, undefined, false);
 			KDGameData.QuestData.DirtPiles.lastSpawn = type;
-			KinkyDungeonSendTextMessage(9, TextGet("KDDirtPileSurprise").replace("ENMY", TextGet("Name" + type)), "#ff8800", 6);
+			KinkyDungeonSendTextMessage(9, TextGet("KDDirtPileSurprise").replace("ENMY", TextGet("Name" + type)), "#ff8933", 6);
 			KDGameData.QuestData.DirtPiles.pilesSinceLastSpawn = 0;
 		} else {
 			KDGameData.QuestData.DirtPiles.pilesSinceLastSpawn += 1;

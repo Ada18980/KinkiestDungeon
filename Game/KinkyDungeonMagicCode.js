@@ -17,7 +17,7 @@ let KinkyDungeonSpellSpecials = {
 			if (tile) {
 				if (tile.Loot && tile.Roll) {
 					let event = KinkyDungeonLoot(MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), tile.Loot, tile.Roll, tile, true);
-					if (event.trap || tile.lootTrap) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonShrineTooltipTrap"), "#ff0000", 2);
+					if (event.trap || tile.lootTrap) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonShrineTooltipTrap"), "#ff5277", 2);
 					else KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonShrineTooltipNoTrap"), "lightgreen", 2);
 
 				} else return "Fail";
@@ -185,7 +185,7 @@ let KinkyDungeonSpellSpecials = {
 								bind: 0,
 							}, false, false, spell, undefined, entity);
 						}
-						KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonSpellCastCharge"), "#ffff00", 1, false);
+						KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonSpellCastCharge"), "#e7cf1a", 1, false);
 						KinkyDungeonChangeStamina(KDSprintCost());
 					} else if (result == "miss") {
 						if (KinkyDungeonNoEnemy(dash_x, dash_y) && KDIsMovable(dash_x, dash_y)) {
@@ -261,7 +261,7 @@ let KinkyDungeonSpellSpecials = {
 					for (let r of KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks, true)) {
 						KinkyDungeonLock(r, "");
 					}
-					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPurpleLockRemove"), "#ffff00", 2);
+					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPurpleLockRemove"), "#e7cf1a", 2);
 					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				} else {
@@ -276,7 +276,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Fail";
 		} else if (KinkyDungeonTilesGet(targetX + "," + targetY) && KinkyDungeonTilesGet(targetX + "," + targetY).Type == "Charger" && KinkyDungeonTilesGet(targetX + "," + targetY).NoRemove) {
 			KinkyDungeonTilesGet(targetX + "," + targetY).NoRemove = false;
-			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonPurpleLockRemoveCharger"), "#ffff00", 2);
+			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonPurpleLockRemoveCharger"), "#e7cf1a", 2);
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 			return "Cast";
@@ -1413,7 +1413,7 @@ let KDCommandCaptureBindings = {
 			if (restraintAdd) {
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
-				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleVine"), "#ff0000", spell.time);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleVine"), "#ff5277", spell.time);
 			} else {
 				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", spell.time);
@@ -1430,7 +1430,7 @@ let KDCommandCaptureBindings = {
 			if (restraintAdd) {
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
-				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleRope"), "#ff0000", spell.time);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleRope"), "#ff5277", spell.time);
 			} else {
 				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", spell.time);
@@ -1478,7 +1478,7 @@ let KDCommandCaptureBindings = {
 			if (restraintAdd) {
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
-				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleBelt"), "#ff0000", spell.time);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleBelt"), "#ff5277", spell.time);
 			} else {
 				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", spell.time);
@@ -1500,7 +1500,7 @@ let KDCommandCaptureBindings = {
 			if (restraintAdd) {
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
-				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleChain"), "#ff0000", spell.time);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSingleChain"), "#ff5277", spell.time);
 			} else {
 				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell"), "yellow", spell.time);

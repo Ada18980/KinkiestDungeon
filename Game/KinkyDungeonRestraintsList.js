@@ -607,14 +607,14 @@ const KinkyDungeonRestraints = [
 
 
 	//region Glue
-	{removePrison: true, name: "GlueBoots", unlimited: true, debris: "Slime", linkCategory: "SlimeBoots", linkSize: 0.3, inaccessible: true, Asset: "ToeTape", Type: "Full", Color: "#f0b541", Group: "ItemBoots", blockfeet: true, addTag: ["FeetLinked"],power: 1, weight: 0,  escapeChance: {"Struggle": 0.3, "Cut": 0.0, "Remove": 0.05},
+	{removePrison: true, name: "GlueBoots", unlimited: true, debris: "Slime", linkCategory: "SlimeBoots", linkSize: 0.3, inaccessible: true, Asset: "ToeTape", Type: "Full", Color: "#e7cf1a", Group: "ItemBoots", blockfeet: true, addTag: ["FeetLinked"],power: 1, weight: 0,  escapeChance: {"Struggle": 0.3, "Cut": 0.0, "Remove": 0.05},
 		Model: "SlimeBoots",
 		tightType: "Thick",
 		Filters: {
 			Slime: {"gamma":1.45,"saturation":0.016666666666666666,"contrast":1.6833333333333333,"brightness":0.9166666666666666,"red":2.3666666666666667,"green":1.6166666666666665,"blue":0.8666666666666667,"alpha":1},
 		},
 		enemyTags: {"glueRestraints":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Glue", "Latex", "Slime"]},
-	{removePrison: true, name: "GlueFeet", unlimited: true, debris: "Slime", linkCategory: "SlimeFeet", linkSize: 0.3, inaccessible: true, Asset: "DuctTape", Type: "CompleteFeet", OverridePriority: 24, Color: "#f0b541", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 1, weight: -100,  escapeChance: {"Struggle": 0.25, "Cut": 0.0, "Remove": 0.05},
+	{removePrison: true, name: "GlueFeet", unlimited: true, debris: "Slime", linkCategory: "SlimeFeet", linkSize: 0.3, inaccessible: true, Asset: "DuctTape", Type: "CompleteFeet", OverridePriority: 24, Color: "#e7cf1a", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 1, weight: -100,  escapeChance: {"Struggle": 0.25, "Cut": 0.0, "Remove": 0.05},
 		Model: "SlimeFeet",
 		tightType: "Thick",
 		remove: ["Pants"], // They rip off b/c of glue :)
@@ -622,7 +622,7 @@ const KinkyDungeonRestraints = [
 			Slime: {"gamma":1.45,"saturation":0.016666666666666666,"contrast":1.6833333333333333,"brightness":0.9166666666666666,"red":2.3666666666666667,"green":1.6166666666666665,"blue":0.8666666666666667,"alpha":1},
 		},
 		enemyTags: {"glueRestraints":100}, playerTags: {"ItemBootsFull":15}, minLevel: 0, allFloors: true, shrine: ["Glue", "Latex", "Slime"]},
-	{removePrison: true, name: "GlueLegs", unlimited: true, debris: "Slime", linkCategory: "SlimeLegs", linkSize: 0.3, inaccessible: true, remove: ["ClothLower", "Skirts", "Pants"], Asset: "SeamlessHobbleSkirt", Color: "#f0b541", Group: "ItemLegs", blockfeet: true, addTag: ["FeetLinked"],power: 1, weight: -102,  escapeChance: {"Struggle": 0.2, "Cut": 0.0, "Remove": 0.05},
+	{removePrison: true, name: "GlueLegs", unlimited: true, debris: "Slime", linkCategory: "SlimeLegs", linkSize: 0.3, inaccessible: true, remove: ["ClothLower", "Skirts", "Pants"], Asset: "SeamlessHobbleSkirt", Color: "#e7cf1a", Group: "ItemLegs", blockfeet: true, addTag: ["FeetLinked"],power: 1, weight: -102,  escapeChance: {"Struggle": 0.2, "Cut": 0.0, "Remove": 0.05},
 		Model: "SlimeLegs",
 		tightType: "Thick",
 		Filters: {
@@ -4081,7 +4081,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars", "Metal"],
 		events: [{trigger: "tick", type: "livingRestraints", tags: ["banditMagicRestraints"], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.8, count: 4}]
 	},
-	{inventory: true, name: "BanditLegCuffs", debris: "Chains", accessible: true, Asset: "OrnateLegCuffs", LinkableBy: ["Legbinders", "Hobbleskirts", "Belts", "Ties"], Type: "Chained", Color: ["#aaaaaa", "#f0b541", "#ff5277"], Group: "ItemLegs", hobble: 1, power: 7, weight: 0,
+	{inventory: true, name: "BanditLegCuffs", debris: "Chains", accessible: true, Asset: "OrnateLegCuffs", LinkableBy: ["Legbinders", "Hobbleskirts", "Belts", "Ties"], Type: "Chained", Color: ["#aaaaaa", "#e7cf1a", "#ff5277"], Group: "ItemLegs", hobble: 1, power: 7, weight: 0,
 		Model: "ShacklesThigh",
 		struggleBreak: true,
 		Filters: {
@@ -4097,7 +4097,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "struggle", type: "PunishPlayer", chance: 0.33, stun: 2, warningchance: 1.0, damage: "crush", power: 3, sfx: "SoftShield", msg: "KinkyDungeonPunishPlayerBandit", inheritLinked: true},
 			{trigger: "playerAttack", type: "PunishPlayer", chance: 0.33, stun: 2, warningchance: 1.0, damage: "crush", power: 3, sfx: "SoftShield", msg: "KinkyDungeonPunishPlayerBandit", inheritLinked: true},
 		]},
-	{inventory: true, name: "BanditAnkleCuffs", debris: "Chains", accessible: true, Asset: "OrnateAnkleCuffs", LinkableBy: [...KDBindable], Type: "Chained", Color: ["#675F50", "#f0b541", "#ff5277"], Group: "ItemFeet", hobble: 1, power: 7, weight: 0,
+	{inventory: true, name: "BanditAnkleCuffs", debris: "Chains", accessible: true, Asset: "OrnateAnkleCuffs", LinkableBy: [...KDBindable], Type: "Chained", Color: ["#675F50", "#e7cf1a", "#ff5277"], Group: "ItemFeet", hobble: 1, power: 7, weight: 0,
 		Model: "ShacklesAnkles",
 		struggleBreak: true,
 		Filters: {
@@ -4112,7 +4112,7 @@ const KinkyDungeonRestraints = [
 		]},
 
 	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "BanditArmCuffs", debris: "Chains", accessible: true, Asset: "OrnateCuffs", linkCategory: "Cuffs", linkSize: 0.55,
-		LinkAll: true, Color: ["#f0b541", "#ff5277"], Group: "ItemArms", bindarms: false, power: 7, weight: 0,
+		LinkAll: true, Color: ["#e7cf1a", "#ff5277"], Group: "ItemArms", bindarms: false, power: 7, weight: 0,
 		Model: "ShacklesArms",
 		struggleBreak: true,
 		Filters: {

@@ -109,7 +109,7 @@ function KinkyDungeonDropItem(Item, Origin, PreferOrigin, noMsg, allowEnemies) {
 
 		KDMapData.GroundItems.push(dropped);
 		if (!noMsg)
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonDrop" + Item.name), "#ff0000", 2);
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonDrop" + Item.name), "#ff5277", 2);
 
 		return true;
 	}
@@ -304,7 +304,7 @@ function KinkyDungeonItemCheck(x, y, Index, autoEquip) {
 		}
 	}
 	if (msg) {
-		KinkyDungeonSendTextMessage(6, TextGet("KDCantTouchThat"), "#ff8800",1, false, true);
+		KinkyDungeonSendTextMessage(6, TextGet("KDCantTouchThat"), "#ff8933",1, false, true);
 	}
 }
 

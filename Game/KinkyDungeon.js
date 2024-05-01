@@ -522,6 +522,7 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 * MaxVisionDist: number,
 * MinVisionDist: number,
 * NightVision: number,
+* StatMaxBonus: Record<string, number>,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
@@ -738,6 +739,13 @@ let KDGameDataBase = {
 	MaxVisionDist: 8,
 	MinVisionDist: 2.9,
 	NightVision: 2.9,
+
+	StatMaxBonus: {
+		AP: 0,
+		SP: 0,
+		MP: 0,
+		WP: 0,
+	},
 };
 /**
  * @type {KDGameDataBase}
@@ -3720,46 +3728,7 @@ function KinkyDungeonHandleClick() {
 			return true;
 		}
 	} else if (KinkyDungeonState == "Consent") {
-		if (KDLoadingFinished) {
-			if (MouseIn(1000-450/2, 720, 450, 64)) {
-				if (KDToggles.SkipIntro) KinkyDungeonState = "Menu"; else KinkyDungeonState = "Intro";
-
-				if (KDPatched) {
-					KDSendEvent('optin');
-					// Expanded and simplified Google's oneliner script:
-					window.dataLayer = [{'gtm.start': new Date().getTime(), event: 'gtm.js'}];
-					let googleTagManager = document.createElement('script');
-					googleTagManager.async = true;
-					googleTagManager.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-536L7P8';
-					document.head.appendChild(googleTagManager);
-				} else {
-					KDOptOut = true;
-				}
-
-				CharacterReleaseTotal(KinkyDungeonPlayer);
-				KinkyDungeonDressSet();
-				CharacterNaked(KinkyDungeonPlayer);
-				KinkyDungeonInitializeDresses();
-				KinkyDungeonCheckClothesLoss = true;
-				KinkyDungeonDressPlayer();
-				KDInitProtectedGroups(KinkyDungeonPlayer);
-				CharacterRefresh(KinkyDungeonPlayer);
-
-				let Char = (KinkyDungeonState == "LoadOutfit" ? KDSpeakerNPC : null) || KinkyDungeonPlayer;
-				DrawCharacter(Char, 0, 0, .01, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
-
-
-				return true;
-			} else if (MouseIn(1000-450/2, 820, 450, 64)) {
-				if (KDPatched) {
-					KDSendEvent('optout');
-				}
-
-
-				return true;
-			}
-		}
-
+		return true;
 	} else if (KinkyDungeonState == "Menu" || KinkyDungeonState == "Lose") {
 
 
@@ -3917,8 +3886,9 @@ function KDClick() {
 	//let origState = KinkyDungeonState;
 	//let origDrawState = KinkyDungeonDrawState;
 	if (KinkyDungeonState == "Logo") {
-		KinkyDungeonState = "Consent";
-		KDLogoStartTime = CommonTime();
+		//KinkyDungeonState = "Consent";
+		//KDLogoStartTime = CommonTime();
+		return true;
 	}
 	else
 	if (KinkyDungeonState == "Intro") {

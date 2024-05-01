@@ -35,6 +35,8 @@ TODO add soft limit on rune count, add spell to remove runes
 - Added various combination effect and condition type enchantments
 - Added more outfits to the shop
 - Added smooth heels by SMoonlightM
+- Replaced heart amulets with Overgrown Tablets
+- Reworked Orb UI
 
 5.2.28
 - Desire burst is now locked to the Path of Pleasure

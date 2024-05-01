@@ -301,17 +301,17 @@ function KinkyDungeonDrawReputation() {
 		let value = KinkyDungeonGoddessRep[rep];
 
 		if (rep) {
-			let color = "#ffff00";
+			let color = "#e7cf1a";
 			let goddessColor = "white";
 			let goddessSuff = "";
 			if (KDRepColor[rep]) color = KDRepColor[rep];
 			else {
 				if (value < -10) {
-					if (value < -30) color = "#ff0000";
-					else color = "#ff8800";
+					if (value < -30) color = "#ff5277";
+					else color = "#ff8933";
 				} else if (value >= 10) {
-					if (value >= 30) color = "#00ff00";
-					else color = "#88ff00";
+					if (value >= 30) color = "#4fd658";
+					else color = "#9bd45d";
 				}
 			}
 
@@ -459,13 +459,13 @@ function KinkyDungeonDrawFactionRep() {
 			if (index > KDFactionRepIndex * KDMaxFactionsPerBar + KDMaxFactionsPerBar) continue;
 
 			let value = KinkyDungeonFactionRelations.Player[rep];
-			let color = "#ffff00";
+			let color = "#e7cf1a";
 			if (value <= -0.1) {
-				if (value <= -0.5) color = "#ff0000";
-				else color = "#ff8800";
+				if (value <= -0.5) color = "#ff5277";
+				else color = "#ff8933";
 			} else if (value >= 0.1) {
-				if (value >= 0.5) color = "#00ff00";
-				else color = "#88ff00";
+				if (value >= 0.5) color = "#4fd658";
+				else color = "#9bd45d";
 			}
 			let suff = KinkyDungeonRepNameFaction(value);
 			let tcolor = "white";
@@ -480,7 +480,7 @@ function KinkyDungeonDrawFactionRep() {
 				case 'Elemental': tcolor ="#f1641f"; break;
 				case 'Dragon': tcolor ="#b9451d"; break;
 				case 'Maidforce': tcolor ="white"; break;
-				case "Bast": tcolor ="#ff0000"; break;
+				case "Bast": tcolor ="#ff5277"; break;
 				case "Elf": tcolor ="#42a459"; break;
 				//case 'Mushy': tcolor ="cyan"; break;
 				case 'AncientRobot': tcolor ="grey"; break;
@@ -529,7 +529,7 @@ function KinkyDungeonDrawFactionRep() {
 
 			if (tooltip && tooltip != rep) {
 				tcolor = "gray";
-				if (KDFactionRelation(rep, tooltip) <= -0.5) tcolor = "#ff0000";
+				if (KDFactionRelation(rep, tooltip) <= -0.5) tcolor = "#ff5277";
 				else if (KDFactionRelation(rep, tooltip) <= -0.25) tcolor = "orange";
 				else if (KDFactionRelation(rep, tooltip) <= -0.1) tcolor = "yellow";
 				else if (KDFactionRelation(rep, tooltip) >= 0.5) tcolor = "cyan";

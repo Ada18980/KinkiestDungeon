@@ -422,12 +422,12 @@ function KinkyDungeonHandleSpellCast(spell) {
 			&& (!spell.staminacost || KinkyDungeonHasStamina(spell.staminacost)))
 			return spell;
 		else {
-			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonNoMana"), "#ff0000", 1);
+			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonNoMana"), "#ff5277", 1);
 			KDFlashMana = 1000;
 		}
 	} else {
 		KinkyDungeonTargetingSpell = null;
-		KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonComponentsFail" + KinkyDungeoCheckComponents(spell)[0]), "#ff0000", 1);
+		KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonComponentsFail" + KinkyDungeoCheckComponents(spell)[0]), "#ff5277", 1);
 	}
 	return null;
 }
@@ -776,9 +776,9 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		KinkyDungeonMiscastPityModifier += KinkyDungeonMiscastPityModifierIncrementPercentage * Math.max(1 - flags.miscastChance, 0);
 
 		if (gaggedMiscastFlag)
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellMiscast" + gaggedMiscastType), "#FF8800", 2);
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellMiscast" + gaggedMiscastType), "#ff8933", 2);
 		else
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellMiscast"), "#FF8800", 2);
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellMiscast"), "#ff8933", 2);
 
 		moveDirection = {x:0, y:0, delta:1};
 		tX = entity.x;

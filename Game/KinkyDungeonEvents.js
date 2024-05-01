@@ -103,7 +103,7 @@ let KDEventMapInventorySelected = {
 				data.extraLines.push(TextGet("KDVariableModifier_" + e.msg)
 					.replace("AMNT", `${e.power >= 0 ? "+" : ""}${Math.round(e.power)}`)
 					.replace("DMG", TextGet("KinkyDungeonDamageType" + e.damage))
-					.replace("TPE", `${e.kind}`));
+					.replace("TYPE", `${e.kind}`));
 				data.extraLineColor.push(e.color || "#ffffff");
 				data.extraLineColorBG.push(e.bgcolor || "#000000");
 			}
@@ -113,7 +113,7 @@ let KDEventMapInventorySelected = {
 				data.extraLines.push(TextGet("KDModifierCondition_" + e.msg)
 					.replace("AMNT", `${e.power >= 0 ? "+" : ""}${Math.round(e.power)}`)
 					.replace("DMG", TextGet("KinkyDungeonDamageType" + e.damage))
-					.replace("TPE", `${e.kind}`));
+					.replace("TYPE", `${e.kind}`));
 				data.extraLineColor.push(e.color || "#ffffff");
 				data.extraLineColorBG.push(e.bgcolor || "#000000");
 			}
@@ -124,7 +124,7 @@ let KDEventMapInventorySelected = {
 					.replace("AMNT", `${e.power >= 0 ? "+" : ""}${Math.round(e.power)}`)
 					.replace("DRTN", `${Math.round(e.duration)}`)
 					.replace("DMG", TextGet("KinkyDungeonDamageType" + e.damage))
-					.replace("TPE", `${e.kind}`));
+					.replace("TYPE", `${e.kind}`));
 				data.extraLineColor.push(e.color || "#ffffff");
 				data.extraLineColorBG.push(e.bgcolor || "#000000");
 			}
@@ -1157,7 +1157,7 @@ let KDEventMapInventory = {
 			if (!data.delta) return;
 			if (!e.chance || KDRandom() < e.chance) {
 				KinkyDungeonAlert = Math.max(KinkyDungeonAlert, e.power);
-				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonAlertEnemies").replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonAlertEnemies").replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
 				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 			}
 		},
@@ -1891,13 +1891,13 @@ let KDEventMapInventory = {
 							}
 						}
 					}
-				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonCelestialPunish" + Math.floor(KDRandom() * 3)), "#ff0000", 2);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonCelestialPunish" + Math.floor(KDRandom() * 3)), "#ff5277", 2);
 			}
 		},
 		"crystalPunish": (e, item, data) => {
 			if (data.restraint && item === data.restraint) {
 				KinkyDungeonChangeDistraction(1, false, 0.1);
-				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonCrystalPunish" + Math.floor(KDRandom() * 3)), "#ff0000", 2);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonCrystalPunish" + Math.floor(KDRandom() * 3)), "#ff5277", 2);
 			}
 		},
 		"PunishPlayer": (e, item, data) => {
@@ -1909,7 +1909,7 @@ let KDEventMapInventory = {
 					}
 					KDGameData.WarningLevel += 1;
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
-					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > (e.count || 2) ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > (e.count || 2) ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 				}
 			}
@@ -1953,7 +1953,7 @@ let KDEventMapInventory = {
 						data.escapePenalty += e.bind ? e.bind : 0.1;
 						KDGameData.WarningLevel += 1;
 						KinkyDungeonDealDamage({damage: e.power, type: e.damage});
-						KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > (e.count || 2) ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+						KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > (e.count || 2) ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
 						if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 					}
 				}
@@ -1964,14 +1964,14 @@ let KDEventMapInventory = {
 			if (data.restraint && item != data.restraint && !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && KDRestraint(data.restraint).shrine.includes("ArmCuffsBase")) {
 				data.escapePenalty += e.power ? e.power : 1.0;
 				if (!data.query)
-					KinkyDungeonSendTextMessage(10, TextGet("KDElbowCuffsBlock" + Math.floor(KDRandom() * 3)), "#ff0000", 2);
+					KinkyDungeonSendTextMessage(10, TextGet("KDElbowCuffsBlock" + Math.floor(KDRandom() * 3)), "#ff5277", 2);
 			}
 		},
 		"vibeStruggle": (e, item, data) => {
 			if (KinkyDungeonHasCrotchRope && !KinkyDungeonPlayerTags.get("ChastityLower") && data.restraint && item == data.restraint && !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && (KinkyDungeonIsHandsBound(false, false, 0.45) || KinkyDungeonIsArmsBound())) {
 				data.escapePenalty += data.escapeChance;
 				if (!data.query)
-					KinkyDungeonSendTextMessage(10, TextGet("KDCrotchRopeBlock" + Math.floor(KDRandom() * 3)), "#ff0000", 2);
+					KinkyDungeonSendTextMessage(10, TextGet("KDCrotchRopeBlock" + Math.floor(KDRandom() * 3)), "#ff5277", 2);
 			}
 		},
 		"struggleDebuff": (e, item, data) => {
@@ -2023,7 +2023,7 @@ let KDEventMapInventory = {
 			if (data.restraint && item != data.restraint && !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && KDRestraint(data.restraint).shrine.includes("ArmCuffsBase")) {
 				data.escapePenalty += e.power ? e.power : 0.075;
 				if (!data.query)
-					KinkyDungeonSendTextMessage(5, TextGet("KDWristCuffsBlock" + Math.floor(KDRandom() * 3)), "#ff0000", 2);
+					KinkyDungeonSendTextMessage(5, TextGet("KDWristCuffsBlock" + Math.floor(KDRandom() * 3)), "#ff5277", 2);
 			}
 		},
 	},
@@ -2150,7 +2150,7 @@ let KDEventMapInventory = {
 			if (KDAlertCD < 1 && data.enemy && (!e.chance || KDRandom() < e.chance)) { // (data.damage && data.damage.damage && data.enemy.hp > data.enemy.Enemy.maxhp - data.damage.damage*2 - 1)
 				KinkyDungeonAlert = Math.max(KinkyDungeonAlert, e.power);
 				KDAlertCD = 5;
-				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonAlertEnemies").replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonAlertEnemies").replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
 				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 			}
 		},
@@ -2163,7 +2163,7 @@ let KDEventMapInventory = {
 					}
 					KDGameData.WarningLevel += 1;
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
-					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > (e.count || 2) ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > (e.count || 2) ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 				}
 			}
@@ -2177,7 +2177,7 @@ let KDEventMapInventory = {
 					}
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
 					if (!data.cursePunish) {
-						KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+						KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
 						if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 					}
 					data.cursePunish = true;
@@ -2188,7 +2188,7 @@ let KDEventMapInventory = {
 			if (item.type === Restraint && data.targetX && data.targetY && data.enemy && !data.armorNoise) {
 				if (!e.chance || KDRandom() < e.chance ) {
 					KinkyDungeonMakeNoise(e.dist, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true);
-					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 
 					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `${TextGet("KDArmorNoise")}`, "#ffffff", 2);
@@ -2230,7 +2230,7 @@ let KDEventMapInventory = {
 			const msg = TextGet(e.msg ? e.msg : "KinkyDungeonRemoteShock")
 				.replace("RestraintName", TextGet(`Restraint${item.name}`))
 				.replace("EnemyName", TextGet(`Name${enemy.Enemy.name}`));
-			KinkyDungeonSendTextMessage(5, msg, "#ff8800", 2);
+			KinkyDungeonSendTextMessage(5, msg, "#ff8933", 2);
 			if (e.sfx) KinkyDungeonPlaySound(`${KinkyDungeonRootDirectory}/Audio/${e.sfx}.ogg`);
 		},
 		"RemoteLinkItem": (e, item, data) => {
@@ -2253,7 +2253,7 @@ let KDEventMapInventory = {
 				const msg = TextGet(e.msg)
 					.replace("RestraintName", TextGet(`Restraint${item.name}`))
 					.replace("EnemyName", TextGet(`Name${enemy.Enemy.name}`));
-				KinkyDungeonSendTextMessage(5, msg, "#ff8800", 2);
+				KinkyDungeonSendTextMessage(5, msg, "#ff8933", 2);
 			}
 		}
 	},
@@ -2275,7 +2275,7 @@ let KDEventMapInventory = {
 					power: KinkyDungeonStatStamina > 1 ? 4 : 15,
 					pose: "BallsuitTip",
 				});
-				KinkyDungeonSendActionMessage(10, TextGet("KDBallsuitTip"), "#ffff00", 1);
+				KinkyDungeonSendActionMessage(10, TextGet("KDBallsuitTip"), "#e7cf1a", 1);
 				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 			}
 		},
@@ -2381,7 +2381,7 @@ let KDEventMapInventory = {
 		"AlertEnemies": (e, item, data) => {
 			if (!e.chance || KDRandom() < e.chance) {
 				KinkyDungeonAlert = Math.max(KinkyDungeonAlert, e.power);
-				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonAlertEnemies").replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonAlertEnemies").replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
 				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 			}
 		},
@@ -2394,7 +2394,7 @@ let KDEventMapInventory = {
 					}
 					KDGameData.WarningLevel += 1;
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
-					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > (e.count || 2) ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > (e.count || 2) ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 				}
 			}
@@ -2408,7 +2408,7 @@ let KDEventMapInventory = {
 					}
 					KinkyDungeonDealDamage({damage: e.power, type: e.damage});
 					if (!data.cursePunish) {
-						KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+						KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
 						if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 					}
 					data.cursePunish = true;
@@ -2419,7 +2419,7 @@ let KDEventMapInventory = {
 			if (data.spell && item.type === Restraint && (!e.punishComponent || (data.spell.components && data.spell.components.includes(e.punishComponent))) && !data.armorNoise) {
 				if (!e.chance || KDRandom() < e.chance ) {
 					KinkyDungeonMakeNoise(e.dist, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
-					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8800", 2);
+					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 
 					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `${TextGet("KDArmorNoise")}`, "#ffffff", 2);
@@ -2547,7 +2547,7 @@ const KDEventMapBuff = {
 						}
 					}
 					if (KinkyDungeonPlayerBuffs.Conduction && KDistEuclidean(data.enemy.x - KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y - data.enemy.y) <= e.aoe) {
-						KinkyDungeonSendTextMessage(6, TextGet("KDConductionDamageTaken").replace("DAMAGEDEALT", "" + data.dmg * e.power), "#ff0000", 2);
+						KinkyDungeonSendTextMessage(6, TextGet("KDConductionDamageTaken").replace("DAMAGEDEALT", "" + data.dmg * e.power), "#ff5277", 2);
 						KinkyDungeonDealDamage({
 							type: e.damage,
 							damage: data.dmg * e.power,
@@ -2626,7 +2626,7 @@ const KDEventMapBuff = {
 		},
 		"EchoDamage": (e, buff, entity, data) => {
 			if ((!data.flags || !data.flags.includes("EchoDamage")) && data.dmg > 0 && (!e.damageTrigger || e.damageTrigger == data.type)) {
-				KinkyDungeonSendTextMessage(6, TextGet("KDBurningFanFlamesDamageTaken").replace("DAMAGEDEALT", "" + data.dmg * e.power), "#ff0000", 2);
+				KinkyDungeonSendTextMessage(6, TextGet("KDBurningFanFlamesDamageTaken").replace("DAMAGEDEALT", "" + data.dmg * e.power), "#ff5277", 2);
 				KinkyDungeonDealDamage({
 					type: e.damage,
 					damage: data.dmg * e.power,
@@ -3438,7 +3438,7 @@ let KDEventMapSpell = {
 						{
 							id: "BattleRhythm",
 							type: "BattleRhythm",
-							aura: "#ff8800",
+							aura: "#ff8933",
 							aurasprite: "Null",
 							buffSprite: true,
 							power: powerAdded,
@@ -3446,13 +3446,13 @@ let KDEventMapSpell = {
 							text: Math.round(100 * powerAdded),
 						}
 					);
-					KinkyDungeonSendFloater(player, `+${Math.round(powerAdded*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 1.5);
+					KinkyDungeonSendFloater(player, `+${Math.round(powerAdded*100)} ${TextGet("KDBattleRhythm")}`, "#ff8933", 1.5);
 				} else {
 					let origPower = buff.power;
 					buff.power += powerAdded;
 					buff.power = Math.min(buff.power, max);
 					buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
-					KinkyDungeonSendFloater(player, `+${Math.round((buff.power - origPower)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 1.5);
+					KinkyDungeonSendFloater(player, `+${Math.round((buff.power - origPower)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8933", 1.5);
 				}
 
 				// Set a flag to prevent duplicating this event
@@ -3793,7 +3793,7 @@ let KDEventMapSpell = {
 					if (buff) {
 						let enemyPower = (data.attacker.Enemy?.power || 1) * 0.01;
 						KinkyDungeonSendTextMessage(4, TextGet("KDBattleRhythmDodge"), "#aaff00", 2);
-						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round(efficiency*enemyPower*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 1.5);
+						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round(efficiency*enemyPower*100)} ${TextGet("KDBattleRhythm")}`, "#ff8933", 1.5);
 						buff.power = Math.max(0, buff.power - efficiency*enemyPower);
 						if (buff.power <= 0) buff.duration = 0;
 						buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
@@ -3954,7 +3954,7 @@ let KDEventMapSpell = {
 				bb.duration = 4;
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, bb);
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-					id: "LightningRod", type: "electricDamageResist", aura: "#ffff00", power: e.power, player: true, duration: 4,
+					id: "LightningRod", type: "electricDamageResist", aura: "#e7cf1a", power: e.power, player: true, duration: 4,
 				});
 			}
 		},
@@ -4134,7 +4134,7 @@ let KDEventMapSpell = {
 				if (buff) {
 					buff.power = Math.max(0, buff.power - data.delta*e.power);
 					buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
-					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((e.power)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 0.1);
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((e.power)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8933", 0.1);
 					if (buff.power == 0) buff.duration = 0;
 				}
 			}
@@ -4553,7 +4553,7 @@ let KDEventMapSpell = {
 					if (KinkyDungeonSpells[KinkyDungeonSpellChoices[i]]?.name == spell.name) {
 						KinkyDungeonSpellChoicesToggle[i] = false;
 						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Damage.ogg");
-						KinkyDungeonSendTextMessage(10, TextGet("KDEvasiveManeuversEnd"), "#ff8800", 2);
+						KinkyDungeonSendTextMessage(10, TextGet("KDEvasiveManeuversEnd"), "#ff8933", 2);
 						return;
 					}
 				}
@@ -4616,7 +4616,7 @@ let KDEventMapSpell = {
 						{
 							id: "BattleRhythm",
 							type: "BattleRhythm",
-							aura: "#ff8800",
+							aura: "#ff8933",
 							aurasprite: "Null",
 							buffSprite: true,
 							power: powerAdded,
@@ -4624,13 +4624,13 @@ let KDEventMapSpell = {
 							text: Math.round(100 * powerAdded),
 						}
 					);
-					KinkyDungeonSendFloater(data.target, `+${Math.round(powerAdded*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 1.5);
+					KinkyDungeonSendFloater(data.target, `+${Math.round(powerAdded*100)} ${TextGet("KDBattleRhythm")}`, "#ff8933", 1.5);
 				} else {
 					let origPower = buff.power;
 					buff.power += powerAdded;
 					buff.power = Math.min(buff.power, max);
 					buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
-					KinkyDungeonSendFloater(data.target, `+${Math.round((buff.power - origPower)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 1.5);
+					KinkyDungeonSendFloater(data.target, `+${Math.round((buff.power - origPower)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8933", 1.5);
 				}
 
 				// Set a flag to prevent duplicating this event
@@ -4913,7 +4913,7 @@ let KDEventMapSpell = {
 					KinkyDungeonSendTextMessage(10, TextGet("KDEvasiveManeuversStart"), "#88ff88", 2);
 				} else {
 					KinkyDungeonSpellChoicesToggle[data.index] = false;
-					KinkyDungeonSendTextMessage(10, TextGet("KDEvasiveManeuversFail"), "#ff8800", 2);
+					KinkyDungeonSendTextMessage(10, TextGet("KDEvasiveManeuversFail"), "#ff8933", 2);
 				}
 			}
 		},
@@ -5492,7 +5492,7 @@ let KDEventMapSpell = {
 					KinkyDungeonChangeWill(-e.power);
 					if (willPercentage >= 1) {
 						KinkyDungeonChangeStamina(Math.min(willPercentage, 1.0) * e.mult * KinkyDungeonStatStaminaMax);
-						KinkyDungeonSendTextMessage(5, TextGet("KDLimitSurge_Success"), "#ff8800", 10);
+						KinkyDungeonSendTextMessage(5, TextGet("KDLimitSurge_Success"), "#ff8933", 10);
 					} else {
 						KinkyDungeonChangeStamina(Math.min(willPercentage, 1.0) * e.mult * KinkyDungeonStatStaminaMax);
 						KDStunTurns(e.time);
@@ -5508,7 +5508,7 @@ let KDEventMapSpell = {
 					});
 					KDTriggerSpell(spell, data, false, false);
 				} else {
-					KinkyDungeonSendTextMessage(5, TextGet("KDLimitSurge_No"), "#ff8800", 10);
+					KinkyDungeonSendTextMessage(5, TextGet("KDLimitSurge_No"), "#ff8933", 10);
 				}
 			}
 		},
@@ -5537,11 +5537,11 @@ let KDEventMapSpell = {
 
 
 					KinkyDungeonChangeStamina(-KinkyDungeonGetStaminaCost(spell, false, false));
-					KinkyDungeonSendTextMessage(5, TextGet("KDRaiseDefensesSuccess"), "#ff8800", 10);
+					KinkyDungeonSendTextMessage(5, TextGet("KDRaiseDefensesSuccess"), "#ff8933", 10);
 					KDTriggerSpell(spell, data, false, false);
 					KinkyDungeonAdvanceTime(1);
 				} else {
-					KinkyDungeonSendTextMessage(5, TextGet("KDRaiseDefensesFail"), "#ff8800", 10);
+					KinkyDungeonSendTextMessage(5, TextGet("KDRaiseDefensesFail"), "#ff8933", 10);
 				}
 			}
 		},
@@ -5568,7 +5568,7 @@ let KDEventMapSpell = {
 									{
 										id: "BattleRhythm",
 										type: "BattleRhythm",
-										aura: "#ff8800",
+										aura: "#ff8933",
 										aurasprite: "Null",
 										buffSprite: true,
 										power: powerAdded,
@@ -5576,27 +5576,27 @@ let KDEventMapSpell = {
 										text: Math.round(100 * powerAdded),
 									}
 								);
-								KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round(powerAdded*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 1.5);
+								KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round(powerAdded*100)} ${TextGet("KDBattleRhythm")}`, "#ff8933", 1.5);
 							} else {
 								let origPower = buff.power;
 								buff.power += powerAdded;
 								buff.power = Math.min(buff.power, max);
 								buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
-								KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round((buff.power - origPower)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 1.5);
+								KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round((buff.power - origPower)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8933", 1.5);
 							}
-							KinkyDungeonSendTextMessage(5, TextGet("KDEnrageSuccess"), "#ffff00", 10);
+							KinkyDungeonSendTextMessage(5, TextGet("KDEnrageSuccess"), "#e7cf1a", 10);
 						} else {
-							KinkyDungeonSendTextMessage(5, TextGet("KDEnrageFailGagged"), "#ff8800", 10);
+							KinkyDungeonSendTextMessage(5, TextGet("KDEnrageFailGagged"), "#ff8933", 10);
 						}
 
 
 					} else {
-						KinkyDungeonSendTextMessage(5, TextGet("KDEnrageFailCooldown"), "#ff8800", 10);
+						KinkyDungeonSendTextMessage(5, TextGet("KDEnrageFailCooldown"), "#ff8933", 10);
 					}
 
 
 				} else {
-					KinkyDungeonSendTextMessage(5, TextGet("KDEnrageFail"), "#ff8800", 10);
+					KinkyDungeonSendTextMessage(5, TextGet("KDEnrageFail"), "#ff8933", 10);
 				}
 
 
@@ -5612,7 +5612,7 @@ let KDEventMapSpell = {
 					if (buff) {
 						buff.power = Math.max(0, buff.power - e.cost);
 						buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
-						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((e.cost)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8800", 0.1);
+						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((e.cost)*100)} ${TextGet("KDBattleRhythm")}`, "#ff8933", 0.1);
 						if (buff.power == 0) buff.duration = 0;
 					}
 
@@ -5639,14 +5639,14 @@ let KDEventMapSpell = {
 
 
 						KinkyDungeonChangeStamina(-KinkyDungeonGetStaminaCost(spell, false, false));
-						KinkyDungeonSendTextMessage(5, TextGet("KDBreakFreeSuccess"), "#ff8800", 10);
+						KinkyDungeonSendTextMessage(5, TextGet("KDBreakFreeSuccess"), "#ff8933", 10);
 						KDTriggerSpell(spell, data, false, false);
 						KinkyDungeonAdvanceTime(1);
 					} else {
-						KinkyDungeonSendTextMessage(5, TextGet("KDBreakFreeFailWP"), "#ff8800", 10);
+						KinkyDungeonSendTextMessage(5, TextGet("KDBreakFreeFailWP"), "#ff8933", 10);
 					}
 				} else {
-					KinkyDungeonSendTextMessage(5, TextGet("KDBreakFreeFail"), "#ff8800", 10);
+					KinkyDungeonSendTextMessage(5, TextGet("KDBreakFreeFail"), "#ff8933", 10);
 				}
 
 
@@ -8895,7 +8895,7 @@ let KDEventMapGeneric = {
 						for (let tile of Object.values(KinkyDungeonEffectTilesGet(m.str))) {
 							if (tile.tags && tile.tags.includes("noisy")) {
 								KinkyDungeonMakeNoise(5, m.x, m.y);
-								KinkyDungeonSendTextMessage(3, TextGet("KDNoisyTerrain"), "#ff8800", 3, false, true);
+								KinkyDungeonSendTextMessage(3, TextGet("KDNoisyTerrain"), "#ff8933", 3, false, true);
 							}
 						}
 					}
@@ -9309,7 +9309,7 @@ let KDEventMapGeneric = {
 			for (let enemy of nearby) {
 				if (KDEntityHasBuff(enemy, "HighValue")) {
 					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
-						{id: "HighValueFound", type: "HighValueFound", duration: 2, power: 0, buffSprite: true, aura: "#ffff00"}
+						{id: "HighValueFound", type: "HighValueFound", duration: 2, power: 0, buffSprite: true, aura: "#e7cf1a"}
 					);
 					return;
 				}

@@ -676,7 +676,7 @@ function KDDrawEditorUI() {
 		return true;
 	}, true, 1450, 800, 275, 40, "Reset tile database", "#ffffff", "");
 	if (KDTE_confirmreset) {
-		DrawTextFitKD("This is a DESTRUCTIVE operation. Click the button again to do it. Save a tile to commit fully.", 1400, 470, 1000, "#ffff00", "#ff0000");
+		DrawTextFitKD("This is a DESTRUCTIVE operation. Click the button again to do it. Save a tile to commit fully.", 1400, 470, 1000, "#e7cf1a", "#ff5277");
 	}
 
 

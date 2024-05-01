@@ -998,11 +998,11 @@ function KinkyDungeonDrawEnemiesWarning(canvasOffsetX, canvasOffsetY, CamX, CamY
 	}
 }
 
-function KinkyDungeonBar(x, y, w, h, value, foreground = "#66FF66", background = "#ff0000", orig = undefined, origColor = "#ff4444", notches = undefined, notchcolor = "#ffffff", notchbg = "#ffffff", zIndex = 55) {
+function KinkyDungeonBar(x, y, w, h, value, foreground = "#66FF66", background = "#ff5277", orig = undefined, origColor = "#ff4444", notches = undefined, notchcolor = "#ffffff", notchbg = "#ffffff", zIndex = 55) {
 	KinkyDungeonBarTo(kdcanvas, x, y, w, h, value, foreground, background, orig, origColor, notches, notchcolor, notchbg, zIndex);
 }
 
-function KinkyDungeonBarTo(canvas, x, y, w, h, value, foreground = "#66FF66", background = "#ff0000", orig = undefined, origColor = "#ff4444", notches = undefined, notchcolor = "#ffffff", notchbg = "#ffffff", zIndex = 55) {
+function KinkyDungeonBarTo(canvas, x, y, w, h, value, foreground = "#66FF66", background = "#ff5277", orig = undefined, origColor = "#ff4444", notches = undefined, notchcolor = "#ffffff", notchbg = "#ffffff", zIndex = 55) {
 	if (value < 0) value = 0;
 	if (value > 100) value = 100;
 	let reverse = w < 0;
@@ -4708,7 +4708,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					let restraintFromInventory = [];
 					let willpowerDamage = 0;
 					let staminaDamage = 0;
-					let msgColor = "#ffff00";
+					let msgColor = "#e7cf1a";
 					let Locked = false;
 					let Effected = false;
 					let Stun = false;
@@ -4963,7 +4963,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 											if (KDRandom() < actionDialogueChanceIntense)
 												KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Leash").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 3);
-											KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonLeashGrab").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff8800", 1);
+											KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonLeashGrab").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff8933", 1);
 										}
 									}
 								} else if (!(player?.player && KinkyDungeonFlags.get("forceMoved"))) {
@@ -4990,7 +4990,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 											if (KDRandom() < actionDialogueChanceIntense)
 												KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Pull").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 3);
-											KinkyDungeonSendTextMessage(8, TextGet(msg).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff8800", 1);
+											KinkyDungeonSendTextMessage(8, TextGet(msg).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff8933", 1);
 										}
 									}
 								}
@@ -5034,15 +5034,15 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					if (player.player) {
 						KinkyDungeonTickBuffTag(enemy, "hit", 1);
 						if (restraintAdd && restraintAdd.length > 0) {
-							msgColor = "#ff8800";
+							msgColor = "#ff8933";
 							bound += KDRunBondageResist(enemy, KDGetFaction(enemy), restraintAdd,(r) => {
 								KDDamageQueue.push({floater: TextGet("KDBlockedRestraint"), Entity: {x: enemy.x - 0.5, y: enemy.y - 0.5}, Color: "#88ff88", Time: 2, Delay: 0});
 								for (let rep of replace) {
 									if (rep.keyword == "RestraintAdded") rep.value = TextGet("KDRestraintBlockedItem");
 								}
 								if (!r)
-									KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal"), "#ffff00", 1);
-								msgColor = "#ffff00";
+									KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal"), "#e7cf1a", 1);
+								msgColor = "#e7cf1a";
 								bound += 1;
 								if (willpowerDamage == 0)
 									willpowerDamage += AIData.power;
@@ -6014,7 +6014,7 @@ function KDTieUpEnemy(enemy, amount, type = "Leather", Damage, Msg, Delay) {
 	}
 
 	if (data.Msg) {
-		KDDamageQueue.push({floater: TextGet("KDTieUp").replace("AMNT", Math.round(data.amount*10) + ""), Entity: enemy, Color: "#ff8800", Delay: Delay});
+		KDDamageQueue.push({floater: TextGet("KDTieUp").replace("AMNT", Math.round(data.amount*10) + ""), Entity: enemy, Color: "#ff8933", Delay: Delay});
 	}
 
 	return data;
@@ -6345,7 +6345,7 @@ function KDGetAwareTooltip(enemy) {
 	};
 	if (enemy.vp > 0) return {
 		suff: "Suspicious",
-		color: "#ffff00",
+		color: "#e7cf1a",
 	};
 	return {
 		suff: "Unnoticed",
@@ -6709,7 +6709,7 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 						5, TextGet("KDArmorBlock")
 							.replace("ArmorName", KDGetItemName(r))
 							.replace("EnemyName", name),
-						"#ff8800", 1);
+						"#ff8933", 1);
 				}
 				count += KDRestraint(r).protection;
 			}
@@ -6728,7 +6728,7 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 								5, TextGet("KDBypasses")
 									.replace("RestraintName", KDGetRestraintName(r.r))
 									.replace("EnemyName", name),
-								"#ffff00", 1);
+								"#e7cf1a", 1);
 						}
 						if (restraintFromInventory && enemy && restraintFromInventory.includes(r.r.name)) {
 							restraintFromInventory.splice(restraintFromInventory.indexOf(r.r.name), 1);

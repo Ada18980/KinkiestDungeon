@@ -484,7 +484,7 @@ let KDMoveObjectFunctions = {
 			KinkyDungeonMapSet(moveX, moveY, 'r');
 			KinkyDungeonAggroAction('rubble', {});
 		} else {
-			KinkyDungeonSendActionMessage(6, TextGet("KDCantTouchThat"), "#ff8800",1, false, true);
+			KinkyDungeonSendActionMessage(6, TextGet("KDCantTouchThat"), "#ff8933",1, false, true);
 			return false;
 		}
 
@@ -501,7 +501,7 @@ let KDMoveObjectFunctions = {
 			let roll = KinkyDungeonTilesGet(moveX + "," +moveY) ? KinkyDungeonTilesGet(moveX + "," +moveY).Roll : KDRandom();
 			if (faction && !KinkyDungeonChestConfirm) {
 				KinkyDungeonChestConfirm = true;
-				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChestFaction").replace("FACTION", TextGet("KinkyDungeonFaction" + faction)), "#ff0000", 2, true);
+				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChestFaction").replace("FACTION", TextGet("KinkyDungeonFaction" + faction)), "#ff5277", 2, true);
 				return true;
 			} else {
 				if (KDHandsfreeChestTypes.includes(chestType)) {
@@ -538,7 +538,7 @@ let KDMoveObjectFunctions = {
 				KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
 			}
 		} else {
-			KinkyDungeonSendActionMessage(6, TextGet("KDCantTouchThat"), "#ff8800",1, false, true);
+			KinkyDungeonSendActionMessage(6, TextGet("KDCantTouchThat"), "#ff8933",1, false, true);
 		}
 
 
@@ -553,7 +553,7 @@ let KDMoveObjectFunctions = {
 			KinkyDungeonMapSet(moveX, moveY, 'X');
 			KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
 		} else {
-			KinkyDungeonSendActionMessage(6, TextGet("KDCantTouchThat"), "#ff8800",1, false, true);
+			KinkyDungeonSendActionMessage(6, TextGet("KDCantTouchThat"), "#ff8933",1, false, true);
 		}
 		return true;
 	},
@@ -993,7 +993,7 @@ let KDEffectTileFunctions = {
 				bind: 0,
 				flags: ["BurningDamage"]
 			});
-			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonInfernoBurn"), "#ff0000", 2);
+			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonInfernoBurn"), "#ff5277", 2);
 		} else {
 			KinkyDungeonDamageEnemy(entity, {
 				type: "fire",

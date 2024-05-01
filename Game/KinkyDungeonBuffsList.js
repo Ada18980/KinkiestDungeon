@@ -23,7 +23,7 @@ let KDBurning = {id: "Burning", type: "event", aura: "#ff8933", aurasprite: "Fla
 let KDDisenchant1 = {id: "Disenchant1", type: "MoveSpeed", aura: "#440088", power: -0.5, player: false, duration: 9999, infinite: true, enemies: true};
 let KDDisenchant2 = {id: "Disenchant2", type: "AttackSlow", aura: "#440088", power: 0.5, player: false, duration: 9999, infinite: true, enemies: true};
 
-let KDVolcanism = {id: "Volcanism", type: "event", aura: "#ff0000", power: 0.5, player: false, duration: 9999, infinite: true, enemies: true, events: [
+let KDVolcanism = {id: "Volcanism", type: "event", aura: "#ff5277", power: 0.5, player: false, duration: 9999, infinite: true, enemies: true, events: [
 	{type: "Volcanism", power: 4.0, damage: "fire", trigger: "beforeDamageEnemy"},
 ]};
 

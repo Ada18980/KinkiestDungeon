@@ -122,7 +122,7 @@ let KDDialogue = {
 		options: {
 			"Accept": {gag: true, playertext: "WeaponFoundAccept", response: "GoodGirl", personalities: ["Dom", "Sub", "Robot"],
 				clickFunction: (gagged, player) => {
-					KinkyDungeonSendTextMessage(10, TextGet("KDWeaponConfiscated"), "#ff0000", 2);
+					KinkyDungeonSendTextMessage(10, TextGet("KDWeaponConfiscated"), "#ff5277", 2);
 					if (!isUnarmed(KinkyDungeonPlayerDamage)) {
 						KinkyDungeonChangeRep("Ghost", 3);
 						let item = KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon);
@@ -1210,7 +1210,7 @@ let KDDialogue = {
 					if (tile && tile.Type == "Food") {
 						let gagTotal = KinkyDungeonGagTotal();
 						if (gagTotal > 0) {
-							//KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEatenGag"), "#ff8800", 1);
+							//KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEatenGag"), "#ff8933", 1);
 							KDGameData.CurrentDialogMsg = "TableFoodEatFail";
 						} else {
 							// Perform the deed

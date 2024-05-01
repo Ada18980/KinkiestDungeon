@@ -369,7 +369,7 @@ function KDProcessInput(type, data) {
 					}
 					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 				} else {
-					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUseGaggedFail"), "#ff0000", 1);
+					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUseGaggedFail"), "#ff5277", 1);
 				}
 				KinkyDungeonAdvanceTime(1, true);
 				KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
@@ -643,6 +643,9 @@ function KDProcessInput(type, data) {
 						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonOrbSpell").replace("SPELL", TextGet("KinkyDungeonSpell" + spell.name)), "lightblue", 2);
 					} else {
 						KinkyDungeonSpellPoints += data.Amount;
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonObjectOrbBreak"), "lightblue", 2);
+
+
 					}
 				} else {
 					KinkyDungeonSpellPoints += data.Amount;
@@ -652,7 +655,10 @@ function KDProcessInput(type, data) {
 				}
 				KinkyDungeonMapSet(data.x, data.y, 'o');
 				KinkyDungeonAggroAction('orb', {});
+
 				KinkyDungeonSendEvent("afterSpellOrb", edata);
+				KinkyDungeonTargetTile = null;
+				KinkyDungeonTargetTileLocation = "";
 			}
 			break;
 		case "perkorb":
@@ -687,22 +693,47 @@ function KDProcessInput(type, data) {
 				KinkyDungeonSendEvent("perkOrb", {x: data.x, y: data.y, perks: data.perks});
 			}
 			break;
-		case "heart":
-			if (data.type == "AP") {
-				if (KinkyDungeonStatDistractionMax < KDMaxStat) KDPushSpell(KinkyDungeonFindSpell("APUp1"));
-				KinkyDungeonUpdateStats(0);
-			}else if (data.type == "SP") {
-				if (KinkyDungeonStatStaminaMax < KDMaxStat) KDPushSpell(KinkyDungeonFindSpell("SPUp1"));
-				KinkyDungeonUpdateStats(0);
-			} else if (data.type == "MP") {
-				if (KinkyDungeonStatManaMax < KDMaxStat) KDPushSpell(KinkyDungeonFindSpell("MPUp1"));
-				KinkyDungeonUpdateStats(0);
-			} else if (data.type == "WP") {
-				if (KinkyDungeonStatWillMax < KDMaxStat) KDPushSpell(KinkyDungeonFindSpell("WPUp1"));
-				KinkyDungeonUpdateStats(0);
+		case "heart": {
+			KDDelayedActionPrune(["Action", "World"]);
+			tile = KinkyDungeonTilesGet(data.targetTile);
+			if (tile) {
+				let amnt = (data.amount || 3);
+				if (data.type == "AP") {
+					if (KinkyDungeonStatDistractionMax < KDMaxStat) //for (let i = 0; i < amnt; i++) KDPushSpell(KinkyDungeonFindSpell("APUp1"));
+						KDGameData.StatMaxBonus[data.type] += amnt;
+					KinkyDungeonUpdateStats(0);
+				}else if (data.type == "SP") {
+					if (KinkyDungeonStatStaminaMax < KDMaxStat)// for (let i = 0; i < amnt; i++) KDPushSpell(KinkyDungeonFindSpell("SPUp1"));
+						KDGameData.StatMaxBonus[data.type] += amnt;
+					KinkyDungeonUpdateStats(0);
+				} else if (data.type == "MP") {
+					if (KinkyDungeonStatManaMax < KDMaxStat)// for (let i = 0; i < amnt; i++) KDPushSpell(KinkyDungeonFindSpell("MPUp1"));
+						KDGameData.StatMaxBonus[data.type] += amnt;
+					KinkyDungeonUpdateStats(0);
+				} else if (data.type == "WP") {
+					if (KinkyDungeonStatWillMax < KDMaxStat) //for (let i = 0; i < amnt; i++) KDPushSpell(KinkyDungeonFindSpell("WPUp1"));
+						KDGameData.StatMaxBonus[data.type] += amnt;
+					KinkyDungeonUpdateStats(0);
+				}
+				KDGameData.CollectedHearts = (KDGameData.CollectedHearts || 0) + 1;
+
+				// Send the message and advance time
+				KinkyDungeonAdvanceTime(1);
+				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTabletReadSuccess"), "lightgreen", 1);
+
+				KinkyDungeonTargetTile = null;
+				KinkyDungeonTargetTileLocation = "";
+
+				// Remove the tile
+				let x = parseInt(data.targetTile.split(',')[0]);
+				let y = parseInt(data.targetTile.split(',')[1]);
+				if (x && y) {
+					KinkyDungeonMapSet(x, y, 'm');
+					KinkyDungeonTilesDelete(data.targetTile);
+				}
 			}
-			KDGameData.CollectedHearts = (KDGameData.CollectedHearts || 0) + 1;
 			break;
+		}
 		case "champion":
 			KDGameData.Champion = data.rep;
 			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonBecomeChampion").replace("GODDESS", TextGet("KinkyDungeonShrine" + data.rep)), "yellow", 1);
@@ -944,7 +975,7 @@ function KDProcessInput(type, data) {
 							//KinkyDungeonDrawState = "Game";
 						}
 					} else if (KinkyDungeonIsPlayer()) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellsNotEnoughMana"), "#b4dbfc", 1);
-				} else if (KinkyDungeonIsPlayer()) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellsNotEnoughPoints"), "#ffff00", 1);
+				} else if (KinkyDungeonIsPlayer()) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellsNotEnoughPoints"), "#e7cf1a", 1);
 			} else if (KinkyDungeonIsPlayer()) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellsNotPrerequisite").replace("REQUIREDSPELL", TextGet("KinkyDungeonSpell" + spell.prerequisite)), "#ff4444", 1);
 			break;
 		}
@@ -1001,7 +1032,7 @@ function KDProcessInput(type, data) {
 				if (tile && tile.Type == "Food") {
 					let gagged = KinkyDungeonGagTotal();
 					if (gagged > 0) {
-						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEatenGag"), "#ff8800", 1);
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEatenGag"), "#ff8933", 1);
 					} else {
 						// Perform the deed
 						let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);

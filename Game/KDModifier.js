@@ -62,7 +62,7 @@ let KDModifierEffects = {
 					return [
 						{trigger: "CONDITION", inheritLinked: true, type: "BuffSelf", buffType: "spellDamageBuff", time: time, power: 0.01*amt, desc: "SpellDamageBuff", buffSprite: "SpellDamageUp", },
 						{original: "SpellDamageBuff", inheritLinked: true, trigger: "inventoryTooltip", type: "effectModifier", msg: "SpellDamageBuff", power: amt, duration: time, color: "#000000", bgcolor: "#8888ff"},
-						{original: "SpellDamageBuff", inheritLinked: true, trigger: "icon", type: "tintIcon", power: 4, color: "#ff8800"},
+						{original: "SpellDamageBuff", inheritLinked: true, trigger: "icon", type: "tintIcon", power: 4, color: "#ff8933"},
 					];
 				},
 			},

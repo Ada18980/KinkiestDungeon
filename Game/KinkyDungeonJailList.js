@@ -125,7 +125,7 @@ let KDGuardActions = {
 			if (KDGetEffSecurityLevel() >= KDSecurityLevelHiSec && KDGameData.RoomType != "Jail" && (!(KDMapData.JailFaction?.length > 0) || KDFactionRelation("Player", KDMapData.JailFaction[0]) < 0.4)) {
 				KDStartDialog("JailerHiSec", guard.Enemy.name, true, "", guard);
 			} else {
-				KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonRemindJailRelease" + KinkyDungeonCheckRelease()).replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#ffff00", 4, 8);
+				KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonRemindJailRelease" + KinkyDungeonCheckRelease()).replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 8);
 				KDGameData.PrisonerState = 'parole';
 				guard.CurrentAction = "jailWander";
 				// Unlock all jail doors
@@ -205,7 +205,7 @@ let KDGuardActions = {
 						KDGameData.GuardTimer = Math.max(0, KDGameData.GuardTimer - 20);
 					}
 
-					KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonJailerRemove").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#ffff00", 4, 3);
+					KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonJailerRemove").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 3);
 				} else if (missingJailUniform.length > 0) {
 					let group = "";
 					if (missingJailUniform.includes("ItemMouth3")) group = "ItemMouth3";
@@ -218,7 +218,7 @@ let KDGuardActions = {
 						KDGameData.GuardTimer = Math.max(0, KDGameData.GuardTimer - 20);
 					}
 
-					KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonJailerAdd").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#ffff00", 4, 3);
+					KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonJailerAdd").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 3);
 				}
 			} else if (lockableRestraint.length > 0) {
 				let group = "";
@@ -232,7 +232,7 @@ let KDGuardActions = {
 					KDGameData.GuardTimer = Math.max(0, KDGameData.GuardTimer - 10);
 				}
 
-				KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonJailerLock").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#ffff00", 4, 3);
+				KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonJailerLock").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 3);
 			}
 		},
 		handle: (guard, xx, yy, delta) => {
@@ -401,7 +401,7 @@ let KDGuardActions = {
 			KinkyDungeonInterruptSleep();
 			let msg = TextGet("KinkyDungeonRemindJailTourStart").replace("EnemyName", TextGet("Name" + guard.Enemy.name));
 
-			KinkyDungeonSendDialogue(guard, msg, "#ffff00", 4, 9);
+			KinkyDungeonSendDialogue(guard, msg, "#e7cf1a", 4, 9);
 		},
 		handle: (guard, xx, yy, delta) => {
 			if (KDGameData.KinkyDungeonJailTourTimer > 0) {
@@ -425,7 +425,7 @@ let KDGuardActions = {
 			KinkyDungeonInterruptSleep();
 			let msg = TextGet("KinkyDungeonRemindJailTourStartCell").replace("EnemyName", TextGet("Name" + guard.Enemy.name));
 
-			KinkyDungeonSendDialogue(guard, msg, "#ffff00", 4, 9);
+			KinkyDungeonSendDialogue(guard, msg, "#e7cf1a", 4, 9);
 		},
 		handle: (guard, xx, yy, delta) => {
 			if (KDGameData.KinkyDungeonJailTourTimer > 0) {

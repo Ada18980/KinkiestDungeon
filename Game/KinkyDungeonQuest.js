@@ -326,7 +326,7 @@ let KDQuests = {
 						}
 					}
 					KinkyDungeonChangeFactionRep("Maidforce", -0.2);
-					KinkyDungeonSendTextMessage(10, TextGet("KDNotEnoughDirtPiles"), "#ff8800", 4);
+					KinkyDungeonSendTextMessage(10, TextGet("KDNotEnoughDirtPiles"), "#ff8933", 4);
 				}
 
 

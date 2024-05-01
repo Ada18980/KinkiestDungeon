@@ -171,7 +171,7 @@ let KDConsumableEffects = {
 		let gagFloor = Consumable.gagFloor ? Consumable.gagFloor : 0;
 		let gagMult = (Consumable.potion && gagFloor != 1.0) ? Math.max(0, gagFloor + (1 - gagFloor) * (1 - Math.max(0, Math.min(1.0, KinkyDungeonGagTotal(true))))) : 1.0;
 		if (gagMult < 0.999) {
-			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonConsumableLessEffective"), "#ff0000", 2);
+			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonConsumableLessEffective"), "#ff5277", 2);
 		}
 		if (Consumable.mp_instant != undefined) {
 			//let manaAmt = Math.min(KinkyDungeonStatManaMax, KinkyDungeonStatMana + Consumable.mp_instant * Manamulti * gagMult) - KinkyDungeonStatMana;

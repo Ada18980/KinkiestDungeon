@@ -988,7 +988,7 @@ function KDSpawnLootTrap(x, y, trap, mult, duration) {
 	if (spawned > 0) {
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
 		KinkyDungeonMakeNoise(12, x, y);
-		KinkyDungeonSendTextMessage(10, TextGet("LootChestTrap"), "#ff8800", 2);
+		KinkyDungeonSendTextMessage(10, TextGet("LootChestTrap"), "#ff8933", 2);
 	}
 }
 

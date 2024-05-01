@@ -23,7 +23,7 @@ let KDMaxStatStart = 10; // Start of stats
 let KDMaxStatStartPool = 40; // Start of stats
 
 let KDStamDamageThresh = 0.3;
-let KDStamDamageThreshBonus = 0.05;
+let KDStamDamageThreshBonus = 0.01;
 
 let KDSleepRegenWill = KDSleepWillFractionJail * KDMaxStatStart/40;
 
@@ -36,7 +36,7 @@ let KinkyDungeonDistractionUnlockSuccessMod = 0.5; // Determines how much harder
 let KinkyDungeonStatDistraction = 0;
 let KinkyDungeonCrotchRopeDistraction = 0.4;
 let KinkyDungeonStatDistractionRegen = -1.0;
-let KinkyDungeonStatDistractionRegenPerUpgrade = KinkyDungeonStatDistractionRegen*0.5;
+let KinkyDungeonStatDistractionRegenPerUpgrade = KinkyDungeonStatDistractionRegen*0.1;
 let KDNoUnchasteBraMult = 0.9;
 let KDNoUnchasteMult = 0.8;
 let KDDistractionDecayMultDistractionMode = 0.25;
@@ -61,7 +61,7 @@ let KinkyDungeonStatStaminaMax = KDMaxStatStart;
 let KinkyDungeonStatStamina = KinkyDungeonStatStaminaMax;
 let KinkyDungeonStatStaminaRegen = 0.5;
 let KinkyDungeonStatStaminaRegenPerUpgrade = 0.0;
-let KinkyDungeonStatStaminaRegenPerUpgradeWill = 0.1;
+let KinkyDungeonStatStaminaRegenPerUpgradeWill = 0.02;
 let KDNarcolepticRegen = -0.06;
 let KinkyDungeonStatStaminaRegenJail = 0.125;
 let KinkyDungeonStatStaminaRegenSleep = KinkyDungeonStatStaminaMax/40;
@@ -377,10 +377,8 @@ function KDGetStamDamageThresh() {
 		bonus: 0,
 	};
 
-	for (let s of KinkyDungeonSpells) {
-		if (s.name == "APUp1") {
-			data.bonus += KDStamDamageThreshBonus;
-		}
+	if (KDGameData.StatMaxBonus) {
+		data.bonus += KDStamDamageThreshBonus * KDGameData.StatMaxBonus.AP;
 	}
 
 	KinkyDungeonSendEvent("calcStamDamageThresh", data);
@@ -1098,24 +1096,50 @@ function KinkyDungeonSetMaxStats(delta) {
 		delta: delta,
 	};
 
+	let initStats = !KDGameData.StatMaxBonus;
+	if (initStats) {
+		KDGameData.StatMaxBonus = {
+			AP: 0,
+			MP: 0,
+			SP: 0,
+			WP: 0,
+		};
+	}
 	for (let s of KinkyDungeonSpells) {
-		if (s.name == "SPUp1") {
-			KinkyDungeonStatStaminaMax += 5;
-			data.staminaRate += KinkyDungeonStatStaminaRegenPerUpgrade;
+		if (initStats) {
+			if (s.name == "SPUp1") {
+				KDGameData.StatMaxBonus.SP += 5;
+			}
+			if (s.name == "APUp1") {
+				KDGameData.StatMaxBonus.AP += 5;
+			}
+			if (s.name == "WPUp1") {
+				KDGameData.StatMaxBonus.WP += 5;
+			}
+			if (s.name == "MPUp1") {
+				KDGameData.StatMaxBonus.MP += 5;
+			}
+
 		}
-		if (s.name == "APUp1") {
-			KinkyDungeonStatDistractionMax += 5;
-			if (KinkyDungeonVibeLevel == 0 && !(KDGameData.DistractionCooldown > 0))
-				data.distractionRate += KinkyDungeonStatDistractionRegenPerUpgrade;
-		}
-		if (s.name == "WPUp1") {
-			KinkyDungeonStatWillMax += 5;
-			data.staminaRate += KinkyDungeonStatStaminaRegenPerUpgradeWill;
-		}
-		if (s.name == "MPUp1") KinkyDungeonStatManaMax += 5;
+
+
+
 		//if (s.name == "SpellChoiceUp1" || s.name == "SpellChoiceUp2" || s.name == "SpellChoiceUp3") KinkyDungeonSpellChoiceCount += 1;
 		if (s.name == "SummonUp1" || s.name == "SummonUp2") KinkyDungeonSummonCount += 2;
 	}
+
+
+	KinkyDungeonStatStaminaMax += KDGameData.StatMaxBonus.SP;
+	data.staminaRate += KinkyDungeonStatStaminaRegenPerUpgrade * KDGameData.StatMaxBonus.SP;
+
+	KinkyDungeonStatDistractionMax += KDGameData.StatMaxBonus.AP;
+	if (KinkyDungeonVibeLevel == 0 && !(KDGameData.DistractionCooldown > 0))
+		data.distractionRate += KDGameData.StatMaxBonus.AP * KinkyDungeonStatDistractionRegenPerUpgrade;
+
+	KinkyDungeonStatWillMax += KDGameData.StatMaxBonus.WP;
+	data.staminaRate += KDGameData.StatMaxBonus.WP * KinkyDungeonStatStaminaRegenPerUpgradeWill;
+
+	KinkyDungeonStatManaMax += KDGameData.StatMaxBonus.MP;
 
 	KinkyDungeonSendEvent("calcMaxStats", data);
 
@@ -1337,7 +1361,7 @@ function KinkyDungeonUpdateStats(delta) {
 		}
 
 		if (minKneel > 0) {
-			KinkyDungeonSendActionMessage(1, TextGet("KDKneelCannot"), "#ff8800",1, true);
+			KinkyDungeonSendActionMessage(1, TextGet("KDKneelCannot"), "#ff8933",1, true);
 		} else if (kneelRate < 1) {
 			KinkyDungeonSendTextMessage(4, TextGet("KDKneelSlow"), "#ffffff",1, true);
 		}
@@ -1411,7 +1435,7 @@ function KinkyDungeonUpdateStats(delta) {
 			KinkyDungeonBlindLevel = Math.max(KinkyDungeonBlindLevel + Math.floor(KinkyDungeonSleepiness*0.5), Math.min(Math.round(KinkyDungeonSleepiness*0.7), 6));
 		}
 		if (KinkyDungeonSleepiness > 0) {
-			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonSleepy"), "#ff0000", 1, true);
+			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonSleepy"), "#ff5277", 1, true);
 		}
 		if (KinkyDungeonSleepiness > 4.99) {
 			KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns || 0, 2);
@@ -1442,7 +1466,7 @@ function KinkyDungeonUpdateStats(delta) {
 		KinkyDungeonChangeWill(data.edgeDrain);
 		let vibe = KinkyDungeonVibeLevel > 0 ? "Vibe" : "";
 		let suff = KDGameData.OrgasmStage < KinkyDungeonMaxOrgasmStage ? (KDGameData.OrgasmStage < KinkyDungeonMaxOrgasmStage / 2 ? "0" : "1") : "2";
-		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonOrgasmExhaustion" + vibe + suff), "#ff0000", 2, true);
+		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonOrgasmExhaustion" + vibe + suff), "#ff5277", 2, true);
 	}
 
 	if (!KinkyDungeonHasWill(0.1)) {
@@ -1818,7 +1842,7 @@ function KinkyDungeonDoPlayWithSelf(tease) {
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChastityDeny"), "#FF5BE9", 4);
 		} else KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonPlaySelf"), "#FF5BE9", 4);
 		if (affinity)
-			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonPlayCorner"), "#88FF00", 4);
+			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonPlayCorner"), "#9bd45d", 4);
 	}
 	KDGameData.PlaySelfTurns = data.playTime;
 	KinkyDungeonSetFlag("PlayWithSelf", KDGameData.PlaySelfTurns + 3);

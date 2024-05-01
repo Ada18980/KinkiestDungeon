@@ -522,7 +522,7 @@ let KinkyDungeonWeapons = {
 		tags: ["ranged", "blaster", "divine"],
 		events: [
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, time: 4, damage: "tickle"},
-			{type: "Charge", trigger: "tick", power: 11, buffType: "BondageBustCharge", color: "#ffff00"},
+			{type: "Charge", trigger: "tick", power: 11, buffType: "BondageBustCharge", color: "#e7cf1a"},
 			{type: "BondageBustBoost", trigger: "spellCast", power: 0.25, sfx: "Shock", energyCost: 0.0025},
 		],
 		special: {type: "spell", spell: "BondageBust", requiresEnergy: true, energyCost: 0.005, range: 4}},

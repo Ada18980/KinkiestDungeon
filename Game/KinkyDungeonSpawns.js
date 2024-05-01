@@ -463,7 +463,7 @@ function KinkyDungeonHandleWanderingSpawns(delta) {
 				}
 				if (KinkyDungeonTotalSleepTurns > KinkyDungeonSearchEntranceChaseAmount && !KinkyDungeonHuntDownPlayer && KDGameData.SleepTurns < 3) {
 					KinkyDungeonHuntDownPlayer = true;
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHuntDownPlayer"), "#ff0000", KDGameData.SleepTurns + 10);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHuntDownPlayer"), "#ff5277", KDGameData.SleepTurns + 10);
 				}
 				console.log(EnemiesSummoned);
 			}

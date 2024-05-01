@@ -51,8 +51,8 @@ let KDEventHexModular = {
 			},
 			{trigger: "drawBuffIcons", type: "curseInfo", msg: "AntiMagic", color: "#92e8c0", inheritLinked: true, original: "AntiMagic", always: true},
 
-			{original: "AntiMagic", trigger: "inventoryTooltip", type: "varModifier", msg: "AntiMagic", color: "#000000", bgcolor: "#ff0000"},
-			{original: "AntiMagic", trigger: "icon", type: "tintIcon", power: 8, bgcolor: "#ff0000", color: "#ff0000"},
+			{original: "AntiMagic", trigger: "inventoryTooltip", type: "varModifier", msg: "AntiMagic", color: "#000000", bgcolor: "#ff5277"},
+			{original: "AntiMagic", trigger: "icon", type: "tintIcon", power: 8, bgcolor: "#ff5277", color: "#ff5277"},
 		]},
 	"Light": {level: 1,
 		weight: (item, allHex, data) => {

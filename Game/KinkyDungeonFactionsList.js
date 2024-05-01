@@ -6,7 +6,7 @@ let KinkyDungeonFactionColors = {
 	"Latex": ["#9B49BD", "#9B49BD"],
 	"Dressmaker": ["#6B48E0", "#F8BD01"],
 	"Alchemist": ["#4c6885", "#7bef41"],
-	"Elf": ["#63ab3f", "#F8BD01"],
+	"Elf": ["#4fd658", "#F8BD01"],
 	"Bountyhunter": ["#252525", "#bfbfbf"],
 	"AncientRobot": ["#444444", "#4fa4b8"],
 	"Dollsmith": ["#444444", "#b1062a", "#ff5277"],

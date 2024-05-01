@@ -56,7 +56,7 @@ function KinkyDungeonLoseJailKeys(Taken, boss, enemy) {
 	if (KinkyDungeonFlags.has("BossUnlocked")) return;
 	if (KDMapData.KeysHeld > 0) {
 		if (Taken) {
-			KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonRemoveJailKey"), "#ff0000", 3);
+			KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonRemoveJailKey"), "#ff5277", 3);
 			if (enemy) {
 				if (!enemy.items) enemy.items = [];
 				if (!enemy.items.includes("Keyring"))
@@ -670,7 +670,7 @@ function KinkyDungeonHandleJailSpawns(delta) {
 						KinkyDungeonTilesGet((xx-doorOff) + "," + yy).Lock = KinkyDungeonGenerateLock(true, KDGetEffLevel(), false, "Door", {x: (xx-doorOff), y: yy, tile: KinkyDungeonTilesGet((xx-doorOff) + "," + yy)});
 					}
 					if (KDGameData.PrisonerState == 'jail' && KinkyDungeonVisionGet(g.x, g.y))
-						KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardDisappear").replace("EnemyName", TextGet("Name" + g.Enemy.name)), "#ff0000", 6);
+						KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardDisappear").replace("EnemyName", TextGet("Name" + g.Enemy.name)), "#ff5277", 6);
 					if (KinkyDungeonPlayerInCell(true))
 						KinkyDungeonChangeRep("Ghost", 1 + KDGameData.KinkyDungeonPrisonExtraGhostRep);
 					KDGameData.KinkyDungeonPrisonExtraGhostRep = 0;
@@ -845,7 +845,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 
 		if (KinkyDungeonJailGuard()?.KinkyDungeonJailTourInfractions < 1) {
 			let item = "CookieJailer";
-			KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerReleaseGoodGirl").replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#ffff00", 4, 9);
+			KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerReleaseGoodGirl").replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#e7cf1a", 4, 9);
 			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonJailerReleaseGoodGirlMsg")
 				.replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name))
 				.replace("ItemName", KDGetItemNameString(item)),
@@ -911,7 +911,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 							index = "" + Math.floor(KDRandom() * 6);
 							//KinkyDungeonChangeRep("Ghost", 8);
 						}
-						KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerGoodGirl" + index).replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#ffff00", 4, 9);
+						KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerGoodGirl" + index).replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#e7cf1a", 4, 9);
 					}
 					KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0),
 						KDGameData.HeelPower <= 0, 2, 20);
@@ -933,7 +933,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 				let msgPrev = TextGet("KinkyDungeonRemindJailTour" + Math.max(0, KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions-1)).replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name));
 				if (KinkyDungeonLastAction == "Move") {
 
-					KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), msg, "#ffff00", 6, 7 + KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions);
+					KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), msg, "#e7cf1a", 6, 7 + KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions);
 					if (KinkyDungeonJailGuard().gx != KinkyDungeonPlayerEntity.x || KinkyDungeonJailGuard().gy != KinkyDungeonPlayerEntity.y && KinkyDungeonTextMessage != msgPrev) {
 						KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions = Math.min(3, KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions + 1);
 					}
@@ -1086,8 +1086,8 @@ function KinkyDungeonPassOut(noteleport) {
 	KinkyDungeonChangeMana(-100);
 	KinkyDungeonChangeDistraction(-100);
 
-	KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonPassOut"), "#ff0000", 5);
-	KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonPassOut2"), "#ff0000", 5);
+	KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonPassOut"), "#ff5277", 5);
+	KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonPassOut2"), "#ff5277", 5);
 
 
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
@@ -1315,10 +1315,10 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 
 	//MiniGameKinkyDungeonLevel = Math.floor((MiniGameKinkyDungeonLevel + Math.max(0, KinkyDungeonSpawnJailersMax - KinkyDungeonSpawnJailers))/5)*5;
 	//MiniGameKinkyDungeonLevel = Math.floor(MiniGameKinkyDungeonLevel/2)*2;
-	KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonLeashed"), "#ff0000", 3);
+	KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonLeashed"), "#ff5277", 3);
 	if (!KinkyDungeonJailedOnce) {
 		KinkyDungeonJailedOnce = true;
-		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonLeashed2"), "#ff0000", 3);
+		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonLeashed2"), "#ff5277", 3);
 	}
 	let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 	KDGameData.KinkyDungeonSpawnJailers = KDGameData.KinkyDungeonSpawnJailersMax;

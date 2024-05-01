@@ -508,7 +508,7 @@ let KDEventEnchantmentModular = {
 					return [
 						{original: "ElementalEcho", trigger: "playerAttack", type: "ElementalEcho", power: amt * 0.01, kind: type, damage: type, inheritLinked: true},
 						{original: "ElementalEcho", trigger: "inventoryTooltip", type: "varModifier", msg: "ElementalEcho", power: amt, kind: TextGet("KinkyDungeonDamageType" + type), bgcolor: KinkyDungeonDamageTypes[type].color, color: KinkyDungeonDamageTypes[type].bg || "#004400"},
-						{original: "ElementalEcho", trigger: "icon", type: "tintIcon", power: 5, color: "#ffff00", bgcolor: KinkyDungeonDamageTypes[type].color},
+						{original: "ElementalEcho", trigger: "icon", type: "tintIcon", power: 5, color: "#e7cf1a", bgcolor: KinkyDungeonDamageTypes[type].color},
 					];}},
 		}},
 	"ElementalDmg": {
@@ -537,7 +537,7 @@ let KDEventEnchantmentModular = {
 						{original: "ElementalDmg", trigger: "calcEvasion", type: "IsMagic"},
 						{original: "ElementalDmg", trigger: "playerAttack", type: "ElementalEffect", power: amt * 0.1, kind: type, damage: type},
 						{original: "ElementalDmg", trigger: "inventoryTooltip", type: "varModifier", msg: "ElementalDmg", power: amt, kind: TextGet("KinkyDungeonDamageType" + type), bgcolor: KinkyDungeonDamageTypes[type].color, color: KinkyDungeonDamageTypes[type].bg || "#004400"},
-						{original: "ElementalDmg", trigger: "icon", type: "tintIcon", power: 5, color: "#ffff00", bgcolor: KinkyDungeonDamageTypes[type].color},
+						{original: "ElementalDmg", trigger: "icon", type: "tintIcon", power: 5, color: "#e7cf1a", bgcolor: KinkyDungeonDamageTypes[type].color},
 					];}},
 			0: /*restraint*/{level: 5,
 				filter: (item, allEnchant) => {
@@ -558,7 +558,7 @@ let KDEventEnchantmentModular = {
 					return [
 						{original: "ElementalDmg", trigger: "playerAttack", type: "ElementalEffect", power: amt * 0.1, damage: type, inheritLinked: true},
 						{original: "ElementalDmg", trigger: "inventoryTooltip", type: "varModifier", msg: "ElementalDmg", power: amt, kind: TextGet("KinkyDungeonDamageType" + type), bgcolor: KinkyDungeonDamageTypes[type].color, color: KinkyDungeonDamageTypes[type].bg || "#004400"},
-						{original: "ElementalDmg", trigger: "icon", type: "tintIcon", power: 5, color: "#ff0000", bgcolor: KinkyDungeonDamageTypes[type].color},
+						{original: "ElementalDmg", trigger: "icon", type: "tintIcon", power: 5, color: "#ff5277", bgcolor: KinkyDungeonDamageTypes[type].color},
 					];}},
 		}},
 	"ManaRegen": {
@@ -609,8 +609,8 @@ let KDEventEnchantmentModular = {
 					return [
 						{original: "BaseDamageBuffMelee", trigger: "beforePlayerAttack", type: "AmpDamage", prereq: "damageType", kind: "melee", power: amt*.01, inheritLinked: true},
 						{original: "BaseDamageBuffMelee", trigger: "calcDisplayDamage", type: "AmpDamage", prereq: "damageType", kind: "melee", power: amt*.01, inheritLinked: true},
-						{original: "BaseDamageBuffMelee", trigger: "inventoryTooltip", type: "varModifier", msg: "BaseDamageBuffMelee", power: amt, color: "#000000", bgcolor: "#ff0000"},
-						{original: "BaseDamageBuffMelee", trigger: "icon", type: "tintIcon", power: 4, color: "#ff0000"},
+						{original: "BaseDamageBuffMelee", trigger: "inventoryTooltip", type: "varModifier", msg: "BaseDamageBuffMelee", power: amt, color: "#000000", bgcolor: "#ff5277"},
+						{original: "BaseDamageBuffMelee", trigger: "icon", type: "tintIcon", power: 4, color: "#ff5277"},
 					];}},
 		}},
 	"BaseDamageBuffMagic": {

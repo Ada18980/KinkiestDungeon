@@ -22,8 +22,7 @@ let KDClassStart = {
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KDPushSpell(KinkyDungeonFindSpell("CommandWord"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
-		KDPushSpell(KinkyDungeonFindSpell("WPUp1"));
-		KDPushSpell(KinkyDungeonFindSpell("WPUp1"));
+		KDGameData.StatMaxBonus.WP += 5;
 		KDPushSpell(KinkyDungeonFindSpell("IronWill"));
 		KinkyDungeonSpellPoints = 3;
 		KinkyDungeonRedKeys = 1;
@@ -45,8 +44,7 @@ let KDClassStart = {
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KDPushSpell(KinkyDungeonFindSpell("CommandWord"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
-		KDPushSpell(KinkyDungeonFindSpell("SPUp1"));
-		KDPushSpell(KinkyDungeonFindSpell("SPUp1"));
+		KDGameData.StatMaxBonus.SP += 5;
 		KDPushSpell(KinkyDungeonFindSpell("Sneaky"));
 		KinkyDungeonSpellPoints = 3;
 		KinkyDungeonLockpicks = 2;
@@ -71,8 +69,7 @@ let KDClassStart = {
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KDPushSpell(KinkyDungeonFindSpell("Analyze"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
-		KDPushSpell(KinkyDungeonFindSpell("MPUp1"));
-		KDPushSpell(KinkyDungeonFindSpell("MPUp1"));
+		KDGameData.StatMaxBonus.MP += 5;
 		KinkyDungeonSpellPoints = 3;
 		KinkyDungeonRedKeys = 1;
 		KinkyDungeonGold = 100;
@@ -93,8 +90,8 @@ let KDClassStart = {
 		KinkyDungeonSpellPoints = 3;
 		KinkyDungeonGold = 100;
 		KDPushSpell(KinkyDungeonFindSpell("DistractionCast"));
-		KDPushSpell(KinkyDungeonFindSpell("MPUp1"));
-		KDPushSpell(KinkyDungeonFindSpell("APUp1"));
+		KDGameData.StatMaxBonus.AP += 2.5;
+		KDGameData.StatMaxBonus.MP += 2.5;
 		KinkyDungeonInventoryAddWeapon("Knife");
 		KDGameData.PreviousWeapon = ["Knife", "Unarmed", "Unarmed", "Unarmed"];
 		KDSetWeapon("Knife");

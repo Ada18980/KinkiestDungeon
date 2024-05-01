@@ -3383,7 +3383,7 @@ KinkyDungeonShrineCursed,"Curses"
 KinkyDungeonShrineDetermination,"Willpower"
 
 KinkyDungeonObjectTablet,"A tablet inscribed with runes of TYPE."
-KinkyDungeonTabletTooltip,"Teachings of SHRINETYPE"
+KinkyDungeonTabletTooltip,"SHRINETYPE Tablet"
 KinkyDungeonTabletRead,"Decypher"
 KinkyDungeonTabletReadSuccess,"You read the runes and they fill you with power!"
 KinkyDungeonTabletReadFull,"These runes are meant for someone with less willpower."
@@ -7656,11 +7656,6 @@ KinkyDungeonDamageTypespell,"Spell"
 KinkyDungeonDamageTypeunstoppable,"Unstoppable"
 KinkyDungeonDamageTypeunflinching,"Unflinching"
 
-KinkyDungeonHeartIntro,"You found a magical amulet! Choose one of the following to determine its benefits:"
-KinkyDungeonHeartIntro1,"Focus: +50% max distraction and faster decay. +5% stamina protected from damage (base: 30%)."
-KinkyDungeonHeartIntro2,"Stamina: +50 max stamina."
-KinkyDungeonHeartIntro3,"Magic: +50 max mana."
-KinkyDungeonHeartIntro4,"Willpower: +50 max willpower. +1 stamina regen/turn."
 
 KinkyDungeonHeartDistraction,"+Focus"
 KinkyDungeonHeartStamina,"+Stamina"
@@ -20864,3 +20859,33 @@ KDModifierEffect_ElementalBuff,"Gain AMNT% DMG Damage for DRTN turns"
 KDModifierEffect_ElementalResist,"Gain AMNT DMG Resist for DRTN turns"
 KinkyDungeonBuffElementalBuff,Your elemental damage is increased!
 KinkyDungeonBuffElementalResist,Your elemental resistance is increased!
+
+KinkyDungeonShrineHeart,Overgrown
+
+KDStatBuy1,"The overgrown monolith contains an ancient blessing."
+KDStatBuy2,"Choose a stat to increase below."
+
+KDStatBuyConfirm,"Confirm Choice"
+KDStatBuyAP,Distraction
+KDStatBuySP,Stamina
+KDStatBuyMP,Mana
+KDStatBuyWP,Willpower
+
+KDStatBuyAPDesc,Increase max distraction by AMNT%.
+KDStatBuyAPDesc2,DP decays faster and more SP is safe from damage.
+KDStatBuySPDesc,Increase max stamina by AMNT.
+KDStatBuyMPDesc,Increase max mana by AMNT.
+KDStatBuyWPDesc,Increase max willpower by AMNT.
+KDStatBuyWPDesc2,Gain +AMNT SP regen/turn.
+
+KDStatBuyTemplate,AMNT1 -> AMNT2
+KDStatBuyMax,AMNT1 (max)
+
+KinkyDungeonHeartIntro,"You found a magical amulet! Choose one of the following to determine its benefits:"
+KinkyDungeonHeartIntro1,"Focus: +50% max distraction and faster decay. +5% stamina protected from damage (base: 30%)."
+KinkyDungeonHeartIntro2,"Stamina: +50 max stamina."
+KinkyDungeonHeartIntro3,"Magic: +50 max mana."
+KinkyDungeonHeartIntro4,"Willpower: +50 max willpower. +1 stamina regen/turn."
+
+KinkyDungeonObjectOrb,"A mystical orb stands before you."
+KinkyDungeonObjectOrbBreak,"You break the orb and gain its secrets."
