@@ -678,6 +678,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		shield_distract: Damage?.shield_distract, // Distract thru shield
 		shield_vuln: Damage?.shield_vuln, // Vuln thru shield
 		tease: Damage?.tease,
+		stunResist: 0,
 	};
 
 	if (KDDamageEquivalencies[predata.type]) predata.bufftype = KDDamageEquivalencies[predata.type];
@@ -741,6 +742,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	let armor = (Damage && Enemy.Enemy.armor && KinkyDungeonMeleeDamageTypes.includes(predata.type)) ? Enemy.Enemy.armor : 0;
 	if (KinkyDungeonGetBuffedStat(Enemy.buffs, "Armor")) armor += KinkyDungeonGetBuffedStat(Enemy.buffs, "Armor");
 
+	predata.stunResist += KinkyDungeonGetBuffedStat(Enemy.buffs, "StunResist");
 
 	if (!predata.critical && !KinkyDungeonIsDisabled(Enemy)) {
 		let block_phys = (Enemy.Enemy.Resistance?.block_phys || 0) + KinkyDungeonGetBuffedStat(Enemy.buffs, "BlockPhys");
@@ -836,6 +838,10 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				time = Math.max(0, Math.ceil(time * KDArmorFormula(predata.dmg, spellResist)));
 			//predata.dmg = Math.max(0, predata.dmg * KDArmorFormula(predata.dmg, spellResist));
 			armor = spellResist || 0;
+		}
+
+		if (time > 0 && predata.stunResist) {
+			time = Math.max(0, Math.min(time - predata.stunResist, time * KDArmorFormula(time, predata.stunResist)));
 		}
 
 		if (predata.type != "inert" && resistDamage < 2) {
@@ -985,12 +991,14 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 			if (predata.dmgDealt > 0) Enemy.revealed = true;
 		}
 
+
 		if (!predata.blocked)
 			if (!Enemy.shield || predata.ignoreshield || predata.shield_stun)
 				if ((KinkyDungeonStunDamageTypes.includes(predata.type))) { // Being immune to the damage stops the stun as well
 					effect = true;
 					if (!Enemy.stun) KDAddThought(Enemy.id, "Status", 5, 1);
 					if (!Enemy.stun) Enemy.stun = 0;
+					let origStun = Enemy.stun;
 					if (resistStun == 2 || resistDamage == 2)
 						Enemy.stun = Math.max(Enemy.stun, Math.min(Math.floor(time/3), time-2));
 						// Unstoppable have stuns reduced to 1/3, and anything that stuns them for 2 turns doesn't affect them
@@ -998,6 +1006,10 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 						Enemy.stun = Math.max(Enemy.stun, Math.min(Math.floor(time/2), time-1));
 						// Enemies with stun resistance have stuns reduced to 1/2, and anything that stuns them for one turn doesn't affect them
 					else Enemy.stun = Math.max(Enemy.stun, time);
+
+					if (Enemy.stun > origStun) {
+						KinkyDungeonSendEvent("stun", predata);
+					}
 				}
 
 		if (!predata.blocked)
@@ -1007,6 +1019,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 					if (!Enemy.freeze) KDAddThought(Enemy.id, "Freeze", 5, 1);
 					if (!(Enemy.freeze > 0)) Enemy.freeze = 0;
 					let preFreeze = Enemy.freeze > 0;
+					let origStun = Enemy.freeze;
 					if (resistDamage == 2 || resistStun == 2)
 						Enemy.freeze = Math.max(Enemy.freeze, Math.min(Math.floor(time/3), time-2));
 					else if (resistDamage == 1 || resistStun == 1)
@@ -1014,18 +1027,27 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 						// Enemies with ice resistance have freeze reduced to 1/2, and anything that freezes them for one turn doesn't affect them
 					else Enemy.freeze = Math.max(Enemy.freeze, time);
 					predata.froze = (Enemy.freeze > 0 && !preFreeze) ? Enemy.freeze : 0;
+
+					if (Enemy.freeze > origStun) {
+						KinkyDungeonSendEvent("freeze", predata);
+					}
 				}
 		if (!predata.blocked)
 			if (!Enemy.shield || predata.ignoreshield || predata.shield_snare)
 				if ((KinkyDungeonBindDamageTypes.includes(predata.type))) { // Being immune to the damage stops the bind
 					effect = true;
 					if (!Enemy.bind) Enemy.bind = 0;
+					let origStun = Enemy.bind;
 					if (resistDamage == 2 || resistStun == 2)
 						Enemy.bind = Math.max(Enemy.bind, Math.min(Math.floor(time/3), time-2));
 					else if (resistDamage == 1 || resistStun == 1)
 						Enemy.bind = Math.max(Enemy.bind, Math.min(Math.floor(time/2), time-1));
 						// Enemies with resistance have bind reduced to 1/2, and anything that binds them for one turn doesn't affect them
 					else Enemy.bind = Math.max(Enemy.bind, time);
+
+					if (Enemy.bind > origStun) {
+						KinkyDungeonSendEvent("bind", predata);
+					}
 				}
 		if (!predata.blocked)
 			if (!Enemy.shield || predata.ignoreshield || predata.shield_bind)
@@ -1166,9 +1188,15 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 					effect = true;
 					if (!Enemy.slow) KDAddThought(Enemy.id, "Annoyed", 5, 1);
 					if (!Enemy.slow) Enemy.slow = 0;
+					let origStun = Enemy.slow;
 					if (resistSlow == 1 || resistDamage == 1)
 						Enemy.slow = Math.max(Enemy.slow, Math.min(Math.floor(time/2), time-1)); // Enemies with stun resistance have stuns reduced to 1/2, and anything that stuns them for one turn doesn't affect them
 					else Enemy.slow = Math.max(Enemy.slow, time);
+
+
+					if (Enemy.slow > origStun) {
+						KinkyDungeonSendEvent("slow", predata);
+					}
 				}
 
 		if (predata.vulnConsumed && !noVuln) {
@@ -1181,9 +1209,15 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 					effect = true;
 					if (!Enemy.vulnerable) KDAddThought(Enemy.id, "Status", 4, 1);
 					if (!Enemy.vulnerable && predata.dmg > 0) Enemy.vulnerable = 0;
+					let origStun = Enemy.vulnerable;
 					if (resistDamage == 1)
 						Enemy.vulnerable = Math.max(Enemy.vulnerable, Math.min(Math.floor(time/2), time-1)); // Enemies with stun resistance have stuns reduced to 1/2, and anything that stuns them for one turn doesn't affect them
 					else Enemy.vulnerable = Math.max(Enemy.vulnerable, time);
+
+
+					if (Enemy.vulnerable > origStun) {
+						KinkyDungeonSendEvent("vulnerable", predata);
+					}
 				}
 	} else {
 		predata.vulnConsumed = false;
@@ -2619,18 +2653,38 @@ function KinkyDungeonSendWeaponEvent(Event, data) {
 
 function KinkyDungeonSendBulletEvent(Event, b, data) {
 	if (!KDMapHasEvent(KDEventMapBullet, Event)) return;
-	if (b && b.bullet && b.bullet.events)
-		for (let e of b.bullet.events) {
-			if (e.trigger == Event) {
-				KinkyDungeonHandleBulletEvent(Event, e, b, data);
+	if (b && b.bullet) {
+		if (b.bullet.events)
+			for (let e of b.bullet.events) {
+				if (e.trigger == Event) {
+					KinkyDungeonHandleBulletEvent(Event, e, b, data);
+				}
+			}
+
+		if (b.bullet.hitevents) {
+			for (let e of b.bullet.hitevents) {
+				if (e.trigger == Event) {
+					KinkyDungeonHandleBulletEvent(Event, e, b, data);
+				}
 			}
 		}
-	if (b && b.bullet && b.bullet.hitevents)
-		for (let e of b.bullet.hitevents) {
-			if (e.trigger == Event) {
-				KinkyDungeonHandleBulletEvent(Event, e, b, data);
-			}
+	} else {
+		for (let bb of KDMapData.Bullets) {
+			if (bb.bullet?.events)
+				for (let e of bb.bullet.events) {
+					if (e.trigger == Event) {
+						KinkyDungeonHandleBulletEvent(Event, e, bb, data);
+					}
+				}
+			if (bb.bullet?.hitevents)
+				for (let e of bb.bullet.hitevents) {
+					if (e.trigger == Event) {
+						KinkyDungeonHandleBulletEvent(Event, e, bb, data);
+					}
+				}
 		}
+	}
+
 }
 
 

@@ -998,11 +998,11 @@ function KinkyDungeonDrawEnemiesWarning(canvasOffsetX, canvasOffsetY, CamX, CamY
 	}
 }
 
-function KinkyDungeonBar(x, y, w, h, value, foreground = "#66FF66", background = "#ff5277", orig = undefined, origColor = "#ff4444", notches = undefined, notchcolor = "#ffffff", notchbg = "#ffffff", zIndex = 55) {
+function KinkyDungeonBar(x, y, w, h, value, foreground = "#66FF66", background = "#e64539", orig = undefined, origColor = "#ff4444", notches = undefined, notchcolor = "#ffffff", notchbg = "#ffffff", zIndex = 55) {
 	KinkyDungeonBarTo(kdcanvas, x, y, w, h, value, foreground, background, orig, origColor, notches, notchcolor, notchbg, zIndex);
 }
 
-function KinkyDungeonBarTo(canvas, x, y, w, h, value, foreground = "#66FF66", background = "#ff5277", orig = undefined, origColor = "#ff4444", notches = undefined, notchcolor = "#ffffff", notchbg = "#ffffff", zIndex = 55) {
+function KinkyDungeonBarTo(canvas, x, y, w, h, value, foreground = "#66FF66", background = "#e64539", orig = undefined, origColor = "#ff4444", notches = undefined, notchcolor = "#ffffff", notchbg = "#ffffff", zIndex = 55) {
 	if (value < 0) value = 0;
 	if (value > 100) value = 100;
 	let reverse = w < 0;
@@ -1821,6 +1821,14 @@ function KDDrawEnemyTooltip(enemy, offset) {
 			bg: "#000000",
 			size: 20,
 		});
+	} else if (enemy.Enemy.tags.relentless) {
+		let st = TextGet("KDrelentless");
+		TooltipList.push({
+			str: st,
+			fg: "#ffffff",
+			bg: "#000000",
+			size: 20,
+		});
 	}
 	if (KDAbsoluteArmor(enemy)) {
 		let st = TextGet("KDAbsoluteArmor");
@@ -1832,6 +1840,15 @@ function KDDrawEnemyTooltip(enemy, offset) {
 		});
 	} else if (KDToughArmor(enemy)) {
 		let st = TextGet("KDToughArmor");
+		TooltipList.push({
+			str: st,
+			fg: "#ffffff",
+			bg: "#000000",
+			size: 20,
+		});
+	}
+	if (KinkyDungeonGetBuffedStat(enemy.buffs, "StunResist")) {
+		let st = TextGet("KDStunResist");
 		TooltipList.push({
 			str: st,
 			fg: "#ffffff",
@@ -3827,7 +3844,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	if (!AIData.aggressive && player.player && (enemy.playWithPlayer || (intentAction && intentAction.forceattack))) AIData.ignore = false;
 
-	AIData.canAggro = player && ((AIData.hostile
+	AIData.canAggro = player && (((AIData.hostile && (AIData.aggressive || !KDEnemyHasFlag(enemy, "notouchie")))
 		|| (player.player && enemy.playWithPlayer && !AIData.domMe && !KDEnemyHasFlag(enemy, "notouchie")))
 		|| (!player.player && (
 			!player.Enemy
@@ -4123,7 +4140,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || (KDDefaultRestraintThresh + (Math.max(0, enemy.Enemy.power - 1) || 0));
 
 			AIData.wantsToLeash = !KinkyDungeonFlags.get("PlayerDommed");
-			AIData.focusOnLeash = (
+			AIData.focusOnLeash = (!KinkyDungeonFlags.has("PlayerCombat") && KDEnemyHasFlag(enemy, "focusLeash")) || (
 				enemy == KinkyDungeonLeashingEnemy()
 				&& !AIData.addLeash && (
 					!AIData.addMoreRestraints
@@ -4708,7 +4725,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					let restraintFromInventory = [];
 					let willpowerDamage = 0;
 					let staminaDamage = 0;
-					let msgColor = "#e7cf1a";
+					let msgColor = "#f0dc41";
 					let Locked = false;
 					let Effected = false;
 					let Stun = false;
@@ -5041,8 +5058,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 									if (rep.keyword == "RestraintAdded") rep.value = TextGet("KDRestraintBlockedItem");
 								}
 								if (!r)
-									KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal"), "#e7cf1a", 1);
-								msgColor = "#e7cf1a";
+									KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal"), "#f0dc41", 1);
+								msgColor = "#f0dc41";
 								bound += 1;
 								if (willpowerDamage == 0)
 									willpowerDamage += AIData.power;
@@ -6345,7 +6362,7 @@ function KDGetAwareTooltip(enemy) {
 	};
 	if (enemy.vp > 0) return {
 		suff: "Suspicious",
-		color: "#e7cf1a",
+		color: "#f0dc41",
 	};
 	return {
 		suff: "Unnoticed",
@@ -6728,7 +6745,7 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 								5, TextGet("KDBypasses")
 									.replace("RestraintName", KDGetRestraintName(r.r))
 									.replace("EnemyName", name),
-								"#e7cf1a", 1);
+								"#f0dc41", 1);
 						}
 						if (restraintFromInventory && enemy && restraintFromInventory.includes(r.r.name)) {
 							restraintFromInventory.splice(restraintFromInventory.indexOf(r.r.name), 1);

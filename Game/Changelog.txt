@@ -23,7 +23,7 @@ Monk class?
  - TODO dragon arena floor 20
 
 5.2.3
-TODO add soft limit on rune count, add spell to remove runes
+TODO -- make it so leashing enemies dont damage to hurt you EVERY turn as thats a little much...
 - MODDERS: Added LinkCategories to allow multiple link categories per item
 - Reworked the Doll Room in the Bellows. it is now the Doll Processing!
 - Living collars now only apply when you pass out, not when you are jailed. Typically this is caused by shadow hands, gigantic slimes, sarcophagus, rope kraken, etc.
@@ -35,8 +35,12 @@ TODO add soft limit on rune count, add spell to remove runes
 - Added various combination effect and condition type enchantments
 - Added more outfits to the shop
 - Added smooth heels by SMoonlightM
-- Replaced heart amulets with Overgrown Tablets
+- Replaced heart amulets with Overgrown Tablets, 2 per floor, diminishing returns when using it to boost a high stat
 - Reworked Orb UI
+- Added stun resistance for foes who have unstoppable or unflinching
+- Some foes are now relentless, which gives stun resist upon being stunned
+- Added Negate Rune spell (requires CMD disenchant, but is leg component spell)
+- Player Runes now have a soft limit of 10 (will start to explode after 10)
 
 5.2.28
 - Desire burst is now locked to the Path of Pleasure

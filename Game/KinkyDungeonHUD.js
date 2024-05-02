@@ -206,7 +206,7 @@ let KDModalArea_x = 600;
 let KDModalArea_y = 700;
 let KDModalArea_width = 800;
 let KDModalArea_height = 100;
-let KDModalArea = true;
+let KDModalArea = false;
 let KDConfirmDeleteSave = false;
 
 

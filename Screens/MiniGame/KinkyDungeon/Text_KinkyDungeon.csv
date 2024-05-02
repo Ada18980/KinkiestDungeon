@@ -18509,6 +18509,7 @@ KinkyDungeonSpellDescriptionDisguise,"Steal's a helpless enemy's clothes, adding
 
 KDunstoppable,"Unstoppable (Ignore status/bondage)"
 KDunflinching,"Unflinching (Resist status/bondage)"
+KDrelentless,"Relentless (Stun resist when stunned)"
 KDBlindsight,Blindsight (See through walls)
 
 
@@ -20889,3 +20890,13 @@ KinkyDungeonHeartIntro4,"Willpower: +50 max willpower. +1 stamina regen/turn."
 
 KinkyDungeonObjectOrb,"A mystical orb stands before you."
 KinkyDungeonObjectOrbBreak,"You break the orb and gain its secrets."
+
+KDStunResist,Stun Resistance!
+
+KinkyDungeonSpellNegateRune,Negate Rune
+KinkyDungeonSpellDescriptionNegateRune,"Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead."
+KinkyDungeonSpellCastNegateRune,You scribe a negation rune!
+KinkyDungeonSpellTargetNegateRune,"Target a single rune, or yourself to negate all your runes."
+KDNegateRuneNoMana,You don't have enough mana
+KDNegateRuneEnemy,The enemy rune is wiped clean.
+KDNegateRuneSelf,All of your runes have been removed.

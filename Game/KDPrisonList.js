@@ -423,6 +423,8 @@ let KDPrisonTypes = {
 							let action = "leashStorage";
 							if (guard.IntentAction != action)
 								KDIntentEvents[action].trigger(guard, {});
+							KinkyDungeonSetEnemyFlag(guard, "focusLeash", 2);
+							KinkyDungeonSetEnemyFlag(guard, "notouchie", 2);
 						} else {
 							// forbidden state
 							return KDPopSubstate(player);
@@ -458,6 +460,8 @@ let KDPrisonTypes = {
 							let action = "leashToPoint";
 							if (guard.IntentAction != action)
 								KDIntentEvents[action].trigger(guard, {point: label, radius: 1, target: player});
+							KinkyDungeonSetEnemyFlag(guard, "focusLeash", 2);
+							KinkyDungeonSetEnemyFlag(guard, "notouchie", 2);
 						} else {
 							// forbidden state
 							return KDPopSubstate(player);

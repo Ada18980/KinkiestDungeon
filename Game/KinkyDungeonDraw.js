@@ -935,6 +935,21 @@ function KinkyDungeonDrawGame() {
 		KinkyDungeonGridSizeDisplay = 50;
 	} else KinkyDungeonGridSizeDisplay = 72;
 
+	if (KDModalArea) {
+		let w = 34;
+		let h = 33;
+		DrawButtonKDEx("modalX", (bdata) => {
+			KinkyDungeonTargetTile = null;
+			KinkyDungeonTargetTileLocation = "";
+			KDModalArea = false;
+			return true;
+		}, true,
+		KDModalArea_x + KDModalArea_width - w - 1,
+		KDModalArea_y,
+		w, h, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Xgold.png", undefined, undefined, true
+		);
+	}
+
 	// Breath the sound outlines
 	if (StandalonePatched)
 		kdoutlinefilter.alpha = 0.5 + 0.1 * Math.sin(2 * Math.PI * (CommonTime() % 2000 / 2000) );
@@ -1753,10 +1768,12 @@ function KinkyDungeonDrawGame() {
 			}
 
 
-			KDModalArea_x = 600;
-			KDModalArea_y = 700;
-			KDModalArea_width = 800;
-			KDModalArea_height = 100;
+			if (!KDModalArea) {
+				KDModalArea_x = 600;
+				KDModalArea_y = 700;
+				KDModalArea_width = 800;
+				KDModalArea_height = 100;
+			}
 
 			KinkyDungeonDrawInterface(KinkyDungeonIsPlayer());
 
@@ -2256,18 +2273,19 @@ function KinkyDungeonDrawMessages(NoLog) {
 			scaleImage: true,
 		});
 	if (!KinkyDungeonMessageToggle || NoLog) {
+		let zLevel = KDModalArea ? 50 : undefined;
 		let i = 0;
 		if (!MouseIn(KDMsgX + (KDMsgWidth - KDMsgWidthMin)/2, 0, KDMsgWidthMin, 62 + KDLogDist*(2 + KDMaxConsoleMsg)) || KinkyDungeonDrawState != "Game") {
 			let msg2nd = [];
 			let ignoreMSG = [];
 			let spacing = KDLogDist;
 			if (KinkyDungeonActionMessageTime > 0 && KinkyDungeonActionMessageNoPush) {
-				DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize);
+				DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
 				ignoreMSG.push(KinkyDungeonActionMessage);
 				i++;
 			}
 			if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessageNoPush) {
-				DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, KinkyDungeonTextMessageColor, KDTextGray1, KDMSGFontSize);
+				DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, KinkyDungeonTextMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
 				ignoreMSG.push(KinkyDungeonTextMessage);
 				i++;
 			}
@@ -2301,7 +2319,7 @@ function KinkyDungeonDrawMessages(NoLog) {
 					if (i > KDMaxConsoleMsg || (KinkyDungeonDrawState != "Game" && i > 3)) break;
 					if (alpha > 0) {
 						alpha = Math.max(0, Math.min(1, 2.0 - i / KDMaxConsoleMsg)) * (1 - Math.max(0, Math.min(1, Math.max(0, KinkyDungeonCurrentTick - msg.time - 1)/KDMsgFadeTime)));
-						DrawTextFitKD(msg.text, KDMsgX + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, msg.color, KDTextGray1, KDMSGFontSize, undefined, undefined, alphamin + (1 - alphamin) * alpha); i++;
+						DrawTextFitKD(msg.text, KDMsgX + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, msg.color, KDTextGray1, KDMSGFontSize, undefined, zLevel, alphamin + (1 - alphamin) * alpha); i++;
 					}
 				}
 			}
@@ -2315,7 +2333,7 @@ function KinkyDungeonDrawMessages(NoLog) {
 				Height: 22 + KDLogDist*(i),
 				Color: "#000000",
 				LineWidth: 1,
-				zIndex: 100,
+				zIndex: (zLevel || 101) - 1,
 				alpha: 0.45,
 			});
 

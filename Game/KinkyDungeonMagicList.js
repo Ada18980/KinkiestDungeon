@@ -167,7 +167,7 @@ let KinkyDungeonLearnableSpells = [
 		// Arms
 		["RecoverObject", "RecoverObject2", "TickleCloud", "FeatherCloud", "Swap", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "DisplayStand", "SummonGag", "SummonLatexGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLatexArmbinder", "SummonLegbinder", "SummonLatexLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
 		// Legs
-		["Sagitta", "Snare", "Wall", "Quickness", "Quickness2", "Quickness3", "Quickness4", "Quickness5", "SlimeSplash", "Slime", "SlimeEruption", "SlimeWall", "SlimeWallVert", "LatexWallVert", "SlimeWallHoriz", "LatexWallHoriz", "LatexWall", "SlimeToLatex", "LiquidMetal", "LiquidMetalBurst", "Ally", "NatureSpirit", "StormCrystal", "EarthMote", "Golem"],
+		["NegateRune", "Sagitta", "Snare", "Wall", "Quickness", "Quickness2", "Quickness3", "Quickness4", "Quickness5", "SlimeSplash", "Slime", "SlimeEruption", "SlimeWall", "SlimeWallVert", "LatexWallVert", "SlimeWallHoriz", "LatexWallHoriz", "LatexWall", "SlimeToLatex", "LiquidMetal", "LiquidMetalBurst", "Ally", "NatureSpirit", "StormCrystal", "EarthMote", "Golem"],
 		// Passive
 		["Psychokinesis", "KineticMastery", "SagittaAssault", "Frustration", "ChainStrike", "Ropework", "LeatherBurst", "LeatherWhip", "OneWithSlime", "SlimeWalk", "SlimeMimic", "Engulf"],
 	],
@@ -1397,6 +1397,10 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			onhit:"", time:0, power: 10.0, range: 2.5, size: 1, aoe: 1.5, damage: "inert"},
 		KDCommandWord,
 
+		{name: "NegateRune", prerequisite: "CommandDisenchant", tags: ["command", "offense", "aoe"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: ["Legs"], level:1,
+			type:"special", special: "NegateRune",
+			onhit:"", time:0, power: 3.0, range: 1.5, size: 1, aoe: 0.5, damage: "inert"},
+
 		{name: "CommandSlime", prerequisite: "ApprenticeLatex", tags: ["command", "slime", "defense"], sfx: "MagicSlash", school: "Conjure", manacost: 9, components: ["Verbal"], level:1,
 			type:"special", special: "CommandSlime",
 			onhit:"", time:0, power: 9.9, range: 2.5, size: 1, aoe: 1.5, damage: "inert"},
@@ -2013,31 +2017,43 @@ let KinkyDungeonSpellListEnemies = [
 		hitColor: 0x8888ff, hitLight: 6, components: ["Arms"], level:1, type:"hit", noTerrainHit: true, onhit:"aoe", time: 1, delay: 1, power: 2.5, range: 2, size: 1, aoe: 0.5, lifetime: 1, damage: "electric"},
 	{name: "StaticSphereStrike", sfx: "Shock", manacost: 2, bulletColor: 0x8888ff, bulletLight: 2,
 		hitColor: 0x8888ff, hitLight: 6, components: ["Verbal"], level:1, type:"hit", noTerrainHit: true, onhit:"aoe", time: 1, delay: 1, power: 1.5, range: 2, size: 1, aoe: 0.5, lifetime: 1, damage: "electric"},
-	{name: "LightningRuneStrike", bulletColor: 0x8888ff, bulletLight: 2, tags: ["electric", "trap"],
+	{name: "LightningRuneStrike", bulletColor: 0x8888ff, bulletLight: 2, tags: ["electric", "trap", "rune"],
 		hideWarnings: true,
 		crit: 2,
+		events: [
+			{trigger: "countRune", type: "rune"},
+		],
 		effectTileDurationMod: 2, effectTile: {
 			name: "Sparks",
 			duration: 3,
 		},
 		hitColor: 0x8888ff, hitLight: 6, hitsfx: "Shock", manacost: 2, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", time: 4, delay: 300, power: 4.5, range: 2, size: 1, aoe: 0.5, lifetime: 1, damage: "electric"},
-	{name: "FlameRuneStrike", bulletColor: 0xb83716, bulletLight: 2, tags: ["fire", "trap"],
+	{name: "FlameRuneStrike", bulletColor: 0xb83716, bulletLight: 2, tags: ["fire", "trap", "rune"],
 		hideWarnings: true,
 		crit: 2,
+		events: [
+			{trigger: "countRune", type: "rune"},
+		],
 		hitColor: 0xe64539, hitLight: 6, hitsfx: "Lightning", manacost: 2, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", delay: 300, power: 5.5, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "fire"},
-	{name: "RopeRuneStrike", bulletColor: 0xff73ef, bulletLight: 2, tags: ["rope", "trap"],
+	{name: "RopeRuneStrike", bulletColor: 0xff73ef, bulletLight: 2, tags: ["rope", "trap", "rune"],
 		hideWarnings: true,
 		crit: 2,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Ropes",
 			duration: 20,
 		},
+		events: [
+			{trigger: "countRune", type: "rune"},
+		],
 		hitColor: 0xff73ef, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["ropeMagicWeak"], msg: "Rope"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
-	{name: "FreezeRuneStrike", hitsfx: "Freeze", manacost: 2, bulletColor: 0x8888ff, bulletLight: 2, tags: ["ice", "trap"],
+	{name: "FreezeRuneStrike", hitsfx: "Freeze", manacost: 2, bulletColor: 0x8888ff, bulletLight: 2, tags: ["ice", "trap", "rune"],
 		hideWarnings: true,
 		crit: 2,
+		events: [
+			{trigger: "countRune", type: "rune"},
+		],
 		hitColor: 0x8888ff, hitLight: 6, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", time: 30, delay: 300, power: 3.0, range: 2, size: 3, aoe: 0.5, lifetime: 1, damage: "ice"},
 	{name: "EarthformSingle", tags: ["earth", "utility", "summon"], noSprite: true, minRange: 0, landsfx: "Bones", hideUnlearnable: true, manacost: 4, components: ["Legs"], prerequisite: ["Earthform"],
 		level:1, type:"hit", onhit:"summon", summon: [{name: "EarthenMonolith", faction: "Rock" , count: 1, time: 9999, bound: true}], power: 0, time: 9999, delay: 1, range: 4, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},
@@ -3135,7 +3151,7 @@ let KinkyDungeonSpellListEnemies = [
 			{id: "WaterRune2", type: "MoveSpeed", power: -1.0, player: false, enemies: true, noAlly: true, tags: ["slow", "debuff"], range: 1.5},
 		], onhit:"", time:9, aoe: 1.5, power: 0, delay: 9, range: 4, size: 3, damage: ""}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
 
-	{enemySpell: true, name: "RuneTrap_Rope", bulletColor: 0xff73ef, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Rope", bulletColor: 0xff73ef, tags: ["rope", "trap", "rune"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Ropes",
@@ -3153,7 +3169,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["ropeMagicWeak"], msg: "Rope"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
 
-	{enemySpell: true, name: "RuneTrap_Chain", bulletColor: 0xcf52ff, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Chain", bulletColor: 0xcf52ff, tags: ["rope", "trap", "rune"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Chains",
@@ -3171,7 +3187,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["chainRestraintsMagic"], msg: "Chain"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
 
-	{enemySpell: true, name: "RuneTrap_Ribbon", bulletColor: 0xcf52ff, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Ribbon", bulletColor: 0xcf52ff, tags: ["rope", "trap", "rune"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Fabric",
@@ -3189,7 +3205,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["ribbonRestraints", "magicRibbonsHarsh"], msg: "Ribbon"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
 
-	{enemySpell: true, name: "RuneTrap_Vine", bulletColor: 0x3b7d4f, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Vine", bulletColor: 0x3b7d4f, tags: ["rope", "trap", "rune"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Vines",
@@ -3207,7 +3223,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["vineRestraints"], msg: "Vine"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
 
-	{enemySpell: true, name: "RuneTrap_Belt", bulletColor: 0xffffff, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Belt", bulletColor: 0xffffff, tags: ["rope", "trap", "rune"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Belts",
@@ -3225,7 +3241,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["beltRestraints"], msg: "Belt"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
 
-	{enemySpell: true, name: "RuneTrap_Leather", bulletColor: 0xffffff, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Leather", bulletColor: 0xffffff, tags: ["rope", "trap", "rune"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Belts",
@@ -3243,7 +3259,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["leatherRestraints", "leatherRestraintsHeavy"], msg: "Leather"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
 
-	{enemySpell: true, name: "RuneTrap_Latex", bulletColor: 0x4fa4b8, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Latex", bulletColor: 0x4fa4b8, tags: ["rope", "trap", "rune"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Belts",
@@ -3261,7 +3277,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["latexRestraints", "latexRestraintsHeavy"], msg: "Latex"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
 
-	{enemySpell: true, name: "RuneTrap_VacCube", bulletColor: 0x4fa4b8, tags: ["latex", "trap"],
+	{enemySpell: true, name: "RuneTrap_VacCube", bulletColor: 0x4fa4b8, tags: ["latex", "trap", "rune"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Latex",
@@ -3279,7 +3295,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["latexcube"], msg: "VacCube"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
 
-	{enemySpell: true, name: "RuneTrap_Bubble", bulletColor: 0x8888ff, tags: ["water", "soap", "trap"],
+	{enemySpell: true, name: "RuneTrap_Bubble", bulletColor: 0x8888ff, tags: ["water", "soap", "trap", "rune"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Water",
@@ -3297,7 +3313,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["bubble"], msg: "Bubble"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "soap"},
 
-	{enemySpell: true, name: "RuneTrap_SlimeBubble", bulletColor: 0xff00ff, tags: ["latex", "trap"],
+	{enemySpell: true, name: "RuneTrap_SlimeBubble", bulletColor: 0xff00ff, tags: ["latex", "trap", "rune"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Slime",
@@ -3315,7 +3331,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["slimebubble"], msg: "SlimeBubble"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
 
-	{enemySpell: true, name: "RuneTrap_LatexSphere", bulletColor: 0xff00ff, tags: ["latex", "trap"],
+	{enemySpell: true, name: "RuneTrap_LatexSphere", bulletColor: 0xff00ff, tags: ["latex", "trap", "rune"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "LatexThinBlue",
@@ -3333,7 +3349,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["latexSphere"], msg: "LatexSphere"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
 
-	{enemySpell: true, name: "RuneTrap_LatexBall", bulletColor: 0xff00ff, tags: ["latex", "trap"],
+	{enemySpell: true, name: "RuneTrap_LatexBall", bulletColor: 0xff00ff, tags: ["latex", "trap", "rune"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "LatexThinBlue",
@@ -3351,7 +3367,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["ballsuit"], msg: "BallSuit"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
 
-	{enemySpell: true, name: "RuneTrap_Rubber", bulletColor: 0xff5277, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Rubber", bulletColor: 0xff5277, tags: ["rope", "trap", "rune"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "LatexThin",
@@ -3369,7 +3385,7 @@ let KinkyDungeonSpellListEnemies = [
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["latexEncaseRandom"], msg: "Rubber"},
 		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "glue"},
 
-	{enemySpell: true, name: "RuneTrap_Slime", bulletColor: 0xff5277, tags: ["rope", "trap"],
+	{enemySpell: true, name: "RuneTrap_Slime", bulletColor: 0xff5277, tags: ["rope", "trap", "rune"],
 		hideWarnings: true,
 		effectTileDurationMod: 10, effectTile: {
 			name: "Slime",

@@ -6679,6 +6679,20 @@ function KinkyDungeonHandleWeaponEvent(Event, e, weapon, data) {
  * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, *): void>>}
  */
 let KDEventMapBullet = {
+	"countRune": {
+		/**
+		 *
+		 * @param {KinkyDungeonEvent} e
+		 * @param {*} b
+		 * @param {KDRuneCountData} data
+		 */
+		"rune": (e, b, data) => {
+			if (!b.source || !KinkyDungeonFindID(b.source)) {
+				data.runes += 1;
+				data.runeList.push(b);
+			}
+		}
+	},
 	"beforeBulletHit": {
 		"DropKnife": (e, b, data) => {
 			let point = {x: b.x, y: b.y};
@@ -7235,7 +7249,7 @@ let KDEventMapBullet = {
 				let enemies = KDNearbyEnemies(player.x, player.y, e.dist);
 				if (enemies.length > 0) {
 					for (let en of enemies) {
-						if (en.hp > 0) {
+						if (en.hp > 0 && !KDIsImmobile(en, true)) {
 							KinkyDungeonApplyBuffToEntity(en, {
 								id: "FlashPortal",
 								aura: "#92e8c0",
@@ -7254,7 +7268,7 @@ let KDEventMapBullet = {
 				let enemies = KDNearbyEnemies(player.x, player.y, e.dist);
 				if (enemies.length > 0) {
 					for (let en of enemies) {
-						if (en.hp > 0 && KDAllied(en)) {
+						if (en.hp > 0 && KDAllied(en) && !KDIsImmobile(en, true)) {
 							KinkyDungeonApplyBuffToEntity(en, {
 								id: "TransportationPortal",
 								aura: "#92e8c0",
@@ -7273,7 +7287,7 @@ let KDEventMapBullet = {
 				let enemies = KDNearbyEnemies(player.x, player.y, e.dist);
 				if (enemies.length > 0) {
 					for (let en of enemies) {
-						if (en.hp > 0 && (!KDAllied(en) || KinkyDungeonAggressive(en))) {
+						if (en.hp > 0 && (!KDAllied(en) || KinkyDungeonAggressive(en)) && !KDIsImmobile(en, true)) {
 							KinkyDungeonApplyBuffToEntity(en, {
 								id: "BanishPortal",
 								aura: "#92e8c0",
@@ -8730,6 +8744,24 @@ let KDEventMapGeneric = {
 			}
 		},
 	},
+	"stun": {
+		/** Unstoppable, unflinching, relentless */
+		"unstp": (e, data) => {
+			KDStunResist(data);
+		},
+	},
+	"freeze": {
+		/** Unstoppable, unflinching, relentless */
+		"unstp": (e, data) => {
+			KDStunResist(data);
+		},
+	},
+	"bind": {
+		/** Unstoppable, unflinching, relentless */
+		"unstp": (e, data) => {
+			KDStunResist(data);
+		},
+	},
 	"beforePlayerLaunchAttack": {
 		"ReplacePerks": (e, data) => {
 			if (KinkyDungeonPlayerDamage.unarmed && KDIsHumanoid(data.target)) {
@@ -9297,6 +9329,23 @@ let KDEventMapGeneric = {
 					) ? 1.2 : 0;
 				KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0) && danger,
 					KDGameData.HeelPower <= 0 && !danger, amt, amt * mult);
+			}
+		},
+		"runes": (e, data) => {
+			if (data.delta > 0) {
+				/** @type {KDRuneCountData} */
+				let dd = {
+					explodeChance: 0.15,
+					maxRunes: 10,
+					runes: 0,
+					runeList: [],
+				};
+				KinkyDungeonSendEvent("countRune", dd);
+
+				if (dd.runeList.length > 0 && dd.runes > dd.maxRunes && KDRandom() < dd.explodeChance) {
+					let rune = dd.runeList[Math.floor(dd.runeList.length * KDRandom())];
+					rune.time = 0;
+				}
 			}
 		},
 		"HighProfile": (e, data) => {
@@ -9914,3 +9963,29 @@ let KDEventMapAlt = {
 		}
 	},
 };
+
+
+function KDStunResist(data) {
+	let amount = 0;
+	let time = 0;
+	if (data.enemy?.Enemy?.tags.unstoppable) {
+		amount = 2;
+		time = 10;
+	} else if (data.enemy?.Enemy?.tags.unflinching) {
+		amount = 1.5;
+		time = 8;
+	} else if (data.enemy?.Enemy?.tags.relentless) {
+		amount = 1;
+		time = 3;
+	}
+	if (amount) {
+		KinkyDungeonApplyBuffToEntity(data.enemy, {
+			id: "ccArmor",
+			power: amount,
+			type: "StunResist",
+			duration: time,
+			aura: "#ffc2a1",
+			tags: ["defense", "cc"],
+		});
+	}
+}

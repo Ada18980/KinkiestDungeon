@@ -111,6 +111,7 @@ let KDTilePalette = {
 	'Grate': {type: "tile", tile: 'g'},
 	'Bars': {type: "tile", tile: 'b'},
 	'Bed': {type: "tile", tile: 'B'},
+	'ClamBed': {type: "tile", tile: 'B', special: {Type: "Skin", Skin: "ClamBed"}},
 	'Crack': {type: "tile", tile: '4'},
 	'LatexPipe': {type: "tile", tile: '1', special: {Type: "Skin", Skin: "LatexPipe"}},
 	'LatexThin':  {type: "effect", effectTile: "LatexThin"},

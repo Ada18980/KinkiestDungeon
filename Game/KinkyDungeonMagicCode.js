@@ -1036,6 +1036,7 @@ let KinkyDungeonSpellSpecials = {
 		KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 		return "Cast";
 	},
+
 	"CommandDisenchant": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let enList = KDNearbyEnemies(tX, tY, spell.aoe);
 
@@ -1065,7 +1066,40 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
+	"NegateRune": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let bList = KDMapData.Bullets.filter((b) => {
+			return AOECondition(tX, tY, b.x, b.y, spell.aoe, KinkyDungeonTargetingSpell.aoetype || "") && b.bullet?.spell?.tags?.includes("rune");
+		});
 
+		if (AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, KinkyDungeonTargetingSpell.aoetype || "")) {
+			KinkyDungeonSendActionMessage(5, TextGet("KDNegateRuneSelf"), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+
+			bList = KDMapData.Bullets.filter((b) => {
+				return b.bullet.source == -1 && b.bullet?.spell?.tags?.includes("rune");
+			});
+
+		}
+
+		let refund = false;
+		if (bList.length > 0) {
+			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+			for (let b of bList) {
+				b.time = 0;
+				if (b.bullet?.source != -1) {
+					refund = true;
+				}
+			}
+			cast = true;
+		}
+
+		if (cast) {
+			if (refund) {
+				KinkyDungeonSendActionMessage(6, TextGet("KDNegateRuneEnemy"), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+				KinkyDungeonChangeMana(1, false, 0, undefined, true);
+			}
+			return "Cast";
+		} else return "Fail";
+	},
 	"DollConvert": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let enList = KDNearbyEnemies(tX, tY, spell.aoe);
 

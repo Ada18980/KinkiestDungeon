@@ -2608,6 +2608,14 @@ type AIType = {
 
 }
 
+interface KDRuneCountData {
+	maxRunes: number,
+	runes: number,
+	explodeChance: number,
+	/** Type = bullet */
+	runeList: any[],
+}
+
 interface KDAITriggerData {
 	/** Determines that the AI can play with the player and initiate a play event */
 	playAllowed?: boolean,
