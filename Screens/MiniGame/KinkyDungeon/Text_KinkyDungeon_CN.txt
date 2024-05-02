@@ -5078,8 +5078,8 @@ Curses
 诅咒
 A tablet inscribed with runes of TYPE.
 刻有 TYPE 符文的石碑。
-Teachings of SHRINETYPE
-SHRINETYPE 教义
+SHRINETYPE Tablet
+SHRINETYPE 石碑
 Decypher
 解密
 You read the runes and they fill you with power!
@@ -10642,16 +10642,6 @@ Unstoppable
 势不可挡
 Unflinching
 坚定不移
-You found a magical amulet! Choose one of the following to determine its benefits:
-你发现了一个神奇的护身符！ 选择以下选项之一来确定其优点：
-Focus: +50% max distraction and faster decay. +5% stamina protected from damage (base: 30%).
-专注：+50% 最大分心和更快的衰减。 +5% 体力伤害保护（基础：30%）。
-Stamina: +50 max stamina.
-体力：+50 最大体力。
-Magic: +50 max mana.
-魔法：+50 最大魔法。
-Willpower: +50 max willpower. +1 stamina regen/turn.
-意志：+50最大意志。 每回合 +1 体力恢复。
 +Focus
 +专注
 +Stamina
@@ -19198,3 +19188,37 @@ Your elemental damage is increased!
 你的元素伤害增加了！
 Your elemental resistance is increased!
 你的元素抵抗增加了！
+The overgrown monolith contains an ancient blessing.
+这块杂草丛生的巨石蕴含着古老的祝福。
+Choose a stat to increase below.
+选择下面要增加的统计数据。
+Confirm Choice
+确认选择
+Distraction
+性奋
+Increase max distraction by AMNT%.
+增加最大性奋程度 AMNT%。
+DP decays faster and more SP is safe from damage.
+性奋值衰减得更快，更多的体力值免受损害。
+Increase max stamina by AMNT.
+最大体力值添加 AMNT 点。
+Increase max mana by AMNT.
+最大魔力值添加 AMNT 点。
+Increase max willpower by AMNT.
+最大意志力添加 AMNT 点。
+Gain +AMNT SP regen/turn.
+每回合恢复 +AMNT 点体力值。
+You found a magical amulet! Choose one of the following to determine its benefits:
+您找到了一个神奇的护身符！选择以下之一来确定其好处：
+Focus: +50% max distraction and faster decay. +5% stamina protected from damage (base: 30%).
+专注：+50% 最大性奋和更快衰减。+5% 体力免受伤害（基础：30%）。
+Stamina: +50 max stamina.
+体力：最大体力 +50。
+Magic: +50 max mana.
+魔法：+50 最大魔力值。
+Willpower: +50 max willpower. +1 stamina regen/turn.
+意志力：最大意志力+50。每回合恢复体力 +1。
+A mystical orb stands before you.
+一个神秘的球体出现在你面前。
+You break the orb and gain its secrets.
+你打破了球体并获得了它的秘密。
