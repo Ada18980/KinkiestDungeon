@@ -889,8 +889,10 @@ function KDDrawWardrobe(screen, Character) {
 		KDDrawSavedColors(1060, 760, KDSavedColorCount, C);
 	}
 	DrawButtonKDEx("SetPose", (bdata) => {
+		KinkyDungeonTargetTile = null;
+		KinkyDungeonTargetTileLocation = "";
 		KDPlayerSetPose = !KDPlayerSetPose;
-
+		KDModalArea = false;
 		return true;
 	}, true, 750, 720, 200, 60, TextGet("KDChangePose"), "#ffffff", KinkyDungeonRootDirectory + "Poses/SetPose.png", "", false, false, KDPlayerSetPose ? KDTextGray3 : KDButtonColor, undefined, true);
 

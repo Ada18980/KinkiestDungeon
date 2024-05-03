@@ -22,11 +22,11 @@ let KDButtonHovering = false;
 
 let KDAnimTick = 0;
 let KDAnimTickInterval = 2000;
-let KDAnimTime = 400;
+let KDAnimTime = 1600;
 
-let KDFloatAnimTime = 1500;
-let KDSquishyAnimTime = 1600;
-let KDBreathAnimTime = 3000;
+let KDFloatAnimTime = 4000;
+let KDSquishyAnimTime = 2000;
+let KDBreathAnimTime = 1400;
 
 let KDFlipPlayer = false;
 
@@ -926,6 +926,13 @@ let KDSpecialChests = {
 let KDLastKeyTime = {
 };
 
+function KDDoModalX(bdata) {
+	KinkyDungeonTargetTile = null;
+	KinkyDungeonTargetTileLocation = "";
+	KDModalArea = false;
+	KDPlayerSetPose = false;
+}
+
 
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
@@ -939,9 +946,7 @@ function KinkyDungeonDrawGame() {
 		let w = 34;
 		let h = 33;
 		DrawButtonKDEx("modalX", (bdata) => {
-			KinkyDungeonTargetTile = null;
-			KinkyDungeonTargetTileLocation = "";
-			KDModalArea = false;
+			KDDoModalX(bdata);
 			return true;
 		}, true,
 		KDModalArea_x + KDModalArea_width - w - 1,
@@ -1300,14 +1305,14 @@ function KinkyDungeonDrawGame() {
 				if (!KinkyDungeonMessageToggle && !KDIsAutoAction() && !KinkyDungeonShowInventory && KinkyDungeonIsPlayer()
 					&& KDMouseInPlayableArea()) {
 					if (KinkyDungeonInspect) {
-						KinkyDungeonSetTargetLocation();
+						KinkyDungeonSetTargetLocation(KDToggles.Helper);
 
 						KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule", KinkyDungeonRootDirectory + "TargetSpell.png",
 							(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 100,
 							});
 					} else if (KinkyDungeonTargetingSpell) {
-						KinkyDungeonSetTargetLocation();
+						KinkyDungeonSetTargetLocation(KDToggles.Helper);
 
 						KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule", KinkyDungeonRootDirectory + "TargetSpell.png",
 							(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
@@ -1409,7 +1414,7 @@ function KinkyDungeonDrawGame() {
 							}
 
 					} else if ((KinkyDungeonFastMove && !(!KinkyDungeonSuppressSprint && KinkyDungeonToggleAutoSprint && KDCanSprint()) && (KinkyDungeonMoveDirection.x != 0 || KinkyDungeonMoveDirection.y != 0))) {
-						KinkyDungeonSetTargetLocation();
+						KinkyDungeonSetTargetLocation(KDToggles.Helper);
 
 
 						let allowFog = KDAllowFog();
@@ -2474,12 +2479,37 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
 
 /**
  * Sets the target location based on MOUSE location
+ * @param {boolean} helper
  */
-function KinkyDungeonSetTargetLocation() {
+function KinkyDungeonSetTargetLocation(helper = true) {
 	//let OX = KDInspectCamera.x - (KinkyDungeonPlayerEntity.x||0);
 	//let OY = KDInspectCamera.y - (KinkyDungeonPlayerEntity.y||0);
 	KinkyDungeonTargetX = Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + (KinkyDungeonCamX);
 	KinkyDungeonTargetY = Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + (KinkyDungeonCamY);
+
+	if (helper) {
+		// The helper helps snap away from walls to make moving around less frustrating
+		if (KinkyDungeonWallTiles.includes(KinkyDungeonMapGet(KinkyDungeonTargetX, KinkyDungeonTargetY))
+			&& !(KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)?.Type)
+		) {
+			let remainderX = (MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay - Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay);
+			let remainderY = ((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) - Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay);
+			let aimThresh = 0.1;
+			let aimed = false;
+			if (remainderX > aimThresh) {
+				if (!KinkyDungeonWallTiles.includes(KinkyDungeonMapGet(KinkyDungeonTargetX + 1, KinkyDungeonTargetY))) {KinkyDungeonTargetX += 1; aimed = true;}
+			}
+			if (!aimed && remainderX < -aimThresh) {
+				if (!KinkyDungeonWallTiles.includes(KinkyDungeonMapGet(KinkyDungeonTargetX - 1, KinkyDungeonTargetY))) {KinkyDungeonTargetX -= 1; aimed = true;}
+			}
+			if (!aimed && remainderY > aimThresh) {
+				if (!KinkyDungeonWallTiles.includes(KinkyDungeonMapGet(KinkyDungeonTargetX, KinkyDungeonTargetY + 1))) {KinkyDungeonTargetY += 1; aimed = true;}
+			}
+			if (!aimed && remainderY < -aimThresh) {
+				if (!KinkyDungeonWallTiles.includes(KinkyDungeonMapGet(KinkyDungeonTargetX , KinkyDungeonTargetY - 1))) {KinkyDungeonTargetY -= 1;}
+			}
+		}
+	}
 }
 
 function KDGetMoveDirection() {
@@ -3463,6 +3493,7 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 		}
 	}
 	if (sprite) {
+		sprite.visible = true;
 		//sprite.roundPixels = true;
 		sprite.interactive = false;
 		// Modify the sprite according to the params
@@ -3528,6 +3559,8 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 	return null;
 }
 
+let OPTIONS_NEAREST = {scaleMode: PIXI.SCALE_MODES.NEAREST};
+
 /**
  * Returns a PIXI.Texture, or null if there isnt one
  * @param {string} Image
@@ -3536,7 +3569,7 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 function KDTex(Image, Nearest) {
 	if (kdpixitex.has(Image)) return kdpixitex.get(Image);
 	try {
-		let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, {scaleMode: PIXI.SCALE_MODES.NEAREST}) : PIXI.Texture.from(KDModFiles[Image] || Image);
+		let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, OPTIONS_NEAREST) : PIXI.Texture.from(KDModFiles[Image] || Image);
 		kdpixitex.set(Image, tex);
 		return tex;
 	} catch (e) {
@@ -4170,11 +4203,12 @@ let KDDrawPlayer = true;
 let KDDesiredPlayerPose = {};
 
 function KDPlayerDrawPoseButtons(C) {
-	KDModalArea = true;
-	KDModalArea_x = 650;
-	KDModalArea_y = 430;
-	KDModalArea_width = 1000;
-	KDModalArea_height = 370;
+	if (!KDModalArea) {
+		KDModalArea_x = 650;
+		KDModalArea_y = 430;
+		KDModalArea_width = 1000;
+		KDModalArea_height = 370;
+	}
 	KDDrawPoseButtons(C, 700, 580, true, true, true);
 
 }

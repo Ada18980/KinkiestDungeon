@@ -1889,7 +1889,7 @@ let KDPlayerEffects = {
 	"Drench": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
 
-		let dmg = (spell.power > 0 && spell.damage == 'acid') ?
+		let dmg = (spell.power > 0 && spell.damage != 'inert') ?
 			KinkyDungeonDealDamage({damage: playerEffect.power || spell.power, type: playerEffect.damage || spell.damage}, bullet)
 			: {happened: 0, string: TextGet("KDNoDamage")};
 		if (!dmg.happened) return{sfx: "Shield", effect: false};

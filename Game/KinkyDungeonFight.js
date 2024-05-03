@@ -2614,7 +2614,7 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					(ty - CamY + 0.5)*KinkyDungeonGridSizeDisplay,
 					bullet.size*scale*KinkyDungeonGridSizeDisplay,
 					bullet.size*scale*KinkyDungeonGridSizeDisplay,
-					(!bullet.vy && !bullet.vx) ? bullet.spinAngle : bullet.spinAngle + Math.atan2(bullet.vy, bullet.vx), {
+					(!bullet.vy && !bullet.vx) ? KDAnimQuantize(Math.PI/3 * (bullet.spin || 1), bullet.spinAngle) : KDAnimQuantize(Math.PI/3 * (bullet.spin || 1), bullet.spinAngle) + Math.atan2(bullet.vy, bullet.vx), {
 						alpha : alpha,
 						zIndex: (bullet.zIndex || 0),
 					}, true);

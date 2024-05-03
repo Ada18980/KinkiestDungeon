@@ -91,9 +91,11 @@ KDToggleEnemyAura,Show Enemy Buff Auras
 KDToggleOutlineAura,Minimalist Enemy Auras
 KDToggleNearestNeighbor,Pixelated GFX (needs restart)
 KDToggleAutoCrouchOnTrip,Auto-Crouch when Tripped
+KDToggleRetroAnim,Retro Animations
 KDToggleFlipStatusBars,Flip Status Bars
 KDToggleZoomIn,Zoom In
 KDToggleZoomOut,Zoom Out
+KDToggleHelper,Reduce Accidental Wall Clicks
 KDToggleNipples,Enable Nipples
 KDToggleNippleToysOption,Show Nipple Toys Over Bras
 KDToggleNippleToysHide,Hide Nipple Clamps

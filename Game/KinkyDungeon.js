@@ -4,6 +4,7 @@ let KDFullscreen = false;
 let KDExitButton = false;
 
 let KDDefaultPalette = "";
+let KDCULLTIME = 10000; // Garbage collection
 
 // Disable interpolation when scaling, will make texture be pixelated
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR;
@@ -157,6 +158,7 @@ let KDToggles = {
 	FancyShadows: true,
 	LightmapFilter: true,
 	EnemyAnimations: true,
+	RetroAnim: false,
 	DrawArmor: true,
 	CrotchRopeOption: false,
 	ChastityOption: false,
@@ -193,9 +195,11 @@ let KDToggles = {
 	ForcePalette: false,
 	AutoLoadMods: false,
 	FlipPlayer: true,
+	Helper: true,
 };
 
 let KDToggleCategories = {
+	RetroAnim: "GFX",
 	HiResModel: "GFX",
 	HighResDisplacement: "GFX",
 	Bloom: "GFX",
@@ -236,6 +240,7 @@ let KDToggleCategories = {
 	NearestNeighbor: "GFX",
 	ZoomIn: "UI",
 	ZoomOut: "UI",
+	Helper: "UI",
 	FlipStatusBars: "UI",
 	ForcePalette: "Clothes",
 	//LazyWalk: "Controls",
@@ -2700,23 +2705,33 @@ let kdTrackGameBoard = false;
 let kdTrackGameFog = false;
 let kdTrackGameParticles = false;
 
+let KDlastCull = new Map();
+
 function KDCullSprites() {
+	if (!KDlastCull.get(kdpixisprites)) KDlastCull.set(kdpixisprites, 0);
+	let cull = CommonTime() > (KDlastCull.get(kdpixisprites) || 0) + KDCULLTIME;
 	for (let sprite of kdpixisprites.entries()) {
 		if (!kdSpritesDrawn.has(sprite[0])) {
-			sprite[1].parent.removeChild(sprite[1]);
-			if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
-			kdpixisprites.delete(sprite[0]);
-			sprite[1].destroy();
+			if (cull) {
+				sprite[1].parent.removeChild(sprite[1]);
+				if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
+				kdpixisprites.delete(sprite[0]);
+				sprite[1].destroy();
+			} else sprite[1].visible = false;
 		}
 	}
 }
 function KDCullSpritesList(list) {
+	if (!KDlastCull.get(list)) KDlastCull.set(list, 0);
+	let cull = CommonTime() > (KDlastCull.get(list) || 0) + KDCULLTIME;
 	for (let sprite of list.entries()) {
 		if (!kdSpritesDrawn.has(sprite[0])) {
-			sprite[1].parent.removeChild(sprite[1]);
-			if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
-			list.delete(sprite[0]);
-			sprite[1].destroy();
+			if (cull) {
+				sprite[1].parent.removeChild(sprite[1]);
+				if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
+				list.delete(sprite[0]);
+				sprite[1].destroy();
+			} else sprite[1].visible = false;
 		}
 	}
 }

@@ -572,7 +572,7 @@ function KDDrawEffectTiles(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				if (color != undefined) op.tint = color;
 				KDDraw(kdeffecttileboard, kdpixisprites, tileid, KinkyDungeonRootDirectory + "EffectTiles/" + sprite + ".png",
 					(tile.x + (tile.xoffset ? tile.xoffset : 0) - CamX)*KinkyDungeonGridSizeDisplay, (tile.y - CamY + (tile.yoffset ? tile.yoffset : 0))*KinkyDungeonGridSizeDisplay,
-					KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, tile.spinAngle, op);
+					KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KDAnimQuantize(Math.PI/4 * (tile.spin || 1), tile.spinAngle), op);
 			}
 		}
 	}

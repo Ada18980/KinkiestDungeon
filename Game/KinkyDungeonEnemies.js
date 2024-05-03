@@ -36,27 +36,38 @@ let KDEventableAttackTypes = [
 let KDAnims = {
 	breathing: (Entity) => {
 		if (!Entity.animTime) Entity.animTime = CommonTime() + Math.floor(KDRandom() * 1000);
-		Entity.scaleY *= (1 - 0.02*Math.sin(Math.PI + 2 * Math.PI * (CommonTime() - Entity.animTime)/(KDBreathAnimTime)));
-		Entity.scaleX *= (1 - 0.015*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDBreathAnimTime)));
-		Entity.offY += -0.007*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDBreathAnimTime));
+		Entity.scaleY *= (0.986 - 0.014*Math.sin(Math.PI/2 + 2 * Math.PI * KDAnimQuantize(KDBreathAnimTime/2, CommonTime() - Entity.animTime)/(KDBreathAnimTime)));
+		Entity.scaleX *= (1.005 - 0.005*Math.sin(-Math.PI/2 + 2 * Math.PI * KDAnimQuantize(KDBreathAnimTime/2, CommonTime() - Entity.animTime)/(KDBreathAnimTime)));
+		Entity.offY += -0.005*Math.sin(-Math.PI/2 + 2 * Math.PI * KDAnimQuantize(KDBreathAnimTime/2, CommonTime() - Entity.animTime)/(KDBreathAnimTime));
 		return true;
 	},
 	squishy: (Entity) => {
 		if (!Entity.animTime) Entity.animTime = CommonTime() + Math.floor(KDRandom() * 1000);
-		Entity.scaleY *= (1 - 0.15*Math.sin(Math.PI + 2 * Math.PI * (CommonTime() - Entity.animTime)/(KDSquishyAnimTime)));
-		Entity.scaleX *= (1 - 0.1*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDSquishyAnimTime)));
-		Entity.offY += -0.05*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDSquishyAnimTime));
+		Entity.scaleY *= (1 - 0.12*Math.sin(Math.PI + 2 * Math.PI * KDAnimQuantize(KDSquishyAnimTime/4, CommonTime() - Entity.animTime)/(KDSquishyAnimTime)));
+		Entity.scaleX *= (1 - 0.08*Math.sin(2 * Math.PI * KDAnimQuantize(KDSquishyAnimTime/4, CommonTime() - Entity.animTime)/(KDSquishyAnimTime)));
+		Entity.offY += -0.04*Math.sin(2 * Math.PI * KDAnimQuantize(KDSquishyAnimTime/4, CommonTime() - Entity.animTime)/(KDSquishyAnimTime));
 		return true;
 	},
 	squishyAmbush: (Entity) => {
 		if (!Entity.ambushtrigger) return false;
 		if (!Entity.animTime) Entity.animTime = CommonTime() + Math.floor(KDRandom() * 1000);
-		Entity.scaleY *= (1 - 0.15*Math.sin(Math.PI + 2 * Math.PI * (CommonTime() - Entity.animTime)/(KDSquishyAnimTime)));
-		Entity.scaleX *= (1 - 0.1*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDSquishyAnimTime)));
-		Entity.offY += -0.05*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDSquishyAnimTime));
+		Entity.scaleY *= (1 - 0.12*Math.sin(Math.PI + 2 * Math.PI * KDAnimQuantize(KDSquishyAnimTime/4, CommonTime() - Entity.animTime)/(KDSquishyAnimTime)));
+		Entity.scaleX *= (1 - 0.08*Math.sin(2 * Math.PI * KDAnimQuantize(KDSquishyAnimTime/4, CommonTime() - Entity.animTime)/(KDSquishyAnimTime)));
+		Entity.offY += -0.04*Math.sin(2 * Math.PI * KDAnimQuantize(KDSquishyAnimTime/4, CommonTime() - Entity.animTime)/(KDSquishyAnimTime));
 		return true;
 	},
 };
+
+/**
+ * Quantizes a number
+ * @param {number} amount
+ * @param {number} step
+ * @returns {number}
+ */
+function KDAnimQuantize(step, amount) {
+	if (!KDToggles.RetroAnim) return amount;
+	return Math.round(amount/step) * step;
+}
 
 
 /**
@@ -688,7 +699,7 @@ function KDAnimEnemy(Entity) {
 			Entity.scaleY = 1;
 		}
 		if (!Entity.animTime) Entity.animTime = CommonTime() + Math.floor(KDRandom() * 1000);
-		Entity.offY += 0.05*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDFloatAnimTime));
+		Entity.offY += 0.05*Math.sin(2 * Math.PI * KDAnimQuantize(KDFloatAnimTime/8, CommonTime() - Entity.animTime)/(KDFloatAnimTime));
 		resetAnim = false;
 	}
 
@@ -708,7 +719,7 @@ function KDAnimEnemy(Entity) {
 				Entity.scaleY = 1;
 			}
 			if (!Entity.animTime) Entity.animTime = CommonTime();
-			Entity.offX += 0.05*Math.sin(2 * Math.PI * (CommonTime() - Entity.animTime)/(KDAnimTime));
+			Entity.offX += 0.04*Math.sin(2 * Math.PI * KDAnimQuantize(KDAnimTime/4, CommonTime() - Entity.animTime)/(KDAnimTime));
 			resetAnim = false;
 		}
 	}

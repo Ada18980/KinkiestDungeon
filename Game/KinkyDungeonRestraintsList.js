@@ -1713,6 +1713,11 @@ const KinkyDungeonRestraints = [
 	{inventory: true, curse: "GhostLock", name: "MikoCollar", Asset: "HighCollar", Color: ["#ffffff", "#AA2222"],Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],magic: true, power: 40, weight: 0, difficultyBonus: 10,
 		Model: "MikoCollar",
 		struggleBreak: true,
+		factionFilters: {
+			Rim: {color: "Highlight", override: true,},
+			Neck: {color: "DarkNeutral", override: true,},
+			Collar: {color: "Highlight", override: true,},
+		},
 		escapeChance: {"Struggle": -100, "Cut": -0.8, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["HighCollars", "Collars"],
 		unlimited: true,
 		events: [{trigger: "kill", type: "MikoGhost", inheritLinked: true}],
@@ -1721,13 +1726,19 @@ const KinkyDungeonRestraints = [
 		Model: "MikoCollar",
 		struggleBreak: true,
 		linkCategory: "SpecialCollar",
+		factionFilters: {
+			Rim: {color: "Highlight", override: true,},
+			Neck: {color: "DarkNeutral", override: true,},
+			Collar: {color: "Highlight", override: true,},
+		},
 		linkSize: 0.99,
 		escapeChance: {"Struggle": -100, "Cut": -0.8, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["HighCollars", "Collars"],
 		unlimited: true,
 		events: [{trigger: "kill", type: "MikoGhost2", inheritLinked: true}],
 	},
 	// Generic stronger gag
-	{inventory: true, name: "MikoGag", Asset: "OTNPlugGag", debris: "Belts", LinkableBy: [...KDPlugGagLink], renderWhenLinked: [...KDPlugGagLink], Type: "Plug", gag: 1.0, Color: ["#ffffff", "#AA2222", "#ffffff"], Group: "ItemMouth", power: 9, weight: 2, DefaultLock: "Blue", magic: true,
+	{inventory: true, name: "MikoGag", Asset: "OTNPlugGag", debris: "Belts", LinkableBy: [...KDPlugGagLink], renderWhenLinked: [...KDPlugGagLink], Type: "Plug", gag: 1.0, Color: ["#ffffff", "#AA2222", "#ffffff"],
+		Group: "ItemMouth", power: 9, weight: 2, DefaultLock: "Blue", magic: true,
 		/*Model: "PlugMuzzleGagHarnessSecure",
 		Filters: {
 			Plug: {"gamma":1,"saturation":1,"contrast":3.1,"brightness":0.5666666666666667,"red":1,"green":1,"blue":1,"alpha":1},
@@ -1736,6 +1747,13 @@ const KinkyDungeonRestraints = [
 			SideStrap: {"gamma":1,"saturation":0.06666666666666667,"contrast":1,"brightness":1,"red":2.816666666666667,"green":1,"blue":1,"alpha":1},
 			Muzzle: {"gamma":1,"saturation":1,"contrast":0.8999999999999999,"brightness":3.7,"red":1,"green":1,"blue":1,"alpha":1},
 		},*/
+		factionFilters: {
+			Plug: {color: "Highlight", override: true,},
+			Strap: {color: "DarkNeutral", override: true,},
+			SideStrap: {color: "DarkNeutral", override: true,},
+			Harness: {color: "DarkNeutral", override: true,},
+			Latex: {color: "LightNeutral", override: true,},
+		},
 		Model: "GagLatexPlugHarnessSecure",
 		Filters: {"Plug":{"gamma":1,"saturation":0.03333333333333333,"contrast":0.6666666666666666,"brightness":1.9333333333333333,"red":1,"green":1,"blue":1,"alpha":1},"Harness":{"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},"Latex":{"gamma":1,"saturation":0.05,"contrast":1.2,"brightness":0.6,"red":2.166666666666667,"green":0.43333333333333335,"blue":0.6,"alpha":1}},
 		value: 150,
@@ -1748,6 +1766,11 @@ const KinkyDungeonRestraints = [
 			BinderStraps: {"gamma":1,"saturation":1,"contrast":1,"brightness":3.2666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
 			Binder: {"gamma":1,"saturation":0.06666666666666667,"contrast":1,"brightness":1,"red":2.816666666666667,"green":1,"blue":1,"alpha":1},
 			Straps: {"gamma":1,"saturation":1,"contrast":1,"brightness":3.2666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+		},
+		factionFilters: {
+			Binder: {color: "Highlight", override: true,},
+			BinderStraps: {color: "DarkNeutral", override: true,},
+			Straps: {color: "DarkNeutral", override: true,},
 		},
 
 		forceOutfit: "Lingerie",

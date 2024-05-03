@@ -267,7 +267,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		UpdateModels(C);
 	}
 
-	let containerID = `${X},${Y},${Zoom}`;
+	let containerID = `${Math.round(X)},${Math.round(Y)},${Zoom}`;
 	let refreshfilters = false;
 
 	if (StruggleAnimation) // PROTOTYPE struggle animation

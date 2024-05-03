@@ -182,6 +182,7 @@ function KinkyDungeonGetVariantEffectByListWeighted(List, Type, item, data, minL
 }
 
 
+
 /**
  * Gets a list of curses applied to the item
  * @param {string | string[]} List
@@ -523,3 +524,20 @@ function KinkyDungeonDupeRestraintText(restraint, newRestraint) {
 	addTextKey(`${baseKey}Desc2`, TextGetKD(`${oldKey}Desc2`));
 }
 
+
+/**
+ * Returns true if the player has a perk
+ * @param {string} perk
+ * @returns {boolean}
+ */
+function HasPerk(perk) {
+	return KinkyDungeonStatsChoice.has(perk);
+}
+
+/**
+ * Gets the player entity (i.e. the NPC/special object hybrid that represents the player on the map)
+ * @returns {entity}
+ */
+function KDPlayer() {
+	return KinkyDungeonPlayerEntity;
+}

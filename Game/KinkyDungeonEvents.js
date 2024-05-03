@@ -9989,3 +9989,13 @@ function KDStunResist(data) {
 		});
 	}
 }
+
+function KDAddEvent(map, trigger, type, code) {
+	if (!map) {
+		console.log("Error adding " + trigger + ", " + type);
+	}
+	if (!map[trigger]) {
+		map[trigger] = {};
+	}
+	map[trigger][type] = code;
+}
