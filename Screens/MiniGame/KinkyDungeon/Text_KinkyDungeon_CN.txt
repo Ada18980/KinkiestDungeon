@@ -150,12 +150,16 @@ Pixelated GFX (needs restart)
 像素化图像特效（需重启）
 Auto-Crouch when Tripped
 绊倒时自动蹲下
+Retro Animations
+复古动画
 Flip Status Bars
 翻转状态栏
 Zoom In
 放大
 Zoom Out
 缩小
+Reduce Accidental Wall Clicks
+减少意外的墙壁点击
 Enable Nipples
 启用乳头
 Show Nipple Toys Over Bras
@@ -16596,6 +16600,8 @@ Unstoppable (Ignore status/bondage)
 势不可挡（无视状态/束缚）
 Unflinching (Resist status/bondage)
 坚定不移（抵抗状态/束缚）
+Relentless (Stun resist when stunned)
+无情（眩晕时抵抗眩晕）
 Blindsight (See through walls)
 盲视（看穿墙壁）
 Mana Harvesting
@@ -19222,3 +19228,19 @@ A mystical orb stands before you.
 一个神秘的球体出现在你面前。
 You break the orb and gain its secrets.
 你打破了球体并获得了它的秘密。
+Stun Resistance!
+眩晕抗性！
+Negate Rune
+否定符文
+Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead.
+移除目标方块上的符文。如果对自己施放，则改为移除你创建的所有符文。如果对敌方符文施放，则改为恢复 10 点法力。
+You scribe a negation rune!
+你写下了一个否定符文！
+Target a single rune, or yourself to negate all your runes.
+瞄准单个符文或自己来否定所有符文。
+You don't have enough mana
+你没有足够的魔力
+The enemy rune is wiped clean.
+敌方符文已被清除干净。
+All of your runes have been removed.
+你的所有符文都已被移除。
