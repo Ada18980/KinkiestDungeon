@@ -66,6 +66,10 @@ function KDPrisonGetGroups(player, jailLists, lock, maxPower) {
 	 */
 	let itemsToApply = [];
 	let itemsApplied = {};
+	/**
+	 * @type {Record<string, boolean>}
+	 */
+	let itemsToKeep = {};
 
 	// First populate the items
 	let jailList = KDGetJailRestraints(jailLists, false, false);
@@ -75,14 +79,19 @@ function KDPrisonGetGroups(player, jailLists, lock, maxPower) {
 		let strip = false;
 		for (let g of prisonGroup) {
 			let restraints = KinkyDungeonGetJailRestraintsForGroup(g, jailList, false, lock);
-			let restraints2 = KinkyDungeonGetJailRestraintsForGroup(g, jailList, true, lock);
+			let restraints2 = KinkyDungeonGetJailRestraintsForGroup(g, jailList, true, lock, true, true);
 			if (restraints2.length > 0) {
-				let restraintStack = KDDynamicLinkList(KinkyDungeonGetRestraintItem(g));
-				if (restraintStack.length > 0) {
-					for (let r of restraintStack) {
-						if (KinkyDungeonRestraintPower(r, false) < maxPower) {
-							strip = true;
-							break;
+				for (let r of restraints2) {
+					itemsToKeep[r.restraint.name] = true;
+				}
+				if (!strip) {
+					let restraintStack = KDDynamicLinkList(KinkyDungeonGetRestraintItem(g), true);
+					if (restraintStack.length > 0) {
+						for (let r of restraintStack) {
+							if (KinkyDungeonRestraintPower(r, true) < maxPower) {
+								strip = true;
+								break;
+							}
 						}
 					}
 				}
@@ -110,6 +119,7 @@ function KDPrisonGetGroups(player, jailLists, lock, maxPower) {
 	return {
 		groupsToStrip: groupsToStrip,
 		itemsToApply: itemsToApply,
+		itemsToKeep: itemsToKeep,
 	};
 }
 

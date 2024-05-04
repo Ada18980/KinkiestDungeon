@@ -3367,6 +3367,7 @@ interface KDFactionProps {
 type KDJailGetGroupsReturn = {
 	groupsToStrip: string[],
 	itemsToApply: {item: string, variant: string}[],
+	itemsToKeep: Record<string, boolean>,
 };
 
 type KDJourneySlot = {

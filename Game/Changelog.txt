@@ -45,6 +45,7 @@ TODO -- make it so leashing enemies dont damage to hurt you EVERY turn as thats 
 - Fixed an issue where the player model would sometimes flicker while moving
 - Made the targeting reticule prefer floors and movable tiles over walls (toggleable)
 - Added Retro Enemy Animations toggle
+- TODO rope weapon when struggling out
 
 5.2.28
 - Desire burst is now locked to the Path of Pleasure

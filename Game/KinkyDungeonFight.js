@@ -55,7 +55,7 @@ let KinkyDungeonStunDamageTypes = ["fire", "electric", "stun"];
 let KinkyDungeonBindDamageTypes = ["chain", "glue", "holy"];
 let KinkyDungeonFreezeDamageTypes = ["ice"];
 let KinkyDungeonSlowDamageTypes = ["crush", "slash", "pierce", "soap", "frost", "cold", "poison"];
-let KinkyDungeonVulnerableDamageTypes = ["tickle", "acid", "magicbind"];
+let KinkyDungeonVulnerableDamageTypes = ["tickle", "acid", "magicbind", "estim"];
 let KinkyDungeonMeltDamageTypes = ["fire", "holy", "acid"];
 let KinkyDungeonShatterDamageTypes = ["crush", "stun", "fire"];
 let KinkyDungeonIgnoreShieldTypes = ["soul", "holy"];
@@ -68,6 +68,7 @@ let KDDamageEquivalencies = {
 	"drain": "soul",
 	"shock": "electric",
 	"blast": "stun",
+	"estim": "electric",
 };
 
 let KDDamageBinds = {
@@ -133,6 +134,7 @@ let KinkyDungeonDamageTypes = {
 	drain: {name: "soul", color: "#E27CD0", bg: "black"},
 	souldrain: {name: "soul", color: "#E27CD0", bg: "black"},
 	electric: {name: "electric", color: "#FFD800", bg: "black"},
+	estim: {name: "estim", color: "#ff52eb", bg: "black"},
 	glue: {name: "glue", color: "#E200D0", bg: "black"},
 	stun: {name: "stun", color: "#f4f390", bg: "black"},
 	chain: {name: "chain", color: "#ffffff", bg: "black"},

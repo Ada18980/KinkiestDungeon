@@ -1946,15 +1946,27 @@ let KDEventMapInventory = {
 			if (!data.query) {
 				if (data.struggleType === "Struggle") {
 					if (KDRandom() < e.chance || (KDGameData.WarningLevel > (e.count || 2) && KDRandom() < e.warningchance) || data.group == "ItemNeck") {
-						if (e.stun && KDGameData.WarningLevel > (e.count || 2)) {
-							KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
-							KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
-						}
+
 						data.escapePenalty += e.bind ? e.bind : 0.1;
 						KDGameData.WarningLevel += 1;
-						KinkyDungeonDealDamage({damage: e.power, type: e.damage});
-						KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > (e.count || 2) ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
-						if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+						if (KinkyDungeonStatsChoice.get("Estim")) {
+							if (e.stun && KDGameData.WarningLevel > (e.count || 2)) {
+								KinkyDungeonChangeDistraction(5, false, 0.5);
+								KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
+							}
+							KinkyDungeonDealDamage({damage: e.power, type: "estim"});
+							KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayerEstim") + (KDGameData.WarningLevel > (e.count || 2) ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
+							if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Estim.ogg");
+						} else {
+							if (e.stun && KDGameData.WarningLevel > (e.count || 2)) {
+								KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
+								KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
+							}
+							KinkyDungeonDealDamage({damage: e.power, type: e.damage});
+							KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer") + (KDGameData.WarningLevel > (e.count || 2) ? "Harsh" : "")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
+							if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+						}
+
 					}
 				}
 			}
@@ -2222,16 +2234,30 @@ let KDEventMapInventory = {
 			}
 			// 7 tick cooldown stops it feeling overly spammy
 			KinkyDungeonSetEnemyFlag(enemy, "remoteShockCooldown", 7);
-			if (e.stun) {
-				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
-				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
+			if (KinkyDungeonStatsChoice.get("Estim")) {
+				if (e.stun) {
+					KinkyDungeonChangeDistraction(5, false, 0.5);
+					KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
+				}
+				KinkyDungeonDealDamage({damage: e.power, type: "estim"});
+				const msg = TextGet(e.msg ? e.msg : "KinkyDungeonRemoteShockEstim")
+					.replace("RestraintName", TextGet(`Restraint${item.name}`))
+					.replace("EnemyName", TextGet(`Name${enemy.Enemy.name}`));
+				KinkyDungeonSendTextMessage(5, msg, "#ff8933", 2);
+				if (e.sfx) KinkyDungeonPlaySound(`${KinkyDungeonRootDirectory}/Audio/${"Estim"}.ogg`);
+			} else {
+				if (e.stun) {
+					KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
+					KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
+				}
+				KinkyDungeonDealDamage({damage: e.power, type: e.damage});
+				const msg = TextGet(e.msg ? e.msg : "KinkyDungeonRemoteShock")
+					.replace("RestraintName", TextGet(`Restraint${item.name}`))
+					.replace("EnemyName", TextGet(`Name${enemy.Enemy.name}`));
+				KinkyDungeonSendTextMessage(5, msg, "#ff8933", 2);
+				if (e.sfx) KinkyDungeonPlaySound(`${KinkyDungeonRootDirectory}/Audio/${e.sfx}.ogg`);
 			}
-			KinkyDungeonDealDamage({damage: e.power, type: e.damage});
-			const msg = TextGet(e.msg ? e.msg : "KinkyDungeonRemoteShock")
-				.replace("RestraintName", TextGet(`Restraint${item.name}`))
-				.replace("EnemyName", TextGet(`Name${enemy.Enemy.name}`));
-			KinkyDungeonSendTextMessage(5, msg, "#ff8933", 2);
-			if (e.sfx) KinkyDungeonPlaySound(`${KinkyDungeonRootDirectory}/Audio/${e.sfx}.ogg`);
+
 		},
 		"RemoteLinkItem": (e, item, data) => {
 			const enemy = data.enemy;
@@ -2774,6 +2800,13 @@ const KDEventMapBuff = {
 		},
 	},
 	"tick": {
+		"TrainingUnit": (e, buff, entity, data) => {
+			if (!entity.player) {
+				if (!KDMapData.PrisonStateStack.includes("Training")) {
+					KDRemoveEntity(entity, false, false, true);
+				}
+			}
+		},
 		"Corrupted": (e, buff, entity, data) => {
 			if (entity.player) {
 				if (KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) > KDShadowThreshold) {

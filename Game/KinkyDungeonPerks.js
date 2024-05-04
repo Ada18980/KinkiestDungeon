@@ -398,6 +398,8 @@ let KinkyDungeonStatsPresets = {
 	"NoPet": {category: "Toggles", id: "NoPet", cost: 0, tags: ["start"], debuff: true},
 	"NoHelp": {category: "Toggles", id: "NoHelp", cost: 0, tags: ["start"]},
 
+	"Estim": {category: "Toggles", id: "Estim", cost: 0, tags: ["start"]},
+
 
 
 	"Quickness": {category: "Combat", id: "Quickness", cost: 2},
@@ -632,15 +634,18 @@ let KDPerkStart = {
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("MikoGag"), 0, true, undefined, false, undefined, undefined, undefined, true);
 
 		KDFixPlayerClothes("Fuuka");
+		if (!KDHasSpell("ZeroResistance")) KDPushSpell(KinkyDungeonFindSpell("ZeroResistance"));
 	},
 	QuakeCollar: () =>{
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("QuakeCollar"), 0, true, undefined, false, undefined, undefined, undefined, true);
 	},
 	WardenBelt: () =>{
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("WardenBelt"), 0, true, undefined, false, undefined, undefined, undefined, true);
+		if (!KDHasSpell("ZeroResistance")) KDPushSpell(KinkyDungeonFindSpell("ZeroResistance"));
 	},
 	Prisoner: () =>{
 		KDGameData.PrisonerState = 'parole';
+		if (!KDHasSpell("ZeroResistance")) KDPushSpell(KinkyDungeonFindSpell("ZeroResistance"));
 	},
 	Slayer: () =>{
 		KDPushSpell(KinkyDungeonFindSpell("Firebolt"));
@@ -711,6 +716,7 @@ let KDPerkStart = {
 		KinkyDungeonChangeRep("Latex", 10);
 		KDCustomDefeatUniforms.DollShoppe();
 		KDFixPlayerClothes("Dressmaker");
+		if (!KDHasSpell("ZeroResistance")) KDPushSpell(KinkyDungeonFindSpell("ZeroResistance"));
 	},
 	DollmakerVisor: () =>{
 		KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
@@ -725,6 +731,7 @@ let KDPerkStart = {
 
 		KDFixPlayerClothes("AncientRobot");
 		KDEnterDollTerminal(false);
+		if (!KDHasSpell("ZeroResistance")) KDPushSpell(KinkyDungeonFindSpell("ZeroResistance"));
 	},
 	StartCyberDoll: () =>{
 		KDAddQuest("EscapedDoll");
@@ -732,6 +739,7 @@ let KDPerkStart = {
 
 		KDCustomDefeatUniforms.CyberDoll();
 		KDFixPlayerClothes((KinkyDungeonStatsChoice.get("DollmakerVisor") || KinkyDungeonStatsChoice.get("DollmakerMask") || KinkyDungeonStatsChoice.get("CommonCyber")) ? "Dollsmith" : "AncientRobot");
+		if (!KDHasSpell("ZeroResistance")) KDPushSpell(KinkyDungeonFindSpell("ZeroResistance"));
 	},
 	StartMaid: () =>{
 		KDAddQuest("MaidSweeper");
@@ -740,12 +748,14 @@ let KDPerkStart = {
 
 		KinkyDungeonInventoryAddLoose("DusterGag");
 		KDFixPlayerClothes("Maidforce");
+		if (!KDHasSpell("ZeroResistance")) KDPushSpell(KinkyDungeonFindSpell("ZeroResistance"));
 	},
 	StartWolfgirl: () =>{
 		KDChangeFactionRelation("Player", "Nevermere", 0.2 - KDFactionRelation("Player", "Nevermere"), true);
 		KDCustomDefeatUniforms.WolfgirlHunters();
 		KDAddQuest("WolfgirlHunters");
 		KDFixPlayerClothes("Nevermere");
+		if (!KDHasSpell("ZeroResistance")) KDPushSpell(KinkyDungeonFindSpell("ZeroResistance"));
 	},
 	StartObsidian: () =>{
 		KDChangeFactionRelation("Player", "Elemental", 0.2 - KDFactionRelation("Player", "Elemental"), true);
@@ -754,6 +764,7 @@ let KDPerkStart = {
 		KDCustomDefeatUniforms.ElementalSlave();
 
 		KDFixPlayerClothes("Elemental");
+		if (!KDHasSpell("ZeroResistance")) KDPushSpell(KinkyDungeonFindSpell("ZeroResistance"));
 	},
 	Hogtied: () =>{
 		KDAddQuest("Nawashi");
@@ -763,6 +774,7 @@ let KDPerkStart = {
 			if (KinkyDungeonInventoryGet(w)) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet(w));
 		}
 		KDFixPlayerClothes("Jail");
+		if (!KDHasSpell("ZeroResistance")) KDPushSpell(KinkyDungeonFindSpell("ZeroResistance"));
 	},
 	Bandit: () =>{
 		for (let key of Object.keys(KinkyDungeonFactionTag)) {

@@ -111,11 +111,12 @@ let KDIntentEvents = {
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
 				return true;
 			}
-			else if (KDPlayerLeashed(KinkyDungeonPlayerEntity) && !tethered) {
+			else if (!tethered) {
 				enemy.gx = KinkyDungeonPlayerEntity.x;
 				enemy.gy = KinkyDungeonPlayerEntity.y;
 				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
+				KDTryToLeash(enemy, KinkyDungeonPlayerEntity);
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 
@@ -175,11 +176,12 @@ let KDIntentEvents = {
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
 				return true;
 			}
-			else if (KDPlayerLeashed(KinkyDungeonPlayerEntity) && !tethered) {
+			else if (!tethered) {
 				enemy.gx = KinkyDungeonPlayerEntity.x;
 				enemy.gy = KinkyDungeonPlayerEntity.y;
 				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
+				KDTryToLeash(enemy, KinkyDungeonPlayerEntity);
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 
@@ -313,10 +315,11 @@ let KDIntentEvents = {
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
 				return true;
 			}
-			else if (KDPlayerLeashed(KinkyDungeonPlayerEntity) && !tethered) {
+			else if (!tethered) {
 				enemy.gx = KinkyDungeonPlayerEntity.x;
 				enemy.gy = KinkyDungeonPlayerEntity.y;
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
+				KDTryToLeash(enemy, KinkyDungeonPlayerEntity);
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 
@@ -821,4 +824,21 @@ function KDSettlePlayerInFurniture(enemy, AIData, tags, guardDelay = 24, ftype =
 		return true;
 	}
 	return false;
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {entity} player
+ */
+function KDTryToLeash(enemy, player) {
+	if (KDistChebyshev(enemy.x - player.x, enemy.y - player.y) < 1.5) {
+		if (KDPlayerLeashable(player)) {
+			// Attach a leash
+			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BasicLeash"), 0, true);
+		} else {
+			// Try to attach a collar
+			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BasicCollar"), 0, true);
+		}
+	}
 }

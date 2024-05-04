@@ -253,7 +253,8 @@ let KDCurses = {
 		condition: (item) => {return false;},
 		remove: (item, host) => {},
 		events: [
-			{type: "RemoveOnDmg", power: 1, count: 2, damage: "electric", trigger: "beforePlayerDamage", kind: "CurseShock"}
+			{type: "RemoveOnDmg", power: 1, count: 2, damage: "electric", trigger: "beforePlayerDamage", kind: "CurseShock"},
+			{type: "RemoveOnDmg", power: 1, count: 2, damage: "estim", trigger: "beforePlayerDamage", kind: "CurseShock"},
 		],
 	},
 	"TakeDamageGlue" : {

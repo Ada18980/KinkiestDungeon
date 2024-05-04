@@ -203,6 +203,7 @@ let KDPlayerEffects = {
 					aurasprite: "Null",
 					power: -0.01,
 					duration: 50,
+					buffSprite: true,
 					text: "-1%",
 					events: [
 						{trigger: "beforeStruggleCalc", type: "latexIntegrationDebuff", power: 1},
@@ -988,14 +989,18 @@ let KDPlayerEffects = {
 	"RobotShock": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
-			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: KinkyDungeonStatsChoice.get("Estim") ? "estim" : "electric"}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
-			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
+			if (KinkyDungeonStatsChoice.get("Estim")) {
+				KinkyDungeonChangeDistraction(playerEffect?.power || spell?.power, false, 0.3);
+			} else {
+				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
+			}
 			KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
-			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonRobotShock").KDReplaceOrAddDmg( dmg.string), "#ff5277", playerEffect.time);
+			KinkyDungeonSendTextMessage(5, TextGet(KinkyDungeonStatsChoice.get("Estim") ? "KDRobotEstim" : "KinkyDungeonRobotShock").KDReplaceOrAddDmg( dmg.string), "#ff5277", playerEffect.time);
 
 			effect = true;
-			return {sfx: "Shock", effect: effect};
+			return {sfx: KinkyDungeonStatsChoice.get("Estim") ? "Estim" : "Shock", effect: effect};
 		}
 		return {sfx: "Shield", effect: effect};
 	},
@@ -2028,19 +2033,23 @@ let KDPlayerEffects = {
 	"Shock": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
 		if (KDTestSpellHits(spell, 0.5, 0.0)) {
-			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: KinkyDungeonStatsChoice.get("Estim") ? "estim" : "electric"}, bullet);
 			if (!dmg) return {sfx: "Shield", effect: false};
-			if (Math.round(
-				playerEffect.time * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "electricDamageResist"))
-			) > 0)
-				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, Math.round(
+			if (KinkyDungeonStatsChoice.get("Estim")) {
+				KinkyDungeonChangeDistraction(playerEffect?.power || spell?.power, false, 0.35);
+			} else {
+				if (Math.round(
 					playerEffect.time * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "electricDamageResist"))
-				));
+				) > 0)
+					KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, Math.round(
+						playerEffect.time * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "electricDamageResist"))
+					));
+			}
 			if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "electricDamageResist") < 1)
 				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
-			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonShock").KDReplaceOrAddDmg( dmg.string), "#ff5277", playerEffect.time);
+			KinkyDungeonSendTextMessage(5, TextGet(KinkyDungeonStatsChoice.get("Estim") ? "KinkyDungeonEstim" : "KinkyDungeonShock").KDReplaceOrAddDmg( dmg.string), "#ff5277", playerEffect.time);
 			effect = true;
-			return {sfx: "Shock", effect: effect};
+			return {sfx: KinkyDungeonStatsChoice.get("Estim") ? "Estim" : "Shock", effect: effect};
 		}
 		return {sfx: "Crackling", effect: effect};
 	},

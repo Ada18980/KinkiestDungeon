@@ -73,20 +73,20 @@ let KDLocks = {
 			DrawButtonKDEx("ModalDoorSwipe", () => {
 				KDSendInput("swipe", {targetTile: KinkyDungeonTargetTileLocation});
 				return true;
-			}, true, KDModalArea_x + 175, KDModalArea_y + 25 - 75, 125, 60, TextGet("KinkyDungeonSwipeDoor"),
+			}, true, KDModalArea_x + 175, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonSwipeDoor"),
 			(KinkyDungeonInventoryGet("KeyCard")) ? "#ffffff" : "#ff5555", "", "");
 
 			DrawButtonKDEx("ModalDoorScan", () => {
 				KDSendInput("scan", {targetTile: KinkyDungeonTargetTileLocation});
 				return true;
-			}, true, KDModalArea_x + 325, KDModalArea_y + 25 - 75, 125, 60, TextGet("KinkyDungeonScanDoor"),
+			}, true, KDModalArea_x + 475, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonScanDoor"),
 			KDIsBlindfolded(player)
 				? "#ffffff" : "#ff5555", "", "");
 
 			DrawButtonKDEx("ModalDoorHack", () => {
 				KDSendInput("hack", {targetTile: KinkyDungeonTargetTileLocation});
 				return true;
-			}, true, KDModalArea_x + 475, KDModalArea_y + 25 - 75, 125, 60, TextGet("KinkyDungeonHackDoor"),
+			}, true, KDModalArea_x + 750, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonHackDoor"),
 			KDCanHack(player)
 				? "#ffffff" : "#ff5555", "", "");
 		},

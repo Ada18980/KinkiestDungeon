@@ -3540,7 +3540,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.highdistraction = enemy.distraction > 0 && enemy.distraction >= enemy.Enemy.maxhp * 0.9;
 	AIData.distracted = AIData.highdistraction && KDLoosePersonalities.includes(enemy.personality);
 	// Check if the enemy ignores the player
-	if (player.player && !KDAllied(enemy)) {
+	if (player.player && (enemy.aware || enemy.vp > 0) && !KDAllied(enemy) && !KDEnemyHasFlag(enemy, "noignore")) {
 		if (AIData.playerDist < 1.5 && KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).ignoreNear;})) AIData.ignore = true;
 		if (!AIData.leashing && !KinkyDungeonHasWill(0.1) && KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).ignoreIfNotLeash;})) AIData.ignore = true;
 
@@ -6837,6 +6837,18 @@ function KDPlayerLeashed(player) {
 		if (r && KDRestraint(r)?.leash) {
 			return true;
 		}
+	}
+	return false;
+}
+
+/**
+ *
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDPlayerLeashable(player) {
+	if (player?.player) {
+		return KinkyDungeonPlayerTags.get("Collars");
 	}
 	return false;
 }

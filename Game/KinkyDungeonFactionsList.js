@@ -207,6 +207,7 @@ let KDFactionProperties = {
 			if (tags.includes("robot")) w += 100;
 			if (tags.includes("oldrobot")) w += 10;
 			if (tags.includes("electric")) w += 5;
+			if (tags.includes("estim")) w += 5;
 			if (tags.includes("metal")) w += 5;
 			if (tags.includes("factory")) w += 15;
 			if (tags.includes("industrial")) w += 15;

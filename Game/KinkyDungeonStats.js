@@ -360,14 +360,14 @@ let KDBaseDamageTypes = {
 	bypassTeaseTypes: ["charm", "happygas"],
 	distractionTypesWeakNeg: ["pain", "acid"],
 	distractionTypesWeak:["soul", "plush"],
-	distractionTypesStrong:["tickle", "grope", "charm", "souldrain", "happygas"],
+	distractionTypesStrong:["tickle", "grope", "charm", "souldrain", "happygas", "estim"],
 	teaseTypes: ["grope", "charm", "plush"],
 	staminaTypesWeak:["drain", "stun", "fire", "glue", "chain", "tickle", "electric", "shock"],
 	staminaTypesStrong:["ice", "frost", "poison", "crush", "souldrain"],
-	manaTypesWeak:["electric", "drain"],
+	manaTypesWeak:["electric", "estim", "drain"],
 	manaTypesStrong:[],
 	willTypesVeryWeak:["tickle", "souldrain"],
-	willTypesWeak:["ice", "frost", "poison", "stun", "electric", "acid", "soap", "grope", "pierce", "slash", "crush", "unarmed", "glue", "chain"],
+	willTypesWeak:["ice", "frost", "poison", "stun", "electric", "estim", "acid", "soap", "grope", "pierce", "slash", "crush", "unarmed", "glue", "chain"],
 	willTypesStrong:["cold", "fire", "charm", "soul", "pain", "shock", "plush", "arcane"],
 };
 
@@ -441,6 +441,13 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 		newstats: [],
 		damaged: false,
 	};
+
+	if (KinkyDungeonStatsChoice.get("Estim")) {
+		data.distractionTypesStrong.push("electric");
+		data.arouseTypes.push("electric");
+		if (data.staminaTypesWeak.includes("electric"))
+			data.staminaTypesWeak = data.staminaTypesWeak.splice(data.staminaTypesWeak.indexOf("pain"), 1);
+	}
 
 	if (KinkyDungeonStatsChoice.get("Masochist")) {
 		let types = ["pain", "electric", "slash", "pierce", "crush", "fire", "ice", "frost", "acid", "arcane"];

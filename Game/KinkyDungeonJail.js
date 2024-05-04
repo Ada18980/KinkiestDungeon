@@ -476,7 +476,7 @@ function KinkyDungeonGetJailRestraintForGroup(Group, jailRestraintList, lock) {
  * @param {string} [lock]
  * @returns {{restraint: restraint, variant: string, def: KDJailRestraint}[]}
  */
-function KinkyDungeonGetJailRestraintsForGroup(Group, jailRestraintList, agnostic = false, lock) {
+function KinkyDungeonGetJailRestraintsForGroup(Group, jailRestraintList, agnostic = false, lock, ignoreLevel = false, ignoreWorn = false) {
 	if (!jailRestraintList) {
 		jailRestraintList = KDGetJailRestraints();
 	}
@@ -488,7 +488,8 @@ function KinkyDungeonGetJailRestraintsForGroup(Group, jailRestraintList, agnosti
 	for (let pri of [true, false]) {
 		for (let r of jailRestraintList) {
 			let level = 0;
-			if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
+			if (ignoreLevel) level = 1000;
+			else if (KDGetEffSecurityLevel()) level = Math.max(0, KDGetEffSecurityLevel() + 50);
 			if (!r.Level || level >= r.Level) {
 				let candidate = KinkyDungeonGetRestraintByName(r.Name);
 				if (candidate.Group == Group) {

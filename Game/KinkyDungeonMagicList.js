@@ -17,7 +17,7 @@ let KDCommandWord = {name: "CommandWord", tags: ["command", "binding", "utility"
 	onhit:"", time:25, power: 2, range: 2.8, size: 1, damage: ""};
 let KDBondageSpell = {name: "Bondage", tags: ["binding", "utility", "offense"], quick: true, school: "Any", manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"special", special: "Bondage", noMiscast: true,
 	onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""};
-let KDZeroResistanceSpell = {name: "ZeroResistance", tags: ["utility", "defense"], quick: true, school: "Any", manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"passive", noMiscast: true,
+let KDZeroResistanceSpell = {name: "ZeroResistance", tags: ["utility", "defense"], quick: true, school: "Any", manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", noMiscast: true,
 	events: [
 		{type: "ZeroResistance", trigger: "tick", },
 	],
@@ -2027,14 +2027,14 @@ let KinkyDungeonSpellListEnemies = [
 			name: "Sparks",
 			duration: 3,
 		},
-		hitColor: 0x8888ff, hitLight: 6, hitsfx: "Shock", manacost: 2, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", time: 4, delay: 300, power: 4.5, range: 2, size: 1, aoe: 0.5, lifetime: 1, damage: "electric"},
+		hitColor: 0x8888ff, hitLight: 6, hitsfx: "Shock", manacost: 2, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", time: 4, delay: 3000, power: 4.5, range: 2, size: 1, aoe: 0.5, lifetime: 1, damage: "electric"},
 	{name: "FlameRuneStrike", bulletColor: 0xb83716, bulletLight: 2, tags: ["fire", "trap", "rune"],
 		hideWarnings: true,
 		crit: 2,
 		events: [
 			{trigger: "countRune", type: "rune"},
 		],
-		hitColor: 0xe64539, hitLight: 6, hitsfx: "Lightning", manacost: 2, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", delay: 300, power: 5.5, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "fire"},
+		hitColor: 0xe64539, hitLight: 6, hitsfx: "Lightning", manacost: 2, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", delay: 3000, power: 5.5, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "fire"},
 	{name: "RopeRuneStrike", bulletColor: 0xff73ef, bulletLight: 2, tags: ["rope", "trap", "rune"],
 		hideWarnings: true,
 		crit: 2,
@@ -2047,14 +2047,14 @@ let KinkyDungeonSpellListEnemies = [
 		],
 		hitColor: 0xff73ef, hitLight: 6, hitsfx: "Struggle", manacost: 2, components: ["Legs"], level:1, type:"dot",
 		playerEffect: {name: "MagicRope", time: 3, count: 3, tags: ["ropeMagicWeak"], msg: "Rope"},
-		noTerrainHit: true, onhit:"", delay: 300, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
+		noTerrainHit: true, onhit:"", delay: 3000, power: 2.5, range: 2, time: 8, size: 3, aoe: 1.5, lifetime: 1, bind: 8, damage: "chain"},
 	{name: "FreezeRuneStrike", hitsfx: "Freeze", manacost: 2, bulletColor: 0x8888ff, bulletLight: 2, tags: ["ice", "trap", "rune"],
 		hideWarnings: true,
 		crit: 2,
 		events: [
 			{trigger: "countRune", type: "rune"},
 		],
-		hitColor: 0x8888ff, hitLight: 6, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", time: 30, delay: 300, power: 3.0, range: 2, size: 3, aoe: 0.5, lifetime: 1, damage: "ice"},
+		hitColor: 0x8888ff, hitLight: 6, components: ["Legs"], level:1, type:"dot", noTerrainHit: true, onhit:"", time: 30, delay: 3000, power: 3.0, range: 2, size: 3, aoe: 0.5, lifetime: 1, damage: "ice"},
 	{name: "EarthformSingle", tags: ["earth", "utility", "summon"], noSprite: true, minRange: 0, landsfx: "Bones", hideUnlearnable: true, manacost: 4, components: ["Legs"], prerequisite: ["Earthform"],
 		level:1, type:"hit", onhit:"summon", summon: [{name: "EarthenMonolith", faction: "Rock" , count: 1, time: 9999, bound: true}], power: 0, time: 9999, delay: 1, range: 4, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},
 

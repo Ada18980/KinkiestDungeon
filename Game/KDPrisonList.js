@@ -99,10 +99,33 @@ let KDPrisonTypes = {
 					KDPrisonCommonGuard(player);
 
 					if (KDPrisonTick(player)) {
+						// Remove all training doors
+						let labels = KDMapData.Labels?.TrainingDoor;
+						if (labels?.length > 0) {
+							for (let td of labels) {
+								if ("dD".includes(KinkyDungeonMapGet(td.x, td.y))) {
+									KinkyDungeonMapSet(td.x, td.y, '2');
+									let door = KinkyDungeonTilesGet(td.x + ',' + td.y);
+									if (door) {
+										delete door.Type;
+										delete door.Lock;
+										delete door.ReLock;
+									}
+								}
+							}
+						}
+
+
 						let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber", KDCYBERPOWER);
 						if (uniformCheck.groupsToStrip.length > 0 || uniformCheck.itemsToApply.length > 0) {
 							return "Uniform";
 						}
+
+						if (!KinkyDungeonFlags.get("trainingCD")) {
+							return "Training";
+						}
+
+						return "Storage";
 					}
 					return "Jail";
 				},
@@ -184,19 +207,23 @@ let KDPrisonTypes = {
 								else {
 									let succeedAny = false;
 									for (let grp of uniformCheck.groupsToStrip) {
+										if (succeedAny) break;
 										let rr = KinkyDungeonGetRestraintItem(grp);
 										if (rr) {
-											let restraintStack = KDDynamicLinkList(rr);
+											let restraintStack = KDDynamicLinkList(rr, true);
 											if (restraintStack.length > 0) {
 												let succeed = false;
 												for (let r of restraintStack) {
-													if (KinkyDungeonRestraintPower(r, false) < KDCYBERPOWER) {
-														KinkyDungeonRemoveRestraintSpecific(r, false, false, false);
-														let msg = TextGet("KinkyDungeonRemoveRestraints")
-															.replace("EnemyName", TextGet("Name" + guard.Enemy.name));
-														//let msg = TextGet("Attack" + guard.Enemy.name + "RemoveRestraints");
-														if (r) msg = msg.replace("OldRestraintName", KDGetItemName(r));
-														KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
+													if (!uniformCheck.itemsToKeep[KDRestraint(r)?.name] && KinkyDungeonRestraintPower(r, true) < KDCYBERPOWER) {
+														succeed = KinkyDungeonRemoveRestraintSpecific(r, false, false, false).length > 0;
+														if (succeed) {
+															let msg = TextGet("KinkyDungeonRemoveRestraints")
+																.replace("EnemyName", TextGet("Name" + guard.Enemy.name));
+															//let msg = TextGet("Attack" + guard.Enemy.name + "RemoveRestraints");
+															if (r) msg = msg.replace("OldRestraintName", KDGetItemName(r));
+															KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
+															break;
+														}
 													}
 												}
 
@@ -365,11 +392,12 @@ let KDPrisonTypes = {
 					let guard = KDPrisonCommonGuard(player);
 
 					let label = KDMapData.Labels?.Training ? KDMapData.Labels.Training[0] : null;
-					let rad = 5;
+					let rad = 9;
 					if (label && (KDistChebyshev(label.x - player.x, label.y - player.y) < rad)) {
 						// Start the training and initialize the field
-						if (!KinkyDungeonFlags.get("latexTraining")) {
-							KinkyDungeonSetFlag("latexTraining", KinkyDungeonFlags.get("trainingStart"));
+						if (!KinkyDungeonFlags.get("latexTraining") && !KinkyDungeonFlags.get("latexTrainingStart")) {
+							KinkyDungeonSetFlag("latexTraining", 30);
+							KinkyDungeonSetFlag("latexTrainingStart", KinkyDungeonFlags.get("trainingStart"));
 							if (guard) {
 								guard.path = undefined;
 								KinkyDungeonSetEnemyFlag(guard, "wander", 0);
@@ -387,6 +415,22 @@ let KDPrisonTypes = {
 								e.faction = "Ambush";
 								e.hostile = KinkyDungeonFlags.get("latexTraining");
 								e.summoned = false; // They can drop loot
+								KinkyDungeonSetEnemyFlag(e, "noignore", KinkyDungeonFlags.get("latexTraining"));
+								KinkyDungeonApplyBuffToEntity(e, KDTrainingUnit); // Training unit
+							}
+
+							//Create training doors
+							let labels = KDMapData.Labels?.TrainingDoor;
+							if (labels?.length > 0) {
+								for (let td of labels) {
+									KinkyDungeonMapSet(td.x, td.y, "D");
+									let door = KinkyDungeonTilesGet(td.x + ',' + td.y);
+									if (!door) door = KinkyDungeonTilesSet(td.x + ',' + td.y, {});
+									door.Type = "Door";
+									door.Lock = "Cyber";
+									door.ReLock = true;
+									door.Jail = true;
+								}
 							}
 						}
 
@@ -400,10 +444,15 @@ let KDPrisonTypes = {
 								}
 							}
 						}
+						// Remove training started flag to finish off the training
+						if (!KinkyDungeonFlags.get("latexTraining"))
+							KinkyDungeonSetFlag("trainingStart", 0);
+
+						// Stay in training state
+						KDCurrentPrisonState(player);
 					}
 
-					// Stay in training state
-					return KDCurrentPrisonState(player);
+					return KDPopSubstate(player);
 				},
 			},
 			StorageTravel: {name: "StorageTravel",
@@ -421,8 +470,9 @@ let KDPrisonTypes = {
 						if (guard) {
 							// Assign the guard to a furniture intentaction
 							let action = "leashStorage";
-							if (guard.IntentAction != action)
+							if (guard.IntentAction != action) {
 								KDIntentEvents[action].trigger(guard, {});
+							}
 							KinkyDungeonSetEnemyFlag(guard, "focusLeash", 2);
 							KinkyDungeonSetEnemyFlag(guard, "notouchie", 2);
 						} else {
@@ -452,15 +502,21 @@ let KDPrisonTypes = {
 
 					let label = KDMapData.Labels?.Training ? KDMapData.Labels.Training[0] : null;
 					let rad = 3;
-					if (label && (KDistEuclidean(label.x - player.x, label.y - player.y) > rad)) {
+					if (label && (KDistEuclidean(label.x - player.x, label.y - player.y) > rad) && KDPlayerLeashable(player)) {
 						// We are not in a furniture, so we conscript the guard
 						let guard = KDPrisonCommonGuard(player);
 						if (guard) {
 							// Assign the guard to a furniture intentaction
 							let action = "leashToPoint";
-							if (guard.IntentAction != action)
+							if (guard.IntentAction != action) {
+								guard.gx = player.x;
+								guard.gy = player.y;
 								KDIntentEvents[action].trigger(guard, {point: label, radius: 1, target: player});
-							KinkyDungeonSetEnemyFlag(guard, "focusLeash", 2);
+							}
+							if (KinkyDungeonLeashingEnemy() == guard) {
+								// Make the guard focus on leashing more strongly, not attacking or pickpocketing
+								KinkyDungeonSetEnemyFlag(guard, "focusLeash", 2);
+							}
 							KinkyDungeonSetEnemyFlag(guard, "notouchie", 2);
 						} else {
 							// forbidden state

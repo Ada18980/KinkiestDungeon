@@ -6843,6 +6843,7 @@ KinkyDungeonSlimeBubble,"You get caught in a sticky slime bubble!"
 KinkyDungeonMiniSlime,"The slime ball sticks to you!"
 KinkyDungeonMiniSlime2,"The slime ball sticks to you and slows you!"
 KinkyDungeonShock,"You feel a powerful sensation run through your body!"
+KinkyDungeonEstim,"You feel a pleasurable sensation run through your body!"
 KinkyDungeonCoronaShock,"Beams of light wrap around your body and feel warm on your skin!"
 KinkyDungeonCrystalBind,"Crystals begin to form around your limbs!"
 KinkyDungeonSingleMChain,"A magic chain secures itself around your body!"
@@ -7462,6 +7463,10 @@ KinkyDungeonPunishPlayerHarsh,Your RestraintName punishes you and warns you with
 KinkyDungeonPunishPlayerCurse,"Your RestraintName emits a red flash, causing you to feel faint!"
 KinkyDungeonPunishPlayerArmor,"Your armor makes noise as you move around!"
 KinkyDungeonAlertEnemies,Your RestraintName lets out an alert!
+
+
+KinkyDungeonPunishPlayerEstim,Your RestraintName stimulates you to hinder your efforts!
+KinkyDungeonPunishPlayerEstimHarsh,Your RestraintName stimulates you and beeps loudly!
 
 KinkyDungeonGoldLockRemove,A golden lock fades into a blue lock on one of your restraints!
 KinkyDungeonPurpleLockRemove,Your command word is heard and the purple lock(s) click and fall off!
@@ -12360,7 +12365,7 @@ rTutorial2_sp1,"Your WP, or willpower, is an important resource.|Without it, esc
 rTutorial2_sp2,"Oh no! That trap reduced your willpower!|Fortunately you have a potion.|You can drink it by clicking the '+' icon next to your WP bar.|You can also go into your Inventory in the bottom bar.|There is also a quick-inventory icon (backpack)."
 rTutorial2_sp3,"Another trap!|You'll notice that the trap also drained your stamina considerably, preventing you from sprinting or attacking.|(Note: you can toggle sprinting using the '>>' button on the bottom bar)|You can protect yourself while your stamina regenerates by retreating into the room above.|Close the door by clicking the Close Door button in the bottom bar.|"
 
-rTutorial2_mp1,"Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the bottom right.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1."
+rTutorial2_mp1,"Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the right menu, then navigate to the Spell Tree.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1."
 rTutorial2_mp2,"On the right you'll see your stats and spells slots.|You can click on a spell slot or hit 1-4 on your keyboard to cast a spell|then click on the map for where you want to aim it.|The small wrench icon above them will let you|swap them out for another spell from your spellbook."
 rTutorial2_mp3,"There's a zombie over there!|Fortunately zombies are weak to fire.|Firebolt has a very long range,|so simply cast firebolt and click on the zombie.|Repeat until it is dead."
 rTutorial2_mp4,"Mana potions restore mana, allowing you to cast spells.|Youll notice that your mana also regenerates slowly.|This mana comes from your mana pool,|which is a thin line displayed under the mana bar.|When that runs out, you can't cast spells anymore!"
@@ -12538,6 +12543,7 @@ KDShoutHelp3,You can hardly make a noise...
 KDArmorNoise,"*clink*"
 
 KinkyDungeonRemoteShock,You yelp as the EnemyName activates your RestraintName
+KinkyDungeonRemoteShockEstim,You shudder as the EnemyName activates your RestraintName
 
 KDDialogueRemoteLinkCuffs,That should slow you down!
 KDDialogueRemoteLinkCuffsNevermere,Try running away now~
@@ -18647,7 +18653,7 @@ rToolsOfTheTradeBomb,"(You craft a Bomb)"
 rToolsOfTheTradePotionInvisibility,"(You craft an Invisibility Potion)"
 rToolsOfTheTradeFail,"(You don't have the required material)"
 dToolsOfTheTrade_SmokeBomb,(Use 1 Gunpowder to make a Smoke Bomb)
-dToolsOfTheTrade_FlashBomb,(Use 1 Gunpowder and one Ancient Crystal to make 3 Smoke Bombs)
+dToolsOfTheTrade_FlashBomb,(Use 1 Gunpowder and one Ancient Crystal to make 3 Flash Bombs)
 dToolsOfTheTrade_Bomb,(Use 2 Gunpowder to make a Bomb)
 dToolsOfTheTrade_PotionInvisibility,(Use 3 Ectoplasm to make an Invisibility Potion)
 
@@ -20902,3 +20908,9 @@ KinkyDungeonSpellTargetNegateRune,"Target a single rune, or yourself to negate a
 KDNegateRuneNoMana,You don't have enough mana
 KDNegateRuneEnemy,The enemy rune is wiped clean.
 KDNegateRuneSelf,All of your runes have been removed.
+
+
+KinkyDungeonStatEstim,"E-Stimulation"
+KinkyDungeonStatDescEstim,"Replaces most instances of painful electric shocks with stimulating effects instead."
+
+KDRobotEstim,The energy bolt hits you and sends stimulating energies through you!

@@ -74,13 +74,14 @@ let KDObjectDraw = {
 
 function KinkyDungeonDrawDoor() {
 	if (KinkyDungeonTargetTile.Lock) {
-		KDModalArea_height = 200;
+		KDModalArea_height = 400;
 		let action = false;
 		//if (KDLocks[KinkyDungeonTargetTile.Lock].pickable
 		//|| KDLocks[KinkyDungeonTargetTile.Lock].unlockable
 		//|| KDLocks[KinkyDungeonTargetTile.Lock].commandable) {
 		action = true;
 		KDModalArea = true;
+		KDModalArea_y = 700;
 		//}
 		DrawButtonKDEx("ModalDoorPick", () => {
 			if (KinkyDungeonLockpicks > 0 && (KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}))) {
@@ -89,7 +90,7 @@ function KinkyDungeonDrawDoor() {
 				return true;
 			}
 			return true;
-		}, true, KDModalArea_x + 325, KDModalArea_y + 25, 125, 60, TextGet("KinkyDungeonPickDoor"),
+		}, true, KDModalArea_x + 475, KDModalArea_y + 100, 250, 60, TextGet("KinkyDungeonPickDoor"),
 		(KDLocks[KinkyDungeonTargetTile.Lock].pickable)
 			? (KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}) ? "#ffffff" : "#ff5555")
 			: "#888888", "", "");
@@ -101,7 +102,7 @@ function KinkyDungeonDrawDoor() {
 				return true;
 			}
 			return true;
-		}, true, KDModalArea_x + 175, KDModalArea_y + 25, 125, 60, TextGet("KinkyDungeonUnlockDoor"),
+		}, true, KDModalArea_x + 175, KDModalArea_y + 100, 250, 60, TextGet("KinkyDungeonUnlockDoor"),
 		(KDLocks[KinkyDungeonTargetTile.Lock].unlockable) ?
 			(KDLocks[KinkyDungeonTargetTile.Lock].canUnlock({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}) ? "#ffffff" : "#ff5555")
 			: "#888888", "", "");
@@ -113,7 +114,7 @@ function KinkyDungeonDrawDoor() {
 				return true;
 			}
 			return true;
-		}, true, KDModalArea_x + 475, KDModalArea_y + 25, 125, 60, TextGet("KinkyDungeonUnlockDoorPurple"),
+		}, true, KDModalArea_x + 750, KDModalArea_y + 100, 250, 60, TextGet("KinkyDungeonUnlockDoorPurple"),
 		KDLocks[KinkyDungeonTargetTile.Lock].commandable
 			? ((KinkyDungeonStatMana >= KinkyDungeonGetManaCost(spell)) ? "#ffffff" : "#ff5555")
 			: "#888888",
@@ -124,13 +125,13 @@ function KinkyDungeonDrawDoor() {
 		}
 
 
-		if (!action) DrawTextKD(TextGet("KinkyDungeonLockedDoor"), KDModalArea_x + 300, KDModalArea_y + 50, "#ffffff", "#333333");
+		if (!action) DrawTextKD(TextGet("KinkyDungeonLockedDoor"), KDModalArea_x + 300, KDModalArea_y + 150, "#ffffff", "#333333");
 
 		if (KinkyDungeonTargetTile.Lock)
-			DrawTextKD(TextGet("Kinky" + KinkyDungeonTargetTile.Lock + "Lock"), KDModalArea_x + 25, KDModalArea_y + 50, "#ffffff", "#333333");
+			DrawTextKD(TextGet("Kinky" + KinkyDungeonTargetTile.Lock + "Lock"), KDModalArea_x + 25, KDModalArea_y + 150, "#ffffff", "#333333");
 	} else {
 		KDModalArea = true;
-		DrawButtonVis(KDModalArea_x + 25, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonCloseDoor"), "#ffffff");
+		DrawButtonVis(KDModalArea_x + 25, KDModalArea_y + 100, 250, 60, TextGet("KinkyDungeonCloseDoor"), "#ffffff");
 	}
 }
 

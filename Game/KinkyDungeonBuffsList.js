@@ -13,12 +13,19 @@ let KDDrenched = {id: "Drenched", type: "fireDamageResist", aura: "#59a0d1", aur
 	{type: "ApplyConduction", duration: 1, trigger: "tickAfter", kind: "invis"},
 ]};
 
+
 let KDBurning = {id: "Burning", type: "event", aura: "#ff8933", aurasprite: "Flaming", noAuraColor: true, power: 0.5, player: true, duration: 6, enemies: true, events: [
 	{type: "RemoveBurning", trigger: "tick"},
 	{type: "ElementalEffect", power: 0.5, damage: "fire", trigger: "tick"},
 	{type: "EchoDamage", power: 1.0, damage: "fire", damageTrigger: "stun", trigger: "beforeDamageEnemy"},
 	{type: "EchoDamage", power: 1.0, damage: "fire", damageTrigger: "stun", trigger: "playerTakeDamage"},
 ]};
+
+let KDTrainingUnit = {id: "TrainingUnit", type: "TrainingUnit", aura: "#00ff00", power: -0.5, player: false, duration: 9999, infinite: true, enemies: true,
+	events: [
+		{type: "TrainingUnit", trigger: "tick"},
+	],
+};
 
 let KDDisenchant1 = {id: "Disenchant1", type: "MoveSpeed", aura: "#440088", power: -0.5, player: false, duration: 9999, infinite: true, enemies: true};
 let KDDisenchant2 = {id: "Disenchant2", type: "AttackSlow", aura: "#440088", power: 0.5, player: false, duration: 9999, infinite: true, enemies: true};
