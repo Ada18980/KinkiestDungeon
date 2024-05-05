@@ -4776,3 +4776,7 @@ function KDDrawToggleTabs(xOffset) {
 		II++;
 	}
 }
+
+function KinkyDungeonMultiplayerUpdate(delay) {
+	// Do nothing. Placeholder for when/if there is ever any MP functionality
+}
