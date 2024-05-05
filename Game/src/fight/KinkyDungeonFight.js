@@ -972,11 +972,11 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				}
 			}
 
-			if (Enemy.shield > 0) {
+			if (Enemy.shield > 0 && predata.dmgDealt > 0) {
 				let orig = predata.dmgDealt;
 				Enemy.shield -= predata.dmgDealt;
 				if (Enemy.shield <= 0) {
-					predata.dmgDealt += Enemy.shield;
+					predata.dmgDealt = -Enemy.shield;
 					delete Enemy.shield;
 				} else {
 					Enemy.playerdmg = (Enemy.playerdmg || 0) + orig;

@@ -2474,6 +2474,7 @@ let KinkyDungeonSpellListEnemies = [
 
 
 	{name: "Gunpowder", landsfx: "Bones", tags: ["fire", "aoe", "offense"], noise: 0, sfx: "FireSpell", school: "Elements", manacost: 0,
+		noMiscast: true,
 		components: ["Arms"], level:1, type:"hit", onhit:"aoe", delay: 1, power: 0, range: 3.5, size: 3, aoe: 1, lifetime: 1, damage: "inert",
 		effectTileDurationMod: 0, effectTile: {
 			name: "Gunpowder",

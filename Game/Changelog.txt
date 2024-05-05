@@ -45,6 +45,8 @@ TODO -- make it so leashing enemies dont damage to hurt you EVERY turn as thats 
 - Fixed an issue where the player model would sometimes flicker while moving
 - Made the targeting reticule prefer floors and movable tiles over walls (toggleable)
 - Added Retro Enemy Animations toggle
+- Enemies no longer try to play with you after youve asked them to help you out and they said yes
+- Fixed shield damage calculation
 - TODO rope weapon when struggling out
 
 5.2.28

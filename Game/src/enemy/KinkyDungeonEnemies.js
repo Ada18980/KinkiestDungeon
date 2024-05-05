@@ -3789,7 +3789,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (enemy.path?.length > 2) AIData.playChance *= 0.1;
 	if (KDGameData.otherPlaying > 0) AIData.playChance *= Math.max(0.05, 1 - 0.35 * KDGameData.otherPlaying);
 
-	if (KDEnemyHasFlag(enemy, "Shop")) AIData.playChance = 0;
+	if (KDEnemyHasFlag(enemy, "Shop") || KDEnemyHasFlag(enemy, "HelpMe")) AIData.playChance = 0;
 	if (KinkyDungeonFlags.get("playLikely")) AIData.playChance += 0.5;
 
 
