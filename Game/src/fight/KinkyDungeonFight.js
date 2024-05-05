@@ -2949,24 +2949,3 @@ function KDEvasiveManeuversCost() {
 	let eva = KinkyDungeonPlayerEvasion();
 	return (5.0 * eva) + 1 * KinkyDungeonSlowLevel;
 }
-
-let KDAOETypes = {
-	"slash": (bx, by, xx, yy, rad, modifier = "", ox, oy) => {
-		let dist = KDistEuclidean(ox-xx , oy-yy);
-		let dist2 = KDistEuclidean(ox-bx , oy-by);
-		// Special case to reduce aoe in melee
-		if (ox == bx && yy == oy) return false;
-		if (oy == by && xx == ox) return false;
-		//Main case
-		return Math.abs(dist2-dist) < 0.49;
-	},
-	"arc": (bx, by, xx, yy, rad, modifier = "", ox, oy) => {
-		let dist = KDistEuclidean(ox-xx , oy-yy);
-		let dist2 = KDistEuclidean(ox-bx , oy-by);
-		// Special case to reduce aoe in melee
-		if (ox == bx && yy == oy) return false;
-		if (oy == by && xx == ox) return false;
-		//Main case
-		return Math.abs(dist2-dist) < 0.49 && KDistEuclidean(xx-bx , yy-by) < rad * Math.min(1, dist2*0.5);
-	},
-};

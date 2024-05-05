@@ -1070,7 +1070,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "ManaOrb", weight: 0.5}, {name: "Nothing", weight: 3, ignoreInInventory: true}],
 		visionRadius: 7, maxhp: 12, minLevel:0, weight:20, movePoints: 5, attackPoints: 2, attack: "Spell", attackRange: 1, attackWidth: 1, power: 6,
 		terrainTags: {"open": 100, "passage": -7, "witch": 2}, floors:KDMapInit(["lib", "cat", "tmb"])},
-	{name: "BookCelestial", hidetimerbar: true, clusterWith: "book", tags: KDMapInit(["fireresist", "stunimmune", "blindimmune", "ignoreharmless", "book", "flying", "minor", "ranged", "slashsevereweakness", "acidweakness", "soapweakness", "piercesevereweakness"]), followLeashedOnly: true, armor: 0, followRange: 3, AI: "hunt", guardChance: 0.6, noAlert: true,
+	{name: "BookCelestial", hidetimerbar: true, clusterWith: "book", tags: KDMapInit(["fireresist", "holyimmune", "blindimmune", "ignoreharmless", "book", "flying", "minor", "ranged", "slashsevereweakness", "acidweakness", "soapweakness", "piercesevereweakness"]), followLeashedOnly: true, armor: 0, followRange: 3, AI: "hunt", guardChance: 0.6, noAlert: true,
 		spells: ["EnemyCorona", "OrbHeal"], spellCooldownMult: 1, spellCooldownMod: 1, sneakthreshold: 0.7, difficulty: 0.05, noSpellLeashing: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 1, color: "#ffff44"},

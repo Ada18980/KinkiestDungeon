@@ -6141,7 +6141,7 @@ KinkyDungeonSpellDescriptionSummonUp1,Increases the permanent summon cap by +2 (
 KinkyDungeonSpellSummonUp2,Many Summons
 KinkyDungeonSpellDescriptionSummonUp2,Increases the permanent summon cap by +2 (from 4 to 6)
 
-KinkyDungeonSpellBomb,Bomb
+KinkyDungeonSpellBomb,Summon Bomb
 KinkyDungeonSpellDescriptionBomb,Channel for 1 turn for a bomb that does DamageDealt blast damage in an area after DelayTime turns.
 KinkyDungeonSpellCastBomb,Fire in the hole!
 KinkyDungeonSpellTargetBomb,Choose target AoE location
