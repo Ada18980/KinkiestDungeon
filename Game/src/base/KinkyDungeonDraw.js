@@ -942,7 +942,7 @@ function KinkyDungeonDrawGame() {
 		KinkyDungeonGridSizeDisplay = 50;
 	} else KinkyDungeonGridSizeDisplay = 72;
 
-	if (KDModalArea) {
+	if (KDModalArea && KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game") {
 		let w = 34;
 		let h = 33;
 		DrawButtonKDEx("modalX", (bdata) => {

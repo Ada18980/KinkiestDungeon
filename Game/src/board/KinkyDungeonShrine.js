@@ -254,10 +254,10 @@ function KDAddBasic(item) {
 		KinkyDungeonLockpicks += 4;
 	} else if (item.name == "MaidUniform") {
 		KinkyDungeonInventoryAddOutfit("Maid");
-	} if (item.outfit) {
-		KinkyDungeonInventoryAddOutfit(item.outfit);
-	} else if (item.consumable) {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables[item.consumable], item.quantity);
+	} if (KinkyDungneonBasic[item.name]?.outfit) {
+		KinkyDungeonInventoryAddOutfit(KinkyDungneonBasic[item.name].outfit);
+	} else if (KinkyDungneonBasic[item.name]?.consumable) {
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables[KinkyDungneonBasic[item.name].consumable], KinkyDungneonBasic[item.name].quantity || item.quantity);
 	}
 }
 
