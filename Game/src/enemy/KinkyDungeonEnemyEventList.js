@@ -72,8 +72,12 @@ let KDIntentEvents = {
 					enemy.gx = enemy.IntentLeashPoint?.x;
 					enemy.gy = enemy.IntentLeashPoint?.y;
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
-				} else if (KDistChebyshev(enemy.IntentLeashPoint.x - enemy.x, enemy.IntentLeashPoint.y - enemy.y) < 1.5 && !AIData.aggressive) {
-					KDIntentEvents.leashFurniture.arrive(enemy, AIData);
+				} else {
+					enemy.gx = enemy.IntentLeashPoint.x;
+					enemy.gy = enemy.IntentLeashPoint.y;
+					if (KDistChebyshev(enemy.IntentLeashPoint.x - enemy.x, enemy.IntentLeashPoint.y - enemy.y) < 1.5 && !AIData.aggressive) {
+						KDIntentEvents.leashFurniture.arrive(enemy, AIData);
+					}
 				}
 
 				// If they are not attacking player
@@ -216,11 +220,19 @@ let KDIntentEvents = {
 				if (!enemy.IntentLeashPoint) {
 					let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["storage"]);
 					enemy.IntentLeashPoint = nj;
+				} else {
+					enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.y;
+					enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.x;
+					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
+
+					if (KDistChebyshev(enemy.IntentLeashPoint.x - enemy.x, enemy.IntentLeashPoint.y - enemy.y) < 1.5 && !AIData.aggressive) {
+						KDIntentEvents.leashStorage.arrive(enemy, AIData);
+					}
 				}
 
-				enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.y;
-				enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.x;
-				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
+
+
+
 
 			}
 			if (enemy.playWithPlayer < 10) {

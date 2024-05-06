@@ -52,11 +52,16 @@ let KDPrisonTypes = {
 
 			// Assign guards to deal with idle dolls
 			let idleDoll: entity[] = [];
+			let punishDoll: entity[] = [];
 			let idleGuard: entity[] = [];
 			for (let en of KDMapData.Entities) {
 				if (en.Enemy?.tags?.prisoner && !KDEnemyHasFlag(en, "conveyed_rec")) {
-					idleDoll.push(en);
-				} else if (en.faction == "Enemy" && en.Enemy?.tags.jailer && en != KinkyDungeonJailGuard() && (en.idle || KDEnemyHasFlag(en, "idleg"))) {
+					if ((KDEnemyHasFlag(en, "punishdoll") || KDRandom() < 0.15) && !KDEnemyHasFlag(en, "punished")) {
+						punishDoll.push(en);
+						KinkyDungeonSetEnemyFlag(en, "punishdoll", 300);
+					} else
+						idleDoll.push(en);
+				} else if (en.faction == "Enemy" && en.Enemy?.tags.jailer && en != KinkyDungeonJailGuard() && en != KinkyDungeonLeashingEnemy() && (en.idle || KDEnemyHasFlag(en, "idleg"))) {
 					idleGuard.push(en);
 					KinkyDungeonSetEnemyFlag(en, "idleg", 2);
 				}
@@ -73,7 +78,62 @@ let KDPrisonTypes = {
 				}
 				if (gg) {
 					if (dist < 1.5) {
-						doll.hp = 0;
+						// Set the doll as a punishment doll or delete it if there are too many
+						if (punishDoll.length < 20 && !KDEnemyHasFlag(doll, "punished")) {
+							KinkyDungeonSetEnemyFlag(doll, "punishdoll", 300);
+							KinkyDungeonSetEnemyFlag(doll, "punished", 9999);
+							KinkyDungeonSetEnemyFlag(doll, "tryNotToSwap", 9999);
+							punishDoll.push(doll);
+						} else {
+							doll.hp = 0;
+						}
+					} else {
+						KinkyDungeonSetEnemyFlag(gg, "idlegselect", 2);
+						KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
+						gg.gx = doll.x;
+						gg.gy = doll.y;
+					}
+				}
+			}
+
+			// For each punishment doll, pick a guard to pull
+			for (let doll of punishDoll) {
+				let gg: entity = null;
+				let storage = KinkyDungeonNearestJailPoint(doll.x, doll.y, ["storage"], undefined, undefined);
+				if (doll.x == storage?.x && doll.y == storage?.y) continue;
+				let dist = 11;
+				for (let guard of idleGuard) {
+					if (!KDEnemyHasFlag(guard, "idlegselect") && KDistChebyshev(guard.x - doll.x, guard.y - doll.y) < dist) {
+						gg = guard;
+						dist = KDistChebyshev(guard.x - doll.x, guard.y - doll.y);
+					}
+				}
+				if (gg) {
+					if (dist < 2.5) {
+						// Move the doll toward the nearest storage
+						let storage = KinkyDungeonNearestJailPoint(gg.x, gg.y, ["storage"], undefined, undefined, true);
+						if (storage) {
+							if (dist < 1.5 && KDistChebyshev(gg.x - storage.x, gg.y - storage.y) < 1.5) {
+								KDMoveEntity(doll, storage.x, storage.y, false, false, false, false);
+								KDTieUpEnemy(doll, 100, "Latex", undefined, false, 0);
+							} else {
+								KinkyDungeonSetEnemyFlag(gg, "idlegselect", 2);
+								KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
+								KinkyDungeonSetEnemyFlag(doll, "fakeLeash", 3);
+								// TODO add real NPC leash
+								gg.gx = storage.x;
+								gg.gy = storage.y;
+								if (dist > 1.5) {
+									let path = KinkyDungeonFindPath(doll.x, doll.y, gg.x, gg.y, true, true, false, KinkyDungeonMovableTilesEnemy,
+										false, false, false
+									);
+									if (path && path.length > 0) {
+										KDMoveEntity(doll, path[0].x, path[0].y, false, false, false, false);
+										KDStaggerEnemy(doll);
+									}
+								}
+							}
+						}
 					} else {
 						KinkyDungeonSetEnemyFlag(gg, "idlegselect", 2);
 						KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
@@ -95,7 +155,7 @@ let KDPrisonTypes = {
 							if (Enemy && !KinkyDungeonEnemyAt(l.x, l.y)) {
 								let en = DialogueCreateEnemy(l.x, l.y, Enemy.name);
 								KDProcessCustomPatron(Enemy, en, 0.5);
-								en.AI = "verylooseguard";
+								en.AI = "looseguard";
 								en.faction = "Enemy";
 								en.keys = true;
 								KinkyDungeonSetEnemyFlag(en, "mapguard", -1);
@@ -517,8 +577,9 @@ let KDPrisonTypes = {
 					let player = KinkyDungeonPlayerEntity;
 
 
-					let jailPoint = KinkyDungeonNearestJailPoint(player.x, player.y, ["storage"]);
-					if (!jailPoint || jailPoint.x != player.x || jailPoint.y != player.y) {
+					let jailPointNearest = KinkyDungeonNearestJailPoint(player.x, player.y, ["storage"], undefined, undefined);
+					if (!(jailPointNearest && jailPointNearest.x == player.x && jailPointNearest.y == player.y))
+					{
 						// We are not in a furniture, so we conscript the guard
 						let guard = KDPrisonCommonGuard(player);
 						if (guard) {

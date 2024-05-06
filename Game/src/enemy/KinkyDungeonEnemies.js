@@ -102,9 +102,10 @@ function KinkyDungeonGetEnemyByName(Name) {
  * @param {string[]} [filter]
  * @param {boolean} [any]
  * @param {boolean} [qualified] - Exclude jails where the player doesnt meet conditions
+ * @param {boolean} [unnocupied] - No enemy in the jail
  * @returns {KDJailPoint}
  */
-function KinkyDungeonNearestJailPoint(x, y, filter, any, qualified) {
+function KinkyDungeonNearestJailPoint(x, y, filter, any, qualified, unnocupied) {
 	let filt = filter ? filter : ["jail", "dropoff"];
 	let dist = 100000;
 	let point = null;
@@ -114,6 +115,7 @@ function KinkyDungeonNearestJailPoint(x, y, filter, any, qualified) {
 		if (!any && p.type && !filt.includes(p.type)) continue;
 		if (qualified && p.requireLeash && !leash) continue;
 		if (qualified && p.requireFurniture && !furniture) continue;
+		if (unnocupied && KinkyDungeonEntityAt(p.x, p.y)) continue;
 		let d = Math.max(Math.abs(x - p.x), Math.abs(y - p.y));
 		if (d < dist) {
 			dist = d;
@@ -7025,9 +7027,16 @@ function KDCanHearSound(entity, sound, x, y, mult = 1.0) {
 	return 0;
 }
 
-/** */
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @returns {boolean}
+ */
 function KDPointWanderable(x, y) {
-	return KDMapData.RandomPathablePoints[x + ',' + y];
+	let enemy = KinkyDungeonEntityAt(x, y);
+	if (enemy && !enemy.player && KDEnemyHasFlag(enemy, "tryNotToSwap")) return false;
+	return KDMapData.RandomPathablePoints[x + ',' + y] != undefined;
 }
 
 /**

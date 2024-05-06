@@ -93,7 +93,7 @@ function KDPrisonGetGroups(player, jailLists, lock, maxPower) {
 					for (let r of restraintStack) {
 						if (KinkyDungeonRestraintPower(r, true) < maxPower) {
 							strip = true;
-							itemsToStrip[r.id] = true;
+							itemsToStrip[r?.id] = true;
 						}
 					}
 				}
