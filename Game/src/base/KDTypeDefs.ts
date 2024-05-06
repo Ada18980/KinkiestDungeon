@@ -3368,6 +3368,7 @@ type KDJailGetGroupsReturn = {
 	groupsToStrip: string[],
 	itemsToApply: {item: string, variant: string}[],
 	itemsToKeep: Record<string, boolean>,
+	itemsToStrip: Record<string, boolean>,
 };
 
 type KDJourneySlot = {

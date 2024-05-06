@@ -364,51 +364,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 	// Actual loop for drawing the models on the character
 
 	if (!MC.Update.has(containerID)) {
-		let flippedPoses = [];
-		if (extraPoses) {
-			for (let p of extraPoses) {
-				if (!MC.Poses[p]) {
-					flippedPoses.push(p);
-					MC.Poses[p] = true;
-				}
-			}
-		}
-		for (let m of MC.Models.values()) {
-			if (m.AddPose) {
-				for (let pose of m.AddPose) {
-					MC.Poses[pose] = true;
-				}
-			}
-		}
-
-		if (MC.XRayFilters) {
-			for (let x of MC.XRayFilters) {
-				MC.Poses[x] = true;
-			}
-		}
-
-		for (let m of MC.Models.values()) {
-			if (m.AddPoseConditional) {
-				for (let entry of Object.entries(m.AddPoseConditional)) {
-					if (!MC.Poses[entry[0]] && !MC.TempPoses[entry[0]]) {
-						for (let pose of entry[1]) {
-							MC.Poses[pose] = true;
-						}
-					}
-				}
-			}
-		}
-		for (let m of MC.Models.values()) {
-			if (m.AddPoseIf) {
-				for (let entry of Object.entries(m.AddPoseIf)) {
-					if (MC.Poses[entry[0]] || MC.TempPoses[entry[0]]) {
-						for (let pose of entry[1]) {
-							MC.Poses[pose] = true;
-						}
-					}
-				}
-			}
-		}
+		let flippedPoses = DrawModelProcessPoses(MC, extraPoses);
 
 		if (PIXI.BaseTexture.defaultOptions.scaleMode != Blend) PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
 		let modified = DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELHEIGHT * 0.25, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
@@ -419,14 +375,8 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 
 		let Container = MC.Containers.get(containerID);
 		// Cull sprites that weren't drawn yet
-		for (let sprite of Container.SpriteList.entries()) {
-			if ((!Container.SpritesDrawn.has(sprite[0]) && sprite[1])) {
-				sprite[1].parent.removeChild(sprite[1]);
-				Container.SpriteList.delete(sprite[0]);
-				modified = true;
-				sprite[1].destroy();
-			}
-		}
+
+		modified = KDCullModelContainerContainer(MC, containerID) || modified;
 
 		// We only refresh if it actually needs to be updated
 		if (!MC.ForceUpdate.has(containerID)) modified = true; // Force refresh if we are forced to
@@ -464,24 +414,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			//Container.Mesh.y += Container.Container.pivot.y;
 			//if (MC.Containers.get(containerID).RenderTexture)
             if (MC.Containers.get(containerID).RenderTexture) {
-				if (KDToggles.AsyncRendering && KinkyDungeonDrawState == "Game" && KinkyDungeonState == "Game") {
-					if (!RenderCharacterQueue.get(C)) RenderCharacterQueue.set(C, []);
-					RenderCharacterQueue.get(C).push(async function() {
-						RenderCharacterLock.set(C, true);
-						PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
-							clear: true,
-							renderTexture: MC.Containers.get(containerID).RenderTexture,
-						});
-						RenderCharacterLock.delete(C);
-						MC.ForceUpdate.add(containerID);
-					});
-				} else {
-					PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
-						clear: true,
-						renderTexture: MC.Containers.get(containerID).RenderTexture,
-					});
-					MC.ForceUpdate.add(containerID);
-				}
+				RenderModelContainer(MC, C, containerID);
 			}
 		}
 		Container.SpritesDrawn.clear();
@@ -1395,4 +1328,95 @@ function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number = 
 
 	if (Flip) pos.x = (0.5 * MODELHEIGHT) * Zoom - pos.x;
 	return pos;
+}
+
+function DrawModelProcessPoses(MC: ModelContainer, extraPoses: string[]) {
+	let flippedPoses = [];
+	if (extraPoses) {
+		for (let p of extraPoses) {
+			if (!MC.Poses[p]) {
+				flippedPoses.push(p);
+				MC.Poses[p] = true;
+			}
+		}
+	}
+	for (let m of MC.Models.values()) {
+		if (m.AddPose) {
+			for (let pose of m.AddPose) {
+				MC.Poses[pose] = true;
+			}
+		}
+	}
+
+	if (MC.XRayFilters) {
+		for (let x of MC.XRayFilters) {
+			MC.Poses[x] = true;
+		}
+	}
+
+	for (let m of MC.Models.values()) {
+		if (m.AddPoseConditional) {
+			for (let entry of Object.entries(m.AddPoseConditional)) {
+				if (!MC.Poses[entry[0]] && !MC.TempPoses[entry[0]]) {
+					for (let pose of entry[1]) {
+						MC.Poses[pose] = true;
+					}
+				}
+			}
+		}
+	}
+	for (let m of MC.Models.values()) {
+		if (m.AddPoseIf) {
+			for (let entry of Object.entries(m.AddPoseIf)) {
+				if (MC.Poses[entry[0]] || MC.TempPoses[entry[0]]) {
+					for (let pose of entry[1]) {
+						MC.Poses[pose] = true;
+					}
+				}
+			}
+		}
+	}
+	return flippedPoses;
+}
+
+function RenderModelContainer(MC: ModelContainer, C: Character, containerID: string) {
+	if (KDToggles.AsyncRendering && KinkyDungeonDrawState == "Game" && KinkyDungeonState == "Game") {
+		if (!RenderCharacterQueue.get(C)) RenderCharacterQueue.set(C, []);
+		RenderCharacterQueue.get(C).push(async function() {
+			RenderCharacterLock.set(C, true);
+			PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
+				clear: true,
+				renderTexture: MC.Containers.get(containerID).RenderTexture,
+			});
+			RenderCharacterLock.delete(C);
+			MC.ForceUpdate.add(containerID);
+		});
+	} else {
+		PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
+			clear: true,
+			renderTexture: MC.Containers.get(containerID).RenderTexture,
+		});
+		MC.ForceUpdate.add(containerID);
+	}
+}
+
+function KDCullModelContainerContainer(MC: ModelContainer, containerID: string) {
+	let modified = false;
+	let Container = MC.Containers.get(containerID);
+	// Cull sprites that weren't drawn yet
+
+	if (!KDlastCull.get(containerID)) KDlastCull.set(containerID, 0);
+	let cull = CommonTime() > (KDlastCull.get(containerID) || 0) + KDCULLTIME;
+
+	for (let sprite of Container.SpriteList.entries()) {
+		if ((!Container.SpritesDrawn.has(sprite[0]) && sprite[1])) {
+			if (cull) {
+				sprite[1].parent.removeChild(sprite[1]);
+				Container.SpriteList.delete(sprite[0]);
+				modified = true;
+				sprite[1].destroy();
+			} else sprite[1].visible = false;
+		}
+	}
+	return modified;
 }

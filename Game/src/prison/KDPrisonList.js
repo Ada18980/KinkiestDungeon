@@ -117,7 +117,7 @@ let KDPrisonTypes = {
 
 
 						let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber", KDCYBERPOWER);
-						if (uniformCheck.groupsToStrip.length > 0 || uniformCheck.itemsToApply.length > 0) {
+						if ((uniformCheck.groupsToStrip.length > 0 && !KinkyDungeonFlags.get("failStrip")) || uniformCheck.itemsToApply.length > 0) {
 							return "Uniform";
 						}
 
@@ -333,13 +333,11 @@ let KDPrisonTypes = {
 						}
 
 						// Stay in the current state, but increment the storage timer, return to jail state if too much
-						if (KinkyDungeonFlags.get("PrisonStorageTimer") > 0) {
-							KinkyDungeonFlags.set("PrisonStorageTimer", KinkyDungeonFlags.get("PrisonStorageTimer") + delta * 2);
-							if (KinkyDungeonFlags.get("PrisonStorageTimer") > 300) {
-								// Go to jail state for training
-								KinkyDungeonSetFlag("PrisonCyberTrainingFlag", 10);
-								return KDSetPrisonState(player, "Jail");
-							}
+						KinkyDungeonFlags.set("PrisonStorageTimer", (KinkyDungeonFlags.get("PrisonStorageTimer") || 0) + delta * 2);
+						if (KinkyDungeonFlags.get("PrisonStorageTimer") > 300) {
+							// Go to jail state for training
+							KinkyDungeonSetFlag("PrisonCyberTrainingFlag", 10);
+							return KDSetPrisonState(player, "Jail");
 						}
 						return KDCurrentPrisonState(player);
 					}
@@ -449,7 +447,7 @@ let KDPrisonTypes = {
 							KinkyDungeonSetFlag("trainingStart", 0);
 
 						// Stay in training state
-						KDCurrentPrisonState(player);
+						return KDCurrentPrisonState(player);
 					}
 
 					return KDPopSubstate(player);
@@ -473,7 +471,10 @@ let KDPrisonTypes = {
 							if (guard.IntentAction != action) {
 								KDIntentEvents[action].trigger(guard, {});
 							}
-							KinkyDungeonSetEnemyFlag(guard, "focusLeash", 2);
+							if (KinkyDungeonLeashingEnemy() == guard) {
+								// Make the guard focus on leashing more strongly, not attacking or pickpocketing
+								KinkyDungeonSetEnemyFlag(guard, "focusLeash", 2);
+							}
 							KinkyDungeonSetEnemyFlag(guard, "notouchie", 2);
 						} else {
 							// forbidden state

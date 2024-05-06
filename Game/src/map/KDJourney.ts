@@ -223,8 +223,12 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 
 	DrawButtonKDEx("cancelJourney", (bdata) => {
 		KinkyDungeonState = "Game";
+		KDGameData.JourneyTarget = null;
 		return true;
-	}, true, 800, 900, 400, 55, TextGet("KinkyDungeonCancel"), "white");
+	}, true, 800, 900, 400, 55, TextGet("KinkyDungeonCancel"), "white", undefined, undefined, undefined, undefined, undefined, undefined, undefined,  {
+		hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+		hotkeyPress: KinkyDungeonKeySkip[0],
+	});
 
 	if (KDGameData.JourneyTarget && KinkyDungeonStairTiles.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)))
 		DrawButtonKDEx("confirmJourney", (bdata) => {
@@ -232,7 +236,10 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 			KinkyDungeonConfirmStairs = true;
 			KinkyDungeonMove({x: 0, y: 0}, 1, true);
 			return true;
-		}, true, 1300, 900, 400, 55, TextGet("KDNavMapConfirm"), "white");
+		}, true, 1300, 900, 400, 55, TextGet("KDNavMapConfirm"), "white", undefined, undefined, undefined, undefined, undefined, undefined, undefined,  {
+			hotkey: KDHotkeyToText(KinkyDungeonKeyEnter[0]),
+			hotkeyPress: KinkyDungeonKeyEnter[0],
+		});
 
 
 	if (!KDGameBoardAddedJourney) {
@@ -287,7 +294,7 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 			yOffset + ScaleY*(slot.y - Y) - spriteSize/2, spriteSize, spriteSize)
 		) {
 			if (!selectedJourney) selectedJourney = slot;
-			if (mouseDown) {
+			if (mouseDown || MouseClicked) {
 				MouseClicked = false;
 				// Check if there is connection
 				let conn = false;
@@ -331,6 +338,30 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 				)
 			}
 	}
+
+	let currentSlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
+
+	if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKey[2]) {
+		// Down
+		if (currentSlot?.Connections && currentSlot.Connections[0]) {
+			KDGameData.JourneyTarget = currentSlot.Connections[0];
+			selectedJourney = KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y];
+		}
+	} else
+	if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKey[7]) {
+		// Down Right
+		if (currentSlot?.Connections && currentSlot.Connections[1]) {
+			KDGameData.JourneyTarget = currentSlot.Connections[1];
+			selectedJourney = KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y];
+		}
+	} else
+	if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKey[6]) {
+		// Down Left
+		if (currentSlot?.Connections && currentSlot.Connections[2]) {
+			KDGameData.JourneyTarget = currentSlot.Connections[2];
+			selectedJourney = KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y];
+		}
+	} else
 
 	if (!selectedJourney) {
 		selectedJourney = KDGameData.JourneyMap[KDGameData.JourneyTarget ? (KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y) : (KDGameData.JourneyX + ',' + KDGameData.JourneyY)];
