@@ -334,7 +334,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 	if (!MC.Containers.get(containerID)) {
 
 		let RT = PIXI.RenderTexture.create({ width: MODELWIDTH*MODEL_SCALE * 2 * Zoom, height: MODELHEIGHT*MODEL_SCALE * 2 * Zoom, resolution: resolution*(KDToggles.HiResModel ? 2 : 1)});
-		let Mesh = new PIXI.SimplePlane(RT, 100, 100);
+		let Mesh = new PIXI.SimplePlane(RT, 10, 10);
 		let Container = {
 			Container: new PIXI.Container(),
 			Mesh: Mesh,//Mesh(new PIXI.PlaneGeometry(MODELWIDTH*MODEL_SCALE,MODELHEIGHT*MODEL_SCALE, 100, 100), new PIXI.MeshMaterial(PIXI.Texture.WHITE)),
@@ -770,7 +770,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					KDAdjustmentFilterCache.delete(fh);
 				}*/
 				let filter = m.Filters ? (m.Filters[l.InheritColor || l.Name] ?
-					(KDAdjustmentFilterCache.get(fh) || [new PIXI.filters.AdjustmentFilter(m.Filters[l.InheritColor || l.Name])])
+					(KDAdjustmentFilterCache.get(fh) || [adjustFilter(m.Filters[l.InheritColor || l.Name])])
 					: undefined) : undefined;
 				if (filter && !KDAdjustmentFilterCache.get(fh)) {
 					KDAdjustmentFilterCache.set(FilterHash(m.Filters[l.InheritColor || l.Name]), filter);
@@ -837,6 +837,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 
 				let img = ModelLayerString(m, l, MC.Poses);
 				let id = `layer_${m.Name}_${l.Name}_${img}_${fh}_${Math.round(ax*10000)}_${Math.round(ay*10000)}_${Math.round(rot*1000)}_${Math.round(sx*1000)}_${Math.round(sy*1000)}`;
+				id = LZString.compressToBase64(id);
 				if (!modified && !ContainerContainer.SpriteList.has(id)) modified = true;
 				let filters = filter;
 				if (extrafilter) filters = [...(filter || []), ...extrafilter];
@@ -1393,6 +1394,7 @@ function RenderModelContainer(MC: ModelContainer, C: Character, containerID: str
 		});
 	} else {
 		PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
+			blit: true,
 			clear: true,
 			renderTexture: MC.Containers.get(containerID).RenderTexture,
 		});
@@ -1406,7 +1408,7 @@ function KDCullModelContainerContainer(MC: ModelContainer, containerID: string) 
 	// Cull sprites that weren't drawn yet
 
 	if (!KDlastCull.get(containerID)) KDlastCull.set(containerID, 0);
-	let cull = CommonTime() > (KDlastCull.get(containerID) || 0) + KDCULLTIME;
+	let cull = CommonTime() > (KDlastCull.get(containerID) || 0) + KDCULLTIME*100;
 
 	for (let sprite of Container.SpriteList.entries()) {
 		if ((!Container.SpritesDrawn.has(sprite[0]) && sprite[1])) {
@@ -1419,4 +1421,10 @@ function KDCullModelContainerContainer(MC: ModelContainer, containerID: string) 
 		}
 	}
 	return modified;
+}
+
+function adjustFilter(filter) {
+	let f = new PIXI.filters.AdjustmentFilter(filter);
+
+	return f;
 }

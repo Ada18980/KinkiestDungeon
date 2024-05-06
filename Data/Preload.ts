@@ -329,7 +329,7 @@ async function load() {
 	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR, true);
 	await PreloadDisplacement(displacementList);
 	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
-	PIXI.BaseTexture.defaultOptions.anisotropicLevel = 4;
+	PIXI.BaseTexture.defaultOptions.anisotropicLevel = 0;
 
 }
 load();

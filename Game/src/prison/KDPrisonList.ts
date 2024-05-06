@@ -45,6 +45,44 @@ let KDPrisonTypes = {
 		name: "DollStorage",
 		default_state: "Jail",
 		starting_state: "Intro",
+		update: (delta) => {
+			if (KDGameData.PrisonerState != 'parole') {
+				KinkyDungeonSetFlag("noPlay", 12);
+			}
+
+			// Assign guards to deal with idle dolls
+			let idleDoll: entity[] = [];
+			let idleGuard: entity[] = [];
+			for (let en of KDMapData.Entities) {
+				if (en.Enemy?.tags?.prisoner && !KDEnemyHasFlag(en, "conveyed_rec")) {
+					idleDoll.push(en);
+				} else if (en.faction == "Enemy" && en.Enemy?.tags.jailer && en != KinkyDungeonJailGuard() && (en.idle || KDEnemyHasFlag(en, "idleg"))) {
+					idleGuard.push(en);
+					KinkyDungeonSetEnemyFlag(en, "idleg", 2);
+				}
+			}
+			// For each idle doll, pick a guard to pull
+			for (let doll of idleDoll) {
+				let gg: entity = null;
+				let dist = 11;
+				for (let guard of idleGuard) {
+					if (!KDEnemyHasFlag(guard, "idlegselect") && KDistChebyshev(guard.x - doll.x, guard.y - doll.y) < dist) {
+						gg = guard;
+						dist = KDistChebyshev(guard.x - doll.x, guard.y - doll.y);
+					}
+				}
+				if (gg) {
+					if (dist < 1.5) {
+						doll.hp = 0;
+					} else {
+						KinkyDungeonSetEnemyFlag(gg, "idlegselect", 2);
+						KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
+						gg.gx = doll.x;
+						gg.gy = doll.y;
+					}
+				}
+			}
+		},
 		states: {
 			Intro: {name: "Intro",
 				init: (params) => {
@@ -99,22 +137,6 @@ let KDPrisonTypes = {
 					KDPrisonCommonGuard(player);
 
 					if (KDPrisonTick(player)) {
-						// Remove all training doors
-						let labels = KDMapData.Labels?.TrainingDoor;
-						if (labels?.length > 0) {
-							for (let td of labels) {
-								if ("dD".includes(KinkyDungeonMapGet(td.x, td.y))) {
-									KinkyDungeonMapSet(td.x, td.y, '2');
-									let door = KinkyDungeonTilesGet(td.x + ',' + td.y);
-									if (door) {
-										delete door.Type;
-										delete door.Lock;
-										delete door.ReLock;
-									}
-								}
-							}
-						}
-
 
 						let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber", KDCYBERPOWER);
 						if ((uniformCheck.groupsToStrip.length > 0 && !KinkyDungeonFlags.get("failStrip")) || uniformCheck.itemsToApply.length > 0) {
@@ -128,6 +150,10 @@ let KDPrisonTypes = {
 						return "Storage";
 					}
 					return "Jail";
+				},
+				updateStack: (delta) => {
+					KinkyDungeonSetFlag("noPlay", 10);
+
 				},
 			},
 			FurnitureTravel: {name: "FurnitureTravel",
@@ -145,9 +171,12 @@ let KDPrisonTypes = {
 					let guard = KDPrisonCommonGuard(player);
 					if (guard) {
 						// Assign the guard to a furniture intentaction
-						let action = KDGameData.PrisonerState == 'jail' ? "leashFurniture" : "leashFurnitureAggressive";
+						let action = (KDGameData.PrisonerState == 'jail' && !KinkyDungeonAggressive(guard, player)) ? "leashFurniture" : "leashFurnitureAggressive";
 						if (guard.IntentAction != action)
 							KDIntentEvents[action].trigger(guard, {});
+						if (KDGameData.PrisonerState == 'jail') {
+							KinkyDungeonSetEnemyFlag(guard, "notouchie", 2);
+						}
 					} else {
 						// forbidden state
 						return KDPopSubstate(player);
@@ -369,6 +398,33 @@ let KDPrisonTypes = {
 
 					// Go to jail state for further processing
 					return KDSetPrisonState(player, "Jail");
+				},
+				updateStack: (delta) => {
+					// Always reveals the thing
+					let label = KDMapData.Labels?.Training ? KDMapData.Labels.Training[0] : null;
+					let rad = 5;
+					if (label) {
+						for (let x = label.x - rad; x <= label.x + rad; x++)
+							for (let y = label.y - rad; y <= label.y + rad; y++)
+								KDRevealTile(x, y, 8);
+					}
+				},
+				finally: (delta, currentState, stackPop) => {
+					// Remove all training doors
+					let labels = KDMapData.Labels?.TrainingDoor;
+					if (labels?.length > 0) {
+						for (let td of labels) {
+							if ("dD".includes(KinkyDungeonMapGet(td.x, td.y))) {
+								KinkyDungeonMapSet(td.x, td.y, '2');
+								let door = KinkyDungeonTilesGet(td.x + ',' + td.y);
+								if (door) {
+									delete door.Type;
+									delete door.Lock;
+									delete door.ReLock;
+								}
+							}
+						}
+					}
 				},
 			},
 

@@ -51,6 +51,34 @@ let KDIntentEvents = {
 			return KDSettlePlayerInFurniture(enemy, AIData);
 		},
 		maintain: (enemy, delta) => {
+			let tethered = KDIsPlayerTethered(KinkyDungeonPlayerEntity);
+			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5 && !tethered && KDPlayerLeashed(KinkyDungeonPlayerEntity)) {
+				KinkyDungeonAttachTetherToEntity(2.5, enemy);
+				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
+				return true;
+			}
+			else if (!tethered) {
+				enemy.gx = KinkyDungeonPlayerEntity.x;
+				enemy.gy = KinkyDungeonPlayerEntity.y;
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
+				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
+				KDTryToLeash(enemy, KinkyDungeonPlayerEntity);
+			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
+				enemy.aware = true;
+
+				if (!enemy.IntentLeashPoint) {
+					enemy.IntentAction = '';
+					enemy.IntentLeashPoint = null;
+					enemy.gx = enemy.IntentLeashPoint?.x;
+					enemy.gy = enemy.IntentLeashPoint?.y;
+					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
+				} else if (KDistChebyshev(enemy.IntentLeashPoint.x - enemy.x, enemy.IntentLeashPoint.y - enemy.y) < 1.5 && !AIData.aggressive) {
+					KDIntentEvents.leashFurniture.arrive(enemy, AIData);
+				}
+
+				// If they are not attacking player
+
+			}
 			if ((KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5 && (KDEnemyHasFlag(enemy, "motivated") || KDHostile(enemy)))
 				|| KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, enemy.x, enemy.y, enemy)) {
 				if (enemy.playWithPlayer < 10) {
@@ -722,7 +750,7 @@ let KDIntentEvents = {
 			if (KinkyDungeonFlags.get("Released")) return 0;
 			if (KDGameData.PrisonerState == 'jail') return 0;
 			if (KDSelfishLeash(enemy)) return 0;
-			if (KinkyDungeonGetRestraintItem("ItemDevices")) return 0;
+			if (KinkyDungeonGetRestraintItem("ItemDevices") && KDGameData.PrisonerState != 'chase') return 0;
 			if (KDEnemyHasFlag(enemy, "dontChase")) return 0;
 			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]);
 			return nearestfurniture && KDistChebyshev(enemy.x - nearestfurniture.x, enemy.y - nearestfurniture.y) < 14 ? (hostile ? 120 : (AIData.domMe ? 0 : 40)) : 0;

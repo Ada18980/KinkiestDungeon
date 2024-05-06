@@ -1103,7 +1103,7 @@ function KDCanSeeEnemy(enemy, playerDist) {
 	return (((enemy.revealed && !enemy.Enemy.noReveal) || !enemy.Enemy.stealth || KDHelpless(enemy) || KDAllied(enemy) || KinkyDungeonSeeAll || playerDist <= enemy.Enemy.stealth + 0.1)
 		&& !KDEnemyHidden(enemy)
 		&& !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0 && playerDist > 1.5)
-		&& playerDist <= KDMaxEnemyViewDist(enemy));
+		&& (playerDist <= KDMaxEnemyViewDist(enemy) || (KDGameData.RevealedTiles && KDGameData.RevealedTiles[enemy.x + ',' + enemy.y] > 0)));
 }
 
 function KDMaxEnemyViewDist(enemy) {
@@ -3373,8 +3373,25 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 			let prisonType = KDPrisonTypes[KDMapData.PrisonType];
 			if (!KDMapData.PrisonState) KDMapData.PrisonState = prisonType.default_state;
 			let prisonState = KDMapData.PrisonState;
+			let newState = KDPrisonTypes[KDMapData.PrisonType].update ? KDPrisonTypes[KDMapData.PrisonType].update(timeDelta) : "";
+			if (newState && newState != KDMapData.PrisonState) {
+				if (prisonType.states[prisonState].finally) prisonType.states[prisonState].finally(timeDelta, newState, false);
+				KDMapData.PrisonState = newState;
+				KinkyDungeonSendEvent("postPrisonStateForce", {delta: timeDelta});
+			}
+			if (KDMapData.PrisonStateStack?.length > 0) {
+				for (let s of KDMapData.PrisonStateStack) {
+					if (prisonType.states[s].updateStack) prisonType.states[s].updateStack(timeDelta);
+				}
+				KinkyDungeonSendEvent("postPrisonUpdateStack", {delta: timeDelta});
+			}
 			if (prisonState) {
-				KDMapData.PrisonState = prisonType.states[prisonState].update(timeDelta);
+				newState = prisonType.states[prisonState].update(timeDelta);
+				if (newState != KDMapData.PrisonState) {
+					if (prisonType.states[prisonState].finally) prisonType.states[prisonState].finally(timeDelta, newState, false);
+					KDMapData.PrisonState = newState;
+					KinkyDungeonSendEvent("postPrisonStateChange", {delta: timeDelta});
+				}
 				KinkyDungeonSendEvent("postPrisonUpdate", {delta: timeDelta});
 			}
 		} else {
@@ -3797,6 +3814,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		if (AIData.playChance < 0.1) AIData.playChance = 0.1;
 		else AIData.playChance = 0.9;
 	}
+
+	if (KinkyDungeonFlags.get("noPlay")) AIData.playChance = 0;
+
 	let aware = (enemy.vp > sneakThreshold || KDEnemyReallyAware(enemy, player));
 
 	let playData = {
@@ -4759,7 +4779,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								|| enemy.IntentLeashPoint
 							)
 							// Only attempt to leash if the player is not already being leashed
-							&& (KDGameData.KinkyDungeonLeashedPlayer < 1 || KinkyDungeonLeashingEnemy() == enemy)) {
+							&& (KDGameData.KinkyDungeonLeashedPlayer < 1 || KinkyDungeonLeashingEnemy() == enemy)
+							&& (!KinkyDungeonPlayerTags.get("Furniture") || enemy.IntentLeashPoint || KDSelfishLeash(enemy))
+						) {
 							AIData.intentToLeash = true;
 
 							let wearingLeash = false;
@@ -4954,11 +4976,6 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 												enemySwap.y = KinkyDungeonPlayerEntity.y;
 												enemySwap.warningTiles = [];
 											}
-											if (AIData.leashing && !KDPlayerIsImmobilized() && !KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity)) {
-												KinkyDungeonAttachTetherToEntity(2.5, enemy);
-												KinkyDungeonSetFlag("grabbed", 4);
-												KinkyDungeonSetFlag("leashtug", 3);
-											}
 											KDMovePlayer(enemy.x, enemy.y, false);
 											KinkyDungeonTargetTile = null;
 											KinkyDungeonTargetTileLocation = "";
@@ -4977,7 +4994,14 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 												KDStunTurns(enemy.Enemy.movePoints + moveMult - 1);
 												KinkyDungeonSleepTime = CommonTime() + 200;
 											}
-											KinkyDungeonSetFlag("nojailbreak", KDGameData.KinkyDungeonLeashedPlayer);
+
+											if (AIData.leashing && !KDPlayerIsImmobilized() && !KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity)) {
+												KinkyDungeonAttachTetherToEntity(2.5, enemy);
+												KinkyDungeonSetFlag("grabbed", 4);
+												KinkyDungeonSetFlag("leashtug", 3);
+											}
+											//KinkyDungeonSetFlag("nojailbreak", KDGameData.KinkyDungeonLeashedPlayer);
+											KinkyDungeonSetFlag("nojailbreak", 12);
 											if (enemy.usingSpecial && enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialAttack.includes("Pull")) {
 												enemy.specialCD = enemy.Enemy.specialCD;
 											}

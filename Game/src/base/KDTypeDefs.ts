@@ -3100,7 +3100,13 @@ interface KDPrisonState {
 	/** Returns a state. Runs as soon as the map is created */
 	init: (MapParams: floorParams) => string,
 	/** Each turn this function runs and returns a state */
-	update: (delta) => string,
+	update: (delta: number) => string,
+	/** Each turn this function runs, but only if its in the stack*/
+	updateStack?: (delta: number) => void,
+	/** Runs when the state is left*/
+	finally?: (delta: number, currentState: string, stackPop: boolean) => void,
+
+
 
 }
 interface KDPrisonType {
@@ -3108,6 +3114,9 @@ interface KDPrisonType {
 	states: Record<string, KDPrisonState>,
 	starting_state: string,
 	default_state: string,
+
+	/** Each turn this function runs. If a state is returned it sets the state*/
+	update: (delta: number) => string,
 }
 
 interface KDPresetLoadout {

@@ -274,7 +274,7 @@ function KinkyDungeonExpireBuff(entity, key) {
  *
  * @param {entity} entity
  * @param {any} origbuff
- * @param {any} changes
+ * @param {any} [changes]
  */
 function KinkyDungeonApplyBuffToEntity(entity, origbuff, changes) {
 	if (entity && entity.player) {

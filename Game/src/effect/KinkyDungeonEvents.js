@@ -2807,6 +2807,7 @@ const KDEventMapBuff = {
 				}
 			}
 		},
+
 		"Corrupted": (e, buff, entity, data) => {
 			if (entity.player) {
 				if (KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) > KDShadowThreshold) {

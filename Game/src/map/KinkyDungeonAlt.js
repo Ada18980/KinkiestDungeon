@@ -1416,6 +1416,8 @@ function KinkyDungeonCreateDollStorage(POI, VisitedRooms, width, height, opennes
 	}
 
 	KD_PasteTile(KDMapTilesList.DollRoom, 1, 1, data);
+	KDMapData.EndPosition = {x: 2, y: 11};
+	KinkyDungeonMapSet(2, 11, 's');
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 }

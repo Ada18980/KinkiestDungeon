@@ -24,6 +24,7 @@ let KDBurning = {id: "Burning", type: "event", aura: "#ff8933", aurasprite: "Fla
 let KDTrainingUnit = {id: "TrainingUnit", type: "TrainingUnit", aura: "#00ff00", power: -0.5, player: false, duration: 9999, infinite: true, enemies: true,
 	events: [
 		{type: "TrainingUnit", trigger: "tick"},
+		{type: "TrainingUnitReveal", trigger: "tick"},
 	],
 };
 

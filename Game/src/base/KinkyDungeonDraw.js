@@ -81,6 +81,9 @@ if (StandalonePatched) {
 	kdlightmap = PIXI.RenderTexture.create({ width: res > 1 ? 2047 : 2000, height: res > 1 ? 1023 : 1000,});
 	//kdlightmapGFX.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
 }
+
+
+
 let kddarkdesaturatefilter = new PIXI.Filter(null, KDShaders.Darkness.code, {
 	radius: .02*72/2000,
 	weight: 0.24,

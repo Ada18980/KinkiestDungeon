@@ -38,7 +38,7 @@ function KDGetNearestFactionGuard(x, y) {
  * @param {entity} player
  * @returns {entity}
  */
-function KDPrisonCommonGuard(player, call) {
+function KDPrisonCommonGuard(player, call = false) {
 	// Suppress standard guard call behavior
 	KinkyDungeonSetFlag("SuppressGuardCall", 10);
 	let guard = KDGetNearestFactionGuard(player.x, player.y);
@@ -187,6 +187,12 @@ function KDPopSubstate(player) {
  * @returns {string}
  */
 function KDSetPrisonState(player, state) {
+	if (KDMapData.PrisonStateStack?.length > 0) {
+		for (let s of KDMapData.PrisonStateStack) {
+			if (KDPrisonTypes[KDMapData.PrisonType].states[s].finally) KDPrisonTypes[KDMapData.PrisonType].states[s].finally(0, state, true);
+		}
+	}
+
 	KDMapData.PrisonStateStack = [];
 	return state;
 }

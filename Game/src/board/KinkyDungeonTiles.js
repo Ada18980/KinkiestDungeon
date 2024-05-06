@@ -712,10 +712,15 @@ function KDMoveEntity(enemy, x, y, willing, dash, forceHitBullets, ignoreBlocked
 	return cancel.returnvalue;
 }
 
+/**
+ *
+ * @param {entity} enemy
+ */
 function KDStaggerEnemy(enemy) {
 	enemy.fx = undefined;
 	enemy.fy = undefined;
 	enemy.movePoints = 0;
+	KinkyDungeonSetEnemyFlag(enemy, "stagger", 2);
 }
 
 
@@ -862,6 +867,9 @@ function KDConveyor(delta, X, Y, unwilling) {
 	if (!tile || tile.SwitchMode == "Off") return;
 	let entity = KinkyDungeonEntityAt(X, Y);
 	let tiletype = KinkyDungeonMapGet(X + (tile.DX || 0), Y + (tile.DY || 0));
+	if (entity?.Enemy?.tags.prisoner) {
+		KDStaggerEnemy(entity);
+	}
 	if (entity && KinkyDungeonMovableTilesEnemy.includes(tiletype) && !KinkyDungeonEntityAt(X + (tile.DX || 0), Y + (tile.DY || 0))) {
 		if (entity.player) {
 			if (!KinkyDungeonFlags.get("conveyed") && (!tile.Sfty || KDPlayerIsStunned() || unwilling || KinkyDungeonFlags.get("conveyed_rec"))) {
@@ -872,8 +880,7 @@ function KDConveyor(delta, X, Y, unwilling) {
 			}
 		} else if (!KDIsImmobile(entity) && !KDIsFlying(entity) && !entity.Enemy.tags.ignoreconveyor && !entity.Enemy.ethereal
 			&& !(entity.Enemy.tags.unstoppable || (entity.Enemy.tags.unflinching && !KinkyDungeonIsDisabled(entity)))) {
-			if (entity.Enemy.tags.prisoner) KDStaggerEnemy(entity);
-			if (!KDEnemyHasFlag(entity, "conveyed") && (!tile.Sfty || KinkyDungeonIsDisabled(entity) || unwilling || KDEnemyHasFlag(entity, "conveyed_rec"))) {
+			if (!KDEnemyHasFlag(entity, "conveyed") && (!tile.Sfty || KinkyDungeonIsDisabled(entity) || unwilling || KDEnemyHasFlag(entity, "conveyed_rec") || KDEnemyHasFlag(entity, "stagger"))) {
 				KinkyDungeonSetEnemyFlag(entity, "conveyed", 2);
 				KinkyDungeonSetEnemyFlag(entity, "conveyed_rec", 4);
 				KDMoveEntity(entity, X + (tile.DX || 0), Y + (tile.DY || 0), false, false, true);
