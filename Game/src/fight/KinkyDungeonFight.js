@@ -58,6 +58,7 @@ let KinkyDungeonSlowDamageTypes = ["crush", "slash", "pierce", "soap", "frost", 
 let KinkyDungeonVulnerableDamageTypes = ["tickle", "acid", "magicbind", "estim"];
 let KinkyDungeonMeltDamageTypes = ["fire", "holy", "acid"];
 let KinkyDungeonShatterDamageTypes = ["crush", "stun", "fire"];
+let KinkyDungeonDismantleDamageTypes = ["stun", "fire", ...KinkyDungeonMeleeDamageTypes, "electric", "holy", "acid", "magicbind", "cold", "ice", "soap"];
 let KinkyDungeonIgnoreShieldTypes = ["soul", "holy"];
 let KinkyDungeonIgnoreBlockTypes = ["soul", "charm", "gas"];
 

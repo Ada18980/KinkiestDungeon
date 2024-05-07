@@ -5852,7 +5852,7 @@ KinkyDungeonSpellCastCrackle,Lightning erupts from your fingertips!
 KinkyDungeonSpellTargetCrackle,Choose line direction (max range 4 tiles)
 
 KinkyDungeonSpellTremor,Tremor
-KinkyDungeonSpellDescriptionTremor,"Make vulnerable and slow enemies in targeted area for Duration turns, and deal DamageDealt crush damage."
+KinkyDungeonSpellDescriptionTremor,"Make vulnerable and slow enemies in targeted area for Duration turns, and deal DamageDealt crush damage. Creates a slowing field after."
 KinkyDungeonSpellCastTremor,You call forth the rage of the earth.
 KinkyDungeonSpellTargetTremor,Choose AoE
 
