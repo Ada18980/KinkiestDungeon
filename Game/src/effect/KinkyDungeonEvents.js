@@ -9052,19 +9052,16 @@ let KDEventMapGeneric = {
 				if (KDEnemyHasFlag(enemy, "questtarget")
 					&& (enemy.x - data.x + .5) * data.scale > 0 && (enemy.y - data.y + .5) * data.scale > 0
 					&& (enemy.x - data.x + .5) * data.scale < KDMinimapWidth()+21 && (enemy.y - data.y + .5) * data.scale < KDMinimapHeight() + 21) {
-					/*KDDraw(kdminimap, kdminimapsprites, enemy.id + "_questtargmm", KinkyDungeonRootDirectory + "UI/DollmakerTarget.png",
-						(enemy.x - data.x - 1) * data.scale,
-						(enemy.y - data.y - 1) * data.scale,
-						data.scale * 2, data.scale * 2, undefined, {
-							zIndex: 10,
-						});*/
-					kdminimap.lineStyle(3, 0);
-					kdminimap.beginFill(0xff5555, 1.);
-					kdminimap.drawCircle(
+
+					kdminimap.circle(
 						(enemy.x - data.x + .5) * data.scale,
 						(enemy.y - data.y + .5) * data.scale,
 						data.scale/2);
-					kdminimap.endFill();
+					kdminimap.fill({color: 0xff5555, alpha: 1});
+					kdminimap.stroke({
+						color: 0,
+						width: 3,
+					});
 				}
 			}
 
@@ -9076,13 +9073,16 @@ let KDEventMapGeneric = {
 				if (KDEnemyHasFlag(enemy, "killtarget")
 					&& (enemy.x - data.x + .5) * data.scale > 0 && (enemy.y - data.y + .5) * data.scale > 0
 					&& (enemy.x - data.x + .5) * data.scale < KDMinimapWidth()+21 && (enemy.y - data.y + .5) * data.scale < KDMinimapHeight() + 21) {
-					kdminimap.lineStyle(3, 0);
-					kdminimap.beginFill(0xff5555, 1.);
-					kdminimap.drawCircle(
+
+					kdminimap.circle(
 						(enemy.x - data.x + .5) * data.scale,
 						(enemy.y - data.y + .5) * data.scale,
 						data.scale/2);
-					kdminimap.endFill();
+					kdminimap.fill({color: 0xff5555, alpha: 1});
+					kdminimap.stroke({
+						color: 0,
+						width: 3,
+					});
 				}
 			}
 		},

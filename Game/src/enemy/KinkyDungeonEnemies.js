@@ -565,7 +565,7 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				let h = enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay;
 				let o = StandalonePatched ?
 					undefined
-					: {tint: 0x888888, blendMode: PIXI.BLEND_MODES.SCREEN};
+					: {tint: 0x888888, blendMode: 'screen'};
 
 				let spr = KDDraw(kdgamesound, kdpixisprites, "spr_sound_" + enemy.id, KinkyDungeonRootDirectory + (KDBoundEffects(enemy) > 3 ? "EnemiesBound/" : "Enemies/") + sprite + ".png",
 					(tx + (enemy.offX || 0) - CamX + (enemy.flip ? 1 : 0))*KinkyDungeonGridSizeDisplay - (w - KinkyDungeonGridSizeDisplay)/2,
@@ -760,9 +760,11 @@ function KinkyDungeonDrawEnemiesStatus(canvasOffsetX, canvasOffsetY, CamX, CamY)
 					canvasOffsetX + (enemy.x - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2,
 					canvasOffsetY + (enemy.y - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3, 100, "white", "black");
 			}
-			KDTetherGraphics.lineStyle(2, string2hex(KDGetColor(enemy)), 1);
 			KDTetherGraphics.moveTo((enemy.x - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (enemy.y - CamY + 0.5)*KinkyDungeonGridSizeDisplay);
 			KDTetherGraphics.lineTo((enemy.gx - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (enemy.gy - CamY + 0.5)*KinkyDungeonGridSizeDisplay);
+			KDTetherGraphics.stroke({
+				width: 2, color: string2hex(KDGetColor(enemy)), alpha: 1
+			});
 		}
 
 		if (enemy.x >= CamX && enemy.y >= CamY && enemy.x < CamX + KinkyDungeonGridWidthDisplay && enemy.y < CamY + KinkyDungeonGridHeightDisplay

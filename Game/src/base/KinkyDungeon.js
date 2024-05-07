@@ -7,7 +7,7 @@ let KDDefaultPalette = "";
 let KDCULLTIME = 10000; // Garbage collection
 
 // Disable interpolation when scaling, will make texture be pixelated
-PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR;
+//PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR;
 
 let KDStandardRenderException = {
 	Consent: [],
@@ -1013,7 +1013,7 @@ function KinkyDungeonLoad() {
 				if (parsed != undefined) {
 					KDGammaListIndex = parsed;
 					KDGamma = KDGammaList[KDGammaListIndex] || 0;
-					kdgammafilterstore[0] = KDGamma;
+					gammaUniform.uniforms.gamma = KDGamma;
 				}
 			}
 
@@ -2635,19 +2635,6 @@ function KinkyDungeonRun() {
 	// Cull the sprites that werent rendered or updated this frame
 	KDCullSprites();
 
-	if (!StandalonePatched) {
-		if (!pixiview) pixiview = KinkyDungeonGetCanvas("MainCanvas");
-		if (!pixirenderer) {
-			if (pixiview) {
-				pixirenderer = new PIXI.CanvasRenderer({
-					width: pixiview.width,
-					height: pixiview.height,
-					view: pixiview,
-					antialias: true,
-				});
-			}
-		}
-	}
 
 
 	KDDrawDelta = performance.now() - lastfps;
@@ -2662,29 +2649,6 @@ function KinkyDungeonRun() {
 
 	KDDrawMusic(KDDrawDelta);
 
-	if (StandalonePatched) {
-		/*if (KinkyDungeonState == "Game") {
-			if (!kdTrackGameParticles) {
-				kdcanvas.addChild(kdparticles);
-				kdTrackGameParticles = true;
-			}
-		} else {
-			if (kdTrackGameParticles) {
-				kdcanvas.removeChild(kdparticles);
-				kdTrackGameParticles = false;
-			}
-		}*/
-	} else {
-		// Draw the context layer even if we haven't updated it
-		if (pixirenderer) {
-			pixirenderer.render(kdcanvas, {
-				clear: false,
-			});
-			pixirenderer.render(kdui, {
-				clear: false,
-			});
-		}
-	}
 
 
 	if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
@@ -3856,7 +3820,7 @@ function KinkyDungeonHandleClick() {
 					else KDGammaListIndex = (KDGammaListIndex + 1) % KDGammaList.length;
 					KDGamma = KDGammaList[KDGammaListIndex] || 0;
 					localStorage.setItem("KDGamma", "" + KDGammaListIndex);
-					kdgammafilterstore[0] = KDGamma;
+					gammaUniform.uniforms.gamma = KDGamma;
 				}
 				YY += YYd*2;
 			}

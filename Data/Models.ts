@@ -37,7 +37,7 @@ interface ContainerInfo {
 	readonly SpritesDrawn: Map<string, any>;
 	readonly Container: PIXIContainer;
 	readonly Mesh: PIXIMesh;
-	readonly RenderTexture: PIXIRenderTexture;
+	readonly RenderTexture: PIXITexture;
 	readonly Matrix: PIXIArray;
 }
 
@@ -274,7 +274,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		if (MC.Containers.get(containerID)) {
 			let mesh = MC.Containers.get(containerID).Mesh;
 			let rt = MC.Containers.get(containerID).RenderTexture;
-			let buffer = mesh.geometry.getBuffer('aVertexPosition');
+			let buffer = mesh.geometry.getBuffer('aUV');
 			let matrix = MC.Containers.get(containerID).Matrix;
 
 			// Assign locations
@@ -333,15 +333,19 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 	let created = false;
 	if (!MC.Containers.get(containerID)) {
 
-		let RT = PIXI.RenderTexture.create({ width: MODELWIDTH*MODEL_SCALE * 2 * Zoom, height: MODELHEIGHT*MODEL_SCALE * 2 * Zoom, resolution: resolution*(KDToggles.HiResModel ? 2 : 1)});
-		let Mesh = new PIXI.SimplePlane(RT, 10, 10);
-		let Container = {
+		let RT = PIXI.RenderTexture.create({ width: MODELWIDTH*MODEL_SCALE * 2 * Zoom, height: MODELHEIGHT*MODEL_SCALE * 2 * Zoom, resolution: resolution*(KDToggles.HiResModel ? 2 : 1), autoGenerateMipmaps: true});
+		let Mesh = new PIXI.MeshPlane({
+			texture: RT,
+			width: 10,
+			height: 10,
+		});
+		let Container: ContainerInfo = {
 			Container: new PIXI.Container(),
 			Mesh: Mesh,//Mesh(new PIXI.PlaneGeometry(MODELWIDTH*MODEL_SCALE,MODELHEIGHT*MODEL_SCALE, 100, 100), new PIXI.MeshMaterial(PIXI.Texture.WHITE)),
 			SpritesDrawn: new Map(),
 			RenderTexture: RT,
 			SpriteList: new Map(),
-			Matrix: Object.assign([], Mesh.geometry.getBuffer('aVertexPosition').data),
+			Matrix: Object.assign([], Mesh.geometry.getBuffer('aUV').data),
 		};
 
 		//Container.Container.scale.x = 1;
@@ -366,10 +370,10 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 	if (!MC.Update.has(containerID)) {
 		let flippedPoses = DrawModelProcessPoses(MC, extraPoses);
 
-		if (PIXI.BaseTexture.defaultOptions.scaleMode != Blend) PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
+		//if (PIXI.BaseTexture.defaultOptions.scaleMode != Blend) PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
 		let modified = DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELHEIGHT * 0.25, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
 			MC.Containers.get(containerID), refreshfilters, flip);
-		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
+		//let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
 		MC.Mods.set(containerID, StartMods);
 		MC.Update.add(containerID);
 
@@ -402,8 +406,8 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			MC.Refresh.add(containerID);
 			MC.Update.delete(containerID);
 		} else if (modified) {
-			if (PIXI.BaseTexture.defaultOptions.scaleMode != oldBlend)
-				PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
+			//if (PIXI.BaseTexture.defaultOptions.scaleMode != oldBlend)
+			//	PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
 
 
 
@@ -803,7 +807,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						}
 						KDTex(dsprite.name, false); // try to preload it
 						f = new EraseFilter(
-							dsprite,
+							{sprite: dsprite, resolution: KDResolution},
 						);
 						f.multisample = 0;
 						let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
@@ -823,8 +827,10 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						}
 						KDTex(dsprite.name, false); // try to preload it
 						f = new PIXI.DisplacementFilter(
-							dsprite,
-							ef.amount,
+							{
+								sprite: dsprite,
+								scale: ef.amount,
+							}
 						);
 						f.multisample = 0;
 						let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
@@ -1385,19 +1391,20 @@ function RenderModelContainer(MC: ModelContainer, C: Character, containerID: str
 		if (!RenderCharacterQueue.get(C)) RenderCharacterQueue.set(C, []);
 		RenderCharacterQueue.get(C).push(async function() {
 			RenderCharacterLock.set(C, true);
-			PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
-				clear: true,
-				renderTexture: MC.Containers.get(containerID).RenderTexture,
+			PIXIapp.renderer.render({
+				target: MC.Containers.get(containerID).RenderTexture,
+				container: MC.Containers.get(containerID).Container,
 			});
+			MC.Containers.get(containerID).RenderTexture.source.updateMipmaps();
 			RenderCharacterLock.delete(C);
 			MC.ForceUpdate.add(containerID);
 		});
 	} else {
-		PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
-			blit: true,
-			clear: true,
-			renderTexture: MC.Containers.get(containerID).RenderTexture,
+		PIXIapp.renderer.render({
+			container: MC.Containers.get(containerID).Container,
+			target: MC.Containers.get(containerID).RenderTexture,
 		});
+		MC.Containers.get(containerID).RenderTexture.source.updateMipmaps();
 		MC.ForceUpdate.add(containerID);
 	}
 }

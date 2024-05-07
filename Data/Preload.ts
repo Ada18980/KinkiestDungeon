@@ -159,6 +159,8 @@ let DisplacementMaps = [
 'MittsFront.png',
 'MittsCrossed.png',
 'MittsYoked.png',
+'MittsWristtie.png',
+'MittsBoxtie.png',
 'Null.png',
 'RightFrogtieSquishKneel.png',
 'RightFrogtieSquishKneelClosed.png',
@@ -247,7 +249,7 @@ function incrementProgress(amount) {
 	};
 }
 async function LoadTextureAtlas(list, scale_mode, preload = false) {
-	PIXI.BaseTexture.defaultOptions.scaleMode = scale_mode;
+	//PIXI.BaseTexture.defaultOptions.scaleMode = scale_mode;
 
 	for (let dataFile of list) {
 		console.log("Found atlas: " + dataFile);
@@ -256,27 +258,24 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 	}
 	for (let dataFile of list) {
 		let amount = 100;
-		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile).then(() => {}, () => {
-			CurrentLoading = "Error Loading " + dataFile;
-			KDLoadingDone += amount;
-		})
-		 : await PIXI.Assets.load(dataFile).then(() => {}, () => {
-			CurrentLoading = "Error Loading " + dataFile;
-			KDLoadingDone += amount;
+		PIXI.Assets.add({
+			alias: dataFile,
+			src: dataFile,
 		});
-
-		//console.log(value)
-		CurrentLoading = "Loaded " + dataFile;
-		//console.log(dataFile);
-		KDLoadingDone += amount;
-
-		/*result.then((value) => {
-
+		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile).then(() => {
+			CurrentLoading = "Loaded " + dataFile;
+			KDLoadingDone += amount;
 		}, () => {
 			CurrentLoading = "Error Loading " + dataFile;
 			KDLoadingDone += amount;
-		});*/
-		//let atlas = await result;
+		})
+		 : await PIXI.Assets.load(dataFile).then(() => {
+			CurrentLoading = "Loaded " + dataFile;
+			KDLoadingDone += amount;
+		 }, () => {
+			CurrentLoading = "Error Loading " + dataFile;
+			KDLoadingDone += amount;
+		});
 	}
 
 }
@@ -289,12 +288,15 @@ async function PreloadDisplacement(list) {
 	}
 	for (let dataFile of list) {
 		let amount = 100;
-		let texture = PIXI.Texture.fromURL(dataFile, {
+		PIXI.Assets.add({
+			alias: dataFile,
+			src: dataFile,
 			resourceOptions: {
 				scale: DisplacementScale
 			}
 		});
-		texture.then((value) => {
+		PIXI.Assets.load(dataFile)
+		.then((value) => {
 			console.log(value)
 			CurrentLoading = "Loaded " + dataFile;
 			//console.log(dataFile);
@@ -326,10 +328,10 @@ if (!KDToggles.HighResDisplacement) DisplacementScale = 1/16
 async function load() {
 
 	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
-	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR, true);
+	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR, false);
 	await PreloadDisplacement(displacementList);
-	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
-	PIXI.BaseTexture.defaultOptions.anisotropicLevel = 0;
+	//PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
+	//PIXI.BaseTexture.defaultOptions.anisotropicLevel = 0;
 
 }
 load();
@@ -352,7 +354,7 @@ load();
 				url = url.replace("blob:http:/", "blob:http://")
 			}
 
-			const response = await PIXI.settings.ADAPTER.fetch(url);
+			const response = await PIXI.DOMAdapter.get().fetch(url);
 
 			const json = await response.json();
 
@@ -428,18 +430,18 @@ load();
 
 			const options = { ...asset.data };
 
-			options.resolution ??= PIXI.utils.getResolutionOfUrl(url);
+			options.resolution ??= PIXI.getResolutionOfUrl(url);
 			if (useImageBitmap && options.resourceOptions?.ownsImageBitmap === undefined)
 			{
 				options.resourceOptions = { ...options.resourceOptions };
 				options.resourceOptions.ownsImageBitmap = true;
 			}
 
-			const base = new PIXI.BaseTexture(src, options);
+			const source = new PIXI.ImageSource(options);
 
-			base.resource.src = url;
+			//source.src = url;
 
-			return PIXI.createTexture(base, loader, url);
+			return PIXI.createTexture(source, loader, url);
 		},
 
 		unload(texture: PIXITexture): void
@@ -460,8 +462,8 @@ load();
 		test: (url) => KDModFiles[url] != undefined,
 		parse: (value: string): PIXIUnresolvedAsset =>
 			({
-				resolution: parseFloat(PIXI.settings.RETINA_PREFIX.exec(value)?.[1] ?? '1'),
-				format: PIXI.utils.path.extname(value).slice(1),
+				resolution: '1',
+				format: PIXI.path.extname(value).slice(1),
 				src: KDModFiles[value],
 			}),
 	}

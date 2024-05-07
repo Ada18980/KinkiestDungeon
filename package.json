@@ -12,9 +12,8 @@
     "private": true,
     "devDependencies": {
         "http-server": "^14.1.1",
-        "pixi-filters": "^5.2.0",
-        "pixi.js": "^7.2.1",
-        "pixi.js-legacy": "^7.2.1",
-        "typescript": "~4.3.0"
+        "pixi-filters": "^6.0.3",
+        "pixi.js": "^8.1.1",
+        "typescript": "~5.4.5"
     }
 }
