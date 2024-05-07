@@ -3564,6 +3564,8 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 
 let OPTIONS_NEAREST = {scaleMode: PIXI.SCALE_MODES.NEAREST};
 
+let errorImg = {};
+
 /**
  * Returns a PIXI.Texture, or null if there isnt one
  * @param {string} Image
@@ -3571,9 +3573,14 @@ let OPTIONS_NEAREST = {scaleMode: PIXI.SCALE_MODES.NEAREST};
  */
 function KDTex(Image, Nearest) {
 	if (kdpixitex.has(Image)) return kdpixitex.get(Image);
+	if (errorImg[KDModFiles[Image] || Image]) return null;
 	try {
 		let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, OPTIONS_NEAREST) : PIXI.Texture.from(KDModFiles[Image] || Image);
-		kdpixitex.set(Image, tex);
+		if (!tex) {
+			errorImg[KDModFiles[Image] || Image] = true;
+		} else {
+			kdpixitex.set(Image, tex);
+		}
 		return tex;
 	} catch (e) {
 		console.log("Failed to find texture " + Image);

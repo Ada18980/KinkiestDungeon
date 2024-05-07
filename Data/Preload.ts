@@ -256,11 +256,17 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 	}
 	for (let dataFile of list) {
 		let amount = 100;
-		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile).then(() => {}, () => {
+		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile).then((value) => {}, () => {
 			CurrentLoading = "Error Loading " + dataFile;
 			KDLoadingDone += amount;
 		})
-		 : await PIXI.Assets.load(dataFile).then(() => {}, () => {
+		 : await PIXI.Assets.load(dataFile).then((value) => {
+			for (let s of Object.values(value.linkedSheets)) {
+				for (let t of Object.keys((s as any).textures)) {
+					KDTex(t, scale_mode == PIXI.SCALE_MODES.NEAREST);
+				}
+			}
+		 }, () => {
 			CurrentLoading = "Error Loading " + dataFile;
 			KDLoadingDone += amount;
 		});
@@ -284,20 +290,21 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 async function PreloadDisplacement(list) {
 	for (let dataFile of list) {
 		console.log("Found d_map: " + dataFile);
-		let amount = 100;
+		let amount = 1;
 		KDLoadingMax += amount;
 	}
 	for (let dataFile of list) {
-		let amount = 100;
+		let amount = 1;
 		let texture = PIXI.Texture.fromURL(dataFile, {
 			resourceOptions: {
-				scale: DisplacementScale
+				scale: DisplacementScale,
 			}
 		});
 		texture.then((value) => {
 			console.log(value)
 			CurrentLoading = "Loaded " + dataFile;
 			//console.log(dataFile);
+			KDTex(dataFile, false);
 			KDLoadingDone += amount;
 		}, () => {
 			CurrentLoading = "Error Loading " + dataFile;
@@ -325,11 +332,12 @@ if (!KDToggles.HighResDisplacement) DisplacementScale = 1/16
 
 async function load() {
 
+	PIXI.BaseTexture.defaultOptions.mipmap = PIXI.MIPMAP_MODES.ON;
+	PIXI.BaseTexture.defaultOptions.anisotropicLevel = 0;
 	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
 	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR, true);
 	await PreloadDisplacement(displacementList);
 	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
-	PIXI.BaseTexture.defaultOptions.anisotropicLevel = 0;
 
 }
 load();
