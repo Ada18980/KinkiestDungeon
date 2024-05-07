@@ -634,10 +634,10 @@ let KDEventMapInventory = {
 	},
 	"afterPlayerDamage": {
 		"shatter": (e, item, data) => {
-			if (KinkyDungeonShatterDamageTypes.includes(KDDamageEquivalencies[data.type] || data.type) && data.dmg > 0) {
+			if ((KinkyDungeonShatterDamageTypes.includes(KDDamageEquivalencies[data.type] || data.type) || KinkyDungeonDismantleDamageTypes.includes(KDDamageEquivalencies[data.type] || data.type)) && data.dmg > 0) {
 				let alreadyDone = KDItemDataQuery(item, "shatter") || 0;
 				if (alreadyDone < e.count) {
-					alreadyDone += e.mult * data.dmg;
+					alreadyDone += (KinkyDungeonShatterDamageTypes.includes(KDDamageEquivalencies[data.type] || data.type) ? e.mult : (e.mult*0.1)) * data.dmg;
 					KDItemDataSet(item, "shatter", alreadyDone);
 					KinkyDungeonSendTextMessage(4, TextGet("KDShatterProgress").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
 				} else {

@@ -779,7 +779,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 		{name: "Tremor", prerequisite: "ApprenticeEarth", tags: ["earth", "offense", "utility"], sfx: "Telekinesis", school: "Elements", manacost: 2, components: ["Verbal"], level:1,
 			type:"hit", onhit:"instant", evadeable: true, noblock: true, time:8, power: 2, range: 3.99, size: 3, lifetime: 1, aoe: 1.5, damage: "crush",
-			events: [{trigger: "beforeDamageEnemy", type: "MakeVulnerable", time: 8}],
+			events: [{trigger: "beforeDamageEnemy", type: "MakeVulnerable", time: 2}],
 			effectTileDurationMod: 40, effectTile: {
 				name: "Cracked",
 				duration: 100,
