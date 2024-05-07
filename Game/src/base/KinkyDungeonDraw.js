@@ -3293,8 +3293,13 @@ function KDTex(Image, Nearest) {
 		const tex = PIXI.Texture.from(KDModFiles[Image] || Image);
 
 
-		if (tex)
+		if (tex) {
 			kdpixitex.set(Image, tex);
+			if (Nearest) {
+				tex.source.scaleMode = 'nearest';
+			}
+
+		}
 		return tex;
 	} catch (e) {
 		console.log("Failed to find texture " + Image);
