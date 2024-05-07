@@ -1,8 +1,8 @@
 {
 	"compilerOptions": {
 		"module": "commonjs",
-		"target": "ES2018",
-		"lib": ["es2018", "dom"],
+		"target": "ES2020",
+		"lib": ["es2020", "dom"],
 		"checkJs": true
 	},
 	"include": ["Scripts/**/*", "Screens/**/*", "Assets/**/*", "Backgrounds/**/*.js", "Game/**/*", "Data/**/*"],
