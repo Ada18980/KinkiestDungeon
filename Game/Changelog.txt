@@ -22,7 +22,12 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
-5.2.3
+
+5.3.1
+- Fixed bugs with cyber locks not being unlockable
+- Fixed bug where unlocking any lock would always remove the item
+
+5.3.0
 - TODO rope weapon when struggling out
 - MODDERS: Added LinkCategories to allow multiple link categories per item
 - Reworked the Doll Room in the Bellows. it is now the Doll Processing!

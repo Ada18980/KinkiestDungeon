@@ -68,11 +68,11 @@ let KDDelayedActionCommit = {
 				}
 
 			} else if (struggleType == "Unlock") {
-				KinkyDungeonSetFlag("picking", 2);
+				KinkyDungeonSetFlag("unlocking", 2);
 				restraint.unlockProgress += action.data.amount;
 				if (restraint.unlockProgress > 1) {
 					KinkyDungeonSetFlag("escaped", 2);
-					KDSuccessRemove(struggleType, restraint, lockType, action.data.index, action.data.escapeData, host);
+					KinkyDungeonLock(restraint, "");
 				} else if (action.data?.delta > 0) {
 					KDStunTurns(action.data?.delta, true);
 				}

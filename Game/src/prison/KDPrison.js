@@ -42,7 +42,8 @@ function KDPrisonCommonGuard(player, call = false) {
 	// Suppress standard guard call behavior
 	KinkyDungeonSetFlag("SuppressGuardCall", 10);
 	let guard = KDGetNearestFactionGuard(player.x, player.y);
-	KDGameData.JailGuard = guard.id;
+	if (guard)
+		KDGameData.JailGuard = guard.id;
 
 	return KinkyDungeonJailGuard();
 }

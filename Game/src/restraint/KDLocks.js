@@ -129,17 +129,20 @@ let KDLocks = {
 		canUnlock: (data) => {
 			return KinkyDungeonInventoryGet("KeyCard") != undefined;
 		},
+		unlock_diff: -1.0,
 		doUnlock: (data) => {
-			if (KDRandom() < KDLockoutChance(KinkyDungeonPlayerEntity)) {
+			KDLockoutGain(KinkyDungeonPlayerEntity, data);
+			KDGameData.LockoutChance = Math.min((KDGameData.LockoutChance || 0) + data.lockoutgain, 1);
+			if (KDLockoutChance(KinkyDungeonPlayerEntity) >= 0.99) {
 				data.lockout = true;
 				KinkyDungeonSendEvent("beforelockout", data);
 				if (data.lockout) {
-					KDLockoutGain(KinkyDungeonPlayerEntity, data);
 					KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("KeyCard"), -1);
 					KinkyDungeonSendTextMessage(10, TextGet("KDLockout"), "#ff5277", 2);
 					KinkyDungeonSendEvent("lockout", data);
-					KDGameData.LockoutChance = Math.min((KDGameData.LockoutChance || 0) + data.lockoutgain, 1);
 				}
+			} else {
+				KinkyDungeonSendTextMessage(10, TextGet("KDLockoutTick").replace("AMNT", "" + Math.round(KDGameData.LockoutChance * 100)), "#ff5277", 2);
 			}
 			return true;
 		},

@@ -850,7 +850,7 @@ function KinkyDungeonLock(item, lock, NoEvent = false, Link = false) {
 			item.pickProgress = 0;
 		}
 	} else {
-		if (KDLocks[lock] && KDLocks[lock].doUnlock) KDLocks[lock].doUnlock({item: item, link: Link});
+		if (KDLocks[item.lock] && KDLocks[item.lock].doUnlock) KDLocks[item.lock].doUnlock({item: item, link: Link});
 		item.lock = lock;
 		if (!NoEvent) {
 			if (item.events) {
@@ -1877,6 +1877,10 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 	if (lockType) {
 		let extraChance = (StruggleType == "Pick" && lockType.pick_diff) ? lockType.pick_diff : 0;
 		if (extraChance) escapeChance += extraChance;
+		if (StruggleType == "Unlock" && lockType.unlock_diff) {
+			escapeChance -= lockType.unlock_diff;
+		}
+
 	}
 
 	let limitChance = limitChancePre != undefined ? limitChancePre : (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
@@ -2683,7 +2687,10 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index, query = false,
 						|| (progress >= 1 - data.escapeChance))
 					&& !(StruggleType == "Pick" && data.lockType && !data.lockType.canPick(data))) {
 					Pass = "Success";
-					KDSuccessRemove(StruggleType, restraint, data.lockType, index, data, host);
+					if (StruggleType == "Unlock")
+						KinkyDungeonLock(restraint, "");
+					else
+						KDSuccessRemove(StruggleType, restraint, data.lockType, index, data, host);
 				} else {
 					// Failure block for the different failure types
 					if (StruggleType == "Cut") {
@@ -5743,7 +5750,7 @@ function KDLockoutChance(player) {
  * @returns {void}
  */
 function KDLockoutGain(player, data) {
-	data.lockoutgain = 0.05 + 0.01 * Math.round(KDRandom() * 10);
+	data.lockoutgain = 0.25 + 0.01 * Math.round(KDRandom() * 15);
 	if (player.player) {
 		KinkyDungeonSendEvent("calcLockoutGain", data);
 	}

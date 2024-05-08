@@ -2834,6 +2834,7 @@ type KDLockType = {
 	failPick: (data: any) => string;
 	breakChance: (data: any) => boolean;
 	unlockable: boolean;
+	unlock_diff?: number;
 	key: string;
 	canUnlock: (data: any) => boolean;
 	doUnlock: (data: any) => boolean;

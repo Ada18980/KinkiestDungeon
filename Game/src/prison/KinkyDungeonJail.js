@@ -1751,25 +1751,25 @@ let KDCustomDefeatUniforms = {
 	},
 
 	CyberDoll: () => {
-		KinkyDungeonAddRestraintIfWeaker("ControlHarness", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
-		KinkyDungeonAddRestraintIfWeaker("TrackingCollar", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
-		KinkyDungeonAddRestraintIfWeaker("TrackingModule", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("ControlHarness", 5, true, "Cyber", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("TrackingCollar", 5, true, "Cyber", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("TrackingModule", 5, true, "Cyber", false, undefined, undefined, "Dollsmith", true);
 
 
-		KinkyDungeonAddRestraintIfWeaker("CyberBelt", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
-		KinkyDungeonAddRestraintIfWeaker("CyberBra", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("CyberBelt", 5, true, "Cyber", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("CyberBra", 5, true, "Cyber", false, undefined, undefined, "Dollsmith", true);
 
-		KinkyDungeonAddRestraintIfWeaker("CyberHeels", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("CyberHeels", 5, true, "Cyber", false, undefined, undefined, "Dollsmith", true);
 		//KinkyDungeonAddRestraintIfWeaker("CyberBallGag", 5, true, "Red", false, undefined, undefined, undefined, true);
-		KinkyDungeonAddRestraintIfWeaker("CyberPlugGag", 5, true, "Red", false, undefined, undefined, "Dollsmith", true);
-		KinkyDungeonAddRestraintIfWeaker("CyberMuzzle", 5, true, "Red", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("CyberPlugGag", 5, true, "Cyber", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("CyberMuzzle", 5, true, "Cyber", false, undefined, undefined, "Dollsmith", true);
 		//KinkyDungeonAddRestraintIfWeaker("DollmakerVisor", 5, true, "Gold", false, undefined, undefined, undefined, true);
 
-		KinkyDungeonAddRestraintIfWeaker("CyberMittens", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("CyberMittens", 5, true, "Cyber", false, undefined, undefined, "Dollsmith", true);
 
-		KinkyDungeonAddRestraintIfWeaker("CyberArmCuffs", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
-		KinkyDungeonAddRestraintIfWeaker("CyberLegCuffs", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
-		KinkyDungeonAddRestraintIfWeaker("CyberAnkleCuffs", 5, true, "Blue", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("CyberArmCuffs", 5, true, "Cyber", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("CyberLegCuffs", 5, true, "Cyber", false, undefined, undefined, "Dollsmith", true);
+		KinkyDungeonAddRestraintIfWeaker("CyberAnkleCuffs", 5, true, "Cyber", false, undefined, undefined, "Dollsmith", true);
 
 		//KinkyDungeonAddRestraintIfWeaker("CyberDollJacket", 5, true, "Red", false, undefined, undefined, undefined, true);
 
