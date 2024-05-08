@@ -667,69 +667,6 @@ function KinkyDungeonUpdateAngel(delta) {
 			}
 		}
 	}
-	if (KDGameData.KinkyDungeonPenance) {
-		if (!KinkyDungeonAngel()) {
-			KinkyDungeonCreateAngel(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
-		}
-		if (KinkyDungeonAngel()) {
-			KinkyDungeonAngel().gx = KinkyDungeonPlayerEntity.x;
-			KinkyDungeonAngel().gy = KinkyDungeonPlayerEntity.y;
-			if (KDGameData.KDPenanceMode == "") {
-				KDMapData.Bullets = [];
-				if (KDGameData.KDPenanceStage == 0) {
-					let divineRestraints = [];
-					for (let inv of KinkyDungeonAllRestraint()) {
-						if (KDRestraint(inv).divine) {
-							divineRestraints.push(inv);
-						}
-					}
-					if (divineRestraints.length > 0) {
-						KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonAngelUnlock"), "yellow", 3);
-						for (let r of divineRestraints) {
-							KinkyDungeonRemoveRestraint(KDRestraint(r).Group, false, false, true, true);
-						}
-					} else KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonAngelIntro"), "yellow", 2);
-
-				}
-				if (KDGameData.KDPenanceStage > 1 && (KDistChebyshev(KinkyDungeonAngel().x - KinkyDungeonPlayerEntity.x, KinkyDungeonAngel().y - KinkyDungeonPlayerEntity.y) < 1.5 || KDGameData.KDPenanceStage > 3)) {
-					if (KinkyDungeonGold >= KDGameData.KinkyDungeonPenanceCostCurrent) {
-						KDGameData.KDPenanceMode = "Success";
-						KDGameData.KDPenanceStage = -delta;
-					} else {
-						KDGameData.KDPenanceMode = "Anger";
-						KDGameData.KDPenanceStage = -delta;
-					}
-				} if (KDGameData.KDPenanceStage > 1) {
-					if (KDGameData.KDPenanceStage == 1)
-						KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonAngelWarn"), "yellow", 2);
-					//KDGameData.SlowMoveTurns = 1;
-				}
-				KDGameData.KDPenanceStage += delta;
-			} else if (KDGameData.KDPenanceMode == "Success") {
-				if (KDGameData.KDPenanceStage < 2)
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonAngel" + KDGameData.KDPenanceMode + KDGameData.KDPenanceStage), "yellow", 2);
-				KDGameData.KDPenanceStage += delta;
-				if (KinkyDungeonGold >= KDGameData.KinkyDungeonPenanceCostCurrent) {
-					if (KDGameData.KDPenanceStage >= 2) {
-						KinkyDungeonAddGold(-KDGameData.KinkyDungeonPenanceCostCurrent);
-						KinkyDungeonChangeRep(KDGameData.AngelCurrentRep, KinkyDungeonPenanceRepBonus);
-						KDGameData.KinkyDungeonPenance = false;
-					}
-				} else {
-					KDGameData.KDPenanceMode = "Anger";
-					KDGameData.KDPenanceStage = 0;
-					KDGameData.KDPenanceStageEnd = 0;
-				}
-			} else if (KDGameData.KDPenanceMode == "Anger") {
-				if (KDGameData.KDPenanceStage < 4)
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonAngel" + KDGameData.KDPenanceMode + ("" + (KDGameData.KDPenanceStage))), "yellow", 2);
-				else {
-					KinkyDungeonAggro(KinkyDungeonAngel());
-				}
-				KDGameData.KDPenanceStage += delta;
-			}
-		}
-	}
 }
 
 /**

@@ -1422,9 +1422,6 @@ let KDEffectTileMoveOnFunctions = {
 	},
 };
 
-let KDTorchExtinguishTypes = ["ice", "frost", "cold", "soap", "water", "stun", "glue"];
-let KDSlimeExtinguishTypes = ["ice", "frost", "cold", "acid", "soap", "water"];
-let KDIgnitionSources = ["fire", "electric"];
 
 /**
  * Return is idk

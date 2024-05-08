@@ -3625,6 +3625,7 @@ let KDHardModeThresh = 10;
 let KDAwaitingModLoad = false;
 
 function KinkyDungeonHandleClick() {
+	allowMusic = true;
 	KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
 	if (KDAwaitingModLoad) return true;
 	if (KDProcessButtons()) return true;

@@ -3202,7 +3202,9 @@ const KDEventMapBuff = {
 							let spell = KinkyDungeonFindSpell(e.spell, true);
 							let b = KinkyDungeonLaunchBullet(origin.x, origin.y,
 								player.x,player.y,
-								0.5, {noSprite: spell.noSprite, faction: KDGetFaction(enemy), name:spell.name, block: spell.block, width:spell.size, height:spell.size, summon:spell.summon,
+								0.5, {noSprite: spell.noSprite, faction: KDGetFaction(enemy), name:spell.name, block: spell.block, volatile: spell.volatile, blockType: spell.blockType,
+									volatilehit: spell.volatilehit,
+									width:spell.size, height:spell.size, summon:spell.summon,
 									targetX: player.x, targetY: player.y, cast: Object.assign({}, spell.spellcast),
 									source: enemy.id, dot: spell.dot,
 									bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
@@ -3269,7 +3271,9 @@ const KDEventMapBuff = {
 							let spell = KinkyDungeonFindSpell(e.spell, true);
 							let b = KinkyDungeonLaunchBullet(origin.x, origin.y,
 								player.x,player.y,
-								0.5, {noSprite: spell.noSprite, faction: KDGetFaction(enemy), name:spell.name, block: spell.block, width:spell.size, height:spell.size, summon:spell.summon,
+								0.5, {noSprite: spell.noSprite, faction: KDGetFaction(enemy), name:spell.name, block: spell.block, volatile: spell.volatile, blockType: spell.blockType,
+									volatilehit: spell.volatilehit,
+									width:spell.size, height:spell.size, summon:spell.summon,
 									targetX: player.x, targetY: player.y,//cast: Object.assign({}, spell.spellcast),
 									source: enemy.id, dot: spell.dot,
 									bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
@@ -6774,7 +6778,9 @@ let KDEventMapBullet = {
 					for (let i = 0; i < (e.count || 1); i++) {
 						let bb = KinkyDungeonLaunchBullet(origin.x, origin.y,
 							player.x,player.y,
-							0.5, {noSprite: spell.noSprite, faction: KDGetFaction(enemy), name:spell.name, block: spell.block, width:spell.size, height:spell.size, summon:spell.summon,
+							0.5, {noSprite: spell.noSprite, faction: KDGetFaction(enemy), name:spell.name, block: spell.block, volatile: spell.volatile, blockType: spell.blockType,
+								volatilehit: spell.volatilehit,
+								width:spell.size, height:spell.size, summon:spell.summon,
 								targetX: player.x, targetY: player.y, cast: spell.spellcast ? Object.assign({}, spell.spellcast) : undefined,
 								source: enemy.id, dot: spell.dot,
 								bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
@@ -8342,7 +8348,9 @@ let KDEventMapEnemy = {
 							let spell = KinkyDungeonFindSpell(e.kind, true);
 							let b = KinkyDungeonLaunchBullet(origin.x, origin.y,
 								player.x,player.y,
-								0.5, {noSprite: spell.noSprite, faction: "Ambush", name:spell.name, block: spell.block, width:spell.size, height:spell.size, summon:spell.summon,
+								0.5, {noSprite: spell.noSprite, faction: "Ambush", name:spell.name, block: spell.block, volatile: spell.volatile, blockType: spell.blockType,
+									volatilehit: spell.volatilehit,
+									width:spell.size, height:spell.size, summon:spell.summon,
 									targetX: player.x, targetY: player.y, cast: Object.assign({}, spell.spellcast),
 									source: enemy.id, dot: spell.dot,
 									bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,

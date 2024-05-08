@@ -64,6 +64,7 @@ let KDMusicTickRate = 100;
 /** @type {HTMLAudioElement} */
 let KDCurrentMusicSound = null;
 let KDCurrentMusicSoundUpdate = null;
+let allowMusic = false;
 
 function KDGetCurrentCheckpoint() {
 	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
@@ -80,7 +81,7 @@ let lastKDMusicTick = 0;
 
 function KDUpdateMusic() {
 
-	if (KDPatched) {
+	if (allowMusic) {
 		KDCurrentMusicSoundUpdate = false;
 		let KDMusic = KinkyDungeonMapParams[KDGetMusicCheckpoint()].music;
 

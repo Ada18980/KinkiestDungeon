@@ -6142,9 +6142,11 @@ KinkyDungeonSpellSummonUp2,Many Summons
 KinkyDungeonSpellDescriptionSummonUp2,Increases the permanent summon cap by +2 (from 4 to 6)
 
 KinkyDungeonSpellBomb,Summon Bomb
+KinkyDungeonSpellBombItem,Bomb
 KinkyDungeonSpellDescriptionBomb,Channel for 1 turn for a bomb that does DamageDealt blast damage in an area after DelayTime turns.
 KinkyDungeonSpellCastBomb,Fire in the hole!
 KinkyDungeonSpellTargetBomb,Choose target AoE location
+
 
 KinkyDungeonSpellSnare,Rope Rune
 KinkyDungeonSpellRopeRuneStrike,Rope Rune
@@ -20566,22 +20568,22 @@ RestraintChainHogtieLinkDesc2,"A metal chain holds your back in an arched positi
 
 RestraintThighLink,Thigh Chain
 RestraintThighLinkDesc,"A chain connecting your thigh cuffs together. You can still walk, albeit slower than usual."
-RestraintThighLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+RestraintThighLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 
 
 RestraintAnkleLink,Ankle Chain
 RestraintAnkleLinkDesc,"A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual."
-RestraintAnkleLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+RestraintAnkleLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 RestraintAnkleLinkShort,Ankle Chain (Short)
 RestraintAnkleLinkShortDesc,"A short chain connecting your ankle cuffs together. You can barely separate your legs with this on."
-RestraintAnkleLinkShortDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+RestraintAnkleLinkShortDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 
 RestraintElbowLink,Elbow Chain
 RestraintElbowLinkDesc,A very short chain connecting your elbow cuffs together. It is quite awkward to remove by yourself.
-RestraintElbowLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+RestraintElbowLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 RestraintWristLink,Wrist Chain
 RestraintWristLinkDesc,A very short chain connecting your wrist cuffs together.
-RestraintWristLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+RestraintWristLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 
 
 NameDragonVinePlant,Vine Pod

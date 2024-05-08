@@ -62,6 +62,10 @@ let KinkyDungeonDismantleDamageTypes = ["stun", "fire", ...KinkyDungeonMeleeDama
 let KinkyDungeonIgnoreShieldTypes = ["soul", "holy"];
 let KinkyDungeonIgnoreBlockTypes = ["soul", "charm", "gas"];
 
+let KDTorchExtinguishTypes = ["ice", "frost", "cold", "soap", "water", "stun", "glue"];
+let KDSlimeExtinguishTypes = ["ice", "frost", "cold", "acid", "soap", "water"];
+let KDIgnitionSources = ["fire", "electric"];
+
 let KDDamageEquivalencies = {
 	"frost": "ice",
 	//"happygas": "charm",
@@ -1803,7 +1807,7 @@ function KinkyDungeonUpdateBulletsCollisions(delta, Catchup) {
 						KinkyDungeonSendEvent("bulletDestroy", {bullet: b, target: undefined, outOfRange:false, outOfTime: false});
 						E -= 1;
 					}
-					KinkyDungeonBulletHit(b, 1);
+					KinkyDungeonBulletHit(b, 0);
 				}
 			b.collisionUpdate = true;
 		}
@@ -2011,6 +2015,8 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 						source: b.bullet.source,
 						spriteID: KinkyDungeonGetEnemyID() + b.bullet.name+"Hit" + CommonTime(),
 						bullet:{faction: b.bullet.faction, spell:b.bullet.spell, block: (b.bullet.blockhit ? b.bullet.blockhit : 0),
+							blockType: (b.bullet.blockTypehit ? b.bullet.blockTypehit : undefined),
+							volatile: (b.bullet.volatilehit ? b.bullet.volatilehit : undefined),
 							bulletColor: b.bullet.spell?.hitColor, bulletLight: b.bullet.spell?.hitLight, hit: b.bullet.spell?.secondaryhit,
 							bulletSpin: b.bullet.spell?.hitSpin,
 							effectTileLinger: b.bullet.spell.effectTileLinger, effectTileDurationModLinger: b.bullet.spell.effectTileDurationModLinger,
@@ -2397,17 +2403,22 @@ function KinkyDungeonBulletsCheckCollision(bullet, AoE, force, d, inWarningOnly,
 	}
 	if (!bullet.bullet.aoe && hitEnemy) return false;
 
-	if (!(bullet.bullet.block > 0) && bullet.vx != 0 || bullet.vy != 0) {
-
+	if (!(bullet.bullet.block > 0) && (bullet.vx != 0 || bullet.vy != 0 || bullet.bullet.volatile)) {
 		for (let b2 of KDMapData.Bullets) {
 			if (b2 != bullet && b2.bullet.block > 0 && b2.x == bullet.x && b2.y == bullet.y) {
-				b2.bullet.block -= bullet.bullet.damage.damage;
-				if (b2.bullet.block <= 0) b2.bullet.block = -1;
+				if (!b2.bullet.blockType || b2.bullet.blockType.includes(bullet.bullet.damage?.type)) {
+					b2.bullet.block -= bullet.bullet.damage.damage;
+					if (b2.bullet.block <= 0) b2.bullet.block = -1;
 
-				return false;
+					//if (bullet.bullet.volatile) bullet.time = 0;
+					return false;
+				}
 			}
 		}
-	} else if (bullet.bullet.block == -1) return false; // Shields expire
+	} else if (bullet.bullet.block == -1) {
+		//if (bullet.bullet.volatile) bullet.time = 0;
+		return false; // Shields expire
+	}
 
 	if (bullet.bullet.lifetime == -1) return false; // Instant spells
 

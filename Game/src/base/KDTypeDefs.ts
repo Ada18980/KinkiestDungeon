@@ -2095,6 +2095,12 @@ interface spell {
 	piercingTrail?: boolean;
 	/** nonVolatile */
 	nonVolatile?: boolean;
+	/** likely to cause chain reactions */
+	volatile?: boolean;
+	/** likely to cause chain reactions */
+	volatilehit?: boolean;
+	/** Can only block these types of spells */
+	blockType?: string[],
 	/** Cancels automove when cast */
 	cancelAutoMove?: boolean;
 	/** requireLOS */

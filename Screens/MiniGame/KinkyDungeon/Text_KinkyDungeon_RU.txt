@@ -2761,18 +2761,18 @@ Edged!
 На грани!
 Satisfied. Miscast chance is reduced.
 Удовлетворение. Шанс осечки в заклинаниях снижен.
-Damage: 
-Урон: 
-Bind: 
-Сковывание: 
-Crit: 
-Крит: 
-Crit: 
-Крит: 
-Accuracy: 
-Точность: 
-SP Cost: 
-Трата SP: 
+Damage:
+Урон:
+Bind:
+Сковывание:
+Crit:
+Крит:
+Crit:
+Крит:
+Accuracy:
+Точность:
+SP Cost:
+Трата SP:
 Cut PWR: AMNT%
 Эф.Разрез: AMNT%
 It appears to be a receptacle
@@ -5591,12 +5591,12 @@ These runes are meant for someone with less willpower.
 Эти руны предназначены для тех, у кого меньше силы воли.
 You try to read the runes but cannot understand them.
 Вы пытаетесь прочитать руины, но не можете их понять.
-Allies: 
-Союзники: 
-Enemies: 
-Враги: 
-Favorable: 
-Партнеры: 
+Allies:
+Союзники:
+Enemies:
+Враги:
+Favorable:
+Партнеры:
 None
 Нет
 Nevermere Trainers
@@ -11627,14 +11627,14 @@ Special
 Особое
 Learn Spell
 Выучить заклинание
-Spell Points: 
-Очки способностей: 
-Level: 
-Уровень: 
-Spell Point Cost: 
-Стоимость в очках способн.: 
-Mana Cost: 
-Затраты маны: 
+Spell Points:
+Очки способностей:
+Level:
+Уровень:
+Spell Point Cost:
+Стоимость в очках способн.:
+Mana Cost:
+Затраты маны:
 Remove Spell 1
 Удалить закл. 1
 Remove Spell 2
@@ -11715,8 +11715,8 @@ Bellows
 (Страница из Книги Вечности)|Некоторые говорят, что 'Катакомбы' старше самого времени. Когда Древняя цивилизация начала изучать бессмертие, никто не знал, возможно ли будет вернуть тех, кто уже умер. Таким образом, катакомбы использовались для хранения всех останков бывших людей, чтобы их тоже можно было оживить, когда архимаг, наконец, совершит свой прорыв.
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 (Страница из Книги Вечности)|Говорят, что архимаг Сариэль Винлага училась в этой самой библиотеке. Собрав воедино все человеческие знания, магические, духовные, технологические, она поручила своим двенадцати младшим магам работу по сортировке и сопоставлению богатства приобретенных ею знаний. Никто не знает, почему она вдруг отказалась от библиотеки и почему сегодня она находится в таком плачевном состоянии.
-(A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
-(Страница из Книги Вечности)|Заросшие руины остаются загадкой для ученых. Сквозь щели в потолке почти не проникает свет, и все же джунгли кишат жизнью. Известно, что регенеративные способности, которые удерживают людей от смерти, зависят от собственного запаса маны индивидуума. Так как же растения и звери выживают без маны? Верующие говорят, что джунгли охраняет Богиня Жизни, но может ли быть так, что это Древняя цивилизация разработала средства поддержания жизни под землей? 
+(A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
+(Страница из Книги Вечности)|Заросшие руины остаются загадкой для ученых. Сквозь щели в потолке почти не проникает свет, и все же джунгли кишат жизнью. Известно, что регенеративные способности, которые удерживают людей от смерти, зависят от собственного запаса маны индивидуума. Так как же растения и звери выживают без маны? Верующие говорят, что джунгли охраняет Богиня Жизни, но может ли быть так, что это Древняя цивилизация разработала средства поддержания жизни под землей?
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 (Страница из Книги Вечности)|Проблема Энергии преследовала цивилизацию на протяжении тысячелетий. До того, как были открыты лейлинии, человечество полагалось на естественные источники энергии, такие как реки и дрова. Когда были обнаружены Хрустальные пещеры, произошла великая революция. Больше не полагаясь на природные источники, цивилизации могли использовать подземные источники хаотической энергии для приведения в действие невиданных ранее механизмов.
 (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
@@ -34969,8 +34969,8 @@ Yokes are less favored over other heavy bondage.
  (уклонение!)
 You crouch and move slowly.
 Вы приседаете и двигаетесь медленнее.
-Owned by: 
-Принадлежит: 
+Owned by:
+Принадлежит:
 Warden's Belt
 Пояс надзирательницы
 You may go on your way, but only as long your freedom is useful to her.
@@ -35905,31 +35905,31 @@ Thigh Chain
 Цепочка между бедер
 A chain connecting your thigh cuffs together. You can still walk, albeit slower than usual.
 Цепочка, соединяющая манжеты на бедрах. Вы все еще можете ходить, хотя и медленнее, чем обычно.
-It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 Сделана из стали и защелкивается на замок. Разблокировка замка приведет к ее спадению.
 Ankle Chain
 Цепочка между лодыжек
 A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
 Цепочка, соединяющая манжеты на щиколотках. Дает вам достаточно пространства для ходьбы, хотя и медленнее, чем обычно.
-It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 Сделана из стали и защелкивается на замок. Разблокировка замка приведет к ее спадению.
 Ankle Chain (Short)
 Короткая цепочка (Лодыжки)
 A short chain connecting your ankle cuffs together. You can barely separate your legs with this on.
 Короткая цепочка, соединяющая манжеты на щиколотках. С ней вы едва сможете раздвинуть ноги.
-It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 Сделана из стали и защелкивается на замок. Разблокировка замка приведет к ее спадению.
 Elbow Chain
 Цепочка между локтями
 A very short chain connecting your elbow cuffs together. It is quite awkward to remove by yourself.
 Очень короткая цепочка, соединяющая манжеты на локтях. Её будет очень неудобно снимать самостоятельно.
-It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 Сделана из стали и защелкивается на замок. Разблокировка замка приведет к ее спадению.
 Wrist Chain
 Цепочка между запястий
 A very short chain connecting your wrist cuffs together.
 Очень короткая цепочка, соединяющая манжеты на запястьях друг с другом.
-It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 Сделана из стали и защелкивается на замок. Разблокировка замка приведет к ее спадению.
 Vine Pod
 Стручок лоз

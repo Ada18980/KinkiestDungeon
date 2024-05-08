@@ -27228,7 +27228,7 @@ Thigh Chain
 脚枷の鎖
 A chain connecting your thigh cuffs together. You can still walk, albeit slower than usual.
 太ももを繋ぐ鎖。脚の動きが制限される。
-It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
 
 Chain Hogtie
@@ -27242,26 +27242,26 @@ Ankle Chains
 足枷の鎖
 A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
 足枷同士をつなぐ鎖。歩く程度なら支障はない程度の長さ。
-RestraintAnkleLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+RestraintAnkleLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
 Ankle Chain (Short)
 足枷の鎖(短)
 A short chain connecting your ankle cuffs together. You can barely separate your legs with this on.
 足枷同士をつなぐ短い鎖。辛うじて足を離せる程度の長さ。
-RestraintAnkleLinkShortDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+RestraintAnkleLinkShortDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
 
 Elbow Chain
 肘枷の鎖
 A very short chain connecting your elbow cuffs together. It is quite awkward to remove by yourself.
 肘枷同士を繋ぐ鎖。自分で外すのは困難。
-RestraintElbowLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+RestraintElbowLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
 Wrist Chain
 手枷の鎖
 A very short chain connecting your wrist cuffs together.
 手枷同士を繋ぐ短い鎖。
-RestraintWristLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+RestraintWristLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
 
 

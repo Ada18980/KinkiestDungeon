@@ -944,7 +944,9 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			}
 			let b = KinkyDungeonLaunchBullet(xx, yy,
 				tX-entity.x,tY - entity.y,
-				speed, {noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, width:size, height:size, summon:spell.summon,
+				speed, {noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, volatile: spell.volatile, blockType: spell.blockType,
+					volatilehit: spell.volatilehit,
+					width:size, height:size, summon:spell.summon,
 					targetX: tX, targetY: tY,
 					source: (entity?.player ? -1 : entity?.id) || bullet?.bullet?.source, cast: cast, dot: spell.dot,
 					bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
@@ -986,7 +988,9 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			let b = KinkyDungeonLaunchBullet(tX, tY,
 				moveDirection.x,moveDirection.y,
 				0, {
-					noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, width:sz, height:sz, summon:spell.summon,
+					noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, volatile: spell.volatile, blockType: spell.blockType,
+					volatilehit: spell.volatilehit,
+					width:sz, height:sz, summon:spell.summon,
 					targetX: tX, targetY: tY,
 					source: (entity?.player ? -1 : entity?.id) || bullet?.bullet?.source, lifetime:spell.delay +
 						(spell.delayRandom ? Math.floor(KDRandom() * spell.delayRandom) : 0), cast: cast, dot: spell.dot, events: spell.events, alwaysCollideTags: spell.alwaysCollideTags,
@@ -1025,7 +1029,9 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 			let b = {x: tX, y:tY,
 				vx: moveDirection.x,vy: moveDirection.y, born: 1,
 				ox: entity.x, oy: entity.y,
-				bullet: {noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, width:sz, height:sz, summon:spell.summon,
+				bullet: {noSprite: spell.noSprite, faction: faction, name:spell.name, block: spell.block, volatile: spell.volatile, blockType: spell.blockType,
+					volatilehit: spell.volatilehit,
+					width:sz, height:sz, summon:spell.summon,
 					targetX: tX, targetY: tY,
 					followPlayer: (!enemy && player && spell.followCaster) ? true : undefined,
 					followCaster: (enemy && spell.followCaster) ? enemy.id : undefined,

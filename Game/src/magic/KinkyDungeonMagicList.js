@@ -1122,10 +1122,11 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 		{name: "Bomb", color: "#ff5277", prerequisite: "ApprenticeSummon", tags: ["aoe", "offense"], noise: 5, sfx: "FireSpell", school: "Conjure", manacost: 5, components: ["Verbal"], level:1,
 			aoetype: "cross",
+			block: 1.5, noTerrainHit: true, volatilehit: true, blockType: [...KDIgnitionSources],
 			effectTileDurationMod: 7, hitSpin: 0.2, effectTile: {
 				name: "Smoke",
 				duration: -1,
-			}, type:"inert", onhit:"lingering", time: 3, delay: 5, power: 10, range: 3, size: 3, aoe: 2, lifetime: 1, damage: "stun", playerEffect: {name: "Damage"}, channel: 1},
+			}, type:"inert", onhit:"lingering", time: 3, delay: 5, power: 10, range: 3, size: 3, aoe: 2, lifetime: 1, damage: "stun", playerEffect: {name: "Damage"},},
 
 		{name: "FeatherCloud", color: "#ffffff", prerequisite: "TickleCloud", tags: ["tickle", "aoe", "dot", "offense", "utility", "denial"], noUniqueHits: true, noise: 1, landsfx: "Tickle", hitsfx: "Tickle", school: "Elements", manacost: 4,
 			components: ["Arms"], hitSpin: 0.7, bulletSpin: 0.4, level:1, type:"inert", onhit:"aoe", delay: 1, power: 2.0, distract: 6.0, range: 2.5, size: 3, aoe: 1, pierceEnemies: true,
@@ -2327,7 +2328,7 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "IceSlowPrepare", color: "#00ffff", minRange: 0, sfx: "MagicSlash", school: "Illusion", manacost: 8, components: ["Arms"], projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 12, range: 5, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert",
 		spellcast: {spell: "IceSlow", target: "target", directional:true, offset: false}, channel: 1},
 
-	{name: "SmokeBomb", tags: ["aoe", "buff", "utility", "stealth", "defense"], sfx: "Fwoosh", school: "Illusion", manacost: 5, components: [], level:1, type:"inert", buffs: [
+	{name: "SmokeBomb", tags: ["aoe", "buff", "utility", "stealth", "defense"], sfx: "Fwoosh", school: "Illusion", manacost: 0, components: [], level:1, type:"inert", buffs: [
 		{id: "Shroud", type: "Evasion", power: 7.0, player: true, enemies: true, tags: ["darkness"], range: 1.5},
 		{id: "Shroud2", aura: "#444488", type: "Sneak", power: 4.0, player: true, duration: 8, enemies: false, tags: ["darkness"], range: 1.5}
 	], onhit:"", time:14, aoe: 1.5, power: 0, delay: 8, range: 3.5, size: 3, damage: "",
@@ -2344,14 +2345,14 @@ let KinkyDungeonSpellListEnemies = [
 		],
 		level:1, type:"inert", onhit:"aoe", time: 0, delay: 1, power: 1, range: 3.5, size: 3, aoe: 1.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 3}},
 
-	{name: "FlashBomb", color: "#ff2200", minRange: 0, sfx: "Miss", landsfx: "Lightning", school: "Illusion", manacost: 3, specialCD: 12, components: ["Verbal"], hideWarnings: true,
+	{name: "FlashBomb", color: "#ff2200", minRange: 0, sfx: "Miss", landsfx: "Lightning", school: "Illusion", manacost: 0, specialCD: 12, components: ["Verbal"], hideWarnings: true,
 		hitColor: 0xffffff, hitLight: 7,
 		noMiscast: true,
 		hitevents: [
 			{type: "BlindAll", trigger: "bulletHitEnemy", time: 20},
 		],
 		level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 1, range: 4, size: 3, aoe: 1.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 6}},
-	{name: "Flashbang", color: "#ff2200", minRange: 0, landsfx: "Lightning", school: "Illusion", manacost: 3, specialCD: 12, components: ["Verbal"], hideWarnings: true,
+	{name: "Flashbang", color: "#ff2200", minRange: 0, landsfx: "Lightning", school: "Illusion", manacost: 0, specialCD: 12, components: ["Verbal"], hideWarnings: true,
 		hitColor: 0xffffff, hitLight: 7,
 		noMiscast: true,
 		hitevents: [
@@ -2500,8 +2501,18 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "SporesSick", bulletSpin: 0.1, color: "#55ff55", noCastMsg: true, hitsfx: "DamageWeak", selfcast: true, manacost: 0, components: ["Verbal"], level:1, type:"hit", onhit:"aoe", time: 5, delay: 0, power: 0.5, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "poison", playerEffect: {name: "SporesSick", power: 0.5, damage: "poison"}},
 	{enemySpell: true, name: "SoulCrystalBind", color: "#ff5277", minRange: 0, sfx: "Evil", manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 6, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "drain", playerEffect: {name: "ObsidianEngulf", count: 1, power: 6, damage: "drain"}},
 
+	{name: "BombItem", color: "#ff5277", prerequisite: "ApprenticeSummon", tags: ["aoe", "offense"], noise: 5, sfx: "FireSpell", school: "Conjure", manacost: 5, components: ["Verbal"], level:1,
+		aoetype: "Xcross",
+		block: 1.5, noTerrainHit: true, volatilehit: true, blockType: ["stun", "holy", ...KDIgnitionSources],
+		effectTileDurationMod: 7, hitSpin: 0.2, effectTile: {
+			name: "Smoke",
+			duration: -1,
+		}, type:"inert", onhit:"lingering", time: 3, delay: 5, power: 10, range: 3, size: 3, aoe: 2, lifetime: 1, damage: "stun", playerEffect: {name: "Damage"}},
+
+
 	{enemySpell: true, name: "MinerBomb", color: "#ff2200", selfcast: true, noise: 5, sfx: "FireSpell", hitsfx: "FireSpell", school: "Conjure", manacost: 5, components: ["Verbal"], level:1, hideWarnings: true,
 		aoetype: "cross",
+		block: 1.5, noTerrainHit: true, volatile: true, blockType: [...KDIgnitionSources],
 		effectTileDurationMod: 7, effectTile: {
 			name: "Smoke",
 			duration: -1,
