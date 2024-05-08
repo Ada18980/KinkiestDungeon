@@ -3199,6 +3199,12 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 						// Removed for non guards because its fun to find tied up girls around
 						if (enemy == KinkyDungeonJailGuard())
 							KDCaptureNearby(enemy);
+
+						if (['s','S','H'].includes(KinkyDungeonMapGet(enemy.x, enemy.y)) && KDEnemyHasFlag(enemy, "despawn")) {
+							KDClearItems(enemy);
+							KDRemoveEntity(enemy, false, false, true);
+						}
+
 					}
 
 					let end = performance.now();

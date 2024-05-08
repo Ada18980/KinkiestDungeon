@@ -5713,3 +5713,38 @@ function KDResortRestraints(Group, addedItem, bypass) {
 	}
 	// No item, no sort
 }
+
+/**
+ *
+ * @param {entity} player
+ * @returns {number}
+ */
+function KDLockoutChance(player) {
+	let data = {
+		chance: 0,
+		bonus: 0,
+		player: player,
+	};
+	if (player.player) {
+		data.chance = KDGameData.LockoutChance || 0;
+		KinkyDungeonSendEvent("calcLockout", data);
+		data.chance += data.bonus;
+		return data.chance;
+	}
+	return 1.0;
+}
+
+
+
+/**
+ *
+ * @param {entity} player
+ * @param {any} data
+ * @returns {void}
+ */
+function KDLockoutGain(player, data) {
+	data.lockoutgain = 0.05 + 0.01 * Math.round(KDRandom() * 10);
+	if (player.player) {
+		KinkyDungeonSendEvent("calcLockoutGain", data);
+	}
+}

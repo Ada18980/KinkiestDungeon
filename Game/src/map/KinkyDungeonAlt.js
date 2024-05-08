@@ -1418,6 +1418,8 @@ function KinkyDungeonCreateDollStorage(POI, VisitedRooms, width, height, opennes
 	KD_PasteTile(KDMapTilesList.DollRoom, 1, 1, data);
 	KDMapData.EndPosition = {x: 2, y: 11};
 	KinkyDungeonMapSet(2, 11, 's');
+	if (MiniGameKinkyDungeonLevel == 0)
+		KinkyDungeonTilesSet("2,11", {RoomType: KDGameData.HighestLevelCurrent > 0 ? "" : "JourneyFloor"});
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 }

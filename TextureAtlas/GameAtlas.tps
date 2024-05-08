@@ -1418,6 +1418,7 @@
             <key type="filename">../Game/EnemiesBound/WitchEarth.png</key>
             <key type="filename">../Game/EnemiesBound/WitchFlame.png</key>
             <key type="filename">../Game/EnemiesBound/WitchIce.png</key>
+            <key type="filename">../Game/EnemiesBound/WitchRope.png</key>
             <key type="filename">../Game/EnemiesBound/WitchShock.png</key>
             <key type="filename">../Game/EnemiesBound/WitchSlime.png</key>
             <key type="filename">../Game/EnemiesBound/WitchWater.png</key>
@@ -2852,6 +2853,8 @@
             <key type="filename">../Game/Bullets/BladeDanceBullet.png</key>
             <key type="filename">../Game/Bullets/Bomb.png</key>
             <key type="filename">../Game/Bullets/BombHit.png</key>
+            <key type="filename">../Game/Bullets/BombItem.png</key>
+            <key type="filename">../Game/Bullets/BombItemHit.png</key>
             <key type="filename">../Game/Bullets/BoundByFate.png</key>
             <key type="filename">../Game/Bullets/BoundByFateHit.png</key>
             <key type="filename">../Game/Bullets/BubbleBurst.png</key>

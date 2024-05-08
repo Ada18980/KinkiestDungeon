@@ -527,12 +527,14 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 * MaxVisionDist: number,
 * MinVisionDist: number,
 * NightVision: number,
+* LockoutChance: number,
 * StatMaxBonus: Record<string, number>,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	LockoutChance: 0,
 	ShortcutIndex: -1,
 	JourneyProgression: [...KDDefaultJourney],
 	JourneyTarget: null,

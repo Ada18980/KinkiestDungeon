@@ -108,6 +108,8 @@ let KDLocks = {
 		pick_speed: 1.5, // Multiplies the picking rate
 		pick_diff: -0.1, // Added to the item's pick difficulty
 
+		hackPick: true,
+
 		canPick: (data) => {
 			return false;
 		},
@@ -125,9 +127,20 @@ let KDLocks = {
 		unlockable: false, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "KeyCard",
 		canUnlock: (data) => {
-			return false;
+			return KinkyDungeonInventoryGet("KeyCard") != undefined;
 		},
 		doUnlock: (data) => {
+			if (KDRandom() < KDLockoutChance(KinkyDungeonPlayerEntity)) {
+				data.lockout = true;
+				KinkyDungeonSendEvent("beforelockout", data);
+				if (data.lockout) {
+					KDLockoutGain(KinkyDungeonPlayerEntity, data);
+					KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("KeyCard"), -1);
+					KinkyDungeonSendTextMessage(10, TextGet("KDLockout"), "#ff5277", 2);
+					KinkyDungeonSendEvent("lockout", data);
+					KDGameData.LockoutChance = Math.min((KDGameData.LockoutChance || 0) + data.lockoutgain, 1);
+				}
+			}
 			return true;
 		},
 		removeKeys: (data) => {

@@ -20923,4 +20923,5 @@ KinkyDungeonInventoryItemKeyCard,Key Card
 KinkyDungeonInventoryItemKeyCardUse,"The keycard's shiny surface reflects the light in a mesmerizing way."
 KinkyDungeonInventoryItemKeyCardDesc,"A piece of identification that contains an access code."
 KinkyDungeonInventoryItemKeyCardDesc2,"You can use it to unlock certain doors."
-KDCyberHostileKeyCard,"The keycard's glyph changes to red as some force remotely locks it."
+KDCyberHostileKeyCard,"Your keycard blinks red as the facility remotely locks it!"
+KDLockout,"Your keycard blinks red as the facility remotely locks it!"

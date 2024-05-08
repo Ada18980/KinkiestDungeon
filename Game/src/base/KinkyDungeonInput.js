@@ -317,7 +317,7 @@ function KDProcessInput(type, data) {
 					// The cards are one-use if you are being chased
 					if (KDCyberHostile(KinkyDungeonPlayerEntity)) {
 						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("KeyCard"), -1);
-						KinkyDungeonSendActionMessage(10, TextGet("KDCyberHostileKeyCard"), "lightgreen", 2);
+						KinkyDungeonSendActionMessage(10, TextGet("KDCyberHostileKeyCard"), "#ff5277", 2);
 					}
 				}
 			} else {

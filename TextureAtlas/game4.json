@@ -296,6 +296,14 @@
 	"spriteSourceSize": {"x":84,"y":76,"w":46,"h":64},
 	"sourceSize": {"w":216,"h":216}
 },
+"Game/Bullets/BombItem.png":
+{
+	"frame": {"x":1130,"y":1706,"w":46,"h":64},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":84,"y":76,"w":46,"h":64},
+	"sourceSize": {"w":216,"h":216}
+},
 "Game/Bullets/BondageBustBeam.png":
 {
 	"frame": {"x":1527,"y":400,"w":65,"h":63},
@@ -5387,6 +5395,14 @@
 "Game/EnemiesBound/WitchIce.png":
 {
 	"frame": {"x":1588,"y":1923,"w":41,"h":61},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":0,"w":41,"h":61},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/EnemiesBound/WitchRope.png":
+{
+	"frame": {"x":1732,"y":1819,"w":41,"h":61},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":19,"y":0,"w":41,"h":61},
@@ -10680,6 +10696,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game2.json", "game3.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:0dcc5e0ca7c4958a7cd291865b4627c6:25999bea4b608c6c7f93ebfb77148609:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:3b8c40dd8a503126e6507d599f6b9145:eb683e516fc5967a99cdfa543c9401e3:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

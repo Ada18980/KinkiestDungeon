@@ -142,6 +142,49 @@ let KDPrisonTypes = {
 					}
 				}
 			}
+
+			// If there are any guards still idle we move them to exit to despawn
+			let idleGuards: entity[] = [];
+			let guardCount = 0;
+			for (let en of KDMapData.Entities) {
+				if (en.faction == "Enemy" && !en.Enemy?.tags.prisoner) {
+					if (en != KinkyDungeonJailGuard() && en != KinkyDungeonLeashingEnemy() && (en.idle && !KDEnemyHasFlag(en, "idlegselect")))
+						idleGuards.push(en);
+					if (en.Enemy.tags.jailer) guardCount += 1;
+				}
+			}
+			if (guardCount > 8) {
+				for (let en of idleGuards) {
+					KinkyDungeonSetEnemyFlag(en, "despawn", 300);
+					KinkyDungeonSetEnemyFlag(en, "wander", 300);
+					en.gx = KDMapData.EndPosition.x;
+					en.gy = KDMapData.EndPosition.y;
+				}
+			} else if (!KinkyDungeonFlags.get("guardspawn")) {
+				// TODO replace with map flags
+				// spawn a new one
+				KinkyDungeonSetFlag("guardspawn", 10);
+
+
+				if (KDMapData.Labels && KDMapData.Labels.Deploy?.length > 0) {
+					let l = KDMapData.Labels.Deploy[Math.floor(KDRandom() * KDMapData.Labels.Deploy.length)];
+					let tag = KDGetMainFaction() == "Dollsmith" ? "dollsmith" : "cyborg";
+					let Enemy = KinkyDungeonGetEnemy([tag, "robot"], MiniGameKinkyDungeonLevel + 4, 'bel', '0', [tag], undefined, {[tag]: {mult: 4, bonus: 10}}, ["boss"]);
+					if (Enemy && !KinkyDungeonEnemyAt(KDMapData.EndPosition.x, KDMapData.EndPosition.y)) {
+						let en = DialogueCreateEnemy(KDMapData.EndPosition.x, KDMapData.EndPosition.y, Enemy.name);
+						KDProcessCustomPatron(Enemy, en, 0.5);
+						en.AI = "looseguard";
+						en.faction = "Enemy";
+						en.keys = true;
+						en.gxx = l.x;
+						en.gyy = l.y;
+						en.gx = l.x;
+						en.gy = l.y;
+						KinkyDungeonSetEnemyFlag(en, "mapguard", -1);
+						KinkyDungeonSetEnemyFlag(en, "cyberaccess", -1);
+					}
+				}
+			}
 		},
 		states: {
 			Intro: {name: "Intro",
@@ -196,6 +239,12 @@ let KDPrisonTypes = {
 					let player = KinkyDungeonPlayerEntity;
 					KDPrisonCommonGuard(player);
 
+
+					let lostTrack = KDLostJailTrack(player);
+					if (lostTrack) {
+						return KDSetPrisonState(player, lostTrack);
+					}
+
 					if (KDPrisonTick(player)) {
 
 						let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber", KDCYBERPOWER);
@@ -222,6 +271,12 @@ let KDPrisonTypes = {
 				},
 				update: (delta) => {
 					let player = KinkyDungeonPlayerEntity;
+
+
+					let lostTrack = KDLostJailTrack(player);
+					if (lostTrack) {
+						return KDSetPrisonState(player, lostTrack);
+					}
 
 					// End when the player is settled
 					if (KDPrisonIsInFurniture(player)) {
@@ -576,6 +631,10 @@ let KDPrisonTypes = {
 				update: (delta) => {
 					let player = KinkyDungeonPlayerEntity;
 
+					let lostTrack = KDLostJailTrack(player);
+					if (lostTrack) {
+						return KDSetPrisonState(player, lostTrack);
+					}
 
 					let jailPointNearest = KinkyDungeonNearestJailPoint(player.x, player.y, ["storage"], undefined, undefined);
 					if (!(jailPointNearest && jailPointNearest.x == player.x && jailPointNearest.y == player.y))
@@ -620,6 +679,12 @@ let KDPrisonTypes = {
 
 					let label = KDMapData.Labels?.Training ? KDMapData.Labels.Training[0] : null;
 					let rad = 3;
+
+					let lostTrack = KDLostJailTrack(player);
+					if (lostTrack) {
+						return KDSetPrisonState(player, lostTrack);
+					}
+
 					if (label && (KDistEuclidean(label.x - player.x, label.y - player.y) > rad) && KDPlayerLeashable(player)) {
 						// We are not in a furniture, so we conscript the guard
 						let guard = KDPrisonCommonGuard(player);
@@ -653,3 +718,27 @@ let KDPrisonTypes = {
 		},
 	},
 };
+
+/**
+ *
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDLostJailTrack(player) {
+	let label = KDMapData.Labels?.Training ? KDMapData.Labels.Training[0] : null;
+	let rad = 9;
+	if (KDistChebyshev(player.x - label.x, player.y - label.y) < 9) return "";
+	if (!KinkyDungeonLeashingEnemy() && !KinkyDungeonPlayerTags.get("Furniture")) {
+		let unaware = true;
+		for (let en of KDMapData.Entities) {
+			if (en.aware && KDGetFaction(en) == "Enemy" && !en.Enemy.tags.prisoner) {
+				unaware = false;
+			}
+		}
+		if (unaware) {
+			// We dont do anything
+			return "Jail";
+		}
+	}
+	return "";
+}

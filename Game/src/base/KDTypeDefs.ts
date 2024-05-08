@@ -2823,6 +2823,8 @@ type KDLockType = {
 
 	/* For chests, etc*/
 	pickable: boolean;
+	/** Replace the pick icon with hacking */
+	hackPick?: boolean;
 	pick_speed: number;
 	pick_diff: number;
 	pick_lim?: number;
