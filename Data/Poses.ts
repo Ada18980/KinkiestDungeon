@@ -328,7 +328,7 @@ function CheckPoseOrTags(C: Character, tag: string) {
 	if (KDCurrentModels.get(C)?.Poses[tag]) {
 		return true;
 	}
-	if (KDCurrentModels.get(C)?.TempPoses[tag]) {
+	if (KDCurrentModels.get(C)?.TempPoses && KDCurrentModels.get(C)?.TempPoses[tag]) {
 		return true;
 	}
 	return false;
