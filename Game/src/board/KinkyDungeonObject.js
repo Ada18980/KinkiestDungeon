@@ -75,6 +75,7 @@ let KDObjectDraw = {
 function KinkyDungeonDrawDoor() {
 	if (KinkyDungeonTargetTile.Lock) {
 		KDModalArea_height = 400;
+		KDModalArea_width = 1000;
 		let action = false;
 		//if (KDLocks[KinkyDungeonTargetTile.Lock].pickable
 		//|| KDLocks[KinkyDungeonTargetTile.Lock].unlockable
@@ -90,7 +91,7 @@ function KinkyDungeonDrawDoor() {
 				return true;
 			}
 			return true;
-		}, true, KDModalArea_x + 475, KDModalArea_y + 100, 250, 60, TextGet("KinkyDungeonPickDoor"),
+		}, true, KDModalArea_x + 450, KDModalArea_y + 100, 250, 60, TextGet("KinkyDungeonPickDoor"),
 		(KDLocks[KinkyDungeonTargetTile.Lock].pickable)
 			? (KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}) ? "#ffffff" : "#ff5555")
 			: "#888888", "", "");
@@ -114,7 +115,7 @@ function KinkyDungeonDrawDoor() {
 				return true;
 			}
 			return true;
-		}, true, KDModalArea_x + 750, KDModalArea_y + 100, 250, 60, TextGet("KinkyDungeonUnlockDoorPurple"),
+		}, true, KDModalArea_x + 725, KDModalArea_y + 100, 250, 60, TextGet("KinkyDungeonUnlockDoorPurple"),
 		KDLocks[KinkyDungeonTargetTile.Lock].commandable
 			? ((KinkyDungeonStatMana >= KinkyDungeonGetManaCost(spell)) ? "#ffffff" : "#ff5555")
 			: "#888888",
@@ -138,7 +139,8 @@ function KinkyDungeonDrawDoor() {
 /** Chest lock */
 function KinkyDungeonDrawLock() {
 	if (KinkyDungeonTargetTile.Lock) {
-		KDModalArea_height = 200;
+		KDModalArea_height = 400;
+		KDModalArea_width = 1000;
 		let action = false;
 		if ((KDLocks[KinkyDungeonTargetTile.Lock].pickable)) {
 			action = true;

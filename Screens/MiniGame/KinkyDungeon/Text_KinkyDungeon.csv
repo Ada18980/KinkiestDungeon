@@ -1380,6 +1380,7 @@ KinkyDungeonInventoryItemDollIDDesc,"A chip used to identify dolls. She must hav
 KinkyDungeonInventoryItemDollIDDesc2,"With enough, it can be used to remove Dollmaker's headwear."
 
 
+
 KinkyDungeonInventoryItemHeart,Heart Amulet
 
 ItemPickupDonut,"You find a donut with sprinkles!"
@@ -20916,3 +20917,10 @@ KinkyDungeonStatEstim,"E-Stimulation"
 KinkyDungeonStatDescEstim,"Replaces most instances of painful electric shocks with stimulating effects instead."
 
 KDRobotEstim,The energy bolt hits you and sends stimulating energies through you!
+
+ItemPickupKeyCard,"You steal a key card."
+KinkyDungeonInventoryItemKeyCard,Key Card
+KinkyDungeonInventoryItemKeyCardUse,"The keycard's shiny surface reflects the light in a mesmerizing way."
+KinkyDungeonInventoryItemKeyCardDesc,"A piece of identification that contains an access code."
+KinkyDungeonInventoryItemKeyCardDesc2,"You can use it to unlock certain doors."
+KDCyberHostileKeyCard,"The keycard's glyph changes to red as some force remotely locks it."

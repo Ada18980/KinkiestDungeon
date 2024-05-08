@@ -23,7 +23,7 @@ Monk class?
  - TODO dragon arena floor 20
 
 5.2.3
-TODO -- make it so leashing enemies dont damage to hurt you EVERY turn as thats a little much...
+- TODO rope weapon when struggling out
 - MODDERS: Added LinkCategories to allow multiple link categories per item
 - Reworked the Doll Room in the Bellows. it is now the Doll Processing!
 - Living collars now only apply when you pass out, not when you are jailed. Typically this is caused by shadow hands, gigantic slimes, sarcophagus, rope kraken, etc.
@@ -47,7 +47,7 @@ TODO -- make it so leashing enemies dont damage to hurt you EVERY turn as thats 
 - Added Retro Enemy Animations toggle
 - Enemies no longer try to play with you after youve asked them to help you out and they said yes
 - Fixed shield damage calculation
-- TODO rope weapon when struggling out
+- Tremor duration reduced
 
 5.2.28
 - Desire burst is now locked to the Path of Pleasure

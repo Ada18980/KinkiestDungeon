@@ -34,6 +34,7 @@ let KinkyDungeonConsumables = {
 	"ScrollPurity" : {name: "ScrollPurity", sub: 0.20, noHands: true, rarity: 4, shop: true, type: "shrineRemove", shrine: "Vibes", sfx: "FireSpell"},
 
 	"DollID" : {name: "DollID", rarity: 0, shop: false, type: "dollID", noHands: true, sfx: "FutureLock", noConsumeOnUse: true},
+	"KeyCard" : {name: "KeyCard", rarity: 1, shop: false, type: "KeyCard", noHands: true, sfx: "FutureLock", noConsumeOnUse: true},
 	"CuffKeys" : {name: "CuffKeys", rarity: 1, sub: 0.25, shop: false, type: "CuffKeys", noConsumeOnUse: true},
 	"Snuffer" : {name: "Snuffer", rarity: 3, costMod: -1, shop: true, type: "Snuffer", noConsumeOnUse: true},
 	"SackOfSacks" : {name: "SackOfSacks", rarity: 3, costMod: -2, shop: true, type: "SackOfSacks", noConsumeOnUse: true},

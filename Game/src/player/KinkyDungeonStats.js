@@ -2164,7 +2164,7 @@ function KDPowerMult() {
  * @returns {boolean}
  */
 function KDIsBlindfolded(player) {
-	return (!KinkyDungeonPlayerTags.get("Blindfolds") && !KinkyDungeonPlayerTags.get("Masks") && !KinkyDungeonPlayerTags.get("Hoods") && !KinkyDungeonPlayerTags.get("BlockEyes"));
+	return (KinkyDungeonPlayerTags.get("Blindfolds") || KinkyDungeonPlayerTags.get("Masks") || KinkyDungeonPlayerTags.get("Hoods") || KinkyDungeonPlayerTags.get("BlockEyes"));
 }
 
 

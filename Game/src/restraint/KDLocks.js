@@ -79,14 +79,14 @@ let KDLocks = {
 			DrawButtonKDEx("ModalDoorScan", () => {
 				KDSendInput("scan", {targetTile: KinkyDungeonTargetTileLocation});
 				return true;
-			}, true, KDModalArea_x + 475, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonScanDoor"),
-			KDIsBlindfolded(player)
+			}, true, KDModalArea_x + 450, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonScanDoor"),
+			!KDIsBlindfolded(player)
 				? "#ffffff" : "#ff5555", "", "");
 
 			DrawButtonKDEx("ModalDoorHack", () => {
 				KDSendInput("hack", {targetTile: KinkyDungeonTargetTileLocation});
 				return true;
-			}, true, KDModalArea_x + 750, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonHackDoor"),
+			}, true, KDModalArea_x + 725, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonHackDoor"),
 			KDCanHack(player)
 				? "#ffffff" : "#ff5555", "", "");
 		},
@@ -911,3 +911,54 @@ let KDLocks = {
 		loot_locked: true,
 	},
 };
+
+/**
+ *
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDCyberHostile(player) {
+	let faction = player.player ? "Player" : KDGetFaction(player);
+	if (faction == "Player") {
+		return KDGameData.HostileFactions.includes("AncientRobot") || (
+			KDGameData.PrisonerState == 'chase' && KDFactionRelation(KDGetMainFaction(), "AncientRobot") > 0.11
+		);
+	}
+	return KDFactionRelation(faction, "AncientRobot") < -0.45;
+}
+
+/**
+ *
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDCyberAccess(player) {
+	let faction = player.player ? "Player" : KDGetFaction(player);
+	if (faction == "Player") {
+		return !KDGameData.HostileFactions.includes("AncientRobot")
+		&& !(KDGameData.PrisonerState == 'chase' && KDFactionRelation(KDGetMainFaction(), "AncientRobot") > 0.11)
+		&& KDFactionRelation(faction, "AncientRobot") > 0.25
+		;
+	}
+	return KDFactionRelation(faction, "AncientRobot") > 0.25;
+}
+
+/**
+ *
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDCyberLink(player) {
+	if (player.player) {
+		return KinkyDungeonPlayerTags.get("CyberLink") || KinkyDungeonFlags.get("CyberLink");
+	}
+	return player.Enemy?.tags.cyberlink;
+}
+/**
+ *
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDTryHack(player) {
+	return KDRandom() < (KDCyberLink(player) ? 0.5 : 0);
+}

@@ -67,10 +67,10 @@ let KDCurses = {
 			return 1;
 		},
 		condition: (item) => {
-			return KinkyDungeonItemCount("DollID") >= 8;
+			return KinkyDungeonItemCount("DollID") >= 4;
 		},
 		remove: (item, host) => {
-			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.DollID, -8);
+			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.DollID, -4);
 		}
 	},
 	"SpellLock1" : {

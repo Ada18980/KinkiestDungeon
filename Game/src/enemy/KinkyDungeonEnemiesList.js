@@ -1701,7 +1701,7 @@ let KinkyDungeonEnemies = [
 		playLine: "Cyborg",
 		outfit: "Cyborg",
 		style: "GreenHair",
-		bound: "Cyborg", color: "#5a71bc",
+		bound: "Cyborg", color: "#95e892",
 		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "elite", "robot", "cyborg", "cyberdollrestraints", "cyberdollheavy", "controlharness", "handcuffer",
 			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist", "guardian"]),
 		noDisplace: false, disarm: 0.5,
@@ -1727,14 +1727,14 @@ let KinkyDungeonEnemies = [
 			{trigger: "defeat", type: "delete", chance: 1.0},
 			{trigger: "tick", type: "secretToy"},
 		],
-		terrainTags: {"jailGuard": 50, "robot": 25, guardian: 26, "cyborg": 25}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
+		terrainTags: {"jailGuard": 50, "robot": 25, guardian: 26, "cyborg": 25}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}, {name: "KeyCard", weight: 1}]},
 
 	// Rin
 	{name: "CyborgGuardian", faction: "AncientRobot",
 		playLine: "Cyborg",
 		outfit: "Cyborg",
 		style: "Bandit",
-		bound: "Cyborg", color: "#e7cf1a",
+		bound: "Cyborg", color: "#f0b541",
 		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "miniboss", "robot", "cyborg", "guardian", "cyberdollrestraints", "cyberdollheavy", "controlharness", "handcuffer",
 			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist"]),
 		noDisplace: false, disarm: 0.5,
@@ -1762,7 +1762,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "defeat", type: "delete", chance: 1.0},
 			{trigger: "tick", type: "secretToy"},
 		],
-		terrainTags: {"robot": 5, "cyborg": 25, guardian: 50}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}]},
+		terrainTags: {"robot": 5, "cyborg": 25, guardian: 50}, allFloors: true, dropTable: [{name: "RedKey", weight: 1}, {name: "KeyCard", weight: 1}, {name: "BlueKey", weight: 0.1}]},
 
 
 

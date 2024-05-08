@@ -314,6 +314,11 @@ function KDProcessInput(type, data) {
 					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSwipeDoorUse"), "lightgreen", 2);
 					KinkyDungeonAdvanceTime(1, true);
 					KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
+					// The cards are one-use if you are being chased
+					if (KDCyberHostile(KinkyDungeonPlayerEntity)) {
+						KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("KeyCard"), -1);
+						KinkyDungeonSendActionMessage(10, TextGet("KDCyberHostileKeyCard"), "lightgreen", 2);
+					}
 				}
 			} else {
 				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSwipeDoorNone"), "lightgreen", 1);
@@ -321,6 +326,58 @@ function KDProcessInput(type, data) {
 
 			break;
 
+		case "scan":
+			KDDelayedActionPrune(["Action", "Struggle"]);
+			tile = KinkyDungeonTilesGet(data.targetTile);
+			KinkyDungeonTargetTile = tile;
+			KinkyDungeonTargetTileLocation = data.targetTile;
+			if (!KDIsBlindfolded(KinkyDungeonPlayerEntity)) {
+				if (KDCyberAccess(KinkyDungeonPlayerEntity)) {
+					if (KinkyDungeonTargetTile?.Lock) {
+						KinkyDungeonTargetTile.OGLock = KinkyDungeonTargetTile.Lock;
+						KinkyDungeonTargetTile.Lock = undefined;
+						if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
+						KinkyDungeonTargetTile = null;
+						KinkyDungeonTargetTileLocation = "";
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonScanDoorUse"), "lightgreen", 2);
+						KinkyDungeonAdvanceTime(1, true);
+						KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
+					}
+				}  else {
+					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonScanDoorFail"), "lightgreen", 1);
+				}
+			} else {
+				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonScanDoorNone"), "lightgreen", 1);
+			}
+
+			break;
+
+
+		case "hack":
+			KDDelayedActionPrune(["Action", "Struggle"]);
+			tile = KinkyDungeonTilesGet(data.targetTile);
+			KinkyDungeonTargetTile = tile;
+			KinkyDungeonTargetTileLocation = data.targetTile;
+			if (KDCyberLink(KinkyDungeonPlayerEntity)) {
+				if (KDTryHack(KinkyDungeonPlayerEntity)) {
+					if (KinkyDungeonTargetTile?.Lock) {
+						KinkyDungeonTargetTile.OGLock = KinkyDungeonTargetTile.Lock;
+						KinkyDungeonTargetTile.Lock = undefined;
+						if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
+						KinkyDungeonTargetTile = null;
+						KinkyDungeonTargetTileLocation = "";
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonHackDoorUse"), "lightgreen", 2);
+						KinkyDungeonAdvanceTime(1, true);
+						KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
+					}
+				}  else {
+					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonHackDoorFail"), "lightgreen", 1);
+				}
+			} else {
+				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonHackDoorNone"), "lightgreen", 1);
+			}
+
+			break;
 
 		case "unlock":
 			KDDelayedActionPrune(["Action", "Struggle"]);
