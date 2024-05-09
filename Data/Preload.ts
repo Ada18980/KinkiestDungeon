@@ -317,6 +317,7 @@ async function PreloadDisplacement(list) {
 			kdpixitex.set(dataFile, tex);
 
 			KDLoadingDone += amount;
+			canvas.remove();
 		});
 
 		/**

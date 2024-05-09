@@ -114,12 +114,12 @@ let KDShaders = {
 			in vec2 vTextureCoord;
 			out vec4 finalColor;
 			uniform sampler2D uTexture;
-			uniform sampler2D lightmap;
+			uniform sampler2D brightnessmap;
 
 			void main()
 			{
 				vec4 c = texture(uTexture, vTextureCoord);
-				vec4 l = texture(lightmap, vTextureCoord);
+				vec4 l = texture(brightnessmap, vTextureCoord);
 
 				if (c.a > 0.0 && l.a > 0.0) {
 					vec3 rgb = c.rgb * l.rgb;

@@ -211,6 +211,7 @@ async function KDExecuteMods() {
 				});
 				let tex = PIXI.Texture.from(source);
 				kdpixitex.set(entry[0], tex);
+				canvas.remove();
 			});
 
 		}

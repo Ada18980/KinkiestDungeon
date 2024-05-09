@@ -911,19 +911,22 @@ function KinkyDungeonDrawGame() {
 				KDRedrawFog = 2;
 			}
 
-			if (StandalonePatched) {
-				kdgameboard.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
-				kdgameboard.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
-				kdbrightnessmapGFX.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
-				kdbrightnessmapGFX.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
-				kdlightmapGFX.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
-				kdlightmapGFX.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
-				kdenemystatusboard.x = kdgameboard.x;
-				kdenemystatusboard.y = kdgameboard.y;
-				kdenemydialoguecanvas.x = kdgameboard.x;
-				kdenemydialoguecanvas.y = kdgameboard.y;
-
+			kdgameboard.x = (-CamX_offsetVis) * KinkyDungeonGridSizeDisplay;
+			kdgameboard.y = (-CamY_offsetVis) * KinkyDungeonGridSizeDisplay;
+			let lightmapx = kdgameboard.x < 0 ? kdgameboard.x : 0;
+			let lightmapy = kdgameboard.y < 0 ? kdgameboard.y : 0;
+			if (kdbrightnessmapGFX.x != lightmapx
+				|| kdbrightnessmapGFX.y != lightmapy) {
+				kdbrightnessmapGFX.x = lightmapx;
+				kdbrightnessmapGFX.y = lightmapy;
+				kdlightmapGFX.x = lightmapx;
+				kdlightmapGFX.y = lightmapy;
+				KDRenderLightmaps();
 			}
+			kdenemystatusboard.x = kdgameboard.x;
+			kdenemystatusboard.y = kdgameboard.y;
+			kdenemydialoguecanvas.x = kdgameboard.x;
+			kdenemydialoguecanvas.y = kdgameboard.y;
 
 			let CamX_offset = (StandalonePatched ? 0 : CamX_offsetVis);
 			let CamY_offset = (StandalonePatched ? 0 : CamY_offsetVis);
@@ -2788,6 +2791,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 	let textPush = 0;
 	if ((Image != null) && (Image != "")) {
 		let img = KDTex(Image);
+		if (!img) return;
 		if (Stretch || options?.scaleImage) {
 			let o = {
 				zIndex: zIndex + 0.01,
@@ -3115,20 +3119,20 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 					(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 						zIndex: -2,
 						tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
-					}, undefined, undefined, undefined, true);
+					});
 				if (sprite2)
 					KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_o", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite2 + ".png",
 						(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: -1.1,
 							tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
-						}, undefined, undefined, undefined, true);
+						});
 
 				if (sprite3)
 					KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_o2", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite3 + ".png",
 						(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: -1,
 							tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
-						}, undefined, undefined, undefined, true);
+						});
 
 				if (rows[RY][RX] == "A") {
 					let color = "";
@@ -3140,13 +3144,13 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 							(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								tint: string2hex(color),
-							}, undefined, undefined, undefined, true);
+							});
 					if (KinkyDungeonTilesGet(RX + "," + RY)?.Quest)
 						KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_a2", KinkyDungeonRootDirectory + "ShrineAuraQuest.png",
 							(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								tint: color ? string2hex(color) : 0xffffff,
-							}, undefined, undefined, undefined, true);
+							});
 				}
 				if (KinkyDungeonVisionGet(RX, RY) > 0
 					&& (KinkyDungeonTilesGet(RX + "," + RY) && rows[RY][RX] == "A" || KinkyDungeonTilesGet(RX + "," + RY) && rows[RY][RX] == "M")
@@ -3181,7 +3185,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
  * @param {boolean} [Nearest]
  * @returns {any}
  */
-function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, options, Centered, SpritesDrawn, Scale, Nearest = true) {
+function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, options, Centered, SpritesDrawn, Scale, Nearest) {
 	let sprite = Map.get(id);
 	if (!sprite) {
 		// Load the texture
@@ -3273,6 +3277,8 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 
 
 let erroredTex = {};
+let erroredTexStop = {};
+let MAX_TRIES_ASSET = 8;
 
 /**
  * Returns a PIXI.Texture, or null if there isnt one
@@ -3281,14 +3287,13 @@ let erroredTex = {};
  */
 function KDTex(Image, Nearest) {
 	if (kdpixitex.has(Image)) return kdpixitex.get(Image);
-	if (erroredTex[KDModFiles[Image] || Image]) return null;
+	if (erroredTexStop[KDModFiles[Image] || Image] > MAX_TRIES_ASSET || CommonTime() < erroredTex[KDModFiles[Image] || Image]) return null;
 	try {
 		PIXI.Assets.add({
 			alias: KDModFiles[Image] || Image,
 			src: KDModFiles[Image] || Image,
 		});
 		PIXI.Assets.load(KDModFiles[Image] || Image).then(() => {}, (val) => {
-			erroredTex[KDModFiles[Image] || Image] = true;
 		});
 		const tex = PIXI.Texture.from(KDModFiles[Image] || Image);
 
@@ -3299,6 +3304,9 @@ function KDTex(Image, Nearest) {
 				tex.source.scaleMode = 'nearest';
 			}
 
+		} else {
+			erroredTex[KDModFiles[Image] || Image] = CommonTime() + 250;
+			erroredTexStop[KDModFiles[Image] || Image] = (erroredTexStop[KDModFiles[Image] || Image] || 0) + 1;
 		}
 		return tex;
 	} catch (e) {

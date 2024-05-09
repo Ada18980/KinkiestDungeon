@@ -732,7 +732,7 @@ function KDGetItemPreview(item) {
  */
 function KDGetGroupPreviewImage(Group) {
 	try {
-		if (KDTex(KinkyDungeonRootDirectory + `Items/Group/${Group}.png`)?.valid) return KinkyDungeonRootDirectory + `Items/Group/${Group}.png`;
+		if (KDTex(KinkyDungeonRootDirectory + `Items/Group/${Group}.png`)?.source) return KinkyDungeonRootDirectory + `Items/Group/${Group}.png`;
 	} catch (e) {
 		console.log(e);
 	}
@@ -757,14 +757,14 @@ function KDGetRestraintPreviewImage(restraint) {
 	}
 
 	try {
-		if (KDTex(KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`)?.valid) return KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`;
+		if (KDTex(KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`)?.source) return KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`;
 	} catch (e) {
 		console.log(e);
 	}
 
 	try {
 		for (let tag of restraint.shrine) {
-			if (KDTex(KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`)?.valid) return KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`;
+			if (KDTex(KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`)?.source) return KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`;
 		}
 	} catch (e) {
 		console.log(e);

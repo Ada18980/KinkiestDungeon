@@ -180,8 +180,7 @@ kdbrightnessmapGFX = new PIXI.Container();
 kdbrightnessmap = PIXI.RenderTexture.create({ width: res > 1 ? 2047 : 2000, height: res > 1 ? 1023 : 1000,});
 
 kdlightmapGFX = new PIXI.Graphics();
-kdlightmap = PIXI.RenderTexture.create({ width: res > 1 ? 2047 : 2000, height: res > 1 ? 1023 : 1000,});
-
+kdlightmap = PIXI.RenderTexture.create({ width: res > 1 ? 2047 : 2000, height: res > 1 ? 1023 : 1000, });
 
 kdlightmapGFX.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
 kdlightmapGFX.boundsArea = new PIXI.Rectangle(0, 0, 2000, 1000);
@@ -213,6 +212,7 @@ let loaded = false;
 
 
 	kdcanvas.addChild(kdgameboard);
+	//kdcanvas.addChild(kdlightmapGFX);
 
 	kddarkdesaturatefilter = new PIXI.Filter({
 		glProgram: PIXI.GlProgram.from({
@@ -267,7 +267,7 @@ let loaded = false;
 			vertex: KDShaders.DefaultVertex.code,
 		}),
 		resources: {
-			lightmap: kdbrightnessmap.source,
+			brightnessmap: kdbrightnessmap.source,
 		},
 	});
 

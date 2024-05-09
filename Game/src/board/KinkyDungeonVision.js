@@ -741,10 +741,6 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 				}
 			}
 
-			PIXIapp.renderer.render({
-				target: kdlightmap,
-				container: kdlightmapGFX,
-			});
 
 
 
@@ -770,10 +766,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 				}
 			}
 
-			PIXIapp.renderer.render({
-				container: kdbrightnessmapGFX,
-				target: kdbrightnessmap
-			});
+			KDRenderLightmaps();
 
 		}
 		KDCullSpritesList(kdpixifogsprites);
@@ -966,4 +959,15 @@ function KDRevealTile(x, y, amount) {
 	if (!KDGameData.RevealedTiles) KDGameData.RevealedTiles = {};
 	if (!KDGameData.RevealedFog) KDGameData.RevealedFog = {};
 	KDGameData.RevealedTiles[x + ',' + y] = Math.max(amount, KDGameData.RevealedTiles[x + ',' + y] || 0);
+}
+
+function KDRenderLightmaps() {
+	PIXIapp.renderer.render({
+		target: kdlightmap,
+		container: kdlightmapGFX,
+	});
+	PIXIapp.renderer.render({
+		container: kdbrightnessmapGFX,
+		target: kdbrightnessmap
+	});
 }
