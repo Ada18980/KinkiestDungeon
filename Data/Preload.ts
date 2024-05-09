@@ -304,7 +304,7 @@ async function PreloadDisplacement(list) {
 	for (let dataFile of list) {
 		let amount = 1;
 
-		loadImageAndDraw(dataFile).then((canvasData) => {
+		loadImageAndDraw(dataFile, DisplacementScale).then((canvasData) => {
 			let canvas = canvasData.canvas;
 			let source = new PIXI.CanvasSource({
 				resource: canvas,
@@ -451,7 +451,7 @@ load();
 			if (useImageBitmap)
 			{
 
-				src = await PIXI.loadImageBitmap(KDModFilesInv[url]);
+				src = await PIXI.loadImageBitmap(url);
 			}
 			else
 			{
@@ -498,7 +498,7 @@ load();
 	// Make sure to "register" the extension!
 	extensions.add(modTextureLoader);
 
-	/*const resolveModURL = {
+	const resolveModURL = {
 		extension: {
 			type: PIXI.ExtensionType.ResolveParser,
 			name: 'resolveModURL',
@@ -513,10 +513,10 @@ load();
 			}),
 	}
 
-	extensions.add(resolveModURL);*/
+	extensions.add(resolveModURL);
 })();
 
-function loadImageAndDraw(url: string): Promise<{canvas: HTMLCanvasElement, origWidth: number, origHeight: number}> {
+function loadImageAndDraw(url: string, resolution: number = 1): Promise<{canvas: HTMLCanvasElement, origWidth: number, origHeight: number}> {
 	return new Promise((resolve, reject) => {
 		const image: HTMLImageElement = new Image();
 		image.onload = (): void => {
@@ -525,8 +525,8 @@ function loadImageAndDraw(url: string): Promise<{canvas: HTMLCanvasElement, orig
 				if (canvas) {
 					const ctx: CanvasRenderingContext2D | null = canvas.getContext('2d');
 					if (ctx) {
-						canvas.width = Math.ceil(imageBitmap.width*DisplacementScale);
-						canvas.height = Math.ceil(imageBitmap.height*DisplacementScale);
+						canvas.width = Math.ceil(imageBitmap.width*resolution);
+						canvas.height = Math.ceil(imageBitmap.height*resolution);
 						ctx.drawImage(imageBitmap, 0, 0, canvas.width, canvas.height);
 						resolve({
 							canvas: canvas,
