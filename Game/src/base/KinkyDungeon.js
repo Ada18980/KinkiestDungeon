@@ -2637,19 +2637,7 @@ function KinkyDungeonRun() {
 	// Cull the sprites that werent rendered or updated this frame
 	KDCullSprites();
 
-	if (!StandalonePatched) {
-		if (!pixiview) pixiview = KinkyDungeonGetCanvas("MainCanvas");
-		if (!pixirenderer) {
-			if (pixiview) {
-				pixirenderer = new PIXI.CanvasRenderer({
-					width: pixiview.width,
-					height: pixiview.height,
-					view: pixiview,
-					antialias: true,
-				});
-			}
-		}
-	}
+
 
 
 	KDDrawDelta = performance.now() - lastfps;

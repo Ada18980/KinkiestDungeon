@@ -3242,6 +3242,7 @@
             <key type="filename">../Game/UI/AutoPass/Shop.png</key>
             <key type="filename">../Game/UI/AutoPass/Special.png</key>
             <key type="filename">../Game/UI/AutoPass/Summons.png</key>
+            <key type="filename">../Game/UI/AutoPath/StepDuringCombat.png</key>
             <key type="filename">../Game/UI/AutoPath/SuppressBeforeCombat.png</key>
             <key type="filename">../Game/UI/AutoPath/SuppressDuringCombat.png</key>
             <key type="filename">../Game/UI/AutoStruggle.png</key>

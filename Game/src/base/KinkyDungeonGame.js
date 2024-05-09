@@ -1123,7 +1123,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			if (!altType || altType.shrines) {
 				let quests = KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTypes, shrinecount,
 					shrinefilter, ghostchance, manaChance, orbcount, (altType && altType.noShrineTypes) ? altType.noShrineTypes : [],
-					Floor, width, height, !altType || (altType.makeMain && !altType.noQuests), (!altType || altType.heart) && KDGameData.CollectedHearts < (MiniGameKinkyDungeonLevel + KinkyDungeonMaxLevel*KinkyDungeonNewGame));
+					Floor, width, height, !altType || (altType.makeMain && !altType.noQuests), (!altType || altType.heart) && KDGameData.CollectedHearts*0.5 < (MiniGameKinkyDungeonLevel + KinkyDungeonMaxLevel*KinkyDungeonNewGame));
 				if (
 				//(
 				//(KDGameData.SelectedEscapeMethod && KinkyDungeonEscapeTypes[KDGameData.SelectedEscapeMethod]?.requireMaxQuests)

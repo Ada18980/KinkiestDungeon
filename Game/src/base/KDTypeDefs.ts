@@ -3436,7 +3436,7 @@ declare const guessLanguage: {
 	name(text: string): string;
 };
 
-declare const PIXI: typeof import('pixi.js') & typeof import('pixi.js-legacy') & {
+declare const PIXI: typeof import('pixi.js') & {
 	// Filters says it's deprecated and should be referenced `PIXI.<filter>` rather than `PIXI.filters.<filter>`
 	// But that doesn't work, and this does.
 	filters: typeof import('pixi-filters'),
