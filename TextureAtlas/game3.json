@@ -10,7 +10,7 @@
 },
 "Game/Aura/Airbender0.png":
 {
-	"frame": {"x":1343,"y":831,"w":18,"h":18},
+	"frame": {"x":1343,"y":805,"w":18,"h":18},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":92,"w":18,"h":18},
@@ -114,7 +114,7 @@
 },
 "Game/Aura/Missiles0.png":
 {
-	"frame": {"x":1343,"y":831,"w":18,"h":18},
+	"frame": {"x":1343,"y":805,"w":18,"h":18},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":92,"w":18,"h":18},
@@ -122,7 +122,7 @@
 },
 "Game/Aura/Missiles1.png":
 {
-	"frame": {"x":1343,"y":810,"w":18,"h":19},
+	"frame": {"x":1343,"y":784,"w":18,"h":19},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":92,"w":18,"h":19},
@@ -1570,7 +1570,7 @@
 },
 "Game/Conditions/BlockBuff.png":
 {
-	"frame": {"x":1343,"y":851,"w":18,"h":17},
+	"frame": {"x":1343,"y":825,"w":18,"h":17},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":52,"y":1,"w":18,"h":17},
@@ -1658,7 +1658,7 @@
 },
 "Game/DamageTypes/charm.png":
 {
-	"frame": {"x":1343,"y":786,"w":18,"h":22},
+	"frame": {"x":1343,"y":760,"w":18,"h":22},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":49,"w":18,"h":22},
@@ -4240,14 +4240,6 @@
 	"spriteSourceSize": {"x":1,"y":1,"w":23,"h":23},
 	"sourceSize": {"w":24,"h":24}
 },
-"Game/UI/MiniMap/Tablet.png":
-{
-	"frame": {"x":1343,"y":760,"w":18,"h":24},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":3,"y":0,"w":18,"h":24},
-	"sourceSize": {"w":24,"h":24}
-},
 "Game/UI/Move.png":
 {
 	"frame": {"x":2025,"y":1372,"w":22,"h":27},
@@ -4336,6 +4328,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game2.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:d70ac026f4dfcbf4594e981c2e5348ea:7522c325f5cf9fc4da0e0c0622e94de3:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ae88d25de53066cb55120d62d8e34c78:62747768cd26f2997ae7db9cf167b2aa:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

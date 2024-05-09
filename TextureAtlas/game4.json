@@ -5938,7 +5938,7 @@
 },
 "Game/FloorGeneric/Signal/AutoLock.png":
 {
-	"frame": {"x":2026,"y":162,"w":20,"h":20},
+	"frame": {"x":2026,"y":164,"w":20,"h":20},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":26,"y":29,"w":20,"h":20},
@@ -9090,7 +9090,7 @@
 },
 "Game/Particles/HeartPink.png":
 {
-	"frame": {"x":2026,"y":184,"w":20,"h":20},
+	"frame": {"x":2026,"y":186,"w":20,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":20},
@@ -9098,7 +9098,7 @@
 },
 "Game/Particles/HeartPurple.png":
 {
-	"frame": {"x":2026,"y":206,"w":20,"h":20},
+	"frame": {"x":2026,"y":208,"w":20,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":20},
@@ -10370,7 +10370,7 @@
 },
 "Game/UI/BoxSmall.png":
 {
-	"frame": {"x":2025,"y":138,"w":22,"h":22},
+	"frame": {"x":2025,"y":891,"w":22,"h":22},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":1,"w":22,"h":22},
@@ -10512,6 +10512,14 @@
 	"spriteSourceSize": {"x":1,"y":0,"w":22,"h":24},
 	"sourceSize": {"w":24,"h":24}
 },
+"Game/UI/MiniMap/Chest.png":
+{
+	"frame": {"x":2023,"y":804,"w":22,"h":21},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":22,"h":21},
+	"sourceSize": {"w":24,"h":24}
+},
 "Game/UI/MiniMap/Stairs.png":
 {
 	"frame": {"x":1480,"y":1560,"w":23,"h":23},
@@ -10526,6 +10534,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":0,"w":23,"h":23},
+	"sourceSize": {"w":24,"h":24}
+},
+"Game/UI/MiniMap/Tablet.png":
+{
+	"frame": {"x":2025,"y":138,"w":22,"h":24},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":22,"h":24},
 	"sourceSize": {"w":24,"h":24}
 },
 "Game/UI/NavMap/basic.png":
@@ -10704,6 +10720,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game2.json", "game3.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:d70ac026f4dfcbf4594e981c2e5348ea:7522c325f5cf9fc4da0e0c0622e94de3:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ae88d25de53066cb55120d62d8e34c78:62747768cd26f2997ae7db9cf167b2aa:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

@@ -14,7 +14,7 @@ function KDGetNearestFactionGuard(x, y) {
 			)) && !KDHelpless(en) && !KinkyDungeonIsDisabled(en);
 	};
 
-	if (KinkyDungeonJailGuard() && condition(KinkyDungeonJailGuard())) return KinkyDungeonJailGuard();
+	if (KinkyDungeonJailGuard()?.aware && condition(KinkyDungeonJailGuard())) return KinkyDungeonJailGuard();
 
 	let dist = KDMapData.GridWidth*KDMapData.GridWidth + KDMapData.GridHeight*KDMapData.GridHeight;
 	let cand = null;
@@ -30,7 +30,7 @@ function KDGetNearestFactionGuard(x, y) {
 			}
 		}
 	}
-	return cand;
+	return cand || KinkyDungeonJailGuard();
 }
 
 /**

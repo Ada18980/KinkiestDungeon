@@ -24,6 +24,8 @@ let KDMinimapIcons = {
 	'B': (x, y) => {return "UI/MiniMap/Bed.png";},
 	'b': (x, y) => {return "UI/MiniMap/Bars.png";},
 	'g': (x, y) => {return "UI/MiniMap/Grate.png";},
+	'M': (x, y) => {return "UI/MiniMap/Tablet.png";},
+	'C': (x, y) => {return "UI/MiniMap/Chest.png";},
 };
 
 

@@ -1985,7 +1985,7 @@ function KDInputFocusControlToggle(key, value) {
 
 function KDDrawMinimap(MinimapX, MinimapY) {
 	if (kdminimap.visible) {
-		let zIndex = MouseIn(MinimapX, MinimapY, KDMinimapWidth()+21, KDMinimapHeight()+21) ? 150 : 90;
+		let zIndex = (KDExpandMinimap || MouseIn(MinimapX, MinimapY, KDMinimapWidth()+21, KDMinimapHeight()+21)) ? 150 : 90;
 		if (KDExpandMinimap) {
 			let spacing = 40;
 			let starty = MinimapY;

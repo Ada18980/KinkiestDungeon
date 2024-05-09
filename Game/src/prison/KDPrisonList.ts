@@ -241,7 +241,7 @@ let KDPrisonTypes = {
 
 
 					let lostTrack = KDLostJailTrack(player);
-					if (lostTrack) {
+					if (lostTrack == "Unaware") {
 						return KDSetPrisonState(player, lostTrack);
 					}
 
@@ -274,7 +274,7 @@ let KDPrisonTypes = {
 
 
 					let lostTrack = KDLostJailTrack(player);
-					if (lostTrack) {
+					if (lostTrack == "Unaware") {
 						return KDSetPrisonState(player, lostTrack);
 					}
 
@@ -632,7 +632,7 @@ let KDPrisonTypes = {
 					let player = KinkyDungeonPlayerEntity;
 
 					let lostTrack = KDLostJailTrack(player);
-					if (lostTrack) {
+					if (lostTrack == "Unaware") {
 						return KDSetPrisonState(player, lostTrack);
 					}
 
@@ -647,6 +647,15 @@ let KDPrisonTypes = {
 							if (guard.IntentAction != action) {
 								KDIntentEvents[action].trigger(guard, {});
 							}
+
+							if (lostTrack) {
+								// Any qualifying factors means they know where you should be
+								guard.gx = player.x;
+								guard.gy = player.y;
+								KinkyDungeonSetEnemyFlag(guard, "wander", 30)
+								KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
+							}
+
 							if (KinkyDungeonLeashingEnemy() == guard) {
 								// Make the guard focus on leashing more strongly, not attacking or pickpocketing
 								KinkyDungeonSetEnemyFlag(guard, "focusLeash", 2);
@@ -681,7 +690,7 @@ let KDPrisonTypes = {
 					let rad = 3;
 
 					let lostTrack = KDLostJailTrack(player);
-					if (lostTrack) {
+					if (lostTrack == "Unaware") {
 						return KDSetPrisonState(player, lostTrack);
 					}
 
@@ -695,6 +704,14 @@ let KDPrisonTypes = {
 								guard.gx = player.x;
 								guard.gy = player.y;
 								KDIntentEvents[action].trigger(guard, {point: label, radius: 1, target: player});
+							}
+
+							if (lostTrack) {
+								// Any qualifying factors means they know where you should be
+								guard.gx = player.x;
+								guard.gy = player.y;
+								KinkyDungeonSetEnemyFlag(guard, "wander", 30)
+								KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
 							}
 							if (KinkyDungeonLeashingEnemy() == guard) {
 								// Make the guard focus on leashing more strongly, not attacking or pickpocketing
@@ -727,8 +744,9 @@ let KDPrisonTypes = {
 function KDLostJailTrack(player) {
 	let label = KDMapData.Labels?.Training ? KDMapData.Labels.Training[0] : null;
 	let rad = 9;
-	if (KDistChebyshev(player.x - label.x, player.y - label.y) < 9) return "";
-	if (!KinkyDungeonLeashingEnemy() && !KinkyDungeonPlayerTags.get("Furniture")) {
+	if (KDistChebyshev(player.x - label.x, player.y - label.y) < rad) return "InTraining";
+	if (KinkyDungeonPlayerTags.get("Furniture")) return "Furniture";
+	if (!KinkyDungeonLeashingEnemy()) {
 		let unaware = true;
 		for (let en of KDMapData.Entities) {
 			if (en.aware && KDGetFaction(en) == "Enemy" && !(en.Enemy?.tags?.prisoner || en.Enemy?.tags?.formerprisoner) ) {
@@ -737,8 +755,10 @@ function KDLostJailTrack(player) {
 		}
 		if (unaware) {
 			// We dont do anything
-			return "Jail";
+			return "Unaware";
 		}
 	}
 	return "";
 }
+
+

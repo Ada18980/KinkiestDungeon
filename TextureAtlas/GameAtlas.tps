@@ -3843,6 +3843,7 @@
             <key type="filename">../Game/UI/MiniMap/Bed.png</key>
             <key type="filename">../Game/UI/MiniMap/ChargerCrystal.png</key>
             <key type="filename">../Game/UI/MiniMap/ChargerEmpty.png</key>
+            <key type="filename">../Game/UI/MiniMap/Chest.png</key>
             <key type="filename">../Game/UI/MiniMap/DoorClosed.png</key>
             <key type="filename">../Game/UI/MiniMap/DoorOpen.png</key>
             <key type="filename">../Game/UI/MiniMap/Ghost.png</key>

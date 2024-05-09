@@ -89,7 +89,7 @@
         "Game/src/faction/KinkyDungeonReputation.js",
         "Game/src/board/KinkyDungeonTraps.js",
         "Game/src/board/KinkyDungeonTiles.js",
-        "Game/src/map/KinkyDungeonTilesList.js",
+        "Game/src/board/KinkyDungeonTilesList.js",
         "Game/src/enemy/KinkyDungeonPathfinding.js",
         "Game/src/effect/KinkyDungeonBuffs.js",
         "Game/src/effect/KinkyDungeonEvents.js",
@@ -194,7 +194,7 @@
             "./node_modules/@types",
             "./node_modules/@pixi",
         ],
-        
+
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
         "lib": ["DOM", "ES2020"]

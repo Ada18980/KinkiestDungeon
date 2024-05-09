@@ -134,6 +134,7 @@ let KDIntentEvents = {
 			enemy.playWithPlayerCD = 80;
 			KinkyDungeonSetEnemyFlag(enemy, "playstart", 0);
 			KDResetAllAggro();
+			if (KDGameData.PrisonerState == 'chase') KDGameData.PrisonerState = 'jail';
 			KDResetAllIntents();
 			KDBreakTether(KinkyDungeonPlayerEntity);
 
@@ -204,6 +205,8 @@ let KDIntentEvents = {
 			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", -1);
 			enemy.playWithPlayer = 0;
 			enemy.playWithPlayerCD = 80;
+			KDGameData.PrisonerState = 'jail';
+			KDResetAllAggro(KinkyDungeonPlayerEntity);
 			KinkyDungeonSetEnemyFlag(enemy, "playstart", 0);
 			KDResetAllIntents(true);
 			return KDSettlePlayerInFurniture(enemy, AIData, undefined, undefined, ["storage"]);

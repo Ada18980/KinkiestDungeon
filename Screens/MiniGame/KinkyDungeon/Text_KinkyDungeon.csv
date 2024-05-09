@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.3b"
+KDVersionStr,"5.3.5"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -2444,6 +2444,8 @@ KinkyDungeonSummonSingleSlimeMold,A mobile cyst emerges from the slime mold nest
 
 NameFactoryDoll,Factory Doll
 KillFactoryDoll,"The doll is subdued."
+NameFreeDoll,Freed Doll
+KillFreeDoll,"The doll returns to her place."
 
 NameSlimeAdv,Encased Adventurer
 KillSlimeAdv,"The encased adventurer loses hope."

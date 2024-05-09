@@ -1121,6 +1121,8 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			let orbcount = Math.min(2, Math.max(2 * (MiniGameKinkyDungeonLevel + KinkyDungeonNewGame*KinkyDungeonMaxLevel) - KDGameData.CollectedOrbs, 0));
 			if (altType && altType.orbs != undefined) orbcount = altType.orbs;
 			if (!altType || altType.shrines) {
+				let modify = 0;
+				if (!altType || altType.heart) modify = 2;
 				let quests = KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTypes, shrinecount,
 					shrinefilter, ghostchance, manaChance, orbcount, (altType && altType.noShrineTypes) ? altType.noShrineTypes : [],
 					Floor, width, height, !altType || (altType.makeMain && !altType.noQuests), (!altType || altType.heart) && KDGameData.CollectedHearts*0.5 < (MiniGameKinkyDungeonLevel + KinkyDungeonMaxLevel*KinkyDungeonNewGame));
@@ -1132,7 +1134,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 					// Force max goddess quests
 					(!altType || (altType.makeMain && !altType.noQuests))
-					&& quests < KDMAXGODDESSQUESTS) {
+					&& quests < KDMAXGODDESSQUESTS + modify) {
 					console.log("This map failed to generate due to shrine count! Please screenshot and send your save code to Ada on deviantart or discord!");
 					continue;
 				}
@@ -2453,6 +2455,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 	}
 
 	let shrinePoints = new Map();
+	let shrinePointsBackup = new Map();
 
 	for (let s of shrinelist) {
 		if (KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(s.x, s.y)))
@@ -2461,6 +2464,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 
 	let maxcount = shrinecount + orbcount;
 
+	let shrinelistBackup = [];
 
 
 	let tablets = {
@@ -2482,12 +2486,14 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 		maxcount += Math.floor(Math.max(0, KinkyDungeonGoddessRep[goddess] / 5));
 	}
 
-
+	let isDoodad = (X, Y) => {
+		return KinkyDungeonMapGet(X, Y) == 'X';
+	};
 	if (shrinelist <= maxcount)
 		// Populate the chests
 		for (let X = 1; X < width; X += 1)
 			for (let Y = 1; Y < height; Y += 1)
-				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && Math.max(Math.abs(X - KDMapData.StartPosition.x), Math.abs(Y - KDMapData.StartPosition.y)) > KinkyDungeonJailLeash
+				if ((isDoodad(X, Y) || KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))) && Math.max(Math.abs(X - KDMapData.StartPosition.x), Math.abs(Y - KDMapData.StartPosition.y)) > KinkyDungeonJailLeash
 					&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OL)) {
 					// Check the 3x3 area
 					let wallcount = 0;
@@ -2543,8 +2549,14 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X-1, Y+1))
 							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X, Y+1))
 							&& !KDRandomDisallowedNeighbors.includes(KinkyDungeonMapGet(X+1, Y+1))) {
-							shrinelist.push({x:X, y:Y, boringness: KinkyDungeonBoringGet(X, Y)});
-							shrinePoints.set(X + "," + Y, true);
+							if (isDoodad(X, Y)) {
+								shrinelistBackup.push({x:X, y:Y, boringness: KinkyDungeonBoringGet(X, Y)});
+								shrinePointsBackup.set(X + "," + Y, true);
+							} else {
+								shrinelist.push({x:X, y:Y, boringness: KinkyDungeonBoringGet(X, Y)});
+								shrinePoints.set(X + "," + Y, true);
+							}
+
 						}
 					}
 
@@ -2639,8 +2651,19 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 	});
 
 	let quests = 0;
+	let backfillBackup = false;
 
-	while (list.length > 0) {
+	while (list.length > 0 || !backfillBackup) {
+		if (list.length == 0 && !backfillBackup) {
+			if (shrinelistBackup.length > 0) {
+				shrinelist = shrinelistBackup;
+				shrinePoints = shrinePointsBackup;
+			} else {
+				break;
+			}
+			backfillBackup = true;
+		}
+
 		let N = 0;
 		if (count <= shrinecount) {
 
@@ -2705,6 +2728,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 		} else for (let goddess of Object.keys(tablets)) {
 			if (tablets[goddess] < tabletsAmount[goddess]) {
 				let shrine = list[N];
+				if (goddess == 'Heart') quests += 1;
 				KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Type: "Tablet", Name: goddess, Light: 3, lightColor: 0x8888ff});
 				KinkyDungeonMapSet(shrine.x, shrine.y, 'M');
 
