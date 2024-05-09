@@ -52,7 +52,14 @@ kdgamefogsmooth.zIndex = -1.1;
 kdgamefog.zIndex = -1;
 let kdgamesound = new PIXI.Container();
 kdgamesound.zIndex = 1;
-let kdoutlinefilter = StandalonePatched ? new PIXI.filters.OutlineFilter(2, 0xffffff, 0.1, 0.5, true) : undefined;
+let kdoutlinefilter = new PIXI.filters.OutlineFilter({
+	thickness: 2,
+	color: 0xffffff,
+	quality: 0.1,
+	alpha: 0.5,
+	knockout: true,
+});
+
 //let kdVisionBlurfilter = StandalonePatched ? new PIXI.filters.KawaseBlurFilter(10, 1) : undefined;
 
 
@@ -65,7 +72,6 @@ kdminimap.zIndex = 80;
 
 let kdmapboard = new PIXI.Container();
 kdmapboard.zIndex = -2;
-kdmapboard.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
 
 let kdlightmap : PIXITexture = null;
 let kdlightmapGFX : PIXIGraphics = null;
@@ -75,7 +81,6 @@ let kdbrightnessmapGFX : PIXIContainer = null;
 
 let res = KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0];
 
-//kdlightmapGFX.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
 
 
 
@@ -178,6 +183,17 @@ kdlightmapGFX = new PIXI.Graphics();
 kdlightmap = PIXI.RenderTexture.create({ width: res > 1 ? 2047 : 2000, height: res > 1 ? 1023 : 1000,});
 
 
+kdlightmapGFX.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
+kdlightmapGFX.boundsArea = new PIXI.Rectangle(0, 0, 2000, 1000);
+kdbrightnessmapGFX.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
+kdbrightnessmapGFX.boundsArea = new PIXI.Rectangle(0, 0, 2000, 1000);
+
+kdmapboard.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
+kdmapboard.boundsArea = new PIXI.Rectangle(0, 0, 2000, 1000);
+
+kdcanvas.boundsArea = new PIXI.Rectangle(0, 0, 2000, 1000);
+
+
 let resolution = KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0];
 var PIXIapp = new PIXI.Application();
 
@@ -196,6 +212,7 @@ let loaded = false;
     // do pixi things
 
 
+	kdcanvas.addChild(kdgameboard);
 
 	kddarkdesaturatefilter = new PIXI.Filter({
 		glProgram: PIXI.GlProgram.from({
@@ -261,7 +278,6 @@ let loaded = false;
 	PIXIapp.stage.addChild(kdui);
 
 
-	kdcanvas.addChild(kdgameboard);
 	kdcanvas.sortableChildren = true;
 	kdcanvas.addChild(kdstatusboard);
 	kdcanvas.addChild(kdenemystatusboard);

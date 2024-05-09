@@ -4894,7 +4894,7 @@ let KDEventMapSpell = {
 					//400 + 50 * Math.sin(2 * Math.PI * (CommonTime() % 3000)/3000),
 					200, 200, KDWeapon({name: KinkyDungeonPlayerWeapon})?.angle != undefined ? KDWeapon({name: KinkyDungeonPlayerWeapon}).angle : Math.PI/2, {
 						zIndex: -1,
-					}, true);
+					}, true, undefined, undefined, true);
 			}
 		},
 		/*"EnemySense": (e, spell, data) => {
@@ -5809,7 +5809,7 @@ let KDEventMapWeapon = {
 					//400 + 50 * Math.sin(2 * Math.PI * (CommonTime() % 3000)/3000),
 					200, 200, KDWeapon({name: KinkyDungeonPlayerWeapon})?.angle != undefined ? KDWeapon({name: KinkyDungeonPlayerWeapon}).angle : Math.PI/2, {
 						zIndex: -1,
-					}, true);
+					}, true, undefined, undefined, true);
 			}
 		},
 	},

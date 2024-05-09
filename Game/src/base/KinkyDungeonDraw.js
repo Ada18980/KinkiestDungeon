@@ -3115,20 +3115,20 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 					(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 						zIndex: -2,
 						tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
-					});
+					}, undefined, undefined, undefined, true);
 				if (sprite2)
 					KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_o", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite2 + ".png",
 						(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: -1.1,
 							tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
-						});
+						}, undefined, undefined, undefined, true);
 
 				if (sprite3)
 					KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_o2", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite3 + ".png",
 						(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: -1,
 							tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
-						});
+						}, undefined, undefined, undefined, true);
 
 				if (rows[RY][RX] == "A") {
 					let color = "";
@@ -3140,13 +3140,13 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 							(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								tint: string2hex(color),
-							});
+							}, undefined, undefined, undefined, true);
 					if (KinkyDungeonTilesGet(RX + "," + RY)?.Quest)
 						KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_a2", KinkyDungeonRootDirectory + "ShrineAuraQuest.png",
 							(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								tint: color ? string2hex(color) : 0xffffff,
-							});
+							}, undefined, undefined, undefined, true);
 				}
 				if (KinkyDungeonVisionGet(RX, RY) > 0
 					&& (KinkyDungeonTilesGet(RX + "," + RY) && rows[RY][RX] == "A" || KinkyDungeonTilesGet(RX + "," + RY) && rows[RY][RX] == "M")
@@ -3181,7 +3181,7 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
  * @param {boolean} [Nearest]
  * @returns {any}
  */
-function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, options, Centered, SpritesDrawn, Scale, Nearest) {
+function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, options, Centered, SpritesDrawn, Scale, Nearest = true) {
 	let sprite = Map.get(id);
 	if (!sprite) {
 		// Load the texture

@@ -632,7 +632,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 										alpha: 0.0,
 									}, false,
 									ContainerContainer.SpritesDrawn,
-									Zoom
+									Zoom, false
 								),
 							}
 						);
@@ -690,7 +690,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 										alpha: 0.0,
 									}, false,
 									ContainerContainer.SpritesDrawn,
-									Zoom
+									Zoom, false
 								),
 							}
 						);
@@ -723,7 +723,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 									alpha: 0.0,
 								}, false,
 								ContainerContainer.SpritesDrawn,
-								Zoom
+								Zoom, false
 							),
 						}
 					);
@@ -865,7 +865,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						filters: filters,
 					}, false,
 					ContainerContainer.SpritesDrawn,
-					Zoom
+					Zoom, false
 				);
 			}
 		}
