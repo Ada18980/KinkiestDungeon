@@ -3807,6 +3807,7 @@ function KinkyDungeonClickGame(Level) {
 							KDSetFocusControl("");
 							KinkyDungeonFastMovePath = path;
 							KinkyDungeonSleepTime = 100;
+							KinkyDungeonSetFlag("startPath", 1);
 						} else if (KDistChebyshev(KinkyDungeonPlayerEntity.x - KinkyDungeonTargetX, KinkyDungeonPlayerEntity.y - KinkyDungeonTargetY) < 1.5) {
 							KDSetFocusControl("");
 							KDSendInput("move", {dir: KinkyDungeonMoveDirection, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});

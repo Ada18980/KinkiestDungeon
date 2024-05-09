@@ -403,14 +403,21 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 				KinkyDungeonFastStruggleSuppress = true;
 			}
 			if (KinkyDungeonFastMove) {
-				if (!wasInDanger && KDGameData.FocusControlToggle?.AutoPathSuppressBeforeCombat) {
-					if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress && !reenabled)
-						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
-					KinkyDungeonFastMovePath = [];
+				if ((!wasInDanger && KDGameData.FocusControlToggle?.AutoPathSuppressBeforeCombat)
+					|| (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat)) {
+					if (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat && KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
+						KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
+					} else {
+						KinkyDungeonFastMovePath = [];
+					}
 				}
 
 				// Cancel fast move if there is no current path
-				if (KinkyDungeonFastMovePath?.length == 0 && KDGameData.FocusControlToggle?.AutoPathSuppressDuringCombat) {
+				if (KinkyDungeonFastMovePath?.length == 0 &&
+					(
+						KDGameData.FocusControlToggle?.AutoPathSuppressDuringCombat
+					)
+				) {
 					KinkyDungeonFastMoveSuppress = true;
 					KinkyDungeonFastMove = false;
 					reenabled = false;
@@ -435,14 +442,24 @@ function KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 && KinkyDungeonFastMove &&
 						!enemy.Enemy.tags.harmless &&
 						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
-						if (!wasInDanger && KDGameData.FocusControlToggle?.AutoPathSuppressBeforeCombat) {
+						if ((!wasInDanger && KDGameData.FocusControlToggle?.AutoPathSuppressBeforeCombat)
+							|| (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat && !KinkyDungeonFlags.get("startPath"))) {
 							if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress && !reenabled)
 								KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
-							KinkyDungeonFastMovePath = [];
+							if (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat && KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
+								KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
+							} else {
+								KinkyDungeonFastMovePath = [];
+							}
 						}
 
 						// Cancel fast move if there is no current path
-						if (KinkyDungeonFastMovePath?.length == 0 && KDGameData.FocusControlToggle?.AutoPathSuppressDuringCombat) {
+						if (KinkyDungeonFastMovePath?.length == 0 &&
+							(
+								KDGameData.FocusControlToggle?.AutoPathSuppressDuringCombat
+
+							)
+						) {
 							KinkyDungeonFastMoveSuppress = true;
 							KinkyDungeonFastMove = false;
 							reenabled = false;

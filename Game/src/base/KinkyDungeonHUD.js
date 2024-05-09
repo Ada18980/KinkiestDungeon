@@ -84,7 +84,12 @@ let KDFocusControlButtons = {
 	"AutoPath": {
 		SuppressBeforeCombat: true,
 		SuppressDuringCombat: true,
+		StepDuringCombat: false,
 	},
+};
+let KDFocusControlButtonsExclude = {
+	AutoPathStepDuringCombat: ["AutoPathSuppressDuringCombat"],
+	AutoPathSuppressDuringCombat: ["AutoPathStepDuringCombat"],
 };
 
 
@@ -1966,6 +1971,14 @@ function KDInputFocusControlToggle(key, value) {
 	if (!KDGameData.FocusControlToggle) KDGameData.FocusControlToggle = {};
 	if (key)
 		KDGameData.FocusControlToggle[key] = value;
+
+	if (value && KDFocusControlButtonsExclude[key]) {
+		if (KDFocusControlButtonsExclude[key]) {
+			for (let b of KDFocusControlButtonsExclude[key]) {
+				KDGameData.FocusControlToggle[b] = false;
+			}
+		}
+	}
 }
 
 
