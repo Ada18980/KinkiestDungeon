@@ -1,3 +1,4 @@
+
 PIXI.Assets.init();
 
 let DisplacementMaps = [
@@ -27,6 +28,7 @@ let DisplacementMaps = [
 'Xray.png',
 'BallSuit.png',
 'Bubble.png',
+'BubbleHelmet.png',
 'Bubble2.png',
 'BustHuge.png',
 'Fiddle.png',
@@ -159,6 +161,8 @@ let DisplacementMaps = [
 'MittsFront.png',
 'MittsCrossed.png',
 'MittsYoked.png',
+'MittsWristtie.png',
+'MittsBoxtie.png',
 'Null.png',
 'RightFrogtieSquishKneel.png',
 'RightFrogtieSquishKneelClosed.png',
@@ -247,7 +251,7 @@ function incrementProgress(amount) {
 	};
 }
 async function LoadTextureAtlas(list, scale_mode, preload = false) {
-	PIXI.BaseTexture.defaultOptions.scaleMode = scale_mode;
+	//PIXI.BaseTexture.defaultOptions.scaleMode = scale_mode;
 
 	for (let dataFile of list) {
 		console.log("Found atlas: " + dataFile);
@@ -256,33 +260,37 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 	}
 	for (let dataFile of list) {
 		let amount = 100;
-		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile).then((value) => {}, () => {
+		PIXI.Assets.add({
+			alias: dataFile,
+			src: dataFile,
+		});
+
+		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile).then((value) => {
+			CurrentLoading = "Loaded " + dataFile;
+			KDLoadingDone += amount;
+		}, () => {
 			CurrentLoading = "Error Loading " + dataFile;
 			KDLoadingDone += amount;
 		})
-		 : await PIXI.Assets.load(dataFile).then((value) => {
-			for (let s of Object.values(value.linkedSheets)) {
-				for (let t of Object.keys((s as any).textures)) {
-					KDTex(t, scale_mode == PIXI.SCALE_MODES.NEAREST);
-				}
+		 : await PIXI.Assets.load(dataFile).then((value: any) => {
+			CurrentLoading = "Loaded " + dataFile;
+			KDLoadingDone += amount;
+			console.log(value);
+			/*for (let v of Object.keys(value.textures)) {
+				KDTex(v, scale_mode == 'nearest');
 			}
+			for (let s of Object.values(value.linkedSheets)) {
+				// Typescript trickery
+				let obj: any = s as any;
+				let tex = obj.textures;
+				for (let v of Object.keys(tex)) {
+					KDTex(v, scale_mode == 'nearest');
+				}
+			}*/
 		 }, () => {
 			CurrentLoading = "Error Loading " + dataFile;
 			KDLoadingDone += amount;
 		});
-
-		//console.log(value)
-		CurrentLoading = "Loaded " + dataFile;
-		//console.log(dataFile);
-		KDLoadingDone += amount;
-
-		/*result.then((value) => {
-
-		}, () => {
-			CurrentLoading = "Error Loading " + dataFile;
-			KDLoadingDone += amount;
-		});*/
-		//let atlas = await result;
 	}
 
 }
@@ -295,13 +303,42 @@ async function PreloadDisplacement(list) {
 	}
 	for (let dataFile of list) {
 		let amount = 1;
-		let texture = PIXI.Texture.fromURL(dataFile, {
+
+		loadImageAndDraw(dataFile, DisplacementScale).then((canvasData) => {
+			let canvas = canvasData.canvas;
+			let source = new PIXI.CanvasSource({
+				resource: canvas,
+				resolution: DisplacementScale,
+				//width: canvas.width,
+				//height: canvas.height,
+			});
+			let tex = PIXI.Texture.from(source);
+			CurrentLoading = "Loaded " + dataFile;
+			kdpixitex.set(dataFile, tex);
+
+			KDLoadingDone += amount;
+		});
+
+		/**
+		 *
+		tex.source.resize(
+			canvasData.origWidth,
+			canvasData.origHeight,
+			DisplacementScale,
+		);
+		 */
+
+		/*
+		PIXI.Assets.add({
+			alias: dataFile,
+			src: dataFile,
 			resourceOptions: {
 				scale: DisplacementScale,
-			}
+			},
 		});
-		texture.then((value) => {
-			console.log(value)
+		await PIXI.Assets.load(dataFile)
+		.then((value) => {
+			//console.log(value)
 			CurrentLoading = "Loaded " + dataFile;
 			//console.log(dataFile);
 			KDTex(dataFile, false);
@@ -310,7 +347,7 @@ async function PreloadDisplacement(list) {
 			CurrentLoading = "Error Loading " + dataFile;
 			console.log(CurrentLoading);
 			KDLoadingDone += amount;
-		});
+		});*/
 		/*let result = preload ? PIXI.Assets.backgroundLoad(dataFile) : PIXI.Assets.load(dataFile);
 
 		result.then((value) => {
@@ -325,19 +362,22 @@ async function PreloadDisplacement(list) {
 		});*/
 		//let atlas = await result;
 	}
+
 }
 
 KDLoadToggles();
-if (!KDToggles.HighResDisplacement) DisplacementScale = 1/16
+if (KDToggles.HighResDisplacement) DisplacementScale = 0.5;
 
 async function load() {
 
-	PIXI.BaseTexture.defaultOptions.mipmap = PIXI.MIPMAP_MODES.ON;
-	PIXI.BaseTexture.defaultOptions.anisotropicLevel = 0;
-	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
-	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR, true);
+	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? 'nearest' : 'linear', false);
+
+	await LoadTextureAtlas(linearList, 'linear', false);
 	await PreloadDisplacement(displacementList);
-	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
+
+
+	//PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
+	//PIXI.BaseTexture.defaultOptions.anisotropicLevel = 0;
 
 }
 load();
@@ -360,7 +400,7 @@ load();
 				url = url.replace("blob:http:/", "blob:http://")
 			}
 
-			const response = await PIXI.settings.ADAPTER.fetch(url);
+			const response = await PIXI.DOMAdapter.get().fetch(url);
 
 			const json = await response.json();
 
@@ -388,7 +428,7 @@ load();
 		extension: {
 			type: PIXI.ExtensionType.LoadParser,
 			name: 'modTextureLoader',
-			priority: PIXI.LoaderParserPriority.High + 1,
+			priority: PIXI.LoaderParserPriority.High + 3,
 		},
 		name: 'modTextureLoader',
 
@@ -400,7 +440,7 @@ load();
 
 		test(url: string): boolean
 		{
-			return (PIXI.checkDataUrl(url, validImageMIMEs) || PIXI.checkExtension(url, validImageExtensions)) && KDModFiles[url];
+			return KDModFiles[url] && (PIXI.checkDataUrl(url, validImageMIMEs) || PIXI.checkExtension(url, validImageExtensions));
 		},
 
 		async load(url: string, asset: any, loader: any): Promise<any>
@@ -436,18 +476,18 @@ load();
 
 			const options = { ...asset.data };
 
-			options.resolution ??= PIXI.utils.getResolutionOfUrl(url);
+			options.resolution ??= PIXI.getResolutionOfUrl(url);
 			if (useImageBitmap && options.resourceOptions?.ownsImageBitmap === undefined)
 			{
 				options.resourceOptions = { ...options.resourceOptions };
 				options.resourceOptions.ownsImageBitmap = true;
 			}
 
-			const base = new PIXI.BaseTexture(src, options);
+			const source = new PIXI.ImageSource(options);
 
-			base.resource.src = url;
+			//source.src = url;
 
-			return PIXI.createTexture(base, loader, url);
+			return PIXI.createTexture(source, loader, url);
 		},
 
 		unload(texture: PIXITexture): void
@@ -468,11 +508,43 @@ load();
 		test: (url) => KDModFiles[url] != undefined,
 		parse: (value: string): PIXIUnresolvedAsset =>
 			({
-				resolution: parseFloat(PIXI.settings.RETINA_PREFIX.exec(value)?.[1] ?? '1'),
-				format: PIXI.utils.path.extname(value).slice(1),
+				resolution: '1',
+				format: PIXI.path.extname(value).slice(1),
 				src: KDModFiles[value],
 			}),
 	}
 
 	extensions.add(resolveModURL);
 })();
+
+function loadImageAndDraw(url: string, resolution: number = 1): Promise<{canvas: HTMLCanvasElement, origWidth: number, origHeight: number}> {
+	return new Promise((resolve, reject) => {
+		const image: HTMLImageElement = new Image();
+		image.onload = (): void => {
+			createImageBitmap(image).then((imageBitmap: ImageBitmap) => {
+				const canvas: HTMLCanvasElement | null = document.createElement('canvas') as HTMLCanvasElement;
+				if (canvas) {
+					const ctx: CanvasRenderingContext2D | null = canvas.getContext('2d');
+					if (ctx) {
+						canvas.width = Math.ceil(imageBitmap.width*resolution);
+						canvas.height = Math.ceil(imageBitmap.height*resolution);
+						ctx.drawImage(imageBitmap, 0, 0, canvas.width, canvas.height);
+						resolve({
+							canvas: canvas,
+							origWidth: imageBitmap.width,
+							origHeight: imageBitmap.height,
+						}); // Resolve the promise with the canvas
+					} else {
+						reject(new Error('2D context not available'));
+					}
+				} else {
+					reject(new Error('Canvas element not found'));
+				}
+			});
+		};
+		image.onerror = (): void => {
+			reject(new Error('Image failed to load'));
+		};
+		image.src = url;
+	});
+}

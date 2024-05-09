@@ -129,7 +129,7 @@ function KinkyDungeonCrashReportDiagnostics() {
 		`Locale: ${window.navigator.language}`,
 		`Local time: ${Date.now()}`,
 		`Mouse: [${MouseX}, ${MouseY}]`,
-		`WebGL supported: ${PIXI.utils.isWebGLSupported()}`,
+		`WebGL supported: ${PIXI.isWebGLSupported()}`,
 	].join("\n");
 }
 
@@ -141,7 +141,7 @@ function KinkyDungeonCrashReportDeviceDetails() {
 	return [
 		"========== Device Detection ==========",
 		"",
-		JSON.stringify(PIXI.utils.isMobile, null, 2),
+		JSON.stringify(PIXI.isMobile, null, 2),
 	].join("\n");
 }
 

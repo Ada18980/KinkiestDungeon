@@ -70,23 +70,7 @@ let PIXICanvas = null;
  * Loads the canvas to draw on with its style and event listeners.
  */
 function DrawLoad(): void {
-	//document.body.appendChild(PIXIApp.view);
-
-	/*PIXIApp = new PIXI.Application({
-		view: PIXICanvas,
-		background: '#1099bb'
-	});*/
 	PIXICanvas = KinkyDungeonGetCanvas("MainCanvas");
-	// OLD BC
-	// Creates the objects used in the game
-	//MainCanvas = /** @type {HTMLCanvasElement} */ (document.getElementById("MainCanvas")).getContext("2d");
-	//document.getElementById("MainCanvas").addEventListener("keypress", KeyDown);
-	//document.getElementById("MainCanvas").tabIndex = 1000;
-
-	// Font is fixed for now, color can be set
-	//MainCanvas.font = CommonGetFont(36);
-	//MainCanvas.textAlign = "center";
-	//MainCanvas.textBaseline = "middle";
 }
 
 /**
@@ -149,28 +133,6 @@ function DrawGetImageOnError(Img: HTMLImageElement & { errorcount?: number }, Is
 
 
 
-/**
- * Draws a basic circle
- * @param CenterX - Position of the center of the circle on the X axis
- * @param CenterY - Position of the center of the circle on the Y axis
- * @param Radius - Radius of the circle to draw
- * @param LineWidth - Width of the line
- * @param LineColor - Color of the circle's line
- * @param FillColor - Color of the space inside the circle
- * @param Canvas - The canvas element to draw onto, defaults to MainCanvas
- */
-function DrawCircle(CenterX: number, CenterY: number, Radius: number, LineWidth: number, LineColor: string, FillColor: string = null, Canvas: CanvasRenderingContext2D = null): void {
-	if (!Canvas) Canvas = MainCanvas;
-	Canvas.beginPath();
-	Canvas.arc(CenterX, CenterY, Radius, 0, 2 * Math.PI, false);
-	if (FillColor) {
-		Canvas.fillStyle = FillColor;
-		Canvas.fill();
-	}
-	Canvas.lineWidth = LineWidth;
-	Canvas.strokeStyle = LineColor;
-	Canvas.stroke();
-}
 
 /**
  * Draws a progress bar with color

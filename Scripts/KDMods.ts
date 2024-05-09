@@ -154,7 +154,7 @@ async function KDExecuteMods() {
 					|| entry.filename?.startsWith("TextureAtlas/")
 					|| entry.filename?.startsWith("Music/")) {
 						KDModFiles[entry.filename] = URL.createObjectURL(blob);
-						KDModFiles[PIXI.utils.path.toAbsolute(entry.filename)] = URL.createObjectURL(blob);
+						KDModFiles[PIXI.path.toAbsolute(entry.filename)] = URL.createObjectURL(blob);
 					}
 			}
 
@@ -197,17 +197,23 @@ async function KDExecuteMods() {
 
 	for (let entry of Object.entries(KDModFiles)) {
 		// compat w/ PIXI loading
-		let ext = PIXI.utils.path.extname(entry[0]);
+		let ext = PIXI.path.extname(entry[0]);
 		//if (ext) PIXI.Assets.load();
-		KDModFiles[PIXI.utils.path.toAbsolute(entry[0])] = entry[1];
-		PIXI.Assets.resolver.add(entry[0], {
-			src: entry[1],
-			format: ext,
-		});
-		PIXI.Assets.resolver.add(PIXI.utils.path.toAbsolute(entry[0]), {
-			src: entry[1],
-			format: ext,
-		});
+		KDModFiles[PIXI.path.toAbsolute(entry[0])] = entry[1];
+		KDModFilesInv[entry[1]] = PIXI.path.toAbsolute(entry[0]);
+
+		if (ext == '.png' || ext == '.webp') {
+
+			loadImageAndDraw(entry[1], 1).then((canvasData) => {
+				let canvas = canvasData.canvas;
+				let source = new PIXI.CanvasSource({
+					resource: canvas,
+				});
+				let tex = PIXI.Texture.from(source);
+				kdpixitex.set(entry[0], tex);
+			});
+
+		}
 	}
 
 	if (KDAllModFiles.length > 0)

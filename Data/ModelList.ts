@@ -525,7 +525,6 @@ AddModel({
 		{ Name: "Breastplate", Layer: "Chestplate", Pri: 25,
 			Poses: ToMap([...ARMPOSES, "Hogtie"]),
 			HideWhenOverridden: true,
-			MorphPoses: {Hogtie: "Hogtie"},
 			Invariant: true,
 			DisplacementSprite: "Breastplate",
 			DisplaceAmount: 20,

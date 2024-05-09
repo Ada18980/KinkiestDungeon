@@ -855,13 +855,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 	if (CommonIsMobile) KDPerksIndexUIWeight = 1;
 	KDPerksIndexUI = (KDPerksIndex + (KDPerksIndexUIWeight - 1) * KDPerksIndexUI) / KDPerksIndexUIWeight;
 
-	/*MainCanvas.beginPath();
-	MainCanvas.lineWidth = 3;
-	MainCanvas.strokeStyle = KDBorderColor;
-	MainCanvas.moveTo(50, 120);
-	MainCanvas.lineTo(1950, 120);
-	MainCanvas.stroke();
-	MainCanvas.closePath();*/
+
 
 	let tooltip = false;
 	let catsdrawn = 0;

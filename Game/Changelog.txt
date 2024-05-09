@@ -22,6 +22,9 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.3.2
+- Updated to Pixi.js v8! Should result in much speed improvements
+- Fixed bug where not enough overgrown monoliths
 
 5.3.1
 - Fixed bugs with cyber locks not being unlockable

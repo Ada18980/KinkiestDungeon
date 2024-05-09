@@ -1,76 +1,43 @@
 'use strict';
 
 let KDShaders = {
-	Adjust: {
+	DefaultVertex: {
 		code: `
-		#version 300 es
-		in vec2 vTextureCoord;
-		out vec4 finalColor;
+		in vec2 aPosition;
+		out vec2 vTextureCoord;
 
-		uniform sampler2D uTexture;
-		uniform float uGamma;
-		uniform float uContrast;
-		uniform float uSaturation;
-		uniform float uBrightness;
-		uniform vec4 uColor;
+		uniform vec4 uInputSize;
+		uniform vec4 uOutputFrame;
+		uniform vec4 uOutputTexture;
 
-		void main()
+		vec4 filterVertexPosition( void )
 		{
-			vec4 c = texture(uTexture, vTextureCoord);
+			vec2 position = aPosition * uOutputFrame.zw + uOutputFrame.xy;
 
-			if (c.a > 0.0) {
-				c.rgb /= c.a;
+			position.x = position.x * (2.0 / uOutputTexture.x) - 1.0;
+			position.y = position.y * (2.0*uOutputTexture.z / uOutputTexture.y) - uOutputTexture.z;
 
-				vec3 rgb = pow(c.rgb, vec3(1. / uGamma));
-				rgb = mix(vec3(.5), mix(vec3(dot(vec3(.2125, .7154, .0721), rgb)), rgb, uSaturation), uContrast);
-				rgb.r *= uColor.r;
-				rgb.g *= uColor.g;
-				rgb.b *= uColor.b;
-				c.rgb = rgb * uBrightness;
-
-				c.rgb *= c.a;
-			}
-
-			finalColor = c * uColor.a;
+			return vec4(position, 0.0, 1.0);
 		}
-		`
-	},
-	Kawase: {
-		code: `
 
-		varying vec2 vTextureCoord;
-		uniform sampler2D uSampler;
-
-		uniform vec2 uOffset;
-		uniform vec4 filterClamp;
+		vec2 filterTextureCoord( void )
+		{
+			return aPosition * (uOutputFrame.zw * uInputSize.zw);
+		}
 
 		void main(void)
 		{
-			vec4 color = vec4(0.0);
-
-			// Sample top left pixel
-			color += texture2D(uSampler, clamp(vec2(vTextureCoord.x - uOffset.x, vTextureCoord.y + uOffset.y), filterClamp.xy, filterClamp.zw));
-
-			// Sample top right pixel
-			color += texture2D(uSampler, clamp(vec2(vTextureCoord.x + uOffset.x, vTextureCoord.y + uOffset.y), filterClamp.xy, filterClamp.zw));
-
-			// Sample bottom right pixel
-			color += texture2D(uSampler, clamp(vec2(vTextureCoord.x + uOffset.x, vTextureCoord.y - uOffset.y), filterClamp.xy, filterClamp.zw));
-
-			// Sample bottom left pixel
-			color += texture2D(uSampler, clamp(vec2(vTextureCoord.x - uOffset.x, vTextureCoord.y - uOffset.y), filterClamp.xy, filterClamp.zw));
-
-			// Average
-			color *= 0.25;
-
-			gl_FragColor = color;
+			gl_Position = filterVertexPosition();
+			vTextureCoord = filterTextureCoord();
 		}
-		`
+	`
 	},
+
 	Darkness: {
 		code: `
-			varying vec2 vTextureCoord;
-			uniform sampler2D uSampler;
+			in vec2 vTextureCoord;
+			out vec4 finalColor;
+			uniform sampler2D uTexture;
 			uniform float radius;
 			uniform float mult;
 			uniform float weight;
@@ -84,9 +51,9 @@ let KDShaders = {
 
 			const float FILTERSIZE = 1.;
 
-			void main(void)
+			void main()
 			{
-				vec4 c = texture2D(uSampler, vTextureCoord);
+				vec4 c = texture2d(uTexture, vTextureCoord);
 
 				if (c.a > 0.0) {
 					vec3 rgb = c.rgb;
@@ -96,7 +63,7 @@ let KDShaders = {
 
 					for (float x = -FILTERSIZE; x <= FILTERSIZE; x++)
 						for (float y = -FILTERSIZE; y <= FILTERSIZE; y++) {
-							vec4 sample = texture2D(uSampler, vec2(vTextureCoord[0]+x*radius, vTextureCoord[1]+y*radius));
+							vec4 sample = texture2d(uTexture, vec2(vTextureCoord[0]+x*radius, vTextureCoord[1]+y*radius));
 							float value = dot(vec3(1.,1.,1.), sample.rgb);
 							lum = max(lum,value);
 							lumsum += weight * value;
@@ -110,14 +77,15 @@ let KDShaders = {
 					c.rgb *= c.a;
 				}
 
-				gl_FragColor = c;
+				finalColor = c;
 			}
 			`
 	},
 	FogFilter: {
 		code: `
-			varying vec2 vTextureCoord;
-			uniform sampler2D uSampler;
+			in vec2 vTextureCoord;
+			out vec4 finalColor;
+			uniform sampler2D uTexture;
 			uniform sampler2D lightmap;
 			uniform float saturation;
 			uniform float brightness;
@@ -125,10 +93,10 @@ let KDShaders = {
 			uniform float contrast;
 			uniform float contrast_rate;
 
-			void main(void)
+			void main()
 			{
-				vec4 c = texture2D(uSampler, vTextureCoord);
-				vec4 l = texture2D(lightmap, vTextureCoord);
+				vec4 c = texture(uTexture, vTextureCoord);
+				vec4 l = texture(lightmap, vTextureCoord);
 
 				if (c.a > 0.0 && l.a > 0.0) {
 					vec3 rgb = c.rgb;
@@ -137,65 +105,67 @@ let KDShaders = {
 					c.rgb *= c.a;
 				}
 
-				gl_FragColor = c;
+				finalColor = c;
 			}
 			`
 	},
 	MultiplyFilter: {
 		code: `
-			varying vec2 vTextureCoord;
-			uniform sampler2D uSampler;
+			in vec2 vTextureCoord;
+			out vec4 finalColor;
+			uniform sampler2D uTexture;
 			uniform sampler2D lightmap;
 
-			void main(void)
+			void main()
 			{
-				vec4 c = texture2D(uSampler, vTextureCoord);
-				vec4 l = texture2D(lightmap, vTextureCoord);
+				vec4 c = texture(uTexture, vTextureCoord);
+				vec4 l = texture(lightmap, vTextureCoord);
 
 				if (c.a > 0.0 && l.a > 0.0) {
 					vec3 rgb = c.rgb * l.rgb;
 					c.rgb = rgb;
 				}
 
-				gl_FragColor = c;
+				finalColor = c;
 			}
 			`
 	},
 	GammaFilter: {
 		code: `
-			varying vec2 vTextureCoord;
-			uniform sampler2D uSampler;
-			uniform float gamma[1];
+			in vec2 vTextureCoord;
+			out vec4 finalColor;
+			uniform sampler2D uTexture;
 
-			void main(void)
+			uniform float gamma;
+
+			void main()
 			{
-			vec4 c = texture2D(uSampler, vTextureCoord);
+			vec4 c = texture(uTexture, vTextureCoord);
 
 			if (c.a > 0.0) {
-				vec3 rgb = pow(c.rgb, vec3(1. / (gamma[0])));;
+				vec3 rgb = pow(c.rgb, vec3(1. / (gamma)));;
 				c.rgb = rgb;
 			}
 
-			gl_FragColor = c;
+			finalColor = c;
 			}
 			`
 	},
 	Solid: {
 		code: `
-			varying vec2 vTextureCoord;
-			uniform sampler2D uSampler;
+			in vec2 vTextureCoord;
+			out vec4 finalColor;
+			uniform sampler2D uTexture;
 
-			void main(void)
+			void main()
 			{
-			vec4 c = texture2D(uSampler, vTextureCoord);
-
-			if (c.a > 0.0) {
-				c.r = 1.;
-				c.g = 1.;
-				c.b = 1.;
-			}
-
-			gl_FragColor = c;
+				vec4 c - texture(uTexture, vTextureCoord);
+				if (c.a > 0.0) {
+					c.r = 1.;
+					c.g = 1.;
+					c.b = 1.;
+				}
+				finalColor = c;
 			}
 			`
 	},

@@ -3436,33 +3436,42 @@ declare const guessLanguage: {
 	name(text: string): string;
 };
 
-declare const PIXI: typeof import('pixi.js') & typeof import('pixi.js-legacy') & {
+declare const PIXI: typeof import('pixi.js') & {
 	// Filters says it's deprecated and should be referenced `PIXI.<filter>` rather than `PIXI.filters.<filter>`
 	// But that doesn't work, and this does.
 	filters: typeof import('pixi-filters'),
 };
+
+
+declare const BlendModes: typeof import('pixi.js/lib/advanced-blend-modes');
 
 // We can't refer to a type as `PIXI.Container`, nor `typeof PIXI.Container`, but `import(pixi.js).Container` does work
 type PIXIContainer = import('pixi.js').Container;
 type PIXIMesh = import('pixi.js').Mesh;
 type PIXIRenderTexture = import('pixi.js').RenderTexture;
 type PIXITexture = import('pixi.js').Texture;
+type PIXIGraphics = import('pixi.js').Graphics;
+type PIXISprite = import('pixi.js').Sprite;
+type FilterOptions = import('pixi.js').FilterOptions;
+type PointData = import('pixi.js').PointData;
 
-type PIXIPlane = import('pixi.js').SimplePlane;
+type ImageResource = import('pixi.js').ImageResource;
+type TextureSourceOptions = import('pixi.js').TextureSourceOptions<ImageResource>;
+
+type PIXIPlane = import('pixi.js').MeshPlane;
 type PIXIBuffer = import('pixi.js').Buffer;
-type IArrayBuffer = import('pixi.js').IArrayBuffer;
-type PIXIArray = import('pixi.js').ITypedArray;
+type PIXIArray = import('pixi.js').TypedArray;
 type PIXIAdjustmentFilter = import('pixi-filters').AdjustmentFilter;
 type PIXIFilter = import('pixi.js').Filter;
+type FilterSystem = import('pixi.js').FilterSystem;
 
 //type PIXIExtensionType = import('pixi.js').ExtensionType;
 //type PIXIUnresolvedAsset = import('pixi.js').Assets;
 
 type PIXIMatrix = import('pixi.js').Matrix;
-type PIXIPoint = import('pixi.js').Point;
-type ISpriteMaskTarget = import('pixi.js').ISpriteMaskTarget;
 
-type PIXICLEAR_MODES = import('pixi.js').CLEAR_MODES;
 type PIXIFilterSystem = import('pixi.js').FilterSystem;
 
 type PIXIUnresolvedAsset = any; // The dreaded
+
+

@@ -1915,17 +1915,6 @@ function KinkyDungeonDrawMagicSpells() {
 
 
 
-	//DrawTextKD(TextGet("KinkyDungeonSpellsPoints") + KinkyDungeonSpellPoints, 650, 900, "white", KDTextGray0);
-
-	/*MainCanvas.beginPath();
-	MainCanvas.lineWidth = 3;
-	MainCanvas.strokeStyle = KDBorderColor;
-	MainCanvas.moveTo(canvasOffsetX_ui + xOffset, canvasOffsetY_ui + 70 + MagicSpellsUIShift);
-	MainCanvas.lineTo(canvasOffsetX_ui + xOffset + 1150, canvasOffsetY_ui + 70 + MagicSpellsUIShift);
-	MainCanvas.stroke();
-	MainCanvas.closePath();
-
-	MainCanvas.textAlign = "center";*/
 	if (KDSwapSpell != -1) {
 		DrawTextKD(TextGet(
 			"KinkyDungeonMagicSpellsQuick").replace(

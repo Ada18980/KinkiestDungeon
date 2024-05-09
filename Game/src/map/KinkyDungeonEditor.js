@@ -272,10 +272,6 @@ let KDTE_State = "";
 function KDDrawTileEditor() {
 
 	if (KinkyDungeonCanvas) {
-
-		KinkyDungeonContext.fillStyle = "rgba(0,0,0.0,1.0)";
-		KinkyDungeonContext.fillRect(0, 0, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height);
-		KinkyDungeonContext.fill();
 		KinkyDungeonCamX = KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2);
 		KinkyDungeonCamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2);
 
@@ -302,28 +298,6 @@ function KDDrawTileEditor() {
 				sprite[1].destroy();
 			}
 		}
-
-		if (!StandalonePatched) {
-			// Draw the context layer even if we haven't updated it
-			if (pixirendererKD) {
-				pixirendererKD.render(kdgameboard, {
-					clear: false,
-				});
-			}
-			if (!pixirendererKD) {
-				if (KinkyDungeonContext && KinkyDungeonCanvas) {
-					pixirendererKD = new PIXI.CanvasRenderer({
-						width: KinkyDungeonCanvas.width,
-						height: KinkyDungeonCanvas.height,
-						view: KinkyDungeonCanvas,
-						antialias: true,
-					});
-				}
-			}
-		}
-
-		if (!StandalonePatched)
-			MainCanvas.drawImage(KinkyDungeonCanvas, canvasOffsetX, canvasOffsetY);
 
 		KDTE_UpdateUI(false);
 

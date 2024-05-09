@@ -273,12 +273,12 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 		let sprite = "UI/NavMap/" + slot.type;
 		if (slot.x == KDGameData.JourneyX && slot.y == KDGameData.JourneyY) {
 
-			KDJourneyGraphics.lineStyle(3, 0xffffff);
-			KDJourneyGraphics.drawCircle(
+			KDJourneyGraphics.circle(
 				xOffset + ScaleX*(slot.x - X),
 				yOffset + ScaleY*(slot.y - Y),
 				spriteSize * 0.7
 			);
+			KDJourneyGraphics.stroke({width: 3, color: 0xffffff});
 		}
 		KDDraw(kdcanvas, kdpixisprites, "navmap" + slot.x + ',' + slot.y,
 			KinkyDungeonRootDirectory + sprite + '.png',
@@ -316,9 +316,11 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 			heights["" + slot.y] = true;
 			DrawTextFitKD(TextGet("KDNavMap_Floor").replace("NMB", "" + slot.y), TextOffset, yOffset + ScaleY*(slot.y - Y),
 				200, "#ffffff", KDTextGray0, 24);
-			KDJourneyGraphicsLower.lineStyle(spriteSize*2, 0x000000, 0.2);
 			KDJourneyGraphicsLower.moveTo(xOffset - ScaleX*Width + 150, yOffset + ScaleY*(slot.y - Y));
 			KDJourneyGraphicsLower.lineTo(xOffset + ScaleX*Width - 150, yOffset + ScaleY*(slot.y - Y));
+			KDJourneyGraphicsLower.stroke({
+				width: spriteSize*2, color: 0x000000, alpha: 0.2
+			});
 		}
 		if ((slot.x < maxX && slot.x > minX && slot.y < maxY))
 			for (let c of slot.Connections) {
@@ -368,12 +370,13 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 	}
 
 	if (selectedJourney) {
-		KDJourneyGraphics.lineStyle(1, 0xffffff);
-		KDJourneyGraphics.drawCircle(
+		KDJourneyGraphics.circle(
 			xOffset + ScaleX*(selectedJourney.x - X),
 			yOffset + ScaleY*(selectedJourney.y - Y),
 			spriteSize * 0.65
 		);
+
+		KDJourneyGraphics.stroke({width: 1, color: 0xffffff});
 
 		let x = xOffset - (Width) * ScaleX - 440 + 50;
 		let y = yOffset - ScaleY/2 - spriteSize/4;
@@ -464,9 +467,11 @@ function KDInitJourneyMap(Level = 0) {
 }
 
 function KDDrawJourneyLine(x1: number, y1: number, x2: number, y2: number, color: number, Canvas = KDJourneyGraphics) {
-	Canvas.lineStyle(2, color, 1);
 	Canvas.moveTo(x1, y1);
 	Canvas.lineTo(x2, y2);
+	Canvas.stroke({
+		width: 2, color: color, alpha: 1
+	});
 	return;
 }
 

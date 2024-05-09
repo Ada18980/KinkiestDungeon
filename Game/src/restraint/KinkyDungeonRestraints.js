@@ -501,13 +501,16 @@ function KinkyDungeonDrawTethers(Entity, CamX, CamY) {
 			let color = KDRestraint(inv).Color[0]?.length > 3 ? KDRestraint(inv).Color[0] : KDRestraint(inv).Color;
 			if (!color || color == "Default") color = "#aaaaaa";
 			if (Array.isArray(color)) color = color[0];
-			KDTetherGraphics.lineStyle(4, string2hex(color), 1);
+
 			for (let d = 0; d < 1; d += dd) {
 				let yOffset = 30 * Math.sin(Math.PI * d);
 				let yOffset2 = 30 * Math.sin(Math.PI * (d + dd));
 				KDTetherGraphics.moveTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*d, KinkyDungeonGridSizeDisplay*0.8 + yOffset + yy + dy*d);
 				KDTetherGraphics.lineTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*(d+dd), KinkyDungeonGridSizeDisplay*0.8 + yOffset2 + yy + dy*(d+dd));
 			}
+			KDTetherGraphics.stroke({
+				width: 4, color: string2hex(color), alpha: 1
+			});
 			return;
 		}
 	}

@@ -1,5 +1,6 @@
 "use strict";
 
+
 let KDDebugOverlay = false;
 
 
@@ -30,181 +31,6 @@ let KDBreathAnimTime = 1400;
 
 let KDFlipPlayer = false;
 
-// PIXI experimental
-/** @type HTMLCanvasElement */
-let pixiview = null;
-let pixirenderer = null;
-let pixirendererKD = null;
-let kdgamefog = new PIXI.Graphics();
-//let kdgamefogmask = new PIXI.Graphics();
-let kdgamefogsmoothDark = new PIXI.Container();
-kdgamefogsmoothDark.zIndex = -1.05;
-let kdgamefogsmooth = new PIXI.Container();
-kdgamefogsmooth.zIndex = -1.1;
-//kdgamefogsmooth.mask = kdgamefogmask;
-kdgamefog.zIndex = -1;
-let kdgamesound = new PIXI.Container();
-kdgamesound.zIndex = 1;
-let kdsolidcolorfilter = new PIXI.Filter(null, KDShaders.Solid.code, {});
-let kdoutlinefilter = StandalonePatched ? new PIXI.filters.OutlineFilter(2, 0xffffff, 0.1, 0.5, true) : undefined;
-//let kdVisionBlurfilter = StandalonePatched ? new PIXI.filters.KawaseBlurFilter(10, 1) : undefined;
-if (StandalonePatched) {
-	kdgamesound.filters = [kdoutlinefilter];
-	//kdgamefog.filters = [kdVisionBlurfilter];
-} else {
-	kdgamesound.alpha = 0.5;
-}
-
-let KDOutlineFilterCache = new Map();
-
-let kdminimap = new PIXI.Graphics();
-kdminimap.x = 500;
-kdminimap.y = 10;
-kdminimap.zIndex = 80;
-
-let kdmapboard = new PIXI.Container();
-kdmapboard.zIndex = -2;
-kdmapboard.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
-
-let kdlightmap = null;
-let kdlightmapGFX = null;
-
-let kdbrightnessmap = null;
-let kdbrightnessmapGFX = null;
-
-if (StandalonePatched) {
-	let res = KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0];
-	kdbrightnessmapGFX = new PIXI.Container();
-	kdbrightnessmap = PIXI.RenderTexture.create({ width: res > 1 ? 2047 : 2000, height: res > 1 ? 1023 : 1000,});
-
-	kdlightmapGFX = new PIXI.Graphics();
-	kdlightmap = PIXI.RenderTexture.create({ width: res > 1 ? 2047 : 2000, height: res > 1 ? 1023 : 1000,});
-	//kdlightmapGFX.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
-}
-
-
-
-let kddarkdesaturatefilter = new PIXI.Filter(null, KDShaders.Darkness.code, {
-	radius: .02*72/2000,
-	weight: 0.24,
-	mult: 1.1,
-	lum_cutoff: 0.65,
-	lum_cutoff_rate: 3.5,
-	brightness: 1,
-	brightness_rate: 0.7,
-	contrast: 1,
-	contrast_rate: 0.03,
-});
-let kdfogfilter = new PIXI.Filter(null, KDShaders.FogFilter.code, {
-	lightmap: kdlightmap,
-	brightness: 1,
-	brightness_rate: 0.,
-	contrast: 1,
-	contrast_rate: 0.03,
-	saturation: 0,
-});
-//kdfogfilter.resolution = KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0];
-let kdgammafilterstore = [1.0];
-let kdgammafilter = new PIXI.Filter(null, KDShaders.GammaFilter.code, {
-	gamma: kdgammafilterstore,
-});
-let kdmultiplyfilter = new PIXI.Filter(null, KDShaders.MultiplyFilter.code, {
-	lightmap: kdbrightnessmap,
-});
-
-let KDBoardFilters = [kdmultiplyfilter, kdfogfilter];
-
-kdmapboard.filters = [
-	...KDBoardFilters,
-	kdgammafilter,
-];
-
-
-let kdenemyboard = new PIXI.Container();
-kdenemyboard.zIndex = 0;
-kdenemyboard.sortableChildren = true;
-let kdenemystatusboard = new PIXI.Container();
-kdenemystatusboard.zIndex = 4;
-kdenemystatusboard.sortableChildren = true;
-let kdbulletboard = new PIXI.Container();
-kdbulletboard.zIndex = 2.3;
-kdbulletboard.sortableChildren = true;
-let kdeffecttileboard = new PIXI.Container();
-kdeffecttileboard.zIndex = -0.1;
-kdeffecttileboard.sortableChildren = true;
-let kdUItext = new PIXI.Container();
-kdUItext.zIndex = 60;
-kdUItext.sortableChildren = true;
-let kdstatusboard = new PIXI.Container();
-kdstatusboard.zIndex = 5;
-kdstatusboard.sortableChildren = true;
-let kdfloatercanvas = new PIXI.Container();
-kdfloatercanvas.zIndex = 200;
-kdfloatercanvas.sortableChildren = false;
-kdstatusboard.addChild(kdfloatercanvas);
-
-let kddialoguecanvas = new PIXI.Container();
-kddialoguecanvas.zIndex = 60;
-kddialoguecanvas.sortableChildren = false;
-kdstatusboard.addChild(kddialoguecanvas);
-let kdenemydialoguecanvas = new PIXI.Container();
-kdenemydialoguecanvas.zIndex = 60;
-kdenemydialoguecanvas.sortableChildren = false;
-kdstatusboard.addChild(kdenemydialoguecanvas);
-
-
-let kditemsboard = new PIXI.Container();
-kditemsboard.zIndex = -2;
-kditemsboard.sortableChildren = false;
-let kdwarningboard = new PIXI.Container();
-kdwarningboard.zIndex = -0.3;
-kdwarningboard.sortableChildren = true;
-let kdwarningboardOver = new PIXI.Container();
-kdwarningboardOver.zIndex = 2.22;
-kdwarningboardOver.sortableChildren = false;
-// @ts-ignore
-let kdgameboard = new PIXI.Container();
-kdgameboard.sortableChildren = true;
-kdgameboard.zIndex = -50;
-kdgameboard.addChild(kdmapboard);
-kdgameboard.addChild(kdwarningboard);
-kdgameboard.addChild(kdbulletboard);
-kdgameboard.addChild(kdenemyboard);
-kdgameboard.addChild(kdeffecttileboard);
-kdgameboard.addChild(kdgamesound);
-kdgameboard.addChild(kdwarningboardOver);
-kdgameboard.addChild(kditemsboard);
-// @ts-ignore
-let kdui = new PIXI.Graphics();
-let kdcanvas = new PIXI.Container();
-kdcanvas.sortableChildren = true;
-kdcanvas.addChild(kdstatusboard);
-kdcanvas.addChild(kdenemystatusboard);
-kdcanvas.addChild(kdUItext);
-kdcanvas.addChild(kdminimap);
-
-
-//kdcanvas.addChild(new PIXI.Sprite(kdlightmap));
-
-let statusOffset = 0;
-
-kdgameboard.addChild(kdgamefogsmooth);
-kdgameboard.addChild(kdgamefogsmoothDark);
-
-if (StandalonePatched) {
-
-	statusOffset -= 20;
-	kdgameboard.addChild(kdgamefog);
-	//kdgameboard.addChild(kdgamefogmask);
-	kdcanvas.addChild(kdgameboard);
-
-}
-
-
-let kdparticles = new PIXI.Container();
-kdparticles.zIndex = 10;
-kdparticles.sortableChildren = false;
-kdcanvas.addChild(kdparticles);
 //kdgameboard.addChild(kdparticles);
 
 let KDTextWhite = "#ffffff";
@@ -971,8 +797,8 @@ function KinkyDungeonDrawGame() {
 	KDDrawMinimap(1990-KDMinimapWCurrent, 25);
 	KDDrawPartyMembers(500 + ((KDToggles.BuffSide && !KDToggleShowAllBuffs) ? 60 : 0), Math.min(500, KDMinimapHeight()+81), tooltips);
 
-	if (StandalonePatched)
-		PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
+	//if (StandalonePatched)
+	//PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 
 
 
@@ -1120,9 +946,6 @@ function KinkyDungeonDrawGame() {
 			KinkyDungeonSetMoveDirection();
 
 			if (KinkyDungeonCanvas) {
-				KinkyDungeonContext.fillStyle = "rgba(0,0,0.0,1.0)";
-				KinkyDungeonContext.fillRect(0, 0, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height);
-				KinkyDungeonContext.fill();
 				let spriteRes = KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_offsetVis, KDDebugOverlay);
 
 				// Get lighting grid
@@ -1549,11 +1372,6 @@ function KinkyDungeonDrawGame() {
 						LineWidth: 2,
 						zIndex: 10,
 					});
-					/*KinkyDungeonContext.beginPath();
-					KinkyDungeonContext.rect(0, 0, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height);
-					KinkyDungeonContext.lineWidth = 4;
-					KinkyDungeonContext.strokeStyle = "#ff4444";
-					KinkyDungeonContext.stroke();*/
 				}
 
 				if (KinkyDungeonLastTurnAction == "Struggle" && KinkyDungeonCurrentEscapingItem && KinkyDungeonCurrentEscapingItem.lock) {
@@ -1667,55 +1485,7 @@ function KinkyDungeonDrawGame() {
 						barInt += 1;
 					}
 				}
-				/*for (let b of Object.values(KinkyDungeonPlayerBuffs)) {
-					if (b && b.aura && b.duration > 0 && b.duration < 999) {
-						if (!b.maxduration) b.maxduration = b.duration;
-						KinkyDungeonBar(canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offsetVis)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 12 - 13 * barInt,
-							KinkyDungeonGridSizeDisplay, 12, 100 * b.duration / b.maxduration, b.aura, KDTextGray0);
-						barInt += 1;
-					}
-				}*/
 
-
-
-
-				if (!StandalonePatched) {
-					// Draw the context layer even if we haven't updated it
-					if (pixirendererKD) {
-						pixirendererKD.render(kdgameboard, {
-							clear: false,
-						});
-					}
-
-					// Draw the context layer even if we haven't updated it
-					if (pixirendererKD) {
-						pixirendererKD.render(kdgamefog, {
-							clear: false,
-						});
-					}
-
-					// Draw the context layer even if we haven't updated it
-					if (pixirendererKD) {
-						pixirendererKD.render(kdparticles, {
-							clear: false,
-						});
-					}
-					if (!pixirendererKD) {
-						if (!StandalonePatched) {
-							if (KinkyDungeonContext && KinkyDungeonCanvas) {
-								pixirendererKD = new PIXI.CanvasRenderer({
-									width: KinkyDungeonCanvas.width,
-									height: KinkyDungeonCanvas.height,
-									view: KinkyDungeonCanvas,
-									antialias: true,
-								});
-							}
-						}
-
-					}
-					MainCanvas.drawImage(KinkyDungeonCanvas, canvasOffsetX, canvasOffsetY);
-					DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
-				}
 
 				if (KinkyDungeonCurrentEscapingItem && KinkyDungeonFlags.get("escaping")) {
 					let item = KinkyDungeonCurrentEscapingItem;
@@ -2015,22 +1785,7 @@ function KinkyDungeonDrawGame() {
 
 	if (KinkyDungeonDrawState == "Game") {
 		if (KinkyDungeonFlags.get("PlayerOrgasmFilter")) {
-			/*if (KDToggles.IntenseOrgasm) {
-				if (!KDIntenseFilter) {
-					KDIntenseFilter = PIXI.Sprite.from(KinkyDungeonRootDirectory + 'displacement_map_repeat.jpg');
-					// Make sure the sprite is wrapping.
-					KDIntenseFilter.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
-					const displacementFilter = new PIXI.filters.DisplacementFilter(KDIntenseFilter);
-					displacementFilter.padding = 10;
 
-					kdgameboard.addChild(KDIntenseFilter);
-
-					kdgameboard.filters = [displacementFilter];
-
-					displacementFilter.scale.x = 30;
-					displacementFilter.scale.y = 60;
-				}
-			} else {*/
 			FillRectKD(kdcanvas, kdpixisprites, "screenoverlayor", {
 				Left: 0,
 				Top: 0,
@@ -2111,33 +1866,7 @@ function KinkyDungeonDrawGame() {
  * @returns {void} - Nothing.
  */
 function KDDrawArousalScreenFilter(y1, h, Width, ArousalOverride, Color = '255, 100, 176', AlphaBonus = 0) {
-	/*let Progress = (ArousalOverride) ? ArousalOverride : Player.ArousalSettings.Progress;
-	let amplitude = 0.24 * Math.min(1, 2 - 1.5 * Progress/100); // Amplitude of the oscillation
-	let percent = Progress/100.0;
-	let level = Math.min(0.5, percent) + 0.5 * Math.pow(Math.max(0, percent*2 - 1), 4);
-	let oscillation = Math.sin(CommonTime() / 1000 % Math.PI);
-	let alpha = Math.min(1.0, AlphaBonus + 0.35 * level * (0.99 - amplitude + amplitude * oscillation));
-
-	if (Player.ArousalSettings.VFXFilter == "VFXFilterHeavy") {
-		const Grad = MainCanvas.createLinearGradient(0, y1, 0, h);
-		let alphamin = 0;//Math.max(0, alpha / 2 - 0.05);
-		Grad.addColorStop(0, `rgba(${Color}, ${alpha})`);
-		Grad.addColorStop(0.1 + 0.1*percent * (1.0 + 0.3 * oscillation), `rgba(${Color}, ${alphamin})`);
-		Grad.addColorStop(0.5, `rgba(${Color}, ${alphamin/2})`);
-		Grad.addColorStop(0.9 - 0.1*percent * (1.0 + 0.3 * oscillation), `rgba(${Color}, ${alphamin})`);
-		Grad.addColorStop(1, `rgba(${Color}, ${alpha})`);
-		MainCanvas.fillStyle = Grad;
-		MainCanvas.fillRect(0, y1, Width, h);
-	} else {
-		if (Player.ArousalSettings.VFXFilter != "VFXFilterMedium") {
-			alpha = (Progress >= 91) ? 0.25 : 0;
-		} else alpha /= 2;
-		if (alpha > 0)
-			DrawRect(0, y1, Width, h, `rgba(${Color}, ${alpha})`);
-	}*/
-
-	if (StandalonePatched)
-		PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
+	// None
 }
 
 function KDCanAttack() {
@@ -2748,9 +2477,11 @@ function DrawTextVisKD(Container, Map, id, Params) {
 				fontFamily : KDFontName,
 				fontSize: Params.FontSize ? Params.FontSize : 30,
 				fill : string2hex(Params.Color),
-				stroke : Params.BackColor != "none" ? (Params.BackColor ? string2hex(Params.BackColor) : "#333333") : 0x000000,
-				strokeThickness: Params.border != undefined ? Params.border : (Params.BackColor != "none" ? (Params.FontSize ? Math.ceil(Params.FontSize / 8) : 2) : 0),
-				miterLimit: 4,
+				stroke : {
+					color: Params.BackColor != "none" ? (Params.BackColor ? string2hex(Params.BackColor) : "#333333") : 0x000000,
+					width: Params.border != undefined ? Params.border : (Params.BackColor != "none" ? (Params.FontSize ? Math.ceil(Params.FontSize / 8) : 2) : 0),
+					miterLimit: 4,
+				},
 			}
 		);
 
@@ -2769,7 +2500,7 @@ function DrawTextVisKD(Container, Map, id, Params) {
 	}
 	if (sprite) {
 		// Modify the sprite according to the params
-		sprite.name = id;
+		sprite.label = id;
 		//sprite.cacheAsBitmap = true;
 		sprite.position.x = Params.X + (Params.align == 'center' ? -sprite.width/2 : (Params.align == 'right' ? -sprite.width : 0));
 		sprite.position.y = Params.Y - sprite.height/2 - 2;
@@ -2803,8 +2534,8 @@ function DrawRectKD(Container, Map, id, Params) {
 		if (sprite) sprite.destroy();
 		// Make the prim
 		sprite = new PIXI.Graphics();
-		sprite.lineStyle(Params.LineWidth ? Params.LineWidth : 1, string2hex(Params.Color), 1);
-		sprite.drawRect(0, 0, Params.Width, Params.Height);
+		sprite.rect(0, 0, Params.Width, Params.Height);
+		sprite.stroke({width: Params.LineWidth ? Params.LineWidth : 1, color: string2hex(Params.Color)});
 		// Add it to the container
 		Map.set(id, sprite);
 		Container.addChild(sprite);
@@ -2813,7 +2544,7 @@ function DrawRectKD(Container, Map, id, Params) {
 	}
 	if (sprite) {
 		// Modify the sprite according to the params
-		sprite.name = id;
+		sprite.label = id;
 		sprite.position.x = Params.Left;
 		sprite.position.y = Params.Top;
 		sprite.width = Params.Width;
@@ -2847,8 +2578,8 @@ function DrawCircleKD(Container, Map, id, Params) {
 		if (sprite) sprite.destroy();
 		// Make the prim
 		sprite = new PIXI.Graphics();
-		sprite.lineStyle(Params.LineWidth ? Params.LineWidth : 1, string2hex(Params.Color), 1);
-		sprite.drawCircle(Params.Width/2, Params.Width/2, Params.Width/2);
+		sprite.circle(Params.Width/2, Params.Width/2, Params.Width/2);
+		sprite.stroke({width: Params.LineWidth ? Params.LineWidth : 1, color: string2hex(Params.Color)});
 		// Add it to the container
 		Map.set(id, sprite);
 		Container.addChild(sprite);
@@ -2857,7 +2588,7 @@ function DrawCircleKD(Container, Map, id, Params) {
 	}
 	if (sprite) {
 		// Modify the sprite according to the params
-		sprite.name = id;
+		sprite.label = id;
 		sprite.position.x = Params.Left;
 		sprite.position.y = Params.Top;
 		sprite.width = Params.Width;
@@ -2879,6 +2610,9 @@ function DrawCircleKD(Container, Map, id, Params) {
  * @returns {boolean} - If it worked
  */
 function DrawCrossKD(Container, Map, id, Params) {
+	/**
+	 * @type {PIXIGraphics}
+	 */
 	let sprite = Map.get(id);
 	let same = true;
 	if (sprite && kdprimitiveparams.has(id)) {
@@ -2894,9 +2628,9 @@ function DrawCrossKD(Container, Map, id, Params) {
 		// Make the prim
 		let linewidth = Params.LineWidth || 2;
 		sprite = new PIXI.Graphics();
-		sprite.beginFill(string2hex(Params.Color));
-		sprite.drawRect(Params.Width/2 -linewidth/2, 0, linewidth, Params.Height);
-		sprite.drawRect(0, Params.Height/2 -linewidth/2, Params.Width, linewidth);
+		sprite.rect(Params.Width/2 -linewidth/2, 0, linewidth, Params.Height);
+		sprite.rect(0, Params.Height/2 -linewidth/2, Params.Width, linewidth);
+		sprite.fill(string2hex(Params.Color));
 		// Add it to the container
 		Map.set(id, sprite);
 		Container.addChild(sprite);
@@ -2905,7 +2639,7 @@ function DrawCrossKD(Container, Map, id, Params) {
 	}
 	if (sprite) {
 		// Modify the sprite according to the params
-		sprite.name = id;
+		sprite.label = id;
 		sprite.position.x = Params.Left;
 		sprite.position.y = Params.Top;
 		sprite.width = Params.Width;
@@ -2940,8 +2674,8 @@ function FillRectKD(Container, Map, id, Params) {
 		if (sprite) sprite.destroy();
 		// Make the prim
 		sprite = new PIXI.Graphics();
-		sprite.beginFill(string2hex(Params.Color));
-		sprite.drawRect(0, 0, Params.Width, Params.Height);
+		sprite.rect(0, 0, Params.Width, Params.Height);
+		sprite.fill(string2hex(Params.Color));
 		// Add it to the container
 		Map.set(id, sprite);
 		Container.addChild(sprite);
@@ -2950,7 +2684,7 @@ function FillRectKD(Container, Map, id, Params) {
 	}
 	if (sprite) {
 		// Modify the sprite according to the params
-		sprite.name = id;
+		sprite.label = id;
 		sprite.position.x = Params.Left;
 		sprite.position.y = Params.Top;
 		sprite.width = Params.Width;
@@ -3244,34 +2978,11 @@ function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, Ba
 			zIndex: 101,
 		});
 	}
-	/*MainCanvas.beginPath();
-	MainCanvas.lineWidth = 1;
-	MainCanvas.strokeStyle = '#ffffff';
-	MainCanvas.stroke();
-
-	MainCanvas.stroke();
-	MainCanvas.closePath();*/
 
 	// Draw the text or image
 	DrawTextFitKD(Label, Left + Width / 2, Top + (Height / 2) + 1, (CommonIsMobile) ? Width - 6 : Width - 36, "#ffffff");
 
-	// Draw the back arrow
-	/*MainCanvas.beginPath();
-	MainCanvas.fillStyle = KDTextGray0;
-	MainCanvas.moveTo(Left + 15, Top + Height / 5);
-	MainCanvas.lineTo(Left + 5, Top + Height / 2);
-	MainCanvas.lineTo(Left + 15, Top + Height - Height / 5);
-	MainCanvas.stroke();
-	MainCanvas.closePath();
 
-	// Draw the next arrow
-	MainCanvas.beginPath();
-	MainCanvas.fillStyle = KDTextGray0;
-	MainCanvas.moveTo(Left + Width - 15, Top + Height / 5);
-	MainCanvas.lineTo(Left + Width - 5, Top + Height / 2);
-	MainCanvas.lineTo(Left + Width - 15, Top + Height - Height / 5);
-	MainCanvas.stroke();
-	MainCanvas.closePath();*/
 }
 
 
@@ -3474,26 +3185,24 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 	let sprite = Map.get(id);
 	if (!sprite) {
 		// Load the texture
-		if (Nearest && StandalonePatched) {
-			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
-		}
+		//if (Nearest && StandalonePatched) {
+		//	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
+		//}
 		let tex = KDTex(Image, Nearest);
 
 		if (tex) {
 			// Create the sprite
 			if (Nearest)
-				sprite = PIXI.Sprite.from(KDTex(Image, Nearest), {
-					scaleMode: PIXI.SCALE_MODES.NEAREST,
-				});
+				sprite = PIXI.Sprite.from(KDTex(Image, true));
 			else
 				sprite = PIXI.Sprite.from(KDTex(Image));
 			Map.set(id, sprite);
 			// Add it to the container
 			Container.addChild(sprite);
 		}
-		if (Nearest && StandalonePatched) {
-			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
-		}
+		//if (Nearest && StandalonePatched) {
+		//	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
+		//}
 	}
 	if (sprite) {
 		sprite.visible = true;
@@ -3502,7 +3211,7 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 		// Modify the sprite according to the params
 		let tex = KDTex(Image);
 		if (tex) sprite.texture = tex;
-		sprite.name = id;
+		sprite.label = id;
 		sprite.position.x = Left;
 		sprite.position.y = Top;
 		if (Width)
@@ -3562,9 +3271,8 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 	return null;
 }
 
-let OPTIONS_NEAREST = {scaleMode: PIXI.SCALE_MODES.NEAREST};
 
-let errorImg = {};
+let erroredTex = {};
 
 /**
  * Returns a PIXI.Texture, or null if there isnt one
@@ -3573,13 +3281,24 @@ let errorImg = {};
  */
 function KDTex(Image, Nearest) {
 	if (kdpixitex.has(Image)) return kdpixitex.get(Image);
-	if (errorImg[KDModFiles[Image] || Image]) return null;
+	if (erroredTex[KDModFiles[Image] || Image]) return null;
 	try {
-		let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, OPTIONS_NEAREST) : PIXI.Texture.from(KDModFiles[Image] || Image);
-		if (!tex) {
-			errorImg[KDModFiles[Image] || Image] = true;
-		} else {
+		PIXI.Assets.add({
+			alias: KDModFiles[Image] || Image,
+			src: KDModFiles[Image] || Image,
+		});
+		PIXI.Assets.load(KDModFiles[Image] || Image).then(() => {}, (val) => {
+			erroredTex[KDModFiles[Image] || Image] = true;
+		});
+		const tex = PIXI.Texture.from(KDModFiles[Image] || Image);
+
+
+		if (tex) {
 			kdpixitex.set(Image, tex);
+			if (Nearest) {
+				tex.source.scaleMode = 'nearest';
+			}
+
 		}
 		return tex;
 	} catch (e) {
@@ -3594,7 +3313,7 @@ function KDTex(Image, Nearest) {
  * @returns
  */
 function string2hex(str) {
-	return PIXI.utils.string2hex(str);
+	return new PIXI.Color(str).toNumber();
 }
 
 function GetAdjacentList(list, index, width) {
@@ -3665,7 +3384,7 @@ function KDUpdateVision(CamX, CamY, CamX_offset, CamY_offset) {
 						undefined, {
 							tint: light.color || 0xffffff,
 							alpha: Math.min(1, (1 - 0.5 * (KDGameData.visionAdjust || 0)) * Math.max(0.001, light.brightness/20)),
-							blendMode: PIXI.BLEND_MODES.ADD,
+							blendMode: 'add',
 							zIndex: -0.1,
 						},
 					);

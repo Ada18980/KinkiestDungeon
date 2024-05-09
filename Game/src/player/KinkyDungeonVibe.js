@@ -39,31 +39,6 @@ let KDVibeSound = {
 };
 
 
-let KDResolutionConfirm = false;
-let KDResolution = 2;
-let KDResolutionList = [1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0];
-let KDResolutionListIndex = KDResolutionList.length-1;
-
-let KDVibeVolume = 1;
-let KDVibeVolumeListIndex = 0;
-let KDVibeVolumeList = [1, 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
-
-let KDMusicVolumeMult = 0.25; // Global mult
-let KDMusicVolume = 1;
-let KDMusicVolumeListIndex = 0;
-let KDMusicVolumeList = [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 0, 0.1, 0.2];
-
-let KDSfxVolume = 1;
-let KDSfxVolumeListIndex = 0;
-let KDSfxVolumeList = [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 0, 0.1, 0.2];
-
-let KDAnimSpeed = 1;
-let KDAnimSpeedListIndex = 0;
-let KDAnimSpeedList = [1, 1.25, 1.5, 2.0, 0, 0.25, 0.5, 0.75,];
-
-let KDGamma = 1;
-let KDGammaListIndex = 0;
-let KDGammaList = [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, .6, .7, .8, .9];
 
 function KDStopAllVibeSounds(Exceptions) {
 	let EE = [];
