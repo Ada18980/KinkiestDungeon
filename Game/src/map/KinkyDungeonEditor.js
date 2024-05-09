@@ -303,25 +303,6 @@ function KDDrawTileEditor() {
 			}
 		}
 
-		if (!StandalonePatched) {
-			// Draw the context layer even if we haven't updated it
-			if (pixirendererKD) {
-				pixirendererKD.render(kdgameboard, {
-					clear: false,
-				});
-			}
-			if (!pixirendererKD) {
-				if (KinkyDungeonContext && KinkyDungeonCanvas) {
-					pixirendererKD = new PIXI.CanvasRenderer({
-						width: KinkyDungeonCanvas.width,
-						height: KinkyDungeonCanvas.height,
-						view: KinkyDungeonCanvas,
-						antialias: true,
-					});
-				}
-			}
-		}
-
 		if (!StandalonePatched)
 			MainCanvas.drawImage(KinkyDungeonCanvas, canvasOffsetX, canvasOffsetY);
 

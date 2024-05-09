@@ -46,14 +46,11 @@ kdgamefog.zIndex = -1;
 let kdgamesound = new PIXI.Container();
 kdgamesound.zIndex = 1;
 let kdsolidcolorfilter = new PIXI.Filter(null, KDShaders.Solid.code, {});
-let kdoutlinefilter = StandalonePatched ? new PIXI.filters.OutlineFilter(2, 0xffffff, 0.1, 0.5, true) : undefined;
+let kdoutlinefilter = new PIXI.filters.OutlineFilter(2, 0xffffff, 0.1, 0.5, true);
 //let kdVisionBlurfilter = StandalonePatched ? new PIXI.filters.KawaseBlurFilter(10, 1) : undefined;
-if (StandalonePatched) {
-	kdgamesound.filters = [kdoutlinefilter];
-	//kdgamefog.filters = [kdVisionBlurfilter];
-} else {
-	kdgamesound.alpha = 0.5;
-}
+
+kdgamesound.filters = [kdoutlinefilter];
+
 
 let KDOutlineFilterCache = new Map();
 
@@ -1699,19 +1696,6 @@ function KinkyDungeonDrawGame() {
 						pixirendererKD.render(kdparticles, {
 							clear: false,
 						});
-					}
-					if (!pixirendererKD) {
-						if (!StandalonePatched) {
-							if (KinkyDungeonContext && KinkyDungeonCanvas) {
-								pixirendererKD = new PIXI.CanvasRenderer({
-									width: KinkyDungeonCanvas.width,
-									height: KinkyDungeonCanvas.height,
-									view: KinkyDungeonCanvas,
-									antialias: true,
-								});
-							}
-						}
-
 					}
 					MainCanvas.drawImage(KinkyDungeonCanvas, canvasOffsetX, canvasOffsetY);
 					DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
