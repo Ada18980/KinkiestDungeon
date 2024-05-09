@@ -11,13 +11,22 @@ let KinkyDungeonEnemies = [
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "PrisonerBandit",
 		Behavior: {noPlay: true},
 		terrainTags: {}, floors:KDMapInit([])},
-	{name: "FactoryDoll", bound: "FactoryDoll", playLine: "Gagged", tags: KDMapInit(["prisoner", "nocapture", "dollmakerconvert", "doll", "human", "minor", "peaceful", "noshop"]),
+	{name: "FactoryDoll", bound: "FactoryDoll", playLine: "Gagged", tags: KDMapInit(["prisoner", "nocapture", "dollmakerconvert", "doll", "human", "minor", "peaceful", "nohelp", "noshop"]),
+		rescueTo: {
+			Remove: "FreeDoll",
+			Unlock: "FreeDoll",
+		},
 		faction: "Prisoner", lowpriority: true, evasion: -100, armor: 1, followRange: 100, AI: "wander", regen: 0.1,
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-10, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0, events: [
 			{trigger: "tick", type: "secretToy"},
 		],
 		Behavior: {noPlay: true},
 		terrainTags: {"bellowsDoll": 20}, allFloors: true},
+	{name: "FreeDoll", bound: "FactoryDoll", tags: KDMapInit(["formerprisoner", "nocapture", "doll", "human", "minor", "peaceful", "noshop"]),
+		faction: "Prisoner", lowpriority: true, evasion: -100, armor: 1, followRange: 100, AI: "wander", regen: 0.1,
+		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0,
+		Behavior: {noPlay: true},
+		terrainTags: {}, allFloors: true},
 	{name: "DollmakerTarget", nameList: "cyborg", outfit: "DollsmithDoll", style: "Water", bound: "FactoryDoll", playLine: "Gagged", tags: KDMapInit(["prisoner", "silenceimmune", "blindimmune", "escapeddoll", "doll", "human", "minor", "peaceful", "noshop"]),
 		faction: "Prisoner", lowpriority: true, evasion: -100, armor: 0, followRange: 100, AI: "wander", regen: 0.01, events: [
 			{trigger: "tick", type: "secretToy"},

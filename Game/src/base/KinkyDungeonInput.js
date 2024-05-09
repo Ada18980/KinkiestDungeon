@@ -716,6 +716,7 @@ function KDProcessInput(type, data) {
 				KinkyDungeonSendEvent("afterSpellOrb", edata);
 				KinkyDungeonTargetTile = null;
 				KinkyDungeonTargetTileLocation = "";
+				KDModalArea = false;
 			}
 			break;
 		case "perkorb":

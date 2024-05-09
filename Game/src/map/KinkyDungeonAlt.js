@@ -344,6 +344,7 @@ let alts = {
 		bossroom: false,
 		width: 14,
 		height: 14,
+		sizeBonus: true,
 		nopatrols: false,
 		setpieces: {
 			"Cache": 10000,

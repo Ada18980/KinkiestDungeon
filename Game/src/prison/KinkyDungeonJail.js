@@ -143,10 +143,38 @@ function KinkyDungeonPlayerIsVisibleToJailers() {
 
 /**
  *
+ * @param {number} playChance
+ * @param {entity} enemy
+ * @returns {number}
+ */
+function KDCalcPlayChance(playChance, enemy) {
+	// Reduce chance of play in combat
+	if (KinkyDungeonFlags.get("PlayerCombat")) playChance *= 0.2;
+	if (!KinkyDungeonFlags.get("wander")) playChance *= 0.75;
+	if (enemy.path?.length > 2) playChance *= 0.1;
+	if (KDGameData.otherPlaying > 0) playChance *= Math.max(0.05, 1 - 0.35 * KDGameData.otherPlaying);
+
+	if (KinkyDungeonFlags.get("playLikely")) playChance += 0.5;
+
+	if (KDEnemyHasFlag(enemy, "Shop") || KDEnemyHasFlag(enemy, "HelpMe")) playChance = 0;
+
+	if (KinkyDungeonStatsChoice.get("Undeniable")) {
+		if (playChance < 0.1) playChance = 0.1;
+		else playChance = 0.9;
+	}
+
+	if (KinkyDungeonFlags.get("noPlay")) playChance = 0;
+
+	return playChance;
+}
+
+/**
+ *
  * @param {entity} enemy
  * @returns {boolean}
  */
 function KinkyDungeonCanPlay(enemy) {
+
 	return (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail' || (!KDHostile(enemy)
 		&& !(KDAllied(enemy) && !KDEnemyHasFlag(enemy, "allyPlay"))))
 		&& (enemy.ambushtrigger || !KDAIType[KDGetAI(enemy)] || !KDAIType[KDGetAI(enemy)].ambush)
@@ -349,7 +377,8 @@ function KinkyDungeonPlayExcuse(enemy, Type) {
 	if (Type == "Free" && enemy && enemy.Enemy.noChaseUnrestrained) {
 		return;
 	}
-	if (KinkyDungeonCanPlay(enemy) && !(enemy.playWithPlayer > 0) && enemy.aware && !(enemy.playWithPlayerCD > 0) && (enemy.Enemy.tags.jail || enemy.Enemy.tags.jailer || KDGetEnemyPlayLine(enemy))) {
+	let playChance = KDCalcPlayChance(1.0, enemy);
+	if (KinkyDungeonCanPlay(enemy) && !(enemy.playWithPlayer > 0) && enemy.aware && !(enemy.playWithPlayerCD > 0) && (enemy.Enemy.tags.jail || enemy.Enemy.tags.jailer || KDGetEnemyPlayLine(enemy)) && KDRandom() < playChance) {
 		enemy.playWithPlayer = 17;
 		KinkyDungeonSetEnemyFlag(enemy, "playstart", 3);
 		if (Type == "Key") {

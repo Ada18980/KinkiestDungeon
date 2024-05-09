@@ -280,7 +280,7 @@ let KDLocks = {
 			return KinkyDungeonRedKeys > 0;
 		},
 		doUnlock: (data) => {
-			KinkyDungeonRedKeys -= 1;
+
 			return true;
 		},
 		removeKeys: (data) => {
@@ -347,7 +347,7 @@ let KDLocks = {
 			return KinkyDungeonRedKeys > 0;
 		},
 		doUnlock: (data) => {
-			KinkyDungeonRedKeys -= 1;
+
 			return true;
 		},
 		removeKeys: (data) => {
@@ -414,7 +414,7 @@ let KDLocks = {
 			return KinkyDungeonRedKeys > 0;
 		},
 		doUnlock: (data) => {
-			KinkyDungeonRedKeys -= 1;
+
 			return true;
 		},
 		removeKeys: (data) => {
@@ -481,7 +481,7 @@ let KDLocks = {
 			return KinkyDungeonRedKeys > 0;
 		},
 		doUnlock: (data) => {
-			KinkyDungeonRedKeys -= 1;
+
 			return true;
 		},
 		removeKeys: (data) => {
@@ -550,7 +550,7 @@ let KDLocks = {
 			return KinkyDungeonRedKeys > 0;
 		},
 		doUnlock: (data) => {
-			KinkyDungeonRedKeys -= 1;
+
 			return true;
 		},
 		removeKeys: (data) => {

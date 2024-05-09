@@ -1063,6 +1063,7 @@
             <key type="filename">../Game/Enemies/FireElemental.png</key>
             <key type="filename">../Game/Enemies/ForceField.png</key>
             <key type="filename">../Game/Enemies/ForcefieldBot.png</key>
+            <key type="filename">../Game/Enemies/FreeDoll.png</key>
             <key type="filename">../Game/Enemies/Frog.png</key>
             <key type="filename">../Game/Enemies/Fungal.png</key>
             <key type="filename">../Game/Enemies/Fuuka1.png</key>

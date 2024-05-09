@@ -58,11 +58,13 @@ let KDIntentEvents = {
 				return true;
 			}
 			else if (!tethered) {
-				enemy.gx = KinkyDungeonPlayerEntity.x;
-				enemy.gy = KinkyDungeonPlayerEntity.y;
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
-				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-				KDTryToLeash(enemy, KinkyDungeonPlayerEntity);
+				if (enemy.aware) {
+					enemy.gx = KinkyDungeonPlayerEntity.x;
+					enemy.gy = KinkyDungeonPlayerEntity.y;
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
+					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
+					KDTryToLeash(enemy, KinkyDungeonPlayerEntity);
+				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 
@@ -134,6 +136,9 @@ let KDIntentEvents = {
 			KDResetAllAggro();
 			KDResetAllIntents();
 			KDBreakTether(KinkyDungeonPlayerEntity);
+
+			enemy.gx = KinkyDungeonPlayerEntity.x;
+			enemy.gy = KinkyDungeonPlayerEntity.y;
 			return true;
 		},
 		maintain: (enemy, delta) => {
@@ -144,11 +149,13 @@ let KDIntentEvents = {
 				return true;
 			}
 			else if (!tethered) {
-				enemy.gx = KinkyDungeonPlayerEntity.x;
-				enemy.gy = KinkyDungeonPlayerEntity.y;
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
-				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-				KDTryToLeash(enemy, KinkyDungeonPlayerEntity);
+				if (enemy.aware) {
+					enemy.gx = KinkyDungeonPlayerEntity.x;
+					enemy.gy = KinkyDungeonPlayerEntity.y;
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
+					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
+					KDTryToLeash(enemy, KinkyDungeonPlayerEntity);
+				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 
@@ -209,11 +216,13 @@ let KDIntentEvents = {
 				return true;
 			}
 			else if (!tethered) {
-				enemy.gx = KinkyDungeonPlayerEntity.x;
-				enemy.gy = KinkyDungeonPlayerEntity.y;
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
-				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-				KDTryToLeash(enemy, KinkyDungeonPlayerEntity);
+				if (enemy.aware) {
+					enemy.gx = KinkyDungeonPlayerEntity.x;
+					enemy.gy = KinkyDungeonPlayerEntity.y;
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
+					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
+					KDTryToLeash(enemy, KinkyDungeonPlayerEntity);
+				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 
@@ -356,10 +365,12 @@ let KDIntentEvents = {
 				return true;
 			}
 			else if (!tethered) {
-				enemy.gx = KinkyDungeonPlayerEntity.x;
-				enemy.gy = KinkyDungeonPlayerEntity.y;
-				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
-				KDTryToLeash(enemy, KinkyDungeonPlayerEntity);
+				if (enemy.aware) {
+					enemy.gx = KinkyDungeonPlayerEntity.x;
+					enemy.gy = KinkyDungeonPlayerEntity.y;
+					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
+					KDTryToLeash(enemy, KinkyDungeonPlayerEntity);
+				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 
@@ -470,7 +481,7 @@ let KDIntentEvents = {
 	"TempLeash": {
 		aggressive: false,
 		nonaggressive: true,
-		noplay: true,
+		play: true,
 		// This is the basic leash to jail mechanic
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
 			return (AIData?.playerDist > 2.99

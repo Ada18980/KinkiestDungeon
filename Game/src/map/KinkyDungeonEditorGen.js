@@ -412,6 +412,8 @@ function KDCheckMapTileAccess(mapTile, indX, indY, indexFilled, requiredAccess) 
 function KD_PasteTile(tile, x, y, data) {
 	let tileWidth = KDTE_Scale * tile.w;
 	let tileHeight = KDTE_Scale * tile.h;
+	// Avoid errors
+	tile = JSON.parse(JSON.stringify(tile));
 
 	let MazeSeeds = [];
 	let MazeBlock = [];

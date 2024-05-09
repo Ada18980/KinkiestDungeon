@@ -1261,6 +1261,8 @@ function KinkyDungeonCheckSpellPrerequisite(spell) {
 	if (spell.blockedBy && spell.blockedBy.some((sp) => {return KDHasSpell(sp);})) return false;
 	if (spell.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) return false;
 
+	if (!spell.prerequisite) return true;
+
 	// Prerequisite
 	if (!spell.prerequisite) return true;
 	if (typeof spell.prerequisite === "string") {
@@ -1591,7 +1593,7 @@ function KDFilterSpell(spell) {
 	let prereq = spell ? KinkyDungeonCheckSpellPrerequisite(spell) : false;
 	let prereqHost = spell ? prereq ||
 		(spell.upcastFrom && KinkyDungeonCheckSpellPrerequisite(KinkyDungeonFindSpell(spell.upcastFrom))) ||
-		(KDToggles.ShowSameCatSpells && typeof spell.prerequisite == "string" && spell.prerequisite && !KinkyDungeonFindSpell(spell.prerequisite)?.increasingCost && KinkyDungeonCheckSpellPrerequisite(KinkyDungeonFindSpell(spell.prerequisite)))
+		(KDToggles.ShowSameCatSpells && typeof spell.prerequisite == "string" && spell.prerequisite && spell.prerequisite != "Null" && !KinkyDungeonFindSpell(spell.prerequisite)?.increasingCost && KinkyDungeonCheckSpellPrerequisite(KinkyDungeonFindSpell(spell.prerequisite)))
 		: false;
 	let learned = spell ? KinkyDungeonSpellIndex(spell.name) >= 0 : false;
 	// Youve learned the spell tree

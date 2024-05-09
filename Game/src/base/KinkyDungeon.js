@@ -2677,23 +2677,26 @@ function KinkyDungeonRun() {
 	}
 
 
-	if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
-		for (let b of Object.entries(KDButtonsCache)) {
-			if (b[1].hotkeyPress == KinkyDungeonKeybindingCurrentKey) {
-				KDClickButton(b[0]);
-				return true;
+	if (!(KinkyDungeonState == "Toggles" && KDToggleTab == "Keybindings")) {
+		if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
+			for (let b of Object.entries(KDButtonsCache)) {
+				if (b[1].hotkeyPress == KinkyDungeonKeybindingCurrentKey) {
+					KDClickButton(b[0]);
+					return true;
+				}
 			}
+
+			for (let keybinding of Object.values(KDKeyCheckers)) {
+				if (keybinding()) return true;
+			}
+
+
+			if (KinkyDungeonKeybindingCurrentKey)
+				KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime();
+			KinkyDungeonKeybindingCurrentKey = '';
 		}
-
-		for (let keybinding of Object.values(KDKeyCheckers)) {
-			if (keybinding()) return true;
-		}
-
-
-		if (KinkyDungeonKeybindingCurrentKey)
-			KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime();
-		KinkyDungeonKeybindingCurrentKey = '';
 	}
+
 
 
 	//MainCanvas.textBaseline = "middle";

@@ -633,7 +633,7 @@ interface floorParams {
 	//shortcuts: {Level: number, checkpoint: string, chance:number}[	],
 	//mainpath: {Level: number, checkpoint: string, chance?: number}[],
 
-	traps: {Name: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, Weight: number, strict?: true, teleportTime?: number, filterTag?: string, filterBackup?: string, arousalMode?: boolean}[],
+	traps: {Name: string, Faction?: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, Weight: number, strict?: true, teleportTime?: number, filterTag?: string, filterBackup?: string, arousalMode?: boolean}[],
 
 	min_width : number,
 	max_width : number,
@@ -1265,6 +1265,12 @@ interface enemy extends KDHasTags {
 	noSpellDuringAttack?: boolean,
 	/** Base faction of this enemy, overridden by the entity faction */
 	faction?: string,
+	/** Can rescue with the following */
+	rescueTo?: {
+		Unlock?: string,
+		Remove?: string,
+		Slime?: string,
+	},
 	/** This enemy does not channel its spells */
 	noChannel?: boolean,
 	/** Focuses player over summmons, ignores decoys */
@@ -3436,7 +3442,7 @@ declare const guessLanguage: {
 	name(text: string): string;
 };
 
-declare const PIXI: typeof import('pixi.js') & {
+declare const PIXI: typeof import('pixi.js') & typeof import('pixi.js-legacy') & {
 	// Filters says it's deprecated and should be referenced `PIXI.<filter>` rather than `PIXI.filters.<filter>`
 	// But that doesn't work, and this does.
 	filters: typeof import('pixi-filters'),

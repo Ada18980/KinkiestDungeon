@@ -847,7 +847,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		let height = MapParams.min_height * 2 + 2*Math.floor(0.5*random * (MapParams.max_height * 2 - MapParams.min_height * 2));
 		let width = MapParams.min_width * 2 + 2*Math.floor(0.5*(1 - random) * (MapParams.max_width * 2 - MapParams.min_width * 2));
 
-		let mapSizeBonus = KDGetMapSize();
+		let mapSizeBonus = (!altType || altType.sizeBonus) ? KDGetMapSize() : 0;
 
 		height = Math.max(2, height + mapSizeBonus);
 		width = Math.max(2, width + mapSizeBonus);
@@ -2949,6 +2949,8 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 						FilterTag: t.FilterTag,
 						FilterBackup: t.FilterBackup,
 						Spell: t.Spell,
+						Hostile: t.Hostile,
+						Faction: t.Faction,
 						extraTag: t.extraTag,
 						Power: t.Power,
 						OL: tile?.OL,
@@ -2959,6 +2961,8 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 						Trap: t.Name,
 						Restraint: t.Restraint,
 						Enemy: t.Enemy,
+						Hostile: t.Hostile,
+						Faction: t.Faction,
 						FilterTag: t.FilterTag,
 						FilterBackup: t.FilterBackup,
 						Spell: t.Spell,

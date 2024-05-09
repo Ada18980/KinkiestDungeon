@@ -254,7 +254,7 @@ const KinkyDungeonMapParams = {
 			{Name: "SpecificSpell", Spell: "TrapRopeWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapLeatherWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapLustCloud", Level: 0, Power: 3, Weight: 30},
-			{Name: "SpawnEnemies", Enemy: "SummonedZombie", strict: true, Level: 0, Power: 4, Weight: 30},
+			{Name: "SpawnEnemies", Faction: "Enemy", Enemy: "SummonedZombie", strict: true, Level: 0, Power: 4, Weight: 30},
 
 			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "SummonedZombie"},
 			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "SummonedZombie"},
@@ -1225,8 +1225,8 @@ const KinkyDungeonMapParams = {
 		"traps": [
 			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
 			{Name: "SpecificSpell", Spell: "TrapRopeHoly", Level: 0, Power: 3, Weight: 30},
-			{Name: "SpawnEnemies", strict: true, Enemy: "Drone", Level: 0, Power: 3, Weight: 100},
-			{Name: "SpawnEnemies", strict: true, Enemy: "CaptureBot", Level: 0, Power: 2, Weight: 100},
+			{Name: "SpawnEnemies", Faction: "Enemy", strict: true, Enemy: "Drone", Level: 0, Power: 3, Weight: 100},
+			{Name: "SpawnEnemies", Faction: "Enemy", strict: true, Enemy: "CaptureBot", Level: 0, Power: 2, Weight: 100},
 
 			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "OldDrone"},
 			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "OldDrone"},

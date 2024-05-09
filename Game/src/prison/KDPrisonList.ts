@@ -55,7 +55,7 @@ let KDPrisonTypes = {
 			let punishDoll: entity[] = [];
 			let idleGuard: entity[] = [];
 			for (let en of KDMapData.Entities) {
-				if (en.Enemy?.tags?.prisoner && !KDEnemyHasFlag(en, "conveyed_rec")) {
+				if ((en.Enemy?.tags?.prisoner || en.Enemy?.tags?.formerprisoner) && !KDEnemyHasFlag(en, "conveyed_rec")) {
 					if ((KDEnemyHasFlag(en, "punishdoll") || KDRandom() < 0.15) && !KDEnemyHasFlag(en, "punished")) {
 						punishDoll.push(en);
 						KinkyDungeonSetEnemyFlag(en, "punishdoll", 300);
@@ -147,7 +147,7 @@ let KDPrisonTypes = {
 			let idleGuards: entity[] = [];
 			let guardCount = 0;
 			for (let en of KDMapData.Entities) {
-				if (en.faction == "Enemy" && !en.Enemy?.tags.prisoner) {
+				if (en.faction == "Enemy" && !(en.Enemy?.tags?.prisoner || en.Enemy?.tags?.formerprisoner) ) {
 					if (en != KinkyDungeonJailGuard() && en != KinkyDungeonLeashingEnemy() && (en.idle && !KDEnemyHasFlag(en, "idlegselect")))
 						idleGuards.push(en);
 					if (en.Enemy.tags.jailer) guardCount += 1;
@@ -334,7 +334,7 @@ let KDPrisonTypes = {
 					let player = KinkyDungeonPlayerEntity;
 					let guard = KDPrisonCommonGuard(player);
 
-					if (guard) {
+					if (guard && KDPrisonIsInFurniture(player)) {
 						guard.gx = player.x;
 						guard.gy = player.y;
 						KinkyDungeonSetEnemyFlag(guard, "overrideMove", 2);
@@ -731,7 +731,7 @@ function KDLostJailTrack(player) {
 	if (!KinkyDungeonLeashingEnemy() && !KinkyDungeonPlayerTags.get("Furniture")) {
 		let unaware = true;
 		for (let en of KDMapData.Entities) {
-			if (en.aware && KDGetFaction(en) == "Enemy" && !en.Enemy.tags.prisoner) {
+			if (en.aware && KDGetFaction(en) == "Enemy" && !(en.Enemy?.tags?.prisoner || en.Enemy?.tags?.formerprisoner) ) {
 				unaware = false;
 			}
 		}

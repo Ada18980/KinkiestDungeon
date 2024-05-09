@@ -234,6 +234,7 @@ let KinkyDungeonSpellSpecials = {
 		}
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
+			let cc = false;
 			if (en.boundLevel > 0) {
 				if (KDHostile(en) && en.hp <= en.Enemy.maxhp * 0.1) {
 					en.ceasefire = 50;
@@ -250,7 +251,12 @@ let KinkyDungeonSpellSpecials = {
 							b.duration = 0;
 						}
 					}
-				en.boundLevel = Math.max(0, en.boundLevel - spell.power);
+				en.boundLevel = Math.max(0, en.boundLevel - 2*spell.power);
+
+				cc = true;
+			}
+
+			if (KDRescueEnemy("Unlock", en, true) || cc) {
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				return "Cast";
@@ -1263,6 +1269,7 @@ let KinkyDungeonSpellSpecials = {
 				if (en.boundLevel) {
 					en.boundLevel = Math.max(0, en.boundLevel - 5);
 				}
+				KDRescueEnemy("Slime", en, true);
 				KinkyDungeonRemoveBuffsWithTag(en, ["encased", "slimed"]);
 				if (en.Enemy.tags?.rescueslime && !KDEnemyIsTemporary(en)) {
 					// Replace with a random adventurer. We do NOT refresh the health
@@ -1321,6 +1328,8 @@ let KinkyDungeonSpellSpecials = {
 				if (en.boundLevel) {
 					en.boundLevel = Math.max(0, en.boundLevel - spell.power);
 				}
+
+				KDRescueEnemy("Remove", en, true);
 			}
 		}
 

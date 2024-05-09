@@ -23,6 +23,16 @@ Monk class?
  - TODO dragon arena floor 20
 
 
+5.3.4
+- Can now rescue factory dolls with CMD spells
+- Updated to pixi.js 7.4.2
+- Made it so enemies shouldnt temp leash you in doll Processing
+- Traps in doll processing now spawn regular enemies not Surprise!
+- Fixed bug with gargantuan halls, etc, breaking some special map tiles
+- Fixed bug where enemies always home in on you in prison
+- Fixed cases of spurious playtime
+- Fixed class specific spells appearing in menu
+
 5.3.1
 - Fixed bugs with cyber locks not being unlockable
 - Fixed bug where unlocking any lock would always remove the item

@@ -1826,7 +1826,7 @@
 },
 "Game/Enemies/BanditGuard.png":
 {
-	"frame": {"x":2001,"y":996,"w":41,"h":65},
+	"frame": {"x":2004,"y":1742,"w":41,"h":65},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":18,"y":2,"w":41,"h":65},
@@ -1938,7 +1938,7 @@
 },
 "Game/Enemies/BindableEnemies/BanditGuard.png":
 {
-	"frame": {"x":2001,"y":996,"w":41,"h":65},
+	"frame": {"x":2004,"y":1742,"w":41,"h":65},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":18,"y":2,"w":41,"h":65},
@@ -1978,7 +1978,7 @@
 },
 "Game/Enemies/BindableEnemies/Fuuka1.png":
 {
-	"frame": {"x":2005,"y":1520,"w":38,"h":65},
+	"frame": {"x":2007,"y":1446,"w":38,"h":65},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":20,"y":2,"w":38,"h":65},
@@ -2114,7 +2114,7 @@
 },
 "Game/Enemies/DollsmithDoll.png":
 {
-	"frame": {"x":2004,"y":1742,"w":40,"h":65},
+	"frame": {"x":2004,"y":1809,"w":40,"h":65},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":19,"y":3,"w":40,"h":65},
@@ -2200,9 +2200,17 @@
 	"spriteSourceSize": {"x":9,"y":21,"w":54,"h":38},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Enemies/FreeDoll.png":
+{
+	"frame": {"x":2001,"y":928,"w":37,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":4,"w":37,"h":66},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Enemies/Fuuka1.png":
 {
-	"frame": {"x":2007,"y":1446,"w":38,"h":65},
+	"frame": {"x":2005,"y":1587,"w":38,"h":65},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":20,"y":2,"w":38,"h":65},
@@ -2282,7 +2290,7 @@
 },
 "Game/Enemies/NakedElemental.png":
 {
-	"frame": {"x":2005,"y":1587,"w":37,"h":65},
+	"frame": {"x":2005,"y":1654,"w":37,"h":65},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":20,"y":3,"w":37,"h":65},
@@ -2306,18 +2314,10 @@
 },
 "Game/Enemies/PetChastity.png":
 {
-	"frame": {"x":2001,"y":928,"w":37,"h":66},
+	"frame": {"x":2002,"y":851,"w":37,"h":66},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":13,"y":5,"w":37,"h":66},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/Enemies/PetDisplay.png":
-{
-	"frame": {"x":2005,"y":1654,"w":37,"h":65},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":13,"y":5,"w":37,"h":65},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Enemies/PinkAlkahestor.png":
@@ -2474,7 +2474,7 @@
 },
 "Game/EnemiesBound/Conjurer.png":
 {
-	"frame": {"x":2004,"y":1876,"w":39,"h":65},
+	"frame": {"x":2005,"y":1520,"w":39,"h":65},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":18,"y":0,"w":39,"h":65},
@@ -3738,7 +3738,7 @@
 },
 "Game/Items/PotionStamina.png":
 {
-	"frame": {"x":2004,"y":1809,"w":40,"h":65},
+	"frame": {"x":2004,"y":1876,"w":40,"h":65},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":16,"y":4,"w":40,"h":65},
@@ -3962,7 +3962,7 @@
 },
 "Game/Ranged.png":
 {
-	"frame": {"x":2002,"y":851,"w":43,"h":65},
+	"frame": {"x":2001,"y":996,"w":43,"h":65},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":11,"w":43,"h":65},
@@ -4058,7 +4058,7 @@
 },
 "Game/Spells/Frustration.png":
 {
-	"frame": {"x":2001,"y":928,"w":37,"h":66},
+	"frame": {"x":2002,"y":851,"w":37,"h":66},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":13,"y":5,"w":37,"h":66},
@@ -4336,6 +4336,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game2.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:72c9e28926db88a6270639b381cf39b3:04d62a7c42410cd58941fe27bbba559c:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d70ac026f4dfcbf4594e981c2e5348ea:7522c325f5cf9fc4da0e0c0622e94de3:54a7432a0665349a58c0c74f51e75c65$"
 }
 }
