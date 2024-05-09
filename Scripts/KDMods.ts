@@ -200,16 +200,21 @@ async function KDExecuteMods() {
 		let ext = PIXI.path.extname(entry[0]);
 		//if (ext) PIXI.Assets.load();
 		KDModFiles[PIXI.path.toAbsolute(entry[0])] = entry[1];
+		KDModFilesInv[entry[1]] = PIXI.path.toAbsolute(entry[0]);
 		PIXI.Assets.resolver.add({
-			alias: entry[0],
-			src: entry[1],
+			alias: entry[1],
+			src: entry[0],
 			format: ext,
 		});
 		PIXI.Assets.resolver.add({
-			alias: PIXI.path.toAbsolute(entry[0]),
-			src: entry[1],
+			alias: entry[1],
+			src: PIXI.path.toAbsolute(entry[0]),
 			format: ext,
 		});
+
+		if (ext == '.png' || ext == '.webp') {
+			KDTex(entry[0], false);
+		}
 	}
 
 	if (KDAllModFiles.length > 0)

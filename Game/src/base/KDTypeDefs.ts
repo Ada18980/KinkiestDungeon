@@ -3446,6 +3446,9 @@ type PIXISprite = import('pixi.js').Sprite;
 type FilterOptions = import('pixi.js').FilterOptions;
 type PointData = import('pixi.js').PointData;
 
+type ImageResource = import('pixi.js').ImageResource;
+type TextureSourceOptions = import('pixi.js').TextureSourceOptions<ImageResource>;
+
 type PIXIPlane = import('pixi.js').MeshPlane;
 type PIXIBuffer = import('pixi.js').Buffer;
 type PIXIArray = import('pixi.js').TypedArray;

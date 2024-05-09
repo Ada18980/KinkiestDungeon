@@ -1,3 +1,4 @@
+
 PIXI.Assets.init();
 
 let DisplacementMaps = [
@@ -27,6 +28,7 @@ let DisplacementMaps = [
 'Xray.png',
 'BallSuit.png',
 'Bubble.png',
+'BubbleHelmet.png',
 'Bubble2.png',
 'BustHuge.png',
 'Fiddle.png',
@@ -301,12 +303,38 @@ async function PreloadDisplacement(list) {
 	}
 	for (let dataFile of list) {
 		let amount = 1;
+
+		loadImageAndDraw(dataFile).then((canvasData) => {
+			let canvas = canvasData.canvas;
+			let source = new PIXI.CanvasSource({
+				resource: canvas,
+				resolution: DisplacementScale,
+				//width: canvas.width,
+				//height: canvas.height,
+			});
+			let tex = PIXI.Texture.from(source);
+			CurrentLoading = "Loaded " + dataFile;
+			kdpixitex.set(dataFile, tex);
+
+			KDLoadingDone += amount;
+		});
+
+		/**
+		 *
+		tex.source.resize(
+			canvasData.origWidth,
+			canvasData.origHeight,
+			DisplacementScale,
+		);
+		 */
+
+		/*
 		PIXI.Assets.add({
 			alias: dataFile,
 			src: dataFile,
 			resourceOptions: {
 				scale: DisplacementScale,
-			}
+			},
 		});
 		await PIXI.Assets.load(dataFile)
 		.then((value) => {
@@ -318,7 +346,7 @@ async function PreloadDisplacement(list) {
 			CurrentLoading = "Error Loading " + dataFile;
 			console.log(CurrentLoading);
 			KDLoadingDone += amount;
-		});
+		});*/
 		/*let result = preload ? PIXI.Assets.backgroundLoad(dataFile) : PIXI.Assets.load(dataFile);
 
 		result.then((value) => {
@@ -337,7 +365,7 @@ async function PreloadDisplacement(list) {
 }
 
 KDLoadToggles();
-if (!KDToggles.HighResDisplacement) DisplacementScale = 1/16
+if (KDToggles.HighResDisplacement) DisplacementScale = 0.5;
 
 async function load() {
 
@@ -399,7 +427,7 @@ load();
 		extension: {
 			type: PIXI.ExtensionType.LoadParser,
 			name: 'modTextureLoader',
-			priority: PIXI.LoaderParserPriority.High + 1,
+			priority: PIXI.LoaderParserPriority.High + 3,
 		},
 		name: 'modTextureLoader',
 
@@ -411,7 +439,7 @@ load();
 
 		test(url: string): boolean
 		{
-			return (PIXI.checkDataUrl(url, validImageMIMEs) || PIXI.checkExtension(url, validImageExtensions)) && KDModFiles[url];
+			return KDModFiles[url] && (PIXI.checkDataUrl(url, validImageMIMEs) || PIXI.checkExtension(url, validImageExtensions));
 		},
 
 		async load(url: string, asset: any, loader: any): Promise<any>
@@ -423,7 +451,7 @@ load();
 			if (useImageBitmap)
 			{
 
-				src = await PIXI.loadImageBitmap(url);
+				src = await PIXI.loadImageBitmap(KDModFilesInv[url]);
 			}
 			else
 			{
@@ -470,7 +498,7 @@ load();
 	// Make sure to "register" the extension!
 	extensions.add(modTextureLoader);
 
-	const resolveModURL = {
+	/*const resolveModURL = {
 		extension: {
 			type: PIXI.ExtensionType.ResolveParser,
 			name: 'resolveModURL',
@@ -485,5 +513,37 @@ load();
 			}),
 	}
 
-	extensions.add(resolveModURL);
+	extensions.add(resolveModURL);*/
 })();
+
+function loadImageAndDraw(url: string): Promise<{canvas: HTMLCanvasElement, origWidth: number, origHeight: number}> {
+	return new Promise((resolve, reject) => {
+		const image: HTMLImageElement = new Image();
+		image.onload = (): void => {
+			createImageBitmap(image).then((imageBitmap: ImageBitmap) => {
+				const canvas: HTMLCanvasElement | null = document.createElement('canvas') as HTMLCanvasElement;
+				if (canvas) {
+					const ctx: CanvasRenderingContext2D | null = canvas.getContext('2d');
+					if (ctx) {
+						canvas.width = Math.ceil(imageBitmap.width*DisplacementScale);
+						canvas.height = Math.ceil(imageBitmap.height*DisplacementScale);
+						ctx.drawImage(imageBitmap, 0, 0, canvas.width, canvas.height);
+						resolve({
+							canvas: canvas,
+							origWidth: imageBitmap.width,
+							origHeight: imageBitmap.height,
+						}); // Resolve the promise with the canvas
+					} else {
+						reject(new Error('2D context not available'));
+					}
+				} else {
+					reject(new Error('Canvas element not found'));
+				}
+			});
+		};
+		image.onerror = (): void => {
+			reject(new Error('Image failed to load'));
+		};
+		image.src = url;
+	});
+}

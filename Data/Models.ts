@@ -807,7 +807,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						}
 						KDTex(dsprite.name, false); // try to preload it
 						f = new EraseFilter(
-							{sprite: dsprite, resolution: KDResolution},
+							{sprite: dsprite, scale: 100, resolution: KDResolution},
 						);
 						f.multisample = 0;
 						let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
@@ -830,6 +830,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 							{
 								sprite: dsprite,
 								scale: ef.amount,
+								resolution: KDResolution,
 							}
 						);
 						f.multisample = 0;
@@ -1394,6 +1395,7 @@ function RenderModelContainer(MC: ModelContainer, C: Character, containerID: str
 			PIXIapp.renderer.render({
 				target: MC.Containers.get(containerID).RenderTexture,
 				container: MC.Containers.get(containerID).Container,
+				clear: true,
 			});
 			MC.Containers.get(containerID).RenderTexture.source.updateMipmaps();
 			RenderCharacterLock.delete(C);
@@ -1403,6 +1405,7 @@ function RenderModelContainer(MC: ModelContainer, C: Character, containerID: str
 		PIXIapp.renderer.render({
 			container: MC.Containers.get(containerID).Container,
 			target: MC.Containers.get(containerID).RenderTexture,
+			clear: true,
 		});
 		MC.Containers.get(containerID).RenderTexture.source.updateMipmaps();
 		MC.ForceUpdate.add(containerID);

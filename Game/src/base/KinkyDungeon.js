@@ -67,6 +67,7 @@ let KDDebugLink = false;
 
 let KDAllModFiles = [];
 let KDModFiles = {};
+let KDModFilesInv = {};
 
 let KinkyDungeonPerksConfig = "1";
 let KinkyDungeonSpellsConfig = "1";
