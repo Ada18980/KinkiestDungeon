@@ -289,6 +289,13 @@ let KDPrisonTypes = {
 						let action = (KDGameData.PrisonerState == 'jail' && !KinkyDungeonAggressive(guard, player)) ? "leashFurniture" : "leashFurnitureAggressive";
 						if (guard.IntentAction != action)
 							KDIntentEvents[action].trigger(guard, {});
+						if (lostTrack) {
+							// Any qualifying factors means they know where you should be
+							guard.gx = player.x;
+							guard.gy = player.y;
+							KinkyDungeonSetEnemyFlag(guard, "wander", 30)
+							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
+						}
 						if (KDGameData.PrisonerState == 'jail') {
 							KinkyDungeonSetEnemyFlag(guard, "notouchie", 2);
 						}

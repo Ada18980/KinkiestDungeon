@@ -2482,18 +2482,28 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 	}
 	for (let goddess of Object.keys(KinkyDungeonShrineBaseCosts)) {
 		tablets[goddess] = 0;
-		tabletsAmount[goddess] = Math.max(0, KinkyDungeonGoddessRep[goddess] / 5);
-		maxcount += Math.floor(Math.max(0, KinkyDungeonGoddessRep[goddess] / 5));
+		let amt = 0;
+		if (KinkyDungeonGoddessRep[goddess] >= 5) {
+			amt += 1;
+		}
+		if (KinkyDungeonGoddessRep[goddess] >= 15) {
+			amt += 1;
+		}
+		if (KinkyDungeonGoddessRep[goddess] >= 35) {
+			amt += 1;
+		}
+		tabletsAmount[goddess] = amt;
+		maxcount += amt;
 	}
 
 	let isDoodad = (X, Y) => {
-		return KinkyDungeonMapGet(X, Y) == 'X';
+		return "aXmo".includes(KinkyDungeonMapGet(X, Y));
 	};
 	if (shrinelist <= maxcount)
 		// Populate the chests
 		for (let X = 1; X < width; X += 1)
 			for (let Y = 1; Y < height; Y += 1)
-				if ((isDoodad(X, Y) || KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y))) && Math.max(Math.abs(X - KDMapData.StartPosition.x), Math.abs(Y - KDMapData.StartPosition.y)) > KinkyDungeonJailLeash
+				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && Math.max(Math.abs(X - KDMapData.StartPosition.x), Math.abs(Y - KDMapData.StartPosition.y)) > KinkyDungeonJailLeash
 					&& (!KinkyDungeonTilesGet(X + "," + Y) || !KinkyDungeonTilesGet(X + "," + Y).OL)) {
 					// Check the 3x3 area
 					let wallcount = 0;
@@ -2561,8 +2571,19 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 					}
 
 
-				}// else if (KinkyDungeonMapGet(X, Y) == "R" || KinkyDungeonMapGet(X, Y) == "r")
-				//shrinelist.push({x:X, y:Y});
+				} else if (isDoodad(X, Y)) {
+					let yes = false;
+					for (let XX = X-1; XX <= X+1; XX += 1)
+						for (let YY = Y-1; YY <= Y+1; YY += 1) {
+							if (!yes && !(XX == X && YY == Y) && KDPointWanderable(XX, YY)) {
+								yes = true;
+							}
+						}
+					if (yes) {
+						shrinelistBackup.push({x:X, y:Y, boringness: KinkyDungeonBoringGet(X, Y)});
+						shrinePointsBackup.set(X + "," + Y, true);
+					}
+				}
 
 
 	// If we STILL dont have enough, we expand the criteria
@@ -2733,6 +2754,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 				KinkyDungeonMapSet(shrine.x, shrine.y, 'M');
 
 				tablets[goddess] += 1;
+				break;
 			}
 		}
 
