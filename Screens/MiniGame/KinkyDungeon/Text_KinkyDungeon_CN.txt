@@ -3778,6 +3778,10 @@ Factory Doll
 工厂玩偶
 The doll is subdued.
 玩偶被制服了。
+Freed Doll
+自由玩偶
+The doll returns to her place.
+玩偶回到她的住处。
 Encased Adventurer
 被包裹的冒险家
 The encased adventurer loses hope.
@@ -4512,6 +4516,8 @@ The magical lock only accepts magical keys and can't be picked.
 魔法锁只接受魔法钥匙，不能被撬开。
 The magical lock is guarded with powerful magic. You'll have to wait for it to wear off...
 魔法锁被强大的魔法守护着。你得等它消退...
+The item is cybernetically locked. You will need a key card to unlock it.
+该项目被控制锁定。你需要一张钥匙卡才能解锁它。
 This lock requires a command word to unlock. It doesn't have a keyhole.
 此锁需要指令才能解锁。它没有钥匙孔。
 You don't have a key for this lock.
@@ -4534,6 +4540,8 @@ The lock doesn't even have a keyhole to pick!
 这锁甚至连钥匙孔都没有！
 You need a special tool to pick this kind of lock.
 你需要一个特殊的工具来撬开这种锁。
+The lock doesn't have a keyhole to pick.
+这把锁没有钥匙孔可撬。
 The lock is brimming with security features and is nigh impossible to pick!
 这把锁充满了安全特征，几乎不可能被撬开！
 The key sticks in the lock and jams, mangling the key!
@@ -7424,6 +7432,11 @@ Cracked Earth
 裂开的大地
 Makes creatures unsteady
 使生物不稳定
+Rubble
+瓦砾
+You don't think insurance will cover this.
+你不认为保险会涵盖这个。
+
 Can be controlled using CMD spells
 可以使用 CMD 法术进行控制
 Can be controlled using Rubbermancy
@@ -8114,8 +8127,8 @@ Choose line direction (max range 4 tiles)
 选择直线区域（最大范围 4 个格）
 Tremor
 震颤
-Make vulnerable and slow enemies in targeted area for Duration turns, and deal DamageDealt crush damage.
-在 Duration 回合内向目标区域中的敌人施加脆弱和减速，并造成 DamageDealt 点碾压伤害。
+Make vulnerable and slow enemies in targeted area for Duration turns, and deal DamageDealt crush damage. Creates a slowing field after.
+在 Duration 回合内向目标区域中的敌人施加脆弱和减速，并造成 DamageDealt 点碾压伤害。并创建一个减速场。
 You call forth the rage of the earth.
 你唤起了大地之怒。
 Choose AoE
@@ -8496,6 +8509,8 @@ Increases the permanent summon cap by +2 (from 4 to 6)
 召唤上限永久增加 +2（从 4 增加到 5）
 Summon Bomb
 召唤炸弹
+Bomb
+炸弹
 Channel for 1 turn for a bomb that does DamageDealt blast damage in an area after DelayTime turns.
 消耗1回合，放置一个 DelayTime 回合后在一个区域内造成 DamageDealt 点爆炸伤害的炸弹。
 Fire in the hole!
@@ -16988,6 +17003,9 @@ Stop when enemies are first sighted
 第一眼看到敌人时停止
 Suppress during combat
 战斗中压制
+Step during combat
+战斗中的步骤
+
 Shadowy Grasp
 暗影之握
 Magical Tornado
@@ -19260,3 +19278,19 @@ Replaces most instances of painful electric shocks with stimulating effects inst
 用刺激效果代替大多数痛苦的电击。
 The energy bolt hits you and sends stimulating energies through you!
 能量束击中你并向你体内传送刺激能量！
+You steal a key card.
+你偷了一张钥匙卡。
+Key Card
+钥匙卡
+The keycard's shiny surface reflects the light in a mesmerizing way.
+钥匙卡闪亮的表面以迷人的方式反射光线。
+A piece of identification that contains an access code.
+一段包含访问代码的标识。
+You can use it to unlock certain doors.
+你可以用它来解锁某些门。
+The keycard's glyph changes to red as some force remotely locks it.
+当某些力远程锁定钥匙卡时，钥匙卡的字形将变为红色。
+Your keycard blinks red as the facility remotely locks it!
+当设备远程锁定时，你的钥匙卡会闪烁红色！
+Unauthorized removal detected. System lockout progress: AMNT%
+检测到未经授权的删除。系统锁定进度：AMNT%
