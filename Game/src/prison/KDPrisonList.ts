@@ -242,7 +242,7 @@ let KDPrisonTypes = {
 
 					let lostTrack = KDLostJailTrack(player);
 					if (lostTrack == "Unaware") {
-						return KDSetPrisonState(player, lostTrack);
+						return KDSetPrisonState(player, "Jail");
 					}
 
 					if (KDPrisonTick(player)) {
@@ -275,7 +275,7 @@ let KDPrisonTypes = {
 
 					let lostTrack = KDLostJailTrack(player);
 					if (lostTrack == "Unaware") {
-						return KDSetPrisonState(player, lostTrack);
+						return KDSetPrisonState(player, "Jail");
 					}
 
 					// End when the player is settled
@@ -633,7 +633,7 @@ let KDPrisonTypes = {
 
 					let lostTrack = KDLostJailTrack(player);
 					if (lostTrack == "Unaware") {
-						return KDSetPrisonState(player, lostTrack);
+						return KDSetPrisonState(player, "Jail");
 					}
 
 					let jailPointNearest = KinkyDungeonNearestJailPoint(player.x, player.y, ["storage"], undefined, undefined);
@@ -691,7 +691,7 @@ let KDPrisonTypes = {
 
 					let lostTrack = KDLostJailTrack(player);
 					if (lostTrack == "Unaware") {
-						return KDSetPrisonState(player, lostTrack);
+						return KDSetPrisonState(player, "Jail");
 					}
 
 					if (label && (KDistEuclidean(label.x - player.x, label.y - player.y) > rad) && KDPlayerLeashable(player)) {

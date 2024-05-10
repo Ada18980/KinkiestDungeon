@@ -3398,7 +3398,7 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 			let prisonType = KDPrisonTypes[KDMapData.PrisonType];
 			if (!KDMapData.PrisonState) KDMapData.PrisonState = prisonType.default_state;
 			let prisonState = KDMapData.PrisonState;
-			let newState = KDPrisonTypes[KDMapData.PrisonType].update ? KDPrisonTypes[KDMapData.PrisonType].update(timeDelta) : "";
+			let newState = KDPrisonTypes[KDMapData.PrisonType]?.update ? KDPrisonTypes[KDMapData.PrisonType].update(timeDelta) : "";
 			if (newState && newState != KDMapData.PrisonState) {
 				if (prisonType.states[prisonState].finally) prisonType.states[prisonState].finally(timeDelta, newState, false);
 				KDMapData.PrisonState = newState;

@@ -838,7 +838,7 @@ function KinkyDungeonIsLockable(restraint) {
  * @param {string} lock
  * @param {boolean} NoEvent
  */
-function KinkyDungeonLock(item, lock, NoEvent = false, Link = false) {
+function KinkyDungeonLock(item, lock, NoEvent = false, Link = false, pick = false) {
 	KDUpdateItemEventCache = true;
 	if (lock != "") {
 		if (KinkyDungeonIsLockable(KDRestraint(item))) {
@@ -850,7 +850,7 @@ function KinkyDungeonLock(item, lock, NoEvent = false, Link = false) {
 			item.pickProgress = 0;
 		}
 	} else {
-		if (KDLocks[item.lock] && KDLocks[item.lock].doUnlock) KDLocks[item.lock].doUnlock({item: item, link: Link});
+		if (KDLocks[item.lock] && KDLocks[item.lock].doUnlock) KDLocks[item.lock].doUnlock({item: item, link: Link, unlock: !pick, pick: pick});
 		item.lock = lock;
 		if (!NoEvent) {
 			if (item.events) {
@@ -2687,9 +2687,10 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index, query = false,
 						|| (progress >= 1 - data.escapeChance))
 					&& !(StruggleType == "Pick" && data.lockType && !data.lockType.canPick(data))) {
 					Pass = "Success";
-					if (StruggleType == "Unlock")
+					if (StruggleType == "Unlock") {
+						KinkyDungeonRemoveKeysUnlock(restraint.lock);
 						KinkyDungeonLock(restraint, "");
-					else
+					} else
 						KDSuccessRemove(StruggleType, restraint, data.lockType, index, data, host);
 				} else {
 					// Failure block for the different failure types
