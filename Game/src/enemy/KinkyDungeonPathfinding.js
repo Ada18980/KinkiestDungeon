@@ -195,7 +195,7 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 							&& (!needDoorMemory || tile != "d" || KDOpenDoorTiles.includes(KDMapData.TilesMemory[xx + "," + yy]))) {
 							costBonus = 0;
 							if (!ignoreTrafficLaws) {
-								if (KinkyDungeonMapGet(xx, yy) == "V") costBonus = 7;
+								if (KinkyDungeonMapGet(xx, yy) == "V" && !(MapTile?.Sfty)) costBonus = 7;
 								else if (KinkyDungeonMapGet(xx, yy) == "N") costBonus = 15;
 								else if (KinkyDungeonMapGet(xx, yy) == "D") costBonus = 2;
 								else if (KinkyDungeonMapGet(xx, yy) == "d") costBonus = -2;
