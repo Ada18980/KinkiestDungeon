@@ -568,7 +568,7 @@ let KDPrisonTypes = {
 					let guard = KDPrisonCommonGuard(player);
 
 					let label = KDMapData.Labels?.Training ? KDMapData.Labels.Training[0] : null;
-					let rad = 9;
+					let rad = 5;
 					if (label && (KDistChebyshev(label.x - player.x, label.y - player.y) < rad)) {
 						// Start the training and initialize the field
 						if (!KinkyDungeonFlags.get("latexTraining") && !KinkyDungeonFlags.get("latexTrainingStart")) {
@@ -750,7 +750,7 @@ let KDPrisonTypes = {
  */
 function KDLostJailTrack(player) {
 	let label = KDMapData.Labels?.Training ? KDMapData.Labels.Training[0] : null;
-	let rad = 9;
+	let rad = 4;
 	if (KDistChebyshev(player.x - label.x, player.y - label.y) < rad) return "InTraining";
 	if (KinkyDungeonPlayerTags.get("Furniture")) return "Furniture";
 	if (!KinkyDungeonLeashingEnemy()) {

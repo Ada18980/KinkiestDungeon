@@ -45,6 +45,12 @@ let KDEffectTiles = {
 		priority: 0,
 		tags: ["terrain", "ground", "rock", "seal"],
 	},
+	"RubbleNoMend": {
+		name: "RubbleNoMend",
+		duration: 9999,
+		priority: 0,
+		tags: ["terrain", "ground", "rock"],
+	},
 	"Slime": {
 		name: "Slime",
 		duration: 10,

@@ -121,6 +121,8 @@ let KDTilePalette = {
 	'WallHook': {type: "tile", tile: ','},
 	'CeilingHook': {type: "tile", tile: '?'},
 	'----Deco----': {type: "none"},
+	'Rubble(mend)':  {type: "effect", effectTile: "Rubble"},
+	'Rubble(nomend)':  {type: "effect", effectTile: "RubbleNoMend"},
 	'Pipe': {type: "tile", tile: '1', special: {Type: "Skin", Skin: "EmptyPipe"}},
 	'InactiveTablet': {type: "tile", tile: 'm'},
 	'BrokenShrine': {type: "tile", tile: 'a'},

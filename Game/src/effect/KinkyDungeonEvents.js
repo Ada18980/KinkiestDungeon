@@ -7604,13 +7604,19 @@ let KDEventMapBullet = {
 			}
 		},
 		"Crack": (e, b, data) => {
-			if (KDCrackableTiles.includes(KinkyDungeonMapGet(b.x, b.y))) {
+			data.origTile = KinkyDungeonMapGet(b.x, b.y);
+			KinkyDungeonSendEvent("beforeCrackTile", data);
+			if (data.allowCrack || KDCrackableTiles.includes(data.origTile)) {
+
+				let Mend = KDMendableTiles.includes(data.origTile);
 				KinkyDungeonMapSet(b.x, b.y, '0');
 				KDCreateEffectTile(b.x, b.y, {
-					name: "Rubble",
+					name: Mend ? "Rubble" : "RubbleNoMend",
 					duration: 9999,
 				}, 0);
 				KinkyDungeonUpdateLightGrid = true;
+
+				KinkyDungeonSendEvent("crackTile", data);
 			}
 		},
 		"BladeDance": (e, b, data) => {

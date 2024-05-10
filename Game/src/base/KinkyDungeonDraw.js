@@ -3969,6 +3969,9 @@ let KDEffectTileTooltips = {
 	'Rubble': {
 		color: "#ff8844",
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff8844");}},
+	'RubbleNoMend': {
+		color: "#ff8844",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff8844");}},
 };
 /**
  *

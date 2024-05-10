@@ -5325,6 +5325,8 @@ KDEffectTileTooltipCracked,Cracked Earth
 KDEffectTileTooltipCrackedDesc,Makes creatures unsteady
 KDEffectTileTooltipRubble,Rubble
 KDEffectTileTooltipRubbleDesc,You don't think insurance will cover this.
+KDEffectTileTooltipRubbleNoMend,Rubble
+KDEffectTileTooltipRubbleNoMendDesc,No putting that back together.
 
 KDEffectTileTooltipCMDBindings,"Can be controlled using CMD spells"
 KDEffectTileTooltipCMDSlime,"Can be controlled using Rubbermancy"

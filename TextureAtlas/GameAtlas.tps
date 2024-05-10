@@ -787,6 +787,7 @@
             <key type="filename">../Game/EffectTiles/PressurePlateHold.png</key>
             <key type="filename">../Game/EffectTiles/PressurePlateOneUse.png</key>
             <key type="filename">../Game/EffectTiles/Ropes.png</key>
+            <key type="filename">../Game/EffectTiles/Rubble.png</key>
             <key type="filename">../Game/EffectTiles/Runes.png</key>
             <key type="filename">../Game/EffectTiles/RunesTrap.png</key>
             <key type="filename">../Game/EffectTiles/Sack.png</key>

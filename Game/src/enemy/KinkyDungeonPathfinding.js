@@ -195,13 +195,13 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 							&& (!needDoorMemory || tile != "d" || KDOpenDoorTiles.includes(KDMapData.TilesMemory[xx + "," + yy]))) {
 							costBonus = 0;
 							if (!ignoreTrafficLaws) {
-								if (KinkyDungeonMapGet(xx, yy) == "V" && !(MapTile?.Sfty)) costBonus = 7;
-								else if (KinkyDungeonMapGet(xx, yy) == "N") costBonus = 15;
-								else if (KinkyDungeonMapGet(xx, yy) == "D") costBonus = 2;
-								else if (KinkyDungeonMapGet(xx, yy) == "d") costBonus = -2;
-								else if (KinkyDungeonMapGet(xx, yy) == "g") costBonus = 2;
-								else if (KinkyDungeonMapGet(xx, yy) == "L") costBonus = 4;
-								else if (KinkyDungeonMapGet(xx, yy) == "T") costBonus = 2;
+								if (tile == "V" && !(MapTile?.Sfty)) costBonus = 7;
+								else if (tile == "N") costBonus = 15;
+								else if (tile == "D") costBonus = 2;
+								else if (tile == "d") costBonus = -2;
+								else if (tile == "g") costBonus = 2;
+								else if (tile == "L") costBonus = 4;
+								else if (tile == "T") costBonus = 2;
 								costBonus = (MapTile && MapTile.Lock) ? costBonus + 2 : costBonus;
 								costBonus = (MapTile && MapTile.OL) ? costBonus + 8 : costBonus;
 								costBonus = (KDMapData.Traffic?.length > 0) ? costBonus + KDMapData.Traffic[yy][xx] : costBonus;
