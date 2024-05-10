@@ -7,7 +7,6 @@ let KDInspectCamera = {x: 0, y: 0};
 
 let KDRecentRepIndex = 0;
 
-let ShowBoringness = false;
 
 let KDWallReplacers = "146,dDzZbgS";
 
@@ -3965,6 +3964,9 @@ let KDEffectTileTooltips = {
 		color: "#ff8933",
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'Cracked': {
+		color: "#ff8844",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff8844");}},
+	'Rubble': {
 		color: "#ff8844",
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff8844");}},
 };

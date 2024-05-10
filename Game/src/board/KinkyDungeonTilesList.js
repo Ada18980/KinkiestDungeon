@@ -1386,6 +1386,22 @@ let KDEffectTileMoveOnFunctions = {
 		}
 		return {cancelmove: false, returnvalue: false};
 	},
+
+	"Rubble": (entity, tile, willing, dir, sprint) => {
+		if (tile.pauseDuration > 0) {
+			// Meep
+		} else if (!entity.Enemy || (!entity.Enemy.tags.earth && !entity.Enemy.tags.unstoppable)) {
+			KinkyDungeonApplyBuffToEntity(entity, KDUnsteady);
+			if (entity.player) {
+				KinkyDungeonApplyBuffToEntity(entity, KDUnsteady2);
+				KinkyDungeonApplyBuffToEntity(entity, KDUnsteady3);
+			} else if (!entity.Enemy || !entity.Enemy.tags.unflinching) {
+				if (!entity.vulnerable) entity.vulnerable = 1;
+				else entity.vulnerable = Math.max(entity.vulnerable, 1);
+			}
+		}
+		return {cancelmove: false, returnvalue: false};
+	},
 	"LiquidMetal": (entity, tile, willing, dir, sprint) => {
 		if (sprint && entity.player && willing && (dir.x || dir.y) && !KinkyDungeonFlags.get("slipped")) {
 			KDSlip(dir);

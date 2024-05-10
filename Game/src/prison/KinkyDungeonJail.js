@@ -1443,6 +1443,44 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	KDKickEnemies(nearestJail, false, MiniGameKinkyDungeonLevel);
 	KDResetAllAggro();
 
+	KDRepairRubble(true);
+
+}
+
+/**
+ *
+ * @param {boolean} JailBorderOnly
+ */
+function KDRepairRubble(JailBorderOnly) {
+	let tile = null;
+	for (let X = 0; X < KDMapData.GridWidth - 1; X++) {
+		for (let Y = 0; Y < KDMapData.GridHeight - 1; Y++) {
+			let yes = !JailBorderOnly;
+			let effectTags = KDEffectTileTags(X, Y);
+			if (effectTags.seal) {
+				if (!yes) {
+					for (let XX = -1; XX <= 1; XX++)
+						for (let YY = -1; YY <= 1; YY++)
+							if (!yes) {
+								tile = KinkyDungeonTilesGet((X + XX) + ',' + (Y + YY));
+								if (tile && (tile.Jail || tile.OL || tile.NW)) {
+									yes = true;
+								}
+							}
+				}
+				if (yes) {
+					let effectTiles = KDGetEffectTiles(X, Y);
+
+					for (let et of Object.values(effectTiles)) {
+						if (et.duration < 9000 || et.tags?.includes("seal")) {
+							et.duration = 0;
+						}
+					}
+					KinkyDungeonMapSet(X, Y, '4');
+				}
+			}
+		}
+	}
 }
 
 /**

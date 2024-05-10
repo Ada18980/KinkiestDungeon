@@ -7603,6 +7603,16 @@ let KDEventMapBullet = {
 				});
 			}
 		},
+		"Crack": (e, b, data) => {
+			if (KDCrackableTiles.includes(KinkyDungeonMapGet(b.x, b.y))) {
+				KinkyDungeonMapSet(b.x, b.y, '0');
+				KDCreateEffectTile(b.x, b.y, {
+					name: "Rubble",
+					duration: 9999,
+				}, 0);
+				KinkyDungeonUpdateLightGrid = true;
+			}
+		},
 		"BladeDance": (e, b, data) => {
 			// Deals damage to nearby enemies
 			if (!e.prereq || KDCheckPrereq(null, e.prereq, e, data)) {

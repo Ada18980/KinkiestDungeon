@@ -79,6 +79,7 @@ let KinkyDungeonStairTiles = 'sSH';
 let KDDefaultAvoidTiles = "gtVN@";
 let KinkyDungeonGroundTiles = "023wW][?/";
 let KinkyDungeonWallTiles = "14,6";
+let KDCrackableTiles = '4';
 let KinkyDungeonBlockTiles = "14,6bgX7";
 let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HB@l;SsRrdzTgLcNVvt5"; // Objects which can be moved into: floors, debris, open doors, staircases
 // 5 is skinned floor, you can give it whatever sprite you want
@@ -466,7 +467,7 @@ function KDCreateBoringness(noBoring) {
 	// First we find shortest path to exit
 	let path = KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y,
 		KDMapData.EndPosition?.x || KDMapData.StartPosition.x, KDMapData.EndPosition?.y || KDMapData.StartPosition.y,
-		false, false, false, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
+		false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
 		undefined, false, undefined, false, true);
 
 	let pathLength = path ? path.length : 100;
@@ -482,13 +483,13 @@ function KDCreateBoringness(noBoring) {
 					undefined, false, undefined, false, true);
 				if (startLength) {
 					let endLength = KinkyDungeonFindPath(X, Y, KDMapData.EndPosition?.x || KDMapData.StartPosition.x, KDMapData.EndPosition?.y || KDMapData.StartPosition.y,
-						false, false, false, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
+						false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
 						undefined, false, undefined, false, true);
 					if (endLength) {
 						let delta = Math.abs((startLength.length + endLength.length) - pathLength);
 						KinkyDungeonBoringSet(X, Y, delta);
-					} else KinkyDungeonBoringSet(X, Y, pathLength);
-				} else KinkyDungeonBoringSet(X, Y, pathLength);
+					} else KinkyDungeonBoringSet(X, Y, 2*pathLength);
+				} else KinkyDungeonBoringSet(X, Y, 5*pathLength);
 			}
 		}
 	}
@@ -501,8 +502,8 @@ function KDCreateBoringness(noBoring) {
  */
 function KDGetMapSize() {
 	if (KinkyDungeonStatsChoice.get("MapLarge")) return 1;
-	if (KinkyDungeonStatsChoice.get("MapHuge")) return 2;
-	if (KinkyDungeonStatsChoice.get("MapGigantic")) return 3;
+	if (KinkyDungeonStatsChoice.get("MapHuge")) return 3;
+	if (KinkyDungeonStatsChoice.get("MapGigantic")) return 5;
 	return 0;
 }
 
@@ -2226,10 +2227,10 @@ function KinkyDungeonPlaceChests(params, chestlist, spawnPoints, shrinelist, tre
 		let N = Math.floor(KDRandom()*chestlist.length);
 		let chest = chestlist[N];
 		if (!chest.boringness) chest.boringness = KinkyDungeonBoringGet(chest.x, chest.y);
-		if (chest.boringness > 0)
+		if (chest.boringness > maxBoringness * 0.2)
 			chest.boringness = chest.boringness + (0.05 + 0.1 * KDRandom()) * maxBoringness;
 		else
-			chest.boringness = chest.boringness + 0.05 * KDRandom() * maxBoringness;
+			chest.boringness = chest.boringness + 0.02 * KDRandom() * maxBoringness;
 		if (chest.priority) {
 			list.unshift(chest);
 		} else list.push(chest);
@@ -2652,10 +2653,10 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 		let N = Math.floor(KDRandom()*shrinelist.length);
 		let chest = shrinelist[N];
 		if (!chest.boringness) chest.boringness = KinkyDungeonBoringGet(chest.x, chest.y);
-		if (chest.boringness > 0)
+		if (chest.boringness > maxBoringness * 0.2)
 			chest.boringness = chest.boringness + (0.05 + 0.1 * KDRandom()) * maxBoringness;
 		else
-			chest.boringness = chest.boringness + 0.05 * KDRandom() * maxBoringness;
+			chest.boringness = chest.boringness + 0.02 * KDRandom() * maxBoringness;
 		if (chest.priority) {
 			list.unshift(chest);
 		} else list.push(chest);
@@ -2675,20 +2676,37 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 	let backfillBackup = false;
 
 	while (list.length > 0 || !backfillBackup) {
-		if (list.length == 0 && !backfillBackup) {
+		if (list.length < 10 && !backfillBackup) {
 			if (shrinelistBackup.length > 0) {
-				shrinelist = shrinelistBackup;
-				shrinePoints = shrinePointsBackup;
-			} else {
-				break;
+				while (shrinelistBackup.length > 0) {
+					let N = Math.floor(KDRandom()*shrinelistBackup.length);
+					let chest = shrinelistBackup[N];
+					if (!chest.boringness) chest.boringness = KinkyDungeonBoringGet(chest.x, chest.y);
+					if (chest.boringness > maxBoringness * 0.2)
+						chest.boringness = chest.boringness + (0.05 + 0.1 * KDRandom()) * maxBoringness;
+					else
+						chest.boringness = chest.boringness + 0.02 * KDRandom() * maxBoringness;
+					list.push(chest);
+
+					shrinelistBackup.splice(N, 1);
+				}
+				list.sort((a, b) => {
+					let boringa = a.boringness ? a.boringness : 0;
+					let boringb = b.boringness ? b.boringness : 0;
+					if (a.priority) boringa += 1000;
+					if (b.priority) boringb += 1000;
+					return boringb - boringa;
+
+				});
 			}
 			backfillBackup = true;
 		}
 
-		let N = 0;
+		let NN = 0;
 		if (count <= shrinecount) {
 
-			let shrine = list[N];
+			let shrine = list[NN];
+			if (!shrine) break;
 			if (count == shrinecount && KDRandom() > shrinechance)
 				KinkyDungeonMapSet(shrine.x, shrine.y, 'a');
 			else {
@@ -2748,7 +2766,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 			count += 1;
 		} else for (let goddess of Object.keys(tablets)) {
 			if (tablets[goddess] < tabletsAmount[goddess]) {
-				let shrine = list[N];
+				let shrine = list[NN];
 				if (goddess == 'Heart') quests += 1;
 				KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Type: "Tablet", Name: goddess, Light: 3, lightColor: 0x8888ff});
 				KinkyDungeonMapSet(shrine.x, shrine.y, 'M');
@@ -2758,7 +2776,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 			}
 		}
 
-		list.splice(N, 1);
+		list.splice(NN, 1);
 	}
 	return quests;
 }

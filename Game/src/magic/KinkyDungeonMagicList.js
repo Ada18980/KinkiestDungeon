@@ -1121,7 +1121,10 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			onhit:"", time:100, power: 10, aoe: 0.5, range: 4.5, size: 1, damage: ""},
 
 		{name: "Bomb", color: "#ff5277", prerequisite: "ApprenticeSummon", tags: ["aoe", "offense"], noise: 5, sfx: "FireSpell", school: "Conjure", manacost: 5, components: ["Verbal"], level:1,
-			aoetype: "cross",
+			aoetype: "crossCrack",
+			hitevents: [
+				{trigger: "afterBulletHit", type: "Crack"},
+			],
 			block: 1.5, noTerrainHit: true, volatilehit: true, blockType: [...KDIgnitionSources],
 			effectTileDurationMod: 7, hitSpin: 0.2, effectTile: {
 				name: "Smoke",
@@ -2502,7 +2505,10 @@ let KinkyDungeonSpellListEnemies = [
 	{enemySpell: true, name: "SoulCrystalBind", color: "#ff5277", minRange: 0, sfx: "Evil", manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 6, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "drain", playerEffect: {name: "ObsidianEngulf", count: 1, power: 6, damage: "drain"}},
 
 	{name: "BombItem", color: "#ff5277", prerequisite: "ApprenticeSummon", tags: ["aoe", "offense"], noise: 5, sfx: "FireSpell", school: "Conjure", manacost: 5, components: ["Verbal"], level:1,
-		aoetype: "Xcross",
+		aoetype: "XcrossCrack",
+		hitevents: [
+			{trigger: "afterBulletHit", type: "Crack"},
+		],
 		block: 1.5, noTerrainHit: true, volatilehit: true, blockType: ["stun", "holy", ...KDIgnitionSources],
 		effectTileDurationMod: 7, hitSpin: 0.2, effectTile: {
 			name: "Smoke",
@@ -2511,7 +2517,11 @@ let KinkyDungeonSpellListEnemies = [
 
 
 	{enemySpell: true, name: "MinerBomb", color: "#ff2200", selfcast: true, noise: 5, sfx: "FireSpell", hitsfx: "FireSpell", school: "Conjure", manacost: 5, components: ["Verbal"], level:1, hideWarnings: true,
-		aoetype: "cross",
+		aoetype: "crossCrack",
+		hitevents: [
+			{trigger: "afterBulletHit", type: "Crack"},
+		],
+
 		block: 1.5, noTerrainHit: true, volatile: true, blockType: [...KDIgnitionSources],
 		effectTileDurationMod: 7, effectTile: {
 			name: "Smoke",

@@ -2021,6 +2021,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 							bulletSpin: b.bullet.spell?.hitSpin,
 							effectTileLinger: b.bullet.spell.effectTileLinger, effectTileDurationModLinger: b.bullet.spell.effectTileDurationModLinger,
 							hitevents: b.bullet.spell.hitevents,
+							passthrough: b.bullet.spell.noTerrainHit,
 							damage: {
 								evadeable:false, noblock: (b.bullet.spell.lifetime > 1.9),
 								ignoreshield: b.bullet.spell?.ignoreshield,

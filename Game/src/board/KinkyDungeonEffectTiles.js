@@ -39,6 +39,12 @@ let KDEffectTiles = {
 		affinities: ["Edge"],
 		tags: ["terrain", "ground", "wettable", "freezeover"],
 	},
+	"Rubble": {
+		name: "Rubble",
+		duration: 9999,
+		priority: 0,
+		tags: ["terrain", "ground", "rock", "seal"],
+	},
 	"Slime": {
 		name: "Slime",
 		duration: 10,

@@ -69,4 +69,76 @@ let KDAOETypes = {
 		//Main case
 		return points[xx + ',' + yy] != undefined;
 	},
+
+
+	"crossCrack": (bx, by, xx, yy, rad, modifier = "", ox, oy) => {
+		let points = {};
+		points[bx + ',' + by] = true;
+		/**
+		 * @type {{x: number, y: number} []}
+		 */
+		let dirs = [
+			{x: 1, y: 0},
+			{x: -1, y: 0},
+			{x: 0, y: 1},
+			{x: 0, y: -1},
+		];
+		for (let r = 1; r <= rad; r++) {
+			for (let d of dirs) {
+				if (points[(bx + (r - 1) * d.x) + ',' + (by + (r - 1) * d.y)]
+				&& !KinkyDungeonWallTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))) {
+					points[(bx + (r) * d.x) + ',' + (by + (r) * d.y)] = true;
+				}
+			}
+		}
+		// Run a second time to break walls
+		for (let r = 1; r <= rad; r++) {
+			for (let d of dirs) {
+				if (points[(bx + (r - 1) * d.x) + ',' + (by + (r - 1) * d.y)]
+				&& KDCrackableTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))) {
+					points[(bx + (r) * d.x) + ',' + (by + (r) * d.y)] = true;
+					break; // Break the d
+				}
+			}
+		}
+		//Main case
+		return points[xx + ',' + yy] != undefined;
+	},
+	"XcrossCrack": (bx, by, xx, yy, rad, modifier = "", ox, oy) => {
+		let points = {};
+		points[bx + ',' + by] = true;
+		/**
+		 * @type {{x: number, y: number} []}
+		 */
+		let dirs = [
+			{x: 1, y: 0},
+			{x: -1, y: 0},
+			{x: 0, y: 1},
+			{x: 0, y: -1},
+			{x: 1, y: 1},
+			{x: -1, y: 1},
+			{x: 1, y: -1},
+			{x: -1, y: -1},
+		];
+		for (let r = 1; r <= rad; r++) {
+			for (let d of dirs) {
+				if (points[(bx + (r - 1) * d.x) + ',' + (by + (r - 1) * d.y)]
+				&& !KinkyDungeonWallTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))) {
+					points[(bx + (r) * d.x) + ',' + (by + (r) * d.y)] = true;
+				}
+			}
+		}
+		// Run a second time to break walls
+		for (let r = 1; r <= rad; r++) {
+			for (let d of dirs) {
+				if (points[(bx + (r - 1) * d.x) + ',' + (by + (r - 1) * d.y)]
+				&& KDCrackableTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))) {
+					points[(bx + (r) * d.x) + ',' + (by + (r) * d.y)] = true;
+					break; // Break the d
+				}
+			}
+		}
+		//Main case
+		return points[xx + ',' + yy] != undefined;
+	},
 };
