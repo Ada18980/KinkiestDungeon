@@ -6059,7 +6059,7 @@ A muzzle to keep you from spitting out what's underneath.
 Sorry dear, there's a mystic seal on there to keep it on nice and tight.
 魔法の封印のせいで見た目以上にきつくて固い。
 Ornamental Dress
-豪華な高速ドレス
+豪華なドレス
 A devious dress that forces the arms into an elbows-touching position.
 肘を固定する赤いドレス。
 It is extremely strict but it is only fabric. The lacing is intricate and will take a long time to remove.
