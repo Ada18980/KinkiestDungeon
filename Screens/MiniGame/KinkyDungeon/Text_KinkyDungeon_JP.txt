@@ -131,12 +131,16 @@ Hide Nipple Clamps
 乳首のオモチャを隠す
 Hide Nipple Piercings
 乳首ピアスを隠す
-Force restraints to use palette
-拘束具に設定した色を使う
+Force restraints to use outfit palette
+拘束具と衣装に設定した色を使う
 Flip Status Bars
 ステータスバーを反転
+Retro Animations
+古いアニメーション
 Auto-Crouch when Tripped
 転んだときに自動でしゃがむ
+Reduce Accidental Wall Clicks
+誤クリック抑制
 
 Flip Player Display
 キャラを反転
@@ -554,9 +558,14 @@ Magic Hands
 Enemies can add restraints underneath existing restraints.
 敵は既存の拘束の下に拘束を追加できる
 
+Doll Processing
+人形加工中
+Start atop a conveyor on your way to be sealed away inside the Facility.
+コンベアの上で人形に加工されている状態からゲームを開始する
+
 Cyber Doll
 サイバードール
-Start in Cyber restraints.
+Start in full Cyber restraints.
 サイバー系の拘束具を装備した状態でゲームを開始する
 Fuuka's Pet
 フウカのペット
@@ -621,6 +630,17 @@ Nowhere is Safe
 どこも安全ではない
 Beds and furniture are often trapped.
 ベッドや樽等の家具に罠が混じるようになる
+
+Quakehoof Associate
+
+Start with the Epsilon Collar, which regenerates mana when you play with yourself.
+イプシロンの首輪を装備してゲームを開始する。この首輪を装備して自慰をすると、マナが回復する。
+Epsilon Collar
+イプシロンの首輪
+A collar reserved for the most prestigious of submissives.
+最高級のマゾにのみ支給される首輪。
+Restores mana when you play with yourself, but increases the distraction given. Only works when Desire is below the limit.
+自慰をするとマナが回復するが、興奮値が追加で上昇する。欲望が99%以下のときのみ効果を発揮する。
 
 Bullet Hell
 シューティング
@@ -696,8 +716,8 @@ While above 90% willpower, you gain +150 Bondage Resist and Earth buff spells co
 気力が90%以上の場合、拘束抵抗力が150上昇し、地属性のバフ魔法のコストが半減する
 Path of Least Resistance
 楽な道
-While at 0 WP, you gain +35 Evasion and deal 20% of your max WP as acid damage when enemies restrain you.
-気力が0の場合、回避力が35上昇し、拘束された際に最大気力の20%分の酸ダメージを与える
+While at 0 WP, you gain +35 Evasion and deal 20% of your max WP as soap damage when enemies restrain you.
+気力が0の場合、回避力が35上昇し、拘束された際に最大気力の20%分のソープダメージを与える
 
 Sticky Situation
 ねばねば
@@ -2054,20 +2074,20 @@ Dragonheart Uniform
 ドラゴンハートの衣装
 The uniform of choice for dragonheart of all ranks.
 全てのドラゴンハートが袖を通す衣装。
-It's made of fire-resistant leather.
-炎に耐性のある皮でできている。
+It's made of fire-resistant leather, and provides +5 armor.
+炎に耐性のある皮でできている。アーマー値+5。
 Scientific Uniform
 科学的ユニフォーム
 An outfit designed to leave little to the imagination.
 ピッタリとしたスーツ。
-Resistant to electricity but does not insulate well.
-電気には強いが、断熱性は低い。
+Resistant to electricity but does not insulate well. Provides significant acid and glue protection for scientific purposes.
+電気には強いが、断熱性は低い。酸や接着剤から着用者を保護する。
 Latex Catsuit
 ラテックスキャットスーツ
 An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
 スライムを大量に加工した衣装。シルクのような柔らかな肌触り。
-Resistant to electricity but does not insulate well.
-電気には強いが、断熱性は低い。
+Resistant to electricity but does not insulate well. Provides significant acid and glue protection for scientific purposes.
+電気には強いが、断熱性は低い。酸や接着剤から着用者を保護する。
 Doll Catsuit
 ドールのキャットスーツ
 An outfit made from heavily processed slime. It is naturally silky and smooth to the touch.
@@ -2096,8 +2116,9 @@ Elven Dress
 エルフのドレス
 A regal minidress worn by visitors to the forest.
 森への訪問者が身に着ける堂々としたミニドレス。
-Not very good at insulating you from the cold.
-少し肌寒い。
+Not very good at insulating you from the cold or from touchy fingers. Its elven aura improves accuracy and evasion by +10.
+少し肌寒い。着用するとエルフのオーラで命中率と回避率+10。
+
 Scroll of Sleight
 奇術の巻物
 The scroll makes your memories of arm movements clear as day!
@@ -3700,16 +3721,7 @@ The turret enters an unstable state, about to spread rubber all over!
 ラバーランチャーは動作不良を起こした！
 The turret defends itself with a close-range electrocution attack! (DamageTaken)
 ラバーランチャーは近距離用スタンガンを放った！（DamageTaken）
-Drone
-ドローン
-The drone fizzles and falls to the ground!
-ドローンはふわふわと地面に落ちていった！
-The drone zaps you with a restraining energy ray! (DamageTaken)
-ドローンは鎮圧用レーザーを放ってきた！ (DamageTaken)
-The drone uses a short-ranged electric attack! (DamageTaken)
-ドローンは近距離用スタンガンを放った！ (DamageTaken)
-The drone attaches to you! (+RestraintAdded)
-ドローンが張り付いてきた！ (+RestraintAdded)
+
 Auto Capture Unit
 キャプチャーユニット
 The capture unit releases magic smoke and explodes.
@@ -4113,8 +4125,12 @@ A mobile cyst emerges from the slime mold nest!
 粘菌の塊から粘菌が飛び出てきた！
 Factory Doll
 ファクトリードール
+Freed Doll
+逃走中のドール
+The doll returns to her place.
+ドールは居るべき場所に送られた。
 The doll is subdued.
-人形は制圧された。
+ドールは制圧された。
 Encased Adventurer
 スライムに包まれた冒険者
 The encased adventurer loses hope.
@@ -5043,6 +5059,8 @@ The magical lock only accepts blue keys and can't be picked.
 魔法の錠前はピッキングできず、青い鍵がないと開けられない。
 The magical lock is guarded with powerful magic. You'll have to wait for it to wear off...
 魔法の錠前は強力な魔法で守られている。魔法が切れるまで待つしかない……
+The item is cybernetically locked. You will need a key card to unlock it.
+電子的な錠が取り付けられている。カードキーが必要なようだ。
 This lock requires a command word to unlock. It doesn't have a keyhole.
 どこにも鍵穴が見当たらない。合言葉がないと、この錠前は開かないようだ。
 You don't have a key for this lock.
@@ -5064,6 +5082,8 @@ The lock doesn't even have a keyhole to pick!
 鍵穴が見当たらない！
 You need a special tool to pick this kind of lock.
 特別な道具が必要なようだ。
+The lock doesn't have a keyhole to pick.
+鍵穴が見当たらない。
 The lock is brimming with security features and is nigh impossible to pick!
 とても精巧な錠前で、ピッキングは不可能に近い。
 
@@ -5522,8 +5542,6 @@ Lock Type:
 ロックの種類:
 Red
 赤
-Simple
-単純
 Green
 緑
 Blue
@@ -5536,10 +5554,7 @@ Yellow
 黄色
 Red Lock
 レッドロック
-Red Lock
-レッドロック
-Red Lock
-レッドロック
+
 Simple Lock
 シンプルロック
 Green Lock
@@ -5573,6 +5588,8 @@ Runic
 呪文
 Magic
 魔法
+Cyber
+サイバー
 Ancient
 古代
 Simple Lock
@@ -5591,6 +5608,8 @@ Runic Lock
 呪文の錠前
 Purple Lock
 紫の錠前
+Cyber Lock
+電子錠
 
 You can't use that while gagged!
 猿轡をかまされたままでは使えない！
@@ -5654,6 +5673,32 @@ You mumble a command word but the lock opens!
 合言葉をつぶやくと、鍵が開いた！
 You mess up saying the command word. The lock stays put!
 合言葉を間違えたようだ。鍵は開かなかった。
+
+Swipe Keycard
+カードキー
+You swipe your keycard and the lock releases with a hiss!
+カードキーをかざすと、ロックが外れる音がした。
+You swipe your keycard and the lock beeps 'Access Denied'!
+カードキーをかざしたが、権限がないため開かないようだ。
+You don't have any card to scan in the slot.
+カードキーを持っていない。
+Use Retinal Scanner
+網膜スキャン
+You scan your eye pattern and the lock releases with a hiss!
+網膜スキャナーでロックを解除した。
+The lock rejects you, citing your lack of authority.
+権限がないため、開かないようだ。
+You are blindfolded, so the scanner can't even see your eye!
+目隠しをした状態では網膜スキャンはできない。
+Hack
+ハッキング
+You bypass the lock's cyber defenses and release it with a hiss!
+扉にハッキングして解錠した。
+The lock beeps as its security blocks your attempts at release.
+扉へのハッキングがバレてアクセスを拒否されてしまった。
+You have no way to hack the locking system.
+ハッキングする方法を知らない。
+
 Pick
 ピッキング
 (No way to open)
@@ -5750,8 +5795,8 @@ Willpower
 気力
 A tablet inscribed with runes of TYPE.
 TYPE のルーン文字が刻まれた石板
-Teachings of SHRINETYPE
-SHRINETYPE の教え
+SHRINETYPE Tablet
+SHRINETYPE の石版
 Decypher
 解読
 You read the runes and they fill you with power!
@@ -6013,8 +6058,8 @@ A muzzle to keep you from spitting out what's underneath.
 詰め物を吐き出させないようにするマズル。
 Sorry dear, there's a mystic seal on there to keep it on nice and tight.
 魔法の封印のせいで見た目以上にきつくて固い。
-Red Binding Dress
-赤い拘束ドレス
+Ornamental Dress
+豪華なドレス
 A devious dress that forces the arms into an elbows-touching position.
 肘を固定する赤いドレス。
 It is extremely strict but it is only fabric. The lacing is intricate and will take a long time to remove.
@@ -6157,7 +6202,7 @@ A set of vibrating panties designed to help subdue unruly wolfgirls.
 手に負えないウルフガールを黙らせるために、クロッチ部分が振動するパンツ。
 It's incredibly tight and difficult to remove once it's clipped on, but the material is rubber.
 とてもタイトな作りで脱ぐのに苦労しそうだが、ゴムでできているため簡単に切れそう。
-You don't meet the conditions to equip that.
+You can't equip that.
 装備できない。
 Experimental Boxtie Binder
 実験用ボックスバインダー
@@ -8439,10 +8484,18 @@ Shining cuffs made of holy metal. Nothing can touch it.
 聖なる金属で作られた輝く枷。どういうわけか触れることができない。
 Divine Muzzle
 神のマズル
-It is said that even heaven has its hierarchies...
-天国にもヒエラルキーがあるとは……
+Keep those lips sealed.
+唇を封印する猿轡。
 A shining muzzle made of holy metal. Nothing can touch it.
 聖なる金属でできた輝くマズル。どういうわけか触れることができない。
+
+Divine Gag
+神の猿轡
+It is said that even heaven has its hierarchies...
+天国にもヒエラルキーがあるとは……
+A shining gag made of holy metal. Nothing can touch it.
+聖なる金属でできた輝く猿轡。どういうわけか触れることができない。
+
 
 Cleave Gag
 噛ませ猿轡
@@ -8923,6 +8976,12 @@ Cracked Earth
 ひび割れ
 Makes creatures unsteady
 足場が不安定で転びやすい
+
+Rubble
+瓦礫
+You don't think insurance will cover this.
+この崩れ方は保険適応外だろう。
+
 Can be controlled using CMD spells
 CMD魔法で操作可能
 Can be controlled using Rubbermancy
@@ -8983,6 +9042,8 @@ Ghostly Adventurer
 冒険者の幽霊
 Conveyor
 コンベア
+Safety Conveyor
+セーフティコンベア
 Doll Terminal
 ドール操作端末
 Doll Supply
@@ -9195,8 +9256,8 @@ Unlocks fire spells. Learn Firebolt.
 火属性の魔法が習得可能になる。「ファイアボルト」を習得。
 Lightning Novice
 電気魔術の入門
-Unlocks electrice spells. Learn Electrify.
-電気属性の魔法が習得可能になる。「エレクトリファイ」を習得。
+Unlocks electrice spells. Learn Electrify. Gain increased resistance to blinding from bright lights.
+電気属性の魔法が習得可能になる。「エレクトリファイ」を習得。強烈な光に対する耐性が上昇する。
 Water Novice
 水魔術の入門
 Unlocks water spells. Learn Water Ball.
@@ -9243,8 +9304,8 @@ Unlocks shadow spells. Learn Shadow Dagger.
 影の魔法が習得可能になる。「シャドーダガー」を習得。
 Blessing of Light
 光の祝福
-Unlocks light spells. Learn Flash.
-光の魔法が習得可能になる。「フラッシュ」を習得。
+Unlocks light spells. Learn Flash. Gain significantly increased resistance to blinding from bright lights.
+光の魔法が習得可能になる。「フラッシュ」を習得。強烈な光に対する耐性が上昇する。
 Blessing of Obscurity
 闇の祝福
 Unlocks invisibility spells. Learn Camouflage.
@@ -9719,8 +9780,8 @@ Choose line direction (max range 4 tiles)
 方向を選択(4マス)
 Tremor
 クエイク
-Make vulnerable and slow enemies in targeted area for Duration turns, and deal DamageDealt crush damage.
-Duration ターンの間、敵に脆弱状態と減速状態を付与し、 DamageDealt 打撃ダメージを与えるエリアを生成する。
+Make vulnerable and slow enemies in targeted area for Duration turns, and deal DamageDealt crush damage. Creates a slowing field after.
+Duration ターンの間、敵に脆弱状態と減速状態を付与し、 DamageDealt 打撃ダメージを与えるエリアを生成する。その後、減速エリアを生成する。
 You call forth the rage of the earth.
 大地の怒りを呼び覚ました！
 Choose AoE
@@ -10178,6 +10239,8 @@ Many Summons
 達人召喚士
 Increases the permanent summon cap by +2 (from 4 to 6)
 追加の永続召喚スロットをさらに2得る(6体まで)
+Summon Bomb
+爆弾召喚
 Bomb
 爆弾
 Channel for 1 turn for a bomb that does DamageDealt blast damage in an area after DelayTime turns.
@@ -11358,6 +11421,8 @@ The slime ball sticks to you and slows you!
 スライムボールがくっついて動きが鈍くなった！
 You feel a powerful sensation run through your body!
 全身に強烈な痛みが走った！
+You feel a pleasurable sensation run through your body!
+全身に強烈な快楽が走った！
 Beams of light wrap around your body and feel warm on your skin!
 全身を光に包まれ、生暖かく感じた。
 Crystals begin to form around your limbs!
@@ -12430,6 +12495,12 @@ Your armor makes noise as you move around!
 動く度に鎧が大きな音を立てる。
 Your RestraintName lets out an alert!
 RestraintName が警報を発した！
+
+Your RestraintName stimulates you to hinder your efforts!
+RestraintName に与えられる刺激で行動を抑制された！
+Your RestraintName stimulates you and beeps loudly!
+RestraintName は突如警報音を出しながら震えだした！
+
 A golden lock fades into a blue lock on one of your restraints!
 拘束具についている金色のロックは、青いロックへと変わった。
 Your command word is heard and the purple lock(s) click and fall off!
@@ -12695,6 +12766,8 @@ Vibed!
 オモチャ振動中
 Flying
 浮遊
+Soap
+ソープ
 Acid
 酸
 Shadow
@@ -12761,26 +12834,10 @@ Unstoppable
 アンストッパブル
 Unflinching
 スーパーアーマー
-You found a magical amulet! Choose one of the following to determine its benefits:
-魔法のアミュレットを見つけた。以下の能力を一つ上昇させられる。
-Focus: +50% max distraction and faster decay. +5% stamina protected from damage (base: 30%).
-集中力：最大興奮値が50%増加し、スタミナダメージを5%軽減する(初期30%軽減)
-Stamina: +50 max stamina.
-スタミナ：最大スタミナが50増加する。
-Magic: +50 max mana.
-魔法：最大マナが50増加する。
-Willpower: +50 max willpower. +1 stamina regen/turn.
-意志：最大気力が50増加し、ターン毎のスタミナ回復量+1
-+Focus
-集中力
-+Stamina
-スタミナ
-+Willpower
-意志
-+Magic
-魔法
-Discard (destroys it permanently!)
-強化しない
+
+
+
+
 You crit the vulnerable EnemyName for AMOUNT extra damage!
 脆弱状態の EnemyName に攻撃が命中し AMOUNT の追加ダメージ！
 You crit the unsuspecting EnemyName for AMOUNT extra damage!
@@ -19013,8 +19070,8 @@ Never! (PERCENT chance to avoid)
 (SPEAKER は手を振っている)|やぁ。|最高の防具を買っていかないかい？|姉と違って安売りはしないけどね！
 (The SPEAKER drops her hammer and cracks her knuckles)|Put em up!
 (SPEAKER はハンマーを置き、指を鳴らしだした)|やる気か！？
-(The SPEAKER looks at you.)|But you already have one?
-(SPEAKER が見つめてきた)|もう持っているようだけど。
+(The SPEAKER looks at you.)|Do you have a dealer's license?
+(SPEAKER が見つめてきた)|もう持っているようだけど、商人にでもなるつもりか？
 (The SPEAKER folds her arms)|I don't do charity, girl.
 (SPEAKER は腕を組んだ)|お金が足りないよ、私も慈善でやってるわけじゃあないんだ。
 (The SPEAKER nods)|The most high-impact of sports bras.
@@ -19040,8 +19097,8 @@ Never! (PERCENT chance to avoid)
 (SPEAKER は手を振っている)|ごきげんよう。|私は色々な遠距離武器を取り扱っております。|何か買っていきますか？
 (The SPEAKER folds her arms)|That's not very nice!
 (SPEAKER は腕を組んだ)|やめなさい！
-(The SPEAKER looks at you.)|But you already have one?
-(SPEAKER が見つめてきた)|もう持っているようだけど。
+(The SPEAKER looks at you and smiles.)|Don't you already have one?
+(SPEAKER は苦笑いを浮かべている)|もう持っているのでは？
 (The SPEAKER folds her arms)|I don't do charity, miss.
 (SPEAKER は腕を組んだ)|お金が足りませんよ。
 (The SPEAKER nods)|Could use a higher heel...
@@ -20290,7 +20347,7 @@ Oh no! That trap wiped out all your willpower!|Fortunately you have a potion.|Yo
 トラップを踏んで気力が萎えちゃったみたいだね！|でも、さっき手に入れたポーションを飲めば回復できるよ！|WPゲージの左にある赤い瓶をクリックしてみて！|もしくは、右のアイテムから消耗品を選べば、赤いポーションが見つかるよ！|左下のカバンをクリックしても、クイックインベントリが開けるよ！
 Another trap!|You'll notice that the trap also drained your stamina considerably, preventing you from sprinting or attacking.|(Note: you can toggle sprinting using the '>>' button on the bottom bar)|You can protect yourself while your stamina regenerates by retreating into the room above.|Close the door by clicking the Close Door button in the bottom bar.|
 またトラップだ！|SP、スタミナが切れてしまったみたいだね。スタミナがないと、攻撃も走ることもできないよ。|(画面右下の＞ボタンを押すと、歩きと走りを変更可能)|上の部屋に逃げて、スタミナが回復するまでじっとしてみて。|ドアを閉じるときは、画面右下にあるドアのアイコンをクリックしてから、画面上のドアがあるマスをクリックしてね。
-Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the bottom right.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1.
+Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the right menu, then navigate to the Spell Tree.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1."
 MP、つまりマナは呪文の詠唱に必要だよ。|呪文を唱えるには、その呪文を覚える必要があるよ。|画面右にある呪文タブをクリックしてみて。|それから、スペルツリーを選択して表示される火魔術の入門を学べば、ファイアボルトの魔法が覚えられるよ。|覚えられたら、精霊呪文にあるファイアボルトをクリックして、ホットバー１のスロット１に登録してみよう。
 On the right you'll see your stats and spells slots.|You can click on a spell slot or hit 1-4 on your keyboard to cast a spell|then click on the map for where you want to aim it.|The small wrench icon above them will let you|swap them out for another spell from your spellbook.
 画面下にファイアボルトのアイコンが表示されているね。|スペルをクリックするか、対応するキーを押せば呪文を唱えられるよ。|撃ち出したいマスを選択すれば、そこに魔法が飛ぶよ。|ファイアボルトの左にある丸いアイコンを選べば、特定の呪文を強化できるよ。|例えば、ファイアブラストの魔法を習得すれば、ファイアボルトを強化して放つことができるんだ。
@@ -20584,6 +20641,9 @@ You can hardly make a noise...
 カシャッ
 You yelp as the EnemyName activates your RestraintName
 EnemyName が RestraintName を作動させたようだ。
+You shudder as the EnemyName activates your RestraintName
+EnemyName が RestraintName を作動させたようだ。
+
 That should slow you down!
 これでスピードが落ちるはず！
 Try running away now~
@@ -20607,13 +20667,15 @@ You are moved along by the conveyor...
 Strange machinery begins sealing you in shiny latex!
 奇妙な機械にゴムを噴射された！
 Metallic arms insert something into you!
-機械の腕に何かを挿入された！
+金属製の腕に何かを挿入された！
 Metallic arms attach a chastity belt over your waist!
-機械の腕に貞操帯を取り付けられた！
+金属製の腕に貞操帯を取り付けられた！
 Metallic arms wrap you in tape!
-機械の腕がテープを巻き付けてきた！
+金属製の腕がテープを巻き付けてきた！
 Metallic arms wrap you in strict restraints!
-機械の腕に拘束具を取り付けられた！
+金属製の腕に拘束具を取り付けられた！
+Metallic arms install various cybernetic restraints!
+金属製の腕に様々な機械の拘束具を取り付けられた！
 You've sprung a trap! You've been stunned.
 罠を踏んでしまった！スタンしてしまった。
 The bandit leaves behind a sneaky trap...
@@ -21800,8 +21862,8 @@ Tower Shield
 タワーシールド
 Now with more leg room.
 体全体を防御できるようになった盾。
-+120 Block, +30 Physical Armor. Increases slow level by 1. Deals crush damage and stuns for 7 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
-打撃属性。装備時ブロック値＋120、物理アーマー＋30。減速値1を得る。攻撃が命中した時、7ターンの間スタンさせる。サブウェポン：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値とスタックしない。
+Slows you down by 1 level. +120 Block, +30 Physical Armor. Deals crush damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
+打撃属性。装備時ブロック値＋120、物理アーマー＋30。減速値1を得る。攻撃が命中した時、7ターンの間スタンさせる。サブウェポン：メイン装備時と同等のブロック値、アーマー、減速値を得る。この効果はメインに装備している武器のブロック値とスタックしない。
 You pick up a metal tower shield.
 金属で補強された大きな盾を拾った。
 Reinforced Shield
@@ -22048,18 +22110,7 @@ The latex mimic stretches out an appendage and pulls you toward it! (DamageTaken
 ラテックスミミックが体の一部を伸ばし、引っ張ってきた！ (DamageTaken)
 The latex mimic engulfs you in sticky rubber! (DamageTaken)
 ラテックスミミックがネバネバのゴムの身体に引きずり込んできた！ (DamageTaken)
-Cyber Warden
-サイバーワーデン
-The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!
-サイバーワーデンのスーツがロックダウンを起こし、彼女は拘束されてしまった！
-The cyber warden applies an advanced locking technology!
-サイバーワーデンが未知の技術で拘束具に高度な錠を施してきた！
-The cyber warden grabs you and applies a self-tightening restraint! (+RestraintAdded)
-サイバーワーデンに自動で締まる拘束具を取り付けられた！ (+RestraintAdded)
-The cyber warden's touch applies a series of quick electrical shocks! (DamageTaken)
-サイバーワーデンに触れられると、電気ショックが起こる！ (DamageTaken)
-The cyber warden's touch applies a series of quick electrical shocks!
-サイバーワーデンに触れられると、電気ショックが起こる！ (DamageTaken)
+
 Back to Menu
 メニューに戻る
 Item Stack:
@@ -23527,6 +23578,8 @@ Unstoppable (Ignore status/bondage)
 アンストッパブル（状態異常と拘束を無視）
 Unflinching (Resist status/bondage)
 スーパーアーマー（状態異常と拘束に耐性）
+Relentless (Stun resist when stunned)
+無慈悲(スタン時、次のスタン効果に耐性を得る)
 Blindsight (See through walls)
 ブラインドサイト（壁を見通す）
 Mana Harvesting
@@ -23760,8 +23813,8 @@ Allows you to craft bombs, smoke bombs, flash bombs, and invisibility potions.
 (必要素材を持っていない)
 (Use 1 Gunpowder to make a Smoke Bomb)
 (火薬1つで煙幕弾を作る)
-(Use 1 Gunpowder and one Ancient Crystal to make 3 Smoke Bombs)
-(火薬1つと古代のクリスタル1つで煙幕弾を3つ作る)
+(Use 1 Gunpowder and one Ancient Crystal to make 3 Flash Bombs)
+(火薬1つと古代のクリスタル1つで閃光弾を3つ作る)
 (Use 2 Gunpowder to make a Bomb)
 (火薬2つで爆弾を作る)
 (Use 3 Ectoplasm to make an Invisibility Potion)
@@ -24018,6 +24071,9 @@ Stop when enemies are first sighted
 敵を発見したら停止
 Suppress during combat
 戦闘中は自動移動しない
+
+Step during combat
+戦闘中にステップする
 
 Shadowy Grasp
 影の掌握
@@ -25378,7 +25434,7 @@ You have formed a mental barrier...
 
 Desire Burst
 デザイアバースト
-Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have 50% Desire, the damage is reduced based on the amount. (Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
+Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have at least 50% Desire, the damage is reduced based on the amount. (Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
 欲望値を最大DPの30%まで減少させ、近くの敵に30+最大のDP25%分の魅了ダメージを与える強力な爆風を起こす。欲望値が50%以下の場合、その分のダメージが減少する。(欲望値はDPバーの下にあるハート型のメーターで、一定の行動で蓄積していく)
 You channel your distraction into a powerful explosion!
 自身の欲望を強力な爆発に変換した！
@@ -26008,8 +26064,8 @@ Miku
 Nevermere
 ネバーミア
 
-Choose restraint palette:
-拘束具の色：
+Choose default restraint palette:
+デフォルトの拘束具の色：
 
 Main
 オプション
@@ -26198,8 +26254,8 @@ Warden's Belt
 看守長のベルト
 You may go on your way, but only as long your freedom is useful to her.
 彼女の役に立つ限りは自由でいられる。
-A golden belt that marks you as part of someone's collection. Each time you break a spell orb, a collector is spawned to punish you.
-誰かの所有物であることを示す黄金のベルト。オーブを破壊する度にコレクターが発生し、罰を与えてくる。
+A golden belt that enforces respect for the Goddesses. Breaking spell orbs results in a punishment.
+女神の崇拝を表すベルト。オーブを破壊した際に、神罰が下る。
 
 Belt of Privilege
 特権のベルト
@@ -26564,8 +26620,8 @@ I won't submit to you!
 (SPEAKER は膝をついた)|そんな……|たかが冒険者風情に……|覚えてなさい……
 (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing collar)|This is a special one, reserved for those with divine privilege.|You've earned it.
 (SPEAKER は驚いている)|あら……素直に言うことを聞いてくれるなんて。|(彼女が指を鳴らすと輝く首輪が現れた)|これは特別仕様、神の権能の具現と言ってもいいわ。|おめでとう、あなたは勝ち取ったのよ。
-(Wear her collar anyway)
-(首輪を受け取り自身に装着する)
+(Wear her belt anyway)
+(ベルトを受け取り自身に装着する)
 (SPEAKER shakes her head as you force a gag into her mouth)|MMMMMPH!
 (頭を振って抵抗する SPEAKER に無理矢理猿轡を噛ませた)|んぁおぉぉ！
 
@@ -26911,6 +26967,11 @@ Safeword Please
 Allies don't help you unless you ask first.
 仲間は尋ねられるまで助けてくれない。
 
+Living Collars
+命ある首輪
+When you get jailed, you may get a living collar that applies further restraints on you.
+牢屋に送られた際、強力な生きた首輪を嵌められる可能性がある。
+
 The Warden's cage falls atop you and attaches to the floor with a click.
 看守長の檻が落下し、床に固定された。
 The restraining bolt emits binding energies!
@@ -27228,7 +27289,7 @@ Thigh Chain
 脚枷の鎖
 A chain connecting your thigh cuffs together. You can still walk, albeit slower than usual.
 太ももを繋ぐ鎖。脚の動きが制限される。
-It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
 
 Chain Hogtie
@@ -27242,13 +27303,13 @@ Ankle Chains
 足枷の鎖
 A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
 足枷同士をつなぐ鎖。歩く程度なら支障はない程度の長さ。
-RestraintAnkleLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
 Ankle Chain (Short)
 足枷の鎖(短)
 A short chain connecting your ankle cuffs together. You can barely separate your legs with this on.
 足枷同士をつなぐ短い鎖。辛うじて足を離せる程度の長さ。
-RestraintAnkleLinkShortDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
 
 Elbow Chain
@@ -27261,7 +27322,7 @@ Wrist Chain
 手枷の鎖
 A very short chain connecting your wrist cuffs together.
 手枷同士を繋ぐ短い鎖。
-RestraintWristLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
+It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
 
 
@@ -27526,14 +27587,14 @@ Crystals are tough but not unbreakable.
 クリスタルは硬いが、壊せないほどではない。
 
 The lock is protected by a seal of repentance. To unlock it you must pay 1 spell point.
-錠には悔恨の封印がなされている。解錠するにはスキルポイントを1使用する必要がある。
+錠には悔恨の封印がなされている。1のスキルポイントを捧げなければ封印は解けない。
 The restraint won't budge.
 この拘束は破壊できない。
 You perform a ritual to unlock the item!
 拘束具を解錠するため、儀式を行った！
 
-The lock is protected by a seal of repentance. To unlock it you must pay 8 spell points!
-錠には悔恨の封印がなされている。解錠するにはスキルポイントを8使用する必要がある。
+The lock is protected by a seal of repentance. To unlock it you must pay AMNT spell points!
+錠には悔恨の封印がなされている。 AMNT のスキルポイントを捧げなければ封印は解けない。
 You perform a grand ritual to unlock the item!
 拘束具を解錠するため、儀式を行った！
 
@@ -27571,3 +27632,254 @@ A very short chain connecting your wrist cuffs together.
 手枷同士を繋ぐ短い鎖。
 An intense, albeit temporary punishment for breaking the rules.
 規則違反に対する重い戒め。
+
+
+ESCP Difficulty: AMNT
+ESCP 難易度： AMNT
+ESCP Power: AMNT%
+ESCP 力： AMNT%
+
+Struggle
+もがく
+Remove
+抜け出す
+Unlock
+鍵を使う
+Pick
+ピッキング
+Cut
+切る
+
+
+Your collar channels the vigor of excitement into magical energy!
+首輪が興奮を魔力に変換した！
+The collar has already squeezed what it can out of you. Clear your mind first!
+搾り取れるものが残っていない。一旦落ち着こう。
+
+Force Field Projector
+フォースフィールドプロジェクター
+The forcefield erupts into a shower of blue sparks!
+フォースフィールドは青い火花と化して散った！
+The guardian deploys a forcefield!
+機械がフォースフィールドを展開した！
+The guardian deploys a set of forcefields!
+機械が複数のフォースフィールドを展開した！
+
+Guardian Drone
+ガーディアンドローン
+Drone
+ドローン
+The drone fizzles and falls to the ground!
+ドローンは煙を上げながら墜落した！
+The drone zaps you with a restraining energy ray! (DamageTaken)
+ドローンは鎮圧用レーザーを放ってきた！ (DamageTaken)
+The drone uses a short-ranged electric attack! (DamageTaken)
+ドローンは近距離用スタンガンを放った！ (DamageTaken)
+The drone attaches to you! (+RestraintAdded)
+ドローンが張り付いてきた！ (+RestraintAdded)
+
+Cyber Warden
+サイバーワーデン
+Cyber Guardian
+サイバーガーディアン
+The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!
+サイバーガーディアンのスーツがロックダウンを起こし、彼女は拘束されてしまった！
+The cyber warden applies an advanced locking technology!
+サイバーガーディアンが未知の技術で拘束具に高度な錠を施してきた！
+The cyber warden grabs you and applies a self-tightening restraint! (+RestraintAdded)
+サイバーガーディアンに自動で締まる拘束具を取り付けられた！ (+RestraintAdded)
+The cyber warden's touch applies a series of quick electrical shocks! (DamageTaken)
+サイバーガーディアンに触れられると、電気ショックが起こる！ (DamageTaken)
+The cyber warden's touch applies a series of quick electrical shocks!
+サイバーガーディアンに触れられると、電気ショックが起こる！ (DamageTaken)
+
+Auto Enforcer Guardian
+オートエンフォーサーガーディアン
+
+Time to get you into your uniform~
+お着替えの時間ですよ～。
+You won't be needing any of this.
+こんなものは必要ないでしょう。
+There we go, all ready for training!
+調教の準備は整いましたね。
+
+Cyber Storage
+サイバーストレージ
+An all-purpose metal crate equipped with a polycarbonate blast door and steel reinforcement.
+ポリカーボネート製のブラストドアと鋼鉄の補強材で作られた金属製の箱。
+Used throughout the reign of the Old Civilization to store slaves and prisoners.
+旧文明の時代で奴隷や囚人の保管に使用された箱。
+
+
+The liquid latex sticks to your skin, forcing an airtight layer!
+液体のゴムが全身に密着し、ピッタリと張り付いてきた。
+The latex starts to build up layers, forcing a protective coating...
+ゴムが複数の層を形成し始めた。
+The latex starts adhering to your skin, becoming extremely difficult to remove...
+ゴムが肌に付着し、剥がすのが困難になった。
+The latex seals you in, rendering escape impossible without alchemical methods.
+ゴムに完全に密封された。錬金術的な方法なしに抜け出すのは不可能だろう。
+The liquid latex spray slows you down!
+液体ゴムスプレーで動きが遅くなった！
+
+Latex Sprayer
+ラテックススプレータレット
+The turret deactivates after taking too much damage!
+タレットはダメージの蓄積により動きを止めた。
+The turret defends itself with a spray of sticky liquid latex! (DamageTaken)
+タレットがゴムのスプレーを吹きかけてきた！ (DamageTaken)
+
+Your latex layer adheres to latex, making struggling more difficult!
+ゴムがくっつき合い、もがくのが困難になっている。
+The item sticks to your rubber layer, making it harder to pull off...
+ゴムとくっつき合い、引き剥がすのが困難になっている。
+The item hugs your layer tightly, adhering firmly!
+しっかりと身体に密着している。
+Your skin is covered in a layer of latex, making escape from cyber restraints harder!
+皮膚がゴムで覆われており、サイバー系の拘束具から抜け出しにくくなっている。
+
+Some Exclusions Apply
+除外項目
+Goddess shrines do not remove non-binding restraints such as harnesses and cuffs.
+女神の祭壇で、枷やハーネスのような拘束力のないものを取り除けなくなる。
+
+Melee Specialization
+近接戦闘専門
+Gain 25% base physical damage, but your spells do 50% less damage.
+物理ダメージ+25%、魔法ダメージ-50%。
+Melee Expert
+近接戦闘の達人
+Gain +20 Accuracy and +10% base physical damage.
+命中率+20、物理ダメージ+10%。
+
+Magic Specialization
+魔法専門
+Gain 25% spell damage, but your attacks are delayed by 1 turn when attacking.
+魔法ダメージ+25%。攻撃時、追加で1ターン消費する。
+Spell Expert
+魔法の達人
+Gain -10% miscast chance and +10% spell damage.
+詠唱失敗率-10%、魔法ダメージ+10%。
+
+Ranged Specialization
+遠距離戦闘専門
+You deal 20% more damage to enemies further than 2 tiles away, but enemies adjacent to you take 60% reduced damage.
+2マス以上離れている敵に与えるダメージ+20%、隣接している敵に与えるダメージ-60%。
+Ranged Weapon Expert
+遠距離戦闘の達人
+Bows, guns, and other projectile weapons do 10% more damage and consume 10% less charge.
+遠距離武器のダメージ+10%、チャージコスト-10%。
+
+
+
+After casting a DMG spell:
+DMG の呪文を唱えた後：
+Gain AMNT% DMG Damage for DRTN turns
+DRTN ターンの間 DMG の与ダメージが AMNT% 増加する 
+Gain AMNT DMG Resist for DRTN turns
+DRTN ターンの間 DMG に対して AMNT% の耐性を得る 
+Your elemental damage is increased!
+精霊魔法の与ダメージが増加する
+Your elemental resistance is increased!
+精霊魔法の被ダメージが減少する
+
+
+The overgrown monolith contains an ancient blessing.
+苔むしたモノリスから古代の祝福を授かった！
+Choose a stat to increase below.
+上昇させるステータスを選択
+
+Confirm Choice
+選択
+Distraction
+集中力
+Stamina
+スタミナ
+Mana
+マナ
+Willpower
+気力
+
+Increase max distraction by AMNT%.
+最大興奮値が AMNT% 上昇する。
+DP decays faster and more SP is safe from damage.
+興奮値がより早く減少し、スタミナダメージを軽減する。
+Increase max stamina by AMNT.
+最大スタミナが AMNT 上昇する。
+Increase max mana by AMNT.
+最大マナが AMNT 上昇する。
+Increase max willpower by AMNT.
+最大気力が AMNT 上昇する。
+Gain +AMNT SP regen/turn.
+ターン毎のスタミナ回復量が AMNT 上昇する。
+
+
+You found a magical amulet! Choose one of the following to determine its benefits:
+魔法のアミュレットを見つけた。以下の能力を一つ上昇させられる。
+Focus: +50% max distraction and faster decay. +5% stamina protected from damage (base: 30%).
+集中力：最大興奮値が50%上昇し、スタミナダメージを5%軽減する(初期30%軽減)
+Stamina: +50 max stamina.
+スタミナ：最大スタミナが50上昇する。
+Magic: +50 max mana.
+魔法：最大マナが50上昇する。
+Willpower: +50 max willpower. +1 stamina regen/turn.
+気力：最大気力が50上昇し、ターン毎のスタミナ回復量+1
++Focus
+集中力
++Stamina
+スタミナ
++Willpower
+気力
++Magic
+魔法
+Discard (destroys it permanently!)
+強化しない
+
+
+A mystical orb stands before you.
+神秘的なオーブを見つけた。
+You break the orb and gain its secrets.
+オーブを破壊し、力を手に入れた。
+
+Stun Resistance!
+スタンに抵抗した！
+
+Negate Rune
+ルーン消去
+Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead.
+選択したマスのルーンを消去する。自身に唱えると、自分が設置した全てのルーンを消去する。敵のルーンに唱えると、マナを10回復する。
+You scribe a negation rune!
+拒否のルーンを描いた！
+Target a single rune, or yourself to negate all your runes.
+ルーンか自身を選択。
+You don't have enough mana
+マナが足りない。
+The enemy rune is wiped clean.
+敵のルーンが掻き消えた。
+All of your runes have been removed.
+自身の描いた全てのルーンを消去した。
+
+
+E-Stimulation
+電気責め
+Replaces most instances of painful electric shocks with stimulating effects instead.
+自身の受ける電気ダメージを、スタミナダメージから興奮値の上昇に置き換える。
+
+The energy bolt hits you and sends stimulating energies through you!
+電気による痛みで興奮した！
+
+You steal a key card.
+カードキーを手に入れた。
+Key Card
+カードキー
+The keycard's shiny surface reflects the light in a mesmerizing way.
+カードは魅力的な光沢をしている。
+A piece of identification that contains an access code.
+アクセスコードが記された、電子身分証明証。
+You can use it to unlock certain doors.
+これを使って特定のドアを解錠できる。
+Your keycard blinks red as the facility remotely locks it!
+カードキーが赤く点滅している。セキュリティに権限をロックされてしまったようだ！
+
+Unauthorized removal detected. System lockout progress: AMNT%
+不正な取り外しを検知、システムのロックアウトが進行中です： AMNT%
