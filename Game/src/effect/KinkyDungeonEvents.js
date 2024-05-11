@@ -9189,6 +9189,8 @@ let KDEventMapGeneric = {
 			let entities = Object.assign([], KDMapData.Entities);
 			for (let e of entities) {
 				if (!KDIsHumanoid(e)) continue;
+				if (KDEnemyHasFlag(e, "NGPrep")) continue;
+				KinkyDungeonSetEnemyFlag(e, "NGPrep", -1);
 				if (KDRandom() < chance && !KDEntityHasBuff(e, "HighValue")) {
 					let Enemy = null;
 					if (KDHardModeReplace[e.Enemy.name]) Enemy = KinkyDungeonGetEnemyByName(KDHardModeReplace[e.Enemy.name]);
@@ -9254,6 +9256,8 @@ let KDEventMapGeneric = {
 			let entities = Object.assign([], KDMapData.Entities);
 			for (let e of entities) {
 				if (!KDIsHumanoid(e)) continue;
+				if (KDEnemyHasFlag(e, "HMrep")) continue;
+				KinkyDungeonSetEnemyFlag(e, "HMrep", -1);
 				if (KDRandom() < chance && !KDEntityHasBuff(e, "HighValue")) {
 					let Enemy = null;
 					if (KDHardModeReplace[e.Enemy.name] && KDRandom() < 0.5) Enemy = KinkyDungeonGetEnemyByName(KDHardModeReplace[e.Enemy.name]);
@@ -9760,29 +9764,38 @@ let KDEventMapGeneric = {
 	"addEntity": {
 		"EnemyResist": (e, data) => {
 			if (KinkyDungeonStatsChoice.get("EnemyResist") && KDGetFaction(data.enemy) != "Player") {
-				data.type = JSON.parse(JSON.stringify(data.enemy.Enemy));
-				data.type.maxhp *= KDEnemyResistHPMult;
-				data.enemy.hp *= KDEnemyResistHPMult;
-				data.enemy.Enemy = data.type;
-				data.enemy.modified = true;
+				if (!KDEnemyHasFlag(data.enemy, "EnemyResist")) {
+					KinkyDungeonSetEnemyFlag(data.enemy, "EnemyResist", -1);
+					data.type = JSON.parse(JSON.stringify(data.enemy.Enemy));
+					data.type.maxhp *= KDEnemyResistHPMult;
+					data.enemy.hp *= KDEnemyResistHPMult;
+					data.enemy.Enemy = data.type;
+					data.enemy.modified = true;
+				}
 			}
 		},
 		"ResilientFoes": (e, data) => {
 			if (KinkyDungeonStatsChoice.get("ResilientFoes") && KDGetFaction(data.enemy) != "Player") {
-				data.type = JSON.parse(JSON.stringify(data.enemy.Enemy));
-				data.type.maxhp *= KDResilientHPMult;
-				data.enemy.hp *= KDResilientHPMult;
-				data.enemy.Enemy = data.type;
-				data.enemy.modified = true;
+				if (!KDEnemyHasFlag(data.enemy, "ResilientFoes")) {
+					KinkyDungeonSetEnemyFlag(data.enemy, "ResilientFoes", -1);
+					data.type = JSON.parse(JSON.stringify(data.enemy.Enemy));
+					data.type.maxhp *= KDResilientHPMult;
+					data.enemy.hp *= KDResilientHPMult;
+					data.enemy.Enemy = data.type;
+					data.enemy.modified = true;
+				}
 			}
 		},
 		"Stealthy": (e, data) => {
 			if (KinkyDungeonStatsChoice.get("Stealthy") && KDGetFaction(data.enemy) != "Player") {
-				data.type = JSON.parse(JSON.stringify(data.enemy.Enemy));
-				data.type.maxhp *= KDStealthyHPMult;
-				data.enemy.hp *= KDStealthyHPMult;
-				data.enemy.Enemy = data.type;
-				data.enemy.modified = true;
+				if (!KDEnemyHasFlag(data.enemy, "Stealthy")) {
+					KinkyDungeonSetEnemyFlag(data.enemy, "Stealthy", -1);
+					data.type = JSON.parse(JSON.stringify(data.enemy.Enemy));
+					data.type.maxhp *= KDStealthyHPMult;
+					data.enemy.hp *= KDStealthyHPMult;
+					data.enemy.Enemy = data.type;
+					data.enemy.modified = true;
+				}
 			}
 		},
 	},

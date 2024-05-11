@@ -2335,6 +2335,7 @@ let KinkyDungeonSpellListEnemies = [
 		{id: "Shroud", type: "Evasion", power: 7.0, player: true, enemies: true, tags: ["darkness"], range: 1.5},
 		{id: "Shroud2", aura: "#444488", type: "Sneak", power: 4.0, player: true, duration: 8, enemies: false, tags: ["darkness"], range: 1.5}
 	], onhit:"", time:14, aoe: 1.5, power: 0, delay: 8, range: 3.5, size: 3, damage: "",
+	noise: 1,
 	noMiscast: true,
 	effectTileDurationModPre: 3, effectTilePre: {
 		name: "Smoke",
@@ -2343,12 +2344,14 @@ let KinkyDungeonSpellListEnemies = [
 
 	{enemySpell: true, name: "EnemyFlashBomb", color: "#ff2200", minRange: 0, sfx: "Miss", landsfx: "Lightning", school: "Illusion", manacost: 3, specialCD: 12, components: ["Verbal"], hideWarnings: true,
 		hitColor: 0xffffff, hitLight: 7,
+		noise: 4,
 		hitevents: [
 			{type: "BlindAll", trigger: "bulletHitEnemy", time: 9},
 		],
 		level:1, type:"inert", onhit:"aoe", time: 0, delay: 1, power: 1, range: 3.5, size: 3, aoe: 1.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 3}},
 
 	{name: "FlashBomb", color: "#ff2200", minRange: 0, sfx: "Miss", landsfx: "Lightning", school: "Illusion", manacost: 0, specialCD: 12, components: ["Verbal"], hideWarnings: true,
+		noise: 4,
 		hitColor: 0xffffff, hitLight: 7,
 		noMiscast: true,
 		hitevents: [
@@ -2356,6 +2359,7 @@ let KinkyDungeonSpellListEnemies = [
 		],
 		level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 1, range: 4, size: 3, aoe: 1.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 6}},
 	{name: "Flashbang", color: "#ff2200", minRange: 0, landsfx: "Lightning", school: "Illusion", manacost: 0, specialCD: 12, components: ["Verbal"], hideWarnings: true,
+		noise: 9,
 		hitColor: 0xffffff, hitLight: 7,
 		noMiscast: true,
 		hitevents: [

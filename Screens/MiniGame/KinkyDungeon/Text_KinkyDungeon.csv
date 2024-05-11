@@ -18922,7 +18922,7 @@ KinkyDungeonSpellDescriptionAllyDeselectAll,Deselects all selected units.
 KinkyDungeonSpellAllyOnMe,On Me!
 KinkyDungeonSpellDescriptionAllyOnMe,All selected units start following you
 KinkyDungeonSpellAllyDisperse,Disperse
-KinkyDungeonSpellDescriptionDisperse,All selected units stop following you
+KinkyDungeonSpellDescriptionAllyDisperse,All selected units stop following you
 KinkyDungeonSpellAllyDefensive,Defensive Order
 KinkyDungeonSpellDescriptionAllyDefensive,All selected units switch to Defensive mode
 KinkyDungeonSpellAllyAggressive,Aggressive Order
@@ -20935,3 +20935,6 @@ KinkyDungeonInventoryItemKeyCardDesc2,"You can use it to unlock certain doors."
 KDCyberHostileKeyCard,"Your keycard blinks red as the facility remotely locks it!"
 KDLockout,"Your keycard blinks red as the facility remotely locks it!"
 KDLockoutTick,"Unauthorized removal detected. System lockout progress: AMNT%"
+
+ItemPickupFlashBomb,"You pick up a flash bomb."
+ItemPickupFlashbang,"You pick up a flashbang grenade."

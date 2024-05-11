@@ -25,7 +25,7 @@ Monk class?
 5.3.6
 - Fix tablets being too rare
 - Made big map sizes bigger
-- Bombs now destroy cracked tiles
+- Bombs now destroy cracked tiles and various lesser objects
 
 5.3.5
 - Fix not enough overgrown monoliths
