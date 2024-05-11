@@ -7436,7 +7436,8 @@ Rubble
 瓦砾
 You don't think insurance will cover this.
 你不认为保险会涵盖这个。
-
+No putting that back together.
+不要再把它放在一起了。
 Can be controlled using CMD spells
 可以使用 CMD 法术进行控制
 Can be controlled using Rubbermancy
