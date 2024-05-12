@@ -170,7 +170,7 @@ let KinkyDungeonWeapons = {
 		tags: ["hammer"],
 		crit: 1.2,
 		events: [{type: "Knockback", trigger: "playerAttack", dist: 1}]},
-	"MagicHammer": {name: "MagicHammer", dmg: 6, chance: 1.0, staminacost: 5.5, type: "crush", unarmed: false, rarity: 7, magic: true, shop: false, cutBonus: 0.2, sfx: "HeavySwing",
+	"MagicHammer": {name: "MagicHammer", dmg: 6, chance: 1.0, staminacost: 5.5, type: "crush", unarmed: false, rarity: 7, magic: true, shop: false, cutBonus: 0.01, sfx: "HeavySwing",
 		tags: ["hammer"],
 		crit: 1.2,
 		events: [{type: "Knockback", trigger: "playerAttack", dist: 1}]},

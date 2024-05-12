@@ -3697,9 +3697,10 @@ function KDCanLinkUnder(currentRestraint, restraint, bypass, NoStack, securityEn
 function KDCurrentItemLinkable(currentItem, newItem) {
 	return (KinkyDungeonLinkableAndStricter(KDRestraint(currentItem), newItem, currentItem) &&
 		(
-			(newItem.linkCategory && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
-			|| (newItem.linkCategories && newItem.linkCategories.every((lc, index) =>
-			{return KDLinkCategorySize(currentItem, lc) + KDLinkSize(newItem, index) <= 1.0;}))
+			(newItem.linkCategory && !newItem.linkCategories && KDLinkCategorySize(currentItem, newItem.linkCategory) + KDLinkSize(newItem) <= 1.0)
+			|| (newItem.linkCategories && newItem.linkCategories.every(
+				(lc, index) =>
+				{return KDLinkCategorySize(currentItem, lc) + KDLinkSize(newItem, index) <= 1.0;}))
 			|| (!newItem.linkCategory && !newItem.linkCategories && !KDDynamicLinkList(currentItem, true).some((inv) => {return newItem.name == inv.name;})))
 	);
 }
@@ -5073,6 +5074,7 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
  * @param {string} tagBase - The base for the enemy tags
  * @param {string[]} allTag - adds a tag to all of the ropes if specified
  * @param {number} basePower - Base opower level
+ * @param {boolean} Enchantable - Do NOT delete enchantable rope categories
  * @param {KDRestraintPropsBase} properties - Restraint properties to override
  * @param {KinkyDungeonEvent[]} extraEvents - Extra events to add on
  * @param {KDEscapeChanceList} addStruggle - Increase to base struggle amounts
@@ -5080,7 +5082,7 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
  * @param {Record<string, LayerFilter>} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
  * param {{name: string, description: string}} strings - Generic strings for the rope type
  */
-function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], addStruggle, premultStruggle, Filters, baseWeight = 10) {
+function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], addStruggle, premultStruggle, Filters, baseWeight = 10, Enchantable = false) {
 	for (let part of Object.entries(KDRopeParts)) {
 		let ropePart = part[0];
 		// Only if we have something to copy
@@ -5116,7 +5118,20 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
 				cloneTag: tagBase,
+				linkCategories: origRestraint.linkCategories ? JSON.parse(JSON.stringify(origRestraint.linkCategories)) : undefined,
+				linkSize: origRestraint.linkSizes ? JSON.parse(JSON.stringify(origRestraint.linkSizes)) : undefined,
 			};
+
+			if (!Enchantable && props.linkCategories) {
+				for (let i = 0; i < props.linkCategories.length; i++) {
+					if (props.linkCategories[i].includes("Enchantable")) {
+						props.linkCategories.splice(i, 1);
+						if (props.linkSizes && props.linkSizes[i])
+							props.linkSizes.splice(i, 1);
+						break;
+					}
+				}
+			}
 			if (Filters && props.Filters) {
 				for (let layer of Object.keys(Filters)) {
 					props.Filters[layer] = Object.assign({}, Filters[layer]);

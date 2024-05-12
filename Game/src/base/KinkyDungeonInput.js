@@ -1047,14 +1047,23 @@ function KDProcessInput(type, data) {
 					// Perform the tablet buff action
 					if (tile.Name == "Will") {
 						// Restoration shrine gets a regeneration buff
-						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill", type: "restore_mp", power: 0.5, duration: 20});
-						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill2", type: "restore_sp", power: 0.5, duration: 20});
-						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill3", type: "restore_wp", power: 0.5, duration: 5});
+						let multi = 1.0;
+						multi = Math.max(KinkyDungeonStatStaminaMax / KDMaxStatStart);
+						let Manamulti = 1.0;
+						Manamulti = Math.max(KinkyDungeonStatManaMax / KDMaxStatStart);
+						let Willmulti = 1.0;
+						Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
+
+						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill", type: "restore_mp", power: Manamulti*0.5, duration: 20});
+						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill2", type: "restore_sp", power: multi*0.5, duration: 20});
+						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill3", type: "restore_wp", power: Willmulti*0.5, duration: 5});
 					} else if (tile.Name == "Determination") {
 						if (KinkyDungeonStatWill >= KinkyDungeonStatWillMax) {
 							full = true;
 						} else {
-							KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletDetermination", type: "restore_wp", power: 1, duration: 5});
+							let Willmulti = 1.0;
+							Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
+							KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletDetermination", type: "restore_wp", power: Willmulti*1, duration: 5});
 						}
 					} else {
 						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,

@@ -2277,6 +2277,7 @@ let KinkyDungeonSpellListEnemies = [
 
 	{enemySpell: true, name: "WitchRopeBoltLaunchMany", tags: ["rope", "bolt", "binding", "offense"], prerequisite: "RopeBoltLaunch", sfx: "MagicSlash", school: "Conjure",
 		upcastFrom: "RopeBoltLaunch", upcastLevel: 1, specialCD: 20, hideWarnings: true,
+		noSprite: true,
 		manacost: 5, components: ["Verbal"], projectileTargeting: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 6, power: 1, range: 7, meleeOrigin: true, noDirectionOffset: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
 		followCaster: true,
 		spellcast: {spell: "WitchRopeBoltLaunchSingle", target: "target", directional:true, aimAtTarget: true, offset: false}},

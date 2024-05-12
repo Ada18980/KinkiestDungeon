@@ -1232,7 +1232,9 @@ let KDPlayerEffects = {
 					for (let inv of KinkyDungeonAllRestraintDynamic()) {
 						if (KDRestraint(inv.item)?.shrine?.includes("WeakMagicRopes")) {
 							if (transmuteLevel > 3 || KDRestraint(inv.item)?.Group != "ItemNeck") {
-								KDChangeItemName(inv.item, Restraint,KDRestraint(inv.item).name.replace("WeakMagicRope", "StrongMagicRope"));
+								let newRes = KDRestraint(inv.item).name.replace("WeakMagicRope", "StrongMagicRope");
+								//if (KDCanAddRestraint(KinkyDungeonGetRestraintByName(newRes), true, "", false, inv.item))
+								KDChangeItemName(inv.item, Restraint, newRes);
 								effect = true;
 							}
 						}
@@ -1243,7 +1245,9 @@ let KDPlayerEffects = {
 					for (let inv of KinkyDungeonAllRestraintDynamic()) {
 						if (KDRestraint(inv.item)?.shrine?.includes("RopeSnake")) {
 							if (transmuteLevel > 2 || KDRestraint(inv.item)?.Group != "ItemNeck") {
-								KDChangeItemName(inv.item, Restraint,KDRestraint(inv.item).name.replace("RopeSnake", "WeakMagicRope"));
+								let newRes = KDRestraint(inv.item).name.replace("RopeSnake", "WeakMagicRope");
+								//if (KDCanAddRestraint(KinkyDungeonGetRestraintByName(newRes), true, "", false, inv.item))
+								KDChangeItemName(inv.item, Restraint, newRes);
 								effect = true;
 							}
 						}
