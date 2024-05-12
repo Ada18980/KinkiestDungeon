@@ -4063,7 +4063,7 @@ const KinkyDungeonRestraints = [
 
 	//region Obsidian
 
-	{inventory: true, name: "ObsidianGag", debris: "Chains", gag: 0.75, Asset: "MuzzleGag", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Color: ["#1C1847", "#1C1847"], Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 9, weight: -7, escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
+	{inventory: true, name: "ObsidianGag", debris: "Chains", gag: 0.75, Asset: "MuzzleGag", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Color: ["#1C1847", "#1C1847"], Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 9, weight: -4, escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
 		Model: "GagMetalRiveted",
 		Filters: {
 			Metal: {"gamma":0.55,"saturation":1,"contrast":1.6500000000000001,"brightness":0.9833333333333333,"red":1.1333333333333333,"green":0.95,"blue":2.833333333333333,"alpha":1},

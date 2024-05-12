@@ -781,6 +781,7 @@ function KDProcessInput(type, data) {
 
 				KinkyDungeonTargetTile = null;
 				KinkyDungeonTargetTileLocation = "";
+				KDModalArea = false;
 
 				// Remove the tile
 				let x = parseInt(data.targetTile.split(',')[0]);

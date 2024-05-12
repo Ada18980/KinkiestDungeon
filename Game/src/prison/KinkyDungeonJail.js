@@ -724,6 +724,17 @@ function KinkyDungeonHandleJailSpawns(delta) {
 
 	if (!KinkyDungeonJailGuard()) {
 		KDGameData.GuardTimer = 0;
+		if (KinkyDungeonLeashingEnemy()?.Enemy?.tags?.jailer || KinkyDungeonLeashingEnemy()?.Enemy?.tags?.jail) {
+			KDGameData.JailGuard = KinkyDungeonLeashingEnemy().id;
+		}
+		if (!KinkyDungeonJailGuard()) {
+			// In case enemy got interrupted
+			for (let en of KDMapData.Entities) {
+				if (!KDHelpless(en) && en.CurrentAction) {
+					KDGameData.JailGuard = en.id;
+				}
+			}
+		}
 	} else {
 		if (KDHelpless(KinkyDungeonJailGuard())) {
 			KDGameData.JailGuard = 0;
@@ -810,6 +821,10 @@ function KinkyDungeonTooMuchRestraint() {
 		let rest = KinkyDungeonGetJailRestraintForGroup(g);
 		if (rest && !Groups.includes(g)) Groups.push(g);
 	}
+	let allowedRestraints = {};
+	KDGetJailRestraints().forEach((rest) => {
+		allowedRestraints[rest.Name] = true;
+	});
 	let RemoveGroups = [];
 	for (let g of Groups) {
 		let jrest = KinkyDungeonGetJailRestraintForGroup(g);
@@ -818,9 +833,9 @@ function KinkyDungeonTooMuchRestraint() {
 		let cutoffpower = KinkyDungeonStatsChoice.get("KinkyPrison") ? -50 : 4;
 		let lockMult = currentItem ? Math.max(1, KinkyDungeonGetLockMult(currentItem.lock, currentItem) - 0.5) : (currentItem && KinkyDungeonIsLockable(KDRestraint(currentItem)) ? 0.4 : 1);
 		if (
-			(!rest && currentItem && KinkyDungeonRestraintPower(currentItem, false) + 0.01 <= Math.max(cutoffpower + 0.1, rest ? rest.power : cutoffpower)) // There shouldnt be one here
-			|| (rest && currentItem && currentItem && rest.name != currentItem.name
-				&& (KinkyDungeonRestraintPower(currentItem, false) + 0.01 < rest.power || KDRestraint(currentItem).power * lockMult <= Math.max(cutoffpower + 0.1, rest ? rest.power : cutoffpower))) // Wrong item equipped
+			((!rest && currentItem && KinkyDungeonRestraintPower(currentItem, false) + 0.01 <= Math.max(cutoffpower + 0.1, rest ? rest.power : cutoffpower)) // There shouldnt be one here
+			|| (rest && currentItem && currentItem && rest.name != currentItem.name && !allowedRestraints[currentItem.name]
+				&& (KinkyDungeonRestraintPower(currentItem, false) + 0.01 < rest.power || KDRestraint(currentItem).power * lockMult <= Math.max(cutoffpower + 0.1, rest ? rest.power : cutoffpower)))) // Wrong item equipped
 		) {
 			if (!currentItem || (!currentItem.curse && !KDRestraint(currentItem).curse && !KDRestraint(currentItem).enchanted))
 				RemoveGroups.push(g);

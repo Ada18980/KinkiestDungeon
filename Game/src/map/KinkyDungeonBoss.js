@@ -13,7 +13,7 @@ let bosses = {
 		genType: "Chamber",
 		spawns: false,
 		chests: false,
-		shrines: true,
+		shrines: false,
 		chargers: true,
 		torches: true,
 		heart: false,
