@@ -1515,7 +1515,11 @@ function KinkyDungeonDrawMagic() {
 				return true;
 			}
 			return true;
-		}, true, canvasOffsetX_ui + xOffset + 100 + 50, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 60, TextGet("KinkyDungeonBookLastPage"), "White", "", "", false, true, KDButtonColor);
+		}, true, canvasOffsetX_ui + xOffset + 100 + 50, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 60, TextGet("KinkyDungeonBookLastPage"), "White", "", "", false, true, KDButtonColor,
+		undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKey[1]),
+			hotkeyPress: KinkyDungeonKey[1],
+		});
 	}
 	if (KinkyDungeonCurrentPage < KinkyDungeonSpells.length-1) {
 		DrawButtonKDEx("magicnextpage", (bdata) => {
@@ -1530,7 +1534,11 @@ function KinkyDungeonDrawMagic() {
 			}
 
 			return true;
-		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 375, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 60, TextGet("KinkyDungeonBookNextPage"), "White", "", "", false, true, KDButtonColor);
+		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 375, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 60, TextGet("KinkyDungeonBookNextPage"), "White", "", "", false, true, KDButtonColor,
+		undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKey[3]),
+			hotkeyPress: KinkyDungeonKey[3],
+		});
 	}
 	if (KDSwapSpell != -1) {
 		DrawTextKD(TextGet("KinkyDungeonMagicSpellsQuick").replace("SPELLNAME", TextGet("KinkyDungeonSpell" + KinkyDungeonSpells[KinkyDungeonSpellChoices[KDSwapSpell]].name)), canvasOffsetX_ui + xOffset + 600, 900, "white", KDTextGray0);

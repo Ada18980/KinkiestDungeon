@@ -4316,6 +4316,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 	let attackCost = KDAttackCost();
 	let capture = false;
 	let result = "fail";
+	if (!Enemy.Enemy) return result;
 	if (Enemy) {
 		KDTurnToFace(Enemy.x - KinkyDungeonPlayerEntity.x, Enemy.y - KinkyDungeonPlayerEntity.y);
 	}

@@ -26,6 +26,7 @@ Monk class?
 - Buffed fuuka's dress, Gag
 - Reduced cut power of magic hammer
 - Fixed bug where rope getting enchanted would stack infinitely
+- Added more filter categories to enchanted restraints
 
 5.3.6
 - Fix tablets being too rare

@@ -143,7 +143,7 @@ let KinkyDungeonSpellSpecials = {
 		let push_x = targetX;
 		let push_y = targetY;
 		let powerful = false;
-		if (en) {
+		if (en?.Enemy) {
 			if (KinkyDungeonHasStamina(-cost)) {
 				let dist = KDistChebyshev(en.x - entity.x, en.y - entity.y);
 				if (dist < 1.5) {
@@ -210,7 +210,7 @@ let KinkyDungeonSpellSpecials = {
 	},
 	"Bondage": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
-		if (en) {
+		if (en?.Enemy) {
 			if (KDCanBind(en) && (KinkyDungeonIsDisabled(en) || (en.playWithPlayer && KDCanDom(en)))) {
 				KDGameData.InventoryAction = "Bondage";
 				KDGameData.BondageTarget = en.id;
