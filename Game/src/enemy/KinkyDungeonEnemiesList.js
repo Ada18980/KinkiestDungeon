@@ -4519,7 +4519,8 @@ let KinkyDungeonEnemies = [
 		AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 14, minLevel:3, weight:15, movePoints: 2,
 		attackPoints: 2, attack: "SpellMeleeBindLock", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 1.5,
 		terrainTags: {"increasingWeight":1, "dollsmith": 5}, floors:KDMapInit(["bel"]), shrines: ["Metal", "Latex"],
-		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}]},
+
+		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "KeyCard", weight: 1}]},
 
 	{name: "Dollmaker", nameList: "cyborg", outfit: "DollmakerApprentice", style: "Water", faction: "Enemy", clusterWith: "smithdoll", bound: "FactoryDoll", playLine: "Robot", color: "#ff88ff",
 		applyFaction: "Dollsmith",
@@ -4548,7 +4549,7 @@ let KinkyDungeonEnemies = [
 		AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 14, minLevel:5, weight:10, movePoints: 2.4,
 		attackPoints: 3, attack: "SpellMeleeBindWill", attackWidth: 1, attackRange: 1, power: 4, dmgType: "glue",
 		terrainTags: {"increasingWeight":1, "dollsmith": 5, "latexOptout": -9}, floors:KDMapInit(["bel"]), shrines: ["Metal", "Latex"],
-		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "StaffDoll", ignoreInInventory: true, weight: 100}, ]},
+		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "StaffDoll", ignoreInInventory: true, weight: 100}, {name: "KeyCard", weight: 4}]},
 
 	{name: "DollsmithDoll", nameList: "cyborg", outfit: "DollsmithDoll", style: "Water", faction: "Enemy", clusterWith: "dollsmith", bound: "EncasedFactoryDoll", playLine: "Gagged", color: "#ff3388",
 		applyFaction: "Dollsmith",

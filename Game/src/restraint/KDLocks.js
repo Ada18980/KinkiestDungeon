@@ -70,25 +70,7 @@ let KDLocks = {
 	},
 	"Cyber": {
 		specialActions: (tile, player) => {
-			DrawButtonKDEx("ModalDoorSwipe", () => {
-				KDSendInput("swipe", {targetTile: KinkyDungeonTargetTileLocation});
-				return true;
-			}, true, KDModalArea_x + 175, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonSwipeDoor"),
-			(KinkyDungeonInventoryGet("KeyCard")) ? "#ffffff" : "#ff5555", "", "");
-
-			DrawButtonKDEx("ModalDoorScan", () => {
-				KDSendInput("scan", {targetTile: KinkyDungeonTargetTileLocation});
-				return true;
-			}, true, KDModalArea_x + 450, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonScanDoor"),
-			!KDIsBlindfolded(player)
-				? "#ffffff" : "#ff5555", "", "");
-
-			DrawButtonKDEx("ModalDoorHack", () => {
-				KDSendInput("hack", {targetTile: KinkyDungeonTargetTileLocation});
-				return true;
-			}, true, KDModalArea_x + 725, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonHackDoor"),
-			KDCanHack(player)
-				? "#ffffff" : "#ff5555", "", "");
+			KDCyberActions(tile, player, 20);
 		},
 		canNPCPass: (xx, yy, MapTile, Enemy) => {
 			return Enemy?.Enemy?.tags.robot || Enemy?.Enemy?.tags.cyborg || Enemy?.Enemy?.tags.dollsmith || Enemy?.Enemy?.tags.cyberaccess || KDEnemyHasFlag(Enemy, "cyberaccess");
@@ -131,20 +113,155 @@ let KDLocks = {
 		},
 		unlock_diff: -1.0,
 		doUnlock: (data) => {
-			KDLockoutGain(KinkyDungeonPlayerEntity, data);
-			KDGameData.LockoutChance = Math.min((KDGameData.LockoutChance || 0) + data.lockoutgain, 1);
-			if (KDLockoutChance(KinkyDungeonPlayerEntity) >= 0.99) {
-				data.lockout = true;
-				KinkyDungeonSendEvent("beforelockout", data);
-				if (data.lockout) {
-					KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("KeyCard"), -1);
-					KinkyDungeonSendTextMessage(10, TextGet("KDLockout"), "#ff5277", 2);
-					KinkyDungeonSendEvent("lockout", data);
-				}
-			} else {
-				KinkyDungeonSendTextMessage(10, TextGet("KDLockoutTick").replace("AMNT", "" + Math.round(KDGameData.LockoutChance * 100)), "#ff5277", 2);
-			}
-			return true;
+			return KDCyberUnlock(data, 20);
+		},
+		removeKeys: (data) => {
+
+		},
+		failUnlock: (data) => {
+			return "Fail";
+		},
+
+		// Start of level -- for gold locks
+		levelStart: (item) => {
+		},
+		shrineImmune: false,
+
+		// Command word
+		commandlevel: 0, // rather than calling the function (which could vary) this is for classifying the lock
+		commandable: false,
+		command_lesser: () => {return 0.0 ;},
+		command_greater: () => {return 0.0;},
+		command_supreme: () => {return 0.0;},
+
+		loot_special: false,
+		loot_locked: false,
+	},
+	"Cyber2": {
+		specialActions: (tile, player) => {
+			KDCyberActions(tile, player, 50);
+		},
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return Enemy?.Enemy?.tags.robot || Enemy?.Enemy?.tags.cyborg || Enemy?.Enemy?.tags.dollsmith || Enemy?.Enemy?.tags.cyberaccess || KDEnemyHasFlag(Enemy, "cyberaccess");
+		},
+
+		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return false;
+		},
+		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return 0;
+		},
+
+		consume_key: false,
+		lockmult: 3.15,
+		// Picking
+		pickable: false, // rather than calling the function (which could vary) this is for classifying the lock
+		pick_speed: 1.5, // Multiplies the picking rate
+		pick_diff: -0.1, // Added to the item's pick difficulty
+
+		hackPick: true,
+
+		penalty: {
+			"Struggle": 0.25,
+			"Cut": 0.2,
+		},
+
+		canPick: (data) => {
+			return false;
+		},
+		doPick: (data) => {
+			return false;
+		},
+		failPick: (data) => {
+			return "Fail";
+		},
+		breakChance: (data) => {
+			return false;
+		},
+
+		// Key
+		unlockable: false, // rather than calling the function (which could vary) this is for classifying the lock
+		key: "KeyCard",
+		canUnlock: (data) => {
+			return KinkyDungeonInventoryGet("KeyCard") != undefined;
+		},
+		unlock_diff: -1.0,
+		doUnlock: (data) => {
+			return KDCyberUnlock(data, 50);
+		},
+		removeKeys: (data) => {
+
+		},
+		failUnlock: (data) => {
+			return "Fail";
+		},
+
+		// Start of level -- for gold locks
+		levelStart: (item) => {
+		},
+		shrineImmune: false,
+
+		// Command word
+		commandlevel: 0, // rather than calling the function (which could vary) this is for classifying the lock
+		commandable: false,
+		command_lesser: () => {return 0.0 ;},
+		command_greater: () => {return 0.0;},
+		command_supreme: () => {return 0.0;},
+
+		loot_special: false,
+		loot_locked: false,
+	},
+	"Cyber3": {
+		specialActions: (tile, player) => {
+			KDCyberActions(tile, player, 150);
+		},
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return Enemy?.Enemy?.tags.robot || Enemy?.Enemy?.tags.cyborg || Enemy?.Enemy?.tags.dollsmith || Enemy?.Enemy?.tags.cyberaccess || KDEnemyHasFlag(Enemy, "cyberaccess");
+		},
+
+		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return false;
+		},
+		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return 0;
+		},
+
+		penalty: {
+			"Struggle": 0.35,
+			"Cut": 0.35,
+		},
+
+		consume_key: false,
+		lockmult: 3.5,
+		// Picking
+		pickable: false, // rather than calling the function (which could vary) this is for classifying the lock
+		pick_speed: 1.5, // Multiplies the picking rate
+		pick_diff: -0.1, // Added to the item's pick difficulty
+
+		hackPick: true,
+
+		canPick: (data) => {
+			return false;
+		},
+		doPick: (data) => {
+			return false;
+		},
+		failPick: (data) => {
+			return "Fail";
+		},
+		breakChance: (data) => {
+			return false;
+		},
+
+		// Key
+		unlockable: false, // rather than calling the function (which could vary) this is for classifying the lock
+		key: "KeyCard",
+		canUnlock: (data) => {
+			return KinkyDungeonInventoryGet("KeyCard") != undefined;
+		},
+		unlock_diff: -1.0,
+		doUnlock: (data) => {
+			return KDCyberUnlock(data, 150);
 		},
 		removeKeys: (data) => {
 
@@ -977,4 +1094,43 @@ function KDCyberLink(player) {
  */
 function KDTryHack(player) {
 	return KDRandom() < (KDCyberLink(player) ? 0.5 : 0);
+}
+
+function KDCyberUnlock(data, base = 20) {
+	KDLockoutGain(KinkyDungeonPlayerEntity, data, base);
+	KDGameData.LockoutChance = Math.min((KDGameData.LockoutChance || 0) + data.lockoutgain, 1);
+	if (KDLockoutChance(KinkyDungeonPlayerEntity) >= 0.99) {
+		data.lockout = true;
+		KinkyDungeonSendEvent("beforelockout", data);
+		if (data.lockout) {
+			KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("KeyCard"), -1);
+			KinkyDungeonSendTextMessage(10, TextGet("KDLockout"), "#ff5277", 2);
+			KinkyDungeonSendEvent("lockout", data);
+		}
+	} else {
+		KinkyDungeonSendTextMessage(10, TextGet("KDLockoutTick").replace("AMNT", "" + Math.round(KDGameData.LockoutChance * 100)), "#ff5277", 2);
+	}
+	return true;
+}
+
+function KDCyberActions(data, player, base) {
+	DrawButtonKDEx("ModalDoorSwipe", () => {
+		KDSendInput("swipe", {targetTile: KinkyDungeonTargetTileLocation, base: base});
+		return true;
+	}, true, KDModalArea_x + 175, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonSwipeDoor"),
+	(KinkyDungeonInventoryGet("KeyCard")) ? "#ffffff" : "#ff5555", "", "");
+
+	DrawButtonKDEx("ModalDoorScan", () => {
+		KDSendInput("scan", {targetTile: KinkyDungeonTargetTileLocation, base: base});
+		return true;
+	}, true, KDModalArea_x + 450, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonScanDoor"),
+	!KDIsBlindfolded(player)
+		? "#ffffff" : "#ff5555", "", "");
+
+	DrawButtonKDEx("ModalDoorHack", () => {
+		KDSendInput("hack", {targetTile: KinkyDungeonTargetTileLocation, base: base});
+		return true;
+	}, true, KDModalArea_x + 725, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonHackDoor"),
+	KDCanHack(player)
+		? "#ffffff" : "#ff5555", "", "");
 }

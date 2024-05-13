@@ -5765,8 +5765,8 @@ function KDLockoutChance(player) {
  * @param {any} data
  * @returns {void}
  */
-function KDLockoutGain(player, data) {
-	data.lockoutgain = 0.25 + 0.01 * Math.round(KDRandom() * 15);
+function KDLockoutGain(player, data, base = 20) {
+	data.lockoutgain = 0.75 * base * 0.01 + 0.01 * Math.round(KDRandom() * 0.5 * base);
 	if (player.player) {
 		KinkyDungeonSendEvent("calcLockoutGain", data);
 	}

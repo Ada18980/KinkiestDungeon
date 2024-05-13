@@ -3452,11 +3452,23 @@ function KDMakeHostile(enemy, timer) {
  */
 function KDCheckVulnerableBackstab(enemy) {
 	if (KinkyDungeonAggressive(enemy) && enemy != KinkyDungeonLeashingEnemy()) {
-		if (enemy.fx && enemy.fy && KDistChebyshev(enemy.fx - enemy.x, enemy.fy - enemy.y) < 1.5 && !enemy.Enemy.tags.noflank) {
-			if (enemy.x * 2 - enemy.fx == KinkyDungeonPlayerEntity.x && enemy.y * 2 - enemy.fy == KinkyDungeonPlayerEntity.y) {
-				KDAddThought(enemy.id, "Annoyed", 4, 1);
-				enemy.vulnerable = Math.max(enemy.vulnerable, 1);
-				return true;
+		if (KDistChebyshev(enemy.fx - enemy.x, enemy.fy - enemy.y) < 1.5 && !enemy.Enemy.tags.noflank) {
+			if (enemy.fx && enemy.fx) {
+				if (enemy.x * 2 - enemy.fx == KinkyDungeonPlayerEntity.x && enemy.y * 2 - enemy.fy == KinkyDungeonPlayerEntity.y) {
+					KDAddThought(enemy.id, "Annoyed", 4, 1);
+					enemy.vulnerable = Math.max(enemy.vulnerable, 1);
+					return true;
+				}
+			} else if (!enemy.fx && !enemy.fy) {
+				let xmod = 0;
+				if (!enemy.Enemy?.nonDirectional) {
+					xmod = enemy.flip ? 1 : -1;
+				}
+				if (enemy.x + xmod == KinkyDungeonPlayerEntity.x && enemy.y == KinkyDungeonPlayerEntity.y) {
+					KDAddThought(enemy.id, "Confused", 4, 1);
+					enemy.vulnerable = Math.max(enemy.vulnerable, 1);
+					return true;
+				}
 			}
 		}
 	}

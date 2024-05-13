@@ -3284,6 +3284,8 @@ KinkyWhiteLockType,"Simple"
 KinkyBlueLockType,"Runic"
 KinkyPurpleLockType,"Magic"
 KinkyCyberLockType,"Cyber"
+KinkyCyber2LockType,"Integrated Cyber"
+KinkyCyber3LockType,"Advanced Cyber"
 KinkyGoldLockType,"Ancient"
 KinkyWhiteLock,"Simple Lock"
 KinkyRedLock,"Standard Lock"
@@ -3298,6 +3300,8 @@ KinkyWhiteLock,"Simple Lock"
 KinkyBlueLock,"Runic Lock"
 KinkyPurpleLock,"Purple Lock"
 KinkyCyberLock,"Cyber Lock"
+KinkyCyber2Lock,"Integrated Cyber Lock"
+KinkyCyber3Lock,"Advanced Cyber Lock"
 
 KinkyDungeonPotionGagged,"You can't use that while gagged!"
 KinkyDungeonCantUsePotions,"You can't use that without your fingers!"
@@ -17755,6 +17759,8 @@ KDFilterFiltersMetal,Metal
 KDFilterFiltersLatex,Latex
 KDFilterFiltersLeather,Leather
 KDFilterFiltersArmbinders,Armbinders
+KDFilterFiltersLegbinders,Legbinders
+KDFilterFiltersBoxbinders,Boxbinders
 KDFilterFiltersDevices,Devices
 KDFilterFiltersVibes,Toys
 KDFilterFiltersCollars,Collars
@@ -17765,11 +17771,16 @@ KDFilterFiltersBelts,Belts
 KDFilterFiltersWrapping,Wrapping
 KDFilterFiltersCuffs,Cuffs
 KDFilterFiltersChains,Chains
+KDFilterFiltersCorsets,Corsets
 KDFilterFiltersGags,Gags
+KDFilterFiltersHarnesses,Harnesses
+KDFilterFiltersMittens,Mittens
 KDFilterFiltersBoots,Boots
 KDFilterFiltersToys,Toys
 KDFilterFiltersChastityBelts,C. Belts
 KDFilterFiltersChastityBras,C. Bras
+KDFilterFiltersCyber,Cyber
+KDFilterFiltersMaid,Maid
 
 KDFilterFiltersHead,Head
 

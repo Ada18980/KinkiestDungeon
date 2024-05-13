@@ -637,7 +637,8 @@ const KinkyDungeonRestraints = [
 		Color: ['#222222', '#499ed6', '#555555', '#000000', '#555555', '#b927a8', '#3868E8', '#555555', '#222222'],
 		// Body, Display, Panel, Lock, band, trim, band, underplug, plug, strap
 		factionColor: [[0], [5], [1]],
-		Group: "ItemPelvis", chastity: true, power: 20, weight: 0, DefaultLock: "Red",
+		Group: "ItemPelvis", chastity: true, power: 20, weight: 0,
+		DefaultLock: "Cyber3",
 		tightType: "Secure",
 		Security: {
 			level_tech: 2,
@@ -662,7 +663,7 @@ const KinkyDungeonRestraints = [
 		Color: ['#499ed6', '#555555', '#222222', '#ffffff', '#555555', '#000000', "#000000"], Group: "ItemBreast",
 		factionColor: [[2, 5], [2], [0]],
 		tightType: "Secure",
-		chastitybra: true, power: 15, weight: 0, DefaultLock: "Gold",
+		chastitybra: true, power: 15, weight: 0,
 		Model: "BraCyber",
 		factionFilters: {
 			Display: {color: "Highlight", override: false},
@@ -675,6 +676,7 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 		],
+		DefaultLock: "Cyber3",
 		maxwill: 0.6,
 		escapeChance: {"Struggle": -1.1, "Cut": -0.8, "Remove": 1.0, "Pick": -0.35},
 		enemyTags: {"cyberdollchastity" : 1000},
@@ -696,7 +698,7 @@ const KinkyDungeonRestraints = [
 		restriction: 3,
 		Group: "ItemTorso", power: 10, weight: 0,
 		escapeChance: {"Struggle": -0.4, "Cut": -0.2, "Remove": 0.4, "Pick": 0.1},
-		DefaultLock: "Red",
+		DefaultLock: "Cyber3",
 		maxwill: 0.5,
 		enemyTags: {"controlHarness" : 20, "roboPrisoner" : 10, "cyberdollrestraints" : 100},
 		playerTags: {},
@@ -714,6 +716,7 @@ const KinkyDungeonRestraints = [
 			Band: {color: "Highlight", override: true},
 			Lock: {color: "DarkNeutral", override: true},
 		},
+		DefaultLock: "Cyber",
 		factionColor: [[], [], [0]],
 		Asset: "LatexElbowGloves", Color: "#ff5277", LinkableBy: [...KDGlovesLink], renderWhenLinked: ["Mittens"], Group: "ItemHands",
 		bindhands: 1.0, power: 10, weight: 0,
@@ -732,7 +735,7 @@ const KinkyDungeonRestraints = [
 		linkCategories: ["CyberCollar", "BasicCollar"], linkSizes: [0.7],
 		Color: ['#499ed6', '#555555', '#b927a8', '#000000'],
 		factionColor: [[], [2], [0]],
-		DefaultLock: "Disc",
+		DefaultLock: "Cyber2",
 		Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.25, "Remove": 0.33, "Pick": -0.15},
 		maxwill: 0.5,
@@ -753,7 +756,7 @@ const KinkyDungeonRestraints = [
 		linkCategories: ["CyberCollar", "BasicCollar"], linkSizes: [0.7, 0.45],
 		Color: ['#499ed6', '#555555', '#b927a8', '#000000'],
 		factionColor: [[], [2], [0]],
-		DefaultLock: "Cyber",
+		DefaultLock: "Cyber3",
 		Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender], power: 20, weight: 0,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.25, "Remove": 0.33, "Pick": -0.15},
 		maxwill: 0.5,
@@ -820,6 +823,7 @@ const KinkyDungeonRestraints = [
 		Asset: "FuturisticHarnessBallGag", strictness: 0.35, gag: 0.65,
 		Color: ['#499ed6', '#b927a8', '#222222', '#FFFFFF', '#000000'], Group: "ItemMouth", power: 12, weight: 0,
 		factionColor: [[2], [1], [0]],
+		DefaultLock: "Cyber2",
 		maxwill: 0.75, escapeChance: {"Struggle": -0.4, "Cut": -0.2, "Remove": 0.05, "Pick": -0.1},
 		enemyTags: {"cyberdollrestraints" : 10},
 		ApplyVariants: {
@@ -838,6 +842,7 @@ const KinkyDungeonRestraints = [
 		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["BallGags", "Gags", "Metal", "Cyber"]},
 	{inventory: true, sfx: "FutureLock", name: "CyberPlugGag", debris: "Belts", LinkableBy: [...KDPlugGagLink], renderWhenLinked: [...KDPlugGagLink],
 		Model: "AdvancedSciFiPlugGag",
+		DefaultLock: "Cyber2",
 		factionFilters: {
 			Display: {color: "Highlight", override: false},
 			Harness: {color: "DarkNeutral", override: true},
@@ -874,6 +879,7 @@ const KinkyDungeonRestraints = [
 			HarnessRim: {color: "LightNeutral", override: true},
 			Muzzle: {color: "LightNeutral", override: true},
 		},
+		DefaultLock: "Cyber",
 		inaccessible: true,
 		Asset: "FuturisticMuzzle", strictness: 0.35, gag: 0.5,
 		Color: ['#499ed6', '#222222', '#555555', '#FFFFFF', '#000000'], Group: "ItemMouth", power: 12, weight: 0,
@@ -886,6 +892,7 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, sfx: "FutureLock", name: "CyberDollJacket", inaccessible: true, remove: ["Bra", "Tops"], Asset: "FuturisticStraitjacket",
 
+		DefaultLock: "Cyber",
 		LinkableBy: [...KDJacketLink],
 		renderWhenLinked: [...KDJacketRender],
 		Model: "JacketBolero",
@@ -912,7 +919,7 @@ const KinkyDungeonRestraints = [
 		Group: "ItemArms", bindarms: true, bindhands: 1.0, power: 15, weight: 0, strictness: 0.2,
 		escapeChance: {"Struggle": -0.2, "Cut": -.3, "Remove": -0.3, "Pick": -0.1},
 		limitChance: {"Struggle": 0.3, "Cut": 0.3, "Remove": 0.1, "Unlock": 0.75}, // Hard to escape the arms box by struggling
-		maxwill: 0.1, DefaultLock: "Red",
+		maxwill: 0.1,
 		enemyTags: {"cyberdollheavy": 1}, events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 		],
@@ -929,6 +936,7 @@ const KinkyDungeonRestraints = [
 			Glow: {color: "Highlight", override: true},
 			Shoe: {color: "LightNeutral", override: true},
 		},
+		DefaultLock: "Cyber",
 		factionColor: [[0], [4], [1]],
 		Color: ["#222222", "#499ed6", "#ffffff", "Default", "#b927a8", "#222222", "#000000"],
 		Group: "ItemBoots", heelpower: 2, power: 10, weight: 0,
@@ -950,6 +958,7 @@ const KinkyDungeonRestraints = [
 		},
 		alwaysRender: true,
 		struggleBreak: true,
+		DefaultLock: "Cyber2",
 		linkCategory: "AnkleCuffs", linkSize: 0.4, noDupe: true,
 		Color: ["#499ed6", "#499ed6", "#b927a8", "#000000"],
 		factionColor: [[], [2], [0,1]],
@@ -966,6 +975,7 @@ const KinkyDungeonRestraints = [
 			Lock: {color: "DarkNeutral", override: true},
 		},
 		alwaysRender: true,
+		DefaultLock: "Cyber2",
 		Color: ["#499ed6", "#499ed6", "#b927a8", "#000000"],
 		struggleBreak: true,
 		factionColor: [[], [2], [0,1]],
@@ -973,7 +983,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.8, "Cut": -0.65, "Remove": 0.6, "Pick": -0.15},
 		enemyTags: {"cyberdollcuffs":6, "cyberdollrestraints":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 4, allFloors: true, shrine: ["Metal", "Cyber", "Cuffs", "LegCuffsBase"],
 	},
-	{renderWhenLinked: ["Ties"], sfx: "FutureLock", nonbinding: true, inventory: true, name: "CyberArmCuffs", debris: "Chains", DefaultLock: "Red", accessible: true,
+	{renderWhenLinked: ["Ties"], sfx: "FutureLock", nonbinding: true, inventory: true, name: "CyberArmCuffs", debris: "Chains", accessible: true,
 		Model: "CyberCuffsArms",
 		factionFilters: {
 			Display: {color: "Highlight", override: false},
@@ -983,6 +993,7 @@ const KinkyDungeonRestraints = [
 		},
 		alwaysRender: true,
 		struggleBreak: true,
+		DefaultLock: "Cyber2",
 		Asset: "FuturisticCuffs", linkCategory: "Cuffs", linkSize: 0.55, LinkableBy: [...KDDevices, ...KDBindable],
 		Color: ["#499ed6", "#b927a8", "#000000"],
 		factionColor: [[], [1], [0]],
