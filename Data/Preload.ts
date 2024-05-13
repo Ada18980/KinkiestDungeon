@@ -335,7 +335,7 @@ async function load() {
 	PIXI.BaseTexture.defaultOptions.mipmap = PIXI.MIPMAP_MODES.ON;
 	PIXI.BaseTexture.defaultOptions.anisotropicLevel = 0;
 	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
-	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR, true);
+	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR, false);
 	await PreloadDisplacement(displacementList);
 	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 
