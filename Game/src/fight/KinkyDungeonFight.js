@@ -244,7 +244,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 		if (!NoOverride) {
 			if (weapon && KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon))
 				KinkyDungeonSendTextMessage(10, TextGet("KDCantWield").replace("WPN", KDGetItemName(KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon))),
-					"#ff5555", 1, false, true);
+					"#ff5555", 1, false, true, undefined, "Action");
 			KDSetWeapon('Unarmed', true);
 		}
 	} else if (KinkyDungeonPlayerWeapon && weapon) {
@@ -726,7 +726,8 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 					if (!NoMsg)
 						KinkyDungeonSendTextMessage(4, TextGet((Enemy.vulnerable || Enemy.distraction > Enemy.Enemy.maxhp) ? "KinkyDungeonVulnerable" : "KinkyDungeonUnseen")
 							.replace("AMOUNT", "" + Math.round(10 * dmgBonus))
-							.replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), "lightgreen", 2);
+							.replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), "lightgreen", 2,
+						undefined, undefined, undefined, "Combat");
 
 
 
@@ -954,7 +955,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 					predata.blocked = true;
 					if (!NoMsg && predata.faction == "Player") {
 						KinkyDungeonSendTextMessage(4, TextGet(blockCount == 1 ? "KDEnemyBlockSuccess" : "KDEnemyBlockSuccessMulti")
-							.replace("ENMY", TextGet("Name" + Enemy.Enemy.name)), "orange", 2);
+							.replace("ENMY", TextGet("Name" + Enemy.Enemy.name)), "orange", 2, undefined, undefined, undefined, "Combat");
 					}
 
 					knockback();
@@ -962,7 +963,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 					if (!NoMsg && predata.faction == "Player") {
 						KinkyDungeonSendTextMessage(4, TextGet(blockCount == 1 ? "KDEnemyBlockPartial" : "KDEnemyBlockPartialMulti")
 							.replace("PCNT", "" + Math.round(100 * amount/orig))
-							.replace("ENMY", TextGet("Name" + Enemy.Enemy.name)), "orange", 2);
+							.replace("ENMY", TextGet("Name" + Enemy.Enemy.name)), "orange", 2, undefined, undefined, undefined, "Combat");
 					}
 
 					knockback();
@@ -1122,7 +1123,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 					if (!NoMsg && predata.faction == "Player") {
 						KinkyDungeonSendTextMessage(4, TextGet(effmult == 1 ? "KDIsBound" : (effmult > 1 ? "KDDisabledBonus" : "KDUnflinchingPenalty"))
 							.replace("AMNT", "" + Math.round(10 * amt))
-							.replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)), "lightgreen", 2);
+							.replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)), "lightgreen", 2, undefined, undefined, undefined, "Combat");
 					}
 
 				}
@@ -1164,7 +1165,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 								KinkyDungeonSendTextMessage(1, TextGet("KDEnemyLetGo")
 									.replace("ENMY", TextGet("Name" + Enemy.Enemy.name))
 									.replace("AMNT", "" + Math.round(10*damageData.damage)),
-								"#e7cf1a", 2);
+								"#e7cf1a", 2, undefined, undefined, undefined, "Combat");
 							}
 							Enemy.distraction = 0;
 							Enemy.desire = 0;
@@ -1261,7 +1262,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	if (!NoMsg && (!predata.blocked) && (predata.dmgDealt > 0 || !Spell || effect) && (!Damage || Damage.damage > 0)) {KinkyDungeonSendActionMessage(4 + predata.dmgDealt * 0.01, (Damage && predata.dmgDealt > 0) ?
 		TextGet((Ranged) ? "PlayerRanged" + mod : "PlayerAttack" + mod).replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)).replace("AttackName", atkname).replace("DamageDealt", "" + Math.round(predata.dmgDealt * 10)).replace("DamageType", ("" + damageName).toLowerCase())
 		: TextGet("PlayerMiss" + ((Damage && !miss) ? (predata.shieldBlocked ? "Shield" : "Armor") : "")).replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)),
-			(Damage && (predata.dmg > 0 || effect)) ? "orange" : "#ff5277", 2, undefined, undefined, Enemy);
+			(Damage && (predata.dmg > 0 || effect)) ? "orange" : "#ff5277", 2, undefined, undefined, Enemy, "Combat");
 	}
 
 	if (Enemy && Enemy.Enemy && KDAmbushAI(Enemy) && Spell) {
@@ -1370,7 +1371,8 @@ function KinkyDungeonDisarm(Enemy, suff) {
 			KinkyDungeonInventoryRemove(KinkyDungeonInventoryGetWeapon(weapon));
 
 			KDMapData.GroundItems.push(dropped);
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonDisarm" + (suff ? suff : "")), "#ff5277", 2);
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonDisarm" + (suff ? suff : "")), "#ff5277", 2,
+				undefined, undefined, undefined, "Combat");
 
 			return true;
 		}
@@ -1446,7 +1448,7 @@ function KinkyDungeonAttackEnemy(Enemy, Damage, chance, bullet) {
 		//KinkyDungeonDisarm(Enemy);
 		KinkyDungeonSendTextMessage(10, TextGet("KDDisarmFlag")
 			.replace("ENMY", TextGet("Name" + Enemy.Enemy.name)),
-		"#ff8844", 2);
+		"#ff8844", 2, undefined, undefined, undefined, "Combat");
 		AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
 		KinkyDungeonSetFlag("disarmFlagVulnerable", 2);
 	}
@@ -2160,9 +2162,9 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 				if (point) {
 					KinkyDungeonSetFlag("teleported", 1);
 					KDMovePlayer(point.x, point.y, false);
-					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportNearby"), "#e7cf1a", 2);
+					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportNearby"), "#e7cf1a", 2, undefined, undefined, undefined, "Combat");
 				} else {
-					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportFail"), "#e7cf1a", 2);
+					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportFail"), "#e7cf1a", 2, undefined, undefined, undefined, "Combat");
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/SoftShield.ogg");
 				}
 			} else {
@@ -2215,8 +2217,8 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 			}
 		}
 		if (!b.bullet.spell || !b.bullet.spell.noSumMsg) {
-			if (created == 1) KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSummonSingle"+type), "white", 2, undefined, undefined, b);
-			else if (created > 1) KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonSummonMulti"+type).replace("SummonCount", "" + created), "white", 3, undefined, undefined, b);
+			if (created == 1) KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSummonSingle"+type), "white", 2, undefined, undefined, b, "Combat");
+			else if (created > 1) KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonSummonMulti"+type).replace("SummonCount", "" + created), "white", 3, undefined, undefined, b, "Combat");
 		}
 	}
 

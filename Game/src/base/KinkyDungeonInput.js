@@ -465,6 +465,7 @@ function KDProcessInput(type, data) {
 				if (KinkyDungeonGold >= data.cost * mult) {
 					KinkyDungeonPayShrine(data.type, mult);
 					KinkyDungeonTilesDelete(KinkyDungeonTargetTileLocation);
+					KDModalArea = false;
 					let x =  data.targetTile.split(',')[0];
 					let y =  data.targetTile.split(',')[1];
 					KinkyDungeonMapSet(parseInt(x), parseInt(y), "a");
@@ -492,18 +493,18 @@ function KDProcessInput(type, data) {
 				KDAddQuest(tile.Quest);
 				delete tile.Quest;
 				tile.mult = 0;
-				KinkyDungeonSendActionMessage(9, TextGet("KDShrineQuestAccepted"), "#ffffff", 1);
+				KinkyDungeonSendActionMessage(9, TextGet("KDShrineQuestAccepted"), "#ffffff", 1, false, false, undefined, "Self");
 				return "Accept";
 			}
 
-			KinkyDungeonSendActionMessage(9, TextGet("KDShrineQuestAcceptedFail"), "#ffffff", 1);
+			KinkyDungeonSendActionMessage(9, TextGet("KDShrineQuestAcceptedFail"), "#ffffff", 1, false, false, undefined, "Self");
 			return "Fail";
 		}
 		case "shrineDevote": {
 			KDDelayedActionPrune(["Action", "World"]);
 			if (KinkyDungeonGoddessRep[data.type] <= -45 && KDGameData.Champion != data.type) {
 				//Cursed
-				KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), "#ff5555", 2);
+				KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), "#ff5555", 2, false, false, undefined, "Self");
 				return "Fail";
 			}
 
@@ -514,7 +515,7 @@ function KDProcessInput(type, data) {
 			KDDelayedActionPrune(["Action", "World"]);
 			if (KinkyDungeonGoddessRep[data.type] <= -45) {
 				//Cursed
-				KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), "#ff5555", 2);
+				KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), "#ff5555", 2, false, false, undefined, "Self");
 				return "Fail";
 			}
 
@@ -1056,14 +1057,14 @@ function KDProcessInput(type, data) {
 
 						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill", type: "restore_mp", power: Manamulti*0.5, duration: 20});
 						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill2", type: "restore_sp", power: multi*0.5, duration: 20});
-						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill3", type: "restore_wp", power: Willmulti*0.5, duration: 5});
+						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill3", type: "restore_wp", power: Willmulti*0.15, duration: 10});
 					} else if (tile.Name == "Determination") {
 						if (KinkyDungeonStatWill >= KinkyDungeonStatWillMax) {
 							full = true;
 						} else {
 							let Willmulti = 1.0;
 							Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
-							KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletDetermination", type: "restore_wp", power: Willmulti*1, duration: 5});
+							KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletDetermination", type: "restore_wp", power: Willmulti*0.30, duration: 10});
 						}
 					} else {
 						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,

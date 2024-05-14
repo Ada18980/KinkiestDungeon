@@ -678,6 +678,9 @@ function KinkyDungeonSendDialogue(entity, dialogue, color, duration, priority, f
 			entity.dialogueColor = color;
 			entity.dialogueDuration = 4;
 			entity.dialoguePriority = 1;
+			if (KDCanHearEnemy(KDPlayer(), entity) || KDCanSeeEnemy(entity)) {
+				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${dialogue}`, color, 0, false, false, entity, "Dialogue");
+			}
 			KDEnemyAddSound(entity, 7);
 		}
 		return;
@@ -689,7 +692,9 @@ function KinkyDungeonSendDialogue(entity, dialogue, color, duration, priority, f
 		entity.dialoguePriority = priority;
 		if (!entity.player) {
 			KDEnemyAddSound(entity, 12);
-			KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${dialogue}`, color, 0, true, false, entity);
+			if (KDCanHearEnemy(KDPlayer(), entity) || KDCanSeeEnemy(entity)) {
+				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${dialogue}`, color, 0, false, false, entity, "Dialogue");
+			}
 			KDAllowDialogue = false;
 		}
 	}

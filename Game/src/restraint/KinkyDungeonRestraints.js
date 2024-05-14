@@ -49,7 +49,8 @@ let KDCustomAffinity = {
 	HookOrFoot: (data) => {
 		if (KinkyDungeonCanUseFeetLoose()) {
 			if (data.Message) {
-				KinkyDungeonSendTextMessage(7, TextGet("KDUseFootAffinity"), "lightgreen", 2);
+				KinkyDungeonSendTextMessage(7, TextGet("KDUseFootAffinity"), "lightgreen", 2,
+					false, false, undefined, "Struggle");
 			}
 			return true;
 		}
@@ -58,7 +59,8 @@ let KDCustomAffinity = {
 	Tug: (data) => {
 		if (KinkyDungeonFlags.get("leashtug")) {
 			if (data.Message) {
-				KinkyDungeonSendTextMessage(7, TextGet("KDUseTugAffinity"), "lightgreen", 2);
+				KinkyDungeonSendTextMessage(7, TextGet("KDUseTugAffinity"), "lightgreen", 2,
+					false, false, undefined, "Struggle");
 			}
 			return true;
 		}
@@ -68,7 +70,8 @@ let KDCustomAffinity = {
 		if (!KinkyDungeonGetAffinity(data.Message, "Sharp", data.group)) return false;
 		if (KinkyDungeonCanUseFeetLoose()) {
 			if (data.Message) {
-				KinkyDungeonSendTextMessage(7, TextGet("KDUseFootAffinity"), "lightgreen", 2);
+				KinkyDungeonSendTextMessage(7, TextGet("KDUseFootAffinity"), "lightgreen", 2,
+					false, false, undefined, "Struggle");
 			}
 			return true;
 		}
@@ -78,7 +81,8 @@ let KDCustomAffinity = {
 		if (!KinkyDungeonGetAffinity(data.Message, "Sharp", data.group)) return false;
 		if (KinkyDungeonFlags.get("leashtug")) {
 			if (data.Message) {
-				KinkyDungeonSendTextMessage(7, TextGet("KDUseTugAffinity"), "lightgreen", 2);
+				KinkyDungeonSendTextMessage(7, TextGet("KDUseTugAffinity"), "lightgreen", 2,
+					false, false, undefined, "Struggle");
 			}
 			return true;
 		}
@@ -1311,7 +1315,8 @@ function KinkyDungeonGetAffinity(Message, affinity, group, entity) {
 			else if (data.canStand && data.groupIsHigh && t.affinitiesStanding && t.affinitiesStanding.includes(affinity)) return true;
 			else if (Message && !data.msgedStand && (!data.canStand || !data.groupIsHigh) && t.affinitiesStanding && t.affinitiesStanding.includes(affinity)) {
 				data.msgedStand = true;
-				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), "#ff5277", 2);
+				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), "#ff5277", 2,
+					false, false, undefined, "Struggle");
 			}
 		}
 	if (KDCustomAffinity[data.affinity]) {
@@ -1320,7 +1325,8 @@ function KinkyDungeonGetAffinity(Message, affinity, group, entity) {
 		let tile = KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		if (tile == '?') {
 			if (data.canStand && data.groupIsHigh) return true;
-			else if (!data.msgedStand && Message) KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), "#ff5277", 2);
+			else if (!data.msgedStand && Message) KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), "#ff5277", 2,
+				false, false, undefined, "Struggle");
 		} else if (KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y - 1) == ',') return true;
 		return KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
 	} else if (affinity == "Edge") {
@@ -1330,7 +1336,8 @@ function KinkyDungeonGetAffinity(Message, affinity, group, entity) {
 				if (KDCornerTiles[tile]) {
 					return true;
 				} else if (tile == 'C' && Message) {
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedOpenChest"), "#ff5277", 2, true);
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedOpenChest"), "#ff5277", 2, true,
+						false, undefined, "Struggle");
 				}
 			}
 		}
@@ -1343,7 +1350,8 @@ function KinkyDungeonGetAffinity(Message, affinity, group, entity) {
 		let tile = KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		if (tile == '/') {
 			if (Message)
-				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonScrapUse"), "lightgreen", 2);
+				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonScrapUse"), "lightgreen", 2,
+					false, false, undefined, "Struggle");
 			return true;
 		}
 		for (let X = KinkyDungeonPlayerEntity.x - 1; X <= KinkyDungeonPlayerEntity.x + 1; X++) {
@@ -1352,7 +1360,8 @@ function KinkyDungeonGetAffinity(Message, affinity, group, entity) {
 				if (tile2 == '-'
 					|| tile == 'a') {
 					if (Message)
-						KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonScrapObjectUse"), "lightgreen", 2);
+						KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonScrapObjectUse"), "lightgreen", 2,
+							false, false, undefined, "Struggle");
 					return true;
 				}
 			}
@@ -4349,7 +4358,8 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 							if (inventoryAs) {
 								let origRestraint = KinkyDungeonGetRestraintByName(inventoryAs);
 								if (origRestraint && invrest.shrine?.includes("Cursed") && !origRestraint.shrine?.includes("Cursed")) {
-									KinkyDungeonSendTextMessage(10, TextGet("KDCursedArmorUncurse").replace("RestraintName", TextGet("Restraint" + invrest.name)), "#aaffaa", 1);
+									KinkyDungeonSendTextMessage(10, TextGet("KDCursedArmorUncurse").replace("RestraintName", TextGet("Restraint" + invrest.name)), "#aaffaa", 1,
+										false, false, undefined, "Struggle");
 								}
 								if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
 									KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
@@ -4453,7 +4463,8 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover, Fo
 				if (inventoryAs) {
 					let origRestraint = KinkyDungeonGetRestraintByName(inventoryAs);
 					if (origRestraint && rest.shrine?.includes("Cursed") && !origRestraint.shrine?.includes("Cursed")) {
-						KinkyDungeonSendTextMessage(10, TextGet("KDCursedArmorUncurse").replace("RestraintName", TextGet("Restraint" + rest.name)), "#aaffaa", 1);
+						KinkyDungeonSendTextMessage(10, TextGet("KDCursedArmorUncurse").replace("RestraintName", TextGet("Restraint" + rest.name)), "#aaffaa", 1,
+							false, false, undefined, "Struggle");
 						if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
 							KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
 						}
@@ -4571,7 +4582,8 @@ function KinkyDungeonLinkItem(newRestraint, oldItem, tightness, Lock, Keep, fact
 			KDUpdateItemEventCache = true;
 			KDUpdateLinkCaches(newItem);
 			if (autoMessage && KDRestraint(oldItem).Link)
-				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonLink" + oldItem.name), "#ff5277", 2);
+				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonLink" + oldItem.name), "#ff5277", 2,
+					false, false, undefined, "Struggle");
 
 
 			KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: newItem, host: undefined, keep: Keep, Link: true});
@@ -4607,9 +4619,11 @@ function KinkyDungeonUnLinkItem(item, Keep, dynamic) {
 
 				KinkyDungeonSendEvent("postRemoval", {item: null, keep: Keep, shrine: false, Link: false, dynamic: true});
 				if (KDRestraint(item).UnLink) {
-					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonUnLink" + item.name), "lightgreen", 2);
+					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonUnLink" + item.name), "lightgreen", 2,
+						false, false, undefined, "Struggle");
 				} else
-					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonUnLink"), "lightgreen", 2);
+					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonUnLink"), "lightgreen", 2,
+						false, false, undefined, "Struggle");
 				return true;
 			}
 		}
@@ -4704,9 +4718,11 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 		}
 		if (KDRandom() < data.destroyChance) {
 			if (KDAlwaysKeep({name: restraint.name, id: 0}, KinkyDungeonPlayerEntity)) {
-				KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonStruggleCutDestroyFail").replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff5277", 2);
+				KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonStruggleCutDestroyFail").replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff5277", 2,
+					false, false, undefined, "Struggle");
 			} else {
-				KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonStruggleCutDestroy").replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff5277", 2);
+				KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonStruggleCutDestroy").replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff5277", 2,
+					false, false, undefined, "Struggle");
 			}
 			destroy = true;
 		}
@@ -4729,7 +4745,8 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 		if (trap) {
 			let summon = KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, trap, 1, 2.5).length;
 			if (summon) {
-				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonSummonTrapMonster"), "#ff5277", 2);
+				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonSummonTrapMonster"), "#ff5277", 2,
+					false, false, undefined, "Struggle");
 			}
 		}
 	}

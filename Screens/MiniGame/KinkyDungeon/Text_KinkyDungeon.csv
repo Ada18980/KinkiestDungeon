@@ -48,6 +48,7 @@ KDToggleTabKeybindings,Keybindings
 KDToggleAllowSusMods,Allow Suspicious Mods
 KDToggleAutoLoadMods,Auto Load Mods (offline only)
 KDToggleSkipIntro,Skip Intro
+KDToggleShowRestraintOnHover,Show Restraint Info on Escape Hover
 KDToggleForceWarnings,Always Show Warnings
 KDToggleEnableMinimap,Always Show Minimap
 KDToggleSound,Enable Sound
@@ -18890,6 +18891,7 @@ KillBarricadeBlastDoor,"You knock down the blast door!"
 
 KDSell,You sell the ITM for VLU gp.
 KDSellBulk,You sell #x ITM for VLU gp.
+KDSellExcess,You sell #x ITM for VLU gp.
 
 
 KinkyDungeonStatDirectionVision,"Directional Vision"
@@ -20951,3 +20953,10 @@ KDLockoutTick,"Unauthorized removal detected. System lockout progress: AMNT%"
 
 ItemPickupFlashBomb,"You pick up a flash bomb."
 ItemPickupFlashbang,"You pick up a flashbang grenade."
+
+KDLogFilterCombat,Combat
+KDLogFilterActions,Actions
+KDLogFilterSelf,Self
+KDLogFilterDialogue,Dialogue
+KDLogFilterAmbient,Ambient
+KDLogFilterStruggle,Struggle

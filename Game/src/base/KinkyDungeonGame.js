@@ -1124,10 +1124,11 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			if (altType && altType.orbs != undefined) orbcount = altType.orbs;
 			if (!altType || altType.shrines) {
 				let modify = 0;
-				if (!altType || altType.heart) modify = 2;
+				let allowHearts = (!altType || altType.heart) && KDGameData.CollectedHearts*0.5 < (MiniGameKinkyDungeonLevel + KinkyDungeonMaxLevel*KinkyDungeonNewGame);
+				if (allowHearts) modify = 2;
 				let quests = KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTypes, shrinecount,
 					shrinefilter, ghostchance, manaChance, orbcount, (altType && altType.noShrineTypes) ? altType.noShrineTypes : [],
-					Floor, width, height, !altType || (altType.makeMain && !altType.noQuests), (!altType || altType.heart) && KDGameData.CollectedHearts*0.5 < (MiniGameKinkyDungeonLevel + KinkyDungeonMaxLevel*KinkyDungeonNewGame));
+					Floor, width, height, !altType || (altType.makeMain && !altType.noQuests), allowHearts);
 				if (
 				//(
 				//(KDGameData.SelectedEscapeMethod && KinkyDungeonEscapeTypes[KDGameData.SelectedEscapeMethod]?.requireMaxQuests)
@@ -4247,13 +4248,13 @@ function KinkyDungeonGameKeyUp(lastPress) {
 	return false;
 }
 
-function KinkyDungeonSendTextMessage(priority, text, color, time, noPush, noDupe, entity) {
+function KinkyDungeonSendTextMessage(priority, text, color, time, noPush, noDupe, entity, filter = "Self") {
 	if (entity && KinkyDungeonVisionGet(entity.x, entity.y) < 1) return false;
 	if (text) {
 		if (!noPush)
 			if (!noDupe || KinkyDungeonMessageLog.length == 0 || !KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1] || text != KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1].text) {
 				if (KDLogIndex > 0) KDLogIndex += 1;
-				KinkyDungeonMessageLog.push({text: text, color: color, time: KinkyDungeonCurrentTick});
+				KinkyDungeonMessageLog.push({text: text, color: color, time: KinkyDungeonCurrentTick, filter: filter});
 			}
 
 		if ( priority >= KinkyDungeonTextMessagePriority || KinkyDungeonActionMessageTime < 0.5) {
@@ -4269,13 +4270,13 @@ function KinkyDungeonSendTextMessage(priority, text, color, time, noPush, noDupe
 }
 
 
-function KinkyDungeonSendActionMessage(priority, text, color, time, noPush, noDupe, entity) {
+function KinkyDungeonSendActionMessage(priority, text, color, time, noPush, noDupe, entity, filter = "Action") {
 	if (entity && KinkyDungeonVisionGet(entity.x, entity.y) < 1) return false;
 	if (text) {
 		if (!noPush)
 			if (!noDupe || KinkyDungeonMessageLog.length == 0 || !KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1] || text != KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1].text){
 				if (KDLogIndex > 0) KDLogIndex += 1;
-				KinkyDungeonMessageLog.push({text: text, color: color, time: KinkyDungeonCurrentTick});
+				KinkyDungeonMessageLog.push({text: text, color: color, time: KinkyDungeonCurrentTick, filter: filter});
 			}
 		if ( priority >= KinkyDungeonActionMessagePriority || KinkyDungeonActionMessageTime < 0.5) {
 			KinkyDungeonActionMessageTime = time;
@@ -4707,7 +4708,8 @@ function KinkyDungeonWaitMessage(NoTime, delta) {
 					"ArousedHeavy"
 					: "Aroused"))
 					: "")), "yellow", 2);
-		else KinkyDungeonSendActionMessage(1, TextGet("Wait" + (KinkyDungeonStatDistraction > 12 ? "Aroused" : "")), "silver", 2);
+		else KinkyDungeonSendActionMessage(1, TextGet("Wait" + (KinkyDungeonStatDistraction > 12 ? "Aroused" : "")), "silver", 2,
+			undefined, undefined, undefined, "Action");
 	}
 
 	if (!NoTime && delta > 0) {

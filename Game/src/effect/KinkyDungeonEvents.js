@@ -2364,9 +2364,9 @@ let KDEventMapInventory = {
 			if (amnt > 0) {
 				if (!e.chance || KDRandom() < e.chance) {
 					let distractionStart = KinkyDungeonStatDistraction;
-					KinkyDungeonChangeDistraction(1, 0.1);
-					if (distractionStart < KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerCap && KinkyDungeonStatDistraction > distractionStart) {
-						KinkyDungeonChangeMana(amnt * 0.1, false);
+					KinkyDungeonChangeDistraction(1, false, 0.5);
+					if (distractionStart < KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerCap && KinkyDungeonStatDistraction > distractionStart) {
+						KinkyDungeonChangeMana(amnt, false);
 						KinkyDungeonSendTextMessage(6, TextGet("KDQuakeCollar"), "#8888ff", 4);
 					} else {
 						KinkyDungeonSendTextMessage(6, TextGet("KDQuakeCollarFail"), "#8888ff", 4);
@@ -6043,8 +6043,20 @@ let KDEventMapWeapon = {
 		"Buff": (e, weapon, data) => {
 			if (KDCheckPrereq(null, e.prereq, e, data))
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-					id: (e.kind || weapon.name) + e.buffType,
-					type: e.buffType,
+					id: (e.kind || weapon.name) + (e.buffType || e.buff),
+					type: e.buffType || e.buff,
+					power: e.power,
+					tags: e.tags,
+					currentCount: e.mult ? -1 : undefined,
+					maxCount: e.mult,
+					duration: 2
+				});
+		},
+		"buff": (e, weapon, data) => {
+			if (KDCheckPrereq(null, e.prereq, e, data))
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					id: (e.kind || weapon.name) + (e.buffType || e.buff),
+					type: e.buffType || e.buff,
 					power: e.power,
 					tags: e.tags,
 					currentCount: e.mult ? -1 : undefined,
@@ -6053,6 +6065,19 @@ let KDEventMapWeapon = {
 				});
 		},
 		"BuffMulti": (e, weapon, data) => {
+			if (KDCheckPrereq(null, e.prereq, e, data))
+				for (let buff of e.buffTypes)
+					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+						id: (e.kind || weapon.name) + buff,
+						type: buff,
+						power: e.power,
+						tags: e.tags,
+						currentCount: e.mult ? -1 : undefined,
+						maxCount: e.mult,
+						duration: 2
+					});
+		},
+		"buffmulti": (e, weapon, data) => {
 			if (KDCheckPrereq(null, e.prereq, e, data))
 				for (let buff of e.buffTypes)
 					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {

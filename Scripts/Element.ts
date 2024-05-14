@@ -56,6 +56,10 @@ function ElementCreateTextArea(ID: string): void {
 		TextArea.setAttribute("ID", ID);
 		TextArea.setAttribute("screen-generated", CurrentScreen);
 		TextArea.setAttribute("name", ID);
+		TextArea.setAttribute("autocapitalize", "off");
+		TextArea.setAttribute("autocomplete", "off");
+		TextArea.setAttribute("autocorrect", "off");
+		TextArea.setAttribute("spellcheck", "false");
 		//TextArea.addEventListener("keydown", KeyDown);
 		TextArea.className = "HideOnPopup";
 		Object.assign(TextArea.style, KDTextBoxStyle);
@@ -81,6 +85,10 @@ function ElementCreateInput(ID: string, Type: string, Value: string, MaxLength: 
 		Input.setAttribute("screen-generated", CurrentScreen);
 		Input.setAttribute("maxlength", MaxLength);
 		Input.setAttribute("onfocus", "this.removeAttribute('readonly');");
+		Input.setAttribute("autocapitalize", "off");
+		Input.setAttribute("autocomplete", "off");
+		Input.setAttribute("autocorrect", "off");
+		Input.setAttribute("spellcheck", "false");
 		//Input.addEventListener("keydown", KeyDown);
 		Input.className = "HideOnPopup";
 		document.body.appendChild(Input);

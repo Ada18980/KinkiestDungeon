@@ -39,6 +39,7 @@ let KDEnchantVariantList = {
 	"CommonWeapon": [
 		"Accuracy",
 		"SpellWard",
+		"DamageResist",
 		"ElementalDmg",
 		"AoEDamageFrozen",
 		"ShadowBleed",
@@ -286,7 +287,7 @@ let KDEventEnchantmentModular = {
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "SpellWard", trigger: "calcEvasion", type: "IsMagic"},
-						{original: "SpellWard", trigger: "tick", type: "spellWardBuff", power: amt/10, inheritLinked: true},
+						{original: "SpellWard", trigger: "tick", type: "spellWardBuff", power: amt/10, inheritLinked: true, offhand: KDWeapon({name: item})?.tags?.includes("shield") ? true : undefined},
 						{original: "SpellWard", trigger: "inventoryTooltip", type: "varModifier", msg: "SpellWard", power: amt, color: "#000044", bgcolor: "#4444ff"},
 						{original: "SpellWard", trigger: "icon", type: "tintIcon", power: 2, color: "#4444ff"},
 					];}},
@@ -339,7 +340,25 @@ let KDEventEnchantmentModular = {
 		suffix: "DamageResist",
 		types: {
 			2: null, //consumable
-			1: null, //weapon
+			1: /*weapon*/{level: 3,
+				filter: (item, allEnchant) => {
+					return true;
+				},
+				weight: (item, allEnchant) => {
+					if (allEnchant.includes("DamageResist")) return 0;
+					return (KinkyDungeonWeapons[item]?.tags?.includes("shield") ? 50 : 0);
+				},
+				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+					let power = Math.max(KDGetItemRarity(item), 4);
+					let amt = 14 + Math.round((0.4 + 0.6*KDRandom()) * 11 * Math.pow(power, 0.75));
+					let types = ['fire', 'ice', 'acid', 'glue', 'chain', 'grope', 'crush', 'cold', 'electric', 'poison', 'soul', 'tickle'];
+					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
+					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
+					return [
+						{original: "DamageResist", trigger: "tick", type: "buff", power: amt/100, buff: type+"DamageResist", kind: type, inheritLinked: true, offhand: KDWeapon({name: item})?.tags?.includes("shield") ? true : undefined},
+						{original: "DamageResist", trigger: "icon", type: "tintIcon", power: 3, bgcolor: KinkyDungeonDamageTypes[type].color},
+						{original: "DamageResist", trigger: "inventoryTooltip", type: "varModifier", msg: "DamageResist", power: amt, kind: TextGet("KinkyDungeonDamageType" + type), bgcolor: KinkyDungeonDamageTypes[type].color, color: KinkyDungeonDamageTypes[type].bg || "#004400"},
+					];}},
 			0: /*restraint*/{level: 3,
 				filter: (item, allEnchant) => {
 					return true;

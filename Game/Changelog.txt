@@ -22,12 +22,21 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.3.8
+- Nerfed restoration tablets and determination tablets to compensate for increased counts
+- Reduced time taken to copy large save codes in some browsers
+- Added 'Show Restraint Info on Escape Hover' option
+- greatly buffed the epsilon collar
+- Added filters to the log
+- Added damage resist enchantments for the shield table
+
 5.3.7
 - Buffed fuuka's dress, Gag
 - Reduced cut power of magic hammer
 - Fixed bug where rope getting enchanted would stack infinitely
 - Added more filter categories to enchanted restraints
 - Made the flanking stun more convenient when enemies arent moving
+- Added new cyber lock types
 
 5.3.6
 - Fix tablets being too rare

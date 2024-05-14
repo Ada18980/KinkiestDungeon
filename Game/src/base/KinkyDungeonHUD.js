@@ -2876,7 +2876,8 @@ function KDDrawStruggleGroups() {
 
 
 				//if (MouseY < y) {
-				KinkyDungeonDrawInventorySelected(KDGetItemPreview(item), false, true, 700);
+				if (KDToggles.ShowRestraintOnHover || MouseIn(0, 0, 250, 1000))
+					KinkyDungeonDrawInventorySelected(KDGetItemPreview(item), false, true, 700);
 				//}
 
 				let data = {

@@ -122,6 +122,7 @@ let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight", 'T',
 let KinkyDungeonKeySpellPage = ['`'];
 let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H', 'J']; // Swap, Offhand, OffhandPrevious
 let KinkyDungeonKeySwitchLoadout = ['[', ']', '\\'];
+let KinkyDungeonKeyLogFilter = ['{', '}', ':', '"'];
 let KinkyDungeonKeyMap = ['+'];
 
 let KDLoadingTextKeys = {};
@@ -140,6 +141,7 @@ let KinkyDungeonGraphicsQuality = true;
 let KDToggleGroups = ["Main", "GFX", "UI", "Clothes", "Keybindings"];
 
 let KDToggles = {
+	ShowRestraintOnHover: true,
 	HiResModel: false,
 	Fullscreen: false,
 	SkipIntro: false,
@@ -242,6 +244,7 @@ let KDToggleCategories = {
 	ZoomOut: "UI",
 	Helper: "UI",
 	FlipStatusBars: "UI",
+	ShowRestraintOnHover: "UI",
 	ForcePalette: "Clothes",
 	//LazyWalk: "Controls",
 	//ShiftLatch: "Controls",
@@ -529,11 +532,20 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 * NightVision: number,
 * LockoutChance: number,
 * StatMaxBonus: Record<string, number>,
+* LogFilters: Record<string, boolean>,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	LogFilters: {
+		Combat: true,
+		Self: true,
+		Action: true,
+		Struggle: true,
+		Ambient: true,
+		Dialogue: false,
+	},
 	LockoutChance: 0,
 	ShortcutIndex: -1,
 	JourneyProgression: [...KDDefaultJourney],

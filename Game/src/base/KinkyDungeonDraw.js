@@ -965,7 +965,7 @@ function KinkyDungeonDrawGame() {
 		DrawTextFitKD(TextGet("KinkyDungeon") + " v" + TextGet("KDVersionStr"), 1990, 50, 200, "#ffffff", KDTextGray2, undefined, "right");
 	}
 	KDDrawMinimap(1990-KDMinimapWCurrent, 25);
-	KDDrawPartyMembers(500 + ((KDToggles.BuffSide && !KDToggleShowAllBuffs) ? 60 : 0), Math.min(500, KDMinimapHeight()+81), tooltips);
+	KDDrawPartyMembers(500 + ((KDToggles.BuffSide && !KDToggleShowAllBuffs) ? 60 : 0), 500 + ((KDToggles.BuffSide && KDToggleShowAllBuffs) ? 175 : 0), tooltips);
 
 	if (StandalonePatched)
 		PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
@@ -2251,8 +2251,17 @@ let KDMsgFadeTime = 10;
 
 let KDMaxConsoleMsg = 6;
 
+let KDLogFilters = [
+	"Combat",
+	"Action",
+	"Self",
+	"Struggle",
+	"Ambient",
+	"Dialogue",
+];
+
 function KinkyDungeonDrawMessages(NoLog) {
-	if (!NoLog)
+	if (!NoLog) {
 		DrawButtonKDEx("logtog", (bdata) => {
 			KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle;
 			KDLogIndex = 0;
@@ -2263,6 +2272,39 @@ function KinkyDungeonDrawMessages(NoLog) {
 			hotkeyPress: KinkyDungeonKeyToggle[0],
 			scaleImage: true,
 		});
+		if (!KDGameData.LogFilters) {
+			KDGameData.LogFilters = {};
+			for (let filter of KDLogFilters) {
+				KDGameData.LogFilters[filter] = true;
+			}
+		}
+		let spacing = 51;
+		let size = 48;
+		let filterCols = 2;
+		let yyy = KDLogFilters.length * spacing/filterCols + 30;
+		if (MouseIn(KDMsgWidthMin + KDMsgX + 70, 0, 300, yyy)) {
+			let filterX = KDMsgWidthMin + KDMsgX + 70 + 60;
+			let filterY = 4;
+			let ii = 0;
+			for (let filter of KDLogFilters) {
+				if (
+					DrawButtonKDEx("logtog" + filter, (bdata) => {
+						KDGameData.LogFilters[filter] = !KDGameData.LogFilters[filter];
+						return true;
+					}, true, filterX + spacing * (ii%filterCols), filterY + spacing*Math.floor(ii/filterCols), size, size, "", "#ffffff",
+					KinkyDungeonRootDirectory + "UI/Log/" + filter + ".png", undefined, undefined,
+					!KDGameData.LogFilters[filter], undefined, undefined, undefined, {
+						//hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[0]),
+						//hotkeyPress: KinkyDungeonKeyToggle[0],
+						scaleImage: true,
+					})) {
+					DrawTextFitKD(TextGet("KDLogFilter" + filter), filterX + spacing * (ii%filterCols), yyy, 300, "#ffffff", KDTextGray1, 14, "right");
+				}
+				ii++;
+			}
+		}
+
+	}
 	if (!KinkyDungeonMessageToggle || NoLog) {
 		let zLevel = KDModalArea ? 50 : undefined;
 		let i = 0;
@@ -2309,8 +2351,12 @@ function KinkyDungeonDrawMessages(NoLog) {
 				for (let msg of msg2nd) {
 					if (i > KDMaxConsoleMsg || (KinkyDungeonDrawState != "Game" && i > 3)) break;
 					if (alpha > 0) {
+						if (msg.filter && KDGameData.LogFilters && KDGameData.LogFilters[msg.filter] == false) {
+							continue;
+						}
 						alpha = Math.max(0, Math.min(1, 2.0 - i / KDMaxConsoleMsg)) * (1 - Math.max(0, Math.min(1, Math.max(0, KinkyDungeonCurrentTick - msg.time - 1)/KDMsgFadeTime)));
-						DrawTextFitKD(msg.text, KDMsgX + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, msg.color, KDTextGray1, KDMSGFontSize, undefined, zLevel, alphamin + (1 - alphamin) * alpha); i++;
+						DrawTextFitKD(msg.text, KDMsgX + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, msg.color, KDTextGray1, KDMSGFontSize, undefined, zLevel, alphamin + (1 - alphamin) * alpha);
+						i++;
 					}
 				}
 			}
@@ -2340,10 +2386,15 @@ function KinkyDungeonDrawMessages(NoLog) {
 			zIndex: 100,
 			alpha: 0.6,
 		});
+		let ii = 0;
 		for (let i = 0; i < KinkyDungeonMessageLog.length && i < KDMaxLog; i++) {
 			let log = KinkyDungeonMessageLog[Math.max(0, KinkyDungeonMessageLog.length - 1 - (i + KDLogIndex))];
+			if (log.filter && KDGameData.LogFilters && KDGameData.LogFilters[log.filter] == false) {
+				continue;
+			}
 			let col = log.color;
-			DrawTextFitKD(log.text, KDMsgX + KDMsgWidth/2, KDLogTopPad + i * KDLogDist + KDLogDist/2, KDMsgWidth, col, KDTextGray1, KDMSGFontSize, undefined, 101);
+			DrawTextFitKD(log.text, KDMsgX + KDMsgWidth/2, KDLogTopPad + ii * KDLogDist + KDLogDist/2, KDMsgWidth, col, KDTextGray1, KDMSGFontSize, undefined, 101);
+			ii++;
 		}
 		if (KinkyDungeonMessageLog.length > KDMaxLog) {
 			DrawButtonKDEx("logscrollup", (bdata) => {
