@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.6"
+KDVersionStr,"5.3.9"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -17645,11 +17645,11 @@ RestraintRopeSnakeArmsBoxtieDesc2,"The ropes squeeze you gently."
 RestraintRopeSnakeCuffs,Rope Cuffs
 RestraintRopeSnakeCuffsDesc,"A quick tie for apprehending prisoners."
 RestraintRopeSnakeCuffsDesc2,"It's not very secure."
-RestraintRopeSnakeCuffsAdv,Intricate Ropework
+RestraintRopeSnakeCuffsAdv,Chest Straps
 RestraintRopeSnakeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles on the hand restraints."
 RestraintRopeSnakeCuffsAdvDesc2,"It's not very secure."
-RestraintRopeSnakeCuffsAdv2,Strict Ropework
-RestraintRopeSnakeCuffsAdv2Desc,"The finishing touches on a tight and strict piece of ropework."
+RestraintRopeSnakeCuffsAdv2,Chest Harness
+RestraintRopeSnakeCuffsAdv2Desc,"The finishing touch on a tight and strict piece of ropework."
 RestraintRopeSnakeCuffsAdv2Desc2,"It's not very secure."
 RestraintRopeSnakeHogtie,Rope Hogtie
 RestraintRopeSnakeHogtieDesc,"A very strict and tight hogtie, good for subduing unruly captives."
@@ -20948,14 +20948,15 @@ KinkyDungeonInventoryItemKeyCardUse,"The keycard's shiny surface reflects the li
 KinkyDungeonInventoryItemKeyCardDesc,"A piece of identification that contains an access code."
 KinkyDungeonInventoryItemKeyCardDesc2,"You can use it to unlock certain doors."
 KDCyberHostileKeyCard,"Your keycard blinks red as the facility remotely locks it!"
-KDLockout,"Your keycard blinks red as the facility remotely locks it!"
-KDLockoutTick,"Unauthorized removal detected. System lockout progress: AMNT%"
+KDLockout,"Your keycard blinks red as the facility remotely locks it! System Security: 100%"
+KDLockoutTick,"Unauthorized removal detected. System Security: AMNT%"
+KDLockoutTickEnd,"Security breach. Initiating remote lockout. System Security: AMNT%"
 
 ItemPickupFlashBomb,"You pick up a flash bomb."
 ItemPickupFlashbang,"You pick up a flashbang grenade."
 
 KDLogFilterCombat,Combat
-KDLogFilterActions,Actions
+KDLogFilterAction,Actions
 KDLogFilterSelf,Self
 KDLogFilterDialogue,Dialogue
 KDLogFilterAmbient,Ambient

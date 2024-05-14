@@ -22,6 +22,9 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.3.9
+
+
 5.3.8
 - Nerfed restoration tablets and determination tablets to compensate for increased counts
 - Reduced time taken to copy large save codes in some browsers

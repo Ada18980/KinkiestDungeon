@@ -3661,33 +3661,34 @@ function KDGetLinkUnder(currentRestraint, restraint, bypass, NoStack, Deep, secu
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
  * @param {string} [Lock]
  * @param {string} [Curse]
+ * @param {item} [ignoreItem]
  * @returns {boolean}
  */
-function KDCanLinkUnder(currentRestraint, restraint, bypass, NoStack, securityEnemy, Lock, Curse) {
+function KDCanLinkUnder(currentRestraint, restraint, bypass, NoStack, securityEnemy, Lock, Curse, ignoreItem) {
 	if (restraint.bypass) bypass = true;
 	let linkUnder = currentRestraint
 		&& (bypass || (KDRestraint(currentRestraint).accessible) || (KDRestraint(currentRestraint).deepAccessible) || KDEnemyPassesSecurity(KDRestraint(currentRestraint).Group, securityEnemy))
 		&& KinkyDungeonIsLinkable({
 			oldRestraint: restraint,
 			newRestraint: KDRestraint(currentRestraint),
-			item: {name: restraint.name, id: -1},
+			item: ignoreItem || {name: restraint.name, id: -1},
 			ignoreItem: currentRestraint,
 			linkUnderItem: currentRestraint,
-		})
-		&& (!currentRestraint.dynamicLink || KinkyDungeonIsLinkable({
-			oldRestraint: KDRestraint(currentRestraint.dynamicLink),
-			newRestraint: restraint,
-			item: currentRestraint.dynamicLink,
-			ignoreItem: currentRestraint,
-			props: {
-				newLock: Lock,
-				newCurse: Curse,
-			}
-		}));
+		});
+	let linkUnderOver = (!currentRestraint.dynamicLink || KinkyDungeonIsLinkable({
+		oldRestraint: KDRestraint(currentRestraint.dynamicLink),
+		newRestraint: restraint,
+		item: currentRestraint.dynamicLink,
+		ignoreItem: ignoreItem || {name: restraint.name, id: -1},
+		props: {
+			newLock: Lock,
+			newCurse: Curse,
+		}
+	}));
 
-	if (!linkUnder) return false;
+	if (!linkUnder || !linkUnderOver) return false;
 	if (
-		KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityEnemy, undefined,
+		KDCheckLinkSize(currentRestraint, restraint, bypass, NoStack, securityEnemy, ignoreItem,
 			{
 				newLock: Lock,
 				newCurse: Curse,
@@ -5718,25 +5719,52 @@ function KDAlwaysKeep(item, Remover) {
  * @param {string} Group
  * @param {item} [addedItem]
  * @param {boolean} [bypass]
+ * @param {entity} [securityEnemy]
  */
-function KDResortRestraints(Group, addedItem, bypass) {
+function KDResortRestraints(Group, addedItem, bypass, securityEnemy) {
 	let item = KinkyDungeonGetRestraintItem(Group);
 	if (item) {
 		let pri = (inv) => {
 			return ((KDRestraint(inv).linkPriority*1000) || KinkyDungeonRestraintPower(inv, true) || 0);
 		};
-		if (bypass && !addedItem) {
+		if (!addedItem) {
 			// Simplest case, just sort the tree
+			// Bubble sort is the best sorting algorithm
 			let tree = KDDynamicLinkList(item, true);
-			tree.sort((a, b) => {
-				return pri(b) - pri(a);
-			}
-			);
+
 			let host = tree[0];
-			for (let i = 0; i < tree.length; i++) {
-				if (i + 1 < tree.length)
-					tree[i].dynamicLink = tree[i + 1];
-				else tree[i].dynamicLink = undefined;
+			let temp = null;
+			let n = tree.length;
+			let swapped = false;
+			for (let i = 0; i < n - 1; i++) {
+				for (let j = 0; j < n - i - 1; j++) {
+					tree[j+1].linkCache = undefined;
+					if (pri(tree[j]) < pri(tree[j+1])) {
+						if (KDCanLinkUnder(tree[j+1], KDRestraint(tree[j]),
+							bypass, false, securityEnemy, tree[j].lock, KDGetCurse(tree[j]), tree[j])) {
+							// Swap
+							tree[j].dynamicLink = tree[j+1].dynamicLink;
+							tree[j+1].dynamicLink = tree[j];
+							temp = tree[j];
+							tree[j] = tree[j+1];
+							tree[j+1] = temp;
+							swapped = true;
+						}
+					}
+
+				}
+				if (!swapped) {
+					break;
+				}
+			}
+
+
+			// Fix the links
+			host = tree[0];
+			for (let iii = 0; iii < n; iii++) {
+				if (iii + 1 < n)
+					tree[iii].dynamicLink = tree[iii + 1];
+				else tree[iii].dynamicLink = undefined;
 			}
 			KinkyDungeonInventoryRemove(item);
 			KinkyDungeonInventoryAdd(host);

@@ -788,6 +788,7 @@
             <key type="filename">../Game/EffectTiles/PressurePlateOneUse.png</key>
             <key type="filename">../Game/EffectTiles/Ropes.png</key>
             <key type="filename">../Game/EffectTiles/Rubble.png</key>
+            <key type="filename">../Game/EffectTiles/RubbleNoMend.png</key>
             <key type="filename">../Game/EffectTiles/Runes.png</key>
             <key type="filename">../Game/EffectTiles/RunesTrap.png</key>
             <key type="filename">../Game/EffectTiles/Sack.png</key>
@@ -1564,6 +1565,7 @@
             <key type="filename">../Game/FloorGeneric/Tablet.png</key>
             <key type="filename">../Game/FloorGeneric/TabletCursed.png</key>
             <key type="filename">../Game/FloorGeneric/TabletDetermination.png</key>
+            <key type="filename">../Game/FloorGeneric/TabletDetermination_2.png</key>
             <key type="filename">../Game/FloorGeneric/TabletHeart.png</key>
             <key type="filename">../Game/FloorGeneric/TabletSpent.png</key>
             <key type="filename">../Game/FloorGeneric/Torch.png</key>
@@ -2065,6 +2067,7 @@
             <key type="filename">../Game/Items/FourSeasons.png</key>
             <key type="filename">../Game/Items/FrostSword.png</key>
             <key type="filename">../Game/Items/Gold.png</key>
+            <key type="filename">../Game/Items/GoldenTicket.png</key>
             <key type="filename">../Game/Items/Group/ItemArms.png</key>
             <key type="filename">../Game/Items/Group/ItemBoots.png</key>
             <key type="filename">../Game/Items/Group/ItemBreast.png</key>
@@ -3258,6 +3261,12 @@
             <key type="filename">../Game/UI/HelpGag.png</key>
             <key type="filename">../Game/UI/Inspect.png</key>
             <key type="filename">../Game/UI/LetGo.png</key>
+            <key type="filename">../Game/UI/Log/Action.png</key>
+            <key type="filename">../Game/UI/Log/Ambient.png</key>
+            <key type="filename">../Game/UI/Log/Combat.png</key>
+            <key type="filename">../Game/UI/Log/Dialogue.png</key>
+            <key type="filename">../Game/UI/Log/Self.png</key>
+            <key type="filename">../Game/UI/Log/Struggle.png</key>
             <key type="filename">../Game/UI/NoPass.png</key>
             <key type="filename">../Game/UI/NoSprint.png</key>
             <key type="filename">../Game/UI/Pass.png</key>

@@ -1272,6 +1272,14 @@
 	"spriteSourceSize": {"x":2,"y":9,"w":33,"h":17},
 	"sourceSize": {"w":36,"h":36}
 },
+"Game/UI/Log/Action.png":
+{
+	"frame": {"x":2028,"y":1296,"w":19,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":14,"w":19,"h":32},
+	"sourceSize": {"w":60,"h":60}
+},
 "Game/UI/Select.png":
 {
 	"frame": {"x":2028,"y":1296,"w":19,"h":32},
@@ -1312,6 +1320,6 @@
 	"size": {"w":2048,"h":2047},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:bd8f8402ddf3aba0b3c59c1b830a5d01:f67d8ffc58f586a17247a4e1f967ccaf:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:afc75ef880e578152fa81b2c40345feb:db531ee3030f69b92785d57a74113fb2:54a7432a0665349a58c0c74f51e75c65$"
 }
 }
