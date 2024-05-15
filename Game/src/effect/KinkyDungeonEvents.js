@@ -9413,7 +9413,7 @@ let KDEventMapGeneric = {
 					(KinkyDungeonLeashingEnemy() && KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, KinkyDungeonLeashingEnemy().x, KinkyDungeonLeashingEnemy().y, KinkyDungeonLeashingEnemy()))
 					||
 					(KinkyDungeonJailGuard() && KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, KinkyDungeonJailGuard()))
-					) ? 1.2 : 0;
+					) ? 1.5 : 1;
 				KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0) && danger,
 					KDGameData.HeelPower <= 0 && !danger, amt, amt * mult);
 			}
