@@ -725,7 +725,8 @@ function KinkyDungeonHandleJailSpawns(delta) {
 	if (!KinkyDungeonJailGuard()) {
 		KDGameData.GuardTimer = 0;
 		if (KinkyDungeonLeashingEnemy()?.Enemy?.tags?.jailer || KinkyDungeonLeashingEnemy()?.Enemy?.tags?.jail) {
-			KDGameData.JailGuard = KinkyDungeonLeashingEnemy().id;
+			if (KinkyDungeonLeashingEnemy().CurrentAction)
+				KDGameData.JailGuard = KinkyDungeonLeashingEnemy().id;
 		}
 		if (!KinkyDungeonJailGuard()) {
 			// In case enemy got interrupted

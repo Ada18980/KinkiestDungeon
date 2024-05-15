@@ -520,6 +520,8 @@ let KDIntentEvents = {
 				if (!(KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints")) || KDGameData.PrisonerState != 'jail') {
 					enemy.IntentAction = '';
 					enemy.IntentLeashPoint = null;
+					KinkyDungeonSetEnemyFlag(enemy, "wander", 7);
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 0);
 
 					if (KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, enemy.x, enemy.y, enemy)) {
 						if (!KinkyDungeonFlags.has("TempLeash"))
@@ -568,7 +570,7 @@ let KDIntentEvents = {
 						}
 					} else {
 						// We will wander more than usual
-						KinkyDungeonSetEnemyFlag(enemy, "wander", 2);
+						KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 						KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
 						if (enemy.idle || (KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) < 4)) {
 							KDResetGuardSpawnTimer();
@@ -579,10 +581,13 @@ let KDIntentEvents = {
 								enemy.keys = true;
 								enemy.gx = newPoint.x;
 								enemy.gy = newPoint.y;
+								KinkyDungeonSetEnemyFlag(enemy, "wander", 300);
+								KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 300);
 								if ((furn && KDistChebyshev(enemy.x - furn.x, enemy.y - furn.y) < 1.5)
 									|| (jail && KDistChebyshev(enemy.x - jail.x, enemy.y - jail.y) < 1.5)) {
 									if (newPoint == KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"])) {
 										KDSettlePlayerInFurniture(enemy, AIData);
+										KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 									} else {
 										let nearestJail = KinkyDungeonNearestJailPoint(enemy.x, enemy.y);
 										let jailRadius = (nearestJail && nearestJail.radius) ? nearestJail.radius : 1.5;
@@ -595,6 +600,8 @@ let KDIntentEvents = {
 												let lasty = KinkyDungeonPlayerEntity.y;
 												KDMovePlayer(point.x, point.y, false);
 												KDMoveEntity(enemy, lastx, lasty, true);
+												KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
+												KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 0);
 												let newPoint2 = KinkyDungeonGetRandomEnemyPoint(true,
 													false, enemy);
 												if (newPoint2) {
@@ -616,10 +623,14 @@ let KDIntentEvents = {
 									}
 									enemy.IntentAction = '';
 									enemy.IntentLeashPoint = null;
+									KinkyDungeonSetEnemyFlag(enemy, "wander", 7);
+									KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 0);
 								}
 							} else {
 								enemy.IntentAction = '';
 								enemy.IntentLeashPoint = null;
+								KinkyDungeonSetEnemyFlag(enemy, "wander", 7);
+								KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 0);
 							}
 
 						}
