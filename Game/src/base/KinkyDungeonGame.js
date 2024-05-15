@@ -253,6 +253,24 @@ function KinkyDungeonEffectTilesGet(location) {
 }
 
 
+
+/**
+ *
+ * @param {any} value
+ */
+function KDSetPlayerTile(value) {
+	KDMapData.Tiles[KinkyDungeonPlayerEntity.x + ',' + KinkyDungeonPlayerEntity.y] = value;
+	return value;
+}
+/**
+ *
+ * @returns {any}
+ */
+function KDGetPlayerTile() {
+	return KDMapData.Tiles[KinkyDungeonPlayerEntity.x + ',' + KinkyDungeonPlayerEntity.y];
+}
+
+
 /**
  *
  * @param {string} location

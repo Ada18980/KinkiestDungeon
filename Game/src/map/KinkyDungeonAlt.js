@@ -2108,7 +2108,7 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 	// Normal end stairs
 	KinkyDungeonMapSet(b1*2 - 1, VisitedRooms[0].y*2 - 4, 's');
 	if (MiniGameKinkyDungeonLevel == 0)
-		KinkyDungeonTilesSet("" + (b1*2 + 7) + "," + (VisitedRooms[0].y*2), {RoomType: KDGameData.HighestLevelCurrent > 0 ? "" : "JourneyFloor"});
+		KinkyDungeonTilesSet("" + (b1*2 + 7) + "," + (VisitedRooms[0].y*2), {RoomType: MiniGameKinkyDungeonLevel > 0 ? "" : "JourneyFloor"});
 
 	KDMapData.EndPosition = {x: b1*2 - 1, y: VisitedRooms[0].y*2 - 4};
 
@@ -2116,7 +2116,7 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 }
 
 function KinkyDungeonCreateGoldVault(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
-	// Variable setup
+	// Variable setups
 
 	KDMapData.StartPosition = {x: 15, y: 2 + 7 * 4};
 	KDMapData.EndPosition = {x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.y};
