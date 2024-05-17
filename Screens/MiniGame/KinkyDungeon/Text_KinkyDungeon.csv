@@ -2960,20 +2960,20 @@ AttackOrbOfLightBlind,"The orb blinds you with its intense light!!! (DamageTaken
 KinkyDungeonSpellCastOrbHeal,A light restores the will of its allies!
 
 KinkyDungeonNoMana,"You do not have enough resources to cast the spell!"
-PlayerAttack,"You AttackName TargetEnemy for DamageDealt DamageType damage!"
-PlayerAttackWeak,"You AttackName TargetEnemy for a decreased DamageDealt DamageType damage!"
-PlayerAttackStrong,"You AttackName TargetEnemy for an increased DamageDealt DamageType damage!"
-PlayerAttackVeryStrong,"You AttackName TargetEnemy for a devastating DamageDealt DamageType damage!"
-PlayerAttackImmune,"You AttackName TargetEnemy, but your DamageType weapon has no effect!"
-PlayerAttackSpellResist,"You AttackName TargetEnemy for DamageDealt DamageType damage!, reduced by an anti-magic ward!"
+PlayerAttack,"AttackName hits TargetEnemy for DamageDealt DamageType damage!"
+PlayerAttackWeak,"AttackName hits TargetEnemy for a decreased DamageDealt DamageType damage!"
+PlayerAttackStrong,"AttackName hits TargetEnemy for an increased DamageDealt DamageType damage!"
+PlayerAttackVeryStrong,"AttackName hits TargetEnemy for a devastating DamageDealt DamageType damage!"
+PlayerAttackImmune,"AttackName hits TargetEnemy, but your DamageType weapon has no effect!"
+PlayerAttackSpellResist,"AttackName hits TargetEnemy for DamageDealt DamageType damage!, reduced by an anti-magic ward!"
 PlayerRanged,"AttackName hits TargetEnemy for DamageDealt DamageType damage!"
 PlayerRangedWeak,"AttackName hits TargetEnemy for a reduced DamageDealt DamageType damage!"
 PlayerRangedImmune,"AttackName hits TargetEnemy but DamageType damage doesn't have any effect!"
 PlayerRangedStrong,"AttackName hits TargetEnemy for an increased DamageDealt DamageType damage!"
 PlayerRangedSpellResist,"AttackName hits TargetEnemy for DamageDealt DamageType damage, reduced by an anti-magic ward!"
 PlayerRangedVeryStrong,"AttackName hits TargetEnemy for a devastating DamageDealt DamageType damage!"
-KinkyDungeonBasicAttack,attack
-KinkyDungeonBasicDamage,damage
+KinkyDungeonBasicAttack,Your attack
+KinkyDungeonBasicDamage,An effect
 PlayerMiss,"You miss the TargetEnemy!"
 PlayerMissArmor,"Your attack is too feeble to hurt the TargetEnemy!"
 PlayerMissShield,"Your attack was absorbed by the TargetEnemy's shield!"
@@ -20961,3 +20961,8 @@ KDLogFilterSelf,Self
 KDLogFilterDialogue,Dialogue
 KDLogFilterAmbient,Ambient
 KDLogFilterStruggle,Struggle
+
+KDAttack,You attack TargetEnemy for DamageDealt total damage.
+KDAttackBind,You attack TargetEnemy for DamageDealt damage / BondageDealt binding.
+KDAttackMiss,You attack TargetEnemy but don't do any damage.
+KDShoutHelp,ENMY calls for help!

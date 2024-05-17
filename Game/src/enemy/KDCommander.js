@@ -638,6 +638,9 @@ let KDCommanderOrders = {
 					if (!KDEnemyHasFlag(enemy, "shoutforhelp")) {
 						KinkyDungeonMakeNoise(5 + KDEnemyRank(enemy), enemy.x, enemy.y);
 						KinkyDungeonSetEnemyFlag(enemy, "shoutforhelp", Math.floor((10 - KDEnemyRank(enemy)) * (1 + KDRandom())));
+						if (KDCanHearEnemy(KDPlayer(), enemy)) {
+							KinkyDungeonSendTextMessage(5, TextGet("KDShoutHelp").replace("ENMY", enemy.CustomName || TextGet("Name" + enemy.Enemy.name)), "#ffffff", 1, false, true, undefined, "Ambient");
+						}
 					}
 				}
 			}

@@ -5706,7 +5706,7 @@ function KinkyDungeonEnemyTryMove(enemy, Direction, delta, x, y, canSprint) {
 					false, false, undefined, "Ambient");
 			} else if (dist < 20)
 				KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonHearDoorCloseFar"), "#999999", 4,
-					false, false, undefined, "Ambients");
+					false, false, undefined, "Ambient");
 		}
 
 		if (ee && KinkyDungeonCanSwapWith(ee, enemy)) {

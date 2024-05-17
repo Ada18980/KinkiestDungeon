@@ -399,7 +399,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 				) {
 					KDGameData.visionBlind = amnt;
 					if (KDGameData.visionBlind > 0.04)
-						KinkyDungeonSendTextMessage(4, TextGet("KDVisionBlind"), "#ffffff", 1, false, true);
+						KinkyDungeonSendTextMessage(4, TextGet("KDVisionBlind"), "#ffffff", 1, false, true, undefined, "Ambient");
 				}
 
 

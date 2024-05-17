@@ -2252,8 +2252,8 @@ let KDMsgFadeTime = 10;
 let KDMaxConsoleMsg = 6;
 
 let KDLogFilters = [
-	"Combat",
 	"Action",
+	"Combat",
 	"Self",
 	"Struggle",
 	"Ambient",
@@ -2354,6 +2354,9 @@ function KinkyDungeonDrawMessages(NoLog) {
 						if (msg.filter && KDGameData.LogFilters && KDGameData.LogFilters[msg.filter] == false) {
 							continue;
 						}
+						if (msg.antifilter && KDGameData.LogFilters && KDGameData.LogFilters[msg.antifilter] == true) {
+							continue;
+						}
 						alpha = Math.max(0, Math.min(1, 2.0 - i / KDMaxConsoleMsg)) * (1 - Math.max(0, Math.min(1, Math.max(0, KinkyDungeonCurrentTick - msg.time - 1)/KDMsgFadeTime)));
 						DrawTextFitKD(msg.text, KDMsgX + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, msg.color, KDTextGray1, KDMSGFontSize, undefined, zLevel, alphamin + (1 - alphamin) * alpha);
 						i++;
@@ -2392,6 +2395,10 @@ function KinkyDungeonDrawMessages(NoLog) {
 			if (log.filter && KDGameData.LogFilters && KDGameData.LogFilters[log.filter] == false) {
 				continue;
 			}
+			if (log.antifilter && KDGameData.LogFilters && KDGameData.LogFilters[log.antifilter] == true) {
+				continue;
+			}
+
 			let col = log.color;
 			DrawTextFitKD(log.text, KDMsgX + KDMsgWidth/2, KDLogTopPad + ii * KDLogDist + KDLogDist/2, KDMsgWidth, col, KDTextGray1, KDMSGFontSize, undefined, 101);
 			ii++;

@@ -4288,13 +4288,13 @@ function KinkyDungeonSendTextMessage(priority, text, color, time, noPush, noDupe
 }
 
 
-function KinkyDungeonSendActionMessage(priority, text, color, time, noPush, noDupe, entity, filter = "Action") {
+function KinkyDungeonSendActionMessage(priority, text, color, time, noPush, noDupe, entity, filter = "Action", antifilter) {
 	if (entity && KinkyDungeonVisionGet(entity.x, entity.y) < 1) return false;
 	if (text) {
 		if (!noPush)
 			if (!noDupe || KinkyDungeonMessageLog.length == 0 || !KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1] || text != KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1].text){
 				if (KDLogIndex > 0) KDLogIndex += 1;
-				KinkyDungeonMessageLog.push({text: text, color: color, time: KinkyDungeonCurrentTick, filter: filter});
+				KinkyDungeonMessageLog.push({text: text, color: color, time: KinkyDungeonCurrentTick, filter: filter, antifilter: antifilter});
 			}
 		if ( priority >= KinkyDungeonActionMessagePriority || KinkyDungeonActionMessageTime < 0.5) {
 			KinkyDungeonActionMessageTime = time;
@@ -4378,6 +4378,8 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 		} else {
 			if (!capture) {
 				let data = {
+					orighp: Enemy.hp,
+					origbinding: Enemy.boundLevel,
 					target: Enemy,
 					attackCost: attackCost,
 					skipTurn: false,
@@ -4414,6 +4416,22 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 					result = "hit";
 				} else {
 					result = "miss";
+				}
+
+				let dmgTotal = -(Enemy.hp - data.orighp);
+				let bondageTotal = (Enemy.boundLevel - data.origbinding);
+				if (dmgTotal > 0) {
+					let atk = bondageTotal > 0 ? "KDAttackBind" : "KDAttack";
+					KinkyDungeonSendActionMessage(3.5,
+						TextGet(atk)
+							.replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name))
+							.replace("DamageDealt", "" + Math.round(dmgTotal * 10))
+							.replace("BondageDealt", "" + Math.round(bondageTotal * 10)),
+						"#ffffff", 2, undefined, undefined, undefined, "Action");
+				} else {
+					KinkyDungeonSendActionMessage(3.5,
+						TextGet("KDAttackMiss").replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)).replace("DamageDealt", "" + Math.round(dmgTotal * 10)),
+						"#ffffff", 2, undefined, undefined, undefined, "Action", "Combat");
 				}
 
 				if (data.skipTurn) skip = 1;
