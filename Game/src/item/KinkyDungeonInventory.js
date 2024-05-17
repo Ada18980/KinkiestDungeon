@@ -1392,10 +1392,10 @@ function KinkyDungeonDrawInventory() {
 		let activeUp = false;
 		let activeDown = false;
 		let index = KDFilterIndex[KinkyDungeonCurrentFilter];
-		for (let i = 0; i < filters.length - index + KDMaxFilters; i++) {
+		for (let i = 0; i < filters.length - index + 2 * KDMaxFilters + 1; i++) {
 			let xx = 0;
 			let yy = i - index;
-			let show = i >= index && i < index + KDMaxFilters - 1 && i < filters.length;
+			let show = i >= index && i < index + KDMaxFilters && i < filters.length;
 			if (!show && i < filters.length &&  KDFilterFilters[KinkyDungeonCurrentFilter][filters[i][0]]) {
 				if (i < index) {
 					activeUp = true;
@@ -1405,18 +1405,19 @@ function KinkyDungeonDrawInventory() {
 			}
 			let scroll = (amount) => {
 				if (filters.length > KDMaxFilters)
-					KDFilterIndex[KinkyDungeonCurrentFilter] = Math.max(0,
+					return Math.max(0,
 						Math.min(Object.keys(KDFilterFilters[KinkyDungeonCurrentFilter]).length - KDMaxFilters/2,
 							3 * Math.sign(amount) + index
 						)
 					);
+				return 0;
 			};
 			if (index > 0 && i == index) {
 				// Draw up button
 				DrawButtonKDExScroll("invchoice_filter_" + i, (amount) => {
-					scroll(amount);
+					KDFilterIndex[KinkyDungeonCurrentFilter] = scroll(amount);
 				}, (bdata) => {
-					scroll(-1);
+					KDFilterIndex[KinkyDungeonCurrentFilter] = scroll(-1);
 					return true;
 				}, true, canvasOffsetX_ui + xOffset + xx * 200 + 640*KinkyDungeonBookScale + 132, canvasOffsetY_ui + 50 + 40 * yy, 159, 36,
 				"", "#ffffff", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, !activeUp,
@@ -1427,13 +1428,13 @@ function KinkyDungeonDrawInventory() {
 					hotkeyPress: KinkyDungeonKey[0],
 				});
 			} else if (filters.length > KDMaxFilters && i == KDMaxFilters + index - 1 &&
-				scroll(1) == scroll(0) // Test for limit
+				scroll(1) != scroll(0) // Test for limit
 			) {
 				// Draw down button
 				DrawButtonKDExScroll("invchoice_filter_" + i, (amount) => {
-					scroll(amount);
+					KDFilterIndex[KinkyDungeonCurrentFilter] = scroll(amount);
 				}, (bdata) => {
-					scroll(1);
+					KDFilterIndex[KinkyDungeonCurrentFilter] = scroll(1);
 					return true;
 				}, true, canvasOffsetX_ui + xOffset + xx * 200 + 640*KinkyDungeonBookScale + 132, canvasOffsetY_ui + 50 + 40 * yy, 159, 36,
 				"", "#ffffff", KinkyDungeonRootDirectory + "Down.png", undefined, undefined, !activeDown,
