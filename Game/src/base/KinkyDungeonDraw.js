@@ -2147,6 +2147,8 @@ function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, 
 		let II = KDEntitiesFloaterRegisty.get(Entity) || 1;
 		II += 1;
 		KDEntitiesFloaterRegisty.set(Entity, II);
+		let floaterMult = KDToggles.FastFloaters ? 0.33 : 1;
+		let stringFloaterMult = KDToggles.FastFloaters ? 0.7 : 1;
 		let floater = {
 			x: Entity.x + 0.5,// + Math.random(),
 			y: Entity.y - (II - 1) * KDFloaterSpacing,// + Math.random(),
@@ -2155,7 +2157,7 @@ function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, 
 			t: 0,
 			color: Color,
 			text: "" + ((typeof Amount === "string") ? Amount : Math.round(Amount * 10)/10) + suff,
-			lifetime: Time ? Time : ((typeof Amount === "string") ? 4 : ((Amount < 3) ? 2 : (Amount > 5 ? 3 : 2))),
+			lifetime: Time ? stringFloaterMult*Time : ((typeof Amount === "string") ? stringFloaterMult*4 : floaterMult*((Amount < 3) ? 2 : (Amount > 5 ? 3 : 2))),
 		};
 		KinkyDungeonFloaters.push(floater);
 	}

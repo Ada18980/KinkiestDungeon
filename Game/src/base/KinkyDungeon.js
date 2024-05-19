@@ -198,9 +198,13 @@ let KDToggles = {
 	AutoLoadMods: false,
 	FlipPlayer: true,
 	Helper: true,
+	FastFloaters: false,
+	NoDmgFloaters: false,
 };
 
 let KDToggleCategories = {
+	FastFloaters: "UI",
+	NoDmgFloaters: "UI",
 	RetroAnim: "GFX",
 	HiResModel: "GFX",
 	HighResDisplacement: "GFX",

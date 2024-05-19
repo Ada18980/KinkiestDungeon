@@ -814,7 +814,8 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	// Else make a new one
 	KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
 
-	for (let iterations = 0; iterations < 100; iterations++) {
+	let maxIter = 100;
+	for (let iterations = 0; iterations <= maxIter; iterations++) {
 		if (iterations > 0) {
 			// Clear so party prisoners are reused
 			for (let en of [...KDMapData.Entities]) {
@@ -1261,10 +1262,10 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			&& KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, KDMapData.EndPosition.x, KDMapData.EndPosition.y,
 				false, false, false, KinkyDungeonMovableTilesSmartEnemy,
 				false, false, false, undefined, false,
-				undefined, false, true).length > 0)) iterations = 100000;
+				undefined, false, true).length > 0)) iterations = maxIter;
 		else console.log("This map failed to generate! Please screenshot and send your save code to Ada on deviantart or discord!");
 
-		if (iterations == 100000) {
+		if (iterations == maxIter) {
 			KDUnPackEnemies(KDMapData);
 			if (!KinkyDungeonMapIndex.grv)
 				KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);

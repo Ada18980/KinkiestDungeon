@@ -1367,7 +1367,7 @@ function KinkyDungeonDisarm(Enemy, suff) {
 
 			let dropped = {x:foundslot.x, y:foundslot.y, name: weapon};
 
-			KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, TextGet("KDDisarmed"), "#ff5555", 3);
+			KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, TextGet("KDDisarmed"), "#ff5555", KDToggles.FastFloaters ? 1.5 : 3);
 
 			KDSetWeapon('Unarmed', true);
 			KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());
@@ -2094,7 +2094,7 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 				enemy.hp = Math.min(enemy.hp + b.bullet.spell.power, enemy.Enemy.maxhp);
 				//KDDamageQueue.push({floater: `+${Math.round((enemy.hp - origHP) * 10)}`, Entity: enemy, Color: "#ffaa00", Time: 3});
 				if (b.bullet.faction == "Player" || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0)
-					KinkyDungeonSendFloater(enemy, `+${Math.round((enemy.hp - origHP) * 10)}`, "#ffaa00", 3);
+					KinkyDungeonSendFloater(enemy, `+${Math.round((enemy.hp - origHP) * 10)}`, "#ffaa00", KDToggles.FastFloaters ? 1 : 3);
 				if (b.bullet.faction == "Player")
 					KDHealRepChange(enemy, enemy.hp - origHP);
 			}
@@ -2511,7 +2511,7 @@ function KDBulletHitEnemy(bullet, enemy, d, nomsg) {
 		let origHP = enemy.hp;
 		enemy.hp = Math.min(enemy.hp + bullet.bullet.spell.power, enemy.Enemy.maxhp);
 		if (bullet.bullet.faction == "Player" || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0)
-			KinkyDungeonSendFloater(enemy, `+${Math.round((enemy.hp - origHP) * 10)}`, "#ffaa00", 3);
+			KinkyDungeonSendFloater(enemy, `+${Math.round((enemy.hp - origHP) * 10)}`, "#ffaa00", KDToggles.FastFloaters ? 1 : 3);
 		if (bullet.bullet.faction == "Player")
 			KDHealRepChange(enemy, enemy.hp - origHP);
 	} else if (bullet.bullet.faction == "Player" || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0)
@@ -2558,8 +2558,8 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 		if (!damage.Delay || KDTimescale * (performance.now() - KDLastTick) > damage.Delay) {
 			if (damage.sfx && KDToggles.Sound) KinkyDungeonPlaySound(damage.sfx);
 
-			if (damage.floater) {
-				KinkyDungeonSendFloater(damage.Entity, damage.floater, damage.Color, damage.Time);
+			if (damage.floater && !KDToggles.NoDmgFloaters) {
+				KinkyDungeonSendFloater(damage.Entity, damage.floater, damage.Color, (KDToggles.FastFloaters ? 0.3 : 1) * damage.Time);
 			}
 
 			KDDamageQueue.splice(KDDamageQueue.indexOf(damage), 1);

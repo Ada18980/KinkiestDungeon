@@ -1776,8 +1776,10 @@ function KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, openness,
 	KinkyDungeonCreateRectangle(cavityStart, 0, cavitywidth, cavityheight, false, false, false, false);
 
 	KD_PasteTile(KDMapTilesList.Arena_Dollmaker, cavityStart, 1, data);
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 	DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2), KDMapData.StartPosition.y, "DollmakerBoss1");
+	KDStageBossGenerated = true;
 
 	KDMapData.EndPosition = {x: KDMapData.StartPosition.x + cavitywidth, y: KDMapData.StartPosition.y};
 
@@ -1819,6 +1821,7 @@ function KinkyDungeonCreateWarden(POI, VisitedRooms, width, height, openness, de
 	KD_PasteTile(KDMapTilesList.Arena_Warden, cavityStart, 1, data);
 
 	DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2), KDMapData.StartPosition.y, "TheWarden1");
+	KDStageBossGenerated = true;
 	KinkyDungeonSetEnemyFlag(DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2) - 6, KDMapData.StartPosition.y - 8, "WardenArcher"), "imprisoned", -1);
 	KinkyDungeonSetEnemyFlag(DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2), KDMapData.StartPosition.y - 8, "WardenFighter"), "imprisoned", -1);
 	KinkyDungeonSetEnemyFlag(DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2) + 6, KDMapData.StartPosition.y - 8, "WardenMage"), "imprisoned", -1);

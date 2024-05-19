@@ -1107,7 +1107,7 @@ let KDEventMapInventory = {
 					let origHP = enemy.hp;
 					enemy.hp = Math.min(enemy.hp + e.power, enemy.Enemy.maxhp);
 					if (enemy.hp - origHP > 0) {
-						KinkyDungeonSendFloater(enemy, `+${Math.round((enemy.hp - origHP) * 10)}`, "#44ff77", 3);
+						KinkyDungeonSendFloater(enemy, `+${Math.round((enemy.hp - origHP) * 10)}`, "#44ff77", KDToggles.FastFloaters ? 1 : 3);
 						healed = true;
 					}
 				}
@@ -2203,7 +2203,7 @@ let KDEventMapInventory = {
 					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 
-					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `${TextGet("KDArmorNoise")}`, "#ffffff", 2);
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `${TextGet("KDArmorNoise")}`, "#ffffff", KDToggles.FastFloaters ? 1 : 2);
 					data.armorNoise = true;
 				}
 			}
@@ -2448,7 +2448,7 @@ let KDEventMapInventory = {
 					KinkyDungeonSendTextMessage(5, TextGet((e.msg ? e.msg : "KinkyDungeonPunishPlayer")).replace("RestraintName", TextGet("Restraint" + item.name)), "#ff8933", 2);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 
-					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `${TextGet("KDArmorNoise")}`, "#ffffff", 2);
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `${TextGet("KDArmorNoise")}`, "#ffffff", KDToggles.FastFloaters ? 1 : 2);
 					data.armorNoise = true;
 				}
 			}
@@ -3909,7 +3909,7 @@ let KDEventMapSpell = {
 
 					data.bulletfired.bullet.damage.damage = damage;
 					if (buff) {
-						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round(efficiency*damage*10)} ${TextGet("KDArcaneEnergy")}`, "#8888ff", 3);
+						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round(efficiency*damage*10)} ${TextGet("KDArcaneEnergy")}`, "#8888ff", KDToggles.FastFloaters ? 0.7 : 1.5);
 						buff.power = Math.max(0, buff.power - efficiency*damage);
 						if (buff.power <= 0) buff.duration = 0;
 						buff.text = Math.round(10 * KDEntityBuffedStat(player, "ArcaneEnergy"));

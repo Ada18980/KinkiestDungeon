@@ -23,6 +23,11 @@ Monk class?
  - TODO dragon arena floor 20
 
 5.3.9
+- Fix issue where allies don't spawn in dollmaker, warden arena, or other maps
+- Added the summit (currently serves only as a safe storage for items)
+- Fixed some issues with filters in the armor menu
+- Added a feature to tally damage dealt by attacks
+- Added option for damage floaters to disappear faster
 
 
 5.3.8

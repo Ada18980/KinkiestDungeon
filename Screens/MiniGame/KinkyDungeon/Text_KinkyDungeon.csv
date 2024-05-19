@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.9"
+KDVersionStr,"5.3.10"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -104,6 +104,8 @@ KDToggleNipplePiercingsHide,Hide Nipple Piercings
 KDToggleForcePalette,Force restraints to use outfit palette
 KDToggleFlipPlayer,Flip Player Display
 KDToggleGreyscaleBlindness,Grayscale when Blind
+KDToggleFastFloaters,Faster Floater Fade
+KDToggleNoDmgFloaters,No Damage Floaters
 
 KDHelpless,Helpless!
 KDMissed,Evaded!
