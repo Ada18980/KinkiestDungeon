@@ -20966,3 +20966,5 @@ KDAttack,You attack TargetEnemy for DamageDealt total damage.
 KDAttackBind,You attack TargetEnemy for DamageDealt damage / BondageDealt binding.
 KDAttackMiss,You attack TargetEnemy but don't do any damage.
 KDShoutHelp,ENMY calls for help!
+
+dElevator_Summit,(0b0000 SUMMIT)

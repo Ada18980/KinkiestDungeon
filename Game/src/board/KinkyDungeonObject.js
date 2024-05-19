@@ -384,31 +384,76 @@ function KDHandleModalArea() {
 	return false;
 }
 
+let KDAlwaysUnlockedElevFloors = {
+	"Summit": true
+};
+let KDElevatorFloorIndex = {
+	Summit: {
+		Floor: 0,
+		RoomType: "Summit",
+		MapMod: undefined,
+		Checkpoint: "vault",
+		MapFaction: "Player",
+		EscapeMethod: "None",
+	},
+};
+
+/**
+ *
+ * @param {string | number} num
+ * @returns {boolean}
+ */
+function KDIsElevatorFloorUnlocked(num) {
+	return typeof num === "string" ? (KDGameData.ElevatorsUnlocked[num] || KDAlwaysUnlockedElevFloors[num])
+		: num != MiniGameKinkyDungeonLevel && KDGameData.ElevatorsUnlocked[num];
+}
+
 /**
  *
  * @param {number} floor
  */
-function KDElevatorToFloor(floor) {
+function KDElevatorToFloor(floor, RoomType) {
 	// Only works if the map has been generated
 	let slot = KDWorldMap['0,' + floor];
 	if (slot) {
-		let subslot = slot.data.ElevatorRoom;
-		if (subslot) {
-			let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[subslot.Checkpoint] || subslot.Checkpoint)];
-			MiniGameKinkyDungeonLevel = floor;
-			KinkyDungeonCreateMap(params,
-				subslot.RoomType,
-				subslot.MapMod,
-				floor,
-				undefined,
-				undefined,
-				subslot.MapFaction,
-				{x: 0, y: floor},
-				true,
-				undefined,
-				undefined,
-				subslot.EscapeMethod);
-			KDMovePlayer(KDMapData.StartPosition.x, KDMapData.StartPosition.y - 2, true);
+		if (RoomType) {
+			let subslot = KDElevatorFloorIndex[RoomType];
+			if (subslot) {
+				let params = KinkyDungeonMapParams[subslot.Checkpoint] || (slot.data[slot.main]?.Checkpoint ? KinkyDungeonMapParams[slot.data[slot.main].Checkpoint] : undefined);
+				MiniGameKinkyDungeonLevel = floor;
+				KinkyDungeonCreateMap(params,
+					RoomType,
+					undefined,
+					floor,
+					undefined,
+					undefined,
+					subslot.MapFaction,
+					{x: 0, y: floor},
+					true,
+					undefined,
+					undefined,
+					subslot.EscapeMethod);
+				KDMovePlayer(KDMapData.StartPosition.x, KDMapData.StartPosition.y, true);
+			}
+		} else {
+			let subslot = slot.data.ElevatorRoom;
+			if (subslot) {
+				let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[subslot.Checkpoint] || subslot.Checkpoint)];
+				MiniGameKinkyDungeonLevel = floor;
+				KinkyDungeonCreateMap(params,
+					subslot.RoomType,
+					subslot.MapMod,
+					floor,
+					undefined,
+					undefined,
+					subslot.MapFaction,
+					{x: 0, y: floor},
+					true,
+					undefined,
+					undefined,
+					subslot.EscapeMethod);
+				KDMovePlayer(KDMapData.StartPosition.x, KDMapData.StartPosition.y - 2, true);
+			}
 		}
 	}
 }

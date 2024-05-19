@@ -907,7 +907,7 @@ let KDDialogue = {
 				playertext: "Leave", response: "Default",
 				exitDialogue: true,
 			},
-			...Object.fromEntries([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(
+			...Object.fromEntries(["Summit", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(
 				(num) => {
 					/**
 					 * @type {KinkyDialogue}
@@ -915,10 +915,10 @@ let KDDialogue = {
 					let d = {
 						playertext: "Default", response: "Default",
 						prerequisiteFunction: (gagged, player) => {
-							return num != MiniGameKinkyDungeonLevel && KDGameData.ElevatorsUnlocked[num];
+							return KDIsElevatorFloorUnlocked(num);
 						},
 						clickFunction: (gagged, player) => {
-							KDElevatorToFloor(num);
+							KDElevatorToFloor(KDElevatorFloorIndex[num] ? (KDElevatorFloorIndex[num].Floor) : (typeof num === "string" ? 0 : num), KDElevatorFloorIndex[num].RoomType);
 							return false;
 						},
 						exitDialogue: true,
