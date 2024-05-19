@@ -4462,10 +4462,10 @@ AttackName hits TargetEnemy for DamageDealt DamageType damage, reduced by an ant
 AttackName 击中 TargetEnemy 造成 DamageDealt 点 DamageType 伤害，减少了它的魔法抗性！
 AttackName hits TargetEnemy for a devastating DamageDealt DamageType damage!
 AttackName 击中 TargetEnemy 造成毁灭性的 DamageDealt 点 DamageType 伤害！
-attack
-攻击
-damage
-伤害
+Your attack
+你的攻击
+An effect
+效果
 You miss the TargetEnemy!
 你没有命中目标敌人！
 Your attack is too feeble to hurt the TargetEnemy!
@@ -19315,6 +19315,14 @@ Your keycard blinks red as the facility remotely locks it!
 当设备远程锁定时，你的钥匙卡会闪烁红色！
 Unauthorized removal detected. System lockout progress: AMNT%
 检测到未经授权的删除。系统锁定进度：AMNT%
+You attack TargetEnemy for DamageDealt total damage.
+你攻击了 TargetEnemy, 造成 DamageDealt 点伤害。
+You attack TargetEnemy for DamageDealt damage / BondageDealt binding.
+你攻击了 TargetEnemy, 造成 DamageDealt 点伤害并施加 BondageDealt 束缚。
+You attack TargetEnemy but don't do any damage.
+你攻击了 TargetEnemy，但没有造成任何伤害。
+ENMY calls for help!
+ENMY 请求帮助！
 Combat
 战斗
 Actions
@@ -19327,3 +19335,7 @@ Ambient
 环境
 Struggle
 挣扎
+(Go to The Summit)
+（前往顶点）
+The Summit is a safe area. Items can be left here without fear of losing them.
+顶点是一个安全地区。物品可以放在这里，不用担心丢失。
