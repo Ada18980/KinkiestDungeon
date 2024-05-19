@@ -4,17 +4,25 @@
     "description": "This is the official git repo for Kinky Dungeon.",
     "main": "index.html",
     "scripts": {
+        "start": "concurrently \"npm run tsc-watch\" \"npm run browser-serve\"",
+        "serve": "http-server",
         "build": "tsc",
-        "serve": "http-server"
+        "----------": "-------------------------------------------------",
+        "tsc-watch": "tsc-watch --onSuccess \"npm run browser-reload\"",
+        "browser-serve": "browser-sync start --server . --files 'out/main.js **/*.csv, **/*.js, **/*.png'",
+        "browser-reload": "browser-sync reload"
     },
     "author": "Ada18980",
     "license": "All Rights Reserved",
     "private": true,
     "devDependencies": {
+        "browser-sync": "^3.0.2",
+        "concurrently": "^8.2.2",
         "http-server": "^14.1.1",
         "pixi-filters": "5.2.0",
         "pixi.js": "^7.4.2",
         "pixi.js-legacy": "^7.4.2",
+        "tsc-watch": "^6.2.0",
         "typescript": "^5.4.5"
     }
 }
