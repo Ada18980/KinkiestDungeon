@@ -20967,4 +20967,6 @@ KDAttackBind,You attack TargetEnemy for DamageDealt damage / BondageDealt bindin
 KDAttackMiss,You attack TargetEnemy but don't do any damage.
 KDShoutHelp,ENMY calls for help!
 
-dElevator_Summit,(0b0000 SUMMIT)
+dElevator_Summit,(Go to The Summit)
+
+KDSummitIntro,The Summit is a safe area. Items can be left here without fear of losing them.

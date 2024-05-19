@@ -271,6 +271,8 @@ let alts = {
 		noboring: true, // Skip generating boringness
 	},
 	"Summit": {
+		private: true, // Enables private prison type features (e.g. prisoner display)
+		keepItems: true, // Prevents items from being swept
 		name: "Summit",
 		Title: "Summit",
 		noWear: true, // Disables doodad wear
@@ -286,9 +288,9 @@ let alts = {
 			summit: true,
 		},
 		skin: "vault",
-		musicParams: "DollStorage",
-		lightParams: "DollStorage",
-		useGenParams: "DollStorage",
+		musicParams: "Summit",
+		lightParams: "Summit",
+		useGenParams: "Summit",
 		genType: "Summit",
 		spawns: false,
 		chests: false,
@@ -1469,6 +1471,10 @@ function KinkyDungeonCreateDollStorage(POI, VisitedRooms, width, height, opennes
 
 }
 function KinkyDungeonCreateSummit(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	if (!KinkyDungeonFlags.get("1stSummit")) {
+		KinkyDungeonSendTextMessage(10, TextGet("KDSummitIntro"), "#ffffff", 12, undefined, undefined, undefined, "");
+		KinkyDungeonSetFlag("1stSummit", -1);
+	}
 	KDMapData.StartPosition = {x: 11, y: 20};
 	KDMapData.EndPosition = {x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.y};
 	VisitedRooms[0].x = 1;
@@ -1496,7 +1502,7 @@ function KinkyDungeonCreateSummit(POI, VisitedRooms, width, height, openness, de
 	KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y + 2, '6');
 	KinkyDungeonTilesSet((KDMapData.StartPosition.x) + ',' + (KDMapData.StartPosition.y + 2), {
 		Type: "Elevator",
-		Skin: "Elevator",
+		Overlay: "Elevator",
 	});
 
 }
@@ -2329,7 +2335,7 @@ function KinkyDungeonCreateElevatorRoom(POI, VisitedRooms, width, height, openne
 	KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y - 3, '6');
 	KinkyDungeonTilesSet((KDMapData.StartPosition.x) + ',' + (KDMapData.StartPosition.y - 3), {
 		Type: "Elevator",
-		Skin: "ElevatorDisabled",
+		Overlay: "ElevatorDisabled",
 	});
 }
 

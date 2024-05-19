@@ -757,14 +757,18 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeNewMap"]);
 	// Create enemies first so we can spawn them in the set pieces if needed
 	let allies = KinkyDungeonGetAllies();
+	let mapMod = KDMapData.MapMod ? KDMapMods[KDMapData.MapMod] : null;
+	let altRoom = KDMapData.RoomType;
+	let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
 
 	// Strip non-persistent items
 	if (!KDMapData.GroundItems) KDMapData.GroundItems = [];
+	let allPersistent = altType.keepItems;
 	let persistentItems = KDMapData.GroundItems.filter((item) => {
-		return KDDroppedItemProperties[item.name] && KDDroppedItemProperties[item.name].persistent;
+		return allPersistent || (KDDroppedItemProperties[item.name] && KDDroppedItemProperties[item.name].persistent);
 	});
 	let lostItems = KDMapData.GroundItems.filter((item) => {
-		return !(KDDroppedItemProperties[item.name] && KDDroppedItemProperties[item.name].persistent);
+		return !(allPersistent || (KDDroppedItemProperties[item.name] && KDDroppedItemProperties[item.name].persistent));
 	});
 
 	KDMapData.GroundItems = persistentItems;
@@ -774,9 +778,6 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 	// Setup
 	// Remove enemies if the room isnt main and wont regen
-	let altRoom = KDMapData.RoomType;
-	let mapMod = KDMapData.MapMod ? KDMapMods[KDMapData.MapMod] : null;
-	let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
 
 	// ...
 

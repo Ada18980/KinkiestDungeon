@@ -906,6 +906,7 @@ let KDDialogue = {
 			"Leave": {
 				playertext: "Leave", response: "Default",
 				exitDialogue: true,
+				skip: true,
 			},
 			...Object.fromEntries(["Summit", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(
 				(num) => {
@@ -918,7 +919,7 @@ let KDDialogue = {
 							return KDIsElevatorFloorUnlocked(num);
 						},
 						clickFunction: (gagged, player) => {
-							KDElevatorToFloor(KDElevatorFloorIndex[num] ? (KDElevatorFloorIndex[num].Floor) : (typeof num === "string" ? 0 : num), KDElevatorFloorIndex[num].RoomType);
+							KDElevatorToFloor(KDElevatorFloorIndex[num] ? (KDElevatorFloorIndex[num].Floor) : (typeof num === "string" ? 0 : num), KDElevatorFloorIndex[num]?.RoomType);
 							return false;
 						},
 						exitDialogue: true,

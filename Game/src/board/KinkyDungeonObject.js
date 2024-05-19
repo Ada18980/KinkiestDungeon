@@ -33,7 +33,7 @@ let KDObjectClick = {
 				KDGameData.ElevatorsUnlocked[MiniGameKinkyDungeonLevel] = true; // Unlock!
 				let tile = KinkyDungeonTilesGet(x + ',' + y);
 				if (tile) {
-					tile.Sprite = "Elevator";
+					tile.Overlay = "Elevator";
 				}
 			}
 		}
