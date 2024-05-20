@@ -194,7 +194,6 @@
             "./node_modules/@types",
             "./node_modules/@pixi",
         ],
-
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
         "lib": ["DOM", "ES2020"]

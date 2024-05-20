@@ -8,9 +8,9 @@
         "serve": "http-server",
         "build": "tsc",
         "----------": "-------------------------------------------------",
-        "tsc-watch": "tsc-watch --onSuccess \"npm run browser-reload\"",
-        "browser-serve": "browser-sync start --server . --files 'out/main.js **/*.csv, **/*.js, **/*.png'",
-        "browser-reload": "browser-sync reload"
+        "tsc-watch": "tsc-watch --project tsconfig.dev.json --onSuccess \"npm run browser-reload\"  --diagnostics",
+        "browser-reload": "browser-sync reload",
+        "browser-serve": "browser-sync start --server . --ss out --startPath index.dev.html"
     },
     "author": "Ada18980",
     "license": "All Rights Reserved",

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html style="width:100%; height:100%; padding:0px; margin:0px;">
+<head>
+
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /> -->
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta charset="UTF-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<title>Kinky Dungeon</title>
+	<link rel="icon" type="image/png" href="Game/Locks/Red.png" id="favicon">
+	<link rel="stylesheet" href="style.css">
+	<script src="Scripts/lib/webgl/resources/m4.js"></script>
+	<script src="Scripts/lib/LZString.js"></script>
+</head>
+
+
+
+<body style="width:100%; height:100%; background-color:black; margin:0px; padding:0px; overflow:hidden;">
+<script src="Game/pixi.min.js"></script>
+<script src="Scripts/lib/pixi-filters.js"></script>
+<script src="Scripts/lib/guessLanguage_js/_languageData.js"></script>
+<script src="Scripts/lib/guessLanguage_js/guessLanguage.js"></script>
+<script src="Scripts/lib/zip-full.min.js"></script>
+<script src="Scripts/lib/web-streams-polyfill.min.js"></script>
+
+
+<script src="Scripts/lib/LZString.d.js"></script>
+<script src="Scripts/Typedef.d.js"></script>
+<script src="Game/src/base/KDTypeDefs.js"></script>
+<script src="Data/ModelTypes.js"></script>
+<script src="Scripts/Patch.js"></script>
+<script src="Scripts/Common.js"></script>
+<script src="Scripts/Mouse.js"></script>
+<script src="Scripts/Drawing.js"></script>
+<script src="Scripts/Character.js"></script>
+<script src="Scripts/CharacterName.js"></script>
+<script src="Scripts/Text.js"></script>
+<script src="Scripts/Inventory.js"></script>
+<script src="Scripts/Element.js"></script>
+<script src="Scripts/Translation.js"></script>
+<script src="Scripts/Appearance.js"></script>
+<script src="Game/src/base/KDModUtils.js"></script>
+<script src="Game/src/base/KDShaders.js"></script>
+<script src="Game/src/player/KDAutoStruggle.js"></script>
+<script src="Game/src/player/KDClasses.js"></script>
+<script src="Game/src/base/KDParticles.js"></script>
+<script src="Game/src/restraint/KDLocks.js"></script>
+<script src="Game/src/item/KDModifier.js"></script>
+<script src="Game/src/item/KDHex.js"></script>
+<script src="Game/src/item/KDEnchant.js"></script>
+<script src="Game/src/enemy/KDAIList.js"></script>
+<script src="Game/src/enemy/KDLoadoutList.js"></script>
+<script src="Game/src/restraint/KDApplyVariants.js"></script>
+<script src="Game/src/item/KDInventoryActions.js"></script>
+<script src="Game/src/player/KinkyDungeonStats.js"></script>
+<script src="Game/src/map/KinkyDungeonEditorTiles.js"></script>
+<script src="Game/src/map/KinkyDungeonEditor.js"></script>
+<script src="Game/src/map/KinkyDungeonEditorGen.js"></script>
+<script src="Game/src/base/KinkyDungeonErrors.js"></script>
+<script src="Game/src/base/KinkyDungeon.js"></script>
+<script src="Game/src/base/KDRender.js"></script>
+<script src="Game/src/base/KinkyDungeonGame.js"></script>
+<script src="Game/src/player/KinkyDungeonVibe.js"></script>
+<script src="Game/src/effect/KinkyDungeonBuffsList.js"></script>
+<script src="Game/src/map/KinkyDungeonAlt.js"></script>
+<script src="Game/src/map/KDLairs.js"></script>
+<script src="Game/src/base/KinkyDungeonBones.js"></script>
+<script src="Game/src/map/KinkyDungeonMapMods.js"></script>
+<script src="Game/src/map/KDSideRooms.js"></script>
+<script src="Game/src/map/KinkyDungeonBoss.js"></script>
+<script src="Game/src/player/KinkyDungeonPerks.js"></script>
+<script src="Game/src/map/KinkyDungeonParams.js"></script>
+<script src="Game/src/base/KinkyDungeonVision.js"></script>
+<script src="Game/src/faction/KinkyDungeonQuest.js"></script>
+<script src="Game/src/item/KinkyDungeonLoot.js"></script>
+<script src="Game/src/enemy/KinkyDungeonEnemies.js"></script>
+<script src="Game/src/enemy/KinkyDungeonPersonality.js"></script>
+<script src="Game/src/enemy/KinkyDungeonEnemiesList.js"></script>
+<script src="Game/src/enemy/KinkyDungeonEnemyEventList.js"></script>
+<script src="Game/src/enemy/KinkyDungeonEnemyTeaseAttacks.js"></script>
+<script src="Game/src/map/KinkyDungeonEscapeList.js"></script>
+<script src="Game/src/item/KinkyDungeonCurse.js"></script>
+<script src="Game/src/restraint/KinkyDungeonRestraints.js"></script>
+<script src="Game/src/restraint/KinkyDungeonRestraintsList.js"></script>
+<script src="Game/src/magic/KDAoEList.js"></script>
+<script src="Game/src/fight/KinkyDungeonFight.js"></script>
+<script src="Game/src/fight/KinkyDungeonWeaponList.js"></script>
+<script src="Game/src/base/KinkyDungeonInput.js"></script>
+<script src="Game/src/base/KinkyDungeonHUD.js"></script>
+<script src="Game/src/base/KinkyDungeonDraw.js"></script>
+<script src="Game/src/restraint/KinkyDungeonFurniture.js"></script>
+<script src="Game/src/magic/KinkyDungeonMagic.js"></script>
+<script src="Game/src/magic/KinkyDungeonMagicCode.js"></script>
+<script src="Game/src/magic/KinkyDungeonMagicList.js"></script>
+<script src="Game/src/magic/KinkyDungeonPlayerEffects.js"></script>
+<script src="Game/src/board/KinkyDungeonShrine.js"></script>
+<script src="Game/src/board/KinkyDungeonObject.js"></script>
+<script src="Game/src/item/KinkyDungeonItem.js"></script>
+<script src="Game/src/player/KinkyDungeonDress.js"></script>
+<script src="Game/src/board/KinkyDungeonEffectTiles.js"></script>
+<script src="Game/src/player/KinkyDungeonDressList.js"></script>
+<script src="Game/src/item/KinkyDungeonConsumables.js"></script>
+<script src="Game/src/item/KinkyDungeonConsumablesList.js"></script>
+<script src="Game/src/item/KinkyDungeonInventory.js"></script>
+<script src="Game/src/dialogue/KinkyDungeonLore.js"></script>
+<script src="Game/src/faction/KinkyDungeonReputation.js"></script>
+<script src="Game/src/board/KinkyDungeonTraps.js"></script>
+<script src="Game/src/board/KinkyDungeonTiles.js"></script>
+<script src="Game/src/board/KinkyDungeonTilesList.js"></script>
+<script src="Game/src/enemy/KinkyDungeonPathfinding.js"></script>
+<script src="Game/src/effect/KinkyDungeonBuffs.js"></script>
+<script src="Game/src/effect/KinkyDungeonEvents.js"></script>
+<script src="Game/src/enemy/KinkyDungeonSpawns.js"></script>
+<script src="Game/src/prison/KinkyDungeonJail.js"></script>
+<script src="Game/src/prison/KDPrison.js"></script>
+<script src="Game/src/prison/KDPrisonList.js"></script>
+<script src="Game/src/board/KinkyDungeonSetpiece.js"></script>
+<script src="Game/src/dialogue/KinkyDungeonDialogue.js"></script>
+<script src="Game/src/dialogue/KinkyDungeonDialogueTriggers.js"></script>
+<script src="Game/src/dialogue/KinkyDungeonDialogueList.js"></script>
+<script src="Game/src/faction/KinkyDungeonFactions.js"></script>
+<script src="Game/src/faction/KinkyDungeonFactionsList.js"></script>
+<script src="Game/src/player/KinkyDungeonNeeds.js"></script>
+<script src="Game/src/prison/KinkyDungeonJailList.js"></script>
+<script src="Game/src/KinkyDungeonTests.js"></script>
+<script src="Game/src/item/KinkyDungeonLootList.js"></script>
+<script src="Game/src/base/KinkyDungeonMusic.js"></script>
+<script src="Game/src/enemy/KinkyDungeonCollection.js"></script>
+<script src="Game/src/enemy/KinkyDungeonNames.js"></script>
+<script src="Game/src/player/KDDelayedActions.js"></script>
+<script src="Game/src/enemy/KDCommander.js"></script>
+<script src="Game/src/map/KDJourney.js"></script>
+<script src="Scripts/KDMods.js"></script>
+<script src="Scripts/Main.js"></script>
+<script src="Data/Filters.js"></script>
+<script src="Data/Preload.js"></script>
+<script src="Data/Utils.js"></script>
+<script src="Data/Defs.js"></script>
+<script src="Data/Poses.js"></script>
+<script src="Data/Models.js"></script>
+<script src="Data/ModelListBase.js"></script>
+<script src="Data/ModelListFace.js"></script>
+<script src="Data/ModelList_Cosplay.js"></script>
+<script src="Data/ModelList_Pants.js"></script>
+<script src="Data/ModelList.js"></script>
+<script src="Data/ModelList_Kigu.js"></script>
+<script src="Data/ModelList_Leotards.js"></script>
+<script src="Data/ModelList_Opera.js"></script>
+<script src="Data/ModelList_Sailor.js"></script>
+<script src="Data/ModelList_Dress.js"></script>
+<script src="Data/ModelList_Yukata.js"></script>
+<script src="Data/ModelList_Mittens.js"></script>
+<script src="Data/ModelList_Elf.js"></script>
+<script src="Data/ModelList_Restraints.js"></script>
+<script src="Data/ModelList_Rope.js"></script>
+<script src="Data/ModelList_Ribbon.js"></script>
+<script src="Data/ModelList_Cuffs.js"></script>
+<script src="Data/ModelList_Pony.js"></script>
+<script src="Data/ModelList_Corset.js"></script>
+<script src="Data/ModelList_Skirt.js"></script>
+<script src="Data/ModelList_Wolf.js"></script>
+<script src="Data/ModelList_LeatherCuffs.js"></script>
+<script src="Data/ModelList_DivineCuffs.js"></script>
+<script src="Data/ModelList_DivineCuffsClean.js"></script>
+<script src="Data/ModelList_SteelCuffs.js"></script>
+<script src="Data/ModelList_CyberCuffs.js"></script>
+<script src="Data/ModelList_CrystalCuffs.js"></script>
+<script src="Data/ModelList_Slime.js"></script>
+<script src="Data/ModelList_Rubber.js"></script>
+<script src="Data/ModelList_TapeMed.js"></script>
+<script src="Data/ModelList_TapeHeavy.js"></script>
+<script src="Data/ModelList_TapeLight.js"></script>
+<script src="Data/ModelList_Chastity.js"></script>
+<script src="Data/ModelList_Armbinders.js"></script>
+<script src="Data/ModelList_Heavy.js"></script>
+<script src="Data/ModelList_Blindfolds.js"></script>
+<script src="Data/ModelList_Heels.js"></script>
+<script src="Data/ModelList_CyberHeels.js"></script>
+<script src="Data/ModelList_Handcuffs.js"></script>
+<script src="Data/ModelList_Harness.js"></script>
+<script src="Data/ModelList_Ninja.js"></script>
+<script src="Data/ModelList_Gags.js"></script>
+<script src="Data/ModelList_DivineGag.js"></script>
+<script src="Data/ModelList_Belts.js"></script>
+<script src="Data/ModelList_Shadow.js"></script>
+<script src="Data/ModelList_Furniture.js"></script>
+<script src="Data/ModelList_Collars.js"></script>
+<script src="Data/ModelList_Visors.js"></script>
+<script src="Data/ModelList_Petsuit.js"></script>
+<script src="Data/ModelList_Toys.js"></script>
+<script src="Data/ModelList_SMoonlight.js"></script>
+<script src="Data/ModelList_PureWind.js"></script>
+<script src="Data/ModelList_Bubble.js"></script>
+<script src="Data/ModelStylesList.js"></script>
+<script src="Data/ModelStylesFace.js"></script>
+<script src="Data/ModelStylesHair.js"></script>
+<script src="Data/ModelStylesBody.js"></script>
+<script src="Data/ModelStylesCosplay.js"></script>
+<script src="Data/ModelDresses.js"></script>
+<script src="Game/src/player/KDWardrobe.js"></script>
+
+<noscript>Please enable JavaScript in your web browser to view this page.</noscript>
+<div id="pixi-content">
+	<canvas id="MainCanvas" onClick="Click(event);" onTouchStart="TouchStart(event);" onTouchEnd="TouchEnd(event);" onMouseMove="MouseMove(event);" onMouseLeave="LoseFocus(event);"></canvas>
+</div>
+
+</body>
+</html>
