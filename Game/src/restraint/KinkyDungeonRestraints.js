@@ -480,7 +480,7 @@ function KinkyDungeonDrawTethers(Entity, CamX, CamY) {
 		KDGameBoardAddedTethers = true;
 	}
 
-
+	// KDTetherRefactor
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (inv && KDRestraint(inv).tether && inv.tx && inv.ty) {
 			let vx = inv.tx;
@@ -519,6 +519,7 @@ function KinkyDungeonDrawTethers(Entity, CamX, CamY) {
 
 
 function KDGetTetherLength(player) {
+	// KDTetherRefactor
 	if (!player?.player) return false;
 	let inv = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
 	if (inv && KDRestraint(inv).tether) {
@@ -529,6 +530,7 @@ function KDGetTetherLength(player) {
 
 
 function KDIsPlayerTethered(player) {
+	// KDTetherRefactor
 	if (!player?.player) return false;
 	let inv = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
 	if (inv && KDRestraint(inv).tether && (inv.tx || inv.ty)) {
@@ -540,6 +542,7 @@ function KDIsPlayerTethered(player) {
 }
 
 function KinkyDungeonAttachTetherToEntity(dist, entity) {
+	// KDTetherRefactor
 	let inv = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
 	if (inv && KDRestraint(inv).tether) {
 		let newLeash = inv.tetherEntity != entity.id;
@@ -560,6 +563,7 @@ function KinkyDungeonAttachTetherToEntity(dist, entity) {
  */
 function KDIsPlayerTetheredToLocation(player, x, y, entity) {
 	if (!player.player) return false;
+	// KDTetherRefactor
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).tether && (inv.tx && inv.ty || inv.tetherToLeasher || inv.tetherToGuard || inv.tetherEntity)) {
 			if (inv.tx == x && inv.ty == y) return true;
@@ -574,6 +578,7 @@ function KDIsPlayerTetheredToLocation(player, x, y, entity) {
  * @param {entity} [entity]
  */
 function KDIsPlayerTetheredToEntity(player, entity) {
+	// KDTetherRefactor
 	if (!player.player) return false;
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).tether && (inv.tx && inv.ty || inv.tetherToLeasher || inv.tetherToGuard || inv.tetherEntity)) {
@@ -591,6 +596,7 @@ function KDIsPlayerTetheredToEntity(player, entity) {
  * @returns {number}
  */
 function KDGetTetherEntity(player) {
+	// KDTetherRefactor
 	if (!player.player) return -1;
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).tether && (inv.tetherEntity)) {
@@ -605,6 +611,7 @@ function KDGetTetherEntity(player) {
  * @param {entity} [player]
  */
 function KDBreakTether(player) {
+	// KDTetherRefactor
 	if (player == KinkyDungeonPlayerEntity) {
 		for (let pair of KinkyDungeonAllRestraintDynamic()) {
 			let inv = pair.item;
@@ -632,6 +639,7 @@ let KDLeashPullKneelTime = 5;
  * @returns {boolean}
  */
 function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
+	// KDTetherRefactor
 	if (Entity.player && KinkyDungeonFlags.get("pulled")) return false;
 	else if (KDEnemyHasFlag(Entity, "pulled")) return false;
 	let exceeded = false;
@@ -771,6 +779,7 @@ function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
  * @returns {number}
  */
 function KinkyDungeonTetherLength() {
+	// KDTetherRefactor
 	let inv = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
 	if (inv && KDRestraint(inv).tether && inv.tx && inv.ty) {
 		return KDRestraint(inv).tether;

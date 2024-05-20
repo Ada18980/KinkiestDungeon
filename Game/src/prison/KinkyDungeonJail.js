@@ -1435,6 +1435,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 
 	KinkyDungeonLoseJailKeys();
 
+	// KDTetherRefactor
 	let leash = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
 	if (leash && (leash.tx || leash.ty)) {
 		leash.tx = undefined;

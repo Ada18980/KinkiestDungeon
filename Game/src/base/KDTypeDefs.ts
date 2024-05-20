@@ -3395,6 +3395,15 @@ type KDJailGetGroupsReturn = {
 	itemsToStrip: Record<string, boolean>,
 };
 
+interface KDLeashData {
+	length: number,
+	x: number,
+	y: number,
+	entity?: number,
+	reason?: string,
+	restraintID?: number,
+};
+
 type KDJourneySlot = {
 	visited: boolean,
 

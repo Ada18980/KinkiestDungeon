@@ -763,7 +763,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 	// Strip non-persistent items
 	if (!KDMapData.GroundItems) KDMapData.GroundItems = [];
-	let allPersistent = altType.keepItems;
+	let allPersistent = altType?.keepItems;
 	let persistentItems = KDMapData.GroundItems.filter((item) => {
 		return allPersistent || (KDDroppedItemProperties[item.name] && KDDroppedItemProperties[item.name].persistent);
 	});
