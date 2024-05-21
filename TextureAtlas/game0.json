@@ -314,18 +314,10 @@
 },
 "Game/EnemiesBound/MageZombie.png":
 {
-	"frame": {"x":2021,"y":1528,"w":22,"h":49},
+	"frame": {"x":2021,"y":1532,"w":22,"h":49},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":27,"y":11,"w":22,"h":49},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/FloorGeneric/Bars.png":
-{
-	"frame": {"x":2021,"y":1462,"w":18,"h":64},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":27,"y":8,"w":18,"h":64},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/FloorGeneric/Doors/CyberDoorVert.png":
@@ -518,6 +510,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":17,"y":33,"w":39,"h":7},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Items/LeashItem.png":
+{
+	"frame": {"x":2021,"y":1462,"w":24,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":2,"w":24,"h":68},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Items/MagicSword.png":
@@ -1155,6 +1155,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game1.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:afc75ef880e578152fa81b2c40345feb:db531ee3030f69b92785d57a74113fb2:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:743615bff227879fdea93f623a1d7d74:ee99ae93398f12324ff9778c6172b834:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

@@ -24,6 +24,8 @@ Monk class?
 
 5.3.10
 - Dragons can no longer reinforce PoI maps like bandit hideout
+- Added Clip-On Leash item
+- Refactored leashing! Should work on enemies and player now (may have some bugs)
 
 5.3.9
 - Fix issue where allies don't spawn in dollmaker, warden arena, or other maps
