@@ -389,12 +389,12 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 			KDGameData.visionAdjust -= delta * flags.visionAdjustMult;
 		else if (KDGameData.visionAdjust + delta * flags.visionAdjustMult < Math.min(1, avg)) {
 			KDGameData.visionAdjust += delta * flags.visionAdjustMult;
-			if (avg > 0.4) {
+			if (avg > 0.1) {
 				if (KDGameData.visionBlind == 0) {
 					KinkyDungeonUpdateLightGrid = true;
 				}
 				let amnt = 0.2*Math.max(0, (avg - KDGameData.visionAdjust) * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "blindResist")));
-				if (avg - KDGameData.visionAdjustBlind > 0.85 &&
+				if (avg - KDGameData.visionAdjustBlind > 0.3 &&
 					!(KDGameData.visionBlind > amnt)
 				) {
 					KDGameData.visionBlind = amnt;

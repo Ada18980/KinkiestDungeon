@@ -2977,7 +2977,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DragonQueenPoison", color: "#9bd45d",
 		faction: "DragonQueen",
-		tags: KDMapInit(["opendoors", "boss", "vineRestraints", "dragonqueen", "unstoppable", "slashweakness", "meleeresist", "fireresist", "poisonresist", "melee", "beast", "search", "nature"]), cohesion: 0.1,
+		tags: KDMapInit(["opendoors", "noreinforce", "boss", "vineRestraints", "dragonqueen", "unstoppable", "slashweakness", "meleeresist", "fireresist", "poisonresist", "melee", "beast", "search", "nature"]), cohesion: 0.1,
 		GFX: {
 			spriteHeight: 144,
 			spriteWidth: 144,
@@ -3035,7 +3035,7 @@ let KinkyDungeonEnemies = [
 	{name: "DragonGirlPoison", nameList: "DragonGirl", outfit: "DragonGirlPoison", style: "DragonPoison", faction: "DragonQueen", clusterWith: "beast",
 		bound: "DragonPoison", color: "#8d3fab",
 		playLine: "DragonGirl",
-		tags: KDMapInit(["opendoors", "poison", "nature", "dragongirl", "human", "melee", "miniboss", "vineRestraints", "relentless",
+		tags: KDMapInit(["opendoors", "noreinforce", "poison", "nature", "dragongirl", "human", "melee", "miniboss", "vineRestraints", "relentless",
 			"poisonresist", "fireresist", "chainweakness"]), cohesion: 0.75,
 		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenPoison", range: 4, loose: true, aggressive: true},
 		spells: ["SummonDragonFlower", "DragonSlash"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, spellRdy: true,
@@ -3063,7 +3063,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DragonQueenCrystal", color: "#92e8c0",
 		faction: "DragonQueen",
-		tags: KDMapInit(["opendoors", "boss", "dragonqueen", "pierceweakness", "unstoppable", "meleeresist", "electricresist", "fireresist", "melee", "beast", "search", "crystalline"]), cohesion: 0.1,
+		tags: KDMapInit(["opendoors", "noreinforce", "boss", "dragonqueen", "pierceweakness", "unstoppable", "meleeresist", "electricresist", "fireresist", "melee", "beast", "search", "crystalline"]), cohesion: 0.1,
 		GFX: {
 			spriteHeight: 144,
 			spriteWidth: 144,
@@ -3122,7 +3122,7 @@ let KinkyDungeonEnemies = [
 	{name: "DragonGirlCrystal", nameList: "DragonGirl", outfit: "DragonGirlCrystal", style: "DragonCrystal", faction: "DragonQueen", clusterWith: "beast",
 		bound: "DragonCrystal", color: "#ff5277",
 		playLine: "DragonGirl",
-		tags: KDMapInit(["opendoors", "chaos", "crystal", "dragongirl", "human", "melee", "miniboss", "crystalRestraints", "relentless",
+		tags: KDMapInit(["opendoors", "noreinforce", "chaos", "crystal", "dragongirl", "human", "melee", "miniboss", "crystalRestraints", "relentless",
 			"electricresist", "fireresist", "chainweakness"]), cohesion: 0.75,
 		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenCrystal", range: 4, loose: true, aggressive: true},
 		spells: ["CrystalShockBolt", "CrystalSlash", "CrystalBoltSingle"], spellCooldownMult: 1, spellCooldownMod: 2, castWhileMoving: true, spellRdy: true,
@@ -3148,7 +3148,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DragonQueenShadow", color: "#92e8c0",
 		faction: "DragonQueen",
-		tags: KDMapInit(["opendoors", "boss", "dragonqueen", "chainweakness", "unstoppable", "meleeresist", "coldresist", "fireresist", "melee", "beast", "search", "shadow", "shadowLatexRestraints"]), cohesion: 0.1,
+		tags: KDMapInit(["opendoors", "noreinforce", "boss", "dragonqueen", "chainweakness", "unstoppable", "meleeresist", "coldresist", "fireresist", "melee", "beast", "search", "shadow", "shadowLatexRestraints"]), cohesion: 0.1,
 		GFX: {
 			spriteHeight: 144,
 			spriteWidth: 144,
@@ -3204,7 +3204,7 @@ let KinkyDungeonEnemies = [
 	{name: "DragonGirlShadow", nameList: "DragonGirl", outfit: "DragonGirlShadow", style: "DragonShadow", faction: "DragonQueen", clusterWith: "beast",
 		bound: "DragonShadow", color: "#999999",
 		playLine: "DragonGirl",
-		tags: KDMapInit(["opendoors", "shadow", "dragongirl", "human", "melee", "miniboss", "shadowLatexRestraints", "relentless",
+		tags: KDMapInit(["opendoors", "noreinforce", "shadow", "dragongirl", "human", "melee", "miniboss", "shadowLatexRestraints", "relentless",
 			"coldresist", "fireresist", "chainweakness"]), cohesion: 0.75,
 		followLeashedOnly: true, ignorechance: 0, armor: 0, spellResist: 2, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenShadow", range: 4, loose: true, aggressive: true},
 		spells: ["DarkTele", "ShadowShroudGirl",], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, spellRdy: true,
@@ -3234,7 +3234,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "DragonQueenIce", color: "#92e8c0",
 		faction: "DragonQueen",
-		tags: KDMapInit(["opendoors", "ice", "boss", "iceRestraints", "dragonqueen", "unstoppable", "crushweakness", "meleeresist", "soapresist", "fireresist", "iceresist", "melee", "beast", "search"]), cohesion: 0.1,
+		tags: KDMapInit(["opendoors", "noreinforce", "ice", "boss", "iceRestraints", "dragonqueen", "unstoppable", "crushweakness", "meleeresist", "soapresist", "fireresist", "iceresist", "melee", "beast", "search"]), cohesion: 0.1,
 		GFX: {
 			spriteHeight: 144,
 			spriteWidth: 144,
@@ -3300,7 +3300,7 @@ let KinkyDungeonEnemies = [
 	{name: "DragonGirlIce", nameList: "DragonGirl", outfit: "DragonGirlIce", style: "DragonIce", faction: "DragonQueen", clusterWith: "beast",
 		bound: "DragonIce", color: "#92e8c0",
 		playLine: "DragonGirl",
-		tags: KDMapInit(["opendoors", "water", "ice", "dragongirl", "human", "melee", "miniboss", "iceRestraints", "relentless",
+		tags: KDMapInit(["opendoors", "noreinforce", "water", "ice", "dragongirl", "human", "melee", "miniboss", "iceRestraints", "relentless",
 			"soapresist", "fireresist", "chainweakness"]), cohesion: 0.75,
 		followLeashedOnly: true, ignorechance: 0, armor: 1.5, followRange: 1, AI: "hunt", guardChance: 0.6, master: {type: "DragonQueenCrystal", range: 4, loose: true, aggressive: true},
 		spells: [ "IceBreathChannel", "DragonIceBolt", "EnemyWinterblast"], spellCooldownMult: 1, spellCooldownMod: 2, castWhileMoving: true, spellRdy: true,

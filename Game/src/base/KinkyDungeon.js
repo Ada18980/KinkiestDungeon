@@ -4366,7 +4366,7 @@ function KinkyDungeonLoadGame(String) {
 			KDUpdateEnemyCache = true;
 			if (saveData.flags && saveData.flags.length) KinkyDungeonFlags = new Map(saveData.flags);
 			MiniGameKinkyDungeonLevel = saveData.level;
-			if (Array.from(Object.keys(KinkyDungeonMapIndex)).includes(saveData.checkpoint))
+			if (Array.from(Object.keys(KinkyDungeonMapParams)).includes(saveData.checkpoint))
 				MiniGameKinkyDungeonCheckpoint = saveData.checkpoint;
 			else MiniGameKinkyDungeonCheckpoint = "grv";
 			KinkyDungeonShrineCosts = saveData.costs;

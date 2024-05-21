@@ -22,6 +22,9 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.3.10
+- Dragons can no longer reinforce PoI maps like bandit hideout
+
 5.3.9
 - Fix issue where allies don't spawn in dollmaker, warden arena, or other maps
 - Added the summit (currently serves only as a safe storage for items)

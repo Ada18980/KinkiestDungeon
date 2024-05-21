@@ -1521,6 +1521,8 @@ interface String {
 }
 
 interface entity {
+	/** Optional leash data, used for both NPC and player */
+	leash?: KDLeashData,
 	blockedordodged?: number,
 	blocks?: number,
 	dodges?: number,

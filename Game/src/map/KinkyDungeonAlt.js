@@ -560,7 +560,7 @@ let alts = {
 		setpieces: {
 		},
 		genType: "TestTile",
-		spawns: true,
+		spawns: false,
 		chests: false,
 		shrines: false,
 		orbs: 0,

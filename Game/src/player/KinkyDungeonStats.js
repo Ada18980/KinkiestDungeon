@@ -264,6 +264,7 @@ function KinkyDungeonGetVisionRadius() {
 	let data = {
 		brightness: KDMapData.MapBrightness,
 		blindlevel: KinkyDungeonBlindLevel,
+		blindlevelBonus: 0,
 		noperipheral: KinkyDungeonDeaf || KinkyDungeonStatBlind > 0,
 		blindMult: (KinkyDungeonStatsChoice.get("Blackout") || KinkyDungeonStatsChoice.get("TotalBlackout")) ? 2 : 1,
 		visionMult: 1.0,
@@ -277,12 +278,12 @@ function KinkyDungeonGetVisionRadius() {
 	}
 	KinkyDungeonSendEvent("calcVision", data);
 	if (data.blindRadius > 0) {
-		data.blindlevel += KDGameData.MaxVisionDist * data.blindRadius;
+		data.blindlevelBonus += KDGameData.MaxVisionDist * data.blindRadius;
 	}
 	KDGameData.MaxVisionDist = data.max;
 	KDGameData.MinVisionDist = data.min;
 	KDGameData.NightVision = data.nightVision;
-	return (KDGameData.SleepTurns > 2) ? 1 : (Math.max((data.noperipheral) ? 1 : 2, Math.round(data.visionMult*(KDGameData.MaxVisionDist-data.blindlevel * data.blindMult))));
+	return (KDGameData.SleepTurns > 2) ? 1 : (Math.max((data.noperipheral) ? 1 : 2, Math.round(data.visionMult*(KDGameData.MaxVisionDist-data.blindlevelBonus-data.blindlevel * data.blindMult))));
 }
 
 

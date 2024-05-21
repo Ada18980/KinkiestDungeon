@@ -390,6 +390,8 @@ function KinkyDungeonHandleWanderingSpawns(delta) {
 				KinkyDungeonAddTags(tags, MiniGameKinkyDungeonLevel);
 				tags.push("boss");
 
+				let filtertags = ["noreinforce"];
+
 				let miniboss = false;
 				let requireTags = ["search"];
 				if (hunters) {
@@ -408,7 +410,7 @@ function KinkyDungeonHandleWanderingSpawns(delta) {
 					: KinkyDungeonGetEnemy(
 						tags, MiniGameKinkyDungeonLevel + KinkyDungeonDifficulty/5 + Math.round(KinkyDungeonTotalSleepTurns / sleepTurnsPerExtraSpawnLevel),
 						(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
-						KinkyDungeonMapGet(spawnLocation.x, spawnLocation.y), requireTags, {requireHostile: "Player"});
+						KinkyDungeonMapGet(spawnLocation.x, spawnLocation.y), requireTags, {requireHostile: "Player"}, undefined, filtertags);
 				let EnemiesSummoned = [];
 				// We are going to reroll the ghost decision just to provide some grace for players who are well and truly stuck
 				KinkyDungeonMakeGhostDecision();

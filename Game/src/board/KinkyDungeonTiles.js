@@ -337,9 +337,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 				KinkyDungeonSendActionMessage(10, TextGet("ClimbDown" + toTile), "#ffffff", 1);
 				if (toTile == 's') {
 					KinkyDungeonSetCheckPoint((KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY]?.Checkpoint || 'grv'), true, suppressCheckPoint);
-				}/* else if (toTile == 'H') {
-					KinkyDungeonSetCheckPoint(KDMapData.ShortcutPath, true, suppressCheckPoint);
-				}*/
+				}
 
 				if (KinkyDungeonState != "End") {
 					KinkyDungeonSendEvent("afterHandleStairs", {

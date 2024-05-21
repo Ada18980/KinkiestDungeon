@@ -20618,13 +20618,15 @@ KillDragonVinePlant,"The vine pod explodes into dust!"
 AttackDragonVinePlant,"The vine pod wraps you in vines and squeezes! (DamageTaken)"
 AttackDragonVinePlantBind,"The vine pod launches several vines at you in quick succession! (+RestraintAdded)"
 
-NameDragonPlant,Sleep Flower
-KillDragonPlant,"The sleep flower explodes into dust!"
-AttackDragonPlant,"The sleep flower sprays pollen into your face! Achoo! (DamageTaken)"
-AttackDragonPlantBind,"The sleep flower launches several vines at you in quick succession! (+RestraintAdded)"
+NameDragonFlower,Sleep Flower
+KillDragonFlower,"The sleep flower explodes into dust!"
+AttackDragonFlower,"The sleep flower sprays pollen into your face! Achoo! (DamageTaken)"
+AttackDragonFlowerBind,"The sleep flower launches several vines at you in quick succession! (+RestraintAdded)"
 
 KinkyDungeonSummonMultiDragonVinePlant,Several vine pods sprout out of the ground!
 KinkyDungeonSummonSingleDragonVinePlant,A vine pod sprouts out of the ground!
+KinkyDungeonSummonMultiDragonFlower,Several flowers sprout out of the ground!
+KinkyDungeonSummonSingleDragonFlower,A magical flower sprouts out of the ground!
 KinkyDungeonSummonSingleIceWall,A wall of ice rises from the ground!
 KinkyDungeonSummonMultiIceWall,A wall of ice rises from the ground!
 KDPoisonBreath,The dragon's breath poisons you!
