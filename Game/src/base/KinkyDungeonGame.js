@@ -764,6 +764,7 @@ function KDUpdateOptionGame() {
  */
 function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement, seed, forceFaction, worldLocation, useExisting, origMapType = "", direction = 0, forceEscape) {
 	KDUpdateOptionGame();
+	KDBreakTether(KDPlayer());
 
 	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeNewMap"]);
 	// Create enemies first so we can spawn them in the set pieces if needed

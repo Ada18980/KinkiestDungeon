@@ -183,6 +183,7 @@ function KinkyDungeonUpdateTether(Msg: boolean, Entity: entity, xTo?: number, yT
 		if (leash.entity) {
 			let target = KDLookupID(leash.entity);
 			if (!target) {
+				KDBreakTether(Entity);
 				return false;
 			} else {
 				leash.x = target.x;

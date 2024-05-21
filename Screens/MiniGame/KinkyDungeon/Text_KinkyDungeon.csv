@@ -20983,6 +20983,7 @@ KinkyDungeonSpellTargetLeashSpell,"Target an NPC to leash, or self to unleash al
 
 KinkyDungeonInventoryItemLeashItem,Clip-On Leash
 KinkyDungeonInventoryItemLeashItemDesc,"A beloved favorite of pets and trainers alike."
+KinkyDungeonInventoryItemLeashItemUse,"You ready the leash..."
 KinkyDungeonInventoryItemLeashItemDesc2,"Target an NPC to attach a leash. Enemies and unwilling allies must be tied up to 50% first. Target self to release all leashes, or target a leashed NPC to unleash them."
 ItemPickupLeashItem,"You pick up a leash."
 

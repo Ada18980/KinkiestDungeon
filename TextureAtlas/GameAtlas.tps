@@ -2096,6 +2096,7 @@
             <key type="filename">../Game/Items/Keyring.png</key>
             <key type="filename">../Game/Items/Knife.png</key>
             <key type="filename">../Game/Items/Knives.png</key>
+            <key type="filename">../Game/Items/LeashItem.png</key>
             <key type="filename">../Game/Items/LeylineMap.png</key>
             <key type="filename">../Game/Items/Longbow.png</key>
             <key type="filename">../Game/Items/Lore.png</key>
