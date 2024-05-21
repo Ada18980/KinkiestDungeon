@@ -20976,3 +20976,18 @@ KDShoutHelp,ENMY calls for help!
 dElevator_Summit,(Go to The Summit)
 
 KDSummitIntro,The Summit is a safe area. Items can be left here without fear of losing them.
+
+KinkyDungeonSpellLeashSpell,Leash
+KinkyDungeonSpellDescLeashSpell,"Target an NPC to attach a leash. Enemies and unwilling allies must be tied up to 50% first. Target self to release all leashes, or target a leashed NPC to unleash them."
+KinkyDungeonSpellTargetLeashSpell,"Target an NPC to leash, or self to unleash all."
+
+KinkyDungeonInventoryItemLeashItem,Clip-On Leash
+KinkyDungeonInventoryItemLeashItemDesc,"A beloved favorite of pets and trainers alike."
+KinkyDungeonInventoryItemLeashItemDesc2,"Target an NPC to attach a leash. Enemies and unwilling allies must be tied up to 50% first. Target self to release all leashes, or target a leashed NPC to unleash them."
+ItemPickupLeashItem,"You pick up a leash."
+
+KDLeashSpellCant,You are not in a condition to use a leash on her.
+KDLeashSpellMustTie,She refuses to be leashed unless you tie her up!
+KDLeashSpell,You attach a leash to ENMY.
+KDLeashSpellRemove,You remove your leash from ENMY.
+KDLeashSpellRemoveAll,You let go of all leashes.

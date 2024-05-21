@@ -5665,7 +5665,17 @@ function KinkyDungeonEnemyAt(x, y) {
 	return null;
 }
 
-function KinkyDungeonEntityAt(x, y, requireVision, vx, vy, player = true) {
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {boolean} requireVision
+ * @param {number} [vx]
+ * @param {number} [vy]
+ * @param {boolean} player
+ * @returns {entity}
+ */
+function KinkyDungeonEntityAt(x, y, requireVision = false, vx, vy, player = true) {
 	if (player && KinkyDungeonPlayerEntity.x == x && KinkyDungeonPlayerEntity.y == y) return KinkyDungeonPlayerEntity;
 	let cache = KDGetEnemyCache();
 	if (!requireVision && cache) return cache.get(x + "," + y);
@@ -7899,4 +7909,13 @@ function KDRescueEnemy(rescueType, en, makePlayer = true) {
 		}
 	}
 	return false;
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @returns {string}
+ */
+function KDGetEnemyTypeName(enemy) {
+	return enemy.CustomName || TextGet("Name" + enemy.Enemy.name);
 }

@@ -2,6 +2,25 @@
 let KDLeashPullCost = 0.5;
 let KDLeashPullKneelTime = 5;
 
+let KDLeashablePersonalities = {
+	"": (entity: entity, leasher: entity) => {
+		// Switches refuse unless you are friendly to them.
+		return (!KDHostile(entity, leasher) && KDFactionRelation(KDGetFaction(entity), KDGetFaction(leasher)) > 0.5) || KDBoundEffects(entity) > 1;
+	},
+	"Dom": (entity: entity, leasher: entity) => {
+		// Doms always refuse. You need to tie them.
+		return KDBoundEffects(entity) > 1;
+	},
+	"Sub": (entity: entity, leasher: entity) => {
+		// Subs will always let you leash them unless you are hostile
+		return !KDHostile(entity, leasher) || KDBoundEffects(entity) > 1;
+	},
+	"Brat": (entity: entity, leasher: entity) => {
+		// Brats must be distracted to start leashing, or already leashed
+		return (!KDHostile(entity, leasher) && entity.leash) || entity.distraction > entity.Enemy.maxhp*0.25 || KDBoundEffects(entity) > 1;
+	},
+};
+
 let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 	ShadowTether: (entity) => {
 		if (!(entity.leash.entity && KinkyDungeonFindID(entity.leash.entity)?.Enemy?.tags?.shadow)) return false;
@@ -10,7 +29,12 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 		} else {
 			return KDBoundEffects(entity) > 1;
 		}
-	}
+	},
+	PlayerLeash: (entity) => {
+		if (entity && !(!KDHostile(entity) && KDGetPersonality(entity) != undefined && KDLeashablePersonalities[KDGetPersonality(entity)] && KDLeashablePersonalities[KDGetPersonality(entity)](entity, KDPlayer())))
+		if (KDPlayerIsDisabled() || KinkyDungeonIsHandsBound(true, true, 0.9)) return false;
+		return true;
+	},
 };
 
 function KDGetTetherLength(entity: entity): number {
@@ -136,6 +160,14 @@ function KinkyDungeonDrawTethers(CamX: number, CamY: number) {
 	}
 }
 
+function KDBreakAllLeashedTo(entity: entity, reason?: string) {
+	for (let en of KDMapData.Entities) {
+		if (en.leash?.entity == entity.id && (!reason || en.leash.reason == reason)) {
+			KDBreakTether(en);
+		}
+	}
+}
+
 function KinkyDungeonUpdateTether(Msg: boolean, Entity: entity, xTo?: number, yTo?: number): boolean {
 
 	if (Entity.player && KinkyDungeonFlags.get("pulled")) return false;
@@ -221,13 +253,13 @@ function KinkyDungeonUpdateTether(Msg: boolean, Entity: entity, xTo?: number, yT
 					slot = {x:leash.x, y:leash.y};
 				}
 				if (slot) {
-					let enemy = KinkyDungeonEnemyAt(slot.x, slot.y);
-					if (enemy) {
+					let enemy = KinkyDungeonEntityAt(slot.x, slot.y);
+					if (enemy && !enemy.player && !KDHostile(Entity, enemy)) {
 						let slot2 = null;
 						let mindist2 = playerDist;
 						for (let X = enemy.x-1; X <= enemy.x+1; X++) {
 							for (let Y = enemy.y-1; Y <= enemy.y+1; Y++) {
-								if ((X !=  enemy.x || Y != enemy.y) && !KinkyDungeonEntityAt(slot.x, slot.y) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y)) && KDistEuclidean(X-Entity.x, Y-Entity.y) < mindist2) {
+								if ((X !=  enemy.x || Y != enemy.y) && !KinkyDungeonEntityAt(X, Y) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y)) && KDistEuclidean(X-Entity.x, Y-Entity.y) < mindist2) {
 									mindist2 = KDistEuclidean(X-Entity.x, Y-Entity.y);
 									slot2 = {x:X, y:Y};
 								}
@@ -243,6 +275,8 @@ function KinkyDungeonUpdateTether(Msg: boolean, Entity: entity, xTo?: number, yT
 								KDMoveEntity(enemy, Entity.x, Entity.y, false,undefined, undefined, true);
 						}
 					}
+					exceeded = true;
+					if (enemy?.player) continue;
 					// Force open door
 					if (KinkyDungeonMapGet(slot.x, slot.y) == 'D') KinkyDungeonMapSet(slot.x, slot.y, 'd');
 
@@ -262,9 +296,8 @@ function KinkyDungeonUpdateTether(Msg: boolean, Entity: entity, xTo?: number, yT
 							KinkyDungeonSetEnemyFlag(KinkyDungeonLeashingEnemy(), "harshpull", 5);
 						}
 						if (Msg && restraint) KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonTetherPull").replace("TETHER", KDGetItemName(restraint.item)), "#ff5277", 2, true);
-						exceeded = true;
-					}
 
+					}
 				}
 			}
 		}

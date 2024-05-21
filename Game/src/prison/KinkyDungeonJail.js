@@ -1310,6 +1310,7 @@ function KDApplyLivingCollars() {
 
 function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 	KinkyDungeonInterruptSleep();
+	KDBreakAllLeashedTo(KinkyDungeonPlayerEntity);
 
 	if (KinkyDungeonTempWait)
 		KDDisableAutoWait();

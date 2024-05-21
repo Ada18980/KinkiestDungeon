@@ -21,6 +21,7 @@ let KinkyDungeonConsumables = {
 	"RopeRune" : {name: "RopeRune", rarity: 2, costMod: -1, shop: false, type: "spell", spell: "EnchantRope", sfx: "HeavySwing"},
 	"WaterRune" : {name: "WaterRune", rarity: 2, costMod: -1, shop: false, type: "spell", spell: "WaterRune", sfx: "HeavySwing"},
 	"Bola" : {name: "Bola", rarity: 0, costMod: -1, shop: false, useQuantity: 1, noConsumeOnUse: true, type: "targetspell", spell: "PlayerBola"},
+	"LeashItem" : {name: "LeashItem", rarity: 2, costMod: -2, shop: true, useQuantity: 0, noConsumeOnUse: true, type: "targetspell", spell: "LeashSpell"},
 	"IceRune" : {name: "IceRune", rarity: 2, costMod: -1, shop: false, type: "spell", spell: "Icerune", sfx: "Freeze"},
 	"Bomb" : {name: "Bomb", rarity: 1, costMod: -1, shop: false, type: "spell", spell: "BombItem", sfx: "MagicSlash"},
 	"ElfCrystal" : {name: "ElfCrystal", noHands: true, rarity: 3, costMod: -1, shop: false, type: "spell", spell: "Slippery", sfx: "MagicSlash"},

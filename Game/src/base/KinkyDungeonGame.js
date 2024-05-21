@@ -4966,6 +4966,11 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	}
 
 	KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
+
+	for (let enemy of KDMapData.Entities) {
+		if (enemy.leash)
+			KinkyDungeonUpdateTether(false, enemy);
+	}
 	KinkyDungeonUpdateJailKeys();
 
 	KDCommanderUpdate(delta);
