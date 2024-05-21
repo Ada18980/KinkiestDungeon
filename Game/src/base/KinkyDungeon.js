@@ -200,6 +200,7 @@ let KDToggles = {
 	Helper: true,
 	FastFloaters: false,
 	NoDmgFloaters: false,
+	NoForceGreet: false,
 };
 
 let KDToggleCategories = {
@@ -236,6 +237,7 @@ let KDToggleCategories = {
 	ForceWarnings: "UI",
 	//Drool: true,
 	EnableMinimap: "UI",
+	NoForceGreet: "UI",
 	BuffSide: "UI",
 	ShowPath: "UI",
 	ShowFacing: "UI",
@@ -537,11 +539,13 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 * LockoutChance: number,
 * StatMaxBonus: Record<string, number>,
 * LogFilters: Record<string, boolean>,
+* NoForceGreet: boolean,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	NoForceGreet: false,
 	LogFilters: {
 		Combat: true,
 		Self: true,
@@ -785,7 +789,7 @@ function KinkyDungeonLeashingEnemy() {
 	if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
 		KDLeashingEnemy = null;
 	} else if (!KDLeashingEnemy) {
-		return KinkyDungeonFindID(KDGetTetherEntity(KinkyDungeonPlayerEntity));
+		return KinkyDungeonFindID(KinkyDungeonPlayerEntity.leash?.entity);
 	}
 	return KDLeashingEnemy;
 }

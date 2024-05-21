@@ -762,6 +762,19 @@ function KDEnemyHasFlag(enemy, flag) {
 	return (enemy.flags && (enemy.flags[flag] > 0 || enemy.flags[flag] == -1));
 }
 
+/**
+ *
+ * @param {entity} enemy
+ * @param {string} flag
+ * @returns {boolean}
+ */
+function KDEntityHasFlag(enemy, flag) {
+	if (enemy.player) {
+		return KinkyDungeonFlags.get(flag) > 0;
+	}
+	return (enemy.flags && (enemy.flags[flag] > 0 || enemy.flags[flag] == -1));
+}
+
 function KinkyDungeonDrawEnemiesStatus(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 
 	let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDGameData.MaxVisionDist + 1, undefined, true);
@@ -4219,6 +4232,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						onlyUnlimited: true,
 						ignore: enemy.items,
 					}, enemy, undefined, true)));
+
+			AIData.SlowLeash = !KinkyDungeonAggressive(enemy, player) && KDEntityHasFlag(player, "leashtug");
 			AIData.moveTowardPlayer =
 				// We can move
 				!KDIsImmobile(enemy)
@@ -4401,17 +4416,24 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							&& enemy.y + dir.y == enemy.gy
 						) || !KDPointWanderable(enemy.gx, enemy.gy) || !KDPointWanderable(enemy.x, enemy.y) || KDPointWanderable(enemy.x + dir.x, enemy.y + dir.y) || KDEnemyHasFlag(enemy, "forcepath"))
 						&& KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
-						if (KinkyDungeonEnemyTryMove(enemy, dir, delta, enemy.x + dir.x, enemy.y + dir.y, enemy.action && KDEnemyAction[enemy.action]?.sprint)) AIData.moved = true;
-						if (AIData.moved && splice && enemy.path) enemy.path.splice(0, 1);
-						AIData.idle = false;// If we moved we will pick a candidate for next turns attempt
-						if (AIData.moved) {
-							dir = enemy.movePoints >= 1 ? KDGetDir(enemy, {x: enemy.gx, y: enemy.gy}, KinkyDungeonGetDirection)
-								: KDGetDir(enemy, {x: enemy.gx, y: enemy.gy});
-							if (KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
-								if (!KinkyDungeonEnemyTryMove(enemy, dir, 0, enemy.x + dir.x, enemy.y + dir.y, enemy.action && KDEnemyAction[enemy.action]?.sprint)) {
-									// Use up spare move points
-									enemy.fx = enemy.x + dir.x;
-									enemy.fy = enemy.y + dir.y;
+						if (AIData.SlowLeash) {
+							// Don't tug too hard
+							AIData.idle = false;// If we moved we will pick a candidate for next turns attempt
+							enemy.fx = enemy.x;
+							enemy.fy = enemy.y;
+						} else {
+							if (KinkyDungeonEnemyTryMove(enemy, dir, delta, enemy.x + dir.x, enemy.y + dir.y, enemy.action && KDEnemyAction[enemy.action]?.sprint)) AIData.moved = true;
+							if (AIData.moved && splice && enemy.path) enemy.path.splice(0, 1);
+							AIData.idle = false;// If we moved we will pick a candidate for next turns attempt
+							if (AIData.moved) {
+								dir = enemy.movePoints >= 1 ? KDGetDir(enemy, {x: enemy.gx, y: enemy.gy}, KinkyDungeonGetDirection)
+									: KDGetDir(enemy, {x: enemy.gx, y: enemy.gy});
+								if (KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
+									if (!KinkyDungeonEnemyTryMove(enemy, dir, 0, enemy.x + dir.x, enemy.y + dir.y, enemy.action && KDEnemyAction[enemy.action]?.sprint)) {
+										// Use up spare move points
+										enemy.fx = enemy.x + dir.x;
+										enemy.fy = enemy.y + dir.y;
+									}
 								}
 							}
 						}
@@ -5023,8 +5045,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 												KinkyDungeonSleepTime = CommonTime() + 200;
 											}
 
-											if (AIData.leashing && !KDPlayerIsImmobilized() && !KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity)) {
-												KinkyDungeonAttachTetherToEntity(2.5, enemy);
+											if (AIData.leashing && !KDPlayerIsImmobilized() && !KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
+												KinkyDungeonAttachTetherToEntity(2.5, enemy, player);
 												KinkyDungeonSetFlag("grabbed", 4);
 												KinkyDungeonSetFlag("leashtug", 3);
 											}
@@ -5931,6 +5953,20 @@ function KinkyDungeonEnemyCanMove(enemy, dir, MovableTiles, AvoidTiles, ignoreLo
  * @returns {entity}
  */
 function KinkyDungeonFindID(id) {
+	if (KDIDCache.get(id)) return KDIDCache.get(id);
+	for (let e of KDMapData.Entities) {
+		if (e.id == id) return e;
+	}
+	return null;
+}
+
+/**
+ *
+ * @param {number} id
+ * @returns {entity}
+ */
+function KDLookupID(id, allowPlayer = true) {
+	if (allowPlayer && id == -1) return KDPlayer();
 	if (KDIDCache.get(id)) return KDIDCache.get(id);
 	for (let e of KDMapData.Entities) {
 		if (e.id == id) return e;

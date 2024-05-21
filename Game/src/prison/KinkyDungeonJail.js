@@ -877,6 +877,7 @@ function KDPutInJail(player, enemy, point) {
  * @param {string} type
  */
 function KinkyDungeonHandleLeashTour(xx, yy, type) {
+	let player = KDPlayer();
 	// Remove the leash when we are done
 	if (!KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints && KinkyDungeonJailGuard().x === KinkyDungeonJailGuard().NextJailLeashTourWaypointX && KinkyDungeonJailGuard().y === KinkyDungeonJailGuard().NextJailLeashTourWaypointY) {
 		let leashItemToRemove = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
@@ -933,16 +934,16 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 					KinkyDungeonJailGuard().gx = KinkyDungeonJailGuard().x;
 					KinkyDungeonJailGuard().gy = KinkyDungeonJailGuard().y;
 				}
-				KinkyDungeonAttachTetherToEntity(2, KinkyDungeonJailGuard());
+				KinkyDungeonAttachTetherToEntity(2, KinkyDungeonJailGuard(), player);
 			} else {
 				KinkyDungeonJailGuard().gx = KinkyDungeonPlayerEntity.x;
 				KinkyDungeonJailGuard().gy = KinkyDungeonPlayerEntity.y;
 			}
-		} else if (!KinkyDungeonTetherLength()) {
+		} else if (!KDGetTetherLength(KinkyDungeonPlayerEntity)) {
 			KinkyDungeonJailGuard().gx = KinkyDungeonPlayerEntity.x;
 			KinkyDungeonJailGuard().gy = KinkyDungeonPlayerEntity.y;
 			if (playerDist < 1.5) {
-				KinkyDungeonAttachTetherToEntity(2, KinkyDungeonJailGuard());
+				KinkyDungeonAttachTetherToEntity(2, KinkyDungeonJailGuard(), player);
 			}
 		} else if (KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints > 0
             && (KDistChebyshev(KinkyDungeonJailGuard().x - KinkyDungeonJailGuard().NextJailLeashTourWaypointX, KinkyDungeonJailGuard().y - KinkyDungeonJailGuard().NextJailLeashTourWaypointY) < 2
@@ -969,9 +970,9 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 			let pullDist = (KinkyDungeonLastAction == "Move"
 				&& KDistEuclidean(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y)
 					> KDistEuclidean(KinkyDungeonPlayerEntity.lastx - enemy.x, KinkyDungeonPlayerEntity.lasty - enemy.y)
-				) ? 1.5 : 3.5;//KinkyDungeonTetherLength() - 1;//KinkyDungeonJailGuard().Enemy.pullDist ? KinkyDungeonJailGuard().Enemy.pullDist : 1;
+				) ? 1.5 : 3.5;
 			if (playerDist < 1.5) {
-				KinkyDungeonAttachTetherToEntity(2, KinkyDungeonJailGuard());
+				KinkyDungeonAttachTetherToEntity(2, KinkyDungeonJailGuard(), player);
 			}
 			if (playerDist > pullDist && KinkyDungeonSlowLevel < 2 && KinkyDungeonCheckProjectileClearance(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y)) {
 				// Guard goes back towards the player and reminds them
@@ -1435,12 +1436,6 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 
 	KinkyDungeonLoseJailKeys();
 
-	// KDTetherRefactor
-	let leash = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
-	if (leash && (leash.tx || leash.ty)) {
-		leash.tx = undefined;
-		leash.ty = undefined;
-	}
 	KDGameData.KinkyDungeonSpawnJailers = KDGameData.KinkyDungeonSpawnJailersMax - 1;
 
 	// Lock all jail doors

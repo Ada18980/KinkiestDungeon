@@ -1743,7 +1743,7 @@ function KinkyDungeonDrawGame() {
 					}
 				}
 
-				KinkyDungeonDrawTethers(KinkyDungeonPlayerEntity, CamX+CamX_offset, CamY+CamY_offset);
+				KinkyDungeonDrawTethers(CamX+CamX_offset, CamY+CamY_offset);
 
 				if (tooltip && KDMouseInPlayableArea()) {
 					DrawTextFitKD(tooltip, MouseX, MouseY - KinkyDungeonGridSizeDisplay/2, 200, "#ffffff", KDTextGray2);

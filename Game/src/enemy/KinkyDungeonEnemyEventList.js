@@ -51,19 +51,20 @@ let KDIntentEvents = {
 			return KDSettlePlayerInFurniture(enemy, AIData);
 		},
 		maintain: (enemy, delta) => {
-			let tethered = KDIsPlayerTethered(KinkyDungeonPlayerEntity);
-			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5 && !tethered && KDPlayerLeashed(KinkyDungeonPlayerEntity)) {
-				KinkyDungeonAttachTetherToEntity(2.5, enemy);
+			let player = KDPlayer();
+			let tethered = KDIsPlayerTethered(player);
+			if (KDistChebyshev(enemy.x - player.x, enemy.y - player.y) < 1.5 && !tethered && KDPlayerLeashed(player)) {
+				KinkyDungeonAttachTetherToEntity(2.5, enemy, player);
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
 				return true;
 			}
 			else if (!tethered) {
 				if (enemy.aware) {
-					enemy.gx = KinkyDungeonPlayerEntity.x;
-					enemy.gy = KinkyDungeonPlayerEntity.y;
+					enemy.gx = player.x;
+					enemy.gy = player.y;
 					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-					KDTryToLeash(enemy, KinkyDungeonPlayerEntity);
+					KDTryToLeash(enemy, player);
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
@@ -143,9 +144,10 @@ let KDIntentEvents = {
 			return true;
 		},
 		maintain: (enemy, delta) => {
+			let player = KDPlayer();
 			let tethered = KDIsPlayerTethered(KinkyDungeonPlayerEntity);
 			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5 && !tethered && KDPlayerLeashed(KinkyDungeonPlayerEntity)) {
-				KinkyDungeonAttachTetherToEntity(2.5, enemy);
+				KinkyDungeonAttachTetherToEntity(2.5, enemy, player);
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
 				return true;
 			}
@@ -212,9 +214,10 @@ let KDIntentEvents = {
 			return KDSettlePlayerInFurniture(enemy, AIData, undefined, undefined, ["storage"]);
 		},
 		maintain: (enemy, delta) => {
+			let player = KDPlayer();
 			let tethered = KDIsPlayerTethered(KinkyDungeonPlayerEntity);
 			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5 && !tethered && KDPlayerLeashed(KinkyDungeonPlayerEntity)) {
-				KinkyDungeonAttachTetherToEntity(2.5, enemy);
+				KinkyDungeonAttachTetherToEntity(2.5, enemy, player);
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
 				return true;
 			}
@@ -361,9 +364,10 @@ let KDIntentEvents = {
 			if (!nj) KinkyDungeonSetFlag("LeashToPrison", -1, 1);
 		},
 		maintain: (enemy, delta, AIData) => {
+			let player = KDPlayer();
 			let tethered = KDIsPlayerTethered(KinkyDungeonPlayerEntity);
 			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5 && !tethered && KDPlayerLeashed(KinkyDungeonPlayerEntity)) {
-				KinkyDungeonAttachTetherToEntity(2.5, enemy);
+				KinkyDungeonAttachTetherToEntity(2.5, enemy, player);
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
 				return true;
 			}
@@ -557,8 +561,9 @@ let KDIntentEvents = {
 						enemy.gx = KinkyDungeonPlayerEntity.x;
 						enemy.gy = KinkyDungeonPlayerEntity.y;
 						if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5) {
+							let player = KDPlayer();
 							// Leash the player if they are close
-							KinkyDungeonAttachTetherToEntity(4.5, enemy);
+							KinkyDungeonAttachTetherToEntity(4.5, enemy, player);
 							if (KinkyDungeonGetRestraintItem("ItemDevices")) {
 								KinkyDungeonRemoveRestraint("ItemDevices", false, false, false);
 							}
@@ -657,8 +662,9 @@ let KDIntentEvents = {
 					enemy.gx = KinkyDungeonPlayerEntity.x;
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5) {
+						let player = KDPlayer();
 						// Leash the player if they are close
-						KinkyDungeonAttachTetherToEntity(4.5, enemy);
+						KinkyDungeonAttachTetherToEntity(4.5, enemy, player);
 						if (KinkyDungeonGetRestraintItem("ItemDevices")) {
 							KinkyDungeonRemoveRestraint("ItemDevices", false, false, false);
 						}

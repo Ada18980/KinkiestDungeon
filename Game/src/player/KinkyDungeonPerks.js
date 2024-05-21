@@ -906,7 +906,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 		}
 		for (let stat of c.buffs.concat(c.debuffs)) {
 			if ((!stat[1].locked || KDUnlockedPerks.includes(stat[0]))
-				&& (NonSelectable|| !KDPerksFilter || TextGet("KinkyDungeonStat" + ("" + stat[1].id)).toLocaleLowerCase().includes(KDPerksFilter.toLocaleLowerCase()))) {
+				&& (NonSelectable || !KDPerksFilter || TextGet("KinkyDungeonStat" + ("" + stat[1].id)).toLocaleLowerCase().includes(KDPerksFilter.toLocaleLowerCase()))) {
 				let YY = (!stat[1].buff && (stat[1].cost < 0 || stat[1].debuff)) ? Y_alt : Y;
 				let XX = (!stat[1].buff && (stat[1].cost < 0 || stat[1].debuff)) ? X + KDPerksButtonWidth + KDPerksButtonWidthPad : X;
 

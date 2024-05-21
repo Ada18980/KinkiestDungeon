@@ -189,8 +189,8 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 	}
 	else {
 		if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity) && (!KinkyDungeonJailGuard()
-			|| !KinkyDungeonTetherLength()
-			|| (!(KDistEuclidean(KinkyDungeonJailGuard().x - KinkyDungeonPlayerEntity.x, KinkyDungeonJailGuard().y - KinkyDungeonPlayerEntity.y) <= KinkyDungeonTetherLength() + 2)))) {
+			|| !KDGetTetherLength(KinkyDungeonPlayerEntity)
+			|| (!(KDistEuclidean(KinkyDungeonJailGuard().x - KinkyDungeonPlayerEntity.x, KinkyDungeonJailGuard().y - KinkyDungeonPlayerEntity.y) <= KDGetTetherLength(KinkyDungeonPlayerEntity) + 2)))) {
 
 			let tile = KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y);
 			let journeyTile = KDGameData.JourneyTarget ? KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y]
@@ -675,7 +675,9 @@ function KDEffectTileInteractions(x, y, b, d) {
  * @param {number} x
  * @param {number} y
  * @param {boolean} willing
+ * @param {boolean} [dash]
  * @param {boolean} [ignoreBlocked] - Ignore if the target is blocked--important if swapping
+ * @param {boolean} [forceHitBullets] - Forces the target to hit stationary bullets if in the way
  */
 function KDMoveEntity(enemy, x, y, willing, dash, forceHitBullets, ignoreBlocked) {
 	enemy.lastx = enemy.x;

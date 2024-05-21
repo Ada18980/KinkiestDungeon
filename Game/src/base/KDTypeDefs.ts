@@ -2727,6 +2727,8 @@ interface KDAIData extends KDAITriggerData {
 	focusOnLeash?: boolean,
 	/** Enemy will move toward its target rather than its gx/gy position */
 	moveTowardPlayer?: boolean,
+	/** Enemy will wait a bit before forcing leash again */
+	SlowLeash?: boolean,
 
 	/** The enemy plans to leash the player,
 	 * important to declare b/c otherwise enemy can close cages, etc during play*/
@@ -3398,12 +3400,14 @@ type KDJailGetGroupsReturn = {
 };
 
 interface KDLeashData {
+	priority: number,
 	length: number,
 	x: number,
 	y: number,
 	entity?: number,
 	reason?: string,
 	restraintID?: number,
+	color?: string,
 };
 
 type KDJourneySlot = {

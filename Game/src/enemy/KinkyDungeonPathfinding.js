@@ -70,6 +70,9 @@ let KDPFTrim = 40;
  * @param {(x: number, y: number, xx: number, yy: number) => number} [heuristicOverride]
  * @param {boolean} [taxicab]
  * @param {boolean} [ignoreTrafficLaws]
+ * @param {boolean} [RequireLight]
+ * @param {boolean} [noDoors]
+ * @param {boolean} [needDoorMemory]
  * @returns {any} - Returns an array of x, y points in order
  */
 function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlayer, ignoreLocks, Tiles, RequireLight, noDoors, needDoorMemory, Enemy, trimLongDistance, heuristicOverride, taxicab, ignoreTrafficLaws) {

@@ -1153,7 +1153,7 @@ function KDGetExtraPoses(C) {
 		if (KinkyDungeonIsHandsBound()) {
 			poses.push("HandsBound");
 		}
-		if (KDIsPlayerTethered(C) && KinkyDungeonLeashingEnemy()) {
+		if (KDIsPlayerTethered(KDPlayer()) && KinkyDungeonLeashingEnemy()) {
 			poses.push("Pulled");
 		}
 	} else {

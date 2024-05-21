@@ -48,6 +48,7 @@ KDToggleTabKeybindings,Keybindings
 KDToggleAllowSusMods,Allow Suspicious Mods
 KDToggleAutoLoadMods,Auto Load Mods (offline only)
 KDToggleSkipIntro,Skip Intro
+KDToggleNoForceGreet,No Forced Greetings
 KDToggleShowRestraintOnHover,Show Restraint Info on Escape Hover
 KDToggleForceWarnings,Always Show Warnings
 KDToggleEnableMinimap,Always Show Minimap
@@ -19623,6 +19624,7 @@ KinkyDungeonSpellRecoverObject2,Enhanced Recovery
 KinkyDungeonSpellDescriptionRecoverObject2,"Upcast to increase range and recover objects in an area."
 KinkyDungeonSpellCastRecoverObject2,The items float to you!
 KinkyDungeonSpellCastFailRecoverObject2,There's nothing to pick up.
+KinkyDungeonSpellCastFailLockRecoverObject2,That container is locked!
 KinkyDungeonSpellTargetRecoverObject2,Select an area with items
 
 

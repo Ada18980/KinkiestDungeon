@@ -735,6 +735,15 @@ function KDInitTempValues(seed) {
 	KDPathCacheIgnoreLocks = new Map();
 }
 
+/** Game related options */
+function KDUpdateOptionGame() {
+	if (KinkyDungeonStatsChoice.get("NoForceGreet") && !KDGameData.NoForceGreet) {
+		KDGameData.NoForceGreet = true;
+	} else if (!KinkyDungeonStatsChoice.get("NoForceGreet") && KDGameData.NoForceGreet) {
+		KDGameData.NoForceGreet = false;
+	}
+}
+
 // Starts the the game at a specified level
 // Example usage:
 // KinkyDungeonCreateMap(KinkyDungeonMapParams.grv, 1, false, undefined, "", undefined, true);
@@ -754,12 +763,15 @@ function KDInitTempValues(seed) {
  * @param {number} [direction]
  */
 function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement, seed, forceFaction, worldLocation, useExisting, origMapType = "", direction = 0, forceEscape) {
+	KDUpdateOptionGame();
+
 	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeNewMap"]);
 	// Create enemies first so we can spawn them in the set pieces if needed
 	let allies = KinkyDungeonGetAllies();
 	let mapMod = KDMapData.MapMod ? KDMapMods[KDMapData.MapMod] : null;
 	let altRoom = KDMapData.RoomType;
 	let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
+
 
 	// Strip non-persistent items
 	if (!KDMapData.GroundItems) KDMapData.GroundItems = [];
@@ -4904,7 +4916,13 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 
 	KinkyDungeonUpdateAngel(delta);
 
-	KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
+	if (KDPlayer().leash)
+		KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
+
+	for (let enemy of KDMapData.Entities) {
+		if (enemy.leash)
+			KinkyDungeonUpdateTether(false, enemy);
+	}
 
 	KinkyDungeonResetEventVariablesTick(delta);
 	KinkyDungeonSendEvent("tick", {delta: delta});

@@ -1016,22 +1016,18 @@ let KDEventMapInventory = {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: (e.original || "") + item.name + "Block", type: "RestraintBlock", power: e.power, duration: 2,});
 		},
 		"ShadowHandTether": (e, item, data) => {
-			// KDTetherRefactor
-			let enemy = (item.tx && item.ty) ? KinkyDungeonEnemyAt(item.tx, item.ty) : undefined;
+			let player = KDPlayer();
+			let enemy = (player.leash?.x && player.leash?.y) ? KinkyDungeonEnemyAt(player.leash.x, player.leash.y) : undefined;
 			if (KinkyDungeonFlags.get("ShadowDommed") || (KDGameData.KinkyDungeonLeashedPlayer > 0 && KinkyDungeonLeashingEnemy() && enemy != KinkyDungeonLeashingEnemy())) {
-				item.tx = undefined;
-				item.ty = undefined;
+				return;
 			} else {
-				if (item.tx && item.ty && (!enemy || (e.requiredTag && !enemy.Enemy.tags[e.requiredTag]))) {
-					item.tx = undefined;
-					item.ty = undefined;
-					return;
+				if (player.leash?.x && player.leash?.y && player.leash.restraintID == item.id && player.leash.reason == "ShadowTether" && (!enemy || (e.requiredTag && !enemy.Enemy.tags[e.requiredTag]))) {
+					KDBreakTether(player);
 				} else {
 					// The shadow hands will link to a nearby enemy if possible
 					for (enemy of KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, e.dist)) {
 						if (!e.requiredTag || enemy.Enemy.tags[e.requiredTag]) {
-							item.tx = enemy.x;
-							item.ty = enemy.y;
+							KinkyDungeonAttachTetherToEntity(KDRestraint(item).tether || 1.5, player, enemy, "ShadowTether", "#a02fcc", 3, item);
 						}
 					}
 				}
@@ -8061,14 +8057,16 @@ let KDEventMapEnemy = {
 			}
 		},
 		"shadowDomme": (e, enemy, data) => {
-			if (data.enemy == enemy && data.target == KinkyDungeonPlayerEntity && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
-				KDTripleBuffKill("ShadowEngulf", KinkyDungeonPlayerEntity, 9, (tt) => {
+			let player = KDPlayer();
+			if (data.enemy == enemy && data.target == player && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
+
+				KDTripleBuffKill("ShadowEngulf", player, 9, (tt) => {
 					// Passes out the player, but does NOT teleport
 					KinkyDungeonPassOut(true);
-					KDBreakTether(KinkyDungeonPlayerEntity);
+					KDBreakTether(player);
 
 					// Instead it applies a debuff, and leash
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
+					KinkyDungeonApplyBuffToEntity(player,
 						{id: "ShadowDommed", type: "Flag", duration: 9999, infinite: true, power: 1, maxCount: 1, currentCount: 1, tags: ["attack", "cast"], events: [
 							{type: "ShadowDommed", trigger: "tick"},
 						]}
@@ -8081,7 +8079,7 @@ let KDEventMapEnemy = {
 						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BasicLeash"), 0, true, "Purple");
 					}
 
-					KinkyDungeonAttachTetherToEntity(3.5, enemy);
+					KinkyDungeonAttachTetherToEntity(3.5, enemy, player);
 				}, "Blindness");
 			}
 		},
@@ -8304,6 +8302,7 @@ let KDEventMapEnemy = {
 
 		"ShopkeeperRescueAI": (e, enemy, data) => {
 			// We heal nearby allies and self
+			let player = KDPlayer();
 			if (data.delta && !KDHelpless(enemy) && !KinkyDungeonIsDisabled(enemy) && KDEnemyHasFlag(enemy, "RescuingPlayer")
 				&& ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
 				KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
@@ -8323,7 +8322,7 @@ let KDEventMapEnemy = {
 							if (newAdd) {
 								KinkyDungeonAddRestraintIfWeaker(newAdd, 0, true, undefined, false, false, undefined, "Prisoner");
 							}
-							if (KinkyDungeonAttachTetherToEntity(2.5, enemy)) {
+							if (KinkyDungeonAttachTetherToEntity(2.5, enemy, player)) {
 								KinkyDungeonSendTextMessage(9, TextGet("KDShopkeeperLeash"), "#ffffff", 4);
 							}
 						}
