@@ -64,6 +64,8 @@ Controls
 控制
 Skip Intro
 跳过序言
+No Forced Greetings
+不强迫问候
 Show Restraint Info on Escape Hover
 悬停在挣扎按钮时显示束缚信息
 Always Show Warnings
@@ -296,6 +298,10 @@ Flip Player Display
 翻转玩家显示
 Grayscale when Blind
 失明时视野变成黑白
+Faster Floater Fade
+漂浮物更快消散
+No Damage Floaters
+无伤漂浮物
 Helpless!
 无助！
 Evaded!
@@ -2112,6 +2118,10 @@ Bola x3
 投石索 x3
 Bomb x3
 炸弹 x3
+Dynamite x2
+甘油炸药 x2
+Plastic Explosive x2
+塑胶炸药 x2
 Mana Potion
 魔力药水
 You sip the mana potion and feel empowered.
@@ -5822,6 +5832,10 @@ Several vine pods sprout out of the ground!
 数颗藤蔓破土而出！
 A vine pod sprouts out of the ground!
 一颗藤蔓破土而出！
+Several flowers sprout out of the ground!
+几朵花从地上发芽！
+A magical flower sprouts out of the ground!
+一个神奇的花朵从地上萌芽！
 A wall of ice rises from the ground!
 一道冰墙从地底升起！
 The dragon's breath poisons you!
@@ -16648,6 +16662,8 @@ Unflinching (Resist status/bondage)
 坚定不移（抵抗状态/束缚）
 Relentless (Stun resist when stunned)
 无情（眩晕时抵抗眩晕）
+Bulwark (Blocks some explosions)
+壁垒（阻挡一些爆炸）
 Blindsight (See through walls)
 盲视（看穿墙壁）
 Mana Harvesting
@@ -18047,6 +18063,8 @@ The items float to you!
 物品飘向了你！
 There's nothing to pick up.
 没有什么能捡到的。
+That container is locked!
+那个容器已被锁定！
 The chest is locked.
 箱子是锁住的。
 Select a tile with items
@@ -19339,3 +19357,47 @@ Struggle
 （前往顶点）
 The Summit is a safe area. Items can be left here without fear of losing them.
 顶点是一个安全地区。物品可以放在这里，不用担心丢失。
+Leash
+皮带
+Target an NPC to attach a leash. Enemies and unwilling allies must be tied up to 50% first. Target self to release all leashes, or target a leashed NPC to unleash them.
+以NPC为目标绑上皮带。敌人和不情愿的盟友必须首先被捆绑到50%。以自身为目标释放所有的束缚，或者以一个被束缚的NPC为目标释放它们。
+Target an NPC to leash, or self to unleash all.
+以NPC为目标进行束缚，或以自我为目标进行释放。
+Clip-On Leash
+夹子皮带
+A beloved favorite of pets and trainers alike.
+宠物和训练师的最爱。
+You ready the leash...
+你准备好了皮带...
+You pick up a leash.
+你拿起一条皮带。
+You are not in a condition to use a leash on her.
+你不能用皮带拴住她。
+She refuses to be leashed unless you tie her up!
+除非你把她绑起来，否则她不能被拴住！
+You attach a leash to ENMY.
+你给 ENMY 系上皮带。
+You remove your leash from ENMY.
+你把皮带从 ENMY 上取下来。
+You let go of all leashes.
+你松开了所有的皮带。
+Plastic Explosive
+塑胶炸弹
+Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage.
+有一个60回合的计时器，但可以被其他炸药引爆。在巨大的半径范围内造成210处爆炸破坏，并留下一大片瓦砾。被击中的敌人在受到伤害之前，护甲减少50。
+It's totally harmless! Probably.
+这完全无害！可能吧。
+You set the clock ticking...
+你让时钟滴答作响...
+Dynamite
+甘油炸药
+10 turn fuse with a 25% chance each turn to detonate prematurely. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage.
+10回合的引信，每回合有25%的几率提前引爆。在大范围内造成140点爆炸伤害。被击中的敌人在受到伤害之前，护甲减少20。
+Arguably more dangerous to the user than the target.
+可以说，对用户来说比目标更危险。
+10 turn fuse with a 25% chance each turn to detonate. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage.
+10回合的引信，每回合有25%的几率引爆。在大范围内造成140点爆炸伤害。被击中的敌人在受到伤害之前，护甲减少20。
+You light the fuse and pray it doesn't blow up in your face.
+你点燃保险丝，祈祷它不要在你脸上爆炸。
+You are holding too many leashes!
+你的皮带太多了！
