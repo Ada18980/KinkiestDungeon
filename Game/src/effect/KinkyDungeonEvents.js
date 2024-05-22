@@ -7009,6 +7009,13 @@ let KDEventMapBullet = {
 				if (b.bullet?.damage?.damage) b.bullet.damage.damage *= 1.5;
 			}
 		},
+		"BreakArmor": (e, b, data) => {
+			if (b && data.enemy) {
+				KinkyDungeonApplyBuffToEntity(data.enemy,
+					{id: "ExplosiveBreak", type: "ArmorBreak", duration: e.duration || 80, power: -e.power, player: true, enemies: true, tags: ["debuff", "armor"]});
+			}
+		},
+
 		"Knockback": (e, b, data) => {
 			if (b && data.enemy && !data.enemy.Enemy.tags.noknockback && !KDIsImmobile(data.enemy)) {
 				let pushPower = KDPushModifier(e.power, data.enemy, false);
@@ -7277,6 +7284,13 @@ let KDEventMapBullet = {
 		},
 	},
 	"bulletTick": {
+
+		"EndChance": (e, b, data) => {
+			if (b.time < e.count)
+				if (KDRandom() < e.chance) {
+					b.time = 0;
+				}
+		},
 		"CreateSmoke": (e, b, data) => {
 			KDCreateAoEEffectTiles(b.x, b.y,  {
 				name: e.kind || "Smoke",
@@ -7901,6 +7915,7 @@ let KDEventMapEnemy = {
 		},
 	},
 	"tick": {
+
 		"FuukaManagement": (e, enemy, data) => {
 			if (enemy.hostile && !KDEnemyHasFlag(enemy, "fuukaPillars")) {
 				KinkyDungeonSetEnemyFlag(enemy, "fuukaPillars", -1);
@@ -8003,6 +8018,29 @@ let KDEventMapEnemy = {
 				) suff = "Invalid";
 				KinkyDungeonSendTextMessage(5, TextGet("KDEpicenterAbort" + suff + "_" + enemy.Enemy.name), "#9074ab", 10);
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Fwoosh.ogg", enemy);
+			}
+		},
+
+		"LeashWolfgirls": (e, enemy, data) => {
+			if (KDRandom() > (e.chance || 1)) return;
+			if (!enemy.idle && KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) > 1.5) return;
+			let enemies = KDNearbyEnemies(enemy.x, enemy.y, e.dist);
+			let dd = 0;
+			for (let en of enemies) {
+				if (KDGetFaction(en) == KDGetFaction(enemy)) {
+					dd = KDistChebyshev(enemy.x - en.x, enemy.y - en.y);
+					if (dd < e.dist) {
+						if (dd < 1.5) {
+							// Attach leash
+							KinkyDungeonAttachTetherToEntity(e.dist, enemy, en, "WolfgirlLeash", "#00ff00", 2);
+						}
+						else {
+							// Move toward
+							enemy.gx = en.x;
+							enemy.gy = en.y;
+						}
+					}
+				}
 			}
 		},
 		"DisplayAura": (e, enemy, data) => {

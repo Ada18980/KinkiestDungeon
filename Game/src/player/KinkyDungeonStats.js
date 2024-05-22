@@ -441,6 +441,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 		stats: [],
 		newstats: [],
 		damaged: false,
+		dmgShield: 0,
 	};
 
 	if (KinkyDungeonStatsChoice.get("Estim")) {
@@ -527,8 +528,10 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 				Entity: KinkyDungeonPlayerEntity, Color: "#92e8c0", Delay: 0, });
 		}
 
-		KDDamagePlayerShield(Math.max(0, Math.min(KDGameData.Shield, amt - Math.max(0, data.dmg))));
+		let shieldDmg = Math.max(0, Math.min(KDGameData.Shield, amt - Math.max(0, data.dmg)));
+		KDDamagePlayerShield(shieldDmg);
 		if (data.dmg < 0) data.dmg = 0;
+		data.dmgShield += shieldDmg;
 	}
 
 

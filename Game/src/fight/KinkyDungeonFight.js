@@ -666,6 +666,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		desireMult: (Damage) ? Damage.desireMult : 0,
 		incomingDamage: Damage,
 		dmgDealt: 0,
+		dmgShieldDealt: 0,
 		freezebroke: false,
 		froze: 0,
 		vulnerable: (Enemy.vulnerable || (KDHostile(Enemy) && !Enemy.aware)) && Damage && !Damage.novulnerable && (!Enemy.Enemy.tags || !Enemy.Enemy.tags.nonvulnerable),
@@ -983,10 +984,13 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				let orig = predata.dmgDealt;
 				Enemy.shield -= predata.dmgDealt;
 				if (Enemy.shield <= 0) {
+					predata.dmgShieldDealt += predata.dmgDealt + Enemy.shield;
 					predata.dmgDealt = -Enemy.shield;
+
 					delete Enemy.shield;
 				} else {
 					Enemy.playerdmg = (Enemy.playerdmg || 0) + orig;
+					predata.dmgShieldDealt += predata.dmgDealt;
 					predata.dmgDealt = 0;
 					predata.shieldBlocked = true;
 				}
@@ -1324,7 +1328,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		KinkyDungeonSetEnemyFlag(Enemy, "failpath", 0);
 	}
 
-	return predata.dmg;
+	return predata.dmgDealt + predata.dmgShieldDealt;
 }
 
 function KinkyDungeonDisarm(Enemy, suff) {
@@ -2966,4 +2970,13 @@ function KDWeaponIsMagic(weapon) {
 function KDEvasiveManeuversCost() {
 	let eva = KinkyDungeonPlayerEvasion();
 	return (5.0 * eva) + 1 * KinkyDungeonSlowLevel;
+}
+
+/**
+ *
+ * @param {entity} entity
+ * @returns {boolean}
+ */
+function KDEntityBlocksExp(entity) {
+	return entity.Enemy?.tags?.bulwark || KDEntityBuffedStat(entity, "Bulwark") > 0;
 }

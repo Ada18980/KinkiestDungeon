@@ -1873,6 +1873,15 @@ function KDDrawEnemyTooltip(enemy, offset) {
 			size: 20,
 		});
 	}
+	if (KDEntityBlocksExp(enemy)) {
+		let st = TextGet("KDBulwark");
+		TooltipList.push({
+			str: st,
+			fg: "#ffffff",
+			bg: "#000000",
+			size: 20,
+		});
+	}
 	if (KDAbsoluteArmor(enemy)) {
 		let st = TextGet("KDAbsoluteArmor");
 		TooltipList.push({
@@ -3151,6 +3160,9 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 					if (player.player) KinkyDungeonSetEnemyFlag(enemy, "targ_player", 1);
 					else if (KDGetFaction(player) == "Player") KinkyDungeonSetEnemyFlag(enemy, "targ_ally", 1);
 					else KinkyDungeonSetEnemyFlag(enemy, "targ_npc", 1);
+					if (KinkyDungeonAggressive(enemy, player)) {
+						KinkyDungeonSetEnemyFlag(enemy, "aggression", 1);
+					}
 				}
 
 
@@ -3938,9 +3950,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				)
 			)) ?
 			// If we meet the above conditions, we still have to consult whether or not the intent action gates it
+			// If we dont have an intent action, then we have the default gate
 			((intentAction?.decideAttack) ?
 				(intentAction.decideAttack(enemy, player, AIData, AIData.allied, AIData.hostile, AIData.aggressive))
-				: true)
+				: KDGateAttack(enemy))
 			// Otherwise if we dont meet the conditions we dont want to attack
 			: false
 	);
@@ -4291,7 +4304,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								enemy.path = KinkyDungeonFindPath(enemy.x, enemy.y, player.x, player.y,
 									KDEnemyHasFlag(enemy, "blocked"), KDEnemyHasFlag(enemy, "blocked"),
 									enemy == KinkyDungeonLeashingEnemy() || AIData.ignoreLocks, AIData.MovableTiles,
-									undefined, undefined, undefined, enemy, enemy != KinkyDungeonJailGuard() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
+									undefined, undefined, undefined, enemy, !enemy.CurrentAction && enemy != KinkyDungeonJailGuard() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
 							}
 							if (enemy.path) {
 								if (enemy.path && enemy.path.length > 0 && Math.max(Math.abs(enemy.path[0].x - enemy.x),Math.abs(enemy.path[0].y - enemy.y)) < 1.5) {
@@ -4406,6 +4419,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								enemy.path = null;
 								KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
 							}
+						} else {
+							KinkyDungeonSetEnemyFlag(enemy, "longPath", 24);
 						}
 
 					}
@@ -4463,8 +4478,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							if (!AIData.master && wanderfar) {
 								if (!AIType.wanderfar_func || !AIType.wanderfar_func(enemy, player, AIData)) {
 									// long distance hunt
-									let newPoint = KinkyDungeonGetRandomEnemyPoint(false,
-										enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
+									let newPoint = KinkyDungeonGetRandomEnemyPointCriteria((X, Y) => {
+										return KDistChebyshev(enemy.x - X && enemy.y - Y) < 24;
+									}, false,
+									enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
 									if (newPoint) {
 										// Gravitate toward interesting stuff
 										let np =
@@ -5213,6 +5230,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						KinkyDungeonSendEvent("beforeDamage", data);
 						KDDelayedActionPrune(["Hit"]);
 						let dmg = KinkyDungeonDealDamage({damage: data.damage, type: data.damagetype});
+						if (!dmg.happened) {
+							// Sometimes enemies will flinch for a turn if their attack did nothing
+							if (KDRandom() < 0.4) KinkyDungeonSetEnemyFlag(enemy, "failAttack", 1);
+						}
 						data.happened += dmg.happened;
 						if (staminaDamage) {
 							KinkyDungeonChangeStamina(-staminaDamage, false, true, false, KDGetStamDamageThresh());
@@ -5266,7 +5287,12 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						if (enemy.Enemy.fullBoundBonus) {
 							dmg += enemy.Enemy.fullBoundBonus; // Some enemies deal bonus damage if they cannot put a binding on you
 						}
-						happened += KinkyDungeonDamageEnemy(player, {type: enemy.Enemy.dmgType, damage: dmg}, false, true, undefined, undefined, enemy);
+						let damaged = KinkyDungeonDamageEnemy(player, {type: enemy.Enemy.dmgType, damage: dmg}, false, true, undefined, undefined, enemy);
+						if (!(damaged > 0)) {
+							// Sometimes enemies will flinch for a turn if their attack did nothing
+							if (KDRandom() < 0.7) KinkyDungeonSetEnemyFlag(enemy, "failAttack", 1);
+						}
+						happened += damaged;
 						KinkyDungeonSetFlag("NPCCombat",  3);
 						KinkyDungeonTickBuffTag(enemy, "hit", 1);
 						if (happened > 0) {
@@ -7918,4 +7944,13 @@ function KDRescueEnemy(rescueType, en, makePlayer = true) {
  */
 function KDGetEnemyTypeName(enemy) {
 	return enemy.CustomName || TextGet("Name" + enemy.Enemy.name);
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDGateAttack(enemy) {
+	return !(KDEnemyHasFlag(enemy, "runAway") || KDEnemyHasFlag(enemy, "attackFail"));
 }

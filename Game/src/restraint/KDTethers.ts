@@ -31,9 +31,40 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 		}
 	},
 	PlayerLeash: (entity) => {
-		if (entity && !(!KDHostile(entity) && KDGetPersonality(entity) != undefined && KDLeashablePersonalities[KDGetPersonality(entity)] && KDLeashablePersonalities[KDGetPersonality(entity)](entity, KDPlayer())))
-		if (KDPlayerIsDisabled() || KinkyDungeonIsHandsBound(true, true, 0.9)) return false;
+		if (!KinkyDungeonInventoryGetConsumable("LeashItem")) return false;
+		if (entity && !(KDGetPersonality(entity) != undefined && KDLeashablePersonalities[KDGetPersonality(entity)] && KDLeashablePersonalities[KDGetPersonality(entity)](entity, KDPlayer())))
+			return false;
+		if (KDPlayerIsDisabled() || KinkyDungeonIsHandsBound(true, true, 0.5)) return false;
 		return true;
+	},
+	Default: (entity) => {
+		if (entity.leash && entity.leash.reason == "Default") {
+			if (entity.leash.entity) {
+				let leasher = KDLookupID(entity.leash.entity);
+				if (!leasher) return false;
+				if (!leasher.player) {
+					if (KinkyDungeonIsDisabled(leasher)) return false;
+				}
+			}
+		}
+		if (entity.player) {
+			if (KinkyDungeonPlayerTags.get("Leashable"))
+				return true;
+			else return false;
+		}
+		return true;
+	},
+	WolfgirlLeash: (entity) => {
+		if (entity?.leash && entity.leash.reason == "Default") {
+			if (entity.leash.entity) {
+				let leasher = KDLookupID(entity.leash.entity);
+				if (KDEntityHasFlag(leasher, "aggression")) {
+					return false;
+				}
+			}
+		}
+		// Careful about recursion
+		return KDLeashReason.Default(entity);
 	},
 };
 
@@ -71,7 +102,7 @@ function KDUpdateLeashCondition(entity: entity, noDelete: boolean = false) : boo
 	return true;
 }
 
-function KinkyDungeonAttachTetherToEntity(dist: number, entity: entity, player: entity, reason?: string, color?: string, priority: number = 5, item: item = null): KDLeashData {
+function KinkyDungeonAttachTetherToEntity(dist: number, entity: entity, player: entity, reason: string = "Default", color?: string, priority: number = 5, item: item = null): KDLeashData {
 	if (!player) player = KDPlayer();
 
 	if (!player.leash || priority > player.leash.priority) {

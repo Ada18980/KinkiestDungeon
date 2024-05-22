@@ -205,8 +205,8 @@ function KDGetVibeLocation(item) {
 	let groups = [restraint.vibeLocation ? restraint.vibeLocation : restraint.Group];
 	if (restraint.linkedVibeTags) {
 		for (let tag of restraint.linkedVibeTags) {
-			for (let inv of KinkyDungeonAllRestraint()) {
-				let res = KDRestraint(inv);
+			for (let inv of KinkyDungeonAllRestraintDynamic()) {
+				let res = KDRestraint(inv.item);
 				if (res.linkedVibeTags && res.linkedVibeTags.includes(tag) && !groups.includes(res.vibeLocation ? res.vibeLocation : res.Group)) {
 					groups.push(res.vibeLocation ? res.vibeLocation : res.Group);
 				}
@@ -369,10 +369,10 @@ function KinkyDungeonCalculateVibeLevel(delta) {
 	KinkyDungeonStatPlugLevel = 0;
 	KinkyDungeonPlugCount = 0;
 	let sumplug = 0;
-	for (let item of KinkyDungeonAllRestraint()) {
-		if (item && KDRestraint(item)) {
-			if (KDRestraint(item).plugSize) {
-				let size = KDRestraint(item).plugSize;
+	for (let item of KinkyDungeonAllRestraintDynamic()) {
+		if (item && KDRestraint(item.item)) {
+			if (KDRestraint(item.item).plugSize) {
+				let size = KDRestraint(item.item).plugSize;
 				sumplug += size/2;
 				KinkyDungeonStatPlugLevel = Math.max(KinkyDungeonStatPlugLevel, size);
 				KinkyDungeonPlugCount += 1;
@@ -387,8 +387,8 @@ function KinkyDungeonCalculateVibeLevel(delta) {
 
 	if (KDGameData.CurrentVibration) {
 
-		for (let r of KinkyDungeonAllRestraint()) {
-			if (KDGameData.CurrentVibration.source == r.name) {
+		for (let r of KinkyDungeonAllRestraintDynamic()) {
+			if (KDGameData.CurrentVibration.source == r.item.name) {
 				cease = false;
 				break;
 			}

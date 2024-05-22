@@ -22,6 +22,11 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.3.11
+- Some enemies have Bulwark which blocks bomb explosions
+- Fixed some bugs where enemies would fail to pathfind
+- Added plastic explosive and dynamite to the shop
+
 5.3.10
 - Dragons can no longer reinforce PoI maps like bandit hideout
 - Added Clip-On Leash item

@@ -1305,6 +1305,8 @@ KinkyDungeonInventoryItem2Lockpick,lockpick x2
 KinkyDungeonInventoryItem4Lockpick,lockpicks x4
 KinkyDungeonInventoryItem3Bola,Bola x3
 KinkyDungeonInventoryItem3Bomb,Bomb x3
+KinkyDungeonInventoryItem2Dynamite,Dynamite x2
+KinkyDungeonInventoryItem2C4,Plastic Explosive x2
 KinkyDungeonInventoryItemPotionMana,Mana Potion
 KinkyDungeonInventoryItemPotionManaUse,You sip the mana potion and feel empowered.
 KinkyDungeonInventoryItemPotionManaDesc,"A rare essence used by mages to recover their strength."
@@ -18546,6 +18548,7 @@ KinkyDungeonSpellDescriptionDisguise,"Steal's a helpless enemy's clothes, adding
 KDunstoppable,"Unstoppable (Ignore status/bondage)"
 KDunflinching,"Unflinching (Resist status/bondage)"
 KDrelentless,"Relentless (Stun resist when stunned)"
+KDBulwark,"Bulwark (Blocks some explosions)"
 KDBlindsight,Blindsight (See through walls)
 
 
@@ -20992,3 +20995,18 @@ KDLeashSpellMustTie,She refuses to be leashed unless you tie her up!
 KDLeashSpell,You attach a leash to ENMY.
 KDLeashSpellRemove,You remove your leash from ENMY.
 KDLeashSpellRemoveAll,You let go of all leashes.
+
+
+KinkyDungeonInventoryItemC4,Plastic Explosive
+KinkyDungeonInventoryItemC4Desc,"Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage."
+KinkyDungeonInventoryItemC4Desc2,"It's totally harmless! Probably."
+KinkyDungeonInventoryItem2C4Desc,"Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage."
+KinkyDungeonInventoryItem2C4Desc2,"It's totally harmless! Probably."
+KinkyDungeonInventoryItemC4Use,You set the clock ticking...
+
+KinkyDungeonInventoryItemDynamite,Dynamite
+KinkyDungeonInventoryItemDynamiteDesc,"10 turn fuse with a 25% chance each turn to detonate prematurely. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage."
+KinkyDungeonInventoryItemDynamiteDesc2,"Arguably more dangerous to the user than the target."
+KinkyDungeonInventoryItem2DynamiteDesc,"10 turn fuse with a 25% chance each turn to detonate. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage."
+KinkyDungeonInventoryItem2DynamiteDesc2,"Arguably more dangerous to the user than the target."
+KinkyDungeonInventoryItemDynamiteUse,You light the fuse and pray it doesn't blow up in your face.

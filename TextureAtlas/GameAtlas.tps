@@ -2034,6 +2034,7 @@
             <key type="filename">../Game/Items/Bow.png</key>
             <key type="filename">../Game/Items/BowRecurve.png</key>
             <key type="filename">../Game/Items/Brownies.png</key>
+            <key type="filename">../Game/Items/C4.png</key>
             <key type="filename">../Game/Items/ChainSword.png</key>
             <key type="filename">../Game/Items/Claymore.png</key>
             <key type="filename">../Game/Items/Crop.png</key>
@@ -2051,6 +2052,7 @@
             <key type="filename">../Game/Items/Dragonslaver.png</key>
             <key type="filename">../Game/Items/Dreamcatcher.png</key>
             <key type="filename">../Game/Items/Duster.png</key>
+            <key type="filename">../Game/Items/Dynamite.png</key>
             <key type="filename">../Game/Items/EarthRune.png</key>
             <key type="filename">../Game/Items/Ectoplasm.png</key>
             <key type="filename">../Game/Items/ElfCrystal.png</key>
@@ -2194,6 +2196,8 @@
             <key type="filename">../Game/Items/VibeWand.png</key>
             <key type="filename">../Game/Items/WaterRune.png</key>
             <key type="filename">../Game/Lock.png</key>
+            <key type="filename">../Game/ShopBasic/2C4.png</key>
+            <key type="filename">../Game/ShopBasic/2Dynamite.png</key>
             <key type="filename">../Game/ShopBasic/3Bola.png</key>
             <key type="filename">../Game/ShopBasic/3Bomb.png</key>
             <key type="filename">../Game/ShopBasic/3Flash.png</key>
@@ -2869,12 +2873,16 @@
             <key type="filename">../Game/Bullets/BubbleBurstLatexHit.png</key>
             <key type="filename">../Game/Bullets/BubbleBurstSlime.png</key>
             <key type="filename">../Game/Bullets/BubbleBurstSlimeHit.png</key>
+            <key type="filename">../Game/Bullets/C4Item.png</key>
+            <key type="filename">../Game/Bullets/C4ItemHit.png</key>
             <key type="filename">../Game/Bullets/CrystalSlash.png</key>
             <key type="filename">../Game/Bullets/CrystalSlashHit.png</key>
             <key type="filename">../Game/Bullets/DarkShroud.png</key>
             <key type="filename">../Game/Bullets/DarkShroudHit.png</key>
             <key type="filename">../Game/Bullets/DragonFlowerSpores.png</key>
             <key type="filename">../Game/Bullets/DragonFlowerSporesHit.png</key>
+            <key type="filename">../Game/Bullets/DynamiteItem.png</key>
+            <key type="filename">../Game/Bullets/DynamiteItemHit.png</key>
             <key type="filename">../Game/Bullets/Earthfield.png</key>
             <key type="filename">../Game/Bullets/EarthfieldHit.png</key>
             <key type="filename">../Game/Bullets/Earthrune.png</key>

@@ -2520,6 +2520,32 @@ let KinkyDungeonSpellListEnemies = [
 			duration: -1,
 		}, type:"inert", onhit:"lingering", time: 3, delay: 5, power: 10, range: 3, size: 3, aoe: 2, lifetime: 1, damage: "stun", playerEffect: {name: "Damage"}},
 
+	{name: "DynamiteItem", color: "#ff5277", prerequisite: "ApprenticeSummon", tags: ["aoe", "offense"], noise: 10, sfx: "Lightning", school: "Conjure", manacost: 5, components: ["Verbal"], level:1,
+		aoetype: "XcrossCrack",
+		events: [
+			{trigger: "bulletTick", type: "EndChance", chance: 0.25, count: 8},
+		],
+		hitevents: [
+			{trigger: "afterBulletHit", type: "Crack"},
+			{trigger: "bulletHitEnemy", type: "BreakArmor", power: 2},
+		],
+		block: 0.5, noTerrainHit: true, volatilehit: true, blockType: ["stun", "holy", ...KDIgnitionSources],
+		effectTileDurationMod: 7, hitSpin: 0.2, effectTile: {
+			name: "Cracked",
+			duration: 13,
+		}, type:"inert", onhit:"lingering", time: 7, delay: 10, power: 14, range: 3, size: 3, aoe: 3.99, lifetime: 1, damage: "stun", playerEffect: {name: "Damage"}},
+
+
+	{name: "C4Item", color: "#ff5277", prerequisite: "ApprenticeSummon", tags: ["aoe", "offense"], noise: 15, sfx: "Lightning", school: "Conjure", manacost: 5, components: ["Verbal"], level:1,
+		hitevents: [
+			{trigger: "afterBulletHit", type: "Crack"},
+			{trigger: "bulletHitEnemy", type: "BreakArmor", power: 5},
+		],
+		block: 4, noTerrainHit: true, volatilehit: true, blockType: ["stun", "holy", ...KDIgnitionSources],
+		effectTileDurationMod: 70, hitSpin: 0.2, effectTile: {
+			name: "RubbleNoMend",
+			duration: 130,
+		}, type:"inert", onhit:"lingering", time: 10, delay: 60, power: 21, range: 3, size: 3, aoe: 4.99, lifetime: 1, damage: "stun", playerEffect: {name: "Damage"}},
 
 	{enemySpell: true, name: "MinerBomb", color: "#ff2200", selfcast: true, noise: 5, sfx: "FireSpell", hitsfx: "FireSpell", school: "Conjure", manacost: 5, components: ["Verbal"], level:1, hideWarnings: true,
 		aoetype: "crossCrack",

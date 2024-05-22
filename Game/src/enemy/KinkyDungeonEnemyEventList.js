@@ -491,7 +491,7 @@ let KDIntentEvents = {
 		play: true,
 		// This is the basic leash to jail mechanic
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
-			return (AIData?.playerDist > 2.99
+			return (AIData?.playerDist < 6.99
 				&& KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints")
 				&& !KinkyDungeonFlags.has("TempLeashCD")
 				&& (KDGameData.PrisonerState == 'parole' || KinkyDungeonGoddessRep.Ghost > 0 || KDEnemyHasFlag(enemy, "allowLeashWalk"))
@@ -502,6 +502,7 @@ let KDIntentEvents = {
 				: 0;
 		},
 		trigger: (enemy, AIData) => {
+			KinkyDungeonSetEnemyFlag(enemy, "templeashpause", 3);
 			let duration = 60 + Math.round(KDRandom()*40);
 			KinkyDungeonSetFlag("TempLeash", duration);
 			KinkyDungeonSetFlag("TempLeashCD", duration*2);
@@ -560,13 +561,14 @@ let KDIntentEvents = {
 					if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
 						enemy.gx = KinkyDungeonPlayerEntity.x;
 						enemy.gy = KinkyDungeonPlayerEntity.y;
-						if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5) {
+						if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5 && !KDEntityHasFlag(enemy, "templeashpause")) {
 							let player = KDPlayer();
 							// Leash the player if they are close
 							KinkyDungeonAttachTetherToEntity(4.5, enemy, player);
 							if (KinkyDungeonGetRestraintItem("ItemDevices")) {
 								KinkyDungeonRemoveRestraint("ItemDevices", false, false, false);
 							}
+							KinkyDungeonSetEnemyFlag(enemy, "templeashpause", 3);
 							KinkyDungeonSendDialogue(enemy,
 								TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Leashed").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 								KDGetColor(enemy), 5, 10);

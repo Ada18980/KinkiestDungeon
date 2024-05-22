@@ -136,6 +136,14 @@
 	"spriteSourceSize": {"x":13,"y":20,"w":315,"h":324},
 	"sourceSize": {"w":360,"h":360}
 },
+"Game/Bullets/C4Item.png":
+{
+	"frame": {"x":817,"y":1489,"w":47,"h":51},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":85,"y":78,"w":47,"h":51},
+	"sourceSize": {"w":216,"h":216}
+},
 "Game/Bullets/CrushingFate.png":
 {
 	"frame": {"x":988,"y":1018,"w":359,"h":359},
@@ -312,14 +320,6 @@
 	"spriteSourceSize": {"x":143,"y":143,"w":74,"h":74},
 	"sourceSize": {"w":360,"h":360}
 },
-"Game/Bullets/HighBoltHit.png":
-{
-	"frame": {"x":817,"y":1489,"w":46,"h":51},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":15,"y":9,"w":46,"h":51},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Bullets/IgnitionHit.png":
 {
 	"frame": {"x":513,"y":761,"w":216,"h":216},
@@ -374,14 +374,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":25,"w":62,"h":21},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/Bullets/RecoverObjectHit.png":
-{
-	"frame": {"x":817,"y":1489,"w":46,"h":51},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":15,"y":9,"w":46,"h":51},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Bullets/RestrainingBolt.png":
@@ -872,6 +864,14 @@
 	"spriteSourceSize": {"x":6,"y":26,"w":58,"h":18},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Items/C4.png":
+{
+	"frame": {"x":817,"y":1489,"w":47,"h":51},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":14,"w":47,"h":51},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Items/Dragonslaver.png":
 {
 	"frame": {"x":866,"y":1356,"w":65,"h":21},
@@ -1320,6 +1320,6 @@
 	"size": {"w":2048,"h":2047},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:743615bff227879fdea93f623a1d7d74:ee99ae93398f12324ff9778c6172b834:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:13f5b7102aa644f13b4c859beb920ee4:39aceb11bfd9f244e38ad02cbc76579e:54a7432a0665349a58c0c74f51e75c65$"
 }
 }
