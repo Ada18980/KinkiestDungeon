@@ -1131,6 +1131,7 @@ function KinkyDungeonBarTo(canvas, x, y, w, h, value, foreground = "#66FF66", ba
  * @returns {boolean}
  */
 function KDCanSeeEnemy(enemy, playerDist) {
+	if (enemy.player) return true; // Player!!!
 	if (playerDist == undefined) playerDist = KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y);
 	return (((enemy.revealed && !enemy.Enemy.noReveal) || !enemy.Enemy.stealth || KDHelpless(enemy) || KDAllied(enemy) || KinkyDungeonSeeAll || playerDist <= enemy.Enemy.stealth + 0.1)
 		&& !KDEnemyHidden(enemy)
@@ -4463,6 +4464,16 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					}
 				}
 			} else if (!AIData.moveTowardPlayer && (Math.abs(enemy.x - enemy.gx) < 2 || Math.abs(enemy.y - enemy.gy) < 2)) AIData.patrolChange = true;
+
+			if (enemy.leash?.entity && KDAcceptsLeash(enemy, enemy.leash)) {
+				let leasher = KDLookupID(enemy.leash.entity);
+				if (leasher && !leasher.idle && (leasher.gx != leasher.x || leasher.gy != leasher.y)) {
+					enemy.gx = leasher.gx;
+					enemy.gy = leasher.gy;
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 1);
+				}
+
+			}
 
 			if (!KDEnemyHasFlag(enemy, "Defensive") && !KDEnemyHasFlag(enemy, "StayHere") && !KDEnemyHasFlag(enemy, "overrideMove") && !KDIsImmobile(enemy) && !AIType.aftermove(enemy, player, AIData) && (!AIData.moveTowardPlayer && !KDEnemyHasFlag(enemy, "dontChase"))) {
 				if (AIType.resetguardposition(enemy, player, AIData) && !AIData.allyFollowPlayer && Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 1.5 && enemy.gxx && enemy.gyy) {
@@ -7953,4 +7964,14 @@ function KDGetEnemyTypeName(enemy) {
  */
 function KDGateAttack(enemy) {
 	return !(KDEnemyHasFlag(enemy, "runAway") || KDEnemyHasFlag(enemy, "attackFail"));
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {KDLeashData} leash
+ * @returns {boolean}
+ */
+function KDAcceptsLeash(enemy, leash) {
+	return enemy.Enemy?.tags?.submissive || (KDGetPersonality(enemy) && KDLoosePersonalities.includes(KDGetPersonality(enemy)));
 }

@@ -104,6 +104,7 @@ let KDEnemyPersonalities = {
  */
 function KDGetPersonality(enemy) {
 	if (!enemy.Enemy) return undefined;
+	if (enemy.personality) return enemy.personality;
 	let WeightTotal = 0;
 	let Weights = [];
 

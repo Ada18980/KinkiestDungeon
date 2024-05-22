@@ -421,33 +421,38 @@ function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
 }
 
 function KDPlayerEvasionPenalty() {
+	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
 	let evasionPenalty = .25 * KinkyDungeonSlowLevel;
 	if (KinkyDungeonStatBlind > 0) evasionPenalty += 0.5;
 	if (KDGameData.MovePoints < 0) evasionPenalty += 0.5;
+	if (KinkyDungeonStatFreeze) evasionPenalty += 1;
 
 	evasionPenalty += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "EvasionPenalty");
-
-	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
 
 	return evasionPenalty;
 }
 function KDPlayerBlockPenalty() {
+	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
 	let blockPenalty = Math.min(0.5, .1 * KinkyDungeonBlindLevel);
+
 	if (KinkyDungeonIsArmsBound(false, true)) blockPenalty = blockPenalty + (1 - blockPenalty) * 0.7;
+	if (KinkyDungeonStatFreeze) blockPenalty += 1;
+	if (KinkyDungeonStatBlind) blockPenalty += 0.5;
 
 	blockPenalty += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BlockPenalty");
 
-	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
 
 	return Math.min(1, blockPenalty);
 }
 function KDRestraintBlockPenalty() {
-	let RestraintBlockPenalty = .15 * KinkyDungeonSlowLevel;
-	if (KinkyDungeonIsArmsBound(false, true)) RestraintBlockPenalty += .4;
+	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
+	let RestraintBlockPenalty = .1 * KinkyDungeonSlowLevel;
+	if (KinkyDungeonIsArmsBound(false, true)) RestraintBlockPenalty += .25;
+	if (KinkyDungeonStatFreeze) RestraintBlockPenalty += 0.8;
+	if (KinkyDungeonStatBlind) RestraintBlockPenalty += 0.4;
 
 	RestraintBlockPenalty += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlockPenalty");
 
-	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
 
 	return RestraintBlockPenalty;
 }
@@ -455,7 +460,7 @@ function KDRestraintBlockPenalty() {
 function KDCalcRestraintBlock() {
 	let RestraintBlock = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlock");
 	let RestraintBlockPenalty = KDRestraintBlockPenalty();
-	let val = RestraintBlock * KinkyDungeonMultiplicativeStat(RestraintBlockPenalty)
+	let val = RestraintBlock * Math.max(0, 1 - RestraintBlockPenalty)
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlockProtected");
 
 	return val;

@@ -22,6 +22,10 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.3.13
+- Changed how bondage resist gets affected by penalties when stunned
+- Added evasion, block, bondage resist penalty for being frozen
+
 5.3.12
 - Fixed a couple leash bugs
 
