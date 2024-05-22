@@ -55,7 +55,7 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 		return true;
 	},
 	WolfgirlLeash: (entity) => {
-		if (entity?.leash && entity.leash.reason == "Default") {
+		if (entity?.leash && entity.leash.reason == "WolfgirlLeash") {
 			if (entity.leash.entity) {
 				let leasher = KDLookupID(entity.leash.entity);
 				if (KDEntityHasFlag(leasher, "aggression")) {
@@ -67,6 +67,15 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 		return KDLeashReason.Default(entity);
 	},
 };
+
+function KDGetLeashedToCount(entity: entity) {
+	let n = 0;
+	for (let en of KDMapData.Entities.filter((en) => {return en.leash?.entity;})) {
+		if (en.leash.entity == entity.id) n++;
+	}
+	if (KDPlayer().leash?.entity == entity.id) n++;
+	return n;
+}
 
 function KDGetTetherLength(entity: entity): number {
 	if (!entity) entity = KDPlayer();
@@ -163,23 +172,29 @@ function KinkyDungeonDrawTethers(CamX: number, CamY: number) {
 	}
 
 	let drawTether = (entity: entity) => {
-		if (entity.leash) {
+		if (entity.leash && (KDCanSeeEnemy(entity) || KinkyDungeonVisionGet(entity.leash.x, entity.leash.y) > 0.1)) {
 			let xx = canvasOffsetX + (entity.visual_x - CamX)*KinkyDungeonGridSizeDisplay;
 			let yy = canvasOffsetY + (entity.visual_y - CamY)*KinkyDungeonGridSizeDisplay;
 			let txx = canvasOffsetX + (entity.leash.x - CamX)*KinkyDungeonGridSizeDisplay;
 			let tyy = canvasOffsetY + (entity.leash.y - CamY)*KinkyDungeonGridSizeDisplay;
+			let leasher = entity.leash.entity ? KDLookupID(entity.leash.entity) : undefined;
+			if (leasher) {
+				txx = canvasOffsetX + (leasher.visual_x - CamX)*KinkyDungeonGridSizeDisplay;
+				tyy = canvasOffsetY + (leasher.visual_y - CamY)*KinkyDungeonGridSizeDisplay;
+				txx += KinkyDungeonGridSizeDisplay * (leasher.flip ? 0.2 : -0.2);
+			}
 			let dx = (txx - xx);
 			let dy = (tyy - yy);
 			let dd = 0.1; // Increments
 			let color = entity.leash.color;
 			if (!color || color == "Default") color = "#aaaaaa";
 			if (Array.isArray(color)) color = color[0];
-			KDTetherGraphics.lineStyle(4, string2hex(color), 1);
-			for (let d = 0; d < 1; d += dd) {
+			KDTetherGraphics.lineStyle(entity.player ? 3 : 2, string2hex(color), 1);
+			for (let d = dd; d < 1 - dd; d += dd) {
 				let yOffset = 30 * Math.sin(Math.PI * d);
 				let yOffset2 = 30 * Math.sin(Math.PI * (d + dd));
-				KDTetherGraphics.moveTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*d, KinkyDungeonGridSizeDisplay*0.8 + yOffset + yy + dy*d);
-				KDTetherGraphics.lineTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*(d+dd), KinkyDungeonGridSizeDisplay*0.8 + yOffset2 + yy + dy*(d+dd));
+				KDTetherGraphics.moveTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*d, KinkyDungeonGridSizeDisplay*0.5 + yOffset + yy + dy*d);
+				KDTetherGraphics.lineTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*(d+dd), KinkyDungeonGridSizeDisplay*0.5 + yOffset2 + yy + dy*(d+dd));
 			}
 		}
 

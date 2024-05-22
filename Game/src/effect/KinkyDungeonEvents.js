@@ -8024,23 +8024,29 @@ let KDEventMapEnemy = {
 		"LeashWolfgirls": (e, enemy, data) => {
 			if (KDRandom() > (e.chance || 1)) return;
 			if (!enemy.idle && KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) > 1.5) return;
+			if (KDEntityHasFlag(enemy, "tooManyLeash")) return;
 			let enemies = KDNearbyEnemies(enemy.x, enemy.y, e.dist);
 			let dd = 0;
-			for (let en of enemies) {
-				if (KDGetFaction(en) == KDGetFaction(enemy)) {
-					dd = KDistChebyshev(enemy.x - en.x, enemy.y - en.y);
-					if (dd < e.dist) {
-						if (dd < 1.5) {
-							// Attach leash
-							KinkyDungeonAttachTetherToEntity(e.dist, enemy, en, "WolfgirlLeash", "#00ff00", 2);
-						}
-						else {
-							// Move toward
-							enemy.gx = en.x;
-							enemy.gy = en.y;
+			let count = KDGetLeashedToCount(enemy);
+			if (count < (e.count || 3)) {
+				for (let en of enemies) {
+					if (KDGetFaction(en) == KDGetFaction(enemy) && en.Enemy?.tags?.submissive) {
+						dd = KDistChebyshev(enemy.x - en.x, enemy.y - en.y);
+						if (dd < e.dist) {
+							if (dd < 1.5) {
+								// Attach leash
+								KinkyDungeonAttachTetherToEntity(e.dist, enemy, en, "WolfgirlLeash", "#00ff00", 2);
+							}
+							else {
+								// Move toward
+								enemy.gx = en.x;
+								enemy.gy = en.y;
+							}
 						}
 					}
 				}
+			} else {
+				KinkyDungeonSetEnemyFlag(enemy, "tooManyLeash");
 			}
 		},
 		"DisplayAura": (e, enemy, data) => {

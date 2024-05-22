@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.11"
+KDVersionStr,"5.3.12"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -21010,3 +21010,5 @@ KinkyDungeonInventoryItemDynamiteDesc2,"Arguably more dangerous to the user than
 KinkyDungeonInventoryItem2DynamiteDesc,"10 turn fuse with a 25% chance each turn to detonate. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage."
 KinkyDungeonInventoryItem2DynamiteDesc2,"Arguably more dangerous to the user than the target."
 KinkyDungeonInventoryItemDynamiteUse,You light the fuse and pray it doesn't blow up in your face.
+
+KDTooManyLeash,You are holding too many leashes!
