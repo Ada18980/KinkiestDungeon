@@ -25,6 +25,10 @@ Monk class?
 5.3.13
 - Changed how bondage resist gets affected by penalties when stunned
 - Added evasion, block, bondage resist penalty for being frozen
+- Game ignores files that start with . when loading mods (to increase Mac OS compat)
+- Fix bug where casting a spell after using a leash consumes one leash
+- Fix bug where Cyber security level doesnt reset on floor up
+- Fix 'equipped' filters showing the wrong items in some cases
 
 5.3.12
 - Fixed a couple leash bugs

@@ -2558,6 +2558,8 @@
             <key type="filename">../Game/Locks/Blue.png</key>
             <key type="filename">../Game/Locks/Curse.png</key>
             <key type="filename">../Game/Locks/Cyber.png</key>
+            <key type="filename">../Game/Locks/Cyber2.png</key>
+            <key type="filename">../Game/Locks/Cyber3.png</key>
             <key type="filename">../Game/Locks/Disc.png</key>
             <key type="filename">../Game/Locks/Divine.png</key>
             <key type="filename">../Game/Locks/Divine2.png</key>

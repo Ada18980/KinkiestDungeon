@@ -891,7 +891,7 @@ function KDConveyor(delta, X, Y, unwilling) {
 
 function KDAdvanceLevel(data, closeConnections = true) {
 	MiniGameKinkyDungeonLevel += data.AdvanceAmount;
-	if (data.advanceAmount)
+	if (data.AdvanceAmount)
 		KDGameData.LockoutChance = 0;
 	let currentSlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
 

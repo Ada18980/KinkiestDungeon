@@ -1080,33 +1080,63 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		} else if (spell.type == "special") {
 			let ret = KinkyDungeonSpellSpecials[spell.special](spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast);
 			if (ret) {
-				if (!enemy && !bullet && player && ret == "Cast") {
-					KinkyDungeonSendEvent("playerCast", data);
-					if (KDGameData.HeelPower > 0) {
-						if (spell.components?.includes("Arms"))
-							KDChangeBalance(-KDGetBalanceCost() * (0.75 + 0.5 * KDRandom()) * KDBalanceCastArmsMult, true);
-						if (spell.components?.includes("Legs"))
-							KDChangeBalance(-KDGetBalanceCost() * (0.5 + 1.0 * KDRandom()) * KDBalanceCastLegsMult, true);
-					}
-					if (spell.school) KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast_" + spell.school.toLowerCase(), 1);
-					KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast", 1);
-					if (spell.tags) {
-						for (let t of spell.tags) {
-							KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast_" + t, 1);
+				if (!enemy && !bullet && player) {
+					if (data.targetingSpellItem) {
+						if (ret == "Cast") {
+							KinkyDungeonChangeConsumable(KinkyDungeonTargetingSpellItem, -(KinkyDungeonTargetingSpellItem.useQuantity != undefined ? KinkyDungeonTargetingSpellItem.useQuantity : 1));
+							if (!spell.noAggro)
+								KinkyDungeonAggroAction('item', {});
 						}
-					}
-					if (data.channel) {
-						KinkyDungeonSetFlag("channeling", data.channel);
-						KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, data.channel);
-						KinkyDungeonSleepTime = CommonTime() + 200;
-					}
-					if (spell.components) {
-						for (let comp of spell.components) {
-							if (KDSpellComponentTypes[comp].cast)
-								KDSpellComponentTypes[comp].cast(spell, data);
+						KinkyDungeonTargetingSpellItem = null;
+					} else if (data.targetingSpellWeapon) {
+
+						if (ret == "Cast") {
+							let special = KinkyDungeonPlayerDamage ? KinkyDungeonPlayerDamage.special : null;
+							if (special) {
+								let energyCost = KinkyDungeonPlayerDamage.special.energyCost;
+								if (KDGameData.AncientEnergyLevel < energyCost) return {result: "Fail", data: data};
+								if (energyCost) KinkyDungeonChangeCharge(- energyCost);
+
+								KinkyDungeonSendEvent("playerCastSpecial", data);
+								KinkyDungeonSendEvent("afterPlayerCastSpecial", data);
+							}
+							if (!spell.noAggro)
+								KinkyDungeonAggroAction('item', {});
 						}
+						KinkyDungeonTargetingSpellWeapon = null;
 					}
-					KinkyDungeonSendEvent("afterPlayerCast", data);
+
+					if (ret == "Cast") {
+						KinkyDungeonSendEvent("playerCast", data);
+						if (KDGameData.HeelPower > 0) {
+							if (spell.components?.includes("Arms"))
+								KDChangeBalance(-KDGetBalanceCost() * (0.75 + 0.5 * KDRandom()) * KDBalanceCastArmsMult, true);
+							if (spell.components?.includes("Legs"))
+								KDChangeBalance(-KDGetBalanceCost() * (0.5 + 1.0 * KDRandom()) * KDBalanceCastLegsMult, true);
+						}
+						if (spell.school) KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast_" + spell.school.toLowerCase(), 1);
+						KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast", 1);
+						if (spell.tags) {
+							for (let t of spell.tags) {
+								KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast_" + t, 1);
+							}
+						}
+						if (data.channel) {
+							KinkyDungeonSetFlag("channeling", data.channel);
+							KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, data.channel);
+							KinkyDungeonSleepTime = CommonTime() + 200;
+						}
+						if (spell.components) {
+							for (let comp of spell.components) {
+								if (KDSpellComponentTypes[comp].cast)
+									KDSpellComponentTypes[comp].cast(spell, data);
+							}
+						}
+						KinkyDungeonSendEvent("afterPlayerCast", data);
+					}
+
+
+
 				}
 				return {result: ret, data: data};
 			}
@@ -1129,7 +1159,7 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 		KinkyDungeonSetFlag("PlayerCombat", 8);
 
 		if (data.targetingSpellItem) {
-			KinkyDungeonChangeConsumable(KinkyDungeonTargetingSpellItem, -(KinkyDungeonTargetingSpellItem.useQuantity ? KinkyDungeonTargetingSpellItem.useQuantity : 1));
+			KinkyDungeonChangeConsumable(KinkyDungeonTargetingSpellItem, -(KinkyDungeonTargetingSpellItem.useQuantity != undefined ? KinkyDungeonTargetingSpellItem.useQuantity : 1));
 			KinkyDungeonTargetingSpellItem = null;
 			if (!spell.noAggro)
 				KinkyDungeonAggroAction('item', {});
