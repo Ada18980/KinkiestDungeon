@@ -5227,9 +5227,10 @@ function KDAddAppearance(C, Group, ItemAsset, NewColor, DifficultyFactor, ItemMe
  * @param {string|string[]} NewColor - The new color (as "#xxyyzz" hex value) for that item
  * @param {item} [item] - The item, to pass to the event
  * @param {Record<string, LayerFilter>} filters - The item, to pass to the event
+ * @param {Record<string, LayerProperties>} [Properties] - The item, to pass to the event
  * @returns {Item} - the item itself
  */
-function KDAddModel(C, Group, ItemModel, NewColor, filters, item) {
+function KDAddModel(C, Group, ItemModel, NewColor, filters, item, Properties) {
 
 	// Unlike the stock function, we do NOT remove the previous one
 	let data = {
@@ -5248,8 +5249,10 @@ function KDAddModel(C, Group, ItemModel, NewColor, filters, item) {
 			Color: data.color,
 			Property: undefined,
 			Filters: filters,
+			Properties: Properties,
 		};
 		NA.Model.Filters = NA.Filters || NA.Model.Filters;
+		NA.Model.Properties = NA.Properties || NA.Model.Properties;
 		for (let i = 0; i < C.Appearance.length; i++) {
 			if (C.Appearance[i]?.Model?.Name == NA.Model.Name) {
 				C.Appearance[i] = NA;

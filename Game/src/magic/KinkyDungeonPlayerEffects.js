@@ -113,7 +113,7 @@ let KDPlayerEffects = {
 			let corruption = KDEntityBuffedStat(KDPlayer(), "Corruption");
 			let applyCurse = KinkyDungeonStatWill < 0.1 || corruption >= 20;
 
-			KDAddCorruption(KDPlayer(), Math.floor(2 + 6 * KDRandom()), false); // Add a significant amount of corruption
+			KDAddSpecialStat("Corruption", KDPlayer(), Math.floor(2 + 6 * KDRandom()), false); // Add a significant amount of corruption
 
 			KinkyDungeonSendTextMessage(3, TextGet("KDEpicenterCurseDamage").KDReplaceOrAddDmg(dmg.string), "#ff5555", 2);
 
@@ -178,7 +178,7 @@ let KDPlayerEffects = {
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
-			if (KDRandom() < 0.5) KDAddCorruption(KDPlayer(), 1, false); // Add a small amount of corruption
+			if (KDRandom() < 0.5) KDAddSpecialStat("Corruption", KDPlayer(), 1, false); // Add a small amount of corruption
 			KDPlayerEffectRestrain(spell, playerEffect.count, ["shadowHands"], "Ghost", false, false, false, false);
 			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonShadowBolt").KDReplaceOrAddDmg( dmg.string), "yellow", playerEffect.time);
 		}
@@ -2382,38 +2382,45 @@ function KDApplyBubble(entity, time, damage = 0) {
 	}
 }
 
+let KDSpecialStats = {
+	Corruption: 50, // Amount per floor lost
+};
+
 /**
  *
+ * @param {string} stat
  * @param {entity} entity
  * @param {number} amount
  * @param {boolean} Msg
  * @param {number} max
  */
-function KDAddCorruption(entity, amount, Msg, max = 100) {
-	let currentCurse = KDEntityBuffedStat(entity, "Corruption") || 0;
+function KDAddSpecialStat(stat, entity, amount, Msg, max = 100, color = "#722fcc") {
+	let currentCurse = KDEntityBuffedStat(entity, stat) || 0;
 	let newCurse = Math.min(max, Math.max(0, currentCurse + amount));
 
-	let buff = KDEntityGetBuff(entity, "CorruptionStat");
+	let buff = KDEntityGetBuff(entity, stat + "Stat");
 	if (!buff) {
 		buff = KinkyDungeonApplyBuffToEntity(entity, {
-			id: "CorruptionStat",
-			aura: "#722fcc",
+			id: stat + "Stat",
+			aura: color,
 			buffSprite: true,
-			type: "Corruption",
+			type: stat,
 			power: 0,
 			duration: 9999,
 			infinite: true,
-			tags: ["corruption"],
+			tags: [stat],
+			text: "0%",
 		});
 	}
 
 	buff.power = newCurse;
+	buff.text = Math.floor(newCurse) + "%";
 
 	if (Msg) {
 		if (amount > 0) {
-			KinkyDungeonSendTextMessage(10, TextGet("KDAddCorruption").replace("AMNT", "" + amount), "#722fcc", 2);
+			KinkyDungeonSendTextMessage(10, TextGet("KDAdd" + stat).replace("AMNT", "" + amount), color, 2);
 		} else if (amount < 0) {
-			KinkyDungeonSendTextMessage(10, TextGet("KDRemoveCorruption").replace("AMNT", "" + -amount), "#722fcc", 2);
+			KinkyDungeonSendTextMessage(10, TextGet("KDRemove" + stat).replace("AMNT", "" + -amount), color, 2);
 		}
 	}
 }

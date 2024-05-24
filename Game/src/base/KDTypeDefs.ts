@@ -137,6 +137,8 @@ interface KDRestraintProps extends KDRestraintPropsBase {
 interface KDRestraintPropsBase {
 	/** Used in standalone to replace Color */
 	Filters?: Record<string, LayerFilter>,
+	/** Used in standalone to replace Properties */
+	Properties?: Record<string, LayerProperties>,
 	/** TODO Used in standalone to indicate which faction colors map to which filter
 	 * color is the faction color type
 	 * override is whether the faction color overrides the filter. If true it will replace the filter in the model. If false it will apply it over the model's filter. Currently unused
@@ -684,6 +686,8 @@ interface alwaysDressModel {
 	Model: string,
 	/** Group */
 	Group?: string,
+	/** Filters */
+	Properties?: Record<string, LayerProperties>,
 	/** Filters */
 	Filters?: Record<string, LayerFilter>,
 	/** Faction filter index */
@@ -1683,6 +1687,8 @@ type KinkyDungeonDress = {
 	Group?: string;
 	Color: string | string[];
 	Filters?: Record<string, LayerFilter>;
+	Properties?: Record<string, LayerProperties>;
+
 	Lost: boolean;
 	NoLose?: boolean;
 	Property?: any,

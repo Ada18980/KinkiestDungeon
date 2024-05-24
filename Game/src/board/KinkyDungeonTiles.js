@@ -889,10 +889,18 @@ function KDConveyor(delta, X, Y, unwilling) {
 	}
 }
 
+function KDTickSpecialStats() {
+	for (let stat of Object.entries(KDSpecialStats)) {
+		KDAddSpecialStat(stat[0], KDPlayer(), -stat[1], true, 100);
+	}
+	KDGameData.LockoutChance = 0;
+}
+
 function KDAdvanceLevel(data, closeConnections = true) {
 	MiniGameKinkyDungeonLevel += data.AdvanceAmount;
-	if (data.AdvanceAmount)
-		KDGameData.LockoutChance = 0;
+	if (data.AdvanceAmount) {
+		KDTickSpecialStats();
+	}
 	let currentSlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
 
 	if (KDGameData.JourneyTarget) {

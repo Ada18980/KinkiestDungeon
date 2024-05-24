@@ -12816,7 +12816,9 @@ KDColorSlidergreen,Green
 KDColorSliderblue,Blue
 KDColorSlideralpha,Transparency
 KDResetLayer,Reset Layer!
+KDResetLayerProps,Reset Properties!
 KDExportAllLayers,Export All Layers
+KDExportAllProps,Export All Props
 KDCopyLayer,Copy
 KDPasteLayer,Paste
 
@@ -21387,6 +21389,7 @@ KinkyDungeonChallenge,Challenge Settings:
 
 KDColorPickerSimple,Simple
 KDColorPickerAdvanced,Advanced
+KDColorPickerProperties,Expert Tools
 
 KDEscapeMinimap_Fail_Key,Exits locked!|Find NUMBER keys!
 KDEscapeMinimap_Pass_Key,Got the keys!
@@ -23237,3 +23240,14 @@ KDRemoveCorruption,You feel a restoring influence! (-AMNT Corruption)
 
 tut_AccuracyClose1,"While you have an evasion penalty, even clumsy enemies..."
 tut_AccuracyClose2,"... will get an accuracy bonus against you in melee range."
+
+KinkyDungeonBuffCorruptionStat,You are more likely to succumb to curses.
+
+KDPropField_XOffset,X Offset
+KDPropField_YOffset,Y Offset
+KDPropField_XScale,X Scale
+KDPropField_YScale,Y Scale
+KDPropField_XPivot,X Pivot
+KDPropField_YPivot,Y Pivot
+KDPropField_Rotation,Rotation
+KDPropField_LayerBonus,Layer Bonus

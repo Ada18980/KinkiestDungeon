@@ -4679,9 +4679,10 @@ let KDCuffParts = {
  * @param {Record<string, string>} [CuffModels] - mapping of Group to Models
  * @param {boolean} [noLockBase] - Removes Pick and Unlock methods of escape
  * @param {boolean} [noLockLink] - Removes Pick and Unlock methods of escape
+ * @param {Record<string, LayerProperties>} [Properties]
  * param {{name: string, description: string}} strings - Generic strings for the cuff type
  */
-function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, allTag, removeTag, addPower, properties, extraEvents = [], addStruggle, premultStruggle, addStruggleLink, premultStruggleLink, Filters, baseWeight = 10, noGeneric, CuffAssets = {}, CuffModels = {}, noLockBase, noLockLink) {
+function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, allTag, removeTag, addPower, properties, extraEvents = [], addStruggle, premultStruggle, addStruggleLink, premultStruggleLink, Filters, baseWeight = 10, noGeneric, CuffAssets = {}, CuffModels = {}, noLockBase, noLockLink, Properties) {
 	for (let part of Object.entries(KDCuffParts)) {
 		let cuffPart = part[0];
 		let cuffInfo = part[1];
@@ -4730,6 +4731,7 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 				events: cuffInfo.base ? [...extraEvents, ...(origRestraint.events || [])] : [...(origRestraint.events || [])],
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
+				Properties: origRestraint.Properties ? Object.assign({}, origRestraint.Properties) : {},
 				cloneTag: tagBase + "Restraints",
 			};
 			if (cuffInfo.Link) props.Link = idSuffix + cuffInfo.Link;
@@ -4737,6 +4739,11 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 			if (Filters && props.Filters) {
 				for (let layer of Object.keys(Filters)) {
 					props.Filters[layer] = Object.assign({}, Filters[layer]);
+				}
+			}
+			if (Properties && props.Properties) {
+				for (let layer of Object.keys(Properties)) {
+					props.Properties[layer] = Object.assign({}, Properties[layer]);
 				}
 			}
 			if (cuffInfo.base) {
@@ -4792,9 +4799,10 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
  * @param {KDEscapeChanceList} addStruggle - Increase to base struggle amounts
  * @param {KDEscapeChanceList} premultStruggle - Multiplier to base struggle amounts, AFTER baseStruggle
  * @param {Record<string, LayerFilter>} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
+ * @param {Record<string, LayerProperties>} [Properties]
  * param {{name: string, description: string}} strings - Generic strings for the rope type
  */
-function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], addStruggle, premultStruggle, Filters, baseWeight = 10, Enchantable = false) {
+function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], addStruggle, premultStruggle, Filters, baseWeight = 10, Enchantable = false, Properties) {
 	for (let part of Object.entries(KDRopeParts)) {
 		let ropePart = part[0];
 		// Only if we have something to copy
@@ -4829,6 +4837,7 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 				events: [...extraEvents, ...(origRestraint.events || [])],
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
+				Properties: origRestraint.Properties ? Object.assign({}, origRestraint.Properties) : {},
 				cloneTag: tagBase,
 				linkCategories: origRestraint.linkCategories ? JSON.parse(JSON.stringify(origRestraint.linkCategories)) : undefined,
 				linkSize: origRestraint.linkSizes ? JSON.parse(JSON.stringify(origRestraint.linkSizes)) : undefined,
@@ -4847,6 +4856,11 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 			if (Filters && props.Filters) {
 				for (let layer of Object.keys(Filters)) {
 					props.Filters[layer] = Object.assign({}, Filters[layer]);
+				}
+			}
+			if (Properties && props.Properties) {
+				for (let layer of Object.keys(Properties)) {
+					props.Properties[layer] = Object.assign({}, Properties[layer]);
 				}
 			}
 			if (premultStruggle) {
@@ -4881,9 +4895,10 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
  * @param {KDEscapeChanceList} premultStruggle - Multiplier to base struggle amounts, AFTER baseStruggle
  * @param {Record<string, LayerFilter>} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
  * @param {string} [restraintType] - Restrainttype for slime spread event
+ * @param {Record<string, LayerProperties>} [Properties]
  * param {{name: string, description: string}} strings - Generic strings for the rope type
  */
-function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], addStruggle, premultStruggle, Filters, baseWeight = 100, restraintType) {
+function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], addStruggle, premultStruggle, Filters, baseWeight = 100, restraintType, Properties) {
 	for (let part of Object.entries(KDSlimeParts)) {
 		let restraintPart = part[0];
 		// Only if we have something to copy
@@ -4913,11 +4928,17 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 				events: JSON.parse(JSON.stringify([...extraEvents, ...(origRestraint.events || [])])),
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
+				Properties: origRestraint.Properties ? Object.assign({}, origRestraint.Properties) : {},
 				cloneTag: tagBase,
 			};
 			if (Filters && props.Filters) {
 				for (let layer of Object.keys(Filters)) {
 					props.Filters[layer] = Object.assign({}, Filters[layer]);
+				}
+			}
+			if (Properties && props.Properties) {
+				for (let layer of Object.keys(Properties)) {
+					props.Properties[layer] = Object.assign({}, Properties[layer]);
 				}
 			}
 			if (premultStruggle) {

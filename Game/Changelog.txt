@@ -23,6 +23,7 @@ Monk class?
  - TODO dragon arena floor 20
 
 5.3.14
+- Added Expert Tools section in the color picker
 - One Click Move is now disabled when in danger (such as combat)
 - Enemies can hit you more easily if they have low base accuracy, if you are slowed or restrained
 - 6 new hairstyles added

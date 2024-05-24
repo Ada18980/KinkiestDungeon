@@ -75,10 +75,13 @@ class ModelContainer {
 	/**
 	 * Adds a model to the modelcontainer
 	 */
-	addModel(Model: Model, Filters?: Record<string, LayerFilter>, LockType?: string) {
+	addModel(Model: Model, Filters?: Record<string, LayerFilter>, LockType?: string, Properties?: Record<string, LayerProperties>) {
 		let mod: Model = JSON.parse(JSON.stringify(Model));
 		if (Filters) {
 			mod.Filters = JSON.parse(JSON.stringify(Filters)) || mod.Filters;
+		}
+		if (Properties) {
+			mod.Properties = JSON.parse(JSON.stringify(Properties)) || mod.Properties;
 		}
 		if (LockType) {
 			mod.LockType = JSON.parse(JSON.stringify(LockType)) || mod.LockType;
@@ -476,6 +479,11 @@ function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : number {
 			if (MC.Poses[p[0]] || MC.TempPoses[p[0]]) temp += p[1];
 		}
 	}
+	let Properties: LayerProperties = m.Properties;
+	if (Properties) {
+		if (Properties.LayerBonus) temp += Properties.LayerBonus;
+	}
+
 	return temp;
 }
 
@@ -759,6 +767,20 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					}
 					layer = LayerProperties[layer]?.Parent;
 				}
+
+
+				let Properties: LayerProperties = m.Properties ? m.Properties[l.InheritColor || l.Name] : undefined;
+
+				if (Properties) {
+					if (Properties.XOffset) ox += Properties.XOffset;
+					if (Properties.YOffset) oy += Properties.YOffset;
+					if (Properties.XPivot) ax += Properties.XPivot;
+					if (Properties.YPivot) ay += Properties.YPivot;
+					if (Properties.XScale) sx *= Properties.XScale;
+					if (Properties.YScale) sy *= Properties.YScale;
+					if (Properties.Rotation) rot += Properties.Rotation;
+				}
+
 
 				let fh = m.Filters ? (m.Filters[l.InheritColor || l.Name] ? FilterHash(m.Filters[l.InheritColor || l.Name]) : "") : "";
 				/*if (refreshfilters) {
@@ -1155,7 +1177,7 @@ function UpdateModels(C: Character, Xray?: string[]) {
 	}
 	for (let A of appearance) {
 		if (A.Model && !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})) {
-			MC.addModel(A.Model, A.Filters, A.Property?.LockedBy);
+			MC.addModel(A.Model, A.Filters, A.Property?.LockedBy, A.Properties);
 		}
 	}
 
