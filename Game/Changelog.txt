@@ -22,6 +22,11 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.3.14
+- One Click Move is now disabled when in danger (such as combat)
+- Enemies can hit you more easily if they have low base accuracy, if you are slowed or restrained
+- 6 new hairstyles added
+
 5.3.13
 - Changed how bondage resist gets affected by penalties when stunned
 - Added evasion, block, bondage resist penalty for being frozen
@@ -29,6 +34,7 @@ Monk class?
 - Fix bug where casting a spell after using a leash consumes one leash
 - Fix bug where Cyber security level doesnt reset on floor up
 - Fix 'equipped' filters showing the wrong items in some cases
+- Fix doll processing start denying journey selection
 
 5.3.12
 - Fixed a couple leash bugs

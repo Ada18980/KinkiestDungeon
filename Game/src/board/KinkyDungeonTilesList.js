@@ -436,7 +436,7 @@ let KDMoveObjectFunctions = {
 		KinkyDungeonAdvanceTime(1, true);
 		let open = !KinkyDungeonStatsChoice.get("Doorknobs") || !KinkyDungeonIsHandsBound(true, true, 0.45);
 		if (!open) {
-			if (KinkyDungeonCanUseFeet()) {
+			if (KinkyDungeonCanUseFeet(false)) {
 				KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFeet"), "#88ff88", 2);
 				open = true;
 			} else {

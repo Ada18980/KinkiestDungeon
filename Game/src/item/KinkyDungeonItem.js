@@ -256,7 +256,6 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 
 
 function KDAllowUseItems(Message,x, y) {
-
 	let ret = !KinkyDungeonStatsChoice.get("CantTouchThat") || KinkyDungeonHasHelp() || !(KinkyDungeonIsArmsBound() && !KinkyDungeonCanUseFeet() && KinkyDungeonIsHandsBound(false, true, 0.01));
 	if (!ret && KinkyDungeonCanTalk()) {
 		if (KDGameData.KneelTurns > 0) {return true;}

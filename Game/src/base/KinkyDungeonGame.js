@@ -4706,7 +4706,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 				// KinkyDungeonAdvanceTime(1, false, d != 0); // was moveDirection.delta, but became too confusing
 
 				if (newDelta > 1 && newDelta < 10 && !quick) {
-					if (KDToggles.LazyWalk) {
+					if (KDToggles.LazyWalk && !KinkyDungeonInDanger()) {
 						KDGameData.SlowMoveTurns = newDelta - 1;
 						KinkyDungeonSleepTime = CommonTime() + 200;
 					} else {

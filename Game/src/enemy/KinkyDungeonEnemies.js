@@ -3673,10 +3673,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.range = (enemy.Enemy.attackRange == 1 ? 1.5 : enemy.Enemy.attackRange) + KinkyDungeonGetBuffedStat(enemy.buffs, "AttackRange");
 	AIData.width = enemy.Enemy.attackWidth + KinkyDungeonGetBuffedStat(enemy.buffs, "AttackWidth");
 	AIData.bindLevel = KDBoundEffects(enemy);
-	AIData.accuracy = enemy.Enemy.accuracy ? enemy.Enemy.accuracy : 1.0;
-	if (enemy.distraction) AIData.accuracy = AIData.accuracy / (1 + 1.5 * enemy.distraction / enemy.Enemy.maxhp);
-	if (AIData.bindLevel) AIData.accuracy = AIData.accuracy / (1 + 0.5 * AIData.bindLevel);
-	if (enemy.blind > 0) AIData.accuracy = AIData.playerDist > 1.5 ? 0 : AIData.accuracy * 0.5;
+	AIData.accuracy = KDEnemyAccuracy(enemy, player);
+
 	AIData.vibe = false;
 	AIData.damage = enemy.Enemy.dmgType;
 	AIData.power = enemy.Enemy.power + KinkyDungeonGetBuffedStat(enemy.buffs, "AttackPower");
@@ -7974,4 +7972,42 @@ function KDGateAttack(enemy) {
  */
 function KDAcceptsLeash(enemy, leash) {
 	return enemy.Enemy?.tags?.submissive || (KDGetPersonality(enemy) && KDLoosePersonalities.includes(KDGetPersonality(enemy)));
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {entity} player
+ * @returns {number}
+ */
+function KDEnemyAccuracy(enemy, player) {
+	let accuracy = enemy.Enemy.accuracy ? enemy.Enemy.accuracy : 1.0;
+	if (enemy.distraction) AIData.accuracy = AIData.accuracy / (1 + 1.5 * enemy.distraction / enemy.Enemy.maxhp);
+	if (AIData.bindLevel) AIData.accuracy = AIData.accuracy / (1 + 0.5 * AIData.bindLevel);
+	if (enemy.blind > 0) AIData.accuracy = AIData.playerDist > 1.5 ? 0 : AIData.accuracy * 0.5;
+
+	if (player?.player) {
+		if (accuracy < 1 && KDistChebyshev(enemy.x - player.x, enemy.y - player.y) < 1.5) {
+			let penalty = KDPlayerEvasionPenalty();
+			if (penalty > 0) {
+				if (!KinkyDungeonStatsChoice.get("tut_AccuracyClose")) {
+					KinkyDungeonStatsChoice.set("tut_AccuracyClose", true);
+					KinkyDungeonSendTextMessage(10, TextGet("tut_AccuracyClose2"), "#ffffff", 5);
+					KinkyDungeonSendTextMessage(10, TextGet("tut_AccuracyClose1"), "#ffffff", 5);
+				}
+			}
+			accuracy += penalty;
+		}
+	} else if (player?.Enemy) {
+		if (player.bind > 0) accuracy *= 3;
+		else if (player.slow > 0) accuracy *= 2;
+		if ((player.stun > 0 || player.freeze > 0)) accuracy *= 5;
+		else {
+			if (player.distraction > 0) accuracy *= 1 + 2 * Math.min(1, player.distraction / player.Enemy.maxhp);
+			if (player) accuracy *= 1 + 0.25 * KDBoundEffects(player);
+		}
+		if (player.vulnerable) accuracy *= KDVulnerableHitMult;
+	}
+
+	return Math.min(1, accuracy);
 }

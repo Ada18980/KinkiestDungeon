@@ -110,12 +110,15 @@ let KDPlayerEffects = {
 		let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 
 		if (dmg.happened) {
-			let applyCurse = KinkyDungeonStatWill < 0.1;
+			let corruption = KDEntityBuffedStat(KDPlayer(), "Corruption");
+			let applyCurse = KinkyDungeonStatWill < 0.1 || corruption >= 20;
+
+			KDAddCorruption(KDPlayer(), Math.floor(2 + 6 * KDRandom()), false); // Add a significant amount of corruption
 
 			KinkyDungeonSendTextMessage(3, TextGet("KDEpicenterCurseDamage").KDReplaceOrAddDmg(dmg.string), "#ff5555", 2);
 
 			if (applyCurse) {
-				if (!KinkyDungeonPlayerBuffs.CursingCircle) {
+				if (!KinkyDungeonPlayerBuffs.CursingCircle && corruption < 100) {
 					KinkyDungeonSendTextMessage(9, TextGet("KDEpicenterCurseEffectStart"), "#8E72AA", playerEffect.time);
 					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "CursingCircle",
@@ -133,7 +136,8 @@ let KDPlayerEffects = {
 								en.playerdmg = 0;
 							}
 						}
-						KinkyDungeonPlayerBuffs.CursingCircle.duration = 0;
+						if (KinkyDungeonPlayerBuffs.CursingCircle)
+							KinkyDungeonPlayerBuffs.CursingCircle.duration = 0;
 						KinkyDungeonSendTextMessage(9, TextGet("KDEpicenterCurseEffectEnd"), "#8E72AA", 5);
 					}
 				}
@@ -174,6 +178,7 @@ let KDPlayerEffects = {
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
+			if (KDRandom() < 0.5) KDAddCorruption(KDPlayer(), 1, false); // Add a small amount of corruption
 			KDPlayerEffectRestrain(spell, playerEffect.count, ["shadowHands"], "Ghost", false, false, false, false);
 			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonShadowBolt").KDReplaceOrAddDmg( dmg.string), "yellow", playerEffect.time);
 		}
@@ -2374,5 +2379,41 @@ function KDApplyBubble(entity, time, damage = 0) {
 		KinkyDungeonSendEvent("applyBubble", bubbleData);
 		if (!bubbleData.cancelDamage)
 			KinkyDungeonDealDamage({damage: damage, type: bubbleData.type});
+	}
+}
+
+/**
+ *
+ * @param {entity} entity
+ * @param {number} amount
+ * @param {boolean} Msg
+ * @param {number} max
+ */
+function KDAddCorruption(entity, amount, Msg, max = 100) {
+	let currentCurse = KDEntityBuffedStat(entity, "Corruption") || 0;
+	let newCurse = Math.min(max, Math.max(0, currentCurse + amount));
+
+	let buff = KDEntityGetBuff(entity, "CorruptionStat");
+	if (!buff) {
+		buff = KinkyDungeonApplyBuffToEntity(entity, {
+			id: "CorruptionStat",
+			aura: "#722fcc",
+			buffSprite: true,
+			type: "Corruption",
+			power: 0,
+			duration: 9999,
+			infinite: true,
+			tags: ["corruption"],
+		});
+	}
+
+	buff.power = newCurse;
+
+	if (Msg) {
+		if (amount > 0) {
+			KinkyDungeonSendTextMessage(10, TextGet("KDAddCorruption").replace("AMNT", "" + amount), "#722fcc", 2);
+		} else if (amount < 0) {
+			KinkyDungeonSendTextMessage(10, TextGet("KDRemoveCorruption").replace("AMNT", "" + -amount), "#722fcc", 2);
+		}
 	}
 }

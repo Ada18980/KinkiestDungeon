@@ -1440,7 +1440,7 @@ function KinkyDungeonDrawGame() {
 									if (path?.length > 1) {
 										dist -= Math.min(0, KDGameData.MovePoints + 1);
 									} else dist = 1 - KDGameData.MovePoints;
-								} else if (!KDToggles.LazyWalk) {
+								} else if (!KDToggles.LazyWalk || KinkyDungeonInDanger()) {
 									if (path?.length > 1) {
 										dist -= Math.max(0, diststart - 1);
 									} else dist = 1;
@@ -1484,7 +1484,7 @@ function KinkyDungeonDrawGame() {
 
 								if (KDGameData.MovePoints < 0) {
 									dist = 1 - KDGameData.MovePoints;
-								} else if (!KDToggles.LazyWalk) dist = 1;
+								} else if (!KDToggles.LazyWalk || KinkyDungeonInDanger()) dist = 1;
 								dist = Math.ceil(Math.max(0, dist));
 								DrawTextKD("x" + dist, (xx - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (yy - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
 							}

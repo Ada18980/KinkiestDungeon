@@ -122,6 +122,8 @@
         "Data/Defs.ts",
         "Data/Poses.ts",
         "Data/Models.ts",
+        "Data/ModelListHair.ts",
+        "Data/ModelListHair2.ts",
         "Data/ModelListBase.ts",
         "Data/ModelListFace.ts",
         "Data/ModelList_Cosplay.ts",

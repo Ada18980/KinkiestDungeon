@@ -47,7 +47,7 @@ let KDCustomAffinity = {
 		return KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
 	},
 	HookOrFoot: (data) => {
-		if (KinkyDungeonCanUseFeetLoose()) {
+		if (KinkyDungeonCanUseFeetLoose(false)) {
 			if (data.Message) {
 				KinkyDungeonSendTextMessage(7, TextGet("KDUseFootAffinity"), "lightgreen", 2,
 					false, false, undefined, "Struggle");
@@ -68,7 +68,7 @@ let KDCustomAffinity = {
 	},
 	SharpHookOrFoot: (data) => {
 		if (!KinkyDungeonGetAffinity(data.Message, "Sharp", data.group)) return false;
-		if (KinkyDungeonCanUseFeetLoose()) {
+		if (KinkyDungeonCanUseFeetLoose(false)) {
 			if (data.Message) {
 				KinkyDungeonSendTextMessage(7, TextGet("KDUseFootAffinity"), "lightgreen", 2,
 					false, false, undefined, "Struggle");
@@ -1265,15 +1265,20 @@ function KDHandBondageTotal(Other = false) {
  *
  * @returns {boolean}
  */
-function KinkyDungeonCanUseFeet() {
-	return KinkyDungeonStatsChoice.get("Flexible") && KinkyDungeonSlowLevel < 1;
+function KinkyDungeonCanUseFeet(bootsPrevent = true) {
+	return KinkyDungeonStatsChoice.get("Flexible") && KinkyDungeonSlowLevel < 1
+		&& (!bootsPrevent ||
+			(!KinkyDungeonPlayerTags.get("HinderFeet")
+			&& !KinkyDungeonPlayerTags.get("BoundFeet")
+			&& !KinkyDungeonPlayerTags.get("Boots")
+			&& !KinkyDungeonPlayerTags.get("BootsArmor")));
 }
 /**
  *
  * @returns {boolean}
  */
-function KinkyDungeonCanUseFeetLoose() {
-	return KinkyDungeonCanUseFeet() || (
+function KinkyDungeonCanUseFeetLoose(bootsPrevent = true) {
+	return KinkyDungeonCanUseFeet(bootsPrevent) || (
 		!KDForcedToGround()
 	);
 }
@@ -1804,7 +1809,7 @@ function KDGetStruggleData(data) {
 	let edgeBonus = 0.12*toolMult;
 	// Easier to struggle if your legs are free, due to leverage
 	// Slight boost to remove as well, but not as much due to the smaller movements required
-	if ((data.struggleType == "Struggle" || data.struggleType == "Cut") && data.hasAffinity) data.escapeChance += edgeBonus * (0.5 + 0.5*Math.max(2 - KinkyDungeonSlowLevel, 0));
+	if ((data.struggleType == "Struggle" || data.struggleType == "Cut") && data.hasAffinity) data.escapeChance += edgeBonus * (0.4 + 0.3*Math.max(2 - KinkyDungeonSlowLevel, 0));
 	else if ((data.struggleType == "Remove") && data.hasAffinity) data.escapeChance += edgeBonus * (0.1 + 0.1*Math.max(2 - KinkyDungeonSlowLevel, 0));
 
 	// Restriction penalties AFTER bonuses
