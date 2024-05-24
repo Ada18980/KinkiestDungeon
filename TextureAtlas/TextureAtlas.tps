@@ -74,7 +74,7 @@
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
-        <enum type="SettingsBase::TextureFormat">png</enum>
+        <enum type="SettingsBase::TextureFormat">webp</enum>
         <key>borderPadding</key>
         <uint>2</uint>
         <key>maxTextureSize</key>
@@ -1283,6 +1283,40 @@
             <key type="filename">../Models/Hair/Straight_Overstrap.png</key>
             <key type="filename">../Models/Hair/TwintailLeft.png</key>
             <key type="filename">../Models/Hair/TwintailRight.png</key>
+            <key type="filename">../Models/Hair2/Hair2_Front.png</key>
+            <key type="filename">../Models/Hair2/Hair2_FrontB.png</key>
+            <key type="filename">../Models/Hair2/Hair2_FrontC.png</key>
+            <key type="filename">../Models/Hair2/Hair2_Left.png</key>
+            <key type="filename">../Models/Hair2/Hair2_Right.png</key>
+            <key type="filename">../Models/Hair2/Hair3_Back.png</key>
+            <key type="filename">../Models/Hair2/Hair3_FrontA.png</key>
+            <key type="filename">../Models/Hair2/Hair3_FrontB.png</key>
+            <key type="filename">../Models/Hair2/Hair3_FrontC.png</key>
+            <key type="filename">../Models/Hair2/Hair3_FrontD.png</key>
+            <key type="filename">../Models/Hair2/Hair3_FrontE.png</key>
+            <key type="filename">../Models/Hair2/Hair4_Front.png</key>
+            <key type="filename">../Models/Hair2/Hair4_FrontB.png</key>
+            <key type="filename">../Models/Hair2/Hair4_Left.png</key>
+            <key type="filename">../Models/Hair2/Hair4_LeftB.png</key>
+            <key type="filename">../Models/Hair2/Hair4_Right.png</key>
+            <key type="filename">../Models/Hair2/Hair4_RightB.png</key>
+            <key type="filename">../Models/Hair2/Hair5_Front.png</key>
+            <key type="filename">../Models/Hair2/Hair5_FrontB.png</key>
+            <key type="filename">../Models/Hair2/Hair5_FrontC.png</key>
+            <key type="filename">../Models/Hair2/Hair5_FrontD.png</key>
+            <key type="filename">../Models/Hair2/Hair5_FrontE.png</key>
+            <key type="filename">../Models/Hair2/Hair5_Left.png</key>
+            <key type="filename">../Models/Hair2/Hair5_Right.png</key>
+            <key type="filename">../Models/Hair2/Hair6_Front.png</key>
+            <key type="filename">../Models/Hair2/Hair6_FrontB.png</key>
+            <key type="filename">../Models/Hair2/Hair6_Left.png</key>
+            <key type="filename">../Models/Hair2/Hair6_Right.png</key>
+            <key type="filename">../Models/Hair2/HairAura.png</key>
+            <key type="filename">../Models/Hair2/HairAura_Front.png</key>
+            <key type="filename">../Models/Hair2/HairAura_Left.png</key>
+            <key type="filename">../Models/Hair2/HairAura_LeftB.png</key>
+            <key type="filename">../Models/Hair2/HairAura_Right.png</key>
+            <key type="filename">../Models/Hair2/HairAura_RightB.png</key>
             <key type="filename">../Models/Handcuffs/CuffsLockFront.png</key>
             <key type="filename">../Models/Handcuffs/HandCuffsFront.png</key>
             <key type="filename">../Models/Handcuffs/HingedCuffsFront.png</key>
