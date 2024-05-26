@@ -334,7 +334,7 @@ const KinkyDungeonMapParams = {
 
 		music: {
 			"Ada18980_PlayingWithFire.ogg": 10,
-			"AREA9-BELLOWS": 2,
+			"AREA9-BELLOWS.ogg": 2,
 		},
 
 		tagModifiers: {

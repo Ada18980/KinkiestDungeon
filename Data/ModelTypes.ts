@@ -228,3 +228,4 @@ type LayerProperties = {
 interface Namable {
     Name: string,
 }
+

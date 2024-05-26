@@ -22,6 +22,10 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.3.15
+- Fixed bug with layer properties having wrong coordinate geometry in hogtie/map mode
+- Fixed bug with layer property layer bonus not working
+
 5.3.14
 - Added Expert Tools section in the color picker
 - One Click Move is now disabled when in danger (such as combat)
