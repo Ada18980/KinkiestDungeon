@@ -2374,7 +2374,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 	}
 
 	if (KDGameData.Shield > 0) {
-		statsDraw.shield = {text: TextGet("KDStatShield"), category: "info", icon: "shield", color: "#88aaff", bgcolor: "#333333", priority: 9,
+		statsDraw.shield = {text: TextGet("KDStatShield"), category: "info", icon: "shield", color: "#88aaff", bgcolor: "#333333", priority: -100,
 
 			count: "" + Math.round(KDGameData.Shield * 10),
 			countcolor: "#ffffff",
@@ -2432,7 +2432,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 				count: ("") + Math.round((1 - restraintblock) * 100) + "%",
 				icon: "restraintblock",
 				countcolor: "#65d45d",
-				category: "status", color: "#ffffff", bgcolor: "#000000", priority: 0
+				category: "info", color: "#ffffff", bgcolor: "#000000", priority: 8
 			};
 		let damageReduction = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "DamageReduction");
 		if (damageReduction > 0) {

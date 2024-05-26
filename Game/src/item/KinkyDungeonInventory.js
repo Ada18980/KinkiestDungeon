@@ -812,8 +812,9 @@ function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilt
 
 	let ret = [];
 	let category = KinkyDungeonInventory.get(Filter);
-	if (category)
-		for (let item of category.values()) {
+	if (category) {
+		let values = Filter == Restraint ? KinkyDungeonAllRestraintDynamic().map((inv) => {return inv.item;}) : category.values();
+		for (let item of values) {
 			if (ignoreHidden && KDGameData.HiddenItems && KDGameData.HiddenItems[item.inventoryVariant || item.name]) continue;
 
 			// Special filters here
@@ -831,7 +832,7 @@ function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilt
 				if (filters.length > 0) {
 					switch (filter_orig) {
 						case Armor:
-						case Restraint:
+						case Restraint: // Fallthrough
 						case LooseRestraint: {
 							if (KDRestraint(item) && !filters.every((filter) => {
 								if (KDSpecialFilters[filter_orig] && KDSpecialFilters[filter_orig][filter]) return KDSpecialFilters[filter_orig][filter](item, filter == click);
@@ -851,7 +852,7 @@ function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilt
 			}
 
 			let preview = KDGetItemPreview(item);
-			let pre = (item.type == LooseRestraint || item.type == Restraint) ? "Restraint" : "KinkyDungeonInventoryItem";
+			//let pre = (item.type == LooseRestraint || item.type == Restraint) ? "Restraint" : "KinkyDungeonInventoryItem";
 			if (preview
 				&& (item.type != LooseRestraint || (!enchanted || KDRestraint(item).enchanted || KDRestraint(item).showInQuickInv || item.showInQuickInv))
 				&& (!namefilter
@@ -870,7 +871,7 @@ function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilt
 					)))
 			)
 				ret.push(preview);
-			if (item.dynamicLink) {
+			/*if (item.dynamicLink) {
 				let link = item.dynamicLink;
 				for (let I = 0; I < 30; I++) {
 					preview = KDGetItemPreview(link);
@@ -880,9 +881,10 @@ function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilt
 						link = link.dynamicLink;
 					} else I = 1000;
 				}
-			}
+			}*/
 
 		}
+	}
 
 	return ret;
 }

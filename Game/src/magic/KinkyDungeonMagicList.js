@@ -2520,6 +2520,32 @@ let KinkyDungeonSpellListEnemies = [
 			duration: -1,
 		}, type:"inert", onhit:"lingering", time: 3, delay: 5, power: 10, range: 3, size: 3, aoe: 2, lifetime: 1, damage: "stun", playerEffect: {name: "Damage"}},
 
+	{name: "DynamiteItem", color: "#ff5277", prerequisite: "ApprenticeSummon", tags: ["aoe", "offense"], noise: 10, sfx: "Lightning", school: "Conjure", manacost: 5, components: ["Verbal"], level:1,
+		aoetype: "XcrossCrack",
+		events: [
+			{trigger: "bulletTick", type: "EndChance", chance: 0.25, count: 8},
+		],
+		hitevents: [
+			{trigger: "afterBulletHit", type: "Crack"},
+			{trigger: "bulletHitEnemy", type: "BreakArmor", power: 2},
+		],
+		block: 0.5, noTerrainHit: true, volatilehit: true, blockType: ["stun", "holy", ...KDIgnitionSources],
+		effectTileDurationMod: 7, hitSpin: 0.2, effectTile: {
+			name: "Cracked",
+			duration: 13,
+		}, type:"inert", onhit:"lingering", time: 7, delay: 10, power: 14, range: 3, size: 3, aoe: 3.99, lifetime: 1, damage: "stun", playerEffect: {name: "Damage"}},
+
+
+	{name: "C4Item", color: "#ff5277", prerequisite: "ApprenticeSummon", tags: ["aoe", "offense"], noise: 15, sfx: "Lightning", school: "Conjure", manacost: 5, components: ["Verbal"], level:1,
+		hitevents: [
+			{trigger: "afterBulletHit", type: "Crack"},
+			{trigger: "bulletHitEnemy", type: "BreakArmor", power: 5},
+		],
+		block: 4, noTerrainHit: true, volatilehit: true, blockType: ["stun", "holy", ...KDIgnitionSources],
+		effectTileDurationMod: 70, hitSpin: 0.2, effectTile: {
+			name: "RubbleNoMend",
+			duration: 130,
+		}, type:"inert", onhit:"lingering", time: 10, delay: 60, power: 21, range: 3, size: 3, aoe: 4.99, lifetime: 1, damage: "stun", playerEffect: {name: "Damage"}},
 
 	{enemySpell: true, name: "MinerBomb", color: "#ff2200", selfcast: true, noise: 5, sfx: "FireSpell", hitsfx: "FireSpell", school: "Conjure", manacost: 5, components: ["Verbal"], level:1, hideWarnings: true,
 		aoetype: "crossCrack",
@@ -2561,6 +2587,10 @@ let KinkyDungeonSpellListEnemies = [
 		duration: 20,
 	}, manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "chain", speed: 3, playerEffect: {name: "SingleRope"}},
 	{allySpell: true, name: "PlayerBola",  bindType: "Rope", fastStart: true, color: "#ff2200", noMiscast: true, sfx: "Miss", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", time: 4, power: 3, bind: 9, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "BanditBola", time: 1}}, // Throws a chain which stuns the target for 1 turn
+
+	{allySpell: true, name: "LeashSpell", fastStart: true, color: "#e64539", noMiscast: true,
+		sfx: "Miss", manacost: 0, components: ["Arms"], level:1, type:"special", special: "LeashSpell",
+		onhit:"", power: 0, delay: 0, range: 1.5, damage: "chain", speed: 2},
 
 	{enemySpell: true, name: "RestrainingDevice", bindType: "Metal", color: "#19fac1", sfx: "Miss", manacost: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
 		effectTileDurationMod: 8, effectTile: {

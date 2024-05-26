@@ -421,33 +421,38 @@ function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
 }
 
 function KDPlayerEvasionPenalty() {
+	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
 	let evasionPenalty = .25 * KinkyDungeonSlowLevel;
 	if (KinkyDungeonStatBlind > 0) evasionPenalty += 0.5;
 	if (KDGameData.MovePoints < 0) evasionPenalty += 0.5;
+	if (KinkyDungeonStatFreeze) evasionPenalty += 1;
 
 	evasionPenalty += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "EvasionPenalty");
-
-	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
 
 	return evasionPenalty;
 }
 function KDPlayerBlockPenalty() {
+	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
 	let blockPenalty = Math.min(0.5, .1 * KinkyDungeonBlindLevel);
+
 	if (KinkyDungeonIsArmsBound(false, true)) blockPenalty = blockPenalty + (1 - blockPenalty) * 0.7;
+	if (KinkyDungeonStatFreeze) blockPenalty += 1;
+	if (KinkyDungeonStatBlind) blockPenalty += 0.5;
 
 	blockPenalty += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BlockPenalty");
 
-	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
 
 	return Math.min(1, blockPenalty);
 }
 function KDRestraintBlockPenalty() {
-	let RestraintBlockPenalty = .15 * KinkyDungeonSlowLevel;
-	if (KinkyDungeonIsArmsBound(false, true)) RestraintBlockPenalty += .4;
+	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
+	let RestraintBlockPenalty = .1 * KinkyDungeonSlowLevel;
+	if (KinkyDungeonIsArmsBound(false, true)) RestraintBlockPenalty += .25;
+	if (KinkyDungeonStatFreeze) RestraintBlockPenalty += 0.8;
+	if (KinkyDungeonStatBlind) RestraintBlockPenalty += 0.4;
 
 	RestraintBlockPenalty += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlockPenalty");
 
-	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
 
 	return RestraintBlockPenalty;
 }
@@ -455,7 +460,7 @@ function KDRestraintBlockPenalty() {
 function KDCalcRestraintBlock() {
 	let RestraintBlock = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlock");
 	let RestraintBlockPenalty = KDRestraintBlockPenalty();
-	let val = RestraintBlock * KinkyDungeonMultiplicativeStat(RestraintBlockPenalty)
+	let val = RestraintBlock * Math.max(0, 1 - RestraintBlockPenalty)
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlockProtected");
 
 	return val;
@@ -666,6 +671,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		desireMult: (Damage) ? Damage.desireMult : 0,
 		incomingDamage: Damage,
 		dmgDealt: 0,
+		dmgShieldDealt: 0,
 		freezebroke: false,
 		froze: 0,
 		vulnerable: (Enemy.vulnerable || (KDHostile(Enemy) && !Enemy.aware)) && Damage && !Damage.novulnerable && (!Enemy.Enemy.tags || !Enemy.Enemy.tags.nonvulnerable),
@@ -983,10 +989,13 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				let orig = predata.dmgDealt;
 				Enemy.shield -= predata.dmgDealt;
 				if (Enemy.shield <= 0) {
+					predata.dmgShieldDealt += predata.dmgDealt + Enemy.shield;
 					predata.dmgDealt = -Enemy.shield;
+
 					delete Enemy.shield;
 				} else {
 					Enemy.playerdmg = (Enemy.playerdmg || 0) + orig;
+					predata.dmgShieldDealt += predata.dmgDealt;
 					predata.dmgDealt = 0;
 					predata.shieldBlocked = true;
 				}
@@ -1324,7 +1333,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		KinkyDungeonSetEnemyFlag(Enemy, "failpath", 0);
 	}
 
-	return predata.dmg;
+	return predata.dmgDealt + predata.dmgShieldDealt;
 }
 
 function KinkyDungeonDisarm(Enemy, suff) {
@@ -2966,4 +2975,13 @@ function KDWeaponIsMagic(weapon) {
 function KDEvasiveManeuversCost() {
 	let eva = KinkyDungeonPlayerEvasion();
 	return (5.0 * eva) + 1 * KinkyDungeonSlowLevel;
+}
+
+/**
+ *
+ * @param {entity} entity
+ * @returns {boolean}
+ */
+function KDEntityBlocksExp(entity) {
+	return entity.Enemy?.tags?.bulwark || KDEntityBuffedStat(entity, "Bulwark") > 0;
 }

@@ -236,6 +236,7 @@ function KDShopTrigger(name) {
 		prerequisite: (enemy, dist, AIData) => {
 			return (dist < 1.5
 				&& !KinkyDungeonFlags.get("NoTalk")
+				&& !KDGameData.NoForceGreet
 				&& !(KDGameData.SleepTurns > 0)
 				&& KDEnemyHasFlag(enemy, name)
 				&& !KDEnemyHasFlag(enemy, "NoShop"));

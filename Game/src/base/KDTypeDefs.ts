@@ -137,6 +137,8 @@ interface KDRestraintProps extends KDRestraintPropsBase {
 interface KDRestraintPropsBase {
 	/** Used in standalone to replace Color */
 	Filters?: Record<string, LayerFilter>,
+	/** Used in standalone to replace Properties */
+	Properties?: Record<string, LayerProperties>,
 	/** TODO Used in standalone to indicate which faction colors map to which filter
 	 * color is the faction color type
 	 * override is whether the faction color overrides the filter. If true it will replace the filter in the model. If false it will apply it over the model's filter. Currently unused
@@ -684,6 +686,8 @@ interface alwaysDressModel {
 	Model: string,
 	/** Group */
 	Group?: string,
+	/** Filters */
+	Properties?: Record<string, LayerProperties>,
 	/** Filters */
 	Filters?: Record<string, LayerFilter>,
 	/** Faction filter index */
@@ -1521,6 +1525,8 @@ interface String {
 }
 
 interface entity {
+	/** Optional leash data, used for both NPC and player */
+	leash?: KDLeashData,
 	blockedordodged?: number,
 	blocks?: number,
 	dodges?: number,
@@ -1681,6 +1687,8 @@ type KinkyDungeonDress = {
 	Group?: string;
 	Color: string | string[];
 	Filters?: Record<string, LayerFilter>;
+	Properties?: Record<string, LayerProperties>;
+
 	Lost: boolean;
 	NoLose?: boolean;
 	Property?: any,
@@ -2725,6 +2733,8 @@ interface KDAIData extends KDAITriggerData {
 	focusOnLeash?: boolean,
 	/** Enemy will move toward its target rather than its gx/gy position */
 	moveTowardPlayer?: boolean,
+	/** Enemy will wait a bit before forcing leash again */
+	SlowLeash?: boolean,
 
 	/** The enemy plans to leash the player,
 	 * important to declare b/c otherwise enemy can close cages, etc during play*/
@@ -3395,6 +3405,17 @@ type KDJailGetGroupsReturn = {
 	itemsToStrip: Record<string, boolean>,
 };
 
+interface KDLeashData {
+	priority: number,
+	length: number,
+	x: number,
+	y: number,
+	entity?: number,
+	reason?: string,
+	restraintID?: number,
+	color?: string,
+};
+
 type KDJourneySlot = {
 	visited: boolean,
 
@@ -3453,6 +3474,8 @@ type PIXIContainer = import('pixi.js').Container;
 type PIXIMesh = import('pixi.js').Mesh;
 type PIXIRenderTexture = import('pixi.js').RenderTexture;
 type PIXITexture = import('pixi.js').Texture;
+type PIXISprite = import('pixi.js').Sprite;
+
 
 type PIXIPlane = import('pixi.js').SimplePlane;
 type PIXIBuffer = import('pixi.js').Buffer;

@@ -1440,7 +1440,7 @@ function KinkyDungeonDrawGame() {
 									if (path?.length > 1) {
 										dist -= Math.min(0, KDGameData.MovePoints + 1);
 									} else dist = 1 - KDGameData.MovePoints;
-								} else if (!KDToggles.LazyWalk) {
+								} else if (!KDToggles.LazyWalk || KinkyDungeonInDanger()) {
 									if (path?.length > 1) {
 										dist -= Math.max(0, diststart - 1);
 									} else dist = 1;
@@ -1484,7 +1484,7 @@ function KinkyDungeonDrawGame() {
 
 								if (KDGameData.MovePoints < 0) {
 									dist = 1 - KDGameData.MovePoints;
-								} else if (!KDToggles.LazyWalk) dist = 1;
+								} else if (!KDToggles.LazyWalk || KinkyDungeonInDanger()) dist = 1;
 								dist = Math.ceil(Math.max(0, dist));
 								DrawTextKD("x" + dist, (xx - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (yy - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
 							}
@@ -1608,10 +1608,10 @@ function KinkyDungeonDrawGame() {
 						Layer: "Head",
 						scale_x: 2.5,
 						scale_y: 2.5,
-						rotation_x_anchor: 1190/MODELWIDTH,
-						rotation_y_anchor: 690/MODELHEIGHT,
-						offset_x: 1100/MODELWIDTH,
-						offset_y: 620/MODELHEIGHT,
+						rotation_x_anchor: 1190,
+						rotation_y_anchor: 690,
+						offset_x: 1100,
+						offset_y: 620,
 					},
 				] : [];
 				if (KDDrawPlayer)
@@ -1743,7 +1743,7 @@ function KinkyDungeonDrawGame() {
 					}
 				}
 
-				KinkyDungeonDrawTethers(KinkyDungeonPlayerEntity, CamX+CamX_offset, CamY+CamY_offset);
+				KinkyDungeonDrawTethers(CamX+CamX_offset, CamY+CamY_offset);
 
 				if (tooltip && KDMouseInPlayableArea()) {
 					DrawTextFitKD(tooltip, MouseX, MouseY - KinkyDungeonGridSizeDisplay/2, 200, "#ffffff", KDTextGray2);

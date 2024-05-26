@@ -200,6 +200,14 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Bullets/C4ItemHit.png":
+{
+	"frame": {"x":437,"y":1090,"w":216,"h":207},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":216,"h":207},
+	"sourceSize": {"w":216,"h":216}
+},
 "Game/Bullets/ChainBoltHit.png":
 {
 	"frame": {"x":1963,"y":1353,"w":72,"h":72},
@@ -294,6 +302,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":216},
+	"sourceSize": {"w":216,"h":216}
+},
+"Game/Bullets/DynamiteItemHit.png":
+{
+	"frame": {"x":437,"y":1090,"w":216,"h":207},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":216,"h":207},
 	"sourceSize": {"w":216,"h":216}
 },
 "Game/Bullets/EffectEnemyCM2.png":
@@ -1920,6 +1936,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:afc75ef880e578152fa81b2c40345feb:db531ee3030f69b92785d57a74113fb2:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e85dc2826dc158323fa3740108f08fb2:cc7c59d2f967779915be40563e1da962:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

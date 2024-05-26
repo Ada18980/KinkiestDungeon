@@ -622,7 +622,8 @@ let KDCommanderOrders = {
 				&& !KDIsImmobile(enemy)
 				&& (!KDAIType[KDGetAI(enemy)]
 					|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)))
-				&& (enemy.hp < enemy.Enemy.maxhp * data.fleeThresh || (enemy.Enemy.tags?.minor && !KDEnemyHasFlag(enemy, "targ_player")))) return true;
+				&& (enemy.hp < enemy.Enemy.maxhp * data.fleeThresh ||
+					(KDEnemyRank(enemy) < 1 && !KDEnemyHasFlag(enemy, "targ_player") && KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) < 3))) return true;
 			return false;
 		},
 		weight: (enemy, data) => {

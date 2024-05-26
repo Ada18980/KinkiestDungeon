@@ -735,6 +735,15 @@ function KDInitTempValues(seed) {
 	KDPathCacheIgnoreLocks = new Map();
 }
 
+/** Game related options */
+function KDUpdateOptionGame() {
+	if (KinkyDungeonStatsChoice.get("NoForceGreet") && !KDGameData.NoForceGreet) {
+		KDGameData.NoForceGreet = true;
+	} else if (!KinkyDungeonStatsChoice.get("NoForceGreet") && KDGameData.NoForceGreet) {
+		KDGameData.NoForceGreet = false;
+	}
+}
+
 // Starts the the game at a specified level
 // Example usage:
 // KinkyDungeonCreateMap(KinkyDungeonMapParams.grv, 1, false, undefined, "", undefined, true);
@@ -754,6 +763,9 @@ function KDInitTempValues(seed) {
  * @param {number} [direction]
  */
 function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement, seed, forceFaction, worldLocation, useExisting, origMapType = "", direction = 0, forceEscape) {
+	KDUpdateOptionGame();
+	KDBreakTether(KDPlayer());
+
 	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeNewMap"]);
 	// Create enemies first so we can spawn them in the set pieces if needed
 	let allies = KinkyDungeonGetAllies();
@@ -761,9 +773,10 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	let altRoom = KDMapData.RoomType;
 	let altType = altRoom ? KinkyDungeonAltFloor((mapMod && mapMod.altRoom) ? mapMod.altRoom : altRoom) : KinkyDungeonBossFloor(Floor);
 
+
 	// Strip non-persistent items
 	if (!KDMapData.GroundItems) KDMapData.GroundItems = [];
-	let allPersistent = altType.keepItems;
+	let allPersistent = altType?.keepItems;
 	let persistentItems = KDMapData.GroundItems.filter((item) => {
 		return allPersistent || (KDDroppedItemProperties[item.name] && KDDroppedItemProperties[item.name].persistent);
 	});
@@ -4693,7 +4706,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 				// KinkyDungeonAdvanceTime(1, false, d != 0); // was moveDirection.delta, but became too confusing
 
 				if (newDelta > 1 && newDelta < 10 && !quick) {
-					if (KDToggles.LazyWalk) {
+					if (KDToggles.LazyWalk && !KinkyDungeonInDanger()) {
 						KDGameData.SlowMoveTurns = newDelta - 1;
 						KinkyDungeonSleepTime = CommonTime() + 200;
 					} else {
@@ -4904,7 +4917,13 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 
 	KinkyDungeonUpdateAngel(delta);
 
-	KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
+	if (KDPlayer().leash)
+		KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
+
+	for (let enemy of KDMapData.Entities) {
+		if (enemy.leash)
+			KinkyDungeonUpdateTether(false, enemy);
+	}
 
 	KinkyDungeonResetEventVariablesTick(delta);
 	KinkyDungeonSendEvent("tick", {delta: delta});
@@ -4948,6 +4967,11 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 	}
 
 	KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
+
+	for (let enemy of KDMapData.Entities) {
+		if (enemy.leash)
+			KinkyDungeonUpdateTether(false, enemy);
+	}
 	KinkyDungeonUpdateJailKeys();
 
 	KDCommanderUpdate(delta);
@@ -5203,9 +5227,10 @@ function KDAddAppearance(C, Group, ItemAsset, NewColor, DifficultyFactor, ItemMe
  * @param {string|string[]} NewColor - The new color (as "#xxyyzz" hex value) for that item
  * @param {item} [item] - The item, to pass to the event
  * @param {Record<string, LayerFilter>} filters - The item, to pass to the event
+ * @param {Record<string, LayerProperties>} [Properties] - The item, to pass to the event
  * @returns {Item} - the item itself
  */
-function KDAddModel(C, Group, ItemModel, NewColor, filters, item) {
+function KDAddModel(C, Group, ItemModel, NewColor, filters, item, Properties) {
 
 	// Unlike the stock function, we do NOT remove the previous one
 	let data = {
@@ -5224,8 +5249,10 @@ function KDAddModel(C, Group, ItemModel, NewColor, filters, item) {
 			Color: data.color,
 			Property: undefined,
 			Filters: filters,
+			Properties: Properties,
 		};
 		NA.Model.Filters = NA.Filters || NA.Model.Filters;
+		NA.Model.Properties = NA.Properties || NA.Model.Properties;
 		for (let i = 0; i < C.Appearance.length; i++) {
 			if (C.Appearance[i]?.Model?.Name == NA.Model.Name) {
 				C.Appearance[i] = NA;

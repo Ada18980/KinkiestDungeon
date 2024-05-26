@@ -136,6 +136,14 @@
 	"spriteSourceSize": {"x":13,"y":20,"w":315,"h":324},
 	"sourceSize": {"w":360,"h":360}
 },
+"Game/Bullets/C4Item.png":
+{
+	"frame": {"x":817,"y":1489,"w":47,"h":51},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":85,"y":78,"w":47,"h":51},
+	"sourceSize": {"w":216,"h":216}
+},
 "Game/Bullets/CrushingFate.png":
 {
 	"frame": {"x":988,"y":1018,"w":359,"h":359},
@@ -312,14 +320,6 @@
 	"spriteSourceSize": {"x":143,"y":143,"w":74,"h":74},
 	"sourceSize": {"w":360,"h":360}
 },
-"Game/Bullets/HighBoltHit.png":
-{
-	"frame": {"x":817,"y":1489,"w":46,"h":51},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":15,"y":9,"w":46,"h":51},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Bullets/IgnitionHit.png":
 {
 	"frame": {"x":513,"y":761,"w":216,"h":216},
@@ -374,14 +374,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":25,"w":62,"h":21},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/Bullets/RecoverObjectHit.png":
-{
-	"frame": {"x":817,"y":1489,"w":46,"h":51},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":15,"y":9,"w":46,"h":51},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Bullets/RestrainingBolt.png":
@@ -576,6 +568,14 @@
 	"spriteSourceSize": {"x":0,"y":1,"w":46,"h":71},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Conditions/Disarm.png":
+{
+	"frame": {"x":2020,"y":1674,"w":25,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":22,"w":25,"h":17},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/DamageTypes/cold.png":
 {
 	"frame": {"x":893,"y":756,"w":15,"h":25},
@@ -768,6 +768,14 @@
 	"spriteSourceSize": {"x":20,"y":1,"w":36,"h":67},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/FloorGeneric/Bars.png":
+{
+	"frame": {"x":2020,"y":1543,"w":18,"h":64},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":8,"w":18,"h":64},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/FloorGeneric/Crack.png":
 {
 	"frame": {"x":1985,"y":148,"w":50,"h":71},
@@ -854,6 +862,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":26,"w":58,"h":18},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Items/C4.png":
+{
+	"frame": {"x":817,"y":1489,"w":47,"h":51},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":14,"w":47,"h":51},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Items/Dragonslaver.png":
@@ -1048,14 +1064,6 @@
 	"spriteSourceSize": {"x":10,"y":23,"w":45,"h":36},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Items/StaffFrostbite.png":
-{
-	"frame": {"x":2020,"y":1608,"w":26,"h":60},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":24,"y":3,"w":26,"h":60},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Items/StaffGlue.png":
 {
 	"frame": {"x":2028,"y":1054,"w":18,"h":53},
@@ -1066,7 +1074,7 @@
 },
 "Game/Items/StaffStorm.png":
 {
-	"frame": {"x":2020,"y":1543,"w":23,"h":63},
+	"frame": {"x":2020,"y":1609,"w":23,"h":63},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":27,"y":0,"w":23,"h":63},
@@ -1166,14 +1174,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":13,"w":15,"h":15},
-	"sourceSize": {"w":46,"h":45}
-},
-"Game/Poses/Kneel.png":
-{
-	"frame": {"x":2020,"y":1670,"w":25,"h":21},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":11,"y":10,"w":25,"h":21},
 	"sourceSize": {"w":46,"h":45}
 },
 "Game/ShopBasic/Elven.png":
@@ -1320,6 +1320,6 @@
 	"size": {"w":2048,"h":2047},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:afc75ef880e578152fa81b2c40345feb:db531ee3030f69b92785d57a74113fb2:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e85dc2826dc158323fa3740108f08fb2:cc7c59d2f967779915be40563e1da962:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

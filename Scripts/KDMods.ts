@@ -142,7 +142,9 @@ async function KDExecuteMods() {
 			console.log(blob);
 			let reader = new FileReader();
 
-			if (entry.filename.endsWith('.js') || entry.filename.endsWith('.ks')) {
+			if (entry.filename.startsWith('.')) {
+				// none
+			} else if (entry.filename.endsWith('.js') || entry.filename.endsWith('.ks')) {
 				// none
 			} else {
 				KDModFiles[KinkyDungeonRootDirectory + entry.filename] = URL.createObjectURL(blob);
@@ -175,7 +177,9 @@ async function KDExecuteMods() {
 			console.log(blob);
 			let reader = new FileReader();
 
-			if (entry.filename.endsWith('.js') || entry.filename.endsWith('.ks')) {
+			if (entry.filename.startsWith('.')) {
+				// none
+			} else if (entry.filename.endsWith('.js') || entry.filename.endsWith('.ks')) {
 				let file = new File([blob], entry.filename);
 				// Eval js files. eval() is dangerous. Don't load untrusted mods.
 				reader.onload = function(event) {

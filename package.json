@@ -20,9 +20,9 @@
         "concurrently": "^8.2.2",
         "http-server": "^14.1.1",
         "pixi-filters": "5.2.0",
-        "pixi.js": "^7.4.2",
-        "pixi.js-legacy": "^7.4.2",
         "tsc-watch": "^6.2.0",
+        "pixi.js": "^7.2.1",
+        "pixi.js-legacy": "^7.2.1",
         "typescript": "^5.4.5"
     }
 }

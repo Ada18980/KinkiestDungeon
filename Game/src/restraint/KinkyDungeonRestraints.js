@@ -47,7 +47,7 @@ let KDCustomAffinity = {
 		return KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
 	},
 	HookOrFoot: (data) => {
-		if (KinkyDungeonCanUseFeetLoose()) {
+		if (KinkyDungeonCanUseFeetLoose(false)) {
 			if (data.Message) {
 				KinkyDungeonSendTextMessage(7, TextGet("KDUseFootAffinity"), "lightgreen", 2,
 					false, false, undefined, "Struggle");
@@ -68,7 +68,7 @@ let KDCustomAffinity = {
 	},
 	SharpHookOrFoot: (data) => {
 		if (!KinkyDungeonGetAffinity(data.Message, "Sharp", data.group)) return false;
-		if (KinkyDungeonCanUseFeetLoose()) {
+		if (KinkyDungeonCanUseFeetLoose(false)) {
 			if (data.Message) {
 				KinkyDungeonSendTextMessage(7, TextGet("KDUseFootAffinity"), "lightgreen", 2,
 					false, false, undefined, "Struggle");
@@ -465,318 +465,6 @@ let KDRestraintsCache = new Map();
 let KDTetherGraphics = new PIXI.Graphics;
 KDTetherGraphics.zIndex = 2;
 let KDGameBoardAddedTethers = false;
-
-/**
- *
- * @param {entity} Entity
- * @param {number} CamX
- * @param {number} CamY
- * @returns {void}
- */
-function KinkyDungeonDrawTethers(Entity, CamX, CamY) {
-	KDTetherGraphics.clear();
-	if (!KDGameBoardAddedTethers) {
-		kdgameboard.addChild(KDTetherGraphics);
-		KDGameBoardAddedTethers = true;
-	}
-
-
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if (inv && KDRestraint(inv).tether && inv.tx && inv.ty) {
-			let vx = inv.tx;
-			let vy = inv.ty;
-			if (inv.tetherToLeasher && KinkyDungeonLeashingEnemy()) {
-				vx = KinkyDungeonLeashingEnemy().visual_x;
-				vy = KinkyDungeonLeashingEnemy().visual_y;
-			}
-			if (inv.tetherToGuard && KinkyDungeonJailGuard()) {
-				vx = KinkyDungeonJailGuard().visual_x;
-				vy = KinkyDungeonJailGuard().visual_y;
-			}
-
-			//let dist = KDistEuclidean(inv.tx - Entity.visual_x, inv.ty - Entity.visual_y);
-			let xx = canvasOffsetX + (Entity.visual_x - CamX)*KinkyDungeonGridSizeDisplay;
-			let yy = canvasOffsetY + (Entity.visual_y - CamY)*KinkyDungeonGridSizeDisplay;
-			let txx = canvasOffsetX + (vx - CamX)*KinkyDungeonGridSizeDisplay;
-			let tyy = canvasOffsetY + (vy - CamY)*KinkyDungeonGridSizeDisplay;
-			let dx = (txx - xx);
-			let dy = (tyy - yy);
-			let dd = 0.1; // Increments
-			let color = KDRestraint(inv).Color[0]?.length > 3 ? KDRestraint(inv).Color[0] : KDRestraint(inv).Color;
-			if (!color || color == "Default") color = "#aaaaaa";
-			if (Array.isArray(color)) color = color[0];
-			KDTetherGraphics.lineStyle(4, string2hex(color), 1);
-			for (let d = 0; d < 1; d += dd) {
-				let yOffset = 30 * Math.sin(Math.PI * d);
-				let yOffset2 = 30 * Math.sin(Math.PI * (d + dd));
-				KDTetherGraphics.moveTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*d, KinkyDungeonGridSizeDisplay*0.8 + yOffset + yy + dy*d);
-				KDTetherGraphics.lineTo(KinkyDungeonGridSizeDisplay/2 + xx + dx*(d+dd), KinkyDungeonGridSizeDisplay*0.8 + yOffset2 + yy + dy*(d+dd));
-			}
-			return;
-		}
-	}
-}
-
-
-function KDGetTetherLength(player) {
-	if (!player?.player) return false;
-	let inv = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
-	if (inv && KDRestraint(inv).tether) {
-		return KDRestraint(inv).tether;
-	}
-	return 0;
-}
-
-
-function KDIsPlayerTethered(player) {
-	if (!player?.player) return false;
-	let inv = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
-	if (inv && KDRestraint(inv).tether && (inv.tx || inv.ty)) {
-		return true;
-	}
-	let found = KinkyDungeonFindID(KDGameData.KinkyDungeonLeashingEnemy);
-	if (!found) KDGameData.KinkyDungeonLeashingEnemy = 0;
-	return KDGameData.KinkyDungeonLeashedPlayer > 0;
-}
-
-function KinkyDungeonAttachTetherToEntity(dist, entity) {
-	let inv = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
-	if (inv && KDRestraint(inv).tether) {
-		let newLeash = inv.tetherEntity != entity.id;
-		inv.tetherEntity = entity.id;
-		KDGameData.KinkyDungeonLeashingEnemy = entity.id;
-		if (dist) inv.tetherLength = dist;
-		return newLeash;
-	}
-	return false;
-}
-
-/**
- *
- * @param {entity} player
- * @param {number} x
- * @param {number} y
- * @param {entity} entity
- */
-function KDIsPlayerTetheredToLocation(player, x, y, entity) {
-	if (!player.player) return false;
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if (KDRestraint(inv).tether && (inv.tx && inv.ty || inv.tetherToLeasher || inv.tetherToGuard || inv.tetherEntity)) {
-			if (inv.tx == x && inv.ty == y) return true;
-			if (entity && inv.tetherEntity && inv.tetherEntity == entity.id) return true;
-		}
-	}
-	return false;
-}
-/**
- *
- * @param {entity} player
- * @param {entity} [entity]
- */
-function KDIsPlayerTetheredToEntity(player, entity) {
-	if (!player.player) return false;
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if (KDRestraint(inv).tether && (inv.tx && inv.ty || inv.tetherToLeasher || inv.tetherToGuard || inv.tetherEntity)) {
-			if (entity && inv.tetherEntity && inv.tetherEntity == entity.id) return true;
-			if (!entity && inv.tetherEntity && KinkyDungeonFindID(inv.tetherEntity)) return true;
-		}
-	}
-	return false;
-}
-
-
-/**
- *
- * @param {entity} player
- * @returns {number}
- */
-function KDGetTetherEntity(player) {
-	if (!player.player) return -1;
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if (KDRestraint(inv).tether && (inv.tetherEntity)) {
-			if (inv.tetherEntity) return inv.tetherEntity;
-		}
-	}
-	return -1;
-}
-
-/**
- *
- * @param {entity} [player]
- */
-function KDBreakTether(player) {
-	if (player == KinkyDungeonPlayerEntity) {
-		for (let pair of KinkyDungeonAllRestraintDynamic()) {
-			let inv = pair.item;
-			if (inv && KDRestraint(inv).tether) {
-				inv.tetherToLeasher = false;
-				inv.tetherToGuard = false;
-				inv.tetherEntity = undefined;
-				inv.tx = undefined;
-				inv.ty = undefined;
-			}
-		}
-	}
-
-}
-
-let KDLeashPullCost = 0.5;
-let KDLeashPullKneelTime = 5;
-
-/**
- *
- * @param {boolean} Msg
- * @param {entity} Entity
- * @param {number} [xTo]
- * @param {number} [yTo]
- * @returns {boolean}
- */
-function KinkyDungeonUpdateTether(Msg, Entity, xTo, yTo) {
-	if (Entity.player && KinkyDungeonFlags.get("pulled")) return false;
-	else if (KDEnemyHasFlag(Entity, "pulled")) return false;
-	let exceeded = false;
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if (KDRestraint(inv).tether && (inv.tx && inv.ty || inv.tetherToLeasher || inv.tetherToGuard || inv.tetherEntity)) {
-			let tether = inv.tetherLength ? inv.tetherLength : KDRestraint(inv).tether;
-
-			if (inv.tetherToLeasher && KinkyDungeonLeashingEnemy() && !KinkyDungeonIsDisabled(KinkyDungeonLeashingEnemy())) {
-				inv.tx = KinkyDungeonLeashingEnemy().x;
-				inv.ty = KinkyDungeonLeashingEnemy().y;
-			} else if (inv.tetherToLeasher && !KinkyDungeonLeashingEnemy()) {
-				inv.tetherToLeasher = undefined;
-				inv.tx = undefined;
-				inv.ty = undefined;
-			}
-			if (inv.tetherToGuard && KinkyDungeonJailGuard() && !KinkyDungeonIsDisabled(KinkyDungeonJailGuard())) {
-				inv.tx = KinkyDungeonJailGuard().x;
-				inv.ty = KinkyDungeonJailGuard().y;
-			} else if (inv.tetherToGuard && !KinkyDungeonJailGuard()) {
-				inv.tetherToGuard = undefined;
-				inv.tx = undefined;
-				inv.ty = undefined;
-			}
-			if (inv.tetherEntity && KinkyDungeonFindID(inv.tetherEntity) && !KinkyDungeonIsDisabled(KinkyDungeonFindID(inv.tetherEntity))) {
-				inv.tx = KinkyDungeonFindID(inv.tetherEntity).x;
-				inv.ty = KinkyDungeonFindID(inv.tetherEntity).y;
-			} else if (inv.tetherEntity) {
-				inv.tetherEntity = undefined;
-				inv.tx = undefined;
-				inv.ty = undefined;
-			}
-
-			if (inv.tx && inv.ty) KDGameData.KinkyDungeonLeashedPlayer = Math.max(KDGameData.KinkyDungeonLeashedPlayer, 5);
-
-			if (xTo || yTo) {// This means we arre trying to move
-				let pathToTether = KinkyDungeonFindPath(xTo, yTo, inv.tx, inv.ty, false, !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy);
-				let playerDist = Math.max(pathToTether?.length || 0, KDistChebyshev(xTo-inv.tx, yTo-inv.ty));
-				// Fallback
-				if (playerDist > KDRestraint(inv).tether && KDistEuclidean(xTo-inv.tx, yTo-inv.ty) > KDistEuclidean(Entity.x-inv.tx, Entity.y-inv.ty)) {
-					if (Msg) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTetherTooShort").replace("TETHER", TextGet("Restraint" + inv.name)), "#ff5277", 2, true);
-					if (KinkyDungeonCanStand() && !KDForcedToGround()) {
-						KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, KDLeashPullKneelTime + KDGameData.SlowMoveTurns);
-						KinkyDungeonChangeWill(-KDLeashPullCost, false);
-					}
-					//return true;
-					if (Entity.player) KinkyDungeonSetFlag("leashtug", 3);
-					else KinkyDungeonSetEnemyFlag(Entity, "leashtug", 3);
-					exceeded = true;
-				}
-			}
-			for (let i = 0; i < 10; i++) {
-				// Distance is in pathing units
-				let pathToTether = KinkyDungeonFindPath(Entity.x, Entity.y, inv.tx, inv.ty, false, !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy);
-				let playerDist = pathToTether?.length;
-				// Fallback
-				if (!pathToTether) playerDist = KDistChebyshev(Entity.x-inv.tx, Entity.y-inv.ty);
-				if (playerDist > tether) {
-					let slot = null;
-					if (pathToTether
-						&& pathToTether?.length > 0
-						&& (
-							KDistEuclidean(pathToTether[0].x - inv.tx, pathToTether[0].y - inv.ty) > -0.01 + KDistEuclidean(Entity.x - inv.tx, Entity.y - inv.ty)
-							|| KinkyDungeonFindPath(pathToTether[0].x, pathToTether[0].y, inv.tx, inv.ty, false, !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy)?.length < pathToTether.length
-						) && KDistChebyshev(pathToTether[0].x - Entity.x, pathToTether[0].y - Entity.y) < 1.5)
-						slot = pathToTether[0];
-					if (!slot) {
-						let mindist = playerDist;
-						for (let X = Entity.x-1; X <= Entity.x+1; X++) {
-							for (let Y = Entity.y-1; Y <= Entity.y+1; Y++) {
-								if ((X !=  Entity.x || Y != Entity.y) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y)) && KDistEuclidean(X-inv.tx, Y-inv.ty) < mindist) {
-									mindist = KDistEuclidean(X-inv.tx, Y-inv.ty);
-									slot = {x:X, y:Y};
-								}
-							}
-						}
-					}
-					if (!slot) { //Fallback
-						slot = {x:inv.tx, y:inv.ty};
-					}
-					if (slot) {
-						let enemy = KinkyDungeonEnemyAt(slot.x, slot.y);
-						if (enemy) {
-							let slot2 = null;
-							let mindist2 = playerDist;
-							for (let X = enemy.x-1; X <= enemy.x+1; X++) {
-								for (let Y = enemy.y-1; Y <= enemy.y+1; Y++) {
-									if ((X !=  enemy.x || Y != enemy.y) && !KinkyDungeonEntityAt(slot.x, slot.y) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y)) && KDistEuclidean(X-Entity.x, Y-Entity.y) < mindist2) {
-										mindist2 = KDistEuclidean(X-Entity.x, Y-Entity.y);
-										slot2 = {x:X, y:Y};
-									}
-								}
-							}
-							if (slot2) {
-								KDMoveEntity(enemy, slot2.x, slot2.y, false);
-							} else {
-								let pointSwap = KinkyDungeonGetNearbyPoint(slot.x, slot.y, true, undefined, true, true);
-								if (pointSwap)
-									KDMoveEntity(enemy, pointSwap.x, pointSwap.y, false, undefined, undefined, true);
-								else
-									KDMoveEntity(enemy, Entity.x, Entity.y, false,undefined, undefined, true);
-							}
-						}
-						// Force open door
-						if (KinkyDungeonMapGet(slot.x, slot.y) == 'D') KinkyDungeonMapSet(slot.x, slot.y, 'd');
-
-						if (Entity.player) {
-							KDMovePlayer(slot.x, slot.y, false, undefined, undefined);
-						} else {
-							KDMoveEntity(Entity, slot.x, slot.y, false, undefined, undefined, true);
-						}
-						if (Entity.player) KinkyDungeonSetFlag("pulled", 1);
-						else KinkyDungeonSetEnemyFlag(Entity, "pulled", 1);
-						if (Entity.player) KinkyDungeonSetFlag("leashtug", 3);
-						else KinkyDungeonSetEnemyFlag(Entity, "leashtug", 3);
-						if (Entity.player) {
-							KinkyDungeonInterruptSleep();
-							KinkyDungeonSendEvent("leashTug", {Entity: Entity, slot: slot, item: inv});
-							if (KinkyDungeonLeashingEnemy()) {
-								KinkyDungeonSetEnemyFlag(KinkyDungeonLeashingEnemy(), "harshpull", 5);
-							}
-							if (Msg) KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonTetherPull").replace("TETHER", TextGet("Restraint" + inv.name)), "#ff5277", 2, true);
-							exceeded = true;
-						}
-
-					}
-				}
-			}
-		}
-	}
-
-	return exceeded;
-}
-
-
-/**
- * Gets the length of the neck tether
- * @returns {number}
- */
-function KinkyDungeonTetherLength() {
-	let inv = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
-	if (inv && KDRestraint(inv).tether && inv.tx && inv.ty) {
-		return KDRestraint(inv).tether;
-	}
-	return undefined;
-}
 
 /**
  *
@@ -1577,15 +1265,20 @@ function KDHandBondageTotal(Other = false) {
  *
  * @returns {boolean}
  */
-function KinkyDungeonCanUseFeet() {
-	return KinkyDungeonStatsChoice.get("Flexible") && KinkyDungeonSlowLevel < 1;
+function KinkyDungeonCanUseFeet(bootsPrevent = true) {
+	return KinkyDungeonStatsChoice.get("Flexible") && KinkyDungeonSlowLevel < 1
+		&& (!bootsPrevent ||
+			(!KinkyDungeonPlayerTags.get("HinderFeet")
+			&& !KinkyDungeonPlayerTags.get("BoundFeet")
+			&& !KinkyDungeonPlayerTags.get("Boots")
+			&& !KinkyDungeonPlayerTags.get("BootsArmor")));
 }
 /**
  *
  * @returns {boolean}
  */
-function KinkyDungeonCanUseFeetLoose() {
-	return KinkyDungeonCanUseFeet() || (
+function KinkyDungeonCanUseFeetLoose(bootsPrevent = true) {
+	return KinkyDungeonCanUseFeet(bootsPrevent) || (
 		!KDForcedToGround()
 	);
 }
@@ -2116,7 +1809,7 @@ function KDGetStruggleData(data) {
 	let edgeBonus = 0.12*toolMult;
 	// Easier to struggle if your legs are free, due to leverage
 	// Slight boost to remove as well, but not as much due to the smaller movements required
-	if ((data.struggleType == "Struggle" || data.struggleType == "Cut") && data.hasAffinity) data.escapeChance += edgeBonus * (0.5 + 0.5*Math.max(2 - KinkyDungeonSlowLevel, 0));
+	if ((data.struggleType == "Struggle" || data.struggleType == "Cut") && data.hasAffinity) data.escapeChance += edgeBonus * (0.4 + 0.3*Math.max(2 - KinkyDungeonSlowLevel, 0));
 	else if ((data.struggleType == "Remove") && data.hasAffinity) data.escapeChance += edgeBonus * (0.1 + 0.1*Math.max(2 - KinkyDungeonSlowLevel, 0));
 
 	// Restriction penalties AFTER bonuses
@@ -3898,6 +3591,7 @@ function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, 
  * @returns {number}
  */
 function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, Curse, securityEnemy, useAugmentedPower, inventoryAs, data, augmentedInventory, variant) {
+	let player = KDPlayer();
 	if (typeof restraint === "string") {
 		KDRestraintDebugLog.push("Lookup" + restraint);
 		restraint = KinkyDungeonGetRestraintByName(restraint);
@@ -3929,7 +3623,7 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 		}
 
 		ret = KinkyDungeonAddRestraint(restraint, Tightness + Math.round(0.1 * KinkyDungeonDifficulty), Bypass, Lock, Keep, false, !linkableCurrent, events, faction, undefined, undefined, Curse, undefined, securityEnemy, inventoryAs, data);
-		if (preserve_tether && !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) KinkyDungeonAttachTetherToEntity(tether_len, KinkyDungeonLeashingEnemy());
+		if (preserve_tether && !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) KinkyDungeonAttachTetherToEntity(tether_len, KinkyDungeonLeashingEnemy(), player);
 
 		if (KinkyDungeonPlayerEntity && !KinkyDungeonCanTalk() && KDRandom() < KinkyDungeonGagMumbleChanceRestraint) {
 			let msg = "KinkyDungeonGagRestraint";
@@ -4985,9 +4679,10 @@ let KDCuffParts = {
  * @param {Record<string, string>} [CuffModels] - mapping of Group to Models
  * @param {boolean} [noLockBase] - Removes Pick and Unlock methods of escape
  * @param {boolean} [noLockLink] - Removes Pick and Unlock methods of escape
+ * @param {Record<string, LayerProperties>} [Properties]
  * param {{name: string, description: string}} strings - Generic strings for the cuff type
  */
-function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, allTag, removeTag, addPower, properties, extraEvents = [], addStruggle, premultStruggle, addStruggleLink, premultStruggleLink, Filters, baseWeight = 10, noGeneric, CuffAssets = {}, CuffModels = {}, noLockBase, noLockLink) {
+function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, allTag, removeTag, addPower, properties, extraEvents = [], addStruggle, premultStruggle, addStruggleLink, premultStruggleLink, Filters, baseWeight = 10, noGeneric, CuffAssets = {}, CuffModels = {}, noLockBase, noLockLink, Properties) {
 	for (let part of Object.entries(KDCuffParts)) {
 		let cuffPart = part[0];
 		let cuffInfo = part[1];
@@ -5036,6 +4731,7 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 				events: cuffInfo.base ? [...extraEvents, ...(origRestraint.events || [])] : [...(origRestraint.events || [])],
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
+				Properties: origRestraint.Properties ? Object.assign({}, origRestraint.Properties) : {},
 				cloneTag: tagBase + "Restraints",
 			};
 			if (cuffInfo.Link) props.Link = idSuffix + cuffInfo.Link;
@@ -5043,6 +4739,11 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 			if (Filters && props.Filters) {
 				for (let layer of Object.keys(Filters)) {
 					props.Filters[layer] = Object.assign({}, Filters[layer]);
+				}
+			}
+			if (Properties && props.Properties) {
+				for (let layer of Object.keys(Properties)) {
+					props.Properties[layer] = Object.assign({}, Properties[layer]);
 				}
 			}
 			if (cuffInfo.base) {
@@ -5098,9 +4799,10 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
  * @param {KDEscapeChanceList} addStruggle - Increase to base struggle amounts
  * @param {KDEscapeChanceList} premultStruggle - Multiplier to base struggle amounts, AFTER baseStruggle
  * @param {Record<string, LayerFilter>} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
+ * @param {Record<string, LayerProperties>} [Properties]
  * param {{name: string, description: string}} strings - Generic strings for the rope type
  */
-function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], addStruggle, premultStruggle, Filters, baseWeight = 10, Enchantable = false) {
+function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], addStruggle, premultStruggle, Filters, baseWeight = 10, Enchantable = false, Properties) {
 	for (let part of Object.entries(KDRopeParts)) {
 		let ropePart = part[0];
 		// Only if we have something to copy
@@ -5135,6 +4837,7 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 				events: [...extraEvents, ...(origRestraint.events || [])],
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
+				Properties: origRestraint.Properties ? Object.assign({}, origRestraint.Properties) : {},
 				cloneTag: tagBase,
 				linkCategories: origRestraint.linkCategories ? JSON.parse(JSON.stringify(origRestraint.linkCategories)) : undefined,
 				linkSize: origRestraint.linkSizes ? JSON.parse(JSON.stringify(origRestraint.linkSizes)) : undefined,
@@ -5153,6 +4856,11 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 			if (Filters && props.Filters) {
 				for (let layer of Object.keys(Filters)) {
 					props.Filters[layer] = Object.assign({}, Filters[layer]);
+				}
+			}
+			if (Properties && props.Properties) {
+				for (let layer of Object.keys(Properties)) {
+					props.Properties[layer] = Object.assign({}, Properties[layer]);
 				}
 			}
 			if (premultStruggle) {
@@ -5187,9 +4895,10 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
  * @param {KDEscapeChanceList} premultStruggle - Multiplier to base struggle amounts, AFTER baseStruggle
  * @param {Record<string, LayerFilter>} [Filters] - Multiplier to base struggle amounts, AFTER baseStruggle
  * @param {string} [restraintType] - Restrainttype for slime spread event
+ * @param {Record<string, LayerProperties>} [Properties]
  * param {{name: string, description: string}} strings - Generic strings for the rope type
  */
-function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], addStruggle, premultStruggle, Filters, baseWeight = 100, restraintType) {
+function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, removeTag, basePower, properties, extraEvents = [], addStruggle, premultStruggle, Filters, baseWeight = 100, restraintType, Properties) {
 	for (let part of Object.entries(KDSlimeParts)) {
 		let restraintPart = part[0];
 		// Only if we have something to copy
@@ -5219,11 +4928,17 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 				events: JSON.parse(JSON.stringify([...extraEvents, ...(origRestraint.events || [])])),
 				escapeChance: Object.assign({}, origRestraint.escapeChance),
 				Filters: origRestraint.Filters ? Object.assign({}, origRestraint.Filters) : {},
+				Properties: origRestraint.Properties ? Object.assign({}, origRestraint.Properties) : {},
 				cloneTag: tagBase,
 			};
 			if (Filters && props.Filters) {
 				for (let layer of Object.keys(Filters)) {
 					props.Filters[layer] = Object.assign({}, Filters[layer]);
+				}
+			}
+			if (Properties && props.Properties) {
+				for (let layer of Object.keys(Properties)) {
+					props.Properties[layer] = Object.assign({}, Properties[layer]);
 				}
 			}
 			if (premultStruggle) {

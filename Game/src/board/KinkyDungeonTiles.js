@@ -189,8 +189,8 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 	}
 	else {
 		if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity) && (!KinkyDungeonJailGuard()
-			|| !KinkyDungeonTetherLength()
-			|| (!(KDistEuclidean(KinkyDungeonJailGuard().x - KinkyDungeonPlayerEntity.x, KinkyDungeonJailGuard().y - KinkyDungeonPlayerEntity.y) <= KinkyDungeonTetherLength() + 2)))) {
+			|| !KDGetTetherLength(KinkyDungeonPlayerEntity)
+			|| (!(KDistEuclidean(KinkyDungeonJailGuard().x - KinkyDungeonPlayerEntity.x, KinkyDungeonJailGuard().y - KinkyDungeonPlayerEntity.y) <= KDGetTetherLength(KinkyDungeonPlayerEntity) + 2)))) {
 
 			let tile = KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y);
 			let journeyTile = KDGameData.JourneyTarget ? KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y]
@@ -337,9 +337,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 				KinkyDungeonSendActionMessage(10, TextGet("ClimbDown" + toTile), "#ffffff", 1);
 				if (toTile == 's') {
 					KinkyDungeonSetCheckPoint((KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY]?.Checkpoint || 'grv'), true, suppressCheckPoint);
-				}/* else if (toTile == 'H') {
-					KinkyDungeonSetCheckPoint(KDMapData.ShortcutPath, true, suppressCheckPoint);
-				}*/
+				}
 
 				if (KinkyDungeonState != "End") {
 					KinkyDungeonSendEvent("afterHandleStairs", {
@@ -677,7 +675,9 @@ function KDEffectTileInteractions(x, y, b, d) {
  * @param {number} x
  * @param {number} y
  * @param {boolean} willing
+ * @param {boolean} [dash]
  * @param {boolean} [ignoreBlocked] - Ignore if the target is blocked--important if swapping
+ * @param {boolean} [forceHitBullets] - Forces the target to hit stationary bullets if in the way
  */
 function KDMoveEntity(enemy, x, y, willing, dash, forceHitBullets, ignoreBlocked) {
 	enemy.lastx = enemy.x;
@@ -889,10 +889,18 @@ function KDConveyor(delta, X, Y, unwilling) {
 	}
 }
 
+function KDTickSpecialStats() {
+	for (let stat of Object.entries(KDSpecialStats)) {
+		KDAddSpecialStat(stat[0], KDPlayer(), -stat[1], true, 100);
+	}
+	KDGameData.LockoutChance = 0;
+}
+
 function KDAdvanceLevel(data, closeConnections = true) {
 	MiniGameKinkyDungeonLevel += data.AdvanceAmount;
-	if (data.advanceAmount)
-		KDGameData.LockoutChance = 0;
+	if (data.AdvanceAmount) {
+		KDTickSpecialStats();
+	}
 	let currentSlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
 
 	if (KDGameData.JourneyTarget) {

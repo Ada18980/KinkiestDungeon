@@ -640,6 +640,7 @@ interface Item {
 	Model?: Model;
 	Color?: ItemColor;
 	Filters?: Record<string, LayerFilter>;
+	Properties?: Record<string, LayerProperties>;
 	Difficulty?: number;
 	Property?: ItemProperties;
 }

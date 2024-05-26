@@ -24,6 +24,42 @@ let KinkyDungeonSpellSpecials = {
 			} else return "Fail";
 		}
 	},
+	"LeashSpell": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let en = KinkyDungeonEntityAt(targetX, targetY);
+		if (!KDLeashReason.PlayerLeash(undefined)) {
+			KinkyDungeonSendActionMessage(7, TextGet("KDLeashSpellCant"), "#e64539", 1);
+			return "Fail";
+		} else if (!KDLeashReason.PlayerLeash(en)) {
+			KinkyDungeonSendActionMessage(7, TextGet("KDLeashSpellMustTie"), "#e64539", 1);
+			return "Fail";
+		}
+
+		if (en) {
+			if (en.player) {
+				KinkyDungeonSendActionMessage(7, TextGet("KDLeashSpellRemoveAll"), "#63ab3f", 1);
+				KDBreakAllLeashedTo(en, "PlayerLeash");
+				return "Cast";
+			} else {
+				if (KDGetLeashedToCount(entity) >= 3) {
+					KinkyDungeonSendActionMessage(7, TextGet("KDTooManyLeashes"), "#e64539", 1);
+					return "Fail";
+				}
+				if (!(en.leash?.reason == "PlayerLeash")) {
+					KinkyDungeonSendActionMessage(7, TextGet("KDLeashSpell").replace("ENMY", KDGetEnemyTypeName(en)), "#63ab3f", 1);
+					KinkyDungeonAttachTetherToEntity(spell.range, entity, en, "PlayerLeash", "#e64539", 7);
+					return "Cast";
+
+				} else if (en.leash?.reason == "PlayerLeash") {
+					KinkyDungeonSendActionMessage(7, TextGet("KDLeashSpellRemove").replace("ENMY", KDGetEnemyTypeName(en)), "#63ab3f", 1);
+					KDBreakTether(en);
+					return "Cast";
+				}
+			}
+			return "Fail";
+		} else {
+			return "Fail";
+		}
+	},
 	"BoulderKick": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {

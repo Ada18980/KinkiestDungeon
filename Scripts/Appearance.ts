@@ -43,6 +43,7 @@ function CharacterAppearanceStringify(C: Character): string {
 function AppearanceItemStringify(Item: any[]): string {
 	for (let r of Item) {
 		if (r.Model?.Filters) r.Filters = r.Model.Filters;
+		if (r.Model?.Properties) r.Properties = r.Model.Properties;
 	}
 	return JSON.stringify(Item, (key, value) => {
 		if (key === "Asset") {
@@ -82,14 +83,20 @@ function CharacterAppearanceRestore(C: Character, backup: string, clothesOnly: b
 }
 
 function AppearanceItemParse(stringified: string): any[] {
-	let ret = JSON.parse(stringified, (key, value) => {
+	let ret: any[] = JSON.parse(stringified, (key, value) => {
 		if (key === "Model" && ModelDefs[value]) {
 			return JSON.parse(JSON.stringify(ModelDefs[value]));
 		}
 		return value;
 	});
+
+	ret = ret.filter((elem) => {
+		return elem.Model != undefined && ModelDefs[elem.Model.Name] != undefined;
+	});
+
 	for (let r of ret) {
 		if (r.Filters && r.Model && r.Model.Name) r.Model.Filters = r.Filters;
+		if (r.Properties && r.Model && r.Model.Name) r.Model.Properties = r.Properties;
 	}
 	return ret;
 }

@@ -1016,21 +1016,18 @@ let KDEventMapInventory = {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: (e.original || "") + item.name + "Block", type: "RestraintBlock", power: e.power, duration: 2,});
 		},
 		"ShadowHandTether": (e, item, data) => {
-			let enemy = (item.tx && item.ty) ? KinkyDungeonEnemyAt(item.tx, item.ty) : undefined;
+			let player = KDPlayer();
+			let enemy = (player.leash?.x && player.leash?.y) ? KinkyDungeonEnemyAt(player.leash.x, player.leash.y) : undefined;
 			if (KinkyDungeonFlags.get("ShadowDommed") || (KDGameData.KinkyDungeonLeashedPlayer > 0 && KinkyDungeonLeashingEnemy() && enemy != KinkyDungeonLeashingEnemy())) {
-				item.tx = undefined;
-				item.ty = undefined;
+				return;
 			} else {
-				if (item.tx && item.ty && (!enemy || (e.requiredTag && !enemy.Enemy.tags[e.requiredTag]))) {
-					item.tx = undefined;
-					item.ty = undefined;
-					return;
+				if (player.leash?.x && player.leash?.y && player.leash.restraintID == item.id && player.leash.reason == "ShadowTether" && (!enemy || (e.requiredTag && !enemy.Enemy.tags[e.requiredTag]))) {
+					KDBreakTether(player);
 				} else {
 					// The shadow hands will link to a nearby enemy if possible
 					for (enemy of KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, e.dist)) {
 						if (!e.requiredTag || enemy.Enemy.tags[e.requiredTag]) {
-							item.tx = enemy.x;
-							item.ty = enemy.y;
+							KinkyDungeonAttachTetherToEntity(KDRestraint(item).tether || 1.5, player, enemy, "ShadowTether", "#a02fcc", 3, item);
 						}
 					}
 				}
@@ -7012,6 +7009,13 @@ let KDEventMapBullet = {
 				if (b.bullet?.damage?.damage) b.bullet.damage.damage *= 1.5;
 			}
 		},
+		"BreakArmor": (e, b, data) => {
+			if (b && data.enemy) {
+				KinkyDungeonApplyBuffToEntity(data.enemy,
+					{id: "ExplosiveBreak", type: "ArmorBreak", duration: e.duration || 80, power: -e.power, player: true, enemies: true, tags: ["debuff", "armor"]});
+			}
+		},
+
 		"Knockback": (e, b, data) => {
 			if (b && data.enemy && !data.enemy.Enemy.tags.noknockback && !KDIsImmobile(data.enemy)) {
 				let pushPower = KDPushModifier(e.power, data.enemy, false);
@@ -7280,6 +7284,13 @@ let KDEventMapBullet = {
 		},
 	},
 	"bulletTick": {
+
+		"EndChance": (e, b, data) => {
+			if (b.time < e.count)
+				if (KDRandom() < e.chance) {
+					b.time = 0;
+				}
+		},
 		"CreateSmoke": (e, b, data) => {
 			KDCreateAoEEffectTiles(b.x, b.y,  {
 				name: e.kind || "Smoke",
@@ -7904,6 +7915,7 @@ let KDEventMapEnemy = {
 		},
 	},
 	"tick": {
+
 		"FuukaManagement": (e, enemy, data) => {
 			if (enemy.hostile && !KDEnemyHasFlag(enemy, "fuukaPillars")) {
 				KinkyDungeonSetEnemyFlag(enemy, "fuukaPillars", -1);
@@ -8008,6 +8020,35 @@ let KDEventMapEnemy = {
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Fwoosh.ogg", enemy);
 			}
 		},
+
+		"LeashWolfgirls": (e, enemy, data) => {
+			if (KDRandom() > (e.chance || 1)) return;
+			if (!enemy.idle && KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) > 1.5) return;
+			if (KDEntityHasFlag(enemy, "tooManyLeash")) return;
+			let enemies = KDNearbyEnemies(enemy.x, enemy.y, e.dist);
+			let dd = 0;
+			let count = KDGetLeashedToCount(enemy);
+			if (count < (e.count || 3)) {
+				for (let en of enemies) {
+					if (KDGetFaction(en) == KDGetFaction(enemy) && en.Enemy?.tags?.submissive) {
+						dd = KDistChebyshev(enemy.x - en.x, enemy.y - en.y);
+						if (dd < e.dist) {
+							if (dd < 1.5) {
+								// Attach leash
+								KinkyDungeonAttachTetherToEntity(e.dist, enemy, en, "WolfgirlLeash", "#00ff00", 2);
+							}
+							else {
+								// Move toward
+								enemy.gx = en.x;
+								enemy.gy = en.y;
+							}
+						}
+					}
+				}
+			} else {
+				KinkyDungeonSetEnemyFlag(enemy, "tooManyLeash");
+			}
+		},
 		"DisplayAura": (e, enemy, data) => {
 			let enemies = KDNearbyEnemies(enemy.x, enemy.y, e.dist, enemy);
 			for (let en of enemies) {
@@ -8060,14 +8101,16 @@ let KDEventMapEnemy = {
 			}
 		},
 		"shadowDomme": (e, enemy, data) => {
-			if (data.enemy == enemy && data.target == KinkyDungeonPlayerEntity && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
-				KDTripleBuffKill("ShadowEngulf", KinkyDungeonPlayerEntity, 9, (tt) => {
+			let player = KDPlayer();
+			if (data.enemy == enemy && data.target == player && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
+
+				KDTripleBuffKill("ShadowEngulf", player, 9, (tt) => {
 					// Passes out the player, but does NOT teleport
 					KinkyDungeonPassOut(true);
-					KDBreakTether(KinkyDungeonPlayerEntity);
+					KDBreakTether(player);
 
 					// Instead it applies a debuff, and leash
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
+					KinkyDungeonApplyBuffToEntity(player,
 						{id: "ShadowDommed", type: "Flag", duration: 9999, infinite: true, power: 1, maxCount: 1, currentCount: 1, tags: ["attack", "cast"], events: [
 							{type: "ShadowDommed", trigger: "tick"},
 						]}
@@ -8080,7 +8123,7 @@ let KDEventMapEnemy = {
 						KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BasicLeash"), 0, true, "Purple");
 					}
 
-					KinkyDungeonAttachTetherToEntity(3.5, enemy);
+					KinkyDungeonAttachTetherToEntity(3.5, enemy, player);
 				}, "Blindness");
 			}
 		},
@@ -8303,6 +8346,7 @@ let KDEventMapEnemy = {
 
 		"ShopkeeperRescueAI": (e, enemy, data) => {
 			// We heal nearby allies and self
+			let player = KDPlayer();
 			if (data.delta && !KDHelpless(enemy) && !KinkyDungeonIsDisabled(enemy) && KDEnemyHasFlag(enemy, "RescuingPlayer")
 				&& ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
 				KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
@@ -8322,7 +8366,7 @@ let KDEventMapEnemy = {
 							if (newAdd) {
 								KinkyDungeonAddRestraintIfWeaker(newAdd, 0, true, undefined, false, false, undefined, "Prisoner");
 							}
-							if (KinkyDungeonAttachTetherToEntity(2.5, enemy)) {
+							if (KinkyDungeonAttachTetherToEntity(2.5, enemy, player)) {
 								KinkyDungeonSendTextMessage(9, TextGet("KDShopkeeperLeash"), "#ffffff", 4);
 							}
 						}

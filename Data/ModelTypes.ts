@@ -84,6 +84,8 @@ interface Model extends Namable {
     DefaultColor?: string[],
 	/** Color definition */
 	Filters?: Record<string, LayerFilter>,
+	/** Color definition */
+	Properties?: Record<string, LayerProperties>,
 	/** Hardcoded Lock Type */
 	LockType?: string,
 	/** Hardcoded body filters */
@@ -212,6 +214,18 @@ type LayerFilter = {
     alpha: number;
 }
 
+type LayerProperties = {
+    LayerBonus?: number,
+    XOffset?: number,
+    YOffset?: number,
+    XPivot?: number,
+    YPivot?: number,
+    Rotation?: number,
+    XScale?: number,
+    YScale?: number,
+}
+
 interface Namable {
     Name: string,
 }
+
