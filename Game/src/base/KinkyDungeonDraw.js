@@ -205,8 +205,12 @@ kdcanvas.addChild(kdparticles);
 
 let KDTextWhite = "#ffffff";
 let KDTextGray3 = "#aaaaaa";
-let KDBookText = "#efefef";
-let KDTextTan = "#222222";
+let KDBookTextNew = "#efefef";
+let KDTextTanNew = "#222222";
+let KDBookTextSB = "#000000";
+let KDTextTanSB = "#d6cbc5";
+let KDBookText = KDBookTextNew;
+let KDTextTan = KDTextTanNew;
 let KDTextGray2 = "#333333";
 let KDTextGray1 = "#111111";
 let KDTextGray05 = "#030303";

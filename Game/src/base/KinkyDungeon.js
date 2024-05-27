@@ -141,6 +141,7 @@ let KinkyDungeonGraphicsQuality = true;
 let KDToggleGroups = ["Main", "GFX", "UI", "Clothes", "Keybindings"];
 
 let KDToggles = {
+	SpellBook: false,
 	ShowRestraintOnHover: true,
 	HiResModel: false,
 	Fullscreen: false,
@@ -204,6 +205,7 @@ let KDToggles = {
 };
 
 let KDToggleCategories = {
+	SpellBook: "UI",
 	FastFloaters: "UI",
 	NoDmgFloaters: "UI",
 	RetroAnim: "GFX",

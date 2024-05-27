@@ -932,32 +932,42 @@ function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilt
  */
 function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset = 0) {
 	if (!noscroll) {
-		/*KDDraw(kdcanvas, kdpixisprites, "magicBook",
-			KinkyDungeonRootDirectory + "MagicBook.png", xOffset + canvasOffsetX_ui, canvasOffsetY_ui, 640*KinkyDungeonBookScale, 483*KinkyDungeonBookScale, undefined, {
+		if (KDToggles.SpellBook) {
+			KDTextTan = KDTextTanSB;
+			KDBookText = KDBookTextSB;
+			KDDraw(kdcanvas, kdpixisprites, "magicBook",
+				KinkyDungeonRootDirectory + "MagicBookNew.png", xOffset + canvasOffsetX_ui, canvasOffsetY_ui, 640*KinkyDungeonBookScale, 483*KinkyDungeonBookScale, undefined, {
+					zIndex: 128,
+				});
+		} else {
+			KDTextTan = KDTextTanNew;
+			KDBookText = KDBookTextNew;
+			FillRectKD(kdcanvas, kdpixisprites, "magicBook", {
+				Left: canvasOffsetX_ui + xOffset + 70,
+				Top: canvasOffsetY_ui + 90,
+				Width: 590*KinkyDungeonBookScale - 75,
+				Height: 450*KinkyDungeonBookScale - 50,
+				Color: "#161920",
+				LineWidth: 1,
 				zIndex: 128,
-			});*/
+				alpha: 1,
+			});
+			DrawRectKD(kdcanvas, kdpixisprites, "magicBook2", {
+				Left: canvasOffsetX_ui + xOffset + 70,
+				Top: canvasOffsetY_ui + 90,
+				Width: 590*KinkyDungeonBookScale - 75,
+				Height: 450*KinkyDungeonBookScale - 50,
+				Color: KDBorderColor,
+				LineWidth: 1,
+				zIndex: 128,
+				alpha: 0.9
+			});
+		}
 
 
-		FillRectKD(kdcanvas, kdpixisprites, "magicBook", {
-			Left: canvasOffsetX_ui + xOffset + 70,
-			Top: canvasOffsetY_ui + 90,
-			Width: 590*KinkyDungeonBookScale - 75,
-			Height: 450*KinkyDungeonBookScale - 50,
-			Color: "#161920",
-			LineWidth: 1,
-			zIndex: 128,
-			alpha: 1,
-		});
-		DrawRectKD(kdcanvas, kdpixisprites, "magicBook2", {
-			Left: canvasOffsetX_ui + xOffset + 70,
-			Top: canvasOffsetY_ui + 90,
-			Width: 590*KinkyDungeonBookScale - 75,
-			Height: 450*KinkyDungeonBookScale - 50,
-			Color: KDBorderColor,
-			LineWidth: 1,
-			zIndex: 128,
-			alpha: 0.9
-		});
+
+
+
 		//DrawImageZoomCanvas(, MainCanvas, 0, 0, 640, 483, canvasOffsetX_ui, canvasOffsetY_ui, 640*KinkyDungeonBookScale, 483*KinkyDungeonBookScale, false);
 	}
 	if (!item) return false;

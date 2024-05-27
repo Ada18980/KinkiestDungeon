@@ -2665,6 +2665,7 @@
             <key type="filename">../Game/Buffs/buff/buffChilled.png</key>
             <key type="filename">../Game/Buffs/buff/buffConduction.png</key>
             <key type="filename">../Game/Buffs/buff/buffCorrupted.png</key>
+            <key type="filename">../Game/Buffs/buff/buffCorruptionStat.png</key>
             <key type="filename">../Game/Buffs/buff/buffCursed.png</key>
             <key type="filename">../Game/Buffs/buff/buffCursedDistract.png</key>
             <key type="filename">../Game/Buffs/buff/buffCursingCircle.png</key>
@@ -3654,6 +3655,7 @@
                 <false/>
             </struct>
             <key type="filename">../Game/MagicBook.png</key>
+            <key type="filename">../Game/MagicBookNew.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>

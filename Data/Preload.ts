@@ -6,6 +6,11 @@ let KDFontName = "Inconsolata Medium";
 
 
 let KDFonts = {
+	"Inconsolata": {
+		alias: "Inconsolata",
+		src: 'Fonts/Inconsolata/Inconsolata-Regular.ttf',
+		mono: true,
+	},
 	"Inconsolata Medium": {
 		alias: "Inconsolata Medium",
 		src: 'Fonts/Inconsolata/Inconsolata-Medium.ttf',
@@ -17,13 +22,33 @@ let KDFonts = {
 		mono: true,
 	},
 	"Inconsolata Condensed Medium": {
-		alias: "Inconsolata Condensed",
+		alias: "Inconsolata Condensed Medium",
 		src: 'Fonts/Inconsolata/Inconsolata_Condensed-Medium.ttf',
 		mono: true,
 	},
 	"Inconsolata Condensed Light": {
-		alias: "Inconsolata Light",
+		alias: "Inconsolata Condensed Light",
 		src: 'Fonts/Inconsolata/Inconsolata_Condensed-Light.ttf',
+		mono: true,
+	},
+	"3270": {
+		alias: "3270 Regular",
+		src: 'Fonts/3270/3270-Regular.ttf',
+		mono: true,
+	},
+	"3270 Condensed": {
+		alias: "3270condensed Regular",
+		src: 'Fonts/3270/3270Condensed-Regular.ttf',
+		mono: true,
+	},
+	"Lekton": {
+		alias: "Lekton Regular",
+		src: 'Fonts/Lekton/Lekton-Regular.ttf',
+		mono: true,
+	},
+	"System": {
+		alias: "Fsex302",
+		src: 'Fonts/System/FSEX302.ttf',
 		mono: true,
 	},
 	"Nanum Gothic Coding": {

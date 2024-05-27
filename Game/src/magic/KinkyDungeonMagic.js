@@ -1456,26 +1456,39 @@ function KinkyDungeonDrawMagic() {
 		alpha: 0.9
 	});
 
-	FillRectKD(kdcanvas, kdpixisprites, "magicbook", {
-		Left: canvasOffsetX_ui + xOffset + 70,
-		Top: canvasOffsetY_ui + 90,
-		Width: 590*KinkyDungeonBookScale - 75,
-		Height: 450*KinkyDungeonBookScale -50,
-		Color: "#161920",
-		LineWidth: 1,
-		zIndex: 20,
-		alpha: 1
-	});
-	DrawRectKD(kdcanvas, kdpixisprites, "magicbook2", {
-		Left: canvasOffsetX_ui + xOffset + 70,
-		Top: canvasOffsetY_ui + 90,
-		Width: 590*KinkyDungeonBookScale - 75,
-		Height: 450*KinkyDungeonBookScale - 50,
-		Color: KDBorderColor,
-		LineWidth: 1,
-		zIndex: 20,
-		alpha: 0.9
-	});
+	if (KDToggles.SpellBook) {
+		KDTextTan = KDTextTanSB;
+		KDBookText = KDBookTextSB;
+		KDDraw(kdcanvas, kdpixisprites, "magicBook",
+			KinkyDungeonRootDirectory + "MagicBookNew.png", xOffset + canvasOffsetX_ui, canvasOffsetY_ui, 640*KinkyDungeonBookScale, 483*KinkyDungeonBookScale, undefined, {
+				zIndex: 20,
+			});
+	} else {
+		KDTextTan = KDTextTanNew;
+		KDBookText = KDBookTextNew;
+		FillRectKD(kdcanvas, kdpixisprites, "magicbook", {
+			Left: canvasOffsetX_ui + xOffset + 70,
+			Top: canvasOffsetY_ui + 90,
+			Width: 590*KinkyDungeonBookScale - 75,
+			Height: 450*KinkyDungeonBookScale -50,
+			Color: "#161920",
+			LineWidth: 1,
+			zIndex: 20,
+			alpha: 1
+		});
+		DrawRectKD(kdcanvas, kdpixisprites, "magicbook2", {
+			Left: canvasOffsetX_ui + xOffset + 70,
+			Top: canvasOffsetY_ui + 90,
+			Width: 590*KinkyDungeonBookScale - 75,
+			Height: 450*KinkyDungeonBookScale - 50,
+			Color: KDBorderColor,
+			LineWidth: 1,
+			zIndex: 20,
+			alpha: 0.9
+		});
+	}
+
+
 
 	if (KinkyDungeonSpells[KinkyDungeonCurrentPage] || KinkyDungeonPreviewSpell) {
 		let spell = KinkyDungeonPreviewSpell ? KinkyDungeonPreviewSpell : KinkyDungeonSpells[KinkyDungeonCurrentPage];
