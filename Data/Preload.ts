@@ -1,5 +1,47 @@
 PIXI.Assets.init();
 
+
+let KDFontName = "Inconsolata Medium";
+
+
+
+let KDFonts = {
+	"Inconsolata Medium": {
+		alias: "Inconsolata Medium",
+		src: 'Fonts/Inconsolata/Inconsolata-Medium.ttf',
+		mono: true,
+	},
+	"Inconsolata Light": {
+		alias: "Inconsolata Light",
+		src: 'Fonts/Inconsolata/Inconsolata-Light.ttf',
+		mono: true,
+	},
+	"Inconsolata Condensed Medium": {
+		alias: "Inconsolata Condensed",
+		src: 'Fonts/Inconsolata/Inconsolata_Condensed-Medium.ttf',
+		mono: true,
+	},
+	"Inconsolata Condensed Light": {
+		alias: "Inconsolata Light",
+		src: 'Fonts/Inconsolata/Inconsolata_Condensed-Light.ttf',
+		mono: true,
+	},
+	"Nanum Gothic Coding": {
+		alias: "Nanumgothiccoding Regular",
+		src: 'Fonts/Nathum Gothic Coding/NanumGothicCoding-Regular.ttf',
+		mono: true,
+	},
+	"Roboto": {
+		alias: "Roboto",
+		src: 'Fonts/Roboto/Roboto-Regular.ttf',
+		mono: true,
+	},
+}
+
+let KDSelectedFont = KDFontName;
+let KDSelectedFontListIndex = 0;
+let KDSelectedFontList = Object.keys(KDFonts);
+
 let DisplacementMaps = [
 'FutureBox.png',
 'TapeTopRight.png',
@@ -330,7 +372,17 @@ async function PreloadDisplacement(list) {
 KDLoadToggles();
 if (!KDToggles.HighResDisplacement) DisplacementScale = 1/16
 
+
 async function load() {
+
+	for (let font of Object.values(KDFonts)) {
+		PIXI.Assets.load( {
+			alias: font.alias,
+			src: font.src,
+		});
+	}
+
+
 
 	PIXI.BaseTexture.defaultOptions.mipmap = PIXI.MIPMAP_MODES.ON;
 	PIXI.BaseTexture.defaultOptions.anisotropicLevel = 0;

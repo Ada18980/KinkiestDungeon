@@ -65,13 +65,14 @@ function KDDrawMods() {
 	}
 }
 
-function getFileInput() {
+function getFileInput(callback) {
 	let input = document.createElement('input');
 	input.type = 'file';
 	input.multiple = true;
 	input.onchange = _this => {
 		let files = Array.from(input.files);
-		KDLoadMod(files);
+		if (callback) {callback(files);}
+		else KDLoadMod(files);
 	};
 	input.click();
 }

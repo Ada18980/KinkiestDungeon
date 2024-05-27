@@ -324,7 +324,9 @@ let KDDefaultKB = {
 	BulletTransparency: KinkyDungeonKeyToggle[10],
 };
 
-let KinkyDungeonRootDirectory = "Screens/MiniGame/KinkyDungeon/";
+let KinkyDungeonRootDirectory = "Game/";
+
+//"Screens/MiniGame/KinkyDungeon/";
 let KinkyDungeonPlayerCharacter = null; // Other player object
 let KinkyDungeonGameData = null; // Data sent by other player
 let KinkyDungeonGameDataNullTimer = 4000; // If data is null, we query this often
@@ -1030,6 +1032,13 @@ function KinkyDungeonLoad() {
 					KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex] || 0;
 				}
 			}
+			if (localStorage.getItem("KDSelectedFont")) {
+				let parsed = parseInt(localStorage.getItem("KDSelectedFont"));
+				if (parsed != undefined) {
+					KDSelectedFontListIndex = parsed;
+					KDSelectedFont = KDFonts[KDSelectedFontList[KDSelectedFontListIndex]]?.alias || KDFontName;
+				}
+			}
 			if (localStorage.getItem("KDGamma")) {
 				let parsed = parseInt(localStorage.getItem("KDGamma"));
 				if (parsed != undefined) {
@@ -1691,7 +1700,14 @@ function KinkyDungeonRun() {
 		DrawButtonVis(875, 750, 350, 64, TextGet("KinkyDungeonLoadConfirm"), "#ffffff", "");
 		DrawButtonVis(1275, 750, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
 
-		ElementPosition("saveInputField", 1250, 550, 1000, 230);
+		DrawButtonKDEx(
+			"loadFromFile", () => {
+				getFileInput(KDLoadSave);
+				return true;
+			}, true, 875, 650, 750, 64, TextGet("KinkyDungeonLoadFromFile") + ": " + KDSaveName, "#ffffff", ""
+		);
+
+		ElementPosition("saveInputField", 1250, 450, 1000, 230);
 	} else if (KinkyDungeonState == "LoadOutfit") {
 		DrawButtonVis(1275, 750, 350, 64, TextGet("KDWardrobeBackTo" + (StandalonePatched ? "Wardrobe" : "Menu")), "#ffffff", "");
 
@@ -1699,6 +1715,14 @@ function KinkyDungeonRun() {
 		if (Char == KinkyDungeonPlayer)
 			DrawButtonVis(875, 750, 350, 64, TextGet("LoadOutfit"), "#ffffff", "");
 		if (StandalonePatched) {
+
+			DrawButtonKDEx(
+				"loadFromFile", () => {
+					getFileInput(KDLoadOutfit);
+					return true;
+				}, true, 875, 650, 750, 64, TextGet("KinkyDungeonLoadFromFile") + ": " + KDSaveName, "#ffffff", ""
+			);
+
 			DrawButtonKDEx("loadclothes", (b) => {
 				KDSaveCodeOutfit(Char, true);
 				KinkyDungeonState = "Wardrobe";
@@ -1707,10 +1731,16 @@ function KinkyDungeonRun() {
 
 				ElementRemove("saveInputField");
 				return true;}, true, 875, 820, 350, 64, TextGet("LoadOutfitClothes"), "#ffffff", "");
+
+
+
 		}
 
 		let newValue = ElementValue("saveInputField");
 		if (newValue != KDOldValue) {
+
+			let orig = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
+			if (orig != ElementValue("saveInputField")) KDOriginalValue = orig;
 			let decompressed = DecompressB64(ElementValue("saveInputField"));
 			if (decompressed) {
 				let origAppearance = Char.Appearance;
@@ -1750,7 +1780,19 @@ function KinkyDungeonRun() {
 			}
 		}
 
-		ElementPosition("saveInputField", 1250, 550, 1000, 230);
+		ElementPosition("saveInputField", 1250, 350, 1000, 230);
+
+
+		KDTextField("savename", 1275, 550, 350, 64, undefined, KDOutfitInfo[KDCurrentOutfit] || "", "100");
+
+		if (ElementValue("saveInputField"))
+			DrawButtonKDEx(
+				"saveToFile", () => {
+					downloadFile((ElementValue("savename") || KDOutfitInfo[KDCurrentOutfit] || "Outfit") + KDOUTFITEXTENSION, ElementValue("saveInputField"));
+					return true;
+				}, true, 875, 550, 350, 64, TextGet("KinkyDungeonSaveToFile"), "#ffffff", ""
+			);
+
 	} else if (KinkyDungeonState == "Journey") {
 		DrawTextKD(TextGet("KinkyDungeonJourney"), 1250, 300, "#ffffff", KDTextGray2);
 		DrawButtonVis(875, 350, 750, 64, TextGet("KinkyDungeonJourney0"), "#ffffff", "");
@@ -2360,15 +2402,27 @@ function KinkyDungeonRun() {
 	} else if (KinkyDungeonState == "Save") {
 		// Draw temp start screen
 		DrawTextKD(TextGet("KinkyDungeonSaveIntro0"), 1250, 350, "#ffffff", KDTextGray2);
-		DrawTextKD(TextGet("KinkyDungeonSaveIntro"), 1250, 475, "#ffffff", KDTextGray2);
+		DrawTextKD(TextGet("KinkyDungeonSaveIntro1"), 1250, 475, "#ffffff", KDTextGray2);
+		/*DrawTextKD(TextGet("KinkyDungeonSaveIntro"), 1250, 475, "#ffffff", KDTextGray2);
 		DrawTextKD(TextGet("KinkyDungeonSaveIntro2"), 1250, 550, "#ffffff", KDTextGray2);
 		DrawTextKD(TextGet("KinkyDungeonSaveIntro3"), 1250, 625, "#ffffff", KDTextGray2);
-		DrawTextKD(TextGet("KinkyDungeonSaveIntro4"), 1250, 700, "#ffffff", KDTextGray2);
+		DrawTextKD(TextGet("KinkyDungeonSaveIntro4"), 1250, 700, "#ffffff", KDTextGray2);*/
 
 		ElementPosition("saveDataField", 1250, 150, 1000, 230);
 
+		KDTextField("savename", 1275, 650, 350, 64, undefined, KDGameData.PlayerName, "100");
+
+		if (ElementValue("saveDataField"))
+			DrawButtonKDEx(
+				"saveToFile", () => {
+					downloadFile((ElementValue("savename") || KDGameData.PlayerName || "Save") + KDSAVEEXTENSION, ElementValue("saveDataField"));
+					return true;
+				}, true, 875, 650, 350, 64, TextGet("KinkyDungeonSaveToFile"), "#ffffff", ""
+			);
+
+
 		//DrawButtonVis(875, 750, 350, 64, TextGet("KinkyDungeonGameSave"), "#ffffff", "");
-		DrawButtonVis(1075, 750, 350, 64, TextGet("KinkyDungeonGameContinue"), "#ffffff", "");
+		DrawButtonVis(875, 750, 750, 64, TextGet("KinkyDungeonGameContinue"), "#ffffff", "");
 	} else if (KinkyDungeonState == "Game") {
 		KinkyDungeonGameRunning = true;
 		KinkyDungeonGameFlag = true;
@@ -2600,6 +2654,10 @@ function KinkyDungeonRun() {
 				DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDAnimSpeed") + " " + (KDAnimSpeed * 100 + "%"), "#ffffff", "",
 					() => KDAnimSpeedList[(KDAnimSpeedListIndex + KDAnimSpeedList.length - 1) % KDAnimSpeedList.length] * 100 + "%",
 					() => KDAnimSpeedList[(KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length] * 100 + "%");
+				YY += YYd;
+				DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDSelectedFont") + " " + (KDSelectedFont), "#ffffff", "",
+					() => KDSelectedFontList[(KDSelectedFontListIndex + KDSelectedFontList.length - 1) % KDSelectedFontList.length],
+					() => KDSelectedFontList[(KDSelectedFontListIndex + 1) % KDSelectedFontList.length]);
 				YY += YYd;
 
 
@@ -3903,6 +3961,13 @@ function KinkyDungeonHandleClick() {
 				localStorage.setItem("KDAnimSpeed", "" + KDAnimSpeedListIndex);
 			}
 			YY += YYd;
+			if (MouseIn(CombarXX, YY, 350, 64)) {
+				if (MouseX <= CombarXX + 350/2) KDSelectedFontListIndex = (KDSelectedFontList.length + KDSelectedFontListIndex - 1) % KDSelectedFontList.length;
+				else KDSelectedFontListIndex = (KDSelectedFontListIndex + 1) % KDSelectedFontList.length;
+				KDSelectedFont = KDFonts[KDSelectedFontList[KDSelectedFontListIndex]]?.alias || KDFontName;
+				localStorage.setItem("KDSelectedFont", "" + KDSelectedFontListIndex);
+			}
+			YY += YYd;
 		}
 
 
@@ -4811,4 +4876,79 @@ function KDDrawToggleTabs(xOffset) {
 
 function KinkyDungeonMultiplayerUpdate(delay) {
 	// Do nothing. Placeholder for when/if there is ever any MP functionality
+}
+
+let saveFile = null;
+let KDSAVEEXTENSION = '.kdsave';
+let KDOUTFITEXTENSION = '.kdoutfit';
+let KDSaveName = "";
+
+function KDLoadSave(files) {
+	for (let f of files) {
+		if (f && f.name) {
+			if (f.name.endsWith(KDSAVEEXTENSION) || f.name.endsWith('.txt')) {
+				let str = "";
+				KDSaveName = f.name;
+				try {
+					const reader = new FileReader();
+					reader.addEventListener('load', (event) => {
+						str = event.target.result.toString();
+						ElementValue("saveInputField",
+							str
+						);
+					});
+					reader.readAsText(f);
+				} catch (err) {
+					console.log (err);
+				}
+				return;
+			}
+		}
+	}
+}
+
+
+function KDLoadOutfit(files) {
+	for (let f of files) {
+		if (f && f.name) {
+			if (f.name.endsWith(KDOUTFITEXTENSION) || f.name.endsWith('.txt')) {
+				let str = "";
+				KDSaveName = f.name;
+				try {
+					const reader = new FileReader();
+					reader.addEventListener('load', (event) => {
+						str = event.target.result.toString();
+						ElementValue("saveInputField",
+							str
+						);
+					});
+					reader.readAsText(f);
+				} catch (err) {
+					console.log (err);
+				}
+				return;
+			}
+		}
+	}
+}
+
+function downloadFile(filename, text) {
+	const blob = new Blob([text], { type: 'text/plain' });
+	const url = URL.createObjectURL(blob);
+
+	const link = document.createElement('a');
+	link.href = url;
+	link.download = filename;
+	link.textContent = 'Download Save';
+
+	// Trigger a click event on the link to prompt the user to download
+	const clickEvent = new MouseEvent('click', {
+		view: window,
+		bubbles: true,
+		cancelable: true,
+	});
+	link.dispatchEvent(clickEvent);
+
+	// Clean up the object URL after download
+	URL.revokeObjectURL(url);
 }

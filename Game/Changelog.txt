@@ -61,7 +61,6 @@ Monk class?
 - Added a feature to tally damage dealt by attacks
 - Added option for damage floaters to disappear faster
 
-
 5.3.8
 - Nerfed restoration tablets and determination tablets to compensate for increased counts
 - Reduced time taken to copy large save codes in some browsers

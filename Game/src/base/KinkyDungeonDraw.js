@@ -205,7 +205,8 @@ kdcanvas.addChild(kdparticles);
 
 let KDTextWhite = "#ffffff";
 let KDTextGray3 = "#aaaaaa";
-let KDTextTan = "#d6cbc5";
+let KDBookText = "#efefef";
+let KDTextTan = "#222222";
 let KDTextGray2 = "#333333";
 let KDTextGray1 = "#111111";
 let KDTextGray05 = "#030303";
@@ -2727,33 +2728,8 @@ function DrawTextKD(Text, X, Y, Color, BackColor, FontSize, Align, zIndex = 110,
 	});
 }
 
-let KDFontName = "Roboto";
-
-/* eslint-disable */
-// // Load them google fonts before starting...!
-window.WebFontConfig = {
-    google: {
-        families: [KDFontName],
-    },
-
-    active() {
-		KDAllowText = true;
-    },
-};
 
 let KDAllowText = true;
-
-
-// include the web-font loader script
-(function() {
-    const wf = document.createElement('script');
-    wf.src = `Fonts/webfont.js`;
-    wf.type = 'text/javascript';
-    wf.async = true;
-    const s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(wf, s);
-}());
-/* eslint-enabled */
 
 /**
  *
@@ -2788,7 +2764,7 @@ function DrawTextVisKD(Container, Map, id, Params) {
 		// Make the prim
 		sprite = new PIXI.Text(Params.Text,
 			{
-				fontFamily : KDFontName,
+				fontFamily : KDSelectedFont || KDFontName,
 				fontSize: Params.FontSize ? Params.FontSize : 30,
 				fill : string2hex(Params.Color),
 				stroke : Params.BackColor != "none" ? (Params.BackColor ? string2hex(Params.BackColor) : "#333333") : 0x000000,
@@ -2815,7 +2791,7 @@ function DrawTextVisKD(Container, Map, id, Params) {
 		sprite.name = id;
 		//sprite.cacheAsBitmap = true;
 		sprite.position.x = Params.X + (Params.align == 'center' ? -sprite.width/2 : (Params.align == 'right' ? -sprite.width : 0));
-		sprite.position.y = Params.Y - sprite.height/2 - 2;
+		sprite.position.y = Params.Y - Math.ceil(sprite.height/2);
 		sprite.zIndex = Params.zIndex ? Params.zIndex : 0;
 		sprite.alpha = Params.alpha ? Params.alpha : 1;
 		kdSpritesDrawn.set(id, true);

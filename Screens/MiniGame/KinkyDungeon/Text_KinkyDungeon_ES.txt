@@ -4880,7 +4880,7 @@ Level RestraintLevel (Rarity)
 Nivel RestraintLevel (Rarity)
 Consumable
 Consumible
-Equipped
+Worn
 Equipado
 Weapons
 armas
@@ -9952,7 +9952,7 @@ Fuelle
 (De un ensayo titulado 'Sobre las cadenas de suministro celestiales') Se sabe que los cielos buscan oro. No sabemos por qué los cielos lo buscan, pero sí sabemos que las Diosas nos otorgan fragmentos de su poder ilimitado a cambio de este metal inútil que extraemos de la tierra. Les importa tanto que los santuarios son comunes, cada uno de los cuales alberga un mensajero angelical al acecho de cualquier aventurero dispuesto a separarse del suyo.
 They say that the maiden who safeguards the graveyard is kind to her pets...
 Dicen que la doncella que custodia el cementerio es amable con sus mascotas...
-They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Blink out of jail and into the hallway where they kept all my things!
+They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Portal out of jail and into the hallway where they kept all my things!
 Pensaron que podrían tener mi espada legendaria... ¡pero los tontos se olvidaron de atarme las piernas! ¡Pude Blink salir de la cárcel y entrar al pasillo donde guardaban todas mis cosas!
 I am writing this from inside prison. Who would have known they cared so much about me using a shrine? Sheesh.
 Estoy escribiendo esto desde dentro de la prisión. ¿Quién hubiera sabido que se preocupaban tanto por mí usando un santuario? Sheesh.

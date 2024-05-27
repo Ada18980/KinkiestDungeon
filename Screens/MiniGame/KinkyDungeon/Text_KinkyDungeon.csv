@@ -122,6 +122,7 @@ KDMusicVolume,Music Volume:
 KDSfxVolume,SFX Volume:
 KDAnimSpeed,Animation Time:
 KDGamma,Map Brightness:
+KDSelectedFont,Game Font:
 
 KinkyDungeonJourney,"Select a journey. This will determine the ordering of game areas."
 KinkyDungeonJourney0,"Standard: The intended experience"
@@ -826,11 +827,8 @@ KinkyDungeonDressPlayerReset,"Reset Outfit"
 KinkyDungeonDressPlayerImport,"Load from Code"
 KinkyDungeonConfirm,Confirm Reset?
 
-KinkyDungeonSaveIntro0,"(Copy the code above and save it on your computer to load later)"
-KinkyDungeonSaveIntro,"You come across a black monolith with its face inscribed in runes."
-KinkyDungeonSaveIntro2,"You study them, but can't come up with an interpretation."
-KinkyDungeonSaveIntro3,"They may still prove useful to future adventurers should you get caught..."
-KinkyDungeonSaveIntro4,"(Your game has been saved automatically, but you can save the code for later)"
+KinkyDungeonSaveIntro0,"(Your game has been saved)"
+KinkyDungeonSaveIntro1,"(Copy the code above and save it on your computer to backup)"
 
 KinkyDungeonGameSave,""
 KinkyDungeonGameContinue,"Continue..."
@@ -3486,7 +3484,7 @@ ClimbDown,"You climb down to the next level"
 KinkyDungeonRestraintLevel,Level RestraintLevel (Rarity)
 
 KinkyDungeonCategoryFilterconsumable,Consumable
-KinkyDungeonCategoryFilterrestraint,Equipped
+KinkyDungeonCategoryFilterrestraint,Worn
 KinkyDungeonCategoryFilterweapon,Weapons
 KinkyDungeonCategoryFilteroutfit,Outfits
 KinkyDungeonCategoryFilterlooserestraint,Restraints
@@ -7074,7 +7072,7 @@ KinkyDungeonLore13,"(It looks like a... receipt) Thank you for your offering to 
 KinkyDungeonLore14,"(A note written in cursive) To whomever assaulted our courier and left them tied up here: The shrines of the Goddess of ILLUSION are NOT to be used in this manner. If you desire a subject for your lewd experimentations, please attempt to do so on one of the locals and for heaven's sake do not call up an angelic courier just so you may tie her up. It does not matter that she consented, nor that you paid, our couriers have responsibilities that they must attend to. Signed: HERONA, enforcer of the GODDESS of ILLUSIONS."
 KinkyDungeonLore15,"(From an essay titled 'On Celestial Supply Chains') It is known that the heavens seek gold. We do not know why it is that the heavens seek it, but we do know that the Goddesses grant us fragments of their limitless power in exchange for this otherwise-useless metal we dredge up from the earth. They care about it so much that shrines are commonplace, each hosting an angelic courier lying in wait for any adventurer willing to part with hers."
 KinkyDungeonLore16,"They say that the maiden who safeguards the graveyard is kind to her pets..."
-KinkyDungeonLore17,"They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Blink out of jail and into the hallway where they kept all my things!"
+KinkyDungeonLore17,"They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Portal out of jail and into the hallway where they kept all my things!"
 KinkyDungeonLore18,"I am writing this from inside prison. Who would have known they cared so much about me using a shrine? Sheesh."
 
 KinkyDungeonLore19,"(A drawing of a bunch of zombies, ordered by danger level. Of note are a zombie surrounded by charms, a zombie surrounded by talismans, a zombie warrior with a sword, and... some kind of shrine maiden that you've never seen before)"
@@ -20008,6 +20006,12 @@ KDFilterFiltersChastityBelts,C. Belts
 KDFilterFiltersChastityBras,C. Bras
 KDFilterFiltersCyber,Cyber
 KDFilterFiltersMaid,Maid
+KDFilterFiltersGood,Utility
+KDFilterFiltersEnchanted,Enchanted
+KDFilterFiltersUnlocked,Unlocked
+KDFilterFiltersLocked,Locked
+KDFilterFiltersUnblocked,Accessible
+KDFilterFiltersBlocked,Inaccessible
 
 KDFilterFiltersHead,Head
 
@@ -22702,7 +22706,7 @@ KDRoomType_Chamber,"Chamber"
 KDRoomType_Warden,"Prison"
 KDRoomType_Dollmaker,"Sorting Room"
 
-KDHotbarTutorial,"Click a hotbar position to assign the item to that slot.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs."
+KDHotbarTutorial,"Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs."
 
 KDUseFootAffinity,You step on the item and tug to pull it taut...
 KDUseTugAffinity,"You tug furiously against the leash, pulling it taut!"
@@ -23251,3 +23255,6 @@ KDPropField_XPivot,X Pivot
 KDPropField_YPivot,Y Pivot
 KDPropField_Rotation,Rotation
 KDPropField_LayerBonus,Layer Bonus
+
+KinkyDungeonLoadFromFile,Load from File
+KinkyDungeonSaveToFile,Save to File

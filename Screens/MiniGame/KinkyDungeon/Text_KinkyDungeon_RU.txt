@@ -5729,7 +5729,7 @@ Level RestraintLevel (Rarity)
 Уровень RestraintLevel (Rarity)
 Consumable
 Расходники
-Equipped
+Worn
 Надето
 Weapons
 Оружие
@@ -11759,7 +11759,7 @@ Bellows
 (Из эссе под названием 'О небесных цепочках поставок') Известно, что небеса ищут золото. Мы не знаем, почему небеса стремятся к нему, но мы знаем, что Богини даруют нам частички своей безграничной силы в обмен на этот бесполезный в остальном металл, который мы извлекаем из земли. Они желают его настолько сильно, что обычным делом стали святилища, в каждом из которых находится ангельский курьер, поджидающий любого искателя приключений, готового расстаться со своим золотишком.
 They say that the maiden who safeguards the graveyard is kind to her pets...
 Говорят, что девушка, которая охраняет кладбище, добра к своим питомцам...
-They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Blink out of jail and into the hallway where they kept all my things!
+They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Portal out of jail and into the hallway where they kept all my things!
 Они думали, что смогут заполучить мой легендарный клинок... но эти дураки забыли связать мне ноги! Я смогла выскользнуть из тюрьмы в коридор, где хранились все мои вещи!
 I am writing this from inside prison. Who would have known they cared so much about me using a shrine? Sheesh.
 Я пишу это, находясь в тюрьме. Кто бы мог подумать, что они так сильно заботятся о том, чтобы я не смогла воспользоваться святилищем? Мфффх.
@@ -35727,7 +35727,7 @@ Prison
 Тюрьма
 Sorting Room
 Сортировочная комната
-Click a hotbar position to assign the item to that slot.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
+Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
 Щелкните по позиции панели быстрого доступа, чтобы назначить предмет в этот слот.|Вы можете нажать кнопку смены справа,|чтобы переключаться между тремя вашими панелями быстрого доступа.||Вы также можете сохранять и загружать пресеты для своей панели быстрого доступа.|Они общие в разных забегах.
 You step on the item and tug to pull it taut...
 Вы наступаете на предмет и тянете, чтобы он растянулся...

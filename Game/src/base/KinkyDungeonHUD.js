@@ -1653,6 +1653,8 @@ function KinkyDungeonHandleHUD() {
 				KinkyDungeonState = "Save";
 				ElementCreateTextArea("saveDataField");
 				ElementValue("saveDataField", saveData);
+
+
 				return true;
 			}
 			if (MouseIn(1100, 300, 300, 64)) {

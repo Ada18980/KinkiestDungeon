@@ -5920,7 +5920,7 @@ Level RestraintLevel (Rarity)
 拘束のレベル： Rarity
 Consumable
 消耗品
-Equipped
+Worn
 着用中
 Weapons
 武器
@@ -11807,7 +11807,7 @@ Bellows
 天体のサプライチェーンについてというタイトルのエッセイより|天が金を求めることはよく知られている。なぜ天界が金を求めるのかはわからないが、女神たちは、我々が大地から掘り起こすこの無用の金属と引き換えに、その力の一部を我々に与えてくれる。女神たちは金をとても大切にしているため、祠はどこにでもあり、その祠には天使がいて、金を捧げる信者を待っている。
 They say that the maiden who safeguards the graveyard is kind to her pets...
 墓地を守る乙女はペットには優しいらしい……
-They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Blink out of jail and into the hallway where they kept all my things!
+They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Portal out of jail and into the hallway where they kept all my things!
 突然襲われて、縛り上げられて牢屋に入れられた。私の持っている伝説の剣が目当てだったようだ。しかし、愚か者たちは足を縛るのを忘れた。ブリンクの魔法で牢屋から脱出し、なんとか廊下に出ることができた。
 I am writing this from inside prison. Who would have known they cared so much about me using a shrine? Sheesh.
 刑務所の中からこれを書いている。祭壇を利用するのはご法度だったようだ。なんてこった。
@@ -27088,7 +27088,7 @@ Prison
 Sorting Room
 選別所
 
-Click a hotbar position to assign the item to that slot.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
+Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
 画面下のホットバーをクリックしてアイテムを登録可能|ホットバーをセーブ、ロードで|登録した内容を保存及び呼び出しが可能||別のセーブデータ間でも登録した内容を呼び出すことができる
 
 You step on the item and tug to pull it taut...
@@ -27775,9 +27775,9 @@ Bows, guns, and other projectile weapons do 10% more damage and consume 10% less
 After casting a DMG spell:
 DMG の呪文を唱えた後：
 Gain AMNT% DMG Damage for DRTN turns
-DRTN ターンの間 DMG の与ダメージが AMNT% 増加する 
+DRTN ターンの間 DMG の与ダメージが AMNT% 増加する
 Gain AMNT DMG Resist for DRTN turns
-DRTN ターンの間 DMG に対して AMNT% の耐性を得る 
+DRTN ターンの間 DMG に対して AMNT% の耐性を得る
 Your elemental damage is increased!
 精霊魔法の与ダメージが増加する
 Your elemental resistance is increased!

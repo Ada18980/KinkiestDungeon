@@ -116,7 +116,29 @@ function KinkyDungeonDrawLore() {
 
 	let x = 1300;
 
-	KDDraw(kdcanvas, kdpixisprites, "magicbook", KinkyDungeonRootDirectory + "MagicBook.png", canvasOffsetX_ui - 100, canvasOffsetY_ui - 100, 640*KinkyDungeonLoreScale, 483*KinkyDungeonLoreScale);
+	//KDDraw(kdcanvas, kdpixisprites, "magicbook", KinkyDungeonRootDirectory + "MagicBook.png", canvasOffsetX_ui - 100, canvasOffsetY_ui - 100, 640*KinkyDungeonLoreScale, 483*KinkyDungeonLoreScale);
+
+
+	FillRectKD(kdcanvas, kdpixisprites, "magicbook", {
+		Left: canvasOffsetX_ui,
+		Top: canvasOffsetY_ui- 20,
+		Width: 550*KinkyDungeonLoreScale - 30,
+		Height: 400*KinkyDungeonLoreScale,
+		Color: "#161920",
+		LineWidth: 1,
+		zIndex: -19,
+		alpha: 1
+	});
+	DrawRectKD(kdcanvas, kdpixisprites, "magicbook2", {
+		Left: canvasOffsetX_ui,
+		Top: canvasOffsetY_ui - 20,
+		Width: 550*KinkyDungeonLoreScale - 30,
+		Height: 400*KinkyDungeonLoreScale,
+		Color: KDBorderColor,
+		LineWidth: 1,
+		zIndex: -19,
+		alpha: 0.9
+	});
 
 	// Draw the current note
 
@@ -129,7 +151,7 @@ function KinkyDungeonDrawLore() {
 	let i = 0;
 	for (let N = 0; N < lore.length; N++) {
 		DrawTextFitKD(lore[N],
-			canvasOffsetX_ui - 100 + 640*KinkyDungeonLoreScale/8, canvasOffsetY_ui - 100 + 483*KinkyDungeonLoreScale/6 + i * 40, 0.75 * 640*KinkyDungeonLoreScale, "#000000", KDTextTan, undefined, "left"); i++;}
+			canvasOffsetX_ui - 100 + 640*KinkyDungeonLoreScale/8, canvasOffsetY_ui - 100 + 483*KinkyDungeonLoreScale/6 + i * 40, 0.75 * 640*KinkyDungeonLoreScale, KDBookText, KDTextTan, undefined, "left"); i++;}
 
 	if (KinkyDungeonNewLoreList.includes(KinkyDungeonCurrentLore)) {
 		KinkyDungeonNewLoreList.splice(KinkyDungeonNewLoreList.indexOf(KinkyDungeonCurrentLore), 1);
