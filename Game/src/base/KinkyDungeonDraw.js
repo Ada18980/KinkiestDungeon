@@ -2660,9 +2660,10 @@ let KDFont = 'Arial';
  * @param {*} [alpha]
  * @param {*} [border]
  * @param {boolean} [unique] - This button is not differentiated by position
+ * @param {string} [font] - This button is not differentiated by position
  */
-function DrawTextFitKD(Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined, unique = undefined) {
-	DrawTextFitKDTo(kdcanvas, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex, alpha, border, unique);
+function DrawTextFitKD(Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined, unique = undefined, font) {
+	DrawTextFitKDTo(kdcanvas, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex, alpha, border, unique, font);
 }
 
 /**
@@ -2680,8 +2681,9 @@ function DrawTextFitKD(Text, X, Y, Width, Color, BackColor, FontSize, Align, zIn
  * @param {*} [alpha]
  * @param {*} [border]
  * @param {boolean} [unique] - This button is not differentiated by position
+ * @param {string} [font] - This button is not differentiated by position
  */
-function DrawTextFitKDTo(Container, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined, unique = undefined) {
+function DrawTextFitKDTo(Container, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined, unique = undefined, font) {
 	if (!Text) return;
 	let alignment = Align ? Align : "center";
 
@@ -2698,6 +2700,7 @@ function DrawTextFitKDTo(Container, Text, X, Y, Width, Color, BackColor, FontSiz
 		alpha: alpha,
 		border: border,
 		unique: unique,
+		font: font,
 	});
 }
 
@@ -2737,7 +2740,7 @@ let KDAllowText = true;
 
 /**
  *
- * @param {{Text: string, X: number, Y: number, Width?: number, Color: string, BackColor: string, FontSize?: number, align?: string, zIndex?: number, alpha?: number, border?: number, unique?: boolean}} Params
+ * @param {{Text: string, X: number, Y: number, Width?: number, Color: string, BackColor: string, FontSize?: number, align?: string, zIndex?: number, alpha?: number, border?: number, unique?: boolean, font?: string}} Params
  * @returns {boolean} - If it worked
  */
 function DrawTextVisKD(Container, Map, id, Params) {
@@ -2768,7 +2771,7 @@ function DrawTextVisKD(Container, Map, id, Params) {
 		// Make the prim
 		sprite = new PIXI.Text(Params.Text,
 			{
-				fontFamily : KDSelectedFont || KDFontName,
+				fontFamily : Params.font || KDSelectedFont || KDFontName,
 				fontSize: Params.FontSize ? Params.FontSize : 30,
 				fill : string2hex(Params.Color),
 				stroke : Params.BackColor != "none" ? (Params.BackColor ? string2hex(Params.BackColor) : "#333333") : 0x000000,
@@ -3094,20 +3097,20 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 			};
 			if (options?.tint) o.tint = options.tint;
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-			Image, (options?.centered ? Width/2 - img.orig.width/2 : 2) + Left, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
+				Image, (options?.centered ? Width/2 - img.orig.width/2 : 2) + Left, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
 		}
 		textPush = img.orig.width;
 	}
 
 	// Draw the tooltip
 	if ((HoveringText) && (MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height)) {
-		DrawTextFitKDTo(Container || kdcanvas, HoveringText, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04), "#ffffff", undefined, undefined, undefined, zIndex + 1);
+		DrawTextFitKDTo(Container || kdcanvas, HoveringText, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04), "#ffffff", undefined, undefined, undefined, zIndex + 1, undefined, undefined, undefined, KDButtonFont);
 		//DrawHoverElements.push(() => DrawButtonHover(Left, Top, Width, Height, HoveringText));
 	} else if (Label)
 		DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), (options?.centerText) ? Width : (Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04)),
 			Color,
 			(options && options.noTextBG) ? "none" : undefined,
-			FontSize, undefined, zIndex + 0.001, undefined, undefined, options?.unique);
+			FontSize, undefined, zIndex + 0.001, undefined, undefined, options?.unique, KDButtonFont);
 
 	if (options?.hotkey) {
 		let size = (FontSize*0.6) || 14;
@@ -3115,7 +3118,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 			Top + (size / 2) + 2, Width*0.7,
 			'#ffffff',
 			(options && options.noTextBG) ? "none" : undefined,
-			size, "right", zIndex + 0.02, undefined, undefined);
+			size, "right", zIndex + 0.02, undefined, undefined, undefined, KDButtonFont);
 	}
 }
 
@@ -3191,10 +3194,11 @@ function DrawCheckboxKDEx(name, func, enabled, Left, Top, Width, Height, Text, I
  * @param {object} [options] - Additional options
  * @param {boolean} [options.noTextBG] - Dont show text backgrounds
  * @param {number} [options.alpha]
+ * @param {string} [options.font]
  * @returns {void} - Nothing
  */
 function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, BackText, NextText, Disabled, ArrowWidth, NoBorder, options) {
-	let id = "BackNext" + Left + "," + Top + "," + Width + Color;
+	//let id = "BackNext" + Left + "," + Top + "," + Width + Color;
 	// Set the widths of the previous/next sections to be colored cyan when hovering over them
 	// By default each covers half the width, together covering the whole button
 	if (ArrowWidth == null || ArrowWidth > Width / 2) ArrowWidth = Width / 2;
@@ -3276,7 +3280,7 @@ function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, Ba
 	MainCanvas.closePath();*/
 
 	// Draw the text or image
-	DrawTextFitKD(Label, Left + Width / 2, Top + (Height / 2) + 1, (CommonIsMobile) ? Width - 6 : Width - 36, "#ffffff");
+	DrawTextFitKD(Label, Left + Width / 2, Top + (Height / 2) + 1, (CommonIsMobile) ? Width - 6 : Width - 36, "#ffffff", undefined, undefined, undefined, undefined, undefined, undefined, undefined, options?.font);
 
 	// Draw the back arrow
 	/*MainCanvas.beginPath();
@@ -3624,7 +3628,7 @@ function GetAdjacentList(list, index, width) {
 	return {
 		left: list.slice(0, index),
 		right: list.slice(index+width),
-	}
+	};
 }
 
 
@@ -4387,4 +4391,12 @@ function KDClearOutlineFilterCache() {
 		f.destroy();
 	}
 	KDOutlineFilterCache = new Map();
+}
+
+function KDGetFontMult(font) {
+	if (!font) font = KDSelectedFont;
+	if (KDFontsAlias.get(font)) {
+		return KDFontsAlias.get(font).width;
+	}
+	return 1.0;
 }

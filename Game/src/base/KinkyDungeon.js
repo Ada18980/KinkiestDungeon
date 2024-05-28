@@ -1038,7 +1038,14 @@ function KinkyDungeonLoad() {
 				let parsed = parseInt(localStorage.getItem("KDSelectedFont"));
 				if (parsed != undefined) {
 					KDSelectedFontListIndex = parsed;
-					KDSelectedFont = KDFonts[KDSelectedFontList[KDSelectedFontListIndex]]?.alias || KDFontName;
+					KDSelectedFont = KDFonts.get(KDSelectedFontList[KDSelectedFontListIndex])?.alias || KDFontName;
+				}
+			}
+			if (localStorage.getItem("KDButtonFont")) {
+				let parsed = parseInt(localStorage.getItem("KDButtonFont"));
+				if (parsed != undefined) {
+					KDButtonFontListIndex = parsed;
+					KDButtonFont = KDFonts.get(KDButtonFontList[KDButtonFontListIndex])?.alias || KDFontName;
 				}
 			}
 			if (localStorage.getItem("KDGamma")) {
@@ -2661,6 +2668,12 @@ function KinkyDungeonRun() {
 					() => KDSelectedFontList[(KDSelectedFontListIndex + KDSelectedFontList.length - 1) % KDSelectedFontList.length],
 					() => KDSelectedFontList[(KDSelectedFontListIndex + 1) % KDSelectedFontList.length]);
 				YY += YYd;
+				DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDButtonFont") + " " + (KDButtonFont), "#ffffff", "",
+					() => KDButtonFontList[(KDButtonFontListIndex + KDButtonFontList.length - 1) % KDButtonFontList.length],
+					() => KDButtonFontList[(KDButtonFontListIndex + 1) % KDButtonFontList.length], undefined, undefined, undefined, {
+						font: KDButtonFont
+					});
+				YY += YYd;
 
 
 
@@ -3966,8 +3979,15 @@ function KinkyDungeonHandleClick() {
 			if (MouseIn(CombarXX, YY, 350, 64)) {
 				if (MouseX <= CombarXX + 350/2) KDSelectedFontListIndex = (KDSelectedFontList.length + KDSelectedFontListIndex - 1) % KDSelectedFontList.length;
 				else KDSelectedFontListIndex = (KDSelectedFontListIndex + 1) % KDSelectedFontList.length;
-				KDSelectedFont = KDFonts[KDSelectedFontList[KDSelectedFontListIndex]]?.alias || KDFontName;
+				KDSelectedFont = KDFonts.get(KDSelectedFontList[KDSelectedFontListIndex])?.alias || KDFontName;
 				localStorage.setItem("KDSelectedFont", "" + KDSelectedFontListIndex);
+			}
+			YY += YYd;
+			if (MouseIn(CombarXX, YY, 350, 64)) {
+				if (MouseX <= CombarXX + 350/2) KDButtonFontListIndex = (KDButtonFontList.length + KDButtonFontListIndex - 1) % KDButtonFontList.length;
+				else KDButtonFontListIndex = (KDButtonFontListIndex + 1) % KDButtonFontList.length;
+				KDButtonFont = KDFonts.get(KDButtonFontList[KDButtonFontListIndex])?.alias || KDFontName;
+				localStorage.setItem("KDButtonFont", "" + KDButtonFontListIndex);
 			}
 			YY += YYd;
 		}

@@ -1522,8 +1522,9 @@ function KinkyDungeonDrawMagic() {
 		if (KinkyDungeonPreviewSpell)
 			DrawTextKD(TextGet("KinkyDungeonMagicCost") + KinkyDungeonGetCost(spell), canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale/column1Mult, canvasOffsetY_ui + 483*KinkyDungeonBookScale*0.6 + 185, KDBookText, KDTextTan, 24);
 		DrawTextKD(TextGet("KinkyDungeonMagicManaCost") + (spell.manacost * 10), canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale/column1Mult, canvasOffsetY_ui + 483*KinkyDungeonBookScale*0.6 + 160, KDBookText, KDTextTan, 24);
+		let mult = KDGetFontMult();
 		let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonSpellDescription"+ spell.name).replace(/[|]+/g, "\n").replace("DamageDealt", "" + (spell.power * 10)).replace("Duration", spell.time).replace("LifeTime", spell.lifetime).replace("DelayTime", spell.delay).replace("BlockAmount", "" + (10 * spell.block)),
-			12, 28).split('\n');
+			12*mult, 28*mult).split('\n');
 
 		let i = 0;
 		for (let N = 0; N < textSplit.length; N++) {

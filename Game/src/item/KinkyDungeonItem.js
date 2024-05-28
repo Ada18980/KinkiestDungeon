@@ -433,8 +433,8 @@ function KDDrawItemsTooltip(items, offset) {
 	for (let item of items) {
 		str = str + (str ? ", " : "") + KDGetItemNameString(item.name);
 	}
-
-	let strSplit = KinkyDungeonWordWrap(str, 12, 28).split('\n');
+	let mult = KDGetFontMult();
+	let strSplit = KinkyDungeonWordWrap(str, 12*mult, 28*mult).split('\n');
 
 	let i = 1;
 	const imax = 5;

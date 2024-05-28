@@ -3,69 +3,134 @@ PIXI.Assets.init();
 
 let KDFontName = "Inconsolata Medium";
 
-
-
-let KDFonts = {
-	"Inconsolata": {
+let KDBaseFonts = [
+	["Inconsolata", {
 		alias: "Inconsolata",
 		src: 'Fonts/Inconsolata/Inconsolata-Regular.ttf',
 		mono: true,
-	},
-	"Inconsolata Medium": {
+		width: 1.25,
+	}],
+	["Inconsolata Medium", {
 		alias: "Inconsolata Medium",
 		src: 'Fonts/Inconsolata/Inconsolata-Medium.ttf',
 		mono: true,
-	},
-	"Inconsolata Light": {
+		width: 1.25,
+	}],
+	["Inconsolata Light", {
 		alias: "Inconsolata Light",
 		src: 'Fonts/Inconsolata/Inconsolata-Light.ttf',
 		mono: true,
-	},
-	"Inconsolata Condensed Medium": {
+		width: 1.25,
+	}],
+	["Inconsolata Condensed Medium", {
 		alias: "Inconsolata Condensed Medium",
 		src: 'Fonts/Inconsolata/Inconsolata_Condensed-Medium.ttf',
 		mono: true,
-	},
-	"Inconsolata Condensed Light": {
+		width: 1.5,
+	}],
+	["Inconsolata Condensed Light", {
 		alias: "Inconsolata Condensed Light",
 		src: 'Fonts/Inconsolata/Inconsolata_Condensed-Light.ttf',
 		mono: true,
-	},
-	"3270": {
+		width: 1.5,
+	}],
+	["3270", {
 		alias: "3270 Regular",
 		src: 'Fonts/3270/3270-Regular.ttf',
 		mono: true,
-	},
-	"3270 Condensed": {
+		width: 1.0,
+	}],
+	["3270 Condensed", {
 		alias: "3270condensed Regular",
 		src: 'Fonts/3270/3270Condensed-Regular.ttf',
 		mono: true,
-	},
-	"Lekton": {
+		width: 1.5,
+	}],
+	["Courier New", {
+		alias: "Courier New",
+		src: '',
+		mono: true,
+		width: 1.0,
+	}],
+	["Lekton", {
 		alias: "Lekton Regular",
 		src: 'Fonts/Lekton/Lekton-Regular.ttf',
 		mono: true,
-	},
-	"System": {
+		width: 1.25,
+	}],
+	["System", {
 		alias: "Fsex302",
 		src: 'Fonts/System/FSEX302.ttf',
 		mono: true,
-	},
-	"Nanum Gothic Coding": {
+		width: 1.1,
+	}],
+	["Iosevka Regular", {
+		alias: "Iosevka Regular",
+		src: 'Fonts/Iosevka/Iosevka-Regular.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Iosevka Medium", {
+		alias: "Iosevka Medium",
+		src: 'Fonts/Iosevka/Iosevka-Medium.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Iosevka Slab Regular", {
+		alias: "Iosevkaslab Regular",
+		src: 'Fonts/Iosevka/IosevkaSlab-Regular.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Iosevka Slab Medium", {
+		alias: "Iosevkaslab Medium",
+		src: 'Fonts/Iosevka/IosevkaSlab-Medium.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Iosevka Curly Regular", {
+		alias: "Iosevkacurly Regular",
+		src: 'Fonts/Iosevka/IosevkaCurly-Regular.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Iosevka Curly Medium", {
+		alias: "Iosevkacurly Medium",
+		src: 'Fonts/Iosevka/IosevkaCurly-Medium.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Nanum Gothic Coding", {
 		alias: "Nanumgothiccoding Regular",
 		src: 'Fonts/Nathum Gothic Coding/NanumGothicCoding-Regular.ttf',
 		mono: true,
-	},
-	"Roboto": {
-		alias: "Roboto",
+		width: 1.25,
+	}],
+	["Roboto", {
+		alias: "Roboto Regular",
 		src: 'Fonts/Roboto/Roboto-Regular.ttf',
-		mono: true,
-	},
+		mono: false,
+		width: 1.3,
+	}],
+];
+
+let KDFonts = new Map();
+for (let obj of KDBaseFonts) {
+	KDFonts.set(obj[0], obj[1]);
+}
+let KDFontsAlias = new Map();
+for (let obj of KDBaseFonts) {
+	if (typeof obj[1] !== "string")
+		KDFontsAlias.set(obj[1].alias, obj[1]);
 }
 
 let KDSelectedFont = KDFontName;
 let KDSelectedFontListIndex = 0;
-let KDSelectedFontList = Object.keys(KDFonts);
+let KDSelectedFontList = Array.from(KDFonts.keys());
+
+let KDButtonFont = KDFontName;
+let KDButtonFontListIndex = 0;
+let KDButtonFontList = Array.from(KDFonts.keys());
 
 let DisplacementMaps = [
 'FutureBox.png',
@@ -400,11 +465,13 @@ if (!KDToggles.HighResDisplacement) DisplacementScale = 1/16
 
 async function load() {
 
-	for (let font of Object.values(KDFonts)) {
-		PIXI.Assets.load( {
-			alias: font.alias,
-			src: font.src,
-		});
+	for (let font of KDFonts.values()) {
+		if (font.src)
+			await PIXI.Assets.load( {
+				//alias: font.alias,
+				src: font.src,
+				loader: 'loadWebFont',
+			});
 	}
 
 

@@ -152,8 +152,9 @@ function KinkyDungeonDrawLore() {
 	//let wrapAmount = KDBigLanguages.includes(TranslationLanguage) ? 19 : 45;
 	let loreOrig = TextGet("KinkyDungeonLore" + KinkyDungeonCurrentLore).split('|');
 	let lore = [];
+	let mult = KDGetFontMult();
 	for (let str of loreOrig) {
-		lore.push(...(KinkyDungeonWordWrap(str, 19, 45).split('\n')));
+		lore.push(...(KinkyDungeonWordWrap(str, 19*mult, 45*mult).split('\n')));
 	}
 	let i = 0;
 	for (let N = 0; N < lore.length; N++) {

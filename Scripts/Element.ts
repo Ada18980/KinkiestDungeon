@@ -1,7 +1,7 @@
 let KDTextBoxStyle = {
 	backgroundColor: "#000000a0",
-	fontFamily: "'Arial', sans-serif",
-	fontSize: "16px",
+	fontFamily: "'Courier New', 'Arial', sans-serif",
+	fontSize: "14px",
 	color: "#ffffff",
 	lineHeight: 1.6,
 };
@@ -297,7 +297,7 @@ function ElementPosition(ElementID: string, X: number, Y: number, W: number, H: 
 	// Sets the element style
 	Object.assign(E.style, {
 		fontSize: Font + "px",
-		fontFamily: CommonGetFontName(),
+		fontFamily: KDTextBoxStyle.fontFamily,
 		position: "fixed",
 		left: Left + "px",
 		top: Top + "px",
@@ -336,7 +336,7 @@ function ElementPositionFix(ElementID: string, Font: number, X: number, Y: numbe
 	// Sets the element style
 	Object.assign(E.style, {
 		fontSize: Font + "px",
-		fontFamily: CommonGetFontName(),
+		fontFamily: KDTextBoxStyle.fontFamily,
 		position: "fixed",
 		left: Left + "px",
 		top: Top + "px",

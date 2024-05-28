@@ -477,9 +477,11 @@ function KinkyDungeonDrawShrine() {
 				item: item?.item,
 			};
 			KinkyDungeonSendEvent("inventoryTooltip", data);
-
-			let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonInventoryItem" + KDMapData.ShopItems[KinkyDungeonShopIndex].name + "Desc"), 15, 40).split('\n');
-			let textSplit2 = KinkyDungeonWordWrap(TextGet("KinkyDungeonInventoryItem" + KDMapData.ShopItems[KinkyDungeonShopIndex].name +  "Desc2"), 15, 40).split('\n');
+			let mult = KDGetFontMult();
+			let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonInventoryItem" + KDMapData.ShopItems[KinkyDungeonShopIndex].name + "Desc"),
+				15*mult, 40*mult).split('\n');
+			let textSplit2 = KinkyDungeonWordWrap(TextGet("KinkyDungeonInventoryItem" + KDMapData.ShopItems[KinkyDungeonShopIndex].name +  "Desc2"),
+				15*mult, 40*mult).split('\n');
 			let i = 0;
 			let descSpacing = 24;
 			for (let N = 0; N < textSplit.length; N++) {

@@ -22,6 +22,11 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+
+5.3.17
+- Added separate button font option
+- Made different font types word wrap at different character amounts depending on font
+
 5.3.16
 - Added save/load as file function for save codes and outfit codes
 - Added crotch rope gfx for the newer striped skirt
