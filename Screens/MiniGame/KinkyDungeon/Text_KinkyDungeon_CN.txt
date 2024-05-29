@@ -120,8 +120,8 @@ High Quality Animations
 高品质动画
 Enemy Animations
 敌人动画
-One-Click Move
-单击移动
+One-Click Move (when slowed)
+单击移动（当速度减慢时）
 Latch Shift Key
 闩锁移位键
 Crotch Rope under panties
@@ -326,6 +326,10 @@ Animation Time:
 动画时间:
 Map Brightness:
 地图亮度:
+Game Font:
+游戏字体:
+Button Font:
+按钮字体:
 Select a journey. This will determine the ordering of game areas.
 选择旅程。这将决定游戏区域的顺序。
 Standard: The intended experience
@@ -1400,16 +1404,10 @@ Load from Code
 从代码中加载
 Confirm Reset?
 确认重置？
-(Copy the code above and save it on your computer to load later)
-（复制上面的代码并将其保存在您的计算机上以供以后加载）
-You come across a black monolith with its face inscribed in runes.
-你会看到一个黑色的石碑，上面刻着符文。
-You study them, but can't come up with an interpretation.
-你尝试研究它们，但无法提出解释。
-They may still prove useful to future adventurers should you get caught...
-如果你被抓住，它们可能仍然对未来的冒险者有用......
-(Your game has been saved automatically, but you can save the code for later)
-（你的游戏已自动保存，但你可以保存代码以备后用）
+(Your game has been saved)
+（您的游戏已保存）
+(Copy the code above and save it on your computer to backup)
+（复制以上代码并保存到电脑上以备份存档）
 Continue...
 继续
 Menu
@@ -1584,6 +1582,8 @@ Allow Suspicious Mods
 允许可疑模组
 Auto Load Mods (offline only)
 自动加载模组（仅离线版）
+Classic Inventory Background
+经典背包背景
 Game Options
 游戏选项
 Load from code
@@ -5226,6 +5226,8 @@ Level RestraintLevel (Rarity)
 等级 RestraintLevel (Rarity)
 Consumable
 消耗品
+Worn
+佩戴品
 Equipped
 已装备
 Weapons
@@ -7408,6 +7410,18 @@ Harnesses
 安全带
 Maid
 女仆
+Utility
+实用的
+Enchanted
+附魔的
+Unlocked
+已解锁
+Locked
+已锁定
+Accessible
+可访问
+Inaccessible
+不可访问
 Broken pieces of chain
 链条碎片
 Belts
@@ -15356,8 +15370,12 @@ Transparency
 透明度
 Reset Layer!
 重置图层！
+Reset Properties!
+重置属性！
 Export All Layers
 导出所有图层
+Export All Props
+导出所有属性
 Copy
 复制
 Paste
@@ -17489,6 +17507,8 @@ Challenge Settings:
 挑战设置：
 Advanced
 高级
+Expert Tools
+专家工具
 Exits locked! Find NUMBER keys!
 出口被锁住了！寻找 NUMBER 把钥匙！
 Got the keys!
@@ -19095,8 +19115,8 @@ The dragon girl reaches out with a shadowy grip! (+RestraintAdded)
 (SPEAKER 点点头)|在我那个年代，人们用蜡烛来照明！|这些可以让你把它们熄灭，以节省蜡。
 (The SPEAKER giggles)|I had all sorts of use for this back on the farm.
 (SPEAKER 咯咯地笑着)|我在农场的时候，这个东西有各种用途。
-Click a hotbar position to assign the item to that slot.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
-点击热键栏位置，即可将项目分配到该槽。|您可以点击右侧的交换按钮，在三个热栏之间进行切换。||您还可以为您的热键栏保存和加载预设。|这些预设在运行时共享。
+Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
+点击热键栏位置，即可将当前物品分配到该槽。|您可以点击右侧的交换按钮，在三个热栏之间进行切换。||您还可以为您的热键栏保存和加载预设。|这些预设在运行时共享。
 Zero Resistance
 放弃反抗
 Toggle this to set bondage resist, evasion, and block to 0. While enabled, using the 'wait until interrupted' button will not be interrupted when hit or bound.
@@ -19401,3 +19421,33 @@ You light the fuse and pray it doesn't blow up in your face.
 你点燃保险丝，祈祷它不要在你脸上爆炸。
 You are holding too many leashes!
 你的皮带太多了！
+You feel a corrupting influence... (+AMNT Corruption)
+你感觉到了一种堕性的影响...（+AMNT 堕落）
+You feel a restoring influence! (-AMNT Corruption)
+你感觉到了一种恢复性的影响！（-AMNT 堕落）
+While you have an evasion penalty, even clumsy enemies...
+虽然你有逃避惩罚，但即使是笨拙的敌人......
+... will get an accuracy bonus against you in melee range.
+... 将在近战范围内对你的准确度获得加成。
+You are more likely to succumb to curses.
+你更容易被诅咒。
+X Offset
+X 补偿
+Y Offset
+Y 补偿
+X Scale
+X 比例
+Y Scale
+Y 比例
+X Pivot
+X 轴
+Y Pivot
+Y 轴
+Rotation
+旋转
+Layer Bonus
+图层补偿
+Load from File
+从文件载入
+Save to File
+保存至文件
