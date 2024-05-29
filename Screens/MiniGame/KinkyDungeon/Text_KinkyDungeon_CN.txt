@@ -5227,7 +5227,7 @@ Level RestraintLevel (Rarity)
 Consumable
 消耗品
 Worn
-佩戴品
+旧的
 Equipped
 已装备
 Weapons
