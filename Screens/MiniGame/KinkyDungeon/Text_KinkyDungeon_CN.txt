@@ -19451,3 +19451,7 @@ Load from File
 从文件载入
 Save to File
 保存至文件
+Tip: Slime/Latex tiles only affect entities with less than 45 Glue Resist.
+提示：粘液/乳胶块仅影响胶水抗性低于 45 的实体。
+Being drenched in water also prevents slime/latex from sticking to you.
+浸湿在水中还可以防止粘液/乳胶粘在你身上。
