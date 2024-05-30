@@ -275,7 +275,8 @@ AddModel({
 	Folder: "Succubus",
 	Parent: "Succubus",
 	TopLevel: false,
-	Categories: ["Gloves"],
+	Categories: ["Gloves", "Cosplay"],
+	Protected: true,
 	Layers: ToLayerMap([
 		{ Name: "SuccubusClawLeft", Layer: "GloveLeft", Pri: 14,
 			Poses: {Free: true, Yoked: true, Front: true, Wristtie: true},
@@ -295,7 +296,9 @@ AddModel({
 	Name: "SuccubusFeet",
 	Folder: "Succubus",
 	Parent: "Succubus",
-	TopLevel: false,
+	TopLevel: true,
+	Categories: ["Cosplay"],
+	Protected: true,
 	Layers: ToLayerMap([
 		{ Name: "SockLeft", Layer: "StockingLeft", Pri: 5.1,
 			Poses: {Spread:true, Closed:true, Kneel:true, KneelClosed:true},

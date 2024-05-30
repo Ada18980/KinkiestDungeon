@@ -102,7 +102,7 @@ let KDBaseFonts = [
 	}],
 	["Nanum Gothic Coding", {
 		alias: "Nanumgothiccoding Regular",
-		src: 'Fonts/Nathum Gothic Coding/NanumGothicCoding-Regular.ttf',
+		src: 'Fonts/Nanum/NanumGothicCoding-Regular.ttf',
 		mono: true,
 		width: 1.25,
 	}],
@@ -388,7 +388,14 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 	}
 	for (let dataFile of list) {
 		let amount = 100;
-		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile).then((value) => {}, () => {
+		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile).then((value) => {
+
+			//console.log(value)
+			CurrentLoading = "Loaded " + dataFile;
+			//console.log(dataFile);
+			KDLoadingDone += amount;
+
+		}, () => {
 			CurrentLoading = "Error Loading " + dataFile;
 			KDLoadingDone += amount;
 		})
@@ -398,15 +405,16 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 					KDTex(t, scale_mode == PIXI.SCALE_MODES.NEAREST);
 				}
 			}
+
+			//console.log(value)
+			CurrentLoading = "Loaded " + dataFile;
+			//console.log(dataFile);
+			KDLoadingDone += amount;
 		 }, () => {
 			CurrentLoading = "Error Loading " + dataFile;
 			KDLoadingDone += amount;
 		});
 
-		//console.log(value)
-		CurrentLoading = "Loaded " + dataFile;
-		//console.log(dataFile);
-		KDLoadingDone += amount;
 
 		/*result.then((value) => {
 
@@ -466,12 +474,23 @@ if (!KDToggles.HighResDisplacement) DisplacementScale = 1/16
 async function load() {
 
 	for (let font of KDFonts.values()) {
-		if (font.src)
-			await PIXI.Assets.load( {
-				//alias: font.alias,
-				src: font.src,
-				loader: 'loadWebFont',
-			});
+		if (font.src) {
+			try {
+				const url_to_font_name = font.src;
+				const font_name = new FontFace(font.alias, `url(${url_to_font_name})`);
+				document.fonts.add(font_name);
+				// Work that does not require `font_name` to be loaded…
+				await font_name.load()
+				// Work that requires `font_name` to be loaded…
+
+				//await PIXI.Assets.load( {
+				//	src: font.src,
+				//});
+			} catch (err) {
+				console.log(err);
+			}
+		}
+
 	}
 
 
@@ -479,7 +498,7 @@ async function load() {
 	PIXI.BaseTexture.defaultOptions.mipmap = PIXI.MIPMAP_MODES.ON;
 	PIXI.BaseTexture.defaultOptions.anisotropicLevel = 0;
 	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
-	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR, false);
+	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
 	await PreloadDisplacement(displacementList);
 	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 

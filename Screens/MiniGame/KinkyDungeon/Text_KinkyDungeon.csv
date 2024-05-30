@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.18"
+KDVersionStr,"5.3.17"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -23260,3 +23260,6 @@ KDPropField_LayerBonus,Layer Bonus
 
 KinkyDungeonLoadFromFile,Load from File
 KinkyDungeonSaveToFile,Save to File
+
+KDLatexHelp1,Tip: Slime/Latex tiles only affect entities with less than 45 Glue Resist.
+KDLatexHelp2,Being drenched in water also prevents slime/latex from sticking to you.

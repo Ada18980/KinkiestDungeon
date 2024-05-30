@@ -104,8 +104,13 @@ let KDEventMapInventorySelected = {
 					.replace("AMNT", `${e.power >= 0 ? "+" : ""}${Math.round(e.power)}`)
 					.replace("DMG", TextGet("KinkyDungeonDamageType" + e.damage))
 					.replace("TYPE", `${e.kind}`));
-				data.extraLineColor.push(e.color || "#ffffff");
-				data.extraLineColorBG.push(e.bgcolor || "#000000");
+				data.extraLineColor.push(KDBookText); // e.color || "#ffffff"
+				let bg = e.bgcolor || "#000000";
+				if (!KDToggles.SpellBook) {
+					let col = DrawHexToRGB(bg);
+					bg = `rgba(${col.r/2}, ${col.g/2}, ${col.b/2}, 0.5)`;
+				}
+				data.extraLineColorBG.push(bg);
 			}
 		},
 		"conditionModifier": (e, item, data) => {
@@ -114,8 +119,13 @@ let KDEventMapInventorySelected = {
 					.replace("AMNT", `${e.power >= 0 ? "+" : ""}${Math.round(e.power)}`)
 					.replace("DMG", TextGet("KinkyDungeonDamageType" + e.damage))
 					.replace("TYPE", `${e.kind}`));
-				data.extraLineColor.push(e.color || "#ffffff");
-				data.extraLineColorBG.push(e.bgcolor || "#000000");
+				data.extraLineColor.push(KDBookText); // e.color || "#ffffff"
+				let bg = e.bgcolor || "#000000";
+				if (!KDToggles.SpellBook) {
+					let col = DrawHexToRGB(bg);
+					bg = `rgba(${col.r/2}, ${col.g/2}, ${col.b/2}, 0.5)`;
+				}
+				data.extraLineColorBG.push(bg);
 			}
 		},
 		"effectModifier": (e, item, data) => {
@@ -125,8 +135,13 @@ let KDEventMapInventorySelected = {
 					.replace("DRTN", `${Math.round(e.duration)}`)
 					.replace("DMG", TextGet("KinkyDungeonDamageType" + e.damage))
 					.replace("TYPE", `${e.kind}`));
-				data.extraLineColor.push(e.color || "#ffffff");
-				data.extraLineColorBG.push(e.bgcolor || "#000000");
+				data.extraLineColor.push(KDBookText); // e.color || "#ffffff"
+				let bg = e.bgcolor || "#000000";
+				if (!KDToggles.SpellBook) {
+					let col = DrawHexToRGB(bg);
+					bg = `rgba(${col.r/2}, ${col.g/2}, ${col.b/2}, 0.5)`;
+				}
+				data.extraLineColorBG.push(bg);
 			}
 		},
 	},

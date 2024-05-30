@@ -1528,16 +1528,16 @@ function KinkyDungeonDrawMagic() {
 
 		let i = 0;
 		for (let N = 0; N < textSplit.length; N++) {
-			DrawTextKD(textSplit[N],
-				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale*(1-1/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, KDBookText, KDTextTan, 24); i++;}
+			DrawTextFitKD(textSplit[N],
+				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale*(1-1/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 350, KDBookText, KDTextTan, 20); i++;}
 
 		i = 0;
 		if (spell.components?.length > 0) {
 
 			for (let comp of spell.components) {
-				DrawTextKD(KDSpellComponentTypes[comp].stringLong(spell), canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale*(1-1/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/2 + 215 - 40*i, KDBookText, KDTextTan, 28); i++;
+				DrawTextKD(KDSpellComponentTypes[comp].stringLong(spell), canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale*(1-1/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/2 + 215 - 35*i, KDBookText, KDTextTan, 24); i++;
 			}
-			DrawTextKD(TextGet("KinkyDungeonComponents"), canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale*(1-1/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/2 + 215 - 40*i, KDBookText, KDTextTan, 24); i = 1;
+			DrawTextKD(TextGet("KinkyDungeonComponents"), canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale*(1-1/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/2 + 215 - 35*i, KDBookText, KDTextTan, 20); i = 1;
 
 		}
 

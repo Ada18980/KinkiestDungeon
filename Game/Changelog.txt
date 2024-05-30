@@ -22,6 +22,8 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+5.3.18
+- Fixed bug where enchantments had wrong font color
 
 5.3.17
 - Added separate button font option

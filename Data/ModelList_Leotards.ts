@@ -120,6 +120,8 @@ AddModel({
 	Name: "BunnySockLeft",
 	Folder: "Bunny",
 	Parent: "BunnySocks",
+	Categories: ["Socks"],
+	TopLevel: false,
 	Layers: ToLayerMap([
 		{ Name: "SockLeft", Layer: "StockingLeft", Pri: -1,
 			Poses: ToMap([...LEGPOSES]),
@@ -143,6 +145,8 @@ AddModel({
 	Name: "BunnySockRight",
 	Folder: "Bunny",
 	Parent: "BunnySocks",
+	Categories: ["Socks"],
+	TopLevel: false,
 	Layers: ToLayerMap([
 		{ Name: "SockRight", Layer: "StockingRight", Pri: -1,
 			Poses: ToMap([...LEGPOSES]),

@@ -1127,7 +1127,7 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 						canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 46 - spritesize + 133,
 						spritesize, spritesize,
 					)) {
-						let mult = KDGetFontMult();
+						mult = KDGetFontMult();
 						textSplit = KinkyDungeonWordWrap(TextGet("KDWeaponTagD_" + tags[tagi]), 13*1.3*mult, 30*1.3*mult).split('\n');
 					}
 				}

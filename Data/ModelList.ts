@@ -1059,6 +1059,8 @@ AddModel({
 	Name: "StockingLeft",
 	Folder: "Maid",
 	Parent: "Stockings",
+	Categories: ["Socks"],
+	TopLevel: false,
 	Layers: ToLayerMap([
 		{ Name: "SockLeft", Layer: "StockingLeft", Pri: 1,
 			Poses: ToMap([...LEGPOSES]),
@@ -1075,6 +1077,8 @@ AddModel({
 	Name: "StockingRight",
 	Folder: "Maid",
 	Parent: "Stockings",
+	Categories: ["Socks"],
+	TopLevel: false,
 	Layers: ToLayerMap([
 		{ Name: "SockRight", Layer: "StockingRight", Pri: 1,
 			Poses: ToMap([...LEGPOSES]),
@@ -1095,6 +1099,8 @@ AddModel({
 	Name: "MaidSockLeft",
 	Folder: "Maid",
 	Parent: "MaidSocks",
+	Categories: ["Socks"],
+	TopLevel: false,
 	Layers: ToLayerMap([
 		...GetModelLayers("StockingLeft"),
 		{ Name: "StripeSockLeft", Layer: "StockingLeft", Pri: 1.1,
@@ -1108,6 +1114,8 @@ AddModel({
 	Name: "MaidSockRight",
 	Folder: "Maid",
 	Parent: "MaidSocks",
+	Categories: ["Socks"],
+	TopLevel: false,
 	Layers: ToLayerMap([
 
 		...GetModelLayers("StockingRight"),

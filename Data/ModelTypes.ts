@@ -65,7 +65,7 @@ interface Model extends Namable {
     /** Removes the model if these poses are present*/
     RemovePoses?: string[],
     /** Optional categories for a model to appear in wardrobe*/
-    Categories?: string[],
+    Categories: string[],
     /** Optional, this appears as a top level item*/
     TopLevel?: boolean,
     /** Optional, this appears under a top level item*/
