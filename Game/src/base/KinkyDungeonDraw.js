@@ -3789,13 +3789,13 @@ function KDDrawTileTooltip(maptile, x, y, offset) {
 		center: true,
 	});
 	if (KDTileTooltips[maptile](x, y).desc)
-	TooltipList.push({
-		str: KDTileTooltips[maptile](x, y).desc,
-		fg: "#ffffff",
-		bg: "#000000",
-		size: 18,
-		center: true,
-	});
+		TooltipList.push({
+			str: KDTileTooltips[maptile](x, y).desc,
+			fg: "#ffffff",
+			bg: "#000000",
+			size: 18,
+			center: true,
+		});
 
 
 	return KDDrawTooltip(TooltipList, offset);
@@ -4092,7 +4092,7 @@ function KDDrawTooltip(TooltipList, offset) {
 		Height: TooltipHeight + 20,
 		Color: "#000000",
 		LineWidth: 1,
-		zIndex: 75,
+		zIndex: 112,
 		alpha: 0.7,
 	});
 
@@ -4102,7 +4102,7 @@ function KDDrawTooltip(TooltipList, offset) {
 		DrawTextFitKD(listItem.str,
 			tooltipX + (listItem.center ? TooltipWidth/2 : pad),
 			tooltipY + YY, TooltipWidth - 2 * pad, listItem.fg, listItem.bg,
-			listItem.size, listItem.center ? "center" : "left", 76);
+			listItem.size, listItem.center ? "center" : "left", 113);
 		YY += extra + listItem.size;
 	}
 	return offset + TooltipHeight + 30;
@@ -4133,12 +4133,12 @@ function KDTextArea(Name, Left, Top, Width, Height) {
 	if (!Element) {
 		ElementCreateTextArea(Name);
 		Element = document.getElementById(Name);
-		KDTempElements.set(Name, Element)
+		KDTempElements.set(Name, Element);
 		if (Element) created = true;
 	}
 	KDElementPosition(Name, Left, Top, Width, Height);
-	KDDrawnElements.set(Name, Element)
-	return {Element: Element, Created: created}
+	KDDrawnElements.set(Name, Element);
+	return {Element: Element, Created: created};
 }
 
 /**
@@ -4158,12 +4158,12 @@ function KDTextField(Name, Left, Top, Width, Height, Type = "text", Value = "", 
 	if (!Element) {
 		ElementCreateInput(Name, Type, Value, MaxLength);
 		Element = document.getElementById(Name);
-		KDTempElements.set(Name, Element)
+		KDTempElements.set(Name, Element);
 		if (Element) created = true;
 	}
 	KDElementPosition(Name, Left, Top, Width, Height);
-	KDDrawnElements.set(Name, Element)
-	return {Element: Element, Created: created}
+	KDDrawnElements.set(Name, Element);
+	return {Element: Element, Created: created};
 }
 
 
@@ -4293,7 +4293,7 @@ function KDMouseInPlayableArea() {
 		&& !MouseIn(0, 920, 2000, 100)
 		&& !MouseIn(1730, 255, 255, 150)
 		&& !KDButtonHovering
-		&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height))
+		&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height));
 }
 
 /**
@@ -4333,7 +4333,7 @@ function KDGetTargetRetType(x, y) {
 function KDDrawPalettes(x, y, w, scale = 72) {
 	let XX = x;
 	let YY = y;
-	let row = 0;
+	//let row = 0;
 	let column = 0;
 	let spacing = 80;
 	/** @type {[string, Record<string, LayerFilter>]} */
@@ -4343,10 +4343,10 @@ function KDDrawPalettes(x, y, w, scale = 72) {
 	for (let value of [zero, ...Object.entries(KinkyDungeonFactionFilters)]) {
 		KDDraw(kdcanvas, kdpixisprites, "palette" + value[0], KinkyDungeonRootDirectory + "UI/greyColor.png",
 			XX, YY, scale, scale, undefined, {
-			filters: [
-				new PIXI.filters.AdjustmentFilter(value[1].Highlight),
-			]
-		});
+				filters: [
+					new PIXI.filters.AdjustmentFilter(value[1].Highlight),
+				]
+			});
 		DrawButtonKDEx("choosepalette" + value[0], (b) => {
 			KDDefaultPalette = value[0];
 			localStorage.setItem("KDDefaultPalette", value[0]);
@@ -4359,7 +4359,7 @@ function KDDrawPalettes(x, y, w, scale = 72) {
 		column++;
 		if (column >= w) {
 			column = 0;
-			row++;
+			//row++;
 			YY += spacing;
 			XX = x;
 		} else {

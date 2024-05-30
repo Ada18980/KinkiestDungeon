@@ -3528,6 +3528,7 @@ let KinkyDungeonEnemies = [
 		tags: KDMapInit(["opendoors", "elite", "imprisonable", "leashing", "adventurer", "human", "melee", "mithrilRestraints", "gropeweakness", "jail", "jailer", "switch", "search"]), cohesion: 0.9,
 		specialCD: 6, specialAttack: "Bind", specialRemove: "Lock", specialCDonAttack: true, strictAttackLOS: true, specialDamage: "chain",
 		specialRange: 4, projectileTargeting: true, specialWidth: 1, ignoreStaminaForBinds: true,
+		projectileAttack: true,
 		evasion: 0.2, kite: 1.5,
 		spells: ["ArmorUpArea"], spellCooldownMult: 2, spellCooldownMod: 1, buffallies: true,
 		followLeashedOnly: true, ignorechance: 0, spellResist: 1.5, followRange: 2.5, AI: "hunt", guardChance: 0.0,

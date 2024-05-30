@@ -4747,6 +4747,10 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 
 	KinkyDungeonLastMoveDirection = moveDirection;
 
+	if (moved) {
+		KinkyDungeonSetFlag("moved", 5);
+	}
+
 	return moved;
 }
 
@@ -4875,6 +4879,18 @@ let KDVisionUpdate = 0;
 let KDLastTick = 0;
 
 function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
+
+	if (delta > 0) {
+		// Player sound decay
+		let loudest = 0;
+
+		for (let source of Object.values(KDPlayerNoiseSources)) {
+			loudest = Math.max(loudest, source.calc(KDPlayer()));
+		}
+
+		KDPlayer().sound = Math.max(Math.max(0, (KDPlayer().sound || 0) - delta), loudest);
+	}
+
 	KDUpdateFog = true;
 	KDLastTick = performance.now();
 

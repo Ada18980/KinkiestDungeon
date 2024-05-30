@@ -488,7 +488,7 @@ let KDIntentEvents = {
 	"TempLeash": {
 		aggressive: false,
 		nonaggressive: true,
-		play: true,
+		//play: true,
 		// This is the basic leash to jail mechanic
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
 			return (AIData?.playerDist < 6.99

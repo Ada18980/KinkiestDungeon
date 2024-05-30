@@ -80,6 +80,8 @@ let KDSpellComponentTypes = {
 		},
 		cast: (spell, data) => {
 			KinkyDungeonSetFlag("verbalspell", 1);
+			if (data.originX && data.originY)
+				KinkyDungeonMakeNoise(4, data.originX, data.originY, false, true);
 		}
 	},
 	"Arms": {
@@ -626,7 +628,15 @@ function KinkyDungeonGetCost(Spell) {
 	return Math.max(0, cost + bonus);
 }
 
-function KinkyDungeonMakeNoise(radius, noiseX, noiseY, hideShockwave) {
+/**
+ *
+ * @param {number} radius - Magnitude of the noise
+ * @param {number} noiseX - Location of noise
+ * @param {number} noiseY - Location of noise
+ * @param {boolean} [hideShockwave] - Whether it shows a ping
+ * @param {boolean} [attachToEntity] - Whether it adds to the entity's sound or not
+ */
+function KinkyDungeonMakeNoise(radius, noiseX, noiseY, hideShockwave, attachToEntity) {
 	let data = {
 		radius: radius,
 		x: noiseX,
@@ -635,6 +645,14 @@ function KinkyDungeonMakeNoise(radius, noiseX, noiseY, hideShockwave) {
 		particle: !hideShockwave,
 	};
 	KinkyDungeonSendEvent("beforeNoise", data);
+
+	if (attachToEntity) {
+		let entity = KinkyDungeonEntityAt(noiseX, noiseY);
+		if (entity) {
+			entity.sound = Math.max(entity.sound || 0, data.radius);
+		}
+	}
+
 	for (let e of KDMapData.Entities) {
 		if ((!e.aware || e.idle) && (!e.action || e.action == "investigatesound")
 			&& !KDAllied(e)

@@ -314,21 +314,38 @@ function KDEntitySenses(entity) {
 
 
 /**
- *
+ * @param {entity} [entity]
  * @returns {{radius: number, mult: number}}
  */
-function KinkyDungeonGetHearingRadius() {
-	let data = {
-		noise: 0,
-		base: 8,
-		deaflevel: KinkyDungeonDeaf ? 4 : 0,
-		hearingMult: 1.0,
-	};
-	KinkyDungeonSendEvent("calcHearing", data);
-	return {
-		radius: Math.round((data.base-data.deaflevel) * data.hearingMult),
-		mult: data.hearingMult,
-	};
+function KinkyDungeonGetHearingRadius(entity) {
+	if (!entity) entity = KDPlayer();
+	if (entity.player) {
+		let data = {
+			entity: entity,
+			noise: 0,
+			base: 8,
+			deaflevel: KinkyDungeonDeaf ? 4 : 0,
+			hearingMult: 1.0,
+		};
+		KinkyDungeonSendEvent("calcHearing", data);
+		return {
+			radius: Math.round((data.base-data.deaflevel) * data.hearingMult),
+			mult: data.hearingMult,
+		};
+	} else {
+		let data = {
+			entity: entity,
+			noise: 0,
+			base: 8,
+			deaflevel: 0,//KinkyDungeonDeaf ? 4 : 0,
+			hearingMult: 1.0,
+		};
+		KinkyDungeonSendEvent("calcEnemyHearing", data);
+		return {
+			radius: Math.round((data.base-data.deaflevel) * data.hearingMult),
+			mult: data.hearingMult,
+		};
+	}
 }
 
 /** Returns if the player is automatically doing stuff

@@ -31,6 +31,24 @@ let KDEventableAttackTypes = [
 	"Slow",
 ];
 
+let KDPlayerNoiseSources = {
+	// TODO add events
+	Movement: {
+		calc: (player) => {
+			return KinkyDungeonFlags.get("moved") ? (
+				4
+			) : 0;
+		}
+	},
+	Sprint: {
+		calc: (player) => {
+			return KinkyDungeonFlags.get("moved") ? (
+				9
+			) : 0;
+		}
+	},
+};
+
 
 /** @type {Record<string, (entity) => boolean>} */
 let KDAnims = {
@@ -1537,7 +1555,7 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 								KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
 									zIndex: 22,
 								});
-						} else if (!bb && enemy.aware && KDHostile(enemy) && enemy.vp > 0 && enemy.Enemy && !enemy.Enemy.noAlert && enemy.Enemy.movePoints < 90 && !KDAmbushAI(enemy)) {
+						} else if (!bb && enemy.aware && KDHostile(enemy) && enemy.vp >= 0.5 && KDEnemyHasFlag(enemy, "targ_player") && enemy.Enemy && !enemy.Enemy.noAlert && enemy.Enemy.movePoints < 90 && !KDAmbushAI(enemy)) {
 							KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_aw", KinkyDungeonRootDirectory + "Conditions/Aware.png",
 								canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
 								KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
@@ -3398,7 +3416,7 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 								if ((!enemy.dialogue || !enemy.dialogueDuration) && !enemy.playWithPlayer)
 									KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailChase" + suff + index).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 7, (!KDGameData.PrisonerState) ? 3 : 5);
 							}
-							KDMakeHostile(enemy, KDMaxAlertTimer);
+							KDMakeHostile(enemy, KDMaxAlertTimerAggro * 0.5);
 						}
 					}
 				}
@@ -3788,10 +3806,15 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	if (!enemy.warningTiles) enemy.warningTiles = [];
 	AIData.canSensePlayer = !AIData.distracted
-		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, true, true);
+		&& (KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, true, true)
+		|| KDCanHearEnemy(enemy,player, 1.0));
 	if (AIData.canSensePlayer && !AIData.distracted) {
 		AIData.canSeePlayer = KinkyDungeonCheckLOS(enemy, player, AIData.playerDistDirectional, AIData.visionRadius, false, false);
-		AIData.canSeePlayerChase = (enemy.aware ? KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.chaseRadius, false, false) : false);
+		AIData.canSeePlayerChase = (enemy.aware ?
+			AIData.canSensePlayer
+			|| KDCanHearEnemy(enemy,player, 2.0) // Better hearing due to paying attention
+			|| KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.chaseRadius, false, false)
+			: AIData.canSensePlayer); // Reduced awareness
 		AIData.canSeePlayerMedium = KinkyDungeonCheckLOS(enemy, player, AIData.playerDistDirectional, AIData.visionRadius/2, false, true);
 		AIData.canSeePlayerClose = KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius/2, false, true);
 		AIData.canSeePlayerVeryClose = KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius/3, false, true);
@@ -4054,10 +4077,12 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					// Go to a place near the target
 					enemy.gx = pp.x;
 					enemy.gy = pp.y;
+					KinkyDungeonSetEnemyFlag(enemy, "wander", Math.floor(4 + 6 * KDRandom()));
 				} else {
 					// Go to the target directly
 					enemy.gx = player.x;
 					enemy.gy = player.y;
+					KinkyDungeonSetEnemyFlag(enemy, "wander", Math.floor(4 + 6 * KDRandom()));
 				}
 			}
 		}
@@ -4262,7 +4287,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				// We are aware of the target OR we are allied and are following
 				&& (enemy.aware || AIData.allyFollowPlayer)
 				// Player is within our max chase range
-				&& AIData.playerDist <= AIData.chaseRadius
+				&& (AIData.playerDist <= AIData.chaseRadius && AIData.canSeePlayerChase)
 				// We aren't already following a path or stationed at our current point
 				// TODO evaluate whether we should check gxx and gyy instead of gx and gy (station point vs goto point)
 				&& ((enemy.gx != enemy.x || enemy.gy != enemy.y || enemy.path || enemy.fx || enemy.fy
@@ -4287,7 +4312,6 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					for (let T = 0; T < 12; T++) {
 						let dir = KDGetDir(enemy, player);
 						let splice = false;
-						if (T > 2 && T < 8) dir = KinkyDungeonGetDirectionRandom(dir.x * 10, dir.y * 10); // Fan out a bit
 						if (T >= 8 || (enemy.path && !AIData.canSeePlayer) || (!AIData.canSeePlayer && !(enemy.Enemy.stopToCast && AIData.canShootPlayer))) {
 							// Allies are a little smarter and can always see the player usually
 							if (!enemy.path && (AIData.allied || KinkyDungeonAlert || KDEnemyReallyAware(enemy, player) || AIData.canSeePlayer)) {
@@ -4326,7 +4350,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 									//dir = KinkyDungeonGetDirectionRandom(0, 0); // Random...
 								}
 							}
-						}
+						} else if (T > 2 && T < 8) dir = KinkyDungeonGetDirectionRandom(dir.x * 10, dir.y * 10); // Fan out a bit
 						if (dir.delta > 1.5) {
 							enemy.path = null;
 							KinkyDungeonSetEnemyFlag(enemy, "failpath", 20);
@@ -7091,12 +7115,33 @@ function KDCanHearEnemy(entity, enemy, mult = 1.0) {
 			if (data.dist < data.hearingRadius * mult && data.sound * data.hearingMult * mult >= data.dist - 0.5)
 				return KinkyDungeonCheckPath(entity.x, entity.y, enemy.x, enemy.y, true, false, mult * (0.5 + data.hearingMult), true);
 			return false;
+		} else {
+			let ret = KinkyDungeonGetHearingRadius(entity);
+			let data = {
+				player: entity,
+				enemy: enemy,
+				hearingRadius: ret.radius,
+				hearingMult: ret.mult,
+				sound: enemy?.player ? KDPlayerSound(enemy) : enemy.sound,
+				dist: KDistChebyshev(entity.x - enemy.x, entity.y - enemy.y),
+			};
+			KinkyDungeonSendEvent("enemyCanHear", data);
+			if (data.dist < data.hearingRadius * mult && data.sound * data.hearingMult * mult >= data.dist - 0.5)
+				return KinkyDungeonCheckPath(entity.x, entity.y, enemy.x, enemy.y, true, false, mult * (0.5 + data.hearingMult), true);
 		}
-		return false;// TODO allow enemies to hear each other
+		return false;
 	}
 	return false;
 }
 
+/**
+ *
+ * @param {entity} entity
+ * @returns {number}
+ */
+function KDPlayerSound(entity) {
+	return entity.sound;
+}
 
 /**
  *
@@ -7136,7 +7181,7 @@ function KDCanHearSound(entity, sound, x, y, mult = 1.0) {
 				sound: sound,
 				dist: KDistChebyshev(entity.x - x, entity.y - y),
 			};
-			KinkyDungeonSendEvent("entityCanHear", data);
+			KinkyDungeonSendEvent("enemyCanHear", data);
 			if (data.dist < data.hearingRadius * mult && data.sound * data.hearingMult * mult >= data.dist - 0.5)
 				return Math.max(0, -0.1 + data.sound * data.hearingMult * mult
 					/Math.max(1, data.dist - 0.5)

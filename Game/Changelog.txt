@@ -24,6 +24,8 @@ Monk class?
 
 5.3.18
 - Fixed bug where enchantments had wrong font color
+- Changed enemy perception so that they can track your movement a bit more realistically
+- Allies will now temp leash the player again
 
 5.3.17
 - Added separate button font option

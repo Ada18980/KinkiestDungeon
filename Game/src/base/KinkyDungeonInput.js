@@ -271,7 +271,7 @@ function KDProcessInput(type, data) {
 		case "noise": {
 			KDDelayedActionPrune(["Action", "Dialogue"]);
 			let gagTotal = KinkyDungeonGagTotal(true);
-			KinkyDungeonMakeNoise(Math.ceil(10 - 8 * Math.min(1, gagTotal * gagTotal)), KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+			KinkyDungeonMakeNoise(Math.ceil(10 - 8 * Math.min(1, gagTotal * gagTotal)), KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, false, true);
 			KinkyDungeonSendTextMessage(10, TextGet("KDShoutHelp" + Math.min(3, Math.floor(gagTotal *3.3))), "yellow", 1);
 			KinkyDungeonSetFlag("CallForHelp", 12);
 			break;
