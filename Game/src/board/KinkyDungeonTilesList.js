@@ -422,12 +422,14 @@ let KDMoveObjectFunctions = {
 	},
 	'l': (moveX, moveY) => {
 		if (!KinkyDungeonFlags.get("noleyline") && KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax && KDTile(moveX, moveY) && KDTile(moveX, moveY).Leyline) {
+			KDMovePlayer(moveX, moveY, true, false);
 			KDStartDialog("Leyline", "", true);
 		}
 		return false;
 	},
 	';': (moveX, moveY) => {
 		if (!KinkyDungeonFlags.get("noportal") && KDTile(moveX, moveY) && KDTile(moveX, moveY).Portal) {
+			KDMovePlayer(moveX, moveY, true, false);
 			KDStartDialog(KDTile(moveX, moveY).Portal, "", true);
 		}
 		return false;

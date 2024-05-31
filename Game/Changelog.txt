@@ -22,10 +22,18 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+
+TODO:
+- High alchemist and solvent
+- Let go of leash thru menu
+
 5.3.18
 - Fixed bug where enchantments had wrong font color
 - Changed enemy perception so that they can track your movement a bit more realistically
 - Allies will now temp leash the player again
+- Fix pose issues with hogtie and kneel and bubble/cube/barrel
+- Lifted the doll blockade that sometimes happens in doll processing
+- fixed more leash bugs
 
 5.3.17
 - Added separate button font option

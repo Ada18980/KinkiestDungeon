@@ -954,7 +954,8 @@ let KDTE_Brush = {
 				if (!noSwap)
 					delete KDMapData.EffectTiles[KinkyDungeonTargetX + "," + KinkyDungeonTargetY];
 			} else {
-				KDCreateEffectTile(KinkyDungeonTargetX, KinkyDungeonTargetY, {name: brush.effectTile}, 0);
+				// Has to have unlimited duration
+				KDCreateEffectTile(KinkyDungeonTargetX, KinkyDungeonTargetY, {name: brush.effectTile, duration: 9999}, 0);
 			}
 		}
 	},

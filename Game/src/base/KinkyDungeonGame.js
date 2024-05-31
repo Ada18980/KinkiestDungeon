@@ -4879,6 +4879,7 @@ let KDVisionUpdate = 0;
 let KDLastTick = 0;
 
 function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
+	if (!KinkyDungeonPlayerEntity.id) KinkyDungeonPlayerEntity.id = -1;
 
 	if (delta > 0) {
 		// Player sound decay

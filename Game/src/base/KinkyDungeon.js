@@ -783,19 +783,16 @@ let KDGameDataBase = {
  */
 let KDGameData = Object.assign({}, KDGameDataBase);
 
-let KDLeashingEnemy = null;
 function KinkyDungeonLeashingEnemy() {
 	if (KDGameData.KinkyDungeonLeashingEnemy || KDUpdateEnemyCache) {
-		if (!KDLeashingEnemy || KDLeashingEnemy.id != KDGameData.KinkyDungeonLeashingEnemy) {
-			KDLeashingEnemy = KinkyDungeonFindID(KDGameData.KinkyDungeonLeashingEnemy);
-		}
+		return KinkyDungeonFindID(KDGameData.KinkyDungeonLeashingEnemy);
 	}
 	if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
-		KDLeashingEnemy = null;
-	} else if (!KDLeashingEnemy) {
+		return null;
+	} else if (KinkyDungeonPlayerEntity.leash?.entity) {
 		return KinkyDungeonFindID(KinkyDungeonPlayerEntity.leash?.entity);
 	}
-	return KDLeashingEnemy;
+	return null;
 }
 let KDJailGuard = null;
 
@@ -804,14 +801,7 @@ let KDJailGuard = null;
  * @returns {entity}
  */
 function KinkyDungeonJailGuard() {
-	if (KDGameData.JailGuard) {
-		if (!KDJailGuard || KDJailGuard.id != KDGameData.JailGuard || KDUpdateEnemyCache) {
-			KDJailGuard = KinkyDungeonFindID(KDGameData.JailGuard);
-		}
-	} else {
-		KDJailGuard = null;
-	}
-	return KDJailGuard;
+	return KDLookupID(KDGameData.JailGuard);
 }
 let KDAngel = null;
 function KinkyDungeonAngel() {

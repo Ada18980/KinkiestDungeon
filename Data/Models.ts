@@ -193,7 +193,7 @@ function GetModelRestraintVersion(BaseModel: string, Parent: boolean): Model {
 	return null;
 }
 
-function GetModelFashionVersion(BaseModel: string, Parent: boolean): Model {
+function GetModelFashionVersion(BaseModel: string, Parent: boolean, removeOptionSwap: boolean = true): Model {
 	if (ModelDefs[BaseModel]) {
 		let model: Model = JSON.parse(JSON.stringify(ModelDefs[BaseModel]));
 		model.Name = "Fashion" + model.Name;
@@ -203,6 +203,15 @@ function GetModelFashionVersion(BaseModel: string, Parent: boolean): Model {
 		if (!model.Categories) model.Categories = [];
 		model.Categories.push("FashionRestraints");
 		model.Restraint = false;
+		if (removeOptionSwap)
+			for (let layer of Object.values(model.Layers)) {
+				if (layer.PrependLayerPrefix) {
+					for (let plp of Object.entries(layer.PrependLayerPrefix)) {
+						if (plp[1] == "Option_") delete layer.PrependLayerPrefix[plp[0]];
+						if (plp[1] == "Option2_") delete layer.PrependLayerPrefix[plp[0]];
+					}
+				}
+			}
 		delete model.Group;
 		return model;
 	}

@@ -102,14 +102,26 @@ let KDPrisonTypes = {
 				let storage = KinkyDungeonNearestJailPoint(doll.x, doll.y, ["storage"], undefined, undefined);
 				if (doll.x == storage?.x && doll.y == storage?.y) continue;
 				let dist = 11;
-				for (let guard of idleGuard) {
-					if (!KDEnemyHasFlag(guard, "idlegselect") && KDistChebyshev(guard.x - doll.x, guard.y - doll.y) < dist) {
-						gg = guard;
-						dist = KDistChebyshev(guard.x - doll.x, guard.y - doll.y);
+				let canLeash = (guard: entity, dd: number) => {
+					return guard?.Enemy && !KDEnemyHasFlag(guard, "idlegselect") && KDistChebyshev(guard.x - doll.x, guard.y - doll.y) < dd;
+				}
+				if (doll.leash?.entity && KDLookupID(doll.leash.entity)?.Enemy && idleGuard.some((entity) => {return entity.id == doll.leash.entity;})) {
+					gg = KDLookupID(doll.leash.entity);
+					dist = KDistChebyshev(gg.x - doll.x, gg.y - doll.y);
+				} else {
+					if (doll.leash?.reason == "DollLeash") {
+						KDBreakTether(doll);
+					}
+					for (let guard of idleGuard) {
+						if (canLeash(guard, dist)) {
+							gg = guard;
+							dist = KDistChebyshev(guard.x - doll.x, guard.y - doll.y);
+						}
 					}
 				}
+
 				if (gg) {
-					if (dist < 2.5) {
+					if (dist < 2.5 || doll.leash?.entity == gg.id) {
 						// Move the doll toward the nearest storage
 						let storage = KinkyDungeonNearestJailPoint(gg.x, gg.y, ["storage"], undefined, undefined, true);
 						if (storage) {
@@ -119,8 +131,8 @@ let KDPrisonTypes = {
 							} else {
 								KinkyDungeonSetEnemyFlag(gg, "idlegselect", 2);
 								KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
-								KinkyDungeonSetEnemyFlag(doll, "fakeLeash", 3);
-								// TODO add real NPC leash
+								KinkyDungeonSetEnemyFlag(gg, "leashPrisoner", 3);
+								KinkyDungeonAttachTetherToEntity(1.5, gg, doll, "DollLeash", "#00ffff", 6);
 								gg.gx = storage.x;
 								gg.gy = storage.y;
 								if (dist > 1.5) {
@@ -128,7 +140,7 @@ let KDPrisonTypes = {
 										false, false, false
 									);
 									if (path && path.length > 0) {
-										KDMoveEntity(doll, path[0].x, path[0].y, false, false, false, false);
+										//KDMoveEntity(doll, path[0].x, path[0].y, false, false, false, false);
 										KDStaggerEnemy(doll);
 									}
 								}
@@ -589,6 +601,8 @@ let KDPrisonTypes = {
 							for (let xx of [label.x + 3, label.x - 3]) {
 								let e = DialogueCreateEnemy(xx, label.y, "LatexSprayer");
 								e.faction = "Ambush";
+								e.vp = 2;
+								e.aware = true;
 								e.hostile = KinkyDungeonFlags.get("latexTraining");
 								e.summoned = false; // They can drop loot
 								KinkyDungeonSetEnemyFlag(e, "noignore", KinkyDungeonFlags.get("latexTraining"));

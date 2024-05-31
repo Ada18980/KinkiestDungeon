@@ -4327,7 +4327,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								enemy.path = KinkyDungeonFindPath(enemy.x, enemy.y, player.x, player.y,
 									KDEnemyHasFlag(enemy, "blocked"), KDEnemyHasFlag(enemy, "blocked"),
 									enemy == KinkyDungeonLeashingEnemy() || AIData.ignoreLocks, AIData.MovableTiles,
-									undefined, undefined, undefined, enemy, !enemy.CurrentAction && enemy != KinkyDungeonJailGuard() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
+									undefined, undefined, undefined, enemy,
+									!enemy.CurrentAction && enemy != KinkyDungeonJailGuard() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
 							}
 							if (enemy.path) {
 								if (enemy.path && enemy.path.length > 0 && Math.max(Math.abs(enemy.path[0].x - enemy.x),Math.abs(enemy.path[0].y - enemy.y)) < 1.5) {
@@ -4336,7 +4337,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 										|| !AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
 										enemy.path = null;
 										KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
-										KinkyDungeonSetEnemyFlag(enemy, "blocked", 24);
+										KinkyDungeonSetEnemyFlag(enemy, "blocked", 3);
 									}
 									splice = true;
 								} else {
@@ -4423,7 +4424,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						if (!enemy.path && !KDEnemyHasFlag(enemy, "genpath")) {
 							enemy.path = KinkyDungeonFindPath(
 								enemy.x, enemy.y, enemy.gx, enemy.gy,
-								enemy == KinkyDungeonJailGuard() || enemy != KinkyDungeonLeashingEnemy() || KDEnemyHasFlag(enemy, "blocked"), KDEnemyHasFlag(enemy, "blocked"),
+								KDEnemyHasFlag(enemy, "blocked"),
+								KDEnemyHasFlag(enemy, "blocked"),
 								enemy == KinkyDungeonLeashingEnemy() || AIData.ignoreLocks, AIData.MovableTiles,
 								undefined, undefined, undefined, enemy, enemy != KinkyDungeonJailGuard() && enemy != KinkyDungeonLeashingEnemy() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
 							KinkyDungeonSetEnemyFlag(enemy, "genpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 1 : (KinkyDungeonTilesGet(enemy.x + ',' + enemy.y)?.OL ? 2 + Math.floor(KDRandom() * 4) : 10 + Math.floor(KDRandom() * 30)));
@@ -4435,7 +4437,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 									|| !AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
 									enemy.path = null;
 									KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
-									KinkyDungeonSetEnemyFlag(enemy, "blocked", 24);
+									KinkyDungeonSetEnemyFlag(enemy, "blocked", 3);
 								}
 								splice = true;
 							} else {
@@ -5649,8 +5651,6 @@ function KinkyDungeonCanSwapWith(e, Enemy) {
 	if (KDIsImmobile(e) && (e.Enemy.immobile)) return false; // Definition of noSwap
 	if (e && KDEnemyHasFlag(e, "noswap")) return false; // Definition of noSwap
 
-	if (e == KinkyDungeonLeashingEnemy() && Enemy) return false;
-
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.ethereal && e && e.Enemy && !e.Enemy.ethereal) return false; // Ethereal enemies NEVER have seniority, this can teleport other enemies into walls
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.squeeze && e && e.Enemy && !e.Enemy.squeeze) return false; // Squeeze enemies NEVER have seniority, this can teleport other enemies into walls
 
@@ -5666,6 +5666,10 @@ function KinkyDungeonCanSwapWith(e, Enemy) {
 	if (Enemy == KinkyDungeonLeashingEnemy() || KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, Enemy.x, Enemy.y, Enemy)) return true;
 	if (Enemy == KinkyDungeonJailGuard()) return true;
 	if (KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, Enemy.x, Enemy.y, Enemy)) return true; // KD Tethered to entity
+
+	// I HAVE THINGS TO DO
+	if (e && KDEnemyHasFlag(Enemy, "overrideMove") && !KDEnemyHasFlag(e, "overrideMove")) return true;
+	if (e && !KDEnemyHasFlag(Enemy, "overrideMove") && KDEnemyHasFlag(e, "overrideMove")) return false;
 
 	if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OL && Enemy != KinkyDungeonJailGuard() && Enemy != KinkyDungeonLeashingEnemy() && !KinkyDungeonAggressive(Enemy)) return false;
 

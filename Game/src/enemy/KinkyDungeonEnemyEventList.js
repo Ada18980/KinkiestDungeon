@@ -509,6 +509,9 @@ let KDIntentEvents = {
 			KinkyDungeonSetFlag("noResetIntent", 12);
 			KinkyDungeonSetFlag("nojailbreak", 12);
 
+			if (!KDHostile(enemy))
+				KinkyDungeonSetEnemyFlag(enemy, "noHarshPlay", 12);
+
 			enemy.playWithPlayer = 12;
 			enemy.playWithPlayerCD = 40;
 			enemy.IntentAction = 'TempLeash';
@@ -521,6 +524,9 @@ let KDIntentEvents = {
 
 		},
 		maintain: (enemy, delta, AIData) => {
+			if (!KDHostile(enemy))
+				KinkyDungeonSetEnemyFlag(enemy, "noHarshPlay", 12);
+
 			if (!KinkyDungeonFlags.has("TempLeash") || !(KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints"))) {
 				if (!(KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints")) || KDGameData.PrisonerState != 'jail') {
 					enemy.IntentAction = '';

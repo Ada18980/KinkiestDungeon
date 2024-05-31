@@ -3570,7 +3570,7 @@ let KDEventMapSpell = {
 				buff = KDEntityGetBuff(data.player, "RogueEscape2");
 				if (buff)
 					buff.duration = 0;
-			} else if (!data.Link) {
+			} else if (!data.Link && !data.UnLink) {
 				KinkyDungeonApplyBuffToEntity(data.player, {
 					id: "RogueEscape",
 					type: "FastStruggle",

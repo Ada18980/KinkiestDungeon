@@ -3095,7 +3095,7 @@ type KDEventData_affinity = {
     msgedstand: boolean;
 	groupIsHigh: boolean;
 };
-type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean}
+type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean, UnLink: boolean}
 type KDEventData_CurseCount = {restraints: {item: item, host: item}[], count: number, activatedOnly: boolean}
 
 type KDExpression = {
