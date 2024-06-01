@@ -201,6 +201,17 @@ interface KDRestraintPropsBase {
 		level_magic?: number,
 	},
 
+	/**
+	 * Subjective modifier for how pissed off an enemy has to be in order to use this item on you. Good for items that "tighten" for example.
+	 * The effects are not straightforward, but some of the things a higher aggro level will do in the future (TODO) are:
+	 * - reduce likelihood of duplicates
+	 * - reduce likelihood of the item if another item in the same slot already shares some enemyTags with the item
+	 * - reduce likelihood of stacking or linking under another item in the same slot
+	 *
+	 * General range is 0-10 with 0 being the default and 10 being a last resort high security measure
+	 */
+	aggroLevel?: number,
+
 	/** Affinity type: Hook, Edge, or Sharp, Sticky, defaults are Hook (struggle), Sharp (Cut), Edge (Pick), Sticky (Unlock), and none (Pick)*/
 	affinity?: {
 		Struggle?: string[],

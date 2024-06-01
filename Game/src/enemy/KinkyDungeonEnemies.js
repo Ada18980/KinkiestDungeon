@@ -5922,6 +5922,7 @@ function KDCanPickpocket(enemy) {
 	if (enemy.Enemy.attack?.includes("Suicide")) return false;
 	if (KDEnemyHasFlag(enemy, "allyPlay")) return false;
 	if (KinkyDungeonFlags.has("pickpocket")) return false;
+	if (KDAllied(enemy)) return false;
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).enclose) return false;
 	}

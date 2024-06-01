@@ -16,6 +16,12 @@ let KD_hexscale_EnchantedRestraints = 0.7;
 
 
 let KDBasicArmor = [
+	{name: "Swimsuit", minLevel: 0, weight: KDBasicArmorWeight,
+		armor: "Swimsuit",
+		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_Default, enchantchance: KD_enchantchance_Default, alwaysenchanthex: true,
+		hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
+		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
+		nouncursed: ["Swimsuit"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "Breastplate", minLevel: 0, weight: KDBasicArmorWeight,
 		armor: "Breastplate",
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_Default, enchantchance: KD_enchantchance_Default, alwaysenchanthex: true,

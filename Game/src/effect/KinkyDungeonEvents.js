@@ -1042,7 +1042,7 @@ let KDEventMapInventory = {
 					// The shadow hands will link to a nearby enemy if possible
 					for (enemy of KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, e.dist)) {
 						if (!e.requiredTag || enemy.Enemy.tags[e.requiredTag]) {
-							KinkyDungeonAttachTetherToEntity(KDRestraint(item).tether || 1.5, player, enemy, "ShadowTether", "#a02fcc", 3, item);
+							KinkyDungeonAttachTetherToEntity(KDRestraint(item).tether || 1.5, enemy, player, "ShadowTether", "#a02fcc", 3, item);
 						}
 					}
 				}

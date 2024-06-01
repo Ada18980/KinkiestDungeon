@@ -26,6 +26,11 @@ Monk class?
 TODO:
 - High alchemist and solvent
 - Let go of leash thru menu
+- Aggro level
+
+5.3.19
+- Bugfixes
+- Added Swimsuit armor
 
 5.3.18
 - Fixed bug where enchantments had wrong font color

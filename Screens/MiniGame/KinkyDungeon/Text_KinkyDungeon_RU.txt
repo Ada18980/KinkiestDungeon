@@ -1743,6 +1743,8 @@ Doll Storage
 Хранилище кукол
 Doll Processing
 Фабрика кукол
+Processing
+Фабрика
 Bandit Hideout
 Убежище бандитов
 Ancient Vault

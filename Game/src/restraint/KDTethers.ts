@@ -24,6 +24,7 @@ let KDLeashablePersonalities = {
 let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 	ShadowTether: (entity) => {
 		if (!(entity.leash.entity && KinkyDungeonFindID(entity.leash.entity)?.Enemy?.tags?.shadow)) return false;
+		if (entity.leash.entity && KinkyDungeonFindID(entity.leash.entity) && KinkyDungeonIsDisabled(KinkyDungeonFindID(entity.leash.entity))) return false;
 		if (entity.player) {
 			return KinkyDungeonPlayerTags.get("Shadow");
 		} else {

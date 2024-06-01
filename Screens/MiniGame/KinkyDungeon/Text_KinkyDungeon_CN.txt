@@ -1762,6 +1762,8 @@ Marble Halls
 大理石大厅
 Doll Storage
 玩偶容器
+Processing
+玩偶工厂
 Doll Processing
 玩偶工厂
 The Edge of Reality

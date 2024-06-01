@@ -4532,6 +4532,7 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "beforeStruggleCalc", type: "ropeDebuff", power: 0.05, inheritLinked: true, requireTags: ["RopeFeet1", "RopeFeet3"]}
 		],
+		aggroLevel: 2.0,
 		maxwill: 1.0, enemyTags: {"ropeRestraints":4}, playerTags: {"ItemLegsFull":-1}, playerTagsMissing: {"RopeFeet1": -100}, playerTagsMissingMult: {"ItemLegsFull":0.05}, minLevel: 3, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "RopeFeet2"]},
 	{unlimited: true, renderWhenLinked: [...KDLegRopesRender], inventory: true, name: "RopeSnakeFeet3", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Color: "Default", LinkableBy: [...KDFeetRopeLink], Group: "ItemFeet", blockfeet: true, hobble: 0.25, addTag: ["FeetLinked"],power: 1, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.5, "Remove": 0.15},
 		Model: "RopeAnkles3",
@@ -4543,6 +4544,7 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "beforeStruggleCalc", type: "ropeDebuff", power: 0.05, inheritLinked: true, requireTags: ["RopeFeet2", "ToeRope"]}
 		],
+		aggroLevel: 3.0,
 		maxwill: 1.0, enemyTags: {"ropeRestraints":4}, playerTags: {"ItemLegsFull":-1}, playerTagsMissing: {"RopeFeet1": -100, "RopeFeet2": -100}, playerTagsMissingMult: {"ItemLegsFull":0.05}, minLevel: 5, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "RopeFeet3"]},
 	{unlimited: true, renderWhenLinked: [...KDLegRopesRender], inventory: true, name: "RopeSnakeToes", accessible: true, Asset: "ToeTie", OverridePriority: 26, LinkableBy: ["Wrapping", "Encase",],
 		Color: "Default", Group: "ItemBoots", blockfeet: true, addTag: ["FeetLinked"], power: 1, weight: 1,
@@ -4575,6 +4577,7 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "beforeStruggleCalc", type: "ropeDebuff", power: 0.05, inheritLinked: true, requireTags: ["RopeLegs3", "RopeLegs1"]}
 		],
+		aggroLevel: 4.0,
 		maxwill: 0.6, enemyTags: {"ropeRestraints":4}, playerTags: {"ItemFeetFull":-1}, playerTagsMissing: {"RopeLegs1": -100}, minLevel: 7, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "RopeLegs2"]},
 	{unlimited: true, renderWhenLinked: [...KDLegRopesRender], inventory: true, name: "RopeSnakeLegs3", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Type: "FullBinding", LinkableBy: [...KDLegRopesBind], Color: "Default", Group: "ItemLegs", hobble: 0.5, addTag: ["FeetLinked"], power: 1, weight: 0, escapeChance: {"Struggle": 0.25, "Cut": 0.45, "Remove": 0.15},
 		Model: "RopeLegs3",
@@ -4586,6 +4589,7 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "beforeStruggleCalc", type: "ropeDebuff", power: 0.05, inheritLinked: true, requireTags: ["RopeFeet3", "RopeLegs2"]}
 		],
+		aggroLevel: 6.0,
 		maxwill: 0.6, enemyTags: {"ropeRestraints":4}, playerTags: {"ItemFeetFull":-1}, playerTagsMissing: {"RopeLegs2": -100, "RopeLegs1": -100}, minLevel: 9, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "RopeLegs3"]},
 	{unlimited: true, renderWhenLinked: ["Harnesses", "HeavyCorsets", "Corsets"], inventory: true, name: "RopeSnakeBelt", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRopeHarness", Type: "Waist", Color: "Default", Group: "ItemTorso", power: 1, weight: 0, harness: true, escapeChance: {"Struggle": 0.1, "Cut": 0.67, "Remove": 0.3},
 		Model: "RopeBelt",
@@ -4603,6 +4607,7 @@ const KinkyDungeonRestraints = [
 		linkCategories: ["RopeHarness", "EnchantableRopeHarness"], linkSizes: [0.51, 0.51],
 		UnderlinkedAlwaysRender: true,
 		affinity: {Remove: ["Hook"],},
+		aggroLevel: 2.0,
 		maxwill: 0.75, enemyTags: {"ropeRestraints2":1}, playerTags: {"ItemTorsoFull":5}, minLevel: 3, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "Harnesses", "RopeHarness"]},
 	{unlimited: true, inventory: true, name: "RopeSnakeCrotch", debris: "Ropes", accessible: true, factionColor: [[], [0]], crotchrope: true, strictness: 0.15, Asset: "HempRope", Type: "OverPanties", LinkableBy: ["ChastityBelts"], OverridePriority: 26, Color: "Default", Group: "ItemPelvis", power: 1, weight: 0,
 		Model: "RopeCrotch",
@@ -4612,6 +4617,7 @@ const KinkyDungeonRestraints = [
 		UnderlinkedAlwaysRender: true,
 		struggleMult: {"Struggle": 0.6, "Remove": 0.5},
 		affinity: {Remove: ["Hook"],},
+		aggroLevel: 1.0,
 		maxwill: 0.75, escapeChance: {"Struggle": 0.1, "Cut": 0.67, "Remove": 0.15}, enemyTags: {"ropeRestraints2":4}, playerTags: {"ItemPelvisFull":-3}, minLevel: 0, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "RopeCrotch"],
 		events: [{trigger: "struggle", type: "crotchrope"}]},
 	//endregion
@@ -6336,6 +6342,35 @@ const KinkyDungeonRestraints = [
 				{trigger: "tick", type: "RestraintBlock", power: 1, inheritLinked: true},
 			],
 		}, "Adventuring Corset", "Protects your organs and your sense of style.", "Provides minor protection against enemy attacks at the cost of flexibility.")
+		, [...KDHexVariantList.Base]);
+
+
+		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+			name: "Swimsuit",
+			Group: "ItemTorso",
+			Model: "Swimsuit",
+			remove: ["Cloth", "ClothLower", "Tops", "Skirts", "Shirts", "Pants"],
+			debris: "Belts",
+			showInQuickInv: true, good: true,
+			alwaysKeep: true,
+			alwaysRender: true,
+			escapeChance: {
+				"Struggle": 0.2,
+				"Cut": 0.2,
+				"Remove": 0.5,
+			},
+			shrine: ["Armor", "TorsoArmor", "Cloth"],
+			armor: true,
+			LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.3,
+			protection: 1,
+			displayPower: 2,
+			protectionCursed: true,
+			events: [
+				{type: "Buff", trigger: "tick", power: 0.2, buffType: "glueDamageResist", inheritLinked: true},
+				{type: "Buff", trigger: "tick", power: 0.2, buffType: "soapDamageResist", inheritLinked: true},
+				{trigger: "tick", type: "evasionBuff", power: 0.1, inheritLinked: true},
+			],
+		}, "Swimsuit", "The best uniform.", "Removes excess clothing and adds +10 Evasion. +20 Soap and Glue resist.")
 		, [...KDHexVariantList.Base]);
 
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({

@@ -42,6 +42,8 @@ AddModel({
 	])
 });
 
+AddModel(GetModelRestraintVersion("Swimsuit", true));
+
 
 AddModel({
 	Name: "StrappyBra",

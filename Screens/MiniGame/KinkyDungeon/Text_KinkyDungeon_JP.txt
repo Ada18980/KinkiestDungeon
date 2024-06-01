@@ -558,8 +558,8 @@ Magic Hands
 Enemies can add restraints underneath existing restraints.
 敵は既存の拘束の下に拘束を追加できる
 
-Doll Processing
-人形加工中
+Processing
+加工中
 Start atop a conveyor on your way to be sealed away inside the Facility.
 コンベアの上で人形に加工されている状態からゲームを開始する
 
