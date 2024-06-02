@@ -3427,6 +3427,14 @@ interface KDLeashData {
 	color?: string,
 };
 
+type Lore = {
+	//text: string,
+	condition?: () => boolean,
+	image?: string,
+	/** Don't show in the list, just make available */
+	noShow?: boolean,
+}
+
 type KDJourneySlot = {
 	visited: boolean,
 

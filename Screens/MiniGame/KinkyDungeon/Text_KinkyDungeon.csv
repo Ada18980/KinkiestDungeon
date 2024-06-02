@@ -822,7 +822,7 @@ KinkyDungeonDifficulty1,"Roguelike: No save codes, only autosave"
 KinkyDungeonDifficulty3,"Exciting: Orbs give random spells"
 KinkyDungeonDifficulty2,"Kinky: No save codes, orbs give random spells, start with very little"
 
-KinkyDungeonLog,Log
+KinkyDungeonLog,Journal
 
 KinkyDungeonDressPlayer,"Change Outfit"
 KinkyDungeonDressPlayerReset,"Reset Outfit"
@@ -1024,7 +1024,7 @@ KinkyDungeonKeyInventory,Inventory
 KinkyDungeonKeyReputation,Reputation
 KinkyDungeonKeyQuest,Quests
 KinkyDungeonKeyMagic,Spell List
-KinkyDungeonKeyLog,Logbook
+KinkyDungeonKeyLog,Journal
 
 KinkyDungeonCurrentPress,"Current Key Pressed"
 KinkyDungeonCurrentPressInfo,"Press a key, then press a button to set that key"
@@ -3318,7 +3318,7 @@ KinkyDungeonDropEnchKnife,"You drop the precious knife due to your bound hands!"
 KinkyDungeonDropRedKey,"You drop the key due to your bound hands!"
 KinkyDungeonDropBlueKey,"You drop the magic key due to your bound hands!"
 
-KinkyDungeonLogbook,Log
+KinkyDungeonLogbook,Journal
 KinkyDungeonLogbookN,Journal (N)
 KinkyDungeonAutoPassOn,"Passing..."
 KinkyDungeonAutoPassOff,"Pass NPCs"
@@ -7032,7 +7032,7 @@ KinkyDungeonSpellChoice5,"Current Spell 6: "
 KinkyDungeonSpellChoice6,"Current Spell 7: "
 
 KinkyDungeonCheckpointLoreUnknown,???
-KinkyDungeonCheckpointLore-1,Unfiled
+KinkyDungeonCheckpointLoreDefault,Unfiled
 KinkyDungeonCheckpointLoreCombat,Adventuring 101
 KinkyDungeonCheckpointLoreHistory,History
 KinkyDungeonCheckpointLoreSchool,Bondage Witchery
@@ -7046,6 +7046,7 @@ KinkyDungeonCheckpointLorelib,Library
 KinkyDungeonCheckpointLorecry,Crystal Cave
 KinkyDungeonCheckpointLoreore,Orrery
 KinkyDungeonCheckpointLorebel,Bellows
+KinkyDungeonCheckpointLorecst,Coast
 
 KinkyDungeonLore29,"(A page from the Book of Aeons)|The 'Graveyard' is a peculiar place. Long ago, human beings lived and died just like the animals. When the Old Civilization existed, they would come to bury their dead in the Graveyard. It remains a mystery why so many of the former dead seem to be alive. Some say that when the Old Civilization cast the spell that spell which overcame Death, even those buried in their graves would rise again. Others simply say that there is a powerful necromancer who lives here, toying with the dead as if they were pets..."
 KinkyDungeonLore30,"(A page from the Book of Aeons)|Beneath the Graveyard lies a relic of a former age, a network of tombs inhabited by the immortal followers of Bast. Very few were graced with this gift of immortality before the great archmagus, Sariel Vinlaga, stole this power from the gods and granted all humans with the power of immortality. The Bast followers are still set in their ways, hoping for a time when their Goddess will return and rebuild their glorious civilization."
@@ -20349,12 +20350,12 @@ KinkyDungeonInventoryItemDildoBatDesc,"A rubber cylinder without any lewd intent
 KinkyDungeonInventoryItemDildoBatDesc2,"Deals grope damage. "
 ItemPickupDildoBat,"You pick up a flexible rubber stick."
 
-KinkyDungeonInventoryItemDildoBatPlus,"Blade of Fla'peh"
+KinkyDungeonInventoryItemDildoBatPlus,"Blade of Ejahl"
 KinkyDungeonInventoryItemDildoBatPlusDesc,"A piece of prized ancient equipment. Magical energy causes it to vibrate intensely. What could it have been used for?"
 KinkyDungeonInventoryItemDildoBatPlusDesc2,"Deals grope damage. Can spend 40 charge to add charm damage per hit for 10 turns."
-ItemPickupDildoBatPlus,"You retrieve the Blade of Fla'peh."
+ItemPickupDildoBatPlus,"You retrieve the Blade of Ejahl."
 
-KinkyDungeonBuffDildoBatBuff,"Intense Vibrations: The Blade of Fla'peh deals bonus charm damage!!!"
+KinkyDungeonBuffDildoBatBuff,"Intense Vibrations: The Blade of Ejahl deals bonus charm damage!!!"
 KinkyDungeonSpellCastDildoBatBuff,"The Blade of Fla-peh buzzes with great power!"
 KinkyDungeonSpecialDildoBatPlus,"40 charge to deal 30 charm damage per hit for 10 turns."
 
@@ -21200,7 +21201,7 @@ KDVarPrefCursed,Cursed
 KDIntroScene1,"Long ago, war raged across the globe.|Countless lives were lost fighting over pieces of rock in a vast ocean.|People turned to science, religion, and magic, anything to escape this cruel fate."
 KDIntroScene2,"Then the archmagus, Sariel Vinlaga, discovered the secret of immortality.|Sharing her research across the globe, she laid the groundwork for an era of peace.|A great civilization arose, where magic and technology flourished."
 KDIntroScene3,"But in the end, Sariel's experiments left her weakened and unable to save herself from death.|Without a leader, the Old Civilization collapsed into tyranny as warlords enslaved thousands.|Refugees fled across the sea in search of a new life, and in time the old empire was forgotten."
-KDIntroScene4,"Three hundred years later,a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago."
+KDIntroScene4,"Three hundred years later, a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago."
 
 KinkyDungeonBuffSpellDamageBuff,An item has increased your spell damage!
 
@@ -22740,19 +22741,19 @@ LootElvenPanties,"You find a pair of elven panties."
 RestraintFluffothHood,Hood of Fluffoth
 RestraintFluffothHoodDesc,"Worn by devotees to Fluffoth, demonic ruler of the plush abyss."
 RestraintFluffothHoodDesc2,"When distraction reaches 90%, emit a wave of soft energies that envelops targets a 5x5 area. Deals 40 plush damage and snares for 3 turns. Recharges when your distraction goes below 50%. 5 turn internal cooldown."
-KinkyDungeonInventoryItemFluffothHood,Ceremonial Leotard
+KinkyDungeonInventoryItemFluffothHood,Hood of Fluffoth
 KinkyDungeonInventoryItemFluffothHoodDesc,"Worn by devotees to Fluffoth, demonic ruler of the plush abyss."
 KinkyDungeonInventoryItemFluffothHoodDesc2,"When distraction is over 90%, emit a wave of soft energies that envelops targets a 5x5 area. Deals 30 plush damage and snares for 3 turns. Recharges when your distraction goes below 50%. 5 turn internal cooldown."
 LootFluffothHood,"You find a sinister hood made of soft plush."
 
 
-RestraintFlapehLeotard,Ceremonial Leotard
-RestraintFlapehLeotardDesc,"Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock."
-RestraintFlapehLeotardDesc2,"Its soul crystals dampen willpower changes, reducing all willpower changes by 25%."
-KinkyDungeonInventoryItemFlapehLeotard,Ceremonial Leotard
-KinkyDungeonInventoryItemFlapehLeotardDesc,"Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock."
-KinkyDungeonInventoryItemFlapehLeotardDesc2,"Its soul crystals dampen willpower changes, reducing all willpower changes by 25%."
-LootFlapehLeotard,"You find a ceremonial leotard."
+RestraintEjahlLeotard,Ceremonial Leotard
+RestraintEjahlLeotardDesc,"An article worn by the servants of state in the short-lived kingdom of Ejahl. Its locking mechanism and clothes-dissolving enchantments ensure the wearer understands her role as an extension of the state."
+RestraintEjahlLeotardDesc2,"Its soul crystals harden the mind and dampen changes in willpower, reducing all willpower changes by 25%."
+KinkyDungeonInventoryItemEjahlLeotard,Ceremonial Leotard
+KinkyDungeonInventoryItemEjahlLeotardDesc,"An article worn by the servants of state in the short-lived kingdom of Ejahl. Its locking mechanism and clothes-dissolving enchantments ensure the wearer understands her role as an extension of the state."
+KinkyDungeonInventoryItemEjahlLeotardDesc2,"Its soul crystals harden the mind and dampen changes in willpower, reducing all willpower changes by 25%."
+LootEjahlLeotard,"You find a ceremonial leotard."
 
 
 rDragonQueenCrystal,"(As you slay the dragon, it begins shapeshifting into human form!)"

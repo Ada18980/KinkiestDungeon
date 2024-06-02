@@ -982,7 +982,7 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 	DrawTextFitKD(nameText, xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5, 300, KDBookText, KDTextTan, undefined, undefined, 129);
 	//let wrapAmount = KDBigLanguages.includes(TranslationLanguage) ? 9 : 22;
 	let mult = KDGetFontMult();
-	let textSplit = KinkyDungeonWordWrap(TextGet(prefix + name + "Desc"), 12*mult, 28*mult).split('\n');
+	let textSplit = KinkyDungeonWordWrap(TextGet(prefix + name + "Desc"), 12*mult, 26*mult).split('\n');
 	let textSplit2 = KinkyDungeonWordWrap(TextGet(prefix + name + "Desc2"), 12*mult, 28*mult).split('\n');
 
 	let data = {
@@ -1161,7 +1161,7 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 
 		for (let N = 0; N < textSplit.length; N++) {
 			DrawTextFitKD(textSplit[N],
-				xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5  + 155 + i * 23, 350, KDBookText, KDTextTan, 20, undefined, 130); i++;}
+				xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5  + 155 + i * 23, 330, KDBookText, KDTextTan, 20, undefined, 130); i++;}
 
 	} else {
 		for (let N = 0; N < textSplit.length; N++) {

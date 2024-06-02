@@ -6358,6 +6358,7 @@ const KinkyDungeonRestraints = [
 				"Struggle": 0.2,
 				"Cut": 0.2,
 				"Remove": 0.5,
+				"Pick": 0.15,
 			},
 			shrine: ["Armor", "TorsoArmor", "Cloth"],
 			armor: true,
@@ -6368,9 +6369,10 @@ const KinkyDungeonRestraints = [
 			events: [
 				{type: "Buff", trigger: "tick", power: 0.2, buffType: "glueDamageResist", inheritLinked: true},
 				{type: "Buff", trigger: "tick", power: 0.2, buffType: "soapDamageResist", inheritLinked: true},
+				{type: "Buff", trigger: "tick", power: 1.0, buffType: "DrySpeed", inheritLinked: true},
 				{trigger: "tick", type: "evasionBuff", power: 0.1, inheritLinked: true},
 			],
-		}, "Swimsuit", "The best uniform.", "Removes excess clothing and adds +10 Evasion. +20 Soap and Glue resist.")
+		}, "Swimsuit", "The best uniform. Has a (lockable) zipper in the back for convenience!", "Removes excess clothing and adds +10 Evasion. +20 Soap and Glue resist, and being drenched dries faster.")
 		, [...KDHexVariantList.Base]);
 
 		KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({

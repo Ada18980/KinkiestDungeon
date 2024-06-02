@@ -87,6 +87,7 @@
         "Game/src/item/KinkyDungeonConsumablesList.js",
         "Game/src/item/KinkyDungeonInventory.js",
         "Game/src/dialogue/KinkyDungeonLore.js",
+        "Game/src/dialogue/KinkyDungeonLoreList.js",
         "Game/src/faction/KinkyDungeonReputation.js",
         "Game/src/board/KinkyDungeonTraps.js",
         "Game/src/board/KinkyDungeonTiles.js",

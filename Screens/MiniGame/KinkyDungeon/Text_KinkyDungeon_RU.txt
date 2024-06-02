@@ -32037,18 +32037,18 @@ Deals grope damage.
 Наносит урон ощупыванием.
 You pick up a flexible rubber stick.
 Вы находите гибкую резиновую палку.
-Blade of Fla'peh
-Клинок Фла'Пех
+Blade of Ejahl
+Клинок Ejahl
 A piece of prized ancient equipment. Magical energy causes it to vibrate intensely. What could it have been used for?
 Часть ценного древнего снаряжения. Магическая энергия заставляет его интенсивно вибрировать. Для чего это бы могло быть использовано?
 Deals grope damage. Can spend 40 charge to add charm damage per hit for 10 turns.
 Наносит урон ощупыванием. Можно потратить 40 заряда, чтобы добавить урон очарованием при ударе на 10 ходов.
-You retrieve the Blade of Fla'peh.
-Вы находите клинок Фла'Пех.
-Intense Vibrations: The Blade of Fla'peh deals bonus charm damage!!!
-Интенсивные вибрации: Клинок Фла'пех наносит дополнительный урон от Очарования!!!
+You retrieve the Blade of Ejahl.
+Вы находите клинок Ejahl.
+Intense Vibrations: The Blade of Ejahl deals bonus charm damage!!!
+Интенсивные вибрации: Клинок Ejahl наносит дополнительный урон от Очарования!!!
 The Blade of Fla-peh buzzes with great power!
-Клинок Фла'пех жужжит с огромной силой!
+Клинок Ejahl жужжит с огромной силой!
 40 charge to deal 30 charm damage per hit for 10 turns.
 40 заряда чтобы наносить 30 урона Очарованием за удар в течении 10 ходов.
 Enchanted Rope
@@ -33349,7 +33349,7 @@ Then the archmagus, Sariel Vinlaga, discovered the secret of immortality.|Sharin
 Вскоре архимаг Сариэль Винлага открыла секрет бессмертия.|Поделившись своими исследованиями со всем миром, она заложила основу для наступления эры мира.|Возникла великая цивилизация, где процветали и магия и технологии.
 But in the end, Sariel's experiments left her weakened and unable to save herself from death.|Without a leader, the Old Civilization collapsed into tyranny as warlords enslaved thousands.|Refugees fled across the sea in search of a new life, and in time the old empire was forgotten.
 Но, в конце концов, эксперименты Сариэль ослабили ее и сделали неспособной уберечь себя от смерти.|Без лидера Древняя Цивилизация рухнула в тиранию, воененачальники обратили в рабство тысячи людей.|Беженцы бежали за море в поисках новой жизни, и со временем старая империя канула в лету.
-Three hundred years later,a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
+Three hundred years later, a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
 Триста лет спустя группа искателей приключений нашла затерянный остров, полный древних технологий.|Бесчисленные исследователи теперь стекаются к руинам в поисках богатства и мудрости...|...Не подозревая о коварных секретах, долгие годы запечатанных внутри.
 An item has increased your spell damage!
 Этот предмет увеличивает ваш урон от заклинаний!
@@ -35783,13 +35783,13 @@ You find a sinister hood made of soft plush.
 Вы находите зловещий капюшон, сделанный из плюшевой ткани.
 Ceremonial Leotard
 Церемониальное трико
-Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock.
+Commissioned by the powerful ancient ruling caste, the Ejahl. Comes with an integrated lock.
 Созданное по заказу могущественной древней правящей касты, Плю'пех. Поставляется со встроенным замком.
 Its soul crystals dampen willpower changes, reducing all willpower changes by 25%.
 Кристаллы души в нем ослабляют изменения силы воли, уменьшая все изменения силы воли на 25%.
 Ceremonial Leotard
 Церемониальное трико
-Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock.
+Commissioned by the powerful ancient ruling caste, the Ejahl. Comes with an integrated lock.
 Созданное по заказу могущественной древней правящей касты, Плю'пех. Поставляется со встроенным замком.
 Its soul crystals dampen willpower changes, reducing all willpower changes by 25%.
 Кристаллы души в нем ослабляют изменения силы воли, уменьшая все изменения силы воли на 25%.

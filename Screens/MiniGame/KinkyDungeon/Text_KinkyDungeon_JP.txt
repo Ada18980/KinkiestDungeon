@@ -22796,18 +22796,18 @@ Deals grope damage.
 愛撫属性。
 You pick up a flexible rubber stick.
 ぐにゃぐにゃしたゴムの棒を拾った。
-Blade of Fla'peh
-フラペの剣
+Blade of Ejahl
+エジャルの剣
 A piece of prized ancient equipment. Magical energy causes it to vibrate intensely. What could it have been used for?
 貴重な古代の道具。魔法のエネルギーで激しく振動している。何に使われたのだろう？
 Deals grope damage. Can spend 40 charge to add charm damage per hit for 10 turns.
 愛撫属性。エネルギーを40消費して発動する。10ターンの間、攻撃命中時に魅了属性の追加ダメージを与える。
-You retrieve the Blade of Fla'peh.
-フラペの剣を拾った。
- The Blade of Fla'peh deals bonus charm damage!!!
-フラペの剣で魅了属性の追加ダメージを与えた！
+You retrieve the Blade of Ejahl.
+エジャルの剣を拾った。
+ The Blade of Ejahl deals bonus charm damage!!!
+エジャルの剣で魅了属性の追加ダメージを与えた！
 The Blade of Fla-peh buzzes with great power!
-フラペの剣が猛烈に振動している！
+エジャルの剣が猛烈に振動している！
 40 charge to deal 30 charm damage per hit for 10 turns.
 エネルギーを40消費して発動する。10ターンの間、攻撃命中時に30魅了属性の追加ダメージを与える。
 Enchanted Rope
@@ -24335,7 +24335,7 @@ Then the archmagus, Sariel Vinlaga, discovered the secret of immortality.|Sharin
 ある日、偉大なる魔術師サリエル・ヴィンラーガは、不死の秘法を発見した。|彼女は世界中に研究を共有し、平和な時代への基礎を築いた。|魔法と科学の融合した、偉大なる文明が幕を開けた。
 But in the end, Sariel's experiments left her weakened and unable to save herself from death.|Without a leader, the Old Civilization collapsed into tyranny as warlords enslaved thousands.|Refugees fled across the sea in search of a new life, and in time the old empire was forgotten.
 しかし、偉大なるサリエルは探求の果てに衰弱し、死亡してしまう。|指導者を失った旧文明は愚者による専制が始まり、軍は無辜の市民を次々と奴隷にしていった。|難を逃れようと民は海を渡り、民を失った旧き帝国は次第に朽ち、忘れられていった。
-Three hundred years later,a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
+Three hundred years later, a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
 300年後、冒険家たちは古代の技術が眠る島を発見した。|今では、富と知恵を求めて無数の冒険者が遺跡を訪れている……|……はるか昔に封印された、邪悪な秘密も知らずに。
 
 An item has increased your spell damage!
@@ -27154,15 +27154,15 @@ You find a sinister hood made of soft plush.
 
 Ceremonial Leotard
 式典のレオタード
-Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock.
-古の支配者フラペの特注品。一体型ロック付き。
+Commissioned by the powerful ancient ruling caste, the Ejahl. Comes with an integrated lock.
+古の支配者エジャルの特注品。一体型ロック付き。
 Its soul crystals dampen willpower changes, reducing all willpower changes by 25%.
 ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を-25%する。
 
 Ceremonial Leotard
 式典のレオタード
-Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock.
-古の支配者フラペの特注品。一体型ロック付き。
+Commissioned by the powerful ancient ruling caste, the Ejahl. Comes with an integrated lock.
+古の支配者エジャルの特注品。一体型ロック付き。
 Its soul crystals dampen willpower changes, reducing all willpower changes by 25%.
 ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を-25%する。
 You find a ceremonial leotard.

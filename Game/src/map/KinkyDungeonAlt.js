@@ -439,6 +439,7 @@ let alts = {
 			Caldera: true,
 		},
 
+		loreCheckpoint: "cst",
 		genType: "Caldera",
 		skin: "cst",
 		musicParams: "cst",

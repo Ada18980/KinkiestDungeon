@@ -1,63 +1,67 @@
 "use strict";
 
-let KinkyDungeonCurrentLore = -1;
+
 /**
- * @type {any}
+ * @type {Record<string, Record<string, Lore>>}
  */
-let KinkyDungeonCurrentLoreTab = -1;
+let KDLore = {
+};
+
+let KinkyDungeonCurrentLore = "Cover";
 /**
- * @type {any[]}
+ * @type {Record<string, string>}
  */
-let KinkyDungeonCurrentLoreTabs = [-1];
+let KDLoreImg = {};
+/**
+ * @type {Record<string, string>}
+ */
+let KDLoreEnemy = {};
+/**
+ * @type {string}
+ */
+let KinkyDungeonCurrentLoreTab = "Default";
+/**
+ * @type {string[]}
+ */
+let KinkyDungeonCurrentLoreTabs = ["Default"];
+/**
+ * @type {string[]}
+ */
 let KinkyDungeonCurrentLoreItems = [];
 let KinkyDungeonCurrentLoreItemOffset = 0;
 let KinkyDungeonCurrentLoreTabOffset = 0;
-let KinkyDungeonLore = [0, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28];
-let KinkyDungeonCheckpointLore = {
-	"Combat": [23, 24, 25, 26, 27],
-	"School": [20, 21, 22, 28],
-	"History": [29, 30, 31, 32, 33, 34, 35, 36, 37],
-	"Enemy": [4, 5, 6, 19, 101, 102, 103, 104, 105, 106, 107, 108, 109, 111, 112, 1100, 1104, 201, 203],
-	"grv": [29, 1, 19],
-	"tmb": [30, 9, 1100, 1101, 1102, 1103, 1104, 1105, 1106, 1107, 1108, 1112],
-	"cat": [31, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 9,],
-	"lib": [32],
-	"jng": [33, 29, 201, 202, 203, 204, 205],
-	"cry": [34],
-	"tmp": [35],
-	"ore": [36, 1400, 1401, 1402],
-	"bel": [37, 400],
-
-
-};
 let KinkyDungeonLoreScale = 1.5;
 let KinkyDungeonRepeatLoreChance = 0.4; // Chance you will find a duplicate piece of lore
 let KinkyDungeonGenericLoreChance = 0.33; // Chance you will find a generic note instead of a previous note
 
-let KinkyDungeonNewLoreList = localStorage.getItem("kinkydungeonnewlore") ? JSON.parse(localStorage.getItem("kinkydungeonnewlore")) : [];
+/** @type {string[]} */
+let KinkyDungeonNewLoreList = localStorage.getItem("kdnewLore") ? JSON.parse(localStorage.getItem("kdnewLore")) : ["Cover"];
 
 function KinkyDungeonNewLore() {
+	/** @type {string[]} */
 	let availableLore = [];
-	let exploredLore = localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : [];
-	let newLore = localStorage.getItem("kinkydungeonnewlore") ? JSON.parse(localStorage.getItem("kinkydungeonnewlore")) : [];
 
-	let checkpoint = (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
+	/** @type {Record<string, number>} */
+	let exploredLore = localStorage.getItem("kdexpLore") ? JSON.parse(localStorage.getItem("kdexpLore")) : {Cover: 1};
+	let newLore = localStorage.getItem("kdnewLore") ? JSON.parse(localStorage.getItem("kdnewLore")) : ["Cover"];
 
-	if (!exploredLore || exploredLore.length == 0) {
-		availableLore = [0];
-	} else if (KinkyDungeonCheckpointLore[checkpoint]) {
-		for (let L = 0; L < KinkyDungeonCheckpointLore[checkpoint].length; L++) {
-			availableLore.push(KinkyDungeonCheckpointLore[checkpoint][L]);
+	let altType = KDGetAltType(MiniGameKinkyDungeonLevel, KDMapData.MapMod, KDMapData.RoomType);
+
+	let checkpoint = (altType?.loreCheckpoint || KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
+
+	if (!exploredLore || Object.keys(exploredLore).length == 0) {
+		availableLore = [];
+		for (let lore of Object.keys(KDLore[checkpoint])) {
+			availableLore.push(lore);
+		}
+	} else if (KDLore[checkpoint]) {
+		for (let lore of Object.keys(KDLore[checkpoint])) {
+			availableLore.push(lore);
 		}
 
 		if (Math.random() < KinkyDungeonRepeatLoreChance) {
-			if (Math.random() > KinkyDungeonGenericLoreChance) {
-				availableLore = KinkyDungeonLore;
-			} else {
-				availableLore = [];
-			}
-
-		} else KinkyDungeonLore.forEach((element) => {if (!exploredLore.includes(element)) {availableLore.push(element);}});
+			availableLore = Object.keys(KDLore.Default);
+		} else Object.values(KDLore).forEach((tab) => {availableLore.push(...Object.keys(tab));});
 
 	}
 
@@ -65,34 +69,48 @@ function KinkyDungeonNewLore() {
 
 	if (availableLore.length > 0) {
 		KinkyDungeonCurrentLore = availableLore[Math.floor(Math.random() * availableLore.length)];
-		if (!exploredLore.includes(KinkyDungeonCurrentLore)) {
+		if (!exploredLore[KinkyDungeonCurrentLore]) {
 
 			KinkyDungeonSendActionMessage(5, TextGet("ItemPickupLore"), "white", 2);
-			exploredLore.push(KinkyDungeonCurrentLore);
+			exploredLore[KinkyDungeonCurrentLore] = 1;
 			newLore.push(KinkyDungeonCurrentLore);
 
-			KinkyDungeonCurrentLoreTab = -1;
-			for (let i = 0; i < Object.keys(KinkyDungeonCheckpointLore).length; i++) {
-				if (Object.values(KinkyDungeonCheckpointLore)[i].includes(KinkyDungeonCurrentLore)) {
-					KinkyDungeonCurrentLoreTab = i;
+			KinkyDungeonCurrentLoreTab = "Default";
+			for (let tab of Object.keys(KDLore)) {
+				if (KDLore[tab][KinkyDungeonCurrentLore] && !KDLore[tab][KinkyDungeonCurrentLore].noShow) {
+					KinkyDungeonCurrentLoreTab = tab;
 					break;
 				}
 			}
-
-			//ServerAccountUpdate.QueueData({ KinkyDungeonExploredLore: Player.KinkyDungeonExploredLore });
 		} else {
 			KinkyDungeonSendActionMessage(4, TextGet("ItemPickupLoreOld"), "gray", 2);
-			KinkyDungeonCurrentLore = -(1 + Math.floor(Math.random() * 10));
+			KinkyDungeonCurrentLore = CommonRandomItemFromList("", Object.keys(KDLore.Default));
 		}
 		result = true;
 	} else {
-		KinkyDungeonSendActionMessage(4, TextGet("ItemPickupLoreOld"), "gray", 2);
-		KinkyDungeonCurrentLore = -(1 + Math.floor(Math.random() * 10));
+		KinkyDungeonCurrentLore = CommonRandomItemFromList("", Object.keys(KDLore.Default));
+		if (!exploredLore[KinkyDungeonCurrentLore]) {
+
+			KinkyDungeonSendActionMessage(5, TextGet("ItemPickupLore"), "white", 2);
+			exploredLore[KinkyDungeonCurrentLore] = 1;
+			newLore.push(KinkyDungeonCurrentLore);
+
+			KinkyDungeonCurrentLoreTab = "Default";
+			for (let tab of Object.keys(KDLore)) {
+				if (KDLore[tab][KinkyDungeonCurrentLore] && !KDLore[tab][KinkyDungeonCurrentLore].noShow) {
+					KinkyDungeonCurrentLoreTab = tab;
+					break;
+				}
+			}
+		} else {
+			KinkyDungeonSendActionMessage(4, TextGet("ItemPickupLoreOld"), "gray", 2);
+			KinkyDungeonCurrentLore = CommonRandomItemFromList("", Object.keys(KDLore.Default));
+		}
 	}
 
-	localStorage.setItem("kinkydungeonexploredlore", JSON.stringify(exploredLore));
+	localStorage.setItem("kdexpLore", JSON.stringify(exploredLore));
 	KinkyDungeonNewLoreList = newLore;
-	localStorage.setItem("kinkydungeonnewlore", JSON.stringify(newLore));
+	localStorage.setItem("kdnewLore", JSON.stringify(newLore));
 
 	KinkyDungeonUpdateTabs(exploredLore);
 
@@ -100,15 +118,13 @@ function KinkyDungeonNewLore() {
 }
 
 function KinkyDungeonUpdateTabs(exploredLore) {
-	KinkyDungeonCurrentLoreTabs = [-1];
-	for (let lore of exploredLore) {
-		for (let i = 0; i < Object.keys(KinkyDungeonCheckpointLore).length; i++) {
-			if (Object.values(KinkyDungeonCheckpointLore)[i].includes(lore)) KinkyDungeonCurrentLoreTabs.push(Object.keys(KinkyDungeonCheckpointLore)[i]);
+	KinkyDungeonCurrentLoreTabs = ["Default"];
+	for (let lore of Object.keys(exploredLore)) {
+		for (let tab of Object.keys(KDLore)) {
+			if (KDLore[tab][lore] && !KDLore[tab][lore].noShow) KinkyDungeonCurrentLoreTabs.push(tab);
 		}
 	}
 }
-
-KinkyDungeonUpdateTabs(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
 
 function KinkyDungeonDrawLore() {
 	let xOffset = -125;
@@ -150,33 +166,257 @@ function KinkyDungeonDrawLore() {
 	// Draw the current note
 
 	//let wrapAmount = KDBigLanguages.includes(TranslationLanguage) ? 19 : 45;
-	let loreOrig = TextGet("KinkyDungeonLore" + KinkyDungeonCurrentLore).split('|');
+	let loreName = TextGet("KDLoreTitle" + KinkyDungeonCurrentLore);
+	let loreOrig = TextGet("KDLoreText" + KinkyDungeonCurrentLore).split('|');
 	let lore = [];
 	let mult = KDGetFontMult();
+	if (KDLoreEnemy[KinkyDungeonCurrentLore]) mult *= 0.74;
 	for (let str of loreOrig) {
-		lore.push(...(KinkyDungeonWordWrap(str, 19*mult, 45*mult).split('\n')));
+		lore.push(...(KinkyDungeonWordWrap(str, 26*mult, 60*mult).split('\n')));
 	}
 	let i = 0;
+	DrawTextFitKD(loreName,
+		0.75 * 640*KinkyDungeonLoreScale * 0.525
+		+ canvasOffsetX_ui - 100 + 640*KinkyDungeonLoreScale/8, canvasOffsetY_ui - 100 + 483*KinkyDungeonLoreScale/6 + i * 40, 0.75 * 640*KinkyDungeonLoreScale, KDBookText, KDTextTan, 36, "center");
+	if (KDLoreImg[KinkyDungeonCurrentLore]) {
+		i += 0.7;
+		let imgwidth = 200;
+		let images = KDLoreImg[KinkyDungeonCurrentLore].split('|');
+		for (let ii = 0; ii < images.length; ii++) {
+			KDDraw(kdcanvas, kdpixisprites, "kdlorimage" + ii,
+				KinkyDungeonRootDirectory + images[ii],
+				0.75 * 640*KinkyDungeonLoreScale * (0.525) + imgwidth * ii - (imgwidth/2 * (images.length))
+			+ canvasOffsetX_ui - 100 + 640*KinkyDungeonLoreScale/8, canvasOffsetY_ui - 100 + 483*KinkyDungeonLoreScale/6 + i * 40,
+				imgwidth, imgwidth, 0, undefined, undefined, undefined, undefined, true
+			);
+		}
+	}
+	if (KDLoreEnemy[KinkyDungeonCurrentLore] && KinkyDungeonGetEnemyByName(KDLoreEnemy[KinkyDungeonCurrentLore])) {
+		let enemy = KinkyDungeonGetEnemyByName(KDLoreEnemy[KinkyDungeonCurrentLore]);
+		let armor = (enemy.armor || 0);
+		let spellResist = (enemy.spellResist || 0);
+		let block_phys = (enemy.Resistance?.block_phys || 0);
+		let block_magic = (enemy.Resistance?.block_magic || 0);
+		let TooltipList = [];
+
+		if (block_phys) {
+			let st = TextGet("KinkyDungeonTooltipBlockPhys").replace("AMOUNT", "" + Math.round(10* block_phys)
+			);
+			TooltipList.push({
+				str: st,
+				fg: "#ffffff",
+				bg: KDTextGray0,
+				size: 20,
+			});
+		}
+		if (block_magic) {
+			let st = TextGet("KinkyDungeonTooltipBlockMagic").replace("AMOUNT", "" + Math.round(10* block_magic)
+			);
+			TooltipList.push({
+				str: st,
+				fg: "#ffffff",
+				bg: KDTextGray0,
+				size: 20,
+			});
+		}
+		if (armor) {
+			let st = TextGet("KinkyDungeonTooltipArmor").replace("AMOUNT", "" + Math.round(10* armor) + (block_phys ? `(+${Math.round(10* block_phys)})` : ""));
+			TooltipList.push({
+				str: st,
+				fg: "#ffffff",
+				bg: KDTextGray0,
+				size: 20,
+			});
+		}
+		if (spellResist) {
+			let st = TextGet("KinkyDungeonTooltipSpellResist").replace("AMOUNT", "" + Math.round(10* spellResist) + (block_magic ? `(+${Math.round(10* block_magic)})` : ""));
+			TooltipList.push({
+				str: st,
+				fg: "#ffffff",
+				bg: KDTextGray0,
+				size: 20,
+			});
+		}
+		if (enemy.tags.unstoppable) {
+			let st = TextGet("KDunstoppable");
+			TooltipList.push({
+				str: st,
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 20,
+			});
+		} else if (enemy.tags.unflinching) {
+			let st = TextGet("KDunflinching");
+			TooltipList.push({
+				str: st,
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 20,
+			});
+		} else if (enemy.tags.relentless) {
+			let st = TextGet("KDrelentless");
+			TooltipList.push({
+				str: st,
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 20,
+			});
+		}
+		if (enemy.tags?.bulwark) {
+			let st = TextGet("KDBulwark");
+			TooltipList.push({
+				str: st,
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 20,
+			});
+		}
+		if (enemy.Resistance?.toughArmorAlways) {
+			let st = TextGet("KDAbsoluteArmor");
+			TooltipList.push({
+				str: st,
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 20,
+			});
+		} else if (enemy.Resistance?.toughArmor) {
+			let st = TextGet("KDToughArmor");
+			TooltipList.push({
+				str: st,
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 20,
+			});
+		}
+
+		if (enemy.disarm) {
+			let dt = KinkyDungeonDamageTypes[enemy.dmgType];
+			if (dt) {
+				let st = TextGet("KDTooltipDisarm").replace("DISARMCHANCE", "" + Math.round(enemy.disarm * 100));
+				TooltipList.push({
+					str: st,
+					fg: "#ffaa55",
+					bg: "#000000",
+					size: 20,
+				});
+			}
+		}
+
+		if (enemy.dmgType) {
+			let dt = KinkyDungeonDamageTypes[enemy.dmgType];
+			if (dt) {
+				let st = TextGet("KinkyDungeonTooltipDealsDamage").replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + enemy.dmgType));
+				TooltipList.push({
+					str: st,
+					fg: dt.color,
+					bg: dt.bg,
+					size: 20,
+				});
+			}
+		}
+		if (enemy.blindSight > 0) {
+			let st = TextGet("KDBlindsight");
+			TooltipList.push({
+				str: st,
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 20,
+			});
+		}
+
+		let map = Object.assign({}, enemy.tags);
+		if (enemy.spellResist)
+			map.magic = true;
+		if (enemy.Resistance?.profile) {
+			for (let p of enemy.Resistance?.profile) {
+				for (let dt of Object.keys(KDResistanceProfiles[p])) {
+					map[dt] = true;
+				}
+			}
+		}
+		let list = Array.from(Object.keys(map));
+		let magic = false;
+		let repeats = {};
+		//for (let t of list) {
+		let t = list;
+		for (let dt of Object.values(KinkyDungeonDamageTypes)) {
+			if ((t.includes(dt.name + "resist") || t.includes(dt.name + "weakness") || t.includes(dt.name + "immune") || t.includes(dt.name + "severeweakness"))
+				|| (dt.name == "magic" && t.includes("magic"))) {
+				let mm = 1.0;
+				if (t.includes(dt.name + "resist")) mm = 0.5;
+				else if (t.includes(dt.name + "weakness")) mm = 1.5;
+				else if (t.includes(dt.name + "immune")) mm = 0;
+				else if (t.includes(dt.name + "severeweakness")) mm = 2.0;
+				if (dt.name == "magic" && !magic) {
+					magic = true;
+				}
+				let st = TextGet("KinkyDungeonTooltipWeakness")
+					.replace("MULTIPLIER", "" + Math.round(mm * 100)/100)
+					.replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType"+ dt.name));
+				let name = TextGet("KinkyDungeonDamageType"+ dt.name);
+
+				if (!repeats.DR) {
+					TooltipList.push({
+						str: "",
+						fg: "#ffffff",
+						bg: "#000000",
+						size: 10,
+					});
+					TooltipList.push({
+						str: TextGet("KDTooltipDamageResists"),
+						fg: "#ffffff",
+						bg: "#000000",
+						size: 20,
+					});
+					repeats.DR = true;
+				}
+				if (!repeats[name])
+					TooltipList.push({
+						str: st,
+						fg: dt.color,
+						bg: dt.bg,
+						size: 18,
+					});
+				repeats[name] = true;
+			}
+		}
+
+		let extra = 5;
+		let YY = canvasOffsetY_ui - 20 + 400*KinkyDungeonLoreScale;
+		TooltipList.forEach((listItem) => {
+			YY -= (extra + listItem.size);
+		});
+		for (let listItem of TooltipList) {
+			DrawTextFitKD(listItem.str,
+				canvasOffsetX_ui - 100 + 640*KinkyDungeonLoreScale/8 + 0.575 * 640*KinkyDungeonLoreScale,
+				YY,
+				0.22 * 640*KinkyDungeonLoreScale,
+				listItem.fg, listItem.bg,
+				listItem.size, "left", 0);
+			YY += extra + listItem.size;
+		}
+	}
+	i = KDLoreImg[KinkyDungeonCurrentLore] ? 6 : 2;
 	for (let N = 0; N < lore.length; N++) {
 		DrawTextFitKD(lore[N],
-			canvasOffsetX_ui - 100 + 640*KinkyDungeonLoreScale/8, canvasOffsetY_ui - 100 + 483*KinkyDungeonLoreScale/6 + i * 40, 0.75 * 640*KinkyDungeonLoreScale, KDBookText, KDTextTan, undefined, "left"); i++;}
+			canvasOffsetX_ui - 100 + 640*KinkyDungeonLoreScale/8, canvasOffsetY_ui - 100 + 483*KinkyDungeonLoreScale/6 + i * 40, 0.75 * 640*KinkyDungeonLoreScale, KDBookText, KDTextTan, 20, "left"); i++;}
 
 	if (KinkyDungeonNewLoreList.includes(KinkyDungeonCurrentLore)) {
 		KinkyDungeonNewLoreList.splice(KinkyDungeonNewLoreList.indexOf(KinkyDungeonCurrentLore), 1);
-		localStorage.setItem("kinkydungeonnewlore", JSON.stringify(KinkyDungeonNewLoreList));
+		localStorage.setItem("kdnewLore", JSON.stringify(KinkyDungeonNewLoreList));
 	}
 
 
 	// Draw the tabs
-	let tabs = Object.values(KinkyDungeonCheckpointLore);
-	let tabNames = Object.keys(KinkyDungeonCheckpointLore);
+	let tabs = Object.values(KDLore);
+	let tabNames = Object.keys(KDLore);
 	let numTabs = 20;
-	for (i = -1; i < numTabs; i++) {
+	for (i = 0; i < numTabs; i++) {
 		if (i + KinkyDungeonCurrentLoreTabOffset < tabs.length) {
 			let newLore = false;
 
 			for (let ll of KinkyDungeonNewLoreList) {
-				if ((i == -1 && KinkyDungeonLore.includes(ll)) || (i >= 0 && KinkyDungeonCheckpointLore[tabNames[i + KinkyDungeonCurrentLoreTabOffset]].includes(ll))) {
+				if ((i == -1 && KDLore.Default[ll]) || (i >= 0 && KDLore[tabNames[i + KinkyDungeonCurrentLoreTabOffset]][ll])) {
 					newLore = true;
 					break;
 				}
@@ -184,17 +424,17 @@ function KinkyDungeonDrawLore() {
 
 			if (i == -1) {
 				DrawButtonKDEx("loretab" + i, (b) => {
-					KinkyDungeonCurrentLoreTab = -1;
-					KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
+					KinkyDungeonCurrentLoreTab = "Default";
+					KinkyDungeonUpdateLore(localStorage.getItem("kdexpLore") ? JSON.parse(localStorage.getItem("kdexpLore")) : {});
 					return true;
 				}, true, x + 300, 142 + i * 42, 230, 40, TextGet("KinkyDungeonCheckpointLore-1"),
-				-1 == KinkyDungeonCurrentLoreTab ? "#ffffff" : (newLore ? "#88ff88" : "#ffffff"), undefined, undefined, undefined, KinkyDungeonCurrentLoreTab != -1, KDButtonColor);
+				"" == KinkyDungeonCurrentLoreTab ? "#ffffff" : (newLore ? "#88ff88" : "#ffffff"), undefined, undefined, undefined, KinkyDungeonCurrentLoreTab != "", KDButtonColor);
 			} else {
 				let index = i;
 				DrawButtonKDEx("loretab" + i, (b) => {
 					if (tabNames[index + KinkyDungeonCurrentLoreTabOffset]) {
 						KinkyDungeonCurrentLoreTab = tabNames[index + KinkyDungeonCurrentLoreTabOffset];
-						KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
+						KinkyDungeonUpdateLore(localStorage.getItem("kdexpLore") ? JSON.parse(localStorage.getItem("kdexpLore")) : {});
 					}
 					return true;
 				}, true, x + 300, 142 + i * 42, 230, 40, KinkyDungeonCurrentLoreTabs.includes(tabNames[i + KinkyDungeonCurrentLoreTabOffset]) ?
@@ -233,14 +473,14 @@ function KinkyDungeonDrawLore() {
 		return true;
 	}, true, x + 100, 860, 90, 40, "", numNotes + KinkyDungeonCurrentLoreItemOffset < KinkyDungeonCurrentLoreItems.length ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png");
 	for (i = 0; i < numNotes; i++) {
-		let ii = Math.floor(i / 3);
-		let xx = i % 3;
+		let ii = Math.floor(i / 2);
+		let xx = i % 2;
 		if (i + KinkyDungeonCurrentLoreItemOffset < KinkyDungeonCurrentLoreItems.length) {
 			let loreNum = KinkyDungeonCurrentLoreItems[i + KinkyDungeonCurrentLoreItemOffset];
 			DrawButtonKDEx("loreItem" + loreNum, (b) => {
 				KinkyDungeonCurrentLore = loreNum;
 				return true;
-			}, true, x + 100 * xx, 142 + (ii) * 42, 90, 40, "#" + loreNum,
+			}, true, x + 150 * xx, 142 + (ii) * 42, 145, 40, TextGet("KDLoreLabel" + loreNum),
 			loreNum == KinkyDungeonCurrentLore ? "#ffffff" : (KinkyDungeonNewLoreList.includes(loreNum) ? "#88ff88": "#ffffff"),
 			undefined, undefined, undefined, loreNum != KinkyDungeonCurrentLore, KDButtonColor);
 		} else {
@@ -308,17 +548,59 @@ function KDDrawLoreRepTabs(xOffset) {
 	KinkyDungeonDrawState != "Collection", KDButtonColor); II++;
 }
 
+/**
+ *
+ * @param {Record<string, number>} exploredLore
+ */
 function KinkyDungeonUpdateLore(exploredLore) {
 	KinkyDungeonCurrentLoreItems = [];
-	for (let lore of exploredLore) {
-		if (KinkyDungeonCurrentLoreTab == -1 && KinkyDungeonLore.includes(lore)) {
-			KinkyDungeonCurrentLoreItems.push(lore);
-		} else if (KinkyDungeonCheckpointLore[KinkyDungeonCurrentLoreTab] && KinkyDungeonCheckpointLore[KinkyDungeonCurrentLoreTab].includes(lore)) {
-			KinkyDungeonCurrentLoreItems.push(lore);
+	if (!KinkyDungeonCurrentLoreTab) KinkyDungeonCurrentLoreTab = "Default";
+	if (KDLore[KinkyDungeonCurrentLoreTab])
+		for (let lore of Object.entries(KDLore[KinkyDungeonCurrentLoreTab])) {
+			if (!lore[1].noShow && exploredLore[lore[0]]) {
+				KinkyDungeonCurrentLoreItems.push(lore[0]);
+			}
 		}
-	}
 }
 
 function KinkyDungeonHandleLore() {
 	return true;
+}
+
+/**
+ *
+ * @param {string | string[]} tabs
+ * @param {string} id
+ * @param {string} label
+ * @param {string} title
+ * @param {string} text
+ * @param {() => boolean} [condition ]
+ * @param {string} [image ]
+ * @param {string[]} [noShow]
+ * @param {string} [enemy]
+ */
+function KDNewLore(tabs, id, label, title, text, condition, image, noShow, enemy) {
+	addTextKey("KDLoreText" + id, text);
+	addTextKey("KDLoreTitle" + id, title);
+	addTextKey("KDLoreLabel" + id, label);
+
+	if (image) {
+		KDLoreImg[id] = image;
+	}
+	if (enemy) {
+		KDLoreEnemy[id] = enemy;
+	}
+
+	tabs = (typeof tabs === "string") ? [tabs] : tabs;
+
+	for (let tab of tabs) {
+		if (!KDLore[tab]) {
+			KDLore[tab] = {};
+		}
+
+		KDLore[tab][id] = {
+			condition: condition,
+			noShow: !noShow ? undefined : noShow.includes(tab)
+		};
+	}
 }

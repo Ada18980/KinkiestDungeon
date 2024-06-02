@@ -467,7 +467,7 @@ function KDBestowCurse(item, ev) {
  * @param {Record<string, number>} enemyTags
  * @returns {any}
  */
-function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = undefined, enemyTags = {basicCurse: 10}, noPick = false) {
+function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = undefined, enemyTags = {basicCurse: 10}, noPick = true) {
 	// Sanitize to avoid duped pointer
 	ev = JSON.parse(JSON.stringify(ev));
 	KinkyDungeonDupeRestraintText(restraint.name, newRestraintName);

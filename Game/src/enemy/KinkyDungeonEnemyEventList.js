@@ -589,7 +589,7 @@ let KDIntentEvents = {
 							KDResetGuardSpawnTimer();
 							let furn = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"]);
 							let jail =  KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
-							let newPoint = furn || jail;
+							let newPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail", "furniture"]);
 							if (newPoint) {
 								enemy.keys = true;
 								enemy.gx = newPoint.x;
@@ -598,7 +598,7 @@ let KDIntentEvents = {
 								KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 300);
 								if ((furn && KDistChebyshev(enemy.x - furn.x, enemy.y - furn.y) < 1.5)
 									|| (jail && KDistChebyshev(enemy.x - jail.x, enemy.y - jail.y) < 1.5)) {
-									if (newPoint == KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"])) {
+									if (newPoint.x == furn.x && newPoint.y == furn.y) {
 										KDSettlePlayerInFurniture(enemy, AIData);
 										KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 									} else {

@@ -3004,6 +3004,15 @@ const KDEventMapBuff = {
 				}
 			}
 		},
+		"Evaporate": (e, buff, entity, data) => {
+			if (data.delta) {
+				let DrySpeed = -1 + KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(entity, "DrySpeed") * (e.mult || 1.0));
+				if (DrySpeed != 0) {
+					buff.duration = Math.max(0, buff.duration - data.delta * DrySpeed);
+				}
+			}
+
+		},
 
 		"BreakFree": (e, buff, entity, data) => {
 			if (KinkyDungeonStatWill <= 0.01) {

@@ -16052,15 +16052,15 @@ Deals grope damage.
 造成抚摸伤害。
 You pick up a flexible rubber stick.
 你拿起一根柔软的橡胶棒。
-Blade of Fla'peh
+Blade of Ejahl
 火焰之刃
 A piece of prized ancient equipment. Magical energy causes it to vibrate intensely. What could it have been used for?
 一件珍贵的古代装备。魔力使其剧烈振动。它可以用来做什么？
 Deals grope damage. Can spend 40 charge to add charm damage per hit for 10 turns.
 造成抚摸伤害。每次击中可花费 40 点能量来增加妩媚伤害，持续 10 回合。
-You retrieve the Blade of Fla'peh.
+You retrieve the Blade of Ejahl.
 你取回了火焰之刃。
-Intense Vibrations: The Blade of Fla'peh deals bonus charm damage!!!
+Intense Vibrations: The Blade of Ejahl deals bonus charm damage!!!
 强烈振动：火焰之刃造成额外的妩媚伤害！！！
 The Blade of Fla-peh buzzes with great power!
 火焰之刃嗡嗡作响，威力巨大！
@@ -17209,7 +17209,7 @@ Then the archmagus, Sariel Vinlaga, discovered the secret of immortality.|Sharin
 然后，大法师萨里尔·文拉加（Sariel Vinlaga）发现了永生的秘密。|她在全球范围内分享了她的研究成果，为和平时代奠定了基础。|一个伟大的文明诞生了，魔法和技术在那里蓬勃发展。
 But in the end, Sariel's experiments left her weakened and unable to save herself from death.|Without a leader, the Old Civilization collapsed into tyranny as warlords enslaved thousands.|Refugees fled across the sea in search of a new life, and in time the old empire was forgotten.
 但最终，萨里尔（Sariel）的实验让她变得虚弱无力，无法将自己从死亡中拯救出来。|在没有领袖的统治下，旧文明陷入暴政，军阀奴役了数千人。|难民们漂洋过海寻找新生活，且随着时间的推移，旧帝国被遗忘了。
-Three hundred years later,a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
+Three hundred years later, a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
 三百年后，一群冒险家发现了一座充满古老科技的失落岛屿。|现在，无数游客涌入废墟寻找财富和智慧...|...却对很久以前被封印在里面的狡猾秘密一无所知。
 An item has increased your spell damage!
 一件物品增加了你的法术伤害！
@@ -18969,8 +18969,8 @@ When distraction reaches 90%, emit a wave of soft energies that envelops targets
 当干扰超过 90% 时，发射一波软能量，将目标包围在 5x5 范围内。造成 30 点伤害，并持续 3 回合。干扰低于 50% 时重新充能。 5 回合内部冷却。
 You find a sinister hood made of soft plush.
 你发现了一个由柔软的毛绒制成的阴险兜帽。
-Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock
-由强大的古代统治阶层 Fla'peh 委托。配有集成锁
+Commissioned by the powerful ancient ruling caste, the Ejahl. Comes with an integrated lock
+由强大的古代统治阶层 Ejahl 委托。配有集成锁
 Its soul crystals dampen willpower changes, reducing all willpower changes by 25%.
 它的灵魂晶体会抑制意志力的变化，使所有意志力的变化减少25%。
 You find a ceremonial leotard.

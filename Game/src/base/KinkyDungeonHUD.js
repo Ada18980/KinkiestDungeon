@@ -1902,14 +1902,14 @@ function KDDrawNavBar(skip, quit = false) {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[3]),
 	}); bindex++; bInc();
 
-	let logtxt = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonLogbookN").replace("N", KinkyDungeonNewLoreList.length): TextGet("KinkyDungeonLogbook");
+	let logtxt = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonLogbookN").replace("N", "" + KinkyDungeonNewLoreList.length): TextGet("KinkyDungeonLogbook");
 	if (skip == bindex) logtxt = TextGet("KDNavGame");
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goLog", (bdata) => {
 		if (skip == 3)
 			KinkyDungeonDrawState = "Game";
 		else {
 			KinkyDungeonDrawState = "Quest";
-			KinkyDungeonUpdateLore(localStorage.getItem("kinkydungeonexploredlore") ? JSON.parse(localStorage.getItem("kinkydungeonexploredlore")) : []);
+			KinkyDungeonUpdateLore(localStorage.getItem("kdexpLore") ? JSON.parse(localStorage.getItem("kdexpLore")) : {Cover: 1});
 		}
 		KinkyDungeonCheckClothesLoss = true;
 		KinkyDungeonDressPlayer();
