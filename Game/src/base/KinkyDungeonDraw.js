@@ -2265,6 +2265,8 @@ let KDLogFilters = [
 	"Struggle",
 	"Ambient",
 	"Dialogue",
+	"Items",
+	"Kills",
 ];
 
 function KinkyDungeonDrawMessages(NoLog) {

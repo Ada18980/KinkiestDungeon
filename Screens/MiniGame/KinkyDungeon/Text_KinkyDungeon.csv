@@ -7047,6 +7047,7 @@ KinkyDungeonCheckpointLorecry,Crystal Cave
 KinkyDungeonCheckpointLoreore,Orrery
 KinkyDungeonCheckpointLorebel,Bellows
 KinkyDungeonCheckpointLorecst,Coast
+KinkyDungeonCheckpointLoreEjahl,Ejahl
 
 KinkyDungeonLore29,"(A page from the Book of Aeons)|The 'Graveyard' is a peculiar place. Long ago, human beings lived and died just like the animals. When the Old Civilization existed, they would come to bury their dead in the Graveyard. It remains a mystery why so many of the former dead seem to be alive. Some say that when the Old Civilization cast the spell that spell which overcame Death, even those buried in their graves would rise again. Others simply say that there is a powerful necromancer who lives here, toying with the dead as if they were pets..."
 KinkyDungeonLore30,"(A page from the Book of Aeons)|Beneath the Graveyard lies a relic of a former age, a network of tombs inhabited by the immortal followers of Bast. Very few were graced with this gift of immortality before the great archmagus, Sariel Vinlaga, stole this power from the gods and granted all humans with the power of immortality. The Bast followers are still set in their ways, hoping for a time when their Goddess will return and rebuild their glorious civilization."
@@ -21201,7 +21202,7 @@ KDVarPrefCursed,Cursed
 KDIntroScene1,"Long ago, war raged across the globe.|Countless lives were lost fighting over pieces of rock in a vast ocean.|People turned to science, religion, and magic, anything to escape this cruel fate."
 KDIntroScene2,"Then the archmagus, Sariel Vinlaga, discovered the secret of immortality.|Sharing her research across the globe, she laid the groundwork for an era of peace.|A great civilization arose, where magic and technology flourished."
 KDIntroScene3,"But in the end, Sariel's experiments left her weakened and unable to save herself from death.|Without a leader, the Old Civilization collapsed into tyranny as warlords enslaved thousands.|Refugees fled across the sea in search of a new life, and in time the old empire was forgotten."
-KDIntroScene4,"Three hundred years later, a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago."
+KDIntroScene4,"Hundreds of years later, a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago."
 
 KinkyDungeonBuffSpellDamageBuff,An item has increased your spell damage!
 
@@ -23199,6 +23200,8 @@ KDLogFilterSelf,Self
 KDLogFilterDialogue,Dialogue
 KDLogFilterAmbient,Ambient
 KDLogFilterStruggle,Struggle
+KDLogFilterItems,Items
+KDLogFilterKills,Kills
 
 KDAttack,You attack TargetEnemy for DamageDealt total damage.
 KDAttackBind,You attack TargetEnemy for DamageDealt damage / BondageDealt binding.
@@ -23264,3 +23267,10 @@ KinkyDungeonSaveToFile,Save to File
 
 KDLatexHelp1,Tip: Slime/Latex tiles only affect entities with less than 45 Glue Resist.
 KDLatexHelp2,Being drenched in water also prevents slime/latex from sticking to you.
+
+KinkyDungeonStatClearVision,"Clear Vision"
+KinkyDungeonStatDescClearVision,"Blindfolds are much rarer."
+KinkyDungeonStatFreeBoob1,"Free the Boob"
+KinkyDungeonStatDescFreeBoob1,"Chastity bras are rarer unless you are wearing nipple toys."
+KinkyDungeonStatFreeBoob2,"Liberate the Boob"
+KinkyDungeonStatDescFreeBoob2,"Chastity bras are much rarer."

@@ -405,12 +405,15 @@ let KinkyDungeonStatsPresets = {
 	"Quickness": {category: "Combat", id: "Quickness", cost: 2},
 
 	"BoundCrusader": {category: "Kinky", id: "BoundCrusader", cost: -1},
+	"FreeBoob1":  {category: "Restraints", id: "FreeBoob1", cost: 1, block: ["FreeBoob2"], requireArousal: true},
+	"FreeBoob2":  {category: "Restraints", id: "FreeBoob2", cost: 2, block: ["FreeBoob1"], requireArousal: true},
 
 	"Trespasser": {category: "Map", id: "Trespasser", cost: -2},
 
 
 	"Butterfingers":  {category: "Restriction", id: "Butterfingers", cost: -1},
 	"WeakGrip":  {category: "Restriction", id: "WeakGrip", cost: -1},
+
 
 
 	"Blackout":  {category: "Senses", id: "Blackout", cost: -1, block: ["TotalBlackout", "NoBlindfolds"]},

@@ -35,6 +35,7 @@ TODO:
 - Fixed a few other bugs
 - Added Swimsuit armor
 - Reworked the lore system and rewrote most lore entries
+- Added Free the Boob and Liberate the Boob perks
 
 5.3.18
 - Fixed bug where enchantments had wrong font color

@@ -843,6 +843,9 @@ let KDJailConditions = {
 	NoUnmasked: (r) => {
 		return !KinkyDungeonStatsChoice.get("Unmasked");
 	},
+	ChastityBra: (r) => {
+		return !KinkyDungeonStatsChoice.get("FreeBoob2") && (KinkyDungeonPlayerTags.get("ItemNipples") || !KinkyDungeonStatsChoice.get("FreeBoob1"));
+	},
 	NoPetsuit: (r) => {
 		return !KinkyDungeonStatsChoice.get("NoPet");
 	},

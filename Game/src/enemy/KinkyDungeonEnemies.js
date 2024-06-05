@@ -2126,7 +2126,9 @@ function KinkyDungeonCapture(enemy) {
 	} else*/ msg = "KinkyDungeonCaptureBasic";
 
 	KinkyDungeonSendEvent("afterCapture", {enemy: enemy});
-	KinkyDungeonSendActionMessage(6, TextGet(msg).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)).replace("GODDESS", TextGet("KinkyDungeonShrine" + KDGameData.Champion)), "lightgreen", 2);
+	KinkyDungeonSendActionMessage(6,
+		TextGet(msg).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)).replace("GODDESS", TextGet("KinkyDungeonShrine" + KDGameData.Champion)),
+		"lightgreen", 2, false, false, undefined, "Kills");
 	return goddessCapture;
 }
 
@@ -2165,7 +2167,7 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 			KDDropStolenItems(enemy);
 			if (enemy == KinkyDungeonKilledEnemy) {
 				if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 10)
-					KinkyDungeonSendActionMessage(4, TextGet("Kill"+enemy.Enemy.name), "orange", 2);
+					KinkyDungeonSendActionMessage(9, TextGet("Kill"+enemy.Enemy.name), "orange", 2, false, false, undefined, "Kills");
 				KinkyDungeonKilledEnemy = null;
 			}
 		}
@@ -5198,7 +5200,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								}
 								if (!r)
 									KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal"), "#f0dc41", 1,
-										false, false, undefined, "Self");
+										false, false, undefined, "Combat");
 								msgColor = "#f0dc41";
 								bound += 1;
 								if (willpowerDamage == 0)
@@ -5384,7 +5386,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							for (let R = 0; R < replace.length; R++)
 								text = text.replace(replace[R].keyword, "" + replace[R].value);
 						KinkyDungeonSendTextMessage(happened+priorityBonus, text, msgColor, 1,
-							false, false, undefined, "Combat");
+							false, false, undefined, "Self");
 						if (!enemy.Enemy.tags.temporary && AIData.attack.includes("Bind") && KDCanPickpocket(enemy))
 							KinkyDungeonLoseJailKeys(true, undefined, enemy);
 					}

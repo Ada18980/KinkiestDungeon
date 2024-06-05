@@ -7954,6 +7954,22 @@ let KDEventMapEnemy = {
 			}
 		},
 		"WardenManagement": (e, enemy, data) => {
+			if (enemy.hostile) {
+				KDMakeHostile(enemy, KDMaxAlertTimerAggro);
+
+
+				for (let en of KDMapData.Entities) {
+					if (en.Enemy?.tags?.wardenprisoner && !KDEnemyHasFlag(en, "imprisoned")) {
+						// Direct enemies toward the player
+						if (!en.aware && enemy.aware) {
+							en.gx = KinkyDungeonPlayerEntity.x;
+							en.gy = KinkyDungeonPlayerEntity.y;
+							KDMakeHostile(en, KDMaxAlertTimerAggro);
+						}
+					}
+
+				}
+			}
 			if (enemy.hostile && !KDEnemyHasFlag(enemy, "wardenReleasedPrisoners")) {
 				KinkyDungeonSetEnemyFlag(enemy, "wardenReleasedPrisoners", -1);
 				let count = 0;
@@ -7980,15 +7996,19 @@ let KDEventMapEnemy = {
 						filter = CommonRandomItemFromList("", rand);
 					}
 					for (let en of KDMapData.Entities) {
-						if (count < e.count) {
-							if ((!filter || en.Enemy?.name == filter) && en.Enemy?.tags?.wardenprisoner && KDEnemyHasFlag(en, "imprisoned")) {
-								KinkyDungeonSetEnemyFlag(en, "imprisoned", 0);
-								en.aware = true;
-								en.gx = KinkyDungeonPlayerEntity.x;
-								en.gy = KinkyDungeonPlayerEntity.y;
-								count += 1;
+						if (en.Enemy?.tags?.wardenprisoner) {
+							if (count < e.count) {
+								if ((!filter || en.Enemy?.name == filter) && KDEnemyHasFlag(en, "imprisoned")) {
+									KinkyDungeonSetEnemyFlag(en, "imprisoned", 0);
+									en.aware = true;
+									en.vp = 4;
+									en.gx = KinkyDungeonPlayerEntity.x;
+									en.gy = KinkyDungeonPlayerEntity.y;
+									count += 1;
+								}
 							}
 						}
+
 					}
 				}
 			}

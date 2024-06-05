@@ -52,16 +52,22 @@ function KinkyDungeonNewLore() {
 	if (!exploredLore || Object.keys(exploredLore).length == 0) {
 		availableLore = [];
 		for (let lore of Object.keys(KDLore[checkpoint])) {
-			availableLore.push(lore);
+			if (!KDLore[checkpoint][lore].condition || KDLore[checkpoint][lore].condition())
+				availableLore.push(lore);
 		}
 	} else if (KDLore[checkpoint]) {
 		for (let lore of Object.keys(KDLore[checkpoint])) {
-			availableLore.push(lore);
+			if (!KDLore[checkpoint][lore].condition || KDLore[checkpoint][lore].condition())
+				availableLore.push(lore);
 		}
 
 		if (Math.random() < KinkyDungeonRepeatLoreChance) {
-			availableLore = Object.keys(KDLore.Default);
-		} else Object.values(KDLore).forEach((tab) => {availableLore.push(...Object.keys(tab));});
+			for (let lore of Object.keys(KDLore.Default)) {
+				if (!KDLore.Default[lore].condition || KDLore.Default[lore].condition())
+					availableLore.push(lore);
+			}
+			//availableLore = Object.keys(KDLore.Default);
+		}//else Object.values(KDLore).forEach((tab) => {availableLore.push(...Object.keys(tab));});
 
 	}
 
@@ -71,7 +77,7 @@ function KinkyDungeonNewLore() {
 		KinkyDungeonCurrentLore = availableLore[Math.floor(Math.random() * availableLore.length)];
 		if (!exploredLore[KinkyDungeonCurrentLore]) {
 
-			KinkyDungeonSendActionMessage(5, TextGet("ItemPickupLore"), "white", 2);
+			KinkyDungeonSendActionMessage(5, TextGet("ItemPickupLore"), "white", 2, false, false, undefined, "Items");
 			exploredLore[KinkyDungeonCurrentLore] = 1;
 			newLore.push(KinkyDungeonCurrentLore);
 
@@ -83,7 +89,7 @@ function KinkyDungeonNewLore() {
 				}
 			}
 		} else {
-			KinkyDungeonSendActionMessage(4, TextGet("ItemPickupLoreOld"), "gray", 2);
+			KinkyDungeonSendActionMessage(4, TextGet("ItemPickupLoreOld"), "gray", 2, false, false, undefined, "Ambient");
 			KinkyDungeonCurrentLore = CommonRandomItemFromList("", Object.keys(KDLore.Default));
 		}
 		result = true;
@@ -91,7 +97,7 @@ function KinkyDungeonNewLore() {
 		KinkyDungeonCurrentLore = CommonRandomItemFromList("", Object.keys(KDLore.Default));
 		if (!exploredLore[KinkyDungeonCurrentLore]) {
 
-			KinkyDungeonSendActionMessage(5, TextGet("ItemPickupLore"), "white", 2);
+			KinkyDungeonSendActionMessage(5, TextGet("ItemPickupLore"), "white", 2, false, false, undefined, "Items");
 			exploredLore[KinkyDungeonCurrentLore] = 1;
 			newLore.push(KinkyDungeonCurrentLore);
 
@@ -103,7 +109,7 @@ function KinkyDungeonNewLore() {
 				}
 			}
 		} else {
-			KinkyDungeonSendActionMessage(4, TextGet("ItemPickupLoreOld"), "gray", 2);
+			KinkyDungeonSendActionMessage(4, TextGet("ItemPickupLoreOld"), "gray", 2, false, false, undefined, "Ambient");
 			KinkyDungeonCurrentLore = CommonRandomItemFromList("", Object.keys(KDLore.Default));
 		}
 	}

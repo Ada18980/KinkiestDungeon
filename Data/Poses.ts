@@ -131,14 +131,13 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 			rotation_y_anchor: 690,
 			offset_x: 1190,
 			offset_y: 690,
-		},
-		{
+		},{
 			Layer: "BG",
 			rotation: -90,
 			rotation_x_anchor: .5*MODELWIDTH,
 			rotation_y_anchor: .5*MODELHEIGHT,
-			offset_x: 0,
-			offset_y: 0,
+			offset_x: 0.82*MODELWIDTH,
+			offset_y: 0.6*MODELHEIGHT,
 		}
 		]
 	},

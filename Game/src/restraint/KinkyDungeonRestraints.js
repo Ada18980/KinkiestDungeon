@@ -2681,6 +2681,7 @@ let KDHeavyRestraintPrefs = [
 let KDNoOverrideTags = [
 	"NoVibes",
 	"Unmasked",
+	"FreeBoob",
 	"Unchained",
 	"Damsel",
 	"NoPet",
@@ -3091,6 +3092,8 @@ function KinkyDungeonUpdateRestraints(delta) {
 	}
 	if (KinkyDungeonStatsChoice.get("Deprived")) playerTags.set("NoVibes", true);
 	if (KinkyDungeonStatsChoice.get("Unmasked")) playerTags.set("Unmasked", true);
+	if (KinkyDungeonStatsChoice.get("FreeBoob2")) playerTags.set("FreeBoob", true);
+	if (KinkyDungeonStatsChoice.get("FreeBoob1") && !KinkyDungeonPlayerTags.get("ItemNipples")) playerTags.set("FreeBoob", true);
 	if (KinkyDungeonStatsChoice.get("NoKigu")) playerTags.set("NoKigu", true);
 	if (KinkyDungeonStatsChoice.get("NoBlindfolds")) playerTags.set("NoBlindfolds", true);
 	if (KinkyDungeonStatsChoice.get("NoPet")) playerTags.set("NoPet", true);

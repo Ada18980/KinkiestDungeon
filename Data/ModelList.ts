@@ -1136,7 +1136,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "ShoeLeft", Layer: "ShoeLeft", Pri: 1,
 			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie"]),
-			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			//GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			HideWhenOverridden: true,
 		},
 		{ Name: "ShoeRight", Layer: "ShoeRight", Pri: 1,

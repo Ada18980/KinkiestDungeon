@@ -557,6 +557,8 @@ let KDGameDataBase = {
 		Struggle: true,
 		Ambient: true,
 		Dialogue: false,
+		Items: true,
+		Kills: true,
 	},
 	LockoutChance: 0,
 	ShortcutIndex: -1,

@@ -1853,6 +1853,9 @@
             <key type="filename">../Game/Floors/Floor_ore/Wall.png</key>
             <key type="filename">../Game/Floors/Floor_ore/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_shoppe/Barrel.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/Bars.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/BarsVert.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/BarsVertCont.png</key>
             <key type="filename">../Game/Floors/Floor_shoppe/Brickwork.png</key>
             <key type="filename">../Game/Floors/Floor_shoppe/Doodad.png</key>
             <key type="filename">../Game/Floors/Floor_shoppe/Door.png</key>
@@ -2787,6 +2790,7 @@
             <key type="filename">../Game/Buffs/dmgplush.png</key>
             <key type="filename">../Game/Buffs/dmgpoison.png</key>
             <key type="filename">../Game/Buffs/dmgslash.png</key>
+            <key type="filename">../Game/Buffs/dmgsoap.png</key>
             <key type="filename">../Game/Buffs/dmgsoul.png</key>
             <key type="filename">../Game/Buffs/dmgstun.png</key>
             <key type="filename">../Game/Buffs/dmgtickle.png</key>
@@ -3277,6 +3281,8 @@
             <key type="filename">../Game/UI/Log/Ambient.png</key>
             <key type="filename">../Game/UI/Log/Combat.png</key>
             <key type="filename">../Game/UI/Log/Dialogue.png</key>
+            <key type="filename">../Game/UI/Log/Items.png</key>
+            <key type="filename">../Game/UI/Log/Kills.png</key>
             <key type="filename">../Game/UI/Log/Self.png</key>
             <key type="filename">../Game/UI/Log/Struggle.png</key>
             <key type="filename">../Game/UI/NoPass.png</key>
@@ -3448,6 +3454,7 @@
             <key type="filename">../Game/Items/Restraint/Stuffing.png</key>
             <key type="filename">../Game/Items/Restraint/Sunglasses.png</key>
             <key type="filename">../Game/Items/Restraint/Sunglasses2.png</key>
+            <key type="filename">../Game/Items/Restraint/Swimsuit.png</key>
             <key type="filename">../Game/Items/Restraint/Thumbcuffs.png</key>
             <key type="filename">../Game/Items/Restraint/WolfCuffs.png</key>
             <key type="filename">../Game/Items/Sunglasses.png</key>
