@@ -5717,7 +5717,7 @@ let KDEventMapSpell = {
 
 				KinkyDungeonUpdateLightGrid = true;
 
-				if (KinkyDungeonPlayerBuffs.Analyze && KinkyDungeonPlayerBuffs.Light.duration > 1) {
+				if (KinkyDungeonPlayerBuffs.Light && KinkyDungeonPlayerBuffs.Light.duration > 1) {
 					KinkyDungeonExpireBuff(KinkyDungeonPlayerEntity, "Light");
 				} else {
 

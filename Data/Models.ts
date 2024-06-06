@@ -601,7 +601,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				}
 			}
 			// Apply displacement
-			if (l.DisplaceLayers) {
+			if (l.DisplaceLayers && (!l.DisplacementPoses || l.DisplacementPoses.some((pose) => {return MC.Poses[pose];}))) {
 				let transform = new Transform();
 				let Properties: LayerProperties = m.Properties ? m.Properties[l.InheritColor || l.Name] : undefined;
 
@@ -676,7 +676,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				}
 			}
 			// Apply erase
-			if (l.EraseLayers) {
+			if (l.EraseLayers && (!l.ErasePoses || l.ErasePoses.some((pose) => {return MC.Poses[pose];}))) {
 				let transform = new Transform();
 				let Properties: LayerProperties = m.Properties ? m.Properties[l.InheritColor || l.Name] : undefined;
 

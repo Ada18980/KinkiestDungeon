@@ -30,6 +30,10 @@ AddModel({
 			InheritColor: "Torso",
 			Poses: ToMapSubtract(ARMPOSES, [...HIDEARMPOSES]),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			ErasePoses: ["HideHands"],
+			EraseLayers: {RightHand: true},
+			EraseSprite: "HideBoxtieHand",
+			EraseInvariant: true,
 		},
 		{ Name: "ShoulderRight", Layer: "ShoulderRight", Pri: 0,
 			HideWhenOverridden: true,
@@ -68,6 +72,7 @@ AddModel({
 			Poses: ToMap(HANDLEFTPOSES),
 			GlobalDefaultOverride: ToMap(["Front"]),
 			HidePoses: ToMap(["HideHands", "EncaseHandLeft",]),
+
 		},
 		{ Name: "ForeHandRight", Layer: "ForeHandRight", Pri: 0,
 			HideWhenOverridden: true,

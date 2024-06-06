@@ -1191,6 +1191,9 @@ const KinkyDungeonRestraints = [
 		Filters: {
 			Mitten: {"gamma":1,"saturation":0.16666666666666666,"contrast":1.25,"brightness":1.8166666666666667,"red":0.3166666666666667,"green":0.48333333333333334,"blue":2.8499999999999996,"alpha":1},
 		},
+		factionFilters: {
+			Mitten: {color: "DarkNeutral", override: true},
+		},
 		Asset: "LatexElbowGloves", Color: "#ff5277", LinkableBy: [...KDGlovesLink], renderWhenLinked: ["Mittens"], Group: "ItemHands",
 		bindhands: 1.0, power: 10, weight: 0,
 		escapeChance: {"Struggle": -0.05, "Cut": 0.04, "Remove": 0.4, "Pick": 0.25},
@@ -2943,9 +2946,12 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.9, enemyTags: {"kittyRestraints":8}, playerTags: {}, minLevel: 4, allFloors: true, shrine: ["Leather", "Mittens", "Will"]},
 	{inventory: true, name: "KittySuit", debris: "Belts", Asset: "BitchSuit", Color: "Default", Group: "ItemArms", DefaultLock: "Red",
 		Model: "ElitePetsuit",
+		Filters: {
+			Suit: {"gamma":1.65,"saturation":1,"contrast":1,"brightness":1.23,"red":1,"green":1,"blue":1,"alpha":1}
+		},
 		factionFilters: {
 			Suit: {
-				color: "LightNeutral", override: true,
+				color: "LightNeutral", override: false,
 			},
 			Straps: {
 				color: "DarkNeutral", override: true,

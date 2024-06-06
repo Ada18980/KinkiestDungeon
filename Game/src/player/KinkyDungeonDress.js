@@ -961,10 +961,14 @@ function KDApplyItem(C, inv, tags) {
 		if (restraint.factionFilters && faction && KDGetFactionFilters(faction)) {
 			for (let f of Object.entries(restraint.factionFilters)) {
 				if (KDGetFactionFilters(faction)[f[1].color]) {
-					if (f[1].override || !filters[f[0]]) {
+					if (f[1].override) {
 						filters[f[0]] = KDGetFactionFilters(faction)[f[1].color];
 					} else {
+						if (!filters[f[0]]) filters[f[0]] = {};
 						filters[f[0]].saturation = 0;
+						filters[f[0]].constrast = 1;
+						filters[f[0]].gamma = 1;
+						filters[f[0]].brightness = 1;
 						filters[f[0]].red = KDGetFactionFilters(faction)[f[1].color].red;
 						filters[f[0]].blue = KDGetFactionFilters(faction)[f[1].color].blue;
 						filters[f[0]].green = KDGetFactionFilters(faction)[f[1].color].green;

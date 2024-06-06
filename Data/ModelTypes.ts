@@ -113,6 +113,8 @@ interface ModelLayer extends Namable {
 	SwapPriorityPose?: Record<string, number>,
     /** One of these layers is required*/
     Poses?: Record<string, boolean>,
+	/** Only displace in these poses */
+	DisplacementPoses?: string[],
 	/** Adds a displacement map for rope squish and such. If the same sprite is in use it wont be duped*/
 	DisplacementSprite?: string,
 	/** Which layers to apply displacement to */
@@ -132,6 +134,8 @@ interface ModelLayer extends Namable {
 
 	/** Adds a Erase map for heel deletion and such. If the same sprite is in use it wont be duped*/
 	EraseSprite?: string,
+	/** Only erase in these poses */
+	ErasePoses?: string[],
 	/** Which layers to apply Erase to */
 	EraseLayers?: Record<string, boolean>,
 	/** MorphPoses but Erase */

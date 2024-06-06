@@ -1450,6 +1450,12 @@ let LayerGroups = {
 		"ForeGloveLeft",
 		"ForeHandLeft",
 	]),
+	"RightHand": ToMap([
+		"GloveRight",
+		"HandRight",
+		"ArmRight",
+		"MittenRight",
+	]),
 	// endregion
 
 	HairHelmet: ToMap(
