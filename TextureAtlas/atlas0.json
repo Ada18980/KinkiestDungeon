@@ -2,19 +2,11 @@
 
 "Models/Armbinder/BinderRightWristtie.png":
 {
-	"frame": {"x":2043,"y":2036,"w":1,"h":1},
+	"frame": {"x":1440,"y":1603,"w":1,"h":1},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
 	"sourceSize": {"w":1,"h":1}
-},
-"Models/Armbinder/StrapsRightBoxtie.png":
-{
-	"frame": {"x":2025,"y":2030,"w":14,"h":13},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":465,"y":518,"w":14,"h":13},
-	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Belts/RightArm2Wristtie.png":
 {
@@ -26,7 +18,7 @@
 },
 "Models/Body/Butt2.png":
 {
-	"frame": {"x":2043,"y":2036,"w":1,"h":1},
+	"frame": {"x":1440,"y":1603,"w":1,"h":1},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
@@ -72,20 +64,12 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Bunny/LegSockLeftClosed.png":
+"Models/Bunny/LegSockRightHogtie.png":
 {
-	"frame": {"x":1870,"y":2030,"w":151,"h":14},
+	"frame": {"x":1901,"y":2030,"w":142,"h":14},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":590,"y":907,"w":151,"h":14},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Bunny/LegSockLeftHogtie.png":
-{
-	"frame": {"x":1870,"y":2030,"w":151,"h":14},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":590,"y":907,"w":151,"h":14},
+	"spriteSourceSize": {"x":447,"y":907,"w":142,"h":14},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Cape/ShouldersHogtieFree.png":
@@ -402,7 +386,7 @@
 },
 "Models/DivineCuffs/ElbowLeftLockBandFree.png":
 {
-	"frame": {"x":1852,"y":2030,"w":14,"h":15},
+	"frame": {"x":1871,"y":2030,"w":14,"h":15},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":778,"y":619,"w":14,"h":15},
@@ -682,7 +666,7 @@
 },
 "Models/Ninja/SockRightHogtie.png":
 {
-	"frame": {"x":2043,"y":2030,"w":2,"h":2},
+	"frame": {"x":2043,"y":1290,"w":2,"h":2},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":2,"h":2},
@@ -734,6 +718,46 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Slayer/CapeCollarButton.png":
+{
+	"frame": {"x":1852,"y":2030,"w":15,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":608,"y":408,"w":15,"h":15},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Slayer/CapeShoulderLeftButton.png":
+{
+	"frame": {"x":1432,"y":1565,"w":5,"h":10},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":771,"y":494,"w":5,"h":10},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Slayer/CapeShoulderLeftButtonTied.png":
+{
+	"frame": {"x":1432,"y":1579,"w":5,"h":8},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":768,"y":511,"w":5,"h":8},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Slayer/CapeShoulderLeftButtonYoked.png":
+{
+	"frame": {"x":1432,"y":1591,"w":5,"h":8},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":795,"y":471,"w":5,"h":8},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Slayer/CapeShoulderRightButtonUp.png":
+{
+	"frame": {"x":1889,"y":2030,"w":8,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":547,"y":302,"w":8,"h":15},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/SMoonlight/PostureCollarHardware.png":
@@ -818,7 +842,7 @@
 },
 "Models/TapeLight/BottomKneelClosed.png":
 {
-	"frame": {"x":1432,"y":1565,"w":4,"h":3},
+	"frame": {"x":1432,"y":1603,"w":4,"h":3},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":395,"y":840,"w":4,"h":3},
@@ -1435,6 +1459,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json", "atlas24.json", "atlas25.json", "atlas26.json", "atlas27.json", "atlas28.json", "atlas29.json", "atlas30.json", "atlas31.json", "atlas32.json", "atlas33.json", "atlas34.json", "atlas35.json", "atlas36.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:61a5b9991c8637ac2d007bdcdf08d54e:51c6465a03fb0faee67e901ccc0b940a:6a94c8775954c8c66ecae97c975d1185$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f0fdf0eb2bf934f6befff7c10958e02b:491fe2dced7ef800246c1f890b00a091:6a94c8775954c8c66ecae97c975d1185$"
 }
 }

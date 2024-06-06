@@ -36,6 +36,7 @@ TODO:
 - Added Swimsuit armor
 - Reworked the lore system and rewrote most lore entries
 - Added Free the Boob and Liberate the Boob perks
+- Added Slayer Cape
 
 5.3.18
 - Fixed bug where enchantments had wrong font color

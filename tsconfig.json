@@ -135,6 +135,7 @@
         "Data/ModelList_Opera.ts",
         "Data/ModelList_Sailor.ts",
         "Data/ModelList_Dress.ts",
+        "Data/ModelList_Cloak.ts",
         "Data/ModelList_Yukata.ts",
         "Data/ModelList_Mittens.ts",
         "Data/ModelList_Elf.ts",
