@@ -19455,3 +19455,15 @@ Tip: Slime/Latex tiles only affect entities with less than 45 Glue Resist.
 提示：粘液/乳胶块仅影响胶水抗性低于 45 的实体。
 Being drenched in water also prevents slime/latex from sticking to you.
 浸湿在水中还可以防止粘液/乳胶粘在你身上。
+Clear Vision
+视野通透
+Blindfolds are much rarer.
+眼罩将会很少见。
+Free the Boob
+胸部自由
+Chastity bras are rarer unless you are wearing nipple toys.
+除非你穿着乳头玩具，否则贞操文胸将会很少见。
+Liberate the Boob
+解放胸部
+Chastity bras are much rarer.
+贞操文胸将会很少见。
