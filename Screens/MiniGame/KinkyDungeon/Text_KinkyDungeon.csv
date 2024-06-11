@@ -22105,6 +22105,8 @@ KinkyDungeonStatDescMoreKinkyFurniture,"Replaces 60% of cages with a different k
 
 KinkyDungeonKeyCollection,Collection
 KinkyDungeonCollection,Collection
+KinkyDungeonFacilities,Facilities
+KinkyDungeonTraining,Training
 
 KDPrisonersCurrent,Storage
 KDPrisonersManagement,Management

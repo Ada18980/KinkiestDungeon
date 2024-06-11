@@ -1121,7 +1121,7 @@ function KinkyDungeonSetMaxStats(delta) {
 	KinkyDungeonStatManaMax = KDMaxStatStart;
 	KinkyDungeonStatManaPoolMax = KDMaxStatStartPool;
 	KinkyDungeonStatWillMax = KDMaxStatStart;
-	KinkyDungeonSpellChoiceCount = 30;
+	//KinkyDungeonSpellChoiceCount = 30;
 	KinkyDungeonSummonCount = 2;
 	let data = {
 		distractionRate: 0,

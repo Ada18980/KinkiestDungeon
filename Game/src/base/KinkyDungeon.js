@@ -3079,6 +3079,17 @@ function KDFunctionCollectionScroll(amount) {
 	}
 	return false;
 }
+function KDFunctionFacilitiesScroll(amount) {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Facilities") {
+		if (amount > 0) {
+			KDClickButton("collDOWN");
+		} else {
+			KDClickButton("collUP");
+		}
+		return true;
+	}
+	return false;
+}
 function KDFunctionSpellPageScroll(amount) {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" ) {
 		if (amount > 0) {

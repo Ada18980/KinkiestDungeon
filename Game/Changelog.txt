@@ -29,6 +29,8 @@ TODO:
 - Aggro level
 - Make swimsuit remove drenched modifier
 
+5.3.20
+
 5.3.19
 - Fixed 'temp leash enemy failing to deliver to jail or cage'
 - Added graphics for bars in bandit hideout

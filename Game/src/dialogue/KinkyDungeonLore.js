@@ -525,7 +525,8 @@ function KDDrawLoreRepTabs(xOffset) {
 			case  "Logbook": KinkyDungeonDrawState = amount < 0 ? "Collection"  : "Quest"; break;
 			case  "Quest": KinkyDungeonDrawState = amount < 0 ? "Logbook"  : "Reputation"; break;
 			case  "Reputation": KinkyDungeonDrawState = amount < 0 ? "Quest"  : "Collection"; break;
-			case  "Collection": KinkyDungeonDrawState = amount < 0 ? "Reputation"  : "Logbook"; break;
+			case  "Collection": KinkyDungeonDrawState = amount < 0 ? "Reputation"  : "Facilities"; break;
+			case  "Facilities": KinkyDungeonDrawState = amount < 0 ? "Collection"  : "Logbook"; break;
 		}
 	};
 	let xxstart = 550;
@@ -552,6 +553,13 @@ function KDDrawLoreRepTabs(xOffset) {
 		return true;
 	}, true, xxstart + II*width, 10, width - 10, 40, TextGet("KinkyDungeonCollection"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Collection", KDButtonColor); II++;
+	DrawButtonKDExScroll("TabFacilities", scrollFunc, (b) => {
+		KinkyDungeonDrawState = "Facilities";
+		return true;
+	}, true, xxstart + II*width, 10, width - 10, 40, TextGet("KinkyDungeonFacilities"), "#ffffff", undefined, undefined, undefined,
+	KinkyDungeonDrawState != "Facilities", KDButtonColor); II++;
+
+
 }
 
 /**

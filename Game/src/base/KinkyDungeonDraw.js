@@ -1847,7 +1847,16 @@ function KinkyDungeonDrawGame() {
 			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
 		}
 		KinkyDungeonDrawCollection();
-	} else if (KinkyDungeonDrawState == "Reputation") {
+	}  else if (KinkyDungeonDrawState == "Facilities") {
+		KDDrawNavBar(3);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
+		KinkyDungeonDrawFacilities();
+	}
+
+
+	else if (KinkyDungeonDrawState == "Reputation") {
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KDDrawNavBar(3);
 		if (KDGameData.PlayerName) {

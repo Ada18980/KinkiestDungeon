@@ -115,6 +115,7 @@
         "Game/src/player/KDDelayedActions.js",
         "Game/src/enemy/KDCommander.js",
         "Game/src/map/KDJourney.ts",
+        "Game/src/player/KDFacilities.ts",
         "Scripts/KDMods.ts",
         "Scripts/Main.ts",
         "Data/Filters.ts",

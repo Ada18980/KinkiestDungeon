@@ -423,7 +423,8 @@ function KDDrawSpellChoices() {
 
 	hotBarIndex = 0;
 
-	for (i = 0; i < KinkyDungeonSpellChoiceCountPerPage; i++) {
+	let maxSmallIcons = KDToggles.BuffSide ? 7 : 3;
+	for (i = 0; i < maxSmallIcons &&  i < KinkyDungeonSpellChoiceCountPerPage; i++) {
 		let index = i + KDSpellPage * KinkyDungeonSpellChoiceCountPerPage;
 		/*let buttonWidth = 40;
 		let buttonPad = 80;
@@ -439,8 +440,8 @@ function KDDrawSpellChoices() {
 			y: HotbarStart,
 			w: 72,
 			h: 72,
-			wsmall: 41,
-			hsmall: 41,
+			wsmall: 36,
+			hsmall: 36,
 		};
 
 
@@ -603,12 +604,11 @@ function KDDrawSpellChoices() {
 			let arm = KinkyDungeonArmorChoices[indexPaged];
 			let consumable = KinkyDungeonConsumableChoices[indexPaged];
 			//let weapon = KinkyDungeonWeaponChoices[index];
+			let buttonDimSmall = {
+				x: buttonDim.x-1 + (buttonDim.wsmall) * ((page - 1) % 2),
+				y: buttonDim.y-1 - (buttonDim.hsmall) * (1 + Math.floor((page - 1)/2)),
+			};
 			if (spellPaged) {
-				// Draw the main spell icon
-				let buttonDimSmall = {
-					x: buttonDim.x-1 + (buttonDim.wsmall - 6) * (page - 1),
-					y: buttonDim.y-1 - buttonDim.hsmall,
-				};
 				if (spellPaged.type == "passive" && KinkyDungeonSpellChoicesToggle[indexPaged]) {
 					FillRectKD(kdcanvas, kdpixisprites, page + "pgspell" + i, {
 						Left: buttonDimSmall.x - 1,
@@ -655,10 +655,6 @@ function KDDrawSpellChoices() {
 				}
 			} else if (item) {
 
-				let buttonDimSmall = {
-					x: buttonDim.x-1 + (buttonDim.wsmall - 6) * (page - 1),
-					y: buttonDim.y-1 - buttonDim.hsmall,
-				};
 				icon += 1;
 				let prev = KDGetItemPreview({name: item, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)});
 				if (prev) {

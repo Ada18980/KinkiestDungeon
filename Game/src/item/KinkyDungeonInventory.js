@@ -1371,7 +1371,7 @@ function KinkyDungeonDrawInventory() {
 		let xx = -1;
 
 		if (selected) {
-			KDDrawHotbarBottom(selected, undefined, undefined, -400);
+			KDDrawHotbarBottom(selected, undefined, undefined, -432, true);
 		}
 
 		if (selected && KDConfigHotbar) {
@@ -1728,7 +1728,7 @@ function KinkyDungeonDrawInventory() {
 				return true;
 			}
 			return true;
-		}, true, canvasOffsetX_ui + xOffset + 100 + 50, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 60, TextGet("KinkyDungeonBookLastPage"), "White", "", "", undefined, true, KDButtonColor,
+		}, true, canvasOffsetX_ui + xOffset + 100 + 50, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 50, TextGet("KinkyDungeonBookLastPage"), "White", "", "", undefined, true, KDButtonColor,
 		undefined, undefined, {
 			hotkey: KDHotkeyToText(KinkyDungeonKey[1]),
 			hotkeyPress: KinkyDungeonKey[1],
@@ -1741,7 +1741,7 @@ function KinkyDungeonDrawInventory() {
 				return true;
 			}
 			return true;
-		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 375, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 60, TextGet("KinkyDungeonBookNextPage"), "White", "", "", undefined, true, KDButtonColor,
+		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 375, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 50, TextGet("KinkyDungeonBookNextPage"), "White", "", "", undefined, true, KDButtonColor,
 		undefined, undefined, {
 			hotkey: KDHotkeyToText(KinkyDungeonKey[3]),
 			hotkeyPress: KinkyDungeonKey[3],
@@ -2956,7 +2956,8 @@ function KDGiveItem(name, quantity = 1) {
 	return false;
 }
 
-function KDDrawHotbarBottom(selected, spells, selectSpell, xshift = 0) {
+function KDDrawHotbarBottom(selected, spells, selectSpell, xshift = 0, allowOverflow = false) {
+	if (KDToggles.BuffSide) allowOverflow = true;
 	let i = 0;
 	let HotbarStart = 995 - 70;
 	let hotBarSpacing = 72;
@@ -3001,8 +3002,8 @@ function KDDrawHotbarBottom(selected, spells, selectSpell, xshift = 0) {
 			y: HotbarStart,
 			w: 72,
 			h: 72,
-			wsmall: 41,
-			hsmall: 41,
+			wsmall: 36,
+			hsmall: 36,
 		};
 
 
@@ -3201,8 +3202,9 @@ function KDDrawHotbarBottom(selected, spells, selectSpell, xshift = 0) {
 				});
 		}
 		let icon = 0;
+		let maxSmallIcons = allowOverflow ? 7 : 3;
 		// Draw icons for the other pages, if applicable
-		for (let page = 1; page <= Math.floor((KinkyDungeonSpellChoiceCount - 1) / KinkyDungeonSpellChoiceCountPerPage); page += 1) {
+		for (let page = 1; page < maxSmallIcons && page <= Math.floor((KinkyDungeonSpellChoiceCount - 1) / KinkyDungeonSpellChoiceCountPerPage); page += 1) {
 			let pg = KDSpellPage + page;
 			if (pg > Math.floor((KinkyDungeonSpellChoiceCount) / KinkyDungeonSpellChoiceCountPerPage)) pg -= 1 + Math.floor((KinkyDungeonSpellChoiceCount - 1) / KinkyDungeonSpellChoiceCountPerPage);
 
@@ -3213,12 +3215,12 @@ function KDDrawHotbarBottom(selected, spells, selectSpell, xshift = 0) {
 			let arm = KinkyDungeonArmorChoices[indexPaged];
 			let consumable = KinkyDungeonConsumableChoices[indexPaged];
 			//let weapon = KinkyDungeonWeaponChoices[index];
+			// Draw the main spell icon
+			let buttonDimSmall = {
+				x: buttonDim.x-1 + (buttonDim.wsmall) * ((page - 1) % 2),
+				y: buttonDim.y-1 - (buttonDim.hsmall) * (1 + Math.floor((page - 1)/2)),
+			};
 			if (spellPaged) {
-				// Draw the main spell icon
-				let buttonDimSmall = {
-					x: buttonDim.x-1 + (buttonDim.wsmall - 5) * (page - 1),
-					y: buttonDim.y-1 - buttonDim.hsmall,
-				};
 				if (spellPaged.type == "passive" && KinkyDungeonSpellChoicesToggle[indexPaged]) {
 					FillRectKD(kdcanvas, kdpixisprites, page + "pgspell" + i, {
 						Left: buttonDimSmall.x - 1,
@@ -3258,7 +3260,7 @@ function KDDrawHotbarBottom(selected, spells, selectSpell, xshift = 0) {
 					}
 
 					return true;
-				}, true, buttonDimSmall.x - 4, buttonDimSmall.y - 4, buttonDim.wsmall - 7, buttonDim.hsmall - 7, "",
+				}, true, buttonDimSmall.x - 4, buttonDimSmall.y - 4, buttonDim.wsmall - 2, buttonDim.hsmall - 2, "",
 				KDButtonColor, "", "", false, true, KDButtonColor, undefined, undefined, {zIndex: 50});
 				KDDraw(kdcanvas, kdpixisprites, "spellIcon" + icon + "," + indexPaged, KinkyDungeonRootDirectory + "Spells/" + spellPaged.name + ".png"
 					,buttonDimSmall.x - 4, buttonDimSmall.y - 4, buttonDim.wsmall, buttonDim.hsmall, undefined, {
@@ -3280,11 +3282,6 @@ function KDDrawHotbarBottom(selected, spells, selectSpell, xshift = 0) {
 					//});
 				}
 			} else if (item) {
-
-				let buttonDimSmall = {
-					x: buttonDim.x-1 + (buttonDim.wsmall - 5) * (page - 1),
-					y: buttonDim.y-1 - buttonDim.hsmall,
-				};
 				icon += 1;
 				let prev = KDGetItemPreview({name: item, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)});
 				if (prev) {
@@ -3317,7 +3314,7 @@ function KDDrawHotbarBottom(selected, spells, selectSpell, xshift = 0) {
 						}
 
 						return true;
-					}, true, buttonDimSmall.x - 4, buttonDimSmall.y - 4, buttonDim.wsmall - 7, buttonDim.hsmall - 7, "",
+					}, true, buttonDimSmall.x - 4, buttonDimSmall.y - 4, buttonDim.wsmall - 2, buttonDim.hsmall - 2, "",
 					KDButtonColor, "", "", false, true, KDButtonColor, undefined, undefined, {zIndex: 50});
 
 				}
@@ -3339,11 +3336,6 @@ function KDDrawHotbarBottom(selected, spells, selectSpell, xshift = 0) {
 						});
 				}
 			} else if (selected || spells) {
-
-				let buttonDimSmall = {
-					x: buttonDim.x-1 + (buttonDim.wsmall - 5) * (page - 1),
-					y: buttonDim.y-1 - buttonDim.hsmall,
-				};
 				icon += 1;
 				/*KDDraw(kdcanvas, kdpixisprites, "spellIcon" + icon + "," + indexPaged,  prev.preview
 					,buttonDimSmall.x - 4, buttonDimSmall.y - 4, buttonDim.wsmall, buttonDim.hsmall, undefined, {
@@ -3363,7 +3355,7 @@ function KDDrawHotbarBottom(selected, spells, selectSpell, xshift = 0) {
 					} else
 						KinkyDungeonClickItemChoice(I, selected.item.name);
 					return true;
-				}, true, buttonDimSmall.x - 4, buttonDimSmall.y - 4, buttonDim.wsmall - 7, buttonDim.hsmall - 7, "",
+				}, true, buttonDimSmall.x - 4, buttonDimSmall.y - 4, buttonDim.wsmall - 2, buttonDim.hsmall - 2, "",
 				KDButtonColor, "", "", false, true, KDButtonColor, undefined, undefined, {zIndex: 50});
 
 			}
