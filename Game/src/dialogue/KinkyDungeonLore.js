@@ -529,34 +529,35 @@ function KDDrawLoreRepTabs(xOffset) {
 			case  "Facilities": KinkyDungeonDrawState = amount < 0 ? "Collection"  : "Logbook"; break;
 		}
 	};
-	let xxstart = 550;
+	let xxstart = 430;
+	let yy = 40;
 	let num = 4;
 	let width = 1100 / num;
 	let II = 0;
 	DrawButtonKDExScroll("TabLore", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Logbook";
 		return true;
-	}, true, xxstart + II*width, 10, width - 10, 40, TextGet("KinkyDungeonLog"), "#ffffff", undefined, undefined, undefined,
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonLog"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Logbook", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabQuest", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Quest";
 		return true;
-	}, true, xxstart + II*width, 10, width - 10, 40, TextGet("KinkyDungeonQuest"), "#ffffff", undefined, undefined, undefined,
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonQuest"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Quest", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabRep", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Reputation";
 		return true;
-	}, true, xxstart + II*width, 10, width - 10, 40, TextGet("KinkyDungeonReputation"), "#ffffff", undefined, undefined, undefined,
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonReputation"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Reputation", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabCollection", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Collection";
 		return true;
-	}, true, xxstart + II*width, 10, width - 10, 40, TextGet("KinkyDungeonCollection"), "#ffffff", undefined, undefined, undefined,
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonCollection"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Collection", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabFacilities", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Facilities";
 		return true;
-	}, true, xxstart + II*width, 10, width - 10, 40, TextGet("KinkyDungeonFacilities"), "#ffffff", undefined, undefined, undefined,
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonFacilities"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Facilities", KDButtonColor); II++;
 
 

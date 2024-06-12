@@ -424,7 +424,7 @@ function KDDrawSpellChoices() {
 	hotBarIndex = 0;
 
 	let maxSmallIcons = KDToggles.BuffSide ? 7 : 3;
-	for (i = 0; i < maxSmallIcons &&  i < KinkyDungeonSpellChoiceCountPerPage; i++) {
+	for (i = 0; i < KinkyDungeonSpellChoiceCountPerPage; i++) {
 		let index = i + KDSpellPage * KinkyDungeonSpellChoiceCountPerPage;
 		/*let buttonWidth = 40;
 		let buttonPad = 80;
@@ -593,7 +593,7 @@ function KDDrawSpellChoices() {
 		}
 		let icon = 0;
 		// Draw icons for the other pages, if applicable
-		for (let page = 1; page <= Math.floor((KinkyDungeonSpellChoices.length - 1) / KinkyDungeonSpellChoiceCountPerPage); page += 1) {
+		for (let page = 1; page < maxSmallIcons && page <= Math.floor((KinkyDungeonSpellChoices.length - 1) / KinkyDungeonSpellChoiceCountPerPage); page += 1) {
 			let pg = KDSpellPage + page;
 			if (pg > Math.floor(KinkyDungeonSpellChoices.length / KinkyDungeonSpellChoiceCountPerPage)) pg -= 1 + Math.floor((KinkyDungeonSpellChoices.length - 1) / KinkyDungeonSpellChoiceCountPerPage);
 
