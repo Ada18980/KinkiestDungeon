@@ -4171,7 +4171,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	if (KDEnemyHasFlag(enemy, "runAway")) {
 		AIData.followRange = 5.9;
-		AIData.kite = true;
+		if (AIData.playerDist > 1.5 || KDRandom() < 0.75)
+			AIData.kite = true;
 	}
 
 	// Movement loop
@@ -4312,7 +4313,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				&& AIData.moveTowardPlayer) {
 				//enemy.aware = true;
 
-				if (KDistChebyshev(enemy.x - player.x, enemy.y - player.y) > AIData.followRange) {
+				if (AIData.kite ? true : KDistChebyshev(enemy.x - player.x, enemy.y - player.y) > AIData.followRange) {
 					for (let T = 0; T < 12; T++) {
 						let dir = KDGetDir(enemy, player);
 						let splice = false;
@@ -8012,10 +8013,11 @@ function KDGetEnemyTypeName(enemy) {
 /**
  *
  * @param {entity} enemy
+ * @param {AIData} AIData
  * @returns {boolean}
  */
-function KDGateAttack(enemy) {
-	return !(KDEnemyHasFlag(enemy, "runAway") || KDEnemyHasFlag(enemy, "attackFail"));
+function KDGateAttack(enemy, AIData) {
+	return !((!enemy.attackPoints && KDEnemyHasFlag(enemy, "runAway") && (!AIData || AIData.kite)) || KDEnemyHasFlag(enemy, "attackFail"));
 }
 
 /**
