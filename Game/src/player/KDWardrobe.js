@@ -330,6 +330,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 				delete Model.Filters[KDCurrentLayer];
 				KDCurrentModels.get(C).Models.set(Model.Name, Model);
 			}
+			KDRefreshProps = true;
 			lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
 			ForceRefreshModels(C);
 			return true;
@@ -948,6 +949,7 @@ function KDDrawModelList(X, C) {
 			undefined, undefined, index_sub != KDModelList_Sublevel_index, KDButtonColor);
 		if (sublevel) {
 			if (index_sub == KDModelList_Sublevel_index && KDCurrentModels.get(C).Models.has(sublevel)) {
+				KDRefreshProps = true;
 				KDSelectedModel = C.Appearance.find((value) => {
 					return value.Model.Name == sublevel;
 				})?.Model;
