@@ -675,7 +675,7 @@ function KDProcessInput(type, data) {
 				KDSendStatus('goddess', data.shrine, 'takeOrb');
 				if (KinkyDungeonStatsChoice.get("randomMode")) {
 					let tt = KinkyDungeonTilesGet(data.x + "," + data.y);
-					let spell = (tt ? KinkyDungeonFindSpell(tt.Spell) : null) || KDGetRandomSpell();
+					let spell = ((tt && !KDHasSpell(tt.Spell)) ? KinkyDungeonFindSpell(tt.Spell) : null) || KDGetRandomSpell();
 
 					if (spell) {
 						KDPushSpell(spell);

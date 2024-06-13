@@ -30,6 +30,8 @@ TODO:
 - Make swimsuit remove drenched modifier
 
 5.3.20
+- You can now give release to distracted NPCs thru the flirting menu
+-
 
 5.3.19
 - Fixed 'temp leash enemy failing to deliver to jail or cage'

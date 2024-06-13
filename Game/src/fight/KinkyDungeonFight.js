@@ -1169,22 +1169,12 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 							KDAddDistraction(Enemy, Enemy.Enemy.maxhp*0.35, 0.1);
 						}
 						if (Enemy.distraction >= Enemy.Enemy.maxhp && (predata.tease || KDIsTeasing(Damage)) && !predata.flags?.includes("BurningDamage")) {
-							let damageData = KDGetEnemyReleaseDamage(Enemy);
-							KinkyDungeonDamageEnemy(Enemy, damageData, true, true, undefined, undefined, undefined, 0.99, undefined, true, false);
-							if (KinkyDungeonVisionGet(Enemy.x, Enemy.y)) {
-								KinkyDungeonSendTextMessage(1, TextGet("KDEnemyLetGo")
-									.replace("ENMY", TextGet("Name" + Enemy.Enemy.name))
-									.replace("AMNT", "" + Math.round(10*damageData.damage)),
-								"#e7cf1a", 2, undefined, undefined, undefined, "Combat");
-							}
-							Enemy.distraction = 0;
-							Enemy.desire = 0;
-							KDAddThought(Enemy.id, "Embarrassed", 10, 5);
+							KDEnemyRelease(Enemy);
 						}
 					}
 				}
 
-		if (!forceKill && (KDBoundEffects(Enemy) > 3 || KDIsInParty(Enemy)) && (Enemy.hp <= 0 || (KDBoundEffects(Enemy) > 3 && Enemy.hp <= Enemy.Enemy.maxhp * 0.1))) {
+		if (!forceKill && (KDBoundEffects(Enemy) > 3 || KDIsInParty(Enemy) || Damage.nokill) && (Enemy.hp <= 0 || (KDBoundEffects(Enemy) > 3 && Enemy.hp <= Enemy.Enemy.maxhp * 0.1))) {
 			if (!(Enemy.boundLevel > 0) && KDIsInParty(Enemy)) {
 				KDTieUpEnemy(Enemy, 2*Enemy.Enemy.maxhp, "Null");
 			}

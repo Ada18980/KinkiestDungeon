@@ -246,8 +246,13 @@ function KDPleaseSpeaker(Amount) {
 function KDAddOpinion(enemy, Amount) {
 	if (!enemy) return;
 	let a = Math.min(1000, Math.abs(Amount));
-	while (a > 0) {
-		enemy.opinion = Math.max((enemy.opinion || 0) + Math.min(10, a) * Math.min(10, a) / (Amount > 0 ? (Math.min(10, a) + (enemy.opinion || 0)) : -1), 0);
+	while (a > 0 && (Amount < 0 || (enemy.opinion || 0) < Amount * 10)) {
+		enemy.opinion = Math.max(
+			(enemy.opinion || 0)
+				+ Math.min(10, a)
+					* Math.min(10, a)
+					/ (Amount > 0 ? (Math.min(10, a) + (enemy.opinion || 0)) : -1),
+			0);
 		a -= 10;
 	}
 }
@@ -726,7 +731,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 				prerequisiteFunction: (gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-						return KinkyDungeonCanPlay(enemy) && !enemy.playWithPlayer;
+						return (KinkyDungeonCanPlay(enemy)) && !enemy.playWithPlayer;
 					}
 					return false;
 				},
@@ -749,6 +754,69 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 					return false;
 				},
 				leadsToStage: "", dontTouchText: true, exitDialogue: true,
+			},
+			Release: {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (gagged, player) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						return (KDIsDistracted(enemy)) && !enemy.playWithPlayer;
+					}
+					return false;
+				},
+				options: {
+					"Wand": {
+						playertext: "Default", response: "Default", gag: true,
+						prerequisiteFunction: (gagged, player) => {
+							return KinkyDungeonInventoryGet("VibeWand") != undefined && !KinkyDungeonIsHandsBound(true, true, 0.99);
+						},
+						clickFunction: (gagged, player) => {
+							let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+							if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+								KDEnemyRelease(enemy);
+								KDAddOpinion(KDGetSpeaker(), 3);
+							}
+							KDGameData.CurrentDialogMsg = name + "Release_Success" + (!KDEnemyCanTalk(enemy) ? "Gagged" : (enemy.personality || ""));
+							return false;
+						},
+						leadsToStage: "", dontTouchText: true, exitDialogue: true,
+					},
+					"Cuddle": {
+						playertext: "Default", response: "Default", gag: true,
+						prerequisiteFunction: (gagged, player) => {
+							return true;
+						},
+						clickFunction: (gagged, player) => {
+							let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+							if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+								KDEnemyRelease(enemy);
+								KDStunTurns(2, true);
+								KDAddOpinion(KDGetSpeaker(), 3);
+							}
+							KDGameData.CurrentDialogMsg = name + "Release_Success" + (!KDEnemyCanTalk(enemy) ? "Gagged" : (enemy.personality || ""));
+							return false;
+						},
+						leadsToStage: "", dontTouchText: true, exitDialogue: true,
+					},
+					"Vibe": {
+						playertext: "Default", response: "Default", gag: true,
+						prerequisiteFunction: (gagged, player) => {
+							let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+							return KDEntityBuffedStat(enemy, "Plug") && KinkyDungeonInventoryGet("VibeRemote") != undefined && !KinkyDungeonIsHandsBound(true, true, 0.99);
+						},
+						clickFunction: (gagged, player) => {
+							let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+							if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+								KDEnemyRelease(enemy);
+								KDStunTurns(2, true);
+								KDAddOpinion(KDGetSpeaker(), 3);
+							}
+							KDGameData.CurrentDialogMsg = name + "Release_Success" + (!KDEnemyCanTalk(enemy) ? "Gagged" : (enemy.personality || ""));
+							return false;
+						},
+						leadsToStage: "", dontTouchText: true, exitDialogue: true,
+					},
+				}
 			},
 			BondageOffer: {
 				playertext: "Default", response: "Default", gag: true,

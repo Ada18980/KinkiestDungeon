@@ -1240,11 +1240,12 @@ function KDGetEnemyDistractionDamage(enemy, vibe) {
  * @param {entity} enemy
  * @returns {any}
  */
-function KDGetEnemyReleaseDamage(enemy) {
+function KDGetEnemyReleaseDamage(enemy, nokill = true) {
 	let data = {
 		enemy: enemy,
 		damage: enemy.Enemy.maxhp * Math.max(0.1, enemy.desire / enemy.Enemy.maxhp),
 		type: "charm",
+		nokill: nokill,
 	};
 	KinkyDungeonSendEvent("enemyOrgasm", data);
 	return data;
@@ -1744,6 +1745,7 @@ function KDDrawEnemyTooltip(enemy, offset) {
 	}
 	let statuses = [];
 
+	if (KDIsDistracted(enemy)) statuses.push({name: "Distracted", count: undefined});
 	if (enemy.vulnerable > 0) statuses.push({name: "Vulnerable", count: undefined});
 	if (KDIsFlying(enemy)) statuses.push({name: "Flying", count: undefined});
 	if (KDEntityBuffedStat(enemy, "Vibration")) statuses.push({name: "Vibed", count: undefined});
@@ -3637,7 +3639,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.domMe = (player.player && AIData.aggressive) ? false : KDCanDom(enemy);
 
 	AIData.leashing = enemy.Enemy.tags.leashing && (KDFactionRelation(KDGetFaction(enemy), "Jail")) > -0.5;
-	AIData.highdistraction = enemy.distraction > 0 && enemy.distraction >= enemy.Enemy.maxhp * 0.9;
+	AIData.highdistraction = KDIsDistracted(enemy);
 	AIData.distracted = AIData.highdistraction && KDLoosePersonalities.includes(enemy.personality);
 	// Check if the enemy ignores the player
 	if (player.player && (enemy.aware || enemy.vp > 0) && !KDAllied(enemy) && !KDEnemyHasFlag(enemy, "noignore")) {
@@ -5098,10 +5100,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 												KDStunTurns(enemy.Enemy.movePoints + moveMult - 1);
 												KinkyDungeonSleepTime = CommonTime() + 200;
 											}
+											KinkyDungeonSetFlag("grabbed", 4);
 
 											if (AIData.leashing && !KDPlayerIsImmobilized() && !KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 												KinkyDungeonAttachTetherToEntity(2.5, enemy, player);
-												KinkyDungeonSetFlag("grabbed", 4);
 												KinkyDungeonSetFlag("leashtug", 3);
 											}
 											//KinkyDungeonSetFlag("nojailbreak", KDGameData.KinkyDungeonLeashedPlayer);
@@ -8062,4 +8064,33 @@ function KDEnemyAccuracy(enemy, player) {
 	}
 
 	return Math.min(1, accuracy);
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDIsDistracted(enemy) {
+	return enemy.distraction > 0 && enemy.distraction >= enemy.Enemy.maxhp * 0.9;
+}
+
+/**
+ *
+ * @param {entity} Enemy
+ * @returns {boolean}
+ */
+function KDEnemyRelease(Enemy) {
+	let damageData = KDGetEnemyReleaseDamage(Enemy);
+	KinkyDungeonDamageEnemy(Enemy, damageData, true, true, undefined, undefined, undefined, 0.99, undefined, true, false);
+	if (KinkyDungeonVisionGet(Enemy.x, Enemy.y)) {
+		KinkyDungeonSendTextMessage(1, TextGet("KDEnemyLetGo")
+			.replace("ENMY", TextGet("Name" + Enemy.Enemy.name))
+			.replace("AMNT", "" + Math.round(10*damageData.damage)),
+		"#e7cf1a", 2, undefined, undefined, undefined, "Combat");
+	}
+	Enemy.distraction = 0;
+	Enemy.desire = 0;
+	KDAddThought(Enemy.id, "Embarrassed", 10, 5);
+	return true;
 }

@@ -495,6 +495,7 @@ let KDIntentEvents = {
 				&& KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints")
 				&& !KinkyDungeonFlags.has("TempLeashCD")
 				&& (KDGameData.PrisonerState == 'parole' || KinkyDungeonGoddessRep.Ghost > 0 || KDEnemyHasFlag(enemy, "allowLeashWalk"))
+				&& (KDGameData.PrisonerState != 'jail' || (!KDHostile(enemy) && !KinkyDungeonPlayerInCell(true)))
 				//&& KDStrictPersonalities.includes(KDJailPersonality(enemy))
 				&& KDEnemyCanTalk(enemy)
 				&& !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) ?

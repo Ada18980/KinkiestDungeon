@@ -7650,6 +7650,7 @@ KDStatusTooltipEnemyBelt,Belted
 KDStatusTooltipEnemyPlug,Wearing a toy
 KDStatusTooltipEnemyVibed,Vibed!
 KDStatusTooltipEnemyFlying,Flying
+KDStatusTooltipEnemyDistracted,Distracted!
 
 KinkyDungeonDamageTypesoap,"Soap"
 KinkyDungeonDamageTypeacid,"Acid"
@@ -11945,7 +11946,23 @@ rGenericAllyFlirt_PlayRequest,"(The SPEAKER smiles)|Am I thinking what you're th
 rGenericAllyFlirt_PlayRequestDom,"(The SPEAKER grins)|Why yes, I have just the thing~"
 rGenericAllyFlirt_PlayRequestSub,"(The SPEAKER blushes)|Oh... let me check."
 rGenericAllyFlirt_PlayRequestBrat,"(The SPEAKER smirks)|Be careful what you ask for~"
+rGenericAllyFlirt_PlayRequestGagged,"(The SPEAKER giggles)|Mmmph~"
 rGenericAllyFlirt_PlayRequestRobot,"(The SPEAKER pauses)|Calculating strictness threshold..."
+
+
+dGenericAllyFlirt_Release,"You look quite distracted..."
+dGenericAllyFlirt_ReleaseGag,"(Help her with her distraction)"
+rGenericAllyFlirt_Release,"(The SPEAKER nervously smiles)|H-how'd you know?"
+rGenericAllyFlirt_ReleaseDom,"(The SPEAKER smiles)|Indeed I am... Won't you assist me?"
+rGenericAllyFlirt_ReleaseSub,"(The SPEAKER wiggles excitedly)|Y-yes miss!"
+rGenericAllyFlirt_ReleaseBrat,"(The SPEAKER shakes her head while blushing)|W-what makes you think that?"
+rGenericAllyFlirt_ReleaseRobot,"(The SPEAKER computes something)|Error..."
+rGenericAllyFlirt_ReleaseGagged,"(The SPEAKER nods)|Mmmph!"
+dGenericAllyFlirt_Release_Wand,"(Give her release with a magic wand)"
+dGenericAllyFlirt_Release_Vibe,"(Set her toys to high for a while)"
+dGenericAllyFlirt_Release_Cuddle,"(Cuddle with her for 2 turns)"
+rGenericAllyFlirt_Release_Success,"(The SPEAKER trembles with pleasure)"
+rGenericAllyFlirt_Release_FailChastity,"(The SPEAKER struggles to let go due to her chastity belt)"
 
 
 
@@ -23279,6 +23296,14 @@ KinkyDungeonStatDescFreeBoob2,"Chastity bras are much rarer."
 
 KDFacilitiesLocked,Find an elevator to the Summit in order to access facilities.
 
+KDFacilityInfo_Training,"+AMNT% Training/Tick"
+KDFacilityInfo_Opinion,"+AMNT% Opinion/Tick"
+KDFacilityInfo_Productivity,"+AMNT% Productivity"
+KDFacilityInfo_Prisoners,"AMNT/MAXX Prisoners Assigned"
+KDFacilityInfo_Servants,"AMNT/MAXX Servants Assigned"
+
+KDFacility_Management,Management
+KDFacilityDesc_Management,"Assign servants as managers to boost the production of other facilities. Managers gain increased opinion and training over time."
 KDFacility_TrainingDojo,Bondage Dojo
 KDFacilityDesc_TrainingDojo,"Assign servants to perfect the art of walking in heels, wearing tight corsets, communicating while gagged, and overall flexibility."
 KDFacility_RescueSquad,Covert Operations
@@ -23286,6 +23311,7 @@ KDFacilityDesc_RescueSquad,"Assign servants to train squads of rescue maids, whi
 KDFacility_AlchemyLab,Alchemy Lab
 KDFacilityDesc_AlchemyLab,"Assign servants to produce potions from base ingredients you acquire in your adventures."
 KDFacility_Recycler,Recycler
-KDFacilityDesc_Recycler,"Convert low tier restraints into raw materials and output higher quality restraints."
+KDFacilityDesc_Recycler,"Convert low tier restraints into raw materials and output higher quality restraints. Adding more servants increase the conversion speed."
 KDFacility_CuddleLounge,Cuddle Lounge
 KDFacilityDesc_CuddleLounge,"Assign prisoners to the lounge in order to improve your servants' opinion of you."
+

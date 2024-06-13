@@ -1287,7 +1287,7 @@ let KDExpressions = {
 		},
 	},
 	"Grabbed": {
-		priority: 17,
+		priority: 27,
 		criteria: (C) => {
 			if (C == KinkyDungeonPlayer && (KinkyDungeonFlags.get("grabbed"))) {
 				return true;
