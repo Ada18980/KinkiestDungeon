@@ -18473,6 +18473,8 @@ Replaces 60% of cages with a different kind of kinky furniture such as display s
 用不同种类的古怪场景家具（例如展示架）取代 60% 的笼子。
 Collection
 收藏
+Facilities
+设施
 Storage
 存储
 Management
