@@ -19512,7 +19512,7 @@ AMNT/MAXX 仆从分配
 Management
 管理
 Assign servants as managers to boost the production of other facilities. Managers gain increased opinion and training over time.
-指派仆人担任管理员，以促进其他设施的生产。随着时间的推移，管理员会获得更多的意见和培训。
+指派仆人担任管理员，以促进其他设施的生产。随着时间的推移，管理员会获得更多的观点和训练。
 Bondage Dojo
 束缚道场
 Assign servants to perfect the art of walking in heels, wearing tight corsets, communicating while gagged, and overall flexibility.
@@ -19532,4 +19532,4 @@ Convert low tier restraints into raw materials and output higher quality restrai
 Cuddle Lounge
 拥抱休息室
 Assign prisoners to the lounge in order to improve your servants' opinion of you.
-将囚犯分配到休息室以提高仆人对你的看法。
+将囚犯分配到休息室以提高仆人对你的观点。
