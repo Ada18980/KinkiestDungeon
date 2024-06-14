@@ -10666,6 +10666,8 @@ Vibed!
 震动中！
 Flying
 飞行中
+Distracted!
+分心!
 Acid
 皂化
 Acid
@@ -14140,8 +14142,36 @@ Got something for me?
 （SPEAKER 脸红了）|哦……让我检查一下。
 (The SPEAKER smirks)|Be careful what you ask for~
 （SPEAKER 傻笑）|小心你的要求~
+(The SPEAKER giggles)|Mmmph~
+（SPEAKER 咯咯地笑着）|Mmmph~
 (The SPEAKER pauses)|Calculating strictness threshold...
 （SPEAKER 停顿）|正在计算严格阈值...
+You look quite distracted...
+你看起来很分心...
+(Help her with her distraction)
+（帮她分散注意力）
+(The SPEAKER nervously smiles)|H-how'd you know
+（SPEAKER 紧张地笑了笑）你-你怎么知道
+(The SPEAKER smiles)|Indeed I am... Won't you assist me?
+（SPEAKER 微笑）|确实是...你不愿意帮助我吗？
+(The SPEAKER wiggles excitedly)|Y-yes miss!
+（SPEAKER 兴奋地扭动着身体）|是-是的，小姐！
+(The SPEAKER shakes her head while blushing)|W-what makes you think that?
+（SPEAKER 脸红了，摇了摇头）|你怎么会这么想？
+(The SPEAKER computes something)|Error...
+（SPEAKER 计算某事）|错误...
+(The SPEAKER nods)|Mmmph!
+（SPEAKER 点头）|Mmmph!
+(Give her release with a magic wand)
+（用魔杖释放她）
+(Set her toys to high for a while)
+（将她的玩具调高一段时间）
+(Cuddle with her for 2 turns)
+（与她拥抱 2 回合）
+(The SPEAKER trembles with pleasure)
+（SPEAKER 高兴得浑身颤抖）
+(The SPEAKER struggles to let go due to her chastity belt)
+（由于贞操带的存在，SPEAKER 很难高潮）
 Let's go for a walk!
 让我们出去走走！
 (Jump excitedly, presenting your collar for a leash)
@@ -19467,3 +19497,39 @@ Liberate the Boob
 解放胸部
 Chastity bras are much rarer.
 贞操文胸将会很少见。
+Find an elevator to the Summit in order to access facilities.
+找到通往山顶的电梯以便使用设施。
++AMNT% Training/Tick
++AMNT% 训练/刻
++AMNT% Opinion/Tick
++AMNT% 观点/刻
++AMNT% Productivity
++AMNT% 生产力
+AMNT/MAXX Prisoners Assigned
+AMNT/MAXX 囚犯分配
+AMNT/MAXX Servants Assigned
+AMNT/MAXX 仆从分配
+Management
+管理
+Assign servants as managers to boost the production of other facilities. Managers gain increased opinion and training over time.
+指派仆人担任管理员，以促进其他设施的生产。随着时间的推移，管理员会获得更多的意见和培训。
+Bondage Dojo
+束缚道场
+Assign servants to perfect the art of walking in heels, wearing tight corsets, communicating while gagged, and overall flexibility.
+指派仆人完善穿高跟鞋走路、穿紧身胸衣、堵嘴交流的艺术以及整体的灵活性。
+Covert Operations
+秘密行动
+Assign servants to train squads of rescue maids, which you can call upon in times of need.
+指派仆人训练救援女仆小队，以便在需要时可以召唤她们。
+Alchemy Lab
+炼金实验室
+Assign servants to produce potions from base ingredients you acquire in your adventures.
+指派仆人使用你在冒险中获得的基本材料制作药水。
+Recycler
+回收者
+Convert low tier restraints into raw materials and output higher quality restraints. Adding more servants increase the conversion speed.
+将低阶束缚转化为原材料，产出更高品质束缚，增加从者数量可加快转化速度。
+Cuddle Lounge
+拥抱休息室
+Assign prisoners to the lounge in order to improve your servants' opinion of you.
+将囚犯分配到休息室以提高仆人对你的看法。
