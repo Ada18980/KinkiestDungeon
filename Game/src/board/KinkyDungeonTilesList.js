@@ -435,45 +435,7 @@ let KDMoveObjectFunctions = {
 		return false;
 	},
 	'D': (moveX, moveY) => { // Open the door
-		KinkyDungeonAdvanceTime(1, true);
-		let open = !KinkyDungeonStatsChoice.get("Doorknobs") || !KinkyDungeonIsHandsBound(true, true, 0.45);
-		if (!open) {
-			if (KinkyDungeonCanUseFeet(false)) {
-				KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFeet"), "#88ff88", 2);
-				open = true;
-			} else {
-				let grace = 0;
-				if (KinkyDungeonFlags.get("failUnfairFirst") && !KinkyDungeonFlags.get("failUnfair")) grace = 0.4;
-				let armsbound = KinkyDungeonIsArmsBound(true, true);
-				if (KDRandom() - grace < (armsbound ? KDDoorKnobChance : KDDoorKnobChanceArms)) {
-					KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobSuccess" + ((armsbound) ? "" : "Arms")), "#88ff88", 2);
-					open = true;
-				} else if (KDRandom() - grace < (armsbound ? KDDoorAttractChance : KDDoorAttractChanceArms) && DialogueBringNearbyEnemy(moveX, moveY, 10, true)) {
-					KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobAttract" + ((armsbound) ? "" : "Arms")), "#ff5555", 2);
-					KinkyDungeonMakeNoise(armsbound ? 6 : 3, moveX, moveY);
-					open = true;
-				} else {
-					KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFail" + (armsbound ? "" : "Arms")), "#ff5555", 2);
-					KinkyDungeonMakeNoise(armsbound ? 6 : 3, moveX, moveY);
-					if (!KinkyDungeonFlags.get("failUnfairFirst")) {
-						KinkyDungeonSetFlag("failUnfair", 5);
-						KinkyDungeonSetFlag("failUnfairFirst", 10);
-					}
-					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Locked.ogg");
-				}
-			}
-		}
-		if (open) {
-			KinkyDungeonMapSet(moveX, moveY, 'd');
-
-			// For private doors, aggro the faction
-			let faction = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).Faction ? KinkyDungeonTilesGet(moveX + "," +moveY).Faction : undefined;
-			if (faction) {
-				KinkyDungeonAggroFaction(faction, true);
-			}
-
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/DoorOpen.ogg");
-		}
+		KDAttemptDoor(moveX, moveY);
 
 		return true;
 	},
@@ -1662,3 +1624,45 @@ let KDStairsAltAction = {
 		// Beep
 	}
 };
+
+function KDAttemptDoor(moveX, moveY) {
+	KinkyDungeonAdvanceTime(1, true);
+	let open = !KinkyDungeonStatsChoice.get("Doorknobs") || !KinkyDungeonIsHandsBound(true, true, 0.45);
+	if (!open) {
+		if (KinkyDungeonCanUseFeet(false)) {
+			KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFeet"), "#88ff88", 2);
+			open = true;
+		} else {
+			let grace = 0;
+			if (KinkyDungeonFlags.get("failUnfairFirst") && !KinkyDungeonFlags.get("failUnfair")) grace = 0.4;
+			let armsbound = KinkyDungeonIsArmsBound(true, true);
+			if (KDRandom() - grace < (armsbound ? KDDoorKnobChance : KDDoorKnobChanceArms)) {
+				KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobSuccess" + ((armsbound) ? "" : "Arms")), "#88ff88", 2);
+				open = true;
+			} else if (KDRandom() - grace < (armsbound ? KDDoorAttractChance : KDDoorAttractChanceArms) && DialogueBringNearbyEnemy(moveX, moveY, 10, true)) {
+				KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobAttract" + ((armsbound) ? "" : "Arms")), "#ff5555", 2);
+				KinkyDungeonMakeNoise(armsbound ? 6 : 3, moveX, moveY);
+				open = true;
+			} else {
+				KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFail" + (armsbound ? "" : "Arms")), "#ff5555", 2);
+				KinkyDungeonMakeNoise(armsbound ? 6 : 3, moveX, moveY);
+				if (!KinkyDungeonFlags.get("failUnfairFirst")) {
+					KinkyDungeonSetFlag("failUnfair", 5);
+					KinkyDungeonSetFlag("failUnfairFirst", 10);
+				}
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Locked.ogg");
+			}
+		}
+	}
+	if (open) {
+		KinkyDungeonMapSet(moveX, moveY, 'd');
+
+		// For private doors, aggro the faction
+		let faction = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).Faction ? KinkyDungeonTilesGet(moveX + "," +moveY).Faction : undefined;
+		if (faction) {
+			KinkyDungeonAggroFaction(faction, true);
+		}
+
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/DoorOpen.ogg");
+	}
+}

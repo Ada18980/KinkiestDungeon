@@ -45,6 +45,22 @@ let KDObjectClick = {
 	"Oriel": (x, y) => {
 		KDStartDialog("Oriel", "", true, "");
 	},
+	"Door": (x, y) => {
+		if (KinkyDungeonMapGet(x, y) == 'D') {
+			KDAttemptDoor(x, y);
+		} else {
+			KinkyDungeonCloseDoor(x, y);
+		}
+	},
+};
+/**
+ * Script happens when you move to an object
+ * MUTUALLY exclusive with KDObjectDraw, as this
+ * overrides the default behavior of clicking on the object and bringing up a modal
+ * @type {Record<string,(x: number, y: number) => void>}
+ */
+let KDObjectInteract = {
+	// TODO
 };
 /**
  * Script to handle click in an object's modal

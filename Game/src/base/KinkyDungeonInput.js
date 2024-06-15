@@ -18,7 +18,7 @@ function KDProcessInput(type, data) {
 	KDUpdateEnemyCache = true;
 	switch (type) {
 		case "move":
-			KinkyDungeonToggleAutoDoor = data.AutoDoor;
+			KDInteracting = false;
 			KinkyDungeonToggleAutoPass = data.AutoPass;
 			KinkyDungeonToggleAutoSprint = data.sprint;
 			KinkyDungeonSuppressSprint = data.SuppressSprint;
@@ -434,10 +434,18 @@ function KDProcessInput(type, data) {
 
 			break;
 		}
-		case "closeDoor":
+		case "closeDoor": {
+			let x =  data.targetTile.split(',')[0];
+			let y =  data.targetTile.split(',')[1];
 			KDDelayedActionPrune(["Action", "World"]);
-			KinkyDungeonCloseDoor(data);
+			KinkyDungeonCloseDoor(x, y);
 			break;
+		}
+		case "interact": {
+			KDDelayedActionPrune(["Action", "World"]);
+			KDInteract(data.x, data.y);
+			break;
+		}
 		case "shrineBuy":
 			KDDelayedActionPrune(["Action", "World"]);
 			KinkyDungeonShopIndex = data.shopIndex;
@@ -1218,4 +1226,16 @@ function KDProcessInputs(ReturnResult) {
 	}
 
 	return "";
+}
+
+function KDInteract(x, y) {
+	let tile = KinkyDungeonTilesGet(x + ',' + y);
+	if (tile?.Type) {
+		if (KDObjectInteract[tile.Type]) {
+			KDObjectInteract[tile.Type](x, y);
+		} else if (KDObjectClick[tile.Type] && KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5) {
+			KDObjectClick[tile.Type](x, y);
+		}
+	}
+	KDInteracting = false;
 }

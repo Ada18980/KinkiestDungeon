@@ -2,6 +2,8 @@
 
 let KDUISmoothness = 6;
 
+let KDInteracting = false;
+
 let KinkyDungeonStruggleGroups = [];
 let KinkyDungeonStruggleGroupsBase = [
 	"ItemDevices",
@@ -54,7 +56,6 @@ let KD_HUD_RESTRAINTINFOLINESIZE = 34;
 const KinkyDungeonLastChatTimeout = 10000;
 
 let KinkyDungeonStatBarHeight = 50;
-let KinkyDungeonToggleAutoDoor = false;
 let KinkyDungeonToggleAutoPass = true;
 let KinkyDungeonToggleAutoSprint = false;
 let KinkyDungeonInspect = false;
@@ -1279,6 +1280,7 @@ function KinkyDungeonDrawActionBar(x, y) {
 	})) str = "KDAutoStruggle";
 
 	if (DrawButtonKDEx("toggleInspect", (bdata) => {
+		KDInteracting = false;
 		KinkyDungeonInspect = !KinkyDungeonInspect;
 		KinkyDungeonUpdateLightGrid = true; // Rerender since cam moved
 		KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
@@ -1320,14 +1322,13 @@ function KinkyDungeonDrawActionBar(x, y) {
 	})) str = "KDSprint";
 
 	// Door button
-	if (DrawButtonKDEx("toggleDoor", (bdata) => {
-		if (KinkyDungeonStatsChoice.get("Doorknobs") && KinkyDungeonIsArmsBound(true) && KinkyDungeonIsHandsBound(true, true, 0.5))
-			KinkyDungeonSendTextMessage(8, TextGet("KDCantCloseDoor"), "#ff8933", 2);
-		else KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor;
+	if (DrawButtonKDEx("interact", (bdata) => {
+		KDInteracting = !KDInteracting;
+		KinkyDungeonInspect = false;
 		return true;
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, actionbarHeight,
-	"", "", KinkyDungeonRootDirectory + (KinkyDungeonToggleAutoDoor ? "UI/DoorClose.png" : "UI/Door.png"),
-	undefined, undefined, !KinkyDungeonToggleAutoDoor, KDTextGray05, undefined, false, {alpha: 1.0,
+	"", "", KinkyDungeonRootDirectory + ("UI/Interact.png"),
+	undefined, undefined, !KDInteracting, KDTextGray05, undefined, false, {alpha: 1.0,
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[2]),
 	})) str = "KDDoor";
 

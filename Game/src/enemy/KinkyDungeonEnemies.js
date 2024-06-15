@@ -8013,11 +8013,11 @@ function KDGetEnemyTypeName(enemy) {
 /**
  *
  * @param {entity} enemy
- * @param {AIData} AIData
+ * @param {AIData} AID
  * @returns {boolean}
  */
-function KDGateAttack(enemy, AIData) {
-	return !((!enemy.attackPoints && KDEnemyHasFlag(enemy, "runAway") && (!AIData || AIData.kite)) || KDEnemyHasFlag(enemy, "attackFail"));
+function KDGateAttack(enemy, AID) {
+	return !((!enemy.attackPoints && KDEnemyHasFlag(enemy, "runAway") && (!AID || AID.kite)) || KDEnemyHasFlag(enemy, "attackFail"));
 }
 
 /**

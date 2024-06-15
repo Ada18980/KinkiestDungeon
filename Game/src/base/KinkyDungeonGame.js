@@ -3876,6 +3876,8 @@ function KinkyDungeonClickGame(Level) {
 				KinkyDungeonLastMoveTimer = performance.now() + KinkyDungeonLastMoveTimerCooldown/2;
 				KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
 				KinkyDungeonUpdateLightGrid = true; // Rerender since cam moved
+			} else if (KDInteracting) {
+				KDSendInput("interact", {x: KinkyDungeonTargetX, y: KinkyDungeonTargetY});
 			} else if (KDModalArea || KinkyDungeonTargetTile) {
 				KDModalArea = false;
 				KinkyDungeonTargetTile = null;
@@ -3913,11 +3915,11 @@ function KinkyDungeonClickGame(Level) {
 							KinkyDungeonSetFlag("startPath", 1);
 						} else if (KDistChebyshev(KinkyDungeonPlayerEntity.x - KinkyDungeonTargetX, KinkyDungeonPlayerEntity.y - KinkyDungeonTargetY) < 1.5) {
 							KDSetFocusControl("");
-							KDSendInput("move", {dir: KinkyDungeonMoveDirection, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
+							KDSendInput("move", {dir: KinkyDungeonMoveDirection, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
 						}
 					} else if (!fastMove || Math.max(Math.abs(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x), Math.abs(KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y)) <= 1) {
 						KDSetFocusControl("");
-						KDSendInput("move", {dir: KinkyDungeonMoveDirection, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
+						KDSendInput("move", {dir: KinkyDungeonMoveDirection, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
 					}
 				}
 			}
@@ -3977,6 +3979,8 @@ function KinkyDungeonListenKeyMove() {
 					KinkyDungeonLastMoveTimer = performance.now() + KinkyDungeonLastMoveTimerCooldown/2;
 					KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
 					KinkyDungeonUpdateLightGrid = true; // Rerender since cam moved
+				} else if (KDInteracting) {
+					KDSendInput("interact", {x: KDPlayer().x + moveDirection.x, y: KDPlayer().y + moveDirection.y});
 				} else {
 					let _CharacterRefresh = CharacterRefresh;
 					let _CharacterAppearanceBuildCanvas = CharacterAppearanceBuildCanvas;
@@ -3985,7 +3989,7 @@ function KinkyDungeonListenKeyMove() {
 
 					try {
 						KDSetFocusControl("");
-						KDSendInput("move", {dir: moveDirection, delta: 1, AllowInteract: KinkyDungeonLastMoveTimer == 0, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: false});
+						KDSendInput("move", {dir: moveDirection, delta: 1, AllowInteract: KinkyDungeonLastMoveTimer == 0, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: false});
 						KinkyDungeonLastMoveTimer = performance.now() + KinkyDungeonLastMoveTimerCooldown;
 					} finally {
 						CharacterRefresh = _CharacterRefresh;
@@ -4052,7 +4056,7 @@ function KinkyDungeonGameKeyDown() {
 
 
 	if (moveDirection && KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game") {
-		KDSendInput("move", {dir: moveDirection, delta: 1, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: false});
+		KDSendInput("move", {dir: moveDirection, delta: 1, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: false});
 		return true;
 	} else if (KinkyDungeonKeySpell.includes(KinkyDungeonKeybindingCurrentKey)) {
 		if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Magic") {
@@ -4267,7 +4271,7 @@ function KinkyDungeonGameKeyUp(lastPress) {
 				// Log, Passing, Door, Auto Struggle, Auto Pathfind
 				//case KinkyDungeonKeyToggle[0]: KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle; break;
 				case KinkyDungeonKeyToggle[1]: KinkyDungeonToggleAutoPass = !KinkyDungeonToggleAutoPass; break;
-				case KinkyDungeonKeyToggle[2]: KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor; break;
+				case KinkyDungeonKeyToggle[2]: KDInteracting = !KDInteracting; break;
 				case KinkyDungeonKeyToggle[3]: KDAutoStruggleClick(); break;
 				case KinkyDungeonKeyToggle[4]: KinkyDungeonFastMove = !KinkyDungeonFastMove; break;
 				case KinkyDungeonKeyToggle[5]: KinkyDungeonInspect = !KinkyDungeonInspect; KinkyDungeonUpdateLightGrid = true; break;
@@ -4521,7 +4525,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 			if (KinkyDungeonTilesGet("" + moveX + "," + moveY)
 				&& KinkyDungeonTilesGet("" + moveX + "," + moveY).Type
 				&& (
-					(KinkyDungeonToggleAutoDoor
+					(false
 						&& moveObject == 'd'
 						&& KinkyDungeonTargetTile == null
 						&& KinkyDungeonNoEnemy(moveX, moveY, true))
@@ -5283,17 +5287,18 @@ function KDAddModel(C, Group, ItemModel, NewColor, filters, item, Properties) {
 	return null;
 }
 
-function KinkyDungeonCloseDoor(data) {
-	KinkyDungeonTargetTileLocation = data.targetTile;
-	KinkyDungeonTargetTile = null;
-	KinkyDungeonMapSet(parseInt(KinkyDungeonTargetTileLocation.split(',')[0]), parseInt(KinkyDungeonTargetTileLocation.split(',')[1]), "D");
-	KinkyDungeonTargetTileLocation = "";
-	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/DoorClose.ogg");
-	if (!KDLastKeyTime[KinkyDungeonKeyToggle[2]])
-		KinkyDungeonToggleAutoDoor = false;
-	KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonCloseDoorDone"), "white", 2);
-	KinkyDungeonAdvanceTime(1, true);
-	KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
+function KinkyDungeonCloseDoor(x, y) {
+	if (KinkyDungeonStatsChoice.get("Doorknobs") && KinkyDungeonIsArmsBound(true) && KinkyDungeonIsHandsBound(true, true, 0.5))
+		KinkyDungeonSendTextMessage(8, TextGet("KDCantCloseDoor"), "#ff8933", 2);
+	else {
+		KinkyDungeonTargetTileLocation = x + ',' + y;
+		KinkyDungeonTargetTile = null;
+		KinkyDungeonMapSet(x, y, "D");
+		KinkyDungeonTargetTileLocation = "";
+		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/DoorClose.ogg");
+		KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonCloseDoorDone"), "white", 2);
+		KinkyDungeonAdvanceTime(1, true);
+	}
 }
 
 /**
@@ -5416,7 +5421,7 @@ let KDKeyCheckers = {
 				// Log, Passing, Door, Auto Struggle, Auto Pathfind
 				//case KinkyDungeonKeyToggle[0]: KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle; break;
 				case KinkyDungeonKeyToggle[1]: KinkyDungeonToggleAutoPass = !KinkyDungeonToggleAutoPass; break;
-				case KinkyDungeonKeyToggle[2]: KinkyDungeonToggleAutoDoor = !KinkyDungeonToggleAutoDoor; break;
+				case KinkyDungeonKeyToggle[2]: KDInteracting = !KDInteracting; break;
 				case KinkyDungeonKeyToggle[3]: KDAutoStruggleClick(); break;
 				case KinkyDungeonKeyToggle[4]: KinkyDungeonFastMove = !KinkyDungeonFastMove; break;
 				case KinkyDungeonKeyToggle[5]: KinkyDungeonInspect = !KinkyDungeonInspect; KinkyDungeonUpdateLightGrid = true; break;

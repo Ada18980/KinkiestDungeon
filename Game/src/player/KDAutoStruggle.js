@@ -106,7 +106,7 @@ let KDAutoStruggleActions = {
 			return 20*Math.max(0,  - KinkyDungeonStatStamina - KinkyDungeonStatStaminaCostStruggle * 2);
 		},
 		action: (player) => {
-			KDSendInput("move", {dir: {x:0, y: 0, delta: 0}, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
+			KDSendInput("move", {dir: {x:0, y: 0, delta: 0}, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
 			return {action: "wait", id: "", result: "fail", delay: 0, favorability: KinkyDungeonStatStamina > (Math.max(KinkyDungeonStatStaminaCostStruggle * 2, KinkyDungeonStatStaminaMax * 0.7)) ? -10
 				: (KinkyDungeonStatStamina > KinkyDungeonStatStaminaCostStruggle * 2 ? -4 : -1)};
 		},
@@ -120,7 +120,7 @@ let KDAutoStruggleActions = {
 		action: (player) => {
 			let wigglePoints = KDAS_GetMovableWigglePoint(player, Math.random() < 0.5);
 			let point = wigglePoints[Math.floor(Math.random() * wigglePoints.length)] || {x: 0, y: 0};
-			KDSendInput("move", {dir: {x:point.x - player.x, y: point.y-player.y, delta: 0}, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
+			KDSendInput("move", {dir: {x:point.x - player.x, y: point.y-player.y, delta: 0}, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
 			KinkyDungeonSendActionMessage(6, TextGet("KDWiggle"), "#aaaaaa", 1);
 			if (KDAffinityList.some((affinity) => {return KinkyDungeonGetAffinity(false, affinity);})) {
 				KDAutoStruggleData.decidedAction = "";
@@ -356,7 +356,7 @@ function KDAutoStruggleRunDecision(player) {
 		KDAutoStruggleData.lastDelay = Math.max(0, result.delay);
 	} else {
 		// Wait
-		KDSendInput("move", {dir: {x:0, y: 0, delta: 0}, delta: 1, AllowInteract: true, AutoDoor: KinkyDungeonToggleAutoDoor, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
+		KDSendInput("move", {dir: {x:0, y: 0, delta: 0}, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
 		result = {action: "wait", id: "", result: "fail", favorability: -1, delay: 0};
 	}
 	if (result)

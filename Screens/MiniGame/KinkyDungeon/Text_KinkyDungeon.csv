@@ -903,7 +903,7 @@ KDAutoPath,"Auto-path"
 KDSwitchWeapon,"Quick-Swap Weapon"
 KDInspect,"Inspect"
 KDPass,Pass NPCs
-KDDoor,Close a Door
+KDDoor,Interact
 KDSprint,Sprint/Hop
 KDCrouch,Crouch
 
@@ -1011,7 +1011,7 @@ KinkyDungeonKeyCrouch,Crouch
 KinkyDungeonKeyPlaySelf,Play with Self
 
 KinkyDungeonKeyMsgLog,Message Log
-KinkyDungeonKeyDoor,Close Door
+KinkyDungeonKeyDoor,Interact
 KinkyDungeonKeyPass,Pass thru allies
 KinkyDungeonKeyAStruggle,Auto-Struggle
 KinkyDungeonKeyAPathfind,Auto-Pathfind

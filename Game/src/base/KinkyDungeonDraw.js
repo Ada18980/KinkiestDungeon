@@ -999,15 +999,18 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
 				KinkyDungeonInspect = false;
+				KDInteracting = false;
 			} else if (KDConfigHotbar) {
 				KDConfigHotbar = false;
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
 				KinkyDungeonInspect = false;
+				KDInteracting = false;
 			} else {
 				KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
 				KDPlayerSetPose = false;
 				KinkyDungeonInspect = false;
+				KDInteracting = false;
 				KinkyDungeonUpdateLightGrid = true;
 				KinkyDungeonDrawState = "Game";
 				KinkyDungeonMessageToggle = false;
@@ -1315,6 +1318,13 @@ function KinkyDungeonDrawGame() {
 							(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 100,
 							});
+					} else if (KDInteracting) {
+						KinkyDungeonSetTargetLocation(KDToggles.Helper);
+
+						KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule", KinkyDungeonRootDirectory + "UI/Interact.png",
+							(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+								zIndex: 100,
+							});
 					} else if (KinkyDungeonTargetingSpell) {
 						KinkyDungeonSetTargetLocation(KDToggles.Helper);
 
@@ -1530,7 +1540,7 @@ function KinkyDungeonDrawGame() {
 						}
 					}
 					let tile = ambushTile || KinkyDungeonMapGet(cursorX, cursorY);
-					if (KDTileTooltips[tile] && (KinkyDungeonInspect || KDTileTooltips[tile](cursorX, cursorY).noInspect)) {
+					if (KDTileTooltips[tile] && (KinkyDungeonInspect || KDInteracting || KDTileTooltips[tile](cursorX, cursorY).noInspect)) {
 						tooltips.push((offset) => KDDrawTileTooltip(tile, cursorX, cursorY, offset));
 					}
 				}

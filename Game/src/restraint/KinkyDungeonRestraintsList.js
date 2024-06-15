@@ -6373,7 +6373,7 @@ const KinkyDungeonRestraints = [
 			},
 			shrine: ["Armor", "TorsoArmor", "Cloth"],
 			armor: true,
-			LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.3,
+			LinkAll: true, AlwaysLinkable: true, linkCategories: ["Armor", "Swimsuit"], linkSizes: [0.3, 0.6],
 			protection: 1,
 			displayPower: 2,
 			protectionCursed: true,
