@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.19"
+KDVersionStr,"5.3.20"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -3276,7 +3276,7 @@ KinkyNonLockable,Non-Lockable
 
 KinkyCursed,"Cursed"
 KinkyUnlocked,"Unlocked"
-KinkyLocked,"Lock Type: "
+KinkyLocked,"Lock:"
 KinkyWhiteLockType,"Simple"
 KinkyRedLockType,"Standard"
 KinkyRed_MedLockType,"Standard"
