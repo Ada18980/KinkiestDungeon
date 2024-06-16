@@ -1686,8 +1686,8 @@ Play with Self
 玩弄自己
 Message Log
 消息日志
-Close Door
-关门
+Interact
+交互
 Pass thru allies
 绕过盟友
 Auto-Struggle
@@ -4992,8 +4992,6 @@ Passing...
 通过中...
 Closing...
 关门中...
-Close door
-关门
 Sprinting!!!
 疾跑中！！！
 Sprint!
@@ -14948,6 +14946,12 @@ An enemy found you while you were busy!
 （你躺在床上打瞌睡…）
 (Lie down and sleep)
 （躺下睡觉）
+(There is a pole sticking out of the ground)|(A footrest rises from the floor on either side of the pole)|(This seems like an automated binding system for prisoners...)
+（有一根杆子从地上伸出来）|（杆子两侧的地板上升起一个脚凳）|（这看起来像是囚犯的自动捆绑系统…）
+(The pole rises and immobilizes you!)
+（杆子升起并把你制服！）
+(Stand over it and place your feet in the footrests)
+（站在上面并将脚放在脚凳上）
 FOODMSG|(It invites you to partake in its culinary delights)
 FOODMSG|（它邀请你分享它的美食）
 (You eat the food and feel your willpower rising)
