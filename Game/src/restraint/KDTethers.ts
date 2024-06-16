@@ -256,7 +256,18 @@ function KinkyDungeonUpdateTether(Msg: boolean, Entity: entity, xTo?: number, yT
 			KDBreakTether(Entity);
 		}
 
-		if (Entity.player) KDGameData.KinkyDungeonLeashedPlayer = Math.max(KDGameData.KinkyDungeonLeashedPlayer, 5);
+		if (Entity.player) {
+			KDGameData.KinkyDungeonLeashedPlayer = Math.max(KDGameData.KinkyDungeonLeashedPlayer, 5);
+			for (let inv of KinkyDungeonAllRestraint()) {
+				if (KDRestraint(inv).removeOnLeash) {
+					KinkyDungeonRemoveRestraint(KDRestraint(inv).Group, false);
+					if (KDRestraint(inv).Group == "ItemDevices") {
+						KinkyDungeonSetFlag("Released", 15);
+						KinkyDungeonSetFlag("nojailbreak", 15);
+					}
+				}
+			}
+		}
 
 		if (xTo || yTo) {// This means we are trying to move
 			let pathToTether = KinkyDungeonFindPath(xTo, yTo, leash.x, leash.y, false, !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy);

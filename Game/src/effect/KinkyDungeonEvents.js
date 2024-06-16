@@ -411,12 +411,7 @@ let KDEventMapInventory = {
 			}
 		},
 	},
-	"capture": {
-		"ManaBounty": (e, item, data) => {
-			if (data.attacker && data.attacker.player && data.enemy) {
-				KinkyDungeonChangeMana(0, false, e.power);
-			}
-		},
+	"afterCapture": {
 		"SacrificeMage": (e, item, data) => {
 			if (data.enemy && data.enemy.Enemy?.tags?.mage) {
 				let value = Math.max(1, Math.max(1, KDEnemyRank(data.enemy)) * (data.enemy.Enemy.unlockCommandLevel || 1));
@@ -438,6 +433,14 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+	},
+	"capture": {
+		"ManaBounty": (e, item, data) => {
+			if (data.attacker && data.attacker.player && data.enemy) {
+				KinkyDungeonChangeMana(0, false, e.power);
+			}
+		},
+
 	},
 	"calcPlayChance": {
 		"CurseAttraction": (e, item, data) => {

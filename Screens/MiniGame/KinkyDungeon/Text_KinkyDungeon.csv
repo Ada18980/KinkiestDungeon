@@ -5424,7 +5424,6 @@ KinkyDungeonColumnMisc,"Misc"
 
 KinkyDungeonColumnUnique,"Unique"
 KinkyDungeonColumnActive,"Active"
-KinkyDungeonColumnPassive,"Passive"
 KinkyDungeonColumnUpgrades,"Upgrades"
 
 KinkyDungeonFilterlearnable,Learnable
@@ -12516,6 +12515,10 @@ rAllyRescue,"(A SPEAKER wakes you up)|We came to rescue you. Come on!"
 rBed,"(The bed looks comfy and inviting)|(Napping here will restore up to half of your willpower and 100% of your max mana)|(You can only sleep once per floor, unless jailed)"
 rBedSleep,"(You lay in the bed and doze off...)"
 dBed_Sleep,(Lie down and sleep)
+
+rDollDropoff,"(There is a pole sticking out of the ground)|(A footrest rises from the floor on either side of the pole)|(This seems like an automated binding system for prisoners...)"
+rDollDropoffUse,"(The pole rises and immobilizes you!)"
+dDollDropoff_Use,(Stand over it and place your feet in the footrests)
 
 rTableFood,"FOODMSG|(It invites you to partake in its culinary delights)"
 rTableFoodEat,"(You eat the food and feel your willpower rising)"

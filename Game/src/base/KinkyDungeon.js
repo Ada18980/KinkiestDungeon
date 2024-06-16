@@ -544,11 +544,15 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 * StatMaxBonus: Record<string, number>,
 * LogFilters: Record<string, boolean>,
 * NoForceGreet: boolean,
+* InteractTargetX: number,
+* InteractTargetY: number,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	InteractTargetX: 0,
+	InteractTargetY: 0,
 	NoForceGreet: false,
 	LogFilters: {
 		Combat: true,

@@ -31,6 +31,7 @@ TODO:
 5.3.20
 - You can now give release to distracted NPCs thru the flirting menu
 - Replaced 'close door' control on bottom bar with 'interact' control, which now lets you interact with objects as well as close doors
+- Can now interact with doll dropoffs to put yourself on one (only on new tiles)
 - Increased number of hotbar slots to 50
 - Fixed bug where enemies would deaggro and sit there (instead of running away)
 

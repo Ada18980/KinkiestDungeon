@@ -874,7 +874,7 @@ let KDTileGen = {
 		KinkyDungeonMapSet(x, y, '5');
 		KDMapData.JailPoints.push({x: x, y: y, type: "dropoff", direction: tileGenerator.direction || {x: 0, y: -1}, radius: 1, restrainttags: ["dollstand"]});
 		//KinkyDungeonTilesSkinSet(x + "," + y, 'Bel');
-		return {Sprite: "Floor", Overlay: tileGenerator.Overlay || "DollDropoff"};
+		return {Sprite: "Floor", Overlay: tileGenerator.Overlay || "DollDropoff", Type: "DollDropoff"};
 	},
 	"Cage": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');

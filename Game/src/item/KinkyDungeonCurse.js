@@ -293,7 +293,7 @@ let KDCurses = {
 		condition: (item) => {return false;},
 		remove: (item, host) => {},
 		events: [
-			{type: "SacrificeMage", power: 1, count: 5, mult: 1, trigger: "capture", kind: "SacrificeMage"}
+			{type: "SacrificeMage", power: 1, count: 5, mult: 1, trigger: "afterCapture", kind: "SacrificeMage"}
 		],
 	},
 	"Will" : {

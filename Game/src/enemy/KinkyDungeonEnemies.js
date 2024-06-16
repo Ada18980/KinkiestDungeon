@@ -3406,9 +3406,9 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 						)
 							&& (
 								(KDFactionRelation(f, f2) > 0.15 && KDFactionRelation(f, f2) < 0.5 && // Favored
-									KDFactionRelation("Player", f2) < 0.2)
+									KDFactionRelation("Player", f2) < -0.1) // Angered
 								|| (KDFactionRelation(f, f2) >= 0.5 && // Allied
-									KDFactionRelation("Player", f2) < 0.4)
+									KDFactionRelation("Player", f2) < 0.2) // Not thankful
 							)
 						) {
 							if (!(enemy.hostile > 0) &&

@@ -875,6 +875,12 @@ let KDDialogue = {
 			"Sleep": {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
+					if (KinkyDungeonMapGet(KDPlayer().x, KDPlayer().y) && KDGameData.InteractTargetX && KDGameData.InteractTargetY) {
+						if (KinkyDungeonMapGet(KDGameData.InteractTargetX, KDGameData.InteractTargetY) == 'B') {
+							KDMovePlayer(KDGameData.InteractTargetX, KDGameData.InteractTargetY, true);
+						}
+					}
+
 					KinkyDungeonSetFlag("slept", -1);
 					if (KinkyDungeonPlayerInCell(true)) {
 						KinkyDungeonChangeRep("Ghost", KinkyDungeonIsArmsBound() ? 5 : 2);
@@ -882,6 +888,42 @@ let KDDialogue = {
 					//KinkyDungeonChangeWill(KinkyDungeonStatWillMax * KDSleepBedPercentage);
 					KDGameData.SleepTurns = KinkyDungeonSleepTurnsMax;
 					KinkyDungeonChangeMana(KinkyDungeonStatManaMax, false, 0, false, true);
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+	"DollDropoff": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KinkyDungeonSetFlag("nobed", 8);
+			return false;
+		},
+		options: {
+			"Use": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+
+					let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+					if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
+						KDMovePlayer(KDGameData.InteractTargetX + (nearestJail.direction?.x || 0), KDGameData.InteractTargetY + (nearestJail.direction?.y || 0), true);
+						if (nearestJail.restrainttags) {
+							let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, undefined);
+							if (restraint)
+								KinkyDungeonAddRestraintIfWeaker(restraint, KDGetEffLevel(),false, undefined);
+						}
+					}
+
 					return false;
 				},
 				options: {

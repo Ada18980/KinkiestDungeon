@@ -410,6 +410,8 @@ let KDTileUpdateFunctions = {
 let KDMoveObjectFunctions = {
 	'B': (moveX, moveY) => {
 		if (!KinkyDungeonFlags.get("slept") && !KinkyDungeonFlags.get("nobed") && KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.49) {
+			KDGameData.InteractTargetX = moveX;
+			KDGameData.InteractTargetY = moveY;
 			KDStartDialog("Bed", "", true);
 		}
 		return false;

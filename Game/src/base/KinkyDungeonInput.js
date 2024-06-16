@@ -1229,13 +1229,18 @@ function KDProcessInputs(ReturnResult) {
 }
 
 function KDInteract(x, y) {
+	KDInteracting = false;
 	let tile = KinkyDungeonTilesGet(x + ',' + y);
 	if (tile?.Type) {
 		if (KDObjectInteract[tile.Type]) {
-			KDObjectInteract[tile.Type](x, y);
+			return KDObjectInteract[tile.Type](x, y);
 		} else if (KDObjectClick[tile.Type] && KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5) {
-			KDObjectClick[tile.Type](x, y);
+			return KDObjectClick[tile.Type](x, y);
 		}
 	}
-	KDInteracting = false;
+	let tiletype = KinkyDungeonMapGet(x, y);
+	if (KDTileInteract[tiletype]) {
+		return KDTileInteract[tiletype](x, y);
+
+	}
 }
