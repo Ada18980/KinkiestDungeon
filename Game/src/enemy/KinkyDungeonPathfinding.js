@@ -85,12 +85,16 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 		if (ignoreLocks) {
 			if (KDPathCacheIgnoreLocks.has(index)) {
 				KDPathfindingCacheHits++;
-				return Object.assign([], KDPathCacheIgnoreLocks.get(index));
+				if (KDPathCacheIgnoreLocks.get(index)[0] && KDistChebyshev(KDPathCacheIgnoreLocks.get(index)[0].x - startx, KDPathCacheIgnoreLocks.get(index)[0].y - starty) < 1.5)
+					return Object.assign([], KDPathCacheIgnoreLocks.get(index));
+				else KDPathCacheIgnoreLocks.delete(index);
 			}
 		} else {
 			if (KDPathCache.has(index)) {
 				KDPathfindingCacheHits++;
-				return Object.assign([], KDPathCache.get(index));
+				if (KDPathCache.get(index)[0] && KDistChebyshev(KDPathCache.get(index)[0].x - startx, KDPathCache.get(index)[0].y - starty) < 1.5)
+					return Object.assign([], KDPathCache.get(index));
+				else KDPathCache.delete(index);
 			}
 		}
 

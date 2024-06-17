@@ -997,7 +997,8 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 				KinkyDungeonJailGuard().gy = KinkyDungeonJailGuard().NextJailLeashTourWaypointY;
 				let guardPath = KinkyDungeonFindPath(KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, KinkyDungeonJailGuard().gx, KinkyDungeonJailGuard().gy, false, false, true, KinkyDungeonMovableTilesEnemy);
 				if (guardPath && guardPath.length > 0 && KDistChebyshev(guardPath[0].x - KinkyDungeonJailGuard().x, guardPath[0].y - KinkyDungeonJailGuard().y) < 1.5) {
-					if (guardPath[0].x === KinkyDungeonPlayerEntity.x && guardPath[0].y === KinkyDungeonPlayerEntity.y) {
+
+					/*if (guardPath[0].x === KinkyDungeonPlayerEntity.x && guardPath[0].y === KinkyDungeonPlayerEntity.y) {
 						// Swap the player and the guard
 						KinkyDungeonTargetTile = null;
 						KinkyDungeonTargetTileLocation = "";
@@ -1014,7 +1015,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 							KinkyDungeonJailGuard().x = guardPath[0].x;
 							KinkyDungeonJailGuard().y = guardPath[0].y;
 						}
-					}
+					}*/
 				} else KinkyDungeonJailGuardGetLeashWaypoint(xx, yy, type);
 				KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
 			}

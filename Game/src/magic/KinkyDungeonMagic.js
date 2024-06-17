@@ -911,6 +911,35 @@ function KinkyDungeonCastSpell(targetX, targetY, spell, enemy, player, bullet, f
 									&& KDistEuclidean(entity.x + XX - tX, entity.y + YY - tY) <= dist + 0.1) slots.push({x:XX, y:YY});
 							}
 						}
+						if (slots.length == 0) {
+							let src = (entity?.player ? -1 : entity?.id) || bullet?.bullet?.source;
+							if (src == -1 || KinkyDungeonFindID(src)) {
+								for (let XX = -1; XX <= 1; XX++) {
+									for (let YY = -1; YY <= 1; YY++) {
+										if ((XX != 0 || YY != 0) && (
+											src == -1 ? (
+												KDHostile(KinkyDungeonEntityAt(entity.x + XX, entity.y + YY))
+											) : (
+												KDHostile(KinkyDungeonFindID(src), KinkyDungeonEntityAt(entity.x + XX, entity.y + YY))
+											)
+										) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(entity.x + XX, entity.y + YY))
+											&& (entity.x + XX != tX || entity.y + YY != tY)
+											&& KDistEuclidean(entity.x + XX - tX, entity.y + YY - tY) <= dist + 0.1) slots.push({x:XX, y:YY});
+									}
+								}
+							}
+
+						}
+						if (slots.length == 0) {
+							for (let XX = -1; XX <= 1; XX++) {
+								for (let YY = -1; YY <= 1; YY++) {
+									if ((XX != 0 || YY != 0) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(entity.x + XX, entity.y + YY))
+										&& (entity.x + XX != tX || entity.y + YY != tY)
+										&& KDistEuclidean(entity.x + XX - tX, entity.y + YY - tY) <= dist + 0.1) slots.push({x:XX, y:YY});
+								}
+							}
+
+						}
 						if (slots.length > 0) {
 							let slot = slots[Math.floor(KDRandom() * slots.length)];
 							cast.mx = slot.x;

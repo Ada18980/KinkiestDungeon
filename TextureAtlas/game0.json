@@ -472,7 +472,7 @@
 	"spriteSourceSize": {"x":45,"y":39,"w":18,"h":29},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Items/Group/Itemhead.png":
+"Game/Items/Group/ItemHead.png":
 {
 	"frame": {"x":41,"y":2033,"w":36,"h":14},
 	"rotated": false,
@@ -1156,6 +1156,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game1.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:122008572e64b3dfcf3fe8c9290d5e0f:97b79173a09b0fbff39b5f1f61cc46e3:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:fbcd0567a0044b9836ea69d38a82966e:537e8298a4b8a31b55f3a7425c1db7e3:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

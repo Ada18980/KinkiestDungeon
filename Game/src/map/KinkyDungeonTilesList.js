@@ -409,10 +409,15 @@ let KDTileUpdateFunctions = {
  */
 let KDMoveObjectFunctions = {
 	'B': (moveX, moveY) => {
-		if (!KinkyDungeonFlags.get("slept") && !KinkyDungeonFlags.get("nobed") && KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.49) {
+		/*if (!KinkyDungeonFlags.get("slept") && !KinkyDungeonFlags.get("nobed") && KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.49) {
 			KDGameData.InteractTargetX = moveX;
 			KDGameData.InteractTargetY = moveY;
 			KDStartDialog("Bed", "", true);
+		}*/
+
+		if (!KinkyDungeonFlags.get("1stBed")) {
+			KinkyDungeonSendTextMessage(10, TextGet("KDBedHelp"), "#ffffff", 12, undefined, undefined, undefined, "");
+			KinkyDungeonSetFlag("1stBed", -1);
 		}
 		return false;
 	},

@@ -45,13 +45,6 @@ let KDObjectClick = {
 	"Oriel": (x, y) => {
 		KDStartDialog("Oriel", "", true, "");
 	},
-	"Door": (x, y) => {
-		if (KinkyDungeonMapGet(x, y) == 'D') {
-			KDAttemptDoor(x, y);
-		} else if (!KinkyDungeonEntityAt(x, y, false, undefined, undefined, true)) {
-			KinkyDungeonCloseDoor(x, y);
-		}
-	},
 };
 /**
  * Script happens when you interact to an object
@@ -65,6 +58,13 @@ let KDObjectInteract = {
 				KDGameData.InteractTargetY = y;
 				KDStartDialog("DollDropoff", "", true);
 			}
+	},
+	"Door": (x, y) => {
+		if (KinkyDungeonMapGet(x, y) == 'D') {
+			KDAttemptDoor(x, y);
+		} else if (!KinkyDungeonEntityAt(x, y, false, undefined, undefined, true)) {
+			KinkyDungeonCloseDoor(x, y);
+		}
 	},
 };
 /**

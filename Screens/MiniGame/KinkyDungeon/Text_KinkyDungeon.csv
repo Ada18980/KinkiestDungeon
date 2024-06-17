@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.20"
+KDVersionStr,"5.3.21"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -23289,6 +23289,7 @@ KinkyDungeonSaveToFile,Save to File
 
 KDLatexHelp1,Tip: Slime/Latex tiles only affect entities with less than 45 Glue Resist.
 KDLatexHelp2,Being drenched in water also prevents slime/latex from sticking to you.
+KDBedHelp,Use the interact tool in the bottom right HUD to sleep in a bed.
 
 KinkyDungeonStatClearVision,"Clear Vision"
 KinkyDungeonStatDescClearVision,"Blindfolds are much rarer."
@@ -23318,3 +23319,9 @@ KDFacilityDesc_Recycler,"Convert low tier restraints into raw materials and outp
 KDFacility_CuddleLounge,Cuddle Lounge
 KDFacilityDesc_CuddleLounge,"Assign prisoners to the lounge in order to improve your servants' opinion of you."
 
+
+KDDialogue_StepAside,"You're blocking me."
+KDDialogue_StepAsideBrat,"You're in my way!"
+KDDialogue_StepAsideSub,"Miss, you're blocking me..."
+KDDialogue_StepAsideDom,"Step aside~"
+KDDialogue_StepAsideRobot,"Path blocked by citizen."

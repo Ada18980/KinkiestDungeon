@@ -305,7 +305,7 @@ let KDGuardActions = {
 				if (KDGameData.GuardApplyTime > applyTime) {
 					if (newRestraint) {
 						let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup);
-						let added = KinkyDungeonAddRestraintIfWeaker(newRestraint, 0,
+						let added = KinkyDungeonAddRestraintIfWeaker(newRestraint, Math.floor(KDGetEffLevel() * 0.5),
 							true, undefined, undefined, undefined, undefined, KDGetFaction(KinkyDungeonJailGuard()),
 							KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, KinkyDungeonJailGuard(), false, undefined, undefined, undefined, (jrest.variant && KDApplyVariants[jrest.variant]) ? KDApplyVariants[jrest.variant] : undefined);
 						if (added) {

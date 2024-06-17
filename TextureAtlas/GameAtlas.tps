@@ -1406,6 +1406,7 @@
             <key type="filename">../Game/EnemiesBound/Necromancer.png</key>
             <key type="filename">../Game/EnemiesBound/Ninja.png</key>
             <key type="filename">../Game/EnemiesBound/NinjaStalker.png</key>
+            <key type="filename">../Game/EnemiesBound/Nurse.png</key>
             <key type="filename">../Game/EnemiesBound/SamuraiZombie.png</key>
             <key type="filename">../Game/EnemiesBound/Skeleton.png</key>
             <key type="filename">../Game/EnemiesBound/SlimeAdv.png</key>
@@ -2080,6 +2081,7 @@
             <key type="filename">../Game/Items/Group/ItemDevices.png</key>
             <key type="filename">../Game/Items/Group/ItemFeet.png</key>
             <key type="filename">../Game/Items/Group/ItemHands.png</key>
+            <key type="filename">../Game/Items/Group/ItemHead.png</key>
             <key type="filename">../Game/Items/Group/ItemLegs.png</key>
             <key type="filename">../Game/Items/Group/ItemMouth.png</key>
             <key type="filename">../Game/Items/Group/ItemNeck.png</key>
@@ -2089,7 +2091,6 @@
             <key type="filename">../Game/Items/Group/ItemTorso.png</key>
             <key type="filename">../Game/Items/Group/ItemVulva.png</key>
             <key type="filename">../Game/Items/Group/ItemVulvaPiercings.png</key>
-            <key type="filename">../Game/Items/Group/Itemhead.png</key>
             <key type="filename">../Game/Items/Gunpowder.png</key>
             <key type="filename">../Game/Items/Hammer.png</key>
             <key type="filename">../Game/Items/Heart.png</key>
@@ -2452,6 +2453,14 @@
             <key type="filename">../Game/TargetSub.png</key>
             <key type="filename">../Game/TargetTalk.png</key>
             <key type="filename">../Game/UI/Cycle.png</key>
+            <key type="filename">../Game/UI/Facility/AlchemyLab.png</key>
+            <key type="filename">../Game/UI/Facility/CuddleLounge.png</key>
+            <key type="filename">../Game/UI/Facility/Gear.png</key>
+            <key type="filename">../Game/UI/Facility/MaidQuarters.png</key>
+            <key type="filename">../Game/UI/Facility/Management.png</key>
+            <key type="filename">../Game/UI/Facility/Recycler.png</key>
+            <key type="filename">../Game/UI/Facility/RescueSquad.png</key>
+            <key type="filename">../Game/UI/Facility/TrainingDojo.png</key>
             <key type="filename">../Game/UI/ItemAura.png</key>
             <key type="filename">../Game/UI/ItemAuraBG.png</key>
             <key type="filename">../Game/UI/NavMap/basic.png</key>
@@ -3276,6 +3285,7 @@
             <key type="filename">../Game/UI/Help.png</key>
             <key type="filename">../Game/UI/HelpGag.png</key>
             <key type="filename">../Game/UI/Inspect.png</key>
+            <key type="filename">../Game/UI/Interact.png</key>
             <key type="filename">../Game/UI/LetGo.png</key>
             <key type="filename">../Game/UI/Log/Action.png</key>
             <key type="filename">../Game/UI/Log/Ambient.png</key>

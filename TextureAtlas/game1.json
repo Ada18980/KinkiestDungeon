@@ -560,14 +560,6 @@
 	"spriteSourceSize": {"x":23,"y":0,"w":30,"h":68},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Enemies/CustomSpriteBound/Rook.png":
-{
-	"frame": {"x":1979,"y":1623,"w":64,"h":72},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":5,"y":0,"w":64,"h":72},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Enemies/DemonEye.png":
 {
 	"frame": {"x":1979,"y":1401,"w":67,"h":72},
@@ -1162,7 +1154,7 @@
 },
 "Game/Spells/SteelRainBurst.png":
 {
-	"frame": {"x":1979,"y":1549,"w":65,"h":72},
+	"frame": {"x":1979,"y":1623,"w":65,"h":72},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":0,"w":65,"h":72},
@@ -1174,6 +1166,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":0,"w":67,"h":72},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/UI/Facility/TrainingDojo.png":
+{
+	"frame": {"x":1979,"y":1549,"w":67,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":67,"h":72},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/UI/HeartExtreme.png":
@@ -1224,6 +1224,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:122008572e64b3dfcf3fe8c9290d5e0f:97b79173a09b0fbff39b5f1f61cc46e3:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:fbcd0567a0044b9836ea69d38a82966e:537e8298a4b8a31b55f3a7425c1db7e3:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

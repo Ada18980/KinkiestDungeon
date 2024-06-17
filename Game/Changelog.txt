@@ -28,6 +28,9 @@ TODO:
 - Let go of leash thru menu
 - Aggro level
 
+5.3.21
+
+
 5.3.20
 - You can now give release to distracted NPCs thru the flirting menu
 - Replaced 'close door' control on bottom bar with 'interact' control, which now lets you interact with objects as well as close doors

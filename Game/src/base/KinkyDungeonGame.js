@@ -4525,17 +4525,15 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 			if (KinkyDungeonTilesGet("" + moveX + "," + moveY)
 				&& KinkyDungeonTilesGet("" + moveX + "," + moveY).Type
 				&& (
-					(false
-						&& moveObject == 'd'
-						&& KinkyDungeonTargetTile == null
-						&& KinkyDungeonNoEnemy(moveX, moveY, true))
-					|| (
+					(
 						(
 							KDObjectDraw[KinkyDungeonTilesGet("" + moveX + "," + moveY).Type]
 							|| KDObjectClick[KinkyDungeonTilesGet("" + moveX + "," + moveY).Type]
 						)
 						&& (KinkyDungeonTilesGet("" + moveX + "," + moveY).Type != "Door"
-							|| (KinkyDungeonTilesGet("" + moveX + "," + moveY).Lock
+							|| (
+								KinkyDungeonMapGet(moveX, moveY) == 'D'
+							&& KinkyDungeonTilesGet("" + moveX + "," + moveY).Lock
 							&& KinkyDungeonTilesGet("" + moveX + "," + moveY).Type == "Door"))))) {
 				if (AllowInteract) {
 					if (KDObjectClick[KinkyDungeonTilesGet("" + moveX + "," + moveY).Type]) {
@@ -4549,16 +4547,13 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 						KinkyDungeonTargetTileLocation = "" + moveX + "," + moveY;
 						KinkyDungeonTargetTile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
 
-						if (moveObject == 'd') {
-							KinkyDungeonCloseDoor({targetTile: KinkyDungeonTargetTileLocation});
-						} else {
-							KinkyDungeonTargetTileMsg();
-							if (KDMapData.GroundItems.some((item) => {return item.x == moveX && item.y == moveY;})) {
-								// We can pick up items inside walls, in case an enemy drops it into bars
-								KinkyDungeonItemCheck(moveX, moveY, MiniGameKinkyDungeonLevel);
-								KinkyDungeonInterruptSleep();
-								KinkyDungeonAdvanceTime(1);
-							}
+
+						KinkyDungeonTargetTileMsg();
+						if (KDMapData.GroundItems.some((item) => {return item.x == moveX && item.y == moveY;})) {
+							// We can pick up items inside walls, in case an enemy drops it into bars
+							KinkyDungeonItemCheck(moveX, moveY, MiniGameKinkyDungeonLevel);
+							KinkyDungeonInterruptSleep();
+							KinkyDungeonAdvanceTime(1);
 						}
 					}
 				}

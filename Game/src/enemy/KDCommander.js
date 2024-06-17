@@ -619,11 +619,15 @@ let KDCommanderOrders = {
 		filter: (enemy, data) => {
 			if (!enemy.IntentAction
 				&& data.aggressive
+				&& enemy != KinkyDungeonLeashingEnemy()
+				&& enemy != KinkyDungeonJailGuard()
 				&& !KDIsImmobile(enemy)
 				&& (!KDAIType[KDGetAI(enemy)]
 					|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)))
 				&& (enemy.hp < enemy.Enemy.maxhp * data.fleeThresh ||
-					(KDEnemyRank(enemy) < 1 && !KDEnemyHasFlag(enemy, "targ_player") && KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) < 3))) return true;
+					(KDEnemyRank(enemy) < 1 && !KDEnemyHasFlag(enemy, "targ_player") && KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) < 3))
+				&& (KDAssaulters > 0  || KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) > 3)
+			) return true;
 			return false;
 		},
 		weight: (enemy, data) => {
