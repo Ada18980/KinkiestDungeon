@@ -1,6 +1,3 @@
-"use strict";
-
-
 let KDRender = {
 	JourneyMap: () => {
 		// Render the journey map

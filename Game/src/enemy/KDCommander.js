@@ -619,6 +619,7 @@ let KDCommanderOrders = {
 		filter: (enemy, data) => {
 			if (!enemy.IntentAction
 				&& data.aggressive
+				&& KDIsHumanoid(enemy)
 				&& enemy != KinkyDungeonLeashingEnemy()
 				&& enemy != KinkyDungeonJailGuard()
 				&& !KDIsImmobile(enemy)
@@ -626,7 +627,7 @@ let KDCommanderOrders = {
 					|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)))
 				&& (enemy.hp < enemy.Enemy.maxhp * data.fleeThresh ||
 					(KDEnemyRank(enemy) < 1 && !KDEnemyHasFlag(enemy, "targ_player") && KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) < 3))
-				&& (KDAssaulters > 0  || KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) > 3)
+				&& (KDAssaulters > 1 || KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) > 3)
 			) return true;
 			return false;
 		},
@@ -653,7 +654,8 @@ let KDCommanderOrders = {
 
 		// Role maintenance
 		maintain: (enemy, data) => {
-			return (!enemy.IntentAction && data.aggressive && KDHostile(enemy) && enemy.vp > 0 && KDEnemyHasFlag(enemy, "targ_player"));
+			return (!enemy.IntentAction && data.aggressive && KDHostile(enemy) && enemy.vp > 0 && KDEnemyHasFlag(enemy, "targ_player"))
+				&& (KDAssaulters > 1 || KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) > 3);
 		},
 		remove: (enemy, data) => {},
 		update: (enemy, data) => {

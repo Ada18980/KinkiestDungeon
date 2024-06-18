@@ -546,11 +546,13 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 * NoForceGreet: boolean,
 * InteractTargetX: number,
 * InteractTargetY: number,
+* FacilitiesData: FacilitiesData,
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	FacilitiesData: null,
 	InteractTargetX: 0,
 	InteractTargetY: 0,
 	NoForceGreet: false,
@@ -3022,6 +3024,7 @@ function KDMouseWheel(event) {
 	} else return;
 	if (KDFunctionOptionsScroll(event.deltaY)) return;
 	if (KDFunctionCollectionScroll(event.deltaY)) return;
+	if (KDFunctionFacilitiesScroll(event.deltaY)) return;
 	if (KDFunctionDialogueScroll(event.deltaY)) return;
 	if (KDFunctionPerksScroll(event.deltaY || event.deltaX)) return;
 	if (KDFunctionQuestScroll(event.deltaY || event.deltaX)) return;
@@ -3086,9 +3089,9 @@ function KDFunctionCollectionScroll(amount) {
 function KDFunctionFacilitiesScroll(amount) {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Facilities") {
 		if (amount > 0) {
-			KDClickButton("collDOWN");
+			KDClickButton("facDown");
 		} else {
-			KDClickButton("collUP");
+			KDClickButton("facUp");
 		}
 		return true;
 	}
@@ -4509,6 +4512,9 @@ function KinkyDungeonLoadGame(String) {
 			}
 			KDGameData = JSON.parse(JSON.stringify(KDGameDataBase));
 			if (saveData.KDGameData != undefined) KDGameData = Object.assign({}, saveData.KDGameData);
+
+			InitFacilities();
+
 			KDEventData = JSON.parse(JSON.stringify(KDEventDataBase));
 			if (saveData.KDEventData != undefined) KDEventData = Object.assign({}, saveData.KDEventData);
 			if (saveData.inventoryVariants) KinkyDungeonRestraintVariants = saveData.inventoryVariants;

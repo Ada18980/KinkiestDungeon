@@ -1,4 +1,3 @@
-"use strict";
 
 let KDUISmoothness = 6;
 
@@ -694,7 +693,7 @@ function KDDrawSpellChoices() {
 	}
 }
 
-function KDCycleSpellPage(reverse, noWrap, force) {
+function KDCycleSpellPage(reverse, noWrap, force = false) {
 	if (reverse) {
 		KDSpellPage -= 1;
 	} else KDSpellPage += 1;
@@ -1449,7 +1448,7 @@ function KDAutoStruggleClick() {
 	}
 }
 
-function KinkyDungeonActivateWeaponSpell(instant) {
+function KinkyDungeonActivateWeaponSpell(instant = false) {
 	if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.special) {
 
 		let energyCost = KinkyDungeonPlayerDamage.special.energyCost;
@@ -2159,11 +2158,10 @@ function KDDrawPartyMembers(PartyX, PartyY, tooltips) {
 	}
 }
 
+interface statInfo {text: string, icon?: string, count?: string, category: string, priority?: number, color: string, bgcolor: string, countcolor?: string, click?: string, buffid?: string};
+
 function KDGetStatsWeaponCast() {
-	/**
-	 * @type {Record<string, {text: string, icon?: string, count?: string, category: string, priority?: number, color: string, bgcolor: string, countcolor?: string, click?: string, buffid?: string}>}
-	 */
-	let statsDraw = {};
+	let statsDraw: Record<string, statInfo> = {};
 
 
 	if (KinkyDungeonPlayerDamage) {
@@ -2192,11 +2190,8 @@ function KDGetStatsWeaponCast() {
 	return statsDraw;
 }
 
-function KDProcessBuffIcons(minXX, minYY, side) {
-	/**
-	 * @type {Record<string, {text: string, icon?: string, count?: string, category: string, priority?: number, color: string, bgcolor: string, countcolor?: string, click?: string, buffid?: string}>}
-	 */
-	let statsDraw = {};
+function KDProcessBuffIcons(minXX, minYY, side = false) {
+	let statsDraw: Record<string, statInfo> = {};
 
 	let accuracy = KinkyDungeonGetEvasion();
 	if (KDToggleShowAllBuffs || accuracy < 0.89) {
@@ -2590,7 +2585,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 			let t = TextGet("KinkyDungeonBuff" + (b.desc || b.id)) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ` (${b.duration})` : "");
 			if (b.buffTextReplace) {
 				for (let replace of Object.entries(b.buffTextReplace)) {
-					t = t.replace(replace[0], replace[1]);
+					t = t.replace(replace[0], (replace as [string , string])[1]);
 				}
 			}
 			statsDraw[b.id] = {
@@ -2627,7 +2622,7 @@ function KDProcessBuffIcons(minXX, minYY, side) {
 	KDDrawBuffIcons(minXX, minYY, statsDraw, side);
 }
 
-function KDDrawBuffIcons(minXX, minYY, statsDraw, side) {
+function KDDrawBuffIcons(minXX, minYY, statsDraw: Record<string, statInfo>, side) {
 	// Draw the buff icons
 	let II = 0;
 	let spriteSize = 46;
@@ -2659,10 +2654,10 @@ function KDDrawBuffIcons(minXX, minYY, statsDraw, side) {
 		tooltip = true;
 	}
 
-	let resetX = (stat) => {
+	let resetX = () => {
 		XX = minXX;
 	};
-	let resetY = (stat) => {
+	let resetY = () => {
 		YY = minYY;
 	};
 	resetX();
@@ -2673,7 +2668,7 @@ function KDDrawBuffIcons(minXX, minYY, statsDraw, side) {
 			if ((YY > minYY) && (KDStatsSkipLine[currCategory] || KDStatsSkipLineBefore[stat.category]) && currCategory != stat.category) {
 
 				if (KDToggleShowAllBuffs) {
-					resetY(stat);
+					resetY();
 					XX += XXspacing;
 				}
 			}
@@ -2681,7 +2676,7 @@ function KDDrawBuffIcons(minXX, minYY, statsDraw, side) {
 			if (((!KDMinBuffX && XX > minXX) || (KDMinBuffX && XX > KDMinBuffX)) && (KDStatsSkipLine[currCategory] || KDStatsSkipLineBefore[stat.category]) && currCategory != stat.category) {
 
 				if (KDToggleShowAllBuffs) {
-					resetX(stat);
+					resetX();
 					YY -= YYspacing;
 				}
 			}
@@ -2722,7 +2717,7 @@ function KDDrawBuffIcons(minXX, minYY, statsDraw, side) {
 			YY += XXspacing;
 			if (YY > maxYY) {
 				if (KDToggleShowAllBuffs) {
-					resetY(stat);
+					resetY();
 					XX += XXspacing;
 				} else {
 					break;
@@ -2732,7 +2727,7 @@ function KDDrawBuffIcons(minXX, minYY, statsDraw, side) {
 			XX += XXspacing;
 			if (XX > maxXX) {
 				if (KDToggleShowAllBuffs) {
-					resetX(stat);
+					resetX();
 					YY -= YYspacing;
 				} else {
 					break;
@@ -2992,11 +2987,8 @@ function KDDrawStruggleGroups() {
 				}
 
 				if (StruggleType && !sg.blocked) {
-					/**
-					 * @type {KDStruggleData}
-					 */
 					// @ts-ignore
-					let struggleData = {};
+					let struggleData: KDStruggleData = {};
 					KinkyDungeonStruggle(KDRestraint(item).Group, StruggleType, data.struggleIndex, true, struggleData);
 
 					if (struggleData.lockType && (StruggleType == "Unlock" && !struggleData.lockType.canUnlock(struggleData))

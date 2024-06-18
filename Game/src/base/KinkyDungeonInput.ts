@@ -1,14 +1,11 @@
-"use strict";
+
+
+let KinkyDungeonInputQueue: {type: string, data: any}[] = [];
 
 /**
- * @type {{type: string, data: any}[]}
- */
-let KinkyDungeonInputQueue = [];
-
-/**
- * @returns {string}
+ *
  * Delegate to KDProcessInputs */
-function KDProcessInput(type, data) {
+function KDProcessInput(type, data): string {
 	let Result = null;
 	let loose = null;
 	let msg = "";
@@ -223,7 +220,6 @@ function KDProcessInput(type, data) {
 				data.curse, undefined, undefined, data.inventoryVariant);
 			if (success) {
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Unlock.ogg");
-				KDSendStatus('bound', data.name, "self");
 				loose = KinkyDungeonInventoryGetLoose(data.name);
 				if (loose) {
 					if (!(loose.quantity > 1)) {
@@ -1190,13 +1186,7 @@ function KDProcessInput(type, data) {
 	return "";
 }
 
-/**
- *
- * @param {string} type
- * @param {any} data
- * @returns {string}
- */
-function KDSendInput(type, data, frame, noUpdate) {
+function KDSendInput(type, data, frame?: boolean, noUpdate?: boolean): string {
 
 	if (!noUpdate) {
 		KDGameData.OrigEnergyLevel = KDGameData.AncientEnergyLevel;

@@ -3944,6 +3944,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game2.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:fbcd0567a0044b9836ea69d38a82966e:537e8298a4b8a31b55f3a7425c1db7e3:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:a0cd64fac9d52e71e3627d650d4f19a7:5935e97f30a63f55d61d0dff46af3979:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

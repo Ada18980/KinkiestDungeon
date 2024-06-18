@@ -5,7 +5,7 @@ function KinkyDungeonDrawCollection(xOffset = -125) {
 	if (!KDGameData.Collection) KDGameData.Collection = {};
 
 	if (Object.entries(KDGameData.Collection).length == 0) {
-		DrawTextFitKD(TextGet("KDCollectionEmpty"), x, 300, 800, "#ffffff", KDTextGray0, 24);
+		DrawTextFitKD(TextGet("KDCollectionEmpty"), x, 300, 1050, "#ffffff", KDTextGray0, 24);
 	} else {
 		KDDrawCollectionInventory(x + xOffset, 150);
 	}

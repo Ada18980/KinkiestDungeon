@@ -2459,7 +2459,7 @@
             <key type="filename">../Game/UI/Facility/MaidQuarters.png</key>
             <key type="filename">../Game/UI/Facility/Management.png</key>
             <key type="filename">../Game/UI/Facility/Recycler.png</key>
-            <key type="filename">../Game/UI/Facility/RescueSquad.png</key>
+            <key type="filename">../Game/UI/Facility/RescueTeam.png</key>
             <key type="filename">../Game/UI/Facility/TrainingDojo.png</key>
             <key type="filename">../Game/UI/ItemAura.png</key>
             <key type="filename">../Game/UI/ItemAuraBG.png</key>
@@ -2468,6 +2468,10 @@
             <key type="filename">../Game/UI/NavMap/shop.png</key>
             <key type="filename">../Game/UI/PathDisplay.png</key>
             <key type="filename">../Game/UI/PlayerFacing.png</key>
+            <key type="filename">../Game/UI/Resource/Latex.png</key>
+            <key type="filename">../Game/UI/Resource/Leather.png</key>
+            <key type="filename">../Game/UI/Resource/Metal.png</key>
+            <key type="filename">../Game/UI/Resource/Rope.png</key>
             <key type="filename">../Game/WarningAlly.png</key>
             <key type="filename">../Game/WarningBacking.png</key>
             <key type="filename">../Game/WarningBackingHighlight.png</key>

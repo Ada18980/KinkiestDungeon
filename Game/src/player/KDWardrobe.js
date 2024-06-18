@@ -276,17 +276,18 @@ function KDDrawColorSliders(X, Y, C, Model) {
 			"LayerBonus": 0,
 		};
 
-		for (let field0 of Object.entries(fields)) {
+		if (KDRefreshProps) {
+			KDRefreshProps = false;
+			YY += 50 * Object.entries(fields).length;
+		} else
+			for (let field0 of Object.entries(fields)) {
 
-			let field = field0[0];
-			let deff = field0[1];
+				let field = field0[0];
+				let deff = field0[1];
 
-			DrawTextFitKD(TextGet("KDPropField_" + field), X + width/2, YY + 10, width, "#ffffff", "#000000", 20);
+				DrawTextFitKD(TextGet("KDPropField_" + field), X + width/2, YY + 10, width, "#ffffff", "#000000", 20);
 
 
-			if (KDRefreshProps) {
-				KDRefreshProps = false;
-			} else {
 				let FF = KDTextField("KDPropField" + field, X, YY, width, 30, undefined, undefined, "20");
 				if (FF.Created) {
 					if (Model.Properties && Model.Properties[KDCurrentLayer])
@@ -312,12 +313,11 @@ function KDDrawColorSliders(X, Y, C, Model) {
 						}
 					};
 				}
+
+
+
+				YY += 50;
 			}
-
-
-
-			YY += 50;
-		}
 
 		YY += 70;
 
@@ -949,7 +949,6 @@ function KDDrawModelList(X, C) {
 			undefined, undefined, index_sub != KDModelList_Sublevel_index, KDButtonColor);
 		if (sublevel) {
 			if (index_sub == KDModelList_Sublevel_index && KDCurrentModels.get(C).Models.has(sublevel)) {
-				KDRefreshProps = true;
 				KDSelectedModel = C.Appearance.find((value) => {
 					return value.Model.Name == sublevel;
 				})?.Model;

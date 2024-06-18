@@ -65,7 +65,7 @@ function KDDrawMods() {
 	}
 }
 
-function getFileInput(callback) {
+function getFileInput(callback?) {
 	let input = document.createElement('input');
 	input.type = 'file';
 	input.multiple = true;

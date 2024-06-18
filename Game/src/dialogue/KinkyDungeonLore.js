@@ -522,9 +522,9 @@ function KDDrawLoreRepTabs(xOffset) {
 	});
 	let scrollFunc = (amount) => {
 		switch (KinkyDungeonDrawState) {
-			case  "Logbook": KinkyDungeonDrawState = amount < 0 ? "Collection"  : "Quest"; break;
-			case  "Quest": KinkyDungeonDrawState = amount < 0 ? "Logbook"  : "Reputation"; break;
-			case  "Reputation": KinkyDungeonDrawState = amount < 0 ? "Quest"  : "Collection"; break;
+			case  "Logbook": KinkyDungeonDrawState = amount < 0 ? "Facilities"  : "Quest"; break;
+			case  "Reputation": KinkyDungeonDrawState = amount < 0 ? "Logbook"  : "Quest"; break;
+			case  "Quest": KinkyDungeonDrawState = amount < 0 ? "Reputation"  : "Collection"; break;
 			case  "Collection": KinkyDungeonDrawState = amount < 0 ? "Reputation"  : "Facilities"; break;
 			case  "Facilities": KinkyDungeonDrawState = amount < 0 ? "Collection"  : "Logbook"; break;
 		}
@@ -539,16 +539,16 @@ function KDDrawLoreRepTabs(xOffset) {
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonLog"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Logbook", KDButtonColor); II++;
-	DrawButtonKDExScroll("TabQuest", scrollFunc, (b) => {
-		KinkyDungeonDrawState = "Quest";
-		return true;
-	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonQuest"), "#ffffff", undefined, undefined, undefined,
-	KinkyDungeonDrawState != "Quest", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabRep", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Reputation";
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonReputation"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Reputation", KDButtonColor); II++;
+	DrawButtonKDExScroll("TabQuest", scrollFunc, (b) => {
+		KinkyDungeonDrawState = "Quest";
+		return true;
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonQuest"), "#ffffff", undefined, undefined, undefined,
+	KinkyDungeonDrawState != "Quest", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabCollection", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Collection";
 		return true;

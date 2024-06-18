@@ -374,6 +374,7 @@ function KDResetData(Data) {
 	for (let control of Object.keys(KDFocusControlButtons)) {
 		KDInitFocusControl(control);
 	}
+	InitFacilities();
 }
 function KDResetEventData(Data) {
 	if (!Data) Data = KDEventDataBase;
@@ -455,6 +456,7 @@ function KinkyDungeonInitialize(Level, Load) {
 	KDInitCanvas();
 
 	KinkyDungeonDefaultStats(Load);
+	InitFacilities();
 
 	// Set up the first level
 	//KinkyDungeonCreateMap(KinkyDungeonMapParams[KinkyDungeonMapIndex[0]], 0);

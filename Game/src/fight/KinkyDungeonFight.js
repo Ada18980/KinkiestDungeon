@@ -2236,20 +2236,23 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
  * @param {*} summonType
  * @param {*} count
  * @param {*} rad
- * @param {*} strict
- * @param {*} lifetime
- * @param {*} hidden
- * @param {*} goToTarget
- * @param {*} faction
- * @param {*} hostile
- * @param {*} minrad
- * @param {*} startAware
- * @param {*} noBullet
- * @param {*} hideTimer
- * @param {*} pathfind
- * @param {*} mod
- * @param {*} boundTo
- * @param {*} weakBinding
+ * @param {*} [strict]
+ * @param {*} [lifetime]
+ * @param {*} [hidden]
+ * @param {*} [goToTarget]
+ * @param {*} [faction]
+ * @param {*} [hostile]
+ * @param {*} [minrad]
+ * @param {*} [startAware]
+ * @param {*} [noBullet]
+ * @param {*} [hideTimer]
+ * @param {*} [pathfind]
+ * @param {*} [mod]
+ * @param {*} [boundTo]
+ * @param {*} [weakBinding]
+ * @param {*} [teleportTime]
+ * @param {*} [ox]
+ * @param {*} [oy]
  * @returns {entity[]}
  */
 function KinkyDungeonSummonEnemy(x, y, summonType, count, rad, strict, lifetime, hidden, goToTarget, faction, hostile, minrad, startAware, noBullet, hideTimer, pathfind, mod, boundTo, weakBinding, teleportTime, ox, oy) {

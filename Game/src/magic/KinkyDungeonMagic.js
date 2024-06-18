@@ -532,6 +532,8 @@ function KinkyDungeonHandleSpell(ind) {
 /**
  *
  * @param {spell} Spell
+ * @param {boolean} [Passive]
+ * @param {boolean} [Toggle]
  * @returns {number}
  */
 function KinkyDungeonGetStaminaCost(Spell, Passive, Toggle) {
@@ -557,6 +559,8 @@ function KinkyDungeonGetStaminaCost(Spell, Passive, Toggle) {
 /**
  *
  * @param {spell} Spell
+ * @param {boolean} [Passive]
+ * @param {boolean} [Toggle]
  * @returns {number}
  */
 function KinkyDungeonGetManaCost(Spell, Passive, Toggle) {
@@ -587,6 +591,8 @@ function KinkyDungeonGetManaCost(Spell, Passive, Toggle) {
 /**
  *
  * @param {spell} Spell
+ * @param {boolean} [Passive]
+ * @param {boolean} [Toggle]
  * @returns {number}
  */
 function KinkyDungeonGetChargeCost(Spell, Passive, Toggle) {
