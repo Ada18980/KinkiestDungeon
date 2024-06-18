@@ -4924,8 +4924,8 @@ Non-Lockable
 不可上锁
 Unlocked
 解锁的
-Lock Type:
-锁类型：
+Lock:
+锁：
 Simple
 简单
 Standard
@@ -19491,6 +19491,8 @@ Tip: Slime/Latex tiles only affect entities with less than 45 Glue Resist.
 提示：粘液/乳胶块仅影响胶水抗性低于 45 的实体。
 Being drenched in water also prevents slime/latex from sticking to you.
 浸湿在水中还可以防止粘液/乳胶粘在你身上。
+Use the interact tool in the bottom right HUD to sleep in a bed.
+使用右下角 HUD 中的交互工具在床上睡觉。
 Clear Vision
 视野通透
 Blindfolds are much rarer.
@@ -19539,3 +19541,13 @@ Cuddle Lounge
 拥抱休息室
 Assign prisoners to the lounge in order to improve your servants' opinion of you.
 将囚犯分配到休息室以提高仆人对你的观点。
+You're blocking me.
+你挡住我了。
+You're in my way!
+你挡住我的路了！
+Miss, you're blocking me...
+小姐，你挡住我了……
+Step aside~
+请让开~
+Path blocked by citizen.
+道路被市民阻挡。
