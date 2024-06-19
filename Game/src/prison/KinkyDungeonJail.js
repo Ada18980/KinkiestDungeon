@@ -654,7 +654,7 @@ function KinkyDungeonHandleJailSpawns(delta) {
 		}
 	}
 
-	if (KinkyDungeonJailGuard()) {
+	if (KinkyDungeonJailGuard() && !KinkyDungeonJailGuard().IntentAction && !KinkyDungeonJailGuard().action) {
 		if (KDGuardActions[KinkyDungeonJailGuard().CurrentAction] && KDGuardActions[KinkyDungeonJailGuard().CurrentAction].handle) {
 			KDGuardActions[KinkyDungeonJailGuard().CurrentAction].handle(KinkyDungeonJailGuard(), xx, yy, delta);
 		}

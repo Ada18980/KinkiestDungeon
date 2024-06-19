@@ -175,15 +175,15 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 							if (ignoreLocks) {
 								closed.set(lowLoc, lowest);
 								newPath = KinkyDungeonGetPath(closed, lowest.x, lowest.y);
-								let endPath = KDPathCacheIgnoreLocks.get(locIndex);
+								let endPath = Object.assign([], KDPathCacheIgnoreLocks.get(locIndex));
 								KDPathfindingCacheHits++;
-								newPath.push.apply(newPath, endPath);
+								newPath.push(...endPath);
 							} else {
 								closed.set(lowLoc, lowest);
 								newPath = KinkyDungeonGetPath(closed, lowest.x, lowest.y);
-								let endPath = KDPathCache.get(locIndex);
+								let endPath = Object.assign([], KDPathCache.get(locIndex));
 								KDPathfindingCacheHits++;
-								newPath.push.apply(newPath, endPath);
+								newPath.push(...endPath);
 							}
 							if (newPath.length > 0) {
 								if (newPath[0] && KDistChebyshev(newPath[0].x - startx, newPath[0].y - starty) < 1.5) {
@@ -269,11 +269,20 @@ function KinkyDungeonGetPath(closed, xx, yy, endx, endy) {
 	return list.reverse();
 }
 
+/**
+ *
+ * @param {Map<string, any[]>} PathMap
+ * @param {any[]} newPath
+ * @param {number} endx
+ * @param {number} endy
+ * @param {string} Tiles
+ * @param {string} Finalindex
+ */
 function KDSetPathfindCache(PathMap, newPath, endx, endy, Tiles, Finalindex) {
 	for (let i = 0; i < newPath.length - 1; i++) {
 		let path = newPath.slice(i);
 		let index = `${path[0].x},${path[0].y},${endx},${endy},${Tiles}`;
-		PathMap.set(index, path.slice(1));
+		PathMap.set(index, Object.assign([], path.slice(1)));
 	}
 	if (Finalindex)
 		PathMap.set(Finalindex, newPath);

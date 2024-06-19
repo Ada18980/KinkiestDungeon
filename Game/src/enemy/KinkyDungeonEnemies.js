@@ -4362,8 +4362,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 										KDBlockedByPlayer(enemy, dir);
 										KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
 										KinkyDungeonSetEnemyFlag(enemy, "blocked", 3);
+									} else {
+										splice = true;
 									}
-									splice = true;
 								} else {
 									enemy.path = null;
 									KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
@@ -4466,8 +4467,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 									KDBlockedByPlayer(enemy, dir);
 									KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
 									KinkyDungeonSetEnemyFlag(enemy, "blocked", 3);
+								} else {
+									splice = true;
 								}
-								splice = true;
 							} else {
 								KDBlockedByPlayer(enemy, dir);
 								enemy.path = null;
