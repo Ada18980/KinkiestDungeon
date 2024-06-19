@@ -2274,9 +2274,10 @@ const KinkyDungeonRestraints = [
 		LinkableBy: ["Wrapping", "Ornate"],
 		factionFilters: {
 			Lock: {color: "Highlight", override: true},
+			BaseMetal: {color: "DarkNeutral", override: false},
 		},
 		Filters: {
-			BaseMetal: {"gamma":0.8999999999999999,"saturation":0.2,"contrast":3.1666666666666665,"brightness":0.6166666666666667,"red":1.0166666666666666,"green":1,"blue":1,"alpha":1},
+			BaseMetal: {"gamma":0.8999999999999999,"saturation":0.0,"contrast":3.1666666666666665,"brightness":0.6166666666666667,"red":1.0166666666666666,"green":1,"blue":1,"alpha":1},
 		},
 		power: 8, weight: 2, escapeChance: {"Struggle": -0.5, "Cut": -0.30, "Remove": 100.0, "Pick": 0.25}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Chastity", "Metal", "ChastityBelts"]},
 	{inventory: true, arousalMode: true, name: "PrisonBelt2", Asset: "OrnateChastityBelt", OverridePriority: 26, Color: ["#272727", "#AA0000"], Group: "ItemPelvis", chastity: true,
@@ -2288,6 +2289,7 @@ const KinkyDungeonRestraints = [
 		LinkableBy: ["Wrapping"],
 		factionFilters: {
 			Lock: {color: "Highlight", override: true},
+			BaseMetal: {color: "DarkNeutral", override: true},
 		},
 		Filters: {
 			Lock: {"gamma":1,"saturation":0.06666666666666667,"contrast":2.1333333333333333,"brightness":1.6500000000000001,"red":1,"green":1.0166666666666666,"blue":1.0166666666666666,"alpha":1},
@@ -2482,6 +2484,7 @@ const KinkyDungeonRestraints = [
 		LinkableBy: ["Wrapping", "Ornate"],
 		factionFilters: {
 			Lock: {color: "Highlight", override: true},
+			BaseMetal: {color: "DarkNeutral", override: false},
 		},
 		Filters: {
 			Lock: {"gamma":1,"saturation":0,"contrast":2.033333333333333,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
@@ -2581,6 +2584,8 @@ const KinkyDungeonRestraints = [
 		LinkableBy: ["Wrapping", "Ornate"],
 		factionFilters: {
 			Lock: {color: "Highlight", override: true},
+			Lining: {color: "Highlight", override: true},
+			BaseMetal: {color: "LightNeutral", override: false},
 		},
 		Filters: {
 			Lock: {"gamma":1,"saturation":0.06666666666666667,"contrast":1.6833333333333333,"brightness":0.6666666666666666,"red":1,"green":1.0166666666666666,"blue":1.0166666666666666,"alpha":1},

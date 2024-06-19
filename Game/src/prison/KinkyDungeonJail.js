@@ -706,8 +706,12 @@ function KinkyDungeonHandleJailSpawns(delta) {
 					KDGameData.KinkyDungeonPrisonExtraGhostRep = 0;
 				}
 			} else if (!KinkyDungeonJailGuard().IntentAction || KinkyDungeonJailGuard().IntentAction.startsWith('jail')) {
-				KinkyDungeonJailGuard().gx = xx;
-				KinkyDungeonJailGuard().gy = yy;
+				if (!KinkyDungeonFlags.has("notickguardtimer")
+					&& !KinkyDungeonFlags.has("nojailbreak")) {
+					// Return so that they can despawn
+					KinkyDungeonJailGuard().gx = xx;
+					KinkyDungeonJailGuard().gy = yy;
+				}
 			}
 		}
 	}

@@ -7089,12 +7089,31 @@ function KDEnemySoundDecay(enemy, delta) {
 	let data = {
 		enemy: enemy,
 		decay: enemy.Enemy.Sound?.decay != undefined ? enemy.Enemy.Sound?.decay : 1,
-		base: enemy.Enemy.Sound?.baseAmount != undefined ? enemy.Enemy.Sound?.baseAmount : KDDefaultEnemyIdleSound,
+		base: enemy.Enemy.Sound?.baseAmount != undefined ? enemy.Enemy.Sound?.baseAmount : (KDDefaultSound(enemy)),
 	};
 	KinkyDungeonSendEvent("enemySoundDecay", data);
 	if (enemy.sound == undefined) enemy.sound = 0;
 
 	enemy.sound = Math.max(data.base, enemy.sound - delta * data.decay);
+}
+
+/**
+ *
+ * @param {entity} enemy
+ */
+function KDDefaultSound(enemy) {
+	let mult = 1;
+	if (enemy.Enemy) {
+		if (enemy.Enemy.tags.construct) mult *= 0.5;
+		else if (enemy.Enemy.tags.scenery) mult *= 0.5;
+		else if (enemy.Enemy.tags.mushroom) mult *= 0.5;
+		else if (enemy.Enemy.tags.plant) mult *= 0.5;
+		else if (enemy.Enemy.tags.mummy) mult *= 0.65;
+		else if (enemy.Enemy.tags.elf) mult *= 0.65;
+
+		if (KDIsImmobile(enemy)) mult -= 0.5;
+	}
+	return Math.max(mult, 0)*KDDefaultEnemyIdleSound;
 }
 
 /**
