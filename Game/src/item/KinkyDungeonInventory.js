@@ -2846,8 +2846,9 @@ function KDGiveConsumableVariant(variant, prefix = "", forceName, suffix = "", Q
  * @param {string} curse
  * @param {string} ID
  * @param {string} [forceName]
+ * @param {number} [powerBonus]
  */
-function KDGiveInventoryVariant(variant, prefix = "", curse = undefined, ID="", forceName, suffix = "", faction = "") {
+function KDGiveInventoryVariant(variant, prefix = "", curse = undefined, ID="", forceName, suffix = "", faction = "", powerBonus) {
 	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
 	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
 	let newname = forceName ? forceName : (prefix + variant.template + (ID || (KinkyDungeonGetItemID() + "")) + (curse ? curse : ""));
@@ -2857,6 +2858,7 @@ function KDGiveInventoryVariant(variant, prefix = "", curse = undefined, ID="", 
 		variant = JSON.parse(JSON.stringify(variant));
 		variant.curse = curse;
 	}
+	if (powerBonus) variant.power = powerBonus;
 	if (!KinkyDungeonRestraintVariants[newname])
 		KinkyDungeonRestraintVariants[newname] = variant;
 	if (variant.events)
@@ -2881,8 +2883,9 @@ function KDGiveInventoryVariant(variant, prefix = "", curse = undefined, ID="", 
  * @param {string} [inventoryAs] - inventoryAs for the item
  * @param {string} prefix
  * @param {string} ID
+ * @param {number} [powerBonus]
  */
-function KDEquipInventoryVariant(variant, prefix = "", Tightness, Bypass, Lock, Keep, Trapped, faction, Deep, curse, securityEnemy, useAugmentedPower, inventoryAs, ID = "", suffix = "") {
+function KDEquipInventoryVariant(variant, prefix = "", Tightness, Bypass, Lock, Keep, Trapped, faction, Deep, curse, securityEnemy, useAugmentedPower, inventoryAs, ID = "", suffix = "", powerBonus = 0) {
 	KDUpdateItemEventCache = true;
 	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
 	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
@@ -2893,11 +2896,14 @@ function KDEquipInventoryVariant(variant, prefix = "", Tightness, Bypass, Lock, 
 		variant = JSON.parse(JSON.stringify(variant));
 		variant.curse = curse;
 	}
+	if (powerBonus) variant.power = powerBonus;
 	if (!KinkyDungeonRestraintVariants[newname])
 		KinkyDungeonRestraintVariants[newname] = variant;
 	if (variant.events)
 		Object.assign(events, variant.events);
-	return KinkyDungeonAddRestraintIfWeaker(origRestraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, curse, securityEnemy, useAugmentedPower, newname);
+	return KinkyDungeonAddRestraintIfWeaker(origRestraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, curse, securityEnemy, useAugmentedPower, newname, undefined, undefined, undefined,
+		powerBonus
+	);
 }
 
 /**

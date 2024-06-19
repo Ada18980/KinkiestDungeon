@@ -3049,6 +3049,8 @@ type KDRestraintVariant = {
 	template: string,
 	/** If true, this item will not be forcibly kept whenever being added or removed */
 	noKeep?: boolean,
+	/** Power of the variant */
+	power?: number,
 }
 type KDWeaponVariant = {
 	/** Name prefix */
