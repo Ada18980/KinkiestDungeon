@@ -2898,7 +2898,7 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 		if ((Allied && KDAllied(enemy)) || (!Allied && !KDAllied(enemy))) {
 
 			let tile = KinkyDungeonTilesGet(enemy.x + "," + enemy.y);
-			if (tile?.OL) {
+			if (tile?.OL && (enemy.gxx != enemy.x || enemy.gyy != enemy.y)) {
 				// We remove certain flags when enemies are in an 'offlimits' area so we can get them out
 				KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 			}
@@ -4072,7 +4072,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 		// If we SEE the player as opposed to just being able to
 		&& sneakPerc >= 0.5) {
 
-		KinkyDungeonSetEnemyFlag(enemy, "wander", 0); // Reset wander timer
+		if (AIData.aggressive)
+			KinkyDungeonSetEnemyFlag(enemy, "wander", 0); // Reset wander timer
 
 
 		if (!KDEnemyHasFlag(enemy, "StayHere")) {

@@ -186,12 +186,19 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 								newPath.push.apply(newPath, endPath);
 							}
 							if (newPath.length > 0) {
-								if (ignoreLocks) {
-									if (!KDPathCacheIgnoreLocks.has(index)) KDSetPathfindCache(KDPathCacheIgnoreLocks, newPath, endx, endy, tileShort, index);
-								} else {
-									if (!KDPathCache.has(index)) KDSetPathfindCache(KDPathCache, newPath, endx, endy, tileShort, index);
+								if (newPath[0] && KDistChebyshev(newPath[0].x - startx, newPath[0].y - starty) < 1.5) {
+									if (ignoreLocks) {
+										if (!KDPathCacheIgnoreLocks.has(index)) KDSetPathfindCache(KDPathCacheIgnoreLocks, newPath, endx, endy, tileShort, index);
+									} else {
+										if (!KDPathCache.has(index)) KDSetPathfindCache(KDPathCache, newPath, endx, endy, tileShort, index);
+									}
+									return newPath;
 								}
-								return newPath;
+								else if (ignoreLocks) {
+									KDPathCacheIgnoreLocks.delete(locIndex);
+								} else {
+									KDPathCache.delete(locIndex);
+								}
 							} else return undefined;
 						}
 						// Give up and add to the test array

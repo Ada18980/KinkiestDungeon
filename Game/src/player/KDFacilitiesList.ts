@@ -80,10 +80,10 @@ let KDFacilityTypes: Record<string, Facility> = {
 				for (let resource of res) {
 					KDDraw(kdcanvas, kdpixisprites, "fac_rec_res_" + resource,
 						KinkyDungeonRootDirectory + "UI/Resource/" + resource + ".png",
-						x + 575 - spacing*0.5*res.length + (spacing * rID), y + 50, 72, 72
+						x + 560 - spacing*0.5*res.length + (spacing * rID), y + 50, 72, 72
 					);
 					DrawTextFitKD(Math.floor(KDGameData.FacilitiesData["Recycler_" + resource] || 0) + "",
-						x + 575 + 70 - spacing*0.5*res.length + (spacing * rID), y + 86, spacing - 80, "#ffffff", KDTextGray0, 32, "left");
+						x + 560 + 70 - spacing*0.5*res.length + (spacing * rID), y + 86, spacing - 80, "#ffffff", KDTextGray0, 32, "left");
 					rID++;
 				}
 
