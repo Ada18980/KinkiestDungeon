@@ -774,7 +774,7 @@ let KDEffectTileFunctions = {
 		if (!KDEntityHasBuff(entity, "Drenched")) {
 			let slimeWalker = KDSlimeWalker(entity);
 			if (!slimeWalker) {
-				if (!KinkyDungeonFlags.get("1stLatex")) {
+				if (KinkyDungeonVisionGet(tile.x, tile.y) > 0.5 && !KinkyDungeonFlags.get("1stLatex")) {
 					KinkyDungeonSendTextMessage(10, TextGet("KDLatexHelp2"), "#ffffff", 12, undefined, undefined, undefined, "");
 					KinkyDungeonSendTextMessage(10, TextGet("KDLatexHelp1"), "#ffffff", 12, undefined, undefined, undefined, "");
 					KinkyDungeonSetFlag("1stLatex", -1);
@@ -791,7 +791,7 @@ let KDEffectTileFunctions = {
 		} else if (!KDEntityHasBuff(entity, "Drenched")) {
 			let slimeWalker = KDSlimeWalker(entity);
 			if (!slimeWalker) {
-				if (!KinkyDungeonFlags.get("1stLatex")) {
+				if (KinkyDungeonVisionGet(tile.x, tile.y) > 0.5 && !KinkyDungeonFlags.get("1stLatex")) {
 					KinkyDungeonSendTextMessage(10, TextGet("KDLatexHelp2"), "#ffffff", 12, undefined, undefined, undefined, "");
 					KinkyDungeonSendTextMessage(10, TextGet("KDLatexHelp1"), "#ffffff", 12, undefined, undefined, undefined, "");
 					KinkyDungeonSetFlag("1stLatex", -1);
@@ -825,7 +825,7 @@ let KDEffectTileFunctions = {
 			let slimeWalker = KDSlimeWalker(entity);
 			if (!slimeWalker) {
 				if (!KDEntityHasBuff(entity, "Drenched")) {
-					if (!KinkyDungeonFlags.get("1stLatex")) {
+					if (KinkyDungeonVisionGet(tile.x, tile.y) > 0.5 && !KinkyDungeonFlags.get("1stLatex")) {
 						KinkyDungeonSendTextMessage(10, TextGet("KDLatexHelp2"), "#ffffff", 12, undefined, undefined, undefined, "");
 						KinkyDungeonSendTextMessage(10, TextGet("KDLatexHelp1"), "#ffffff", 12, undefined, undefined, undefined, "");
 						KinkyDungeonSetFlag("1stLatex", -1);

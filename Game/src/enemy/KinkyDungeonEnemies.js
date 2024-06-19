@@ -5675,7 +5675,7 @@ function KinkyDungeonNoEnemy(x, y, Player) {
  * @returns {boolean}
  */
 function KDIsImmobile(enemy, strict) {
-	return enemy && (enemy.Enemy.immobile || (!strict && enemy.Enemy.tags?.immobile) || KDEnemyHasFlag(enemy, "imprisoned"));
+	return enemy?.Enemy && (enemy.Enemy.immobile || (!strict && enemy.Enemy.tags?.immobile) || KDEnemyHasFlag(enemy, "imprisoned"));
 }
 
 // e = potential sub
@@ -5689,6 +5689,7 @@ function KDIsImmobile(enemy, strict) {
 function KinkyDungeonCanSwapWith(e, Enemy) {
 	if (KDIsImmobile(e) && (e.Enemy.immobile)) return false; // Definition of noSwap
 	if (e && KDEnemyHasFlag(e, "noswap")) return false; // Definition of noSwap
+	if (Enemy && KDEnemyHasFlag(Enemy, "donotswap")) return false; // Definition of noSwap
 
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.ethereal && e && e.Enemy && !e.Enemy.ethereal) return false; // Ethereal enemies NEVER have seniority, this can teleport other enemies into walls
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.squeeze && e && e.Enemy && !e.Enemy.squeeze) return false; // Squeeze enemies NEVER have seniority, this can teleport other enemies into walls
@@ -5849,6 +5850,8 @@ function KinkyDungeonEnemyTryMove(enemy, Direction, delta, x, y, canSprint) {
 			ee.warningTiles = [];
 			ee.movePoints = 0;
 			ee.stun = 1;
+			KinkyDungeonSetEnemyFlag(ee, "donotswap", 4);
+			KinkyDungeonSetEnemyFlag(ee, "fidget", 0);
 		} else if (KinkyDungeonEntityAt(enemy.x + Direction.x, enemy.y + Direction.y)?.player) {
 			KDMovePlayer(enemy.x, enemy.y, false, false, false, true);
 		}

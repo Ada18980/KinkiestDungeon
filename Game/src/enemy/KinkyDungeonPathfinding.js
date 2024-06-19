@@ -86,14 +86,14 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 			if (KDPathCacheIgnoreLocks.has(index)) {
 				KDPathfindingCacheHits++;
 				if (KDPathCacheIgnoreLocks.get(index)[0] && KDistChebyshev(KDPathCacheIgnoreLocks.get(index)[0].x - startx, KDPathCacheIgnoreLocks.get(index)[0].y - starty) < 1.5)
-					return Object.assign([], KDPathCacheIgnoreLocks.get(index));
+					return KDPathCacheIgnoreLocks.get(index).slice(0);
 				else KDPathCacheIgnoreLocks.delete(index);
 			}
 		} else {
 			if (KDPathCache.has(index)) {
 				KDPathfindingCacheHits++;
 				if (KDPathCache.get(index)[0] && KDistChebyshev(KDPathCache.get(index)[0].x - startx, KDPathCache.get(index)[0].y - starty) < 1.5)
-					return Object.assign([], KDPathCache.get(index));
+					return KDPathCache.get(index).slice(0);
 				else KDPathCache.delete(index);
 			}
 		}
@@ -175,13 +175,13 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 							if (ignoreLocks) {
 								closed.set(lowLoc, lowest);
 								newPath = KinkyDungeonGetPath(closed, lowest.x, lowest.y);
-								let endPath = Object.assign([], KDPathCacheIgnoreLocks.get(locIndex));
+								let endPath = KDPathCacheIgnoreLocks.get(locIndex).slice(0);
 								KDPathfindingCacheHits++;
 								newPath.push(...endPath);
 							} else {
 								closed.set(lowLoc, lowest);
 								newPath = KinkyDungeonGetPath(closed, lowest.x, lowest.y);
-								let endPath = Object.assign([], KDPathCache.get(locIndex));
+								let endPath = KDPathCache.get(locIndex).slice(0);
 								KDPathfindingCacheHits++;
 								newPath.push(...endPath);
 							}
@@ -282,8 +282,8 @@ function KDSetPathfindCache(PathMap, newPath, endx, endy, Tiles, Finalindex) {
 	for (let i = 0; i < newPath.length - 1; i++) {
 		let path = newPath.slice(i);
 		let index = `${path[0].x},${path[0].y},${endx},${endy},${Tiles}`;
-		PathMap.set(index, Object.assign([], path.slice(1)));
+		PathMap.set(index, path.slice(1));
 	}
 	if (Finalindex)
-		PathMap.set(Finalindex, newPath);
+		PathMap.set(Finalindex, newPath.slice(0));
 }

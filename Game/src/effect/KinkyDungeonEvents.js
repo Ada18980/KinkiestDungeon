@@ -8077,7 +8077,7 @@ let KDEventMapEnemy = {
 			let count = KDGetLeashedToCount(enemy);
 			if (count < (e.count || 3)) {
 				for (let en of enemies) {
-					if (KDGetFaction(en) == KDGetFaction(enemy) && en.Enemy?.tags?.submissive) {
+					if (KDGetFaction(en) == KDGetFaction(enemy) && en.Enemy?.tags?.submissive && en.Enemy?.tags?.minor) {
 						dd = KDistChebyshev(enemy.x - en.x, enemy.y - en.y);
 						if (dd < e.dist) {
 							if (dd < 1.5) {

@@ -185,7 +185,7 @@ function KinkyDungeonDrawTethers(CamX: number, CamY: number) {
 	}
 
 	let drawTether = (entity: entity) => {
-		if (entity.leash && (KDCanSeeEnemy(entity) || KinkyDungeonVisionGet(entity.leash.x, entity.leash.y) > 0.1)) {
+		if (entity.leash && (KDCanSeeEnemy(entity) || KinkyDungeonVisionGet(entity.leash.x, entity.leash.y) > 0.5)) {
 			let xx = canvasOffsetX + (entity.visual_x - CamX)*KinkyDungeonGridSizeDisplay;
 			let yy = canvasOffsetY + (entity.visual_y - CamY)*KinkyDungeonGridSizeDisplay;
 			let txx = canvasOffsetX + (entity.leash.x - CamX)*KinkyDungeonGridSizeDisplay;
