@@ -1628,7 +1628,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff5555"},
 		],
 		effect: {
-			effect: {name: "LatexSpray", count: 1, time: 4, power: 2, mult: 5, damage: "glue"},
+			effect: {name: "LatexSpray", count: 1, time: 4, power: 2, mult: 2, damage: "glue"},
 		},
 		spells: ["LatexSpray"], spellCooldownMult: 1, spellCooldownMod: 0, projectileTargeting: true,
 		cueSfx: {

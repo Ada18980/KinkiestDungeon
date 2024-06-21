@@ -247,7 +247,7 @@ let KinkyDungeonStatsPresets = {
 
 	"NovicePet":  {category: "Major", id: "NovicePet", cost: 1},
 	"Fortify_Barricade":  {category: "Major", id: "Fortify_Barricade", cost: -2},
-	"Fortify_Trap":  {category: "Major", id: "Fortify_Trap", cost: -2},
+	"Fortify_Trap":  {category: "Enemies", id: "Fortify_Trap", cost: -1},
 	"CurseSeeker":  {category: "Major", id: "CurseSeeker", cost: -3},
 	"DirectionVision":  {category: "Major", id: "DirectionVision", cost: -2},
 	"DirectionSlow":  {category: "Major", id: "DirectionSlow", cost: -1, block: ["DirectionSlow2"]},

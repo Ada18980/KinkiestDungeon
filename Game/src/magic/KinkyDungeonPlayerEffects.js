@@ -196,7 +196,9 @@ let KDPlayerEffects = {
 		if (KDTestSpellHits(spell, 0.5, 0.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
-			let textIndex = "0";
+
+
+			/*let textIndex = "0";
 			let buff = KinkyDungeonPlayerBuffs.LatexIntegration;
 			let mult = playerEffect?.mult || 3;
 
@@ -226,6 +228,17 @@ let KDPlayerEffects = {
 					buff.duration = 50 + Math.floor(-buff.power * 100);
 				}
 			}
+
+			*/
+
+
+			let mult = playerEffect?.mult || 3;
+			//let integration = KDEntityBuffedStat(KDPlayer(), "LatexIntegration");
+
+			KDAddSpecialStat("LatexIntegration", KDPlayer(), mult * (playerEffect?.power || spell?.power || 1), false); // Add a significant amount of corruption
+
+			let textIndex = "0";
+			let buff = KinkyDungeonPlayerBuffs.LatexIntegration;
 
 			if (buff?.power <= -1) {
 				textIndex = "4";
@@ -2382,8 +2395,27 @@ function KDApplyBubble(entity, time, damage = 0) {
 	}
 }
 
+/**
+ * @type {Record<string, SpecialStat>}
+ */
 let KDSpecialStats = {
-	Corruption: 50, // Amount per floor lost
+	Corruption: {
+		PerFloor: (player, amount) => {
+			return 50;
+		}
+	},
+	LatexIntegration: {
+		PerFloor: (player, amount) => {
+			return Math.max(0, Math.floor(10 - 0.1 * amount)); // 0 at 100
+		},
+		BuffEvents: (player) => {
+			return [
+				{trigger: "beforeStruggleCalc", type: "latexIntegrationDebuff", power: 0.01},
+				{trigger: "beforeDressRestraints", type: "LatexIntegration"},
+				//{trigger: "postQuest", type: "LatexIntegration"},
+			];
+		}
+	},
 };
 
 /**
@@ -2411,6 +2443,9 @@ function KDAddSpecialStat(stat, entity, amount, Msg, max = 100, color = "#722fcc
 			tags: [stat],
 			text: "0%",
 		});
+		if (KDSpecialStats[stat]?.BuffEvents) {
+			buff.events = KDSpecialStats[stat].BuffEvents(entity);
+		}
 	}
 
 	buff.power = newCurse;

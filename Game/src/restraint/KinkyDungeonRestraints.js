@@ -2243,6 +2243,9 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index, query = false,
 		extraLimThreshold: 0,
 	};
 
+	// Prevent crashes due to weirdness
+	if ((data.struggleType == "Pick" || data.struggleType == "Unlock") && !data.lockType) return "Fail";
+
 	data.escapeSpeed = KDBaseEscapeSpeed * data.speedMult;
 	data.extraLim = (data.struggleType == "Pick" && data.lockType.pick_lim) ? Math.max(0, data.lockType.pick_lim) : 0;
 	data.extraLimPenalty = (data.struggleType == "Pick") ? data.extraLim * data.restraint.pickProgress : 0;

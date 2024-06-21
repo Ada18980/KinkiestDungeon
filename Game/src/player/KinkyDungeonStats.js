@@ -2039,16 +2039,16 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 }
 
 function KinkyDungeonIsChaste(Breast) {
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if ((!Breast && KDRestraint(inv).chastity) || (Breast && KDRestraint(inv).chastitybra)) return true;
+	for (let inv of KinkyDungeonAllRestraintDynamic()) {
+		if ((!Breast && KDRestraint(inv.item).chastity) || (Breast && KDRestraint(inv.item).chastitybra)) return true;
 	}
 }
 
 function KinkyDungeonChastityMult() {
 	let chaste = 0.0;
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if (KDRestraint(inv).chastity) chaste += 1;
-		else if (KDRestraint(inv).chastitybra) chaste += 0.2;
+	for (let inv of KinkyDungeonAllRestraintDynamic()) {
+		if (KDRestraint(inv.item).chastity) chaste += 1;
+		else if (KDRestraint(inv.item).chastitybra) chaste += 0.2;
 	}
 	return chaste;
 }

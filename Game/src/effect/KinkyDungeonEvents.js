@@ -2532,7 +2532,7 @@ const KDEventMapBuff = {
 		},
 		"latexIntegrationDebuff": (e, buff, entity, data) => {
 			if (data.restraint && (data.struggleType === "Struggle" || data.struggleType === "Remove") && KDRestraint(data.restraint).shrine.includes("Cyber")) {
-				data.escapePenalty += (e.power || 1) * -buff.power;
+				data.escapePenalty += (e.power || 1) * buff.power;
 				if (!data.query)
 					KinkyDungeonSendTextMessage(5, TextGet("KDLatexIntegration" + Math.floor(KDRandom() * 3)), "#38a2c3", 2, true);
 			}
@@ -2795,7 +2795,7 @@ const KDEventMapBuff = {
 	"beforeDressRestraints": {
 		"LatexIntegration": (e, buff, entity, data) => {
 			if (entity.player) {
-				if (buff.power < -0.99) {
+				if (buff.power >= 100) {
 					/** @type {alwaysDressModel} */
 					let efd = {
 						Model: "Catsuit",

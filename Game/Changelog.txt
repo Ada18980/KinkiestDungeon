@@ -30,6 +30,8 @@ TODO:
 
 5.3.21
 - Upgraded the layering system to allow for even tighter item combinations (and getting rid of low level items to replace with more strong items)
+- More scenery now appears in various tiles, and added a few new temple tile variations
+- Made it possible to put your own runes on top of enemy runes. Have fun :)
 
 5.3.20
 - You can now give release to distracted NPCs thru the flirting menu
@@ -37,6 +39,7 @@ TODO:
 - Can now interact with doll dropoffs to put yourself on one (only on new tiles)
 - Increased number of hotbar slots to 50
 - Fixed bug where enemies would deaggro and sit there (instead of running away)
+- Minefield is now a -1 perk (instead of -2)
 
 5.3.19
 - Fixed 'temp leash enemy failing to deliver to jail or cage'

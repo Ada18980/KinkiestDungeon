@@ -1124,6 +1124,8 @@ let KinkyDungeonSpellSpecials = {
 				return b.bullet.source == -1 && b.bullet?.spell?.tags?.includes("rune");
 			});
 
+		} else {
+			cast = true;
 		}
 
 		let refund = false;
@@ -1142,6 +1144,9 @@ let KinkyDungeonSpellSpecials = {
 			if (refund) {
 				KinkyDungeonSendActionMessage(6, TextGet("KDNegateRuneEnemy"), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 				KinkyDungeonChangeMana(1, false, 0, undefined, true);
+			} else if (bList.length == 0) {
+				KinkyDungeonSendActionMessage(6, TextGet("KDNegateRuneFail"), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+				KinkyDungeonChangeMana(-0.5, false, 0, undefined, true);
 			}
 			return "Cast";
 		} else return "Fail";

@@ -762,11 +762,15 @@ let KDTileGen = {
 	},
 	"ForceSpawn": (x, y, tile, tileGenerator, data) => {
 		if (!tileGenerator.Chance || KDRandom() < tileGenerator.Chance) {
-			let enemy = KinkyDungeonGetEnemy(tileGenerator.tags, MiniGameKinkyDungeonLevel + (tileGenerator.levelBoost || 0), tileGenerator.forceIndex || (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+			let enemy = KinkyDungeonGetEnemy(tileGenerator.tags,
+				MiniGameKinkyDungeonLevel + (tileGenerator.levelBoost || 0),
+				tileGenerator.forceIndex || (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 				'0', tileGenerator.required, tileGenerator.requireHostile, tileGenerator.bonusTags, tileGenerator.filterTags, tileGenerator.requireSingleTag);
-			let en = DialogueCreateEnemy(x, y, enemy.name);
-			if (en && tileGenerator.faction) {
-				en.faction = tileGenerator.faction;
+			if (enemy) {
+				let en = DialogueCreateEnemy(x, y, enemy.name);
+				if (en && tileGenerator.faction) {
+					en.faction = tileGenerator.faction;
+				}
 			}
 		}
 		KinkyDungeonMapSet(x, y, '0');

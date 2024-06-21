@@ -2670,7 +2670,7 @@ let KinkyDungeonSpellListEnemies = [
 
 	{enemySpell: true, name: "LatexSpray",  bindType: "Latex", color: "#2789cd", sfx: "RubberBolt",
 		manacost: 2.5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 3.5, pierceEnemies: true, delay: 0, range: 5.5, damage: "glue", speed: 1.5,
-		playerEffect: {name: "LatexSpray", count: 1, time: 4, power: 2.5, mult: 3, damage: "glue"}},
+		playerEffect: {name: "LatexSpray", count: 1, time: 4, power: 2.5, mult: 1, damage: "glue"}},
 
 
 	{enemySpell: true, name: "MithrilBolt",  bindType: "Rope", color: "#999999", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "MithrilBolt", count: 1, time: 3, power: 3, damage: "cold"}},
@@ -3761,7 +3761,7 @@ let KDPlayerCastConditions = {
 	},
 	"noStationaryBullet": (player, x, y) => {
 		return !KDMapData.Bullets.some((b) => {
-			return b.x == x && b.y == y;
+			return b.x == x && b.y == y && !(b.bullet?.source != player?.id);
 		});
 	},
 	"ShadowDance": (player, x, y) => {

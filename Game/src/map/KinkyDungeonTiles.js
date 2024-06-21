@@ -890,8 +890,10 @@ function KDConveyor(delta, X, Y, unwilling) {
 }
 
 function KDTickSpecialStats() {
+	let player = KDPlayer();
 	for (let stat of Object.entries(KDSpecialStats)) {
-		KDAddSpecialStat(stat[0], KDPlayer(), -stat[1], true, 100);
+		let buff = KDEntityGetBuff(player, stat[0] + "Stat");
+		KDAddSpecialStat(stat[0], KDPlayer(), -stat[1].PerFloor(player, buff?.power || 0), true, 100);
 	}
 	KDGameData.LockoutChance = 0;
 }

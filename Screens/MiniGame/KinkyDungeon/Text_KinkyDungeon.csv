@@ -23129,7 +23129,7 @@ AttackLatexSprayer,"The turret defends itself with a spray of sticky liquid late
 KDLatexIntegrationDebuff0,"Your latex layer adheres to latex, making struggling more difficult!"
 KDLatexIntegrationDebuff1,"The item sticks to your rubber layer, making it harder to pull off..."
 KDLatexIntegrationDebuff2,"The item hugs your layer tightly, adhering firmly!"
-KinkyDungeonBuffLatexIntegration,"Your skin is covered in a layer of latex, making escape from cyber restraints harder!"
+KinkyDungeonBuffLatexIntegrationStat,"Your skin is covered in a layer of latex, making escape from cyber restraints harder!"
 
 KinkyDungeonStatExclusionsApply,"Some Exclusions Apply"
 KinkyDungeonStatDescExclusionsApply,"Goddess shrines do not remove non-binding restraints such as harnesses and cuffs."
@@ -23195,6 +23195,7 @@ KinkyDungeonSpellCastNegateRune,You scribe a negation rune!
 KinkyDungeonSpellTargetNegateRune,"Target a single rune, or yourself to negate all your runes."
 KDNegateRuneNoMana,You don't have enough mana
 KDNegateRuneEnemy,The enemy rune is wiped clean.
+KDNegateRuneFail,"You pour negation magic into the ground, but nothing happens."
 KDNegateRuneSelf,All of your runes have been removed.
 
 

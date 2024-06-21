@@ -2496,6 +2496,8 @@ const KinkyDungeonRestraints = [
 		Model: "SteelChastityBra_Padlock",
 		factionFilters: {
 			Lock: {color: "Highlight", override: true},
+			BaseMetal: {color: "DarkNeutral", override: true},
+
 		},
 		Filters: {
 			Lock: {"gamma":1,"saturation":0,"contrast":2.033333333333333,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
@@ -2603,7 +2605,7 @@ const KinkyDungeonRestraints = [
 		factionFilters: {
 			Display: {color: "Highlight", override: false},
 			Lining: {color: "Highlight", override: true},
-			Metal: {color: "LightNeutral", override: true},
+			BaseMetal: {color: "LightNeutral", override: true},
 			Cups: {color: "DarkNeutral", override: true},
 		},
 		/*Filters: {

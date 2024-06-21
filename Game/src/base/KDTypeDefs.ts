@@ -3266,6 +3266,11 @@ interface ApplyVariant {
 	maxfloor?: number,
 }
 
+interface SpecialStat {
+	PerFloor: (player: entity, amount: number) => number, // Amount lost per floor
+	BuffEvents?: (player: entity) => KinkyDungeonEvent[],
+}
+
 enum PosNeutNeg {
 	positive=1,
 	neutral=0,
