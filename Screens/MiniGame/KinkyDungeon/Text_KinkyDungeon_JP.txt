@@ -1428,7 +1428,7 @@ Exciting: Orbs give random spells
 エキサイティング: オーブはランダムな呪文を与えます
 Kinky: No save codes, orbs give random spells, start with very little
 Kinky: セーブ コードはありません。オーブはランダムな呪文を与えます。最初はごくわずかです
-Log
+Journal
 ノート
 Change Outfit
 着替える
@@ -1568,8 +1568,8 @@ Inspect
 調べる
 Pass NPCs
 NPCを通り抜ける
-Close a Door
-ドアを閉める
+Interact
+インタラクト
 Sprint/Hop
 走る/跳ぶ
 
@@ -1754,8 +1754,8 @@ Enter
 入力
 Message Log
 メッセージログ
-Close Door
-ドアを閉める
+Interact
+インタラクト
 Pass thru allies
 味方を通過
 Auto-Struggle
@@ -1786,8 +1786,8 @@ Reputation
 評判
 Spell List
 スペル一覧
-Logbook
-収集した本
+Journal
+ノート
 Current Key Pressed
 現在押されているキー
 Press a key, then press a button to set that key
@@ -1857,7 +1857,7 @@ Marble Halls
 Doll Storage
 ドール収納庫
 
-Doll Processing
+Processing
 ドール工場
 
 Bandit Hideout
@@ -3423,7 +3423,7 @@ The Ice Dragonheart retreats in a blast of snow.
 The Ice Dragonheart apprehends you! (+RestraintAdded)
 ドラゴンハート・アイスに捕まった！ (+RestraintAdded)
 The Ice Dragonheart gives your body a cold touch! (DamageTaken)
-ドラゴンハート・アイスが体を冷やしてきた！(ダメージテイクン)
+ドラゴンハート・アイスが体を冷やしてきた！(DamageTaken)
 The Dragonheart uses an icy lock on your restraint! (DamageTaken)
 ドラゴンハート・アイスは拘束具に氷のロックをかけてきた！(DamageTaken)
 Poison Dragonheart
@@ -3486,14 +3486,14 @@ Soul Crystal
 ソウルクリスタル
 The crystal shatters into a puff of soul dust!
 ソウルクリスタルは砕け散った！
-The soul crystal leeches willpower from you! (DamageTaken)
-ソウルクリスタルに気力を吸い取られた！ (DamageTaken)
+The soul crystal leeches strength from you! (DamageTaken)
+ソウルクリスタルに力を吸い取られた！ (DamageTaken)
 Active Soul Crystal
 ソウルクリスタル(アクティブ)
 The crystal shatters into a puff of soul dust!
 ソウルクリスタルは砕け散った！
-The soul crystal leeches willpower from you! (DamageTaken)
-ソウルクリスタルに気力を吸い取られた！ (DamageTaken)
+The soul crystal leeches strength from you! (DamageTaken)
+ソウルクリスタルに力を吸い取られた！ (DamageTaken)
 Shadow Dragonheart
 ドラゴンハート・シャドー
 The Shadow Dragonheart frowns and runs away.
@@ -3944,7 +3944,7 @@ The bandit hunter retreats.
 The bandit hunter restrains you! (+RestraintAdded)
 盗賊の精鋭に拘束された！(+RestraintAdded)
 The bandit hunter caresses your restrained body! (DamageTaken)
-盗賊の精鋭に身体を縛られて全身を愛撫された！（ダメージテイクン）
+盗賊の精鋭に身体を縛られて全身を愛撫された！（DamageTaken）
 The bandit hunter calls you an amateur and applies a lock! (DamageTaken)
 盗賊の精鋭は嘲りと共に拘束具をロックしてきた！(DamageTaken)
 Bandit Grappler
@@ -5065,12 +5065,10 @@ You fiddle with the key on the TargetRestraint...
 鍵を使って TargetRestraint の解錠を試みた……
 The lock requires a key.
 鍵がないと解錠できない。
-The green padlock only accepts green keys.
-緑の鍵がないと緑の錠前は開けられない。
-The yellow padlock requires a red and a green key.
-赤と緑の鍵がないと黄色の錠前は開けられない。
-The magical lock only accepts blue keys and can't be picked.
-魔法の錠前はピッキングできず、青い鍵がないと開けられない。
+The lock can only be opened with a key.
+鍵がないと解錠できない。
+The magical lock only accepts magical keys and can't be picked.
+魔法の錠前はピッキングできず、魔法の鍵がないと開けられないようだ。
 The magical lock is guarded with powerful magic. You'll have to wait for it to wear off...
 魔法の錠前は強力な魔法で守られている。魔法が切れるまで待つしかない……
 The item is cybernetically locked. You will need a key card to unlock it.
@@ -5584,8 +5582,8 @@ Cursed
 呪い
 Unlocked
 解錠済み
-Lock Type: 
-鍵の種類：
+Lock:
+鍵：
 Simple
 簡単
 Standard
@@ -5817,7 +5815,7 @@ Curses
 Willpower
 気力
 A tablet inscribed with runes of TYPE.
-TYPE のルーン文字が刻まれた石板
+TYPE の石板
 SHRINETYPE Tablet
 SHRINETYPE の石版
 Decypher
@@ -6031,6 +6029,8 @@ Your arms are pinned behind your back and you can barely move!
 後ろ手に全身を固定されてほとんど動けない！
 You hear a click as the door shuts behind you...
 背後でドアの閉まる音が……
+The display stand suddenly locks into place around you!
+突然動き出したドールスタンドに閉じ込められてしまった！
 Doll Stand
 ドールスタンド
 A mobile display stand for dolls to keep them in place.
@@ -7582,7 +7582,7 @@ Blue latex is silky smooth, very stretchy, and very good at adhering to itself.
 ブルーラテックスはシルクのように滑らかで、非常に伸縮性があり、接着力が非常に優れている。
 
 Heavy Latex Catsuit
-
+頑丈なラテックスキャットスーツ
 A skintight suit that's stretched on tight and made of thick latex. It adheres to latex restraints making struggling more difficult.
 首から下を覆う青いゴム製の厚いキャットスーツ。他のゴム製の拘束具にくっつくため、抜け出すのが困難になる。
 Blue latex is silky smooth, very stretchy, and very good at adhering to itself. Its thickness makes it particularly resistant to cutting.
@@ -8794,7 +8794,7 @@ You pick up a 'magic' wand...
 You pick up a magical ice cube.
 魔力で生成された氷塊を手に入れた。
 You find some treated hemp rope.
-麻縄を手に入れた。
+縄を手に入れた。
 You pick up a feather.
 羽根を手に入れた。
 
@@ -11336,7 +11336,7 @@ You hop forward!
 You hop and feel the plugs shifting around inside your body.
 飛び跳ねるとバイブが膣中で上下する。
 The plugs shift in and out with each hop...
-飛び跳ねるごとにバイブが挿入を繰り返す……
+飛び跳ねるごとにバイブが激しく上下する……
 The massive plugs slide in and out mercilessly as you hop...
 飛び跳ねるごとに巨大なバイブに串刺しにされる……
 
@@ -12797,6 +12797,9 @@ Vibed!
 オモチャ振動中
 Flying
 浮遊
+Distracted!
+発情
+
 Soap
 ソープ
 Acid
@@ -19640,7 +19643,9 @@ Why don't we have a little fun?
 (SPEAKER は頬を赤らめた)|うん、わかった……
 (The SPEAKER smirks)|Be careful what you ask for~
 (SPEAKER ニヤリと笑った)|本当にいいの～？
-(The SPEAKER flashes its lights)|Calculating strictness threshold...
+(The SPEAKER giggles)|Mmmph~
+(SPEAKER 笑みを浮かべている)|んん～。
+(The SPEAKER pauses)|Calculating strictness threshold...
 (SPEAKER はランプをチカチカと点灯させている)|拘束ノ許容量ヲ計算中……
 (Ask her for help)
 (助けを求める)
@@ -19763,6 +19768,8 @@ Fuuka wraps you tightly in restraints! (+RestraintAdded)
 フウカが拘束具を巻き付けてきた！(+RestraintAdded)
 Fuuka squeezes your breasts and smiles! (DamageTaken)
 フウカが笑顔で胸を揉みしだいてきた！(DamageTaken)
+Fuuka snaps her fingers and all your restraints are locked! (DamageTaken)
+フウカが指を鳴らすと、拘束具が全てロックされた！
 
 Angry Fuuka
 怒ったフウカ
@@ -20493,7 +20500,7 @@ Give her a Scroll of Purity
 (The SPEAKER sits bound in high-security manacles.|You'll need to open the lock to get her out.)
 (SPEAKER は手足を厳重な枷で繋がれている|まずは錠を開ける必要がある)
 (You don't have any keys that work on the lock)
-(鍵を持っていない)
+(対応する鍵を持っていない)
 (You can't help her, bound as tightly as you are...)
 (自分がきつく縛られているせいで上手く助けられない……)
 (You unlock her, fumbling around for a while with your bound hands)
@@ -20570,6 +20577,14 @@ An enemy found you while you were busy!
 (ベッドに横たわり、仮眠を取った)
 (Lie down and sleep)
 (ベッドで寝る)
+
+(There is a pole sticking out of the ground)|(A footrest rises from the floor on either side of the pole)|(This seems like an automated binding system for prisoners...)
+(杭が地面から顔を出している)|(杭の左右には、足のマークが付いている)|(囚人を固定する仕掛けのようだ)
+(The pole rises and immobilizes you!)
+(せり上がってきた杭に動きを封じられてしまった！)
+(Stand over it and place your feet in the footrests)
+(上に立ってみる)
+
 FOODMSG|(It invites you to partake in its culinary delights)
 FOODMSG|(とても美味しそうな匂いがする……)
 (You eat the food and feel your willpower rising)
@@ -23540,18 +23555,17 @@ Deals grope damage.
 愛撫属性。
 You pick up a flexible rubber stick.
 ぐにゃぐにゃしたゴムの棒を拾った。
-Blade of Fla'peh
-フラペの剣
+Blade of Ejahl
+エジャールの剣
 A piece of prized ancient equipment. Magical energy causes it to vibrate intensely. What could it have been used for?
 貴重な古代の道具。魔法のエネルギーで激しく振動している。何に使われたのだろう？
 Deals grope damage. Can spend 40 charge to add charm damage per hit for 10 turns.
 愛撫属性。エネルギーを40消費して発動する。10ターンの間、攻撃命中時に魅了属性の追加ダメージを与える。
-You retrieve the Blade of Fla'peh.
-フラペの剣を拾った。
- The Blade of Fla'peh deals bonus charm damage!!!
-フラペの剣で魅了属性の追加ダメージを与えた！
-The Blade of Fla-peh buzzes with great power!
-フラペの剣が猛烈に振動している！
+You retrieve the Blade of Ejahl.
+エジャールの剣を拾った。
+Intense Vibrations: The Blade of Ejahl deals bonus charm damage!!!
+強烈な振動：追加で魅了ダメージを与える。
+
 40 charge to deal 30 charm damage per hit for 10 turns.
 エネルギーを40消費して発動する。10ターンの間、攻撃命中時に30魅了属性の追加ダメージを与える。
 Enchanted Rope
@@ -25081,8 +25095,8 @@ Then the archmagus, Sariel Vinlaga, discovered the secret of immortality.|Sharin
 ある日、偉大なる魔術師サリエル・ヴィンラーガは、不死の秘法を発見した。|彼女は世界中に研究を共有し、平和な時代への基礎を築いた。|魔法と科学の融合した、偉大なる文明が幕を開けた。
 But in the end, Sariel's experiments left her weakened and unable to save herself from death.|Without a leader, the Old Civilization collapsed into tyranny as warlords enslaved thousands.|Refugees fled across the sea in search of a new life, and in time the old empire was forgotten.
 しかし、偉大なるサリエルは探求の果てに衰弱し、死亡してしまう。|指導者を失った旧文明は愚者による専制が始まり、軍は無辜の市民を次々と奴隷にしていった。|難を逃れようと民は海を渡り、民を失った旧き帝国は次第に朽ち、忘れられていった。
-Three hundred years later,a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
-300年後、冒険家たちは古代の技術が眠る島を発見した。|今では、富と知恵を求めて無数の冒険者が遺跡を訪れている……|……はるか昔に封印された、邪悪な秘密も知らずに。
+Hundreds of years later, a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
+数百年の後、冒険家たちは古代の技術が眠る島を発見した。|今では、富と知恵を求めて無数の冒険者が遺跡を訪れている……|……はるか昔に封印された、邪悪な秘密も知らずに。
 
 An item has increased your spell damage!
 アイテムが魔法の威力を強化している！
@@ -26711,6 +26725,10 @@ Replaces 60% of cages with a different kind of kinky furniture such as display s
 
 Collection
 コレクション
+Facilities
+設備
+Training
+訓練
 
 Storage
 倉庫
@@ -26884,6 +26902,8 @@ The ENMY tries to spank you but misses!
 ENMY の手を躱した！
 The ENMY gives your butt a squeeze during your cast! (DMGDLT)
 魔法を唱えようとしたら ENMY にお尻を揉まれた！ (DMGDLT)
+The ENMY gives your butt a squeeze from behind! (DMGDLT)
+後ろから ENMY にお尻を揉まれた！ (DMGDLT)
 The ENMY gives your butt a squeeze as you move past! (DMGDLT)
 すれ違いざまに ENMY にお尻を揉まれた！ (DMGDLT)
 The ENMY gives your butt a squeeze as you pass by! (DMGDLT)
@@ -27747,14 +27767,11 @@ The mage starts channeling her energy!
 Warden Cuffs
 看守長の手枷
 
-
 Warden Leg Cuffs
 看守長の脚枷
 
-
 Warden Ankle Cuffs
 看守長の足枷
-
 
 Your buttons have been pushed, and not in a pleasant way!
 挑発されてカチンときた。非常に不愉快だ。
@@ -27819,7 +27836,7 @@ Bandit Raid
 Elemental Energy
 精霊の坩堝
 Overgrown
-植物の侵食
+蔦覆い
 Slime Infestation
 スライムの繁殖
 Wolfgirl Training
@@ -27904,17 +27921,17 @@ You find a sinister hood made of soft plush.
 
 Ceremonial Leotard
 式典のレオタード
-Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock.
-古の支配者フラペの特注品。一体型ロック付き。
-Its soul crystals dampen willpower changes, reducing all willpower changes by 25%.
-ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を-25%する。
+An article worn by the servants of state in the short-lived kingdom of Ejahl. Its locking mechanism and clothes-dissolving enchantments ensure the wearer understands her role as an extension of the state.
+短命の亡国エジャールに身と心を捧げたもののレオタード。衣装を溶かすエンチャントと独特な錠を持つ。
+Its soul crystals harden the mind and dampen changes in willpower, reducing all willpower changes by 25%.
+ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を25%減少させる。
 
 Ceremonial Leotard
 式典のレオタード
-Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock.
-古の支配者フラペの特注品。一体型ロック付き。
-Its soul crystals dampen willpower changes, reducing all willpower changes by 25%.
-ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を-25%する。
+An article worn by the servants of state in the short-lived kingdom of Ejahl. Its locking mechanism and clothes-dissolving enchantments ensure the wearer understands her role as an extension of the state.
+短命の亡国エジャールに身と心を捧げたもののレオタード。衣装を溶かすエンチャントと独特な錠を持つ。
+Its soul crystals harden the mind and dampen changes in willpower, reducing all willpower changes by 25%.
+ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を25%減少させる。
 You find a ceremonial leotard.
 式典のレオタードを手に入れた。
 
@@ -28367,7 +28384,7 @@ You've stolen something of great value. Now you must give it back.
 盗掘の代償。罪は償わなければならない。
 
 Warden's Ankle Link
-看守長の
+看守長の足枷の鎖
 A short chain connecting your ankle cuffs together. You can barely separate your legs with this on.
 足枷同士をつなぐ短い鎖。辛うじて足を離せる程度の長さ。
 An intense, albeit temporary punishment for breaking the rules.
@@ -28435,17 +28452,17 @@ The drone attaches to you! (+RestraintAdded)
 Cyber Warden
 サイバーワーデン
 Cyber Guardian
-サイバーガーディアン
+サイバーワーデン
 The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!
-サイバーガーディアンのスーツがロックダウンを起こし、彼女は拘束されてしまった！
+サイバーワーデンのスーツがロックダウンを起こし、彼女は拘束されてしまった！
 The cyber warden applies an advanced locking technology!
-サイバーガーディアンが未知の技術で拘束具に高度な錠を施してきた！
+サイバーワーデンが未知の技術で拘束具に高度な錠を施してきた！
 The cyber warden grabs you and applies a self-tightening restraint! (+RestraintAdded)
-サイバーガーディアンに自動で締まる拘束具を取り付けられた！ (+RestraintAdded)
+サイバーワーデンに自動で締まる拘束具を取り付けられた！ (+RestraintAdded)
 The cyber warden's touch applies a series of quick electrical shocks! (DamageTaken)
-サイバーガーディアンに触れられると、電気ショックが起こる！ (DamageTaken)
+サイバーワーデンに触れられると、電気ショックが起こる！ (DamageTaken)
 The cyber warden's touch applies a series of quick electrical shocks!
-サイバーガーディアンに触れられると、電気ショックが起こる！ (DamageTaken)
+サイバーワーデンに触れられると、電気ショックが起こる！ (DamageTaken)
 
 Auto Enforcer Guardian
 オートエンフォーサーガーディアン
@@ -28657,6 +28674,10 @@ Ambient
 環境
 Struggle
 もがく
+Items
+アイテム
+Kills
+討伐
 
 You attack TargetEnemy for DamageDealt total damage.
 TargetEnemy に攻撃し、合計 DamageDealt ダメージを与えた。
@@ -28720,7 +28741,7 @@ You light the fuse and pray it doesn't blow up in your face.
 眼の前で爆発しないように祈りながら導火線に火をつけた。
 
 You are holding too many leashes!
-リードの持ちすぎだ！
+これ以上リードは持てない！
 
 
 You feel a corrupting influence... (+AMNT Corruption)
@@ -28743,3 +28764,76 @@ Tip: Slime/Latex tiles only affect entities with less than 45 Glue Resist.
 Tips：スライム／ラテックスのマスは、接着剤耐性が45未満の対象にのみ効果を発揮する。
 Being drenched in water also prevents slime/latex from sticking to you.
 水に濡れるとスライムやラテックスが付着しにくくなる。
+Use the interact tool in the bottom right HUD to sleep in a bed.
+ベッドの上でインタラクトすることで、眠ることができる。
+
+
+Clear Vision
+クリアビジョン
+Blindfolds are much rarer.
+目隠しがとても出現しにくくなる。
+
+Free the Boob
+ノーブラ
+Chastity bras are rarer unless you are wearing nipple toys.
+乳首にオモチャをつけていない限り、貞操ブラが出現しにくくなる。
+Liberate the Boob
+揺らす自由
+Chastity bras are much rarer.
+貞操ブラがとても出現しにくくなる。
+
+Find an elevator to the Summit in order to access facilities.
+施設を使うために、まずはエレベーターを探そう。
+
++AMNT% Training/Tick
+調教度/ターン +AMNT%
++AMNT% Opinion/Tick
+好感度/ターン +AMNT%
++AMNT% Productivity
+生産力 +AMNT%
+AMNT/MAXX Prisoners Assigned
+囚人数 AMNT/MAXX
+AMNT/MAXX Servants Assigned
+使用人の数 AMNT/MAXX 
+
+Management
+管理
+Assign servants as managers to boost the production of other facilities.|Managers gain increased opinion and training over time.
+使用人をマネージャーとして配属する。|施設の生産力が増加し、マネージャーの調教度と好感度が増加する。
+
+Bondage Dojo
+緊縛道場
+Assign servants to perfect the art of walking in heels,wearing tight corsets,|communicating while gagged, and overall flexibility.
+使用人を鍛える。ヒールを履いて綺麗に歩けるようになり、きついコルセットを着用できるようになり、|猿轡をしていても完璧に意思の疎通ができるようになり、身体の柔軟性が増す。
+
+Rescue Operations
+救助部隊
+Assign servants to train squads of rescue maids, which you can call in times of need.
+使用人をレスキューメイドとして任命する。必要なときに呼び出すことができる。
+
+Alchemy Lab
+錬金工房
+Assign servants to produce potions from base ingredients you acquire in your adventures.
+使用人に錬金術を研究させる。手に入れた素材からポーションを作ることができる。
+
+Recycler
+リサイクラー
+Convert low tier restraints into raw materials and output higher quality restraints.|Adding more servants increase the conversion speed.
+tierの低い拘束具を高tierの拘束具に変換する。|多くの人員を配置することで、変換速度が増加する。
+
+Cuddle Lounge
+ラウンジ
+Assign prisoners to the lounge in order to improve your servants' opinion of you.
+好感度を高めるために、囚人をラウンジに配置する。
+
+
+You're blocking me.
+どいてくれない？
+You're in my way!
+どいて！
+Miss, you're blocking me...
+通らせていただけませんか……？
+Step aside~
+ちょっと通してくれない？
+Path blocked by citizen.
+前方ニ障害物。
