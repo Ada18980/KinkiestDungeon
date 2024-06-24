@@ -616,7 +616,7 @@ AddModel({
 	AddPose: ["Mittens"],
 	Layers: ToLayerMap([
 		...GetModelLayers("CyberLongMittenLeft"),
-		...GetModelLayers("CyberMittenRight"),
+		...GetModelLayers("CyberLongMittenRight"),
 	])
 });
 

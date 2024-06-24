@@ -53,3 +53,45 @@ function KDGetRecyclerRate(Servants: number[]): Record<string, number> {
 	}
 	return output;
 }
+
+function KDRecycleItem(item: item) : RecyclerOutputs {
+	let outputs: RecyclerOutputs = {
+		Latex: 0,
+		Metal: 0,
+		Rune: 0,
+		Leather: 0,
+		Rope: 0,
+	};
+
+	let type = KDRestraint(item);
+	let variant = KinkyDungeonRestraintVariants[item.inventoryVariant || item.name];
+	let mult = 1 + Math.max(0, type.power * 0.5);
+
+	if (variant) {
+		// TODO add an actual event
+		outputs.Rune += Math.ceil(RecyclerResources.Rune.Yield * mult);
+	}
+
+	for (let shrine of type.shrine) {
+		if (RecyclerResources[shrine]) {
+			outputs[shrine] = (outputs[shrine] || 0) + Math.ceil(RecyclerResources[shrine].Yield * mult);
+		}
+	}
+
+	return outputs;
+}
+
+function KDChangeRecyclerInput(amount: RecyclerOutputs) {
+	for (let entry of Object.entries(amount)) {
+		KDGameData.FacilitiesData["RecyclerInput_" + entry[0]] = Math.max(0,
+			KDGameData.FacilitiesData["RecyclerInput_" + entry[0]] + entry[1]
+		);
+	}
+}
+function KDChangeRecyclerResources(amount: RecyclerOutputs) {
+	for (let entry of Object.entries(amount)) {
+		KDGameData.FacilitiesData["Recycler_" + entry[0]] = Math.max(0,
+			KDGameData.FacilitiesData["Recycler_" + entry[0]] + entry[1]
+		);
+	}
+}
