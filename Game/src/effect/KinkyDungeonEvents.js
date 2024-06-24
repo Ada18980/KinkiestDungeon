@@ -702,6 +702,19 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		"tetherDamage": (e, item, data) => {
+			if (['electric'].includes(KDDamageEquivalencies[data.type] || data.type) && data.dmg > 0) {
+				let alreadyDone = KDItemDataQuery(item, "tetherDamage") || 0;
+				if (alreadyDone < e.count) {
+					alreadyDone += e.mult * data.dmg;
+					KDItemDataSet(item, "tetherDamage", alreadyDone);
+					KinkyDungeonSendTextMessage(4, TextGet("KDDamageTetherProgress").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+				} else {
+					KDRemoveThisItem(item);
+					KinkyDungeonSendTextMessage(4, TextGet("KDDamageTether").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+				}
+			}
+		},
 
 		"bubblePop": (e, item, data) => {
 			if (['pierce'].includes(KDDamageEquivalencies[data.type] || data.type) && data.dmg > 0) {

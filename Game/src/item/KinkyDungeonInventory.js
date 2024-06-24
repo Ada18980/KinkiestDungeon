@@ -1655,9 +1655,9 @@ function KinkyDungeonDrawInventory() {
 			for (let action of inventoryActions) {
 				if (!KDInventoryAction[action]?.show || KDInventoryAction[action]?.show(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item)) {
 					if (KDInventoryAction[action]) {
-						if (KDGameData.InventoryAction && KDInventoryAction[KDGameData.InventoryAction]?.label
-							&& (!KDInventoryAction[KDGameData.InventoryAction].show || KDInventoryAction[KDGameData.InventoryAction].show(KDPlayer(), filteredInventory[KinkyDungeonCurrentPageInventory].item))
-							&& (!KDInventoryAction[KDGameData.InventoryAction].valid || KDInventoryAction[KDGameData.InventoryAction].valid(KDPlayer(), filteredInventory[KinkyDungeonCurrentPageInventory].item))
+						if (KDInventoryAction[action]?.label
+							&& (!KDInventoryAction[action].show || KDInventoryAction[action].show(KDPlayer(), filteredInventory[KinkyDungeonCurrentPageInventory].item))
+							&& (!KDInventoryAction[action].valid || KDInventoryAction[action].valid(KDPlayer(), filteredInventory[KinkyDungeonCurrentPageInventory].item))
 						)
 							DrawTextFitKD(KDInventoryAction[action].label(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item),
 								XX + II*KDInventoryActionSpacing + 34, YY + 72 - 9, 72, KDInventoryAction[action].labelcolor ? KDInventoryAction[action].labelcolor(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) : "#ffffff",

@@ -712,7 +712,7 @@ const KinkyDungeonRestraints = [
 		Model: "CyberLongMittens",
 		tightType: "Secure",
 		factionFilters: {
-			Mitten: {color: "LightNeutral", override: true},
+			Mitten: {color: "Catsuit", override: false},
 			Straps: {color: "DarkNeutral", override: true},
 			Cap: {color: "LightNeutral", override: false},
 			Glow: {color: "Highlight", override: false},
@@ -4826,6 +4826,7 @@ const KinkyDungeonRestraints = [
 			Glow: {color: "Highlight", override: false},
 		},
 		events: [
+			{trigger: "afterPlayerDamage", type: "tetherDamage", mult: 1.0, subMult: 0.5, count: 5, inheritLinked: true},
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireBaseLegCuffs", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireTag", requiredTag: "CyberLegCuffs", inheritLinked: true},
@@ -4855,6 +4856,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.1,
 		DefaultLock: "Cyber",
 		events: [
+			{trigger: "afterPlayerDamage", type: "tetherDamage", mult: 1.0, subMult: 0.5, count: 7.5, inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireHogtie"},
 			{trigger: "postRemoval", type: "RequireTag", requiredTag: "CyberArmCuffs", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireTag", requiredTag: "CyberAnkleCuffs", inheritLinked: true},
@@ -4880,6 +4882,7 @@ const KinkyDungeonRestraints = [
 		DefaultLock: "Cyber",
 		unlimited: true,
 		events: [
+			{trigger: "afterPlayerDamage", type: "tetherDamage", mult: 1.0, subMult: 0.5, count: 15, inheritLinked: true},
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireBaseAnkleCuffs", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireTag", requiredTag: "CyberAnkleCuffs", inheritLinked: true},
@@ -4899,6 +4902,7 @@ const KinkyDungeonRestraints = [
 		DefaultLock: "Cyber",
 		unlimited: true,
 		events: [
+			{trigger: "afterPlayerDamage", type: "tetherDamage", mult: 1.0, subMult: 0.5, count: 3.5, inheritLinked: true},
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireTag", requiredTag: "CyberAnkleCuffs", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}
@@ -4923,6 +4927,7 @@ const KinkyDungeonRestraints = [
 		DefaultLock: "Cyber",
 		unlimited: true,
 		events: [
+			{trigger: "afterPlayerDamage", type: "tetherDamage", mult: 1.0, subMult: 0.5, count: 7, inheritLinked: true},
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireBaseArmCuffs", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireTag", requiredTag: "CyberWristCuffs", inheritLinked: true},
@@ -4948,6 +4953,7 @@ const KinkyDungeonRestraints = [
 		DefaultLock: "Cyber",
 		unlimited: true,
 		events: [
+			{trigger: "afterPlayerDamage", type: "tetherDamage", mult: 1.0, subMult: 0.5, count: 5, inheritLinked: true},
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireBaseArmCuffs", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireTag", requiredTag: "CyberWristCuffs", inheritLinked: true},

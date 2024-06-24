@@ -1841,6 +1841,7 @@ function KinkyDungeonDoPlayWithSelf(tease) {
 	let bound = KinkyDungeonIsArmsBound();
 	if (bound && !affinity) amount = Math.max(0, Math.min(amount, OrigAmount - KinkyDungeonPlayWithSelfBoundPenalty));
 	if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.playSelfBonus) amount += KinkyDungeonPlayerDamage.playSelfBonus;
+	if (affinity) amount += 1;
 
 	let data = {
 		player: KinkyDungeonPlayerEntity,
@@ -1900,11 +1901,11 @@ let KinkyDungeonPlaySelfOrgasmThreshold = 3; // Note that it is impossible if yo
 
 let KinkyDungeonOrgasmTurnsMax = 10;
 let KinkyDungeonOrgasmTurnsCrave = 8;
-let KinkyDungeonPlayWithSelfPowerMin = 3.0;
-let KinkyDungeonPlayWithSelfPowerMax = 4.5;
+let KinkyDungeonPlayWithSelfPowerMin = 1.5;
+let KinkyDungeonPlayWithSelfPowerMax = 2.5;
 let KDDesireScalingOrgasmPower = 2.5;
-let KinkyDungeonPlayWithSelfPowerVibeWand = 5;
-let KinkyDungeonPlayWithSelfChastityPenalty = 4.5;
+let KinkyDungeonPlayWithSelfPowerVibeWand = 4;
+let KinkyDungeonPlayWithSelfChastityPenalty = 2.5/1.2;
 let KinkyDungeonPlayWithSelfBoundPenalty = 2.0;
 let KinkyDungeonOrgasmExhaustionAmount = -0.02;
 let KinkyDungeonOrgasmExhaustionAmountWillful = -0.005;
@@ -1919,9 +1920,9 @@ let KDWillpowerMultiplier = 0.5;
 
 let KinkyDungeonOrgasmCost = -8;
 let KinkyDungeonOrgasmCostPercent = 0.7;
-let KinkyDungeonOrgasmWillpowerCost = -2;
+let KinkyDungeonOrgasmWillpowerCost = -2.5;
 let KinkyDungeonEdgeCost = -1;
-let KinkyDungeonEdgeWillpowerCost = -0.5;
+let KinkyDungeonEdgeWillpowerCost = -0.1;
 let KinkyDungeonPlayCost = -0.1;
 
 let KinkyDungeonOrgasmStunTime = 4;
@@ -1941,11 +1942,11 @@ function KDGetPlaySelfThreshold() {
 function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 	let chance = KinkyDungeonOrgasmChanceBase
 		+ KinkyDungeonOrgasmChanceScaling*(KDGameData.OrgasmTurns/KinkyDungeonOrgasmTurnsMax)
-		+ KinkyDungeonOrgasmChanceScalingDesire*(KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap * KinkyDungeonStatDistractionMax);
+		+ KinkyDungeonOrgasmChanceScalingDesire*(KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap / KinkyDungeonStatDistractionMax);
 	let denied = KinkyDungeonVibratorsDeny(chance);
 
 	let amount = denied ? 0 : KinkyDungeonOrgasmVibeLevel * KinkyDungeonOrgasmVibeLevelPlayPowerMult;
-	amount += KDDesireScalingOrgasmPower*(KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap * KinkyDungeonStatDistractionMax);
+	amount += KDDesireScalingOrgasmPower*(KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap / KinkyDungeonStatDistractionMax);
 	let playSelfAmount = Bonus != undefined ? Bonus : KinkyDungeonDoPlayWithSelf();
 	//if (playSelfAmount > KinkyDungeonOrgasmVibeLevel) {
 	//console.log(`${playSelfAmount} + ${amount}`);
@@ -2028,6 +2029,7 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 		if (denied && KinkyDungeonVibeLevel > 0) {
 			msg = "KinkyDungeonDeny";
 			KinkyDungeonSetFlag("OrgDenied", KDGameData.PlaySelfTurns + 3);
+			KinkyDungeonChangeDesire(-KinkyDungeonStatDistractionLower * 0.12);
 			KinkyDungeonSendEvent("deny", data);
 		} else {
 			msg = "KinkyDungeonEdge";
