@@ -1,26 +1,54 @@
 let FacilitiesIndex = 0;
 
+
 interface FacilitiesData {
 	Recycler_Rope: number,
 	Recycler_Latex: number,
 	Recycler_Metal: number,
 	Recycler_Leather: number,
+	Recycler_Rune: number,
+	RecyclerInput_Rope: number,
+	RecyclerInput_Latex: number,
+	RecyclerInput_Metal: number,
+	RecyclerInput_Leather: number,
+	RecyclerInput_Rune: number,
+	Servants_Recycler: number[],
+	Prisoners_Recycler: number[],
+};
+
+let FacilitiesDataBase : FacilitiesData = {
+	Recycler_Rope: 0,
+	Recycler_Latex: 0,
+	Recycler_Metal: 0,
+	Recycler_Leather: 0,
+	Recycler_Rune: 0,
+	RecyclerInput_Rope: 0,
+	RecyclerInput_Latex: 0,
+	RecyclerInput_Metal: 0,
+	RecyclerInput_Leather: 0,
+	RecyclerInput_Rune: 0,
+
+	Servants_Recycler: [],
+	Prisoners_Recycler: [],
 };
 
 function InitFacilities() {
 	if (!KDGameData.FacilitiesData) {
-		KDGameData.FacilitiesData = {
-			Recycler_Rope: 0,
-			Recycler_Latex: 0,
-			Recycler_Metal: 0,
-			Recycler_Leather: 0,
-		};
+		KDGameData.FacilitiesData = JSON.parse(JSON.stringify(FacilitiesDataBase));
 	} else {
 		let data = KDGameData.FacilitiesData;
-		if (data.Recycler_Rope == undefined) data.Recycler_Rope = 0;
-		if (data.Recycler_Latex == undefined) data.Recycler_Latex = 0;
-		if (data.Recycler_Metal == undefined) data.Recycler_Metal = 0;
-		if (data.Recycler_Leather == undefined) data.Recycler_Leather = 0;
+		for (let entry of Object.entries(FacilitiesDataBase)) {
+			if (data[entry[0]] == undefined) data[entry[0]] = JSON.parse(JSON.stringify(entry[1]));
+		}
+	}
+}
+
+function KDUpdateFacilities(delta: number) {
+	let listUpdate = Object.entries(KDFacilityTypes).filter((entry) => {
+		return entry[1].prereq();
+	});
+	for (let fac of listUpdate) {
+		fac[1].update(delta);
 	}
 }
 
@@ -124,4 +152,11 @@ function KDDrawFacilitiesList(xOffset) {
 			1695, 175 + 590*(FacilitiesIndex/Math.max(1, listRender.length - rendered)), 60, 60
 		);
 	}
+}
+
+function KDGetServantEnemy(servant: KDCollectionEntry): enemy {
+	if (servant && servant.status == "Servant") {
+		return servant.Enemy || KinkyDungeonGetEnemyByName(servant.type);
+	}
+	return null;
 }

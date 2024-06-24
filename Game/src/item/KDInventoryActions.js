@@ -895,6 +895,139 @@ let KDInventoryAction = {
 			return false;
 		},
 	},
+
+
+	"Recycle": {
+		alsoShow: ["RecycleBulk", "RecycleExcess"],
+		icon: (player, item) => {
+			return "InventoryAction/Recycle";
+		},
+		show: (player, item) => {
+			return item?.type == LooseRestraint;
+		},
+		label:  (player, item) => {
+			let value = Math.round(100);
+			return TextGet("KDGP").replace("AMNT", value + "");
+		},
+		itemlabel:  (player, item) => {
+			let value = Math.round(100);
+			return TextGet("KDGP").replace("AMNT", value + "");
+		},
+		itemlabelcolor: (player, item) => {return "#ffff44";},
+		text:  (player, item) => {
+			let value = Math.round(100);
+			return TextGet("KDInventoryActionRecycle").replace("VLU", value + "");
+		},
+		valid: (player, item) => {
+			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
+			if (KDWeapon(item)?.unarmed) return false;
+			return item?.type == Weapon || item?.type == LooseRestraint || item?.type == Consumable;
+		},
+		/** Happens when you click the button */
+		click: (player, item) => {
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
+			KinkyDungeonSendTextMessage(10, TextGet("KDRecycle")
+				.replace("ITM", TextGet( "Restraint" + item.name))
+				.replace("VLU", "" + 100)
+			, "#ffffff", 2);
+		},
+		/** Return true to cancel it */
+		cancel: (player, delta) => {
+			if (delta > 0) {
+				if (KinkyDungeonLastTurnAction) {
+					return true;
+				}
+			}
+			return false;
+		},
+	},
+	"RecycleBulk": {
+		icon: (player, item) => {
+			return "InventoryAction/RecycleBulk";
+		},
+		label:  (player, item) => {
+			let value = Math.round(100);
+			return TextGet("KDGP").replace("AMNT", value + "");
+		},
+		text:  (player, item) => {
+			let value = Math.round(100);
+			return TextGet("KDInventoryActionRecycleBulk").replace("VLU", value + "");
+		},
+		valid: (player, item) => {
+			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
+			return item?.type == LooseRestraint || item?.type == Consumable;
+		},
+		show: (player, item) => {
+			return item?.type == LooseRestraint;
+		},
+		/** Happens when you click the button */
+		click: (player, item) => {
+
+			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
+			if (!itemInv) return;
+
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
+			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleBulk")
+				.replace("ITM", TextGet( "Restraint" + item.name))
+				.replace("VLU", "" + 100)
+				.replace("#", "" + (itemInv.quantity || 1))
+			, "#ffffff", 2);
+		},
+		/** Return true to cancel it */
+		cancel: (player, delta) => {
+			if (delta > 0) {
+				if (KinkyDungeonLastTurnAction) {
+					return true;
+				}
+			}
+			return false;
+		},
+	},
+	"RecycleExcess": {
+		icon: (player, item) => {
+			return "InventoryAction/RecycleExcess";
+		},
+		label:  (player, item) => {
+			let value = Math.round(100);
+			return TextGet("KDGP").replace("AMNT", value + "");
+		},
+		text:  (player, item) => {
+			let value = Math.round(100);
+			return TextGet("KDInventoryActionRecycleExcess").replace("VLU", value + "");
+		},
+		valid: (player, item) => {
+			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
+			return item?.type == LooseRestraint || item?.type == Consumable;
+		},
+		show: (player, item) => {
+			if (!item.quantity || item.quantity == 1) return false;
+			return item?.type == LooseRestraint;
+		},
+		/** Happens when you click the button */
+		click: (player, item) => {
+
+			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
+			if (!itemInv) return;
+
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
+			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleExcess")
+				.replace("ITM", TextGet( "Restraint" + item.name))
+				.replace("VLU", "" + 100)
+				.replace("#", "" + (itemInv.quantity || 1))
+			, "#ffffff", 2);
+		},
+		/** Return true to cancel it */
+		cancel: (player, delta) => {
+			if (delta > 0) {
+				if (KinkyDungeonLastTurnAction) {
+					return true;
+				}
+			}
+			return false;
+		},
+	},
+
+
 	"Bondage": {
 		icon: (player, item) => {
 			return "InventoryAction/Bondage";

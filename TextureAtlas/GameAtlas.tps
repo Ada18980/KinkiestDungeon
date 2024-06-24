@@ -2013,6 +2013,9 @@
             <key type="filename">../Game/InventoryAction/Offhand.png</key>
             <key type="filename">../Game/InventoryAction/Pick.png</key>
             <key type="filename">../Game/InventoryAction/Quickslot.png</key>
+            <key type="filename">../Game/InventoryAction/Recycle.png</key>
+            <key type="filename">../Game/InventoryAction/RecycleBulk.png</key>
+            <key type="filename">../Game/InventoryAction/RecycleExcess.png</key>
             <key type="filename">../Game/InventoryAction/Remove.png</key>
             <key type="filename">../Game/InventoryAction/Sell.png</key>
             <key type="filename">../Game/InventoryAction/SellBulk.png</key>
@@ -2472,6 +2475,7 @@
             <key type="filename">../Game/UI/Resource/Leather.png</key>
             <key type="filename">../Game/UI/Resource/Metal.png</key>
             <key type="filename">../Game/UI/Resource/Rope.png</key>
+            <key type="filename">../Game/UI/Resource/Rune.png</key>
             <key type="filename">../Game/WarningAlly.png</key>
             <key type="filename">../Game/WarningBacking.png</key>
             <key type="filename">../Game/WarningBackingHighlight.png</key>
@@ -2701,7 +2705,7 @@
             <key type="filename">../Game/Buffs/buff/buffInnerPowerArcaneStore.png</key>
             <key type="filename">../Game/Buffs/buff/buffInvisibility.png</key>
             <key type="filename">../Game/Buffs/buff/buffLatexBubble.png</key>
-            <key type="filename">../Game/Buffs/buff/buffLatexIntegration.png</key>
+            <key type="filename">../Game/Buffs/buff/buffLatexIntegrationStat.png</key>
             <key type="filename">../Game/Buffs/buff/buffLeatherBurst.png</key>
             <key type="filename">../Game/Buffs/buff/buffLightningRod.png</key>
             <key type="filename">../Game/Buffs/buff/buffManaRegenSuspend.png</key>
@@ -3450,6 +3454,7 @@
             <key type="filename">../Game/Items/Restraint/ChastityBras.png</key>
             <key type="filename">../Game/Items/Restraint/ClothGag.png</key>
             <key type="filename">../Game/Items/Restraint/ClothGagOver.png</key>
+            <key type="filename">../Game/Items/Restraint/CyberLink.png</key>
             <key type="filename">../Game/Items/Restraint/Gauntlets.png</key>
             <key type="filename">../Game/Items/Restraint/Handcuffs.png</key>
             <key type="filename">../Game/Items/Restraint/HingedCuffs.png</key>
@@ -3459,6 +3464,7 @@
             <key type="filename">../Game/Items/Restraint/LeatherGloves.png</key>
             <key type="filename">../Game/Items/Restraint/Legirons.png</key>
             <key type="filename">../Game/Items/Restraint/MagicArmbands.png</key>
+            <key type="filename">../Game/Items/Restraint/Mittens.png</key>
             <key type="filename">../Game/Items/Restraint/RedLatexOTNGag.png</key>
             <key type="filename">../Game/Items/Restraint/SarielPanties.png</key>
             <key type="filename">../Game/Items/Restraint/ScarfGag.png</key>
@@ -3536,6 +3542,37 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/Items/Restraint/Cyber.png</key>
+            <key type="filename">../Game/Items/Restraint/Modules.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>24,24,47,47</rect>
+                <key>scale9Paddings</key>
+                <rect>24,24,47,47</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/Items/Restraint/CyberMittens.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>34,36,67,72</rect>
+                <key>scale9Paddings</key>
+                <rect>34,36,67,72</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Game/Items/Restraint/DivineBelt.png</key>
             <key type="filename">../Game/Items/Restraint/DivineBelt2.png</key>
             <key type="filename">../Game/Items/Restraint/DivineBra.png</key>
@@ -3568,21 +3605,6 @@
                 <rect>174,174,349,349</rect>
                 <key>scale9Paddings</key>
                 <rect>174,174,349,349</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Game/Items/Restraint/Modules.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>24,24,47,47</rect>
-                <key>scale9Paddings</key>
-                <rect>24,24,47,47</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

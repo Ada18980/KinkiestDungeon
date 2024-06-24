@@ -42,6 +42,7 @@ function KinkyDungeonSendEvent(Event, data, forceSpell) {
 	KinkyDungeonSendEnemyEvent(Event, data);
 	KinkyDungeonHandleGenericEvent(Event, data);
 	KinkyDungeonSendAltEvent(Event, data);
+	KinkyDungeonSendFacilityEvent(Event, data);
 }
 /** Called during initialization */
 function KinkyDungeonResetEventVariables() {
@@ -1509,6 +1510,32 @@ let KDEventMapInventory = {
 				if (!cuffsbase) {
 					KinkyDungeonRemoveRestraintSpecific(item, false, false, false);
 					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRemoveCuffs"), "lightgreen", 2);
+				}
+			}
+		},
+		"RequireTag": (e, item, data) => {
+			if (data.item !== item && KDRestraint(item).Group) {
+				let cuffsbase = false;
+				for (let inv of KinkyDungeonAllRestraint()) {
+					if (KDRestraint(inv).shrine && (KDRestraint(inv).shrine.includes(e.requiredTag))) {
+						cuffsbase = true;
+						break;
+					} else if (inv.dynamicLink) {
+						let link = inv.dynamicLink;
+						// Recursion thru to make sure we have an armbinder buried in there... somewhere
+						for (let i = 0; i < 20; i++) {
+							if (link && KDRestraint(link).shrine && (KDRestraint(link).shrine.includes(e.requiredTag))) {
+								cuffsbase = true;
+								break;
+							}
+							if (link.dynamicLink) link = link.dynamicLink;
+							else i = 200;
+						}
+					}
+				}
+				if (!cuffsbase) {
+					KinkyDungeonRemoveRestraintSpecific(item, false, false, false);
+					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRemoveCuffs" + e.requiredTag), "lightgreen", 2);
 				}
 			}
 		},
@@ -9236,6 +9263,14 @@ let KDEventMapGeneric = {
 		"resetFlags": (e, data) => {
 			KinkyDungeonSetFlag("slept", 0);
 		},
+		/**
+		 * Updates failities
+		 */
+		"updateFac": (e, data) => {
+			KDUpdateFacilities(1);
+		},
+
+
 		/** Updates gold locks */
 		"lockStart": (e, data) => {
 			for (let tuple of KinkyDungeonAllRestraintDynamic()) {
@@ -10150,6 +10185,46 @@ let KDEventMapAlt = {
 		}
 	},
 };
+
+
+
+
+
+function KinkyDungeonSendFacilityEvent(Event, data) {
+	if (!KDMapHasEvent(KDEventMapFacility, Event)) return;
+	let listUpdate = Object.entries(KDFacilityTypes).filter((entry) => {
+		return entry[1].prereq();
+	});
+	for (let Facility of listUpdate) {
+		if (Facility[1].events) {
+			for (let e of Facility[1].events) {
+				KinkyDungeonHandleFacilityEvent(Event, e, Facility[0], data);
+			}
+		}
+	}
+}
+
+
+/**
+ *
+ * @param {string} Event
+ * @param {KinkyDungeonEvent} e
+ * @param {string} fac
+ * @param {*} data
+ */
+function KinkyDungeonHandleFacilityEvent(Event, e, fac, data) {
+	if (Event === e.trigger && KDEventMapFacility[e.dynamic ? "dynamic" : Event] && KDEventMapFacility[e.dynamic ? "dynamic" : Event][e.type]) {
+		if (KDCheckCondition(e, data))
+			KDEventMapFacility[e.dynamic ? "dynamic" : Event][e.type](e, fac, data);
+	}
+}
+
+/**
+ * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, string, *): void>>}
+ */
+let KDEventMapFacility = {
+};
+
 
 
 function KDStunResist(data) {

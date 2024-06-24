@@ -1886,8 +1886,9 @@ function KinkyDungeonDoPlayWithSelf(tease) {
 
 /** Percentage of vibe level that is turned into playSelfPower to try to have an orgasm*/
 let KinkyDungeonOrgasmVibeLevelPlayPowerMult = 1.0;
-let KinkyDungeonOrgasmChanceBase = -0.1;
-let KinkyDungeonOrgasmChanceScaling = 1.1;
+let KinkyDungeonOrgasmChanceBase = -0.5;
+let KinkyDungeonOrgasmChanceScaling = 0.6;
+let KinkyDungeonOrgasmChanceScalingDesire = 1.0;
 let KinkyDungeonMaxOrgasmStage = 7;
 let KinkyDungeonOrgasmStageVariation = 4; // determines the text message variation
 
@@ -1899,8 +1900,9 @@ let KinkyDungeonPlaySelfOrgasmThreshold = 3; // Note that it is impossible if yo
 
 let KinkyDungeonOrgasmTurnsMax = 10;
 let KinkyDungeonOrgasmTurnsCrave = 8;
-let KinkyDungeonPlayWithSelfPowerMin = 3;
-let KinkyDungeonPlayWithSelfPowerMax = 6;
+let KinkyDungeonPlayWithSelfPowerMin = 3.0;
+let KinkyDungeonPlayWithSelfPowerMax = 4.5;
+let KDDesireScalingOrgasmPower = 2.5;
 let KinkyDungeonPlayWithSelfPowerVibeWand = 5;
 let KinkyDungeonPlayWithSelfChastityPenalty = 4.5;
 let KinkyDungeonPlayWithSelfBoundPenalty = 2.0;
@@ -1937,10 +1939,13 @@ function KDGetPlaySelfThreshold() {
  * @param {number} [Auto] - whether this was automatically triggered or not. 0 = manual, 1 = forced by enemy/vibe, 2 - player character can't resist
  */
 function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
-	let chance = KinkyDungeonOrgasmChanceBase + KinkyDungeonOrgasmChanceScaling*(KDGameData.OrgasmTurns/KinkyDungeonOrgasmTurnsMax);
+	let chance = KinkyDungeonOrgasmChanceBase
+		+ KinkyDungeonOrgasmChanceScaling*(KDGameData.OrgasmTurns/KinkyDungeonOrgasmTurnsMax)
+		+ KinkyDungeonOrgasmChanceScalingDesire*(KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap * KinkyDungeonStatDistractionMax);
 	let denied = KinkyDungeonVibratorsDeny(chance);
 
 	let amount = denied ? 0 : KinkyDungeonOrgasmVibeLevel * KinkyDungeonOrgasmVibeLevelPlayPowerMult;
+	amount += KDDesireScalingOrgasmPower*(KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap * KinkyDungeonStatDistractionMax);
 	let playSelfAmount = Bonus != undefined ? Bonus : KinkyDungeonDoPlayWithSelf();
 	//if (playSelfAmount > KinkyDungeonOrgasmVibeLevel) {
 	//console.log(`${playSelfAmount} + ${amount}`);
@@ -1969,7 +1974,7 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 		playSound: true,
 		playMsg: true,
 		alertRadius: 7,
-		satisfaction: KinkyDungeonStatDistraction,
+		satisfaction: Math.max(0.1, KinkyDungeonStatDistractionLower * 1.75),
 		distractionCooldown: Math.max(KDGameData.DistractionCooldown, 13),
 		cancelOrgasm: false,
 		lowerFloorTo: Math.max(0, KinkyDungeonStatDistractionLower * (1 - 0.1 * KDGameData.OrgasmStage/KinkyDungeonMaxOrgasmStage) - KinkyDungeonStatDistractionMax*0.25),

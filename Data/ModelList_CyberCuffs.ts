@@ -288,6 +288,53 @@ AddModel({
 
 
 
+AddModel({
+	Name: "CyberThighLink",
+	Folder: "CyberLink",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints","Cuffs", "Links"],
+	AddPose: ["ThighLink"],
+	Layers: ToLayerMap([
+		{ Name: "ThighLink", Layer: "BindChainLinksUnder", Pri: 5,
+			Poses: ToMap(["Spread"]),
+			AppendPose: {"HighCuffs": "High"}, // "LowCuffs": "",
+			InheritColor: "Tether",
+		},
+		{ Name: "GlowThighLink", Layer: "BindChainLinksUnder", Pri: 5.1,
+			Poses: ToMap(["Spread"]),
+			AppendPose: {"HighCuffs": "High"}, // "LowCuffs": "",
+			TieToLayer: "ThighLink",
+			InheritColor: "Glow",
+		},
+	])
+});
+
+AddModel({
+	Name: "CyberAnkleLink",
+	Folder: "CyberLink",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints","Cuffs", "Links"],
+	AddPose: ["AnkleLink"],
+	Layers: ToLayerMap([
+		{ Name: "AnkleLink", Layer: "BindChainLinksUnder", Pri: 5,
+			Poses: ToMap(["Spread"]),
+			InheritColor: "Tether",
+		},
+		{ Name: "GlowAnkleLink", Layer: "BindChainLinksUnder", Pri: 5.1,
+			Poses: ToMap(["Spread"]),
+			TieToLayer: "AnkleLink",
+			InheritColor: "Glow",
+		},
+	])
+});
+AddModel(GetModelFashionVersion("CyberThighLink", true));
+AddModel(GetModelFashionVersion("CyberAnkleLink", true));
+
+
+
+
 AddModel(GetModelFashionVersion("NeoCyberCollar", true));
 AddModel(GetModelFashionVersion("CyberLinkCollar", true));
 AddModel(GetModelFashionVersion("NeoCyberBelt", true));

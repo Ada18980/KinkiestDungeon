@@ -7542,6 +7542,22 @@ function KDEnemyRank(enemy) {
 	}
 	return 1;
 }
+/**
+ *
+ * @param {enemy} enemy
+ * @returns {number}
+ */
+function KDEnemyTypeRank(enemy) {
+	let tags = enemy.tags;
+	if (tags) {
+		if (tags.stageBoss) return 5;
+		if (tags.boss) return 4;
+		if (tags.miniboss) return 3;
+		if (tags.elite) return 2;
+		if (tags.minor) return 0;
+	}
+	return 1;
+}
 
 /**
  * @param {entity} enemy

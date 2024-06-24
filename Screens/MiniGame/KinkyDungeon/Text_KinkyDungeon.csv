@@ -4045,6 +4045,9 @@ RestraintTrapArmbinderHarness,Leather Armbinder Harness
 RestraintTrapArmbinderHarnessDesc,"Leather belts securing your armbinder tightly."
 RestraintTrapArmbinderHarnessDesc2,"It's quite tight and secured by lockable buckles on your sides."
 KinkyDungeonRemoveArmbinderHarness,The armbinder harness comes off with the armbinder.
+KinkyDungeonRemoveCuffsCyberAnkleCuffs,The energy link between your ankle cuffs fizzles into nothing.
+KinkyDungeonRemoveCuffsCyberWristCuffs,The energy link between your arm cuffs fizzles into nothing.
+KinkyDungeonRemoveCuffsCyberLegCuffs,The energy link between your thigh cuffs fizzles into nothing.
 KinkyDungeonRemoveCuffs,The cuff chains come off with the cuffs.
 KinkyDungeonRemoveHogtie,The hogtie link comes off.
 RestraintTrapCuffs,Handcuffs
@@ -9891,7 +9894,7 @@ KinkyDungeonRemindJailChaseSubMaidCommandBlock,"I'll just stay here!"
 KinkyDungeonRemindJailPlayHelplessGunnerMaid0,"This is too tight..."
 KinkyDungeonRemindJailPlayHelplessGunnerMaid1,"You won't get me like this!"
 KinkyDungeonRemindJailPlayHelplessGunnerMaid2,"I can't get free!"
-KinkyDungeonRemindJailPlayBratGunnerMaid0,"I'm sorry! I didn't mean to break that vase!"
+KinkyDungeonRemindJailPlayBratGunnerMaid0,"That thing... it scares me."
 KinkyDungeonRemindJailPlayBratGunnerMaid1,"I won't do it again, I swear!"
 KinkyDungeonRemindJailPlayBratGunnerMaid2,"Please no! I don't want the pleasure training again!"
 KinkyDungeonRemindJailPlaySubGunnerMaid0,"Don't you need a bodyguard, miss?"
@@ -12757,9 +12760,12 @@ RestraintCyberMuzzle,Doll Muzzle
 RestraintCyberMuzzleDesc,"A metallic shield preventing you from removing any gags underneath."
 RestraintCyberMuzzleDesc2,"It's made of exquisite Old Civilization metals, resistant to almost all forms of damage."
 
-RestraintCyberMittens,Doll Mittens
-RestraintCyberMittensDesc,"These long mittens force your hands into fists, keeping you from using them to do anything useful."
-RestraintCyberMittensDesc2,"It is made of a strong mesh of ancient metallic fiber, with no seams in sight."
+RestraintCyberMittens,Cyber Mittens
+RestraintCyberMittensDesc,"These mittens force your hands into fists, keeping you from using them to do anything useful."
+RestraintCyberMittensDesc2,"It is made of a strong mesh of ancient metallic fiber, kept in place with a metal band."
+RestraintCyberLongMittens,Cyber Lockdown Mitts
+RestraintCyberLongMittensDesc,"These long mittens force your hands into fists, keeping you from using them to do anything useful."
+RestraintCyberLongMittensDesc2,"It is made of a strong mesh of ancient metallic fiber, wrapped snugly around your arms to make removal by yourself impossible."
 
 RestraintCyberHeels,Doll Heels
 RestraintCyberHeelsDesc,"A pair of tall heels used to improve the aesthetics and controllability of dolls."
@@ -23300,6 +23306,7 @@ KinkyDungeonStatFreeBoob2,"Liberate the Boob"
 KinkyDungeonStatDescFreeBoob2,"Chastity bras are much rarer."
 
 KDFacilitiesLocked,Find an elevator to the Summit in order to access facilities.
+KDFacilityLocal,Visit the Summit to allow additional interactions with this facility.
 
 KDFacilityInfo_Training,"+AMNT% Training/Tick"
 KDFacilityInfo_Opinion,"+AMNT% Opinion/Tick"
@@ -23320,6 +23327,14 @@ KDFacilityDesc_Recycler,"Convert low tier restraints into raw materials and outp
 KDFacility_CuddleLounge,Cuddle Lounge
 KDFacilityDesc_CuddleLounge,"Assign prisoners to the lounge in order to improve your servants' opinion of you."
 
+KDRecycleButton,Recycle Restraints
+
+KDInventoryActionRecycle,Recycle One
+KDInventoryActionRecycleBulk,Recycle ALL!
+KDInventoryActionRecycleExcess,Recycle all but one
+
+KDRecycle,You recycle a ITM
+KDRecycleBulk,You recycle #x ITM
 
 KDDialogue_StepAside,"You're blocking me."
 KDDialogue_StepAsideBrat,"You're in my way!"
@@ -23327,3 +23342,29 @@ KDDialogue_StepAsideSub,"Miss, you're blocking me..."
 KDDialogue_StepAsideDom,"Step aside~"
 KDDialogue_StepAsideRobot,"Path blocked by citizen."
 KDDialogue_StepAsideGagged,"*Bumps into you*"
+
+
+
+RestraintCyberHogtieLink,Cyber Hogtie Tether
+RestraintCyberHogtieLinkDesc,"A very strict and tight hogtie, good for subduing unruly captives."
+RestraintCyberHogtieLinkDesc2,It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+
+
+RestraintCyberThighLink,Cyber Thigh Tether
+RestraintCyberThighLinkDesc,"An energy tether connecting your thigh cuffs together. You can still walk, albeit slower than usual."
+RestraintCyberThighLinkDesc2,It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+
+
+RestraintCyberAnkleLink,Cyber Ankle Tether
+RestraintCyberAnkleLinkDesc,"An energy  tether connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual."
+RestraintCyberAnkleLinkDesc2,It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+RestraintCyberAnkleLinkShort,Ankle Chain (Short)
+RestraintCyberAnkleLinkShortDesc,"A short energy tether connecting your ankle cuffs together. You can barely separate your legs with this on."
+RestraintCyberAnkleLinkShortDesc2,It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+
+RestraintCyberElbowLink,Cyber Elbow Tether
+RestraintCyberElbowLinkDesc,A very short energy tether connecting your elbow cuffs together. It is quite awkward to remove by yourself.
+RestraintCyberElbowLinkDesc2,It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+RestraintCyberWristLink,Cyber Wrist Tether
+RestraintCyberWristLinkDesc,A very short energy tether connecting your wrist cuffs together.
+RestraintCyberWristLinkDesc2,It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.

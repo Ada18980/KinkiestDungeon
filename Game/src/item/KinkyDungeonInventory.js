@@ -1478,7 +1478,10 @@ function KinkyDungeonDrawInventory() {
 						DrawTextKD("" + filteredInventory[index].item.quantity, canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 140, canvasOffsetY_ui + 50 + b_height * yy + 18, "#ffffff", undefined, 18, "left");
 					}
 
-					if (KDGameData.InventoryAction && KDInventoryAction[KDGameData.InventoryAction]?.itemlabel)
+					if (KDGameData.InventoryAction && KDInventoryAction[KDGameData.InventoryAction]?.itemlabel
+						&& (!KDInventoryAction[KDGameData.InventoryAction].show || KDInventoryAction[KDGameData.InventoryAction].show(KDPlayer(), filteredInventory[index].item))
+						&& (!KDInventoryAction[KDGameData.InventoryAction].valid || KDInventoryAction[KDGameData.InventoryAction].valid(KDPlayer(), filteredInventory[index].item))
+					)
 						DrawTextFitKD(KDInventoryAction[KDGameData.InventoryAction].itemlabel(KinkyDungeonPlayerEntity, filteredInventory[index].item),
 							36 + canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 140, canvasOffsetY_ui + 50 + b_height * yy + (useIcons ? 72 : 36) - 9,  72, KDInventoryAction[KDGameData.InventoryAction].itemlabelcolor ? KDInventoryAction[KDGameData.InventoryAction].itemlabelcolor(KinkyDungeonPlayerEntity, filteredInventory[index].item) : "#ffffff",
 							KDTextGray0, 18, "center");
@@ -1652,7 +1655,10 @@ function KinkyDungeonDrawInventory() {
 			for (let action of inventoryActions) {
 				if (!KDInventoryAction[action]?.show || KDInventoryAction[action]?.show(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item)) {
 					if (KDInventoryAction[action]) {
-						if (KDInventoryAction[action]?.label)
+						if (KDGameData.InventoryAction && KDInventoryAction[KDGameData.InventoryAction]?.label
+							&& (!KDInventoryAction[KDGameData.InventoryAction].show || KDInventoryAction[KDGameData.InventoryAction].show(KDPlayer(), filteredInventory[KinkyDungeonCurrentPageInventory].item))
+							&& (!KDInventoryAction[KDGameData.InventoryAction].valid || KDInventoryAction[KDGameData.InventoryAction].valid(KDPlayer(), filteredInventory[KinkyDungeonCurrentPageInventory].item))
+						)
 							DrawTextFitKD(KDInventoryAction[action].label(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item),
 								XX + II*KDInventoryActionSpacing + 34, YY + 72 - 9, 72, KDInventoryAction[action].labelcolor ? KDInventoryAction[action].labelcolor(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) : "#ffffff",
 								KDTextGray0, 18, "center");

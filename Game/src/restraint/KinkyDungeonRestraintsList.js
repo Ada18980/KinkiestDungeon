@@ -708,20 +708,49 @@ const KinkyDungeonRestraints = [
 			{trigger: "postApply", type: "ControlHarness", power: 1, inheritLinked: true},
 		]},
 
-	{inventory: true, unlimited: true, name: "CyberMittens",
-		Model: "LongMittens",
+	{inventory: true, unlimited: true, name: "CyberLongMittens",
+		Model: "CyberLongMittens",
 		tightType: "Secure",
 		factionFilters: {
 			Mitten: {color: "LightNeutral", override: true},
-			Band: {color: "Highlight", override: true},
+			Straps: {color: "DarkNeutral", override: true},
+			Cap: {color: "LightNeutral", override: false},
+			Glow: {color: "Highlight", override: false},
+			Display: {color: "Highlight", override: false},
 			Lock: {color: "DarkNeutral", override: true},
+			Cuff: {color: "DarkNeutral", override: true},
+			UpperGlow: {color: "Highlight", override: false},
+			UpperDisplay: {color: "Highlight", override: false},
+			UpperLock: {color: "DarkNeutral", override: true},
+			UpperCuff: {color: "DarkNeutral", override: true},
 		},
-		DefaultLock: "Cyber",
+		DefaultLock: "Cyber3",
 		factionColor: [[], [], [0]],
 		Asset: "LatexElbowGloves", Color: "#ff5277", LinkableBy: [...KDGlovesLink], renderWhenLinked: ["Mittens"], Group: "ItemHands",
 		bindhands: 1.0, power: 10, weight: 0,
-		escapeChance: {"Struggle": -0.4, "Cut": -0.2, "Remove": 0.05, "Pick": -0.1},
-		maxwill: 0.4, enemyTags: {"cyberdollrestraints": 10}, playerTags: {"ItemHandsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Metal", "Mittens", "Cyber"]},
+		escapeChance: {"Struggle": -0.4, "Cut": -0.2, "Remove": 0.04, "Pick": -0.25},
+		limitChance: {"Struggle": 0.3, "Cut": 0.2,},
+		struggleMaxSpeed: {Remove: 0.1},
+		maxwill: 0.2, enemyTags: {"cyberdollrestraints": 6}, playerTags: {"ItemHandsFull":-2}, minLevel: 7, allFloors: true, shrine: ["CyberMittens","LongMittens","Mittens", "Metal", "Cyber"]},
+
+	{inventory: true, unlimited: true, name: "CyberMittens",
+		Model: "CyberMittens",
+		tightType: "Secure",
+		factionFilters: {
+			Mitten: {color: "LightNeutral", override: true},
+			Straps: {color: "DarkNeutral", override: true},
+			Cap: {color: "LightNeutral", override: false},
+			Glow: {color: "Highlight", override: false},
+			Display: {color: "Highlight", override: false},
+			Lock: {color: "DarkNeutral", override: true},
+			Cuff: {color: "DarkNeutral", override: true},
+		},
+		DefaultLock: "Cyber2",
+		factionColor: [[], [], [0]],
+		Asset: "LatexElbowGloves", Color: "#ff5277", LinkableBy: [...KDGlovesLink], renderWhenLinked: ["Mittens"], Group: "ItemHands",
+		bindhands: 0.9, power: 9, weight: 0,
+		escapeChance: {"Struggle": -0.25, "Cut": -0.15, "Remove": 0.15, "Pick": -0.1},
+		maxwill: 0.4, enemyTags: {"cyberdollrestraints": 10}, playerTags: {"ItemHandsFull":-2}, minLevel: 0, allFloors: true, shrine: ["CyberMittens","Mittens", "Metal", "Cyber"]},
 
 	{inventory: true, sfx: "FutureLock", name: "TrackingCollar", debris: "Chains", accessible: true, Asset: "FuturisticCollar",
 		Model: "FutureCollar",
@@ -964,7 +993,7 @@ const KinkyDungeonRestraints = [
 		factionColor: [[], [2], [0,1]],
 		Group: "ItemFeet", power: 12, weight: 0,
 		escapeChance: {"Struggle": -0.8, "Cut": -0.65, "Remove": 0.6, "Pick": -0.15},
-		enemyTags: {"cyberdollcuffs":6, "cyberdollrestraints":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 4, allFloors: true, shrine: ["Cyber", "Cuffs", "Metal",  "AnkleCuffsBase", "HogtieLower"],
+		enemyTags: {"cyberdollcuffs":6, "cyberdollrestraints":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 4, allFloors: true, shrine: ["Cyber", "Cuffs", "Metal",  "AnkleCuffsBase", "HogtieLower", "CyberAnkleCuffs"],
 	},
 	{inventory: true, sfx: "FutureLock", name: "CyberLegCuffs", debris: "Chains", accessible: true, Asset: "FuturisticLegCuffs", LinkableBy: [...KDBindable, ...KDDevices],
 		Model: "CyberCuffsThigh",
@@ -981,7 +1010,7 @@ const KinkyDungeonRestraints = [
 		factionColor: [[], [2], [0,1]],
 		Group: "ItemLegs", power: 12, weight: 0,
 		escapeChance: {"Struggle": -0.8, "Cut": -0.65, "Remove": 0.6, "Pick": -0.15},
-		enemyTags: {"cyberdollcuffs":6, "cyberdollrestraints":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 4, allFloors: true, shrine: ["Metal", "Cyber", "Cuffs", "LegCuffsBase"],
+		enemyTags: {"cyberdollcuffs":6, "cyberdollrestraints":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 4, allFloors: true, shrine: ["Metal", "Cyber", "Cuffs", "LegCuffsBase", "CyberLegCuffs"],
 	},
 	{renderWhenLinked: ["Ties"], sfx: "FutureLock", nonbinding: true, inventory: true, name: "CyberArmCuffs", debris: "Chains", accessible: true,
 		Model: "CyberCuffsArms",
@@ -1000,7 +1029,7 @@ const KinkyDungeonRestraints = [
 		unlimited: true,
 		Group: "ItemArms", bindarms: false, power: 12, weight: 0,
 		escapeChance: {"Struggle": -0.8, "Cut": -0.65, "Remove": 0.25, "Pick": -0.15},
-		enemyTags: {"cyberdollcuffs":20, "cyberdollrestraints":6}, playerTags: {"ItemArmsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Cuffs", "Metal",  "ArmCuffsBase", "Cyber"],
+		enemyTags: {"cyberdollcuffs":20, "cyberdollrestraints":6}, playerTags: {"ItemArmsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Cuffs", "Metal",  "ArmCuffsBase", "Cyber", "CyberWristCuffs"],
 		maxwill: 0.8
 	},
 	//endregion
@@ -1197,7 +1226,7 @@ const KinkyDungeonRestraints = [
 		Asset: "LatexElbowGloves", Color: "#ff5277", LinkableBy: [...KDGlovesLink], renderWhenLinked: ["Mittens"], Group: "ItemHands",
 		bindhands: 1.0, power: 10, weight: 0,
 		escapeChance: {"Struggle": -0.05, "Cut": 0.04, "Remove": 0.4, "Pick": 0.25},
-		maxwill: 0.4, enemyTags: {"latexRestraints":6,"mittensSpell": 10}, playerTags: {"ItemHandsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Latex", "Mittens"]},
+		maxwill: 0.4, enemyTags: {"latexRestraints":6,"mittensSpell": 10}, playerTags: {"ItemHandsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Mittens", "Latex"]},
 
 
 	{renderWhenLinked: ["Corsets", "Harnesses", ...KDBindable, "Latex", "Leather", "Metal", "Rope"], inventory: true, name: "LatexCatsuit", inaccessible: true,
@@ -1466,7 +1495,7 @@ const KinkyDungeonRestraints = [
 		Asset: "LatexElbowGloves", Color: "#ff5277", LinkableBy: [...KDGlovesLink], renderWhenLinked: ["Mittens"], Group: "ItemHands",
 		bindhands: 1.0, power: 10, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": -0.1, "Remove": -0.1, "Pick": 1.0},
-		maxwill: 0.4, enemyTags: {"wolfRestraints" : 6, "wolfGear":6}, playerTags: {"ItemHandsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Latex", "Mittens"]},
+		maxwill: 0.4, enemyTags: {"wolfRestraints" : 6, "wolfGear":6}, playerTags: {"ItemHandsFull":-2}, minLevel: 0, allFloors: true, shrine: ["LongMittens", "Mittens", "Latex"]},
 
 	{inventory: true, name: "WolfBallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink],
 		Model: "SegmentedLargeBallGagHarnessSecure",
@@ -2574,7 +2603,7 @@ const KinkyDungeonRestraints = [
 			Band: {"gamma":0.43333333333333335,"saturation":1,"contrast":1.1833333333333333,"brightness":0.5166666666666666,"red":1,"green":1,"blue":1,"alpha":1},
 			Mitten: {"gamma":0.9166666666666666,"saturation":1,"contrast":3,"brightness":0.06666666666666667,"red":1,"green":1,"blue":1,"alpha":1},
 		},
-		maxwill: 0.5, escapeChance: {"Struggle": 0.05, "Cut": 0.4, "Remove": 0.15, "Pick": 1.0}, enemyTags: {"leatherRestraints":6, "mittensSpell": 10}, playerTags: {"ItemHandsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Leather", "Mittens"]},
+		maxwill: 0.5, escapeChance: {"Struggle": 0.05, "Cut": 0.4, "Remove": 0.15, "Pick": 1.0}, enemyTags: {"leatherRestraints":6, "mittensSpell": 10}, playerTags: {"ItemHandsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Mittens", "Leather"]},
 	// These ones are tougher
 	{inventory: true, arousalMode: true, trappable: true, name: "TrapBelt2", Asset: "OrnateChastityBelt", OverridePriority: 26, Color: ["#272727", "#D3B24B"], Group: "ItemPelvis", chastity: true,
 		power: 9, weight: 0, DefaultLock: "Gold",
@@ -2952,7 +2981,7 @@ const KinkyDungeonRestraints = [
 		LinkableBy: [...KDGlovesLink], bindhands: 1.0, power: 5, weight: 2,
 		escapeChance: {"Struggle": 0.0, "Cut": 0.3, "Remove": 0.15, "Pick": 0.4},
 		Model: "LeatherPawMittens",
-		maxwill: 0.9, enemyTags: {"kittyRestraints":8}, playerTags: {}, minLevel: 4, allFloors: true, shrine: ["Leather", "Mittens", "Will"]},
+		maxwill: 0.9, enemyTags: {"kittyRestraints":8}, playerTags: {}, minLevel: 4, allFloors: true, shrine: ["Mittens", "Leather", "Will"]},
 	{inventory: true, name: "KittySuit", debris: "Belts", Asset: "BitchSuit", Color: "Default", Group: "ItemArms", DefaultLock: "Red",
 		Model: "ElitePetsuit",
 		Filters: {
@@ -4642,6 +4671,7 @@ const KinkyDungeonRestraints = [
 
 	// regiuon Links
 	{name: "ThighLink", accessible: true, Asset: "FuturisticLegCuffs", debris: "Chains", LinkableBy: [...KDBindable, ...KDDevices],
+		sfx: "Chain",
 		Model: "ThighLink", alwaysRender: true,
 		linkSize: 0.35, linkCategory: "LegLink", noDupe: true,
 		Type: "Chained", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'],
@@ -4687,6 +4717,7 @@ const KinkyDungeonRestraints = [
 	},
 
 	{name: "AnkleLink", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindableMinusCuffs],
+		sfx: "Chain",
 		Model: "AnkleLink", alwaysRender: true,
 		UnderlinkedAlwaysRender: true,
 		struggleBreak: true,
@@ -4704,6 +4735,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "postRemoval", type: "RequireBaseAnkleCuffs", inheritLinked: true}
 		]},
 	{name: "AnkleLinkShort", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindableMinusCuffs],
+		sfx: "Chain",
 		Type: "Closed", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'],
 		UnderlinkedAlwaysRender: true,
 		Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 3, weight: 0,
@@ -4723,6 +4755,7 @@ const KinkyDungeonRestraints = [
 
 
 	{name: "WristLink", debris: "Chains", accessible: true, Asset: "FuturisticCuffs",
+		sfx: "Chain",
 		Type: "Wrist", LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindableMinusCuffs],
 		UnderlinkedAlwaysRender: true,
 		Color: ['#FFFFFF', '#CFBE88', '#000000'],
@@ -4744,6 +4777,7 @@ const KinkyDungeonRestraints = [
 			{trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.08, inheritLinked: true}
 		]},
 	{name: "ElbowLink", debris: "Chains", accessible: true, Asset: "FuturisticCuffs",
+		sfx: "Chain",
 		Type: "Both", LinkableBy: [...KDElbowBind, ...KDBindableMinusCuffs],
 		UnderlinkedAlwaysRender: true,
 		Color: ['#FFFFFF', '#CFBE88', '#000000'],
@@ -4764,6 +4798,159 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireBaseArmCuffs", inheritLinked: true},
+			{trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.12, inheritLinked: true}
+		]},
+
+
+
+	//endregion
+
+
+
+	// regiuon CyberLinks
+	{name: "CyberThighLink", accessible: true, Asset: "FuturisticLegCuffs", debris: "Chains", LinkableBy: [...KDBindable, ...KDDevices],
+		sfx: "FutureLock",
+		Model: "CyberThighLink", alwaysRender: true,
+		linkSize: 0.55, linkCategory: "LegLink", noDupe: true,
+		Type: "Chained", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'],
+		Group: "ItemLegs", hobble: 1, power: 6, weight: 0,
+		minLevel: 7, allFloors: true, shrine: ["ThighLink", "CyberLink", "Link", "Metal", "Cuffs", "ControlHLeg"],
+		escapeChance: {"Struggle": -1.05, "Cut": -0.5, "Remove": 0.2, "Pick": 0.05},
+		enemyTags: {"cyberLink": 10, "controlHarness" : 20, "roboPrisoner" : 10}, playerTags: {},
+		DefaultLock: "Cyber",
+		requireAllTagsToEquip: ["CyberLegCuffs", "LegCuffsBase"],
+		unlimited: true,
+		UnderlinkedAlwaysRender: true,
+		factionFilters: {
+			Tether: {color: "Highlight", override: true},
+			Glow: {color: "Highlight", override: false},
+		},
+		events: [
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireBaseLegCuffs", inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireTag", requiredTag: "CyberLegCuffs", inheritLinked: true},
+		]},
+
+
+	{name: "CyberChainHogtieLink",
+		sfx: "FutureLock",
+		UnderlinkedAlwaysRender: true,
+		debris: "Chains", accessible: true,
+		Asset: "HempRope", Type: "Hogtied", Color: "Default",
+		Group: "ItemFeet", power: 9, weight: 0,
+		struggleMult: {"Struggle": 0.4, "Remove": 0.3},
+		escapeChance: {"Struggle": -1.0, "Cut": -0.4, "Remove": 0.3, "Pick": 0.25},
+		limitChance: {"Struggle": 0.8},
+		affinity: {Remove: ["Hook"],},
+		minLevel: 12, allFloors: true, shrine: ["CyberLink", "Chains", "Link", "Metal", "Hogties"],
+		linkCategory: "Hogtie", linkSize: 0.51,
+		LinkAll: true,
+		noDupe: true,
+		addPose: ["HandsBehind"],
+		struggleBreak: true,
+		requireAllTagsToEquip: ["CyberAnkleCuffs", "CyberWristCuffs", "HogtieLower", "HogtieUpper"],
+		// handcuffers will only do this if you are fighting back
+		unlimited: true,
+		enemyTags: {"cyberdollrestraints" : 1}, playerTags: {}, playerTagsMissing: {PlayerCombat: -0.1},
+		maxwill: 0.1,
+		DefaultLock: "Cyber",
+		events: [
+			{trigger: "postRemoval", type: "RequireHogtie"},
+			{trigger: "postRemoval", type: "RequireTag", requiredTag: "CyberArmCuffs", inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireTag", requiredTag: "CyberAnkleCuffs", inheritLinked: true},
+		]
+	},
+
+	{name: "CyberAnkleLink", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindableMinusCuffs],
+		sfx: "FutureLock",
+		Model: "CyberAnkleLink", alwaysRender: true,
+		UnderlinkedAlwaysRender: true,
+		struggleBreak: true,
+		factionFilters: {
+			Tether: {color: "Highlight", override: true},
+			Glow: {color: "Highlight", override: false},
+		},
+		linkSize: 0.6, linkCategory: "AnkleLink",
+		requireAllTagsToEquip: ["CyberAnkleCuffs", "AnkleCuffsBase"],
+		Type: "Chained", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'],
+		Group: "ItemFeet", hobble: 1, power: 6, weight: 0,
+		escapeChance: {"Struggle": -1.1, "Cut": -0.5, "Remove": 0.2, "Pick": 0},
+		enemyTags: {"cyberLink": 10, "controlHarness" : 20, "roboPrisoner" : 10}, playerTags: {},
+		minLevel: 0, allFloors: true, shrine: ["CyberLink", "AnkleLink", "Link", "Metal", "ControlHAnkle"],
+		DefaultLock: "Cyber",
+		unlimited: true,
+		events: [
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireBaseAnkleCuffs", inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireTag", requiredTag: "CyberAnkleCuffs", inheritLinked: true},
+		]},
+	{name: "CyberAnkleLinkShort", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindableMinusCuffs],
+		sfx: "FutureLock",
+		Type: "Closed", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'],
+		UnderlinkedAlwaysRender: true,
+		Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"], power: 7, weight: 0, strictness: 0.05,
+		escapeChance: {"Struggle": -1.5, "Cut": -0.6, "Remove": -0.1, "Pick": 0},
+		minLevel: 0, allFloors: true, shrine: ["CyberLink", "AnkleLink", "Link", "Metal", "ControlHAnkle"],
+		linkSize: 0.6, linkCategory: "AnkleLink",
+		struggleBreak: true,
+		requireAllTagsToEquip: ["CyberAnkleCuffs", "AnkleCuffsBase"],
+		enemyTags: {}, playerTags: {},
+		maxwill: 0.2,
+		DefaultLock: "Cyber",
+		unlimited: true,
+		events: [
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireTag", requiredTag: "CyberAnkleCuffs", inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireBaseAnkleCuffs"}
+		]},
+
+
+	{name: "CyberWristLink", debris: "Chains", accessible: true, Asset: "FuturisticCuffs",
+		sfx: "FutureLock",
+		Type: "Wrist", LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindableMinusCuffs],
+		UnderlinkedAlwaysRender: true,
+		Color: ['#FFFFFF', '#CFBE88', '#000000'],
+		Group: "ItemArms", bindarms: true, power: 6, weight: 0,
+		escapeChance: {"Struggle": -0.9, "Cut": -0.6, "Remove": -0.1, "Pick": 0.05},
+		helpChance: {"Remove": 0.4},
+		minLevel: 0, floors: KDMapInit([]), shrine: ["CyberLink", "WristLink", "Link", "Metal", "HogtieUpper", "ControlHArm"],
+		linkSize: 0.6, linkCategory: "ArmLink",
+		struggleBreak: true,
+		requireAllTagsToEquip: ["CyberWristCuffs", "ArmCuffsBase"],
+		enemyTags: {"cyberLink": 10, "controlHarness" : 20, "roboPrisoner" : 10}, playerTags: {},
+		maxwill: 0.7,
+		allFloors: true,
+		DefaultLock: "Cyber",
+		unlimited: true,
+		events: [
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireBaseArmCuffs", inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireTag", requiredTag: "CyberWristCuffs", inheritLinked: true},
+			{trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.08, inheritLinked: true}
+		]},
+	{name: "CyberElbowLink", debris: "Chains", accessible: true, Asset: "FuturisticCuffs",
+		sfx: "FutureLock",
+		Type: "Both", LinkableBy: [...KDElbowBind, ...KDBindableMinusCuffs],
+		UnderlinkedAlwaysRender: true,
+		Color: ['#FFFFFF', '#CFBE88', '#000000'],
+		Group: "ItemArms", bindarms: true, power: 7, weight: 0, strictness: 0.125,
+		addPose: ["HandsBehind"],
+		alwaysRender: true,
+		linkSize: 0.6, linkCategory: "ElbowLink",
+		struggleBreak: true,
+		requireAllTagsToEquip: ["CyberWristCuffs", "ArmCuffsBase"],
+		escapeChance: {"Struggle": -1.1, "Cut": -0.6, "Remove": -0.2, "Pick": 0.25},
+		helpChance: {"Remove": 0.4},
+		enemyTags: {"cyberLink": 1, "controlHarness" : 2, "roboPrisoner" : 1}, playerTags: {},
+		minLevel: 0, floors: KDMapInit([]), shrine: ["CyberLink", "ElbowLink", "Link", "Metal", "ElbowTied", "ControlHArm"],
+		maxwill: 0.5,
+		allFloors: true,
+		DefaultLock: "Cyber",
+		unlimited: true,
+		events: [
+			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireBaseArmCuffs", inheritLinked: true},
+			{trigger: "postRemoval", type: "RequireTag", requiredTag: "CyberWristCuffs", inheritLinked: true},
 			{trigger: "beforeStruggleCalc", type: "wristCuffsBlock", power: 0.12, inheritLinked: true}
 		]},
 
@@ -6812,16 +6999,18 @@ let KDControlHarnessCategories = {
 
 			// If there are any cuffs to upgrade
 			let upgradedTags = ["ControlHArm", "ControlHAnkle", "ControlHLeg"];
+			let addedGroup = {};
 			if (upgradedTags.some((tag) => {return KinkyDungeonPlayerTags.get(tag) != true;})) {
 				KinkyDungeonSendTextMessage(4,
 					TextGet("KDControlHarnessCuffsActivate"),
 					"#ffffff",
 					1,
 				);
-				for (let rName of ["CyberArmCuffs2", "CyberArmCuffs3", "CyberAnkleCuffs2", "CyberAnkleCuffs3", "CyberLegCuffs2"]) {
+				for (let rName of ["CyberWristLink", "CyberElbowLink", "CyberThighLink", "CyberAnkleLink", "CyberAnkleLinkShort"]) {
 					if (KinkyDungeonPlayerTags.get("Item_"+rName)) continue;
 					let newRestraint = KinkyDungeonGetRestraintByName(rName);
-					if (!KinkyDungeonPlayerTags.get("LinkTo_"+rName)) continue;
+					if (addedGroup[newRestraint.Group]) continue;
+					addedGroup[newRestraint.Group] = true;
 					//KinkyDungeonLinkItem(newRestraint, item, item.tightness, "");
 					if (
 						KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true)) {

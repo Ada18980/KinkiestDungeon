@@ -28,6 +28,12 @@ TODO:
 - Let go of leash thru menu
 - Aggro level
 
+5.3.22
+- Having an orgasm is easier the more desire you have, and the effects last longer if you have more desire
+- Fixed some cases of linking not working properly
+- Added Cyber Link
+- Added cyber mitt artwork and added shorter cyber mitts item
+
 5.3.21
 - Upgraded the layering system to allow for even tighter item combinations (and getting rid of low level items to replace with more strong items)
 - More scenery now appears in various tiles, and added a few new temple tile variations

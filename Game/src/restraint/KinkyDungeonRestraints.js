@@ -3547,7 +3547,7 @@ function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, 
 			do {
 				iii++;
 				if (!KDCheckLinkSize(r, restraint, true, false, undefined, undefined, undefined))
-					dynamicList = KDDynamicLinkList(r).filter(
+					dynamicList = KDDynamicLinkList(r, true).filter(
 						(inv) => {
 							if ((KDRestraint(inv).linkCategories ? KDRestraint(inv).linkCategories : (KDRestraint(inv).linkCategory ? [KDRestraint(inv).linkCategory] : [])).some(
 								(category) => {
@@ -3569,7 +3569,8 @@ function KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, Trapped, events, 
 					}
 				}
 				if (cand && compPower > candPower) {
-					KinkyDungeonRemoveRestraintSpecific(cand, Keep, true);
+					// Turn off 'Add' here because we need to preserve dynamiclink
+					KinkyDungeonRemoveRestraintSpecific(cand, Keep, false);
 					r = KinkyDungeonGetRestraintItem(restraint.Group);
 					if (!r) dynamicList = [];
 				}
