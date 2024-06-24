@@ -6184,6 +6184,12 @@ It's quite tight and secured by lockable buckles on your sides.
 它非常紧，并由你两侧的可上锁带扣固定。
 The armbinder harness comes off with the armbinder.
 会随着束手套一起挣脱。
+The energy link between your ankle cuffs fizzles into nothing.
+踝铐之间的能量链条逐渐消失。
+The energy link between your arm cuffs fizzles into nothing.
+臂铐之间的能量链条逐渐消失。
+The energy link between your thigh cuffs fizzles into nothing.
+大腿铐之间的能量链接逐渐消失。
 Handcuffs
 手铐
 A pair of steel cuffs locked securely around your wrists.
@@ -12230,8 +12236,8 @@ Moving to assist!
 正在移动以提供帮助！
 You really think you're special, huh?
 你真的认为你很特别，是吗？
-I'm sorry! I didn't mean to break that vase!
-对不起！我不是故意打破那个花瓶的！
+That thing... it scares me.
+那东西……它吓到我了。
 I won't do it again, I swear!
 我不会再这样做了，我发誓！
 Don't you need a bodyguard, miss?
@@ -15274,12 +15280,18 @@ Doll Plug Gag
 玩偶塞子口塞
 A soft, flexible plug pressed into your mouth and held in place with a metal shield.
 将柔软、灵活的塞子压入你的嘴中，并用金属罩固定到位。
-Doll Muzzle
-玩偶口套
-A metallic shield preventing you from removing any gags underneath.
-金属罩可防止你移除下面的任何口塞。
-It's made of exquisite Old Civilization metals, resistant to almost all forms of damage.
-它由精致的旧文明金属制成，可以抵抗几乎所有形式的损坏。
+Cyber Mittens
+赛博口套
+These mittens force your hands into fists, keeping you from using them to do anything useful.
+这些手套迫使你的手握成拳头，使你无法用它们做任何有用的事情。
+It is made of a strong mesh of ancient metallic fiber, kept in place with a metal band.
+它由古老金属纤维制成的坚固网状物制成，并用金属带固定。
+Cyber Lockdown Mitts
+赛博封锁手套
+These long mittens force your hands into fists, keeping you from using them to do anything useful.
+这些长手套迫使你的手握成拳头，使你无法用它们做任何有用的事情。
+It is made of a strong mesh of ancient metallic fiber, wrapped snugly around your arms to make removal by yourself impossible.
+它由古老的金属纤维制成的坚固网状物，紧紧缠绕在你的手臂上，让你无法自行脱下。
 Doll Mittens
 玩偶手套
 These long mittens force your hands into fists, keeping you from using them to do anything useful.
@@ -19365,6 +19377,8 @@ You don't have enough mana
 你没有足够的魔力
 The enemy rune is wiped clean.
 敌方符文已被清除干净。
+You pour negation magic into the ground, but nothing happens.
+你把否定魔法灌注到地面，但什么也没有发生。
 All of your runes have been removed.
 你的所有符文都已被移除。
 E-Stimulation
@@ -19507,6 +19521,8 @@ Chastity bras are much rarer.
 贞操文胸将会很少见。
 Find an elevator to the Summit in order to access facilities.
 找到通往山顶的电梯以便使用设施。
+Visit the Summit to allow additional interactions with this facility.
+参观峰会可以与该设施进行更多互动。
 +AMNT% Training/Tick
 +AMNT% 训练/刻
 +AMNT% Opinion/Tick
@@ -19541,6 +19557,17 @@ Cuddle Lounge
 拥抱休息室
 Assign prisoners to the lounge in order to improve your servants' opinion of you.
 将囚犯分配到休息室以提高仆人对你的观点。
+Recycle Restraints
+回收限制
+Recycle One
+回收一个
+Recycle ALL!
+回收所有！
+Recycle all but one
+除一个外全部回收
+You recycle a ITM
+你回收了 ITM
+你回收了 #x ITM
 You're blocking me.
 你挡住我了。
 You're in my way!
@@ -19551,3 +19578,31 @@ Step aside~
 请让开~
 Path blocked by citizen.
 道路被市民阻挡。
+*Bumps into you*
+*撞到你*
+Cyber Hogtie Tether
+赛博驷马绑带
+A very strict and tight hogtie, good for subduing unruly captives.
+非常严格且紧密的捆绑，适合制服不守规矩的俘虏。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+它由你电子手铐内的投影仪维持。能量可以排斥任何力量，即使多次试图破坏它，它似乎也不会减弱。
+Cyber Thigh Tether
+赛博大腿绑带
+An energy tether connecting your thigh cuffs together. You can still walk, albeit slower than usual.
+一条能量绳将你的大腿袖口连接在一起。你仍然可以行走，尽管速度比平时慢。
+Cyber Ankle Tether
+赛博脚踝绑带
+An energy  tether connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
+一条能量绳将你的脚踝铐连接在一起。它为你提供了足够的走动空间，尽管走动速度比平时要慢。
+Ankle Chain (Short)
+脚链（短）
+A short energy tether connecting your ankle cuffs together. You can barely separate your legs with this on.
+一条短能量绳，将你的脚踝铐连接在一起。戴上它，你的双腿几乎无法分开。
+Cyber Elbow Tether
+赛博肘部绑带
+A very short energy tether connecting your elbow cuffs together. It is quite awkward to remove by yourself.
+一根很短的能量绳将你的肘铐连接在一起。自己取下它会很不方便。
+Cyber Wrist Tether
+赛博手腕绑带
+A very short energy tether connecting your wrist cuffs together.
+一条非常短的能量绳将你的手腕铐连接在一起。
