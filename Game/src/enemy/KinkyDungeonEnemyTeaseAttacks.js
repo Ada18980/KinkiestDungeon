@@ -85,6 +85,7 @@ let KDTeaseAttacks = {
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "grope"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
+			KinkyDungeonSetFlag("grope", 4);
 			if (dmg.happened) {
 				KinkyDungeonSendTextMessage(4,
 					TextGet("KDTeaseAttack_SquishBreast" + (KinkyDungeonLastAction == "Cast" ? "Cast" : ""))
@@ -118,6 +119,7 @@ let KDTeaseAttacks = {
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
+			KinkyDungeonSetFlag("spank", 4);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1.5, type: "grope"});
 			if (!(blocked || evaded))
 				KinkyDungeonChangeDistraction(1*damagemod, false, 0.25);
@@ -164,6 +166,7 @@ let KDTeaseAttacks = {
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Vibe.ogg");
 			let toys = KDGetVibeToys(enemy);
 			let toy = (toys.length > 0) ? toys[Math.floor(KDRandom() * toys.length)] : "";
+			KinkyDungeonSetFlag("buzz", 4);
 			if (dmg.happened) {
 				// Half of it bypasses
 				KinkyDungeonTeaseLevel += 1;
@@ -208,6 +211,7 @@ let KDTeaseAttacks = {
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
+			KinkyDungeonSetFlag("insert", 4);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "pierce"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
 			let toys = KDGetVibeToys(enemy).filter((toy) => {
@@ -255,6 +259,7 @@ let KDTeaseAttacks = {
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "chain"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Struggle.ogg");
 			let selected = "Stuffing";
+			KinkyDungeonSetFlag("stuff", 4);
 			if (dmg.happened && KinkyDungeonAddRestraintIfWeaker(selected, 0, false, "", true)) {
 
 				KinkyDungeonSendTextMessage(4,
@@ -296,6 +301,7 @@ let KDTeaseAttacks = {
 			if (!(blocked || evaded))
 				KinkyDungeonChangeDistraction(1*damagemod, false, 0.25);
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
+			KinkyDungeonSetFlag("grope", 4);
 			if (dmg.happened) {
 				KinkyDungeonSendTextMessage(4,
 					TextGet("KDTeaseAttack_SqueezeButt" + (KinkyDungeonLastAction == "Move" ? "Move" : ((KDPlayerFacingAway(player, enemy) && KDPlayerIsStunned()) ? "Behind" : "")))
@@ -334,6 +340,7 @@ let KDTeaseAttacks = {
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*2, type: "plush"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
+			KinkyDungeonSetFlag("soft", 4);
 			if (dmg.happened) {
 				KinkyDungeonSendTextMessage(4,
 					TextGet("KDTeaseAttack_ShoulderMassage")
@@ -410,6 +417,7 @@ let KDTeaseAttacks = {
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "tickle"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Tickle.ogg");
+			KinkyDungeonSetFlag("tickle", 4);
 			if (dmg.happened) {
 				KinkyDungeonSendTextMessage(4,
 					TextGet("KDTeaseAttack_TickleArmpits" + ((enemy.playWithPlayer && !KinkyDungeonAggressive(enemy) && KDPlayerFacingAway(player, enemy)) ? "" : "Raised"))
@@ -460,6 +468,7 @@ let KDTeaseAttacks = {
 			}
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*2, type: "tickle"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Tickle.ogg");
+			KinkyDungeonSetFlag("tickle", 4);
 			if (dmg.happened) {
 				KinkyDungeonSendTextMessage(4,
 					TextGet("KDTeaseAttack_TickleFeet" + ((strip) ? "Remove" : ""))

@@ -373,7 +373,7 @@ function KinkyDungeonInterruptSleep() {
 
 let KDBaseDamageTypes = {
 	knockbackTypes: ["fire", "electric", "shock", "tickle", "cold", "slash", "grope", "pierce", "soul", "plush", "charm"],
-	knockbackTypesStrong: ["blast", "crush", "soap", "poison", "pain", "arcane"],
+	knockbackTypesStrong: ["blast", "stun", "crush", "soap", "poison", "pain", "arcane"],
 	arouseTypes: ["grope", "plush", "charm", "happygas"],
 	bypassTeaseTypes: ["charm", "happygas"],
 	distractionTypesWeakNeg: ["pain", "acid"],
@@ -466,10 +466,27 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 		data.arouseTypes.push("electric");
 		if (data.staminaTypesWeak.includes("electric"))
 			data.staminaTypesWeak = data.staminaTypesWeak.splice(data.staminaTypesWeak.indexOf("pain"), 1);
+		if (data.type == "electric" || data.type == "estim") {
+			KinkyDungeonSetFlag("tickle", 3);
+		}
+	}
+	let types = ["pain", "electric", "slash", "pierce", "crush", "fire", "ice", "frost", "acid", "arcane", "stun", "blast"];
+
+	if (data.type == "chain" || data.type == "glue") {
+		KinkyDungeonSetFlag("restrained", 1);
+		if (data.type == "glue")
+			KinkyDungeonSetFlag("slimed", 5);
+		else KinkyDungeonSetFlag("restrained_recently", 4);
 	}
 
+	if (types.includes(data.type)) {
+		if (data.type == "pain") {
+			KinkyDungeonSetFlag("spank", 2);
+		}
+		KinkyDungeonSetFlag("pain", 4);
+	}
 	if (KinkyDungeonStatsChoice.get("Masochist")) {
-		let types = ["pain", "electric", "slash", "pierce", "crush", "fire", "ice", "frost", "acid", "arcane"];
+
 		data.distractionTypesStrong.push(...types);
 		data.arouseMod = Math.max(data.arouseMod, 2.0);
 		data.arouseTypes.push(...types);
@@ -477,11 +494,25 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 			data.distractionTypesWeakNeg = data.distractionTypesWeakNeg.splice(data.distractionTypesWeakNeg.indexOf("pain"), 1);
 		if (data.distractionTypesWeakNeg.includes("acid"))
 			data.distractionTypesWeakNeg = data.distractionTypesWeakNeg.splice(data.distractionTypesWeakNeg.indexOf("acid"), 1);
+
 	}
 
 	if (data.arouseTypes.includes(data.type) && !data.arouseAmount) {
 		data.arouseAmount = 0.2;
+		if (data.type == "tickle") {
+			KinkyDungeonSetFlag("tickle", 3);
+		} else if (data.type == "charm") {
+			KinkyDungeonSetFlag("headpat", 2);
+		} else if (data.type == "psychic") {
+			KinkyDungeonSetFlag("psychic", 2);
+		} else {
+			KinkyDungeonSetFlag("grope", 3);
+		}
+	} else if (data.type == "pierce") {
+		KinkyDungeonSetFlag("insert", 3);
 	}
+
+
 	if (data.arouseAmount < 0) data.arouseAmount = 0;
 
 	KinkyDungeonSendEvent("beforePlayerDamage", data);

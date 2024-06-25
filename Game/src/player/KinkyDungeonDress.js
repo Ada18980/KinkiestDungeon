@@ -1168,7 +1168,26 @@ let KDExpressions = {
 				BrowsPose: "",
 				Brows2Pose: "",
 				BlushPose: "BlushMedium",
-				MouthPose: "MouthEmbarrassed",
+				MouthPose: "MouthPout",
+			};
+		},
+	},
+	"Slimed": {
+		priority: 1.7,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("slimed")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesDazed",
+				Eyes2Pose: "Eyes2Dazed",
+				BrowsPose: "BrowsAnnoyed",
+				Brows2Pose: "Brows2Annoyed",
+				BlushPose: "",
+				MouthPose: "MouthDazed",
 			};
 		},
 	},
@@ -1229,6 +1248,25 @@ let KDExpressions = {
 			};
 		},
 	},
+	"Psychic": {
+		priority: 3,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("psychic")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesDazed",
+				Eyes2Pose: "Eyes2Dazed",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "",
+				MouthPose: "MouthDazed",
+			};
+		},
+	},
 	"HeadpatDom": {
 		priority: 12,
 		criteria: (C) => {
@@ -1263,7 +1301,121 @@ let KDExpressions = {
 				BrowsPose: "",
 				Brows2Pose: "Brows2Angry",
 				BlushPose: "BlushHigh",
+				MouthPose: "MouthPout",
+			};
+		},
+	},
+	"Spank": {
+		priority: 14,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("spank")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesSurprised",
+				Eyes2Pose: "Eyes2Surprised",
+				BrowsPose: "BrowsSurprised",
+				Brows2Pose: "Brows2Surprised",
+				BlushPose: "",
+				MouthPose: "MouthSurprised",
+			};
+		},
+	},
+	"Grope": {
+		priority: 4,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("spank")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesSurprised",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "BrowsSurprised",
+				Brows2Pose: "Brows2Surprised",
+				BlushPose: "BlushMedium",
 				MouthPose: "",
+			};
+		},
+	},
+	"Insert": {
+		priority: 17,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("insert")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesSurprised",
+				Eyes2Pose: "Eyes2Surprised",
+				BrowsPose: "",
+				Brows2Pose: "Brows2Surprised",
+				BlushPose: "BlushExtreme",
+				MouthPose: "MouthEmbarrassed",
+			};
+		},
+	},
+	"Stuffed": {
+		priority: 10,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("stuff")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesClosed",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "Brows2Surprised",
+				BlushPose: "BlushHigh",
+				MouthPose: "MouthSurprised",
+			};
+		},
+	},
+	"Tickle": {
+		priority: 9,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("tickle")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesClosed",
+				Eyes2Pose: "Eyes2Surprised",
+				BrowsPose: "BrowsAnnoyed",
+				Brows2Pose: "Brows2Surprised",
+				BlushPose: "",
+				MouthPose: "MouthEmbarrassed",
+			};
+		},
+	},
+	"Pain": {
+		priority: 4,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("pain")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesAngry",
+				Eyes2Pose: "Eyes2Angry",
+				BrowsPose: "BrowsAnnoyed",
+				Brows2Pose: "Brows2Annoyed",
+				BlushPose: "",
+				MouthPose: "MouthDazed",
 			};
 		},
 	},
