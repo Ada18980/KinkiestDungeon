@@ -526,13 +526,13 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 
 		{name: "BattleRhythm", tags: ["fight", "will", "stamina"], prerequisite: "Null", hideUnlearnable: true, school: "Special", manacost: 0, components: [], level:1,
+			mixedPassive: true,
 			type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
 				{type: "BattleRhythmStore", trigger: "beforePlayerLaunchAttack", always: true},
 				{type: "BattleRhythm", trigger: "doAttackCalculation"},
 				{type: "BREvasionBlock", trigger: "tick", mult: 0.1, power: 0.1},
 				{type: "BRDecay", trigger: "tick", power: 0.01, always: true,},
-
 			]},
 
 		{name: "BattleTrance", tags: ["fight", "will", "stamina"], prerequisite: "Enrage", classSpecific: "Fighter", hideWithout: "BattleRhythm", school: "Special", manacost: 0, components: [], level:1,

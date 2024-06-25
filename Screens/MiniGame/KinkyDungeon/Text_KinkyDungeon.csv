@@ -3022,6 +3022,8 @@ KinkyDungeonStruggleUnlockNoDiscKey,"The lock requires a key."
 KinkyDungeonStruggleUnlockNoBlueKey,"The magical lock only accepts magical keys and can't be picked."
 KinkyDungeonStruggleUnlockNoGoldKey,"The magical lock is guarded with powerful magic. You'll have to wait for it to wear off..."
 KinkyDungeonStruggleUnlockNoCyberKey,"The item is cybernetically locked. You will need a key card to unlock it."
+KinkyDungeonStruggleUnlockNoCyber2Key,"The item is cybernetically locked. You will need a key card to unlock it."
+KinkyDungeonStruggleUnlockNoCyber3Key,"The item is cybernetically locked. You will need a key card to unlock it."
 KinkyDungeonStruggleUnlockNoPurpleKey,"This lock requires a command word to unlock. It doesn't have a keyhole."
 KinkyDungeonStruggleUnlockNoUnknownKey,"You don't have a key for this lock."
 KinkyDungeonStruggleCantPickBlueLock,"The lock seems to be magical and rejects all picking attempts!"
@@ -8410,9 +8412,9 @@ KinkyDungeonRemindJailChaseCyborgDefendHonor2,"Give up or I'll call reinforcemen
 KinkyDungeonRemindJailChaseCyborgHonor0,"Ack! We have an unruly subject!"
 KinkyDungeonRemindJailChaseCyborgHonor1,"Target needs retraining..."
 KinkyDungeonRemindJailChaseCyborgHonor2,"Sorry, rules are rules~"
-KinkyDungeonRemindJailChaseCyborgCommandDefend,""
-KinkyDungeonRemindJailChaseCyborgCommandAssault,""
-KinkyDungeonRemindJailChaseCyborgCommandBlock,""
+KinkyDungeonRemindJailChaseCyborgCommandDefend,"Moving to assist!"
+KinkyDungeonRemindJailChaseCyborgCommandAssault,"My orders are to shut you down~"
+KinkyDungeonRemindJailChaseCyborgCommandBlock,"Defenses online!"
 
 
 KinkyDungeonRemindJailPlayHelplessRobot0,"Does not compute."
@@ -12593,8 +12595,12 @@ KinkyDungeonRemoteShockEstim,You shudder as the EnemyName activates your Restrai
 
 KDDialogueRemoteLinkCuffs,That should slow you down!
 KDDialogueRemoteLinkCuffsNevermere,Try running away now~
-KDDialogueRemoteLinkCuffsAncientRobot,Initiating prisoner lockdown protocol
-KDMsgRemoteLinkCuffs,Your RestraintName suddenly snap together as the EnemyName activates them
+KDDialogueRemoteLinkCuffsAncientRobot,Initiating prisoner lockdown protocol--Unknown hardware detected
+KDDialogueRemoteLinkTether,What's this do?
+KDDialogueRemoteLinkTetherNevermere,"That harness you're wearing is quite convenient for me~"
+KDDialogueRemoteLinkTetherAncientRobot,Initiating prisoner lockdown protocol
+KDMsgRemoteLinkCuffs,Your RestraintName suddenly snap together as the EnemyName activates them!
+KDMsgRemoteLinkCHTether,Your harness projects energy tethers between your cuffs EnemyName activates it!
 
 TurnCounter,"Turn Count: "
 
@@ -12793,7 +12799,9 @@ RestraintDollmakerMaskDesc2,"It's made of metallic glass, almost indestructible.
 
 KDControlHarnessTest,"Detected new hardware."
 KDControlHarnessCuffsUpdate,"[Restriction Protocol] Detected new hardware: RESTRAINTNAME. Install progress: PERCENT%"
-KDControlHarnessCuffsActivate,"[Restriction Protocol] Installation complete. Engage mobility restrictions."
+KDControlHarnessCuffsActivate,"[Restriction Protocol] Installation complete. Completing uniform."
+KDControlHarnessCuffsLink,"[Punishment] Engage mobility restrictions."
+
 
 KDControlHarnessChastityUpdate,"[Training Protocol] Detected hardware: RESTRAINTNAME. Install progress: PERCENT%"
 KDControlHarnessChastityMode_Extra,"Supplemental Stimulation"
@@ -23278,6 +23286,8 @@ KDTooManyLeash,You are holding too many leashes!
 
 KDAddCorruption,You feel a corrupting influence... (+AMNT Corruption)
 KDRemoveCorruption,You feel a restoring influence! (-AMNT Corruption)
+KDAddLatexIntegration,Sticky latex fuses itself to your skin! (+AMNT LatexIntegration)
+KDRemoveLatexIntegration,The latex starts to detach from your skin... (-AMNT Latex Integration)
 
 tut_AccuracyClose1,"While you have an evasion penalty, even clumsy enemies..."
 tut_AccuracyClose2,"... will get an accuracy bonus against you in melee range."

@@ -1731,7 +1731,7 @@ let KinkyDungeonEnemies = [
 		outfit: "Cyborg",
 		style: "GreenHair",
 		bound: "Cyborg", color: "#95e892",
-		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "elite", "robot", "cyborg", "cyberdollrestraints", "cyberdollheavy", "controlharness", "handcuffer",
+		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "elite", "robot", "cyborg", "cyberdollrestraints", "cyberhogtie", "cyberdollheavy", "controlharness", "handcuffer",
 			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist", "guardian"]),
 		noDisplace: false, disarm: 0.5,
 		armor: 2,
@@ -1764,7 +1764,7 @@ let KinkyDungeonEnemies = [
 		outfit: "Cyborg",
 		style: "Bandit",
 		bound: "Cyborg", color: "#f0b541",
-		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "miniboss", "robot", "cyborg", "guardian", "cyberdollrestraints", "cyberdollheavy", "controlharness", "handcuffer",
+		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "miniboss", "robot", "cyborg", "guardian", "cyberhogtie", "cyberdollrestraints", "cyberdollheavy", "controlharness", "handcuffer",
 			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist"]),
 		noDisplace: false, disarm: 0.5,
 		spells: ["SummonForceFields", "RobotBolt"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true,
@@ -1796,7 +1796,7 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "CaptureBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#2a319c",
-		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "soapweakness", "melee", "electricsevereweakness", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "opendoors", "closedoors", "search"]),
+		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "soapweakness", "melee", "electricsevereweakness", "coldresist", "cyberhogtie", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "opendoors", "closedoors", "search"]),
 		AI: "patrol",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff5277"},
@@ -1918,7 +1918,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gunpowder", amountMin: 2, amountMax: 3, weight: 5, noSummon: true}, {name: "KeyCard", weight: 1}, {name: "AncientPowerSource", weight: 1, noSummon: true}]},
 	{name: "EnforcerBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#2a319c",
 		tags: KDMapInit(["leashing", "disarmresist", "robot", "ranged", "miniboss", "acidweakness", "soapweakness",
-			"bulwark", "electricsevereweakness", "unstoppable", "coldresist", "soulresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "search"]),
+			"bulwark", "electricsevereweakness", "unstoppable", "coldresist", "soulresist", "iceresist", "slashresist", "cyberhogtie", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "search"]),
 		AI: "guard", spellRdy: true, bypass: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#ff5277"},
@@ -1951,7 +1951,7 @@ let KinkyDungeonEnemies = [
 
 	{name: "EnforcerBotGuardian", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#2a319c",
 		tags: KDMapInit(["leashing", "disarmresist", "robot", "ranged", "miniboss", "acidweakness", "soapweakness",
-			"bulwark", "electricsevereweakness", "guardian", "unstoppable", "coldresist", "soulresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "search"]),
+			"bulwark", "electricsevereweakness", "guardian", "unstoppable", "coldresist", "soulresist", "iceresist", "cyberhogtie", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "search"]),
 		AI: "guard", spellRdy: true, bypass: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#e7cf1a"},

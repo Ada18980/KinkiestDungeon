@@ -1287,8 +1287,10 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 			KinkyDungeonSendEvent("postMapgen", {});
 
-			if (altType && altType.tickFlags)
+			if (altType && altType.tickFlags) {
 				KinkyDungeonSendEvent("tickFlags", {delta: 1});
+				KDTickSpecialStats();
+			}
 
 			KDQuestWorldgenStart(KDGameData.Quests);
 

@@ -579,7 +579,7 @@ function KDGetCurse(item) {
 function KDIsBinding(item) {
 	let r = KDRestraint(item);
 	if (r) {
-		return (!r.nonbinding && (
+		return !(!(!r.nonbinding && (
 			r.bindarms
 			|| r.bindhands
 			|| r.blindfold > 1
@@ -590,7 +590,7 @@ function KDIsBinding(item) {
 			|| r.hobble > 1
 			|| r.enclose
 			|| r.binding
-		)) == true;
+		)));
 	}
 	return false;
 }
@@ -3864,13 +3864,14 @@ let KinkyDungeonCancelFlag = false;
  * @param {item} [dynamicLink]
  * @param {string} [Curse] - Curse to apply
  * @param {boolean} [autoMessage] - Whether or not to automatically dispatch messages
+ * @param {boolean} [NoEvent]
  * @param {entity} [securityEnemy] - Whether or not to automatically dispatch messages
  * @param {string} [inventoryAs] - InventoryAs for the item
  * @param {number} [powerBonus] - bonus power
  * @param {Record<string, number>} [data] - data for the item
  * @returns
  */
-function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link, SwitchItems, events, faction, Unlink, dynamicLink, Curse, autoMessage = true, securityEnemy = undefined, inventoryAs = undefined, data, powerBonus = 0) {
+function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link, SwitchItems, events, faction, Unlink, dynamicLink, Curse, autoMessage = true, securityEnemy = undefined, inventoryAs = undefined, data, powerBonus = 0, NoEvent = false) {
 	KDDelayedActionPrune(["Restrain"]);
 	if (restraint.bypass) Bypass = true;
 	KDStruggleGroupLinkIndex = {};
@@ -3981,7 +3982,8 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 				KDRestraintDebugLog.push("Adding " + item.name);
 				KinkyDungeonInventoryAdd(item);
 				KDUpdateItemEventCache = true;
-				KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: item, host: undefined, keep: Keep, Link: Link, UnLink: Unlink});
+				if (!NoEvent)
+					KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: item, host: undefined, keep: Keep, Link: Link, UnLink: Unlink});
 
 				KDUpdateItemEventCache = true;
 				if (Curse && KDCurses[Curse] && KDCurses[Curse].onApply) {

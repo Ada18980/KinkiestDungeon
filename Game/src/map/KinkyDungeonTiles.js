@@ -900,9 +900,6 @@ function KDTickSpecialStats() {
 
 function KDAdvanceLevel(data, closeConnections = true) {
 	MiniGameKinkyDungeonLevel += data.AdvanceAmount;
-	if (data.AdvanceAmount) {
-		KDTickSpecialStats();
-	}
 	let currentSlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
 
 	if (KDGameData.JourneyTarget) {

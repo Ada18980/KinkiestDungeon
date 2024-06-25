@@ -713,7 +713,7 @@ function KinkyDungeonSendDialogue(entity, dialogue, color, duration, priority, f
 		entity.dialoguePriority = priority;
 		if (!entity.player) {
 			KDEnemyAddSound(entity, 12);
-			if (KDCanHearEnemy(KDPlayer(), entity) || KDCanSeeEnemy(entity)) {
+			if (dialogue && KDCanHearEnemy(KDPlayer(), entity) || KDCanSeeEnemy(entity)) {
 				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${dialogue}`, color, 0, false, false, entity, "Dialogue");
 			}
 			KDAllowDialogue = false;
@@ -1901,9 +1901,9 @@ let KinkyDungeonPlaySelfOrgasmThreshold = 3; // Note that it is impossible if yo
 
 let KinkyDungeonOrgasmTurnsMax = 10;
 let KinkyDungeonOrgasmTurnsCrave = 8;
-let KinkyDungeonPlayWithSelfPowerMin = 1.5;
-let KinkyDungeonPlayWithSelfPowerMax = 2.5;
-let KDDesireScalingOrgasmPower = 2.5;
+let KinkyDungeonPlayWithSelfPowerMin = 2.5;
+let KinkyDungeonPlayWithSelfPowerMax = 3.5;
+let KDDesireScalingOrgasmPower = 1.5;
 let KinkyDungeonPlayWithSelfPowerVibeWand = 4;
 let KinkyDungeonPlayWithSelfChastityPenalty = 2.5/1.2;
 let KinkyDungeonPlayWithSelfBoundPenalty = 2.0;
@@ -1953,7 +1953,7 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 	amount += playSelfAmount;
 	//}
 	let msg = "KinkyDungeonOrgasm";
-	let msgTime = KinkyDungeonOrgasmStunTime+3;
+	let msgTime = KinkyDungeonOrgasmStunTime+10;
 
 
 	let data = {

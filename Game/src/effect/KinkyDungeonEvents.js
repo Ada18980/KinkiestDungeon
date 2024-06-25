@@ -703,13 +703,17 @@ let KDEventMapInventory = {
 			}
 		},
 		"tetherDamage": (e, item, data) => {
-			if (['electric'].includes(KDDamageEquivalencies[data.type] || data.type) && data.dmg > 0) {
+			if (['electric'].includes(KDDamageEquivalencies[data.type] || data.type) && data.dmg > (e.subMult || 0)) {
 				let alreadyDone = KDItemDataQuery(item, "tetherDamage") || 0;
 				if (alreadyDone < e.count) {
-					alreadyDone += e.mult * data.dmg;
+					alreadyDone += e.mult * (data.dmg - (e.subMult || 0));
 					KDItemDataSet(item, "tetherDamage", alreadyDone);
 					KinkyDungeonSendTextMessage(4, TextGet("KDDamageTetherProgress").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
 				} else {
+					KDCreateEffectTile(KDPlayer().x, KDPlayer().y, {
+						name: "Sparks",
+						duration: 2,
+					}, 2);
 					KDRemoveThisItem(item);
 					KinkyDungeonSendTextMessage(4, TextGet("KDDamageTether").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
 				}
@@ -974,6 +978,13 @@ let KDEventMapInventory = {
 				}, 8);
 				KDRemoveThisItem(item);
 				KinkyDungeonSendTextMessage(4, TextGet("KDIceMelt").replace("RestraintName", TextGet("Restraint"+item.name)), "#88ff88", 2);
+			}
+		},
+		"tetherRegen": (e, item, data) => {
+			let alreadyDone = KDItemDataQuery(item, "tetherDamage") || 0;
+			if (alreadyDone > e.count) {
+				alreadyDone = Math.max(0, alreadyDone - e.power);
+				KDItemDataSet(item, "tetherDamage", alreadyDone);
 			}
 		},
 		"AntiMagicGag": (e, item, data) => {
@@ -1456,7 +1467,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"RequireHogtie": (e, item, data) => {
-			if (data.item !== item && KDRestraint(item).Group) {
+			if (!data.add && data.item !== item && KDRestraint(item).Group) {
 				let upper = false;
 				let lower = false;
 				for (let inv of KinkyDungeonAllRestraint()) {
@@ -1501,7 +1512,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"RequireBaseArmCuffs": (e, item, data) => {
-			if (data.item !== item && KDRestraint(item).Group) {
+			if (!data.add && data.item !== item && KDRestraint(item).Group) {
 				let cuffsbase = false;
 				for (let inv of KinkyDungeonAllRestraint()) {
 					if (KDRestraint(inv).shrine && (KDRestraint(inv).shrine.includes("ArmCuffsBase"))) {
@@ -1527,7 +1538,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"RequireTag": (e, item, data) => {
-			if (data.item !== item && KDRestraint(item).Group) {
+			if (!data.add && data.item !== item && KDRestraint(item).Group) {
 				let cuffsbase = false;
 				for (let inv of KinkyDungeonAllRestraint()) {
 					if (KDRestraint(inv).shrine && (KDRestraint(inv).shrine.includes(e.requiredTag))) {
@@ -1553,7 +1564,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"RequireCollar": (e, item, data) => {
-			if (data.item !== item && KDRestraint(item).Group) {
+			if (!data.add && data.item !== item && KDRestraint(item).Group) {
 				let collar = false;
 				if (KinkyDungeonPlayerTags.get("Collars")) collar = true;
 				if (!collar) {
@@ -1562,7 +1573,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"RequireBaseAnkleCuffs": (e, item, data) => {
-			if (data.item !== item && KDRestraint(item).Group) {
+			if (!data.add && data.item !== item && KDRestraint(item).Group) {
 				let cuffsbase = false;
 				for (let inv of KinkyDungeonAllRestraint()) {
 					if (KDRestraint(inv).shrine && (KDRestraint(inv).shrine.includes("AnkleCuffsBase"))) {
@@ -1588,7 +1599,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"RequireBaseLegCuffs": (e, item, data) => {
-			if (data.item !== item && KDRestraint(item).Group) {
+			if (!data.add && data.item !== item && KDRestraint(item).Group) {
 				let cuffsbase = false;
 				for (let inv of KinkyDungeonAllRestraint()) {
 					if (KDRestraint(inv).shrine && (KDRestraint(inv).shrine.includes("LegCuffsBase"))) {
@@ -1614,7 +1625,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"collarModule": (e, item, data) => {
-			if (data.item !== item && KDRestraint(item).Group) {
+			if (!data.add && data.item !== item && KDRestraint(item).Group) {
 				let collar = false;
 				for (let inv of KinkyDungeonAllRestraint()) {
 					if (KDRestraint(inv).shrine && (KDRestraint(inv).shrine.includes("Collars"))) {
@@ -1640,7 +1651,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"armbinderHarness": (e, item, data) => {
-			if (data.item !== item && KDRestraint(item).Group) {
+			if (!data.add && data.item !== item && KDRestraint(item).Group) {
 				let armbinder = false;
 				for (let inv of KinkyDungeonAllRestraint()) {
 					if (KDRestraint(inv).shrine && (KDRestraint(inv).shrine.includes("Armbinders") || KDRestraint(inv).shrine.includes("Boxbinders"))) {
@@ -2313,6 +2324,32 @@ let KDEventMapInventory = {
 				if (e.sfx) KinkyDungeonPlaySound(`${KinkyDungeonRootDirectory}/Audio/${e.sfx}.ogg`);
 			}
 
+		},
+		"RemoteControlHarness": (e, item, data) => {
+			const enemy = data.enemy;
+			if (KDRandom() >= (enemy.Enemy.RemoteControl?.punishRemoteChance || 0.1) || (e.noLeash && KDGameData.KinkyDungeonLeashedPlayer >= 1)) {
+				return;
+			}
+
+			if (e.sfx) KinkyDungeonPlaySound(`${KinkyDungeonRootDirectory}/Audio/${e.sfx}.ogg`);
+
+			let category = KDControlHarnessCategories[e.kind];
+
+			if (category) {
+				category.activateFunction(e, item, data);
+			}
+
+			if (e.enemyDialogue) {
+				const dialogue = KinkyDungeonGetTextForEnemy(e.enemyDialogue, enemy);
+				KinkyDungeonSendDialogue(enemy, dialogue, KDGetColor(enemy), 2, 4);
+			}
+
+			if (e.msg) {
+				const msg = TextGet(e.msg)
+					.replace("RestraintName", TextGet(`Restraint${item.name}`))
+					.replace("EnemyName", TextGet(`Name${enemy.Enemy.name}`));
+				KinkyDungeonSendTextMessage(5, msg, "#ff8933", 2);
+			}
 		},
 		"RemoteLinkItem": (e, item, data) => {
 			const enemy = data.enemy;

@@ -1210,6 +1210,65 @@ let KDExpressions = {
 			};
 		},
 	},
+	"HeadpatSub": {
+		priority: 12,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("headpat") && KinkyDungeonGoddessRep.Ghost > 15) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesClosed",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "BrowsAngry",
+				Brows2Pose: "Brows2Angry",
+				BlushPose: "BlushExtreme",
+				MouthPose: "MouthSmile",
+			};
+		},
+	},
+	"HeadpatDom": {
+		priority: 12,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("headpat") && KinkyDungeonGoddessRep.Ghost < -30) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "EyesAngry",
+				Eyes2Pose: "Eyes2Angry",
+				BrowsPose: "BrowsAngry",
+				Brows2Pose: "Brows2Angry",
+				BlushPose: "",
+				MouthPose: "MouthFrown",
+			};
+		},
+	},
+	"Headpat": {
+		priority: 12,
+		criteria: (C) => {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("headpat") && KinkyDungeonGoddessRep.Ghost <= 15 && KinkyDungeonGoddessRep.Ghost >= -30) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "Eyes2Closed",
+				BrowsPose: "",
+				Brows2Pose: "Brows2Angry",
+				BlushPose: "BlushHigh",
+				MouthPose: "",
+			};
+		},
+	},
+
+
 	"OrgDenied": {
 		priority: 8,
 		criteria: (C) => {

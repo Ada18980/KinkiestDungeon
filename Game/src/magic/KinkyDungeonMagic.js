@@ -2179,9 +2179,9 @@ function KinkyDungeonSendMagicEvent(Event, data, forceSpell) {
 		}
 		if (KDEventSpells.get(Event))
 			for (let spell of KDEventSpells.get(Event).keys()) {
-				if ((spell.passive) && spell.events) {
+				if ((spell.passive || spell.mixedPassive) && spell.events) {
 					for (let e of spell.events) {
-						if (e.trigger == Event) {
+						if (e.trigger == Event && (spell.passive || e.always)) {
 							if (iteration == (e.delayedOrder ? e.delayedOrder : 0)) {
 								KinkyDungeonHandleMagicEvent(Event, e, spell, data);
 							} else {

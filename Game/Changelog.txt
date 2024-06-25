@@ -33,6 +33,10 @@ TODO:
 - Fixed some cases of linking not working properly
 - Added Cyber Link
 - Added cyber mitt artwork and added shorter cyber mitts item
+- Being headpatted now affects your facial expression
+- Enemies like the Cyber Warden can remotely link your cyber cuffs
+- Control harness now applies heels and mitts when placed in a full set of cyber cuffs
+- Tweaked orgasm power increase from desire
 
 5.3.21
 - Upgraded the layering system to allow for even tighter item combinations (and getting rid of low level items to replace with more strong items)
