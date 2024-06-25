@@ -1232,7 +1232,7 @@ let KDExpressions = {
 	"HeadpatSub": {
 		priority: 12,
 		criteria: (C) => {
-			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("headpat") && KinkyDungeonGoddessRep.Ghost > 15) {
+			if (C == KinkyDungeonPlayer && ((KinkyDungeonFlags.get("headpat") && KinkyDungeonGoddessRep.Ghost > 15) || KinkyDungeonFlags.get("soft"))) {
 				return true;
 			}
 			return false;
@@ -1327,7 +1327,7 @@ let KDExpressions = {
 	"Grope": {
 		priority: 4,
 		criteria: (C) => {
-			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("spank")) {
+			if (C == KinkyDungeonPlayer && KinkyDungeonFlags.get("grope")) {
 				return true;
 			}
 			return false;

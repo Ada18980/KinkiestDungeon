@@ -505,6 +505,8 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 			KinkyDungeonSetFlag("headpat", 2);
 		} else if (data.type == "psychic") {
 			KinkyDungeonSetFlag("psychic", 2);
+		} else if (data.type == "plush") {
+			KinkyDungeonSetFlag("soft", 2);
 		} else {
 			KinkyDungeonSetFlag("grope", 3);
 		}
