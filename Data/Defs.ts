@@ -1849,6 +1849,12 @@ let Hardpoints = {
 		Y: 1790,
 		Angle: Math.PI*1.5,
 	},
+	Mouth: {
+		Parent: "Head",
+		X: 1227,
+		Y: 690,
+		Angle: 0,
+	},
 	Rear: {
 		Parent: "Torso",
 		X: 1127,

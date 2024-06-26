@@ -2990,6 +2990,42 @@ type KDParticleData = {
 	scale_delta?: number,
 
 	rotation?: number,
+	rotation_spread?: number,
+
+	vy?: number,
+	vy_spread?: number,
+	vx?: number,
+	vx_spread?: number,
+	sin_period?: number,
+	sin_period_spread?: number,
+	sin_x?: number,
+	sin_x_spread?: number,
+	sin_y?: number,
+	sin_y_spread?: number,
+	/** Lifetime in ms */
+	lifetime: number,
+	lifetime_spread?: number,
+}
+
+type KDParticleEmitterData = {
+	rate: number,
+	cd: number,
+
+	camX?: number,
+	camY?: number,
+
+	zIndex: number,
+	fadeEase?: string,
+	time: number,
+	phase?: number,
+
+	scale?: number,
+	scale_delta?: number,
+
+	rotation?: number,
+	rotation_spread?: number,
+
+	noFace?: boolean,
 
 	vy?: number,
 	vy_spread?: number,

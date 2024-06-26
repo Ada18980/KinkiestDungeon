@@ -733,9 +733,11 @@ function KinkyDungeonSendDialogue(entity, dialogue, color, duration, priority, f
 			entity.dialogueDuration = 4;
 			entity.dialoguePriority = 1;
 			if (dialogue && KDCanHearEnemy(KDPlayer(), entity) || KDCanSeeEnemy(entity)) {
-				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${dialogue}`, color, 0, false, false, entity, "Dialogue");
+				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${entity.dialogue}`, color, 0, false, false, entity, "Dialogue");
 			}
 			KDEnemyAddSound(entity, 7);
+			if (KDRandom() < 0.5)
+				KDSendGagParticles(entity);
 		}
 		return;
 	}
@@ -747,7 +749,7 @@ function KinkyDungeonSendDialogue(entity, dialogue, color, duration, priority, f
 		if (!entity.player) {
 			KDEnemyAddSound(entity, 12);
 			if (dialogue && KDCanHearEnemy(KDPlayer(), entity) || KDCanSeeEnemy(entity)) {
-				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${dialogue}`, color, 0, false, false, entity, "Dialogue");
+				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${entity.dialogue}`, color, 0, false, false, entity, "Dialogue");
 			}
 			KDAllowDialogue = false;
 		}
@@ -1921,8 +1923,8 @@ function KinkyDungeonDoPlayWithSelf(tease) {
 /** Percentage of vibe level that is turned into playSelfPower to try to have an orgasm*/
 let KinkyDungeonOrgasmVibeLevelPlayPowerMult = 1.0;
 let KinkyDungeonOrgasmChanceBase = -0.5;
-let KinkyDungeonOrgasmChanceScaling = 0.6;
-let KinkyDungeonOrgasmChanceScalingDesire = 1.0;
+let KinkyDungeonOrgasmChanceScaling = 1.5;
+//let KinkyDungeonOrgasmChanceScalingDesire = 0.5;
 let KinkyDungeonMaxOrgasmStage = 7;
 let KinkyDungeonOrgasmStageVariation = 4; // determines the text message variation
 
@@ -1975,7 +1977,7 @@ function KDGetPlaySelfThreshold() {
 function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 	let chance = KinkyDungeonOrgasmChanceBase
 		+ KinkyDungeonOrgasmChanceScaling*(KDGameData.OrgasmTurns/KinkyDungeonOrgasmTurnsMax)
-		+ KinkyDungeonOrgasmChanceScalingDesire*(KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap / KinkyDungeonStatDistractionMax);
+		* (KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap / KinkyDungeonStatDistractionMax)**2;
 	let denied = KinkyDungeonVibratorsDeny(chance);
 
 	let amount = denied ? 0 : KinkyDungeonOrgasmVibeLevel * KinkyDungeonOrgasmVibeLevelPlayPowerMult;

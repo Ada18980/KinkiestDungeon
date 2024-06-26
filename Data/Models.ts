@@ -1377,6 +1377,17 @@ function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number = 
 		layer = LayerProperties[layer]?.Parent;
 	}
 
+	// Move the hardpoint
+	transform = transform.recursiveTransform(
+		hp.X,
+		hp.Y,
+		0,
+		0,
+		1,
+		1,
+		0,
+	);
+
 	let ox = transform.ox;
 	let oy = transform.oy;
 	let ax = transform.ax;
@@ -1386,13 +1397,13 @@ function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number = 
 	let rot = transform.rot;
 
 
-	pos.x += ox * Zoom;
-	pos.y += oy * Zoom;
+	pos.x = ox * Zoom;
+	pos.y = oy * Zoom;
 	pos.angle += rot;
-    pos.x -= (ax - (hp.OffsetX / MODELWIDTH || 0)) * Math.cos(rot);
-    pos.y += (ax - (hp.OffsetX / MODELWIDTH || 0)) * Math.sin(rot);
-    pos.x -= (ay - (hp.OffsetY / MODELHEIGHT || 0)) * Math.sin(rot);
-    pos.y -= (ay - (hp.OffsetY / MODELHEIGHT || 0)) * Math.cos(rot);
+    pos.x -= (ax - (hp.OffsetX / MODELWIDTH || 0)) * Math.cos(rot) * Zoom;
+    pos.y += (ax - (hp.OffsetX / MODELWIDTH || 0)) * Math.sin(rot) * Zoom;
+    pos.x -= (ay - (hp.OffsetY / MODELHEIGHT || 0)) * Math.sin(rot) * Zoom;
+    pos.y -= (ay - (hp.OffsetY / MODELHEIGHT || 0)) * Math.cos(rot) * Zoom;
     let { X_Offset, Y_Offset } = ModelGetPoseOffsets(MC.Poses, Flip);
     let { rotation, X_Anchor, Y_Anchor } = ModelGetPoseRotation(MC.Poses);
     let pivotx = MODELHEIGHT*0.5 * Zoom * X_Anchor;
@@ -1403,13 +1414,18 @@ function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number = 
     pos.x = pivotx + (lx) * Math.cos(angle) - (ly) * Math.sin(angle);
     pos.y = pivoty + (ly) * Math.cos(angle) + (lx) * Math.sin(angle);
 
+	pos.angle += angle;
+
     let xx = (MODELWIDTH * X_Offset) * Zoom + MODEL_XOFFSET*Zoom;
     let yy = (MODELHEIGHT * Y_Offset) * Zoom;
 
 	pos.x += xx;
 	pos.y += yy;
 
-	if (Flip) pos.x = (0.5 * MODELHEIGHT) * Zoom - pos.x;
+	if (Flip) {
+		pos.x = (0.5 * MODELHEIGHT) * Zoom - pos.x;
+		pos.angle = Math.PI - pos.angle;
+	}
 	return pos;
 }
 

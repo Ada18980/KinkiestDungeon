@@ -65,6 +65,7 @@ KDToggleStunFlash,Flash Screen on Stun
 KDToggleParticlesFX,Map Particles
 KDToggleArousalHearts,Distraction Particles
 KDToggleVibeHearts,Vibration Particles
+KDToggleGagParticles,Gag Particle FX
 KDToggleShowNPCStatuses,Show NPC Status
 KDToggleShowSpellRange,Show Spell Range
 KDToggleFancyWalls,Trim Edge Walls

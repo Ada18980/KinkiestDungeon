@@ -5055,6 +5055,10 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 		msg = msg + gagMsg;
 
 		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), "#ffffff", 2, 0);
+
+		if (KDToggles.GagParticles) {
+			KDSendGagParticles(KDPlayer());
+		}
 	}
 	let end = performance.now();
 	if (KDDebug) console.log(`Tick ${KinkyDungeonCurrentTick} took ${(end - start)} milliseconds.`);

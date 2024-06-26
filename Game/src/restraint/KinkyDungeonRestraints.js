@@ -113,7 +113,8 @@ function KDRestraintPowerMult(player, restraint, augmentedInventory) {
 	let relatedRestraints = [];
 	let opposedRestraints = [];
 	let mult = 1.0;
-	for (let r of KinkyDungeonAllRestraint()) {
+	for (let rr of KinkyDungeonAllRestraintDynamic()) {
+		let r = rr.item;
 		if (keyProperties.some((element) => {
 			return KDRestraint(r).shrine.includes(element);
 		})) {
@@ -1292,8 +1293,8 @@ function KinkyDungeonCanUseFeetLoose(bootsPrevent = true) {
 function KinkyDungeonIsArmsBound(ApplyGhost, Other) {
 	let blocked = KDGroupBlocked("ItemArms");
 	if (!blocked)
-		for (let inv of KinkyDungeonAllRestraint()) {
-			if (KDRestraint(inv).bindarms) {
+		for (let inv of KinkyDungeonAllRestraintDynamic()) {
+			if (KDRestraint(inv.item).bindarms) {
 				blocked = true;
 				break;
 			}
@@ -1327,8 +1328,8 @@ function KinkyDungeonIsArmsBoundC(C, ApplyGhost, Other) {
 function KinkyDungeonStrictness(ApplyGhost, Group, excludeItem) {
 	if (ApplyGhost && (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())) return 0;
 	let strictness = 0;
-	for (let invItem of KinkyDungeonAllRestraint()) {
-		let inv = invItem;
+	for (let invItem of KinkyDungeonAllRestraintDynamic()) {
+		let inv = invItem.item;
 		while (inv && (!excludeItem || KDRestraint(inv).Group != Group)) {
 			if (inv != excludeItem && ((KDRestraint(inv).strictness && KDRestraint(inv).strictness > strictness)))  {
 				let strictGroups = KDRestraint(inv).strictnessZones || KinkyDungeonStrictnessTable.get(KDRestraint(inv).Group);
@@ -1390,8 +1391,8 @@ function KinkyDungeonStrictness(ApplyGhost, Group, excludeItem) {
  */
 function KinkyDungeonGetStrictnessItems(Group, excludeItem) {
 	let list = [];
-	for (let invItem of KinkyDungeonAllRestraint()) {
-		let inv = invItem;
+	for (let invItem of KinkyDungeonAllRestraintDynamic()) {
+		let inv = invItem.item;
 		while (inv) {
 			if (inv != excludeItem && KDRestraint(inv).strictness)  {
 				let strictGroups = KDRestraint(inv).strictnessZones || KinkyDungeonStrictnessTable.get(KDRestraint(inv).Group);
@@ -3722,6 +3723,7 @@ function KinkyDungeonAddRestraintIfWeaker(restraint, Tightness, Bypass, Lock, Ke
 			msg = msg + gagMsg;
 
 			KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), "#ffffff", 5, 3);
+			KDSendGagParticles(KDPlayer());
 		}
 		return ret;
 	}
@@ -4326,7 +4328,8 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover, Fo
 function KinkyDungeonRestraintTypes(ShrineFilter) {
 	let ret = [];
 
-	for (let inv of KinkyDungeonAllRestraint()) {
+	for (let invItem of KinkyDungeonAllRestraintDynamic()) {
+		let inv = invItem.item;
 		if (KDRestraint(inv).shrine) {
 			for (let shrine of KDRestraint(inv).shrine) {
 				if (ShrineFilter.includes(shrine) && !ret.includes(shrine)) ret.push(shrine);
