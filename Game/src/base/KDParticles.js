@@ -340,7 +340,8 @@ function KDSendGagParticles(entity) {
 
 
 
-	} else if (entity) {
+	}
+	if (entity) {
 		// Enemy
 		let x = (entity.x - KinkyDungeonCamX + 0.5) * KinkyDungeonGridSizeDisplay;
 		let y = (entity.y - KinkyDungeonCamY + 0.5) * KinkyDungeonGridSizeDisplay;

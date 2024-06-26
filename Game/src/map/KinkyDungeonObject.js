@@ -59,6 +59,14 @@ let KDObjectInteract = {
 				KDStartDialog("DollDropoff", "", true);
 			}
 	},
+	"Furniture": (x, y) => {
+		if (KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5)
+			if (!KinkyDungeonGetRestraintItem("ItemDevices")) {
+				KDGameData.InteractTargetX = x;
+				KDGameData.InteractTargetY = y;
+				KDStartDialog("Furniture", "", true);
+			}
+	},
 	"Door": (x, y) => {
 		if (KinkyDungeonMapGet(x, y) == 'D') {
 			KDAttemptDoor(x, y);

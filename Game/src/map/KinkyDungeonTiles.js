@@ -893,7 +893,8 @@ function KDTickSpecialStats() {
 	let player = KDPlayer();
 	for (let stat of Object.entries(KDSpecialStats)) {
 		let buff = KDEntityGetBuff(player, stat[0] + "Stat");
-		KDAddSpecialStat(stat[0], KDPlayer(), -stat[1].PerFloor(player, buff?.power || 0), true, 100);
+		if (buff?.power > 0)
+			KDAddSpecialStat(stat[0], KDPlayer(), -Math.min(buff.power, stat[1].PerFloor(player, buff?.power || 0)), true, 100);
 	}
 	KDGameData.LockoutChance = 0;
 }

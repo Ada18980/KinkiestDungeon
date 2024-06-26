@@ -29,6 +29,13 @@ TODO:
 - Aggro level
 
 5.3.22
+- You can lock yourself inside of furniture
+- Added some gag particles to player and enemy
+
+5.3.21
+- Upgraded the layering system to allow for even tighter item combinations (and getting rid of low level items to replace with more strong items)
+- More scenery now appears in various tiles, and added a few new temple tile variations
+- Made it possible to put your own runes on top of enemy runes. Have fun :)
 - Having an orgasm is easier the more desire you have, and the effects last longer if you have more desire
 - Fixed some cases of linking not working properly
 - Added Cyber Link
@@ -37,11 +44,6 @@ TODO:
 - Enemies like the Cyber Warden can remotely link your cyber cuffs
 - Control harness now applies heels and mitts when placed in a full set of cyber cuffs
 - Tweaked orgasm power increase from desire
-
-5.3.21
-- Upgraded the layering system to allow for even tighter item combinations (and getting rid of low level items to replace with more strong items)
-- More scenery now appears in various tiles, and added a few new temple tile variations
-- Made it possible to put your own runes on top of enemy runes. Have fun :)
 
 5.3.20
 - You can now give release to distracted NPCs thru the flirting menu

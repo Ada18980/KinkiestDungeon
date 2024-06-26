@@ -939,6 +939,53 @@ let KDDialogue = {
 			},
 		}
 	},
+	"Furniture": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KinkyDungeonSetFlag("nobed", 8);
+			return false;
+		},
+		options: {
+			"Use": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+
+					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+					if (tile?.Furniture) {
+						KDMovePlayer(KDGameData.InteractTargetX, KDGameData.InteractTargetY, true);
+
+						let furn = KDFurniture[tile.Furniture];
+						if (furn) {
+							KinkyDungeonSetFlag("GuardCalled", 300);
+							let rest = KinkyDungeonGetRestraint(
+								{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
+								(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+								true,
+								"",
+								true,
+								false,
+								false);
+							KinkyDungeonAddRestraintIfWeaker(rest, KDGetEffLevel(), true);
+							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/LockHeavy.ogg");
+						}
+
+					}
+
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
 	"Elevator": {
 		response: "Default",
 		clickFunction: (gagged, player) => {
