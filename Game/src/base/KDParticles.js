@@ -140,7 +140,7 @@ function KDUpdateParticles(delta) {
 
 		sprite.anchor.set(0.5);
 
-		if (info.rotation && !sprite.rotation) sprite.rotation = info.rotation + (info.rotation_spread || 0) * (2 * KDRandom() - 1);
+		if ((info.rotation || info.rotation_spread) && !sprite.rotation) sprite.rotation = (info.rotation || 0) + (info.rotation_spread || 0) * (2 * KDRandom() - 1);
 
 		if (info.vy) {sprite.position.y += info.vy * delta;}
 		if (info.vx) {sprite.position.x += info.vx * delta;}
@@ -340,7 +340,7 @@ function KDSendGagParticles(entity) {
 
 
 
-	}
+	} else
 	if (entity) {
 		// Enemy
 		let x = (entity.x - KinkyDungeonCamX + 0.5) * KinkyDungeonGridSizeDisplay;
