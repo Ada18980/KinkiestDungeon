@@ -3043,6 +3043,7 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 			} else {
 				KinkyDungeonMapSet(trap.x, trap.y, 'T');
 				let t = KinkyDungeonGetTrap(traptypes, Floor, []);
+				if (!t) continue;
 				let tile = KinkyDungeonTilesGet(trap.x + "," + trap.y);
 				if (t.StepOffTrap) {
 					KinkyDungeonTilesSet(trap.x + "," + trap.y, {

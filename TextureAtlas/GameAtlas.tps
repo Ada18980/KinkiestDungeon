@@ -3766,6 +3766,22 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/Particles/mmm.png</key>
+            <key type="filename">../Game/Particles/nnn.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>13,13,25,25</rect>
+                <key>scale9Paddings</key>
+                <rect>13,13,25,25</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Game/Poses/BlushExtreme.png</key>
             <key type="filename">../Game/Poses/BlushHigh.png</key>
             <key type="filename">../Game/Poses/BlushLow.png</key>
