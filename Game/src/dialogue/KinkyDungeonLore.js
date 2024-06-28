@@ -141,7 +141,7 @@ function KinkyDungeonDrawLore() {
 	if (KDToggles.SpellBook) {
 		KDTextTan = KDTextTanSB;
 		KDBookText = KDBookTextSB;
-		KDDraw(kdcanvas, kdpixisprites, "magicbook", KinkyDungeonRootDirectory + "MagicBookNew.png", canvasOffsetX_ui - 100, canvasOffsetY_ui - 100, 640*KinkyDungeonLoreScale, 483*KinkyDungeonLoreScale);
+		KDDraw(kdcanvas, kdpixisprites, "magicbook", KinkyDungeonRootDirectory + "MagicBookNew.png", canvasOffsetX_ui - 100, canvasOffsetY_ui - 100, 640*KinkyDungeonLoreScale, 520*KinkyDungeonLoreScale);
 	} else {
 		KDTextTan = KDTextTanNew;
 		KDBookText = KDBookTextNew;

@@ -920,11 +920,13 @@ function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilt
 								handsBound: false,
 								armsBound: false,
 								query: true,
+								cutBonus: 0,
 								restraint: restraint,
 								struggleType: "Unlock",
 								struggleGroup: struggleGroup,
 								escapeChance: 0,
 								origEscapeChance: 0,
+								origLimitChance: 0.12,
 								limitChance: 0,
 								helpChance: 0,
 								cutSpeed: 0.25,
@@ -1003,7 +1005,7 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 			KDTextTan = KDTextTanSB;
 			KDBookText = KDBookTextSB;
 			KDDraw(kdcanvas, kdpixisprites, "magicBook",
-				KinkyDungeonRootDirectory + "MagicBookNew.png", xOffset + canvasOffsetX_ui, canvasOffsetY_ui, 640*KinkyDungeonBookScale, 483*KinkyDungeonBookScale, undefined, {
+				KinkyDungeonRootDirectory + "MagicBookNew.png", xOffset + canvasOffsetX_ui, canvasOffsetY_ui, 640*KinkyDungeonBookScale, 520*KinkyDungeonBookScale, undefined, {
 					zIndex: 128,
 				});
 		} else {

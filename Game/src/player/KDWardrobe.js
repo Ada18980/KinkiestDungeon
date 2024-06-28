@@ -182,7 +182,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 
 	let YY = Y;
 	let width = 300;
-	let layers = KDGetColorableLayers(Model);
+	let layers = KDGetColorableLayers(Model, KDPropsSlider);
 	if (!KDCurrentLayer) KDCurrentLayer = layers[0] || "";
 
 	if (KDPropsSlider) {
@@ -274,12 +274,14 @@ function KDDrawColorSliders(X, Y, C, Model) {
 			"YScale": 1,
 			"Rotation": 0,
 			"LayerBonus": 0,
+			"SuppressDynamic": 0,
 		};
 
 		if (KDRefreshProps) {
 			KDRefreshProps = false;
-			YY += 50 * Object.entries(fields).length;
-		} else
+			YY += 400;
+		} else {
+			let YYold = YY;
 			for (let field0 of Object.entries(fields)) {
 
 				let field = field0[0];
@@ -316,9 +318,10 @@ function KDDrawColorSliders(X, Y, C, Model) {
 
 
 
-				YY += 50;
+				YY += 40;
 			}
-
+			YY = YYold + 400;
+		}
 		YY += 70;
 
 	} else {
@@ -606,18 +609,59 @@ function KDDrawColorSliders(X, Y, C, Model) {
 
 
 	YY += 60;
-	YY = Y;
+	YY = Y + 35;
 
-	for (let l of layers) {
-		DrawButtonKDEx("SelectLayer" + l, (bdata) => {
-			KDCurrentLayer = l;
-			KDRefreshProps = true;
-			return true;
-		}, true, X - 220, YY, 200, 30, TextGet(`l_${Model.Name}_${l}`),
-		"#ffffff", undefined, undefined, undefined, KDCurrentLayer != l, KDButtonColor);
-		YY += 35;
+	let ii = 0;
+	let buttonSpacing = 30;
+	while (YY < 590) {
+		if (ii >= KDLayerIndex) {
+			let l = layers[ii];
+			DrawButtonKDExScroll("SelectLayer" + YY,
+				(amount) => {
+					KDLayerIndex += Math.min(5, Math.abs(amount)/35) * Math.sign(amount);
+					KDLayerIndex = Math.min(KDLayerIndex, layers.length - 10);
+					KDLayerIndex = Math.max(0, KDLayerIndex);
+				},
+				(bdata) => {
+					if (l) {
+						KDCurrentLayer = l;
+					}
+					KDRefreshProps = true;
+					return true;
+				}, true, X - 220, YY, 200, buttonSpacing - 1, l ? TextGet(`l_${Model.Name}_${l}`) : "",
+				"#ffffff", undefined, undefined, undefined, KDCurrentLayer != l, KDButtonColor);
+			YY += buttonSpacing;
+		}
+		ii += 1;
 	}
+	DrawButtonKDEx("SelectLayer_V", (bdata) => {
+		KDLayerIndex += 5;
+		KDLayerIndex = Math.min(KDLayerIndex, layers.length - 10);
+		KDLayerIndex = Math.max(0, KDLayerIndex);
+		return true;
+	}, true, X-220, 620, 200, buttonSpacing - 1,
+	"",
+	KDModelList_Toplevel_viewindex.index + KDModelListMax < KDModelList_Toplevel_viewindex.index ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Down.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
+
+	DrawButtonKDEx("SelectLayer_^", (bdata) => {
+		KDLayerIndex -= 5;
+		KDLayerIndex = Math.min(KDLayerIndex, layers.length - 10);
+		KDLayerIndex = Math.max(0, KDLayerIndex);
+		return true;
+	}, true, X-220, 100, 200, buttonSpacing - 1,
+	"",
+	KDModelList_Toplevel_viewindex.index > 0 ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
+
+	if (KDLayerIndex > layers.length - 10) KDLayerIndex = Math.max(0, layers.length - 10);
 }
+
+let KDLayerIndex = 0;
 
 function KDDrawPoseButtons(C, X = 960, Y = 750, allowRemove = false, dress = false, updateDesired = false) {
 	let buttonClick = (arms, legs, eyes, eyes2, brows, brows2, blush, mouth, update = true) => {
@@ -968,32 +1012,44 @@ function KDDrawModelList(X, C) {
 		KDModelList_Toplevel_viewindex.index += 5;
 		cullIndex();
 		return true;
-	}, true, X+220 + 20, 100 + buttonSpacing * KDModelListMax, 150, buttonHeight,
-	"v",
-	KDModelList_Toplevel_viewindex.index + KDModelListMax < KDModelList_Toplevel_viewindex.index ? "#ffffff" : "#888888", "");
+	}, true, X+220, 100 + buttonSpacing * KDModelListMax, 200, buttonHeight,
+	"",
+	KDModelList_Toplevel_viewindex.index + KDModelListMax < KDModelList_Toplevel_viewindex.index ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Down.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 
 	DrawButtonKDEx("KDModelList_Toplevel_^", (bdata) => {
 		KDModelList_Toplevel_viewindex.index -= 5;
 		cullIndex();
 		return true;
-	}, true, X+220 + 20, 100 + buttonSpacing * -1, 150, buttonHeight,
-	"^",
-	KDModelList_Toplevel_viewindex.index > 0 ? "#ffffff" : "#888888", "");
+	}, true, X+220, 100 + buttonSpacing * -1, 200, buttonHeight,
+	"",
+	KDModelList_Toplevel_viewindex.index > 0 ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 
 	DrawButtonKDEx("KDModelList_Sublevel_V", (bdata) => {
 		KDModelList_Sublevel_viewindex.index += 5;
 		cullIndex();
 		return true;
-	}, true, X+440 + 20, 100 + buttonSpacing * KDModelListMax, 150, buttonHeight,
-	"v",
-	KDModelList_Sublevel_viewindex.index + KDModelListMax < KDModelList_Sublevel_viewindex.index ? "#ffffff" : "#888888", "");
+	}, true, X+440, 100 + buttonSpacing * KDModelListMax, 200, buttonHeight,
+	"",
+	KDModelList_Sublevel_viewindex.index + KDModelListMax < KDModelList_Sublevel_viewindex.index ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Down.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 	DrawButtonKDEx("KDModelList_Sublevel_^", (bdata) => {
 		KDModelList_Sublevel_viewindex.index -= 5;
 		cullIndex();
 		return true;
-	}, true, X+440 + 20, 100 + buttonSpacing * -1, 150, buttonHeight,
-	"^",
-	KDModelList_Sublevel_viewindex.index > 0 ? "#ffffff" : "#888888", "");
+	}, true, X+440, 100 + buttonSpacing * -1, 200, buttonHeight,
+	"",
+	KDModelList_Sublevel_viewindex.index > 0 ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 
 
 
@@ -1001,16 +1057,22 @@ function KDDrawModelList(X, C) {
 		KDModelList_Categories_viewindex.index += 5;
 		cullIndex();
 		return true;
-	}, true, X+0 + 20, 100 + buttonSpacing * KDModelListMax, 150, buttonHeight,
-	"v",
-	(KDModelList_Categories_viewindex.index + KDModelListMax < KDModelList_Categories_viewindex.index) ? "#ffffff" : "#888888", "");
+	}, true, X+0, 100 + buttonSpacing * KDModelListMax, 200, buttonHeight,
+	"",
+	(KDModelList_Categories_viewindex.index + KDModelListMax < KDModelList_Categories_viewindex.index) ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Down.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 	DrawButtonKDEx("KDModelList_Categories_^", (bdata) => {
 		KDModelList_Categories_viewindex.index -= 5;
 		cullIndex();
 		return true;
-	}, true, X+0 + 20, 100 + buttonSpacing * -1, 150, buttonHeight,
-	"^",
-	KDModelList_Categories_viewindex.index > 0 ? "#ffffff" : "#888888", "");
+	}, true, X+0, 100 + buttonSpacing * -1, 200, buttonHeight,
+	"",
+	KDModelList_Categories_viewindex.index > 0 ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 
 
 	cullIndex();
@@ -1105,17 +1167,23 @@ function KDDrawWardrobe(screen, Character) {
 		KDMaxOutfitsIndex += 3;
 		if (KDMaxOutfitsIndex > KDMaxOutfits-9) KDMaxOutfitsIndex = Math.floor(KDMaxOutfits-9);
 		return true;
-	}, true, 500, 110 + 50 * (1 + KDMaxOutfitsDisplay), 150, 45,
-	"v",
-	KDModelList_Toplevel_viewindex.index + KDModelListMax < KDModelList_Toplevel_viewindex.index ? "#ffffff" : "#888888", "");
+	}, true, 475, 110 + 50 * (1 + KDMaxOutfitsDisplay), 200, 45,
+	"",
+	KDModelList_Toplevel_viewindex.index + KDModelListMax < KDModelList_Toplevel_viewindex.index ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Down.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 
 	DrawButtonKDEx("KDOutfitSaved_^^", (bdata) => {
 		KDMaxOutfitsIndex -= 3;
 		if (KDMaxOutfitsIndex < 0) KDMaxOutfitsIndex = 0;
 		return true;
-	}, true, 500, 90, 150, 45,
-	"^",
-	KDModelList_Toplevel_viewindex.index > 0 ? "#ffffff" : "#888888", "");
+	}, true, 475, 90, 200, 45,
+	"",
+	KDModelList_Toplevel_viewindex.index > 0 ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 
 	for (let i = 0; i < KDOutfitInfo.length && i < KDMaxOutfitsDisplay; i++) {
 		let index = i + KDMaxOutfitsIndex;

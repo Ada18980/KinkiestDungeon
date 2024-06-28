@@ -4531,7 +4531,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "FabricGreen", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
 		],
 		visionRadius: 10, maxhp: 34, minLevel: 0, weight:-11, movePoints: 4, attackPoints: 3, attack: "SpellMeleePull", attackWidth: 1.5, attackMinRange: 1.5, attackRange: 6, power: 4, pullDist: 4, pullTowardSelf: true, dmgType: "charm",
-		terrainTags: {"secondhalf":16, "lastthird":5, "boss": -80, "open": 20, "passage": -60, "increasingWeight":1}, floors: KDMapInit(["tmb"]), shrines: [],
+		terrainTags: {"secondhalf":16, "lastthird":5, "boss": -10, "open": 20, "passage": -60, "increasingWeight":1}, floors: KDMapInit(["tmb"]), shrines: [],
 		dropTable: [{name: "Gold", amountMin: 40, amountMax: 50, weight: 12}],
 	},
 	{name: "SarcoMinion", faction: "KinkyConstruct", color: "#99ff99", tags: KDMapInit(["construct", "nosignal", "poisonresist", "soulimmune", "melee", "fireweakness", "minor", "slashweakness", "chainresist", "sarcotentacle", "mummyRestraints"]),

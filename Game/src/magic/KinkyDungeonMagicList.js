@@ -108,7 +108,7 @@ let KinkyDungeonLearnableSpells = [
 	// Class specific
 	[
 		[
-			"Bondage", "ZeroResistance",
+			"Bondage", "ZeroResistance", "DesperateStruggle",
 			"BattleRhythm", "ManaRegen", "Peasant", "RogueTargets", "DistractionCast",
 			"Offhand", "RogueOffhand", "WizardOffhand", "UnconventionalWarfare", "GuerillaFighting",
 
@@ -280,7 +280,13 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			],
 			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
 
-
+		{name: "DesperateStruggle", tags: ["will", "utility"], school: "Any",
+			spellPointCost: 1,
+			customCost: "DesperateStruggle",
+			manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "DesperateStruggle", trigger: "toggleSpell", power: 0.5, dist: 7, time: 3, cost: 2},
+			]},
 
 		{name: "SPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "WPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
@@ -3793,6 +3799,10 @@ let KDCustomCost = {
 		data.cost = "50WP";
 		data.color = "#ff5555";
 	},
+	"DesperateStruggle": (data) => {
+		data.cost = "20WP";
+		data.color = "#ff5555";
+	},
 	"stamina": (data) => {
 		data.cost = Math.round(10 * KinkyDungeonGetStaminaCost(data.spell)) + "SP";
 		data.color = "#88ff88";
@@ -3812,6 +3822,7 @@ let KDCustomCost = {
 		data.cost = Math.round(10 * KDEvasiveManeuversCost()) + "SP";
 		data.color = "#88ff88";
 	},
+
 	"Enrage": (data) => {
 		if (KinkyDungeonFlags.get("Enraged")) {
 			data.cost = Math.round(KinkyDungeonFlags.get("Enraged")) + " " + TextGet("KDTurns");

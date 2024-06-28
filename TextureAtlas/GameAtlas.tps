@@ -2282,6 +2282,7 @@
             <key type="filename">../Game/Spells/Crackle.png</key>
             <key type="filename">../Game/Spells/Dagger.png</key>
             <key type="filename">../Game/Spells/Decoy.png</key>
+            <key type="filename">../Game/Spells/DesperateStruggle.png</key>
             <key type="filename">../Game/Spells/DisplayStand.png</key>
             <key type="filename">../Game/Spells/DistractionBurst.png</key>
             <key type="filename">../Game/Spells/DistractionShield.png</key>

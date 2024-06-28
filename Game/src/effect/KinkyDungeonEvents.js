@@ -5341,6 +5341,67 @@ let KDEventMapSpell = {
 
 			}
 		},
+		"DesperateStruggle": (e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+
+				let player = KinkyDungeonPlayerEntity;
+				if (KinkyDungeonHasWill(e.cost) && KinkyDungeonStatWill > 0.251 * KinkyDungeonStatWillMax) {
+					let eligibleRestraints = [];
+
+					for (let inv of KinkyDungeonAllRestraintDynamic()) {
+						let item = inv.item;
+						if (!KDGetCurse(item) && item.struggleProgress > 0 && (item.struggleProgress < 0.9 || item.tightness > 0)) {
+							/**
+							 * @type {KDStruggleData}
+							 */
+							// @ts-ignore
+							let struggleData = {};
+							KinkyDungeonStruggle(KDRestraint(item).Group, "Struggle", KDGetItemLinkIndex(item), true, struggleData);
+
+							if (struggleData.escapeChance > 0) {
+								eligibleRestraints.push({
+									item: item,
+									escapeChance: struggleData.escapeChance,
+									limitChance: struggleData.limitChance,
+								});
+							}
+						}
+					}
+
+					if (eligibleRestraints.length > 0) {
+						for (let item of eligibleRestraints) {
+							let inv = item.item;
+
+							if (inv.struggleProgress < 0.9) {
+								let potential = 0.08 * Math.max(0.9 - (inv.struggleProgress));
+								inv.struggleProgress = Math.min(0.9, Math.max(0, inv.struggleProgress + potential * (0.5 / eligibleRestraints.length + KDRandom())));
+							}
+
+							if (inv.struggleProgress + (inv.cutProgress || 0) > 1) {
+								KinkyDungeonRemoveRestraintSpecific(inv, true, false, false);
+							} else
+							if (inv.tightness > 0
+								&& KDRandom() < Math.max(
+									0.4,
+									item.escapeChance* (2 - 1 / eligibleRestraints.length)) - Math.max(0, item.limitChance * ( 1 - 0.5 / eligibleRestraints.length))) {
+								inv.tightness -= 1;
+							}
+						}
+
+
+						let amnt = KinkyDungeonChangeWill(-e.cost, false, 0);
+						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `${Math.round(amnt*10)} WP`, "#ff5555", 3);
+						KinkyDungeonSendTextMessage(10, TextGet("KDDesperateStruggle_Yes"), "#ff8933", 2, true);
+						KinkyDungeonMakeNoise(e.dist, player.x, player.y);
+					} else {
+						KinkyDungeonSendTextMessage(10, TextGet("KDDesperateStruggle_NoRestraints"), "#ff5555", 2, true);
+					}
+				} else {
+					KinkyDungeonSendTextMessage(10, TextGet("KDDesperateStruggle_NoWill").replace("AMNT", "" + Math.round(10*(e.cost))), "#ff5555", 2, true);
+				}
+			}
+		},
 		"Quickness": (e, spell, data) => {
 			if (data.spell?.name == spell?.name) {
 				KinkyDungeonSpellChoicesToggle[data.index] = false;

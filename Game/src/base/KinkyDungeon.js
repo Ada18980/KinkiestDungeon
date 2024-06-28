@@ -20,7 +20,7 @@ let KDStandardRenderException = {
 
 };
 
-let KDClipboardDisabled = window.location.host.includes('itch.io');
+let KDClipboardDisabled = window.location.host.includes('itch.zone');
 (async function() {
 	let queryOpts = { name: 'clipboard-read', allowWithoutGesture: false };
 	try {
@@ -164,6 +164,7 @@ let KDToggles = {
 	EnemyAnimations: true,
 	RetroAnim: false,
 	DrawArmor: true,
+	DynamicArmor: false,
 	CrotchRopeOption: false,
 	ChastityOption: false,
 	ChastityOption2: false,
@@ -203,9 +204,11 @@ let KDToggles = {
 	FastFloaters: false,
 	NoDmgFloaters: false,
 	NoForceGreet: false,
+	StruggleBars: true,
 };
 
 let KDToggleCategories = {
+	StruggleBars: "UI",
 	SpellBook: "UI",
 	FastFloaters: "UI",
 	NoDmgFloaters: "UI",
@@ -260,6 +263,7 @@ let KDToggleCategories = {
 	//ShiftLatch: "Controls",
 	FlipPlayer: "Clothes",
 	GreyscaleBlindness: "GFX",
+	DynamicArmor: "Clothes",
 };
 
 let KDDefaultKB = {
