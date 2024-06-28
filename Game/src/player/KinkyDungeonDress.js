@@ -326,7 +326,8 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force) {
 						if (KinkyDungeonFlags.get("stripShoes")) clothes.Lost = true;
 					}
 					if (!NoRestraints) {
-						for (let inv of KinkyDungeonAllRestraint()) {
+						for (let entry of KinkyDungeonAllRestraintDynamic()) {
+							let inv = entry.item;
 							if (KDRestraint(inv)?.remove && (!KDRestraint(inv).armor || KDToggles.DrawArmor)) {
 								for (let remove of KDRestraint(inv).remove) {
 									if (remove == clothes.Group) clothes.Lost = true;
