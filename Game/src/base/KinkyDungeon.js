@@ -204,9 +204,11 @@ let KDToggles = {
 	FastFloaters: false,
 	NoDmgFloaters: false,
 	NoForceGreet: false,
+	StruggleBars: true,
 };
 
 let KDToggleCategories = {
+	StruggleBars: "UI",
 	SpellBook: "UI",
 	FastFloaters: "UI",
 	NoDmgFloaters: "UI",

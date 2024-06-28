@@ -620,7 +620,6 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 			// Apply displacement
 			if (l.DisplaceLayers && (!l.DisplacementPoses || l.DisplacementPoses.some((pose) => {return MC.Poses[pose];}))) {
 				let transform = new Transform();
-				let Properties: LayerProperties = m.Properties ? m.Properties[lyr] : undefined;
 
 				let layer = LayerLayer(MC, l, m, mods);
 				while (layer) {
@@ -639,6 +638,19 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					layer = LayerProperties[layer]?.Parent;
 				}
 
+				let Properties: LayerProperties = m.Properties ? m.Properties[lyr] : undefined;
+				if (Properties) {
+					transform = transform.recursiveTransform(
+						Properties.XOffset || 0,
+						Properties.YOffset || 0,
+						Properties.XPivot ||  0,
+						Properties.YPivot ||  0,
+						Properties.XScale ||  1,
+						Properties.YScale ||  1,
+						(Properties.Rotation * Math.PI / 180) || 0
+					);
+				}
+				Properties = m.Properties ? m.Properties[m.Name + "," + l.Name] : undefined;
 				if (Properties) {
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
@@ -695,7 +707,6 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 			// Apply erase
 			if (l.EraseLayers && (!l.ErasePoses || l.ErasePoses.some((pose) => {return MC.Poses[pose];}))) {
 				let transform = new Transform();
-				let Properties: LayerProperties = m.Properties ? m.Properties[lyr] : undefined;
 
 				let layer = LayerLayer(MC, l, m, mods);
 				while (layer) {
@@ -713,6 +724,19 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					}
 					layer = LayerProperties[layer]?.Parent;
 				}
+				let Properties: LayerProperties = m.Properties ? m.Properties[lyr] : undefined;
+				if (Properties) {
+					transform = transform.recursiveTransform(
+						Properties.XOffset || 0,
+						Properties.YOffset || 0,
+						Properties.XPivot ||  0,
+						Properties.YPivot ||  0,
+						Properties.XScale ||  1,
+						Properties.YScale ||  1,
+						(Properties.Rotation * Math.PI / 180) || 0
+					);
+				}
+				Properties = m.Properties ? m.Properties[m.Name + "," + l.Name] : undefined;
 				if (Properties) {
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
@@ -815,7 +839,6 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 
 				let transform = new Transform();
 
-				let Properties: LayerProperties = m.Properties ? m.Properties[KDLayerPropName(l, MC.Poses)] : undefined;
 
 
 				while (layer) {
@@ -834,6 +857,19 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					layer = LayerProperties[layer]?.Parent;
 				}
 
+				let Properties: LayerProperties = m.Properties ? m.Properties[KDLayerPropName(l, MC.Poses)] : undefined;
+				if (Properties) {
+					transform = transform.recursiveTransform(
+						Properties.XOffset || 0,
+						Properties.YOffset || 0,
+						Properties.XPivot ||  0,
+						Properties.YPivot ||  0,
+						Properties.XScale ||  1,
+						Properties.YScale ||  1,
+						(Properties.Rotation * Math.PI / 180) || 0
+					);
+				}
+				Properties = m.Properties ? m.Properties[m.Name + "," + l.Name] : undefined;
 				if (Properties) {
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
@@ -1319,9 +1355,8 @@ function KDGetColorableLayers(Model: Model, Properties: boolean): string[] {
 				for (let key of Object.keys(poses)) {
 					ret.push(layer.Name + key);
 				}
-			} else {
-				ret.push(layer.Name);
 			}
+			ret.push(layer.Name);
 		} else if (layer.InheritColor && !ret.includes(layer.InheritColor)) {
 			if (Properties && (layer.Poses || layer.MorphPoses)) {
 				let poses: Record<string, boolean> = {};
@@ -1336,9 +1371,9 @@ function KDGetColorableLayers(Model: Model, Properties: boolean): string[] {
 				for (let key of Object.keys(poses)) {
 					ret.push(layer.InheritColor + key);
 				}
-			} else {
-				ret.push(layer.InheritColor);
 			}
+			ret.push(layer.InheritColor);
+
 		}
 	}
 	return ret;

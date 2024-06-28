@@ -2928,6 +2928,29 @@ function KDDrawStruggleGroups() {
 								530 + 1, MY - lineSize/2 + O * lineSize + 1, lineSize - 2, lineSize - 2, undefined, {zIndex: 150});
 						}
 						DrawTextKD(msg, 530 + lineSize, MY + O * lineSize, d == item ? "#ffffff" : (surfaceItems.includes(d) ? "#999999" : "#aa5555"), "#333333", fontSize, "left", 150);
+
+						if ((d.struggleProgress > 0 || d.cutProgress > 0)) {
+							if (d.struggleProgress > 0)
+								FillRectKD(kdcanvas, kdpixisprites, "Hovprogress"+d.id, {
+									Left: 530 + lineSize + (d.cutProgress ? 5 : 1) + 250*(d.cutProgress || 0),
+									Top: MY - lineSize/2 + O * lineSize + 1 + lineSize - 5,
+									Width: Math.max(1, 250 * (d.struggleProgress) - (d.cutProgress ? 4 : 0)),
+									Height: 4,
+									Color: "#aaaaaa",
+									zIndex: 161,
+									alpha: 0.7,
+								});
+							if (d.cutProgress > 0)
+								FillRectKD(kdcanvas, kdpixisprites, "Hovprogresscut"+d.id, {
+									Left: 530 + lineSize + 1,
+									Top: MY - lineSize/2 + O * lineSize + 1 + lineSize - 5,
+									Width: 250 * d.cutProgress,
+									Height: 4,
+									Color: "#ff5555",
+									zIndex: 162,
+									alpha: 0.7,
+								});
+						}
 						O++;
 						//}
 					}
@@ -3002,6 +3025,23 @@ function KDDrawStruggleGroups() {
 						530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150); O++;
 						let a = Math.min(1, Math.max(-1, struggleData.escapeChance - Math.max(0, struggleData.extraLim, struggleData.limitChance)));
 						let b = Math.min(1, Math.max(-1, struggleData.escapeChance));
+
+						if (StruggleType == "Cut") {
+							let maxPossible;
+							let threshold = 0.75;
+							if (struggleData.limitChance > struggleData.escapeChance) {
+								threshold = Math.min(threshold, 0.9*(struggleData.escapeChance / struggleData.limitChance));
+							};
+
+							if (struggleData.limitChance > 0) {
+								threshold = KDMaxCutDepth(threshold, struggleData.cutBonus, struggleData.origEscapeChance, struggleData.origLimitChance);
+								// Find the intercept
+								maxPossible = Math.max(0, threshold);
+							} else maxPossible = 1;
+							a = maxPossible;
+							b = maxPossible;
+						}
+
 						let amnt = Math.round(100 * a)
 							+ "-"
 							+ Math.round(100 * b);
@@ -3015,7 +3055,7 @@ function KDDrawStruggleGroups() {
 								+ "-"
 								+ Math.round(100 * b);
 						}
-						DrawTextKD(TextGet("KDItemStruggle").replace("AMNT",
+						DrawTextKD(TextGet("KDItemStruggle" + (StruggleType)).replace("AMNT",
 							amnt
 						).replace("ESCP", TextGet("KDEscape" + StruggleType)),
 						530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150); O++;
@@ -3074,6 +3114,29 @@ function KDDrawStruggleGroups() {
 				zIndex: 40,
 				alpha: 0.1,
 			});
+			if (KDToggles.StruggleBars && !mini && (item.struggleProgress > 0 || item.cutProgress > 0)) {
+				if (item.struggleProgress > 0)
+					FillRectKD(kdcanvas, kdpixisprites, "progress"+sg.group, {
+						Left: x + (sg.left ? (item.cutProgress ? 5 : 1) : 12) + 250*(item.cutProgress || 0),
+						Top: y + 37,
+						Width: Math.max(1, 250 * (item.struggleProgress) - (item.cutProgress ? 4 : 0)),
+						Height: 9,
+						Color: "#aaaaaa",
+						zIndex: 41,
+						alpha: 0.7,
+					});
+				if (item.cutProgress > 0)
+					FillRectKD(kdcanvas, kdpixisprites, "progresscut"+sg.group, {
+						Left: x + (sg.left ? 1 : 12),
+						Top: y + 37,
+						Width: 250 * item.cutProgress,
+						Height: 9,
+						Color: "#ff5555",
+						zIndex: 42,
+						alpha: 0.7,
+					});
+			}
+
 
 
 

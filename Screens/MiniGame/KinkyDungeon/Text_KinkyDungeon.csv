@@ -45,6 +45,7 @@ KDToggleTabUI,UI
 KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
 
+KDToggleStruggleBars,Show Struggle Bars
 KDToggleAllowSusMods,Allow Suspicious Mods
 KDToggleAutoLoadMods,Auto Load Mods (offline only)
 KDToggleSpellBook,Classic Inventory Background
@@ -4324,7 +4325,7 @@ RestraintLatexTransportJacket,Secure Latex Jacket
 RestraintLatexTransportJacketDesc,This straitjacket has extra straps and buckles to make sure you won't be struggling out of it.
 RestraintLatexTransportJacketDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 RestraintLatexArmbinder,Latex Armbinder
-RestraintLatexArmbinderDesc,A tight armbinder that pins your arms tightly behind your back, enclosed completely.
+RestraintLatexArmbinderDesc,"A tight armbinder that pins your arms tightly behind your back, enclosed completely."
 RestraintLatexArmbinderDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 RestraintLatexBoxbinder,Latex Boxbinder
 RestraintLatexBoxbinderDesc,"A secure but comfortable binder meant for long-term wear."
@@ -23090,7 +23091,11 @@ RestraintWardenWristLinkDesc2,"An intense, albeit temporary punishment for break
 
 
 KDItemDifficulty,ESCP Difficulty: AMNT
-KDItemStruggle,ESCP Power: AMNT%
+KDItemStruggleStruggle,ESCP Power: AMNT
+KDItemStruggleRemove,ESCP Power: AMNT
+KDItemStrugglePick,ESCP Ability: AMNT
+KDItemStruggleUnlock,ESCP Ability: AMNT
+KDItemStruggleCut,Max ESCP Depth: AMNT%
 
 KDEscapeStruggle,Struggle
 KDEscapeRemove,Remove
@@ -23387,3 +23392,9 @@ RestraintCyberElbowLinkDesc2,It is maintained by a projector inside your cyber c
 RestraintCyberWristLink,Cyber Wrist Tether
 RestraintCyberWristLinkDesc,A very short energy tether connecting your wrist cuffs together.
 RestraintCyberWristLinkDesc2,It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+
+KinkyDungeonSpellDesperateStruggle,Desperate Struggle
+KinkyDungeonSpellDescriptionDesperateStruggle,"Spend 20 WP to shake around violently. Has a chance to loosen restraints you are wearing, based on existing struggle progress. Spreading the effect over multiple restraints reduces the chance of loosening.|Requires 25% or more WP to activate."
+KDDesperateStruggle_NoRestraints,"None of your restraints will budge."
+KDDesperateStruggle_Yes,"You thrash around with all your might."
+KDDesperateStruggle_NoWill,"You don't have the willpower left to struggle..."

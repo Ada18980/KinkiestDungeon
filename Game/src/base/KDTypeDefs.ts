@@ -307,6 +307,13 @@ interface KDRestraintPropsBase {
 		Pick?: number,
 		Unlock?: number,
 	},
+	speedMult?: {
+		Struggle?: number,
+		Cut?: number,
+		Remove?: number,
+		Pick?: number,
+		Unlock?: number,
+	},
 	struggleMinSpeed?: {
 		Struggle?: number,
 		Cut?: number,
@@ -323,6 +330,14 @@ interface KDRestraintPropsBase {
 	},
 	/** Multiplier to struggle power */
 	struggleMult?: {
+		Struggle?: number,
+		Cut?: number,
+		Remove?: number,
+		Pick?: number,
+		Unlock?: number,
+	},
+	/** Multiplier to limit chance */
+	limitMult?: {
 		Struggle?: number,
 		Cut?: number,
 		Remove?: number,
@@ -2325,7 +2340,9 @@ interface KDStruggleData {
 	struggleType: string,
 	struggleGroup: string,
 	escapeChance: number,
+	cutBonus: number,
 	origEscapeChance: number,
+	origLimitChance: number,
 	helpChance: number,
 	limitChance: number,
 	strict: number,

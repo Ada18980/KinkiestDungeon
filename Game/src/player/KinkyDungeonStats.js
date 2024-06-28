@@ -1032,6 +1032,7 @@ function KinkyDungeonChangeWill(Amount, NoFloater, minimum = 0) {
 			: (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatLossWill"))
 		),
 	};
+	let amountChanged = KinkyDungeonStatWill;
 	KinkyDungeonSendEvent("changeWill", data);
 	NoFloater = data.NoFloater;
 	Amount = data.Amount * data.mult;
@@ -1053,6 +1054,9 @@ function KinkyDungeonChangeWill(Amount, NoFloater, minimum = 0) {
 		console.trace();
 		KinkyDungeonStatWill = 0;
 	}
+
+	amountChanged = KinkyDungeonStatWill - amountChanged;
+	return amountChanged;
 }
 
 
