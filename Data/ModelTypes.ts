@@ -147,6 +147,12 @@ interface ModelLayer extends Namable {
 	/** Invariant displacement */
 	EraseInvariant?: boolean,
 
+	/** Hide this item if the specified pose isnt present
+	 * 0 - Condition
+	 * 1 - Pose to filter off of
+	 * 2 - Cancel property
+	*/
+	HidePoseConditional?: string[][],
     /** These layers are ALL REQUIRED to make it appear*/
     RequirePoses?: Record<string, boolean>,
     /** This layer is hidden in this pose*/
@@ -227,6 +233,7 @@ type LayerProperties = {
     Rotation?: number,
     XScale?: number,
     YScale?: number,
+    SuppressDynamic?: number,
 }
 
 interface Namable {

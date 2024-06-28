@@ -489,11 +489,26 @@ function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : number {
 		}
 	}
 	let Properties: LayerProperties = m.Properties;
-	if (Properties && Properties[l.InheritColor || l.Name]) {
-		if (Properties[l.InheritColor || l.Name].LayerBonus) temp += Properties[l.InheritColor || l.Name].LayerBonus;
+	let lyr = KDLayerPropName(l, MC.Poses);
+	if (Properties && Properties[lyr]) {
+		if (Properties[lyr].LayerBonus) temp += Properties[lyr].LayerBonus;
 	}
 
 	return temp;
+}
+
+function KDLayerPropName(l: ModelLayer, Poses: Record<string, boolean>): string {
+	if (l.Poses || l.MorphPoses) {
+		if (l.Poses)
+			for (let pose of Object.keys(l.Poses)) {
+				if (Poses[pose]) return (l.InheritColor || l.Name) + pose;
+			}
+		if (l.MorphPoses)
+			for (let pose of Object.values(l.MorphPoses)) {
+				if (Poses[pose]) return (l.InheritColor || l.Name) + pose;
+			}
+	}
+	return l.InheritColor || l.Name;
 }
 
 /**
@@ -600,10 +615,12 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					}
 				}
 			}
+
+			let lyr = KDLayerPropName(l, MC.Poses);
 			// Apply displacement
 			if (l.DisplaceLayers && (!l.DisplacementPoses || l.DisplacementPoses.some((pose) => {return MC.Poses[pose];}))) {
 				let transform = new Transform();
-				let Properties: LayerProperties = m.Properties ? m.Properties[l.InheritColor || l.Name] : undefined;
+				let Properties: LayerProperties = m.Properties ? m.Properties[lyr] : undefined;
 
 				let layer = LayerLayer(MC, l, m, mods);
 				while (layer) {
@@ -678,7 +695,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 			// Apply erase
 			if (l.EraseLayers && (!l.ErasePoses || l.ErasePoses.some((pose) => {return MC.Poses[pose];}))) {
 				let transform = new Transform();
-				let Properties: LayerProperties = m.Properties ? m.Properties[l.InheritColor || l.Name] : undefined;
+				let Properties: LayerProperties = m.Properties ? m.Properties[lyr] : undefined;
 
 				let layer = LayerLayer(MC, l, m, mods);
 				while (layer) {
@@ -798,7 +815,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 
 				let transform = new Transform();
 
-				let Properties: LayerProperties = m.Properties ? m.Properties[l.InheritColor || l.Name] : undefined;
+				let Properties: LayerProperties = m.Properties ? m.Properties[KDLayerPropName(l, MC.Poses)] : undefined;
 
 
 				while (layer) {
@@ -1018,6 +1035,11 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 			}
 		}
 	}
+	// Conditional hide poses
+	if (Layer.HidePoseConditional?.some((entry) => {
+		return (!entry[2] || !Model.Properties || !Model.Properties[KDLayerPropName(Layer, Poses)] || !Model.Properties[KDLayerPropName(Layer, Poses)][entry[2]]) && (Poses[entry[0]]) && !(Poses[entry[1]]);
+	})) return false;
+
 	// TODO filter hide
 	return true;
 }
@@ -1156,9 +1178,10 @@ function GetTrimmedAppearance(C: Character) {
 		}
 	}
 
-
 	for (let A of appearance) {
-		if (A.Model && !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})) {
+		if (A.Model
+			&& !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})
+			) {
 			appearance_new.push(A);
 		} else {
 			console.log("lost " + A.Model.Name);
@@ -1230,15 +1253,21 @@ function UpdateModels(C: Character, Xray?: string[]) {
 			}
 		}
 	}
+
+
 	for (let A of appearance) {
-		if (A.Model && !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})) {
+		if (A.Model
+			&& !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})
+			) {
 			MC.addModel(A.Model, A.Filters, A.Property?.LockedBy, A.Properties);
 		}
 	}
 
 	// Update models after adding all of them
 	for (let A of appearance) {
-		if (A.Model && !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})) {
+		if (A.Model
+			&& !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})
+			) {
 			MC.updateModel(A.Model.Name);
 		}
 	}
@@ -1273,13 +1302,43 @@ async function ForceRefreshModelsAsync(C: Character, ms = 100) {
 /**
  * Returns a list of colorable layer names
  */
-function KDGetColorableLayers(Model: Model): string[] {
+function KDGetColorableLayers(Model: Model, Properties: boolean): string[] {
 	let ret = [];
 	for (let layer of Object.values(Model.Layers)) {
-		if (!layer.NoColorize && !layer.InheritColor) {
-			ret.push(layer.Name);
+		if ((!layer.NoColorize || Properties) && !layer.InheritColor) {
+			if (Properties && (layer.Poses || layer.MorphPoses)) {
+				let poses: Record<string, boolean> = {};
+				if (layer.Poses)
+					for (let pose of Object.keys(layer.Poses)) {
+						poses[pose] = true;
+					}
+				if (layer.MorphPoses)
+					for (let pose of Object.values(layer.MorphPoses)) {
+						poses[pose] = true;
+					}
+				for (let key of Object.keys(poses)) {
+					ret.push(layer.Name + key);
+				}
+			} else {
+				ret.push(layer.Name);
+			}
 		} else if (layer.InheritColor && !ret.includes(layer.InheritColor)) {
-			ret.push(layer.InheritColor);
+			if (Properties && (layer.Poses || layer.MorphPoses)) {
+				let poses: Record<string, boolean> = {};
+				if (layer.Poses)
+					for (let pose of Object.keys(layer.Poses)) {
+						poses[pose] = true;
+					}
+				if (layer.MorphPoses)
+					for (let pose of Object.values(layer.MorphPoses)) {
+						poses[pose] = true;
+					}
+				for (let key of Object.keys(poses)) {
+					ret.push(layer.InheritColor + key);
+				}
+			} else {
+				ret.push(layer.InheritColor);
+			}
 		}
 	}
 	return ret;

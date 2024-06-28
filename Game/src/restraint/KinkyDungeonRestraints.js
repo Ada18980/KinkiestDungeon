@@ -1391,8 +1391,7 @@ function KinkyDungeonStrictness(ApplyGhost, Group, excludeItem) {
  */
 function KinkyDungeonGetStrictnessItems(Group, excludeItem) {
 	let list = [];
-	for (let invItem of KinkyDungeonAllRestraintDynamic()) {
-		let inv = invItem.item;
+	for (let inv of KinkyDungeonAllRestraint()) {
 		while (inv) {
 			if (inv != excludeItem && KDRestraint(inv).strictness)  {
 				let strictGroups = KDRestraint(inv).strictnessZones || KinkyDungeonStrictnessTable.get(KDRestraint(inv).Group);
@@ -1921,7 +1920,7 @@ function KDGetStruggleData(data) {
 
 					KinkyDungeonChangeStamina(data.cost, true, 1);
 					KinkyDungeonChangeWill(data.wcost);
-					if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
+					if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.1);
 				}
 				KinkyDungeonAdvanceTime(1);
 				KinkyDungeonSetFlag("escapeimpossible", 2);
@@ -2073,7 +2072,7 @@ function KDGetStruggleData(data) {
 					});
 					KinkyDungeonChangeStamina(data.cost, true, 1);
 					KinkyDungeonChangeWill(data.wcost);
-					if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
+					if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.1);
 				}
 				KinkyDungeonAdvanceTime(1);
 				KinkyDungeonSetFlag("escapeimpossible", 2);
@@ -2556,7 +2555,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index, query = false,
 			if (KinkyDungeonHasStamina(-data.cost)) {
 				KinkyDungeonChangeStamina(data.cost, true, 1);
 				KinkyDungeonChangeWill(data.wcost);
-				if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.5);
+				if (KinkyDungeonStatsChoice.get("BondageLover")) KinkyDungeonChangeDistraction(KDBondageLoverAmount, false, 0.1);
 
 				if (Pass != "Success") {
 					// Reduce the progress

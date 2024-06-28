@@ -109,6 +109,7 @@ KDToggleFlipPlayer,Flip Player Display
 KDToggleGreyscaleBlindness,Grayscale when Blind
 KDToggleFastFloaters,Faster Floater Fade
 KDToggleNoDmgFloaters,No Damage Floaters
+KDToggleDynamicArmor,Dynamic Armor (must hide armor)
 
 KDHelpless,Helpless!
 KDMissed,Evaded!
@@ -23307,6 +23308,7 @@ KDPropField_XPivot,X Pivot
 KDPropField_YPivot,Y Pivot
 KDPropField_Rotation,Rotation
 KDPropField_LayerBonus,Layer Bonus
+KDPropField_SuppressDynamic,SuppressDynamicArmor
 
 KinkyDungeonLoadFromFile,Load from File
 KinkyDungeonSaveToFile,Save to File

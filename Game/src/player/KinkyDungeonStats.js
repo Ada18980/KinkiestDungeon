@@ -1897,7 +1897,7 @@ function KinkyDungeonDoPlayWithSelf(tease) {
 
 	KinkyDungeonAlert = Math.max(KinkyDungeonAlert || 0, data.alertRadius); // Alerts nearby enemies because of your moaning~
 
-	KinkyDungeonChangeDistraction(Math.sqrt(Math.max(0, data.amount * KinkyDungeonPlayWithSelfMult)) * KinkyDungeonStatDistractionMax/KDMaxStatStart, false, 0.05);
+	KinkyDungeonChangeDistraction(Math.sqrt(Math.max(0, data.amount * KinkyDungeonPlayWithSelfMult)) * KinkyDungeonStatDistractionMax/KDMaxStatStart, false, 0.12);
 	KinkyDungeonChangeStamina(data.cost, true, 3);
 	if (data.playSound) {
 		if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.playSelfSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KinkyDungeonPlayerDamage.playSelfSound + ".ogg");
@@ -1922,8 +1922,8 @@ function KinkyDungeonDoPlayWithSelf(tease) {
 
 /** Percentage of vibe level that is turned into playSelfPower to try to have an orgasm*/
 let KinkyDungeonOrgasmVibeLevelPlayPowerMult = 1.0;
-let KinkyDungeonOrgasmChanceBase = -0.5;
-let KinkyDungeonOrgasmChanceScaling = 1.5;
+let KinkyDungeonOrgasmChanceBase = -0.1;
+let KinkyDungeonOrgasmChanceScaling = 1.35;
 //let KinkyDungeonOrgasmChanceScalingDesire = 0.5;
 let KinkyDungeonMaxOrgasmStage = 7;
 let KinkyDungeonOrgasmStageVariation = 4; // determines the text message variation
@@ -1936,11 +1936,11 @@ let KinkyDungeonPlaySelfOrgasmThreshold = 3; // Note that it is impossible if yo
 
 let KinkyDungeonOrgasmTurnsMax = 10;
 let KinkyDungeonOrgasmTurnsCrave = 8;
-let KinkyDungeonPlayWithSelfPowerMin = 2.5;
-let KinkyDungeonPlayWithSelfPowerMax = 3.5;
-let KDDesireScalingOrgasmPower = 1.5;
+let KinkyDungeonPlayWithSelfPowerMin = 4.5;
+let KinkyDungeonPlayWithSelfPowerMax = 5.5;
+let KDDesireScalingOrgasmPower = 0.5;
 let KinkyDungeonPlayWithSelfPowerVibeWand = 4;
-let KinkyDungeonPlayWithSelfChastityPenalty = 2.5/1.2;
+let KinkyDungeonPlayWithSelfChastityPenalty = 4.5;
 let KinkyDungeonPlayWithSelfBoundPenalty = 2.0;
 let KinkyDungeonOrgasmExhaustionAmount = -0.02;
 let KinkyDungeonOrgasmExhaustionAmountWillful = -0.005;
@@ -1976,8 +1976,9 @@ function KDGetPlaySelfThreshold() {
  */
 function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 	let chance = KinkyDungeonOrgasmChanceBase
+		+ KinkyDungeonOrgasmVibeLevel * 0.1
 		+ KinkyDungeonOrgasmChanceScaling*(KDGameData.OrgasmTurns/KinkyDungeonOrgasmTurnsMax)
-		* (KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap / KinkyDungeonStatDistractionMax)**2;
+		* (KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap / KinkyDungeonStatDistractionMax);
 	let denied = KinkyDungeonVibratorsDeny(chance);
 
 	let amount = denied ? 0 : KinkyDungeonOrgasmVibeLevel * KinkyDungeonOrgasmVibeLevelPlayPowerMult;
@@ -2003,17 +2004,22 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 		denied: denied,
 		Bonus: Bonus,
 		edgespcost: KinkyDungeonEdgeCost,
-		edgewpcost: KinkyDungeonEdgeWillpowerCost,
+		edgewpcost: KinkyDungeonEdgeWillpowerCost * (1 + KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap / KinkyDungeonStatDistractionMax),
 		spcost: KDGetOrgasmCost(),
-		wpcost: KinkyDungeonOrgasmWillpowerCost,
-		stunTime: KinkyDungeonOrgasmStunTime,
+		wpcost: KinkyDungeonOrgasmWillpowerCost * (1 + KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap / KinkyDungeonStatDistractionMax),
+		stunTime: Math.round(KinkyDungeonOrgasmStunTime * (1 + KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap / KinkyDungeonStatDistractionMax)),
 		playSound: true,
 		playMsg: true,
-		alertRadius: 7,
+		alertRadius: Math.round(4 * (1 + 1.5*KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap / KinkyDungeonStatDistractionMax)),
 		satisfaction: Math.max(0.1, KinkyDungeonStatDistractionLower * 1.75),
 		distractionCooldown: Math.max(KDGameData.DistractionCooldown, 13),
 		cancelOrgasm: false,
-		lowerFloorTo: Math.max(0, KinkyDungeonStatDistractionLower * (1 - 0.1 * KDGameData.OrgasmStage/KinkyDungeonMaxOrgasmStage) - KinkyDungeonStatDistractionMax*0.25),
+		lowerFloorTo: Math.max(0,
+			KinkyDungeonStatDistractionLower
+			* (1
+				- 0.75 * Math.max(0.01, KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap / KinkyDungeonStatDistractionMax)**2
+				- 0.2 * KDGameData.OrgasmStage/KinkyDungeonMaxOrgasmStage)
+			- KinkyDungeonStatDistractionMax*0.2 * Math.max(0.01, KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap / KinkyDungeonStatDistractionMax))**1.5,
 	};
 
 	KinkyDungeonSendEvent("tryOrgasm", data);
@@ -2064,7 +2070,7 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 		if (denied && KinkyDungeonVibeLevel > 0) {
 			msg = "KinkyDungeonDeny";
 			KinkyDungeonSetFlag("OrgDenied", KDGameData.PlaySelfTurns + 3);
-			KinkyDungeonChangeDesire(-KinkyDungeonStatDistractionLower * 0.12);
+			KinkyDungeonChangeDesire(-KinkyDungeonStatDistractionLower * 0.04);
 			KinkyDungeonSendEvent("deny", data);
 		} else {
 			msg = "KinkyDungeonEdge";
