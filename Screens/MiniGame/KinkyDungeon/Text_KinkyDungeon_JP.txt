@@ -48,9 +48,9 @@ Always Show Minimap
 Enable Sound
 サウンドを有効にする
 Drool/Tears
-衣装:よだれ/涙を有効にする
+よだれ/涙を有効にする
 Draw Armor
-衣装:鎧を描写する
+鎧を描写する
 Enable Music
 音楽を有効にする
 Async Rendering (beta)
@@ -64,11 +64,13 @@ Turn Counter
 Flash Screen on Stun
 スタン時に画面を明滅させる
 Map Particles
-マップのパーティクルを表示
+マップのパーティクル
 Distraction Particles
-興奮時のパーティクルを表示
+興奮時のパーティクル
 Vibration Particles
-バイブ類のパーティクルを表示
+バイブ類のパーティクル
+Gag Particle FX
+猿轡のパーティクル
 Show NPC Status
 NPCステータスを表示する
 Show Spell Range
@@ -158,6 +160,9 @@ Faster Floater Fade
 フローターを素早く消す
 No Damage Floaters
 ダメージフローターを表示しない
+
+Dynamic Armor (must hide armor)
+ダイナミックアーマー(「鎧を描写する」をオフにする必要あり)
 
 Allow Suspicious Mods
 危険なMODを許可
@@ -644,10 +649,10 @@ Goddesses will equip restraints upon acceptance of a quest.
 Nowhere is Safe
 どこも安全ではない
 Beds and furniture are often trapped.
-ベッドや樽等の家具に罠が混じるようになる
+ベッドや樽等のインテリアに罠が混じるようになる
 
 Quakehoof Associate
-
+クエイクフーフ・アソシエイト
 Start with the Epsilon Collar, which regenerates mana when you play with yourself.
 イプシロンの首輪を装備してゲームを開始する。この首輪を装備して自慰をすると、マナが回復する。
 Epsilon Collar
@@ -5244,11 +5249,11 @@ You wiggle madly, trying to push against the TargetRestraint. You need more leve
 That doesn't seem to work. Maybe something else will help with the TargetRestraint.
 全く効果がない。TargetRestraint を解くには別の方法を試す必要がある。
 You squirm helplessly against the furniture. Maybe something else will help with the TargetRestraint.
-家具に拘束具をこすりつけるも、何も変わらなかった。 TargetRestraint から抜け出すには別の方法を試す必要がある。
+インテリアに拘束具をこすりつけるも、何も変わらなかった。 TargetRestraint から抜け出すには別の方法を試す必要がある。
 You twist your body trying to use the furniture, but it doesn't seem to work. The TargetRestraint remains tight.
-家具を使おうと体をひねるが、うまくいかない。TargetRestraint はきつく締まっている。
+インテリアを使おうと体をひねるが、うまくいかない。TargetRestraint はきつく締まっている。
 You wiggle and squirm, trying to use the furniture to no avail. The TargetRestraint remains tight.
-家具を使って拘束を解こうと体をよじらせるも、 TargetRestraint はきついままだ。
+インテリアを使って拘束を解こうと体をよじらせるも、 TargetRestraint はきついままだ。
 You need something sharper to get at the TargetRestraint.
 TargetRestraint から抜け出すには、鋭利なものが必要だ。
 You need something sharp to loosen the fasteners on the TargetRestraint.
@@ -6935,8 +6940,14 @@ It's quite tight and secured by lockable buckles on your sides.
 側面に錠がついており、アームバインダーをしっかりと固定する。
 The armbinder harness comes off with the armbinder.
 このハーネスはアームバインダーを外したときに一緒に外れる。
+The energy link between your ankle cuffs fizzles into nothing.
+足枷のエネルギーリンクが消失した。
+The energy link between your arm cuffs fizzles into nothing.
+手枷のエネルギーリンクが消失した。
+The energy link between your thigh cuffs fizzles into nothing.
+脚枷のエネルギーリンクが消失した。
 The cuff chains come off with the cuffs.
-枷についた鎖は枷と一緒に外れる。
+枷についた鎖は枷と一緒に外れた。
 The hogtie link comes off.
 ホッグタイは解けた。
 Handcuffs
@@ -9029,7 +9040,7 @@ Brickwork
 Doodad
 ディスカッション
 Furniture
-家具
+インテリア
 Table
 テーブル
 Shrine
@@ -14020,7 +14031,12 @@ Target needs retraining...
 ターゲットに再教育の必要性を確認……
 Sorry, rules are rules~
 規則は規則ですから。
-
+Moving to assist!
+援護します！
+My orders are to shut you down~
+あなたを制圧します。
+Defenses online!
+ディフェンスモジュール起動。
 
 Does not compute.
 計算不能
@@ -16267,8 +16283,8 @@ You really think you're special, huh?
 Combat formation bravo.
 コンバットフォーメーションB！
 
-I'm sorry! I didn't mean to break that vase!
-ごめんなさい！もう花瓶を割ったりしませんから……
+That thing... it scares me.
+あれは……怖いです。
 I won't do it again, I swear!
 もうしませんから！
 Please no! I don't want the edging training again!
@@ -20585,6 +20601,15 @@ An enemy found you while you were busy!
 (Stand over it and place your feet in the footrests)
 (上に立ってみる)
 
+(This is a piece of bondage furniture)
+(拘束用のインテリアがある)
+(You lock yourself in the furniture!)
+(自ら中に入って鍵を閉めた！)
+(Display one of your prisoners)
+(捕虜を閉じ込める)
+(Lock yourself inside)
+(中に入って鍵を閉める)
+
 FOODMSG|(It invites you to partake in its culinary delights)
 FOODMSG|(とても美味しそうな匂いがする……)
 (You eat the food and feel your willpower rising)
@@ -20694,10 +20719,18 @@ That should slow you down!
 これでスピードが落ちるはず！
 Try running away now~
 逃げてみなさいよ～
+Initiating prisoner lockdown protocol--Unknown hardware detected
+収監プロトコル開始‐‐不明なデバイスを検知。
+What's this do?
+これは？
+That harness you're wearing is quite convenient for me~
+このハーネス便利なんだよね～。
 Initiating prisoner lockdown protocol
-収監プロトコル開始
-Your RestraintName suddenly snap together as the EnemyName activates them
-EnemyName が RestraintName をアクティブにしたようだ。
+収容プロトコル開始。
+Your RestraintName suddenly snap together as the EnemyName activates them!
+EnemyName が RestraintName をアクティブにしたようだ！
+Your harness projects energy tethers between your cuffs EnemyName activates it!
+EnemyName がハーネスをコントロールし、枷のエネルギーリンクをアクティブにした！
 Turn Count: 
 ターン数：
 The Shopkeeper leashes you!
@@ -20965,12 +20998,20 @@ A metallic shield preventing you from removing any gags underneath.
 It's made of exquisite Old Civilization metals, resistant to almost all forms of damage.
 旧文明の金属でできており、あらゆるダメージに耐性がある。
 
-Doll Mittens
-サイバードールのミトン
+
+
+Cyber Mittens
+サイバーミトン
+These mittens force your hands into fists, keeping you from using them to do anything useful.
+指を拘束し、道具の利用を制限するミトン。
+It is made of a strong mesh of ancient metallic fiber, kept in place with a metal band.
+旧文明の丈夫な金属繊維と金属バンドでできている。
+Cyber Lockdown Mitts
+サイバーロックダウンミトン
 These long mittens force your hands into fists, keeping you from using them to do anything useful.
-指を封印する長いミトン。
-It is made of a strong mesh of ancient metallic fiber, with no seams in sight.
-旧文明の丈夫な金属繊維でできており、縫い目が一切見当たらない。
+指を拘束し、道具の利用を制限する長いミトン。
+It is made of a strong mesh of ancient metallic fiber, wrapped snugly around your arms to make removal by yourself impossible.
+旧文明の丈夫な金属繊維が使われている、腕を完璧に覆うミトン。自力で抜け出すのは不可能。
 
 Doll Heels
 サイバードールのヒール
@@ -21012,8 +21053,10 @@ Detected new hardware.
 新たなハードウェアを検知
 [Restriction Protocol] Detected new hardware: RESTRAINTNAME. Install progress: PERCENT%
 [拘束プログラム] 新たなハードウェアを検知： RESTRAINTNAME インストール中： PERCENT%
-[Restriction Protocol] Installation complete. Engage mobility restrictions.
-[拘束プログラム] インストール完了。移動制限モード起動。
+[Restriction Protocol] Installation complete. Completing uniform.
+[拘束プログラム] インストール完了。ユニフォーム着用確認。
+[Punishment] Engage mobility restrictions.
+[懲罰プログラム] 移動制御プログラム起動。
 [Training Protocol] Detected hardware: RESTRAINTNAME. Install progress: PERCENT%
 [調教プログラム] 新たなハードウェアを検知： RESTRAINTNAME インストール中： PERCENT%
 Supplemental Stimulation
@@ -25148,6 +25191,10 @@ Your RestraintName stops working due to water damage!
 RestraintName は水に浸かった影響で動作を停止した！
 Your RestraintName sustains water damage from the high-pressure water!
 RestraintName は高圧水の影響でダメージを受けた！
+The RestraintName fizzles out!
+RestraintName は消えた。
+Your RestraintName short-circuits briefly from the electrical damage!
+RestraintName がショートした！
 
 Quit Game
 ゲームをやめる
@@ -26719,9 +26766,9 @@ The weights swing around and tug on your nipples!
 
 
 More Kinky Furniture
-家具種増加
+インテリア増加
 Replaces 60% of cages with a different kind of kinky furniture such as display stands.
-檻の60%をディスプレイスタンド等の家具に置き換える
+檻の60%をディスプレイスタンド等のインテリアに置き換える
 
 Collection
 コレクション
@@ -28627,6 +28674,8 @@ You don't have enough mana
 マナが足りない。
 The enemy rune is wiped clean.
 敵のルーンが掻き消えた。
+You pour negation magic into the ground, but nothing happens.
+拒否のルーンを地面に描いたが、何も起こらなかった。
 All of your runes have been removed.
 自身の描いた全てのルーンを消去した。
 
@@ -28748,6 +28797,10 @@ You feel a corrupting influence... (+AMNT Corruption)
 魂が堕落していくのを感じた……(+AMNT 堕落)
 You feel a restoring influence! (-AMNT Corruption)
 魂が浄化されていくのを感じた……(-AMNT 堕落)
+Sticky latex fuses itself to your skin! (+AMNT LatexIntegration)
+ネバネバのゴムが身体に張り付いてくる！(+AMNT ラテックス拘束)
+The latex starts to detach from your skin... (-AMNT Latex Integration)
+ゴムが身体から剥がれていく……(-AMNT ラテックス拘束)
 
 While you have an evasion penalty, even clumsy enemies...
 回避ペナルティがある……
@@ -28784,6 +28837,8 @@ Chastity bras are much rarer.
 
 Find an elevator to the Summit in order to access facilities.
 施設を使うために、まずはエレベーターを探そう。
+Visit the Summit to allow additional interactions with this facility.
+サミットを訪れて施設を見てみよう。
 
 +AMNT% Training/Tick
 調教度/ターン +AMNT%
@@ -28826,6 +28881,19 @@ Cuddle Lounge
 Assign prisoners to the lounge in order to improve your servants' opinion of you.
 好感度を高めるために、囚人をラウンジに配置する。
 
+Recycle Restraints
+拘束具をリサイクル
+Recycle One
+一つリサイクル
+Recycle ALL!
+全てリサイクル
+Recycle all but one
+一つを残してリサイクル
+
+You recycle a ITM
+ITM をリサイクルした。
+You recycle #x ITM
+#x の ITM をリサイクルした。
 
 You're blocking me.
 どいてくれない？
@@ -28837,3 +28905,46 @@ Step aside~
 ちょっと通してくれない？
 Path blocked by citizen.
 前方ニ障害物。
+*Bumps into you*
+(通してほしいようだ)
+
+
+
+Cyber Hogtie Tether
+ホッグタイの電子リンク
+
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+Cyber Thigh Tether
+脚枷の電子リンク
+An energy tether connecting your thigh cuffs together. You can still walk, albeit slower than usual.
+脚枷同士を流れるエネルギー体。脚の動きは制限されるが、ゆっくりと歩くことはできる。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+Cyber Ankle Tether
+足枷の電子リンク
+An energy  tether connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
+足枷同士を流れるエネルギー体。足の動きは制限されるが、ゆっくりと歩くことはできる。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+A short energy tether connecting your ankle cuffs together. You can barely separate your legs with this on.
+足枷同士を流れるエネルギー体。足と足の間にほんの少しだけ隙間がある程度。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+Cyber Elbow Tether
+肘枷の電子リンク
+A very short energy tether connecting your elbow cuffs together. It is quite awkward to remove by yourself.
+肘枷同士を流れるエネルギー体。自力で取り外すにはかなり手間がかかる。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+Cyber Wrist Tether
+手枷の電子リンク
+A very short energy tether connecting your wrist cuffs together.
+手枷同士を流れるエネルギー体。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
