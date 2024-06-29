@@ -3031,7 +3031,9 @@ function KDDrawStruggleGroups() {
 							let threshold = 0.75;
 							if (struggleData.limitChance > struggleData.escapeChance) {
 								threshold = Math.min(threshold, 0.9*(struggleData.escapeChance / struggleData.limitChance));
-							};
+							} else if (struggleData.limitChance == struggleData.escapeChance) {
+								threshold = 0;
+							}
 
 							if (struggleData.limitChance > 0) {
 								threshold = KDMaxCutDepth(threshold, struggleData.cutBonus, struggleData.origEscapeChance, struggleData.origLimitChance);

@@ -2074,7 +2074,7 @@ function KinkyDungeonDoTryOrgasm(Bonus, Auto) {
 		if (denied && KinkyDungeonVibeLevel > 0) {
 			msg = "KinkyDungeonDeny";
 			KinkyDungeonSetFlag("OrgDenied", KDGameData.PlaySelfTurns + 3);
-			KinkyDungeonChangeDesire(-KinkyDungeonStatDistractionLower * 0.04);
+			KinkyDungeonChangeDistraction(-KinkyDungeonStatDistraction);
 			KinkyDungeonSendEvent("deny", data);
 		} else {
 			msg = "KinkyDungeonEdge";

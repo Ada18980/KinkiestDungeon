@@ -4595,7 +4595,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 								+ Math.abs(KinkyDungeonPlayerEntity.facing_x - lastFacingX)**2;
 							let dotProd = KinkyDungeonPlayerEntity.facing_y*lastFacingY + KinkyDungeonPlayerEntity.facing_x*lastFacingX;
 
-							if (dotProd < 0 || (D > 1 && KinkyDungeonStatsChoice.get("DirectionSlow2"))) {
+							if (dotProd < 0 || ((D > 1 && (lastFacingY || lastFacingX)) && KinkyDungeonStatsChoice.get("DirectionSlow2"))) {
 								KDGameData.MovePoints = Math.min(KDGameData.MovePoints, 0);
 								if (D > 2) KinkyDungeonSendTextMessage(10, TextGet("KDTurn2"), "#ffffff", 1);
 								else KinkyDungeonSendTextMessage(9, TextGet("KDTurn1"), "#ffffff", 1);
