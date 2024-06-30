@@ -265,16 +265,22 @@ function KDDrawColorSliders(X, Y, C, Model) {
 		YY += 60;
 
 		// Property fields
+		/**
+		 * @type {Record<keyof LayerProperties, string>}
+		 */
 		let fields = {
-			"XOffset": 0,
-			"YOffset": 0,
-			"XPivot": 0,
-			"YPivot": 0,
-			"XScale": 1,
-			"YScale": 1,
-			"Rotation": 0,
-			"LayerBonus": 0,
-			"SuppressDynamic": 0,
+			"XOffset": "0",
+			"YOffset": "0",
+			"XPivot": "0",
+			"YPivot": "0",
+			"XScale": "1",
+			"YScale": "1",
+			"Rotation": "0",
+			"LayerBonus": "0",
+			"SuppressDynamic": "0",
+			"ExtraHidePoses": ",",
+			ExtraHidePrefixPose: ",",
+			ExtraHidePrefixPoseSuffix: ",",
 		};
 
 		if (KDRefreshProps) {
@@ -299,7 +305,17 @@ function KDDrawColorSliders(X, Y, C, Model) {
 					FF.Element.oninput = (event) => {
 						let value = ElementValue("KDPropField" + field);
 						try {
-							let parsed = parseFloat(value);
+							/**
+							 * @type {string | string[] | number}
+							 */
+							let parsed = value;
+							if (deff == "") {
+								// Nothing!
+							} else if (deff.includes(',')) {
+								parsed = parsed.split(',').filter((str) => {
+									return str != "";
+								});
+							} else parsed = parseFloat(value) || value;
 							if (value) {
 								KDChangeWardrobe(C);
 								if (!Model.Properties) Model.Properties = {};

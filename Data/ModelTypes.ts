@@ -234,6 +234,9 @@ type LayerProperties = {
     XScale?: number,
     YScale?: number,
     SuppressDynamic?: number,
+    ExtraHidePoses?: string[],
+    ExtraHidePrefixPose?: string[],
+    ExtraHidePrefixPoseSuffix?: string[],
 }
 
 interface Namable {

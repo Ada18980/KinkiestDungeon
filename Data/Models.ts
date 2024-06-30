@@ -1037,6 +1037,21 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 			}
 		}
 	}
+	if (Model.Properties) {
+		let prop = Model.Properties[Layer.InheritColor || Layer.Name];
+		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses)]) {
+			prop = Model.Properties[KDLayerPropName(Layer, Poses)];
+		} else if (prop) {
+			Object.assign(prop, Model.Properties[KDLayerPropName(Layer, Poses)]);
+		}
+		if (prop && prop.ExtraHidePoses) {
+			for (let p of Object.keys(Poses)) {
+				if (prop.ExtraHidePoses.includes(p)) {
+					return false;
+				}
+			}
+		}
+	}
 	if (Layer.HidePrefixPose) {
 		for (let p of Layer.HidePrefixPose) {
 			if (Poses[p + LayerPri(MC, Layer, Model)]) {
@@ -1046,6 +1061,28 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 				for (let suff of Layer.HidePrefixPoseSuffix) {
 					if (Poses[p + suff]) {
 						return false;
+					}
+				}
+			}
+		}
+	}
+	if (Model.Properties) {
+		let prop = Model.Properties[Layer.InheritColor || Layer.Name];
+		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses)]) {
+			prop = Model.Properties[KDLayerPropName(Layer, Poses)];
+		} else if (prop) {
+			Object.assign(prop, Model.Properties[KDLayerPropName(Layer, Poses)]);
+		}
+		if (prop && prop.ExtraHidePrefixPose) {
+			for (let p of prop.ExtraHidePrefixPose) {
+				if (Poses[p + LayerPri(MC, Layer, Model)]) {
+					return false;
+				}
+				if (prop.ExtraHidePrefixPoseSuffix) {
+					for (let suff of prop.ExtraHidePrefixPoseSuffix) {
+						if (Poses[p + suff]) {
+							return false;
+						}
 					}
 				}
 			}
@@ -1073,7 +1110,20 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 	}
 	// Conditional hide poses
 	if (Layer.HidePoseConditional?.some((entry) => {
-		return (!entry[2] || !Model.Properties || !Model.Properties[KDLayerPropName(Layer, Poses)] || !Model.Properties[KDLayerPropName(Layer, Poses)][entry[2]]) && (Poses[entry[0]]) && !(Poses[entry[1]]);
+		return (
+			!entry[2]
+			|| !Model.Properties
+			|| (!Model.Properties[KDLayerPropName(Layer, Poses)] && !Model.Properties[Layer.InheritColor || Layer.Name])
+			|| ((Model.Properties[KDLayerPropName(Layer, Poses)]
+					&&!Model.Properties[KDLayerPropName(Layer, Poses)][entry[2]])
+				&& (Model.Properties[Layer.InheritColor || Layer.Name]
+					&& !Model.Properties[Layer.InheritColor || Layer.Name][entry[2]])
+				)
+				)
+			&& (
+				Poses[entry[0]])
+				&& !(Poses[entry[1]]
+				);
 	})) return false;
 
 	// TODO filter hide
