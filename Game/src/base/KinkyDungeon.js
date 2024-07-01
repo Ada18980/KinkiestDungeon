@@ -1338,7 +1338,7 @@ function KinkyDungeonRun() {
 
 
 	if ((KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "TileEditor") {
-		let BG = (KinkyDungeonState == "Consent" || KinkyDungeonState == "Intro" || KinkyDungeonState == "Logo") ? "Logo" : "BrickWall";
+		let BG = (KinkyDungeonState == "Consent" || KinkyDungeonState == "Intro" || KinkyDungeonState == "Logo" || KinkyDungeonState == "Game") ? "Logo" : "BrickWall";
 		if (StandalonePatched) {
 			KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/" + BG + (StandalonePatched ? ".png" : ".jpg"), 0, 0, CanvasWidth, CanvasHeight, undefined, {
 				zIndex: -115,
@@ -1360,10 +1360,10 @@ function KinkyDungeonRun() {
 			FillRectKD(kdcanvas, kdpixisprites, "playerbg", {
 				Left: 0,
 				Top: 0,
-				Width: 500,
+				Width: KinkyDungeonDrawState == "Game" ? 500 : 2000,
 				Height: 1000,
 				Color: KDBGColor,
-				zIndex: -1,
+				zIndex: KinkyDungeonDrawState == "Game" ? -1 : -1000,
 				alpha: StandalonePatched ? KDUIAlpha : 0.01,
 			});
 		}

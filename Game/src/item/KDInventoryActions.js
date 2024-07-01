@@ -906,14 +906,12 @@ let KDInventoryAction = {
 			return item?.type == LooseRestraint;
 		},
 		label:  (player, item) => {
-			let value = Math.round(100);
-			return TextGet("KDGP").replace("AMNT", value + "");
+			return KDRecycleString(item, 1);
 		},
 		itemlabel:  (player, item) => {
-			let value = Math.round(100);
-			return TextGet("KDGP").replace("AMNT", value + "");
+			return KDRecycleString(item, 1);
 		},
-		itemlabelcolor: (player, item) => {return "#ffff44";},
+		itemlabelcolor: (player, item) => {return "#ffffff";},
 		text:  (player, item) => {
 			let value = Math.round(100);
 			return TextGet("KDInventoryActionRecycle").replace("VLU", value + "");
@@ -925,7 +923,8 @@ let KDInventoryAction = {
 		},
 		/** Happens when you click the button */
 		click: (player, item) => {
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
+			KDChangeRecyclerInput(KDRecycleItem(item, 1));
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycle")
 				.replace("ITM", TextGet( "Restraint" + item.name))
 				.replace("VLU", "" + 100)
@@ -946,16 +945,14 @@ let KDInventoryAction = {
 			return "InventoryAction/RecycleBulk";
 		},
 		label:  (player, item) => {
-			let value = Math.round(100);
-			return TextGet("KDGP").replace("AMNT", value + "");
+			return KDRecycleString(item, item.quantity || 1);
 		},
 		text:  (player, item) => {
-			let value = Math.round(100);
-			return TextGet("KDInventoryActionRecycleBulk").replace("VLU", value + "");
+			return KDRecycleString(item, item.quantity || 1);
 		},
 		valid: (player, item) => {
 			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
-			return item?.type == LooseRestraint || item?.type == Consumable;
+			return item?.type == LooseRestraint;
 		},
 		show: (player, item) => {
 			return item?.type == LooseRestraint;
@@ -964,14 +961,18 @@ let KDInventoryAction = {
 		click: (player, item) => {
 
 			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
-			if (!itemInv) return;
+			if (!itemInv) {
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/BeepEngage.ogg");
+				return;
+			}
 
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleBulk")
 				.replace("ITM", TextGet( "Restraint" + item.name))
 				.replace("VLU", "" + 100)
 				.replace("#", "" + (itemInv.quantity || 1))
 			, "#ffffff", 2);
+			KDChangeRecyclerInput(KDRecycleItem(item, itemInv.quantity || 1));
 		},
 		/** Return true to cancel it */
 		cancel: (player, delta) => {
@@ -988,8 +989,9 @@ let KDInventoryAction = {
 			return "InventoryAction/RecycleExcess";
 		},
 		label:  (player, item) => {
-			let value = Math.round(100);
-			return TextGet("KDGP").replace("AMNT", value + "");
+			if (item.quantity > 1)
+				return KDRecycleString(item, item.quantity - 1);
+			return "";
 		},
 		text:  (player, item) => {
 			let value = Math.round(100);
@@ -997,24 +999,27 @@ let KDInventoryAction = {
 		},
 		valid: (player, item) => {
 			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
-			return item?.type == LooseRestraint || item?.type == Consumable;
+			return (item?.type == LooseRestraint);
 		},
 		show: (player, item) => {
-			if (!item.quantity || item.quantity == 1) return false;
 			return item?.type == LooseRestraint;
 		},
 		/** Happens when you click the button */
 		click: (player, item) => {
 
 			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
-			if (!itemInv) return;
+			if (!itemInv || !(itemInv.quantity > 1)) {
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/BeepEngage.ogg");
+				return;
+			}
 
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleExcess")
 				.replace("ITM", TextGet( "Restraint" + item.name))
 				.replace("VLU", "" + 100)
-				.replace("#", "" + (itemInv.quantity || 1))
+				.replace("#", "" + (itemInv.quantity - 1))
 			, "#ffffff", 2);
+			KDChangeRecyclerInput(KDRecycleItem(item, itemInv.quantity - 1));
 		},
 		/** Return true to cancel it */
 		cancel: (player, delta) => {

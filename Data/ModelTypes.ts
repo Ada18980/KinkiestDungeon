@@ -235,6 +235,7 @@ type LayerProperties = {
     YScale?: number,
     SuppressDynamic?: number,
     ExtraHidePoses?: string[],
+    ExtraRequirePoses?: string[],
     ExtraHidePrefixPose?: string[],
     ExtraHidePrefixPoseSuffix?: string[],
 }

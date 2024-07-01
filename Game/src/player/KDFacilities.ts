@@ -62,7 +62,7 @@ function KinkyDungeonDrawFacilities(xOffset = -125) {
 	}
 
 
-	KDDrawLoreRepTabs(xOffset);
+	KDDrawInventoryTabs(xOffset);
 }
 
 
@@ -88,7 +88,7 @@ function KDDrawFacilitiesList(xOffset) {
 		if (II++ < FacilitiesIndex) {
 			continue;
 		}
-		let dist = facility[1].draw(XX, YY);
+		let dist = facility[1].draw(XX, YY, width);
 		if (YY + dist > 940) {
 			broken = true;
 			break;
@@ -159,4 +159,53 @@ function KDGetServantEnemy(servant: KDCollectionEntry): enemy {
 		return servant.Enemy || KinkyDungeonGetEnemyByName(servant.type);
 	}
 	return null;
+}
+
+
+function KDDrawServantPrisonerList(facility: string, x: number, y: number, width: number) : number {
+	let yy = 0;
+
+	let fac = KDFacilityTypes[facility];
+	if (fac) {
+		let ms = fac.maxServants();
+		let mp = fac.maxPrisoners();
+		let w = 72;
+		let spacing = 110;
+		if (ms > 0) {
+			let servants = KDGameData.FacilitiesData["Servants_" + facility];
+			for (let i = 0; i < ms; i++) {
+				let servant = servants[i];
+				DrawButtonKDEx(facility + "serv" + i, (b) => {
+					KDCurrentFacilityTarget = facility;
+					KDCurrentFacilityCollectionType = "Servants";
+					KinkyDungeonDrawState = "Collection";
+					return true;
+				}, true, x + width/2 - (spacing * (ms - 1) + w)/2 + i * spacing, y + yy, w, w, "", "#ffffff", KDCollectionImage(servant),
+				undefined, undefined, !servant, KDButtonColor, undefined, undefined, {
+					centered: true,
+				});
+			}
+
+			yy += 100;
+		}
+		if (mp > 0) {
+			let prisoners = KDGameData.FacilitiesData["Prisoners_" + facility];
+			for (let i = 0; i < mp; i++) {
+				let prisoner = prisoners[i];
+				DrawButtonKDEx(facility + "pris" + i, (b) => {
+					KDCurrentFacilityTarget = facility;
+					KDCurrentFacilityCollectionType = "Prisoners";
+					KinkyDungeonDrawState = "Collection";
+					return true;
+				}, true, x + width/2 - (spacing * (mp - 1) + w)/2 + i * spacing, y + yy, w, w, "", "#ffffff", KDCollectionImage(prisoner),
+				undefined, undefined, !prisoner, KDButtonColor, undefined, undefined, {
+					centered: true,
+				});
+			}
+
+			yy += 110;
+		}
+	}
+
+	return yy;
 }

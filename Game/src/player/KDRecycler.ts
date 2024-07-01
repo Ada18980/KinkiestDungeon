@@ -39,7 +39,7 @@ interface RecyclerOutputs {
 
 function KDGetRecyclerRate(Servants: number[]): Record<string, number> {
 	let output = {};
-	let mult = 0;
+	let mult = 0.5;
 	for (let id of Servants) {
 		let servant = KDGetServantEnemy(KDGameData.Collection["" + id]);
 		if (servant) {
@@ -54,7 +54,7 @@ function KDGetRecyclerRate(Servants: number[]): Record<string, number> {
 	return output;
 }
 
-function KDRecycleItem(item: item) : RecyclerOutputs {
+function KDRecycleItem(item: item, count: number = 0) : RecyclerOutputs {
 	let outputs: RecyclerOutputs = {
 		Latex: 0,
 		Metal: 0,
@@ -78,6 +78,19 @@ function KDRecycleItem(item: item) : RecyclerOutputs {
 		}
 	}
 
+	if (count > 0) {
+		for (let i = 0; i < count; i++) {
+			if (KinkyDungeonInventoryGetSafe(item.inventoryVariant || item.name)) {
+				let inv = KinkyDungeonInventoryGetSafe(item.inventoryVariant || item.name);
+				if (inv.quantity > 1) {
+					inv.quantity -= 1;
+				} else {
+					KinkyDungeonInventoryRemoveSafe(inv);
+				}
+			}
+		}
+	}
+
 	return outputs;
 }
 
@@ -94,4 +107,19 @@ function KDChangeRecyclerResources(amount: RecyclerOutputs) {
 			KDGameData.FacilitiesData["Recycler_" + entry[0]] + entry[1]
 		);
 	}
+}
+
+function KDRecycleString(item: item, quantity: number) : string {
+	let temp = "";
+	let outputs = KDRecycleItem(item, 0);
+
+	for (let output of Object.entries(outputs)) {
+		if (output[1] > 0) {
+			let str = Math.round(quantity * output[1]) + TextGet("KDRecycleOutput_" + output[0]);
+			if (temp.length > 0) temp = temp + "";
+			temp = temp + str;
+		}
+	}
+
+	return temp;
 }

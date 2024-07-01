@@ -1262,8 +1262,8 @@ const KinkyDungeonRestraints = [
 			Mitten: {color: "DarkNeutral", override: true},
 		},
 		Asset: "LatexElbowGloves", Color: "#ff5277", LinkableBy: [...KDGlovesLink], renderWhenLinked: ["Mittens"], Group: "ItemHands",
-		bindhands: 1.0, power: 10, weight: 0,
-		escapeChance: {"Struggle": -0.05, "Cut": 0.04, "Remove": 0.4, "Pick": 0.25},
+		bindhands: 1.0, power: 7, weight: 0,
+		escapeChance: {"Struggle": -0.05, "Cut": 0.09, "Remove": 0.4, "Pick": 0.25},
 		maxwill: 0.4, enemyTags: {"latexRestraints":6,"mittensSpell": 10}, playerTags: {"ItemHandsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Mittens", "Latex"]},
 
 

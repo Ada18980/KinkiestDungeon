@@ -279,6 +279,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 			"LayerBonus": "0",
 			"SuppressDynamic": "0",
 			"ExtraHidePoses": ",",
+			"ExtraRequirePoses": ",",
 			ExtraHidePrefixPose: ",",
 			ExtraHidePrefixPoseSuffix: ",",
 		};
@@ -288,12 +289,13 @@ function KDDrawColorSliders(X, Y, C, Model) {
 			YY += 400;
 		} else {
 			let YYold = YY;
+			YY -= 25;
 			for (let field0 of Object.entries(fields)) {
 
 				let field = field0[0];
 				let deff = field0[1];
 
-				DrawTextFitKD(TextGet("KDPropField_" + field), X + width/2, YY + 10, width, "#ffffff", "#000000", 20);
+				DrawTextFitKD(TextGet("KDPropField_" + field), X + width/2 + 10, YY + 10, width, "#ffffff", "#000000", 20);
 
 
 				let FF = KDTextField("KDPropField" + field, X, YY, width, 30, undefined, undefined, "20");

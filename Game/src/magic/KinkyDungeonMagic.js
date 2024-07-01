@@ -1494,10 +1494,10 @@ function KinkyDungeonDrawMagic() {
 		Top: canvasOffsetY_ui - 60,
 		Width: 1965 - (canvasOffsetX_ui + 40),
 		Height: 815,
-		Color: "#000000",
+		Color: KDInvBG,
 		LineWidth: 1,
-		zIndex: 11,
-		alpha: 0.3
+		zIndex: -19,
+		alpha: 0.7
 	});
 	DrawRectKD(kdcanvas, kdpixisprites, "mainmagicbg2", {
 		Left: canvasOffsetX_ui + xOffset + 40,
@@ -1506,7 +1506,7 @@ function KinkyDungeonDrawMagic() {
 		Height: 815,
 		Color: "#000000",
 		LineWidth: 1,
-		zIndex: 11,
+		zIndex: -19,
 		alpha: 0.9
 	});
 
@@ -1754,17 +1754,17 @@ function KinkyDungeonListSpells(Mode) {
 		Left: canvasOffsetX_ui + xOffset - 25,
 		Top: canvasOffsetY_ui - 150,
 		Width: 1990 - (canvasOffsetX_ui),
-		Height: 945,
-		Color: "#000000",
+		Height: 1000 - (canvasOffsetY_ui - 150),
+		Color: KDInvBG,
 		LineWidth: 1,
 		zIndex: -19,
-		alpha: 0.3
+		alpha: 0.7
 	});
 	DrawRectKD(kdcanvas, kdpixisprites, "mainmagicspellsbg2", {
 		Left: canvasOffsetX_ui + xOffset - 25,
 		Top: canvasOffsetY_ui - 150,
 		Width: 1990 - (canvasOffsetX_ui),
-		Height: 945,
+		Height: 1000 - (canvasOffsetY_ui - 150),
 		Color: "#000000",
 		LineWidth: 1,
 		zIndex: -19,

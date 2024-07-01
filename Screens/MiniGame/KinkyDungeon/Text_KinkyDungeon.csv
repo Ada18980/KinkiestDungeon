@@ -23314,6 +23314,10 @@ KDPropField_YPivot,Y Pivot
 KDPropField_Rotation,Rotation
 KDPropField_LayerBonus,Layer Bonus
 KDPropField_SuppressDynamic,SuppressDynamicArmor
+KDPropField_ExtraHidePoses,Hide Pose (e.g. Xray)
+KDPropField_ExtraRequirePoses,Require Pose (e.g. ChestArmor)
+KDPropField_ExtraHidePrefixPose,Hide Prefix (e.g Encase)
+KDPropField_ExtraHidePrefixPoseSuffix,Hide Suffix (e.g TorsoUpper)
 
 KinkyDungeonLoadFromFile,Load from File
 KinkyDungeonSaveToFile,Save to File
@@ -23398,3 +23402,10 @@ KinkyDungeonSpellDescriptionDesperateStruggle,"Spend 20 WP to shake around viole
 KDDesperateStruggle_NoRestraints,"None of your restraints will budge."
 KDDesperateStruggle_Yes,"You thrash around with all your might."
 KDDesperateStruggle_NoWill,"You don't have the willpower left to struggle..."
+
+
+KDRecycleOutput_Rope,f
+KDRecycleOutput_Latex,x
+KDRecycleOutput_Leather,l
+KDRecycleOutput_Metal,m
+KDRecycleOutput_Rune,R

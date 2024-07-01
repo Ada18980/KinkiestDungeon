@@ -1219,6 +1219,7 @@ function KDProcessInputs(ReturnResult) {
 }
 
 function KDInteract(x, y) {
+	KinkyDungeonItemCheck(x, y, MiniGameKinkyDungeonLevel, true);
 	KDInteracting = false;
 	let tile = KinkyDungeonTilesGet(x + ',' + y);
 	if (tile?.Type) {

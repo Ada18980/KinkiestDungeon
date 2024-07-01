@@ -3427,6 +3427,7 @@ interface KDCollectionEntry {
 	color: string,
 	type: string,
 	sprite: string,
+	Facility: string,
 	customSprite: boolean,
 	id: number,
 	Enemy?: enemy, // for unique ones

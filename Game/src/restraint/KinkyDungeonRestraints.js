@@ -1622,16 +1622,16 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 
 
 	if (KinkyDungeonStatsChoice.get("Unchained") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Metal")) {
-		escapeChance += KDUnchainedBonus;
+		escapeChance += (StruggleType == "Cut" ? 0.5 : 1) * KDUnchainedBonus;
 	} else
 	if (KinkyDungeonStatsChoice.get("Artist") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Rope")) {
-		escapeChance += KDArtistBonus;
+		escapeChance += (StruggleType == "Cut" ? 0.5 : 1) * KDArtistBonus;
 	} else
 	if (KinkyDungeonStatsChoice.get("Slippery") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Latex")) {
-		escapeChance += KDSlipperyBonus;
+		escapeChance += (StruggleType == "Cut" ? 0.5 : 1) * KDSlipperyBonus;
 	} else
 	if (KinkyDungeonStatsChoice.get("Escapee") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Leather")) {
-		escapeChance += KDEscapeeBonus;
+		escapeChance += (StruggleType == "Cut" ? 0.5 : 1) * KDEscapeeBonus;
 	}
 
 
@@ -2337,8 +2337,10 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index, query = false,
 
 					switch(StruggleType) {
 						case "Struggle":
-							limitProgress = data.restraint.struggleProgress ? (
-								data.restraint.struggleProgress < threshold ? threshold * data.restraint.struggleProgress : 1.0)
+							limitProgress = (KDRestraint(restraint).struggleBreak ? cutStruggleProgress : data.restraint.struggleProgress) ? (
+								(KDRestraint(restraint).struggleBreak ? cutStruggleProgress : data.restraint.struggleProgress) < threshold ?
+									threshold * (KDRestraint(restraint).struggleBreak ? cutStruggleProgress : data.restraint.struggleProgress)
+									: 1.0)
 								: 0;
 							if (data.limitChance > 0 && data.limitChance > data.escapeChance) {
 								// Find the intercept

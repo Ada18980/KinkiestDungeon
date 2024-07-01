@@ -1051,10 +1051,17 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 				}
 			}
 		}
+		if (prop && prop.ExtraRequirePoses) {
+			for (let p of prop.ExtraRequirePoses) {
+				if (!Poses[p]) {
+					return false;
+				}
+			}
+		}
 	}
 	if (Layer.HidePrefixPose) {
 		for (let p of Layer.HidePrefixPose) {
-			if (Poses[p + LayerPri(MC, Layer, Model)]) {
+			if (Poses[p]) {
 				return false;
 			}
 			if (Layer.HidePrefixPoseSuffix) {

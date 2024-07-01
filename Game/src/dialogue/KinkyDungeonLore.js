@@ -504,32 +504,32 @@ function KDDrawLoreRepTabs(xOffset) {
 		Left: canvasOffsetX_ui + xOffset,
 		Top: canvasOffsetY_ui - 150,
 		Width: 1965 - (canvasOffsetX_ui),
-		Height: 945,
-		Color: "#000000",
+		Height: 1000 - (canvasOffsetY_ui - 150),
+		Color: KDInvBG,
 		LineWidth: 1,
 		zIndex: -19,
-		alpha: 0.3
+		alpha: 0.7
 	});
 	DrawRectKD(kdcanvas, kdpixisprites, "mainlorebg2", {
 		Left: canvasOffsetX_ui + xOffset,
 		Top: canvasOffsetY_ui - 150,
 		Width: 1965 - (canvasOffsetX_ui),
-		Height: 945,
-		Color: "#000000",
+		Height: 1000 - (canvasOffsetY_ui - 150),
+		Color: "#222222",
 		LineWidth: 1,
 		zIndex: -19,
 		alpha: 0.9
 	});
 	let scrollFunc = (amount) => {
 		switch (KinkyDungeonDrawState) {
-			case  "Logbook": KinkyDungeonDrawState = amount < 0 ? "Facilities"  : "Quest"; break;
+			case  "Logbook": KinkyDungeonDrawState = amount < 0 ? "Quest"  : "Reputation"; break;
 			case  "Reputation": KinkyDungeonDrawState = amount < 0 ? "Logbook"  : "Quest"; break;
-			case  "Quest": KinkyDungeonDrawState = amount < 0 ? "Reputation"  : "Collection"; break;
-			case  "Collection": KinkyDungeonDrawState = amount < 0 ? "Reputation"  : "Facilities"; break;
-			case  "Facilities": KinkyDungeonDrawState = amount < 0 ? "Collection"  : "Logbook"; break;
+			case  "Quest": KinkyDungeonDrawState = amount < 0 ? "Reputation"  : "Logbook"; break;
+			//case  "Collection": KinkyDungeonDrawState = amount < 0 ? "Reputation"  : "Facilities"; break;
+			//case  "Facilities": KinkyDungeonDrawState = amount < 0 ? "Collection"  : "Logbook"; break;
 		}
 	};
-	let xxstart = 430;
+	let xxstart = 530;
 	let yy = 40;
 	let num = 4;
 	let width = 1100 / num;
@@ -549,6 +549,63 @@ function KDDrawLoreRepTabs(xOffset) {
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonQuest"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Quest", KDButtonColor); II++;
+	/*DrawButtonKDExScroll("TabCollection", scrollFunc, (b) => {
+		KinkyDungeonDrawState = "Collection";
+		return true;
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonCollection"), "#ffffff", undefined, undefined, undefined,
+	KinkyDungeonDrawState != "Collection", KDButtonColor); II++;
+	DrawButtonKDExScroll("TabFacilities", scrollFunc, (b) => {
+		KinkyDungeonDrawState = "Facilities";
+		return true;
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonFacilities"), "#ffffff", undefined, undefined, undefined,
+	KinkyDungeonDrawState != "Facilities", KDButtonColor); II++;
+*/
+
+}
+
+let KDInvBG = "#222222";
+
+
+function KDDrawInventoryTabs(xOffset, drawBG = true) {
+	if (drawBG) {
+		FillRectKD(kdcanvas, kdpixisprites, "mainlorebg", {
+			Left: canvasOffsetX_ui + xOffset,
+			Top: canvasOffsetY_ui - 150,
+			Width: 1965 - (canvasOffsetX_ui),
+			Height: 1000 - (canvasOffsetY_ui - 150),
+			Color: KDInvBG,
+			LineWidth: 1,
+			zIndex: -19,
+			alpha: 0.7
+		});
+		DrawRectKD(kdcanvas, kdpixisprites, "mainlorebg2", {
+			Left: canvasOffsetX_ui + xOffset,
+			Top: canvasOffsetY_ui - 150,
+			Width: 1965 - (canvasOffsetX_ui),
+			Height: 1000 - (canvasOffsetY_ui - 150),
+			Color: "#000000",
+			LineWidth: 1,
+			zIndex: -19,
+			alpha: 0.9
+		});
+	}
+	let scrollFunc = (amount) => {
+		switch (KinkyDungeonDrawState) {
+			case  "Inventory": KinkyDungeonDrawState = amount < 0 ? "Facilities"  : "Collection"; break;
+			case  "Collection": KinkyDungeonDrawState = amount < 0 ? "Inventory"  : "Facilities"; break;
+			case  "Facilities": KinkyDungeonDrawState = amount < 0 ? "Collection"  : "Inventory"; break;
+		}
+	};
+	let xxstart = 530;
+	let yy = 40;
+	let num = 4;
+	let width = 1100 / num;
+	let II = 0;
+	DrawButtonKDExScroll("TabLore", scrollFunc, (b) => {
+		KinkyDungeonDrawState = "Inventory";
+		return true;
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonInventory"), "#ffffff", undefined, undefined, undefined,
+	KinkyDungeonDrawState != "Inventory", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabCollection", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Collection";
 		return true;
@@ -562,6 +619,8 @@ function KDDrawLoreRepTabs(xOffset) {
 
 
 }
+
+
 
 /**
  *

@@ -1273,28 +1273,10 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 
 function KinkyDungeonDrawInventory() {
 	let xOffset = -125;
-	KinkyDungeonDrawMessages(true);
+	KinkyDungeonDrawMessages(true, 550, true);
 
-	FillRectKD(kdcanvas, kdpixisprites, "maininvbg", {
-		Left: canvasOffsetX_ui + xOffset + 40,
-		Top: canvasOffsetY_ui - 60,
-		Width: 1965 - (canvasOffsetX_ui + 40),
-		Height: 855,
-		Color: "#000000",
-		LineWidth: 1,
-		zIndex: 19,
-		alpha: 0.3
-	});
-	DrawRectKD(kdcanvas, kdpixisprites, "maininvbg2", {
-		Left: canvasOffsetX_ui + xOffset + 40,
-		Top: canvasOffsetY_ui - 60,
-		Width: 1965 - (canvasOffsetX_ui + 40),
-		Height: 855,
-		Color: "#000000",
-		LineWidth: 1,
-		zIndex: 19,
-		alpha: 0.9
-	});
+
+	KDDrawInventoryTabs(xOffset, true);
 
 	let filter = KinkyDungeonCurrentFilter;
 	if (KDFilterTransform[KinkyDungeonCurrentFilter]) filter = KDFilterTransform[KinkyDungeonCurrentFilter];
