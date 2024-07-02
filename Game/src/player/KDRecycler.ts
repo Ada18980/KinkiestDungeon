@@ -37,6 +37,16 @@ interface RecyclerOutputs {
 	Rune: number,
 }
 
+function KDBaseRecycleOutputs(): RecyclerOutputs {
+	return {
+		Latex: 0,
+		Metal: 0,
+		Rune: 0,
+		Leather: 0,
+		Rope: 0,
+	};
+}
+
 
 function KDGetRecyclerRate(Servants: number[]): Record<string, number> {
 	let output = {};
@@ -56,13 +66,7 @@ function KDGetRecyclerRate(Servants: number[]): Record<string, number> {
 }
 
 function KDRecycleItem(item: item, count: number = 0) : RecyclerOutputs {
-	let outputs: RecyclerOutputs = {
-		Latex: 0,
-		Metal: 0,
-		Rune: 0,
-		Leather: 0,
-		Rope: 0,
-	};
+	let outputs: RecyclerOutputs = KDBaseRecycleOutputs();
 
 	let type = KDRestraint(item);
 	let variant = KinkyDungeonRestraintVariants[item.inventoryVariant || item.name];
@@ -109,6 +113,18 @@ function KDChangeRecyclerResources(amount: RecyclerOutputs) {
 		);
 	}
 }
+function KDHasRecyclerResources(amount: RecyclerOutputs) {
+	for (let entry of Object.entries(amount)) {
+		if (entry[1] > 0 && KDGameData.FacilitiesData["Recycler_" + entry[0]] < entry[1]) return false;
+	}
+	return true;
+}
+function KDHasRecyclerInput(amount: RecyclerOutputs) {
+	for (let entry of Object.entries(amount)) {
+		if (entry[1] > 0 && KDGameData.FacilitiesData["RecyclerInput_" + entry[0]] < entry[1]) return false;
+	}
+	return true;
+}
 
 function KDRecycleString(item: item, quantity: number) : string {
 	let temp = "";
@@ -130,26 +146,35 @@ function KDDrawRecycler(x: number, y: number, width: number): number {
 	let dd = KDMapData.RoomType == "Summit" ? 400 : 300;
 	let cats = KDListRecyclerCats();
 	if (KDMapData.RoomType == "Summit") {
-		dd += 100 + Math.ceil(cats.length/KDRecyclerCatsPerRow) * KDRecyclerCatSpacing;
+		dd += 125 + Math.ceil(cats.length/KDRecyclerCatsPerRow) * KDRecyclerCatSpacing;
 	}
 	if (y + dd < 940) {
 		let rID = 0;
-		let spacing = 180;
 		let res = Object.keys(RecyclerResources);
+		let spacing = 180 * 5 / res.length;
 		let rates = KDGetRecyclerRate(KDGameData.FacilitiesData.Servants_Recycler);
 		let yy = y;
 
 		yy += KDDrawServantPrisonerList("Recycler", x - 200, yy + 70, width);
 
+		DrawRectKD(kdcanvas, kdpixisprites, "rec_res_rect", {
+			Left: x + 25,
+			Top: yy + 54,
+			Height: 72 + 20,
+			Width: width - 50,
+			Color: KDUIColorHighlight,
+			LineWidth: 1,
+			zIndex: -10,
+		});
 		for (let resource of res) {
 			KDDraw(kdcanvas, kdpixisprites, "fac_rec_res_" + resource,
 				KinkyDungeonRootDirectory + "UI/Resource/" + resource + ".png",
-				x + 560 - spacing*0.5*res.length + (spacing * rID), yy + 50, 72, 72
+				x + 560 - spacing*0.5*res.length + (spacing * rID), yy + 60, 72, 72
 			);
 			DrawTextFitKD(Math.floor(KDGameData.FacilitiesData["Recycler_" + resource] || 0) + "",
-				x + 560 + 70 - spacing*0.5*res.length + (spacing * rID), yy + 76, spacing - 80, "#ffffff", KDTextGray0, 32, "left");
+				x + 560 + 70 - spacing*0.5*res.length + (spacing * rID), yy + 86, spacing - 80, "#ffffff", KDTextGray0, 32, "left");
 			DrawTextFitKD("+" + rates[resource] + ` (${Math.floor(KDGameData.FacilitiesData["RecyclerInput_" + resource] || 0)})`,
-				x + 560 + 70 - spacing*0.5*res.length + (spacing * rID), yy + 76 + 32, spacing - 80, rates[resource] > 0 ? "#ffffff" : "#aaaaaa", KDTextGray0, 18, "left");
+				x + 560 + 70 - spacing*0.5*res.length + (spacing * rID), yy + 86 + 32, spacing - 80, rates[resource] > 0 ? "#ffffff" : "#aaaaaa", KDTextGray0, 18, "left");
 			rID++;
 		}
 
@@ -172,6 +197,7 @@ function KDDrawRecycler(x: number, y: number, width: number): number {
 
 
 		} else {
+			yy += 180;
 			DrawTextFitKD(TextGet("KDFacilityLocal"), x + 560, y + 160, 1050 - 160, "#ffffff", KDTextGray0, 32, "center");
 		}
 
@@ -191,7 +217,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 	let colCounter = 0;
 	let index = 0;
 	let selectedcat: KDBlueprintCategory = null;
-	if (KDSelectedRecyclerCategory == "Null")
+	if (KDSelectedRecyclerCategory == "Null" && cats[0])
 		KDSelectedRecyclerCategory = cats[0].name;
 	for (let cat of cats) {
 		let selected = cat.name == KDSelectedRecyclerCategory;
@@ -217,7 +243,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 				}
 			},
 			() => {
-				if (KDSelectedRecyclerCategory != cat.name) {
+				if (KDSelectedRecyclerCategory != cat.name && cat.items[0]) {
 					KDSelectedRecyclerCategory = cat.name;
 					KDSelectedRecyclerItem = cat.items[0].name;
 				} else KDSelectedRecyclerCategory = "";
@@ -268,6 +294,10 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 			if (items[index-1]?.name == KDSelectedRecyclerItem) {
 				hotkey = KinkyDungeonKey[7];
 			}
+			let inventoryItem = KinkyDungeonInventoryGetSafe(item.name);
+			if (inventoryItem)
+				DrawTextFitKD("" + (inventoryItem.quantity || 1),
+			x + XX + 32, y + YY + 60, 72, "#ffffff", KDTextGray0, 18, "left", 160);
 			DrawButtonKDExScroll(
 				"rec_item_list" + item.name,
 				(amount: number) => {
@@ -317,16 +347,24 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 		KDGetRestraintPreviewImage(KDRestraint({name: selectedItem.item}))
 		: KinkyDungeonRootDirectory + "Items/" + selectedItem.item + ".png";
 		let hotkey = KinkyDungeonKeyEnter[0];
+		let canAfford = KDHasRecyclerResources(KDMapToRecycleOutputs(selectedItem.recyclecost));
+		let inventoryItem = KinkyDungeonInventoryGetSafe(selectedItem.name);
+		DrawTextFitKD(TextGet("KDOwned").replace("AMNT", "" + (inventoryItem ? (inventoryItem.quantity || 1) : 0)),
+		x + XX + 32 + 100, y + YY + 180, 200, "#ffffff", KDTextGray0, 18, "center", 160);
 		DrawButtonKDEx(
 			"rec_item_build" + selectedItem.name,
 			() => {
-
+				KDChangeRecyclerResources(KDMapToRecycleOutputs(selectedItem.recyclecost));
+				 KinkyDungeonItemEvent({
+					name: selectedItem.item,
+					amount: 1,
+				});
 				return true;
 			}, KDMapData.RoomType == "Summit",
 
 			x + XX + 32, y + YY, 200, 200, "",
 			"#ffffff", img,
-			undefined, false, false, KDButtonColor, undefined, true,
+			undefined, false, !canAfford, KDButtonColor, undefined, true,
 			{
 				scaleImage: true,
 				centered: true,
@@ -376,4 +414,14 @@ function KDListRecyclerCats(): KDBlueprintCategory[] {
 		}
 	}
 	return list;
+}
+
+function KDMapToRecycleOutputs(amount: Record<string, number>): RecyclerOutputs {
+	let outputs : RecyclerOutputs = KDBaseRecycleOutputs();
+
+	for (let entry of Object.entries(amount)) {
+		outputs[entry[0]] = entry[1];
+	}
+
+	return outputs;
 }
