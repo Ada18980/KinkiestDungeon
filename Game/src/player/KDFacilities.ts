@@ -172,6 +172,8 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 		let w = 72;
 		let spacing = 110;
 		if (ms > 0) {
+			DrawTextFitKD(TextGet("KDServants") + ": ", x + width/2 - (spacing * (ms - 1) + w)/2 - 5, y + yy + 36,
+			500, "#ffffff", KDTextGray0, 24, "right");
 			let servants = KDGameData.FacilitiesData["Servants_" + facility];
 			for (let i = 0; i < ms; i++) {
 				let servant = servants[i];
@@ -189,6 +191,8 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 			yy += 100;
 		}
 		if (mp > 0) {
+			DrawTextFitKD(TextGet("KDPrisoners") + ": ", x + width/2 - (spacing * (mp - 1) + w)/2 - 5, y + yy + 36,
+			500, "#ffffff", KDTextGray0, 24, "right");
 			let prisoners = KDGameData.FacilitiesData["Prisoners_" + facility];
 			for (let i = 0; i < mp; i++) {
 				let prisoner = prisoners[i];

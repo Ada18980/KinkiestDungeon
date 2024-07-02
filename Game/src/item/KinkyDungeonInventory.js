@@ -2904,6 +2904,14 @@ function KDEquipInventoryVariant(variant, prefix = "", Tightness, Bypass, Lock, 
 function KDItem(item) {
 	return KDRestraint(item) || KDConsumable(item) || KDWeapon(item) || KDOutfit(item) || KinkyDungneonBasic[item?.name];
 }
+/**
+ *
+ * @param {Named} item
+ * @returns {weapon | outfit | consumable}
+ */
+function KDItemNoRestraint(item) {
+	return KDConsumable(item) || KDWeapon(item) || KDOutfit(item) || KinkyDungneonBasic[item?.name];
+}
 
 /**
  *
