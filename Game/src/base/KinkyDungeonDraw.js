@@ -205,7 +205,12 @@ kdcanvas.addChild(kdparticles);
 
 let KDTextWhite = "#ffffff";
 let KDTextGray3 = "#aaaaaa";
-let KDTextTan = "#d6cbc5";
+let KDBookTextNew = "#efefef";
+let KDTextTanNew = "#222222";
+let KDBookTextSB = "#000000";
+let KDTextTanSB = "#d6cbc5";
+let KDBookText = KDBookTextNew;
+let KDTextTan = KDTextTanNew;
 let KDTextGray2 = "#333333";
 let KDTextGray1 = "#111111";
 let KDTextGray05 = "#030303";
@@ -994,15 +999,18 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
 				KinkyDungeonInspect = false;
+				KDInteracting = false;
 			} else if (KDConfigHotbar) {
 				KDConfigHotbar = false;
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
 				KinkyDungeonInspect = false;
+				KDInteracting = false;
 			} else {
 				KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
 				KDPlayerSetPose = false;
 				KinkyDungeonInspect = false;
+				KDInteracting = false;
 				KinkyDungeonUpdateLightGrid = true;
 				KinkyDungeonDrawState = "Game";
 				KinkyDungeonMessageToggle = false;
@@ -1310,6 +1318,13 @@ function KinkyDungeonDrawGame() {
 							(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 100,
 							});
+					} else if (KDInteracting) {
+						KinkyDungeonSetTargetLocation(KDToggles.Helper);
+
+						KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule", KinkyDungeonRootDirectory + "UI/Interact.png",
+							(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+								zIndex: 100,
+							});
 					} else if (KinkyDungeonTargetingSpell) {
 						KinkyDungeonSetTargetLocation(KDToggles.Helper);
 
@@ -1440,7 +1455,7 @@ function KinkyDungeonDrawGame() {
 									if (path?.length > 1) {
 										dist -= Math.min(0, KDGameData.MovePoints + 1);
 									} else dist = 1 - KDGameData.MovePoints;
-								} else if (!KDToggles.LazyWalk) {
+								} else if (!KDToggles.LazyWalk || KinkyDungeonInDanger()) {
 									if (path?.length > 1) {
 										dist -= Math.max(0, diststart - 1);
 									} else dist = 1;
@@ -1484,7 +1499,7 @@ function KinkyDungeonDrawGame() {
 
 								if (KDGameData.MovePoints < 0) {
 									dist = 1 - KDGameData.MovePoints;
-								} else if (!KDToggles.LazyWalk) dist = 1;
+								} else if (!KDToggles.LazyWalk || KinkyDungeonInDanger()) dist = 1;
 								dist = Math.ceil(Math.max(0, dist));
 								DrawTextKD("x" + dist, (xx - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (yy - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
 							}
@@ -1525,7 +1540,7 @@ function KinkyDungeonDrawGame() {
 						}
 					}
 					let tile = ambushTile || KinkyDungeonMapGet(cursorX, cursorY);
-					if (KDTileTooltips[tile] && (KinkyDungeonInspect || KDTileTooltips[tile](cursorX, cursorY).noInspect)) {
+					if (KDTileTooltips[tile] && (KinkyDungeonInspect || KDInteracting || KDTileTooltips[tile](cursorX, cursorY).noInspect)) {
 						tooltips.push((offset) => KDDrawTileTooltip(tile, cursorX, cursorY, offset));
 					}
 				}
@@ -1578,14 +1593,14 @@ function KinkyDungeonDrawGame() {
 					FillRectKD(kdcanvas, kdpixisprites, "playerbg", {
 						Left: 0,
 						Top: 0,
-						Width: 500,
+						Width: KinkyDungeonDrawState == "Game" ? 500 : 2000,
 						Height: 1000,
 						Color: KDBGColor,
-						zIndex: -1,
+						zIndex: KinkyDungeonDrawState == "Game" ? -1 : -1000,
 						alpha: StandalonePatched ? KDUIAlpha : 0.01,
 					});
 				}
-				DrawCharacter(KinkyDungeonPlayer, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, KDToggles.FlipPlayer);
+				DrawCharacter(KinkyDungeonPlayer, 0, 0, 1, undefined, undefined, undefined, undefined, KinkyDungeonDrawState == "Game" ? 0 : - 20, KDToggles.FlipPlayer);
 
 			}
 			if (KinkyDungeonSleepiness) {
@@ -1608,10 +1623,10 @@ function KinkyDungeonDrawGame() {
 						Layer: "Head",
 						scale_x: 2.5,
 						scale_y: 2.5,
-						rotation_x_anchor: 1190/MODELWIDTH,
-						rotation_y_anchor: 690/MODELHEIGHT,
-						offset_x: 1100/MODELWIDTH,
-						offset_y: 620/MODELHEIGHT,
+						rotation_x_anchor: 1190,
+						rotation_y_anchor: 690,
+						offset_x: 1100,
+						offset_y: 620,
 					},
 				] : [];
 				if (KDDrawPlayer)
@@ -1743,7 +1758,7 @@ function KinkyDungeonDrawGame() {
 					}
 				}
 
-				KinkyDungeonDrawTethers(KinkyDungeonPlayerEntity, CamX+CamX_offset, CamY+CamY_offset);
+				KinkyDungeonDrawTethers(CamX+CamX_offset, CamY+CamY_offset);
 
 				if (tooltip && KDMouseInPlayableArea()) {
 					DrawTextFitKD(tooltip, MouseX, MouseY - KinkyDungeonGridSizeDisplay/2, 200, "#ffffff", KDTextGray2);
@@ -1842,7 +1857,16 @@ function KinkyDungeonDrawGame() {
 			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
 		}
 		KinkyDungeonDrawCollection();
-	} else if (KinkyDungeonDrawState == "Reputation") {
+	}  else if (KinkyDungeonDrawState == "Facilities") {
+		KDDrawNavBar(3);
+		if (KDGameData.PlayerName) {
+			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+		}
+		KinkyDungeonDrawFacilities();
+	}
+
+
+	else if (KinkyDungeonDrawState == "Reputation") {
 		//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), "#ffffff", "", "");
 		KDDrawNavBar(3);
 		if (KDGameData.PlayerName) {
@@ -2147,6 +2171,8 @@ function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, 
 		let II = KDEntitiesFloaterRegisty.get(Entity) || 1;
 		II += 1;
 		KDEntitiesFloaterRegisty.set(Entity, II);
+		let floaterMult = KDToggles.FastFloaters ? 0.33 : 1;
+		let stringFloaterMult = KDToggles.FastFloaters ? 0.7 : 1;
 		let floater = {
 			x: Entity.x + 0.5,// + Math.random(),
 			y: Entity.y - (II - 1) * KDFloaterSpacing,// + Math.random(),
@@ -2155,7 +2181,7 @@ function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, 
 			t: 0,
 			color: Color,
 			text: "" + ((typeof Amount === "string") ? Amount : Math.round(Amount * 10)/10) + suff,
-			lifetime: Time ? Time : ((typeof Amount === "string") ? 4 : ((Amount < 3) ? 2 : (Amount > 5 ? 3 : 2))),
+			lifetime: Time ? stringFloaterMult*Time : ((typeof Amount === "string") ? stringFloaterMult*4 : floaterMult*((Amount < 3) ? 2 : (Amount > 5 ? 3 : 2))),
 		};
 		KinkyDungeonFloaters.push(floater);
 	}
@@ -2252,21 +2278,23 @@ let KDMsgFadeTime = 10;
 let KDMaxConsoleMsg = 6;
 
 let KDLogFilters = [
-	"Combat",
 	"Action",
+	"Combat",
 	"Self",
 	"Struggle",
 	"Ambient",
 	"Dialogue",
+	"Items",
+	"Kills",
 ];
 
-function KinkyDungeonDrawMessages(NoLog) {
+function KinkyDungeonDrawMessages(NoLog, shiftx = 0, noBG = false) {
 	if (!NoLog) {
 		DrawButtonKDEx("logtog", (bdata) => {
 			KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle;
 			KDLogIndex = 0;
 			return true;
-		}, true, KDMsgWidthMin + KDMsgX + 70, 4, 52, 52, "", "#ffffff",
+		}, true, KDMsgWidthMin + KDMsgX + shiftx + 70, 4, 52, 52, "", "#ffffff",
 		KinkyDungeonRootDirectory + (KinkyDungeonMessageToggle ? "UI/LogUp.png" : "UI/LogDown.png"), undefined, undefined, !KinkyDungeonMessageToggle, undefined, undefined, undefined, {
 			hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[0]),
 			hotkeyPress: KinkyDungeonKeyToggle[0],
@@ -2282,8 +2310,8 @@ function KinkyDungeonDrawMessages(NoLog) {
 		let size = 48;
 		let filterCols = 2;
 		let yyy = KDLogFilters.length * spacing/filterCols + 30;
-		if (MouseIn(KDMsgWidthMin + KDMsgX + 70, 0, 300, yyy)) {
-			let filterX = KDMsgWidthMin + KDMsgX + 70 + 60;
+		if (MouseIn(KDMsgWidthMin + KDMsgX + shiftx + 70, 0, 300, yyy)) {
+			let filterX = KDMsgWidthMin + KDMsgX + shiftx + 70 + 60;
 			let filterY = 4;
 			let ii = 0;
 			for (let filter of KDLogFilters) {
@@ -2308,17 +2336,17 @@ function KinkyDungeonDrawMessages(NoLog) {
 	if (!KinkyDungeonMessageToggle || NoLog) {
 		let zLevel = KDModalArea ? 50 : undefined;
 		let i = 0;
-		if (!MouseIn(KDMsgX + (KDMsgWidth - KDMsgWidthMin)/2, 0, KDMsgWidthMin, 62 + KDLogDist*(2 + KDMaxConsoleMsg)) || KinkyDungeonDrawState != "Game") {
+		if (!MouseIn(KDMsgX + shiftx + (KDMsgWidth - KDMsgWidthMin)/2, 0, KDMsgWidthMin, 62 + KDLogDist*(2 + KDMaxConsoleMsg)) || KinkyDungeonDrawState != "Game") {
 			let msg2nd = [];
 			let ignoreMSG = [];
 			let spacing = KDLogDist;
 			if (KinkyDungeonActionMessageTime > 0 && KinkyDungeonActionMessageNoPush) {
-				DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
+				DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
 				ignoreMSG.push(KinkyDungeonActionMessage);
 				i++;
 			}
 			if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessageNoPush) {
-				DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, KinkyDungeonTextMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
+				DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, KinkyDungeonTextMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
 				ignoreMSG.push(KinkyDungeonTextMessage);
 				i++;
 			}
@@ -2354,46 +2382,55 @@ function KinkyDungeonDrawMessages(NoLog) {
 						if (msg.filter && KDGameData.LogFilters && KDGameData.LogFilters[msg.filter] == false) {
 							continue;
 						}
+						if (msg.antifilter && KDGameData.LogFilters && KDGameData.LogFilters[msg.antifilter] == true) {
+							continue;
+						}
 						alpha = Math.max(0, Math.min(1, 2.0 - i / KDMaxConsoleMsg)) * (1 - Math.max(0, Math.min(1, Math.max(0, KinkyDungeonCurrentTick - msg.time - 1)/KDMsgFadeTime)));
-						DrawTextFitKD(msg.text, KDMsgX + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, msg.color, KDTextGray1, KDMSGFontSize, undefined, zLevel, alphamin + (1 - alphamin) * alpha);
+						DrawTextFitKD(msg.text, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, msg.color, KDTextGray1, KDMSGFontSize, undefined, zLevel, alphamin + (1 - alphamin) * alpha);
 						i++;
 					}
 				}
 			}
 
 		}
-		if (i > 0)
-			FillRectKD(kdcanvas, kdpixisprites, "msglogbg", {
-				Left: KDMsgX + (KDMsgWidth - KDMsgWidthMin)/2,
-				Top: 0,
-				Width: KDMsgWidthMin,
-				Height: 22 + KDLogDist*(i),
-				Color: "#000000",
-				LineWidth: 1,
-				zIndex: (zLevel || 101) - 1,
-				alpha: 0.45,
-			});
+		if (!noBG)
+			if (i > 0)
+				FillRectKD(kdcanvas, kdpixisprites, "msglogbg", {
+					Left: KDMsgX + shiftx + (KDMsgWidth - KDMsgWidthMin)/2,
+					Top: 0,
+					Width: KDMsgWidthMin,
+					Height: 22 + KDLogDist*(i),
+					Color: "#000000",
+					LineWidth: 1,
+					zIndex: (zLevel || 101) - 1,
+					alpha: 0.45,
+				});
 
 
 	} else {
-		FillRectKD(kdcanvas, kdpixisprites, "msglogbg", {
-			Left: KDMsgX,
-			Top: 0,
-			Width: KDMsgWidth,
-			Height: KDLogTopPad + KDLogHeight,
-			Color: KDTextGray0,
-			LineWidth: 1,
-			zIndex: 100,
-			alpha: 0.6,
-		});
+		if (!noBG)
+			FillRectKD(kdcanvas, kdpixisprites, "msglogbg", {
+				Left: KDMsgX + shiftx,
+				Top: 0,
+				Width: KDMsgWidth,
+				Height: KDLogTopPad + KDLogHeight,
+				Color: KDTextGray0,
+				LineWidth: 1,
+				zIndex: 100,
+				alpha: 0.6,
+			});
 		let ii = 0;
 		for (let i = 0; i < KinkyDungeonMessageLog.length && i < KDMaxLog; i++) {
 			let log = KinkyDungeonMessageLog[Math.max(0, KinkyDungeonMessageLog.length - 1 - (i + KDLogIndex))];
 			if (log.filter && KDGameData.LogFilters && KDGameData.LogFilters[log.filter] == false) {
 				continue;
 			}
+			if (log.antifilter && KDGameData.LogFilters && KDGameData.LogFilters[log.antifilter] == true) {
+				continue;
+			}
+
 			let col = log.color;
-			DrawTextFitKD(log.text, KDMsgX + KDMsgWidth/2, KDLogTopPad + ii * KDLogDist + KDLogDist/2, KDMsgWidth, col, KDTextGray1, KDMSGFontSize, undefined, 101);
+			DrawTextFitKD(log.text, KDMsgX + shiftx + KDMsgWidth/2, KDLogTopPad + ii * KDLogDist + KDLogDist/2, KDMsgWidth, col, KDTextGray1, KDMSGFontSize, undefined, 101);
 			ii++;
 		}
 		if (KinkyDungeonMessageLog.length > KDMaxLog) {
@@ -2402,7 +2439,7 @@ function KinkyDungeonDrawMessages(NoLog) {
 					KDLogIndex = Math.max(0, KDLogIndex - KDLogIndexInc);
 				return true;
 			}, true, 1500, 20, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png");
-			//KDMsgX + KDMsgWidth/2 - 45, KDLogTopPad + KDLogHeight + 10
+			//KDMsgX + shiftx + KDMsgWidth/2 - 45, KDLogTopPad + KDLogHeight + 10
 			DrawButtonKDEx("logscrolldown", (bdata) => {
 				if (KDLogIndex < KinkyDungeonMessageLog.length - KDMaxLog)
 					KDLogIndex = Math.min(Math.max(0, KinkyDungeonMessageLog.length - KDMaxLog), KDLogIndex + KDLogIndexInc);
@@ -2646,9 +2683,10 @@ let KDFont = 'Arial';
  * @param {*} [alpha]
  * @param {*} [border]
  * @param {boolean} [unique] - This button is not differentiated by position
+ * @param {string} [font] - This button is not differentiated by position
  */
-function DrawTextFitKD(Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined, unique = undefined) {
-	DrawTextFitKDTo(kdcanvas, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex, alpha, border, unique);
+function DrawTextFitKD(Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined, unique = undefined, font) {
+	DrawTextFitKDTo(kdcanvas, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex, alpha, border, unique, font);
 }
 
 /**
@@ -2666,8 +2704,9 @@ function DrawTextFitKD(Text, X, Y, Width, Color, BackColor, FontSize, Align, zIn
  * @param {*} [alpha]
  * @param {*} [border]
  * @param {boolean} [unique] - This button is not differentiated by position
+ * @param {string} [font] - This button is not differentiated by position
  */
-function DrawTextFitKDTo(Container, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined, unique = undefined) {
+function DrawTextFitKDTo(Container, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined, unique = undefined, font) {
 	if (!Text) return;
 	let alignment = Align ? Align : "center";
 
@@ -2684,6 +2723,7 @@ function DrawTextFitKDTo(Container, Text, X, Y, Width, Color, BackColor, FontSiz
 		alpha: alpha,
 		border: border,
 		unique: unique,
+		font: font,
 	});
 }
 
@@ -2718,37 +2758,12 @@ function DrawTextKD(Text, X, Y, Color, BackColor, FontSize, Align, zIndex = 110,
 	});
 }
 
-let KDFontName = "Roboto";
-
-/* eslint-disable */
-// // Load them google fonts before starting...!
-window.WebFontConfig = {
-    google: {
-        families: [KDFontName],
-    },
-
-    active() {
-		KDAllowText = true;
-    },
-};
 
 let KDAllowText = true;
 
-
-// include the web-font loader script
-(function() {
-    const wf = document.createElement('script');
-    wf.src = `Fonts/webfont.js`;
-    wf.type = 'text/javascript';
-    wf.async = true;
-    const s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(wf, s);
-}());
-/* eslint-enabled */
-
 /**
  *
- * @param {{Text: string, X: number, Y: number, Width?: number, Color: string, BackColor: string, FontSize?: number, align?: string, zIndex?: number, alpha?: number, border?: number, unique?: boolean}} Params
+ * @param {{Text: string, X: number, Y: number, Width?: number, Color: string, BackColor: string, FontSize?: number, align?: string, zIndex?: number, alpha?: number, border?: number, unique?: boolean, font?: string}} Params
  * @returns {boolean} - If it worked
  */
 function DrawTextVisKD(Container, Map, id, Params) {
@@ -2779,7 +2794,7 @@ function DrawTextVisKD(Container, Map, id, Params) {
 		// Make the prim
 		sprite = new PIXI.Text(Params.Text,
 			{
-				fontFamily : KDFontName,
+				fontFamily : Params.font || KDSelectedFont || KDFontName,
 				fontSize: Params.FontSize ? Params.FontSize : 30,
 				fill : string2hex(Params.Color),
 				stroke : Params.BackColor != "none" ? (Params.BackColor ? string2hex(Params.BackColor) : "#333333") : 0x000000,
@@ -2806,7 +2821,7 @@ function DrawTextVisKD(Container, Map, id, Params) {
 		sprite.name = id;
 		//sprite.cacheAsBitmap = true;
 		sprite.position.x = Params.X + (Params.align == 'center' ? -sprite.width/2 : (Params.align == 'right' ? -sprite.width : 0));
-		sprite.position.y = Params.Y - sprite.height/2 - 2;
+		sprite.position.y = Params.Y - Math.ceil(sprite.height/2);
 		sprite.zIndex = Params.zIndex ? Params.zIndex : 0;
 		sprite.alpha = Params.alpha ? Params.alpha : 1;
 		kdSpritesDrawn.set(id, true);
@@ -3105,20 +3120,20 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 			};
 			if (options?.tint) o.tint = options.tint;
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-			Image, (options?.centered ? Width/2 - img.orig.width/2 : 2) + Left, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
+				Image, (options?.centered ? Width/2 - img.orig.width/2 : 2) + Left, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
 		}
 		textPush = img.orig.width;
 	}
 
 	// Draw the tooltip
 	if ((HoveringText) && (MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height)) {
-		DrawTextFitKDTo(Container || kdcanvas, HoveringText, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04), "#ffffff", undefined, undefined, undefined, zIndex + 1);
+		DrawTextFitKDTo(Container || kdcanvas, HoveringText, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04), "#ffffff", undefined, undefined, undefined, zIndex + 1, undefined, undefined, undefined, KDButtonFont);
 		//DrawHoverElements.push(() => DrawButtonHover(Left, Top, Width, Height, HoveringText));
 	} else if (Label)
 		DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), (options?.centerText) ? Width : (Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04)),
 			Color,
 			(options && options.noTextBG) ? "none" : undefined,
-			FontSize, undefined, zIndex + 0.001, undefined, undefined, options?.unique);
+			FontSize, undefined, zIndex + 0.001, undefined, undefined, options?.unique, KDButtonFont);
 
 	if (options?.hotkey) {
 		let size = (FontSize*0.6) || 14;
@@ -3126,7 +3141,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 			Top + (size / 2) + 2, Width*0.7,
 			'#ffffff',
 			(options && options.noTextBG) ? "none" : undefined,
-			size, "right", zIndex + 0.02, undefined, undefined);
+			size, "right", zIndex + 0.02, undefined, undefined, undefined, KDButtonFont);
 	}
 }
 
@@ -3202,10 +3217,11 @@ function DrawCheckboxKDEx(name, func, enabled, Left, Top, Width, Height, Text, I
  * @param {object} [options] - Additional options
  * @param {boolean} [options.noTextBG] - Dont show text backgrounds
  * @param {number} [options.alpha]
+ * @param {string} [options.font]
  * @returns {void} - Nothing
  */
 function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, BackText, NextText, Disabled, ArrowWidth, NoBorder, options) {
-	let id = "BackNext" + Left + "," + Top + "," + Width + Color;
+	//let id = "BackNext" + Left + "," + Top + "," + Width + Color;
 	// Set the widths of the previous/next sections to be colored cyan when hovering over them
 	// By default each covers half the width, together covering the whole button
 	if (ArrowWidth == null || ArrowWidth > Width / 2) ArrowWidth = Width / 2;
@@ -3287,7 +3303,7 @@ function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, Ba
 	MainCanvas.closePath();*/
 
 	// Draw the text or image
-	DrawTextFitKD(Label, Left + Width / 2, Top + (Height / 2) + 1, (CommonIsMobile) ? Width - 6 : Width - 36, "#ffffff");
+	DrawTextFitKD(Label, Left + Width / 2, Top + (Height / 2) + 1, (CommonIsMobile) ? Width - 6 : Width - 36, "#ffffff", undefined, undefined, undefined, undefined, undefined, undefined, undefined, options?.font);
 
 	// Draw the back arrow
 	/*MainCanvas.beginPath();
@@ -3635,7 +3651,7 @@ function GetAdjacentList(list, index, width) {
 	return {
 		left: list.slice(0, index),
 		right: list.slice(index+width),
-	}
+	};
 }
 
 
@@ -3796,13 +3812,13 @@ function KDDrawTileTooltip(maptile, x, y, offset) {
 		center: true,
 	});
 	if (KDTileTooltips[maptile](x, y).desc)
-	TooltipList.push({
-		str: KDTileTooltips[maptile](x, y).desc,
-		fg: "#ffffff",
-		bg: "#000000",
-		size: 18,
-		center: true,
-	});
+		TooltipList.push({
+			str: KDTileTooltips[maptile](x, y).desc,
+			fg: "#ffffff",
+			bg: "#000000",
+			size: 18,
+			center: true,
+		});
 
 
 	return KDDrawTooltip(TooltipList, offset);
@@ -4099,7 +4115,7 @@ function KDDrawTooltip(TooltipList, offset) {
 		Height: TooltipHeight + 20,
 		Color: "#000000",
 		LineWidth: 1,
-		zIndex: 75,
+		zIndex: 112,
 		alpha: 0.7,
 	});
 
@@ -4109,7 +4125,7 @@ function KDDrawTooltip(TooltipList, offset) {
 		DrawTextFitKD(listItem.str,
 			tooltipX + (listItem.center ? TooltipWidth/2 : pad),
 			tooltipY + YY, TooltipWidth - 2 * pad, listItem.fg, listItem.bg,
-			listItem.size, listItem.center ? "center" : "left", 76);
+			listItem.size, listItem.center ? "center" : "left", 113);
 		YY += extra + listItem.size;
 	}
 	return offset + TooltipHeight + 30;
@@ -4140,12 +4156,12 @@ function KDTextArea(Name, Left, Top, Width, Height) {
 	if (!Element) {
 		ElementCreateTextArea(Name);
 		Element = document.getElementById(Name);
-		KDTempElements.set(Name, Element)
+		KDTempElements.set(Name, Element);
 		if (Element) created = true;
 	}
 	KDElementPosition(Name, Left, Top, Width, Height);
-	KDDrawnElements.set(Name, Element)
-	return {Element: Element, Created: created}
+	KDDrawnElements.set(Name, Element);
+	return {Element: Element, Created: created};
 }
 
 /**
@@ -4165,12 +4181,12 @@ function KDTextField(Name, Left, Top, Width, Height, Type = "text", Value = "", 
 	if (!Element) {
 		ElementCreateInput(Name, Type, Value, MaxLength);
 		Element = document.getElementById(Name);
-		KDTempElements.set(Name, Element)
+		KDTempElements.set(Name, Element);
 		if (Element) created = true;
 	}
 	KDElementPosition(Name, Left, Top, Width, Height);
-	KDDrawnElements.set(Name, Element)
-	return {Element: Element, Created: created}
+	KDDrawnElements.set(Name, Element);
+	return {Element: Element, Created: created};
 }
 
 
@@ -4300,7 +4316,7 @@ function KDMouseInPlayableArea() {
 		&& !MouseIn(0, 920, 2000, 100)
 		&& !MouseIn(1730, 255, 255, 150)
 		&& !KDButtonHovering
-		&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height))
+		&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height));
 }
 
 /**
@@ -4340,7 +4356,7 @@ function KDGetTargetRetType(x, y) {
 function KDDrawPalettes(x, y, w, scale = 72) {
 	let XX = x;
 	let YY = y;
-	let row = 0;
+	//let row = 0;
 	let column = 0;
 	let spacing = 80;
 	/** @type {[string, Record<string, LayerFilter>]} */
@@ -4350,10 +4366,10 @@ function KDDrawPalettes(x, y, w, scale = 72) {
 	for (let value of [zero, ...Object.entries(KinkyDungeonFactionFilters)]) {
 		KDDraw(kdcanvas, kdpixisprites, "palette" + value[0], KinkyDungeonRootDirectory + "UI/greyColor.png",
 			XX, YY, scale, scale, undefined, {
-			filters: [
-				new PIXI.filters.AdjustmentFilter(value[1].Highlight),
-			]
-		});
+				filters: [
+					new PIXI.filters.AdjustmentFilter(value[1].Highlight),
+				]
+			});
 		DrawButtonKDEx("choosepalette" + value[0], (b) => {
 			KDDefaultPalette = value[0];
 			localStorage.setItem("KDDefaultPalette", value[0]);
@@ -4366,7 +4382,7 @@ function KDDrawPalettes(x, y, w, scale = 72) {
 		column++;
 		if (column >= w) {
 			column = 0;
-			row++;
+			//row++;
 			YY += spacing;
 			XX = x;
 		} else {
@@ -4399,3 +4415,12 @@ function KDClearOutlineFilterCache() {
 	}
 	KDOutlineFilterCache = new Map();
 }
+
+function KDGetFontMult(font) {
+	if (!font) font = KDSelectedFont;
+	if (KDFontsAlias.get(font)) {
+		return KDFontsAlias.get(font).width;
+	}
+	return 1.0;
+}
+

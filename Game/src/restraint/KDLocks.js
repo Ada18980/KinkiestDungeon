@@ -1104,6 +1104,7 @@ function KDCyberUnlock(data, base = 20) {
 		KinkyDungeonSendEvent("beforelockout", data);
 		if (data.lockout) {
 			KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("KeyCard"), -1);
+			KinkyDungeonSendTextMessage(10, TextGet("KDLockoutTickEnd").replace("AMNT", "" + Math.round(KDGameData.LockoutChance * 100)), "#ff5277", 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDLockout"), "#ff5277", 2);
 			KinkyDungeonSendEvent("lockout", data);
 		}

@@ -4880,7 +4880,7 @@ Level RestraintLevel (Rarity)
 Nivel RestraintLevel (Rarity)
 Consumable
 Consumible
-Equipped
+Worn
 Equipado
 Weapons
 armas
@@ -9952,7 +9952,7 @@ Fuelle
 (De un ensayo titulado 'Sobre las cadenas de suministro celestiales') Se sabe que los cielos buscan oro. No sabemos por qué los cielos lo buscan, pero sí sabemos que las Diosas nos otorgan fragmentos de su poder ilimitado a cambio de este metal inútil que extraemos de la tierra. Les importa tanto que los santuarios son comunes, cada uno de los cuales alberga un mensajero angelical al acecho de cualquier aventurero dispuesto a separarse del suyo.
 They say that the maiden who safeguards the graveyard is kind to her pets...
 Dicen que la doncella que custodia el cementerio es amable con sus mascotas...
-They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Blink out of jail and into the hallway where they kept all my things!
+They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Portal out of jail and into the hallway where they kept all my things!
 Pensaron que podrían tener mi espada legendaria... ¡pero los tontos se olvidaron de atarme las piernas! ¡Pude Blink salir de la cárcel y entrar al pasillo donde guardaban todas mis cosas!
 I am writing this from inside prison. Who would have known they cared so much about me using a shrine? Sheesh.
 Estoy escribiendo esto desde dentro de la prisión. ¿Quién hubiera sabido que se preocupaban tanto por mí usando un santuario? Sheesh.
@@ -9960,7 +9960,7 @@ Estoy escribiendo esto desde dentro de la prisión. ¿Quién hubiera sabido que 
 (Un dibujo de un grupo de zombis, ordenados por nivel de peligro. Destacan un zombi rodeado de amuletos, un zombi rodeado de talismanes, un guerrero zombi con una espada y... una especie de doncella del santuario que nunca has visto). visto antes)
 (An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE)|The first thing to understand is that tying someone up is difficult if they are not in a vulnerable position. If your opponent is vulnerable, then binding will be twice as effective!
 (Un extracto de BRUJERÍA DE BONDAGE: UNA GUÍA DEL ESTUDIANTE) | Lo primero que hay que entender es que atar a alguien es difícil si no se encuentra en una posición vulnerable. ¡Si tu oponente es vulnerable, la unión será el doble de efectiva!
-(An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE)|Once your opponent is nicely trussed up, you can break their will by ticking them with a Feather, Ice Cube, or Magic Wand. This will deal extra damage.
+(An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE)|Once your opponent is nicely trussed up, you can break their will by tickling them with a Feather, Ice Cube, or Magic Wand. This will deal extra damage.
 (Un extracto de BONDAGE WITCHERY: A STUDENT'S GUIDE)|Una vez que tu oponente esté bien atado, puedes romper su voluntad golpeándolo con una pluma, un cubo de hielo o una varita mágica. Esto causará daño adicional.
 (An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE)|Bigger and more resilient opponents are much more effective at breaking out of your binds. Try to deal some damage to them to decrease the speed at which they struggle out of your restraints.
 (Un extracto de BONDAGE WITCHERY: A STUDENT'S GUIDE)|Los oponentes más grandes y resistentes son mucho más efectivos para liberarse de sus ataduras. Intenta hacerles daño para disminuir la velocidad a la que se esfuerzan por salir de tus ataduras.

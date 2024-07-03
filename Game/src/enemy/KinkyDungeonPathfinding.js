@@ -70,6 +70,9 @@ let KDPFTrim = 40;
  * @param {(x: number, y: number, xx: number, yy: number) => number} [heuristicOverride]
  * @param {boolean} [taxicab]
  * @param {boolean} [ignoreTrafficLaws]
+ * @param {boolean} [RequireLight]
+ * @param {boolean} [noDoors]
+ * @param {boolean} [needDoorMemory]
  * @returns {any} - Returns an array of x, y points in order
  */
 function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlayer, ignoreLocks, Tiles, RequireLight, noDoors, needDoorMemory, Enemy, trimLongDistance, heuristicOverride, taxicab, ignoreTrafficLaws) {
@@ -82,12 +85,16 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 		if (ignoreLocks) {
 			if (KDPathCacheIgnoreLocks.has(index)) {
 				KDPathfindingCacheHits++;
-				return Object.assign([], KDPathCacheIgnoreLocks.get(index));
+				if (KDPathCacheIgnoreLocks.get(index)[0] && KDistChebyshev(KDPathCacheIgnoreLocks.get(index)[0].x - startx, KDPathCacheIgnoreLocks.get(index)[0].y - starty) < 1.5)
+					return KDPathCacheIgnoreLocks.get(index).slice(0);
+				else KDPathCacheIgnoreLocks.delete(index);
 			}
 		} else {
 			if (KDPathCache.has(index)) {
 				KDPathfindingCacheHits++;
-				return Object.assign([], KDPathCache.get(index));
+				if (KDPathCache.get(index)[0] && KDistChebyshev(KDPathCache.get(index)[0].x - startx, KDPathCache.get(index)[0].y - starty) < 1.5)
+					return KDPathCache.get(index).slice(0);
+				else KDPathCache.delete(index);
 			}
 		}
 
@@ -168,23 +175,30 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 							if (ignoreLocks) {
 								closed.set(lowLoc, lowest);
 								newPath = KinkyDungeonGetPath(closed, lowest.x, lowest.y);
-								let endPath = KDPathCacheIgnoreLocks.get(locIndex);
+								let endPath = KDPathCacheIgnoreLocks.get(locIndex).slice(0);
 								KDPathfindingCacheHits++;
-								newPath.push.apply(newPath, endPath);
+								newPath.push(...endPath);
 							} else {
 								closed.set(lowLoc, lowest);
 								newPath = KinkyDungeonGetPath(closed, lowest.x, lowest.y);
-								let endPath = KDPathCache.get(locIndex);
+								let endPath = KDPathCache.get(locIndex).slice(0);
 								KDPathfindingCacheHits++;
-								newPath.push.apply(newPath, endPath);
+								newPath.push(...endPath);
 							}
 							if (newPath.length > 0) {
-								if (ignoreLocks) {
-									if (!KDPathCacheIgnoreLocks.has(index)) KDSetPathfindCache(KDPathCacheIgnoreLocks, newPath, endx, endy, tileShort, index);
-								} else {
-									if (!KDPathCache.has(index)) KDSetPathfindCache(KDPathCache, newPath, endx, endy, tileShort, index);
+								if (newPath[0] && KDistChebyshev(newPath[0].x - startx, newPath[0].y - starty) < 1.5) {
+									if (ignoreLocks) {
+										if (!KDPathCacheIgnoreLocks.has(index)) KDSetPathfindCache(KDPathCacheIgnoreLocks, newPath, endx, endy, tileShort, index);
+									} else {
+										if (!KDPathCache.has(index)) KDSetPathfindCache(KDPathCache, newPath, endx, endy, tileShort, index);
+									}
+									return newPath;
 								}
-								return newPath;
+								else if (ignoreLocks) {
+									KDPathCacheIgnoreLocks.delete(locIndex);
+								} else {
+									KDPathCache.delete(locIndex);
+								}
 							} else return undefined;
 						}
 						// Give up and add to the test array
@@ -255,6 +269,15 @@ function KinkyDungeonGetPath(closed, xx, yy, endx, endy) {
 	return list.reverse();
 }
 
+/**
+ *
+ * @param {Map<string, any[]>} PathMap
+ * @param {any[]} newPath
+ * @param {number} endx
+ * @param {number} endy
+ * @param {string} Tiles
+ * @param {string} Finalindex
+ */
 function KDSetPathfindCache(PathMap, newPath, endx, endy, Tiles, Finalindex) {
 	for (let i = 0; i < newPath.length - 1; i++) {
 		let path = newPath.slice(i);
@@ -262,5 +285,5 @@ function KDSetPathfindCache(PathMap, newPath, endx, endy, Tiles, Finalindex) {
 		PathMap.set(index, path.slice(1));
 	}
 	if (Finalindex)
-		PathMap.set(Finalindex, newPath);
+		PathMap.set(Finalindex, newPath.slice(0));
 }

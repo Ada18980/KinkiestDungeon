@@ -45,7 +45,7 @@ function KDDrawMusic(delta) {
 				Width: 1000,
 				Height: KDMusicYMax,
 				Color: "#000000",
-				alpha: 0.5,
+				alpha: 0.8,
 				zIndex: 55,
 			}
 		);

@@ -875,6 +875,12 @@ let KDDialogue = {
 			"Sleep": {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
+					if (KinkyDungeonMapGet(KDPlayer().x, KDPlayer().y) && KDGameData.InteractTargetX && KDGameData.InteractTargetY) {
+						if (KinkyDungeonMapGet(KDGameData.InteractTargetX, KDGameData.InteractTargetY) == 'B') {
+							KDMovePlayer(KDGameData.InteractTargetX, KDGameData.InteractTargetY, true);
+						}
+					}
+
 					KinkyDungeonSetFlag("slept", -1);
 					if (KinkyDungeonPlayerInCell(true)) {
 						KinkyDungeonChangeRep("Ghost", KinkyDungeonIsArmsBound() ? 5 : 2);
@@ -882,6 +888,89 @@ let KDDialogue = {
 					//KinkyDungeonChangeWill(KinkyDungeonStatWillMax * KDSleepBedPercentage);
 					KDGameData.SleepTurns = KinkyDungeonSleepTurnsMax;
 					KinkyDungeonChangeMana(KinkyDungeonStatManaMax, false, 0, false, true);
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+	"DollDropoff": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KinkyDungeonSetFlag("nobed", 8);
+			return false;
+		},
+		options: {
+			"Use": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+
+					let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+					if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
+						KDMovePlayer(KDGameData.InteractTargetX + (nearestJail.direction?.x || 0), KDGameData.InteractTargetY + (nearestJail.direction?.y || 0), true);
+						if (nearestJail.restrainttags) {
+							let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, undefined);
+							if (restraint)
+								KinkyDungeonAddRestraintIfWeaker(restraint, KDGetEffLevel(),false, undefined);
+						}
+					}
+
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+	"Furniture": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KinkyDungeonSetFlag("nobed", 8);
+			return false;
+		},
+		options: {
+			"Use": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+
+					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+					if (tile?.Furniture) {
+						KDMovePlayer(KDGameData.InteractTargetX, KDGameData.InteractTargetY, true);
+
+						let furn = KDFurniture[tile.Furniture];
+						if (furn) {
+							KinkyDungeonSetFlag("GuardCalled", 300);
+							let rest = KinkyDungeonGetRestraint(
+								{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
+								(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+								true,
+								"",
+								true,
+								false,
+								false);
+							KinkyDungeonAddRestraintIfWeaker(rest, KDGetEffLevel(), true);
+							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/LockHeavy.ogg");
+						}
+
+					}
+
 					return false;
 				},
 				options: {
@@ -906,8 +995,9 @@ let KDDialogue = {
 			"Leave": {
 				playertext: "Leave", response: "Default",
 				exitDialogue: true,
+				skip: true,
 			},
-			...Object.fromEntries([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(
+			...Object.fromEntries(["Summit", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(
 				(num) => {
 					/**
 					 * @type {KinkyDialogue}
@@ -915,10 +1005,10 @@ let KDDialogue = {
 					let d = {
 						playertext: "Default", response: "Default",
 						prerequisiteFunction: (gagged, player) => {
-							return num != MiniGameKinkyDungeonLevel && KDGameData.ElevatorsUnlocked[num];
+							return KDIsElevatorFloorUnlocked(num);
 						},
 						clickFunction: (gagged, player) => {
-							KDElevatorToFloor(num);
+							KDElevatorToFloor(KDElevatorFloorIndex[num] ? (KDElevatorFloorIndex[num].Floor) : (typeof num === "string" ? 0 : num), KDElevatorFloorIndex[num]?.RoomType);
 							return false;
 						},
 						exitDialogue: true,

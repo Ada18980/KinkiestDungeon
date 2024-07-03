@@ -293,7 +293,7 @@ let KDCurses = {
 		condition: (item) => {return false;},
 		remove: (item, host) => {},
 		events: [
-			{type: "SacrificeMage", power: 1, count: 5, mult: 1, trigger: "capture", kind: "SacrificeMage"}
+			{type: "SacrificeMage", power: 1, count: 5, mult: 1, trigger: "afterCapture", kind: "SacrificeMage"}
 		],
 	},
 	"Will" : {
@@ -467,7 +467,7 @@ function KDBestowCurse(item, ev) {
  * @param {Record<string, number>} enemyTags
  * @returns {any}
  */
-function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = undefined, enemyTags = {basicCurse: 10}) {
+function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = undefined, enemyTags = {basicCurse: 10}, noPick = true) {
 	// Sanitize to avoid duped pointer
 	ev = JSON.parse(JSON.stringify(ev));
 	KinkyDungeonDupeRestraintText(restraint.name, newRestraintName);
@@ -478,6 +478,11 @@ function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = un
 		Struggle: Math.min(restraint.escapeChance.Struggle, -0.2),
 		Cut: Math.min(restraint.escapeChance.Cut || 1.0, -0.1),
 	});
+	if (!noPick) {
+		Object.assign(escapeChance, {
+			Pick: Math.min(restraint.escapeChance.Pick || 0, 0.1),
+		});
+	}
 	return {
 		//protection: 0,
 		preview: restraint.preview || restraint.name,

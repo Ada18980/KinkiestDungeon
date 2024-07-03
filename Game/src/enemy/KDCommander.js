@@ -198,7 +198,7 @@ function KDCommanderUpdateOrders(data) {
 				data.aggressive = KinkyDungeonAggressive(enemy);
 				let role = KDCommanderOrders[id[1]];
 				if (role) {
-					if (KDBoundEffects(enemy) < 4 && role.maintain(enemy, data)) {
+					if (enemy != KinkyDungeonJailGuard() && enemy != KinkyDungeonLeashingEnemy() && KDBoundEffects(enemy) < 4 && role.maintain(enemy, data)) {
 						role.update(enemy, data);
 					} else {
 						KDCommanderRoles.delete(enemy.id);
@@ -560,7 +560,7 @@ let KDCommanderOrders = {
 							&& !KinkyDungeonVisionGet(xxx, yyy)) {
 							let checkpoint = KDStationedChokepointsDist[xxx + ',' + yyy];
 							let trap = !KDEffectTileTags(xxx, yyy).trap ? KDGetTrapSpell(enemy, xxx, yyy, checkpoint) : "";
-							if (trap && KDRandom() < (checkpoint ? 0.5 : (cpOverride ? 0.01 : 0))) {
+							if (trap && KDRandom() < (checkpoint ? 0.5 : (cpOverride ? 0.03 : 0))) {
 								//placed = true;
 								KinkyDungeonCastSpell(xxx, yyy, KinkyDungeonFindSpell(trap, true), enemy, undefined);
 							} else if (KinkyDungeonNoEnemy(xxx, yyy, true) && !(
@@ -619,10 +619,16 @@ let KDCommanderOrders = {
 		filter: (enemy, data) => {
 			if (!enemy.IntentAction
 				&& data.aggressive
+				&& KDIsHumanoid(enemy)
+				&& enemy != KinkyDungeonLeashingEnemy()
+				&& enemy != KinkyDungeonJailGuard()
 				&& !KDIsImmobile(enemy)
 				&& (!KDAIType[KDGetAI(enemy)]
 					|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)))
-				&& (enemy.hp < enemy.Enemy.maxhp * data.fleeThresh || (enemy.Enemy.tags?.minor && !KDEnemyHasFlag(enemy, "targ_player")))) return true;
+				&& (enemy.hp < enemy.Enemy.maxhp * data.fleeThresh ||
+					(KDEnemyRank(enemy) < 1 && !KDEnemyHasFlag(enemy, "targ_player") && KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) < 3))
+				&& (KDAssaulters > 1 || KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) > 3)
+			) return true;
 			return false;
 		},
 		weight: (enemy, data) => {
@@ -638,6 +644,9 @@ let KDCommanderOrders = {
 					if (!KDEnemyHasFlag(enemy, "shoutforhelp")) {
 						KinkyDungeonMakeNoise(5 + KDEnemyRank(enemy), enemy.x, enemy.y);
 						KinkyDungeonSetEnemyFlag(enemy, "shoutforhelp", Math.floor((10 - KDEnemyRank(enemy)) * (1 + KDRandom())));
+						if (KDCanHearEnemy(KDPlayer(), enemy)) {
+							KinkyDungeonSendTextMessage(5, TextGet("KDShoutHelp").replace("ENMY", enemy.CustomName || TextGet("Name" + enemy.Enemy.name)), "#ffffff", 1, false, true, undefined, "Ambient");
+						}
 					}
 				}
 			}
@@ -645,7 +654,8 @@ let KDCommanderOrders = {
 
 		// Role maintenance
 		maintain: (enemy, data) => {
-			return (!enemy.IntentAction && data.aggressive && KDHostile(enemy) && enemy.vp > 0 && KDEnemyHasFlag(enemy, "targ_player"));
+			return (!enemy.IntentAction && data.aggressive && KDHostile(enemy) && enemy.vp > 0 && KDEnemyHasFlag(enemy, "targ_player"))
+				&& (KDAssaulters > 1 || KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) > 3);
 		},
 		remove: (enemy, data) => {},
 		update: (enemy, data) => {

@@ -9,6 +9,7 @@ let KDConduction = {id: "Conduction", type: "event", aura: "#ffff88", noAuraColo
 
 let KDDrenched = {id: "Drenched", type: "fireDamageResist", aura: "#59a0d1", aurasprite: "Drenched", power: 0.425, player: true, duration: 20, enemies: true, events: [
 	{type: "RemoveDrench", duration: 1, trigger: "tick"},
+	{type: "Evaporate", mult: 1, trigger: "tick"},
 	{type: "ApplyConduction", duration: 1, trigger: "tick", kind: "invis"},
 	{type: "ApplyConduction", duration: 1, trigger: "tickAfter", kind: "invis"},
 ]};
@@ -35,8 +36,16 @@ let KDVolcanism = {id: "Volcanism", type: "event", aura: "#ff5277", power: 0.5, 
 	{type: "Volcanism", power: 4.0, damage: "fire", trigger: "beforeDamageEnemy"},
 ]};
 
-let KDDrenched2 = {id: "Drenched2", type: "electricDamageResist", power: -0.2, player: true, duration: 20, enemies: true};
-let KDDrenched3 = {id: "Drenched3", type: "iceDamageResist", power: -0.35, player: true, duration: 20, enemies: true};
+let KDDrenched2 = {id: "Drenched2", type: "electricDamageResist", power: -0.2, player: true, duration: 20, enemies: true,
+	events: [
+		{type: "Evaporate", mult: 1, trigger: "tick"},
+	],
+};
+let KDDrenched3 = {id: "Drenched3", type: "iceDamageResist", power: -0.35, player: true, duration: 20, enemies: true,
+	events: [
+		{type: "Evaporate", mult: 1, trigger: "tick"},
+	],
+};
 
 let KDBoundByFate = {id: "BoundByFate", type: "Fate", power: 1, player: true, duration: 3, enemies: false, aura: "#dddddd", events: [
 	{type: "BoundByFate", kind: "mithrilRope", count: 2, trigger: "tick", power: 1, damage: "cold"},

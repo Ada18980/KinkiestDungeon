@@ -75,10 +75,13 @@ class ModelContainer {
 	/**
 	 * Adds a model to the modelcontainer
 	 */
-	addModel(Model: Model, Filters?: Record<string, LayerFilter>, LockType?: string) {
+	addModel(Model: Model, Filters?: Record<string, LayerFilter>, LockType?: string, Properties?: Record<string, LayerProperties>) {
 		let mod: Model = JSON.parse(JSON.stringify(Model));
 		if (Filters) {
 			mod.Filters = JSON.parse(JSON.stringify(Filters)) || mod.Filters;
+		}
+		if (Properties) {
+			mod.Properties = JSON.parse(JSON.stringify(Properties)) || mod.Properties;
 		}
 		if (LockType) {
 			mod.LockType = JSON.parse(JSON.stringify(LockType)) || mod.LockType;
@@ -190,7 +193,7 @@ function GetModelRestraintVersion(BaseModel: string, Parent: boolean): Model {
 	return null;
 }
 
-function GetModelFashionVersion(BaseModel: string, Parent: boolean): Model {
+function GetModelFashionVersion(BaseModel: string, Parent: boolean, removeOptionSwap: boolean = true): Model {
 	if (ModelDefs[BaseModel]) {
 		let model: Model = JSON.parse(JSON.stringify(ModelDefs[BaseModel]));
 		model.Name = "Fashion" + model.Name;
@@ -200,6 +203,15 @@ function GetModelFashionVersion(BaseModel: string, Parent: boolean): Model {
 		if (!model.Categories) model.Categories = [];
 		model.Categories.push("FashionRestraints");
 		model.Restraint = false;
+		if (removeOptionSwap)
+			for (let layer of Object.values(model.Layers)) {
+				if (layer.PrependLayerPrefix) {
+					for (let plp of Object.entries(layer.PrependLayerPrefix)) {
+						if (plp[1] == "Option_") delete layer.PrependLayerPrefix[plp[0]];
+						if (plp[1] == "Option2_") delete layer.PrependLayerPrefix[plp[0]];
+					}
+				}
+			}
 		delete model.Group;
 		return model;
 	}
@@ -476,7 +488,27 @@ function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : number {
 			if (MC.Poses[p[0]] || MC.TempPoses[p[0]]) temp += p[1];
 		}
 	}
+	let Properties: LayerProperties = m.Properties;
+	let lyr = KDLayerPropName(l, MC.Poses);
+	if (Properties && Properties[lyr]) {
+		if (Properties[lyr].LayerBonus) temp += Properties[lyr].LayerBonus;
+	}
+
 	return temp;
+}
+
+function KDLayerPropName(l: ModelLayer, Poses: Record<string, boolean>): string {
+	if (l.Poses || l.MorphPoses) {
+		if (l.Poses)
+			for (let pose of Object.keys(l.Poses)) {
+				if (Poses[pose]) return (l.InheritColor || l.Name) + pose;
+			}
+		if (l.MorphPoses)
+			for (let pose of Object.values(l.MorphPoses)) {
+				if (Poses[pose]) return (l.InheritColor || l.Name) + pose;
+			}
+	}
+	return l.InheritColor || l.Name;
 }
 
 /**
@@ -568,6 +600,11 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 	let EraseFiltersInUse = {};
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
+
+
+
+
+
 			if (!(drawLayers[m.Name + "," + l.Name] && !ModelLayerHidden(drawLayers, MC, m, l, MC.Poses))) continue;
 			// Apply filter
 			if (l.ApplyFilterToLayerGroup) {
@@ -578,34 +615,65 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					}
 				}
 			}
+
+			let lyr = KDLayerPropName(l, MC.Poses);
 			// Apply displacement
-			if (l.DisplaceLayers) {
+			if (l.DisplaceLayers && (!l.DisplacementPoses || l.DisplacementPoses.some((pose) => {return MC.Poses[pose];}))) {
+				let transform = new Transform();
+
+				let layer = LayerLayer(MC, l, m, mods);
+				while (layer) {
+					let mod_selected: PoseMod[] = mods[layer] || [];
+					for (let mod of mod_selected) {
+						transform = transform.recursiveTransform(
+							mod.offset_x || 0,
+							mod.offset_y || 0,
+							mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
+							mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
+							mod.scale_x || 1,
+							mod.scale_y || 1,
+						(mod.rotation * Math.PI / 180) || 0
+						);
+					}
+					layer = LayerProperties[layer]?.Parent;
+				}
+
+				let Properties: LayerProperties = m.Properties ? m.Properties[lyr] : undefined;
+				if (Properties) {
+					transform = transform.recursiveTransform(
+						Properties.XOffset || 0,
+						Properties.YOffset || 0,
+						Properties.XPivot ||  0,
+						Properties.YPivot ||  0,
+						Properties.XScale ||  1,
+						Properties.YScale ||  1,
+						(Properties.Rotation * Math.PI / 180) || 0
+					);
+				}
+				Properties = m.Properties ? m.Properties[m.Name + "," + l.Name] : undefined;
+				if (Properties) {
+					transform = transform.recursiveTransform(
+						Properties.XOffset || 0,
+						Properties.YOffset || 0,
+						Properties.XPivot ||  0,
+						Properties.YPivot ||  0,
+						Properties.XScale ||  1,
+						Properties.YScale ||  1,
+						(Properties.Rotation * Math.PI / 180) || 0
+					);
+				}
+				let ox = transform.ox;
+				let oy = transform.oy;
+				let ax = transform.ax;
+				let ay = transform.ay;
+				let sx = transform.sx;
+				let sy = transform.sy;
+				let rot = transform.rot;
+
 				for (let ll of Object.entries(l.DisplaceLayers)) {
 					let id = ModelLayerStringCustom(m, l, MC.Poses, l.DisplacementSprite, "DisplacementMaps", false, l.DisplacementInvariant, l.DisplacementMorph, l.NoAppendDisplacement);
 					if (DisplaceFiltersInUse[id]) continue;
 					DisplaceFiltersInUse[id] = true;
-					// Generic location code
-					let ox = 0;
-					let oy = 0;
-					let ax = 0;
-					let ay = 0;
-					let sx = 1;
-					let sy = 1;
-					let rot = 0;
-					let layer = LayerLayer(MC, l, m, mods);
-					while (layer) {
-						let mod_selected: PoseMod[] = mods[layer] || [];
-						for (let mod of mod_selected) {
-							ox = mod.offset_x ? mod.offset_x : ox;
-							oy = mod.offset_y ? mod.offset_y : ox;
-							ax = mod.rotation_x_anchor ? mod.rotation_x_anchor : ax;
-							ay = mod.rotation_y_anchor ? mod.rotation_y_anchor : ay;
-							sx *= mod.scale_x || 1;
-							sy *= mod.scale_y || 1;
-							rot += mod.rotation || 0;
-						}
-						layer = LayerProperties[layer]?.Parent;
-					}
 
 					for (let dg of Object.keys(LayerGroups[ll[0]])) {
 						if (!DisplaceFilters[dg]) DisplaceFilters[dg] = [];
@@ -618,8 +686,8 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 									ContainerContainer.SpriteList,
 									id,
 									id,
-									ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
-									rot * Math.PI / 180, {
+									ox * Zoom, oy * Zoom, undefined, undefined,
+									rot, {
 										zIndex: -ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0),
 										anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
 										anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
@@ -637,33 +705,63 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				}
 			}
 			// Apply erase
-			if (l.EraseLayers) {
+			if (l.EraseLayers && (!l.ErasePoses || l.ErasePoses.some((pose) => {return MC.Poses[pose];}))) {
+				let transform = new Transform();
+
+				let layer = LayerLayer(MC, l, m, mods);
+				while (layer) {
+					let mod_selected: PoseMod[] = mods[layer] || [];
+					for (let mod of mod_selected) {
+						transform = transform.recursiveTransform(
+							mod.offset_x || 0,
+							mod.offset_y || 0,
+							mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
+							mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
+							mod.scale_x || 1,
+							mod.scale_y || 1,
+							(mod.rotation * Math.PI / 180) || 0
+						);
+					}
+					layer = LayerProperties[layer]?.Parent;
+				}
+				let Properties: LayerProperties = m.Properties ? m.Properties[lyr] : undefined;
+				if (Properties) {
+					transform = transform.recursiveTransform(
+						Properties.XOffset || 0,
+						Properties.YOffset || 0,
+						Properties.XPivot ||  0,
+						Properties.YPivot ||  0,
+						Properties.XScale ||  1,
+						Properties.YScale ||  1,
+						(Properties.Rotation * Math.PI / 180) || 0
+					);
+				}
+				Properties = m.Properties ? m.Properties[m.Name + "," + l.Name] : undefined;
+				if (Properties) {
+					transform = transform.recursiveTransform(
+						Properties.XOffset || 0,
+						Properties.YOffset || 0,
+						Properties.XPivot ||  0,
+						Properties.YPivot ||  0,
+						Properties.XScale ||  1,
+						Properties.YScale ||  1,
+						(Properties.Rotation * Math.PI / 180) || 0
+					);
+				}
+
+				let ox = transform.ox;
+				let oy = transform.oy;
+				let ax = transform.ax;
+				let ay = transform.ay;
+				let sx = transform.sx;
+				let sy = transform.sy;
+				let rot = transform.rot;
+
 				for (let ll of Object.entries(l.EraseLayers)) {
 					let id = ModelLayerStringCustom(m, l, MC.Poses, l.EraseSprite, "DisplacementMaps", false, l.EraseInvariant, l.EraseMorph, l.NoAppendErase);
 					if (EraseFiltersInUse[id]) continue;
 					EraseFiltersInUse[id] = true;
-					// Generic location code
-					let ox = 0;
-					let oy = 0;
-					let ax = 0;
-					let ay = 0;
-					let sx = 1;
-					let sy = 1;
-					let rot = 0;
-					let layer = LayerLayer(MC, l, m, mods);
-					while (layer) {
-						let mod_selected: PoseMod[] = mods[layer] || [];
-						for (let mod of mod_selected) {
-							ox = mod.offset_x ? mod.offset_x : ox;
-							oy = mod.offset_y ? mod.offset_y : ox;
-							ax = mod.rotation_x_anchor ? mod.rotation_x_anchor : ax;
-							ay = mod.rotation_y_anchor ? mod.rotation_y_anchor : ay;
-							sx *= mod.scale_x || 1;
-							sy *= mod.scale_y || 1;
-							rot += mod.rotation || 0;
-						}
-						layer = LayerProperties[layer]?.Parent;
-					}
+
 
 					for (let dg of Object.keys(LayerGroups[ll[0]])) {
 						if (!EraseFilters[dg]) EraseFilters[dg] = [];
@@ -676,8 +774,8 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 									ContainerContainer.SpriteList,
 									id,
 									id,
-									ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
-									rot * Math.PI / 180, {
+									ox * Zoom, oy * Zoom, undefined, undefined,
+									rot, {
 										zIndex: -ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0),
 										anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
 										anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
@@ -736,29 +834,61 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 		for (let l of Object.values(m.Layers)) {
 			if (drawLayers[m.Name + "," + l.Name] && !ModelLayerHidden(drawLayers, MC, m, l, MC.Poses)) {
 
-				// Generic location code TODO wrap into a function
-				let ox = 0;
-				let oy = 0;
-				let ax = 0;
-				let ay = 0;
-				let sx = 1;
-				let sy = 1;
-				let rot = 0;
 				let layer = LayerLayer(MC, l, m, mods);
 				let origlayer = layer;
+
+				let transform = new Transform();
+
+
+
 				while (layer) {
 					let mod_selected: PoseMod[] = mods[layer] || [];
 					for (let mod of mod_selected) {
-						ox = mod.offset_x ? mod.offset_x : ox;
-						oy = mod.offset_y ? mod.offset_y : ox;
-						ax = mod.rotation_x_anchor ? mod.rotation_x_anchor : ax;
-						ay = mod.rotation_y_anchor ? mod.rotation_y_anchor : ay;
-						sx *= mod.scale_x || 1;
-						sy *= mod.scale_y || 1;
-						rot += mod.rotation || 0;
+						transform = transform.recursiveTransform(
+							mod.offset_x || 0,
+							mod.offset_y || 0,
+							mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
+							mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
+							mod.scale_x || 1,
+							mod.scale_y || 1,
+							(mod.rotation * Math.PI / 180) || 0
+						);
 					}
 					layer = LayerProperties[layer]?.Parent;
 				}
+
+				let Properties: LayerProperties = m.Properties ? m.Properties[KDLayerPropName(l, MC.Poses)] : undefined;
+				if (Properties) {
+					transform = transform.recursiveTransform(
+						Properties.XOffset || 0,
+						Properties.YOffset || 0,
+						Properties.XPivot ||  0,
+						Properties.YPivot ||  0,
+						Properties.XScale ||  1,
+						Properties.YScale ||  1,
+						(Properties.Rotation * Math.PI / 180) || 0
+					);
+				}
+				Properties = m.Properties ? m.Properties[m.Name + "," + l.Name] : undefined;
+				if (Properties) {
+					transform = transform.recursiveTransform(
+						Properties.XOffset || 0,
+						Properties.YOffset || 0,
+						Properties.XPivot ||  0,
+						Properties.YPivot ||  0,
+						Properties.XScale ||  1,
+						Properties.YScale ||  1,
+						(Properties.Rotation * Math.PI / 180) || 0
+					);
+				}
+
+				let ox = transform.ox;
+				let oy = transform.oy;
+				let ax = transform.ax;
+				let ay = transform.ay;
+				let sx = transform.sx;
+				let sy = transform.sy;
+				let rot = transform.rot;
 
 				let fh = m.Filters ? (m.Filters[l.InheritColor || l.Name] ? FilterHash(m.Filters[l.InheritColor || l.Name]) : "") : "";
 				/*if (refreshfilters) {
@@ -846,8 +976,8 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					ContainerContainer.SpriteList,
 					id,
 					img,
-					ox * MODELWIDTH * Zoom, oy * MODELHEIGHT * Zoom, undefined, undefined,
-					rot * Math.PI / 180, {
+					ox * Zoom, oy * Zoom, undefined, undefined,
+					rot, {
 						zIndex: -ModelLayers[origlayer] + (LayerPri(MC, l, m, mods) || 0),
 						anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
 						anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
@@ -907,15 +1037,59 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 			}
 		}
 	}
+	if (Model.Properties) {
+		let prop = Model.Properties[Layer.InheritColor || Layer.Name];
+		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses)]) {
+			prop = Model.Properties[KDLayerPropName(Layer, Poses)];
+		} else if (prop) {
+			Object.assign(prop, Model.Properties[KDLayerPropName(Layer, Poses)]);
+		}
+		if (prop && prop.ExtraHidePoses) {
+			for (let p of Object.keys(Poses)) {
+				if (prop.ExtraHidePoses.includes(p)) {
+					return false;
+				}
+			}
+		}
+		if (prop && prop.ExtraRequirePoses) {
+			for (let p of prop.ExtraRequirePoses) {
+				if (!Poses[p]) {
+					return false;
+				}
+			}
+		}
+	}
 	if (Layer.HidePrefixPose) {
 		for (let p of Layer.HidePrefixPose) {
-			if (Poses[p + LayerPri(MC, Layer, Model)]) {
+			if (Poses[p]) {
 				return false;
 			}
 			if (Layer.HidePrefixPoseSuffix) {
 				for (let suff of Layer.HidePrefixPoseSuffix) {
 					if (Poses[p + suff]) {
 						return false;
+					}
+				}
+			}
+		}
+	}
+	if (Model.Properties) {
+		let prop = Model.Properties[Layer.InheritColor || Layer.Name];
+		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses)]) {
+			prop = Model.Properties[KDLayerPropName(Layer, Poses)];
+		} else if (prop) {
+			Object.assign(prop, Model.Properties[KDLayerPropName(Layer, Poses)]);
+		}
+		if (prop && prop.ExtraHidePrefixPose) {
+			for (let p of prop.ExtraHidePrefixPose) {
+				if (Poses[p + LayerPri(MC, Layer, Model)]) {
+					return false;
+				}
+				if (prop.ExtraHidePrefixPoseSuffix) {
+					for (let suff of prop.ExtraHidePrefixPoseSuffix) {
+						if (Poses[p + suff]) {
+							return false;
+						}
 					}
 				}
 			}
@@ -941,6 +1115,24 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 			}
 		}
 	}
+	// Conditional hide poses
+	if (Layer.HidePoseConditional?.some((entry) => {
+		return (
+			!entry[2]
+			|| !Model.Properties
+			|| (!Model.Properties[KDLayerPropName(Layer, Poses)] && !Model.Properties[Layer.InheritColor || Layer.Name])
+			|| ((Model.Properties[KDLayerPropName(Layer, Poses)]
+					&&!Model.Properties[KDLayerPropName(Layer, Poses)][entry[2]])
+				&& (Model.Properties[Layer.InheritColor || Layer.Name]
+					&& !Model.Properties[Layer.InheritColor || Layer.Name][entry[2]])
+				)
+				)
+			&& (
+				Poses[entry[0]])
+				&& !(Poses[entry[1]]
+				);
+	})) return false;
+
 	// TODO filter hide
 	return true;
 }
@@ -1079,9 +1271,10 @@ function GetTrimmedAppearance(C: Character) {
 		}
 	}
 
-
 	for (let A of appearance) {
-		if (A.Model && !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})) {
+		if (A.Model
+			&& !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})
+			) {
 			appearance_new.push(A);
 		} else {
 			console.log("lost " + A.Model.Name);
@@ -1153,15 +1346,21 @@ function UpdateModels(C: Character, Xray?: string[]) {
 			}
 		}
 	}
+
+
 	for (let A of appearance) {
-		if (A.Model && !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})) {
-			MC.addModel(A.Model, A.Filters, A.Property?.LockedBy);
+		if (A.Model
+			&& !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})
+			) {
+			MC.addModel(A.Model, A.Filters, A.Property?.LockedBy, A.Properties);
 		}
 	}
 
 	// Update models after adding all of them
 	for (let A of appearance) {
-		if (A.Model && !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})) {
+		if (A.Model
+			&& !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})
+			) {
 			MC.updateModel(A.Model.Name);
 		}
 	}
@@ -1196,13 +1395,42 @@ async function ForceRefreshModelsAsync(C: Character, ms = 100) {
 /**
  * Returns a list of colorable layer names
  */
-function KDGetColorableLayers(Model: Model): string[] {
+function KDGetColorableLayers(Model: Model, Properties: boolean): string[] {
 	let ret = [];
 	for (let layer of Object.values(Model.Layers)) {
-		if (!layer.NoColorize && !layer.InheritColor) {
+		if ((!layer.NoColorize || Properties) && !layer.InheritColor) {
+			if (Properties && (layer.Poses || layer.MorphPoses)) {
+				let poses: Record<string, boolean> = {};
+				if (layer.Poses)
+					for (let pose of Object.keys(layer.Poses)) {
+						poses[pose] = true;
+					}
+				if (layer.MorphPoses)
+					for (let pose of Object.values(layer.MorphPoses)) {
+						poses[pose] = true;
+					}
+				for (let key of Object.keys(poses)) {
+					ret.push(layer.Name + key);
+				}
+			}
 			ret.push(layer.Name);
 		} else if (layer.InheritColor && !ret.includes(layer.InheritColor)) {
+			if (Properties && (layer.Poses || layer.MorphPoses)) {
+				let poses: Record<string, boolean> = {};
+				if (layer.Poses)
+					for (let pose of Object.keys(layer.Poses)) {
+						poses[pose] = true;
+					}
+				if (layer.MorphPoses)
+					for (let pose of Object.values(layer.MorphPoses)) {
+						poses[pose] = true;
+					}
+				for (let key of Object.keys(poses)) {
+					ret.push(layer.InheritColor + key);
+				}
+			}
 			ret.push(layer.InheritColor);
+
 		}
 	}
 	return ret;
@@ -1282,35 +1510,51 @@ function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number = 
 	}
 	if (!mods) return pos;
 
-	let ox = 0;
-	let oy = 0;
-	let ax = 0;
-	let ay = 0;
-	let sx = 1;
-	let sy = 1;
-	let rot = 0;
+	let transform = new Transform();
 	let layer = hp.Parent;
 	while (layer) {
 		let mod_selected: PoseMod[] = mods[layer] || [];
 		for (let mod of mod_selected) {
-			ox = mod.offset_x ? mod.offset_x : ox;
-			oy = mod.offset_y ? mod.offset_y : ox;
-			ax = mod.rotation_x_anchor ? mod.rotation_x_anchor : ax;
-			ay = mod.rotation_y_anchor ? mod.rotation_y_anchor : ay;
-			sx *= mod.scale_x || 1;
-			sy *= mod.scale_y || 1;
-			rot += mod.rotation || 0;
+			transform = transform.recursiveTransform(
+				mod.offset_x || 0,
+				mod.offset_y || 0,
+				mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
+				mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
+				mod.scale_x || 1,
+				mod.scale_y || 1,
+				(mod.rotation * Math.PI / 180) || 0
+			);
 		}
 		layer = LayerProperties[layer]?.Parent;
 	}
 
-	pos.x += ox * MODELWIDTH * Zoom;
-	pos.y += oy * MODELHEIGHT * Zoom;
-	pos.angle += rot * Math.PI / 180;
-    pos.x -= (ax - (hp.OffsetX / MODELWIDTH || 0)) * Math.cos(rot * Math.PI / 180);
-    pos.y += (ax - (hp.OffsetX / MODELWIDTH || 0)) * Math.sin(rot * Math.PI / 180);
-    pos.x -= (ay - (hp.OffsetY / MODELHEIGHT || 0)) * Math.sin(rot * Math.PI / 180);
-    pos.y -= (ay - (hp.OffsetY / MODELHEIGHT || 0)) * Math.cos(rot * Math.PI / 180);
+	// Move the hardpoint
+	transform = transform.recursiveTransform(
+		hp.X,
+		hp.Y,
+		0,
+		0,
+		1,
+		1,
+		0,
+	);
+
+	let ox = transform.ox;
+	let oy = transform.oy;
+	let ax = transform.ax;
+	let ay = transform.ay;
+	//let sx = transform.sx;
+	//let sy = transform.sy;
+	let rot = transform.rot;
+
+
+	pos.x = ox * Zoom;
+	pos.y = oy * Zoom;
+	pos.angle += rot;
+    pos.x -= (ax - (hp.OffsetX / MODELWIDTH || 0)) * Math.cos(rot) * Zoom;
+    pos.y += (ax - (hp.OffsetX / MODELWIDTH || 0)) * Math.sin(rot) * Zoom;
+    pos.x -= (ay - (hp.OffsetY / MODELHEIGHT || 0)) * Math.sin(rot) * Zoom;
+    pos.y -= (ay - (hp.OffsetY / MODELHEIGHT || 0)) * Math.cos(rot) * Zoom;
     let { X_Offset, Y_Offset } = ModelGetPoseOffsets(MC.Poses, Flip);
     let { rotation, X_Anchor, Y_Anchor } = ModelGetPoseRotation(MC.Poses);
     let pivotx = MODELHEIGHT*0.5 * Zoom * X_Anchor;
@@ -1321,13 +1565,18 @@ function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number = 
     pos.x = pivotx + (lx) * Math.cos(angle) - (ly) * Math.sin(angle);
     pos.y = pivoty + (ly) * Math.cos(angle) + (lx) * Math.sin(angle);
 
+	pos.angle += angle;
+
     let xx = (MODELWIDTH * X_Offset) * Zoom + MODEL_XOFFSET*Zoom;
     let yy = (MODELHEIGHT * Y_Offset) * Zoom;
 
 	pos.x += xx;
 	pos.y += yy;
 
-	if (Flip) pos.x = (0.5 * MODELHEIGHT) * Zoom - pos.x;
+	if (Flip) {
+		pos.x = (0.5 * MODELHEIGHT) * Zoom - pos.x;
+		pos.angle = Math.PI - pos.angle;
+	}
 	return pos;
 }
 
@@ -1427,4 +1676,77 @@ function adjustFilter(filter) {
 	let f = new PIXI.filters.AdjustmentFilter(filter);
 
 	return f;
+}
+
+
+class Transform {
+	ox: number = 0;
+	oy: number = 0;
+	ax: number = 0;
+	ay: number = 0;
+	sx: number = 1;
+	sy: number = 1;
+	rot: number = 0;
+
+	constructor(ox?: number, oy?: number, ax?: number, ay?: number, sx?: number, sy?: number, rot?: number) {
+		if (ox) this.ox = ox;
+		if (oy) this.oy = oy;
+		if (ax) this.ax = ax;
+		if (ay) this.ay = ay;
+		if (sx) this.sx = sx;
+		if (sy) this.sy = sy;
+		if (rot) this.rot = rot;
+	}
+
+    get() {
+		let _ox = -(this.sx*this.ax*Math.cos(this.rot)
+			- this.sy*this.ay*Math.sin(this.rot));
+		let _oy = -(this.sx*this.ax*Math.sin(this.rot)
+			+ this.sy*this.ay*Math.cos(this.rot));
+
+		return {
+			x: this.ox + _ox,
+			y: this.oy + _oy,
+			sx: this.sx,
+			sy: this.sy,
+			rot: this.rot,
+		}
+    }
+
+	/** Applies a transformation to the transformation, returning the output*/
+	recursiveTransform(ox: number, oy: number, ax: number, ay: number, sx: number, sy: number, rot: number) {
+        let _sx = this.sx * sx;
+        let _sy = this.sy * sy;
+
+        let _ox = -(sx*ax*Math.cos(rot)
+            - sy*ay*Math.sin(rot));
+        let _oy = -(sx*ax*Math.sin(rot)
+            + sy*ay*Math.cos(rot));
+
+        // Transform to parent coordinates
+        let __ox2 = this.sx*(ox) + _ox;
+        let __oy2 = this.sy*(oy) + _oy;
+
+
+		return new Transform(
+			this.ox + (__ox2*Math.cos(this.rot) - __oy2*Math.sin(this.rot)),
+			this.oy + (__ox2*Math.sin(this.rot)	+ __oy2*Math.cos(this.rot)),
+			0,
+			0,
+			_sx,
+			_sy,
+			this.rot + rot,
+		);
+	}
+	/** Applies a transformation to the transformation */
+	apply(transform) {
+		return this.recursiveTransform(
+			transform.ox,
+			transform.oy,
+			transform.ax,
+			transform.ay,
+			transform.sx,
+			transform.sy,
+			transform.rot, )
+	}
 }

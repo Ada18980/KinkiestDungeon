@@ -762,11 +762,15 @@ let KDTileGen = {
 	},
 	"ForceSpawn": (x, y, tile, tileGenerator, data) => {
 		if (!tileGenerator.Chance || KDRandom() < tileGenerator.Chance) {
-			let enemy = KinkyDungeonGetEnemy(tileGenerator.tags, MiniGameKinkyDungeonLevel + (tileGenerator.levelBoost || 0), tileGenerator.forceIndex || (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+			let enemy = KinkyDungeonGetEnemy(tileGenerator.tags,
+				MiniGameKinkyDungeonLevel + (tileGenerator.levelBoost || 0),
+				tileGenerator.forceIndex || (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 				'0', tileGenerator.required, tileGenerator.requireHostile, tileGenerator.bonusTags, tileGenerator.filterTags, tileGenerator.requireSingleTag);
-			let en = DialogueCreateEnemy(x, y, enemy.name);
-			if (en && tileGenerator.faction) {
-				en.faction = tileGenerator.faction;
+			if (enemy) {
+				let en = DialogueCreateEnemy(x, y, enemy.name);
+				if (en && tileGenerator.faction) {
+					en.faction = tileGenerator.faction;
+				}
 			}
 		}
 		KinkyDungeonMapSet(x, y, '0');
@@ -874,21 +878,21 @@ let KDTileGen = {
 		KinkyDungeonMapSet(x, y, '5');
 		KDMapData.JailPoints.push({x: x, y: y, type: "dropoff", direction: tileGenerator.direction || {x: 0, y: -1}, radius: 1, restrainttags: ["dollstand"]});
 		//KinkyDungeonTilesSkinSet(x + "," + y, 'Bel');
-		return {Sprite: "Floor", Overlay: tileGenerator.Overlay || "DollDropoff"};
+		return {Sprite: "Floor", Overlay: tileGenerator.Overlay || "DollDropoff", Type: "DollDropoff"};
 	},
 	"Cage": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
 		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		if (KinkyDungeonStatsChoice.get("MoreKinkyFurniture") && KDRandom() < 0.6) {
 			// Decide which furniture
-			return {Furniture: "DisplayStand"};
+			return {Type: "Furniture", Furniture: "DisplayStand"};
 		}
-		return {Furniture: "Cage"};
+		return {Type: "Furniture", Furniture: "Cage"};
 	},
 	"DisplayStand": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
 		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
-		return {Furniture: "DisplayStand"};
+		return {Type: "Furniture", Furniture: "DisplayStand"};
 	},
 	"JailBed": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'B');
@@ -898,7 +902,7 @@ let KDTileGen = {
 	"Furniture": (x, y, tile, tileGenerator, data) => {
 		//KinkyDungeonMapSet(x, y, tileGenerator.tile);
 		KDMapData.JailPoints.push({x: x, y: y, type: (tileGenerator.jail?.type) || "furniture", radius: (tileGenerator.jail?.radius) || 1});
-		return {Furniture: tileGenerator.Furniture};
+		return {Type: "Furniture", Furniture: tileGenerator.Furniture};
 	},
 	"Table": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'F');

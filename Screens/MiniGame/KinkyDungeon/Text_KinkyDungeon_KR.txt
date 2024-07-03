@@ -4753,7 +4753,7 @@ Level RestraintLevel(Rarity)
 
 Consumable
 소모품
-Equipped
+Worn
 갖추어 준
 Weapons
 무기
@@ -9980,7 +9980,7 @@ Graveyard
 ('On Celestial Supply Chains'라는 제목의 에세이에서) 하늘이 금을 찾는다는 것은 알려져 있습니다. 우리는 하늘이 금을 찾는 이유를 알지 못하지만, 여신들이 우리에게 그들의 무한한 힘의 조각을 허락한다는 것은 압니다. 우리가 땅에서 굴착한 이 쓸모없는 금속과 교환하세요. 그들은 그것에 너무 신경을 써서 성소가 흔하고, 각 성소에는 그녀와 헤어질 모험가를 기다리고 있는 천사 같은 짐꾼이 기다리고 있습니다.
 They say that the maiden who safeguards the graveyard is kind to her pets...
 묘지를 지키는 처녀는 애완동물에게 친절하다고 하던데...
-They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Blink out of jail and into the hallway where they kept all my things!
+They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Portal out of jail and into the hallway where they kept all my things!
 그들은 그들이 내 전설적인 검을 가질 수 있다고 생각했지만... 바보들은 내 다리를 묶는 것을 잊었습니다! 나는 블링크를 감옥에서 나와 그들이 내 모든 것을 보관한 복도로 들어갈 수 있었습니다!
 I am writing this from inside prison. Who would have known they cared so much about me using a shrine? Sheesh.
 감옥 안에서 이 글을 씁니다. 성소를 쓰면서 이렇게까지 신경을 쓰는 줄 누가 알았겠습니까? 쳇.
@@ -9990,7 +9990,7 @@ I am writing this from inside prison. Who would have known they cared so much ab
 
 (An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE) The first thing to understand is that tying someone up is difficult if they are not in a vulnerable position. If your opponent is vulnerable, then binding will be twice as effective!
 (BONDAGE WITCHERY: A STUDENT'S GUIDE에서 발췌) 가장 먼저 이해해야 할 것은 취약한 위치에 있지 않은 사람을 묶는 것은 어렵다는 것입니다. 상대가 취약한 경우 바인딩은 두 배의 효과가 있습니다!
-(An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE) Once your opponent is nicely trussed up, you can break their will by ticking them with a Feather, Ice Cube, or Magic Wand.
+(An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE) Once your opponent is nicely trussed up, you can break their will by tickling them with a Feather, Ice Cube, or Magic Wand.
 (BONDAGE WITCHERY: A STUDENT'S GUIDE에서 발췌) 상대가 잘 묶이면 깃털, 아이스 큐브 또는 요술 지팡이로 상대의 의지를 꺾을 수 있습니다.
 (An excerpt from BONDAGE WITCHERY: A STUDENT'S GUIDE) Bigger and more resilient opponents are much more effective at breaking out of your binds. Try to deal some damage to them to decrease the speed at which they struggle out of your restraints.
 (BONDAGE WITCHERY: A STUDENT'S GUIDE에서 발췌) 더 크고 탄력 있는 상대는 당신의 속박에서 벗어나는 데 훨씬 더 효과적입니다. 그들에게 약간의 피해를 주어 그들이 당신의 속박에서 벗어나는 속도를 줄이십시오.

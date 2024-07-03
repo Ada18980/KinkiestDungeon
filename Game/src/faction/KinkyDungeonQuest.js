@@ -1009,10 +1009,12 @@ function KinkyDungeonDrawQuest() {
 		for (let q of KDGameData.Quests) {
 			if (KDQuests[q]?.visible) {
 				if (II < KDQuestsIndex + KDMaxQuests && II >= KDQuestsIndex) {
+					let width = 1050;
+
 					FillRectKD(kdcanvas, kdpixisprites, "questrec" + q, {
 						Left: xStart + xOffset + 100,
 						Top: yStart + (II-KDQuestsIndex)*spacing - 40,
-						Width: 1050,
+						Width: width,
 						Height: 80,
 						Color: "#000000",
 						LineWidth: 1,
@@ -1022,7 +1024,7 @@ function KinkyDungeonDrawQuest() {
 					DrawRectKD(kdcanvas, kdpixisprites, "questrec2" + q, {
 						Left: xStart + xOffset + 100,
 						Top: yStart + (II-KDQuestsIndex)*spacing - 40,
-						Width: 1050,
+						Width: width,
 						Height: 80,
 						Color: "#000000",
 						LineWidth: 1,
@@ -1052,8 +1054,11 @@ function KinkyDungeonDrawQuest() {
 	KDQuestsVisible = II;
 
 	if (KDQuestsVisible == 0) {
-		DrawTextFitKD(TextGet("KDNoQuests"),
-			xStart + xOffset + 625, ytt, 1000, "#ffffff", KDTextGray0, 20, "center", 70);
+		let x = 1225 + xOffset;
+
+		DrawTextFitKD(TextGet("KDNoQuests"), x, 300, 1050, "#ffffff", KDTextGray0, 24);
+		//DrawTextFitKD(TextGet("KDNoQuests"),
+		//xStart + xOffset + 625, ytt, 1000, "#ffffff", KDTextGray0, 20, "center", 70);
 	}
 
 	if (KDQuestsVisible > KDMaxQuests) {

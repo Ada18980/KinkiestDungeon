@@ -110,12 +110,15 @@ let KDPlayerEffects = {
 		let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 
 		if (dmg.happened) {
-			let applyCurse = KinkyDungeonStatWill < 0.1;
+			let corruption = KDEntityBuffedStat(KDPlayer(), "Corruption");
+			let applyCurse = KinkyDungeonStatWill < 0.1 || corruption >= 20;
+
+			KDAddSpecialStat("Corruption", KDPlayer(), Math.floor(2 + 6 * KDRandom()), false); // Add a significant amount of corruption
 
 			KinkyDungeonSendTextMessage(3, TextGet("KDEpicenterCurseDamage").KDReplaceOrAddDmg(dmg.string), "#ff5555", 2);
 
 			if (applyCurse) {
-				if (!KinkyDungeonPlayerBuffs.CursingCircle) {
+				if (!KinkyDungeonPlayerBuffs.CursingCircle && corruption < 100) {
 					KinkyDungeonSendTextMessage(9, TextGet("KDEpicenterCurseEffectStart"), "#8E72AA", playerEffect.time);
 					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "CursingCircle",
@@ -133,7 +136,8 @@ let KDPlayerEffects = {
 								en.playerdmg = 0;
 							}
 						}
-						KinkyDungeonPlayerBuffs.CursingCircle.duration = 0;
+						if (KinkyDungeonPlayerBuffs.CursingCircle)
+							KinkyDungeonPlayerBuffs.CursingCircle.duration = 0;
 						KinkyDungeonSendTextMessage(9, TextGet("KDEpicenterCurseEffectEnd"), "#8E72AA", 5);
 					}
 				}
@@ -174,6 +178,7 @@ let KDPlayerEffects = {
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
+			if (KDRandom() < 0.5) KDAddSpecialStat("Corruption", KDPlayer(), 1, false); // Add a small amount of corruption
 			KDPlayerEffectRestrain(spell, playerEffect.count, ["shadowHands"], "Ghost", false, false, false, false);
 			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonShadowBolt").KDReplaceOrAddDmg( dmg.string), "yellow", playerEffect.time);
 		}
@@ -191,7 +196,9 @@ let KDPlayerEffects = {
 		if (KDTestSpellHits(spell, 0.5, 0.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
-			let textIndex = "0";
+
+
+			/*let textIndex = "0";
 			let buff = KinkyDungeonPlayerBuffs.LatexIntegration;
 			let mult = playerEffect?.mult || 3;
 
@@ -221,6 +228,17 @@ let KDPlayerEffects = {
 					buff.duration = 50 + Math.floor(-buff.power * 100);
 				}
 			}
+
+			*/
+
+
+			let mult = playerEffect?.mult || 3;
+			//let integration = KDEntityBuffedStat(KDPlayer(), "LatexIntegration");
+
+			KDAddSpecialStat("LatexIntegration", KDPlayer(), mult * (playerEffect?.power || spell?.power || 1), false); // Add a significant amount of corruption
+
+			let textIndex = "0";
+			let buff = KinkyDungeonPlayerBuffs.LatexIntegration;
 
 			if (buff?.power <= -1) {
 				textIndex = "4";
@@ -2134,7 +2152,7 @@ function KDPlayerEffectRestrain(spell, count, tags, faction, noDeep, bypass, all
 				KDDamageQueue.push({floater: TextGet("KDBlockedRestraint"), Entity: {x: player.x - 0.5, y: player.y - 0.5}, Color: "#88ff88", Time: 2, Delay: 0});
 
 				if (!r)
-					KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal"), "#88ff88", 1);
+					KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal"), "#88ff88", 1, false, false, undefined, "Combat");
 			}, undefined, spell, Lock, options?.Keep);
 			KinkyDungeonSendEvent("boundBySpell", {player: KinkyDungeonPlayerEntity, restraintsAdded: rests});
 			return rests;
@@ -2374,5 +2392,70 @@ function KDApplyBubble(entity, time, damage = 0) {
 		KinkyDungeonSendEvent("applyBubble", bubbleData);
 		if (!bubbleData.cancelDamage)
 			KinkyDungeonDealDamage({damage: damage, type: bubbleData.type});
+	}
+}
+
+/**
+ * @type {Record<string, SpecialStat>}
+ */
+let KDSpecialStats = {
+	Corruption: {
+		PerFloor: (player, amount) => {
+			return 50;
+		}
+	},
+	LatexIntegration: {
+		PerFloor: (player, amount) => {
+			return Math.max(0, Math.floor(10 - 0.1 * amount)); // 0 at 100
+		},
+		BuffEvents: (player) => {
+			return [
+				{trigger: "beforeStruggleCalc", type: "latexIntegrationDebuff", power: 0.01},
+				{trigger: "beforeDressRestraints", type: "LatexIntegration"},
+				//{trigger: "postQuest", type: "LatexIntegration"},
+			];
+		}
+	},
+};
+
+/**
+ *
+ * @param {string} stat
+ * @param {entity} entity
+ * @param {number} amount
+ * @param {boolean} Msg
+ * @param {number} max
+ */
+function KDAddSpecialStat(stat, entity, amount, Msg, max = 100, color = "#722fcc") {
+	let currentCurse = KDEntityBuffedStat(entity, stat) || 0;
+	let newCurse = Math.min(max, Math.max(0, currentCurse + amount));
+
+	let buff = KDEntityGetBuff(entity, stat + "Stat");
+	if (!buff) {
+		buff = KinkyDungeonApplyBuffToEntity(entity, {
+			id: stat + "Stat",
+			aura: color,
+			buffSprite: true,
+			type: stat,
+			power: 0,
+			duration: 9999,
+			infinite: true,
+			tags: [stat],
+			text: "0%",
+		});
+		if (KDSpecialStats[stat]?.BuffEvents) {
+			buff.events = KDSpecialStats[stat].BuffEvents(entity);
+		}
+	}
+
+	buff.power = newCurse;
+	buff.text = Math.floor(newCurse) + "%";
+
+	if (Msg) {
+		if (amount > 0) {
+			KinkyDungeonSendTextMessage(10, TextGet("KDAdd" + stat).replace("AMNT", "" + amount), color, 2);
+		} else if (amount < 0) {
+			KinkyDungeonSendTextMessage(10, TextGet("KDRemove" + stat).replace("AMNT", "" + -amount), color, 2);
+		}
 	}
 }

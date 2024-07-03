@@ -77,8 +77,8 @@ const defaultRestraint = {
  * @returns The created restraint.
  */
 function KinkyDungeonCreateRestraint(props, displayName, flavorText, functionText) {
-	if (!props.name || !props.Group || !props.Asset) {
-		throw new Error('name, Group and Asset props must be provided.');
+	if (!props.name || !props.Group) {
+		throw new Error('name, Group props must be provided.');
 	}
 
 	const restraint = ({

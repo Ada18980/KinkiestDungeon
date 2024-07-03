@@ -91,7 +91,7 @@ let KinkyDungeonFactionFilters = {
 	"Rubber": {
 		Catsuit: {"gamma":2.7666666666666666,"saturation":0,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
 		DarkNeutral: {"gamma":1.3566666666666665,"saturation":0,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
-		LightNeutral: {"gamma":2.05,"saturation":0.016666666666666666,"contrast":0.8,"brightness":1.5,"red":0.8999999999999999,"green":1.1833333333333333,"blue":1.75,"alpha":1},
+		LightNeutral: {"gamma":1.6500000000000001,"saturation":1,"contrast":1,"brightness":1.2333333333333334,"red":0.44999999999999996,"green":1.3166666666666664,"blue":2.4,"alpha":1},
 		Highlight: {"gamma":2.05,"saturation":0.016666666666666666,"contrast":0.8,"brightness":1.5,"red":0.8999999999999999,"green":1.1833333333333333,"blue":1.75,"alpha":1},
 	},
 	"Slime": {

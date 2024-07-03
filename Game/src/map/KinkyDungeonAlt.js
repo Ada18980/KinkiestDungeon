@@ -270,6 +270,48 @@ let alts = {
 		nolore: true,
 		noboring: true, // Skip generating boringness
 	},
+	"Summit": {
+		private: true, // Enables private prison type features (e.g. prisoner display)
+		keepItems: true, // Prevents items from being swept
+		name: "Summit",
+		Title: "Summit",
+		noWear: true, // Disables doodad wear
+		bossroom: false,
+		width: 30,
+		height: 15,
+		nopatrols: true,
+		alwaysRegen: false, // Always regenerate this room
+		persist: true,
+		setpieces: {
+		},
+		data: {
+			summit: true,
+		},
+		skin: "vault",
+		musicParams: "Summit",
+		lightParams: "Summit",
+		useGenParams: "Summit",
+		genType: "Summit",
+		spawns: false,
+		chests: false,
+		shrines: false,
+		orbs: 0,
+		chargers: false,
+		notorches: true,
+		heart: false,
+		specialtiles: false,
+		shortcut: false,
+		enemies: false,
+		nojail: true,
+		nokeys: true,
+		nostairs: true,
+		nostartstairs: true,
+		notraps: false,
+		noClutter: true,
+		nobrick: true,
+		nolore: true,
+		noboring: true, // Skip generating boringness
+	},
 	"DemonTransition": {
 		name: "DemonTransition",
 		Title: "DemonTransition",
@@ -397,6 +439,7 @@ let alts = {
 			Caldera: true,
 		},
 
+		loreCheckpoint: "cst",
 		genType: "Caldera",
 		skin: "cst",
 		musicParams: "cst",
@@ -518,7 +561,7 @@ let alts = {
 		setpieces: {
 		},
 		genType: "TestTile",
-		spawns: true,
+		spawns: false,
 		chests: false,
 		shrines: false,
 		orbs: 0,
@@ -614,6 +657,7 @@ let alts = {
 		nostairs: true,
 		notraps: true,
 		noClutter: true,
+		noWear: true,
 	},
 	"Tutorial": {
 		name: "Tutorial",
@@ -707,6 +751,9 @@ let KinkyDungeonCreateMapGenType = {
 	},
 	"DollStorage": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateDollStorage(POI, VisitedRooms, width, height, 0, 10, 0, data);
+	},
+	"Summit": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateSummit(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
 	"DemonTransition": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, 0, 10, 0, data);
@@ -1419,9 +1466,47 @@ function KinkyDungeonCreateDollStorage(POI, VisitedRooms, width, height, opennes
 	KD_PasteTile(KDMapTilesList.DollRoom, 1, 1, data);
 	KDMapData.EndPosition = {x: 2, y: 11};
 	KinkyDungeonMapSet(2, 11, 's');
-	if (MiniGameKinkyDungeonLevel == 0)
-		KinkyDungeonTilesSet("2,11", {RoomType: KDGameData.HighestLevelCurrent > 0 ? "" : "JourneyFloor"});
+	if (MiniGameKinkyDungeonLevel == 0 && !KinkyDungeonFlags.get("fg")) {
+		KinkyDungeonTilesSet("2,11", {RoomType: "JourneyFloor"});
+		KinkyDungeonSetFlag("fg", -1);
+	}
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
+
+}
+function KinkyDungeonCreateSummit(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	if (!KinkyDungeonFlags.get("1stSummit")) {
+		KinkyDungeonSendTextMessage(10, TextGet("KDSummitIntro"), "#ffffff", 12, undefined, undefined, undefined, "");
+		KinkyDungeonSetFlag("1stSummit", -1);
+	}
+	KDMapData.StartPosition = {x: 11, y: 20};
+	KDMapData.EndPosition = {x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.y};
+	VisitedRooms[0].x = 1;
+	VisitedRooms[0].y = 1;
+
+	// Now we STRETCH the map
+	let KinkyDungeonOldGrid = KDMapData.Grid;
+	let w = KDMapData.GridWidth;
+	let h = KDMapData.GridHeight;
+	KDMapData.GridWidth = Math.floor(KDMapData.GridWidth*2);
+	KDMapData.GridHeight = Math.floor(KDMapData.GridHeight*2);
+	KDMapData.Grid = "";
+
+	// Generate the grid
+	for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
+		for (let X = 0; X < KDMapData.GridWidth; X++)
+			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
+		KDMapData.Grid = KDMapData.Grid + '\n';
+	}
+
+	KD_PasteTile(KDMapTilesList.Summit, 1, 1, data);
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
+
+
+	KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y + 2, '6');
+	KinkyDungeonTilesSet((KDMapData.StartPosition.x) + ',' + (KDMapData.StartPosition.y + 2), {
+		Type: "Elevator",
+		Overlay: "Elevator",
+	});
 
 }
 
@@ -1694,8 +1779,10 @@ function KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, openness,
 	KinkyDungeonCreateRectangle(cavityStart, 0, cavitywidth, cavityheight, false, false, false, false);
 
 	KD_PasteTile(KDMapTilesList.Arena_Dollmaker, cavityStart, 1, data);
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 	DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2), KDMapData.StartPosition.y, "DollmakerBoss1");
+	KDStageBossGenerated = true;
 
 	KDMapData.EndPosition = {x: KDMapData.StartPosition.x + cavitywidth, y: KDMapData.StartPosition.y};
 
@@ -1737,6 +1824,7 @@ function KinkyDungeonCreateWarden(POI, VisitedRooms, width, height, openness, de
 	KD_PasteTile(KDMapTilesList.Arena_Warden, cavityStart, 1, data);
 
 	DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2), KDMapData.StartPosition.y, "TheWarden1");
+	KDStageBossGenerated = true;
 	KinkyDungeonSetEnemyFlag(DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2) - 6, KDMapData.StartPosition.y - 8, "WardenArcher"), "imprisoned", -1);
 	KinkyDungeonSetEnemyFlag(DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2), KDMapData.StartPosition.y - 8, "WardenFighter"), "imprisoned", -1);
 	KinkyDungeonSetEnemyFlag(DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2) + 6, KDMapData.StartPosition.y - 8, "WardenMage"), "imprisoned", -1);
@@ -2108,7 +2196,7 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 	// Normal end stairs
 	KinkyDungeonMapSet(b1*2 - 1, VisitedRooms[0].y*2 - 4, 's');
 	if (MiniGameKinkyDungeonLevel == 0)
-		KinkyDungeonTilesSet("" + (b1*2 + 7) + "," + (VisitedRooms[0].y*2), {RoomType: KDGameData.HighestLevelCurrent > 0 ? "" : "JourneyFloor"});
+		KinkyDungeonTilesSet("" + (b1*2 + 7) + "," + (VisitedRooms[0].y*2), {RoomType: MiniGameKinkyDungeonLevel > 0 ? "" : "JourneyFloor"});
 
 	KDMapData.EndPosition = {x: b1*2 - 1, y: VisitedRooms[0].y*2 - 4};
 
@@ -2116,7 +2204,7 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 }
 
 function KinkyDungeonCreateGoldVault(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
-	// Variable setup
+	// Variable setups
 
 	KDMapData.StartPosition = {x: 15, y: 2 + 7 * 4};
 	KDMapData.EndPosition = {x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.y};
@@ -2253,7 +2341,7 @@ function KinkyDungeonCreateElevatorRoom(POI, VisitedRooms, width, height, openne
 	KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y - 3, '6');
 	KinkyDungeonTilesSet((KDMapData.StartPosition.x) + ',' + (KDMapData.StartPosition.y - 3), {
 		Type: "Elevator",
-		Skin: "ElevatorDisabled",
+		Overlay: "ElevatorDisabled",
 	});
 }
 

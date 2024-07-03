@@ -108,7 +108,7 @@ let KinkyDungeonLearnableSpells = [
 	// Class specific
 	[
 		[
-			"Bondage", "ZeroResistance",
+			"Bondage", "ZeroResistance", "DesperateStruggle",
 			"BattleRhythm", "ManaRegen", "Peasant", "RogueTargets", "DistractionCast",
 			"Offhand", "RogueOffhand", "WizardOffhand", "UnconventionalWarfare", "GuerillaFighting",
 
@@ -280,7 +280,13 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			],
 			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
 
-
+		{name: "DesperateStruggle", tags: ["will", "utility"], school: "Any",
+			spellPointCost: 1,
+			customCost: "DesperateStruggle",
+			manacost: 0, components: [], defaultOff: true, level:1, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "DesperateStruggle", trigger: "toggleSpell", power: 0.5, dist: 7, time: 3, cost: 2},
+			]},
 
 		{name: "SPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "WPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
@@ -526,13 +532,13 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 
 		{name: "BattleRhythm", tags: ["fight", "will", "stamina"], prerequisite: "Null", hideUnlearnable: true, school: "Special", manacost: 0, components: [], level:1,
+			mixedPassive: true,
 			type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
 				{type: "BattleRhythmStore", trigger: "beforePlayerLaunchAttack", always: true},
 				{type: "BattleRhythm", trigger: "doAttackCalculation"},
 				{type: "BREvasionBlock", trigger: "tick", mult: 0.1, power: 0.1},
 				{type: "BRDecay", trigger: "tick", power: 0.01, always: true,},
-
 			]},
 
 		{name: "BattleTrance", tags: ["fight", "will", "stamina"], prerequisite: "Enrage", classSpecific: "Fighter", hideWithout: "BattleRhythm", school: "Special", manacost: 0, components: [], level:1,
@@ -1261,7 +1267,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 
 		},
 		{name: "SlimeBall", color: "#ff00ff", prerequisite: "ApprenticeLatex", tags: ["latex", "slime", "denial", "bolt", "offense"], noise: 1, sfx: "FireSpell", school: "Conjure", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", time: 3,  power: 4, delay: 0, range: 50, damage: "glue", speed: 2,
-			trailPower: 2, trailLifetime: 10, trailTime: 3, trailDamage:"glue", trail:"lingering", trailChance: 1.0, playerEffect: {name: "Slime", time: 3}, trailPlayerEffect: {name: "na"},
+			trailPower: 2, trailLifetime: 10, trailTime: 3, trailDamage:"glue", trail:"lingering", trailChance: 1.0, playerEffect: {name: "Slime", time: 3}, trailPlayerEffect: {name: "Slime", power: 1.0, time: 3},
 			effectTileDurationModTrail: 4, effectTileTrail: {
 				name: "Slime",
 				duration: 4,
@@ -2520,6 +2526,32 @@ let KinkyDungeonSpellListEnemies = [
 			duration: -1,
 		}, type:"inert", onhit:"lingering", time: 3, delay: 5, power: 10, range: 3, size: 3, aoe: 2, lifetime: 1, damage: "stun", playerEffect: {name: "Damage"}},
 
+	{name: "DynamiteItem", color: "#ff5277", prerequisite: "ApprenticeSummon", tags: ["aoe", "offense"], noise: 10, sfx: "Lightning", school: "Conjure", manacost: 5, components: ["Verbal"], level:1,
+		aoetype: "XcrossCrack",
+		events: [
+			{trigger: "bulletTick", type: "EndChance", chance: 0.25, count: 8},
+		],
+		hitevents: [
+			{trigger: "afterBulletHit", type: "Crack"},
+			{trigger: "bulletHitEnemy", type: "BreakArmor", power: 2},
+		],
+		block: 0.5, noTerrainHit: true, volatilehit: true, blockType: ["stun", "holy", ...KDIgnitionSources],
+		effectTileDurationMod: 7, hitSpin: 0.2, effectTile: {
+			name: "Cracked",
+			duration: 13,
+		}, type:"inert", onhit:"lingering", time: 7, delay: 10, power: 14, range: 3, size: 3, aoe: 3.99, lifetime: 1, damage: "stun", playerEffect: {name: "Damage"}},
+
+
+	{name: "C4Item", color: "#ff5277", prerequisite: "ApprenticeSummon", tags: ["aoe", "offense"], noise: 15, sfx: "Lightning", school: "Conjure", manacost: 5, components: ["Verbal"], level:1,
+		hitevents: [
+			{trigger: "afterBulletHit", type: "Crack"},
+			{trigger: "bulletHitEnemy", type: "BreakArmor", power: 5},
+		],
+		block: 4, noTerrainHit: true, volatilehit: true, blockType: ["stun", "holy", ...KDIgnitionSources],
+		effectTileDurationMod: 70, hitSpin: 0.2, effectTile: {
+			name: "RubbleNoMend",
+			duration: 130,
+		}, type:"inert", onhit:"lingering", time: 10, delay: 60, power: 21, range: 3, size: 3, aoe: 4.99, lifetime: 1, damage: "stun", playerEffect: {name: "Damage"}},
 
 	{enemySpell: true, name: "MinerBomb", color: "#ff2200", selfcast: true, noise: 5, sfx: "FireSpell", hitsfx: "FireSpell", school: "Conjure", manacost: 5, components: ["Verbal"], level:1, hideWarnings: true,
 		aoetype: "crossCrack",
@@ -2561,6 +2593,10 @@ let KinkyDungeonSpellListEnemies = [
 		duration: 20,
 	}, manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "chain", speed: 3, playerEffect: {name: "SingleRope"}},
 	{allySpell: true, name: "PlayerBola",  bindType: "Rope", fastStart: true, color: "#ff2200", noMiscast: true, sfx: "Miss", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", time: 4, power: 3, bind: 9, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "BanditBola", time: 1}}, // Throws a chain which stuns the target for 1 turn
+
+	{allySpell: true, name: "LeashSpell", fastStart: true, color: "#e64539", noMiscast: true,
+		sfx: "Miss", manacost: 0, components: ["Arms"], level:1, type:"special", special: "LeashSpell",
+		onhit:"", power: 0, delay: 0, range: 1.5, damage: "chain", speed: 2},
 
 	{enemySpell: true, name: "RestrainingDevice", bindType: "Metal", color: "#19fac1", sfx: "Miss", manacost: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
 		effectTileDurationMod: 8, effectTile: {
@@ -2640,7 +2676,7 @@ let KinkyDungeonSpellListEnemies = [
 
 	{enemySpell: true, name: "LatexSpray",  bindType: "Latex", color: "#2789cd", sfx: "RubberBolt",
 		manacost: 2.5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 3.5, pierceEnemies: true, delay: 0, range: 5.5, damage: "glue", speed: 1.5,
-		playerEffect: {name: "LatexSpray", count: 1, time: 4, power: 2.5, mult: 3, damage: "glue"}},
+		playerEffect: {name: "LatexSpray", count: 1, time: 4, power: 2.5, mult: 1, damage: "glue"}},
 
 
 	{enemySpell: true, name: "MithrilBolt",  bindType: "Rope", color: "#999999", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "MithrilBolt", count: 1, time: 3, power: 3, damage: "cold"}},
@@ -3731,7 +3767,7 @@ let KDPlayerCastConditions = {
 	},
 	"noStationaryBullet": (player, x, y) => {
 		return !KDMapData.Bullets.some((b) => {
-			return b.x == x && b.y == y;
+			return b.x == x && b.y == y && !(b.bullet?.source != player?.id);
 		});
 	},
 	"ShadowDance": (player, x, y) => {
@@ -3763,6 +3799,10 @@ let KDCustomCost = {
 		data.cost = "50WP";
 		data.color = "#ff5555";
 	},
+	"DesperateStruggle": (data) => {
+		data.cost = "20WP";
+		data.color = "#ff5555";
+	},
 	"stamina": (data) => {
 		data.cost = Math.round(10 * KinkyDungeonGetStaminaCost(data.spell)) + "SP";
 		data.color = "#88ff88";
@@ -3782,6 +3822,7 @@ let KDCustomCost = {
 		data.cost = Math.round(10 * KDEvasiveManeuversCost()) + "SP";
 		data.color = "#88ff88";
 	},
+
 	"Enrage": (data) => {
 		if (KinkyDungeonFlags.get("Enraged")) {
 			data.cost = Math.round(KinkyDungeonFlags.get("Enraged")) + " " + TextGet("KDTurns");

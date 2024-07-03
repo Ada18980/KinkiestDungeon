@@ -479,6 +479,7 @@ let LayerGroups = {
 		"SleeveRight",
 		"SleeveDecoRight",
 		"BeltBack",
+		"ShoeLeft",
 	]),
 	BustierPoses: ToMap([
 		"Bustier",
@@ -1449,6 +1450,12 @@ let LayerGroups = {
 		"ForeGloveLeft",
 		"ForeHandLeft",
 	]),
+	"RightHand": ToMap([
+		"GloveRight",
+		"HandRight",
+		"ArmRight",
+		"MittenRight",
+	]),
 	// endregion
 
 	HairHelmet: ToMap(
@@ -1841,6 +1848,12 @@ let Hardpoints = {
 		X: 1162,
 		Y: 1790,
 		Angle: Math.PI*1.5,
+	},
+	Mouth: {
+		Parent: "Head",
+		X: 1227,
+		Y: 690,
+		Angle: 0,
 	},
 	Rear: {
 		Parent: "Torso",

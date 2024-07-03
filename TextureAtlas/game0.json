@@ -314,18 +314,10 @@
 },
 "Game/EnemiesBound/MageZombie.png":
 {
-	"frame": {"x":2021,"y":1528,"w":22,"h":49},
+	"frame": {"x":2021,"y":1532,"w":22,"h":49},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":27,"y":11,"w":22,"h":49},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/FloorGeneric/Bars.png":
-{
-	"frame": {"x":2021,"y":1462,"w":18,"h":64},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":27,"y":8,"w":18,"h":64},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/FloorGeneric/Doors/CyberDoorVert.png":
@@ -480,7 +472,7 @@
 	"spriteSourceSize": {"x":45,"y":39,"w":18,"h":29},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Items/Group/Itemhead.png":
+"Game/Items/Group/ItemHead.png":
 {
 	"frame": {"x":41,"y":2033,"w":36,"h":14},
 	"rotated": false,
@@ -518,6 +510,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":17,"y":33,"w":39,"h":7},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Items/LeashItem.png":
+{
+	"frame": {"x":2021,"y":1462,"w":24,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":2,"w":24,"h":68},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Items/MagicSword.png":
@@ -1140,6 +1140,7 @@
 	"Game/Enemies/TheWarden": ["Game/Enemies/TheWarden1.png","Game/Enemies/TheWarden2.png"],
 	"Game/FloorGeneric/Dummy": ["Game/FloorGeneric/Dummy0.png","Game/FloorGeneric/Dummy1.png","Game/FloorGeneric/Dummy2.png"],
 	"Game/Items/Restraint/NippleClamps": ["Game/Items/Restraint/NippleClamps2.png","Game/Items/Restraint/NippleClamps3.png"],
+	"Game/Locks/Cyber": ["Game/Locks/Cyber2.png","Game/Locks/Cyber3.png"],
 	"Game/Spell": ["Game/Spell1.png","Game/Spell2.png","Game/Spell3.png","Game/Spell4.png","Game/Spell5.png"],
 	"Game/Spells/Leap": ["Game/Spells/Leap2.png","Game/Spells/Leap3.png"],
 	"Game/Spells/Quickness": ["Game/Spells/Quickness2.png","Game/Spells/Quickness3.png","Game/Spells/Quickness4.png","Game/Spells/Quickness5.png"],
@@ -1155,6 +1156,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game1.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:bd8f8402ddf3aba0b3c59c1b830a5d01:f67d8ffc58f586a17247a4e1f967ccaf:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ce96a8845cbcf3354fa90583f424b911:2e6e1d9949d13729a83597bd6233cec6:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

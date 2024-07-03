@@ -1,6 +1,139 @@
 PIXI.Assets.init();
 
+
+let KDFontName = "Inconsolata Medium";
+
+let KDBaseFonts = [
+	["Inconsolata", {
+		alias: "Inconsolata",
+		src: 'Fonts/Inconsolata/Inconsolata-Regular.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Inconsolata Medium", {
+		alias: "Inconsolata Medium",
+		src: 'Fonts/Inconsolata/Inconsolata-Medium.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Inconsolata Light", {
+		alias: "Inconsolata Light",
+		src: 'Fonts/Inconsolata/Inconsolata-Light.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Inconsolata Condensed Medium", {
+		alias: "Inconsolata Condensed Medium",
+		src: 'Fonts/Inconsolata/Inconsolata_Condensed-Medium.ttf',
+		mono: true,
+		width: 1.5,
+	}],
+	["Inconsolata Condensed Light", {
+		alias: "Inconsolata Condensed Light",
+		src: 'Fonts/Inconsolata/Inconsolata_Condensed-Light.ttf',
+		mono: true,
+		width: 1.5,
+	}],
+	["3270", {
+		alias: "3270 Regular",
+		src: 'Fonts/3270/3270-Regular.ttf',
+		mono: true,
+		width: 1.0,
+	}],
+	["3270 Condensed", {
+		alias: "3270condensed Regular",
+		src: 'Fonts/3270/3270Condensed-Regular.ttf',
+		mono: true,
+		width: 1.5,
+	}],
+	["Courier New", {
+		alias: "Courier New",
+		src: '',
+		mono: true,
+		width: 1.0,
+	}],
+	["Lekton", {
+		alias: "Lekton Regular",
+		src: 'Fonts/Lekton/Lekton-Regular.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["System", {
+		alias: "Fsex302",
+		src: 'Fonts/System/FSEX302.ttf',
+		mono: true,
+		width: 1.1,
+	}],
+	["Iosevka Regular", {
+		alias: "Iosevka Regular",
+		src: 'Fonts/Iosevka/Iosevka-Regular.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Iosevka Medium", {
+		alias: "Iosevka Medium",
+		src: 'Fonts/Iosevka/Iosevka-Medium.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Iosevka Slab Regular", {
+		alias: "Iosevkaslab Regular",
+		src: 'Fonts/Iosevka/IosevkaSlab-Regular.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Iosevka Slab Medium", {
+		alias: "Iosevkaslab Medium",
+		src: 'Fonts/Iosevka/IosevkaSlab-Medium.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Iosevka Curly Regular", {
+		alias: "Iosevkacurly Regular",
+		src: 'Fonts/Iosevka/IosevkaCurly-Regular.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Iosevka Curly Medium", {
+		alias: "Iosevkacurly Medium",
+		src: 'Fonts/Iosevka/IosevkaCurly-Medium.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Nanum Gothic Coding", {
+		alias: "Nanumgothiccoding Regular",
+		src: 'Fonts/Nanum/NanumGothicCoding-Regular.ttf',
+		mono: true,
+		width: 1.25,
+	}],
+	["Roboto", {
+		alias: "Roboto Regular",
+		src: 'Fonts/Roboto/Roboto-Regular.ttf',
+		mono: false,
+		width: 1.3,
+	}],
+];
+
+let KDFonts = new Map();
+for (let obj of KDBaseFonts) {
+	KDFonts.set(obj[0], obj[1]);
+}
+let KDFontsAlias = new Map();
+for (let obj of KDBaseFonts) {
+	if (typeof obj[1] !== "string")
+		KDFontsAlias.set(obj[1].alias, obj[1]);
+}
+
+let KDSelectedFont = KDFontName;
+let KDSelectedFontListIndex = 0;
+let KDSelectedFontList = Array.from(KDFonts.keys());
+
+let KDButtonFont = KDFontName;
+let KDButtonFontListIndex = 0;
+let KDButtonFontList = Array.from(KDFonts.keys());
+
 let DisplacementMaps = [
+'HideBoxtieHand.png',
 'FutureBox.png',
 'TapeTopRight.png',
 'TapeTopRightBoxtie.png',
@@ -256,7 +389,14 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 	}
 	for (let dataFile of list) {
 		let amount = 100;
-		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile).then((value) => {}, () => {
+		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile).then((value) => {
+
+			//console.log(value)
+			CurrentLoading = "Loaded " + dataFile;
+			//console.log(dataFile);
+			KDLoadingDone += amount;
+
+		}, () => {
 			CurrentLoading = "Error Loading " + dataFile;
 			KDLoadingDone += amount;
 		})
@@ -266,15 +406,16 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 					KDTex(t, scale_mode == PIXI.SCALE_MODES.NEAREST);
 				}
 			}
+
+			//console.log(value)
+			CurrentLoading = "Loaded " + dataFile;
+			//console.log(dataFile);
+			KDLoadingDone += amount;
 		 }, () => {
 			CurrentLoading = "Error Loading " + dataFile;
 			KDLoadingDone += amount;
 		});
 
-		//console.log(value)
-		CurrentLoading = "Loaded " + dataFile;
-		//console.log(dataFile);
-		KDLoadingDone += amount;
 
 		/*result.then((value) => {
 
@@ -330,12 +471,35 @@ async function PreloadDisplacement(list) {
 KDLoadToggles();
 if (!KDToggles.HighResDisplacement) DisplacementScale = 1/16
 
+
 async function load() {
+
+	for (let font of KDFonts.values()) {
+		if (font.src) {
+			try {
+				const url_to_font_name = font.src;
+				const font_name = new FontFace(font.alias, `url(${url_to_font_name})`);
+				document.fonts.add(font_name);
+				// Work that does not require `font_name` to be loaded…
+				await font_name.load()
+				// Work that requires `font_name` to be loaded…
+
+				//await PIXI.Assets.load( {
+				//	src: font.src,
+				//});
+			} catch (err) {
+				console.log(err);
+			}
+		}
+
+	}
+
+
 
 	PIXI.BaseTexture.defaultOptions.mipmap = PIXI.MIPMAP_MODES.ON;
 	PIXI.BaseTexture.defaultOptions.anisotropicLevel = 0;
 	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
-	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR, false);
+	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
 	await PreloadDisplacement(displacementList);
 	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 

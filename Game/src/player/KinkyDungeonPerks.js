@@ -247,7 +247,7 @@ let KinkyDungeonStatsPresets = {
 
 	"NovicePet":  {category: "Major", id: "NovicePet", cost: 1},
 	"Fortify_Barricade":  {category: "Major", id: "Fortify_Barricade", cost: -2},
-	"Fortify_Trap":  {category: "Major", id: "Fortify_Trap", cost: -2},
+	"Fortify_Trap":  {category: "Enemies", id: "Fortify_Trap", cost: -1},
 	"CurseSeeker":  {category: "Major", id: "CurseSeeker", cost: -3},
 	"DirectionVision":  {category: "Major", id: "DirectionVision", cost: -2},
 	"DirectionSlow":  {category: "Major", id: "DirectionSlow", cost: -1, block: ["DirectionSlow2"]},
@@ -405,12 +405,15 @@ let KinkyDungeonStatsPresets = {
 	"Quickness": {category: "Combat", id: "Quickness", cost: 2},
 
 	"BoundCrusader": {category: "Kinky", id: "BoundCrusader", cost: -1},
+	"FreeBoob1":  {category: "Restraints", id: "FreeBoob1", cost: 1, block: ["FreeBoob2"], requireArousal: true},
+	"FreeBoob2":  {category: "Restraints", id: "FreeBoob2", cost: 2, block: ["FreeBoob1"], requireArousal: true},
 
 	"Trespasser": {category: "Map", id: "Trespasser", cost: -2},
 
 
 	"Butterfingers":  {category: "Restriction", id: "Butterfingers", cost: -1},
 	"WeakGrip":  {category: "Restriction", id: "WeakGrip", cost: -1},
+
 
 
 	"Blackout":  {category: "Senses", id: "Blackout", cost: -1, block: ["TotalBlackout", "NoBlindfolds"]},
@@ -906,7 +909,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 		}
 		for (let stat of c.buffs.concat(c.debuffs)) {
 			if ((!stat[1].locked || KDUnlockedPerks.includes(stat[0]))
-				&& (NonSelectable|| !KDPerksFilter || TextGet("KinkyDungeonStat" + ("" + stat[1].id)).toLocaleLowerCase().includes(KDPerksFilter.toLocaleLowerCase()))) {
+				&& (NonSelectable || !KDPerksFilter || TextGet("KinkyDungeonStat" + ("" + stat[1].id)).toLocaleLowerCase().includes(KDPerksFilter.toLocaleLowerCase()))) {
 				let YY = (!stat[1].buff && (stat[1].cost < 0 || stat[1].debuff)) ? Y_alt : Y;
 				let XX = (!stat[1].buff && (stat[1].cost < 0 || stat[1].debuff)) ? X + KDPerksButtonWidth + KDPerksButtonWidthPad : X;
 

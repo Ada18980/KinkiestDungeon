@@ -31,6 +31,8 @@ let KDModelList_Sublevel = [];
 
 let KDModelListFilter = "";
 
+let KDRefreshProps = false;
+
 let KDWardrobeCategories = [
 	"Hairstyles",
 	"Cosplay",
@@ -72,6 +74,9 @@ let KDColorSliders = {
 	green: 1,
 	blue: 1,
 	alpha: 1,
+};
+/** @type {LayerProperties} */
+let KDProps = {
 };
 let KDColorSliderColor = {
 	red: "#ff5555",
@@ -159,6 +164,8 @@ function KDDrawSavedColors(X, y, max, C) {
 	}
 }
 
+let KDPropsSlider = false;
+
 /**
  *
  * @param {number} X
@@ -175,217 +182,347 @@ function KDDrawColorSliders(X, Y, C, Model) {
 
 	let YY = Y;
 	let width = 300;
-	let layers = KDGetColorableLayers(Model);
+	let layers = KDGetColorableLayers(Model, KDPropsSlider);
 	if (!KDCurrentLayer) KDCurrentLayer = layers[0] || "";
 
-	let filters = (Model.Filters ? Model.Filters[KDCurrentLayer] : undefined) || KDColorSliders;
+	if (KDPropsSlider) {
+		let Properties = (Model.Properties ? Model.Properties[KDCurrentLayer] : undefined) || KDProps;
 
-	DrawButtonKDEx("ResetCurrentLayer", (bdata) => {
-		if (Model.Filters && Model.Filters[KDCurrentLayer]) {
-			KDChangeWardrobe(C);
-			delete Model.Filters[KDCurrentLayer];
-			KDCurrentModels.get(C).Models.set(Model.Name, Model);
-		}
-		return true;
-	}, true, X + width/2 + 10, YY, width/2 - 10, 30, TextGet("KDResetLayer"), "#ffffff");
-
-
-
-	if (!KDClipboardDisabled) {
-		if (TestMode)
-			DrawButtonKDEx("ExportAllLayers", (bdata) => {
-				if (Model.Filters) {
-					navigator.clipboard.writeText(JSON.stringify(Model.Filters));
-				}
-				return true;
-			}, true, X + width/2 + 10, YY - 40, width/2 - 10, 30, TextGet("KDExportAllLayers"), "#88ff88");
-
-		DrawButtonKDEx("KDCopyLayer", (bdata) => {
-			navigator.clipboard.writeText(JSON.stringify(filters));
+		DrawButtonKDEx("ResetCurrentLayer", (bdata) => {
+			if (Model.Properties && Model.Properties[KDCurrentLayer]) {
+				KDChangeWardrobe(C);
+				delete Model.Properties[KDCurrentLayer];
+				KDCurrentModels.get(C).Models.set(Model.Name, Model);
+			}
+			KDRefreshProps = true;
+			lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+			ForceRefreshModels(C);
 			return true;
-		}, true, X, YY, width/2 - 10, 30, TextGet("KDCopyLayer"), "#ffffff");
-		DrawButtonKDEx("KDPasteLayer", (bdata) => {
-			navigator.clipboard.readText()
-				.then(text => {
-					let parsed = JSON.parse(text);
-					if (parsed?.red != undefined && parsed.green != undefined && parsed.blue != undefined) {
-						console.log(Object.assign({}, parsed));
-						KDChangeWardrobe(C);
-						if (!Model.Filters) Model.Filters = {};
-						Model.Filters[KDCurrentLayer] = Object.assign({}, parsed);
-						KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+		}, true, X + width/2 + 10, YY, width/2 - 10, 30, TextGet("KDResetLayerProps"), "#ffffff");
+
+
+		if (!KDClipboardDisabled) {
+			if (TestMode)
+				DrawButtonKDEx("ExportAllProps", (bdata) => {
+					if (Model.Properties) {
+						navigator.clipboard.writeText(JSON.stringify(Model.Properties));
 					}
-				});
-			return true;
-		}, true, X, YY - 40, width/2 - 10, 30, TextGet("KDPasteLayer"), "#ffffff");
+					return true;
+				}, true, X + width/2 + 10, YY - 40, width/2 - 10, 30, TextGet("KDExportAllProps"), "#88ff88");
+
+			DrawButtonKDEx("KDCopyProps", (bdata) => {
+				navigator.clipboard.writeText(JSON.stringify(Properties));
+				return true;
+			}, true, X, YY, width/2 - 10, 30, TextGet("KDCopyLayer"), "#ffffff");
+			DrawButtonKDEx("KDPasteProps", (bdata) => {
+				navigator.clipboard.readText()
+					.then(text => {
+						/** @type {LayerProperties} */
+						let parsed = JSON.parse(text);
+						if (parsed) {
+							console.log(Object.assign({}, parsed));
+							KDChangeWardrobe(C);
+							if (!Model.Properties) Model.Properties = {};
+							Model.Properties[KDCurrentLayer] = Object.assign({}, parsed);
+							KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+							KDRefreshProps = true;
+							lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+							ForceRefreshModels(C);
+						}
+					});
+				return true;
+			}, true, X, YY - 40, width/2 - 10, 30, TextGet("KDPasteLayer"), "#ffffff");
+		} else {
+			let CF = KDTextField("KDCopyProperties", X, YY - 50, width, 30, undefined, undefined, "300");
+			if (CF.Created) {
+				CF.Element.oninput = (event) => {
+					let value = ElementValue("KDCopyProperties");
+					try {
+						let parsed = JSON.parse(value);
+						if (value) {
+							KDChangeWardrobe(C);
+							if (!Model.Properties) Model.Filters = {};
+							if (!Model.Properties[KDCurrentLayer])
+								Model.Properties[KDCurrentLayer] = Object.assign({}, KDProps);
+							Model.Properties[KDCurrentLayer].LayerBonus = parsed.LayerBonus;
+							Model.Properties[KDCurrentLayer].Rotation = parsed.Rotation;
+							Model.Properties[KDCurrentLayer].XOffset = parsed.XOffset;
+							Model.Properties[KDCurrentLayer].YOffset = parsed.YOffset;
+							Model.Properties[KDCurrentLayer].XPivot = parsed.XPivot;
+							Model.Properties[KDCurrentLayer].YPivot = parsed.YPivot;
+							Model.Properties[KDCurrentLayer].XScale = parsed.XScale;
+							Model.Properties[KDCurrentLayer].YScale = parsed.YScale;
+							KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+							KDRefreshProps = true;
+						}
+					} catch (err) {
+						console.log("Invalid Properties");
+					}
+
+				};
+			}
+		}
+		YY += 60;
+
+		// Property fields
+		/**
+		 * @type {Record<keyof LayerProperties, string>}
+		 */
+		let fields = {
+			"XOffset": "0",
+			"YOffset": "0",
+			"XPivot": "0",
+			"YPivot": "0",
+			"XScale": "1",
+			"YScale": "1",
+			"Rotation": "0",
+			"LayerBonus": "0",
+			"SuppressDynamic": "0",
+			"ExtraHidePoses": ",",
+			"ExtraRequirePoses": ",",
+			ExtraHidePrefixPose: ",",
+			ExtraHidePrefixPoseSuffix: ",",
+		};
+
+		if (KDRefreshProps) {
+			KDRefreshProps = false;
+			YY += 400;
+		} else {
+			let YYold = YY;
+			YY -= 25;
+			for (let field0 of Object.entries(fields)) {
+
+				let field = field0[0];
+				let deff = field0[1];
+
+				DrawTextFitKD(TextGet("KDPropField_" + field), X + width/2 + 10, YY + 10, width, "#ffffff", "#000000", 20);
+
+
+				let FF = KDTextField("KDPropField" + field, X, YY, width, 30, undefined, undefined, "20");
+				if (FF.Created) {
+					if (Model.Properties && Model.Properties[KDCurrentLayer])
+						ElementValue("KDPropField" + field, Model.Properties[KDCurrentLayer][field]);
+					else
+						ElementValue("KDPropField" + field, "" + deff);
+					FF.Element.oninput = (event) => {
+						let value = ElementValue("KDPropField" + field);
+						try {
+							/**
+							 * @type {string | string[] | number}
+							 */
+							let parsed = value;
+							if (deff == "") {
+								// Nothing!
+							} else if (deff.includes(',')) {
+								parsed = parsed.split(',').filter((str) => {
+									return str != "";
+								});
+							} else parsed = parseFloat(value) || value;
+							if (value) {
+								KDChangeWardrobe(C);
+								if (!Model.Properties) Model.Properties = {};
+								if (!Model.Properties[KDCurrentLayer])
+									Model.Properties[KDCurrentLayer] = Object.assign({}, KDProps);
+								Model.Properties[KDCurrentLayer][field] = parsed;
+								KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+								lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+								ForceRefreshModels(C);
+							}
+						} catch (err) {
+							console.log("Must be a float");
+						}
+					};
+				}
+
+
+
+				YY += 40;
+			}
+			YY = YYold + 400;
+		}
+		YY += 70;
+
 	} else {
-		let CF = KDTextField("KDCopyFilter", X, YY - 50, width, 30, undefined, undefined, "300");
-		if (CF.Created) {
-			CF.Element.oninput = (event) => {
-				let value = ElementValue("KDCopyFilter");
-				try {
-					let parsed = JSON.parse(value);
-					if (value) {
+		let filters = (Model.Filters ? Model.Filters[KDCurrentLayer] : undefined) || KDColorSliders;
+
+		DrawButtonKDEx("ResetCurrentLayer", (bdata) => {
+			if (Model.Filters && Model.Filters[KDCurrentLayer]) {
+				KDChangeWardrobe(C);
+				delete Model.Filters[KDCurrentLayer];
+				KDCurrentModels.get(C).Models.set(Model.Name, Model);
+			}
+			KDRefreshProps = true;
+			lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+			ForceRefreshModels(C);
+			return true;
+		}, true, X + width/2 + 10, YY, width/2 - 10, 30, TextGet("KDResetLayer"), "#ffffff");
+
+
+
+		if (!KDClipboardDisabled) {
+			if (TestMode)
+				DrawButtonKDEx("ExportAllLayers", (bdata) => {
+					if (Model.Filters) {
+						navigator.clipboard.writeText(JSON.stringify(Model.Filters));
+					}
+					return true;
+				}, true, X + width/2 + 10, YY - 40, width/2 - 10, 30, TextGet("KDExportAllLayers"), "#88ff88");
+
+			DrawButtonKDEx("KDCopyLayer", (bdata) => {
+				navigator.clipboard.writeText(JSON.stringify(filters));
+				return true;
+			}, true, X, YY, width/2 - 10, 30, TextGet("KDCopyLayer"), "#ffffff");
+			DrawButtonKDEx("KDPasteLayer", (bdata) => {
+				navigator.clipboard.readText()
+					.then(text => {
+						let parsed = JSON.parse(text);
+						if (parsed?.red != undefined && parsed.green != undefined && parsed.blue != undefined) {
+							console.log(Object.assign({}, parsed));
+							KDChangeWardrobe(C);
+							if (!Model.Filters) Model.Filters = {};
+							Model.Filters[KDCurrentLayer] = Object.assign({}, parsed);
+							KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+						}
+					});
+				return true;
+			}, true, X, YY - 40, width/2 - 10, 30, TextGet("KDPasteLayer"), "#ffffff");
+		} else {
+			let CF = KDTextField("KDCopyFilter", X, YY - 50, width, 30, undefined, undefined, "300");
+			if (CF.Created) {
+				CF.Element.oninput = (event) => {
+					let value = ElementValue("KDCopyFilter");
+					try {
+						let parsed = JSON.parse(value);
+						if (value) {
+							KDChangeWardrobe(C);
+							if (!Model.Filters) Model.Filters = {};
+							if (!Model.Filters[KDCurrentLayer])
+								Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
+							if (Model.Filters[KDCurrentLayer].alpha < 0.001) Model.Filters[KDCurrentLayer].alpha = 0.001;
+							Model.Filters[KDCurrentLayer].red = parsed.red;
+							Model.Filters[KDCurrentLayer].green = parsed.green;
+							Model.Filters[KDCurrentLayer].blue = parsed.blue;
+							Model.Filters[KDCurrentLayer].gamma = parsed.gamma;
+							Model.Filters[KDCurrentLayer].brightness = parsed.brightness;
+							Model.Filters[KDCurrentLayer].alpha = parsed.alpha;
+							Model.Filters[KDCurrentLayer].contrast = parsed.contrast;
+							Model.Filters[KDCurrentLayer].saturation = parsed.saturation;
+							KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+						}
+					} catch (err) {
+						console.log("Invalid filter");
+					}
+
+				};
+			}
+		}
+
+
+		YY += 60;
+
+		if (KDToggles.SimpleColorPicker) {
+			let force = false;
+			for (let key of ["brightness", "contrast"]) {
+				DrawTextFitKD(TextGet("KDColorSlider" + key) + ": " + (Math.round((key == "brightness" ? KDVisualBrightness : (0.2 * filters[key]))*100)/100), X + width/2, YY, width, "#ffffff", "#000000", 20);
+				KinkyDungeonBar(X, YY - 15, width, 30, Math.min(100, (key == "brightness" ? KDVisualBrightness : (filters[key]/3))*100), KDColorSliderColor[key] || "#ffffff", "#000000");
+				if ((mouseDown) && MouseIn(X, YY - 15, width, 30)) {
+					MouseClicked = false;
+					if (CommonTime() > lastFilterUpdate + FilterUpdateInterval) {
+						lastFilterUpdate = CommonTime();
 						KDChangeWardrobe(C);
 						if (!Model.Filters) Model.Filters = {};
 						if (!Model.Filters[KDCurrentLayer])
 							Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
-						if (Model.Filters[KDCurrentLayer].alpha < 0.001) Model.Filters[KDCurrentLayer].alpha = 0.001;
-						Model.Filters[KDCurrentLayer].red = parsed.red;
-						Model.Filters[KDCurrentLayer].green = parsed.green;
-						Model.Filters[KDCurrentLayer].blue = parsed.blue;
-						Model.Filters[KDCurrentLayer].gamma = parsed.gamma;
-						Model.Filters[KDCurrentLayer].brightness = parsed.brightness;
-						Model.Filters[KDCurrentLayer].alpha = parsed.alpha;
-						Model.Filters[KDCurrentLayer].contrast = parsed.contrast;
-						Model.Filters[KDCurrentLayer].saturation = parsed.saturation;
+						if (key == 'brightness') {
+							KDVisualBrightness = ((MouseX - X) / width);
+
+							force = true;
+
+						} else {
+							Model.Filters[KDCurrentLayer][key] = ((MouseX - X) / width) * 3;
+						}
+
 						KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
-					}
-				} catch (err) {
-					console.log("Invalid filter");
-				}
-
-			};
-		}
-	}
-
-
-	YY += 60;
-
-	if (KDToggles.SimpleColorPicker) {
-		let force = false;
-		for (let key of ["brightness", "contrast"]) {
-			DrawTextFitKD(TextGet("KDColorSlider" + key) + ": " + (Math.round((key == "brightness" ? KDVisualBrightness : (0.2 * filters[key]))*100)/100), X + width/2, YY, width, "#ffffff", "#000000", 20);
-			KinkyDungeonBar(X, YY - 15, width, 30, Math.min(100, (key == "brightness" ? KDVisualBrightness : (filters[key]/3))*100), KDColorSliderColor[key] || "#ffffff", "#000000");
-			if ((mouseDown) && MouseIn(X, YY - 15, width, 30)) {
-				MouseClicked = false;
-				if (CommonTime() > lastFilterUpdate + FilterUpdateInterval) {
-					lastFilterUpdate = CommonTime();
-					KDChangeWardrobe(C);
-					if (!Model.Filters) Model.Filters = {};
-					if (!Model.Filters[KDCurrentLayer])
-						Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
-					if (key == 'brightness') {
-						KDVisualBrightness = ((MouseX - X) / width);
-
-						force = true;
-
-					} else {
-						Model.Filters[KDCurrentLayer][key] = ((MouseX - X) / width) * 3;
+						let rr = Math.round(Model.Filters[KDCurrentLayer].red /5 * 255).toString(16);
+						if (rr.length == 1) rr = '0' + rr;
+						let gg = Math.round(Model.Filters[KDCurrentLayer].green /5 * 255).toString(16);
+						if (gg.length == 1) gg = '0' + gg;
+						let bb = Math.round(Model.Filters[KDCurrentLayer].blue /5 * 255).toString(16);
+						if (bb.length == 1) bb = '0' + bb;
+						ElementValue("KDSelectedColor", `#${
+							rr}${
+							gg}${
+							bb}`);
+						ElementValue("KDCopyFilter", JSON.stringify(Model.Filters[KDCurrentLayer]));
+						lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+						ForceRefreshModels(C);
 					}
 
-					KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
-					let rr = Math.round(Model.Filters[KDCurrentLayer].red /5 * 255).toString(16);
-					if (rr.length == 1) rr = '0' + rr;
-					let gg = Math.round(Model.Filters[KDCurrentLayer].green /5 * 255).toString(16);
-					if (gg.length == 1) gg = '0' + gg;
-					let bb = Math.round(Model.Filters[KDCurrentLayer].blue /5 * 255).toString(16);
-					if (bb.length == 1) bb = '0' + bb;
-					ElementValue("KDSelectedColor", `#${
-						rr}${
-						gg}${
-						bb}`);
-					ElementValue("KDCopyFilter", JSON.stringify(Model.Filters[KDCurrentLayer]));
-					lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
-					ForceRefreshModels(C);
 				}
-
+				YY += 50;
 			}
-			YY += 50;
-		}
 
-		let radius = 150;
-		KDDraw(kdcanvas, kdpixisprites, "colorpicker", KinkyDungeonRootDirectory + "ColorPicker.png", X, YY, 300, 300);
-		if (ElementValue("KDSelectedColor") && Model?.Filters && Model.Filters[KDCurrentLayer]) {
-			let hsl = rgbToHsl(
-				Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].red/5 || 0)),
-				Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].green/5 || 0)),
-				Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].blue/5 || 0)),
-			);
-			let x = radius * hsl[1] * Math.cos(hsl[0] * 2*Math.PI);
-			let y = radius * hsl[1] * Math.sin(hsl[0] * 2*Math.PI);
-
-			let value = ElementValue("KDSelectedColor");
-			let RegExp = /^#[0-9A-F]{6}$/i;
-
-			KDDraw(kdcanvas, kdpixisprites, "colorpickercolor", KinkyDungeonRootDirectory + "Color.png", X - 12 + x + radius, YY - 12 + y + radius, 23, 23, 0, {
-				tint: RegExp.test(value) ? KDhexToRGB(ElementValue("KDSelectedColor")) : 0xffffff,
-			});
-		}
-
-
-		let dist = KDistEuclidean(MouseX - (X + radius), MouseY - (YY + radius));
-		if ((mouseDown && dist * 0.8 < radius) || force) {
-			let hue = Math.max(0, 0.5 + 0.5 * Math.min(1, Math.atan2(
-				-MouseY + (YY + radius),
-				-MouseX + (X + radius)) / Math.PI));
-			let sat = Math.min(1, dist/radius);
-
-			if (force) {
+			let radius = 150;
+			KDDraw(kdcanvas, kdpixisprites, "colorpicker", KinkyDungeonRootDirectory + "ColorPicker.png", X, YY, 300, 300);
+			if (ElementValue("KDSelectedColor") && Model?.Filters && Model.Filters[KDCurrentLayer]) {
 				let hsl = rgbToHsl(
 					Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].red/5 || 0)),
 					Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].green/5 || 0)),
 					Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].blue/5 || 0)),
 				);
-				hue = hsl[0];
-				sat = hsl[1];
+				let x = radius * hsl[1] * Math.cos(hsl[0] * 2*Math.PI);
+				let y = radius * hsl[1] * Math.sin(hsl[0] * 2*Math.PI);
+
+				let value = ElementValue("KDSelectedColor");
+				let RegExp = /^#[0-9A-F]{6}$/i;
+
+				KDDraw(kdcanvas, kdpixisprites, "colorpickercolor", KinkyDungeonRootDirectory + "Color.png", X - 12 + x + radius, YY - 12 + y + radius, 23, 23, 0, {
+					tint: RegExp.test(value) ? KDhexToRGB(ElementValue("KDSelectedColor")) : 0xffffff,
+				});
 			}
 
-			let arr = hslToRgb(hue, sat, Math.max(0, Math.min(1, KDVisualBrightness)));
-			let r = arr[0];
-			let g = arr[1];
-			let b = arr[2];
 
-			MouseClicked = false;
-			if (force || CommonTime() > lastFilterUpdate + FilterUpdateInterval) {
-				lastFilterUpdate = CommonTime();
-				KDChangeWardrobe(C);
-				if (!Model.Filters) Model.Filters = {};
-				if (!Model.Filters[KDCurrentLayer])
-					Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
-				Model.Filters[KDCurrentLayer].red = 5*r/255.0;
-				Model.Filters[KDCurrentLayer].green = 5*g/255.0;
-				Model.Filters[KDCurrentLayer].blue = 5*b/255.0;
-				Model.Filters[KDCurrentLayer].brightness = 1;
-				if (Model.Filters[KDCurrentLayer].saturation == 1 || !Model.Filters[KDCurrentLayer].saturation)
-					Model.Filters[KDCurrentLayer].saturation = 0;
-				KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
-				let rr = Math.round(Model.Filters[KDCurrentLayer].red/5 * 255).toString(16);
-				if (rr.length == 1) rr = '0' + rr;
-				let gg = Math.round(Model.Filters[KDCurrentLayer].green/5 * 255).toString(16);
-				if (gg.length == 1) gg = '0' + gg;
-				let bb = Math.round(Model.Filters[KDCurrentLayer].blue/5 * 255).toString(16);
-				if (bb.length == 1) bb = '0' + bb;
-				ElementValue("KDSelectedColor", `#${
-					rr}${
-					gg}${
-					bb}`);
-				ElementValue("KDCopyFilter", JSON.stringify(Model.Filters[KDCurrentLayer]));
-				lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
-				ForceRefreshModels(C);
-			}
-		}
+			let dist = KDistEuclidean(MouseX - (X + radius), MouseY - (YY + radius));
+			if ((mouseDown && dist * 0.8 < radius) || force) {
+				let hue = Math.max(0, 0.5 + 0.5 * Math.min(1, Math.atan2(
+					-MouseY + (YY + radius),
+					-MouseX + (X + radius)) / Math.PI));
+				let sat = Math.min(1, dist/radius);
 
-		YY += 300;
-	} else {
-		for (let key of Object.keys(KDColorSliders)) {
-			DrawTextFitKD(TextGet("KDColorSlider" + key) + ": " + (Math.round(filters[key]*100)/100), X + width/2, YY, width, "#ffffff", "#000000", 20);
-			KinkyDungeonBar(X, YY - 15, width, 30, filters[key]/5*100, KDColorSliderColor[key] || "#ffffff", "#000000");
-			if ((mouseDown) && MouseIn(X, YY - 15, width, 30)) {
+				if (force) {
+					let hsl = rgbToHsl(
+						Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].red/5 || 0)),
+						Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].green/5 || 0)),
+						Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].blue/5 || 0)),
+					);
+					hue = hsl[0];
+					sat = hsl[1];
+				}
+
+				let arr = hslToRgb(hue, sat, Math.max(0, Math.min(1, KDVisualBrightness)));
+				let r = arr[0];
+				let g = arr[1];
+				let b = arr[2];
+
 				MouseClicked = false;
-				if (CommonTime() > lastFilterUpdate + FilterUpdateInterval) {
+				if (force || CommonTime() > lastFilterUpdate + FilterUpdateInterval) {
 					lastFilterUpdate = CommonTime();
 					KDChangeWardrobe(C);
 					if (!Model.Filters) Model.Filters = {};
 					if (!Model.Filters[KDCurrentLayer])
 						Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
-					Model.Filters[KDCurrentLayer][key] = ((MouseX - X) / width) * 5;
+					Model.Filters[KDCurrentLayer].red = 5*r/255.0;
+					Model.Filters[KDCurrentLayer].green = 5*g/255.0;
+					Model.Filters[KDCurrentLayer].blue = 5*b/255.0;
+					Model.Filters[KDCurrentLayer].brightness = 1;
+					if (Model.Filters[KDCurrentLayer].saturation == 1 || !Model.Filters[KDCurrentLayer].saturation)
+						Model.Filters[KDCurrentLayer].saturation = 0;
 					KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
-					let rr = Math.round(Model.Filters[KDCurrentLayer].red /5 * 255).toString(16);
+					let rr = Math.round(Model.Filters[KDCurrentLayer].red/5 * 255).toString(16);
 					if (rr.length == 1) rr = '0' + rr;
-					let gg = Math.round(Model.Filters[KDCurrentLayer].green /5 * 255).toString(16);
+					let gg = Math.round(Model.Filters[KDCurrentLayer].green/5 * 255).toString(16);
 					if (gg.length == 1) gg = '0' + gg;
-					let bb = Math.round(Model.Filters[KDCurrentLayer].blue /5 * 255).toString(16);
+					let bb = Math.round(Model.Filters[KDCurrentLayer].blue/5 * 255).toString(16);
 					if (bb.length == 1) bb = '0' + bb;
 					ElementValue("KDSelectedColor", `#${
 						rr}${
@@ -395,71 +532,154 @@ function KDDrawColorSliders(X, Y, C, Model) {
 					lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
 					ForceRefreshModels(C);
 				}
-
 			}
-			YY += 50;
+
+			YY += 300;
+		} else {
+			for (let key of Object.keys(KDColorSliders)) {
+				DrawTextFitKD(TextGet("KDColorSlider" + key) + ": " + (Math.round(filters[key]*100)/100), X + width/2, YY, width, "#ffffff", "#000000", 20);
+				KinkyDungeonBar(X, YY - 15, width, 30, filters[key]/5*100, KDColorSliderColor[key] || "#ffffff", "#000000");
+				if ((mouseDown) && MouseIn(X, YY - 15, width, 30)) {
+					MouseClicked = false;
+					if (CommonTime() > lastFilterUpdate + FilterUpdateInterval) {
+						lastFilterUpdate = CommonTime();
+						KDChangeWardrobe(C);
+						if (!Model.Filters) Model.Filters = {};
+						if (!Model.Filters[KDCurrentLayer])
+							Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
+						Model.Filters[KDCurrentLayer][key] = ((MouseX - X) / width) * 5;
+						KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+						let rr = Math.round(Model.Filters[KDCurrentLayer].red /5 * 255).toString(16);
+						if (rr.length == 1) rr = '0' + rr;
+						let gg = Math.round(Model.Filters[KDCurrentLayer].green /5 * 255).toString(16);
+						if (gg.length == 1) gg = '0' + gg;
+						let bb = Math.round(Model.Filters[KDCurrentLayer].blue /5 * 255).toString(16);
+						if (bb.length == 1) bb = '0' + bb;
+						ElementValue("KDSelectedColor", `#${
+							rr}${
+							gg}${
+							bb}`);
+						ElementValue("KDCopyFilter", JSON.stringify(Model.Filters[KDCurrentLayer]));
+						lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+						ForceRefreshModels(C);
+					}
+
+				}
+				YY += 50;
+			}
+		}
+
+
+
+		YY += 70;
+		DrawTextFitKD(TextGet("KDColorHex"),X + width/2, YY - 40, 300, "#ffffff", KDTextGray0, undefined, "center");
+		let TF = KDTextField("KDSelectedColor", X - 10, YY - 20, width, 30);
+		if (TF.Created) {
+			TF.Element.oninput = (event) => {
+				let value = ElementValue("KDSelectedColor");
+				let RegExp = /^#[0-9A-F]{6}$/i;
+
+				if (RegExp.test(value)) {
+					let hex = KDhexToRGB(value);
+					if (hex) {
+						let r = 5.0 * (parseInt(hex.r, 16) / 255.0);
+						let g = 5.0 * (parseInt(hex.g, 16) / 255.0);
+						let b = 5.0 * (parseInt(hex.b, 16) / 255.0);
+						KDChangeWardrobe(C);
+						if (!Model.Filters) Model.Filters = {};
+						if (!Model.Filters[KDCurrentLayer])
+							Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
+						if (Model.Filters[KDCurrentLayer].alpha < 0.001) Model.Filters[KDCurrentLayer].alpha = 0.001;
+						if (KDToggles.SimpleColorPicker) {
+							Model.Filters[KDCurrentLayer].brightness = 1;
+							if (Model.Filters[KDCurrentLayer].saturation == 1 || !Model.Filters[KDCurrentLayer].saturation)
+								Model.Filters[KDCurrentLayer].saturation = 0;
+						}
+						Model.Filters[KDCurrentLayer].red = r;
+						Model.Filters[KDCurrentLayer].green = g;
+						Model.Filters[KDCurrentLayer].blue = b;
+						KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+					}
+				}
+			};
 		}
 	}
 
 
 
-	YY += 70;
-	DrawTextFitKD(TextGet("KDColorHex"),X + width/2, YY - 40, 300, "#ffffff", KDTextGray0, undefined, "center");
-	let TF = KDTextField("KDSelectedColor", X - 10, YY - 20, width, 30);
-	if (TF.Created) {
-		TF.Element.oninput = (event) => {
-			let value = ElementValue("KDSelectedColor");
-			let RegExp = /^#[0-9A-F]{6}$/i;
-
-			if (RegExp.test(value)) {
-				let hex = KDhexToRGB(value);
-				if (hex) {
-					let r = 5.0 * (parseInt(hex.r, 16) / 255.0);
-					let g = 5.0 * (parseInt(hex.g, 16) / 255.0);
-					let b = 5.0 * (parseInt(hex.b, 16) / 255.0);
-					KDChangeWardrobe(C);
-					if (!Model.Filters) Model.Filters = {};
-					if (!Model.Filters[KDCurrentLayer])
-						Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
-					if (Model.Filters[KDCurrentLayer].alpha < 0.001) Model.Filters[KDCurrentLayer].alpha = 0.001;
-					if (KDToggles.SimpleColorPicker) {
-						Model.Filters[KDCurrentLayer].brightness = 1;
-						if (Model.Filters[KDCurrentLayer].saturation == 1 || !Model.Filters[KDCurrentLayer].saturation)
-							Model.Filters[KDCurrentLayer].saturation = 0;
-					}
-					Model.Filters[KDCurrentLayer].red = r;
-					Model.Filters[KDCurrentLayer].green = g;
-					Model.Filters[KDCurrentLayer].blue = b;
-					KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
-				}
-			}
-		};
-	}
-
 	DrawButtonKDEx("tab_ColorPickerSimple", (b) => {
 		KDToggles.SimpleColorPicker = true;
+		KDPropsSlider = false;
 		return true;
-	}, true, X - 240, YY + 40, 290, 30, TextGet("KDColorPickerSimple"), "#ffffff", undefined, undefined, undefined,
-	!KDToggles.SimpleColorPicker, KDButtonColor);
+	}, true, X - 240, YY + 40, 190, 30, TextGet("KDColorPickerSimple"), "#ffffff", undefined, undefined, undefined,
+	KDPropsSlider || !KDToggles.SimpleColorPicker, KDButtonColor);
 	DrawButtonKDEx("tab_ColorPickerAdvanced", (b) => {
 		KDToggles.SimpleColorPicker = false;
+		KDPropsSlider = false;
 		return true;
-	}, true, X - 250 + width, YY + 40, 290, 30, TextGet("KDColorPickerAdvanced"), "#ffffff", undefined, undefined, undefined,
-	KDToggles.SimpleColorPicker, KDButtonColor);
+	}, true, X - 240 + 200, YY + 40, 190, 30, TextGet("KDColorPickerAdvanced"), "#ffffff", undefined, undefined, undefined,
+	KDPropsSlider || KDToggles.SimpleColorPicker, KDButtonColor);
+	DrawButtonKDEx("tab_ColorPickerProperties", (b) => {
+		KDPropsSlider = true;
+		return true;
+	}, true, X - 240 + 400, YY + 40, 190, 30, TextGet("KDColorPickerProperties"), "#ffffff", undefined, undefined, undefined,
+	!KDPropsSlider, KDButtonColor);
 
 
 	YY += 60;
-	YY = Y;
+	YY = Y + 35;
 
-	for (let l of layers) {
-		DrawButtonKDEx("SelectLayer" + l, (bdata) => {
-			KDCurrentLayer = l;
-			return true;
-		}, true, X - 220, YY, 200, 30, TextGet(`l_${Model.Name}_${l}`),
-		"#ffffff", undefined, undefined, undefined, KDCurrentLayer != l, KDButtonColor);
-		YY += 35;
+	let ii = 0;
+	let buttonSpacing = 30;
+	while (YY < 590) {
+		if (ii >= KDLayerIndex) {
+			let l = layers[ii];
+			DrawButtonKDExScroll("SelectLayer" + YY,
+				(amount) => {
+					KDLayerIndex += Math.min(5, Math.abs(amount)/35) * Math.sign(amount);
+					KDLayerIndex = Math.min(KDLayerIndex, layers.length - 10);
+					KDLayerIndex = Math.max(0, KDLayerIndex);
+				},
+				(bdata) => {
+					if (l) {
+						KDCurrentLayer = l;
+					}
+					KDRefreshProps = true;
+					return true;
+				}, true, X - 220, YY, 200, buttonSpacing - 1, l ? TextGet(`l_${Model.Name}_${l}`) : "",
+				"#ffffff", undefined, undefined, undefined, KDCurrentLayer != l, KDButtonColor);
+			YY += buttonSpacing;
+		}
+		ii += 1;
 	}
+	DrawButtonKDEx("SelectLayer_V", (bdata) => {
+		KDLayerIndex += 5;
+		KDLayerIndex = Math.min(KDLayerIndex, layers.length - 10);
+		KDLayerIndex = Math.max(0, KDLayerIndex);
+		return true;
+	}, true, X-220, 620, 200, buttonSpacing - 1,
+	"",
+	KDModelList_Toplevel_viewindex.index + KDModelListMax < KDModelList_Toplevel_viewindex.index ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Down.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
+
+	DrawButtonKDEx("SelectLayer_^", (bdata) => {
+		KDLayerIndex -= 5;
+		KDLayerIndex = Math.min(KDLayerIndex, layers.length - 10);
+		KDLayerIndex = Math.max(0, KDLayerIndex);
+		return true;
+	}, true, X-220, 100, 200, buttonSpacing - 1,
+	"",
+	KDModelList_Toplevel_viewindex.index > 0 ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
+
+	if (KDLayerIndex > layers.length - 10) KDLayerIndex = Math.max(0, layers.length - 10);
 }
+
+let KDLayerIndex = 0;
 
 function KDDrawPoseButtons(C, X = 960, Y = 750, allowRemove = false, dress = false, updateDesired = false) {
 	let buttonClick = (arms, legs, eyes, eyes2, brows, brows2, blush, mouth, update = true) => {
@@ -683,7 +903,7 @@ function KDDrawModelList(X, C) {
 			if (name) {
 				KDCurrentLayer = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
 			} else KDCurrentLayer = "";
-
+			KDRefreshProps = true;
 			return true;
 		};
 	};
@@ -717,6 +937,7 @@ function KDDrawModelList(X, C) {
 
 			KDModelList_Sublevel_index = index;
 			KDCurrentLayer = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
+			KDRefreshProps = true;
 			KDUpdateModelList(3);
 			return true;
 		};
@@ -809,32 +1030,44 @@ function KDDrawModelList(X, C) {
 		KDModelList_Toplevel_viewindex.index += 5;
 		cullIndex();
 		return true;
-	}, true, X+220 + 20, 100 + buttonSpacing * KDModelListMax, 150, buttonHeight,
-	"v",
-	KDModelList_Toplevel_viewindex.index + KDModelListMax < KDModelList_Toplevel_viewindex.index ? "#ffffff" : "#888888", "");
+	}, true, X+220, 100 + buttonSpacing * KDModelListMax, 200, buttonHeight,
+	"",
+	KDModelList_Toplevel_viewindex.index + KDModelListMax < KDModelList_Toplevel_viewindex.index ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Down.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 
 	DrawButtonKDEx("KDModelList_Toplevel_^", (bdata) => {
 		KDModelList_Toplevel_viewindex.index -= 5;
 		cullIndex();
 		return true;
-	}, true, X+220 + 20, 100 + buttonSpacing * -1, 150, buttonHeight,
-	"^",
-	KDModelList_Toplevel_viewindex.index > 0 ? "#ffffff" : "#888888", "");
+	}, true, X+220, 100 + buttonSpacing * -1, 200, buttonHeight,
+	"",
+	KDModelList_Toplevel_viewindex.index > 0 ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 
 	DrawButtonKDEx("KDModelList_Sublevel_V", (bdata) => {
 		KDModelList_Sublevel_viewindex.index += 5;
 		cullIndex();
 		return true;
-	}, true, X+440 + 20, 100 + buttonSpacing * KDModelListMax, 150, buttonHeight,
-	"v",
-	KDModelList_Sublevel_viewindex.index + KDModelListMax < KDModelList_Sublevel_viewindex.index ? "#ffffff" : "#888888", "");
+	}, true, X+440, 100 + buttonSpacing * KDModelListMax, 200, buttonHeight,
+	"",
+	KDModelList_Sublevel_viewindex.index + KDModelListMax < KDModelList_Sublevel_viewindex.index ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Down.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 	DrawButtonKDEx("KDModelList_Sublevel_^", (bdata) => {
 		KDModelList_Sublevel_viewindex.index -= 5;
 		cullIndex();
 		return true;
-	}, true, X+440 + 20, 100 + buttonSpacing * -1, 150, buttonHeight,
-	"^",
-	KDModelList_Sublevel_viewindex.index > 0 ? "#ffffff" : "#888888", "");
+	}, true, X+440, 100 + buttonSpacing * -1, 200, buttonHeight,
+	"",
+	KDModelList_Sublevel_viewindex.index > 0 ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 
 
 
@@ -842,16 +1075,22 @@ function KDDrawModelList(X, C) {
 		KDModelList_Categories_viewindex.index += 5;
 		cullIndex();
 		return true;
-	}, true, X+0 + 20, 100 + buttonSpacing * KDModelListMax, 150, buttonHeight,
-	"v",
-	(KDModelList_Categories_viewindex.index + KDModelListMax < KDModelList_Categories_viewindex.index) ? "#ffffff" : "#888888", "");
+	}, true, X+0, 100 + buttonSpacing * KDModelListMax, 200, buttonHeight,
+	"",
+	(KDModelList_Categories_viewindex.index + KDModelListMax < KDModelList_Categories_viewindex.index) ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Down.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 	DrawButtonKDEx("KDModelList_Categories_^", (bdata) => {
 		KDModelList_Categories_viewindex.index -= 5;
 		cullIndex();
 		return true;
-	}, true, X+0 + 20, 100 + buttonSpacing * -1, 150, buttonHeight,
-	"^",
-	KDModelList_Categories_viewindex.index > 0 ? "#ffffff" : "#888888", "");
+	}, true, X+0, 100 + buttonSpacing * -1, 200, buttonHeight,
+	"",
+	KDModelList_Categories_viewindex.index > 0 ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 
 
 	cullIndex();
@@ -901,6 +1140,7 @@ function KDDrawWardrobe(screen, Character) {
 		KDDrawColorSliders(1625, 100, C, KDSelectedModel);
 	} else {
 		KDCurrentLayer = "";
+		KDRefreshProps = true;
 	}
 	// Return anon function anonymously
 	let clickButton = (index) => {
@@ -945,17 +1185,23 @@ function KDDrawWardrobe(screen, Character) {
 		KDMaxOutfitsIndex += 3;
 		if (KDMaxOutfitsIndex > KDMaxOutfits-9) KDMaxOutfitsIndex = Math.floor(KDMaxOutfits-9);
 		return true;
-	}, true, 500, 110 + 50 * (1 + KDMaxOutfitsDisplay), 150, 45,
-	"v",
-	KDModelList_Toplevel_viewindex.index + KDModelListMax < KDModelList_Toplevel_viewindex.index ? "#ffffff" : "#888888", "");
+	}, true, 475, 110 + 50 * (1 + KDMaxOutfitsDisplay), 200, 45,
+	"",
+	KDModelList_Toplevel_viewindex.index + KDModelListMax < KDModelList_Toplevel_viewindex.index ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Down.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 
 	DrawButtonKDEx("KDOutfitSaved_^^", (bdata) => {
 		KDMaxOutfitsIndex -= 3;
 		if (KDMaxOutfitsIndex < 0) KDMaxOutfitsIndex = 0;
 		return true;
-	}, true, 500, 90, 150, 45,
-	"^",
-	KDModelList_Toplevel_viewindex.index > 0 ? "#ffffff" : "#888888", "");
+	}, true, 475, 90, 200, 45,
+	"",
+	KDModelList_Toplevel_viewindex.index > 0 ? "#ffffff" : "#888888", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		centered: true,
+	});
 
 	for (let i = 0; i < KDOutfitInfo.length && i < KDMaxOutfitsDisplay; i++) {
 		let index = i + KDMaxOutfitsIndex;
@@ -1093,6 +1339,7 @@ function KDDrawWardrobe(screen, Character) {
 							Color: "#ffffff",
 							Lost: false,
 							Filters: a.Model.Filters,
+							Properties: a.Model.Properties,
 						},);
 					}
 				}
@@ -1111,6 +1358,7 @@ function KDDrawWardrobe(screen, Character) {
 							Group: a.Model.Group || a.Model.Name,
 							override: true,
 							Filters: a.Model.Filters,
+							Properties: a.Model.Properties,
 							factionFilters: {},
 							inheritFilters: false,
 						},);
@@ -1133,6 +1381,7 @@ function KDDrawWardrobe(screen, Character) {
 							Color: "#ffffff",
 							Lost: false,
 							Filters: a.Model.Filters,
+							Properties: a.Model.Properties,
 						},);
 					}
 				}
@@ -1151,6 +1400,7 @@ function KDDrawWardrobe(screen, Character) {
 							Color: "#ffffff",
 							Lost: false,
 							Filters: a.Model.Filters,
+							Properties: a.Model.Properties,
 						},);
 					}
 				}
@@ -1169,6 +1419,7 @@ function KDDrawWardrobe(screen, Character) {
 							Color: "#ffffff",
 							Lost: false,
 							Filters: a.Model.Filters,
+							Properties: a.Model.Properties,
 						},);
 					}
 				}

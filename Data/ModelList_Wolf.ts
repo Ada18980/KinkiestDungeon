@@ -370,6 +370,8 @@ AddModel({
 	Name: "WolfSockLeft",
 	Folder: "WolfCatsuit",
 	Parent: "WolfSocks",
+	Categories: ["Socks"],
+	TopLevel: false,
 	Layers: ToLayerMap([
 		{ Name: "LegLeft", Layer: "StockingLeft", Pri: -1,
 			Poses: ToMap([...LEGPOSES]),
@@ -403,6 +405,8 @@ AddModel({
 	Name: "WolfSockRight",
 	Folder: "WolfCatsuit",
 	Parent: "WolfSocks",
+	Categories: ["Socks"],
+	TopLevel: false,
 	Layers: ToLayerMap([
 		{ Name: "LegRight", Layer: "StockingRight", Pri: -1,
 			Poses: ToMap([...LEGPOSES]),

@@ -34,7 +34,9 @@ let KDAOETypes = {
 		for (let r = 1; r <= rad; r++) {
 			for (let d of dirs) {
 				if (points[(bx + (r - 1) * d.x) + ',' + (by + (r - 1) * d.y)]
-				&& !KinkyDungeonWallTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))) {
+				&& !KinkyDungeonWallTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))
+				&& (!KinkyDungeonEntityAt((bx + (r) * d.x), (by + (r) * d.y)) || !KDEntityBlocksExp(KinkyDungeonEntityAt((bx + (r) * d.x), (by + (r) * d.y))))
+			) {
 					points[(bx + (r) * d.x) + ',' + (by + (r) * d.y)] = true;
 				}
 			}
@@ -61,7 +63,9 @@ let KDAOETypes = {
 		for (let r = 1; r <= rad; r++) {
 			for (let d of dirs) {
 				if (points[(bx + (r - 1) * d.x) + ',' + (by + (r - 1) * d.y)]
-				&& !KinkyDungeonWallTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))) {
+				&& !KinkyDungeonWallTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))
+				&& (!KinkyDungeonEntityAt((bx + (r) * d.x), (by + (r) * d.y)) || !KDEntityBlocksExp(KinkyDungeonEntityAt((bx + (r) * d.x), (by + (r) * d.y))))
+			) {
 					points[(bx + (r) * d.x) + ',' + (by + (r) * d.y)] = true;
 				}
 			}
@@ -86,7 +90,9 @@ let KDAOETypes = {
 		for (let r = 1; r <= rad; r++) {
 			for (let d of dirs) {
 				if (points[(bx + (r - 1) * d.x) + ',' + (by + (r - 1) * d.y)]
-				&& !KinkyDungeonWallTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))) {
+				&& !KinkyDungeonWallTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))
+				&& (!KinkyDungeonEntityAt((bx + (r) * d.x), (by + (r) * d.y)) || !KDEntityBlocksExp(KinkyDungeonEntityAt((bx + (r) * d.x), (by + (r) * d.y))))
+			) {
 					points[(bx + (r) * d.x) + ',' + (by + (r) * d.y)] = true;
 				}
 			}
@@ -95,7 +101,9 @@ let KDAOETypes = {
 		for (let r = 1; r <= rad; r++) {
 			for (let d of dirs) {
 				if (points[(bx + (r - 1) * d.x) + ',' + (by + (r - 1) * d.y)]
-				&& KDCrackableTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))) {
+				&& (KDCrackableTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))
+				|| (KinkyDungeonEntityAt((bx + (r) * d.x), (by + (r) * d.y)) && KDEntityBlocksExp(KinkyDungeonEntityAt((bx + (r) * d.x), (by + (r) * d.y))))
+			)) {
 					points[(bx + (r) * d.x) + ',' + (by + (r) * d.y)] = true;
 					break; // Break the d
 				}
@@ -123,7 +131,9 @@ let KDAOETypes = {
 		for (let r = 1; r <= rad; r++) {
 			for (let d of dirs) {
 				if (points[(bx + (r - 1) * d.x) + ',' + (by + (r - 1) * d.y)]
-				&& !KinkyDungeonWallTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))) {
+				&& !KinkyDungeonWallTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))
+				&& (!KinkyDungeonEntityAt((bx + (r) * d.x), (by + (r) * d.y)) || !KDEntityBlocksExp(KinkyDungeonEntityAt((bx + (r) * d.x), (by + (r) * d.y))))
+			) {
 					points[(bx + (r) * d.x) + ',' + (by + (r) * d.y)] = true;
 				}
 			}
@@ -132,7 +142,9 @@ let KDAOETypes = {
 		for (let r = 1; r <= rad; r++) {
 			for (let d of dirs) {
 				if (points[(bx + (r - 1) * d.x) + ',' + (by + (r - 1) * d.y)]
-				&& KDCrackableTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))) {
+				&& (KDCrackableTiles.includes(KinkyDungeonMapGet((bx + (r) * d.x), (by + (r) * d.y)))
+				|| (KinkyDungeonEntityAt((bx + (r) * d.x), (by + (r) * d.y)) && KDEntityBlocksExp(KinkyDungeonEntityAt((bx + (r) * d.x), (by + (r) * d.y))))
+			)) {
 					points[(bx + (r) * d.x) + ',' + (by + (r) * d.y)] = true;
 					break; // Break the d
 				}

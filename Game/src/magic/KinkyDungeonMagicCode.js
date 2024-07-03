@@ -24,6 +24,44 @@ let KinkyDungeonSpellSpecials = {
 			} else return "Fail";
 		}
 	},
+	"LeashSpell": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let en = KinkyDungeonEntityAt(targetX, targetY);
+		if (en != entity) {
+			if (!KDLeashReason.PlayerLeash(undefined)) {
+				KinkyDungeonSendActionMessage(7, TextGet("KDLeashSpellCant"), "#e64539", 1);
+				return "Fail";
+			} else if (!KDLeashReason.PlayerLeash(en)) {
+				KinkyDungeonSendActionMessage(7, TextGet("KDLeashSpellMustTie"), "#e64539", 1);
+				return "Fail";
+			}
+		}
+
+		if (en) {
+			if (en == entity) {
+				KinkyDungeonSendActionMessage(7, TextGet("KDLeashSpellRemoveAll"), "#63ab3f", 1);
+				KDBreakAllLeashedTo(en, "PlayerLeash");
+				return "Cast";
+			} else {
+				if (KDGetLeashedToCount(entity) >= 3) {
+					KinkyDungeonSendActionMessage(7, TextGet("KDTooManyLeashes"), "#e64539", 1);
+					return "Fail";
+				}
+				if (!(en.leash?.reason == "PlayerLeash")) {
+					KinkyDungeonSendActionMessage(7, TextGet("KDLeashSpell").replace("ENMY", KDGetEnemyTypeName(en)), "#63ab3f", 1);
+					KinkyDungeonAttachTetherToEntity(spell.range, entity, en, "PlayerLeash", "#e64539", 7);
+					return "Cast";
+
+				} else if (en.leash?.reason == "PlayerLeash") {
+					KinkyDungeonSendActionMessage(7, TextGet("KDLeashSpellRemove").replace("ENMY", KDGetEnemyTypeName(en)), "#63ab3f", 1);
+					KDBreakTether(en);
+					return "Cast";
+				}
+			}
+			return "Fail";
+		} else {
+			return "Fail";
+		}
+	},
 	"BoulderKick": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
@@ -1086,6 +1124,8 @@ let KinkyDungeonSpellSpecials = {
 				return b.bullet.source == -1 && b.bullet?.spell?.tags?.includes("rune");
 			});
 
+		} else {
+			cast = true;
 		}
 
 		let refund = false;
@@ -1104,6 +1144,9 @@ let KinkyDungeonSpellSpecials = {
 			if (refund) {
 				KinkyDungeonSendActionMessage(6, TextGet("KDNegateRuneEnemy"), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 				KinkyDungeonChangeMana(1, false, 0, undefined, true);
+			} else if (bList.length == 0) {
+				KinkyDungeonSendActionMessage(6, TextGet("KDNegateRuneFail"), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+				KinkyDungeonChangeMana(-0.5, false, 0, undefined, true);
 			}
 			return "Cast";
 		} else return "Fail";

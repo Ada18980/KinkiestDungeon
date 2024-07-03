@@ -22,6 +22,108 @@ Monk class?
  - TODO added personalized dragon caves
  - TODO dragon arena floor 20
 
+
+TODO:
+- High alchemist and solvent
+- Let go of leash thru menu
+- Aggro level
+
+TODO remove hogtie whenm released
+
+5.3.22
+- You can lock yourself inside of furniture
+- Added some gag particles to player and enemy
+- Added setting to allow dynamic armor item removal from outfits if you are missing armor (only works with plate armor)
+- Added pose-specific layer properties (hide, require poses, and hide prefix/suffix)
+- Interacting now picks up items on the targeted tile
+
+5.3.21
+- Upgraded the layering system to allow for even tighter item combinations (and getting rid of low level items to replace with more strong items)
+- More scenery now appears in various tiles, and added a few new temple tile variations
+- Made it possible to put your own runes on top of enemy runes. Have fun :)
+- Having an orgasm is easier the more desire you have, and the effects last longer if you have more desire
+- Fixed some cases of linking not working properly
+- Added Cyber Link
+- Added cyber mitt artwork and added shorter cyber mitts item
+- Being headpatted now affects your facial expression
+- Enemies like the Cyber Warden can remotely link your cyber cuffs
+- Control harness now applies heels and mitts when placed in a full set of cyber cuffs
+- Tweaked orgasm power increase from desire
+
+5.3.20
+- You can now give release to distracted NPCs thru the flirting menu
+- Replaced 'close door' control on bottom bar with 'interact' control, which now lets you interact with objects as well as close doors
+- Can now interact with doll dropoffs to put yourself on one (only on new tiles)
+- Increased number of hotbar slots to 50
+- Fixed bug where enemies would deaggro and sit there (instead of running away)
+- Minefield is now a -1 perk (instead of -2)
+
+5.3.19
+- Fixed 'temp leash enemy failing to deliver to jail or cage'
+- Added graphics for bars in bandit hideout
+- Fixed a few other bugs
+- Added Swimsuit armor
+- Reworked the lore system and rewrote most lore entries
+- Added Free the Boob and Liberate the Boob perks
+- Added Slayer Cape
+
+5.3.18
+- Fixed bug where enchantments had wrong font color
+- Changed enemy perception so that they can track your movement a bit more realistically
+- Allies will now temp leash the player again
+- Fix pose issues with hogtie and kneel and bubble/cube/barrel
+- Lifted the doll blockade that sometimes happens in doll processing
+- fixed more leash bugs
+
+5.3.17
+- Added separate button font option
+- Made different font types word wrap at different character amounts depending on font
+
+5.3.16
+- Added save/load as file function for save codes and outfit codes
+- Added crotch rope gfx for the newer striped skirt
+- Redesigned inventory interface (with UI option to do a classic inspired scroll)
+- Added selectable font in game options
+
+5.3.15
+- Fixed bug with layer properties having wrong coordinate geometry in hogtie/map mode
+- Fixed bug with layer property layer bonus not working
+
+5.3.14
+- Added Expert Tools section in the color picker
+- One Click Move is now disabled when in danger (such as combat)
+- Enemies can hit you more easily if they have low base accuracy, if you are slowed or restrained
+- 6 new hairstyles added
+
+5.3.13
+- Changed how bondage resist gets affected by penalties when stunned
+- Added evasion, block, bondage resist penalty for being frozen
+- Game ignores files that start with . when loading mods (to increase Mac OS compat)
+- Fix bug where casting a spell after using a leash consumes one leash
+- Fix bug where Cyber security level doesnt reset on floor up
+- Fix 'equipped' filters showing the wrong items in some cases
+- Fix doll processing start denying journey selection
+
+5.3.12
+- Fixed a couple leash bugs
+
+5.3.11
+- Some enemies have Bulwark which blocks bomb explosions
+- Fixed some bugs where enemies would fail to pathfind
+- Added plastic explosive and dynamite to the shop
+
+5.3.10
+- Dragons can no longer reinforce PoI maps like bandit hideout
+- Added Clip-On Leash item
+- Refactored leashing! Should work on enemies and player now (may have some bugs)
+
+5.3.9
+- Fix issue where allies don't spawn in dollmaker, warden arena, or other maps
+- Added the summit (currently serves only as a safe storage for items)
+- Fixed some issues with filters in the armor menu
+- Added a feature to tally damage dealt by attacks
+- Added option for damage floaters to disappear faster
+
 5.3.8
 - Nerfed restoration tablets and determination tablets to compensate for increased counts
 - Reduced time taken to copy large save codes in some browsers
@@ -1005,7 +1107,7 @@ Modding
 
 4.31 (July 2023)
 - Added ability to add temporary curses onto items using console -- TODO test this to make sure the curse is persistent and gets filtered when the item is removed
-- New weapons: Industrial Tape Wand, Bag of Goodies, Magic Remote, Rubber Stick, Blade of Fla'peh, Enchanted Rope, Wooden Bow, Crossbow
+- New weapons: Industrial Tape Wand, Bag of Goodies, Magic Remote, Rubber Stick, Blade of Ejahl, Enchanted Rope, Wooden Bow, Crossbow
 - New series of spells which modify arrows fired by bows
 - Some enemies now come pre-equipped with a toy
 - Added quick inventory setups

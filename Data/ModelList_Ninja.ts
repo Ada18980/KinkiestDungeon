@@ -251,6 +251,8 @@ AddModel({
 	Name: "NinjaSockLeft",
 	Folder: "Ninja",
 	Parent: "NinjaSocks",
+	Categories: ["Socks"],
+	TopLevel: false,
 	Layers: ToLayerMap([
 		{ Name: "SockLeft", Layer: "StockingLeft", Pri: 2,
 			Poses: ToMap([...LEGPOSES]),
@@ -264,6 +266,8 @@ AddModel({
 	Name: "NinjaSockRight",
 	Folder: "Ninja",
 	Parent: "NinjaSocks",
+	Categories: ["Socks"],
+	TopLevel: false,
 	Layers: ToLayerMap([
 		{ Name: "SockRight", Layer: "StockingRight", Pri: 2,
 			Poses: ToMap([...LEGPOSES]),
@@ -280,6 +284,8 @@ AddModel({
 	Name: "NinjaThighLeft",
 	Folder: "Ninja",
 	Parent: "NinjaSocks",
+	Categories: ["Socks"],
+	TopLevel: false,
 	Layers: ToLayerMap([
 		{ Name: "ThighLeft", Layer: "StockingLeft", Pri: 3,
 			Poses: ToMap([...LEGPOSES]),
@@ -292,6 +298,8 @@ AddModel({
 	Name: "NinjaThighRight",
 	Folder: "Ninja",
 	Parent: "NinjaSocks",
+	Categories: ["Socks"],
+	TopLevel: false,
 	Layers: ToLayerMap([
 		{ Name: "ThighRight", Layer: "StockingRight", Pri: 3,
 			Poses: ToMap([...LEGPOSES]),
@@ -307,6 +315,8 @@ AddModel({
 	Name: "NinjaKneeLeft",
 	Folder: "Ninja",
 	Parent: "NinjaSocks",
+	Categories: ["Socks"],
+	TopLevel: false,
 	Layers: ToLayerMap([
 		{ Name: "KneeLeft", Layer: "StockingLeft", Pri: 4,
 			Poses: ToMap([...LEGPOSES]),
@@ -319,6 +329,8 @@ AddModel({
 	Name: "NinjaKneeRight",
 	Folder: "Ninja",
 	Parent: "NinjaSocks",
+	Categories: ["Socks"],
+	TopLevel: false,
 	Layers: ToLayerMap([
 		{ Name: "KneeRight", Layer: "StockingRight", Pri: 4,
 			Poses: ToMap([...LEGPOSES]),

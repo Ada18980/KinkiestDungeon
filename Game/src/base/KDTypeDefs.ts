@@ -137,6 +137,8 @@ interface KDRestraintProps extends KDRestraintPropsBase {
 interface KDRestraintPropsBase {
 	/** Used in standalone to replace Color */
 	Filters?: Record<string, LayerFilter>,
+	/** Used in standalone to replace Properties */
+	Properties?: Record<string, LayerProperties>,
 	/** TODO Used in standalone to indicate which faction colors map to which filter
 	 * color is the faction color type
 	 * override is whether the faction color overrides the filter. If true it will replace the filter in the model. If false it will apply it over the model's filter. Currently unused
@@ -198,6 +200,17 @@ interface KDRestraintPropsBase {
 		/** Magic security level, for mage factions */
 		level_magic?: number,
 	},
+
+	/**
+	 * Subjective modifier for how pissed off an enemy has to be in order to use this item on you. Good for items that "tighten" for example.
+	 * The effects are not straightforward, but some of the things a higher aggro level will do in the future (TODO) are:
+	 * - reduce likelihood of duplicates
+	 * - reduce likelihood of the item if another item in the same slot already shares some enemyTags with the item
+	 * - reduce likelihood of stacking or linking under another item in the same slot
+	 *
+	 * General range is 0-10 with 0 being the default and 10 being a last resort high security measure
+	 */
+	aggroLevel?: number,
 
 	/** Affinity type: Hook, Edge, or Sharp, Sticky, defaults are Hook (struggle), Sharp (Cut), Edge (Pick), Sticky (Unlock), and none (Pick)*/
 	affinity?: {
@@ -294,6 +307,13 @@ interface KDRestraintPropsBase {
 		Pick?: number,
 		Unlock?: number,
 	},
+	speedMult?: {
+		Struggle?: number,
+		Cut?: number,
+		Remove?: number,
+		Pick?: number,
+		Unlock?: number,
+	},
 	struggleMinSpeed?: {
 		Struggle?: number,
 		Cut?: number,
@@ -310,6 +330,14 @@ interface KDRestraintPropsBase {
 	},
 	/** Multiplier to struggle power */
 	struggleMult?: {
+		Struggle?: number,
+		Cut?: number,
+		Remove?: number,
+		Pick?: number,
+		Unlock?: number,
+	},
+	/** Multiplier to limit chance */
+	limitMult?: {
 		Struggle?: number,
 		Cut?: number,
 		Remove?: number,
@@ -684,6 +712,8 @@ interface alwaysDressModel {
 	Model: string,
 	/** Group */
 	Group?: string,
+	/** Filters */
+	Properties?: Record<string, LayerProperties>,
 	/** Filters */
 	Filters?: Record<string, LayerFilter>,
 	/** Faction filter index */
@@ -1521,6 +1551,8 @@ interface String {
 }
 
 interface entity {
+	/** Optional leash data, used for both NPC and player */
+	leash?: KDLeashData,
 	blockedordodged?: number,
 	blocks?: number,
 	dodges?: number,
@@ -1681,6 +1713,8 @@ type KinkyDungeonDress = {
 	Group?: string;
 	Color: string | string[];
 	Filters?: Record<string, LayerFilter>;
+	Properties?: Record<string, LayerProperties>;
+
 	Lost: boolean;
 	NoLose?: boolean;
 	Property?: any,
@@ -2306,7 +2340,9 @@ interface KDStruggleData {
 	struggleType: string,
 	struggleGroup: string,
 	escapeChance: number,
+	cutBonus: number,
 	origEscapeChance: number,
+	origLimitChance: number,
 	helpChance: number,
 	limitChance: number,
 	strict: number,
@@ -2725,6 +2761,8 @@ interface KDAIData extends KDAITriggerData {
 	focusOnLeash?: boolean,
 	/** Enemy will move toward its target rather than its gx/gy position */
 	moveTowardPlayer?: boolean,
+	/** Enemy will wait a bit before forcing leash again */
+	SlowLeash?: boolean,
 
 	/** The enemy plans to leash the player,
 	 * important to declare b/c otherwise enemy can close cages, etc during play*/
@@ -2969,6 +3007,42 @@ type KDParticleData = {
 	scale_delta?: number,
 
 	rotation?: number,
+	rotation_spread?: number,
+
+	vy?: number,
+	vy_spread?: number,
+	vx?: number,
+	vx_spread?: number,
+	sin_period?: number,
+	sin_period_spread?: number,
+	sin_x?: number,
+	sin_x_spread?: number,
+	sin_y?: number,
+	sin_y_spread?: number,
+	/** Lifetime in ms */
+	lifetime: number,
+	lifetime_spread?: number,
+}
+
+type KDParticleEmitterData = {
+	rate: number,
+	cd: number,
+
+	camX?: number,
+	camY?: number,
+
+	zIndex: number,
+	fadeEase?: string,
+	time: number,
+	phase?: number,
+
+	scale?: number,
+	scale_delta?: number,
+
+	rotation?: number,
+	rotation_spread?: number,
+
+	noFace?: boolean,
 
 	vy?: number,
 	vy_spread?: number,
@@ -3028,6 +3102,8 @@ type KDRestraintVariant = {
 	template: string,
 	/** If true, this item will not be forcibly kept whenever being added or removed */
 	noKeep?: boolean,
+	/** Power of the variant */
+	power?: number,
 }
 type KDWeaponVariant = {
 	/** Name prefix */
@@ -3085,7 +3161,7 @@ type KDEventData_affinity = {
     msgedstand: boolean;
 	groupIsHigh: boolean;
 };
-type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean}
+type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean, UnLink: boolean}
 type KDEventData_CurseCount = {restraints: {item: item, host: item}[], count: number, activatedOnly: boolean}
 
 type KDExpression = {
@@ -3243,6 +3319,11 @@ interface ApplyVariant {
 	maxfloor?: number,
 }
 
+interface SpecialStat {
+	PerFloor: (player: entity, amount: number) => number, // Amount lost per floor
+	BuffEvents?: (player: entity) => KinkyDungeonEvent[],
+}
+
 enum PosNeutNeg {
 	positive=1,
 	neutral=0,
@@ -3346,6 +3427,7 @@ interface KDCollectionEntry {
 	color: string,
 	type: string,
 	sprite: string,
+	Facility: string,
 	customSprite: boolean,
 	id: number,
 	Enemy?: enemy, // for unique ones
@@ -3394,6 +3476,25 @@ type KDJailGetGroupsReturn = {
 	itemsToKeep: Record<string, boolean>,
 	itemsToStrip: Record<string, boolean>,
 };
+
+interface KDLeashData {
+	priority: number,
+	length: number,
+	x: number,
+	y: number,
+	entity?: number,
+	reason?: string,
+	restraintID?: number,
+	color?: string,
+};
+
+type Lore = {
+	//text: string,
+	condition?: () => boolean,
+	image?: string,
+	/** Don't show in the list, just make available */
+	noShow?: boolean,
+}
 
 type KDJourneySlot = {
 	visited: boolean,
@@ -3453,6 +3554,8 @@ type PIXIContainer = import('pixi.js').Container;
 type PIXIMesh = import('pixi.js').Mesh;
 type PIXIRenderTexture = import('pixi.js').RenderTexture;
 type PIXITexture = import('pixi.js').Texture;
+type PIXISprite = import('pixi.js').Sprite;
+
 
 type PIXIPlane = import('pixi.js').SimplePlane;
 type PIXIBuffer = import('pixi.js').Buffer;

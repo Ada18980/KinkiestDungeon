@@ -247,16 +247,15 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 	}
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
 	if (!nomsg) {
-		KinkyDungeonSendActionMessage(priority, TextGet("ItemPickup" + name).replace("XXX", Item.amount).replace("ReplaceValue", replace), color, 1);
+		KinkyDungeonSendActionMessage(priority, TextGet("ItemPickup" + name).replace("XXX", Item.amount).replace("ReplaceValue", replace), color, 1, false, false, undefined, "Items");
 		if (!KDCanSeeDroppedItem(Item))
-			KinkyDungeonSendActionMessage(priority + 1, TextGet("ItemFoundHidden").replace("XXX", Item.amount).replace("ReplaceValue", replace), color, 1);
+			KinkyDungeonSendActionMessage(priority + 1, TextGet("ItemFoundHidden").replace("XXX", Item.amount).replace("ReplaceValue", replace), color, 1, false, false, undefined, "Items");
 
 	}
 }
 
 
 function KDAllowUseItems(Message,x, y) {
-
 	let ret = !KinkyDungeonStatsChoice.get("CantTouchThat") || KinkyDungeonHasHelp() || !(KinkyDungeonIsArmsBound() && !KinkyDungeonCanUseFeet() && KinkyDungeonIsHandsBound(false, true, 0.01));
 	if (!ret && KinkyDungeonCanTalk()) {
 		if (KDGameData.KneelTurns > 0) {return true;}
@@ -434,8 +433,8 @@ function KDDrawItemsTooltip(items, offset) {
 	for (let item of items) {
 		str = str + (str ? ", " : "") + KDGetItemNameString(item.name);
 	}
-
-	let strSplit = KinkyDungeonWordWrap(str, 12, 28).split('\n');
+	let mult = KDGetFontMult();
+	let strSplit = KinkyDungeonWordWrap(str, 12*mult, 28*mult).split('\n');
 
 	let i = 1;
 	const imax = 5;

@@ -73,14 +73,16 @@ let KDTilePalette = {
 	'SpawnMiniboss': {type: "tile", tile: 'G', special: {Type: "Spawn", required: ["miniboss"], AI: "guard"}},
 	'SpawnBoss': {type: "tile", tile: 'G', special: {Type: "Spawn", required: ["boss"], AI: "guard"}},
 	'----SpecifcSpawns----': {type: "none"},
-	'SpawnStatue': {type: "tile", tile: '3', special: {Type: "Spawn", required: ["statue"], Label: "Statue"}},
+	'SpawnStatue': {type: "tile", tile: '3', special: {Type: "ForceSpawn", required: ["statue"], Label: "Statue", tags: ["statue"]}},
+	'SpawnStatueRare': {type: "tile", tile: '3', special: {Type: "ForceSpawn", required: ["statue"], Label: "Statue", tags: ["statue"], Chance: 0.4}},
 	'SpawnObstacleDoor': {type: "tile", tile: 'G', special: {Type: "ForceSpawn", required: ["obstacledoor"], tags: ["obstacletile"], Label: "Door"}},
-	'SpawnSoulCrys': {type: "tile", tile: '3', special: {Type: "Spawn", required: ["soul"], tags: ["soul"], Label: "SoulC"}},
-	'SpawnSoulCrysActive': {type: "tile", tile: '3', special: {Type: "Spawn", required: ["soul", "active"], tags: ["soul"], Label: "SoulC_A"}},
+	'SpawnSoulCrys': {type: "tile", tile: '3', special: {Type: "ForceSpawn", required: ["soul"], tags: ["soul"], Label: "SoulC"}},
+	'SpawnSoulCrysActive': {type: "tile", tile: '3', special: {Type: "ForceSpawn", required: ["soul", "active"], tags: ["soul"], Label: "SoulC_A"}},
 	'SpawnChaosCrysRare': {type: "tile", tile: '3', special: {Type: "ForceSpawn", required: ["chaos", "inactive"], tags: ["chaos"], Label: "ChaosC", Chance: 0.4}},
-	'SpawnChaosCrys': {type: "tile", tile: '3', special: {Type: "Spawn", required: ["chaos"], tags: ["chaos"], Label: "ChaosC"}},
-	'SpawnChaosCrysActive': {type: "tile", tile: '3', special: {Type: "Spawn", required: ["chaos", "active"], tags: ["chaos"], Label: "ChaosC_A"}},
-	'SpawnMushroom': {type: "tile", tile: '3', special: {Type: "Spawn", required: ["mushroom", "scenery"], tags: ["mushroom"], Label: "Mushroom"}},
+	'SpawnChaosCrys': {type: "tile", tile: '3', special: {Type: "ForceSpawn", required: ["chaos"], tags: ["chaos"], Label: "ChaosC"}},
+	'SpawnChaosCrysActive': {type: "tile", tile: '3', special: {Type: "ForceSpawn", required: ["chaos", "active"], tags: ["chaos"], Label: "ChaosC_A"}},
+	'SpawnMushroom': {type: "tile", tile: '3', special: {Type: "ForceSpawn", required: ["mushroom", "scenery"], tags: ["mushroom"], Label: "Mushroom"}},
+	'SpawnMushroomRare': {type: "tile", tile: '3', special: {Type: "ForceSpawn", required: ["mushroom", "scenery"], tags: ["mushroom"], Label: "Mushroom", Chance: 0.4}},
 	'SpawnCustom': {type: "tile", tile: '3', special: {Type: "Spawn", required: [], Label: "Custom"}, customfields: {
 		required: {type: "array"},
 		tags: {type: "array"},
@@ -954,7 +956,8 @@ let KDTE_Brush = {
 				if (!noSwap)
 					delete KDMapData.EffectTiles[KinkyDungeonTargetX + "," + KinkyDungeonTargetY];
 			} else {
-				KDCreateEffectTile(KinkyDungeonTargetX, KinkyDungeonTargetY, {name: brush.effectTile}, 0);
+				// Has to have unlimited duration
+				KDCreateEffectTile(KinkyDungeonTargetX, KinkyDungeonTargetY, {name: brush.effectTile, duration: 9999}, 0);
 			}
 		}
 	},

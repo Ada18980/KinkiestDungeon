@@ -67,7 +67,7 @@ let MiniGameVictory = true;
 function InventoryRemove(C: Character, AssetGroup: string, Refresh = false) {}
 function InventoryGetLock(Lock: Item): any {}
 function InventoryAllow(C: PlayerCharacter, asset: Asset, prerequisites = asset.Prerequisite, setDialog = true) { return true; }
-function InventoryWear(C: Character, AssetName: any, AssetGroup: any, ItemColor: any, Difficulty: undefined, MemberNumber: undefined, Craft: undefined, Refresh=true) {}
+function InventoryWear(C: Character, AssetName: any, AssetGroup: any, ItemColor?: any, Difficulty?: undefined, MemberNumber?: undefined, Craft?: undefined, Refresh=true) {}
 function InventoryLock(C: Character, Item: Item, Lock: string, MemberNumber: number, Update = true) {}
 function InventoryUnlock(C: Character, Item: string) {}
 

@@ -4,6 +4,10 @@
 let KDParticles = new Map();
 let KDParticleid = 0;
 
+/** @type {Map<Number, {emitted: any, emitter: any, sprite: any, type: any, img: string}>} */
+let KDParticleEmitters = new Map();
+let KDParticleEmitterid = 0;
+
 /**
  *
  * @param {number} x
@@ -58,6 +62,63 @@ function KDAddParticle(x, y, img, type, data) {
 }
 
 
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @param {string} img
+ * @param {string} imgemitted
+ * @param {string} type
+ * @param {KDParticleEmitterData} emitter
+ * @param {KDParticleData} emitted
+ */
+function KDAddParticleEmitter(x, y, img, imgemitted, type, emitter, emitted) {
+	if (KDParticleEmitters.size > 1000) return;
+	let tex = KDTex(img);
+
+	if (tex && emitted && emitter) {
+		let emitterinfo = Object.assign({}, emitter);
+		Object.assign(emitterinfo, {
+			time: 0,
+			lifetime: (emitter.lifetime || 0) + (emitter.lifetime_spread ? (Math.random()*emitter.lifetime_spread - emitter.lifetime_spread*0.5) : 0),
+			zIndex: emitter.zIndex || 100,
+			vy: emitter.vy + (emitter.vy_spread ? (Math.random()*emitter.vy_spread - emitter.vy_spread*0.5) : 0),
+			vx: emitter.vx + (emitter.vx_spread ? (Math.random()*emitter.vx_spread - emitter.vx_spread*0.5) : 0),
+			scale: emitter.scale || 1,
+			scale_delta: emitter.scale_delta || 0,
+			sin_y: emitter.sin_y + (emitter.sin_y_spread ? (Math.random()*emitter.sin_y_spread - emitter.sin_y_spread*0.5) : 0),
+			sin_x: emitter.sin_x + (emitter.sin_x_spread ? (Math.random()*emitter.sin_x_spread - emitter.sin_x_spread*0.5) : 0),
+			sin_period: emitter.sin_period + (emitter.sin_period_spread ? (Math.random()*emitter.sin_period_spread - emitter.sin_period_spread*0.5) : 0),
+			phase: emitter.phase || 0,
+			cd: emitter.cd || 0,
+			rate: emitter.rate,
+		});
+
+		// Create the sprite
+		let sprite = PIXI.Sprite.from(tex);
+		sprite.position.x = x;
+		sprite.position.y = y;
+		sprite.zIndex = emitterinfo.zIndex;
+
+		if (emitterinfo.scale != 1 || emitterinfo.scale_delta) {
+			sprite.scale.x = emitterinfo.scale;
+			sprite.scale.y = emitterinfo.scale;
+		}
+
+		if (emitterinfo.fadeEase) {
+			switch (emitterinfo.fadeEase) {
+				case "invcos": {sprite.alpha = Math.min(1, Math.max(0, 1 - Math.cos(2 * Math.PI * emitterinfo.time / emitterinfo.lifetime)));}
+			}
+		}
+
+		KDParticleEmitters.set(KDParticleEmitterid, {emitter: emitterinfo, emitted: emitted, sprite: sprite, type: type, img: imgemitted});
+
+		KDParticleEmitterid += 1;
+		if (KDParticleEmitterid > 4000000000) KDParticleEmitterid = 0;
+	}
+}
+
+
 function KDUpdateParticles(delta) {
 	let id = 0;
 	/**  @type {KDParticleData} */
@@ -79,7 +140,7 @@ function KDUpdateParticles(delta) {
 
 		sprite.anchor.set(0.5);
 
-		if (info.rotation && !sprite.rotation) sprite.rotation = info.rotation;
+		if ((info.rotation || info.rotation_spread) && !sprite.rotation) sprite.rotation = (info.rotation || 0) + (info.rotation_spread || 0) * (2 * KDRandom() - 1);
 
 		if (info.vy) {sprite.position.y += info.vy * delta;}
 		if (info.vx) {sprite.position.x += info.vx * delta;}
@@ -104,6 +165,57 @@ function KDUpdateParticles(delta) {
 			KDRemoveParticle(id);
 		}
 	}
+
+
+	/**  @type {KDParticleEmitterData} */
+	let emitter = null;
+	for (let particle of KDParticleEmitters.entries()) {
+		id = particle[0];
+		emitter = particle[1].emitter;
+		sprite = particle[1].sprite;
+
+		if (emitter.camX != undefined && KinkyDungeonCamXVis != emitter.camX) {
+			sprite.position.x -= (KinkyDungeonCamXVis - emitter.camX) * KinkyDungeonGridSizeDisplay;
+			emitter.camX = KinkyDungeonCamXVis;
+		}
+		if (emitter.camY != undefined && KinkyDungeonCamYVis != emitter.camY) {
+			sprite.position.y -= (KinkyDungeonCamYVis - emitter.camY) * KinkyDungeonGridSizeDisplay;
+			emitter.camY = KinkyDungeonCamYVis;
+		}
+
+
+		if (emitter.rotation && !sprite.rotation) sprite.rotation = emitter.rotation + (emitter.rotation_spread || 0) * (2 * KDRandom() - 1);
+
+		if (emitter.vy) {sprite.position.y += emitter.vy * delta;}
+		if (emitter.vx) {sprite.position.x += emitter.vx * delta;}
+
+		if (emitter.sin_x && emitter.sin_period) {sprite.position.x += emitter.sin_x * Math.sin(emitter.phase + emitter.sin_period * emitter.time / emitter.lifetime) * delta;}
+		if (emitter.sin_y && emitter.sin_period) {sprite.position.y += emitter.sin_y * Math.sin(emitter.phase + emitter.sin_period * emitter.time / emitter.lifetime) * delta;}
+
+		if (emitter.fadeEase) {
+			switch (emitter.fadeEase) {
+				case "invcos": {sprite.alpha = Math.min(1, Math.max(0, 1 - Math.cos(2 * Math.PI * emitter.time / emitter.lifetime)));}
+			}
+		}
+
+		if (emitter.scale != 1 || emitter.scale_delta) {
+			sprite.scale.x = emitter.scale;
+			sprite.scale.y = emitter.scale;
+			emitter.scale += delta * emitter.scale_delta;
+		}
+
+		emitter.time += delta;
+		emitter.cd -= delta;
+
+		if (emitter.cd < 0) {
+			KDAddParticle(sprite.position.x, sprite.position.y, particle[1].img, particle[1].type, particle[1].emitted);
+			emitter.cd = emitter.rate;
+		}
+
+		if (!emitter.lifetime || emitter.time > emitter.lifetime) {
+			KDRemoveParticleEmitter(id);
+		}
+	}
 }
 
 function KDRemoveParticle(id) {
@@ -111,6 +223,14 @@ function KDRemoveParticle(id) {
 		kdparticles.removeChild(KDParticles.get(id).sprite);
 		KDParticles.get(id).sprite.destroy();
 		KDParticles.delete(id);
+	}
+}
+
+function KDRemoveParticleEmitter(id) {
+	if (KDParticleEmitters.has(id)) {
+		kdparticles.removeChild(KDParticleEmitters.get(id).sprite);
+		KDParticleEmitters.get(id).sprite.destroy();
+		KDParticleEmitters.delete(id);
 	}
 }
 
@@ -169,6 +289,101 @@ function KDAddShockwave(x, y, size, spr = `Particles/Shockwave.png`, attachToCam
 		y,
 		KinkyDungeonRootDirectory + spr,
 		undefined, data);
+}
+
+function KDSendGagParticles(entity) {
+	if (!KDToggles.GagParticles) return;
+	if (entity?.player) {
+		// Player
+
+		let lifetime = 2000;
+		let pos = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "Mouth", KDToggles.FlipPlayer);
+		let x = pos.x;
+		let y = pos.y;
+
+		let vxx = ((KDToggles.FlipPlayer) ? -1 : 1) * (0.15 + Math.random()*0.05);
+		let vyy = -.07 + Math.random() * .23;
+
+		// Apply rotation
+		let vx = vxx * Math.cos(pos.angle) - vyy * Math.sin(pos.angle);
+		let vy = vxx * Math.sin(pos.angle) + vyy * Math.cos(pos.angle);
+
+		KDAddParticleEmitter(
+			x,
+			y,
+			KinkyDungeonRootDirectory + `Aura/Null.png`,
+			KinkyDungeonRootDirectory + `Particles/nnn.png`,
+			undefined, {
+				time: 0,
+				lifetime: 1000,
+				vx: 0,
+				vy: 0,
+				zIndex: 60,
+				rotation: 0,
+				cd: 0,
+				rate: 235,
+			},
+			{
+				time: 0,
+				lifetime: lifetime,
+				vx: vx,
+				vy: vy,
+				zIndex: 60,
+				sin_y: .1,
+				sin_y_spread: .02,
+				sin_period: 1.4,
+				phase: 6 * Math.random(),
+				fadeEase: "invcos",
+				rotation: 0,
+				rotation_spread: 0.25,
+			});
+
+
+
+	} else
+	if (entity) {
+		// Enemy
+		let x = (entity.x - KinkyDungeonCamX + 0.5) * KinkyDungeonGridSizeDisplay;
+		let y = (entity.y - KinkyDungeonCamY + 0.5) * KinkyDungeonGridSizeDisplay;
+
+		let lifetime = 900;
+
+		let vx = ((entity.flip) ? 1 : -1) * ((Math.random() < 0.7) ? 1 : -1) * (0.08 + Math.random()*0.03);
+		let vy = -.0215 + Math.random() * .03;
+
+		KDAddParticleEmitter(
+			x,
+			y,
+			KinkyDungeonRootDirectory + `Aura/Null.png`,
+			KinkyDungeonRootDirectory + `Particles/nnn.png`,
+			undefined, {
+				time: 0,
+				lifetime: 780,
+				vx: 0,
+				vy: 0,
+				zIndex: 60,
+				rotation: 0,
+				cd: 0,
+				rate: 175,
+			},
+			{
+				time: 0,
+				lifetime: lifetime,
+				vx: vx,
+				vy: vy,
+				camX: KinkyDungeonCamX,
+				camY: KinkyDungeonCamY,
+				zIndex: 60,
+				scale: 0.5,
+				sin_y: .1,
+				sin_y_spread: .02,
+				sin_period: 1.4,
+				phase: 6 * Math.random(),
+				fadeEase: "invcos",
+				rotation: 0,
+				rotation_spread: 0.25,
+			});
+	}
 }
 
 /**
