@@ -1179,6 +1179,17 @@ function KDProcessInput(type, data): string {
 			break;
 
 		}
+		case "recycleBuild":
+			if (KDHasRecyclerResources(KDMapToRecycleOutputs(data.selectedItem.recyclecost))) {
+				KDChangeRecyclerResources(KDMapToRecycleOutputs(data.selectedItem.recyclecost), -1);
+				KinkyDungeonItemEvent({
+					name: data.selectedItem.item,
+					amount: 1,
+				});
+			}
+			break;
+		case "recycle":
+			break;
 	}
 	if (data.GameData) {
 		Object.assign(KDGameData, data.GameData);

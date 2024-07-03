@@ -1857,7 +1857,7 @@ function KDDrawNavBar(skip, quit = false) {
 	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KDNavQuit"), "#ffffff",
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_menu.png"), undefined, undefined, false, "", 24, true,
 	{
-		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[1]),
+		//hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[1]),
 	}); bindex++; bInc();
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goInv", (bdata) => {
 		if (skip == 1)
@@ -1870,7 +1870,7 @@ function KDDrawNavBar(skip, quit = false) {
 	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KinkyDungeonInventory"), "#ffffff",
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_inventory.png"), undefined, undefined, false, "", 24, true,
 	{
-		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[2]),
+		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[1]),
 	}); bindex++; bInc();
 	/*DrawButtonKDEx("goRep", (bdata) => {
 		if (skip == bindex)
@@ -1912,7 +1912,7 @@ function KDDrawNavBar(skip, quit = false) {
 		return true;
 	}, true, bx, by, bwidth, bheight, logtxt, "#ffffff",
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_logbook.png"), undefined, undefined, false, "", 24, true, {
-		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[5]),
+		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[4]),
 	}); bindex++; bInc();
 }
 

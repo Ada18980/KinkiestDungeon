@@ -28,6 +28,8 @@ TODO:
 - Let go of leash thru menu
 - Aggro level
 
+TODO remove hogtie whenm released
+
 5.3.22
 - You can lock yourself inside of furniture
 - Added some gag particles to player and enemy

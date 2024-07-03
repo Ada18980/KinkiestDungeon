@@ -10,32 +10,26 @@ interface KDBlueprint {
 interface KDBlueprintCategory {
 	name: string,
 	prereq: () => boolean,
-	items: Record<string, KDBlueprint>,
+	items: KDBlueprint[],
 }
+
+KinkyDungeonRefreshRestraintsCache();
 
 let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 	Leather: {
 		name: "Leather",
 		prereq: () => {return true;},
-		items: {
-			TrapArmbinder: {
-				name: "TrapArmbinder",
-				item: "TrapArmbinder",
-				type: Restraint,
-				recyclecategory: "Leather",
-				recyclecost: {
-					Leather: 15,
-					Metal: 1,
-				},
-				prereq: () => {return true;},
-			},
-		}
+		items: [
+			KDAutoGenRestraintBlueprint("TrapArmbinder", "Leather", "", undefined, undefined, {Metal: 1}),
+			KDAutoGenRestraintBlueprint("TrapBoxbinder", "Leather", "", undefined, undefined, {Metal: 1}),
+			KDAutoGenRestraintBlueprint("TrapLegbinder", "Leather", "", undefined, undefined, {Metal: 1}),
+		]
 	},
 	Rope: {
 		name: "Rope",
 		prereq: () => {return true;},
-		items: {
-			RopeSnakeArmsBoxtie: {
+		items: [
+			{
 				name: "RopeSnakeArmsBoxtie",
 				item: "RopeSnakeArmsBoxtie",
 				type: Restraint,
@@ -45,13 +39,13 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				},
 				prereq: () => {return true;},
 			},
-		}
+		]
 	},
 	Metal: {
 		name: "Metal",
 		prereq: () => {return true;},
-		items: {
-			TrapCuffs: {
+		items: [
+			{
 				name: "TrapCuffs",
 				item: "TrapCuffs",
 				type: Restraint,
@@ -61,13 +55,13 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				},
 				prereq: () => {return true;},
 			},
-		}
+		]
 	},
 	Latex: {
 		name: "Latex",
 		prereq: () => {return true;},
-		items: {
-			LatexStraitjacket: {
+		items: [
+			{
 				name: "LatexStraitjacket",
 				item: "LatexStraitjacket",
 				type: Restraint,
@@ -77,6 +71,6 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				},
 				prereq: () => {return true;},
 			},
-		}
+		]
 	},
 }

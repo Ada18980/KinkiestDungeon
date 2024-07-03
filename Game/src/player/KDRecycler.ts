@@ -99,23 +99,23 @@ function KDRecycleItem(item: item, count: number = 0) : RecyclerOutputs {
 	return outputs;
 }
 
-function KDChangeRecyclerInput(amount: RecyclerOutputs) {
+function KDChangeRecyclerInput(amount: RecyclerOutputs, mult: number = 1) {
 	for (let entry of Object.entries(amount)) {
 		KDGameData.FacilitiesData["RecyclerInput_" + entry[0]] = Math.max(0,
-			KDGameData.FacilitiesData["RecyclerInput_" + entry[0]] + entry[1]
+			KDGameData.FacilitiesData["RecyclerInput_" + entry[0]] + entry[1] * mult
 		);
 	}
 }
-function KDChangeRecyclerResources(amount: RecyclerOutputs) {
+function KDChangeRecyclerResources(amount: RecyclerOutputs, mult: number = 1) {
 	for (let entry of Object.entries(amount)) {
 		KDGameData.FacilitiesData["Recycler_" + entry[0]] = Math.max(0,
-			KDGameData.FacilitiesData["Recycler_" + entry[0]] + entry[1]
+			KDGameData.FacilitiesData["Recycler_" + entry[0]] + entry[1] * mult
 		);
 	}
 }
-function KDHasRecyclerResources(amount: RecyclerOutputs) {
+function KDHasRecyclerResources(amount: RecyclerOutputs, mult: number = 1) {
 	for (let entry of Object.entries(amount)) {
-		if (entry[1] > 0 && KDGameData.FacilitiesData["Recycler_" + entry[0]] < entry[1]) return false;
+		if (entry[1] > 0 && KDGameData.FacilitiesData["Recycler_" + entry[0]] < entry[1] * mult) return false;
 	}
 	return true;
 }
@@ -246,7 +246,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 				if (KDSelectedRecyclerCategory != cat.name && cat.items[0]) {
 					KDSelectedRecyclerCategory = cat.name;
 					KDSelectedRecyclerItem = cat.items[0].name;
-				} else KDSelectedRecyclerCategory = "";
+				} else if (KDSelectedRecyclerCategory == cat.name) KDSelectedRecyclerCategory = "";
 				return true;
 			}, KDMapData.RoomType == "Summit",
 
@@ -272,6 +272,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 	}
 
 	YY = 0;
+	colCounter = 0;
 	let secondXX = KDRecyclerCatSpacing * (KDRecyclerCatsPerRow + 0.5);
 	let thirdXX = secondXX + KDRecyclerCatSpacing * (KDRecyclerItemsPerRow + 0.5);
 	XX = secondXX;
@@ -279,7 +280,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 
 	if (selectedcat) {
 		index = 0;
-		let items = Object.values(selectedcat.items);
+		let items = selectedcat.items;
 		for (let item of items) {
 			let img = (item.type == Restraint || item.type == LooseRestraint) ?
 				KDGetRestraintPreviewImage(KDRestraint({name: item.item}))
@@ -331,7 +332,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 			colCounter++;
 			if (colCounter > KDRecyclerCatsPerRow) {
 				colCounter = 0;
-				XX = 0;
+				XX = secondXX;
 				YY += KDRecyclerCatSpacing;
 			} else {
 				XX += KDRecyclerCatSpacing;
@@ -354,10 +355,8 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 		DrawButtonKDEx(
 			"rec_item_build" + selectedItem.name,
 			() => {
-				KDChangeRecyclerResources(KDMapToRecycleOutputs(selectedItem.recyclecost));
-				 KinkyDungeonItemEvent({
-					name: selectedItem.item,
-					amount: 1,
+				KDSendInput("recycleBuild", {
+					selectedItem: selectedItem,
 				});
 				return true;
 			}, KDMapData.RoomType == "Summit",
@@ -424,4 +423,44 @@ function KDMapToRecycleOutputs(amount: Record<string, number>): RecyclerOutputs 
 	}
 
 	return outputs;
+}
+
+function KDAutoGenRestraintBlueprint(name: string, category: string, applyvariant: string, mult: number = 1.4, forceResourceCost?: Record<string, number>, bonusResource?: Record<string, number>): KDBlueprint {
+	let res = forceResourceCost || {};
+	let restraint = KDRestraint({name: name});
+
+	if (!forceResourceCost) {
+		if (applyvariant) {
+			// TODO add an actual event
+			res.Rune += Math.ceil(RecyclerResources.Rune.Yield * mult);
+		}
+
+		for (let shrine of restraint.shrine) {
+			if (RecyclerResources[shrine]) {
+				res[shrine] = (res[shrine] || 0) + Math.ceil(RecyclerResources[shrine].Yield * mult);
+			}
+		}
+	}
+
+	if (mult != 1) {
+		for (let r of Object.entries(res)) {
+			res[r[0]] = Math.round(mult * r[1]);
+		}
+	}
+
+	if (bonusResource) {
+		for (let r of Object.entries(bonusResource)) {
+			res[r[0]] = Math.round((res[r[0]] || 0) + r[1]);
+		}
+	}
+
+	return {
+		name: restraint.name,
+		item: restraint.name,
+		type: Restraint,
+		applyvariant: applyvariant,
+		recyclecategory: category,
+		recyclecost: res,
+		prereq: () => {return true;},
+	};
 }

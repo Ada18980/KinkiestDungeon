@@ -136,6 +136,8 @@ function KDDrawFacilitiesList(xOffset) {
 		}, FacilitiesIndex > 0, 1650, 110, 150, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png",
 		undefined, undefined, !(FacilitiesIndex > 0), KDButtonColor, undefined, undefined, {
 			centered: true,
+			hotkey: KDHotkeyToText(KinkyDungeonKey[0]),
+			hotkeyPress: KinkyDungeonKey[0],
 		});
 			DrawButtonKDEx("facDown", (b) => {
 				FacilitiesIndex += 1;
@@ -143,6 +145,8 @@ function KDDrawFacilitiesList(xOffset) {
 			}, broken, 1650, 850, 150, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Down.png",
 		undefined, undefined, !broken, KDButtonColor, undefined, undefined, {
 			centered: true,
+			hotkey: KDHotkeyToText(KinkyDungeonKey[2]),
+			hotkeyPress: KinkyDungeonKey[2],
 		});
 	}
 
