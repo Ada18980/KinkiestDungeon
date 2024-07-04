@@ -4930,9 +4930,7 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 					delete props.escapeChance.Unlock;
 				}
 			}
-			let newRestraint = KinkyDungeonCloneRestraint(CopyOf + cuffPart, idSuffix + cuffPart, Object.assign(props, properties));
-			console.log("Added " + newRestraint.name);
-			console.log(newRestraint);
+			KinkyDungeonCloneRestraint(CopyOf + cuffPart, idSuffix + cuffPart, Object.assign(props, properties));
 		}
 	}
 }
@@ -5026,9 +5024,7 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 					props.escapeChance[type[0]] = Math.round(10000*((props.escapeChance[type[0]] || 0) + type[1]))/10000;
 				}
 			}
-			let newRestraint = KinkyDungeonCloneRestraint(CopyOf + ropePart, idSuffix + ropePart, Object.assign(props, properties));
-			console.log("Added " + newRestraint.name);
-			console.log(newRestraint);
+			KinkyDungeonCloneRestraint(CopyOf + ropePart, idSuffix + ropePart, Object.assign(props, properties));
 		}
 	}
 }
@@ -5109,9 +5105,7 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 					if (ev.type == "slimeSpread") ev.restraint = restraintType;
 				}
 			}
-			let newRestraint = KinkyDungeonCloneRestraint(CopyOf + restraintPart, idSuffix + restraintPart, Object.assign(props, properties));
-			console.log("Added " + newRestraint.name);
-			console.log(newRestraint);
+			KinkyDungeonCloneRestraint(CopyOf + restraintPart, idSuffix + restraintPart, Object.assign(props, properties));
 		}
 	}
 }

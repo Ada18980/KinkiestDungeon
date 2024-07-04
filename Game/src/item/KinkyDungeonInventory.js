@@ -1273,7 +1273,7 @@ function KinkyDungeonDrawInventorySelected(item, noscroll, treatAsHover, xOffset
 
 function KinkyDungeonDrawInventory() {
 	let xOffset = -125;
-	KinkyDungeonDrawMessages(true, 550, true);
+	KinkyDungeonDrawMessages(true, 550, true, 600);
 
 
 	KDDrawInventoryTabs(xOffset, true);

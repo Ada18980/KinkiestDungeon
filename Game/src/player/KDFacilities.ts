@@ -69,7 +69,7 @@ function KinkyDungeonDrawFacilities(xOffset = -125) {
 function KDDrawFacilitiesList(xOffset) {
 
 	let padding = 100;
-	let YY = 200;
+	let YY = 170;
 	let XX = 550 + 125 + xOffset;
 	let width = 1050;
 
@@ -89,7 +89,7 @@ function KDDrawFacilitiesList(xOffset) {
 			continue;
 		}
 		let dist = facility[1].draw(XX, YY, width);
-		if (YY + dist > 940) {
+		if (YY + dist > 980) {
 			broken = true;
 			break;
 		}

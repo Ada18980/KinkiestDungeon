@@ -23363,6 +23363,7 @@ KDInventoryActionRecycleExcess,Recycle all but one
 
 KDRecycle,You recycle a ITM
 KDRecycleBulk,You recycle #x ITM
+KDRecycleExcess,You recycle #x ITM
 
 KDDialogue_StepAside,"You're blocking me."
 KDDialogue_StepAsideBrat,"You're in my way!"
@@ -23406,8 +23407,18 @@ KDDesperateStruggle_NoWill,"You don't have the willpower left to struggle..."
 
 KDRecycleOutput_Rope,f
 KDRecycleOutput_Latex,x
-KDRecycleOutput_Leather,l
+KDRecycleOutput_Leather,L
 KDRecycleOutput_Metal,m
 KDRecycleOutput_Rune,R
 
 KDOwned,Owned: AMNT
+
+
+KDRecycleResource_Rope,Fiber
+KDRecycleResource_Latex,Latex
+KDRecycleResource_Leather,Leather
+KDRecycleResource_Metal,Metal
+KDRecycleResource_Rune,Runes
+
+RecycleResStrIntroRecycler_,"Stock: "
+RecycleResStrIntroRecyclerInput_,"Inputs: "

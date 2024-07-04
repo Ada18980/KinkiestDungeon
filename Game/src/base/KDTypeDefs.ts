@@ -249,6 +249,8 @@ interface KDRestraintPropsBase {
 	alwaysAccessible?: boolean,
 	/** Always inaccessible if something is on top of it */
 	alwaysInaccessible?: boolean,
+	/** Recycler resources yielded when recycled (not crafted, though craft bp will mimic this by default) */
+	recycleresource?: Record<string, number>,
 	/** This item can be rendered when linked */
 	renderWhenLinked?: string[];
 	// Player must have one of these PlayerTags to equip

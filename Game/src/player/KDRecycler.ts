@@ -1,3 +1,8 @@
+let KDSelectedRecyclerCategory = "Null";
+let KDSelectedRecyclerItem = "";
+let KDRecyclerCatsPerRow = 4;
+let KDRecyclerItemsPerRow = 4;
+let KDRecyclerCatSpacing = 80;
 
 interface RecyclerResource {
 	/** Number is base yield, minimum 1 */
@@ -9,23 +14,23 @@ interface RecyclerResource {
 let RecyclerResources: Record<string, RecyclerResource> = {
 	Rope: {
 		Yield: 20,
-		Rate: 100,
+		Rate: 400,
 	},
 	Leather: {
 		Yield: 12,
-		Rate: 25,
+		Rate: 150,
 	},
 	Metal: {
 		Yield: 5,
-		Rate: 8,
+		Rate: 100,
 	},
 	Latex: {
 		Yield: 12,
-		Rate: 30,
+		Rate: 200,
 	},
 	Rune: {
 		Yield: 0.0001,
-		Rate: 4,
+		Rate: 10,
 	},
 }
 
@@ -70,17 +75,10 @@ function KDRecycleItem(item: item, count: number = 0) : RecyclerOutputs {
 
 	let type = KDRestraint(item);
 	let variant = KinkyDungeonRestraintVariants[item.inventoryVariant || item.name];
-	let mult = 1 + Math.max(0, type.power * 0.5);
+	let res = KDRecyclerResources(type, 1, variant ? (item.inventoryVariant || item.name) : undefined)
 
-	if (variant) {
-		// TODO add an actual event
-		outputs.Rune += Math.ceil(RecyclerResources.Rune.Yield * mult);
-	}
-
-	for (let shrine of type.shrine) {
-		if (RecyclerResources[shrine]) {
-			outputs[shrine] = (outputs[shrine] || 0) + Math.ceil(RecyclerResources[shrine].Yield * mult);
-		}
+	for (let entry of Object.entries(res)) {
+		outputs[entry[0]] = (count || 1) * entry[1];
 	}
 
 	if (count > 0) {
@@ -182,6 +180,8 @@ function KDDrawRecycler(x: number, y: number, width: number): number {
 			DrawButtonKDEx(
 				"recycleButton",
 				() => {
+					KinkyDungeonSendTextMessage(10, KDRecycleResourceString(true, "RecyclerInput_"), "#ffffff", 2);
+					KinkyDungeonSendTextMessage(10, KDRecycleResourceString(true, "Recycler_"), "#ffffff", 2);
 					KDGameData.InventoryAction = "Recycle";
 					KinkyDungeonDrawState = "Inventory";
 					KinkyDungeonCurrentFilter = LooseRestraint;
@@ -204,12 +204,6 @@ function KDDrawRecycler(x: number, y: number, width: number): number {
 	}
 	return dd;
 }
-
-let KDSelectedRecyclerCategory = "Null";
-let KDSelectedRecyclerItem = "";
-let KDRecyclerCatsPerRow = 4;
-let KDRecyclerItemsPerRow = 4;
-let KDRecyclerCatSpacing = 80;
 
 function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: number, width: number) {
 	let XX = 0;
@@ -261,7 +255,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 			}
 		);
 		colCounter++;
-		if (colCounter > KDRecyclerCatsPerRow) {
+		if (colCounter >= KDRecyclerCatsPerRow) {
 			colCounter = 0;
 			XX = 0;
 			YY += KDRecyclerCatSpacing;
@@ -330,7 +324,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 				}
 			);
 			colCounter++;
-			if (colCounter > KDRecyclerCatsPerRow) {
+			if (colCounter >= KDRecyclerCatsPerRow) {
 				colCounter = 0;
 				XX = secondXX;
 				YY += KDRecyclerCatSpacing;
@@ -425,21 +419,28 @@ function KDMapToRecycleOutputs(amount: Record<string, number>): RecyclerOutputs 
 	return outputs;
 }
 
-function KDAutoGenRestraintBlueprint(name: string, category: string, applyvariant: string, mult: number = 1.4, forceResourceCost?: Record<string, number>, bonusResource?: Record<string, number>): KDBlueprint {
+function KDRecyclerResources(restraint: restraint, mult: number = 1.4, variant?: string): Record<string, number> {
+	mult *= 1 + Math.max(0, restraint.power * 0.5);
+	let res: Record<string, number> = {};
+	if (variant) {
+		// TODO add an actual event
+		res.Rune += Math.ceil(RecyclerResources.Rune.Yield * mult);
+	}
+
+	for (let shrine of restraint.shrine) {
+		if (RecyclerResources[shrine]) {
+			res[shrine] = (res[shrine] || 0) + Math.ceil(RecyclerResources[shrine].Yield * mult);
+		}
+	}
+	return res;
+}
+
+function KDAutoGenRestraintBlueprint(name: string, category: string, applyvariant: string, mult: number = 1.25, forceResourceCost?: Record<string, number>, bonusResource?: Record<string, number>): KDBlueprint {
 	let res = forceResourceCost || {};
 	let restraint = KDRestraint({name: name});
 
 	if (!forceResourceCost) {
-		if (applyvariant) {
-			// TODO add an actual event
-			res.Rune += Math.ceil(RecyclerResources.Rune.Yield * mult);
-		}
-
-		for (let shrine of restraint.shrine) {
-			if (RecyclerResources[shrine]) {
-				res[shrine] = (res[shrine] || 0) + Math.ceil(RecyclerResources[shrine].Yield * mult);
-			}
-		}
+		res = KDRecyclerResources(restraint, mult, applyvariant);
 	}
 
 	if (mult != 1) {
@@ -463,4 +464,18 @@ function KDAutoGenRestraintBlueprint(name: string, category: string, applyvarian
 		recyclecost: res,
 		prereq: () => {return true;},
 	};
+}
+
+function KDRecycleResourceString(allowZero: boolean = false, prefix: string = "Recycler_", noLabel = false): string {
+	let str = "";
+	for (let restype of Object.keys(RecyclerResources)) {
+		let amount = KDGameData.FacilitiesData[prefix + restype];
+		if (amount != undefined && (allowZero || amount)) {
+			if (str) str = str + ' ';
+			str = str + `(${TextGet("KDRecycleResource_" + restype)}: ${Math.round(amount)})`;
+		}
+	}
+	if (!noLabel)
+		str = TextGet("RecycleResStrIntro" + prefix) + str;
+	return str;
 }

@@ -23,6 +23,10 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 			KDAutoGenRestraintBlueprint("TrapArmbinder", "Leather", "", undefined, undefined, {Metal: 1}),
 			KDAutoGenRestraintBlueprint("TrapBoxbinder", "Leather", "", undefined, undefined, {Metal: 1}),
 			KDAutoGenRestraintBlueprint("TrapLegbinder", "Leather", "", undefined, undefined, {Metal: 1}),
+			KDAutoGenRestraintBlueprint("TrapHarness", "Leather", "", undefined, undefined, {Leather: -2, Metal: 2}),
+			KDAutoGenRestraintBlueprint("LeatherArmCuffs", "Leather", ""),
+			KDAutoGenRestraintBlueprint("LeatherLegCuffs", "Leather", ""),
+			KDAutoGenRestraintBlueprint("LeatherAnkleCuffs", "Leather", ""),
 		]
 	},
 	Rope: {

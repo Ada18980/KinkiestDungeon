@@ -2288,7 +2288,7 @@ let KDLogFilters = [
 	"Kills",
 ];
 
-function KinkyDungeonDrawMessages(NoLog, shiftx = 0, noBG = false) {
+function KinkyDungeonDrawMessages(NoLog, shiftx = 0, noBG = false, width = KDMsgWidthMin) {
 	if (!NoLog) {
 		DrawButtonKDEx("logtog", (bdata) => {
 			KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle;
@@ -2341,12 +2341,12 @@ function KinkyDungeonDrawMessages(NoLog, shiftx = 0, noBG = false) {
 			let ignoreMSG = [];
 			let spacing = KDLogDist;
 			if (KinkyDungeonActionMessageTime > 0 && KinkyDungeonActionMessageNoPush) {
-				DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
+				DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, width, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
 				ignoreMSG.push(KinkyDungeonActionMessage);
 				i++;
 			}
 			if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessageNoPush) {
-				DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, KinkyDungeonTextMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
+				DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, width, KinkyDungeonTextMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
 				ignoreMSG.push(KinkyDungeonTextMessage);
 				i++;
 			}
@@ -2386,7 +2386,7 @@ function KinkyDungeonDrawMessages(NoLog, shiftx = 0, noBG = false) {
 							continue;
 						}
 						alpha = Math.max(0, Math.min(1, 2.0 - i / KDMaxConsoleMsg)) * (1 - Math.max(0, Math.min(1, Math.max(0, KinkyDungeonCurrentTick - msg.time - 1)/KDMsgFadeTime)));
-						DrawTextFitKD(msg.text, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, msg.color, KDTextGray1, KDMSGFontSize, undefined, zLevel, alphamin + (1 - alphamin) * alpha);
+						DrawTextFitKD(msg.text, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, width, msg.color, KDTextGray1, KDMSGFontSize, undefined, zLevel, alphamin + (1 - alphamin) * alpha);
 						i++;
 					}
 				}

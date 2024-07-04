@@ -925,10 +925,12 @@ let KDInventoryAction = {
 		click: (player, item) => {
 			KDChangeRecyclerInput(KDRecycleItem(item, 1));
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
+			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycle")
 				.replace("ITM", TextGet( "Restraint" + item.name))
 				.replace("VLU", "" + 100)
 			, "#ffffff", 2);
+
 		},
 		/** Return true to cancel it */
 		cancel: (player, delta) => {
@@ -966,13 +968,16 @@ let KDInventoryAction = {
 				return;
 			}
 
+			let quant = (itemInv.quantity || 1);
+
+			KDChangeRecyclerInput(KDRecycleItem(item, itemInv.quantity || 1));
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
+			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleBulk")
 				.replace("ITM", TextGet( "Restraint" + item.name))
 				.replace("VLU", "" + 100)
-				.replace("#", "" + (itemInv.quantity || 1))
+				.replace("#", "" + quant)
 			, "#ffffff", 2);
-			KDChangeRecyclerInput(KDRecycleItem(item, itemInv.quantity || 1));
 		},
 		/** Return true to cancel it */
 		cancel: (player, delta) => {
@@ -1013,13 +1018,16 @@ let KDInventoryAction = {
 				return;
 			}
 
+			let quant = (itemInv.quantity - 1);
+
+			KDChangeRecyclerInput(KDRecycleItem(item, itemInv.quantity - 1));
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
+			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleExcess")
 				.replace("ITM", TextGet( "Restraint" + item.name))
 				.replace("VLU", "" + 100)
-				.replace("#", "" + (itemInv.quantity - 1))
+				.replace("#", "" + quant)
 			, "#ffffff", 2);
-			KDChangeRecyclerInput(KDRecycleItem(item, itemInv.quantity - 1));
 		},
 		/** Return true to cancel it */
 		cancel: (player, delta) => {
