@@ -2132,10 +2132,10 @@
             <key type="filename">../Game/Items/Restraint.png</key>
             <key type="filename">../Game/Items/Restraint/Ancient.png</key>
             <key type="filename">../Game/Items/Restraint/Armbinders.png</key>
-            <key type="filename">../Game/Items/Restraint/Armbinders_2.png</key>
             <key type="filename">../Game/Items/Restraint/BallGags.png</key>
             <key type="filename">../Game/Items/Restraint/Belts.png</key>
             <key type="filename">../Game/Items/Restraint/Blindfolds.png</key>
+            <key type="filename">../Game/Items/Restraint/Boxbinders.png</key>
             <key type="filename">../Game/Items/Restraint/Chastity.png</key>
             <key type="filename">../Game/Items/Restraint/ChastityBelts.png</key>
             <key type="filename">../Game/Items/Restraint/Gags.png</key>
@@ -2472,6 +2472,10 @@
             <key type="filename">../Game/UI/NavMap/shop.png</key>
             <key type="filename">../Game/UI/PathDisplay.png</key>
             <key type="filename">../Game/UI/PlayerFacing.png</key>
+            <key type="filename">../Game/UI/Recycler/Armor.png</key>
+            <key type="filename">../Game/UI/Recycler/Latex.png</key>
+            <key type="filename">../Game/UI/Recycler/Leather.png</key>
+            <key type="filename">../Game/UI/Recycler/Rope.png</key>
             <key type="filename">../Game/UI/Resource/Latex.png</key>
             <key type="filename">../Game/UI/Resource/Leather.png</key>
             <key type="filename">../Game/UI/Resource/Metal.png</key>
@@ -3414,6 +3418,9 @@
             <key type="filename">../Game/InvVisible.png</key>
             <key type="filename">../Game/UI/Demote.png</key>
             <key type="filename">../Game/UI/Dress.png</key>
+            <key type="filename">../Game/UI/Facility_Prisoners.png</key>
+            <key type="filename">../Game/UI/Facility_Servants.png</key>
+            <key type="filename">../Game/UI/Facility_X.png</key>
             <key type="filename">../Game/UI/Promote.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -3529,6 +3536,7 @@
             </struct>
             <key type="filename">../Game/Items/Restraint/Cuffs.png</key>
             <key type="filename">../Game/Items/Restraint/Metal.png</key>
+            <key type="filename">../Game/UI/Recycler/Metal.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>

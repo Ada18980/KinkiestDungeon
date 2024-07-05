@@ -27,6 +27,8 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 			KDAutoGenRestraintBlueprint("LeatherArmCuffs", "Leather", ""),
 			KDAutoGenRestraintBlueprint("LeatherLegCuffs", "Leather", ""),
 			KDAutoGenRestraintBlueprint("LeatherAnkleCuffs", "Leather", ""),
+			KDAutoGenRestraintBlueprint("TrapGag", "Leather", ""),
+			KDAutoGenRestraintBlueprint("PanelGag", "Leather", ""),
 		]
 	},
 	Rope: {
@@ -65,16 +67,30 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 		name: "Latex",
 		prereq: () => {return true;},
 		items: [
-			{
-				name: "LatexStraitjacket",
-				item: "LatexStraitjacket",
-				type: Restraint,
-				recyclecategory: "Latex",
-				recyclecost: {
-					Latex: 14,
-				},
-				prereq: () => {return true;},
-			},
+			KDAutoGenRestraintBlueprint("KiguMask", "Latex", ""),
+			KDAutoGenRestraintBlueprint("LatexStraitjacket", "Latex", ""),
+			KDAutoGenRestraintBlueprint("LatexArmbinder", "Latex", ""),
+			KDAutoGenRestraintBlueprint("LatexBoxbinder", "Latex", ""),
+			KDAutoGenRestraintBlueprint("LatexLegbinder", "Latex", ""),
+			KDAutoGenRestraintBlueprint("LatexCatsuit", "Latex", ""),
+			KDAutoGenRestraintBlueprint("HeavyLatexCatsuit", "Latex", ""),
+			KDAutoGenRestraintBlueprint("LatexCorset", "Latex", ""),
+		]
+	},
+	Armor: {
+		name: "Armor",
+		prereq: () => {return true;},
+		items: [
+			KDAutoGenRestraintBlueprint("MageArmor", "Armor", "", undefined, {Rope: 50, Runes: 5}),
+			KDAutoGenRestraintBlueprint("MagicArmbands", "Armor", "", undefined, {Metal: 30, Runes: 2}),
+			KDAutoGenRestraintBlueprint("SteelSkirt", "Armor", "", undefined, {Metal: 150}),
+			KDAutoGenRestraintBlueprint("SteelSkirt2", "Armor", "", undefined, {Metal: 100}),
+			KDAutoGenRestraintBlueprint("ChainTunic", "Armor", "", undefined, {Metal: 200}),
+			KDAutoGenRestraintBlueprint("ChainBikini", "Armor", "", undefined, {Metal: 150}),
+			KDAutoGenRestraintBlueprint("SteelArmor", "Armor", "", undefined, {Metal: 300}),
+
+
+
 		]
 	},
 }

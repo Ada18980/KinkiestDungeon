@@ -30,12 +30,15 @@ TODO:
 
 TODO remove hogtie whenm released
 
+5.3.23
+- Recycler is now online in the summit!
+- Interacting now picks up items on the targeted tile
+
 5.3.22
 - You can lock yourself inside of furniture
 - Added some gag particles to player and enemy
 - Added setting to allow dynamic armor item removal from outfits if you are missing armor (only works with plate armor)
 - Added pose-specific layer properties (hide, require poses, and hide prefix/suffix)
-- Interacting now picks up items on the targeted tile
 
 5.3.21
 - Upgraded the layering system to allow for even tighter item combinations (and getting rid of low level items to replace with more strong items)

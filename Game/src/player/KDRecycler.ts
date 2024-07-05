@@ -280,6 +280,10 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 				KDGetRestraintPreviewImage(KDRestraint({name: item.item}))
 				: KinkyDungeonRootDirectory + "Items/" + item.item + ".png";
 
+			let grp = (item.type == Restraint || item.type == LooseRestraint) ?
+			KDGetGroupPreviewImage(KDRestraint({name: item.item}).Group)
+			: "";
+
 			let selected = item.name == KDSelectedRecyclerItem;
 			if (selected) selectedItem = item;
 			let hotkey: string = "";
@@ -323,6 +327,13 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 					hotkeyPress: hotkey,
 				}
 			);
+
+			if (grp) {
+				KDDraw(kdcanvas, kdpixisprites, "rec_item_list_grp" + item.name,
+					grp,
+					x + XX + 32, y + YY, 72, 72
+				);
+			}
 			colCounter++;
 			if (colCounter >= KDRecyclerCatsPerRow) {
 				colCounter = 0;
@@ -341,6 +352,10 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 		let img = (selectedItem.type == Restraint || selectedItem.type == LooseRestraint) ?
 		KDGetRestraintPreviewImage(KDRestraint({name: selectedItem.item}))
 		: KinkyDungeonRootDirectory + "Items/" + selectedItem.item + ".png";
+		let grp = (selectedItem.type == Restraint || selectedItem.type == LooseRestraint) ?
+		KDGetGroupPreviewImage(KDRestraint({name: selectedItem.item}).Group)
+		: "";
+
 		let hotkey = KinkyDungeonKeyEnter[0];
 		let canAfford = KDHasRecyclerResources(KDMapToRecycleOutputs(selectedItem.recyclecost));
 		let inventoryItem = KinkyDungeonInventoryGetSafe(selectedItem.name);

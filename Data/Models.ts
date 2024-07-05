@@ -489,7 +489,11 @@ function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : number {
 		}
 	}
 	let Properties: LayerProperties = m.Properties;
-	let lyr = KDLayerPropName(l, MC.Poses);
+	let lyr = l.InheritColor || l.Name;
+	if (Properties && Properties[lyr]) {
+		if (Properties[lyr].LayerBonus) temp += Properties[lyr].LayerBonus;
+	}
+	lyr = KDLayerPropName(l, MC.Poses);
 	if (Properties && Properties[lyr]) {
 		if (Properties[lyr].LayerBonus) temp += Properties[lyr].LayerBonus;
 	}
@@ -650,7 +654,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						(Properties.Rotation * Math.PI / 180) || 0
 					);
 				}
-				Properties = m.Properties ? m.Properties[m.Name + "," + l.Name] : undefined;
+				Properties = m.Properties ? m.Properties[l.InheritColor || l.Name] : undefined;
 				if (Properties) {
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
@@ -736,7 +740,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						(Properties.Rotation * Math.PI / 180) || 0
 					);
 				}
-				Properties = m.Properties ? m.Properties[m.Name + "," + l.Name] : undefined;
+				Properties = m.Properties ? m.Properties[l.InheritColor || l.Name] : undefined;
 				if (Properties) {
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
@@ -869,7 +873,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						(Properties.Rotation * Math.PI / 180) || 0
 					);
 				}
-				Properties = m.Properties ? m.Properties[m.Name + "," + l.Name] : undefined;
+				Properties = m.Properties ? m.Properties[l.InheritColor || l.Name] : undefined;
 				if (Properties) {
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
@@ -1053,7 +1057,7 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 		}
 		if (prop && prop.ExtraRequirePoses) {
 			for (let p of prop.ExtraRequirePoses) {
-				if (!Poses[p]) {
+				if (p && !Poses[p]) {
 					return false;
 				}
 			}
