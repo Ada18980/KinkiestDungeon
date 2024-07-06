@@ -493,8 +493,9 @@ function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : number {
 	if (Properties && Properties[lyr]) {
 		if (Properties[lyr].LayerBonus) temp += Properties[lyr].LayerBonus;
 	}
+	let oldProp = lyr;
 	lyr = KDLayerPropName(l, MC.Poses);
-	if (Properties && Properties[lyr]) {
+	if (oldProp != lyr && Properties && Properties[lyr]) {
 		if (Properties[lyr].LayerBonus) temp += Properties[lyr].LayerBonus;
 	}
 
@@ -654,8 +655,9 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						(Properties.Rotation * Math.PI / 180) || 0
 					);
 				}
+				let oldProps = Properties;
 				Properties = m.Properties ? m.Properties[l.InheritColor || l.Name] : undefined;
-				if (Properties) {
+				if (Properties && oldProps != Properties) {
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
 						Properties.YOffset || 0,
@@ -740,8 +742,9 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						(Properties.Rotation * Math.PI / 180) || 0
 					);
 				}
+				let oldProps = Properties;
 				Properties = m.Properties ? m.Properties[l.InheritColor || l.Name] : undefined;
-				if (Properties) {
+				if (Properties && oldProps != Properties) {
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
 						Properties.YOffset || 0,
@@ -873,8 +876,9 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						(Properties.Rotation * Math.PI / 180) || 0
 					);
 				}
+				let oldProps = Properties;
 				Properties = m.Properties ? m.Properties[l.InheritColor || l.Name] : undefined;
-				if (Properties) {
+				if (Properties && oldProps != Properties) {
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
 						Properties.YOffset || 0,
