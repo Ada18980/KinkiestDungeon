@@ -169,6 +169,9 @@ Allow Suspicious Mods
 Auto Load Mods (offline only)
 MODを自動で読み込む(オフライン専用)
 
+Show Struggle Bars
+もがきゲージを表示する
+
 
 
 Helpless!
@@ -26921,8 +26924,8 @@ Back to Game
 Slimy Spit
 スピットスライム
 
-Servants and Guests
-使用人とゲスト
+Servants
+使用人
 Prisoners
 囚人
 Promote to Servant
@@ -28454,8 +28457,12 @@ An intense, albeit temporary punishment for breaking the rules.
 
 ESCP Difficulty: AMNT
 ESCP 難易度： AMNT
-ESCP Power: AMNT%
-ESCP 力： AMNT%
+ESCP Power: AMNT
+ESCP 力： AMNT
+ESCP Ability: AMNT
+ESCP 技術： AMNT
+Max ESCP Depth: AMNT%
+ESCP 力: AMNT%
 
 Struggle
 もがく
@@ -28948,3 +28955,34 @@ A very short energy tether connecting your wrist cuffs together.
 手枷同士を流れるエネルギー体。
 It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
 サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+
+Desperate Struggle
+最後の抵抗
+Spend 20 WP to shake around violently. Has a chance to loosen restraints you are wearing, based on existing struggle progress. Spreading the effect over multiple restraints reduces the chance of loosening.|Requires 25% or more WP to activate.
+気力を20消費し、全力でもがく。装備している拘束具を緩める可能性があるが、対象となる拘束具が増えるごとに緩む確率が減少する。|発動には25%以上の気力が必要。
+None of your restraints will budge.
+緩められそうな拘束具がない。
+You thrash around with all your might.
+思い切りのたうち回った。
+You don't have the willpower left to struggle...
+全力でもがく気力が残っていない……
+
+
+Owned: AMNT
+所持数: AMNT
+
+Fiber
+繊維
+Latex
+ゴム
+Leather
+革
+Metal
+金属
+Runes
+ルーン
+Stock: 
+在庫: 
+Inputs: 
+投入数: 
