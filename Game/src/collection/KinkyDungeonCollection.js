@@ -360,7 +360,8 @@ function KDDrawCollectionRestrain(id, x, y) {
  * @param {number} y
  */
 function KDDrawCollectionRestrainMain(id, x, y) {
-
+	let restraints = KDGetNPCRestraints(id);
+	KDDrawNPCRestrain(restraints, x, y);
 
 }
 

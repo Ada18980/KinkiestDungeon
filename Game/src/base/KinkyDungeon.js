@@ -526,6 +526,7 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 * ShieldDamage: number,
 * Balance: number,
 * BalancePause: boolean,
+* NPCRestraints: Record<string, NPCRestraint[]>
 * Collection: Record<string, KDCollectionEntry>,
 * CollectionSorted: KDCollectionEntry[],
 * HeelPower: number,
@@ -581,6 +582,7 @@ let KDGameDataBase = {
 	JourneyMap: {},
 	AttachedWep: "",
 	Collection: {},
+	NPCRestraints: {},
 	CollectionSorted: [],
 	RevealedTiles: {},
 	RevealedFog: {},
