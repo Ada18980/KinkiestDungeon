@@ -1575,7 +1575,7 @@ const KinkyDungeonRestraints = [
 		DefaultLock: "Red_Hi",
 		struggleBreak: true,
 		maxwill: 0.35, enemyTags: {"wolfRestraints":3, "wolfGear":3, "wolfLeash": 1, "shockmodule": 10},
-		playerTags: {}, playerTagsMissing: {Collars: -1000}, minLevel: 2, allFloors: true, shrine: ["Modules", "Metal"],
+		playerTags: {}, playerTagsMissing: {Collars: -1000}, minLevel: 2, allFloors: true, shrine: ["Modules", "Metal", "ModulePunish"],
 		requireSingleTagToEquip: ["Collars"],
 		linkCategory: "ModulePunish", linkSize: 0.6,
 		events: [
@@ -1596,7 +1596,7 @@ const KinkyDungeonRestraints = [
 		},
 		struggleBreak: true,
 		maxwill: 0.35, enemyTags: {"controlHarness":5, "roboPrisoner" : 100, "cyberdollrestraints" : 10, "trackingmodule": 10},
-		playerTags: {}, playerTagsMissing: {Collars: -1000}, minLevel: 2, allFloors: true, shrine: ["Modules", "Metal"],
+		playerTags: {}, playerTagsMissing: {Collars: -1000}, minLevel: 2, allFloors: true, shrine: ["Modules", "Metal", "ModuleUtility"],
 		linkCategory: "ModuleUtility", linkSize: 0.6,
 		requireSingleTagToEquip: ["Collars"],
 		events: [
@@ -2169,6 +2169,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.1, "Cut": -0.6, "Remove": 0.5, "Pick": 0.1, "Unlock": -0.05},
 		helpChance: {"Remove": 0.8, "Pick": 0.35, "Unlock": 0.8},
 		removeShrine: ["Hogties"],
+		events: [{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"dollstandSpell":100, "dollstand": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Dollstand"], ignoreSpells: true, removeOnLeash: true,
 	},
 
@@ -2195,6 +2196,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.1, "Cut": -0.6, "Remove": 0.5, "Pick": 0.1, "Unlock": -0.05},
 		helpChance: {"Remove": 0.8, "Pick": 0.35, "Unlock": 0.8},
 		//removeShrine: ["Hogties"],
+		events: [{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"dollstandSpell":100, "dollstand": 100}, playerTags: {"arousalMode": -1000}, minLevel: 0, allFloors: true, shrine: ["Furniture", "FeetLinked", "BlockKneel", "DiscourageHogtie", "Dollstand"], ignoreSpells: true, removeOnLeash: true,
 	},
 	// Bed trap, always possible to struggle out but takes time
@@ -2727,7 +2729,7 @@ const KinkyDungeonRestraints = [
 		Model: "VibePiercings",
 		limited: true,
 		escapeChance: {"Struggle": -10, "Cut": -0.05, "Remove": 0.5, "Pick": 0.25}, failSuffix: {"Struggle": "Clamps"},
-		maxwill: 0.25, enemyTags: {"dressRestraints" : 3, "genericToys": 3, "maidRestraints": 2, "maidRestraintsLight": 1, "roboAngry": 10, "toyTeaseMid": 2, "teasetoys": 2}, playerTags: {"NoVibes": -1000}, minLevel: 4, allFloors: true, shrine: ["Vibes", "Toys"], linkedVibeTags: ["teaser", "piercings"],
+		maxwill: 0.25, enemyTags: {"dressRestraints" : 3, "genericToys": 3, "maidRestraints": 2, "maidRestraintsLight": 1, "roboAngry": 10, "toyTeaseMid": 2, "teasetoys": 2}, playerTags: {"NoVibes": -1000}, minLevel: 4, allFloors: true, shrine: ["Vibes", "Toys", "Piercings"], linkedVibeTags: ["teaser", "piercings"],
 		allowRemote: true, events: [
 			{trigger:"playerAttack",  type: "MotionSensitive", chance: 0.5, msg: "KDPunishAttack", inheritLinked: true},
 			{trigger:"struggle",  type: "VibeOnStruggle", chance: 0.5, msg: "KDPunishStruggle", inheritLinked: true},
@@ -4539,7 +4541,7 @@ const KinkyDungeonRestraints = [
 		struggleMult: {"Struggle": 0.1, "Remove": 0.1},
 		LinkableBy: ["Boxbinders", "Armbinders", ...KDBindable, "Cuffs", "RopeReinforce"], Group: "ItemArms", bindarms: true, power: 3, weight: 0, escapeChance: {"Struggle": 0.25, "Cut": 0.67, "Remove": 0.2},
 		affinity: {Remove: ["Hook"],}, strictness: 0.1, strictnessZones: ["ItemHands", "HandsFrontAllowed", "HandsCrossedAllowed", "HandsUpAllowed"],
-		maxwill: 1.0, enemyTags: {"ropeRestraints":8}, playerTags: {"ItemArmsFull":-1}, minLevel: 3, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "RopeReinforce", "HogtieUpper"]},
+		maxwill: 1.0, enemyTags: {"ropeRestraints":8}, playerTags: {"ItemArmsFull":-1}, minLevel: 3, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "RopeReinforce", "ChestHarnesses", "HogtieUpper"]},
 	{unlimited: true, inventory: true, name: "RopeSnakeArmsWrist", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Type: "WristElbowHarnessTie",
 		Model: "RopeWristtie1",
 		linkPriority: 10,

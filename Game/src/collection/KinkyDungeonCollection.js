@@ -2,6 +2,7 @@
 
 let KDCurrentFacilityTarget = "";
 let KDCurrentFacilityCollectionType = "";
+let KDCurrentRestrainingTarget = 0;
 
 let KDFacilityCollectionDataTypes = [
 	"Prisoners",
@@ -12,10 +13,14 @@ function KinkyDungeonDrawCollection(xOffset = -125) {
 	let x = 1225 + xOffset;
 	if (!KDGameData.Collection) KDGameData.Collection = {};
 
-	if (Object.entries(KDGameData.Collection).length == 0) {
-		DrawTextFitKD(TextGet("KDCollectionEmpty"), x, 300, 1050, "#ffffff", KDTextGray0, 24);
+	if (KDCurrentRestrainingTarget && KDGameData.Collection["" + KDCurrentRestrainingTarget]) {
+		KDDrawCollectionRestrain(KDCurrentRestrainingTarget, x + xOffset, 150);
 	} else {
-		KDDrawCollectionInventory(x + xOffset, 150);
+		if (Object.entries(KDGameData.Collection).length == 0) {
+			DrawTextFitKD(TextGet("KDCollectionEmpty"), x, 300, 1050, "#ffffff", KDTextGray0, 24);
+		} else {
+			KDDrawCollectionInventory(x + xOffset, 150);
+		}
 	}
 
 
@@ -105,8 +110,9 @@ function KDAddCollection(enemy, type, status, servantclass) {
  * @param {number} x
  * @param {number} y
  * @param {number} index
+ * @param {string} tab
  */
-function KDDrawSelectedCollectionMember(value, x, y, index) {
+function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 
 	FillRectKD(kdcanvas, kdpixisprites, "collectionselectionbg", {
 		Left: x,
@@ -143,7 +149,12 @@ function KDDrawSelectedCollectionMember(value, x, y, index) {
 	}
 
 	DrawTextFitKD(value.name, x + 220, y + 50, 500, "#ffffff", (value.color && value.color != "#ffffff") ? value.color : KDTextGray05, 36);
-	DrawTextFitKD(TextGet("KDPrisonerNum").replace("NUMR", "" + index).replace("TTL", "" + Object.values(KDGameData.Collection).length), x + 220, y + 15, 500, "#ffffff", KDTextGray05, 18);
+
+	if (tab) {
+		DrawTextFitKD(TextGet("KDDrawSelectedTab_" + tab).replace("NUMR", "" + index).replace("TTL", "" + Object.values(KDGameData.Collection).length), x + 220, y + 15, 500, "#ffffff", KDTextGray05, 18);
+	} else
+	if (index)
+		DrawTextFitKD(TextGet("KDPrisonerNum").replace("NUMR", "" + index).replace("TTL", "" + Object.values(KDGameData.Collection).length), x + 220, y + 15, 500, "#ffffff", KDTextGray05, 18);
 
 	let II = 0;
 	DrawTextFitKD(TextGet("Name" + enemyType.name), x + 220, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18);
@@ -251,6 +262,27 @@ function KDDrawSelectedCollectionMember(value, x, y, index) {
 		undefined, undefined, false)) {
 			DrawTextFitKD(TextGet("KDDemoteNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 		}
+		if (tab == "Restrain") {
+			if (DrawButtonKDEx("returnToCollectionRestrain", (b) => {
+				KDCurrentRestrainingTarget = 0;
+				return true;
+			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
+			"", "#ffffff", KinkyDungeonRootDirectory + "UI/RestrainBack.png",
+			undefined, undefined, false)) {
+				DrawTextFitKD(TextGet("KDRestrainNPCBack"), x + 220, y + 750, 500, "#ffffff",
+					KDTextGray0);
+			}
+		} else {
+			if (DrawButtonKDEx("CollectionRestrain", (b) => {
+				KDCurrentRestrainingTarget = value.id;
+				return true;
+			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
+			"", "#ffffff", KinkyDungeonRootDirectory + "UI/Restrain.png",
+			undefined, undefined, false)) {
+				DrawTextFitKD(TextGet("KDRestrainNPC"), x + 220, y + 750, 500, "#ffffff",
+					KDTextGray0);
+			}
+		}
 
 		let assigned = !(!value.Facility);
 
@@ -308,9 +340,32 @@ function KDDrawSelectedCollectionMember(value, x, y, index) {
 
 }
 
+/**
+ *
+ * @param {number} id
+ * @param {number} x
+ * @param {number} y
+ */
+function KDDrawCollectionRestrain(id, x, y) {
+	if (!KDGameData.CollectionSorted) KDSortCollection();
+
+	KDDrawCollectionRestrainMain(id, x, y);
+	KDDrawSelectedCollectionMember(KDGameData.Collection["" + id], x - 460, 150, 0, "Restrain");
+}
+
+/**
+ *
+ * @param {number} id
+ * @param {number} x
+ * @param {number} y
+ */
+function KDDrawCollectionRestrainMain(id, x, y) {
+
+
+}
+
 let KDNPCChar = new Map();
 let KDNPCStyle = new Map();
-
 let KDCollectionSelected = 0;
 let KDCollectionIndex = 0;
 let KDCollectionGuestRows = 2;

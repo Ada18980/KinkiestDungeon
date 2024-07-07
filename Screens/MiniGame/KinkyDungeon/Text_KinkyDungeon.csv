@@ -23422,3 +23422,11 @@ KDRecycleResource_Rune,Runes
 
 RecycleResStrIntroRecycler_,"Stock: "
 RecycleResStrIntroRecyclerInput_,"Inputs: "
+
+KDSummitSafeguard,"You slip off the conveyor!"
+DungeonNameSummit,The Summit
+
+KDRestrainNPCBack,Back to Collection
+KDRestrainNPC,Edit Restraints
+
+KDDrawSelectedTab_Restrain,Editing Restraints

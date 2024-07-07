@@ -41,6 +41,46 @@ let KDPRISONGROUPS = [
  * @type {Record<string, KDPrisonType>}
  */
 let KDPrisonTypes = {
+	Summit: {
+		name: "Summit",
+		default_state: "BusinessAsUsual",
+		starting_state: "BusinessAsUsual",
+		update: (delta) => {
+			KinkyDungeonSetFlag("noPlay", 12);
+			let player = KDPlayer();
+
+			if (player.x == 18 && player.y == 20 && KinkyDungeonGetRestraintItem("ItemDevices")) {
+				if (KDRandom() < 0.2 && !KinkyDungeonEntityAt(18, 21)) {
+					KinkyDungeonSendTextMessage(10, TextGet("KDSummitSafeguard"), "#88ff88", 10);
+					KDMovePlayer(18, 21, false);
+				}
+			}
+		},
+		states: {
+			BusinessAsUsual: {name: "BusinessAsUsual",
+				init: (params) => {
+
+					return "";
+				},
+				update: (delta) => {
+					let player = KinkyDungeonPlayerEntity;
+					return "BusinessAsUsual";
+				},
+			},
+			Rebel: {name: "Rebel",
+				init: (params) => {
+					return "";
+				},
+				update: (delta) => {
+					return "BusinessAsUsual";
+				},
+				updateStack: (delta) => {
+					KinkyDungeonSetFlag("noPlay", 10);
+				},
+			},
+
+		},
+	},
 	DollStorage: {
 		name: "DollStorage",
 		default_state: "Jail",
