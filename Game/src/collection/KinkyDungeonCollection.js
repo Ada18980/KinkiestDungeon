@@ -363,6 +363,7 @@ function KDDrawCollectionRestrainMain(id, x, y) {
 	let restraints = KDGetNPCRestraints(id);
 	KDDrawNPCRestrain(restraints, x, y);
 
+
 }
 
 let KDNPCChar = new Map();

@@ -35,12 +35,12 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 		{id: "Collar", encasedBy: [], allowedGroups: ["ItemNeck"],
 			allowedTags: ["PostureCollars", "HighCollars", "Collars"]},
 		layers: [
-			{id: "ModulePunish", encasedBy: [], allowedGroups: ["ItemNeckAccessories"],
+			{id: "ModulePunish", encasedBy: [], allowedGroups: ["ItemNeckAccessories", "ItemNeck"],
 				allowedTags: ["ModulePunish"]},
-			{id: "CollarTag", encasedBy: [], allowedGroups: ["ItemNeckAccessories", "ItemNeckRestraints"],
-				allowedTags: ["Leashes", "Modules"]},
-			{id: "ModuleUtility", encasedBy: [], allowedGroups: ["ItemNeckAccessories"],
+			{id: "ModuleUtility", encasedBy: [], allowedGroups: ["ItemNeckAccessories", "ItemNeck"],
 				allowedTags: ["ModuleUtility"]},
+			{id: "CollarTag", encasedBy: [], allowedGroups: ["ItemNeckRestraints"],
+				allowedTags: ["Leashes"]},
 		]},
 	{id: "Head", encaseGroup:
 		{id: "Hood", encasedBy: [], allowedGroups: ["ItemHead"],

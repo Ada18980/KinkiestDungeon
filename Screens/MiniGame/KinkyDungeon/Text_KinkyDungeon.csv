@@ -23430,3 +23430,51 @@ KDRestrainNPCBack,Back to Collection
 KDRestrainNPC,Edit Restraints
 
 KDDrawSelectedTab_Restrain,Editing Restraints
+
+KDBindNPCSlot_ModuleUtility,Module (Utility)
+KDBindNPCSlot_CollarTag,Leash
+KDBindNPCSlot_ModulePunish,Module (Punishment)
+KDBindNPCSlot_Collar,~~~ Collar ~~~
+KDBindNPCSlot_InnerHead,Blindfold / Earplugs
+KDBindNPCSlot_InterHead,Blindfold
+KDBindNPCSlot_OuterHead,Blindfold
+KDBindNPCSlot_Hood,Mask/Hood
+KDBindNPCSlot_InnerGag,Gag
+KDBindNPCSlot_InterGag,Gag
+KDBindNPCSlot_OuterGag,Gag / Stuffing
+KDBindNPCSlot_Muzzle,Muzzle
+KDBindNPCSlot_Wrists,Wrists
+KDBindNPCSlot_HeavyBondage,Heavy Bondage
+KDBindNPCSlot_Secure,Extra Bondage
+KDBindNPCSlot_ArmEncase,Encasement
+KDBindNPCSlot_InnerHands,Mittens
+KDBindNPCSlot_InterHands,Mittens / Tape
+KDBindNPCSlot_OuterHands,Gloves / Tape
+KDBindNPCSlot_HandEncase,Encasement
+KDBindNPCSlot_Piercings,Piercings
+KDBindNPCSlot_NippleWeight,Weights
+KDBindNPCSlot_NippleVibe,Vibes
+KDBindNPCSlot_ChastityBra,Chastity Bra
+KDBindNPCSlot_Suits,Catsuit / Leotard
+KDBindNPCSlot_HarnessExtra,Harness
+KDBindNPCSlot_Harness,Harness
+KDBindNPCSlot_Corset,Corset
+KDBindNPCSlot_RearPlug,Rear Plug
+KDBindNPCSlot_FrontPlug,Front Plug
+KDBindNPCSlot_Vibe,Vibrator
+KDBindNPCSlot_ChastityBelt,Chastity Belt
+KDBindNPCSlot_ThighCuffs,Thigh Cuffs
+KDBindNPCSlot_ThighBinds,Leg Bondage
+KDBindNPCSlot_Legbinder,Legbinder
+KDBindNPCSlot_LegEncase,Encasement
+KDBindNPCSlot_AnkleCuffs,Ankles
+KDBindNPCSlot_Shins,Shins
+KDBindNPCSlot_Knees,Knees
+KDBindNPCSlot_FeetEncase,Encasement
+KDBindNPCSlot_ToeCuffs,Toe Cuffs
+KDBindNPCSlot_ToeTies,Toe Tie
+KDBindNPCSlot_Heels,Heels
+KDBindNPCSlot_BootsEncase,Encasement
+
+KDCurrentItem,"Current Item: "
+KDCurrentItem2,"Apply Item: "

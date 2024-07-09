@@ -2377,6 +2377,16 @@ interface KDStruggleData {
 	extraLimThreshold: number,
 }
 
+interface KDFilteredInventoryItem {
+    name: any;
+    item: any;
+    preview: string;
+    preview2?: string;
+    previewcolor?: string;
+    previewcolorbg?: string;
+    key?: string;
+}
+
 interface KDInventoryActionDef {
 	text?: (player: entity, item: item) => string;
 	label?: (player: entity, item: item) => string;
