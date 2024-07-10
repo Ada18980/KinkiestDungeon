@@ -1190,6 +1190,61 @@ function KDProcessInput(type, data): string {
 			break;
 		case "recycle":
 			break;
+		case "addNPCRestraint":
+			/**
+				slot: slot.id,
+				id: inv.item.id,
+				restraint: inv.item.name,
+				lock: "White",
+				npc: number
+			 */
+			{
+				let row = KDGetEncaseGroupRow(data.slot);
+				let slot = KDGetEncaseGroupSlot(data.slot);
+				let item = null;
+				if (data.restraint) {
+
+					let restraint = KDRestraint({name: data.restraint});
+					if (KDRowItemIsValid(restraint, slot, row)) {
+						KinkyDungeonCheckClothesLoss = true;
+						item = KDSetNPCRestraint(data.npc, slot.id, {
+							lock: data.lock,
+							name: data.restraint,
+						});
+						if (!data.noInventory && KinkyDungeonInventoryGetSafe(data.restraint)) {
+							KinkyDungeonInventoryGetSafe(data.restraint).quantity =
+							(KinkyDungeonInventoryGetSafe(data.restraint).quantity || 1) - 1;
+							if (KinkyDungeonInventoryGetSafe(data.restraint).quantity <= 0) {
+								KinkyDungeonInventoryRemoveSafe(KinkyDungeonInventoryGetSafe(data.restraint));
+								KDSortInventory(KDPlayer());
+							}
+						}
+					}
+				} else {
+
+					KinkyDungeonCheckClothesLoss = true;
+					item = KDSetNPCRestraint(data.npc, slot.id, undefined);
+
+				}
+				if (item && !data.noInventory) {
+					let restraint = KDRestraint(item);
+					if (restraint?.inventory) {
+						if (!KinkyDungeonInventoryGetSafe(item.name)) {
+							KinkyDungeonInventoryAdd({
+								name: item.name,
+								//curse: curse,
+								id: item.id,
+								type: LooseRestraint,
+								//events:events,
+								quantity: 1,
+								showInQuickInv: KinkyDungeonRestraintVariants[item.name] != undefined,});
+
+							KDSortInventory(KDPlayer());
+						} else KinkyDungeonInventoryGetSafe(item.name).quantity += 1;
+					}
+				}
+			}
+		break;
 	}
 	if (data.GameData) {
 		Object.assign(KDGameData, data.GameData);

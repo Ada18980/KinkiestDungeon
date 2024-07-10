@@ -195,7 +195,13 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 	}
 
 	if (KDSpeakerNPC) {
-		KinkyDungeonDressPlayer(KDSpeakerNPC, true);
+		if (KinkyDungeonCheckClothesLoss) {
+			if (!NPCTags.get(KDSpeakerNPC)) {
+				NPCTags.set(KDSpeakerNPC, new Map());
+			}
+			NPCTags.set(KDSpeakerNPC, KinkyDungeonUpdateRestraints(KDSpeakerNPC, value.id, 0));
+		}
+		KinkyDungeonDressPlayer(KDSpeakerNPC, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
 		DrawCharacter(KDSpeakerNPC,
 			x + 20 + 100,
 			y + 80,
@@ -361,7 +367,7 @@ function KDDrawCollectionRestrain(id, x, y) {
  */
 function KDDrawCollectionRestrainMain(id, x, y) {
 	let restraints = KDGetNPCRestraints(id);
-	KDDrawNPCRestrain(restraints, x, y);
+	KDDrawNPCRestrain(id, restraints, x, y);
 
 
 }

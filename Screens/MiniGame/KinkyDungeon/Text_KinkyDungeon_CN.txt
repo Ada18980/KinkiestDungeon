@@ -17997,7 +17997,7 @@ You have formed a mental barrier...
 你已经形成了一个精神屏障...
 Desire Burst
 欲望爆发
-Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have 50% Desire, the damage is reduced based on the amount. (Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
+Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have 50% Desire, the damage is reduced based on the amount.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
 将你的性欲减少最多最大 DP 的 30%，并将该量转化为强大的爆炸，对附近的敌人造成 (30 + 25% 最大 DP) 点妩媚伤害（暴击倍数为 200%）。如果你没有50%的性欲，伤害会根据数量减少。（性欲是你的DP条下方的心形仪表，通过分心慢慢提高）
 You channel your distraction into a powerful explosion!
 你可以将你的分心转化为强大的爆炸！

@@ -2547,6 +2547,7 @@ const KinkyDungeonRestraints = [
 		LinkableBy: ["Wrapping", "Ornate"],
 		factionFilters: {
 			Lining: {color: "Highlight", override: true},
+			Lock: {color: "Highlight", override: true},
 		},
 		Filters: {
 			Lining: {"gamma":1,"saturation":0,"contrast":2.033333333333333,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
@@ -2599,6 +2600,7 @@ const KinkyDungeonRestraints = [
 		LinkableBy: ["Wrapping", "Ornate"],
 		factionFilters: {
 			Lining: {color: "Highlight", override: true},
+			Lock: {color: "Highlight", override: true},
 		},
 		Filters: {
 			Lock: {"gamma":1,"saturation":0.08333333333333333,"contrast":1,"brightness":1,"red":1.5666666666666669,"green":1,"blue":2.5333333333333337,"alpha":1},
@@ -3851,6 +3853,7 @@ const KinkyDungeonRestraints = [
 		LinkableBy: ["Wrapping", "Ornate"],
 		factionFilters: {
 			Lining: {color: "Highlight", override: true},
+			Lock: {color: "Highlight", override: true},
 		},
 		Filters: {
 			Lock: {"gamma":1,"saturation":0,"contrast":2.183333333333333,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},

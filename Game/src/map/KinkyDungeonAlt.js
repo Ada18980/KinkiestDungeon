@@ -282,7 +282,7 @@ let alts = {
 		nopatrols: true,
 		alwaysRegen: false, // Always regenerate this room
 		persist: true,
-		prisonType: "v",
+		prisonType: "Summit",
 		setpieces: {
 		},
 		data: {

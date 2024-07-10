@@ -236,7 +236,9 @@ function DisposeCharacter(C: Character): void {
 			kdcanvas.removeChild(Container.Container);
 			Container.Container.destroy();
 		}
-
+	}
+	if (NPCTags.get(C)) {
+		NPCTags.delete(C);
 	}
 }
 

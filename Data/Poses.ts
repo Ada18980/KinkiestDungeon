@@ -318,10 +318,11 @@ function ModelGetPoseMods(Poses: {[_: string]: boolean}): {[_: string]: PoseMod[
 	return mods;
 }
 
-
 function CheckPoseOrTags(C: Character, tag: string) {
 	if (C == KinkyDungeonPlayer) {
 		if (KinkyDungeonPlayerTags.get(tag)) return true;
+	} else if (NPCTags.get(C)) {
+		if (NPCTags.get(C).get(tag)) return true;
 	}
 	if (KDCurrentModels.get(C)?.Poses[tag]) {
 		return true;

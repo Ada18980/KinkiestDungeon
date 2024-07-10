@@ -13,6 +13,16 @@ interface NPCBindingSubgroup {
 	encasedBy: string[],
 }
 
+let NPCBindingRestraintSize = {
+	Heels: 3,
+	Straitjackets: 2,
+	PlugGags: 2,
+	Yokes: 2,
+	Fiddles: 2,
+	Spreaderbars: 2,
+	Petsuits: 2,
+}
+
 /**
  *
  * Most items have 1 size
@@ -25,6 +35,7 @@ interface NPCBindingSubgroup {
  * Yokes
  * Fiddles
  * Spreaderbars
+ * Petsuits
  *
  * Size 3:
  * Heels
@@ -69,9 +80,9 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			allowedTags: ["Wrapping", "Encase"]},
 		layers: [
 			{id: "Secure", encasedBy: ["ArmEncase"], allowedGroups: ["ItemArms"],
-				allowedTags: ["Yokes", "Fiddles", "Straitjackets", "RopeReinforce", "Belts"]},
+				allowedTags: ["Petsuits", "Yokes", "Fiddles", "Straitjackets", "RopeReinforce", "Belts"]},
 			{id: "HeavyBondage", encasedBy: ["ArmEncase"], allowedGroups: ["ItemArms"],
-				allowedTags: ["Yokes", "Fiddles", "Armbinders", "Boxbinders", "Straitjackets", "Boxties", "Wristties", "Cuffs"]},
+				allowedTags: ["Petsuits", "Yokes", "Fiddles", "Armbinders", "Boxbinders", "Straitjackets", "Boxties", "Wristties", "Cuffs"]},
 			{id: "Wrists", encasedBy: ["ArmEncase", "HeavyBondage"], allowedGroups: ["ItemArms"],
 				allowedTags: ["ArmCuffsBase", "ChestHarnesses"]},
 		]},

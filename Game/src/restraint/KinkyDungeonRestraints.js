@@ -3080,99 +3080,164 @@ function KDGetRestraintWithVariants(enemy, Level, Index, Bypass, Lock, RequireWi
 	}
 }
 
-function KinkyDungeonUpdateRestraints(delta) {
-	let playerTags = new Map();
-	for (let inv of KinkyDungeonAllRestraintDynamic()) {
-		let group = KDRestraint(inv.item).Group;
-		if (group) {
-			if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
-			playerTags.set(group + "Full", true);
-			playerTags.set(inv.item.name + "Worn", true);
-		}
-	}
-	for (let sg of KinkyDungeonStruggleGroupsBase) {
-		let group = sg;
-		if (group == "ItemM") {
-			if (!KinkyDungeonGetRestraintItem("ItemMouth")) playerTags.set("ItemMouth" + "Empty", true);
-			if (!KinkyDungeonGetRestraintItem("ItemMouth2")) playerTags.set("ItemMouth2" + "Empty", true);
-			if (!KinkyDungeonGetRestraintItem("ItemMouth3")) playerTags.set("ItemMouth3" + "Empty", true);
-		} else if (group == "ItemH") {
-			if (!KinkyDungeonGetRestraintItem("ItemHood")) playerTags.set("ItemHood" + "Empty", true);
-			if (!KinkyDungeonGetRestraintItem("ItemHead")) playerTags.set("ItemHead" + "Empty", true);
-		} else if (!KinkyDungeonGetRestraintItem(group)) playerTags.set(group + "Empty", true);
-	}
-	let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
-	for (let inv2 of KinkyDungeonAllRestraintDynamic()) {
-		let inv = inv2.item;
-		playerTags.set("Item_"+inv.name, true);
-
-		if ((!inv.faction || KDToggles.ForcePalette || outfit?.palette) && (!KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette])) {
-			inv.faction = outfit?.palette || KDDefaultPalette;
-		}
-
-		if (KDRestraint(inv).Link)
-			playerTags.set("LinkTo_"+KDRestraint(inv).Link, true);
-		if (KDRestraint(inv).UnLink)
-			playerTags.set("UnLinkTo_"+KDRestraint(inv).UnLink, true);
-		if (KDRestraint(inv).addTag)
-			for (let tag of KDRestraint(inv).addTag) {
-				if (!playerTags.get(tag)) playerTags.set(tag, true);
+function KinkyDungeonUpdateRestraints(C, id, delta) {
+	if (!C && !id) C = KinkyDungeonPlayer;
+	if (C == KinkyDungeonPlayer) {
+		let playerTags = new Map();
+		for (let inv of KinkyDungeonAllRestraintDynamic()) {
+			let group = KDRestraint(inv.item).Group;
+			if (group) {
+				if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
+				playerTags.set(group + "Full", true);
+				playerTags.set(inv.item.name + "Worn", true);
 			}
-		if (KDRestraint(inv).chastity)
-			playerTags.set("ChastityLower", true);
-		if (KDRestraint(inv).chastitybra)
-			playerTags.set("ChastityUpper", true);
-		if (KDRestraint(inv).hobble)
-			playerTags.set("Hobble", true);
-		if (KDRestraint(inv).blockfeet)
-			playerTags.set("BoundFeet", true);
-		if (KDRestraint(inv).bindarms)
-			playerTags.set("BoundArms", true);
-		if (KDRestraint(inv).bindhands)
-			playerTags.set("BoundHands", true);
-		if (KDRestraint(inv).blindfold)
-			playerTags.set("Blindfolded", true);
-		if (KDRestraint(inv).shrine) {
-			for (let tag of KDRestraint(inv).shrine) {
-				if (!playerTags.get(tag)) playerTags.set(tag, true);
+		}
+		for (let sg of KinkyDungeonStruggleGroupsBase) {
+			let group = sg;
+			if (group == "ItemM") {
+				if (!KinkyDungeonGetRestraintItem("ItemMouth")) playerTags.set("ItemMouth" + "Empty", true);
+				if (!KinkyDungeonGetRestraintItem("ItemMouth2")) playerTags.set("ItemMouth2" + "Empty", true);
+				if (!KinkyDungeonGetRestraintItem("ItemMouth3")) playerTags.set("ItemMouth3" + "Empty", true);
+			} else if (group == "ItemH") {
+				if (!KinkyDungeonGetRestraintItem("ItemHood")) playerTags.set("ItemHood" + "Empty", true);
+				if (!KinkyDungeonGetRestraintItem("ItemHead")) playerTags.set("ItemHead" + "Empty", true);
+			} else if (!KinkyDungeonGetRestraintItem(group)) playerTags.set(group + "Empty", true);
+		}
+		let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
+		for (let inv2 of KinkyDungeonAllRestraintDynamic()) {
+			let inv = inv2.item;
+			playerTags.set("Item_"+inv.name, true);
+
+			if ((!inv.faction || KDToggles.ForcePalette || outfit?.palette) && (!KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette])) {
+				inv.faction = outfit?.palette || KDDefaultPalette;
 			}
-			// The following is redundant
-			/*let link = inv.dynamicLink;
-			while (link) {
-				for (let tag of KDRestraint(link).shrine) {
+
+			if (KDRestraint(inv).Link)
+				playerTags.set("LinkTo_"+KDRestraint(inv).Link, true);
+			if (KDRestraint(inv).UnLink)
+				playerTags.set("UnLinkTo_"+KDRestraint(inv).UnLink, true);
+			if (KDRestraint(inv).addTag)
+				for (let tag of KDRestraint(inv).addTag) {
 					if (!playerTags.get(tag)) playerTags.set(tag, true);
 				}
-				link = link.dynamicLink;
-			}*/
+			if (KDRestraint(inv).chastity)
+				playerTags.set("ChastityLower", true);
+			if (KDRestraint(inv).chastitybra)
+				playerTags.set("ChastityUpper", true);
+			if (KDRestraint(inv).hobble)
+				playerTags.set("Hobble", true);
+			if (KDRestraint(inv).blockfeet)
+				playerTags.set("BoundFeet", true);
+			if (KDRestraint(inv).bindarms)
+				playerTags.set("BoundArms", true);
+			if (KDRestraint(inv).bindhands)
+				playerTags.set("BoundHands", true);
+			if (KDRestraint(inv).blindfold)
+				playerTags.set("Blindfolded", true);
+			if (KDRestraint(inv).shrine) {
+				for (let tag of KDRestraint(inv).shrine) {
+					if (!playerTags.get(tag)) playerTags.set(tag, true);
+				}
+				// The following is redundant
+				/*let link = inv.dynamicLink;
+				while (link) {
+					for (let tag of KDRestraint(link).shrine) {
+						if (!playerTags.get(tag)) playerTags.set(tag, true);
+					}
+					link = link.dynamicLink;
+				}*/
+			}
+
 		}
 
+		for (let t of KDHeavyRestraintPrefs) {
+			if (KinkyDungeonStatsChoice.get(t)) playerTags.set(t, true);
+		}
+		if (KinkyDungeonStatsChoice.get("Deprived")) playerTags.set("NoVibes", true);
+		if (KinkyDungeonStatsChoice.get("Unmasked")) playerTags.set("Unmasked", true);
+		if (KinkyDungeonStatsChoice.get("FreeBoob2")) playerTags.set("FreeBoob", true);
+		if (KinkyDungeonStatsChoice.get("FreeBoob1") && !KinkyDungeonPlayerTags.get("ItemNipples")) playerTags.set("FreeBoob", true);
+		if (KinkyDungeonStatsChoice.get("NoKigu")) playerTags.set("NoKigu", true);
+		if (KinkyDungeonStatsChoice.get("NoBlindfolds")) playerTags.set("NoBlindfolds", true);
+		if (KinkyDungeonStatsChoice.get("NoPet")) playerTags.set("NoPet", true);
+		if (KinkyDungeonStatsChoice.get("Unchained")) playerTags.set("Unchained", true);
+		if (KinkyDungeonStatsChoice.get("Damsel")) playerTags.set("Damsel", true);
+		if (KinkyDungeonStatsChoice.get("arousalMode")) playerTags.set("arousalMode", true);
+		if (KinkyDungeonStatsChoice.get("arousalModePlug")) playerTags.set("arousalModePlug", true);
+		if (KinkyDungeonStatsChoice.get("arousalModePiercing")) playerTags.set("arousalModePiercing", true);
+
+		let tags = [];
+		KinkyDungeonAddTags(tags, MiniGameKinkyDungeonLevel);
+		for (let t of tags) {
+			playerTags.set(t, true);
+		}
+
+		KinkyDungeonSendEvent("updatePlayerTags", {tags: playerTags, player:KinkyDungeonPlayerEntity});
+		return playerTags;
+	} else if (KDGameData.NPCRestraints[id + ""]) {
+
+		let playerTags = new Map();
+		for (let inv of Object.values(KDGameData.NPCRestraints[id + ""])) {
+			let group = KDRestraint(inv).Group;
+			if (group) {
+				if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
+				playerTags.set(group + "Full", true);
+				playerTags.set(inv.name + "Worn", true);
+			}
+		}
+		for (let sg of KinkyDungeonStruggleGroupsBase) {
+			let group = sg;
+			if (!Object.values(KDGameData.NPCRestraints[id + ""]).some((rest) => {
+				return KDRestraint(rest)?.Group == group;
+			})) playerTags.set(group + "Empty", true);
+		}
+		for (let inv of Object.values(KDGameData.NPCRestraints[id + ""])) {
+			playerTags.set("Item_"+inv.name, true);
+
+			if (KDRestraint(inv).Link)
+				playerTags.set("LinkTo_"+KDRestraint(inv).Link, true);
+			if (KDRestraint(inv).UnLink)
+				playerTags.set("UnLinkTo_"+KDRestraint(inv).UnLink, true);
+			if (KDRestraint(inv).addTag)
+				for (let tag of KDRestraint(inv).addTag) {
+					if (!playerTags.get(tag)) playerTags.set(tag, true);
+				}
+			if (KDRestraint(inv).chastity)
+				playerTags.set("ChastityLower", true);
+			if (KDRestraint(inv).chastitybra)
+				playerTags.set("ChastityUpper", true);
+			if (KDRestraint(inv).hobble)
+				playerTags.set("Hobble", true);
+			if (KDRestraint(inv).blockfeet)
+				playerTags.set("BoundFeet", true);
+			if (KDRestraint(inv).bindarms)
+				playerTags.set("BoundArms", true);
+			if (KDRestraint(inv).bindhands)
+				playerTags.set("BoundHands", true);
+			if (KDRestraint(inv).blindfold)
+				playerTags.set("Blindfolded", true);
+			if (KDRestraint(inv).shrine) {
+				for (let tag of KDRestraint(inv).shrine) {
+					if (!playerTags.get(tag)) playerTags.set(tag, true);
+				}
+			}
+
+		}
+
+		let tags = [];
+		KinkyDungeonAddTags(tags, MiniGameKinkyDungeonLevel);
+		for (let t of tags) {
+			playerTags.set(t, true);
+		}
+
+		KinkyDungeonSendEvent("updateNPCTags", {tags: playerTags, npc:id});
+		return playerTags;
 	}
 
-	for (let t of KDHeavyRestraintPrefs) {
-		if (KinkyDungeonStatsChoice.get(t)) playerTags.set(t, true);
-	}
-	if (KinkyDungeonStatsChoice.get("Deprived")) playerTags.set("NoVibes", true);
-	if (KinkyDungeonStatsChoice.get("Unmasked")) playerTags.set("Unmasked", true);
-	if (KinkyDungeonStatsChoice.get("FreeBoob2")) playerTags.set("FreeBoob", true);
-	if (KinkyDungeonStatsChoice.get("FreeBoob1") && !KinkyDungeonPlayerTags.get("ItemNipples")) playerTags.set("FreeBoob", true);
-	if (KinkyDungeonStatsChoice.get("NoKigu")) playerTags.set("NoKigu", true);
-	if (KinkyDungeonStatsChoice.get("NoBlindfolds")) playerTags.set("NoBlindfolds", true);
-	if (KinkyDungeonStatsChoice.get("NoPet")) playerTags.set("NoPet", true);
-	if (KinkyDungeonStatsChoice.get("Unchained")) playerTags.set("Unchained", true);
-	if (KinkyDungeonStatsChoice.get("Damsel")) playerTags.set("Damsel", true);
-	if (KinkyDungeonStatsChoice.get("arousalMode")) playerTags.set("arousalMode", true);
-	if (KinkyDungeonStatsChoice.get("arousalModePlug")) playerTags.set("arousalModePlug", true);
-	if (KinkyDungeonStatsChoice.get("arousalModePiercing")) playerTags.set("arousalModePiercing", true);
+	return new Map();
 
-	let tags = [];
-	KinkyDungeonAddTags(tags, MiniGameKinkyDungeonLevel);
-	for (let t of tags) {
-		playerTags.set(t, true);
-	}
-
-	KinkyDungeonSendEvent("updatePlayerTags", {tags: playerTags, player:KinkyDungeonPlayerEntity});
-	return playerTags;
 }
+
 
 function KDGetCursePower(item) {
 	if (!item || !KDGetCurse(item)) return 0;

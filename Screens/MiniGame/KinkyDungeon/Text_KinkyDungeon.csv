@@ -21866,7 +21866,7 @@ KinkyDungeonBuffDistractionShield,"You have formed a mental barrier..."
 
 
 KinkyDungeonSpellDistractionBurst,Desire Burst
-KinkyDungeonSpellDescriptionDistractionBurst,"Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have at least 50% Desire, the damage is reduced based on the amount. (Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)"
+KinkyDungeonSpellDescriptionDistractionBurst,"Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have at least 50% Desire, the damage is reduced based on the amount.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)"
 KDDistractionBurst_Yes,"You channel your distraction into a powerful explosion!"
 KDDistractionBurst_No,"You don't have enough of a desire to do that."
 KDDistractionBurst_NoMana,"You have the desire but not the mana!"
@@ -22197,6 +22197,7 @@ KDPaletteSlime,Slime
 KDPaletteAlchemist,Alchemist
 KDPaletteApprentice,Scholarly
 KDPaletteWitch,Witch's Coven
+KDPaletteWarden,Warden
 KDPaletteCurse,Curse
 KDPaletteAncientRobot,Old Guardians
 KDPaletteMushy,Fungal
