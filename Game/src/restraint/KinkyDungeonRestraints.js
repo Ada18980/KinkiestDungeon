@@ -3174,7 +3174,7 @@ function KinkyDungeonUpdateRestraints(C, id, delta) {
 
 		KinkyDungeonSendEvent("updatePlayerTags", {tags: playerTags, player:KinkyDungeonPlayerEntity});
 		return playerTags;
-	} else if (KDGameData.NPCRestraints[id + ""]) {
+	} else if (KDGameData.NPCRestraints && KDGameData.NPCRestraints[id + ""]) {
 
 		let playerTags = new Map();
 		for (let inv of Object.values(KDGameData.NPCRestraints[id + ""])) {
