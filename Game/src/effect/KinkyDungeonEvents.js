@@ -1982,6 +1982,15 @@ let KDEventMapInventory = {
 		}
 	},
 	"beforeStruggleCalc": {
+		"UniversalSolvent": (e, item, data) => {
+			if (item == data.restraint && (
+				data.struggleType == "struggle"
+				||
+				data.struggleType == "cut"
+			)) {
+				data.escapePenalty -= e.power;
+			}
+		},
 		"StruggleManaBonus": (e, item, data) => {
 			if (item == data.restraint) {
 				let bonus = KDGetManaBonus(e.mult, e.power, e.threshold, e.threshold, e.threshold);

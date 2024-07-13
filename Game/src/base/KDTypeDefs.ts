@@ -2975,6 +2975,9 @@ interface KDBondage {
 	powerStruggleBoost: number,
 	/** Multiplier for command level */
 	mageStruggleBoost?: number,
+
+	/** Affected by latex solvents */
+	latex?: boolean,
 }
 
 interface KDCursedVar {

@@ -26,6 +26,12 @@ let KDEffectTiles = {
 		priority: 1,
 		tags: ["ice", "slippery", "terrain"],
 	},
+	"Acid": {
+		name: "Acid",
+		duration: 4,
+		priority: 4,
+		tags: ["conductive"],
+	},
 	"Water": {
 		name: "Water",
 		duration: 40,

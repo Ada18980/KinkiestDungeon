@@ -43,6 +43,8 @@ let KinkyDungeonConsumables = {
 	"SackOfSacks" : {name: "SackOfSacks", rarity: 3, costMod: -2, shop: true, type: "SackOfSacks", noConsumeOnUse: true},
 	"DiscPick" : {name: "DiscPick", rarity: 4, costMod: -1, sub: 0.2, shop: true, type: "DiscPick", noConsumeOnUse: true, uniqueTags: ["pick"]},
 
+	"UniversalSolvent" : {name: "UniversalSolvent", rarity: 5, shop: true, useQuantity: 1, noConsumeOnUse: true, type: "targetspell", spell: "UniversalSolvent", sfx: "PotionDrink"},
+
 	"DivineTear" : {name: "DivineTear", rarity: 6, sub: 0.05, shop: true, delay: 3, power: 10, noHands: true, duration: 0, sfx: "Cookie", type: "RemoveCurseOrHex", noConsumeOnUse: true},
 };
 

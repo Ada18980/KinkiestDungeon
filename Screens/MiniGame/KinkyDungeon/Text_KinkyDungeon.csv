@@ -23486,3 +23486,14 @@ KDCurrentItem2,"Apply Item: "
 KDFreePrisoner,Free Prisoners
 
 KDPerkUnlockedToast,"Perk Unlocked: "
+
+KinkyDungeonInventoryItemUniversalSolvent,Universal Solvent
+KinkyDungeonInventoryItemUniversalSolventUse,You pour the solvent over yourself.
+KinkyDungeonInventoryItemUniversalSolventDesc,"A potent acid, capable of dissolving both slime and latex."
+KinkyDungeonInventoryItemUniversalSolventDesc2,"Deal 90 acid damage to target. Adds a cumulative 10% debuff to the cut and struggle resistance of latex restraints currently worn."
+
+KDVariableModifier_UniversalSolvent,Weakened by Universal Solvent (10%)
+KDUniversalSolventSucceedSelf,You spill the solvent on yourself and loosen your latex bonds!
+KDUniversalSolventSucceedEnemy,You splash the ENMY with universal solvent!
+
+KDUniversalSolventFail,You can't use solvents on targets other than yourself while bound.
