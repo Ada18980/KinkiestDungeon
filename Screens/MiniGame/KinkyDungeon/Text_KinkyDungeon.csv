@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.23"
+KDVersionStr,"5.3.24"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -339,6 +339,9 @@ KinkyDungeonStatDescSavourTheTaste,"Drinking a potion takes 2 turns"
 
 KinkyDungeonStatMagicHands,"Magic Hands"
 KinkyDungeonStatDescMagicHands,"Enemies can add restraints underneath existing restraints."
+
+KinkyDungeonStatStartLatexIntegration,"Fully Integrated"
+KinkyDungeonStatDescStartLatexIntegration,"Start with your body sealed in an adhesive layer of latex."
 
 KinkyDungeonStatStartCyberDollStorage,"Doll Processing"
 KinkyDungeonStatDescStartCyberDollStorage,"Start atop a conveyor on your way to be sealed away inside the Facility."
@@ -23479,3 +23482,7 @@ KDBindNPCSlot_BootsEncase,Encasement
 
 KDCurrentItem,"Current Item: "
 KDCurrentItem2,"Apply Item: "
+
+KDFreePrisoner,Free Prisoners
+
+KDPerkUnlockedToast,"Perk Unlocked: "

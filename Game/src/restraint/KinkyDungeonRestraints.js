@@ -3178,7 +3178,7 @@ function KinkyDungeonUpdateRestraints(C, id, delta) {
 
 		let playerTags = new Map();
 		for (let inv of Object.values(KDGameData.NPCRestraints[id + ""])) {
-			let group = KDRestraint(inv).Group;
+			let group = KDRestraint(inv)?.Group;
 			if (group) {
 				if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
 				playerTags.set(group + "Full", true);

@@ -2088,6 +2088,7 @@
             <key type="filename">../Game/Items/Group/ItemLegs.png</key>
             <key type="filename">../Game/Items/Group/ItemMouth.png</key>
             <key type="filename">../Game/Items/Group/ItemNeck.png</key>
+            <key type="filename">../Game/Items/Group/ItemNeckAccessories.png</key>
             <key type="filename">../Game/Items/Group/ItemNeckRestraints.png</key>
             <key type="filename">../Game/Items/Group/ItemNipples.png</key>
             <key type="filename">../Game/Items/Group/ItemPelvis.png</key>
@@ -3422,6 +3423,9 @@
             <key type="filename">../Game/UI/Facility_Servants.png</key>
             <key type="filename">../Game/UI/Facility_X.png</key>
             <key type="filename">../Game/UI/Promote.png</key>
+            <key type="filename">../Game/UI/Restrain.png</key>
+            <key type="filename">../Game/UI/RestrainBack.png</key>
+            <key type="filename">../Game/UI/RestrainFree.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -4034,6 +4038,7 @@
             <key type="filename">../Game/UI/key.png</key>
             <key type="filename">../Game/UI/miscast.png</key>
             <key type="filename">../Game/UI/restraint_key.png</key>
+            <key type="filename">../Game/UI/restraint_key_2.png</key>
             <key type="filename">../Game/UI/restraint_nokey.png</key>
             <key type="filename">../Game/UI/speed.png</key>
             <key type="filename">../Game/UI/vision.png</key>

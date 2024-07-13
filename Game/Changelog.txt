@@ -30,6 +30,9 @@ TODO:
 
 TODO remove hogtie whenm released
 
+5.3.24
+- Added ability to restrain NPCs
+
 5.3.23
 - Recycler is now online in the summit!
 - Interacting now picks up items on the targeted tile

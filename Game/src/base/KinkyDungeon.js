@@ -832,7 +832,10 @@ function KinkyDungeonAngel() {
 }
 
 function KDUnlockPerk(Perk) {
-	if (Perk && !KDUnlockedPerks.includes(Perk)) KDUnlockedPerks.push(Perk);
+	if (Perk && !KDUnlockedPerks.includes(Perk)) {
+		KDSendMusicToast(TextGet("KDPerkUnlockedToast") + TextGet("KinkyDungeonStat" + (KinkyDungeonStatsPresets[Perk]?.id || Perk)));
+		KDUnlockedPerks.push(Perk);
+	}
 	KDLoadPerks();
 	localStorage.setItem("KDUnlockedPerks", JSON.stringify(KDUnlockedPerks));
 }

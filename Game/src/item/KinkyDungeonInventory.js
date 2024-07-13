@@ -2615,7 +2615,7 @@ function KDRemoveConsumableVariant(Name, Prefix="KinkyDungeonInventoryItem") {
  * @param {boolean} loose
  * @param {boolean} lost
  */
-function KDPruneInventoryVariants(worn = true, loose = true, lost = true, ground = true, hotbar = true, entities = true) {
+function KDPruneInventoryVariants(worn = true, loose = true, lost = true, ground = true, hotbar = true, entities = true, npcrestraints = true) {
 	let entries = Object.entries(KinkyDungeonRestraintVariants);
 	let entrieswep = Object.entries(KinkyDungeonWeaponVariants);
 	let entriescon = Object.entries(KinkyDungeonConsumableVariants);
@@ -2740,6 +2740,15 @@ function KDPruneInventoryVariants(worn = true, loose = true, lost = true, ground
 			}
 		}
 
+	}
+	if (npcrestraints && KDGameData.NPCRestraints) {
+		for (let list of Object.values(KDGameData.NPCRestraints)) {
+			for (let restraint of Object.values(list)) {
+				if (restraint?.name) {
+					found[restraint.name] = true;
+				}
+			}
+		}
 	}
 	for (let type of entries) {
 		if (!found[type[0]]) {

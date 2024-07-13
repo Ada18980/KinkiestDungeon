@@ -347,6 +347,7 @@ let KinkyDungeonStatsPresets = {
 	"StartLatex": {startPriority: 15, category: "Start", id: "StartLatex", cost: -2, tags: ["start"]},
 	"StartShadow": {startPriority: 1, category: "Start", id: "StartShadow", cost: -1, tags: ["start"]},
 
+	"StartLatexIntegration": {startPriority: 1000, category: "Boss", id: "StartLatexIntegration", cost: -1, locked: true, buff: true, tags: ["start"]},
 
 	"StartCyberDollStorage": {startPriority: 1000, category: "Boss", id: "StartCyberDollStorage", cost: -1, locked: true, buff: true, tags: ["start"]},
 	"StartCyberDoll": {startPriority: 7, category: "Boss", id: "StartCyberDoll", cost: -2, locked: true, tags: ["start"]},
@@ -734,6 +735,12 @@ let KDPerkStart = {
 
 		KDFixPlayerClothes("AncientRobot");
 		KDEnterDollTerminal(false);
+		if (!KDHasSpell("ZeroResistance")) KDPushSpell(KinkyDungeonFindSpell("ZeroResistance"));
+	},
+	StartLatexIntegration: () =>{
+		KDFixPlayerClothes("AncientRobot");
+		KDAddSpecialStat("LatexIntegration", KDPlayer(), 0, true);
+
 		if (!KDHasSpell("ZeroResistance")) KDPushSpell(KinkyDungeonFindSpell("ZeroResistance"));
 	},
 	StartCyberDoll: () =>{

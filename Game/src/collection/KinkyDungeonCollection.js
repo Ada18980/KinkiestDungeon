@@ -210,6 +210,8 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 		let III = 0;
 		let buttonSpacing = 90;
 		if (DrawButtonKDEx("dressNPC", (b) => {
+			if (KDToggles.Sound)
+				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LightJingle" + ".ogg");
 			//KDSpeakerNPC = null;
 			KinkyDungeonState = "Wardrobe";
 			ForceRefreshModels(KDSpeakerNPC);
@@ -251,26 +253,25 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 			DrawTextFitKD(TextGet("KDDressNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 		}
 
-		if (!value.status && DrawButtonKDEx("promoteNPC", (b) => {
-			if (!(KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns)) {
-				value.status = "Servant";
-				KDSortCollection();
-			}
-			return true;
-		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Promote.png",
-		undefined, undefined, false, KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns ? "#ff5555" : "")) {
-			DrawTextFitKD(TextGet("KDPromoteNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
-		} else if (value.status == "Servant" && DrawButtonKDEx("demoteNPC", (b) => {
-			value.status = "";
-			KDSortCollection();
-			return true;
-		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Demote.png",
-		undefined, undefined, false)) {
-			DrawTextFitKD(TextGet("KDDemoteNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
-		}
+
 		if (tab == "Restrain") {
+			if (DrawButtonKDEx("RestrainFree", (b) => {
+				KDSendInput("freeNPCRestraint", {
+					npc: value.id,
+				});
+				if (KDToggles.Sound)
+					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Struggle" + ".ogg");
+				return true;
+			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
+			"", "#ffffff", KinkyDungeonRootDirectory + "UI/RestrainFree.png",
+			undefined, undefined, false)) {
+				DrawTextFitKD(TextGet("KDFreePrisoner"), x + 220, y + 750, 500, "#ffffff",
+					KDTextGray0);
+			}
 			if (DrawButtonKDEx("returnToCollectionRestrain", (b) => {
 				KDCurrentRestrainingTarget = 0;
+				if (KDToggles.Sound)
+					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
 				return true;
 			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 			"", "#ffffff", KinkyDungeonRootDirectory + "UI/RestrainBack.png",
@@ -279,8 +280,34 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 					KDTextGray0);
 			}
 		} else {
+			if (!value.status && DrawButtonKDEx("promoteNPC", (b) => {
+				if (!(KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns)) {
+					value.status = "Servant";
+					KDSortCollection();
+					if (KDToggles.Sound)
+						AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
+				}
+				return true;
+			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Promote.png",
+			undefined, undefined, false, KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns ? "#ff5555" : "")) {
+				DrawTextFitKD(TextGet("KDPromoteNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+			} else if (value.status == "Servant" && DrawButtonKDEx("demoteNPC", (b) => {
+				value.status = "";
+				KDSortCollection();
+				if (KDToggles.Sound)
+					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Damage" + ".ogg");
+				return true;
+			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Demote.png",
+			undefined, undefined, false)) {
+				DrawTextFitKD(TextGet("KDDemoteNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+			}
+
+
+
 			if (DrawButtonKDEx("CollectionRestrain", (b) => {
 				KDCurrentRestrainingTarget = value.id;
+				if (KDToggles.Sound)
+					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Chain" + ".ogg");
 				return true;
 			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 			"", "#ffffff", KinkyDungeonRootDirectory + "UI/Restrain.png",

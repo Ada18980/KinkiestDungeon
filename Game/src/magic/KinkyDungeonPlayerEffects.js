@@ -197,56 +197,22 @@ let KDPlayerEffects = {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 
-
-			/*let textIndex = "0";
-			let buff = KinkyDungeonPlayerBuffs.LatexIntegration;
-			let mult = playerEffect?.mult || 3;
-
-			if (!buff) {
-				buff = KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-					id: "LatexIntegration",
-					aura: "#9074ab",
-					type: "LatexIntegration",
-					aurasprite: "Null",
-					power: -0.01,
-					duration: 50,
-					buffSprite: true,
-					text: "-1%",
-					events: [
-						{trigger: "beforeStruggleCalc", type: "latexIntegrationDebuff", power: 1},
-						{trigger: "beforeDressRestraints", type: "LatexIntegration"},
-						{trigger: "postQuest", type: "LatexIntegration"},
-					],
-				});
-			} else {
-				buff.power = Math.max(-1, buff.power - 0.01 * mult * (playerEffect?.power || spell?.power || 1));
-				buff.text = Math.round(-buff.power * 100) + "%";
-				if (buff.power <= -0.75) {
-					buff.duration = Math.min(1000, buff.duration + 100);
-					buff.infinite = true;
-				} else {
-					buff.duration = 50 + Math.floor(-buff.power * 100);
-				}
-			}
-
-			*/
-
-
 			let mult = playerEffect?.mult || 3;
 			//let integration = KDEntityBuffedStat(KDPlayer(), "LatexIntegration");
 
 			KDAddSpecialStat("LatexIntegration", KDPlayer(), mult * (playerEffect?.power || spell?.power || 1), false); // Add a significant amount of corruption
-
+			KDUnlockPerk("StartLatexIntegration");
 			let textIndex = "0";
-			let buff = KinkyDungeonPlayerBuffs.LatexIntegration;
+			let buffedStat = KDEntityBuffedStat(KDPlayer(), "LatexIntegration");
 
-			if (buff?.power <= -1) {
+			if (buffedStat >= 99) {
+				KDUnlockPerk("StartLatexIntegration");
 				textIndex = "4";
-			} else if (buff?.power <= -0.75) {
+			} else if (buffedStat >= 75) {
 				textIndex = "3";
-			} else if (buff?.power <= -0.5) {
+			} else if (buffedStat >= 50) {
 				textIndex = "2";
-			} else if (buff?.power <= -0.25) {
+			} else if (buffedStat >= 25) {
 				textIndex = "1";
 			} else {
 				textIndex = "0";
