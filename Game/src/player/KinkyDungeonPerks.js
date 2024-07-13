@@ -739,7 +739,7 @@ let KDPerkStart = {
 	},
 	StartLatexIntegration: () =>{
 		KDFixPlayerClothes("AncientRobot");
-		KDAddSpecialStat("LatexIntegration", KDPlayer(), 0, true);
+		KDAddSpecialStat("LatexIntegration", KDPlayer(), 100, true);
 
 		if (!KDHasSpell("ZeroResistance")) KDPushSpell(KinkyDungeonFindSpell("ZeroResistance"));
 	},

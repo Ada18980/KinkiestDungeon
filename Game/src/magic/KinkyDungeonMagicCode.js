@@ -925,6 +925,7 @@ let KinkyDungeonSpellSpecials = {
 		} else if (en.player) {
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 
+			KDAddSpecialStat("LatexIntegration", KDPlayer(), -25, true);
 			for (let inv of KinkyDungeonAllRestraintDynamic()) {
 				let r = inv.item;
 				let restraint = KDRestraint(r);
