@@ -279,11 +279,14 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints) 
 						}
 					}
 				} else if (npcRestraints) {
+					let ids = {};
 					for (let inv of Object.values(npcRestraints)) {
-						//if (!KDRestraint(inv) || (KDRestraint(inv).armor && !KDToggles.DrawArmor)) continue; // Skip invalid restraints!!!
+						if (!KDRestraint(inv)) continue; // Skip invalid restraints!!!
+						if (ids[inv.id]) continue;
+						ids[inv.id] = true; // No dupe
 
 						if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
-							KDApplyItem(Character, inv, new Map());
+							KDApplyItem(Character, inv, NPCTags.get(Character) || new Map());
 							if (KDRestraint(inv).Model) {
 
 								restraintModels[KDRestraint(inv).Model] = true;
@@ -958,14 +961,6 @@ function KDCharacterAppearanceNaked(C) {
  * @returns
  */
 function KDApplyItem(C, inv, tags) {
-	if (KDToggleXRay && !StandalonePatched) {
-		let itemTags = KDRestraint(inv)?.shrine;
-		if (itemTags && itemTags.some((t) => {
-			return KD_XRayHidden.includes(t);
-		})) {
-			return;
-		}
-	}
 	if (StandalonePatched) {
 		let restraint = KDRestraint(inv);
 		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;

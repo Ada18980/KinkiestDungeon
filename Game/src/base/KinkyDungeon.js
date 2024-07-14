@@ -3,6 +3,8 @@
 let KDFullscreen = false;
 let KDExitButton = false;
 
+let KDPaletteWidth = 6;
+
 let KDDefaultPalette = "";
 let KDCULLTIME = 10000; // Garbage collection
 
@@ -2261,6 +2263,21 @@ function KinkyDungeonRun() {
 			);
 		}
 
+
+		DrawButtonKDEx("randomName", () => {
+
+
+			let name = "Ada";
+
+			let nameList = KDDefaultNames[Math.floor(Math.random() * KDDefaultNames.length)];
+			if (nameList && KDNameList[nameList]) {
+				name = KDNameList[nameList][Math.floor(Math.random() * KDDefaultNames.length)];
+			}
+			ElementValue("PlayerNameField", name);
+			return true;
+		}, true, 1550, 450, 200, 64, TextGet("KDRandom"), "#ffffff", "");
+
+
 		DrawButtonKDEx("selectName", () => {
 
 			localStorage.setItem("PlayerName", ElementValue("PlayerNameField") || "Ada");
@@ -2693,7 +2710,7 @@ function KinkyDungeonRun() {
 				let scale = 72;
 				let x = 1500;
 				let y = 100;
-				let w = 4;
+				let w = KDPaletteWidth;
 				DrawTextFitKD(TextGet("KDBackgroundColor"), x + scale*(0.5 + w)/2, y, scale*w, "#ffffff", KDTextGray0, 20);
 
 
@@ -2716,7 +2733,7 @@ function KinkyDungeonRun() {
 				}
 
 
-				KDDrawPalettes(x, 250, w, scale);
+				KDDrawPalettes(x, 250, w, scale, undefined, undefined);
 			}
 			DrawButtonKDEx("KBBackOptions", () => {
 				KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);

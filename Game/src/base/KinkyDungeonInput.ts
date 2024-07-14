@@ -1200,6 +1200,7 @@ function KDProcessInput(type, data): string {
 							slot: inv[0],
 							id: -1,
 							restraint: "",
+							restraintid: -1,
 							lock: "",
 							npc: data.npc
 						});

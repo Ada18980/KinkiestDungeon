@@ -932,21 +932,24 @@ let KinkyDungeonSpellSpecials = {
 				if (restraint?.shrine.includes("Latex") || restraint?.shrine.includes("Slime")) {
 					if (!r.events) r.events = KDGetEventsForRestraint(r.inventoryVariant || r.name);
 
-					r.events.push({
-						trigger: "beforeStruggleCalc",
-						type: "UniversalSolvent",
-						power: 0.1,
-					});
-					r.events.push({
-						original: "UniversalSolvent",
-						trigger: "inventoryTooltip",
-						type: "varModifier",
-						msg: "UniversalSolvent",
-						color: "#000000",
-						bgcolor: "#ff8933"
-					});
+					if (!r.events.some((ev) => {
+						return ev.type == "UniversalSolvent";
+					})) {
+						r.events.push({
+							trigger: "beforeStruggleCalc",
+							type: "UniversalSolvent",
+							power: 0.1,
+						});
+						r.events.push({
+							original: "UniversalSolvent",
+							trigger: "inventoryTooltip",
+							type: "varModifier",
+							msg: "UniversalSolvent",
+							color: "#000000",
+							bgcolor: "#ff8933"
+						});
 
-
+					}
 				}
 			}
 

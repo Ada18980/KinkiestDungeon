@@ -61,6 +61,15 @@ let KDLoadouts = {
 		chance: 0.5,
 		items: ["PotionMana", "FlashBomb"],
 	},
+	"scientist_High": {
+		name: "scientist_High",
+		tags: ["alchemist"],
+		singletag: ["alchemist", "latex"],
+		singletag2: ["miniboss", "boss"],
+		forbidtags: ["submissive", "gagged"],
+		chance: 0.25,
+		items: ["UniversalSolvent"],
+	},
 	"magus": {
 		name: "magus",
 		tags: [],

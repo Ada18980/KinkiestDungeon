@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.24"
+KDVersionStr,"5.3.25"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -23490,10 +23490,21 @@ KDPerkUnlockedToast,"Perk Unlocked: "
 KinkyDungeonInventoryItemUniversalSolvent,Universal Solvent
 KinkyDungeonInventoryItemUniversalSolventUse,You pour the solvent over yourself.
 KinkyDungeonInventoryItemUniversalSolventDesc,"A potent acid, capable of dissolving both slime and latex."
-KinkyDungeonInventoryItemUniversalSolventDesc2,"Deal 90 acid damage to target. Adds a cumulative 10% debuff to the cut and struggle resistance of latex restraints currently worn."
+KinkyDungeonInventoryItemUniversalSolventDesc2,"Deal 90 acid damage to target. Adds a 10% debuff to the cut and struggle resistance of latex restraints currently worn."
 
 KDVariableModifier_UniversalSolvent,Weakened by Universal Solvent (10%)
 KDUniversalSolventSucceedSelf,You spill the solvent on yourself and loosen your latex bonds!
 KDUniversalSolventSucceedEnemy,You splash the ENMY with universal solvent!
 
+KinkyDungeonSpellUniversalSolvent,Universal Solvent
+
 KDUniversalSolventFail,You can't use solvents on targets other than yourself while bound.
+
+KDRandom,Random
+
+KDSetRestraintPalette,Choose Palette
+KDSetRestraintPaletteSelect,Restraint Palette
+KDSetRestraintPaletteReturn,Choose Restraint
+
+KDSetDefaultNPCPalette,"Def. Palette: "
+KDSetNPCPaletteAll,"Set All Palette"

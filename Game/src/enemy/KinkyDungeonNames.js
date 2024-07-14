@@ -1,5 +1,27 @@
 "use strict";
 
+let KDDefaultNames = [
+	"default",
+	"default",
+	"default",
+	"default",
+	"nevermere",
+	"bountyhunter",
+	"japanese",
+	"japanese",
+	"japanese",
+	"elf",
+	"dragonheart",
+	"maid",
+	"russian",
+	"elemental",
+	"aztec",
+	"witch",
+	"cyborg",
+	"bast",
+	"DragonGirl",
+];
+
 let KDNameList = {
 	default: [
 		"Aiko",
@@ -2690,9 +2712,8 @@ let KDNameList = {
 		"Azathria",
 		"Cthylla",
 		"Dagonia",
-		"Eldritchia",
-		"Nyarlathia",
-		"Yog-Sothothia",
+		"Nyarlata",
+		"Yog-Sothoth",
 		"Abhonia",
 		"Bokrulia",
 		"Chaugnara",

@@ -1100,6 +1100,8 @@ let KDInventoryAction = {
 
 					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/LockLight.ogg");
 
+					if (!enemy.items) enemy.items = [];
+					enemy.items.push(item.inventoryVariant || item.name);
 					if (item.quantity > 1) item.quantity -= 1;
 					else KinkyDungeonInventoryRemoveSafe(item);
 					KinkyDungeonAdvanceTime(1, true, true);

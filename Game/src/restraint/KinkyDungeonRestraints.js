@@ -3192,6 +3192,7 @@ function KinkyDungeonUpdateRestraints(C, id, delta) {
 			})) playerTags.set(group + "Empty", true);
 		}
 		for (let inv of Object.values(KDGameData.NPCRestraints[id + ""])) {
+			if (!KDRestraint(inv)) continue;
 			playerTags.set("Item_"+inv.name, true);
 
 			if (KDRestraint(inv).Link)

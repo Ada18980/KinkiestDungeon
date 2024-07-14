@@ -33,6 +33,9 @@ TODO remove hogtie whenm released
 5.3.25
 - New perk: Fully Integrated (unlock by reaching 100% latex integration. Start with 100% latex integration)
 - New consumable: Universal Solvent (Each use reduces latex integration by -25% and debuffs current latex restraint struggle/cut resistance by 10)
+- Can generate random name on name screen
+- Can set restraint palette
+- Truss em Up now adds the restraint to the enemy's inventory so you can get it back on capture
 
 5.3.24
 - Added ability to restrain NPCs
