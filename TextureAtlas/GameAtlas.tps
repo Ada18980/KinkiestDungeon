@@ -738,6 +738,7 @@
             <key type="filename">../Game/DamageTypes/unarmed.png</key>
             <key type="filename">../Game/DamageTypes/unflinching.png</key>
             <key type="filename">../Game/DamageTypes/unstoppable.png</key>
+            <key type="filename">../Game/EffectTiles/Acid.png</key>
             <key type="filename">../Game/EffectTiles/Belts.png</key>
             <key type="filename">../Game/EffectTiles/BoobyTrap.png</key>
             <key type="filename">../Game/EffectTiles/BoobyTrapMagic.png</key>
@@ -2200,6 +2201,7 @@
             <key type="filename">../Game/Items/TheEncaser.png</key>
             <key type="filename">../Game/Items/Torch.png</key>
             <key type="filename">../Game/Items/Unarmed.png</key>
+            <key type="filename">../Game/Items/UniversalSolvent.png</key>
             <key type="filename">../Game/Items/VibeRemote.png</key>
             <key type="filename">../Game/Items/VibeWand.png</key>
             <key type="filename">../Game/Items/WaterRune.png</key>

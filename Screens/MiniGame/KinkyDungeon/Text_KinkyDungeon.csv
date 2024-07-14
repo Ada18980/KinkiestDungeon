@@ -3042,7 +3042,9 @@ KinkyDungeonStruggleCantPickRubberLock,"The lock is made of solid rubber. You ca
 KinkyDungeonStruggleUnlockNoRubberKey,"You need something sharp to cut the lock."
 KinkyDungeonStruggleCantPickPurpleLock,"The lock doesn't even have a keyhole to pick!"
 KinkyDungeonStruggleCantPickDiscLock,"You need a special tool to pick this kind of lock."
-KinkyDungeonStruggleCantPickCyberLock,"The lock doesn't have a keyhole to pick."
+KinkyDungeonStruggleCantPickCyberLock,"The lock is technological and does not use a key."
+KinkyDungeonStruggleCantPickCyber2Lock,"The lock is technological and does not use a key."
+KinkyDungeonStruggleCantPickCyber3Lock,"The lock is technological and does not use a key."
 KinkyDungeonStruggleCantPickHiSecLock,"The lock is brimming with security features and is nigh impossible to pick!"
 
 KinkyDungeonStruggleUnlockJammed,"The key sticks in the lock and jams, mangling the key!"
