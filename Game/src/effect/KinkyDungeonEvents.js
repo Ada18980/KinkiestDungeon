@@ -8164,7 +8164,7 @@ let KDEventMapEnemy = {
 						if (en.Enemy?.tags?.wardenprisoner) {
 							if (count < e.count) {
 								if ((!filter || en.Enemy?.name == filter) && KDEnemyHasFlag(en, "imprisoned")) {
-									KinkyDungeonSetEnemyFlag(en, "imprisoned", 0);
+									KDFreeNPC(en);
 									en.aware = true;
 									en.vp = 4;
 									en.gx = KinkyDungeonPlayerEntity.x;
@@ -8423,7 +8423,7 @@ let KDEventMapEnemy = {
 					if (en.Enemy.tags?.warden && KDGetFaction(en) != "Player") {
 						en.hostile = 300;
 						en.aware = true;
-						KinkyDungeonSetEnemyFlag(en, "imprisoned", 0);
+						KDFreeNPC(en);
 					}
 
 				}

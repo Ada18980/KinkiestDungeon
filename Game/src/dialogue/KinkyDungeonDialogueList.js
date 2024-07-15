@@ -2647,7 +2647,7 @@ let KDDialogue = {
 							if (KDDialogueEnemy()) {
 								let e = KDDialogueEnemy();
 								e.boundLevel = 0;
-								KinkyDungeonSetEnemyFlag(e, "imprisoned", 0);
+								KDFreeNPC(e);
 								e.allied = 9999;
 								e.specialdialogue = undefined;
 								KDAggroMapFaction();
@@ -2706,7 +2706,7 @@ let KDDialogue = {
 									KinkyDungeonSetFlag("LockJamPity", 0);
 									let e = KDDialogueEnemy();
 									e.boundLevel = 0;
-									KinkyDungeonSetEnemyFlag(e, "imprisoned", 0);
+									KDFreeNPC(e);
 									e.allied = 9999;
 									e.specialdialogue = undefined;
 									KDAggroMapFaction();

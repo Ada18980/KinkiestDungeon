@@ -1746,6 +1746,27 @@ function KDGetNameColor(id) {
 
 /**
  *
+ * @param {entity} en
+ */
+function KDFreeNPC(en) {
+	KinkyDungeonSetEnemyFlag(en, "imprisoned", 0);
+	if (!KDGameData.NPCRestraints) KDGameData.NPCRestraints = {};
+	else if (KDGameData.NPCRestraints["" + en.id]?.Device) {
+		KDSetNPCRestraint(en.id, "Device", undefined);
+	}
+	KDUpdatePersistentNPC(en.id);
+}
+/**
+ *
+ * @param {number} id
+ */
+function KDFreeNPCID(id) {
+	let en = KDGetGlobalEntity(id);
+	KDFreeNPC(en);
+}
+
+/**
+ *
  * @param {entity} enemy
  * @param {number} offset
  * @returns {number}

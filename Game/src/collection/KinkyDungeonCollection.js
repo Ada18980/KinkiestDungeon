@@ -525,7 +525,8 @@ function KDDrawCollectionRestrainMain(id, x, y) {
 function KDNPCUnavailable(id, status) {
 	return KDGameData.NPCRestraints[id + ""]?.Device != undefined
 		|| (KDIsNPCPersistent(id) && KDGetPersistentNPC(id).captured)
-		|| (status && KDIsInCapturedPartyID(id));
+		|| (status && KDIsInCapturedPartyID(id))
+		|| (KDGetGlobalEntity(id) && KDEntityHasFlag(KDGetGlobalEntity(id), "imprisoned"));
 
 }
 

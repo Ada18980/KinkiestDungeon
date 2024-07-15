@@ -46,6 +46,14 @@ function KDRefreshPersistentNPC(id: number) {
 	}
 }
 
+function KDGetGlobalEntity(id: number): entity {
+	let entity = KinkyDungeonFindID(id);
+	if (entity) return entity;
+	if (KDIsNPCPersistent(id))
+		return KDGetPersistentNPC(id).entity;
+	return undefined;
+}
+
 function KDIsNPCPersistent(id: number): boolean {
 	return KDPersistentNPCs[id] != undefined;
 }
