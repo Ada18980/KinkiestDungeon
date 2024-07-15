@@ -230,7 +230,7 @@ function GetOverCorset(BaseModel: string): Model {
 }
 
 
-function DisposeCharacter(C: Character): void {
+function DisposeCharacter(C: Character, resort: boolean = true): void {
 	if (KDCurrentModels.get(C)) {
 		for (let Container of KDCurrentModels.get(C).Containers.values()) {
 			kdcanvas.removeChild(Container.Container);
@@ -241,7 +241,13 @@ function DisposeCharacter(C: Character): void {
 		NPCTags.delete(C);
 	}
 	if (KDNPCChar_ID.get(C)) {
-		KDNPCChar.delete(KDNPCChar_ID.get(C));
+		let id = KDNPCChar_ID.get(C);
+		KDNPCChar.delete(id);
+		delete KDPersistentNPCs[id + ""];
+		delete KDGameData.Collection[id + ""];
+		if (resort) {
+			KDSortCollection();
+		}
 		KDNPCChar_ID.delete(C);
 	}
 	if (KDNPCPoses.get(C)) {

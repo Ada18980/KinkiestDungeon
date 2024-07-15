@@ -3446,6 +3446,7 @@ interface KDCollectionEntry {
 	customSprite: boolean,
 	id: number,
 	Enemy?: enemy, // for unique ones
+	/** Todo remove this and replace with persistent NPC flag */
 	flags?: Record<string, number>,
 	outfit?: string,
 	customOutfit?: string,

@@ -57,7 +57,7 @@ let KDTrapTypes = {
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BedTrap"), 0, true);
 		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		tile.Trap = undefined;
-		tile.Type = undefined;
+		tile.Type = "Furniture";
 		KinkyDungeonMakeNoise(10, x, y);
 		return {
 			triggered: true,
@@ -69,7 +69,7 @@ let KDTrapTypes = {
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("CageTrap"), 0, true);
 		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		tile.Trap = undefined;
-		tile.Type = undefined;
+		tile.Type = "Furniture";
 		return {
 			triggered: true,
 			msg: TextGet("KDCageTrap"),
@@ -80,7 +80,7 @@ let KDTrapTypes = {
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DisplayTrap"), 0, true);
 		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		tile.Trap = undefined;
-		tile.Type = undefined;
+		tile.Type = "Furniture";
 		return {
 			triggered: true,
 			msg: TextGet("KDDisplayTrap"),
@@ -91,7 +91,7 @@ let KDTrapTypes = {
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DisplayTrap"), 0, true);
 		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		tile.Trap = undefined;
-		tile.Type = undefined;
+		tile.Type = "Furniture";
 		return {
 			triggered: true,
 			msg: TextGet("KDDisplayTrap"),

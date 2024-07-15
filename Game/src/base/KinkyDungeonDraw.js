@@ -1000,6 +1000,13 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonKeybindingCurrentKey = '';
 				KinkyDungeonInspect = false;
 				KDInteracting = false;
+			} else if (KinkyDungeonDrawState == "Collection" && (KDCollectionTab || KDCurrentRestrainingTarget)) {
+				KDCollectionTab = "";
+				KDCurrentRestrainingTarget = 0;
+				KinkyDungeonGameKey.keyPressed[9] = false;
+				KinkyDungeonKeybindingCurrentKey = '';
+				KinkyDungeonInspect = false;
+				KDInteracting = false;
 			} else if (KDConfigHotbar) {
 				KDConfigHotbar = false;
 				KinkyDungeonGameKey.keyPressed[9] = false;

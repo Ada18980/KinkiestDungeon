@@ -1,5 +1,7 @@
 "use strict";
 
+let KDCollectionTab = "";
+
 let KDCurrentFacilityTarget = "";
 let KDCurrentFacilityCollectionType = "";
 let KDCurrentRestrainingTarget = 0;
@@ -364,69 +366,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 			DrawTextFitKD(TextGet("KDDressNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 		}
 
-
-		if (tab == "Restrain") {
-			if (DrawButtonKDEx("RestrainFree", (b) => {
-				KDSendInput("freeNPCRestraint", {
-					npc: value.id,
-				});
-				if (KDToggles.Sound)
-					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Struggle" + ".ogg");
-				return true;
-			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-			"", "#ffffff", KinkyDungeonRootDirectory + "UI/RestrainFree.png",
-			undefined, undefined, false)) {
-				DrawTextFitKD(TextGet("KDFreePrisoner"), x + 220, y + 750, 500, "#ffffff",
-					KDTextGray0);
-			}
-			if (DrawButtonKDEx("returnToCollectionRestrain", (b) => {
-				KDCurrentRestrainingTarget = 0;
-				if (KDToggles.Sound)
-					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
-				return true;
-			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-			"", "#ffffff", KinkyDungeonRootDirectory + "UI/RestrainBack.png",
-			undefined, undefined, false)) {
-				DrawTextFitKD(TextGet("KDRestrainNPCBack"), x + 220, y + 750, 500, "#ffffff",
-					KDTextGray0);
-			}
-		} else {
-			if (KDPromotableStatus.includes(value.status) && DrawButtonKDEx("promoteNPC", (b) => {
-				if (!(KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns)) {
-					value.status = "Servant";
-					KDSortCollection();
-					if (KDToggles.Sound)
-						AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
-				}
-				return true;
-			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Promote.png",
-			undefined, undefined, false, KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns ? "#ff5555" : "")) {
-				DrawTextFitKD(TextGet("KDPromoteNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
-			} else if (value.status == "Servant" && DrawButtonKDEx("demoteNPC", (b) => {
-				value.status = value.oldstatus || "";
-				KDSortCollection();
-				if (KDToggles.Sound)
-					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Damage" + ".ogg");
-				return true;
-			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Demote.png",
-			undefined, undefined, false)) {
-				DrawTextFitKD(TextGet("KDDemoteNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
-			}
-
-
-			if (!value.status)
-				if (DrawButtonKDEx("CollectionRestrain", (b) => {
-					KDCurrentRestrainingTarget = value.id;
-					if (KDToggles.Sound)
-						AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Chain" + ".ogg");
-					return true;
-				}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-				"", "#ffffff", KinkyDungeonRootDirectory + "UI/Restrain.png",
-				undefined, undefined, false)) {
-					DrawTextFitKD(TextGet("KDRestrainNPC"), x + 220, y + 750, 500, "#ffffff",
-						KDTextGray0);
-				}
-		}
+		III = KDCollectionTabDraw[tab || "Default"](value, buttonSpacing, III, x, y);
 
 		let assigned = !(!value.Facility);
 		let valid = KDValidateServant(value, KDCurrentFacilityTarget, KDCurrentFacilityCollectionType);
@@ -751,7 +691,7 @@ function KDDrawCollectionInventory(x, y) {
 	}
 
 	if (KDCollectionSelected && KDGameData.Collection[KDCollectionSelected]) {
-		KDDrawSelectedCollectionMember(KDGameData.Collection[KDCollectionSelected], x - 460, 150, selectedIndex);
+		KDDrawSelectedCollectionMember(KDGameData.Collection[KDCollectionSelected], x - 460, 150, selectedIndex, KDCollectionTab);
 	} else DrawTextFitKD(TextGet("KDCollectionSelect"), x - 240, 500, 500, "#ffffff", KDTextGray0, 24);
 
 }
@@ -789,3 +729,115 @@ function KDGetEnemyName(enemy) {
 	if (KDNameList[nameList]) return KDNameList[nameList][Math.floor(KDNameList[nameList].length * KDRandom())];
 	else return KDNameList.default[Math.floor(KDNameList.default.length * KDRandom())];
 }
+
+
+let KDCollectionTabDraw = {
+	Imprison: (value, buttonSpacing, III, x, y) => {
+		let entity = KinkyDungeonFindID(value.id) || KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
+		if (DrawButtonKDEx("ImprisonNPC", (b) => {
+
+			if (entity) {
+				return false;
+			}
+
+			let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+			let furn = KDFurniture[tile.Furniture];
+			let rest = KinkyDungeonGetRestraint(
+				{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
+				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				true,
+				"",
+				true,
+				false,
+				false, undefined, true);
+			if (rest) {
+				let en = DialogueCreateEnemy(KDGameData.InteractTargetX, KDGameData.InteractTargetY,
+					(value.Enemy || KinkyDungeonGetEnemyByName(value.type)).name, value.id);
+				KDImprisonEnemy(en, true, "PrisonerJail", {
+					name: rest.name,
+					lock: "White",
+					id: KinkyDungeonGetItemID(),
+					faction: KDDefaultNPCBindPalette,
+				});
+				en.ceasefire = 9999;
+				KinkyDungeonCheckClothesLoss = true;
+				//KinkyDungeonDrawState = "Game";
+			}
+
+			if (KDToggles.Sound)
+				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockHeavy" + ".ogg");
+			return true;
+		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
+		"", "#ffffff", KinkyDungeonRootDirectory + "UI/Imprison.png",
+		undefined, undefined, entity != undefined, entity != undefined ? "#ff5555" : KDButtonColor)) {
+			DrawTextFitKD(TextGet("KDImprison"), x + 220, y + 750, 500, "#ffffff",
+				KDTextGray0);
+		}
+		return III;
+	},
+	Restrain: (value, buttonSpacing, III, x, y) => {
+		if (DrawButtonKDEx("RestrainFree", (b) => {
+			KDSendInput("freeNPCRestraint", {
+				npc: value.id,
+			});
+			if (KDToggles.Sound)
+				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Struggle" + ".ogg");
+			return true;
+		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
+		"", "#ffffff", KinkyDungeonRootDirectory + "UI/RestrainFree.png",
+		undefined, undefined, false)) {
+			DrawTextFitKD(TextGet("KDFreePrisoner"), x + 220, y + 750, 500, "#ffffff",
+				KDTextGray0);
+		}
+		if (DrawButtonKDEx("returnToCollectionRestrain", (b) => {
+			KDCurrentRestrainingTarget = 0;
+			if (KDToggles.Sound)
+				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
+			return true;
+		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
+		"", "#ffffff", KinkyDungeonRootDirectory + "UI/RestrainBack.png",
+		undefined, undefined, false)) {
+			DrawTextFitKD(TextGet("KDRestrainNPCBack"), x + 220, y + 750, 500, "#ffffff",
+				KDTextGray0);
+		}
+		return III;
+	},
+	Default: (value, buttonSpacing, III, x, y) => {
+		if (KDPromotableStatus.includes(value.status) && DrawButtonKDEx("promoteNPC", (b) => {
+			if (!(KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns)) {
+				value.status = "Servant";
+				KDSortCollection();
+				if (KDToggles.Sound)
+					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
+			}
+			return true;
+		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Promote.png",
+		undefined, undefined, false, KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns ? "#ff5555" : "")) {
+			DrawTextFitKD(TextGet("KDPromoteNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+		} else if (value.status == "Servant" && DrawButtonKDEx("demoteNPC", (b) => {
+			value.status = value.oldstatus || "";
+			KDSortCollection();
+			if (KDToggles.Sound)
+				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Damage" + ".ogg");
+			return true;
+		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Demote.png",
+		undefined, undefined, false)) {
+			DrawTextFitKD(TextGet("KDDemoteNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+		}
+
+
+		if (!value.status && !KDNPCUnavailable(value.id, value.status))
+			if (DrawButtonKDEx("CollectionRestrain", (b) => {
+				KDCurrentRestrainingTarget = value.id;
+				if (KDToggles.Sound)
+					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Chain" + ".ogg");
+				return true;
+			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
+			"", "#ffffff", KinkyDungeonRootDirectory + "UI/Restrain.png",
+			undefined, undefined, false)) {
+				DrawTextFitKD(TextGet("KDRestrainNPC"), x + 220, y + 750, 500, "#ffffff",
+					KDTextGray0);
+			}
+		return III;
+	}
+};

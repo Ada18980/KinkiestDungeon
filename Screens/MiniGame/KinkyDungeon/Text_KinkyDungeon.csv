@@ -22762,7 +22762,7 @@ KDRoomType_Chamber,"Chamber"
 KDRoomType_Warden,"Prison"
 KDRoomType_Dollmaker,"Sorting Room"
 
-KDHotbarTutorial,"Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs."
+KDHotbarTutorial,"Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs."
 
 KDUseFootAffinity,You step on the item and tug to pull it taut...
 KDUseTugAffinity,"You tug furiously against the leash, pulling it taut!"
@@ -23517,3 +23517,4 @@ KDCollectionTabStatusOption_Guest,Guests
 
 KDCollectionAssign,"Assign to "
 KDCollectionRemove,"Remove from "
+KDImprison,Imprison

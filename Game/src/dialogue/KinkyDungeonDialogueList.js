@@ -980,6 +980,30 @@ let KDDialogue = {
 					},
 				}
 			},
+			"NPC": {
+				playertext: "Default", response: "Default",
+				prerequisiteFunction: (gagged, player) => {
+					return !KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
+				},
+				clickFunction: (gagged, player) => {
+
+					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+					if (tile?.Furniture) {
+						KinkyDungeonDrawState = "Collection";
+						KDCollectionTab = "Imprison";
+						KinkyDungeonCheckClothesLoss = true;
+					}
+
+					return false;
+				},
+				exitDialogue: true,
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
 			"Leave": {
 				playertext: "Leave", response: "Default",
 				exitDialogue: true,

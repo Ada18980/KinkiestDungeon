@@ -27088,7 +27088,7 @@ Prison
 Sorting Room
 選別所
 
-Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
+Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
 画面下のホットバーをクリックしてアイテムを登録可能|ホットバーをセーブ、ロードで|登録した内容を保存及び呼び出しが可能||別のセーブデータ間でも登録した内容を呼び出すことができる
 
 You step on the item and tug to pull it taut...

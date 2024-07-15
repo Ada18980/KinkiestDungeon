@@ -19059,7 +19059,7 @@ The dragon girl reaches out with a shadowy grip! (+RestraintAdded)
 (SPEAKER 点点头)|在我那个年代，人们用蜡烛来照明！|这些可以让你把它们熄灭，以节省蜡。
 (The SPEAKER giggles)|I had all sorts of use for this back on the farm.
 (SPEAKER 咯咯地笑着)|我在农场的时候，这个东西有各种用途。
-Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
+Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
 点击热键栏位置，即可将项目分配到该槽。|您可以点击右侧的交换按钮，在三个热栏之间进行切换。||您还可以为您的热键栏保存和加载预设。|这些预设在运行时共享。
 Zero Resistance
 放弃反抗

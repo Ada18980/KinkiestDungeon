@@ -834,12 +834,8 @@ function SetpieceSpawnPrisoner(x, y) {
 
 		e.faction = "Prisoner";
 		e.boundLevel = e.hp * 11;
-		e.specialdialogue = "PrisonerJail";
 		e.items = [];
-		if (noJam)
-			KinkyDungeonSetEnemyFlag(e, "nojam", -1);
-		KinkyDungeonSetEnemyFlag(e, "noswap", -1);
-		KinkyDungeonSetEnemyFlag(e, "imprisoned", -1);
+		KDImprisonEnemy(e, noJam);
 	} else {
 		Enemy = KinkyDungeonGetEnemy(["imprisonable",
 			"ropeAnger", "ropeRage",
@@ -856,11 +852,7 @@ function SetpieceSpawnPrisoner(x, y) {
 			e.boundLevel = e.hp * 11;
 			e.specialdialogue = "PrisonerJail";
 			e.items = [];
-			if (noJam)
-				KinkyDungeonSetEnemyFlag(e, "nojam", -1);
-			KinkyDungeonSetEnemyFlag(e, "noswap", -1);
-			KinkyDungeonSetEnemyFlag(e, "imprisoned", -1);
-			KDProcessCustomPatron(Enemy, e, 1.0);
+			KDImprisonEnemy(e, noJam);
 		}
 	}
 
@@ -1042,4 +1034,22 @@ function KDAddPipes(pipechance, pipelatexchance, thinlatexchance, heavylatexspre
 				}
 			}
 		}
+}
+
+/**
+ *
+ * @param {entity} e
+ * @param {boolean} noJam
+ * @param {string} dialogue
+ * @param {NPCRestraint} [restraint]
+ */
+function KDImprisonEnemy(e, noJam, dialogue = "PrisonerJail", restraint) {
+	if (noJam)
+		KinkyDungeonSetEnemyFlag(e, "nojam", -1);
+	e.specialdialogue = dialogue;
+	KinkyDungeonSetEnemyFlag(e, "noswap", -1);
+	KinkyDungeonSetEnemyFlag(e, "imprisoned", -1);
+	if (restraint) {
+		KDSetNPCRestraint(e.id, "Device", restraint);
+	}
 }

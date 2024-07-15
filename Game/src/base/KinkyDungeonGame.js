@@ -4484,6 +4484,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 					KDGameData.Collection[Enemy.id + ""].status = "";
 					KDSortCollection();
 				}
+				KDFreeNPC(Enemy);
 				KDAddCollection(Enemy);
 				KDAddOpinionPersistent(Enemy.id, -50);
 				result = "capture";

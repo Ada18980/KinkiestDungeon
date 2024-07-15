@@ -35729,7 +35729,7 @@ Prison
 Тюрьма
 Sorting Room
 Сортировочная комната
-Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
+Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
 Щелкните по позиции панели быстрого доступа, чтобы назначить предмет в этот слот.|Вы можете нажать кнопку смены справа,|чтобы переключаться между тремя вашими панелями быстрого доступа.||Вы также можете сохранять и загружать пресеты для своей панели быстрого доступа.|Они общие в разных забегах.
 You step on the item and tug to pull it taut...
 Вы наступаете на предмет и тянете, чтобы он растянулся...
