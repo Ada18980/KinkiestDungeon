@@ -537,7 +537,7 @@ let KinkyDungeonWeapons = {
 				"fireDamageBuff",
 				"iceDamageBuff",
 				"frostDamageBuff",
-				"acidDamageBuff",
+				"soapDamageBuff",
 				"electricDamageBuff",
 				"crushDamageBuff",
 				"gravityDamageBuff",

@@ -1218,6 +1218,10 @@ function KDProcessInput(type, data): string {
 				npc: number
 			 */
 			KDInputSetNPCRestraint(data);
+			if (data.npc > 0) {
+				KDSetCollFlag(data.npc, "restrained", 1);
+				KDSetCollFlag(data.npc, "restrained_recently", 24);
+			}
 		break;
 	}
 	if (data.GameData) {

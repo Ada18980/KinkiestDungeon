@@ -4266,7 +4266,6 @@ let KDLastCamPos = {x: 0, y: 0};
 
 let KDDrawPlayer = true;
 
-let KDDesiredPlayerPose = {};
 
 function KDPlayerDrawPoseButtons(C) {
 	if (!KDModalArea) {

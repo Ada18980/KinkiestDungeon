@@ -85,6 +85,7 @@ function KDAddCollection(enemy, type, status, servantclass) {
 			Enemy: enemy.modified ? enemy.Enemy : undefined,
 			Willpower: 100,
 			Facility: undefined,
+			flags: undefined,
 		};
 		KDGameData.Collection["" + enemy.id] = entry;
 		KDGameData.CollectionSorted.unshift(entry);
@@ -104,6 +105,24 @@ function KDAddCollection(enemy, type, status, servantclass) {
 	}
 }
 
+
+
+function KDUpdateCollectionFlags(delta) {
+	for (let npc of Object.values(KDGameData.Collection)) {
+		if (npc.flags) {
+			/** @type {Record<string, number>} */
+			let newF = {};
+			for (let entry of Object.entries(npc.flags)) {
+				if (entry[1] > delta) newF[entry[0]] = entry[1] - delta;
+				else if (entry[1] == -1) newF[entry[0]] = -1;
+			}
+
+			if (Object.entries(newF).length == 0) delete npc.flags;
+			else npc.flags = newF;
+		}
+	}
+}
+
 /**
  *
  * @param {entity} entity
@@ -114,6 +133,30 @@ function KDGetCharacter(entity) {
 		return KinkyDungeonPlayer;
 	}
 	return KDNPCChar.get(entity.id);
+}
+/**
+ *
+ * @param {Character} C
+ * @returns {number}
+ */
+function KDGetCharacterID(C) {
+	if (C == KinkyDungeonPlayer) {
+		return KDPlayer().id;
+	}
+	return KDNPCChar_ID.get(C);
+}
+/**
+ *
+ * @param {Character} C
+ * @returns {entity}
+ */
+function KDGetCharacterEntity(C) {
+	if (C == KinkyDungeonPlayer) {
+		return KDPlayer();
+	}
+	if (KDNPCChar_ID.get(C))
+		return KinkyDungeonFindID( KDNPCChar_ID.get(C));
+	return undefined;
 }
 
 /**
@@ -177,6 +220,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 	if (!KDNPCChar.get(value.id)) {
 		KDSpeakerNPC = suppressCanvasUpdate(() => CharacterLoadNPC("coll" + value.id));
 		KDNPCChar.set(value.id, KDSpeakerNPC);
+		KDNPCChar_ID.set(KDSpeakerNPC, value.id);
 		KDNPCStyle.set(KDSpeakerNPC, value);
 		if (!value.bodystyle || !value.facestyle || !value.hairstyle || value.cosplaystyle == undefined) {
 			if (enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style) {
@@ -204,6 +248,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 		KinkyDungeonCheckClothesLoss = true;
 	} else {
 		KDSpeakerNPC = KDNPCChar.get(value.id);
+		KDNPCChar_ID.set(KDSpeakerNPC, value.id);
 	}
 
 	if (KDSpeakerNPC) {
@@ -228,6 +273,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 			KinkyDungeonState = "Wardrobe";
 			ForceRefreshModels(KDSpeakerNPC);
 			KDOriginalValue = "";
+			CharacterReleaseTotal(KDSpeakerNPC);
 			KDWardrobeCallback = () => {
 				let value2 = value;
 				//if (KDOriginalValue) {
@@ -411,7 +457,14 @@ function KDDrawCollectionRestrainMain(id, x, y) {
 
 }
 
+/**
+ * @type {Map<number, Character>}
+ */
 let KDNPCChar = new Map();
+/**
+ * @type {Map<Character, number>}
+ */
+let KDNPCChar_ID = new Map();
 let KDNPCStyle = new Map();
 let KDCollectionSelected = 0;
 let KDCollectionIndex = 0;

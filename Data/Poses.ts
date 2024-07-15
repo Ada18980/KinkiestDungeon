@@ -520,17 +520,27 @@ function RefreshTempPoses(Character: Character, Restraints: boolean, Buffs: bool
 		}
 	}*/
 
-	if (Buffs && Character == KinkyDungeonPlayer) {
-		for (let buff of Object.values(KinkyDungeonPlayerBuffs)) {
-			if (buff.pose && buff.duration >= 0) {
-				KDCurrentModels.get(Character).TempPoses[buff.pose] = true;
+	if (Buffs) {
+		if (Character == KinkyDungeonPlayer) {
+			for (let buff of Object.values(KinkyDungeonPlayerBuffs)) {
+				if (buff.pose && buff.duration >= 0) {
+					KDCurrentModels.get(Character).TempPoses[buff.pose] = true;
+				}
 			}
+		} else {
+			let entity = KDGetCharacterEntity(Character);
+			if (entity?.buffs)
+				for (let buff of Object.values(entity.buffs)) {
+					if (buff.pose && buff.duration >= 0) {
+						KDCurrentModels.get(Character).TempPoses[buff.pose] = true;
+					}
+				}
 		}
+
 	}
 
-	if (Restraints && Character == KinkyDungeonPlayer)
-		for (let rest of KinkyDungeonAllRestraintDynamic()) {
-			let inv = rest.item;
+	if (Restraints) {
+		for (let inv of KDGetRestraintsForID(KDGetCharacterID(Character))) {
 			if (KDRestraint(inv).addPose)
 				for (let tag of KDRestraint(inv).addPose) {
 					if (!KDCurrentModels.get(Character).TempPoses[tag]) KDCurrentModels.get(Character).TempPoses[tag] = true;
@@ -542,6 +552,8 @@ function RefreshTempPoses(Character: Character, Restraints: boolean, Buffs: bool
 
 
 		}
+	}
+
 
 
 	KDRefreshPoseOptions(Character);

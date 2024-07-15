@@ -4968,6 +4968,7 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 		KinkyDungeonFlags.set("TimeSlowTick", 1);
 	} else pauseTime = false;
 	KDGameData.ShieldDamage = 0;
+	KDUpdateCollectionFlags(delta);
 	KinkyDungeonUpdateBuffs(delta, pauseTime);
 	KinkyDungeonUpdateEnemies(delta, true); //console.log("Enemy Check " + (performance.now() - now));
 	KinkyDungeonSendEvent("afterEnemyTick", {delta: delta, allied: true});

@@ -770,6 +770,49 @@ function KDAnimEnemy(Entity) {
 	return {offX: offX, offY: offY};
 }
 
+
+function KDSetCollFlag(id, flag, duration) {
+	let entry = KDGameData.Collection["" + id];
+	if (entry) {
+		if (!entry.flags) entry.flags = {};
+		if (entry.flags[flag]) {
+			if (duration == 0) {
+				delete entry.flags[flag];// = undefined;
+				return;
+			}
+			if (entry.flags[flag] == -1) return;
+			if (entry.flags[flag] < duration) entry.flags[flag] = duration;
+		} else if (duration) entry.flags[flag] = duration;
+	}
+}
+
+/**
+ *
+ * @param {number} id
+ * @param {string} flag
+ * @returns {boolean}
+ */
+function KDCollHasFlag(id, flag) {
+	let entry = KDGameData.Collection["" + id];
+	if (entry?.flags)
+		return (entry.flags && (entry.flags[flag] > 0 || entry.flags[flag] == -1));
+	return false;
+}
+
+function KinkyDungeonSetEnemyFlag(enemy, flag, duration) {
+	if (!enemy.flags) enemy.flags = {};
+	if (enemy.flags[flag]) {
+		if (duration == 0) {
+			delete enemy.flags[flag];// = undefined;
+			return;
+		}
+		if (enemy.flags[flag] == -1) return;
+		if (enemy.flags[flag] < duration) enemy.flags[flag] = duration;
+	} else if (duration) enemy.flags[flag] = duration;
+
+	KDSetCollFlag(enemy.id, flag, duration);
+}
+
 /**
  *
  * @param {entity} enemy
@@ -777,7 +820,8 @@ function KDAnimEnemy(Entity) {
  * @returns {boolean}
  */
 function KDEnemyHasFlag(enemy, flag) {
-	return (enemy.flags && (enemy.flags[flag] > 0 || enemy.flags[flag] == -1));
+	return (enemy.flags && (enemy.flags[flag] > 0 || enemy.flags[flag] == -1))
+		|| KDCollHasFlag(enemy.id, flag);
 }
 
 /**
@@ -2730,17 +2774,6 @@ function KinkyDungeonGetNearbyPoint(x, y, allowNearPlayer=false, Enemy, Adjacent
 	return foundslot;
 }
 
-function KinkyDungeonSetEnemyFlag(enemy, flag, duration) {
-	if (!enemy.flags) enemy.flags = {};
-	if (enemy.flags[flag]) {
-		if (duration == 0) {
-			delete enemy.flags[flag];// = undefined;
-			return;
-		}
-		if (enemy.flags[flag] == -1) return;
-		if (enemy.flags[flag] < duration) enemy.flags[flag] = duration;
-	} else if (duration) enemy.flags[flag] = duration;
-}
 
 /**
  *

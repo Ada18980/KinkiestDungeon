@@ -240,6 +240,16 @@ function DisposeCharacter(C: Character): void {
 	if (NPCTags.get(C)) {
 		NPCTags.delete(C);
 	}
+	if (KDNPCChar_ID.get(C)) {
+		KDNPCChar.delete(KDNPCChar_ID.get(C));
+		KDNPCChar_ID.delete(C);
+	}
+	if (KDNPCPoses.get(C)) {
+		KDNPCPoses.delete(C);
+	}
+	if (NPCDesiredPoses.get(C)) {
+		NPCDesiredPoses.delete(C);
+	}
 }
 
 /**

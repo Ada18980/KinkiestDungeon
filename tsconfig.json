@@ -80,6 +80,7 @@
         "Game/src/map/KinkyDungeonObject.js",
         "Game/src/item/KinkyDungeonItem.js",
         "Game/src/player/KinkyDungeonDress.js",
+        "Game/src/player/KDExpressions.ts",
         "Game/src/map/KinkyDungeonEffectTiles.js",
         "Game/src/player/KinkyDungeonDressList.js",
         "Game/src/item/KinkyDungeonConsumables.js",

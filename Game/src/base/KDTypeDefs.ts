@@ -1691,7 +1691,7 @@ interface entity {
 	stun?: number,
 	silence?: number,
 	vulnerable?: number,
-	buffs?: any,
+	buffs?: Record<string, any>,
 	warningTiles?: any,
 	visual_x?: number,
 	visual_y?: number,
@@ -3182,8 +3182,8 @@ type KDEventData_CurseCount = {restraints: {item: item, host: item}[], count: nu
 type KDExpression = {
 	priority: number;
 	stackable?: boolean,
-	criteria: (C: any) => boolean;
-	expression: (C: any) => {
+	criteria: (C: any, flags: Map<string, number>) => boolean;
+	expression: (C: any, flags: Map<string, number>) => {
 		EyesPose: string,
 		Eyes2Pose: string,
 		BrowsPose: string,
@@ -3446,7 +3446,7 @@ interface KDCollectionEntry {
 	customSprite: boolean,
 	id: number,
 	Enemy?: enemy, // for unique ones
-
+	flags?: Record<string, number>,
 	outfit?: string,
 	customOutfit?: string,
 	hairstyle?: string,

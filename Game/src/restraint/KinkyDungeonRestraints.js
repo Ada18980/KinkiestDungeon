@@ -1312,6 +1312,11 @@ function KinkyDungeonIsArmsBoundC(C, ApplyGhost, Other) {
 	if (C == KinkyDungeonPlayer) {
 		return KinkyDungeonIsArmsBound(ApplyGhost, Other);
 	} else {
+		for (let inv of KDGetRestraintsForCharacter(C)) {
+			if (KDRestraint(inv).bindarms) {
+				return true;
+			}
+		}
 		return false;
 	}
 }

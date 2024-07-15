@@ -297,11 +297,27 @@ function KDNPCRestraintSize(restraint: restraint, sgroup: NPCBindingSubgroup, ro
 	return size;
 }
 
+function KDGetRestraintsForCharacter(char): (item | NPCRestraint)[] {
+	if (char == KinkyDungeonPlayer) return KinkyDungeonAllRestraintDynamic().map((inv) => {return inv.item;});
+	else if (KDNPCChar_ID.get(char)) {
+		let rest = KDGetNPCRestraints(KDNPCChar_ID.get(char));
+		if (rest) return Object.values(rest);
+	}
+	return [];
+}
 function KDGetRestraintsForEntity(entity: entity): (item | NPCRestraint)[] {
 	let char = KDGetCharacter(entity);
 	if (char == KinkyDungeonPlayer) return KinkyDungeonAllRestraintDynamic().map((inv) => {return inv.item;});
 	else {
 		let rest = KDGetNPCRestraints(entity.id);
+		if (rest) return Object.values(rest);
+	}
+	return [];
+}
+function KDGetRestraintsForID(id: number): (item | NPCRestraint)[] {
+	if (id == KDPlayer().id) return KinkyDungeonAllRestraintDynamic().map((inv) => {return inv.item;});
+	else {
+		let rest = KDGetNPCRestraints(id);
 		if (rest) return Object.values(rest);
 	}
 	return [];
