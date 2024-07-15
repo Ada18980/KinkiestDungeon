@@ -7,6 +7,7 @@ interface KDPersistentNPC {
 	room: string,
 	captured: boolean,
 	collect: boolean,
+	opinion: number,
 }
 
 interface WorldCoord {
@@ -32,6 +33,19 @@ function KDUpdatePersistentNPC(id: number) {
 	}
 }
 
+/**
+ * Syncs a persistent NPC with the world entity, in reverse, updating the entity from the persistent one
+ */
+function KDRefreshPersistentNPC(id: number) {
+	if (KDPersistentNPCs[id]) {
+		let enemy = KinkyDungeonFindID(id);
+		if (enemy) {
+			let entry = KDPersistentNPCs[id];
+			KDMapData.Entities[KDMapData.Entities.indexOf(enemy)] = entry.entity;
+		}
+	}
+}
+
 function KDIsNPCPersistent(id: number): boolean {
 	return KDPersistentNPCs[id] != undefined;
 }
@@ -50,6 +64,7 @@ function KDGetPersistentNPC(id: number): KDPersistentNPC {
 				room: KDGameData.RoomType,
 				collect: false,
 				captured: false,
+				opinion: enemy.opinion || 0,
 			};
 			KDPersistentNPCs[enemy.id] = entry;
 		}

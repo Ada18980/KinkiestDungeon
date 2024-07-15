@@ -240,7 +240,7 @@ function KDPleaseSpeaker(Amount) {
 
 /**
  *
- * @param {entity} enemy
+ * @param {any} enemy
  * @param {number} Amount
  */
 function KDAddOpinion(enemy, Amount) {
@@ -2239,6 +2239,7 @@ function KDIsSubmissiveEnough(enemy) {
  * @returns {number}
  */
 function KDGetModifiedOpinion(enemy) {
+	if (!enemy) return 0;
 	let op = enemy.opinion || 0;
 
 	op += 30 * KDFactionRelation("Player", KDGetFaction(enemy));
@@ -2247,6 +2248,7 @@ function KDGetModifiedOpinion(enemy) {
 
 	return op;
 }
+
 
 /**
  *

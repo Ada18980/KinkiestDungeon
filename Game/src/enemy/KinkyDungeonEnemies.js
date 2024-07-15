@@ -1723,6 +1723,30 @@ let KDDialogueSlots = {};
 /**
  *
  * @param {entity} enemy
+ * @returns {string}
+ */
+function KDEnemyName(enemy) {
+	return enemy.CustomName || KDGetName(enemy.id);
+}
+/**
+ *
+ * @param {entity} enemy
+ * @returns {string}
+ */
+function KDEnemyNameColor(enemy) {
+	return enemy.CustomNameColor || KDGetNameColor(enemy.id);
+}
+
+function KDGetName(id) {
+	return KDGameData.Collection[id + ""]?.name || (KDIsNPCPersistent(id) ? KDGetPersistentNPC(id).Name : "");
+}
+function KDGetNameColor(id) {
+	return KDGameData.Collection[id + ""]?.color || "#ffffff";
+}
+
+/**
+ *
+ * @param {entity} enemy
  * @param {number} offset
  * @returns {number}
  */
@@ -1730,10 +1754,10 @@ function KDDrawEnemyTooltip(enemy, offset) {
 	let analyze = KinkyDungeonFlags.get("AdvTooltips") || KDHasSpell("ApprenticeKnowledge");
 	// Previously this was dependent on using a spell called Analyze. Now it is enabled by default if you have Knowledge
 	let TooltipList = [];
-	if (enemy.CustomName)
+	if (KDEnemyName(enemy))
 		TooltipList.push({
-			str: enemy.CustomName,
-			fg: enemy.CustomNameColor || "#ffffff",
+			str: KDEnemyName(enemy),
+			fg: KDEnemyNameColor(enemy),
 			bg: "#000000",
 			size: 28,
 			center: true,

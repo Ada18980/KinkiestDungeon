@@ -60,6 +60,43 @@ function KDCollectionImage(id) {
 
 /**
  *
+ * @param {number} id
+ * @param {number} amount
+ */
+function KDAddOpinionPersistent(id, amount) {
+	if (KDIsNPCPersistent(id)) {
+		KDUpdatePersistentNPC(id);
+		KDAddOpinion(KDGetPersistentNPC(id).entity, amount);
+		KDRefreshPersistentNPC(id);
+	} else {
+		KDAddOpinion(KinkyDungeonFindID(id), amount);
+	}
+}
+
+
+/**
+ *
+ * @param {number} id
+ * @returns {number}
+ */
+function KDGetModifiedOpinionID(id) {
+	if (KDIsNPCPersistent(id)) {
+		let enemy = KDGetPersistentNPC(id).entity;
+		let op = enemy.opinion || 0;
+
+		op += 30 * KDFactionRelation("Player", KDGetFaction(enemy));
+		if (KinkyDungeonStatsChoice.get("Dominant") && enemy.personality && KDLoosePersonalities.includes(enemy.personality)) op += 12;
+		if (KinkyDungeonStatsChoice.get("Oppression")) op -= 15;
+
+		return op;
+	} else {
+		return KDGetModifiedOpinion(KinkyDungeonFindID(id));
+	}
+
+}
+
+/**
+ *
  * @param {entity} enemy
  * @param {string} [status]
  * @param {string} [status]
@@ -85,7 +122,6 @@ function KDAddCollection(enemy, type, status, servantclass) {
 			customSprite: (enemy.CustomSprite),
 			color: enemy.CustomNameColor || "#ffffff",
 			Faction: KDGetFaction(enemy) || KDGetFactionOriginal(enemy),
-			Opinion: enemy.opinion || -100,
 			class: servantclass || "prisoner",
 			Training: -(10 + 10 * KDRandom()) * KDEnemyRank(enemy) - 25,
 			status: status || "",
@@ -96,6 +132,9 @@ function KDAddCollection(enemy, type, status, servantclass) {
 			Facility: undefined,
 			flags: undefined,
 		};
+		enemy.CustomName = entry.name;
+		enemy.CustomNameColor = entry.color;
+		KDUpdatePersistentNPC(enemy.id);
 		KDGameData.Collection["" + enemy.id] = entry;
 		KDGameData.CollectionSorted.unshift(entry);
 		KDSortCollection();
@@ -225,6 +264,11 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 
 	if (value.Faction && !KDFactionNoCollection.includes(value.Faction) && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.includes(value.Faction)))
 		DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), x + 220, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18);
+
+	let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinionID(value.id)/10)));
+	let str = TextGet("KDTooltipOpinion"+opinion);
+	DrawTextFitKD(str, x + 220, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18);
+
 
 	if (!KDNPCChar.get(value.id)) {
 		KDSpeakerNPC = suppressCanvasUpdate(() => CharacterLoadNPC("coll" + value.id));
@@ -712,6 +756,7 @@ function KDDrawCollectionInventory(x, y) {
 }
 
 function KDSortCollection() {
+	KDValidateAllFacilities();
 	if (!KDGameData.Collection) {
 		KDGameData.Collection = {};
 	}

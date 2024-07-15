@@ -4480,7 +4480,12 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				KinkyDungeonSendEvent("capture", {enemy: Enemy, attacker: KinkyDungeonPlayerEntity, skip: skip});
 				KinkyDungeonChangeStamina(attackCost, false, 1);
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "capture", 1);
+				if (KDGameData.Collection[Enemy.id + ""]) {
+					KDGameData.Collection[Enemy.id + ""].status = "";
+					KDSortCollection();
+				}
 				KDAddCollection(Enemy);
+				KDAddOpinionPersistent(Enemy.id, -50);
 				result = "capture";
 			}
 
