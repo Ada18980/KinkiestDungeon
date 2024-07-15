@@ -133,33 +133,40 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 			// KDSetRestraintPalette\
 
 			DrawButtonKDEx("defaultnpcrestpalette", () => {
-				KDDefaultNPCBindPalette = currentItem.faction;
+				if (currentItem)
+					KDDefaultNPCBindPalette = currentItem.faction;
 				return true;
 			}, currentItem.faction != undefined, 1100, 920, 250, 64,
 			TextGet("KDSetDefaultNPCPalette") + TextGet("KDPalette" + (KDDefaultNPCBindPalette || "")),
 			"#ffffff"
 			);
 			DrawButtonKDEx("npcpaletteSetAll", () => {
-				for (let r of Object.values(restraints)) {
-					r.faction = currentItem.faction;
+				if (currentItem) {
+					for (let r of Object.values(restraints)) {
+						r.faction = currentItem.faction;
+					}
+					KDSetNPCRestraints(npcID, restraints);
+					KinkyDungeonCheckClothesLoss = true;
 				}
-				KDSetNPCRestraints(npcID, restraints);
-				KinkyDungeonCheckClothesLoss = true;
+
 				return true;
 			}, currentItem.faction != undefined, 800, 920, 250, 64,
 			TextGet("KDSetNPCPaletteAll"),
 			"#ffffff"
 			);
 
-			KDDrawPalettes(1300, 250, KDPaletteWidth, 72, currentItem.faction, (palette) => {
+			KDDrawPalettes(1300, 250, KDPaletteWidth, 72, currentItem?.faction || "", (palette) => {
 
-				Object.values(restraints).filter((slt) => {
-					return slt.id == currentItem.id;
-				}).forEach((slt) => {
-					slt.faction = palette;
-				})
-				KDSetNPCRestraints(npcID, restraints);
-				KinkyDungeonCheckClothesLoss = true;
+				if (currentItem) {
+					Object.values(restraints).filter((slt) => {
+						return slt.id == currentItem.id;
+					}).forEach((slt) => {
+						slt.faction = palette;
+					})
+					KDSetNPCRestraints(npcID, restraints);
+					KinkyDungeonCheckClothesLoss = true;
+				}
+
 			}, "KDSetRestraintPaletteSelect");
 
 		} else {
@@ -290,10 +297,20 @@ function KDNPCRestraintSize(restraint: restraint, sgroup: NPCBindingSubgroup, ro
 	return size;
 }
 
+function KDGetRestraintsForEntity(entity: entity): (item | NPCRestraint)[] {
+	let char = KDGetCharacter(entity);
+	if (char == KinkyDungeonPlayer) return KinkyDungeonAllRestraintDynamic().map((inv) => {return inv.item;});
+	else {
+		let rest = KDGetNPCRestraints(entity.id);
+		if (rest) return Object.values(rest);
+	}
+	return [];
+}
+
 function KDNPCRestraintValidLayers(restraint: restraint, sgroup: NPCBindingSubgroup, row: NPCBindingGroup, restraints?: Record<string, NPCRestraint>, allowSameID?: number): NPCBindingSubgroup[] {
 	let group = restraint.Group;
 	let tags = restraint.shrine;
-	return [row.encaseGroup, ...row.layers].filter((sg) => {
+	return [...row.layers, row.encaseGroup].filter((sg) => {
 		return sg.id == sgroup.id ||
 			(	(!restraints || !restraints[sg.id] || (allowSameID && restraints[sg.id].id == allowSameID))
 				&& sg.allowedGroups.includes(group)

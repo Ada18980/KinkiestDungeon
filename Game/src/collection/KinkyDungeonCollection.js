@@ -106,6 +106,18 @@ function KDAddCollection(enemy, type, status, servantclass) {
 
 /**
  *
+ * @param {entity} entity
+ * @returns {Character}
+ */
+function KDGetCharacter(entity) {
+	if (entity?.id == KDPlayer().id) {
+		return KinkyDungeonPlayer;
+	}
+	return KDNPCChar.get(entity.id);
+}
+
+/**
+ *
  * @param {KDCollectionEntry} value
  * @param {number} x
  * @param {number} y

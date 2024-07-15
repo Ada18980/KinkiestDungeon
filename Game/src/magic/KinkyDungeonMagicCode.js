@@ -906,11 +906,12 @@ let KinkyDungeonSpellSpecials = {
 			}, false, true, spell, undefined, entity);
 
 			let bondage = en.specialBoundLevel;
+			let mult = 4;
 			if (bondage)
 				for (let b of Object.entries(bondage)) {
 					if (KDSpecialBondage[b[0]]?.latex) {
-						en.boundLevel = Math.max(0, en.boundLevel - Math.min(b[1], spell.power));
-						bondage[b[0]] -= spell.power;
+						en.boundLevel = Math.max(0, en.boundLevel - Math.min(b[1], mult * spell.power));
+						bondage[b[0]] -= mult * spell.power;
 						if (bondage[b[0]] <= 0)
 							delete bondage[b[0]];
 					}
@@ -948,6 +949,17 @@ let KinkyDungeonSpellSpecials = {
 							color: "#000000",
 							bgcolor: "#ff8933"
 						});
+						r.events.push({
+							original: "UniversalSolvent",
+							trigger: "drawSGTooltip",
+							type: "simpleMsg",
+							msg: "KDVariableModifier_UniversalSolvent",
+							color: "#ff8933",
+							bgcolor: KDTextGray0,
+						});
+						KDUpdateItemEventCache = true;
+
+
 
 					}
 				}

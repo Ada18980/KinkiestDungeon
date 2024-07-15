@@ -608,6 +608,12 @@ let KDEventMapInventory = {
 				data.extraLineColor.push(e.color);
 			}
 		},
+		"simpleMsg": (e, item, data) => {
+			if (item == data.item || KDRestraint(item)?.Group == data.group) {
+				data.extraLines.push(TextGet(e.msg));
+				data.extraLineColor.push(e.color);
+			}
+		},
 		"StruggleManaBonus": (e, item, data) => {
 			if (item == data.item) {
 				let bonus = KDGetManaBonus(e.mult, e.power, e.threshold, e.threshold, e.threshold);
@@ -1984,9 +1990,9 @@ let KDEventMapInventory = {
 	"beforeStruggleCalc": {
 		"UniversalSolvent": (e, item, data) => {
 			if (item == data.restraint && (
-				data.struggleType == "struggle"
+				data.struggleType == "Struggle"
 				||
-				data.struggleType == "cut"
+				data.struggleType == "Cut"
 			)) {
 				data.escapePenalty -= e.power;
 			}
@@ -2613,7 +2619,7 @@ const KDEventMapBuff = {
 	},
 	"beforeStruggleCalc": {
 		"BreakFree": (e, buff, entity, data) => {
-			if (data.struggleType == "struggle")
+			if (data.struggleType == "Struggle")
 				data.escapePenalty -= e.power;
 		},
 		"latexIntegrationDebuff": (e, buff, entity, data) => {
@@ -2880,15 +2886,24 @@ const KDEventMapBuff = {
 	},
 	"beforeDressRestraints": {
 		"LatexIntegration": (e, buff, entity, data) => {
-			if (entity.player) {
+			if (data.Character == KDGetCharacter(entity)) {
 				if (buff.power >= 100) {
+					let color = {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1};
+					let palette = "";
+					let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
+					for (let inv of KDGetRestraintsForEntity(entity)) {
+
+						if ((!inv.faction || KDToggles.ForcePalette || outfit?.palette) && (!KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette])) {
+							palette = outfit?.palette || KDDefaultPalette;
+						}
+					}
 					/** @type {alwaysDressModel} */
 					let efd = {
 						Model: "Catsuit",
-						faction: "AncientRobot",
+						faction: palette || "AncientRobot",
 						Filters: {
-							TorsoLower: {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
-							TorsoUpper: {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
+							TorsoLower: color,
+							TorsoUpper: color,
 						},
 						factionFilters: {
 							TorsoLower: {color: "Catsuit", override: true},

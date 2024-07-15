@@ -201,7 +201,7 @@ let KDPlayerEffects = {
 			//let integration = KDEntityBuffedStat(KDPlayer(), "LatexIntegration");
 
 			KDAddSpecialStat("LatexIntegration", KDPlayer(), mult * (playerEffect?.power || spell?.power || 1), false); // Add a significant amount of corruption
-			KDUnlockPerk("StartLatexIntegration");
+
 			let textIndex = "0";
 			let buffedStat = KDEntityBuffedStat(KDPlayer(), "LatexIntegration");
 
