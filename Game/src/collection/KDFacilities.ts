@@ -43,7 +43,29 @@ function InitFacilities() {
 	}
 }
 
+
+function KDValidateAllFacilities() {
+	for (let facility of Object.keys(KDFacilityTypes)) {
+		let servants = KDGameData.FacilitiesData["Servants_" + facility];
+		let prisoners = KDGameData.FacilitiesData["Prisoners_" + facility];
+		if (servants)
+			for (let servant of servants) {
+				if (!KDValidateServant(KDGameData.Collection[servant + ""],
+					facility,
+					"Servants")) servants.splice(servants.indexOf(servant));
+			}
+		if (prisoners)
+			for (let prisoner of prisoners) {
+				if (!KDValidateServant(KDGameData.Collection[prisoner + ""],
+					facility,
+					"Prisoners")) prisoners.splice(prisoners.indexOf(prisoner));
+			}
+	}
+
+}
+
 function KDUpdateFacilities(delta: number) {
+	KDValidateAllFacilities();
 	let listUpdate = Object.entries(KDFacilityTypes).filter((entry) => {
 		return entry[1].prereq();
 	});
@@ -65,6 +87,16 @@ function KinkyDungeonDrawFacilities(xOffset = -125) {
 	KDDrawInventoryTabs(xOffset);
 }
 
+
+function KDValidateServant(value: KDCollectionEntry, facility: string, type: string): boolean {
+	type = KDFacilityCollectionDataTypeMap[type] || "";
+
+	if (value.status != type) return false;
+	if (KDIsInPartyID(value.id)) return false;
+
+	return true;
+
+}
 
 function KDDrawFacilitiesList(xOffset) {
 

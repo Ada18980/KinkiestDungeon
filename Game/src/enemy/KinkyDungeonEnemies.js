@@ -2131,46 +2131,12 @@ let KDChampionMax = 10;
 function KinkyDungeonCapture(enemy) {
 	let msg = "KinkyDungeonCapture";
 	let goddessCapture = false;
-	/*if (enemy.lifetime != undefined && enemy.lifetime < 999) {
-		msg = "KinkyDungeonCaptureBasic";
-	} else if (KDGameData.Champion) {
-		if (KDGameData.ChampionCurrent < KDChampionMax) {
-			msg = "KinkyDungeonCaptureGoddess";
-			let disapproval = 0;
-			goddessCapture = true;
-			let spell = KinkyDungeonFindSpell("Summon", true);
-			if (spell) {
-				KinkyDungeonCastSpell(enemy.x, enemy.y, spell, undefined, undefined, undefined);
-			}
-			// Is the player wearing something related to the goddess?
-			if (KinkyDungeonStatsChoice.has("BoundCrusader")) {
-				let uniform = ["Rope", "Leather", "Metal", "Latex"];
-				if (uniform.includes(KDGameData.Champion)) uniform = [KDGameData.Champion];
-				let restraints = [];
-				for (let u of uniform) {
-					for (let r of KinkyDungeonGetRestraintsWithShrine(u, true, true, true)) {
-						restraints.push(r);
-					}
-				}
-				let minAmount = 1;
-				if (KinkyDungeonGoddessRep[KDGameData.Champion] > 10) minAmount = 2;
-				if (KinkyDungeonGoddessRep[KDGameData.Champion] > 30) minAmount = 3;
-				if (restraints.length < minAmount) {
-					msg = "KinkyDungeonCaptureGoddess" + (minAmount == 1 ? "Low" : "None") + (uniform.includes(KDGameData.Champion) ? "Uniform" : "Restraint");
-					if (minAmount == 1)
-						disapproval = 1;
-					else
-						disapproval = 2;
-				}
-			}
-			if (disapproval == 0) {
-				KinkyDungeonChangeRep(KDGameData.Champion, KinkyDungeonGoddessRep[KDGameData.Champion] < -10 ? 1 :
-					(KinkyDungeonGoddessRep[KDGameData.Champion] > 30 ? 0.25 : 0.5));
-				KDGameData.ChampionCurrent += 1;
-			} else goddessCapture = false;
-		} else msg = "KinkyDungeonCaptureMax";
-	} else*/ msg = "KinkyDungeonCaptureBasic";
-
+	msg = "KinkyDungeonCaptureBasic";
+	if (KDIsNPCPersistent(enemy.id)) {
+		KDGetPersistentNPC(enemy.id).collect = true;
+		KDGetPersistentNPC(enemy.id).captured = false;
+		KDUpdatePersistentNPC(enemy.id);
+	}
 	KinkyDungeonSendEvent("afterCapture", {enemy: enemy});
 	KinkyDungeonSendActionMessage(6,
 		TextGet(msg).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)).replace("GODDESS", TextGet("KinkyDungeonShrine" + KDGameData.Champion)),
@@ -3360,6 +3326,10 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 					}
 
 				}
+
+				// Updates the NPC's persistence record if available
+				// This does not MAKE the NPC persistent, only updates it if they are
+				KDUpdatePersistentNPC(enemy.id);
 
 				// Delete the enemy
 				if (KinkyDungeonEnemyCheckHP(enemy, E)) { E -= 1;} else {
@@ -7640,6 +7610,20 @@ function KDIsInParty(enemy) {
 	}
 	return false;
 }
+/**
+ *
+ * @param {number} id
+ * @returns {boolean} true if the NPC is in the party
+ */
+function KDIsInPartyID(id) {
+	if (!KDGameData.Party) KDGameData.Party = []; // Null protection
+	for (let pm of (KDGameData.Party)) {
+		if (pm.id == id) {
+			return true;
+		}
+	}
+	return false;
+}
 
 /**
  *
@@ -7650,6 +7634,21 @@ function KDIsInCapturedParty(enemy) {
 	if (!KDGameData.CapturedParty) KDGameData.CapturedParty = []; // Null protection
 	for (let pm of (KDGameData.CapturedParty)) {
 		if (pm.id == enemy.id) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ *
+ * @param {number} id
+ * @returns {boolean} true if the NPC has been previously captured
+ */
+function KDIsInCapturedPartyID(id) {
+	if (!KDGameData.CapturedParty) KDGameData.CapturedParty = []; // Null protection
+	for (let pm of (KDGameData.CapturedParty)) {
+		if (pm.id == id) {
 			return true;
 		}
 	}
@@ -7695,6 +7694,8 @@ function KDAddToParty(enemy) {
 	// Add a copy to the party
 	enemy.faction = "Player";
 	KDGameData.Party.push(JSON.parse(JSON.stringify(enemy)));
+	if (!KDGameData.Collection[enemy.id + ""])
+		KDAddCollection(enemy, undefined, "Guest");
 	return true;
 
 }
@@ -7735,8 +7736,12 @@ function KDRemoveFromParty(enemy, capture) {
 }
 
 
-
-function KDAddEntity(entity) {
+/**
+ *
+ * @param {entity} entity
+ * @param {boolean} [persistent] - If true, the game will update the npc to be persistent
+ */
+function KDAddEntity(entity, persistent) {
 	let data = {
 		enemy: entity,
 		x: entity.x,
@@ -7745,21 +7750,28 @@ function KDAddEntity(entity) {
 		typeOverride: false,
 		data: undefined,
 		loadout: undefined,
+		persistent: persistent,
 	};
-	KinkyDungeonSendEvent("addEntity", data);
-	KDMapData.Entities.push(entity);
-	KDSetLoadout(entity, data.loadout);
-	if (!entity.data && entity.Enemy.data) entity.data = entity.Enemy.data;
-	if (data.data) {
-		if (!entity.data) entity.data = {};
-		Object.assign(entity.data, data.data);
+	if (persistent && KDPersistentNPCs["" + data.enemy.id]) {
+		let npc = KDGetPersistentNPC(data.enemy.id);
+		data.enemy = npc.entity;
+		npc.entity.x = data.x;
+		npc.entity.y = data.y;
 	}
-	if (entity.Enemy?.startBuffs) {
-		if (!entity.buffs) entity.buffs = {};
-		let buffs = JSON.parse(JSON.stringify(entity.Enemy?.startBuffs));
+	KinkyDungeonSendEvent("addEntity", data);
+	KDMapData.Entities.push(data.enemy);
+	KDSetLoadout(data.enemy, data.loadout);
+	if (!data.enemy.data && data.enemy.Enemy.data) data.enemy.data = data.enemy.Enemy.data;
+	if (data.data) {
+		if (!data.enemy.data) data.enemy.data = {};
+		Object.assign(data.enemy.data, data.data);
+	}
+	if (data.enemy.Enemy?.startBuffs) {
+		if (!data.enemy.buffs) data.enemy.buffs = {};
+		let buffs = JSON.parse(JSON.stringify(data.enemy.Enemy?.startBuffs));
 		if (buffs)
 			for (let b of buffs)
-				entity.buffs[b.id] = b;
+				data.enemy.buffs[b.id] = b;
 	}
 	KDUpdateEnemyCache = true;
 }
@@ -7792,6 +7804,12 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
 
 	if (data.cancel) return false;
 	if (data.kill || data.capture) {
+		if (KDIsNPCPersistent(enemy.id)) {
+			if (data.capture) {
+				KDGetPersistentNPC(enemy.id).captured = true;
+			}
+			KDGetPersistentNPC(enemy.id).collect = false;
+		}
 		if (KDGameData.SpawnedPartyPrisoners && KDGameData.SpawnedPartyPrisoners[enemy.id + ""]) {
 			KDAddToCapturedParty(enemy);
 		} else {

@@ -448,15 +448,16 @@ function KDHandleDialogue() {
  * @param {number} x
  * @param {number} y
  * @param {string} Name
+ * @param {number} [persistentid]
  * @returns {entity}
  */
-function DialogueCreateEnemy(x, y, Name) {
+function DialogueCreateEnemy(x, y, Name, persistentid) {
 	if (KinkyDungeonEnemyAt(x, y)) KDKickEnemy(KinkyDungeonEnemyAt(x, y));
 	let Enemy = KinkyDungeonGetEnemyByName(Name);
-	let e = {summoned: true, Enemy: Enemy, id: KinkyDungeonGetEnemyID(),
+	let e = {summoned: true, Enemy: Enemy, id: persistentid || KinkyDungeonGetEnemyID(),
 		x:x, y:y,
 		hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
-	KDAddEntity(e);
+	KDAddEntity(e, persistentid != undefined);
 	return e;
 }
 

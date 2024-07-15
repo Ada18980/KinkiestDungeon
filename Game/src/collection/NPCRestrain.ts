@@ -425,15 +425,18 @@ function KDInputSetNPCRestraint(data) {
 		if (rests) {
 			let restraint = rests[slot.id];
 			KinkyDungeonCheckClothesLoss = true;
-			let slots = Object.entries(rests).filter((slt) => {
-				return slt[1].id == restraint.id;
-			}).map((slt) => {
-				return slt[0];
-			})
-			for (let slt of slots) {
-				let it = KDSetNPCRestraint(data.npc, slt, undefined);
-				item = item || it;
+			if (restraint) {
+				let slots = Object.entries(rests).filter((slt) => {
+					return slt[1].id == restraint.id;
+				}).map((slt) => {
+					return slt[0];
+				})
+				for (let slt of slots) {
+					let it = KDSetNPCRestraint(data.npc, slt, undefined);
+					item = item || it;
+				}
 			}
+
 		}
 
 	}

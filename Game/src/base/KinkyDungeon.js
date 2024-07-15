@@ -801,6 +801,7 @@ let KDGameDataBase = {
  */
 let KDGameData = Object.assign({}, KDGameDataBase);
 
+
 function KinkyDungeonLeashingEnemy() {
 	if (KDGameData.KinkyDungeonLeashingEnemy || KDUpdateEnemyCache) {
 		return KinkyDungeonFindID(KDGameData.KinkyDungeonLeashingEnemy);
@@ -4436,7 +4437,6 @@ function KinkyDungeonGenerateSaveData() {
 
 
 
-
 	save.stats = {
 		picks: KinkyDungeonLockpicks,
 		keys: KinkyDungeonRedKeys,
@@ -4540,6 +4540,7 @@ function KinkyDungeonLoadGame(String) {
 			}
 			KDGameData = JSON.parse(JSON.stringify(KDGameDataBase));
 			if (saveData.KDGameData != undefined) KDGameData = Object.assign({}, saveData.KDGameData);
+
 
 			InitFacilities();
 

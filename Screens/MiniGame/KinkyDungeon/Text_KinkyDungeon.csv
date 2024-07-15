@@ -1298,10 +1298,10 @@ KinkyDungeonInventoryItemBolaDesc2,"Deals 90 points of binding, 40 chain damage,
 KinkyDungeonInventoryItem3BolaDesc,"A pair of weights attached to a rope. Can be thrown."
 KinkyDungeonInventoryItem3BolaDesc2,"Deals 90 points of binding, 40 chain damage, and rooting a target for 4 turns."
 KinkyDungeonInventoryItemBomb,Bomb
-KinkyDungeonInventoryItemBombDesc,"After a 5 turn fuse, deals 100 blast damage in a 3x3 area."
-KinkyDungeonInventoryItemBombDesc2,"Not a toy!"
-KinkyDungeonInventoryItem3BombDesc,"After a 5 turn fuse, deals 100 blast damage in a 3x3 area."
-KinkyDungeonInventoryItem3BombDesc2,"Not a toy!"
+KinkyDungeonInventoryItemBombDesc2,"After a 5 turn fuse, deals 100 blast damage in a 3x3 area."
+KinkyDungeonInventoryItemBombDesc,"Not a toy!"
+KinkyDungeonInventoryItem3BombDesc2,"After a 5 turn fuse, deals 100 blast damage in a 3x3 area."
+KinkyDungeonInventoryItem3BombDesc,"Not a toy!"
 KinkyDungeonInventoryItemBombUse,You light the fuse!
 KinkyDungeonInventoryItemKnife,Knife
 KinkyDungeonInventoryItemLockpick,Lockpick
@@ -22181,7 +22181,8 @@ KDPrisonerStat_Opinion,Opinion
 KDPrisonerStat_Training,Training
 KDPrisonerStat_Willpower,Willpower
 
-KDPrisonerNum,Prisoner #NUMR/TTL
+KDPrisonerNum_,Prisoner #NUMR/TTL
+KDPrisonerNum_Guest,Guest #NUMR/TTL
 
 
 KDCollectionSelect,Select a character to examine
@@ -22239,7 +22240,7 @@ KDServants,Servants
 KDPrisoners,Prisoners
 
 KDPromoteNPC,Promote to Servant
-KDDemoteNPC,Demote to Prisoner
+KDDemoteNPC,Demote
 
 KDTeaseAttackResist_LeashGrab,The ENMY tries to grab you!
 
@@ -23286,17 +23287,17 @@ KDLeashSpellRemoveAll,You let go of all leashes.
 
 
 KinkyDungeonInventoryItemC4,Plastic Explosive
-KinkyDungeonInventoryItemC4Desc,"Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage."
-KinkyDungeonInventoryItemC4Desc2,"It's totally harmless! Probably."
-KinkyDungeonInventoryItem2C4Desc,"Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage."
-KinkyDungeonInventoryItem2C4Desc2,"It's totally harmless! Probably."
+KinkyDungeonInventoryItemC4Desc2,"Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage."
+KinkyDungeonInventoryItemC4Desc,"It's totally harmless! Probably."
+KinkyDungeonInventoryItem2C4Desc2,"Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage."
+KinkyDungeonInventoryItem2C4Desc,"It's totally harmless! Probably."
 KinkyDungeonInventoryItemC4Use,You set the clock ticking...
 
 KinkyDungeonInventoryItemDynamite,Dynamite
-KinkyDungeonInventoryItemDynamiteDesc,"10 turn fuse with a 25% chance each turn to detonate prematurely. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage."
-KinkyDungeonInventoryItemDynamiteDesc2,"Arguably more dangerous to the user than the target."
-KinkyDungeonInventoryItem2DynamiteDesc,"10 turn fuse with a 25% chance each turn to detonate. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage."
-KinkyDungeonInventoryItem2DynamiteDesc2,"Arguably more dangerous to the user than the target."
+KinkyDungeonInventoryItemDynamiteDesc2,"10 turn fuse with a 25% chance each turn to detonate prematurely. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage."
+KinkyDungeonInventoryItemDynamiteDesc,"Arguably more dangerous to the user than the target."
+KinkyDungeonInventoryItem2DynamiteDesc2,"10 turn fuse with a 25% chance each turn to detonate. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage."
+KinkyDungeonInventoryItem2DynamiteDesc,"Arguably more dangerous to the user than the target."
 KinkyDungeonInventoryItemDynamiteUse,You light the fuse and pray it doesn't blow up in your face.
 
 KDTooManyLeash,You are holding too many leashes!
@@ -23510,3 +23511,9 @@ KDSetRestraintPaletteReturn,Choose Restraint
 
 KDSetDefaultNPCPalette,"Def. Palette: "
 KDSetNPCPaletteAll,"Set All Palette"
+
+KDCollectionTabStatusOption_,Prisoners
+KDCollectionTabStatusOption_Guest,Guests
+
+KDCollectionAssign,"Assign to "
+KDCollectionRemove,"Remove from "

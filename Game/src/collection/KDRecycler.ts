@@ -53,6 +53,7 @@ function KDBaseRecycleOutputs(): RecyclerOutputs {
 }
 
 
+
 function KDGetRecyclerRate(Servants: number[]): Record<string, number> {
 	let output = {};
 	let mult = 0.5;

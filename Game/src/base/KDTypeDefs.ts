@@ -3456,6 +3456,7 @@ interface KDCollectionEntry {
 
 	/** Status: Guest, Prisoner, Servant, or Manager */
 	status: string,
+	oldstatus: string,
 	class: string,
 
 	Faction: string,

@@ -4,10 +4,18 @@ let KDCurrentFacilityTarget = "";
 let KDCurrentFacilityCollectionType = "";
 let KDCurrentRestrainingTarget = 0;
 
+let KDCollectionTabStatus = "";
+let KDCollectionTabStatusOptions = ["", "Guest"];
+let KDPromotableStatus = ["", "Guest"];
+
 let KDFacilityCollectionDataTypes = [
 	"Prisoners",
 	"Servants",
 ];
+let KDFacilityCollectionDataTypeMap = {
+	"Prisoners": "",
+	"Servants": "Servant"
+};
 
 function KinkyDungeonDrawCollection(xOffset = -125) {
 	let x = 1225 + xOffset;
@@ -71,7 +79,7 @@ function KDAddCollection(enemy, type, status, servantclass) {
 		/** @type {KDCollectionEntry} */
 		let entry = {
 			id: enemy.id,
-			name: KDGetPersistentNPC(enemy).Name,
+			name: KDGetPersistentNPC(enemy.id).Name,
 			sprite: (enemy.CustomSprite) || enemy.Enemy.name,
 			// @ts-ignore
 			customSprite: (enemy.CustomSprite),
@@ -81,6 +89,7 @@ function KDAddCollection(enemy, type, status, servantclass) {
 			class: servantclass || "prisoner",
 			Training: -(10 + 10 * KDRandom()) * KDEnemyRank(enemy) - 25,
 			status: status || "",
+			oldstatus: status || "",
 			type: enemy.Enemy.name,
 			Enemy: enemy.modified ? enemy.Enemy : undefined,
 			Willpower: 100,
@@ -209,7 +218,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 		DrawTextFitKD(TextGet("KDDrawSelectedTab_" + tab).replace("NUMR", "" + index).replace("TTL", "" + Object.values(KDGameData.Collection).length), x + 220, y + 15, 500, "#ffffff", KDTextGray05, 18);
 	} else
 	if (index)
-		DrawTextFitKD(TextGet("KDPrisonerNum").replace("NUMR", "" + index).replace("TTL", "" + Object.values(KDGameData.Collection).length), x + 220, y + 15, 500, "#ffffff", KDTextGray05, 18);
+		DrawTextFitKD(TextGet("KDPrisonerNum_" + KDCollectionTabStatus).replace("NUMR", "" + index).replace("TTL", "" + Object.values(KDGameData.Collection).length), x + 220, y + 15, 500, "#ffffff", KDTextGray05, 18);
 
 	let II = 0;
 	DrawTextFitKD(TextGet("Name" + enemyType.name), x + 220, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18);
@@ -338,7 +347,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 					KDTextGray0);
 			}
 		} else {
-			if (!value.status && DrawButtonKDEx("promoteNPC", (b) => {
+			if (KDPromotableStatus.includes(value.status) && DrawButtonKDEx("promoteNPC", (b) => {
 				if (!(KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns)) {
 					value.status = "Servant";
 					KDSortCollection();
@@ -350,7 +359,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 			undefined, undefined, false, KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns ? "#ff5555" : "")) {
 				DrawTextFitKD(TextGet("KDPromoteNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 			} else if (value.status == "Servant" && DrawButtonKDEx("demoteNPC", (b) => {
-				value.status = "";
+				value.status = value.oldstatus || "";
 				KDSortCollection();
 				if (KDToggles.Sound)
 					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Damage" + ".ogg");
@@ -361,33 +370,36 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 			}
 
 
-
-			if (DrawButtonKDEx("CollectionRestrain", (b) => {
-				KDCurrentRestrainingTarget = value.id;
-				if (KDToggles.Sound)
-					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Chain" + ".ogg");
-				return true;
-			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-			"", "#ffffff", KinkyDungeonRootDirectory + "UI/Restrain.png",
-			undefined, undefined, false)) {
-				DrawTextFitKD(TextGet("KDRestrainNPC"), x + 220, y + 750, 500, "#ffffff",
-					KDTextGray0);
-			}
+			if (!value.status)
+				if (DrawButtonKDEx("CollectionRestrain", (b) => {
+					KDCurrentRestrainingTarget = value.id;
+					if (KDToggles.Sound)
+						AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Chain" + ".ogg");
+					return true;
+				}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
+				"", "#ffffff", KinkyDungeonRootDirectory + "UI/Restrain.png",
+				undefined, undefined, false)) {
+					DrawTextFitKD(TextGet("KDRestrainNPC"), x + 220, y + 750, 500, "#ffffff",
+						KDTextGray0);
+				}
 		}
 
 		let assigned = !(!value.Facility);
+		let valid = KDValidateServant(value, KDCurrentFacilityTarget, KDCurrentFacilityCollectionType);
 
 		if (KDCurrentFacilityTarget) {
 			let dd = KDGameData.FacilitiesData[KDCurrentFacilityCollectionType + "_" + KDCurrentFacilityTarget];
 			let fac = KDFacilityTypes[KDCurrentFacilityTarget];
-			if (dd && fac && fac["max" + KDCurrentFacilityCollectionType] && dd.length < fac["max" + KDCurrentFacilityCollectionType]()) {
+			if (dd && fac && fac["max" + KDCurrentFacilityCollectionType] && (assigned || dd.length < fac["max" + KDCurrentFacilityCollectionType]())) {
+
 				KDDraw(kdcanvas, kdpixisprites, "facilityAssignIcon",
-					KinkyDungeonRootDirectory + `UI/Facility_${assigned ?"X" : KDCurrentFacilityCollectionType}.png`,
+					KinkyDungeonRootDirectory + `UI/Facility_${(assigned || !valid) ?"X" : KDCurrentFacilityCollectionType}.png`,
 					x + 10 + buttonSpacing*III, y + 730 - 10 - 80, 80, 80, undefined, {
 						zIndex: 160,
 					}
 				);
 				if (DrawButtonKDEx("facilityAssign", (b) => {
+					if (!valid) return false;
 					if (!assigned) {
 						let data = KDGameData.FacilitiesData[KDCurrentFacilityCollectionType + "_" + KDCurrentFacilityTarget];
 						if (data) {
@@ -412,10 +424,13 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 							}
 						}
 					}
+
+					KDValidateAllFacilities();
 					return true;
 				}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff",
-				KinkyDungeonRootDirectory + `UI/Facility/${value.Facility || KDCurrentFacilityTarget}.png`)) {
-					DrawTextFitKD(TextGet(`KDCollection${assigned ? "Remove" : "Assign"}_` + KDCurrentFacilityTarget + "_" + KDCurrentFacilityCollectionType), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+				KinkyDungeonRootDirectory + `UI/Facility/${value.Facility || KDCurrentFacilityTarget}.png`, undefined, undefined, !valid, (!valid) ? "#ff5555" : undefined)) {
+					DrawTextFitKD(TextGet(`KDCollection${assigned ? "Remove" : "Assign"}`) + TextGet("KDFacility_" + KDCurrentFacilityTarget),
+						x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 				}
 			}
 
@@ -458,6 +473,19 @@ function KDDrawCollectionRestrainMain(id, x, y) {
 }
 
 /**
+ *
+ * @param {number} id
+ * @param {string} status
+ * @returns {boolean}
+ */
+function KDNPCUnavailable(id, status) {
+	return KDGameData.NPCRestraints[id + ""]?.Device != undefined
+		|| (KDIsNPCPersistent(id) && KDGetPersistentNPC(id).captured)
+		|| (status && KDIsInCapturedPartyID(id));
+
+}
+
+/**
  * @type {Map<number, Character>}
  */
 let KDNPCChar = new Map();
@@ -495,7 +523,7 @@ function KDDrawCollectionInventory(x, y) {
 			return true;
 		},true,
 		x + KDCollectionColumns * KDCollectionSpacing/2 - 1.5*KDCollectionSpacing,
-		y + (KDCollectionRows + 1 + KDCollectionGuestRows) * KDCollectionSpacing,
+		y + (KDCollectionRows + 1 + KDCollectionGuestRows) * KDCollectionSpacing + 42,
 		KDCollectionSpacing * 3, 36, "", "#ffffff", KinkyDungeonRootDirectory + "Down.png",
 		"", false, false, KDButtonColor, undefined, undefined, {centered: true}
 		);
@@ -510,20 +538,38 @@ function KDDrawCollectionInventory(x, y) {
 			return true;
 		},true,
 		x + KDCollectionColumns * KDCollectionSpacing/2 - 1.5*KDCollectionSpacing,
-		y - KDCollectionSpacing + 36 + (1+ KDCollectionGuestRows)*KDCollectionSpacing,
+		y + (KDCollectionRows + 1 + KDCollectionGuestRows) * KDCollectionSpacing,
 		KDCollectionSpacing * 3, 36, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png",
 		"", false, false, KDButtonColor, undefined, undefined, {centered: true}
 		);
 	}
+	if (!KDGameData.NPCRestraints) KDGameData.NPCRestraints = {};
+
+	let ww = 800;
+	let xpad = 24;
+	for (let i = 0; i < KDCollectionTabStatusOptions.length; i++) {
+		let option = KDCollectionTabStatusOptions[i];
+		DrawButtonKDEx("collectionTab" + option, (b) => {
+			KDCollectionTabStatus = option;
+			return true;
+		},true,
+		x + xpad/2 + KDCollectionColumns * KDCollectionSpacing/2 - 400 + i * ww/KDCollectionTabStatusOptions.length,
+		y - KDCollectionSpacing + 12 + (1+ KDCollectionGuestRows)*KDCollectionSpacing,
+		ww/KDCollectionTabStatusOptions.length - xpad, 50, TextGet("KDCollectionTabStatusOption_" + option), "#ffffff", "",
+		"", false, KDCollectionTabStatus != option, KDButtonColor, undefined, undefined, {centered: true}
+		);
+	}
+
 
 	// Collection
 	let guests = [];
 	// Iterate thru the collection, parting out the notable ones to the top
 	for (let value of KDGameData.CollectionSorted) {
-		if (value.status) {
+		if (value.status == "Servant") {
 			guests.push(value);
 			continue;
 		}
+		if (value.status != KDCollectionTabStatus) continue;
 
 		if (KDCollectionSelected == value.id) selectedIndex = II + 1;
 		if (II++ < KDCollectionIndex || row >= KDCollectionRows) continue;
@@ -552,6 +598,24 @@ function KDDrawCollectionInventory(x, y) {
 		"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}
 		)) {
 			DrawTextFitKD(value.name, MouseX, MouseY - 50, 800, "#ffffff", (value.color && value.color != "#ffffff") ? value.color : KDTextGray05, 24);
+		}
+
+		if (KDNPCUnavailable(value.id, value.status)) {
+			KDDraw(kdcanvas, kdpixisprites, value.name + "_jail," + value.id,
+				KinkyDungeonRootDirectory + "UI/Jail.png",
+				XX + 36,
+				YY + 36,
+				36, 36, undefined, {
+					zIndex: 110
+				});
+		} else if (value.status && KDIsInPartyID(value.id)) {
+			KDDraw(kdcanvas, kdpixisprites, value.name + "_party," + value.id,
+				KinkyDungeonRootDirectory + "UI/Star.png",
+				XX + 48,
+				YY + 48,
+				28, 28, undefined, {
+					zIndex: 110
+				});
 		}
 		/*KDDraw(kdcanvas, kdpixisprites, value.name + "_coll," + value.id, KinkyDungeonRootDirectory + dir + sp + ".png",
 			XX,
@@ -598,6 +662,25 @@ function KDDrawCollectionInventory(x, y) {
 			"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}
 			)) {
 				DrawTextFitKD(value.name, MouseX, MouseY - 50, 800, "#ffffff", (value.color && value.color != "#ffffff") ? value.color : KDTextGray05, 24);
+			}
+
+
+			if (KDNPCUnavailable(value.id, value.status)) {
+				KDDraw(kdcanvas, kdpixisprites, value.name + "_jail," + value.id,
+					KinkyDungeonRootDirectory + "UI/Jail.png",
+					XX + 42,
+					YY + 42,
+					36, 36, undefined, {
+						zIndex: 110
+					});
+			} else if (value.status && KDIsInPartyID(value.id)) {
+				KDDraw(kdcanvas, kdpixisprites, value.name + "_party," + value.id,
+					KinkyDungeonRootDirectory + "UI/Star.png",
+					XX + 48,
+					YY + 48,
+					28, 28, undefined, {
+						zIndex: 110
+					});
 			}
 		} else {
 			// Render empty square

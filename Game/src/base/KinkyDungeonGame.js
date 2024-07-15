@@ -371,6 +371,9 @@ function KinkyDungeonNewGamePlus() {
 function KDResetData(Data) {
 	if (!Data) Data = KDGameDataBase;
 	KDGameData = JSON.parse(JSON.stringify( Data));
+	KDPersistentNPCs = {};
+	KDPersonalAlt = {};
+
 	for (let control of Object.keys(KDFocusControlButtons)) {
 		KDInitFocusControl(control);
 	}
@@ -657,7 +660,7 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	}
 
 	for (let e of allies) {
-		KDAddEntity(e);
+		KDAddEntity(e, true);
 	}
 
 	for (let e of KinkyDungeonGetAllies()) {
@@ -1333,7 +1336,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 
 			for (let e of allies) {
-				KDAddEntity(e);
+				KDAddEntity(e, true);
 				let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true, true);
 				if (!point) point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, undefined, true);
 				if (!point) point = {x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y};
@@ -4469,6 +4472,11 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 					KinkyDungeonAggro(Enemy, undefined, KinkyDungeonPlayerEntity);
 				Enemy.hp = 0;
 				KinkyDungeonKilledEnemy = Enemy;
+				if (KDIsNPCPersistent(Enemy.id)) {
+					KDGetPersistentNPC(Enemy.id).collect = true;
+					KDGetPersistentNPC(Enemy.id).captured = false;
+					KDUpdatePersistentNPC(Enemy.id);
+				}
 				KinkyDungeonSendEvent("capture", {enemy: Enemy, attacker: KinkyDungeonPlayerEntity, skip: skip});
 				KinkyDungeonChangeStamina(attackCost, false, 1);
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "capture", 1);
