@@ -3424,6 +3424,7 @@
             <key type="filename">../Game/UI/Facility_Prisoners.png</key>
             <key type="filename">../Game/UI/Facility_Servants.png</key>
             <key type="filename">../Game/UI/Facility_X.png</key>
+            <key type="filename">../Game/UI/Imprison.png</key>
             <key type="filename">../Game/UI/Promote.png</key>
             <key type="filename">../Game/UI/Restrain.png</key>
             <key type="filename">../Game/UI/RestrainBack.png</key>

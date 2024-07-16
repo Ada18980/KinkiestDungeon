@@ -262,15 +262,25 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 		DrawTextFitKD(TextGet("KDPrisonerNum_" + KDCollectionTabStatus).replace("NUMR", "" + index).replace("TTL", "" + Object.values(KDGameData.Collection).length), x + 220, y + 15, 500, "#ffffff", KDTextGray05, 18);
 
 	let II = 0;
-	DrawTextFitKD(TextGet("Name" + enemyType.name), x + 220, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18);
+	DrawTextFitKD(TextGet("Name" + enemyType.name), x + 220, y + 500 - 25 + 20*II++, 500, "#ffffff", KDTextGray05, 24);
 
 	if (value.Faction && !KDFactionNoCollection.includes(value.Faction) && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.includes(value.Faction)))
-		DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), x + 220, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18);
+		DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
+
 
 	let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinionID(value.id)/10)));
-	let str = TextGet("KDTooltipOpinion"+opinion);
-	DrawTextFitKD(str, x + 220, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18);
+	let str = TextGet("KDNPCOpinion") + TextGet("KDTooltipOpinion"+opinion);
+	DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
 
+	let npcLoc = KDGetNPCLocation(value.id);
+	if (npcLoc) {
+		let currLoc = KDGetCurrentLocation();
+		let dungeon = npcLoc.room || KDGameData.JourneyMap[npcLoc.mapX + ',' + npcLoc.mapY]?.Checkpoint || 'grv';
+		str = TextGet(KDCompareLocation(currLoc, npcLoc) ? "KDLastNPCLocationSame" : "KDLastNPCLocation")
+			.replace("FLR", npcLoc.mapY + "")
+			.replace("LOC", TextGet("DungeonName" + dungeon));
+		DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
+	}
 
 	if (!KDNPCChar.get(value.id)) {
 		KDSpeakerNPC = suppressCanvasUpdate(() => CharacterLoadNPC("coll" + value.id));
@@ -550,6 +560,7 @@ function KDDrawCollectionInventory(x, y) {
 	let guests = [];
 	// Iterate thru the collection, parting out the notable ones to the top
 	for (let value of KDGameData.CollectionSorted) {
+		if (value.status) KDGetPersistentNPC(value.id); // All guests and servants are persistent
 		if (value.status == "Servant") {
 			guests.push(value);
 			continue;
@@ -761,6 +772,7 @@ let KDCollectionTabDraw = {
 				});
 				en.ceasefire = 9999;
 				KinkyDungeonCheckClothesLoss = true;
+				KDGetPersistentNPC(en.id);
 				//KinkyDungeonDrawState = "Game";
 			}
 

@@ -3374,7 +3374,8 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 
 				// Updates the NPC's persistence record if available
 				// This does not MAKE the NPC persistent, only updates it if they are
-				KDUpdatePersistentNPC(enemy.id);
+				// We do, however, make
+				KDUpdatePersistentNPC(enemy.id, KDGameData.Collection[enemy.id + ""] != undefined);
 
 				// Delete the enemy
 				if (KinkyDungeonEnemyCheckHP(enemy, E)) { E -= 1;} else {

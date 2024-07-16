@@ -623,7 +623,9 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 
 	// Create enemies first so we can spawn them in the set pieces if needed
 	let allies = KinkyDungeonGetAllies();
-	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {return !allies.includes(enemy);});
+	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {
+		return !allies.includes(enemy);
+	});
 	KDCommanderRoles = new Map();
 	KDUpdateEnemyCache = true;
 
@@ -636,6 +638,11 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 
 	// UnPack enemies
 	KDUnPackEnemies(NewMapData);
+
+	// Filter non-present enemies
+	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {
+		return (!KDGetNPCLocation(enemy.id) || KDCompareLocation(KDGetNPCLocation(enemy.id), KDGetCurrentLocation()));
+	});
 
 	KDMapData = NewMapData;
 	KDGameData.RoomType = KDMapData.RoomType;
@@ -826,7 +833,9 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	}
 
 	// Filter out the allies
-	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {return !allies.includes(enemy);});
+	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {
+		return !allies.includes(enemy);
+	});
 	KDCommanderRoles = new Map();
 	KDUpdateEnemyCache = true;
 	// Else make a new one
@@ -1363,6 +1372,10 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	KDRedrawFog = 2;
 	KDUpdateEnemyCache = true;
 	KDUnPackEnemies(KDMapData);
+	// Filter non-present enemies
+	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {
+		return (!KDGetNPCLocation(enemy.id) || KDCompareLocation(KDGetNPCLocation(enemy.id), KDGetCurrentLocation()));
+	});
 	KinkyDungeonAdvanceTime(0);
 
 	KinkyDungeonGenNavMap();
@@ -1515,11 +1528,21 @@ function KinkyDungeonGetAllies() {
 
 /**
  *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDIsImprisoned(enemy) {
+	return KDEntityHasFlag(enemy, "imprisoned");
+}
+
+
+/**
+ *
  * @param {entity} e
  * @returns {boolean}
  */
 function KDCanBringAlly(e) {
-	return e.Enemy && (e.Enemy.keepLevel || KDIsInParty(e)) && KDAllied(e) && !KDHelpless(e);
+	return e.Enemy && (e.Enemy.keepLevel || KDIsInParty(e)) && KDAllied(e) && !KDHelpless(e) && !KDIsImprisoned(e);
 }
 
 function KDChooseFactions(factionList, Floor, Tags, BonusTags, Set) {

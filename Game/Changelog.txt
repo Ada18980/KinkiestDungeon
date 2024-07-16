@@ -28,7 +28,14 @@ TODO:
 - Let go of leash thru menu
 - Aggro level
 
-TODO remove hogtie whenm released
+TODO remove hogtie when released
+
+5.3.26
+- Can now add NPCs to display stand
+- Can now view party members in collection
+- prototype persistent NPCs. lmk if there are weirdness with party members
+- NPCs have facial expressions and their poses can be set individually (no persistence)
+
 
 5.3.25
 - New perk: Fully Integrated (unlock by reaching 100% latex integration. Start with 100% latex integration)

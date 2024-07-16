@@ -20,9 +20,10 @@ let KDPersistentNPCs: {[_ : string]: KDPersistentNPC} = {};
 
 /**
  * Syncs a persistent NPC with the world entity, if present
+ * force param makes it make the NPC persistent if desired
  */
-function KDUpdatePersistentNPC(id: number) {
-	if (KDPersistentNPCs[id]) {
+function KDUpdatePersistentNPC(id: number, force: boolean = false) {
+	if (KDPersistentNPCs[id] || (force && KDGetPersistentNPC(id))) {
 		let enemy = KinkyDungeonFindID(id);
 		if (enemy) {
 			let entry = KDPersistentNPCs[id];
@@ -118,4 +119,10 @@ function KDSetNPCLocation(id: number, coord: WorldCoord): boolean {
 		return altered;
 	}
 	return false;
+}
+function KDCompareLocation(loc1: WorldCoord, loc2: WorldCoord): boolean {
+	if (loc1.mapX != loc2.mapX) return false;
+	if (loc1.mapY != loc2.mapY) return false;
+	if (loc1.room != loc2.room) return false;
+	return true;
 }

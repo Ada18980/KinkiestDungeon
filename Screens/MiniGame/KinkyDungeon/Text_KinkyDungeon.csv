@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.25"
+KDVersionStr,"5.3.26"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -23518,3 +23518,7 @@ KDCollectionTabStatusOption_Guest,Guests
 KDCollectionAssign,"Assign to "
 KDCollectionRemove,"Remove from "
 KDImprison,Imprison
+
+KDNPCOpinion,"Opinion: "
+KDLastNPCLocation,"Last Seen on Floor FLR, LOC"
+KDLastNPCLocationSame,"Present in current level"

@@ -1588,7 +1588,7 @@ function KDKickEnemies(nearestJail, ignoreAware, Level, noCull) {
 			}
 			KDExpireFlags(e);
 			KDResetIntent(e, {});
-			if (e.boundLevel) {
+			if (e.boundLevel && !KDIsImprisoned(e)) {
 				if (canCull && KDHelpless(e)) {
 					KDRemoveEntity(e, false, true, true);
 				} else {
