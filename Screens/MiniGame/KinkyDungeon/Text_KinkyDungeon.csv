@@ -6797,7 +6797,7 @@ KinkyDungeonSpellCastFromBook,Cast Spell (XXX turn delay)
 KinkyDungeonEndVibeCease,You feel the vibrations leaving your body...
 KinkyDungeonStartVibe,You feel your toys start to buzz...
 KinkyDungeonStartVibeContinue,You your toys continue to buzz...
-KinkyDungeonStartVibeRemote,The EnemyName remotely causes your toys to to buzz!!!
+KinkyDungeonStartVibeRemote,The EnemyName remotely causes your toys to buzz!!!
 KinkyDungeonPlugged,You feel the plugs inside you while walking.
 KinkyDungeonVibing0,Your toys pulse and tingle occasionally.
 KinkyDungeonVibing1,Your toys tease you and buzz gently...
@@ -12505,6 +12505,33 @@ dPrisonerJail_Unlock,Use a key to unlock her
 dPrisonerJail_Pick,"Try to pick her restraints (JAMPERCENT jam chance)"
 dPrisonerJail_Word,Use a command word
 dPrisonerJailJammedRecent_Apologize,Apologize profusely!
+
+
+
+
+rPrisonerJailOwn,"(The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)"
+rPrisonerJailOwnNoKeys,"(You don't have any keys that work on the lock)"
+rPrisonerJailOwnUnlockHandsBound,"(You can't help her, bound as tightly as you are...)"
+rPrisonerJailOwnUnlockSlow,"(You unlock her, fumbling around for a while with your bound hands)"
+rPrisonerJailOwnUnlock,"(You unlock the SPEAKER)|Thank you!|Let's get out of here!"
+rPrisonerJailOwnUnlockGagged,"(You unlock the SPEAKER)|Mmmmph!|(She wants to keep her gag...)"
+rPrisonerJailOwnNoPick,"(You don't have any lockpicks)"
+rPrisonerJailOwnPickJam,"(You try to pick the lock...)|(Click! A safety shield locks securely into place!)|(Looks like the SPEAKER will be staying here for a while...)"
+rPrisonerJailOwnPickHandsBound,"(You can't pick the lock with your hands bound)"
+rPrisonerJailOwnPick,"(After a while, you free the SPEAKER)|Thank you!|Let's get moving!"
+rPrisonerJailOwnPickGagged,"(After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)"
+rPrisonerJailOwnWordNoMana,"(You don't have enough mana for a command word)"
+rPrisonerJailOwnWordNoSpeak,"(Try as you might, your mouth is sealed tight)"
+rPrisonerJailOwnWord,"(You utter a command word to free the SPEAKER)|Many thanks!|Let's go!"
+rPrisonerJailOwnWordGagged,"(You utter a command word to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)"
+rPrisonerJailOwnJammed,"(The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)"
+
+dPrisonerJailOwn_Unlock,Use a key to unlock her
+dPrisonerJailOwn_Pick,"Try to pick her restraints"
+dcOwn_Word,Use a command word
+dPrisonerJailOwnJammedRecent_Apologize,Apologize profusely!
+
+
 
 KinkyDungeonDiscovered,An enemy found you while you were busy!
 
@@ -20461,8 +20488,8 @@ KDVariableModifier_BaseDamageBuffMelee,"AMNT% weapon phys. dmg"
 KDVariableModifier_BaseDamageBuffMagic,"AMNT% weapon magic dmg"
 KDVariableModifier_ElementalEcho,"Infuse weapon AMNT% TYPE"
 KDVariableModifier_ElementalDmg,"AMNT TYPE on attack"
-KDVariableModifier_ManaCost,"AMNT% Mana Costs"
-KDVariableModifier_ManaCostSpecific,"AMNT% TYPE Mana Costs"
+KDVariableModifier_ManaCost,"+AMNT Mana Efficiency"
+KDVariableModifier_ManaCostSpecific,"+AMNT TYPE Mana Efficiency"
 KDVariableModifier_ManaRegen,"AMNT% regen from mana pool"
 KDVariableModifier_ManaRegenOnKill,"AMNT mana pool on capture"
 KDVariableModifier_Sneak,"AMNT% Visibility Reduction"
@@ -22919,6 +22946,7 @@ KinkyDungeonSummonMultiIceWall,A wall of ice rises from the ground!
 KDPoisonBreath,The dragon's breath poisons you!
 KDPoisonSlash,The dragon girl strikes you with poisonous razor leaves!
 KDDragonFlowerSpores,The flower releases soporific spores!
+KinkyDungeonSpellCastDragonFlowerSpores,The flower releases soporific spores!
 KinkyDungeonSpellPoisonBreath,Poison Breath
 
 KDVineSuspend,Vines reach from the ceiling and lift you into the air!
@@ -23300,7 +23328,7 @@ KinkyDungeonInventoryItem2DynamiteDesc2,"10 turn fuse with a 25% chance each tur
 KinkyDungeonInventoryItem2DynamiteDesc,"Arguably more dangerous to the user than the target."
 KinkyDungeonInventoryItemDynamiteUse,You light the fuse and pray it doesn't blow up in your face.
 
-KDTooManyLeash,You are holding too many leashes!
+KDTooManyLeashes,You are holding too many leashes!
 
 KDAddCorruption,You feel a corrupting influence... (+AMNT Corruption)
 KDRemoveCorruption,You feel a restoring influence! (-AMNT Corruption)

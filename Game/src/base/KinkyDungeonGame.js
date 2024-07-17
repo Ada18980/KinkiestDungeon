@@ -4391,16 +4391,18 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 		KDTurnToFace(Enemy.x - KinkyDungeonPlayerEntity.x, Enemy.y - KinkyDungeonPlayerEntity.y);
 	}
 
-	if (Enemy && KDHelpless(Enemy) && Enemy.hp < 0.52) {
+	let teasesub = !KDHostile(Enemy) && KinkyDungeonAggressive(Enemy) && KDCanDom(Enemy);
+	if (!teasesub && Enemy && KDHelpless(Enemy) && Enemy.hp < 0.52) {
 		attackCost = 0;
 		capture = true;
 	}
 	let noadvance = false;
 	if (KinkyDungeonHasStamina(Math.abs(attackCost), true)) {
-		if (!KDGameData.ConfirmAttack && (!KinkyDungeonAggressive(Enemy) || KDAllied(Enemy)) && !(Enemy.playWithPlayer && KDCanDom(Enemy))) {
-			if ((!Enemy.lifetime || Enemy.lifetime > 9000) && !Enemy.Enemy.tags.notalk) { // KDAllied(Enemy)
-				let d = Enemy.Enemy.specialdialogue ? Enemy.Enemy.specialdialogue : "GenericAlly";
-				if (Enemy.specialdialogue) d = Enemy.specialdialogue; // Special dialogue override
+		if (!KDGameData.ConfirmAttack && (KDIsImprisoned(Enemy) || ((!KinkyDungeonAggressive(Enemy) || KDAllied(Enemy)) && !(Enemy.playWithPlayer && KDCanDom(Enemy))))) {
+			let d = Enemy.Enemy.specialdialogue ? Enemy.Enemy.specialdialogue : "GenericAlly";
+			if (Enemy.specialdialogue) d = Enemy.specialdialogue; // Special dialogue override
+			if (d || ((!Enemy.lifetime || Enemy.lifetime > 9000) && !Enemy.Enemy.tags.notalk)) { // KDAllied(Enemy)
+
 				KDStartDialog(d, Enemy.Enemy.name, true, Enemy.personality, Enemy);
 				noadvance = true;
 				result = "dialogue";
@@ -4463,10 +4465,15 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				if (KDGameData.HeelPower > 0)
 					KDChangeBalance(data.attackCost * KDGetBalanceCost() * (0.75 + 0.5 * KDRandom()) * KDBalanceAttackMult*10*KDFitnessMult(), true);
 
+				let origHP = Enemy.hp;
 				if (KinkyDungeonAttackEnemy(data.target, data.attackData)) {
 					result = "hit";
 				} else {
 					result = "miss";
+				}
+
+				if (teasesub && origHP > 0.5) {
+					Enemy.hp = Math.max(0.51, Enemy.hp);
 				}
 
 				let dmgTotal = -(Enemy.hp - data.orighp);

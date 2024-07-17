@@ -948,6 +948,9 @@ let KDDialogue = {
 		options: {
 			"Use": {
 				playertext: "Default", response: "Default",
+				greyoutFunction: (gagged, player) => {
+					return !KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
+				},
 				clickFunction: (gagged, player) => {
 
 					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
@@ -982,7 +985,7 @@ let KDDialogue = {
 			},
 			"NPC": {
 				playertext: "Default", response: "Default",
-				prerequisiteFunction: (gagged, player) => {
+				greyoutFunction: (gagged, player) => {
 					return !KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 				},
 				clickFunction: (gagged, player) => {
@@ -2751,6 +2754,110 @@ let KDDialogue = {
 									}
 									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 									KDAddToParty(e);
+								}
+
+							}
+						} else {
+							KDGameData.CurrentDialogStage = "";
+							KDGameData.CurrentDialogMsg = "PrisonerJailPickHandsBound";
+						}
+					} else {
+						KDGameData.CurrentDialogStage = "";
+						KDGameData.CurrentDialogMsg = "PrisonerJailNoPick";
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+		}
+	},
+	"PrisonerJailOwn": { // For prisoners in the prison level. Doesnt increase rep much, but useful for jailbreak purposes
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			let e = KDDialogueEnemy();
+			if (e) {
+				KDGameData.CurrentDialogMsgData = {};
+				KDGameData.CurrentDialogMsgValue = {};
+			}
+
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+			"Unlock": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					if (KinkyDungeonRedKeys > 0) {
+						if (KinkyDungeonCanUseKey() || !KinkyDungeonIsArmsBound()) {
+							if (KDDialogueEnemy()) {
+								let e = KDDialogueEnemy();
+								e.boundLevel = 0;
+								KDFreeNPC(e);
+								e.specialdialogue = undefined;
+								if (KDAllied(e)) {
+									e.faction = "Player";
+									KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
+									KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
+								}
+								KinkyDungeonRedKeys -= 1;
+								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
+									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
+									KDGameData.CurrentDialogMsg = "PrisonerJailUnlockSlow";
+								} else {
+									KDGameData.CurrentDialogMsg = "PrisonerJailUnlock";
+									if (e.Enemy.tags.gagged) {
+										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
+									}
+								}
+							}
+						} else {
+							KDGameData.CurrentDialogStage = "";
+							KDGameData.CurrentDialogMsg = "PrisonerJailUnlockHandsBound";
+						}
+					} else {
+						KDGameData.CurrentDialogStage = "";
+						KDGameData.CurrentDialogMsg = "PrisonerJailNoKeys";
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Pick": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					if (KinkyDungeonLockpicks > 0) {
+						if (!KinkyDungeonIsHandsBound(false, true, 0.45)) {
+							if (KDDialogueEnemy()) {
+								if (KDDialogueEnemy()) {
+									let e = KDDialogueEnemy();
+									e.boundLevel = 0;
+									KDFreeNPC(e);
+									e.specialdialogue = undefined;
+									KDAggroMapFaction();
+
+									if (KDAllied(e)) {
+										e.faction = "Player";
+										KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
+										KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
+									}
+									KDGameData.CurrentDialogMsg = "PrisonerJailPick";
+									if (e.Enemy.tags.gagged) {
+										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
+									}
+									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 								}
 
 							}

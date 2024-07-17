@@ -1052,4 +1052,6 @@ function KDImprisonEnemy(e, noJam, dialogue = "PrisonerJail", restraint) {
 	if (restraint) {
 		KDSetNPCRestraint(e.id, "Device", restraint);
 	}
+	e.playerdmg = undefined;
+	if (e.hp <= 0.5) e.hp = 0.51;
 }

@@ -2416,6 +2416,8 @@ function KDAddSpecialStat(stat, entity, amount, Msg, max = 100, color = "#722fcc
 
 	buff.power = newCurse;
 	buff.text = Math.floor(newCurse) + "%";
+	if (buff.power <= 0)
+		KinkyDungeonExpireBuff(entity, stat + "Stat");
 
 	if (Msg) {
 		if (amount > 0) {

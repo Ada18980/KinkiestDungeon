@@ -123,22 +123,23 @@ KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseBrows2 = KDWardrobe_PoseBrows2[0];
 KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseMouth = KDWardrobe_PoseMouth[0];
 KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseBlush = KDWardrobe_PoseBlush[0];*/
 
-function KDInitCurrentPose(blank) {
-	if (KDNPCPoses.has(KinkyDungeonPlayer))
-		KDNPCPoses.delete(KinkyDungeonPlayer);
-	KDNPCPoses.set(KinkyDungeonPlayer, {
+function KDInitCurrentPose(blank, C) {
+	if (!C) C = KinkyDungeonPlayer;
+	if (KDNPCPoses.has(C))
+		KDNPCPoses.delete(C);
+	KDNPCPoses.set(C, {
 
 	});
 
 
-	KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseArms = blank ? "" : KDWardrobe_PoseArms[0];
-	KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseLegs = blank ? "" : KDWardrobe_PoseLegs[0];
-	KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseEyes = blank ? "" : KDWardrobe_PoseEyes[0];
-	KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseEyes2 = blank ? "" : KDWardrobe_PoseEyes2[0];
-	KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseBrows = blank ? "" : KDWardrobe_PoseBrows[0];
-	KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseBrows2 = blank ? "" : KDWardrobe_PoseBrows2[0];
-	KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseMouth = blank ? "" : KDWardrobe_PoseMouth[0];
-	KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseBlush = blank ? "" : KDWardrobe_PoseBlush[0];
+	KDNPCPoses.get(C).CurrentPoseArms = blank ? "" : KDWardrobe_PoseArms[0];
+	KDNPCPoses.get(C).CurrentPoseLegs = blank ? "" : KDWardrobe_PoseLegs[0];
+	KDNPCPoses.get(C).CurrentPoseEyes = blank ? "" : KDWardrobe_PoseEyes[0];
+	KDNPCPoses.get(C).CurrentPoseEyes2 = blank ? "" : KDWardrobe_PoseEyes2[0];
+	KDNPCPoses.get(C).CurrentPoseBrows = blank ? "" : KDWardrobe_PoseBrows[0];
+	KDNPCPoses.get(C).CurrentPoseBrows2 = blank ? "" : KDWardrobe_PoseBrows2[0];
+	KDNPCPoses.get(C).CurrentPoseMouth = blank ? "" : KDWardrobe_PoseMouth[0];
+	KDNPCPoses.get(C).CurrentPoseBlush = blank ? "" : KDWardrobe_PoseBlush[0];
 }
 
 

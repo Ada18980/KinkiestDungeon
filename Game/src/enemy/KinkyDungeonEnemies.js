@@ -1593,7 +1593,7 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 									});
 						}
 					}
-					if (!KDHelpless(enemy)) {
+					if (!KDHelpless(enemy) && !KDIsImprisoned(enemy)) {
 						if (!KinkyDungeonAggressive(enemy) && ((!KDAllied(enemy) && !enemy.Enemy.specialdialogue && !bb) || KDEnemyHasFlag(enemy, "Shop")) && !enemy.playWithPlayer && enemy.Enemy.movePoints < 90 && !KDAmbushAI(enemy)) {
 							KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_shop", KinkyDungeonRootDirectory + ((KDEnemyHasFlag(enemy, "Shop")) ? "Conditions/Shop.png" : (KDAllied(enemy) ? "Conditions/Heart.png" : "Conditions/Peace.png")),
 								canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
@@ -2177,6 +2177,8 @@ function KinkyDungeonCapture(enemy) {
 	let msg = "KinkyDungeonCapture";
 	let goddessCapture = false;
 	msg = "KinkyDungeonCaptureBasic";
+	KDDropStolenItems(enemy);
+	if (KDIsImprisoned(enemy)) KDFreeNPC(enemy);
 	if (KDIsNPCPersistent(enemy.id)) {
 		KDGetPersistentNPC(enemy.id).collect = true;
 		KDGetPersistentNPC(enemy.id).captured = false;
@@ -2213,7 +2215,7 @@ function KDDropStolenItems(enemy) {
  * @returns {boolean}
  */
 function KinkyDungeonEnemyCheckHP(enemy, E) {
-	if (enemy.hp <= 0) {
+	if (enemy.hp <= 0 && !KDIsImprisoned(enemy)) {
 		let noRepHit = false;
 		KinkyDungeonSendEvent("death", {enemy: enemy});
 		KDRemoveEntity(enemy, true, true, false, E);
@@ -2334,11 +2336,13 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 
 		KDDropItems(enemy);
 
+
 		return true;
-	} else if (KDHelpless(enemy)) {
+	} else if (KDHelpless(enemy) && !KDIsImprisoned(enemy)) {
 		KDDropStolenItems(enemy);
 		if (!enemy.droppedItems)
 			KDDropItems(enemy);
+
 	}
 	return false;
 }
@@ -7786,7 +7790,9 @@ function KDRemoveFromParty(enemy, capture) {
  *
  * @param {entity} entity
  * @param {boolean} [persistent] - If true, the game will update the npc to be persistent
+ * @returns {entity}
  */
+
 function KDAddEntity(entity, persistent) {
 	let data = {
 		enemy: entity,
@@ -7820,6 +7826,7 @@ function KDAddEntity(entity, persistent) {
 				data.enemy.buffs[b.id] = b;
 	}
 	KDUpdateEnemyCache = true;
+	return data.enemy;
 }
 function KDSpliceIndex(index, num = 1) {
 	if (KDMapData.Entities[index]) {
@@ -7848,8 +7855,13 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
 	if (!noEvent)
 		KinkyDungeonSendEvent("removeEnemy", data);
 
+
+
 	if (data.cancel) return false;
 	if (data.kill || data.capture) {
+		KDDropStolenItems(enemy);
+		enemy.items = [];
+		enemy.noDrop = true;
 		if (KDIsNPCPersistent(enemy.id)) {
 			if (data.capture) {
 				KDGetPersistentNPC(enemy.id).captured = true;
@@ -7863,7 +7875,6 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
 		}
 	}
 
-	KDDropStolenItems(enemy);
 
 	KDSpliceIndex(forceIndex || KDMapData.Entities.indexOf(data.enemy), 1);
 	return true;

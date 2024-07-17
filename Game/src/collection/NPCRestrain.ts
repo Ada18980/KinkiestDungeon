@@ -136,7 +136,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				if (currentItem)
 					KDDefaultNPCBindPalette = currentItem.faction;
 				return true;
-			}, currentItem.faction != undefined, 1100, 920, 250, 64,
+			}, currentItem?.faction != undefined, 1100, 920, 250, 64,
 			TextGet("KDSetDefaultNPCPalette") + TextGet("KDPalette" + (KDDefaultNPCBindPalette || "")),
 			"#ffffff"
 			);
@@ -150,7 +150,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				}
 
 				return true;
-			}, currentItem.faction != undefined, 800, 920, 250, 64,
+			}, currentItem?.faction != undefined, 800, 920, 250, 64,
 			TextGet("KDSetNPCPaletteAll"),
 			"#ffffff"
 			);

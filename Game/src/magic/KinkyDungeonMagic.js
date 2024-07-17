@@ -571,13 +571,16 @@ function KinkyDungeonGetManaCost(Spell, Passive, Toggle) {
 		cost: Spell.manacost,
 		costscale: KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ManaCostMult")),
 		lvlcostscale: KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ManaCostLevelMult"),
+		efficiency: 0
 	};
 	KinkyDungeonSendEvent("calcMana", data);
 	if (data.costscale) data.cost = Math.floor(1000* data.cost * data.costscale)/1000;
 	//if (data.costscale > 0) data.cost = Math.max(0, data.cost); // Keep it from rounding to 0
 	if (data.lvlcostscale && Spell.level && Spell.manacost) data.cost += Spell.level * data.lvlcostscale;
 	KinkyDungeonSendEvent("beforeMultMana", data);
+	KinkyDungeonSendEvent("calcEfficientMana", data);
 	KinkyDungeonSendEvent("calcMultMana", data);
+	data.cost *= KinkyDungeonMultiplicativeStat(data.efficiency);
 	KinkyDungeonSendEvent("afterMultMana", data);
 	KinkyDungeonSendEvent("afterCalcMana", data);
 

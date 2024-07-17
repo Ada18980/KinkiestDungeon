@@ -276,7 +276,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 	if (npcLoc) {
 		let currLoc = KDGetCurrentLocation();
 		let dungeon = npcLoc.room || KDGameData.JourneyMap[npcLoc.mapX + ',' + npcLoc.mapY]?.Checkpoint || 'grv';
-		str = TextGet(KDCompareLocation(currLoc, npcLoc) ? "KDLastNPCLocationSame" : "KDLastNPCLocation")
+		str = TextGet((KinkyDungeonFindID(value.id) && KDCompareLocation(currLoc, npcLoc)) ? "KDLastNPCLocationSame" : "KDLastNPCLocation")
 			.replace("FLR", npcLoc.mapY + "")
 			.replace("LOC", TextGet("DungeonName" + dungeon));
 		DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
@@ -362,7 +362,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 			}
 
 			KDPlayerSetPose = false;
-			KDInitCurrentPose();
+			KDInitCurrentPose(true,KDSpeakerNPC);
 			KinkyDungeonInitializeDresses();
 			KDUpdateModelList();
 			KDRefreshOutfitInfo();
@@ -764,15 +764,16 @@ let KDCollectionTabDraw = {
 			if (rest) {
 				let en = DialogueCreateEnemy(KDGameData.InteractTargetX, KDGameData.InteractTargetY,
 					(value.Enemy || KinkyDungeonGetEnemyByName(value.type)).name, value.id);
-				KDImprisonEnemy(en, true, "PrisonerJail", {
+				KDImprisonEnemy(en, true, "PrisonerJailOwn", {
 					name: rest.name,
 					lock: "White",
 					id: KinkyDungeonGetItemID(),
 					faction: KDDefaultNPCBindPalette,
 				});
 				en.ceasefire = 9999;
+				en.playWithPlayer = 0;
 				KinkyDungeonCheckClothesLoss = true;
-				KDGetPersistentNPC(en.id);
+				KDUpdatePersistentNPC(en.id, true);
 				//KinkyDungeonDrawState = "Game";
 			}
 

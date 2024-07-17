@@ -324,6 +324,11 @@ let KDEventMapInventory = {
 			data.manaPoolRegen *= e.power;
 		},
 	},
+	"calcEfficientMana": {
+		"ManaCost": (e, item, data) => {
+			data.efficiency += e.power;
+		},
+	},
 	"calcMultMana": {
 		"ManaCost": (e, item, data) => {
 			data.cost = Math.max(data.cost * e.power, 0);
@@ -3869,6 +3874,11 @@ let KDEventMapSpell = {
 			if (willPercentage > 0)
 				KinkyDungeonChangeMana(0, false, e.power * willPercentage);
 			KinkyDungeonChangeMana(e.power, false, 0, false, willPercentage > 0.5);
+		},
+	},
+	"calcEfficientMana": {
+		"ManaCost": (e, item, data) => {
+			data.efficiency += e.power;
 		},
 	},
 	"calcMultMana": {
