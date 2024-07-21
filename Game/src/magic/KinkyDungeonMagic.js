@@ -25,6 +25,8 @@ let KinkyDungeonCurrentSpellsPage = 0;
 let KinkyDungeonBooks = ["Elements", "Conjure", "Illusion"];
 let KinkyDungeonPreviewSpell = null;
 
+let KinkyDungeonDisplayLore = false;
+
 let KinkyDungeonSpellChoices = [0, 1, 2];
 /** @type {string[]} */
 let KinkyDungeonWeaponChoices = [];
@@ -1582,11 +1584,28 @@ function KinkyDungeonDrawMagic() {
 		let mult = KDGetFontMult();
 		let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonSpellDescription"+ spell.name).replace(/[|]+/g, "\n").replace("DamageDealt", "" + (spell.power * 10)).replace("Duration", spell.time).replace("LifeTime", spell.lifetime).replace("DelayTime", spell.delay).replace("BlockAmount", "" + (10 * spell.block)),
 			12*mult, 28*mult).split('\n');
+		let textSplitDesc = KinkyDungeonWordWrap(TextGet("KinkyDungeonSpellDescription2"+ spell.name).replace(/[|]+/g, "\n").replace("DamageDealt", "" + (spell.power * 10)).replace("Duration", spell.time).replace("LifeTime", spell.lifetime).replace("DelayTime", spell.delay).replace("BlockAmount", "" + (10 * spell.block)),
+			12*mult, 28*mult).split('\n');
 
+		if (TextGet("KinkyDungeonSpellDescription2" + spell.name) != `KinkyDungeonSpellDescription2${spell.name}`) {
+			DrawButtonKDEx("KinkyDungeonDisplayLoreButton", (bdata) => {
+				KinkyDungeonDisplayLore = !KinkyDungeonDisplayLore;
+				return true;
+			}, true, canvasOffsetX_ui + xOffset + 570 + 102, canvasOffsetY_ui + 420 * KinkyDungeonBookScale, 80, 30, TextGet("Lore"), "White", "", "", false, true, KDButtonColor);
+        }
+		
 		let i = 0;
-		for (let N = 0; N < textSplit.length; N++) {
-			DrawTextFitKD(textSplit[N],
-				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale*(1-1/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 350, KDBookText, KDTextTan, 20); i++;}
+
+		if (KinkyDungeonDisplayLore) {
+            for (let N = 0; N < textSplitDesc.length; N++) {
+				DrawTextFitKD(textSplitDesc[N],
+					canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale*(1-1/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 350, KDBookText, KDTextTan, 20); i++;}
+        }
+        else {
+            for (let N = 0; N < textSplit.length; N++) {
+				DrawTextFitKD(textSplit[N],
+					canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale*(1-1/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 350, KDBookText, KDTextTan, 20); i++;}
+        }
 
 		i = 0;
 		if (spell.components?.length > 0) {
