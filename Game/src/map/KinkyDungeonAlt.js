@@ -119,6 +119,8 @@ let alts = {
 		prune: true,
 		skiptunnel: true, // Increments the floor counter
 
+		keepRebels: true, // NPCs cant run away to collection if they get beaten here
+
 		requireJourneyTarget: true, // Requires a journey target to exit
 
 		events: [
@@ -273,6 +275,8 @@ let alts = {
 	"Summit": {
 		private: true, // Enables private prison type features (e.g. prisoner display)
 		keepItems: true, // Prevents items from being swept
+		keepPrisoners: true, // Spawning prisoners in here does not remove from collection
+		keepRebels: true, // NPCs cant run away to collection if they get beaten here
 		name: "Summit",
 		Title: "Summit",
 		noWear: true, // Disables doodad wear
@@ -593,6 +597,8 @@ let alts = {
 		skin: "shrine", useDefaultMusic: true,
 		lightParams: "ore",
 
+		keepRebels: true, // NPCs cant run away to collection if they get beaten here
+
 		torchreplace: {
 			sprite: "Lantern",
 			unlitsprite: "LanternUnlit",
@@ -630,6 +636,11 @@ let alts = {
 
 		skin: "shoppe", useDefaultMusic: true,
 		lightParams: "grv",
+
+		noPersistentPrisoners: true,
+
+		keepPrisoners: true, // Spawning prisoners in here does not remove from collection
+		keepRebels: true, // NPCs cant run away to collection if they get beaten here
 
 		torchreplace: {
 			sprite: "Lantern",

@@ -152,6 +152,7 @@ function KDAddCollection(enemy, type, status, servantclass) {
 		if (type != undefined) {
 			entry.type = type;
 		}
+		KDUpdatePersistentNPC(enemy.id);
 	}
 }
 
@@ -271,6 +272,14 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 	let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinionID(value.id)/10)));
 	let str = TextGet("KDNPCOpinion") + TextGet("KDTooltipOpinion"+opinion);
 	DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
+
+
+	if (KDGetPersistentNPC(value.id)?.captured) {
+		str = TextGet((KDGetPersistentNPC(value.id)?.captureFaction) ? "KDLastNPCLocationCaptured" : "KDLastNPCLocationCapturedNone")
+			.replace("FCTN", TextGet("KinkyDungeonFaction" + KDGetPersistentNPC(value.id)?.captureFaction));
+		DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
+	}
+
 
 	let npcLoc = KDGetNPCLocation(value.id);
 	if (npcLoc) {
@@ -473,8 +482,12 @@ function KDDrawCollectionRestrainMain(id, x, y) {
  * @returns {boolean}
  */
 function KDNPCUnavailable(id, status) {
-	return KDGameData.NPCRestraints[id + ""]?.Device != undefined
-		|| (KDIsNPCPersistent(id) && KDGetPersistentNPC(id).captured)
+	return (KDIsNPCPersistent(id) &&
+		(
+			//KDGameData.NPCRestraints[id + ""]?.Device != undefined
+			KDGetPersistentNPC(id).captured
+			|| !KDGetPersistentNPC(id).collect
+		))
 		|| (status && KDIsInCapturedPartyID(id))
 		|| (KDGetGlobalEntity(id) && KDEntityHasFlag(KDGetGlobalEntity(id), "imprisoned"));
 
@@ -597,8 +610,9 @@ function KDDrawCollectionInventory(x, y) {
 		}
 
 		if (KDNPCUnavailable(value.id, value.status)) {
+			let icon = KDGetPersistentNPC(value.id)?.captured ? "Inspect" : "Jail";
 			KDDraw(kdcanvas, kdpixisprites, value.name + "_jail," + value.id,
-				KinkyDungeonRootDirectory + "UI/Jail.png",
+				KinkyDungeonRootDirectory + "UI/" + icon + ".png",
 				XX + 36,
 				YY + 36,
 				36, 36, undefined, {
@@ -747,7 +761,7 @@ let KDCollectionTabDraw = {
 		let entity = KinkyDungeonFindID(value.id) || KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 		if (DrawButtonKDEx("ImprisonNPC", (b) => {
 
-			if (entity) {
+			if (entity || KDNPCUnavailable(value.id, value.status)) {
 				return false;
 			}
 
@@ -782,7 +796,8 @@ let KDCollectionTabDraw = {
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 		"", "#ffffff", KinkyDungeonRootDirectory + "UI/Imprison.png",
-		undefined, undefined, entity != undefined, entity != undefined ? "#ff5555" : KDButtonColor)) {
+		undefined, undefined, entity != undefined,
+			KDNPCUnavailable(value.id, value.status) ? "#ff5555" : KDButtonColor)) {
 			DrawTextFitKD(TextGet("KDImprison"), x + 220, y + 750, 500, "#ffffff",
 				KDTextGray0);
 		}

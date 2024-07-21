@@ -2609,6 +2609,7 @@ type MapMod = {
 	bonussetpieces?: {Type: string, Weight: number}[],
 	altRoom: string,
 	escapeMethod?: string,
+	noPersistentPrisoners?: boolean,
 }
 
 type AIType = {

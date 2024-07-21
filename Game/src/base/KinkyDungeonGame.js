@@ -829,6 +829,11 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 	if (useExisting && location.data[KDGameData.RoomType]) {
 		KDLoadMapFromWorld(worldLocation.x, worldLocation.y, KDGameData.RoomType, direction, constantX);
+
+		// Repopulate
+		altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+		if (!altType?.noPersistentPrisoners && !mapMod?.noPersistentPrisoners)
+			KDRepopulatePersistentNPCs();
 		return;
 	}
 
@@ -4391,7 +4396,8 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 		KDTurnToFace(Enemy.x - KinkyDungeonPlayerEntity.x, Enemy.y - KinkyDungeonPlayerEntity.y);
 	}
 
-	let teasesub = !KDHostile(Enemy) && KinkyDungeonAggressive(Enemy) && KDCanDom(Enemy);
+	let teasesub = !KDHostile(Enemy) && KinkyDungeonAggressive(Enemy) && KDCanDom(Enemy) && Enemy.hp > 0.51
+		&& !KDEntityHasFlag(Enemy, "stopplay");
 	if (!teasesub && Enemy && KDHelpless(Enemy) && Enemy.hp < 0.52) {
 		attackCost = 0;
 		capture = true;
@@ -4474,6 +4480,11 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 
 				if (teasesub && origHP > 0.5) {
 					Enemy.hp = Math.max(0.51, Enemy.hp);
+					KinkyDungeonSetEnemyFlag(Enemy, "stopplay", 4);
+
+					KDAddThought(Enemy.id, "PlayDone", 10, 8);
+					Enemy.playWithPlayer = Math.min(Enemy.playWithPlayer || 0, 1);
+					KDSetPlayCD(Enemy, 1.5, 3);
 				}
 
 				let dmgTotal = -(Enemy.hp - data.orighp);
@@ -4502,11 +4513,6 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 					KinkyDungeonAggro(Enemy, undefined, KinkyDungeonPlayerEntity);
 				Enemy.hp = 0;
 				KinkyDungeonKilledEnemy = Enemy;
-				if (KDIsNPCPersistent(Enemy.id)) {
-					KDGetPersistentNPC(Enemy.id).collect = true;
-					KDGetPersistentNPC(Enemy.id).captured = false;
-					KDUpdatePersistentNPC(Enemy.id);
-				}
 				KinkyDungeonSendEvent("capture", {enemy: Enemy, attacker: KinkyDungeonPlayerEntity, skip: skip});
 				KinkyDungeonChangeStamina(attackCost, false, 1);
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "capture", 1);
@@ -4516,6 +4522,11 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				}
 				KDFreeNPC(Enemy);
 				KDAddCollection(Enemy);
+				if (KDIsNPCPersistent(Enemy.id)) {
+					KDGetPersistentNPC(Enemy.id).collect = true;
+					KDGetPersistentNPC(Enemy.id).captured = false;
+					KDUpdatePersistentNPC(Enemy.id);
+				}
 				KDAddOpinionPersistent(Enemy.id, -50);
 				result = "capture";
 			}

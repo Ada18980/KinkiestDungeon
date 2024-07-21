@@ -814,19 +814,42 @@ function KDUnblock(x, y) {
 	return !blocked;
 }
 
-function SetpieceSpawnPrisoner(x, y) {
+function SetpieceSpawnPrisoner(x, y, persistentOnly) {
 	let Enemy = null;
 	let noJam = false;
 	let noPersistent = false;
 	let altRoom = KDGetAltType(MiniGameKinkyDungeonLevel);
 	if (altRoom?.noPersistentPrisoners) noPersistent = true;
-	if (!noPersistent && KDGameData.CapturedParty?.length > 0) {
-		let index = Math.floor(KDRandom() * KDGameData.CapturedParty.length);
-		let e = KDGameData.CapturedParty[index];
+	let capturedPersistent = KDGetCapturedPersistent(
+		MiniGameKinkyDungeonLevel,
+		KDGameData.RoomType,
+		KDGameData.MapMod,
+		KDMapData.MapFaction);
+	let persistentAvailable =
+		KDGameData.CapturedParty?.length > 0
+		|| capturedPersistent.length > 0;
+	if (!noPersistent && persistentAvailable) {
+		/**
+		 * @type {entity}
+		 */
+		let e = null;
+		if (KDGameData.CapturedParty?.length > 0) {
+			let index = Math.floor(KDRandom() * KDGameData.CapturedParty.length);
+			if (!KDGameData.SpawnedPartyPrisoners) KDGameData.SpawnedPartyPrisoners = {};
+			e = KDGameData.CapturedParty[index];
+			KDGameData.SpawnedPartyPrisoners[e.id + ""] = Math.max(MiniGameKinkyDungeonLevel, 1);
+			KDGameData.CapturedParty.splice(index, 1);
+		} else if (capturedPersistent.length > 0) {
+			let index = Math.floor(KDRandom() * capturedPersistent.length);
+			let npc = capturedPersistent[index];
+			e = npc.entity;
+			KDSetNPCLocation(npc.id, KDGetCurrentLocation());
+			if (!altRoom || (!altRoom?.alwaysRegen && (altRoom?.makeMain || altRoom?.persist))) {
+				npc.jailed = true;
+			}
+		}
+
 		Enemy = e.Enemy;
-		if (!KDGameData.SpawnedPartyPrisoners) KDGameData.SpawnedPartyPrisoners = {};
-		KDGameData.SpawnedPartyPrisoners[e.id + ""] = Math.max(MiniGameKinkyDungeonLevel, 1);
-		KDGameData.CapturedParty.splice(index, 1);
 		noJam = true;
 		e.x = x;
 		e.y = y;
@@ -836,7 +859,7 @@ function SetpieceSpawnPrisoner(x, y) {
 		e.boundLevel = e.hp * 11;
 		e.items = [];
 		KDImprisonEnemy(e, noJam);
-	} else {
+	} else if (!persistentOnly) {
 		Enemy = KinkyDungeonGetEnemy(["imprisonable",
 			"ropeAnger", "ropeRage",
 			"metalAnger", "metalRage",

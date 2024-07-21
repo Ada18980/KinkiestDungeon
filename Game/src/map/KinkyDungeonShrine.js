@@ -190,7 +190,7 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 		}
 
 
-		let costt = 5 * Math.round((1 + MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint/2.5 * (noScale ? 0 : 1))*(
+		let costt = 5 * Math.round((1 + Math.min(KDGetEffLevel(),KinkyDungeonMaxLevel)/KDLevelsPerCheckpoint/2.5 * (noScale ? 0 : 1))*(
 			sell ? (40 * (-0.5*rarity-0.6+1.25**(2.38*rarity)))
 				: (50 * 1.25**(2.38*rarity))
 		)/5);
@@ -525,14 +525,18 @@ function KinkyDungeonDrawShrine() {
 			DrawTextFitKD(TextGet("KDShrineActionDescOffer"),
 				KDModalArea_x+400, YY + 55 - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 20, "left", 70);
 		II++;
+		let tiles = KinkyDungeonRescueTiles();
+		let rescueAvailable = tiles.length > 0;
 		if (DrawButtonKDEx("shrinePray", (bdata) => {
-			KDSendInput("shrinePray", {type: type, cost: cost, targetTile: KinkyDungeonTargetTileLocation});
-			KinkyDungeonTargetTileLocation = "";
-			KinkyDungeonTargetTile = null;
+			if (rescueAvailable) {
+				KDSendInput("shrinePray", {type: type, cost: cost, targetTile: KinkyDungeonTargetTileLocation});
+				KinkyDungeonTargetTileLocation = "";
+				KinkyDungeonTargetTile = null;
+			}
 			return true;
 		}, !KinkyDungeonTargetTile.Rescue, KDModalArea_x, YY + 25 - II*shrineActionSpacing, 325, 60,
 		TextGet("KDShrineActionPray"), KinkyDungeonTargetTile?.Rescue ? KDTextGray2 : "#ffffff", "", "",
-		false, false, KDTextGray2))
+		false, false, rescueAvailable ? KDTextGray2 : "#ff5555"))
 			DrawTextFitKD(TextGet(KinkyDungeonTargetTile?.Rescue ? "KDShrineActionDescPrayFail" : "KDShrineActionDescPray"),
 				KDModalArea_x+400, YY + 55  - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 20, "left", 70);
 		II++;

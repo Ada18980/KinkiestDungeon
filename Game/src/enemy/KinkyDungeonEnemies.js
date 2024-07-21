@@ -134,6 +134,8 @@ function KinkyDungeonNearestJailPoint(x, y, filter, any, qualified, unnocupied) 
 		if (qualified && p.requireLeash && !leash) continue;
 		if (qualified && p.requireFurniture && !furniture) continue;
 		if (unnocupied && KinkyDungeonEntityAt(p.x, p.y)) continue;
+		if (KinkyDungeonEntityAt(p.x, p.y, undefined, undefined, undefined, false)
+			&& KDIsImprisoned(KinkyDungeonEntityAt(p.x, p.y))) continue;
 		let d = Math.max(Math.abs(x - p.x), Math.abs(y - p.y));
 		if (d < dist) {
 			dist = d;
@@ -800,6 +802,7 @@ function KDCollHasFlag(id, flag) {
 }
 
 function KinkyDungeonSetEnemyFlag(enemy, flag, duration) {
+	KDSetCollFlag(enemy.id, flag, duration);
 	if (!enemy.flags) enemy.flags = {};
 	if (enemy.flags[flag]) {
 		if (duration == 0) {
@@ -810,7 +813,6 @@ function KinkyDungeonSetEnemyFlag(enemy, flag, duration) {
 		if (enemy.flags[flag] < duration) enemy.flags[flag] = duration;
 	} else if (duration) enemy.flags[flag] = duration;
 
-	KDSetCollFlag(enemy.id, flag, duration);
 }
 
 /**
@@ -3690,6 +3692,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.allied = KDAllied(enemy);
 	AIData.aggressive = KinkyDungeonAggressive(enemy, player);
 	AIData.domMe = (player.player && AIData.aggressive) ? false : KDCanDom(enemy);
+
 
 	AIData.leashing = enemy.Enemy.tags.leashing && (KDFactionRelation(KDGetFaction(enemy), "Jail")) > -0.5;
 	AIData.highdistraction = KDIsDistracted(enemy);
@@ -6584,18 +6587,19 @@ function KDPlayerIsDefeated() {
 
 function KDPlayerIsDisabled() {
 	return KinkyDungeonFlags.get("playerDisabled")
-		|| (KinkyDungeonStatBlind > 0 || KinkyDungeonStatBind > 0 || KinkyDungeonStatFreeze > 0 || (KDGameData.SlowMoveTurns > 0 && !KinkyDungeonFlags.get("channeling")) || KDGameData.SleepTurns > 0);
+		|| (KinkyDungeonStatBlind > 0 || KinkyDungeonStatBind > 0 || KinkyDungeonStatFreeze > 0 || (KinkyDungeonFlags.get("playerStun") && !KinkyDungeonFlags.get("channeling")) || KDGameData.SleepTurns > 0);
 }
+
 function KDPlayerIsStunned() {
-	return KDPlayerIsDisabled() || KinkyDungeonFlags.get("playerStun")
-		|| (KDGameData.MovePoints < 0 || KDGameData.KneelTurns > 0 || KinkyDungeonSleepiness > 0);
+	return KinkyDungeonStatBlind > 0 || KinkyDungeonFlags.get("playerStun") || KDGameData.SleepTurns > 0 || KinkyDungeonStatFreeze > 0;
 }
 function KDPlayerIsImmobilized() {
 	return KinkyDungeonSlowLevel > 9 || KinkyDungeonGetRestraintItem("ItemDevices");
 }
 
 function  KDPlayerIsSlowed() {
-	return KDPlayerIsStunned() || KinkyDungeonSlowLevel > 1;
+	return KinkyDungeonSlowLevel > 1 || KDPlayerIsStunned() || KinkyDungeonSleepiness > 0
+		|| (KDGameData.MovePoints < 0 || KDGameData.KneelTurns > 0);
 }
 
 
@@ -7789,11 +7793,12 @@ function KDRemoveFromParty(enemy, capture) {
 /**
  *
  * @param {entity} entity
- * @param {boolean} [persistent] - If true, the game will update the npc to be persistent
+ * @param {boolean} [makepersistent] - If true, the game will update the npc to be persistent
+ * @param {boolean} [dontteleportpersistent] - If true, the game will create a new NPC not a persistent one
  * @returns {entity}
  */
 
-function KDAddEntity(entity, persistent) {
+function KDAddEntity(entity, makepersistent, dontteleportpersistent) {
 	let data = {
 		enemy: entity,
 		x: entity.x,
@@ -7802,13 +7807,42 @@ function KDAddEntity(entity, persistent) {
 		typeOverride: false,
 		data: undefined,
 		loadout: undefined,
-		persistent: persistent,
+		persistent: makepersistent,
 	};
-	if (persistent && KDPersistentNPCs["" + data.enemy.id]) {
+
+
+	if (!dontteleportpersistent && KDIsNPCPersistent(data.enemy.id) && KinkyDungeonFindID(data.enemy.id)) {
+		// Move the enemy instead of creating
+
+		let npc = KinkyDungeonFindID(data.enemy.id);
+
+		if (typeof data.entity.Enemy == "string") {
+			data.entity.Enemy = KinkyDungeonGetEnemyByName(data.entity.Enemy);
+		}
+		npc.x = data.x;
+		npc.y = data.y;
+		if (KDIsNPCPersistent(data.enemy.id) && !KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners)
+			KDGetPersistentNPC(data.enemy.id).collect = false;
+
+		KDUpdateEnemyCache = true;
+		return npc;
+	}
+
+	let createpersistent = false;
+
+	if (makepersistent || KDPersistentNPCs["" + data.enemy.id]) {
 		let npc = KDGetPersistentNPC(data.enemy.id);
-		data.enemy = npc.entity;
-		npc.entity.x = data.x;
-		npc.entity.y = data.y;
+		if (npc) {
+			data.enemy = npc.entity;
+			if (typeof npc.entity.Enemy == "string") {
+				npc.entity.Enemy = KinkyDungeonGetEnemyByName(npc.entity.Enemy);
+			}
+			npc.entity.x = data.x;
+			npc.entity.y = data.y;
+			KDUpdateEnemyCache = true;
+		} else {
+			createpersistent = true;
+		}
 	}
 	KinkyDungeonSendEvent("addEntity", data);
 	KDMapData.Entities.push(data.enemy);
@@ -7826,6 +7860,12 @@ function KDAddEntity(entity, persistent) {
 				data.enemy.buffs[b.id] = b;
 	}
 	KDUpdateEnemyCache = true;
+
+	// In case it wasnt made already
+	if (createpersistent) KDGetPersistentNPC(data.enemy.id);
+
+	if (KDIsNPCPersistent(data.enemy.id) && !KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners)
+		KDGetPersistentNPC(data.enemy.id).collect = false;
 	return data.enemy;
 }
 function KDSpliceIndex(index, num = 1) {
@@ -7863,18 +7903,26 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
 		enemy.items = [];
 		enemy.noDrop = true;
 		if (KDIsNPCPersistent(enemy.id)) {
-			if (data.capture) {
+			if (KDGetPersistentNPC(enemy.id).collect
+				|| KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners
+				|| (enemy.playerdmg > 0 && KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) < 8)) {
+				KDGetPersistentNPC(enemy.id).captured = false;
+				KDGetPersistentNPC(enemy.id).collect = true;
+			} else {
 				KDGetPersistentNPC(enemy.id).captured = true;
+				KDGetPersistentNPC(enemy.id).captureFaction = KDMapData.MapFaction;
 			}
-			KDGetPersistentNPC(enemy.id).collect = false;
 		}
+		enemy.playerdmg = undefined;
 		if (KDGameData.SpawnedPartyPrisoners && KDGameData.SpawnedPartyPrisoners[enemy.id + ""]) {
 			KDAddToCapturedParty(enemy);
 		} else {
 			KDRemoveFromParty(data.enemy, data.capture && KDGetFaction(data.enemy) == "Player");
 		}
 	}
-
+	if (KDIsNPCPersistent(enemy.id) && KDGetPersistentNPC(enemy.id)) {
+		KDGetPersistentNPC(enemy.id).jailed = undefined;
+	}
 
 	KDSpliceIndex(forceIndex || KDMapData.Entities.indexOf(data.enemy), 1);
 	return true;

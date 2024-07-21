@@ -2375,7 +2375,8 @@ function KinkyDungeonBulletTrail(b) {
 
 function KinkyDungeonBulletsCheckCollision(bullet, AoE, force, d, inWarningOnly, delta) {
 	let mapItem = KinkyDungeonMapGet(bullet.x, bullet.y);
-	if (!bullet.bullet.passthrough && !bullet.bullet.piercing && !KinkyDungeonOpenObjects.includes(mapItem)) return false;
+	if (bullet.vx || bullet.vy) // Moving projectiles get blocked by grates and walls, but not still objects
+		if (!bullet.bullet.passthrough && !bullet.bullet.piercing && !KinkyDungeonOpenObjects.includes(mapItem)) return false;
 
 	KDBulletEffectTiles(bullet);
 

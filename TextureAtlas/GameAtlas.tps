@@ -702,6 +702,7 @@
             <key type="filename">../Game/Conditions/Thought/Laugh.png</key>
             <key type="filename">../Game/Conditions/Thought/Lose.png</key>
             <key type="filename">../Game/Conditions/Thought/Play.png</key>
+            <key type="filename">../Game/Conditions/Thought/PlayDone.png</key>
             <key type="filename">../Game/Conditions/Thought/Search.png</key>
             <key type="filename">../Game/Conditions/Thought/Sense.png</key>
             <key type="filename">../Game/Conditions/Thought/Shoot.png</key>

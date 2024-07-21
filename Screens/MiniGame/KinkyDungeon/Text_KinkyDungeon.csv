@@ -12561,7 +12561,7 @@ rDollDropoffUse,"(The pole rises and immobilizes you!)"
 dDollDropoff_Use,(Stand over it and place your feet in the footrests)
 rFurniture,"(This is a piece of bondage furniture)"
 rFurnitureUse,"(You lock yourself in the furniture!)"
-dFurniture_Prisoner,(Display one of your prisoners)
+dFurniture_NPC,(Display one of your prisoners)
 dFurniture_Use,(Lock yourself inside)
 
 rTableFood,"FOODMSG|(It invites you to partake in its culinary delights)"
@@ -23465,6 +23465,7 @@ KDRestrainNPCBack,Back to Collection
 KDRestrainNPC,Edit Restraints
 
 KDDrawSelectedTab_Restrain,Editing Restraints
+KDDrawSelectedTab_Imprison,Imprison in Furniture
 
 KDBindNPCSlot_ModuleUtility,Module (Utility)
 KDBindNPCSlot_CollarTag,Leash
@@ -23550,3 +23551,5 @@ KDImprison,Imprison
 KDNPCOpinion,"Opinion: "
 KDLastNPCLocation,"Last Seen on Floor FLR, LOC"
 KDLastNPCLocationSame,"Present in current level"
+KDLastNPCLocationCaptured,"Captured by FCTN"
+KDLastNPCLocationCapturedNone,"Captured by enemies"

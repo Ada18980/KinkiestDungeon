@@ -178,7 +178,8 @@ function KinkyDungeonCanPlay(enemy) {
 	return (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail' || (!KDHostile(enemy)
 		&& !(KDAllied(enemy) && !KDEnemyHasFlag(enemy, "allyPlay"))))
 		&& (enemy.ambushtrigger || !KDAIType[KDGetAI(enemy)] || !KDAIType[KDGetAI(enemy)].ambush)
-		&& !enemy.Enemy.Behavior?.noPlay;
+		&& !enemy.Enemy.Behavior?.noPlay
+		&& enemy.hp > 0.52;
 }
 
 function KinkyDungeonCheckRelease() {
