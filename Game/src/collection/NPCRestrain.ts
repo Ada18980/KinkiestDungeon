@@ -401,7 +401,7 @@ function KDInputSetNPCRestraint(data) {
 	let item = null;
 	if (data.restraint) {
 		let rests = KDGetNPCRestraints(data.npc);
-		if (data.rests[slot.id]) {
+		if (rests && rests[slot.id]) {
 			KDInputSetNPCRestraint({
 				slot: slot.id,
 				id: -1,
