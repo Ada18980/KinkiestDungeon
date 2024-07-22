@@ -238,6 +238,31 @@ function KDRestraint(item) {
 	return KinkyDungeonRestraintsCache.get(item.name);
 }
 
+
+
+
+/**
+ * gets a restraint
+ * @param {Named} item
+ * @returns {number}
+ */
+function KDRestraintBondageMult(item) {
+	let r = KDRestraint(item);
+	if (r) {
+		let data = {
+			item: item,
+			restraint: r,
+			type: KDRestraintBondageType(item),
+			override: undefined,
+			overridePriority: 0,
+			mult: 1,
+		};
+
+		KinkyDungeonSendEvent("calcBondageMult", data);
+		return data.mult * ((KDSpecialBondage[data.type]) ? (KDSpecialBondage[data.type].enemyBondageMult || 1) : 1);
+	}
+	return 1;
+}
 /**
  * gets a restraint
  * @param {Named} item

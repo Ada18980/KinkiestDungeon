@@ -3029,6 +3029,12 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 					KDAddThought(enemy.id, "Annoyed", 5, 1);
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "boundLevel"});
 				}
+
+				/** Do NPC restraint struggling */
+				let struggleNPCTarget = KDNPCStruggleTick(enemy.id, delta);
+				if (struggleNPCTarget) {
+					KDNPCDoStruggle(enemy.id, struggleNPCTarget.slot, struggleNPCTarget.inv);
+				}
 			}
 			let vibe = KDEntityMaxBuffedStat(enemy, "Vibration");
 			if (enemy.distraction > 0 || vibe) {
@@ -6300,21 +6306,26 @@ function KDTieUpEnemy(enemy, amount, type = "Leather", Damage, Msg, Delay) {
 		type: type, // Type of BONDAGE, e.g. leather, rope, etc
 		Damage: Damage,
 		Msg: Msg,
+		amntAdded: 0,
 	};
 
 	KinkyDungeonSendEvent("bindEnemy", data);
 
-	if (data.amount) {
-		enemy.boundLevel = (enemy.boundLevel || 0) + data.amount;
-	}
 	if (data.type) {
 		if (!enemy.specialBoundLevel)
 			enemy.specialBoundLevel = {};
-		enemy.specialBoundLevel[type] = (enemy.specialBoundLevel[type] || 0) + data.specialAmount;
+		let orig = enemy.specialBoundLevel[type] || 0;
+		enemy.specialBoundLevel[type] = Math.max(0, (enemy.specialBoundLevel[type] || 0) + data.specialAmount);
+		data.amntAdded = (enemy.specialBoundLevel[type] || 0) - orig;
+	}
+	if (data.amount || data.amntAdded != undefined) {
+		enemy.boundLevel = Math.max(0, (enemy.boundLevel || 0) + (data.amntAdded != undefined ? data.amntAdded : data.amount));
 	}
 
 	if (data.Msg) {
-		KDDamageQueue.push({floater: TextGet("KDTieUp").replace("AMNT", Math.round(data.amount*10) + ""), Entity: enemy, Color: "#ff8933", Delay: Delay});
+		KDDamageQueue.push({floater: TextGet("KDTieUp").replace("AMNT",
+			Math.round((data.amntAdded != undefined ? data.amntAdded : data.amount)*10) + ""),
+		Entity: enemy, Color: "#ff8933", Delay: Delay});
 	}
 
 	return data;

@@ -1074,6 +1074,8 @@ function KDImprisonEnemy(e, noJam, dialogue = "PrisonerJail", restraint) {
 	KinkyDungeonSetEnemyFlag(e, "imprisoned", -1);
 	if (restraint) {
 		KDSetNPCRestraint(e.id, "Device", restraint);
+		// Add the tieup value
+		KDNPCRestraintTieUp(e.id, restraint, 1);
 	}
 	e.playerdmg = undefined;
 	if (e.hp <= 0.5) e.hp = 0.51;

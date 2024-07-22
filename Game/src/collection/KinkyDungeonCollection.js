@@ -291,6 +291,9 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 		DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
 	}
 
+
+	KDDrawNPCBars(value, x + 0, y + 730, 440);
+
 	if (!KDNPCChar.get(value.id)) {
 		KDSpeakerNPC = suppressCanvasUpdate(() => CharacterLoadNPC("coll" + value.id));
 		KDNPCChar.set(value.id, KDSpeakerNPC);
@@ -869,3 +872,85 @@ let KDCollectionTabDraw = {
 		return III;
 	}
 };
+
+/**
+ *
+ * @param {KDCollectionEntry} value
+ * @param {number} x
+ * @param {number} y
+ * @returns {number} II
+ */
+function KDDrawNPCBars(value, x, y, width) {
+	let enemy = KDGetGlobalEntity(value.id);
+	if (!enemy) return 0;
+
+	let II = 0;
+	let height = 12;
+	let spacing = height + 2;
+	let yy = 0;
+	// Draw binding bars
+	//let helpless = KDHelpless(enemy);
+	let bindAmpMod = 1;//KDGetBindAmp(enemy, bindAmpModBase);
+	if (enemy.boundLevel != undefined && enemy.boundLevel > 0) {
+		let visualbond = bindAmpMod * enemy.visual_boundlevel;
+		let bindingBars = Math.ceil( visualbond / enemy.Enemy.maxhp);
+		let SM = KDGetEnemyStruggleMod(enemy);
+		let futureBound = KDPredictStruggle(enemy, SM, 1);
+		yy += bindingBars * spacing;
+		for (let i = 0; i < bindingBars && i < KDMaxBindingBars; i++) {
+			if (i > 0) II++;
+			let mod = visualbond - bindAmpMod * futureBound.boundLevel;
+			// Part that will be struggled out of
+			KinkyDungeonBarTo(kdcanvas, x, y + yy + 12 - 15 - spacing*II,
+				width, height, Math.min(1, (visualbond - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#ffffff", "#52333f");
+			// Separator between part that will be struggled and not
+			KinkyDungeonBarTo(kdcanvas, 1 + x, y + yy + 12 - 15 - spacing*II,
+				width, height, Math.min(1, (visualbond - mod - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#444444", "none");
+
+		}
+		II -= Math.max(0, Math.min(bindingBars-1, KDMaxBindingBars-1));
+		// Temp value of bondage level, decremented based on special bound level and priority
+		let bb = 0;
+		let bcolor = "#ffae70";
+		let bondage = [];
+		if (futureBound.specialBoundLevel) {
+			for (let b of Object.entries(futureBound.specialBoundLevel)) {
+				bondage.push({name: b[0], amount: b[1] * bindAmpMod, level: 0, pri: KDSpecialBondage[b[0]].priority});
+			}
+			bondage = bondage.sort((a, b) => {
+				return b.pri - a.pri;
+			});
+		} else {
+			bondage.push({name: "Normal", amount: 0, level: futureBound.boundLevel, pri: 0});
+		}
+
+		for (let b of bondage) {
+			if (!b.level) {
+				b.level = bb + b.amount;
+				bb = b.level;
+			}
+		}
+		for (let i = 0; i < bindingBars && i < KDMaxBindingBars; i++) {
+			if (i > 0) II++;
+			// Determine current bondage type
+			let bars = false;
+			for (let bi = bondage.length - 1; bi >= 0; bi--) {
+				let b = bondage[bi];
+				// Filter out anything that doesnt fit currently
+				if (b.level > i * enemy.Enemy.maxhp) {
+					bcolor = KDSpecialBondage[b.name] ? KDSpecialBondage[b.name].color : "#ffae70";
+					// Struggle bars themselves
+					KinkyDungeonBarTo(kdcanvas, x, y + yy + 12 - 15 - spacing*II,
+						width, height, Math.min(1, (Math.max(0, b.level - i * enemy.Enemy.maxhp)) / enemy.Enemy.maxhp) * 100, bcolor, "none",
+						undefined, undefined, bars ? [0.25, 0.5, 0.75] : undefined, bars ? "#85522c" : undefined, bars ? "#85522c" : undefined, 57.5 + b.pri*0.01);
+					bars = true;
+				}
+
+			}
+
+		}
+
+	}
+
+	return II;
+}

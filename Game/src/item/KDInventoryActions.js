@@ -1065,7 +1065,7 @@ let KDInventoryAction = {
 					let level = KDRestraint(item).power;
 					let type = KDRestraintBondageType(item);
 					let status = KDRestraintBondageStatus(item);
-					let mult = (KDSpecialBondage[type]) ? (KDSpecialBondage[type].enemyBondageMult || 1) : 1;
+					let mult = KDRestraintBondageMult(item);
 					KDTieUpEnemy(enemy, level*mult, type);
 					KinkyDungeonSendTextMessage(10,
 						TextGet("KDTieUpEnemy")

@@ -5053,6 +5053,7 @@ let KinkyDungeonEnemies = [
 		],
 		RestraintFilter: {
 			unlimitedRestraints: true,
+			requiredItems: ["MikoGag", "MikoDress"],
 		},
 		preferDodge: true,
 		stamina: 4,
@@ -5077,6 +5078,7 @@ let KinkyDungeonEnemies = [
 		armor: 0, followRange: 1, AI: "hunt",
 		RestraintFilter: {
 			unlimitedRestraints: true,
+			requiredItems: ["MikoGag", "MikoDress"],
 		},
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff7777"},
