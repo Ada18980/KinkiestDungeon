@@ -498,12 +498,12 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 			data.distractionTypesWeakNeg = data.distractionTypesWeakNeg.splice(data.distractionTypesWeakNeg.indexOf("acid"), 1);
 
 	}
-
+	if (data.type == "tickle") {
+		KinkyDungeonSetFlag("tickle", 3);
+	}
 	if (data.arouseTypes.includes(data.type) && !data.arouseAmount) {
 		data.arouseAmount = 0.2;
-		if (data.type == "tickle") {
-			KinkyDungeonSetFlag("tickle", 3);
-		} else if (data.type == "charm") {
+		if (data.type == "charm") {
 			KinkyDungeonSetFlag("headpat", 2);
 		} else if (data.type == "psychic") {
 			KinkyDungeonSetFlag("psychic", 2);

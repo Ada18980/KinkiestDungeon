@@ -1049,7 +1049,7 @@ function KDGetEntityFlags(C) {
 
 	if (C == KinkyDungeonPlayer) {
 		for (let flag of KinkyDungeonFlags.entries()) {
-			flags[flag[0]] = flag[1];
+			flags.set(flag[0], flag[1]);
 		}
 	} else {
 		/** @type {Record<string, number>} */

@@ -250,10 +250,10 @@ let KinkyDungeonSpellSpecials = {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en?.Enemy) {
 			if (KDCanBind(en) && (KinkyDungeonIsDisabled(en) || (en.playWithPlayer && KDCanDom(en)))) {
-				KDGameData.InventoryAction = "Bondage";
-				KDGameData.BondageTarget = en.id;
-				KinkyDungeonDrawState = "Inventory";
-				KinkyDungeonCurrentFilter = LooseRestraint;
+				//KDGameData.InventoryAction = "Bondage";
+				KDCurrentRestrainingTarget = en.id;
+				KinkyDungeonDrawState = "Bondage";
+				//KinkyDungeonCurrentFilter = LooseRestraint;
 				KinkyDungeonSendTextMessage(8, TextGet("KDBondageTarget"), "#ff5555", 1, true);
 				return "Cast";
 			} else {

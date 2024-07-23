@@ -71,6 +71,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 							lock: "",
 							npc: npcID,
 							faction: undefined,
+							time: 1,
 						});
 					}
 					return true;
@@ -190,6 +191,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						lock: "",
 						npc: npcID,
 						faction: undefined,
+						time: 1,
 					});
 				} else {
 					KDSendInput("addNPCRestraint", {
@@ -200,6 +202,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						lock: "White",
 						npc: npcID,
 						faction: KDDefaultNPCBindPalette || inv.item.faction,
+						time: 1,
 					});
 				}
 			}, (inv) => {
@@ -214,14 +217,14 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 		if (currentItem) {
 			DrawTextFitKD(TextGet("KDCurrentItem") + KDGetItemNameString(currentItem.name),
-			x + 620, 60, 400, "#ffffff", KDTextGray1,
+			x + 570, 130, 500, "#ffffff", KDTextGray1,
 			36, "center"
 			);
 		}
 
 		if (ss?.tooltipitem) {
 			DrawTextFitKD(TextGet("KDCurrentItem2") + KDGetItemName(ss.tooltipitem.item),
-			x + 620, 115, 400, "#ffffff", KDTextGray1,
+			x + 570, 180, 500, "#ffffff", KDTextGray1,
 			36, "center"
 			);
 		}
@@ -509,7 +512,7 @@ function KDGetRestraintBondageStats(item: Named) {
 function KDGetExpectedBondageAmount(id: number): Record<string, number> {
 	let result : Record<string, number> = {};
 	if (!KDGameData.NPCRestraints) KDGameData.NPCRestraints = {};
-	let restraints = Object.values(KDGameData.NPCRestraints[id + ""]) || [];
+	let restraints = Object.values(KDGameData.NPCRestraints[id + ""] || {});
 	for (let item of restraints) {
 		let stats = KDGetRestraintBondageStats(item)
 

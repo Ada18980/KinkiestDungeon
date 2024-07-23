@@ -3105,7 +3105,7 @@ function KDFunctionQuestScroll(amount) {
 	return false;
 }
 function KDFunctionCollectionScroll(amount) {
-	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Collection") {
+	if (KinkyDungeonState == "Game" && (KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage")) {
 		if (amount > 0) {
 			KDClickButton("collDOWN");
 		} else {

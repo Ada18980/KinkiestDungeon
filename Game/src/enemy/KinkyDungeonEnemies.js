@@ -1341,6 +1341,21 @@ function KDGetShieldRegen(enemy) {
 	return (enemy?.Enemy?.shieldregen || 0) + KDEntityBuffedStat(enemy, "ShieldRegen");
 }
 
+function KDEaseBars(enemy, delta) {
+	if (enemy.boundLevel != undefined && !(enemy.visual_boundlevel == enemy.boundLevel)) {
+		enemy.visual_boundlevel = KDEaseValue(delta, enemy.visual_boundlevel || 0, enemy.boundLevel, KDBarAdvanceRate, KDBarAdvanceRateMin * enemy.Enemy.maxhp);
+	}
+	if (enemy.hp != undefined && !(enemy.visual_hp == enemy.hp)) {
+		enemy.visual_hp = KDEaseValue(delta, enemy.visual_hp != undefined ? enemy.visual_hp : enemy.Enemy.maxhp, enemy.hp, KDBarAdvanceRate, KDBarAdvanceRateMin * enemy.Enemy.maxhp);
+	}
+	if (enemy.distraction != undefined && !(enemy.visual_distraction == enemy.distraction)) {
+		enemy.visual_distraction = KDEaseValue(delta, enemy.visual_distraction || 0, enemy.distraction, KDBarAdvanceRate, KDBarAdvanceRateMin * enemy.Enemy.maxhp);
+	}
+	if (enemy.lifetime != undefined && !(enemy.visual_lifetime == enemy.lifetime)) {
+		enemy.visual_lifetime = KDEaseValue(delta, enemy.visual_lifetime || 0, enemy.lifetime, KDBarAdvanceRate, KDBarAdvanceRateMin * enemy.maxlifetime);
+	}
+}
+
 function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, CamY, CamXoffset, CamYoffset) {
 	KDDialogueSlots = {};
 	let tooltip = false;
@@ -1356,18 +1371,8 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 
 
 		// Handle enemy bars
-		if (enemy.boundLevel != undefined && !(enemy.visual_boundlevel == enemy.boundLevel)) {
-			enemy.visual_boundlevel = KDEaseValue(delta, enemy.visual_boundlevel || 0, enemy.boundLevel, KDBarAdvanceRate, KDBarAdvanceRateMin * enemy.Enemy.maxhp);
-		}
-		if (enemy.hp != undefined && !(enemy.visual_hp == enemy.hp)) {
-			enemy.visual_hp = KDEaseValue(delta, enemy.visual_hp != undefined ? enemy.visual_hp : enemy.Enemy.maxhp, enemy.hp, KDBarAdvanceRate, KDBarAdvanceRateMin * enemy.Enemy.maxhp);
-		}
-		if (enemy.distraction != undefined && !(enemy.visual_distraction == enemy.distraction)) {
-			enemy.visual_distraction = KDEaseValue(delta, enemy.visual_distraction || 0, enemy.distraction, KDBarAdvanceRate, KDBarAdvanceRateMin * enemy.Enemy.maxhp);
-		}
-		if (enemy.lifetime != undefined && !(enemy.visual_lifetime == enemy.lifetime)) {
-			enemy.visual_lifetime = KDEaseValue(delta, enemy.visual_lifetime || 0, enemy.lifetime, KDBarAdvanceRate, KDBarAdvanceRateMin * enemy.maxlifetime);
-		}
+
+		KDEaseBars(enemy, delta);
 
 		let playerDist = Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y));
 		if (enemy.x >= CamX && enemy.y >= CamY && enemy.x < CamX + KinkyDungeonGridWidthDisplay && enemy.y < CamY + KinkyDungeonGridHeightDisplay
@@ -2993,6 +2998,39 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 				}
 
 			}
+
+			let restraints = (KDGameData.NPCRestraints && KDGameData.NPCRestraints[enemy.id + ""])
+				? Object.values(KDGameData.NPCRestraints[enemy.id + ""])
+				: [];
+			for (let item of restraints) {
+				let status = KDRestraintBondageStatus(item);
+
+				if (status.belt) {
+					KinkyDungeonApplyBuffToEntity(enemy, KDChastity, {});
+				}
+				if (status.toy) {
+					KinkyDungeonApplyBuffToEntity(enemy, KDToy, {});
+				}
+				if (status.plug) {
+					KinkyDungeonApplyBuffToEntity(enemy, KDEntityBuffedStat(enemy, "Plug") > 0 ? KDDoublePlugged : KDPlugged, {});
+				}
+				if (status.blind) {
+					enemy.blind = Math.max(enemy.blind || 0, status.blind);
+				}
+				if (status.silence) {
+					enemy.silence = Math.max(enemy.silence || 0, status.silence);
+				}
+				if (status.bind) {
+					enemy.bind = Math.max(enemy.bind || 0, status.bind);
+				}
+				if (status.slow) {
+					enemy.slow = Math.max(enemy.slow || 0, status.slow);
+				}
+				if (status.disarm) {
+					enemy.disarm = Math.max(enemy.disarm || 0, status.disarm);
+				}
+			}
+
 
 			if (enemy.Enemy.specialCharges && enemy.specialCharges <= 0) enemy.specialCD = 999;
 			KinkyDungeonTickFlagsEnemy(enemy, delta);

@@ -20830,6 +20830,7 @@ KinkyDungeonStatDescHighProfile,"Several enemies on each map will be high value,
 
 
 KDTieUpEnemy,"You apply the RSTR to the ENNME! (AMNT% bound)"
+KDTieUpEnemyNegative,"You untie the ENNME! (AMNT% bound)"
 KDTieUp,+AMNT Bondage!
 KDIsBound,"TargetEnemy receives AMNT binding!"
 KDDisabledBonus,"TargetEnemy is disabled and receives an increased AMNT binding!"
@@ -23512,8 +23513,8 @@ KDBindNPCSlot_ToeTies,Toe Tie
 KDBindNPCSlot_Heels,Heels
 KDBindNPCSlot_BootsEncase,Encasement
 
-KDCurrentItem,"Current Item: "
-KDCurrentItem2,"Apply Item: "
+KDCurrentItem,"Equipped: "
+KDCurrentItem2,"Click to Add "
 
 KDFreePrisoner,Free Prisoners
 
@@ -23553,3 +23554,5 @@ KDLastNPCLocation,"Last Seen on Floor FLR, LOC"
 KDLastNPCLocationSame,"Present in current level"
 KDLastNPCLocationCaptured,"Captured by FCTN"
 KDLastNPCLocationCapturedNone,"Captured by enemies"
+
+KDCantFree,Use 'Truss'em'Up' to edit restraints on this NPC

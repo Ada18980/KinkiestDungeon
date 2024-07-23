@@ -1207,8 +1207,9 @@ function KDProcessInput(type, data): string {
 					}
 				}
 			}
-			}
+			KinkyDungeonCheckClothesLoss = true;
 			break;
+		}
 		case "addNPCRestraint":
 			/**
 				slot: slot.id,
@@ -1218,10 +1219,24 @@ function KDProcessInput(type, data): string {
 				npc: number
 			 */
 			KDInputSetNPCRestraint(data);
+
+			let enemy = KDGetGlobalEntity(data.npc);
+
+			KinkyDungeonSendTextMessage(10,
+				TextGet("KDTieUpEnemy" + (!data.restraint ? "Negative" : ""))
+					.replace("RSTR", KDGetItemNameString(data.restraint))//TextGet("Restraint" + KDRestraint(item)?.name))
+					.replace("ENNME", TextGet("Name" + enemy?.Enemy.name))
+					.replace("AMNT", "" + Math.round(100 * enemy?.boundLevel / enemy?.Enemy.maxhp)),
+				"#ffffff", 1);
+
+			if (data.time) {
+				KinkyDungeonAdvanceTime(1, true);
+			}
 			if (data.npc > 0) {
 				KDSetCollFlag(data.npc, "restrained", 1);
 				KDSetCollFlag(data.npc, "restrained_recently", 24);
 			}
+			KinkyDungeonCheckClothesLoss = true;
 		break;
 	}
 	if (data.GameData) {

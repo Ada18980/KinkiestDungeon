@@ -33,8 +33,21 @@ function KinkyDungeonDrawCollection(xOffset = -125) {
 		}
 	}
 
-
+	KinkyDungeonDrawMessages(true, 550, true, 600);
 	KDDrawInventoryTabs(xOffset);
+}
+function KinkyDungeonDrawBondage(xOffset = -125) {
+	let x = 1225 + xOffset;
+	if (!KDGameData.Collection) KDGameData.Collection = {};
+	let en = KDCurrentRestrainingTarget ? KDGetGlobalEntity(KDCurrentRestrainingTarget) : null;
+	if (en && KDCanBind(en) && (KinkyDungeonIsDisabled(en) || (en.playWithPlayer && KDCanDom(en)))) {
+		KDDrawCollectionRestrain(KDCurrentRestrainingTarget, x + xOffset, 150);
+	} else {
+		KinkyDungeonDrawState = "Game";
+	}
+
+	KinkyDungeonDrawMessages(true, 550, true, 600);
+	//KDDrawInventoryTabs(xOffset);
 }
 
 /**
@@ -273,12 +286,14 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 	let str = TextGet("KDNPCOpinion") + TextGet("KDTooltipOpinion"+opinion);
 	DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
 
-
-	if (KDGetPersistentNPC(value.id)?.captured) {
-		str = TextGet((KDGetPersistentNPC(value.id)?.captureFaction) ? "KDLastNPCLocationCaptured" : "KDLastNPCLocationCapturedNone")
-			.replace("FCTN", TextGet("KinkyDungeonFaction" + KDGetPersistentNPC(value.id)?.captureFaction));
-		DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
+	if (KDIsNPCPersistent(value.id)) {
+		if (KDGetPersistentNPC(value.id)?.captured) {
+			str = TextGet((KDGetPersistentNPC(value.id)?.captureFaction) ? "KDLastNPCLocationCaptured" : "KDLastNPCLocationCapturedNone")
+				.replace("FCTN", TextGet("KinkyDungeonFaction" + KDGetPersistentNPC(value.id)?.captureFaction));
+			DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
+		}
 	}
+
 
 
 	let npcLoc = KDGetNPCLocation(value.id);
@@ -343,7 +358,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 
 		let III = 0;
 		let buttonSpacing = 90;
-		if (DrawButtonKDEx("dressNPC", (b) => {
+		if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("dressNPC", (b) => {
 			if (KDToggles.Sound)
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LightJingle" + ".ogg");
 			//KDSpeakerNPC = null;
@@ -393,7 +408,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 		let assigned = !(!value.Facility);
 		let valid = KDValidateServant(value, KDCurrentFacilityTarget, KDCurrentFacilityCollectionType);
 
-		if (KDCurrentFacilityTarget) {
+		if (KDGameData.Collection[value.id + ""] && KDCurrentFacilityTarget) {
 			let dd = KDGameData.FacilitiesData[KDCurrentFacilityCollectionType + "_" + KDCurrentFacilityTarget];
 			let fac = KDFacilityTypes[KDCurrentFacilityTarget];
 			if (dd && fac && fac["max" + KDCurrentFacilityCollectionType] && (assigned || dd.length < fac["max" + KDCurrentFacilityCollectionType]())) {
@@ -462,7 +477,39 @@ function KDDrawCollectionRestrain(id, x, y) {
 	if (!KDGameData.CollectionSorted) KDSortCollection();
 
 	KDDrawCollectionRestrainMain(id, x, y);
-	KDDrawSelectedCollectionMember(KDGameData.Collection["" + id], x - 460, 150, 0, "Restrain");
+	if (KDGetGlobalEntity(id))
+		KDDrawSelectedCollectionMember(KDGetVirtualCollectionEntry(id), x - 460, 150, 0, "Restrain");
+}
+
+/**
+ * Gets the collection entry, or a virtual one if one doesnt exist
+ * @param {number} id
+ * @returns {KDCollectionEntry}
+ */
+function KDGetVirtualCollectionEntry(id) {
+	if (KDGameData.Collection["" + id]) return KDGameData.Collection["" + id];
+
+	let enemy = KDGetGlobalEntity(id);
+	return {
+		id: enemy.id,
+		name: KDIsNPCPersistent(id) ?
+			KDGetPersistentNPC(enemy.id).Name
+			: enemy.CustomName || TextGet("Name" + enemy.Enemy.name),
+		sprite: (enemy.CustomSprite) || enemy.Enemy.name,
+		// @ts-ignore
+		customSprite: (enemy.CustomSprite),
+		color: enemy.CustomNameColor || "#ffffff",
+		Faction: KDGetFaction(enemy) || KDGetFactionOriginal(enemy),
+		class: "stranger",
+		Training: -100,
+		status: "stranger",
+		oldstatus: "stranger",
+		type: enemy.Enemy.name,
+		Enemy: enemy.modified ? enemy.Enemy : undefined,
+		Willpower: 100 * (enemy.hp / enemy.Enemy.maxhp),
+		Facility: undefined,
+		flags: undefined,
+	};
 }
 
 /**
@@ -472,6 +519,7 @@ function KDDrawCollectionRestrain(id, x, y) {
  * @param {number} y
  */
 function KDDrawCollectionRestrainMain(id, x, y) {
+
 	let restraints = KDGetNPCRestraints(id);
 	KDDrawNPCRestrain(id, restraints, x, y);
 
@@ -807,16 +855,21 @@ let KDCollectionTabDraw = {
 		return III;
 	},
 	Restrain: (value, buttonSpacing, III, x, y) => {
-		if (DrawButtonKDEx("RestrainFree", (b) => {
-			KDSendInput("freeNPCRestraint", {
-				npc: value.id,
-			});
+		if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("RestrainFree", (b) => {
+			if (!KDIsNPCPersistent(value.id) || KDGetPersistentNPC(value.id).collect)
+				KDSendInput("freeNPCRestraint", {
+					npc: value.id,
+				});
+			else {
+				KinkyDungeonSendTextMessage(10, TextGet("KDCantFree"), "#ffffff", 2, true, true);
+			}
 			if (KDToggles.Sound)
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Struggle" + ".ogg");
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 		"", "#ffffff", KinkyDungeonRootDirectory + "UI/RestrainFree.png",
-		undefined, undefined, false)) {
+		undefined, undefined, false, (!KDIsNPCPersistent(value.id) || KDGetPersistentNPC(value.id).collect) ?
+		KDButtonColor : "#ff5555")) {
 			DrawTextFitKD(TextGet("KDFreePrisoner"), x + 220, y + 750, 500, "#ffffff",
 				KDTextGray0);
 		}
@@ -884,6 +937,8 @@ function KDDrawNPCBars(value, x, y, width) {
 	let enemy = KDGetGlobalEntity(value.id);
 	if (!enemy) return 0;
 
+	KDEaseBars(enemy, KDDrawDelta || 0);
+
 	let II = 0;
 	let height = 12;
 	let spacing = height + 2;
@@ -896,15 +951,15 @@ function KDDrawNPCBars(value, x, y, width) {
 		let bindingBars = Math.ceil( visualbond / enemy.Enemy.maxhp);
 		let SM = KDGetEnemyStruggleMod(enemy);
 		let futureBound = KDPredictStruggle(enemy, SM, 1);
-		yy += bindingBars * spacing;
+		yy += -bindingBars * spacing;
 		for (let i = 0; i < bindingBars && i < KDMaxBindingBars; i++) {
 			if (i > 0) II++;
 			let mod = visualbond - bindAmpMod * futureBound.boundLevel;
 			// Part that will be struggled out of
-			KinkyDungeonBarTo(kdcanvas, x, y + yy + 12 - 15 - spacing*II,
+			KinkyDungeonBarTo(kdcanvas, x, y + yy + 30 - spacing*II,
 				width, height, Math.min(1, (visualbond - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#ffffff", "#52333f");
 			// Separator between part that will be struggled and not
-			KinkyDungeonBarTo(kdcanvas, 1 + x, y + yy + 12 - 15 - spacing*II,
+			KinkyDungeonBarTo(kdcanvas, 1 + x, y + yy + 30 - spacing*II,
 				width, height, Math.min(1, (visualbond - mod - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#444444", "none");
 
 		}
@@ -940,7 +995,7 @@ function KDDrawNPCBars(value, x, y, width) {
 				if (b.level > i * enemy.Enemy.maxhp) {
 					bcolor = KDSpecialBondage[b.name] ? KDSpecialBondage[b.name].color : "#ffae70";
 					// Struggle bars themselves
-					KinkyDungeonBarTo(kdcanvas, x, y + yy + 12 - 15 - spacing*II,
+					KinkyDungeonBarTo(kdcanvas, x, y + yy + 30 - spacing*II,
 						width, height, Math.min(1, (Math.max(0, b.level - i * enemy.Enemy.maxhp)) / enemy.Enemy.maxhp) * 100, bcolor, "none",
 						undefined, undefined, bars ? [0.25, 0.5, 0.75] : undefined, bars ? "#85522c" : undefined, bars ? "#85522c" : undefined, 57.5 + b.pri*0.01);
 					bars = true;
