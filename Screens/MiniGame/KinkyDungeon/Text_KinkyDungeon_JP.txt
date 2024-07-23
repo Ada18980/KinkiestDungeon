@@ -33,8 +33,14 @@ Will you prevail against forces unknown, or succumb to its dark secrets?
 (このゲームにはクモや肉食動物/植物は含まれていません)
 (Check out the latest standalone version at the News and Updates link below!)
 (以下のニュースとアップデートのリンクで最新のスタンドアロン バージョンをチェックしてください!)
+Classic Inventory Background
+インベントリの背景を昔の仕様に戻す
 Skip Intro
 オープニングをスキップ
+No Forced Greetings
+強制的な会話ダイアログを抑制
+Show Restraint Info on Escape Hover
+拘束具の情報を表示
 Always Show Warnings
 常に警告を表示
 Always Show Minimap
@@ -42,9 +48,9 @@ Always Show Minimap
 Enable Sound
 サウンドを有効にする
 Drool/Tears
-衣装:よだれ/涙を有効にする
+よだれ/涙を有効にする
 Draw Armor
-衣装:鎧を描写する
+鎧を描写する
 Enable Music
 音楽を有効にする
 Async Rendering (beta)
@@ -58,11 +64,13 @@ Turn Counter
 Flash Screen on Stun
 スタン時に画面を明滅させる
 Map Particles
-マップのパーティクルを表示
+マップのパーティクル
 Distraction Particles
-興奮時のパーティクルを表示
+興奮時のパーティクル
 Vibration Particles
-バイブ類のパーティクルを表示
+バイブ類のパーティクル
+Gag Particle FX
+猿轡のパーティクル
 Show NPC Status
 NPCステータスを表示する
 Show Spell Range
@@ -85,8 +93,8 @@ High Quality Animations
 ハイクオリティなアニメーション
 Enemy Animations
 敵のアニメーション
-One-Click Move
-1クリックで移動する
+One-Click Move (when slowed)
+1クリックで移動する(減速時)
 Latch Shift Key
 トグル式シフトキー
 Crotch Rope under panties
@@ -148,10 +156,21 @@ Flip Player Display
 Grayscale when Blind
 目隠し時に画面を灰色にする
 
+Faster Floater Fade
+フローターを素早く消す
+No Damage Floaters
+ダメージフローターを表示しない
+
+Dynamic Armor (must hide armor)
+ダイナミックアーマー(「鎧を描写する」をオフにする必要あり)
+
 Allow Suspicious Mods
 危険なMODを許可
 Auto Load Mods (offline only)
 MODを自動で読み込む(オフライン専用)
+
+Show Struggle Bars
+もがきゲージを表示する
 
 
 
@@ -180,6 +199,10 @@ Animation Time:
 アニメーションの長さ:
 Map Brightness:
 マップの明るさ:
+Game Font:
+ゲームのフォント：
+Button Font:
+ボタンのフォント：
 
 Select a journey. This will determine the ordering of game areas.
 モードを選択してください。エリアの順番が変わります。
@@ -629,10 +652,10 @@ Goddesses will equip restraints upon acceptance of a quest.
 Nowhere is Safe
 どこも安全ではない
 Beds and furniture are often trapped.
-ベッドや樽等の家具に罠が混じるようになる
+ベッドや樽等のインテリアに罠が混じるようになる
 
 Quakehoof Associate
-
+クエイクフーフ・アソシエイト
 Start with the Epsilon Collar, which regenerates mana when you play with yourself.
 イプシロンの首輪を装備してゲームを開始する。この首輪を装備して自慰をすると、マナが回復する。
 Epsilon Collar
@@ -767,8 +790,8 @@ You take 50% more tickle damage.
 受けるくすぐり属性のダメージが50%増加する
 Stoic
 ストイック
-You gain 82% tickle resist.
-くすぐり属性の耐性が82%増加する
+You gain +82 tickle resist.
+くすぐり属性の耐性が82増加する
 
 Lascivious
 むっつり
@@ -776,7 +799,7 @@ You take 50% more grope damage.
 受ける愛撫属性のダメージが50%増加する
 Unperturbed
 不感症
-You gain 82 grope resist.
+You gain +82 grope resist.
 愛撫属性の耐性が82増加する
 
 Masochist
@@ -785,7 +808,7 @@ Pain is strongly arousing.
 受ける痛み属性のダメージが増加する
 Pain Tolerance
 痛み耐性
-You gain 200 pain resist.
+You gain +200 pain resist.
 痛み属性の耐性が200増加する
 
 Fashionable
@@ -1066,7 +1089,7 @@ Hoods and full-face covering masks do not appear, but blindfolds are more powerf
 
 No Kigurumi Masks
 怪しいマスクなし
-Removes face-mimicing masks from the game.
+Removes face-mimicking masks from the game.
 怪しいマスクがゲーム内に登場しなくなる。
 
 No Blindfolds
@@ -1413,7 +1436,7 @@ Exciting: Orbs give random spells
 エキサイティング: オーブはランダムな呪文を与えます
 Kinky: No save codes, orbs give random spells, start with very little
 Kinky: セーブ コードはありません。オーブはランダムな呪文を与えます。最初はごくわずかです
-Log
+Journal
 ノート
 Change Outfit
 着替える
@@ -1423,17 +1446,10 @@ Load from Code
 コードからロード
 Confirm Reset?
 リセットしてもよろしいですか？
-(Copy the code above and save it on your computer to load later)
-(上のコードをコピーしてコンピューターに保存しておけば、後で読み込むことができます)
-You come across a black monolith with its face inscribed in runes.
-ルーン文字が刻まれた黒いモノリスを発見した。
-You study them, but can't come up with an interpretation.
-解読しようとしても、何を書いてあるのかはさっぱりわからない。
-They may still prove useful to future adventurers should you get caught...
-もしかしたら、どうしようもなくなったときに役に立つかもしれない……
-(Your game has been saved automatically, but you can save the code for later)
-(ゲームは自動的に保存されましたが、後で使用するためにコードを保存できます)
-
+(Your game has been saved)
+ゲームをセーブしました
+(Copy the code above and save it on your computer to backup)
+バックアップコードを保存しておけば、「コードからロード」に入力することでこの場所から再開できます。
 
 Continue...
 進む……
@@ -1560,8 +1576,8 @@ Inspect
 調べる
 Pass NPCs
 NPCを通り抜ける
-Close a Door
-ドアを閉める
+Interact
+インタラクト
 Sprint/Hop
 走る/跳ぶ
 
@@ -1746,8 +1762,8 @@ Enter
 入力
 Message Log
 メッセージログ
-Close Door
-ドアを閉める
+Interact
+インタラクト
 Pass thru allies
 味方を通過
 Auto-Struggle
@@ -1778,8 +1794,8 @@ Reputation
 評判
 Spell List
 スペル一覧
-Logbook
-収集した本
+Journal
+ノート
 Current Key Pressed
 現在押されているキー
 Press a key, then press a button to set that key
@@ -1849,7 +1865,7 @@ Marble Halls
 Doll Storage
 ドール収納庫
 
-Doll Processing
+Processing
 ドール工場
 
 Bandit Hideout
@@ -2245,6 +2261,10 @@ Bola x3
 投げ縄 x3
 Bomb x3
 爆弾×3
+Dynamite x2
+ダイナマイト×2
+Plastic Explosive x2
+プラスチック爆弾×2
 Mana Potion
 マナポーション
 You sip the mana potion and feel empowered.
@@ -2305,9 +2325,9 @@ Creates a smoke screen lasting 8 turns. You are harder to see while inside the s
 8ターン持続する煙幕を張る。煙の中にいると見えにくくなる。
 
 You toss the flash bomb and the fuse starts ticking...
-導火線に火の付いた閃光弾を投げた。
+導火線に火の付いた閃光爆弾を投げた。
 You ready a flash bomb...
-閃光弾の準備ができた。
+閃光爆弾の準備ができた。
 A type of explosive used by agents. Blinds nearby targets without causing significant injury.
 諜報員が使用する爆弾の一種。対象を傷つけることなく無力化する。
 Blinds for 20 turns in a 3x3 area.
@@ -2326,7 +2346,7 @@ Blinds for 24 turns in a 3x3 area. And also Slows and Silences them for half the
 3x3マスの対象を24ターンの間盲目にし、12ターンの間沈黙と減速状態にする。
 
 Flash Bomb x3
-閃光弾 x3
+閃光爆弾 x3
 Flashbang x3
 閃光手榴弾 x3
 Smoke Bomb x3
@@ -2731,7 +2751,7 @@ Four Seasons
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
 発動すると、次の火、水/氷、風/雷、土の呪文のコストを、属性ごとに1回ずつ50減らす。
 Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage. Offhand: Applies passive bonus.
-影属性。火、氷、酸、打撃、電気、圧力のダメージが25%増加する。サブウェポン：火、氷、酸、打撃、電気、圧力のダメージが25%増加する。
+影属性。火、氷、酸、打撃、電気、爆発属性のダメージが25%増加する。サブウェポン：火、氷、酸、打撃、電気、爆発属性のダメージが25%増加する。
 The Arbiter
 アービター
 I have altered the rules. Pray I do not alter them further.
@@ -3411,7 +3431,7 @@ The Ice Dragonheart retreats in a blast of snow.
 The Ice Dragonheart apprehends you! (+RestraintAdded)
 ドラゴンハート・アイスに捕まった！ (+RestraintAdded)
 The Ice Dragonheart gives your body a cold touch! (DamageTaken)
-ドラゴンハート・アイスが体を冷やしてきた！(ダメージテイクン)
+ドラゴンハート・アイスが体を冷やしてきた！(DamageTaken)
 The Dragonheart uses an icy lock on your restraint! (DamageTaken)
 ドラゴンハート・アイスは拘束具に氷のロックをかけてきた！(DamageTaken)
 Poison Dragonheart
@@ -3474,14 +3494,14 @@ Soul Crystal
 ソウルクリスタル
 The crystal shatters into a puff of soul dust!
 ソウルクリスタルは砕け散った！
-The soul crystal leeches willpower from you! (DamageTaken)
-ソウルクリスタルに気力を吸い取られた！ (DamageTaken)
+The soul crystal leeches strength from you! (DamageTaken)
+ソウルクリスタルに力を吸い取られた！ (DamageTaken)
 Active Soul Crystal
 ソウルクリスタル(アクティブ)
 The crystal shatters into a puff of soul dust!
 ソウルクリスタルは砕け散った！
-The soul crystal leeches willpower from you! (DamageTaken)
-ソウルクリスタルに気力を吸い取られた！ (DamageTaken)
+The soul crystal leeches strength from you! (DamageTaken)
+ソウルクリスタルに力を吸い取られた！ (DamageTaken)
 Shadow Dragonheart
 ドラゴンハート・シャドー
 The Shadow Dragonheart frowns and runs away.
@@ -3932,7 +3952,7 @@ The bandit hunter retreats.
 The bandit hunter restrains you! (+RestraintAdded)
 盗賊の精鋭に拘束された！(+RestraintAdded)
 The bandit hunter caresses your restrained body! (DamageTaken)
-盗賊の精鋭に身体を縛られて全身を愛撫された！（ダメージテイクン）
+盗賊の精鋭に身体を縛られて全身を愛撫された！（DamageTaken）
 The bandit hunter calls you an amateur and applies a lock! (DamageTaken)
 盗賊の精鋭は嘲りと共に拘束具をロックしてきた！(DamageTaken)
 Bandit Grappler
@@ -4955,34 +4975,36 @@ A light restores the will of its allies!
 光が味方の意志を回復した！
 You do not have enough resources to cast the spell!
 マナが足りない！
-You AttackName TargetEnemy for DamageDealt DamageType damage!
-TargetEnemy に攻撃し、DamageDealt の DamageType 属性ダメージを与えた！
-You AttackName TargetEnemy for a decreased DamageDealt DamageType damage!
-TargetEnemy に攻撃したが、耐性があるようだ。 DamageDealt の DamageType 属性ダメージを与えた。
-You AttackName TargetEnemy for an increased DamageDealt DamageType damage!
-TargetEnemy に攻撃した。弱点を付き、 DamageDealt の DamageType 属性ダメージを与えた！
-You AttackName TargetEnemy for a devastating DamageDealt DamageType damage!
-TargetEnemy に攻撃した。弱点を付き、 DamageDealt の DamageType 属性ダメージを与えた！！
-You AttackName TargetEnemy, but your DamageType weapon has no effect!
-TargetEnemy に攻撃したが、 DamageType は効果がないようだ。
-You AttackName TargetEnemy for DamageDealt DamageType damage!, reduced by an anti-magic ward!
-TargetEnemy に攻撃したが、魔力障壁によって阻まれた。 DamageDealt の DamageType 属性ダメージを与えた。
+
 AttackName hits TargetEnemy for DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中し、DamageDealt の DamageType 属性ダメージを与えた！
-AttackName hits TargetEnemy for a reduced DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中したが、耐性があるようだ。 DamageDealt の DamageType 属性ダメージを与えた。
-AttackName hits TargetEnemy but DamageType damage doesn't have any effect!
-AttackName は TargetEnemy に命中したが、DamageType は効果がないようだ。
+AttackName が TargetEnemy に命中し、 DamageDealt の DamageType 属性ダメージを与えた！
+AttackName hits TargetEnemy for a decreased DamageDealt DamageType damage!
+耐性があるようだ。 AttackName が TargetEnemy に命中し、 DamageDealt の DamageType 属性ダメージを与えた！
 AttackName hits TargetEnemy for an increased DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中した。弱点を付き、DamageDealt の DamageType 属性ダメージを与えた！
+弱点をついた。 AttackName が TargetEnemy に命中し、 DamageDealt の DamageType 属性ダメージを与えた！
+AttackName hits TargetEnemy for a devastating DamageDealt DamageType damage!
+弱点をついた！ AttackName が TargetEnemy に命中し、 DamageDealt の DamageType 属性ダメージを与えた！！
+AttackName hits TargetEnemy, but your DamageType weapon has no effect!
+AttackName は TargetEnemy に命中したが、 DamageType への耐性により効果がなかった！
+AttackName hits TargetEnemy for DamageDealt DamageType damage!, reduced by an anti-magic ward!
+AttackName は TargetEnemy に命中したが、魔力障壁によって阻まれた。 DamageDealt DamageType 属性ダメージを与えた！
+
+AttackName hits TargetEnemy for DamageDealt DamageType damage!
+AttackName が TargetEnemy に命中し、 DamageDealt の DamageType 属性ダメージを与えた！
+AttackName hits TargetEnemy for a reduced DamageDealt DamageType damage!
+耐性があるようだ。 AttackName が TargetEnemy に命中し、 DamageDealt の DamageType 属性ダメージを与えた！
+AttackName hits TargetEnemy but DamageType damage doesn't have any effect!
+AttackName は TargetEnemy に命中したが、 DamageType への耐性により効果がなかった！
+AttackName hits TargetEnemy for an increased DamageDealt DamageType damage!
+弱点をついた。 AttackName が TargetEnemy に命中し、 DamageDealt の DamageType 属性ダメージを与えた！
 AttackName hits TargetEnemy for DamageDealt DamageType damage, reduced by an anti-magic ward!
 AttackName は TargetEnemy に命中したが、魔力障壁によって阻まれた。 DamageDealt の DamageType 属性ダメージを与えた。
 AttackName hits TargetEnemy for a devastating DamageDealt DamageType damage!
-AttackName は TargetEnemy に命中した。弱点を付き、 DamageDealt の DamageType 属性ダメージを与えた！
-attack
+弱点をついた！ AttackName が TargetEnemy に命中し、 DamageDealt の DamageType 属性ダメージを与えた！！
+Your attack
 攻撃
-damage
-ダメージ
+An effect
+効果
 You miss the TargetEnemy!
 TargetEnemy への攻撃は空振った
 Your attack is too feeble to hurt the TargetEnemy!
@@ -5051,12 +5073,10 @@ You fiddle with the key on the TargetRestraint...
 鍵を使って TargetRestraint の解錠を試みた……
 The lock requires a key.
 鍵がないと解錠できない。
-The green padlock only accepts green keys.
-緑の鍵がないと緑の錠前は開けられない。
-The yellow padlock requires a red and a green key.
-赤と緑の鍵がないと黄色の錠前は開けられない。
-The magical lock only accepts blue keys and can't be picked.
-魔法の錠前はピッキングできず、青い鍵がないと開けられない。
+The lock can only be opened with a key.
+鍵がないと解錠できない。
+The magical lock only accepts magical keys and can't be picked.
+魔法の錠前はピッキングできず、魔法の鍵がないと開けられないようだ。
 The magical lock is guarded with powerful magic. You'll have to wait for it to wear off...
 魔法の錠前は強力な魔法で守られている。魔法が切れるまで待つしかない……
 The item is cybernetically locked. You will need a key card to unlock it.
@@ -5232,11 +5252,11 @@ You wiggle madly, trying to push against the TargetRestraint. You need more leve
 That doesn't seem to work. Maybe something else will help with the TargetRestraint.
 全く効果がない。TargetRestraint を解くには別の方法を試す必要がある。
 You squirm helplessly against the furniture. Maybe something else will help with the TargetRestraint.
-家具に拘束具をこすりつけるも、何も変わらなかった。 TargetRestraint から抜け出すには別の方法を試す必要がある。
+インテリアに拘束具をこすりつけるも、何も変わらなかった。 TargetRestraint から抜け出すには別の方法を試す必要がある。
 You twist your body trying to use the furniture, but it doesn't seem to work. The TargetRestraint remains tight.
-家具を使おうと体をひねるが、うまくいかない。TargetRestraint はきつく締まっている。
+インテリアを使おうと体をひねるが、うまくいかない。TargetRestraint はきつく締まっている。
 You wiggle and squirm, trying to use the furniture to no avail. The TargetRestraint remains tight.
-家具を使って拘束を解こうと体をよじらせるも、 TargetRestraint はきついままだ。
+インテリアを使って拘束を解こうと体をよじらせるも、 TargetRestraint はきついままだ。
 You need something sharper to get at the TargetRestraint.
 TargetRestraint から抜け出すには、鋭利なものが必要だ。
 You need something sharp to loosen the fasteners on the TargetRestraint.
@@ -5572,6 +5592,8 @@ Unlocked
 解錠済み
 Lock Type:
 鍵の種類：
+Lock:
+鍵：
 Simple
 簡単
 Standard
@@ -5590,6 +5612,11 @@ Magic
 魔法
 Cyber
 サイバー
+Integrated Cyber
+インテグレーションサイバー
+Advanced Cyber
+アドバンスドサイバー
+
 Ancient
 古代
 Simple Lock
@@ -5610,6 +5637,10 @@ Purple Lock
 紫の錠前
 Cyber Lock
 電子錠
+Integrated Cyber Lock
+統合電子錠
+Advanced Cyber Lock
+強化電子錠
 
 You can't use that while gagged!
 猿轡をかまされたままでは使えない！
@@ -5794,7 +5825,7 @@ Curses
 Willpower
 気力
 A tablet inscribed with runes of TYPE.
-TYPE のルーン文字が刻まれた石板
+TYPE の石板
 SHRINETYPE Tablet
 SHRINETYPE の石版
 Decypher
@@ -5926,6 +5957,12 @@ Weapons
 武器
 Outfits
 服装
+Restraints
+拘束具
+Miscellaneous
+その他
+Armor
+アーマー
 Wearable
 装備可能
 Miscellaneous
@@ -6002,6 +6039,8 @@ Your arms are pinned behind your back and you can barely move!
 後ろ手に全身を固定されてほとんど動けない！
 You hear a click as the door shuts behind you...
 背後でドアの閉まる音が……
+The display stand suddenly locks into place around you!
+突然動き出したドールスタンドに閉じ込められてしまった！
 Doll Stand
 ドールスタンド
 A mobile display stand for dolls to keep them in place.
@@ -6059,7 +6098,7 @@ A muzzle to keep you from spitting out what's underneath.
 Sorry dear, there's a mystic seal on there to keep it on nice and tight.
 魔法の封印のせいで見た目以上にきつくて固い。
 Ornamental Dress
-豪華なドレス
+豪華な拘束ドレス
 A devious dress that forces the arms into an elbows-touching position.
 肘を固定する赤いドレス。
 It is extremely strict but it is only fabric. The lacing is intricate and will take a long time to remove.
@@ -6906,8 +6945,14 @@ It's quite tight and secured by lockable buckles on your sides.
 側面に錠がついており、アームバインダーをしっかりと固定する。
 The armbinder harness comes off with the armbinder.
 このハーネスはアームバインダーを外したときに一緒に外れる。
+The energy link between your ankle cuffs fizzles into nothing.
+足枷のエネルギーリンクが消失した。
+The energy link between your arm cuffs fizzles into nothing.
+手枷のエネルギーリンクが消失した。
+The energy link between your thigh cuffs fizzles into nothing.
+脚枷のエネルギーリンクが消失した。
 The cuff chains come off with the cuffs.
-枷についた鎖は枷と一緒に外れる。
+枷についた鎖は枷と一緒に外れた。
 The hogtie link comes off.
 ホッグタイは解けた。
 Handcuffs
@@ -7201,9 +7246,9 @@ A quick tie for apprehending prisoners, looped through buckles on the hand restr
 他の縄と組み合わせることで効果を発揮する縛り。
 It's not very secure.
 簡単に抜け出せる。
-Strict Ropework
-とても複雑な縄
-The finishing touches on a tight and strict piece of ropework.
+Chest Harness
+胸縄のハーネス
+The finishing touch on a tight and strict piece of ropework.
 複雑な縄をきつくしたもの。
 It's not very secure.
 簡単に抜け出せる。
@@ -7553,7 +7598,7 @@ Blue latex is silky smooth, very stretchy, and very good at adhering to itself.
 ブルーラテックスはシルクのように滑らかで、非常に伸縮性があり、接着力が非常に優れている。
 
 Heavy Latex Catsuit
-
+頑丈なラテックスキャットスーツ
 A skintight suit that's stretched on tight and made of thick latex. It adheres to latex restraints making struggling more difficult.
 首から下を覆う青いゴム製の厚いキャットスーツ。他のゴム製の拘束具にくっつくため、抜け出すのが困難になる。
 Blue latex is silky smooth, very stretchy, and very good at adhering to itself. Its thickness makes it particularly resistant to cutting.
@@ -8765,7 +8810,7 @@ You pick up a 'magic' wand...
 You pick up a magical ice cube.
 魔力で生成された氷塊を手に入れた。
 You find some treated hemp rope.
-麻縄を手に入れた。
+縄を手に入れた。
 You pick up a feather.
 羽根を手に入れた。
 
@@ -8981,6 +9026,8 @@ Rubble
 瓦礫
 You don't think insurance will cover this.
 この崩れ方は保険適応外だろう。
+No putting that back together.
+元の姿に戻すことはできない。
 
 Can be controlled using CMD spells
 CMD魔法で操作可能
@@ -8998,7 +9045,7 @@ Brickwork
 Doodad
 ディスカッション
 Furniture
-家具
+インテリア
 Table
 テーブル
 Shrine
@@ -10512,7 +10559,7 @@ Lesser Flash
 Ring
 フラッシュリング
 Flash Bomb
-閃光弾
+閃光爆弾
 Flashbang
 閃光手榴弾
 Sparkles!
@@ -11305,7 +11352,7 @@ You hop forward!
 You hop and feel the plugs shifting around inside your body.
 飛び跳ねるとバイブが膣中で上下する。
 The plugs shift in and out with each hop...
-飛び跳ねるごとにバイブが挿入を繰り返す……
+飛び跳ねるごとにバイブが激しく上下する……
 The massive plugs slide in and out mercilessly as you hop...
 飛び跳ねるごとに巨大なバイブに串刺しにされる……
 
@@ -11807,8 +11854,8 @@ Bellows
 天体のサプライチェーンについてというタイトルのエッセイより|天が金を求めることはよく知られている。なぜ天界が金を求めるのかはわからないが、女神たちは、我々が大地から掘り起こすこの無用の金属と引き換えに、その力の一部を我々に与えてくれる。女神たちは金をとても大切にしているため、祠はどこにでもあり、その祠には天使がいて、金を捧げる信者を待っている。
 They say that the maiden who safeguards the graveyard is kind to her pets...
 墓地を守る乙女はペットには優しいらしい……
-They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Portal out of jail and into the hallway where they kept all my things!
-突然襲われて、縛り上げられて牢屋に入れられた。私の持っている伝説の剣が目当てだったようだ。しかし、愚か者たちは足を縛るのを忘れた。ブリンクの魔法で牢屋から脱出し、なんとか廊下に出ることができた。
+They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Blink out of jail and into the hallway where they kept all my things!
+突然襲われて、縛り上げられて牢屋に入れられた。私の持っている伝説の剣が目当てだったようだ。しかし、愚か者たちは足を縛るのを忘れた。ポータルの魔法で牢屋から脱出し、なんとか廊下に出ることができた。
 I am writing this from inside prison. Who would have known they cared so much about me using a shrine? Sheesh.
 刑務所の中からこれを書いている。祭壇を利用するのはご法度だったようだ。なんてこった。
 (A drawing of a bunch of zombies, ordered by danger level. Of note are a zombie surrounded by charms, a zombie surrounded by talismans, a zombie warrior with a sword, and... some kind of shrine maiden that you've never seen before)
@@ -12766,6 +12813,9 @@ Vibed!
 オモチャ振動中
 Flying
 浮遊
+Distracted!
+発情
+
 Soap
 ソープ
 Acid
@@ -12813,7 +12863,7 @@ Shock
 Plush
 ふわふわ
 Blast
-ブラスト
+爆発
 Gas
 ガス
 Chain
@@ -13986,7 +14036,12 @@ Target needs retraining...
 ターゲットに再教育の必要性を確認……
 Sorry, rules are rules~
 規則は規則ですから。
-
+Moving to assist!
+援護します！
+My orders are to shut you down~
+あなたを制圧します。
+Defenses online!
+ディフェンスモジュール起動。
 
 Does not compute.
 計算不能
@@ -16233,8 +16288,8 @@ You really think you're special, huh?
 Combat formation bravo.
 コンバットフォーメーションB！
 
-I'm sorry! I didn't mean to break that vase!
-ごめんなさい！もう花瓶を割ったりしませんから……
+That thing... it scares me.
+あれは……怖いです。
 I won't do it again, I swear!
 もうしませんから！
 Please no! I don't want the edging training again!
@@ -19609,7 +19664,9 @@ Why don't we have a little fun?
 (SPEAKER は頬を赤らめた)|うん、わかった……
 (The SPEAKER smirks)|Be careful what you ask for~
 (SPEAKER ニヤリと笑った)|本当にいいの～？
-(The SPEAKER flashes its lights)|Calculating strictness threshold...
+(The SPEAKER giggles)|Mmmph~
+(SPEAKER 笑みを浮かべている)|んん～。
+(The SPEAKER pauses)|Calculating strictness threshold...
 (SPEAKER はランプをチカチカと点灯させている)|拘束ノ許容量ヲ計算中……
 (Ask her for help)
 (助けを求める)
@@ -19732,6 +19789,8 @@ Fuuka wraps you tightly in restraints! (+RestraintAdded)
 フウカが拘束具を巻き付けてきた！(+RestraintAdded)
 Fuuka squeezes your breasts and smiles! (DamageTaken)
 フウカが笑顔で胸を揉みしだいてきた！(DamageTaken)
+Fuuka snaps her fingers and all your restraints are locked! (DamageTaken)
+フウカが指を鳴らすと、拘束具が全てロックされた！
 
 Angry Fuuka
 怒ったフウカ
@@ -20462,7 +20521,7 @@ Give her a Scroll of Purity
 (The SPEAKER sits bound in high-security manacles.|You'll need to open the lock to get her out.)
 (SPEAKER は手足を厳重な枷で繋がれている|まずは錠を開ける必要がある)
 (You don't have any keys that work on the lock)
-(鍵を持っていない)
+(対応する鍵を持っていない)
 (You can't help her, bound as tightly as you are...)
 (自分がきつく縛られているせいで上手く助けられない……)
 (You unlock her, fumbling around for a while with your bound hands)
@@ -20539,6 +20598,23 @@ An enemy found you while you were busy!
 (ベッドに横たわり、仮眠を取った)
 (Lie down and sleep)
 (ベッドで寝る)
+
+(There is a pole sticking out of the ground)|(A footrest rises from the floor on either side of the pole)|(This seems like an automated binding system for prisoners...)
+(杭が地面から顔を出している)|(杭の左右には、足のマークが付いている)|(囚人を固定する仕掛けのようだ)
+(The pole rises and immobilizes you!)
+(せり上がってきた杭に動きを封じられてしまった！)
+(Stand over it and place your feet in the footrests)
+(上に立ってみる)
+
+(This is a piece of bondage furniture)
+(拘束用のインテリアがある)
+(You lock yourself in the furniture!)
+(自ら中に入って鍵を閉めた！)
+(Display one of your prisoners)
+(捕虜を閉じ込める)
+(Lock yourself inside)
+(中に入って鍵を閉める)
+
 FOODMSG|(It invites you to partake in its culinary delights)
 FOODMSG|(とても美味しそうな匂いがする……)
 (You eat the food and feel your willpower rising)
@@ -20648,11 +20724,19 @@ That should slow you down!
 これでスピードが落ちるはず！
 Try running away now~
 逃げてみなさいよ～
+Initiating prisoner lockdown protocol--Unknown hardware detected
+収監プロトコル開始‐‐不明なデバイスを検知。
+What's this do?
+これは？
+That harness you're wearing is quite convenient for me~
+このハーネス便利なんだよね～。
 Initiating prisoner lockdown protocol
-収監プロトコル開始
-Your RestraintName suddenly snap together as the EnemyName activates them
-EnemyName が RestraintName をアクティブにしたようだ。
-Turn Count:
+収容プロトコル開始。
+Your RestraintName suddenly snap together as the EnemyName activates them!
+EnemyName が RestraintName をアクティブにしたようだ！
+Your harness projects energy tethers between your cuffs EnemyName activates it!
+EnemyName がハーネスをコントロールし、枷のエネルギーリンクをアクティブにした！
+Turn Count: 
 ターン数：
 The Shopkeeper leashes you!
 店主にリードを掴まれた。
@@ -20919,12 +21003,20 @@ A metallic shield preventing you from removing any gags underneath.
 It's made of exquisite Old Civilization metals, resistant to almost all forms of damage.
 旧文明の金属でできており、あらゆるダメージに耐性がある。
 
-Doll Mittens
-サイバードールのミトン
+
+
+Cyber Mittens
+サイバーミトン
+These mittens force your hands into fists, keeping you from using them to do anything useful.
+指を拘束し、道具の利用を制限するミトン。
+It is made of a strong mesh of ancient metallic fiber, kept in place with a metal band.
+旧文明の丈夫な金属繊維と金属バンドでできている。
+Cyber Lockdown Mitts
+サイバーロックダウンミトン
 These long mittens force your hands into fists, keeping you from using them to do anything useful.
-指を封印する長いミトン。
-It is made of a strong mesh of ancient metallic fiber, with no seams in sight.
-旧文明の丈夫な金属繊維でできており、縫い目が一切見当たらない。
+指を拘束し、道具の利用を制限する長いミトン。
+It is made of a strong mesh of ancient metallic fiber, wrapped snugly around your arms to make removal by yourself impossible.
+旧文明の丈夫な金属繊維が使われている、腕を完璧に覆うミトン。自力で抜け出すのは不可能。
 
 Doll Heels
 サイバードールのヒール
@@ -20966,8 +21058,10 @@ Detected new hardware.
 新たなハードウェアを検知
 [Restriction Protocol] Detected new hardware: RESTRAINTNAME. Install progress: PERCENT%
 [拘束プログラム] 新たなハードウェアを検知： RESTRAINTNAME インストール中： PERCENT%
-[Restriction Protocol] Installation complete. Engage mobility restrictions.
-[拘束プログラム] インストール完了。移動制限モード起動。
+[Restriction Protocol] Installation complete. Completing uniform.
+[拘束プログラム] インストール完了。ユニフォーム着用確認。
+[Punishment] Engage mobility restrictions.
+[懲罰プログラム] 移動制御プログラム起動。
 [Training Protocol] Detected hardware: RESTRAINTNAME. Install progress: PERCENT%
 [調教プログラム] 新たなハードウェアを検知： RESTRAINTNAME インストール中： PERCENT%
 Supplemental Stimulation
@@ -21040,8 +21134,12 @@ Transparency
 透明度
 Reset Layer!
 色をリセット
+Reset Properties!
+プロパティをリセット
+Export All Props
+プロップをエクスポート
 Export All Layers
-エクスポート
+レイヤーをエクスポート
 Copy
 コピー
 Paste
@@ -21114,139 +21212,8 @@ Outfit6
 Outfit7
 セーブ7
 
-HairBow
-リボン
-Hairband
-ヘアバンド
-MaidHairband
-メイドのヘアバンド
-MaidFrill
-フリル
-Braid
-三つ編み
-Braid Front
-前
-Braid Back
-後
-Bangs Only
-前髪のみ
-Bangs
-前
-Braid+Back
-三つ編みと後ろ髪
-Braid Upper
-上
-Braid Lower
-下
-Back Only
-後ろ髪のみ
-BackStraight
-後-ストレート
-Curly
-前-くせっ毛
-CurlyBack
-後-くせっ毛
-Underlight
-影
-Curly Back
-後-くせっ毛
-Fluffy
-前-ふわふわ
-Fuzzy
-色
-FrontStraight
-前-パッツン
-Straight
-前-ストレート
-StraightBangs
-前-ナチュラル
-MessyBack
-後-ナチュラル
-MessyBackShort
-後-ナチュラル(短)
-Messy
-ナチュラル
-Short Messy
-ナチュラル(短)
-
-Ponytail
-後-ポニーテール
-FluffyPonytail
-後-ふわふわポニーテール
-Ponytail2
-後-ポニーテール
-TwintailLeft
-ツインテール(左)
-TwintailRight
-ツインテール(右)
-Ahoge
-アホ毛
 ElfCirclet
 エルフのサークレット
-
-ElfEars
-エルフ耳
-ElfEarsLong
-エルフ耳(長)
-ElfEarsFloppy
-エルフ耳(垂れ)
-BunnyEars
-うさみみ
-KittyEars
-ネコ耳
-FoxEars
-キツネ耳
-WolfEars
-犬耳
-WolfTail
-オオカミの尻尾
-KittyTail
-猫の尻尾
-Kitty2Tail
-猫又の尻尾
-FoxTail
-狐の尻尾
-Fox2Tail
-狐の尻尾(2本)
-Fox3Tail
-狐の尻尾(3本)
-Fox4Tail
-狐の尻尾(4本)
-Fox5Tail
-狐の尻尾(5本)
-Fox6Tail
-狐の尻尾(6本)
-Fox7Tail
-狐の尻尾(7本)
-
-Cat Eyes
-目(猫)
-HumanEyes
-目(人間)
-Cat Brows
-眉(猫)
-Simple Mouth
-口(シンプル)
-Simple Blush
-頬(シンプル)
-KjusEyes
-目(KjusEyes1)
-KjusEyes2
-目(KjusEyes2)
-KjusEyes3
-目(KjusEyes3)
-KjusEyes4
-目(KjusEyes4)
-KjusBrows
-眉(Kjus)
-KjusMouth
-口(Kjus)
-KjusBlush
-頬(Kjus)
-Hikimayu
-麻呂眉
-DaskEyes
-目(DaskEyes)
 Earrings
 イヤリング
 ElfEarrings
@@ -21282,276 +21249,6 @@ Elven
 エルフ
 Wolf
 ウルフガール
-
-CatSuit
-キャットスーツ
-CatsuitTop
-キャットスーツ(上/スリーブなし)
-CatsuitTopV
-キャットスーツ(上/V/スリーブなし)
-CatsuitLower
-キャットスーツ(下半身)
-CatsuitLowRise
-キャットスーツ(下半身/ローライズ)
-CatsuitLowerLowRise
-キャットスーツ(下半身/ローライズ)
-CatsuitUpper
-キャットスーツ(上半身)
-SleevelessCatsuitUpper
-キャットスーツ(上半身/スリーブなし)
-CatsuitUpperCropped
-キャットスーツ(胸上)
-TransparentCatsuit
-半透明キャットスーツ
-TransparentCatsuitUpperCropped
-半透明キャットスーツ(胸上)
-TransparentCatsuitUpper
-半透明キャットスーツ((上半身)
-TransparentCatsuitCropped
-半透明キャットスーツ(胸上)
-TransparentCatsuitLower
-半透明キャットスーツ(下半身)
-TransparentCatsuitLowrise
-半透明キャットスーツ(下半身/ローライズ)
-TransparentCatsuitLowerLowRise
-半透明キャットスーツ(下半身/ローライズ)
-
-TorsoLower
-上半身
-TorsoUpper
-下半身
-ArmRight
-右手
-ArmLeft
-左手
-ShoulderRight
-右肩
-ShoulderLeft
-左肩
-Butt
-お尻
-
-PlateArmor
-プレートアーマー
-Pauldrons
-肩当て
-Breastplate
-胸当て
-PlateBoots
-足甲
-GauntletLeft
-ガントレット(左)
-GauntletRight
-ガントレット(右)
-Gauntlets
-ガントレット
-
-ChainArmor
-チェーンメイル
-ChainSkirt
-チェーンスカート
-ChainShirt
-チェーンシャツ
-
-BanditBreastplate
-盗賊の胸甲
-
-Swimsuit
-スクール水着
-StrappySwimsuit
-紐付き水着
-StrappyBra
-紐付きブラ
-VBikini
-ハイレグビキニ
-StrappyBikini
-紐付きビキニ
-StrappyHarness
-紐
-BunnyLeotard
-バニースーツ
-BunnyLeotardHigh
-バニースーツ(ハイ)
-
-LaceBra
-レース付きブラ
-
-Shoulders
-肩
-Coat
-コート
-Cape
-ケープ
-
-BootLeft
-ブーツ(左)
-BootRight
-ブーツ(右)
-
-Shirt
-シャツ
-ShirtChest
-シャツ(胸)
-
-BanditPouch
-盗賊のポーチ
-Pouch
-ポーチ
-BanditKnee
-盗賊の膝当て
-Knee
-膝当て
-BanditChoker
-盗賊の首輪
-Choker
-首輪
-BanditWrist
-盗賊の腕輪
-WristLeft
-腕輪(左)
-WristRight
-腕輪(右)
-ShoeLeft
-靴(左)
-ShoeRight
-靴(右)
-BanditShorts
-盗賊のズボン
-ShortsLeft
-盗賊のズボン(左)
-Shorts
-ズボン
-ShortsLeft
-ズボン(左)
-BanditBoots
-盗賊のブーツ
-
-
-HairBowFrilly
-フリル付きリボン
-BowFrills
-フリル
-MaidApron
-メイドエプロン
-Striped Skirt
-ストライプスカート
-Skirt
-スカート
-Stripe
-ストライプ
-StripeOver
-ストライプ
-SkirtOver
-スカート
-Apron
-エプロン
-MaidBlouse
-メイドブラウス
-Blouse
-ブラウス
-MaidBow
-メイドのリボン
-MaidCorset
-メイドコルセット
-Corset
-コルセット
-CorsetStraps
-ストラップ
-MaidCorsetFull
-メイドコルセット(フル)
-StockingLeft
-ストッキング(左)
-StripeSockLeft
-ストライプストッキング(左)
-StockingRight
-ストッキング(左)
-StripeSockRight
-ストライプストッキング(右)
-Stockings
-ストッキング
-MaidSocks
-メイドソックス
-MaidShoes
-メイドの靴
-
-WitchBlouse
-魔女のブラウス
-BlouseLiner
-ブラウス(お腹)
-BlouseBust
-ブラウス(胸)
-WitchCorset
-魔女のコルセット
-WitchHat
-魔女の帽子
-WitchHatBack
-魔女の帽子(後)
-ApprenticeHat
-見習いの帽子
-ApprenticeHatPuff
-見習いの帽子(ボンボン)
-WitchShoes
-魔女の靴
-WitchSkirt
-魔女のスカート
-SkirtBelt
-スカートベルト
-SkirtRuffle
-スカートのフリル
-
-WarriorBoots
-戦士のブーツ
-SportsBra
-スポーツブラ
-WarriorBustier
-戦士のビスチェ
-BustierChest
-ビスチェ(胸)
-WarriorBelt
-戦士のベルト
-DragonNecklace
-竜のネックレス
-Necklace
-ネックレス
-DragonArmband
-竜のアームバンド
-Armband
-アームバンド
-WarriorSkirt
-戦士のスカート
-
-ZombieHat
-ゾンビの帽子
-ZombieHatBand
-ゾンビの帽子(下)
-ZombieChestTalisman
-ゾンビの御札(胸)
-ZombieTalisman
-ゾンビの御札(額)
-ZombieTalismanBent
-ゾンビの御札(頭)
-Sandals
-サンダル
-RobeBra
-ローブ(胸)
-RobeSleeves
-ローブのスリーブ
-SleeveLeft
-ローブのスリーブ(左)
-SleeveRight
-ローブのスリーブ(右)
-RobeSleeveDecoLeft
-スリーブの装飾(左)
-SleeveDecoRight
-スリーブの装飾(右)
-RobeSleevesDeco
-スリーブの装飾
-RibbonBelt
-リボン(胴)
-RibbonBack
-リボン(後)
-RobeSkirt
-ローブスカート
 
 Labcoat
 白衣
@@ -21714,15 +21411,15 @@ WolfCollarSmallTag
 WolfHarness
 オオカミのハーネス
 FashionLeatherCollar
-革の首輪(ファッション)
+革の首輪
 FashionLeatherBelt
-革のベルト(ファッション)
+革のベルト
 FashionIronCollar
-鉄の首輪(ファッション)
+鉄の首輪
 FashionIronBelt
-鉄のベルト(ファッション)
+鉄のベルト
 FashionSteelCollar
-鋼鉄の首輪(ファッション)
+鋼鉄の首輪
 ElfSkirt
 エルフのスカート
 ElfSkirtBack
@@ -21733,10 +21430,1101 @@ ClothCollarTag
 布の首輪(タグ付き)
 LatexNeckCorset
 ラテックスの首コルセット
-LatexNeckCorset
-ラテックスの首コルセット(マスク)
 FutureCollar
 近未来の首輪
+
+
+Uniforms
+ユニフォーム
+Suits
+スーツ
+Armor
+アーマー
+Underwear
+下着
+Bras
+ブラ
+Bodysuits
+ボディスーツ
+Socks
+靴下
+Shoes
+靴
+Tops
+上着
+Sleeves
+袖
+Corsets
+コルセット
+Skirts
+スカート
+Pants
+ズボン
+Accessories
+アクセサリー
+Fashion Restraints
+拘束具(見た目)
+Hats
+帽子
+Toys and Piercings
+オモチャ
+Hairstyles
+ヘアスタイル
+Face
+顔
+Eyes
+目
+Mouth
+口
+Body
+身体
+Gloves
+グローブ
+'Cosplay'
+'コスプレ'
+Weapons
+武器
+
+Cat Eyes
+目(猫)
+HumanEyes
+目(人間)
+Cat Brows
+眉(猫)
+Simple Mouth
+口(シンプル)
+Simple Blush
+頬(シンプル)
+KjusEyes
+目(KjusEyes1)
+KjusEyes2
+目(KjusEyes2)
+KjusEyes3
+目(KjusEyes3)
+KjusEyes4
+目(KjusEyes4)
+KjusBrows
+眉(Kjus)
+KjusMouth
+口(Kjus)
+KjusBlush
+頬(Kjus)
+Hikimayu
+麻呂眉
+DaskEyes
+目(DaskEyes)
+猫目
+Right Eye
+右目
+Left Eye
+左目
+Cat Brows
+眉(猫)
+Right Brow
+右眉
+Left Brow
+左眉
+Mouth
+口
+Blush
+頬
+
+Braid
+三つ編み
+Braid Front
+前
+Braid Back
+後
+Bangs Only
+前髪のみ
+Bangs
+前
+Braid+Back
+三つ編みと後ろ髪
+Braid Upper
+上
+Braid Lower
+下
+Back Only
+後ろ髪のみ
+Curly
+前-くせっ毛
+CurlyBack
+後-くせっ毛
+Underlight
+影
+Curly Back
+後-くせっ毛
+Fluffy
+前-ふわふわ
+Fuzzy
+色
+FrontStraight
+前-パッツン
+Straight
+前-ストレート
+BackStraight
+後-ストレート
+StraightBangs
+前-ナチュラル
+MessyBack
+後-ナチュラル
+MessyBackShort
+後-ナチュラル(短)
+Messy
+ナチュラル
+Short Messy
+ナチュラル(短)
+Ponytail
+後-ポニーテール
+FluffyPonytail
+後-ふわふわポニーテール
+Ponytail2
+後-ポニーテール
+TwintailLeft
+ツインテール(左)
+TwintailRight
+ツインテール(右)
+Hairband2
+ヘアバンド2
+AuraHair
+束ね
+AuraBang_Left
+左髪
+AuraBang_Right
+右髪
+AuraBang_Left_Back
+左髪(後)
+AuraBang_Right_Back
+右髪(後)
+Hair2
+お団子
+Hair2_LeftPuff
+左お団子
+Hair2_RightPuff
+右お団子
+Hair3
+ロングウェーブ
+Hair4
+ツインテール(長)
+Hair4_TailLeft
+ツインテール(長)(左)
+Hair4_TailRight
+ツインテール(長)(右)
+Hair5
+ツインテール
+Hair5_Highlight
+ツインテール(前髪一部)
+Hair5_TailLeft
+ツインテール(左)
+Hair5_TailRight
+ツインテール(右)
+Hair6
+ツインテール(短)
+Hair6_TailLeft
+ツインテール(短)(左)
+Hair6_TailRight
+ツインテール(短)(右)
+
+ArmRight
+右腕
+ArmLeft
+左腕
+ShoulderRight
+右肩
+ShoulderLeft
+左肩
+ForeArmRight
+右前腕
+ForeArmLeft
+左前腕
+HandRight
+右手
+HandLeft
+左手
+ForeHandRight
+右前手
+ForeHandLeft
+左前手
+LegLeft
+左足
+LegRight
+右足
+Butt
+尻
+Eyes
+目
+Eyes2
+左目
+Brows
+眉
+Brows2
+眉2
+Blush
+頬
+
+
+ElfEars
+エルフ耳
+ElfFront
+左耳
+ElfBack
+右耳
+ElfEarsLong
+エルフ耳(長)
+ElfLongFront
+左耳
+ElfLongBack
+右耳
+ElfEarsFloppy
+エルフ耳(垂れ)
+ElfFloppyFront
+左耳
+ElfFloppyBack
+右耳
+ElfEarrings
+エルフのイヤリング
+ElfEarringsFront
+エルフのイヤリング(左)
+ElfEarringsBack
+エルフのイヤリング(右)
+Earrings
+イヤリング
+EarringsBack
+イヤリング
+
+BunnyEars
+うさ耳
+Ears
+耳
+EarsInner
+内側
+KittyEars
+猫耳
+Kitty
+耳
+KittyInner
+内側
+WolfEars
+犬耳
+WolfInner
+内側
+FoxEars
+キツネ耳
+Fox
+耳
+FoxInner
+内側
+WolfTail
+オオカミの尻尾
+KittyTail
+猫の尻尾
+Kitty2Tail
+猫又の尻尾
+Kitty2
+尻尾
+FoxTail
+キツネの尻尾
+Fox2Tail
+キツネの尻尾(2本)
+Fox2
+尻尾
+Fox3Tail
+キツネの尻尾(3本)
+Fox3
+尻尾
+Fox4Tail
+キツネの尻尾(4本)
+Fox4
+尻尾
+Fox5Tail
+キツネの尻尾(5本)
+Fox5
+尻尾
+Fox6Tail
+キツネの尻尾(6本)
+Fox6
+尻尾
+Fox7Tail
+キツネの尻尾(7本)
+Fox7
+尻尾
+
+KittyLatex
+ラテックスキャット
+KittyLatexEar
+ネコミミヘッドホン
+KittyLatexTail
+ラテックスの猫の尻尾
+KittyLatexTail2
+ラテックスの猫の尻尾(2本)
+
+Succubus
+サキュバス
+SuccubusWing
+サキュバスの翼
+SuccubusHorn
+サキュバスの角
+SuccubusTail
+サキュバスの尻尾
+SuccubusClaws
+サキュバスの爪
+SuccubusFeet
+サキュバスの足爪
+
+CatSuit
+キャットスーツ
+CatsuitTop
+キャットスーツ(上/スリーブなし)
+CatsuitTopV
+キャットスーツ(上/V/スリーブなし)
+CatsuitLower
+キャットスーツ(下半身)
+CatsuitLowRise
+キャットスーツ(下半身/ローライズ)
+CatsuitLowerLowRise
+キャットスーツ(下半身/ローライズ)
+CatsuitUpper
+キャットスーツ(上半身)
+SleevelessCatsuitUpper
+キャットスーツ(上半身/スリーブなし)
+CatsuitUpperCropped
+キャットスーツ(胸上)
+TransparentCatsuit
+半透明キャットスーツ
+TransparentCatsuitUpperCropped
+半透明キャットスーツ(胸上)
+TransparentCatsuitUpper
+半透明キャットスーツ((上半身)
+TransparentCatsuitCropped
+半透明キャットスーツ(胸上)
+TransparentCatsuitLower
+半透明キャットスーツ(下半身)
+TransparentCatsuitLowrise
+半透明キャットスーツ(下半身/ローライズ)
+TransparentCatsuitLowerLowRise
+半透明キャットスーツ(下半身/ローライズ)
+CatsuitLowerLeotard
+キャットスーツ(下半身/レオタード)
+TransparentCatsuitLowerLeotard
+半透明キャットスーツ(下半身/レオタード)
+
+Torso Upper
+胴体上
+Torso Lower
+胴体下
+
+Ahoge
+アホ毛
+Head
+頭
+Torso
+胴体
+Catsuit
+キャットスーツ
+Torso Lower
+胴体(下)
+Torso Upper
+胴体(上)
+Labcoat
+白衣
+Shoulders
+肩
+Coat
+コート
+Cape
+ケープ
+
+Pauldrons
+肩甲
+Breastplate
+胸甲
+PlateBoots
+足甲
+BootLeft
+ブーツ(左)
+BootRight
+ブーツ(右)
+Gauntlets
+腕甲
+GauntletLeft
+腕甲(左)
+GauntletRight
+腕甲(右)
+PlateArmor
+プレートアーマー
+
+
+ChainShirt
+鎖帷子のシャツ
+ChainBikini
+鎖帷子のビキニ
+ShirtChest
+胴体
+Shirt
+シャツ
+ChainSkirt
+鎖帷子のスカート
+ChainSkirt2
+鎖帷子のスカート(軽)
+Skirt
+スカート
+ChainArmor
+鎖帷子
+
+
+BanditShorts
+盗賊のズボン
+BanditBoots
+盗賊のブーツ
+ShoeLeft
+靴(左)
+ShoeRight
+靴(右)
+BanditBreastplate
+盗賊の胸甲
+BanditWrist
+盗賊の腕輪
+BanditWristLeft
+盗賊の腕輪(左)
+BanditWristRight
+盗賊の腕輪(右)
+WristLeft
+左腕
+WristRight
+右腕
+Bandit
+盗賊
+
+
+
+Striped Skirt
+メイドのスカート
+MaidApron
+メイドのエプロン
+Apron
+エプロン
+MaidBlouse
+メイドのブラウス
+Blouse
+ブラウス
+BlouseBust
+ブラウス(胸)
+MaidBow
+メイドのリボン
+MaidCorset
+メイドのコルセット
+MaidCorsetFull
+メイドのコルセット(フル)
+CorsetStraps
+コルセットの装飾
+MaidSockLeft
+メイドの靴下(左)
+SockLeft
+靴下(左)
+MaidSockRight
+メイドの靴下(右)
+SockRight
+靴下(右)
+MaidShoes
+メイドの靴
+MaidSocks
+メイドの靴下
+Corset
+コルセット
+Maidforce Agent
+メイドフォース
+
+Elven
+エルフ
+Bunny Suit
+バニースーツ
+Dress
+ドレス
+
+
+WitchBlouse
+魔女のブラウス
+BlouseLiner
+ブラウス(お腹)
+WitchCorset
+魔女のコルセット
+WitchHat
+魔女の帽子
+WitchHatBack
+魔女の帽子(後)
+ApprenticeHat
+見習いの帽子
+ApprenticeHatPuff
+ボンボン
+WitchShoes
+魔女の靴
+WitchSkirt
+魔女のスカート
+SkirtBelt
+スカートベルト
+SkirtRuffle
+スカートの裾
+Witch
+魔女
+
+
+WarriorBoots
+戦士のブーツ
+SportsBra
+スポーツブラ
+WarriorBustier
+戦士のビスチェ
+BustierChest
+ビスチェ(胴体)
+Bustier
+ビスチェ
+WarriorBelt
+戦士のベルト
+DragonNecklace
+竜のネックレス
+Necklace
+ネックレス
+DragonArmband
+竜のアームバンド
+Armband
+アームバンド
+DragonCollar
+竜の首輪
+WarriorSkirt
+戦士のスカート
+Dragonheart
+ドラゴンハート
+
+
+ZombieHat
+ゾンビの帽子
+ZombieHatBand
+ゾンビの帽子(バンド)
+ZombieChestTalisman
+ゾンビの胸の御札
+ZombieTalisman
+ゾンビの御札
+ZombieTalismanBent
+ゾンビの御札(斜め)
+Sandals
+サンダル
+RobeBra
+ローブのブラ
+RobeSleeveLeft
+ローブのスリーブ(左)
+SleeveLeft
+スリーブ(左)
+RobeSleeveRight
+ローブのスリーブ(右)
+SleeveRight
+スリーブ(右)
+RobeSleeves
+ローブのスリーブ
+RobeSleeveDecoLeft
+ローブのスリーブ(左)(装飾)
+SleeveDecoLeft
+スリーブ(左)(装飾)
+RobeSleeveDecoRight
+ローブのスリーブ(右)(装飾)
+SleeveDecoRight
+(右)(装飾)
+RobeSleevesDeco
+ローブのスリーブ(装飾)
+Ribbon
+リボン
+RibbonBelt
+リボン(ベルト)
+RibbonBack
+リボン(後)
+RobeSkirt
+ローブスカート
+Robes
+ローブ
+
+Arm Ropes
+腕縄
+Upper Chest Strap
+胸上のストラップ
+Shoulder Straps
+肩のストラップ
+Lower Chest Straps
+胸下のストラップ
+Arm Straps
+腕のストラップ
+
+HairBow
+リボン
+HairBowFrilly
+リボン(フリル)
+BowFrills
+リボン(フリル)
+Hairband
+ヘアバンド
+MaidHairband
+メイドのヘアバンド
+MaidFrill
+メイドのフリル
+
+BanditPouch
+盗賊のポーチ
+Pouch
+ポーチ
+BanditKnee
+盗賊の膝当て
+Knee
+膝
+
+BanditChoker
+盗賊のチョーカー
+Choker
+チョーカー
+
+Stockings
+ストッキング
+StockingLeft
+ストッキング(左)
+StockingRight
+ストッキング(右)
+Stripe
+ストライプ
+
+LeatherGloveLeft
+革のグローブ(左)
+GloveLeft
+グローブ(左)
+LeatherGloveRight
+革のグローブ(右)
+GloveRight
+グローブ(右)
+LeatherGloves
+革のグローブ
+
+SailorCollar
+セーラー服(カラー)
+SailorBow
+セーラー服(リボン)
+SailorTop
+セーラー服(袖なし)
+SailorSleeves
+セーラー服(袖)
+SailorShirt
+セーラー服(シャツのみ)
+Sailor
+セーラー服
+
+ChineseDress
+チャイナドレス
+ChineseBra
+チャイナドレス(ブラ)
+ChineseTop
+チャイナドレス(上)
+
+Yukata
+着物
+YukataWaist
+帯
+YukataWaistPattern
+帯(装飾)
+YukataSleeves
+着物(袖)
+YukataShirt
+着物(上)
+YukataSkirt
+着物(下)
+YukataPattern
+帯(装飾)
+
+Ninja
+忍者装束
+NinjaSkirt
+忍者装束(下)
+NinjaSocks
+足袋
+NinjaSockLeft
+足袋(左)
+NinjaSockRight
+足袋(右)
+NinjaThighLeft
+忍びの膝布(左)
+NinjaThighRight
+忍びの膝布(右)
+NinjaKneeLeft
+忍びの膝当て(左)
+NinjaKneeRight
+忍びの膝当て(右)
+NinjaThighs
+忍びの膝布
+NinjaKnees
+忍びの膝当て
+NinjaShoes
+草履
+ClothBra
+忍者装束(上)(下着)
+ClothBraBand
+忍者装束(ライン)(上)(下着)
+ClothTop
+忍者装束(上)
+ClothTopBand
+忍者装束(ライン)(上)
+
+Swimsuit
+スクール水着
+SwimsuitUnder
+スクール水着(下)
+StrappySwimsuit
+紐付き水着
+StrappyBra
+紐付きブラ
+VBikini
+ハイレグビキニ
+StrappyBikini
+紐付きビキニ
+StrappyHarness
+紐
+BunnyLeotard
+バニースーツ
+BunnyLeotardHigh
+バニースーツ(ハイ)
+BunnyLeotardHighUnder
+バニースーツ(ハイ)(下着)
+BunnyLeotardHighUnder
+バニースーツ(下着)
+BunnyGloveLeft
+バニーのグローブ(左)
+BunnyGloveRight
+バニーのグローブ(右)
+LeatherLeotard
+革のレオタード
+LeatherLeotardTop
+革のレオタード(上)
+LeatherLeotardBottom
+革のレオタード(下)
+LeatherLeotardCorset
+革のレオタード(コルセット)
+LeatherLeotardStrapsUpper
+革のレオタードのストラップ(上)
+LeatherLeotardStrapsLower
+革のレオタードのストラップ(下)
+LeatherLeotardStrapsLowerClean
+革のレオタードのストラップ(下)(紐)
+
+OperaGlove
+オペラグローブ
+OperaGloveLeft
+オペラグローブ(左)
+OperaGloveRight
+オペラグローブ(右)
+
+SailorSleeveLeft
+セーラー服の袖(左)
+SailorSleeveRight
+セーラー服の袖(右)
+DressBlouseSleeveRight
+ブラウスの袖(右)
+YukataSleeveLeft
+着物の袖(左)
+YukataSleeveRight
+着物の袖(右)
+MageCorset
+メイジのコルセット
+BuckleCorset
+バックル付きコルセット
+
+ApronSkirt
+エプロンスカート
+DressSkirtSplitNoBelt
+ドレススカート(前開き)(ベルト無)
+StripedSkirt
+ストライプスカート
+
+LaceBra
+レース付きブラ
+LaceDeco
+ビスチェのリボン
+Catsuit
+キャットスーツ
+LaceBustier
+レースビスチェ
+LatexBra
+ラテックスのブラ
+LatexBraStraps
+ラテックスブラのストラップ
+LatexBraStrapsCross
+ラテックスブラのクロスストラップ
+LatexBustier
+ラテックスビスチェ
+MageBra
+メイジのブラ
+LatexTop
+ラテックスのトップス
+LatexTopZip
+ラテックスのトップ(ジッパー)
+LacePanties
+レースのパンツ
+LaceCrotchPanel
+レースの股引
+ElfPanties
+エルフのパンツ
+ElfTop
+エルフのトップス
+ElfBra
+エルフのブラ
+WolfPanties
+オオカミのパンツ
+WolfTorsoUpper
+オオカミのスーツ(上)
+MaidSockLeft
+メイドのソックス(左)
+MaidSockRight
+メイドのソックス(右)
+SockLeft
+ソックス(左)
+SockRight
+ソックス(右)
+BunnySocks
+バニーのソックス
+BunnySockLeft
+バニーのソックス(左)
+BunnySockRight
+バニーのソックス(右)
+WolfSocks
+オオカミのソックス
+WolfSockLeft
+オオカミのソックス(左)
+WolfSockRight
+オオカミのソックス(右)
+ElfShoes
+エルフのサンダル
+DressShoes
+ハイヒール
+WolfHeels
+オオカミのヒール
+BalletHeels
+バレエヒール
+FlatBalletHeels
+平らなバレエヒール
+LeatherHeels
+革のヒール
+TallHeels
+ロングヒール
+LaceBustier
+レースビスチェ
+LatexBustier
+ラテックスのビスチェ
+DressBlouse
+ブラウス
+BlouseCollar
+ブラウスの襟
+BlouseSkirt
+ブラウス(下)
+DressBlouseBust
+ブラウス
+DressBlouseCropped
+ブラウス(上半身)
+DressBlouseSleeves
+ブラウスの袖
+LeatherGloves
+革のグローブ
+BunnyGloves
+バニーグローブ
+WolfGloves
+オオカミのグローブ
+RobeSleeveLeft
+ローブのスリーブ(左)
+RobeSleeveRight
+ローブのスリーブ(右)
+DressBlouseSleeveLeft
+ブラウスの袖(左)
+DressBlouseSleevesRight
+ブラウスの袖(右)
+LaceCorset
+レースのコルセット
+LaceBraDeco
+レースのブラ(装飾)
+BowCorset
+コルセット
+BowCorsetBow
+コルセットの紐
+BowCorsetBust
+ブラ
+BowCorsetBustBow
+ブラ(紐)
+BowCorsetLong
+ロングコルセット
+BowCorsetOverbust
+コルセットブラ
+BowCorsetLongOverbust
+コルセットブラ(長)
+BowCorsetOverbustBow
+コルセットブラ(紐)
+BowCorsetLongOverbustBow
+ロングコルセットブラ(紐)
+LatexCorset
+ラテックスのコルセット
+LatexBra
+ラテックスのブラ
+LatexBustier
+ラテックスのビスチェ
+LatexCorsetFull
+ラテックスのコルセット(フル)
+LatexCorsetStrap
+ラテックスのコルセット(紐)
+LatexCorsetFullStrap
+ラテックスのコルセット(フル)(紐)
+LatexCorsetCross
+ラテックスのコルセット(クロス紐)
+LatexCorsetFullCross
+ラテックスのコルセット(フル)(クロス紐)
+MageSkirt
+メイジのスカート
+MageTop
+メイジのブラ
+ClothBelt
+帯
+ClothBeltLines
+帯(ライン)
+DressSkirt
+ドレススカート
+DressSkirtSplit
+ドレススカート(前開き)
+BindingDress
+拘束ドレス
+ElfCollar
+エルフの首輪
+ElfBands
+エルフのアームバンド
+WolfCollar
+オオカミの首輪
+WolfCollarTag
+オオカミの首輪のタグ
+WolfCollarSmall
+オオカミの首輪(小)
+WolfCollarSmallTag
+オオカミの首輪のタグ(小)
+WolfHarness
+オオカミのハーネス
+WolfGloveLeft
+オオカミのグローブ(左)
+WolfGloveRight
+オオカミのグローブ(右)
+WolfTorsoLower
+オオカミのパンツ
+FashionLeatherCollar
+革の首輪
+FashionLeatherBelt
+革のベルト
+FashionIronCollar
+鉄の首輪
+FashionIronBelt
+鉄のベルト
+FashionSteelCollar
+鋼鉄の首輪
+FashionSteelCollarRunes
+鋼鉄の首輪(ルーン付き)
+ElfSkirt
+エルフのスカート
+ElfSkirtBack
+エルフのスカート(後)
+ClothCollar
+布の首輪
+ClothCollarTag
+布の首輪(タグ付き)
+LatexNeckCorset
+ラテックスの首コルセット
+FutureCollar
+近未来の首輪
+ShinyBalletHeels
+光沢のあるバレエヒール
+CyberBalletHeels
+サイバーバレエヒール
+SmoothHeels
+シンプルなヒールブーツ
+TallBalletHeels
+ロングバレエヒール
+MageCollar
+メイジの首輪
+MageCollar2
+メイジの首輪2
+
+
+
+FashionKiguMask
+マスク
+FashionIronCollarClip
+鉄の首輪
+FashionLeatherMittens
+革のミトン
+FashionLeatherPawMittens
+革の肉球ミトン
+FashionLatexMittens
+ラテックスのミトン
+FashionLongMittens
+ロングミトン
+FashionRopeHarness
+縄のハーネス
+FashionRopeCrotch
+股縄
+FashionRopeChestStraps2
+胸縄
+FashionRibbonHarness
+リボンハーネス
+FashionRibbonCrotch
+股のリボン
+FashionShackles
+枷
+FashionShacklesArms
+腕の枷
+FashionShacklesWristLeft
+手枷(左)
+FashionShacklesWristRight
+手枷(右)
+FashionShacklesWrists
+手枷
+FashionShacklesElbowLeft
+肘枷(左)
+FashionShacklesElbowRight
+肘枷(右)
+FashionShacklesElbows
+肘枷
+FashionShacklesAnkles
+足枷
+FashionShacklesAnklesLeft
+足枷(左)
+FashionShacklesAnklesRight
+足枷(右)
+FashionShacklesThigh
+膝枷
+FashionShacklesThighLeft
+膝枷(左)
+FashionShacklesThighRight
+膝枷(右)
+FashionThighLink
+膝枷の鎖
+FashionAnkleLink
+足枷の鎖
+FashionLeatherCollarBell
+首輪(ベル)
+FashionLeatherCollarBow
+首輪(リボン)
+
+
+
+NippleClamps
+ニプルクランプ
+RingVibes
+リングバイブ
+NippleWeights
+ニプルウェイト
+VibePiercings
+バイブピアス
+
+NightWhip
+鞭
+LatexWhip
+ラテックスの鞭
+
+
 
 Items on Ground:
 アイテムが落ちている：
@@ -21985,6 +22773,7 @@ A playful ghost now accompanies you on your journey.
 いたずら好きの幽霊が憑いてくるようになった。
 The ghost haunting you decides to have a little fun! (+RestraintAdded)
 取り憑いている幽霊がいたずらしてきた！ (+RestraintAdded)
+
 Boxtie
 高手小手縛り
 A box tie keeping your arms secured behind your back.
@@ -21997,8 +22786,8 @@ A quick tie for apprehending prisoners.
 囚人を素早く縛るための縄。
 It's not very secure.
 簡単に抜け出せる。
-Intricate Ropework
-複雑な縄
+Chest Straps
+胸縄
 A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
 他の拘束具と繋ぎ合わせ、拘束を強固にするための縄。
 It's not very secure.
@@ -22191,6 +22980,24 @@ Ankles
 足首
 Boots
 ブーツ
+Mittens
+ミトン
+Harnesses
+ハーネス
+C. Belts
+貞操帯
+C. Bras
+貞操ブラ
+Boxbinders
+ボックスバインダー
+Jackets
+拘束衣
+Legbinders
+レッグバインダー
+Accessible
+触れられる
+Inaccessible
+触れられない
 
 Spellbound Boxtie
 呪文の高手小手縛り
@@ -22797,17 +23604,16 @@ Deals grope damage.
 You pick up a flexible rubber stick.
 ぐにゃぐにゃしたゴムの棒を拾った。
 Blade of Ejahl
-エジャルの剣
+エジャールの剣
 A piece of prized ancient equipment. Magical energy causes it to vibrate intensely. What could it have been used for?
 貴重な古代の道具。魔法のエネルギーで激しく振動している。何に使われたのだろう？
 Deals grope damage. Can spend 40 charge to add charm damage per hit for 10 turns.
 愛撫属性。エネルギーを40消費して発動する。10ターンの間、攻撃命中時に魅了属性の追加ダメージを与える。
 You retrieve the Blade of Ejahl.
-エジャルの剣を拾った。
- The Blade of Ejahl deals bonus charm damage!!!
-エジャルの剣で魅了属性の追加ダメージを与えた！
-The Blade of Fla-peh buzzes with great power!
-エジャルの剣が猛烈に振動している！
+エジャールの剣を拾った。
+Intense Vibrations: The Blade of Ejahl deals bonus charm damage!!!
+強烈な振動：追加で魅了ダメージを与える。
+
 40 charge to deal 30 charm damage per hit for 10 turns.
 エネルギーを40消費して発動する。10ターンの間、攻撃命中時に30魅了属性の追加ダメージを与える。
 Enchanted Rope
@@ -23580,6 +24386,8 @@ Unflinching (Resist status/bondage)
 スーパーアーマー（状態異常と拘束に耐性）
 Relentless (Stun resist when stunned)
 無慈悲(スタン時、次のスタン効果に耐性を得る)
+Bulwark (Blocks some explosions)
+耐爆(爆発ダメージをブロックする)
 Blindsight (See through walls)
 ブラインドサイト（壁を見通す）
 Mana Harvesting
@@ -23797,14 +24605,14 @@ You missed!
 Tools of the Trade
 仕事道具
 Allows you to craft bombs, smoke bombs, flash bombs, and invisibility potions.
-爆弾、煙幕弾、閃光弾、透明ポーションを作ることができる。
+爆弾、煙幕弾、閃光爆弾、透明ポーションを作ることができる。
 
 (You start having crafty thoughts...)|(Gunpowder can be obtained from chests or Alchemists)|(Ectoplasm can be obtained from ghosts)
 (アイテムを作ろう……)|(火薬は錬金術師や宝箱から入手できる)|(エクトプラズムは幽霊から入手できる)
 (You craft a Smoke Bomb)
 (煙幕弾を作った)
 (You craft 3 Flash Bombs)
-(閃光弾を3つ作った)
+(閃光爆弾を3つ作った)
 (You craft a Bomb)
 (爆弾を作った)
 (You craft an Invisibility Potion)
@@ -23814,7 +24622,7 @@ Allows you to craft bombs, smoke bombs, flash bombs, and invisibility potions.
 (Use 1 Gunpowder to make a Smoke Bomb)
 (火薬1つで煙幕弾を作る)
 (Use 1 Gunpowder and one Ancient Crystal to make 3 Flash Bombs)
-(火薬1つと古代のクリスタル1つで閃光弾を3つ作る)
+(火薬1つと古代のクリスタル1つで閃光爆弾を3つ作る)
 (Use 2 Gunpowder to make a Bomb)
 (火薬2つで爆弾を作る)
 (Use 3 Ectoplasm to make an Invisibility Potion)
@@ -24336,7 +25144,7 @@ Then the archmagus, Sariel Vinlaga, discovered the secret of immortality.|Sharin
 But in the end, Sariel's experiments left her weakened and unable to save herself from death.|Without a leader, the Old Civilization collapsed into tyranny as warlords enslaved thousands.|Refugees fled across the sea in search of a new life, and in time the old empire was forgotten.
 しかし、偉大なるサリエルは探求の果てに衰弱し、死亡してしまう。|指導者を失った旧文明は愚者による専制が始まり、軍は無辜の市民を次々と奴隷にしていった。|難を逃れようと民は海を渡り、民を失った旧き帝国は次第に朽ち、忘れられていった。
 Hundreds of years later, a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
-1000年後、冒険家たちは古代の技術が眠る島を発見した。|今では、富と知恵を求めて無数の冒険者が遺跡を訪れている……|……はるか昔に封印された、邪悪な秘密も知らずに。
+数百年の後、冒険家たちは古代の技術が眠る島を発見した。|今では、富と知恵を求めて無数の冒険者が遺跡を訪れている……|……はるか昔に封印された、邪悪な秘密も知らずに。
 
 An item has increased your spell damage!
 アイテムが魔法の威力を強化している！
@@ -24388,6 +25196,10 @@ Your RestraintName stops working due to water damage!
 RestraintName は水に浸かった影響で動作を停止した！
 Your RestraintName sustains water damage from the high-pressure water!
 RestraintName は高圧水の影響でダメージを受けた！
+The RestraintName fizzles out!
+RestraintName は消えた。
+Your RestraintName short-circuits briefly from the electrical damage!
+RestraintName がショートした！
 
 Quit Game
 ゲームをやめる
@@ -24671,6 +25483,8 @@ Simple
 シンプル
 Advanced
 詳細
+Expert Tools
+エキスパート
 
 Exits locked!|Find NUMBER keys!
 出口には鍵がかかっている！|NUMBER の鍵を見つけよう！
@@ -25486,6 +26300,8 @@ The items float to you!
 念動力でアイテムを手繰り寄せた！
 There's nothing to pick up.
 念動力で取れるものがない。
+That container is locked!
+施錠されている！
 Select an area with items
 アイテムのあるエリアを選択
 
@@ -25955,12 +26771,16 @@ The weights swing around and tug on your nipples!
 
 
 More Kinky Furniture
-家具種増加
+インテリア増加
 Replaces 60% of cages with a different kind of kinky furniture such as display stands.
-檻の60%をディスプレイスタンド等の家具に置き換える
+檻の60%をディスプレイスタンド等のインテリアに置き換える
 
 Collection
 コレクション
+Facilities
+設備
+Training
+訓練
 
 Storage
 倉庫
@@ -26106,8 +26926,8 @@ Back to Game
 Slimy Spit
 スピットスライム
 
-Servants and Guests
-使用人とゲスト
+Servants
+使用人
 Prisoners
 囚人
 Promote to Servant
@@ -26134,6 +26954,8 @@ The ENMY tries to spank you but misses!
 ENMY の手を躱した！
 The ENMY gives your butt a squeeze during your cast! (DMGDLT)
 魔法を唱えようとしたら ENMY にお尻を揉まれた！ (DMGDLT)
+The ENMY gives your butt a squeeze from behind! (DMGDLT)
+後ろから ENMY にお尻を揉まれた！ (DMGDLT)
 The ENMY gives your butt a squeeze as you move past! (DMGDLT)
 すれ違いざまに ENMY にお尻を揉まれた！ (DMGDLT)
 The ENMY gives your butt a squeeze as you pass by! (DMGDLT)
@@ -26997,14 +27819,11 @@ The mage starts channeling her energy!
 Warden Cuffs
 看守長の手枷
 
-
 Warden Leg Cuffs
 看守長の脚枷
 
-
 Warden Ankle Cuffs
 看守長の足枷
-
 
 Your buttons have been pushed, and not in a pleasant way!
 挑発されてカチンときた。非常に不愉快だ。
@@ -27069,7 +27888,7 @@ Bandit Raid
 Elemental Energy
 精霊の坩堝
 Overgrown
-植物の侵食
+蔦覆い
 Slime Infestation
 スライムの繁殖
 Wolfgirl Training
@@ -27088,7 +27907,7 @@ Prison
 Sorting Room
 選別所
 
-Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
+Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
 画面下のホットバーをクリックしてアイテムを登録可能|ホットバーをセーブ、ロードで|登録した内容を保存及び呼び出しが可能||別のセーブデータ間でも登録した内容を呼び出すことができる
 
 You step on the item and tug to pull it taut...
@@ -27154,17 +27973,17 @@ You find a sinister hood made of soft plush.
 
 Ceremonial Leotard
 式典のレオタード
-Commissioned by the powerful ancient ruling caste, the Ejahl. Comes with an integrated lock.
-古の支配者エジャルの特注品。一体型ロック付き。
-Its soul crystals dampen willpower changes, reducing all willpower changes by 25%.
-ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を-25%する。
+An article worn by the servants of state in the short-lived kingdom of Ejahl. Its locking mechanism and clothes-dissolving enchantments ensure the wearer understands her role as an extension of the state.
+短命の亡国エジャールに身と心を捧げたもののレオタード。衣装を溶かすエンチャントと独特な錠を持つ。
+Its soul crystals harden the mind and dampen changes in willpower, reducing all willpower changes by 25%.
+ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を25%減少させる。
 
 Ceremonial Leotard
 式典のレオタード
-Commissioned by the powerful ancient ruling caste, the Ejahl. Comes with an integrated lock.
-古の支配者エジャルの特注品。一体型ロック付き。
-Its soul crystals dampen willpower changes, reducing all willpower changes by 25%.
-ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を-25%する。
+An article worn by the servants of state in the short-lived kingdom of Ejahl. Its locking mechanism and clothes-dissolving enchantments ensure the wearer understands her role as an extension of the state.
+短命の亡国エジャールに身と心を捧げたもののレオタード。衣装を溶かすエンチャントと独特な錠を持つ。
+Its soul crystals harden the mind and dampen changes in willpower, reducing all willpower changes by 25%.
+ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を25%減少させる。
 You find a ceremonial leotard.
 式典のレオタードを手に入れた。
 
@@ -27350,6 +28169,10 @@ Several vine pods sprout out of the ground!
 地面から複数のヴァインポッドが生えてきた！
 A vine pod sprouts out of the ground!
 地面からヴァインポッドが生えてきた！
+Several flowers sprout out of the ground!
+花々が地面から生えてきた！
+A magical flower sprouts out of the ground!
+魔法の花が地面から生えてきた！
 A wall of ice rises from the ground!
 氷の壁がせり上がった！
 The dragon's breath poisons you!
@@ -27613,7 +28436,7 @@ You've stolen something of great value. Now you must give it back.
 盗掘の代償。罪は償わなければならない。
 
 Warden's Ankle Link
-看守長の
+看守長の足枷の鎖
 A short chain connecting your ankle cuffs together. You can barely separate your legs with this on.
 足枷同士をつなぐ短い鎖。辛うじて足を離せる程度の長さ。
 An intense, albeit temporary punishment for breaking the rules.
@@ -27636,8 +28459,12 @@ An intense, albeit temporary punishment for breaking the rules.
 
 ESCP Difficulty: AMNT
 ESCP 難易度： AMNT
-ESCP Power: AMNT%
-ESCP 力： AMNT%
+ESCP Power: AMNT
+ESCP 力： AMNT
+ESCP Ability: AMNT
+ESCP 技術： AMNT
+Max ESCP Depth: AMNT%
+ESCP 力: AMNT%
 
 Struggle
 もがく
@@ -27681,17 +28508,17 @@ The drone attaches to you! (+RestraintAdded)
 Cyber Warden
 サイバーワーデン
 Cyber Guardian
-サイバーガーディアン
+サイバーワーデン
 The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!
-サイバーガーディアンのスーツがロックダウンを起こし、彼女は拘束されてしまった！
+サイバーワーデンのスーツがロックダウンを起こし、彼女は拘束されてしまった！
 The cyber warden applies an advanced locking technology!
-サイバーガーディアンが未知の技術で拘束具に高度な錠を施してきた！
+サイバーワーデンが未知の技術で拘束具に高度な錠を施してきた！
 The cyber warden grabs you and applies a self-tightening restraint! (+RestraintAdded)
-サイバーガーディアンに自動で締まる拘束具を取り付けられた！ (+RestraintAdded)
+サイバーワーデンに自動で締まる拘束具を取り付けられた！ (+RestraintAdded)
 The cyber warden's touch applies a series of quick electrical shocks! (DamageTaken)
-サイバーガーディアンに触れられると、電気ショックが起こる！ (DamageTaken)
+サイバーワーデンに触れられると、電気ショックが起こる！ (DamageTaken)
 The cyber warden's touch applies a series of quick electrical shocks!
-サイバーガーディアンに触れられると、電気ショックが起こる！ (DamageTaken)
+サイバーワーデンに触れられると、電気ショックが起こる！ (DamageTaken)
 
 Auto Enforcer Guardian
 オートエンフォーサーガーディアン
@@ -27856,6 +28683,8 @@ You don't have enough mana
 マナが足りない。
 The enemy rune is wiped clean.
 敵のルーンが掻き消えた。
+You pour negation magic into the ground, but nothing happens.
+拒否のルーンを地面に描いたが、何も起こらなかった。
 All of your runes have been removed.
 自身の描いた全てのルーンを消去した。
 
@@ -27883,3 +28712,279 @@ Your keycard blinks red as the facility remotely locks it!
 
 Unauthorized removal detected. System lockout progress: AMNT%
 不正な取り外しを検知、システムのロックアウトが進行中です： AMNT%
+Security breach. Initiating remote lockout. System Security: AMNT%
+セキュリティに以上を検知。リモートロックアウト実行。システム・セキュリティ： AMNT%
+
+You pick up a flash bomb.
+閃光爆弾を拾った。
+You pick up a flashbang grenade.
+閃光手榴弾を拾った。
+
+Combat
+戦闘
+Actions
+アクション
+Self
+自身
+Dialogue
+会話
+Ambient
+環境
+Struggle
+もがく
+Items
+アイテム
+Kills
+討伐
+
+You attack TargetEnemy for DamageDealt total damage.
+TargetEnemy に攻撃し、合計 DamageDealt ダメージを与えた。
+You attack TargetEnemy for DamageDealt damage / BondageDealt binding.
+TargetEnemy に攻撃し、合計 DamageDealt ダメージとBondageDealt 拘束値を与えた。
+You attack TargetEnemy but don't do any damage.
+TargetEnemy に攻撃したが、ダメージを与えられなかった。
+ENMY calls for help!
+ENMY は助けを呼んだ！
+(Go to The Summit)
+(セーフエリアへ行く)
+The Summit is a safe area. Items can be left here without fear of losing them.
+セーフエリアでは敵に襲われる心配もなく、アイテムもなくなることはない。
+
+Leash
+リード
+Target an NPC to attach a leash. Enemies and unwilling allies must be tied up to 50% first. Target self to release all leashes, or target a leashed NPC to unleash them.
+NPCにリードを取り付ける。敵や反抗的な味方に取り付けるには50%以上の拘束値が必要。自身かリードを装備しているNPCに使用した場合、リードを取り外す。
+Target an NPC to leash, or self to unleash all.
+NPCか自身を選択
+
+Clip-On Leash
+クリップ式リード
+A beloved favorite of pets and trainers alike.
+ペットからもトレーナーからも好評。
+You ready the leash...
+散歩の時間だ……
+Target an NPC to attach a leash. Enemies and unwilling allies must be tied up to 50% first. Target self to release all leashes, or target a leashed NPC to unleash them.
+NPCにリードを取り付ける。敵や反抗的な味方に取り付けるには50%以上の拘束値が必要。自身かリードを装備しているNPCに使用した場合、リードを取り外す。
+You pick up a leash.
+リードを拾った。
+
+You are not in a condition to use a leash on her.
+リードを取り付けられる状態じゃない。
+She refuses to be leashed unless you tie her up!
+リードを取り付けようとしたら抵抗された。先に拘束しなければ。
+You attach a leash to ENMY.
+ENMY にリードを取り付けた・
+You remove your leash from ENMY.
+ENMY の持っているリードを外した。
+You let go of all leashes.
+自身の持っているリードを全て外した。
+
+
+Plastic Explosive
+プラスチック爆弾
+Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage.
+設置してから60ターン後に爆発する。設置後に爆発ダメージを受けた場合、即座に爆発する。　超広範囲に210の爆発属性ダメージを与え、周囲に瓦礫を生成する。　この爆風に命中した敵のアーマー値を50減少させる。この効果はダメージ処理の前に行われる。
+It's totally harmless! Probably.
+慎重に取り扱えば安全……だろう。
+You set the clock ticking...
+爆弾のタイマーをセットした……
+
+Dynamite
+ダイナマイト
+10 turn fuse with a 25% chance each turn to detonate prematurely. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage.
+設置してから10ターン後に爆発する。このカウントはターン毎に25%の確率で早まる。　広範囲に140の爆発属性ダメージを与える。　この爆風に命中した敵のアーマー値を20減少させる。この効果はダメージ処理の前に行われる。
+Arguably more dangerous to the user than the target.
+敵よりも危険。
+You light the fuse and pray it doesn't blow up in your face.
+眼の前で爆発しないように祈りながら導火線に火をつけた。
+
+You are holding too many leashes!
+これ以上リードは持てない！
+
+
+You feel a corrupting influence... (+AMNT Corruption)
+魂が堕落していくのを感じた……(+AMNT 堕落)
+You feel a restoring influence! (-AMNT Corruption)
+魂が浄化されていくのを感じた……(-AMNT 堕落)
+Sticky latex fuses itself to your skin! (+AMNT LatexIntegration)
+ネバネバのゴムが身体に張り付いてくる！(+AMNT ラテックス拘束)
+The latex starts to detach from your skin... (-AMNT Latex Integration)
+ゴムが身体から剥がれていく……(-AMNT ラテックス拘束)
+
+While you have an evasion penalty, even clumsy enemies...
+回避ペナルティがある……
+... will get an accuracy bonus against you in melee range.
+……不器用な敵でも命中ボーナスを得られるだろう。
+You are more likely to succumb to curses.
+呪いにかかりやすくなっている。
+
+Load from File
+ロード
+Save to File
+セーブ
+Tip: Slime/Latex tiles only affect entities with less than 45 Glue Resist.
+Tips：スライム／ラテックスのマスは、接着剤耐性が45未満の対象にのみ効果を発揮する。
+Being drenched in water also prevents slime/latex from sticking to you.
+水に濡れるとスライムやラテックスが付着しにくくなる。
+Use the interact tool in the bottom right HUD to sleep in a bed.
+ベッドの上でインタラクトすることで、眠ることができる。
+
+
+Clear Vision
+クリアビジョン
+Blindfolds are much rarer.
+目隠しがとても出現しにくくなる。
+
+Free the Boob
+ノーブラ
+Chastity bras are rarer unless you are wearing nipple toys.
+乳首にオモチャをつけていない限り、貞操ブラが出現しにくくなる。
+Liberate the Boob
+揺らす自由
+Chastity bras are much rarer.
+貞操ブラがとても出現しにくくなる。
+
+Find an elevator to the Summit in order to access facilities.
+施設を使うために、まずはエレベーターを探そう。
+Visit the Summit to allow additional interactions with this facility.
+サミットを訪れて施設を見てみよう。
+
++AMNT% Training/Tick
+調教度/ターン +AMNT%
++AMNT% Opinion/Tick
+好感度/ターン +AMNT%
++AMNT% Productivity
+生産力 +AMNT%
+AMNT/MAXX Prisoners Assigned
+囚人数 AMNT/MAXX
+AMNT/MAXX Servants Assigned
+使用人の数 AMNT/MAXX 
+
+Management
+管理
+Assign servants as managers to boost the production of other facilities.|Managers gain increased opinion and training over time.
+使用人をマネージャーとして配属する。|施設の生産力が増加し、マネージャーの調教度と好感度が増加する。
+
+Bondage Dojo
+緊縛道場
+Assign servants to perfect the art of walking in heels,wearing tight corsets,|communicating while gagged, and overall flexibility.
+使用人を鍛える。ヒールを履いて綺麗に歩けるようになり、きついコルセットを着用できるようになり、|猿轡をしていても完璧に意思の疎通ができるようになり、身体の柔軟性が増す。
+
+Rescue Operations
+救助部隊
+Assign servants to train squads of rescue maids, which you can call in times of need.
+使用人をレスキューメイドとして任命する。必要なときに呼び出すことができる。
+
+Alchemy Lab
+錬金工房
+Assign servants to produce potions from base ingredients you acquire in your adventures.
+使用人に錬金術を研究させる。手に入れた素材からポーションを作ることができる。
+
+Recycler
+リサイクラー
+Convert low tier restraints into raw materials and output higher quality restraints.|Adding more servants increase the conversion speed.
+tierの低い拘束具を高tierの拘束具に変換する。|多くの人員を配置することで、変換速度が増加する。
+
+Cuddle Lounge
+ラウンジ
+Assign prisoners to the lounge in order to improve your servants' opinion of you.
+好感度を高めるために、囚人をラウンジに配置する。
+
+Recycle Restraints
+拘束具をリサイクル
+Recycle One
+一つリサイクル
+Recycle ALL!
+全てリサイクル
+Recycle all but one
+一つを残してリサイクル
+
+You recycle a ITM
+ITM をリサイクルした。
+You recycle #x ITM
+#x の ITM をリサイクルした。
+
+You're blocking me.
+どいてくれない？
+You're in my way!
+どいて！
+Miss, you're blocking me...
+通らせていただけませんか……？
+Step aside~
+ちょっと通してくれない？
+Path blocked by citizen.
+前方ニ障害物。
+*Bumps into you*
+(通してほしいようだ)
+
+
+
+Cyber Hogtie Tether
+ホッグタイの電子リンク
+
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+Cyber Thigh Tether
+脚枷の電子リンク
+An energy tether connecting your thigh cuffs together. You can still walk, albeit slower than usual.
+脚枷同士を流れるエネルギー体。脚の動きは制限されるが、ゆっくりと歩くことはできる。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+Cyber Ankle Tether
+足枷の電子リンク
+An energy  tether connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
+足枷同士を流れるエネルギー体。足の動きは制限されるが、ゆっくりと歩くことはできる。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+A short energy tether connecting your ankle cuffs together. You can barely separate your legs with this on.
+足枷同士を流れるエネルギー体。足と足の間にほんの少しだけ隙間がある程度。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+Cyber Elbow Tether
+肘枷の電子リンク
+A very short energy tether connecting your elbow cuffs together. It is quite awkward to remove by yourself.
+肘枷同士を流れるエネルギー体。自力で取り外すにはかなり手間がかかる。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+Cyber Wrist Tether
+手枷の電子リンク
+A very short energy tether connecting your wrist cuffs together.
+手枷同士を流れるエネルギー体。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+
+Desperate Struggle
+最後の抵抗
+Spend 20 WP to shake around violently. Has a chance to loosen restraints you are wearing, based on existing struggle progress. Spreading the effect over multiple restraints reduces the chance of loosening.|Requires 25% or more WP to activate.
+気力を20消費し、全力でもがく。装備している拘束具を緩める可能性があるが、対象となる拘束具が増えるごとに緩む確率が減少する。|発動には25%以上の気力が必要。
+None of your restraints will budge.
+緩められそうな拘束具がない。
+You thrash around with all your might.
+思い切りのたうち回った。
+You don't have the willpower left to struggle...
+全力でもがく気力が残っていない……
+
+
+Owned: AMNT
+所持数: AMNT
+
+Fiber
+繊維
+Latex
+ゴム
+Leather
+革
+Metal
+金属
+Runes
+ルーン
+Stock: 
+在庫: 
+Inputs: 
+投入数: 
