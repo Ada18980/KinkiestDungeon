@@ -1580,7 +1580,10 @@ function KDKickEnemies(nearestJail, ignoreAware, Level, noCull) {
 							}
 						}
 
-					if (!KDEnemyHasFlag(e, "imprisoned") && e.boundLevel && !KDHelpless(e)) e.boundLevel = 0;
+					if (!KDEnemyHasFlag(e, "imprisoned") && e.boundLevel && !KDHelpless(e)) {
+						e.boundLevel = 0;
+						e.specialBoundLevel = {};
+					}
 				}
 			if (e.hostile < 9000) e.hostile = 0;
 			if (e.playWithPlayer > 0) {
@@ -1595,7 +1598,10 @@ function KDKickEnemies(nearestJail, ignoreAware, Level, noCull) {
 				} else {
 					enemies.push(e);
 				}
-				e.boundLevel = 0;
+				if (KDGetFaction(e) != "Player"
+					&& KDFactionRelation(KDGetFaction(e), KDMapData.MapFaction) > 0.5) {
+					KDRunNPCEscapeTick(e.id, 30);
+				}
 			} else {
 				enemies.push(e);
 			}

@@ -145,6 +145,7 @@ function KDAddCollection(enemy, type, status, servantclass) {
 			Enemy: enemy.modified ? enemy.Enemy : undefined,
 			Willpower: 100,
 			Facility: undefined,
+			escaped: false,
 			flags: undefined,
 		};
 		enemy.CustomName = entry.name;
@@ -156,6 +157,7 @@ function KDAddCollection(enemy, type, status, servantclass) {
 	} else {
 		// Update her
 		let entry = KDGameData.Collection["" + enemy.id];
+		entry.escaped = false;
 		if (status != undefined) {
 			entry.status = status;
 		}
@@ -533,7 +535,7 @@ function KDDrawCollectionRestrainMain(id, x, y) {
  * @returns {boolean}
  */
 function KDNPCUnavailable(id, status) {
-	return (KDIsNPCPersistent(id) &&
+	return KDGameData.Collection[id + ""]?.escaped || (KDIsNPCPersistent(id) &&
 		(
 			//KDGameData.NPCRestraints[id + ""]?.Device != undefined
 			KDGetPersistentNPC(id).captured
@@ -728,7 +730,7 @@ function KDDrawCollectionInventory(x, y) {
 
 			if (KDNPCUnavailable(value.id, value.status)) {
 				KDDraw(kdcanvas, kdpixisprites, value.name + "_jail," + value.id,
-					KinkyDungeonRootDirectory + "UI/Jail.png",
+					KinkyDungeonRootDirectory + "UI/" + (value.escaped ? "escaped" : "jail")  + ".png",
 					XX + 42,
 					YY + 42,
 					36, 36, undefined, {
@@ -951,7 +953,7 @@ function KDDrawNPCBars(value, x, y, width) {
 		let bindingBars = Math.ceil( visualbond / enemy.Enemy.maxhp);
 		let SM = KDGetEnemyStruggleMod(enemy);
 		let futureBound = KDPredictStruggle(enemy, SM, 1);
-		yy += -bindingBars * spacing;
+		yy += -Math.min(KDMaxBindingBars, bindingBars) * spacing;
 		for (let i = 0; i < bindingBars && i < KDMaxBindingBars; i++) {
 			if (i > 0) II++;
 			let mod = visualbond - bindAmpMod * futureBound.boundLevel;

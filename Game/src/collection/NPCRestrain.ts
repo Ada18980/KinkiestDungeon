@@ -583,3 +583,37 @@ function KDNPCDoStruggle(id: number, slot: string, restraint: NPCRestraint): str
 
 	return "";
 }
+
+function KDCollectionNPCEscapeTicks(ticks: number = 10) {
+	let eligibleNPCs = Object.values(KDGameData.Collection).filter((value) => {
+		return !value.status // Is prisoner
+			&& (!value.Opinion || value.Opinion < 0) // Doesn't like you
+			&& (!KDGetGlobalEntity(value.id) // has no entity or is unimprisoned
+				|| !KDIsImprisoned(KDGetGlobalEntity(value.id)));
+	});
+
+	for (let value of eligibleNPCs) {
+		KDRunNPCEscapeTick(value.id, ticks);
+	}
+
+	for (let value of eligibleNPCs) {
+		if (!KDGetGlobalEntity(value.id) || !(KDGetGlobalEntity(value.id).boundLevel)) {
+			// This NPC escapes!!!!
+			value.escaped = true;
+			if (KDIsNPCPersistent(value.id)) {
+				KDGetPersistentNPC(value.id).collect = false;
+			}
+		}
+	}
+}
+
+function KDRunNPCEscapeTick(id: number, ticks: number) {
+	let enemy = KDGetGlobalEntity(id);
+	if (enemy) {
+		for (let i = 0; i < ticks; i++) {
+			KDEnemyStruggleTurn(enemy, 1, false);
+		}
+		KDUpdatePersistentNPC(id);
+	}
+
+}

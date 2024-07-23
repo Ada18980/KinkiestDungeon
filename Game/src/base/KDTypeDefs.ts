@@ -3445,6 +3445,8 @@ interface KDCollectionEntry {
 	sprite: string,
 	Facility: string,
 	customSprite: boolean,
+	escaped: boolean,
+
 	id: number,
 	Enemy?: enemy, // for unique ones
 	/** Todo remove this and replace with persistent NPC flag */

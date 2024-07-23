@@ -1218,11 +1218,11 @@ function KDMaxEnemyViewDist(enemy) {
  * @param {entity} enemy
  * @returns {number}
  */
-function KDGetEnemyStruggleMod(enemy) {
+function KDGetEnemyStruggleMod(enemy, allowStruggleAlways) {
 	let level = KDBoundEffects(enemy);
 	let mult = 0.1;
 
-	if (enemy.boundLevel > enemy.Enemy.maxhp * 10) {
+	if (!allowStruggleAlways && enemy.boundLevel > enemy.Enemy.maxhp * 10) {
 		mult = 0;
 	}
 	if (mult > 0) {
@@ -1240,7 +1240,7 @@ function KDGetEnemyStruggleMod(enemy) {
 	}
 
 	if (!KDEnemyHasFlag(enemy, "imprisoned") && enemy.hp > 0.51 && (KDNearbyEnemies(enemy.x, enemy.y, 1.5).some((en) => {
-		return en != enemy && en.Enemy.bound && !KDHelpless(enemy) && KDBoundEffects(en) < 3 && !KDEnemyHasFlag(en, "imprisoned") && !KinkyDungeonIsDisabled(en) && KDFactionRelation(KDGetFaction(enemy), KDGetFaction(en)) >= Math.max(0.1, KDFactionRelation("Player", KDGetFaction(en)));
+		return en != enemy && en.Enemy.bound && !KDHelpless(enemy) && KDBoundEffects(en) < 4 && !KDEnemyHasFlag(en, "imprisoned") && !KinkyDungeonIsDisabled(en) && KDFactionRelation(KDGetFaction(enemy), KDGetFaction(en)) >= Math.max(0.1, KDFactionRelation("Player", KDGetFaction(en)));
 	}) || (KDAllied(enemy) && KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y)))) {
 		mult += 0.15;
 	}
@@ -3044,35 +3044,8 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 				if (enemy.slow <= 0)
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "slow"});
 			}
-			if (enemy.boundLevel > 0 && !(enemy.stun > 0 || enemy.freeze > 0 || enemy.teleporting > 0) && (enemy.hp > 0.52)) {
-				let SM = KDGetEnemyStruggleMod(enemy);
-				let newBound = KDPredictStruggle(enemy, SM, delta);
-				enemy.boundLevel = newBound.boundLevel;
-				enemy.specialBoundLevel = newBound.specialBoundLevel;
-
-				let SR = SM * (10 + Math.pow(Math.max(0.01, enemy.hp), 0.75));
-				if (SR <= 0 || KDRandom() < 0.1) {
-					KDAddThought(enemy.id, "GiveUp", 5, SR <= 0 ? 4 : 1);
-				} else {
-					if (KDLoosePersonalities.includes(enemy.personality)) {
-						KDAddThought(enemy.id, "Embarrassed", 2, 4);
-					} else if (KDStrictPersonalities.includes(enemy.personality)) {
-						KDAddThought(enemy.id, "Struggle", 2, 2);
-					} else {
-						KDAddThought(enemy.id, "Annoyed", 2, 2);
-					}
-				}
-
-				if (enemy.boundLevel <= 0) {
-					KDAddThought(enemy.id, "Annoyed", 5, 1);
-					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "boundLevel"});
-				}
-
-				/** Do NPC restraint struggling */
-				let struggleNPCTarget = KDNPCStruggleTick(enemy.id, delta);
-				if (struggleNPCTarget) {
-					KDNPCDoStruggle(enemy.id, struggleNPCTarget.slot, struggleNPCTarget.inv);
-				}
+			if (!(enemy.stun > 0 || enemy.freeze > 0 || enemy.teleporting > 0) && (enemy.hp > 0.52)) {
+				KDEnemyStruggleTurn(enemy, delta, false);
 			}
 			let vibe = KDEntityMaxBuffedStat(enemy, "Vibration");
 			if (enemy.distraction > 0 || vibe) {
@@ -8385,5 +8358,44 @@ function KDBlockedByPlayer(enemy, dir) {
 			KinkyDungeonSendDialogue(enemy, TextGet("KDDialogue_StepAside" + (!KDEnemyCanTalk(enemy) ? "Gagged" : (enemy.personality || "")))
 				.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 			KDGetColor(enemy), 3, 10);
+	}
+}
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {number} delta
+ * @param {boolean} [allowStruggleAlways]
+ */
+function KDEnemyStruggleTurn(enemy, delta, allowStruggleAlways) {
+	if (enemy.boundLevel > 0) {
+		let SM = KDGetEnemyStruggleMod(enemy, allowStruggleAlways);
+		let newBound = KDPredictStruggle(enemy, SM, delta);
+		enemy.boundLevel = newBound.boundLevel;
+		enemy.specialBoundLevel = newBound.specialBoundLevel;
+
+		let SR = SM * (10 + Math.pow(Math.max(0.01, enemy.hp), 0.75));
+		if (SR <= 0 || KDRandom() < 0.1) {
+			KDAddThought(enemy.id, "GiveUp", 5, SR <= 0 ? 4 : 1);
+		} else {
+			if (KDLoosePersonalities.includes(enemy.personality)) {
+				KDAddThought(enemy.id, "Embarrassed", 2, 4);
+			} else if (KDStrictPersonalities.includes(enemy.personality)) {
+				KDAddThought(enemy.id, "Struggle", 2, 2);
+			} else {
+				KDAddThought(enemy.id, "Annoyed", 2, 2);
+			}
+		}
+
+		if (enemy.boundLevel <= 0) {
+			KDAddThought(enemy.id, "Annoyed", 5, 1);
+			KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "boundLevel"});
+		}
+	}
+
+	/** Do NPC restraint struggling */
+	let struggleNPCTarget = KDNPCStruggleTick(enemy.id, delta);
+	if (struggleNPCTarget) {
+		KDNPCDoStruggle(enemy.id, struggleNPCTarget.slot, struggleNPCTarget.inv);
 	}
 }

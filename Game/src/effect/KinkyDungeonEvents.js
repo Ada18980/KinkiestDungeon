@@ -9414,6 +9414,14 @@ let KDEventMapGeneric = {
 		"updateFac": (e, data) => {
 			KDUpdateFacilities(1);
 		},
+		/**
+		 * Updates NPC escape
+		 */
+		"updateNPCEscape": (e, data) => {
+			KDCollectionNPCEscapeTicks();
+		},
+
+
 
 
 		/** Updates gold locks */

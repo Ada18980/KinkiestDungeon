@@ -92,6 +92,7 @@ function KDValidateServant(value: KDCollectionEntry, facility: string, type: str
 	type = KDFacilityCollectionDataTypeMap[type] || "";
 
 	if (value.status != type) return false;
+	if (value.escaped) return false;
 	if (KDIsInPartyID(value.id)) return false;
 
 	return true;
