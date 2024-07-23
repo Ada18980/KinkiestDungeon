@@ -324,6 +324,11 @@ let KDEventMapInventory = {
 			data.manaPoolRegen *= e.power;
 		},
 	},
+	"calcEfficientMana": {
+		"ManaCost": (e, item, data) => {
+			data.efficiency += e.power;
+		},
+	},
 	"calcMultMana": {
 		"ManaCost": (e, item, data) => {
 			data.cost = Math.max(data.cost * e.power, 0);
@@ -605,6 +610,12 @@ let KDEventMapInventory = {
 				} else {
 					data.extraLines.push(pre + TextGet("curseInfoDormant"));
 				}
+				data.extraLineColor.push(e.color);
+			}
+		},
+		"simpleMsg": (e, item, data) => {
+			if (item == data.item || KDRestraint(item)?.Group == data.group) {
+				data.extraLines.push(TextGet(e.msg));
 				data.extraLineColor.push(e.color);
 			}
 		},
@@ -1982,6 +1993,15 @@ let KDEventMapInventory = {
 		}
 	},
 	"beforeStruggleCalc": {
+		"UniversalSolvent": (e, item, data) => {
+			if (item == data.restraint && (
+				data.struggleType == "Struggle"
+				||
+				data.struggleType == "Cut"
+			)) {
+				data.escapePenalty -= e.power;
+			}
+		},
 		"StruggleManaBonus": (e, item, data) => {
 			if (item == data.restraint) {
 				let bonus = KDGetManaBonus(e.mult, e.power, e.threshold, e.threshold, e.threshold);
@@ -2604,7 +2624,7 @@ const KDEventMapBuff = {
 	},
 	"beforeStruggleCalc": {
 		"BreakFree": (e, buff, entity, data) => {
-			if (data.struggleType == "struggle")
+			if (data.struggleType == "Struggle")
 				data.escapePenalty -= e.power;
 		},
 		"latexIntegrationDebuff": (e, buff, entity, data) => {
@@ -2871,15 +2891,24 @@ const KDEventMapBuff = {
 	},
 	"beforeDressRestraints": {
 		"LatexIntegration": (e, buff, entity, data) => {
-			if (entity.player) {
+			if (data.Character == KDGetCharacter(entity)) {
 				if (buff.power >= 100) {
+					let color = {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1};
+					let palette = "";
+					let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
+					for (let inv of KDGetRestraintsForEntity(entity)) {
+
+						if ((!inv.faction || KDToggles.ForcePalette || outfit?.palette) && (!KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette])) {
+							palette = outfit?.palette || KDDefaultPalette;
+						}
+					}
 					/** @type {alwaysDressModel} */
 					let efd = {
 						Model: "Catsuit",
-						faction: "AncientRobot",
+						faction: palette || "AncientRobot",
 						Filters: {
-							TorsoLower: {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
-							TorsoUpper: {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
+							TorsoLower: color,
+							TorsoUpper: color,
 						},
 						factionFilters: {
 							TorsoLower: {color: "Catsuit", override: true},
@@ -3845,6 +3874,11 @@ let KDEventMapSpell = {
 			if (willPercentage > 0)
 				KinkyDungeonChangeMana(0, false, e.power * willPercentage);
 			KinkyDungeonChangeMana(e.power, false, 0, false, willPercentage > 0.5);
+		},
+	},
+	"calcEfficientMana": {
+		"ManaCost": (e, item, data) => {
+			data.efficiency += e.power;
 		},
 	},
 	"calcMultMana": {
@@ -8140,7 +8174,7 @@ let KDEventMapEnemy = {
 						if (en.Enemy?.tags?.wardenprisoner) {
 							if (count < e.count) {
 								if ((!filter || en.Enemy?.name == filter) && KDEnemyHasFlag(en, "imprisoned")) {
-									KinkyDungeonSetEnemyFlag(en, "imprisoned", 0);
+									KDFreeNPC(en);
 									en.aware = true;
 									en.vp = 4;
 									en.gx = KinkyDungeonPlayerEntity.x;
@@ -8399,7 +8433,7 @@ let KDEventMapEnemy = {
 					if (en.Enemy.tags?.warden && KDGetFaction(en) != "Player") {
 						en.hostile = 300;
 						en.aware = true;
-						KinkyDungeonSetEnemyFlag(en, "imprisoned", 0);
+						KDFreeNPC(en);
 					}
 
 				}

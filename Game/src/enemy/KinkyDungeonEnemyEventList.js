@@ -270,6 +270,7 @@ let KDIntentEvents = {
 		nonaggressive: true,
 		// This is the basic 'it's time to play!' dialogue
 		weight: (enemy, AIData, allied, hostile, aggressive) => {
+			if (KDHelpless(enemy)) return 0;
 			return (KDEnemyHasFlag(enemy, "HelpMe")) ?
 				0
 				: (!enemy?.playWithPlayer ? (allied ? 10 : 110) : 0);
@@ -875,7 +876,8 @@ function KDSettlePlayerInFurniture(enemy, AIData, tags, guardDelay = 24, ftype =
 		KDKickEnemy(ee);
 	}
 	if (enemy.x == nearestfurniture.x && enemy.y == nearestfurniture.y)
-		KDMoveEntity(enemy, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, undefined, true);
+		KDMoveEntity(enemy, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y,
+			true, undefined, undefined, true);
 	KDMovePlayer(nearestfurniture.x, nearestfurniture.y, false);
 	if (KinkyDungeonPlayerEntity.x == nearestfurniture.x && KinkyDungeonPlayerEntity.y == nearestfurniture.y) {
 		let furn = KDFurniture[type];

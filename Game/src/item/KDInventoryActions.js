@@ -925,10 +925,12 @@ let KDInventoryAction = {
 		click: (player, item) => {
 			KDChangeRecyclerInput(KDRecycleItem(item, 1));
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
+			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycle")
 				.replace("ITM", TextGet( "Restraint" + item.name))
 				.replace("VLU", "" + 100)
 			, "#ffffff", 2);
+
 		},
 		/** Return true to cancel it */
 		cancel: (player, delta) => {
@@ -966,13 +968,16 @@ let KDInventoryAction = {
 				return;
 			}
 
+			let quant = (itemInv.quantity || 1);
+
+			KDChangeRecyclerInput(KDRecycleItem(item, itemInv.quantity || 1));
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
+			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleBulk")
 				.replace("ITM", TextGet( "Restraint" + item.name))
 				.replace("VLU", "" + 100)
-				.replace("#", "" + (itemInv.quantity || 1))
+				.replace("#", "" + quant)
 			, "#ffffff", 2);
-			KDChangeRecyclerInput(KDRecycleItem(item, itemInv.quantity || 1));
 		},
 		/** Return true to cancel it */
 		cancel: (player, delta) => {
@@ -1013,13 +1018,16 @@ let KDInventoryAction = {
 				return;
 			}
 
+			let quant = (itemInv.quantity - 1);
+
+			KDChangeRecyclerInput(KDRecycleItem(item, itemInv.quantity - 1));
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
+			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleExcess")
 				.replace("ITM", TextGet( "Restraint" + item.name))
 				.replace("VLU", "" + 100)
-				.replace("#", "" + (itemInv.quantity - 1))
+				.replace("#", "" + quant)
 			, "#ffffff", 2);
-			KDChangeRecyclerInput(KDRecycleItem(item, itemInv.quantity - 1));
 		},
 		/** Return true to cancel it */
 		cancel: (player, delta) => {
@@ -1057,7 +1065,7 @@ let KDInventoryAction = {
 					let level = KDRestraint(item).power;
 					let type = KDRestraintBondageType(item);
 					let status = KDRestraintBondageStatus(item);
-					let mult = (KDSpecialBondage[type]) ? (KDSpecialBondage[type].enemyBondageMult || 1) : 1;
+					let mult = KDRestraintBondageMult(item);
 					KDTieUpEnemy(enemy, level*mult, type);
 					KinkyDungeonSendTextMessage(10,
 						TextGet("KDTieUpEnemy")
@@ -1092,6 +1100,8 @@ let KDInventoryAction = {
 
 					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/LockLight.ogg");
 
+					if (!enemy.items) enemy.items = [];
+					enemy.items.push(item.inventoryVariant || item.name);
 					if (item.quantity > 1) item.quantity -= 1;
 					else KinkyDungeonInventoryRemoveSafe(item);
 					KinkyDungeonAdvanceTime(1, true, true);

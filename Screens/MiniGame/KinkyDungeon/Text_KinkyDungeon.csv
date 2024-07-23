@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.22"
+KDVersionStr,"5.3.26"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -339,6 +339,9 @@ KinkyDungeonStatDescSavourTheTaste,"Drinking a potion takes 2 turns"
 
 KinkyDungeonStatMagicHands,"Magic Hands"
 KinkyDungeonStatDescMagicHands,"Enemies can add restraints underneath existing restraints."
+
+KinkyDungeonStatStartLatexIntegration,"Fully Integrated"
+KinkyDungeonStatDescStartLatexIntegration,"Start with your body sealed in an adhesive layer of latex."
 
 KinkyDungeonStatStartCyberDollStorage,"Doll Processing"
 KinkyDungeonStatDescStartCyberDollStorage,"Start atop a conveyor on your way to be sealed away inside the Facility."
@@ -1295,10 +1298,10 @@ KinkyDungeonInventoryItemBolaDesc2,"Deals 90 points of binding, 40 chain damage,
 KinkyDungeonInventoryItem3BolaDesc,"A pair of weights attached to a rope. Can be thrown."
 KinkyDungeonInventoryItem3BolaDesc2,"Deals 90 points of binding, 40 chain damage, and rooting a target for 4 turns."
 KinkyDungeonInventoryItemBomb,Bomb
-KinkyDungeonInventoryItemBombDesc,"After a 5 turn fuse, deals 100 blast damage in a 3x3 area."
-KinkyDungeonInventoryItemBombDesc2,"Not a toy!"
-KinkyDungeonInventoryItem3BombDesc,"After a 5 turn fuse, deals 100 blast damage in a 3x3 area."
-KinkyDungeonInventoryItem3BombDesc2,"Not a toy!"
+KinkyDungeonInventoryItemBombDesc2,"After a 5 turn fuse, deals 100 blast damage in a 3x3 area."
+KinkyDungeonInventoryItemBombDesc,"Not a toy!"
+KinkyDungeonInventoryItem3BombDesc2,"After a 5 turn fuse, deals 100 blast damage in a 3x3 area."
+KinkyDungeonInventoryItem3BombDesc,"Not a toy!"
 KinkyDungeonInventoryItemBombUse,You light the fuse!
 KinkyDungeonInventoryItemKnife,Knife
 KinkyDungeonInventoryItemLockpick,Lockpick
@@ -1574,7 +1577,7 @@ KinkyDungeonInventoryItemTheEncaserDesc,"You can enter slime form for 25 turns, 
 KinkyDungeonInventoryItemTheEncaserDesc2,"Deals glue damage. Roots targets for 2 turns on a hit. Offhand: Roots targets on hit."
 KinkyDungeonInventoryItemFourSeasons,Four Seasons
 KinkyDungeonInventoryItemFourSeasonsDesc,"Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element."
-KinkyDungeonInventoryItemFourSeasonsDesc2,"Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage. Offhand: Applies passive bonus."
+KinkyDungeonInventoryItemFourSeasonsDesc2,"Deals shadow damage. +25% fire, ice, soap, crush, electric, blast damage. Offhand: Applies passive bonus."
 KinkyDungeonInventoryItemArbiter,The Arbiter
 KinkyDungeonInventoryItemArbiterDesc,"I have altered the rules. Pray I do not alter them further."
 KinkyDungeonInventoryItemArbiterDesc2,"Deals chain damage with 125% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Weapon Ability: Disarm"
@@ -3039,7 +3042,9 @@ KinkyDungeonStruggleCantPickRubberLock,"The lock is made of solid rubber. You ca
 KinkyDungeonStruggleUnlockNoRubberKey,"You need something sharp to cut the lock."
 KinkyDungeonStruggleCantPickPurpleLock,"The lock doesn't even have a keyhole to pick!"
 KinkyDungeonStruggleCantPickDiscLock,"You need a special tool to pick this kind of lock."
-KinkyDungeonStruggleCantPickCyberLock,"The lock doesn't have a keyhole to pick."
+KinkyDungeonStruggleCantPickCyberLock,"The lock is technological and does not use a key."
+KinkyDungeonStruggleCantPickCyber2Lock,"The lock is technological and does not use a key."
+KinkyDungeonStruggleCantPickCyber3Lock,"The lock is technological and does not use a key."
 KinkyDungeonStruggleCantPickHiSecLock,"The lock is brimming with security features and is nigh impossible to pick!"
 
 KinkyDungeonStruggleUnlockJammed,"The key sticks in the lock and jams, mangling the key!"
@@ -6792,7 +6797,7 @@ KinkyDungeonSpellCastFromBook,Cast Spell (XXX turn delay)
 KinkyDungeonEndVibeCease,You feel the vibrations leaving your body...
 KinkyDungeonStartVibe,You feel your toys start to buzz...
 KinkyDungeonStartVibeContinue,You your toys continue to buzz...
-KinkyDungeonStartVibeRemote,The EnemyName remotely causes your toys to to buzz!!!
+KinkyDungeonStartVibeRemote,The EnemyName remotely causes your toys to buzz!!!
 KinkyDungeonPlugged,You feel the plugs inside you while walking.
 KinkyDungeonVibing0,Your toys pulse and tingle occasionally.
 KinkyDungeonVibing1,Your toys tease you and buzz gently...
@@ -12501,6 +12506,33 @@ dPrisonerJail_Pick,"Try to pick her restraints (JAMPERCENT jam chance)"
 dPrisonerJail_Word,Use a command word
 dPrisonerJailJammedRecent_Apologize,Apologize profusely!
 
+
+
+
+rPrisonerJailOwn,"(The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)"
+rPrisonerJailOwnNoKeys,"(You don't have any keys that work on the lock)"
+rPrisonerJailOwnUnlockHandsBound,"(You can't help her, bound as tightly as you are...)"
+rPrisonerJailOwnUnlockSlow,"(You unlock her, fumbling around for a while with your bound hands)"
+rPrisonerJailOwnUnlock,"(You unlock the SPEAKER)|Thank you!|Let's get out of here!"
+rPrisonerJailOwnUnlockGagged,"(You unlock the SPEAKER)|Mmmmph!|(She wants to keep her gag...)"
+rPrisonerJailOwnNoPick,"(You don't have any lockpicks)"
+rPrisonerJailOwnPickJam,"(You try to pick the lock...)|(Click! A safety shield locks securely into place!)|(Looks like the SPEAKER will be staying here for a while...)"
+rPrisonerJailOwnPickHandsBound,"(You can't pick the lock with your hands bound)"
+rPrisonerJailOwnPick,"(After a while, you free the SPEAKER)|Thank you!|Let's get moving!"
+rPrisonerJailOwnPickGagged,"(After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)"
+rPrisonerJailOwnWordNoMana,"(You don't have enough mana for a command word)"
+rPrisonerJailOwnWordNoSpeak,"(Try as you might, your mouth is sealed tight)"
+rPrisonerJailOwnWord,"(You utter a command word to free the SPEAKER)|Many thanks!|Let's go!"
+rPrisonerJailOwnWordGagged,"(You utter a command word to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)"
+rPrisonerJailOwnJammed,"(The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)"
+
+dPrisonerJailOwn_Unlock,Use a key to unlock her
+dPrisonerJailOwn_Pick,"Try to pick her restraints"
+dcOwn_Word,Use a command word
+dPrisonerJailOwnJammedRecent_Apologize,Apologize profusely!
+
+
+
 KinkyDungeonDiscovered,An enemy found you while you were busy!
 
 rPrisonerRescue,"(A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)"
@@ -12529,7 +12561,7 @@ rDollDropoffUse,"(The pole rises and immobilizes you!)"
 dDollDropoff_Use,(Stand over it and place your feet in the footrests)
 rFurniture,"(This is a piece of bondage furniture)"
 rFurnitureUse,"(You lock yourself in the furniture!)"
-dFurniture_Prisoner,(Display one of your prisoners)
+dFurniture_NPC,(Display one of your prisoners)
 dFurniture_Use,(Lock yourself inside)
 
 rTableFood,"FOODMSG|(It invites you to partake in its culinary delights)"
@@ -20456,8 +20488,8 @@ KDVariableModifier_BaseDamageBuffMelee,"AMNT% weapon phys. dmg"
 KDVariableModifier_BaseDamageBuffMagic,"AMNT% weapon magic dmg"
 KDVariableModifier_ElementalEcho,"Infuse weapon AMNT% TYPE"
 KDVariableModifier_ElementalDmg,"AMNT TYPE on attack"
-KDVariableModifier_ManaCost,"AMNT% Mana Costs"
-KDVariableModifier_ManaCostSpecific,"AMNT% TYPE Mana Costs"
+KDVariableModifier_ManaCost,"+AMNT Mana Efficiency"
+KDVariableModifier_ManaCostSpecific,"+AMNT TYPE Mana Efficiency"
 KDVariableModifier_ManaRegen,"AMNT% regen from mana pool"
 KDVariableModifier_ManaRegenOnKill,"AMNT mana pool on capture"
 KDVariableModifier_Sneak,"AMNT% Visibility Reduction"
@@ -21866,7 +21898,7 @@ KinkyDungeonBuffDistractionShield,"You have formed a mental barrier..."
 
 
 KinkyDungeonSpellDistractionBurst,Desire Burst
-KinkyDungeonSpellDescriptionDistractionBurst,"Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have at least 50% Desire, the damage is reduced based on the amount. (Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)"
+KinkyDungeonSpellDescriptionDistractionBurst,"Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have at least 50% Desire, the damage is reduced based on the amount.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)"
 KDDistractionBurst_Yes,"You channel your distraction into a powerful explosion!"
 KDDistractionBurst_No,"You don't have enough of a desire to do that."
 KDDistractionBurst_NoMana,"You have the desire but not the mana!"
@@ -22176,7 +22208,8 @@ KDPrisonerStat_Opinion,Opinion
 KDPrisonerStat_Training,Training
 KDPrisonerStat_Willpower,Willpower
 
-KDPrisonerNum,Prisoner #NUMR/TTL
+KDPrisonerNum_,Prisoner #NUMR/TTL
+KDPrisonerNum_Guest,Guest #NUMR/TTL
 
 
 KDCollectionSelect,Select a character to examine
@@ -22197,6 +22230,7 @@ KDPaletteSlime,Slime
 KDPaletteAlchemist,Alchemist
 KDPaletteApprentice,Scholarly
 KDPaletteWitch,Witch's Coven
+KDPaletteWarden,Warden
 KDPaletteCurse,Curse
 KDPaletteAncientRobot,Old Guardians
 KDPaletteMushy,Fungal
@@ -22233,7 +22267,7 @@ KDServants,Servants
 KDPrisoners,Prisoners
 
 KDPromoteNPC,Promote to Servant
-KDDemoteNPC,Demote to Prisoner
+KDDemoteNPC,Demote
 
 KDTeaseAttackResist_LeashGrab,The ENMY tries to grab you!
 
@@ -22755,7 +22789,7 @@ KDRoomType_Chamber,"Chamber"
 KDRoomType_Warden,"Prison"
 KDRoomType_Dollmaker,"Sorting Room"
 
-KDHotbarTutorial,"Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs."
+KDHotbarTutorial,"Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs."
 
 KDUseFootAffinity,You step on the item and tug to pull it taut...
 KDUseTugAffinity,"You tug furiously against the leash, pulling it taut!"
@@ -22912,6 +22946,7 @@ KinkyDungeonSummonMultiIceWall,A wall of ice rises from the ground!
 KDPoisonBreath,The dragon's breath poisons you!
 KDPoisonSlash,The dragon girl strikes you with poisonous razor leaves!
 KDDragonFlowerSpores,The flower releases soporific spores!
+KinkyDungeonSpellCastDragonFlowerSpores,The flower releases soporific spores!
 KinkyDungeonSpellPoisonBreath,Poison Breath
 
 KDVineSuspend,Vines reach from the ceiling and lift you into the air!
@@ -23280,20 +23315,20 @@ KDLeashSpellRemoveAll,You let go of all leashes.
 
 
 KinkyDungeonInventoryItemC4,Plastic Explosive
-KinkyDungeonInventoryItemC4Desc,"Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage."
-KinkyDungeonInventoryItemC4Desc2,"It's totally harmless! Probably."
-KinkyDungeonInventoryItem2C4Desc,"Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage."
-KinkyDungeonInventoryItem2C4Desc2,"It's totally harmless! Probably."
+KinkyDungeonInventoryItemC4Desc2,"Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage."
+KinkyDungeonInventoryItemC4Desc,"It's totally harmless! Probably."
+KinkyDungeonInventoryItem2C4Desc2,"Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage."
+KinkyDungeonInventoryItem2C4Desc,"It's totally harmless! Probably."
 KinkyDungeonInventoryItemC4Use,You set the clock ticking...
 
 KinkyDungeonInventoryItemDynamite,Dynamite
-KinkyDungeonInventoryItemDynamiteDesc,"10 turn fuse with a 25% chance each turn to detonate prematurely. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage."
-KinkyDungeonInventoryItemDynamiteDesc2,"Arguably more dangerous to the user than the target."
-KinkyDungeonInventoryItem2DynamiteDesc,"10 turn fuse with a 25% chance each turn to detonate. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage."
-KinkyDungeonInventoryItem2DynamiteDesc2,"Arguably more dangerous to the user than the target."
+KinkyDungeonInventoryItemDynamiteDesc2,"10 turn fuse with a 25% chance each turn to detonate prematurely. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage."
+KinkyDungeonInventoryItemDynamiteDesc,"Arguably more dangerous to the user than the target."
+KinkyDungeonInventoryItem2DynamiteDesc2,"10 turn fuse with a 25% chance each turn to detonate. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage."
+KinkyDungeonInventoryItem2DynamiteDesc,"Arguably more dangerous to the user than the target."
 KinkyDungeonInventoryItemDynamiteUse,You light the fuse and pray it doesn't blow up in your face.
 
-KDTooManyLeash,You are holding too many leashes!
+KDTooManyLeashes,You are holding too many leashes!
 
 KDAddCorruption,You feel a corrupting influence... (+AMNT Corruption)
 KDRemoveCorruption,You feel a restoring influence! (-AMNT Corruption)
@@ -23363,6 +23398,7 @@ KDInventoryActionRecycleExcess,Recycle all but one
 
 KDRecycle,You recycle a ITM
 KDRecycleBulk,You recycle #x ITM
+KDRecycleExcess,You recycle #x ITM
 
 KDDialogue_StepAside,"You're blocking me."
 KDDialogue_StepAsideBrat,"You're in my way!"
@@ -23406,8 +23442,114 @@ KDDesperateStruggle_NoWill,"You don't have the willpower left to struggle..."
 
 KDRecycleOutput_Rope,f
 KDRecycleOutput_Latex,x
-KDRecycleOutput_Leather,l
+KDRecycleOutput_Leather,L
 KDRecycleOutput_Metal,m
 KDRecycleOutput_Rune,R
 
 KDOwned,Owned: AMNT
+
+
+KDRecycleResource_Rope,Fiber
+KDRecycleResource_Latex,Latex
+KDRecycleResource_Leather,Leather
+KDRecycleResource_Metal,Metal
+KDRecycleResource_Rune,Runes
+
+RecycleResStrIntroRecycler_,"Stock: "
+RecycleResStrIntroRecyclerInput_,"Inputs: "
+
+KDSummitSafeguard,"You slip off the conveyor!"
+DungeonNameSummit,The Summit
+
+KDRestrainNPCBack,Back to Collection
+KDRestrainNPC,Edit Restraints
+
+KDDrawSelectedTab_Restrain,Editing Restraints
+KDDrawSelectedTab_Imprison,Imprison in Furniture
+
+KDBindNPCSlot_ModuleUtility,Module (Utility)
+KDBindNPCSlot_CollarTag,Leash
+KDBindNPCSlot_ModulePunish,Module (Punishment)
+KDBindNPCSlot_Collar,~~~ Collar ~~~
+KDBindNPCSlot_InnerHead,Blindfold / Earplugs
+KDBindNPCSlot_InterHead,Blindfold
+KDBindNPCSlot_OuterHead,Blindfold
+KDBindNPCSlot_Hood,Mask/Hood
+KDBindNPCSlot_InnerGag,Gag
+KDBindNPCSlot_InterGag,Gag
+KDBindNPCSlot_OuterGag,Gag / Stuffing
+KDBindNPCSlot_Muzzle,Muzzle
+KDBindNPCSlot_Wrists,Wrists
+KDBindNPCSlot_HeavyBondage,Heavy Bondage
+KDBindNPCSlot_Secure,Extra Bondage
+KDBindNPCSlot_ArmEncase,Encasement
+KDBindNPCSlot_InnerHands,Mittens
+KDBindNPCSlot_InterHands,Mittens / Tape
+KDBindNPCSlot_OuterHands,Gloves / Tape
+KDBindNPCSlot_HandEncase,Encasement
+KDBindNPCSlot_Piercings,Piercings
+KDBindNPCSlot_NippleWeight,Weights
+KDBindNPCSlot_NippleVibe,Vibes
+KDBindNPCSlot_ChastityBra,Chastity Bra
+KDBindNPCSlot_Suits,Catsuit / Leotard
+KDBindNPCSlot_HarnessExtra,Harness
+KDBindNPCSlot_Harness,Harness
+KDBindNPCSlot_Corset,Corset
+KDBindNPCSlot_RearPlug,Rear Plug
+KDBindNPCSlot_FrontPlug,Front Plug
+KDBindNPCSlot_Vibe,Vibrator
+KDBindNPCSlot_ChastityBelt,Chastity Belt
+KDBindNPCSlot_ThighCuffs,Thigh Cuffs
+KDBindNPCSlot_ThighBinds,Leg Bondage
+KDBindNPCSlot_Legbinder,Legbinder
+KDBindNPCSlot_LegEncase,Encasement
+KDBindNPCSlot_AnkleCuffs,Ankles
+KDBindNPCSlot_Shins,Shins
+KDBindNPCSlot_Knees,Knees
+KDBindNPCSlot_FeetEncase,Encasement
+KDBindNPCSlot_ToeCuffs,Toe Cuffs
+KDBindNPCSlot_ToeTies,Toe Tie
+KDBindNPCSlot_Heels,Heels
+KDBindNPCSlot_BootsEncase,Encasement
+
+KDCurrentItem,"Current Item: "
+KDCurrentItem2,"Apply Item: "
+
+KDFreePrisoner,Free Prisoners
+
+KDPerkUnlockedToast,"Perk Unlocked: "
+
+KinkyDungeonInventoryItemUniversalSolvent,Latex Solvent
+KinkyDungeonInventoryItemUniversalSolventUse,You ready the bottle of Latex Solvent.
+KinkyDungeonInventoryItemUniversalSolventDesc,"A potent acid, capable of dissolving slime and latex."
+KinkyDungeonInventoryItemUniversalSolventDesc2,"Deal 90 acid damage to target. Adds a 10% debuff to the cut and struggle resistance of latex restraints currently worn."
+
+KDVariableModifier_UniversalSolvent,Weakened by Latex Solvent (10%)
+KDUniversalSolventSucceedSelf,You spill the solvent on yourself and loosen your latex bonds!
+KDUniversalSolventSucceedEnemy,You splash the ENMY with latex solvent!
+
+KinkyDungeonSpellUniversalSolvent,Latex Solvent
+
+KDUniversalSolventFail,You can't use solvents on targets other than yourself while bound.
+
+KDRandom,Random
+
+KDSetRestraintPalette,Choose Palette
+KDSetRestraintPaletteSelect,Restraint Palette
+KDSetRestraintPaletteReturn,Choose Restraint
+
+KDSetDefaultNPCPalette,"Def. Palette: "
+KDSetNPCPaletteAll,"Set All Palette"
+
+KDCollectionTabStatusOption_,Prisoners
+KDCollectionTabStatusOption_Guest,Guests
+
+KDCollectionAssign,"Assign to "
+KDCollectionRemove,"Remove from "
+KDImprison,Imprison
+
+KDNPCOpinion,"Opinion: "
+KDLastNPCLocation,"Last Seen on Floor FLR, LOC"
+KDLastNPCLocationSame,"Present in current level"
+KDLastNPCLocationCaptured,"Captured by FCTN"
+KDLastNPCLocationCapturedNone,"Captured by enemies"

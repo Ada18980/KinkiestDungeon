@@ -134,6 +134,8 @@ function KinkyDungeonNearestJailPoint(x, y, filter, any, qualified, unnocupied) 
 		if (qualified && p.requireLeash && !leash) continue;
 		if (qualified && p.requireFurniture && !furniture) continue;
 		if (unnocupied && KinkyDungeonEntityAt(p.x, p.y)) continue;
+		if (KinkyDungeonEntityAt(p.x, p.y, undefined, undefined, undefined, false)
+			&& KDIsImprisoned(KinkyDungeonEntityAt(p.x, p.y))) continue;
 		let d = Math.max(Math.abs(x - p.x), Math.abs(y - p.y));
 		if (d < dist) {
 			dist = d;
@@ -770,6 +772,49 @@ function KDAnimEnemy(Entity) {
 	return {offX: offX, offY: offY};
 }
 
+
+function KDSetCollFlag(id, flag, duration) {
+	let entry = KDGameData.Collection["" + id];
+	if (entry) {
+		if (!entry.flags) entry.flags = {};
+		if (entry.flags[flag]) {
+			if (duration == 0) {
+				delete entry.flags[flag];// = undefined;
+				return;
+			}
+			if (entry.flags[flag] == -1) return;
+			if (entry.flags[flag] < duration) entry.flags[flag] = duration;
+		} else if (duration) entry.flags[flag] = duration;
+	}
+}
+
+/**
+ *
+ * @param {number} id
+ * @param {string} flag
+ * @returns {boolean}
+ */
+function KDCollHasFlag(id, flag) {
+	let entry = KDGameData.Collection["" + id];
+	if (entry?.flags)
+		return (entry.flags && (entry.flags[flag] > 0 || entry.flags[flag] == -1));
+	return false;
+}
+
+function KinkyDungeonSetEnemyFlag(enemy, flag, duration) {
+	KDSetCollFlag(enemy.id, flag, duration);
+	if (!enemy.flags) enemy.flags = {};
+	if (enemy.flags[flag]) {
+		if (duration == 0) {
+			delete enemy.flags[flag];// = undefined;
+			return;
+		}
+		if (enemy.flags[flag] == -1) return;
+		if (enemy.flags[flag] < duration) enemy.flags[flag] = duration;
+	} else if (duration) enemy.flags[flag] = duration;
+
+}
+
 /**
  *
  * @param {entity} enemy
@@ -777,7 +822,8 @@ function KDAnimEnemy(Entity) {
  * @returns {boolean}
  */
 function KDEnemyHasFlag(enemy, flag) {
-	return (enemy.flags && (enemy.flags[flag] > 0 || enemy.flags[flag] == -1));
+	return (enemy.flags && (enemy.flags[flag] > 0 || enemy.flags[flag] == -1))
+		|| KDCollHasFlag(enemy.id, flag);
 }
 
 /**
@@ -1549,7 +1595,7 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 									});
 						}
 					}
-					if (!KDHelpless(enemy)) {
+					if (!KDHelpless(enemy) && !KDIsImprisoned(enemy)) {
 						if (!KinkyDungeonAggressive(enemy) && ((!KDAllied(enemy) && !enemy.Enemy.specialdialogue && !bb) || KDEnemyHasFlag(enemy, "Shop")) && !enemy.playWithPlayer && enemy.Enemy.movePoints < 90 && !KDAmbushAI(enemy)) {
 							KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_shop", KinkyDungeonRootDirectory + ((KDEnemyHasFlag(enemy, "Shop")) ? "Conditions/Shop.png" : (KDAllied(enemy) ? "Conditions/Heart.png" : "Conditions/Peace.png")),
 								canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
@@ -1679,6 +1725,51 @@ let KDDialogueSlots = {};
 /**
  *
  * @param {entity} enemy
+ * @returns {string}
+ */
+function KDEnemyName(enemy) {
+	return enemy.CustomName || KDGetName(enemy.id);
+}
+/**
+ *
+ * @param {entity} enemy
+ * @returns {string}
+ */
+function KDEnemyNameColor(enemy) {
+	return enemy.CustomNameColor || KDGetNameColor(enemy.id);
+}
+
+function KDGetName(id) {
+	return KDGameData.Collection[id + ""]?.name || (KDIsNPCPersistent(id) ? KDGetPersistentNPC(id).Name : "");
+}
+function KDGetNameColor(id) {
+	return KDGameData.Collection[id + ""]?.color || "#ffffff";
+}
+
+/**
+ *
+ * @param {entity} en
+ */
+function KDFreeNPC(en) {
+	KinkyDungeonSetEnemyFlag(en, "imprisoned", 0);
+	if (!KDGameData.NPCRestraints) KDGameData.NPCRestraints = {};
+	else if (KDGameData.NPCRestraints["" + en.id]?.Device) {
+		KDSetNPCRestraint(en.id, "Device", undefined);
+	}
+	KDUpdatePersistentNPC(en.id);
+}
+/**
+ *
+ * @param {number} id
+ */
+function KDFreeNPCID(id) {
+	let en = KDGetGlobalEntity(id);
+	KDFreeNPC(en);
+}
+
+/**
+ *
+ * @param {entity} enemy
  * @param {number} offset
  * @returns {number}
  */
@@ -1686,10 +1777,10 @@ function KDDrawEnemyTooltip(enemy, offset) {
 	let analyze = KinkyDungeonFlags.get("AdvTooltips") || KDHasSpell("ApprenticeKnowledge");
 	// Previously this was dependent on using a spell called Analyze. Now it is enabled by default if you have Knowledge
 	let TooltipList = [];
-	if (enemy.CustomName)
+	if (KDEnemyName(enemy))
 		TooltipList.push({
-			str: enemy.CustomName,
-			fg: enemy.CustomNameColor || "#ffffff",
+			str: KDEnemyName(enemy),
+			fg: KDEnemyNameColor(enemy),
 			bg: "#000000",
 			size: 28,
 			center: true,
@@ -2087,46 +2178,14 @@ let KDChampionMax = 10;
 function KinkyDungeonCapture(enemy) {
 	let msg = "KinkyDungeonCapture";
 	let goddessCapture = false;
-	/*if (enemy.lifetime != undefined && enemy.lifetime < 999) {
-		msg = "KinkyDungeonCaptureBasic";
-	} else if (KDGameData.Champion) {
-		if (KDGameData.ChampionCurrent < KDChampionMax) {
-			msg = "KinkyDungeonCaptureGoddess";
-			let disapproval = 0;
-			goddessCapture = true;
-			let spell = KinkyDungeonFindSpell("Summon", true);
-			if (spell) {
-				KinkyDungeonCastSpell(enemy.x, enemy.y, spell, undefined, undefined, undefined);
-			}
-			// Is the player wearing something related to the goddess?
-			if (KinkyDungeonStatsChoice.has("BoundCrusader")) {
-				let uniform = ["Rope", "Leather", "Metal", "Latex"];
-				if (uniform.includes(KDGameData.Champion)) uniform = [KDGameData.Champion];
-				let restraints = [];
-				for (let u of uniform) {
-					for (let r of KinkyDungeonGetRestraintsWithShrine(u, true, true, true)) {
-						restraints.push(r);
-					}
-				}
-				let minAmount = 1;
-				if (KinkyDungeonGoddessRep[KDGameData.Champion] > 10) minAmount = 2;
-				if (KinkyDungeonGoddessRep[KDGameData.Champion] > 30) minAmount = 3;
-				if (restraints.length < minAmount) {
-					msg = "KinkyDungeonCaptureGoddess" + (minAmount == 1 ? "Low" : "None") + (uniform.includes(KDGameData.Champion) ? "Uniform" : "Restraint");
-					if (minAmount == 1)
-						disapproval = 1;
-					else
-						disapproval = 2;
-				}
-			}
-			if (disapproval == 0) {
-				KinkyDungeonChangeRep(KDGameData.Champion, KinkyDungeonGoddessRep[KDGameData.Champion] < -10 ? 1 :
-					(KinkyDungeonGoddessRep[KDGameData.Champion] > 30 ? 0.25 : 0.5));
-				KDGameData.ChampionCurrent += 1;
-			} else goddessCapture = false;
-		} else msg = "KinkyDungeonCaptureMax";
-	} else*/ msg = "KinkyDungeonCaptureBasic";
-
+	msg = "KinkyDungeonCaptureBasic";
+	KDDropStolenItems(enemy);
+	if (KDIsImprisoned(enemy)) KDFreeNPC(enemy);
+	if (KDIsNPCPersistent(enemy.id)) {
+		KDGetPersistentNPC(enemy.id).collect = true;
+		KDGetPersistentNPC(enemy.id).captured = false;
+		KDUpdatePersistentNPC(enemy.id);
+	}
 	KinkyDungeonSendEvent("afterCapture", {enemy: enemy});
 	KinkyDungeonSendActionMessage(6,
 		TextGet(msg).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)).replace("GODDESS", TextGet("KinkyDungeonShrine" + KDGameData.Champion)),
@@ -2158,7 +2217,7 @@ function KDDropStolenItems(enemy) {
  * @returns {boolean}
  */
 function KinkyDungeonEnemyCheckHP(enemy, E) {
-	if (enemy.hp <= 0) {
+	if (enemy.hp <= 0 && !KDIsImprisoned(enemy)) {
 		let noRepHit = false;
 		KinkyDungeonSendEvent("death", {enemy: enemy});
 		KDRemoveEntity(enemy, true, true, false, E);
@@ -2279,11 +2338,13 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 
 		KDDropItems(enemy);
 
+
 		return true;
-	} else if (KDHelpless(enemy)) {
+	} else if (KDHelpless(enemy) && !KDIsImprisoned(enemy)) {
 		KDDropStolenItems(enemy);
 		if (!enemy.droppedItems)
 			KDDropItems(enemy);
+
 	}
 	return false;
 }
@@ -2730,17 +2791,6 @@ function KinkyDungeonGetNearbyPoint(x, y, allowNearPlayer=false, Enemy, Adjacent
 	return foundslot;
 }
 
-function KinkyDungeonSetEnemyFlag(enemy, flag, duration) {
-	if (!enemy.flags) enemy.flags = {};
-	if (enemy.flags[flag]) {
-		if (duration == 0) {
-			delete enemy.flags[flag];// = undefined;
-			return;
-		}
-		if (enemy.flags[flag] == -1) return;
-		if (enemy.flags[flag] < duration) enemy.flags[flag] = duration;
-	} else if (duration) enemy.flags[flag] = duration;
-}
 
 /**
  *
@@ -2978,6 +3028,12 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 				if (enemy.boundLevel <= 0) {
 					KDAddThought(enemy.id, "Annoyed", 5, 1);
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "boundLevel"});
+				}
+
+				/** Do NPC restraint struggling */
+				let struggleNPCTarget = KDNPCStruggleTick(enemy.id, delta);
+				if (struggleNPCTarget) {
+					KDNPCDoStruggle(enemy.id, struggleNPCTarget.slot, struggleNPCTarget.inv);
 				}
 			}
 			let vibe = KDEntityMaxBuffedStat(enemy, "Vibration");
@@ -3328,6 +3384,11 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 
 				}
 
+				// Updates the NPC's persistence record if available
+				// This does not MAKE the NPC persistent, only updates it if they are
+				// We do, however, make
+				KDUpdatePersistentNPC(enemy.id, KDGameData.Collection[enemy.id + ""] != undefined);
+
 				// Delete the enemy
 				if (KinkyDungeonEnemyCheckHP(enemy, E)) { E -= 1;} else {
 					if (enemy.aware && (enemy.lifetime == undefined || enemy.lifetime > 9000) && !enemy.Enemy.tags.temporary && !enemy.Enemy.tags.peaceful) {
@@ -3637,6 +3698,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.allied = KDAllied(enemy);
 	AIData.aggressive = KinkyDungeonAggressive(enemy, player);
 	AIData.domMe = (player.player && AIData.aggressive) ? false : KDCanDom(enemy);
+
 
 	AIData.leashing = enemy.Enemy.tags.leashing && (KDFactionRelation(KDGetFaction(enemy), "Jail")) > -0.5;
 	AIData.highdistraction = KDIsDistracted(enemy);
@@ -6244,21 +6306,26 @@ function KDTieUpEnemy(enemy, amount, type = "Leather", Damage, Msg, Delay) {
 		type: type, // Type of BONDAGE, e.g. leather, rope, etc
 		Damage: Damage,
 		Msg: Msg,
+		amntAdded: 0,
 	};
 
 	KinkyDungeonSendEvent("bindEnemy", data);
 
-	if (data.amount) {
-		enemy.boundLevel = (enemy.boundLevel || 0) + data.amount;
-	}
 	if (data.type) {
 		if (!enemy.specialBoundLevel)
 			enemy.specialBoundLevel = {};
-		enemy.specialBoundLevel[type] = (enemy.specialBoundLevel[type] || 0) + data.specialAmount;
+		let orig = enemy.specialBoundLevel[type] || 0;
+		enemy.specialBoundLevel[type] = Math.max(0, (enemy.specialBoundLevel[type] || 0) + data.specialAmount);
+		data.amntAdded = (enemy.specialBoundLevel[type] || 0) - orig;
+	}
+	if (data.amount || data.amntAdded != undefined) {
+		enemy.boundLevel = Math.max(0, (enemy.boundLevel || 0) + (data.amntAdded != undefined ? data.amntAdded : data.amount));
 	}
 
 	if (data.Msg) {
-		KDDamageQueue.push({floater: TextGet("KDTieUp").replace("AMNT", Math.round(data.amount*10) + ""), Entity: enemy, Color: "#ff8933", Delay: Delay});
+		KDDamageQueue.push({floater: TextGet("KDTieUp").replace("AMNT",
+			Math.round((data.amntAdded != undefined ? data.amntAdded : data.amount)*10) + ""),
+		Entity: enemy, Color: "#ff8933", Delay: Delay});
 	}
 
 	return data;
@@ -6531,18 +6598,19 @@ function KDPlayerIsDefeated() {
 
 function KDPlayerIsDisabled() {
 	return KinkyDungeonFlags.get("playerDisabled")
-		|| (KinkyDungeonStatBlind > 0 || KinkyDungeonStatBind > 0 || KinkyDungeonStatFreeze > 0 || (KDGameData.SlowMoveTurns > 0 && !KinkyDungeonFlags.get("channeling")) || KDGameData.SleepTurns > 0);
+		|| (KinkyDungeonStatBlind > 0 || KinkyDungeonStatBind > 0 || KinkyDungeonStatFreeze > 0 || (KinkyDungeonFlags.get("playerStun") && !KinkyDungeonFlags.get("channeling")) || KDGameData.SleepTurns > 0);
 }
+
 function KDPlayerIsStunned() {
-	return KDPlayerIsDisabled() || KinkyDungeonFlags.get("playerStun")
-		|| (KDGameData.MovePoints < 0 || KDGameData.KneelTurns > 0 || KinkyDungeonSleepiness > 0);
+	return KinkyDungeonStatBlind > 0 || KinkyDungeonFlags.get("playerStun") || KDGameData.SleepTurns > 0 || KinkyDungeonStatFreeze > 0;
 }
 function KDPlayerIsImmobilized() {
 	return KinkyDungeonSlowLevel > 9 || KinkyDungeonGetRestraintItem("ItemDevices");
 }
 
 function  KDPlayerIsSlowed() {
-	return KDPlayerIsStunned() || KinkyDungeonSlowLevel > 1;
+	return KinkyDungeonSlowLevel > 1 || KDPlayerIsStunned() || KinkyDungeonSleepiness > 0
+		|| (KDGameData.MovePoints < 0 || KDGameData.KneelTurns > 0);
 }
 
 
@@ -7607,6 +7675,20 @@ function KDIsInParty(enemy) {
 	}
 	return false;
 }
+/**
+ *
+ * @param {number} id
+ * @returns {boolean} true if the NPC is in the party
+ */
+function KDIsInPartyID(id) {
+	if (!KDGameData.Party) KDGameData.Party = []; // Null protection
+	for (let pm of (KDGameData.Party)) {
+		if (pm.id == id) {
+			return true;
+		}
+	}
+	return false;
+}
 
 /**
  *
@@ -7617,6 +7699,21 @@ function KDIsInCapturedParty(enemy) {
 	if (!KDGameData.CapturedParty) KDGameData.CapturedParty = []; // Null protection
 	for (let pm of (KDGameData.CapturedParty)) {
 		if (pm.id == enemy.id) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ *
+ * @param {number} id
+ * @returns {boolean} true if the NPC has been previously captured
+ */
+function KDIsInCapturedPartyID(id) {
+	if (!KDGameData.CapturedParty) KDGameData.CapturedParty = []; // Null protection
+	for (let pm of (KDGameData.CapturedParty)) {
+		if (pm.id == id) {
 			return true;
 		}
 	}
@@ -7662,6 +7759,8 @@ function KDAddToParty(enemy) {
 	// Add a copy to the party
 	enemy.faction = "Player";
 	KDGameData.Party.push(JSON.parse(JSON.stringify(enemy)));
+	if (!KDGameData.Collection[enemy.id + ""])
+		KDAddCollection(enemy, undefined, "Guest");
 	return true;
 
 }
@@ -7702,8 +7801,15 @@ function KDRemoveFromParty(enemy, capture) {
 }
 
 
+/**
+ *
+ * @param {entity} entity
+ * @param {boolean} [makepersistent] - If true, the game will update the npc to be persistent
+ * @param {boolean} [dontteleportpersistent] - If true, the game will create a new NPC not a persistent one
+ * @returns {entity}
+ */
 
-function KDAddEntity(entity) {
+function KDAddEntity(entity, makepersistent, dontteleportpersistent) {
 	let data = {
 		enemy: entity,
 		x: entity.x,
@@ -7712,23 +7818,66 @@ function KDAddEntity(entity) {
 		typeOverride: false,
 		data: undefined,
 		loadout: undefined,
+		persistent: makepersistent,
 	};
-	KinkyDungeonSendEvent("addEntity", data);
-	KDMapData.Entities.push(entity);
-	KDSetLoadout(entity, data.loadout);
-	if (!entity.data && entity.Enemy.data) entity.data = entity.Enemy.data;
-	if (data.data) {
-		if (!entity.data) entity.data = {};
-		Object.assign(entity.data, data.data);
+
+
+	if (!dontteleportpersistent && KDIsNPCPersistent(data.enemy.id) && KinkyDungeonFindID(data.enemy.id)) {
+		// Move the enemy instead of creating
+
+		let npc = KinkyDungeonFindID(data.enemy.id);
+
+		if (typeof data.entity.Enemy == "string") {
+			data.entity.Enemy = KinkyDungeonGetEnemyByName(data.entity.Enemy);
+		}
+		npc.x = data.x;
+		npc.y = data.y;
+		if (KDIsNPCPersistent(data.enemy.id) && !KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners)
+			KDGetPersistentNPC(data.enemy.id).collect = false;
+
+		KDUpdateEnemyCache = true;
+		return npc;
 	}
-	if (entity.Enemy?.startBuffs) {
-		if (!entity.buffs) entity.buffs = {};
-		let buffs = JSON.parse(JSON.stringify(entity.Enemy?.startBuffs));
+
+	let createpersistent = false;
+
+	if (makepersistent || KDPersistentNPCs["" + data.enemy.id]) {
+		let npc = KDGetPersistentNPC(data.enemy.id);
+		if (npc) {
+			data.enemy = npc.entity;
+			if (typeof npc.entity.Enemy == "string") {
+				npc.entity.Enemy = KinkyDungeonGetEnemyByName(npc.entity.Enemy);
+			}
+			npc.entity.x = data.x;
+			npc.entity.y = data.y;
+			KDUpdateEnemyCache = true;
+		} else {
+			createpersistent = true;
+		}
+	}
+	KinkyDungeonSendEvent("addEntity", data);
+	KDMapData.Entities.push(data.enemy);
+	KDSetLoadout(data.enemy, data.loadout);
+	if (!data.enemy.data && data.enemy.Enemy.data) data.enemy.data = data.enemy.Enemy.data;
+	if (data.data) {
+		if (!data.enemy.data) data.enemy.data = {};
+		Object.assign(data.enemy.data, data.data);
+	}
+	if (data.enemy.Enemy?.startBuffs) {
+		if (!data.enemy.buffs) data.enemy.buffs = {};
+		let buffs = JSON.parse(JSON.stringify(data.enemy.Enemy?.startBuffs));
 		if (buffs)
 			for (let b of buffs)
-				entity.buffs[b.id] = b;
+				data.enemy.buffs[b.id] = b;
 	}
 	KDUpdateEnemyCache = true;
+
+	// In case it wasnt made already
+	if (createpersistent) KDGetPersistentNPC(data.enemy.id);
+
+	if (KDIsNPCPersistent(data.enemy.id) && !KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners)
+		KDGetPersistentNPC(data.enemy.id).collect = false;
+	return data.enemy;
 }
 function KDSpliceIndex(index, num = 1) {
 	if (KDMapData.Entities[index]) {
@@ -7757,16 +7906,34 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
 	if (!noEvent)
 		KinkyDungeonSendEvent("removeEnemy", data);
 
+
+
 	if (data.cancel) return false;
 	if (data.kill || data.capture) {
+		KDDropStolenItems(enemy);
+		enemy.items = [];
+		enemy.noDrop = true;
+		if (KDIsNPCPersistent(enemy.id)) {
+			if (KDGetPersistentNPC(enemy.id).collect
+				|| KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners
+				|| (enemy.playerdmg > 0 && KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) < 8)) {
+				KDGetPersistentNPC(enemy.id).captured = false;
+				KDGetPersistentNPC(enemy.id).collect = true;
+			} else {
+				KDGetPersistentNPC(enemy.id).captured = true;
+				KDGetPersistentNPC(enemy.id).captureFaction = KDMapData.MapFaction;
+			}
+		}
+		enemy.playerdmg = undefined;
 		if (KDGameData.SpawnedPartyPrisoners && KDGameData.SpawnedPartyPrisoners[enemy.id + ""]) {
 			KDAddToCapturedParty(enemy);
 		} else {
 			KDRemoveFromParty(data.enemy, data.capture && KDGetFaction(data.enemy) == "Player");
 		}
 	}
-
-	KDDropStolenItems(enemy);
+	if (KDIsNPCPersistent(enemy.id) && KDGetPersistentNPC(enemy.id)) {
+		KDGetPersistentNPC(enemy.id).jailed = undefined;
+	}
 
 	KDSpliceIndex(forceIndex || KDMapData.Entities.indexOf(data.enemy), 1);
 	return true;

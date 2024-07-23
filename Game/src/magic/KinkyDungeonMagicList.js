@@ -2497,6 +2497,16 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 400,
 		}
 	},
+	{name: "UniversalSolvent", landsfx: "Acid",
+		tags: ["acid", "alchemy", "offense", "utility"], noise: 0, sfx: "PotionDrink", school: "Elements", manacost: 0,
+		noMiscast: true, noAggro: true,
+		components: [], special: "UniversalSolvent",
+		level:1, type:"special", onhit:"aoe", delay: 1, power: 9, range: 2.5, size: 3, aoe: 0.5, lifetime: 1, damage: "acid",
+		effectTileDurationMod: 2, effectTile: {
+			name: "Acid",
+			duration: 4,
+		}
+	},
 
 	{enemySpell: true, name: "Feathers", color: "#ffffff", sfx: "Tickle", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 5, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "tickle", playerEffect: {name: "Damage"}},
 	{enemySpell: true, name: "NurseBola", color: "#ff2200", sfx: "Miss", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "NurseBola"}}, // Throws a chain which stuns the target for 1 turn
@@ -3542,6 +3552,7 @@ let KDSpecialBondage = {
 		powerStruggleBoost: 0.6,
 		healthStruggleBoost: 1.2,
 		enemyBondageMult: 0.8,
+		latex: true,
 	},
 	"Rope": {
 		priority: -3,
@@ -3574,6 +3585,7 @@ let KDSpecialBondage = {
 		powerStruggleBoost: 2.0,
 		healthStruggleBoost: 0.75,
 		enemyBondageMult: 1.75,
+		latex: true,
 	},
 	"Tape": {
 		priority: -5,

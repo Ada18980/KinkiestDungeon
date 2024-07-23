@@ -371,6 +371,9 @@ function KinkyDungeonNewGamePlus() {
 function KDResetData(Data) {
 	if (!Data) Data = KDGameDataBase;
 	KDGameData = JSON.parse(JSON.stringify( Data));
+	KDPersistentNPCs = {};
+	KDPersonalAlt = {};
+
 	for (let control of Object.keys(KDFocusControlButtons)) {
 		KDInitFocusControl(control);
 	}
@@ -620,7 +623,9 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 
 	// Create enemies first so we can spawn them in the set pieces if needed
 	let allies = KinkyDungeonGetAllies();
-	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {return !allies.includes(enemy);});
+	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {
+		return !allies.includes(enemy);
+	});
 	KDCommanderRoles = new Map();
 	KDUpdateEnemyCache = true;
 
@@ -633,6 +638,11 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 
 	// UnPack enemies
 	KDUnPackEnemies(NewMapData);
+
+	// Filter non-present enemies
+	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {
+		return (!KDGetNPCLocation(enemy.id) || KDCompareLocation(KDGetNPCLocation(enemy.id), KDGetCurrentLocation()));
+	});
 
 	KDMapData = NewMapData;
 	KDGameData.RoomType = KDMapData.RoomType;
@@ -657,7 +667,7 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	}
 
 	for (let e of allies) {
-		KDAddEntity(e);
+		KDAddEntity(e, true);
 	}
 
 	for (let e of KinkyDungeonGetAllies()) {
@@ -819,11 +829,18 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 	if (useExisting && location.data[KDGameData.RoomType]) {
 		KDLoadMapFromWorld(worldLocation.x, worldLocation.y, KDGameData.RoomType, direction, constantX);
+
+		// Repopulate
+		altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+		if (!altType?.noPersistentPrisoners && !mapMod?.noPersistentPrisoners)
+			KDRepopulatePersistentNPCs();
 		return;
 	}
 
 	// Filter out the allies
-	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {return !allies.includes(enemy);});
+	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {
+		return !allies.includes(enemy);
+	});
 	KDCommanderRoles = new Map();
 	KDUpdateEnemyCache = true;
 	// Else make a new one
@@ -1333,7 +1350,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 
 			for (let e of allies) {
-				KDAddEntity(e);
+				KDAddEntity(e, true);
 				let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true, true);
 				if (!point) point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, undefined, true);
 				if (!point) point = {x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y};
@@ -1360,6 +1377,10 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	KDRedrawFog = 2;
 	KDUpdateEnemyCache = true;
 	KDUnPackEnemies(KDMapData);
+	// Filter non-present enemies
+	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {
+		return (!KDGetNPCLocation(enemy.id) || KDCompareLocation(KDGetNPCLocation(enemy.id), KDGetCurrentLocation()));
+	});
 	KinkyDungeonAdvanceTime(0);
 
 	KinkyDungeonGenNavMap();
@@ -1512,11 +1533,21 @@ function KinkyDungeonGetAllies() {
 
 /**
  *
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDIsImprisoned(enemy) {
+	return KDEntityHasFlag(enemy, "imprisoned");
+}
+
+
+/**
+ *
  * @param {entity} e
  * @returns {boolean}
  */
 function KDCanBringAlly(e) {
-	return e.Enemy && (e.Enemy.keepLevel || KDIsInParty(e)) && KDAllied(e) && !KDHelpless(e);
+	return e.Enemy && (e.Enemy.keepLevel || KDIsInParty(e)) && KDAllied(e) && !KDHelpless(e) && !KDIsImprisoned(e);
 }
 
 function KDChooseFactions(factionList, Floor, Tags, BonusTags, Set) {
@@ -4365,16 +4396,19 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 		KDTurnToFace(Enemy.x - KinkyDungeonPlayerEntity.x, Enemy.y - KinkyDungeonPlayerEntity.y);
 	}
 
-	if (Enemy && KDHelpless(Enemy) && Enemy.hp < 0.52) {
+	let teasesub = !KDHostile(Enemy) && KinkyDungeonAggressive(Enemy) && KDCanDom(Enemy) && Enemy.hp > 0.51
+		&& !KDEntityHasFlag(Enemy, "stopplay");
+	if (!teasesub && Enemy && KDHelpless(Enemy) && Enemy.hp < 0.52) {
 		attackCost = 0;
 		capture = true;
 	}
 	let noadvance = false;
 	if (KinkyDungeonHasStamina(Math.abs(attackCost), true)) {
-		if (!KDGameData.ConfirmAttack && (!KinkyDungeonAggressive(Enemy) || KDAllied(Enemy)) && !(Enemy.playWithPlayer && KDCanDom(Enemy))) {
-			if ((!Enemy.lifetime || Enemy.lifetime > 9000) && !Enemy.Enemy.tags.notalk) { // KDAllied(Enemy)
-				let d = Enemy.Enemy.specialdialogue ? Enemy.Enemy.specialdialogue : "GenericAlly";
-				if (Enemy.specialdialogue) d = Enemy.specialdialogue; // Special dialogue override
+		if (!KDGameData.ConfirmAttack && (KDIsImprisoned(Enemy) || ((!KinkyDungeonAggressive(Enemy) || KDAllied(Enemy)) && !(Enemy.playWithPlayer && KDCanDom(Enemy))))) {
+			let d = Enemy.Enemy.specialdialogue ? Enemy.Enemy.specialdialogue : "GenericAlly";
+			if (Enemy.specialdialogue) d = Enemy.specialdialogue; // Special dialogue override
+			if (d || ((!Enemy.lifetime || Enemy.lifetime > 9000) && !Enemy.Enemy.tags.notalk)) { // KDAllied(Enemy)
+
 				KDStartDialog(d, Enemy.Enemy.name, true, Enemy.personality, Enemy);
 				noadvance = true;
 				result = "dialogue";
@@ -4437,10 +4471,20 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				if (KDGameData.HeelPower > 0)
 					KDChangeBalance(data.attackCost * KDGetBalanceCost() * (0.75 + 0.5 * KDRandom()) * KDBalanceAttackMult*10*KDFitnessMult(), true);
 
+				let origHP = Enemy.hp;
 				if (KinkyDungeonAttackEnemy(data.target, data.attackData)) {
 					result = "hit";
 				} else {
 					result = "miss";
+				}
+
+				if (teasesub && origHP > 0.5) {
+					Enemy.hp = Math.max(0.51, Enemy.hp);
+					KinkyDungeonSetEnemyFlag(Enemy, "stopplay", 4);
+
+					KDAddThought(Enemy.id, "PlayDone", 10, 8);
+					Enemy.playWithPlayer = Math.min(Enemy.playWithPlayer || 0, 1);
+					KDSetPlayCD(Enemy, 1.5, 3);
 				}
 
 				let dmgTotal = -(Enemy.hp - data.orighp);
@@ -4472,7 +4516,18 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				KinkyDungeonSendEvent("capture", {enemy: Enemy, attacker: KinkyDungeonPlayerEntity, skip: skip});
 				KinkyDungeonChangeStamina(attackCost, false, 1);
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "capture", 1);
+				if (KDGameData.Collection[Enemy.id + ""]) {
+					KDGameData.Collection[Enemy.id + ""].status = "";
+					KDSortCollection();
+				}
+				KDFreeNPC(Enemy);
 				KDAddCollection(Enemy);
+				if (KDIsNPCPersistent(Enemy.id)) {
+					KDGetPersistentNPC(Enemy.id).collect = true;
+					KDGetPersistentNPC(Enemy.id).captured = false;
+					KDUpdatePersistentNPC(Enemy.id);
+				}
+				KDAddOpinionPersistent(Enemy.id, -50);
 				result = "capture";
 			}
 
@@ -4968,6 +5023,7 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 		KinkyDungeonFlags.set("TimeSlowTick", 1);
 	} else pauseTime = false;
 	KDGameData.ShieldDamage = 0;
+	KDUpdateCollectionFlags(delta);
 	KinkyDungeonUpdateBuffs(delta, pauseTime);
 	KinkyDungeonUpdateEnemies(delta, true); //console.log("Enemy Check " + (performance.now() - now));
 	KinkyDungeonSendEvent("afterEnemyTick", {delta: delta, allied: true});

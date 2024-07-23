@@ -43,7 +43,29 @@ function InitFacilities() {
 	}
 }
 
+
+function KDValidateAllFacilities() {
+	for (let facility of Object.keys(KDFacilityTypes)) {
+		let servants = KDGameData.FacilitiesData["Servants_" + facility];
+		let prisoners = KDGameData.FacilitiesData["Prisoners_" + facility];
+		if (servants)
+			for (let servant of servants) {
+				if (!KDValidateServant(KDGameData.Collection[servant + ""],
+					facility,
+					"Servants")) servants.splice(servants.indexOf(servant));
+			}
+		if (prisoners)
+			for (let prisoner of prisoners) {
+				if (!KDValidateServant(KDGameData.Collection[prisoner + ""],
+					facility,
+					"Prisoners")) prisoners.splice(prisoners.indexOf(prisoner));
+			}
+	}
+
+}
+
 function KDUpdateFacilities(delta: number) {
+	KDValidateAllFacilities();
 	let listUpdate = Object.entries(KDFacilityTypes).filter((entry) => {
 		return entry[1].prereq();
 	});
@@ -66,10 +88,20 @@ function KinkyDungeonDrawFacilities(xOffset = -125) {
 }
 
 
+function KDValidateServant(value: KDCollectionEntry, facility: string, type: string): boolean {
+	type = KDFacilityCollectionDataTypeMap[type] || "";
+
+	if (value.status != type) return false;
+	if (KDIsInPartyID(value.id)) return false;
+
+	return true;
+
+}
+
 function KDDrawFacilitiesList(xOffset) {
 
 	let padding = 100;
-	let YY = 200;
+	let YY = 170;
 	let XX = 550 + 125 + xOffset;
 	let width = 1050;
 
@@ -89,7 +121,7 @@ function KDDrawFacilitiesList(xOffset) {
 			continue;
 		}
 		let dist = facility[1].draw(XX, YY, width);
-		if (YY + dist > 940) {
+		if (YY + dist > 980) {
 			broken = true;
 			break;
 		}
@@ -185,6 +217,8 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 					KDCurrentFacilityTarget = facility;
 					KDCurrentFacilityCollectionType = "Servants";
 					KinkyDungeonDrawState = "Collection";
+					KinkyDungeonCheckClothesLoss = true;
+					KDCollectionTab = "";
 					return true;
 				}, true, x + width/2 - (spacing * (ms - 1) + w)/2 + i * spacing, y + yy, w, w, "", "#ffffff", KDCollectionImage(servant),
 				undefined, undefined, !servant, KDButtonColor, undefined, undefined, {
@@ -204,6 +238,8 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 					KDCurrentFacilityTarget = facility;
 					KDCurrentFacilityCollectionType = "Prisoners";
 					KinkyDungeonDrawState = "Collection";
+					KinkyDungeonCheckClothesLoss = true;
+					KDCollectionTab = "";
 					return true;
 				}, true, x + width/2 - (spacing * (mp - 1) + w)/2 + i * spacing, y + yy, w, w, "", "#ffffff", KDCollectionImage(prisoner),
 				undefined, undefined, !prisoner, KDButtonColor, undefined, undefined, {

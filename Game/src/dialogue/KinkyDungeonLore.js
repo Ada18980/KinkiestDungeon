@@ -608,6 +608,8 @@ function KDDrawInventoryTabs(xOffset, drawBG = true) {
 	KinkyDungeonDrawState != "Inventory", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabCollection", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Collection";
+		KinkyDungeonCheckClothesLoss = true;
+		KDCollectionTab = "";
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonCollection"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Collection", KDButtonColor); II++;

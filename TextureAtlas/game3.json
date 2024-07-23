@@ -3408,14 +3408,6 @@
 	"spriteSourceSize": {"x":12,"y":28,"w":47,"h":18},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Items/Group/ItemDevices.png":
-{
-	"frame": {"x":2022,"y":1144,"w":24,"h":26},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":42,"y":41,"w":24,"h":26},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Items/Group/ItemNeckRestraints.png":
 {
 	"frame": {"x":1327,"y":1760,"w":20,"h":32},
@@ -3936,6 +3928,14 @@
 	"spriteSourceSize": {"x":7,"y":7,"w":25,"h":19},
 	"sourceSize": {"w":36,"h":36}
 },
+"Game/UI/Facility_Servants.png":
+{
+	"frame": {"x":2022,"y":1144,"w":24,"h":27},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":4,"w":24,"h":27},
+	"sourceSize": {"w":76,"h":76}
+},
 "Game/UI/HighValueTarget.png":
 {
 	"frame": {"x":1748,"y":541,"w":142,"h":142},
@@ -4080,6 +4080,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game2.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:ce96a8845cbcf3354fa90583f424b911:2e6e1d9949d13729a83597bd6233cec6:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:969d2c449a7278d7f751a094e940c546:bc8ee5c5dbfc1a10992faa372837d559:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

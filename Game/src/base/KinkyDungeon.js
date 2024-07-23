@@ -3,6 +3,8 @@
 let KDFullscreen = false;
 let KDExitButton = false;
 
+let KDPaletteWidth = 6;
+
 let KDDefaultPalette = "";
 let KDCULLTIME = 10000; // Garbage collection
 
@@ -526,6 +528,7 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 * ShieldDamage: number,
 * Balance: number,
 * BalancePause: boolean,
+* NPCRestraints: Record<string, Record<string, NPCRestraint>>
 * Collection: Record<string, KDCollectionEntry>,
 * CollectionSorted: KDCollectionEntry[],
 * HeelPower: number,
@@ -581,6 +584,7 @@ let KDGameDataBase = {
 	JourneyMap: {},
 	AttachedWep: "",
 	Collection: {},
+	NPCRestraints: {},
 	CollectionSorted: [],
 	RevealedTiles: {},
 	RevealedFog: {},
@@ -797,6 +801,7 @@ let KDGameDataBase = {
  */
 let KDGameData = Object.assign({}, KDGameDataBase);
 
+
 function KinkyDungeonLeashingEnemy() {
 	if (KDGameData.KinkyDungeonLeashingEnemy || KDUpdateEnemyCache) {
 		return KinkyDungeonFindID(KDGameData.KinkyDungeonLeashingEnemy);
@@ -830,7 +835,10 @@ function KinkyDungeonAngel() {
 }
 
 function KDUnlockPerk(Perk) {
-	if (Perk && !KDUnlockedPerks.includes(Perk)) KDUnlockedPerks.push(Perk);
+	if (Perk && !KDUnlockedPerks.includes(Perk)) {
+		KDSendMusicToast(TextGet("KDPerkUnlockedToast") + TextGet("KinkyDungeonStat" + (KinkyDungeonStatsPresets[Perk]?.id || Perk)));
+		KDUnlockedPerks.push(Perk);
+	}
 	KDLoadPerks();
 	localStorage.setItem("KDUnlockedPerks", JSON.stringify(KDUnlockedPerks));
 }
@@ -2256,6 +2264,21 @@ function KinkyDungeonRun() {
 			);
 		}
 
+
+		DrawButtonKDEx("randomName", () => {
+
+
+			let name = "Ada";
+
+			let nameList = KDDefaultNames[Math.floor(Math.random() * KDDefaultNames.length)];
+			if (nameList && KDNameList[nameList]) {
+				name = KDNameList[nameList][Math.floor(Math.random() * KDDefaultNames.length)];
+			}
+			ElementValue("PlayerNameField", name);
+			return true;
+		}, true, 1550, 450, 200, 64, TextGet("KDRandom"), "#ffffff", "");
+
+
 		DrawButtonKDEx("selectName", () => {
 
 			localStorage.setItem("PlayerName", ElementValue("PlayerNameField") || "Ada");
@@ -2688,7 +2711,7 @@ function KinkyDungeonRun() {
 				let scale = 72;
 				let x = 1500;
 				let y = 100;
-				let w = 4;
+				let w = KDPaletteWidth;
 				DrawTextFitKD(TextGet("KDBackgroundColor"), x + scale*(0.5 + w)/2, y, scale*w, "#ffffff", KDTextGray0, 20);
 
 
@@ -2711,7 +2734,7 @@ function KinkyDungeonRun() {
 				}
 
 
-				KDDrawPalettes(x, 250, w, scale);
+				KDDrawPalettes(x, 250, w, scale, undefined, undefined);
 			}
 			DrawButtonKDEx("KBBackOptions", () => {
 				KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
@@ -4412,7 +4435,8 @@ function KinkyDungeonGenerateSaveData() {
 	save.KDCurrentWorldSlot = KDCurrentWorldSlot;
 	save.KinkyDungeonPlayerEntity = KinkyDungeonPlayerEntity;
 
-
+	save.KDPersonalAlt = JSON.stringify(KDPersonalAlt);
+	save.KDPersistentNPCs = JSON.stringify(KDPersistentNPCs);
 
 
 	save.stats = {
@@ -4519,6 +4543,7 @@ function KinkyDungeonLoadGame(String) {
 			KDGameData = JSON.parse(JSON.stringify(KDGameDataBase));
 			if (saveData.KDGameData != undefined) KDGameData = Object.assign({}, saveData.KDGameData);
 
+
 			InitFacilities();
 
 			KDEventData = JSON.parse(JSON.stringify(KDEventDataBase));
@@ -4544,8 +4569,6 @@ function KinkyDungeonLoadGame(String) {
 			KinkyDungeonEasyMode = KinkyDungeonStatsChoice.get("norescueMode") ? 2 : (KinkyDungeonStatsChoice.get("easyMode") ? 1 : 0);
 			KinkyDungeonProgressionMode = KinkyDungeonStatsChoice.get("escapekey") ? "Key" : KinkyDungeonStatsChoice.get("escaperandom") ? "Random" : KinkyDungeonStatsChoice.get("escapeselect") ? "Select" : "Key";
 
-			saveData.KDPersonalAlt = JSON.stringify(KDPersonalAlt);
-			saveData.KDPersistentNPCs = JSON.stringify(KDPersistentNPCs);
 
 			if (saveData.faction != undefined) KinkyDungeonFactionRelations = saveData.faction;
 			KDInitFactions();

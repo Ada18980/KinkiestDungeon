@@ -105,24 +105,41 @@ let KDWardrobe_PoseBrows = BROWPOSES;
 let KDWardrobe_PoseBrows2 = BROW2POSES;
 let KDWardrobe_PoseMouth = MOUTHPOSES;
 let KDWardrobe_PoseBlush = ["BlushNeutral", ...BLUSHPOSES];
-let KDWardrobe_CurrentPoseArms = KDWardrobe_PoseArms[0];
-let KDWardrobe_CurrentPoseLegs = KDWardrobe_PoseLegs[0];
-let KDWardrobe_CurrentPoseEyes = KDWardrobe_PoseEyes[0];
-let KDWardrobe_CurrentPoseEyes2 = KDWardrobe_PoseEyes2[0];
-let KDWardrobe_CurrentPoseBrows = KDWardrobe_PoseBrows[0];
-let KDWardrobe_CurrentPoseBrows2 = KDWardrobe_PoseBrows2[0];
-let KDWardrobe_CurrentPoseMouth = KDWardrobe_PoseMouth[0];
-let KDWardrobe_CurrentPoseBlush = KDWardrobe_PoseBlush[0];
 
-function KDInitCurrentPose(blank) {
-	KDWardrobe_CurrentPoseArms = blank ? "" : KDWardrobe_PoseArms[0];
-	KDWardrobe_CurrentPoseLegs = blank ? "" : KDWardrobe_PoseLegs[0];
-	KDWardrobe_CurrentPoseEyes = blank ? "" : KDWardrobe_PoseEyes[0];
-	KDWardrobe_CurrentPoseEyes2 = blank ? "" : KDWardrobe_PoseEyes2[0];
-	KDWardrobe_CurrentPoseBrows = blank ? "" : KDWardrobe_PoseBrows[0];
-	KDWardrobe_CurrentPoseBrows2 = blank ? "" : KDWardrobe_PoseBrows2[0];
-	KDWardrobe_CurrentPoseMouth = blank ? "" : KDWardrobe_PoseMouth[0];
-	KDWardrobe_CurrentPoseBlush = blank ? "" : KDWardrobe_PoseBlush[0];
+let KDNPCPoses = new Map();
+let NPCDesiredPoses = new Map();
+
+/*
+KDNPCPoses.set(KinkyDungeonPlayer, {
+
+});
+
+KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseArms = KDWardrobe_PoseArms[0];
+KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseLegs = KDWardrobe_PoseLegs[0];
+KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseEyes = KDWardrobe_PoseEyes[0];
+KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseEyes2 = KDWardrobe_PoseEyes2[0];
+KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseBrows = KDWardrobe_PoseBrows[0];
+KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseBrows2 = KDWardrobe_PoseBrows2[0];
+KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseMouth = KDWardrobe_PoseMouth[0];
+KDNPCPoses.get(KinkyDungeonPlayer).CurrentPoseBlush = KDWardrobe_PoseBlush[0];*/
+
+function KDInitCurrentPose(blank, C) {
+	if (!C) C = KinkyDungeonPlayer;
+	if (KDNPCPoses.has(C))
+		KDNPCPoses.delete(C);
+	KDNPCPoses.set(C, {
+
+	});
+
+
+	KDNPCPoses.get(C).CurrentPoseArms = blank ? "" : KDWardrobe_PoseArms[0];
+	KDNPCPoses.get(C).CurrentPoseLegs = blank ? "" : KDWardrobe_PoseLegs[0];
+	KDNPCPoses.get(C).CurrentPoseEyes = blank ? "" : KDWardrobe_PoseEyes[0];
+	KDNPCPoses.get(C).CurrentPoseEyes2 = blank ? "" : KDWardrobe_PoseEyes2[0];
+	KDNPCPoses.get(C).CurrentPoseBrows = blank ? "" : KDWardrobe_PoseBrows[0];
+	KDNPCPoses.get(C).CurrentPoseBrows2 = blank ? "" : KDWardrobe_PoseBrows2[0];
+	KDNPCPoses.get(C).CurrentPoseMouth = blank ? "" : KDWardrobe_PoseMouth[0];
+	KDNPCPoses.get(C).CurrentPoseBlush = blank ? "" : KDWardrobe_PoseBlush[0];
 }
 
 
@@ -682,48 +699,49 @@ function KDDrawColorSliders(X, Y, C, Model) {
 let KDLayerIndex = 0;
 
 function KDDrawPoseButtons(C, X = 960, Y = 750, allowRemove = false, dress = false, updateDesired = false) {
+	if (!KDNPCPoses.get(C)) KDNPCPoses.set(C, {});
 	let buttonClick = (arms, legs, eyes, eyes2, brows, brows2, blush, mouth, update = true) => {
 		return (bdata) => {
-			if (allowRemove && arms == KDWardrobe_CurrentPoseArms) KDWardrobe_CurrentPoseArms = "";
-			else KDWardrobe_CurrentPoseArms = arms || KDWardrobe_CurrentPoseArms;
-			if (allowRemove && legs == KDWardrobe_CurrentPoseLegs) KDWardrobe_CurrentPoseLegs = "";
-			else KDWardrobe_CurrentPoseLegs = legs || KDWardrobe_CurrentPoseLegs;
+			if (allowRemove && arms == KDNPCPoses.get(C).CurrentPoseArms) KDNPCPoses.get(C).CurrentPoseArms = "";
+			else KDNPCPoses.get(C).CurrentPoseArms = arms || KDNPCPoses.get(C).CurrentPoseArms;
+			if (allowRemove && legs == KDNPCPoses.get(C).CurrentPoseLegs) KDNPCPoses.get(C).CurrentPoseLegs = "";
+			else KDNPCPoses.get(C).CurrentPoseLegs = legs || KDNPCPoses.get(C).CurrentPoseLegs;
 
 
-			if (allowRemove && eyes == KDWardrobe_CurrentPoseEyes) KDWardrobe_CurrentPoseEyes = "";
-			else KDWardrobe_CurrentPoseEyes = eyes || KDWardrobe_CurrentPoseEyes;
-			if (allowRemove && eyes2 == KDWardrobe_CurrentPoseEyes2) KDWardrobe_CurrentPoseEyes2 = "";
-			else KDWardrobe_CurrentPoseEyes2 = eyes2 || KDWardrobe_CurrentPoseEyes2;
-			if (allowRemove && brows == KDWardrobe_CurrentPoseBrows) KDWardrobe_CurrentPoseBrows = "";
-			else KDWardrobe_CurrentPoseBrows = brows || KDWardrobe_CurrentPoseBrows;
-			if (allowRemove && brows2 == KDWardrobe_CurrentPoseBrows2) KDWardrobe_CurrentPoseBrows2 = "";
-			else KDWardrobe_CurrentPoseBrows2 = brows2 || KDWardrobe_CurrentPoseBrows2;
-			if (allowRemove && blush == KDWardrobe_CurrentPoseBlush) KDWardrobe_CurrentPoseBlush = "";
-			else KDWardrobe_CurrentPoseBlush = blush || KDWardrobe_CurrentPoseBlush;
-			if (allowRemove && mouth == KDWardrobe_CurrentPoseMouth) KDWardrobe_CurrentPoseMouth = "";
-			else KDWardrobe_CurrentPoseMouth = mouth || KDWardrobe_CurrentPoseMouth;
+			if (allowRemove && eyes == KDNPCPoses.get(C).CurrentPoseEyes) KDNPCPoses.get(C).CurrentPoseEyes = "";
+			else KDNPCPoses.get(C).CurrentPoseEyes = eyes || KDNPCPoses.get(C).CurrentPoseEyes;
+			if (allowRemove && eyes2 == KDNPCPoses.get(C).CurrentPoseEyes2) KDNPCPoses.get(C).CurrentPoseEyes2 = "";
+			else KDNPCPoses.get(C).CurrentPoseEyes2 = eyes2 || KDNPCPoses.get(C).CurrentPoseEyes2;
+			if (allowRemove && brows == KDNPCPoses.get(C).CurrentPoseBrows) KDNPCPoses.get(C).CurrentPoseBrows = "";
+			else KDNPCPoses.get(C).CurrentPoseBrows = brows || KDNPCPoses.get(C).CurrentPoseBrows;
+			if (allowRemove && brows2 == KDNPCPoses.get(C).CurrentPoseBrows2) KDNPCPoses.get(C).CurrentPoseBrows2 = "";
+			else KDNPCPoses.get(C).CurrentPoseBrows2 = brows2 || KDNPCPoses.get(C).CurrentPoseBrows2;
+			if (allowRemove && blush == KDNPCPoses.get(C).CurrentPoseBlush) KDNPCPoses.get(C).CurrentPoseBlush = "";
+			else KDNPCPoses.get(C).CurrentPoseBlush = blush || KDNPCPoses.get(C).CurrentPoseBlush;
+			if (allowRemove && mouth == KDNPCPoses.get(C).CurrentPoseMouth) KDNPCPoses.get(C).CurrentPoseMouth = "";
+			else KDNPCPoses.get(C).CurrentPoseMouth = mouth || KDNPCPoses.get(C).CurrentPoseMouth;
 
 			if (updateDesired) {
-				KDDesiredPlayerPose = {
-					Arms: KDWardrobe_CurrentPoseArms,
-					Legs: KDWardrobe_CurrentPoseLegs,
-					Eyes: KDWardrobe_CurrentPoseEyes,
-					Brows: KDWardrobe_CurrentPoseBrows,
-					Blush: KDWardrobe_CurrentPoseBlush,
-					Mouth: KDWardrobe_CurrentPoseMouth,
-				};
+				NPCDesiredPoses.set(C, {
+					Arms: KDNPCPoses.get(C).CurrentPoseArms,
+					Legs: KDNPCPoses.get(C).CurrentPoseLegs,
+					Eyes: KDNPCPoses.get(C).CurrentPoseEyes,
+					Brows: KDNPCPoses.get(C).CurrentPoseBrows,
+					Blush: KDNPCPoses.get(C).CurrentPoseBlush,
+					Mouth: KDNPCPoses.get(C).CurrentPoseMouth,
+				});
 			}
 
 			if (update) {
 				KDCurrentModels.get(C).Poses = KDGeneratePoseArray(
-					KDWardrobe_CurrentPoseArms,
-					KDWardrobe_CurrentPoseLegs,
-					KDWardrobe_CurrentPoseEyes,
-					KDWardrobe_CurrentPoseBrows,
-					KDWardrobe_CurrentPoseBlush,
-					KDWardrobe_CurrentPoseMouth,
-					KDWardrobe_CurrentPoseEyes2,
-					KDWardrobe_CurrentPoseBrows2,
+					KDNPCPoses.get(C).CurrentPoseArms,
+					KDNPCPoses.get(C).CurrentPoseLegs,
+					KDNPCPoses.get(C).CurrentPoseEyes,
+					KDNPCPoses.get(C).CurrentPoseBrows,
+					KDNPCPoses.get(C).CurrentPoseBlush,
+					KDNPCPoses.get(C).CurrentPoseMouth,
+					KDNPCPoses.get(C).CurrentPoseEyes2,
+					KDNPCPoses.get(C).CurrentPoseBrows2,
 					//KDGetPoseOfType(C, "Eyes"),
 					//KDGetPoseOfType(C, "Brows"),
 					//KDGetPoseOfType(C, "Blush"),
@@ -755,7 +773,7 @@ function KDDrawPoseButtons(C, X = 960, Y = 750, allowRemove = false, dress = fal
 			X + i*buttonSpacing, Y + 120, buttonWidth, buttonWidth,
 			"",
 			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseArms[i] + ".png",
-			undefined, false, KDWardrobe_CurrentPoseArms != KDWardrobe_PoseArms[i], !AvailableArms.includes(KDWardrobe_PoseArms[i]) ? "#ff5555" : KDButtonColor);
+			undefined, false, KDNPCPoses.get(C).CurrentPoseArms != KDWardrobe_PoseArms[i], !AvailableArms.includes(KDWardrobe_PoseArms[i]) ? "#ff5555" : KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseLegs.length; i++) {
 		DrawButtonKDEx("PoseLegs" + i,
@@ -764,43 +782,43 @@ function KDDrawPoseButtons(C, X = 960, Y = 750, allowRemove = false, dress = fal
 			X + xoff + i*buttonSpacing, Y + 180, buttonWidth, buttonWidth,
 			"",
 			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseLegs[i] + ".png",
-			undefined, false, KDWardrobe_CurrentPoseLegs != KDWardrobe_PoseLegs[i], !AvailableLegs.includes(KDWardrobe_PoseLegs[i]) ? "#ff5555" : KDButtonColor);
+			undefined, false, KDNPCPoses.get(C).CurrentPoseLegs != KDWardrobe_PoseLegs[i], !AvailableLegs.includes(KDWardrobe_PoseLegs[i]) ? "#ff5555" : KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseEyes.length; i++) {
 		DrawButtonKDEx("PoseEyes" + i, buttonClick("", "", KDWardrobe_PoseEyes[i]), true, X + i*buttonSpacing, Y, buttonWidth, buttonWidth,
 			"",
 			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseEyes[i] + ".png",
-			undefined, undefined, KDWardrobe_CurrentPoseEyes != KDWardrobe_PoseEyes[i], KDButtonColor);
+			undefined, undefined, KDNPCPoses.get(C).CurrentPoseEyes != KDWardrobe_PoseEyes[i], KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseEyes.length; i++) {
 		DrawButtonKDEx("PoseEyes2" + i, buttonClick("", "", "", KDWardrobe_PoseEyes2[i]), true, X + i*buttonSpacing, Y + 60, buttonWidth, buttonWidth,
 			"",
 			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseEyes2[i] + ".png",
-			undefined, undefined, KDWardrobe_CurrentPoseEyes2 != KDWardrobe_PoseEyes2[i], KDButtonColor);
+			undefined, undefined, KDNPCPoses.get(C).CurrentPoseEyes2 != KDWardrobe_PoseEyes2[i], KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseBrows.length; i++) {
 		DrawButtonKDEx("PoseBrows" + i, buttonClick("", "", "", "", KDWardrobe_PoseBrows[i]), true, X + 400 + i*buttonSpacing, Y, buttonWidth, buttonWidth,
 			"",
 			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseBrows[i] + ".png",
-			undefined, undefined, KDWardrobe_CurrentPoseBrows != KDWardrobe_PoseBrows[i], KDButtonColor);
+			undefined, undefined, KDNPCPoses.get(C).CurrentPoseBrows != KDWardrobe_PoseBrows[i], KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseBrows2.length; i++) {
 		DrawButtonKDEx("PoseBrows2" + i, buttonClick("", "", "", "", "", KDWardrobe_PoseBrows2[i]), true, X + 400 + i*buttonSpacing, Y + 60, buttonWidth, buttonWidth,
 			"",
 			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseBrows2[i] + ".png",
-			undefined, undefined, KDWardrobe_CurrentPoseBrows2 != KDWardrobe_PoseBrows2[i], KDButtonColor);
+			undefined, undefined, KDNPCPoses.get(C).CurrentPoseBrows2 != KDWardrobe_PoseBrows2[i], KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseBlush.length; i++) {
 		DrawButtonKDEx("PoseBlush" + i, buttonClick("", "", "", "", "", "", KDWardrobe_PoseBlush[i]), true, X + 400 + i*buttonSpacing, Y + 120, buttonWidth, buttonWidth,
 			"",
 			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseBlush[i] + ".png",
-			undefined, undefined, KDWardrobe_CurrentPoseBlush != KDWardrobe_PoseBlush[i], KDButtonColor);
+			undefined, undefined, KDNPCPoses.get(C).CurrentPoseBlush != KDWardrobe_PoseBlush[i], KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseMouth.length; i++) {
 		DrawButtonKDEx("PoseMouth" + i, buttonClick("", "", "", "", "", "", "", KDWardrobe_PoseMouth[i]), true, X + 400 + i*buttonSpacing, Y + 180, buttonWidth, buttonWidth,
 			"",
 			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseMouth[i] + ".png",
-			undefined, undefined, KDWardrobe_CurrentPoseMouth != KDWardrobe_PoseMouth[i], KDButtonColor);
+			undefined, undefined, KDNPCPoses.get(C).CurrentPoseMouth != KDWardrobe_PoseMouth[i], KDButtonColor);
 	}
 }
 
@@ -1097,6 +1115,10 @@ function KDDrawModelList(X, C) {
 
 }
 
+function KDCanForcePose(C) {
+	return C != KinkyDungeonPlayer;
+}
+
 function KDDrawWardrobe(screen, Character) {
 	if (KDOutfitInfo.length == 0) KDRefreshOutfitInfo();
 
@@ -1122,7 +1144,7 @@ function KDDrawWardrobe(screen, Character) {
 
 	DrawBoxKD(1025, 710, 950, 285, KDButtonColor, false, 0.5, -10);
 	if (KDPlayerSetPose) {
-		KDDrawPoseButtons(C, 1050);
+		KDDrawPoseButtons(C, 1050, undefined, undefined, undefined, KDCanForcePose(C));
 	} else {
 		DrawTextFitKD(TextGet("KDQuickColor"), 1050, 735, 250, "#ffffff", KDTextGray0, undefined, "left");
 		KDDrawSavedColors(1060, 760, KDSavedColorCount, C);

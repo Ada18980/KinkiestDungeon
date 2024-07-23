@@ -28,14 +28,34 @@ TODO:
 - Let go of leash thru menu
 - Aggro level
 
-TODO remove hogtie whenm released
+TODO remove hogtie when released
+
+5.3.26
+- Can now add NPCs to display stand
+- Can now view party members in collection
+- prototype persistent NPCs. lmk if there are weirdness with party members
+- NPCs have facial expressions and their poses can be set individually (no persistence)
+
+
+5.3.25
+- New perk: Fully Integrated (unlock by reaching 100% latex integration. Start with 100% latex integration)
+- New consumable: Universal Solvent (Each use reduces latex integration by -25% and debuffs current latex restraint struggle/cut resistance by 10)
+- Can generate random name on name screen
+- Can set restraint palette
+- Truss em Up now adds the restraint to the enemy's inventory so you can get it back on capture
+
+5.3.24
+- Added ability to restrain NPCs
+
+5.3.23
+- Recycler is now online in the summit!
+- Interacting now picks up items on the targeted tile
 
 5.3.22
 - You can lock yourself inside of furniture
 - Added some gag particles to player and enemy
 - Added setting to allow dynamic armor item removal from outfits if you are missing armor (only works with plate armor)
 - Added pose-specific layer properties (hide, require poses, and hide prefix/suffix)
-- Interacting now picks up items on the targeted tile
 
 5.3.21
 - Upgraded the layering system to allow for even tighter item combinations (and getting rid of low level items to replace with more strong items)

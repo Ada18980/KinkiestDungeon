@@ -46,10 +46,10 @@ function KDDrawMusic(delta) {
 				Height: KDMusicYMax,
 				Color: "#000000",
 				alpha: 0.8,
-				zIndex: 55,
+				zIndex: 209.9,
 			}
 		);
-		DrawTextFitKD(TextGet(KDMusicToast), 1000, KDMusicY - KDMusicYMax/2, 1000, "#ffffff", "#000000", 32);
+		DrawTextFitKD(KDMusicToast, 1000, KDMusicY - KDMusicYMax/2, 1000, "#ffffff", "#000000", 32, "center", 210);
 	}
 }
 
@@ -162,7 +162,7 @@ function KDPlayMusic(Sound, Volume) {
 
 	KDLastSong = Sound;
 	KDCurrentSong = Sound;
-	KDSendMusicToast(Sound);
+	KDSendMusicToast(TextGet(Sound));
 	KDNewSong = "";
 }
 

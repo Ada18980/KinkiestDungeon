@@ -156,6 +156,7 @@ function KDInitInventory() {
 }
 
 let KinkyDungeonPlayerTags = new Map();
+let NPCTags = new Map();
 
 let KinkyDungeonCurrentDress = "Default";
 let KinkyDungeonUndress = 0; // Level of undressedness
@@ -224,6 +225,7 @@ function KinkyDungeonDefaultStats(Load) {
 	KinkyDungeonInventoryAddWeapon("Unarmed");
 	KDSetWeapon("Unarmed");
 	KinkyDungeonPlayerTags = new Map();
+	NPCTags = new Map();
 
 	KinkyDungeonPlayerDamage = KinkyDungeonPlayerDamageDefault;
 

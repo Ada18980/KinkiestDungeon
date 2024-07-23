@@ -249,6 +249,8 @@ interface KDRestraintPropsBase {
 	alwaysAccessible?: boolean,
 	/** Always inaccessible if something is on top of it */
 	alwaysInaccessible?: boolean,
+	/** Recycler resources yielded when recycled (not crafted, though craft bp will mimic this by default) */
+	recycleresource?: Record<string, number>,
 	/** This item can be rendered when linked */
 	renderWhenLinked?: string[];
 	// Player must have one of these PlayerTags to equip
@@ -1689,7 +1691,7 @@ interface entity {
 	stun?: number,
 	silence?: number,
 	vulnerable?: number,
-	buffs?: any,
+	buffs?: Record<string, any>,
 	warningTiles?: any,
 	visual_x?: number,
 	visual_y?: number,
@@ -2375,6 +2377,16 @@ interface KDStruggleData {
 	extraLimThreshold: number,
 }
 
+interface KDFilteredInventoryItem {
+    name: any;
+    item: any;
+    preview: string;
+    preview2?: string;
+    previewcolor?: string;
+    previewcolorbg?: string;
+    key?: string;
+}
+
 interface KDInventoryActionDef {
 	text?: (player: entity, item: item) => string;
 	label?: (player: entity, item: item) => string;
@@ -2597,6 +2609,7 @@ type MapMod = {
 	bonussetpieces?: {Type: string, Weight: number}[],
 	altRoom: string,
 	escapeMethod?: string,
+	noPersistentPrisoners?: boolean,
 }
 
 type AIType = {
@@ -2963,6 +2976,9 @@ interface KDBondage {
 	powerStruggleBoost: number,
 	/** Multiplier for command level */
 	mageStruggleBoost?: number,
+
+	/** Affected by latex solvents */
+	latex?: boolean,
 }
 
 interface KDCursedVar {
@@ -3167,8 +3183,8 @@ type KDEventData_CurseCount = {restraints: {item: item, host: item}[], count: nu
 type KDExpression = {
 	priority: number;
 	stackable?: boolean,
-	criteria: (C: any) => boolean;
-	expression: (C: any) => {
+	criteria: (C: any, flags: Map<string, number>) => boolean;
+	expression: (C: any, flags: Map<string, number>) => {
 		EyesPose: string,
 		Eyes2Pose: string,
 		BrowsPose: string,
@@ -3431,7 +3447,8 @@ interface KDCollectionEntry {
 	customSprite: boolean,
 	id: number,
 	Enemy?: enemy, // for unique ones
-
+	/** Todo remove this and replace with persistent NPC flag */
+	flags?: Record<string, number>,
 	outfit?: string,
 	customOutfit?: string,
 	hairstyle?: string,
@@ -3441,6 +3458,7 @@ interface KDCollectionEntry {
 
 	/** Status: Guest, Prisoner, Servant, or Manager */
 	status: string,
+	oldstatus: string,
 	class: string,
 
 	Faction: string,

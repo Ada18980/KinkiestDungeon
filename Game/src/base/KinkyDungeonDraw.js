@@ -1000,6 +1000,13 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonKeybindingCurrentKey = '';
 				KinkyDungeonInspect = false;
 				KDInteracting = false;
+			} else if (KinkyDungeonDrawState == "Collection" && (KDCollectionTab || KDCurrentRestrainingTarget)) {
+				KDCollectionTab = "";
+				KDCurrentRestrainingTarget = 0;
+				KinkyDungeonGameKey.keyPressed[9] = false;
+				KinkyDungeonKeybindingCurrentKey = '';
+				KinkyDungeonInspect = false;
+				KDInteracting = false;
 			} else if (KDConfigHotbar) {
 				KDConfigHotbar = false;
 				KinkyDungeonGameKey.keyPressed[9] = false;
@@ -2288,7 +2295,7 @@ let KDLogFilters = [
 	"Kills",
 ];
 
-function KinkyDungeonDrawMessages(NoLog, shiftx = 0, noBG = false) {
+function KinkyDungeonDrawMessages(NoLog, shiftx = 0, noBG = false, width = KDMsgWidthMin) {
 	if (!NoLog) {
 		DrawButtonKDEx("logtog", (bdata) => {
 			KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle;
@@ -2341,12 +2348,12 @@ function KinkyDungeonDrawMessages(NoLog, shiftx = 0, noBG = false) {
 			let ignoreMSG = [];
 			let spacing = KDLogDist;
 			if (KinkyDungeonActionMessageTime > 0 && KinkyDungeonActionMessageNoPush) {
-				DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
+				DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, width, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
 				ignoreMSG.push(KinkyDungeonActionMessage);
 				i++;
 			}
 			if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessageNoPush) {
-				DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, KinkyDungeonTextMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
+				DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, width, KinkyDungeonTextMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
 				ignoreMSG.push(KinkyDungeonTextMessage);
 				i++;
 			}
@@ -2386,7 +2393,7 @@ function KinkyDungeonDrawMessages(NoLog, shiftx = 0, noBG = false) {
 							continue;
 						}
 						alpha = Math.max(0, Math.min(1, 2.0 - i / KDMaxConsoleMsg)) * (1 - Math.max(0, Math.min(1, Math.max(0, KinkyDungeonCurrentTick - msg.time - 1)/KDMsgFadeTime)));
-						DrawTextFitKD(msg.text, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, KDMsgWidthMin, msg.color, KDTextGray1, KDMSGFontSize, undefined, zLevel, alphamin + (1 - alphamin) * alpha);
+						DrawTextFitKD(msg.text, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, width, msg.color, KDTextGray1, KDMSGFontSize, undefined, zLevel, alphamin + (1 - alphamin) * alpha);
 						i++;
 					}
 				}
@@ -4266,7 +4273,6 @@ let KDLastCamPos = {x: 0, y: 0};
 
 let KDDrawPlayer = true;
 
-let KDDesiredPlayerPose = {};
 
 function KDPlayerDrawPoseButtons(C) {
 	if (!KDModalArea) {
@@ -4352,8 +4358,11 @@ function KDGetTargetRetType(x, y) {
  * @param {number} y
  * @param {number} w
  * @param {number} scale
+ * @param {string} selected
+ * @param {(string) => void} callback
  */
-function KDDrawPalettes(x, y, w, scale = 72) {
+function KDDrawPalettes(x, y, w, scale = 72, selected, callback, text = "KDSelectPalette") {
+	if (selected == undefined) selected = KDDefaultPalette;
 	let XX = x;
 	let YY = y;
 	//let row = 0;
@@ -4361,7 +4370,7 @@ function KDDrawPalettes(x, y, w, scale = 72) {
 	let spacing = 80;
 	/** @type {[string, Record<string, LayerFilter>]} */
 	let zero = ["", {Highlight: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}];
-	DrawTextFitKD(TextGet("KDSelectPalette"), x + scale*(0.5 + w)/2, y - 36, scale*w, "#ffffff", KDTextGray0, 20);
+	DrawTextFitKD(TextGet(text), x + scale*(0.5 + w)/2, y - 36, scale*w, "#ffffff", KDTextGray0, 20);
 
 	for (let value of [zero, ...Object.entries(KinkyDungeonFactionFilters)]) {
 		KDDraw(kdcanvas, kdpixisprites, "palette" + value[0], KinkyDungeonRootDirectory + "UI/greyColor.png",
@@ -4371,10 +4380,14 @@ function KDDrawPalettes(x, y, w, scale = 72) {
 				]
 			});
 		DrawButtonKDEx("choosepalette" + value[0], (b) => {
-			KDDefaultPalette = value[0];
-			localStorage.setItem("KDDefaultPalette", value[0]);
+			if (callback) callback(value[0]);
+			else {
+				KDDefaultPalette = value[0];
+				localStorage.setItem("KDDefaultPalette", value[0]);
+			}
 			return true;
-		}, true, XX - 3, YY - 3, scale + 7, scale + 7, "", "#ffffff", "", undefined, false, value[0] != KDDefaultPalette, KDButtonColor, undefined, undefined, {
+		}, true, XX - 3, YY - 3, scale + 7, scale + 7, "", "#ffffff", "", undefined, false,
+		value[0] != selected, KDButtonColor, undefined, undefined, {
 			zIndex: -10,
 		}
 		);

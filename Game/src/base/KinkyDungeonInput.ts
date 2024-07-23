@@ -1190,6 +1190,39 @@ function KDProcessInput(type, data): string {
 			break;
 		case "recycle":
 			break;
+		case "freeNPCRestraint": {
+			if (KDGameData.NPCRestraints) {
+
+				let restraints = KDGameData.NPCRestraints[data.npc + ''];
+				if (restraints) {
+					for (let inv of Object.entries(restraints)) {
+						KDInputSetNPCRestraint({
+							slot: inv[0],
+							id: -1,
+							restraint: "",
+							restraintid: -1,
+							lock: "",
+							npc: data.npc
+						});
+					}
+				}
+			}
+			}
+			break;
+		case "addNPCRestraint":
+			/**
+				slot: slot.id,
+				id: inv.item.id,
+				restraint: inv.item.name,
+				lock: "White",
+				npc: number
+			 */
+			KDInputSetNPCRestraint(data);
+			if (data.npc > 0) {
+				KDSetCollFlag(data.npc, "restrained", 1);
+				KDSetCollFlag(data.npc, "restrained_recently", 24);
+			}
+		break;
 	}
 	if (data.GameData) {
 		Object.assign(KDGameData, data.GameData);

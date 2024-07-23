@@ -240,7 +240,7 @@ function KDPleaseSpeaker(Amount) {
 
 /**
  *
- * @param {entity} enemy
+ * @param {any} enemy
  * @param {number} Amount
  */
 function KDAddOpinion(enemy, Amount) {
@@ -448,16 +448,17 @@ function KDHandleDialogue() {
  * @param {number} x
  * @param {number} y
  * @param {string} Name
+ * @param {number} [persistentid]
  * @returns {entity}
  */
-function DialogueCreateEnemy(x, y, Name) {
+function DialogueCreateEnemy(x, y, Name, persistentid) {
 	if (KinkyDungeonEnemyAt(x, y)) KDKickEnemy(KinkyDungeonEnemyAt(x, y));
 	let Enemy = KinkyDungeonGetEnemyByName(Name);
-	let e = {summoned: true, Enemy: Enemy, id: KinkyDungeonGetEnemyID(),
+	let e = {summoned: true, Enemy: Enemy, id: persistentid || KinkyDungeonGetEnemyID(),
 		x:x, y:y,
 		hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
-	KDAddEntity(e);
-	return e;
+
+	return KDAddEntity(e, persistentid != undefined);
 }
 
 /**
@@ -2238,6 +2239,7 @@ function KDIsSubmissiveEnough(enemy) {
  * @returns {number}
  */
 function KDGetModifiedOpinion(enemy) {
+	if (!enemy) return 0;
 	let op = enemy.opinion || 0;
 
 	op += 30 * KDFactionRelation("Player", KDGetFaction(enemy));
@@ -2246,6 +2248,7 @@ function KDGetModifiedOpinion(enemy) {
 
 	return op;
 }
+
 
 /**
  *

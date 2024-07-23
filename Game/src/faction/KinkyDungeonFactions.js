@@ -39,6 +39,7 @@ function KDHostile(enemy, enemy2) {
 	return (enemy.rage > 0) ||
 		(
 			!(!enemy2 && enemy.ceasefire > 0)
+			&& !(enemy2 && enemy2.ceasefire > 0)
 			&& (
 				(!enemy2
 					&& (KDFactionHostile("Player", enemy) || enemy.hostile > 0)

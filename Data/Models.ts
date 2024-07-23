@@ -230,13 +230,31 @@ function GetOverCorset(BaseModel: string): Model {
 }
 
 
-function DisposeCharacter(C: Character): void {
+function DisposeCharacter(C: Character, resort: boolean = true): void {
 	if (KDCurrentModels.get(C)) {
 		for (let Container of KDCurrentModels.get(C).Containers.values()) {
 			kdcanvas.removeChild(Container.Container);
 			Container.Container.destroy();
 		}
-
+	}
+	if (NPCTags.get(C)) {
+		NPCTags.delete(C);
+	}
+	if (KDNPCChar_ID.get(C)) {
+		let id = KDNPCChar_ID.get(C);
+		KDNPCChar.delete(id);
+		delete KDPersistentNPCs[id + ""];
+		delete KDGameData.Collection[id + ""];
+		if (resort) {
+			KDSortCollection();
+		}
+		KDNPCChar_ID.delete(C);
+	}
+	if (KDNPCPoses.get(C)) {
+		KDNPCPoses.delete(C);
+	}
+	if (NPCDesiredPoses.get(C)) {
+		NPCDesiredPoses.delete(C);
 	}
 }
 
@@ -489,8 +507,13 @@ function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : number {
 		}
 	}
 	let Properties: LayerProperties = m.Properties;
-	let lyr = KDLayerPropName(l, MC.Poses);
+	let lyr = l.InheritColor || l.Name;
 	if (Properties && Properties[lyr]) {
+		if (Properties[lyr].LayerBonus) temp += Properties[lyr].LayerBonus;
+	}
+	let oldProp = lyr;
+	lyr = KDLayerPropName(l, MC.Poses);
+	if (oldProp != lyr && Properties && Properties[lyr]) {
 		if (Properties[lyr].LayerBonus) temp += Properties[lyr].LayerBonus;
 	}
 
@@ -650,8 +673,9 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						(Properties.Rotation * Math.PI / 180) || 0
 					);
 				}
-				Properties = m.Properties ? m.Properties[m.Name + "," + l.Name] : undefined;
-				if (Properties) {
+				let oldProps = Properties;
+				Properties = m.Properties ? m.Properties[l.InheritColor || l.Name] : undefined;
+				if (Properties && oldProps != Properties) {
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
 						Properties.YOffset || 0,
@@ -736,8 +760,9 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						(Properties.Rotation * Math.PI / 180) || 0
 					);
 				}
-				Properties = m.Properties ? m.Properties[m.Name + "," + l.Name] : undefined;
-				if (Properties) {
+				let oldProps = Properties;
+				Properties = m.Properties ? m.Properties[l.InheritColor || l.Name] : undefined;
+				if (Properties && oldProps != Properties) {
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
 						Properties.YOffset || 0,
@@ -869,8 +894,9 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						(Properties.Rotation * Math.PI / 180) || 0
 					);
 				}
-				Properties = m.Properties ? m.Properties[m.Name + "," + l.Name] : undefined;
-				if (Properties) {
+				let oldProps = Properties;
+				Properties = m.Properties ? m.Properties[l.InheritColor || l.Name] : undefined;
+				if (Properties && oldProps != Properties) {
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
 						Properties.YOffset || 0,
@@ -1053,7 +1079,7 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 		}
 		if (prop && prop.ExtraRequirePoses) {
 			for (let p of prop.ExtraRequirePoses) {
-				if (!Poses[p]) {
+				if (p && !Poses[p]) {
 					return false;
 				}
 			}

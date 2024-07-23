@@ -34309,7 +34309,7 @@ You have formed a mental barrier...
 Вы сформировали ментальный барьер...
 Desire Burst
 Взрыв желания
-Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have 50% Desire, the damage is reduced based on the amount. (Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
+Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have 50% Desire, the damage is reduced based on the amount.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
 Уменьшите свое Желание до 30% от максимального DP и преобразуйте это количество в мощный взрыв, наносящий (30 + 25% максимального DP) урон от Очарования ближайшим врагам (множитель крита 200%). Если у вас нет 50% Желания, урон уменьшается в зависимости от числа. (Желание - это индикатор в форме сердца под вашей шкалой DP, который медленно увеличивается, если вы возбуждены)
 You channel your distraction into a powerful explosion!
 Вы превращаете свое возбуждение в мощный взрыв!
@@ -35729,7 +35729,7 @@ Prison
 Тюрьма
 Sorting Room
 Сортировочная комната
-Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
+Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
 Щелкните по позиции панели быстрого доступа, чтобы назначить предмет в этот слот.|Вы можете нажать кнопку смены справа,|чтобы переключаться между тремя вашими панелями быстрого доступа.||Вы также можете сохранять и загружать пресеты для своей панели быстрого доступа.|Они общие в разных забегах.
 You step on the item and tug to pull it taut...
 Вы наступаете на предмет и тянете, чтобы он растянулся...

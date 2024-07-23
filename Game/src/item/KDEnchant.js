@@ -26,6 +26,18 @@ let KDEnchantVariantList = {
 	"Pair": [
 		"CommonPair",
 	],
+	"Mana": [
+		"ManaRegenOnKill",
+		"ManaCost",
+		"ManaCostSpecific",
+	],
+	"Damage": [
+		"BaseDamageBuffMelee",
+		"BaseDamageBuffMagic",
+		"DamageBuff",
+		"ElementalEcho",
+		"ElementalDmg",
+	],
 	"Gold": [
 		"ElementalEcho",
 		"ElementalDmg",
@@ -431,12 +443,12 @@ let KDEventEnchantmentModular = {
 					return 3;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
-					let power = Math.max(KDGetItemPower(item), 1);
-					let amt = 1 + Math.round((0.4 + 0.6*KDRandom()) * 50 * (1-Math.pow(0.98, power)));
+					let power = Math.max(KDGetItemPower(item), 2);
+					let amt = 2 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.7));
 					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
-						{original: "ManaCost", trigger: "calcMultMana", type: "ManaCost", power: 1 - Math.min(0.99, amt*0.01), inheritLinked: true},
-						{original: "ManaCost", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCost", power: -amt, color: "#0000ff", bgcolor: "#8888ff"},
+						{original: "ManaCost", trigger: "calcEfficientMana", type: "ManaCost", power: amt*0.01, inheritLinked: true},
+						{original: "ManaCost", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCost", power: amt, color: "#0000ff", bgcolor: "#8888ff"},
 						{original: "ManaCost", trigger: "icon", type: "tintIcon", power: 5, color: "#0000ff"},
 					];}},
 		}},
@@ -462,15 +474,15 @@ let KDEventEnchantmentModular = {
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 3);
-					let amt = 5 + Math.round((0.4 + 0.6*KDRandom()) * 70 * (1-Math.pow(0.975, power)));
+					let amt = 3 + Math.round((0.4 + 0.6*KDRandom()) * 6 * Math.pow(power, 0.85));
 					let types = ['air', 'earth', 'fire', 'water', 'electric', 'ice', 'latex', 'metal', 'rope', 'leather', 'light', 'shadow', 'stealth', 'summon', 'knowledge', 'arrow'];
 
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
 
 					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
-						{original: "ManaCostSpecific", trigger: "calcMultMana", type: "ManaCost", condition: "spellType", kind: type, power: 1 - Math.min(0.99, amt*0.01), inheritLinked: true},
-						{original: "ManaCostSpecific", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCostSpecific", kind: TextGet("KinkyDungeonFilter" + type), power: -amt, color: "#0000ff", bgcolor: "#8888ff"},
+						{original: "ManaCostSpecific", trigger: "calcEfficientMana", type: "ManaCost", condition: "spellType", kind: type, power: amt*0.01, inheritLinked: true},
+						{original: "ManaCostSpecific", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCostSpecific", kind: TextGet("KinkyDungeonFilter" + type), power: amt, color: "#0000ff", bgcolor: "#8888ff"},
 						{original: "ManaCostSpecific", trigger: "icon", type: "tintIcon", power: 5, color: "#0000ff"},
 					];}},
 		}},

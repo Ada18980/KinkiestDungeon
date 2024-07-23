@@ -404,7 +404,7 @@ function KinkyDungeonGetEvasion(Enemy, NoOverride, IsSpell, IsMagic, cost) {
 
 
 function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
-	if (Enemy && Enemy.Enemy && (!Spell || !Spell.enemySpell) && (!Faction || Faction == "Player") && !(Enemy.rage > 0) && (!Attacker || Attacker.player || Attacker.Enemy.allied)) {
+	if (Enemy && Enemy.Enemy && (!Spell || !Spell.enemySpell) && (!Spell || !Spell.noAggro) && (!Faction || Faction == "Player") && !(Enemy.rage > 0) && (!Attacker || Attacker.player || Attacker.Enemy.allied)) {
 		if (Enemy.playWithPlayer && (KDCanDom(Enemy) || !KDHostile(Enemy))) {
 			KDAddThought(Enemy.id, "Embarrassed", 5, 1);
 			Enemy.distraction = (Enemy.distraction || 0) + Enemy.Enemy.maxhp * 0.1;
@@ -2375,7 +2375,8 @@ function KinkyDungeonBulletTrail(b) {
 
 function KinkyDungeonBulletsCheckCollision(bullet, AoE, force, d, inWarningOnly, delta) {
 	let mapItem = KinkyDungeonMapGet(bullet.x, bullet.y);
-	if (!bullet.bullet.passthrough && !bullet.bullet.piercing && !KinkyDungeonOpenObjects.includes(mapItem)) return false;
+	if (bullet.vx || bullet.vy) // Moving projectiles get blocked by grates and walls, but not still objects
+		if (!bullet.bullet.passthrough && !bullet.bullet.piercing && !KinkyDungeonOpenObjects.includes(mapItem)) return false;
 
 	KDBulletEffectTiles(bullet);
 

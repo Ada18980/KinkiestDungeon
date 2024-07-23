@@ -18099,7 +18099,7 @@ You have formed a mental barrier...
 你已经形成了一个精神屏障...
 Desire Burst
 欲望爆发
-Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have 50% Desire, the damage is reduced based on the amount. (Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
+Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have 50% Desire, the damage is reduced based on the amount.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
 将你的性欲减少最多最大 DP 的 30%，并将该量转化为强大的爆炸，对附近的敌人造成 (30 + 25% 最大 DP) 点妩媚伤害（暴击倍数为 200%）。如果你没有50%的性欲，伤害会根据数量减少。（性欲是你的DP条下方的心形仪表，通过分心慢慢提高）
 You channel your distraction into a powerful explosion!
 你可以将你的分心转化为强大的爆炸！
@@ -19165,8 +19165,8 @@ The dragon girl reaches out with a shadowy grip! (+RestraintAdded)
 (SPEAKER 点点头)|在我那个年代，人们用蜡烛来照明！|这些可以让你把它们熄灭，以节省蜡。
 (The SPEAKER giggles)|I had all sorts of use for this back on the farm.
 (SPEAKER 咯咯地笑着)|我在农场的时候，这个东西有各种用途。
-Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
-点击热键栏位置，即可将当前物品分配到该槽。|您可以点击右侧的交换按钮，在三个热栏之间进行切换。||您还可以为您的热键栏保存和加载预设。|这些预设在运行时共享。
+Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
+点击热键栏位置，即可将项目分配到该槽。|您可以点击右侧的交换按钮，在三个热栏之间进行切换。||您还可以为您的热键栏保存和加载预设。|这些预设在运行时共享。
 Zero Resistance
 放弃反抗
 Toggle this to set bondage resist, evasion, and block to 0. While enabled, using the 'wait until interrupted' button will not be interrupted when hit or bound.
